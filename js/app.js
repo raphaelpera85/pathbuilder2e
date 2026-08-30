@@ -722,18 +722,69 @@ class PathbuilderApp {
     `).join('');
   }
 
-  // ABA DE DETALHES & VINCULAÇÃO DE MESTRE
+  // ABA DE DETALHES (DETAILS - EXACT PATHBUILDER 2E)
   renderDetailsTab() {
-    const detDeity = document.getElementById("detDeity");
-    const detAppearance = document.getElementById("detAppearance");
-    const detBackstory = document.getElementById("detBackstory");
+    if (!this.character) return;
+    
+    // 1. Avatar Preview
+    const avatarPreview = document.getElementById("detailsAvatarPreview");
+    const clearBtn = document.getElementById("detailsAvatarClearBtn");
+    if (avatarPreview) {
+      if (this.character.avatar && this.character.avatar.trim()) {
+        avatarPreview.innerHTML = `<img src="${this.character.avatar}" class="pb-details-avatar-img" alt="Avatar" />`;
+        if (clearBtn) clearBtn.style.display = "flex";
+      } else {
+        avatarPreview.innerHTML = `
+          <svg viewBox="0 0 24 24" width="76" height="76" fill="#9ca3af">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+          </svg>
+        `;
+        if (clearBtn) clearBtn.style.display = "none";
+      }
+    }
+
+    // 2. Deity Display
+    const deityDisplay = document.getElementById("detailsDeityDisplay");
+    if (deityDisplay) {
+      deityDisplay.textContent = this.character.deity || "Not set";
+    }
+
+    // 3. Age & Gender Inputs
+    const ageInput = document.getElementById("detailsAgeInput");
+    if (ageInput && document.activeElement !== ageInput) {
+      ageInput.value = this.character.age !== undefined && this.character.age !== null ? this.character.age : 17;
+    }
+
+    const genderInput = document.getElementById("detailsGenderInput");
+    if (genderInput && document.activeElement !== genderInput) {
+      genderInput.value = this.character.gender || "Masculino";
+    }
+
+    // 4. Languages Display
+    const langDisplay = document.getElementById("detailsLanguagesDisplay");
+    if (langDisplay) {
+      const langs = this.character.languages;
+      if (Array.isArray(langs) && langs.length > 0) {
+        langDisplay.textContent = langs.join(", ");
+      } else if (typeof langs === "string" && langs.trim().length > 0) {
+        langDisplay.textContent = langs;
+      } else {
+        langDisplay.textContent = "None selected";
+      }
+    }
+
+    // 5. Notes Textarea
+    const notesArea = document.getElementById("detailsNotesTextarea");
+    if (notesArea && document.activeElement !== notesArea) {
+      notesArea.value = this.character.notes || this.character.backstory || "";
+    }
+
+    // 6. GM Sync
     const detGmEmail = document.getElementById("detGmEmail");
     const detGmStatus = document.getElementById("detGmStatus");
-
-    if (detDeity) detDeity.value = this.character.deity || "";
-    if (detAppearance) detAppearance.value = this.character.appearance || "";
-    if (detBackstory) detBackstory.value = this.character.backstory || "";
-    if (detGmEmail) detGmEmail.value = this.character.gmEmail || this.character.gm_email || "";
+    if (detGmEmail && document.activeElement !== detGmEmail) {
+      detGmEmail.value = this.character.gmEmail || this.character.gm_email || "";
+    }
     if (detGmStatus) {
       const email = this.character.gmEmail || this.character.gm_email;
       if (email && email.trim()) {
@@ -744,14 +795,224 @@ class PathbuilderApp {
     }
   }
 
+  openAvatarModal() {
+    const overlay = document.getElementById("modalAvatarOverlay");
+    if (overlay) overlay.classList.add("active");
+  }
+
+  handleAvatarUpload(event) {
+    const file = event.target?.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      if (e.target?.result && this.character) {
+        this.character.avatar = e.target.result;
+        this.saveCharacterLocal(false);
+        this.renderDetailsTab();
+      }
+    };
+    reader.readAsDataURL(file);
+    const overlay = document.getElementById("modalAvatarOverlay");
+    if (overlay) overlay.classList.remove("active");
+  }
+
+  setAvatarFromUrl() {
+    const input = document.getElementById("avatarUrlInput");
+    const url = input ? input.value.trim() : "";
+    if (url && this.character) {
+      this.character.avatar = url;
+      this.saveCharacterLocal(false);
+      this.renderDetailsTab();
+      const overlay = document.getElementById("modalAvatarOverlay");
+      if (overlay) overlay.classList.remove("active");
+    }
+  }
+
+  clearAvatar() {
+    if (!this.character) return;
+    this.character.avatar = null;
+    this.saveCharacterLocal(false);
+    this.renderDetailsTab();
+  }
+
+  saveNotes() {
+    if (!this.character) return;
+    const notesArea = document.getElementById("detailsNotesTextarea");
+    if (notesArea) {
+      this.character.notes = notesArea.value;
+      this.character.backstory = notesArea.value;
+    }
+    this.saveCharacterLocal(false);
+    
+    const feedback = document.getElementById("saveNotesFeedback");
+    if (feedback) {
+      feedback.style.display = "inline";
+      setTimeout(() => {
+        if (feedback) feedback.style.display = "none";
+      }, 2500);
+    }
+  }
+
+  openDeityModal() {
+    const deities = [
+      { name: "Not set", title: "Nenhuma divindade" },
+      { name: "Abadar", title: "Cidades, Riqueza, Lei, Comércio (LN)" },
+      { name: "Arazni", title: "Sobrevivência, Dignidade Reclamada (N)" },
+      { name: "Asmodeus", title: "Tirania, Orgulho, Contratos (LM)" },
+      { name: "Calistria", title: "Luxúria, Vingança, Truques (CN)" },
+      { name: "Cayden Cailean", title: "Liberdade, Bebida, Bravura (CB)" },
+      { name: "Desna", title: "Sonhos, Estrelas, Viagens, Sorte (CB)" },
+      { name: "Erastil", title: "Família, Caça, Agricultura, Comunidade (LB)" },
+      { name: "Gorum", title: "Guerra, Batalha, Força (CN)" },
+      { name: "Gozreh", title: "Natureza, Mares, Céu, Tempestades (N)" },
+      { name: "Iomedae", title: "Justiça, Honra, Valor, Liderança (LB)" },
+      { name: "Irori", title: "Perfeição, Conhecimento, Iluminação (LN)" },
+      { name: "Lamashtu", title: "Monstros, Pesadelos, Deformidade (CM)" },
+      { name: "Nethys", title: "Magia em todas as suas formas (N)" },
+      { name: "Norgorber", title: "Segredos, Venenos, Ganância, Assassinato (NE)" },
+      { name: "Pharasma", title: "Destino, Morte, Nascimento, Almas (N)" },
+      { name: "Rovagug", title: "Destruição, Ruína, Monstros (CM)" },
+      { name: "Sarenrae", title: "Sol, Cura, Redenção, Honestidade (NB)" },
+      { name: "Shelyn", title: "Arte, Beleza, Amor, Música (NB)" },
+      { name: "Torag", title: "Forja, Proteção, Estratégia, Criação (LB)" },
+      { name: "Urgathoa", title: "Mortos-vivos, Glutonaria, Doenças (NM)" },
+      { name: "Zon-Kuthon", title: "Trevas, Dor, Perda, Tortura (LM)" }
+    ];
+
+    this._deitiesCache = deities;
+    this.filterDeityList("");
+    const overlay = document.getElementById("modalDeityOverlay");
+    if (overlay) overlay.classList.add("active");
+  }
+
+  filterDeityList(query) {
+    const list = document.getElementById("deitySelectList");
+    if (!list) return;
+    const q = (query || "").toLowerCase();
+    const current = (this.character?.deity || "Not set").toLowerCase();
+    const filtered = (this._deitiesCache || []).filter(d => 
+      d.name.toLowerCase().includes(q) || d.title.toLowerCase().includes(q)
+    );
+
+    list.innerHTML = filtered.map(d => {
+      const isSelected = d.name.toLowerCase() === current;
+      return `
+        <div class="pb-picker-item-row ${isSelected ? 'selected' : ''}" onclick="app.selectDeity('${escapeHtml(d.name)}')">
+          <div>
+            <strong style="color: ${isSelected ? 'var(--pb-orange)' : '#fff'}; font-size: 14px;">${escapeHtml(d.name)}</strong>
+            <div style="font-size: 11px; color: #94a3b8;">${escapeHtml(d.title)}</div>
+          </div>
+          ${isSelected ? '<span style="color: var(--pb-orange); font-weight: bold;">✓</span>' : ''}
+        </div>
+      `;
+    }).join('');
+  }
+
+  selectDeity(deityName) {
+    if (!this.character) return;
+    this.character.deity = deityName === "Not set" ? "" : deityName;
+    this.saveCharacterLocal(false);
+    this.renderDetailsTab();
+    const overlay = document.getElementById("modalDeityOverlay");
+    if (overlay) overlay.classList.remove("active");
+  }
+
+  setCustomDeity() {
+    const input = document.getElementById("customDeityInput");
+    const val = input ? input.value.trim() : "";
+    if (val && this.character) {
+      this.character.deity = val;
+      this.saveCharacterLocal(false);
+      this.renderDetailsTab();
+      const overlay = document.getElementById("modalDeityOverlay");
+      if (overlay) overlay.classList.remove("active");
+    }
+  }
+
+  openLanguagesModal() {
+    const standardLangs = [
+      "Comum (Common)", "Anão (Dwarven)", "Élfico (Elven)", "Gnomo (Gnomish)",
+      "Goblin", "Halfling", "Orc (Orcish)", "Dracônico (Draconic)",
+      "Silvestre / Feérico (Sylvan)", "Sombrio (Undercommon)", "Celestial",
+      "Infernal", "Abissal (Abyssal)", "Necril", "Aklo", "Aquano (Thalassic)",
+      "Ignano (Pyric)", "Petrano (Petran)", "Aurano (Auran)", "Utopiano (Utopian)",
+      "Jotun", "Gnoll (Kholo)", "Androide (Androffan)", "Amurrun (Catfolk)", "Ysoki (Ratfolk)"
+    ];
+    this._languagesCache = standardLangs;
+    this.filterLanguagesList("");
+    const overlay = document.getElementById("modalLanguagesOverlay");
+    if (overlay) overlay.classList.add("active");
+  }
+
+  filterLanguagesList(query) {
+    const list = document.getElementById("languagesSelectList");
+    if (!list) return;
+    const q = (query || "").toLowerCase();
+    const currentLangs = Array.isArray(this.character?.languages) 
+      ? this.character.languages.map(l => l.toLowerCase()) 
+      : [];
+
+    const filtered = (this._languagesCache || []).filter(l => l.toLowerCase().includes(q));
+
+    list.innerHTML = filtered.map(l => {
+      const isChecked = currentLangs.some(cl => cl.includes(l.toLowerCase().split(' ')[0]));
+      return `
+        <label class="pb-picker-item-row ${isChecked ? 'selected' : ''}" style="cursor: pointer; padding: 6px 10px;">
+          <span style="font-size: 12px; color: ${isChecked ? 'var(--pb-orange)' : '#fff'}; font-weight: ${isChecked ? 'bold' : 'normal'};">${escapeHtml(l)}</span>
+          <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="app.toggleLanguage('${escapeHtml(l)}', this.checked)" style="accent-color: var(--pb-orange);" />
+        </label>
+      `;
+    }).join('');
+  }
+
+  toggleLanguage(langName, isChecked) {
+    if (!this.character) return;
+    if (!Array.isArray(this.character.languages)) {
+      this.character.languages = [];
+    }
+    const shortName = langName.split(' ')[0];
+    if (isChecked) {
+      if (!this.character.languages.includes(shortName)) {
+        this.character.languages.push(shortName);
+      }
+    } else {
+      this.character.languages = this.character.languages.filter(l => l !== shortName && l !== langName);
+    }
+    this.saveCharacterLocal(false);
+    this.filterLanguagesList(document.getElementById("languagesSearchInput")?.value || "");
+    this.renderDetailsTab();
+  }
+
+  addCustomLanguage() {
+    const input = document.getElementById("customLanguageInput");
+    const val = input ? input.value.trim() : "";
+    if (val && this.character) {
+      if (!Array.isArray(this.character.languages)) {
+        this.character.languages = [];
+      }
+      if (!this.character.languages.includes(val)) {
+        this.character.languages.push(val);
+      }
+      this.saveCharacterLocal(false);
+      if (input) input.value = "";
+      this.filterLanguagesList("");
+      this.renderDetailsTab();
+    }
+  }
+
   updateField(field, value) {
     if (!this.character) return;
     this.character[field] = value;
     if (field === "gmEmail") {
       this.character.gm_email = value;
     }
+    if (field === "notes") {
+      this.character.backstory = value;
+    }
     this.saveCharacterLocal(false);
-    this.renderAll();
+    if (field !== "notes" && field !== "age" && field !== "gender") {
+      this.renderAll();
+    }
   }
 
   // ABA DE LIVRO DE FÓRMULAS (FORMULA BOOK)

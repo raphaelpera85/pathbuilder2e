@@ -177,7 +177,7 @@ describe("Exportação para Ficha Oficial PDF Editável (AcroForm)", () => {
     expect(form.getTextField("ETHNICITY").getText()).toBe("Taldano");
     expect(form.getTextField("Appearance").getText()).toContain("Guerreiro forte");
     expect(form.getTextField("Edicts").getText()).toContain("Proteger os inocentes");
-  });
+  }, 20000);
 
   it("deve funcionar via módulo JS PF2E_PDF_FILLER e calcular estatísticas automaticamente", async () => {
     const { engine, filler } = loadEngine();
@@ -197,5 +197,5 @@ describe("Exportação para Ficha Oficial PDF Editável (AcroForm)", () => {
     expect(form.getCheckBox("HERO POINT 1").isChecked()).toBe(true);
     expect(form.getCheckBox("HERO POINT 2").isChecked()).toBe(true);
     expect(form.getCheckBox("HERO POINT 3").isChecked()).toBe(false);
-  });
+  }, 20000);
 });

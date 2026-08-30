@@ -310,33 +310,91 @@
 
         <!-- ABA 6: DETALHES (DETAILS) -->
         <div id="tab-details" class="tab-panel" role="tabpanel" aria-labelledby="tab-button-details" hidden>
-          <div style="display: flex; flex-direction: column; gap: 14px;">
-            <!-- MESTRE DA MESA (GAME MASTER) -->
-            <div style="background: rgba(249, 115, 22, 0.08); border: 1px solid rgba(249, 115, 22, 0.3); border-radius: 6px; padding: 12px;">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                <label style="font-size: 12px; font-weight: bold; color: var(--pb-orange);">🎲 Mestre da Mesa (Game Master):</label>
-                <span id="detGmStatus" style="font-size: 10px; color: #4ade80; font-weight: bold;"></span>
+          <div class="pb-details-container">
+            <!-- LINHA SUPERIOR: AVATAR + CARDS DE INFORMAÇÃO -->
+            <div class="pb-details-top-row">
+              <!-- AVATAR DO PERSONAGEM -->
+              <div class="pb-details-avatar-box" id="detailsAvatarBox" onclick="app.openAvatarModal()" title="Clique para alterar a imagem do personagem">
+                <div id="detailsAvatarPreview">
+                  <!-- Silhouette SVG ou Imagem -->
+                  <svg viewBox="0 0 24 24" width="76" height="76" fill="#9ca3af">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                  </svg>
+                </div>
+                <button type="button" class="pb-avatar-clear-btn" id="detailsAvatarClearBtn" onclick="event.stopPropagation(); app.clearAvatar()" title="Remover imagem">✕</button>
+                <input type="file" id="detailsAvatarFileInput" accept="image/*" style="display:none" onchange="app.handleAvatarUpload(event)" />
               </div>
-              <p style="font-size: 11px; color: var(--pb-text-muted); margin: 0 0 8px 0; line-height: 1.4;">
-                Indique o e-mail da conta do seu Mestre. Ele terá acesso em tempo real à sua ficha no painel de campanhas e combate:
-              </p>
-              <div style="display: flex; gap: 8px;">
-                <input type="email" id="detGmEmail" class="btn-pb-action" placeholder="email.do.mestre@exemplo.com" style="flex: 1; padding: 6px;" onchange="app.updateField('gmEmail', this.value)">
-                <button class="btn-pb-action" type="button" onclick="app.updateField('gmEmail', document.getElementById('detGmEmail').value)" style="background: var(--pb-orange); color: #000; font-weight: bold;">Salvar Mestre</button>
+
+              <!-- GRID DE INFORMAÇÕES (DEITY, AGE, GENDER, LANGUAGES) -->
+              <div class="pb-details-info-grid">
+                <!-- DEITY CARD -->
+                <div class="pb-details-card" onclick="app.openDeityModal()" title="Clique para escolher a Divindade">
+                  <div class="pb-details-card-label">Deity</div>
+                  <div class="pb-details-card-value" id="detailsDeityDisplay">Not set</div>
+                </div>
+
+                <!-- AGE & GENDER ROW -->
+                <div class="pb-details-row-2col">
+                  <!-- AGE CARD -->
+                  <div class="pb-details-card" onclick="document.getElementById('detailsAgeInput').focus()">
+                    <div class="pb-details-card-label">Age</div>
+                    <input type="text" class="pb-details-card-input" id="detailsAgeInput" value="17" placeholder="17" onchange="app.updateField('age', this.value)" />
+                  </div>
+
+                  <!-- GENDER CARD -->
+                  <div class="pb-details-card" onclick="document.getElementById('detailsGenderInput').focus()">
+                    <div class="pb-details-card-label">Gender</div>
+                    <input type="text" class="pb-details-card-input" id="detailsGenderInput" value="Masculino" placeholder="Masculino" onchange="app.updateField('gender', this.value)" />
+                  </div>
+                </div>
+
+                <!-- LANGUAGES CARD -->
+                <div class="pb-details-card" onclick="app.openLanguagesModal()" title="Clique para escolher os Idiomas">
+                  <div class="pb-details-card-label">Languages</div>
+                  <div class="pb-details-card-value" id="detailsLanguagesDisplay">None selected</div>
+                </div>
               </div>
             </div>
 
-            <div>
-              <label style="font-size: 11px; font-weight: bold; color: var(--pb-text-muted);">Divindade & Éditos:</label>
-              <input type="text" id="detDeity" class="btn-pb-action" style="width: 100%; padding: 6px;" onchange="app.updateField('deity', this.value)">
+            <!-- SEÇÃO INFERIOR: NOTAS COM WATERMARK D20 -->
+            <div class="pb-details-notes-section">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <button type="button" class="pb-details-save-notes-btn" onclick="app.saveNotes()">Save Notes</button>
+                <span id="saveNotesFeedback" style="font-size: 11px; color: #4ade80; font-weight: 600; display: none;">✓ Salvo com sucesso</span>
+              </div>
+
+              <div class="pb-details-notes-box">
+                <div class="pb-details-card-label" style="margin-bottom: 6px;">Notes</div>
+                <textarea id="detailsNotesTextarea" class="pb-details-notes-textarea" placeholder="Notas, histórico, diário de bordo..." oninput="app.updateField('notes', this.value)"></textarea>
+                
+                <!-- D20 ORANGE WATERMARK -->
+                <div class="pb-notes-d20-watermark" aria-hidden="true">
+                  <svg viewBox="0 0 100 100" width="34" height="34" fill="none" stroke="#f97316" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+                    <polygon points="50,6 94,28 94,72 50,94 6,72 6,28" />
+                    <polygon points="50,22 80,70 20,70" />
+                    <line x1="50" y1="6" x2="50" y2="22" />
+                    <line x1="94" y1="28" x2="80" y2="70" />
+                    <line x1="6" y1="28" x2="20" y2="70" />
+                    <line x1="94" y1="72" x2="80" y2="70" />
+                    <line x1="6" y1="72" x2="20" y2="70" />
+                    <line x1="50" y1="94" x2="50" y2="70" />
+                    <line x1="50" y1="6" x2="20" y2="70" />
+                    <line x1="50" y1="6" x2="80" y2="70" />
+                  </svg>
+                </div>
+              </div>
             </div>
-            <div>
-              <label style="font-size: 11px; font-weight: bold; color: var(--pb-text-muted);">Aparência e Vestimentas:</label>
-              <textarea id="detAppearance" class="btn-pb-action" style="width: 100%; height: 80px; padding: 8px; font-family: var(--font-sans);" onchange="app.updateField('appearance', this.value)"></textarea>
-            </div>
-            <div>
-              <label style="font-size: 11px; font-weight: bold; color: var(--pb-text-muted);">Histórico & Motivações (Backstory):</label>
-              <textarea id="detBackstory" class="btn-pb-action" style="width: 100%; height: 160px; padding: 8px; font-family: var(--font-sans);" onchange="app.updateField('backstory', this.value)"></textarea>
+
+            <!-- MESTRE DA MESA (GAME MASTER SYNC) -->
+            <div style="background: rgba(249, 115, 22, 0.06); border: 1px solid rgba(249, 115, 22, 0.25); border-radius: 6px; padding: 10px 14px; margin-top: 4px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                <label style="font-size: 11px; font-weight: bold; color: var(--pb-orange);">🎲 Mestre da Mesa (Game Master Sync):</label>
+                <span id="detGmStatus" style="font-size: 10px; color: #4ade80; font-weight: bold;"></span>
+              </div>
+              <div style="display: flex; gap: 8px;">
+                <input type="email" id="detGmEmail" class="btn-pb-action" placeholder="email.do.mestre@exemplo.com" style="flex: 1; padding: 6px; font-size: 11px;" onchange="app.updateField('gmEmail', this.value)">
+                <button class="btn-pb-action" type="button" onclick="app.updateField('gmEmail', document.getElementById('detGmEmail').value)" style="background: var(--pb-orange); color: #000; font-weight: bold; padding: 4px 12px; font-size: 11px;">Salvar Mestre</button>
+              </div>
             </div>
           </div>
         </div>
@@ -488,6 +546,82 @@
       <div class="pb-modal-footer" style="background: #070a10; border-top: 1px solid #1e293b; padding: 12px 18px; display: flex; gap: 10px;">
         <button class="pb-pill-btn" onclick="document.getElementById('modalSkillTrainingOverlay').classList.remove('active'); app.renderAll();">Finished</button>
         <button class="pb-pill-btn" onclick="app.promptAddLoreSkill()">Lores</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL ESCOLHER DIVINDADE (DEITY PICKER) -->
+  <div class="pb-drawer-overlay" id="modalDeityOverlay">
+    <div class="pb-modal-container" style="max-width: 520px; min-height: 480px; background: #0c121c; border: 1px solid #1e293b; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.9);">
+      <div class="pb-modal-nav" style="background: #070a10; border-bottom: 1px solid #1e293b; padding: 12px 18px;">
+        <h3 style="margin: 0; color: #ffffff; font-size: 18px; font-weight: 900;">Select Deity</h3>
+        <button onclick="document.getElementById('modalDeityOverlay').classList.remove('active')" style="background:none; border:none; color:#94a3b8; cursor:pointer; font-size: 18px;">✕</button>
+      </div>
+      <div style="padding: 12px 18px; border-bottom: 1px solid #1e293b;">
+        <input type="text" id="deitySearchInput" placeholder="Buscar divindade ou filosofia..." style="width: 100%; background: #182234; border: 1px solid #283548; color: #fff; border-radius: 6px; padding: 8px 12px; font-size: 13px;" oninput="app.filterDeityList(this.value)" />
+      </div>
+      <div id="deitySelectList" style="padding: 12px 18px; flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 4px; max-height: 340px;">
+        <!-- Lista de Divindades -->
+      </div>
+      <div class="pb-modal-footer" style="background: #070a10; border-top: 1px solid #1e293b; padding: 12px 18px; display: flex; justify-content: space-between; align-items: center;">
+        <div style="display: flex; gap: 8px; flex: 1; margin-right: 12px;">
+          <input type="text" id="customDeityInput" placeholder="Outra divindade/filosofia..." style="flex: 1; background: #182234; border: 1px solid #283548; color: #fff; border-radius: 6px; padding: 6px 10px; font-size: 12px;" />
+          <button type="button" class="btn-pb-action" onclick="app.setCustomDeity()" style="background: #334155; color: #fff; font-size: 12px; padding: 6px 12px;">Definir</button>
+        </div>
+        <button class="pb-pill-btn" onclick="document.getElementById('modalDeityOverlay').classList.remove('active')">Finished</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL ESCOLHER IDIOMAS (LANGUAGES PICKER) -->
+  <div class="pb-drawer-overlay" id="modalLanguagesOverlay">
+    <div class="pb-modal-container" style="max-width: 540px; min-height: 520px; background: #0c121c; border: 1px solid #1e293b; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.9);">
+      <div class="pb-modal-nav" style="background: #070a10; border-bottom: 1px solid #1e293b; padding: 12px 18px;">
+        <h3 style="margin: 0; color: #ffffff; font-size: 18px; font-weight: 900;">Select Languages</h3>
+        <button onclick="document.getElementById('modalLanguagesOverlay').classList.remove('active')" style="background:none; border:none; color:#94a3b8; cursor:pointer; font-size: 18px;">✕</button>
+      </div>
+      <div style="padding: 12px 18px; border-bottom: 1px solid #1e293b;">
+        <input type="text" id="languagesSearchInput" placeholder="Filtrar idiomas..." style="width: 100%; background: #182234; border: 1px solid #283548; color: #fff; border-radius: 6px; padding: 8px 12px; font-size: 13px;" oninput="app.filterLanguagesList(this.value)" />
+      </div>
+      <div id="languagesSelectList" style="padding: 12px 18px; flex: 1; overflow-y: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; max-height: 320px;">
+        <!-- Lista de Idiomas -->
+      </div>
+      <div class="pb-modal-footer" style="background: #070a10; border-top: 1px solid #1e293b; padding: 12px 18px; display: flex; justify-content: space-between; align-items: center;">
+        <div style="display: flex; gap: 8px; flex: 1; margin-right: 12px;">
+          <input type="text" id="customLanguageInput" placeholder="Outro idioma..." style="flex: 1; background: #182234; border: 1px solid #283548; color: #fff; border-radius: 6px; padding: 6px 10px; font-size: 12px;" />
+          <button type="button" class="btn-pb-action" onclick="app.addCustomLanguage()" style="background: #334155; color: #fff; font-size: 12px; padding: 6px 12px;">Adicionar</button>
+        </div>
+        <button class="pb-pill-btn" onclick="document.getElementById('modalLanguagesOverlay').classList.remove('active'); app.renderDetailsTab();">Finished</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL ESCOLHER AVATAR (PORTRAIT PICKER) -->
+  <div class="pb-drawer-overlay" id="modalAvatarOverlay">
+    <div class="pb-modal-container" style="max-width: 440px; background: #0c121c; border: 1px solid #1e293b; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.9);">
+      <div class="pb-modal-nav" style="background: #070a10; border-bottom: 1px solid #1e293b; padding: 12px 18px;">
+        <h3 style="margin: 0; color: #ffffff; font-size: 18px; font-weight: 900;">Character Portrait</h3>
+        <button onclick="document.getElementById('modalAvatarOverlay').classList.remove('active')" style="background:none; border:none; color:#94a3b8; cursor:pointer; font-size: 18px;">✕</button>
+      </div>
+      <div style="padding: 18px; display: flex; flex-direction: column; gap: 14px;">
+        <button type="button" class="btn-pb-action" onclick="document.getElementById('modalAvatarOverlay').classList.remove('active'); document.getElementById('detailsAvatarFileInput').click();" style="background: #1e293b; border: 1px solid #3b82f6; color: #93c5fd; padding: 10px; font-size: 13px; font-weight: bold; border-radius: 6px;">
+          📁 Fazer Upload do Dispositivo (PNG/JPG/WEBP)
+        </button>
+
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <label style="font-size: 12px; color: #94a3b8; font-weight: 600;">Ou colar URL da Imagem na Web:</label>
+          <div style="display: flex; gap: 8px;">
+            <input type="url" id="avatarUrlInput" placeholder="https://exemplo.com/imagem.png" style="flex: 1; background: #182234; border: 1px solid #283548; color: #fff; border-radius: 6px; padding: 8px 10px; font-size: 12px;" />
+            <button type="button" class="btn-pb-action" onclick="app.setAvatarFromUrl()" style="background: var(--pb-orange); color: #000; font-weight: bold; padding: 8px 14px; font-size: 12px;">Salvar</button>
+          </div>
+        </div>
+
+        <button type="button" class="btn-pb-action" onclick="app.clearAvatar(); document.getElementById('modalAvatarOverlay').classList.remove('active');" style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.4); color: #fca5a5; padding: 8px; font-size: 12px; border-radius: 6px; margin-top: 4px;">
+          🗑️ Remover Imagem Atual
+        </button>
+      </div>
+      <div class="pb-modal-footer" style="background: #070a10; border-top: 1px solid #1e293b; padding: 12px 18px;">
+        <button class="pb-pill-btn" onclick="document.getElementById('modalAvatarOverlay').classList.remove('active')">Fechar</button>
       </div>
     </div>
   </div>
