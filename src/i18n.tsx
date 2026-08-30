@@ -157,9 +157,6 @@ const legacy: Record<string, MessageKey> = {
   "Magias Conhecidas": "knownSpells", "Rituais Aprendidos": "knownRituals",
 };
 
-const originalText = new WeakMap<Text, string>();
-let lastLegacyLocale: Locale | null = null;
-
 export function getStoredLocale(): Locale {
   const value = typeof window !== "undefined" ? window.localStorage?.getItem(LOCALE_KEY) : null;
   return value === "en" || value === "es" || value === "pt-BR" ? value : "pt-BR";
@@ -170,22 +167,13 @@ export function translate(locale: Locale, key: MessageKey): string {
 }
 
 export function applyLegacyTranslations(locale: Locale) {
-  if (lastLegacyLocale === locale) return;
-  lastLegacyLocale = locale;
+  if (typeof document === "undefined") return;
   document.documentElement.lang = locale;
-  document.title = locale === "pt-BR" ? "Pathbuilder 2e Local — Construtor de Personagens PF2e" : locale === "en" ? "Pathbuilder 2e Local — PF2e Character Builder" : "Pathbuilder 2e Local — Creador de Personajes PF2e";
-  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
-  let node: Text | null;
-  while ((node = walker.nextNode() as Text | null)) {
-    const parent = node.parentElement;
-    if (!parent || parent.closest("script, style, textarea, #react-account-root, #react-modal-root, #react-portal-root")) continue;
-    const base = originalText.get(node) ?? node.data;
-    const trimmed = base.trim();
-    const key = legacy[trimmed];
-    if (!key) continue;
-    originalText.set(node, base);
-    node.data = base.replace(trimmed, translate(locale, key));
-  }
+  document.title = locale === "pt-BR"
+    ? "Pathbuilder 2e Local — Construtor de Personagens PF2e"
+    : locale === "en"
+      ? "Pathbuilder 2e Local — PF2e Character Builder"
+      : "Pathbuilder 2e Local — Creador de Personajes PF2e";
 }
 
 interface I18nValue { locale: Locale; setLocale: (locale: Locale) => void; t: (key: MessageKey) => string }

@@ -99,9 +99,10 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
       if (matching.length > 0) rawItems = matching;
     }
     const filtered = rawItems.filter((item) => {
+      if (!item) return false;
       const localizedName = getItemDisplayName(item, locale);
-      const localizedSummary = item.data.summaries?.[locale] ?? item.data.description ?? "";
-      return `${localizedName} ${item.name} ${localizedSummary}`.toLocaleLowerCase(locale).includes(needle);
+      const localizedSummary = item.data?.summaries?.[locale] ?? item.data?.description ?? "";
+      return `${localizedName} ${item.name || ""} ${localizedSummary}`.toLocaleLowerCase(locale).includes(needle);
     });
 
     return filtered.slice().sort((a, b) => {
