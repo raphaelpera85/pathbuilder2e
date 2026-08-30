@@ -37,11 +37,13 @@ describe("proveniência do catálogo legado", () => {
     const legacy = verified.filter((item) => item.ruleset === "legacy");
     const review = records.filter((item) => item.needs_review === true && item.ruleset === "needs_review");
     expect(records.length).toBeGreaterThanOrEqual(216);
-    expect(verified.length).toBeGreaterThanOrEqual(137);
-    expect(remaster.length).toBeGreaterThanOrEqual(101);
+    expect(verified.length).toBeGreaterThanOrEqual(150);
+    expect(remaster.length).toBeGreaterThanOrEqual(120);
     expect(legacy.length).toBeGreaterThanOrEqual(36);
-    expect(review.length).toBeGreaterThanOrEqual(79);
+    expect(review.length).toBeGreaterThanOrEqual(40);
     expect(verified.every((item) => ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
+    expect(catalog.backgrounds.find((item) => item.id === "background.artisan")).toMatchObject({ source: { page: 88 }, ruleset: "remaster", needs_review: false });
+    expect(catalog.backgrounds.find((item) => item.id === "background.acrobat")).toMatchObject({ source: { page: 88 }, ruleset: "remaster", needs_review: false });
     expect(catalog.ancestries.Tripkee).toMatchObject({ source: { page: 32 }, ruleset: "remaster", needs_review: false });
     expect(catalog.versatileHeritages.find((item) => item.id === "heritage.dragonblood")).toMatchObject({ source: { page: 46 }, needs_review: false });
     expect(catalog.classes["Espadachim (Swashbuckler)"]).toMatchObject({ source: { page: 100 }, needs_review: false });
