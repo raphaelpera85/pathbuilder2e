@@ -174,6 +174,7 @@ function LibraryPage() {
   });
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
 
@@ -211,9 +212,18 @@ function LibraryPage() {
     setNotice(null);
     try {
       if (authMode === "signup") {
+        if (password !== confirmPassword) {
+          setError(t("passwordsDontMatch") || "As senhas não coincidem.");
+          setWorking(null);
+          return;
+        }
         const next = await signUp(username, email, password);
-        setSession(next);
-        setNotice("Conta criada com sucesso! Bem-vindo.");
+        if ((next as any)?.pendingConfirmation) {
+          setNotice("Conta criada com sucesso! Enviamos um link de confirmação para o seu e-mail.");
+        } else {
+          setSession(next);
+          setNotice("Conta criada com sucesso! Bem-vindo.");
+        }
       } else {
         const next = await signIn(email, password);
         setSession(next);
@@ -233,6 +243,7 @@ function LibraryPage() {
         }
       }
       setPassword("");
+      setConfirmPassword("");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Falha na autenticação.");
     } finally {
@@ -332,6 +343,20 @@ function LibraryPage() {
                 required
               />
             </label>
+
+            {authMode === "signup" && (
+              <label>
+                {t("confirmPassword") || "Confirmar Senha"}
+                <input
+                  type="password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  placeholder="••••••••"
+                  minLength={6}
+                  required
+                />
+              </label>
+            )}
 
             <label className="auth-remember-label" style={{ display: "flex", alignItems: "center", gap: "8px", cursor: "pointer", fontSize: "13px", color: "var(--pb-text, #cbd5e1)", margin: "4px 0 10px", userSelect: "none" }}>
               <input

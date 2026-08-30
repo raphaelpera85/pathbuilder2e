@@ -41,6 +41,7 @@ export function AccountPortal() {
   });
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const triggerRef = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLElement>(null);
 
@@ -136,13 +137,24 @@ export function AccountPortal() {
     setNotice(null);
     try {
       if (authMode === "signup") {
+        if (password !== confirmPassword) {
+          setError(t("passwordsDontMatch") || "As senhas não coincidem.");
+          setWorking(null);
+          return;
+        }
         const newSession = await signUp(username, email, password);
-        setSession(newSession);
-        setNotice("Conta criada com sucesso! Bem-vindo.");
+        if ((newSession as any)?.pendingConfirmation) {
+          setNotice("Conta criada com sucesso! Enviamos um link de confirmação para o seu e-mail.");
+        } else {
+          setSession(newSession);
+          setNotice("Conta criada com sucesso! Bem-vindo.");
+          setOpen(false);
+        }
       } else {
         const logged = await signIn(email, password);
         setSession(logged);
         setNotice("Conectado com sucesso!");
+        setOpen(false);
       }
       if (rememberMe) {
         try {
@@ -158,7 +170,7 @@ export function AccountPortal() {
         }
       }
       setPassword("");
-      setOpen(false);
+      setConfirmPassword("");
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Não foi possível autenticar.");
     } finally {
@@ -240,6 +252,9 @@ export function AccountPortal() {
                 )}
                 <label>{authMode === "signup" ? t("email") : "Usuário ou E-mail"}<input value={email} onChange={(event) => setEmail(event.target.value)} placeholder={authMode === "signup" ? "seu@email.com" : "seu_usuario ou seu@email.com"} required /></label>
                 <label>{t("password")}<input type="password" value={password} onChange={(event) => setPassword(event.target.value)} minLength={6} placeholder="••••••••" required /></label>
+                {authMode === "signup" && (
+                  <label>{t("confirmPassword")}<input type="password" value={confirmPassword} onChange={(event) => setConfirmPassword(event.target.value)} minLength={6} placeholder="••••••••" required /></label>
+                )}
                 <label style={{ display: "flex", alignItems: "center", gap: "8px", cursor: "pointer", fontSize: "13px", color: "var(--pb-text, #cbd5e1)", margin: "4px 0 10px", userSelect: "none" }}>
                   <input
                     type="checkbox"

@@ -160,7 +160,7 @@ export async function signIn(emailOrUsername: string, password: string): Promise
   return session;
 }
 
-export async function signUp(username: string, email: string, password: string): Promise<AuthSession> {
+export async function signUp(username: string, email: string, password: string): Promise<AuthSession & { pendingConfirmation?: boolean }> {
   const cleanUsername = username.trim();
   const cleanEmail = email.trim().toLowerCase();
 
@@ -175,6 +175,21 @@ export async function signUp(username: string, email: string, password: string):
   }
 
   if (isSupabaseConfigured && supabase) {
+    // 1. Verificar se o nome de usuário já está em uso na tabela profiles
+    try {
+      const { data: existingProfile } = await supabase
+        .from("profiles")
+        .select("id")
+        .ilike("username", cleanUsername)
+        .maybeSingle();
+
+      if (existingProfile) {
+        throw new Error(`O nome de usuário '${cleanUsername}' já está em uso.`);
+      }
+    } catch (err) {
+      if (err instanceof Error && err.message.includes("já está em uso")) throw err;
+    }
+
     const { data, error } = await supabase.auth.signUp({
       email: cleanEmail,
       password,
@@ -183,10 +198,33 @@ export async function signUp(username: string, email: string, password: string):
         emailRedirectTo: `${window.location.origin}/`,
       },
     });
-    if (error) throw error;
-    if (!data.session) {
-      throw new Error("Conta criada com sucesso! Verifique a mensagem de confirmação no seu e-mail.");
+
+    if (error) {
+      const msg = (error.message || "").toLowerCase();
+      if (msg.includes("already registered") || msg.includes("already exists") || msg.includes("unique")) {
+        throw new Error(`O e-mail '${cleanEmail}' já possui uma conta cadastrada.`);
+      }
+      throw error;
     }
+
+    if (data.user && Array.isArray(data.user.identities) && data.user.identities.length === 0) {
+      throw new Error(`O e-mail '${cleanEmail}' já possui uma conta cadastrada.`);
+    }
+
+    if (!data.session) {
+      return {
+        user: {
+          id: data.user?.id || "temp",
+          username: cleanUsername,
+          email: cleanEmail,
+          role: "user",
+          created_at: new Date().toISOString(),
+        },
+        expires_at: 0,
+        pendingConfirmation: true,
+      };
+    }
+
     const session = await getCurrentSession();
     if (session) notifyAuthChange(session);
     return session!;
@@ -195,10 +233,10 @@ export async function signUp(username: string, email: string, password: string):
   // Cadastro Local
   const users = getStoredLocalUsers();
   if (users.some((u) => u.username.toLowerCase() === cleanUsername.toLowerCase())) {
-    throw new Error(`O usuário '${cleanUsername}' já está em uso.`);
+    throw new Error(`O nome de usuário '${cleanUsername}' já está em uso.`);
   }
   if (users.some((u) => u.email.toLowerCase() === cleanEmail)) {
-    throw new Error(`O e-mail '${cleanEmail}' já possui uma conta.`);
+    throw new Error(`O e-mail '${cleanEmail}' já possui uma conta cadastrada.`);
   }
 
   const salt = crypto?.randomUUID ? crypto.randomUUID() : String(Math.random());
