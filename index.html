@@ -72,6 +72,22 @@
     </div>
   </div>
 
+  <!-- SELETOR RESPONSIVO DE SEÇÕES (MOBILE & TABLET: SEM SCROLL HORIZONTAL) -->
+  <nav class="pb-mobile-view-nav" id="mobileViewNav" aria-label="Navegação de seções da ficha">
+    <button type="button" class="pb-mobile-view-btn" id="btnViewPlan" onclick="app.switchMobileView('plan')">
+      <span>📜</span>
+      <span>Plano (Níveis)</span>
+    </button>
+    <button type="button" class="pb-mobile-view-btn active" id="btnViewStats" onclick="app.switchMobileView('stats')">
+      <span>🛡️</span>
+      <span>Ficha & Perícias</span>
+    </button>
+    <button type="button" class="pb-mobile-view-btn" id="btnViewContent" onclick="app.switchMobileView('content')">
+      <span>⚔️</span>
+      <span>Ações & Abas</span>
+    </button>
+  </nav>
+
   <!-- WORKSPACE PRINCIPAL (3 COLUNAS) -->
   <div class="pb-workspace" id="legacy-builder-root">
 
@@ -81,7 +97,7 @@
     </aside>
 
     <!-- 2. COLUNA CENTRAL: DASHBOARD DE ESTATÍSTICAS & PERÍCIAS -->
-    <aside class="pb-stats-col">
+    <aside class="pb-stats-col" id="statsCol">
 
       <!-- CABEÇALHO DO PERSONAGEM (ROW 1) -->
       <div class="pb-header-row">
@@ -198,7 +214,7 @@
     </aside>
 
     <!-- 3. COLUNA DIREITA: ABAS PRINCIPAIS DE CONTEÚDO -->
-    <main class="pb-content-col">
+    <main class="pb-content-col" id="contentCol">
 
       <!-- QUICK ACTION BAR -->
       <div class="quick-action-bar">

@@ -25,7 +25,24 @@
   overflow-x: auto;
   background: rgba(11, 15, 23, .96);
   border-bottom: 1px solid var(--pb-border);
-  scrollbar-width: thin;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.portal-nav::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .portal-nav {
+    justify-content: flex-start;
+    padding: 5px 8px;
+    gap: 4px;
+  }
+  .portal-nav a {
+    padding: 5px 9px;
+    font-size: 11px;
+    gap: 5px;
+  }
 }
 
 .portal-nav a {

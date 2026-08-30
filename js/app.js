@@ -42,6 +42,7 @@ class PathbuilderApp {
     this.currentPickerType = null;
     this.selectedPickerItem = null;
     this.activeModalTab = "All";
+    this.mobileActiveView = "stats";
     this.init();
   }
 
@@ -1148,10 +1149,49 @@ class PathbuilderApp {
   }
 
   togglePlanTree() {
+    if (typeof window !== "undefined" && window.innerWidth <= 1080) {
+      this.switchMobileView("plan");
+      return;
+    }
     const tree = document.getElementById("planTreeCol");
     const btn = document.getElementById("btnTogglePlan");
+    if (!tree) return;
     tree.classList.toggle("collapsed");
-    btn.innerText = tree.classList.contains("collapsed") ? "Mostrar Plano" : "Ocultar Plano";
+    if (btn) {
+      btn.innerText = tree.classList.contains("collapsed") ? "Mostrar Plano" : "Ocultar Plano";
+    }
+  }
+
+  // SELETOR RESPONSIVO DE SEÇÕES (SEM SCROLL HORIZONTAL)
+  switchMobileView(view) {
+    this.mobileActiveView = view || "stats";
+    const btnPlan = document.getElementById("btnViewPlan");
+    const btnStats = document.getElementById("btnViewStats");
+    const btnContent = document.getElementById("btnViewContent");
+
+    const colPlan = document.getElementById("planTreeCol");
+    const colStats = document.getElementById("statsCol");
+    const colContent = document.getElementById("contentCol");
+
+    [btnPlan, btnStats, btnContent].forEach(b => b?.classList.remove("active"));
+
+    if (view === "plan") {
+      btnPlan?.classList.add("active");
+      if (colPlan) { colPlan.classList.remove("mobile-hidden"); colPlan.classList.add("mobile-visible"); }
+      if (colStats) { colStats.classList.add("mobile-hidden"); colStats.classList.remove("mobile-visible"); }
+      if (colContent) { colContent.classList.add("mobile-hidden"); colContent.classList.remove("mobile-visible"); }
+    } else if (view === "content") {
+      btnContent?.classList.add("active");
+      if (colPlan) { colPlan.classList.add("mobile-hidden"); colPlan.classList.remove("mobile-visible"); }
+      if (colStats) { colStats.classList.add("mobile-hidden"); colStats.classList.remove("mobile-visible"); }
+      if (colContent) { colContent.classList.remove("mobile-hidden"); colContent.classList.add("mobile-visible"); }
+    } else {
+      // stats (padrão)
+      btnStats?.classList.add("active");
+      if (colPlan) { colPlan.classList.add("mobile-hidden"); colPlan.classList.remove("mobile-visible"); }
+      if (colStats) { colStats.classList.remove("mobile-hidden"); colStats.classList.add("mobile-visible"); }
+      if (colContent) { colContent.classList.add("mobile-hidden"); colContent.classList.remove("mobile-visible"); }
+    }
   }
 
   // TABS NAVIGATION
