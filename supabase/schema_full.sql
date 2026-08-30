@@ -7,10 +7,13 @@
 create table if not exists public.profiles (
   id uuid primary key references auth.users(id) on delete cascade,
   username text not null check (username ~ '^[a-zA-Z0-9_]{3,32}$'),
+  email text,
   role text not null default 'user' check (role in ('user', 'admin')),
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
+
+alter table public.profiles add column if not exists email text;
 
 create unique index if not exists profiles_username_lower_unique
   on public.profiles (lower(username));
@@ -108,9 +111,9 @@ begin
     else 'user'
   end;
 
-  insert into public.profiles (id, username, role)
-  values (new.id, initial_username, initial_role)
-  on conflict (id) do nothing;
+  insert into public.profiles (id, username, role, email)
+  values (new.id, initial_username, initial_role, new.email)
+  on conflict (id) do update set email = excluded.email, username = excluded.username;
   return new;
 end;
 $$;

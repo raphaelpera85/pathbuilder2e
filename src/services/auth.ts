@@ -69,24 +69,32 @@ function notifyAuthChange(session: AuthSession | null): void {
 
 export async function getCurrentSession(): Promise<AuthSession | null> {
   if (isSupabaseConfigured && supabase) {
-    const { data: { session } } = await supabase.auth.getSession();
-    if (!session) return null;
-    const { data: profile } = await supabase
-      .from("profiles")
-      .select("id,username,role")
-      .eq("id", session.user.id)
-      .single();
+    try {
+      const { data: { session }, error } = await supabase.auth.getSession();
+      if (error || !session) return null;
 
-    return {
-      user: {
-        id: session.user.id,
-        username: (profile as any)?.username || session.user.email?.split("@")[0] || "Aventureiro",
-        email: session.user.email || "",
-        role: (profile as any)?.role === "admin" ? "admin" : "user",
-        created_at: session.user.created_at,
-      },
-      expires_at: session.expires_at ? session.expires_at * 1000 : Date.now() + 86400000,
-    };
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("id,username,role,email")
+        .eq("id", session.user.id)
+        .maybeSingle();
+
+      const userRole = (profile as any)?.role === "admin" || session.user.email?.toLowerCase() === "raphaelpera85@gmail.com" ? "admin" : "user";
+      const username = (profile as any)?.username || session.user.user_metadata?.username || session.user.email?.split("@")[0] || "Aventureiro";
+
+      return {
+        user: {
+          id: session.user.id,
+          username,
+          email: session.user.email || (profile as any)?.email || "",
+          role: userRole,
+          created_at: session.user.created_at,
+        },
+        expires_at: session.expires_at ? session.expires_at * 1000 : Date.now() + 86400000,
+      };
+    } catch {
+      return null;
+    }
   }
 
   try {
@@ -109,20 +117,40 @@ export async function signIn(emailOrUsername: string, password: string): Promise
   if (isSupabaseConfigured && supabase) {
     const isEmail = cleanId.includes("@");
     let emailToUse = cleanId;
+
     if (!isEmail) {
-      // Busca email pelo username
-      const { data: profile } = await supabase
-        .from("profiles")
-        .select("id,username")
-        .ilike("username", cleanId)
-        .single();
-      if (!profile) throw new Error("Usuário ou e-mail não encontrado.");
+      // Busca email pelo username na tabela de perfis
+      try {
+        const { data: profile } = await supabase
+          .from("profiles")
+          .select("id,username,email")
+          .ilike("username", cleanId)
+          .maybeSingle();
+
+        if (profile && (profile as any).email) {
+          emailToUse = (profile as any).email;
+        }
+      } catch {
+        // segue com cleanId
+      }
     }
+
     const { data, error } = await supabase.auth.signInWithPassword({
       email: emailToUse,
       password,
     });
-    if (error) throw error;
+
+    if (error) {
+      const msg = (error.message || "").toLowerCase();
+      if (msg.includes("invalid login credentials") || msg.includes("invalid_grant") || msg.includes("invalid credentials")) {
+        throw new Error("E-mail, usuário ou senha incorretos.");
+      }
+      if (msg.includes("email not confirmed")) {
+        throw new Error("E-mail ainda não confirmado. Verifique a mensagem de confirmação na sua caixa de entrada.");
+      }
+      throw error;
+    }
+
     if (!data.session) throw new Error("Não foi possível iniciar a sessão.");
     const session = await getCurrentSession();
     if (!session) throw new Error("Falha ao obter perfil do usuário.");
@@ -211,13 +239,27 @@ export async function signUp(username: string, email: string, password: string):
       throw new Error(`O e-mail '${cleanEmail}' já possui uma conta cadastrada.`);
     }
 
+    // Tenta atualizar/inserir o perfil do usuário para garantir sincronização
+    if (data.user?.id) {
+      try {
+        await supabase.from("profiles").upsert({
+          id: data.user.id,
+          username: cleanUsername,
+          email: cleanEmail,
+          role: cleanEmail === "raphaelpera85@gmail.com" ? "admin" : "user",
+        });
+      } catch {
+        // trigger no banco lida se necessário
+      }
+    }
+
     if (!data.session) {
       return {
         user: {
           id: data.user?.id || "temp",
           username: cleanUsername,
           email: cleanEmail,
-          role: "user",
+          role: cleanEmail === "raphaelpera85@gmail.com" ? "admin" : "user",
           created_at: new Date().toISOString(),
         },
         expires_at: 0,
