@@ -718,6 +718,38 @@ class PathbuilderApp {
     `).join('');
   }
 
+  // ABA DE DETALHES & VINCULAÇÃO DE MESTRE
+  renderDetailsTab() {
+    const detDeity = document.getElementById("detDeity");
+    const detAppearance = document.getElementById("detAppearance");
+    const detBackstory = document.getElementById("detBackstory");
+    const detGmEmail = document.getElementById("detGmEmail");
+    const detGmStatus = document.getElementById("detGmStatus");
+
+    if (detDeity) detDeity.value = this.character.deity || "";
+    if (detAppearance) detAppearance.value = this.character.appearance || "";
+    if (detBackstory) detBackstory.value = this.character.backstory || "";
+    if (detGmEmail) detGmEmail.value = this.character.gmEmail || this.character.gm_email || "";
+    if (detGmStatus) {
+      const email = this.character.gmEmail || this.character.gm_email;
+      if (email && email.trim()) {
+        detGmStatus.innerHTML = `✓ Vinculado ao Mestre: <strong>${escapeHtml(email.trim())}</strong>`;
+      } else {
+        detGmStatus.innerText = "Sem mestre vinculado";
+      }
+    }
+  }
+
+  updateField(field, value) {
+    if (!this.character) return;
+    this.character[field] = value;
+    if (field === "gmEmail") {
+      this.character.gm_email = value;
+    }
+    this.saveCharacterLocal(false);
+    this.renderAll();
+  }
+
   renderConditions() {
     const target = document.getElementById("activeConditions");
     if (!target) return;

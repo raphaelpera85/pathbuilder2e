@@ -49,6 +49,7 @@
       <div class="drawer-group">
         <div class="drawer-group-title">Personagem & Biblioteca</div>
         <div class="drawer-item" style="color: #fb923c; font-weight: bold;" onclick="window.location.hash='#/library'; app.toggleDrawer();">🛡️ Meus Personagens (Biblioteca)</div>
+        <div class="drawer-item" style="color: #c084fc; font-weight: bold;" onclick="window.location.hash='#/campaigns'; app.toggleDrawer();">🏰 Campanhas do Mestre (Mesas de RPG)</div>
         <div class="drawer-item" onclick="app.createNewCharacter(); app.toggleDrawer(); window.location.hash='#/builder';">➕ Novo Personagem em Branco</div>
         <div class="drawer-item" onclick="app.saveCharacterLocal(true); app.toggleDrawer();">💾 Salvar Personagem (Local)</div>
       </div>
@@ -292,7 +293,22 @@
 
         <!-- ABA 6: DETALHES (DETAILS) -->
         <div id="tab-details" class="tab-panel" role="tabpanel" aria-labelledby="tab-button-details" hidden>
-          <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <!-- MESTRE DA MESA (GAME MASTER) -->
+            <div style="background: rgba(249, 115, 22, 0.08); border: 1px solid rgba(249, 115, 22, 0.3); border-radius: 6px; padding: 12px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <label style="font-size: 12px; font-weight: bold; color: var(--pb-orange);">🎲 Mestre da Mesa (Game Master):</label>
+                <span id="detGmStatus" style="font-size: 10px; color: #4ade80; font-weight: bold;"></span>
+              </div>
+              <p style="font-size: 11px; color: var(--pb-text-muted); margin: 0 0 8px 0; line-height: 1.4;">
+                Indique o e-mail da conta do seu Mestre. Ele terá acesso em tempo real à sua ficha no painel de campanhas e combate:
+              </p>
+              <div style="display: flex; gap: 8px;">
+                <input type="email" id="detGmEmail" class="btn-pb-action" placeholder="email.do.mestre@exemplo.com" style="flex: 1; padding: 6px;" onchange="app.updateField('gmEmail', this.value)">
+                <button class="btn-pb-action" type="button" onclick="app.updateField('gmEmail', document.getElementById('detGmEmail').value)" style="background: var(--pb-orange); color: #000; font-weight: bold;">Salvar Mestre</button>
+              </div>
+            </div>
+
             <div>
               <label style="font-size: 11px; font-weight: bold; color: var(--pb-text-muted);">Divindade & Éditos:</label>
               <input type="text" id="detDeity" class="btn-pb-action" style="width: 100%; padding: 6px;" onchange="app.updateField('deity', this.value)">

@@ -16,13 +16,15 @@ import {
   listCharacters,
   type CloudCharacter,
 } from "./services/characters";
+import { CampaignsPage } from "./CampaignsPage";
 import "./portal.css";
 
-type PortalRoute = "builder" | "compendium" | "rules" | "library" | "privacy" | "admin";
+type PortalRoute = "builder" | "compendium" | "rules" | "library" | "campaigns" | "privacy" | "admin";
 
-const routes: PortalRoute[] = ["builder", "compendium", "rules", "library", "privacy", "admin"];
+const routes: PortalRoute[] = ["builder", "compendium", "rules", "library", "campaigns", "privacy", "admin"];
 const navItems: Array<{ route: PortalRoute; label: MessageKey; icon: string }> = [
   { route: "library", label: "navLibrary", icon: "🛡" },
+  { route: "campaigns", label: "navCampaigns", icon: "🏰" },
   { route: "builder", label: "navBuilder", icon: "⚔" },
   { route: "compendium", label: "navCompendium", icon: "📖" },
   { route: "rules", label: "navRules", icon: "📜" },
@@ -497,6 +499,7 @@ export function PortalPages() {
       {navItems.filter((item) => item.route !== "admin" || account.isAdmin).map((item) => <a key={item.route} href={`#/${item.route}`} aria-current={route === item.route ? "page" : undefined}><span aria-hidden="true">{item.icon}</span>{t(item.label)}</a>)}
     </nav>
     {route === "library" && <LibraryPage />}
+    {route === "campaigns" && <CampaignsPage />}
     {route === "compendium" && <CatalogPage />}
     {route === "rules" && <RulesPage />}
     {route === "privacy" && <PrivacyPage />}
