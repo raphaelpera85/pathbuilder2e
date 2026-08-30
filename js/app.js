@@ -1158,7 +1158,68 @@ class PathbuilderApp {
     return PF2E_DATA.backgrounds.map(b => ({ name: b.name, type: "Geral", data: b }));
   }
 
-  applyPickerSelection(type, item, options) {
+  parsePriceToCopper(price) {
+    if (!price && price !== 0) return 0;
+    if (typeof price === "number") return Math.round(price * 100);
+    if (typeof price === "object") {
+      const pp = Number(price.pp || price.pl || 0);
+      const gp = Number(price.gp || price.po || 0);
+      const sp = Number(price.sp || 0);
+      const cp = Number(price.cp || price.pc || 0);
+      return (pp * 1000) + (gp * 100) + (sp * 10) + cp;
+    }
+    const str = String(price).toLowerCase().trim();
+    if (!str || str === "—" || str === "-" || str === "0") return 0;
+    let totalCp = 0;
+    let matched = false;
+
+    const plMatch = str.match(/(\d+(?:\.\d+)?)\s*(?:pl|platina|platinum)\b/i);
+    if (plMatch) { totalCp += Math.round(parseFloat(plMatch[1]) * 1000); matched = true; }
+    const gpMatch = str.match(/(\d+(?:\.\d+)?)\s*(?:gp|po|ouro|gold)\b/i);
+    if (gpMatch) { totalCp += Math.round(parseFloat(gpMatch[1]) * 100); matched = true; }
+    const spMatch = str.match(/(\d+(?:\.\d+)?)\s*(?:sp|prata|silver)\b/i);
+    if (spMatch) { totalCp += Math.round(parseFloat(spMatch[1]) * 10); matched = true; }
+    else if (!plMatch && /\b\d+(?:\.\d+)?\s*pp\b/i.test(str)) {
+      const ppPt = str.match(/(\d+(?:\.\d+)?)\s*pp\b/i);
+      if (ppPt) { totalCp += Math.round(parseFloat(ppPt[1]) * 10); matched = true; }
+    }
+    const cpMatch = str.match(/(\d+(?:\.\d+)?)\s*(?:cp|pc|cobre|copper)\b/i);
+    if (cpMatch) { totalCp += Math.round(parseFloat(cpMatch[1])); matched = true; }
+
+    if (!matched) {
+      const num = parseFloat(str.replace(/[^\d.]/g, ""));
+      if (!isNaN(num)) totalCp = Math.round(num * 100);
+    }
+    return totalCp;
+  }
+
+  getCharacterTotalCopper() {
+    const coins = this.character?.coins || { pp: 0, gp: 0, sp: 0, cp: 0 };
+    return ((coins.pp || 0) * 1000) + ((coins.gp || 0) * 100) + ((coins.sp || 0) * 10) + (coins.cp || 0);
+  }
+
+  canCharacterAfford(price, qty = 1) {
+    const cost = this.parsePriceToCopper(price) * Math.max(1, qty);
+    return this.getCharacterTotalCopper() >= cost;
+  }
+
+  deductCharacterPrice(price, qty = 1) {
+    const cost = this.parsePriceToCopper(price) * Math.max(1, qty);
+    let current = this.getCharacterTotalCopper();
+    if (current >= cost) {
+      current -= cost;
+      const pp = Math.floor(current / 1000);
+      const rem1 = current % 1000;
+      const gp = Math.floor(rem1 / 100);
+      const rem2 = rem1 % 100;
+      const sp = Math.floor(rem2 / 10);
+      const cp = rem2 % 10;
+      if (!this.character.coins) this.character.coins = {};
+      this.character.coins = { pp, gp, sp, cp };
+    }
+  }
+
+  applyPickerSelection(type, item, options, deductCoins = false) {
     if (!item) return;
     const changesMaximumHp = type === "ancestry" || type === "class";
     const previousMaxHp = this.calc?.maxHp ?? PF2E_ENGINE.calculateCharacterStats(this.character).maxHp;
@@ -1210,6 +1271,13 @@ class PathbuilderApp {
     } else if (type === "buff") {
       if (!this.character.buffs) this.character.buffs = [];
       this.character.buffs.push({ ...item.data });
+    } else if (type === "item" || type === "gear") {
+      if (!this.character.inventory) this.character.inventory = [];
+      this.character.inventory.push({ ...item.data, name: item.name, qty: 1 });
+    }
+
+    if (deductCoins && (item.data?.price || item.price)) {
+      this.deductCharacterPrice(item.data?.price || item.price);
     }
 
     if (changesMaximumHp) this.reconcileCurrentHp(previousMaxHp, previousCurrentHp);

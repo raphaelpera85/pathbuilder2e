@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState, useCallback, useRef } from "react";
 import { PF2E_ITEMS_CATALOG, type ItemDefinition } from "./data/equipmentData";
 import { useI18n, getItemDisplayName, type Locale } from "./i18n";
+import { canAffordPrice, deductCoins as deductPurseCoins, coinsToCopper } from "./utils/economy";
 import "./itemPicker.css";
 
 interface ItemPickerState {
@@ -97,22 +98,8 @@ export function ItemPickerModal({ onBridgeReady }: { onBridgeReady?: (bridge: { 
         });
         if (deductCoins && selectedItem.price) {
           const charCoins = app.character.coins || { gp: 0, sp: 0, cp: 0, pp: 0 };
-          const costInCp = ((selectedItem.price.pp || 0) * 1000) +
-                           ((selectedItem.price.gp || 0) * 100) +
-                           ((selectedItem.price.sp || 0) * 10) +
-                           (selectedItem.price.cp || 0);
-          const totalCostCp = costInCp * itemData.qty;
-          let currentCp = ((charCoins.pp || 0) * 1000) +
-                          ((charCoins.gp || 0) * 100) +
-                          ((charCoins.sp || 0) * 10) +
-                          (charCoins.cp || 0);
-          if (currentCp >= totalCostCp) {
-            currentCp -= totalCostCp;
-            charCoins.gp = Math.floor(currentCp / 100);
-            const rem = currentCp % 100;
-            charCoins.sp = Math.floor(rem / 10);
-            charCoins.cp = rem % 10;
-            app.character.coins = charCoins;
+          if (canAffordPrice(charCoins, selectedItem.price, itemData.qty)) {
+            app.character.coins = deductPurseCoins(charCoins, selectedItem.price, itemData.qty);
           }
         }
         app.renderAll();
@@ -402,31 +389,43 @@ export function ItemPickerModal({ onBridgeReady }: { onBridgeReady?: (bridge: { 
         </div>
 
         {/* Footer Bar */}
-        <footer className="item-picker-footer">
-          <div className="character-wallet">
-            <span className="wallet-label">Bolsa de Moedas:</span>
-            <span className="coin-tag pp">⚪ {coins.pp || 0} PP</span>
-            <span className="coin-tag gp">🟡 {coins.gp || 0} PO</span>
-            <span className="coin-tag sp">⚪ {coins.sp || 0} PP</span>
-            <span className="coin-tag cp">🟤 {coins.cp || 0} PC</span>
-          </div>
+        {(() => {
+          const coins = (window as any).app?.character?.coins || { pp: 0, gp: 15, sp: 0, cp: 0 };
+          const canAfford = canAffordPrice(coins, selectedItem?.price, quantity);
+          const priceText = formatPrice(selectedItem?.price);
+          return (
+            <footer className="item-picker-footer">
+              <div className="character-wallet">
+                <span className="wallet-label">Bolsa de Moedas:</span>
+                <span className="coin-tag pp">⚪ {coins.pp || 0} PP</span>
+                <span className="coin-tag gp">🟡 {coins.gp || 0} PO</span>
+                <span className="coin-tag sp">⚪ {coins.sp || 0} PP</span>
+                <span className="coin-tag cp">🟤 {coins.cp || 0} PC</span>
+              </div>
 
-          <div className="picker-footer-actions">
-            <button className="btn-secondary" onClick={() => setModalState({ isOpen: false })}>
-              Fechar
-            </button>
-            {mainTab !== "custom" && (
-              <>
-                <button className="btn-add-free" onClick={() => handleAddOrBuy(false)}>
-                  Adicionar Grátis
+              <div className="picker-footer-actions">
+                <button className="btn-secondary" onClick={() => setModalState({ isOpen: false })}>
+                  Fechar
                 </button>
-                <button className="btn-buy-action" onClick={() => handleAddOrBuy(true)}>
-                  🛒 Comprar (Deduzir Moedas)
-                </button>
-              </>
-            )}
-          </div>
-        </footer>
+                {mainTab !== "custom" && (
+                  <>
+                    <button className="btn-add-free" onClick={() => handleAddOrBuy(false)}>
+                      Adicionar Grátis
+                    </button>
+                    <button
+                      className={`btn-buy-action ${!canAfford ? "disabled-funds" : ""}`}
+                      onClick={() => handleAddOrBuy(true)}
+                      disabled={!canAfford}
+                      title={canAfford ? `Comprar por ${priceText} e deduzir moedas` : `Moedas insuficientes! Custo: ${priceText}`}
+                    >
+                      🛒 Comprar (Deduzir Moedas) — {priceText}
+                    </button>
+                  </>
+                )}
+              </div>
+            </footer>
+          );
+        })()}
       </div>
     </div>
   );

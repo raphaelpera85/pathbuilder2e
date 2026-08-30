@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { PickerBridge, PickerItem, PickerSelectionOption, PickerType } from "./types";
 import { useI18n, getItemDisplayName, type MessageKey } from "./i18n";
+import { coinsToCopper, parsePriceToCopper, canAffordPrice, formatCopperToString } from "./utils/economy";
 
 const pickerLabelKeys: Record<PickerType, MessageKey> = {
   ancestry: "ancestries", class: "classes", background: "backgrounds", weapon: "weapons", armor: "armors",
@@ -11,6 +12,75 @@ interface PickerModalProps {
   onBridgeReady?: (bridge: PickerBridge) => void;
 }
 
+export function getWeaponProficiencyRank(character: any, item: any): "U" | "T" | "E" | "M" | "L" {
+  if (!character) return "T";
+  const cat = String(item?.data?.category || item?.category || "").toLowerCase();
+
+  // Custom weapon proficiencies on character
+  const customProf = character.weaponProficiencies;
+  if (customProf) {
+    if (cat.includes("simples") || cat.includes("simple")) {
+      const r = customProf.Simples || customProf.simple;
+      if (r) return rankToInitial(r);
+    }
+    if (cat.includes("marcial") || cat.includes("martial")) {
+      const r = customProf.Marcial || customProf.martial;
+      if (r) return rankToInitial(r);
+    }
+    if (cat.includes("avan") || cat.includes("advanced")) {
+      const r = customProf.Avançada || customProf.advanced;
+      if (r) return rankToInitial(r);
+    }
+    if (cat.includes("desarmad") || cat.includes("unarmed")) {
+      const r = customProf.Desarmado || customProf.unarmed;
+      if (r) return rankToInitial(r);
+    }
+  }
+
+  // Class default proficiencies
+  const className = String(character.class || "").toLowerCase();
+  if (cat.includes("simples") || cat.includes("simple")) {
+    if (className.includes("guerreiro") || className.includes("fighter")) return "E";
+    return "T";
+  }
+  if (cat.includes("desarmad") || cat.includes("unarmed")) {
+    if (className.includes("monge") || className.includes("monk")) return "E";
+    if (className.includes("guerreiro") || className.includes("fighter")) return "E";
+    return "T";
+  }
+  if (cat.includes("marcial") || cat.includes("martial")) {
+    if (
+      className.includes("mago") ||
+      className.includes("wizard") ||
+      className.includes("feiticeir") ||
+      className.includes("sorcerer") ||
+      className.includes("brux") ||
+      className.includes("witch") ||
+      className.includes("clausur") ||
+      className.includes("cloistered")
+    ) {
+      return "U";
+    }
+    if (className.includes("guerreiro") || className.includes("fighter")) return "E";
+    return "T";
+  }
+  if (cat.includes("avan") || cat.includes("advanced")) {
+    if (className.includes("guerreiro") || className.includes("fighter")) return "T";
+    return "U";
+  }
+
+  return "T";
+}
+
+function rankToInitial(rank: string): "U" | "T" | "E" | "M" | "L" {
+  const norm = String(rank).toUpperCase().trim();
+  if (norm.startsWith("L") || norm.includes("LENDÁRIO") || norm.includes("LEGENDARY")) return "L";
+  if (norm.startsWith("M") || norm.includes("MESTRE") || norm.includes("MASTER")) return "M";
+  if (norm.startsWith("E") || norm.includes("ESPECIALISTA") || norm.includes("EXPERT")) return "E";
+  if (norm.startsWith("T") || norm.includes("TREINADO") || norm.includes("TRAINED")) return "T";
+  return "U";
+}
+
 export function PickerModal({ onBridgeReady }: PickerModalProps) {
   const { locale, t } = useI18n();
   const [pickerType, setPickerType] = useState<PickerType | null>(null);
@@ -19,9 +89,27 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [optionSelections, setOptionSelections] = useState<Record<string, string>>({});
   const [activeCategoryTab, setActiveCategoryTab] = useState<string>("All");
+  const [activeSubTab, setActiveSubTab] = useState<string>("Standard");
+
+  // Custom weapon form state
+  const [customName, setCustomName] = useState("");
+  const [customCategory, setCustomCategory] = useState("Marcial");
+  const [customDamage, setCustomDamage] = useState("1d8");
+  const [customDamageType, setCustomDamageType] = useState("Cortante");
+  const [customBulk, setCustomBulk] = useState("1");
+  const [customHands, setCustomHands] = useState("1");
+  const [customPrice, setCustomPrice] = useState("2 PO");
+  const [customTraits, setCustomTraits] = useState("");
+  const [customDesc, setCustomDesc] = useState("");
 
   const categoryTabs = useMemo(() => {
     if (!pickerType) return [];
+    if (pickerType === "weapon") {
+      return ["All", "Simple", "Martial", "Advanced", "Unarmed", "Proficient"];
+    }
+    if (pickerType === "armor") {
+      return ["All", "Unarmored", "Light", "Medium", "Heavy", "Shields"];
+    }
     if (pickerType === "feat") {
       const fType = pickerOptions?.filterType?.toLowerCase() || "";
       if (fType.includes("ancestry")) {
@@ -35,11 +123,19 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
     return [t(pickerLabelKeys[pickerType])];
   }, [pickerType, pickerOptions, t]);
 
+  const subTabs = useMemo(() => {
+    if (pickerType === "weapon" || pickerType === "armor" || pickerType === "item") {
+      return ["Standard", "Magic", "Custom"];
+    }
+    return [];
+  }, [pickerType]);
+
   useEffect(() => {
     if (categoryTabs.length > 0) {
       setActiveCategoryTab(categoryTabs[0]);
     }
-  }, [categoryTabs]);
+    setActiveSubTab("Standard");
+  }, [categoryTabs, pickerType]);
 
   const searchRef = useRef<HTMLInputElement>(null);
   const dialogRef = useRef<HTMLElement>(null);
@@ -54,6 +150,7 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
       setQuery("");
       setSelectedIndex(0);
       setOptionSelections({});
+      setActiveSubTab("Standard");
     },
     close() {
       setPickerType(null);
@@ -109,10 +206,15 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
     };
   }, [bridge, pickerType]);
 
+  const character = window.app?.character;
+  const characterCoins = character?.coins || { pp: 0, gp: 15, sp: 0, cp: 0 };
+  const isPurchasable = pickerType === "weapon" || pickerType === "armor" || pickerType === "item";
+
   const items = useMemo(() => {
     if (!pickerType || !window.app) return [];
     const needle = query.toLocaleLowerCase(locale);
     let rawItems = window.app.getPickerItems(pickerType);
+
     if (pickerOptions?.filterType && pickerType === "feat") {
       const matchType = (item: PickerItem) => {
         const itemType = String(item.type || item.data?.type || "").toLowerCase();
@@ -121,6 +223,40 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
       const matching = rawItems.filter(matchType);
       if (matching.length > 0) rawItems = matching;
     }
+
+    // Category Tabs Filtering for Weapons
+    if (pickerType === "weapon") {
+      if (activeCategoryTab === "Simple") {
+        rawItems = rawItems.filter((i) => {
+          const cat = String(i.data?.category || "").toLowerCase();
+          return cat.includes("simples") || cat.includes("simple");
+        });
+      } else if (activeCategoryTab === "Martial") {
+        rawItems = rawItems.filter((i) => {
+          const cat = String(i.data?.category || "").toLowerCase();
+          return cat.includes("marcial") || cat.includes("martial");
+        });
+      } else if (activeCategoryTab === "Advanced") {
+        rawItems = rawItems.filter((i) => {
+          const cat = String(i.data?.category || "").toLowerCase();
+          return cat.includes("avan") || cat.includes("advanced");
+        });
+      } else if (activeCategoryTab === "Unarmed") {
+        rawItems = rawItems.filter((i) => {
+          const cat = String(i.data?.category || "").toLowerCase();
+          return cat.includes("desarmad") || cat.includes("unarmed");
+        });
+      } else if (activeCategoryTab === "Proficient") {
+        rawItems = rawItems.filter((i) => getWeaponProficiencyRank(character, i) !== "U");
+      }
+
+      if (activeSubTab === "Magic") {
+        rawItems = rawItems.filter((i) => (i.data?.level || 0) > 0 || (i.data?.traits || []).some((t: string) => /mágic|magic|runa|rune/i.test(t)));
+      } else if (activeSubTab === "Standard") {
+        rawItems = rawItems.filter((i) => (i.data?.level || 0) <= 1);
+      }
+    }
+
     const filtered = rawItems.filter((item) => {
       if (!item) return false;
       const localizedName = getItemDisplayName(item, locale);
@@ -140,7 +276,7 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
       const nameB = getItemDisplayName(b, locale);
       return nameA.localeCompare(nameB, locale, { sensitivity: "base", numeric: true });
     });
-  }, [locale, pickerOptions, pickerType, query]);
+  }, [locale, pickerOptions, pickerType, query, activeCategoryTab, activeSubTab, character]);
 
   useEffect(() => {
     if (selectedIndex >= items.length) setSelectedIndex(0);
@@ -155,7 +291,7 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
   const source = selectedItem?.data.source;
   const sourceLabel = source?.book
     ? `${source.book}${source.page ? `, p. ${source.page}` : ""}`
-    : t("uncatalogued");
+    : "PC1";
   const rarity = selectedItem?.data.rarity === "rare" ? t("rarityRare") : selectedItem?.data.rarity === "uncommon" ? t("rarityUncommon") : selectedItem?.data.rarity === "common" ? t("rarityCommon") : null;
   const castingTimes = selectedItem?.data.castingTimes as Partial<Record<"pt-BR" | "en" | "es", string>> | undefined;
   const traditionNames = selectedItem?.data.traditionNames as Partial<Record<"pt-BR" | "en" | "es", string[]>> | undefined;
@@ -176,21 +312,58 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
   const resolvedHp = resolvedSize?.hp ?? selectedItem?.data.hp;
   const resolvedSpeed = resolvedHeritage?.speed ?? selectedItem?.data.speed;
 
-  const confirm = () => {
+  // Economy & Price Affordability
+  const itemPrice = selectedItem?.data?.price ?? selectedItem?.price ?? "0 PO";
+  const isAffordable = canAffordPrice(characterCoins, itemPrice);
+
+  const confirm = (deductCoins: boolean = false) => {
     if (!selectedItem || selectedState !== "available") return;
     const selection = Object.fromEntries(selectionGroups.map((group) => [group.id, resolvedSelections[group.id]?.id ?? group.options[0]?.id]));
     const itemPayload = { ...selectedItem, ...(selectionGroups.length ? { selection } : {}) };
     if (pickerOptions) {
-      window.app.applyPickerSelection(pickerType, itemPayload, pickerOptions);
+      if (deductCoins) {
+        (window.app?.applyPickerSelection as any)?.(pickerType, itemPayload, pickerOptions, true);
+      } else {
+        (window.app?.applyPickerSelection as any)?.(pickerType, itemPayload, pickerOptions);
+      }
     } else {
-      window.app.applyPickerSelection(pickerType, itemPayload);
+      if (deductCoins) {
+        (window.app?.applyPickerSelection as any)?.(pickerType, itemPayload, undefined, true);
+      } else {
+        (window.app?.applyPickerSelection as any)?.(pickerType, itemPayload);
+      }
+    }
+    bridge.close();
+  };
+
+  const handleCreateCustom = (deductCoins: boolean) => {
+    if (!customName.trim()) return;
+    const customItem: PickerItem = {
+      name: customName.trim(),
+      type: pickerType === "weapon" ? "Arma" : pickerType === "armor" ? "Armadura" : "Item",
+      data: {
+        name: customName.trim(),
+        category: customCategory,
+        damage: customDamage,
+        damageType: customDamageType,
+        bulk: customBulk || "1",
+        hands: customHands,
+        price: customPrice || "0 PO",
+        traits: customTraits ? customTraits.split(",").map((s) => s.trim()).filter(Boolean) : [],
+        description: customDesc.trim() || "Item personalizado criado pelo jogador."
+      }
+    };
+    if (pickerOptions) {
+      (window.app?.applyPickerSelection as any)?.(pickerType, customItem, pickerOptions, deductCoins);
+    } else {
+      (window.app?.applyPickerSelection as any)?.(pickerType, customItem, undefined, deductCoins);
     }
     bridge.close();
   };
 
   const clearSelection = () => {
     if (pickerOptions) {
-      window.app.applyPickerSelection(pickerType, null, pickerOptions);
+      window.app?.applyPickerSelection(pickerType, null, pickerOptions);
     }
     bridge.close();
   };
@@ -211,6 +384,8 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
         aria-labelledby="picker-title"
       >
         <h2 id="picker-title" className="sr-only">{t("select")} {t(pickerLabelKeys[pickerType])}</h2>
+        
+        {/* TOP BAR */}
         <header className="picker-nav">
           <div className="picker-tabs-bar">
             {categoryTabs.map((tab) => (
@@ -245,146 +420,328 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
           </div>
         </header>
 
-        <div className="picker-content">
-          <div className="picker-list" role="listbox" aria-label={t("availableOptions")}>
-            {items.map((item, index) => {
-              const itemState = item.data.selectionState ?? "available";
-              const isSelected = selectedIndex === index;
-              const isBlocked = itemState !== "available";
-              const itemLvl = item.data.level || item.data.rank || 1;
-              const hasGlyph = item.name?.includes("◆") || item.name?.includes("↺") || item.name?.includes("◇");
-
-              return (
-                <button
-                  ref={(element) => { itemRefs.current[index] = element; }}
-                  className={`picker-item ${itemState}${isSelected ? " selected" : ""}${isBlocked ? " blocked" : ""}`}
-                  key={`${item.type}-${item.name}`}
-                  onClick={() => setSelectedIndex(index)}
-                  onKeyDown={(event) => {
-                    let nextIndex = index;
-                    if (event.key === "ArrowDown") nextIndex = Math.min(items.length - 1, index + 1);
-                    else if (event.key === "ArrowUp") nextIndex = Math.max(0, index - 1);
-                    else if (event.key === "Home") nextIndex = 0;
-                    else if (event.key === "End") nextIndex = items.length - 1;
-                    else if (event.key === "Enter") {
-                      event.preventDefault();
-                      confirm();
-                      return;
-                    } else return;
-                    event.preventDefault();
-                    setSelectedIndex(nextIndex);
-                    itemRefs.current[nextIndex]?.focus();
-                  }}
-                  role="option"
-                  aria-disabled={isBlocked}
-                  aria-selected={isSelected}
-                  tabIndex={isSelected ? 0 : -1}
-                  type="button"
-                >
-                  <div className="picker-item-left">
-                    <span className="picker-item-name">{getItemDisplayName(item, locale)}</span>
-                    {hasGlyph && <span className="picker-item-glyph">◆</span>}
-                  </div>
-                  <span className={`picker-item-level-box ${itemLvl > 1 ? "prereq-active" : ""}`}>
-                    {itemLvl}
-                  </span>
-                </button>
-              );
-            })}
+        {/* SUB TABS BAR (STANDARD | MAGIC | CUSTOM) */}
+        {subTabs.length > 0 && (
+          <div className="picker-subtabs-bar">
+            {subTabs.map((st) => (
+              <button
+                key={st}
+                type="button"
+                className={`picker-subtab-btn ${activeSubTab === st ? "active" : ""}`}
+                onClick={() => setActiveSubTab(st)}
+              >
+                {st}
+              </button>
+            ))}
           </div>
+        )}
 
-          <article className="picker-detail">
-            {items.length === 0 ? (
-              <div className="picker-empty-state" role="status" aria-live="polite">
-                <span aria-hidden="true">⌕</span>
-                <strong>{t("noOption")}</strong>
-                <p>{t("searchAnother")}</p>
+        {/* MAIN BODY */}
+        <div className="picker-content">
+          {activeSubTab === "Custom" ? (
+            <div className="picker-custom-form-container">
+              <h3 style={{ color: "var(--pb-orange)", marginBottom: "16px", fontSize: "18px" }}>
+                Criar {pickerType === "weapon" ? "Arma Personalizada" : pickerType === "armor" ? "Armadura Personalizada" : "Item Personalizado"}
+              </h3>
+              <div className="picker-custom-grid">
+                <label>
+                  <span>Nome:</span>
+                  <input value={customName} onChange={(e) => setCustomName(e.target.value)} placeholder="Ex: Machado Vorpal Ancestral" />
+                </label>
+                <label>
+                  <span>Categoria:</span>
+                  <select value={customCategory} onChange={(e) => setCustomCategory(e.target.value)}>
+                    <option value="Simples">Simples</option>
+                    <option value="Marcial">Marcial</option>
+                    <option value="Avançada">Avançada</option>
+                    <option value="Desarmado">Desarmado</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Dado de Dano:</span>
+                  <select value={customDamage} onChange={(e) => setCustomDamage(e.target.value)}>
+                    <option value="1d4">1d4</option>
+                    <option value="1d6">1d6</option>
+                    <option value="1d8">1d8</option>
+                    <option value="1d10">1d10</option>
+                    <option value="1d12">1d12</option>
+                    <option value="2d6">2d6</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Tipo de Dano:</span>
+                  <select value={customDamageType} onChange={(e) => setCustomDamageType(e.target.value)}>
+                    <option value="Cortante">Cortante (S)</option>
+                    <option value="Perfuração">Perfuração (P)</option>
+                    <option value="Impacto">Impacto (B)</option>
+                    <option value="Elemental">Elemental</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Carga (Bulk):</span>
+                  <input value={customBulk} onChange={(e) => setCustomBulk(e.target.value)} placeholder="1 ou L" />
+                </label>
+                <label>
+                  <span>Mãos:</span>
+                  <input value={customHands} onChange={(e) => setCustomHands(e.target.value)} placeholder="1 ou 2" />
+                </label>
+                <label>
+                  <span>Preço:</span>
+                  <input value={customPrice} onChange={(e) => setCustomPrice(e.target.value)} placeholder="Ex: 5 PO" />
+                </label>
+                <label style={{ gridColumn: "1 / -1" }}>
+                  <span>Traços (separados por vírgula):</span>
+                  <input value={customTraits} onChange={(e) => setCustomTraits(e.target.value)} placeholder="Ex: Ágil, Acurada, Versátil C" />
+                </label>
+                <label style={{ gridColumn: "1 / -1" }}>
+                  <span>Descrição / Efeitos:</span>
+                  <textarea rows={3} value={customDesc} onChange={(e) => setCustomDesc(e.target.value)} placeholder="Regras especiais e lore..." />
+                </label>
               </div>
-            ) : selectedItem ? (
-              <>
-                <div className="picker-detail-header">
-                  <h3>{getItemDisplayName(selectedItem, locale)}</h3>
-                  <span className="picker-item-level-box">
-                    {selectedItem.data.level || selectedItem.data.rank || 1}
-                  </span>
-                </div>
+              <div style={{ display: "flex", gap: "10px", marginTop: "20px" }}>
+                <button type="button" className="picker-confirm" onClick={() => handleCreateCustom(false)}>
+                  Adicionar Grátis (Give)
+                </button>
+                <button type="button" className="picker-buy-btn" onClick={() => handleCreateCustom(true)}>
+                  Comprar ({customPrice || "0 PO"})
+                </button>
+              </div>
+            </div>
+          ) : (
+            <>
+              {/* LEFT LIST */}
+              <div className="picker-list" role="listbox" aria-label={t("availableOptions")}>
+                {items.map((item, index) => {
+                  const itemState = item.data?.selectionState ?? "available";
+                  const isSelected = selectedIndex === index;
+                  const isBlocked = itemState !== "available";
+                  const itemLvl = item.data?.level ?? item.data?.rank ?? 0;
+                  const profRank = pickerType === "weapon" ? getWeaponProficiencyRank(character, item) : null;
 
-                <div className="picker-traits-row">
-                  {selectedItem.data.traits?.map((trait: string) => (
-                    <span className="picker-trait-pill" key={trait}>{trait}</span>
-                  )) || (
-                    <span className="picker-trait-pill">General</span>
-                  )}
-                  {rarity && <span className="picker-trait-pill" style={{ background: "#4c1d95", borderColor: "#7c3aed", color: "#ddd6fe" }}>{rarity}</span>}
-                </div>
+                  return (
+                    <button
+                      key={`${item.name}-${index}`}
+                      ref={(element) => { itemRefs.current[index] = element; }}
+                      role="option"
+                      aria-selected={isSelected}
+                      className={`picker-item ${itemState}${isSelected ? " selected" : ""}${isBlocked ? " blocked" : ""}`}
+                      onClick={() => setSelectedIndex(index)}
+                      onKeyDown={(event) => {
+                        if (event.key === "ArrowDown") {
+                          event.preventDefault();
+                          const next = (index + 1) % items.length;
+                          setSelectedIndex(next);
+                          itemRefs.current[next]?.focus();
+                        } else if (event.key === "ArrowUp") {
+                          event.preventDefault();
+                          const prev = (index - 1 + items.length) % items.length;
+                          setSelectedIndex(prev);
+                          itemRefs.current[prev]?.focus();
+                        } else if (event.key === "Enter") {
+                          event.preventDefault();
+                          confirm(false);
+                        }
+                      }}
+                      type="button"
+                    >
+                      <div className="picker-item-left">
+                        {profRank && (
+                          <span className={`picker-prof-badge ${profRank.toLowerCase()}`} title={`Proficiência: ${profRank}`}>
+                            {profRank}
+                          </span>
+                        )}
+                        <span className="picker-item-name">
+                          {getItemDisplayName(item, locale)}
+                        </span>
+                      </div>
+                      <span className="picker-item-level-box">
+                        {itemLvl}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
 
-                {Boolean(selectedItem.data.prerequisites) && (
-                  <div className="picker-prereqs">
-                    <strong>Prerequisites</strong> {typeof selectedItem.data.prerequisites === "object" ? JSON.stringify(selectedItem.data.prerequisites) : String(selectedItem.data.prerequisites)}
-                  </div>
+              {/* RIGHT DETAILS PANE */}
+              <article className="picker-detail">
+                {selectedItem ? (
+                  <>
+                    <header className="picker-detail-header">
+                      <div>
+                        <h3>{getItemDisplayName(selectedItem, locale)}</h3>
+                        <div style={{ fontSize: "12px", color: "var(--pb-text-muted)", marginTop: "2px" }}>
+                          {selectedItem.data?.category ? `${selectedItem.data.category} Weapon` : selectedItem.type}
+                        </div>
+                      </div>
+                      <span className="picker-item-level-box" style={{ fontSize: "13px", padding: "3px 9px" }}>
+                        Nível {selectedItem.data?.level ?? selectedItem.data?.rank ?? 0}
+                      </span>
+                    </header>
+
+                    {/* WEAPON QUICK STATS BAR */}
+                    {pickerType === "weapon" && (
+                      <div className="picker-weapon-stats-bar">
+                        <div className="pws-stat">
+                          <span className="pws-label">Dano</span>
+                          <strong className="pws-value" style={{ color: "var(--pb-orange)" }}>
+                            {String(selectedItem.data?.damage || "1d6")} {selectedItem.data?.damageType ? `(${String(selectedItem.data.damageType)})` : ""}
+                          </strong>
+                        </div>
+                        <div className="pws-stat">
+                          <span className="pws-label">Preço</span>
+                          <strong className="pws-value" style={{ color: "var(--pb-gold, #f59e0b)" }}>
+                            {String(selectedItem.data?.price || "—")}
+                          </strong>
+                        </div>
+                        <div className="pws-stat">
+                          <span className="pws-label">Carga</span>
+                          <strong className="pws-value">{String(selectedItem.data?.bulk || "1")}</strong>
+                        </div>
+                        <div className="pws-stat">
+                          <span className="pws-label">Mãos</span>
+                          <strong className="pws-value">{String(selectedItem.data?.hands || "1")}</strong>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* TRAITS PILLS */}
+                    {Array.isArray(selectedItem.data?.traits) && selectedItem.data.traits.length > 0 && (
+                      <div className="picker-traits-row">
+                        {selectedItem.data.traits.map((trait: string) => (
+                          <span key={trait} className="picker-trait-pill">{trait}</span>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* RULE FACTS (SPELLS, ACTIONS, ETC.) */}
+                    {ruleFacts.length > 0 && (
+                      <div className="picker-traits-row" style={{ marginTop: "4px" }}>
+                        {ruleFacts.map((fact) => (
+                          <span key={fact} className="picker-trait-pill" style={{ background: "#065f46", borderColor: "#10b981", color: "#a7f3d0" }}>
+                            {fact}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* CONFIGURATION SELECTION GROUPS (ANCESTRIES SIZE/HERITAGE) */}
+                    {selectionGroups.length > 0 && (
+                      <fieldset className="picker-configuration">
+                        <legend>{t("configuration")}</legend>
+                        {selectionGroups.map((group) => (
+                          <label key={group.id}>
+                            <span>{t(group.labelKey as MessageKey)}</span>
+                            <select
+                              aria-label={t(group.labelKey as MessageKey)}
+                              value={resolvedSelections[group.id]?.id ?? ""}
+                              onChange={(event) => setOptionSelections((current) => ({ ...current, [group.id]: event.target.value }))}
+                            >
+                              {group.options.map((option) => (
+                                <option value={option.id} key={option.id}>
+                                  {option.names[locale] ?? option.names["pt-BR"] ?? option.id}
+                                </option>
+                              ))}
+                            </select>
+                          </label>
+                        ))}
+                      </fieldset>
+                    )}
+
+                    {resolvedHp !== undefined && (
+                      <p style={{ margin: "8px 0", fontSize: "12.5px" }}>
+                        {t("baseHp")}: <strong>{resolvedHp}</strong> · {t("landSpeed")}: <strong>{resolvedSpeed ?? 0} {t("feet")}</strong>
+                      </p>
+                    )}
+                    {selectedItem.data?.hpPerLevel && (
+                      <p style={{ margin: "8px 0", fontSize: "12.5px" }}>
+                        {t("hpPerLevel")}: <strong>{selectedItem.data.hpPerLevel}</strong> · {t("keyAbility")}: <strong>{selectedItem.data.keyAbility?.join(", ")}</strong>
+                      </p>
+                    )}
+
+                    {/* DESCRIPTION */}
+                    <div className="picker-desc">
+                      {selectedItem.data?.summaries?.[locale] ?? selectedItem.data?.description ?? t("selectDetails")}
+                    </div>
+
+                    {/* SOURCE BOOK */}
+                    <div className="picker-source-tag">
+                      Fonte: {sourceLabel}
+                    </div>
+                  </>
+                ) : (
+                  <p className="picker-empty">{t("selectDetails")}</p>
                 )}
-
-                {selectedState !== "available" && selectedMessage && (
-                  <p className="picker-option-status" style={{ marginBottom: "12px", display: "inline-block" }}>{selectedMessage}</p>
-                )}
-
-                <div className="picker-desc">
-                  {(selectedItem.data.summaries?.[locale] ?? selectedItem.data.description)}
-                </div>
-
-                {ruleFacts.length > 0 && <dl className="picker-rule-facts">{ruleFacts.map((fact) => <div key={fact}><dd>{fact}</dd></div>)}</dl>}
-
-                {selectionGroups.length > 0 && (
-                  <fieldset className="picker-configuration">
-                    <legend>{t("configuration")}</legend>
-                    {selectionGroups.map((group) => (
-                      <label key={group.id}>
-                        <span>{t(group.labelKey as MessageKey)}</span>
-                        <select
-                          value={resolvedSelections[group.id]?.id ?? ""}
-                          onChange={(event) => setOptionSelections((current) => ({ ...current, [group.id]: event.target.value }))}
-                        >
-                          {group.options.map((option) => (
-                            <option value={option.id} key={option.id}>
-                              {option.names[locale] ?? option.names["pt-BR"] ?? option.id}
-                            </option>
-                          ))}
-                        </select>
-                      </label>
-                    ))}
-                  </fieldset>
-                )}
-
-                {resolvedHp !== undefined && (
-                  <p>{t("baseHp")}: <strong>{resolvedHp}</strong> · {t("landSpeed")}: <strong>{resolvedSpeed ?? 0} {t("feet")}</strong></p>
-                )}
-                {selectedItem.data.hpPerLevel && (
-                  <p>{t("hpPerLevel")}: <strong>{selectedItem.data.hpPerLevel}</strong> · {t("keyAbility")}: <strong>{selectedItem.data.keyAbility?.join(", ")}</strong></p>
-                )}
-
-                <div className="picker-source-tag">
-                  {selectedItem.data.source?.book || "PC1"}
-                </div>
-              </>
-            ) : (
-              <p className="picker-empty">{t("selectDetails")}</p>
-            )}
-          </article>
+              </article>
+            </>
+          )}
         </div>
 
+        {/* FOOTER */}
         <footer className="picker-footer">
-          <button className="picker-confirm" onClick={confirm} disabled={!canConfirm} type="button">
-            {t("accept")}
-          </button>
-          <button className="picker-cancel" onClick={bridge.close} type="button">
-            {t("cancel")}
-          </button>
-          <button className="picker-cancel" onClick={() => window.open("https://2e.aonprd.com", "_blank")} type="button">
-            PRD
-          </button>
-          <button className="picker-cancel" onClick={clearSelection} type="button">
-            Clear
-          </button>
+          {isPurchasable ? (
+            <>
+              <button
+                className={`picker-buy-btn ${!isAffordable ? "insufficient-funds" : ""}`}
+                onClick={() => confirm(true)}
+                disabled={!canConfirm || !isAffordable}
+                type="button"
+                title={isAffordable ? `Comprar por ${itemPrice} e deduzir da carteira` : `Moedas insuficientes! Custo: ${itemPrice}`}
+              >
+                Buy ({itemPrice})
+              </button>
+              <button className="picker-confirm" onClick={() => confirm(false)} disabled={!canConfirm} type="button" title="Adicionar sem deduzir moedas">
+                Give
+              </button>
+              <button className="picker-cancel" onClick={bridge.close} type="button">
+                {t("cancel")}
+              </button>
+              <button
+                className="picker-cancel"
+                onClick={() => window.open(pickerType === "weapon" ? "https://2e.aonprd.com/Weapons.aspx" : "https://2e.aonprd.com", "_blank")}
+                type="button"
+              >
+                PRD
+              </button>
+              <button
+                className={`picker-cancel ${activeSubTab === "Custom" ? "active" : ""}`}
+                onClick={() => setActiveSubTab(activeSubTab === "Custom" ? "Standard" : "Custom")}
+                type="button"
+              >
+                Custom
+              </button>
+
+              {/* LIVE COIN PURSE DISPLAY */}
+              <div className="picker-footer-coins" title="Sua carteira de moedas atual">
+                <span className="coin-indicator">
+                  <span className="coin-dot pp" /> {characterCoins.pp || 0} PP
+                </span>
+                <span className="coin-indicator">
+                  <span className="coin-dot gp" /> {characterCoins.gp || 0} GP
+                </span>
+                <span className="coin-indicator">
+                  <span className="coin-dot sp" /> {characterCoins.sp || 0} SP
+                </span>
+                <span className="coin-indicator">
+                  <span className="coin-dot cp" /> {characterCoins.cp || 0} CP
+                </span>
+              </div>
+            </>
+          ) : (
+            <>
+              <button className="picker-confirm" onClick={() => confirm(false)} disabled={!canConfirm} type="button">
+                {t("accept")}
+              </button>
+              <button className="picker-cancel" onClick={bridge.close} type="button">
+                {t("cancel")}
+              </button>
+              <button className="picker-cancel" onClick={() => window.open("https://2e.aonprd.com", "_blank")} type="button">
+                PRD
+              </button>
+              <button className="picker-cancel" onClick={clearSelection} type="button">
+                Clear
+              </button>
+            </>
+          )}
         </footer>
       </section>
     </div>

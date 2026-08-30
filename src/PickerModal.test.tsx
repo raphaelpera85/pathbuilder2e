@@ -149,4 +149,103 @@ describe("PickerModal", () => {
     fireEvent.click(screen.getByRole("button", { name: "Accept" }));
     expect(applyPickerSelection).toHaveBeenCalledWith("spell", expect.objectContaining({ name: "Bola de Fogo (Fireball)" }));
   });
+
+  it("renderiza abas de categoria, insígnias de proficiência e botões de economia para armas", () => {
+    const applyPickerSelection = vi.fn();
+    window.app = {
+      ...controllerDefaults,
+      character: {
+        id: "test",
+        name: "Guerreiro",
+        class: "Guerreiro (Fighter)",
+        level: 1,
+        coins: { gp: 10, sp: 0, cp: 0, pp: 0 },
+      },
+      getPickerItems: () => [
+        {
+          name: "Adze (1d10 S)",
+          type: "Arma",
+          data: { name: "Adze (1d10 S)", category: "Marcial", damage: "1d10", damageType: "Cortante", price: "2 PO", bulk: 1, traits: ["Sweep"] },
+        },
+        {
+          name: "Air Repeater (1d4 P)",
+          type: "Arma",
+          data: { name: "Air Repeater (1d4 P)", category: "Simples", damage: "1d4", damageType: "Perfuração", price: "5 PO", bulk: "L", traits: ["Agile"] },
+        },
+        {
+          name: "Backpack Catapult (1d12 B)",
+          type: "Arma",
+          data: { name: "Backpack Catapult (1d12 B)", category: "Avançada", damage: "1d12", damageType: "Impacto", price: "35 PO", bulk: 4, traits: ["Splash"] },
+        },
+      ],
+      applyPickerSelection,
+    };
+
+    let bridge: PickerBridge | undefined;
+    renderPicker((value) => { bridge = value; });
+    act(() => bridge?.open("weapon"));
+
+    // Verifica abas de armas
+    expect(screen.getByRole("button", { name: "All" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Simple" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Martial" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Advanced" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Unarmed" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Proficient" })).toBeInTheDocument();
+
+    // Filtra pela aba Simple
+    fireEvent.click(screen.getByRole("button", { name: "Simple" }));
+    expect(screen.getByRole("option", { name: /Air Repeater/ })).toBeInTheDocument();
+    expect(screen.queryByRole("option", { name: /Adze/ })).not.toBeInTheDocument();
+
+    // Volta para All e seleciona Backpack Catapult (preço 35 PO > 10 PO que o personagem possui)
+    fireEvent.click(screen.getByRole("button", { name: "All" }));
+    fireEvent.click(screen.getByRole("option", { name: /Backpack Catapult/ }));
+
+    // Botão Buy deve estar desabilitado por fundos insuficientes
+    const buyBtn = screen.getByRole("button", { name: /Buy/i });
+    expect(buyBtn).toBeDisabled();
+
+    // Botão Give deve estar habilitado
+    const giveBtn = screen.getByRole("button", { name: "Give" });
+    expect(giveBtn).not.toBeDisabled();
+    fireEvent.click(giveBtn);
+    expect(applyPickerSelection).toHaveBeenCalledWith("weapon", expect.objectContaining({ name: "Backpack Catapult (1d12 B)" }));
+  });
+
+  it("permite comprar arma acessível deduzindo moedas", () => {
+    const applyPickerSelection = vi.fn();
+    window.app = {
+      ...controllerDefaults,
+      character: {
+        id: "test",
+        name: "Guerreiro",
+        class: "Guerreiro (Fighter)",
+        level: 1,
+        coins: { gp: 10, sp: 0, cp: 0, pp: 0 },
+      },
+      getPickerItems: () => [
+        {
+          name: "Adze (1d10 S)",
+          type: "Arma",
+          data: { name: "Adze (1d10 S)", category: "Marcial", damage: "1d10", damageType: "Cortante", price: "2 PO", bulk: 1, traits: ["Sweep"] },
+        },
+      ],
+      applyPickerSelection,
+    };
+
+    let bridge: PickerBridge | undefined;
+    renderPicker((value) => { bridge = value; });
+    act(() => bridge?.open("weapon"));
+
+    const buyBtn = screen.getByRole("button", { name: /Buy/i });
+    expect(buyBtn).not.toBeDisabled();
+    fireEvent.click(buyBtn);
+    expect(applyPickerSelection).toHaveBeenCalledWith(
+      "weapon",
+      expect.objectContaining({ name: "Adze (1d10 S)" }),
+      undefined,
+      true
+    );
+  });
 });
