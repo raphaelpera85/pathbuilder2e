@@ -485,6 +485,65 @@ const PF2E_ENGINE = {
     };
   },
 
+  // Retorna os modificadores e penalidades ativas de condições vivas
+  getConditionModifiers(characterOrConditions) {
+    let raw = characterOrConditions?.conditions ? characterOrConditions.conditions : (characterOrConditions || {});
+    const conds = {};
+    if (Array.isArray(raw)) {
+      raw.forEach(c => {
+        if (!c) return;
+        const name = (c.name || "").toLowerCase();
+        const val = Number(c.value !== undefined ? c.value : 1);
+        if (name.includes("amedrontado") || name.includes("frightened")) conds.frightened = val;
+        else if (name.includes("enjoado") || name.includes("sickened")) conds.sickened = val;
+        else if (name.includes("desajeitado") || name.includes("clumsy")) conds.clumsy = val;
+        else if (name.includes("debilitado") || name.includes("enfeebled")) conds.enfeebled = val;
+        else if (name.includes("drenado") || name.includes("drained")) conds.drained = val;
+        else if (name.includes("estupefato") || name.includes("stupefied")) conds.stupefied = val;
+        else if (name.includes("desprevenido") || name.includes("off-guard") || name.includes("offguard")) conds.offGuard = true;
+        else if (name.includes("caído") || name.includes("prone")) conds.prone = true;
+        else if (name.includes("cego") || name.includes("blinded")) conds.blinded = true;
+      });
+    } else if (typeof raw === "object") {
+      Object.assign(conds, raw);
+    }
+
+    const frightened = Number(conds.frightened || 0);
+    const sickened = Number(conds.sickened || 0);
+    const clumsy = Number(conds.clumsy || 0);
+    const enfeebled = Number(conds.enfeebled || 0);
+    const drained = Number(conds.drained || 0);
+    const stupefied = Number(conds.stupefied || 0);
+    const offGuard = Boolean(conds.offGuard || conds.prone || conds.blinded);
+
+    const generalStatusPenalty = Math.max(frightened, sickened);
+    const statusPenalty = Math.max(generalStatusPenalty, clumsy, enfeebled, drained, stupefied);
+    const dexStatusPenalty = Math.max(generalStatusPenalty, clumsy);
+    const strStatusPenalty = Math.max(generalStatusPenalty, enfeebled);
+    const conStatusPenalty = Math.max(generalStatusPenalty, drained);
+    const mentalStatusPenalty = Math.max(generalStatusPenalty, stupefied);
+    const circumstanceAcPenalty = offGuard ? 2 : 0;
+    const acPenalty = dexStatusPenalty + circumstanceAcPenalty;
+
+    return {
+      frightened,
+      sickened,
+      clumsy,
+      enfeebled,
+      drained,
+      stupefied,
+      offGuard,
+      statusPenalty: generalStatusPenalty,
+      generalStatusPenalty,
+      dexStatusPenalty,
+      strStatusPenalty,
+      conStatusPenalty,
+      mentalStatusPenalty,
+      circumstanceAcPenalty,
+      acPenalty
+    };
+  },
+
   // Calcula todos os atributos derivados do personagem
   calculateCharacterStats(character) {
     const level = character.level || 1;
@@ -690,6 +749,42 @@ const PF2E_ENGINE = {
     const senses = this.getCharacterSenses(character);
     const trainedSkills = this.calculateTrainedSkillsCount(character);
 
+    // 10. Regras Variantes Oficiais (Automatic Bonus Progression - ABP)
+    const isAbp = Boolean(character.variantRules?.automaticBonusProgression);
+    let abpAttackBonus = 0;
+    let abpSaveBonus = 0;
+    let abpSkillBonus = 0;
+    if (isAbp) {
+      if (level >= 16) abpAttackBonus = 3;
+      else if (level >= 10) abpAttackBonus = 2;
+      else if (level >= 2) abpAttackBonus = 1;
+
+      if (level >= 20) abpSaveBonus = 3;
+      else if (level >= 14) abpSaveBonus = 2;
+      else if (level >= 8) abpSaveBonus = 1;
+
+      if (level >= 17) abpSkillBonus = 3;
+      else if (level >= 9) abpSkillBonus = 2;
+      else if (level >= 3) abpSkillBonus = 1;
+
+      // Aplica ABP nos saves e perícias
+      saves.fortitude.total += abpSaveBonus;
+      saves.reflex.total += abpSaveBonus;
+      saves.will.total += abpSaveBonus;
+      Object.keys(skillsCalculated).forEach(sKey => {
+        if (skillsCalculated[sKey].rank !== "Destreinado" && skillsCalculated[sKey].rank !== "U") {
+          skillsCalculated[sKey].total += abpSkillBonus;
+        }
+      });
+      strikes.forEach(strk => {
+        strk.attackTotal += abpAttackBonus;
+        strk.map = strk.map.map(m => m + abpAttackBonus);
+      });
+    }
+
+    const spellcasting = this.calculateSpellcasting(character);
+    const readiness = this.validateCharacterReadiness(character);
+
     return {
       level,
       scores,
@@ -734,11 +829,192 @@ const PF2E_ENGINE = {
       },
       conditions: conditionMods,
       spellSlots: this.getSpellSlots(character),
-      strikes
+      spellcasting,
+      readiness,
+      variantRules: character.variantRules || { freeArchetype: false, automaticBonusProgression: false, ancestryParagon: false },
+      abpBonuses: {
+        attackPotency: abpAttackBonus,
+        savingThrowResilience: abpSaveBonus,
+        skillPotency: abpSkillBonus
+      },
+      strikes,
+      weaponStrikes: strikes
     };
+  },
+
+  // VALIDADOR DE PRONTIDÃO DE FICHA E REGRAS ABC
+  validateCharacterReadiness(character) {
+    const char = character || {};
+    const issues = [];
+    let passedCount = 0;
+    const totalChecks = 8;
+
+    // 1. Ancestralidade
+    if (!char.ancestry || char.ancestry === "Não definida" || char.ancestry === "Not set") {
+      issues.push({ id: "ancestry", type: "error", message: "Ancestralidade não selecionada", tab: "build", targetId: "ancestryBtn" });
+    } else {
+      passedCount++;
+    }
+
+    // 2. Biografia (Background)
+    if (!char.background || char.background === "Não definida" || char.background === "Not set") {
+      issues.push({ id: "background", type: "error", message: "Biografia (Background) não selecionada", tab: "build", targetId: "backgroundBtn" });
+    } else {
+      passedCount++;
+    }
+
+    // 3. Classe
+    if (!char.class || char.class === "Não definida" || char.class === "Not set") {
+      issues.push({ id: "class", type: "error", message: "Classe não selecionada", tab: "build", targetId: "classBtn" });
+    } else {
+      passedCount++;
+    }
+
+    // 4. Subclasse (se aplicável)
+    const classData = (typeof PF2E_DATA !== "undefined" && PF2E_DATA.classes) ? PF2E_DATA.classes[char.class] : null;
+    if (classData && classData.subclasses && classData.subclasses.length > 0 && (!char.subclass || char.subclass === "Não definida")) {
+      issues.push({ id: "subclass", type: "warning", message: `Especialização / Subclasse de ${char.class.split(" ")[0]} pendente`, tab: "build", targetId: "subclassBtn" });
+    } else {
+      passedCount++;
+    }
+
+    // 5. Atributos (Scores)
+    const scores = char.abilities || {};
+    const allSet = ["str", "dex", "con", "int", "wis", "cha"].every(a => typeof scores[a] === "number" && scores[a] >= 8);
+    if (!allSet) {
+      issues.push({ id: "abilities", type: "error", message: "Atributos incompletos ou não definidos", tab: "build", targetId: "setAbilitiesBtn" });
+    } else {
+      passedCount++;
+    }
+
+    // 6. Perícias Treinadas
+    const skills = char.skills || {};
+    const trainedSkills = Object.values(skills).filter(r => r === "Treinado" || r === "Especialista" || r === "Mestre" || r === "Lendário" || r === "T" || r === "E" || r === "M" || r === "L").length;
+    const requiredSkills = (classData?.trainedSkillsCount || 3) + Math.max(0, Math.floor(((scores.int || 10) - 10) / 2));
+    if (trainedSkills < requiredSkills) {
+      issues.push({ id: "skills", type: "warning", message: `Perícias treinadas (${trainedSkills}/${requiredSkills}) abaixo do total permitido`, tab: "build", targetId: "skillTrainingBtn" });
+    } else {
+      passedCount++;
+    }
+
+    // 7. Equipamento e Armas
+    if (!char.weapons || char.weapons.length === 0) {
+      issues.push({ id: "weapons", type: "tip", message: "Nenhuma arma adicionada ao personagem", tab: "gear", targetId: "weaponsSection" });
+    } else {
+      passedCount++;
+    }
+
+    // 8. Divindade (se Clérigo ou Campeão)
+    const isClericOrChampion = char.class && (char.class.includes("Clérigo") || char.class.includes("Campeão") || char.class.includes("Cleric") || char.class.includes("Champion"));
+    if (isClericOrChampion && (!char.deity || char.deity === "Não definida" || char.deity === "Not set")) {
+      issues.push({ id: "deity", type: "error", message: "Divindade obrigatória para a classe não escolhida", tab: "details", targetId: "detailsDeityDisplay" });
+    } else {
+      passedCount++;
+    }
+
+    const percentage = Math.round((passedCount / totalChecks) * 100);
+    return {
+      isReady: issues.filter(i => i.type === "error").length === 0 && percentage >= 75,
+      score: percentage,
+      passedCount,
+      totalChecks,
+      issues
+    };
+  },
+
+  // CÁLCULO DINÂMICO DE SPELLCASTING, SLOTS E CD DE MAGIAS
+  calculateSpellcasting(character) {
+    const char = character || {};
+    const level = char.level || 1;
+    const classData = (typeof PF2E_DATA !== "undefined" && PF2E_DATA.classes) ? PF2E_DATA.classes[char.class] : null;
+    const spellData = (typeof PF2E_DATA !== "undefined" && PF2E_DATA.spellcastingByClass) ? PF2E_DATA.spellcastingByClass[char.class] : null;
+
+    if (!spellData) {
+      return { isSpellcaster: false, tradition: null, keyAbility: null, spellDc: 0, spellAttack: 0, focusPoints: 0, maxFocusPoints: 0, slots: {} };
+    }
+
+    const scores = char.abilities || { str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10 };
+    const keyAttr = spellData.keyAbility || "int";
+    const keyMod = this.getModifier(scores[keyAttr] || 10);
+    const profRank = char.spellcastingRank || char.spellProficiency || "Treinado";
+    const profBonus = this.getProficiencyBonus(profRank, level);
+    const itemBonus = char.itemBonuses?.spellAttack || 0;
+    const statusBonus = char.conditions?.blessed ? 1 : 0;
+    const conditionMods = this.getConditionModifiers(char.conditions || {});
+
+    let mentalPenalty = conditionMods.mentalStatusPenalty;
+    if (keyAttr === "str") mentalPenalty = conditionMods.strStatusPenalty;
+    else if (keyAttr === "dex") mentalPenalty = conditionMods.dexStatusPenalty;
+
+    const spellDc = 10 + keyMod + profBonus - mentalPenalty;
+    const spellAttack = keyMod + profBonus + itemBonus + statusBonus - mentalPenalty;
+
+    const maxFocusPoints = Math.min(3, char.focusPointsMax || (spellData.focusPoolMax ? 1 : (char.focusPoints ? 1 : 0)));
+    const currentFocusPoints = char.focusPoints !== undefined ? Math.min(char.focusPoints, maxFocusPoints || 1) : (maxFocusPoints || 1);
+
+    // Slots por círculo
+    const slotsTable = spellData.slotsPerLevel?.[level] || [2];
+    const slotsByRank = {};
+    const slots = {
+      cantrips: spellData.cantrips || 5,
+      ranks: {}
+    };
+
+    slotsTable.forEach((maxSlots, index) => {
+      const rankNum = index + 1;
+      slotsByRank[rankNum] = maxSlots;
+      const usedSlots = char.usedSpellSlots?.[rankNum] || 0;
+      slots.ranks[rankNum] = {
+        max: maxSlots,
+        used: usedSlots,
+        available: Math.max(0, maxSlots - usedSlots)
+      };
+    });
+
+    const rawTrad = (spellData.tradition || "").toLowerCase();
+    const tradition = rawTrad.includes("arc") ? "arcane" : (rawTrad.includes("div") ? "divine" : (rawTrad.includes("oc") ? "occult" : (rawTrad.includes("prim") ? "primal" : spellData.tradition)));
+
+    return {
+      hasSpellcasting: true,
+      isSpellcaster: true,
+      className: char.class,
+      tradition,
+      traditionName: spellData.traditionName || spellData.tradition,
+      type: spellData.type,
+      keyAbility: keyAttr,
+      keyAttr: keyAttr,
+      keyModifier: keyMod,
+      rank: profRank,
+      profBonus,
+      dc: spellDc,
+      spellDc,
+      attackMod: spellAttack,
+      spellAttack,
+      focusPoints: currentFocusPoints,
+      currentFocusPoints,
+      maxFocusPoints: Math.max(1, maxFocusPoints),
+      cantripsAllowed: spellData.cantrips || 5,
+      slotsByRank,
+      slots
+    };
+  },
+
+  // APLICAÇÃO DE KIT INICIAL DE EQUIPAMENTO (1-CLIQUE)
+  applyClassStarterKit(character, className) {
+    if (!character || typeof PF2E_DATA === "undefined" || !PF2E_DATA.classStarterKits) return character;
+    const kit = PF2E_DATA.classStarterKits[className] || PF2E_DATA.classStarterKits[Object.keys(PF2E_DATA.classStarterKits)[0]];
+    if (!kit) return character;
+
+    character.weapons = kit.weapons.map(w => ({ ...w, id: `wpn_${Date.now()}_${Math.random().toString(36).substr(2, 4)}` }));
+    character.equippedArmor = { name: kit.armor, category: kit.armor.includes("Leve") || kit.armor.includes("Couro") ? "Leve" : (kit.armor.includes("Talas") || kit.armor.includes("Malha") || kit.armor.includes("Brunea") ? "Média" : "Sem Armadura") };
+    character.inventory = [...(character.inventory || []), ...kit.items.map(it => ({ ...it, id: `inv_${Date.now()}_${Math.random().toString(36).substr(2, 4)}` }))];
+    character.coins = { ...kit.remainingCoins, pl: 0, pp: 0 };
+
+    return character;
   }
 };
 
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = PF2E_ENGINE;
 }
+

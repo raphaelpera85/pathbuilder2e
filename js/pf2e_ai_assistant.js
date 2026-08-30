@@ -301,6 +301,72 @@
       };
 
       return generatedDoc;
+    },
+
+    // BANCO DE ESTILOS ARTÍSTICOS DE RPG PARA RETRATOS COM IA
+    portraitStyles: {
+      "pf2e_official": {
+        name: "🎨 Ilustração Oficial PF2e",
+        suffix: "Pathfinder 2e official art style, crisp dynamic lines, Wayne Reynolds inspired, detailed fantasy hero illustration, dramatic tabletop RPG art, vibrant character design"
+      },
+      "oil_painting": {
+        name: "🖼️ Pintura a Óleo Épica",
+        suffix: "classical epic fantasy oil painting, masterwork, rich textured brushwork, Rembrandt lighting, noble heroic atmosphere, high detail canvas"
+      },
+      "dark_fantasy": {
+        name: "🌑 Fantasia Sombria (Grimdark)",
+        suffix: "grimdark fantasy character art, Elden Ring and Dark Souls aesthetic, moody chiaroscuro lighting, atmospheric weathered gear, gritty realism"
+      },
+      "anime_heroic": {
+        name: "⚔️ Anime & Mangá Heroico",
+        suffix: "heroic high-fantasy anime character design, Castlevania and Studio Trigger aesthetic, clean detailed lineart, cinematic lighting, expressive eyes"
+      },
+      "pixel_art": {
+        name: "👾 Pixel Art RPG Retrô",
+        suffix: "high quality 32-bit HD-2D pixel art portrait, Octopath Traveler style, detailed shading, retro RPG aesthetic, crisp pixel details"
+      },
+      "3d_render": {
+        name: "🗿 Render 3D & Miniatura",
+        suffix: "heroic tabletop miniature 3d render, Unreal Engine 5 high fidelity, subsurface scattering, cinematic studio lighting, detailed materials"
+      },
+      "vintage_ink": {
+        name: "📜 Pergaminho & Tinta Antiga",
+        suffix: "vintage parchment ink drawing with delicate watercolor wash, historical fantasy grimoire illustration, intricate crosshatching, antique manuscript look"
+      }
+    },
+
+    // GERADOR DE PROMPT CONTEXTUAL BASEADO NA FICHA DO PERSONAGEM
+    buildPortraitPrompt(character, styleKey = "pf2e_official", extraDetails = "") {
+      const char = character || {};
+      const name = char.name || "Hero";
+      const gender = char.gender || "adventurer";
+      const ancestry = (char.ancestry || "Human").replace(/\s*\(.*?\)/g, "");
+      const charClass = (char.class || "Fighter").replace(/\s*\(.*?\)/g, "");
+      const subclass = char.subclass ? ` specializing as ${char.subclass}` : "";
+      
+      const weapons = (char.weapons || []).map(w => w.name?.replace(/\s*\(.*?\)/g, "")).filter(Boolean);
+      const armor = char.equippedArmor ? char.equippedArmor.replace(/\s*\(.*?\)/g, "") : "adventuring armor";
+      const deity = char.deity && char.deity !== "Não definida" && char.deity !== "Not set" ? `, dedicated to ${char.deity}` : "";
+
+      let gearDesc = "";
+      if (weapons.length > 0) {
+        gearDesc += `wielding ${weapons.slice(0, 2).join(" and ")}`;
+      }
+      if (armor) {
+        gearDesc += `${gearDesc ? ", " : ""}wearing ${armor}`;
+      }
+
+      const style = this.portraitStyles[styleKey] || this.portraitStyles["pf2e_official"];
+      const customNotes = extraDetails ? `, ${extraDetails}` : "";
+
+      return `Portrait of ${name}, a ${gender} ${ancestry} ${charClass}${subclass}${deity}${gearDesc ? `, ${gearDesc}` : ""}${customNotes}, ${style.suffix}, centered bust portrait, highly detailed face and armor, masterpiece, 8k resolution`;
+    },
+
+    // GERA URL DIRETA DE IMAGEM COM IA DE ALTA DEFINIÇÃO
+    generatePortraitUrl(prompt, seed = null) {
+      const cleanPrompt = prompt.replace(/\s+/g, " ").trim();
+      const actualSeed = seed !== null ? seed : Math.floor(Math.random() * 9999999);
+      return `https://image.pollinations.ai/prompt/${encodeURIComponent(cleanPrompt)}?width=512&height=640&nologo=true&seed=${actualSeed}&model=flux`;
     }
   };
 

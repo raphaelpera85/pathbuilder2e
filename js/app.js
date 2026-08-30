@@ -234,6 +234,23 @@ class PathbuilderApp {
     this.renderActionsTab();
     this.renderFormulasTab();
     this.renderConditions();
+
+    // 6. Auditoria de Prontidão da Ficha (Readiness Badge)
+    const readiness = this.calc.readiness || (typeof PF2E_ENGINE !== "undefined" && PF2E_ENGINE.validateCharacterReadiness ? PF2E_ENGINE.validateCharacterReadiness(this.character) : { score: 100, isReady: true });
+    const readinessText = document.getElementById("readinessBadgeText");
+    const readinessBtn = document.getElementById("readinessBadgeBtn");
+    if (readinessText && readinessBtn) {
+      readinessText.innerText = `${readiness.score}% Pronto`;
+      if (readiness.isReady) {
+        readinessBtn.style.background = "rgba(34, 197, 94, 0.15)";
+        readinessBtn.style.borderColor = "#22c55e";
+        readinessBtn.style.color = "#86efac";
+      } else {
+        readinessBtn.style.background = "rgba(249, 115, 22, 0.15)";
+        readinessBtn.style.borderColor = "var(--pb-orange)";
+        readinessBtn.style.color = "#fed7aa";
+      }
+    }
   }
 
   // RENDERIZAÇÃO DA COLUNA DE PERÍCIAS (EXATAMENTE COMO NO PATHBUILDER)
@@ -613,8 +630,23 @@ class PathbuilderApp {
       en: { emptySpells: "No spells added.", emptyRituals: "No rituals learned.", rank: "Rank", source: "Source" },
       es: { emptySpells: "No hay conjuros añadidos.", emptyRituals: "No hay rituales aprendidos.", rank: "Rango", source: "Fuente" }
     }[locale];
-    document.getElementById("spellDcText").innerText = this.calc.classDc;
-    document.getElementById("spellAtkText").innerText = PF2E_ENGINE.formatMod(this.calc.classDc - 10);
+
+    const spellcasting = this.calc.spellcasting || (typeof PF2E_ENGINE !== "undefined" && PF2E_ENGINE.calculateSpellcasting ? PF2E_ENGINE.calculateSpellcasting(this.character) : { dc: this.calc.classDc, attackMod: this.calc.classDc - 10, traditionName: "Arcana", maxFocusPoints: 1, currentFocusPoints: 1 });
+
+    const dcEl = document.getElementById("spellDcText");
+    const atkEl = document.getElementById("spellAtkText");
+    const tradBadge = document.getElementById("spellTraditionBadge");
+    const focusDisp = document.getElementById("focusPointsDisplay");
+
+    if (dcEl) dcEl.innerText = spellcasting.dc || this.calc.classDc;
+    if (atkEl) atkEl.innerText = PF2E_ENGINE.formatMod(spellcasting.attackMod !== undefined ? spellcasting.attackMod : (this.calc.classDc - 10));
+    if (tradBadge) tradBadge.innerText = spellcasting.traditionName || "Arcana";
+    if (focusDisp) {
+      const maxF = spellcasting.maxFocusPoints || 1;
+      const curF = Math.min(maxF, spellcasting.currentFocusPoints !== undefined ? spellcasting.currentFocusPoints : maxF);
+      focusDisp.innerText = "●".repeat(curF) + "○".repeat(Math.max(0, maxF - curF));
+    }
+
     this.renderSpellcastingProfile(locale);
 
     // Espaços de Magia & Pontos de Foco
@@ -930,9 +962,144 @@ class PathbuilderApp {
     }
   }
 
-  openAvatarModal() {
+  openAvatarModal(defaultTab = 'ai') {
     const overlay = document.getElementById("modalAvatarOverlay");
-    if (overlay) overlay.classList.add("active");
+    if (overlay) {
+      overlay.classList.add("active");
+      this.switchAvatarTab(defaultTab);
+      const promptInput = document.getElementById("aiPortraitPromptInput");
+      if (promptInput && (!promptInput.value || promptInput.value.trim() === "")) {
+        this.refreshAIPortraitPrompt();
+      }
+    }
+  }
+
+  switchAvatarTab(tabName) {
+    const panelAI = document.getElementById("avatarPanelAI");
+    const panelManual = document.getElementById("avatarPanelManual");
+    const tabBtnAI = document.getElementById("tabBtnAvatarAI");
+    const tabBtnManual = document.getElementById("tabBtnAvatarManual");
+
+    if (tabName === 'ai') {
+      if (panelAI) panelAI.style.display = "flex";
+      if (panelManual) panelManual.style.display = "none";
+      if (tabBtnAI) {
+        tabBtnAI.style.background = "rgba(249, 115, 22, 0.15)";
+        tabBtnAI.style.borderColor = "var(--pb-orange)";
+        tabBtnAI.style.color = "#fed7aa";
+      }
+      if (tabBtnManual) {
+        tabBtnManual.style.background = "#0e1626";
+        tabBtnManual.style.borderColor = "#1e293b";
+        tabBtnManual.style.color = "#94a3b8";
+      }
+    } else {
+      if (panelAI) panelAI.style.display = "none";
+      if (panelManual) panelManual.style.display = "flex";
+      if (tabBtnAI) {
+        tabBtnAI.style.background = "#0e1626";
+        tabBtnAI.style.borderColor = "#1e293b";
+        tabBtnAI.style.color = "#94a3b8";
+      }
+      if (tabBtnManual) {
+        tabBtnManual.style.background = "rgba(249, 115, 22, 0.15)";
+        tabBtnManual.style.borderColor = "var(--pb-orange)";
+        tabBtnManual.style.color = "#fed7aa";
+      }
+    }
+  }
+
+  refreshAIPortraitPrompt() {
+    if (typeof PF2E_AI_ASSISTANT === "undefined" || !PF2E_AI_ASSISTANT.buildPortraitPrompt) return;
+    const styleSelect = document.getElementById("aiPortraitStyleSelect");
+    const styleKey = styleSelect ? styleSelect.value : "pf2e_official";
+    const extraInput = document.getElementById("aiPortraitExtraDetails");
+    const extraDetails = extraInput ? extraInput.value.trim() : "";
+    
+    const prompt = PF2E_AI_ASSISTANT.buildPortraitPrompt(this.character, styleKey, extraDetails);
+    const promptInput = document.getElementById("aiPortraitPromptInput");
+    if (promptInput) {
+      promptInput.value = prompt;
+    }
+  }
+
+  generateAIPortrait(customSeed = null) {
+    const promptInput = document.getElementById("aiPortraitPromptInput");
+    let prompt = promptInput ? promptInput.value.trim() : "";
+    if (!prompt) {
+      this.refreshAIPortraitPrompt();
+      prompt = promptInput ? promptInput.value.trim() : "";
+    }
+
+    if (!prompt) {
+      alert("Por favor, digite ou gere uma descrição para o retrato.");
+      return;
+    }
+
+    const resultArea = document.getElementById("aiPortraitResultArea");
+    const spinner = document.getElementById("aiPortraitLoadingSpinner");
+    const imgContainer = document.getElementById("aiPortraitImageContainer");
+    const previewImg = document.getElementById("aiPortraitPreviewImg");
+    const btnGenerate = document.getElementById("btnGenerateAIPortrait");
+    const btnText = document.getElementById("btnGenerateAIPortraitText");
+
+    if (resultArea) resultArea.style.display = "flex";
+    if (spinner) spinner.style.display = "flex";
+    if (imgContainer) imgContainer.style.display = "none";
+    if (btnGenerate) btnGenerate.style.opacity = "0.7";
+    if (btnText) btnText.textContent = "Gerando Imagem...";
+
+    const seed = customSeed !== null ? customSeed : Math.floor(Math.random() * 9999999);
+    const portraitUrl = typeof PF2E_AI_ASSISTANT !== "undefined" && PF2E_AI_ASSISTANT.generatePortraitUrl
+      ? PF2E_AI_ASSISTANT.generatePortraitUrl(prompt, seed)
+      : `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=512&height=640&nologo=true&seed=${seed}&model=flux`;
+
+    this.lastGeneratedPortraitUrl = portraitUrl;
+    this.lastGeneratedPortraitSeed = seed;
+
+    // Pré-carrega a imagem
+    const imgLoader = new Image();
+    imgLoader.onload = () => {
+      if (previewImg) previewImg.src = portraitUrl;
+      if (spinner) spinner.style.display = "none";
+      if (imgContainer) imgContainer.style.display = "flex";
+      if (btnGenerate) btnGenerate.style.opacity = "1";
+      if (btnText) btnText.textContent = "Gerar Novo Retrato com IA";
+    };
+    imgLoader.onerror = () => {
+      if (previewImg) previewImg.src = portraitUrl;
+      if (spinner) spinner.style.display = "none";
+      if (imgContainer) imgContainer.style.display = "flex";
+      if (btnGenerate) btnGenerate.style.opacity = "1";
+      if (btnText) btnText.textContent = "Tentar Novamente";
+    };
+    imgLoader.src = portraitUrl;
+  }
+
+  generateAIPortraitVariation() {
+    const newSeed = Math.floor(Math.random() * 9999999);
+    this.generateAIPortrait(newSeed);
+  }
+
+  applyGeneratedPortrait() {
+    if (!this.lastGeneratedPortraitUrl || !this.character) return;
+    this.character.avatar = this.lastGeneratedPortraitUrl;
+    this.saveCharacterLocal(false);
+    this.renderDetailsTab();
+    const overlay = document.getElementById("modalAvatarOverlay");
+    if (overlay) overlay.classList.remove("active");
+  }
+
+  downloadGeneratedPortrait() {
+    if (!this.lastGeneratedPortraitUrl) return;
+    const a = document.createElement("a");
+    a.href = this.lastGeneratedPortraitUrl;
+    a.target = "_blank";
+    const charName = this.character?.name ? this.character.name.toLowerCase().replace(/\s+/g, "_") : "personagem";
+    a.download = `${charName}_retrato_pf2e.png`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   }
 
   handleAvatarUpload(event) {
@@ -3646,6 +3813,263 @@ class PathbuilderApp {
     } catch (err) {
       alert("Erro ao aplicar personagem gerado: " + err.message);
     }
+  }
+
+  // =========================================================================
+  // 1. AUDITORIA DE PRONTIDÃO DA FICHA & REGRAS ABC
+  // =========================================================================
+  openReadinessModal() {
+    this.renderReadinessModal();
+    const overlay = document.getElementById("modalReadinessOverlay");
+    if (overlay) overlay.classList.add("active");
+  }
+
+  renderReadinessModal() {
+    const readiness = this.calc?.readiness || (typeof PF2E_ENGINE !== "undefined" && PF2E_ENGINE.validateCharacterReadiness ? PF2E_ENGINE.validateCharacterReadiness(this.character) : { score: 100, isReady: true, issues: [] });
+    const scoreEl = document.getElementById("readinessModalScore");
+    const barEl = document.getElementById("readinessProgressBar");
+    const listEl = document.getElementById("readinessIssuesList");
+
+    if (scoreEl) {
+      scoreEl.innerText = `${readiness.score}% ${readiness.isReady ? "Pronto para Jogar" : "Incompleto"}`;
+      scoreEl.style.color = readiness.isReady ? "#22c55e" : "#f97316";
+    }
+    if (barEl) {
+      barEl.style.width = `${readiness.score}%`;
+      barEl.style.background = readiness.isReady ? "linear-gradient(90deg, #16a34a, #22c55e)" : "linear-gradient(90deg, #ea580c, #f97316)";
+    }
+
+    if (!listEl) return;
+    if (!readiness.issues || readiness.issues.length === 0) {
+      listEl.innerHTML = `
+        <div style="background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 8px; padding: 14px; text-align: center; color: #86efac; font-size: 13px;">
+          ✅ <strong>Excelente!</strong> Todas as escolhas obrigatórias de nível 1 foram preenchidas (Ancestralidade, Biografia, Classe, Atributos e Perícias). Sua ficha está pronta para jogar!
+        </div>
+      `;
+      return;
+    }
+
+    listEl.innerHTML = readiness.issues.map(iss => {
+      const isError = iss.type === "error";
+      const isWarning = iss.type === "warning";
+      const icon = isError ? "❌" : (isWarning ? "⚠️" : "💡");
+      const bgColor = isError ? "rgba(239, 68, 68, 0.08)" : (isWarning ? "rgba(249, 115, 22, 0.08)" : "rgba(59, 130, 246, 0.08)");
+      const borderColor = isError ? "rgba(239, 68, 68, 0.3)" : (isWarning ? "rgba(249, 115, 22, 0.3)" : "rgba(59, 130, 246, 0.3)");
+      const textColor = isError ? "#fca5a5" : (isWarning ? "#fdba74" : "#93c5fd");
+
+      return `
+        <div style="background: ${bgColor}; border: 1px solid ${borderColor}; border-radius: 8px; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center; gap: 10px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span>${icon}</span>
+            <span style="font-size: 12px; color: ${textColor}; font-weight: 600;">${escapeHtml(iss.message)}</span>
+          </div>
+          <button type="button" onclick="app.resolveReadinessIssue('${iss.id}', '${iss.tab}', '${iss.targetId}')" style="background: #1e293b; border: 1px solid #3b82f6; color: #93c5fd; padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: bold; cursor: pointer; white-space: nowrap;">
+            Resolver ➔
+          </button>
+        </div>
+      `;
+    }).join("");
+  }
+
+  resolveReadinessIssue(issueId, tab, targetId) {
+    const overlay = document.getElementById("modalReadinessOverlay");
+    if (overlay) overlay.classList.remove("active");
+
+    if (issueId === "ancestry") this.openAncestryModal();
+    else if (issueId === "background") this.openBackgroundModal();
+    else if (issueId === "class") this.openClassModal();
+    else if (issueId === "subclass") this.openSubclassModal();
+    else if (issueId === "abilities") this.openSetAbilitiesModal();
+    else if (issueId === "skills") this.openSkillTrainingModal();
+    else if (issueId === "deity") this.openDeityModal();
+    else if (issueId === "weapons") {
+      this.switchTab("tab-weapons");
+      this.openPicker("weapon");
+    }
+  }
+
+  // =========================================================================
+  // 2. PACOTES INICIAIS DE EQUIPAMENTO (CLASS STARTER KITS)
+  // =========================================================================
+  openStarterKitsModal() {
+    this.renderStarterKitsModal();
+    const overlay = document.getElementById("modalStarterKitsOverlay");
+    if (overlay) overlay.classList.add("active");
+  }
+
+  renderStarterKitsModal() {
+    const container = document.getElementById("starterKitsListContainer");
+    if (!container || typeof PF2E_DATA === "undefined" || !PF2E_DATA.classStarterKits) return;
+
+    const kits = PF2E_DATA.classStarterKits;
+    container.innerHTML = Object.keys(kits).map(className => {
+      const kit = kits[className];
+      const isCurrentClass = this.character?.class && this.character.class.includes(className.split(" ")[0]);
+
+      return `
+        <div style="background: ${isCurrentClass ? 'rgba(249, 115, 22, 0.08)' : '#111a2e'}; border: 1px solid ${isCurrentClass ? 'var(--pb-orange)' : '#1e293b'}; border-radius: 10px; padding: 14px; display: flex; flex-direction: column; gap: 8px;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 16px;">🎒</span>
+              <strong style="font-size: 14px; color: ${isCurrentClass ? 'var(--pb-orange)' : '#ffffff'};">${escapeHtml(kit.name)}</strong>
+              ${isCurrentClass ? '<span style="background: rgba(249,115,22,0.2); color: #fed7aa; font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: 4px;">Sua Classe</span>' : ''}
+            </div>
+            <button type="button" onclick="app.applyStarterKit('${escapeHtml(className)}')" style="background: #16a34a; color: #fff; border: none; padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: bold; cursor: pointer; box-shadow: 0 2px 8px rgba(22,163,74,0.3);">
+              ⚡ Equipar este Kit
+            </button>
+          </div>
+          <div style="font-size: 11px; color: #cbd5e1; line-height: 1.5;">
+            <div>🛡️ <strong>Armadura:</strong> ${escapeHtml(kit.armor)}</div>
+            <div>⚔️ <strong>Armas:</strong> ${kit.weapons.map(w => escapeHtml(w.name)).join(", ")}</div>
+            <div>📦 <strong>Itens:</strong> ${kit.items.map(it => `${escapeHtml(it.name)} (x${it.qty || 1})`).join(", ")}</div>
+            <div>💰 <strong>Moedas Restantes:</strong> ${kit.remainingCoins.gp} PO, ${kit.remainingCoins.sp} PP</div>
+          </div>
+        </div>
+      `;
+    }).join("");
+  }
+
+  applyStarterKit(className) {
+    if (!this.character) return;
+    if (confirm(`Deseja equipar o pacote de equipamentos recomendado para ${className}? Suas armas, armadura e moedas serão configuradas automaticamente.`)) {
+      PF2E_ENGINE.applyClassStarterKit(this.character, className);
+      this.saveCharacterLocal();
+      this.renderAll();
+      const overlay = document.getElementById("modalStarterKitsOverlay");
+      if (overlay) overlay.classList.remove("active");
+      alert(`🎒 Kit Inicial equipado com sucesso!`);
+    }
+  }
+
+  // =========================================================================
+  // 3. REGRAS VARIANTES OFICIAIS (FREE ARCHETYPE, ABP, PARAGON)
+  // =========================================================================
+  openVariantRulesModal() {
+    if (!this.character) return;
+    if (!this.character.variantRules) {
+      this.character.variantRules = { freeArchetype: false, automaticBonusProgression: false, ancestryParagon: false };
+    }
+    const chkFree = document.getElementById("chkFreeArchetype");
+    const chkAbp = document.getElementById("chkABP");
+    const chkParagon = document.getElementById("chkAncestryParagon");
+
+    if (chkFree) chkFree.checked = Boolean(this.character.variantRules.freeArchetype);
+    if (chkAbp) chkAbp.checked = Boolean(this.character.variantRules.automaticBonusProgression);
+    if (chkParagon) chkParagon.checked = Boolean(this.character.variantRules.ancestryParagon);
+
+    const overlay = document.getElementById("modalVariantRulesOverlay");
+    if (overlay) overlay.classList.add("active");
+  }
+
+  toggleVariantRule(ruleKey, isEnabled) {
+    if (!this.character) return;
+    if (!this.character.variantRules) {
+      this.character.variantRules = { freeArchetype: false, automaticBonusProgression: false, ancestryParagon: false };
+    }
+    this.character.variantRules[ruleKey] = isEnabled;
+    this.saveCharacterLocal();
+    this.renderAll();
+  }
+
+  // =========================================================================
+  // 4. RASTREADOR DE CONDIÇÕES VIVAS COM AJUSTE EM TEMPO REAL
+  // =========================================================================
+  renderConditions() {
+    const container = document.getElementById("activeConditions");
+    if (!container) return;
+
+    const conditions = this.character.conditions || {};
+    const catalog = typeof PF2E_DATA !== "undefined" && PF2E_DATA.conditionsCatalog ? PF2E_DATA.conditionsCatalog : {};
+
+    const activeKeys = Object.keys(conditions).filter(k => Boolean(conditions[k]));
+    if (activeKeys.length === 0) {
+      container.innerHTML = `<span style="font-size: 11px; color: var(--pb-text-dim);">Nenhuma condição ativa.</span>`;
+      return;
+    }
+
+    container.innerHTML = activeKeys.map(k => {
+      const meta = catalog[k] || { name: k, hasValue: typeof conditions[k] === "number" };
+      const val = conditions[k];
+      const displayName = meta.name.split(" ")[0];
+
+      if (meta.hasValue) {
+        return `
+          <div style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); color: #fca5a5; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;" title="${escapeHtml(meta.description || "")}">
+            <span>🩸 ${escapeHtml(displayName)} ${val}</span>
+            <button type="button" onclick="app.setConditionLevel('${k}', -1)" style="background: none; border: none; color: #fca5a5; cursor: pointer; font-weight: bold; padding: 0 2px;">-</button>
+            <button type="button" onclick="app.setConditionLevel('${k}', 1)" style="background: none; border: none; color: #fca5a5; cursor: pointer; font-weight: bold; padding: 0 2px;">+</button>
+          </div>
+        `;
+      }
+
+      return `
+        <div style="background: rgba(234, 88, 12, 0.15); border: 1px solid rgba(234, 88, 12, 0.4); color: #fdba74; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;" title="${escapeHtml(meta.description || "")}">
+          <span>⚡ ${escapeHtml(displayName)}</span>
+          <button type="button" onclick="app.setConditionLevel('${k}', 0)" style="background: none; border: none; color: #fdba74; cursor: pointer; font-weight: bold; padding: 0 2px;">✕</button>
+        </div>
+      `;
+    }).join("");
+  }
+
+  setConditionLevel(condKey, delta) {
+    if (!this.character) return;
+    if (!this.character.conditions) this.character.conditions = {};
+
+    if (delta === 0) {
+      delete this.character.conditions[condKey];
+    } else if (typeof this.character.conditions[condKey] === "number") {
+      this.character.conditions[condKey] = Math.max(0, this.character.conditions[condKey] + delta);
+      if (this.character.conditions[condKey] === 0) {
+        delete this.character.conditions[condKey];
+      }
+    } else if (delta > 0) {
+      this.character.conditions[condKey] = 1;
+    } else {
+      delete this.character.conditions[condKey];
+    }
+
+    this.saveCharacterLocal();
+    this.renderAll();
+  }
+
+  clearAllConditions() {
+    if (!this.character) return;
+    this.character.conditions = {};
+    this.saveCharacterLocal();
+    this.renderAll();
+  }
+
+  tickEndTurnConditions() {
+    if (!this.character || !this.character.conditions) return;
+    if (this.character.conditions.frightened) {
+      this.character.conditions.frightened = Math.max(0, this.character.conditions.frightened - 1);
+      if (this.character.conditions.frightened === 0) {
+        delete this.character.conditions.frightened;
+      }
+    }
+    this.saveCharacterLocal();
+    this.renderAll();
+  }
+
+  // =========================================================================
+  // 5. MOTOR DE SPELLCASTING, FOCO E RECUPERAÇÃO DE SLOTS
+  // =========================================================================
+  adjustFocusPoints(delta) {
+    if (!this.character) return;
+    const maxFocus = this.calc?.spellcasting?.maxFocusPoints || 1;
+    const current = this.character.focusPoints !== undefined ? this.character.focusPoints : maxFocus;
+    this.character.focusPoints = Math.max(0, Math.min(maxFocus, current + delta));
+    this.saveCharacterLocal();
+    this.renderAll();
+  }
+
+  restAndRecoverSlots() {
+    if (!this.character) return;
+    this.character.usedSpellSlots = {};
+    this.character.focusPoints = this.calc?.spellcasting?.maxFocusPoints || 1;
+    this.saveCharacterLocal();
+    this.renderAll();
+    alert("💤 Todos os espaços de magia e pontos de foco foram totalmente restaurados!");
   }
 }
 

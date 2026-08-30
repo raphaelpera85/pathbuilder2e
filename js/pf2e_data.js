@@ -1870,7 +1870,235 @@ PF2E_DATA.formulas = [
   { id: "form.snare.spike_snare", name: "Armadilha de Espigões (Spike Snare)", names: { "pt-BR": "Armadilha de Espigões", en: "Spike Snare", es: "Lazo de púas" }, level: 1, price: { gp: 3 }, category: "Armadilha (Snare)", craftingDC: 15, traits: ["Armadilha", "Consumível", "Mecânico"], description: "Dispara contra a criatura que pisar, causando 2d8 de dano perfurante (Salvamento de Reflexos CD 17).", source: { book: "Livro do Jogador (Player Core)", page: 296 } }
 ];
 
+// Catálogo de Progressão Mágica, Tradições e Slots por Classe (Spellcasting)
+PF2E_DATA.spellcastingByClass = {
+  "Mago (Wizard)": { tradition: "Arcana", keyAbility: "int", type: "Preparado", cantrips: 5, focusPoolMax: 3, slotsPerLevel: { 1: [2], 2: [3], 3: [3, 2], 4: [3, 3], 5: [3, 3, 2], 6: [3, 3, 3], 7: [3, 3, 3, 2], 8: [3, 3, 3, 3], 9: [3, 3, 3, 3, 2], 10: [3, 3, 3, 3, 3] } },
+  "Clérigo (Cleric)": { tradition: "Divina", keyAbility: "wis", type: "Preparado", cantrips: 5, focusPoolMax: 3, slotsPerLevel: { 1: [2], 2: [3], 3: [3, 2], 4: [3, 3], 5: [3, 3, 2], 6: [3, 3, 3], 7: [3, 3, 3, 2], 8: [3, 3, 3, 3], 9: [3, 3, 3, 3, 2], 10: [3, 3, 3, 3, 3] } },
+  "Druida (Druid)": { tradition: "Primal", keyAbility: "wis", type: "Preparado", cantrips: 5, focusPoolMax: 3, slotsPerLevel: { 1: [2], 2: [3], 3: [3, 2], 4: [3, 3], 5: [3, 3, 2], 6: [3, 3, 3], 7: [3, 3, 3, 2], 8: [3, 3, 3, 3], 9: [3, 3, 3, 3, 2], 10: [3, 3, 3, 3, 3] } },
+  "Bardo (Bard)": { tradition: "Oculta", keyAbility: "cha", type: "Espontâneo", cantrips: 5, focusPoolMax: 3, slotsPerLevel: { 1: [2], 2: [3], 3: [3, 2], 4: [3, 3], 5: [3, 3, 2], 6: [3, 3, 3], 7: [3, 3, 3, 2], 8: [3, 3, 3, 3], 9: [3, 3, 3, 3, 2], 10: [3, 3, 3, 3, 3] } },
+  "Feiticeiro (Sorcerer)": { tradition: "Variável (Linhagem)", keyAbility: "cha", type: "Espontâneo", cantrips: 5, focusPoolMax: 3, slotsPerLevel: { 1: [3], 2: [4], 3: [4, 3], 4: [4, 4], 5: [4, 4, 3], 6: [4, 4, 4], 7: [4, 4, 4, 3], 8: [4, 4, 4, 4], 9: [4, 4, 4, 4, 3], 10: [4, 4, 4, 4, 4] } },
+  "Bruxo (Witch)": { tradition: "Variável (Patrono)", keyAbility: "int", type: "Preparado", cantrips: 5, focusPoolMax: 3, slotsPerLevel: { 1: [2], 2: [3], 3: [3, 2], 4: [3, 3], 5: [3, 3, 2], 6: [3, 3, 3], 7: [3, 3, 3, 2], 8: [3, 3, 3, 3], 9: [3, 3, 3, 3, 2], 10: [3, 3, 3, 3, 3] } },
+  "Oráculo (Oracle)": { tradition: "Divina", keyAbility: "cha", type: "Espontâneo", cantrips: 5, focusPoolMax: 3, slotsPerLevel: { 1: [2], 2: [3], 3: [3, 2], 4: [3, 3], 5: [3, 3, 2], 6: [3, 3, 3], 7: [3, 3, 3, 2], 8: [3, 3, 3, 3], 9: [3, 3, 3, 3, 2], 10: [3, 3, 3, 3, 3] } },
+  "Animista (Animist)": { tradition: "Divina", keyAbility: "wis", type: "Preparado", cantrips: 5, focusPoolMax: 3, slotsPerLevel: { 1: [2], 2: [3], 3: [3, 2], 4: [3, 3], 5: [3, 3, 2], 6: [3, 3, 3], 7: [3, 3, 3, 2], 8: [3, 3, 3, 3], 9: [3, 3, 3, 3, 2], 10: [3, 3, 3, 3, 3] } },
+  "Magus": { tradition: "Arcana", keyAbility: "int", type: "Preparado Limitado (Bounded)", cantrips: 5, focusPoolMax: 3, slotsPerLevel: { 1: [1], 2: [2], 3: [2], 4: [2], 5: [2, 2], 6: [2, 2], 7: [2, 2], 8: [2, 2], 9: [2, 2], 10: [2, 2] } },
+  "Invocador (Summoner)": { tradition: "Variável (Eidolon)", keyAbility: "cha", type: "Espontâneo Limitado (Bounded)", cantrips: 5, focusPoolMax: 3, slotsPerLevel: { 1: [1], 2: [2], 3: [2], 4: [2], 5: [2, 2], 6: [2, 2], 7: [2, 2], 8: [2, 2], 9: [2, 2], 10: [2, 2] } },
+  "Psíquico (Psychic)": { tradition: "Oculta", keyAbility: "int", type: "Espontâneo Consciente", cantrips: 5, focusPoolMax: 3, slotsPerLevel: { 1: [1], 2: [2], 3: [2, 1], 4: [2, 2], 5: [2, 2, 1], 6: [2, 2, 2], 7: [2, 2, 2, 1], 8: [2, 2, 2, 2], 9: [2, 2, 2, 2, 1], 10: [2, 2, 2, 2, 2] } }
+};
+
+// Catálogo de Pacotes Iniciais de Equipamento por Classe (Class Starter Kits)
+PF2E_DATA.classStarterKits = {
+  "Guerreiro (Fighter)": {
+    name: "Kit Inicial do Guerreiro",
+    armor: "Cota de Malha (Chain Mail)",
+    weapons: [
+      { name: "Espada Longa (Longsword)", category: "Marcial", damage: "1d8 cortante", traits: ["Versátil P"], hands: "1" },
+      { name: "Escudo de Aço (Steel Shield)", category: "Marcial", damage: "1d4 concussão", traits: ["Escudo", "Dureza 5", "PV 20"], hands: "1" }
+    ],
+    items: [
+      { name: "Mochila de Aventureiro (Adventurer's Pack)", qty: 1, bulk: "1" },
+      { name: "Adaga (Dagger)", qty: 1, bulk: "L" },
+      { name: "Corda de Cânhamo (50 pés)", qty: 1, bulk: "1" }
+    ],
+    remainingCoins: { gp: 3, sp: 8, cp: 0 }
+  },
+  "Ladino (Rogue)": {
+    name: "Kit Inicial do Ladino",
+    armor: "Armadura de Couro (Leather Armor)",
+    weapons: [
+      { name: "Florete (Rapier)", category: "Marcial", damage: "1d6 perfurante", traits: ["Acurada", "Desarmar", "Mortal d8"], hands: "1" },
+      { name: "Adaga (Dagger)", category: "Simples", damage: "1d4 perfurante", traits: ["Ágil", "Acurada", "Arremesso 10 pés", "Versátil C"], hands: "1" }
+    ],
+    items: [
+      { name: "Mochila de Aventureiro (Adventurer's Pack)", qty: 1, bulk: "1" },
+      { name: "Ferramentas de Ladrão (Thieves' Toolkit)", qty: 1, bulk: "L" },
+      { name: "Adagas Extras (x3)", qty: 3, bulk: "L" }
+    ],
+    remainingCoins: { gp: 5, sp: 2, cp: 0 }
+  },
+  "Mago (Wizard)": {
+    name: "Kit Inicial do Mago",
+    armor: "Sem Armadura (Trajes de Explorador)",
+    weapons: [
+      { name: "Bordão (Staff)", category: "Simples", damage: "1d4 concussão", traits: ["Duas Mãos d8"], hands: "1" },
+      { name: "Besta Leve (Light Crossbow)", category: "Simples", damage: "1d8 perfurante", traits: ["Distância 120 pés", "Recarregar 1"], hands: "2" }
+    ],
+    items: [
+      { name: "Mochila de Aventureiro (Adventurer's Pack)", qty: 1, bulk: "1" },
+      { name: "Grimório de Magias (Spellbook)", qty: 1, bulk: "L" },
+      { name: "Virotes de Besta (x20)", qty: 20, bulk: "L" },
+      { name: "Material de Escrita", qty: 1, bulk: "L" }
+    ],
+    remainingCoins: { gp: 6, sp: 5, cp: 0 }
+  },
+  "Clérigo (Cleric)": {
+    name: "Kit Inicial do Clérigo",
+    armor: "Armadura de Brunea (Scale Mail)",
+    weapons: [
+      { name: "Maça (Mace)", category: "Simples", damage: "1d6 concussão", traits: ["Empurrão"], hands: "1" },
+      { name: "Escudo de Madeira (Wooden Shield)", category: "Simples", damage: "1d4 concussão", traits: ["Escudo", "Dureza 3", "PV 12"], hands: "1" }
+    ],
+    items: [
+      { name: "Mochila de Aventureiro (Adventurer's Pack)", qty: 1, bulk: "1" },
+      { name: "Símbolo Sagrado de Madeira", qty: 1, bulk: "L" },
+      { name: "Kit de Primeiros Socorros (Healer's Toolkit)", qty: 1, bulk: "1" }
+    ],
+    remainingCoins: { gp: 3, sp: 1, cp: 0 }
+  },
+  "Bárbaro (Barbarian)": {
+    name: "Kit Inicial do Bárbaro",
+    armor: "Armadura de Gibão Acolchoado (Hide Armor)",
+    weapons: [
+      { name: "Machado Grande (Greataxe)", category: "Marcial", damage: "1d12 cortante", traits: ["Varrer"], hands: "2" },
+      { name: "Azagaias (Javelins x4)", category: "Simples", damage: "1d6 perfurante", traits: ["Arremesso 30 pés"], hands: "1" }
+    ],
+    items: [
+      { name: "Mochila de Aventureiro (Adventurer's Pack)", qty: 1, bulk: "1" },
+      { name: "Tochas (x5)", qty: 5, bulk: "L" }
+    ],
+    remainingCoins: { gp: 7, sp: 4, cp: 0 }
+  },
+  "Bardo (Bard)": {
+    name: "Kit Inicial do Bardo",
+    armor: "Armadura de Couro Batido (Studded Leather)",
+    weapons: [
+      { name: "Espada Curta (Shortsword)", category: "Marcial", damage: "1d6 perfurante", traits: ["Ágil", "Acurada", "Versátil C"], hands: "1" },
+      { name: "Chicote (Whip)", category: "Marcial", damage: "1d4 cortante", traits: ["Desarmar", "Acurada", "Alcance", "Derrubar", "Não-Letal"], hands: "1" }
+    ],
+    items: [
+      { name: "Mochila de Aventureiro (Adventurer's Pack)", qty: 1, bulk: "1" },
+      { name: "Instrumento Musical Portátil (Alaúde/Flauta)", qty: 1, bulk: "1" }
+    ],
+    remainingCoins: { gp: 4, sp: 6, cp: 0 }
+  },
+  "Druida (Druid)": {
+    name: "Kit Inicial do Druida",
+    armor: "Armadura de Couro (Leather Armor)",
+    weapons: [
+      { name: "Foice Curta (Sickle)", category: "Simples", damage: "1d4 cortante", traits: ["Ágil", "Acurada", "Derrubar"], hands: "1" },
+      { name: "Escudo de Madeira (Wooden Shield)", category: "Simples", damage: "1d4 concussão", traits: ["Escudo"], hands: "1" }
+    ],
+    items: [
+      { name: "Mochila de Aventureiro (Adventurer's Pack)", qty: 1, bulk: "1" },
+      { name: "Foco Místico Druídico (Visco/Azevinho)", qty: 1, bulk: "-" },
+      { name: "Kit de Primeiros Socorros (Healer's Toolkit)", qty: 1, bulk: "1" }
+    ],
+    remainingCoins: { gp: 5, sp: 3, cp: 0 }
+  },
+  "Patrulheiro (Ranger)": {
+    name: "Kit Inicial do Patrulheiro",
+    armor: "Armadura de Couro Batido (Studded Leather)",
+    weapons: [
+      { name: "Arco Longo (Longbow)", category: "Marcial", damage: "1d8 perfurante", traits: ["Distância 100 pés", "Mortal d10", "Voleio 30 pés"], hands: "2" },
+      { name: "Espada Curta (Shortsword)", category: "Marcial", damage: "1d6 perfurante", traits: ["Ágil", "Acurada", "Versátil C"], hands: "1" }
+    ],
+    items: [
+      { name: "Mochila de Aventureiro (Adventurer's Pack)", qty: 1, bulk: "1" },
+      { name: "Aljava com Flechas (x40)", qty: 40, bulk: "L" },
+      { name: "Pederneira e Pederneira", qty: 1, bulk: "-" }
+    ],
+    remainingCoins: { gp: 4, sp: 8, cp: 0 }
+  },
+  "Campeão (Champion)": {
+    name: "Kit Inicial do Campeão",
+    armor: "Armadura de Talas (Splint Mail)",
+    weapons: [
+      { name: "Espada Larga (Bastard Sword)", category: "Marcial", damage: "1d8 cortante", traits: ["Duas Mãos d12"], hands: "1" },
+      { name: "Escudo de Aço (Steel Shield)", category: "Marcial", damage: "1d4 concussão", traits: ["Escudo", "Dureza 5", "PV 20"], hands: "1" }
+    ],
+    items: [
+      { name: "Mochila de Aventureiro (Adventurer's Pack)", qty: 1, bulk: "1" },
+      { name: "Símbolo Sagrado de Madeira", qty: 1, bulk: "L" }
+    ],
+    remainingCoins: { gp: 2, sp: 4, cp: 0 }
+  }
+};
+
+// Catálogo Oficial de Heranças Versáteis Detalhadas (Versatile Heritages)
+PF2E_DATA.versatileHeritagesCatalog = {
+  "Aasimar": {
+    name: "Aasimar",
+    traits: ["Aasimar", "Humanoide", "Celestial"],
+    senses: ["Visão na Penumbra (Low-Light Vision)"],
+    vision: "Visão na Penumbra (Low-Light Vision)",
+    description: "Você descende de seres celestiais, como anjos ou arcontes. Seu sangue sagrado concede beleza etérea e resistência a energias sagradas."
+  },
+  "Tiefling": {
+    name: "Tiefling",
+    traits: ["Tiefling", "Humanoide", "Ínfero", "Demônio"],
+    senses: ["Visão no Escuro (Darkvision)"],
+    vision: "Visão no Escuro (Darkvision)",
+    description: "Marcado pela influência de diabos, demônios ou daemons, seu sangue manifesta chifres, cauda ou olhos incandescentes."
+  },
+  "Dhampir": {
+    name: "Dhampir",
+    traits: ["Dhampir", "Humanoide", "Morto-Vivo Negativo"],
+    senses: ["Visão na Penumbra (Low-Light Vision)"],
+    vision: "Visão na Penumbra (Low-Light Vision)",
+    description: "Filho do beijo de um vampiro, você vive entre a luz e as trevas, sendo curado por energia negativa/vazio."
+  },
+  "Duskwalker": {
+    name: "Duskwalker",
+    traits: ["Duskwalker", "Humanoide", "Psicopompo"],
+    senses: ["Visão na Penumbra (Low-Light Vision)"],
+    vision: "Visão na Penumbra (Low-Light Vision)",
+    description: "Uma alma reencarnada através de um pacto com psicopompos do Purgatório, protegida contra toques de mortos-vivos."
+  },
+  "Changeling": {
+    name: "Changeling",
+    traits: ["Changeling", "Humanoide"],
+    senses: ["Visão no Escuro (Darkvision)"],
+    vision: "Visão no Escuro (Darkvision)",
+    description: "Filha de uma bruxa anciã deixada para ser criada por mortais, manifestando garras afiadas e heterocromia ocular."
+  },
+  "Ifrit": {
+    name: "Ifrit",
+    traits: ["Ifrit", "Humanoide", "Fogo", "Gênio"],
+    senses: ["Visão na Penumbra (Low-Light Vision)"],
+    vision: "Visão na Penumbra (Low-Light Vision)",
+    description: "Tocado pelo Plano Elemental do Fogo e pelos Efreeti, sua pele irradia calor e seu cabelo parece arder em brasa."
+  },
+  "Oread": {
+    name: "Oread",
+    traits: ["Oread", "Humanoide", "Terra", "Gênio"],
+    senses: ["Visão na Penumbra (Low-Light Vision)"],
+    vision: "Visão na Penumbra (Low-Light Vision)",
+    description: "Descendente de seres da Pedra e da Terra, seu corpo possui traços rochosos e firmeza inabalável."
+  },
+  "Sylph": {
+    name: "Sylph",
+    traits: ["Sylph", "Humanoide", "Ar", "Gênio"],
+    senses: ["Visão na Penumbra (Low-Light Vision)"],
+    vision: "Visão na Penumbra (Low-Light Vision)",
+    description: "Fluido e ágil como as correntes de vento elementais, capaz de se mover suavemente sem deixar rastros."
+  },
+  "Undine": {
+    name: "Undine",
+    traits: ["Undine", "Humanoide", "Água", "Gênio"],
+    senses: ["Visão na Penumbra (Low-Light Vision)"],
+    vision: "Visão na Penumbra (Low-Light Vision)",
+    swimSpeed: 15,
+    description: "Nascido das profundezas fluviais e oceânicas, possui membranas interdigitais e facilidade natural para nadar."
+  }
+};
+
+// Catálogo Oficial de Condições de Jogo (Game Conditions)
+PF2E_DATA.conditionsCatalog = {
+  "frightened": { name: "Amedrontado (Frightened)", hasValue: true, maxValue: 4, type: "Status", description: "-X de penalidade de status em todos os testes e CDs. Reduz em 1 no final de cada turno." },
+  "sickened": { name: "Enjoado (Sickened)", hasValue: true, maxValue: 4, type: "Status", description: "-X de penalidade de status em todos os testes e CDs. Não pode beber poções nem ingerir itens enquanto durar." },
+  "clumsy": { name: "Desajeitado (Clumsy)", hasValue: true, maxValue: 4, type: "Status", description: "-X de penalidade de status em testes baseados em Destreza, CA, Reflexos e ataques à distância." },
+  "enfeebled": { name: "Debilitado (Enfeebled)", hasValue: true, maxValue: 4, type: "Status", description: "-X de penalidade de status em testes baseados em Força e rolagens de dano corpo a corpo." },
+  "drained": { name: "Drenado (Drained)", hasValue: true, maxValue: 4, type: "Status", description: "-X de penalidade de status em testes de Fortitude. Reduz o PV máximo em Nível x Valor da condição." },
+  "stupefied": { name: "Estupefato (Stupefied)", hasValue: true, maxValue: 4, type: "Status", description: "-X de penalidade de status em testes mentais (Int, Sab, Car), CD de Magias e Vontade. Teste de concentração CD 5+X ao conjurar." },
+  "offGuard": { name: "Desprevenido (Off-Guard)", hasValue: false, type: "Circunstância", description: "-2 de penalidade de circunstância na Classe de Armadura (CA)." },
+  "prone": { name: "Caído (Prone)", hasValue: false, type: "Circunstância", description: "Fica Desprevenido (-2 CA) e sofre -2 de penalidade de ataque em golpes corpo a corpo. Precisa da ação Levantar." },
+  "blinded": { name: "Cego (Blinded)", hasValue: false, type: "Status", description: "Fica Desprevenido (-2 CA), tudo é terreno difícil e sofre -4 em Percepção visual." },
+  "deafened": { name: "Surdo (Deafened)", hasValue: false, type: "Status", description: "Sofre -2 em Percepção auditiva e falha crítica automática em testes de iniciativa por som." },
+  "immobilized": { name: "Imobilizado (Immobilized)", hasValue: false, type: "Status", description: "Não pode se mover de seu espaço por qualquer ação com o traço Movimento." },
+  "blessed": { name: "Abençoado / Heroísmo (Blessed)", hasValue: false, type: "Status Positivo", description: "+1 de bônus de status em todas as jogadas de ataque." }
+};
+
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = PF2E_DATA;
 }
+
 
