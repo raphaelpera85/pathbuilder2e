@@ -164,7 +164,14 @@ function LibraryPage() {
   const [loading, setLoading] = useState(false);
   const [working, setWorking] = useState<string | null>(null);
   const [authMode, setAuthMode] = useState<"signin" | "signup">("signin");
-  const [email, setEmail] = useState("");
+  const [rememberMe, setRememberMe] = useState(true);
+  const [email, setEmail] = useState(() => {
+    try {
+      return localStorage.getItem("pf2e_remembered_login") || "";
+    } catch {
+      return "";
+    }
+  });
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -211,6 +218,19 @@ function LibraryPage() {
         const next = await signIn(email, password);
         setSession(next);
         setNotice("Conectado com sucesso!");
+      }
+      if (rememberMe) {
+        try {
+          localStorage.setItem("pf2e_remembered_login", email.trim());
+        } catch {
+          // ignore
+        }
+      } else {
+        try {
+          localStorage.removeItem("pf2e_remembered_login");
+        } catch {
+          // ignore
+        }
       }
       setPassword("");
     } catch (err) {
@@ -311,6 +331,16 @@ function LibraryPage() {
                 minLength={6}
                 required
               />
+            </label>
+
+            <label className="auth-remember-label" style={{ display: "flex", alignItems: "center", gap: "8px", cursor: "pointer", fontSize: "13px", color: "var(--pb-text, #cbd5e1)", margin: "4px 0 10px", userSelect: "none" }}>
+              <input
+                type="checkbox"
+                checked={rememberMe}
+                onChange={(e) => setRememberMe(e.target.checked)}
+                style={{ accentColor: "var(--pb-orange, #f97316)", width: "16px", height: "16px", cursor: "pointer" }}
+              />
+              <span>{t("rememberAccount")}</span>
             </label>
 
             <button className="auth-submit-btn" type="submit" disabled={working === "auth"}>

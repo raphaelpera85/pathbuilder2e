@@ -31,7 +31,14 @@ export function AccountPortal() {
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
   const [authMode, setAuthMode] = useState<AuthMode>("signin");
-  const [email, setEmail] = useState("");
+  const [rememberMe, setRememberMe] = useState(true);
+  const [email, setEmail] = useState(() => {
+    try {
+      return localStorage.getItem("pf2e_remembered_login") || "";
+    } catch {
+      return "";
+    }
+  });
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const triggerRef = useRef<HTMLButtonElement>(null);
@@ -137,6 +144,19 @@ export function AccountPortal() {
         setSession(logged);
         setNotice("Conectado com sucesso!");
       }
+      if (rememberMe) {
+        try {
+          localStorage.setItem("pf2e_remembered_login", email.trim());
+        } catch {
+          // ignore
+        }
+      } else {
+        try {
+          localStorage.removeItem("pf2e_remembered_login");
+        } catch {
+          // ignore
+        }
+      }
       setPassword("");
       setOpen(false);
     } catch (caught) {
@@ -220,6 +240,15 @@ export function AccountPortal() {
                 )}
                 <label>{authMode === "signup" ? t("email") : "Usuário ou E-mail"}<input value={email} onChange={(event) => setEmail(event.target.value)} placeholder={authMode === "signup" ? "seu@email.com" : "seu_usuario ou seu@email.com"} required /></label>
                 <label>{t("password")}<input type="password" value={password} onChange={(event) => setPassword(event.target.value)} minLength={6} placeholder="••••••••" required /></label>
+                <label style={{ display: "flex", alignItems: "center", gap: "8px", cursor: "pointer", fontSize: "13px", color: "var(--pb-text, #cbd5e1)", margin: "4px 0 10px", userSelect: "none" }}>
+                  <input
+                    type="checkbox"
+                    checked={rememberMe}
+                    onChange={(e) => setRememberMe(e.target.checked)}
+                    style={{ accentColor: "var(--pb-orange, #f97316)", width: "16px", height: "16px", cursor: "pointer" }}
+                  />
+                  <span>{t("rememberAccount")}</span>
+                </label>
                 <button className="account-primary" disabled={working === "auth"} type="submit">
                   {working === "auth" ? t("wait") : authMode === "signup" ? t("createAccount") : t("signIn")}
                 </button>
