@@ -1,0 +1,210 @@
+import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+
+export type Locale = "pt-BR" | "en" | "es";
+
+const LOCALE_KEY = "pathbuilder.locale";
+const LOCALE_EVENT = "pathbuilder:locale-change";
+
+const messages = {
+  "pt-BR": {
+    language: "Idioma", portuguese: "Português", english: "English", spanish: "Español", menu: "Menu",
+    ancestry: "Ancestralidade", background: "Antecedente", characterClass: "Classe", heritage: "Herança", classFeat: "Talento de Classe",
+    account: "Minha conta", signIn: "Entrar", admin: "Admin", cloud: "Pathbuilder Cloud",
+    yourLibrary: "Sua biblioteca", yourAccount: "Sua conta", close: "Fechar",
+    localMode: "Modo local ativo", localModeDescription: "Configure as variáveis Supabase para habilitar contas e fichas na nuvem.",
+    accountAccess: "Acesso à conta", createAccount: "Criar conta", username: "Usuário", email: "E-mail", password: "Senha",
+    wait: "Aguarde…", adventurer: "Aventureiro", administrator: "Administrador", saving: "Salvando…",
+    saveCurrent: "Salvar ficha atual", newCharacter: "Novo personagem", refresh: "Atualizar", myCharacters: "Meus personagens",
+    loadingSheets: "Carregando suas fichas…", noSheets: "Nenhuma ficha salva", noSheetsDescription: "Abra ou crie um personagem e salve uma cópia na sua conta.",
+    level: "Nível", rulesReview: "Regras a revisar", profileSettings: "Configurações do perfil", updateUsername: "Atualizar usuário",
+    newPassword: "Nova senha", changePassword: "Modificar senha", deleteAccount: "Excluir minha conta", signOut: "Sair desta conta",
+    pickerCompendium: "Compêndio PF2e", searchOptions: "Buscar opções", search: "Buscar...", availableOptions: "Opções disponíveis",
+    noOption: "Nenhuma opção encontrada", searchAnother: "Tente buscar por outro nome.", selectDetails: "Selecione um item para ver os detalhes.",
+    accept: "Aceitar", cancel: "Cancelar", source: "Fonte", uncatalogued: "Ainda não catalogada", baseHp: "PV base",
+    speed: "Velocidade", feet: "pés", hpPerLevel: "PV por nível", keyAbility: "Atributo-chave", damage: "Dano", traits: "Traços",
+    select: "Selecionar", ancestries: "Ancestralidades", classes: "Classes", backgrounds: "Antecedentes", weapons: "Armas",
+    armors: "Armaduras", heritages: "Heranças", archetypes: "Arquétipos", spells: "Magias", rituals: "Rituais", feats: "Talentos", conditions: "Condições", buffs: "Benefícios", size: "Tamanho", configuration: "Configuração", landSpeed: "Deslocamento terrestre", swimSpeed: "Deslocamento de natação", climbSpeed: "Deslocamento de escalada",
+    rank: "Ranque", traditions: "Tradições", castingTime: "Conjuração", primaryCheck: "Teste primário", spellCatalog: "Catálogo de Magias", addManualSpell: "Adicionar Magia Manualmente", addRitual: "Adicionar Ritual", knownSpells: "Magias Conhecidas", knownRituals: "Rituais Aprendidos",
+    navLabel: "Navegação principal", navBuilder: "Construtor", navCompendium: "Compêndio", navRules: "Regras e fontes", navLibrary: "Biblioteca e perfil", navPrivacy: "Privacidade", navAdmin: "Curadoria",
+    compendiumTitle: "Compêndio de criação", compendiumIntro: "Consulte as opções disponíveis no construtor. Registros sem livro e página confirmados permanecem marcados para revisão.",
+    allCategories: "Todas as categorias", results: "resultados", catalogReview: "Requer revisão", catalogVerified: "Fonte Remaster", catalogLegacy: "Fonte pré-Remaster", rulesetRemaster: "Remaster", rulesetLegacy: "Pré-Remaster", rulesetReview: "A revisar", rarityCommon: "Comum", rarityUncommon: "Incomum", rarityRare: "Raro",
+    rulesTitle: "Regras e fontes", rulesIntro: "Referência operacional para criar fichas consistentes e separar conteúdo Remaster, legado e personalizado.",
+    validationTitle: "Validação da ficha", sourcesTitle: "Biblioteca de fontes", sourcesIntro: "Somente metadados locais verificados são exibidos; o portal não reproduz capítulos dos livros.",
+    pages: "páginas", metadataVerified: "Metadados verificados", contentPending: "Conteúdo pendente de catalogação", localLanguage: "Idioma",
+    pageCountVerified: "Total de páginas verificado", languageInferred: "Idioma inferido pelo nome do arquivo",
+    linkedRecords: "registros vinculados",
+    libraryPageTitle: "Biblioteca e perfil", libraryPageIntro: "Crie sua conta, salve personagens privados, altere usuário ou senha e gerencie suas fichas.",
+    openAccount: "Abrir minha conta", privacyTitle: "Privacidade por padrão", privacyCopy: "As fichas na nuvem são protegidas por usuário; o modo local continua disponível sem cadastro.",
+    privacyPageTitle: "Privacidade e dados", privacyPageIntro: "Entenda quais dados ficam no dispositivo, quais podem ir para o Supabase e como manter o controle da sua conta.",
+    privacyLocalTitle: "Modo local", privacyLocalCopy: "Personagens locais e preferência de idioma permanecem no armazenamento deste navegador. Nenhuma conta é necessária.",
+    privacyCloudTitle: "Conta e nuvem", privacyCloudCopy: "Ao habilitar o Supabase, e-mail, usuário e fichas salvas são associados ao identificador autenticado e protegidos por políticas por usuário.",
+    privacyControlTitle: "Seus controles", privacyControlCopy: "No perfil, você pode alterar usuário e senha, excluir fichas individualmente, sair da conta ou solicitar a exclusão da conta e de seus personagens.",
+    privacyBooksTitle: "Livros e compêndio", privacyBooksCopy: "Os PDFs locais não são enviados nem publicados pelo portal. O compêndio guarda apenas metadados, páginas de referência e resumos originais.",
+    adminTitle: "Curadoria do compêndio", adminIntro: "Painel somente leitura para acompanhar cobertura das fontes e registros que ainda exigem validação.",
+    adminRestricted: "Acesso administrativo necessário", adminRestrictedCopy: "Entre com uma conta cujo perfil tenha o papel admin para consultar esta página.",
+    adminLocalCopy: "O Supabase ainda não está configurado neste ambiente; a identidade administrativa não pode ser verificada.",
+    adminVerified: "Registros verificados", adminReview: "Fila de revisão", adminSources: "Fontes parciais", adminReadOnly: "Curadoria somente leitura", adminReadOnlyCopy: "Edição e publicação de regras só serão habilitadas após existir uma API administrativa com auditoria e políticas RLS específicas.",
+    noCatalogResults: "Nenhum registro corresponde aos filtros.", filterCategory: "Filtrar categoria", catalogSearch: "Buscar no compêndio",
+  },
+  en: {
+    language: "Language", portuguese: "Português", english: "English", spanish: "Español", menu: "Menu",
+    ancestry: "Ancestry", background: "Background", characterClass: "Class", heritage: "Heritage", classFeat: "Class Feat",
+    account: "My account", signIn: "Sign in", admin: "Admin", cloud: "Pathbuilder Cloud",
+    yourLibrary: "Your library", yourAccount: "Your account", close: "Close",
+    localMode: "Local mode active", localModeDescription: "Configure the Supabase variables to enable accounts and cloud character sheets.",
+    accountAccess: "Account access", createAccount: "Create account", username: "Username", email: "Email", password: "Password",
+    wait: "Please wait…", adventurer: "Adventurer", administrator: "Administrator", saving: "Saving…",
+    saveCurrent: "Save current sheet", newCharacter: "New character", refresh: "Refresh", myCharacters: "My characters",
+    loadingSheets: "Loading your sheets…", noSheets: "No saved sheets", noSheetsDescription: "Open or create a character and save a copy to your account.",
+    level: "Level", rulesReview: "Rules need review", profileSettings: "Profile settings", updateUsername: "Update username",
+    newPassword: "New password", changePassword: "Change password", deleteAccount: "Delete my account", signOut: "Sign out",
+    pickerCompendium: "PF2e Compendium", searchOptions: "Search options", search: "Search...", availableOptions: "Available options",
+    noOption: "No options found", searchAnother: "Try searching for another name.", selectDetails: "Select an item to view its details.",
+    accept: "Accept", cancel: "Cancel", source: "Source", uncatalogued: "Not catalogued yet", baseHp: "Base HP",
+    speed: "Speed", feet: "feet", hpPerLevel: "HP per level", keyAbility: "Key ability", damage: "Damage", traits: "Traits",
+    select: "Select", ancestries: "Ancestries", classes: "Classes", backgrounds: "Backgrounds", weapons: "Weapons",
+    armors: "Armor", heritages: "Heritages", archetypes: "Archetypes", spells: "Spells", rituals: "Rituals", feats: "Feats", conditions: "Conditions", buffs: "Benefits", size: "Size", configuration: "Configuration", landSpeed: "Land Speed", swimSpeed: "Swim Speed", climbSpeed: "Climb Speed",
+    rank: "Rank", traditions: "Traditions", castingTime: "Casting", primaryCheck: "Primary check", spellCatalog: "Spell Catalog", addManualSpell: "Add Spell Manually", addRitual: "Add Ritual", knownSpells: "Known Spells", knownRituals: "Learned Rituals",
+    navLabel: "Main navigation", navBuilder: "Builder", navCompendium: "Compendium", navRules: "Rules & sources", navLibrary: "Library & profile", navPrivacy: "Privacy", navAdmin: "Curation",
+    compendiumTitle: "Character creation compendium", compendiumIntro: "Browse the options available in the builder. Records without a confirmed book and page remain flagged for review.",
+    allCategories: "All categories", results: "results", catalogReview: "Needs review", catalogVerified: "Remaster source", catalogLegacy: "Pre-Remaster source", rulesetRemaster: "Remaster", rulesetLegacy: "Pre-Remaster", rulesetReview: "Needs review", rarityCommon: "Common", rarityUncommon: "Uncommon", rarityRare: "Rare",
+    rulesTitle: "Rules & sources", rulesIntro: "Operational reference for consistent sheets and clear separation of Remaster, legacy, and custom content.",
+    validationTitle: "Sheet validation", sourcesTitle: "Source library", sourcesIntro: "Only verified local metadata is shown; the portal does not reproduce book chapters.",
+    pages: "pages", metadataVerified: "Metadata verified", contentPending: "Content pending cataloguing", localLanguage: "Language",
+    pageCountVerified: "Page count verified", languageInferred: "Language inferred from filename",
+    linkedRecords: "linked records",
+    libraryPageTitle: "Library & profile", libraryPageIntro: "Create an account, save private characters, change your username or password, and manage your sheets.",
+    openAccount: "Open my account", privacyTitle: "Private by default", privacyCopy: "Cloud sheets are protected per user; local mode remains available without an account.",
+    privacyPageTitle: "Privacy and data", privacyPageIntro: "Learn which data stays on your device, what may be stored in Supabase, and how to keep control of your account.",
+    privacyLocalTitle: "Local mode", privacyLocalCopy: "Local characters and your language preference remain in this browser's storage. No account is required.",
+    privacyCloudTitle: "Account and cloud", privacyCloudCopy: "When Supabase is enabled, email, username, and saved sheets are tied to the authenticated identifier and protected by per-user policies.",
+    privacyControlTitle: "Your controls", privacyControlCopy: "From your profile, you can change username and password, delete individual sheets, sign out, or request deletion of the account and its characters.",
+    privacyBooksTitle: "Books and compendium", privacyBooksCopy: "Local PDFs are neither uploaded nor published by the portal. The compendium stores only metadata, reference pages, and original summaries.",
+    adminTitle: "Compendium curation", adminIntro: "Read-only dashboard for tracking source coverage and records that still require validation.",
+    adminRestricted: "Administrator access required", adminRestrictedCopy: "Sign in with an account whose profile has the admin role to view this page.",
+    adminLocalCopy: "Supabase is not configured in this environment, so administrative identity cannot be verified.",
+    adminVerified: "Verified records", adminReview: "Review queue", adminSources: "Partial sources", adminReadOnly: "Read-only curation", adminReadOnlyCopy: "Rule editing and publishing will only be enabled after an audited admin API and dedicated RLS policies exist.",
+    noCatalogResults: "No records match the filters.", filterCategory: "Filter category", catalogSearch: "Search the compendium",
+  },
+  es: {
+    language: "Idioma", portuguese: "Português", english: "English", spanish: "Español", menu: "Menú",
+    ancestry: "Ascendencia", background: "Trasfondo", characterClass: "Clase", heritage: "Herencia", classFeat: "Dote de clase",
+    account: "Mi cuenta", signIn: "Ingresar", admin: "Admin", cloud: "Pathbuilder Cloud",
+    yourLibrary: "Tu biblioteca", yourAccount: "Tu cuenta", close: "Cerrar",
+    localMode: "Modo local activo", localModeDescription: "Configura las variables de Supabase para habilitar cuentas y fichas en la nube.",
+    accountAccess: "Acceso a la cuenta", createAccount: "Crear cuenta", username: "Usuario", email: "Correo", password: "Contraseña",
+    wait: "Espera…", adventurer: "Aventurero", administrator: "Administrador", saving: "Guardando…",
+    saveCurrent: "Guardar ficha actual", newCharacter: "Nuevo personaje", refresh: "Actualizar", myCharacters: "Mis personajes",
+    loadingSheets: "Cargando tus fichas…", noSheets: "No hay fichas guardadas", noSheetsDescription: "Abre o crea un personaje y guarda una copia en tu cuenta.",
+    level: "Nivel", rulesReview: "Reglas por revisar", profileSettings: "Configuración del perfil", updateUsername: "Actualizar usuario",
+    newPassword: "Nueva contraseña", changePassword: "Cambiar contraseña", deleteAccount: "Eliminar mi cuenta", signOut: "Cerrar sesión",
+    pickerCompendium: "Compendio PF2e", searchOptions: "Buscar opciones", search: "Buscar...", availableOptions: "Opciones disponibles",
+    noOption: "No se encontraron opciones", searchAnother: "Prueba buscar otro nombre.", selectDetails: "Selecciona un elemento para ver los detalles.",
+    accept: "Aceptar", cancel: "Cancelar", source: "Fuente", uncatalogued: "Aún no catalogada", baseHp: "PG base",
+    speed: "Velocidad", feet: "pies", hpPerLevel: "PG por nivel", keyAbility: "Característica clave", damage: "Daño", traits: "Rasgos",
+    select: "Seleccionar", ancestries: "Ascendencias", classes: "Clases", backgrounds: "Trasfondos", weapons: "Armas",
+    armors: "Armaduras", heritages: "Herencias", archetypes: "Arquetipos", spells: "Conjuros", rituals: "Rituales", feats: "Dotes", conditions: "Condiciones", buffs: "Beneficios", size: "Tamaño", configuration: "Configuración", landSpeed: "Velocidad terrestre", swimSpeed: "Velocidad de nado", climbSpeed: "Velocidad de trepar",
+    rank: "Rango", traditions: "Tradiciones", castingTime: "Lanzamiento", primaryCheck: "Prueba principal", spellCatalog: "Catálogo de Conjuros", addManualSpell: "Añadir Conjuro Manualmente", addRitual: "Añadir Ritual", knownSpells: "Conjuros Conocidos", knownRituals: "Rituales Aprendidos",
+    navLabel: "Navegación principal", navBuilder: "Creador", navCompendium: "Compendio", navRules: "Reglas y fuentes", navLibrary: "Biblioteca y perfil", navPrivacy: "Privacidad", navAdmin: "Curaduría",
+    compendiumTitle: "Compendio de creación", compendiumIntro: "Consulta las opciones disponibles en el creador. Los registros sin libro y página confirmados permanecen marcados para revisión.",
+    allCategories: "Todas las categorías", results: "resultados", catalogReview: "Requiere revisión", catalogVerified: "Fuente Remaster", catalogLegacy: "Fuente pre-Remaster", rulesetRemaster: "Remaster", rulesetLegacy: "Pre-Remaster", rulesetReview: "Por revisar", rarityCommon: "Común", rarityUncommon: "Poco común", rarityRare: "Raro",
+    rulesTitle: "Reglas y fuentes", rulesIntro: "Referencia operativa para crear fichas consistentes y separar contenido Remaster, legado y personalizado.",
+    validationTitle: "Validación de la ficha", sourcesTitle: "Biblioteca de fuentes", sourcesIntro: "Solo se muestran metadatos locales verificados; el portal no reproduce capítulos de los libros.",
+    pages: "páginas", metadataVerified: "Metadatos verificados", contentPending: "Contenido pendiente de catalogación", localLanguage: "Idioma",
+    pageCountVerified: "Total de páginas verificado", languageInferred: "Idioma inferido por el nombre del archivo",
+    linkedRecords: "registros vinculados",
+    libraryPageTitle: "Biblioteca y perfil", libraryPageIntro: "Crea tu cuenta, guarda personajes privados, cambia tu usuario o contraseña y administra tus fichas.",
+    openAccount: "Abrir mi cuenta", privacyTitle: "Privacidad por defecto", privacyCopy: "Las fichas en la nube están protegidas por usuario; el modo local sigue disponible sin registro.",
+    privacyPageTitle: "Privacidad y datos", privacyPageIntro: "Descubre qué datos quedan en tu dispositivo, cuáles pueden guardarse en Supabase y cómo mantener el control de tu cuenta.",
+    privacyLocalTitle: "Modo local", privacyLocalCopy: "Los personajes locales y tu idioma permanecen en el almacenamiento de este navegador. No se necesita una cuenta.",
+    privacyCloudTitle: "Cuenta y nube", privacyCloudCopy: "Al habilitar Supabase, el correo, el usuario y las fichas guardadas se asocian al identificador autenticado y se protegen con políticas por usuario.",
+    privacyControlTitle: "Tus controles", privacyControlCopy: "Desde el perfil puedes cambiar usuario y contraseña, eliminar fichas, cerrar sesión o solicitar la eliminación de la cuenta y sus personajes.",
+    privacyBooksTitle: "Libros y compendio", privacyBooksCopy: "Los PDF locales no son enviados ni publicados por el portal. El compendio guarda solo metadatos, páginas de referencia y resúmenes originales.",
+    adminTitle: "Curaduría del compendio", adminIntro: "Panel de solo lectura para acompañar la cobertura de fuentes y los registros que aún requieren validación.",
+    adminRestricted: "Se requiere acceso administrativo", adminRestrictedCopy: "Inicia sesión con una cuenta cuyo perfil tenga el rol admin para consultar esta página.",
+    adminLocalCopy: "Supabase no está configurado en este entorno; no se puede verificar la identidad administrativa.",
+    adminVerified: "Registros verificados", adminReview: "Cola de revisión", adminSources: "Fuentes parciales", adminReadOnly: "Curaduría de solo lectura", adminReadOnlyCopy: "La edición y publicación de reglas solo se habilitará cuando exista una API administrativa auditada y políticas RLS específicas.",
+    noCatalogResults: "Ningún registro coincide con los filtros.", filterCategory: "Filtrar categoría", catalogSearch: "Buscar en el compendio",
+  },
+} as const;
+
+export type MessageKey = keyof typeof messages["pt-BR"];
+
+const legacy: Record<string, MessageKey> = {
+  "Menu": "menu", "Novo Personagem": "newCharacter", "Ancestralidade": "ancestry", "Antecedente": "background",
+  "Classe": "characterClass", "Herança": "heritage", "Talento de Classe": "classFeat", "Nível": "level", "Armas": "weapons",
+  "Armaduras": "armors", "Condições": "conditions", "Salvar ficha atual": "saveCurrent", "Configurações do perfil": "profileSettings",
+  "Aceitar": "accept", "Cancelar": "cancel", "Buscar...": "search", "Compêndio PF2e": "pickerCompendium",
+  "Catálogo de Magias": "spellCatalog", "Adicionar Magia Manualmente": "addManualSpell", "Adicionar Ritual": "addRitual",
+  "Magias Conhecidas": "knownSpells", "Rituais Aprendidos": "knownRituals",
+};
+
+const originalText = new WeakMap<Text, string>();
+let lastLegacyLocale: Locale | null = null;
+
+export function getStoredLocale(): Locale {
+  const value = typeof window !== "undefined" ? window.localStorage?.getItem(LOCALE_KEY) : null;
+  return value === "en" || value === "es" || value === "pt-BR" ? value : "pt-BR";
+}
+
+export function translate(locale: Locale, key: MessageKey): string {
+  return messages[locale][key] ?? messages["pt-BR"][key];
+}
+
+export function applyLegacyTranslations(locale: Locale) {
+  if (lastLegacyLocale === locale) return;
+  lastLegacyLocale = locale;
+  document.documentElement.lang = locale;
+  document.title = locale === "pt-BR" ? "Pathbuilder 2e Local — Construtor de Personagens PF2e" : locale === "en" ? "Pathbuilder 2e Local — PF2e Character Builder" : "Pathbuilder 2e Local — Creador de Personajes PF2e";
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  let node: Text | null;
+  while ((node = walker.nextNode() as Text | null)) {
+    const parent = node.parentElement;
+    if (!parent || parent.closest("script, style, textarea, #react-account-root, #react-modal-root, #react-portal-root")) continue;
+    const base = originalText.get(node) ?? node.data;
+    const trimmed = base.trim();
+    const key = legacy[trimmed];
+    if (!key) continue;
+    originalText.set(node, base);
+    node.data = base.replace(trimmed, translate(locale, key));
+  }
+}
+
+interface I18nValue { locale: Locale; setLocale: (locale: Locale) => void; t: (key: MessageKey) => string }
+const I18nContext = createContext<I18nValue | null>(null);
+
+export function I18nProvider({ children }: { children: ReactNode }) {
+  const [locale, setLocaleState] = useState<Locale>(getStoredLocale);
+  const setLocale = useCallback((next: Locale) => {
+    window.localStorage?.setItem(LOCALE_KEY, next);
+    setLocaleState(next);
+    window.dispatchEvent(new CustomEvent(LOCALE_EVENT, { detail: next }));
+  }, []);
+  useEffect(() => {
+    applyLegacyTranslations(locale);
+    const sync = (event: Event) => setLocaleState((event as CustomEvent<Locale>).detail);
+    window.addEventListener(LOCALE_EVENT, sync);
+    return () => window.removeEventListener(LOCALE_EVENT, sync);
+  }, [locale]);
+  const value = useMemo<I18nValue>(() => ({ locale, setLocale, t: (key) => translate(locale, key) }), [locale, setLocale]);
+  return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
+}
+
+export function useI18n() {
+  const value = useContext(I18nContext);
+  if (!value) throw new Error("useI18n must be used inside I18nProvider");
+  return value;
+}
+
+export function LocaleSwitcher() {
+  const { locale, setLocale, t } = useI18n();
+  return (
+    <label className="locale-switcher">
+      <span className="sr-only">{t("language")}</span>
+      <span aria-hidden="true">🌐</span>
+      <select value={locale} onChange={(event) => setLocale(event.target.value as Locale)} aria-label={t("language")}>
+        <option value="pt-BR">PT</option><option value="en">EN</option><option value="es">ES</option>
+      </select>
+    </label>
+  );
+}

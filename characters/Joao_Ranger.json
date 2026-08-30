@@ -1,0 +1,183 @@
+{
+  "id": "Joao_Ranger",
+  "name": "João",
+  "title": "O Caçador das Terras Ermas & O Bode Negro",
+  "level": 1,
+  "ancestry": "Humano",
+  "heritage": "Humano Versátil",
+  "background": "Batedor das Fronteiras Selvagens",
+  "class": "Patrulheiro (Ranger)",
+  "subclass": "Vantagem: Precisão (Precision)",
+  "deity": "Erastil / Espíritos da Floresta",
+  "alignment": "Neutro e Bom",
+  "size": "Médio",
+  "speedBonus": 5,
+  "bonusHp": 2,
+  "currentHp": 22,
+  "tempHp": 0,
+  "shieldRaised": false,
+  "shieldBonus": 2,
+  "abilities": {
+    "str": 14,
+    "dex": 18,
+    "con": 14,
+    "int": 10,
+    "wis": 14,
+    "cha": 8
+  },
+  "savingThrows": {
+    "fortitude": "Especialista",
+    "reflex": "Especialista",
+    "will": "Treinado"
+  },
+  "perceptionRank": "Especialista",
+  "classDcRank": "Treinado",
+  "armorProficiencies": {
+    "Sem Armadura": "Treinado",
+    "Leve": "Treinado",
+    "Média": "Treinado",
+    "Pesada": "Destreinado"
+  },
+  "equippedArmor": {
+    "name": "Armadura de Couro Batido",
+    "category": "Leve",
+    "acBonus": 2,
+    "dexCap": 3,
+    "checkPenalty": 0,
+    "speedPenalty": 0,
+    "strReq": 10,
+    "bulk": 1
+  },
+  "weaponProficiencies": {
+    "Simples": "Treinado",
+    "Marcial": "Treinado",
+    "Desarmado": "Treinado",
+    "Avançada": "Destreinado"
+  },
+  "weapons": [
+    {
+      "name": "Arco Longo Composto",
+      "category": "Marcial",
+      "damage": "1d8",
+      "damageType": "Perfuração",
+      "damageBonus": 1,
+      "itemBonus": 0,
+      "traits": ["Propulsivo", "Mortal d10", "Voleio 30 pés", "Alcance 100 pés"],
+      "bulk": 2
+    },
+    {
+      "name": "Faca de Caça (Kukri)",
+      "category": "Marcial",
+      "damage": "1d6",
+      "damageType": "Cortante",
+      "damageBonus": 2,
+      "itemBonus": 0,
+      "traits": ["Ágil", "Acurada (Finesse)", "Desarmar", "Versátil P"],
+      "bulk": "L"
+    },
+    {
+      "name": "Machadinha de Trilha",
+      "category": "Marcial",
+      "damage": "1d6",
+      "damageType": "Cortante",
+      "damageBonus": 2,
+      "itemBonus": 0,
+      "traits": ["Ágil", "Arremesso 10 pés", "Varredura"],
+      "bulk": "L"
+    },
+    {
+      "name": "Chifrada de Bóreas (Bode Montês)",
+      "category": "Desarmado",
+      "damage": "1d6",
+      "damageType": "Impacto",
+      "damageBonus": 3,
+      "itemBonus": 0,
+      "traits": ["Empurrão (Shove)", "Precisão +1d8"],
+      "bulk": "-"
+    }
+  ],
+  "skills": {
+    "acrobatics": "Treinado",
+    "arcana": "Destreinado",
+    "athletics": "Treinado",
+    "crafting": "Destreinado",
+    "deception": "Destreinado",
+    "diplomacy": "Destreinado",
+    "intimidation": "Destreinado",
+    "medicine": "Treinado",
+    "nature": "Treinado",
+    "occultism": "Destreinado",
+    "performance": "Destreinado",
+    "religion": "Destreinado",
+    "society": "Destreinado",
+    "stealth": "Treinado",
+    "survival": "Treinado",
+    "thievery": "Treinado"
+  },
+  "loreSkills": [
+    { "name": "Saber das Terras Ermas (Wilderness Lore)", "rank": "Treinado" }
+  ],
+  "feats": [
+    {
+      "name": "Ambição Natural ➔ Companheiro Animal (Animal Companion)",
+      "type": "Talento Ancestral Humano",
+      "level": 1,
+      "actions": "Passiva",
+      "description": "Você possui um vínculo com o colossal Bode de Guerra 'Bóreas' (CA 16, 16 PV, Chifrada +6, 1d6+3 Impacto + Empurrão)."
+    },
+    {
+      "name": "Tiro do Caçador (Hunted Shot)",
+      "type": "Talento de Classe (Patrulheiro)",
+      "level": 1,
+      "actions": "1 Ação",
+      "description": "Dispare 2 flechas com o arco contra a sua Presa Caçada por apenas 1 ação."
+    },
+    {
+      "name": "Pés Ligeiros (Fleet)",
+      "type": "Talento Geral",
+      "level": 1,
+      "actions": "Passiva",
+      "description": "+5 pés no deslocamento base permanente (Velocidade total de 35 pés)."
+    },
+    {
+      "name": "Rastreio Experiente (Experienced Tracker)",
+      "type": "Talento de Perícia",
+      "level": 1,
+      "actions": "Passiva",
+      "description": "Rastreia alvos em velocidade máxima sem sofrer penalidades de movimento."
+    }
+  ],
+  "classFeatures": [
+    {
+      "name": "Caçar Presa (Hunt Prey)",
+      "description": "[1 Ação] Designa uma criatura que você possa ver ou rastrear. Dobra o alcance do arco, +2 em Percepção/Sobrevivência contra o alvo e ativa a Vantagem do Caçador."
+    },
+    {
+      "name": "Vantagem do Caçador: Precisão (Precision Edge)",
+      "description": "O primeiro golpe acertado na rodada por você OU pelo seu companheiro animal Bóreas contra a Presa Caçada causa +1d8 de dano de precisão."
+    },
+    {
+      "name": "Comandar Animal (Command an Animal)",
+      "description": "[1 Ação] Você comanda Bóreas com Natureza, concedendo 2 ações para ele se mover e chifrar ou usar benefício de suporte."
+    }
+  ],
+  "spells": [],
+  "inventory": [
+    { "name": "Arco Longo Composto Reforçado", "qty": 1, "bulk": 2, "equipped": true },
+    { "name": "Aljava com 40 Flechas de Aço", "qty": 1, "bulk": 1, "equipped": true },
+    { "name": "Faca de Caça Kukri", "qty": 1, "bulk": "L", "equipped": true },
+    { "name": "Armadura de Couro Batido", "qty": 1, "bulk": 1, "equipped": true },
+    { "name": "Chapéu de Abas Largas de Couro de Búfalo", "qty": 1, "bulk": "L", "equipped": true },
+    { "name": "Manto Ghillie de Camuflagem Florestal", "qty": 1, "bulk": 1, "equipped": true },
+    { "name": "Colar com Amuleto de Crânio Protetor", "qty": 1, "bulk": "-", "equipped": true },
+    { "name": "Mochila de Batedor (Corda 15m, Ração, Pederneira)", "qty": 1, "bulk": 1, "equipped": true }
+  ],
+  "coins": {
+    "pl": 0,
+    "gp": 3,
+    "sp": 8,
+    "cp": 0
+  },
+  "appearance": "Rastreador de barba e cabelos ruivos acobreados com tranças tribais e contas de osso. Traja manto de camuflagem orgânica de folhagens e agulhas de pinheiro, chapéu de couro de abas largas cobrindo os olhos atentos, sempre acompanhado de seu colossal carneiro negro Bóreas.",
+  "backstory": "Veterano das montanhas e florestas selvagens de Taldor, João conhece cada trilha e ravina oculta. Criou um forte laço espiritual com Bóreas após salvá-lo em uma fenda rochosa. Atua como os olhos e sentinela silenciosa do grupo, desferindo saraivadas mortais com seu arco composto enquanto o bode atropela e dispersa ameaças."
+}

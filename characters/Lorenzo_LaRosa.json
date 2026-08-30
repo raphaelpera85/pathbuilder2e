@@ -1,0 +1,174 @@
+{
+  "id": "Lorenzo_LaRosa",
+  "name": "Lorenzo LaRosa",
+  "title": "A Rosa de Aço de Oppara",
+  "level": 1,
+  "ancestry": "Humano",
+  "heritage": "Humano Versátil",
+  "background": "Duelista de Oppara",
+  "class": "Espadachim",
+  "subclass": "Esgrimista (Fencer)",
+  "deity": "Cayden Cailean / Firebrands",
+  "alignment": "Caótico e Bom",
+  "size": "Médio",
+  "speedBonus": 5,
+  "bonusHp": 0,
+  "currentHp": 20,
+  "tempHp": 0,
+  "shieldRaised": false,
+  "shieldBonus": 2,
+  "abilities": {
+    "str": 10,
+    "dex": 18,
+    "con": 14,
+    "int": 10,
+    "wis": 12,
+    "cha": 16
+  },
+  "savingThrows": {
+    "fortitude": "Treinado",
+    "reflex": "Especialista",
+    "will": "Especialista"
+  },
+  "perceptionRank": "Especialista",
+  "classDcRank": "Treinado",
+  "armorProficiencies": {
+    "Sem Armadura": "Treinado",
+    "Leve": "Treinado",
+    "Média": "Destreinado",
+    "Pesada": "Destreinado"
+  },
+  "equippedArmor": {
+    "name": "Couro Batido Sob Medida",
+    "category": "Leve",
+    "acBonus": 1,
+    "dexCap": 4,
+    "checkPenalty": 0,
+    "speedPenalty": 0,
+    "strReq": 10,
+    "bulk": 1
+  },
+  "weaponProficiencies": {
+    "Simples": "Treinado",
+    "Marcial": "Treinado",
+    "Desarmado": "Treinado",
+    "Avançada": "Destreinado"
+  },
+  "weapons": [
+    {
+      "name": "Rapieira da Casa LaRosa",
+      "category": "Marcial",
+      "damage": "1d6",
+      "damageType": "Perfuração",
+      "damageBonus": 0,
+      "itemBonus": 0,
+      "traits": ["Acurada (Finesse)", "Mortal d8", "Desarmar"],
+      "bulk": 1
+    },
+    {
+      "name": "Adaga de Duelo (Main-gauche)",
+      "category": "Simples",
+      "damage": "1d4",
+      "damageType": "Perfuração/Cortante",
+      "damageBonus": 0,
+      "itemBonus": 0,
+      "traits": ["Ágil", "Acurada (Finesse)", "Aparar (Parry)", "Desarmar", "Versátil C"],
+      "bulk": "L"
+    },
+    {
+      "name": "Pistola de Duelo",
+      "category": "Marcial",
+      "damage": "1d6",
+      "damageType": "Perfuração",
+      "damageBonus": 0,
+      "itemBonus": 0,
+      "traits": ["Concussiva", "Fatal d10", "Recarga 1", "Alcance 60 pés"],
+      "bulk": 1
+    }
+  ],
+  "skills": {
+    "acrobatics": "Treinado",
+    "arcana": "Destreinado",
+    "athletics": "Treinado",
+    "crafting": "Treinado",
+    "deception": "Treinado",
+    "diplomacy": "Treinado",
+    "intimidation": "Treinado",
+    "medicine": "Destreinado",
+    "nature": "Destreinado",
+    "occultism": "Destreinado",
+    "performance": "Treinado",
+    "religion": "Destreinado",
+    "society": "Treinado",
+    "stealth": "Treinado",
+    "survival": "Destreinado",
+    "thievery": "Destreinado"
+  },
+  "loreSkills": [
+    { "name": "Saber de Duelo (Dueling Lore)", "rank": "Treinado" },
+    { "name": "Saber de Oppara (Oppara Lore)", "rank": "Treinado" }
+  ],
+  "feats": [
+    {
+      "name": "Palavra Mordaz (Bon Mot)",
+      "type": "Talento de Perícia (Diplomacia)",
+      "level": 1,
+      "actions": "1 Ação",
+      "description": "Insulte um oponente elegante com Diplomacia vs CD de Vontade. Sucesso: -2 penalidade de status em Percepção e Vontade por 1 minuto."
+    },
+    {
+      "name": "Aparar em Duelo (Dueling Parry)",
+      "type": "Talento de Classe (Espadachim)",
+      "level": 1,
+      "actions": "1 Ação",
+      "description": "Enquanto empunha uma arma em uma mão e a outra está livre ou com capa, ganha +2 de circunstância na CA até seu próximo turno."
+    },
+    {
+      "name": "Cair Rolando por Trás (Tumble Behind)",
+      "type": "Talento de Classe (Espadachim)",
+      "level": 1,
+      "actions": "Passiva",
+      "description": "Ao passar uma cambalhota (Tumble Through) por um inimigo com sucesso, ele fica Desprevenido (Off-Guard, -2 CA) contra seu próximo ataque."
+    },
+    {
+      "name": "Pés Ligeiros (Fleet)",
+      "type": "Talento Geral",
+      "level": 1,
+      "actions": "Passiva",
+      "description": "+5 pés no deslocamento base permanente (Velocidade 30ft, sobe para 35ft com Garbo)."
+    }
+  ],
+  "classFeatures": [
+    {
+      "name": "Garbo (Panache)",
+      "description": "Ganha Garbo ao ter sucesso em Fintar, Passar Cambalhota ou façanhas audaciosas. Concede +5ft de velocidade, +2 de dano de precisão em armas de acuidade e acesso aos Finalizadores."
+    },
+    {
+      "name": "Finalizador Confiante (Confident Finisher)",
+      "description": "[1 Ação] Golpe que gasta o Garbo e causa +2d6 de dano de precisão. Mesmo se você errar (falha normal), o alvo sofre metade do dano de precisão (+1d6)."
+    },
+    {
+      "name": "Estilo Esgrimista (Fencer)",
+      "description": "Ao Fintar (Feint) com sucesso, o oponente fica Desprevenido (-2 CA) contra você até o fim do turno (ou fim do próximo turno dele em Sucesso Crítico)."
+    }
+  ],
+  "spells": [],
+  "inventory": [
+    { "name": "Rapieira da Casa LaRosa", "qty": 1, "bulk": 1, "equipped": true },
+    { "name": "Adaga de Duelo (Main-gauche)", "qty": 1, "bulk": "L", "equipped": true },
+    { "name": "Armadura de Couro Batido Sob Medida", "qty": 1, "bulk": 1, "equipped": true },
+    { "name": "Capa de Duelo dos Firebrands", "qty": 1, "bulk": "L", "equipped": true },
+    { "name": "Kit de Disfarce com Bigodes Falsos Extras", "qty": 1, "bulk": 1, "equipped": false },
+    { "name": "Broche de Prata da Rosa (Herança do Irmão Marco)", "qty": 1, "bulk": "-", "equipped": true },
+    { "name": "Fragmento do Livro-Caixa dos Vannisar", "qty": 1, "bulk": "-", "equipped": false },
+    { "name": "Mochila de Aventureiro", "qty": 1, "bulk": 1, "equipped": true }
+  ],
+  "coins": {
+    "pl": 0,
+    "gp": 3,
+    "sp": 5,
+    "cp": 0
+  },
+  "appearance": "Jovem taldoriano elegante com cabelos escuros ondulados, bigode fino impecável, capa de duelo forrada em bordô com broche de rosa de prata.",
+  "backstory": "Nascido na Casa LaRosa de Oppara, artesãos alfaiates e duelistas refinados. Após a misteriosa desaparição de seu irmão Marco LaRosa em meio a uma conspiração com a nobreza corrupta dos Vannisar, Lorenzo aliou-se aos Firebrands para combater tiranos e defender os fracos com floreios teatrais e lâminas precisas."
+}

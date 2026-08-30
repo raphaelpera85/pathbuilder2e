@@ -1,0 +1,4350 @@
+[
+  {
+    "name": "Character Name",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "Player Name",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "Ancestry",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "Background",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "Class",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "Heritage and Traits",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "Size",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "Background Notes",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "Class Notes",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "Hardness Max HP",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "Temporary HP",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "Current HP",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "B",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "P",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "S",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "B_2",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "P_2",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "S_2",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "B_3",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "P_3",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "S_3",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "B_4",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "P_4",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "S_4",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "B_5",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "P_5",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "S_5",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "Attitude",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "Deity or Philosophy",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "Edicts",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "Anathema",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "Likes",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "Dislikes",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "Catchphrases",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "Notes",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "Allies",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "Enemies",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "Organizations",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "freeac",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "reactio",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "freeac_2",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "reactio_2",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "freeac_3",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "reactio_3",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "freeac_4",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "reactio_4",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "Magical Tradition",
+    "type": "PDFRadioGroup"
+  },
+  {
+    "name": "DEXTERITY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "AC",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SHIELD",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "HP",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "MAX HP",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "LIGHT TRAINED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "LIGHT EXPERT",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "LIGHT MASTER",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "MEDIUM TRAINED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "MEDIUM EXPERT",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "MEDIUM MASTER",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "MEDIUM LEGENDARY",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "HEAVY TRAINED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "HEAVY EXPERT",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "HEAVY MASTER",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "FORTITUDE",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "REFLEX",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "FORTITUDE TRAINED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "FORTITUDE EXPERT",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "FORTITUDE MASTER",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "REFLEX EXPERT",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "REFLEX MASTER",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "WILL TRAINED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "WILL EXPERT",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "WILL MASTER",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "WILL LEGENDARY",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "PROFICIENCY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CONSTITUTION",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WISDOM",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "PROFICIENCY3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WILL",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WOUNDED",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "RESISTANCE AND IMMUNITIES",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CONDITIONS",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "UNARMORED TRAINED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "UNARMORED LEGENDARY",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "UNARMORED EXPERT",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "UNARMORED MASTER",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "ACROBATICS",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "ACROBATICS TRAINED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "ACROBATICS LEGENDARY",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "ACROBATICS EXPERT",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "ACROBATICS MASTER",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "ARCANA TRAINED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "ARCANA EXPERT",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "ARCANA MASTER",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "ARCANA",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "ATHLETICS",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CRAFTING",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "DECEPTION",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "DIPLOMACY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INTIMIDATION",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "LORE1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "LORE2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "MEDICINE",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "NATURE",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "OCCULTISM",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "PERFORMANCE",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "RELIGION",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SOCIETY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "STEALTH",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SURVIVAL",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "PROFICIENCY2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "ITEM2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "ATHELETICS TRAINED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "ATHELETICS EXPERT",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "CRAFTING TRAINED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "CRAFTING EXPERT",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "ATHELETICS MASTER",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "ATHELETICS LEGENDARY",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "DECEPTION TRAINED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "DECEPTION EXPERT",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "DECEPTION MASTER",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "DECEPTION LEGENDARY",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "DIPLOMACY TRAINED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "DIPLOMACY EXPERT",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "DIPLOMACY MASTER",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "DIPLOMACY LEGENDARY",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "INTIMIDATION TRAINED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "INTIMIDATION EXPERT",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "INTIMIDATION MASTER",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "INTIMIDATION LEGENDARY",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "LORE1 TRAINED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "LORE1 EXPERT",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "LORE1 LEGENDARY",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "LORE1 MASTER",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "LORE2 TRAINED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "LORE2 EXPERT",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "LORE2 MASTER",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "LORE2 LEGENDARY",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "MEDECINE TRAINED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "MEDICINE EXPERT",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "MEDICINE MASTER",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "MEDICINE LEGENDARY",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "NATURE TRAINED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "NATURE EXPERT",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "NATURE MASTER",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "NATURE LEGENDARY",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "OCCULTISM TRAINED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "PERFORMANCE TRAINED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "OCCULTISM EXPERT",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "OCCULTISM MASTER",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "OCCULTISM LEGENDARY",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "RELIGION TRAINED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "RELIGION EXPERT",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "RELIGION MASTER",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "RELIGION LEGENDARY",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SOCIETY TRAINED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SOCIETY EXPERT",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SOCIETY MASTER",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SOCIETY LEGENDARY",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "STEALTH TRAINED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "STEALTH EXPERT",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "STEALTH MASTER",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "STEALTH LEGENDARY",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SURVIVAL TRAINED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SURVIVAL EXPERT",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SURVIVAL MASTER",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SURVIVAL LEGENDARY",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "THIEVERY TRAINED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "THIEVERY EXPERT",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "THIEVERY MASTER",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "PERCEPTION",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "PERCEPTION TRAINED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "PERCEPTION EXPERT",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "PERCEPTION MASTER",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "PERCEPTION WISDOM",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "PERCEPTION PROFICIENCY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPEED",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS DC",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS DC KEY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS DC PROFICIENCY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "UNARMED TRAINED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "UNARMED EXPERT",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "UNARMED MASTER",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "UNARMED LEGENDARY",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SIMPLE WEAPONS TRAINED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SIMPLE WEAPONS EXPERT",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SIMPLE WEAPONS MASTER",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SIMPLE WEAPONS LEGENDARY",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "MARTIAL WEAPONS TRAINED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "MARTIAL WEAPONS EXPERT",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "MARTIAL WEAPONS MASTER",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "ADVANCED WEAPON TRAINED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "ADVANCED WEAPON EXPERT",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "ADVANCED WEAPON MASTER",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "ADVANCED WEAPON LEGENDARY",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "OTHER WEAPONS TRAINED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "OTHER WEAPONS EXPERT",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "OTHER WEAPONS MASTER",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "WISDOM STAT",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CHARISMA STAT",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INTELLIGENCE STAT",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CONSTITUTION STAT",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "DEXTERITY STAT",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "STRENGTH STAT",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "MAXIMUM HIT POINTS",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "AC CALCULATION 3 ITEM",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "AC CALCULATION 2 PROFICIENCY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "AC CALCULATION 1 DEXTERITY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "LIGHT LEGENDARY",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "FORTITUDE LEGENDARY",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "REFLEX TRAINED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "REFLEX LEGENDARY",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "DEFENSE NOTES",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "ACROBATICS ARMOR",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "ACROBATICS ITEM",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "ACROBATICS PROFICIENCY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "ACROBATICS DEXTERITY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "ARCANA INTELLIGENCE",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "ARCANA PROFICIENCY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "ARCANA ITEM",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "ATHLETICS STRENGTH",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "ATHLETICS ARMOR",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "ATHLETICS PROFICIENCY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "ATHLETICS ITEM",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CRAFTING INTELLIGENCE",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CRAFTING MASTER",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "CRAFTING LEGENDARY",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "CRAFTING PROFICIENCY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CRAFTING ITEM",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "DECEPTION CHARISMA",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "DECEPTION PROFICIENCY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "DECEPTION ITEM",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "DIPLOMACY CHARISMA",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "DIPLOMACY PROFICIENCY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "DIPLOMACY ITEM",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INTIMIDATION CHARISMA",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INTIMIDATION PROFICIENCY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INTIMIDATION ITEM",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "LORE CATAGORY 1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "LORE 1 INTELLIGENCE",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "LORE 1 PFOCIENCY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "LORE 1 ITEM",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "LORE CATEGORY 2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "LORE CATEGORY 2 ITENLLIGENCE",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "LORE 2 PROFICIENCY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "LORE 2 ITEM",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "MEDICINE WISDOM",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "MEDICINE PROFICIENCY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "MEDICINE ITEM",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "NATURE WISDOM",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "NATURE PROFICIENCY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "NATURE ITEM",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "OCCULTISM INTELLIGENCE",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "OCCULTISM PROFICIENCY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "OCCULTISM ITEM",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "PERFORMANCE CHARISMA",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "PERFORMANCE PROFICIENCY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "PERFORMANCE ITEM",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "RELIGION WISDOM",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "RELIGION PROFICIENCY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "RELIGION ITEM",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SOCIETY INTELLIGENCE",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SOCIETY PROFICIENCY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SOCIETY ITEM",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "STEALTH DEXTERITY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "STEALTH PROFICIENCY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "STEALTH ITEM",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "STEALTH ARMOR",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SURVIVAL WISDOM",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SURVIVAL PROFICIENCY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SURVIVAL ITEM",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "THIEVERY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "THIEVERY DEXTERITY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "THIEVERY PROFICIENCY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "THIEVERY ITEM",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "THIEVERY ARMOR",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "THIEVERY LEGENDARY",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "PERCEPTION LEGENDARY",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "PERCEPTION ITEM",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL NOTES",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SENSES AND NOTES",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "LANGUAGES",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPECIAL MOVEMENT",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "MELEE STRIKE 1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "MELEE STRIKE 1 ATTACK BONUS",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "MELEE STRIKE 1 STRENGTH",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "MELEE STRIKE 1 PROFICIENCY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "MELEE STRIKE 1 ITEM",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "MELEE STRIKE 1 DAMAGE",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "MELEE STRIKE 2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "MELEE STRIKE 2 ATTACK BONUS",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "MELEE STRIKE 2 STRENGTH",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "MELEE STRIKE 2 PROFICIENCY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "MELEE STRIKE 2 ITEM",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "MELEE STRIKE 2 DAMAGE",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "MELEE STRIKE 3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "MELEE STRIKE 3 ATTACK BONUS",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "MELEE STRIKE 3 ITEM BONUS",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "MELEE STRIKE 3 STRENGTH",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "MELEE STRIKE 3 PROFICIENCY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "MELEE STRIKE 3 DAMAGE",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "RANGED STRIKE 4",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "RANGED STRIKE 4 ATTACK BONUS",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "RANGED STRIKE 4 DEXTERITY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "RANGED STRIKE 4 PROFICIENCY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "RANGED STRIKE 4 ITEM BONUS",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "RANGED STRIKE 4 DAMAGE",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "RANGED STRIKE 5",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "RANGED STRIKE 5 ATTACK BONUS",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "RANGED STRIKE 5 DEXTERITY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "RANGED STRIKE 5 PROFICIENCY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "RANGED STRIKE 5 ITEM",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "RANGED STRIKE 5 DAMAGE",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "MELEE STRIKE 1 TRAITS AND NOTES",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "MELEE STRIKE 2 TRAITS AND NOTES",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "MELEE STRIKE 3 TRAITS AND NOTES",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "RANGED STRIKE 4 TRAITS AND NOTES",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "RANGED STRIKE 5 TRAITS AND NOTES",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "UNARMED, SIMPLE, ADVANCED, OTHER",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CRITICAL SPECIALIZATIONS",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS DC ITEM",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "MARTIAL WEAPONS LEGEANDARY",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "OTHER WEAPONS LEGENDARY",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "ANCESTRY & HERITAGE ABILITIES",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "ANCESTRY FEAT",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEATS & FEATURES",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "BACKGROUND SKILL FEAT",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "XP",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "LEVEL",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 5-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 1-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "HELD1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "HELD BULK 1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "HELD 2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "HELD BULK 2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "HELD 3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "HELD BULK 3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "HELD 4",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "HELD BULK 4",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "HELD 5",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "HELD BULK 5",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "HELD 6",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "HELD BULK 6",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "HELD 7",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "HELD BULK 7",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "HELD 8",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "HELD BULK 8",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "HELD BULK 9",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "HELD BULK 10",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "HELD 11",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "HELD BULK 11",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CONSUMABLES 2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CONSUMABLES 1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CONSUMABLES BULK 2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CONSUMABLES 3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CONSUMABLES BULK 3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CONSUMABLES 4",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CONSUMABLES BULK 4",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CONSUMABLES 5",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CONSUMABLES BULK 5",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CONSUMABLES 6",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CONSUMABLES BULK 6",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CONSUMABLES 7",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CONSUMABLES BULK 7",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CONSUMABLES 8",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CONSUMABLES BULK 8",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CONSUMABLES 9",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CONSUMABLES BULK 9",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CONSUMABLES 10",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CONSUMABLES BULK 10",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CONSUMABLES 11",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CONSUMABLES BULK 11",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WORN 1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WORN 2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WORN 3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WORN 4",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WORN 5",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WORN 6",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WORN 7",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WORN 8",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WORN 9",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WORN 10",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WORN 11",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WORN 12",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WORN 13",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WORN 14",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WORN 15",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WORN 16",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WORN 18",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WORN 19",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INVESTED 1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INVESTED 2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INVESTED 3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INVESTED 4",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INVESTED 5",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INVESTED 6",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INVESTED 7",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INVESTED 8",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INVESTED 9",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INVESTED 10",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INVESTED 11",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INVESTED 12",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INVESTED 13",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INVESTED 14",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INVESTED 15",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INVESTED 16",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INVESTED 18",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INVESTED 19",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WORN BULK 1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WORN BULK 2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WORN BULK 3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WORN BULK 4",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WORN BULK 5",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WORN BULK 6",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WORN BULK 7",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WORN BULK 8",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WORN BULK 9",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WORN BULK 10",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WORN BULK 11",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WORN BULK 12",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WORN BULK 13",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WORN BULK 14",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WORN BULK 15",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WORN BULK 18",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WORN BULK 19",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CONSUMABLES BULK 1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "BULK TOTAL",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "COPPER",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SILVER",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "GOLD",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "PLATINUM",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "GEMS & ART 2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "PRICE 1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "PRICE 2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "PRICE 3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "PRICE 4",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "ART BULK 1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "ART BULK 2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "ART BULK 3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "ART BULK 4",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "GEMS & ART 1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "GEMS & ART 3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "GEMS & ART 4",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "Appearance",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "ETHNICITY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "NATIONALITY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "BIRTHPLACE",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "AGE",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "GENDER & PRONOUNS",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "HEIGHT",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WEIGHT",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "ACTION NAME 1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "TRAIT(S)1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "PAGE1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "EFFECTS 1-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "REACTIONS SOURCE 1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "REACTIONS TRAITS 1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "REACTIONS PAGE 1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "REACTIONS TRIGGER 1-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "REACTIONS TRIGGER 1-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "REACTIONS EFFECTS 1-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "ACTION SOURCE 1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "ACTION SOURCE 2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "TRAIT(S)2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "ACTIONS COUNT 2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "ACTIONS COUNT 1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "ACTION NAME 2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "EFFECTS 2-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "ACTIONS SOURCE 3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "PAGE3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "TRAIT(S)3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "ACTIONS COUNT 3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "ACTION NAME 3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "EFFECTS 3-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "ACTIONS SOURCE 4",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "PAGE4",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "TRAIT(S)4",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "ACTIONS COUNT 4",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "ACTION NAME 4",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "EFFECTS 4-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "REACTIONS SOURCE 2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "REACTIONS PAGE 2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "REACTIONS TRIGGER 2-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "REACTIONS TRIGGER 2-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "REACTIONS EFFECTS 2-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "REACTIONS SOURCE 3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "REACTIONS PAGE 3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "REACTION NAME 3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "REACTION NAME 2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "REACTION NAME 1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "REACTIONS TRAITS 3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "REACTIONS TRIGGER 3-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "REACTIONS TRIGGER 3-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "REACTIONS EFFECTS 3-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "REACTIONS SOURCE 4",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "REACTIONS PAGE 4",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "REACTIONS TRAITS 4",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "REACTION NAME 4",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "REACTIONS TRIGGER 4-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "REACTIONS TRIGGER 4-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "REACTIONS EFFECTS 4-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL ATTACK",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL ATTACK TRAINED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ATTACK EXPERT",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ATTACK MASTER",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ATTACK KEY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL ATTACK PROFICIENCY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL SAVE DC KEY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL SAVE DC PROFICIENCY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELLS PER DAY 1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELLS PER DAY 2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELLS PER DAY 3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELLS PER DAY 4",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELLS PER DAY 5",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELLS PER DAY 6",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELLS PER DAY 7",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELLS PER DAY 8",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELLS PER DAY 9",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELLS PER DAY 10",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELLS REMAINING 2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELLS REMAINING 3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELLS REMAINING 4",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELLS REMAINING 5",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELLS REMAINING 6",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELLS REMAINING 7",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELLS REMAINING 8",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELLS REMAINING 9",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELLS REMAINING 10",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL SAVE DC",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELLS REMAINING 1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CANTRIPS PER DAY",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CANTRIPS RANK",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL ATTACK LEGENDARY",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL SAVE DC TRAINED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL SAVE DC EXPERT",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL SAVE DC MASTER",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL SAVE DC LEGENDARY",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "CANTRIP 1 PREPARED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "CANTRIP NAME 1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CANTRIP 1 ACTIONS",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CANTRIP NAME 6",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CANTRIP NAME 7",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CANTRIP NAME 8",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CANTRIP NAME 9",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CANTRIP NAME 10",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CANTRIP 6 ACTIONS",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CANTRIP 7 ACTIONS",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CANTRIP 8 ACTIONS",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CANTRIP 9 ACTIONS",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CANTRIP 10 ACTIONS",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CANTRIP 6 PREPARED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "CANTRIP 7 PREPARED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "CANTRIP 8 PREPARED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "CANTRIP 9 PREPARED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "CANTRIP 10 PREPARED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "CANTRIP 11 PREPARED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "CANTRIP 12 PREPARED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "CANTRIP 13 PREPARED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "CANTRIP 14 PREPARED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "CANTRIP 15 PREPARED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "CANTRIP 16 PREPARED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "CANTRIP 17 PREPARED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "CANTRIP 18 PREPARED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "FP1",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "FP2",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "FP 3",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "FOCUS SPELL RANK",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CANTRIP NAME 11",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CANTRIP 18 ACTIONS",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CANTRIP 11 ACTIONS",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CANTRIP NAME 12",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CANTRIP 12 ACTIONS",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CANTRIP NAME 13",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CANTRIP 13 ACTIONS",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CANTRIP NAME 14",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CANTRIP 14 ACTIONS",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CANTRIP NAME 15",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CANTRIP 15 ACTIONS",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CANTRIP NAME 16",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CANTRIP 16 ACTIONS",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CANTRIP NAME 17",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CANTRIP 17 ACTIONS",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CANTRIP NAME 18",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "FOCUS SPELL 1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "FOCUS SPELL 2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "FOCUS SPELL 3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "FOCUS SPELL 4",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "FOCUS SPELL 5",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "FOCUS SPELL 6",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "FOCUS SPELL 7",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "FOCUS SPELL 8",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "FOCUS SPELL ACTIONS 1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "FOCUS SPELL ACTIONS 2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "FOCUS SPELL ACTIONS 3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "FOCUS SPELL ACTIONS 4",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "FOCUS SPELL ACTIONS 5",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "FOCUS SPELL ACTIONS 6",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "FOCUS SPELL ACTIONS 7",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "FOCUS SPELL ACTIONS 8",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CANTRIP 5 PREPARED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "CANTRIP NAME 2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CANTRIP 2 ACTIONS",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CANTRIP 2 PREPARED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "CANTRIP NAME 3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CANTRIP 3 ACTIONS",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CANTRIP 3 PREPARED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "CANTRIP NAME 4",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CANTRIP 4 ACTIONS",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CANTRIP 4 PREPARED",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "CANTRIP NAME 5",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CANTRIP 5 ACTIONS",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INNATE SPELL 1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INNATE SPELL 2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INNATE SPELL 3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INNATE SPELL 4",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INNATE SPELL 5",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INNATE SPELL 6",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 1",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL 1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL ACTION 1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 4",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 5",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 6",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 7",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 8",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 9",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 11",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 12",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 13",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 14",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 15",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 16",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 17",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 18",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 19",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 20",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 21",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 22",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 23",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 24",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 25",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 26",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 27",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 28",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 29",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 30",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 31",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 32",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 33",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 34",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 35",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 36",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 38",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL ACTION 2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL ACTION 3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL ACTION 4",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 4",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 4",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL RANK 3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 3",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL RANK 2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 2",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 5",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 5",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 5",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 6",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 6",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 6",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 7",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 7",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 7",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 8",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 8",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 8",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 9",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 9",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 9",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL 10",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL ACTION 10",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 10",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 10",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 11",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 11",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 11",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 12",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 12",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 12",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 13",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 13",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 13",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 14",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 14",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 14",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 15",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 15",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 15",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 16",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 16",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 16",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 17",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 17",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 17",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 18",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 18",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 19",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 19",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 19",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 20",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 20",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 20",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 21",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 21",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 21",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 22",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 22",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 22",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 23",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 23",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 23",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 24",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 24",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 24",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 25",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 25",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 25",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 26",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 26",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 26",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 27",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 27",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 27",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 28",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 28",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 28",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 29",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 29",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 29",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 30",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 30",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 30",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 31",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 31",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 31",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 32",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 32",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 32",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 33",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 33",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 33",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 34",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 34",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 34",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 35",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 35",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 35",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 36",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 36",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 36",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 37",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 37",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 37",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL 39",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 40",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 41",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 42",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 43",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 44",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 45",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 46",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 47",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 48",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 49",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 50",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 51",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 52",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 53",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 54",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 55",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 56",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 57",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 58",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 59",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 60",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 61",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 62",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 63",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 64",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 65",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 66",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 67",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 68",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 69",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 70",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 71",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 72",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 73",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 74",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL ACTION 74",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 74",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 74",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 73",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 73",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 73",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 72",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 72",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 72",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 71",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 71",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 71",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 70",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 70",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 70",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 69",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 69",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 69",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 68",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 68",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 68",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 67",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 67",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 67",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 66",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 66",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 66",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 65",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 65",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 65",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 64",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 64",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 64",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 63",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 63",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 63",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 62",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 62",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 62",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 61",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 61",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 61",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 60",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 60",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 60",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 59",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 59",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 59",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 58",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 58",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 58",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 57",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 57",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 57",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 56",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 56",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 56",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 55",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 55",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 55",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 54",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 54",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 54",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 53",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 53",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 53",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 52",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 52",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 52",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 51",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 51",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 51",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 50",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 50",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 50",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 49",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 49",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 49",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 48",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 48",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 48",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 47",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 47",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 47",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 46",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 46",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 46",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 45",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 45",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 45",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 44",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 44",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 44",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 43",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 43",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 43",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 42",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 42",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 42",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 41",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 41",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 41",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 40",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 40",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 40",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 39",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 39",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 39",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL ACTION 38",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL RANK 38",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL PREPARED 38",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "SPELL RANK 18",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SPELL 37",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "RITUAL SPELL 1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "RITUAL COST 3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "RITUAL RANK 1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "RITUAL COST 1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "RITUAL COST 2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "RITUAL RANK 2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "RITUAL SPELL 2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "RITUAL RANK 3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "RITUAL SPELL 3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "RITUAL SPELL 4",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "RITUAL SPELL 5",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "RITUAL SPELL 6",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "RITUAL RANK 4",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "RITUAL RANK 5",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "RITUAL RANK 6",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "RITUAL COST 4",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "RITUAL COST 5",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "RITUAL COST 6",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INNATE SPELL ACTION 1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INNATE SPELL ACTION 6",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INNATE SPELL ACTION 2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INNATE SPELL ACTION 3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INNATE SPELL ACTION 4",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INNATE SPELL ACTION 5",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INNATE FREQ 1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INNATE FREQ 2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INNATE FREQ 3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INNATE FREQ 4",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INNATE FREQ 5",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "INNATE FREQ 6",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLEAR BUFFER 1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLEAR BUFFER 2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLEAR BUFFER 3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLEAR BUFFER 4",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLEAR BUFFER 5",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLEAR BUFFER 6",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "BT",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WORN BULK 16",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "HELD 9",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "HELD 10",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 2-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 2-3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 2-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 5-3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 5-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 3-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 3-3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 3-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 4-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 4-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 4-3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 6-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 6-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 6-3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 7-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 7-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 7-3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 8-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 8-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 8-3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 9-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 9-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 9-3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 10-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 10-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 10-3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 11-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 11-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 11-3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 12-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 12-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 12-3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 13-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 13-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 13-3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 14-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 14-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 14-3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 15-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 15-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 15-3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 16-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 16-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 16-3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 17-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 17-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 17-3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 18-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 18-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 18-3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 19-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 19-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 19-3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 20-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 20-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "SKILL FEAT 20-3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 1-3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 1-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 2-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 2-3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 3-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 3-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 3-3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 4-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 4-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 4-3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 5-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 5-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 5-3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 6-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 6-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 6-3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 7-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 7-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 7-3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 8-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 8-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 8-3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 9-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 9-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 9-3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 10-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 10-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 10-3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 11-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 11-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 11-3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 12-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 12-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 12-3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 13-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 13-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 13-3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 14-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 14-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 14-3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 15-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 15-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 15-3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 16-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 16-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 16-3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 17-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 17-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 17-3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 18-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 18-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 18-3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 19-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 19-2",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 19-3",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "CLASS FEAT 2-1",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "ART BULK 5",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "PRICE 5",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "GEMS & ART 5",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "DIVINE",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "OCCULT",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "PRIMAL",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "ARCANE",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "HERO POINT 1",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "HERO POINT 2",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "HERO POINT 3",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "STRENGTH PARTIAL BOOST",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "CHARISMA PARTIAL BOOST",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "WISDOM PARTIAL BOOST",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "INTELLIGENCE PARTIAL BOODST",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "CONSTITUTION PARTIAL BOODST",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "DEXTERITY PARTIAL BOOST",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "DYING1",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "DYING2",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "DYING3",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "DYING4",
+    "type": "PDFCheckBox"
+  },
+  {
+    "name": "FORTITUDE ITEM",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "WILL ITEM",
+    "type": "PDFTextField"
+  },
+  {
+    "name": "REACTIONS TRAITS 2",
+    "type": "PDFTextField"
+  }
+]
