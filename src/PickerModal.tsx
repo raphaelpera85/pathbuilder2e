@@ -5,7 +5,7 @@ import { coinsToCopper, parsePriceToCopper, canAffordPrice, formatCopperToString
 
 const pickerLabelKeys: Record<PickerType, MessageKey> = {
   ancestry: "ancestries", class: "classes", background: "backgrounds", weapon: "weapons", armor: "armors", shield: "armors",
-  heritage: "heritages", archetype: "archetypes", spell: "spells", ritual: "rituals", feat: "feats", item: "items", gear: "items", pet: "pets", action: "actions", condition: "conditions", buff: "buffs",
+  heritage: "heritages", archetype: "archetypes", spell: "spells", ritual: "rituals", feat: "feats", item: "items", gear: "items", pet: "pets", action: "actions", condition: "conditions", buff: "buffs", formula: "formulas",
 };
 
 interface PickerModalProps {

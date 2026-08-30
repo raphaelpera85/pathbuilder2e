@@ -51,6 +51,9 @@ const messages = {
     adminLocalCopy: "O Supabase ainda não está configurado neste ambiente; a identidade administrativa não pode ser verificada.",
     adminVerified: "Registros verificados", adminReview: "Fila de revisão", adminSources: "Fontes parciais", adminReadOnly: "Curadoria somente leitura", adminReadOnlyCopy: "Edição e publicação de regras só serão habilitadas após existir uma API administrativa com auditoria e políticas RLS específicas.",
     noCatalogResults: "Nenhum registro corresponde aos filtros.", filterCategory: "Filtrar categoria", catalogSearch: "Buscar no compêndio",
+    formulas: "Fórmulas & Alquimia", allRulesets: "Todos os Conjuntos de Regras", allRarities: "Todas as Raridades", allBooks: "Todos os Livros / Fontes",
+    inspectDetails: "Detalhes do Registro", filterRuleset: "Filtrar Regras", filterRarity: "Filtrar Raridade", filterBook: "Filtrar Livro / Fonte",
+    bulk: "Carga (Bulk)", price: "Preço", prerequisites: "Pré-requisitos", actionsCount: "Ações necessárias", itemDetails: "Especificações & Efeitos",
   },
   en: {
     language: "Language", portuguese: "Português", english: "English", spanish: "Español", menu: "Menu",
@@ -97,6 +100,9 @@ const messages = {
     adminLocalCopy: "Supabase is not configured in this environment, so administrative identity cannot be verified.",
     adminVerified: "Verified records", adminReview: "Review queue", adminSources: "Partial sources", adminReadOnly: "Read-only curation", adminReadOnlyCopy: "Rule editing and publishing will only be enabled after an audited admin API and dedicated RLS policies exist.",
     noCatalogResults: "No records match the filters.", filterCategory: "Filter category", catalogSearch: "Search the compendium",
+    formulas: "Formulas & Crafting", allRulesets: "All Rulesets", allRarities: "All Rarities", allBooks: "All Books / Sources",
+    inspectDetails: "Record Details", filterRuleset: "Filter Ruleset", filterRarity: "Filter Rarity", filterBook: "Filter Book / Source",
+    bulk: "Bulk", price: "Price", prerequisites: "Prerequisites", actionsCount: "Required Actions", itemDetails: "Specifications & Effects",
   },
   es: {
     language: "Idioma", portuguese: "Português", english: "English", spanish: "Español", menu: "Menú",
@@ -118,7 +124,7 @@ const messages = {
     armors: "Armaduras", heritages: "Herencias", archetypes: "Arquetipos", spells: "Conjuros", rituals: "Rituales", feats: "Dotes", items: "Objetos y Equipo", pets: "Mascotas y Compañeros", actions: "Acciones", conditions: "Condiciones", buffs: "Beneficios", size: "Tamaño", configuration: "Configuración", landSpeed: "Velocidad terrestre", swimSpeed: "Velocidad de nado", climbSpeed: "Velocidad de trepar",
     rank: "Rango", traditions: "Tradiciones", castingTime: "Lanzamiento", primaryCheck: "Prueba principal", spellCatalog: "Catálogo de Conjuros", addManualSpell: "Añadir Conjuro Manualmente", addRitual: "Añadir Ritual", knownSpells: "Conjuros Conocidos", knownRituals: "Rituales Aprendidos",
     navLabel: "Navegación principal", navBuilder: "Creador", navCompendium: "Compendio", navRules: "Reglas y fuentes", navLibrary: "Biblioteca y perfil", navPrivacy: "Privacidad", navAdmin: "Curaduría", navCampaigns: "Campañas del DJ",
-    campaignsTitle: "Campañas y Mesas de Rol", campaignsIntro: "Organiza tus aventuras, sigue las fichas de tus jugadores en tiempo real y administra la iniciativa y sesiones.",
+    campaignsTitle: "Campañas y Mesas de RPG", campaignsIntro: "Organiza tus aventuras, sigue las fichas de tus jugadores en tiempo real y gestiona iniciativa y sesiones.",
     gmEmail: "Correo del Director de Juego (DJ)", linkGM: "Vincular DJ", linkedGM: "DJ Vinculado", unlinkGM: "Desvincular DJ",
     createCampaign: "Nueva Campaña / Mesa", campaignName: "Nombre de la Campaña", campaignSchedule: "Horario", campaignDescription: "Sinopsis de la Aventura",
     manageParty: "Grupo de Aventureros", inspectSheet: "Inspeccionar Ficha", sharedPlayerSheets: "Fichas de Jugadores Vinculadas",
@@ -143,6 +149,9 @@ const messages = {
     adminLocalCopy: "Supabase no está configurado en este entorno; no se puede verificar la identidad administrativa.",
     adminVerified: "Registros verificados", adminReview: "Cola de revisión", adminSources: "Fuentes parciales", adminReadOnly: "Curaduría de solo lectura", adminReadOnlyCopy: "La edición y publicación de reglas solo se habilitará cuando exista una API administrativa auditada y políticas RLS específicas.",
     noCatalogResults: "Ningún registro coincide con los filtros.", filterCategory: "Filtrar categoría", catalogSearch: "Buscar en el compendio",
+    formulas: "Fórmulas y Artesanía", allRulesets: "Todos los Conjuntos de Reglas", allRarities: "Todas las Raridades", allBooks: "Todos los Libros / Fuentes",
+    inspectDetails: "Detalles del Registro", filterRuleset: "Filtrar Reglas", filterRarity: "Filtrar Raridad", filterBook: "Filtrar Libro / Fuente",
+    bulk: "Volumen (Bulk)", price: "Precio", prerequisites: "Requisitos previos", actionsCount: "Acciones necesarias", itemDetails: "Especificaciones y Efectos",
   },
 } as const;
 

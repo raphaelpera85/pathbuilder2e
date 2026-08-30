@@ -42,6 +42,7 @@ const catalogCategories: Array<{ type: PickerType; label: MessageKey }> = [
   { type: "ritual", label: "rituals" },
   { type: "feat", label: "feats" },
   { type: "item", label: "items" },
+  { type: "formula", label: "formulas" },
   { type: "pet", label: "pets" },
   { type: "action", label: "actions" },
   { type: "weapon", label: "weapons" },
@@ -84,6 +85,11 @@ function CatalogPage() {
   const { locale, t } = useI18n();
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<PickerType | "all">("all");
+  const [rulesetFilter, setRulesetFilter] = useState<string>("all");
+  const [rarityFilter, setRarityFilter] = useState<string>("all");
+  const [bookFilter, setBookFilter] = useState<string>("all");
+  const [inspectedEntry, setInspectedEntry] = useState<(PickerItem & { category: PickerType; categoryLabel: string }) | null>(null);
+
   const entries = useMemo(() => catalogCategories.flatMap(({ type, label }) => {
     try {
       return (window as any).app?.getPickerItems(type).map((item: any) => ({ ...item, category: type, categoryLabel: t(label) })) || [];
@@ -91,14 +97,30 @@ function CatalogPage() {
       return [];
     }
   }), [t]);
+
+  const availableBooks = useMemo(() => {
+    const books = new Set<string>();
+    entries.forEach((e) => {
+      if (e.data?.source?.book) books.add(e.data.source.book);
+    });
+    return Array.from(books).sort();
+  }, [entries]);
+
   const filtered = useMemo(() => {
     const list = entries.filter((entry) => {
       const categoryMatches = category === "all" || entry.category === category;
+      const rulesetMatches = rulesetFilter === "all" ||
+        (rulesetFilter === "remaster" && entry.data?.ruleset === "remaster") ||
+        (rulesetFilter === "legacy" && entry.data?.ruleset === "legacy") ||
+        (rulesetFilter === "needs_review" && (entry.data?.ruleset === "needs_review" || entry.data?.needs_review === true));
+      const rarityMatches = rarityFilter === "all" || (entry.data?.rarity || "common") === rarityFilter;
+      const bookMatches = bookFilter === "all" || entry.data?.source?.book === bookFilter;
+
       const localizedName = getItemDisplayName(entry, locale);
       const localizedSummary = entry.data.summaries?.[locale] ?? entry.data.description ?? "";
-      const haystack = `${localizedName} ${entry.name} ${localizedSummary}`.toLocaleLowerCase(locale);
+      const haystack = `${localizedName} ${entry.name} ${localizedSummary} ${entry.data?.traits?.join(" ") || ""}`.toLocaleLowerCase(locale);
       const queryMatches = haystack.includes(query.trim().toLocaleLowerCase(locale));
-      return categoryMatches && queryMatches;
+      return categoryMatches && rulesetMatches && rarityMatches && bookMatches && queryMatches;
     });
 
     return list.slice().sort((a, b) => {
@@ -106,22 +128,73 @@ function CatalogPage() {
       const nameB = getItemDisplayName(b, locale);
       return nameA.localeCompare(nameB, locale, { sensitivity: "base", numeric: true });
     });
-  }, [category, entries, locale, query]);
+  }, [bookFilter, category, entries, locale, query, rarityFilter, rulesetFilter]);
 
   return <main className="portal-page" id="portal-content" tabIndex={-1}>
     <header className="portal-hero"><span>PATHBUILDER KNOWLEDGE BASE</span><h1>{t("compendiumTitle")}</h1><p>{t("compendiumIntro")}</p></header>
     <section className="catalog-toolbar" aria-label={t("searchOptions")}>
-      <label><span>{t("catalogSearch")}</span><input value={query} onChange={(event) => setQuery(event.target.value)} type="search" placeholder={t("search")} /></label>
+      <label className="catalog-search-label"><span>{t("catalogSearch")}</span><input value={query} onChange={(event) => setQuery(event.target.value)} type="search" placeholder={t("search")} /></label>
       <label><span>{t("filterCategory")}</span><select value={category} onChange={(event) => setCategory(event.target.value as PickerType | "all")}><option value="all">{t("allCategories")}</option>{catalogCategories.map((item) => <option key={item.type} value={item.type}>{t(item.label)}</option>)}</select></label>
+      <label><span>{t("filterRuleset")}</span><select value={rulesetFilter} onChange={(event) => setRulesetFilter(event.target.value)}><option value="all">{t("allRulesets")}</option><option value="remaster">{t("rulesetRemaster")}</option><option value="legacy">{t("rulesetLegacy")}</option><option value="needs_review">{t("rulesetReview")}</option></select></label>
+      <label><span>{t("filterRarity")}</span><select value={rarityFilter} onChange={(event) => setRarityFilter(event.target.value)}><option value="all">{t("allRarities")}</option><option value="common">{t("rarityCommon")}</option><option value="uncommon">{t("rarityUncommon")}</option><option value="rare">{t("rarityRare")}</option></select></label>
+      {availableBooks.length > 0 && <label><span>{t("filterBook")}</span><select value={bookFilter} onChange={(event) => setBookFilter(event.target.value)}><option value="all">{t("allBooks")}</option>{availableBooks.map((b) => <option key={b} value={b}>{b}</option>)}</select></label>}
       <strong className="catalog-count" aria-live="polite">{filtered.length} {t("results")}</strong>
     </section>
     {filtered.length === 0 ? <div className="portal-empty">{t("noCatalogResults")}</div> : <section className="catalog-grid" aria-label={t("compendiumTitle")}>
-      {filtered.map((entry, index) => <CatalogCard key={`${entry.category}-${entry.name}-${index}`} entry={entry} />)}
+      {filtered.map((entry, index) => <CatalogCard key={`${entry.category}-${entry.name}-${index}`} entry={entry} onInspect={() => setInspectedEntry(entry)} />)}
     </section>}
+
+    {/* MODAL DE INSPEÇÃO DETALHADA */}
+    {inspectedEntry && <div className="compendium-modal-overlay" onClick={() => setInspectedEntry(null)} role="dialog" aria-modal="true">
+      <div className="compendium-modal" onClick={(e) => e.stopPropagation()}>
+        <header className="compendium-modal-header">
+          <div className="compendium-modal-title">
+            <span className="category-tag">{inspectedEntry.categoryLabel}</span>
+            <h2>{getItemDisplayName(inspectedEntry, locale)}</h2>
+          </div>
+          <button className="compendium-modal-close" onClick={() => setInspectedEntry(null)} aria-label={t("close")}>✕</button>
+        </header>
+
+        <div className="compendium-modal-body">
+          {/* TRAITS & BADGES */}
+          <div className="compendium-modal-badges">
+            {inspectedEntry.data.rarity && <span className={`rarity-badge ${String(inspectedEntry.data.rarity)}`}>{inspectedEntry.data.rarity}</span>}
+            <span className={inspectedEntry.data.ruleset === "remaster" ? "ruleset-badge remaster" : inspectedEntry.data.ruleset === "legacy" ? "ruleset-badge legacy" : "ruleset-badge needs_review"}>
+              {inspectedEntry.data.ruleset === "remaster" ? t("rulesetRemaster") : inspectedEntry.data.ruleset === "legacy" ? t("rulesetLegacy") : t("rulesetReview")}
+            </span>
+            {inspectedEntry.data.traits?.map((trait: string) => <span key={trait} className="trait-tag">{trait}</span>)}
+          </div>
+
+          {/* STATS MATRIX */}
+          <div className="compendium-stats-grid">
+            {inspectedEntry.data.level !== undefined ? <div className="stat-box"><strong>{t("level")}</strong><span>{String(inspectedEntry.data.level)}</span></div> : null}
+            {inspectedEntry.data.rank !== undefined ? <div className="stat-box"><strong>{t("rank")}</strong><span>{String(inspectedEntry.data.rank)}</span></div> : null}
+            {inspectedEntry.data.hp !== undefined ? <div className="stat-box"><strong>{t("baseHp")}</strong><span>{String(inspectedEntry.data.hp)}</span></div> : null}
+            {inspectedEntry.data.speed !== undefined ? <div className="stat-box"><strong>{t("speed")}</strong><span>{String(inspectedEntry.data.speed)} {t("feet")}</span></div> : null}
+            {inspectedEntry.data.damage ? <div className="stat-box"><strong>{t("damage")}</strong><span>{String(inspectedEntry.data.damage)}</span></div> : null}
+            {inspectedEntry.data.price ? <div className="stat-box"><strong>{t("price")}</strong><span>{String(inspectedEntry.data.price)}</span></div> : null}
+            {inspectedEntry.data.bulk !== undefined ? <div className="stat-box"><strong>{t("bulk")}</strong><span>{String(inspectedEntry.data.bulk)}</span></div> : null}
+            {inspectedEntry.data.prerequisites ? <div className="stat-box"><strong>{t("prerequisites")}</strong><span>{String(inspectedEntry.data.prerequisites)}</span></div> : null}
+          </div>
+
+          {/* DESCRIPTION */}
+          <div className="compendium-modal-description">
+            <h3>{t("itemDetails")}</h3>
+            <p>{String(inspectedEntry.data.summaries?.[locale] ?? inspectedEntry.data.description ?? inspectedEntry.summary ?? "")}</p>
+          </div>
+
+          {/* SOURCE CITATION */}
+          <footer className="compendium-modal-footer">
+            <strong>{t("source")}:</strong>
+            <span>{inspectedEntry.data.source?.book ? `${inspectedEntry.data.source.book} · p. ${inspectedEntry.data.source.page ?? "-"}` : t("uncatalogued")}</span>
+          </footer>
+        </div>
+      </div>
+    </div>}
   </main>;
 }
 
-function CatalogCard({ entry }: { entry: PickerItem & { category: PickerType; categoryLabel: string } }) {
+function CatalogCard({ entry, onInspect }: { entry: PickerItem & { category: PickerType; categoryLabel: string }; onInspect?: () => void }) {
   const { locale, t } = useI18n();
   const source = entry.data.source;
   const verified = Boolean(source?.book && source?.page);
@@ -132,11 +205,14 @@ function CatalogCard({ entry }: { entry: PickerItem & { category: PickerType; ca
   const primaryChecks = entry.data.primaryChecks as Partial<Record<"pt-BR" | "en" | "es", string>> | undefined;
   const facts = [
     typeof entry.data.rank === "number" ? `${t("rank")} ${entry.data.rank}` : null,
+    typeof entry.data.level === "number" ? `${t("level")} ${entry.data.level}` : null,
     castingTimes?.[locale] ? `${t("castingTime")}: ${castingTimes[locale]}` : null,
     traditionNames?.[locale]?.length ? `${t("traditions")}: ${traditionNames[locale]?.join(", ")}` : null,
     primaryChecks?.[locale] ? `${t("primaryCheck")}: ${primaryChecks[locale]}` : null,
+    entry.data.price ? `${t("price")}: ${entry.data.price}` : null,
   ].filter((fact): fact is string => Boolean(fact));
-  return <article className="catalog-card">
+
+  return <article className="catalog-card interactive" onClick={onInspect} tabIndex={0} onKeyDown={(e) => e.key === "Enter" && onInspect?.()} role="button" aria-label={getItemDisplayName(entry, locale)}>
     <div className="catalog-card-top"><div className="catalog-card-meta"><span>{entry.categoryLabel}</span>{rarity && <span className={`rarity-badge ${String(entry.data.rarity)}`}>{rarity}</span>}</div><span className={legacy ? "source-badge legacy" : verified ? "source-badge verified" : "source-badge review"}>{legacy ? t("catalogLegacy") : verified ? t("catalogVerified") : t("catalogReview")}</span></div>
     <h2>{getItemDisplayName(entry, locale)}</h2>
     {facts.length > 0 && <div className="catalog-facts">{facts.map((fact) => <span key={fact}>{fact}</span>)}</div>}

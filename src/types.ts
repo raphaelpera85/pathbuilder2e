@@ -15,7 +15,8 @@ export type PickerType =
   | "pet"
   | "action"
   | "condition"
-  | "buff";
+  | "buff"
+  | "formula";
 
 export interface IPickerItemData {
   name?: string;
@@ -44,6 +45,8 @@ export interface IPickerItemData {
   primaryChecks?: Partial<Record<"pt-BR" | "en" | "es", string>>;
   prerequisites?: string;
   rarity?: "common" | "uncommon" | "rare" | "unique";
+  price?: string;
+  bulk?: string | number;
   [key: string]: unknown;
 }
 
