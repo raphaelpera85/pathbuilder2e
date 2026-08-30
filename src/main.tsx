@@ -1,5 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import { SpeedInsights } from "@vercel/speed-insights/react";
+import { Analytics } from "@vercel/analytics/react";
 import { PickerModal } from "./PickerModal";
 import { ItemPickerModal } from "./ItemPickerModal";
 import { AccountPortal } from "./AccountPortal";
@@ -32,6 +34,11 @@ createRoot(accountRoot).render(
 
 createRoot(portalRoot).render(
   <StrictMode>
-    <I18nProvider><PortalPages /></I18nProvider>
+    <I18nProvider>
+      <PortalPages />
+      <SpeedInsights />
+      <Analytics />
+    </I18nProvider>
   </StrictMode>,
 );
+
