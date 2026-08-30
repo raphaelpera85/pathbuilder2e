@@ -100,13 +100,17 @@ export async function listCharacters(currentUser?: UserProfile): Promise<CloudCh
   }
 
   if (isSupabaseConfigured && supabase) {
-    const { data, error } = await supabase
-      .from("characters")
-      .select("id,user_id,character_key,name,level,ruleset,data,created_at,updated_at")
-      .eq("user_id", activeUser.id)
-      .order("updated_at", { ascending: false });
-    if (error) throw error;
-    return (data ?? []) as CloudCharacter[];
+    try {
+      const { data, error } = await supabase
+        .from("characters")
+        .select("id,user_id,character_key,name,level,ruleset,gm_email,player_email,player_name,data,created_at,updated_at")
+        .eq("user_id", activeUser.id)
+        .order("updated_at", { ascending: false });
+      if (!error && data) return (data ?? []) as CloudCharacter[];
+      if (error) console.warn("Supabase characters query aviso:", error.message);
+    } catch (err) {
+      console.warn("Supabase characters fallback para local:", err);
+    }
   }
 
   // Armazenamento local particionado por dono (user_id)
@@ -127,13 +131,17 @@ export async function saveCharacter(
   const payload = toCharacterPayload(character, activeUser);
 
   if (isSupabaseConfigured && supabase) {
-    const { data, error } = await supabase
-      .from("characters")
-      .upsert(payload, { onConflict: "user_id,character_key" })
-      .select("id,user_id,character_key,name,level,ruleset,data,created_at,updated_at")
-      .single();
-    if (error) throw error;
-    return data as CloudCharacter;
+    try {
+      const { data, error } = await supabase
+        .from("characters")
+        .upsert(payload, { onConflict: "user_id,character_key" })
+        .select("id,user_id,character_key,name,level,ruleset,gm_email,player_email,player_name,data,created_at,updated_at")
+        .single();
+      if (!error && data) return data as CloudCharacter;
+      if (error) console.warn("Supabase upsert aviso:", error.message);
+    } catch (err) {
+      console.warn("Supabase save fallback para local:", err);
+    }
   }
 
   // Salvar no armazenamento local do usuário
@@ -173,9 +181,18 @@ export async function deleteCharacter(id: string, userOrSession?: { id: string }
   }
 
   if (isSupabaseConfigured && supabase) {
-    const { error } = await supabase.from("characters").delete().eq("id", id).eq("user_id", activeUser.id);
-    if (error) throw error;
-    return;
+    try {
+      const { error } = await supabase.from("characters").delete().eq("id", id).eq("user_id", activeUser.id);
+      if (!error) {
+        // Também remove do local por sincronização
+        const existing = getLocalCharacters(activeUser.id);
+        const filtered = existing.filter((c) => c.id !== id && c.character_key !== id);
+        saveLocalCharacters(activeUser.id, filtered);
+        return;
+      }
+    } catch (err) {
+      console.warn("Supabase delete fallback para local:", err);
+    }
   }
 
   // Deletar do armazenamento local
