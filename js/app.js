@@ -2032,55 +2032,197 @@ class PathbuilderApp {
     tree.innerHTML = html;
   }
 
-  // MODAL DE ATRIBUTOS (SET ABILITIES)
+  // MODAL DE ATRIBUTOS (SET STARTING ABILITY BOOSTS - SCREENSHOT 1)
   openSetAbilitiesModal(level = 1) {
     const overlay = document.getElementById("modalSetAbilitiesOverlay");
     const container = document.getElementById("setAbilitiesContent");
     if (!overlay || !container) return;
 
     if (!this.character.abilities) {
-      this.character.abilities = { str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10 };
+      this.character.abilities = { str: 10, dex: 16, con: 12, int: 12, wis: 12, cha: 16 };
+    }
+    if (!this.character.abilityBoosts) {
+      this.character.abilityBoosts = {
+        ancestry: ["dex", "cha"],
+        background: ["int", "cha"],
+        class: "dex",
+        free: ["dex", "con", "wis", "cha"],
+        override: false
+      };
     }
 
-    const abilityKeys = [
-      { key: "str", name: "Força (Strength)" },
-      { key: "dex", name: "Destreza (Dexterity)" },
-      { key: "con", name: "Constituição (Constitution)" },
-      { key: "int", name: "Inteligência (Intelligence)" },
-      { key: "wis", name: "Sabedoria (Wisdom)" },
-      { key: "cha", name: "Carisma (Charisma)" }
+    const abilityOptions = [
+      { id: "str", name: "Strength" },
+      { id: "dex", name: "Dexterity" },
+      { id: "con", name: "Constitution" },
+      { id: "int", name: "Intelligence" },
+      { id: "wis", name: "Wisdom" },
+      { id: "cha", name: "Charisma" }
     ];
 
-    container.innerHTML = abilityKeys.map(a => {
-      const val = this.character.abilities[a.key] || 10;
+    const getSelectHtml = (group, idx, selectedVal) => `
+      <div class="pb-boost-select-wrap">
+        <span class="pb-boost-plus-icon">+</span>
+        <select class="pb-boost-select" onchange="app.setAbilityBoostChoice('${group}', ${idx}, this.value)">
+          ${abilityOptions.map(opt => `<option value="${opt.id}" ${opt.id === selectedVal ? 'selected' : ''}>${opt.name}</option>`).join('')}
+        </select>
+      </div>
+    `;
+
+    const b = this.character.abilityBoosts;
+    const calcMod = (key) => {
+      const val = this.character.abilities[key] || 10;
       const mod = Math.floor((val - 10) / 2);
-      const modStr = PF2E_ENGINE.formatMod(mod);
-      return `
-        <div style="background:#1e293b; border:1px solid #334155; border-radius:6px; padding:10px; display:flex; justify-content:space-between; align-items:center;">
-          <div>
-            <div style="font-weight:bold; color:#fff; font-size:12px;">${escapeHtml(a.name)}</div>
-            <div style="font-size:11px; color:var(--pb-orange); font-weight:700;">Modificador: ${modStr}</div>
-          </div>
-          <div style="display:flex; align-items:center; gap:6px;">
-            <button type="button" class="btn-pb-action" style="padding:2px 8px; font-weight:bold;" onclick="app.adjustModalAbility('${a.key}', -2)">-</button>
-            <span id="modalVal_${a.key}" style="font-size:15px; font-weight:900; color:#fff; width:26px; text-align:center;">${val}</span>
-            <button type="button" class="btn-pb-action" style="padding:2px 8px; font-weight:bold;" onclick="app.adjustModalAbility('${a.key}', 2)">+</button>
+      return (mod >= 0 ? `+${mod}` : `${mod}`);
+    };
+
+    const isChecked = (key) => (b.free || []).includes(key);
+
+    container.innerHTML = `
+      <!-- Ancestry Boosts -->
+      <div class="pb-boost-section-box">
+        <h4 class="pb-boost-section-title">Ancestry Boosts</h4>
+        <div class="pb-boost-row">
+          ${getSelectHtml('ancestry', 0, b.ancestry?.[0] || 'dex')}
+          ${getSelectHtml('ancestry', 1, b.ancestry?.[1] || 'cha')}
+        </div>
+      </div>
+
+      <!-- Background Boosts -->
+      <div class="pb-boost-section-box">
+        <h4 class="pb-boost-section-title">Background Boosts</h4>
+        <div class="pb-boost-row">
+          ${getSelectHtml('background', 0, b.background?.[0] || 'int')}
+          ${getSelectHtml('background', 1, b.background?.[1] || 'cha')}
+        </div>
+      </div>
+
+      <!-- Class Boost -->
+      <div class="pb-boost-section-box">
+        <h4 class="pb-boost-section-title">Class Boost</h4>
+        <div class="pb-boost-row">
+          <div class="pb-boost-select-wrap">
+            <span class="pb-boost-plus-icon">+</span>
+            <span style="font-size:12px; font-weight:700; color:#fff; padding:2px 6px;">${abilityOptions.find(o => o.id === (b.class || 'dex'))?.name || 'Dexterity'}</span>
           </div>
         </div>
-      `;
-    }).join('');
+      </div>
+
+      <!-- Free Boosts -->
+      <div class="pb-boost-section-box">
+        <h4 class="pb-boost-section-title">Free Boosts</h4>
+        <div class="pb-free-boosts-container">
+          <!-- Coluna 1 -->
+          <div>
+            <label class="pb-free-boost-item">
+              <input type="checkbox" ${isChecked('str') ? 'checked' : ''} onchange="app.toggleFreeBoost('str')">
+              <span class="pb-free-boost-label">STR</span>
+              <span class="pb-free-boost-mod">${calcMod('str')}</span>
+            </label>
+            <label class="pb-free-boost-item">
+              <input type="checkbox" ${isChecked('con') ? 'checked' : ''} onchange="app.toggleFreeBoost('con')">
+              <span class="pb-free-boost-label">CON</span>
+              <span class="pb-free-boost-mod">${calcMod('con')}</span>
+            </label>
+            <label class="pb-free-boost-item">
+              <input type="checkbox" ${isChecked('wis') ? 'checked' : ''} onchange="app.toggleFreeBoost('wis')">
+              <span class="pb-free-boost-label">WIS</span>
+              <span class="pb-free-boost-mod">${calcMod('wis')}</span>
+            </label>
+          </div>
+
+          <!-- Centro: Ícone da Engrenagem com Checkmark -->
+          <div class="pb-center-gear-badge">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+              <path d="M8.5 12l2.5 2.5 5-5" stroke="#22c55e" stroke-width="2.5"/>
+            </svg>
+          </div>
+
+          <!-- Coluna 2 -->
+          <div>
+            <label class="pb-free-boost-item">
+              <input type="checkbox" ${isChecked('dex') ? 'checked' : ''} onchange="app.toggleFreeBoost('dex')">
+              <span class="pb-free-boost-label">DEX</span>
+              <span class="pb-free-boost-mod">${calcMod('dex')}</span>
+            </label>
+            <label class="pb-free-boost-item">
+              <input type="checkbox" ${isChecked('int') ? 'checked' : ''} onchange="app.toggleFreeBoost('int')">
+              <span class="pb-free-boost-label">INT</span>
+              <span class="pb-free-boost-mod">${calcMod('int')}</span>
+            </label>
+            <label class="pb-free-boost-item">
+              <input type="checkbox" ${isChecked('cha') ? 'checked' : ''} onchange="app.toggleFreeBoost('cha')">
+              <span class="pb-free-boost-label">CHA</span>
+              <span class="pb-free-boost-mod">${calcMod('cha')}</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Override Checkbox -->
+      <div style="margin-top: 4px;">
+        <label style="display:flex; align-items:center; gap:8px; font-size:12px; color:#94a3b8; cursor:pointer;">
+          <input type="checkbox" id="chkOverrideAbilities" ${b.override ? 'checked' : ''} onchange="app.toggleOverrideAbilities(this.checked)">
+          <span>Override character creation ability modifiers</span>
+        </label>
+      </div>
+    `;
 
     overlay.classList.add("active");
   }
 
-  adjustModalAbility(key, delta) {
-    if (!this.character.abilities) this.character.abilities = { str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10 };
-    let cur = this.character.abilities[key] || 10;
-    cur = Math.max(8, Math.min(22, cur + delta));
-    this.character.abilities[key] = cur;
-    
-    const span = document.getElementById(`modalVal_${key}`);
-    if (span) span.innerText = cur;
+  setAbilityBoostChoice(group, idx, value) {
+    if (!this.character.abilityBoosts) {
+      this.character.abilityBoosts = { ancestry: ["dex", "cha"], background: ["int", "cha"], class: "dex", free: ["dex", "con", "wis", "cha"] };
+    }
+    if (!this.character.abilityBoosts[group]) this.character.abilityBoosts[group] = [];
+    this.character.abilityBoosts[group][idx] = value;
+    this.recalculateAbilitiesFromBoosts();
+    this.openSetAbilitiesModal();
+  }
+
+  toggleFreeBoost(key) {
+    if (!this.character.abilityBoosts) {
+      this.character.abilityBoosts = { ancestry: ["dex", "cha"], background: ["int", "cha"], class: "dex", free: [] };
+    }
+    const free = this.character.abilityBoosts.free || [];
+    const idx = free.indexOf(key);
+    if (idx >= 0) {
+      free.splice(idx, 1);
+    } else {
+      if (free.length < 4) {
+        free.push(key);
+      } else {
+        free.shift();
+        free.push(key);
+      }
+    }
+    this.character.abilityBoosts.free = free;
+    this.recalculateAbilitiesFromBoosts();
+    this.openSetAbilitiesModal();
+  }
+
+  toggleOverrideAbilities(checked) {
+    if (!this.character.abilityBoosts) this.character.abilityBoosts = {};
+    this.character.abilityBoosts.override = checked;
+  }
+
+  recalculateAbilitiesFromBoosts() {
+    const base = { str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10 };
+    const b = this.character.abilityBoosts || { ancestry: ["dex", "cha"], background: ["int", "cha"], class: "dex", free: ["dex", "con", "wis", "cha"] };
+
+    // Apply Ancestry
+    (b.ancestry || []).forEach(k => { if (base[k] !== undefined) base[k] += 2; });
+    // Apply Background
+    (b.background || []).forEach(k => { if (base[k] !== undefined) base[k] += 2; });
+    // Apply Class
+    if (b.class && base[b.class] !== undefined) base[b.class] += 2;
+    // Apply Free
+    (b.free || []).forEach(k => { if (base[k] !== undefined) base[k] += 2; });
+
+    this.character.abilities = base;
   }
 
   saveAbilitiesModal() {
@@ -2089,27 +2231,68 @@ class PathbuilderApp {
     this.renderAll();
   }
 
-  // MODAL DE TREINAMENTO DE PERÍCIAS (SKILL TRAINING)
+  // MODAL DE TREINAMENTO DE PERÍCIAS (SKILL TRAINING - SCREENSHOT 2)
   openSkillTrainingModal() {
     const overlay = document.getElementById("modalSkillTrainingOverlay");
     const container = document.getElementById("modalSkillTrainingList");
-    const badge = document.getElementById("modalSkillCountBadge");
+    const title = document.getElementById("modalRemainingSkillsTitle");
     if (!overlay || !container) return;
 
     const trainedSummary = this.calc?.trainedSkills || PF2E_ENGINE.calculateTrainedSkillsCount(this.character);
-    if (badge) badge.innerText = `${trainedSummary.selectedSkills.length} de ${trainedSummary.totalAllowed} permitidas`;
+    const remaining = Math.max(0, (trainedSummary.totalAllowed || 4) - (trainedSummary.selectedSkills?.length || 0));
+    if (title) {
+      title.innerText = `Remaining Skill Selections: ${remaining}`;
+    }
 
     const selectedMap = {};
     (trainedSummary.selectedSkills || []).forEach(s => { selectedMap[s] = true; });
 
-    container.innerHTML = PF2E_DATA.skills.map(sk => {
-      const isChecked = selectedMap[sk.id] || (this.calc?.skills?.[sk.id]?.rank && this.calc?.skills?.[sk.id]?.rank !== "Destreinado");
+    const allSkills = [...PF2E_DATA.skills];
+    (this.character.loreSkills || []).forEach(lore => {
+      allSkills.push({
+        id: lore.id || `lore_${lore.name.toLowerCase().replace(/\s+/g, '_')}`,
+        name: `Lore: ${lore.name}`,
+        attribute: "int",
+        isLore: true
+      });
+    });
+
+    container.innerHTML = allSkills.map(sk => {
+      const calcData = this.calc?.skills?.[sk.id] || { total: 0, rank: "Destreinado", attrBonus: 0, profBonus: 0, itemBonus: 0 };
+      const isTrained = selectedMap[sk.id] || (calcData.rank && calcData.rank !== "Destreinado");
+      const totalMod = (calcData.total >= 0 ? `+${calcData.total}` : `${calcData.total}`);
+      const attrKey = (sk.attribute || "str").charAt(0).toUpperCase() + (sk.attribute || "str").slice(1, 3);
+      const attrVal = calcData.attrBonus ?? (this.calc?.mods?.[sk.attribute] ?? 0);
+      const profVal = isTrained ? (this.calc?.level ? this.calc.level + 2 : 3) : 0;
+      const itemVal = calcData.itemBonus ?? 0;
+
       return `
-        <div style="background:#1e293b; border:1px solid ${isChecked ? 'var(--pb-orange)' : '#334155'}; border-radius:6px; padding:8px 10px; display:flex; justify-content:space-between; align-items:center; cursor:pointer;" onclick="app.toggleSkillTrainingModal('${sk.id}')">
-          <div style="font-weight:700; color:#fff; font-size:12px;">${escapeHtml(sk.name)}</div>
-          <span style="font-size:11px; padding:2px 8px; border-radius:4px; font-weight:800; background:${isChecked ? 'var(--pb-orange)' : '#334155'}; color:${isChecked ? '#fff' : '#94a3b8'};">
-            ${isChecked ? 'Treinado' : 'Destreinado'}
-          </span>
+        <div class="pb-skill-training-row">
+          <div class="${isTrained ? 'pb-skill-row-title-trained' : 'pb-skill-row-title-untrained'}">
+            ${escapeHtml(sk.name)} ${totalMod}
+          </div>
+          <div class="pb-skill-row-right">
+            <div class="pb-teml-dots-group" onclick="app.toggleSkillTrainingModal('${sk.id}')">
+              <span class="pb-teml-dot t ${isTrained ? 'active' : ''}">T</span>
+              <span class="pb-teml-dot e">E</span>
+              <span class="pb-teml-dot m">M</span>
+              <span class="pb-teml-dot l">L</span>
+            </div>
+            <div class="pb-skill-stat-cols">
+              <div class="pb-skill-stat-col">
+                <span class="pb-skill-stat-header">${attrKey}</span>
+                <span class="pb-skill-stat-num">${attrVal}</span>
+              </div>
+              <div class="pb-skill-stat-col">
+                <span class="pb-skill-stat-header">Prof</span>
+                <span class="pb-skill-stat-num">${profVal}</span>
+              </div>
+              <div class="pb-skill-stat-col">
+                <span class="pb-skill-stat-header">Item</span>
+                <span class="pb-skill-stat-num">${itemVal}</span>
+              </div>
+            </div>
+          </div>
         </div>
       `;
     }).join('');
@@ -2120,6 +2303,19 @@ class PathbuilderApp {
   toggleSkillTrainingModal(skillId) {
     this.cycleSkillRank(skillId);
     this.openSkillTrainingModal();
+  }
+
+  promptAddLoreSkill() {
+    const name = prompt("Nome do Saber / Conhecimento (ex: Warfare, Sailing, Architecture, Heraldry):");
+    if (name && name.trim()) {
+      if (!this.character.loreSkills) this.character.loreSkills = [];
+      const id = `lore_${name.trim().toLowerCase().replace(/\s+/g, '_')}`;
+      this.character.loreSkills.push({ id, name: name.trim(), rank: "Treinado" });
+      if (!this.character.trainedSkills) this.character.trainedSkills = [];
+      this.character.trainedSkills.push(id);
+      this.renderAll();
+      this.openSkillTrainingModal();
+    }
   }
 
   promptSkillIncrease(level) {

@@ -18,6 +18,29 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
   const [query, setQuery] = useState("");
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [optionSelections, setOptionSelections] = useState<Record<string, string>>({});
+  const [activeCategoryTab, setActiveCategoryTab] = useState<string>("All");
+
+  const categoryTabs = useMemo(() => {
+    if (!pickerType) return [];
+    if (pickerType === "feat") {
+      const fType = pickerOptions?.filterType?.toLowerCase() || "";
+      if (fType.includes("ancestry")) {
+        return ["Ancestry Feats", "All Feats"];
+      } else if (fType.includes("class")) {
+        return ["Class Feats", "Dedication Feats", "Archetype Class Feats", "All Feats"];
+      } else {
+        return ["General Feats", "Skill Feats", "Archetype Skill Feats", "All Feats"];
+      }
+    }
+    return [t(pickerLabelKeys[pickerType])];
+  }, [pickerType, pickerOptions, t]);
+
+  useEffect(() => {
+    if (categoryTabs.length > 0) {
+      setActiveCategoryTab(categoryTabs[0]);
+    }
+  }, [categoryTabs]);
+
   const searchRef = useRef<HTMLInputElement>(null);
   const dialogRef = useRef<HTMLElement>(null);
   const itemRefs = useRef<Array<HTMLButtonElement | null>>([]);
@@ -165,6 +188,13 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
     bridge.close();
   };
 
+  const clearSelection = () => {
+    if (pickerOptions) {
+      window.app.applyPickerSelection(pickerType, null, pickerOptions);
+    }
+    bridge.close();
+  };
+
   return (
     <div
       className="picker-overlay"
@@ -182,36 +212,52 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
       >
         <h2 id="picker-title" className="sr-only">{t("select")} {t(pickerLabelKeys[pickerType])}</h2>
         <header className="picker-nav">
-          <div className="picker-heading">
-            <span className="picker-kicker">{t("pickerCompendium")}</span>
-            <strong>{t(pickerLabelKeys[pickerType])}</strong>
+          <div className="picker-tabs-bar">
+            {categoryTabs.map((tab) => (
+              <button
+                key={tab}
+                type="button"
+                className={`picker-tab-btn ${activeCategoryTab === tab ? "active" : ""}`}
+                onClick={() => setActiveCategoryTab(tab)}
+              >
+                {tab}
+              </button>
+            ))}
           </div>
-          <label className="picker-search">
-            <span className="sr-only">{t("searchOptions")}</span>
-            <input
-              ref={searchRef}
-              value={query}
-              onChange={(event) => {
-                setQuery(event.target.value);
-                setSelectedIndex(0);
-              }}
-              placeholder={t("search")}
-            />
-            <span aria-hidden="true">🔍</span>
-          </label>
+          <div style={{ display: "flex", alignItems: "center", gap: "8px", marginLeft: "auto" }}>
+            <label className="picker-search">
+              <span className="sr-only">{t("searchOptions")}</span>
+              <input
+                ref={searchRef}
+                value={query}
+                onChange={(event) => {
+                  setQuery(event.target.value);
+                  setSelectedIndex(0);
+                }}
+                placeholder={t("search")}
+              />
+            </label>
+            <button type="button" className="picker-filter-btn" title="Filtros avançados">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z"/>
+              </svg>
+            </button>
+          </div>
         </header>
 
         <div className="picker-content">
           <div className="picker-list" role="listbox" aria-label={t("availableOptions")}>
             {items.map((item, index) => {
               const itemState = item.data.selectionState ?? "available";
-              const itemMessage = item.data.selectionMessages?.[locale] ?? item.data.selectionMessages?.["pt-BR"] ?? "";
               const isSelected = selectedIndex === index;
               const isBlocked = itemState !== "available";
+              const itemLvl = item.data.level || item.data.rank || 1;
+              const hasGlyph = item.name?.includes("◆") || item.name?.includes("↺") || item.name?.includes("◇");
+
               return (
                 <button
                   ref={(element) => { itemRefs.current[index] = element; }}
-                  className={`picker-item ${itemState}${isSelected ? " selected" : ""}`}
+                  className={`picker-item ${itemState}${isSelected ? " selected" : ""}${isBlocked ? " blocked" : ""}`}
                   key={`${item.type}-${item.name}`}
                   onClick={() => setSelectedIndex(index)}
                   onKeyDown={(event) => {
@@ -235,10 +281,12 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
                   tabIndex={isSelected ? 0 : -1}
                   type="button"
                 >
-                  <span className="picker-item-icon" aria-hidden="true">📜</span>
-                  <span className="picker-option-text">
-                    <span>{getItemDisplayName(item, locale)}</span>
-                    {isBlocked && itemMessage && <small className="picker-option-status">{itemMessage}</small>}
+                  <div className="picker-item-left">
+                    <span className="picker-item-name">{getItemDisplayName(item, locale)}</span>
+                    {hasGlyph && <span className="picker-item-glyph">◆</span>}
+                  </div>
+                  <span className={`picker-item-level-box ${itemLvl > 1 ? "prereq-active" : ""}`}>
+                    {itemLvl}
                   </span>
                 </button>
               );
@@ -254,30 +302,69 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
               </div>
             ) : selectedItem ? (
               <>
-                <h3>{getItemDisplayName(selectedItem, locale)}</h3>
-                {rarity && <span className={`picker-rarity ${String(selectedItem.data.rarity)}`}>{rarity}</span>}
-                {selectedState !== "available" && selectedMessage && <p className="picker-compatibility-note">{selectedMessage}</p>}
-                {(selectedItem.data.summaries?.[locale] ?? selectedItem.data.description) && <p>{selectedItem.data.summaries?.[locale] ?? selectedItem.data.description}</p>}
+                <div className="picker-detail-header">
+                  <h3>{getItemDisplayName(selectedItem, locale)}</h3>
+                  <span className="picker-item-level-box">
+                    {selectedItem.data.level || selectedItem.data.rank || 1}
+                  </span>
+                </div>
+
+                <div className="picker-traits-row">
+                  {selectedItem.data.traits?.map((trait: string) => (
+                    <span className="picker-trait-pill" key={trait}>{trait}</span>
+                  )) || (
+                    <span className="picker-trait-pill">General</span>
+                  )}
+                  {rarity && <span className="picker-trait-pill" style={{ background: "#4c1d95", borderColor: "#7c3aed", color: "#ddd6fe" }}>{rarity}</span>}
+                </div>
+
+                {Boolean(selectedItem.data.prerequisites) && (
+                  <div className="picker-prereqs">
+                    <strong>Prerequisites</strong> {typeof selectedItem.data.prerequisites === "object" ? JSON.stringify(selectedItem.data.prerequisites) : String(selectedItem.data.prerequisites)}
+                  </div>
+                )}
+
+                {selectedState !== "available" && selectedMessage && (
+                  <p className="picker-option-status" style={{ marginBottom: "12px", display: "inline-block" }}>{selectedMessage}</p>
+                )}
+
+                <div className="picker-desc">
+                  {(selectedItem.data.summaries?.[locale] ?? selectedItem.data.description)}
+                </div>
+
                 {ruleFacts.length > 0 && <dl className="picker-rule-facts">{ruleFacts.map((fact) => <div key={fact}><dd>{fact}</dd></div>)}</dl>}
-                {selectionGroups.length > 0 && <fieldset className="picker-configuration">
-                  <legend>{t("configuration")}</legend>
-                  {selectionGroups.map((group) => <label key={group.id}>
-                    <span>{t(group.labelKey as MessageKey)}</span>
-                    <select value={resolvedSelections[group.id]?.id ?? ""} onChange={(event) => setOptionSelections((current) => ({ ...current, [group.id]: event.target.value }))}>
-                      {group.options.map((option) => <option value={option.id} key={option.id}>{option.names[locale] ?? option.names["pt-BR"] ?? option.id}</option>)}
-                    </select>
-                  </label>)}
-                </fieldset>}
+
+                {selectionGroups.length > 0 && (
+                  <fieldset className="picker-configuration">
+                    <legend>{t("configuration")}</legend>
+                    {selectionGroups.map((group) => (
+                      <label key={group.id}>
+                        <span>{t(group.labelKey as MessageKey)}</span>
+                        <select
+                          value={resolvedSelections[group.id]?.id ?? ""}
+                          onChange={(event) => setOptionSelections((current) => ({ ...current, [group.id]: event.target.value }))}
+                        >
+                          {group.options.map((option) => (
+                            <option value={option.id} key={option.id}>
+                              {option.names[locale] ?? option.names["pt-BR"] ?? option.id}
+                            </option>
+                          ))}
+                        </select>
+                      </label>
+                    ))}
+                  </fieldset>
+                )}
+
                 {resolvedHp !== undefined && (
-                  <p>{t("baseHp")}: <strong>{resolvedHp}</strong> · {t("landSpeed")}: <strong>{resolvedSpeed ?? 0} {t("feet")}</strong>{resolvedHeritage?.swimSpeed !== undefined && <> · {t("swimSpeed")}: <strong>{resolvedHeritage.swimSpeed} {t("feet")}</strong></>}{resolvedHeritage?.climbSpeed !== undefined && <> · {t("climbSpeed")}: <strong>{resolvedHeritage.climbSpeed} {t("feet")}</strong></>}</p>
+                  <p>{t("baseHp")}: <strong>{resolvedHp}</strong> · {t("landSpeed")}: <strong>{resolvedSpeed ?? 0} {t("feet")}</strong></p>
                 )}
                 {selectedItem.data.hpPerLevel && (
                   <p>{t("hpPerLevel")}: <strong>{selectedItem.data.hpPerLevel}</strong> · {t("keyAbility")}: <strong>{selectedItem.data.keyAbility?.join(", ")}</strong></p>
                 )}
-                {selectedItem.data.damage && (
-                  <p>{t("damage")}: <strong>{selectedItem.data.damage} {selectedItem.data.damageType}</strong> · {t("traits")}: <strong>{selectedItem.data.traits?.join(", ")}</strong></p>
-                )}
-                <small className="picker-source">{t("source")}: {sourceLabel}</small>
+
+                <div className="picker-source-tag">
+                  {selectedItem.data.source?.book || "PC1"}
+                </div>
               </>
             ) : (
               <p className="picker-empty">{t("selectDetails")}</p>
@@ -286,8 +373,18 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
         </div>
 
         <footer className="picker-footer">
-          <button className="picker-confirm" onClick={confirm} disabled={!canConfirm} type="button">{t("accept")}</button>
-          <button className="picker-cancel" onClick={bridge.close} type="button">{t("cancel")}</button>
+          <button className="picker-confirm" onClick={confirm} disabled={!canConfirm} type="button">
+            {t("accept")}
+          </button>
+          <button className="picker-cancel" onClick={bridge.close} type="button">
+            {t("cancel")}
+          </button>
+          <button className="picker-cancel" onClick={() => window.open("https://2e.aonprd.com", "_blank")} type="button">
+            PRD
+          </button>
+          <button className="picker-cancel" onClick={clearSelection} type="button">
+            Clear
+          </button>
         </footer>
       </section>
     </div>

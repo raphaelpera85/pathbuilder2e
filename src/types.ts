@@ -40,6 +40,7 @@ export interface IPickerItemData {
   traditions?: string[];
   traditionNames?: Partial<Record<"pt-BR" | "en" | "es", string[]>>;
   primaryChecks?: Partial<Record<"pt-BR" | "en" | "es", string>>;
+  prerequisites?: string;
   rarity?: "common" | "uncommon" | "rare" | "unique";
   [key: string]: unknown;
 }
@@ -227,7 +228,7 @@ export interface IPickerOpenOptions {
 
 export interface IPickerController {
   getPickerItems(type: PickerType): IPickerItem[];
-  applyPickerSelection(type: PickerType, item: IPickerItem, options?: IPickerOpenOptions): void;
+  applyPickerSelection(type: PickerType, item: IPickerItem | null, options?: IPickerOpenOptions): void;
   consumePendingPicker?(): { type: PickerType; options?: IPickerOpenOptions } | null;
   getCurrentCharacter(): Record<string, unknown>;
   loadCharacter(character: Record<string, unknown>): void;
