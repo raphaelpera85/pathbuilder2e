@@ -1,6 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { PickerModal } from "./PickerModal";
+import { ItemPickerModal } from "./ItemPickerModal";
 import { AccountPortal } from "./AccountPortal";
 import { I18nProvider, LocaleSwitcher } from "./i18n";
 import { PortalPages } from "./PortalPages";
@@ -16,7 +17,10 @@ if (!modalRoot || !accountRoot || !portalRoot) {
 
 createRoot(modalRoot).render(
   <StrictMode>
-    <I18nProvider><PickerModal /></I18nProvider>
+    <I18nProvider>
+      <PickerModal />
+      <ItemPickerModal />
+    </I18nProvider>
   </StrictMode>,
 );
 

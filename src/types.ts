@@ -9,6 +9,9 @@ export type PickerType =
   | "spell"
   | "ritual"
   | "feat"
+  | "item"
+  | "pet"
+  | "action"
   | "condition"
   | "buff";
 

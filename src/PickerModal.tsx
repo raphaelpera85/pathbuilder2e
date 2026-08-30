@@ -4,7 +4,7 @@ import { useI18n, getItemDisplayName, type MessageKey } from "./i18n";
 
 const pickerLabelKeys: Record<PickerType, MessageKey> = {
   ancestry: "ancestries", class: "classes", background: "backgrounds", weapon: "weapons", armor: "armors",
-  heritage: "heritages", archetype: "archetypes", spell: "spells", ritual: "rituals", feat: "feats", condition: "conditions", buff: "buffs",
+  heritage: "heritages", archetype: "archetypes", spell: "spells", ritual: "rituals", feat: "feats", item: "items", pet: "pets", action: "actions", condition: "conditions", buff: "buffs",
 };
 
 interface PickerModalProps {

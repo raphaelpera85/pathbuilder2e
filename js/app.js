@@ -587,26 +587,79 @@ class PathbuilderApp {
   // ABA DE MASCOTES / COMPANHEIRO ANIMAL
   renderPetsTab() {
     const p = document.getElementById("petsContent");
-    if (this.character.id === "Joao_Ranger") {
-      p.innerHTML = `
-        <div class="strike-card" style="border-left-color: var(--pb-orange); background: var(--pb-bg-panel);">
-          <div style="font-weight:bold; color:var(--pb-orange); font-size:15px;">🐐 Bóreas — O Bode Negro das Montanhas</div>
-          <div style="font-size:11px; color:var(--pb-text-muted); margin-bottom:8px;">Companheiro Animal • Carneiro Montês / Bode de Guerra</div>
+    const pets = this.character.pets || (this.character.id === "Joao_Ranger" ? [{
+      name: "Bóreas — O Bode Negro das Montanhas",
+      type: "Companheiro Animal • Carneiro Montês",
+      hpMax: 18,
+      hpCurrent: 18,
+      ac: 16,
+      speed: "35ft",
+      perception: "+5",
+      attacks: [{ name: "Chifrada de Guerra", bonus: "+6", damage: "1d6+3 Impacto [Empurrão]" }],
+      supportBenefit: "Deixa o oponente Desprevenido (-2 CA) contra as flechas de João.",
+      commandAction: "Concede 2 ações para Bóreas se mover e chifrar."
+    }] : []);
+
+    const petCardsHtml = pets.length === 0 ? `
+      <div style="color:var(--pb-text-muted); text-align:center; padding:30px;">
+        <p>Nenhum mascote ou companheiro animal associado.</p>
+        <button class="btn-pb-action" onclick="app.openAddPetModal()" style="margin-top:10px;">➕ Adicionar Companheiro / Familiar / Montaria</button>
+      </div>
+    ` : `
+      <div style="margin-bottom:12px; display:flex; justify-content:flex-end;">
+        <button class="btn-pb-action" onclick="app.openAddPetModal()">➕ Adicionar Outro Mascote</button>
+      </div>
+      ${pets.map((pet, idx) => `
+        <div class="strike-card" style="border-left-color: var(--pb-orange); background: var(--pb-bg-panel); margin-bottom:12px;">
+          <div class="strike-header">
+            <div style="font-weight:bold; color:var(--pb-orange); font-size:15px;">🐾 ${escapeHtml(pet.name)}</div>
+            <button onclick="app.removePet(${idx})" title="Remover Mascote" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer; font-size:14px;">🗑️</button>
+          </div>
+          <div style="font-size:11px; color:var(--pb-text-muted); margin-bottom:8px;">${escapeHtml(pet.type || "Companheiro")}</div>
           <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:6px; margin-bottom:10px;">
-            <div class="vital-box"><span class="vital-label">PV</span><span class="vital-value" style="color:var(--hp-green);">16</span></div>
-            <div class="vital-box"><span class="vital-label">CA</span><span class="vital-value" style="color:#60a5fa;">16</span></div>
-            <div class="vital-box"><span class="vital-label">Velocidade</span><span class="vital-value">35ft</span></div>
-            <div class="vital-box"><span class="vital-label">Percepção</span><span class="vital-value">+5</span></div>
+            <div class="vital-box">
+              <span class="vital-label">PV</span>
+              <span class="vital-value" style="color:var(--hp-green);">${escapeHtml(pet.hpCurrent !== undefined ? pet.hpCurrent : pet.hpMax)} / ${escapeHtml(pet.hpMax || 16)}</span>
+            </div>
+            <div class="vital-box"><span class="vital-label">CA</span><span class="vital-value" style="color:#60a5fa;">${escapeHtml(pet.ac || 16)}</span></div>
+            <div class="vital-box"><span class="vital-label">Velocidade</span><span class="vital-value">${escapeHtml(pet.speed || "35ft")}</span></div>
+            <div class="vital-box"><span class="vital-label">Percepção</span><span class="vital-value">${escapeHtml(pet.perception || "+5")}</span></div>
           </div>
           <div style="font-size:12px; line-height:1.6;">
-            • <strong>Ataque Chifrada:</strong> +6 no acerto | <strong>1d6+3 Impacto</strong> (+1d8 Precisão com Presa Caçada) [Empurrão].<br>
-            • <strong>Benefício de Suporte:</strong> Deixa o oponente <strong>Desprevenido (-2 CA)</strong> contra as flechas de João.<br>
-            • <strong>Comandar Animal [1 Ação]:</strong> Concede 2 ações para Bóreas se mover e chifrar.
+            ${(pet.attacks || []).map(atk => `• <strong>Ataque ${escapeHtml(atk.name)}:</strong> ${escapeHtml(atk.bonus)} no acerto | <strong>${escapeHtml(atk.damage)}</strong>.<br>`).join('')}
+            ${pet.supportBenefit ? `• <strong>Benefício de Suporte:</strong> ${escapeHtml(pet.supportBenefit)}<br>` : ''}
+            ${pet.commandAction ? `• <strong>Comandar Animal [1 Ação]:</strong> ${escapeHtml(pet.commandAction)}` : ''}
           </div>
         </div>
-      `;
-    } else {
-      p.innerHTML = `<div style="color:var(--pb-text-muted); text-align:center; padding:30px;">Nenhum mascote ou companheiro animal associado.</div>`;
+      `).join('')}
+    `;
+
+    p.innerHTML = petCardsHtml;
+  }
+
+  openAddPetModal() {
+    const presets = [
+      { name: "Lobo (Wolf)", type: "Companheiro Animal", hpMax: 18, ac: 16, speed: "40ft", perception: "+6", attacks: [{ name: "Mandíbulas", bonus: "+6", damage: "1d8+2 Perfuração [Derrubar]" }], supportBenefit: "Deixa inimigos Desprevenidos (-2 CA).", commandAction: "Concede 2 ações para se mover e morder." },
+      { name: "Urso (Bear)", type: "Companheiro Animal", hpMax: 20, ac: 15, speed: "35ft", perception: "+5", attacks: [{ name: "Mandíbulas", bonus: "+6", damage: "1d8+3 Perfuração" }, { name: "Garras", bonus: "+6", damage: "1d6+3 Corte [Ágil]" }], supportBenefit: "Causa +1d8 de dano de corte com seus ataques.", commandAction: "Concede 2 ações para se mover e golpear." },
+      { name: "Cavalo de Guerra (Horse)", type: "Montaria / Companheiro Animal", hpMax: 20, ac: 15, speed: "40ft", perception: "+5", attacks: [{ name: "Cascos", bonus: "+6", damage: "1d6+3 Impacto" }], supportBenefit: "+2 de dano de circunstância em ataques montados.", commandAction: "Concede 2 ações para avançar galopando." },
+      { name: "Ave de Rapina / Falcão", type: "Companheiro Animal", hpMax: 14, ac: 17, speed: "10ft (Voo 60ft)", perception: "+7", attacks: [{ name: "Garras / Bico", bonus: "+7", damage: "1d6+1 Corte [Finesse]" }], supportBenefit: "Deixa o alvo Deslumbrado (Dazzled).", commandAction: "Mergulha em voo e ataca." },
+      { name: "Familiar Místico", type: "Familiar", hpMax: 10, ac: 15, speed: "25ft", perception: "+5", attacks: [], supportBenefit: "Concede habilidades de mestre e entrega magias de toque.", commandAction: "Comanda o familiar a se posicionar ou entregar feitiço." }
+    ];
+    const choice = prompt(`Escolha o Mascote / Companheiro:\n1. Lobo (Wolf)\n2. Urso (Bear)\n3. Cavalo de Guerra (Horse)\n4. Ave de Rapina (Falcon)\n5. Familiar Místico\n(Digite o número de 1 a 5 ou nome personalizado):`, "1");
+    if (!choice) return;
+    let selected = presets[parseInt(choice, 10) - 1];
+    if (!selected) {
+      selected = { name: choice, type: "Mascote Personalizado", hpMax: 16, ac: 15, speed: "30ft", perception: "+5", attacks: [{ name: "Ataque", bonus: "+5", damage: "1d6+2" }], supportBenefit: "Apoio tático em combate.", commandAction: "Comandar criatura." };
+    }
+    if (!this.character.pets) this.character.pets = [];
+    this.character.pets.push(selected);
+    this.renderAll();
+  }
+
+  removePet(idx) {
+    if (this.character.pets) {
+      this.character.pets.splice(idx, 1);
+      this.renderAll();
     }
   }
 
@@ -621,10 +674,10 @@ class PathbuilderApp {
   renderFeatsTab() {
     const list = document.getElementById("featsFullList");
     const feats = this.character.feats || [];
-    list.innerHTML = feats.map((f, idx) => `
+    list.innerHTML = feats.length === 0 ? `<div style="color:var(--pb-text-muted); text-align:center; padding:20px;">Nenhum talento selecionado. Escolha talentos na árvore de evolução ou no Compêndio.</div>` : feats.map((f, idx) => `
       <div class="strike-card" style="border-left-color: var(--pb-teml-e);">
         <div class="strike-header">
-          <span style="font-weight:bold; color:var(--pb-orange);">${escapeHtml(f.name)} <span class="trait-tag">${escapeHtml(f.type || "Talento")}</span></span>
+          <span style="font-weight:bold; color:var(--pb-orange);">${escapeHtml(f.name)} <span class="trait-tag">${escapeHtml(f.type || f.category || "Talento")}</span></span>
           <button onclick="app.removeFeat(${idx})" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer;">🗑️</button>
         </div>
         <div style="font-size:12px; color:var(--pb-text); margin-top:4px;">${escapeHtml(f.description || "")}</div>
@@ -635,11 +688,32 @@ class PathbuilderApp {
   // ABA DE AÇÕES
   renderActionsTab() {
     const list = document.getElementById("actionsFullList");
-    const actions = (this.character.classFeatures || []).concat(this.character.feats || []);
-    list.innerHTML = actions.map(act => `
-      <div class="strike-card" style="border-left-color: var(--pb-orange);">
-        <div style="font-weight:bold; color:var(--pb-orange); font-size:13px;">${escapeHtml(act.name)}</div>
-        <div style="font-size:12px; color:var(--pb-text); margin-top:4px;">${escapeHtml(act.description || "")}</div>
+    const defaultActions = [
+      { name: "Golpear (Strike)", cost: "1 Ação", desc: "Desfere um ataque corpo a corpo ou à distância com sua arma.", type: "Básica" },
+      { name: "Movimentar-se (Stride)", cost: "1 Ação", desc: "Move-se até sua Velocidade em terra.", type: "Básica" },
+      { name: "Passo de Ajuste (Step)", cost: "1 Ação", desc: "Move-se 5 pés sem provocar reações como Golpe Reativo.", type: "Básica" },
+      { name: "Erguer Escudo (Raise a Shield)", cost: "1 Ação", desc: "Concede +2 na CA de circunstância até o início do próximo turno.", type: "Básica" },
+      { name: "Buscar Cobertura (Take Cover)", cost: "1 Ação", desc: "Melhora o bônus de cobertura para +2 ou +4 na CA e salvamentos de Reflexos.", type: "Básica" },
+      { name: "Desmoralizar (Demoralize)", cost: "1 Ação", desc: "Teste de Intimidação vs Vontade para deixar o alvo Aterrorizado 1.", type: "Perícia" },
+      { name: "Derrubar (Trip)", cost: "1 Ação", desc: "Teste de Atletismo vs Reflexos para derrubar o oponente Caído no chão.", type: "Perícia" },
+      { name: "Agarrar (Grapple)", cost: "1 Ação", desc: "Teste de Atletismo vs Fortitude para imobilizar o oponente.", type: "Perícia" },
+      { name: "Tratar Ferimentos (Treat Wounds)", cost: "10 Minutos", desc: "Medicina fora de combate para curar grandes quantias de PV.", type: "Exploração" }
+    ];
+    const customActions = (this.character.classFeatures || []).concat(this.character.feats || []).map(a => ({
+      name: a.name,
+      cost: a.actions ? `${a.actions} Ação(ões)` : "Especial",
+      desc: a.description || "",
+      type: "Classe / Talento"
+    }));
+    const allActions = defaultActions.concat(customActions);
+
+    list.innerHTML = allActions.map(act => `
+      <div class="strike-card" style="border-left-color: var(--pb-orange); margin-bottom:8px;">
+        <div class="strike-header">
+          <div style="font-weight:bold; color:var(--pb-orange); font-size:13px;">${escapeHtml(act.name)}</div>
+          <span class="trait-tag" style="background:#451a03; color:#fdba74; border-color:#78350f;">${escapeHtml(act.cost || "1 Ação")}</span>
+        </div>
+        <div style="font-size:12px; color:var(--pb-text); margin-top:4px;">${escapeHtml(act.desc || "")}</div>
       </div>
     `).join('');
   }
@@ -719,6 +793,15 @@ class PathbuilderApp {
     }
     if (type === "feat") {
       return (PF2E_DATA.feats || this.getFallbackFeatCatalog()).map(f => ({ name: f.name, type: f.type || "Talento", data: f }));
+    }
+    if (type === "item" || type === "gear") {
+      return (PF2E_DATA.items || []).map(i => ({ name: i.name, type: "Item", data: i }));
+    }
+    if (type === "pet") {
+      return (PF2E_DATA.pets || []).map(p => ({ name: p.name, type: "Mascote", data: p }));
+    }
+    if (type === "action") {
+      return (PF2E_DATA.actions || []).map(a => ({ name: a.name, type: "Ação", data: a }));
     }
     if (type === "condition") {
       return (PF2E_DATA.conditions || this.getConditionCatalog()).map(c => ({ name: c.name, type: "Condição", data: c }));
@@ -1346,6 +1429,10 @@ class PathbuilderApp {
   removeLoreSkill(idx) { this.character.loreSkills.splice(idx, 1); this.renderAll(); }
 
   addInventoryItem() {
+    if (window.pathbuilderItemPicker && typeof window.pathbuilderItemPicker.open === "function") {
+      window.pathbuilderItemPicker.open();
+      return;
+    }
     const name = prompt("Nome do Item:");
     if (name) {
       const qty = parseInt(prompt("Quantidade:", "1"), 10) || 1;
