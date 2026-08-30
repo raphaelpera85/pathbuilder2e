@@ -43,7 +43,20 @@ class PathbuilderApp {
     this.selectedPickerItem = null;
     this.activeModalTab = "All";
     this.mobileActiveView = "stats";
+    if (typeof window !== "undefined") {
+      window.addEventListener("pathbuilder:locale-change", () => {
+        this.renderAll();
+      });
+    }
     this.init();
+  }
+
+  getLocale() {
+    if (typeof localStorage !== "undefined") {
+      const loc = localStorage.getItem("pathbuilder.locale") || localStorage.getItem("pathbuilder_locale");
+      if (loc === "en" || loc === "es" || loc === "pt-BR") return loc;
+    }
+    return "pt-BR";
   }
 
   async init() {
@@ -250,14 +263,15 @@ class PathbuilderApp {
       `;
     });
 
-    // Perícias de Lore (Conhecimento)
+    // Perícias de Lore (Conhecimento / Saberes)
+    const lorePrefix = this.getLocale() === "en" ? "Lore: " : "Saber: ";
     (this.calc.loreSkills || []).forEach((l, idx) => {
       const rankInitial = (l.rank || "Treinado")[0].toUpperCase();
       html += `
-        <div class="skill-item-row" style="background: rgba(249, 115, 22, 0.05);" onclick="app.rollCheck(${escapeInlineArgument(`Lore: ${l.name}`)}, ${l.total})">
+        <div class="skill-item-row" style="background: rgba(249, 115, 22, 0.05);" onclick="app.rollCheck(${escapeInlineArgument(`${lorePrefix}${l.name}`)}, ${l.total})">
           <span class="teml-circle t">${rankInitial}</span>
           <span class="skill-roll-val">${PF2E_ENGINE.formatMod(l.total)}</span>
-          <span class="skill-name-text">Lore: ${escapeHtml(l.name)}</span>
+          <span class="skill-name-text">${lorePrefix}${escapeHtml(l.name)}</span>
           <span onclick="event.stopPropagation(); app.removeLoreSkill(${idx})" style="color:var(--pb-text-dim); font-size:10px;">✕</span>
         </div>
       `;
@@ -867,7 +881,7 @@ class PathbuilderApp {
     // 2. Deity Display
     const deityDisplay = document.getElementById("detailsDeityDisplay");
     if (deityDisplay) {
-      deityDisplay.textContent = this.character.deity || "Not set";
+      deityDisplay.textContent = this.character.deity || (this.getLocale() === "en" ? "Not set" : "Não definida");
     }
 
     // 3. Age & Gender Inputs
@@ -890,7 +904,7 @@ class PathbuilderApp {
       } else if (typeof langs === "string" && langs.trim().length > 0) {
         langDisplay.textContent = langs;
       } else {
-        langDisplay.textContent = "None selected";
+        langDisplay.textContent = this.getLocale() === "en" ? "None selected" : "Nenhum selecionado";
       }
     }
 
@@ -975,8 +989,10 @@ class PathbuilderApp {
   }
 
   openDeityModal() {
+    const noDeityName = this.getLocale() === "en" ? "Not set" : "Não definida";
+    const noDeityDesc = this.getLocale() === "en" ? "No deity" : "Nenhuma divindade";
     const deities = [
-      { name: "Not set", title: "Nenhuma divindade" },
+      { name: noDeityName, title: noDeityDesc },
       { name: "Abadar", title: "Cidades, Riqueza, Lei, Comércio (LN)" },
       { name: "Arazni", title: "Sobrevivência, Dignidade Reclamada (N)" },
       { name: "Asmodeus", title: "Tirania, Orgulho, Contratos (LM)" },
@@ -1010,7 +1026,7 @@ class PathbuilderApp {
     const list = document.getElementById("deitySelectList");
     if (!list) return;
     const q = (query || "").toLowerCase();
-    const current = (this.character?.deity || "Not set").toLowerCase();
+    const current = (this.character?.deity || (this.getLocale() === "en" ? "Not set" : "Não definida")).toLowerCase();
     const filtered = (this._deitiesCache || []).filter(d => 
       d.name.toLowerCase().includes(q) || d.title.toLowerCase().includes(q)
     );
@@ -1031,7 +1047,8 @@ class PathbuilderApp {
 
   selectDeity(deityName) {
     if (!this.character) return;
-    this.character.deity = deityName === "Not set" ? "" : deityName;
+    const isNone = deityName === "Not set" || deityName === "Não definida" || deityName === "No definida";
+    this.character.deity = isNone ? "" : deityName;
     this.saveCharacterLocal(false);
     this.renderDetailsTab();
     const overlay = document.getElementById("modalDeityOverlay");
@@ -1744,8 +1761,8 @@ class PathbuilderApp {
 
     if (animContainer) animContainer.innerHTML = "";
     if (resultTotal) resultTotal.innerText = "0";
-    if (resultBreakdown) resultBreakdown.innerText = "Select dice using the buttons at the top";
-    if (resultLabel) resultLabel.innerText = "Free Roll";
+    if (resultBreakdown) resultBreakdown.innerText = this.getLocale() === "en" ? "Select dice using the buttons at the top" : "Selecione os dados acima para rolar";
+    if (resultLabel) resultLabel.innerText = this.getLocale() === "en" ? "Free Roll" : "Rolagem Livre";
     if (placeholder) placeholder.style.display = "flex";
     if (stage) stage.style.display = "none";
   }
@@ -2300,6 +2317,36 @@ class PathbuilderApp {
     const char = this.character || {};
     const prog = char.progression || {};
     const charLevel = Number(char.level) || 1;
+    const locale = this.getLocale();
+    const isEn = locale === "en";
+    const isEs = locale === "es";
+
+    const tLabels = {
+      ancestry: isEn ? "Ancestry" : (isEs ? "Ascendencia" : "Ancestralidade"),
+      background: isEn ? "Background" : (isEs ? "Trasfondo" : "Antecedente"),
+      class: isEn ? "Class" : (isEs ? "Clase" : "Classe"),
+      heritage: isEn ? "Heritage" : (isEs ? "Herencia" : "Herança"),
+      generalFeat: isEn ? "General Feat" : (isEs ? "Dote General" : "Talento Geral"),
+      ancestryFeat: isEn ? "Ancestry Feat" : (isEs ? "Dote de Ascendencia" : "Talento Ancestral"),
+      classFeat: isEn ? "Class Feat" : (isEs ? "Dote de Clase" : "Talento de Classe"),
+      skillFeat: isEn ? "Skill Feat" : (isEs ? "Dote de Habilidad" : "Talento de Perícia"),
+      skillIncrease: isEn ? "Skill Increase" : (isEs ? "Aumento de Habilidad" : "Aumento de Perícia"),
+      setAbilities: isEn ? "Set Abilities" : (isEs ? "Definir Características" : "Definir Atributos"),
+      skillTraining: isEn ? "Skill Training" : (isEs ? "Entrenar Habilidades" : "Treinar Perícias"),
+      selectStyle: isEn ? "Select Style" : (isEs ? "Seleccionar Estilo" : "Selecionar Estilo"),
+      levelPrefix: isEn ? "Level " : (isEs ? "Nivel " : "Nível "),
+      unselected: isEn ? "Unselected" : (isEs ? "No Seleccionado" : "Não Selecionado"),
+      setAbilitiesBoosts: isEn ? "Set Abilities (+4 Boosts)" : (isEs ? "Aumentos (+4 Características)" : "Aprimoramentos (+4 Atributos)"),
+      defaultHuman: isEn ? "Human" : "Humano",
+      defaultNoble: isEn ? "Noble (Heraldry)" : (isEs ? "Noble (Heráldica)" : "Nobre (Heráldica)"),
+      defaultSwashbuckler: isEn ? "Swashbuckler" : (isEs ? "Espadachín" : "Espadachim"),
+      defaultVersatileHuman: isEn ? "Versatile Human" : (isEs ? "Humano Versátil" : "Humano Versátil"),
+      defaultFleet: isEn ? "Fleet" : (isEs ? "Pies Ligeros" : "Pés Velozes"),
+      defaultAmbition: isEn ? "Natural Ambition" : (isEs ? "Ambición Natural" : "Ambição Natural"),
+      defaultGoading: isEn ? "Goading Feint" : "Finta Provocadora",
+      defaultParry: isEn ? "Extravagant Parry" : (isEs ? "Parada Extravagante" : "Aparada Extravagante"),
+      defaultFencer: isEn ? "Fencer" : (isEs ? "Esgrimista" : "Esgrimista"),
+    };
 
     let html = "";
 
@@ -2309,24 +2356,24 @@ class PathbuilderApp {
         <div class="pb-tree-card" onclick="app.openPicker('ancestry')" title="Clique para alterar Ancestralidade">
           <div class="pb-tree-card-icon">${this.getTreeIconSvg('ancestry')}</div>
           <div class="pb-tree-card-content">
-            <div class="pb-tree-card-label">Ancestry</div>
-            <div class="pb-tree-card-value ${!char.ancestry ? 'unselected' : ''}">${escapeHtml(char.ancestry || "Human")}</div>
+            <div class="pb-tree-card-label">${tLabels.ancestry}</div>
+            <div class="pb-tree-card-value ${!char.ancestry ? 'unselected' : ''}">${escapeHtml(char.ancestry || tLabels.defaultHuman)}</div>
           </div>
         </div>
 
         <div class="pb-tree-card" onclick="app.openPicker('background')" title="Clique para alterar Biografia">
           <div class="pb-tree-card-icon">${this.getTreeIconSvg('background')}</div>
           <div class="pb-tree-card-content">
-            <div class="pb-tree-card-label">Background</div>
-            <div class="pb-tree-card-value ${!char.background ? 'unselected' : ''}">${escapeHtml(char.background || "Noble (Heraldry)")}</div>
+            <div class="pb-tree-card-label">${tLabels.background}</div>
+            <div class="pb-tree-card-value ${!char.background ? 'unselected' : ''}">${escapeHtml(char.background || tLabels.defaultNoble)}</div>
           </div>
         </div>
 
         <div class="pb-tree-card active" onclick="app.openPicker('class')" title="Clique para alterar Classe">
           <div class="pb-tree-card-icon">${this.getTreeIconSvg('class')}</div>
           <div class="pb-tree-card-content">
-            <div class="pb-tree-card-label">Class</div>
-            <div class="pb-tree-card-value ${!char.class ? 'unselected' : ''}">${escapeHtml(char.class || "Swashbuckler")}</div>
+            <div class="pb-tree-card-label">${tLabels.class}</div>
+            <div class="pb-tree-card-value ${!char.class ? 'unselected' : ''}">${escapeHtml(char.class || tLabels.defaultSwashbuckler)}</div>
           </div>
         </div>
       </div>
@@ -2334,7 +2381,7 @@ class PathbuilderApp {
 
     // 2. NÍVEIS 1 A 20
     for (let lvl = 1; lvl <= 20; lvl++) {
-      html += `<div class="pb-tree-level-title">Level ${lvl}</div>`;
+      html += `<div class="pb-tree-level-title">${tLabels.levelPrefix}${lvl}</div>`;
       html += `<div class="pb-tree-group-box">`;
 
       if (lvl === 1) {
@@ -2343,70 +2390,70 @@ class PathbuilderApp {
           <div class="pb-tree-quick-row">
             <div class="pb-tree-quick-btn" onclick="app.openSetAbilitiesModal(1)" title="Configurar Atributos">
               ${this.getTreeIconSvg('gear')}
-              <span>Set Abilities</span>
+              <span>${tLabels.setAbilities}</span>
             </div>
             <div class="pb-tree-quick-btn" onclick="app.openSkillTrainingModal()" title="Configurar Treinamento de Perícias">
               ${this.getTreeIconSvg('gear')}
-              <span>Skill Training</span>
+              <span>${tLabels.skillTraining}</span>
             </div>
           </div>
         `;
 
         // Heritage
-        const heritageVal = char.heritage || "Versatile Human";
+        const heritageVal = char.heritage || tLabels.defaultVersatileHuman;
         html += `
           <div class="pb-tree-card" onclick="app.openPicker('heritage')" title="Escolher Herança">
             <div class="pb-tree-card-icon">${this.getTreeIconSvg('heritage')}</div>
             <div class="pb-tree-card-content">
-              <div class="pb-tree-card-label">Heritage</div>
+              <div class="pb-tree-card-label">${tLabels.heritage}</div>
               <div class="pb-tree-card-value">${escapeHtml(heritageVal)}</div>
             </div>
           </div>
         `;
 
         // General Feat (se humano versátil ou selecionado)
-        const generalFeatVal = prog["1_general_feat"] || (char.feats?.find(f => f.slotId === "1_general_feat" || f.type?.includes("Geral"))?.name || "Fleet");
+        const generalFeatVal = prog["1_general_feat"] || (char.feats?.find(f => f.slotId === "1_general_feat" || f.type?.includes("Geral"))?.name || tLabels.defaultFleet);
         html += `
           <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '1_general_feat', level: 1, filterType: 'Geral' })" title="Escolher Talento Geral">
             <div class="pb-tree-card-icon">${this.getTreeIconSvg('general_feat')}</div>
             <div class="pb-tree-card-content">
-              <div class="pb-tree-card-label">General Feat</div>
+              <div class="pb-tree-card-label">${tLabels.generalFeat}</div>
               <div class="pb-tree-card-value">${escapeHtml(generalFeatVal)}</div>
             </div>
           </div>
         `;
 
         // Ancestry Feat
-        const ancestryFeatVal = prog["1_ancestry_feat"] || (char.feats?.find(f => f.slotId === "1_ancestry_feat" || f.type?.includes("Ancestral"))?.name || "Natural Ambition");
+        const ancestryFeatVal = prog["1_ancestry_feat"] || (char.feats?.find(f => f.slotId === "1_ancestry_feat" || f.type?.includes("Ancestral"))?.name || tLabels.defaultAmbition);
         html += `
           <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '1_ancestry_feat', level: 1, filterType: 'Ancestral' })" title="Escolher Talento Ancestral">
             <div class="pb-tree-card-icon">${this.getTreeIconSvg('ancestry_feat')}</div>
             <div class="pb-tree-card-content">
-              <div class="pb-tree-card-label">Ancestry Feat</div>
+              <div class="pb-tree-card-label">${tLabels.ancestryFeat}</div>
               <div class="pb-tree-card-value">${escapeHtml(ancestryFeatVal)}</div>
             </div>
           </div>
         `;
 
         // Class Feat (Principal)
-        const classFeatVal1 = prog["1_class_feat"] || (char.feats?.find(f => f.slotId === "1_class_feat" || f.type?.includes("Classe"))?.name || "Goading Feint");
+        const classFeatVal1 = prog["1_class_feat"] || (char.feats?.find(f => f.slotId === "1_class_feat" || f.type?.includes("Classe"))?.name || tLabels.defaultGoading);
         html += `
           <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '1_class_feat', level: 1, filterType: 'Classe' })" title="Escolher Talento de Classe">
             <div class="pb-tree-card-icon">${this.getTreeIconSvg('class_feat')}</div>
             <div class="pb-tree-card-content">
-              <div class="pb-tree-card-label">Class Feat</div>
+              <div class="pb-tree-card-label">${tLabels.classFeat}</div>
               <div class="pb-tree-card-value">${escapeHtml(classFeatVal1)}</div>
             </div>
           </div>
         `;
 
         // Class Feat Secundário / Extra (concedido por Ambição Natural ou Guerreiro)
-        const classFeatVal2 = prog["1_class_feat_extra"] || (char.feats?.find(f => f.slotId === "1_class_feat_extra")?.name || "Extravagant Parry");
+        const classFeatVal2 = prog["1_class_feat_extra"] || (char.feats?.find(f => f.slotId === "1_class_feat_extra")?.name || tLabels.defaultParry);
         html += `
           <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '1_class_feat_extra', level: 1, filterType: 'Classe' })" title="Escolher Talento de Classe Extra">
             <div class="pb-tree-card-icon">${this.getTreeIconSvg('class_feat')}</div>
             <div class="pb-tree-card-content">
-              <div class="pb-tree-card-label">Class Feat</div>
+              <div class="pb-tree-card-label">${tLabels.classFeat}</div>
               <div class="pb-tree-card-value">
                 <span>${escapeHtml(classFeatVal2)}</span>
                 <span class="pb-action-glyph">◆</span>
@@ -2416,14 +2463,14 @@ class PathbuilderApp {
         `;
 
         // Subclasse / Estilo de Classe (ex: Swashbuckler's Style, Cleric's Doctrine, etc.)
-        const className = char.class || "Swashbuckler";
-        const subclassHeading = `${className}'s Style`;
-        const styleVal = char.subclass || "Fencer";
+        const className = char.class || tLabels.defaultSwashbuckler;
+        const subclassHeading = isEn ? `${className}'s Style` : `${className} (${isEs ? 'Estilo / Doctrina' : 'Estilo / Doutrina'})`;
+        const styleVal = char.subclass || tLabels.defaultFencer;
         html += `
           <div class="pb-tree-section-heading">${escapeHtml(subclassHeading)}</div>
           <div class="pb-tree-card" onclick="app.promptSubclass()" title="Definir Estilo / Subclasse">
             <div class="pb-tree-card-content" style="padding-left: 2px;">
-              <div class="pb-tree-card-label">Select Style</div>
+              <div class="pb-tree-card-label">${tLabels.selectStyle}</div>
               <div class="pb-tree-card-value">${escapeHtml(styleVal)}</div>
             </div>
           </div>
@@ -2435,72 +2482,72 @@ class PathbuilderApp {
             <div class="pb-tree-quick-row">
               <div class="pb-tree-quick-btn" style="grid-column: span 2;" onclick="app.openSetAbilitiesModal(${lvl})" title="Aprimoramento de Atributos">
                 ${this.getTreeIconSvg('gear')}
-                <span>Set Abilities (+4 Boosts)</span>
+                <span>${tLabels.setAbilitiesBoosts}</span>
               </div>
             </div>
           `;
         }
 
         if (lvl % 2 === 0) {
-          const val = prog[`${lvl}_class_feat`] || (char.feats?.find(f => f.slotId === `${lvl}_class_feat`)?.name || "Não Selecionado");
+          const val = prog[`${lvl}_class_feat`] || (char.feats?.find(f => f.slotId === `${lvl}_class_feat`)?.name || tLabels.unselected);
           html += `
             <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '${lvl}_class_feat', level: ${lvl}, filterType: 'Classe' })">
               <div class="pb-tree-card-icon">${this.getTreeIconSvg('class_feat')}</div>
               <div class="pb-tree-card-content">
-                <div class="pb-tree-card-label">Class Feat</div>
-                <div class="pb-tree-card-value ${val === 'Não Selecionado' ? 'unselected' : ''}">${escapeHtml(val)}</div>
+                <div class="pb-tree-card-label">${tLabels.classFeat}</div>
+                <div class="pb-tree-card-value ${val === tLabels.unselected ? 'unselected' : ''}">${escapeHtml(val)}</div>
               </div>
             </div>
           `;
         }
 
         if (lvl % 2 === 0) {
-          const val = prog[`${lvl}_skill_feat`] || (char.feats?.find(f => f.slotId === `${lvl}_skill_feat`)?.name || "Não Selecionado");
+          const val = prog[`${lvl}_skill_feat`] || (char.feats?.find(f => f.slotId === `${lvl}_skill_feat`)?.name || tLabels.unselected);
           html += `
             <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '${lvl}_skill_feat', level: ${lvl}, filterType: 'Perícia' })">
               <div class="pb-tree-card-icon">${this.getTreeIconSvg('skill_feat')}</div>
               <div class="pb-tree-card-content">
-                <div class="pb-tree-card-label">Skill Feat</div>
-                <div class="pb-tree-card-value ${val === 'Não Selecionado' ? 'unselected' : ''}">${escapeHtml(val)}</div>
+                <div class="pb-tree-card-label">${tLabels.skillFeat}</div>
+                <div class="pb-tree-card-value ${val === tLabels.unselected ? 'unselected' : ''}">${escapeHtml(val)}</div>
               </div>
             </div>
           `;
         }
 
         if ([3, 7, 11, 15, 19].includes(lvl)) {
-          const val = prog[`${lvl}_general_feat`] || (char.feats?.find(f => f.slotId === `${lvl}_general_feat`)?.name || "Não Selecionado");
+          const val = prog[`${lvl}_general_feat`] || (char.feats?.find(f => f.slotId === `${lvl}_general_feat`)?.name || tLabels.unselected);
           html += `
             <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '${lvl}_general_feat', level: ${lvl}, filterType: 'Geral' })">
               <div class="pb-tree-card-icon">${this.getTreeIconSvg('general_feat')}</div>
               <div class="pb-tree-card-content">
-                <div class="pb-tree-card-label">General Feat</div>
-                <div class="pb-tree-card-value ${val === 'Não Selecionado' ? 'unselected' : ''}">${escapeHtml(val)}</div>
+                <div class="pb-tree-card-label">${tLabels.generalFeat}</div>
+                <div class="pb-tree-card-value ${val === tLabels.unselected ? 'unselected' : ''}">${escapeHtml(val)}</div>
               </div>
             </div>
           `;
         }
 
         if ([5, 9, 13, 17].includes(lvl)) {
-          const val = prog[`${lvl}_ancestry_feat`] || (char.feats?.find(f => f.slotId === `${lvl}_ancestry_feat`)?.name || "Não Selecionado");
+          const val = prog[`${lvl}_ancestry_feat`] || (char.feats?.find(f => f.slotId === `${lvl}_ancestry_feat`)?.name || tLabels.unselected);
           html += `
             <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '${lvl}_ancestry_feat', level: ${lvl}, filterType: 'Ancestral' })">
               <div class="pb-tree-card-icon">${this.getTreeIconSvg('ancestry_feat')}</div>
               <div class="pb-tree-card-content">
-                <div class="pb-tree-card-label">Ancestry Feat</div>
-                <div class="pb-tree-card-value ${val === 'Não Selecionado' ? 'unselected' : ''}">${escapeHtml(val)}</div>
+                <div class="pb-tree-card-label">${tLabels.ancestryFeat}</div>
+                <div class="pb-tree-card-value ${val === tLabels.unselected ? 'unselected' : ''}">${escapeHtml(val)}</div>
               </div>
             </div>
           `;
         }
 
         if (lvl >= 3 && lvl % 2 !== 0) {
-          const val = prog[`${lvl}_skill_increase`] || "Não Selecionado";
+          const val = prog[`${lvl}_skill_increase`] || tLabels.unselected;
           html += `
             <div class="pb-tree-card" onclick="app.promptSkillIncrease(${lvl})">
               <div class="pb-tree-card-icon">${this.getTreeIconSvg('skill_increase')}</div>
               <div class="pb-tree-card-content">
-                <div class="pb-tree-card-label">Skill Increase</div>
-                <div class="pb-tree-card-value ${val === 'Não Selecionado' ? 'unselected' : ''}">${escapeHtml(val)}</div>
+                <div class="pb-tree-card-label">${tLabels.skillIncrease}</div>
+                <div class="pb-tree-card-value ${val === tLabels.unselected ? 'unselected' : ''}">${escapeHtml(val)}</div>
               </div>
             </div>
           `;
@@ -2532,13 +2579,17 @@ class PathbuilderApp {
       };
     }
 
+    const locale = this.getLocale();
+    const isEn = locale === "en";
+    const isEs = locale === "es";
+
     const abilityOptions = [
-      { id: "str", name: "Strength" },
-      { id: "dex", name: "Dexterity" },
-      { id: "con", name: "Constitution" },
-      { id: "int", name: "Intelligence" },
-      { id: "wis", name: "Wisdom" },
-      { id: "cha", name: "Charisma" }
+      { id: "str", name: isEn ? "Strength" : (isEs ? "Fuerza" : "Força"), code: isEn ? "STR" : (isEs ? "FUE" : "FOR") },
+      { id: "dex", name: isEn ? "Dexterity" : (isEs ? "Destreza" : "Destreza"), code: isEn ? "DEX" : (isEs ? "DES" : "DES") },
+      { id: "con", name: isEn ? "Constitution" : (isEs ? "Constitución" : "Constituição"), code: isEn ? "CON" : (isEs ? "CON" : "CON") },
+      { id: "int", name: isEn ? "Intelligence" : (isEs ? "Inteligencia" : "Inteligência"), code: isEn ? "INT" : (isEs ? "INT" : "INT") },
+      { id: "wis", name: isEn ? "Wisdom" : (isEs ? "Sabiduría" : "Sabedoria"), code: isEn ? "WIS" : (isEs ? "SAB" : "SAB") },
+      { id: "cha", name: isEn ? "Charisma" : (isEs ? "Carisma" : "Carisma"), code: isEn ? "CHA" : (isEs ? "CAR" : "CAR") }
     ];
 
     const getSelectHtml = (group, idx, selectedVal) => `
@@ -2558,11 +2609,22 @@ class PathbuilderApp {
     };
 
     const isChecked = (key) => (b.free || []).includes(key);
+    const getCode = (key) => abilityOptions.find(o => o.id === key)?.code || key.toUpperCase();
+
+    const tSection = {
+      ancestry: isEn ? "Ancestry Boosts" : (isEs ? "Aumentos de Ascendencia" : "Aprimoramentos de Ancestralidade"),
+      background: isEn ? "Background Boosts" : (isEs ? "Aumentos de Trasfondo" : "Aprimoramentos de Antecedente"),
+      class: isEn ? "Class Boost" : (isEs ? "Aumento de Clase" : "Aprimoramento de Classe"),
+      free: isEn ? "Free Boosts" : (isEs ? "Aumentos Libres" : "Aprimoramentos Livres"),
+      override: isEn ? "Override character creation ability modifiers" : (isEs ? "Anular modificadores de creación de personaje" : "Substituir modificadores de atributo na criação"),
+    };
+
+    const defaultClassAbilityName = abilityOptions.find(o => o.id === (b.class || 'dex'))?.name || (isEn ? 'Dexterity' : 'Destreza');
 
     container.innerHTML = `
       <!-- Ancestry Boosts -->
       <div class="pb-boost-section-box">
-        <h4 class="pb-boost-section-title">Ancestry Boosts</h4>
+        <h4 class="pb-boost-section-title">${tSection.ancestry}</h4>
         <div class="pb-boost-row">
           ${getSelectHtml('ancestry', 0, b.ancestry?.[0] || 'dex')}
           ${getSelectHtml('ancestry', 1, b.ancestry?.[1] || 'cha')}
@@ -2571,7 +2633,7 @@ class PathbuilderApp {
 
       <!-- Background Boosts -->
       <div class="pb-boost-section-box">
-        <h4 class="pb-boost-section-title">Background Boosts</h4>
+        <h4 class="pb-boost-section-title">${tSection.background}</h4>
         <div class="pb-boost-row">
           ${getSelectHtml('background', 0, b.background?.[0] || 'int')}
           ${getSelectHtml('background', 1, b.background?.[1] || 'cha')}
@@ -2580,34 +2642,34 @@ class PathbuilderApp {
 
       <!-- Class Boost -->
       <div class="pb-boost-section-box">
-        <h4 class="pb-boost-section-title">Class Boost</h4>
+        <h4 class="pb-boost-section-title">${tSection.class}</h4>
         <div class="pb-boost-row">
           <div class="pb-boost-select-wrap">
             <span class="pb-boost-plus-icon">+</span>
-            <span style="font-size:12px; font-weight:700; color:#fff; padding:2px 6px;">${abilityOptions.find(o => o.id === (b.class || 'dex'))?.name || 'Dexterity'}</span>
+            <span style="font-size:12px; font-weight:700; color:#fff; padding:2px 6px;">${defaultClassAbilityName}</span>
           </div>
         </div>
       </div>
 
       <!-- Free Boosts -->
       <div class="pb-boost-section-box">
-        <h4 class="pb-boost-section-title">Free Boosts</h4>
+        <h4 class="pb-boost-section-title">${tSection.free}</h4>
         <div class="pb-free-boosts-container">
           <!-- Coluna 1 -->
           <div>
             <label class="pb-free-boost-item">
               <input type="checkbox" ${isChecked('str') ? 'checked' : ''} onchange="app.toggleFreeBoost('str')">
-              <span class="pb-free-boost-label">STR</span>
+              <span class="pb-free-boost-label">${getCode('str')}</span>
               <span class="pb-free-boost-mod">${calcMod('str')}</span>
             </label>
             <label class="pb-free-boost-item">
               <input type="checkbox" ${isChecked('con') ? 'checked' : ''} onchange="app.toggleFreeBoost('con')">
-              <span class="pb-free-boost-label">CON</span>
+              <span class="pb-free-boost-label">${getCode('con')}</span>
               <span class="pb-free-boost-mod">${calcMod('con')}</span>
             </label>
             <label class="pb-free-boost-item">
               <input type="checkbox" ${isChecked('wis') ? 'checked' : ''} onchange="app.toggleFreeBoost('wis')">
-              <span class="pb-free-boost-label">WIS</span>
+              <span class="pb-free-boost-label">${getCode('wis')}</span>
               <span class="pb-free-boost-mod">${calcMod('wis')}</span>
             </label>
           </div>
@@ -2625,17 +2687,17 @@ class PathbuilderApp {
           <div>
             <label class="pb-free-boost-item">
               <input type="checkbox" ${isChecked('dex') ? 'checked' : ''} onchange="app.toggleFreeBoost('dex')">
-              <span class="pb-free-boost-label">DEX</span>
+              <span class="pb-free-boost-label">${getCode('dex')}</span>
               <span class="pb-free-boost-mod">${calcMod('dex')}</span>
             </label>
             <label class="pb-free-boost-item">
               <input type="checkbox" ${isChecked('int') ? 'checked' : ''} onchange="app.toggleFreeBoost('int')">
-              <span class="pb-free-boost-label">INT</span>
+              <span class="pb-free-boost-label">${getCode('int')}</span>
               <span class="pb-free-boost-mod">${calcMod('int')}</span>
             </label>
             <label class="pb-free-boost-item">
               <input type="checkbox" ${isChecked('cha') ? 'checked' : ''} onchange="app.toggleFreeBoost('cha')">
-              <span class="pb-free-boost-label">CHA</span>
+              <span class="pb-free-boost-label">${getCode('cha')}</span>
               <span class="pb-free-boost-mod">${calcMod('cha')}</span>
             </label>
           </div>
@@ -2646,7 +2708,7 @@ class PathbuilderApp {
       <div style="margin-top: 4px;">
         <label style="display:flex; align-items:center; gap:8px; font-size:12px; color:#94a3b8; cursor:pointer;">
           <input type="checkbox" id="chkOverrideAbilities" ${b.override ? 'checked' : ''} onchange="app.toggleOverrideAbilities(this.checked)">
-          <span>Override character creation ability modifiers</span>
+          <span>${tSection.override}</span>
         </label>
       </div>
     `;
@@ -2721,28 +2783,43 @@ class PathbuilderApp {
 
     const trainedSummary = this.calc?.trainedSkills || PF2E_ENGINE.calculateTrainedSkillsCount(this.character);
     const remaining = Math.max(0, (trainedSummary.totalAllowed || 4) - (trainedSummary.selectedSkills?.length || 0));
+    const locale = this.getLocale();
+    const isEn = locale === "en";
+    const isEs = locale === "es";
+
     if (title) {
-      title.innerText = `Remaining Skill Selections: ${remaining}`;
+      title.innerText = isEn ? `Remaining Skill Selections: ${remaining}` : (isEs ? `Selecciones de Habilidad Restantes: ${remaining}` : `Seleções Restantes de Perícias: ${remaining}`);
     }
 
     const selectedMap = {};
     (trainedSummary.selectedSkills || []).forEach(s => { selectedMap[s] = true; });
 
+    const lorePrefix = isEn ? "Lore: " : "Saber: ";
     const allSkills = [...PF2E_DATA.skills];
     (this.character.loreSkills || []).forEach(lore => {
       allSkills.push({
         id: lore.id || `lore_${lore.name.toLowerCase().replace(/\s+/g, '_')}`,
-        name: `Lore: ${lore.name}`,
+        name: `${lorePrefix}${lore.name.replace(/^(Lore|Saber):\s*/i, '')}`,
         attribute: "int",
         isLore: true
       });
     });
 
+    const attrMap = {
+      str: isEn ? "Str" : (isEs ? "Fue" : "For"),
+      dex: isEn ? "Dex" : (isEs ? "Des" : "Des"),
+      con: isEn ? "Con" : (isEs ? "Con" : "Con"),
+      int: isEn ? "Int" : (isEs ? "Int" : "Int"),
+      wis: isEn ? "Wis" : (isEs ? "Sab" : "Sab"),
+      cha: isEn ? "Cha" : (isEs ? "Car" : "Car")
+    };
+
     container.innerHTML = allSkills.map(sk => {
       const calcData = this.calc?.skills?.[sk.id] || { total: 0, rank: "Destreinado", attrBonus: 0, profBonus: 0, itemBonus: 0 };
       const isTrained = selectedMap[sk.id] || (calcData.rank && calcData.rank !== "Destreinado");
       const totalMod = (calcData.total >= 0 ? `+${calcData.total}` : `${calcData.total}`);
-      const attrKey = (sk.attribute || "str").charAt(0).toUpperCase() + (sk.attribute || "str").slice(1, 3);
+      const rawAttr = (sk.attribute || "str").toLowerCase();
+      const attrKey = attrMap[rawAttr] || rawAttr.toUpperCase();
       const attrVal = calcData.attrBonus ?? (this.calc?.mods?.[sk.attribute] ?? 0);
       const profVal = isTrained ? (this.calc?.level ? this.calc.level + 2 : 3) : 0;
       const itemVal = calcData.itemBonus ?? 0;

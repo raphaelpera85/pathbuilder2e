@@ -8,6 +8,37 @@ const pickerLabelKeys: Record<PickerType, MessageKey> = {
   heritage: "heritages", archetype: "archetypes", spell: "spells", ritual: "rituals", feat: "feats", item: "items", gear: "items", pet: "pets", action: "actions", condition: "conditions", buff: "buffs", formula: "formulas",
 };
 
+const tabTranslations: Record<string, Record<string, string>> = {
+  "All": { "pt-BR": "Todos", "es": "Todos", "en": "All" },
+  "Simple": { "pt-BR": "Simples", "es": "Simples", "en": "Simple" },
+  "Martial": { "pt-BR": "Marciais", "es": "Marciales", "en": "Martial" },
+  "Advanced": { "pt-BR": "Avançadas", "es": "Avanzadas", "en": "Advanced" },
+  "Unarmed": { "pt-BR": "Desarmado", "es": "Desarmado", "en": "Unarmed" },
+  "Proficient": { "pt-BR": "Proficiente", "es": "Competente", "en": "Proficient" },
+  "Light": { "pt-BR": "Leve", "es": "Ligera", "en": "Light" },
+  "Medium": { "pt-BR": "Média", "es": "Media", "en": "Medium" },
+  "Heavy": { "pt-BR": "Pesada", "es": "Pesada", "en": "Heavy" },
+  "Standard": { "pt-BR": "Padrão", "es": "Estándar", "en": "Standard" },
+  "Material": { "pt-BR": "Material Especial", "es": "Material Especial", "en": "Material" },
+  "Magic": { "pt-BR": "Mágico", "es": "Mágico", "en": "Magic" },
+  "Custom": { "pt-BR": "Personalizado", "es": "Personalizado", "en": "Custom" },
+  "Gear": { "pt-BR": "Equipamentos", "es": "Equipo", "en": "Gear" },
+  "Consumables": { "pt-BR": "Consumíveis", "es": "Consumibles", "en": "Consumables" },
+  "Magic Items": { "pt-BR": "Itens Mágicos", "es": "Objetos Mágicos", "en": "Magic Items" },
+  "Ancestry Feats": { "pt-BR": "Talentos Ancestrais", "es": "Dotes de Ascendencia", "en": "Ancestry Feats" },
+  "Class Feats": { "pt-BR": "Talentos de Classe", "es": "Dotes de Clase", "en": "Class Feats" },
+  "Dedication Feats": { "pt-BR": "Talentos de Dedicação", "es": "Dotes de Dedicación", "en": "Dedication Feats" },
+  "Archetype Class Feats": { "pt-BR": "Talentos de Arquétipo", "es": "Dotes de Arquetipo", "en": "Archetype Class Feats" },
+  "General Feats": { "pt-BR": "Talentos Gerais", "es": "Dotes Generales", "en": "General Feats" },
+  "Skill Feats": { "pt-BR": "Talentos de Perícia", "es": "Dotes de Habilidad", "en": "Skill Feats" },
+  "Archetype Skill Feats": { "pt-BR": "Talentos de Perícia de Arquétipo", "es": "Dotes de Habilidad de Arquetipo", "en": "Archetype Skill Feats" },
+  "All Feats": { "pt-BR": "Todos os Talentos", "es": "Todos los Dotes", "en": "All Feats" },
+  "Adventuring": { "pt-BR": "Aventura", "es": "Aventura", "en": "Adventuring" },
+  "Ammunition": { "pt-BR": "Munição", "es": "Munición", "en": "Ammunition" },
+  "Misc": { "pt-BR": "Diversos", "es": "Varios", "en": "Misc" },
+  "Weapon Attachments": { "pt-BR": "Acoplamentos", "es": "Accesorios", "en": "Weapon Attachments" }
+};
+
 interface PickerModalProps {
   onBridgeReady?: (bridge: PickerBridge) => void;
 }
@@ -457,7 +488,7 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
                 className={`picker-tab-btn ${activeCategoryTab === tab ? "active" : ""}`}
                 onClick={() => setActiveCategoryTab(tab)}
               >
-                {tab}
+                {tabTranslations[tab]?.[locale] || tab}
               </button>
             ))}
           </div>
@@ -492,7 +523,7 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
                 className={`picker-subtab-btn ${activeSubTab === st ? "active" : ""}`}
                 onClick={() => setActiveSubTab(st)}
               >
-                {st}
+                {tabTranslations[st]?.[locale] || st}
               </button>
             ))}
           </div>

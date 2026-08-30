@@ -17,5 +17,10 @@ describe("i18n", () => {
     expect(localStorage.getItem("pathbuilder.locale")).toBe("en");
     expect(document.documentElement.lang).toBe("en");
     expect(screen.getByLabelText("Language")).toHaveValue("en");
+
+    // Alterna via botão de bandeira da Espanha
+    fireEvent.click(screen.getByRole("button", { name: "Español (España)" }));
+    expect(localStorage.getItem("pathbuilder.locale")).toBe("es");
+    expect(document.documentElement.lang).toBe("es");
   });
 });

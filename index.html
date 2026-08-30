@@ -228,15 +228,15 @@
 
       <!-- ABAS PATHBUILDER (LARANJA) -->
       <nav class="pb-nav-tabs" role="tablist" aria-label="Seções da ficha">
-        <button id="tab-button-weapons" class="pb-tab-btn active" role="tab" aria-selected="true" aria-controls="tab-weapons" onclick="app.switchTab('tab-weapons', event)">Armas (Weapons)</button>
-        <button id="tab-button-defense" class="pb-tab-btn" role="tab" aria-selected="false" aria-controls="tab-defense" onclick="app.switchTab('tab-defense', event)">Defesa (Defense)</button>
-        <button id="tab-button-gear" class="pb-tab-btn" role="tab" aria-selected="false" aria-controls="tab-gear" onclick="app.switchTab('tab-gear', event)">Equipamentos (Gear)</button>
-        <button id="tab-button-spells" class="pb-tab-btn" role="tab" aria-selected="false" aria-controls="tab-spells" onclick="app.switchTab('tab-spells', event)">Magias (Spells)</button>
-        <button id="tab-button-pets" class="pb-tab-btn" role="tab" aria-selected="false" aria-controls="tab-pets" onclick="app.switchTab('tab-pets', event)">Mascotes (Pets)</button>
-        <button id="tab-button-details" class="pb-tab-btn" role="tab" aria-selected="false" aria-controls="tab-details" onclick="app.switchTab('tab-details', event)">Detalhes (Details)</button>
-        <button id="tab-button-feats" class="pb-tab-btn" role="tab" aria-selected="false" aria-controls="tab-feats" onclick="app.switchTab('tab-feats', event)">Talentos (Feats)</button>
-        <button id="tab-button-actions" class="pb-tab-btn" role="tab" aria-selected="false" aria-controls="tab-actions" onclick="app.switchTab('tab-actions', event)">Ações (Actions)</button>
-        <button id="tab-button-formulas" class="pb-tab-btn" role="tab" aria-selected="false" aria-controls="tab-formulas" onclick="app.switchTab('tab-formulas', event)">Fórmulas (Formula Book)</button>
+        <button id="tab-button-weapons" class="pb-tab-btn active" role="tab" aria-selected="true" aria-controls="tab-weapons" onclick="app.switchTab('tab-weapons', event)">Armas</button>
+        <button id="tab-button-defense" class="pb-tab-btn" role="tab" aria-selected="false" aria-controls="tab-defense" onclick="app.switchTab('tab-defense', event)">Defesa</button>
+        <button id="tab-button-gear" class="pb-tab-btn" role="tab" aria-selected="false" aria-controls="tab-gear" onclick="app.switchTab('tab-gear', event)">Equipamentos</button>
+        <button id="tab-button-spells" class="pb-tab-btn" role="tab" aria-selected="false" aria-controls="tab-spells" onclick="app.switchTab('tab-spells', event)">Magias</button>
+        <button id="tab-button-pets" class="pb-tab-btn" role="tab" aria-selected="false" aria-controls="tab-pets" onclick="app.switchTab('tab-pets', event)">Mascotes</button>
+        <button id="tab-button-details" class="pb-tab-btn" role="tab" aria-selected="false" aria-controls="tab-details" onclick="app.switchTab('tab-details', event)">Detalhes</button>
+        <button id="tab-button-feats" class="pb-tab-btn" role="tab" aria-selected="false" aria-controls="tab-feats" onclick="app.switchTab('tab-feats', event)">Talentos</button>
+        <button id="tab-button-actions" class="pb-tab-btn" role="tab" aria-selected="false" aria-controls="tab-actions" onclick="app.switchTab('tab-actions', event)">Ações</button>
+        <button id="tab-button-formulas" class="pb-tab-btn" role="tab" aria-selected="false" aria-controls="tab-formulas" onclick="app.switchTab('tab-formulas', event)">Fórmulas & Alquimia</button>
       </nav>
 
       <!-- CORPO DAS ABAS -->
@@ -325,33 +325,33 @@
                 <input type="file" id="detailsAvatarFileInput" accept="image/*" style="display:none" onchange="app.handleAvatarUpload(event)" />
               </div>
 
-              <!-- GRID DE INFORMAÇÕES (DEITY, AGE, GENDER, LANGUAGES) -->
+              <!-- GRID DE INFORMAÇÕES (DIVINDADE, IDADE, GÊNERO, IDIOMAS) -->
               <div class="pb-details-info-grid">
                 <!-- DEITY CARD -->
                 <div class="pb-details-card" onclick="app.openDeityModal()" title="Clique para escolher a Divindade">
-                  <div class="pb-details-card-label">Deity</div>
-                  <div class="pb-details-card-value" id="detailsDeityDisplay">Not set</div>
+                  <div class="pb-details-card-label">Divindade</div>
+                  <div class="pb-details-card-value" id="detailsDeityDisplay">Não definida</div>
                 </div>
 
                 <!-- AGE & GENDER ROW -->
                 <div class="pb-details-row-2col">
                   <!-- AGE CARD -->
                   <div class="pb-details-card" onclick="document.getElementById('detailsAgeInput').focus()">
-                    <div class="pb-details-card-label">Age</div>
+                    <div class="pb-details-card-label">Idade</div>
                     <input type="text" class="pb-details-card-input" id="detailsAgeInput" value="17" placeholder="17" onchange="app.updateField('age', this.value)" />
                   </div>
 
                   <!-- GENDER CARD -->
                   <div class="pb-details-card" onclick="document.getElementById('detailsGenderInput').focus()">
-                    <div class="pb-details-card-label">Gender</div>
+                    <div class="pb-details-card-label">Gênero</div>
                     <input type="text" class="pb-details-card-input" id="detailsGenderInput" value="Masculino" placeholder="Masculino" onchange="app.updateField('gender', this.value)" />
                   </div>
                 </div>
 
                 <!-- LANGUAGES CARD -->
                 <div class="pb-details-card" onclick="app.openLanguagesModal()" title="Clique para escolher os Idiomas">
-                  <div class="pb-details-card-label">Languages</div>
-                  <div class="pb-details-card-value" id="detailsLanguagesDisplay">None selected</div>
+                  <div class="pb-details-card-label">Idiomas</div>
+                  <div class="pb-details-card-value" id="detailsLanguagesDisplay">Nenhum selecionado</div>
                 </div>
               </div>
             </div>
@@ -359,12 +359,12 @@
             <!-- SEÇÃO INFERIOR: NOTAS COM WATERMARK D20 -->
             <div class="pb-details-notes-section">
               <div style="display: flex; justify-content: space-between; align-items: center;">
-                <button type="button" class="pb-details-save-notes-btn" onclick="app.saveNotes()">Save Notes</button>
+                <button type="button" class="pb-details-save-notes-btn" onclick="app.saveNotes()">Salvar Anotações</button>
                 <span id="saveNotesFeedback" style="font-size: 11px; color: #4ade80; font-weight: 600; display: none;">✓ Salvo com sucesso</span>
               </div>
 
               <div class="pb-details-notes-box">
-                <div class="pb-details-card-label" style="margin-bottom: 6px;">Notes</div>
+                <div class="pb-details-card-label" style="margin-bottom: 6px;">Anotações</div>
                 <textarea id="detailsNotesTextarea" class="pb-details-notes-textarea" placeholder="Notas, histórico, diário de bordo..." oninput="app.updateField('notes', this.value)"></textarea>
                 
                 <!-- D20 ORANGE WATERMARK -->
@@ -464,7 +464,7 @@
   <div class="dice-roller-drawer" id="diceRollerDrawer" aria-hidden="true">
     <div class="dice-roller-header">
       <div style="display: flex; gap: 8px; width: 100%;">
-        <button class="dice-roller-reset-btn" onclick="app.resetDicePool()" type="button" style="flex: 1; padding: 6px 12px; font-weight: 800; font-size: 13px;" title="Resetar rolagens">Reset</button>
+        <button class="dice-roller-reset-btn" onclick="app.resetDicePool()" type="button" style="flex: 1; padding: 6px 12px; font-weight: 800; font-size: 13px;" title="Resetar rolagens">Resetar</button>
         <button class="dice-roller-close-btn" onclick="app.closeDiceRoller()" type="button" title="Fechar Rolador" aria-label="Fechar">✕</button>
       </div>
 
@@ -480,8 +480,8 @@
       </div>
 
       <div style="text-align: center; margin-top: 4px;">
-        <div style="color: var(--pb-orange); font-size: 16px; font-weight: 900; letter-spacing: 0.04em;" id="diceResultLabel">Free Roll</div>
-        <div style="color: #94a3b8; font-size: 11.5px; margin-top: 2px;" id="diceResultBreakdown">Select dice using the buttons at the top</div>
+        <div style="color: var(--pb-orange); font-size: 16px; font-weight: 900; letter-spacing: 0.04em;" id="diceResultLabel">Rolagem Livre</div>
+        <div style="color: #94a3b8; font-size: 11.5px; margin-top: 2px;" id="diceResultBreakdown">Selecione os dados acima para rolar</div>
       </div>
     </div>
 
@@ -516,14 +516,14 @@
   <div class="pb-drawer-overlay" id="modalSetAbilitiesOverlay">
     <div class="pb-modal-container pb-modal-ability-boosts" style="max-width: 580px; min-height: 520px; background: #0c121c; border: 1px solid #1e293b; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.9);">
       <div class="pb-modal-nav" style="background: #070a10; border-bottom: 1px solid #1e293b; padding: 12px 18px;">
-        <h3 style="margin: 0; color: #ffffff; font-size: 18px; font-weight: 900;">Set Starting Ability Boosts</h3>
+        <h3 style="margin: 0; color: #ffffff; font-size: 18px; font-weight: 900;">Definir Aprimoramentos de Atributos Iniciais</h3>
         <button onclick="document.getElementById('modalSetAbilitiesOverlay').classList.remove('active')" style="background:none; border:none; color:#94a3b8; cursor:pointer; font-size: 18px;">✕</button>
       </div>
       <div id="setAbilitiesContent" style="padding: 18px; flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 16px;">
         <!-- Renderizado dinamicamente pelo openSetAbilitiesModal() -->
       </div>
       <div class="pb-modal-footer" style="background: #070a10; border-top: 1px solid #1e293b; padding: 12px 18px; justify-content: flex-start;">
-        <button class="pb-pill-btn" onclick="app.saveAbilitiesModal()">Finished</button>
+        <button class="pb-pill-btn" onclick="app.saveAbilitiesModal()">Concluído</button>
       </div>
     </div>
   </div>
@@ -532,7 +532,7 @@
   <div class="pb-drawer-overlay" id="modalSkillTrainingOverlay">
     <div class="pb-modal-container pb-modal-skills" style="max-width: 660px; min-height: 560px; background: #0c121c; border: 1px solid #1e293b; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.9);">
       <div class="pb-modal-nav" style="background: #070a10; border-bottom: 1px solid #1e293b; padding: 12px 18px;">
-        <h3 id="modalRemainingSkillsTitle" style="margin: 0; color: #ffffff; font-size: 18px; font-weight: 900;">Remaining Skill Selections: 0</h3>
+        <h3 id="modalRemainingSkillsTitle" style="margin: 0; color: #ffffff; font-size: 18px; font-weight: 900;">Seleções Restantes de Perícias: 0</h3>
         <button onclick="document.getElementById('modalSkillTrainingOverlay').classList.remove('active')" style="background:none; border:none; color:#94a3b8; cursor:pointer; font-size: 18px;">✕</button>
       </div>
 
@@ -560,8 +560,8 @@
         <!-- Renderizado dinamicamente pelo openSkillTrainingModal() -->
       </div>
       <div class="pb-modal-footer" style="background: #070a10; border-top: 1px solid #1e293b; padding: 12px 18px; display: flex; gap: 10px;">
-        <button class="pb-pill-btn" onclick="document.getElementById('modalSkillTrainingOverlay').classList.remove('active'); app.renderAll();">Finished</button>
-        <button class="pb-pill-btn" onclick="app.promptAddLoreSkill()">Lores</button>
+        <button class="pb-pill-btn" onclick="document.getElementById('modalSkillTrainingOverlay').classList.remove('active'); app.renderAll();">Concluído</button>
+        <button class="pb-pill-btn" onclick="app.promptAddLoreSkill()">Saberes (Lores)</button>
       </div>
     </div>
   </div>
@@ -570,7 +570,7 @@
   <div class="pb-drawer-overlay" id="modalDeityOverlay">
     <div class="pb-modal-container" style="max-width: 520px; min-height: 480px; background: #0c121c; border: 1px solid #1e293b; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.9);">
       <div class="pb-modal-nav" style="background: #070a10; border-bottom: 1px solid #1e293b; padding: 12px 18px;">
-        <h3 style="margin: 0; color: #ffffff; font-size: 18px; font-weight: 900;">Select Deity</h3>
+        <h3 style="margin: 0; color: #ffffff; font-size: 18px; font-weight: 900;">Selecionar Divindade</h3>
         <button onclick="document.getElementById('modalDeityOverlay').classList.remove('active')" style="background:none; border:none; color:#94a3b8; cursor:pointer; font-size: 18px;">✕</button>
       </div>
       <div style="padding: 12px 18px; border-bottom: 1px solid #1e293b;">
@@ -584,7 +584,7 @@
           <input type="text" id="customDeityInput" placeholder="Outra divindade/filosofia..." style="flex: 1; background: #182234; border: 1px solid #283548; color: #fff; border-radius: 6px; padding: 6px 10px; font-size: 12px;" />
           <button type="button" class="btn-pb-action" onclick="app.setCustomDeity()" style="background: #334155; color: #fff; font-size: 12px; padding: 6px 12px;">Definir</button>
         </div>
-        <button class="pb-pill-btn" onclick="document.getElementById('modalDeityOverlay').classList.remove('active')">Finished</button>
+        <button class="pb-pill-btn" onclick="document.getElementById('modalDeityOverlay').classList.remove('active')">Concluído</button>
       </div>
     </div>
   </div>
@@ -593,7 +593,7 @@
   <div class="pb-drawer-overlay" id="modalLanguagesOverlay">
     <div class="pb-modal-container" style="max-width: 540px; min-height: 520px; background: #0c121c; border: 1px solid #1e293b; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.9);">
       <div class="pb-modal-nav" style="background: #070a10; border-bottom: 1px solid #1e293b; padding: 12px 18px;">
-        <h3 style="margin: 0; color: #ffffff; font-size: 18px; font-weight: 900;">Select Languages</h3>
+        <h3 style="margin: 0; color: #ffffff; font-size: 18px; font-weight: 900;">Selecionar Idiomas</h3>
         <button onclick="document.getElementById('modalLanguagesOverlay').classList.remove('active')" style="background:none; border:none; color:#94a3b8; cursor:pointer; font-size: 18px;">✕</button>
       </div>
       <div style="padding: 12px 18px; border-bottom: 1px solid #1e293b;">
@@ -607,7 +607,7 @@
           <input type="text" id="customLanguageInput" placeholder="Outro idioma..." style="flex: 1; background: #182234; border: 1px solid #283548; color: #fff; border-radius: 6px; padding: 6px 10px; font-size: 12px;" />
           <button type="button" class="btn-pb-action" onclick="app.addCustomLanguage()" style="background: #334155; color: #fff; font-size: 12px; padding: 6px 12px;">Adicionar</button>
         </div>
-        <button class="pb-pill-btn" onclick="document.getElementById('modalLanguagesOverlay').classList.remove('active'); app.renderDetailsTab();">Finished</button>
+        <button class="pb-pill-btn" onclick="document.getElementById('modalLanguagesOverlay').classList.remove('active'); app.renderDetailsTab();">Concluído</button>
       </div>
     </div>
   </div>
@@ -616,7 +616,7 @@
   <div class="pb-drawer-overlay" id="modalAvatarOverlay">
     <div class="pb-modal-container" style="max-width: 440px; background: #0c121c; border: 1px solid #1e293b; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.9);">
       <div class="pb-modal-nav" style="background: #070a10; border-bottom: 1px solid #1e293b; padding: 12px 18px;">
-        <h3 style="margin: 0; color: #ffffff; font-size: 18px; font-weight: 900;">Character Portrait</h3>
+        <h3 style="margin: 0; color: #ffffff; font-size: 18px; font-weight: 900;">Retrato do Personagem</h3>
         <button onclick="document.getElementById('modalAvatarOverlay').classList.remove('active')" style="background:none; border:none; color:#94a3b8; cursor:pointer; font-size: 18px;">✕</button>
       </div>
       <div style="padding: 18px; display: flex; flex-direction: column; gap: 14px;">

@@ -144,31 +144,31 @@ export function ItemPickerModal({ onBridgeReady }: { onBridgeReady?: (bridge: { 
               className={`main-tab-btn ${mainTab === "gear" ? "active" : ""}`}
               onClick={() => { setMainTab("gear"); setSubTab("all"); }}
             >
-              🎒 Equipamentos (Gear)
+              🎒 Equipamentos
             </button>
             <button
               className={`main-tab-btn ${mainTab === "consumables" ? "active" : ""}`}
               onClick={() => { setMainTab("consumables"); setSubTab("all"); }}
             >
-              🧪 Consumíveis (Consumables)
+              🧪 Consumíveis
             </button>
             <button
               className={`main-tab-btn ${mainTab === "magic_items" ? "active" : ""}`}
               onClick={() => { setMainTab("magic_items"); setSubTab("all"); }}
             >
-              🔮 Itens Mágicos (Magic Items)
+              🔮 Itens Mágicos
             </button>
             <button
               className={`main-tab-btn ${mainTab === "all" ? "active" : ""}`}
               onClick={() => { setMainTab("all"); setSubTab("all"); }}
             >
-              📦 Todos (All)
+              📦 Todos
             </button>
             <button
               className={`main-tab-btn custom-tab-highlight ${mainTab === "custom" ? "active" : ""}`}
               onClick={() => setMainTab("custom")}
             >
-              ⚙️ Personalizado (Custom)
+              ⚙️ Personalizado
             </button>
           </div>
           <button className="item-picker-close-x" onClick={() => setModalState({ isOpen: false })}>✕</button>
@@ -183,42 +183,42 @@ export function ItemPickerModal({ onBridgeReady }: { onBridgeReady?: (bridge: { 
             {mainTab === "gear" && (
               <>
                 <button className={`subtab-btn ${subTab === "adventuring" ? "active" : ""}`} onClick={() => setSubTab("adventuring")}>
-                  Aventura (Adventuring)
+                  Aventura
                 </button>
                 <button className={`subtab-btn ${subTab === "ammunition" ? "active" : ""}`} onClick={() => setSubTab("ammunition")}>
-                  Munição (Ammunition)
+                  Munição
                 </button>
                 <button className={`subtab-btn ${subTab === "toolkits" ? "active" : ""}`} onClick={() => setSubTab("toolkits")}>
-                  Ferramentas (Toolkits)
+                  Ferramentas
                 </button>
               </>
             )}
             {mainTab === "consumables" && (
               <>
                 <button className={`subtab-btn ${subTab === "potions" ? "active" : ""}`} onClick={() => setSubTab("potions")}>
-                  Poções (Potions)
+                  Poções
                 </button>
                 <button className={`subtab-btn ${subTab === "elixirs" ? "active" : ""}`} onClick={() => setSubTab("elixirs")}>
-                  Elixires (Elixirs)
+                  Elixires
                 </button>
                 <button className={`subtab-btn ${subTab === "scrolls" ? "active" : ""}`} onClick={() => setSubTab("scrolls")}>
-                  Pergaminhos (Scrolls)
+                  Pergaminhos
                 </button>
                 <button className={`subtab-btn ${subTab === "bombs" ? "active" : ""}`} onClick={() => setSubTab("bombs")}>
-                  Bombas Alquímicas (Bombs)
+                  Bombas Alquímicas
                 </button>
               </>
             )}
             {mainTab === "magic_items" && (
               <>
                 <button className={`subtab-btn ${subTab === "worn" ? "active" : ""}`} onClick={() => setSubTab("worn")}>
-                  Vestíveis (Worn Items)
+                  Vestíveis
                 </button>
                 <button className={`subtab-btn ${subTab === "wands" ? "active" : ""}`} onClick={() => setSubTab("wands")}>
-                  Varinhas (Wands)
+                  Varinhas
                 </button>
                 <button className={`subtab-btn ${subTab === "runes" ? "active" : ""}`} onClick={() => setSubTab("runes")}>
-                  Pedras Rúnicas (Runes)
+                  Pedras Rúnicas
                 </button>
               </>
             )}

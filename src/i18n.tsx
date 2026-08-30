@@ -298,17 +298,99 @@ export function getItemDisplayName(item: { name?: string; data?: any } | undefin
   return rawName;
 }
 
+function BrazilFlag() {
+  return (
+    <svg viewBox="0 0 32 22" className="flag-svg" aria-hidden="true">
+      <rect width="32" height="22" fill="#009b3a" rx="2" />
+      <polygon points="16,2.5 30,11 16,19.5 2,11" fill="#fedf00" />
+      <circle cx="16" cy="11" r="5.2" fill="#002776" />
+      <path d="M11.2,11.8 C13.5,9.2 18.5,9.2 20.8,11.8" fill="none" stroke="#ffffff" strokeWidth="0.9" />
+    </svg>
+  );
+}
+
+function USAFlag() {
+  return (
+    <svg viewBox="0 0 32 22" className="flag-svg" aria-hidden="true">
+      <rect width="32" height="22" fill="#b22234" rx="2" />
+      <path d="M0,3.38 H32 M0,6.77 H32 M0,10.15 H32 M0,13.54 H32 M0,16.92 H32 M0,20.31 H32" stroke="#ffffff" strokeWidth="1.69" />
+      <rect width="13.5" height="11.85" fill="#3c3b6e" />
+      <circle cx="2.7" cy="2.4" r="0.8" fill="#ffffff" />
+      <circle cx="6.7" cy="2.4" r="0.8" fill="#ffffff" />
+      <circle cx="10.8" cy="2.4" r="0.8" fill="#ffffff" />
+      <circle cx="4.7" cy="5.9" r="0.8" fill="#ffffff" />
+      <circle cx="8.7" cy="5.9" r="0.8" fill="#ffffff" />
+      <circle cx="2.7" cy="9.4" r="0.8" fill="#ffffff" />
+      <circle cx="6.7" cy="9.4" r="0.8" fill="#ffffff" />
+      <circle cx="10.8" cy="9.4" r="0.8" fill="#ffffff" />
+    </svg>
+  );
+}
+
+function SpainFlag() {
+  return (
+    <svg viewBox="0 0 32 22" className="flag-svg" aria-hidden="true">
+      <rect width="32" height="22" fill="#aa151b" rx="2" />
+      <rect y="5.5" width="32" height="11" fill="#f1bf00" />
+      <circle cx="8" cy="11" r="2.8" fill="#aa151b" />
+      <circle cx="8" cy="11" r="1.8" fill="#f1bf00" />
+      <rect x="7.4" y="9.8" width="1.2" height="2.4" fill="#aa151b" />
+    </svg>
+  );
+}
+
 export function LocaleSwitcher() {
   const { locale, setLocale, t } = useI18n();
+
   return (
-    <label className="locale-switcher" title={t("language")}>
-      <span className="sr-only">{t("language")}</span>
-      <select value={locale} onChange={(event) => setLocale(event.target.value as Locale)} aria-label={t("language")}>
-        <option value="pt-BR">🇧🇷 Brasil (PT)</option>
-        <option value="en">🇺🇸 USA (EN)</option>
-        <option value="es">🇪🇸 Espanha (ES)</option>
+    <div className="locale-switcher" title={t("language")}>
+      <label htmlFor="locale-hidden-select" className="sr-only">
+        {t("language")}
+      </label>
+      <select
+        id="locale-hidden-select"
+        className="sr-only"
+        value={locale}
+        onChange={(event) => setLocale(event.target.value as Locale)}
+      >
+        <option value="pt-BR">Português (Brasil)</option>
+        <option value="en">English (USA)</option>
+        <option value="es">Español (España)</option>
       </select>
-    </label>
+
+      <button
+        type="button"
+        className={`flag-btn ${locale === "pt-BR" ? "active" : ""}`}
+        onClick={() => setLocale("pt-BR")}
+        title="Português (Brasil)"
+        aria-pressed={locale === "pt-BR"}
+        aria-label="Português (Brasil)"
+      >
+        <BrazilFlag />
+      </button>
+
+      <button
+        type="button"
+        className={`flag-btn ${locale === "en" ? "active" : ""}`}
+        onClick={() => setLocale("en")}
+        title="English (USA)"
+        aria-pressed={locale === "en"}
+        aria-label="English (USA)"
+      >
+        <USAFlag />
+      </button>
+
+      <button
+        type="button"
+        className={`flag-btn ${locale === "es" ? "active" : ""}`}
+        onClick={() => setLocale("es")}
+        title="Español (España)"
+        aria-pressed={locale === "es"}
+        aria-label="Español (España)"
+      >
+        <SpainFlag />
+      </button>
+    </div>
   );
 }
 

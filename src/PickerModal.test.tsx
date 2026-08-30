@@ -186,20 +186,20 @@ describe("PickerModal", () => {
     act(() => bridge?.open("weapon"));
 
     // Verifica abas de armas
-    expect(screen.getByRole("button", { name: "All" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Simple" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Martial" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Advanced" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Unarmed" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Proficient" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Todos" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Simples" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Marciais" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Avançadas" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Desarmado" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Proficiente" })).toBeInTheDocument();
 
-    // Filtra pela aba Simple
-    fireEvent.click(screen.getByRole("button", { name: "Simple" }));
+    // Filtra pela aba Simples
+    fireEvent.click(screen.getByRole("button", { name: "Simples" }));
     expect(screen.getByRole("option", { name: /Air Repeater/ })).toBeInTheDocument();
     expect(screen.queryByRole("option", { name: /Adze/ })).not.toBeInTheDocument();
 
-    // Volta para All e seleciona Backpack Catapult (preço 35 PO > 10 PO que o personagem possui)
-    fireEvent.click(screen.getByRole("button", { name: "All" }));
+    // Volta para Todos e seleciona Backpack Catapult (preço 35 PO > 10 PO que o personagem possui)
+    fireEvent.click(screen.getByRole("button", { name: "Todos" }));
     fireEvent.click(screen.getByRole("option", { name: /Backpack Catapult/ }));
 
     // Botão Buy deve estar desabilitado por fundos insuficientes

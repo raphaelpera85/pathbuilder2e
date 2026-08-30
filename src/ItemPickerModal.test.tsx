@@ -36,10 +36,10 @@ describe("ItemPickerModal", () => {
 
     // Deve exibir o diálogo e abas
     expect(screen.getByRole("dialog")).toBeTruthy();
-    expect(screen.getByText(/Equipamentos \(Gear\)/i)).toBeTruthy();
-    expect(screen.getByText(/Consumíveis \(Consumables\)/i)).toBeTruthy();
-    expect(screen.getByText(/Itens Mágicos \(Magic Items\)/i)).toBeTruthy();
-    expect(screen.getByText(/Personalizado \(Custom\)/i)).toBeTruthy();
+    expect(screen.getByText(/Equipamentos/i)).toBeTruthy();
+    expect(screen.getByText(/Consumíveis/i)).toBeTruthy();
+    expect(screen.getByText(/Itens Mágicos/i)).toBeTruthy();
+    expect(screen.getByText(/Personalizado/i)).toBeTruthy();
   });
 
   it("permite alternar para a aba de consumíveis e pesquisar poções", () => {
@@ -55,7 +55,7 @@ describe("ItemPickerModal", () => {
     });
 
     // Clica na aba de consumíveis
-    const consumablesTab = screen.getByText(/Consumíveis \(Consumables\)/i);
+    const consumablesTab = screen.getByText(/Consumíveis/i);
     fireEvent.click(consumablesTab);
 
     // Verifica se encontra a Poção de Cura Menor
@@ -97,7 +97,7 @@ describe("ItemPickerModal", () => {
     });
 
     // Clica na aba Personalizado
-    const customTab = screen.getByText(/Personalizado \(Custom\)/i);
+    const customTab = screen.getByText(/Personalizado/i);
     fireEvent.click(customTab);
 
     // Preenche os campos do formulário
