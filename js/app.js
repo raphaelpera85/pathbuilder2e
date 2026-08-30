@@ -1751,7 +1751,27 @@ class PathbuilderApp {
     }
   }
 
-  // ÁRVORE DE PROGRESSÃO DINÂMICA (NÍVEIS 1 A 20)
+  // ÍCONES SVG VETORIAIS PARA A ÁRVORE DE PROGRESSÃO
+  getTreeIconSvg(type) {
+    if (type === "ancestry" || type === "heritage" || type === "ancestry_feat") {
+      return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-7"/><path d="M9 18h6"/><path d="M12 15a6 6 0 0 0 6-6c0-2-1-3-2-4-1-1-3-1-4 0-1-1-3-1-4 0-1 1-2 2-2 4a6 6 0 0 0 6 6z"/><path d="M7 11c-.5-1-1-2-.5-3 .5-1 2-.5 3 0"/><path d="M17 11c.5-1 1-2 .5-3-.5-1-2-.5-3 0"/></svg>`;
+    }
+    if (type === "background") {
+      return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>`;
+    }
+    if (type === "class" || type === "class_feat") {
+      return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 17.5L3 6V3h3l11.5 11.5"/><path d="m13 19 2 2 4-4-2-2"/><path d="m19 13 2 2-4 4-2-2"/><line x1="16" y1="8" x2="20" y2="12"/><line x1="8" y1="16" x2="12" y2="20"/></svg>`;
+    }
+    if (type === "general_feat") {
+      return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`;
+    }
+    if (type === "skill_feat" || type === "skill_increase" || type === "gear") {
+      return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>`;
+    }
+    return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="9" cy="10" r="1"/><circle cx="15" cy="10" r="1"/><path d="M10 14a3 3 0 0 0 4 0"/></svg>`;
+  }
+
+  // RENDERIZAÇÃO DA ÁRVORE DE PROGRESSÃO (ESTILO EXATO PATHBUILDER 2E)
   renderPlanTree() {
     const tree = document.getElementById("planTreeCol");
     if (!tree) return;
@@ -1760,80 +1780,306 @@ class PathbuilderApp {
     const prog = char.progression || {};
     const charLevel = Number(char.level) || 1;
 
-    const getLevelSlots = (lvl) => {
-      if (lvl === 1) {
-        return [
-          { id: "1_ancestry", type: "ancestry", title: "Ancestralidade", icon: "🧬", value: char.ancestry || "Humano" },
-          { id: "1_background", type: "background", title: "Antecedente", icon: "📜", value: char.background || "Batedor" },
-          { id: "1_class", type: "class", title: "Classe", icon: "⚔️", value: char.class || "Guerreiro" },
-          { id: "1_boosts", type: "boost", title: "Definir Atributos", icon: "⚙️ 4", value: "4 Boosts Nível 1", isTabAction: true },
-          { id: "1_heritage", type: "heritage", title: "Herança", icon: "🌳", value: char.heritage || "Humano Versátil" },
-          { id: "1_class_feat", type: "feat", title: "Talento de Classe", icon: "⭐", filterType: "Classe", value: prog["1_class_feat"] || (char.feats?.find(f => f.slotId === "1_class_feat" || f.type?.includes("Classe"))?.name || "Não Selecionado") },
-          { id: "1_subclass", type: "subclass", title: "Estilo de Classe", icon: "🎭", value: char.subclass || "Padrão" }
-        ];
-      }
-      const slots = [];
-      if ([5, 10, 15, 20].includes(lvl)) {
-        slots.push({ id: `${lvl}_boosts`, type: "boost", title: "Aprimoramento Atributos", icon: "⚙️ 4", value: `4 Boosts Nível ${lvl}`, isTabAction: true });
-      }
-      if ([5, 9, 13, 17].includes(lvl)) {
-        slots.push({ id: `${lvl}_ancestry_feat`, type: "feat", title: "Talento Ancestral", icon: "🧬", filterType: "Ancestral", value: prog[`${lvl}_ancestry_feat`] || (char.feats?.find(f => f.slotId === `${lvl}_ancestry_feat`)?.name || "Não Selecionado") });
-      }
-      if (lvl % 2 === 0) {
-        slots.push({ id: `${lvl}_class_feat`, type: "feat", title: "Talento de Classe", icon: "⭐", filterType: "Classe", value: prog[`${lvl}_class_feat`] || (char.feats?.find(f => f.slotId === `${lvl}_class_feat`)?.name || "Não Selecionado") });
-      }
-      if (lvl % 2 === 0) {
-        slots.push({ id: `${lvl}_skill_feat`, type: "feat", title: "Talento de Perícia", icon: "🧠", filterType: "Perícia", value: prog[`${lvl}_skill_feat`] || (char.feats?.find(f => f.slotId === `${lvl}_skill_feat`)?.name || "Não Selecionado") });
-      }
-      if ([3, 7, 11, 15, 19].includes(lvl)) {
-        slots.push({ id: `${lvl}_general_feat`, type: "feat", title: "Talento Geral", icon: "🌐", filterType: "Geral", value: prog[`${lvl}_general_feat`] || (char.feats?.find(f => f.slotId === `${lvl}_general_feat`)?.name || "Não Selecionado") });
-      }
-      if (lvl >= 3 && lvl % 2 !== 0) {
-        slots.push({ id: `${lvl}_skill_increase`, type: "skill_increase", title: "Aumento de Perícia", icon: "⚙️", value: prog[`${lvl}_skill_increase`] || "Não Selecionado" });
-      }
-      return slots;
-    };
-
     let html = "";
+
+    // 1. TOPO: PAINEL PRINCIPAL DE ESCOLHAS (ANCESTRY, BACKGROUND, CLASS)
+    html += `
+      <div class="pb-tree-group-box">
+        <div class="pb-tree-card" onclick="app.openPicker('ancestry')" title="Clique para alterar Ancestralidade">
+          <div class="pb-tree-card-icon">${this.getTreeIconSvg('ancestry')}</div>
+          <div class="pb-tree-card-content">
+            <div class="pb-tree-card-label">Ancestry</div>
+            <div class="pb-tree-card-value ${!char.ancestry ? 'unselected' : ''}">${escapeHtml(char.ancestry || "Human")}</div>
+          </div>
+        </div>
+
+        <div class="pb-tree-card" onclick="app.openPicker('background')" title="Clique para alterar Biografia">
+          <div class="pb-tree-card-icon">${this.getTreeIconSvg('background')}</div>
+          <div class="pb-tree-card-content">
+            <div class="pb-tree-card-label">Background</div>
+            <div class="pb-tree-card-value ${!char.background ? 'unselected' : ''}">${escapeHtml(char.background || "Noble (Heraldry)")}</div>
+          </div>
+        </div>
+
+        <div class="pb-tree-card active" onclick="app.openPicker('class')" title="Clique para alterar Classe">
+          <div class="pb-tree-card-icon">${this.getTreeIconSvg('class')}</div>
+          <div class="pb-tree-card-content">
+            <div class="pb-tree-card-label">Class</div>
+            <div class="pb-tree-card-value ${!char.class ? 'unselected' : ''}">${escapeHtml(char.class || "Swashbuckler")}</div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    // 2. NÍVEIS 1 A 20
     for (let lvl = 1; lvl <= 20; lvl++) {
-      const isCurrentLevel = lvl === charLevel;
-      const isPastLevel = lvl < charLevel;
-      const levelHeaderClass = isCurrentLevel ? "level-header current-level" : "level-header";
-      const levelBadge = isCurrentLevel ? ` <span style="font-size:10px; color:var(--pb-orange); font-weight:normal;">(Nível Atual)</span>` : (isPastLevel ? ` <span style="font-size:10px; color:var(--pb-text-muted); font-weight:normal;">✓</span>` : "");
-      
-      html += `<div class="${levelHeaderClass}">Nível ${lvl}${levelBadge}</div>`;
+      html += `<div class="pb-tree-level-title">Level ${lvl}</div>`;
+      html += `<div class="pb-tree-group-box">`;
 
-      const slots = getLevelSlots(lvl);
-      slots.forEach(slot => {
-        const isSelected = slot.value && slot.value !== "Não Selecionado";
-        const valColor = isSelected ? "color:#fff;" : "color:var(--pb-text-muted);";
-        let clickAttr = "";
-
-        if (slot.isTabAction) {
-          clickAttr = `onclick="app.switchTab('tab-rules')"`;
-        } else if (slot.type === "skill_increase") {
-          clickAttr = `onclick="app.promptSkillIncrease(${lvl})"`;
-        } else if (slot.type === "subclass") {
-          clickAttr = `onclick="app.promptSubclass()"`;
-        } else if (slot.type === "feat") {
-          clickAttr = `onclick="app.openPicker('feat', { slotId: ${escapeInlineArgument(slot.id)}, level: ${lvl}, filterType: ${escapeInlineArgument(slot.filterType || '')} })"`;
-        } else {
-          clickAttr = `onclick="app.openPicker(${escapeInlineArgument(slot.type)})"`;
-        }
-
+      if (lvl === 1) {
+        // Botões rápidos de configuração no Nível 1
         html += `
-          <div class="tree-node" ${clickAttr} title="Clique para configurar ${escapeHtml(slot.title)}">
-            <div class="tree-node-icon">${escapeHtml(slot.icon)}</div>
-            <div class="tree-node-text">
-              <div class="tree-node-title">${escapeHtml(slot.title)}</div>
-              <div class="tree-node-value" style="${valColor}">${escapeHtml(slot.value)}</div>
+          <div class="pb-tree-quick-row">
+            <div class="pb-tree-quick-btn" onclick="app.openSetAbilitiesModal(1)" title="Configurar Atributos">
+              ${this.getTreeIconSvg('gear')}
+              <span>Set Abilities</span>
+            </div>
+            <div class="pb-tree-quick-btn" onclick="app.openSkillTrainingModal()" title="Configurar Treinamento de Perícias">
+              ${this.getTreeIconSvg('gear')}
+              <span>Skill Training</span>
             </div>
           </div>
         `;
-      });
+
+        // Heritage
+        const heritageVal = char.heritage || "Versatile Human";
+        html += `
+          <div class="pb-tree-card" onclick="app.openPicker('heritage')" title="Escolher Herança">
+            <div class="pb-tree-card-icon">${this.getTreeIconSvg('heritage')}</div>
+            <div class="pb-tree-card-content">
+              <div class="pb-tree-card-label">Heritage</div>
+              <div class="pb-tree-card-value">${escapeHtml(heritageVal)}</div>
+            </div>
+          </div>
+        `;
+
+        // General Feat (se humano versátil ou selecionado)
+        const generalFeatVal = prog["1_general_feat"] || (char.feats?.find(f => f.slotId === "1_general_feat" || f.type?.includes("Geral"))?.name || "Fleet");
+        html += `
+          <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '1_general_feat', level: 1, filterType: 'Geral' })" title="Escolher Talento Geral">
+            <div class="pb-tree-card-icon">${this.getTreeIconSvg('general_feat')}</div>
+            <div class="pb-tree-card-content">
+              <div class="pb-tree-card-label">General Feat</div>
+              <div class="pb-tree-card-value">${escapeHtml(generalFeatVal)}</div>
+            </div>
+          </div>
+        `;
+
+        // Ancestry Feat
+        const ancestryFeatVal = prog["1_ancestry_feat"] || (char.feats?.find(f => f.slotId === "1_ancestry_feat" || f.type?.includes("Ancestral"))?.name || "Natural Ambition");
+        html += `
+          <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '1_ancestry_feat', level: 1, filterType: 'Ancestral' })" title="Escolher Talento Ancestral">
+            <div class="pb-tree-card-icon">${this.getTreeIconSvg('ancestry_feat')}</div>
+            <div class="pb-tree-card-content">
+              <div class="pb-tree-card-label">Ancestry Feat</div>
+              <div class="pb-tree-card-value">${escapeHtml(ancestryFeatVal)}</div>
+            </div>
+          </div>
+        `;
+
+        // Class Feat (Principal)
+        const classFeatVal1 = prog["1_class_feat"] || (char.feats?.find(f => f.slotId === "1_class_feat" || f.type?.includes("Classe"))?.name || "Goading Feint");
+        html += `
+          <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '1_class_feat', level: 1, filterType: 'Classe' })" title="Escolher Talento de Classe">
+            <div class="pb-tree-card-icon">${this.getTreeIconSvg('class_feat')}</div>
+            <div class="pb-tree-card-content">
+              <div class="pb-tree-card-label">Class Feat</div>
+              <div class="pb-tree-card-value">${escapeHtml(classFeatVal1)}</div>
+            </div>
+          </div>
+        `;
+
+        // Class Feat Secundário / Extra (concedido por Ambição Natural ou Guerreiro)
+        const classFeatVal2 = prog["1_class_feat_extra"] || (char.feats?.find(f => f.slotId === "1_class_feat_extra")?.name || "Extravagant Parry");
+        html += `
+          <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '1_class_feat_extra', level: 1, filterType: 'Classe' })" title="Escolher Talento de Classe Extra">
+            <div class="pb-tree-card-icon">${this.getTreeIconSvg('class_feat')}</div>
+            <div class="pb-tree-card-content">
+              <div class="pb-tree-card-label">Class Feat</div>
+              <div class="pb-tree-card-value">
+                <span>${escapeHtml(classFeatVal2)}</span>
+                <span class="pb-action-glyph">◆</span>
+              </div>
+            </div>
+          </div>
+        `;
+
+        // Subclasse / Estilo de Classe (ex: Swashbuckler's Style, Cleric's Doctrine, etc.)
+        const className = char.class || "Swashbuckler";
+        const subclassHeading = `${className}'s Style`;
+        const styleVal = char.subclass || "Fencer";
+        html += `
+          <div class="pb-tree-section-heading">${escapeHtml(subclassHeading)}</div>
+          <div class="pb-tree-card" onclick="app.promptSubclass()" title="Definir Estilo / Subclasse">
+            <div class="pb-tree-card-content" style="padding-left: 2px;">
+              <div class="pb-tree-card-label">Select Style</div>
+              <div class="pb-tree-card-value">${escapeHtml(styleVal)}</div>
+            </div>
+          </div>
+        `;
+      } else {
+        // NÍVEIS 2 A 20
+        if ([5, 10, 15, 20].includes(lvl)) {
+          html += `
+            <div class="pb-tree-quick-row">
+              <div class="pb-tree-quick-btn" style="grid-column: span 2;" onclick="app.openSetAbilitiesModal(${lvl})" title="Aprimoramento de Atributos">
+                ${this.getTreeIconSvg('gear')}
+                <span>Set Abilities (+4 Boosts)</span>
+              </div>
+            </div>
+          `;
+        }
+
+        if (lvl % 2 === 0) {
+          const val = prog[`${lvl}_class_feat`] || (char.feats?.find(f => f.slotId === `${lvl}_class_feat`)?.name || "Não Selecionado");
+          html += `
+            <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '${lvl}_class_feat', level: ${lvl}, filterType: 'Classe' })">
+              <div class="pb-tree-card-icon">${this.getTreeIconSvg('class_feat')}</div>
+              <div class="pb-tree-card-content">
+                <div class="pb-tree-card-label">Class Feat</div>
+                <div class="pb-tree-card-value ${val === 'Não Selecionado' ? 'unselected' : ''}">${escapeHtml(val)}</div>
+              </div>
+            </div>
+          `;
+        }
+
+        if (lvl % 2 === 0) {
+          const val = prog[`${lvl}_skill_feat`] || (char.feats?.find(f => f.slotId === `${lvl}_skill_feat`)?.name || "Não Selecionado");
+          html += `
+            <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '${lvl}_skill_feat', level: ${lvl}, filterType: 'Perícia' })">
+              <div class="pb-tree-card-icon">${this.getTreeIconSvg('skill_feat')}</div>
+              <div class="pb-tree-card-content">
+                <div class="pb-tree-card-label">Skill Feat</div>
+                <div class="pb-tree-card-value ${val === 'Não Selecionado' ? 'unselected' : ''}">${escapeHtml(val)}</div>
+              </div>
+            </div>
+          `;
+        }
+
+        if ([3, 7, 11, 15, 19].includes(lvl)) {
+          const val = prog[`${lvl}_general_feat`] || (char.feats?.find(f => f.slotId === `${lvl}_general_feat`)?.name || "Não Selecionado");
+          html += `
+            <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '${lvl}_general_feat', level: ${lvl}, filterType: 'Geral' })">
+              <div class="pb-tree-card-icon">${this.getTreeIconSvg('general_feat')}</div>
+              <div class="pb-tree-card-content">
+                <div class="pb-tree-card-label">General Feat</div>
+                <div class="pb-tree-card-value ${val === 'Não Selecionado' ? 'unselected' : ''}">${escapeHtml(val)}</div>
+              </div>
+            </div>
+          `;
+        }
+
+        if ([5, 9, 13, 17].includes(lvl)) {
+          const val = prog[`${lvl}_ancestry_feat`] || (char.feats?.find(f => f.slotId === `${lvl}_ancestry_feat`)?.name || "Não Selecionado");
+          html += `
+            <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '${lvl}_ancestry_feat', level: ${lvl}, filterType: 'Ancestral' })">
+              <div class="pb-tree-card-icon">${this.getTreeIconSvg('ancestry_feat')}</div>
+              <div class="pb-tree-card-content">
+                <div class="pb-tree-card-label">Ancestry Feat</div>
+                <div class="pb-tree-card-value ${val === 'Não Selecionado' ? 'unselected' : ''}">${escapeHtml(val)}</div>
+              </div>
+            </div>
+          `;
+        }
+
+        if (lvl >= 3 && lvl % 2 !== 0) {
+          const val = prog[`${lvl}_skill_increase`] || "Não Selecionado";
+          html += `
+            <div class="pb-tree-card" onclick="app.promptSkillIncrease(${lvl})">
+              <div class="pb-tree-card-icon">${this.getTreeIconSvg('skill_increase')}</div>
+              <div class="pb-tree-card-content">
+                <div class="pb-tree-card-label">Skill Increase</div>
+                <div class="pb-tree-card-value ${val === 'Não Selecionado' ? 'unselected' : ''}">${escapeHtml(val)}</div>
+              </div>
+            </div>
+          `;
+        }
+      }
+
+      html += `</div>`; // fecha .pb-tree-group-box
     }
 
     tree.innerHTML = html;
+  }
+
+  // MODAL DE ATRIBUTOS (SET ABILITIES)
+  openSetAbilitiesModal(level = 1) {
+    const overlay = document.getElementById("modalSetAbilitiesOverlay");
+    const container = document.getElementById("setAbilitiesContent");
+    if (!overlay || !container) return;
+
+    if (!this.character.abilities) {
+      this.character.abilities = { str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10 };
+    }
+
+    const abilityKeys = [
+      { key: "str", name: "Força (Strength)" },
+      { key: "dex", name: "Destreza (Dexterity)" },
+      { key: "con", name: "Constituição (Constitution)" },
+      { key: "int", name: "Inteligência (Intelligence)" },
+      { key: "wis", name: "Sabedoria (Wisdom)" },
+      { key: "cha", name: "Carisma (Charisma)" }
+    ];
+
+    container.innerHTML = abilityKeys.map(a => {
+      const val = this.character.abilities[a.key] || 10;
+      const mod = Math.floor((val - 10) / 2);
+      const modStr = PF2E_ENGINE.formatMod(mod);
+      return `
+        <div style="background:#1e293b; border:1px solid #334155; border-radius:6px; padding:10px; display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <div style="font-weight:bold; color:#fff; font-size:12px;">${escapeHtml(a.name)}</div>
+            <div style="font-size:11px; color:var(--pb-orange); font-weight:700;">Modificador: ${modStr}</div>
+          </div>
+          <div style="display:flex; align-items:center; gap:6px;">
+            <button type="button" class="btn-pb-action" style="padding:2px 8px; font-weight:bold;" onclick="app.adjustModalAbility('${a.key}', -2)">-</button>
+            <span id="modalVal_${a.key}" style="font-size:15px; font-weight:900; color:#fff; width:26px; text-align:center;">${val}</span>
+            <button type="button" class="btn-pb-action" style="padding:2px 8px; font-weight:bold;" onclick="app.adjustModalAbility('${a.key}', 2)">+</button>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    overlay.classList.add("active");
+  }
+
+  adjustModalAbility(key, delta) {
+    if (!this.character.abilities) this.character.abilities = { str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10 };
+    let cur = this.character.abilities[key] || 10;
+    cur = Math.max(8, Math.min(22, cur + delta));
+    this.character.abilities[key] = cur;
+    
+    const span = document.getElementById(`modalVal_${key}`);
+    if (span) span.innerText = cur;
+  }
+
+  saveAbilitiesModal() {
+    const overlay = document.getElementById("modalSetAbilitiesOverlay");
+    if (overlay) overlay.classList.remove("active");
+    this.renderAll();
+  }
+
+  // MODAL DE TREINAMENTO DE PERÍCIAS (SKILL TRAINING)
+  openSkillTrainingModal() {
+    const overlay = document.getElementById("modalSkillTrainingOverlay");
+    const container = document.getElementById("modalSkillTrainingList");
+    const badge = document.getElementById("modalSkillCountBadge");
+    if (!overlay || !container) return;
+
+    const trainedSummary = this.calc?.trainedSkills || PF2E_ENGINE.calculateTrainedSkillsCount(this.character);
+    if (badge) badge.innerText = `${trainedSummary.selectedSkills.length} de ${trainedSummary.totalAllowed} permitidas`;
+
+    const selectedMap = {};
+    (trainedSummary.selectedSkills || []).forEach(s => { selectedMap[s] = true; });
+
+    container.innerHTML = PF2E_DATA.skills.map(sk => {
+      const isChecked = selectedMap[sk.id] || (this.calc?.skills?.[sk.id]?.rank && this.calc?.skills?.[sk.id]?.rank !== "Destreinado");
+      return `
+        <div style="background:#1e293b; border:1px solid ${isChecked ? 'var(--pb-orange)' : '#334155'}; border-radius:6px; padding:8px 10px; display:flex; justify-content:space-between; align-items:center; cursor:pointer;" onclick="app.toggleSkillTrainingModal('${sk.id}')">
+          <div style="font-weight:700; color:#fff; font-size:12px;">${escapeHtml(sk.name)}</div>
+          <span style="font-size:11px; padding:2px 8px; border-radius:4px; font-weight:800; background:${isChecked ? 'var(--pb-orange)' : '#334155'}; color:${isChecked ? '#fff' : '#94a3b8'};">
+            ${isChecked ? 'Treinado' : 'Destreinado'}
+          </span>
+        </div>
+      `;
+    }).join('');
+
+    overlay.classList.add("active");
+  }
+
+  toggleSkillTrainingModal(skillId) {
+    this.cycleSkillRank(skillId);
+    this.openSkillTrainingModal();
   }
 
   promptSkillIncrease(level) {
@@ -1852,7 +2098,7 @@ class PathbuilderApp {
   }
 
   promptSubclass() {
-    const sub = prompt("Defina o Estilo ou Subclasse do Personagem:", this.character.subclass || "");
+    const sub = prompt("Defina o Estilo ou Subclasse do Personagem (ex: Fencer, Thief, Warpriest, Storm, Maestro):", this.character.subclass || "Fencer");
     if (sub !== null) {
       this.character.subclass = sub;
       this.renderAll();

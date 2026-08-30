@@ -128,16 +128,17 @@ body {
 
 /* 1. LEFT COLUMN: LEVEL PROGRESSION TREE (PLAN) */
 .pb-plan-tree {
-  width: 250px;
-  min-width: 240px;
-  background: var(--pb-bg-panel);
+  width: 260px;
+  min-width: 250px;
+  background: #090e17;
   border-right: 1px solid var(--pb-border);
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  padding: 10px 8px;
-  gap: 8px;
+  padding: 10px;
+  gap: 10px;
   transition: width 0.2s ease;
+  box-sizing: border-box;
 }
 
 .pb-plan-tree.collapsed {
@@ -148,70 +149,170 @@ body {
   border: none;
 }
 
-.level-header {
-  color: var(--pb-orange);
-  font-weight: bold;
-  font-size: 12px;
-  text-align: center;
-  padding: 4px 0;
-  border-bottom: 1px solid rgba(249, 115, 22, 0.2);
-  margin-top: 6px;
+/* CAIXA DE AGRUPAMENTO (CARD CONTAINER) */
+.pb-tree-group-box {
+  background: #0f1626;
+  border: 1px solid #1e293b;
+  border-radius: 8px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
 }
 
-.tree-node {
-  background: var(--pb-bg-card);
-  border: 1px solid var(--pb-border);
-  border-radius: 4px;
+/* CARD INDIVIDUAL DA ÁRVORE (ANCESTRY, BACKGROUND, CLASS, FEATS...) */
+.pb-tree-card {
+  background: #0c121e;
+  border: 1px solid #1e293b;
+  border-radius: 6px;
   padding: 6px 8px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   cursor: pointer;
-  transition: all 0.15s ease;
-  margin-bottom: 4px;
+  transition: all 0.18s ease;
+  user-select: none;
 }
 
-.tree-node:hover {
+.pb-tree-card:hover {
+  border-color: #3b82f6;
+  background: #141c2e;
+  transform: translateY(-1px);
+}
+
+.pb-tree-card.active, .pb-tree-card.selected {
   border-color: var(--pb-orange);
-  background: var(--pb-bg-hover);
+  box-shadow: 0 0 10px rgba(249, 115, 22, 0.35);
+  background: #161a29;
 }
 
-.tree-node.selected {
-  border-color: var(--pb-orange);
-  box-shadow: 0 0 6px var(--pb-orange-glow);
+.pb-tree-card.active .pb-tree-card-label {
+  color: var(--pb-orange-light);
 }
 
-.tree-node-icon {
-  width: 28px;
-  height: 28px;
-  border-radius: 4px;
-  background: #11151f;
+/* ÍCONE CIRCULAR AZUL-ESCURO */
+.pb-tree-card-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #182338;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
-  border: 1px solid var(--pb-border);
+  color: #93c5fd;
   flex-shrink: 0;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
 
-.tree-node-text {
+.pb-tree-card-icon svg {
+  width: 17px;
+  height: 17px;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.8));
+}
+
+/* CONTEÚDO DE TEXTO DO CARD */
+.pb-tree-card-content {
   flex: 1;
-  overflow: hidden;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
 }
 
-.tree-node-title {
-  font-size: 10px;
-  color: var(--pb-text-muted);
-  text-transform: uppercase;
+.pb-tree-card-label {
+  font-size: 11px;
+  color: #94a3b8;
+  font-weight: 500;
+  line-height: 1.2;
 }
 
-.tree-node-value {
-  font-size: 12px;
-  font-weight: 600;
+.pb-tree-card-value {
+  font-size: 12.5px;
+  font-weight: 700;
   color: #ffffff;
   white-space: nowrap;
-  text-overflow: ellipsis;
   overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pb-tree-card-value.unselected {
+  color: #64748b;
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* ACTION GLYPH BADGE DENTRO DO VALOR DO FEAT (◆, ◆◆, ◆◆◆, ↺) */
+.pb-action-glyph {
+  color: #cbd5e1;
+  font-size: 11px;
+  font-weight: 900;
+  margin-left: 2px;
+}
+
+/* TÍTULO DO NÍVEL (LEVEL 1, LEVEL 2...) */
+.pb-tree-level-title {
+  color: var(--pb-orange);
+  font-size: 14px;
+  font-weight: 800;
+  text-align: center;
+  margin: 10px 0 4px;
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 8px rgba(249, 115, 22, 0.3);
+}
+
+/* LINHA DE BOTÕES RÁPIDOS DE CONFIGURAÇÃO (SET ABILITIES & SKILL TRAINING) */
+.pb-tree-quick-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 2px;
+}
+
+.pb-tree-quick-btn {
+  background: #0c121e;
+  border: 1px solid #223049;
+  border-radius: 6px;
+  padding: 7px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  user-select: none;
+}
+
+.pb-tree-quick-btn:hover {
+  border-color: var(--pb-orange);
+  background: #141c2e;
+  transform: translateY(-1px);
+}
+
+.pb-tree-quick-btn svg {
+  width: 22px;
+  height: 22px;
+  color: #cbd5e1;
+}
+
+.pb-tree-quick-btn span {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #cbd5e1;
+  text-align: center;
+}
+
+/* CABEÇALHO DE SEÇÃO/SUBCLASSE DENTRO DO GRUPO */
+.pb-tree-section-heading {
+  font-size: 12px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 6px 0 2px 2px;
 }
 
 /* 2. MIDDLE COLUMN: STATS DASHBOARD & SKILLS */

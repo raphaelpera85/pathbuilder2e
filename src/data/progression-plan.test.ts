@@ -95,4 +95,32 @@ describe("Dynamic 1-20 Progression & System Mechanics", () => {
     expect(critRoll.staticModifier).toBe(4);
     expect(critRoll.total).toBe(critRoll.baseTotal * 2);
   });
+
+  it("garante que os dados da árvore de progressão contenham suporte a Ancestry, Background, Class, Heritage e Feats", () => {
+    const swashbuckler = {
+      name: "Lorenzo",
+      level: 1,
+      ancestry: "Human",
+      background: "Noble (Heraldry)",
+      class: "Swashbuckler",
+      heritage: "Versatile Human",
+      subclass: "Fencer",
+      feats: [
+        { slotId: "1_general_feat", name: "Fleet", type: "Geral" },
+        { slotId: "1_ancestry_feat", name: "Natural Ambition", type: "Ancestral" },
+        { slotId: "1_class_feat", name: "Goading Feint", type: "Classe" },
+        { slotId: "1_class_feat_extra", name: "Extravagant Parry", type: "Classe", actions: 1 }
+      ]
+    };
+
+    const stats = PF2E_ENGINE.calculateCharacterStats(swashbuckler);
+    expect(stats).toBeDefined();
+    expect(swashbuckler.ancestry).toBe("Human");
+    expect(swashbuckler.background).toBe("Noble (Heraldry)");
+    expect(swashbuckler.class).toBe("Swashbuckler");
+    expect(swashbuckler.heritage).toBe("Versatile Human");
+    expect(swashbuckler.subclass).toBe("Fencer");
+    expect(swashbuckler.feats.length).toBe(4);
+  });
 });
+

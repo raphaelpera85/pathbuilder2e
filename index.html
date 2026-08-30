@@ -443,6 +443,52 @@
     </div>
   </div>
 
+  <!-- MODAL DEFINIR ATRIBUTOS (SET ABILITIES) -->
+  <div class="pb-drawer-overlay" id="modalSetAbilitiesOverlay">
+    <div class="pb-modal-container" style="max-width: 520px; min-height: 440px; display: flex; flex-direction: column; background: #0f172a; border: 1px solid #3b82f6; box-shadow: 0 0 30px rgba(59, 130, 246, 0.25);">
+      <div class="pb-modal-nav" style="background: linear-gradient(90deg, #1e293b, #0f172a); border-bottom: 1px solid #334155;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 18px;">⚙️</span>
+          <span style="font-weight: bold; color: #93c5fd; font-size: 14px;">Definir Atributos (Set Abilities)</span>
+        </div>
+        <button onclick="document.getElementById('modalSetAbilitiesOverlay').classList.remove('active')" style="background:none; border:none; color:#fff; cursor:pointer; font-size: 16px;">✕</button>
+      </div>
+      <div style="padding: 16px; flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 14px;">
+        <p style="font-size: 12px; color: #94a3b8; margin: 0;">
+          Distribua os aprimoramentos de atributos (Boosts) do personagem seguindo as regras oficiais do PF2e Remaster (+2 de valor ou +1 mod por Boost).
+        </p>
+        <div id="setAbilitiesContent" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;"></div>
+      </div>
+      <div class="pb-modal-footer">
+        <button class="btn-pb-action" onclick="document.getElementById('modalSetAbilitiesOverlay').classList.remove('active')">Cancelar</button>
+        <button class="btn-pb-action" style="background: var(--pb-orange-dark); color: #fff;" onclick="app.saveAbilitiesModal()">Salvar Atributos</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL TREINAMENTO DE PERÍCIAS (SKILL TRAINING) -->
+  <div class="pb-drawer-overlay" id="modalSkillTrainingOverlay">
+    <div class="pb-modal-container" style="max-width: 580px; min-height: 520px; display: flex; flex-direction: column; background: #0f172a; border: 1px solid #3b82f6; box-shadow: 0 0 30px rgba(59, 130, 246, 0.25);">
+      <div class="pb-modal-nav" style="background: linear-gradient(90deg, #1e293b, #0f172a); border-bottom: 1px solid #334155;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 18px;">⚙️</span>
+          <span style="font-weight: bold; color: #93c5fd; font-size: 14px;">Treinamento de Perícias (Skill Training)</span>
+        </div>
+        <button onclick="document.getElementById('modalSkillTrainingOverlay').classList.remove('active')" style="background:none; border:none; color:#fff; cursor:pointer; font-size: 16px;">✕</button>
+      </div>
+      <div style="padding: 16px; flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 12px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; background:#1e293b; padding:8px 12px; border-radius:6px;">
+          <span style="font-size:12px; color:#cbd5e1;">Perícias Treinadas Selecionadas:</span>
+          <strong id="modalSkillCountBadge" style="color:var(--pb-orange); font-size:13px;">0 / 0</strong>
+        </div>
+        <div id="modalSkillTrainingList" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;"></div>
+      </div>
+      <div class="pb-modal-footer">
+        <button class="btn-pb-action" onclick="document.getElementById('modalSkillTrainingOverlay').classList.remove('active')">Fechar</button>
+      </div>
+    </div>
+  </div>
+
   <!-- MODAL EXPORTAR / IMPORTAR JSON -->
   <div class="pb-drawer-overlay" id="modalJsonOverlay">
     <div class="pb-modal-container" style="height: 380px;">
