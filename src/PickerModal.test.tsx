@@ -1,4 +1,4 @@
-import { act, fireEvent, render, screen } from "@testing-library/react";
+import { act, cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { PickerModal } from "./PickerModal";
 import type { PickerBridge, PickerController } from "./types";
@@ -14,7 +14,10 @@ const controllerDefaults = {
 };
 
 describe("PickerModal", () => {
-  beforeEach(() => localStorage.clear());
+  beforeEach(() => {
+    cleanup();
+    localStorage.clear();
+  });
   it("abre como diálogo, filtra opções e confirma a seleção", () => {
     const applyPickerSelection = vi.fn();
     window.app = {
@@ -54,8 +57,8 @@ describe("PickerModal", () => {
     window.app = {
       ...controllerDefaults,
       getPickerItems: () => [
-        { name: "Humano", type: "Ancestralidade", data: {} },
         { name: "Anão", type: "Ancestralidade", data: {} },
+        { name: "Humano", type: "Ancestralidade", data: {} },
       ],
       applyPickerSelection,
     };
@@ -63,13 +66,13 @@ describe("PickerModal", () => {
     renderPicker((value) => { bridge = value; });
     act(() => bridge?.open("ancestry"));
 
-    const firstOption = screen.getByRole("option", { name: /Humano/ });
+    const firstOption = screen.getByRole("option", { name: /Anão/ });
     firstOption.focus();
     fireEvent.keyDown(firstOption, { key: "ArrowDown" });
-    const secondOption = screen.getByRole("option", { name: /Anão/ });
+    const secondOption = screen.getByRole("option", { name: /Humano/ });
     expect(secondOption).toHaveFocus();
     fireEvent.keyDown(secondOption, { key: "Enter" });
-    expect(applyPickerSelection).toHaveBeenCalledWith("ancestry", expect.objectContaining({ name: "Anão" }));
+    expect(applyPickerSelection).toHaveBeenCalledWith("ancestry", expect.objectContaining({ name: "Humano" }));
   });
 
   it("busca e exibe o nome localizado sem alterar a identidade canônica", () => {

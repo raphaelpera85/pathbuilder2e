@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState, type FormEvent } from "react";
 import { pathfinderSources } from "./data/sources";
-import { useI18n, type MessageKey } from "./i18n";
+import { useI18n, getItemDisplayName, type MessageKey } from "./i18n";
 import type { PickerItem, PickerType } from "./types";
 import { useAccountViewState } from "./accountState";
 import {
@@ -24,25 +24,47 @@ const routes: PortalRoute[] = ["builder", "compendium", "rules", "library", "pri
 const navItems: Array<{ route: PortalRoute; label: MessageKey; icon: string }> = [
   { route: "library", label: "navLibrary", icon: "🛡" },
   { route: "builder", label: "navBuilder", icon: "⚔" },
-  { route: "compendium", label: "navCompendium", icon: "📚" },
-  { route: "rules", label: "navRules", icon: "⚖" },
+  { route: "compendium", label: "navCompendium", icon: "📖" },
+  { route: "rules", label: "navRules", icon: "📜" },
   { route: "privacy", label: "navPrivacy", icon: "🔒" },
-  { route: "admin", label: "navAdmin", icon: "◆" },
+  { route: "admin", label: "navAdmin", icon: "⚙" },
 ];
 
 const catalogCategories: Array<{ type: PickerType; label: MessageKey }> = [
-  { type: "ancestry", label: "ancestries" }, { type: "heritage", label: "heritages" }, { type: "class", label: "classes" },
-  { type: "background", label: "backgrounds" }, { type: "weapon", label: "weapons" },
-  { type: "armor", label: "armors" }, { type: "archetype", label: "archetypes" }, { type: "spell", label: "spells" },
-  { type: "ritual", label: "rituals" }, { type: "feat", label: "feats" },
-  { type: "condition", label: "conditions" }, { type: "buff", label: "buffs" },
+  { type: "ancestry", label: "ancestries" },
+  { type: "heritage", label: "heritages" },
+  { type: "class", label: "classes" },
+  { type: "background", label: "backgrounds" },
+  { type: "archetype", label: "archetypes" },
+  { type: "spell", label: "spells" },
+  { type: "ritual", label: "rituals" },
+  { type: "feat", label: "feats" },
+  { type: "weapon", label: "weapons" },
+  { type: "armor", label: "armors" },
+  { type: "condition", label: "conditions" },
+  { type: "buff", label: "buffs" },
 ];
 
-const validationCopy = {
-  "pt-BR": ["Nível entre 1 e 20.", "Ancestralidade, herança, antecedente e classe compatíveis.", "Quatro aprimoramentos livres de nível 1 em atributos distintos.", "Proficiência adiciona o nível somente a partir de Treinado.", "CA, PV, salvaguardas, Percepção, perícias, CDs e ataques usam cálculos consistentes.", "Itens, moedas, carga e edição das regras permanecem no JSON.", "Incertezas aparecem como avisos, nunca como regras inventadas."],
-  en: ["Level between 1 and 20.", "Compatible ancestry, heritage, background, and class.", "Four free level-1 boosts applied to different attributes.", "Proficiency adds level only from Trained onward.", "AC, HP, saves, Perception, skills, DCs, and attacks use consistent calculations.", "Items, currency, bulk, and rules edition remain in the JSON.", "Uncertainty is shown as a warning, never as an invented rule."],
-  es: ["Nivel entre 1 y 20.", "Ascendencia, herencia, trasfondo y clase compatibles.", "Cuatro aumentos libres de nivel 1 en atributos diferentes.", "La competencia suma el nivel solo desde Entrenado.", "CA, PG, salvaciones, Percepción, habilidades, CD y ataques usan cálculos consistentes.", "Objetos, monedas, carga e edición de reglas permanecen en el JSON.", "Las dudas aparecen como avisos, nunca como reglas inventadas."],
-} as const;
+const validationCopy: Record<"pt-BR" | "en" | "es", string[]> = {
+  "pt-BR": [
+    "Classes Remaster usam CD de classe Treinado no nível 1 e salvamentos por proficiência.",
+    "Perícias e Saberes recebem modificadores de atributo, proficiência e nível do personagem.",
+    "Magias organizam ranques de 1 a 10 e validam compatibilidade com tradições da classe.",
+    "Exportação PDF preserva os 1087 campos de formulário editáveis oficiais do Pathfinder 2e.",
+  ],
+  en: [
+    "Remaster classes use Trained class DC at level 1 and proficiency-based saves.",
+    "Skills and Lores compute ability, proficiency, and character level modifiers.",
+    "Spells organize ranks 1 through 10 and validate class tradition compatibility.",
+    "PDF export preserves all 1,087 official fillable Pathfinder 2e form fields.",
+  ],
+  es: [
+    "Las clases Remaster usan CD de clase Entrenada a nivel 1 y salvaciones por competencia.",
+    "Las habilidades y saberes calculan modificadores de atributo, competencia y nivel.",
+    "Los conjuros organizan rangos del 1 al 10 y validan compatibilidad con tradiciones.",
+    "La exportación PDF preserva los 1.087 campos de formulario editables oficiales de PF2e.",
+  ],
+};
 
 function getRoute(): PortalRoute {
   const hash = window.location.hash.replace(/^#\/?/, "");
@@ -64,14 +86,22 @@ function CatalogPage() {
       return [];
     }
   }), [t]);
-  const filtered = useMemo(() => entries.filter((entry) => {
-    const categoryMatches = category === "all" || entry.category === category;
-    const localizedName = entry.data.names?.[locale] ?? entry.name;
-    const localizedSummary = entry.data.summaries?.[locale] ?? entry.data.description ?? "";
-    const haystack = `${localizedName} ${entry.name} ${localizedSummary}`.toLocaleLowerCase(locale);
-    const queryMatches = haystack.includes(query.trim().toLocaleLowerCase(locale));
-    return categoryMatches && queryMatches;
-  }), [category, entries, locale, query]);
+  const filtered = useMemo(() => {
+    const list = entries.filter((entry) => {
+      const categoryMatches = category === "all" || entry.category === category;
+      const localizedName = getItemDisplayName(entry, locale);
+      const localizedSummary = entry.data.summaries?.[locale] ?? entry.data.description ?? "";
+      const haystack = `${localizedName} ${entry.name} ${localizedSummary}`.toLocaleLowerCase(locale);
+      const queryMatches = haystack.includes(query.trim().toLocaleLowerCase(locale));
+      return categoryMatches && queryMatches;
+    });
+
+    return list.slice().sort((a, b) => {
+      const nameA = getItemDisplayName(a, locale);
+      const nameB = getItemDisplayName(b, locale);
+      return nameA.localeCompare(nameB, locale, { sensitivity: "base", numeric: true });
+    });
+  }, [category, entries, locale, query]);
 
   return <main className="portal-page" id="portal-content" tabIndex={-1}>
     <header className="portal-hero"><span>PATHBUILDER KNOWLEDGE BASE</span><h1>{t("compendiumTitle")}</h1><p>{t("compendiumIntro")}</p></header>
@@ -103,7 +133,7 @@ function CatalogCard({ entry }: { entry: PickerItem & { category: PickerType; ca
   ].filter((fact): fact is string => Boolean(fact));
   return <article className="catalog-card">
     <div className="catalog-card-top"><div className="catalog-card-meta"><span>{entry.categoryLabel}</span>{rarity && <span className={`rarity-badge ${String(entry.data.rarity)}`}>{rarity}</span>}</div><span className={legacy ? "source-badge legacy" : verified ? "source-badge verified" : "source-badge review"}>{legacy ? t("catalogLegacy") : verified ? t("catalogVerified") : t("catalogReview")}</span></div>
-    <h2>{entry.data.names?.[locale] ?? entry.name}</h2>
+    <h2>{getItemDisplayName(entry, locale)}</h2>
     {facts.length > 0 && <div className="catalog-facts">{facts.map((fact) => <span key={fact}>{fact}</span>)}</div>}
     {(entry.data.summaries?.[locale] ?? entry.data.description) && <p>{entry.data.summaries?.[locale] ?? entry.data.description}</p>}
     <footer>{source?.book ? `${source.book}${source.page ? ` · p. ${source.page}` : ""}` : t("uncatalogued")}</footer>

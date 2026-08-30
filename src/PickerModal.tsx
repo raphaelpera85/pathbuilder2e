@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { PickerBridge, PickerItem, PickerSelectionOption, PickerType } from "./types";
-import { useI18n, type MessageKey } from "./i18n";
+import { useI18n, getItemDisplayName, type MessageKey } from "./i18n";
 
 const pickerLabelKeys: Record<PickerType, MessageKey> = {
   ancestry: "ancestries", class: "classes", background: "backgrounds", weapon: "weapons", armor: "armors",
@@ -98,10 +98,23 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
       const matching = rawItems.filter(matchType);
       if (matching.length > 0) rawItems = matching;
     }
-    return rawItems.filter((item) => {
-      const localizedName = item.data.names?.[locale] ?? item.name;
+    const filtered = rawItems.filter((item) => {
+      const localizedName = getItemDisplayName(item, locale);
       const localizedSummary = item.data.summaries?.[locale] ?? item.data.description ?? "";
       return `${localizedName} ${item.name} ${localizedSummary}`.toLocaleLowerCase(locale).includes(needle);
+    });
+
+    return filtered.slice().sort((a, b) => {
+      if (pickerType === "spell") {
+        const weights: Record<string, number> = { available: 0, "requires-choice": 1, incompatible: 2 };
+        const stateA = weights[a.data?.selectionState ?? "available"] ?? 0;
+        const stateB = weights[b.data?.selectionState ?? "available"] ?? 0;
+        if (stateA !== stateB) return stateA - stateB;
+        if ((a.data?.rank ?? 0) !== (b.data?.rank ?? 0)) return (a.data?.rank ?? 0) - (b.data?.rank ?? 0);
+      }
+      const nameA = getItemDisplayName(a, locale);
+      const nameB = getItemDisplayName(b, locale);
+      return nameA.localeCompare(nameB, locale, { sensitivity: "base", numeric: true });
     });
   }, [locale, pickerOptions, pickerType, query]);
 
@@ -223,7 +236,7 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
                 >
                   <span className="picker-item-icon" aria-hidden="true">📜</span>
                   <span className="picker-option-text">
-                    <span>{item.data.names?.[locale] ?? item.name}</span>
+                    <span>{getItemDisplayName(item, locale)}</span>
                     {isBlocked && itemMessage && <small className="picker-option-status">{itemMessage}</small>}
                   </span>
                 </button>
@@ -240,7 +253,7 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
               </div>
             ) : selectedItem ? (
               <>
-                <h3>{selectedItem.data.names?.[locale] ?? selectedItem.name}</h3>
+                <h3>{getItemDisplayName(selectedItem, locale)}</h3>
                 {rarity && <span className={`picker-rarity ${String(selectedItem.data.rarity)}`}>{rarity}</span>}
                 {selectedState !== "available" && selectedMessage && <p className="picker-compatibility-note">{selectedMessage}</p>}
                 {(selectedItem.data.summaries?.[locale] ?? selectedItem.data.description) && <p>{selectedItem.data.summaries?.[locale] ?? selectedItem.data.description}</p>}

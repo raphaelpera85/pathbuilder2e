@@ -196,15 +196,104 @@ export function useI18n() {
   return value;
 }
 
+export const CLASS_TRANSLATIONS: Record<string, Record<Locale, string>> = {
+  "Alquimista": { "pt-BR": "Alquimista", en: "Alchemist", es: "Alquimista" },
+  "Animista": { "pt-BR": "Animista", en: "Animist", es: "Animista" },
+  "Bárbaro": { "pt-BR": "Bárbaro", en: "Barbarian", es: "Bárbaro" },
+  "Bardo": { "pt-BR": "Bardo", en: "Bard", es: "Bardo" },
+  "Bruxo": { "pt-BR": "Bruxo", en: "Witch", es: "Brujo" },
+  "Campeão": { "pt-BR": "Campeão", en: "Champion", es: "Campeón" },
+  "Cineticista": { "pt-BR": "Cineticista", en: "Kineticist", es: "Cinético" },
+  "Clérigo": { "pt-BR": "Clérigo", en: "Cleric", es: "Clérigo" },
+  "Comandante": { "pt-BR": "Comandante", en: "Commander", es: "Comandante" },
+  "Convocador": { "pt-BR": "Convocador", en: "Summoner", es: "Convocador" },
+  "Druida": { "pt-BR": "Druida", en: "Druid", es: "Druida" },
+  "Espadachim": { "pt-BR": "Espadachim", en: "Swashbuckler", es: "Espadachín" },
+  "Exemplar": { "pt-BR": "Exemplar", en: "Exemplar", es: "Ejemplar" },
+  "Feiticeiro": { "pt-BR": "Feiticeiro", en: "Sorcerer", es: "Hechicero" },
+  "Guardião": { "pt-BR": "Guardião", en: "Guardian", es: "Guardián" },
+  "Guerreiro": { "pt-BR": "Guerreiro", en: "Fighter", es: "Guerrero" },
+  "Inventor": { "pt-BR": "Inventor", en: "Inventor", es: "Inventor" },
+  "Investigador": { "pt-BR": "Investigador", en: "Investigator", es: "Investigador" },
+  "Ladino": { "pt-BR": "Ladino", en: "Rogue", es: "Pícaro" },
+  "Mago": { "pt-BR": "Mago", en: "Wizard", es: "Mago" },
+  "Magus": { "pt-BR": "Magus", en: "Magus", es: "Magus" },
+  "Monge": { "pt-BR": "Monge", en: "Monk", es: "Monje" },
+  "Oráculo": { "pt-BR": "Oráculo", en: "Oracle", es: "Oráculo" },
+  "Pistoleiro": { "pt-BR": "Pistoleiro", en: "Gunslinger", es: "Pistolero" },
+  "Psíquico": { "pt-BR": "Psíquico", en: "Psychic", es: "Psíquico" },
+  "Ranger": { "pt-BR": "Ranger", en: "Ranger", es: "Ranger" },
+  "Taumaturgo": { "pt-BR": "Taumaturgo", en: "Thaumaturge", es: "Taumaturgo" },
+};
+
+export const ANCESTRY_TRANSLATIONS: Record<string, Record<Locale, string>> = {
+  "Humano": { "pt-BR": "Humano", en: "Human", es: "Humano" },
+  "Anão": { "pt-BR": "Anão", en: "Dwarf", es: "Enano" },
+  "Elfo": { "pt-BR": "Elfo", en: "Elf", es: "Elfo" },
+  "Gnomo": { "pt-BR": "Gnomo", en: "Gnome", es: "Gnomo" },
+  "Goblin": { "pt-BR": "Goblin", en: "Goblin", es: "Goblin" },
+  "Halfling": { "pt-BR": "Halfling", en: "Halfling", es: "Mediano" },
+  "Leshy": { "pt-BR": "Leshy", en: "Leshy", es: "Leshy" },
+  "Orc": { "pt-BR": "Orc", en: "Orc", es: "Orco" },
+  "Amurrun (Catfolk)": { "pt-BR": "Amurrun (Povo-Gato)", en: "Catfolk", es: "Hombre-gato" },
+  "Ysoki (Ratfolk)": { "pt-BR": "Ysoki (Povo-Rato)", en: "Ratfolk", es: "Hombre-rata" },
+  "Kobold": { "pt-BR": "Kobold", en: "Kobold", es: "Kóbold" },
+  "Iruxi (Lizardfolk)": { "pt-BR": "Iruxi (Povo-Lagarto)", en: "Lizardfolk", es: "Hombre-lagarto" },
+  "Tripkee (Grippli)": { "pt-BR": "Tripkee (Povo-Rã)", en: "Tripkee", es: "Tripkee" },
+  "Tengu": { "pt-BR": "Tengu", en: "Tengu", es: "Tengu" },
+  "Kholo (Gnoll)": { "pt-BR": "Kholo (Gnoll)", en: "Kholo", es: "Kholo" },
+  "Centauro (Centaur)": { "pt-BR": "Centauro", en: "Centaur", es: "Centauro" },
+  "Minotauro (Minotaur)": { "pt-BR": "Minotauro", en: "Minotaur", es: "Minotauro" },
+  "Animal Desperto (Awakened Animal)": { "pt-BR": "Animal Desperto", en: "Awakened Animal", es: "Animal Despierto" },
+  "Tritão / Sereia (Merfolk)": { "pt-BR": "Tritão / Sereia", en: "Merfolk", es: "Tritón / Sirena" },
+  "Athamaru (Povo-Peixe)": { "pt-BR": "Athamaru", en: "Athamaru", es: "Athamaru" },
+  "Surki (Povo-Inseto)": { "pt-BR": "Surki", en: "Surki", es: "Surki" },
+  "Autômato (Automaton)": { "pt-BR": "Autômato", en: "Automaton", es: "Autómata" },
+  "Esqueleto (Skeleton)": { "pt-BR": "Esqueleto", en: "Skeleton", es: "Esqueleto" },
+  "Jotunnato (Jotunborn)": { "pt-BR": "Jotunnato", en: "Jotunborn", es: "Jotunborn" },
+};
+
+export function getItemDisplayName(item: { name?: string; data?: any } | undefined | null, locale: Locale = "pt-BR"): string {
+  if (!item) return "";
+  if (item.data?.names?.[locale]) return item.data.names[locale];
+
+  const rawName = item.name || item.data?.name || "";
+  if (!rawName) return "";
+
+  for (const [key, mapping] of Object.entries(CLASS_TRANSLATIONS)) {
+    if (rawName.startsWith(key) || rawName.includes(key)) {
+      return mapping[locale] ?? rawName;
+    }
+  }
+  for (const [key, mapping] of Object.entries(ANCESTRY_TRANSLATIONS)) {
+    if (rawName.startsWith(key) || rawName === key) {
+      return mapping[locale] ?? rawName;
+    }
+  }
+
+  const match = rawName.match(/^([^(]+?)\s*\(([^)]+)\)$/);
+  if (match) {
+    const ptPart = match[1].trim();
+    const enParts = match[2].split("/").map((s: string) => s.trim());
+    if (locale === "en") return enParts[0] || ptPart;
+    if (locale === "pt-BR") return ptPart;
+    if (locale === "es") return item.data?.names?.["es"] || ptPart;
+  }
+
+  return rawName;
+}
+
 export function LocaleSwitcher() {
   const { locale, setLocale, t } = useI18n();
   return (
-    <label className="locale-switcher">
+    <label className="locale-switcher" title={t("language")}>
       <span className="sr-only">{t("language")}</span>
-      <span aria-hidden="true">🌐</span>
       <select value={locale} onChange={(event) => setLocale(event.target.value as Locale)} aria-label={t("language")}>
-        <option value="pt-BR">PT</option><option value="en">EN</option><option value="es">ES</option>
+        <option value="pt-BR">🇧🇷 Brasil (PT)</option>
+        <option value="en">🇺🇸 USA (EN)</option>
+        <option value="es">🇪🇸 Espanha (ES)</option>
       </select>
     </label>
   );
 }
+
