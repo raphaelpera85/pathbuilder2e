@@ -1,11 +1,15 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import { injectSpeedInsights } from "@vercel/speed-insights";
 import { PickerModal } from "./PickerModal";
 import { ItemPickerModal } from "./ItemPickerModal";
 import { AccountPortal } from "./AccountPortal";
 import { I18nProvider, LocaleSwitcher } from "./i18n";
 import { PortalPages } from "./PortalPages";
 import "./picker.css";
+
+// Initialize Vercel Speed Insights
+injectSpeedInsights();
 
 const modalRoot = document.getElementById("react-modal-root");
 const accountRoot = document.getElementById("react-account-root");
