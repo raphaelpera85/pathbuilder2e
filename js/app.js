@@ -37,6 +37,8 @@ class PathbuilderApp {
     this.character = null;
     this.calc = null;
     this.diceHistory = [];
+    this.dicePool = [];
+    this.diceAnimationTimer = null;
     this.currentPickerType = null;
     this.selectedPickerItem = null;
     this.activeModalTab = "All";
@@ -1175,47 +1177,400 @@ class PathbuilderApp {
     }
   }
 
-  // ROLAGEM DE DADOS
+  // ROLADOR DE DADOS ANIMADO (PATHBUILDER 2E STYLE)
+  toggleDiceRoller(forceState) {
+    const drawer = document.getElementById("diceRollerDrawer");
+    const backdrop = document.getElementById("diceRollerBackdrop");
+    if (!drawer) return;
+    const shouldOpen = typeof forceState === "boolean" ? forceState : !drawer.classList.contains("active");
+    if (shouldOpen) {
+      drawer.classList.add("active");
+      drawer.setAttribute("aria-hidden", "false");
+      if (backdrop) backdrop.classList.add("active");
+    } else {
+      drawer.classList.remove("active");
+      drawer.setAttribute("aria-hidden", "true");
+      if (backdrop) backdrop.classList.remove("active");
+    }
+  }
+
+  openDiceRoller() {
+    this.toggleDiceRoller(true);
+  }
+
+  closeDiceRoller() {
+    this.toggleDiceRoller(false);
+  }
+
+  addDiceToPool(sides) {
+    this.dicePool.push(sides);
+    this.renderDicePoolFormula();
+    this.openDiceRoller();
+  }
+
+  resetDicePool() {
+    this.dicePool = [];
+    const modInput = document.getElementById("dicePoolMod");
+    if (modInput) modInput.value = 0;
+    this.renderDicePoolFormula();
+  }
+
+  renderDicePoolFormula() {
+    const formulaDisplay = document.getElementById("dicePoolFormula");
+    const rollPoolBtn = document.getElementById("btnRollPool");
+    const modInput = document.getElementById("dicePoolMod");
+    const mod = parseInt(modInput ? modInput.value : 0, 10) || 0;
+
+    // Atualiza badges nos botões de dados
+    [4, 6, 8, 10, 12, 20, 100].forEach(s => {
+      const btn = document.getElementById(`btnDie${s}`);
+      if (btn) {
+        const count = this.dicePool.filter(x => x === s).length;
+        btn.innerHTML = count > 0 ? `1d${s} <span class="dice-badge-count">${count}</span>` : `1d${s}`;
+      }
+    });
+
+    if (this.dicePool.length === 0) {
+      if (formulaDisplay) formulaDisplay.innerText = "Selecione os dados nos botões acima";
+      if (rollPoolBtn) rollPoolBtn.disabled = true;
+      return;
+    }
+
+    const counts = {};
+    this.dicePool.forEach(s => { counts[s] = (counts[s] || 0) + 1; });
+    const parts = Object.keys(counts).map(s => `${counts[s]}d${s}`);
+    let text = parts.join(" + ");
+    if (mod > 0) text += ` + ${mod}`;
+    else if (mod < 0) text += ` - ${Math.abs(mod)}`;
+
+    if (formulaDisplay) formulaDisplay.innerText = text;
+    if (rollPoolBtn) rollPoolBtn.disabled = false;
+  }
+
+  rollDicePool() {
+    if (this.dicePool.length === 0) return;
+    const modInput = document.getElementById("dicePoolMod");
+    const mod = parseInt(modInput ? modInput.value : 0, 10) || 0;
+
+    const diceResults = [];
+    let sum = 0;
+    this.dicePool.forEach(sides => {
+      const roll = Math.floor(Math.random() * sides) + 1;
+      diceResults.push({ sides, value: roll });
+      sum += roll;
+    });
+
+    const total = sum + mod;
+    const counts = {};
+    this.dicePool.forEach(s => { counts[s] = (counts[s] || 0) + 1; });
+    const formulaStr = Object.keys(counts).map(s => `${counts[s]}d${s}`).join(" + ") + (mod !== 0 ? ` ${PF2E_ENGINE.formatMod(mod)}` : "");
+    const breakdownStr = diceResults.map(d => `d${d.sides}(${d.value})`).join(" + ") + (mod !== 0 ? ` ${PF2E_ENGINE.formatMod(mod)}` : "") + ` = ${total}`;
+
+    this.animateDiceRoll({
+      title: "Free Roll (Rolagem Livre)",
+      diceList: diceResults,
+      modifier: mod,
+      total,
+      formula: formulaStr,
+      breakdown: breakdownStr,
+      tag: "Free Roll"
+    });
+  }
+
+  getPolyhedralDieSvg(sides, value, isCrit = false, isFumble = false) {
+    const rand = Math.random().toString(36).substring(2, 7);
+    const primaryColor = isCrit ? '#fbbf24' : (isFumble ? '#ef4444' : '#f97316');
+    const darkColor = isCrit ? '#b45309' : (isFumble ? '#7f1d1d' : '#9a3412');
+    const strokeColor = isCrit ? '#fef08a' : (isFumble ? '#fca5a5' : '#fdba74');
+
+    if (sides === 4) {
+      return `
+        <svg class="polyhedral-die-svg" viewBox="0 0 70 70">
+          <defs>
+            <linearGradient id="gd4_${rand}" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="${primaryColor}"/>
+              <stop offset="100%" stop-color="${darkColor}"/>
+            </linearGradient>
+          </defs>
+          <polygon points="35,8 65,60 5,60" fill="url(#gd4_${rand})" stroke="${strokeColor}" stroke-width="2"/>
+          <polygon points="35,8 5,60 35,44" fill="rgba(255,255,255,0.12)"/>
+          <polygon points="35,8 65,60 35,44" fill="rgba(0,0,0,0.18)"/>
+          <polygon points="5,60 65,60 35,44" fill="rgba(0,0,0,0.32)"/>
+          <text x="35" y="42" class="polyhedral-die-text">${value}</text>
+        </svg>
+      `;
+    }
+
+    if (sides === 6) {
+      return `
+        <svg class="polyhedral-die-svg" viewBox="0 0 70 70">
+          <defs>
+            <linearGradient id="gd6_${rand}" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="${primaryColor}"/>
+              <stop offset="100%" stop-color="${darkColor}"/>
+            </linearGradient>
+          </defs>
+          <rect x="10" y="10" width="50" height="50" rx="8" fill="url(#gd6_${rand})" stroke="${strokeColor}" stroke-width="2"/>
+          <rect x="14" y="14" width="42" height="42" rx="5" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/>
+          <text x="35" y="37" class="polyhedral-die-text">${value}</text>
+        </svg>
+      `;
+    }
+
+    if (sides === 8) {
+      return `
+        <svg class="polyhedral-die-svg" viewBox="0 0 70 70">
+          <defs>
+            <linearGradient id="gd8_${rand}" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="${primaryColor}"/>
+              <stop offset="100%" stop-color="${darkColor}"/>
+            </linearGradient>
+          </defs>
+          <polygon points="35,6 64,35 35,35" fill="url(#gd8_${rand})" stroke="${strokeColor}" stroke-width="1.5"/>
+          <polygon points="35,6 6,35 35,35" fill="rgba(255,255,255,0.18)" stroke="${strokeColor}" stroke-width="1.5"/>
+          <polygon points="6,35 35,64 35,35" fill="rgba(0,0,0,0.3)" stroke="${strokeColor}" stroke-width="1.5"/>
+          <polygon points="64,35 35,64 35,35" fill="rgba(0,0,0,0.45)" stroke="${strokeColor}" stroke-width="1.5"/>
+          <text x="35" y="36" class="polyhedral-die-text">${value}</text>
+        </svg>
+      `;
+    }
+
+    if (sides === 10) {
+      return `
+        <svg class="polyhedral-die-svg" viewBox="0 0 70 70">
+          <defs>
+            <linearGradient id="gd10_${rand}" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="${primaryColor}"/>
+              <stop offset="100%" stop-color="${darkColor}"/>
+            </linearGradient>
+          </defs>
+          <polygon points="35,6 62,25 35,44 8,25" fill="url(#gd10_${rand})" stroke="${strokeColor}" stroke-width="1.5"/>
+          <polygon points="8,25 35,44 35,65 14,50" fill="rgba(0,0,0,0.25)" stroke="${strokeColor}" stroke-width="1.5"/>
+          <polygon points="62,25 35,44 35,65 56,50" fill="rgba(0,0,0,0.4)" stroke="${strokeColor}" stroke-width="1.5"/>
+          <polygon points="35,6 62,25 35,44" fill="rgba(255,255,255,0.15)"/>
+          <text x="35" y="35" class="polyhedral-die-text">${value}</text>
+        </svg>
+      `;
+    }
+
+    if (sides === 12) {
+      return `
+        <svg class="polyhedral-die-svg" viewBox="0 0 70 70">
+          <defs>
+            <linearGradient id="gd12_${rand}" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="${primaryColor}"/>
+              <stop offset="100%" stop-color="${darkColor}"/>
+            </linearGradient>
+          </defs>
+          <polygon points="35,6 63,24 53,58 17,58 7,24" fill="url(#gd12_${rand})" stroke="${strokeColor}" stroke-width="2"/>
+          <polygon points="35,22 50,33 44,50 26,50 20,33" fill="rgba(255,255,255,0.15)" stroke="${strokeColor}" stroke-width="1.2"/>
+          <line x1="35" y1="6" x2="35" y2="22" stroke="${strokeColor}" stroke-width="1.2"/>
+          <line x1="63" y1="24" x2="50" y2="33" stroke="${strokeColor}" stroke-width="1.2"/>
+          <line x1="53" y1="58" x2="44" y2="50" stroke="${strokeColor}" stroke-width="1.2"/>
+          <line x1="17" y1="58" x2="26" y2="50" stroke="${strokeColor}" stroke-width="1.2"/>
+          <line x1="7" y1="24" x2="20" y2="33" stroke="${strokeColor}" stroke-width="1.2"/>
+          <text x="35" y="38" class="polyhedral-die-text">${value}</text>
+        </svg>
+      `;
+    }
+
+    if (sides === 100) {
+      const tensVal = Math.floor(value / 10) * 10;
+      const unitsVal = value % 10;
+      return `
+        <div style="display:flex; gap:6px;">
+          <svg class="polyhedral-die-svg" viewBox="0 0 70 70" style="width:55px; height:55px;">
+            <polygon points="35,6 62,25 35,44 8,25" fill="${primaryColor}" stroke="${strokeColor}" stroke-width="1.5"/>
+            <polygon points="8,25 35,44 35,65 14,50" fill="rgba(0,0,0,0.25)" stroke="${strokeColor}" stroke-width="1.5"/>
+            <polygon points="62,25 35,44 35,65 56,50" fill="rgba(0,0,0,0.4)" stroke="${strokeColor}" stroke-width="1.5"/>
+            <text x="35" y="35" class="polyhedral-die-text" font-size="14">${tensVal === 100 ? "00" : (tensVal < 10 ? `0${tensVal}` : tensVal)}</text>
+          </svg>
+          <svg class="polyhedral-die-svg" viewBox="0 0 70 70" style="width:55px; height:55px;">
+            <polygon points="35,6 62,25 35,44 8,25" fill="${primaryColor}" stroke="${strokeColor}" stroke-width="1.5"/>
+            <polygon points="8,25 35,44 35,65 14,50" fill="rgba(0,0,0,0.25)" stroke="${strokeColor}" stroke-width="1.5"/>
+            <polygon points="62,25 35,44 35,65 56,50" fill="rgba(0,0,0,0.4)" stroke="${strokeColor}" stroke-width="1.5"/>
+            <text x="35" y="35" class="polyhedral-die-text" font-size="14">${unitsVal}</text>
+          </svg>
+        </div>
+      `;
+    }
+
+    // Default: d20 (Icosaedro com sombreamento realista e facetas 3D)
+    return `
+      <svg class="polyhedral-die-svg" viewBox="0 0 70 70">
+        <defs>
+          <linearGradient id="gd20_${rand}" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="${primaryColor}"/>
+            <stop offset="100%" stop-color="${darkColor}"/>
+          </linearGradient>
+        </defs>
+        <polygon points="35,6 62,20 62,50 35,64 8,50 8,20" fill="url(#gd20_${rand})" stroke="${strokeColor}" stroke-width="2"/>
+        <polygon points="35,22 53,50 17,50" fill="${isCrit ? 'rgba(255,255,255,0.3)' : 'rgba(255,255,255,0.15)'}" stroke="${strokeColor}" stroke-width="1.5"/>
+        <line x1="35" y1="6" x2="35" y2="22" stroke="${strokeColor}" stroke-width="1.2"/>
+        <line x1="62" y1="20" x2="35" y2="22" stroke="${strokeColor}" stroke-width="1.2"/>
+        <line x1="62" y1="20" x2="53" y2="50" stroke="${strokeColor}" stroke-width="1.2"/>
+        <line x1="62" y1="50" x2="53" y2="50" stroke="${strokeColor}" stroke-width="1.2"/>
+        <line x1="35" y1="64" x2="53" y2="50" stroke="${strokeColor}" stroke-width="1.2"/>
+        <line x1="35" y1="64" x2="17" y2="50" stroke="${strokeColor}" stroke-width="1.2"/>
+        <line x1="8" y1="50" x2="17" y2="50" stroke="${strokeColor}" stroke-width="1.2"/>
+        <line x1="8" y1="20" x2="17" y2="50" stroke="${strokeColor}" stroke-width="1.2"/>
+        <line x1="8" y1="20" x2="35" y2="22" stroke="${strokeColor}" stroke-width="1.2"/>
+        <text x="35" y="42" class="polyhedral-die-text">${value}</text>
+      </svg>
+    `;
+  }
+
+  animateDiceRoll({ title, diceList, modifier = 0, total, formula, breakdown, tag = "", isCrit = false, isFumble = false }) {
+    this.openDiceRoller();
+
+    const placeholder = document.getElementById("diceArenaPlaceholder");
+    const stage = document.getElementById("diceArenaStage");
+    const animContainer = document.getElementById("diceAnimContainer");
+    const resultLabel = document.getElementById("diceResultLabel");
+    const resultTotal = document.getElementById("diceResultTotal");
+    const resultBreakdown = document.getElementById("diceResultBreakdown");
+    const resultTag = document.getElementById("diceResultTag");
+
+    if (placeholder) placeholder.style.display = "none";
+    if (stage) stage.style.display = "flex";
+
+    if (resultLabel) resultLabel.innerText = title;
+    if (resultTotal) resultTotal.innerText = "...";
+    if (resultBreakdown) resultBreakdown.innerText = formula || breakdown;
+
+    if (resultTag) {
+      if (isCrit) {
+        resultTag.innerText = "🌟 Sucesso Crítico (Nat 20)!";
+        resultTag.className = "dice-result-tag tag-crit";
+        resultTag.style.display = "inline-block";
+      } else if (isFumble) {
+        resultTag.innerText = "💀 Falha Crítica (Nat 1)!";
+        resultTag.className = "dice-result-tag tag-fumble";
+        resultTag.style.display = "inline-block";
+      } else if (tag) {
+        resultTag.innerText = tag;
+        resultTag.className = "dice-result-tag tag-damage";
+        resultTag.style.display = "inline-block";
+      } else {
+        resultTag.style.display = "none";
+      }
+    }
+
+    if (animContainer) {
+      // Cria os dados animados rolando na arena
+      animContainer.innerHTML = diceList.map(d => `
+        <div class="polyhedral-die-wrapper rolling ${isCrit ? 'crit-nat20' : (isFumble ? 'fumble-nat1' : '')}">
+          ${this.getPolyhedralDieSvg(d.sides, d.value, isCrit, isFumble)}
+        </div>
+      `).join('');
+    }
+
+    // Após 500ms fixa o total calculado
+    if (this.diceAnimationTimer) clearTimeout(this.diceAnimationTimer);
+    this.diceAnimationTimer = setTimeout(() => {
+      if (resultTotal) resultTotal.innerText = total;
+      if (resultBreakdown) resultBreakdown.innerText = breakdown;
+      this.addDiceLog(title, formula, total, breakdown, isCrit, isFumble);
+    }, 500);
+  }
+
+  // ROLAGEM DE DADOS RÁPIDA
   rollDice(sides) {
     const roll = Math.floor(Math.random() * sides) + 1;
-    this.addDiceLog(`d${sides}`, `Rolou: <strong style="color:var(--pb-orange); font-size:14px;">${roll}</strong>`);
+    const isCrit = sides === 20 && roll === 20;
+    const isFumble = sides === 20 && roll === 1;
+
+    this.animateDiceRoll({
+      title: `d${sides}`,
+      diceList: [{ sides, value: roll }],
+      total: roll,
+      formula: `1d${sides}`,
+      breakdown: `d${sides} (${roll}) = ${roll}`,
+      isCrit,
+      isFumble
+    });
   }
 
   rollCheck(label, modifier) {
     const d20 = Math.floor(Math.random() * 20) + 1;
     const total = d20 + modifier;
-    const natCrit = d20 === 20 ? " 🌟 CRÍTICO NAT 20!" : (d20 === 1 ? " 💀 FALHA CRÍTICA NAT 1!" : "");
-    this.addDiceLog(label, `d20 (${d20}) ${PF2E_ENGINE.formatMod(modifier)} = <strong style="font-size:13px;">${total}</strong>${natCrit}`);
+    const isCrit = d20 === 20;
+    const isFumble = d20 === 1;
+    const modStr = PF2E_ENGINE.formatMod(modifier);
+
+    this.animateDiceRoll({
+      title: label,
+      diceList: [{ sides: 20, value: d20 }],
+      modifier,
+      total,
+      formula: `d20 ${modStr}`,
+      breakdown: `d20 (${d20}) ${modStr} = ${total}`,
+      isCrit,
+      isFumble
+    });
   }
 
   rollStrike(label, modifier) {
     const d20 = Math.floor(Math.random() * 20) + 1;
     const total = d20 + modifier;
-    const natCrit = d20 === 20 ? " 🌟 CRÍTICO (Dano Dobrado!)" : (d20 === 1 ? " 💀 FALHA CRÍTICA" : "");
-    this.addDiceLog(`Ataque: ${label}`, `d20 (${d20}) ${PF2E_ENGINE.formatMod(modifier)} = <strong style="font-size:13px;">${total}</strong>${natCrit}`);
+    const isCrit = d20 === 20;
+    const isFumble = d20 === 1;
+    const modStr = PF2E_ENGINE.formatMod(modifier);
+
+    this.animateDiceRoll({
+      title: `Ataque: ${label}`,
+      diceList: [{ sides: 20, value: d20 }],
+      modifier,
+      total,
+      formula: `d20 ${modStr}`,
+      breakdown: `d20 (${d20}) ${modStr} = ${total}`,
+      isCrit,
+      isFumble,
+      tag: isCrit ? "Dano Dobrado!" : ""
+    });
   }
 
   rollDamage(weaponName, damageFormula) {
     const rolled = PF2E_ENGINE.evaluateDiceExpression(damageFormula);
     const critRolled = PF2E_ENGINE.evaluateDiceExpression(damageFormula, { isCritical: true });
-    this.addDiceLog(
-      `Dano: ${weaponName}`,
-      `Rolou [${damageFormula}]: <strong style="color:var(--pb-orange); font-size:13px;">${rolled.total}</strong> (Rolagens: ${rolled.rolls.join("+")}${rolled.staticMod ? ` + ${rolled.staticMod}` : ""}) · <small style="color:var(--pb-text-muted);">Crítico: <strong style="color:#ef4444;">${critRolled.total}</strong></small>`
-    );
+    
+    // Extrai os dados individuais para animação visual na arena
+    const diceList = [];
+    (rolled.diceRolls || []).forEach(dr => {
+      (dr.rolls || []).forEach(r => {
+        diceList.push({ sides: dr.sides, value: r });
+      });
+    });
+    if (diceList.length === 0) {
+      diceList.push({ sides: 6, value: rolled.total });
+    }
+
+    this.animateDiceRoll({
+      title: `Dano: ${weaponName}`,
+      diceList,
+      modifier: rolled.staticModifier || 0,
+      total: rolled.total,
+      formula: damageFormula,
+      breakdown: `Rolou [${damageFormula}]: ${rolled.total} (Crítico: ${critRolled.total})`,
+      tag: `Crítico: ${critRolled.total}`
+    });
   }
 
-  addDiceLog(title, resultHtml) {
+  addDiceLog(title, formula, total, breakdown, isCrit = false, isFumble = false) {
     const time = new Date().toLocaleTimeString();
-    this.diceHistory.unshift({ title, resultHtml, time });
+    this.diceHistory.unshift({ title, formula, total, breakdown, time, isCrit, isFumble });
     const content = document.getElementById("diceLogContent");
     if (!content) return;
-    content.innerHTML = this.diceHistory.slice(0, 15).map(entry => `
-      <div class="dice-result-entry">
-        <div>
-          <div style="font-weight:bold; color:var(--pb-orange); font-size:10px;">${escapeHtml(entry.title)}</div>
-          <div>${entry.resultHtml}</div>
+    content.innerHTML = this.diceHistory.slice(0, 25).map(entry => `
+      <div class="dice-history-item" style="${entry.isCrit ? 'border-left-color:#eab308;' : (entry.isFumble ? 'border-left-color:#ef4444;' : '')}">
+        <div class="dice-history-info">
+          <div class="dice-history-title">${escapeHtml(entry.title)}</div>
+          <div class="dice-history-details">${escapeHtml(entry.breakdown || `${entry.formula} = ${entry.total}`)}</div>
         </div>
-        <div style="color:var(--pb-text-muted); font-size:9px;">${escapeHtml(entry.time)}</div>
+        <div style="text-align:right;">
+          <div style="font-size:16px; font-weight:900; color:${entry.isCrit ? '#eab308' : (entry.isFumble ? '#ef4444' : '#fff')};">${entry.total}</div>
+          <div class="dice-history-time">${escapeHtml(entry.time)}</div>
+        </div>
       </div>
     `).join('');
   }
@@ -1223,7 +1578,7 @@ class PathbuilderApp {
   clearDiceLog() {
     this.diceHistory = [];
     const content = document.getElementById("diceLogContent");
-    if (content) content.innerHTML = `<div style="color:var(--pb-text-muted); font-size:10px; text-align:center;">Histórico limpo.</div>`;
+    if (content) content.innerHTML = `<div class="dice-history-empty">Histórico limpo.</div>`;
   }
 
   // HP & ESCUDO

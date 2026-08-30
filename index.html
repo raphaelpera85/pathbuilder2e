@@ -366,10 +366,15 @@
 
       </div>
 
-      <!-- D20 FLUTUANTE LARANJA (WATERMARK NO CANTO INFERIOR DIREITO) -->
-      <div class="pb-floating-d20" onclick="app.rollDice(20)" title="Clique para Rolar d20 Rápido">
-        🎲
-      </div>
+      <!-- D20 FLUTUANTE LARANJA (CANTO INFERIOR DIREITO) -->
+      <button class="pb-floating-d20" id="btnToggleDiceDrawer" onclick="app.toggleDiceRoller()" title="Abrir Rolador de Dados (Free Roll / Histórico)" aria-label="Abrir Rolador de Dados" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L3 8.5L5.5 19L12 22L18.5 19L21 8.5L12 2Z" />
+          <path d="M12 2V22" />
+          <path d="M3 8.5L12 14L21 8.5" />
+          <path d="M5.5 19L12 14L18.5 19" />
+        </svg>
+      </button>
 
     </main>
 
@@ -378,14 +383,63 @@
   <!-- Raiz React: os seletores migram primeiro, sem interromper a ficha legada. -->
   <div id="react-modal-root"></div>
 
-  <!-- LOG FLUTUANTE DE ROLAGEM DE DADOS -->
-  <div class="dice-log-drawer" id="diceDrawer">
-    <div class="dice-log-header">
-      <span>🎲 Histórico de Rolagens</span>
-      <button onclick="app.clearDiceLog()" style="background:none; border:none; color:#fff; cursor:pointer; font-size:10px;">Limpar</button>
+  <!-- BACKDROP OVERLAY DO ROLADOR DE DADOS -->
+  <div class="dice-roller-backdrop" id="diceRollerBackdrop" onclick="app.closeDiceRoller()"></div>
+
+  <!-- GAVETA LATERAL DO ROLADOR DE DADOS ANIMADO (PATHBUILDER 2E STYLE) -->
+  <div class="dice-roller-drawer" id="diceRollerDrawer" aria-hidden="true">
+    <div class="dice-roller-header">
+      <div class="dice-roller-title-group">
+        <button class="dice-roller-reset-btn" onclick="app.resetDicePool()" type="button" title="Limpar dados selecionados">Reset</button>
+        <span class="dice-roller-heading">🎲 Free Roll</span>
+        <button class="dice-roller-close-btn" onclick="app.closeDiceRoller()" type="button" title="Fechar Rolador" aria-label="Fechar">✕</button>
+      </div>
+
+      <!-- BOTÕES DE DADOS RÁPIDOS (1d4, 1d6, 1d8, 1d10, 1d12, 1d20, 1d100) -->
+      <div class="dice-quick-bar">
+        <button class="dice-btn" id="btnDie4" onclick="app.addDiceToPool(4)" type="button" title="Adicionar d4">1d4</button>
+        <button class="dice-btn" id="btnDie6" onclick="app.addDiceToPool(6)" type="button" title="Adicionar d6">1d6</button>
+        <button class="dice-btn" id="btnDie8" onclick="app.addDiceToPool(8)" type="button" title="Adicionar d8">1d8</button>
+        <button class="dice-btn" id="btnDie10" onclick="app.addDiceToPool(10)" type="button" title="Adicionar d10">1d10</button>
+        <button class="dice-btn" id="btnDie12" onclick="app.addDiceToPool(12)" type="button" title="Adicionar d12">1d12</button>
+        <button class="dice-btn" id="btnDie20" onclick="app.addDiceToPool(20)" type="button" title="Adicionar d20">1d20</button>
+        <button class="dice-btn" id="btnDie100" onclick="app.addDiceToPool(100)" type="button" title="Adicionar d100">1d100</button>
+      </div>
+
+      <!-- DISPLAY DE POOL / FÓRMULA SELECIONADA -->
+      <div class="dice-pool-control">
+        <div class="dice-pool-display" id="dicePoolFormula">Selecione os dados nos botões acima</div>
+        <div class="dice-mod-controls">
+          <label>Bônus / Mod: <input type="number" id="dicePoolMod" value="0" oninput="app.renderDicePoolFormula()" /></label>
+          <button class="btn-roll-pool" id="btnRollPool" onclick="app.rollDicePool()" type="button" disabled>🎲 Rolar</button>
+        </div>
+      </div>
     </div>
-    <div class="dice-log-content" id="diceLogContent">
-      <div style="color:var(--pb-text-muted); font-size:10px; text-align:center;">Nenhuma rolagem realizada.</div>
+
+    <!-- ARENA DE ANIMAÇÃO 3D / POLIEDROS -->
+    <div class="dice-roller-arena" id="diceArena">
+      <div class="dice-arena-placeholder" id="diceArenaPlaceholder">
+        <span class="dice-arena-icon">🎲</span>
+        <p>Clique em um dado acima ou em qualquer perícia, salvaguarda ou arma da ficha para rolar com animação 3D!</p>
+      </div>
+      <div class="dice-arena-stage" id="diceArenaStage" style="display: none;">
+        <div class="dice-animation-container" id="diceAnimContainer"></div>
+        <div class="dice-arena-result-card" id="diceResultCard">
+          <div class="dice-result-label" id="diceResultLabel">Perícia</div>
+          <div class="dice-result-total" id="diceResultTotal">--</div>
+          <div class="dice-result-breakdown" id="diceResultBreakdown">--</div>
+          <div class="dice-result-tag" id="diceResultTag" style="display: none;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HISTÓRICO DE ROLAGENS -->
+    <div class="dice-roller-history-header">
+      <span>📜 Histórico de Rolagens</span>
+      <button onclick="app.clearDiceLog()" class="dice-clear-btn" type="button" title="Limpar histórico">🗑️ Limpar</button>
+    </div>
+    <div class="dice-roller-history-list" id="diceLogContent">
+      <div class="dice-history-empty">Nenhuma rolagem recente.</div>
     </div>
   </div>
 
