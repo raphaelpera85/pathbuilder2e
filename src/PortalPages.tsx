@@ -1,18 +1,31 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type FormEvent } from "react";
 import { pathfinderSources } from "./data/sources";
 import { useI18n, type MessageKey } from "./i18n";
 import type { PickerItem, PickerType } from "./types";
 import { useAccountViewState } from "./accountState";
+import {
+  getCurrentSession,
+  signIn,
+  signOut,
+  signUp,
+  subscribeToAuth,
+  type AuthSession,
+} from "./services/auth";
+import {
+  deleteCharacter,
+  listCharacters,
+  type CloudCharacter,
+} from "./services/characters";
 import "./portal.css";
 
 type PortalRoute = "builder" | "compendium" | "rules" | "library" | "privacy" | "admin";
 
 const routes: PortalRoute[] = ["builder", "compendium", "rules", "library", "privacy", "admin"];
 const navItems: Array<{ route: PortalRoute; label: MessageKey; icon: string }> = [
+  { route: "library", label: "navLibrary", icon: "🛡" },
   { route: "builder", label: "navBuilder", icon: "⚔" },
   { route: "compendium", label: "navCompendium", icon: "📚" },
   { route: "rules", label: "navRules", icon: "⚖" },
-  { route: "library", label: "navLibrary", icon: "🛡" },
   { route: "privacy", label: "navPrivacy", icon: "🔒" },
   { route: "admin", label: "navAdmin", icon: "◆" },
 ];
@@ -28,12 +41,16 @@ const catalogCategories: Array<{ type: PickerType; label: MessageKey }> = [
 const validationCopy = {
   "pt-BR": ["Nível entre 1 e 20.", "Ancestralidade, herança, antecedente e classe compatíveis.", "Quatro aprimoramentos livres de nível 1 em atributos distintos.", "Proficiência adiciona o nível somente a partir de Treinado.", "CA, PV, salvaguardas, Percepção, perícias, CDs e ataques usam cálculos consistentes.", "Itens, moedas, carga e edição das regras permanecem no JSON.", "Incertezas aparecem como avisos, nunca como regras inventadas."],
   en: ["Level between 1 and 20.", "Compatible ancestry, heritage, background, and class.", "Four free level-1 boosts applied to different attributes.", "Proficiency adds level only from Trained onward.", "AC, HP, saves, Perception, skills, DCs, and attacks use consistent calculations.", "Items, currency, bulk, and rules edition remain in the JSON.", "Uncertainty is shown as a warning, never as an invented rule."],
-  es: ["Nivel entre 1 y 20.", "Ascendencia, herencia, trasfondo y clase compatibles.", "Cuatro aumentos libres de nivel 1 en atributos diferentes.", "La competencia suma el nivel solo desde Entrenado.", "CA, PG, salvaciones, Percepción, habilidades, CD y ataques usan cálculos consistentes.", "Objetos, monedas, carga y edición de reglas permanecen en el JSON.", "Las dudas aparecen como avisos, nunca como reglas inventadas."],
+  es: ["Nivel entre 1 y 20.", "Ascendencia, herencia, trasfondo y clase compatibles.", "Cuatro aumentos libres de nivel 1 en atributos diferentes.", "La competencia suma el nivel solo desde Entrenado.", "CA, PG, salvaciones, Percepción, habilidades, CD y ataques usan cálculos consistentes.", "Objetos, monedas, carga e edición de reglas permanecen en el JSON.", "Las dudas aparecen como avisos, nunca como reglas inventadas."],
 } as const;
 
 function getRoute(): PortalRoute {
-  const candidate = window.location.hash.replace(/^#\/?/, "") as PortalRoute;
-  return routes.includes(candidate) ? candidate : "builder";
+  const hash = window.location.hash.replace(/^#\/?/, "");
+  if (routes.includes(hash as PortalRoute)) {
+    return hash as PortalRoute;
+  }
+  // Se não houver hash especificado, abre a biblioteca/login por padrão
+  return "library";
 }
 
 function CatalogPage() {
@@ -42,7 +59,7 @@ function CatalogPage() {
   const [category, setCategory] = useState<PickerType | "all">("all");
   const entries = useMemo(() => catalogCategories.flatMap(({ type, label }) => {
     try {
-      return window.app.getPickerItems(type).map((item) => ({ ...item, category: type, categoryLabel: t(label) }));
+      return (window as any).app?.getPickerItems(type).map((item: any) => ({ ...item, category: type, categoryLabel: t(label) })) || [];
     } catch {
       return [];
     }
@@ -107,10 +124,274 @@ function RulesPage() {
 
 function LibraryPage() {
   const { t } = useI18n();
-  return <main className="portal-page library-page" id="portal-content" tabIndex={-1}>
-    <section className="library-callout"><span className="library-icon" aria-hidden="true">🛡️</span><div><span>PATHBUILDER CLOUD</span><h1>{t("libraryPageTitle")}</h1><p>{t("libraryPageIntro")}</p><button type="button" onClick={() => window.dispatchEvent(new Event("pathbuilder:open-account"))}>{t("openAccount")}</button></div></section>
-    <section className="privacy-card"><h2>{t("privacyTitle")}</h2><p>{t("privacyCopy")}</p></section>
-  </main>;
+  const [session, setSession] = useState<AuthSession | null>(null);
+  const [characters, setCharacters] = useState<CloudCharacter[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [working, setWorking] = useState<string | null>(null);
+  const [authMode, setAuthMode] = useState<"signin" | "signup">("signin");
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const [notice, setNotice] = useState<string | null>(null);
+
+  const loadUserCharacters = async (activeSession: AuthSession) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const list = await listCharacters(activeSession.user);
+      setCharacters(list);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Erro ao carregar fichas.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    void getCurrentSession().then((cur) => {
+      setSession(cur);
+      if (cur) void loadUserCharacters(cur);
+    });
+
+    const unsubscribe = subscribeToAuth((next) => {
+      setSession(next);
+      if (next) void loadUserCharacters(next);
+      else setCharacters([]);
+    });
+    return unsubscribe;
+  }, []);
+
+  const handleAuth = async (e: FormEvent) => {
+    e.preventDefault();
+    setWorking("auth");
+    setError(null);
+    setNotice(null);
+    try {
+      if (authMode === "signup") {
+        const next = await signUp(username, email, password);
+        setSession(next);
+        setNotice("Conta criada com sucesso! Bem-vindo.");
+      } else {
+        const next = await signIn(email, password);
+        setSession(next);
+        setNotice("Conectado com sucesso!");
+      }
+      setPassword("");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Falha na autenticação.");
+    } finally {
+      setWorking(null);
+    }
+  };
+
+  const handleCreateNew = () => {
+    (window as any).app?.createNewCharacter();
+    window.location.hash = "#/builder";
+  };
+
+  const handleLoadCharacter = (char: CloudCharacter) => {
+    (window as any).app?.loadCharacter(char.data);
+    window.location.hash = "#/builder";
+  };
+
+  const handleDeleteCharacter = async (char: CloudCharacter) => {
+    if (!window.confirm(`Excluir '${char.name}' da sua conta?`)) return;
+    if (!session) return;
+    setWorking(char.id);
+    try {
+      await deleteCharacter(char.id, session.user);
+      setCharacters((prev) => prev.filter((c) => c.id !== char.id));
+      setNotice("Personagem excluído com sucesso.");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Erro ao excluir.");
+    } finally {
+      setWorking(null);
+    }
+  };
+
+  const handleSignOut = async () => {
+    await signOut();
+    setSession(null);
+    setCharacters([]);
+  };
+
+  if (!session) {
+    return (
+      <main className="portal-page library-auth-page" id="portal-content" tabIndex={-1}>
+        <div className="auth-card-hero">
+          <span className="auth-kicker">PATHBUILDER 2E · CONSTRUTOR DE PERSONAGENS</span>
+          <h1>Acesso à Sua Biblioteca</h1>
+          <p>Entre na sua conta para acessar e gerenciar apenas os seus personagens, ou crie uma conta em segundos.</p>
+        </div>
+
+        <div className="auth-main-container">
+          <form className="auth-card" onSubmit={handleAuth}>
+            <div className="auth-switch" role="tablist">
+              <button
+                type="button"
+                className={authMode === "signin" ? "active" : ""}
+                onClick={() => { setAuthMode("signin"); setError(null); setNotice(null); }}
+              >
+                Entrar
+              </button>
+              <button
+                type="button"
+                className={authMode === "signup" ? "active" : ""}
+                onClick={() => { setAuthMode("signup"); setError(null); setNotice(null); }}
+              >
+                Criar Nova Conta
+              </button>
+            </div>
+
+            {authMode === "signup" && (
+              <label>
+                Nome de Usuário
+                <input
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  placeholder="Ex: MestreArthur"
+                  required
+                />
+              </label>
+            )}
+
+            <label>
+              {authMode === "signup" ? "E-mail" : "Usuário ou E-mail"}
+              <input
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder={authMode === "signup" ? "seu@email.com" : "seu_usuario ou seu@email.com"}
+                required
+              />
+            </label>
+
+            <label>
+              Senha
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="••••••••"
+                minLength={6}
+                required
+              />
+            </label>
+
+            <button className="auth-submit-btn" type="submit" disabled={working === "auth"}>
+              {working === "auth" ? "Processando…" : authMode === "signup" ? "Criar Minha Conta" : "Entrar na Minha Conta"}
+            </button>
+
+            {error && <div className="account-feedback error" role="alert">{error}</div>}
+            {notice && <div className="account-feedback success" role="status">{notice}</div>}
+          </form>
+
+          <div className="auth-guest-card">
+            <span className="guest-icon">⚔️</span>
+            <h3>Deseja apenas testar?</h3>
+            <p>Você pode acessar o construtor diretamente sem login no modo rápido.</p>
+            <button
+              type="button"
+              className="guest-btn"
+              onClick={() => {
+                (window as any).app?.createNewCharacter();
+                window.location.hash = "#/builder";
+              }}
+            >
+              Criar Ficha Rápida (Convidado)
+            </button>
+          </div>
+        </div>
+      </main>
+    );
+  }
+
+  return (
+    <main className="portal-page library-dashboard-page" id="portal-content" tabIndex={-1}>
+      <header className="library-dash-header">
+        <div>
+          <span className="account-kicker">CONECTADO COMO</span>
+          <h1>Biblioteca de {session.user.username}</h1>
+          <p>Gerencie seus personagens criados. Apenas você tem acesso às suas fichas nesta conta.</p>
+        </div>
+        <div className="library-header-actions">
+          <button className="create-char-hero-btn" type="button" onClick={handleCreateNew}>
+            ➕ Criar Novo Personagem
+          </button>
+          <button className="signout-alt-btn" type="button" onClick={handleSignOut}>
+            🚪 Sair da Conta
+          </button>
+        </div>
+      </header>
+
+      {error && <div className="account-feedback error" role="alert">{error}</div>}
+      {notice && <div className="account-feedback success" role="status">{notice}</div>}
+
+      <section className="library-characters-section">
+        <div className="section-heading">
+          <h2>Meus Personagens</h2>
+          <span className="char-count-badge">{characters.length}</span>
+        </div>
+
+        {loading ? (
+          <div className="portal-empty">Carregando seus personagens…</div>
+        ) : characters.length === 0 ? (
+          <div className="portal-empty-card">
+            <span className="empty-icon">📜</span>
+            <h3>Você ainda não possui nenhum personagem nesta conta</h3>
+            <p>Clique no botão abaixo para criar sua primeira ficha no construtor completo com regras Remaster e IA.</p>
+            <button type="button" className="create-char-hero-btn" onClick={handleCreateNew}>
+              ➕ Começar Primeiro Personagem
+            </button>
+          </div>
+        ) : (
+          <div className="characters-library-grid">
+            {characters.map((char) => {
+              const charData = (char.data || {}) as any;
+              return (
+                <article className="char-library-card" key={char.id}>
+                  <div className="char-card-header">
+                    <div>
+                      <h3>{char.name}</h3>
+                      <span className="char-class-ancestry">
+                        {charData.ancestry || "Humano"} · {charData.class || "Guerreiro"}
+                      </span>
+                    </div>
+                    <span className="char-level-badge">Nível {char.level}</span>
+                  </div>
+
+                  <div className="char-card-stats">
+                    <span><strong>CA:</strong> {charData.ac || 10 + Number(char.level)}</span>
+                    <span><strong>PV:</strong> {charData.maxHp || 20}</span>
+                    <span><strong>Atualizado:</strong> {new Date(char.updated_at).toLocaleDateString()}</span>
+                  </div>
+
+                  <div className="char-card-actions">
+                    <button
+                      className="btn-card-open"
+                      type="button"
+                      onClick={() => handleLoadCharacter(char)}
+                    >
+                      ⚔️ Abrir no Construtor
+                    </button>
+                    <button
+                      className="btn-card-delete"
+                      type="button"
+                      onClick={() => handleDeleteCharacter(char)}
+                      disabled={working === char.id}
+                      title="Excluir ficha"
+                    >
+                      🗑️
+                    </button>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        )}
+      </section>
+    </main>
+  );
 }
 
 function PrivacyPage() {
@@ -130,11 +411,11 @@ function AdminPage() {
   const account = useAccountViewState();
   const metrics = useMemo(() => {
     const records = catalogCategories.flatMap(({ type }) => {
-      try { return window.app.getPickerItems(type); } catch { return []; }
+      try { return (window as any).app?.getPickerItems(type) || []; } catch { return []; }
     });
     return {
-      verified: records.filter((record) => record.data.needs_review === false && record.data.source?.book && record.data.source?.page).length,
-      review: records.filter((record) => record.data.needs_review !== false).length,
+      verified: records.filter((record: any) => record.data.needs_review === false && record.data.source?.book && record.data.source?.page).length,
+      review: records.filter((record: any) => record.data.needs_review !== false).length,
       sources: pathfinderSources.filter((source) => source.catalogStatus === "partial").length,
     };
   }, []);
@@ -182,9 +463,9 @@ export function PortalPages() {
     <nav className="portal-nav" aria-label={t("navLabel")}>
       {navItems.filter((item) => item.route !== "admin" || account.isAdmin).map((item) => <a key={item.route} href={`#/${item.route}`} aria-current={route === item.route ? "page" : undefined}><span aria-hidden="true">{item.icon}</span>{t(item.label)}</a>)}
     </nav>
+    {route === "library" && <LibraryPage />}
     {route === "compendium" && <CatalogPage />}
     {route === "rules" && <RulesPage />}
-    {route === "library" && <LibraryPage />}
     {route === "privacy" && <PrivacyPage />}
     {route === "admin" && <AdminPage />}
   </>;

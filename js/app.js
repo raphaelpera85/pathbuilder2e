@@ -48,17 +48,19 @@ class PathbuilderApp {
   }
 
   async loadInitialCharacter() {
-    const savedLocal = localStorage.getItem("pf2e_current_character");
-    if (savedLocal) {
-      try {
-        this.character = assertSafeCharacterDocument(JSON.parse(savedLocal));
-        this.renderAll();
-        return;
-      } catch (e) {
-        console.warn("Erro ao carregar do localStorage:", e);
+    if (typeof localStorage !== "undefined") {
+      const savedLocal = localStorage.getItem("pf2e_current_character");
+      if (savedLocal) {
+        try {
+          this.character = assertSafeCharacterDocument(JSON.parse(savedLocal));
+          this.renderAll();
+          return;
+        } catch (e) {
+          console.warn("Erro ao carregar do localStorage:", e);
+        }
       }
     }
-    await this.switchCharacter("Lorenzo_LaRosa");
+    this.createNewCharacter();
   }
 
   async switchCharacter(charId) {
@@ -1371,43 +1373,52 @@ class PathbuilderApp {
   }
 
   loadCharacter(character) {
+    if (!character) return;
     this.character = assertSafeCharacterDocument(character);
     this.reconcileSpellcastingProfile();
-    localStorage.setItem("pf2e_current_character", JSON.stringify(this.character));
+    this.saveCharacterLocal(false);
     this.renderAll();
   }
 
-  saveCharacterLocal() {
-    localStorage.setItem("pf2e_current_character", JSON.stringify(this.character));
-    alert(`Personagem '${this.character.name}' salvo neste dispositivo.`);
+  saveCharacterLocal(showAlert = false) {
+    try {
+      if (typeof localStorage !== "undefined" && this.character) {
+        localStorage.setItem("pf2e_current_character", JSON.stringify(this.character));
+      }
+    } catch (e) {
+      console.warn("Erro ao salvar no localStorage:", e);
+    }
+    if (showAlert && typeof alert !== "undefined") {
+      alert(`Personagem '${this.character?.name || "atual"}' salvo neste dispositivo.`);
+    }
   }
 
   createNewCharacter() {
-    if (confirm("Criar um novo personagem em branco?")) {
-      this.character = {
-        id: "Novo_Personagem_" + Date.now(),
-        name: "Novo Herói",
-        level: 1,
-        ancestry: "Humano",
-        heritage: "Humano Versátil",
-        class: "Guerreiro (Fighter)",
-        background: "Guarda da Cidade",
-        subclass: "Escudo e Lâmina",
-        abilities: { str: 16, dex: 12, con: 14, int: 10, wis: 12, cha: 10 },
-        savingThrows: { fortitude: "Especialista", reflex: "Especialista", will: "Treinado" },
-        perceptionRank: "Especialista",
-        equippedArmor: { name: "Peitoral de Aço", category: "Média", acBonus: 4, dexCap: 1, bulk: 2 },
-        weapons: [{ name: "Espada Longa", category: "Marcial", damage: "1d8", damageType: "Cortante", traits: ["Versátil P"] }],
-        skills: { athletics: "Treinado", intimidation: "Treinado" },
-        loreSkills: [{ name: "Saber Militar", rank: "Treinado" }],
-        feats: [],
-        spells: [],
-        rituals: [],
-        inventory: [{ name: "Mochila de Aventureiro", qty: 1, bulk: 1 }],
-        coins: { pl: 0, gp: 15, sp: 0, cp: 0 }
-      };
-      this.renderAll();
-    }
+    this.character = {
+      id: "char_" + Date.now(),
+      name: "Novo Herói",
+      level: 1,
+      ancestry: "Humano",
+      heritage: "Humano Versátil",
+      class: "Guerreiro (Fighter)",
+      background: "Guarda da Cidade",
+      subclass: "Escudo e Lâmina",
+      abilities: { str: 16, dex: 12, con: 14, int: 10, wis: 12, cha: 10 },
+      savingThrows: { fortitude: "Especialista", reflex: "Especialista", will: "Treinado" },
+      perceptionRank: "Especialista",
+      equippedArmor: { name: "Peitoral de Aço", category: "Média", acBonus: 4, dexCap: 1, bulk: 2 },
+      weapons: [{ name: "Espada Longa", category: "Marcial", damage: "1d8", damageType: "Cortante", damageBonus: 3, traits: ["Versátil P"] }],
+      skills: { athletics: "Treinado", intimidation: "Treinado" },
+      loreSkills: [{ name: "Saber Militar", rank: "Treinado" }],
+      feats: [],
+      spells: [],
+      rituals: [],
+      inventory: [{ name: "Mochila de Aventureiro", qty: 1, bulk: 1 }],
+      coins: { pl: 0, gp: 15, sp: 0, cp: 0 }
+    };
+    this.saveCharacterLocal(false);
+    this.renderAll();
+    return this.character;
   }
 
   openExportModal() {
