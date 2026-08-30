@@ -4,8 +4,8 @@ import { useI18n, getItemDisplayName, type MessageKey } from "./i18n";
 import { coinsToCopper, parsePriceToCopper, canAffordPrice, formatCopperToString } from "./utils/economy";
 
 const pickerLabelKeys: Record<PickerType, MessageKey> = {
-  ancestry: "ancestries", class: "classes", background: "backgrounds", weapon: "weapons", armor: "armors",
-  heritage: "heritages", archetype: "archetypes", spell: "spells", ritual: "rituals", feat: "feats", item: "items", pet: "pets", action: "actions", condition: "conditions", buff: "buffs",
+  ancestry: "ancestries", class: "classes", background: "backgrounds", weapon: "weapons", armor: "armors", shield: "armors",
+  heritage: "heritages", archetype: "archetypes", spell: "spells", ritual: "rituals", feat: "feats", item: "items", gear: "items", pet: "pets", action: "actions", condition: "conditions", buff: "buffs",
 };
 
 interface PickerModalProps {
@@ -108,7 +108,13 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
       return ["All", "Simple", "Martial", "Advanced", "Unarmed", "Proficient"];
     }
     if (pickerType === "armor") {
-      return ["All", "Unarmored", "Light", "Medium", "Heavy", "Shields"];
+      return ["All", "Light", "Medium", "Heavy"];
+    }
+    if (pickerType === "shield") {
+      return ["Standard", "Material", "Magic", "Custom"];
+    }
+    if (pickerType === "item" || pickerType === "gear") {
+      return ["Gear", "Consumables", "Magic Items", "All", "Custom"];
     }
     if (pickerType === "feat") {
       const fType = pickerOptions?.filterType?.toLowerCase() || "";
@@ -124,18 +130,26 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
   }, [pickerType, pickerOptions, t]);
 
   const subTabs = useMemo(() => {
-    if (pickerType === "weapon" || pickerType === "armor" || pickerType === "item") {
+    if (pickerType === "weapon" || pickerType === "armor") {
       return ["Standard", "Magic", "Custom"];
     }
+    if (pickerType === "shield") {
+      return [];
+    }
+    if (pickerType === "item" || pickerType === "gear") {
+      if (activeCategoryTab === "Gear" || activeCategoryTab === "All") {
+        return ["Adventuring", "Ammunition", "Misc", "Weapon Attachments"];
+      }
+      return [];
+    }
     return [];
-  }, [pickerType]);
+  }, [pickerType, activeCategoryTab]);
 
   useEffect(() => {
-    if (categoryTabs.length > 0) {
+    if (categoryTabs.length > 0 && !categoryTabs.includes(activeCategoryTab)) {
       setActiveCategoryTab(categoryTabs[0]);
     }
-    setActiveSubTab("Standard");
-  }, [categoryTabs, pickerType]);
+  }, [categoryTabs, activeCategoryTab]);
 
   const searchRef = useRef<HTMLInputElement>(null);
   const dialogRef = useRef<HTMLElement>(null);
@@ -208,7 +222,7 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
 
   const character = window.app?.character;
   const characterCoins = character?.coins || { pp: 0, gp: 15, sp: 0, cp: 0 };
-  const isPurchasable = pickerType === "weapon" || pickerType === "armor" || pickerType === "item";
+  const isPurchasable = pickerType === "weapon" || pickerType === "armor" || pickerType === "shield" || pickerType === "item" || pickerType === "gear";
 
   const items = useMemo(() => {
     if (!pickerType || !window.app) return [];
@@ -254,6 +268,54 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
         rawItems = rawItems.filter((i) => (i.data?.level || 0) > 0 || (i.data?.traits || []).some((t: string) => /mágic|magic|runa|rune/i.test(t)));
       } else if (activeSubTab === "Standard") {
         rawItems = rawItems.filter((i) => (i.data?.level || 0) <= 1);
+      }
+    }
+
+    // Category Tabs Filtering for Armor
+    if (pickerType === "armor") {
+      if (activeCategoryTab === "Light") {
+        rawItems = rawItems.filter((i) => /leve|light/i.test(String(i.data?.category || "")));
+      } else if (activeCategoryTab === "Medium") {
+        rawItems = rawItems.filter((i) => /m[eé]dia|medium/i.test(String(i.data?.category || "")));
+      } else if (activeCategoryTab === "Heavy") {
+        rawItems = rawItems.filter((i) => /pesada|heavy/i.test(String(i.data?.category || "")));
+      }
+
+      if (activeSubTab === "Magic") {
+        rawItems = rawItems.filter((i) => (i.data?.level || 0) > 0 || (i.data?.traits || []).some((t: string) => /mágic|magic|runa|rune/i.test(t)));
+      } else if (activeSubTab === "Standard") {
+        rawItems = rawItems.filter((i) => (i.data?.level || 0) <= 1);
+      }
+    }
+
+    // Shield Tabs Filtering
+    if (pickerType === "shield") {
+      if (activeCategoryTab === "Magic") {
+        rawItems = rawItems.filter((i) => (i.data?.level || 0) > 0 || (i.data?.traits || []).some((t: string) => /mágic|magic/i.test(t)));
+      } else if (activeCategoryTab === "Material") {
+        rawItems = rawItems.filter((i) => /madeira|aço|steel|wood|hide|couro/i.test(String(i.name || "")));
+      } else if (activeCategoryTab === "Standard") {
+        rawItems = rawItems.filter((i) => (i.data?.level || 0) <= 0);
+      }
+    }
+
+    // Gear / Items Tabs Filtering
+    if (pickerType === "item" || pickerType === "gear") {
+      if (activeCategoryTab === "Gear") {
+        rawItems = rawItems.filter((i) => !/consumable|poç|elixir|bomba/i.test(String(i.data?.category || "")));
+        if (activeSubTab === "Adventuring") {
+          rawItems = rawItems.filter((i) => String(i.data?.subcategory || "").toLowerCase().includes("adventuring") || (i.data?.level || 0) === 0);
+        } else if (activeSubTab === "Ammunition") {
+          rawItems = rawItems.filter((i) => /ammunition|muniç/i.test(String(i.data?.subcategory || "") + String(i.name || "")));
+        } else if (activeSubTab === "Weapon Attachments") {
+          rawItems = rawItems.filter((i) => /attachment|skirt|acopl/i.test(String(i.data?.subcategory || "") + String(i.name || "")));
+        } else if (activeSubTab === "Misc") {
+          rawItems = rawItems.filter((i) => /misc|kit|ferramenta|tool|lock/i.test(String(i.data?.subcategory || "") + String(i.name || "")));
+        }
+      } else if (activeCategoryTab === "Consumables") {
+        rawItems = rawItems.filter((i) => /consumable|poç|elixir|bomba/i.test(String(i.data?.category || "")));
+      } else if (activeCategoryTab === "Magic Items") {
+        rawItems = rawItems.filter((i) => (i.data?.level || 0) > 0 || (i.data?.traits || []).some((t: string) => /mágic|magic/i.test(t)));
       }
     }
 
@@ -600,6 +662,84 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
                         <div className="pws-stat">
                           <span className="pws-label">Mãos</span>
                           <strong className="pws-value">{String(selectedItem.data?.hands || "1")}</strong>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* ARMOR QUICK STATS BAR */}
+                    {pickerType === "armor" && (
+                      <div className="picker-weapon-stats-bar" style={{ gridTemplateColumns: "repeat(4, 1fr)" }}>
+                        <div className="pws-stat">
+                          <span className="pws-label">Bônus CA</span>
+                          <strong className="pws-value" style={{ color: "#38bdf8" }}>
+                            +{String(selectedItem.data?.acBonus || 0)}
+                          </strong>
+                        </div>
+                        <div className="pws-stat">
+                          <span className="pws-label">Limite Des</span>
+                          <strong className="pws-value">
+                            +{String(selectedItem.data?.dexCap !== undefined ? selectedItem.data.dexCap : 5)}
+                          </strong>
+                        </div>
+                        <div className="pws-stat">
+                          <span className="pws-label">Preço</span>
+                          <strong className="pws-value" style={{ color: "var(--pb-gold, #f59e0b)" }}>
+                            {String(selectedItem.data?.price || "—")}
+                          </strong>
+                        </div>
+                        <div className="pws-stat">
+                          <span className="pws-label">Carga</span>
+                          <strong className="pws-value">{String(selectedItem.data?.bulk || "0")}</strong>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* SHIELD QUICK STATS BAR */}
+                    {pickerType === "shield" && (
+                      <div className="picker-weapon-stats-bar" style={{ gridTemplateColumns: "repeat(4, 1fr)" }}>
+                        <div className="pws-stat">
+                          <span className="pws-label">Bônus CA</span>
+                          <strong className="pws-value" style={{ color: "#38bdf8" }}>
+                            +{String(selectedItem.data?.acBonus || 2)}
+                          </strong>
+                        </div>
+                        <div className="pws-stat">
+                          <span className="pws-label">Dureza</span>
+                          <strong className="pws-value" style={{ color: "var(--pb-orange)" }}>
+                            {String(selectedItem.data?.hardness || 3)}
+                          </strong>
+                        </div>
+                        <div className="pws-stat">
+                          <span className="pws-label">PV (BT)</span>
+                          <strong className="pws-value">
+                            {String(selectedItem.data?.maxHp || 12)} ({String(selectedItem.data?.bt || 6)})
+                          </strong>
+                        </div>
+                        <div className="pws-stat">
+                          <span className="pws-label">Preço</span>
+                          <strong className="pws-value" style={{ color: "var(--pb-gold, #f59e0b)" }}>
+                            {String(selectedItem.data?.price || "—")}
+                          </strong>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* GEAR / ITEM QUICK STATS BAR */}
+                    {(pickerType === "item" || pickerType === "gear") && (
+                      <div className="picker-weapon-stats-bar" style={{ gridTemplateColumns: "repeat(3, 1fr)" }}>
+                        <div className="pws-stat">
+                          <span className="pws-label">Preço</span>
+                          <strong className="pws-value" style={{ color: "var(--pb-gold, #f59e0b)" }}>
+                            {String(selectedItem.data?.price || "—")}
+                          </strong>
+                        </div>
+                        <div className="pws-stat">
+                          <span className="pws-label">Carga (Bulk)</span>
+                          <strong className="pws-value">{String(selectedItem.data?.bulk !== undefined ? selectedItem.data.bulk : "—")}</strong>
+                        </div>
+                        <div className="pws-stat">
+                          <span className="pws-label">Nível</span>
+                          <strong className="pws-value">{String(selectedItem.data?.level ?? 0)}</strong>
                         </div>
                       </div>
                     )}

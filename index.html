@@ -463,30 +463,25 @@
   <!-- GAVETA LATERAL DO ROLADOR DE DADOS ANIMADO (PATHBUILDER 2E STYLE) -->
   <div class="dice-roller-drawer" id="diceRollerDrawer" aria-hidden="true">
     <div class="dice-roller-header">
-      <div class="dice-roller-title-group">
-        <button class="dice-roller-reset-btn" onclick="app.resetDicePool()" type="button" title="Limpar dados selecionados">Reset</button>
-        <span class="dice-roller-heading">🎲 Free Roll</span>
+      <div style="display: flex; gap: 8px; width: 100%;">
+        <button class="dice-roller-reset-btn" onclick="app.resetDicePool()" type="button" style="flex: 1; padding: 6px 12px; font-weight: 800; font-size: 13px;" title="Resetar rolagens">Reset</button>
         <button class="dice-roller-close-btn" onclick="app.closeDiceRoller()" type="button" title="Fechar Rolador" aria-label="Fechar">✕</button>
       </div>
 
       <!-- BOTÕES DE DADOS RÁPIDOS (1d4, 1d6, 1d8, 1d10, 1d12, 1d20, 1d100) -->
       <div class="dice-quick-bar">
-        <button class="dice-btn" id="btnDie4" onclick="app.addDiceToPool(4)" type="button" title="Adicionar d4">1d4</button>
-        <button class="dice-btn" id="btnDie6" onclick="app.addDiceToPool(6)" type="button" title="Adicionar d6">1d6</button>
-        <button class="dice-btn" id="btnDie8" onclick="app.addDiceToPool(8)" type="button" title="Adicionar d8">1d8</button>
-        <button class="dice-btn" id="btnDie10" onclick="app.addDiceToPool(10)" type="button" title="Adicionar d10">1d10</button>
-        <button class="dice-btn" id="btnDie12" onclick="app.addDiceToPool(12)" type="button" title="Adicionar d12">1d12</button>
-        <button class="dice-btn" id="btnDie20" onclick="app.addDiceToPool(20)" type="button" title="Adicionar d20">1d20</button>
-        <button class="dice-btn" id="btnDie100" onclick="app.addDiceToPool(100)" type="button" title="Adicionar d100">1d100</button>
+        <button class="dice-btn" id="btnDie4" onclick="app.addDiceToPool(4)" type="button" title="Rolar d4">1d4</button>
+        <button class="dice-btn" id="btnDie6" onclick="app.addDiceToPool(6)" type="button" title="Rolar d6">1d6</button>
+        <button class="dice-btn" id="btnDie8" onclick="app.addDiceToPool(8)" type="button" title="Rolar d8">1d8</button>
+        <button class="dice-btn" id="btnDie10" onclick="app.addDiceToPool(10)" type="button" title="Rolar d10">1d10</button>
+        <button class="dice-btn" id="btnDie12" onclick="app.addDiceToPool(12)" type="button" title="Rolar d12">1d12</button>
+        <button class="dice-btn" id="btnDie20" onclick="app.addDiceToPool(20)" type="button" title="Rolar d20">1d20</button>
+        <button class="dice-btn" id="btnDie100" onclick="app.addDiceToPool(100)" type="button" title="Rolar d100 (2d10)">1d100</button>
       </div>
 
-      <!-- DISPLAY DE POOL / FÓRMULA SELECIONADA -->
-      <div class="dice-pool-control">
-        <div class="dice-pool-display" id="dicePoolFormula">Selecione os dados nos botões acima</div>
-        <div class="dice-mod-controls">
-          <label>Bônus / Mod: <input type="number" id="dicePoolMod" value="0" oninput="app.renderDicePoolFormula()" /></label>
-          <button class="btn-roll-pool" id="btnRollPool" onclick="app.rollDicePool()" type="button" disabled>🎲 Rolar</button>
-        </div>
+      <div style="text-align: center; margin-top: 4px;">
+        <div style="color: var(--pb-orange); font-size: 16px; font-weight: 900; letter-spacing: 0.04em;" id="diceResultLabel">Free Roll</div>
+        <div style="color: #94a3b8; font-size: 11.5px; margin-top: 2px;" id="diceResultBreakdown">Select dice using the buttons at the top</div>
       </div>
     </div>
 
@@ -498,13 +493,13 @@
       </div>
       <div class="dice-arena-stage" id="diceArenaStage" style="display: none;">
         <div class="dice-animation-container" id="diceAnimContainer"></div>
-        <div class="dice-arena-result-card" id="diceResultCard">
-          <div class="dice-result-label" id="diceResultLabel">Perícia</div>
-          <div class="dice-result-total" id="diceResultTotal">--</div>
-          <div class="dice-result-breakdown" id="diceResultBreakdown">--</div>
-          <div class="dice-result-tag" id="diceResultTag" style="display: none;"></div>
-        </div>
       </div>
+    </div>
+
+    <div style="text-align: center; padding: 10px 16px; background: rgba(0,0,0,0.2);">
+      <div style="font-size: 12px; font-weight: 900; color: #94a3b8; letter-spacing: 0.08em; text-transform: uppercase;">TOTAL</div>
+      <div id="diceResultTotal" style="font-size: 38px; font-weight: 900; color: #ffffff; text-shadow: 0 0 20px rgba(249,115,22,0.6); line-height: 1.1;">0</div>
+      <div class="dice-result-tag" id="diceResultTag" style="display: none;"></div>
     </div>
 
     <!-- HISTÓRICO DE ROLAGENS -->
@@ -535,11 +530,32 @@
 
   <!-- MODAL TREINAMENTO DE PERÍCIAS (SKILL TRAINING) -->
   <div class="pb-drawer-overlay" id="modalSkillTrainingOverlay">
-    <div class="pb-modal-container pb-modal-skills" style="max-width: 620px; min-height: 560px; background: #0c121c; border: 1px solid #1e293b; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.9);">
+    <div class="pb-modal-container pb-modal-skills" style="max-width: 660px; min-height: 560px; background: #0c121c; border: 1px solid #1e293b; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.9);">
       <div class="pb-modal-nav" style="background: #070a10; border-bottom: 1px solid #1e293b; padding: 12px 18px;">
         <h3 id="modalRemainingSkillsTitle" style="margin: 0; color: #ffffff; font-size: 18px; font-weight: 900;">Remaining Skill Selections: 0</h3>
         <button onclick="document.getElementById('modalSkillTrainingOverlay').classList.remove('active')" style="background:none; border:none; color:#94a3b8; cursor:pointer; font-size: 18px;">✕</button>
       </div>
+
+      <!-- LEGENDA TEML (TREINADO, ESPECIALISTA, MESTRE, LENDÁRIO) -->
+      <div style="background: #090e18; border-bottom: 1px solid #1e293b; padding: 8px 18px; display: flex; flex-direction: column; gap: 6px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; font-size: 11px;">
+          <span style="color: #94a3b8; font-weight: 800; text-transform: uppercase; font-size: 10px;">Legenda de Proficiência:</span>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <span style="display: inline-flex; align-items: center; gap: 4px; color: #cbd5e1;"><strong style="background:#f97316; color:#fff; border-radius:50%; width:16px; height:16px; display:inline-flex; align-items:center; justify-content:center; font-size:9px;">T</strong> Treinado (+2 + Nível)</span>
+            <span style="display: inline-flex; align-items: center; gap: 4px; color: #cbd5e1;"><strong style="background:#3b82f6; color:#fff; border-radius:50%; width:16px; height:16px; display:inline-flex; align-items:center; justify-content:center; font-size:9px;">E</strong> Especialista (+4 + Nível)</span>
+            <span style="display: inline-flex; align-items: center; gap: 4px; color: #cbd5e1;"><strong style="background:#a855f7; color:#fff; border-radius:50%; width:16px; height:16px; display:inline-flex; align-items:center; justify-content:center; font-size:9px;">M</strong> Mestre (+6 + Nível)</span>
+            <span style="display: inline-flex; align-items: center; gap: 4px; color: #cbd5e1;"><strong style="background:#eab308; color:#000; border-radius:50%; width:16px; height:16px; display:inline-flex; align-items:center; justify-content:center; font-size:9px;">L</strong> Lendário (+8 + Nível)</span>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; font-size: 10px; font-weight: 800; color: #64748b; text-transform: uppercase; padding-top: 4px; border-top: 1px dashed #1e293b;">
+          <span>Perícia & Modificador</span>
+          <div style="display: flex; gap: 24px; padding-right: 8px;">
+            <span>Grau TEML</span>
+            <span style="width: 110px; text-align: center;">Atrib / Prof / Item</span>
+          </div>
+        </div>
+      </div>
+
       <div id="modalSkillTrainingList" style="padding: 14px 18px; flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 4px;">
         <!-- Renderizado dinamicamente pelo openSkillTrainingModal() -->
       </div>

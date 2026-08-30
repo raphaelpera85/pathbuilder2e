@@ -302,77 +302,198 @@ class PathbuilderApp {
     }).join('');
   }
 
-  // ABA DE DEFESA
+  // ABA DE DEFESA (SCREENSHOT 1)
   renderDefenseTab() {
     const d = document.getElementById("defenseDetails");
-    const arm = this.character.equippedArmor || { name: "Sem Armadura", acBonus: 0, dexCap: 5 };
+    if (!d) return;
+    const arm = this.character.equippedArmor || { name: "Unarmored", acBonus: 0, dexCap: 5 };
+    const shield = this.character.equippedShield || null;
+    const dexMod = this.calc?.attributes?.dex?.mod || 0;
+    const effectiveDex = arm.dexCap !== undefined ? Math.min(dexMod, arm.dexCap) : dexMod;
+    const profBonus = (this.character.level || 1) + 2;
+
     d.innerHTML = `
-      <div class="strike-card" style="border-left-color: #3b82f6;">
-        <div style="font-weight:bold; color:var(--pb-orange); font-size:14px;">🛡️ Armadura Equipada: ${escapeHtml(arm.name)}</div>
-        <div style="font-size:12px; margin-top:6px; line-height:1.6;">
-          • Bônus de CA do Item: <strong>+${arm.acBonus || 0}</strong><br>
-          • Limite Máximo de Destreza: <strong>+${arm.dexCap !== undefined ? arm.dexCap : 5}</strong><br>
-          • Penalidade de Teste: <strong>${arm.checkPenalty || 0}</strong><br>
-          • Penalidade de Velocidade: <strong>${arm.speedPenalty || 0} pés</strong><br>
-          • Força Exigida: <strong>${arm.strReq || 10}</strong>
+      <div class="pb-defense-header-bar">
+        <div class="pb-defense-profs-row">
+          <div class="pb-defense-prof-item"><span class="picker-prof-badge t">T</span> Light Armor</div>
+          <div class="pb-defense-prof-item"><span class="picker-prof-badge u">U</span> Medium Armor</div>
+          <div class="pb-defense-prof-item"><span class="picker-prof-badge u">U</span> Heavy Armor</div>
+          <div class="pb-defense-prof-item"><span class="picker-prof-badge t">T</span> Unarmored</div>
+        </div>
+        <div class="pb-defense-ac-breakdown">
+          <span>Base <strong>10</strong></span>
+          <span>Item <strong>+${arm.acBonus || 0}</strong></span>
+          <span>Dex <strong>+${effectiveDex}</strong></span>
+          <span>Proficiency <strong>+${profBonus}</strong></span>
+        </div>
+        <div class="pb-defense-actions-row">
+          <button class="pb-defense-btn" onclick="app.openPicker('armor')">Stow Additional Armor</button>
+          <button class="pb-defense-btn" onclick="app.openPicker('shield')">Stow Additional Shield</button>
+          <button class="pb-defense-btn" onclick="app.printOfficialPdf()">Print</button>
+        </div>
+      </div>
+
+      <!-- EQUIPPED ARMOR CARD -->
+      <div class="pb-defense-slot-card">
+        <div class="pb-defense-slot-actions">
+          <button class="pb-slot-btn" onclick="app.openPicker('armor')">Change</button>
+          <button class="pb-slot-btn" onclick="alert('Opções de Armadura: ' + (app.character.equippedArmor?.name || 'Unarmored'))">Options</button>
+          <button class="pb-slot-btn" onclick="alert('Runas de Armadura: Nenhuma runa gravada.')">Runes</button>
+          <button class="pb-slot-btn" onclick="app.stowArmor()">Stow</button>
+        </div>
+        <div class="pb-defense-slot-content">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span class="picker-prof-badge t">T</span>
+            <span style="font-size:15px; color:#ffffff; font-weight:800;">${escapeHtml(arm.name || 'Unarmored')}</span>
+          </div>
+          <div style="color: #94a3b8; font-size:13px;">
+            👕 Item Bonus +${arm.acBonus || 0}
+          </div>
+          <div style="color: #94a3b8; font-size:13px;">
+            ⬆️ Dex Cap ${arm.dexCap !== undefined ? arm.dexCap : 5}
+          </div>
+        </div>
+      </div>
+
+      <!-- EQUIPPED SHIELD CARD -->
+      <div class="pb-defense-slot-card">
+        <div class="pb-defense-slot-actions">
+          <button class="pb-slot-btn" onclick="app.openPicker('shield')">Change</button>
+          ${shield ? `<button class="pb-slot-btn" onclick="app.stowShield()">Stow</button>` : ''}
+        </div>
+        <div class="pb-defense-slot-content">
+          ${shield ? `
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span class="picker-prof-badge t">T</span>
+              <span style="font-size:15px; color:#ffffff; font-weight:800;">${escapeHtml(shield.name)}</span>
+            </div>
+            <div style="color: #94a3b8; font-size:13px;">
+              🛡️ Hardness ${shield.hardness || 3}
+            </div>
+            <div style="color: #94a3b8; font-size:13px;">
+              💚 Max HP ${shield.maxHp || 12} (BT ${shield.bt || 6})
+            </div>
+            <div style="color: #38bdf8; font-size:13px; font-weight:800;">
+              +${shield.acBonus || 2} AC (Raise Shield)
+            </div>
+          ` : `
+            <div style="color: #94a3b8; font-size:14px; font-weight:700;">No Shield</div>
+          `}
         </div>
       </div>
     `;
   }
 
-  // ABA DE EQUIPAMENTOS
+  stowArmor() {
+    this.character.equippedArmor = { name: "Unarmored", acBonus: 0, dexCap: 5 };
+    this.renderAll();
+  }
+
+  stowShield() {
+    this.character.equippedShield = null;
+    this.renderAll();
+  }
+
+  // ABA DE EQUIPAMENTOS (SCREENSHOT 4)
   renderGearTab() {
     const list = document.getElementById("gearList");
     if (!list) return;
     const inv = this.character.inventory || [];
-    const coins = this.character.coins || { pp: 0, gp: 15, sp: 0, cp: 0 };
+    const coins = this.character.coins || { pp: 0, gp: 1, sp: 5, cp: 0 };
     
-    // Bulk calculated by engine (includes items + coins + encumbered detection)
-    const totalBulk = this.calc.bulk.total;
-    const encumberedLimit = this.calc.bulk.encumbered;
-    const maxBulk = this.calc.bulk.max;
-    const isEncumbered = this.calc.bulk.isEncumbered;
+    const totalBulk = this.calc?.bulk?.total ?? 2;
+    const encumberedLimit = this.calc?.bulk?.encumbered ?? 5;
+    const maxBulk = this.calc?.bulk?.max ?? 10;
+    const isEncumbered = this.calc?.bulk?.isEncumbered ?? false;
 
-    const bulkEl = document.getElementById("gearBulkDisplay");
-    if (bulkEl) {
-      bulkEl.innerHTML = `${totalBulk} / ${maxBulk} Carga ${isEncumbered ? '<span style="color:#ef4444; font-weight:bold;">(SOBRECARREGADO: -3m vel., Debilitado 1)</span>' : `<span style="color:var(--pb-text-muted);">(Limite s/ penalidade: ${encumberedLimit})</span>`}`;
-    }
-
-    const coinsHtml = `
-      <div style="background:var(--pb-bg-panel); border:1px solid var(--pb-border); border-radius:6px; padding:10px 14px; margin-bottom:14px;">
-        <div style="font-size:12px; font-weight:bold; color:var(--pb-orange); margin-bottom:8px; display:flex; justify-content:space-between;">
-          <span>💰 Moedas & Fortuna</span>
-          <span style="font-size:11px; color:var(--pb-text-muted);">Carga Moedas: +${this.calc.bulk.coinsBulk} Bulk</span>
-        </div>
-        <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:8px; text-align:center;">
-          <div>
-            <label style="font-size:10px; color:#a855f7; display:block; font-weight:bold; margin-bottom:2px;">Platina (PP)</label>
-            <input type="number" min="0" value="${coins.pp || 0}" onchange="app.updateCoins('pp', this.value)" style="width:100%; text-align:center; background:#0f172a; border:1px solid var(--pb-border); color:#fff; padding:4px; border-radius:4px;" />
-          </div>
-          <div>
-            <label style="font-size:10px; color:#eab308; display:block; font-weight:bold; margin-bottom:2px;">Ouro (GP)</label>
-            <input type="number" min="0" value="${coins.gp || 0}" onchange="app.updateCoins('gp', this.value)" style="width:100%; text-align:center; background:#0f172a; border:1px solid var(--pb-border); color:#fff; padding:4px; border-radius:4px;" />
-          </div>
-          <div>
-            <label style="font-size:10px; color:#cbd5e1; display:block; font-weight:bold; margin-bottom:2px;">Prata (SP)</label>
-            <input type="number" min="0" value="${coins.sp || 0}" onchange="app.updateCoins('sp', this.value)" style="width:100%; text-align:center; background:#0f172a; border:1px solid var(--pb-border); color:#fff; padding:4px; border-radius:4px;" />
-          </div>
-          <div>
-            <label style="font-size:10px; color:#b45309; display:block; font-weight:bold; margin-bottom:2px;">Cobre (CP)</label>
-            <input type="number" min="0" value="${coins.cp || 0}" onchange="app.updateCoins('cp', this.value)" style="width:100%; text-align:center; background:#0f172a; border:1px solid var(--pb-border); color:#fff; padding:4px; border-radius:4px;" />
-          </div>
-        </div>
-      </div>
-    `;
-
-    const itemsHtml = inv.length === 0 ? `<div style="color:var(--pb-text-muted); text-align:center; padding:20px;">Nenhum item na mochila. Clique em '➕ Adicionar Item'.</div>` : inv.map((item, idx) => `
-      <div class="save-item" style="background: var(--pb-bg-panel); margin-bottom:6px; padding:8px 12px; display:flex; justify-content:space-between; align-items:center;">
-        <div>📦 <strong>${escapeHtml(item.name)}</strong> <span style="font-size:11px; color:var(--pb-text-muted);">(Qtd: ${escapeHtml(item.qty || 1)}, Carga: ${escapeHtml(item.bulk !== undefined ? item.bulk : 0)})</span></div>
-        <button onclick="app.removeInventoryItem(${idx})" title="Remover item" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer; font-size:14px;">🗑️</button>
+    const itemsGridHtml = inv.length === 0 ? `
+      <div style="grid-column: 1 / -1; color:#64748b; text-align:center; padding: 24px;">Nenhum item no inventário. Clique em 'Add Gear' para comprar ou adicionar itens.</div>
+    ` : inv.map((item, idx) => `
+      <div class="pb-gear-item-box">
+        <button class="pb-gear-qty-btn" onclick="app.adjustItemQty(${idx}, -1)" title="Diminuir quantidade">-</button>
+        <span class="pb-gear-qty-text">Qty ${item.qty || 1}</span>
+        <button class="pb-gear-qty-btn" onclick="app.adjustItemQty(${idx}, 1)" title="Aumentar quantidade">+</button>
+        <span class="pb-gear-name-text" title="${escapeHtml(item.name)}">${escapeHtml(item.name)}</span>
+        <button class="pb-gear-remove-btn" onclick="app.removeInventoryItem(${idx})" title="Remover item">✕</button>
       </div>
     `).join('');
 
-    list.innerHTML = coinsHtml + itemsHtml;
+    list.innerHTML = `
+      <div class="pb-gear-top-bar">
+        <div class="pb-gear-coins-pillbox">
+          <div class="pb-gear-coin-item" onclick="app.promptEditCoin('pp')" style="cursor:pointer;" title="Clique para editar"><span class="coin-dot pp"></span> Platinum ${coins.pp || 0}</div>
+          <div class="pb-gear-coin-item" onclick="app.promptEditCoin('gp')" style="cursor:pointer;" title="Clique para editar"><span class="coin-dot gp"></span> Gold ${coins.gp || 0}</div>
+          <div class="pb-gear-coin-item" onclick="app.promptEditCoin('sp')" style="cursor:pointer;" title="Clique para editar"><span class="coin-dot sp"></span> Silver ${coins.sp || 0}</div>
+          <div class="pb-gear-coin-item" onclick="app.promptEditCoin('cp')" style="cursor:pointer;" title="Clique para editar"><span class="coin-dot cp"></span> Copper ${coins.cp || 0}</div>
+        </div>
+        <div class="pb-gear-bulk-status">
+          Total Bulk <strong>${totalBulk}</strong> ${isEncumbered ? '<span style="color:#ef4444; font-weight:900;">Encumbered</span>' : 'Unencumbered'} (Enc: ${encumberedLimit}; Max: ${maxBulk})
+        </div>
+        <div class="pb-gear-actions-bar">
+          <button class="pb-defense-btn" onclick="app.openPicker('gear')">Add Gear</button>
+          <button class="pb-defense-btn" onclick="app.addContainerPrompt()">Add Container</button>
+          <button class="pb-defense-btn" onclick="app.openPicker('formula')">Add Formula</button>
+          <button class="pb-defense-btn" onclick="app.printOfficialPdf()">Print</button>
+        </div>
+      </div>
+
+      <!-- MAIN INVENTORY SECTION -->
+      <div class="pb-inventory-section">
+        <div class="pb-inventory-section-title">
+          <span>Main Inventory</span>
+        </div>
+        <div class="pb-inventory-grid">
+          ${itemsGridHtml}
+        </div>
+      </div>
+
+      <!-- CONTAINERS SECTIONS -->
+      <div class="pb-inventory-section">
+        <div class="pb-inventory-section-title">
+          <span>Unnamed Container</span>
+          <button class="pb-slot-btn" onclick="alert('Editar Container')">Edit</button>
+        </div>
+        <div style="font-size:12px; color:#64748b; font-style:italic;">Vazio</div>
+      </div>
+    `;
+  }
+
+  adjustItemQty(idx, delta) {
+    if (!this.character.inventory || !this.character.inventory[idx]) return;
+    const item = this.character.inventory[idx];
+    item.qty = (item.qty || 1) + delta;
+    if (item.qty <= 0) {
+      this.character.inventory.splice(idx, 1);
+    }
+    this.renderAll();
+  }
+
+  removeInventoryItem(idx) {
+    if (this.character.inventory && this.character.inventory[idx]) {
+      this.character.inventory.splice(idx, 1);
+      this.renderAll();
+    }
+  }
+
+  promptEditCoin(coinKey) {
+    const names = { pp: "Platina (PP)", gp: "Ouro (GP)", sp: "Prata (SP)", cp: "Cobre (CP)" };
+    const current = this.character.coins?.[coinKey] || 0;
+    const input = prompt(`Definir quantidade de moedas de ${names[coinKey]}:`, current);
+    if (input !== null) {
+      const val = Math.max(0, parseInt(input, 10) || 0);
+      if (!this.character.coins) this.character.coins = { pp: 0, gp: 0, sp: 0, cp: 0 };
+      this.character.coins[coinKey] = val;
+      this.renderAll();
+    }
+  }
+
+  addContainerPrompt() {
+    const name = prompt("Nome do novo recipiente/container (ex: Mochila de Carga, Coldre):", "Mochila de Aventureiro");
+    if (name) {
+      if (!this.character.containers) this.character.containers = [];
+      this.character.containers.push({ name, items: [] });
+      this.renderAll();
+    }
   }
 
   getCurrentLocale() {
@@ -1448,21 +1569,27 @@ class PathbuilderApp {
   }
 
   getConditionCatalog() {
+    if (typeof PF2E_DATA !== "undefined" && Array.isArray(PF2E_DATA.conditions)) {
+      return PF2E_DATA.conditions;
+    }
     return [
-      { name: "Abalado", description: "Penalidade em testes e CDs baseados em Sabedoria." },
-      { name: "Amedrontado", description: "Penalidade em todos os testes e CDs." },
-      { name: "Desprevenido", description: "Penalidade na Classe de Armadura contra ataques." },
-      { name: "Enfraquecido", description: "Penalidade em Força e testes relacionados." },
-      { name: "Morrendo", description: "Você está à beira da morte." },
-      { name: "Ofuscado", description: "Visão prejudicada a longa distância." },
+      { name: "Abalado", description: "Penalidade em testes e CDs baseados em Sabedoria.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 442 }, ruleset: "remaster" },
+      { name: "Amedrontado", description: "Penalidade em todos os testes e CDs.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 442 }, ruleset: "remaster" },
+      { name: "Desprevenido", description: "Penalidade na Classe de Armadura contra ataques.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 443 }, ruleset: "remaster" },
+      { name: "Enfraquecido", description: "Penalidade em Força e testes relacionados.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 442 }, ruleset: "remaster" },
+      { name: "Morrendo", description: "Você está à beira da morte.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 443 }, ruleset: "remaster" },
+      { name: "Ofuscado", description: "Visão prejudicada a longa distância.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 441 }, ruleset: "remaster" },
     ];
   }
 
   getBuffCatalog() {
+    if (typeof PF2E_DATA !== "undefined" && Array.isArray(PF2E_DATA.buffs)) {
+      return PF2E_DATA.buffs;
+    }
     return [
-      { name: "Abençoado", description: "Bônus +1 de estado em jogadas de ataque." },
-      { name: "Aceleração", description: "Você recebe uma ação adicional em cada turno." },
-      { name: "Ocultado", description: "Ataques contra você têm chance de falha." },
+      { name: "Abençoado", description: "Bônus +1 de estado em jogadas de ataque.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 318 }, ruleset: "remaster" },
+      { name: "Aceleração", description: "Você recebe uma ação adicional em cada turno.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 444 }, ruleset: "remaster" },
+      { name: "Ocultado", description: "Ataques contra você têm chance de falha.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 441 }, ruleset: "remaster" },
     ];
   }
 
@@ -1572,78 +1699,103 @@ class PathbuilderApp {
   }
 
   addDiceToPool(sides) {
-    this.dicePool.push(sides);
-    this.renderDicePoolFormula();
+    if (!this.freeRollDiceList) this.freeRollDiceList = [];
+    
+    // Gera rolagem do dado
+    if (sides === 100) {
+      const tensRoll = Math.floor(Math.random() * 10);
+      const unitsRoll = Math.floor(Math.random() * 10);
+      const tensVal = tensRoll * 10;
+      const totalVal = (tensVal === 0 && unitsRoll === 0) ? 100 : tensVal + unitsRoll;
+      this.freeRollDiceList.push({
+        id: Math.random().toString(36).substring(2, 8),
+        sides: 100,
+        tens: tensVal,
+        units: unitsRoll,
+        value: totalVal,
+        rot: Math.floor(Math.random() * 50) - 25
+      });
+    } else {
+      const roll = Math.floor(Math.random() * sides) + 1;
+      this.freeRollDiceList.push({
+        id: Math.random().toString(36).substring(2, 8),
+        sides,
+        value: roll,
+        rot: Math.floor(Math.random() * 50) - 25
+      });
+    }
+
     this.openDiceRoller();
+    this.renderFreeRollArena();
   }
 
   resetDicePool() {
+    this.freeRollDiceList = [];
     this.dicePool = [];
     const modInput = document.getElementById("dicePoolMod");
     if (modInput) modInput.value = 0;
-    this.renderDicePoolFormula();
+    
+    const placeholder = document.getElementById("diceArenaPlaceholder");
+    const stage = document.getElementById("diceArenaStage");
+    const animContainer = document.getElementById("diceAnimContainer");
+    const resultTotal = document.getElementById("diceResultTotal");
+    const resultBreakdown = document.getElementById("diceResultBreakdown");
+    const resultLabel = document.getElementById("diceResultLabel");
+
+    if (animContainer) animContainer.innerHTML = "";
+    if (resultTotal) resultTotal.innerText = "0";
+    if (resultBreakdown) resultBreakdown.innerText = "Select dice using the buttons at the top";
+    if (resultLabel) resultLabel.innerText = "Free Roll";
+    if (placeholder) placeholder.style.display = "flex";
+    if (stage) stage.style.display = "none";
   }
 
-  renderDicePoolFormula() {
-    const formulaDisplay = document.getElementById("dicePoolFormula");
-    const rollPoolBtn = document.getElementById("btnRollPool");
-    const modInput = document.getElementById("dicePoolMod");
-    const mod = parseInt(modInput ? modInput.value : 0, 10) || 0;
+  renderFreeRollArena() {
+    const placeholder = document.getElementById("diceArenaPlaceholder");
+    const stage = document.getElementById("diceArenaStage");
+    const animContainer = document.getElementById("diceAnimContainer");
+    const resultLabel = document.getElementById("diceResultLabel");
+    const resultTotal = document.getElementById("diceResultTotal");
+    const resultBreakdown = document.getElementById("diceResultBreakdown");
 
-    // Atualiza badges nos botões de dados
-    [4, 6, 8, 10, 12, 20, 100].forEach(s => {
-      const btn = document.getElementById(`btnDie${s}`);
-      if (btn) {
-        const count = this.dicePool.filter(x => x === s).length;
-        btn.innerHTML = count > 0 ? `1d${s} <span class="dice-badge-count">${count}</span>` : `1d${s}`;
-      }
+    if (placeholder) placeholder.style.display = "none";
+    if (stage) stage.style.display = "flex";
+
+    const list = this.freeRollDiceList || [];
+    let total = 0;
+    const countMap = {};
+
+    list.forEach(d => {
+      total += d.value;
+      countMap[d.sides] = (countMap[d.sides] || 0) + 1;
     });
 
-    if (this.dicePool.length === 0) {
-      if (formulaDisplay) formulaDisplay.innerText = "Selecione os dados nos botões acima";
-      if (rollPoolBtn) rollPoolBtn.disabled = true;
-      return;
+    if (resultLabel) resultLabel.innerText = "Free Roll";
+    if (resultTotal) resultTotal.innerText = `${total}`;
+    
+    const formulaParts = Object.keys(countMap).map(s => `${countMap[s]} d${s}`);
+    const formulaStr = formulaParts.join(" + ");
+    if (resultBreakdown) resultBreakdown.innerText = formulaStr || "Select dice using the buttons at the top";
+
+    if (animContainer) {
+      animContainer.innerHTML = list.map(d => {
+        const isCrit = d.sides === 20 && d.value === 20;
+        const isFumble = d.sides === 20 && d.value === 1;
+        return `
+          <div class="polyhedral-die-wrapper rolling ${isCrit ? 'crit-nat20' : (isFumble ? 'fumble-nat1' : '')}" style="transform: rotate(${d.rot}deg);">
+            ${this.getPolyhedralDieSvg(d.sides, d.value, isCrit, isFumble)}
+          </div>
+        `;
+      }).join('');
     }
 
-    const counts = {};
-    this.dicePool.forEach(s => { counts[s] = (counts[s] || 0) + 1; });
-    const parts = Object.keys(counts).map(s => `${counts[s]}d${s}`);
-    let text = parts.join(" + ");
-    if (mod > 0) text += ` + ${mod}`;
-    else if (mod < 0) text += ` - ${Math.abs(mod)}`;
-
-    if (formulaDisplay) formulaDisplay.innerText = text;
-    if (rollPoolBtn) rollPoolBtn.disabled = false;
-  }
-
-  rollDicePool() {
-    if (this.dicePool.length === 0) return;
-    const modInput = document.getElementById("dicePoolMod");
-    const mod = parseInt(modInput ? modInput.value : 0, 10) || 0;
-
-    const diceResults = [];
-    let sum = 0;
-    this.dicePool.forEach(sides => {
-      const roll = Math.floor(Math.random() * sides) + 1;
-      diceResults.push({ sides, value: roll });
-      sum += roll;
-    });
-
-    const total = sum + mod;
-    const counts = {};
-    this.dicePool.forEach(s => { counts[s] = (counts[s] || 0) + 1; });
-    const formulaStr = Object.keys(counts).map(s => `${counts[s]}d${s}`).join(" + ") + (mod !== 0 ? ` ${PF2E_ENGINE.formatMod(mod)}` : "");
-    const breakdownStr = diceResults.map(d => `d${d.sides}(${d.value})`).join(" + ") + (mod !== 0 ? ` ${PF2E_ENGINE.formatMod(mod)}` : "") + ` = ${total}`;
-
-    this.animateDiceRoll({
-      title: "Free Roll (Rolagem Livre)",
-      diceList: diceResults,
-      modifier: mod,
-      total,
-      formula: formulaStr,
-      breakdown: breakdownStr,
-      tag: "Free Roll"
-    });
+    // Registra no histórico com timestamp (HH:MM:SS)
+    const now = new Date();
+    const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+    const logItemTitle = `${timeStr} Your Free Roll: ${total}`;
+    const detailedRolls = list.map(d => `${d.value} d${d.sides}`).join(" + ");
+    
+    this.addDiceLog(logItemTitle, detailedRolls, total, formulaStr, false, false);
   }
 
   getPolyhedralDieSvg(sides, value, isCrit = false, isFumble = false) {

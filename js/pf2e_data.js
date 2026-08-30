@@ -862,25 +862,151 @@ const PF2E_DATA = {
   // 7. ARMADURAS OFICIAIS (ARMORS COMPENDIUM)
   // ==========================================
   armors: [
-    { name: "Sem Armadura (Roupas Explorador)", category: "Sem Armadura", acBonus: 0, dexCap: 5, checkPenalty: 0, speedPenalty: 0, strReq: 10, bulk: 0 },
-    { name: "Armadura de Couro", category: "Leve", acBonus: 1, dexCap: 4, checkPenalty: 0, speedPenalty: 0, strReq: 10, bulk: 1 },
-    { name: "Couro Batido Reforçado", category: "Leve", acBonus: 2, dexCap: 3, checkPenalty: 0, speedPenalty: 0, strReq: 10, bulk: 1 },
-    { name: "Cota de Malha (Chain Shirt)", category: "Leve", acBonus: 2, dexCap: 3, checkPenalty: -1, speedPenalty: 0, strReq: 12, bulk: 1 },
-    { name: "Gibão de Peles (Hide)", category: "Média", acBonus: 3, dexCap: 2, checkPenalty: -2, speedPenalty: -5, strReq: 12, bulk: 2 },
-    { name: "Brunea / Peitoral de Aço (Breastplate)", category: "Média", acBonus: 4, dexCap: 1, checkPenalty: -2, speedPenalty: -5, strReq: 14, bulk: 2 },
-    { name: "Cota de Malha Completa (Chain Mail)", category: "Média", acBonus: 4, dexCap: 1, checkPenalty: -2, speedPenalty: -5, strReq: 16, bulk: 2 },
-    { name: "Armadura de Placas Completa (Full Plate)", category: "Pesada", acBonus: 6, dexCap: 0, checkPenalty: -3, speedPenalty: -10, strReq: 18, bulk: 4 }
+    { name: "Armored Cloak", category: "Leve", level: 0, price: "15 SP", acBonus: 1, dexCap: 3, checkPenalty: -1, speedPenalty: 0, strReq: 10, bulk: "L", traits: ["Confortável"], description: "Manto reforçado com placas flexíveis que concede proteção básica sem chamar atenção." },
+    { name: "Armored Coat", category: "Média", level: 0, price: "2 GP", acBonus: 2, dexCap: 2, checkPenalty: -2, speedPenalty: 0, strReq: 12, bulk: 2, traits: ["Confortável"], description: "Casaco pesado forrado com couro rígido e placas de metal internas." },
+    { name: "Automaton Chassis", category: "Média", level: 0, price: "3 GP", acBonus: 3, dexCap: 2, checkPenalty: -2, speedPenalty: 0, strReq: 14, bulk: 2, description: "Chassi reforçado construído para constructos e guerreiros ancestrais." },
+    { name: "Bakuwa Bony Plates", category: "Média", level: 0, price: "4 GP", acBonus: 3, dexCap: 2, checkPenalty: -2, speedPenalty: 0, strReq: 14, bulk: 2, description: "Armadura talhada em placas ósseas densas de criaturas colossais." },
+    { name: "Breastplate", category: "Média", level: 0, price: "8 GP", acBonus: 4, dexCap: 1, checkPenalty: -2, speedPenalty: -5, strReq: 14, bulk: 2, description: "Peitoral de aço fundido cobrindo o torso com proteção sólida contra perfuração e corte." },
+    { name: "Buckle Armor", category: "Leve", level: 0, price: "4 GP", acBonus: 1, dexCap: 4, checkPenalty: 0, speedPenalty: 0, strReq: 10, bulk: 1, description: "Armadura ajustável com fivelas de bronze polido permitindo mobilidade total." },
+    { name: "Ceramic Plate", category: "Média", level: 0, price: "5 GP", acBonus: 3, dexCap: 2, checkPenalty: -2, speedPenalty: 0, strReq: 14, bulk: 2, description: "Placas de cerâmica endurecida resistentes a choques e calor." },
+    { name: "Chain Mail", category: "Média", level: 0, price: "6 GP", acBonus: 4, dexCap: 1, checkPenalty: -2, speedPenalty: -5, strReq: 16, bulk: 2, traits: ["Flexível", "Ruidosa"], description: "Cota de malha completa de elos entrelaçados oferecendo ampla proteção corporal." },
+    { name: "Chain Shirt", category: "Leve", level: 0, price: "5 GP", acBonus: 2, dexCap: 3, checkPenalty: -1, speedPenalty: 0, strReq: 12, bulk: 1, traits: ["Flexível", "Ruidosa"], description: "Camisa de malha de aço leve usada sob roupas comuns ou sobre túnicas." },
+    { name: "Conrasu Reinforced Exoskeleton", category: "Média", level: 0, price: "3 GP", acBonus: 3, dexCap: 2, checkPenalty: -2, speedPenalty: 0, strReq: 12, bulk: 2, description: "Estrutura externa vegetal viva entrelaçada com cerne de madeira mística." },
+    { name: "Coral Armor", category: "Média", level: 0, price: "5 GP", acBonus: 3, dexCap: 2, checkPenalty: -2, speedPenalty: 0, strReq: 14, bulk: 2, description: "Armadura forjada com coral calcificado das profundezas oceânicas." },
+    { name: "Coral Plate", category: "Pesada", level: 0, price: "15 GP", acBonus: 5, dexCap: 1, checkPenalty: -3, speedPenalty: -10, strReq: 16, bulk: 3, description: "Placas maciças de coral recifal que bloqueiam impactos intensos." },
+    { name: "Explorer's Clothing", category: "Sem Armadura", level: 0, price: "1 SP", acBonus: 0, dexCap: 5, checkPenalty: 0, speedPenalty: 0, strReq: 10, bulk: 0, traits: ["Confortável"], description: "Roupas reforçadas para viagens, capazes de acomodar runas mágicas fundamentais e de propriedade." },
+    { name: "Full Plate", category: "Pesada", level: 0, price: "30 GP", acBonus: 6, dexCap: 0, checkPenalty: -3, speedPenalty: -10, strReq: 18, bulk: 4, traits: ["Bastião", "Inflexível"], description: "Armadura completa de placas articuladas que recobre todo o corpo do cavaleiro." },
+    { name: "Half Plate", category: "Pesada", level: 0, price: "18 GP", acBonus: 5, dexCap: 1, checkPenalty: -3, speedPenalty: -10, strReq: 16, bulk: 3, description: "Meia-armadura de placas sobre cota de malha para guerreiros de linha de frente." },
+    { name: "Hide Armor", category: "Média", level: 0, price: "2 GP", acBonus: 3, dexCap: 2, checkPenalty: -2, speedPenalty: -5, strReq: 12, bulk: 2, description: "Armadura confeccionada com couros espessos de bestas selvagens tratadas." },
+    { name: "Leather Armor", category: "Leve", level: 0, price: "2 GP", acBonus: 1, dexCap: 4, checkPenalty: -1, speedPenalty: 0, strReq: 10, bulk: 1, description: "Armadura de couro curtido flexível e silenciosa para aventureiros ágeis." },
+    { name: "Padded Armor", category: "Leve", level: 0, price: "2 SP", acBonus: 1, dexCap: 3, checkPenalty: 0, speedPenalty: 0, strReq: 10, bulk: "L", traits: ["Confortável"], description: "Armadura acolchoada com camadas espessas de tecido e lã resistente." },
+    { name: "Scale Mail", category: "Média", level: 0, price: "4 GP", acBonus: 3, dexCap: 2, checkPenalty: -2, speedPenalty: -5, strReq: 14, bulk: 2, description: "Armadura de escamas de aço sobrepostas costuradas em couro grosso." },
+    { name: "Splint Mail", category: "Pesada", level: 0, price: "13 GP", acBonus: 5, dexCap: 1, checkPenalty: -3, speedPenalty: -10, strReq: 16, bulk: 3, description: "Tiras verticais de aço rebitadas sobre forro de couro e malha." },
+    { name: "Studded Leather", category: "Leve", level: 0, price: "3 GP", acBonus: 2, dexCap: 3, checkPenalty: -1, speedPenalty: 0, strReq: 12, bulk: 1, description: "Couro reforçado com cravos e rebites metálicos para retenção de corte." },
+    { name: "Unarmored", category: "Sem Armadura", level: 0, price: "0 GP", acBonus: 0, dexCap: 5, checkPenalty: 0, speedPenalty: 0, strReq: 10, bulk: 0, description: "Defesa natural sem armadura equipada." }
   ],
 
   // ==========================================
   // 7.1 ESCUDOS OFICIAIS (SHIELDS COMPENDIUM)
   // ==========================================
   shields: [
-    { name: "Broquel (Buckler)", acBonus: 1, hardness: 3, maxHp: 6, bt: 3, speedPenalty: 0, bulk: "L", description: "Escudo leve preso ao antebraço que deixa a mão livre para segurar objetos." },
-    { name: "Escudo de Madeira (Wooden Shield)", acBonus: 2, hardness: 3, maxHp: 12, bt: 6, speedPenalty: 0, bulk: 1, description: "Escudo clássico de madeira leve e acessível." },
-    { name: "Escudo de Aço (Steel Shield)", acBonus: 2, hardness: 5, maxHp: 20, bt: 10, speedPenalty: 0, bulk: 1, description: "Escudo resistente de aço forjado para bloquear golpes pesados." },
-    { name: "Escudo Torre (Tower Shield)", acBonus: 2, hardness: 5, maxHp: 20, bt: 10, speedPenalty: -5, bulk: 4, description: "Escudo maciço que permite a ação Pegar Cobertura para conceder +4 na CA." },
-    { name: "Escudo Robusto Menor (Sturdy Shield Minor)", acBonus: 2, hardness: 8, maxHp: 64, bt: 32, speedPenalty: 0, bulk: 1, description: "Escudo mágico reforçado desenvolvido para absorção contínua de dano em combate." }
+    { name: "Buckler", level: 0, price: "1 GP", acBonus: 1, hardness: 3, maxHp: 6, bt: 3, speedPenalty: 0, bulk: "L", traits: ["Livre-Mão"], description: "Broquel leve preso ao antebraço que deixa a mão livre para manusear itens ou magias." },
+    { name: "Caster's Targe", level: 0, price: "3 GP", acBonus: 1, hardness: 3, maxHp: 8, bt: 4, speedPenalty: 0, bulk: 1, description: "Targa talhada para conjuradores canalizarem símbolos divinos ou focos arcanos." },
+    { name: "Dart Shield", level: 0, price: "2 GP", acBonus: 1, hardness: 3, maxHp: 8, bt: 4, speedPenalty: 0, bulk: 1, description: "Escudo equipado com compartimento interno para sacar dardos rapidamente." },
+    { name: "Gauntlet Buckler", level: 0, price: "2 GP", acBonus: 1, hardness: 3, maxHp: 6, bt: 3, speedPenalty: 0, bulk: "L", description: "Broquel integrado diretamente na manopla do combatente." },
+    { name: "Harnessed Shield", level: 0, price: "5 GP", acBonus: 2, hardness: 5, maxHp: 20, bt: 10, speedPenalty: 0, bulk: 2, description: "Escudo com arreios reforçados de combate para absorver colisões brutas." },
+    { name: "Heavy Rondache", level: 0, price: "4 GP", acBonus: 2, hardness: 5, maxHp: 16, bt: 8, speedPenalty: 0, bulk: 1, description: "Rondache espesso de aço com bordas recurvadas para desviar lâminas." },
+    { name: "Hide Shield", level: 0, price: "2 GP", acBonus: 2, hardness: 3, maxHp: 12, bt: 6, speedPenalty: 0, bulk: 1, description: "Escudo de couro endurecido esticado sobre armação de madeira." },
+    { name: "Klar", level: 0, price: "2 GP", acBonus: 1, hardness: 3, maxHp: 8, bt: 4, speedPenalty: 0, bulk: 1, traits: ["Arma Integrada"], description: "Escudo tradicional Shoanti com lâmina ou crânio fóssil para aparar e contra-atacar." },
+    { name: "Meteor Shield", level: 0, price: "6 GP", acBonus: 2, hardness: 5, maxHp: 20, bt: 10, speedPenalty: 0, bulk: 2, description: "Escudo forjado em minério de ferro estelar com alta resistência ao impacto." },
+    { name: "Razor Disc", level: 0, price: "3 GP", acBonus: 1, hardness: 3, maxHp: 8, bt: 4, speedPenalty: 0, bulk: 1, traits: ["Cortante"], description: "Disco circular leve de lâminas polidas nas bordas." },
+    { name: "Salvo Shield", level: 0, price: "5 GP", acBonus: 2, hardness: 5, maxHp: 20, bt: 10, speedPenalty: 0, bulk: 2, description: "Escudo balístico com fresta de observação e suporte para armas de disparo." },
+    { name: "Steel Shield", level: 0, price: "2 GP", acBonus: 2, hardness: 5, maxHp: 20, bt: 10, speedPenalty: 0, bulk: 1, description: "Escudo clássico de aço forjado com alta capacidade de bloqueio." },
+    { name: "Swordstealer Shield", level: 0, price: "4 GP", acBonus: 2, hardness: 5, maxHp: 20, bt: 10, speedPenalty: 0, bulk: 1, description: "Escudo com dentes metálicos na borda capazes de prender e desarmar espadas inimigas." },
+    { name: "Tower Shield", level: 0, price: "10 GP", acBonus: 2, hardness: 5, maxHp: 20, bt: 10, speedPenalty: -5, bulk: 4, description: "Escudo maciço que permite a ação Pegar Cobertura para conceder +4 na CA contra ataques à distância." },
+    { name: "Wooden Shield", level: 0, price: "1 GP", acBonus: 2, hardness: 3, maxHp: 12, bt: 6, speedPenalty: 0, bulk: 1, description: "Escudo acessível e leve de tábuas de carvalho reforçadas com aros de ferro." },
+    { name: "Sturdy Shield (Minor)", level: 4, price: "100 GP", acBonus: 2, hardness: 8, maxHp: 64, bt: 32, speedPenalty: 0, bulk: 1, traits: ["Mágico"], description: "Escudo mágico reforçado especialmente projetado para suportar incontáveis Bloqueios com Escudo." }
+  ],
+
+  // ==========================================
+  // 7.2 EQUIPAMENTOS & ITENS GERAIS (GEAR COMPENDIUM)
+  // ==========================================
+  items: [
+    { name: "Adventurer's Pack", category: "Gear", subcategory: "Adventuring", level: 0, price: "15 SP", bulk: 1, description: "Mochila contendo saco de dormir, 10 giz, pederneira e isqueiro, corda de 15m, 2 semanas de rações, sabão, 5 tochas e odre." },
+    { name: "Air Bladder", category: "Gear", subcategory: "Adventuring", level: 0, price: "1 SP", bulk: "L", description: "Bolsa estanque de couro que armazena ar suficiente para respirar debaixo d'água por alguns minutos." },
+    { name: "Alchemist's Lab", category: "Gear", subcategory: "Misc", level: 0, price: "5 GP", bulk: 6, description: "Laboratório alquímico completo com retortas, destiladores e reagentes para fabricação de itens alquímicos." },
+    { name: "Alchemist's Lab (Expanded)", category: "Gear", subcategory: "Misc", level: 3, price: "55 GP", bulk: 6, description: "Laboratório alquímico expandido que concede +1 de bônus de item em testes de Criação alquímica." },
+    { name: "Alchemist's Toolkit", category: "Gear", subcategory: "Misc", level: 0, price: "3 GP", bulk: 1, description: "Kit portátil de ferramentas e frascos alquímicos necessários para criar elixires e bombas em campo." },
+    { name: "Animal Blind", category: "Gear", subcategory: "Adventuring", level: 0, price: "5 SP", bulk: 1, description: "Esconderijo portátil camuflado para observar e caçar feras selvagens." },
+    { name: "Animal Call", category: "Gear", subcategory: "Adventuring", level: 0, price: "5 SP", bulk: "L", description: "Apito especializado que reproduz o chamado de pássaros e animais de caça." },
+    { name: "Armored Skirt", category: "Gear", subcategory: "Weapon Attachments", level: 0, price: "2 GP", bulk: 1, description: "Saia de placas acoplável a armaduras leves ou médias aumentando o bônus de CA em +1." },
+    { name: "Artisan's Toolkit", category: "Gear", subcategory: "Misc", level: 0, price: "4 GP", bulk: 1, description: "Conjunto de ferramentas para ferraria, carpintaria, cantaria ou costura." },
+    { name: "Artisan's Toolkit (Sterling)", category: "Gear", subcategory: "Misc", level: 3, price: "50 GP", bulk: 1, description: "Ferramentas de alta precisão que concedem +1 de bônus de item em testes de Manufatura." },
+    { name: "Atmospheric Breathing Suit", category: "Gear", subcategory: "Adventuring", level: 3, price: "25 GP", bulk: 2, description: "Traje vedado com filtro mágico para respirar em ambientes com fumaça, gases ou no vácuo." },
+    { name: "Backpack", category: "Gear", subcategory: "Adventuring", level: 0, price: "1 SP", bulk: 0, description: "Mochila de couro resistente. Armazena até 4 de Carga, ignorando os primeiros 2 de Carga dos itens guardados nela." },
+    { name: "Bandolier", category: "Gear", subcategory: "Adventuring", level: 0, price: "1 SP", bulk: "L", description: "Cartucheira tiracolo para armazenar até 8 itens de Carga Leve com acesso rápido." },
+    { name: "Bedroll", category: "Gear", subcategory: "Adventuring", level: 0, price: "2 CP", bulk: "L", description: "Saco de dormir acolchoado para descanso confortável ao ar livre." },
+    { name: "Belt Pouch", category: "Gear", subcategory: "Adventuring", level: 0, price: "4 CP", bulk: "L", description: "Pequena bolsa de cinto para moedas, pedras preciosas ou poções." },
+    { name: "Caltrops", category: "Gear", subcategory: "Adventuring", level: 0, price: "3 SP", bulk: "L", description: "Estrepes de quatro pontas de ferro espalhados no chão para atrasar perseguidores." },
+    { name: "Candle", category: "Gear", subcategory: "Adventuring", level: 0, price: "1 CP", bulk: "-", description: "Vela de cera que ilumina um raio de 3m por 8 horas." },
+    { name: "Chalk (10 pieces)", category: "Gear", subcategory: "Adventuring", level: 0, price: "1 CP", bulk: "-", description: "10 pedaços de giz coloridos para marcar masmorras e paredes." },
+    { name: "Climbing Kit", category: "Gear", subcategory: "Adventuring", level: 0, price: "5 SP", bulk: 1, description: "Pítons, martelo, crampons e mosquetões para escaladas íngremes." },
+    { name: "Compass", category: "Gear", subcategory: "Adventuring", level: 0, price: "1 GP", bulk: "-", description: "Bússola magnética de bronze que concede +1 de bônus em testes de Sobrevivência para orientar-se." },
+    { name: "Crowbar", category: "Gear", subcategory: "Adventuring", level: 0, price: "5 SP", bulk: "L", description: "Pé de cabra de ferro fundido para forçar portas e abrir baús trancados." },
+    { name: "Disguise Kit", category: "Gear", subcategory: "Misc", level: 0, price: "2 GP", bulk: "L", description: "Maquiagens, perucas, próteses e tecidos para criar disfarces convincentes com Enganação." },
+    { name: "Dueling Cape", category: "Gear", subcategory: "Adventuring", level: 0, price: "5 SP", bulk: "L", description: "Capa pesada enrolada no braço usada em duelos para fintar ou aparar golpes (+1 CA)." },
+    { name: "Fishing Tackle", category: "Gear", subcategory: "Adventuring", level: 0, price: "8 SP", bulk: "L", description: "Varas, anzóis e redes para pesca de subsistência." },
+    { name: "Flint and Steel", category: "Gear", subcategory: "Adventuring", level: 0, price: "5 CP", bulk: "-", description: "Pederneira e isqueiro de aço para acender fogueiras e tochas." },
+    { name: "Grappling Hook", category: "Gear", subcategory: "Adventuring", level: 0, price: "1 SP", bulk: "L", description: "Gancho de ferro de 4 garras para amarrar em cordas e escalar muros." },
+    { name: "Healer's Toolkit", category: "Gear", subcategory: "Misc", level: 0, price: "5 GP", bulk: 1, description: "Bandagens, unguentos, tesouras e talas para Primeiros Socorros e Tratar Ferimentos." },
+    { name: "Lantern (Bullseye)", category: "Gear", subcategory: "Adventuring", level: 0, price: "1 GP", bulk: 1, description: "Lanterna de foco concentrado projetando um cone de luz brilhante de 18m." },
+    { name: "Lantern (Hooded)", category: "Gear", subcategory: "Adventuring", level: 0, price: "7 SP", bulk: "L", description: "Lanterna furta-fogo com abas móveis para regular a intensidade da luz." },
+    { name: "Lock (Simple)", category: "Gear", subcategory: "Misc", level: 0, price: "2 GP", bulk: "-", description: "Cadeado comum de ferro com chave (CD 20 para arrombar)." },
+    { name: "Lock (Average)", category: "Gear", subcategory: "Misc", level: 1, price: "10 GP", bulk: "-", description: "Fechadura sólida de aço temperado com mecanismo de 4 pinos (CD 25)." },
+    { name: "Magnifying Glass", category: "Gear", subcategory: "Misc", level: 3, price: "40 GP", bulk: "-", description: "Lente de aumento para examinar pistas minuciosas (+1 em Percepção e Manufatura)." },
+    { name: "Manacles (Simple)", category: "Gear", subcategory: "Misc", level: 0, price: "3 GP", bulk: "L", description: "Algemas de ferro forjado para imobilizar prisioneiros." },
+    { name: "Mirror", category: "Gear", subcategory: "Adventuring", level: 0, price: "1 GP", bulk: "-", description: "Pequeno espelho de vidro polido para espiar esquinas sem se expor." },
+    { name: "Oil (1 pint)", category: "Gear", subcategory: "Adventuring", level: 0, price: "1 CP", bulk: "-", description: "Óleo combustível para lanternas (queima por 6 horas) ou arremessável." },
+    { name: "Piton", category: "Gear", subcategory: "Adventuring", level: 0, price: "1 CP", bulk: "-", description: "Píton de aço com olhal para fixação de cordas na rocha." },
+    { name: "Rations (1 week)", category: "Gear", subcategory: "Adventuring", level: 0, price: "4 SP", bulk: "L", description: "Rações de viagem não perecíveis (carne seca, nozes, queijo duro e biscoito)." },
+    { name: "Religious Symbol (Wooden)", category: "Gear", subcategory: "Misc", level: 0, price: "1 SP", bulk: "L", description: "Símbolo sagrado entalhado em madeira para foco divino de clérigos e campeões." },
+    { name: "Religious Symbol (Silver)", category: "Gear", subcategory: "Misc", level: 0, price: "2 GP", bulk: "L", description: "Símbolo sagrado trabalhado em prata maciça finamente polida." },
+    { name: "Rope (50 ft)", category: "Gear", subcategory: "Adventuring", level: 0, price: "5 SP", bulk: "L", description: "Corda de cânhamo trançado de 15 metros com carga de ruptura de 450 kg." },
+    { name: "Sack", category: "Gear", subcategory: "Adventuring", level: 0, price: "1 CP", bulk: "L", description: "Saco de juta para carregar até 8 de Carga de itens diversos." },
+    { name: "Scroll Case", category: "Gear", subcategory: "Adventuring", level: 0, price: "5 CP", bulk: "L", description: "Tubo cilíndrico de couro encerado para proteger pergaminhos contra água e poeira." },
+    { name: "Signal Whistle", category: "Gear", subcategory: "Adventuring", level: 0, price: "8 CP", bulk: "-", description: "Apito agudo audível a mais de 800 metros em terreno aberto." },
+    { name: "Soap", category: "Gear", subcategory: "Adventuring", level: 0, price: "2 CP", bulk: "-", description: "Barra de sabão perfumado para higiene pessoal em viagens." },
+    { name: "Spyglass", category: "Gear", subcategory: "Adventuring", level: 4, price: "80 GP", bulk: "L", description: "Luneta de latão e lentes polidas que aproxima objetos distantes em até 10 vezes." },
+    { name: "Ten-foot Pole", category: "Gear", subcategory: "Adventuring", level: 0, price: "1 CP", bulk: 1, description: "Vara de madeira rígida de 3 metros para testar pisos e desarmar armadilhas." },
+    { name: "Thieves' Tools", category: "Gear", subcategory: "Misc", level: 0, price: "3 GP", bulk: "L", description: "Gazuas, arames e alavancas para arrombar fechaduras e desativar armadilhas." },
+    { name: "Thieves' Tools (Infiltrator)", category: "Gear", subcategory: "Misc", level: 3, price: "50 GP", bulk: "L", description: "Ferramentas de arrombamento de alta liga metálica (+1 de bônus de item em Ladinagem)." },
+    { name: "Torch", category: "Gear", subcategory: "Adventuring", level: 0, price: "1 CP", bulk: "L", description: "Tocha de madeira com estopa embebida em piche que queima por 1 hora (luz em 6m)." },
+    { name: "Waterskin", category: "Gear", subcategory: "Adventuring", level: 0, price: "5 CP", bulk: "L", description: "Odre de couro com capacidade para 1 litro de água fresca." },
+    { name: "Writing Set", category: "Gear", subcategory: "Misc", level: 0, price: "1 GP", bulk: "L", description: "Pena, tinta nanquim, pergaminhos e cera para selagem de cartas." },
+
+    // CONSUMÍVEIS (CONSUMABLES)
+    { name: "Elixir of Life (Minor)", category: "Consumables", subcategory: "Elixires", level: 1, price: "3 GP", bulk: "L", traits: ["Alquímico", "Elixir", "Cura"], description: "Ao beber, recupera 1d6 Pontos de Vida e concede +1 de bônus de item em testes de fortitude contra venenos e doenças por 1 hora." },
+    { name: "Elixir of Life (Lesser)", category: "Consumables", subcategory: "Elixires", level: 5, price: "12 GP", bulk: "L", traits: ["Alquímico", "Elixir", "Cura"], description: "Ao beber, recupera 3d6+6 Pontos de Vida e concede +1 de bônus de item em testes contra venenos e doenças." },
+    { name: "Healing Potion (Minor)", category: "Consumables", subcategory: "Poções", level: 1, price: "4 GP", bulk: "L", traits: ["Mágico", "Poção", "Cura"], description: "Poção mágica efervescente de coloração rubi que cura instantaneamente 1d8 Pontos de Vida." },
+    { name: "Healing Potion (Lesser)", category: "Consumables", subcategory: "Poções", level: 3, price: "12 GP", bulk: "L", traits: ["Mágico", "Poção", "Cura"], description: "Poção mágica potente que cura instantaneamente 2d8+5 Pontos de Vida." },
+    { name: "Alchemist's Fire (Lesser)", category: "Consumables", subcategory: "Bombas", level: 1, price: "3 GP", bulk: "L", traits: ["Alquímico", "Bomba", "Fogo"], description: "Frasco volátil que causa 1d8 de dano de fogo no impacto, 1 de dano de fogo contínuo e 1 de dano de fogo em respingo." },
+    { name: "Acid Flask (Lesser)", category: "Consumables", subcategory: "Bombas", level: 1, price: "3 GP", bulk: "L", traits: ["Alquímico", "Bomba", "Ácido"], description: "Causa 1 de dano de ácido, 1d6 de dano de ácido contínuo e 1 de dano de ácido em respingo." },
+    { name: "Frost Vial (Lesser)", category: "Consumables", subcategory: "Bombas", level: 1, price: "3 GP", bulk: "L", traits: ["Alquímico", "Bomba", "Frio"], description: "Causa 1d6 de dano de frio, 1 de respingo e aplica penalidade de -3m no deslocamento da vítima." },
+    { name: "Bottled Lightning (Lesser)", category: "Consumables", subcategory: "Bombas", level: 1, price: "3 GP", bulk: "L", traits: ["Alquímico", "Bomba", "Eletricidade"], description: "Causa 1d6 de dano elétrico, 1 de respingo e deixa o alvo Desprevenido até o início do seu próximo turno." },
+    { name: "Tanglefoot Bag (Lesser)", category: "Consumables", subcategory: "Bombas", level: 1, price: "3 GP", bulk: "L", traits: ["Alquímico", "Bomba"], description: "Bolsa de resina expansiva que gruda nas pernas do alvo, reduzindo a velocidade em 3m ou imobilizando no acerto crítico." },
+    { name: "Antidote (Lesser)", category: "Consumables", subcategory: "Elixires", level: 1, price: "3 GP", bulk: "L", traits: ["Alquímico", "Elixir"], description: "Concede +2 de bônus de item em testes de salvaguarda contra venenos por 6 horas." },
+    { name: "Antiplague (Lesser)", category: "Consumables", subcategory: "Elixires", level: 1, price: "3 GP", bulk: "L", traits: ["Alquímico", "Elixir"], description: "Concede +2 de bônus de item em testes de salvaguarda contra doenças por 24 horas." },
+    { name: "Smokestick (Lesser)", category: "Consumables", subcategory: "Alquímico", level: 1, price: "3 GP", bulk: "L", traits: ["Alquímico"], description: "Cria uma nuvem de fumaça espessa de 1,5m que concede Ocultação a criaturas dentro dela por 1 minuto." },
+    { name: "Sunrod", category: "Consumables", subcategory: "Alquímico", level: 1, price: "3 GP", bulk: "L", traits: ["Alquímico", "Luz"], description: "Bastão alquímico que brilha com luz solar viva de 6m por 6 horas após ser quebrado." },
+    { name: "Tindertwig", category: "Consumables", subcategory: "Alquímico", level: 1, price: "2 SP", bulk: "-", traits: ["Alquímico"], description: "Fósforo alquímico de ignição instantânea que acende tochas em 1 única ação." }
+  ],
+
+  // ==========================================
+  // 7.3 CONDIÇÕES OFICIAIS (CONDITIONS COMPENDIUM)
+  // ==========================================
+  conditions: [
+    { name: "Abalado (Frightened)", category: "Condições", description: "Você sofre uma penalidade de estado em todos os seus testes e CDs igual ao valor de sua condição. No final de cada um dos seus turnos, o valor reduz em 1.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 442 }, ruleset: "remaster", rarity: "common" },
+    { name: "Amedrontado (Frightened)", category: "Condições", description: "Penalidade de estado em todos os testes e CDs baseados em perícias, ataques e salvamentos.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 442 }, ruleset: "remaster", rarity: "common" },
+    { name: "Desprevenido (Off-Guard)", category: "Condições", description: "Você sofre uma penalidade de circunstância de -2 na sua Classe de Armadura.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 443 }, ruleset: "remaster", rarity: "common" },
+    { name: "Enfraquecido (Enfeebled)", category: "Condições", description: "Penalidade de estado em testes baseados em Força, jogadas de ataque corpo a corpo e dano corpo a corpo.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 442 }, ruleset: "remaster", rarity: "common" },
+    { name: "Desajeitado (Clumsy)", category: "Condições", description: "Penalidade de estado em testes baseados em Destreza, salvamentos de Reflexos, CA e ataques à distância.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 441 }, ruleset: "remaster", rarity: "common" },
+    { name: "Drenado (Drained)", category: "Condições", description: "Penalidade de estado em testes baseados em Constituição e perde PV máximos iguais ao seu nível vezes o valor de drenado.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 441 }, ruleset: "remaster", rarity: "common" },
+    { name: "Estupefato (Stupefied)", category: "Condições", description: "Penalidade de estado em testes baseados em atributos mentais e teste simples CD 5 + valor para conjurar magias.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 445 }, ruleset: "remaster", rarity: "common" },
+    { name: "Agarrado (Grabbed)", category: "Condições", description: "Você está Imobilizado e Desprevenido. Ao tentar uma ação de Manipular, deve passar em um teste simples CD 5.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 442 }, ruleset: "remaster", rarity: "common" },
+    { name: "Caído (Prone)", category: "Condições", description: "Você está deitado no chão, Desprevenido e sofre -2 de penalidade de circunstância em jogadas de ataque.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 444 }, ruleset: "remaster", rarity: "common" },
+    { name: "Morrendo (Dying)", category: "Condições", description: "Você está Inconsciente e à beira da morte. Faça testes de recuperação a cada rodada.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 443 }, ruleset: "remaster", rarity: "common" },
+    { name: "Ofuscado (Dazzled)", category: "Condições", description: "Sua visão está prejudicada. Todas as outras criaturas e objetos ficam Ocultos para você.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 441 }, ruleset: "remaster", rarity: "common" }
+  ],
+
+  // ==========================================
+  // 7.4 BENEFÍCIOS OFICIAIS (BUFFS COMPENDIUM)
+  // ==========================================
+  buffs: [
+    { name: "Abençoado (Blessed)", category: "Benefícios", description: "Bônus +1 de estado em jogadas de ataque e salvamentos contra medo.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 318 }, ruleset: "remaster", rarity: "common" },
+    { name: "Aceleração (Quickened)", category: "Benefícios", description: "Você recebe uma ação adicional no início de cada um dos seus turnos para Golpear ou Andar.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 444 }, ruleset: "remaster", rarity: "common" },
+    { name: "Ocultado (Concealed)", category: "Benefícios", description: "Ataques e efeitos direcionados a você exigem um teste simples CD 5 do atacante.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 441 }, ruleset: "remaster", rarity: "common" },
+    { name: "Invisível (Invisible)", category: "Benefícios", description: "Você não pode ser visto diretamente e é Indetectado para criaturas que apenas dependem da visão.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 443 }, ruleset: "remaster", rarity: "common" },
+    { name: "Escudo Erguido (Shield Raised)", category: "Benefícios", description: "Bônus de circunstância na CA concedido pelo escudo até o início do seu próximo turno.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 274 }, ruleset: "remaster", rarity: "common" }
   ],
 
   // ==========================================

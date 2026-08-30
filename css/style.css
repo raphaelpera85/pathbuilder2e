@@ -1237,9 +1237,36 @@ body {
 }
 
 /* Dialog overlays center their panel; the navigation drawer keeps sliding left. */
-#modalJsonOverlay {
-  display: grid;
-  place-items: center;
+.pb-drawer-overlay:not(#drawerOverlay) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(12px, 3vw, 40px);
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.pb-drawer-overlay:not(#drawerOverlay) .pb-modal-container {
+  margin: auto;
+  position: relative;
+  transform: scale(0.96);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pb-drawer-overlay.active:not(#drawerOverlay) .pb-modal-container {
+  transform: scale(1);
+}
+
+#modalJsonOverlay,
+#modalSkillTrainingOverlay,
+#modalSetAbilitiesOverlay,
+#modalDeityOverlay,
+#modalLanguagesOverlay,
+#modalAvatarOverlay,
+#modalAIAssistantOverlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: clamp(12px, 3vw, 40px);
 }
 
