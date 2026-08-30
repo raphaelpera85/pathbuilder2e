@@ -220,6 +220,7 @@
         <button id="tab-button-details" class="pb-tab-btn" role="tab" aria-selected="false" aria-controls="tab-details" onclick="app.switchTab('tab-details', event)">Detalhes (Details)</button>
         <button id="tab-button-feats" class="pb-tab-btn" role="tab" aria-selected="false" aria-controls="tab-feats" onclick="app.switchTab('tab-feats', event)">Talentos (Feats)</button>
         <button id="tab-button-actions" class="pb-tab-btn" role="tab" aria-selected="false" aria-controls="tab-actions" onclick="app.switchTab('tab-actions', event)">Ações (Actions)</button>
+        <button id="tab-button-formulas" class="pb-tab-btn" role="tab" aria-selected="false" aria-controls="tab-formulas" onclick="app.switchTab('tab-formulas', event)">Fórmulas (Formula Book)</button>
       </nav>
 
       <!-- CORPO DAS ABAS -->
@@ -336,6 +337,18 @@
         <!-- ABA 8: AÇÕES (ACTIONS) -->
         <div id="tab-actions" class="tab-panel" role="tabpanel" aria-labelledby="tab-button-actions" hidden>
           <div id="actionsFullList"></div>
+        </div>
+
+        <!-- ABA 9: LIVRO DE FÓRMULAS (FORMULA BOOK) -->
+        <div id="tab-formulas" class="tab-panel" role="tabpanel" aria-labelledby="tab-button-formulas" hidden>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+            <div>
+              <span style="font-weight: bold; color: var(--pb-orange);">📜 Fórmulas Conhecidas (Alquimia & Manufatura)</span>
+              <div style="font-size: 11px; color: var(--pb-text-muted);">Receitas para itens alquímicos, poções, armadilhas e manufatura (Crafting).</div>
+            </div>
+            <button class="btn-pb-action" onclick="app.openPicker('formula')">➕ Adicionar Fórmula</button>
+          </div>
+          <div id="formulasFullList"></div>
         </div>
 
         <!-- ABA 9: REGRAS -->

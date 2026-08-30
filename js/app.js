@@ -216,6 +216,7 @@ class PathbuilderApp {
     this.renderDetailsTab();
     this.renderFeatsTab();
     this.renderActionsTab();
+    this.renderFormulasTab();
     this.renderConditions();
   }
 
@@ -750,6 +751,52 @@ class PathbuilderApp {
     this.renderAll();
   }
 
+  // ABA DE LIVRO DE FÓRMULAS (FORMULA BOOK)
+  renderFormulasTab() {
+    const list = document.getElementById("formulasFullList");
+    if (!list) return;
+    const formulas = this.character.formulas || [];
+    if (formulas.length === 0) {
+      list.innerHTML = `
+        <div style="text-align:center; padding:32px; color:var(--pb-text-muted); font-size:13px;">
+          <div style="font-size:28px; margin-bottom:8px;">📜</div>
+          Nenhuma fórmula cadastrada no seu Livro de Fórmulas.<br>
+          Clique em <strong>➕ Adicionar Fórmula</strong> para incluir poções, elixires, bombas ou armadilhas.
+        </div>
+      `;
+      return;
+    }
+
+    list.innerHTML = formulas.map((f, idx) => `
+      <div class="strike-card" style="border-left-color: #8b5cf6; margin-bottom: 8px;">
+        <div class="strike-header">
+          <div>
+            <span style="font-weight:bold; color:#a78bfa; font-size:13px;">${escapeHtml(f.name)}</span>
+            <span class="trait-tag" style="background:#2e1065; color:#c4b5fd; border-color:#5b21b6; margin-left:6px;">${escapeHtml(f.category || "Fórmula")}</span>
+            <span class="trait-tag" style="background:#1e1b4b; color:#93c5fd; border-color:#3730a3; margin-left:4px;">Nível ${escapeHtml(f.level || 0)}</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px;">
+            ${f.craftingDC ? `<span style="font-size:11px; color:var(--pb-text-muted);">CD Manufatura: <strong style="color:var(--pb-orange);">${f.craftingDC}</strong></span>` : ""}
+            <button onclick="app.removeFormula(${idx})" title="Remover Fórmula" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer; font-size:14px;">🗑️</button>
+          </div>
+        </div>
+        <div style="font-size:12px; color:var(--pb-text); margin-top:4px;">${escapeHtml(f.description || "")}</div>
+        ${f.traits && f.traits.length > 0 ? `
+          <div class="traits-row" style="margin-top:6px;">
+            ${f.traits.map(t => `<span class="trait-tag" style="font-size:10px;">${escapeHtml(t)}</span>`).join('')}
+          </div>
+        ` : ""}
+      </div>
+    `).join('');
+  }
+
+  removeFormula(idx) {
+    if (!this.character.formulas) return;
+    this.character.formulas.splice(idx, 1);
+    this.saveCharacterLocal(false);
+    this.renderAll();
+  }
+
   renderConditions() {
     const target = document.getElementById("activeConditions");
     if (!target) return;
@@ -835,6 +882,9 @@ class PathbuilderApp {
     if (type === "action") {
       return (PF2E_DATA.actions || []).map(a => ({ name: a.name, type: "Ação", data: a }));
     }
+    if (type === "formula") {
+      return (PF2E_DATA.formulas || []).map(f => ({ name: f.name, type: f.category || "Fórmula", data: f }));
+    }
     if (type === "condition") {
       return (PF2E_DATA.conditions || this.getConditionCatalog()).map(c => ({ name: c.name, type: "Condição", data: c }));
     }
@@ -873,6 +923,10 @@ class PathbuilderApp {
       if (!this.character.rituals) this.character.rituals = [];
       const exists = this.character.rituals.some(ritual => item.data.id ? ritual.id === item.data.id : ritual.name === item.name);
       if (!exists) this.character.rituals.push({ ...item.data, name: item.name });
+    } else if (type === "formula") {
+      if (!this.character.formulas) this.character.formulas = [];
+      const exists = this.character.formulas.some(f => (item.data.id && f.id === item.data.id) || f.name === item.name);
+      if (!exists) this.character.formulas.push({ ...item.data, name: item.name });
     } else if (type === "feat") {
       if (options?.slotId) {
         this.character.progression[options.slotId] = item.name;
