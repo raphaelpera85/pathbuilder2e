@@ -12,6 +12,7 @@ export interface ItemDefinition {
   description: string;
   summaries?: { "pt-BR": string; en: string; es: string };
   source?: { book: string; page?: number };
+  sourceApproximate?: boolean;
   ruleset?: "remaster" | "legacy" | "needs_review";
   needs_review?: boolean;
   rarity?: "common" | "uncommon" | "rare" | "unique";

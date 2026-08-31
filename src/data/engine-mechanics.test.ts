@@ -68,6 +68,22 @@ describe("PF2E_ENGINE Mechanics & Calculations", () => {
     expect(stats.maxHp).toBe(20); // Humano 8 + Bárbaro 12.
   });
 
+  it("aplica os efeitos estruturados da herança de Jotunnato", () => {
+    const stats = engine.calculateCharacterStats({
+      level: 1,
+      ancestry: "Jotunnato",
+      heritage: "Jotunnato Guerreiro",
+      class: "Guerreiro",
+      abilities: { str: 18, dex: 12, con: 14, int: 10, wis: 10, cha: 10 },
+      skills: {},
+      weapons: [{ name: "Punho", category: "Desarmado", damage: "1d4", traits: [] }],
+      inventory: [],
+    });
+    expect(stats.size).toBe("Grande");
+    expect(stats.strikes[0].damageDetails.activeDice).toBe("1d6");
+    expect(engine.calculateTrainedSkillsCount({ level: 1, ancestry: "Jotunnato", heritage: "Jotunnato Guardião", class: "Guerreiro", abilities: { int: 10 }, skills: {} }).heritageSkills).toEqual(["survival"]);
+  });
+
   it("preserva a perícia concedida pelo antecedente localizado", () => {
     const stats = engine.calculateTrainedSkillsCount({
       level: 1,
@@ -194,6 +210,43 @@ describe("PF2E_ENGINE Mechanics & Calculations", () => {
     expect(companion.attacks).toEqual([]);
   });
 
+  it("preserva zero em PV atuais, CA e bônus de ataque de companheiros", () => {
+    const companion = engine.calculateCompanionStats({}, {
+      id: "pet.custom.zero",
+      name: "Companheiro ferido",
+      type: "animal_companion",
+      hpMax: 10,
+      hpCurrent: 0,
+      ac: 0,
+      attacks: [{ name: "Golpe", bonus: 0, damage: "1d4", traits: [] }]
+    });
+    expect(companion.hpMax).toBe(10);
+    expect(companion.hpCurrent).toBe(0);
+    expect(companion.ac).toBe(0);
+    expect(companion.attacks[0].bonus).toBe(0);
+  });
+
+  it("aplica a matriz de eidolon selecionada sem sobrescrever PV ou ataques editados", () => {
+    const catalogPet = {
+      id: "pet.eidolon.dragon",
+      profiles: [
+        { name: "Dragão Saqueador", abilities: { str: 18, dex: 14 }, acBonus: 2, dexCap: 3 },
+        { name: "Dragão Astuto", abilities: { str: 12, dex: 18 }, acBonus: 1, dexCap: 4 }
+      ],
+      hp: 20,
+      attacks: [{ name: "Garra", bonus: 7, damage: "1d6" }]
+    };
+    const companion = engine.calculateCompanionStats({ pets: [catalogPet] }, {
+      id: "pet.eidolon.dragon", profileIndex: 1, hpCurrent: 3,
+      attacks: [{ name: "Garra personalizada", bonus: 0, damage: "1d4" }]
+    });
+    expect(companion.selectedProfile.name).toBe("Dragão Astuto");
+    expect(companion.abilityScores).toEqual({ str: 12, dex: 18 });
+    expect(companion.acBonus).toBe(1);
+    expect(companion.hpCurrent).toBe(3);
+    expect(companion.attacks[0].name).toBe("Garra personalizada");
+  });
+
   it("reports ammunition availability for reload weapons", () => {
     const weapon = { traits: ["Recarga 1"], reload: 1 };
     expect(engine.getAmmunitionStatus({ inventory: [] }, weapon)).toMatchObject({
@@ -206,6 +259,16 @@ describe("PF2E_ENGINE Mechanics & Calculations", () => {
     const firearm = { name: "Pistola", traits: ["Recarga 1", "Fogo"] };
     expect(engine.getAmmunitionStatus({ inventory: [{ id: "item.ammunition.bolts", qty: 20 }] }, firearm)).toMatchObject({ requiredType: "bullet", available: false });
     expect(engine.getAmmunitionStatus({ inventory: [{ id: "item.guns_gears.ten_bullets", qty: 10 }] }, firearm).available).toBe(true);
+    expect(engine.getAmmunitionStatus({ inventory: [{ id: "item.guns_gears.ten_bullets", qty: 0 }] }, { name: "Pistola", reload: 1 })).toMatchObject({
+      requiresAmmunition: true,
+      quantity: 0,
+      available: false,
+    });
+    expect(engine.getAmmunitionStatus({ inventory: [] }, { name: "Arco", reload: 0 })).toMatchObject({
+      requiresAmmunition: false,
+      quantity: 0,
+      available: true,
+    });
   });
 
   it("applies ABP potency, striking, armor and resilience once", () => {
@@ -260,6 +323,27 @@ describe("PF2E_ENGINE Mechanics & Calculations", () => {
     expect(stats.bulk.max).toBe(13); // 10 + 3 Str
     expect(stats.bulk.encumbered).toBe(8); // 5 + 3 Str
     expect(stats.bulk.isEncumbered).toBe(false);
+  });
+
+  it("does not count zero-quantity inventory entries toward Bulk", () => {
+    const stats = engine.calculateCharacterStats({
+      ...baseCharacter,
+      coins: { gp: 0, sp: 0, cp: 0, pl: 0 },
+      inventory: [{ name: "Carga removida", qty: 0, bulk: 10 }],
+    });
+    expect(stats.bulk.current).toBe(0);
+  });
+
+  it("includes nested container contents in Bulk without double-counting shared entries", () => {
+    const nestedItem = { name: "Ferramentas", qty: 2, bulk: 2 };
+    const container = { name: "Baú", qty: 1, bulk: 1, items: [nestedItem] };
+    const stats = engine.calculateCharacterStats({
+      ...baseCharacter,
+      coins: { gp: 0, sp: 0, cp: 0, pl: 0 },
+      inventory: [nestedItem],
+      containers: [container],
+    });
+    expect(stats.bulk.current).toBe(5);
   });
 
   it("normalizes negative shield-block damage to zero", () => {

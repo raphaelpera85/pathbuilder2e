@@ -44,6 +44,19 @@ describe("P2: Motor de Grimório & Spellcasting Automático (Spellcasting Engine
     expect(engine.calculateSpellcasting({ level: 1, class: "Mago", abilities: { int: 16 } })).toMatchObject({ isSpellcaster: true, tradition: "arcane", keyAbility: "int" });
   });
 
+  it("mantém magias válidas que ainda exigem escolher uma tradição", () => {
+    const compatibility = engine.getSpellCompatibility({ level: 1, class: "Bruxo (Witch)" }, { level: 1, traditions: ["arcane"] });
+    expect(compatibility).toMatchObject({ state: "requires-choice", reason: "tradition-required" });
+  });
+
+  it("usa level como fallback de ranque para magias importadas do formato legado", () => {
+    const compatibility = engine.getSpellCompatibility(
+      { level: 1, class: "Mago (Wizard)", magicTradition: "Arcana" },
+      { level: 2, traditions: ["arcane"] },
+    );
+    expect(compatibility).toMatchObject({ state: "incompatible", reason: "rank-too-high", maximumRank: 1 });
+  });
+
   it("oculta magias restritas à classe ou ao marcador Deviant", () => {
     const psychicSpell = { id: "spell.test.psychic", rank: 1, classId: "class.psychic", traditions: ["occult"] };
     const deviantSpell = { id: "spell.test.deviant", rank: 1, requiresDeviant: true, traditions: ["arcane"] };
@@ -53,11 +66,33 @@ describe("P2: Motor de Grimório & Spellcasting Automático (Spellcasting Engine
     expect(engine.getSpellCompatibility({ level: 1, class: "Mago", magicTradition: "Arcana", deviant: true }, deviantSpell).state).toBe("available");
   });
 
+  it("mantém magias de receptáculo do Animista disponíveis apenas para a classe correta", () => {
+    const vesselSpell = {
+      id: "spell.animist.traveling_workshop",
+      rank: 1,
+      classId: "class.animist",
+      traditions: ["divine"],
+    };
+    expect(engine.getSpellCompatibility({ level: 1, class: "Animista", magicTradition: "Divina" }, vesselSpell)).toMatchObject({ state: "available", tradition: "divine" });
+    expect(engine.getSpellCompatibility({ level: 1, class: "Mago", magicTradition: "Arcana" }, vesselSpell)).toMatchObject({ state: "incompatible", reason: "class-mismatch" });
+  });
+
   it("aceita gates com múltiplas classes ou ancestralidades", () => {
     expect(engine.getPrerequisiteCompatibility({ level: 1, class: "Mago" }, { classIds: ["class.magus"] })).toMatchObject({ state: "incompatible", reason: "class-mismatch" });
     expect(engine.getPrerequisiteCompatibility({ level: 1, class: "Mago" }, { classIds: ["class.wizard", "class.magus"] }).state).toBe("available");
     expect(engine.getPrerequisiteCompatibility({ level: 1, ancestry: "Humano" }, { ancestryIds: ["ancestry.dwarf", "ancestry.human"] }).state).toBe("available");
     expect(engine.getPrerequisiteCompatibility({ level: 1, class: "Mago" }, { classIds: ["class.wizard"], level: 2 })).toMatchObject({ state: "incompatible", reason: "level-too-low", requiredLevel: 2 });
+  });
+
+  it("resolve gates de classe e ancestralidade quando o catálogo usa nomes localizados", () => {
+    expect(engine.getPrerequisiteCompatibility({ level: 1, class: "Mago" }, { classIds: ["Wizard"] }).state).toBe("available");
+    expect(engine.getPrerequisiteCompatibility({ level: 1, ancestry: "Humano" }, { ancestryIds: ["Human"] }).state).toBe("available");
+    expect(engine.getPrerequisiteCompatibility({ level: 1, class: "Mago" }, { classIds: ["Bárbaro"] }).state).toBe("incompatible");
+  });
+
+  it("preserva gates textuais exatos em fichas importadas sem registro resolvido", () => {
+    expect(engine.getPrerequisiteCompatibility({ level: 1, class: "Classe Externa" }, { classIds: ["Classe Externa"] }).state).toBe("available");
+    expect(engine.getPrerequisiteCompatibility({ level: 1, class: "Classe Externa" }, { classIds: ["Outra Classe"] }).state).toBe("incompatible");
   });
 
   it("deve aceitar aliases da ancestralidade em heranças normalizadas", () => {

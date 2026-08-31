@@ -51,9 +51,33 @@ export interface IPickerItemData {
   minimumLevel?: number;
   classId?: string;
   classIds?: string[];
+  prohibitedClassId?: string;
+  prohibitedClassIds?: string[];
   ancestryId?: string;
   ancestryIds?: string[];
   requiresDeviant?: boolean;
+  requiresFlight?: boolean;
+  requiresPrehensileTongueOrTail?: boolean;
+  requiresShield?: boolean;
+  requiresMounted?: boolean;
+  requiresUnarmored?: boolean;
+  requiredUnarmoredProficiency?: string | number;
+  requiresTwoMeleeWeapons?: boolean;
+  requiresOneHandOneFree?: boolean;
+  requiresSpellcasting?: boolean;
+  requiredCause?: string;
+  requiredFamiliarAbilities?: number;
+  requiredSubclass?: string | string[];
+  requiresDeity?: boolean;
+  requiresNoPatron?: boolean;
+  requiredSanctification?: string | string[];
+  prohibitedSanctification?: string;
+  requiredResearchField?: string;
+  /** Uses the character's selected magical tradition to resolve a skill prerequisite. */
+  requiredSkillByTradition?: boolean;
+  requiredSkillRank?: string | number;
+  maxClassHpPerLevel?: number;
+  requiresWeaponProficiency?: string;
   rarity?: "common" | "uncommon" | "rare" | "unique";
   price?: string;
   bulk?: string | number;
@@ -150,12 +174,16 @@ export interface ICharacterDocument {
   };
   perceptionRank?: string;
   magicTradition?: string;
+  researchField?: string;
+  weaponProficiencies?: Record<string, string | number>;
   equippedArmor?: Record<string, unknown>;
   weapons?: Array<Record<string, unknown>>;
   skills?: Record<string, string>;
   loreSkills?: Array<{ name: string; rank: string }>;
   feats?: Array<Record<string, unknown>>;
   archetypes?: Array<Record<string, unknown>>;
+  classFeatures?: Array<Record<string, unknown> | string>;
+  actions?: Array<Record<string, unknown> | string>;
   spells?: Array<Record<string, unknown>>;
   rituals?: Array<Record<string, unknown>>;
   conditions?: Array<{ name: string; value?: number; description?: string }>;
@@ -247,6 +275,7 @@ export interface IPickerOpenOptions {
   slotId?: string;
   level?: number;
   filterType?: string;
+  heritageInnate?: boolean;
 }
 
 export interface IPickerController {

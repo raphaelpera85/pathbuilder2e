@@ -10,7 +10,7 @@ function escapeInlineArgument(value) {
 
 function mergeCatalogRecords(primary = [], secondary = []) {
   const merged = [];
-  const seen = new Set();
+  const seen = new Map();
   const identityKeys = (record) => [record.id, record.name, record.names?.["pt-BR"], record.names?.en, record.names?.es]
     .filter(Boolean)
     .flatMap((value) => {
@@ -22,15 +22,58 @@ function mergeCatalogRecords(primary = [], secondary = []) {
         .trim();
       return [normalized, simplified].filter(Boolean);
     });
+  const richnessScore = (record) => {
+    if (!record) return 0;
+    const localized = (field) => ["pt-BR", "en", "es"].filter((locale) => record[field]?.[locale]).length;
+    return localized("names") * 3
+      + localized("summaries") * 3
+      + (record.source?.book ? 2 : 0)
+      + (Number.isInteger(record.source?.page) ? 2 : 0)
+      + (record.description ? 2 : 0)
+      + ["traits", "attacks", "prerequisites", "traditions", "effects"].reduce((score, field) => score + (Array.isArray(record[field]) && record[field].length ? 1 : 0), 0)
+      + Object.keys(record).length / 100;
+  };
+  const mergeLocalized = (fallback, preferred) => ({ ...(fallback || {}), ...(preferred || {}) });
+  const mergeRecord = (existing, incoming) => {
+    const preferred = richnessScore(incoming) > richnessScore(existing) ? incoming : existing;
+    const fallback = preferred === incoming ? existing : incoming;
+    const result = { ...fallback, ...preferred };
+    result.id = existing.id || incoming.id;
+    result.names = mergeLocalized(fallback.names, preferred.names);
+    result.summaries = mergeLocalized(fallback.summaries, preferred.summaries);
+    result.source = { ...(fallback.source || {}), ...(preferred.source || {}) };
+    for (const field of ["traits", "attacks", "prerequisites", "traditions", "effects"]) {
+      if (Array.isArray(fallback[field]) && (!Array.isArray(preferred[field]) || preferred[field].length < fallback[field].length)) result[field] = fallback[field];
+    }
+    return result;
+  };
+  const canMerge = (existing, incoming) => !existing?.id || !incoming?.id || existing.id === incoming.id;
   [...primary, ...secondary].forEach((record) => {
     if (!record) return;
     // Aliases mantêm fichas antigas compatíveis, mas nunca devem aparecer
     // como escolhas duplicadas no construtor.
     if (String(record.id || "").includes(".legacy_alias.")) return;
     const keys = identityKeys(record);
-    if (!keys.length || keys.some((key) => seen.has(key))) return;
-    keys.forEach((key) => seen.add(key));
-    merged.push(record);
+    if (!keys.length) return;
+    const existingIndex = keys
+      .flatMap((key) => seen.get(key) || [])
+      .find((index, position, candidates) => candidates.indexOf(index) === position && canMerge(merged[index], record));
+    if (existingIndex !== undefined) {
+      const combined = mergeRecord(merged[existingIndex], record);
+      merged[existingIndex] = combined;
+      identityKeys(combined).forEach((key) => {
+        const indexes = seen.get(key) || [];
+        if (!indexes.includes(existingIndex)) indexes.push(existingIndex);
+        seen.set(key, indexes);
+      });
+      return;
+    }
+    const index = merged.push(record) - 1;
+    keys.forEach((key) => {
+      const indexes = seen.get(key) || [];
+      if (!indexes.includes(index)) indexes.push(index);
+      seen.set(key, indexes);
+    });
   });
   return merged;
 }
@@ -41,9 +84,13 @@ function getObjectCatalogRecords(collection = {}) {
   const aliases = entries.filter(([, record]) => String(record?.id || "").includes(".legacy_alias."));
   const seen = new Set();
   return [...canonical, ...aliases].map(([key, record]) => ({ key, record })).filter(({ key, record }) => {
-    const semanticKey = record?.names?.en || record?.id || key;
-    if (seen.has(semanticKey)) return false;
-    seen.add(semanticKey);
+    // Registros com IDs distintos podem compartilhar um nome localizado
+    // (variantes, versões ou traduções homônimas) e não podem desaparecer do
+    // picker. Aliases sem um ID próprio continuam sendo deduplicados pelo ID;
+    // somente registros realmente sem ID recorrem ao nome/chave semântica.
+    const identityKey = record?.id ? `id:${record.id}` : `name:${record?.names?.en || record?.name || key}`;
+    if (seen.has(identityKey)) return false;
+    seen.add(identityKey);
     return true;
   });
 }
@@ -890,7 +937,43 @@ class PathbuilderApp {
     `;
   }
 
+  inventoryIdentity(entry) {
+    return String(entry?.id || entry?.name || "").trim().toLowerCase();
+  }
+
+  isUnarmoredEntry(entry) {
+    const identity = String(entry?.id || "").trim().toLowerCase();
+    const name = String(entry?.name || "").trim();
+    return identity === "armor.unarmored" || /^(unarmored|sem armadura|sin armadura|roupas?|clothing)$/i.test(name);
+  }
+
+  storeInventoryEntry(entry) {
+    if (!entry || this.isUnarmoredEntry(entry)) return;
+    if (!Array.isArray(this.character.inventory)) this.character.inventory = [];
+    const identity = this.inventoryIdentity(entry);
+    const existing = this.character.inventory.find((candidate) => identity && this.inventoryIdentity(candidate) === identity);
+    if (existing) existing.qty = Math.max(1, Number(existing.qty) || 1) + Math.max(1, Number(entry.qty) || 1);
+    else this.character.inventory.push({ ...entry, qty: Math.max(1, Number(entry.qty) || 1) });
+  }
+
+  equipArmorFromPicker(armor) {
+    if (!armor) return;
+    const previous = this.character.equippedArmor;
+    if (previous && !this.isUnarmoredEntry(previous) && this.inventoryIdentity(previous) !== this.inventoryIdentity(armor)) {
+      this.storeInventoryEntry(previous);
+    }
+    this.character.equippedArmor = { ...armor };
+  }
+
+  equipShieldFromPicker(shield) {
+    if (!shield) return;
+    const previous = this.character.equippedShield;
+    if (previous && this.inventoryIdentity(previous) !== this.inventoryIdentity(shield)) this.storeInventoryEntry(previous);
+    this.character.equippedShield = { ...shield, currentHp: shield.currentHp ?? shield.maxHp };
+  }
+
   stowArmor() {
+    this.storeInventoryEntry(this.character.equippedArmor);
     this.character.equippedArmor = { name: "Unarmored", acBonus: 0, dexCap: 5 };
     this.saveCharacterLocal(false);
     this.renderAll();
@@ -962,6 +1045,7 @@ class PathbuilderApp {
   }
 
   stowShield() {
+    this.storeInventoryEntry(this.character.equippedShield);
     this.character.equippedShield = null;
     this.saveCharacterLocal(false);
     this.renderAll();
@@ -1341,9 +1425,29 @@ class PathbuilderApp {
         "ability-too-low": "O pré-requisito de atributo não foi atendido.",
         "skill-rank-too-low": "O pré-requisito de proficiência de perícia não foi atendido.",
         "proficiency-too-low": "O pré-requisito de proficiência de combate não foi atendido.",
+        "weapon-proficiency-too-low": "O pré-requisito de proficiência com armas não foi atendido.",
         "spellcasting-required": "Requer uma classe conjuradora.",
+        "equipment-required": `Requer o equipamento: ${compatibility.missingEquipment}.`,
         "dedication-required": "Requer a dedicação indicada.",
-        "deviant-required": "Requer uma habilidade desviante."
+        "flight-required": "Requer uma forma de voo conhecida ou obtida.",
+        "anatomy-required": "Requer língua preênsil ou cauda compatível.",
+        "shield-required": "Requer um escudo empunhado.",
+        "mounted-required": "Requer estar montado.",
+        "unarmored-required": "Requer não estar usando armadura.",
+        "unarmored-proficiency-too-low": "Requer Especialista em Defesa sem Armadura.",
+        "two-melee-weapons-required": "Requer duas armas corpo a corpo empunhadas.",
+        "one-hand-free-required": "Requer uma arma de uma mão e a outra mão livre.",
+        "deviant-required": "Requer uma habilidade desviante.",
+        "deity-required": "Requer uma divindade ou filosofia selecionada.",
+        "patron-must-be-absent": "Requer que a ficha não tenha patrono.",
+        "subclass-mismatch": "A subclasse escolhida não atende ao pré-requisito.",
+        "tradition-skill-rank-too-low": `Requer ${compatibility.requiredRank} em ${compatibility.skill}.`,
+        "sanctification-mismatch": "A santificação da causa não atende ao pré-requisito.",
+        "sanctification-prohibited": "A santificação da causa é proibida para esta opção.",
+        "feat-required": `Requer o talento: ${compatibility.requiredFeat}.`,
+        "action-required": `Requer a ação: ${compatibility.requiredFeat}.`,
+        "undead-prohibited": "Esta opção exige que o personagem não seja morto-vivo.",
+        "research-field-mismatch": "O campo de pesquisa selecionado não atende ao requisito."
       },
       en: {
         "level-too-low": `Requires level ${compatibility.requiredLevel}.`,
@@ -1352,9 +1456,29 @@ class PathbuilderApp {
         "ability-too-low": "The ability prerequisite is not met.",
         "skill-rank-too-low": "The skill proficiency prerequisite is not met.",
         "proficiency-too-low": "The combat proficiency prerequisite is not met.",
+        "weapon-proficiency-too-low": "The weapon proficiency prerequisite is not met.",
         "spellcasting-required": "Requires a spellcasting class.",
+        "equipment-required": `Requires the equipment: ${compatibility.missingEquipment}.`,
         "dedication-required": "Requires the listed dedication.",
-        "deviant-required": "Requires a deviant ability."
+        "flight-required": "Requires a known or granted form of flight.",
+        "anatomy-required": "Requires a compatible prehensile tongue or tail.",
+        "shield-required": "Requires a wielded shield.",
+        "mounted-required": "Requires being mounted.",
+        "unarmored-required": "Requires not wearing armor.",
+        "unarmored-proficiency-too-low": "Requires expert unarmored defense proficiency.",
+        "two-melee-weapons-required": "Requires two wielded melee weapons.",
+        "one-hand-free-required": "Requires a one-handed weapon and one free hand.",
+        "deviant-required": "Requires a deviant ability.",
+        "deity-required": "Requires a selected deity or philosophy.",
+        "patron-must-be-absent": "Requires the character to have no patron.",
+        "subclass-mismatch": "The selected subclass does not meet the prerequisite.",
+        "tradition-skill-rank-too-low": `Requires ${compatibility.requiredRank} in ${compatibility.skill}.`,
+        "sanctification-mismatch": "The cause's sanctification does not meet the prerequisite.",
+        "sanctification-prohibited": "The cause's sanctification is prohibited for this option.",
+        "feat-required": `Requires the feat: ${compatibility.requiredFeat}.`,
+        "action-required": `Requires the action: ${compatibility.requiredFeat}.`,
+        "undead-prohibited": "This option requires the character not to be undead.",
+        "research-field-mismatch": "The selected research field does not meet the requirement."
       },
       es: {
         "level-too-low": `Requiere nivel ${compatibility.requiredLevel}.`,
@@ -1363,9 +1487,29 @@ class PathbuilderApp {
         "ability-too-low": "No se cumple el requisito de atributo.",
         "skill-rank-too-low": "No se cumple el requisito de competencia de habilidad.",
         "proficiency-too-low": "No se cumple el requisito de competencia de combate.",
+        "weapon-proficiency-too-low": "No se cumple el requisito de competencia con armas.",
         "spellcasting-required": "Requiere una clase lanzadora de conjuros.",
+        "equipment-required": `Requiere el equipo: ${compatibility.missingEquipment}.`,
         "dedication-required": "Requiere la dedicación indicada.",
-        "deviant-required": "Requiere una habilidad desviada."
+        "flight-required": "Requiere una forma de vuelo conocida u obtenida.",
+        "anatomy-required": "Requiere una lengua prensil o cola compatible.",
+        "shield-required": "Requiere un escudo empuñado.",
+        "mounted-required": "Requiere estar montado.",
+        "unarmored-required": "Requiere no llevar armadura.",
+        "unarmored-proficiency-too-low": "Requiere competencia experta en defensa sin armadura.",
+        "two-melee-weapons-required": "Requiere dos armas cuerpo a cuerpo empuñadas.",
+        "one-hand-free-required": "Requiere un arma de una mano y la otra mano libre.",
+        "deviant-required": "Requiere una habilidad desviada.",
+        "deity-required": "Requiere una deidad o filosofía seleccionada.",
+        "patron-must-be-absent": "Requiere que el personaje no tenga patrón.",
+        "subclass-mismatch": "La subclase elegida no cumple el requisito.",
+        "tradition-skill-rank-too-low": `Requiere ${compatibility.requiredRank} en ${compatibility.skill}.`,
+        "sanctification-mismatch": "La santificación de la causa no cumple el requisito.",
+        "sanctification-prohibited": "La santificación de la causa está prohibida para esta opción.",
+        "feat-required": `Requiere el dote: ${compatibility.requiredFeat}.`,
+        "action-required": `Requiere la acción: ${compatibility.requiredFeat}.`,
+        "undead-prohibited": "Esta opción exige que el personaje no sea muerto viviente.",
+        "research-field-mismatch": "El campo de investigación elegido no cumple el requisito."
       }
     };
     return messages[locale]?.[compatibility.reason] || compatibility.reason;
@@ -1410,8 +1554,22 @@ class PathbuilderApp {
       if (Array.isArray(this.character.spells)) {
         this.character.spells = this.character.spells.filter(spell => PF2E_ENGINE.getSpellCompatibility(this.character, spell).state !== "incompatible");
       }
+      if (Array.isArray(this.character.pets)) {
+        this.character.pets = this.character.pets.filter(pet => PF2E_ENGINE.getPrerequisiteCompatibility(this.character, pet).state !== "incompatible");
+      }
     }
     this.reconcileSpellcastingProfile();
+  }
+
+  applySubclassSelection(item) {
+    if (!item) return;
+    const previousSubclass = this.character.subclass;
+    this.character.subclass = item.name;
+    if (previousSubclass === item.name) return;
+    this.reconcileSpellcastingProfile();
+    if (Array.isArray(this.character.spells)) {
+      this.character.spells = this.character.spells.filter((spell) => PF2E_ENGINE.getSpellCompatibility(this.character, spell).state !== "incompatible");
+    }
   }
 
   clearProgressionSlots(fragment) {
@@ -1459,9 +1617,9 @@ class PathbuilderApp {
     const rituals = this.character.rituals || [];
     const locale = this.getCurrentLocale();
     const copy = {
-      "pt-BR": { emptySpells: "Nenhuma magia adicionada.", emptyRituals: "Nenhum ritual aprendido.", rank: "Ranque", source: "Fonte" },
-      en: { emptySpells: "No spells added.", emptyRituals: "No rituals learned.", rank: "Rank", source: "Source" },
-      es: { emptySpells: "No hay conjuros añadidos.", emptyRituals: "No hay rituales aprendidos.", rank: "Rango", source: "Fuente" }
+      "pt-BR": { emptySpells: "Nenhuma magia adicionada.", emptyRituals: "Nenhum ritual aprendido.", rank: "Ranque", source: "Fonte", available: "Disp.", spend: "Gastar", restore: "Restaurar", focus: "Pontos de Foco", useFocus: "Usar Foco", refocus: "Refocar (+1)", spellSlots: "Espaços de Magia", bounded: "Magia Limitada", caster: "Conjurador", restoreAll: "Restaurar Todos os Espaços", edit: "Editar", remove: "Remover" },
+      en: { emptySpells: "No spells added.", emptyRituals: "No rituals learned.", rank: "Rank", source: "Source", available: "Avail.", spend: "Spend", restore: "Restore", focus: "Focus Points", useFocus: "Use Focus", refocus: "Refocus (+1)", spellSlots: "Spell Slots", bounded: "Bounded Magic", caster: "Spellcaster", restoreAll: "Restore All Spell Slots", edit: "Edit", remove: "Remove" },
+      es: { emptySpells: "No hay conjuros añadidos.", emptyRituals: "No hay rituales aprendidos.", rank: "Rango", source: "Fuente", available: "Disp.", spend: "Gastar", restore: "Restaurar", focus: "Puntos de Foco", useFocus: "Usar Foco", refocus: "Recobrar (+1)", spellSlots: "Espacios de Conjuros", bounded: "Magia Limitada", caster: "Lanzador", restoreAll: "Restaurar Todos los Espacios", edit: "Editar", remove: "Eliminar" }
     }[locale];
 
     const spellcasting = this.calc.spellcasting || (typeof PF2E_ENGINE !== "undefined" && PF2E_ENGINE.calculateSpellcasting ? PF2E_ENGINE.calculateSpellcasting(this.character) : { dc: this.calc.classDc, attackMod: this.calc.classDc - 10, traditionName: "Arcana", maxFocusPoints: 0, currentFocusPoints: 0 });
@@ -1499,11 +1657,11 @@ class PathbuilderApp {
             <div style="background:var(--pb-bg-panel); border:1px solid var(--pb-border); border-radius:4px; padding:6px 10px; display:flex; justify-content:space-between; align-items:center;">
               <div>
                 <span style="font-weight:bold; font-size:12px; color:var(--pb-orange);">${copy.rank} ${r}:</span>
-                <span style="font-size:12px; margin-left:4px;">${remaining} / ${total} Disp.</span>
+                <span style="font-size:12px; margin-left:4px;">${remaining} / ${total} ${copy.available}</span>
               </div>
               <div style="display:flex; gap:4px;">
-                <button type="button" onclick="app.expendSpellSlot(${r})" ${remaining <= 0 ? 'disabled' : ''} style="background:var(--pb-orange); color:#000; font-weight:bold; border:none; padding:2px 8px; border-radius:3px; cursor:pointer; font-size:11px;">Gastar</button>
-                <button type="button" onclick="app.restoreSpellSlot(${r})" ${used <= 0 ? 'disabled' : ''} style="background:#334155; color:#fff; border:none; padding:2px 8px; border-radius:3px; cursor:pointer; font-size:11px;">Restaurar</button>
+                <button type="button" onclick="app.expendSpellSlot(${r})" ${remaining <= 0 ? 'disabled' : ''} style="background:var(--pb-orange); color:#000; font-weight:bold; border:none; padding:2px 8px; border-radius:3px; cursor:pointer; font-size:11px;">${copy.spend}</button>
+                <button type="button" onclick="app.restoreSpellSlot(${r})" ${used <= 0 ? 'disabled' : ''} style="background:#334155; color:#fff; border:none; padding:2px 8px; border-radius:3px; cursor:pointer; font-size:11px;">${copy.restore}</button>
               </div>
             </div>
           `;
@@ -1515,12 +1673,12 @@ class PathbuilderApp {
         focusHtml = `
           <div style="background:var(--pb-bg-panel); border:1px solid var(--pb-border); border-radius:4px; padding:6px 10px; display:flex; justify-content:space-between; align-items:center;">
             <div>
-              <span style="font-weight:bold; font-size:12px; color:#38bdf8;">Pontos de Foco:</span>
+              <span style="font-weight:bold; font-size:12px; color:#38bdf8;">${copy.focus}:</span>
               <span style="font-size:12px; margin-left:4px;">${curFocus} / ${slotsInfo.focusPoints}</span>
             </div>
             <div style="display:flex; gap:4px;">
-              <button type="button" onclick="app.useFocusPoint()" ${curFocus <= 0 ? 'disabled' : ''} style="background:#0284c7; color:#fff; font-weight:bold; border:none; padding:2px 8px; border-radius:3px; cursor:pointer; font-size:11px;">Usar Foco</button>
-              <button type="button" onclick="app.refocusPoint()" ${curFocus >= slotsInfo.focusPoints ? 'disabled' : ''} style="background:#334155; color:#fff; border:none; padding:2px 8px; border-radius:3px; cursor:pointer; font-size:11px;">Refocar (+1)</button>
+              <button type="button" onclick="app.useFocusPoint()" ${curFocus <= 0 ? 'disabled' : ''} style="background:#0284c7; color:#fff; font-weight:bold; border:none; padding:2px 8px; border-radius:3px; cursor:pointer; font-size:11px;">${copy.useFocus}</button>
+              <button type="button" onclick="app.refocusPoint()" ${curFocus >= slotsInfo.focusPoints ? 'disabled' : ''} style="background:#334155; color:#fff; border:none; padding:2px 8px; border-radius:3px; cursor:pointer; font-size:11px;">${copy.refocus}</button>
             </div>
           </div>
         `;
@@ -1529,8 +1687,8 @@ class PathbuilderApp {
       slotsTrackerHtml = `
         <div style="margin-bottom:16px; display:flex; flex-direction:column; gap:8px;">
           <div style="display:flex; justify-content:space-between; align-items:center;">
-            <strong style="font-size:12px; color:#fff;">Espaços de Magia (${slotsInfo && slotsInfo.isBounded ? "Magia Limitada" : "Conjurador"})</strong>
-            <button type="button" onclick="app.restoreAllSpellSlots()" style="background:none; border:1px solid var(--pb-border); color:var(--pb-orange); padding:2px 8px; border-radius:4px; font-size:11px; cursor:pointer;">⚡ Restaurar Todos os Espaços</button>
+            <strong style="font-size:12px; color:#fff;">${copy.spellSlots} (${slotsInfo && slotsInfo.isBounded ? copy.bounded : copy.caster})</strong>
+            <button type="button" onclick="app.restoreAllSpellSlots()" style="background:none; border:1px solid var(--pb-border); color:var(--pb-orange); padding:2px 8px; border-radius:4px; font-size:11px; cursor:pointer;">⚡ ${copy.restoreAll}</button>
           </div>
           <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:8px;">
             ${ranksHtml}
@@ -1556,13 +1714,29 @@ class PathbuilderApp {
           <article class="strike-card spell-card">
             <div class="strike-header">
               <span><strong>✨ ${escapeHtml(displayName)}</strong> · ${copy.rank} ${escapeHtml(sp.rank ?? sp.level ?? "")}</span>
-              <div style="display:flex; gap:4px;"><button type="button" onclick="app.editCharacterCollectionItem('spells', ${idx})" aria-label="Editar ${escapeHtml(displayName)}">✎</button><button type="button" onclick="app.removeSpell(${idx})" aria-label="Remover ${escapeHtml(displayName)}">🗑️</button></div>
+              <div style="display:flex; gap:4px;"><button type="button" onclick="app.editCharacterCollectionItem('spells', ${idx})" aria-label="${copy.edit} ${escapeHtml(displayName)}">✎</button><button type="button" onclick="app.removeSpell(${idx})" aria-label="${copy.remove} ${escapeHtml(displayName)}">🗑️</button></div>
             </div>
             <div class="spell-card-meta">${escapeHtml(casting)}${traditions ? ` · ${escapeHtml(traditions)}` : ""}</div>
             ${compatibilityMessage ? `<div class="spell-compatibility-warning">⚠ ${escapeHtml(compatibilityMessage)}</div>` : sp.manual ? `<div class="spell-compatibility-warning review">⚠ ${locale === "pt-BR" ? "Entrada manual ainda não verificada." : locale === "en" ? "Manual entry not yet verified." : "Entrada manual aún no verificada."}</div>` : ""}
             <p>${escapeHtml(description)}</p>
             ${source ? `<small>${copy.source}: ${escapeHtml(source)}</small>` : ""}
           </article>`;
+      }).join("");
+    }
+
+    const innateSpells = Array.isArray(this.character.heritageInnateSpells) ? this.character.heritageInnateSpells : [];
+    if (innateSpells.length) {
+      const innateLabel = locale === "en" ? "Innate" : locale === "es" ? "Innato" : "Inata";
+      spellsContent += innateSpells.map((sp, idx) => {
+        const displayName = sp.names?.[locale] || sp.name;
+        const description = sp.summaries?.[locale] || sp.description || "";
+        const traditions = sp.traditionNames?.[locale]?.join(", ") || sp.traditions?.join(", ") || "occult";
+        const source = sp.source?.book ? `${sp.source.book}${sp.source.page ? ` · p. ${sp.source.page}` : ""}` : "";
+        return `<article class="strike-card spell-card">
+          <div class="strike-header"><span><strong>✨ ${escapeHtml(displayName)}</strong> · ${innateLabel} · ${copy.rank} 0</span>
+            <div style="display:flex; gap:4px;"><button type="button" onclick="app.editCharacterCollectionItem('heritageInnateSpells', ${idx})" aria-label="${copy.edit} ${escapeHtml(displayName)}">✎</button><button type="button" onclick="app.removeHeritageInnateSpell(${idx})" aria-label="${copy.remove} ${escapeHtml(displayName)}">🗑️</button></div>
+          </div><div class="spell-card-meta">${innateLabel} · ${escapeHtml(traditions)}</div><p>${escapeHtml(description)}</p>${source ? `<small>${copy.source}: ${escapeHtml(source)}</small>` : ""}
+        </article>`;
       }).join("");
     }
 
@@ -1579,7 +1753,7 @@ class PathbuilderApp {
         <article class="strike-card ritual-card">
           <div class="strike-header">
             <span><strong>◈ ${escapeHtml(displayName)}</strong> · ${copy.rank} ${escapeHtml(ritual.rank ?? "")}</span>
-            <div style="display:flex; gap:4px;"><button type="button" onclick="app.editCharacterCollectionItem('rituals', ${idx})" aria-label="Editar ${escapeHtml(displayName)}">✎</button><button type="button" onclick="app.removeRitual(${idx})" aria-label="Remover ${escapeHtml(displayName)}">🗑️</button></div>
+            <div style="display:flex; gap:4px;"><button type="button" onclick="app.editCharacterCollectionItem('rituals', ${idx})" aria-label="${copy.edit} ${escapeHtml(displayName)}">✎</button><button type="button" onclick="app.removeRitual(${idx})" aria-label="${copy.remove} ${escapeHtml(displayName)}">🗑️</button></div>
           </div>
           <div class="spell-card-meta">${escapeHtml(casting)}${check ? ` · ${escapeHtml(check)}` : ""}</div>
           <p>${escapeHtml(description)}</p>
@@ -1610,13 +1784,30 @@ class PathbuilderApp {
         const companion = PF2E_ENGINE?.calculateCompanionStats
           ? PF2E_ENGINE.calculateCompanionStats(this.character, pet)
           : pet;
+        const profileLabel = isEn ? "Eidolon matrices" : isEs ? "Matrices del eidolon" : "Matrizes do eidolon";
+        const profileOptions = Array.isArray(companion.profiles) ? companion.profiles : [];
+        const activeProfileIndex = Number.isInteger(companion.profileIndex) ? companion.profileIndex : 0;
+        const profileStats = Array.isArray(companion.profiles) ? companion.profiles.map((profile) => {
+          const abilityNames = isEn
+            ? { str: "STR", dex: "DEX", con: "CON", int: "INT", wis: "WIS", cha: "CHA" }
+            : isEs
+              ? { str: "FUE", dex: "DES", con: "CON", int: "INT", wis: "SAB", cha: "CAR" }
+              : { str: "FOR", dex: "DES", con: "CON", int: "INT", wis: "SAB", cha: "CAR" };
+          const scores = Object.entries(profile.abilities || {}).map(([key, value]) => `${abilityNames[key] || key.toUpperCase()} ${value}`).join(" · ");
+          const selectedMark = profileOptions[activeProfileIndex] === profile ? " ✓" : "";
+          return `<div><strong>${escapeHtml(profile.name || "")}${selectedMark}</strong> · ${escapeHtml(scores)} · CA +${escapeHtml(profile.acBonus ?? 0)} (DES +${escapeHtml(profile.dexCap ?? 0)})</div>`;
+        }).join("") : "";
+        const profileSelector = profileOptions.length > 1
+          ? `<label style="display:flex; align-items:center; gap:6px; margin-top:6px;"><span>${isEn ? "Active matrix:" : isEs ? "Matriz activa:" : "Matriz ativa:"}</span><select onchange="app.setCompanionProfile(${idx}, Number(this.value))">${profileOptions.map((profile, profileIndex) => `<option value="${profileIndex}" ${profileIndex === activeProfileIndex ? "selected" : ""}>${escapeHtml(profile.name || `Profile ${profileIndex + 1}`)}</option>`).join("")}</select></label>`
+          : "";
         return `
         <div class="strike-card" style="border-left-color: var(--pb-orange); background: var(--pb-bg-panel); margin-bottom:12px;">
           <div class="strike-header">
             <div style="font-weight:bold; color:var(--pb-orange); font-size:15px;">🐾 ${escapeHtml(this.localizeItemName(pet.name, locale))}</div>
-            <div style="display:flex; gap:4px;"><button onclick="app.editCharacterCollectionItem('pets', ${idx})" title="${isEn ? "Edit Pet" : isEs ? "Editar mascota" : "Editar mascote"}" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer; font-size:14px;">✎</button><button onclick="app.removePet(${idx})" title="${isEn ? "Remove Pet" : "Remover Mascote"}" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer; font-size:14px;">🗑️</button></div>
+            <div style="display:flex; gap:4px;"><button onclick="app.editCharacterCollectionItem('pets', ${idx})" title="${isEn ? "Edit Pet" : isEs ? "Editar mascota" : "Editar mascote"}" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer; font-size:14px;">✎</button><button onclick="app.removePet(${idx})" title="${isEn ? "Remove Pet" : isEs ? "Eliminar mascota" : "Remover mascote"}" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer; font-size:14px;">🗑️</button></div>
           </div>
           <div style="font-size:11px; color:var(--pb-text-muted); margin-bottom:8px;">${escapeHtml(pet.type || (isEn ? "Companion" : "Companheiro"))}</div>
+          ${profileStats ? `<div style="font-size:11px; line-height:1.5; color:#cbd5e1; border:1px solid var(--pb-border); border-radius:5px; padding:6px; margin-bottom:8px;"><strong>${profileLabel}:</strong>${profileStats}${profileSelector}</div>` : ""}
           <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:6px; margin-bottom:10px;">
             <div class="vital-box">
               <span class="vital-label">${isEn ? "HP" : isEs ? "PG" : "PV"}</span>
@@ -1628,6 +1819,8 @@ class PathbuilderApp {
           </div>
           <div style="font-size:12px; line-height:1.6;">
             ${(companion.attacks || []).map(atk => `• <strong>${isEn ? "Attack" : isEs ? "Ataque" : "Ataque"} ${escapeHtml(atk.name)}:</strong> ${escapeHtml(atk.bonus ?? "—")} | <strong>${escapeHtml(atk.damage ?? "—")}</strong>.<br>`).join('')}
+            ${Array.isArray(pet.grantedAbilities) && pet.grantedAbilities.length ? `• <strong>${isEn ? "Granted familiar abilities:" : isEs ? "Habilidades concedidas:" : "Habilidades concedidas:"}</strong> ${escapeHtml(pet.grantedAbilities.join(", "))}<br>` : ''}
+            ${pet.requiredFamiliarAbilities ? `• <strong>${isEn ? "Required familiar abilities:" : isEs ? "Habilidades de familiar requeridas:" : "Habilidades de familiar necessárias:"}</strong> ${escapeHtml(pet.requiredFamiliarAbilities)}${pet.requiresSpellcasting ? ` (${isEn ? "spellcasting required" : isEs ? "requiere lanzamiento de conjuros" : "requer conjuração"})` : ''}<br>` : ''}
             ${companion.supportBenefit ? `• <strong>${isEn ? "Support Benefit:" : isEs ? "Beneficio de Soporte:" : "Benefício de Suporte:"}</strong> ${escapeHtml(companion.supportBenefit)}<br>` : ''}
             ${companion.commandAction ? `• <strong>${isEn ? "Command Animal [1 Action]:" : isEs ? "Comandar Animal [1 Acción]:" : "Comandar Animal [1 Ação]:"}</strong> ${escapeHtml(companion.commandAction)}` : ''}
           </div>
@@ -1646,11 +1839,20 @@ class PathbuilderApp {
   }
 
   removePet(idx) {
-    if (this.character.pets) {
-      this.character.pets.splice(idx, 1);
-      this.saveCharacterLocal(false);
-      this.renderAll();
-    }
+    return this.removeCharacterCollectionItem("pets", idx);
+  }
+
+  setCompanionProfile(petIndex, profileIndex) {
+    const pet = this.character?.pets?.[Number(petIndex)];
+    const profiles = Array.isArray(pet?.profiles) ? pet.profiles : [];
+    const nextIndex = Number(profileIndex);
+    if (!pet || !profiles.length || !Number.isInteger(nextIndex) || nextIndex < 0 || nextIndex >= profiles.length) return false;
+    pet.profileIndex = nextIndex;
+    // O perfil fornece a matriz base; os campos editados manualmente (PV,
+    // ataques etc.) permanecem intactos e continuam tendo precedência.
+    this.saveCharacterLocal(false);
+    this.renderAll();
+    return true;
   }
 
   // ABA DE TALENTOS
@@ -1712,13 +1914,23 @@ class PathbuilderApp {
       desc: a.description || "",
       type: isEn ? "Class / Feat" : "Classe / Talento"
     }));
-    const allActions = defaultActions.concat(customActions);
+    const selectedActions = (this.character.actions || []).map((action, index) => ({
+      name: this.localizeItemName(action.name, locale),
+      cost: action.actionType || action.actions || (isEn ? "Special" : isEs ? "Especial" : "Especial"),
+      desc: action.description || action.desc || "",
+      type: isEn ? "Selected action" : isEs ? "Acción seleccionada" : "Ação selecionada",
+      collectionIndex: index
+    }));
+    const allActions = defaultActions.concat(customActions, selectedActions);
 
     list.innerHTML = allActions.map(act => `
       <div class="strike-card" style="border-left-color: var(--pb-orange); margin-bottom:8px;">
         <div class="strike-header">
           <div style="font-weight:bold; color:var(--pb-orange); font-size:13px;">${escapeHtml(act.name)}</div>
-          <span class="trait-tag" style="background:#451a03; color:#fdba74; border-color:#78350f;">${escapeHtml(act.cost || (isEn ? "1 Action" : "1 Ação"))}</span>
+          <div style="display:flex; align-items:center; gap:5px;">
+            <span class="trait-tag" style="background:#451a03; color:#fdba74; border-color:#78350f;">${escapeHtml(act.cost || (isEn ? "1 Action" : "1 Ação"))}</span>
+            ${act.collectionIndex !== undefined ? `<button type="button" onclick="app.editCharacterCollectionItem('actions', ${act.collectionIndex})" aria-label="${isEn ? "Edit action" : isEs ? "Editar acción" : "Editar ação"}" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer;">✎</button><button type="button" onclick="app.removeAction(${act.collectionIndex})" aria-label="${isEn ? "Remove action" : isEs ? "Eliminar acción" : "Remover ação"}" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer;">🗑️</button>` : ""}
+          </div>
         </div>
         <div style="font-size:12px; color:var(--pb-text); margin-top:4px;">${escapeHtml(act.desc || "")}</div>
       </div>
@@ -2187,10 +2399,7 @@ class PathbuilderApp {
   }
 
   removeFormula(idx) {
-    if (!this.character.formulas) return;
-    this.character.formulas.splice(idx, 1);
-    this.saveCharacterLocal(false);
-    this.renderAll();
+    return this.removeCharacterCollectionItem("formulas", idx);
   }
 
   removeCondition(index, isBuff) {
@@ -2202,6 +2411,7 @@ class PathbuilderApp {
 
   // MODAL PICKER DUAL-PANE (SCREENSHOT 3 RECREATION)
   openPicker(type, options) {
+    this.activePickerOptions = options || {};
     if (!window.pathbuilderPicker) {
       this.pendingPicker = { type, options };
       return;
@@ -2219,12 +2429,32 @@ class PathbuilderApp {
     window.pathbuilderPicker?.close();
   }
 
+  getPickerCompatibilityCharacter(type = this.currentPickerType) {
+    const slotLevel = Number(this.activePickerOptions?.level);
+    if (type === "feat" && Number.isInteger(slotLevel) && slotLevel > 0) {
+      // O nível do espaço limita a opção oferecida, mas não altera o nível
+      // persistido da ficha nem o cálculo geral do personagem.
+      return { ...this.character, level: slotLevel };
+    }
+    return this.character;
+  }
+
   filterPickerItemsByCompatibility(type, items = []) {
     const checker = PF2E_ENGINE?.getPrerequisiteCompatibility;
+    const compatibilityCharacter = this.getPickerCompatibilityCharacter(type);
     return items.filter((item) => {
-      if (type === "spell") return PF2E_ENGINE?.getSpellCompatibility?.(this.character, item.data)?.state !== "incompatible";
+      const heritageInnateSpell = type === "spell" && this.activePickerOptions?.heritageInnate === true;
+      // A escolha de truque ocultista inato não exige que a ficha tenha um
+      // perfil de conjuração próprio, mas ainda deve respeitar todos os outros
+      // pré-requisitos explícitos (classe, ancestralidade, Deviant, nível etc.).
+      if (heritageInnateSpell && typeof checker === "function") {
+        const compatibility = checker.call(PF2E_ENGINE, compatibilityCharacter, item.data);
+        if (compatibility?.state === "incompatible" && compatibility.reason !== "spellcasting-required") return false;
+      }
+      if (heritageInnateSpell) return true;
+      if (type === "spell") return PF2E_ENGINE?.getSpellCompatibility?.(compatibilityCharacter, item.data)?.state !== "incompatible";
       if (typeof checker !== "function") return true;
-      return checker.call(PF2E_ENGINE, this.character, item.data)?.state !== "incompatible";
+      return checker.call(PF2E_ENGINE, compatibilityCharacter, item.data)?.state !== "incompatible";
     });
   }
 
@@ -2238,39 +2468,55 @@ class PathbuilderApp {
       return finalize(getObjectCatalogRecords(PF2E_DATA.classes).map(({ key, record }) => ({ name: key, type: "Classe", data: record })));
     }
     if (type === "subclass") {
-      return finalize((PF2E_DATA.subclasses || []).filter(subclass => !String(subclass.id || "").includes(".legacy_alias.")).map(subclass => ({ name: subclass.name, type: "Subclasse", data: subclass })));
+      return finalize(mergeCatalogRecords([], PF2E_DATA.subclasses || []).filter(subclass => !subclass.legacyAlias).map(subclass => ({ name: subclass.name, type: "Subclasse", data: subclass })));
     }
     if (type === "background") {
       return finalize(PF2E_DATA.backgrounds.map(b => ({ name: b.name, type: "Antecedente", data: b })));
     }
     if (type === "weapon") {
-      return finalize(PF2E_DATA.weapons.map(w => ({ name: w.name, type: "Arma", data: w })));
+      return finalize(mergeCatalogRecords([], PF2E_DATA.weapons || []).map(w => ({ name: w.name, type: "Arma", data: w })));
     }
     if (type === "armor") {
-      return finalize(PF2E_DATA.armors.map(a => ({ name: a.name, type: "Armadura", data: a })));
+      return finalize(mergeCatalogRecords([], PF2E_DATA.armors || []).map(a => ({ name: a.name, type: "Armadura", data: a })));
     }
     if (type === "shield") {
-      return finalize((PF2E_DATA.shields || []).map(s => ({ name: s.name, type: "Escudo", data: s })));
+      return finalize(mergeCatalogRecords([], PF2E_DATA.shields || []).map(s => ({ name: s.name, type: "Escudo", data: s })));
     }
     if (type === "heritage") {
-      const ancestry = findCatalogRecord(PF2E_DATA.ancestries, this.character?.ancestry);
-      const heritages = (PF2E_DATA.heritages || []).filter(h => h.ancestryIds?.includes(ancestry?.id)).map(h => ({ name: h.name, type: "Herança", data: h }));
+      // Deixe o resolvedor contextual tratar IDs, chaves, nomes localizados e
+      // gates alternativos; comparação literal ocultava heranças válidas.
+      const heritages = (PF2E_DATA.heritages || []).map(h => ({ name: h.name, type: "Herança", data: h }));
       const versatile = (PF2E_DATA.versatileHeritages || []).map(h => ({ name: h.name, type: "Herança Versátil", data: h }));
       return finalize(heritages.concat(versatile));
     }
     if (type === "archetype") {
-      return finalize((PF2E_DATA.archetypes || []).map(a => ({ name: a.name, type: "Arquétipo", data: a })));
+      return finalize(mergeCatalogRecords([], PF2E_DATA.archetypes || []).map(a => ({ name: a.name, type: "Arquétipo", data: a })));
     }
     if (type === "spell") {
+      const heritageInnate = this.activePickerOptions?.heritageInnate === true;
+      const compatibilityCharacter = this.getPickerCompatibilityCharacter(type);
       const weights = { available: 0, "requires-choice": 1, incompatible: 2 };
-      return finalize((PF2E_DATA.spells || []).map(spell => {
-        const compatibility = PF2E_ENGINE.getSpellCompatibility(this.character, spell);
+      const spellItems = (PF2E_DATA.spells || []).filter((spell) => !heritageInnate || (
+        Number(spell.rank ?? spell.level) === 0 &&
+        (spell.traditions || []).some((tradition) => String(tradition).toLowerCase() === "occult")
+      )).map(spell => {
+        if (heritageInnate) {
+          const prerequisiteCompatibility = PF2E_ENGINE?.getPrerequisiteCompatibility?.(compatibilityCharacter, spell);
+          const selectionState = prerequisiteCompatibility?.state === "incompatible" && prerequisiteCompatibility.reason !== "spellcasting-required"
+            ? "incompatible"
+            : "available";
+          return { name: spell.name, type: "Magia Inata", data: { ...spell, selectionState } };
+        }
+        const compatibility = PF2E_ENGINE.getSpellCompatibility(compatibilityCharacter, spell);
         const selectionMessages = Object.fromEntries(["pt-BR", "en", "es"].map(locale => [locale, this.getSpellCompatibilityMessage(compatibility, locale)]));
         return { name: spell.name, type: "Magia", data: { ...spell, selectionState: compatibility.state, selectionMessages } };
-      }).sort((a, b) => (weights[a.data.selectionState] - weights[b.data.selectionState]) || (a.data.rank - b.data.rank) || a.name.localeCompare(b.name)));
+      });
+      return heritageInnate
+        ? finalize(spellItems)
+        : finalize(spellItems).sort((a, b) => (weights[a.data.selectionState] - weights[b.data.selectionState]) || (a.data.rank - b.data.rank) || a.name.localeCompare(b.name));
     }
     if (type === "ritual") {
-      return finalize((PF2E_DATA.rituals || []).map(r => ({ name: r.name, type: "Ritual", data: r })));
+      return finalize(mergeCatalogRecords([], PF2E_DATA.rituals || []).map(r => ({ name: r.name, type: "Ritual", data: r })));
     }
     if (type === "feat") {
       return finalize(mergeCatalogRecords(sharedCatalogs.feats, PF2E_DATA.feats || this.getFallbackFeatCatalog()).map(f => ({ name: f.name, type: f.type || "Talento", data: f })));
@@ -2286,7 +2532,7 @@ class PathbuilderApp {
       return finalize(mergeCatalogRecords(sharedCatalogs.actions, PF2E_DATA.actions).map(a => ({ name: a.name, type: "Ação", data: a })));
     }
     if (type === "formula") {
-      return finalize((PF2E_DATA.formulas || []).map(f => ({ name: f.name, type: f.category || "Fórmula", data: f })));
+      return finalize(mergeCatalogRecords([], PF2E_DATA.formulas || []).map(f => ({ name: f.name, type: f.category || "Fórmula", data: f })));
     }
     if (type === "condition") {
       return finalize((PF2E_DATA.conditions || this.getConditionCatalog()).map(c => ({ name: c.name, type: "Condição", data: c })));
@@ -2365,7 +2611,7 @@ class PathbuilderApp {
   applyPickerSelection(type, item, options, deductCoins = false) {
     if (!item) return;
     const prerequisiteCompatibility = typeof PF2E_ENGINE?.getPrerequisiteCompatibility === "function"
-      ? PF2E_ENGINE.getPrerequisiteCompatibility(this.character, item.data)
+      ? PF2E_ENGINE.getPrerequisiteCompatibility(this.getPickerCompatibilityCharacter(this.currentPickerType), item.data)
       : { state: "available" };
     if (prerequisiteCompatibility.state === "incompatible") {
       alert(this.getPrerequisiteCompatibilityMessage(prerequisiteCompatibility));
@@ -2379,20 +2625,39 @@ class PathbuilderApp {
 
     if (type === "ancestry") this.applyAncestrySelection(item);
     else if (type === "class") this.applyClassSelection(item);
-    else if (type === "subclass") this.character.subclass = item.name;
+    else if (type === "subclass") this.applySubclassSelection(item);
     else if (type === "archetype") {
       if (!this.character.archetypes) this.character.archetypes = [];
       const exists = this.character.archetypes.some(archetype => (item.data.id && archetype.id === item.data.id) || archetype.name === item.name);
       if (!exists) this.character.archetypes.push({ ...item.data, name: item.name });
     }
-    else if (type === "background") this.character.background = item.name;
+    else if (type === "background") {
+      this.character.background = item.name;
+      const backgroundConstraints = this.getBackgroundBoostConstraints(item.name);
+      if (backgroundConstraints.restricted.length) {
+        if (!this.character.abilityBoosts) this.character.abilityBoosts = {};
+        if (!Array.isArray(this.character.abilityBoosts.background)) this.character.abilityBoosts.background = [];
+        if (!backgroundConstraints.restricted.includes(this.character.abilityBoosts.background[0])) {
+          this.character.abilityBoosts.background[0] = backgroundConstraints.restricted[0];
+        }
+      }
+    }
     else if (type === "weapon") {
       if (!this.character.weapons) this.character.weapons = [];
       this.character.weapons.push({ ...item.data });
-    } else if (type === "armor") this.character.equippedArmor = { ...item.data };
-    else if (type === "shield") this.character.equippedShield = { ...item.data, currentHp: item.data.maxHp };
-    else if (type === "heritage") this.character.heritage = item.name;
+    } else if (type === "armor") this.equipArmorFromPicker(item.data);
+    else if (type === "shield") this.equipShieldFromPicker(item.data);
+    else if (type === "heritage") this.applyHeritageSelection(item);
     else if (type === "spell") {
+      if (options?.heritageInnate) {
+        if (Number(item.data?.rank ?? item.data?.level) !== 0 || !(item.data?.traditions || []).some((tradition) => String(tradition).toLowerCase() === "occult")) return;
+        if (!Array.isArray(this.character.heritageInnateSpells)) this.character.heritageInnateSpells = [];
+        const exists = this.character.heritageInnateSpells.some(spell => item.data.id ? spell.id === item.data.id : spell.name === item.name);
+        if (!exists) this.character.heritageInnateSpells.push({ ...item.data, name: item.name, level: 0, innate: true });
+        this.saveCharacterLocal(false);
+        this.renderAll();
+        return;
+      }
       const compatibility = PF2E_ENGINE.getSpellCompatibility(this.character, item.data);
       if (compatibility.state !== "available") {
         alert(this.getSpellCompatibilityMessage(compatibility));
@@ -2483,6 +2748,18 @@ class PathbuilderApp {
         });
       }
       if (Array.isArray(this.character.ancestryFeats)) this.character.ancestryFeats = [];
+      if (Array.isArray(this.character.archetypes)) {
+        this.character.archetypes = this.character.archetypes.filter(archetype => {
+          const ancestryBound = archetype?.ancestryId || (Array.isArray(archetype?.ancestryIds) && archetype.ancestryIds.length);
+          return !ancestryBound || PF2E_ENGINE.getPrerequisiteCompatibility(this.character, archetype).state !== "incompatible";
+        });
+      }
+      if (Array.isArray(this.character.spells)) {
+        this.character.spells = this.character.spells.filter(spell => PF2E_ENGINE.getSpellCompatibility(this.character, spell).state !== "incompatible");
+      }
+      if (Array.isArray(this.character.pets)) {
+        this.character.pets = this.character.pets.filter(pet => PF2E_ENGINE.getPrerequisiteCompatibility(this.character, pet).state !== "incompatible");
+      }
     }
     const groups = Array.isArray(item.data?.selectionGroups) ? item.data.selectionGroups : [];
     if (groups.length > 0) {
@@ -2499,11 +2776,23 @@ class PathbuilderApp {
       this.character.ancestryOptions = selectedOptions;
       this.character.size = size?.size || item.data.size || "Médio";
       this.character.heritage = heritage?.names?.["pt-BR"] || heritage?.id || item.data.heritages?.[0] || "";
+      this.character.heritageInnateSpells = [];
       return;
     }
     delete this.character.ancestryOptions;
     this.character.size = item.data?.size || "Médio";
     this.character.heritage = item.data?.heritages?.[0] || "";
+    this.character.heritageInnateSpells = [];
+  }
+
+  applyHeritageSelection(item) {
+    if (!item) return;
+    const previous = PF2E_ENGINE.resolveHeritageRecord?.(this.character);
+    this.character.heritage = item.name;
+    if (previous?.id !== item.data?.id) this.character.heritageInnateSpells = [];
+    if (item.data?.innateSpellChoice?.tradition === "occult") {
+      setTimeout(() => this.openPicker("spell", { heritageInnate: true }), 0);
+    }
   }
 
   setModalTab(tabName, clickEvent) {
@@ -2522,33 +2811,46 @@ class PathbuilderApp {
     const container = document.getElementById("modalLeftList");
     let items = [];
     const sharedCatalogs = window.pathbuilderCatalogs || {};
+    const compatibilityCharacter = this.getPickerCompatibilityCharacter(this.currentPickerType);
 
     if (this.currentPickerType === "ancestry") {
       items = getObjectCatalogRecords(PF2E_DATA.ancestries).map(({ key, record }) => ({ name: key, type: "Ancestralidade", data: record }));
     } else if (this.currentPickerType === "class") {
       items = getObjectCatalogRecords(PF2E_DATA.classes).map(({ key, record }) => ({ name: key, type: "Classe", data: record }));
     } else if (this.currentPickerType === "subclass") {
-      items = (PF2E_DATA.subclasses || []).map(s => ({ name: s.name, type: "Subclasse", data: s }));
+      items = mergeCatalogRecords([], PF2E_DATA.subclasses || []).filter(s => !s.legacyAlias).map(s => ({ name: s.name, type: "Subclasse", data: s }));
     } else if (this.currentPickerType === "archetype") {
-      items = (PF2E_DATA.archetypes || []).map(a => ({ name: a.name, type: "Arquétipo", data: a }));
+      items = mergeCatalogRecords([], PF2E_DATA.archetypes || []).map(a => ({ name: a.name, type: "Arquétipo", data: a }));
     } else if (this.currentPickerType === "background") {
       items = PF2E_DATA.backgrounds.map(b => ({ name: b.name, type: "Antecedente", data: b }));
     } else if (this.currentPickerType === "weapon") {
-      items = PF2E_DATA.weapons.map(w => ({ name: w.name, type: "Arma", data: w }));
+      items = mergeCatalogRecords([], PF2E_DATA.weapons || []).map(w => ({ name: w.name, type: "Arma", data: w }));
     } else if (this.currentPickerType === "armor") {
-      items = PF2E_DATA.armors.map(a => ({ name: a.name, type: "Armadura", data: a }));
+      items = mergeCatalogRecords([], PF2E_DATA.armors || []).map(a => ({ name: a.name, type: "Armadura", data: a }));
     } else if (this.currentPickerType === "shield") {
-      items = (PF2E_DATA.shields || []).map(s => ({ name: s.name, type: "Escudo", data: s }));
+      items = mergeCatalogRecords([], PF2E_DATA.shields || []).map(s => ({ name: s.name, type: "Escudo", data: s }));
     } else if (this.currentPickerType === "spell") {
-      items = (PF2E_DATA.spells || []).map(spell => {
-        const compatibility = PF2E_ENGINE.getSpellCompatibility(this.character, spell);
+      const heritageInnate = this.activePickerOptions?.heritageInnate === true;
+      items = (PF2E_DATA.spells || []).filter((spell) => !heritageInnate || (
+        Number(spell.rank ?? spell.level) === 0 &&
+        (spell.traditions || []).some((tradition) => String(tradition).toLowerCase() === "occult")
+      )).map(spell => {
+        if (heritageInnate) {
+          const prerequisiteCompatibility = PF2E_ENGINE?.getPrerequisiteCompatibility?.(compatibilityCharacter, spell);
+          const selectionState = prerequisiteCompatibility?.state === "incompatible" && prerequisiteCompatibility.reason !== "spellcasting-required"
+            ? "incompatible"
+            : "available";
+          return { name: spell.name, type: "Magia Inata", data: { ...spell, selectionState } };
+        }
+        const compatibility = PF2E_ENGINE.getSpellCompatibility(compatibilityCharacter, spell);
         return { name: spell.name, type: "Magia", data: { ...spell, selectionState: compatibility.state, selectionMessages: { "pt-BR": this.getSpellCompatibilityMessage(compatibility, "pt-BR"), en: this.getSpellCompatibilityMessage(compatibility, "en"), es: this.getSpellCompatibilityMessage(compatibility, "es") } } };
       });
     } else if (this.currentPickerType === "ritual") {
-      items = (PF2E_DATA.rituals || []).map(ritual => ({ name: ritual.name, type: "Ritual", data: ritual }));
+      items = mergeCatalogRecords([], PF2E_DATA.rituals || []).map(ritual => ({ name: ritual.name, type: "Ritual", data: ritual }));
     } else if (this.currentPickerType === "heritage") {
-      const ancestry = findCatalogRecord(PF2E_DATA.ancestries, this.character?.ancestry);
-      const heritages = (PF2E_DATA.heritages || []).filter(h => h.ancestryIds?.includes(ancestry?.id)).map(h => ({ name: h.name, type: "Herança", data: h }));
+      // Deixe o resolvedor contextual tratar IDs, chaves, nomes localizados e
+      // gates alternativos; comparação literal ocultava heranças válidas.
+      const heritages = (PF2E_DATA.heritages || []).map(h => ({ name: h.name, type: "Herança", data: h }));
       const versatile = (PF2E_DATA.versatileHeritages || []).map(h => ({ name: h.name, type: "Herança Versátil", data: h }));
       items = heritages.concat(versatile);
     } else if (this.currentPickerType === "feat") {
@@ -2561,7 +2863,7 @@ class PathbuilderApp {
     } else if (this.currentPickerType === "action") {
       items = mergeCatalogRecords(sharedCatalogs.actions, PF2E_DATA.actions).map(a => ({ name: a.name, type: "Ação", data: a }));
     } else if (this.currentPickerType === "formula") {
-      items = (PF2E_DATA.formulas || []).map(f => ({ name: f.name, type: f.category || "Fórmula", data: f }));
+      items = mergeCatalogRecords([], PF2E_DATA.formulas || []).map(f => ({ name: f.name, type: f.category || "Fórmula", data: f }));
     } else if (this.currentPickerType === "condition") {
       items = (PF2E_DATA.conditions || this.getConditionCatalog()).map(c => ({ name: c.name, type: "Condição", data: c }));
     } else if (this.currentPickerType === "buff") {
@@ -2575,10 +2877,38 @@ class PathbuilderApp {
     const prerequisiteChecker = PF2E_ENGINE?.getPrerequisiteCompatibility;
     if (typeof prerequisiteChecker === "function") {
       items = items.filter(item => {
-        if (this.currentPickerType === "spell") {
-          return PF2E_ENGINE.getSpellCompatibility(this.character, item.data)?.state === "available";
+        const heritageInnateSpell = this.currentPickerType === "spell" && this.activePickerOptions?.heritageInnate === true;
+        if (this.currentPickerType === "spell" && !heritageInnateSpell) {
+          return PF2E_ENGINE.getSpellCompatibility(compatibilityCharacter, item.data)?.state !== "incompatible";
         }
-        return prerequisiteChecker.call(PF2E_ENGINE, this.character, item.data)?.state !== "incompatible";
+        if (heritageInnateSpell) {
+          // Truques ocultistas inatos não exigem um perfil de conjuração
+          // próprio, mas continuam sujeitos a classe, ancestralidade, nível,
+          // Deviant e demais pré-requisitos explícitos.
+          const compatibility = prerequisiteChecker.call(PF2E_ENGINE, compatibilityCharacter, item.data);
+          return compatibility?.state !== "incompatible" || compatibility.reason === "spellcasting-required";
+        }
+        return prerequisiteChecker.call(PF2E_ENGINE, compatibilityCharacter, item.data)?.state !== "incompatible";
+      });
+    }
+    // Registros já marcados pelo catálogo também não podem reaparecer caso o
+    // motor de compatibilidade ainda não esteja carregado (ou seja, durante a
+    // inicialização do modal legado).
+    items = items.filter(item => item.data?.selectionState !== "incompatible");
+
+    // O modal legado recebe os mesmos espaços contextuais do picker React:
+    // além dos pré-requisitos, respeite a categoria do espaço de progressão.
+    if (this.currentPickerType === "feat" && this.activePickerOptions?.filterType) {
+      const filterType = String(this.activePickerOptions.filterType).toLowerCase();
+      items = items.filter((item) => {
+        const category = String(item.data?.category || item.data?.type || item.type || "").toLowerCase();
+        const traits = (item.data?.traits || []).map((trait) => String(trait).toLowerCase());
+        const matches = (terms) => terms.some((term) => category.includes(term) || traits.some((trait) => trait.includes(term)));
+        if (filterType.includes("geral") || filterType.includes("general")) return matches(["geral", "general"]);
+        if (filterType.includes("períc") || filterType.includes("peric") || filterType.includes("skill")) return matches(["períc", "peric", "skill"]);
+        if (filterType.includes("ancestr") || filterType.includes("ancestry")) return matches(["ancestr", "ancestry"]);
+        if (filterType.includes("classe") || filterType.includes("class")) return matches(["classe", "class"]);
+        return true;
       });
     }
 
@@ -2605,24 +2935,63 @@ class PathbuilderApp {
     this.selectedPickerItem = item;
 
     const detail = document.getElementById("modalRightDetail");
+    const locale = this.getLocale();
     let contentHtml = `<div style="font-size:16px; font-weight:bold; color:var(--pb-orange);">${escapeHtml(item.name)}</div>`;
     
     if (item.data.description) {
       contentHtml += `<div style="font-size:12px; margin-top:8px; line-height:1.6;">${escapeHtml(item.data.description)}</div>`;
     }
     if (item.data.hp) {
-      contentHtml += `<div style="font-size:12px; margin-top:6px; color:var(--pb-text-muted);">PV Base da Ancestralidade: <strong>${escapeHtml(item.data.hp)}</strong> | Velocidade: <strong>${escapeHtml(item.data.speed)} pés</strong></div>`;
+      const labels = locale === "en" ? { hp: "Ancestry base HP", speed: "Speed" } : locale === "es" ? { hp: "PG base de ascendencia", speed: "Velocidad" } : { hp: "PV Base da Ancestralidade", speed: "Velocidade" };
+      contentHtml += `<div style="font-size:12px; margin-top:6px; color:var(--pb-text-muted);">${labels.hp}: <strong>${escapeHtml(item.data.hp)}</strong> | ${labels.speed}: <strong>${escapeHtml(item.data.speed)} ${locale === "en" ? "feet" : "pés"}</strong></div>`;
     }
     if (item.data.hpPerLevel) {
-      contentHtml += `<div style="font-size:12px; margin-top:6px; color:var(--pb-text-muted);">PV por Nível: <strong>${escapeHtml(item.data.hpPerLevel)}</strong> | Atributo-Chave: <strong>${escapeHtml((item.data.keyAbility || []).join(', '))}</strong></div>`;
+      const labels = locale === "en" ? { hp: "HP per level", key: "Key ability" } : locale === "es" ? { hp: "PG por nivel", key: "Atributo clave" } : { hp: "PV por Nível", key: "Atributo-Chave" };
+      contentHtml += `<div style="font-size:12px; margin-top:6px; color:var(--pb-text-muted);">${labels.hp}: <strong>${escapeHtml(item.data.hpPerLevel)}</strong> | ${labels.key}: <strong>${escapeHtml((item.data.keyAbility || []).join(', '))}</strong></div>`;
     }
     if (item.data.damage) {
-      contentHtml += `<div style="font-size:12px; margin-top:6px;">Dano: <strong>${escapeHtml(item.data.damage)} ${escapeHtml(item.data.damageType || '')}</strong> | Traços: <strong>${escapeHtml((item.data.traits || []).join(', '))}</strong></div>`;
+      const labels = locale === "en" ? { damage: "Damage", traits: "Traits" } : locale === "es" ? { damage: "Daño", traits: "Rasgos" } : { damage: "Dano", traits: "Traços" };
+      contentHtml += `<div style="font-size:12px; margin-top:6px;">${labels.damage}: <strong>${escapeHtml(item.data.damage)} ${escapeHtml(item.data.damageType || '')}</strong> | ${labels.traits}: <strong>${escapeHtml((item.data.traits || []).join(', '))}</strong></div>`;
+    }
+
+    // Biografias raras do Player Core 2 carregam mecânicas estruturadas e
+    // localizadas; exibi-las no detalhe evita que a escolha pareça apenas
+    // narrativa e mantém ações/sentidos visíveis antes da confirmação.
+    const mechanics = item.data.mechanics?.[locale] || item.data.mechanics?.["pt-BR"];
+    if (mechanics) {
+      const mechanicsLabels = locale === "en"
+        ? { boosts: "Ability boosts", skills: "Trained", actions: "Actions", senses: "Senses", grants: "Granted", rules: "Rules" }
+        : locale === "es"
+          ? { boosts: "Mejoras de característica", skills: "Entrenado", actions: "Acciones", senses: "Sentidos", grants: "Concede", rules: "Reglas" }
+          : { boosts: "Aprimoramentos de atributo", skills: "Treinado", actions: "Ações", senses: "Sentidos", grants: "Concede", rules: "Regras" };
+      const mechanicRows = [
+        [mechanicsLabels.boosts, mechanics.abilityBoostRules],
+        [mechanicsLabels.skills, mechanics.trainedSkills],
+        [mechanicsLabels.actions, mechanics.specialActions],
+        [mechanicsLabels.senses, mechanics.senses],
+        [mechanicsLabels.grants, mechanics.grants],
+        [mechanicsLabels.rules, mechanics.specialRules]
+      ].filter(([, values]) => Array.isArray(values) && values.length);
+      if (mechanicRows.length) {
+        contentHtml += `<div style="margin-top:10px; padding:8px; border:1px solid var(--pb-border); border-radius:6px; background:rgba(249,115,22,.06); font-size:11px; line-height:1.5;">${mechanicRows.map(([label, values]) => `<div><strong>${escapeHtml(label)}:</strong> ${escapeHtml(values.join("; "))}</div>`).join("")}</div>`;
+      }
     }
 
     const source = item.data.source;
-    const sourceText = source?.book ? `${source.book}${source.page ? `, p. ${source.page}` : ""}` : "Fonte ainda não catalogada — requer revisão";
-    if (item.data.rarity) contentHtml += `<div style="margin-top:8px; color:${item.data.rarity === "rare" ? "#fca5a5" : "#fde68a"}; font-size:11px; font-weight:bold;">${escapeHtml(item.data.rarity === "rare" ? "Raro — requer aprovação do Mestre" : item.data.rarity)}</div>`;
+    const detailCopy = locale === "en"
+      ? { baseHp: "Ancestry base HP", speed: "Speed", hpPerLevel: "HP per level", keyAbility: "Key ability", damage: "Damage", traits: "Traits", noSource: "Source not catalogued — review required", rare: "Rare — GM approval required", page: "p." }
+      : locale === "es"
+        ? { baseHp: "PG base de ascendencia", speed: "Velocidad", hpPerLevel: "PG por nivel", keyAbility: "Atributo clave", damage: "Daño", traits: "Rasgos", noSource: "Fuente aún no catalogada — requiere revisión", rare: "Raro — requiere aprobación del DJ", page: "p." }
+        : { baseHp: "PV Base da Ancestralidade", speed: "Velocidade", hpPerLevel: "PV por Nível", keyAbility: "Atributo-Chave", damage: "Dano", traits: "Traços", noSource: "Fonte ainda não catalogada — requer revisão", rare: "Raro — requer aprovação do Mestre", page: "p." };
+    const sourceText = source?.book ? `${source.book}${source.page ? `, ${detailCopy.page} ${source.page}` : ""}` : detailCopy.noSource;
+    const rarityText = item.data.rarity === "rare" ? detailCopy.rare : item.data.rarity;
+    if (item.data.rarity) contentHtml += `<div style="margin-top:8px; color:${item.data.rarity === "rare" ? "#fca5a5" : "#fde68a"}; font-size:11px; font-weight:bold;">${escapeHtml(rarityText)}</div>`;
+    const rulesetText = locale === "en"
+      ? (item.data.ruleset === "legacy" ? "Legacy" : item.data.ruleset === "remaster" && item.data.needs_review === false ? "Remaster" : "Review pending")
+      : locale === "es"
+        ? (item.data.ruleset === "legacy" ? "Legado" : item.data.ruleset === "remaster" && item.data.needs_review === false ? "Remaster" : "Revisión pendiente")
+        : (item.data.ruleset === "legacy" ? "Legado" : item.data.ruleset === "remaster" && item.data.needs_review === false ? "Remaster" : "Revisão pendente");
+    contentHtml += `<div style="margin-top:8px; font-size:10px; color:var(--pb-text-muted);">${escapeHtml(rulesetText)}${item.data.sourceApproximate ? ` · ${escapeHtml(locale === "en" ? "section reference" : locale === "es" ? "referencia de sección" : "referência de seção")}` : ""}</div>`;
     contentHtml += `<div style="margin-top:auto; font-size:10px; color:var(--pb-text-dim);">${escapeHtml(sourceText)}</div>`;
     detail.innerHTML = contentHtml;
   }
@@ -2630,7 +2999,7 @@ class PathbuilderApp {
   confirmModalSelection() {
     if (!this.selectedPickerItem) return;
     const item = this.selectedPickerItem;
-    if (this.currentPickerType === "spell") {
+    if (this.currentPickerType === "spell" && !this.activePickerOptions?.heritageInnate) {
       const spellCompatibility = PF2E_ENGINE?.getSpellCompatibility?.(this.character, item.data);
       if (spellCompatibility?.state !== "available") {
         alert(this.getSpellCompatibilityMessage(spellCompatibility));
@@ -2651,7 +3020,7 @@ class PathbuilderApp {
     } else if (this.currentPickerType === "class") {
       this.applyClassSelection(item);
     } else if (this.currentPickerType === "subclass") {
-      this.character.subclass = item.name;
+      this.applySubclassSelection(item);
     } else if (this.currentPickerType === "archetype") {
       if (!this.character.archetypes) this.character.archetypes = [];
       const exists = this.character.archetypes.some(archetype => (item.data.id && archetype.id === item.data.id) || archetype.name === item.name);
@@ -2662,13 +3031,23 @@ class PathbuilderApp {
       if (!this.character.weapons) this.character.weapons = [];
       this.character.weapons.push({ ...item.data });
     } else if (this.currentPickerType === "armor") {
-      this.character.equippedArmor = { ...item.data };
+      this.equipArmorFromPicker(item.data);
     } else if (this.currentPickerType === "heritage") {
-      this.character.heritage = item.name;
+      this.applyHeritageSelection(item);
     } else if (this.currentPickerType === "feat") {
       if (!this.character.feats) this.character.feats = [];
       this.character.feats.push({ ...item.data });
     } else if (this.currentPickerType === "spell") {
+      if (this.activePickerOptions?.heritageInnate) {
+        if (Number(item.data?.rank ?? item.data?.level) !== 0 || !(item.data?.traditions || []).some((tradition) => String(tradition).toLowerCase() === "occult")) return;
+        if (!Array.isArray(this.character.heritageInnateSpells)) this.character.heritageInnateSpells = [];
+        const exists = this.character.heritageInnateSpells.some(spell => item.data.id ? spell.id === item.data.id : spell.name === item.name);
+        if (!exists) this.character.heritageInnateSpells.push({ ...item.data, name: item.name, level: 0, innate: true });
+        this.closePicker();
+        this.saveCharacterLocal(false);
+        this.renderAll();
+        return;
+      }
       if (!this.character.spells) this.character.spells = [];
       const exists = this.character.spells.some(spell => (item.data.id && spell.id === item.data.id) || spell.name === item.name);
       if (!exists) this.character.spells.push({ ...item.data, name: item.name, level: item.data.rank ?? item.data.level });
@@ -2677,7 +3056,7 @@ class PathbuilderApp {
       const exists = this.character.rituals.some(ritual => (item.data.id && ritual.id === item.data.id) || ritual.name === item.name);
       if (!exists) this.character.rituals.push({ ...item.data, name: item.name });
     } else if (this.currentPickerType === "shield") {
-      this.character.equippedShield = { ...item.data, currentHp: item.data.maxHp };
+      this.equipShieldFromPicker(item.data);
     } else if (this.currentPickerType === "item" || this.currentPickerType === "gear") {
       if (!this.character.inventory) this.character.inventory = [];
       const qty = Math.max(1, Number(item.data?.qty ?? item.qty ?? 1) || 1);
@@ -2688,10 +3067,17 @@ class PathbuilderApp {
       else this.character.inventory.push({ ...item.data, name: item.name, qty });
     } else if (this.currentPickerType === "formula") {
       if (!this.character.formulas) this.character.formulas = [];
-      this.character.formulas.push({ ...item.data, name: item.name });
+      const exists = this.character.formulas.some(formula => (item.data.id && formula.id === item.data.id) || formula.name === item.name);
+      if (!exists) this.character.formulas.push({ ...item.data, name: item.name });
     } else if (this.currentPickerType === "pet") {
       if (!this.character.pets) this.character.pets = [];
-      this.character.pets.push({ ...item.data, name: item.name });
+      const exists = this.character.pets.some(pet => (item.data.id && pet.id === item.data.id) || pet.name === item.name);
+      if (!exists) {
+        const pet = { ...item.data, name: item.name };
+        if (pet.hp !== undefined && pet.hpMax === undefined) pet.hpMax = pet.hp;
+        if (pet.hpMax !== undefined && pet.hpCurrent === undefined) pet.hpCurrent = pet.hpMax;
+        this.character.pets.push(pet);
+      }
     } else if (this.currentPickerType === "action") {
       if (!this.character.actions) this.character.actions = [];
       const exists = this.character.actions.some(action => (item.data.id && action.id === item.data.id) || action.name === item.name);
@@ -2707,6 +3093,7 @@ class PathbuilderApp {
     if (changesMaximumHp) this.reconcileCurrentHp(previousMaxHp, previousCurrentHp);
 
     this.closePicker();
+    this.saveCharacterLocal(false);
     this.renderAll();
   }
 
@@ -3726,6 +4113,17 @@ class PathbuilderApp {
   }
 
   // MODAL DE ATRIBUTOS (SET STARTING ABILITY BOOSTS - SCREENSHOT 1)
+  getBackgroundBoostConstraints(backgroundValue = this.character?.background) {
+    const backgrounds = Array.isArray(PF2E_DATA?.backgrounds) ? PF2E_DATA.backgrounds : [];
+    const record = backgrounds.find((background) => {
+      if (!backgroundValue) return false;
+      return background.id === backgroundValue || background.name === backgroundValue || Object.values(background.names || {}).includes(backgroundValue);
+    });
+    const labels = { "força": "str", strength: "str", "destreza": "dex", dexterity: "dex", "constituição": "con", constitution: "con", "inteligência": "int", intelligence: "int", "sabedoria": "wis", wisdom: "wis", "carisma": "cha", charisma: "cha" };
+    const allowed = (record?.ability || []).map((value) => labels[String(value).trim().toLowerCase()]).filter(Boolean);
+    return { restricted: [...new Set(allowed)] };
+  }
+
   openSetAbilitiesModal(level = 1) {
     const overlay = document.getElementById("modalSetAbilitiesOverlay");
     const container = document.getElementById("setAbilitiesContent");
@@ -3757,16 +4155,30 @@ class PathbuilderApp {
       { id: "cha", name: isEn ? "Charisma" : (isEs ? "Carisma" : "Carisma"), code: isEn ? "CHA" : (isEs ? "CAR" : "CAR") }
     ];
 
-    const getSelectHtml = (group, idx, selectedVal) => `
+    const b = this.character.abilityBoosts;
+    const backgroundConstraints = this.getBackgroundBoostConstraints();
+    if (backgroundConstraints.restricted.length && !backgroundConstraints.restricted.includes(b?.background?.[0])) {
+      // Corrige dados importados ou escolhas antigas antes de renderizar, para
+      // que o valor salvo também permaneça válido para o antecedente atual.
+      if (!this.character.abilityBoosts) this.character.abilityBoosts = {};
+      if (!Array.isArray(this.character.abilityBoosts.background)) this.character.abilityBoosts.background = [];
+      this.character.abilityBoosts.background[0] = backgroundConstraints.restricted[0];
+    }
+
+    const getSelectHtml = (group, idx, selectedVal) => {
+      const allowedOptions = group === "background" && idx === 0 && backgroundConstraints.restricted.length
+        ? abilityOptions.filter((option) => backgroundConstraints.restricted.includes(option.id))
+        : abilityOptions;
+      return `
       <div class="pb-boost-select-wrap">
         <span class="pb-boost-plus-icon">+</span>
         <select class="pb-boost-select" onchange="app.setAbilityBoostChoice('${group}', ${idx}, this.value)">
-          ${abilityOptions.map(opt => `<option value="${opt.id}" ${opt.id === selectedVal ? 'selected' : ''}>${opt.name}</option>`).join('')}
+          ${allowedOptions.map(opt => `<option value="${opt.id}" ${opt.id === selectedVal ? 'selected' : ''}>${opt.name}</option>`).join('')}
         </select>
       </div>
     `;
+    };
 
-    const b = this.character.abilityBoosts;
     const calcMod = (key) => {
       const val = this.character.abilities[key] || 10;
       const mod = Math.floor((val - 10) / 2);
@@ -4099,12 +4511,23 @@ class PathbuilderApp {
     this.saveCharacterLocal(false);
     this.renderAll();
   }
-  removeWeapon(idx) { this.character.weapons.splice(idx, 1); this.saveCharacterLocal(false); this.renderAll(); }
-  removeFeat(idx) { this.character.feats.splice(idx, 1); this.saveCharacterLocal(false); this.renderAll(); }
-  removeArchetype(idx) { if (!Array.isArray(this.character.archetypes)) return; this.character.archetypes.splice(idx, 1); this.saveCharacterLocal(false); this.renderAll(); }
-  removeSpell(idx) { this.character.spells.splice(idx, 1); this.saveCharacterLocal(false); this.renderAll(); }
-  removeRitual(idx) { this.character.rituals.splice(idx, 1); this.saveCharacterLocal(false); this.renderAll(); }
-  removeLoreSkill(idx) { this.character.loreSkills.splice(idx, 1); this.saveCharacterLocal(false); this.renderAll(); }
+  removeCharacterCollectionItem(collection, idx) {
+    const entries = this.character?.[collection];
+    const position = Number(idx);
+    if (!Array.isArray(entries) || !Number.isInteger(position) || position < 0 || position >= entries.length) return false;
+    entries.splice(position, 1);
+    this.saveCharacterLocal(false);
+    this.renderAll();
+    return true;
+  }
+  removeWeapon(idx) { return this.removeCharacterCollectionItem("weapons", idx); }
+  removeAction(idx) { return this.removeCharacterCollectionItem("actions", idx); }
+  removeFeat(idx) { return this.removeCharacterCollectionItem("feats", idx); }
+  removeArchetype(idx) { return this.removeCharacterCollectionItem("archetypes", idx); }
+  removeSpell(idx) { return this.removeCharacterCollectionItem("spells", idx); }
+  removeHeritageInnateSpell(idx) { return this.removeCharacterCollectionItem("heritageInnateSpells", idx); }
+  removeRitual(idx) { return this.removeCharacterCollectionItem("rituals", idx); }
+  removeLoreSkill(idx) { return this.removeCharacterCollectionItem("loreSkills", idx); }
 
   addInventoryItem() {
     if (window.pathbuilderItemPicker && typeof window.pathbuilderItemPicker.open === "function") {
@@ -4259,11 +4682,39 @@ class PathbuilderApp {
   }
 
   exportMarkdown() {
-    let md = `# 🛡️ FICHA DE PATHFINDER 2E — ${this.character.name.toUpperCase()}\n\n`;
-    md += `- **Nível:** ${this.character.level} | **Ancestralidade:** ${this.character.ancestry} | **Classe:** ${this.character.class}\n`;
-    md += `- **PV:** ${this.calc.currentHp} / ${this.calc.maxHp} | **CA:** ${this.calc.ac.total} | **Velocidade:** ${this.formatMovementSpeeds()}\n\n`;
-    if ((this.character.spells || []).length) md += `## Magias\n${this.character.spells.map((spell) => `- ${spell.name} (ranque ${spell.rank ?? spell.level ?? "?"})`).join("\n")}\n\n`;
-    if ((this.character.rituals || []).length) md += `## Rituais\n${this.character.rituals.map((ritual) => `- ${ritual.name} (ranque ${ritual.rank ?? "?"})`).join("\n")}\n\n`;
+    const locale = this.getLocale();
+    const copy = locale === "en"
+      ? { sheet: "PATHFINDER 2E CHARACTER SHEET", level: "Level", ancestry: "Ancestry", class: "Class", hp: "HP", ac: "AC", speed: "Speed", source: "Source", ruleset: "Ruleset", review: "Needs review", approximate: "section reference", rank: "rank", spells: "Spells", innateSpells: "Innate spells", rituals: "Rituals", feats: "Feats", archetypes: "Archetypes", weapons: "Weapons", pets: "Companions", inventory: "Inventory", equipped: "Equipped", none: "None" }
+      : locale === "es"
+        ? { sheet: "FICHA DE PERSONAJE PATHFINDER 2E", level: "Nivel", ancestry: "Ancestralidad", class: "Clase", hp: "PV", ac: "CA", speed: "Velocidad", source: "Fuente", ruleset: "Reglas", review: "Requiere revisión", approximate: "referencia de sección", rank: "rango", spells: "Conjuros", innateSpells: "Conjuros innatos", rituals: "Rituales", feats: "Dotes", archetypes: "Arquetipos", weapons: "Armas", pets: "Compañeros", inventory: "Inventario", equipped: "Equipado", none: "Ninguno" }
+        : { sheet: "FICHA DE PERSONAGEM PATHFINDER 2E", level: "Nível", ancestry: "Ancestralidade", class: "Classe", hp: "PV", ac: "CA", speed: "Velocidade", source: "Fonte", ruleset: "Regras", review: "Requer revisão", approximate: "referência de seção", rank: "ranque", spells: "Magias", innateSpells: "Magias inatas", rituals: "Rituais", feats: "Talentos", archetypes: "Arquétipos", weapons: "Armas", pets: "Companheiros", inventory: "Inventário", equipped: "Equipado", none: "Nenhum" };
+    const displayName = (record) => record?.names?.[locale] || record?.name || record?.id || copy.none;
+    const metadata = (record) => {
+      const source = record?.source?.book
+        ? `${record.source.book}${record.source.page ? `, p. ${record.source.page}` : record.sourceApproximate ? ` (${copy.approximate})` : ""}`
+        : "";
+      const tags = [record?.ruleset, record?.needs_review ? copy.review : ""].filter(Boolean);
+      return [source && `${copy.source}: ${source}`, tags.length && `${copy.ruleset}: ${tags.join(", ")}`].filter(Boolean).join(" · ");
+    };
+    const recordLine = (record, suffix = "") => {
+      const details = [suffix, metadata(record)].filter(Boolean).join(" · ");
+      return `- ${displayName(record)}${details ? ` (${details})` : ""}`;
+    };
+    const section = (title, records, suffix) => records?.length ? `## ${title}\n${records.map((record) => recordLine(record, suffix?.(record))).join("\n")}\n\n` : "";
+
+    let md = `# 🛡️ ${copy.sheet} — ${String(this.character.name || copy.none).toUpperCase()}\n\n`;
+    md += `- **${copy.level}:** ${this.character.level} | **${copy.ancestry}:** ${displayName({ name: this.character.ancestry })} | **${copy.class}:** ${displayName({ name: this.character.class })}\n`;
+    md += `- **${copy.hp}:** ${this.calc.currentHp} / ${this.calc.maxHp} | **${copy.ac}:** ${this.calc.ac.total} | **${copy.speed}:** ${this.formatMovementSpeeds()}\n\n`;
+    md += section(copy.spells, this.character.spells, (spell) => `${copy.rank} ${spell.rank ?? spell.level ?? "?"}`);
+    md += section(copy.innateSpells, this.character.heritageInnateSpells, (spell) => `${copy.rank} 0`);
+    md += section(copy.rituals, this.character.rituals, (ritual) => `${copy.rank} ${ritual.rank ?? "?"}`);
+    md += section(copy.feats, this.character.feats, (feat) => feat.level ? `${copy.level} ${feat.level}` : "");
+    md += section(copy.archetypes, this.character.archetypes);
+    md += section(copy.weapons, this.character.weapons);
+    md += section(copy.pets, this.character.pets);
+    md += section(copy.inventory, this.character.inventory, (item) => item.qty ? `x${item.qty}` : "");
+    const equipped = [this.character.equippedArmor, this.character.equippedShield].filter(Boolean);
+    md += section(copy.equipped, equipped);
     const blob = new Blob([md], { type: "text/markdown" });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
@@ -4342,6 +4793,18 @@ class PathbuilderApp {
       : sheetLocale === "es"
         ? { title: "Monedas y riqueza", pp: "PP", gp: "PO", sp: "PA", cp: "PC" }
         : { title: "Moedas & Fortuna", pp: "PL", gp: "PO", sp: "PP", cp: "PC" };
+    const sheetMetaLabels = sheetLocale === "en"
+      ? { noSource: "source not confirmed", section: "section reference", review: "review pending" }
+      : sheetLocale === "es"
+        ? { noSource: "fuente no confirmada", section: "referencia de sección", review: "revisión pendiente" }
+        : { noSource: "sem fonte confirmada", section: "referência de seção", review: "revisão pendente" };
+    const sheetRecordMeta = (record) => {
+      const source = record?.source?.book
+        ? `${record.source.book}${record.source.page ? `, p. ${record.source.page}` : record.sourceApproximate ? ` (${sheetMetaLabels.section})` : ""}`
+        : sheetMetaLabels.noSource;
+      const review = record?.needs_review ? ` · ${sheetMetaLabels.review}` : "";
+      return `${source}${record?.ruleset ? ` · ${record.ruleset}` : ""}${review}`;
+    };
 
     // PÁGINA 1: Combate, Atributos, Defesas, Golpes e Perícias
     const p1SkillsHtml = Object.values(calc.skills).map(sk => {
@@ -4376,7 +4839,7 @@ class PathbuilderApp {
       return `
         <div class="sheet-list-item" style="display:grid; grid-template-columns: 18px 1fr 65px; gap:4px; align-items:center;">
           <span style="font-weight:900; color:#b45309; text-align:center;">${lvl}</span>
-          <span style="font-weight:bold; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${esc(f?.name || (lvl % 2 === 0 ? 'Talento de Classe' : 'Talento Geral / Perícia'))}</span>
+          <span style="font-weight:bold; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="${esc(f ? sheetRecordMeta(f) : "")}">${esc(f?.name || (lvl % 2 === 0 ? 'Talento de Classe' : 'Talento Geral / Perícia'))}</span>
           <span style="font-size:5.5pt; color:#64748b; text-align:right;">${esc(f?.type || 'Característica')}</span>
         </div>
       `;
@@ -4384,7 +4847,7 @@ class PathbuilderApp {
 
     const inventoryRows = (character.inventory || []).map(item => `
       <div class="sheet-list-item" style="display:grid; grid-template-columns: 1fr 30px 30px; gap:4px;">
-        <span style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${esc(item.name)}</span>
+        <span style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="${esc(sheetRecordMeta(item))}">${esc(item.name)}<small style="display:block; color:#64748b; font-size:4.5pt;">${esc(sheetRecordMeta(item))}</small></span>
         <span style="text-align:center; color:#64748b;">${esc(item.qty || 1)}</span>
         <span style="text-align:center; font-weight:bold;">${esc(item.bulk || '—')}</span>
       </div>
@@ -4410,15 +4873,15 @@ class PathbuilderApp {
 
     const spellsListHtml = (character.spells || []).map(sp => `
       <div class="sheet-list-item" style="display:grid; grid-template-columns: 1fr 45px 50px; gap:4px;">
-        <span><strong>✨ ${esc(sp.names?.[sheetLocale] || sp.name)}</strong></span>
+        <span title="${esc(sheetRecordMeta(sp))}"><strong>✨ ${esc(sp.names?.[sheetLocale] || sp.name)}</strong><small style="display:block; color:#64748b; font-size:4.5pt;">${esc(sheetRecordMeta(sp))}</small></span>
         <span style="text-align:center;">${esc(sp.rank ?? sp.level ?? 1)}º Círculo</span>
         <span style="text-align:right; color:#64748b;">${esc(sp.castingTimes?.[sheetLocale] || sp.actions || '◆◆')}</span>
       </div>
     `).join("") || `<div class="sheet-list-item" style="color:#94a3b8; font-style:italic;">Nenhuma magia registrada. Conjurador não-mágico ou sem magias preparadas.</div>`;
 
     const ritualsListHtml = (character.rituals || []).map(rit => `
-      <div class="sheet-list-item">
-        <strong>◈ ${esc(rit.names?.[sheetLocale] || rit.name)}</strong> · ${esc(rit.rank ?? 1)}º Círculo (${esc(rit.castingTimes?.[sheetLocale] || '1 dia')})
+      <div class="sheet-list-item" title="${esc(sheetRecordMeta(rit))}">
+        <strong>◈ ${esc(rit.names?.[sheetLocale] || rit.name)}</strong> · ${esc(rit.rank ?? 1)}º Círculo (${esc(rit.castingTimes?.[sheetLocale] || '1 dia')})<small style="display:block; color:#64748b; font-size:4.5pt;">${esc(sheetRecordMeta(rit))}</small>
       </div>
     `).join("") || `<div class="sheet-list-item" style="color:#94a3b8; font-style:italic;">Nenhum ritual catalogado.</div>`;
 
@@ -5155,10 +5618,7 @@ class PathbuilderApp {
   }
 
   removeBuff(index) {
-    if (!Array.isArray(this.character?.buffs) || !this.character.buffs[index]) return;
-    this.character.buffs.splice(index, 1);
-    this.saveCharacterLocal(false);
-    this.renderAll();
+    return this.removeCharacterCollectionItem("buffs", index);
   }
 
   setConditionLevel(condKey, delta) {

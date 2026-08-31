@@ -17,9 +17,30 @@ function getPrerequisiteMessage(reason: string, locale: "pt-BR" | "en" | "es", d
       "ability-too-low": "O pré-requisito de atributo não foi atendido.",
       "skill-rank-too-low": "O pré-requisito de proficiência de perícia não foi atendido.",
       "proficiency-too-low": "O pré-requisito de proficiência de combate não foi atendido.",
+      "weapon-proficiency-too-low": "O pré-requisito de proficiência com armas não foi atendido.",
       "spellcasting-required": "Requer uma classe conjuradora.",
+      "equipment-required": `Requer o equipamento: ${details.missingEquipment}.`,
+      "familiar-abilities-too-low": `Requer ${details.requiredFamiliarAbilities} habilidades de familiar.`,
       "dedication-required": "Requer a dedicação indicada.",
+      "flight-required": "Requer uma forma de voo conhecida ou obtida.",
+      "anatomy-required": "Requer língua preênsil ou cauda compatível.",
+      "shield-required": "Requer um escudo empunhado.",
+      "mounted-required": "Requer estar montado.",
+      "unarmored-required": "Requer não estar usando armadura.",
+      "unarmored-proficiency-too-low": "Requer Especialista em Defesa sem Armadura.",
+      "two-melee-weapons-required": "Requer duas armas corpo a corpo empunhadas.",
+      "one-hand-free-required": "Requer uma arma de uma mão e a outra mão livre.",
       "deviant-required": "Requer uma habilidade desviante.",
+      "deity-required": "Requer uma divindade ou filosofia selecionada.",
+      "patron-must-be-absent": "Requer que a ficha não tenha patrono.",
+      "subclass-mismatch": "A subclasse escolhida não atende ao pré-requisito.",
+      "tradition-skill-rank-too-low": `Requer ${details.requiredRank} em ${details.skill}.`,
+      "sanctification-mismatch": "A santificação da causa não atende ao pré-requisito.",
+      "sanctification-prohibited": "A santificação da causa é proibida para esta opção.",
+      "feat-required": `Requer o talento: ${details.requiredFeat}.`,
+      "action-required": `Requer a ação: ${details.requiredFeat}.`,
+      "undead-prohibited": "Esta opção exige que o personagem não seja morto-vivo.",
+      "research-field-mismatch": "O campo de pesquisa selecionado não atende ao requisito.",
     },
     en: {
       "level-too-low": `Requires level ${details.requiredLevel}.`,
@@ -28,9 +49,30 @@ function getPrerequisiteMessage(reason: string, locale: "pt-BR" | "en" | "es", d
       "ability-too-low": "The ability prerequisite is not met.",
       "skill-rank-too-low": "The skill proficiency prerequisite is not met.",
       "proficiency-too-low": "The combat proficiency prerequisite is not met.",
+      "weapon-proficiency-too-low": "The weapon proficiency prerequisite is not met.",
       "spellcasting-required": "Requires a spellcasting class.",
+      "equipment-required": `Requires the equipment: ${details.missingEquipment}.`,
+      "familiar-abilities-too-low": `Requires ${details.requiredFamiliarAbilities} familiar abilities.`,
       "dedication-required": "Requires the listed dedication.",
+      "flight-required": "Requires a known or granted form of flight.",
+      "anatomy-required": "Requires a compatible prehensile tongue or tail.",
+      "shield-required": "Requires a wielded shield.",
+      "mounted-required": "Requires being mounted.",
+      "unarmored-required": "Requires not wearing armor.",
+      "unarmored-proficiency-too-low": "Requires expert unarmored defense proficiency.",
+      "two-melee-weapons-required": "Requires two wielded melee weapons.",
+      "one-hand-free-required": "Requires a one-handed weapon and one free hand.",
       "deviant-required": "Requires a deviant ability.",
+      "deity-required": "Requires a selected deity or philosophy.",
+      "patron-must-be-absent": "Requires the character to have no patron.",
+      "subclass-mismatch": "The selected subclass does not meet the prerequisite.",
+      "tradition-skill-rank-too-low": `Requires ${details.requiredRank} in ${details.skill}.`,
+      "sanctification-mismatch": "The cause's sanctification does not meet the prerequisite.",
+      "sanctification-prohibited": "The cause's sanctification is prohibited for this option.",
+      "feat-required": `Requires the feat: ${details.requiredFeat}.`,
+      "action-required": `Requires the action: ${details.requiredFeat}.`,
+      "undead-prohibited": "This option requires the character not to be undead.",
+      "research-field-mismatch": "The selected research field does not meet the requirement.",
     },
     es: {
       "level-too-low": `Requiere nivel ${details.requiredLevel}.`,
@@ -39,9 +81,30 @@ function getPrerequisiteMessage(reason: string, locale: "pt-BR" | "en" | "es", d
       "ability-too-low": "No se cumple el requisito de atributo.",
       "skill-rank-too-low": "No se cumple el requisito de competencia de habilidad.",
       "proficiency-too-low": "No se cumple el requisito de competencia de combate.",
+      "weapon-proficiency-too-low": "No se cumple el requisito de competencia con armas.",
       "spellcasting-required": "Requiere una clase lanzadora de conjuros.",
+      "equipment-required": `Requiere el equipo: ${details.missingEquipment}.`,
+      "familiar-abilities-too-low": `Requiere ${details.requiredFamiliarAbilities} habilidades de familiar.`,
       "dedication-required": "Requiere la dedicación indicada.",
+      "flight-required": "Requiere una forma de vuelo conocida u obtenida.",
+      "anatomy-required": "Requiere una lengua prensil o cola compatible.",
+      "shield-required": "Requiere un escudo empuñado.",
+      "mounted-required": "Requiere estar montado.",
+      "unarmored-required": "Requiere no llevar armadura.",
+      "unarmored-proficiency-too-low": "Requiere competencia experta en defensa sin armadura.",
+      "two-melee-weapons-required": "Requiere dos armas cuerpo a cuerpo empuñadas.",
+      "one-hand-free-required": "Requiere un arma de una mano y la otra mano libre.",
       "deviant-required": "Requiere una habilidad desviada.",
+      "deity-required": "Requiere una deidad o filosofía seleccionada.",
+      "patron-must-be-absent": "Requiere que el personaje no tenga patrón.",
+      "subclass-mismatch": "La subclase elegida no cumple el requisito.",
+      "tradition-skill-rank-too-low": `Requiere ${details.requiredRank} en ${details.skill}.`,
+      "sanctification-mismatch": "La santificación de la causa no cumple el requisito.",
+      "sanctification-prohibited": "La santificación de la causa está prohibida para esta opción.",
+      "feat-required": `Requiere el dote: ${details.requiredFeat}.`,
+      "action-required": `Requiere la acción: ${details.requiredFeat}.`,
+      "undead-prohibited": "Esta opción exige que el personaje no sea muerto viviente.",
+      "research-field-mismatch": "El campo de investigación elegido no cumple el requisito.",
     },
   } as const;
   return copy[locale][reason as keyof typeof copy[typeof locale]] || reason;
@@ -327,9 +390,37 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
     if (!pickerType || !window.app) return [];
     const needle = query.toLocaleLowerCase(locale);
     let rawItems = window.app.getPickerItems(pickerType);
+    const slotLevel = Number(pickerOptions?.level);
+    const baseCompatibilityCharacter = (window.app as any).getPickerCompatibilityCharacter?.(pickerType) || character;
+    const compatibilityCharacter = pickerType === "feat" && Number.isInteger(slotLevel) && slotLevel > 0
+      ? { ...baseCompatibilityCharacter, level: slotLevel }
+      : baseCompatibilityCharacter;
+    const heritageInnate = pickerType === "spell" && pickerOptions?.heritageInnate === true;
     rawItems = rawItems.map((item) => {
       if (pickerType === "spell") {
-        const spellCompatibility = (window as any).PF2E_ENGINE?.getSpellCompatibility?.(character, item.data);
+        if (heritageInnate) {
+          const checker = (window as any).PF2E_ENGINE?.getPrerequisiteCompatibility;
+          const prerequisiteCompatibility = typeof checker === "function"
+            ? checker.call((window as any).PF2E_ENGINE, compatibilityCharacter, item.data)
+            : null;
+          // Truques ocultistas inatos dispensam conjuração normal, mas não
+          // dispensam classe, ancestralidade, nível ou outros gates explícitos.
+          if (prerequisiteCompatibility?.state === "incompatible" && prerequisiteCompatibility.reason !== "spellcasting-required") {
+            return {
+              ...item,
+              data: {
+                ...item.data,
+                selectionState: "incompatible",
+                selectionMessages: {
+                  ...(item.data?.selectionMessages || {}),
+                  [locale]: getPrerequisiteMessage(prerequisiteCompatibility.reason, locale, prerequisiteCompatibility),
+                },
+              },
+            };
+          }
+          return { ...item, data: { ...item.data, selectionState: "available" } };
+        }
+        const spellCompatibility = (window as any).PF2E_ENGINE?.getSpellCompatibility?.(compatibilityCharacter, item.data);
         if (spellCompatibility?.state === "incompatible") {
           return {
             ...item,
@@ -347,7 +438,7 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
       }
       const checker = (window as any).PF2E_ENGINE?.getPrerequisiteCompatibility;
       if (typeof checker !== "function") return item;
-      const compatibility = checker.call((window as any).PF2E_ENGINE, character, item.data);
+      const compatibility = checker.call((window as any).PF2E_ENGINE, compatibilityCharacter, item.data);
       if (compatibility?.state !== "incompatible") return item;
       return {
         ...item,

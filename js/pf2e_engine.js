@@ -115,19 +115,34 @@ const PF2E_ENGINE = {
     ];
     const identity = value => String(value?.id || value?.name || value?.names?.["pt-BR"] || value?.names?.en || value || "").toLocaleLowerCase();
     const source = catalogs.find(candidate => candidate !== companion && identity(candidate) === identity(companion)) || companion;
-    const attacks = Array.isArray(source.attacks) ? source.attacks.map(attack => ({
+    const numericOrUndefined = value => {
+      if (value === undefined || value === null || value === "") return undefined;
+      const numeric = Number(value);
+      return Number.isFinite(numeric) ? numeric : undefined;
+    };
+    const attacksSource = Array.isArray(companion.attacks) ? companion.attacks : source.attacks;
+    const attacks = Array.isArray(attacksSource) ? attacksSource.map(attack => ({
       ...attack,
-      bonus: attack.bonus === undefined ? undefined : Number(attack.bonus)
+      bonus: numericOrUndefined(attack.bonus)
     })) : [];
+    const profiles = Array.isArray(source.profiles) ? source.profiles : [];
+    const requestedProfile = Number(companion.profileIndex ?? source.profileIndex ?? 0);
+    const profileIndex = profiles.length ? Math.min(profiles.length - 1, Math.max(0, Number.isInteger(requestedProfile) ? requestedProfile : 0)) : undefined;
+    const selectedProfile = profileIndex === undefined ? undefined : profiles[profileIndex];
     return {
       ...source,
       name: companion.name || source.name,
       type: companion.type || source.type,
-      hpMax: Number(companion.hpMax ?? source.hpMax ?? source.hp) || undefined,
-      hpCurrent: Number(companion.hpCurrent ?? companion.currentHp ?? source.hpCurrent ?? source.hpMax ?? source.hp) || undefined,
-      ac: Number(companion.ac ?? source.ac) || undefined,
+      hpMax: numericOrUndefined(companion.hpMax ?? source.hpMax ?? source.hp),
+      hpCurrent: numericOrUndefined(companion.hpCurrent ?? companion.currentHp ?? source.hpCurrent ?? source.hpMax ?? source.hp),
+      ac: numericOrUndefined(companion.ac ?? source.ac),
       perception: companion.perception ?? source.perception,
       speed: companion.speed ?? source.speed,
+      profileIndex,
+      selectedProfile,
+      abilityScores: companion.abilityScores ?? selectedProfile?.abilities ?? source.abilityScores,
+      acBonus: companion.acBonus ?? selectedProfile?.acBonus ?? source.acBonus,
+      dexCap: companion.dexCap ?? selectedProfile?.dexCap ?? source.dexCap,
       attacks,
       supportBenefit: companion.supportBenefit ?? source.supportBenefit,
       specialAbility: companion.specialAbility ?? source.specialAbility
@@ -142,7 +157,7 @@ const PF2E_ENGINE = {
         /besta|crossbow/.test(weaponText) ? "bolt" :
           /fogo|firearm|pistol|rifle|mosquete|arcabuz|gun/.test(weaponText) ? "bullet" : null
     );
-    const requiresAmmunition = traits.some(trait => /recarga|reload|pente|magazine|muni[cç][aã]o|ammunition/i.test(String(trait))) || Boolean(weapon.requiresAmmunition);
+    const requiresAmmunition = traits.some(trait => /recarga|reload|pente|magazine|muni[cç][aã]o|ammunition/i.test(String(trait))) || Boolean(weapon.requiresAmmunition) || weapon.reload !== undefined && weapon.reload !== null && weapon.reload !== 0;
     const ammunition = (character?.inventory || []).filter(item => {
       const text = `${item?.id || ""} ${item?.name || ""} ${(item?.traits || []).join(" ")} ${item?.subCategory || ""}`;
       if (!/ammunition|muni[cç][aã]o|bullet|balas|bolt|virote|sphere|esfera|arrow|flecha/i.test(text)) return false;
@@ -151,7 +166,10 @@ const PF2E_ENGINE = {
       if (requiredType === "bolt") return /bolt|virote/i.test(text);
       return /bullet|bala|sphere|esfera/i.test(text);
     });
-    const quantity = ammunition.reduce((total, item) => total + Math.max(0, Number(item.qty) || 1), 0);
+    const quantity = ammunition.reduce((total, item) => {
+      const configuredQuantity = item?.qty === undefined || item?.qty === null || item?.qty === "" ? 1 : Number(item.qty);
+      return total + Math.max(0, Number.isFinite(configuredQuantity) ? configuredQuantity : 0);
+    }, 0);
     return {
       requiresAmmunition,
       quantity,
@@ -316,7 +334,11 @@ const PF2E_ENGINE = {
     if (profile.traditionMode !== "fixed" && !allowedTraditions.includes(tradition)) {
       return { state: "requires-choice", reason: "tradition-required", tradition: "", maximumRank };
     }
-    if (Number(spell?.rank || 0) > maximumRank) {
+    // Fichas/importações antigas usam `level` para o círculo da magia;
+    // normalizar aqui evita que uma magia de alto nível seja tratada como
+    // truque quando passa pelo bridge legado.
+    const spellRank = Number(spell?.rank ?? spell?.level ?? 0);
+    if (spellRank > maximumRank) {
       return { state: "incompatible", reason: "rank-too-high", tradition, maximumRank };
     }
     if (!Array.isArray(spell?.traditions) || !spell.traditions.includes(tradition)) {
@@ -336,6 +358,63 @@ const PF2E_ENGINE = {
       : value;
     const normalize = (value) => String(identityValue(value) || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     const level = Math.max(1, Number(char.level) || 1);
+    const requiredCause = normalize(item.requiredCause || item.cause);
+    if (requiredCause) {
+      const selectedCause = normalize(char.subclass || char.cause || "");
+      const causeAliases = requiredCause.includes("esplendor") ? ["esplendor", "radiance"]
+        : requiredCause.includes("iniquidade") ? ["iniquidade", "iniquity", "tiranos", "desesperadores"]
+          : requiredCause.includes("libertacao") ? ["libertacao", "liberdade", "liberation"]
+            : requiredCause.includes("justica") ? ["justica", "retribuicao", "justice"]
+              : requiredCause.includes("obediencia") ? ["obediencia", "obediência", "obedience"]
+                : requiredCause.includes("profanacao") ? ["profanacao", "profano", "desecration"]
+                  : requiredCause.includes("redencao") ? ["redencao", "misericordia", "redemption"]
+                    : [];
+      if (!selectedCause || !causeAliases.some((alias) => selectedCause.includes(normalize(alias)))) {
+        return { state: "incompatible", reason: "cause-mismatch", requiredCause };
+      }
+    }
+    const normalizeSanctification = (value) => {
+      const normalized = normalize(value);
+      if (/(?:profan|unholy|imp[ií]o)/.test(normalized)) return "unholy";
+      if (/(?:sagrad|holy|sanctif)/.test(normalized)) return "holy";
+      return "";
+    };
+    const explicitSanctification = normalizeSanctification(char.sanctification || char.sanctificationType);
+    const selectedCauseValue = char.subclass || char.cause;
+    const selectedCauseRecord = selectedCauseValue
+      ? Object.values(PF2E_DATA?.subclasses || {}).find((cause) => {
+        const selected = normalize(selectedCauseValue);
+        return [cause?.id, cause?.name, ...Object.values(cause?.names || {})]
+          .filter(Boolean).some((candidate) => normalize(candidate) === selected);
+      })
+      : null;
+    const selectedSanctification = explicitSanctification || normalizeSanctification(selectedCauseRecord?.sanctification);
+    const requiredSanctifications = Array.isArray(item.requiredSanctification)
+      ? item.requiredSanctification.map(normalizeSanctification).filter(Boolean)
+      : item.requiredSanctification ? [normalizeSanctification(item.requiredSanctification)].filter(Boolean) : [];
+    if (requiredSanctifications.length && selectedSanctification && !requiredSanctifications.includes(selectedSanctification)) {
+      return { state: "incompatible", reason: "sanctification-mismatch", requiredSanctification: requiredSanctifications };
+    }
+    const prohibitedSanctification = normalizeSanctification(item.prohibitedSanctification);
+    if (prohibitedSanctification && selectedSanctification === prohibitedSanctification) {
+      return { state: "incompatible", reason: "sanctification-prohibited", prohibitedSanctification };
+    }
+    const requiredSubclassValues = Array.isArray(item.requiredSubclass)
+      ? item.requiredSubclass
+      : item.requiredSubclass ? [item.requiredSubclass] : [];
+    if (requiredSubclassValues.length) {
+      const selectedSubclass = [char.subclass, char.instinct, char.bloodline, char.patron, char.order, char.mystery, char.doctrine, char.apparition, char.eidolon]
+        .map(normalize).find(Boolean) || "";
+      const subclassAliases = (value) => {
+        const normalized = normalize(value);
+        if (normalized.includes("dragao") || normalized.includes("dragon")) return ["dragao", "draconico", "dragon", "draconic"];
+        if (normalized.includes("feérico") || normalized.includes("feerico") || normalized.includes("fey")) return ["feerico", "feérico", "fey"];
+        return [normalized];
+      };
+      if (!selectedSubclass || !requiredSubclassValues.some((required) => subclassAliases(required).some((alias) => selectedSubclass.includes(normalize(alias))))) {
+        return { state: "incompatible", reason: "subclass-mismatch", requiredSubclass: requiredSubclassValues };
+      }
+    }
     // O nível de um talento é também o nível mínimo para selecioná-lo. Para
     // itens e magias, `level` é o nível do objeto/magia e não deve bloquear a
     // seleção por si só; esses casos usam `requiredLevel` explícito quando
@@ -352,6 +431,146 @@ const PF2E_ENGINE = {
     if (item.requiresDeviant && !(char.deviant || char.hasDeviantAbility || (Array.isArray(char.deviantAbilities) && char.deviantAbilities.length > 0))) {
       return { state: "incompatible", reason: "deviant-required" };
     }
+    if (item.requiresFlight) {
+      const flightValues = [char.hasFlight, char.flight, char.flySpeed, char.flightSpeed, char.speeds?.fly, char.movement?.fly]
+        .filter((value) => value !== undefined && value !== null);
+      const flightKnown = flightValues.length > 0;
+      const hasFlight = flightValues.some((value) => value === true || Number(value) > 0 || /voo|fly|flight/i.test(String(value)));
+      if (flightKnown && !hasFlight) return { state: "incompatible", reason: "flight-required" };
+    }
+    if (item.requiresPrehensileTongueOrTail) {
+      const anatomyValues = [
+        char.hasPrehensileTongue,
+        char.prehensileTongue,
+        char.hasTail,
+        char.tail,
+      ].filter((value) => value !== undefined && value !== null);
+      const anatomyText = [char.anatomy, ...(Array.isArray(char.anatomyTraits) ? char.anatomyTraits : [])]
+        .filter(Boolean).join(" ");
+      const hasRequiredAnatomy = anatomyValues.some((value) => value === true || /cauda|tail|lingua preensil|prehensile tongue/i.test(String(value)))
+        || /cauda|tail|lingua preensil|prehensile tongue/i.test(anatomyText);
+      const tongueKnown = char.hasPrehensileTongue !== undefined || char.prehensileTongue !== undefined;
+      const tailKnown = char.hasTail !== undefined || char.tail !== undefined;
+      const alternativesExplicitlyAbsent = tongueKnown && tailKnown && !hasRequiredAnatomy;
+      if ((Boolean(anatomyText) && !hasRequiredAnatomy) || alternativesExplicitlyAbsent) {
+        return { state: "incompatible", reason: "anatomy-required" };
+      }
+    }
+    if (item.requiresShield) {
+      const shieldKnown = Object.prototype.hasOwnProperty.call(char, "equippedShield")
+        || Object.prototype.hasOwnProperty.call(char, "shieldEquipped")
+        || Object.prototype.hasOwnProperty.call(char, "wieldingShield");
+      const hasShield = char.equippedShield != null && char.equippedShield !== false
+        || char.shieldEquipped === true || char.wieldingShield === true;
+      if (shieldKnown && !hasShield) return { state: "incompatible", reason: "shield-required" };
+    }
+    if (item.requiresMounted) {
+      const mountedKnown = Object.prototype.hasOwnProperty.call(char, "mounted")
+        || Object.prototype.hasOwnProperty.call(char, "isMounted")
+        || Object.prototype.hasOwnProperty.call(char, "mount");
+      const isMounted = char.mounted === true || char.isMounted === true || (char.mount != null && char.mount !== false);
+      if (mountedKnown && !isMounted) return { state: "incompatible", reason: "mounted-required" };
+    }
+    if (item.requiresUnarmored) {
+      const armorKnown = Object.prototype.hasOwnProperty.call(char, "equippedArmor")
+        || Object.prototype.hasOwnProperty.call(char, "armorEquipped");
+      const isArmored = char.equippedArmor != null && char.equippedArmor !== false || char.armorEquipped === true;
+      if (armorKnown && isArmored) return { state: "incompatible", reason: "unarmored-required" };
+    }
+    if (item.requiresTwoMeleeWeapons) {
+      const weaponsKnown = Array.isArray(char.equippedWeapons);
+      if (weaponsKnown) {
+        const meleeWeapons = char.equippedWeapons.filter((weapon) => {
+          const text = [weapon?.name, weapon?.category, weapon?.weaponType, ...(weapon?.traits || [])]
+            .filter(Boolean).join(" ");
+          return !/dist[aâ]ncia|ranged|arco|bow|besta|crossbow|firearm|fogo|m[aá]gica de fogo/i.test(text)
+            && weapon?.melee !== false;
+        });
+        if (meleeWeapons.length < 2) return { state: "incompatible", reason: "two-melee-weapons-required" };
+      }
+    }
+    if (item.requiresOneHandOneFree) {
+      const freeHandKnown = ["freeHands", "handsFree", "freeHand"].some((key) => Object.prototype.hasOwnProperty.call(char, key));
+      const freeHandCount = Number(char.freeHands ?? char.handsFree ?? (char.freeHand === true ? 1 : char.freeHand === false ? 0 : NaN));
+      if (freeHandKnown && (!Number.isFinite(freeHandCount) || freeHandCount < 1)) {
+        return { state: "incompatible", reason: "one-hand-free-required" };
+      }
+    }
+    if (item.requiresSpellcasting && !this.getSpellcastingProfile(char)) {
+      return { state: "incompatible", reason: "spellcasting-required" };
+    }
+    const familiarAbilityCount = Number(char.familiarAbilityCount ?? char.familiarAbilitiesCount
+      ?? (Array.isArray(char.familiarAbilities) ? char.familiarAbilities.length : NaN));
+    if (Number.isFinite(item.requiredFamiliarAbilities) && Number.isFinite(familiarAbilityCount)
+      && familiarAbilityCount < Number(item.requiredFamiliarAbilities)) {
+      return {
+        state: "incompatible",
+        reason: "familiar-abilities-too-low",
+        requiredFamiliarAbilities: Number(item.requiredFamiliarAbilities),
+      };
+    }
+
+    const requiredEquipmentRaw = item.requiredEquipment ?? item.requiresEquipment;
+    const requiredEquipment = Array.isArray(requiredEquipmentRaw)
+      ? requiredEquipmentRaw
+      : (typeof requiredEquipmentRaw === "string" ? [requiredEquipmentRaw] : []);
+    const readEquipmentCollection = (value, seen = new Set()) => {
+      const entries = Array.isArray(value)
+        ? value
+        : value && typeof value === "object" ? Object.values(value) : [];
+      const collected = [];
+      for (const entry of entries) {
+        if (!entry || typeof entry !== "object" || seen.has(entry)) continue;
+        seen.add(entry);
+        collected.push(entry);
+        // Inventário e fichas importadas podem representar recipientes como
+        // `items`, `contents` ou um mapa indexado. O conteúdo conta para um
+        // pré-requisito mesmo quando está guardado em outro recipiente.
+        for (const nested of [entry.items, entry.contents, entry.inventory]) {
+          collected.push(...readEquipmentCollection(nested, seen));
+        }
+      }
+      return collected;
+    };
+    const equipmentStateKnown = [char.inventory, char.containers, char.weapons, char.items, char.equipment, char.equippedWeapons]
+      .some((value) => Array.isArray(value) || (value && typeof value === "object"))
+      || Object.prototype.hasOwnProperty.call(char, "equippedArmor")
+      || Object.prototype.hasOwnProperty.call(char, "equippedShield");
+    if (requiredEquipment.length && equipmentStateKnown) {
+      const seenEquipment = new Set();
+      const possessed = [
+        ...readEquipmentCollection(char.inventory, seenEquipment),
+        ...readEquipmentCollection(char.containers, seenEquipment),
+        ...readEquipmentCollection(char.weapons, seenEquipment),
+        ...readEquipmentCollection(char.items, seenEquipment),
+        ...readEquipmentCollection(char.equipment, seenEquipment),
+        ...readEquipmentCollection(char.equippedWeapons, seenEquipment),
+        ...readEquipmentCollection(char.equippedArmor ? [char.equippedArmor] : [], seenEquipment),
+        ...readEquipmentCollection(char.equippedShield ? [char.equippedShield] : [], seenEquipment),
+      ];
+      const possessedKeys = possessed.flatMap((entry) => [entry?.id, entry?.name, ...Object.values(entry?.names || {})]
+        .filter(Boolean).map(normalize));
+      const catalogIdentityKeys = (requirement) => {
+        const direct = normalize(requirement);
+        const keys = new Set(direct ? [direct] : []);
+        const collections = [PF2E_DATA?.items, PF2E_DATA?.itemCompendium, PF2E_DATA?.weapons, PF2E_DATA?.armors, PF2E_DATA?.shields];
+        for (const collection of collections) {
+          const records = Array.isArray(collection) ? collection : Object.values(collection || {});
+          for (const entry of records) {
+            const entryKeys = [entry?.id, entry?.name, ...Object.values(entry?.names || {})].filter(Boolean).map(normalize);
+            if (entryKeys.includes(direct)) entryKeys.forEach((key) => keys.add(key));
+          }
+        }
+        return keys;
+      };
+      const missingEquipment = requiredEquipment.find((requirement) => {
+        const requirementKeys = catalogIdentityKeys(requirement);
+        return ![...requirementKeys].some((key) => possessedKeys.includes(key));
+      });
+      if (missingEquipment) {
+        return { state: "incompatible", reason: "equipment-required", missingEquipment };
+      }
+    }
 
     const resolveCatalogRecord = (collection, value) => {
       const needle = normalize(value);
@@ -360,23 +579,105 @@ const PF2E_ENGINE = {
         return candidates.includes(needle);
       })?.record;
     };
+    const catalogGateMatches = (collection, selectedValue, allowedValues) => {
+      const selected = resolveCatalogRecord(collection, selectedValue);
+      const selectedNeedle = normalize(selectedValue);
+      return allowedValues.some((allowedValue) => {
+        // Fichas importadas frequentemente persistem o ID canônico enquanto
+        // o catálogo expõe também uma chave/nome localizado. Igualdade exata
+        // de ID ou chave é segura e deve vencer a resolução de aliases.
+        if (selectedNeedle && selectedNeedle === normalize(allowedValue)) return true;
+        const selectedLabels = [selected?.id, selected?.name, ...Object.values(selected?.names || {})]
+          .filter(Boolean).map(normalize);
+        if (selectedLabels.includes(normalize(allowedValue))) return true;
+        const allowed = resolveCatalogRecord(collection, allowedValue);
+        return (selected?.id && allowed?.id === selected.id)
+          || (selected?.id && normalize(allowedValue) === normalize(selected.id))
+          // Fichas importadas ou catálogos externos podem não ter o registro
+          // resolvido ainda. Uma igualdade textual exata é segura; não faça
+          // correspondência parcial, pois isso poderia liberar outra opção.
+          || (!selected?.id && selectedNeedle && selectedNeedle === normalize(allowedValue));
+      });
+    };
     const classIds = Array.isArray(item.classIds) && item.classIds.length ? item.classIds : item.classId ? [item.classId] : [];
+    const multiclassArchetypeClasses = {
+      "archetype.bard_multiclass": "class.bard",
+      "archetype.witch_multiclass": "class.witch",
+      "archetype.cleric_multiclass": "class.cleric",
+      "archetype.druid_multiclass": "class.druid",
+      "archetype.fighter_multiclass": "class.fighter",
+      "archetype.rogue_multiclass": "class.rogue",
+      "archetype.wizard_multiclass": "class.wizard",
+      "archetype.ranger_multiclass": "class.ranger",
+      "archetype.magus_dedication": "class.magus",
+      "archetype.summoner_dedication": "class.summoner",
+      "archetype.psychic_dedication": "class.psychic",
+      "archetype.thaumaturge_dedication": "class.thaumaturge",
+      "archetype.exemplar_multiclass": "class.exemplar",
+      "archetype.animist_multiclass": "class.animist",
+      "archetype.commander_multiclass": "class.commander",
+      "archetype.guardian_multiclass": "class.guardian",
+    };
+    const archetypeIdentity = item.archetypeId || item.id;
+    const isMulticlassDedication = /(?:^|[._-])dedication(?:$|[._-])/i.test(String(item.id || item.name || ""));
+    const inferredProhibitedClassId = archetypeIdentity
+      && (multiclassArchetypeClasses[archetypeIdentity] && (!item.archetypeId || isMulticlassDedication))
+      ? multiclassArchetypeClasses[archetypeIdentity]
+      : undefined;
+    const prohibitedClassIds = Array.isArray(item.prohibitedClassIds) && item.prohibitedClassIds.length
+      ? item.prohibitedClassIds
+      : item.prohibitedClassId ? [item.prohibitedClassId]
+        : inferredProhibitedClassId ? [inferredProhibitedClassId] : [];
+    if (prohibitedClassIds.length && catalogGateMatches(PF2E_DATA?.classes, char.class, prohibitedClassIds)) {
+      return { state: "incompatible", reason: "class-prohibited" };
+    }
     if (classIds.length) {
-      const selectedClass = resolveCatalogRecord(PF2E_DATA?.classes, char.class);
-      if (!selectedClass?.id || !classIds.includes(selectedClass.id)) {
+      const selectedClassIdentity = normalize(char.class);
+      const exactClassIdMatch = selectedClassIdentity && classIds.some((classId) => selectedClassIdentity === normalize(classId));
+      if (!exactClassIdMatch && !catalogGateMatches(PF2E_DATA?.classes, char.class, classIds)) {
+        return { state: "incompatible", reason: "class-mismatch" };
+      }
+    }
+    const hasDeityField = Object.prototype.hasOwnProperty.call(char, "deity");
+    if (item.requiresDeity && hasDeityField && !normalize(char.deity)) {
+      return { state: "incompatible", reason: "deity-required" };
+    }
+    const hasPatronField = Object.prototype.hasOwnProperty.call(char, "patron");
+    if (item.requiresNoPatron && hasPatronField && normalize(char.patron)) {
+      return { state: "incompatible", reason: "patron-must-be-absent" };
+    }
+    if (!classIds.length && item.className) {
+      if (!catalogGateMatches(PF2E_DATA?.classes, char.class, [item.className])) {
         return { state: "incompatible", reason: "class-mismatch" };
       }
     }
     const ancestryIds = Array.isArray(item.ancestryIds) && item.ancestryIds.length ? item.ancestryIds : item.ancestryId ? [item.ancestryId] : [];
     if (ancestryIds.length) {
-      const selectedAncestry = resolveCatalogRecord(PF2E_DATA?.ancestries, char.ancestry);
-      if (!selectedAncestry?.id || !ancestryIds.includes(selectedAncestry.id)) return { state: "incompatible", reason: "ancestry-mismatch" };
+      if (!catalogGateMatches(PF2E_DATA?.ancestries, char.ancestry, ancestryIds)) return { state: "incompatible", reason: "ancestry-mismatch" };
+    }
+    if (!ancestryIds.length && item.ancestry) {
+      if (!catalogGateMatches(PF2E_DATA?.ancestries, char.ancestry, [item.ancestry])) {
+        return { state: "incompatible", reason: "ancestry-mismatch" };
+      }
+    }
+    if (item.requiredResearchField && char.researchField !== undefined) {
+      const fieldAliases = {
+        chirurgeon: ["chirurgeon", "cirurgiao", "cirurgião", "cirurgista"],
+        mutagenist: ["mutagenist", "mutagenista"],
+        bomber: ["bomber", "bombardeiro", "bombardero"],
+      };
+      const selectedField = normalize(char.researchField);
+      const requiredField = normalize(item.requiredResearchField);
+      const aliases = fieldAliases[requiredField] || [requiredField];
+      if (selectedField && !aliases.some((alias) => selectedField.includes(normalize(alias)))) {
+        return { state: "incompatible", reason: "research-field-mismatch", requiredResearchField: item.requiredResearchField };
+      }
     }
 
     const raw = item.prereq ?? item.prerequisites;
     const prerequisites = Array.isArray(raw) ? raw : raw ? [raw] : [];
-    if (!prerequisites.length) return { state: "available", reason: "no-prerequisite" };
-    const abilities = { forca: "str", strength: "str", destreza: "dex", dexterity: "dex", constituicao: "con", constitution: "con", inteligencia: "int", intelligence: "int", sabedoria: "wis", wisdom: "wis", carisma: "cha", charisma: "cha" };
+    if (!prerequisites.length && item.requiresWeaponProficiency === undefined) return { state: "available", reason: "no-prerequisite" };
+    const abilities = { str: "str", dex: "dex", con: "con", int: "int", wis: "wis", cha: "cha", forca: "str", fuerza: "str", strength: "str", destreza: "dex", dexterity: "dex", constituicao: "con", constitucion: "con", constitution: "con", inteligencia: "int", intelligence: "int", sabedoria: "wis", sabiduria: "wis", wisdom: "wis", carisma: "cha", charisma: "cha" };
     const skillAliases = {
       acrobacia: "acrobatics", acrobatics: "acrobatics",
       atletismo: "athletics", athletics: "athletics",
@@ -385,13 +686,15 @@ const PF2E_ENGINE = {
       diplomacia: "diplomacy", diplomacy: "diplomacy",
       enganacao: "deception", deception: "deception",
       dissimulacao: "deception", bluff: "deception",
-      furtividade: "stealth", stealth: "stealth",
+      furtividade: "stealth", sigilo: "stealth", stealth: "stealth",
       ladinagem: "thievery", thievery: "thievery",
       arcana: "arcana", arcanismo: "arcana",
       natureza: "nature", nature: "nature",
+      sobrevivencia: "survival", supervivencia: "survival", survival: "survival",
       ocultismo: "occultism", occultism: "occultism",
       religiao: "religion", religion: "religion",
       sociedade: "society", society: "society",
+      saber: "lore", lore: "lore", "saber (guerra)": "lore", "war lore": "lore",
       manufatura: "crafting", crafting: "crafting", artesania: "crafting",
       atuacao: "performance", performance: "performance", interpretacion: "performance",
       percepcao: "perception", perception: "perception",
@@ -403,11 +706,15 @@ const PF2E_ENGINE = {
     // proficiências ao validar pré-requisitos de armas/armaduras.
     const classRecord = resolveCatalogRecord(PF2E_DATA?.classes, char.class) || {};
     const ancestryRecord = resolveCatalogRecord(PF2E_DATA?.ancestries, char.ancestry) || {};
-    const heritageRecord = (PF2E_DATA?.heritages || []).find((heritage) => [heritage.id, heritage.name, ...Object.values(heritage.names || {})]
+    const heritageRecord = [...(PF2E_DATA?.heritages || []), ...(PF2E_DATA?.versatileHeritages || [])].find((heritage) => [heritage.id, heritage.name, ...Object.values(heritage.names || {})]
       .filter(Boolean).map(normalize).includes(normalize(char.heritage))) || {};
-    const selectedClassText = normalize(char.class);
-    const selectedAncestryText = normalize(char.ancestry);
-    const selectedFeats = (char.feats || []).concat(char.archetypes || []).map((entry) => normalize(entry?.name || entry));
+    const selectedFeatureRecords = (char.feats || []).concat(char.archetypes || [], char.classFeatures || [], char.actions || []);
+    const allFeatureRecords = [...(PF2E_DATA?.feats || []), ...(PF2E_DATA?.actions || []), ...(PF2E_DATA?.archetypes || [])];
+    const selectedFeats = selectedFeatureRecords.flatMap((entry) => {
+      const resolved = typeof entry === "string" ? allFeatureRecords.find((record) => record.id === entry) : entry;
+      return [entry, resolved?.id, resolved?.name, ...Object.values(resolved?.names || {})]
+        .filter(Boolean).map(normalize);
+    });
     const shieldRank = char.shieldProficiency ?? char.shieldsProficiency ?? classRecord.shields?.Geral ?? classRecord.shields?.General;
     const isUndeadCharacter = Boolean(char.isUndead)
       || [ancestryRecord, heritageRecord].some((record) => (record.traits || []).some((trait) => /morto[- ]vivo|undead|muerto viviente|no muerto/.test(normalize(trait))))
@@ -418,20 +725,149 @@ const PF2E_ENGINE = {
     });
     const classNames = new Set(catalogNames(PF2E_DATA?.classes));
     const ancestryNames = new Set(catalogNames(PF2E_DATA?.ancestries));
+    const explicitWeaponRank = (category) => {
+      const wanted = normalize(category);
+      const entry = Object.entries(char.weaponProficiencies || {})
+        .find(([key]) => normalize(key) === wanted);
+      return entry ? entry[1] : undefined;
+    };
+    const weaponRank = (category) => explicitWeaponRank(category) ?? classRecord.weapons?.[category];
+    if (item.requiredUnarmoredProficiency !== undefined) {
+      const requiredRank = rankValues[normalize(item.requiredUnarmoredProficiency)] ?? (Number(item.requiredUnarmoredProficiency) || 2);
+      const explicitRanks = Object.entries(char.armorProficiencies || {})
+        .filter(([key]) => /sem armadura|unarmored|sin armadura/i.test(key))
+        .map(([, value]) => rankValues[normalize(value)] ?? Number(value))
+        .filter(Number.isFinite);
+      const classRank = rankValues[normalize(classRecord.armor?.["Sem Armadura"])] ?? Number(classRecord.armor?.["Sem Armadura"]);
+      const knownRanks = [...explicitRanks, ...(Number.isFinite(classRank) ? [classRank] : [])];
+      if (knownRanks.length && Math.max(...knownRanks) < requiredRank) {
+        return { state: "incompatible", reason: "unarmored-proficiency-too-low", requiredRank: item.requiredUnarmoredProficiency };
+      }
+    }
+    if (item.requiresWeaponProficiency !== undefined) {
+      const requiredWeaponRank = rankValues[normalize(item.requiresWeaponProficiency)] ?? (Number(item.requiresWeaponProficiency) || 2);
+      const explicitWeaponRanks = Object.values(char.weaponProficiencies || {}).map((rank) => rankValues[normalize(rank)] ?? Number(rank)).filter(Number.isFinite);
+      const classWeaponRanks = Object.values(classRecord.weapons || {}).map((rank) => rankValues[normalize(rank)] ?? Number(rank)).filter(Number.isFinite);
+      const knownWeaponRanks = [...explicitWeaponRanks, ...classWeaponRanks];
+      if (knownWeaponRanks.length && Math.max(...knownWeaponRanks) < requiredWeaponRank) {
+        return { state: "incompatible", reason: "weapon-proficiency-too-low", requiredRank: item.requiresWeaponProficiency };
+      }
+    }
+    const maxClassHpPerLevel = Number(item.maxClassHpPerLevel);
+    if (Number.isFinite(maxClassHpPerLevel)) {
+      const constitutionScore = Number(char.abilities?.con);
+      // Fichas antigas sem atributos completos permanecem revisáveis; quando
+      // os dados estão presentes, a opção incompatível deve ser removida.
+      if (Number.isFinite(constitutionScore) && Number.isFinite(Number(classRecord.hpPerLevel))) {
+        const allowedClassHpPerLevel = maxClassHpPerLevel + this.getModifier(constitutionScore);
+        if (Number(classRecord.hpPerLevel) > allowedClassHpPerLevel) {
+          return { state: "incompatible", reason: "class-hp-too-high", classHpPerLevel: Number(classRecord.hpPerLevel), maximum: allowedClassHpPerLevel };
+        }
+      }
+    }
     const getSkillRank = (skillName) => {
-      const skillKey = skillAliases[normalize(skillName)] || normalize(skillName);
+      const normalizedSkillName = normalize(skillName);
+      const skillKey = skillAliases[normalizedSkillName] || normalizedSkillName;
       if (skillKey === "perception") return rankValues[normalize(char.perceptionRank)] ?? (Number(char.perceptionRank) || 0);
+      if (skillKey === "lore") {
+        const loreNeedle = normalizedSkillName.replace(/^(?:saber|lore)\s*(?:\((.+)\))?$/, "$1").trim();
+        const loreEntries = Array.isArray(char.loreSkills) ? char.loreSkills : [];
+        const matchingLore = loreEntries.find((entry) => {
+          const loreName = normalize(entry?.name || entry?.lore || entry);
+          return !loreNeedle || loreName.includes(loreNeedle) || loreNeedle.includes(loreName);
+        });
+        const rawLoreRank = matchingLore?.rank ?? matchingLore?.proficiency ?? char.skills?.lore;
+        return rankValues[normalize(rawLoreRank)] ?? (Number(rawLoreRank) || 0);
+      }
       const rawRank = char.skills?.[skillKey] ?? char.skills?.[skillName];
       return rankValues[normalize(rawRank)] ?? (Number(rawRank) || 0);
     };
     let recognized = 0;
-
+    if (item.requiredSkillByTradition) {
+      const traditionSkills = { arcane: "arcana", divine: "religion", occult: "occultism", primal: "nature" };
+      const tradition = this.normalizeTradition(char.magicTradition);
+      const skill = traditionSkills[tradition];
+      if (skill) {
+        const requiredRank = rankValues[normalize(item.requiredSkillRank || "trained")] ?? 2;
+        recognized = 1;
+        if (getSkillRank(skill) < requiredRank) {
+          return { state: "incompatible", reason: "tradition-skill-rank-too-low", tradition, skill, requiredRank: item.requiredSkillRank || "trained" };
+        }
+      }
+    }
     for (const prerequisite of prerequisites) {
+      if (prerequisite && typeof prerequisite === "object" && prerequisite.type) {
+        const structuredType = normalize(prerequisite.type);
+        const structuredValues = [
+          ...(Array.isArray(prerequisite.ids) ? prerequisite.ids : []),
+          ...(Array.isArray(prerequisite.values) ? prerequisite.values : []),
+          ...(Array.isArray(prerequisite.options) ? prerequisite.options : []),
+          ...(prerequisite.id ? [prerequisite.id] : []),
+          ...(prerequisite.name ? [prerequisite.name] : [])
+        ].filter(Boolean);
+        if (structuredType === "class" || structuredType === "classe") {
+          recognized++;
+          if (structuredValues.length && !structuredValues.some((value) => catalogGateMatches(PF2E_DATA?.classes, char.class, [value]))) return { state: "incompatible", reason: "class-mismatch" };
+          continue;
+        }
+        if (structuredType === "ancestry" || structuredType === "ancestralidade") {
+          recognized++;
+          if (structuredValues.length && !structuredValues.some((value) => catalogGateMatches(PF2E_DATA?.ancestries, char.ancestry, [value]))) return { state: "incompatible", reason: "ancestry-mismatch" };
+          continue;
+        }
+        if (structuredType === "level" || structuredType === "nivel") {
+          recognized++;
+          const minimum = Number(prerequisite.minimum ?? prerequisite.value ?? prerequisite.level);
+          if (Number.isFinite(minimum) && level < minimum) return { state: "incompatible", reason: "level-too-low", requiredLevel: minimum };
+          continue;
+        }
+        if (structuredType === "ability" || structuredType === "atributo") {
+          const abilityKey = abilities[normalize(prerequisite.ability || prerequisite.attribute || prerequisite.name)];
+          const minimum = Number(prerequisite.minimum ?? prerequisite.value ?? prerequisite.score);
+          if (abilityKey && Number.isFinite(minimum)) {
+            recognized++;
+            const actual = Number(char.abilities?.[abilityKey]);
+            const modifierMode = prerequisite.mode === "modifier" || prerequisite.modifier !== undefined || prerequisite.minimumModifier !== undefined;
+            const threshold = modifierMode ? this.getModifier(actual) : actual;
+            const required = Number(prerequisite.minimumModifier ?? prerequisite.modifier ?? minimum);
+            if (!Number.isFinite(actual) || threshold < required) return { state: "incompatible", reason: "ability-too-low", ability: abilityKey, required };
+          }
+          continue;
+        }
+        if (structuredType === "skill" || structuredType === "pericia") {
+          const skillName = prerequisite.skill || prerequisite.name || prerequisite.id;
+          const requiredRank = rankValues[normalize(prerequisite.rank ?? prerequisite.minimumRank ?? "trained")] ?? Number(prerequisite.rank ?? prerequisite.minimumRank ?? 2);
+          if (skillName) {
+            recognized++;
+            if (getSkillRank(skillName) < requiredRank) return { state: "incompatible", reason: "skill-rank-too-low", skill: skillName, requiredRank };
+          }
+          continue;
+        }
+        if (structuredType === "feat" || structuredType === "talento" || structuredType === "dote") {
+          const requiredFeat = normalize(prerequisite.feat || prerequisite.name || prerequisite.id);
+          if (requiredFeat) {
+            recognized++;
+            if (!selectedFeats.some((feat) => feat.includes(requiredFeat))) return { state: "incompatible", reason: "dedication-required" };
+          }
+          continue;
+        }
+      }
       const text = normalize(typeof prerequisite === "string" ? prerequisite : prerequisite?.text || prerequisite?.name);
       if (!text || text === "nenhum" || text === "none") { recognized++; continue; }
+      if (item.requiredSkillByTradition && /(?:pericia|skill|habilidad).*(?:tradicao|tradition|tradicion).*(?:patrono|patron)/.test(text)) {
+        // This phrase is resolved by the structured tradition gate above.
+        // Do not let the generic text parser treat it as an unknown skill name.
+        recognized++;
+        continue;
+      }
       if (/voce esta morto[- ]vivo|you are undead|eres muerto viviente|eres no muerto/.test(text)) {
         recognized++;
         if (!isUndeadCharacter) return { state: "incompatible", reason: "undead-required" };
+        continue;
+      }
+      if (/voce nao e uma criatura morta[- ]viva|you are not undead|no eres una criatura muerta viviente|no eres muerto viviente/.test(text)) {
+        recognized++;
+        if (isUndeadCharacter) return { state: "incompatible", reason: "undead-prohibited" };
         continue;
       }
       const levelMatch = text.match(/(?:nivel|level)\s*(\d+)/);
@@ -440,7 +876,7 @@ const PF2E_ENGINE = {
         if (level < Number(levelMatch[1])) return { state: "incompatible", reason: "level-too-low", requiredLevel: Number(levelMatch[1]) };
         continue;
       }
-      const abilityMatches = [...text.matchAll(/(forca|strength|destreza|dexterity|constituicao|constitution|inteligencia|intelligence|sabedoria|wisdom|carisma|charisma)\s*\+\s*(\d+)/g)];
+      const abilityMatches = [...text.matchAll(/(forca|fuerza|strength|destreza|dexterity|constituicao|constitucion|constitution|inteligencia|intelligence|sabedoria|sabiduria|wisdom|carisma|charisma)\s*\+\s*(\d+)/g)];
       if (abilityMatches.length) {
         recognized++;
         const meetsRequirement = ([_, abilityName, required]) => {
@@ -448,7 +884,7 @@ const PF2E_ENGINE = {
           const score = Number(char.abilities?.[key]);
           return Number.isFinite(score) && this.getModifier(score) >= Number(required);
         };
-        const meets = text.includes(" ou ") || text.includes(" or ") ? abilityMatches.some(meetsRequirement) : abilityMatches.every(meetsRequirement);
+        const meets = text.includes(" ou ") || text.includes(" or ") || text.includes(" o ") ? abilityMatches.some(meetsRequirement) : abilityMatches.every(meetsRequirement);
         if (!meets) return { state: "incompatible", reason: "ability-too-low", ability: abilities[abilityMatches[0][1]], required: Number(abilityMatches[0][2]) };
         continue;
       }
@@ -466,6 +902,10 @@ const PF2E_ENGINE = {
         const requiredRank = rankValues[compoundSkillMatch[1]] ?? 2;
         const components = compoundSkillMatch[2].split(/\s+(?:e|and|y)\s+/).map((part) => part.trim()).filter(Boolean);
         const meetsComponent = (component) => {
+          const componentRankMatch = component.match(/^(treinado|trained|entrenado|especialista|expert|experto|mestre|master|maestro|lendario|legendary|legendario)\s+(?:em|in|en)?\s*/);
+          const componentRequiredRank = componentRankMatch
+            ? (rankValues[normalize(componentRankMatch[1])] ?? requiredRank)
+            : requiredRank;
           const componentWithoutRank = component.replace(/^(?:treinado|trained|entrenado|especialista|expert|experto|mestre|master|maestro|lendario|legendary|legendario)\s+(?:em|in|en)?\s*/, "").trim();
           const featMatch = componentWithoutRank.match(/^(?:talento|feat|dote)\s+(.+)$/);
           const componentText = featMatch ? featMatch[1].trim() : componentWithoutRank;
@@ -474,12 +914,12 @@ const PF2E_ENGINE = {
           }
           if (/(?:arma|weapon|desarmad|unarmed|armadura|armor|escudo|shield)/.test(componentText)) {
             if (/(?:escudo|shield)/.test(componentText) && shieldRank !== undefined) {
-              return (rankValues[normalize(shieldRank)] ?? 0) >= requiredRank;
+              return (rankValues[normalize(shieldRank)] ?? 0) >= componentRequiredRank;
             }
-            const targetRank = componentText.includes("marcia") || componentText.includes("martial") ? classRecord.weapons?.Marcial
-              : componentText.includes("simples") || componentText.includes("simple") ? classRecord.weapons?.Simples
-                : componentText.includes("avancad") || componentText.includes("advanced") ? classRecord.weapons?.Avançada
-                  : componentText.includes("desarmad") || componentText.includes("unarmed") ? classRecord.weapons?.Desarmado
+            const targetRank = componentText.includes("marcia") || componentText.includes("martial") ? weaponRank("Marcial")
+              : componentText.includes("simples") || componentText.includes("simple") ? weaponRank("Simples")
+                : componentText.includes("avancad") || componentText.includes("advanced") ? weaponRank("Avançada")
+                  : componentText.includes("desarmad") || componentText.includes("unarmed") ? weaponRank("Desarmado")
                     : componentText.includes("leve") || componentText.includes("light") ? classRecord.armor?.Leve
                       : componentText.includes("media") || componentText.includes("medium") ? classRecord.armor?.Média
                         : componentText.includes("pesad") || componentText.includes("heavy") ? classRecord.armor?.Pesada
@@ -487,12 +927,12 @@ const PF2E_ENGINE = {
             // Armas específicas (por exemplo, armas de fogo) ainda não têm
             // proficiência granular no modelo; não bloqueie por inferência.
             if (targetRank === undefined) return true;
-            return (rankValues[normalize(targetRank)] ?? 0) >= requiredRank;
+            return (rankValues[normalize(targetRank)] ?? 0) >= componentRequiredRank;
           }
           const alternatives = componentText.split(/,|\s+(?:ou|or|o)\s+/).map((skill) => skill.trim()).filter(Boolean);
           const knownSkills = alternatives.filter((skill) => skillAliases[skill] || skillAliases[normalize(skill)]);
           if (!knownSkills.length) return true;
-          return knownSkills.some((skill) => getSkillRank(skill) >= requiredRank);
+          return knownSkills.some((skill) => getSkillRank(skill) >= componentRequiredRank);
         };
         if (!components.every(meetsComponent)) return { state: "incompatible", reason: "skill-rank-too-low", requiredRank: compoundSkillMatch[1] };
         continue;
@@ -522,23 +962,23 @@ const PF2E_ENGINE = {
       if (text.includes("classe ") && !text.includes("talento de classe")) {
         recognized++;
         const classRequirements = text.replace(/^.*classe\s+/, "").split(/\s+ou\s+|\s+or\s+/).map((requirement) => requirement.trim()).filter(Boolean);
-        if (classRequirements.length && !classRequirements.some((requirement) => selectedClassText.includes(requirement))) return { state: "incompatible", reason: "class-mismatch" };
+        if (classRequirements.length && !classRequirements.some((requirement) => catalogGateMatches(PF2E_DATA?.classes, char.class, [requirement]))) return { state: "incompatible", reason: "class-mismatch" };
         continue;
       }
       if (classNames.has(text)) {
         recognized++;
-        if (!selectedClassText.includes(text)) return { state: "incompatible", reason: "class-mismatch" };
+        if (!catalogGateMatches(PF2E_DATA?.classes, char.class, [text])) return { state: "incompatible", reason: "class-mismatch" };
         continue;
       }
       if (text.includes("ancestralidade ") || text.includes("ancestry ")) {
         recognized++;
         const ancestryRequirements = text.replace(/^.*(?:ancestralidade|ancestry)\s+/, "").split(/\s+ou\s+|\s+or\s+/).map((requirement) => requirement.trim()).filter(Boolean);
-        if (ancestryRequirements.length && !ancestryRequirements.some((requirement) => selectedAncestryText.includes(requirement))) return { state: "incompatible", reason: "ancestry-mismatch" };
+        if (ancestryRequirements.length && !ancestryRequirements.some((requirement) => catalogGateMatches(PF2E_DATA?.ancestries, char.ancestry, [requirement]))) return { state: "incompatible", reason: "ancestry-mismatch" };
         continue;
       }
       if (ancestryNames.has(text)) {
         recognized++;
-        if (!selectedAncestryText.includes(text)) return { state: "incompatible", reason: "ancestry-mismatch" };
+        if (!catalogGateMatches(PF2E_DATA?.ancestries, char.ancestry, [text])) return { state: "incompatible", reason: "ancestry-mismatch" };
         continue;
       }
       const proficiencyRequirement = text.match(/^(treinado|trained|entrenado|especialista|expert|experto|mestre|master|maestro|lendario|legendary|legendario)\s+(?:em|com|in|en|with|con)\s+(.+)$/);
@@ -554,14 +994,14 @@ const PF2E_ENGINE = {
           }
           const weaponContext = /arma|weapon|desarmad|unarmed|marcia|martial|simple|simples|avancad|advanced/.test(proficiencyTarget);
           const armorContext = /armadura|armor|escudo|shield|leve|light|media|medium|pesad|heavy/.test(proficiencyTarget);
-          const targetRank = normalizedTarget.includes("marcia") || normalizedTarget.includes("martial") ? classRecord.weapons?.Marcial
-            : normalizedTarget.includes("simples") || normalizedTarget.includes("simple") ? classRecord.weapons?.Simples
-              : normalizedTarget.includes("avancad") || normalizedTarget.includes("advanced") ? classRecord.weapons?.Avançada
-                : normalizedTarget.includes("desarmad") || normalizedTarget.includes("unarmed") ? classRecord.weapons?.Desarmado
+          const targetRank = normalizedTarget.includes("marcia") || normalizedTarget.includes("martial") ? weaponRank("Marcial")
+            : normalizedTarget.includes("simples") || normalizedTarget.includes("simple") ? weaponRank("Simples")
+              : normalizedTarget.includes("avancad") || normalizedTarget.includes("advanced") ? weaponRank("Avançada")
+                : normalizedTarget.includes("desarmad") || normalizedTarget.includes("unarmed") ? weaponRank("Desarmado")
                   : normalizedTarget.includes("leve") || normalizedTarget.includes("light") ? classRecord.armor?.Leve
                     : normalizedTarget.includes("media") || normalizedTarget.includes("medium") ? classRecord.armor?.Média
                       : normalizedTarget.includes("pesad") || normalizedTarget.includes("heavy") ? classRecord.armor?.Pesada
-                        : weaponContext && /^(?:marcial|martial|simples|simple|avancada|advanced)$/.test(normalizedTarget) ? classRecord.weapons?.[normalizedTarget.includes("marcial") || normalizedTarget.includes("martial") ? "Marcial" : normalizedTarget.includes("avanc") || normalizedTarget.includes("advanced") ? "Avançada" : "Simples"]
+                            : weaponContext && /^(?:marcial|martial|simples|simple|avancada|advanced)$/.test(normalizedTarget) ? weaponRank(normalizedTarget.includes("marcial") || normalizedTarget.includes("martial") ? "Marcial" : normalizedTarget.includes("avanc") || normalizedTarget.includes("advanced") ? "Avançada" : "Simples")
                             : armorContext && /^(?:leve|light|media|medium|pesada|heavy)$/.test(normalizedTarget) ? classRecord.armor?.[normalizedTarget.includes("leve") || normalizedTarget.includes("light") ? "Leve" : normalizedTarget.includes("pesad") || normalizedTarget.includes("heavy") ? "Pesada" : "Média"]
                             : undefined;
           // Fichas legadas podem não carregar proficiência granular; nesse caso
@@ -596,8 +1036,39 @@ const PF2E_ENGINE = {
       }
       if (text.includes("dedicacao de ") || text.includes("dedication: ")) {
         recognized++;
-        const dedication = text.replace(/^.*(?:dedicacao de|dedication:)\s*/, "").trim();
+        const dedicationMatch = text.match(/(?:dedicacao de|dedication:)\s+(.+?)(?=\s*;|\s+(?:e|and|y)\s+|$)/);
+        const dedication = dedicationMatch?.[1]?.trim() || text.replace(/^.*(?:dedicacao de|dedication:)\s*/, "").trim();
         if (dedication && !selectedFeats.some((feat) => feat.includes(dedication))) return { state: "incompatible", reason: "dedication-required" };
+        const remainder = dedicationMatch
+          ? text.slice((dedicationMatch.index || 0) + dedicationMatch[0].length).replace(/^\s*(?:;|e|and|y)\s*/, "").trim()
+          : "";
+        if (remainder) {
+          const remainderResult = this.getPrerequisiteCompatibility(character, {
+            ...item,
+            prereq: undefined,
+            prerequisites: [remainder],
+          });
+          if (remainderResult?.state === "incompatible") return remainderResult;
+        }
+        continue;
+      }
+      const prerequisiteFeature = [
+        ...(PF2E_DATA?.feats || []).map((feature) => ({ feature, kind: "feat" })),
+        ...(PF2E_DATA?.actions || []).map((feature) => ({ feature, kind: "action" })),
+      ].find(({ feature }) => [feature?.id, feature?.name, ...Object.values(feature?.names || {})]
+        .filter(Boolean).map(normalize).includes(text));
+      if (prerequisiteFeature) {
+        recognized++;
+        const requiredFeature = prerequisiteFeature.feature;
+        const identities = new Set([requiredFeature.id, requiredFeature.name, ...Object.values(requiredFeature.names || {})]
+          .filter(Boolean).map(normalize));
+        const hasPrerequisiteFeature = selectedFeatureRecords.some((entry) => [entry, entry?.id, entry?.name, ...Object.values(entry?.names || {})]
+          .filter(Boolean).map(normalize).some((identity) => identities.has(identity)));
+        if (!hasPrerequisiteFeature) return {
+          state: "incompatible",
+          reason: prerequisiteFeature.kind === "action" ? "action-required" : "feat-required",
+          requiredFeat: requiredFeature.name || requiredFeature.id,
+        };
       }
     }
     return { state: "available", reason: recognized ? "prerequisites-met" : "prerequisite-review" };
@@ -756,9 +1227,14 @@ const PF2E_ENGINE = {
     
     const bgData = this.resolveCatalogRecord(PF2E_DATA.backgrounds, character?.background) || {};
     const backgroundSkill = bgData?.skill;
+    const heritage = this.resolveHeritageRecord(character);
+    const heritageSkills = Array.isArray(heritage?.trainedSkills) ? heritage.trainedSkills : [];
 
+    // Perícias concedidas por herança não consomem escolhas da classe. Se a
+    // ficha também as guardar explicitamente, remova-as da contagem de
+    // escolhas para evitar dupla contabilização.
     const totalAllowed = classBase + Math.max(0, intMod) + (backgroundSkill ? 1 : 0) + fixedSkills.length;
-    const selectedSkills = Object.keys(character?.skills || {}).filter(k => character.skills[k] && character.skills[k] !== "Destreinado");
+    const selectedSkills = Object.keys(character?.skills || {}).filter(k => character.skills[k] && character.skills[k] !== "Destreinado" && !heritageSkills.includes(k));
     const remainingCount = Math.max(0, totalAllowed - selectedSkills.length);
 
     return {
@@ -766,6 +1242,7 @@ const PF2E_ENGINE = {
       classBase,
       intMod,
       backgroundSkill,
+      heritageSkills,
       fixedSkills,
       selectedSkills,
       remainingCount
@@ -773,12 +1250,29 @@ const PF2E_ENGINE = {
   },
 
   // Retorna os sentidos especiais do personagem (Ancestralidade + Herança)
+  resolveHeritageRecord(character) {
+    const ancestry = this.resolveCatalogRecord(PF2E_DATA.ancestries, character?.ancestry);
+    const identityValue = (value) => value && typeof value === "object"
+      ? value.id || value.name || value["pt-BR"] || value.en || value.es || ""
+      : value;
+    const normalize = (value) => String(identityValue(value) || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const selected = normalize(character?.heritage);
+    if (!selected) return null;
+    return [...(PF2E_DATA.heritages || []), ...(PF2E_DATA.versatileHeritages || [])].find((heritage) => {
+      const names = [heritage.id, heritage.name, ...Object.values(heritage.names || {})].filter(Boolean).map(normalize);
+      const hasAncestryGate = Array.isArray(heritage.ancestryIds) || heritage.ancestryId;
+      const ancestryMatches = !hasAncestryGate || !ancestry?.id || (heritage.ancestryIds || [heritage.ancestryId]).includes(ancestry.id);
+      return ancestryMatches && names.includes(selected);
+    }) || null;
+  },
+
   getCharacterSenses(character) {
     const ancestryData = this.resolveCatalogRecord(PF2E_DATA.ancestries, character?.ancestry) || {};
     const sensesSet = new Set(ancestryData.senses || []);
 
+    const heritageRecord = this.resolveHeritageRecord(character);
     const heritage = String(character?.heritage || "").toLowerCase();
-    if (heritage.includes("visão no escuro") || heritage.includes("darkvision") || heritage.includes("nephilim") || heritage.includes("meio-orc")) {
+    if ((heritageRecord?.traits || []).some((trait) => /visão no escuro|darkvision/.test(String(trait).toLowerCase())) || heritage.includes("visão no escuro") || heritage.includes("darkvision") || heritage.includes("nephilim") || heritage.includes("meio-orc")) {
       sensesSet.add("Visão no Escuro");
     } else if (heritage.includes("visão na penumbra") || heritage.includes("low-light") || heritage.includes("meio-elfo")) {
       sensesSet.add("Visão na Penumbra");
@@ -1005,6 +1499,7 @@ const PF2E_ENGINE = {
     };
     const sizeOption = resolveAncestryOption("size");
     const heritageOption = resolveAncestryOption("heritage");
+    const heritageData = this.resolveHeritageRecord(character) || heritageOption || {};
     const ancestryHp = sizeOption?.hp ?? ancestryData.hp ?? 8;
     const classHpPerLvl = classData.hpPerLevel || 10;
     const conBonus = mods.con;
@@ -1020,15 +1515,31 @@ const PF2E_ENGINE = {
     const coinBulk = Math.floor(totalCoins / 1000);
 
     let inventoryBulk = 0;
-    (character.inventory || []).forEach(item => {
-      if (typeof item.bulk === "number") {
-        inventoryBulk += item.bulk * (item.qty || 1);
-      } else if (typeof item.bulk === "string") {
-        const parsed = parseFloat(item.bulk);
-        if (!isNaN(parsed)) inventoryBulk += parsed * (item.qty || 1);
-        else if (item.bulk.toUpperCase() === "L") inventoryBulk += 0.1 * (item.qty || 1);
+    const itemQuantity = (item) => {
+      if (item?.qty === undefined || item?.qty === null || item?.qty === "") return 1;
+      const quantity = Number(item.qty);
+      return Number.isFinite(quantity) ? Math.max(0, quantity) : 0;
+    };
+    const bulkEntries = (value, seen = new Set()) => {
+      const entries = Array.isArray(value)
+        ? value
+        : value && typeof value === "object" ? Object.values(value) : [];
+      for (const item of entries) {
+        if (!item || typeof item !== "object" || seen.has(item)) continue;
+        seen.add(item);
+        if (typeof item.bulk === "number") {
+          inventoryBulk += item.bulk * itemQuantity(item);
+        } else if (typeof item.bulk === "string") {
+          const parsed = parseFloat(item.bulk);
+          if (!isNaN(parsed)) inventoryBulk += parsed * itemQuantity(item);
+          else if (item.bulk.toUpperCase() === "L") inventoryBulk += 0.1 * itemQuantity(item);
+        }
+        for (const nested of [item.items, item.contents, item.inventory]) bulkEntries(nested, seen);
       }
-    });
+    };
+    const bulkSeen = new Set();
+    bulkEntries(character.inventory, bulkSeen);
+    bulkEntries(character.containers, bulkSeen);
 
     const currentBulk = Math.floor(inventoryBulk + coinBulk);
     const maxBulk = 10 + mods.str;
@@ -1095,7 +1606,8 @@ const PF2E_ENGINE = {
     const armorPenalty = (equippedArmor.checkPenalty && scores.str < (equippedArmor.strReq || 10)) ? equippedArmor.checkPenalty : 0;
 
     PF2E_DATA.skills.forEach(sk => {
-      const rank = character.skills?.[sk.id] || "Destreinado";
+      const heritageTrained = Array.isArray(heritageData.trainedSkills) && heritageData.trainedSkills.includes(sk.id);
+      const rank = character.skills?.[sk.id] || (heritageTrained ? "Treinado" : "Destreinado");
       const profBonus = this.getProficiencyBonus(rank, level);
       const attrMod = mods[sk.ability];
       const itemBonus = character.itemBonuses?.[sk.id] || 0;
@@ -1173,7 +1685,11 @@ const PF2E_ENGINE = {
       }
       const damageEnfeebledPenalty = isRanged ? 0 : conditionMods.enfeebled;
       const netDamageBonus = Math.max(0, damageAttrBonus + (Number(w.damageBonus) || 0) - damageEnfeebledPenalty);
-      const damageDetails = this.calculateStrikeDamageDetails(w, mods, { level, abpStrikingDice: abpBonuses.strikingDice });
+      const isUnarmedStrike = /unarmed|desarmad|punho|fist/i.test(`${w.category || ""} ${w.name || ""}`);
+      const strikeWeapon = heritageData.fistDamageDie && isUnarmedStrike
+        ? { ...w, damage: heritageData.fistDamageDie }
+        : w;
+      const damageDetails = this.calculateStrikeDamageDetails(strikeWeapon, mods, { level, abpStrikingDice: abpBonuses.strikingDice });
       const damageStr = `${damageDetails.activeDice} ${this.formatMod(netDamageBonus)}`;
 
       return {
@@ -1187,7 +1703,7 @@ const PF2E_ENGINE = {
       };
     });
 
-    const rawLandSpeed = (heritageOption?.speed !== undefined ? heritageOption.speed : (ancestryData.speed ?? 25)) + (character.speedBonus || 0) + (equippedArmor.speedPenalty || 0);
+    const rawLandSpeed = (heritageData?.speed !== undefined ? heritageData.speed : (ancestryData.speed ?? 25)) + (character.speedBonus || 0) + (equippedArmor.speedPenalty || 0);
     const finalLandSpeed = rawLandSpeed > 0 ? Math.max(5, rawLandSpeed + encumberedSpeedPenalty) : 0;
     const senses = this.getCharacterSenses(character);
     const trainedSkills = this.calculateTrainedSkillsCount(character);
@@ -1221,12 +1737,12 @@ const PF2E_ENGINE = {
         offGuardPenalty: conditionMods.circumstanceAcPenalty,
         statusPenalty: effectiveClumsyPenalty
       },
-      size: sizeOption?.size ?? ancestryData.size ?? character.size ?? "Médio",
+      size: heritageData?.size ?? sizeOption?.size ?? ancestryData.size ?? character.size ?? "Médio",
       speed: finalLandSpeed,
       movementSpeeds: {
         land: finalLandSpeed,
-        swim: heritageOption?.swimSpeed ?? ancestryData.swimSpeed ?? 0,
-        climb: heritageOption?.climbSpeed ?? ancestryData.climbSpeed ?? 0
+        swim: heritageData?.swimSpeed ?? ancestryData.swimSpeed ?? 0,
+        climb: heritageData?.climbSpeed ?? ancestryData.climbSpeed ?? 0
       },
       senses,
       saves,
@@ -1315,9 +1831,16 @@ const PF2E_ENGINE = {
     // 6. Perícias Treinadas
     const skills = char.skills || {};
     const trainedSkills = Object.values(skills).filter(r => r === "Treinado" || r === "Especialista" || r === "Mestre" || r === "Lendário" || r === "T" || r === "E" || r === "M" || r === "L").length;
+    const heritage = this.resolveHeritageRecord(char);
+    const heritageSkills = Array.isArray(heritage?.trainedSkills) ? heritage.trainedSkills : [];
+    const heritageTrainedSkills = heritageSkills.filter((skill) => {
+      const rank = char.skills?.[skill];
+      return !rank || rank === "Destreinado" || rank === "U";
+    }).length;
+    const effectiveTrainedSkills = trainedSkills + heritageTrainedSkills;
     const requiredSkills = (classData?.trainedSkillsCount || 3) + Math.max(0, Math.floor(((scores.int || 10) - 10) / 2));
-    if (trainedSkills < requiredSkills) {
-      issues.push({ id: "skills", type: "warning", message: `Perícias treinadas (${trainedSkills}/${requiredSkills}) abaixo do total permitido`, tab: "build", targetId: "skillTrainingBtn" });
+    if (effectiveTrainedSkills < requiredSkills) {
+      issues.push({ id: "skills", type: "warning", message: `Perícias treinadas (${effectiveTrainedSkills}/${requiredSkills}) abaixo do total permitido`, tab: "build", targetId: "skillTrainingBtn" });
     } else {
       passedCount++;
     }

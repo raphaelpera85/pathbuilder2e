@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, cleanup, act } from "@testing-library/react";
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
-import { ItemPickerModal, formatItemPrice } from "./ItemPickerModal";
+import { ItemPickerModal, formatItemPrice, mergeItemCatalogRecords } from "./ItemPickerModal";
 import { I18nProvider } from "./i18n";
 
 describe("ItemPickerModal", () => {
@@ -35,6 +35,9 @@ describe("ItemPickerModal", () => {
         traits: [],
         description: "Item carregado do compêndio legado.",
         summaries: { "pt-BR": "Item carregado do compêndio legado.", en: "Item loaded from the legacy compendium.", es: "Objeto cargado del compendio legado." },
+        source: { book: "Livro Básico", page: 382 },
+        ruleset: "legacy",
+        needs_review: false,
       }],
     };
   });
@@ -61,6 +64,16 @@ describe("ItemPickerModal", () => {
     expect(screen.getAllByText(/Equipamento Dinâmico/i).length).toBeGreaterThan(0);
   });
 
+  it("exibe regraset e proveniência no detalhe do item", () => {
+    let bridge: any;
+    render(<I18nProvider><ItemPickerModal onBridgeReady={(b) => { bridge = b; }} /></I18nProvider>);
+    act(() => bridge.open());
+    fireEvent.change(screen.getByPlaceholderText("Pesquisar item..."), { target: { value: "Equipamento Dinâmico" } });
+    fireEvent.click(screen.getByRole("button", { name: /Equipamento Dinâmico/i }));
+    expect(screen.getByText(/Livro Básico/)).toBeInTheDocument();
+    expect(screen.getByText("Legado")).toBeInTheDocument();
+  });
+
   it("não exibe item incompatível com a ficha atual", () => {
     (window as any).PF2E_ENGINE = {
       getPrerequisiteCompatibility: (_character: unknown, record: { id?: string }) =>
@@ -76,6 +89,28 @@ describe("ItemPickerModal", () => {
     );
     act(() => bridge.open());
     expect(screen.queryByText(/Equipamento Dinâmico/i)).toBeNull();
+  });
+
+  it("mescla o mesmo item pela versão mais rica e preserva variantes com IDs distintos", () => {
+    const base = {
+      name: "Lâmina de Teste",
+      names: { "pt-BR": "Lâmina de Teste", en: "Test Blade", es: "Hoja de prueba" },
+      traits: [],
+      prerequisites: [],
+    } as any;
+    const result = mergeItemCatalogRecords([
+      { ...base, id: "item.test.same", description: "Resumo curto" },
+      { ...base, id: "item.test.same", description: "Descrição completa", source: { book: "Player Core", page: 10 }, traits: ["agile"] },
+      { ...base, id: "item.test.variant", description: "Outra versão" },
+    ]);
+
+    expect(result).toHaveLength(2);
+    expect(result.find((item) => item.id === "item.test.same")).toMatchObject({
+      description: "Descrição completa",
+      source: { book: "Player Core", page: 10 },
+      traits: ["agile"],
+    });
+    expect(result.map((item) => item.id)).toEqual(["item.test.same", "item.test.variant"]);
   });
 
   it("localiza os placeholders do formulário personalizado", () => {

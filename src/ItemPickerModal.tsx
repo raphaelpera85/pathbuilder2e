@@ -10,9 +10,9 @@ interface ItemPickerState {
 }
 
 const itemPickerCopy: Record<Locale, Record<string, string>> = {
-  "pt-BR": { gear: "🎒 Equipamentos", consumables: "🧪 Consumíveis", magicItems: "🔮 Itens Mágicos", all: "📦 Todos", custom: "⚙️ Personalizado", close: "Fechar", allSub: "Todos", adventuring: "Aventura", ammunition: "Munição", toolkits: "Ferramentas", potions: "Poções", elixirs: "Elixires", scrolls: "Pergaminhos", bombs: "Bombas Alquímicas", worn: "Vestíveis", wands: "Varinhas", runes: "Pedras Rúnicas", search: "Pesquisar item...", none: "Nenhum item encontrado nesta categoria.", select: "Selecione um item para ver os detalhes.", customTitle: "Criar Item Personalizado / Caseiro", requiredName: "Nome do Item *", bulk: "Carga (Bulk)", quantity: "Quantidade", estimatedPrice: "Preço Estimado", description: "Descrição / Efeitos Especiais", addInventory: "➕ Adicionar ao Inventário", free: "Adicionar Grátis", buy: "🛒 Comprar (Deduzir Moedas)", wallet: "Bolsa de Moedas:", addQuantity: "Quantidade a Adicionar:", price: "Preço", hands: "Mãos", incompatible: "Este item não é compatível com a ficha atual.", insufficientFunds: "Moedas insuficientes para comprar este item.", namePlaceholder: "Ex: Amuleto dos Ancestrais", bulkPlaceholder: "1, 2, L ou -", pricePlaceholder: "Ex: 25 PO, 5 PP", descriptionPlaceholder: "Anotações sobre propriedades mágicas, histórico ou bônus..." },
-  en: { gear: "🎒 Gear", consumables: "🧪 Consumables", magicItems: "🔮 Magic Items", all: "📦 All", custom: "⚙️ Custom", close: "Close", allSub: "All", adventuring: "Adventuring", ammunition: "Ammunition", toolkits: "Tools", potions: "Potions", elixirs: "Elixirs", scrolls: "Scrolls", bombs: "Alchemical Bombs", worn: "Worn", wands: "Wands", runes: "Runestones", search: "Search item...", none: "No item found in this category.", select: "Select an item to view its details.", customTitle: "Create Custom / Homebrew Item", requiredName: "Item Name *", bulk: "Bulk", quantity: "Quantity", estimatedPrice: "Estimated Price", description: "Description / Special Effects", addInventory: "➕ Add to Inventory", free: "Add for Free", buy: "🛒 Buy (Deduct Coins)", wallet: "Coin Purse:", addQuantity: "Quantity to Add:", price: "Price", hands: "Hands", incompatible: "This item is not compatible with the current character.", insufficientFunds: "You cannot afford this item.", namePlaceholder: "E.g. Ancestral Amulet", bulkPlaceholder: "1, 2, L, or -", pricePlaceholder: "E.g. 25 GP, 5 SP", descriptionPlaceholder: "Notes about magical properties, history, or bonuses..." },
-  es: { gear: "🎒 Equipo", consumables: "🧪 Consumibles", magicItems: "🔮 Objetos Mágicos", all: "📦 Todos", custom: "⚙️ Personalizado", close: "Cerrar", allSub: "Todos", adventuring: "Aventura", ammunition: "Munición", toolkits: "Herramientas", potions: "Pociones", elixirs: "Elixires", scrolls: "Pergaminos", bombs: "Bombas alquímicas", worn: "Vestibles", wands: "Varitas", runes: "Piedras rúnicas", search: "Buscar objeto...", none: "No se encontró ningún objeto en esta categoría.", select: "Selecciona un objeto para ver sus detalles.", customTitle: "Crear objeto personalizado / casero", requiredName: "Nombre del objeto *", bulk: "Carga (Bulk)", quantity: "Cantidad", estimatedPrice: "Precio estimado", description: "Descripción / Efectos especiales", addInventory: "➕ Añadir al inventario", free: "Añadir gratis", buy: "🛒 Comprar (deducir monedas)", wallet: "Bolsa de monedas:", addQuantity: "Cantidad a añadir:", price: "Precio", hands: "Manos", incompatible: "Este objeto no es compatible con el personaje actual.", insufficientFunds: "No tienes monedas suficientes para comprar este objeto.", namePlaceholder: "Ej.: Amuleto ancestral", bulkPlaceholder: "1, 2, L o -", pricePlaceholder: "Ej.: 25 PO, 5 PP", descriptionPlaceholder: "Notas sobre propiedades mágicas, historia o bonificadores..." }
+  "pt-BR": { gear: "🎒 Equipamentos", consumables: "🧪 Consumíveis", magicItems: "🔮 Itens Mágicos", all: "📦 Todos", custom: "⚙️ Personalizado", close: "Fechar", allSub: "Todos", adventuring: "Aventura", ammunition: "Munição", toolkits: "Ferramentas", potions: "Poções", elixirs: "Elixires", scrolls: "Pergaminhos", bombs: "Bombas Alquímicas", worn: "Vestíveis", wands: "Varinhas", runes: "Pedras Rúnicas", search: "Pesquisar item...", none: "Nenhum item encontrado nesta categoria.", select: "Selecione um item para ver os detalhes.", customTitle: "Criar Item Personalizado / Caseiro", requiredName: "Nome do Item *", bulk: "Carga (Bulk)", quantity: "Quantidade", estimatedPrice: "Preço Estimado", description: "Descrição / Efeitos Especiais", addInventory: "➕ Adicionar ao Inventário", free: "Adicionar Grátis", buy: "🛒 Comprar (Deduzir Moedas)", wallet: "Bolsa de Moedas:", addQuantity: "Quantidade a Adicionar:", price: "Preço", hands: "Mãos", incompatible: "Este item não é compatível com a ficha atual.", insufficientFunds: "Moedas insuficientes para comprar este item.", namePlaceholder: "Ex: Amuleto dos Ancestrais", bulkPlaceholder: "1, 2, L ou -", pricePlaceholder: "Ex: 25 PO, 5 PP", descriptionPlaceholder: "Anotações sobre propriedades mágicas, histórico ou bônus...", rulesetRemaster: "Remaster", rulesetLegacy: "Legado", rulesetReview: "Revisão pendente", sourceSection: "Referência de seção" },
+  en: { gear: "🎒 Gear", consumables: "🧪 Consumables", magicItems: "🔮 Magic Items", all: "📦 All", custom: "⚙️ Custom", close: "Close", allSub: "All", adventuring: "Adventuring", ammunition: "Ammunition", toolkits: "Tools", potions: "Potions", elixirs: "Elixirs", scrolls: "Scrolls", bombs: "Alchemical Bombs", worn: "Worn", wands: "Wands", runes: "Runestones", search: "Search item...", none: "No item found in this category.", select: "Select an item to view its details.", customTitle: "Create Custom / Homebrew Item", requiredName: "Item Name *", bulk: "Bulk", quantity: "Quantity", estimatedPrice: "Estimated Price", description: "Description / Special Effects", addInventory: "➕ Add to Inventory", free: "Add for Free", buy: "🛒 Buy (Deduct Coins)", wallet: "Coin Purse:", addQuantity: "Quantity to Add:", price: "Price", hands: "Hands", incompatible: "This item is not compatible with the current character.", insufficientFunds: "You cannot afford this item.", namePlaceholder: "E.g. Ancestral Amulet", bulkPlaceholder: "1, 2, L, or -", pricePlaceholder: "E.g. 25 GP, 5 SP", descriptionPlaceholder: "Notes about magical properties, history, or bonuses...", rulesetRemaster: "Remaster", rulesetLegacy: "Legacy", rulesetReview: "Review pending", sourceSection: "Section reference" },
+  es: { gear: "🎒 Equipo", consumables: "🧪 Consumibles", magicItems: "🔮 Objetos Mágicos", all: "📦 Todos", custom: "⚙️ Personalizado", close: "Cerrar", allSub: "Todos", adventuring: "Aventura", ammunition: "Munición", toolkits: "Herramientas", potions: "Pociones", elixirs: "Elixires", scrolls: "Pergaminos", bombs: "Bombas alquímicas", worn: "Vestibles", wands: "Varitas", runes: "Piedras rúnicas", search: "Buscar objeto...", none: "No se encontró ningún objeto en esta categoría.", select: "Selecciona un objeto para ver sus detalles.", customTitle: "Crear objeto personalizado / casero", requiredName: "Nombre del objeto *", bulk: "Carga (Bulk)", quantity: "Cantidad", estimatedPrice: "Precio estimado", description: "Descripción / Efectos especiales", addInventory: "➕ Añadir al inventario", free: "Añadir gratis", buy: "🛒 Comprar (deducir monedas)", wallet: "Bolsa de monedas:", addQuantity: "Cantidad a añadir:", price: "Precio", hands: "Manos", incompatible: "Este objeto no es compatible con el personaje actual.", insufficientFunds: "No tienes monedas suficientes para comprar este objeto.", namePlaceholder: "Ej.: Amuleto ancestral", bulkPlaceholder: "1, 2, L o -", pricePlaceholder: "Ej.: 25 PO, 5 PP", descriptionPlaceholder: "Notas sobre propiedades mágicas, historia o bonificadores...", rulesetRemaster: "Remaster", rulesetLegacy: "Legado", rulesetReview: "Revisión pendiente", sourceSection: "Referencia de sección" }
 };
 
 export function formatItemPrice(price: ItemDefinition["price"] | undefined, locale: Locale): string {
@@ -29,6 +29,62 @@ export function formatItemPrice(price: ItemDefinition["price"] | undefined, loca
   if (price.sp) parts.push(`${price.sp} ${label.sp}`);
   if (price.cp) parts.push(`${price.cp} ${label.cp}`);
   return parts.join(" ") || `0 ${label.zero}`;
+}
+
+const itemIdentityKeys = (item: ItemDefinition) => [item.id, item.name, item.names?.["pt-BR"], item.names?.en, item.names?.es]
+  .filter(Boolean)
+  .flatMap((value) => {
+    const normalized = String(value).toLocaleLowerCase("pt-BR").normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+    const simplified = normalized
+      .replace(/\([^)]*\)/g, " ")
+      .replace(/\b(companion|mount|familiar|animal|mascota|montura)\b/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+    return [normalized, simplified].filter(Boolean);
+  });
+
+type ItemCatalogRecord = ItemDefinition & { prerequisites?: unknown[] };
+
+const itemRichnessScore = (item: ItemCatalogRecord) =>
+  Object.values(item.names || {}).filter(Boolean).length * 3
+  + Object.values(item.summaries || {}).filter(Boolean).length * 3
+  + (item.source?.book ? 2 : 0)
+  + (Number.isInteger(item.source?.page) ? 2 : 0)
+  + (item.description ? 2 : 0)
+  + [item.traits, item.prerequisites].filter((field) => Array.isArray(field) && field.length > 0).length;
+
+export function mergeItemCatalogRecords(records: ItemDefinition[]): ItemDefinition[] {
+  const merged: ItemCatalogRecord[] = [];
+  const seen = new Map<string, number[]>();
+  for (const rawItem of records) {
+    const item = rawItem as ItemCatalogRecord;
+    if (!item || String(item.id || "").includes(".legacy_alias.")) continue;
+    const keys = itemIdentityKeys(item);
+    const existingIndex = keys
+      .flatMap((key) => seen.get(key) || [])
+      .find((index, position, candidates) => candidates.indexOf(index) === position
+        && (!merged[index]?.id || !item.id || merged[index].id === item.id));
+    if (existingIndex === undefined) {
+      const index = merged.push(item) - 1;
+      keys.forEach((key) => seen.set(key, [...new Set([...(seen.get(key) || []), index])]));
+      continue;
+    }
+    const existing = merged[existingIndex];
+    const preferred = itemRichnessScore(item) > itemRichnessScore(existing) ? item : existing;
+    const fallback = preferred === item ? existing : item;
+    merged[existingIndex] = {
+      ...fallback,
+      ...preferred,
+      id: existing.id || item.id,
+      names: { ...(fallback.names || {}), ...(preferred.names || {}) },
+      summaries: { ...(fallback.summaries || {}), ...(preferred.summaries || {}) },
+      source: { ...(fallback.source || {}), ...(preferred.source || {}) },
+      traits: (preferred.traits?.length || 0) >= (fallback.traits?.length || 0) ? preferred.traits : fallback.traits,
+      prerequisites: (preferred.prerequisites?.length || 0) >= (fallback.prerequisites?.length || 0) ? preferred.prerequisites : fallback.prerequisites,
+    } as ItemCatalogRecord;
+    itemIdentityKeys(merged[existingIndex]).forEach((key) => seen.set(key, [...new Set([...(seen.get(key) || []), existingIndex])]));
+  }
+  return merged;
 }
 
 export function ItemPickerModal({ onBridgeReady }: { onBridgeReady?: (bridge: { open: (cb?: any) => void; close: () => void }) => void } = {}) {
@@ -129,19 +185,7 @@ export function ItemPickerModal({ onBridgeReady }: { onBridgeReady?: (bridge: { 
       traits: Array.isArray(item.traits) ? item.traits : [],
       description: String(item.description || item.summaries?.[locale] || ""),
     })) as ItemDefinition[];
-    const catalog = Array.from([...PF2E_ITEMS_CATALOG, ...legacyCatalog].reduce((records, item) => {
-      const identityKeys = [item.id, item.name, item.names?.["pt-BR"], item.names?.en, item.names?.es]
-        .filter(Boolean)
-        .flatMap((value) => {
-          const normalized = String(value).toLocaleLowerCase(locale).normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-          const simplified = normalized.replace(/\([^)]*\)/g, " ").replace(/\b(companion|mount|familiar|animal|mascota|montura)\b/g, " ").replace(/\s+/g, " ").trim();
-          return [normalized, simplified].filter(Boolean);
-        });
-      if (!identityKeys.length || identityKeys.some((key) => records.keys.some((existing) => existing === key))) return records;
-      identityKeys.forEach((key) => records.keys.push(key));
-      records.values.push(item);
-      return records;
-    }, { keys: [] as string[], values: [] as ItemDefinition[] }).values);
+    const catalog = mergeItemCatalogRecords([...PF2E_ITEMS_CATALOG, ...legacyCatalog]);
     return catalog.filter((item) => {
       if (typeof checker === "function" && checker.call((window as any).PF2E_ENGINE, character, item as any)?.state === "incompatible") return false;
       const matchMain = mainTab === "all" || item.mainCategory === mainTab;
@@ -486,6 +530,10 @@ export function ItemPickerModal({ onBridgeReady }: { onBridgeReady?: (bridge: { 
                     {selectedItem.source && (
                       <div className="detail-source">
                         📖 {selectedItem.source.book} {selectedItem.source.page ? `· p. ${selectedItem.source.page}` : ""}
+                        <span className={`source-badge ${selectedItem.ruleset === "legacy" ? "legacy" : selectedItem.ruleset === "remaster" && selectedItem.needs_review === false ? "verified" : "review"}`}>
+                          {selectedItem.ruleset === "legacy" ? copy.rulesetLegacy : selectedItem.ruleset === "remaster" && selectedItem.needs_review === false ? copy.rulesetRemaster : copy.rulesetReview}
+                        </span>
+                        {selectedItem.sourceApproximate && <span className="source-badge review">{copy.sourceSection}</span>}
                       </div>
                     )}
 

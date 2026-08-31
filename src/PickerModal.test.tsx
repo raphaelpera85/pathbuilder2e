@@ -82,6 +82,48 @@ describe("PickerModal", () => {
     expect(screen.queryByRole("option", { name: /Opção incompatível/ })).not.toBeInTheDocument();
   });
 
+  it("não exibe dedicação multiclasse da própria classe", () => {
+    window.app = {
+      ...controllerDefaults,
+      character: { id: "test", name: "Teste", level: 2, class: "Bardo (Bard)", abilities: { cha: 14 } },
+      getPickerItems: () => [{ name: "Dedicação de Bardo", type: "Talento", data: { id: "feat.archetype.bard_multiclass.dedication", category: "Arquétipo", prerequisites: ["Carisma +2"], prohibitedClassId: "class.bard" } }],
+      applyPickerSelection: vi.fn(),
+    } satisfies PickerController;
+    (window as any).PF2E_ENGINE = {
+      getPrerequisiteCompatibility: (_character: unknown, record: { prohibitedClassId?: string }) =>
+        record?.prohibitedClassId === "class.bard"
+          ? { state: "incompatible", reason: "class-prohibited" }
+          : { state: "available", reason: "compatible" },
+    };
+
+    let bridge: PickerBridge | undefined;
+    renderPicker((value) => { bridge = value; });
+    act(() => bridge?.open("feat"));
+
+    expect(screen.queryByRole("option", { name: /Dedicação de Bardo/ })).not.toBeInTheDocument();
+  });
+
+  it("não exibe o registro do próprio arquétipo multiclasse", () => {
+    window.app = {
+      ...controllerDefaults,
+      character: { id: "test", name: "Teste", level: 2, class: "class.summoner" },
+      getPickerItems: () => [{ name: "Dedicação de Convocador", type: "Arquétipo", data: { id: "archetype.summoner_dedication" } }],
+      applyPickerSelection: vi.fn(),
+    } satisfies PickerController;
+    (window as any).PF2E_ENGINE = {
+      getPrerequisiteCompatibility: (_character: unknown, record: { id?: string }) =>
+        record?.id === "archetype.summoner_dedication"
+          ? { state: "incompatible", reason: "class-prohibited" }
+          : { state: "available", reason: "compatible" },
+    };
+
+    let bridge: PickerBridge | undefined;
+    renderPicker((value) => { bridge = value; });
+    act(() => bridge?.open("archetype"));
+
+    expect(screen.queryByRole("option", { name: /Dedicação de Convocador/ })).not.toBeInTheDocument();
+  });
+
   it("não exibe magia incompatível com a capacidade de conjuração", () => {
     window.app = {
       ...controllerDefaults,
@@ -105,6 +147,88 @@ describe("PickerModal", () => {
 
     expect(screen.getByRole("option", { name: /Magia disponível/ })).toBeInTheDocument();
     expect(screen.queryByRole("option", { name: /Magia incompatível/ })).not.toBeInTheDocument();
+  });
+
+  it("mantém o nível do espaço ao revalidar talentos no componente React", () => {
+    window.app = {
+      ...controllerDefaults,
+      character: { id: "test", name: "Teste", level: 1 },
+      getPickerItems: () => [{ name: "Talento de 3º nível", type: "Talento", data: { id: "feat.level3", level: 3, category: "Geral" } }],
+      applyPickerSelection: vi.fn(),
+    } as PickerController;
+    (window as any).PF2E_ENGINE = {
+      getPrerequisiteCompatibility: (character: any) => character.level >= 3
+        ? { state: "available", reason: "compatible" }
+        : { state: "incompatible", reason: "level", requiredLevel: 3 },
+    };
+
+    let bridge: PickerBridge | undefined;
+    renderPicker((value) => { bridge = value; });
+    act(() => bridge?.open("feat", { level: 3 }));
+
+    expect(screen.getByRole("option", { name: /Talento de 3º nível/ })).toBeInTheDocument();
+  });
+
+  it("não remove truques ocultistas válidos da escolha inata por falta de conjuração normal", () => {
+    window.app = {
+      ...controllerDefaults,
+      character: { id: "test", name: "Teste", level: 1 },
+      getPickerItems: () => [{ name: "Detectar magia", type: "Magia Inata", data: { id: "spell.detect-magic", rank: 0 } }],
+      applyPickerSelection: vi.fn(),
+    } as PickerController;
+    (window as any).PF2E_ENGINE = {
+      getSpellCompatibility: () => ({ state: "incompatible", reason: "no-spellcasting" }),
+    };
+
+    let bridge: PickerBridge | undefined;
+    renderPicker((value) => { bridge = value; });
+    act(() => bridge?.open("spell", { heritageInnate: true }));
+
+    expect(screen.getByRole("option", { name: /Detectar magia/ })).toBeInTheDocument();
+  });
+
+  it("mantém gates explícitos ao escolher truque ocultista inato", () => {
+    window.app = {
+      ...controllerDefaults,
+      character: { id: "test", name: "Teste", level: 1 },
+      getPickerItems: () => [{ name: "Truque restrito", type: "Magia Inata", data: { id: "spell.restricted", rank: 0 } }],
+      applyPickerSelection: vi.fn(),
+    } as PickerController;
+    (window as any).PF2E_ENGINE = {
+      getPrerequisiteCompatibility: () => ({ state: "incompatible", reason: "ancestry-mismatch" }),
+      getSpellCompatibility: () => ({ state: "incompatible", reason: "no-spellcasting" }),
+    };
+
+    let bridge: PickerBridge | undefined;
+    renderPicker((value) => { bridge = value; });
+    act(() => bridge?.open("spell", { heritageInnate: true }));
+
+    expect(screen.queryByRole("option", { name: /Truque restrito/ })).not.toBeInTheDocument();
+  });
+
+  it("não exibe familiar específico sem a quantidade necessária de habilidades", () => {
+    window.app = {
+      ...controllerDefaults,
+      character: { id: "test", name: "Teste", level: 1, familiarAbilityCount: 2 },
+      getPickerItems: () => [
+        { name: "Boneco", type: "Mascote", data: { id: "pet.familiar.specific.doll", requiredFamiliarAbilities: 1 } },
+        { name: "Diabrete", type: "Mascote", data: { id: "pet.familiar.specific.imp", requiredFamiliarAbilities: 7 } },
+      ],
+      applyPickerSelection: vi.fn(),
+    } satisfies PickerController;
+    (window as any).PF2E_ENGINE = {
+      getPrerequisiteCompatibility: (_character: any, record: any) =>
+        Number((_character || {}).familiarAbilityCount) < Number(record.requiredFamiliarAbilities)
+          ? { state: "incompatible", reason: "familiar-abilities-too-low", requiredFamiliarAbilities: record.requiredFamiliarAbilities }
+          : { state: "available", reason: "compatible" },
+    };
+
+    let bridge: PickerBridge | undefined;
+    renderPicker((value) => { bridge = value; });
+    act(() => bridge?.open("pet"));
+
+    expect(screen.getByRole("option", { name: /Boneco/ })).toBeInTheDocument();
+    expect(screen.queryByRole("option", { name: /Diabrete/ })).not.toBeInTheDocument();
   });
 
   it("navega na lista com setas e confirma com Enter", () => {

@@ -1020,12 +1020,29 @@ body {
   opacity: 0.75;
 }
 
+/* Corpo recuado do dado: dá espessura visual ao SVG sem multiplicar os
+   elementos animados da arena. A face frontal continua sendo a única camada
+   que recebe o resultado e a animação de rolagem. */
+.polyhedral-die-wrapper::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 62%;
+  height: 62%;
+  border: 2px solid rgba(67, 30, 12, 0.9);
+  border-radius: 18%;
+  background: linear-gradient(145deg, rgba(124, 45, 18, 0.95), rgba(30, 12, 8, 0.98));
+  box-shadow: inset 4px -5px 8px rgba(0, 0, 0, 0.5), 0 12px 12px rgba(0, 0, 0, 0.35);
+  transform: translate3d(7px, 8px, -10px) rotateX(18deg) rotateY(-22deg) rotateZ(8deg);
+  opacity: 0.9;
+}
+
 .polyhedral-die-svg {
   width: 100%;
   height: 100%;
   filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6));
   transition: transform 0.2s ease;
-  transform: rotateX(14deg) rotateY(-18deg) translateZ(12px) scale(1.04);
+  transform: rotateX(18deg) rotateY(-22deg) translateZ(18px) scale(1.04);
   transform-style: preserve-3d;
   backface-visibility: hidden;
   shape-rendering: geometricPrecision;
@@ -1057,6 +1074,7 @@ body {
   .polyhedral-die-wrapper.rolling,
   .polyhedral-die-wrapper.crit-nat20,
   .polyhedral-die-wrapper.fumble-nat1 { animation: none !important; }
+  .polyhedral-die-wrapper::after { opacity: 0.65; transform: translate3d(4px, 5px, -6px) rotateX(8deg) rotateY(-10deg); }
   .polyhedral-die-svg { transform: rotateX(8deg) rotateY(-10deg) translateZ(6px); }
 }
 
@@ -2152,6 +2170,45 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, [tabindex]:fo
 }
 
 @media (max-width: 1080px) {
+  .pb-drawer-overlay:not(#drawerOverlay),
+  #modalJsonOverlay,
+  #modalSkillTrainingOverlay,
+  #modalSetAbilitiesOverlay,
+  #modalDeityOverlay,
+  #modalLanguagesOverlay,
+  #modalAvatarOverlay,
+  #modalAIAssistantOverlay {
+    width: 100vw;
+    height: 100dvh;
+    max-height: var(--pb-viewport-height, 100dvh);
+    padding: 12px;
+    overflow: hidden;
+  }
+
+  .pb-modal-container {
+    width: min(800px, 100%);
+    height: min(540px, calc(var(--pb-viewport-height, 100dvh) - 24px));
+    max-width: 100%;
+    max-height: calc(var(--pb-viewport-height, 100dvh) - 24px);
+    min-height: 0;
+  }
+
+  .pb-modal-split,
+  .pb-modal-left-list,
+  .pb-modal-right-detail {
+    min-height: 0;
+  }
+
+  .pb-modal-left-list {
+    width: clamp(132px, 34vw, 280px);
+    flex: 0 1 clamp(132px, 34vw, 280px);
+  }
+
+  .pb-modal-right-detail {
+    min-width: 0;
+    overscroll-behavior: contain;
+  }
+
   html, body {
     overflow-x: hidden !important;
     overflow-y: hidden !important;
@@ -2193,7 +2250,7 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, [tabindex]:fo
   .pb-workspace {
     display: flex !important;
     flex-direction: column !important;
-    height: min(calc(100dvh - 48px), calc(var(--pb-viewport-height, 100dvh) - 48px)) !important;
+    height: min(calc(100dvh - var(--pb-mobile-chrome-height, 48px)), calc(var(--pb-viewport-height, 100dvh) - var(--pb-mobile-chrome-height, 48px))) !important;
     min-height: 0;
     overflow-x: hidden !important;
     overflow-y: hidden !important;

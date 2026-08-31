@@ -14,6 +14,9 @@ export interface FeatDefinition {
   rarity?: "common" | "uncommon" | "rare" | "unique";
   ancestry?: string;
   className?: string;
+  archetypeId?: string;
+  needs_review?: boolean;
+  sourceApproximate?: boolean;
 }
 
 export const PF2E_FEATS_CATALOG: FeatDefinition[] = [
@@ -1704,5 +1707,148 @@ export const PF2E_FEATS_CATALOG: FeatDefinition[] = [
     source: { book: "Guia de Personagens Avançados (APG / PC2)", page: 180 },
     ruleset: "remaster",
     rarity: "uncommon"
+  },
+  // Player Core 2, pp. 195–196: Cavaleiro. Mantemos estes registros no
+  // catálogo compartilhado para que o picker React não dependa do legado.
+  {
+    id: "feat.archetype.cavalier.cavalier_dedication",
+    name: "Dedicação de Cavaleiro (Cavalier Dedication)",
+    names: { "pt-BR": "Dedicação de Cavaleiro", en: "Cavalier Dedication", es: "Dedicación de caballero" },
+    category: "Arquétipo", level: 2, traits: ["Arquétipo", "Dedicação"],
+    prereq: "Treinado em Natureza ou Sociedade", archetypeId: "archetype.cavalier",
+    description: "Adquire um companheiro animal jovem que serve como sua montaria; ele deve ser pelo menos um tamanho maior que você.",
+    summaries: { "pt-BR": "Adquire um companheiro animal jovem como montaria.", en: "Gain a young animal companion as a mount.", es: "Obtienes un compañero animal joven como montura." },
+    source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 195 }, ruleset: "remaster", needs_review: true, rarity: "uncommon"
+  },
+  {
+    id: "feat.archetype.cavalier.knights_banner",
+    name: "Estandarte do Cavaleiro (Knight's Banner)",
+    names: { "pt-BR": "Estandarte do Cavaleiro", en: "Knight's Banner", es: "Estandarte del caballero" },
+    category: "Arquétipo", level: 4, traits: ["Arquétipo"],
+    prereq: "Dedicação de Cavaleiro; juramento a uma organização ou ideal", archetypeId: "archetype.cavalier",
+    description: "Ergue o estandarte do juramento na montaria e inspira aliados próximos contra efeitos de medo.",
+    summaries: { "pt-BR": "Ergue o estandarte do juramento e inspira aliados contra medo.", en: "Raise your oath's banner and inspire nearby allies against fear.", es: "Alzas el estandarte de tu juramento e inspiras a los aliados contra el miedo." },
+    source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 195 }, ruleset: "remaster", needs_review: true, rarity: "uncommon"
+  },
+  {
+    id: "feat.archetype.cavalier.knights_charge",
+    name: "Investida do Cavaleiro (Knight's Charge)",
+    names: { "pt-BR": "Investida do Cavaleiro", en: "Knight's Charge", es: "Carga del caballero" },
+    category: "Arquétipo", level: 4, traits: ["Arquétipo"],
+    prereq: "Dedicação de Cavaleiro", archetypeId: "archetype.cavalier",
+    description: "Comanda a montaria para Andar duas vezes e realiza um Golpe durante o movimento.",
+    summaries: { "pt-BR": "Ordena dois movimentos da montaria e realiza um Golpe durante o movimento.", en: "Command your mount to Stride twice and make a Strike during the movement.", es: "Ordenas a tu montura Avanzar dos veces y haces un Golpe durante el movimiento." },
+    source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 195 }, ruleset: "remaster", needs_review: true, rarity: "uncommon"
+  },
+  {
+    id: "feat.archetype.cavalier.rapid_mount",
+    name: "Montar Rapidamente (Rapid Mount)",
+    names: { "pt-BR": "Montar Rapidamente", en: "Rapid Mount", es: "Montar rápidamente" },
+    category: "Arquétipo", level: 4, traits: ["Arquétipo"],
+    prereq: "Dedicação de Cavaleiro; especialista em Natureza", archetypeId: "archetype.cavalier",
+    description: "Monta uma criatura disposta e ordena uma ação com Comandar um Animal.",
+    summaries: { "pt-BR": "Monta rapidamente e ordena uma ação à criatura.", en: "Mount a willing creature and give it an order.", es: "Montas una criatura dispuesta y le das una orden." },
+    source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 195 }, ruleset: "remaster", needs_review: true, rarity: "uncommon"
+  },
+  {
+    id: "feat.archetype.cavalier.impressive_mount",
+    name: "Montaria Impressionante (Impressive Mount)",
+    names: { "pt-BR": "Montaria Impressionante", en: "Impressive Mount", es: "Montura impresionante" },
+    category: "Arquétipo", level: 4, traits: ["Arquétipo"],
+    prereq: "Dedicação de Cavaleiro", archetypeId: "archetype.cavalier",
+    description: "A montaria se torna um companheiro animal maduro e pode agir com uma ação mesmo sem ser comandada.",
+    summaries: { "pt-BR": "A montaria se torna um companheiro animal maduro.", en: "Your mount becomes a mature animal companion.", es: "Tu montura se vuelve un compañero animal maduro." },
+    source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 195 }, ruleset: "remaster", needs_review: true, rarity: "uncommon"
+  },
+  {
+    id: "feat.archetype.cavalier.defend_mount",
+    name: "Defender Montaria (Defend Mount)",
+    names: { "pt-BR": "Defender Montaria", en: "Defend Mount", es: "Defender la montura" },
+    category: "Arquétipo", level: 6, traits: ["Arquétipo"],
+    prereq: "Dedicação de Cavaleiro", archetypeId: "archetype.cavalier",
+    description: "Protege a montaria usando sua própria defesa contra um ataque acionador.",
+    summaries: { "pt-BR": "Protege a montaria com sua própria defesa.", en: "Protect your mount with your own defense.", es: "Proteges a tu montura con tu propia defensa." },
+    source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 195 }, ruleset: "remaster", needs_review: true, rarity: "uncommon"
+  },
+  {
+    id: "feat.archetype.cavalier.mounted_shield",
+    name: "Escudo Montado (Mounted Shield)",
+    names: { "pt-BR": "Escudo Montado", en: "Mounted Shield", es: "Escudo montado" },
+    category: "Arquétipo", level: 6, traits: ["Arquétipo"],
+    prereq: "Dedicação de Cavaleiro", archetypeId: "archetype.cavalier",
+    description: "Enquanto montado, compartilha o bônus do escudo com a montaria e pode Bloquear por ela.",
+    summaries: { "pt-BR": "Compartilha o bônus do escudo e pode Bloquear pela montaria.", en: "Share your shield bonus with your mount and Shield Block for it.", es: "Compartes el bonificador del escudo y puedes Bloquear por tu montura." },
+    source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 195 }, ruleset: "remaster", needs_review: true, rarity: "uncommon"
+  },
+  {
+    id: "feat.archetype.cavalier.incredible_mount",
+    name: "Montaria Incrível (Incredible Mount)",
+    names: { "pt-BR": "Montaria Incrível", en: "Incredible Mount", es: "Montura increíble" },
+    category: "Arquétipo", level: 8, traits: ["Arquétipo"],
+    prereq: "Montaria Impressionante", archetypeId: "archetype.cavalier",
+    description: "A montaria se torna ágil ou selvagem e recebe capacidades adicionais.",
+    summaries: { "pt-BR": "A montaria recebe uma especialização ágil ou selvagem.", en: "Your mount becomes nimble or savage and gains additional capabilities.", es: "Tu montura se vuelve ágil o salvaje y obtiene capacidades adicionales." },
+    source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 196 }, ruleset: "remaster", needs_review: true, rarity: "uncommon"
+  },
+  {
+    id: "feat.archetype.cavalier.trampling_charge",
+    name: "Investida Atropelante (Trampling Charge)",
+    names: { "pt-BR": "Investida Atropelante", en: "Trampling Charge", es: "Carga arrolladora" },
+    category: "Arquétipo", level: 10, traits: ["Arquétipo"],
+    prereq: "Dedicação de Cavaleiro", archetypeId: "archetype.cavalier",
+    description: "A montaria avança através dos espaços de adversários e causa dano com um Golpe.",
+    summaries: { "pt-BR": "A montaria atravessa espaços inimigos e realiza um Golpe.", en: "Your mount moves through opponents' spaces and makes a Strike.", es: "Tu montura atraviesa espacios enemigos y hace un Golpe." },
+    source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 196 }, ruleset: "remaster", needs_review: true, rarity: "uncommon"
+  },
+  {
+    id: "feat.archetype.cavalier.unseat",
+    name: "Desselar (Unseat)",
+    names: { "pt-BR": "Desselar", en: "Unseat", es: "Desmontar" },
+    category: "Arquétipo", level: 10, traits: ["Arquétipo"],
+    prereq: "Dedicação de Cavaleiro; montado e empunhando uma arma de justa", archetypeId: "archetype.cavalier",
+    description: "Ataca uma criatura montada e tenta derrubá-la da montaria.",
+    summaries: { "pt-BR": "Tenta derrubar uma criatura da montaria.", en: "Attack a mounted creature and attempt to knock it from its mount.", es: "Atacas a una criatura montada e intentas derribarla." },
+    source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 196 }, ruleset: "remaster", needs_review: true, rarity: "uncommon"
+  },
+  {
+    id: "feat.archetype.cavalier.specialized_mount",
+    name: "Montaria Especializada (Specialized Mount)",
+    names: { "pt-BR": "Montaria Especializada", en: "Specialized Mount", es: "Montura especializada" },
+    category: "Arquétipo", level: 14, traits: ["Arquétipo"],
+    prereq: "Montaria Incrível", archetypeId: "archetype.cavalier",
+    description: "A montaria adquire uma especialização, até três vezes com especializações diferentes.",
+    summaries: { "pt-BR": "A montaria adquire uma especialização adicional.", en: "Your mount gains a specialization, up to three different specializations.", es: "Tu montura obtiene una especialización, hasta tres distintas." },
+    source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 196 }, ruleset: "remaster", needs_review: true, rarity: "uncommon"
+  },
+  {
+    id: "feat.archetype.cavalier.legendary_knight",
+    name: "Cavaleiro Lendário (Legendary Knight)",
+    names: { "pt-BR": "Cavaleiro Lendário", en: "Legendary Knight", es: "Caballero legendario" },
+    category: "Arquétipo", level: 20, traits: ["Arquétipo"],
+    prereq: "Dedicação de Cavaleiro", archetypeId: "archetype.cavalier",
+    description: "Fica acelerado enquanto montado, usando a ação adicional apenas para comandar a montaria.",
+    summaries: { "pt-BR": "Fica acelerado enquanto montado para comandar a montaria.", en: "While mounted, become quickened and use the extra action only to Command your mount.", es: "Mientras estás montado, quedas acelerado para Comandar tu montura." },
+    source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 196 }, ruleset: "remaster", needs_review: true, rarity: "uncommon"
+  },
+  {
+    id: "feat.class.monk.postura_da_naja",
+    name: "Postura da Naja (Serpent Stance)",
+    names: { "pt-BR": "Postura da Naja", en: "Serpent Stance", es: "Postura de la cobra" },
+    category: "Classe",
+    level: 4,
+    traits: ["Classe", "Monge", "Postura"],
+    className: "Monge",
+    prereq: "Nenhum",
+    description: "Você assume a Postura da Naja, alterando seus ataques desarmados conforme a técnica descrita no Player Core 2.",
+    summaries: {
+      "pt-BR": "Postura de Monge que habilita os ataques e efeitos da Naja.",
+      en: "Monk stance that enables the Serpent attacks and effects.",
+      es: "Postura de monje que habilita los ataques y efectos de la cobra."
+    },
+    source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 148 },
+    ruleset: "remaster",
+    needs_review: true,
+    sourceApproximate: true,
+    rarity: "common"
   }
 ];

@@ -12,9 +12,14 @@ export interface PetCompanionDefinition {
   attacks: Array<{ name: string; bonus: number; damage: string; traits: string[] }>;
   supportBenefit: string;
   specialAbility?: string;
+  grantedAbilities?: string[];
+  requiredFamiliarAbilities?: number;
+  requiresSpellcasting?: boolean;
   description: string;
   summaries?: { "pt-BR": string; en: string; es: string };
   source?: { book: string; page?: number };
+  sourceApproximate?: boolean;
+  needs_review?: boolean;
 }
 
 export const PF2E_PETS_CATALOG: PetCompanionDefinition[] = [
@@ -135,5 +140,103 @@ export const PF2E_PETS_CATALOG: PetCompanionDefinition[] = [
     description: "Um espírito animal ligado à sua essência mágica que entrega magias de toque e vigia os arredores.",
     summaries: { "pt-BR": "Familiar mágico que amplia habilidades e entrega magias de toque.", en: "Magical familiar that expands abilities and delivers touch spells.", es: "Familiar mágico que amplía habilidades y entrega conjuros de toque." },
     source: { book: "Livro do Jogador (Player Core)", page: 214 }
+  },
+  {
+    id: "pet.familiar.specific.doll",
+    name: "Boneco (Doll)",
+    type: "familiar",
+    names: { "pt-BR": "Boneco", en: "Doll", es: "Muñeco" },
+    size: "Minúsculo", speed: "25 pés", hp: 5, ac: 15, perception: 5,
+    senses: "Visão na Penumbra", attacks: [],
+    supportBenefit: "Familiar específico constructo.",
+    specialAbility: "Inflamável: adquire fraqueza a fogo igual ao seu nível; uma habilidade de familiar pode remover essa fraqueza por um dia.",
+    grantedAbilities: ["constructo"], requiredFamiliarAbilities: 1,
+    description: "Familiar constructo de madeira e vime.",
+    summaries: { "pt-BR": "Boneco familiar constructo, simples e modificável.", en: "A simple, endlessly modifiable construct familiar.", es: "Familiar constructo sencillo y modificable." },
+    source: { book: "Livro do Jogador 2 (Player Core 2)", page: 170 }, sourceApproximate: true, needs_review: true
+  },
+  {
+    id: "pet.familiar.specific.imp",
+    name: "Diabrete (Imp)",
+    type: "familiar",
+    names: { "pt-BR": "Diabrete", en: "Imp", es: "Diablillo" },
+    size: "Minúsculo", speed: "25 pés", hp: 5, ac: 15, perception: 5,
+    senses: "Visão no Escuro", attacks: [],
+    supportBenefit: "Familiar específico ínfero profano.",
+    specialAbility: "Invisibilidade de Diabrete (divina inata, uma vez por hora) e Tentação Infernal (uma vez por dia).",
+    grantedAbilities: ["destreza manual", "fala", "resistência (veneno)", "perito (Dissimulação)", "telepatia de toque", "visão no escuro", "voador"], requiredFamiliarAbilities: 7,
+    description: "Familiar ínfero que oferece barganhas e poderes de enganação.",
+    summaries: { "pt-BR": "Familiar ínfero com invisibilidade e tentação sobrenatural.", en: "An infernal familiar with invisibility and supernatural temptation.", es: "Familiar infernal con invisibilidad y tentación sobrenatural." },
+    source: { book: "Livro do Jogador 2 (Player Core 2)", page: 170 }, sourceApproximate: true, needs_review: true
+  },
+  {
+    id: "pet.familiar.specific.fey_dragonet",
+    name: "Dragonete Feérico (Fey Dragonet)",
+    type: "familiar",
+    names: { "pt-BR": "Dragonete Feérico", en: "Fey Dragonet", es: "Dragoncito feérico" },
+    size: "Minúsculo", speed: "25 pés, Voo 25 pés", hp: 5, ac: 15, perception: 5,
+    senses: "Visão no Escuro", attacks: [],
+    supportBenefit: "Familiar específico dragão.",
+    specialAbility: "Sopro Eufórico: cone de 3 metros, uma vez por hora, com salvamento de Fortitude.",
+    grantedAbilities: ["destreza manual", "fala", "telepatia de toque", "visão no escuro", "voador"], requiredFamiliarAbilities: 5,
+    description: "Pequeno dragão travesso aliado de personagens benevolentes ou impulsivos.",
+    summaries: { "pt-BR": "Pequeno dragão feérico com sopro eufórico.", en: "A mischievous fairy dragon with an euphoric breath.", es: "Pequeño dragón feérico con aliento eufórico." },
+    source: { book: "Livro do Jogador 2 (Player Core 2)", page: 171 }, sourceApproximate: true, needs_review: true
+  },
+  {
+    id: "pet.familiar.specific.wyrd_eon",
+    name: "Eônico da Wyrd (Wyrd Eon)",
+    type: "familiar",
+    names: { "pt-BR": "Eônico da Wyrd", en: "Wyrd Eon", es: "Eónico de la Wyrd" },
+    size: "Minúsculo", speed: "Voo 25 pés", hp: 5, ac: 15, perception: 5,
+    senses: "Visão na Penumbra", attacks: [],
+    supportBenefit: "Familiar específico constructo.",
+    specialAbility: "Reservatório de Eônico da Wyrd; Incapaz de Andar; Cristalino (fraqueza a sônico igual ao nível).",
+    grantedAbilities: ["constructo", "voador"], requiredFamiliarAbilities: 3,
+    description: "Enxame flutuante de pedras preciosas que concede o poder de sua pedra interna.",
+    summaries: { "pt-BR": "Enxame cristalino voador que armazena uma pedra eônica.", en: "A flying crystal swarm that stores an aeonic stone.", es: "Enjambre cristalino volador que almacena una piedra eónica." },
+    source: { book: "Livro do Jogador 2 (Player Core 2)", page: 171 }, sourceApproximate: true, needs_review: true
+  },
+  {
+    id: "pet.familiar.specific.gosmagia",
+    name: "Gosmagia (Gosmagia)",
+    type: "familiar",
+    names: { "pt-BR": "Gosmagia", en: "Gosmagia", es: "Gosmagia" },
+    size: "Minúsculo", speed: "25 pés", hp: 5, ac: 10, perception: 5,
+    senses: "Faro Mágico 30 pés", attacks: [],
+    supportBenefit: "Familiar específico limo.",
+    specialAbility: "Faro Mágico; Defesa de Limo; Rejuvenescimento de Gosma.",
+    grantedAbilities: ["escalador", "visão no escuro", "vigoroso"], requiredFamiliarAbilities: 4, requiresSpellcasting: true,
+    description: "Limo colorido formado por essências de conjurações.",
+    summaries: { "pt-BR": "Familiar limo leal que fareja magia.", en: "A loyal slime familiar that senses magic.", es: "Familiar limo leal que detecta magia." },
+    source: { book: "Livro do Jogador 2 (Player Core 2)", page: 172 }, sourceApproximate: true, needs_review: true
+  },
+  {
+    id: "pet.familiar.specific.homunculus",
+    name: "Homúnculo (Homunculus)",
+    type: "familiar",
+    names: { "pt-BR": "Homúnculo", en: "Homunculus", es: "Homúnculo" },
+    size: "Minúsculo", speed: "25 pés, Voo 25 pés", hp: 5, ac: 15, perception: 5,
+    senses: "Visão no Escuro", attacks: [],
+    supportBenefit: "Familiar específico constructo.",
+    specialAbility: "Carregador; Vínculo Sanguíneo: elo telepático com o criador a 450 metros.",
+    grantedAbilities: ["constructo", "destreza manual", "reservatório de veneno", "visão no escuro"], requiredFamiliarAbilities: 6,
+    description: "Pequeno constructo servidor criado com uma gota de sangue do mestre.",
+    summaries: { "pt-BR": "Constructo servidor com vínculo telepático sanguíneo.", en: "A construct servant with a telepathic blood bond.", es: "Constructo servidor con vínculo telepático de sangre." },
+    source: { book: "Livro do Jogador 2 (Player Core 2)", page: 171 }, sourceApproximate: true, needs_review: true
+  },
+  {
+    id: "pet.familiar.specific.fox",
+    name: "Raposafídia (Foxhedron)",
+    type: "familiar",
+    names: { "pt-BR": "Raposafídia", en: "Foxhedron", es: "Zorrafidia" },
+    size: "Minúsculo", speed: "25 pés", hp: 5, ac: 15, perception: 5,
+    senses: "Visão no Escuro", attacks: [],
+    supportBenefit: "Familiar específico besta.",
+    specialAbility: "Linguista Erudito: fala e entende todos os idiomas conhecidos pelo mestre e um idioma comum adicional.",
+    grantedAbilities: ["escalador", "fala", "perito", "segunda opinião", "visão no escuro"], requiredFamiliarAbilities: 5,
+    description: "Raposa mágica reservada, tímida e apaixonada por conhecimento.",
+    summaries: { "pt-BR": "Raposa mágica erudita com fala e perícia ampliadas.", en: "A scholarly magical fox with speech and expanded expertise.", es: "Zorra mágica erudita con habla y pericia ampliadas." },
+    source: { book: "Livro do Jogador 2 (Player Core 2)", page: 172 }, sourceApproximate: true, needs_review: true
   }
 ];

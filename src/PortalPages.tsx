@@ -245,7 +245,7 @@ function RulesPage() {
     <header className="portal-hero"><span>PF2E RULES PROVENANCE</span><h1>{t("rulesTitle")}</h1><p>{t("rulesIntro")}</p></header>
     <section className="rules-layout">
       <article className="portal-panel"><h2>{t("validationTitle")}</h2><ul className="validation-list">{validationCopy[locale].map((item) => <li key={item}><span aria-hidden="true">✓</span>{item}</li>)}</ul></article>
-      <article className="portal-panel"><h2>{t("sourcesTitle")}</h2><p>{t("sourcesIntro")}</p><div className="source-list">{pathfinderSources.map((source) => <div className="source-row" key={source.id}><div><strong>{source.title}</strong><span>{source.pages} {t("pages")} · {t("pageCountVerified")}</span><small>{t("localLanguage")}: {source.language} · {t("languageInferred")}</small></div><div><span className={`ruleset-badge ${source.ruleset}`}>{rulesetLabel(source.ruleset)}</span><small>{source.linkedRecords} {t("linkedRecords")}</small></div></div>)}</div></article>
+      <article className="portal-panel"><h2>{t("sourcesTitle")}</h2><p>{t("sourcesIntro")}</p><div className="source-list">{pathfinderSources.map((source) => <div className="source-row" key={source.id}><div><strong>{source.title}</strong><span>{source.pages} {t("pages")} · {t("pageCountVerified")}</span><small>{t("localLanguage")}: {source.language} · {t("languageInferred")}</small></div><div><span className={`ruleset-badge ${source.ruleset}`}>{rulesetLabel(source.ruleset)}</span><small>{source.catalogStatus === "pending" ? t("contentPending") : `${source.linkedRecords} ${t("linkedRecords")}`}</small></div></div>)}</div></article>
     </section>
   </main>;
 }
