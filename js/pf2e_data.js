@@ -1063,7 +1063,6 @@ const PF2E_DATA = {
   // 7.3 CONDIÇÕES OFICIAIS (CONDITIONS COMPENDIUM)
   // ==========================================
   conditions: [
-    { name: "Abalado (Frightened)", category: "Condições", description: "Você sofre uma penalidade de estado em todos os seus testes e CDs igual ao valor de sua condição. No final de cada um dos seus turnos, o valor reduz em 1.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 442 }, ruleset: "remaster", rarity: "common" },
     { name: "Amedrontado (Frightened)", category: "Condições", description: "Penalidade de estado em todos os testes e CDs baseados em perícias, ataques e salvamentos.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 442 }, ruleset: "remaster", rarity: "common" },
     { name: "Desprevenido (Off-Guard)", category: "Condições", description: "Você sofre uma penalidade de circunstância de -2 na sua Classe de Armadura.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 443 }, ruleset: "remaster", rarity: "common" },
     { name: "Enfraquecido (Enfeebled)", category: "Condições", description: "Penalidade de estado em testes baseados em Força, jogadas de ataque corpo a corpo e dano corpo a corpo.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 442 }, ruleset: "remaster", rarity: "common" },
@@ -3973,6 +3972,390 @@ PF2E_DATA.conditionsCatalog = {
   "immobilized": { name: "Imobilizado (Immobilized)", hasValue: false, type: "Status", description: "Não pode se mover de seu espaço por qualquer ação com o traço Movimento." },
   "blessed": { name: "Abençoado / Heroísmo (Blessed)", hasValue: false, type: "Status Positivo", description: "+1 de bônus de status em todas as jogadas de ataque." }
 };
+
+// Metadados confirmados nas tabelas de equipamento do Player Core (pp. 274-282).
+// Os registros de armas/armaduras que vieram de outros suplementos permanecem
+// fora deste mapa até que a página da edição correspondente seja confirmada.
+const PLAYER_CORE_EQUIPMENT_METADATA = {
+  weapons: {
+    "Bastard Sword": ["Espada Bastarda", 279],
+    "Battle Axe": ["Machado de Batalha", 279],
+    "Blowgun": ["Zarabatana", 282],
+    "Bo Staff": ["Bastão Bo", 279],
+    "Club": ["Clava", 278],
+    "Crossbow": ["Besta", 282],
+    "Dagger": ["Adaga", 278],
+    "Dart": ["Dardo", 282],
+    "Falchion": ["Bracamante", 279],
+    "Flail": ["Mangual", 279],
+    "Gauntlet": ["Manopla", 278],
+    "Glaive": ["Glaive", 279],
+    "Greataxe": ["Machado Longo", 279],
+    "Greatclub": ["Clava Pesada", 279],
+    "Greatsword": ["Montante", 279],
+    "Halberd": ["Alabarda", 279],
+    "Hand Crossbow": ["Besta de Mão", 282],
+    "Heavy Crossbow": ["Besta Pesada", 282],
+    "Javelin": ["Azagaia", 282],
+    "Kukri": ["Kukri", 279],
+    "Lance": ["Lança de Cavalaria", 279],
+    "Longbow": ["Arco Longo", 282],
+    "Longsword": ["Espada Longa", 279],
+    "Maul": ["Malho", 279],
+    "Morningstar": ["Maça-Estrela", 278],
+    "Nunchaku": ["Nunchaku", 279],
+    "Pick": ["Picareta", 279],
+    "Rapier": ["Rapieira", 279],
+    "Scimitar": ["Cimitarra", 279],
+    "Scythe": ["Segadeira", 279],
+    "Shortbow": ["Arco Curto", 282],
+    "Shortsword": ["Espada Curta", 279],
+    "Shuriken": ["Shuriken", 282],
+    "Sickle": ["Foice", 278],
+    "Sling": ["Funda", 282],
+    "Spear": ["Lança", 278],
+    "Staff": ["Cajado", 278],
+    "Trident": ["Tridente", 279],
+    "Warhammer": ["Martelo de Guerra", 279],
+    "Whip": ["Chicote", 279],
+    "Fist": ["Punho", 278]
+  },
+  armors: {
+    "Explorer's Clothing": ["Roupas de Explorador", 274],
+    "Padded Armor": ["Armadura Acolchoada", 274],
+    "Leather Armor": ["Armadura de Couro", 274],
+    "Studded Leather": ["Armadura de Couro Batido", 274],
+    "Chain Shirt": ["Camisa de Malha", 274],
+    "Hide Armor": ["Gibão de Peles", 274],
+    "Scale Mail": ["Brunea", 274],
+    "Breastplate": ["Peitoral", 274],
+    "Chain Mail": ["Cota de Malha", 274],
+    "Half Plate": ["Meia-Armadura", 274],
+    "Splint Mail": ["Armadura de Talas", 274],
+    "Full Plate": ["Armadura Completa", 274],
+    "Unarmored": ["Sem Armadura", 274]
+  },
+  shields: {
+    "Buckler": ["Broquel", 275],
+    "Steel Shield": ["Escudo de Aço", 275],
+    "Wooden Shield": ["Escudo de Madeira", 275],
+    "Tower Shield": ["Escudo Torre", 275]
+  }
+};
+
+const localizedEquipmentSummary = (pt, en, es) => ({ "pt-BR": pt, en, es });
+const PLAYER_CORE_SKILL_METADATA = {
+  acrobatics: ["Acrobatismo", "Acrobatics", "Acrobatismo", 233],
+  arcana: ["Arcanismo", "Arcana", "Arcanismo", 234],
+  athletics: ["Atletismo", "Athletics", "Atletismo", 234],
+  crafting: ["Manufatura", "Crafting", "Artesanía", 241],
+  deception: ["Dissimulação", "Deception", "Engaño", 237],
+  diplomacy: ["Diplomacia", "Diplomacy", "Diplomacia", 236],
+  intimidation: ["Intimidação", "Intimidation", "Intimidación", 239],
+  medicine: ["Medicina", "Medicine", "Medicina", 242],
+  nature: ["Natureza", "Nature", "Naturaleza", 244],
+  occultism: ["Ocultismo", "Occultism", "Ocultismo", 244],
+  performance: ["Performance", "Performance", "Interpretación", 244],
+  religion: ["Religião", "Religion", "Religión", 245],
+  society: ["Sociedade", "Society", "Sociedad", 247],
+  stealth: ["Furtividade", "Stealth", "Sigilo", 238],
+  survival: ["Sobrevivência", "Survival", "Supervivencia", 246],
+  thievery: ["Ladroagem", "Thievery", "Latrocinio", 240]
+};
+Object.entries(PLAYER_CORE_SKILL_METADATA).forEach(([id, [pt, en, es, page]]) => {
+  const record = (PF2E_DATA.skills || []).find((skill) => skill.id === id);
+  if (!record) return;
+  Object.assign(record, {
+    names: { "pt-BR": pt, en, es },
+    summaries: localizedEquipmentSummary(
+      record.description,
+      `A core Pathfinder 2e skill used for its listed trained and untrained actions.`,
+      `Una habilidad básica de Pathfinder 2e usada para sus acciones entrenadas y no entrenadas.`
+    ),
+    source: { book: PLAYER_CORE_SOURCE, page },
+    ruleset: "remaster",
+    needs_review: false
+  });
+});
+
+const ACTION_SPANISH_NAMES = {
+  "Strike": "Golpear", "Stride": "Avanzar", "Step": "Paso", "Raise a Shield": "Levantar un escudo",
+  "Take Cover": "Buscar cobertura", "Interact": "Interactuar", "Escape": "Escapar", "Leap": "Saltar",
+  "Trip": "Derribo", "Grapple": "Agarrar", "Shove": "Empujar", "Disarm": "Desarmar", "Feint": "Fintar",
+  "Demoralize": "Desmoralizar", "Treat Wounds": "Tratar heridas", "Battle Medicine": "Medicina de batalla",
+  "Recall Knowledge": "Recordar conocimiento", "Seek": "Buscar", "Hide": "Esconderse", "Sneak": "Escabullirse",
+  "Avoid Notice": "Evitar ser detectado", "Defend": "Defender", "Detect Magic": "Detectar magia", "Scout": "Explorar"
+};
+(PF2E_DATA.actions || []).forEach((record) => {
+  const match = record.name.match(/^(.*?)\s*\(([^)]+)\)/);
+  if (!match) return;
+  const [, pt, en] = match;
+  const es = ACTION_SPANISH_NAMES[en] || en;
+  Object.assign(record, {
+    names: { "pt-BR": pt.trim(), en: en.trim(), es },
+    summaries: localizedEquipmentSummary(
+      record.description,
+      `Core action: ${en.trim()}.`,
+      `Acción básica: ${es}.`
+    )
+  });
+});
+
+const CONDITION_SPANISH_NAMES = {
+  "Frightened": "Asustado", "Off-Guard": "Desprevenido", "Enfeebled": "Debilitado", "Clumsy": "Torpe",
+  "Drained": "Drenado", "Stupefied": "Atontado", "Grabbed": "Agarrado", "Prone": "Caído",
+  "Blinded": "Cegado", "Confused": "Confundido", "Doomed": "Condenado", "Fatigued": "Fatigado",
+  "Immobilized": "Inmovilizado", "Unconscious": "Inconsciente", "Slowed": "Lento", "Dying": "Moribundo",
+  "Dazzled": "Deslumbrado", "Paralyzed": "Paralizado", "Petrified": "Petrificado", "Broken": "Roto",
+  "Restrained": "Restringido", "Persistent Damage": "Daño persistente"
+};
+const localizeLegacyEffectRecords = (records, category, spanishNames) => {
+  (records || []).forEach((record) => {
+    const match = record.name.match(/^(.*?)\s*\(([^)]+)\)/);
+    if (!match) return;
+    const [, pt, en] = match;
+    const english = en.trim();
+    const spanish = spanishNames[english] || english;
+    const slug = english.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "");
+    Object.assign(record, {
+      id: record.id || `${category}.${slug}`,
+      names: { "pt-BR": pt.trim(), en: english, es: spanish },
+      summaries: localizedEquipmentSummary(
+        record.description,
+        `${category === "condition" ? "Condition" : "Benefit"}: ${english}.`,
+        `${category === "condition" ? "Condición" : "Beneficio"}: ${spanish}.`
+      )
+    });
+  });
+};
+localizeLegacyEffectRecords(PF2E_DATA.conditions, "condition", CONDITION_SPANISH_NAMES);
+localizeLegacyEffectRecords(PF2E_DATA.buffs, "buff", {
+  "Blessed": "Bendecido", "Quickened": "Acelerado", "Concealed": "Ocultado", "Invisible": "Invisible",
+  "Shield Raised": "Escudo levantado", "Courageous Anthem": "Anthem valiente", "Rallying Anthem": "Anthem de ánimo",
+  "Guidance": "Guía", "Dragon Stance": "Postura del dragón", "Tiger Stance": "Postura del tigre",
+  "Mountain Stance": "Postura de la montaña", "Crane Stance": "Postura de la grulla"
+});
+
+const PLAYER_CORE_2_ARCHETYPE_METADATA = {
+  "Acrobata (Acrobat)": ["archetype.acrobat", "Acrobata", "Acrobat", "Acróbata", 184],
+  "Arqueiro (Archer)": ["archetype.archer", "Arqueiro", "Archer", "Arquero", 186],
+  "Duelista (Duelist)": ["archetype.duelist", "Duelista", "Duelist", "Duelista", 201],
+  "Marechal (Marshal)": ["archetype.marshal", "Marechal", "Marshal", "Mariscal", 210],
+  "Médico de Batalha (Medic)": ["archetype.medic", "Médico", "Medic", "Médico", 212],
+  "Cavaleiro (Cavalier)": ["archetype.cavalier", "Cavaleiro", "Cavalier", "Caballero", 195],
+  "Sentinela (Sentinel)": ["archetype.sentinel", "Sentinela", "Sentinel", "Centinela", 218],
+  "Lutador (Wrestler)": ["archetype.wrestler", "Lutador de luta livre", "Wrestler", "Luchador", 207],
+  "Mestre de Rituais (Ritualist)": ["archetype.ritualist", "Ritualista", "Ritualist", "Ritualista", 217],
+  "Dedicação: Alquimista": ["archetype.alchemist_multiclass", "Dedicação: Alquimista", "Alchemist Dedication", "Dedicación de alquimista", 175],
+  "Dedicação: Bárbaro": ["archetype.barbarian_multiclass", "Dedicação: Bárbaro", "Barbarian Dedication", "Dedicación de bárbaro", 176],
+  "Dedicação: Campeão": ["archetype.champion_multiclass", "Dedicação: Campeão", "Champion Dedication", "Dedicación de campeón", 177],
+  "Dedicação: Monge": ["archetype.monk_multiclass", "Dedicação: Monge", "Monk Dedication", "Dedicación de monje", 179],
+  "Dedicação: Oráculo": ["archetype.oracle_multiclass", "Dedicação: Oráculo", "Oracle Dedication", "Dedicación de oráculo", 180],
+  "Dedicação: Feiticeiro": ["archetype.sorcerer_multiclass", "Dedicação: Feiticeiro", "Sorcerer Dedication", "Dedicación de hechicero", 181],
+  "Dedicação: Espadachim": ["archetype.swashbuckler_multiclass", "Dedicação: Espadachim", "Swashbuckler Dedication", "Dedicación de espadachín", 182]
+};
+Object.entries(PLAYER_CORE_2_ARCHETYPE_METADATA).forEach(([legacyName, [id, pt, en, es, page]]) => {
+  const record = (PF2E_DATA.archetypes || []).find((archetype) => archetype.name === legacyName);
+  if (!record) return;
+  Object.assign(record, {
+    id,
+    names: { "pt-BR": pt, en, es },
+    summaries: localizedEquipmentSummary(
+      record.description || `Arquétipo ${pt}.`,
+      `Player Core 2 archetype: ${en}.`,
+      `Arquetipo de Player Core 2: ${es}.`
+    ),
+    source: { book: PLAYER_CORE_2_SOURCE, page },
+    ruleset: "remaster",
+    needs_review: false
+  });
+});
+
+const PLAYER_CORE_2_MISSING_ARCHETYPES = [
+  ["archetype.blessed", "Abençoado", "Blessed One", "Bendecido", 183, "Carrega uma bênção divina capaz de curar ferimentos e remover condições nocivas."],
+  ["archetype.snarecrafter", "Arapuqueiro", "Snarecrafter", "Fabricante de trampas", 185, "Transforma materiais comuns em arapucas letais preparadas com rapidez."],
+  ["archetype.eldritch_archer", "Arqueiro Místico", "Eldritch Archer", "Arquero arcano", 187, "Combina magia e disparos para lançar feitiços por meio de ataques à distância."],
+  ["archetype.archaeologist", "Arqueólogo", "Archaeologist", "Arqueólogo", 189, "Explora ruínas, identifica relíquias e sobrevive a tumbas perigosas em busca de conhecimento."],
+  ["archetype.assassin", "Assassino", "Assassin", "Asesino", 190, "Planeja ataques precisos e usa venenos, disfarces e preparação para eliminar alvos."],
+  ["archetype.martial_artist", "Artista Marcial", "Martial Artist", "Artista marcial", 191, "Aperfeiçoa golpes desarmados letais por meio de treinamento físico disciplinado."],
+  ["archetype.bastion", "Bastião", "Bastion", "Bastión", 192, "Especializa-se em escudos e reações defensivas para proteger a si e seus aliados."],
+  ["archetype.scout", "Batedor", "Scout", "Explorador", 193, "Reconhece o terreno, reúne informações e retorna sem ser percebido pelas linhas inimigas."],
+  ["archetype.bounty_hunter", "Caçador de Recompensas", "Bounty Hunter", "Cazarrecompensas", 194, "Rastreia alvos, pesquisa suas fraquezas e os captura por recompensa."],
+  ["archetype.celebrity", "Celebridade", "Celebrity", "Celebridad", 197, "Usa fama, presença e atuação para conquistar atenção e influenciar multidões."],
+  ["archetype.dual_weapon_warrior", "Combatente de Duas Armas", "Dual-Weapon Warrior", "Combatiente de dos armas", 198, "Treina para lutar com duas armas e atacar com coordenação e velocidade."],
+  ["archetype.dandy", "Dândi", "Dandy", "Dandi", 199, "Domina etiqueta, cultura e estilo refinado para navegar pela alta sociedade."],
+  ["archetype.talisman_dabbler", "Diletante Talismânico", "Talisman Dabbler", "Aficionado de talismanes", 200, "Prepara talismãs temporários e aprende a extrair poder de pequenos artefatos mágicos."],
+  ["archetype.scrounger", "Escarafunchador", "Scrounger", "Recolector", 202, "Improvisa armas, armaduras e equipamentos temporários com materiais encontrados."],
+  ["archetype.gladiator", "Gladiador", "Gladiator", "Gladiador", 203, "Transforma combate competitivo e aplausos da multidão em força e confiança."],
+  ["archetype.herbalist", "Herbalista", "Herbalist", "Herbolario", 204, "Cultiva e prepara remédios e consumíveis alquímicos naturais para tratar aliados."],
+  ["archetype.weapon_improviser", "Improvisador de Armas", "Weapon Improviser", "Improvisador de armas", 205, "Luta eficazmente com qualquer objeto ao alcance, surpreendendo adversários."],
+  ["archetype.linguist", "Linguista", "Linguist", "Lingüista", 206, "Estuda idiomas, códigos e padrões de fala para compreender e manipular comunicação."],
+  ["archetype.mauler", "Malhador", "Mauler", "Manejador de armas pesadas", 209, "Usa armas de duas mãos e golpes devastadores para controlar o campo de batalha."],
+  ["archetype.beastmaster", "Mestre das Feras", "Beastmaster", "Maestro de bestias", 213, "Forma um vínculo com vários companheiros animais e aprende a comandá-los."],
+  ["archetype.familiar_master", "Mestre em Familiar", "Familiar Master", "Maestro de familiares", 215, "Aprimora um familiar para que ele ofereça mais habilidades e auxílio mágico."],
+  ["archetype.pirate", "Pirata", "Pirate", "Pirata", 216, "Domina combate naval, cordames e a vida perigosa entre navios e portos."],
+  ["archetype.scroll_trickster", "Trapaceiro de Pergaminhos", "Scroll Trickster", "Tramposo de pergaminos", 219, "Manipula pergaminhos temporários para ampliar suas opções mágicas."],
+  ["archetype.poisoner", "Veneficista", "Poisoner", "Envenenador", 220, "Prepara e aplica venenos com precisão para explorar vulnerabilidades."],
+  ["archetype.vigilante", "Vigilante", "Vigilante", "Vigilante", 221, "Mantém uma identidade dupla para investigar ameaças e agir longe dos olhos públicos."],
+  ["archetype.viking", "Viking", "Viking", "Vikingo", 223, "Combina resistência, navegação e ferocidade marcial herdadas de uma cultura guerreira."]
+];
+PLAYER_CORE_2_MISSING_ARCHETYPES.forEach(([id, pt, en, es, page, summary]) => {
+  PF2E_DATA.archetypes.push({
+    id,
+    name: `${pt} (${en})`,
+    category: "Arquétipo",
+    names: { "pt-BR": pt, en, es },
+    summaries: localizedEquipmentSummary(summary, `Player Core 2 archetype: ${en}.`, `Arquetipo de Player Core 2: ${es}.`),
+    description: summary,
+    source: { book: PLAYER_CORE_2_SOURCE, page },
+    ruleset: "remaster",
+    needs_review: false,
+    rarity: "common"
+  });
+});
+
+const PLAYER_CORE_VERSATILE_HERITAGE_METADATA = {
+  "Nephilim (Celestial / Aasimar)": ["heritage.nephilim.celestial", "Nefilim", "Nephilim", "Nefilim", 79, "Herança versátil de linhagem celestial ou aasimar."],
+  "Nephilim (Infernal / Tiefling)": ["heritage.nephilim.infernal", "Nefilim", "Nephilim", "Nefilim", 79, "Herança versátil de linhagem infernal ou tiefling."],
+  "Changeling (Cambionte / Filho de Bruxa)": ["heritage.changeling", "Cambiante", "Changeling", "Cambiante", 77, "Herança versátil ligada à linhagem de uma estriga e à magia ocultista."]
+};
+Object.entries(PLAYER_CORE_VERSATILE_HERITAGE_METADATA).forEach(([legacyName, [id, pt, en, es, page, summary]]) => {
+  const record = (PF2E_DATA.versatileHeritages || []).find((heritage) => heritage.name === legacyName);
+  if (!record) return;
+  Object.assign(record, {
+    id,
+    names: { "pt-BR": pt, en, es },
+    summaries: localizedEquipmentSummary(
+      summary,
+      `A versatile heritage tied to ${en.toLowerCase()} ancestry.`,
+      `Una herencia versátil vinculada a la ascendencia ${es.toLowerCase()}.`
+    ),
+    source: { book: PLAYER_CORE_SOURCE, page },
+    ruleset: "remaster",
+    needs_review: false
+  });
+});
+
+const BOOK_DEAD_PLAYABLE_ARCHETYPES = [
+  ["archetype.exorcist", "Exorcista", "Exorcist", "Exorcista", 22, "Pacifica espíritos e transforma fragmentos de assombrações em poder purificador."],
+  ["archetype.soul_warden", "Guardião das Almas", "Soul Warden", "Guardián de almas", 24, "Protege almas e usa um símbolo sagrado para resistir às ameaças da desmorte."],
+  ["archetype.undead_slayer", "Matador de Mortos-Vivos", "Undead Slayer", "Cazador de no muertos", 26, "Estuda mortos-vivos e domina ferramentas para explorar suas fraquezas."],
+  ["archetype.consecrated_necromancer", "Necromante Consagrado", "Consecrated Necromancer", "Nigromante consagrado", 28, "Canaliza necromancia por uma tradição divina, ocultista ou outra tradição compatível."],
+  ["archetype.reanimator", "Reanimador", "Reanimator", "Reanimador", 34, "Cria e comanda servos mortos-vivos como extensão de sua prática necromântica."],
+  ["archetype.ghoul", "Carniçal", "Ghoul", "Necrófago", 46, "A fome da desmorte concede garras, mordida e capacidades de um carniçal."],
+  ["archetype.ghost", "Fantasma", "Ghost", "Fantasma", 52, "Permanece ligado ao mundo dos vivos por negócios inacabados e laços poderosos."],
+  ["archetype.lich", "Lich", "Lich", "Liche", 54, "Prende sua alma a uma filactéria e busca a imortalidade por meio de necromancia."],
+  ["archetype.mummy", "Múmia", "Mummy", "Momia", 56, "Retorna como morto-vivo preservado, envolto em maldições e ritos funerários."],
+  ["archetype.vampire", "Vampiro", "Vampire", "Vampiro", 58, "Sobrevive como criatura da noite, vulnerável à luz do dia e sedenta por sangue."],
+  ["archetype.zombie", "Zumbi", "Zombie", "Zombi", 60, "Um corpo reanimado que preserva parte da identidade enquanto luta contra a decomposição."]
+];
+BOOK_DEAD_PLAYABLE_ARCHETYPES.forEach(([id, pt, en, es, page, summary]) => {
+  PF2E_DATA.archetypes.push({
+    id,
+    name: `${pt} (${en})`,
+    category: "Mortos-vivos",
+    names: { "pt-BR": pt, en, es },
+    summaries: localizedEquipmentSummary(summary, `Book of the Dead playable archetype: ${en}.`, `Arquetipo jugable de Libro de los muertos: ${es}.`),
+    description: summary,
+    source: { book: BOOK_DEAD_SOURCE, page },
+    ruleset: "legacy",
+    needs_review: false,
+    rarity: ["Exorcist", "Soul Warden", "Undead Slayer", "Reanimator"].includes(en) ? "uncommon" : "rare"
+  });
+});
+
+const PLAYER_CORE_EQUIPMENT_SPANISH_NAMES = {
+  "Bastard Sword": "Espada bastarda", "Battle Axe": "Hacha de batalla", "Blowgun": "Cerbatana",
+  "Bo Staff": "Bastón bo", "Club": "Garrote", "Crossbow": "Ballesta", "Dagger": "Daga",
+  "Dart": "Dardo", "Falchion": "Falcata", "Flail": "Mangual", "Gauntlet": "Guantelete",
+  "Glaive": "Glaive", "Greataxe": "Hacha grande", "Greatclub": "Garrote grande", "Greatsword": "Espadón",
+  "Halberd": "Alabarda", "Hand Crossbow": "Ballesta de mano", "Heavy Crossbow": "Ballesta pesada",
+  "Javelin": "Jabalina", "Kukri": "Kukri", "Lance": "Lanza de caballería", "Longbow": "Arco largo",
+  "Longsword": "Espada larga", "Maul": "Mazo", "Morningstar": "Maza estrellada", "Nunchaku": "Nunchaku",
+  "Pick": "Pico", "Rapier": "Estoque", "Scimitar": "Cimitarra", "Scythe": "Guadaña",
+  "Shortbow": "Arco corto", "Shortsword": "Espada corta", "Shuriken": "Shuriken", "Sickle": "Hoz",
+  "Sling": "Honda", "Spear": "Lanza", "Staff": "Bastón", "Trident": "Tridente",
+  "Warhammer": "Martillo de guerra", "Whip": "Látigo", "Fist": "Puño",
+  "Explorer's Clothing": "Ropa de explorador", "Padded Armor": "Armadura acolchada", "Leather Armor": "Armadura de cuero",
+  "Studded Leather": "Cuero tachonado", "Chain Shirt": "Camisa de cota de malla", "Hide Armor": "Armadura de piel",
+  "Scale Mail": "Cota de escamas", "Breastplate": "Coraza", "Chain Mail": "Cota de malla",
+  "Half Plate": "Media armadura", "Splint Mail": "Armadura de bandas", "Full Plate": "Armadura completa", "Unarmored": "Sin armadura",
+  "Buckler": "Broquel", "Steel Shield": "Escudo de acero", "Wooden Shield": "Escudo de madera", "Tower Shield": "Escudo torre"
+};
+Object.entries(PLAYER_CORE_EQUIPMENT_METADATA).forEach(([category, metadata]) => {
+  (PF2E_DATA[category] || []).forEach((record) => {
+    const recordHeading = record.name.replace(/\s*\([^)]*\)\s*$/, "").split(" / ")[0].trim();
+    const match = Object.entries(metadata).find(([englishName]) => recordHeading === englishName || record.name.includes(`(${englishName})`));
+    if (!match) return;
+    const [englishName, [portugueseName, page]] = match;
+    const idPrefix = category === "shields" ? "shield" : category === "armors" ? "armor" : "weapon";
+    const slug = englishName.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "");
+    const baseSummary = record.description || `${portugueseName} do equipamento de combate.`;
+    Object.assign(record, {
+      id: record.id || `${idPrefix}.${slug}`,
+      names: {
+        "pt-BR": portugueseName,
+        en: englishName,
+        es: PLAYER_CORE_EQUIPMENT_SPANISH_NAMES[englishName] || englishName
+      },
+      summaries: localizedEquipmentSummary(
+        baseSummary,
+        `${englishName} equipment entry from the Player Core table.`,
+        `Entrada de equipo ${englishName} de la tabla de Player Core.`
+      ),
+      source: { book: PLAYER_CORE_SOURCE, page },
+      ruleset: "remaster",
+      needs_review: false
+    });
+  });
+});
+
+// Compatibilidade trilíngue para os catálogos legados que já existiam no builder.
+// Os dados mecânicos e a proveniência permanecem os mesmos; este bloco só
+// normaliza o contrato consumido pelos pickers React e legado.
+const LEGACY_COMPANION_METADATA = {
+  "pet.wolf": ["Lobo", "Wolf Companion", "Compañero lobo", "Companheiro veloz que ajuda a flanquear e derrubar inimigos.", "Fast companion that helps flank and trip enemies.", "Compañero veloz que ayuda a flanquear y derribar enemigos."],
+  "pet.bear": ["Urso", "Bear Companion", "Compañero oso", "Companheiro resistente com mordidas e garras poderosas.", "Durable companion with powerful jaws and claws.", "Compañero resistente con poderosas mordidas y garras."],
+  "pet.horse": ["Cavalo", "Horse Companion / Mount", "Compañero caballo / Montura", "Montaria veloz para investidas e combate montado.", "Fast mount for charges and mounted combat.", "Montura veloz para cargas y combate montado."],
+  "pet.bird": ["Pássaro / Coruja", "Bird Companion", "Compañero ave", "Companheiro voador ágil para reconhecimento e ataques precisos.", "Agile flying companion for scouting and precise attacks.", "Compañero volador ágil para explorar y atacar con precisión."],
+  "pet.big_cat": ["Gato Grande / Pantera", "Big Cat", "Gran felino / Pantera", "Companheiro furtivo que ajuda a deixar inimigos desprevenidos.", "Stealthy companion that helps leave enemies off-guard.", "Compañero sigiloso que ayuda a dejar desprevenidos a los enemigos."],
+  "pet.dromaeosaur": ["Dromaeossauro", "Dromaeosaur Companion", "Compañero dromeosaurio", "Companheiro veloz especializado em cercar e flanquear inimigos.", "Fast companion specialized in surrounding and flanking enemies.", "Compañero veloz especializado en rodear y flanquear enemigos."],
+  "pet.badger": ["Texugo", "Badger Companion", "Compañero tejón", "Companheiro resistente que cava e causa dano contínuo.", "Sturdy companion that burrows and deals persistent damage.", "Compañero resistente que excava y causa daño persistente."],
+  "pet.familiar": ["Familiar Arcano / Místico", "Familiar", "Familiar arcano / místico", "Familiar que concede habilidades escolhidas ao seu mestre.", "A familiar that grants chosen abilities to its master.", "Familiar que concede habilidades elegidas a su amo."]
+};
+for (const record of (PF2E_DATA.pets || [])) {
+  const metadata = LEGACY_COMPANION_METADATA[record.id];
+  if (!metadata) continue;
+  const [pt, en, es, ptSummary, enSummary, esSummary] = metadata;
+  Object.assign(record, {
+    names: { "pt-BR": pt, en, es },
+    summaries: { "pt-BR": ptSummary, en: enSummary, es: esSummary }
+  });
+}
+
+const LEGACY_SUMMARIES = {
+  "item.gear.adventurers_pack": ["Kit essencial de exploração com mochila, abrigo, corda, luz e rações.", "Essential exploration kit with backpack, shelter, rope, light, and rations.", "Kit esencial de exploración con mochila, refugio, cuerda, luz y raciones."],
+  "item.gear.backpack": ["Mochila que armazena equipamentos e reduz o volume dos primeiros itens guardados.", "A backpack that stores gear and reduces the Bulk of the first stored items.", "Mochila que guarda equipo y reduce la Carga de los primeros objetos almacenados."],
+  "item.gear.healers_toolkit": ["Ferramentas necessárias para aplicar Medicina e Tratar Ferimentos.", "Tools required to use Medicine and Treat Wounds.", "Herramientas necesarias para usar Medicina y Tratar Heridas."],
+  "item.gear.thieves_toolkit": ["Ferramentas necessárias para abrir fechaduras e desativar armadilhas.", "Tools required to pick locks and disable traps.", "Herramientas necesarias para abrir cerraduras y desactivar trampas."],
+  "item.consumable.minor_healing_potion": ["Poção consumível que restaura 1d8 Pontos de Vida.", "A consumable potion that restores 1d8 Hit Points.", "Poción consumible que restaura 1d8 Puntos de Golpe."],
+  "item.consumable.lesser_healing_potion": ["Poção consumível que restaura 2d8+5 Pontos de Vida.", "A consumable potion that restores 2d8+5 Hit Points.", "Poción consumible que restaura 2d8+5 Puntos de Golpe."],
+  "item.magic.boots_of_elvenkind": ["Botas mágicas que aprimoram Acrobacia e permitem um Passo Élfico.", "Magic boots that improve Acrobatics and grant an Elven Step.", "Botas mágicas que mejoran Acrobacia y conceden un Paso élfico."],
+  "item.magic.weapon_potency_1": ["Runa que concede bônus de item +1 nas jogadas de ataque da arma.", "A rune that grants a +1 item bonus to the weapon's attack rolls.", "Runa que concede un bonificador de objeto +1 a las tiradas de ataque del arma."],
+  "form.alch.elixir_of_life_lesser": ["Fórmula de elixir alquímico que restaura Pontos de Vida.", "Formula for an alchemical elixir that restores Hit Points.", "Fórmula de un elixir alquímico que restaura Puntos de Golpe."],
+  "form.alch.alchemists_fire_lesser": ["Fórmula de bomba alquímica que causa dano de fogo e fogo persistente.", "Formula for an alchemical bomb that deals fire and persistent fire damage.", "Fórmula de una bomba alquímica que causa daño de fuego y fuego persistente."],
+  "form.alch.antidote_lesser": ["Fórmula de elixir que protege contra venenos.", "Formula for an elixir that protects against poisons.", "Fórmula de un elixir que protege contra venenos."],
+  "form.alch.silversheen": ["Fórmula de revestimento alquímico que faz uma arma contar como prata.", "Formula for an alchemical coating that makes a weapon count as silver.", "Fórmula de un recubrimiento alquímico que hace que un arma cuente como plata."],
+  "form.alch.smokestick": ["Fórmula de consumível que cria uma nuvem de fumaça obscurecedora.", "Formula for a consumable that creates an obscuring cloud of smoke.", "Fórmula de un consumible que crea una nube de humo que oscurece."],
+  "form.pot.minor_healing_potion": ["Fórmula para fabricar uma Poção de Cura Menor.", "Formula for crafting a Minor Healing Potion.", "Fórmula para fabricar una Poción de curación menor."],
+  "form.snare.spike_snare": ["Fórmula de armadilha que causa dano perfurante quando acionada.", "Formula for a snare that deals piercing damage when triggered.", "Fórmula de una trampa que causa daño perforante al activarse."]
+};
+for (const category of ["items", "formulas"]) {
+  for (const record of (PF2E_DATA[category] || [])) {
+    const summary = LEGACY_SUMMARIES[record.id];
+    if (summary) record.summaries = { "pt-BR": summary[0], en: summary[1], es: summary[2] };
+  }
+}
 
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = PF2E_DATA;

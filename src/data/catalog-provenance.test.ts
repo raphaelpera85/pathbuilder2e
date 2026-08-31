@@ -21,6 +21,20 @@ function loadCatalog(): Record<string, unknown> {
 }
 
 describe("proveniência do catálogo legado", () => {
+  it("mantém os catálogos legados de pets, itens e fórmulas no contrato trilíngue", () => {
+    const catalog = loadCatalog() as {
+      pets: LegacyRecord[];
+      items: LegacyRecord[];
+      formulas: LegacyRecord[];
+    };
+    const records = [...catalog.pets, ...catalog.items, ...catalog.formulas];
+    expect(records.length).toBeGreaterThanOrEqual(23);
+    expect(records.every((item) => ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
+    expect(catalog.pets.find((item) => item.id === "pet.wolf")).toMatchObject({ source: { page: 206 } });
+    expect(catalog.items.find((item) => item.id === "item.gear.adventurers_pack")).toMatchObject({ source: { page: 287 } });
+    expect(catalog.formulas.find((item) => item.id === "form.snare.spike_snare")).toMatchObject({ source: { page: 296 } });
+  });
+
   it("classifica todos os registros principais como Remaster, legacy ou needs_review", () => {
     const catalog = loadCatalog() as {
       ancestries: Record<string, LegacyRecord>; versatileHeritages: LegacyRecord[]; classes: Record<string, LegacyRecord>;
@@ -57,6 +71,9 @@ describe("proveniência do catálogo legado", () => {
     expect(catalog.classes["Psíquico (Psychic)"]).toMatchObject({ source: { page: 8 }, ruleset: "legacy", needs_review: false });
     expect(catalog.classes["Taumaturgo (Thaumaturge)"]).toMatchObject({ source: { page: 30 }, ruleset: "legacy", needs_review: false });
     expect(catalog.versatileHeritages.find((item) => item.id === "heritage.reflection")).toMatchObject({ source: { page: 119 }, ruleset: "legacy", needs_review: false });
+    expect(catalog.versatileHeritages.find((item) => item.id === "heritage.changeling")).toMatchObject({ source: { page: 77 }, ruleset: "remaster", needs_review: false });
+    expect(catalog.versatileHeritages.find((item) => item.id === "heritage.nephilim.celestial")).toMatchObject({ source: { page: 79 }, ruleset: "remaster", needs_review: false });
+    expect(catalog.archetypes.find((item) => item.id === "archetype.undead_slayer")).toMatchObject({ source: { page: 26 }, ruleset: "legacy", needs_review: false });
     expect(catalog.classes["Cineticista (Kineticist)"]).toMatchObject({ source: { page: 12 }, ruleset: "remaster", needs_review: false });
     expect(catalog.versatileHeritages.find((item) => item.id === "heritage.ardande")).toMatchObject({ source: { page: 46 }, ruleset: "remaster", needs_review: false });
     expect(catalog.versatileHeritages.find((item) => item.id === "heritage.talos")).toMatchObject({ source: { page: 50 }, ruleset: "remaster", needs_review: false });
@@ -83,6 +100,10 @@ describe("proveniência do catálogo legado", () => {
     expect(catalog.archetypes.find((item) => item.id === "archetype.warrior_of_legend")).toMatchObject({ source: { page: 66 }, rarity: "uncommon", needs_review: false });
     expect(catalog.archetypes.find((item) => item.id === "archetype.commander_multiclass")).toMatchObject({ source: { page: 52 }, dedicationLevel: 2, needs_review: false });
     expect(catalog.archetypes.find((item) => item.id === "archetype.war_mage")).toMatchObject({ source: { page: 68 }, ruleset: "remaster", needs_review: false });
+    expect(catalog.archetypes.find((item) => item.id === "archetype.acrobat")).toMatchObject({ source: { page: 184 }, ruleset: "remaster", needs_review: false });
+    expect(catalog.archetypes.find((item) => item.id === "archetype.archer")).toMatchObject({ source: { page: 186 }, ruleset: "remaster", needs_review: false });
+    expect(catalog.archetypes.find((item) => item.id === "archetype.alchemist_multiclass")).toMatchObject({ source: { page: 175 }, ruleset: "remaster", needs_review: false });
+    expect(catalog.archetypes.find((item) => item.id === "archetype.viking")).toMatchObject({ source: { page: 223 }, ruleset: "remaster", needs_review: false });
     expect(catalog.spells).toHaveLength(40);
     expect(catalog.spells.find((item) => item.id === "spell.soothe")).toMatchObject({ source: { page: 314 }, rank: 1, ruleset: "remaster", needs_review: false });
     expect(catalog.spells.find((item) => item.id === "spell.fireball")).toMatchObject({ source: { page: 319 }, rank: 3, traditions: ["arcane", "primal"] });
@@ -92,8 +113,8 @@ describe("proveniência do catálogo legado", () => {
     expect(catalog.spells.find((item) => item.id === "spell.natures_path")).toMatchObject({ source: { page: 322 }, rank: 5, ruleset: "remaster", needs_review: false });
     expect(catalog.spells.find((item) => item.id === "spell.command")).toMatchObject({ source: { page: 325 }, rank: 1, ruleset: "remaster", needs_review: false });
     expect(catalog.spells.find((item) => item.id === "spell.share_life")).toMatchObject({ source: { page: 325 }, rank: 2, ruleset: "remaster", needs_review: false });
-    expect(catalog.spells.find((item) => item.id === "spell.compel_undead")).toMatchObject({ source: { page: 327 }, rank: 2, ruleset: "remaster", needs_review: false });
-    expect(catalog.spells.find((item) => item.id === "spell.summon_dragon")).toMatchObject({ source: { page: 330 }, rank: 5, ruleset: "remaster", needs_review: false });
+    expect(catalog.spells.find((item) => item.id === "spell.compel_undead")).toMatchObject({ source: { page: 325 }, rank: 3, ruleset: "remaster", needs_review: false });
+    expect(catalog.spells.find((item) => item.id === "spell.summon_dragon")).toMatchObject({ source: { page: 326 }, rank: 5, ruleset: "remaster", needs_review: false });
     expect(catalog.rituals).toHaveLength(4);
     expect(catalog.rituals.find((item) => item.id === "ritual.animate_object")).toMatchObject({ source: { page: 390 }, rank: 2, rarity: "uncommon", needs_review: false });
     expect(catalog.rituals.find((item) => item.id === "ritual.consecrate")).toMatchObject({ source: { page: 392 }, ruleset: "remaster", needs_review: false });

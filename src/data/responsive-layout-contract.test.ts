@@ -51,8 +51,20 @@ describe("responsive layout contract", () => {
     expect(main).toContain("PF2E_ITEMS_CATALOG");
     expect(main).toContain("PF2E_FEATS_CATALOG");
     expect(app).toContain("const sharedCatalogs = window.pathbuilderCatalogs || {};");
-    expect(app).toContain("sharedCatalogs.items || PF2E_DATA.items");
-    expect(app).toContain("sharedCatalogs.feats || PF2E_DATA.feats");
+    expect(app).toContain("function mergeCatalogRecords(primary = [], secondary = [])");
+    expect(app).toContain("mergeCatalogRecords(sharedCatalogs.items, PF2E_DATA.items)");
+    expect(app).toContain("mergeCatalogRecords(sharedCatalogs.feats, PF2E_DATA.feats");
+  });
+
+  it("persists every legacy picker type without duplicate companion or buff entries", () => {
+    const app = read("js/app.js");
+    const apply = app.slice(app.indexOf("  applyPickerSelection("), app.indexOf("  reconcileCurrentHp", app.indexOf("  applyPickerSelection(")));
+
+    expect(apply).toContain('} else if (type === "pet")');
+    expect(apply).toContain("this.character.pets.push(pet)");
+    expect(apply).toContain("const exists = this.character.buffs.some");
+    expect(apply).toContain("this.character.buffs.push({ ...item.data, name: item.name })");
+    expect(apply).toContain("this.character.conditions.push({ ...item.data, name: item.name");
   });
 
   it("provides a strict catalog audit command for the remaining coverage work", () => {

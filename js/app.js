@@ -8,6 +8,19 @@ function escapeInlineArgument(value) {
   return escapeHtml(JSON.stringify(String(value ?? "")));
 }
 
+function mergeCatalogRecords(primary = [], secondary = []) {
+  const merged = [];
+  const seen = new Set();
+  [...primary, ...secondary].forEach((record) => {
+    if (!record) return;
+    const key = record.id || record.names?.en || record.name;
+    if (!key || seen.has(key)) return;
+    seen.add(key);
+    merged.push(record);
+  });
+  return merged;
+}
+
 function assertSafeCharacterDocument(value) {
   if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error("Ficha inválida.");
   const serialized = JSON.stringify(value);
@@ -1861,16 +1874,16 @@ class PathbuilderApp {
       return (PF2E_DATA.rituals || []).map(r => ({ name: r.name, type: "Ritual", data: r }));
     }
     if (type === "feat") {
-      return (sharedCatalogs.feats || PF2E_DATA.feats || this.getFallbackFeatCatalog()).map(f => ({ name: f.name, type: f.type || "Talento", data: f }));
+      return mergeCatalogRecords(sharedCatalogs.feats, PF2E_DATA.feats || this.getFallbackFeatCatalog()).map(f => ({ name: f.name, type: f.type || "Talento", data: f }));
     }
     if (type === "item" || type === "gear") {
-      return (sharedCatalogs.items || PF2E_DATA.items || []).map(i => ({ name: i.name, type: "Item", data: i }));
+      return mergeCatalogRecords(sharedCatalogs.items, PF2E_DATA.items).map(i => ({ name: i.name, type: "Item", data: i }));
     }
     if (type === "pet") {
-      return (sharedCatalogs.pets || PF2E_DATA.pets || []).map(p => ({ name: p.name, type: "Mascote", data: p }));
+      return mergeCatalogRecords(sharedCatalogs.pets, PF2E_DATA.pets).map(p => ({ name: p.name, type: "Mascote", data: p }));
     }
     if (type === "action") {
-      return (sharedCatalogs.actions || PF2E_DATA.actions || []).map(a => ({ name: a.name, type: "Ação", data: a }));
+      return mergeCatalogRecords(sharedCatalogs.actions, PF2E_DATA.actions).map(a => ({ name: a.name, type: "Ação", data: a }));
     }
     if (type === "formula") {
       return (PF2E_DATA.formulas || []).map(f => ({ name: f.name, type: f.category || "Fórmula", data: f }));
@@ -1975,6 +1988,15 @@ class PathbuilderApp {
       if (!this.character.rituals) this.character.rituals = [];
       const exists = this.character.rituals.some(ritual => item.data.id ? ritual.id === item.data.id : ritual.name === item.name);
       if (!exists) this.character.rituals.push({ ...item.data, name: item.name });
+    } else if (type === "pet") {
+      if (!this.character.pets) this.character.pets = [];
+      const exists = this.character.pets.some(pet => (item.data.id && pet.id === item.data.id) || pet.name === item.name);
+      if (!exists) {
+        const pet = { ...item.data, name: item.name };
+        if (pet.hp !== undefined && pet.hpMax === undefined) pet.hpMax = pet.hp;
+        if (pet.hpMax !== undefined && pet.hpCurrent === undefined) pet.hpCurrent = pet.hpMax;
+        this.character.pets.push(pet);
+      }
     } else if (type === "formula") {
       if (!this.character.formulas) this.character.formulas = [];
       const exists = this.character.formulas.some(f => (item.data.id && f.id === item.data.id) || f.name === item.name);
@@ -1994,10 +2016,13 @@ class PathbuilderApp {
       }
     } else if (type === "condition") {
       if (!this.character.conditions) this.character.conditions = [];
-      if (!this.character.conditions.some(c => c.name === item.name)) this.character.conditions.push({ name: item.name, value: 1 });
+      if (!this.character.conditions.some(c => c.id ? c.id === item.data?.id : c.name === item.name)) {
+        this.character.conditions.push({ ...item.data, name: item.name, value: item.data?.value ?? 1 });
+      }
     } else if (type === "buff") {
       if (!this.character.buffs) this.character.buffs = [];
-      this.character.buffs.push({ ...item.data });
+      const exists = this.character.buffs.some(buff => (item.data.id && buff.id === item.data.id) || buff.name === item.name);
+      if (!exists) this.character.buffs.push({ ...item.data, name: item.name });
     } else if (type === "item" || type === "gear") {
       if (!this.character.inventory) this.character.inventory = [];
       this.character.inventory.push({ ...item.data, name: item.name, qty: 1 });
@@ -2077,13 +2102,13 @@ class PathbuilderApp {
       const versatile = (PF2E_DATA.versatileHeritages || []).map(h => ({ name: h.name, type: "Herança Versátil", data: h }));
       items = heritages.concat(versatile);
     } else if (this.currentPickerType === "feat") {
-      items = (sharedCatalogs.feats || PF2E_DATA.feats || this.getFallbackFeatCatalog()).map(f => ({ name: f.name, type: f.type || "Talento", data: f }));
+      items = mergeCatalogRecords(sharedCatalogs.feats, PF2E_DATA.feats || this.getFallbackFeatCatalog()).map(f => ({ name: f.name, type: f.type || "Talento", data: f }));
     } else if (this.currentPickerType === "item" || this.currentPickerType === "gear") {
-      items = (sharedCatalogs.items || PF2E_DATA.items || []).map(i => ({ name: i.name, type: "Item", data: i }));
+      items = mergeCatalogRecords(sharedCatalogs.items, PF2E_DATA.items).map(i => ({ name: i.name, type: "Item", data: i }));
     } else if (this.currentPickerType === "pet") {
-      items = (sharedCatalogs.pets || PF2E_DATA.pets || []).map(p => ({ name: p.name, type: "Mascote", data: p }));
+      items = mergeCatalogRecords(sharedCatalogs.pets, PF2E_DATA.pets).map(p => ({ name: p.name, type: "Mascote", data: p }));
     } else if (this.currentPickerType === "action") {
-      items = (sharedCatalogs.actions || PF2E_DATA.actions || []).map(a => ({ name: a.name, type: "Ação", data: a }));
+      items = mergeCatalogRecords(sharedCatalogs.actions, PF2E_DATA.actions).map(a => ({ name: a.name, type: "Ação", data: a }));
     } else if (this.currentPickerType === "formula") {
       items = (PF2E_DATA.formulas || []).map(f => ({ name: f.name, type: f.category || "Fórmula", data: f }));
     } else if (this.currentPickerType === "condition") {
@@ -2201,7 +2226,6 @@ class PathbuilderApp {
       return PF2E_DATA.conditions;
     }
     return [
-      { name: "Abalado", description: "Penalidade em testes e CDs baseados em Sabedoria.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 442 }, ruleset: "remaster" },
       { name: "Amedrontado", description: "Penalidade em todos os testes e CDs.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 442 }, ruleset: "remaster" },
       { name: "Desprevenido", description: "Penalidade na Classe de Armadura contra ataques.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 443 }, ruleset: "remaster" },
       { name: "Enfraquecido", description: "Penalidade em Força e testes relacionados.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 442 }, ruleset: "remaster" },

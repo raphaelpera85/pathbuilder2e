@@ -2,7 +2,7 @@
 
 Backlog vivo para completar o construtor a partir dos PDFs locais em `D:\Users\rapha\Documents\Projetos\RPG\livros`. Cada registro de regra deve manter `id`, nomes em `pt-BR`, `en` e `es`, `ruleset`, `source.book`, `source.page` e `needs_review` quando a página ainda não estiver confirmada.
 
-Última auditoria executada com `npm run audit:catalog`: 535 registros; 238 sem nomes completos, 253 sem resumos completos, 171 sem fonte/página, 123 em revisão e nenhum ID duplicado. Esses números são diagnóstico do estado atual, não critério de conclusão.
+Última auditoria executada com `npm run audit:catalog`: 571 registros; 78 sem nomes completos, 78 sem resumos completos, 78 sem fonte/página, 50 em revisão e nenhum ID duplicado. Esses números são diagnóstico do estado atual, não critério de conclusão.
 
 ## P0 — bloqueios de integridade
 

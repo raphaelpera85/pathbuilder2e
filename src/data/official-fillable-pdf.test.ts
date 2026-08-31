@@ -49,7 +49,7 @@ describe("Exportação para Ficha Oficial PDF Editável (AcroForm)", () => {
     currentHp: 68,
     tempHp: 10,
     wounded: 1,
-    conditions: ["Abalado 1"],
+    conditions: ["Amedrontado 1"],
     resistances: ["Fogo 5"],
     savingThrows: {
       fortitude: "Mestre",
