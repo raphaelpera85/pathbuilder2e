@@ -13,8 +13,32 @@ export interface ItemDefinition {
   summaries?: { "pt-BR": string; en: string; es: string };
   source?: { book: string; page?: number };
   ruleset?: "remaster" | "legacy" | "needs_review";
+  needs_review?: boolean;
   rarity?: "common" | "uncommon" | "rare" | "unique";
 }
+
+const GUNS_GEARS_EQUIPMENT: ItemDefinition[] = ([
+  ["gunners_bandolier", "Bandoleira do Atirador", "Gunner's Bandolier", "Bandolera del tirador", 3, 180, "Equipamento para transportar e harmonizar armas de fogo e bestas de mão.", "Equipment for carrying and attuning firearms and hand crossbows.", "Equipo para transportar y armonizar armas de fuego y ballestas de mano."],
+  ["immaculate_holster", "Coldre Imaculado", "Immaculate Holster", "Funda impecable", 3, 180, "Coldre mágico que limpa, oleia e recarrega armas compatíveis uma vez por dia.", "A magical holster that cleans, oils, and reloads compatible weapons once per day.", "Una funda mágica que limpia, aceita y recarga armas compatibles una vez al día."],
+  ["lucky_draw_bandolier", "Bandoleira do Saque da Sorte", "Lucky Draw Bandolier", "Bandolera del golpe de suerte", 9, 180, "Bandoleira mágica que transforma cartas em munição temporária durante uma ativação.", "A magical bandolier that turns cards into temporary ammunition when activated.", "Una bandolera mágica que convierte cartas en munición temporal al activarse."],
+  ["amplifying_scope", "Mira de Amplificação", "Amplifying Scope", "Mira amplificadora", 3, 181, "Mira anexada que amplia o alcance e auxilia a percepção através da arma.", "An attached scope that extends range and assists perception through the weapon.", "Una mira acoplada que amplía el alcance y ayuda a percibir a través del arma."],
+  ["delineating_scope", "Mira de Delineamento", "Delineating Scope", "Mira delimitadora", 10, 181, "Mira que transforma o som de um impacto em luz para revelar o alvo atingido.", "A scope that turns the sound of an impact into light to reveal the struck target.", "Una mira que transforma el sonido de un impacto en luz para revelar al objetivo."],
+  ["magnetite_scope", "Mira de Magnetita", "Magnetite Scope", "Mira de magnetita", 9, 181, "Mira para armas de fogo com dispersão que amplia o raio de dispersão.", "A scope for scatter firearms that increases their scatter radius.", "Una mira para armas de fuego con dispersión que aumenta su radio de dispersión."],
+  ["scope_of_truth", "Mira da Verdade", "Scope of Truth", "Mira de la verdad", 13, 181, "Mira mágica que aprimora Buscar e permite enxergar através de certas ilusões.", "A magical scope that improves Seek and reveals certain illusions.", "Una mira mágica que mejora Buscar y revela ciertas ilusiones."],
+  ["darkvision_scope", "Mira de Visão no Escuro", "Darkvision Scope", "Mira de visión en la oscuridad", 5, 181, "Mira que concede visão no escuro enquanto o usuário observa através dela.", "A scope that grants darkvision while the user looks through it.", "Una mira que concede visión en la oscuridad mientras se mira a través de ella."],
+  ["weapon_harness", "Armação Portátil de Arma", "Weapon Harness", "Armazón portátil de arma", 1, 182, "Suporte portátil para estabilizar armas de fogo com recuo.", "A portable support for stabilizing firearms with the kickback trait.", "Un soporte portátil para estabilizar armas de fuego con el rasgo retroceso."],
+  ["snipers_saddle", "Sela do Atirador", "Sniper's Saddle", "Silla del tirador", 2, 182, "Sela com armação retrátil que funciona como tripé para estabilizar uma arma.", "A saddle with a retractable frame that works as a tripod to stabilize a weapon.", "Una silla con armazón retráctil que funciona como trípode para estabilizar un arma."],
+  ["immovable_tripod", "Tripé Imóvel", "Immovable Tripod", "Trípode inamovible", 10, 182, "Tripé mágico que pode ser ancorado no ar ou sob a água.", "A magical tripod that can be anchored in midair or underwater.", "Un trípode mágico que puede anclarse en el aire o bajo el agua."],
+  ["shared_power_braces", "Brasões do Poder Partilhado", "Shared Power Braces", "Brazales del poder compartido", 3, 183, "Conjunto de emblemas que compartilha runas fundamentais entre duas armas.", "A set of emblems that shares fundamental runes between two weapons.", "Un conjunto de emblemas que comparte runas fundamentales entre dos armas."],
+  ["breech_ejectors", "Ejetores de Culatra", "Breech Ejectors", "Expulsores de recámara", 3, 183, "Mecanismo consumível que acelera a recarga de uma arma de fogo de dois canos.", "A consumable mechanism that speeds reloading a double-barreled firearm.", "Un mecanismo consumible que acelera la recarga de un arma de fuego de doble cañón."],
+  ["compressed_air_firing_system", "Sistema de Disparo de Ar Comprimido", "Compressed Air Firing System", "Sistema de disparo de aire comprimido", 4, 183, "Mecanismo anexado que permite disparar sob a água, com redução no alcance.", "An attached mechanism that allows firing underwater, with reduced range.", "Un mecanismo acoplado que permite disparar bajo el agua, con alcance reducido."],
+  ["underwater_firing_mechanism", "Mecanismo de Disparo Submarino", "Underwater Firing Mechanism", "Mecanismo de disparo submarino", 9, 183, "Mecanismo mágico anexado que permite disparar em condições que impedem a ignição da pólvora.", "A magical attached mechanism that allows firing where gunpowder would not ignite.", "Un mecanismo mágico acoplado que permite disparar donde la pólvora no encendería."],
+  ["screaming_skull", "Caveira Gritante", "Screaming Skull", "Calavera gritona", 12, 184, "Talismã consumível para uma arma de fogo ou besta, ligado a Intimidação.", "A consumable talisman for a firearm or crossbow, tied to Intimidation.", "Un talismán consumible para un arma de fuego o ballesta, ligado a Intimidación."]
+] as const).map(([slug, pt, en, es, level, page, description, enSummary, esSummary]) => ({
+  id: `item.guns_gears.${slug}`, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es }, mainCategory: "magic_items", subCategory: "guns_gears", level,
+  price: {}, bulk: "L", traits: ["Pólvora e Engrenagens"], description, summaries: { "pt-BR": description, en: enSummary, es: esSummary },
+  source: { book: "Pólvora e Engrenagens (pré-Remaster)", page }, ruleset: "legacy", needs_review: true
+}));
 
 export const PF2E_ITEMS_CATALOG: ItemDefinition[] = [
   // ==========================================
@@ -508,5 +532,66 @@ export const PF2E_ITEMS_CATALOG: ItemDefinition[] = [
     source: { book: "Livro do Jogador (Player Core)", page: 309 },
     ruleset: "remaster",
     rarity: "common"
-  }
+  },
+  {
+    id: "item.guns_gears.ten_bullets",
+    name: "10 Balas (10 Bullets)",
+    names: { "pt-BR": "10 Balas", en: "10 Bullets", es: "10 balas" },
+    mainCategory: "gear",
+    subCategory: "ammunition",
+    level: 0,
+    price: { sp: 1 },
+    bulk: "L",
+    traits: ["Munição"],
+    description: "Um conjunto de dez projéteis e pólvora para armas de fogo.",
+    summaries: {
+      "pt-BR": "Conjunto de dez projéteis e pólvora para armas de fogo.",
+      en: "A set of ten firearm bullets and powder.",
+      es: "Un conjunto de diez balas y pólvora para armas de fuego."
+    },
+    source: { book: "Pólvora e Engrenagens (pré-Remaster)", page: 151 },
+    ruleset: "legacy",
+    rarity: "common"
+  },
+  {
+    id: "item.guns_gears.loader_six_spheres",
+    name: "Municiador com 6 Esferas (6-Sphere Magazine)",
+    names: { "pt-BR": "Municiador com 6 Esferas", en: "6-Sphere Magazine", es: "Cargador de 6 esferas" },
+    mainCategory: "gear",
+    subCategory: "ammunition",
+    level: 0,
+    price: { sp: 6 },
+    bulk: "L",
+    traits: ["Munição"],
+    description: "Municiador substituível com seis esferas para armas de fogo compatíveis.",
+    summaries: {
+      "pt-BR": "Municiador substituível com seis esferas para armas compatíveis.",
+      en: "A replaceable six-sphere magazine for compatible firearms.",
+      es: "Un cargador reemplazable de seis esferas para armas compatibles."
+    },
+    source: { book: "Pólvora e Engrenagens (pré-Remaster)", page: 151 },
+    ruleset: "legacy",
+    rarity: "common"
+  },
+  {
+    id: "item.guns_gears.loader_eight_spheres",
+    name: "Municiador com 8 Esferas (8-Sphere Magazine)",
+    names: { "pt-BR": "Municiador com 8 Esferas", en: "8-Sphere Magazine", es: "Cargador de 8 esferas" },
+    mainCategory: "gear",
+    subCategory: "ammunition",
+    level: 0,
+    price: { sp: 8 },
+    bulk: "L",
+    traits: ["Munição"],
+    description: "Municiador substituível com oito esferas para armas de fogo compatíveis.",
+    summaries: {
+      "pt-BR": "Municiador substituível com oito esferas para armas compatíveis.",
+      en: "A replaceable eight-sphere magazine for compatible firearms.",
+      es: "Un cargador reemplazable de ocho esferas para armas compatibles."
+    },
+    source: { book: "Pólvora e Engrenagens (pré-Remaster)", page: 151 },
+    ruleset: "legacy",
+    rarity: "common"
+  },
+  ...GUNS_GEARS_EQUIPMENT
 ];

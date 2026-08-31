@@ -65,6 +65,20 @@ describe("P3, P4, P5, P6: Regras Variantes, Starter Kits, Condições Vivas e He
     expect(char.coins.gp).toBe(data.classStarterKits["Guerreiro (Fighter)"].remainingCoins.gp);
   });
 
+  it("resolve o kit inicial quando a classe importada usa apenas o nome curto", () => {
+    const char = { class: "Fighter", weapons: [], inventory: [], coins: { gp: 15, sp: 0, cp: 0 } } as any;
+    engine.applyClassStarterKit(char, "Fighter");
+    expect(char.weapons.length).toBeGreaterThan(0);
+    expect(char.inventory.length).toBeGreaterThan(0);
+  });
+
+  it("não aplica kit de outra classe nem faz fallback silencioso", () => {
+    const char = { class: "Mago (Wizard)", weapons: [], inventory: [], coins: { gp: 10, sp: 0, cp: 0, pp: 0 } } as any;
+    engine.applyClassStarterKit(char, "Guerreiro (Fighter)");
+    expect(char.weapons).toEqual([]);
+    expect(char.coins.gp).toBe(10);
+  });
+
   // P5: Rastreador de Condições Vivas (Live Conditions Tracker)
   it("deve aplicar penalidades de Condições Vivas (Amedrontado, Desajeitado, Desprevenido) em CA e Ataques", () => {
     const normalChar = {

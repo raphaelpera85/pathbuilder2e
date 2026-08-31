@@ -1,6 +1,7 @@
 export type PickerType =
   | "ancestry"
   | "class"
+  | "subclass"
   | "background"
   | "weapon"
   | "armor"
@@ -29,6 +30,7 @@ export interface IPickerItemData {
   damageType?: string;
   traits?: string[];
   source?: { book?: string; page?: number };
+  sourceApproximate?: boolean;
   ruleset?: "remaster" | "legacy" | "both" | "needs_review";
   needs_review?: boolean;
   id?: string;
@@ -43,7 +45,15 @@ export interface IPickerItemData {
   traditions?: string[];
   traditionNames?: Partial<Record<"pt-BR" | "en" | "es", string[]>>;
   primaryChecks?: Partial<Record<"pt-BR" | "en" | "es", string>>;
-  prerequisites?: string;
+  prerequisites?: string | string[];
+  prereq?: string;
+  requiredLevel?: number;
+  minimumLevel?: number;
+  classId?: string;
+  classIds?: string[];
+  ancestryId?: string;
+  ancestryIds?: string[];
+  requiresDeviant?: boolean;
   rarity?: "common" | "uncommon" | "rare" | "unique";
   price?: string;
   bulk?: string | number;
@@ -145,6 +155,7 @@ export interface ICharacterDocument {
   skills?: Record<string, string>;
   loreSkills?: Array<{ name: string; rank: string }>;
   feats?: Array<Record<string, unknown>>;
+  archetypes?: Array<Record<string, unknown>>;
   spells?: Array<Record<string, unknown>>;
   rituals?: Array<Record<string, unknown>>;
   conditions?: Array<{ name: string; value?: number; description?: string }>;
@@ -157,6 +168,11 @@ export interface ICharacterDocument {
   bonusHp?: number;
   shieldRaised?: boolean;
   shieldBonus?: number;
+  /** Rank explicitly granted by the class, feat or imported character data. */
+  shieldProficiency?: string;
+  /** Legacy plural alias accepted while importing older character sheets. */
+  shieldsProficiency?: string;
+  isUndead?: boolean;
   [key: string]: unknown;
 }
 
@@ -259,4 +275,3 @@ declare global {
     pathbuilderPicker?: IPickerBridge;
   }
 }
-

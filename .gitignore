@@ -5,8 +5,12 @@ dist/
 !.env.example
 *.log
 *.tsbuildinfo
+.audit-current.json
+scratch/cdp-profile/
+scratch/viewport-*.png
+scratch/viewport-smoke-profile*/
+scratch/*-search.txt
 __pycache__/
 .vscode/
 .idea/
 .DS_Store
-

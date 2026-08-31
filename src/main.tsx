@@ -1,4 +1,4 @@
-import { StrictMode } from "react";
+import { StrictMode, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Analytics } from "@vercel/analytics/react";
@@ -12,6 +12,30 @@ import { PF2E_FEATS_CATALOG } from "./data/featsData";
 import { PF2E_PETS_CATALOG } from "./data/petsData";
 import { PortalPages } from "./PortalPages";
 import "./picker.css";
+
+function ViewportSignals() {
+  useEffect(() => {
+    const coarsePointer = window.matchMedia("(pointer: coarse)");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updateSignals = () => {
+      document.documentElement.dataset.inputMode = coarsePointer.matches || "ontouchstart" in window ? "touch" : "pointer";
+      document.documentElement.dataset.motionPreference = reducedMotion.matches ? "reduced" : "full";
+      document.documentElement.style.setProperty("--pb-viewport-height", `${window.visualViewport?.height || window.innerHeight}px`);
+    };
+    updateSignals();
+    window.addEventListener("resize", updateSignals, { passive: true });
+    window.visualViewport?.addEventListener("resize", updateSignals, { passive: true });
+    coarsePointer.addEventListener?.("change", updateSignals);
+    reducedMotion.addEventListener?.("change", updateSignals);
+    return () => {
+      window.removeEventListener("resize", updateSignals);
+      window.visualViewport?.removeEventListener("resize", updateSignals);
+      coarsePointer.removeEventListener?.("change", updateSignals);
+      reducedMotion.removeEventListener?.("change", updateSignals);
+    };
+  }, []);
+  return null;
+}
 
 const modalRoot = document.getElementById("react-modal-root");
 const accountRoot = document.getElementById("react-account-root");
@@ -33,6 +57,7 @@ if (!modalRoot || !accountRoot || !portalRoot) {
 createRoot(modalRoot).render(
   <StrictMode>
     <I18nProvider>
+      <ViewportSignals />
       <PickerModal />
       <ItemPickerModal />
     </I18nProvider>

@@ -100,7 +100,7 @@ export async function saveCampaign(
   }
 
   const now = new Date().toISOString();
-  const id = data.id || `camp_${crypto?.randomUUID ? crypto.randomUUID().slice(0, 8) : Date.now()}`;
+  const id = data.id || `camp_${globalThis.crypto?.randomUUID ? globalThis.crypto.randomUUID().slice(0, 8) : Date.now()}`;
   const campaignRecord: Campaign = {
     id,
     gm_id: activeUser.id,
@@ -197,7 +197,7 @@ export async function addSessionLog(
 
   const newSession: CampaignSession = {
     ...sessionLog,
-    id: `sess_${crypto?.randomUUID ? crypto.randomUUID().slice(0, 8) : Date.now()}`,
+    id: `sess_${globalThis.crypto?.randomUUID ? globalThis.crypto.randomUUID().slice(0, 8) : Date.now()}`,
   };
 
   campaign.sessions = [newSession, ...(campaign.sessions || [])];

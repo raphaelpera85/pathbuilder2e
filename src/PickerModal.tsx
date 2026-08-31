@@ -1,12 +1,51 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { PickerBridge, PickerItem, PickerSelectionOption, PickerType } from "./types";
 import { useI18n, getItemDisplayName, type MessageKey } from "./i18n";
-import { coinsToCopper, parsePriceToCopper, canAffordPrice, formatCopperToString } from "./utils/economy";
+import { coinsToCopper, parsePriceToCopper, canAffordPrice, formatCopperToString, formatPriceToLocale } from "./utils/economy";
 
 const pickerLabelKeys: Record<PickerType, MessageKey> = {
-  ancestry: "ancestries", class: "classes", background: "backgrounds", weapon: "weapons", armor: "armors", shield: "armors",
+  ancestry: "ancestries", class: "classes", subclass: "subclasses", background: "backgrounds", weapon: "weapons", armor: "armors", shield: "armors",
   heritage: "heritages", archetype: "archetypes", spell: "spells", ritual: "rituals", feat: "feats", item: "items", gear: "items", pet: "pets", action: "actions", condition: "conditions", buff: "buffs", formula: "formulas",
 };
+
+function getPrerequisiteMessage(reason: string, locale: "pt-BR" | "en" | "es", details: any = {}) {
+  const copy = {
+    "pt-BR": {
+      "level-too-low": `Requer nível ${details.requiredLevel}.`,
+      "class-mismatch": "O pré-requisito de classe não foi atendido.",
+      "ancestry-mismatch": "O pré-requisito de ancestralidade não foi atendido.",
+      "ability-too-low": "O pré-requisito de atributo não foi atendido.",
+      "skill-rank-too-low": "O pré-requisito de proficiência de perícia não foi atendido.",
+      "proficiency-too-low": "O pré-requisito de proficiência de combate não foi atendido.",
+      "spellcasting-required": "Requer uma classe conjuradora.",
+      "dedication-required": "Requer a dedicação indicada.",
+      "deviant-required": "Requer uma habilidade desviante.",
+    },
+    en: {
+      "level-too-low": `Requires level ${details.requiredLevel}.`,
+      "class-mismatch": "The class prerequisite is not met.",
+      "ancestry-mismatch": "The ancestry prerequisite is not met.",
+      "ability-too-low": "The ability prerequisite is not met.",
+      "skill-rank-too-low": "The skill proficiency prerequisite is not met.",
+      "proficiency-too-low": "The combat proficiency prerequisite is not met.",
+      "spellcasting-required": "Requires a spellcasting class.",
+      "dedication-required": "Requires the listed dedication.",
+      "deviant-required": "Requires a deviant ability.",
+    },
+    es: {
+      "level-too-low": `Requiere nivel ${details.requiredLevel}.`,
+      "class-mismatch": "No se cumple el requisito de clase.",
+      "ancestry-mismatch": "No se cumple el requisito de ascendencia.",
+      "ability-too-low": "No se cumple el requisito de atributo.",
+      "skill-rank-too-low": "No se cumple el requisito de competencia de habilidad.",
+      "proficiency-too-low": "No se cumple el requisito de competencia de combate.",
+      "spellcasting-required": "Requiere una clase lanzadora de conjuros.",
+      "dedication-required": "Requiere la dedicación indicada.",
+      "deviant-required": "Requiere una habilidad desviada.",
+    },
+  } as const;
+  return copy[locale][reason as keyof typeof copy[typeof locale]] || reason;
+}
 
 const tabTranslations: Record<string, Record<string, string>> = {
   "All": { "pt-BR": "Todos", "es": "Todos", "en": "All" },
@@ -27,6 +66,7 @@ const tabTranslations: Record<string, Record<string, string>> = {
   "Magic Items": { "pt-BR": "Itens Mágicos", "es": "Objetos Mágicos", "en": "Magic Items" },
   "Ancestry Feats": { "pt-BR": "Talentos Ancestrais", "es": "Dotes de Ascendencia", "en": "Ancestry Feats" },
   "Class Feats": { "pt-BR": "Talentos de Classe", "es": "Dotes de Clase", "en": "Class Feats" },
+  "Impulse Feats": { "pt-BR": "Impulsos", "es": "Impulsos", "en": "Impulse Feats" },
   "Dedication Feats": { "pt-BR": "Talentos de Dedicação", "es": "Dotes de Dedicación", "en": "Dedication Feats" },
   "Archetype Class Feats": { "pt-BR": "Talentos de Arquétipo", "es": "Dotes de Arquetipo", "en": "Archetype Class Feats" },
   "General Feats": { "pt-BR": "Talentos Gerais", "es": "Dotes Generales", "en": "General Feats" },
@@ -69,7 +109,10 @@ export function getWeaponProficiencyRank(character: any, item: any): "U" | "T" |
   }
 
   // Class default proficiencies
-  const className = String(character.class || "").toLowerCase();
+  const classIdentity = character.class && typeof character.class === "object"
+    ? character.class.id || character.class.name || character.class["pt-BR"] || character.class.en || character.class.es
+    : character.class;
+  const className = String(classIdentity || "").toLowerCase();
   if (cat.includes("simples") || cat.includes("simple")) {
     if (className.includes("guerreiro") || className.includes("fighter")) return "E";
     return "T";
@@ -114,6 +157,16 @@ function rankToInitial(rank: string): "U" | "T" | "E" | "M" | "L" {
 
 export function PickerModal({ onBridgeReady }: PickerModalProps) {
   const { locale, t } = useI18n();
+  const customCopy = {
+    "pt-BR": { create: "Criar", weapon: "Arma Personalizada", armor: "Armadura Personalizada", shield: "Escudo Personalizado", item: "Item Personalizado", name: "Nome", category: "Categoria", damageDie: "Dado de Dano", damageType: "Tipo de Dano", bulk: "Carga (Bulk)", hands: "Mãos", price: "Preço", traits: "Traços (separados por vírgula)", description: "Descrição / Efeitos", free: "Adicionar Grátis", buy: "Comprar", namePlaceholder: "Ex: Machado Vorpal Ancestral", traitsPlaceholder: "Ex: Ágil, Acurada, Versátil C", descriptionPlaceholder: "Regras especiais e lore...", customDescription: "Item personalizado criado pelo jogador." },
+    en: { create: "Create", weapon: "Custom Weapon", armor: "Custom Armor", shield: "Custom Shield", item: "Custom Item", name: "Name", category: "Category", damageDie: "Damage Die", damageType: "Damage Type", bulk: "Bulk", hands: "Hands", price: "Price", traits: "Traits (comma-separated)", description: "Description / Effects", free: "Add for Free", buy: "Buy", namePlaceholder: "E.g. Ancestral Vorpal Axe", traitsPlaceholder: "E.g. Agile, Finesse, Versatile P", descriptionPlaceholder: "Special rules and lore...", customDescription: "Custom item created by the player." },
+    es: { create: "Crear", weapon: "Arma personalizada", armor: "Armadura personalizada", shield: "Escudo personalizado", item: "Objeto personalizado", name: "Nombre", category: "Categoría", damageDie: "Dado de daño", damageType: "Tipo de daño", bulk: "Carga (Bulk)", hands: "Manos", price: "Precio", traits: "Rasgos (separados por comas)", description: "Descripción / Efectos", free: "Añadir gratis", buy: "Comprar", namePlaceholder: "Ej.: Hacha vorpal ancestral", traitsPlaceholder: "Ej.: Ágil, Sutil, Versátil P", descriptionPlaceholder: "Reglas especiales y trasfondo...", customDescription: "Objeto personalizado creado por el jugador." },
+  }[locale];
+  const footerCopy = {
+    "pt-BR": { buy: "Comprar", give: "Adicionar", custom: "Personalizado", prd: "PRD", clear: "Limpar", buyTitle: "Comprar e deduzir moedas", giveTitle: "Adicionar sem deduzir moedas", walletTitle: "Sua carteira de moedas atual" },
+    en: { buy: "Buy", give: "Give", custom: "Custom", prd: "PRD", clear: "Clear", buyTitle: "Buy and deduct coins", giveTitle: "Add without deducting coins", walletTitle: "Your current coin purse" },
+    es: { buy: "Comprar", give: "Añadir", custom: "Personalizado", prd: "PRD", clear: "Limpiar", buyTitle: "Comprar y deducir monedas", giveTitle: "Añadir sin deducir monedas", walletTitle: "Tu bolsa de monedas actual" },
+  }[locale];
   const [pickerType, setPickerType] = useState<PickerType | null>(null);
   const [pickerOptions, setPickerOptions] = useState<import("./types").IPickerOpenOptions | undefined>();
   const [query, setQuery] = useState("");
@@ -121,6 +174,7 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
   const [optionSelections, setOptionSelections] = useState<Record<string, string>>({});
   const [activeCategoryTab, setActiveCategoryTab] = useState<string>("All");
   const [activeSubTab, setActiveSubTab] = useState<string>("Standard");
+  const [characterRevision, setCharacterRevision] = useState(0);
 
   // Custom weapon form state
   const [customName, setCustomName] = useState("");
@@ -129,7 +183,7 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
   const [customDamageType, setCustomDamageType] = useState("Cortante");
   const [customBulk, setCustomBulk] = useState("1");
   const [customHands, setCustomHands] = useState("1");
-  const [customPrice, setCustomPrice] = useState("2 PO");
+  const [customPrice, setCustomPrice] = useState(locale === "en" ? "2 GP" : "2 PO");
   const [customTraits, setCustomTraits] = useState("");
   const [customDesc, setCustomDesc] = useState("");
 
@@ -152,7 +206,7 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
       if (fType.includes("ancestry")) {
         return ["Ancestry Feats", "All Feats"];
       } else if (fType.includes("class")) {
-        return ["Class Feats", "Dedication Feats", "Archetype Class Feats", "All Feats"];
+        return ["Class Feats", "Impulse Feats", "Dedication Feats", "Archetype Class Feats", "All Feats"];
       } else {
         return ["General Feats", "Skill Feats", "Archetype Skill Feats", "All Feats"];
       }
@@ -221,6 +275,15 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
     };
   }, [bridge, onBridgeReady]);
 
+  // O legado muta a ficha fora do ciclo React. Recalcular imediatamente evita
+  // que uma opção se torne selecionável visualmente após uma troca de classe,
+  // ancestralidade ou nível enquanto o picker permanece aberto.
+  useEffect(() => {
+    const refresh = () => setCharacterRevision((revision) => revision + 1);
+    window.addEventListener("pathbuilder:character-render", refresh);
+    return () => window.removeEventListener("pathbuilder:character-render", refresh);
+  }, []);
+
   useEffect(() => {
     if (!pickerType) return;
     const previousOverflow = document.body.style.overflow;
@@ -253,12 +316,54 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
 
   const character = window.app?.character;
   const characterCoins = character?.coins || { pp: 0, gp: 15, sp: 0, cp: 0 };
+  const coinLabels = locale === "pt-BR"
+    ? { pp: "PL", gp: "PO", sp: "PP", cp: "PC" }
+    : locale === "en"
+      ? { pp: "PP", gp: "GP", sp: "SP", cp: "CP" }
+      : { pp: "PP", gp: "PO", sp: "PA", cp: "PC" };
   const isPurchasable = pickerType === "weapon" || pickerType === "armor" || pickerType === "shield" || pickerType === "item" || pickerType === "gear";
 
   const items = useMemo(() => {
     if (!pickerType || !window.app) return [];
     const needle = query.toLocaleLowerCase(locale);
     let rawItems = window.app.getPickerItems(pickerType);
+    rawItems = rawItems.map((item) => {
+      if (pickerType === "spell") {
+        const spellCompatibility = (window as any).PF2E_ENGINE?.getSpellCompatibility?.(character, item.data);
+        if (spellCompatibility?.state === "incompatible") {
+          return {
+            ...item,
+            data: {
+              ...item.data,
+              selectionState: "incompatible",
+              selectionMessages: {
+                ...(item.data?.selectionMessages || {}),
+                [locale]: getPrerequisiteMessage(spellCompatibility.reason, locale, spellCompatibility),
+              },
+            },
+          };
+        }
+        return { ...item, data: { ...item.data, selectionState: spellCompatibility?.state || item.data?.selectionState || "available" } };
+      }
+      const checker = (window as any).PF2E_ENGINE?.getPrerequisiteCompatibility;
+      if (typeof checker !== "function") return item;
+      const compatibility = checker.call((window as any).PF2E_ENGINE, character, item.data);
+      if (compatibility?.state !== "incompatible") return item;
+      return {
+        ...item,
+        data: {
+          ...item.data,
+          selectionState: "incompatible",
+          selectionMessages: {
+            ...(item.data?.selectionMessages || {}),
+            [locale]: getPrerequisiteMessage(compatibility.reason, locale, compatibility),
+          },
+        },
+      };
+    });
+    // Opções incompatíveis não devem aparecer como escolhas disponíveis.
+    // O bridge legado ainda revalida a seleção para proteger fichas antigas.
+    rawItems = rawItems.filter((item) => item.data?.selectionState !== "incompatible");
 
     // Category Tabs Filtering for Feats
     if (pickerType === "feat") {
@@ -287,6 +392,12 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
           const cat = String(i.category || i.data?.category || i.type || "").toLowerCase();
           const traits = (i.data?.traits || []).map((t: string) => t.toLowerCase());
           return cat.includes("classe") || cat.includes("class") || traits.includes("classe") || traits.includes("class");
+        });
+      } else if (activeCategoryTab === "Impulse Feats") {
+        rawItems = rawItems.filter((i) => {
+          const cat = String(i.category || i.data?.category || i.type || "").toLowerCase();
+          const traits = (i.data?.traits || []).map((t: string) => t.toLowerCase());
+          return cat.includes("impulso") || cat.includes("impulse") || traits.includes("impulso") || traits.includes("impulse");
         });
       } else if (activeCategoryTab === "Dedication Feats") {
         rawItems = rawItems.filter((i) => {
@@ -409,7 +520,7 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
       const nameB = getItemDisplayName(b, locale);
       return nameA.localeCompare(nameB, locale, { sensitivity: "base", numeric: true });
     });
-  }, [locale, pickerOptions, pickerType, query, activeCategoryTab, activeSubTab, character]);
+  }, [locale, pickerOptions, pickerType, query, activeCategoryTab, activeSubTab, character, characterRevision]);
 
   useEffect(() => {
     if (selectedIndex >= items.length) setSelectedIndex(0);
@@ -424,7 +535,7 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
   const source = selectedItem?.data.source;
   const sourceLabel = source?.book
     ? `${source.book}${source.page ? `, p. ${source.page}` : ""}`
-    : "PC1";
+    : t("catalogReview");
   const rarity = selectedItem?.data.rarity === "rare" ? t("rarityRare") : selectedItem?.data.rarity === "uncommon" ? t("rarityUncommon") : selectedItem?.data.rarity === "common" ? t("rarityCommon") : null;
   const castingTimes = selectedItem?.data.castingTimes as Partial<Record<"pt-BR" | "en" | "es", string>> | undefined;
   const traditionNames = selectedItem?.data.traditionNames as Partial<Record<"pt-BR" | "en" | "es", string[]>> | undefined;
@@ -446,11 +557,15 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
   const resolvedSpeed = resolvedHeritage?.speed ?? selectedItem?.data.speed;
 
   // Economy & Price Affordability
-  const itemPrice = selectedItem?.data?.price ?? selectedItem?.price ?? "0 PO";
-  const isAffordable = canAffordPrice(characterCoins, itemPrice);
+  const itemPrice = selectedItem?.data?.price ?? selectedItem?.price ?? (locale === "en" ? "0 GP" : "0 PO");
+  const isAffordable = canAffordPrice(characterCoins, itemPrice, 1, locale);
+  const itemPriceText = formatPriceToLocale(itemPrice, locale);
 
   const confirm = (deductCoins: boolean = false) => {
     if (!selectedItem || selectedState !== "available") return;
+    // A UI desabilitada não é uma barreira suficiente: teclado, automação ou
+    // uma integração externa ainda podem chamar o confirmador diretamente.
+    if (deductCoins && !isAffordable) return;
     const selection = Object.fromEntries(selectionGroups.map((group) => [group.id, resolvedSelections[group.id]?.id ?? group.options[0]?.id]));
     const itemPayload = { ...selectedItem, ...(selectionGroups.length ? { selection } : {}) };
     if (pickerOptions) {
@@ -471,19 +586,28 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
 
   const handleCreateCustom = (deductCoins: boolean) => {
     if (!customName.trim()) return;
+    const normalizedName = customName.trim();
+    const customDescription = customDesc.trim() || customCopy.customDescription;
+    const customId = `custom.item.${normalizedName.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "") || "item"}.${Date.now()}`;
     const customItem: PickerItem = {
-      name: customName.trim(),
-      type: pickerType === "weapon" ? "Arma" : pickerType === "armor" ? "Armadura" : "Item",
+      name: normalizedName,
+      type: pickerType === "weapon" ? "Arma" : pickerType === "armor" ? "Armadura" : pickerType === "shield" ? "Escudo" : "Item",
       data: {
-        name: customName.trim(),
+        id: customId,
+        name: normalizedName,
+        names: { "pt-BR": normalizedName, en: normalizedName, es: normalizedName },
         category: customCategory,
         damage: customDamage,
         damageType: customDamageType,
         bulk: customBulk || "1",
         hands: customHands,
-        price: customPrice || "0 PO",
+        price: customPrice || (locale === "en" ? "0 GP" : "0 PO"),
         traits: customTraits ? customTraits.split(",").map((s) => s.trim()).filter(Boolean) : [],
-        description: customDesc.trim() || "Item personalizado criado pelo jogador."
+        description: customDescription,
+        summaries: { "pt-BR": customDescription, en: customDescription, es: customDescription },
+        ruleset: "needs_review",
+        needs_review: true,
+        custom: true,
       }
     };
     if (pickerOptions) {
@@ -545,7 +669,7 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
                 placeholder={t("search")}
               />
             </label>
-            <button type="button" className="picker-filter-btn" title="Filtros avançados">
+            <button type="button" className="picker-filter-btn" title={t("advancedFilters")} aria-label={t("advancedFilters")}>
               <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
                 <path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z"/>
               </svg>
@@ -574,24 +698,24 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
           {activeSubTab === "Custom" ? (
             <div className="picker-custom-form-container">
               <h3 style={{ color: "var(--pb-orange)", marginBottom: "16px", fontSize: "18px" }}>
-                Criar {pickerType === "weapon" ? "Arma Personalizada" : pickerType === "armor" ? "Armadura Personalizada" : "Item Personalizado"}
+                {customCopy.create} {pickerType === "weapon" ? customCopy.weapon : pickerType === "armor" ? customCopy.armor : pickerType === "shield" ? customCopy.shield : customCopy.item}
               </h3>
               <div className="picker-custom-grid">
                 <label>
-                  <span>Nome:</span>
-                  <input value={customName} onChange={(e) => setCustomName(e.target.value)} placeholder="Ex: Machado Vorpal Ancestral" />
+                  <span>{customCopy.name}:</span>
+                  <input value={customName} onChange={(e) => setCustomName(e.target.value)} placeholder={customCopy.namePlaceholder} />
                 </label>
                 <label>
-                  <span>Categoria:</span>
+                  <span>{customCopy.category}:</span>
                   <select value={customCategory} onChange={(e) => setCustomCategory(e.target.value)}>
-                    <option value="Simples">Simples</option>
-                    <option value="Marcial">Marcial</option>
-                    <option value="Avançada">Avançada</option>
-                    <option value="Desarmado">Desarmado</option>
+                    <option value="Simples">{locale === "en" ? "Simple" : locale === "es" ? "Simple" : "Simples"}</option>
+                    <option value="Marcial">{locale === "en" ? "Martial" : locale === "es" ? "Marcial" : "Marcial"}</option>
+                    <option value="Avançada">{locale === "en" ? "Advanced" : locale === "es" ? "Avanzada" : "Avançada"}</option>
+                    <option value="Desarmado">{locale === "en" ? "Unarmed" : locale === "es" ? "Desarmado" : "Desarmado"}</option>
                   </select>
                 </label>
                 <label>
-                  <span>Dado de Dano:</span>
+                  <span>{customCopy.damageDie}:</span>
                   <select value={customDamage} onChange={(e) => setCustomDamage(e.target.value)}>
                     <option value="1d4">1d4</option>
                     <option value="1d6">1d6</option>
@@ -602,41 +726,41 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
                   </select>
                 </label>
                 <label>
-                  <span>Tipo de Dano:</span>
+                  <span>{customCopy.damageType}:</span>
                   <select value={customDamageType} onChange={(e) => setCustomDamageType(e.target.value)}>
-                    <option value="Cortante">Cortante (S)</option>
-                    <option value="Perfuração">Perfuração (P)</option>
-                    <option value="Impacto">Impacto (B)</option>
-                    <option value="Elemental">Elemental</option>
+                    <option value="Cortante">{locale === "en" ? "Slashing (S)" : locale === "es" ? "Cortante (S)" : "Cortante (S)"}</option>
+                    <option value="Perfuração">{locale === "en" ? "Piercing (P)" : locale === "es" ? "Perforante (P)" : "Perfuração (P)"}</option>
+                    <option value="Impacto">{locale === "en" ? "Bludgeoning (B)" : locale === "es" ? "Contundente (B)" : "Impacto (B)"}</option>
+                    <option value="Elemental">{locale === "en" ? "Elemental" : locale === "es" ? "Elemental" : "Elemental"}</option>
                   </select>
                 </label>
                 <label>
-                  <span>Carga (Bulk):</span>
+                  <span>{customCopy.bulk}:</span>
                   <input value={customBulk} onChange={(e) => setCustomBulk(e.target.value)} placeholder="1 ou L" />
                 </label>
                 <label>
-                  <span>Mãos:</span>
+                  <span>{customCopy.hands}:</span>
                   <input value={customHands} onChange={(e) => setCustomHands(e.target.value)} placeholder="1 ou 2" />
                 </label>
                 <label>
-                  <span>Preço:</span>
-                  <input value={customPrice} onChange={(e) => setCustomPrice(e.target.value)} placeholder="Ex: 5 PO" />
+                  <span>{customCopy.price}:</span>
+                  <input value={customPrice} onChange={(e) => setCustomPrice(e.target.value)} placeholder={locale === "en" ? "E.g. 5 GP" : locale === "es" ? "Ej.: 5 PO" : "Ex: 5 PO"} />
                 </label>
                 <label style={{ gridColumn: "1 / -1" }}>
-                  <span>Traços (separados por vírgula):</span>
-                  <input value={customTraits} onChange={(e) => setCustomTraits(e.target.value)} placeholder="Ex: Ágil, Acurada, Versátil C" />
+                  <span>{customCopy.traits}:</span>
+                  <input value={customTraits} onChange={(e) => setCustomTraits(e.target.value)} placeholder={customCopy.traitsPlaceholder} />
                 </label>
                 <label style={{ gridColumn: "1 / -1" }}>
-                  <span>Descrição / Efeitos:</span>
-                  <textarea rows={3} value={customDesc} onChange={(e) => setCustomDesc(e.target.value)} placeholder="Regras especiais e lore..." />
+                  <span>{customCopy.description}:</span>
+                  <textarea rows={3} value={customDesc} onChange={(e) => setCustomDesc(e.target.value)} placeholder={customCopy.descriptionPlaceholder} />
                 </label>
               </div>
               <div style={{ display: "flex", gap: "10px", marginTop: "20px" }}>
                 <button type="button" className="picker-confirm" onClick={() => handleCreateCustom(false)}>
-                  Adicionar Grátis (Give)
+                  {customCopy.free}
                 </button>
                 <button type="button" className="picker-buy-btn" onClick={() => handleCreateCustom(true)}>
-                  Comprar ({customPrice || "0 PO"})
+                  {customCopy.buy} ({customPrice || (locale === "en" ? "0 GP" : "0 PO")})
                 </button>
               </div>
             </div>
@@ -686,6 +810,11 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
                         <span className="picker-item-name">
                           {getItemDisplayName(item, locale)}
                         </span>
+                        {item.data?.rarity === "rare" && (
+                          <span className="picker-trait-pill" style={{ marginLeft: "6px", color: "#fca5a5", borderColor: "#b91c1c", background: "#450a0a" }}>
+                            {t("rarityRare")}
+                          </span>
+                        )}
                       </div>
                       <span className="picker-item-level-box">
                         {itemLvl}
@@ -703,11 +832,16 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
                       <div>
                         <h3>{getItemDisplayName(selectedItem, locale)}</h3>
                         <div style={{ fontSize: "12px", color: "var(--pb-text-muted)", marginTop: "2px" }}>
-                          {selectedItem.data?.category ? `${selectedItem.data.category} Weapon` : selectedItem.type}
+                          {selectedItem.data?.category ? `${selectedItem.data.category} ${locale === "en" ? "Weapon" : locale === "es" ? "Arma" : "Arma"}` : selectedItem.type}
                         </div>
+                        {rarity && (
+                          <span className="picker-trait-pill" style={{ display: "inline-flex", marginTop: "6px", color: selectedItem.data?.rarity === "rare" ? "#fca5a5" : "#fde68a", borderColor: selectedItem.data?.rarity === "rare" ? "#b91c1c" : "#a16207", background: selectedItem.data?.rarity === "rare" ? "#450a0a" : "#422006" }}>
+                            {rarity}{selectedItem.data?.rareSelection ? ` · ${locale === "en" ? "GM approval" : locale === "es" ? "aprobación del GM" : "aprovação do Mestre"}` : ""}
+                          </span>
+                        )}
                       </div>
                       <span className="picker-item-level-box" style={{ fontSize: "13px", padding: "3px 9px" }}>
-                        Nível {selectedItem.data?.level ?? selectedItem.data?.rank ?? 0}
+                        {locale === "en" ? "Level" : locale === "es" ? "Nivel" : "Nível"} {selectedItem.data?.level ?? selectedItem.data?.rank ?? 0}
                       </span>
                     </header>
 
@@ -715,23 +849,23 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
                     {pickerType === "weapon" && (
                       <div className="picker-weapon-stats-bar">
                         <div className="pws-stat">
-                          <span className="pws-label">Dano</span>
+                          <span className="pws-label">{t("damage")}</span>
                           <strong className="pws-value" style={{ color: "var(--pb-orange)" }}>
                             {String(selectedItem.data?.damage || "1d6")} {selectedItem.data?.damageType ? `(${String(selectedItem.data.damageType)})` : ""}
                           </strong>
                         </div>
                         <div className="pws-stat">
-                          <span className="pws-label">Preço</span>
+                          <span className="pws-label">{t("price")}</span>
                           <strong className="pws-value" style={{ color: "var(--pb-gold, #f59e0b)" }}>
                             {String(selectedItem.data?.price || "—")}
                           </strong>
                         </div>
                         <div className="pws-stat">
-                          <span className="pws-label">Carga</span>
+                          <span className="pws-label">{t("bulk")}</span>
                           <strong className="pws-value">{String(selectedItem.data?.bulk || "1")}</strong>
                         </div>
                         <div className="pws-stat">
-                          <span className="pws-label">Mãos</span>
+                          <span className="pws-label">{locale === "en" ? "Hands" : locale === "es" ? "Manos" : "Mãos"}</span>
                           <strong className="pws-value">{String(selectedItem.data?.hands || "1")}</strong>
                         </div>
                       </div>
@@ -753,13 +887,13 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
                           </strong>
                         </div>
                         <div className="pws-stat">
-                          <span className="pws-label">Preço</span>
+                          <span className="pws-label">{t("price")}</span>
                           <strong className="pws-value" style={{ color: "var(--pb-gold, #f59e0b)" }}>
                             {String(selectedItem.data?.price || "—")}
                           </strong>
                         </div>
                         <div className="pws-stat">
-                          <span className="pws-label">Carga</span>
+                          <span className="pws-label">{t("bulk")}</span>
                           <strong className="pws-value">{String(selectedItem.data?.bulk || "0")}</strong>
                         </div>
                       </div>
@@ -787,7 +921,7 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
                           </strong>
                         </div>
                         <div className="pws-stat">
-                          <span className="pws-label">Preço</span>
+                          <span className="pws-label">{t("price")}</span>
                           <strong className="pws-value" style={{ color: "var(--pb-gold, #f59e0b)" }}>
                             {String(selectedItem.data?.price || "—")}
                           </strong>
@@ -799,17 +933,17 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
                     {(pickerType === "item" || pickerType === "gear") && (
                       <div className="picker-weapon-stats-bar" style={{ gridTemplateColumns: "repeat(3, 1fr)" }}>
                         <div className="pws-stat">
-                          <span className="pws-label">Preço</span>
+                          <span className="pws-label">{t("price")}</span>
                           <strong className="pws-value" style={{ color: "var(--pb-gold, #f59e0b)" }}>
                             {String(selectedItem.data?.price || "—")}
                           </strong>
                         </div>
                         <div className="pws-stat">
-                          <span className="pws-label">Carga (Bulk)</span>
+                          <span className="pws-label">{t("bulk")}</span>
                           <strong className="pws-value">{String(selectedItem.data?.bulk !== undefined ? selectedItem.data.bulk : "—")}</strong>
                         </div>
                         <div className="pws-stat">
-                          <span className="pws-label">Nível</span>
+                          <span className="pws-label">{locale === "en" ? "Level" : locale === "es" ? "Nivel" : "Nível"}</span>
                           <strong className="pws-value">{String(selectedItem.data?.level ?? 0)}</strong>
                         </div>
                       </div>
@@ -832,6 +966,13 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
                             {fact}
                           </span>
                         ))}
+                      </div>
+                    )}
+
+                    {(selectedItem.data?.prereq || selectedItem.data?.prerequisites || selectedItem.data?.requiredLevel || selectedItem.data?.classId || selectedItem.data?.classIds?.length || selectedItem.data?.ancestryId || selectedItem.data?.ancestryIds?.length) && (
+                      <div className="picker-prereqs" role="note">
+                        <strong>{t("prerequisites")}:</strong>{" "}
+                        {String(selectedItem.data?.prereq || (Array.isArray(selectedItem.data?.prerequisites) ? selectedItem.data.prerequisites.join(", ") : selectedItem.data?.prerequisites) || (selectedItem.data?.requiredLevel ? `${locale === "en" ? "Level" : locale === "es" ? "Nivel" : "Nível"} ${selectedItem.data.requiredLevel}` : selectedItem.data?.classId || selectedItem.data?.classIds?.length ? `${locale === "en" ? "Class" : locale === "es" ? "Clase" : "Classe"} ${(selectedItem.data.classIds || [selectedItem.data.classId]).join(", ")}` : `${locale === "en" ? "Ancestry" : locale === "es" ? "Ascendencia" : "Ancestralidade"} ${(selectedItem.data.ancestryIds || [selectedItem.data.ancestryId]).join(", ")}`))}
                       </div>
                     )}
 
@@ -876,7 +1017,7 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
 
                     {/* SOURCE BOOK */}
                     <div className="picker-source-tag">
-                      Fonte: {sourceLabel}
+                      {t("source")}: {sourceLabel}
                     </div>
                   </>
                 ) : (
@@ -896,12 +1037,12 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
                 onClick={() => confirm(true)}
                 disabled={!canConfirm || !isAffordable}
                 type="button"
-                title={isAffordable ? `Comprar por ${itemPrice} e deduzir da carteira` : `Moedas insuficientes! Custo: ${itemPrice}`}
+                title={isAffordable ? `${footerCopy.buy} ${locale === "en" ? "for" : locale === "es" ? "por" : "por"} ${itemPriceText} ${locale === "en" ? "and deduct from purse" : locale === "es" ? "y deducir de la bolsa" : "e deduzir da carteira"}` : `${locale === "en" ? "Insufficient coins! Cost" : locale === "es" ? "¡Monedas insuficientes! Coste" : "Moedas insuficientes! Custo"}: ${itemPriceText}`}
               >
-                Buy ({itemPrice})
+                {footerCopy.buy} ({itemPriceText})
               </button>
-              <button className="picker-confirm" onClick={() => confirm(false)} disabled={!canConfirm} type="button" title="Adicionar sem deduzir moedas">
-                Give
+              <button className="picker-confirm" onClick={() => confirm(false)} disabled={!canConfirm} type="button" title={footerCopy.giveTitle}>
+                {footerCopy.give}
               </button>
               <button className="picker-cancel" onClick={bridge.close} type="button">
                 {t("cancel")}
@@ -911,29 +1052,29 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
                 onClick={() => window.open(pickerType === "weapon" ? "https://2e.aonprd.com/Weapons.aspx" : "https://2e.aonprd.com", "_blank")}
                 type="button"
               >
-                PRD
+                {footerCopy.prd}
               </button>
               <button
                 className={`picker-cancel ${activeSubTab === "Custom" ? "active" : ""}`}
                 onClick={() => setActiveSubTab(activeSubTab === "Custom" ? "Standard" : "Custom")}
                 type="button"
               >
-                Custom
+                {footerCopy.custom}
               </button>
 
               {/* LIVE COIN PURSE DISPLAY */}
-              <div className="picker-footer-coins" title="Sua carteira de moedas atual">
+              <div className="picker-footer-coins" title={footerCopy.walletTitle}>
                 <span className="coin-indicator">
-                  <span className="coin-dot pp" /> {characterCoins.pp || 0} PP
+                  <span className="coin-dot pp" /> {characterCoins.pp || 0} {coinLabels.pp}
                 </span>
                 <span className="coin-indicator">
-                  <span className="coin-dot gp" /> {characterCoins.gp || 0} GP
+                  <span className="coin-dot gp" /> {characterCoins.gp || 0} {coinLabels.gp}
                 </span>
                 <span className="coin-indicator">
-                  <span className="coin-dot sp" /> {characterCoins.sp || 0} SP
+                  <span className="coin-dot sp" /> {characterCoins.sp || 0} {coinLabels.sp}
                 </span>
                 <span className="coin-indicator">
-                  <span className="coin-dot cp" /> {characterCoins.cp || 0} CP
+                  <span className="coin-dot cp" /> {characterCoins.cp || 0} {coinLabels.cp}
                 </span>
               </div>
             </>
@@ -946,10 +1087,10 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
                 {t("cancel")}
               </button>
               <button className="picker-cancel" onClick={() => window.open("https://2e.aonprd.com", "_blank")} type="button">
-                PRD
+                {footerCopy.prd}
               </button>
               <button className="picker-cancel" onClick={clearSelection} type="button">
-                Clear
+                {footerCopy.clear}
               </button>
             </>
           )}

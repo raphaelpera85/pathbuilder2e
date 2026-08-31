@@ -38,6 +38,34 @@ describe("P2: Motor de Grimório & Spellcasting Automático (Spellcasting Engine
     expect(spellcasting.cantripsAllowed).toBe(5);
   });
 
+  it("deve resolver conjuração para classe importada por nome curto", () => {
+    expect(engine.getSpellcastingProfile({ level: 1, class: "Mago" })).toMatchObject({ traditions: ["arcane"] });
+    expect(engine.getSpellCompatibility({ level: 1, class: "Mago", magicTradition: "Arcana" }, { rank: 1, traditions: ["arcane"] }).state).toBe("available");
+    expect(engine.calculateSpellcasting({ level: 1, class: "Mago", abilities: { int: 16 } })).toMatchObject({ isSpellcaster: true, tradition: "arcane", keyAbility: "int" });
+  });
+
+  it("oculta magias restritas à classe ou ao marcador Deviant", () => {
+    const psychicSpell = { id: "spell.test.psychic", rank: 1, classId: "class.psychic", traditions: ["occult"] };
+    const deviantSpell = { id: "spell.test.deviant", rank: 1, requiresDeviant: true, traditions: ["arcane"] };
+    expect(engine.getSpellCompatibility({ level: 1, class: "Mago", magicTradition: "Arcana" }, psychicSpell)).toMatchObject({ state: "incompatible", reason: "class-mismatch" });
+    expect(engine.getSpellCompatibility({ level: 1, class: "Mago", magicTradition: "Arcana" }, deviantSpell)).toMatchObject({ state: "incompatible", reason: "deviant-required" });
+    expect(engine.getSpellCompatibility({ level: 1, class: "Psíquico", magicTradition: "Ocultista" }, psychicSpell).state).toBe("available");
+    expect(engine.getSpellCompatibility({ level: 1, class: "Mago", magicTradition: "Arcana", deviant: true }, deviantSpell).state).toBe("available");
+  });
+
+  it("aceita gates com múltiplas classes ou ancestralidades", () => {
+    expect(engine.getPrerequisiteCompatibility({ level: 1, class: "Mago" }, { classIds: ["class.magus"] })).toMatchObject({ state: "incompatible", reason: "class-mismatch" });
+    expect(engine.getPrerequisiteCompatibility({ level: 1, class: "Mago" }, { classIds: ["class.wizard", "class.magus"] }).state).toBe("available");
+    expect(engine.getPrerequisiteCompatibility({ level: 1, ancestry: "Humano" }, { ancestryIds: ["ancestry.dwarf", "ancestry.human"] }).state).toBe("available");
+    expect(engine.getPrerequisiteCompatibility({ level: 1, class: "Mago" }, { classIds: ["class.wizard"], level: 2 })).toMatchObject({ state: "incompatible", reason: "level-too-low", requiredLevel: 2 });
+  });
+
+  it("deve aceitar aliases da ancestralidade em heranças normalizadas", () => {
+    const character = { ancestry: "ancestry.athamaru.legacy_alias.athamaru_povo_peixe", level: 1 };
+    const heritage = { id: "heritage.ancestry.athamaru.athamaru_coralino", ancestryId: "ancestry.athamaru", ancestryIds: ["ancestry.athamaru", character.ancestry] };
+    expect(engine.getPrerequisiteCompatibility(character, heritage)).toMatchObject({ state: "available" });
+  });
+
   it("deve calcular CD de magia e tradição Divina para Clérigo (SAB)", () => {
     const clericChar = {
       name: "Kyra",
@@ -69,5 +97,28 @@ describe("P2: Motor de Grimório & Spellcasting Automático (Spellcasting Engine
     const spellcasting = engine.calculateSpellcasting(bardChar);
     expect(spellcasting.maxFocusPoints).toBe(1);
     expect(spellcasting.currentFocusPoints).toBe(1);
+  });
+
+  it("não concede Ponto de Foco implícito a todo conjurador", () => {
+    const wizard = engine.calculateSpellcasting({
+      level: 1,
+      class: "Mago",
+      abilities: { int: 16 }
+    });
+    expect(wizard.maxFocusPoints).toBe(0);
+    expect(wizard.currentFocusPoints).toBe(0);
+    expect(engine.getSpellSlots({ level: 1, class: "Mago" })).toMatchObject({ focusPoints: 0, maxFocusPoints: 0 });
+  });
+
+  it("prioriza o estado atual do foco usado pela interface", () => {
+    const bard = engine.calculateSpellcasting({
+      level: 1,
+      class: "Bardo",
+      abilities: { cha: 18 },
+      focusPoints: 1,
+      focusPointsCurrent: 0
+    });
+    expect(bard.maxFocusPoints).toBe(1);
+    expect(bard.currentFocusPoints).toBe(0);
   });
 });

@@ -35,7 +35,7 @@ export function copperToCoins(totalCp: number): Coins {
 /**
  * Parses any price string, object, or number into Copper Pieces.
  */
-export function parsePriceToCopper(price: any): number {
+export function parsePriceToCopper(price: any, locale: string = "pt-BR"): number {
   if (price === null || price === undefined) return 0;
   if (typeof price === "number") return Math.round(price * 100);
   if (typeof price === "object") {
@@ -53,6 +53,13 @@ export function parsePriceToCopper(price: any): number {
     totalCp += Math.round(parseFloat(plMatch[1]) * 1000);
     matched = true;
   }
+  if (!plMatch && !locale.toLowerCase().startsWith("pt")) {
+    const ppIntlMatch = str.match(/(\d+(?:\.\d+)?)\s*pp\b/i);
+    if (ppIntlMatch) {
+      totalCp += Math.round(parseFloat(ppIntlMatch[1]) * 1000);
+      matched = true;
+    }
+  }
 
   // Gold / Peças de Ouro (GP / PO / Ouro / Gold)
   const gpMatch = str.match(/(\d+(?:\.\d+)?)\s*(?:gp|po|ouro|gold)\b/i);
@@ -61,13 +68,14 @@ export function parsePriceToCopper(price: any): number {
     matched = true;
   }
 
-  // Silver / Peças de Prata (SP / Prata / Silver / PP)
-  const spMatch = str.match(/(\d+(?:\.\d+)?)\s*(?:sp|prata|silver)\b/i);
+  // Silver / Peças de Prata (SP / Prata / Silver / PA). Em pt-BR, PP
+  // também significa prata; em inglês/espanhol, PP normalmente é platina.
+  const spMatch = str.match(/(\d+(?:\.\d+)?)\s*(?:sp|pa|prata|plata|silver)\b/i);
   if (spMatch) {
     totalCp += Math.round(parseFloat(spMatch[1]) * 10);
     matched = true;
-  } else if (!plMatch && /\b\d+(?:\.\d+)?\s*pp\b/i.test(str)) {
-    // In PT-BR PF2e, PP is Peça de Prata (10 CP) unless specified as platinum
+  } else if (!plMatch && locale.toLowerCase().startsWith("pt") && /\b\d+(?:\.\d+)?\s*pp\b/i.test(str)) {
+    // No PF2e pt-BR, PP é Peça de Prata quando não há PL explícito.
     const ppPtMatch = str.match(/(\d+(?:\.\d+)?)\s*pp\b/i);
     if (ppPtMatch) {
       totalCp += Math.round(parseFloat(ppPtMatch[1]) * 10);
@@ -95,8 +103,8 @@ export function parsePriceToCopper(price: any): number {
 /**
  * Checks if the given coins purse can afford an item price.
  */
-export function canAffordPrice(coins: Partial<Coins> | undefined | null, price: any, qty: number = 1): boolean {
-  const itemCp = parsePriceToCopper(price) * Math.max(1, qty);
+export function canAffordPrice(coins: Partial<Coins> | undefined | null, price: any, qty: number = 1, locale: string = "pt-BR"): boolean {
+  const itemCp = parsePriceToCopper(price, locale) * Math.max(1, qty);
   const purseCp = coinsToCopper(coins);
   return purseCp >= itemCp;
 }
@@ -104,8 +112,8 @@ export function canAffordPrice(coins: Partial<Coins> | undefined | null, price: 
 /**
  * Deducts price from coins and returns updated coins purse.
  */
-export function deductCoins(coins: Partial<Coins> | undefined | null, price: any, qty: number = 1): Coins {
-  const itemCp = parsePriceToCopper(price) * Math.max(1, qty);
+export function deductCoins(coins: Partial<Coins> | undefined | null, price: any, qty: number = 1, locale: string = "pt-BR"): Coins {
+  const itemCp = parsePriceToCopper(price, locale) * Math.max(1, qty);
   const purseCp = coinsToCopper(coins);
   const remCp = Math.max(0, purseCp - itemCp);
   return copperToCoins(remCp);
@@ -119,11 +127,18 @@ export function formatCopperToString(cpTotal: number, locale: string = "pt-BR"):
   const { pp, gp, sp, cp } = copperToCoins(cpTotal);
   const parts: string[] = [];
   const isPt = locale.startsWith("pt");
+  const isEs = locale.startsWith("es");
 
-  if (pp > 0) parts.push(`${pp} ${isPt ? "PL" : "pp"}`);
-  if (gp > 0) parts.push(`${gp} ${isPt ? "PO" : "gp"}`);
-  if (sp > 0) parts.push(`${sp} ${isPt ? "PP" : "sp"}`);
-  if (cp > 0) parts.push(`${cp} ${isPt ? "PC" : "cp"}`);
+  if (pp > 0) parts.push(`${pp} ${isPt ? "PL" : "PP"}`);
+  if (gp > 0) parts.push(`${gp} ${isPt || isEs ? "PO" : "GP"}`);
+  if (sp > 0) parts.push(`${sp} ${isPt ? "PP" : isEs ? "PA" : "SP"}`);
+  if (cp > 0) parts.push(`${cp} ${isPt || isEs ? "PC" : "CP"}`);
 
-  return parts.join(" ") || (isPt ? "0 PO" : "0 gp");
+  return parts.join(" ") || (isPt || isEs ? "0 PO" : "0 GP");
+}
+
+/** Formats either a structured purse or a catalog price string for display. */
+export function formatPriceToLocale(price: any, locale: string = "pt-BR"): string {
+  if (price === null || price === undefined || price === "" || price === "—" || price === "-") return "—";
+  return formatCopperToString(parsePriceToCopper(price, locale), locale);
 }

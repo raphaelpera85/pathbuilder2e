@@ -152,20 +152,20 @@
     generateCharacter(userPrompt) {
       const data = typeof PF2E_DATA !== "undefined" ? PF2E_DATA : (globalThis.PF2E_DATA || (typeof window !== "undefined" ? window.PF2E_DATA : {}));
       const { detectedClass, detectedAncestry, rawText } = this.parsePrompt(userPrompt);
-      const classData = data?.classes?.[detectedClass] || data?.classes?.["Guerreiro (Fighter)"] || {};
-      const ancestryData = data?.ancestries?.[detectedAncestry] || data?.ancestries?.["Humano"] || {};
+      const classData = data?.classes?.[detectedClass] || {};
+      const ancestryData = data?.ancestries?.[detectedAncestry] || {};
 
       // 1. Escolha de Herança adequada
-      const heritages = ancestryData.heritages || ["Herança Padrão"];
-      let chosenHeritage = heritages[0];
+      const heritages = Array.isArray(ancestryData.heritages) ? ancestryData.heritages : [];
+      let chosenHeritage = heritages[0] || "";
       if (rawText.includes("escudo") || rawText.includes("resistencia") || rawText.includes("armadura")) {
         const defensiveH = heritages.find(h => h.includes("Encouraçado") || h.includes("Couro") || h.includes("Robusto") || h.includes("Dureza"));
         if (defensiveH) chosenHeritage = defensiveH;
       }
 
       // 2. Escolha de Subclasse da Classe
-      const subclasses = classData.subclasses || ["Especialização Padrão"];
-      let chosenSubclass = subclasses[0];
+      const subclasses = Array.isArray(classData.subclasses) ? classData.subclasses : [];
+      let chosenSubclass = subclasses[0] || "";
       if (rawText.includes("escudo") || rawText.includes("defesa")) {
         const defSub = subclasses.find(s => s.includes("Escudo") || s.includes("Bastião") || s.includes("Defesa") || s.includes("Sparkling"));
         if (defSub) chosenSubclass = defSub;
@@ -176,19 +176,23 @@
 
       // 3. Escolha do Antecedente
       const backgrounds = data?.backgrounds || [];
-      let chosenBackground = backgrounds[0]?.name || "Guarda da Cidade (Guard)";
+      let chosenBackground = backgrounds[0]?.name || "";
+      const chooseBackground = (candidate) => {
+        const match = backgrounds.find((background) => background.name === candidate || Object.values(background.names || {}).includes(candidate));
+        if (match) chosenBackground = match.name;
+      };
       if (detectedClass.includes("Guardião") || detectedClass.includes("Guerreiro")) {
-        chosenBackground = "Guarda da Cidade (Guard)";
+        chooseBackground("Guarda da Cidade (Guard)");
       } else if (detectedClass.includes("Animista") || detectedClass.includes("Clérigo") || detectedClass.includes("Druida")) {
-        chosenBackground = "Eremita (Hermit)";
+        chooseBackground("Eremita (Hermit)");
       } else if (detectedClass.includes("Ladino") || detectedClass.includes("Espadachim")) {
-        chosenBackground = "Criminoso (Criminal)";
+        chooseBackground("Criminoso (Criminal)");
       } else if (detectedClass.includes("Mago") || detectedClass.includes("Alquimista")) {
-        chosenBackground = "Estudante da Academia (Scholar)";
+        chooseBackground("Estudante da Academia (Scholar)");
       } else if (detectedClass.includes("Comandante")) {
-        chosenBackground = "Herdeiro Nobre (Noble)";
+        chooseBackground("Herdeiro Nobre (Noble)");
       } else if (detectedClass.includes("Exemplar")) {
-        chosenBackground = "Gladiador (Gladiator)";
+        chooseBackground("Gladiador (Gladiator)");
       }
 
       // 4. Distribuição Inteligente de Atributos (Pipeline Remaster)

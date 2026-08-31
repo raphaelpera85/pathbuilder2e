@@ -1,7 +1,7 @@
 /**
- * COMPÊNDIO COMPLETO PATHFINDER 2E (REMASTER & SUPLEMENTOS) - 100% PT-BR
- * Contém todas as 23 Classes, 30+ Ancestralidades, Heranças Versáteis, 
- * 40+ Antecedentes, Perícias, Armas, Armaduras, Magias e Regras de Criação.
+ * COMPÊNDIO PATHFINDER 2E (REMASTER & SUPLEMENTOS), com metadados trilíngues.
+ * A cobertura é incremental e cada registro não confirmado permanece marcado
+ * como needs_review até receber fonte e página verificáveis.
  */
 
 const PF2E_DATA = {
@@ -1623,12 +1623,98 @@ const GUNS_GEARS_CATALOG = {
   }
 };
 
+const GUNS_GEARS_BACKGROUNDS = [
+  ["anti_technology_activist", "Ativista Anti-Tecnologia", "Anti-Technology Activist", "Activista antitecnología", ["Constituição", "Carisma"], "intimidation", "Saber (Guildas)", "Coagir Grupo", 45],
+  ["decoder", "Decodificador", "Decoder", "Descifrador", ["Sabedoria", "Carisma"], "society", "Saber (Criptografia)", "Olhar Atento", 45],
+  ["gear_disciple", "Discípulo da Engrenagem", "Gear Disciple", "Discípulo de los engranajes", ["Sabedoria", "Carisma"], "crafting", "Saber (Divindade)", "Reparo Rápido", 45],
+  ["medicinal_engineer", "Engenheiro Medicinal", "Medicinal Engineer", "Ingeniero medicinal", ["Sabedoria", "Carisma"], "medicine", "Saber (Engenharia)", "Cirurgia Arriscada", 45],
+  ["toy_maker", "Fabricante de Brinquedos", "Toy Maker", "Fabricante de juguetes", ["Inteligência", "Carisma"], "crafting", "Saber (Mercantilismo)", "Especialidade de Manufatura", 46],
+  ["gear_warrior", "Guerreiro Engrenário", "Gear Warrior", "Guerrero de engranajes", ["Inteligência", "Carisma"], "crafting", "Saber (Gladiatorial)", "Profissional Experiente", 46],
+  ["printer", "Impressor", "Printer", "Impresor", ["Inteligência", "Carisma"], "society", "Saber (Quirografia)", "Poliglota", 46],
+  ["watched_thief", "Ladrão Vigiado", "Watched Thief", "Ladrón vigilado", ["Destreza", "Sabedoria"], "thievery", "Saber (Submundo)", "Punga", 46],
+  ["mechanic", "Mecânico", "Mechanic", "Mecánico", ["Força", "Inteligência"], "crafting", "Saber (Engenharia)", "Reparo Rápido", 46],
+  ["driver", "Motorista", "Driver", "Conductor", ["Força", "Destreza"], "acrobatics", "Saber (Pilotagem)", "Certeza para Saber (Pilotagem)", 46],
+  ["gear_researcher", "Pesquisador das Engrenagens", "Gear Researcher", "Investigador de engranajes", ["Destreza", "Inteligência"], "society", "Saber (Engenharia)", "Subitizar", 46],
+  ["saboteur", "Sabotador", "Saboteur", "Saboteador", ["Força", "Destreza"], "thievery", "Saber (Engenharia)", "Malabarismo Dissimulado", 46],
+  ["scrapper", "Sucateiro", "Scrapper", "Chatarrero", ["Força", "Sabedoria"], "athletics", "Saber (Terreno)", "Carregador Robusto", 46]
+].map(([id, pt, en, es, ability, skill, lore, feat, page]) => ({
+  id: `background.guns_gears.${id}`,
+  name: `${pt} (${en})`,
+  names: { "pt-BR": pt, en, es },
+  summaries: {
+    "pt-BR": `Antecedente de Pólvora e Engrenagens ligado a ${String(lore).replace(/^Saber \((.*)\)$/, "Saber de $1")}; o texto mecânico detalhado deve ser conferido na fonte.`,
+    en: `Guns & Gears background trained in ${skill} and a related lore; confirm the full mechanical text in the source.`,
+    es: `Trasfondo de Guns & Gears entrenado en ${skill} y un saber relacionado; confirma el texto mecánico completo en la fuente.`
+  },
+  ability,
+  skill,
+  lore,
+  feat,
+  description: `Antecedente de Pólvora e Engrenagens: ${pt}.`,
+  source: { book: GUNS_GEARS_SOURCE, page },
+  ruleset: "legacy",
+  needs_review: true
+}));
+const GUNS_GEARS_RARE_BACKGROUNDS = [
+  ["technology_dependent", "Dependente de Tecnologia", "Technology Dependent", "Dependiente de la tecnología", ["Constituição", "Inteligência"], "crafting", "medicine", "Medicina de Batalha", 47,
+    "Seu corpo não tolera mais magia de cura e você depende de dispositivos e engenhosidade.", "Your body no longer tolerates magical healing, so you rely on devices and ingenuity.", "Tu cuerpo ya no tolera la curación mágica, así que dependes de dispositivos e ingenio."],
+  ["discarded_duplicate", "Duplicata Descartada", "Discarded Duplicate", "Duplicado descartado", ["Livre", "Livre", "Livre"], "society", "identity lore", "—", 47,
+    "Você foi criado para substituir alguém importante e agora explora um mundo que o deixou para trás.", "You were created to replace someone important and now explore a world that left you behind.", "Fuiste creado para reemplazar a alguien importante y ahora exploras un mundo que te dejó atrás."],
+  ["saved_by_gears", "Salvo pelas Engrenagens", "Saved by Gears", "Salvado por los engranajes", ["Força", "Inteligência"], "crafting", "—", "—", 48,
+    "Uma prótese mecânica substitui parte do seu corpo e exige manutenção regular.", "A mechanical prosthesis replaces part of your body and requires regular maintenance.", "Una prótesis mecánica reemplaza parte de tu cuerpo y requiere mantenimiento regular."],
+  ["mechanical_symbiosis", "Simbiose Mecânica", "Mechanical Symbiosis", "Simbiosis mecánica", ["Sabedoria", "Carisma"], "arcana", "entity lore", "—", 48,
+    "Uma entidade vive em um objeto maquinal preso ao seu corpo e às suas decisões.", "An entity lives within a mechanical object attached to your body and choices.", "Una entidad vive en un objeto mecánico unido a tu cuerpo y tus decisiones."],
+  ["desired_life", "Vida Desejada", "Desired Life", "Vida deseada", ["Constituição", "Carisma"], "diplomacy", "—", "—", 48,
+    "Você foi um constructo ou boneco inanimado que ganhou vida por causa de um desejo profundo.", "You were once an inanimate construct or doll who gained life through a profound wish.", "Antes eras un constructo o muñeco inanimado que cobró vida por un deseo profundo."]
+].map(([id, pt, en, es, ability, skill, lore, feat, page, ptSummary, enSummary, esSummary]) => ({
+  id: `background.guns_gears.rare.${id}`,
+  name: `${pt} (${en})`,
+  names: { "pt-BR": pt, en, es },
+  summaries: { "pt-BR": ptSummary, en: enSummary, es: esSummary },
+  ability,
+  skill,
+  lore,
+  feat,
+  description: ptSummary,
+  source: { book: GUNS_GEARS_SOURCE, page },
+  ruleset: "legacy",
+  rarity: "rare",
+  rareSelection: true,
+  needs_review: true
+}));
+GUNS_GEARS_RARE_BACKGROUNDS.forEach((record) => PF2E_DATA.backgrounds.push(record));
+GUNS_GEARS_BACKGROUNDS.forEach((record) => PF2E_DATA.backgrounds.push(record));
+
 Object.entries(GUNS_GEARS_CATALOG.ancestries).forEach(([name, record]) => {
   if (PF2E_DATA.ancestries[name]) Object.assign(PF2E_DATA.ancestries[name], record, { source: { book: GUNS_GEARS_SOURCE, page: record.page }, ruleset: "legacy", needs_review: false });
 });
 Object.entries(GUNS_GEARS_CATALOG.classes).forEach(([name, record]) => {
   if (PF2E_DATA.classes[name]) Object.assign(PF2E_DATA.classes[name], record, { source: { book: GUNS_GEARS_SOURCE, page: record.page }, ruleset: "legacy", needs_review: false });
 });
+
+const GUNS_GEARS_ARCHETYPES = [
+  ["archetype.inventor_multiclass", "Inventor Multiclasse", "Inventor", "Inventor", 49, ["Inteligência 14"], "Dedicação multiclasse que concede uma inovação e treinamento em Manufatura para resolver problemas com engenhosidade.", "A multiclass dedication that grants an innovation and Crafting training to solve problems with ingenuity.", "Una dedicación multiclase que concede una innovación y entrenamiento en Artesanía para resolver problemas con ingenio."],
+  ["archetype.overwatch", "Vigilância", "Overwatch", "Vigilancia", 50, ["Especialista em Percepção"], "Arquétipo de observação que transforma percepção do campo de batalha em coordenação e apoio aos aliados.", "An observation archetype that turns battlefield awareness into coordination and support for allies.", "Un arquetipo de observación que convierte la percepción del campo de batalla en coordinación y apoyo a los aliados."],
+  ["archetype.sterling_dynamo", "Dínamo Esterlino", "Sterling Dynamo", "Dínamo esterlino", 52, [], "Arquétipo de prótese mecânica de combate, com um dínamo personalizável que amplia as opções de combate corpo a corpo.", "A combat prosthesis archetype with a customizable dynamo that expands melee options.", "Un arquetipo de prótesis de combate con un dínamo personalizable que amplía las opciones cuerpo a cuerpo."],
+  ["archetype.trapsmith", "Armadilheiro", "Trapsmith", "Armero de trampas", 54, ["Dedicação de Snarecrafter ou talento de classe de patrulheiro Especialista em Arapuca"], "Arquétipo que incorpora engrenagens e vapor à fabricação de arapucas especializadas.", "An archetype that incorporates gears and steam into the creation of specialized snares.", "Un arquetipo que incorpora engranajes y vapor a la fabricación de trampas especializadas."],
+  ["archetype.trick_driver", "Condutor Audaz", "Trick Driver", "Conductor temerario", 55, [], "Arquétipo de condução que transforma veículos em ferramentas agressivas de mobilidade e combate.", "A driving archetype that turns vehicles into aggressive tools for mobility and combat.", "Un arquetipo de conducción que convierte los vehículos en herramientas agresivas de movilidad y combate."],
+  ["archetype.vehicle_mechanic", "Mecânico de Veículos", "Vehicle Mechanic", "Mecánico de vehículos", 56, ["Inteligência +2", "Treinado em Manufatura"], "Arquétipo de manutenção e aprimoramento de veículos, com foco em construção, pilotagem e reparos.", "An archetype focused on maintaining and improving vehicles through construction, piloting, and repairs.", "Un arquetipo centrado en mantener y mejorar vehículos mediante construcción, pilotaje y reparaciones."],
+  ["archetype.gunslinger_multiclass", "Pistoleiro Multiclasse", "Gunslinger Multiclass", "Pistolero multiclase", 127, ["Destreza 14"], "Dedicação que concede treinamento em bestas e armas de fogo e acesso a talentos de pistoleiro.", "A dedication that grants training with crossbows and firearms and access to gunslinger feats.", "Una dedicación que concede competencia con ballestas y armas de fuego y acceso a dotes de pistolero."],
+  ["archetype.artillerist", "Artilheiro", "Artillerist", "Artillero", 128, ["Treinado em armas marciais"], "Arquetipo de artilharia para ataques poderosos com armas de cerco e pólvora.", "An artillery archetype for powerful attacks with siege weapons and gunpowder.", "Un arquetipo de artillería para ataques potentes con armas de asedio y pólvora."],
+  ["archetype.beast_gunner", "Atirador Bestial", "Beast Gunner", "Artillero bestial", 130, ["Especialista em armas de fogo e treinado em Arcanismo ou Manufatura"], "Arquetipo mágico que combina armas bestiais, magia e treinamento em armas de fogo.", "A magical archetype combining beast guns, magic, and firearm training.", "Un arquetipo mágico que combina armas bestiales, magia y entrenamiento con armas de fuego."],
+  ["archetype.bullet_dancer", "Dançarino da Bala", "Bullet Dancer", "Bailarín de la bala", 132, ["Especialista em defesa sem armadura e treinado em armas simples"], "Arquetipo marcial que usa armas de fogo com movimentos e posturas de artes marciais.", "A martial archetype that uses firearms through martial-arts movement and stances.", "Un arquetipo marcial que usa armas de fuego mediante movimientos y posturas de artes marciales."],
+  ["archetype.demolitionist", "Demolidor", "Demolitionist", "Demoledor", 133, ["Treinado em Manufatura"], "Especialista em explosivos que prepara e posiciona bombas para romper estruturas.", "An explosives specialist who prepares and places bombs to breach structures.", "Un especialista en explosivos que prepara y coloca bombas para derribar estructuras."],
+  ["archetype.fireworks_technician", "Técnico de Fogos de Artifício", "Firework Technician", "Técnico de fuegos artificiales", 134, ["Treinado em Manufatura"], "Arquetipo de manufatura que transforma pólvora, metais e papel em espetáculos e efeitos táticos.", "A Crafting archetype that turns powder, metal, and paper into spectacles and tactical effects.", "Un arquetipo de Artesanía que convierte pólvora, metal y papel en espectáculos y efectos tácticos."],
+  ["archetype.pistol_phenom", "Fenômeno da Pistola", "Pistol Phenom", "Fenómeno de la pistola", 136, ["Treinado em Dissimulação e treinado em Performance"], "Arquetipo de pistoleiro performático que combina fintas, estilo e armas de fogo de uma mão.", "A performative gunslinger archetype combining feints, style, and one-handed firearms.", "Un arquetipo de pistolero performático que combina fintas, estilo y armas de fuego de una mano."],
+  ["archetype.dueling_pair", "Dupla de Precisão", "Sniping Duo", "Dúo de francotiradores", 138, ["Treinado em Furtividade e em arcos ou armas de fogo"], "Arquetipo de cooperação entre atirador e observador para coordenar tiros e abrir brechas.", "A cooperative archetype for a shooter and spotter who coordinate attacks and openings.", "Un arquetipo cooperativo para un tirador y un observador que coordinan ataques y oportunidades."]
+];
+for (const [id, pt, en, es, page, prerequisites, ptSummary, enSummary, esSummary] of GUNS_GEARS_ARCHETYPES) {
+  if (!(PF2E_DATA.archetypes || []).some((candidate) => candidate.id === id)) PF2E_DATA.archetypes.push({
+    id, name: `${pt} (${en})`, subtype: "standard", dedicationLevel: 2, level: 2, prerequisites,
+    names: { "pt-BR": pt, en, es }, summaries: { "pt-BR": ptSummary, en: enSummary, es: esSummary }, description: ptSummary,
+    source: { book: GUNS_GEARS_SOURCE, page }, ruleset: "legacy", needs_review: false
+  });
+}
 
 const DARK_ARCHIVE_SOURCE = "Dark Archive (pré-Remaster)";
 const DARK_ARCHIVE_CLASSES = {
@@ -1678,9 +1764,379 @@ const RAGE_ELEMENTS_BACKGROUNDS = [
 ];
 RAGE_ELEMENTS_BACKGROUNDS.forEach((record) => PF2E_DATA.backgrounds.push({ ...record, source: { book: RAGE_ELEMENTS_SOURCE, page: record.page }, ruleset: "remaster", needs_review: false }));
 
+// Rage of Elements, capítulo Air Spells (pp. 70–73). Nomes, ranques,
+// tradições e páginas conferidos no PDF local; efeitos completos em revisão.
+const RAGE_ELEMENTS_AIR_SPELLS = [
+  ["airlift", "Transporte Aéreo", "Airlift", "Transporte aéreo", 4, ["arcane", "primal"], 70, "Uma rajada de vento ergue criaturas e objetos e os conduz até um destino próximo."],
+  ["blastback", "Rebote Explosivo", "Blastback", "Rebote explosivo", 3, ["arcane"], 70, "Uma onda de choque amortece sua queda e repele criaturas próximas."],
+  ["cleanse_air", "Purificar Ar", "Cleanse Air", "Purificar aire", 2, ["arcane", "divine", "primal"], 70, "Purifica o ar de venenos inalados, poluição e contaminantes semelhantes."],
+  ["cloud_dragons_cloak", "Manto do Dragão das Nuvens", "Cloud Dragon's Cloak", "Manto del dragón de nubes", 3, ["arcane", "primal"], 70, "Uma névoa envolve um alvo e o torna oculto contra ataques à distância."],
+  ["deep_breath", "Respiração Profunda", "Deep Breath", "Respiración profunda", 1, ["arcane", "primal"], 70, "Permite prender a respiração por mais tempo, sem criar ar respirável."],
+  ["gentle_breeze", "Brisa Suave", "Gentle Breeze", "Brisa suave", 2, ["divine", "occult", "primal"], 70, "Uma brisa restauradora ajuda criaturas vivas a descansar e resistir a aflições."],
+  ["phantom_orchestra", "Orquestra Fantasma", "Phantom Orchestra", "Orquesta fantasmal", 6, ["arcane", "occult", "primal"], 71, "Uma orquestra invisível de sons capturados cria explosões sucessivas de dano sônico."],
+  ["pressure_zone", "Zona de Pressão", "Pressure Zone", "Zona de presión", 5, ["arcane", "primal"], 71, "Uma queda de pressão torna a área difícil e dificulta a respiração."],
+  ["propulsive_breeze", "Brisa Propulsora", "Propulsive Breeze", "Brisa propulsora", 2, ["arcane", "primal"], 71, "Um vento nas costas impulsiona um aliado ao final de seu movimento."],
+  ["shock_to_the_system", "Choque no Sistema", "Shock to the System", "Choque al sistema", 7, ["divine", "occult", "primal"], 71, "Relâmpagos revitalizam ou reanimam um alvo e o deixam supercarregado."],
+  ["slashing_gust", "Rajada Cortante", "Slashing Gust", "Ráfaga cortante", 1, ["arcane", "primal"], 71, "Lâminas de ar atingem uma ou duas criaturas com dano cortante."],
+  ["stifling_stillness", "Imobilidade Sufocante", "Stifling Stillness", "Quietud sofocante", 4, ["arcane", "primal"], 71, "O ar imóvel torna a área difícil e força criaturas a lutar para respirar."],
+  ["tempest_cloak", "Manto da Tempestade", "Tempest Cloak", "Manto de tormenta", 3, ["arcane", "primal"], 72, "Ventos ferozes protegem uma criatura contra ataques físicos à distância e efeitos auditivos."],
+  ["vacuum", "Vácuo", "Vacuum", "Vacío", 7, ["arcane", "primal"], 72, "Você suga o ar da área, forçando criaturas a prender a respiração."],
+  ["voice_on_the_breeze", "Voz na Brisa", "Voice on the Breeze", "Voz en la brisa", 2, ["arcane", "occult", "primal"], 73, "Uma mensagem sussurrada viaja pelo vento até um ponto familiar."],
+  ["wisdom_of_the_winds", "Sabedoria dos Ventos", "Wisdom of the Winds", "Sabiduría de los vientos", 5, ["arcane", "divine", "occult", "primal"], 73, "Espíritos do ar oferecem orientação por meio de ventos, sinais ou conselhos."],
+  ["zephyr_slip", "Deslize do Zéfiro", "Zephyr Slip", "Desliz del céfiro", 4, ["arcane", "primal"], 73, "Uma corrente de ar afasta você de uma criatura que se aproxima."]
+];
+for (const [slug, pt, en, es, rank, traditions, page, summary] of RAGE_ELEMENTS_AIR_SPELLS) {
+  PF2E_DATA.spells.push({
+    id: `spell.rage_elements.air.${slug}`,
+    name: `${pt} (${en})`, rank, traditions, actionType: "varies",
+    names: { "pt-BR": pt, en, es },
+    summaries: {
+      "pt-BR": summary,
+      en: `Rage of Elements air spell: ${en}. Full mechanical text pending review.`,
+      es: `Conjuro de aire de Rage of Elements: ${es}. El texto mecánico completo queda pendiente de revisión.`
+    },
+    description: summary, source: { book: RAGE_ELEMENTS_SOURCE, page },
+    ruleset: "remaster", needs_review: true
+  });
+}
+
+const RAGE_ELEMENTS_EARTH_SPELLS = [
+  ["burrow_ward", "Proteção contra Escavação", "Burrow Ward", "Salvaguarda excavadora", 2, 94, "Solidifica a terra ao redor de você e dificulta a passagem de criaturas escavadoras."],
+  ["exploding_earth", "Terra Explosiva", "Exploding Earth", "Tierra explosiva", 2, 94, "Arremessa uma esfera compacta de terra e pedra que explode ao atingir o alvo."],
+  ["cave_fangs", "Presas da Caverna", "Cave Fangs", "Colmillos de caverna", 3, 94, "Formações afiadas de pedra surgem do chão e do teto, ferindo criaturas na área."],
+  ["glass_form", "Forma de Vidro", "Glass Form", "Forma de vidrio", 4, 94, "Concede ao alvo propriedades de vidro transparente, resistência e proteção contra sangramento."],
+  ["engrave_memory", "Gravar Memória", "Engrave Memory", "Grabar memoria", 5, 94, "Armazena até dez minutos de lembranças em uma pedra, que pode ser acessada por uma palavra-chave."],
+  ["glass_shield", "Escudo de Vidro", "Glass Shield", "Escudo de vidrio", 1, 94, "Cria uma camada de vidro que protege você e fere quem a quebra de perto."],
+  ["grasping_earth", "Terra Agarradora", "Grasping Earth", "Tierra apresadora", 4, 95, "Protrusões de rocha e solo agarram e enterram criaturas na área."],
+  ["heaving_earth", "Terra Ondulante", "Heaving Earth", "Tierra ondulante", 7, 95, "Uma onda atravessa o solo, sacode criaturas e explode em terra e pedras no alvo."],
+  ["instant_pottery", "Cerâmica Instantânea", "Instant Pottery", "Cerámica instantánea", 1, 95, "Molda material da terra em objetos simples de cerâmica temporária."],
+  ["interposing_earth", "Terra Interposta", "Interposing Earth", "Tierra interpuesta", 1, 95, "Ergue uma barreira de terra para oferecer cobertura contra um ataque ou efeito de área."],
+  ["pave_ground", "Aplainar Solo", "Pave Ground", "Allanar terreno", 2, 95, "Nivela o solo e remove terreno difícil não mágico feito de terra, entulho ou areia."],
+  ["rubble_step", "Passo de Entulho", "Rubble Step", "Paso de escombros", 2, 96, "Deixa um rastro de entulho que transforma os espaços abandonados em terreno difícil."],
+  ["sand_form", "Forma de Areia", "Sand Form", "Forma de arena", 3, 96, "Concede ao alvo aspectos de areia, resistência a certos danos e proteção contra sangramento."],
+  ["sliding_blocks", "Blocos Deslizantes", "Sliding Blocks", "Bloques deslizantes", 4, 96, "Conjura cubos de pedra que podem levitar e ser movidos para criar cobertura e obstáculos."]
+];
+for (const [slug, pt, en, es, rank, page, summary] of RAGE_ELEMENTS_EARTH_SPELLS) {
+  PF2E_DATA.spells.push({
+    id: `spell.rage_elements.earth.${slug}`,
+    name: `${pt} (${en})`, rank, traditions: ["arcane", "primal"], actionType: "varies",
+    names: { "pt-BR": pt, en, es },
+    summaries: {
+      "pt-BR": summary,
+      en: `Rage of Elements earth spell: ${en}. Full mechanical text pending review.`,
+      es: `Conjuro de tierra de Rage of Elements: ${es}. El texto mecánico completo queda pendiente de revisión.`
+    },
+    description: summary, source: { book: RAGE_ELEMENTS_SOURCE, page },
+    ruleset: "remaster", needs_review: true
+  });
+}
+
+const RAGE_ELEMENTS_FIRE_SPELLS = [
+  ["blazing_armory", "Arsenal Flamejante", "Blazing Armory", "Arsenal llameante", 2, 118, ["arcane", "divine", "primal"], "Materializa uma arma flamejante simples ou marcial nas mãos de uma criatura disposta."],
+  ["cauterize_wounds", "Cauterizar Ferimentos", "Cauterize Wounds", "Cauterizar heridas", 2, 118, ["arcane", "divine", "primal"], "Sela ferimentos sangrando com fogo e ajuda o alvo a se recuperar do sangramento persistente."],
+  ["cinder_swarm", "Enxame de Brasas", "Cinder Swarm", "Enjambre de brasas", 4, 118, ["arcane", "primal"], "Um enxame de criaturas flamejantes envolve o alvo e seus inimigos, causando dano e desorientação."],
+  ["dehydrate", "Desidratar", "Dehydrate", "Deshidratar", 1, 119, ["arcane", "primal"], "Extrai umidade de criaturas na área, causando dano de fogo persistente e enfraquecendo-as."],
+  ["eat_fire", "Comer Fogo", "Eat Fire", "Comer fuego", 1, 119, ["arcane", "occult", "primal"], "Consome fogo para ganhar resistência temporária e poder expelir fumaça."],
+  ["falsify_heat", "Falsificar Calor", "Falsify Heat", "Falsificar calor", 2, 119, ["arcane", "primal"], "Altera a temperatura aparente de criaturas ou objetos para enganar sentidos e ilusões térmicas."],
+  ["fires_pathway", "Caminho do Fogo", "Fire's Pathway", "Camino del fuego", 5, 119, ["arcane", "primal"], "Permite entrar em um fogo grande e sair instantaneamente por outro fogo dentro do alcance."],
+  ["fireproof", "À Prova de Fogo", "Fireproof", "Resistente al fuego", 2, 119, ["arcane", "divine", "primal"], "Protege um objeto contra calor, fogo e efeitos que tenham o traço fogo."],
+  ["flame_dancer", "Dançarino das Chamas", "Flame Dancer", "Danzante de llamas", 5, 120, ["arcane", "occult", "primal"], "Envolve uma criatura em chamas e fortalece seus ataques desarmados e sua presença intimidante."],
+  ["flames_of_ego", "Chamas do Ego", "Flames of Ego", "Llamas del ego", 5, 120, ["arcane", "occult", "primal"], "Chamas fascinantes tornam o alvo arrogante e descuidado diante de sua própria imagem."],
+  ["heatvision", "Visão Térmica", "Heatvision", "Visión térmica", 3, 120, ["arcane", "divine", "occult", "primal"], "Permite perceber energia térmica e detectar criaturas quentes através de fumaça ou escuridão."],
+  ["illuminate", "Iluminar", "Illuminate", "Iluminar", 1, 120, ["arcane", "divine", "occult", "primal"], "Acende fontes de luz não mágicas que usam fogo na área."],
+  ["phoenix_ward", "Proteção da Fênix", "Phoenix Ward", "Protección del fénix", 4, 120, ["divine", "primal"], "Um escudo de fogo absorve dano letal, cura você e então desaparece em uma explosão de luz."]
+];
+for (const [slug, pt, en, es, rank, page, traditions, summary] of RAGE_ELEMENTS_FIRE_SPELLS) {
+  PF2E_DATA.spells.push({
+    id: `spell.rage_elements.fire.${slug}`,
+    name: `${pt} (${en})`, rank, traditions, actionType: "varies",
+    names: { "pt-BR": pt, en, es },
+    summaries: {
+      "pt-BR": summary,
+      en: `Rage of Elements fire spell: ${en}. Full mechanical text pending review.`,
+      es: `Conjuro de fuego de Rage of Elements: ${es}. El texto mecánico completo queda pendiente de revisión.`
+    },
+    description: summary, source: { book: RAGE_ELEMENTS_SOURCE, page },
+    ruleset: "remaster", needs_review: true
+  });
+}
+
+const RAGE_ELEMENTS_METAL_SPELLS = [
+  ["beheading_buzz_saw", "Serra Zumbidora Decapitante", "Beheading Buzz Saw", "Sierra decapitadora", 7, 142, ["arcane"], "Uma serra de metal fundido atravessa uma linha, causando dano cortante e sangramento."],
+  ["conductive_weapon", "Arma Condutiva", "Conductive Weapon", "Arma conductora", 1, 142, ["arcane", "primal"], "Carrega uma arma de metal com eletricidade, transformando-a em uma arma chocante."],
+  ["detect_metal", "Detectar Metal", "Detect Metal", "Detectar metal", 1, 142, ["arcane", "divine", "occult", "primal"], "Sintoniza você a campos magnéticos e revela a presença de objetos e depósitos metálicos."],
+  ["clad_in_metal", "Revestir com Metal", "Clad in Metal", "Revestir de metal", 2, 142, ["arcane", "divine", "primal"], "Troca temporariamente a superfície de um objeto metálico por um metal precioso adequado."],
+  ["ferrous_form", "Forma Ferrosa", "Ferrous Form", "Forma ferrosa", 8, 142, ["arcane", "primal"], "Transforma seu corpo em ferro flexível, concedendo resistência física e imunidades."],
+  ["field_of_razors", "Campo de Lâminas", "Field of Razors", "Campo de navajas", 6, 143, ["arcane", "primal"], "Transforma metal em uma área de fios e lâminas que pune o movimento."],
+  ["fold_metal", "Dobrando Metal", "Fold Metal", "Doblar metal", 1, 143, ["arcane"], "Dobra um objeto metálico em uma esfera lisa até que a magia termine ou seja desfeita."],
+  ["magnetic_dominion", "Domínio Magnético", "Magnetic Dominion", "Dominio magnético", 9, 143, ["arcane", "primal"], "Controla criaturas e objetos metálicos na área por meio dos campos magnéticos."],
+  ["mantle_of_the_melting_heart", "Manto do Coração Derretido", "Mantle of the Melting Heart", "Manto del corazón fundido", 5, 143, ["arcane", "primal"], "Reveste seu corpo em metal líquido e escolhe poderes defensivos ou ofensivos."],
+  ["mercurial_stride", "Passo Mercurial", "Mercurial Stride", "Paso mercurial", 4, 144, ["arcane", "occult"], "Assume uma forma de mercúrio e atravessa espaços de criaturas durante seu movimento."],
+  ["needle_darts", "Dardos de Agulha", "Needle Darts", "Dardos de aguja", 1, 144, ["arcane", "divine", "occult", "primal"], "Molda agulhas de metal e as lança contra um alvo, podendo causar sangramento."],
+  ["noxious_metals", "Metais Nocivos", "Noxious Metals", "Metales nocivos", 3, 145, ["arcane", "primal"], "Libera vapores metálicos tóxicos que deixam criaturas doentes e causam dano de veneno."],
+  ["rust_cloud", "Nuvem de Ferrugem", "Rust Cloud", "Nube de óxido", 4, 145, ["arcane", "primal"], "Uma nuvem corrosiva enferruja metal e ameaça criaturas e objetos na área."],
+  ["shielded_arm", "Braço Protegido", "Shielded Arm", "Brazo protegido", 1, 145, ["arcane", "divine", "primal"], "Cria um escudo metálico no braço para bloquear um ataque ou efeito iminente."],
+  ["wall_of_metal", "Muralha de Metal", "Wall of Metal", "Muro de metal", 6, 146, ["arcane", "primal"], "Ergue uma muralha metálica resistente que permanece até ser destruída ou a magia terminar."]
+];
+for (const [slug, pt, en, es, rank, page, traditions, summary] of RAGE_ELEMENTS_METAL_SPELLS) {
+  PF2E_DATA.spells.push({
+    id: `spell.rage_elements.metal.${slug}`,
+    name: `${pt} (${en})`, rank, traditions, actionType: "varies",
+    names: { "pt-BR": pt, en, es },
+    summaries: {
+      "pt-BR": summary,
+      en: `Rage of Elements metal spell: ${en}. Full mechanical text pending review.`,
+      es: `Conjuro de metal de Rage of Elements: ${es}. El texto mecánico completo queda pendiente de revisión.`
+    },
+    description: summary, source: { book: RAGE_ELEMENTS_SOURCE, page },
+    ruleset: "remaster", needs_review: true
+  });
+}
+
+const RAGE_ELEMENTS_WATER_SPELLS = [
+  ["brine_dragon_bile", "Bile de Dragão de Salmoura", "Brine Dragon Bile", "Bilis de dragón de salmuera", 2, 172, ["arcane", "primal"], "Fere uma criatura que acabou de sofrer um ataque cortante ou perfurante, causando dano persistente de ácido."],
+  ["buoyant_bubbles", "Bolhas Flutuantes", "Buoyant Bubbles", "Burbujas flotantes", 1, 172, ["arcane", "primal"], "Reveste uma criatura com bolhas que a fazem flutuar e impedem que afunde."],
+  ["coral_scourge", "Flagelo de Coral", "Coral Scourge", "Azote de coral", 3, 172, ["arcane", "primal"], "Faz coral crescer sobre uma criatura, deixando-a desajeitada e restringindo seu movimento."],
+  ["dancing_fountain", "Fonte Dançante", "Dancing Fountain", "Fuente danzante", 7, 172, ["arcane", "primal"], "Cria uma fonte que pode mover criaturas, obscurecer a área ou causar dano em uma explosão."],
+  ["dive_and_breach", "Mergulho e Emergência", "Dive and Breach", "Inmersión y salida", 3, 172, ["arcane", "primal"], "Teletransporta você entre superfícies como um mergulho, causando dano nas áreas de entrada e saída."],
+  ["draw_moisture", "Extrair Umidade", "Draw Moisture", "Extraer humedad", 1, 173, ["arcane", "divine", "primal"], "Extrai água de um objeto para secá-lo ou obter uma pequena quantidade de água potável."],
+  ["freezing_rain", "Chuva Congelante", "Freezing Rain", "Lluvia congelante", 5, 173, ["arcane", "primal"], "Cria chuva que torna a área difícil e pode congelar para causar dano de frio e lentidão."],
+  ["frost_pillar", "Pilar de Gelo", "Frost Pillar", "Pilar de escarcha", 6, 173, ["arcane", "primal"], "Aprisiona uma criatura em um pilar de gelo resistente até que ele seja destruído ou a magia termine."],
+  ["grasp_of_the_deep", "Aperto das Profundezas", "Grasp of the Deep", "Agarre de las profundidades", 4, 173, ["arcane", "primal"], "Esmaga e desorienta uma criatura com a pressão fantasmagórica do mar profundo, podendo agarrá-la."],
+  ["hungry_depths", "Profundezas Famintas", "Hungry Depths", "Profundidades hambrientas", 7, 173, ["arcane", "primal"], "Abre um vórtice de água corrompida que causa dano e se move pela área enquanto é sustentado."],
+  ["misty_memory", "Memória Nebulosa", "Misty Memory", "Memoria brumosa", 4, 173, ["arcane", "divine", "primal"], "Revela em uma névoa cenas silenciosas que aconteceram perto de uma massa de água nas últimas 24 horas."],
+  ["personal_ocean", "Oceano Pessoal", "Personal Ocean", "Océano personal", 6, 174, ["arcane", "primal"], "Envolve você em uma bolha de água que permite respirar e nadar, mas limita ataques e magias de fogo."],
+  ["pillar_of_water", "Pilar de Água", "Pillar of Water", "Pilar de agua", 3, 174, ["arcane", "primal"], "Cria um cilindro de água no qual criaturas podem nadar ou caminhar com dificuldade."],
+  ["rousing_splash", "Respingar Revigorante", "Rousing Splash", "Salpicadura estimulante", 1, 174, ["divine", "primal"], "Concede pontos de vida temporários e ajuda uma criatura a se recuperar de dano persistente de ácido ou fogo."],
+  ["scrying_ripples", "Ondulações de Vidência", "Scrying Ripples", "Ondulaciones adivinatorias", 3, 175, ["arcane", "divine", "occult", "primal"], "Permite observar e ouvir através de águas correntes próximas, mudando o ponto observado enquanto sustenta."],
+  ["waterproof", "Impermeabilizar", "Waterproof", "Impermeabilizar", 2, 175, ["arcane", "primal"], "Impede que um objeto absorva água e concede proteção contra efeitos de água e ácido."],
+  ["whirlpool", "Redemoinho", "Whirlpool", "Remolino", 8, 175, ["arcane", "primal"], "Cria um grande vórtice que causa dano, torna a área difícil e puxa criaturas para o centro." ]
+];
+for (const [slug, pt, en, es, rank, page, traditions, summary] of RAGE_ELEMENTS_WATER_SPELLS) {
+  PF2E_DATA.spells.push({
+    id: `spell.rage_elements.water.${slug}`,
+    name: `${pt} (${en})`, rank, traditions, actionType: "varies",
+    names: { "pt-BR": pt, en, es },
+    summaries: {
+      "pt-BR": summary,
+      en: `Rage of Elements water spell: ${en}. Full mechanical text pending review.`,
+      es: `Conjuro de agua de Rage of Elements: ${es}. El texto mecánico completo queda pendiente de revisión.`
+    },
+    description: summary, source: { book: RAGE_ELEMENTS_SOURCE, page },
+    ruleset: "remaster", needs_review: true
+  });
+}
+
+const RAGE_ELEMENTS_WOOD_SPELLS = [
+  ["arrow_salvo", "Salva de Flechas", "Arrow Salvo", "Salva de flechas", 6, 196, ["arcane", "primal"], "Conjura um arco de madeira imenso que dispara uma salva de flechas contra inimigos próximos."],
+  ["entwined_roots", "Raízes Entrelaçadas", "Entwined Roots", "Raíces entrelazadas", 5, 196, ["arcane", "primal"], "Protege criaturas vivas com raízes flexíveis que concedem resistência e capturam munição que falha."],
+  ["flourishing_flora", "Flora Florescente", "Flourishing Flora", "Flora floreciente", 1, 196, ["arcane", "primal"], "Faz plantas crescerem rapidamente em uma área, causando dano e efeitos variados conforme a planta escolhida."],
+  ["helpful_wood_spirits", "Espíritos de Madeira Prestativos", "Helpful Wood Spirits", "Espíritus de madera serviciales", 2, 196, ["arcane", "primal"], "Invoca espíritos de madeira que realizam tarefas, distraem inimigos, criam terreno difícil ou procuram na área."],
+  ["life_draining_roots", "Raízes Drenadoras de Vida", "Life-Draining Roots", "Raíces drenadoras de vida", 4, 196, ["arcane", "primal"], "Lança raízes perfurantes em uma linha, causando dano e concedendo vida temporária por criaturas vivas atingidas."],
+  ["lignify", "Lignificar", "Lignify", "Lignificar", 6, 197, ["arcane", "primal"], "Transforma lentamente a carne de uma criatura em madeira, aplicando lentidão até uma petrificação de madeira."],
+  ["lotus_walk", "Caminho de Lótus", "Lotus Walk", "Paso de loto", 3, 197, ["arcane", "divine", "primal"], "Faz flores aquáticas surgirem sob seus pés para caminhar sobre água e outros líquidos."],
+  ["mantle_of_the_unwavering_heart", "Manto do Coração Inabalável", "Mantle of the Unwavering Heart", "Manto del corazón inquebrantable", 5, 197, ["arcane", "primal"], "Envolve você em madeira viva e permite escolher entre vitalidade, perfume debilitante, grande estatura ou vontade resistente."],
+  ["pollen_pods", "Vagens de Pólen", "Pollen Pods", "Vainas de polen", 7, 197, ["arcane", "primal"], "Cultiva bulbos de madeira sensíveis ao movimento que liberam pólen venenoso quando ativados."],
+  ["rigid_form", "Forma Rígida", "Rigid Form", "Forma rígida", 4, 197, ["arcane", "primal"], "Usa a rigidez da madeira para tentar neutralizar efeitos de polimorfia nocivos que tenham você como alvo."],
+  ["root_reading", "Leitura de Raízes", "Root Reading", "Lectura de raíces", 1, 198, ["arcane", "primal"], "Percebe criaturas ocultas e rastros recentes ao enviar seus sentidos pelos sistemas de raízes da vegetação."],
+  ["splinter_volley", "Rajada de Estilhaços", "Splinter Volley", "Descarga de astillas", 2, 198, ["arcane", "primal"], "Dispara estilhaços contra um ou dois alvos, causando dano perfurante e sangramento persistente."],
+  ["take_root", "Criar Raízes", "Take Root", "Echar raíces", 1, 198, ["arcane", "primal"], "Cria raízes que reforçam a postura ou a pegada de uma criatura, protegendo-a contra empurrões, desarmes e quedas."],
+  ["timber", "Tronco", "Timber", "Tronco", 1, 198, ["arcane", "primal"], "Cria uma pequena árvore que cai em uma linha, causando dano contundente e podendo deixar criaturas ofuscadas."],
+  ["verdant_sprout", "Broto Verdejante", "Verdant Sprout", "Brote verdante", 1, 199, ["primal"], "Planta uma semente que cresce em uma planta resistente, fornecendo cobertura, terreno difícil e alimento."],
+  ["wall_of_shrubs", "Muralha de Arbustos", "Wall of Shrubs", "Muro de arbustos", 1, 199, ["arcane", "primal"], "Faz uma linha ou anel de arbustos surgir do chão para conceder cobertura na área."],
+  ["weave_wood", "Trançar Madeira", "Weave Wood", "Tejer madera", 1, 199, ["arcane", "primal"], "Transforma madeira, juncos ou fibras vegetais em vários objetos mundanos de madeira trançada."],
+  ["wooden_double", "Duplo de Madeira", "Wooden Double", "Doble de madera", 3, 199, ["arcane", "occult", "primal"], "Cria um duplicado de madeira que recebe um golpe crítico no seu lugar e deixa você dar um passo."],
+  ["wooden_fists", "Punhos de Madeira", "Wooden Fists", "Puños de madera", 1, 199, ["arcane", "primal"], "Transforma seus punhos em troncos, concedendo ataques contundentes com alcance e melhorias em níveis elevados."]
+];
+for (const [slug, pt, en, es, rank, page, traditions, summary] of RAGE_ELEMENTS_WOOD_SPELLS) {
+  PF2E_DATA.spells.push({
+    id: `spell.rage_elements.wood.${slug}`,
+    name: `${pt} (${en})`, rank, traditions, actionType: "varies",
+    names: { "pt-BR": pt, en, es },
+    summaries: {
+      "pt-BR": summary,
+      en: `Rage of Elements wood spell: ${en}. Full mechanical text pending review.`,
+      es: `Conjuro de madera de Rage of Elements: ${es}. El texto mecánico completo queda pendiente de revisión.`
+    },
+    description: summary, source: { book: RAGE_ELEMENTS_SOURCE, page },
+    ruleset: "remaster", needs_review: true
+  });
+}
+
+PF2E_DATA.spells.push(
+  {
+    id: "spell.rage_elements.wood.arms_of_nature", name: "Braços da Natureza (Arms of Nature)", rank: 1, focus: true,
+    traditions: ["divine"], actionType: "two-actions", names: { "pt-BR": "Braços da Natureza", en: "Arms of Nature", es: "Brazos de la naturaleza" },
+    summaries: { "pt-BR": "Extrai uma arma de madeira de um objeto ou planta, com aprimoramentos conforme o nível.", en: "Draws a wooden weapon from an object or plant, with upgrades at higher ranks.", es: "Extrae un arma de madera de un objeto o planta, con mejoras en rangos superiores." },
+    description: "Cria uma arma de foco de madeira; texto mecânico completo pendente de revisão.", source: { book: RAGE_ELEMENTS_SOURCE, page: 199 }, ruleset: "remaster", needs_review: true
+  },
+  {
+    id: "spell.rage_elements.wood.wood_walk", name: "Caminhar pela Madeira (Wood Walk)", rank: 4, focus: true,
+    traditions: ["divine"], actionType: "two-actions", names: { "pt-BR": "Caminhar pela Madeira", en: "Wood Walk", es: "Caminar por la madera" },
+    summaries: { "pt-BR": "Permite mover-se por plantas vivas e árvores próximas, inclusive em diferentes direções.", en: "Lets you move along living plants and nearby trees, including in different directions.", es: "Te permite moverte por plantas vivas y árboles cercanos, incluso en distintas direcciones." },
+    description: "Movimento de foco pelo domínio da Madeira; texto mecânico completo pendente de revisão.", source: { book: RAGE_ELEMENTS_SOURCE, page: 199 }, ruleset: "remaster", needs_review: true
+  }
+);
+PF2E_DATA.rituals.push({
+  id: "ritual.rage_elements.bountiful_oasis", name: "Oásis Abundante (Bountiful Oasis)", rank: 5, rarity: "uncommon", traditions: ["primal"],
+  castingTimes: { "pt-BR": "1 dia", en: "1 day", es: "1 día" },
+  names: { "pt-BR": "Oásis Abundante", en: "Bountiful Oasis", es: "Oasis abundante" },
+  summaries: { "pt-BR": "Redireciona água subterrânea para criar uma fonte ou oásis que sustenta uma pequena comunidade.", en: "Redirects underground water to create a spring or oasis capable of supporting a small community.", es: "Redirige agua subterránea para crear un manantial u oasis capaz de sostener una pequeña comunidad." },
+  description: "Ritual de água com resultados dependentes do teste de Natureza; texto completo pendente de revisão.", source: { book: RAGE_ELEMENTS_SOURCE, page: 175 }, ruleset: "remaster", needs_review: true
+});
+
+const RAGE_ELEMENTS_WOOD_ITEMS = [
+  ["animal_nip", "Mordida Animal", "Animal Nip", "Cebo animal", 4, 200, "Consumível alquímico que atrai animais com um forte aroma e pode fasciná-los."],
+  ["blooming_lotus_seed_pod", "Vagem de Sementes de Lótus Florescente", "Blooming Lotus Seed Pod", "Vaina de semillas de loto floreciente", 7, 200, "Vagem consumível que cria plataformas flutuantes ou uma flor que favorece o descanso."],
+  ["broadleaf_shield", "Escudo de Folha Larga", "Broadleaf Shield", "Escudo de hoja ancha", 6, 200, "Escudo de madeira viva que muda com as estações e oferece resistências variáveis."],
+  ["captivating_rosebud", "Botão de Rosa Cativante", "Captivating Rosebud", "Capullo de rosa cautivador", 3, 200, "Consumível perfumado que brota em roseiras capazes de distrair ou fascinar criaturas."],
+  ["carver_cutter", "Machado Entalhador", "Carver-Cutter", "Hacha talladora", 11, 201, "Machado de batalha mágico com cinzel oculto e bônus para trabalhos em madeira."],
+  ["glowing_lantern_fruit", "Fruto Lanterna Brilhante", "Glowing Lantern Fruit", "Fruta linterna brillante", 1, 201, "Fruto consumível que ilumina como uma lanterna ou fornece calor de fogueira quando plantado."],
+  ["kizidhars_shield", "Escudo de Kizidhar", "Kizidhar's Shield", "Escudo de Kizidhar", 11, 202, "Escudo de madeira mágica que se repara e pode proteger um acampamento com espinhos."],
+  ["purifying_spoon", "Colher Purificadora", "Purifying Spoon", "Cuchara purificadora", 1, 202, "Colher mágica que purifica comida e bebida em quantidades proporcionais ao seu tipo."],
+  ["rooting", "Enraizamento", "Rooting", "Enraizamiento", 7, 202, "Runa de madeira vegetal que imobiliza e deixa desajeitado um alvo após um acerto crítico."],
+  ["sandalwood_fan", "Leque de Sândalo", "Sandalwood Fan", "Abanico de sándalo", 12, 202, "Leque mágico que facilita viagens planares e permite falar com plantas."],
+  ["splintering_spear", "Lança Estilhaçante", "Splintering Spear", "Lanza astilladora", 13, 202, "Lança de madeira crepuscular que causa sangramento e pode se despedaçar em uma explosão de estilhaços."],
+  ["tailors_boll", "Bola do Alfaiate", "Tailor's Boll", "Bola del sastre", 3, 203, "Consumível de fibras que tece roupas não mágicas sob medida rapidamente."],
+  ["tales_in_timber", "Contos na Madeira", "Tales in Timber", "Historias en madera", 10, 202, "Armadura de madeira entalhada que concede conhecimento de Natureza e disfarces especiais."],
+  ["therapeutic_snap_peas", "Ervilhas Estalantes Terapêuticas", "Therapeutic Snap Peas", "Guisantes terapéuticos", 8, 202, "Consumível vegetal que libera uma bolsa de cura e pode criar uma trepadeira para escalada."],
+  ["thorn_triad", "Tríade de Espinhos", "Thorn Triad", "Tríada de espinas", 4, 203, "Spellheart de madeira que conjura madeira e fortalece ataques ou defesas após uma magia vegetal."]
+];
+for (const [slug, pt, en, es, level, page, summary] of RAGE_ELEMENTS_WOOD_ITEMS) {
+  PF2E_DATA.items.push({
+    id: `item.rage_elements.wood.${slug}`, name: `${pt} (${en})`, level, category: "magical",
+    names: { "pt-BR": pt, en, es }, summaries: {
+      "pt-BR": summary,
+      en: `Rage of Elements wood item: ${en}. Full mechanical text pending review.`,
+      es: `Objeto de madera de Rage of Elements: ${es}. El texto mecánico completo queda pendiente de revisión.`
+    }, description: summary, source: { book: RAGE_ELEMENTS_SOURCE, page }, ruleset: "remaster", needs_review: true
+  });
+}
+const RAGE_ELEMENTS_WATER_ITEMS = [
+  ["aboutface_figurehead", "Figura de Proa Meia-Volta", "Aboutface Figurehead", "Mascarón de proa media vuelta", 10, 176, "Figura de proa mágica que permite virar um navio em seu próprio eixo."],
+  ["anglerfish_lantern", "Lanterna Peixe-Pescador", "Anglerfish Lantern", "Linterna de rape", 5, 176, "Lanterna que brilha debaixo d'água e pode fascinar criaturas ou virar uma esfera submersível."],
+  ["brine_dragon_scale", "Escama de Dragão de Salmoura", "Brine Dragon Scale", "Escama de dragón de salmuera", 8, 176, "Talismã que libera água salgada cáustica contra uma criatura atingida por ação de concentração."],
+  ["conch_of_otherworldly_seas", "Concha dos Mares de Outro Mundo", "Conch of Otherworldly Seas", "Caracola de mares sobrenaturales", 12, 176, "Concha musical que facilita viagens ao Plano da Água e permite falar com Thalassic."],
+  ["faydhaans_dallah", "Dallah de Faydhaan", "Faydhaan's Dallah", "Dallah de Faydhaan", 14, 177, "Jarra mágica que prepara café e concede respiração aquática ou transforma a bebida em poção comum."],
+  ["kraken_figurehead", "Figura de Proa Kraken", "Kraken Figurehead", "Mascarón de proa kraken", 10, 177, "Figura de proa que invoca tentáculos espectrais para atrapalhar e prender navios inimigos."],
+  ["lionfish_spear", "Lança Peixe-Leão", "Lionfish Spear", "Lanza pez león", 11, 177, "Lança mágica de combate aquático que aplica veneno de peixe-leão uma vez por dia."],
+  ["octopus_potion", "Poção de Polvo", "Octopus Potion", "Poción de pulpo", 6, 178, "Poção que faz braços de polvo surgirem do corpo para agarrar inimigos."],
+  ["sharkskin_robe", "Robe de Pele de Tubarão", "Sharkskin Robe", "Túnica de piel de tiburón", 12, 178, "Roupa investida que concede deslocamento de natação e adapta ataques ao combate subaquático."],
+  ["shell_of_easy_breathing", "Concha da Respiração Fácil", "Shell of Easy Breathing", "Concha de respiración fácil", 5, 178, "Concha mágica que permite respirar debaixo d'água após mergulhar o rosto em sua água."],
+  ["sticky_algae_bomb", "Bomba de Algas Pegajosas", "Sticky Algae Bomb", "Bomba de algas pegajosas", 1, 178, "Bomba alquímica de água que funciona normalmente debaixo d'água e deixa um rastro visível."],
+  ["underwater", "Subaquática", "Underwater", "Subacuática", 3, 178, "Runa de arma que remove penalidades e restrições de ataques realizados na água."],
+  ["veiled_figurehead", "Figura de Proa Velada", "Veiled Figurehead", "Mascarón de proa velado", 7, 179, "Figura de proa ilusória que altera a aparência do navio e de sua tripulação."]
+];
+for (const [slug, pt, en, es, level, page, summary] of RAGE_ELEMENTS_WATER_ITEMS) {
+  PF2E_DATA.items.push({
+    id: `item.rage_elements.water.${slug}`, name: `${pt} (${en})`, level, category: "magical",
+    names: { "pt-BR": pt, en, es }, summaries: {
+      "pt-BR": summary,
+      en: `Rage of Elements water item: ${en}. Full mechanical text pending review.`,
+      es: `Objeto de agua de Rage of Elements: ${es}. El texto mecánico completo queda pendiente de revisión.`
+    }, description: summary, source: { book: RAGE_ELEMENTS_SOURCE, page }, ruleset: "remaster", needs_review: true
+  });
+}
+PF2E_DATA.rituals.push({
+  id: "ritual.rage_elements.sky_signs", name: "Sinais no Céu (Sky Signs)", rank: 6, rarity: "uncommon", traditions: ["primal"],
+  castingTimes: { "pt-BR": "1 dia", en: "1 day", es: "1 día" },
+  names: { "pt-BR": "Sinais no Céu", en: "Sky Signs", es: "Señales en el cielo" },
+  summaries: { "pt-BR": "Exibe uma mensagem simples no céu usando nuvens, auroras ou outro fenômeno atmosférico.", en: "Displays a simple message across the sky using clouds, auroras, or another atmospheric phenomenon.", es: "Muestra un mensaje sencillo en el cielo usando nubes, auroras u otro fenómeno atmosférico." },
+  description: "Ritual de ilusão aérea; resultados dependem do teste de Natureza, com texto completo pendente de revisão.", source: { book: RAGE_ELEMENTS_SOURCE, page: 73 }, ruleset: "remaster", needs_review: true
+});
+const RAGE_ELEMENTS_AIR_ITEMS = [
+  ["aerial_cloak", "Manto Aéreo", "Aerial Cloak", "Capa aérea", 3, 74, "Manto leve que ajuda em saltos, equilíbrio, voo e quedas."],
+  ["atmospheric_staff", "Bastão Atmosférico", "Atmospheric Staff", "Bastón atmosférico", 4, 74, "Bastão mágico com magias de ar, gravidade, voo e clima."],
+  ["blight_breath", "Sopro da Praga", "Blight Breath", "Aliento de plaga", 12, 74, "Sopro engarrafado que protege contra veneno e libera uma nuvem nociva."],
+  ["extra_lung", "Pulmão Extra", "Extra Lung", "Pulmón adicional", 8, 74, "Bexiga de ar que permite respirar por várias rodadas e expelir venenos inalados."],
+  ["fan_of_soothing_winds", "Leque dos Ventos Calmantes", "Fan of Soothing Winds", "Abanico de vientos calmantes", 11, 74, "Leque que conjura curas em cones por meio de contas que se renovam diariamente."],
+  ["floating_tent", "Tenda Flutuante", "Floating Tent", "Tienda flotante", 1, 75, "Tenda equilibrada para dormir em ambientes planares sem gravidade."],
+  ["frost_breath", "Sopro Gélido", "Frost Breath", "Aliento de escarcha", 7, 75, "Sopro engarrafado que concede resistência a frio e cobre uma área com gelo."],
+  ["jaathooms_scarf", "Cachecol de Jaathoom", "Jaathoom's Scarf", "Bufanda de Jaathoom", 10, 75, "Cachecol investido que concede bônus de Performance e pode causar invisibilidade ou empurrar inimigos."],
+  ["nimbus_breath", "Sopro de Nimbo", "Nimbus Breath", "Aliento de nimbo", 8, 75, "Sopro engarrafado que concede resistência elétrica, voo e um jato de vento."],
+  ["spiral_chimes", "Sinos Espirais", "Spiral Chimes", "Campanas espirales", 13, 76, "Sinos mágicos que auxiliam viagens planares, preveem o clima e revelam invisibilidade."],
+  ["spun_cloud", "Nuvem Fiada", "Spun Cloud", "Nube hilada", 2, 76, "Nuvem engarrafada que se expande e cria efeitos variados conforme sua cor."],
+  ["storm_breath", "Sopro de Tempestade", "Storm Breath", "Aliento de tormenta", 9, 76, "Sopro engarrafado que concede resistências e libera um raio elétrico."],
+  ["wisp_chain", "Cota de Fios de Ar", "Wisp Chain", "Cota de hilos de aire", 9, 76, "Armadura de correntes de vento que pode ensurdecer criaturas próximas e lançar lâminas de ar."]
+];
+for (const [slug, pt, en, es, level, page, summary] of RAGE_ELEMENTS_AIR_ITEMS) {
+  PF2E_DATA.items.push({ id: `item.rage_elements.air.${slug}`, name: `${pt} (${en})`, level, category: "magical", names: { "pt-BR": pt, en, es }, summaries: {
+    "pt-BR": summary, en: `Rage of Elements air item: ${en}. Full mechanical text pending review.`, es: `Objeto de aire de Rage of Elements: ${es}. El texto mecánico completo queda pendiente de revisión.`
+  }, description: summary, source: { book: RAGE_ELEMENTS_SOURCE, page }, ruleset: "remaster", needs_review: true });
+}
+const RAGE_ELEMENTS_EARTH_ITEMS = [
+  ["aeon_stone", "Pedra Aeon", "Aeon Stone", "Piedra aeon", 3, 98, "Pedra investida que orbita a cabeça e oferece poderes de percepção, mente ou resistência."],
+  ["drought_powder", "Pó da Seca", "Drought Powder", "Polvo de sequía", 11, 98, "Pó consumível que mantém você seco, reduz água e afeta criaturas aquáticas."],
+  ["exuviae_powder", "Pó de Exúvia", "Exuviae Powder", "Polvo de exuvias", 14, 98, "Pó alquímico que prolonga a retenção de ar e cria uma carapaça protetora contra petrificação."],
+  ["fossil_fragment", "Fragmento Fóssil", "Fossil Fragment", "Fragmento fósil", 7, 98, "Fragmento mágico que se transforma temporariamente em um esqueleto fóssil obediente."],
+  ["jabalis_dice", "Dados de Jabali", "Jabali's Dice", "Dados de Jabali", 12, 99, "Dados de pedra que concedem sorte e invocam efeitos de um shuyookh quando lançados."],
+  ["limestone_shield", "Escudo de Calcário", "Limestone Shield", "Escudo de piedra caliza", 7, 99, "Escudo torre que se expande em uma muralha e bloqueia efeitos elementais."],
+  ["robe_of_stone", "Robe de Pedra", "Robe of Stone", "Túnica de piedra", 11, 100, "Veste investida que concede sentido sísmico, língua Petran e transformação elemental de terra."],
+  ["sairazul_blue", "Azul de Sairazul", "Sairazul Blue", "Azul de Sairazul", 10, 100, "Poção rara que protege contra veneno e energia void e cura quando você cai a zero PV."],
+  ["sandcastle", "Castelo de Areia", "Sandcastle", "Castillo de arena", 11, 100, "Estrutura mágica que se transforma em um castelo de areia construído sob comando."],
+  ["singing_stone", "Pedra Cantante", "Singing Stone", "Piedra cantante", 13, 100, "Pedra musical que facilita viagens planares e permite falar ou enxergar através de pedra."],
+  ["stalagmite_seed", "Semente de Estalagmite", "Stalagmite Seed", "Semilla de estalagmita", 7, 100, "Semente consumível que ergue estalagmites danosas e cria terreno difícil."],
+  ["vital_earth", "Terra Vital", "Vital Earth", "Tierra vital", 9, 100, "Pó consumível que dispensa ar e água por um dia e facilita cuidados médicos."]
+];
+for (const [slug, pt, en, es, level, page, summary] of RAGE_ELEMENTS_EARTH_ITEMS) {
+  PF2E_DATA.items.push({ id: `item.rage_elements.earth.${slug}`, name: `${pt} (${en})`, level, category: "magical", names: { "pt-BR": pt, en, es }, summaries: {
+    "pt-BR": summary, en: `Rage of Elements earth item: ${en}. Full mechanical text pending review.`, es: `Objeto de tierra de Rage of Elements: ${es}. El texto mecánico completo queda pendiente de revisión.`
+  }, description: summary, source: { book: RAGE_ELEMENTS_SOURCE, page }, ruleset: "remaster", needs_review: true });
+}
+const RAGE_ELEMENTS_FIRE_ITEMS = [
+  ["ash_gown", "Vestido de Cinzas", "Ash Gown", "Vestido de ceniza", 7, 122, "Roupa investida que concede resistência a fogo e pode envolver você em chamas durante um movimento."],
+  ["bloodburn_censer", "Turíbulo Queima-Sangue", "Bloodburn Censer", "Incensario quema sangre", 13, 122, "Turíbulo que libera fumaça capaz de causar dano de fogo ou veneno e enfraquecer criaturas."],
+  ["brazier_of_harmony", "Braseiro da Harmonia", "Brazier of Harmony", "Brasero de armonía", 5, 122, "Turíbulo que cria uma aura de paz e acalma criaturas que respiram sua fumaça."],
+  ["candle_of_inflamed_passions", "Vela das Paixões Inflamadas", "Candle of Inflamed Passions", "Vela de pasiones inflamadas", 3, 122, "Consumível que intensifica emoções e impõe penalidade contra efeitos emocionais."],
+  ["everburning_coal", "Carvão Inextinguível", "Everburning Coal", "Carbón inextinguible", 12, 123, "Carvão mágico que protege contra frio, serve como chave planar e cria uma muralha de brasas."],
+  ["globe_of_shrouds", "Globo de Mortalhas", "Globe of Shrouds", "Globo de mortajas", 8, 123, "Turíbulo que oculta aliados e revela inimigos invisíveis em uma área de fumaça."],
+  ["lambent_perfume", "Perfume Lampejante", "Lambent Perfume", "Perfume lambente", 6, 123, "Turíbulo restaurador que ajuda criaturas a superar condições de doença e aflições."],
+  ["obsidian_edge", "Lâmina de Obsidiana", "Obsidian Edge", "Filo de obsidiana", 6, 123, "Gun sword mágica de obsidiana que causa fogo e pode explodir em estilhaços."],
+  ["rhyton_of_the_radiant_ifrit", "Ríton do Ifrit Radiante", "Rhyton of the Radiant Ifrit", "Ritón del ifrit radiante", 14, 124, "Recipiente mágico que fornece bebidas e pode conjurar um comando poderoso contra inimigos."],
+  ["scalding_gauntlets", "Manoplas Escaldantes", "Scalding Gauntlets", "Guanteletes hirvientes", 11, 124, "Manoplas de combate que queimam e deixam doentes criaturas agarradas."],
+  ["smoke_veil", "Véu de Fumaça", "Smoke Veil", "Velo de humo", 3, 124, "Adorno investido que facilita disfarces e transforma uma Demoralização em ação visual."],
+  ["sparkshade_parasol", "Sombrinha Fagulhante", "Sparkshade Parasol", "Parasol de chispas", 11, 124, "Sombrinha que protege contra calor e fogo e pode devolver chamas em uma linha."],
+  ["thawing_candle", "Vela do Degelo", "Thawing Candle", "Vela del deshielo", 8, 125, "Consumível que concede resistência a frio e ajuda a encerrar dano persistente de frio."]
+];
+for (const [slug, pt, en, es, level, page, summary] of RAGE_ELEMENTS_FIRE_ITEMS) {
+  PF2E_DATA.items.push({ id: `item.rage_elements.fire.${slug}`, name: `${pt} (${en})`, level, category: "magical", names: { "pt-BR": pt, en, es }, summaries: {
+    "pt-BR": summary, en: `Rage of Elements fire item: ${en}. Full mechanical text pending review.`, es: `Objeto de fuego de Rage of Elements: ${es}. El texto mecánico completo queda pendiente de revisión.`
+  }, description: summary, source: { book: RAGE_ELEMENTS_SOURCE, page }, ruleset: "remaster", needs_review: true });
+}
+const RAGE_ELEMENTS_METAL_ITEMS = [
+  ["curious_teardrop", "Gota Curiosa", "Curious Teardrop", "Gota curiosa", 16, 146, "Item inteligente de metal líquido que oferece magia, telepatia e proteção contra efeitos emocionais."],
+  ["ferrofluid_urchin", "Ouriço Ferrofluido", "Ferrofluid Urchin", "Erizo ferrofluido", 7, 146, "Talismã consumível que se fixa a armadura metálica e concede resistência ao dano físico recebido."],
+  ["malleable", "Maleável", "Malleable", "Maleable", 9, 146, "Runa de armadura que permite reconfigurar sua composição e especialização quando ativada."],
+  ["morphing_weapon", "Arma Mutável", "Morphing Weapon", "Arma cambiante", 7, 146, "Arma metálica mágica que muda de forma e oferece benefícios diferentes durante o ataque."],
+  ["resonant_guitar", "Guitarra Ressonante", "Resonant Guitar", "Guitarra resonante", 12, 147, "Instrumento metálico virtuoso que facilita viagens planares e pode proteger aliados com som."],
+  ["rustbringer", "Portador de Ferrugem", "Rustbringer", "Portaóxido", 10, 147, "Mangual corrosivo que é especialmente perigoso contra armas e criaturas metálicas."],
+  ["silver_snake_cane", "Bengala Serpente de Prata", "Silver Snake Cane", "Bastón serpiente de plata", 6, 147, "Bengala mágica que armazena veneno ou elixir e pode virar uma espada-cajado ou víbora."],
+  ["spellsap_grenade", "Granada Drena-Feitiço", "Spellsap Grenade", "Granada drenaconjuros", 12, 147, "Bomba alquímica que causa dano e pode fazer um conjurador perder uma magia ou espaço."],
+  ["spiny_lodestone", "Pedra-Ímã Espinhosa", "Spiny Lodestone", "Piedra imán espinosa", 4, 147, "Spellheart metálico que conjura magias e concede resistência ou dano adicional conforme o uso."],
+  ["staff_of_metal", "Bastão de Metal", "Staff of Metal", "Bastón de metal", 6, 147, "Bastão mágico com magias de magnetismo, metal, ferrugem e proteção."],
+  ["zuhras_gloves", "Luvas de Zuhra", "Zuhra's Gloves", "Guantes de Zuhra", 13, 148, "Luvas investidas que protegem contra desarme e canalizam ataques ou muralhas de metal."]
+];
+for (const [slug, pt, en, es, level, page, summary] of RAGE_ELEMENTS_METAL_ITEMS) {
+  PF2E_DATA.items.push({ id: `item.rage_elements.metal.${slug}`, name: `${pt} (${en})`, level, category: "magical", names: { "pt-BR": pt, en, es }, summaries: {
+    "pt-BR": summary, en: `Rage of Elements metal item: ${en}. Full mechanical text pending review.`, es: `Objeto de metal de Rage of Elements: ${es}. El texto mecánico completo queda pendiente de revisión.`
+  }, description: summary, source: { book: RAGE_ELEMENTS_SOURCE, page }, ruleset: "remaster", needs_review: true });
+}
+const RAGE_ELEMENTS_DOMAIN_FOCUS = [
+  ["earth.practice_makes_perfect", "A Prática Leva à Perfeição", "Practice Makes Perfect", "La práctica hace al maestro", 1, 97, "toil", "Concede um bônus a um teste de perícia treinada que falhou."],
+  ["earth.tireless_worker", "Trabalhador Incansável", "Tireless Worker", "Trabajador incansable", 4, 97, "toil", "Suprime temporariamente condições como desajeitado, sobrecarregado, enfraquecido ou fatigado."],
+  ["metal.serrate", "Serrar", "Serrate", "Serrar", 1, 145, "metal", "Adiciona lâminas a uma arma metálica, causando dano cortante adicional até seu próximo turno."],
+  ["metal.repel_metal", "Repelir Metal", "Repel Metal", "Repeler metal", 4, 145, "metal", "Protege contra um Golpe metálico e pode devolvê-lo ao atacante se errar."]
+];
+for (const [id, pt, en, es, rank, page, domain, summary] of RAGE_ELEMENTS_DOMAIN_FOCUS) {
+  PF2E_DATA.spells.push({ id: `spell.rage_elements.${id}`, name: `${pt} (${en})`, rank, focus: true, domain, traditions: ["divine"], actionType: "varies", names: { "pt-BR": pt, en, es }, summaries: {
+    "pt-BR": summary, en: `Rage of Elements ${domain} domain focus spell: ${en}. Full mechanical text pending review.`, es: `Conjuro de foco del dominio ${domain} de Rage of Elements: ${es}. El texto mecánico completo queda pendiente de revisión.`
+  }, description: summary, source: { book: RAGE_ELEMENTS_SOURCE, page }, ruleset: "remaster", needs_review: true });
+}
+
 const BOOK_DEAD_SOURCE = "Livro dos Mortos (pré-Remaster)";
 PF2E_DATA.ancestries["Esqueleto (Skeleton)"] = {
   id: "ancestry.skeleton", hp: 6, size: "Médio", speed: 25,
+  traits: ["Morto-vivo"],
   senses: ["Visão no Escuro"],
   boosts: ["Destreza", "Carisma", "Livre"], flaws: ["Inteligência"],
   languages: ["Comum", "Necril"], rarity: "rare",
@@ -3723,7 +4179,10 @@ PF2E_DATA.feats = [
   }
 ];
 
-// Catálogo Oficial Expandido de Equipamentos & Itens
+// Catálogo Oficial Expandido de Equipamentos & Itens. Preserve o catálogo
+// amplo antes da camada compacta legada substituí-lo, para que a normalização
+// trilíngue possa ser feita sem perda de dados.
+const EXPANDED_ITEM_COMPENDIUM = PF2E_DATA.items;
 PF2E_DATA.items = [
   { id: "item.gear.adventurers_pack", name: "Mochila de Aventureiro (Adventurer's Pack)", names: { "pt-BR": "Mochila de Aventureiro", en: "Adventurer's Pack", es: "Mochila de aventurero" }, mainCategory: "gear", subCategory: "adventuring", level: 0, price: { sp: 15 }, bulk: "1", traits: [], description: "Kit essencial com mochila, saco de dormir, corda, tochas e rações.", source: { book: "Livro do Jogador (Player Core)", page: 287 } },
   { id: "item.gear.backpack", name: "Mochila (Backpack)", names: { "pt-BR": "Mochila", en: "Backpack", es: "Mochila" }, mainCategory: "gear", subCategory: "adventuring", level: 0, price: { sp: 1 }, bulk: "-", traits: [], description: "Armazena até 4 Bulk; os primeiros 2 Bulk guardados não pesam.", source: { book: "Livro do Jogador (Player Core)", page: 287 } },
@@ -3734,6 +4193,90 @@ PF2E_DATA.items = [
   { id: "item.magic.boots_of_elvenkind", name: "Botas Élficas (Boots of Elvenkind)", names: { "pt-BR": "Botas Élficas", en: "Boots of Elvenkind", es: "Botas de los elfos" }, mainCategory: "magic_items", subCategory: "worn", level: 7, price: { gp: 250 }, bulk: "L", traits: ["Investido", "Mágico", "Vestível"], description: "+1 em Acrobacia e concede a ação Passo Élfico para ignorar terreno difícil.", source: { book: "Livro do Jogador (Player Core)", page: 300 } },
   { id: "item.magic.weapon_potency_1", name: "Runa de Potência de Arma +1 (Weapon Potency +1)", names: { "pt-BR": "Runa de Potência de Arma +1", en: "+1 Weapon Potency", es: "Potencia de arma +1" }, mainCategory: "magic_items", subCategory: "runes", level: 2, price: { gp: 35 }, bulk: "-", traits: ["Mágico", "Runa"], description: "+1 de bônus de item no ataque com a arma vinculada.", source: { book: "Livro do Jogador (Player Core)", page: 308 } }
 ];
+PF2E_DATA.itemCompendium = EXPANDED_ITEM_COMPENDIUM;
+
+// O compêndio expandido legado não tinha o contrato dos catálogos novos.
+// Normalize-o antes de expô-lo ao picker para que o CRUD possa persistir cada
+// item com identidade estável. Como estes registros não foram ligados a uma
+// página do corpus local, eles permanecem explicitamente em revisão.
+const compendiumItemSlugs = new Map();
+PF2E_DATA.itemCompendium = (PF2E_DATA.itemCompendium || []).map((record, index) => {
+  const label = String(record.name || `Item ${index + 1}`).trim();
+  const baseSlug = label.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "") || `item_${index + 1}`;
+  const occurrence = (compendiumItemSlugs.get(baseSlug) || 0) + 1;
+  compendiumItemSlugs.set(baseSlug, occurrence);
+  const slug = occurrence === 1 ? baseSlug : `${baseSlug}_${occurrence}`;
+  const description = String(record.description || `${label} compendium entry.`).trim();
+  return {
+    ...record,
+    id: record.id || `item.compendium.${slug}`,
+    name: label,
+    names: record.names || { "pt-BR": label, en: label, es: label },
+    summaries: record.summaries || { "pt-BR": description, en: description, es: description },
+    ruleset: record.ruleset || "needs_review",
+    needs_review: record.needs_review !== false,
+  };
+});
+
+// Itens mágicos específicos confirmados na p. 282 do Player Core 2 local.
+const playerCore2MagicItems = [
+  ["item.pc2.infiltrators_accessory", "Acessório do Infiltrador", "Infiltrator's Accessory", "Accesorio del infiltrador", 5, 150, "Bengala-espada +1 impactante que pode ocultar magicamente sua lâmina.", "A striking +1 sword cane that can magically conceal its blade.", "Una espada-bastón +1 impactante que puede ocultar mágicamente su hoja."],
+  ["item.pc2.spirit_sensing_crossbow", "Besta de Ver-Espírito", "Spirit-Seeking Crossbow", "Ballesta buscadora de espíritus", 8, 450, "Besta +1 impactante com toque fantasma que enxerga e dispara através do Plano Etéreo.", "A striking +1 ghost-touch crossbow that senses and fires through the Ethereal Plane.", "Una ballesta +1 impactante de toque fantasmal que percibe y dispara a través del Plano Etéreo."],
+  ["item.pc2.chalice_of_justice", "Cálice da Justiça", "Chalice of Justice", "Cáliz de la justicia", 14, 4500, "Espada longa sagrada +2 impactante maior que pode recuperar Pontos de Vida e punir criaturas profanas.", "A greater striking +2 holy longsword that can restore Hit Points and punish unholy creatures.", "Una espada larga sagrada +2 impactante mayor que puede restaurar Puntos de Golpe y castigar criaturas impías."],
+  ["item.pc2.fourfold_cut", "Cortação Quádruplo", "Fourfold Cut", "Corte cuádruple", 12, 1700, "Cortacão +2 impactante com uma runa elemental selecionável por vez.", "A striking +2 cutter with one selectable elemental property rune at a time.", "Un cortacorte +2 impactante con una runa de propiedad elemental seleccionable a la vez."],
+  ["item.pc2.spellguard_blade", "Lâmina Escuda-Magia", "Spellguard Blade", "Hoja escudamagia", 7, 320, "Adaga de aparagem +1 impactante que aplica seu bônus de CA também contra magias.", "A striking +1 parrying dagger that applies its AC bonus against spells as well.", "Una daga de parada +1 impactante que aplica su bonificador de CA también contra conjuros."]
+].map(([id, pt, en, es, level, gp, ptSummary, enSummary, esSummary]) => ({
+  id,
+  name: `${pt} (${en})`,
+  names: { "pt-BR": pt, en, es },
+  summaries: { "pt-BR": ptSummary, en: enSummary, es: esSummary },
+  mainCategory: "magic_items",
+  subCategory: "specific_gear",
+  level,
+  price: { gp },
+  bulk: "L",
+  traits: ["Mágico"],
+  description: ptSummary,
+  source: { book: PLAYER_CORE_2_SOURCE, page: 282 },
+  ruleset: "remaster",
+  rarity: "uncommon",
+  needs_review: false
+}));
+for (const item of playerCore2MagicItems) {
+  if (!(PF2E_DATA.items || []).some((candidate) => candidate.id === item.id)) PF2E_DATA.items.push(item);
+}
+
+// Armaduras e escudos mágicos confirmados no miolo do Player Core 2 (pp. 280–281).
+const playerCore2ArmorAndShieldItems = [
+  ["item.pc2.sailors_cota", "Cota do Marinheiro", "Sailor's Cota", "Cota del marinero", 5, 180, "Armadura de talas +1 que concede bônus para Escalar e Nadar e aumenta o deslocamento nessas atividades.", "A +1 splint armor that improves Athletics checks and movement for Climb and Swim.", "Una armadura de láminas +1 que mejora Atletismo y el movimiento al Trepar y Nadar.", "armor", 280],
+  ["item.pc2.butcher_leather", "Couro de Carniceiro", "Butcher Leather", "Cuero de carnicero", 6, 220, "Gibão de peles +1 que protege contra maldições e torna o usuário imune ao fedor de carniçais.", "A +1 hide armor that protects against curses and grants immunity to ghoul stench.", "Una armadura de pieles +1 que protege contra maldiciones y otorga inmunidad al hedor de los gules.", "armor", 280],
+  ["item.pc2.carnage_cuirass", "Couraça da Carnificina", "Carnage Cuirass", "Coraza de la carnicería", 9, 700, "Gibão de peles +1 resiliente que reduz sua penalidade de armadura e amplia o dano da Investida Súbita.", "A resilient +1 hide armor that reduces its armor penalty and adds damage to Sudden Charge Strikes.", "Una armadura de pieles +1 resistente que reduce su penalización y añade daño a los Golpes de Carga súbita.", "armor", 280],
+  ["item.pc2.war_leader_bulwark", "Baluarte do Líder de Guerra", "War-Leader's Bulwark", "Baluarte del líder de guerra", 10, 0, "Placa peitoral +1 resiliente que inspira aliados e concede presença imponente.", "A resilient +1 breastplate that inspires allies and projects a commanding presence.", "Una coraza +1 resistente que inspira a los aliados e impone una presencia de mando.", "armor", 280],
+  ["item.pc2.unholy_armor", "Armadura Profana", "Unholy Armor", "Armadura profana", 13, 2500, "Armadura completa +2 resiliente com chifres ofensivos e uma ativação de translocar para criaturas profanas.", "A resilient +2 full plate with offensive horns and a teleport activation for unholy characters.", "Una armadura completa +2 resistente con cuernos ofensivos y una activación de teletransporte para criaturas impías.", "armor", 280],
+  ["item.pc2.dragon_scales", "Placas de Dragão", "Dragon Plates", "Placas de dragón", 16, 10000, "Armadura completa de couro de dragão +2 resiliente maior com sopro de energia uma vez por dia.", "Greater resilient +2 dragon leather full plate with a once-per-day dragon breath.", "Armadura completa de cuero de dragón +2 resistente mayor con aliento de dragón una vez al día.", "armor", 281],
+  ["item.pc2.dazzling_buckler", "Broquel Deslumbrante", "Dazzling Buckler", "Broquel deslumbrante", 2, 35, "Broquel mágico que concede bônus em Fintar enquanto está erguido e pode ofuscar um alvo.", "A magical buckler that boosts Feinting while raised and can dazzle a target.", "Un broquel mágico que mejora Engañar mientras está alzado y puede deslumbrar a un objetivo.", "shield", 281],
+  ["item.pc2.explosive_shield", "Escudo Explosivo", "Explosive Shield", "Escudo explosivo", 5, 25, "Escudo mágico de madeira que explode quando é destruído, causando dano aos adversários próximos.", "A magical wooden shield that explodes when destroyed, damaging nearby enemies.", "Un escudo mágico de madera que explota al ser destruido y daña a los enemigos cercanos.", "shield", 281],
+  ["item.pc2.medusa_scream", "Grito da Medusa", "Medusa's Scream", "Grito de la medusa", 13, 0, "Escudo de aço mágico que pode revelar o rosto de uma medusa e conjurar petrificar uma vez por dia.", "A magical steel shield that can reveal a medusa's face and cast petrify once per day.", "Un escudo de acero mágico que puede revelar el rostro de una medusa y lanzar petrificar una vez al día.", "shield", 281],
+  ["item.pc2.dragonhide_shield", "Escudo de Couro de Dragão", "Dragon Leather Shield", "Escudo de cuero de dragón", 8, 400, "Escudo de couro de dragão que é imune a um tipo de dano conforme a tradição do dragão.", "A dragon leather shield immune to one damage type based on the dragon's tradition.", "Un escudo de cuero de dragón inmune a un tipo de daño según la tradición del dragón.", "shield", 277]
+].map(([id, pt, en, es, level, gp, ptSummary, enSummary, esSummary, subCategory, page]) => ({
+  id,
+  name: `${pt} (${en})`,
+  names: { "pt-BR": pt, en, es },
+  summaries: { "pt-BR": ptSummary, en: enSummary, es: esSummary },
+  mainCategory: "magic_items",
+  subCategory,
+  level,
+  price: gp ? { gp } : undefined,
+  bulk: subCategory === "armor" ? 2 : 1,
+  traits: ["Mágico"],
+  description: ptSummary,
+  source: { book: PLAYER_CORE_2_SOURCE, page },
+  ruleset: "remaster",
+  needs_review: false
+}));
+for (const item of playerCore2ArmorAndShieldItems) {
+  if (!(PF2E_DATA.items || []).some((candidate) => candidate.id === item.id)) PF2E_DATA.items.push(item);
+}
 
 // Catálogo Oficial de Fórmulas (Alquimia, Manufatura, Poções e Armadilhas)
 PF2E_DATA.formulas = [
@@ -3745,6 +4288,142 @@ PF2E_DATA.formulas = [
   { id: "form.pot.minor_healing_potion", name: "Poção de Cura Menor (Minor Healing Potion)", names: { "pt-BR": "Poção de Cura Menor", en: "Minor Healing Potion", es: "Poción de curación menor" }, level: 1, price: { gp: 4 }, category: "Mágico (Poção)", craftingDC: 15, traits: ["Mágico", "Consumível", "Poção", "Cura"], description: "Restaura 1d8 Pontos de Vida instantaneamente.", source: { book: "Livro do Jogador (Player Core)", page: 295 } },
   { id: "form.snare.spike_snare", name: "Armadilha de Espigões (Spike Snare)", names: { "pt-BR": "Armadilha de Espigões", en: "Spike Snare", es: "Lazo de púas" }, level: 1, price: { gp: 3 }, category: "Armadilha (Snare)", craftingDC: 15, traits: ["Armadilha", "Consumível", "Mecânico"], description: "Dispara contra a criatura que pisar, causando 2d8 de dano perfurante (Salvamento de Reflexos CD 17).", source: { book: "Livro do Jogador (Player Core)", page: 296 } }
 ];
+
+// Fórmulas alquímicas confirmadas na tabela e nas descrições do Player Core 2
+// local (pp. 283–288). Os efeitos resumidos mantêm a opção utilizável no
+// construtor; a descrição integral continua pertencendo ao livro de origem.
+const playerCore2Formulas = [
+  ["formula.pc2.frightful_ampoule_minor", "Ampola Pavorosa Menor", "Minor Frightful Ampoule", "Ámpula pavorosa menor", 1, 3, 283, "Bomba", "Bomba mental que causa dano mental e dano colateral de medo."],
+  ["formula.pc2.tanglefoot_bag_minor", "Bomba de Cola Menor", "Lesser Tanglefoot Bag", "Bolsa de maraña menor", 1, 3, 283, "Bomba", "Bomba adesiva que reduz a Velocidade do alvo e pode prendê-lo."],
+  ["formula.pc2.weakening_bomb_minor", "Bomba de Esmorecimento Menor", "Lesser Weakening Bomb", "Bomba debilitante menor", 1, 3, 283, "Bomba", "Bomba venenosa que causa dano persistente e enfraquece o alvo."],
+  ["formula.pc2.ghost_charge_minor", "Carga Fantasma Menor", "Lesser Ghost Charge", "Carga fantasmal menor", 1, 3, 284, "Bomba", "Bomba de vitalidade que causa dano colateral a criaturas próximas."],
+  ["formula.pc2.alchemists_fire_minor", "Fogo Alquímico Menor", "Lesser Alchemist's Fire", "Fuego alquímico menor", 1, 3, 284, "Bomba", "Bomba de fogo que causa dano persistente e dano de espalhamento."],
+  ["formula.pc2.frost_vial_minor", "Frasco Congelante Menor", "Lesser Frost Vial", "Vial de escarcha menor", 1, 3, 285, "Bomba", "Bomba de frio que causa dano e reduz a Velocidade do alvo."],
+  ["formula.pc2.acid_flask_minor", "Frasco de Ácido Menor", "Lesser Acid Flask", "Frasco de ácido menor", 1, 3, 285, "Bomba", "Bomba de ácido que causa dano persistente e dano de espalhamento."],
+  ["formula.pc2.detritus_stone_minor", "Pedra Detonante Menor", "Lesser Detonating Stone", "Piedra detonante menor", 1, 3, 285, "Bomba", "Bomba sônica que causa dano colateral a criaturas na área."],
+  ["formula.pc2.bottled_lightning_minor", "Relâmpago Engarrafado Menor", "Lesser Bottled Lightning", "Relámpago embotellado menor", 1, 3, 285, "Bomba", "Bomba elétrica que deixa o alvo desprevenido até o próximo turno."],
+  ["formula.pc2.antidote_minor", "Antídoto Menor", "Lesser Antidote", "Antídoto menor", 1, 3, 286, "Elixir", "Elixir que concede bônus de item contra venenos por 6 horas."],
+  ["formula.pc2.antiplague_minor", "Antipeste Menor", "Lesser Antiplague", "Antiplaga menor", 1, 3, 286, "Elixir", "Elixir que concede bônus de item contra doenças por 24 horas."],
+  ["formula.pc2.life_elixir_minimum", "Elixir da Vida Mínimo", "Minor Elixir of Life", "Elixir de la vida mínimo", 1, 3, 287, "Elixir", "Elixir que restaura 1d6 Pontos de Vida e protege contra doenças e venenos."],
+  ["formula.pc2.gender_transition_minor", "Elixir de Transição de Gênero Menor", "Lesser Gender Transition Elixir", "Elixir de transición de género menor", 1, 1, 287, "Elixir", "Elixir de transformação gradual de características secundárias de gênero."],
+  ["formula.pc2.cheetah_elixir_minor", "Elixir do Guepardo Menor", "Lesser Cheetah Elixir", "Elixir del guepardo menor", 1, 3, 288, "Elixir", "Elixir que melhora a mobilidade e a velocidade temporariamente."],
+  ["formula.pc2.eagle_eye_elixir_minor", "Elixir do Olho de Águia Menor", "Lesser Eagle-Eye Elixir", "Elixir del ojo de águila menor", 1, 4, 288, "Elixir", "Elixir que aguça a visão e melhora a percepção de detalhes."],
+].map(([id, pt, en, es, level, gp, page, category, summary]) => ({
+  id,
+  name: `${pt} (${en})`,
+  names: { "pt-BR": pt, en, es },
+  summaries: {
+    "pt-BR": summary,
+    en: `${en} is a Player Core 2 alchemical ${category.toLowerCase()} formula for character equipment and crafting.`,
+    es: `${es} es una fórmula alquímica de ${category.toLowerCase()} del Player Core 2 para equipo y fabricación del personaje.`
+  },
+  level,
+  price: { gp },
+  category: `Alquímico (${category})`,
+  craftingDC: 15 + level,
+  traits: ["Alquímico", "Consumível", category],
+  description: summary,
+  source: { book: PLAYER_CORE_2_SOURCE, page },
+  ruleset: "remaster",
+  rarity: "common",
+  needs_review: false
+}));
+for (const formula of playerCore2Formulas) {
+  if (!(PF2E_DATA.formulas || []).some((candidate) => candidate.id === formula.id)) PF2E_DATA.formulas.push(formula);
+}
+
+// Variantes adicionais das bombas alquímicas listadas nas mesmas tabelas
+// (PC2 pp. 283–285). O nível, preço e página são confirmados; o texto
+// completo de cada variante ainda não foi transcrito para o motor, portanto
+// estas entradas permanecem revisáveis até que seus efeitos sejam modelados.
+const playerCore2BombVariants = [
+  ["frightful_ampoule", "Ampola Pavorosa", "Frightful Ampoule", "Ampolla pavorosa", 283],
+  ["tanglefoot_bag", "Bomba de Cola", "Tanglefoot Bag", "Bomba de cola", 283],
+  ["weakening_bomb", "Bomba de Esmorecimento", "Weakening Bomb", "Bomba debilitante", 283],
+  ["ghost_charge", "Carga Fantasma", "Ghost Charge", "Carga fantasmal", 284],
+  ["alchemists_fire", "Fogo Alquímico", "Alchemist's Fire", "Fuego alquímico", 284],
+  ["frost_vial", "Frasco Congelante", "Frost Vial", "Vial de escarcha", 285],
+  ["acid_flask", "Frasco de Ácido", "Acid Flask", "Frasco de ácido", 285],
+  ["detonating_stone", "Pedra Detonante", "Detonating Stone", "Piedra detonante", 285],
+  ["bottled_lightning", "Relâmpago Engarrafado", "Bottled Lightning", "Relámpago embotellado", 285],
+].flatMap(([slug, ptBase, enBase, esBase, page]) => [
+  ["moderate", "Moderada", "Moderate", "Moderada", 3, 10],
+  ["greater", "Maior", "Greater", "Mayor", 11, 250],
+  ["superior", "Superior", "Major", "Superior", 17, 2500],
+].map(([tier, ptTier, enTier, esTier, level, gp]) => ({
+  id: `formula.pc2.${slug}_${tier}`,
+  name: `${ptBase} ${ptTier} (${enBase} ${enTier})`,
+  names: { "pt-BR": `${ptBase} ${ptTier}`, en: `${enBase} ${enTier}`, es: `${esBase} ${esTier}` },
+  summaries: {
+    "pt-BR": `Variante ${ptTier.toLowerCase()} da bomba alquímica ${ptBase.toLowerCase()}; os efeitos completos devem ser consultados na página ${page}.`,
+    en: `${enTier} version of the ${enBase.toLowerCase()} alchemical bomb; consult page ${page} for the complete effects.`,
+    es: `Versión ${esTier.toLowerCase()} de la bomba alquímica ${esBase.toLowerCase()}; consulta la página ${page} para los efectos completos.`
+  },
+  level,
+  price: { gp },
+  category: "Alquímico (Bomba)",
+  craftingDC: 15 + level,
+  traits: ["Alquímico", "Consumível", "Bomba"],
+  description: `Variante ${ptTier.toLowerCase()} confirmada na tabela de itens alquímicos do Player Core 2.`,
+  source: { book: PLAYER_CORE_2_SOURCE, page },
+  ruleset: "remaster",
+  rarity: "common",
+  needs_review: true
+})));
+for (const formula of playerCore2BombVariants) {
+  if (!(PF2E_DATA.formulas || []).some((candidate) => candidate.id === formula.id)) PF2E_DATA.formulas.push(formula);
+}
+
+// Outras entradas da tabela de itens alquímicos do Player Core 2 (pp. 291–296).
+// São utilizáveis pelo personagem e têm metadados editoriais confirmados, mas
+// continuam em revisão enquanto seus estágios/efeitos não estiverem no motor.
+const playerCore2AlchemicalTableEntries = [
+  ["bright_stick", "Bastão Brilhante", "Glow Rod", "Bastón luminoso", 1, { gp: 3 }, 295, "Ferramenta"],
+  ["smoke_ball", "Bola de Fumaça", "Smoke Ball", "Bola de humo", 1, { gp: 3 }, 295, "Ferramenta"],
+  ["forensic_dye", "Corante Forense", "Forensic Dye", "Tinte forense", 1, { gp: 3 }, 295, "Ferramenta"],
+  ["phosphor", "Fósforo", "Phosphor", "Fósforo", 1, { pp: 2 }, 295, "Ferramenta"],
+  ["snake_oil", "Óleo de Cobra", "Snake Oil", "Aceite de serpiente", 1, { gp: 2 }, 295, "Ferramenta"],
+  ["ghost_ink", "Tinta Fantasma", "Ghost Ink", "Tinta fantasmal", 1, { gp: 3 }, 296, "Ferramenta"],
+  ["belladonna", "Beladona", "Belladonna", "Belladona", 2, { gp: 5 }, 291, "Veneno"],
+  ["arsenic", "Arsênico", "Arsenic", "Arsénico", 1, { gp: 3 }, 291, "Veneno"],
+  ["giant_centipede_venom", "Veneno de Centopeia Gigante", "Giant Centipede Venom", "Veneno de ciempiés gigante", 1, { gp: 4 }, 294, "Veneno"],
+  ["lethargy_poison", "Veneno de Letargia", "Lethargy Poison", "Veneno de letargo", 2, { gp: 7 }, 292, "Veneno"],
+  ["black_adder_venom", "Veneno de Víbora Negra", "Black Adder Venom", "Veneno de víbora negra", 2, { gp: 6 }, 292, "Veneno"],
+  ["cytillesh_oil", "Óleo de Cytillesh", "Cytillesh Oil", "Aceite de cytillesh", 3, { gp: 10 }, 292, "Veneno"],
+  ["grave_root", "Raiz do Túmulo", "Grave Root", "Raíz de tumba", 3, { gp: 10 }, 293, "Veneno"],
+  ["spider_venom", "Veneno de Aranha", "Spider Venom", "Veneno de araña", 5, { gp: 25 }, 294, "Veneno"],
+  ["giant_scorpion_venom", "Veneno de Escorpião Gigante", "Giant Scorpion Venom", "Veneno de escorpión gigante", 6, { gp: 40 }, 292, "Veneno"],
+  ["rooting_toxin", "Toxina de Enraizamento", "Rooting Toxin", "Toxina de enraizamiento", 7, { gp: 55 }, 293, "Veneno"],
+  ["nettleseed_residue", "Resíduo de Urtiga", "Nettleweed Residue", "Residuo de ortiga", 8, { gp: 75 }, 293, "Veneno"],
+  ["wyvern_poison", "Veneno de Wyvern", "Wyvern Poison", "Veneno de wyvern", 8, { gp: 80 }, 294, "Veneno"],
+  ["weakening_powder", "Pó Debilitante", "Weakening Powder", "Polvo debilitante", 9, { gp: 110 }, 292, "Veneno"],
+  ["spider_root", "Raiz de Aranha", "Spider Root", "Raíz de araña", 9, { gp: 110 }, 292, "Veneno"],
+  ["aconite", "Acônito", "Aconite", "Acónito", 10, { gp: 155 }, 291, "Veneno"],
+  ["draining_shadow", "Sombra Desgastante", "Draining Shadow", "Sombra agotadora", 10, { gp: 160 }, 293, "Veneno"],
+  ["black_lotus_extract", "Extrato de Lótus Negra", "Black Lotus Extract", "Extracto de loto negro", 19, { gp: 6500 }, 292, "Veneno"],
+  ["death_takings", "Lágrimas da Morte", "Tears of Death", "Lágrimas de la muerte", 20, { gp: 12000 }, 292, "Veneno"],
+].map(([slug, pt, en, es, level, price, page, category]) => ({
+  id: `formula.pc2.${slug}`,
+  name: `${pt} (${en})`,
+  names: { "pt-BR": pt, en, es },
+  summaries: {
+    "pt-BR": `Item alquímico de categoria ${category.toLowerCase()} listado na tabela do Player Core 2; consulte a página ${page} para os efeitos completos.`,
+    en: `Player Core 2 alchemical ${category.toLowerCase()} listed in the item table; consult page ${page} for the complete effects.`,
+    es: `Objeto alquímico de categoría ${category.toLowerCase()} listado en la tabla del Player Core 2; consulta la página ${page} para los efectos completos.`
+  },
+  level,
+  price,
+  category: `Alquímico (${category})`,
+  traits: ["Alquímico", "Consumível", category],
+  description: `Entrada de tabela confirmada na página ${page}; efeito completo pendente de modelagem.`,
+  source: { book: PLAYER_CORE_2_SOURCE, page },
+  ruleset: "remaster",
+  rarity: "common",
+  needs_review: true
+}));
+for (const formula of playerCore2AlchemicalTableEntries) {
+  if (!(PF2E_DATA.formulas || []).some((candidate) => candidate.id === formula.id)) PF2E_DATA.formulas.push(formula);
+}
 
 // Catálogo de Progressão Mágica, Tradições e Slots por Classe (Spellcasting)
 PF2E_DATA.spellcastingByClass = {
@@ -4136,6 +4815,544 @@ localizeLegacyEffectRecords(PF2E_DATA.buffs, "buff", {
   "Mountain Stance": "Postura de la montaña", "Crane Stance": "Postura de la grulla"
 });
 
+// Registros históricos que já aparecem nos catálogos, mas ainda não têm o
+// contrato trilíngue. Eles continuam marcados para revisão até a página do
+// PDF e os pré-requisitos completos serem confirmados.
+const LEGACY_UNVERIFIED_METADATA = {
+  ancestries: {
+    12: ["Kitsune", "Kitsune", "Kitsune", "Humanoides raposinos metamorfos ligados ao mundo espiritual.", "Foxlike shapeshifters tied to the spirit world.", "Cambiaformas con rasgos de zorro vinculados al mundo espiritual."],
+    15: ["Azarketi", "Azarketi", "Azarketi", "Povo anfíbio adaptado à vida terrestre e aquática.", "An amphibious people adapted to life on land and underwater.", "Un pueblo anfibio adaptado a la vida terrestre y submarina."],
+    17: ["Androide", "Android", "Androide", "Seres biotecnológicos com corpos artificiais e mentes conscientes.", "Biotechnological people with artificial bodies and conscious minds.", "Seres biotecnológicos con cuerpos artificiales y mentes conscientes."],
+    19: ["Kayal", "Fetchling", "Hijo de las sombras", "Descendentes de habitantes do Plano das Sombras, adaptados à penumbra.", "Descendants of the Shadow Plane, adapted to dimness and darkness.", "Descendientes del Plano de las Sombras, adaptados a la penumbra."]
+  },
+  versatileHeritages: {
+    "Ifrit (Toque do Fogo)": ["Ifrit", "Ifrit", "Ifrit", "Herança de fogo que manifesta resistência e afinidade ígnea.", "A fire heritage that manifests resistance and affinity with flames.", "Una herencia de fuego que manifiesta resistencia y afinidad con las llamas."],
+    "Oread (Toque da Terra)": ["Oread", "Oread", "Oread", "Herança de terra ligada à pedra, minerais e resistência física.", "An earth heritage tied to stone, minerals, and physical resilience.", "Una herencia de tierra vinculada a la piedra, los minerales y la resistencia física."],
+    "Sylph (Toque do Vento)": ["Sílfide", "Sylph", "Sílfide", "Herança de ar ligada ao vento, mobilidade e respiração livre.", "An air heritage tied to wind, mobility, and free breathing.", "Una herencia de aire vinculada al viento, la movilidad y la respiración libre."],
+    "Undine (Toque da Água)": ["Ondina", "Undine", "Ondina", "Herança de água adaptada à natação e a ambientes aquáticos.", "A water heritage adapted to swimming and aquatic environments.", "Una herencia de agua adaptada a la natación y los entornos acuáticos."],
+    "Ardande (Toque da Madeira)": ["Ardande", "Ardande", "Ardande", "Herança vegetal ligada à madeira, crescimento e vida natural.", "A plant heritage tied to wood, growth, and natural life.", "Una herencia vegetal vinculada a la madera, el crecimiento y la vida natural."],
+    "Talos (Toque do Metal)": ["Talos", "Talos", "Talos", "Herança metálica ligada a ferro, aço e energia condutiva.", "A metal heritage tied to iron, steel, and conductive energy.", "Una herencia metálica vinculada al hierro, el acero y la energía conductora."],
+    "Fantasma (Ghost)": ["Fantasma", "Ghost", "Fantasma", "Herança incorpórea presa ao mundo material por uma tarefa inacabada.", "An incorporeal heritage bound to the Material Plane by unfinished business.", "Una herencia incorpórea ligada al mundo material por un asunto pendiente."],
+    "Ghoul (Carniçal)": ["Carniçal", "Ghoul", "Necrófago", "Herança morta-viva marcada por fome necrótica e sentidos predatórios.", "An undead heritage marked by necrotic hunger and predatory senses.", "Una herencia muerta viviente marcada por hambre necrótica y sentidos depredadores."],
+    "Múmia (Mummy)": ["Múmia", "Mummy", "Momia", "Herança morta-viva preservada por ritos e maldições antigas.", "An undead heritage preserved by ancient rites and curses.", "Una herencia muerta viviente preservada por ritos y maldiciones antiguas."],
+    "Vampiro (Vampire)": ["Vampiro", "Vampire", "Vampiro", "Herança morta-viva predatória ligada à noite e à sede de sangue.", "A predatory undead heritage tied to night and blood thirst.", "Una herencia muerta viviente depredadora ligada a la noche y la sed de sangre."],
+    "Zumbi (Zombie)": ["Zumbi", "Zombie", "Zombi", "Herança morta-viva resiliente que persiste apesar de ferimentos terríveis.", "A resilient undead heritage that persists despite terrible wounds.", "Una herencia muerta viviente resistente que persiste pese a heridas terribles."]
+  },
+  archetypes: {
+    "Espião Noturno (Shadowdancer)": ["Espião Noturno", "Shadowdancer", "Danzarín de sombras", "Arquétipo de furtividade que domina teleporte, escuridão e ilusões.", "A stealth archetype mastering teleportation, darkness, and illusion.", "Un arquetipo de sigilo que domina el teletransporte, la oscuridad y la ilusión."],
+    "Dedicação: Bardo": ["Dedicação: Bardo", "Bard Dedication", "Dedicación de bardo", "Dedicação multiclasse que concede acesso a composição e magia oculta.", "A multiclass dedication granting access to compositions and occult magic.", "Una dedicación multiclase que concede acceso a composiciones y magia oculta."],
+    "Dedicação: Clérigo": ["Dedicação: Clérigo", "Cleric Dedication", "Dedicación de clérigo", "Dedicação multiclasse que concede magia divina e vínculo com uma divindade.", "A multiclass dedication granting divine magic and a deity connection.", "Una dedicación multiclase que concede magia divina y vínculo con una deidad."],
+    "Dedicação: Druida": ["Dedicação: Druida", "Druid Dedication", "Dedicación de druida", "Dedicação multiclasse que concede magia primal e poderes da natureza.", "A multiclass dedication granting primal magic and nature powers.", "Una dedicación multiclase que concede magia primordial y poderes de la naturaleza."],
+    "Dedicação: Guerreiro": ["Dedicação: Guerreiro", "Fighter Dedication", "Dedicación de guerrero", "Dedicação multiclasse que amplia treinamento marcial e opções de combate.", "A multiclass dedication expanding martial training and combat options.", "Una dedicación multiclase que amplía el entrenamiento marcial y las opciones de combate."],
+    "Dedicação: Ladino": ["Dedicação: Ladino", "Rogue Dedication", "Dedicación de pícaro", "Dedicação multiclasse que concede técnicas furtivas e perícias adicionais.", "A multiclass dedication granting rogue techniques and additional skills.", "Una dedicación multiclase que concede técnicas de pícaro y habilidades adicionales."],
+    "Dedicação: Mago": ["Dedicação: Mago", "Wizard Dedication", "Dedicación de mago", "Dedicação multiclasse que concede grimório e conjuração arcana preparada.", "A multiclass dedication granting a spellbook and prepared arcane casting.", "Una dedicación multiclase que concede grimorio y lanzamiento arcano preparado."],
+    "Dedicação: Magus": ["Dedicação: Magus", "Magus Dedication", "Dedicación de magus", "Dedicação multiclasse que combina ataques marciais e conjuração arcana.", "A multiclass dedication combining martial attacks and arcane casting.", "Una dedicación multiclase que combina ataques marciales y lanzamiento arcano."],
+    "Dedicação: Patrulheiro": ["Dedicação: Patrulheiro", "Ranger Dedication", "Dedicación de explorador", "Dedicação multiclasse focada em Caçar Presa, exploração e combate à distância.", "A multiclass dedication focused on Hunt Prey, exploration, and ranged combat.", "Una dedicación multiclase centrada en Cazar presa, exploración y combate a distancia."],
+    "Dedicação: Convocador": ["Dedicação: Convocador", "Summoner Dedication", "Dedicación de convocador", "Dedicação multiclasse que vincula um eidolon ao personagem.", "A multiclass dedication that binds an eidolon to the character.", "Una dedicación multiclase que vincula un eidolon al personaje."],
+    "Dedicação: Bruxo": ["Dedicação: Bruxo", "Witch Dedication", "Dedicación de bruja", "Dedicação multiclasse que concede familiar patrono e magia de patronagem.", "A multiclass dedication granting a patron familiar and patron magic.", "Una dedicación multiclase que concede un familiar patrón y magia de patrón."],
+    "Dedicação: Cineticista": ["Dedicação: Cineticista", "Kineticist Dedication", "Dedicación de cinético", "Dedicação multiclasse que abre portais elementais e impulsos cinéticos.", "A multiclass dedication opening elemental gates and kinetic impulses.", "Una dedicación multiclase que abre portales elementales e impulsos cinéticos."],
+    "Dedicação: Psíquico": ["Dedicação: Psíquico", "Psychic Dedication", "Dedicación de psíquico", "Dedicação multiclasse que fortalece truques e poderes psiônicos.", "A multiclass dedication enhancing cantrips and psychic powers.", "Una dedicación multiclase que potencia trucos y poderes psíquicos."],
+    "Dedicação: Taumaturgo": ["Dedicação: Taumaturgo", "Thaumaturge Dedication", "Dedicación de taumaturgo", "Dedicação multiclasse que concede implementos e Explorar Fraquezas.", "A multiclass dedication granting implements and Exploit Vulnerability.", "Una dedicación multiclase que concede implementos y Explotar vulnerabilidad."],
+    "Dedicação: Exemplar": ["Dedicação: Exemplar", "Exemplar Dedication", "Dedicación de ejemplar", "Dedicação multiclasse que concede centelha divina e ícones sagrados.", "A multiclass dedication granting a divine spark and sacred ikons.", "Una dedicación multiclase que concede una chispa divina e iconos sagrados."],
+    "Dedicação: Animista": ["Dedicação: Animista", "Animist Dedication", "Dedicación de animista", "Dedicação multiclasse que concede aparições e um receptáculo espiritual.", "A multiclass dedication granting apparitions and a spiritual vessel.", "Una dedicación multiclase que concede apariciones y un receptáculo espiritual."]
+  },
+  weapons: {
+    "Adze (1d10 S)": ["Enxó", "Adze", "Azula", "Arma marcial pesada de corte e varredura.", "A heavy martial slashing weapon with sweep capabilities.", "Un arma marcial pesada cortante con capacidad de barrido."],
+    "Air Repeater (1d4 P)": ["Repetidora de Ar", "Air Repeater", "Repetidora de aire", "Arma simples de disparo com pente de seis munições.", "A simple repeating firearm with a six-shot magazine.", "Un arma de fuego simple repetidora con cargador de seis disparos."],
+    "Aklys (1d6 B)": ["Aklys", "Aklys", "Aklys", "Arma avançada amarrada, derrubadora e arremessável.", "An advanced tethered weapon that can trip and be thrown.", "Un arma avanzada atada que puede derribar y lanzarse."],
+    "Alchemical Bomb (Special)": ["Bomba Alquímica", "Alchemical Bomb", "Bomba alquímica", "Arma consumível que usa um efeito alquímico elemental.", "A consumable weapon that uses an elemental alchemical effect.", "Un arma consumible que usa un efecto alquímico elemental."],
+    "Alchemical Crossbow (1d8 P)": ["Besta Alquímica", "Alchemical Crossbow", "Ballesta alquímica", "Besta marcial preparada para entregar munição alquímica.", "A martial crossbow designed to deliver alchemical ammunition.", "Una ballesta marcial diseñada para entregar munición alquímica."],
+    "Arbalest (1d10 P)": ["Arbalesta", "Arbalest", "Arbalesta", "Besta simples de alto dano e recarga lenta.", "A simple crossbow with high damage and a slow reload.", "Una ballesta simple de gran daño y recarga lenta."],
+    "Arcabuz / Arquebus (1d8 P)": ["Arcabuz", "Arquebus", "Arcabuz", "Arma de fogo marcial de longo alcance e recarga.", "A long-ranged martial firearm with reload requirements.", "Un arma de fuego marcial de largo alcance que requiere recarga."],
+    "Asp Coil (1d6 S)": ["Espiral de Áspide", "Asp Coil", "Espiral de áspid", "Arma avançada flexível para desarmar e atacar com acuidade.", "An advanced flexible weapon for disarming and precise attacks.", "Un arma avanzada flexible para desarmar y realizar ataques precisos."],
+    "Atlatl (1d6 P)": ["Atlatl", "Atlatl", "Atlatl", "Arma simples propulsora que amplia o alcance de dardos.", "A simple propulsive weapon that extends dart range.", "Un arma simple propulsora que amplía el alcance de los dardos."],
+    "Axe Musket - Melee (1d8 S)": ["Mosquete-Machado (corpo a corpo)", "Axe Musket (Melee)", "Mosquete-hacha (cuerpo a cuerpo)", "Arma de combinação que une machado e mecanismo de fogo.", "A combination weapon joining an axe with a firearm mechanism.", "Un arma combinada que une un hacha con un mecanismo de arma de fuego."],
+    "Axe Musket - Ranged (1d6 P)": ["Mosquete-Machado (à distância)", "Axe Musket (Ranged)", "Mosquete-hacha (a distancia)", "Modo de disparo da arma de combinação mosquete-machado.", "The ranged mode of the axe musket combination weapon.", "El modo a distancia del arma combinada mosquete-hacha."],
+    "Backpack Ballista (1d12 P)": ["Balista de Mochila", "Backpack Ballista", "Balista de mochila", "Arma marcial portátil de disparo pesado.", "A portable martial weapon for heavy ranged attacks.", "Un arma marcial portátil para ataques a distancia pesados."],
+    "Backpack Catapult (1d12 B)": ["Catapulta de Mochila", "Backpack Catapult", "Catapulta de mochila", "Arma avançada portátil que arremessa projéteis de impacto.", "An advanced portable weapon that launches bludgeoning projectiles.", "Un arma avanzada portátil que lanza proyectiles contundentes."],
+    "Broadsword / Espada Larga (1d8 S)": ["Espada Larga", "Broadsword", "Espada ancha", "Espada marcial versátil para cortes e estocadas.", "A versatile martial sword for slashing and thrusting.", "Una espada marcial versátil para cortar y apuñalar."],
+    "Dueling Pistol / Pistola de Duelo (1d6 P)": ["Pistola de Duelo", "Dueling Pistol", "Pistola de duelo", "Arma de fogo marcial precisa para confrontos individuais.", "A precise martial firearm for one-on-one duels.", "Un arma de fuego marcial precisa para duelos individuales."],
+    "Katar / Adaga de Punho (1d4 P)": ["Adaga de Punho", "Katar", "Katar", "Arma simples de punho com acuidade e técnicas de monge.", "A simple fist weapon with finesse and monk techniques.", "Un arma simple de puño con sutileza y técnicas de monje."],
+    "Main-gauche / Adaga de Duelo (1d4 P)": ["Adaga de Duelo", "Main-gauche", "Main-gauche", "Adaga defensiva para aparar, desarmar e atacar com acuidade.", "A defensive dagger for parrying, disarming, and precise attacks.", "Una daga defensiva para parar, desarmar y atacar con precisión."],
+    "Orc Knuckle Dagger (1d6 P)": ["Adaga de Punho Orc", "Orc Knuckle Dagger", "Daga de puño orca", "Arma marcial de punho orc para ataques ágeis e precisos.", "An orc martial fist weapon for agile, precise attacks.", "Un arma marcial de puño orca para ataques ágiles y precisos."],
+    "Punching Dagger (1d4 P)": ["Adaga de Soco", "Punching Dagger", "Daga de puño", "Arma simples de punho com acuidade e golpes rápidos.", "A simple fist weapon with finesse and quick strikes.", "Un arma simple de puño con sutileza y golpes rápidos."],
+    "Shield Boss / Umbo de Escudo (1d6 B)": ["Umbo de Escudo", "Shield Boss", "Umbo de escudo", "Acessório de escudo que transforma o umbo em arma contundente.", "A shield attachment that turns the boss into a bludgeoning weapon.", "Un accesorio de escudo que convierte el umbo en un arma contundente."],
+    "Shield Spikes / Pontas de Escudo (1d6 P)": ["Pontas de Escudo", "Shield Spikes", "Púas de escudo", "Acessório de escudo que adiciona uma opção de ataque perfurante.", "A shield attachment that adds a piercing attack option.", "Un accesorio de escudo que añade una opción de ataque perforante."]
+  },
+  armors: {
+    "Armored Cloak": ["Manto Blindado", "Armored Cloak", "Capa blindada"], "Armored Coat": ["Casaco Blindado", "Armored Coat", "Abrigo blindado"], "Automaton Chassis": ["Chassi de Autômato", "Automaton Chassis", "Chasis de autómata"], "Bakuwa Bony Plates": ["Placas Ósseas Bakuwa", "Bakuwa Bony Plates", "Placas óseas bakuwa"], "Buckle Armor": ["Armadura de Fivelas", "Buckle Armor", "Armadura de hebillas"], "Ceramic Plate": ["Placa de Cerâmica", "Ceramic Plate", "Placa de cerámica"], "Conrasu Reinforced Exoskeleton": ["Exoesqueleto Reforçado Conrasu", "Conrasu Reinforced Exoskeleton", "Exoesqueleto reforzado conrasu"], "Coral Armor": ["Armadura de Coral", "Coral Armor", "Armadura de coral"], "Coral Plate": ["Placa de Coral", "Coral Plate", "Placa de coral"]
+  },
+  shields: {
+    "Caster's Targe": ["Targa de Conjurador", "Caster's Targe", "Targa de lanzador"], "Dart Shield": ["Escudo de Dardos", "Dart Shield", "Escudo de dardos"], "Gauntlet Buckler": ["Broquel-Manopla", "Gauntlet Buckler", "Broquel de guantelete"], "Harnessed Shield": ["Escudo com Arreio", "Harnessed Shield", "Escudo con arnés"], "Heavy Rondache": ["Rondache Pesado", "Heavy Rondache", "Rondache pesado"], "Hide Shield": ["Escudo de Couro", "Hide Shield", "Escudo de cuero"], "Klar": ["Klar", "Klar", "Klar"], "Meteor Shield": ["Escudo Meteórico", "Meteor Shield", "Escudo meteórico"], "Razor Disc": ["Disco de Lâminas", "Razor Disc", "Disco de hojas"], "Salvo Shield": ["Escudo de Salva", "Salvo Shield", "Escudo de salva"], "Swordstealer Shield": ["Escudo Rouba-Espadas", "Swordstealer Shield", "Escudo robaespadas"], "Sturdy Shield (Minor)": ["Escudo Resistente (Menor)", "Sturdy Shield (Minor)", "Escudo resistente (menor)"]
+  }
+};
+const applyUnverifiedMetadata = (records, metadata, category) => {
+  const prefixes = { ancestries: "ancestry", versatileHeritages: "heritage", archetypes: "archetype", weapons: "weapon", armors: "armor", shields: "shield" };
+  (records || []).forEach((record, index) => {
+    const data = category === "ancestries" ? metadata[index] : metadata[record.name];
+    if (!data || (record.names && record.summaries)) return;
+    const [pt, en, es, ptSummary, enSummary, esSummary] = data.length === 3
+      ? [data[0], data[1], data[2], `Entrada de ${category === "armors" ? "armadura" : "escudo"} ${data[0]}.`, `${data[1]} ${category === "armors" ? "armor" : "shield"} catalog entry.`, `Entrada de ${category === "armors" ? "armadura" : "escudo"} ${data[2]}.`]
+      : data;
+    const slug = (en || pt).toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "");
+    const generatedId = `${prefixes[category] || category}.${slug}${category === "versatileHeritages" ? ".legacy_pending" : ""}`;
+    Object.assign(record, {
+      id: record.id || generatedId,
+      names: { "pt-BR": pt, en, es },
+      summaries: { "pt-BR": ptSummary, en: enSummary, es: esSummary },
+      needs_review: true,
+      ruleset: record.ruleset || "needs_review"
+    });
+  });
+};
+applyUnverifiedMetadata(Object.values(PF2E_DATA.ancestries), LEGACY_UNVERIFIED_METADATA.ancestries, "ancestries");
+applyUnverifiedMetadata(PF2E_DATA.versatileHeritages, LEGACY_UNVERIFIED_METADATA.versatileHeritages, "versatileHeritages");
+applyUnverifiedMetadata(PF2E_DATA.archetypes, LEGACY_UNVERIFIED_METADATA.archetypes, "archetypes");
+applyUnverifiedMetadata(PF2E_DATA.weapons, LEGACY_UNVERIFIED_METADATA.weapons, "weapons");
+applyUnverifiedMetadata(PF2E_DATA.armors, LEGACY_UNVERIFIED_METADATA.armors, "armors");
+applyUnverifiedMetadata(PF2E_DATA.shields, LEGACY_UNVERIFIED_METADATA.shields, "shields");
+
+// No Livro dos Mortos, estas opções são arquétipos de dedicação, não heranças
+// versáteis. Mantê-las na coleção de heranças ofereceria uma escolha inválida
+// durante a criação; movê-las conserva os dados localizados e a proveniência.
+const undeadArchetypeSources = {
+  "heritage.ghost.legacy_pending": 52,
+  "heritage.ghoul.legacy_pending": 46,
+  "heritage.mummy.legacy_pending": 56,
+  "heritage.vampire.legacy_pending": 58,
+  "heritage.zombie.legacy_pending": 60
+};
+for (const [heritageId, page] of Object.entries(undeadArchetypeSources)) {
+  const index = (PF2E_DATA.versatileHeritages || []).findIndex((record) => record.id === heritageId);
+  if (index < 0) continue;
+  const [heritage] = PF2E_DATA.versatileHeritages.splice(index, 1);
+  const archetypeId = heritageId.replace(/^heritage\./, "archetype.").replace(/\.legacy_pending$/, "");
+  const archetype = (PF2E_DATA.archetypes || []).find((record) => record.id === archetypeId);
+  if (archetype) {
+    Object.assign(archetype, {
+      category: archetype.category || "Undead Archetype",
+      subtype: archetype.subtype || "standard",
+      level: archetype.level || 2,
+      dedicationLevel: archetype.dedicationLevel || 2,
+      prerequisites: archetype.prerequisites || ["Você está morto-vivo"],
+      source: { book: BOOK_DEAD_SOURCE, page },
+      sourceApproximate: false,
+      ruleset: "legacy"
+    });
+  }
+}
+
+// Os aliases antigos de Ardande e Talos apontam para as seções confirmadas do
+// Rage of Elements. Eles continuam em revisão por serem registros legados.
+for (const [heritageId, page] of [["heritage.ardande.legacy_pending", 46], ["heritage.talos.legacy_pending", 50]]) {
+  const heritage = (PF2E_DATA.versatileHeritages || []).find((record) => record.id === heritageId);
+  if (heritage) Object.assign(heritage, {
+    source: { book: RAGE_ELEMENTS_SOURCE, page },
+    sourceApproximate: false,
+    ruleset: "remaster",
+    needs_review: true
+  });
+}
+
+// Proveniência confirmada no PDF local de Pólvora e Engrenagens: os dois
+// dispositivos aparecem na tabela de armas à distância e nas descrições das
+// páginas impressas 63–64. A página é certa, mas a transcrição mecânica ainda
+// fica em revisão até a tabela completa ser conferida.
+const backpackBallista = (PF2E_DATA.weapons || []).find((record) => record.id === "weapon.backpack_ballista");
+if (backpackBallista) Object.assign(backpackBallista, {
+  source: { book: GUNS_GEARS_SOURCE, page: 63 },
+  sourceApproximate: false,
+  needs_review: true
+});
+const backpackCatapult = (PF2E_DATA.weapons || []).find((record) => record.id === "weapon.backpack_catapult");
+if (backpackCatapult) Object.assign(backpackCatapult, {
+  source: { book: GUNS_GEARS_SOURCE, page: 64 },
+  sourceApproximate: false,
+  needs_review: true
+});
+
+// Estas armas aparecem na tabela de armas do Livro do Jogador 2, p. 275.
+// A referência é confirmada, mas os efeitos individuais continuam em revisão
+// até a transcrição mecânica ser confrontada linha a linha com o PDF.
+const playerCore2LegacyWeaponIds = [
+  "weapon.aklys", "weapon.alchemical_crossbow", "weapon.arbalest",
+  "weapon.asp_coil", "weapon.atlatl", "weapon.main_gauche", "weapon.punching_dagger"
+];
+for (const weaponId of playerCore2LegacyWeaponIds) {
+  const weapon = (PF2E_DATA.weapons || []).find((record) => record.id === weaponId);
+  if (weapon) Object.assign(weapon, {
+    source: { book: PLAYER_CORE_2_SOURCE, page: 275 },
+    sourceApproximate: false,
+    ruleset: "remaster",
+    needs_review: true
+  });
+}
+
+// Correção conferida na tabela de armas do Livro do Jogador 2, p. 275.
+const verifiedAdze = (PF2E_DATA.weapons || []).find((record) => record.id === "weapon.adze");
+if (verifiedAdze) Object.assign(verifiedAdze, {
+  name: "Enxó (Adze)", category: "Marcial", damage: "1d10", damageType: "Cortante (Ct)",
+  level: 0, price: "1 PO", bulk: 2, traits: ["Amplitude", "Enérgica", "Tripkee"],
+  names: { "pt-BR": "Enxó", en: "Adze", es: "Azuela" },
+  summaries: {
+    "pt-BR": "Ferramenta de corte horizontal usada como arma marcial por construtores tripkee.",
+    en: "A horizontal-bladed cutting tool used as a martial weapon by tripkee builders.",
+    es: "Una herramienta de corte horizontal usada como arma marcial por constructores tripkee."
+  },
+  source: { book: PLAYER_CORE_2_SOURCE, page: 275 }, ruleset: "remaster", needs_review: false
+});
+
+// Entradas confirmadas nas tabelas de armas de fogo de Pólvora e Engrenagens
+// (pp. 151 e 158 do PDF local). A nomenclatura mantém a tradução da edição
+// brasileira e o nome inglês da fonte, sem confundir o catálogo legado com
+// uma arma diferente.
+const verifiedFirearms = {
+  "weapon.air_repeater": {
+    name: "Repetidor de Pressão (Pressure Repeater)", category: "Simples", damage: "1d4", damageType: "Perfuração (Pf)",
+    level: 0, price: "5 PO", bulk: "L", traits: ["Ágil", "Repetição"],
+    names: { "pt-BR": "Repetidor de Pressão", en: "Pressure Repeater", es: "Repetidor de presión" },
+    summaries: { "pt-BR": "Arma de fogo simples que usa ar pressurizado e um carregador de seis projéteis.", en: "A simple firearm that uses pressurized air and a six-shot loader.", es: "Un arma de fuego simple que usa aire presurizado y un cargador de seis proyectiles." },
+    source: { book: GUNS_GEARS_SOURCE, page: 151 }
+  },
+  "weapon.arquebus": {
+    name: "Arcabuz (Arquebus)", category: "Marcial", damage: "1d8", damageType: "Perfuração (Pf)",
+    level: 0, price: "10 PO", bulk: 2, traits: ["Coice", "Concussiva", "Fatal d12", "Recarga 1", "Alcance 150 pés"],
+    names: { "pt-BR": "Arcabuz", en: "Arquebus", es: "Arcabuz" },
+    summaries: { "pt-BR": "Arma de fogo marcial de longo alcance e forte recuo, usada por soldados e atiradores.", en: "A long-ranged martial firearm with powerful recoil, used by soldiers and marksmen.", es: "Un arma de fuego marcial de largo alcance y fuerte retroceso, usada por soldados y tiradores." },
+    source: { book: GUNS_GEARS_SOURCE, page: 151 }
+  },
+  "weapon.dueling_pistol": {
+    name: "Pistola de Duelo (Dueling Pistol)", category: "Marcial", damage: "1d6", damageType: "Perfuração (Pf)",
+    level: 1, price: "12 PO", bulk: "L", traits: ["Concussiva", "Fatal d10", "Ocultável", "Recarga 1", "Alcance 60 pés"],
+    names: { "pt-BR": "Pistola de Duelo", en: "Dueling Pistol", es: "Pistola de duelo" },
+    summaries: { "pt-BR": "Arma de fogo marcial precisa e ocultável, criada para duelos e confrontos individuais.", en: "A precise, concealable martial firearm made for duels and one-on-one confrontations.", es: "Un arma de fuego marcial precisa y ocultable, creada para duelos y enfrentamientos individuales." },
+    source: { book: GUNS_GEARS_SOURCE, page: 151 }
+  },
+  "weapon.axe_musket_melee": {
+    name: "Machado-Mosquete (Axe Musket, melee)", category: "Marcial", damage: "1d8", damageType: "Cortante (Ct)",
+    level: 1, price: "10 PO", bulk: 2, traits: ["Combinação", "Fusão crítica", "Amplitude"],
+    names: { "pt-BR": "Machado-Mosquete (corpo a corpo)", en: "Axe Musket (Melee)", es: "Mosquete-hacha (cuerpo a cuerpo)" },
+    summaries: { "pt-BR": "Forma corpo a corpo de uma arma combinada que une um machado a um mosquete.", en: "The melee form of a combination weapon joining an axe and a musket.", es: "La forma cuerpo a cuerpo de un arma combinada que une un hacha y un mosquete." },
+    source: { book: GUNS_GEARS_SOURCE, page: 158 }
+  },
+  "weapon.axe_musket_ranged": {
+    name: "Machado-Mosquete (Axe Musket, ranged)", category: "Marcial", damage: "1d6", damageType: "Perfuração (Pf)",
+    level: 1, price: "10 PO", bulk: 2, traits: ["Combinação", "Concussiva", "Fatal d10", "Recarga 1", "Alcance 40 pés"],
+    names: { "pt-BR": "Machado-Mosquete (à distância)", en: "Axe Musket (Ranged)", es: "Mosquete-hacha (a distancia)" },
+    summaries: { "pt-BR": "Forma de disparo de uma arma combinada que une um machado a um mosquete.", en: "The firearm form of a combination weapon joining an axe and a musket.", es: "La forma de arma de fuego de un arma combinada que une un hacha y un mosquete." },
+    source: { book: GUNS_GEARS_SOURCE, page: 158 }
+  }
+};
+for (const [id, patch] of Object.entries(verifiedFirearms)) {
+  const record = (PF2E_DATA.weapons || []).find((candidate) => candidate.id === id);
+  if (record) Object.assign(record, patch, { ruleset: "legacy", needs_review: false });
+}
+
+// Demais armas de fogo mundanas presentes na Tabela 4-2 (p. 151). O campo
+// range/reload é preservado para o picker, enquanto o motor de dano continua
+// usando damage/damageType como nos registros históricos.
+const additionalGunsGearsFirearms = [
+  ["weapon.hand_cannon", "Canhão de Mão", "Hand Cannon", "Cañón de mano", "Simples", "1d6", "Modular Cn/Ct/Pf", "5 PO", 1, 1, "9 m", 1, ["Arma de fogo", "Modular"]],
+  ["weapon.fire_lance", "Lança de Fogo", "Fire Lance", "Lanza de fuego", "Simples", "1d6", "Perfuração (Pf)", "5 PO", 2, 2, "3 m", 2, ["Arma de fogo"]],
+  ["weapon.flintlock_musket", "Mosquete de Pederneira", "Flintlock Musket", "Mosquete de pedernal", "Simples", "1d6", "Perfuração (Pf)", "7 PO", 2, 2, "21 m", 1, ["Arma de fogo", "Ágil", "Repetição"]],
+  ["weapon.coat_pistol", "Pistola de Casaco", "Coat Pistol", "Pistola de chaqueta", "Simples", "1d4", "Perfuração (Pf)", "6 PO", "L", 1, "9 m", 1, ["Arma de fogo", "Ocultável"]],
+  ["weapon.flintlock_pistol", "Pistola de Pederneira", "Flintlock Pistol", "Pistola de pedernal", "Simples", "1d4", "Perfuração (Pf)", "6 PO", 1, 1, "12 m", 1, ["Arma de fogo"]],
+  ["weapon.long_air_repeater", "Repetidor de Pressão Longo", "Long Air Repeater", "Repetidora de aire larga", "Simples", "1d8", "Perfuração (Pf)", "9 PO", 1, 1, "18 m", 0, ["Arma de fogo", "Repetição"]],
+  ["weapon.blunderbuss", "Bacamarte", "Blunderbuss", "Trabuco", "Marcial", "1d8", "Perfuração (Pf)", "8 PO", 2, 2, "12 m", 1, ["Arma de fogo", "Concussiva", "Dispersão 1,5 m"]],
+  ["weapon.harmona_gun", "Harmona", "Harmona Gun", "Pistola harmona", "Marcial", "1d10", "Impacto (Cn)", "10 PO", 2, 2, "45 m", 1, ["Arma de fogo", "Concussiva", "Fatal d10", "Ocultável"]],
+  ["weapon.mithral_tree", "Árvore de Mithral", "Mithral Tree", "Árbol de mithral", "Marcial", "1d8", "Perfuração (Pf)", "9 PO", 1, 2, "45 m", 1, ["Arma de fogo", "Concussiva", "Fatal d8"]]
+].map(([id, pt, en, es, category, damage, damageType, price, bulk, hands, range, reload, traits]) => ({
+  id, name: `${pt} (${en})`, category, damage, damageType, level: 0, price, bulk, hands,
+  range, reload, traits,
+  names: { "pt-BR": pt, en, es },
+  summaries: {
+    "pt-BR": `${pt} da tabela de armas de fogo de Pólvora e Engrenagens, com alcance ${range} e recarga ${reload}.`,
+    en: `${en} from the Guns & Gears firearm table, with a ${range} range increment and reload ${reload}.`,
+    es: `${es} de la tabla de armas de fuego de Pólvora y Engranajes, con alcance de ${range} y recarga ${reload}.`
+  },
+  source: { book: GUNS_GEARS_SOURCE, page: 151 }, ruleset: "legacy", needs_review: false
+}));
+for (const weapon of additionalGunsGearsFirearms) {
+  if (!(PF2E_DATA.weapons || []).some((candidate) => candidate.id === weapon.id)) PF2E_DATA.weapons.push(weapon);
+}
+
+const additionalAdvancedFirearms = [
+  ["weapon.jezail", "Jezail", "Jezail", "Jezail", "Marcial", "1d8", "Perfuração (Pf)", "11 PO", 1, 1, "27 m", 1, ["Arma de fogo", "Apunhaladora", "Fatal d10"]],
+  ["weapon.double_barrel_musket", "Mosquete de Cano Duplo", "Double-Barrel Musket", "Mosquete de doble cañón", "Marcial", "1d6", "Perfuração (Pf)", "11 PO", 2, 2, "18 m", 1, ["Arma de fogo", "Cano duplo", "Concussiva"]],
+  ["weapon.pepperbox", "Pimenteiro", "Pepperbox", "Pimentero", "Marcial", "1d4", "Perfuração (Pf)", "12 PO", 1, 1, "18 m", 1, ["Arma de fogo", "Capacidade 3"]],
+  ["weapon.dragon_mouth_pistol", "Pistola Boca de Dragão", "Dragon Mouth Pistol", "Pistola boca de dragón", "Marcial", "1d6", "Perfuração (Pf)", "9 PO", 1, 1, "6 m", 1, ["Arma de fogo", "Dispersão 1,5 m"]],
+  ["weapon.double_barrel_pistol", "Pistola de Cano Duplo", "Double-Barrel Pistol", "Pistola de doble cañón", "Marcial", "1d4", "Perfuração (Pf)", "7 PO", 1, 1, "9 m", 1, ["Arma de fogo", "Cano duplo"]],
+  ["weapon.clan_pistol", "Pistola de Clã", "Clan Pistol", "Pistola de clan", "Marcial", "1d6", "Perfuração (Pf)", "5 PO", "L", 1, "24 m", 1, ["Anão", "Arma de fogo", "Concussiva"]],
+  ["weapon.throwing_weapon", "Arremessador", "Spear Launcher", "Lanzador", "Avançada", "1d6", "Perfuração (Pf)", "6 PO", 1, 2, "9 m", 1, ["Arma de fogo", "Dispersão 1,5 m"]],
+  ["weapon.dwarven_scattergun", "Espingarda Enânica", "Dwarven Scattergun", "Escopeta enana", "Avançada", "1d8", "Perfuração (Pf)", "10 PO", 2, 2, "15 m", 1, ["Anão", "Arma de fogo", "Concussiva", "Dispersão 3 m"]]
+].map(([id, pt, en, es, category, damage, damageType, price, bulk, hands, range, reload, traits]) => ({
+  id, name: `${pt} (${en})`, category, damage, damageType, level: 1, price, bulk, hands,
+  range, reload, traits,
+  names: { "pt-BR": pt, en, es },
+  summaries: {
+    "pt-BR": `${pt} da tabela de armas de fogo de Pólvora e Engrenagens, com alcance ${range} e recarga ${reload}.`,
+    en: `${en} from the Guns & Gears firearm table, with a ${range} range increment and reload ${reload}.`,
+    es: `${es} de la tabla de armas de fuego de Pólvora y Engranajes, con alcance de ${range} y recarga ${reload}.`
+  },
+  source: { book: GUNS_GEARS_SOURCE, page: 151 }, ruleset: "legacy", needs_review: false
+}));
+for (const weapon of additionalAdvancedFirearms) {
+  if (!(PF2E_DATA.weapons || []).some((candidate) => candidate.id === weapon.id)) PF2E_DATA.weapons.push(weapon);
+}
+
+// Munições e municiadores da mesma tabela (p. 151), disponíveis no inventário
+// sem serem confundidos com armas equipáveis.
+const gunsGearsAmmunition = [
+  ["item.guns_gears.ten_bullets", "10 Balas", "10 Bullets", "10 balas", "1 PP", "L", "Conjunto de dez projéteis e pólvora para armas de fogo.", "A set of ten firearm bullets and powder.", "Un conjunto de diez balas y pólvora para armas de fuego."],
+  ["item.guns_gears.loader_six_spheres", "Municiador com 6 Esferas", "6-Sphere Magazine", "Cargador de 6 esferas", "6 PP", "L", "Municiador substituível com seis esferas para armas de fogo compatíveis.", "A replaceable six-sphere magazine for compatible firearms.", "Un cargador reemplazable de seis esferas para armas de fuego compatibles."],
+  ["item.guns_gears.loader_eight_spheres", "Municiador com 8 Esferas", "8-Sphere Magazine", "Cargador de 8 esferas", "8 PP", "L", "Municiador substituível com oito esferas para armas de fogo compatíveis.", "A replaceable eight-sphere magazine for compatible firearms.", "Un cargador reemplazable de ocho esferas para armas de fuego compatibles."]
+].map(([id, pt, en, es, price, bulk, ptSummary, enSummary, esSummary]) => ({
+  id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es }, summaries: { "pt-BR": ptSummary, en: enSummary, es: esSummary },
+  mainCategory: "gear", subCategory: "ammunition", level: 0, price, bulk, traits: ["Munição"], description: ptSummary,
+  source: { book: GUNS_GEARS_SOURCE, page: 151 }, ruleset: "legacy", needs_review: false
+}));
+for (const item of gunsGearsAmmunition) {
+  if (!(PF2E_DATA.items || []).some((candidate) => candidate.id === item.id)) PF2E_DATA.items.push(item);
+}
+
+// Equipamentos e acessórios de armas consultados nas tabelas de Pólvora e
+// Engrenagens (pp. 180–184). Os metadados estão disponíveis para criação e
+// inventário; efeitos completos permanecem em revisão até a catalogação de
+// cada variante e ativação.
+const gunsGearsEquipment = [
+  ["item.guns_gears.gunners_bandolier", "Bandoleira do Atirador", "Gunner's Bandolier", "Bandolera del tirador", 3, 180, "Equipamento para transportar e harmonizar armas de fogo e bestas de mão.", "Equipment for carrying and attuning firearms and hand crossbows.", "Equipo para transportar y armonizar armas de fuego y ballestas de mano."],
+  ["item.guns_gears.immaculate_holster", "Coldre Imaculado", "Immaculate Holster", "Funda impecable", 3, 180, "Coldre mágico que limpa, oleia e recarrega armas compatíveis uma vez por dia.", "A magical holster that cleans, oils, and reloads compatible weapons once per day.", "Una funda mágica que limpia, aceita y recarga armas compatibles una vez al día."],
+  ["item.guns_gears.lucky_draw_bandolier", "Bandoleira do Saque da Sorte", "Lucky Draw Bandolier", "Bandolera del golpe de suerte", 9, 180, "Bandoleira mágica que transforma cartas em munição temporária durante uma ativação.", "A magical bandolier that turns cards into temporary ammunition when activated.", "Una bandolera mágica que convierte cartas en munición temporal al activarse."],
+  ["item.guns_gears.amplifying_scope", "Mira de Amplificação", "Amplifying Scope", "Mira amplificadora", 3, 181, "Mira anexada que amplia o alcance e auxilia a percepção através da arma.", "An attached scope that extends range and assists perception through the weapon.", "Una mira acoplada que amplía el alcance y ayuda a percibir a través del arma."],
+  ["item.guns_gears.delineating_scope", "Mira de Delineamento", "Delineating Scope", "Mira delimitadora", 10, 181, "Mira que transforma o som de um impacto em luz para revelar o alvo atingido.", "A scope that turns the sound of an impact into light to reveal the struck target.", "Una mira que transforma el sonido de un impacto en luz para revelar al objetivo."],
+  ["item.guns_gears.magnetite_scope", "Mira de Magnetita", "Magnetite Scope", "Mira de magnetita", 9, 181, "Mira para armas de fogo com dispersão que amplia o raio de dispersão.", "A scope for scatter firearms that increases their scatter radius.", "Una mira para armas de fuego con dispersión que aumenta su radio de dispersión."],
+  ["item.guns_gears.scope_of_truth", "Mira da Verdade", "Scope of Truth", "Mira de la verdad", 13, 181, "Mira mágica que aprimora Buscar e permite enxergar através de certas ilusões.", "A magical scope that improves Seek and reveals certain illusions.", "Una mira mágica que mejora Buscar y revela ciertas ilusiones."],
+  ["item.guns_gears.darkvision_scope", "Mira de Visão no Escuro", "Darkvision Scope", "Mira de visión en la oscuridad", 5, 181, "Mira que concede visão no escuro enquanto o usuário observa através dela.", "A scope that grants darkvision while the user looks through it.", "Una mira que concede visión en la oscuridad mientras se mira a través de ella."],
+  ["item.guns_gears.weapon_harness", "Armação Portátil de Arma", "Weapon Harness", "Armazón portátil de arma", 1, 182, "Suporte portátil para estabilizar armas de fogo com recuo.", "A portable support for stabilizing firearms with the kickback trait.", "Un soporte portátil para estabilizar armas de fuego con el rasgo retroceso."],
+  ["item.guns_gears.snipers_saddle", "Sela do Atirador", "Sniper's Saddle", "Silla del tirador", 2, 182, "Sela com armação retrátil que funciona como tripé para estabilizar uma arma.", "A saddle with a retractable frame that works as a tripod to stabilize a weapon.", "Una silla con armazón retráctil que funciona como trípode para estabilizar un arma."],
+  ["item.guns_gears.immovable_tripod", "Tripé Imóvel", "Immovable Tripod", "Trípode inamovible", 10, 182, "Tripé mágico que pode ser ancorado no ar ou sob a água.", "A magical tripod that can be anchored in midair or underwater.", "Un trípode mágico que puede anclarse en el aire o bajo el agua."],
+  ["item.guns_gears.shared_power_braces", "Brasões do Poder Partilhado", "Shared Power Braces", "Brazales del poder compartido", 3, 183, "Conjunto de emblemas que compartilha runas fundamentais entre duas armas.", "A set of emblems that shares fundamental runes between two weapons.", "Un conjunto de emblemas que comparte runas fundamentales entre dos armas."],
+  ["item.guns_gears.breech_ejectors", "Ejetores de Culatra", "Breech Ejectors", "Expulsores de recámara", 3, 183, "Mecanismo consumível que acelera a recarga de uma arma de fogo de dois canos.", "A consumable mechanism that speeds reloading a double-barreled firearm.", "Un mecanismo consumible que acelera la recarga de un arma de fuego de doble cañón."],
+  ["item.guns_gears.compressed_air_firing_system", "Sistema de Disparo de Ar Comprimido", "Compressed Air Firing System", "Sistema de disparo de aire comprimido", 4, 183, "Mecanismo anexado que permite disparar sob a água, com redução no alcance.", "An attached mechanism that allows firing underwater, with reduced range.", "Un mecanismo acoplado que permite disparar bajo el agua, con alcance reducido."],
+  ["item.guns_gears.underwater_firing_mechanism", "Mecanismo de Disparo Submarino", "Underwater Firing Mechanism", "Mecanismo de disparo submarino", 9, 183, "Mecanismo mágico anexado que permite disparar em condições que impedem a ignição da pólvora.", "A magical attached mechanism that allows firing where gunpowder would not ignite.", "Un mecanismo mágico acoplado que permite disparar donde la pólvora no encendería."],
+  ["item.guns_gears.screaming_skull", "Caveira Gritante", "Screaming Skull", "Calavera gritona", 12, 184, "Talismã consumível para uma arma de fogo ou besta, ligado a Intimidação.", "A consumable talisman for a firearm or crossbow, tied to Intimidation.", "Un talismán consumible para un arma de fuego o ballesta, ligado a Intimidación."]
+].map(([id, pt, en, es, level, page, ptSummary, enSummary, esSummary]) => ({
+  id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es }, summaries: { "pt-BR": ptSummary, en: enSummary, es: esSummary },
+  description: ptSummary, mainCategory: level >= 3 ? "magic_items" : "gear", subCategory: "guns_gears", level, price: undefined, bulk: "L", traits: ["Pólvora e Engrenagens"],
+  source: { book: GUNS_GEARS_SOURCE, page }, ruleset: "legacy", needs_review: true
+}));
+for (const item of gunsGearsEquipment) {
+  if (!(PF2E_DATA.items || []).some((candidate) => candidate.id === item.id)) PF2E_DATA.items.push(item);
+}
+
+// Armas de fogo fantásticas, armengadas e combinadas consultadas nas pp.
+// 155–168. São opções utilizáveis pelo personagem, mas as ativações e
+// requisitos de manufatura continuam explicitamente marcados para revisão.
+const gunsGearsFantasticWeapons = [
+  ["detonating_breath", "Sopro Detonador", "Detonating Breath", "Aliento detonador", 8, 155],
+  ["dragonet_rifle", "Rifle-Dragonete", "Dragonet Rifle", "Rifle de dragonete", 4, 155],
+  ["carnifor", "Carníforo", "Carnifor", "Carníforo", 9, 156],
+  ["petrifying_cannon", "Canhão Petrificante", "Petrifying Cannon", "Cañón petrificante", 15, 156],
+  ["scream_launcher", "Disparador de Gritos", "Scream Launcher", "Lanzador de gritos", 9, 156],
+  ["arachnid_armament", "Armamento Aracnídeo", "Arachnid Armament", "Armamento arácnido", 6, 156],
+  ["thorn_launcher", "Lançador de Espinhos", "Thorn Launcher", "Lanzador de espinas", 6, 157],
+  ["tentacle_cannon", "Canhão Tentacular", "Tentacle Cannon", "Cañón tentacular", 7, 157],
+  ["spoon_armament", "Armamento de Colher", "Spoon Armament", "Armamento de cuchara", 1, 158],
+  ["kaboom_armament", "Armamento Kabum", "Kaboom Armament", "Armamento kabum", 1, 158],
+  ["liars_armament", "Armamento do Mentiroso", "Liar's Armament", "Armamento del mentiroso", 7, 158],
+  ["arboreal_revenge", "Vingança do Arbóreo", "Arboreal Revenge", "Venganza del arbóreo", 6, 161],
+  ["immolation_clan_pistol", "Pistola de Clã da Imolação", "Immolation Clan Pistol", "Pistola de clan de la inmolación", 10, 161],
+  ["pact_bound_pistol", "Pistola Pacto-Vinculada", "Pactbound Pistol", "Pistola ligada por pacto", 10, 162],
+  ["animated_dreamer", "Sonhadora Animada", "Animated Dreamer", "Soñadora animada", 15, 162],
+  ["dashing_shooter", "Caçador Fanfarrão", "Dashing Shooter", "Cazador fanfarrón", 3, 163],
+  ["ducal_defender", "Defensor do Ducado", "Ducal Defender", "Defensor del ducado", 13, 163],
+  ["submersible_pistol", "Pistola Submersa", "Submersible Pistol", "Pistola sumergible", 8, 164],
+  ["hyldarf_fang", "Presa de Hyldarf", "Hyldarf's Fang", "Colmillo de Hyldarf", 15, 165],
+  ["sky_iris", "Íris do Céu", "Sky Iris", "Iris del cielo", 6, 166],
+  ["charlatans_passing", "Passagem do Charlatão", "Charlatan's Passage", "Paso del charlatán", 15, 166],
+  ["reapers_grip", "Aperto do Ceifador", "Reaper's Grip", "Agarre del segador", 11, 166],
+  ["rowan_rifle", "Rifle de Sorveira", "Rowan Rifle", "Rifle de serbal", 16, 167],
+  ["tigers_claw", "Garra do Tigre", "Tiger's Claw", "Garra del tigre", 11, 167],
+  ["wonder_pistol", "Pistola da Maravilha", "Wonder Pistol", "Pistola de la maravilla", 13, 168]
+].map(([id, pt, en, es, level, page]) => ({
+  id: `item.guns_gears.fantastic_weapon.${id}`,
+  name: `${pt} (${en})`,
+  names: { "pt-BR": pt, en, es },
+  summaries: {
+    "pt-BR": `Arma de fogo fantástica de Pólvora e Engrenagens, nível ${level}; ativações e requisitos de manufatura devem ser conferidos na fonte.`,
+    en: `Guns & Gears fantastic firearm, level ${level}; activations and Crafting requirements must be checked against the source.`,
+    es: `Arma de fuego fantástica de Guns & Gears, nivel ${level}; las activaciones y requisitos de Artesanía deben confirmarse en la fuente.`
+  },
+  description: `Opção de arma de fogo fantástica da página ${page}.`,
+  mainCategory: "magic_items",
+  subCategory: "guns_gears_firearms",
+  level,
+  rarity: "uncommon",
+  traits: ["Pólvora e Engrenagens", "Arma de fogo"],
+  source: { book: GUNS_GEARS_SOURCE, page },
+  ruleset: "legacy",
+  needs_review: true
+}));
+for (const item of gunsGearsFantasticWeapons) {
+  if (!(PF2E_DATA.items || []).some((candidate) => candidate.id === item.id)) PF2E_DATA.items.push(item);
+}
+
+const gunsGearsSpecialAmmunition = [
+  ["glue_bullet", "Bala de Cola", "Glue Bullet", "Bala de pegamento", 4, 169],
+  ["erosion_bullet", "Bala da Erosão", "Erosion Bullet", "Bala de erosión", 5, 169],
+  ["faerie_bullet", "Bala Feérica", "Faerie Bullet", "Bala feérica", 7, 169],
+  ["reliable_cartridge", "Cartucho Confiável", "Reliable Cartridge", "Cartucho fiable", 3, 170],
+  ["dream_cartridge", "Cartucho Sonhador", "Dream Cartridge", "Cartucho soñador", 14, 170],
+  ["awakened_metal_shot", "Disparo de Metal Desperto", "Awakened Metal Shot", "Disparo de metal despertado", 17, 170],
+  ["aromatic_ammunition", "Munição Aromática", "Aromatic Ammunition", "Munición aromática", 2, 171],
+  ["exsanguinating_ammunition", "Munição Exsanguinante", "Exsanguinating Ammunition", "Munición exsanguinante", 4, 171],
+  ["meteor_shot", "Tiro Meteoro", "Meteor Shot", "Disparo meteoro", 7, 172],
+  ["bridge_shot", "Tiro-Passarela", "Bridge Shot", "Disparo-pasarela", 7, 172],
+  ["silent_shot", "Tiro Silenciante", "Silent Shot", "Disparo silencioso", 11, 172]
+].map(([id, pt, en, es, level, page]) => ({
+  id: `item.guns_gears.ammunition.${id}`,
+  name: `${pt} (${en})`,
+  names: { "pt-BR": pt, en, es },
+  summaries: {
+    "pt-BR": `Munição especial de Pólvora e Engrenagens, nível ${level}; efeito e compatibilidade devem ser conferidos na fonte.`,
+    en: `Guns & Gears special ammunition, level ${level}; effect and compatibility must be checked against the source.`,
+    es: `Munición especial de Guns & Gears, nivel ${level}; el efecto y la compatibilidad deben confirmarse en la fuente.`
+  },
+  description: `Munição especial da página ${page}.`,
+  mainCategory: "gear",
+  subCategory: "ammunition",
+  level,
+  rarity: "uncommon",
+  bulk: "L",
+  traits: ["Munição", "Pólvora e Engrenagens"],
+  source: { book: GUNS_GEARS_SOURCE, page },
+  ruleset: "legacy",
+  needs_review: true
+}));
+for (const item of gunsGearsSpecialAmmunition) {
+  if (!(PF2E_DATA.items || []).some((candidate) => candidate.id === item.id)) PF2E_DATA.items.push(item);
+}
+
+const gunsGearsSiegeEquipment = [
+  ["explosive_ram", "Aríete Explosivo", "Explosive Ram", "Ariete explosivo", 7, 174],
+  ["bombard", "Bombarda", "Bombard", "Bombarda", 5, 174],
+  ["heavy_bombard", "Bombarda Pesada", "Heavy Bombard", "Bombarda pesada", 9, 174],
+  ["cannon", "Canhão", "Cannon", "Cañón", 8, 174],
+  ["alkenstar_cannon", "Canhão Alkenstar", "Alkenstar Cannon", "Cañón de Alkenstar", 15, 175],
+  ["hellmouth_cannon", "Canhão Boca de Inferno", "Hellmouth Cannon", "Cañón boca de infierno", 11, 175],
+  ["steelheart_21", "Coração de Aço 21", "Steelheart 21", "Corazón de acero 21", 13, 176],
+  ["fire_dragonet", "Dragonete de Fogo", "Fire Dragonet", "Dragonete de fuego", 8, 176],
+  ["alchemical_springald", "Espringal Alquímico", "Alchemical Springald", "Espringal alquímico", 13, 176],
+  ["hwacha", "Hwacha", "Hwacha", "Hwacha", 4, 177],
+  ["mortar", "Morteiro", "Mortar", "Mortero", 7, 177],
+  ["chain_shot", "Disparo de Corrente", "Chain Shot", "Disparo de cadena", 0, 178],
+  ["sambuca", "Sambuca", "Sambuca", "Sambuca", 3, 178]
+].map(([id, pt, en, es, level, page]) => ({
+  id: `item.guns_gears.siege.${id}`,
+  name: `${pt} (${en})`,
+  names: { "pt-BR": pt, en, es },
+  summaries: {
+    "pt-BR": `Equipamento de cerco de Pólvora e Engrenagens, nível ${level}; equipe, tripulação e regras de disparo devem ser conferidas na fonte.`,
+    en: `Guns & Gears siege equipment, level ${level}; crew, operation, and firing rules must be checked against the source.`,
+    es: `Equipo de asedio de Guns & Gears, nivel ${level}; la tripulación, operación y reglas de disparo deben confirmarse en la fuente.`
+  },
+  description: `Equipamento de cerco da página ${page}.`,
+  mainCategory: "gear",
+  subCategory: "guns_gears_siege",
+  level,
+  rarity: "uncommon",
+  bulk: "—",
+  traits: ["Pólvora e Engrenagens", "Cerco"],
+  source: { book: GUNS_GEARS_SOURCE, page },
+  ruleset: "legacy",
+  needs_review: true
+}));
+for (const item of gunsGearsSiegeEquipment) {
+  if (!(PF2E_DATA.items || []).some((candidate) => candidate.id === item.id)) PF2E_DATA.items.push(item);
+}
+
+// Entradas confirmadas nas tabelas de armas do Livro do Jogador local
+// (pp. 278–281). Os IDs legados são preservados para não quebrar fichas
+// existentes, mas os nomes seguem a terminologia da edição brasileira.
+const verifiedPlayerCoreWeapons = {
+  "weapon.katar": {
+    source: { book: PLAYER_CORE_SOURCE, page: 278 }
+  },
+  "weapon.orc_knuckle_dagger": {
+    source: { book: PLAYER_CORE_SOURCE, page: 279 }
+  },
+  "weapon.broadsword": {
+    name: "Espada Longa (Longsword)", category: "Marcial", damage: "1d8", damageType: "Cortante (Ct)",
+    level: 0, price: "1 PO", bulk: 1, traits: ["Versátil Pf"],
+    names: { "pt-BR": "Espada Longa", en: "Longsword", es: "Espada larga" },
+    summaries: { "pt-BR": "Espada marcial de uma mão com lâmina versátil para cortes ou estocadas.", en: "A martial one-handed sword with a versatile blade for slashing or thrusting.", es: "Una espada marcial de una mano con hoja versátil para cortar o apuñalar." },
+    source: { book: PLAYER_CORE_SOURCE, page: 279 }
+  },
+  "weapon.shield_boss": {
+    name: "Bossa de Escudo (Shield Boss)", category: "Marcial", damage: "1d6", damageType: "Impacto (Cn)",
+    level: 0, price: "5 PP", bulk: "—", traits: ["Anexada ao escudo"],
+    names: { "pt-BR": "Bossa de Escudo", en: "Shield Boss", es: "Bossa de escudo" },
+    summaries: { "pt-BR": "Acessório anexado ao escudo que permite usá-lo para ataques contundentes.", en: "A shield attachment that lets the shield be used for bludgeoning attacks.", es: "Un accesorio unido al escudo que permite usarlo para ataques contundentes." },
+    source: { book: PLAYER_CORE_SOURCE, page: 279 }
+  },
+  "weapon.shield_spikes": {
+    name: "Cravos de Escudo (Shield Spikes)", category: "Marcial", damage: "1d6", damageType: "Perfuração (Pf)",
+    level: 0, price: "5 PP", bulk: "—", traits: ["Anexados ao escudo"],
+    names: { "pt-BR": "Cravos de Escudo", en: "Shield Spikes", es: "Clavos de escudo" },
+    summaries: { "pt-BR": "Acessório anexado ao escudo que adiciona uma opção de ataque perfurante.", en: "A shield attachment that adds a piercing attack option.", es: "Un accesorio unido al escudo que añade una opción de ataque perforante." },
+    source: { book: PLAYER_CORE_SOURCE, page: 279 }
+  },
+  "weapon.alchemical_bomb": {
+    name: "Bomba Alquímica (Alchemical Bomb)", category: "Marcial", damage: "Especial", damageType: "Variável",
+    level: 0, price: "Variável", bulk: "L", traits: ["Bomba"],
+    names: { "pt-BR": "Bomba Alquímica", en: "Alchemical Bomb", es: "Bomba alquímica" },
+    summaries: { "pt-BR": "Arma marcial consumível cujo dano e efeitos variam conforme a bomba escolhida.", en: "A martial consumable weapon whose damage and effects vary by bomb type.", es: "Un arma marcial consumible cuyo daño y efectos varían según el tipo de bomba." },
+    source: { book: PLAYER_CORE_SOURCE, page: 281 }
+  }
+};
+for (const [id, patch] of Object.entries(verifiedPlayerCoreWeapons)) {
+  const record = (PF2E_DATA.weapons || []).find((candidate) => candidate.id === id);
+  if (record) Object.assign(record, patch, { ruleset: "remaster", needs_review: false });
+}
+
+// Novas armas da tabela do Livro do Jogador 2 (p. 275). Estas entradas não
+// substituem os registros legados e ficam disponíveis para novos personagens.
+const playerCore2Weapons = [
+  ["weapon.cruuk", "Cruuk", "Cruuk", "Cruuk", "Arma marcial tripkee arremessável, útil para caça e combate.", "A throwable martial tripkee weapon useful for hunting and combat.", "Un arma marcial tripkee arrojadiza, útil para la caza y el combate.", "Marcial", "1d6", "Impacto (Cn)", 0, "4 PP", "L", ["Enxó"]],
+  ["weapon.hand_adze", "Enxó de Mão", "Hand Adze", "Azula de mano", "Ferramenta e arma marcial compacta para cortes precisos.", "A compact martial tool and weapon for precise slashing.", "Una herramienta y arma marcial compacta para cortes precisos.", "Marcial", "1d4", "Cortante (Ct)", 0, "5 PP", "L", ["Enxó"]],
+  ["weapon.fangwire", "Fio de Presa", "Fangwire", "Alambre de colmillo", "Arma de emboscada kobold, fina e difícil de perceber.", "A kobold ambush weapon that is thin and difficult to notice.", "Un arma de emboscada kobold, fina y difícil de percibir.", "Marcial", "1d4", "Cortante (Ct)", 0, "4 PO", "L", ["Acuidade", "Agarrar", "Ágil", "Apunhalagem", "Kobold", "Mortal d8"]],
+  ["weapon.khopesh", "Khopesh", "Khopesh", "Khopesh", "Espada curva incomum capaz de derrubar adversários.", "An uncommon curved sword capable of tripping foes.", "Una espada curva poco común capaz de derribar enemigos.", "Marcial", "1d8", "Cortante (Ct)", 0, "2 PO", 1, ["Derrubar"]],
+  ["weapon.claw_blade", "Lâmina de Garras", "Claw Blade", "Hoja de garras", "Arma de mão amurrun com lâminas paralelas e versatilidade perfurante.", "An amurrun hand weapon with parallel blades and versatile piercing damage.", "Un arma de mano amurrun con hojas paralelas y daño perforante versátil.", "Marcial", "1d4", "Cortante (Ct)", 0, "2 PO", "L", ["Acuidade", "Ágil", "Amurrun", "Desarmar", "Mortal d8", "Versátil Pf"]],
+  ["weapon.tengu_gale_blade", "Lâmina Grimpa Tengu", "Tengu Gale Blade", "Hoja de viento tengu", "Espada incomum tengu, leve e adequada para desarmar.", "An uncommon tengu sword designed for agile disarming attacks.", "Una espada tengu poco común diseñada para ataques ágiles y desarmes.", "Marcial", "1d6", "Cortante (Ct)", 0, "4 PO", "L", ["Acuidade", "Ágil", "Desarmar", "Tengu"]],
+  ["weapon.mambele", "Mambele", "Mambele", "Mambele", "Faca-machado que causa dano adicional ao ser retirada do alvo.", "A knife-axe that deals extra harm when pulled from a target.", "Una cuchilla-hacha que causa daño adicional al retirarse del objetivo.", "Marcial", "1d6", "Cortante (Ct)", 0, "6 PP", 1, ["Arremesso 6 m", "Desarmar", "Mortal d8"]],
+  ["weapon.breach_pike", "Pique de Rompimento", "Breach Pike", "Pica de ruptura", "Pique hobgoblin devastador, feito para romper escudos e estruturas.", "A devastating hobgoblin pike built to break shields and structures.", "Una pica hobgoblin devastadora para romper escudos y estructuras.", "Marcial", "1d6", "Perfuração (Pf)", 0, "8 PO", 1, ["Alcance", "Devastadora", "Hobgoblin"]],
+  ["weapon.claw_whip", "Chicote com Garras", "Claw Whip", "Látigo con garras", "Arma avançada amurrun com alcance e capacidade de dificultar movimentos.", "An advanced amurrun weapon with reach that can hinder movement.", "Un arma avanzada amurrun con alcance que puede dificultar el movimiento.", "Avançada", "1d6", "Cortante (Ct)", 0, "5 PO", 1, ["Acuidade", "Alcance", "Amurrun", "Dificultadora"]],
+  ["weapon.flying_talon", "Garra Voadora", "Flying Talon", "Garra voladora", "Arma avançada kobold acorrentada, arremessável e capaz de derrubar à distância.", "An advanced tethered kobold weapon that can be thrown and trip at range.", "Un arma avanzada kobold encadenada que puede lanzarse y derribar a distancia.", "Avançada", "1d4", "Perfuração (Pf)", 0, "6 PO", 1, ["Acorrentada", "Acuidade", "Ágil", "Arremesso 3 m", "Derrubar", "Derrubar à distância", "Kobold"]],
+  ["weapon.ingenious_pick", "Picareta Engenhosa", "Ingenious Pick", "Pico ingenioso", "Picareta avançada kobold com dano modular e golpe fatal.", "An advanced kobold pick with modular damage and a deadly strike.", "Un pico kobold avanzado con daño modular y un golpe mortal.", "Avançada", "1d6", "Modular", 0, "10 PO", 1, ["Apunhalagem", "Fatal d10", "Kobold", "Modular Cn/Pf/Ct"]],
+  ["weapon.capture_spetum", "Spetum de Captura", "Capture Spetum", "Spetum de captura", "Arma de haste hobgoblin para alcançar, derrubar e dificultar inimigos.", "A hobgoblin polearm for reaching, tripping, and hindering enemies.", "Un arma de asta hobgoblin para alcanzar, derribar y dificultar enemigos.", "Avançada", "1d10", "Perfuração (Pf)", 0, "9 PO", 2, ["Alcance", "Derrubar", "Dificultadora", "Hobgoblin"]],
+  ["weapon.spirit_thresher", "Tritura-Espírito", "Spirit Thresher", "Triturador de espíritus", "Mangual kholo pesado que varre alvos e pode causar dano cortante.", "A heavy kholo flail that sweeps foes and can deal slashing damage.", "Un mangual kholo pesado que barre enemigos y puede causar daño cortante.", "Avançada", "1d12", "Impacto (Cn)", 0, "2 PO", 2, ["Amplitude", "Kholo", "Versátil Ct"]],
+  ["weapon.thunder_sling", "Funda-Trovão", "Thunder Sling", "Honda atronadora", "Funda tengu marcial que dispara dardos com maior alcance e força.", "A martial tengu sling that launches darts with greater range and force.", "Una honda tengu marcial que lanza dardos con mayor alcance y fuerza.", "Marcial", "1d6", "Perfuração (Pf)", 0, "5 PO", "L", ["Ágil", "Propulsiva", "Tengu"]],
+  ["weapon.daikyu", "Daikyu", "Daikyu", "Daikyu", "Arco avançado assimétrico, especialmente adequado para combate montado.", "An advanced asymmetrical bow especially suited to mounted combat.", "Un arco avanzado asimétrico especialmente adecuado para el combate montado.", "Avançada", "1d8", "Perfuração (Pf)", 0, "8 PO", 2, ["Enérgica", "Propulsiva"]]
+].map(([id, pt, en, es, ptSummary, enSummary, esSummary, category, damage, damageType, level, price, bulk, traits]) => ({
+  id,
+  name: `${pt} (${en})`,
+  category,
+  damage,
+  damageType,
+  level,
+  price,
+  bulk,
+  traits,
+  names: { "pt-BR": pt, en, es },
+  summaries: { "pt-BR": ptSummary, en: enSummary, es: esSummary },
+  source: { book: PLAYER_CORE_2_SOURCE, page: 275 },
+  ruleset: "remaster",
+  needs_review: false
+}));
+for (const weapon of playerCore2Weapons) {
+  if (!(PF2E_DATA.weapons || []).some((candidate) => candidate.id === weapon.id)) PF2E_DATA.weapons.push(weapon);
+}
+
 const PLAYER_CORE_2_ARCHETYPE_METADATA = {
   "Acrobata (Acrobat)": ["archetype.acrobat", "Acrobata", "Acrobat", "Acróbata", 184],
   "Arqueiro (Archer)": ["archetype.archer", "Arqueiro", "Archer", "Arquero", 186],
@@ -4254,6 +5471,7 @@ BOOK_DEAD_PLAYABLE_ARCHETYPES.forEach(([id, pt, en, es, page, summary]) => {
     id,
     name: `${pt} (${en})`,
     category: "Mortos-vivos",
+    ...(["archetype.ghost", "archetype.ghoul", "archetype.mummy", "archetype.vampire", "archetype.zombie"].includes(id) ? { level: 2, dedicationLevel: 2, prerequisites: ["Você está morto-vivo"] } : {}),
     names: { "pt-BR": pt, en, es },
     summaries: localizedEquipmentSummary(summary, `Book of the Dead playable archetype: ${en}.`, `Arquetipo jugable de Libro de los muertos: ${es}.`),
     description: summary,
@@ -4394,6 +5612,30 @@ if (HOWL_WILD_BEASTKIN) {
   });
 }
 
+// Howl of the Wild p. 19: Coral Athamaru's coral plates are a natural
+// medium armor entry, not the generic heavy armor placeholder used before.
+const coralPlateArmor = (PF2E_DATA.armors || []).find((record) => record.id === "armor.coral_plate");
+if (coralPlateArmor) {
+  Object.assign(coralPlateArmor, {
+    category: "Média",
+    acBonus: 4,
+    dexCap: 1,
+    checkPenalty: -2,
+    speedPenalty: -5,
+    strReq: 16,
+    traits: ["Aquadinâmica", "Confortável"],
+    description: "Placas de coral natural que cobrem o corpo de athamaru; não podem ser removidas e aceitam runas de armadura.",
+    summaries: {
+      "pt-BR": "Armadura média natural de coral para athamaru, com CA +4, limite de Destreza +1 e traços aquadinâmica e confortável.",
+      en: "Natural medium coral armor for athamarus with +4 AC, a +1 Dexterity cap, and aquadynamic and comfort traits.",
+      es: "Armadura media natural de coral para athamarus con +4 CA, límite de Destreza +1 y rasgos acuadinámica y cómoda."
+    },
+    source: { book: HOWL_WILD_SOURCE, page: 19 },
+    ruleset: "remaster",
+    needs_review: false
+  });
+}
+
 const HOWL_WILD_ARCHETYPES = [
   ["archetype.beastmaster_howl_expansion", "Expansão do Mestre das Feras", "Beastmaster Expansion", "Expansión del Maestro de bestias", 66, "Expande as opções de companheiros e a progressão do arquétipo Mestre das Feras.", "Expands companion options and the Beastmaster archetype progression.", "Amplía las opciones de compañeros y la progresión del arquetipo Maestro de bestias."],
   ["archetype.clawdancer", "Dançarino das Garras", "Clawdancer", "Danzagarras", 68, "Arquétipo marcial que transforma movimento e ataques naturais em uma dança predatória.", "A martial archetype that turns movement and natural attacks into a predatory dance.", "Un arquetipo marcial que convierte el movimiento y los ataques naturales en una danza depredadora."],
@@ -4498,6 +5740,1952 @@ for (const [id, pt, en, es, rank, traditions, page, ptSummary, enSummary, esSumm
     summaries: { "pt-BR": ptSummary, en: enSummary, es: esSummary },
     description: ptSummary,
     source: { book: HOWL_WILD_SOURCE, page }, ruleset: "remaster", needs_review: false
+  });
+}
+
+// Índice de equipamentos e armas identificados nas tabelas de Howl of the
+// Wild. Cabeçalhos e páginas foram conferidos no PDF local; efeitos, preços e
+// requisitos individuais continuam pendentes para não inventar regras.
+const HOWL_WILD_EQUIPMENT_INDEX = [
+  ["item.howl.hodag_leather", "Couro de Hodag", "Hodag Leather", "Cuero de hodag", 101],
+  ["item.howl.mamlambo_scale", "Escama de Mamlambo", "Mamlambo Scale", "Escama de mamlambo", 101],
+  ["item.howl.mantis_plate", "Placa de Louva-a-Deus", "Mantis Plate", "Placa de mantis", 101],
+  ["item.howl.arctic_worm_chitin_shield", "Escudo de Quitina de Verme Ártico", "Arctic Worm Chitin Shield", "Escudo de quitina de gusano ártico", 101],
+  ["item.howl.hippopotamus_klar", "Klar de Hipopótamo", "Hippopotamus Klar", "Klar de hipopótamo", 101],
+  ["item.howl.ankhrav_duster", "Poeira de Ankhrav", "Ankhrav Duster", "Polvo de ankhrav", 102],
+  ["item.howl.black_scorpion_stingmace", "Maça-Ferrão de Escorpião Negro", "Black Scorpion Stingmace", "Maza aguijón de escorpión negro", 102],
+  ["item.howl.bloodgorger_scythe", "Foice Devorasangue", "Bloodgorger Scythe", "Guadaña devoradora de sangre", 102],
+  ["item.howl.catoblepas_maul", "Malho de Catoblepas", "Catoblepas Maul", "Gran maza de catoblepas", 103],
+  ["item.howl.chimera_flail", "Mangual de Quimera", "Chimera Flail", "Mangual de quimera", 103],
+  ["item.howl.giant_squid_lash", "Chicote de Lula Gigante", "Giant Squid Lash", "Látigo de calamar gigante", 104],
+  ["item.howl.shuln_fang_katar", "Katar de Presa Shuln", "Shuln Fang Katar", "Katar de colmillo shuln", 104],
+  ["item.howl.splithead_bow", "Arco Cabeça-Partida", "Splithead Bow", "Arco cabeza partida", 105],
+  ["item.howl.storm_herald", "Arauto da Tempestade", "Storm Herald", "Heraldo de la tormenta", 105],
+  ["item.howl.tidal_crossbow", "Besta das Marés", "Tidal Crossbow", "Ballesta de mareas", 106],
+  ["item.howl.trollhound_pick", "Picareta de Cão-Troll", "Trollhound Pick", "Pico de sabueso troll", 106],
+  ["item.howl.whip_tongue_sling", "Funda Língua-Chicote", "Whip-Tongue Sling", "Honda lengua látigo", 107],
+  ["item.howl.alicorn_trigger", "Gatilho de Alicórnio", "Alicorn Trigger", "Gatillo de alicornio", 107],
+  ["item.howl.fulmination_fang", "Presa de Fulminação", "Fulmination Fang", "Colmillo de fulminación", 108],
+  ["item.howl.howler_pistol", "Pistola Uivante", "Howler Pistol", "Pistola aulladora", 108]
+];
+for (const [id, pt, en, es, page] of HOWL_WILD_EQUIPMENT_INDEX) {
+  if ((PF2E_DATA.items || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.items.push({
+    id, name: `${pt} (${en})`, category: "Equipamento", subcategory: "Howl of the Wild",
+    names: { "pt-BR": pt, en, es },
+    summaries: {
+      "pt-BR": `Entrada de equipamento identificada na tabela de Howl of the Wild, página ${page}; dados mecânicos individuais aguardam conferência.`,
+      en: `Equipment entry identified in the Howl of the Wild table on page ${page}; individual mechanics require confirmation.`,
+      es: `Entrada de equipo identificada en la tabla de Howl of the Wild, página ${page}; sus reglas individuales requieren confirmación.`
+    },
+    description: `Cabeçalho de equipamento conferido no PDF local, p. ${page}.`,
+    level: 0, price: "—", bulk: "—", traits: [], source: { book: HOWL_WILD_SOURCE, page },
+    ruleset: "remaster", needs_review: true
+  });
+}
+
+// Dedicacoes de arquétipos de engrenagens, confirmadas nas páginas locais
+// 49–56. Os talentos posteriores permanecem no backlog até que seus efeitos
+// completos sejam catalogados com segurança.
+const GUNS_GEARS_DEDICATION_FEATS = [
+  ["feat.archetype.inventor_dedication", "Dedicação de Inventor", "Inventor Dedication", "Dedicación de Inventor", 2, 49, ["Inteligência 14"], "archetype.inventor_multiclass", "Dedicação multiclasse para obter uma inovação e treinamento em Manufatura.", "A multiclass dedication that grants an innovation and Crafting training.", "Una dedicación multiclase que concede una innovación y entrenamiento en Artesanía."],
+  ["feat.archetype.overwatch_dedication", "Dedicação de Vigilância", "Overwatch Dedication", "Dedicación de Vigilancia", 2, 50, ["Especialista em Percepção"], "archetype.overwatch", "Dedicação para observar o campo de batalha e coordenar aliados.", "A dedication for observing the battlefield and coordinating allies.", "Una dedicación para observar el campo de batalla y coordinar a los aliados."],
+  ["feat.archetype.sterling_dynamo_dedication", "Dedicação de Dínamo Esterlino", "Sterling Dynamo Dedication", "Dedicación de Dínamo esterlino", 2, 52, [], "archetype.sterling_dynamo", "Dedicação que concede uma prótese dínamo esterlino personalizável para combate.", "A dedication that grants a customizable sterling dynamo prosthesis for combat.", "Una dedicación que concede una prótesis de dínamo esterlino personalizable para el combate."],
+  ["feat.archetype.trapsmith_dedication", "Dedicação de Armadilheiro", "Trapsmith Dedication", "Dedicación de Armero de trampas", 4, 54, ["Dedicação de Snarecrafter ou talento de classe de patrulheiro Especialista em Arapuca"], "archetype.trapsmith", "Dedicação que incorpora engrenagens e vapor à fabricação de arapucas.", "A dedication that incorporates gears and steam into snare crafting.", "Una dedicación que incorpora engranajes y vapor a la fabricación de trampas."],
+  ["feat.archetype.trick_driver_dedication", "Dedicação de Condutor Audaz", "Trick Driver Dedication", "Dedicación de Conductor temerario", 2, 55, [], "archetype.trick_driver", "Dedicação para pilotar veículos com manobras agressivas e precisas.", "A dedication for piloting vehicles with aggressive, precise maneuvers.", "Una dedicación para pilotar vehículos con maniobras agresivas y precisas."],
+  ["feat.archetype.vehicle_mechanic_dedication", "Dedicação de Mecânico de Veículos", "Vehicle Mechanic Dedication", "Dedicación de Mecánico de vehículos", 2, 56, ["Inteligência +2", "Treinado em Manufatura"], "archetype.vehicle_mechanic", "Dedicação para construir, manter e aprimorar veículos.", "A dedication for building, maintaining, and improving vehicles.", "Una dedicación para construir, mantener y mejorar vehículos."]
+];
+for (const [id, pt, en, es, level, page, prerequisites, archetypeId, ptSummary, enSummary, esSummary] of GUNS_GEARS_DEDICATION_FEATS) {
+  if (!(PF2E_DATA.feats || []).some((candidate) => candidate.id === id)) PF2E_DATA.feats.push({
+    id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es }, summaries: { "pt-BR": ptSummary, en: enSummary, es: esSummary },
+    description: ptSummary, category: "Arquetipo", type: "Talento", level, prerequisites, prereq: prerequisites,
+    archetypeId, traits: ["Arquetipo", "Dedicação"], source: { book: GUNS_GEARS_SOURCE, page }, ruleset: "legacy", needs_review: false
+  });
+}
+
+// Subclasses eram mantidas apenas como strings dentro de cada classe. Exponha
+// também registros reutilizáveis para o portal, filtros e futuras validações,
+// preservando a origem da classe e sinalizando a ausência de página específica.
+const subclassSeen = new Set();
+PF2E_DATA.subclasses = [];
+for (const [classKey, classRecord] of Object.entries(PF2E_DATA.classes || {})) {
+  for (const rawSubclass of (classRecord.subclasses || [])) {
+    const label = String(rawSubclass || "").trim();
+    if (!label) continue;
+    const match = label.match(/^(.*?)\s*\(([^()]+)\)$/);
+    const pt = (match?.[1] || label).trim();
+    const en = (match?.[2] || label).trim();
+    const classId = classRecord.id || classKey.toLowerCase().replace(/[^a-z0-9]+/gi, "_");
+    const slug = `${classId}.${en}`.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "");
+    if (subclassSeen.has(slug)) continue;
+    subclassSeen.add(slug);
+    PF2E_DATA.subclasses.push({
+      id: `subclass.${slug}`,
+      classId,
+      className: classKey,
+      name: `${pt} (${en})`,
+      names: { "pt-BR": pt, en, es: en },
+      summaries: {
+        "pt-BR": `Subclasse de ${classRecord.names?.["pt-BR"] || classKey}; escolha e regras detalhadas devem ser confirmadas na fonte específica.`,
+        en: `Subclass of ${classRecord.names?.en || classKey}; confirm the specific source for its detailed choice and rules.`,
+        es: `Subclase de ${classRecord.names?.es || classKey}; confirma la fuente específica para su elección y reglas detalladas.`
+      },
+      ruleset: classRecord.ruleset || "needs_review",
+      needs_review: true,
+      source: undefined
+    });
+  }
+}
+
+// As subclasses derivadas preservam a referência da seção da classe até que
+// a página individual de cada especialização seja conferida. A flag mantém
+// essa referência auditável sem promover o registro a regra verificada.
+for (const subclass of PF2E_DATA.subclasses) {
+  const classRecord = Object.values(PF2E_DATA.classes || {}).find((candidate) => candidate?.id === subclass.classId);
+  if (classRecord?.source?.book && Number.isInteger(classRecord.source.page)) {
+    subclass.source = { book: classRecord.source.book, page: classRecord.source.page };
+    subclass.sourceApproximate = true;
+  }
+}
+
+// Normalize heritages kept as historical strings inside ancestry records so
+// pickers can enforce ancestry compatibility and the catalog contract.
+const heritageSeen = new Set();
+PF2E_DATA.heritages = [];
+for (const [ancestryKey, ancestryRecord] of Object.entries(PF2E_DATA.ancestries || {})) {
+  const ancestryId = ancestryRecord?.id || `ancestry.${String(ancestryKey).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "")}`;
+  const canonicalAncestryId = ancestryId.replace(/\.legacy_alias\..*$/, "");
+  const ancestryLabel = ancestryRecord?.names?.["pt-BR"] || ancestryKey;
+  for (const rawHeritage of ancestryRecord?.heritages || []) {
+    const label = String(rawHeritage || "").trim();
+    if (!label) continue;
+    const heritageSlug = label.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "");
+    const id = `heritage.${canonicalAncestryId}.${heritageSlug}`;
+    const existing = PF2E_DATA.heritages.find((candidate) => candidate.id === id);
+    if (existing) {
+      if (!existing.ancestryIds.includes(ancestryId)) existing.ancestryIds.push(ancestryId);
+      continue;
+    }
+    if (heritageSeen.has(id)) continue;
+    heritageSeen.add(id);
+    PF2E_DATA.heritages.push({
+      id,
+      ancestryId: canonicalAncestryId,
+      ancestryIds: [ancestryId],
+      ancestryName: ancestryKey,
+      name: label,
+      names: { "pt-BR": label, en: label, es: label },
+      summaries: {
+        "pt-BR": `Herança de ${ancestryLabel}; texto e tradução da fonte ainda precisam ser confirmados.`,
+        en: `Heritage of ${ancestryLabel}; source text and translation still require confirmation.`,
+        es: `Herencia de ${ancestryLabel}; el texto y la traducción de la fuente aún deben confirmarse.`
+      },
+      description: `Herança de ${ancestryLabel}.`,
+      type: "Herança",
+      ruleset: "needs_review",
+      needs_review: true,
+      source: undefined
+    });
+  }
+}
+
+// A página inicial da ancestralidade é uma referência de seção útil para
+// heranças normalizadas que ainda não têm paginação individual confirmada.
+// Mantemos needs_review para não confundir essa pista de proveniência com a
+// validação mecânica do texto de cada herança.
+for (const heritage of PF2E_DATA.heritages) {
+  const ancestry = Object.values(PF2E_DATA.ancestries || {}).find((candidate) =>
+    candidate?.id === heritage.ancestryId || candidate?.id === heritage.ancestryIds?.[0]
+  );
+  if (ancestry?.source?.book && Number.isInteger(ancestry.source.page)) {
+    heritage.source = { book: ancestry.source.book, page: ancestry.source.page };
+    heritage.sourceApproximate = true;
+  }
+}
+
+// Dedicações multiclasse legadas usam o capítulo da classe correspondente
+// como referência de seção quando a página própria da dedicação ainda não foi
+// conferida no PDF local. Isso melhora a rastreabilidade sem promover a
+// entrada a uma regra verificada nem esconder a necessidade de revisão.
+const ARCHETYPE_CLASS_SECTION_REFERENCES = {
+  "archetype.bard_dedication": "class.bard",
+  "archetype.cleric_dedication": "class.cleric",
+  "archetype.druid_dedication": "class.druid",
+  "archetype.fighter_dedication": "class.fighter",
+  "archetype.rogue_dedication": "class.rogue",
+  "archetype.wizard_dedication": "class.wizard",
+  "archetype.ranger_dedication": "class.ranger",
+  "archetype.witch_dedication": "class.witch",
+  "archetype.magus_dedication": "class.magus",
+  "archetype.summoner_dedication": "class.summoner",
+  "archetype.kineticist_dedication": "class.kineticist",
+  "archetype.psychic_dedication": "class.psychic",
+  "archetype.thaumaturge_dedication": "class.thaumaturge",
+  "archetype.exemplar_dedication": "class.exemplar",
+  "archetype.animist_dedication": "class.animist"
+};
+for (const archetype of PF2E_DATA.archetypes || []) {
+  if (archetype.source?.book && Number.isInteger(archetype.source.page)) continue;
+  const classId = ARCHETYPE_CLASS_SECTION_REFERENCES[archetype.id];
+  if (!classId) continue;
+  const classRecord = Object.values(PF2E_DATA.classes || {}).find((candidate) => candidate?.id === classId);
+  if (!classRecord?.source?.book || !Number.isInteger(classRecord.source.page)) continue;
+  archetype.source = { book: classRecord.source.book, page: classRecord.source.page };
+  archetype.sourceApproximate = true;
+}
+
+// O compêndio expandido reúne entradas do Player Core que foram normalizadas
+// antes da paginação individual. Vinculamos cada grupo à seção correspondente
+// do PDF local, mas preservamos a revisão pendente e a marca de aproximação.
+const COMPENDIUM_SECTION_REFERENCES = [
+  { test: (id) => /_(rune|potency|striking|resilient|flaming|frost|shocking|returning|ghost_touch)_/.test(`_${id}_`), page: 308 },
+  { test: (id) => /_(spacious_pouch|boots_of_elvenkind|cloak_of_elvenkind|goggles_of_night|wand_of_heal|staff_of_fire)$/.test(id), page: 300 },
+  { test: (id) => /_(elixir|potion|alchemist_s_fire|acid_flask|frost_vial|bottled_lightning|tanglefoot_bag|antidote|antiplague|smokestick|sunrod|tindertwig)$/.test(id), page: 294 },
+  { test: () => true, page: 291 }
+];
+for (const record of PF2E_DATA.itemCompendium || []) {
+  if (record.source?.book && Number.isInteger(record.source.page)) continue;
+  const reference = COMPENDIUM_SECTION_REFERENCES.find(({ test }) => test(String(record.id || "")));
+  if (!reference) continue;
+  record.source = { book: "Livro do Jogador (Player Core, Remaster)", page: reference.page };
+  record.sourceApproximate = true;
+}
+
+// Traduções editoriais confirmadas para o primeiro lote do compêndio legado.
+// O restante permanece explicitamente sinalizado pela auditoria até receber
+// o mesmo tratamento, evitando que uma tradução automática seja apresentada
+// como texto final de regra.
+const COMPENDIUM_TRANSLATIONS = {
+  "item.compendium.adventurer_s_pack": ["Mochila de Aventureiro", "Adventurer's Pack", "Mochila de aventurero", "Mochila contendo saco de dormir, 10 giz, pederneira e isqueiro, corda de 15m, 2 semanas de rações, sabão, 5 tochas e odre.", "A pack containing a bedroll, 10 pieces of chalk, flint and steel, 15m of rope, 2 weeks of rations, soap, 5 torches, and a waterskin.", "Mochila que contiene un saco de dormir, 10 tizas, pedernal y acero, 15 m de cuerda, 2 semanas de raciones, jabón, 5 antorchas y un odre."],
+  "item.compendium.air_bladder": ["Bexiga de Ar", "Air Bladder", "Vejiga de aire", "Bolsa estanque de couro que armazena ar suficiente para respirar debaixo d'água por alguns minutos.", "A watertight leather bladder holding enough air to breathe underwater for a few minutes.", "Una bolsa estanca de cuero que contiene aire suficiente para respirar bajo el agua durante unos minutos."],
+  "item.compendium.alchemist_s_lab": ["Laboratório de Alquimista", "Alchemist's Lab", "Laboratorio de alquimista", "Laboratório alquímico completo com retortas, destiladores e reagentes para fabricação de itens alquímicos.", "A complete alchemical laboratory with retorts, stills, and reagents for crafting alchemical items.", "Un laboratorio alquímico completo con retortas, destiladores y reactivos para fabricar objetos alquímicos."],
+  "item.compendium.alchemist_s_lab_expanded": ["Laboratório de Alquimista (Expandido)", "Alchemist's Lab (Expanded)", "Laboratorio de alquimista (ampliado)", "Laboratório alquímico expandido que concede +1 de bônus de item em testes de Criação alquímica.", "An expanded alchemical laboratory that grants a +1 item bonus to alchemical Crafting checks.", "Un laboratorio alquímico ampliado que concede un bonificador de objeto +1 a las pruebas de Artesanía alquímica."],
+  "item.compendium.alchemist_s_toolkit": ["Kit de Alquimista", "Alchemist's Toolkit", "Kit de alquimista", "Kit portátil de ferramentas e frascos alquímicos necessários para criar elixires e bombas em campo.", "A portable kit of tools and alchemical containers needed to create elixirs and bombs in the field.", "Un kit portátil de herramientas y recipientes alquímicos necesarios para crear elixires y bombas en el campo."],
+  "item.compendium.animal_blind": ["Abrigo de Observação Animal", "Animal Blind", "Escondite para animales", "Esconderijo portátil camuflado para observar e caçar feras selvagens.", "A portable camouflaged hide for observing and hunting wild beasts.", "Un escondite portátil camuflado para observar y cazar bestias salvajes."],
+  "item.compendium.animal_call": ["Chamado de Animal", "Animal Call", "Llamador de animales", "Apito especializado que reproduz o chamado de pássaros e animais de caça.", "A specialized whistle that imitates the calls of birds and hunting animals.", "Un silbato especializado que imita los sonidos de aves y animales de caza."],
+  "item.compendium.armored_skirt": ["Saia Blindada", "Armored Skirt", "Falda blindada", "Saia de placas acoplável a armaduras leves ou médias, aumentando o bônus de CA em +1.", "A plate skirt attached to light or medium armor, increasing its AC bonus by 1.", "Una falda de placas que se acopla a armaduras ligeras o medias y aumenta su bonificador de CA en 1."],
+  "item.compendium.artisan_s_toolkit": ["Kit de Artesão", "Artisan's Toolkit", "Kit de artesano", "Conjunto de ferramentas para ferraria, carpintaria, cantaria ou costura.", "A set of tools for blacksmithing, carpentry, masonry, or sewing.", "Un conjunto de herramientas para herrería, carpintería, cantería o costura."],
+  "item.compendium.artisan_s_toolkit_sterling": ["Kit de Artesão Esterlino", "Artisan's Toolkit (Sterling)", "Kit de artesano (esterlino)", "Ferramentas de alta precisão que concedem +1 de bônus de item em testes de Manufatura.", "High-precision tools that grant a +1 item bonus to Crafting checks.", "Herramientas de alta precisión que conceden un bonificador de objeto +1 a las pruebas de Artesanía."],
+  "item.compendium.atmospheric_breathing_suit": ["Traje de Respiração Atmosférica", "Atmospheric Breathing Suit", "Traje de respiración atmosférica", "Traje vedado com filtro mágico para respirar em ambientes com fumaça, gases ou no vácuo.", "A sealed suit with a magical filter for breathing in smoke, gas, or vacuum environments.", "Un traje sellado con un filtro mágico para respirar entre humo, gases o en el vacío."],
+  "item.compendium.backpack": ["Mochila", "Backpack", "Mochila", "Mochila de couro resistente. Armazena até 4 de Carga, ignorando os primeiros 2 de Carga dos itens guardados nela.", "A sturdy leather backpack. It holds up to 4 Bulk, ignoring the first 2 Bulk of items stored inside.", "Una mochila de cuero resistente. Guarda hasta 4 de Carga e ignora las primeras 2 de Carga de los objetos almacenados."],
+  "item.compendium.bandolier": ["Cartucheira", "Bandolier", "Bandolera", "Cartucheira tiracolo para armazenar até 8 itens de Carga Leve com acesso rápido.", "A shoulder bandolier that stores up to 8 Light Bulk items for quick access.", "Una bandolera para llevar hasta 8 objetos de Carga Ligera con acceso rápido."],
+  "item.compendium.bedroll": ["Saco de Dormir", "Bedroll", "Saco de dormir", "Saco de dormir acolchoado para descanso confortável ao ar livre.", "A padded bedroll for comfortable rest outdoors.", "Un saco de dormir acolchado para descansar cómodamente al aire libre."],
+  "item.compendium.belt_pouch": ["Bolsa de Cinto", "Belt Pouch", "Bolsa de cinturón", "Pequena bolsa de cinto para moedas, pedras preciosas ou poções.", "A small belt pouch for coins, gemstones, or potions.", "Una pequeña bolsa de cinturón para monedas, gemas o pociones."],
+  "item.compendium.caltrops": ["Estrepes", "Caltrops", "Abrojos", "Estrepes de quatro pontas de ferro espalhados no chão para atrasar perseguidores.", "Four-pronged iron spikes scattered on the ground to slow pursuers.", "Púas de hierro de cuatro puntas esparcidas por el suelo para retrasar a los perseguidores."],
+  "item.compendium.candle": ["Vela", "Candle", "Vela", "Vela de cera que ilumina um raio de 3m por 8 horas.", "A wax candle that sheds light in a 3-meter radius for 8 hours.", "Una vela de cera que ilumina en un radio de 3 metros durante 8 horas."],
+  "item.compendium.chalk_10_pieces": ["Giz (10 pedaços)", "Chalk (10 pieces)", "Tiza (10 piezas)", "10 pedaços de giz coloridos para marcar masmorras e paredes.", "Ten pieces of colored chalk for marking dungeons and walls.", "Diez tizas de colores para marcar mazmorras y paredes."],
+  "item.compendium.climbing_kit": ["Kit de Escalada", "Climbing Kit", "Kit de escalada", "Pítons, martelo, crampons e mosquetões para escaladas íngremes.", "Pitons, a hammer, crampons, and carabiners for steep climbs.", "Pitones, un martillo, crampones y mosquetones para escalar pendientes pronunciadas."],
+  "item.compendium.compass": ["Bússola", "Compass", "Brújula", "Bússola magnética de bronze que concede +1 de bônus em testes de Sobrevivência para orientar-se.", "A bronze magnetic compass that grants a +1 item bonus to Survival checks to Sense Direction.", "Una brújula magnética de bronce que concede un bonificador de objeto +1 a las pruebas de Supervivencia para orientarse."],
+  "item.compendium.crowbar": ["Pé de Cabra", "Crowbar", "Palanca", "Pé de cabra de ferro fundido para forçar portas e abrir baús trancados.", "A cast-iron crowbar for forcing doors and opening locked chests.", "Una palanca de hierro fundido para forzar puertas y abrir cofres cerrados."],
+  "item.compendium.disguise_kit": ["Kit de Disfarce", "Disguise Kit", "Kit de disfraces", "Maquiagens, perucas, próteses e tecidos para criar disfarces convincentes com Enganação.", "Makeup, wigs, prosthetics, and fabric for creating convincing Deception disguises.", "Maquillaje, pelucas, prótesis y telas para crear disfraces convincentes con Engaño."],
+  "item.compendium.dueling_cape": ["Capa de Duelo", "Dueling Cape", "Capa de duelo", "Capa pesada enrolada no braço usada em duelos para fintar ou aparar golpes (+1 CA).", "A heavy cape wrapped around the arm for feinting or parrying in duels (+1 AC).", "Una capa pesada enrollada en el brazo para fintar o parar golpes en duelos (+1 a la CA)."],
+  "item.compendium.fishing_tackle": ["Equipamento de Pesca", "Fishing Tackle", "Equipo de pesca", "Varas, anzóis e redes para pesca de subsistência.", "Rods, hooks, and nets for subsistence fishing.", "Cañas, anzuelos y redes para pescar de subsistencia."],
+  "item.compendium.flint_and_steel": ["Pederneira e Isqueiro", "Flint and Steel", "Pedernal y acero", "Pederneira e isqueiro de aço para acender fogueiras e tochas.", "Flint and a steel striker for lighting campfires and torches.", "Pedernal y un encendedor de acero para prender fogatas y antorchas."],
+  "item.compendium.grappling_hook": ["Gancho de Escalada", "Grappling Hook", "Garfio de escalada", "Gancho de ferro de 4 garras para amarrar em cordas e escalar muros.", "A four-clawed iron hook for attaching to ropes and scaling walls.", "Un garfio de hierro de cuatro garras para sujetar cuerdas y escalar muros."],
+  "item.compendium.healer_s_toolkit": ["Kit de Curandeiro", "Healer's Toolkit", "Kit de curandero", "Bandagens, unguentos, tesouras e talas para Primeiros Socorros e Tratar Ferimentos.", "Bandages, salves, scissors, and splints for First Aid and Treat Wounds.", "Vendajes, ungüentos, tijeras y férulas para Primeros auxilios y Tratar heridas."],
+  "item.compendium.lantern_bullseye": ["Lanterna de Foco", "Lantern (Bullseye)", "Linterna de foco", "Lanterna de foco concentrado projetando um cone de luz brilhante de 18m.", "A focused lantern that projects a cone of bright light 18 meters long.", "Una linterna enfocada que proyecta un cono de luz brillante de 18 metros."],
+  "item.compendium.lantern_hooded": ["Lanterna Furta-Fogo", "Lantern (Hooded)", "Linterna con capucha", "Lanterna furta-fogo com abas móveis para regular a intensidade da luz.", "A hooded lantern with movable shutters for regulating its light.", "Una linterna con capucha y contraventanas móviles para regular su luz."],
+  "item.compendium.lock_simple": ["Cadeado Simples", "Lock (Simple)", "Cerradura simple", "Cadeado comum de ferro com chave (CD 20 para arrombar).", "A common iron lock with a key (DC 20 to Pick).", "Una cerradura común de hierro con llave (CD 20 para Forzarla)."],
+  "item.compendium.lock_average": ["Fechadura Média", "Lock (Average)", "Cerradura media", "Fechadura sólida de aço temperado com mecanismo de 4 pinos (CD 25).", "A sturdy tempered-steel lock with a four-pin mechanism (DC 25).", "Una sólida cerradura de acero templado con mecanismo de cuatro pasadores (CD 25)."],
+  "item.compendium.magnifying_glass": ["Lupa", "Magnifying Glass", "Lupa", "Lente de aumento para examinar pistas minuciosas (+1 em Percepção e Manufatura).", "A magnifying lens for examining fine clues (+1 to Perception and Crafting).", "Una lente de aumento para examinar pistas minuciosas (+1 a Percepción y Artesanía)."],
+  "item.compendium.manacles_simple": ["Algemas Simples", "Manacles (Simple)", "Grilletes simples", "Algemas de ferro forjado para imobilizar prisioneiros.", "Wrought-iron manacles for restraining prisoners.", "Grilletes de hierro forjado para inmovilizar prisioneros."],
+  "item.compendium.mirror": ["Espelho", "Mirror", "Espejo", "Pequeno espelho de vidro polido para espiar esquinas sem se expor.", "A small polished-glass mirror for checking around corners without exposing yourself.", "Un pequeño espejo de vidrio pulido para mirar alrededor de esquinas sin exponerse."],
+  "item.compendium.oil_1_pint": ["Óleo (1 caneca)", "Oil (1 pint)", "Aceite (1 pinta)", "Óleo combustível para lanternas (queima por 6 horas) ou arremessável.", "Fuel oil for lanterns (burns for 6 hours) or for throwing.", "Aceite combustible para linternas (arde durante 6 horas) o para lanzar."],
+  "item.compendium.piton": ["Píton", "Piton", "Pitón", "Píton de aço com olhal para fixação de cordas na rocha.", "A steel spike with an eyelet for securing ropes to rock.", "Una clavija de acero con argolla para fijar cuerdas a la roca."],
+  "item.compendium.rations_1_week": ["Rações (1 semana)", "Rations (1 week)", "Raciones (1 semana)", "Rações de viagem não perecíveis (carne seca, nozes, queijo duro e biscoito).", "Nonperishable travel rations (jerky, nuts, hard cheese, and biscuits).", "Raciones de viaje no perecederas (carne seca, frutos secos, queso duro y galletas)."],
+  "item.compendium.religious_symbol_wooden": ["Símbolo Religioso (Madeira)", "Religious Symbol (Wooden)", "Símbolo religioso (madera)", "Símbolo sagrado entalhado em madeira para foco divino de clérigos e campeões.", "A holy symbol carved from wood for clerics' and champions' divine focus.", "Un símbolo sagrado tallado en madera que sirve de foco divino para clérigos y campeones."],
+  "item.compendium.religious_symbol_silver": ["Símbolo Religioso (Prata)", "Religious Symbol (Silver)", "Símbolo religioso (plata)", "Símbolo sagrado trabalhado em prata maciça finamente polida.", "A holy symbol crafted from finely polished solid silver.", "Un símbolo sagrado fabricado con plata maciza finamente pulida."],
+  "item.compendium.rope_50_ft": ["Corda (15 metros)", "Rope (50 ft)", "Cuerda (15 metros)", "Corda de cânhamo trançado de 15 metros com carga de ruptura de 450 kg.", "Fifteen meters of braided hemp rope with a breaking load of 450 kilograms.", "Quince metros de cuerda de cáñamo trenzado con una carga de rotura de 450 kilogramos."],
+  "item.compendium.sack": ["Saco", "Sack", "Saco", "Saco de juta para carregar até 8 de Carga de itens diversos.", "A burlap sack that can carry up to 8 Bulk of assorted items.", "Un saco de arpillera que puede llevar hasta 8 de Carga de objetos variados."],
+  "item.compendium.scroll_case": ["Estojo de Pergaminho", "Scroll Case", "Estuche de pergaminos", "Tubo cilíndrico de couro encerado para proteger pergaminhos contra água e poeira.", "A waxed-leather cylinder that protects scrolls from water and dust.", "Un tubo cilíndrico de cuero encerado que protege pergaminos del agua y el polvo."],
+  "item.compendium.signal_whistle": ["Apito de Sinal", "Signal Whistle", "Silbato de señales", "Apito agudo audível a mais de 800 metros em terreno aberto.", "A shrill whistle audible from more than 800 meters in open terrain.", "Un silbato agudo audible a más de 800 metros en terreno abierto."],
+  "item.compendium.soap": ["Sabão", "Soap", "Jabón", "Barra de sabão perfumado para higiene pessoal em viagens.", "A scented bar of soap for personal hygiene while traveling.", "Una pastilla de jabón perfumado para la higiene personal durante los viajes."],
+  "item.compendium.spyglass": ["Luneta", "Spyglass", "Catalejo", "Luneta de latão e lentes polidas que aproxima objetos distantes em até 10 vezes.", "A brass spyglass with polished lenses that magnifies distant objects up to ten times.", "Un catalejo de latón con lentes pulidas que aumenta hasta diez veces los objetos distantes."],
+  "item.compendium.ten_foot_pole": ["Vara de 3 Metros", "Ten-foot Pole", "Pértiga de 3 metros", "Vara de madeira rígida de 3 metros para testar pisos e desarmar armadilhas.", "A rigid 3-meter wooden pole for testing floors and triggering traps from a distance.", "Una vara rígida de madera de 3 metros para probar suelos y activar trampas a distancia."],
+  "item.compendium.thieves_tools": ["Ferramentas de Ladrão", "Thieves' Tools", "Herramientas de ladrón", "Gazuas, arames e alavancas para arrombar fechaduras e desativar armadilhas.", "Lockpicks, wires, and levers for picking locks and disabling traps.", "Ganzúas, alambres y palancas para forzar cerraduras y desactivar trampas."],
+  "item.compendium.thieves_tools_infiltrator": ["Ferramentas de Ladrão (Infiltrador)", "Thieves' Tools (Infiltrator)", "Herramientas de ladrón (infiltrador)", "Ferramentas de arrombamento de alta liga metálica (+1 de bônus de item em Ladinagem).", "High-alloy burglary tools (+1 item bonus to Thievery).", "Herramientas de ganzuado de aleación superior (+1 de bonificador de objeto a Latrocinio)."],
+  "item.compendium.torch": ["Tocha", "Torch", "Antorcha", "Tocha de madeira com estopa embebida em piche que queima por 1 hora (luz em 6m).", "A wooden torch with pitch-soaked cloth that burns for 1 hour (6-meter light).", "Una antorcha de madera con tela empapada en brea que arde durante 1 hora (luz de 6 metros)."],
+  "item.compendium.waterskin": ["Odre", "Waterskin", "Odre", "Odre de couro com capacidade para 1 litro de água fresca.", "A leather waterskin holding 1 liter of fresh water.", "Un odre de cuero con capacidad para 1 litro de agua fresca."],
+  "item.compendium.writing_set": ["Conjunto de Escrita", "Writing Set", "Juego de escritura", "Pena, tinta nanquim, pergaminhos e cera para selagem de cartas.", "A quill, ink, parchment, and sealing wax for writing and sealing letters.", "Una pluma, tinta, pergamino y cera de sellado para escribir y cerrar cartas."]
+  ,"item.compendium.elixir_of_life_minor": ["Elixir da Vida (Menor)", "Elixir of Life (Minor)", "Elixir de vida (menor)", "Ao beber, recupera 1d6 Pontos de Vida e concede +1 de bônus de item em testes de Fortitude contra venenos e doenças por 1 hora.", "When consumed, you regain 1d6 Hit Points and gain a +1 item bonus to Fortitude saves against poisons and diseases for 1 hour.", "Al beberlo, recuperas 1d6 Puntos de Golpe y obtienes un bonificador de objeto +1 a las salvaciones de Fortaleza contra venenos y enfermedades durante 1 hora."]
+  ,"item.compendium.elixir_of_life_lesser": ["Elixir da Vida (Inferior)", "Elixir of Life (Lesser)", "Elixir de vida (menor potente)", "Ao beber, recupera 3d6+6 Pontos de Vida e concede +1 de bônus de item em testes contra venenos e doenças.", "When consumed, you regain 3d6+6 Hit Points and gain a +1 item bonus to saves against poisons and diseases.", "Al beberlo, recuperas 3d6+6 Puntos de Golpe y obtienes un bonificador de objeto +1 a las salvaciones contra venenos y enfermedades."]
+  ,"item.compendium.healing_potion_minor": ["Poção de Cura (Menor)", "Healing Potion (Minor)", "Poción de curación (menor)", "Poção mágica efervescente de coloração rubi que cura instantaneamente 1d8 Pontos de Vida.", "An effervescent ruby-colored magic potion that immediately restores 1d8 Hit Points.", "Una poción mágica efervescente de color rubí que restaura inmediatamente 1d8 Puntos de Golpe."]
+  ,"item.compendium.healing_potion_lesser": ["Poção de Cura (Inferior)", "Healing Potion (Lesser)", "Poción de curación (menor potente)", "Poção mágica potente que cura instantaneamente 2d8+5 Pontos de Vida.", "A potent magic potion that immediately restores 2d8+5 Hit Points.", "Una potente poción mágica que restaura inmediatamente 2d8+5 Puntos de Golpe."]
+  ,"item.compendium.alchemist_s_fire_lesser": ["Fogo Alquímico (Inferior)", "Alchemist's Fire (Lesser)", "Fuego alquímico (menor)", "Frasco volátil que causa 1d8 de dano de fogo no impacto, 1 de dano de fogo contínuo e 1 de dano de fogo em respingo.", "A volatile flask dealing 1d8 fire damage on impact, 1 persistent fire damage, and 1 splash fire damage.", "Un frasco volátil que causa 1d8 de daño de fuego al impactar, 1 de daño de fuego persistente y 1 de daño de fuego por salpicadura."]
+  ,"item.compendium.acid_flask_lesser": ["Frasco de Ácido (Inferior)", "Acid Flask (Lesser)", "Frasco de ácido (menor)", "Causa 1 de dano de ácido, 1d6 de dano de ácido contínuo e 1 de dano de ácido em respingo.", "It deals 1 acid damage, 1d6 persistent acid damage, and 1 splash acid damage.", "Inflige 1 de daño de ácido, 1d6 de daño de ácido persistente y 1 de daño de ácido por salpicadura."]
+  ,"item.compendium.frost_vial_lesser": ["Vial de Frio (Inferior)", "Frost Vial (Lesser)", "Vial de escarcha (menor)", "Causa 1d6 de dano de frio, 1 de respingo e aplica penalidade de -3m no deslocamento da vítima.", "It deals 1d6 cold damage, 1 splash damage, and gives the victim a –3-meter penalty to Speed.", "Inflige 1d6 de daño de frío, 1 de salpicadura y aplica una penalización de –3 metros a la Velocidad de la víctima."]
+  ,"item.compendium.bottled_lightning_lesser": ["Relâmpago Engarrafado (Inferior)", "Bottled Lightning (Lesser)", "Rayo embotellado (menor)", "Causa 1d6 de dano elétrico, 1 de respingo e deixa o alvo Desprevenido até o início do próximo turno.", "It deals 1d6 electricity damage, 1 splash damage, and leaves the target off-guard until the start of its next turn.", "Inflige 1d6 de daño eléctrico, 1 de salpicadura y deja al objetivo desprevenido hasta el inicio de su próximo turno."]
+  ,"item.compendium.tanglefoot_bag_lesser": ["Bolsa de Resina (Inferior)", "Tanglefoot Bag (Lesser)", "Bolsa de enredadera (menor)", "Bolsa de resina expansiva que gruda nas pernas do alvo, reduzindo a velocidade em 3m ou imobilizando no acerto crítico.", "An expanding resin bag that sticks to the target's legs, reducing Speed by 3 meters or immobilizing it on a critical hit.", "Una bolsa de resina expansiva que se adhiere a las piernas del objetivo, reduce su Velocidad en 3 metros o lo inmoviliza con un golpe crítico."]
+  ,"item.compendium.antidote_lesser": ["Antídoto (Inferior)", "Antidote (Lesser)", "Antídoto (menor)", "Concede +2 de bônus de item em testes de salvaguarda contra venenos por 6 horas.", "It grants a +2 item bonus to saves against poisons for 6 hours.", "Concede un bonificador de objeto +2 a las salvaciones contra venenos durante 6 horas."]
+  ,"item.compendium.antiplague_lesser": ["Antipeste (Inferior)", "Antiplague (Lesser)", "Antiplaga (menor)", "Concede +2 de bônus de item em testes de salvaguarda contra doenças por 24 horas.", "It grants a +2 item bonus to saves against diseases for 24 hours.", "Concede un bonificador de objeto +2 a las salvaciones contra enfermedades durante 24 horas."]
+  ,"item.compendium.smokestick_lesser": ["Bastão de Fumaça (Inferior)", "Smokestick (Lesser)", "Bastón de humo (menor)", "Cria uma nuvem de fumaça espessa de 1,5m que concede Ocultação a criaturas dentro dela por 1 minuto.", "It creates a 1.5-meter cloud of thick smoke that gives creatures inside it concealment for 1 minute.", "Crea una nube de humo denso de 1,5 metros que proporciona ocultamiento a las criaturas dentro durante 1 minuto."]
+  ,"item.compendium.sunrod": ["Bastão Solar", "Sunrod", "Bastón solar", "Bastão alquímico que brilha com luz solar viva de 6m por 6 horas após ser quebrado.", "An alchemical rod that shines with sunlight in a 6-meter radius for 6 hours after being broken.", "Una vara alquímica que brilla con luz solar en un radio de 6 metros durante 6 horas al romperse."]
+  ,"item.compendium.tindertwig": ["Graveto de Ignição", "Tindertwig", "Ramita yesquera", "Fósforo alquímico de ignição instantânea que acende tochas em 1 única ação.", "An alchemical match that ignites instantly and lights torches with a single action.", "Una cerilla alquímica de ignición instantánea que enciende antorchas con una sola acción."]
+  ,"item.compendium.1_weapon_potency_rune": ["Runa de Potência de Arma +1", "+1 Weapon Potency Rune", "Runa de potencia de arma +1", "Runa fundamental mágica que concede +1 de bônus de item em jogadas de ataque com a arma gravada.", "A fundamental magic rune granting a +1 item bonus to attack rolls with the etched weapon.", "Una runa mágica fundamental que concede un bonificador de objeto +1 a las tiradas de ataque con el arma grabada."]
+  ,"item.compendium.2_weapon_potency_rune": ["Runa de Potência de Arma +2", "+2 Weapon Potency Rune", "Runa de potencia de arma +2", "Runa fundamental mágica que concede +2 de bônus de item em jogadas de ataque com a arma gravada.", "A fundamental magic rune granting a +2 item bonus to attack rolls with the etched weapon.", "Una runa mágica fundamental que concede un bonificador de objeto +2 a las tiradas de ataque con el arma grabada."]
+  ,"item.compendium.3_weapon_potency_rune": ["Runa de Potência de Arma +3", "+3 Weapon Potency Rune", "Runa de potencia de arma +3", "Runa fundamental mágica que concede +3 de bônus de item em jogadas de ataque com a arma gravada.", "A fundamental magic rune granting a +3 item bonus to attack rolls with the etched weapon.", "Una runa mágica fundamental que concede un bonificador de objeto +3 a las tiradas de ataque con el arma grabada."]
+  ,"item.compendium.striking_rune": ["Runa Impactante", "Striking Rune", "Runa impactante", "Runa fundamental que adiciona 1 dado extra de dano da arma ao acertar (2 dados no total).", "A fundamental rune that adds 1 extra weapon damage die on a hit (2 dice total).", "Una runa fundamental que añade 1 dado de daño adicional del arma al impactar (2 dados en total)."]
+  ,"item.compendium.greater_striking_rune": ["Runa Impactante Maior", "Greater Striking Rune", "Runa impactante mayor", "Runa fundamental que adiciona 2 dados extras de dano da arma ao acertar (3 dados no total).", "A fundamental rune that adds 2 extra weapon damage dice on a hit (3 dice total).", "Una runa fundamental que añade 2 dados de daño adicionales del arma al impactar (3 dados en total)."]
+  ,"item.compendium.major_striking_rune": ["Runa Impactante Superior", "Major Striking Rune", "Runa impactante mayor superior", "Runa fundamental lendária que adiciona 3 dados extras de dano da arma ao acertar (4 dados no total).", "A legendary fundamental rune that adds 3 extra weapon damage dice on a hit (4 dice total).", "Una runa fundamental legendaria que añade 3 dados de daño adicionales del arma al impactar (4 dados en total)."]
+  ,"item.compendium.1_armor_potency_rune": ["Runa de Potência de Armadura +1", "+1 Armor Potency Rune", "Runa de potencia de armadura +1", "Runa fundamental que concede +1 de bônus de item na CA da armadura ou traje de explorador.", "A fundamental rune granting a +1 item bonus to the armor or explorer's clothing AC.", "Una runa fundamental que concede un bonificador de objeto +1 a la CA de la armadura o la ropa de explorador."]
+  ,"item.compendium.resilient_rune": ["Runa Resiliente", "Resilient Rune", "Runa resistente", "Runa fundamental de armadura que concede +1 de bônus de item em todas as salvaguardas (Fortitude, Reflexos, Vontade).", "A fundamental armor rune granting a +1 item bonus to all saves (Fortitude, Reflex, and Will).", "Una runa fundamental de armadura que concede un bonificador de objeto +1 a todas las salvaciones (Fortaleza, Reflejos y Voluntad)."]
+  ,"item.compendium.flaming_property_rune": ["Runa de Propriedade Flamejante", "Flaming Property Rune", "Runa de propiedad flamígera", "Adiciona 1d6 de dano de fogo adicional e 1d10 de dano contínuo de fogo no acerto crítico.", "It adds 1d6 additional fire damage and 1d10 persistent fire damage on a critical hit.", "Añade 1d6 de daño de fuego adicional y 1d10 de daño de fuego persistente con un golpe crítico."]
+  ,"item.compendium.frost_property_rune": ["Runa de Propriedade Gélida", "Frost Property Rune", "Runa de propiedad gélida", "Adiciona 1d6 de dano de frio adicional e deixa o alvo Lento 1 no acerto crítico.", "It adds 1d6 additional cold damage and makes the target Slowed 1 on a critical hit.", "Añade 1d6 de daño de frío adicional y deja al objetivo ralentizado 1 con un golpe crítico."]
+  ,"item.compendium.shocking_property_rune": ["Runa de Propriedade Chocante", "Shocking Property Rune", "Runa de propiedad impactante", "Adiciona 1d6 de dano elétrico adicional e propaga 1d4 de dano elétrico em criaturas adjacentes no crítico.", "It adds 1d6 additional electricity damage and deals 1d4 electricity damage to adjacent creatures on a critical hit.", "Añade 1d6 de daño eléctrico adicional y causa 1d4 de daño eléctrico a criaturas adyacentes con un golpe crítico."]
+  ,"item.compendium.returning_property_rune": ["Runa de Propriedade Retornante", "Returning Property Rune", "Runa de propiedad retornante", "Quando você arremessa a arma gravada, ela retorna imediatamente à sua mão logo após o ataque.", "When you throw the etched weapon, it immediately returns to your hand after the attack.", "Cuando lanzas el arma grabada, vuelve inmediatamente a tu mano tras el ataque."]
+  ,"item.compendium.ghost_touch_property_rune": ["Runa de Propriedade Toque Fantasma", "Ghost Touch Property Rune", "Runa de propiedad toque fantasmal", "A arma atinge criaturas incorpóreas com eficácia total, ignorando resistências a dano físico.", "The weapon affects incorporeal creatures with full effect, ignoring physical damage resistances.", "El arma afecta plenamente a las criaturas incorpóreas e ignora sus resistencias al daño físico."]
+  ,"item.compendium.spacious_pouch_bag_of_holding": ["Bolsa Espaçosa (Bolsa de Carga)", "Spacious Pouch (Bag of Holding)", "Bolsa espaciosa (bolsa de contención)", "Bolsa mágica dimensional capaz de carregar até 25 de Carga enquanto pesa apenas 1 de Carga.", "A magical dimensional bag that can carry up to 25 Bulk while weighing only 1 Bulk.", "Una bolsa mágica dimensional capaz de transportar hasta 25 de Carga mientras pesa solo 1 de Carga."]
+  ,"item.compendium.boots_of_elvenkind": ["Botas Élficas", "Boots of Elvenkind", "Botas élficas", "Botas leves que concedem +1 de bônus de item em testes de Furtividade e permitem ignorar terreno difícil suave.", "Light boots granting a +1 item bonus to Stealth checks and letting you ignore uneven ground.", "Botas ligeras que conceden un bonificador de objeto +1 a las pruebas de Sigilo y permiten ignorar terreno difícil menor."]
+  ,"item.compendium.cloak_of_elvenkind": ["Manto Élfico", "Cloak of Elvenkind", "Capa élfica", "Manto cambiante que concede +1 de bônus em Furtividade e permite conjurar Invisibilidade 1 vez por dia.", "A shifting cloak granting a +1 bonus to Stealth and allowing you to cast invisibility once per day.", "Una capa cambiante que concede un bonificador +1 a Sigilo y permite lanzar invisibilidad una vez al día."]
+  ,"item.compendium.goggles_of_night": ["Óculos da Noite", "Goggles of Night", "Gafas de la noche", "Óculos de lentes de quartzo escurecido que concedem Visão no Escuro contínua ao usuário investido.", "Goggles with dark quartz lenses that grant the invested wearer continuous darkvision.", "Gafas con lentes de cuarzo oscuro que conceden visión en la oscuridad permanente a quien las inviste."]
+  ,"item.compendium.wand_of_heal_1st_rank": ["Varinha de Curar (1º Ranque)", "Wand of Heal (1st-Rank)", "Varita de curar (rango 1)", "Varinha entalhada em freixo que permite conjurar a magia Curar de 1º ranque uma vez ao dia (ou arriscar sobrecarga).", "An ash wand that lets you cast the 1st-rank heal spell once per day (or risk overcharging it).", "Una varita de fresno que permite lanzar curar de rango 1 una vez al día (o arriesgarse a sobrecargarla)."]
+  ,"item.compendium.staff_of_fire": ["Cajado do Fogo", "Staff of Fire", "Bastón de fuego", "Cajado mágico forjado em madeira carbonizada com cargas diárias para conjurar Raio de Fogo e Mãos Flamejantes.", "A magic staff of charred wood with daily charges for casting Produce Flame and Burning Hands.", "Un bastón mágico de madera carbonizada con cargas diarias para lanzar producir llama y manos ardientes."]
+};
+for (const record of PF2E_DATA.itemCompendium || []) {
+  const translation = COMPENDIUM_TRANSLATIONS[record.id];
+  if (!translation) continue;
+  const [pt, en, es, ptSummary, enSummary, esSummary] = translation;
+  record.names = { "pt-BR": pt, en, es };
+  record.summaries = { "pt-BR": ptSummary, en: enSummary, es: esSummary };
+}
+
+// Tipos de eidolon descritos na seção de Convocador/Eidolons de Segredos da
+// Magia. A ficha permite escolher o tipo e mantém a proveniência da seção;
+// matrizes de atributos, ataques e evoluções individuais continuam marcadas
+// para revisão até serem modeladas campo a campo.
+const SUMMONER_EIDOLONS = [
+  ["pet.eidolon.devotion_abomination", "Abantesma da Devoção", "Devotion Phantom", "Abantesma de devoción", "Eidolon ocultista ligado à devoção e à proteção espiritual.", "An occult eidolon tied to devotion and spiritual protection.", "Eidolon ocultista ligado a la devoción y la protección espiritual."],
+  ["pet.eidolon.rage_abomination", "Abantesma da Raiva", "Rage Phantom", "Abantesma de ira", "Abantesma ocultista movido por fúria e emoções intensas.", "An occult eidolon driven by rage and intense emotion.", "Eidolon ocultista impulsado por la ira y emociones intensas."],
+  ["pet.eidolon.angel", "Anjo", "Angel", "Ángel", "Eidolon divino formado por essência celestial e poder de cura.", "A divine eidolon formed from celestial essence and healing power.", "Un eidolon divino formado de esencia celestial y poder curativo."],
+  ["pet.eidolon.beast", "Besta", "Beast", "Bestia", "Eidolon primal de forma animal, adaptável a combate e exploração.", "A primal animal eidolon adaptable to combat and exploration.", "Un eidolon primal de forma animal, adaptable al combate y la exploración."],
+  ["pet.eidolon.construct", "Constructo", "Construct", "Constructo", "Eidolon arcano construído com matéria e magia vinculadas ao convocador.", "An arcane eidolon built from matter and magic bound to its summoner.", "Un eidolon arcano construido con materia y magia vinculadas a su convocador."],
+  ["pet.eidolon.demon", "Demônio", "Demon", "Demonio", "Eidolon divino de essência demoníaca e impulsos destrutivos.", "A divine eidolon of demonic essence and destructive impulses.", "Un eidolon divino de esencia demoníaca e impulsos destructivos."],
+  ["pet.eidolon.dragon", "Dragão", "Dragon", "Dragón", "Eidolon arcano que manifesta a herança e o poder de um dragão.", "An arcane eidolon manifesting draconic heritage and power.", "Un eidolon arcano que manifiesta herencia y poder dracónicos."],
+  ["pet.eidolon.fey", "Fada", "Fey", "Hada", "Eidolon primal de essência feérica, astuto e conectado à natureza.", "A primal eidolon of fey essence, cunning and connected to nature.", "Un eidolon primal de esencia feérica, astuto y conectado con la naturaleza."],
+  ["pet.eidolon.plant", "Planta", "Plant", "Planta", "Eidolon primal de matéria vegetal e vitalidade natural.", "A primal eidolon of plant matter and natural vitality.", "Un eidolon primal de materia vegetal y vitalidad natural."],
+  ["pet.eidolon.psychopomp", "Psicopompo", "Psychopomp", "Psicopompo", "Eidolon ocultista ligado ao ciclo das almas e à passagem dos mortos.", "An occult eidolon tied to the cycle of souls and passage of the dead.", "Un eidolon ocultista ligado al ciclo de las almas y al tránsito de los muertos."],
+];
+for (const [id, pt, en, es, ptSummary, enSummary, esSummary] of SUMMONER_EIDOLONS) {
+  if ((PF2E_DATA.pets || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.pets.push({
+    id,
+    name: `${pt} (${en})`,
+    type: "eidolon",
+    category: "Eidolon",
+    classId: "class.summoner",
+    requiredLevel: 1,
+    prerequisites: ["Convocador"],
+    names: { "pt-BR": pt, en, es },
+    summaries: { "pt-BR": ptSummary, en: enSummary, es: esSummary },
+    description: ptSummary,
+    source: { book: "Segredos da Magia (pré-Remaster)", page: 43 },
+    sourceApproximate: true,
+    ruleset: "legacy",
+    needs_review: true,
+  });
+}
+
+// Índice completo de impulsos apresentado nas seções de elementos e impulsos
+// de Rage of Elements. O registro permite filtrar e escolher o talento; o
+// texto de efeito individual ainda precisa de revisão mecânica por página.
+const RAGE_OF_ELEMENTS_IMPULSES = [
+  ["aerial_boomerang", "Aerial Boomerang", 1], ["air_cushion", "Air Cushion", 1], ["four_winds", "Four Winds", 1], ["whisper_on_the_wind", "Whisper on the Wind", 1], ["air_shroud", "Air Shroud", 4], ["clear_as_air", "Clear as Air", 6], ["flinging_updraft", "Flinging Updraft", 6], ["lightning_dash", "Lightning Dash", 4], ["cyclonic_ascent", "Cyclonic Ascent", 8], ["storm_spiral", "Storm Spiral", 8], ["ghosts_in_the_storm", "Ghosts in the Storm", 12], ["wiles_on_the_wind", "Wiles on the Wind", 12], ["body_of_air", "Body of Air", 14], ["crowned_in_tempests_fury", "Crowned in Tempest's Fury", 18], ["infinite_expanse_of_bluest_heaven", "Infinite Expanse of Bluest Heaven", 18],
+  ["armor_in_earth", "Armor in Earth", 1], ["geologic_attunement", "Geologic Attunement", 1], ["stepping_stones", "Stepping Stones", 1], ["tremor", "Tremor", 1], ["calcifying_sand", "Calcifying Sand", 4], ["igneogenesis", "Igneogenesis", 4], ["sand_snatcher", "Sand Snatcher", 6], ["weight_of_stone", "Weight of Stone", 6], ["spike_skin", "Spike Skin", 8], ["swim_through_earth", "Swim Through Earth", 8], ["rattle_the_earth", "Rattle the Earth", 12], ["rock_rampart", "Rock Rampart", 12], ["assume_earths_mantle", "Assume Earth's Mantle", 14], ["rebirth_in_living_stone", "Rebirth in Living Stone", 18], ["the_shattered_mountain_weeps", "The Shattered Mountain Weeps", 18],
+  ["burning_jet", "Burning Jet", 1], ["eternal_torch", "Eternal Torch", 1], ["flying_flame", "Flying Flame", 1], ["scorching_column", "Scorching Column", 1], ["blazing_wave", "Blazing Wave", 4], ["thermal_nimbus", "Thermal Nimbus", 4], ["crawling_fire", "Crawling Fire", 6], ["volcanic_escape", "Volcanic Escape", 6], ["kindle_inner_flames", "Kindle Inner Flames", 8], ["solar_detonation", "Solar Detonation", 8], ["architect_of_flame", "Architect of Flame", 12], ["furnace_form", "Furnace Form", 12], ["walk_through_the_conflagration", "Walk Through the Conflagration", 14], ["all_shall_end_in_flames", "All Shall End in Flames", 18], ["death_fire", "Death Fire", 18], ["ignite_the_sun", "Ignite the Sun", 18],
+  ["flashforge", "Flashforge", 1], ["magnetic_pinions", "Magnetic Pinions", 1], ["metal_carapace", "Metal Carapace", 1], ["shard_strike", "Shard Strike", 1], ["magnetic_field", "Magnetic Field", 4], ["plate_in_treasure", "Plate in Treasure", 4], ["consume_power", "Consume Power", 6], ["scrap_barricade", "Scrap Barricade", 6], ["conductive_sphere", "Conductive Sphere", 8], ["retch_rust", "Retch Rust", 8], ["alloy_flesh_and_steel", "Alloy Flesh and Steel", 14], ["rain_of_razors", "Rain of Razors", 12], ["shattershields", "Shattershields", 12], ["beasts_of_slumbering_steel", "Beasts of Slumbering Steel", 18], ["hell_of_one_million_needles", "Hell of 1,000,000 Needles", 18],
+  ["deflecting_wave", "Deflecting Wave", 1], ["ocean_balm", "Ocean's Balm", 1], ["tidal_hands", "Tidal Hands", 1], ["winters_clutch", "Winter's Clutch", 1], ["return_to_the_sea", "Return to the Sea", 4], ["winter_sleet", "Winter Sleet", 4], ["driving_rain", "Driving Rain", 6], ["torrent_in_the_blood", "Torrent in the Blood", 6], ["call_the_hurricane", "Call the Hurricane", 8], ["impenetrable_fog", "Impenetrable Fog", 8], ["glacial_prison", "Glacial Prison", 12], ["sea_glass_guardians", "Sea Glass Guardians", 12], ["barrier_of_boreal_frost", "Barrier of Boreal Frost", 14], ["ride_the_tsunami", "Ride the Tsunami", 18], ["usurp_the_lunar_reins", "Usurp the Lunar Reins", 18],
+  ["fresh_produce", "Fresh Produce", 1], ["hail_of_splinters", "Hail of Splinters", 1], ["hardwood_armor", "Hardwood Armor", 1], ["timber_sentinel", "Timber Sentinel", 1], ["ravel_of_thorns", "Ravel of Thorns", 4], ["tumbling_lumber", "Tumbling Lumber", 4], ["dash_of_herbs", "Dash of Herbs", 6], ["wooden_palisade", "Wooden Palisade", 6], ["drifting_pollen", "Drifting Pollen", 8], ["sanguivolent_roots", "Sanguivolent Roots", 8], ["hedge_maze", "Hedge Maze", 12], ["witchwood_seed", "Witchwood Seed", 12], ["orchards_endurance", "Orchard's Endurance", 14], ["rouse_the_forests_fury", "Rouse the Forest's Fury", 18], ["turn_the_wheel_of_seasons", "Turn the Wheel of Seasons", 18],
+  ["ambush_bladderwort", "Ambush Bladderwort", 4], ["lava_leap", "Lava Leap", 4], ["living_bonfire", "Living Bonfire", 4], ["whirling_grindstone", "Whirling Grindstone", 4], ["ash_strider", "Ash Strider", 6], ["desert_wind", "Desert Wind", 6], ["elemental_artillery", "Elemental Artillery", 6], ["chain_infusion", "Chain Infusion", 10], ["elemental_transformation", "Elemental Transformation", 10], ["effortless_impulse", "Effortless Impulse", 12], ["imperious_aura", "Imperious Aura", 16], ["omnikinesis", "Omnikinesis", 20],
+];
+for (const [slug, title, level] of RAGE_OF_ELEMENTS_IMPULSES) {
+  const id = `feat.impulse.${slug}`;
+  if ((PF2E_DATA.feats || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.feats.push({
+    id, name: `${title} (Impulse)`, category: "Impulso", level,
+    classId: "class.kineticist", prerequisites: ["Cineticista"],
+    traits: ["Impulso", "Cineticista"],
+    names: { "pt-BR": title, en: title, es: title },
+    summaries: {
+      "pt-BR": `Impulso elemental de ${title}; consulte a entrada da página para o efeito completo.`,
+      en: `Elemental impulse ${title}; consult the page entry for the complete effect.`,
+      es: `Impulso elemental ${title}; consulta la entrada de la página para el efecto completo.`,
+    },
+    description: `Impulso elemental ${title}; detalhes mecânicos pendentes de revisão.`,
+    source: { book: "Rage of Elements (Remaster)", page: 24 },
+    sourceApproximate: true, ruleset: "remaster", needs_review: true,
+  });
+}
+
+// War of Immortals, p. 22: índice de talentos do Animista. O índice fornece
+// nomes e níveis; os efeitos individuais permanecem em revisão até a página
+// de cada talento ser conferida no PDF local.
+const WAR_IMMORTALS_ANIMIST_FEATS = [
+  ["apparition_cloud", "Apparition Cloud", "Nuvem de Aparição", "Nube de aparición", 12],
+  ["apparition_sense", "Apparition Sense", "Sentido de Aparição", "Sentido de aparición", 1],
+  ["apparition_stabilization", "Apparition Stabilization", "Estabilização de Aparição", "Estabilización de aparición", 6],
+  ["apparitions_enhancement", "Apparition's Enhancement", "Aprimoramento da Aparição", "Mejora de la aparición", 4],
+  ["apparitions_quickening", "Apparition's Quickening", "Aceleração da Aparição", "Aceleración de la aparición", 10],
+  ["apparitions_reflection", "Apparition's Reflection", "Reflexo da Aparição", "Reflejo de la aparición", 6],
+  ["banish_falsehoods_of_flesh", "Banish Falsehoods of Flesh", "Banir Falsidades da Carne", "Desterrar falsedades de la carne", 14],
+  ["blazing_spirit", "Blazing Spirit", "Espírito Flamejante", "Espíritu llameante", 6],
+  ["cardinal_guardians", "Cardinal Guardians", "Guardiões Cardeais", "Guardianes cardinales", 14],
+  ["channeled_protection", "Channeled Protection", "Proteção Canalizada", "Protección canalizada", 4],
+  ["channelers_stance", "Channeler's Stance", "Postura do Canalizador", "Postura del canalizador", 1],
+  ["circle_of_spirits", "Circle of Spirits", "Círculo de Espíritos", "Círculo de espíritus", 1],
+  ["conceal_spell", "Conceal Spell", "Ocultar Magia", "Ocultar conjuro", 2],
+  ["cycle_of_souls", "Cycle of Souls", "Ciclo das Almas", "Ciclo de las almas", 18],
+  ["echoing_channel", "Echoing Channel", "Canal Ressonante", "Canal resonante", 18],
+  ["embodiment_of_the_balance", "Embodiment of the Balance", "Encarnar o Equilíbrio", "Encarnación del equilibrio", 2],
+  ["enhanced_familiar", "Enhanced Familiar", "Familiar Aprimorado", "Familiar mejorado", 2],
+  ["eternal_guide", "Eternal Guide", "Guia Eterno", "Guía eterno", 20],
+  ["fly_on_shadowed_wings", "Fly on Shadowed Wings", "Voar em Asas Sombrias", "Volar con alas sombrías", 10],
+  ["forest_s_heart", "Forest's Heart", "Coração da Floresta", "Corazón del bosque", 16],
+  ["grasping_spirits_spell", "Grasping Spirits Spell", "Magia dos Espíritos Agarradores", "Conjuro de espíritus aferradores", 2],
+  ["grudge_strike", "Grudge Strike", "Golpe de Ressentimento", "Golpe de rencor", 6],
+  ["incredible_familiar", "Incredible Familiar", "Familiar Incrível", "Familiar increíble", 10],
+  ["instinctive_maneuvers", "Instinctive Maneuvers", "Manobras Instintivas", "Maniobras instintivas", 8],
+  ["jester_s_gambol", "Jester's Gambol", "Pirueta do Bobo", "Cabriola del bufón", 16],
+  ["medium_s_awareness", "Medium's Awareness", "Consciência do Médium", "Percepción del médium", 6],
+  ["monstrous_inclinations", "Monstrous Inclinations", "Inclinações Monstruosas", "Inclinaciones monstruosas", 16],
+  ["relinquish_control", "Relinquish Control", "Abandonar o Controle", "Renunciar al control", 1],
+  ["roaring_heart", "Roaring Heart", "Coração Ruidoso", "Corazón rugiente", 6],
+  ["shadows_within_shadows", "Shadows within Shadows", "Sombras dentro de Sombras", "Sombras dentro de sombras", 12],
+  ["spirit_familiar", "Spirit Familiar", "Familiar Espiritual", "Familiar espiritual", 1],
+  ["spiritual_expansion_spell", "Spiritual Expansion Spell", "Magia de Expansão Espiritual", "Conjuro de expansión espiritual", 2],
+  ["spiritual_spellshape_stance", "Spiritual Spellshape Stance", "Postura de Moldagem Espiritual", "Postura de forma espiritual", 16],
+  ["spirit_walk", "Spirit Walk", "Caminhada Espiritual", "Paseo espiritual", 8],
+  ["spirits_sacrifice", "Spirit's Sacrifice", "Sacrifício do Espírito", "Sacrificio del espíritu", 18],
+  ["true_channel", "True Channel Spell", "Magia do Canal Verdadeiro", "Conjuro del canal verdadero", 20],
+  ["walk_the_wilds", "Walk the Wilds", "Caminhar pelos Ermos", "Caminar por lo salvaje", 4],
+  ["whispers_of_warning", "Whispers of Warning", "Sussurros de Alerta", "Susurros de advertencia", 12],
+  ["wind_seeker", "Wind Seeker", "Buscador do Vento", "Buscador del viento", 8],
+];
+for (const [slug, englishName, ptName, esName, level] of WAR_IMMORTALS_ANIMIST_FEATS) {
+  const id = `feat.animist.${slug}`;
+  if ((PF2E_DATA.feats || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.feats.push({
+    id,
+    name: `${ptName} (${englishName})`,
+    category: "Talento de Classe",
+    level,
+    classId: "class.animist",
+    prerequisites: ["Animista"],
+    traits: ["Animista"],
+    names: { "pt-BR": ptName, en: englishName, es: esName },
+    summaries: {
+      "pt-BR": `Talento de classe do Animista; consulte a página individual para o efeito completo.`,
+      en: `Animist class feat; consult the individual page for the complete effect.`,
+      es: `Talento de clase de animista; consulta la página individual para el efecto completo.`,
+    },
+    description: `Talento de classe do Animista; detalhes mecânicos pendentes de revisão.`,
+    source: { book: WAR_IMMORTALS_SOURCE, page: 22 },
+    sourceApproximate: true,
+    ruleset: "remaster",
+    needs_review: true,
+  });
+}
+
+// War of Immortals, p. 30: primeiro talento apresentado na seção do Exemplar.
+if (!(PF2E_DATA.feats || []).some((record) => record.id === "feat.exemplar.humble_strikes")) {
+  PF2E_DATA.feats.push({
+    id: "feat.exemplar.humble_strikes",
+    name: "Golpes Humildes (Humble Strikes)",
+    category: "Talento de Classe",
+    level: 1,
+    classId: "class.exemplar",
+    prerequisites: ["Exemplar"],
+    traits: ["Exemplar"],
+    names: { "pt-BR": "Golpes Humildes", en: "Humble Strikes", es: "Golpes humildes" },
+    summaries: {
+      "pt-BR": "Talento de classe do Exemplar; consulte a página individual para o efeito completo.",
+      en: "Exemplar class feat; consult the individual page for the complete effect.",
+      es: "Talento de clase de ejemplar; consulta la página individual para el efecto completo.",
+    },
+    description: "Talento de classe do Exemplar; detalhes mecânicos pendentes de revisão.",
+    source: { book: WAR_IMMORTALS_SOURCE, page: 30 },
+    sourceApproximate: true,
+    ruleset: "remaster",
+    needs_review: true,
+  });
+}
+
+// War of Immortals, p. 35: talentos iniciais apresentados na seção do Exemplar.
+const WAR_IMMORTALS_EXEMPLAR_FEATS = [
+  ["energized_spark", "Energized Spark", "Centelha Energizada", "Chispa energizada"],
+  ["sanctified_soul", "Sanctified Soul", "Alma Santificada", "Alma santificada"],
+  ["twin_stars", "Twin Stars", "Estrelas Gêmeas", "Estrellas gemelas"],
+  ["vow_of_mortal_defiance", "Vow of Mortal Defiance", "Voto de Desafio Mortal", "Voto de desafío mortal"],
+];
+for (const [slug, englishName, ptName, esName] of WAR_IMMORTALS_EXEMPLAR_FEATS) {
+  const id = `feat.exemplar.${slug}`;
+  if ((PF2E_DATA.feats || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.feats.push({
+    id,
+    name: `${ptName} (${englishName})`,
+    category: "Talento de Classe",
+    level: 1,
+    classId: "class.exemplar",
+    prerequisites: ["Exemplar"],
+    traits: ["Exemplar"],
+    names: { "pt-BR": ptName, en: englishName, es: esName },
+    summaries: {
+      "pt-BR": "Talento de classe do Exemplar; consulte a página individual para o efeito completo.",
+      en: "Exemplar class feat; consult the individual page for the complete effect.",
+      es: "Talento de clase de ejemplar; consulta la página individual para el efecto completo.",
+    },
+    description: "Talento de classe do Exemplar; detalhes mecânicos pendentes de revisão.",
+    source: { book: WAR_IMMORTALS_SOURCE, page: 35 },
+    sourceApproximate: true,
+    ruleset: "remaster",
+    needs_review: true,
+  });
+}
+
+const WAR_IMMORTALS_EXEMPLAR_FEATS_REMAINING = [
+  ["only_the_worthy", "Only the Worthy", "Somente os Dignos", "Solo los dignos", 4],
+  ["steel_on_steel", "Steel on Steel", "Aço contra Aço", "Acero contra acero", 4],
+  ["through_the_needles_eye", "Through the Needle's Eye", "Através do Olho da Agulha", "A través del ojo de la aguja", 4],
+  ["binding_serpents_celestial_arrow", "Binding Serpents Celestial Arrow", "Flecha Celestial das Serpentes Aprisionadoras", "Flecha celestial de serpientes vinculantes", 6],
+  ["flow_of_war", "Flow of War", "Fluxo da Guerra", "Flujo de guerra", 6],
+  ["motionless_cutter", "Motionless Cutter", "Cortador Imóvel", "Cortador inmóvil", 6],
+  ["reactive_strike", "Reactive Strike", "Golpe Reativo", "Golpe reactivo", 6],
+  ["additional_ikon", "Additional Ikon", "Ícone Adicional", "Icono adicional", 8],
+  ["battle_hymn_to_the_lost", "Battle Hymn to the Lost", "Hino de Batalha aos Perdidos", "Himno de batalla a los perdidos", 8],
+  ["raise_island", "Raise Island", "Erguer a Ilha", "Elevar la isla", 8],
+  ["rejoice_in_solstice_storm", "Rejoice in Solstice Storm", "Alegria na Tempestade do Solstício", "Alegría en la tormenta del solsticio", 8],
+  ["breath_of_vital_ash", "Breath of Vital Ash", "Sopro de Cinza Vital", "Aliento de ceniza vital", 10],
+  ["exult_in_violence", "Exult in Violence", "Exultar na Violência", "Exultar en la violencia", 10],
+  ["fish_from_the_falls_edge", "Fish from the Falls' Edge", "Pescar da Beira da Cachoeira", "Pescar del borde de las cascadas", 10],
+  ["journey_of_the_sky_chariot", "Journey of the Sky Chariot", "Jornada da Carruagem Celeste", "Viaje del carro celeste", 10],
+  ["mated_birds_in_paired_flight", "Mated Birds in Paired Flight", "Pássaros Acasalados em Voo Pareado", "Aves emparejadas en vuelo conjunto", 10],
+  ["extract_vow_of_nonviolence", "Extract Vow of Nonviolence", "Extrair Voto de Não Violência", "Extraer voto de no violencia", 12],
+  ["rapid_spark", "Rapid Spark", "Centelha Rápida", "Chispa rápida", 12],
+  ["warped_by_rage", "Warped by Rage", "Distorcido pela Fúria", "Deformado por la furia", 12],
+  ["compliant_gold", "Compliant Gold", "Ouro Submisso", "Oro obediente", 12],
+  ["destined_victory", "Destined Victory", "Vitória Destinada", "Victoria destinada", 14],
+  ["infinite_blades_celestial_arrow", "Infinite Blades Celestial Arrow", "Flecha Celestial das Lâminas Infinitas", "Flecha celestial de hojas infinitas", 14],
+  ["gift_of_the_immortal_herb", "Gift of the Immortal Herb", "Dádiva da Erva Imortal", "Don de la hierba inmortal", 16],
+  ["mark_of_the_sage", "Mark of the Sage", "Marca do Sábio", "Marca del sabio", 16],
+  ["shroud_of_ghosts", "Shroud of Ghosts", "Sudário de Fantasmas", "Sudario de fantasmas", 16],
+  ["strike_rivers_seize_winds", "Strike Rivers, Seize Winds", "Golpear Rios, Capturar Ventos", "Golpear ríos, atrapar vientos", 16],
+  ["branched_tree_of_pain", "Branched Tree of Pain", "Árvore Ramificada da Dor", "Árbol ramificado del dolor", 18],
+  ["eternity_incinerating_blaze", "Eternity-Incinerating Blaze", "Labareda Incineradora da Eternidade", "Resplandor incinerador de la eternidad", 18],
+  ["seven_colored_cosmic_bridge", "Seven-Colored Cosmic Bridge", "Ponte Cósmica de Sete Cores", "Puente cósmico de siete colores", 18],
+  ["sunwrecker", "Sunwrecker", "Destruidor do Sol", "Destructor del sol", 18],
+  ["reach_for_immortality", "Reach for Immortality", "Alcançar a Imortalidade", "Alcanzar la inmortalidad", 20],
+  ["remake_the_world", "Remake the World", "Refazer o Mundo", "Rehacer el mundo", 20],
+];
+for (const [slug, englishName, ptName, esName, level] of WAR_IMMORTALS_EXEMPLAR_FEATS_REMAINING) {
+  const id = `feat.exemplar.${slug}`;
+  if ((PF2E_DATA.feats || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.feats.push({
+    id,
+    name: `${ptName} (${englishName})`,
+    category: "Talento de Classe",
+    level,
+    classId: "class.exemplar",
+    prerequisites: ["Exemplar"],
+    traits: ["Exemplar"],
+    names: { "pt-BR": ptName, en: englishName, es: esName },
+    summaries: {
+      "pt-BR": "Talento de classe do Exemplar; consulte a página individual para o efeito completo.",
+      en: "Exemplar class feat; consult the individual page for the complete effect.",
+      es: "Talento de clase de ejemplar; consulta la página individual para el efecto completo.",
+    },
+    description: "Talento de classe do Exemplar; detalhes mecânicos pendentes de revisão.",
+    source: { book: WAR_IMMORTALS_SOURCE, page: 36 },
+    sourceApproximate: true,
+    ruleset: "remaster",
+    needs_review: true,
+  });
+}
+
+// War of Immortals, pp. 17–21: magias de receptáculo do Animista. São
+// magias de foco de 1º nível; efeitos e alturas detalhadas ficam em revisão.
+const WAR_IMMORTALS_ANIMIST_VESSEL_SPELLS = [
+  ["traveling_workshop", "Traveling Workshop", "Oficina Itinerante", "Taller itinerante", 17],
+  ["store_time", "Store Time", "Armazenar Tempo", "Almacenar tiempo", 18],
+  ["garden_of_healing", "Garden of Healing", "Jardim de Cura", "Jardín de curación", 18],
+  ["discomfiting_whispers", "Discomfiting Whispers", "Sussurros Perturbadores", "Susurros desconcertantes", 18],
+  ["devouring_dark_form", "Devouring Dark Form", "Forma da Escuridão Devoradora", "Forma de oscuridad devoradora", 19],
+  ["nymphs_grace", "Nymph's Grace", "Graça da Náiade", "Gracia de la ninfa", 19],
+  ["tricksters_mirrors", "Trickster's Mirrors", "Espelhos do Trapaceiro", "Espejos del embaucador", 19],
+  ["darkened_forest_form", "Darkened Forest Form", "Forma da Floresta Sombria", "Forma del bosque oscuro", 20],
+  ["earths_bile", "Earth's Bile", "Bile da Terra", "Bilis de la tierra", 21],
+  ["river_carving_mountains", "River Carving Mountains", "Rio que Esculpe Montanhas", "Río que esculpe montañas", 21],
+  ["embodiment_of_battle", "Embodiment of Battle", "Encarnação da Batalha", "Encarnación de la batalla", 21],
+];
+for (const [slug, englishName, ptName, esName, page] of WAR_IMMORTALS_ANIMIST_VESSEL_SPELLS) {
+  const id = `spell.animist.${slug}`;
+  if ((PF2E_DATA.spells || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.spells.push({
+    id,
+    name: `${ptName} (${englishName})`,
+    rank: 1,
+    focus: true,
+    category: "Magia de Foco",
+    classId: "class.animist",
+    prerequisites: ["Animista"],
+    traits: ["Animista", "Foco"],
+    names: { "pt-BR": ptName, en: englishName, es: esName },
+    summaries: {
+      "pt-BR": "Magia de receptáculo do Animista; consulte a entrada individual para o efeito completo.",
+      en: "Animist vessel focus spell; consult the individual entry for the complete effect.",
+      es: "Conjuro de foco de receptáculo del animista; consulta la entrada individual para el efecto completo.",
+    },
+    description: "Magia de receptáculo do Animista; detalhes mecânicos pendentes de revisão.",
+    source: { book: WAR_IMMORTALS_SOURCE, page },
+    sourceApproximate: true,
+    ruleset: "remaster",
+    needs_review: true,
+  });
+}
+
+// War of Immortals, p. 57: talentos do arquétipo multiclasse de Exemplar.
+const WAR_IMMORTALS_EXEMPLAR_MULTICLASS_FEATS = [
+  ["exemplar_dedication", "Dedicação de Exemplar", "Exemplar Dedication", "Dedicación de Exemplar", 2],
+  ["basic_glory", "Glória Básica", "Basic Glory", "Gloria básica", 4],
+  ["exemplar_resiliency", "Resiliência de Exemplar", "Exemplar Resiliency", "Resiliencia de Exemplar", 4],
+  ["advanced_glory", "Glória Avançada", "Advanced Glory", "Gloria avanzada", 6],
+  ["exemplar_expertise", "Maestria de Exemplar", "Exemplar Expertise", "Pericia de Exemplar", 10],
+  ["second_ikon", "Segundo Ícone", "Second Ikon", "Segundo icono", 12],
+];
+for (const [slug, pt, en, es, level] of WAR_IMMORTALS_EXEMPLAR_MULTICLASS_FEATS) {
+  const id = `feat.archetype.exemplar_multiclass.${slug}`;
+  if ((PF2E_DATA.feats || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.feats.push({
+    id,
+    name: `${pt} (${en})`,
+    names: { "pt-BR": pt, en, es },
+    summaries: {
+      "pt-BR": `Talento do arquétipo multiclasse de Exemplar, nível ${level}.`,
+      en: `Exemplar multiclass archetype feat, level ${level}.`,
+      es: `Dote del arquetipo multiclase de Exemplar, nivel ${level}.`,
+    },
+    description: `Talento do arquétipo multiclasse de Exemplar.`,
+    category: "Arquetipo",
+    type: "Talento",
+    level,
+    archetypeId: "archetype.exemplar_multiclass",
+    prerequisites: ["Dedicação de Exemplar"],
+    prereq: ["Dedicação de Exemplar"],
+    traits: ["Arquetipo", "Multiclasse"],
+    source: { book: WAR_IMMORTALS_SOURCE, page: 57 },
+    ruleset: "remaster",
+    needs_review: true,
+  });
+}
+
+// War of Immortals, pp. 58–66: dedicações dos arquétipos de classe.
+const WAR_IMMORTALS_CLASS_ARCHETYPE_DEDICATIONS = [
+  ["avenger", "Vingador", "Avenger", "Vengador", 58, "Ladino", "Dedicação de Vingador para um ladino dedicado à causa de uma divindade.", "Avenger dedication for a rogue devoted to a deity's cause.", "Dedicación de Vengador para un pícaro dedicado a la causa de una deidad."],
+  ["bloodrager", "Furioso de Sangue", "Bloodrager", "Furioso de sangre", 60, "Bárbaro", "Dedicação de Furioso de Sangue para um bárbaro que canaliza magia através do sangue.", "Bloodrager dedication for a barbarian who channels magic through blood.", "Dedicación de Furioso de sangre para un bárbaro que canaliza magia a través de la sangre."],
+  ["seneschal_witch", "Senescal de Bruxa", "Seneschal Witch", "Senescal de bruja", 62, "Bruxa que perdeu seu patrono", "Dedicação rara de Senescal para uma bruxa que perdeu seu patrono.", "Rare Seneschal dedication for a witch who lost their patron.", "Dedicación rara de Senescal para una bruja que perdió a su patrón."],
+  ["vindicator", "Vindicador", "Vindicator", "Vindicador", 64, "Patrulheiro", "Dedicação de Vindicador para um patrulheiro que caça em nome de uma divindade.", "Vindicator dedication for a ranger who hunts in a deity's name.", "Dedicación de Vindicador para un explorador que caza en nombre de una deidad."],
+  ["warrior_of_legend", "Guerreiro da Lenda", "Warrior of Legend", "Guerrero de leyenda", 66, "Guerreiro", "Dedicação incomum de Guerreiro da Lenda para um combatente marcado por uma história heroica.", "Uncommon Warrior of Legend dedication for a fighter marked by a heroic story.", "Dedicación poco común de Guerrero de leyenda para un combatiente marcado por una historia heroica."],
+];
+for (const [slug, pt, en, es, page, classPrerequisite, ptSummary, enSummary, esSummary] of WAR_IMMORTALS_CLASS_ARCHETYPE_DEDICATIONS) {
+  const id = `feat.archetype.${slug}_dedication`;
+  const classId = {
+    "Ladino": "class.rogue",
+    "Bárbaro": "class.barbarian",
+    "Bruxa que perdeu seu patrono": "class.witch",
+    "Patrulheiro": "class.ranger",
+    "Guerreiro": "class.fighter",
+  }[classPrerequisite];
+  if ((PF2E_DATA.feats || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.feats.push({
+    id,
+    name: `Dedicação de ${pt} (${en} Dedication)`,
+    names: { "pt-BR": `Dedicação de ${pt}`, en: `${en} Dedication`, es: `Dedicación de ${es}` },
+    summaries: { "pt-BR": ptSummary, en: enSummary, es: esSummary },
+    description: ptSummary,
+    category: "Arquetipo",
+    type: "Talento",
+    level: 2,
+    classId,
+    prerequisites: [classPrerequisite],
+    prereq: [classPrerequisite],
+    archetypeId: `archetype.${slug.replace(/_witch$/, "")}`,
+    traits: ["Arquetipo", "Dedicação"],
+    source: { book: WAR_IMMORTALS_SOURCE, page },
+    ruleset: "remaster",
+    needs_review: true,
+  });
+}
+
+// War of Immortals, pp. 59–68: talentos dos arquétipos de classe.
+// Os textos completos permanecem em revisão; os níveis e páginas são mantidos
+// para que o construtor filtre a progressão e preserve a proveniência.
+const WAR_IMMORTALS_CLASS_ARCHETYPE_FEATS = [
+  ["avenger", "Vingador", "Avenger", "Vengador", "zealous_inevitability", "Inevitabilidade Zelosa", "Zealous Inevitability", "Inevitabilidad fervorosa", 6, 59],
+  ["avenger", "Vingador", "Avenger", "Vengador", "silence_the_profane", "Silenciar o Profano", "Silence the Profane", "Silenciar lo Profano", 8, 59],
+  ["avenger", "Vingador", "Avenger", "Vengador", "shadow_of_death", "Sombra da Morte", "Shadow of Death", "Sombra de la Muerte", 10, 59],
+  ["avenger", "Vingador", "Avenger", "Vengador", "slay", "Abater", "Slay", "Ejecutar", 12, 59],
+  ["bloodrager", "Furioso de Sangue", "Bloodrager", "Furioso de sangre", "blood_calls_blood", "Sangue Chama Sangue", "Blood Calls Blood", "La sangre llama a la sangre", 4, 61],
+  ["bloodrager", "Furioso de Sangue", "Bloodrager", "Furioso de sangre", "rising_blood_magic", "Magia de Sangue Crescente", "Rising Blood Magic", "Magia de sangre creciente", 4, 61],
+  ["bloodrager", "Furioso de Sangue", "Bloodrager", "Furioso de sangre", "siphon_magic", "Sifonar Magia", "Siphon Magic", "Sifonar magia", 6, 61],
+  ["bloodrager", "Furioso de Sangue", "Bloodrager", "Furioso de sangre", "spelldrinker", "Bebedor de Magia", "Spelldrinker", "Bebedor de conjuros", 8, 61],
+  ["bloodrager", "Furioso de Sangue", "Bloodrager", "Furioso de sangre", "hematocritical", "Hemato Crítico", "Hematocritical", "Hematocrítico", 10, 61],
+  ["bloodrager", "Furioso de Sangue", "Bloodrager", "Furioso de sangre", "surging_blood_magic", "Magia de Sangue Impetuosa", "Surging Blood Magic", "Magia de sangre impetuosa", 12, 61],
+  ["bloodrager", "Furioso de Sangue", "Bloodrager", "Furioso de sangre", "exultant_blood_magic", "Magia de Sangue Exultante", "Exultant Blood Magic", "Magia de sangre exultante", 18, 61],
+  ["seneschal", "Senescal", "Seneschal", "Senescal", "patrons_glamour", "Fascínio do Patrono", "Patron's Glamour", "Glamour del patrón", 4, 63],
+  ["seneschal", "Senescal", "Seneschal", "Senescal", "seneschal_spell", "Feitiço de Senescal", "Seneschal Spell", "Conjuro de senescal", 4, 63],
+  ["seneschal", "Senescal", "Seneschal", "Senescal", "multifaceted_will", "Vontade Multifacetada", "Multifaceted Will", "Voluntad multifacética", 6, 63],
+  ["seneschal", "Senescal", "Seneschal", "Senescal", "spiritual_secret", "Segredo Espiritual", "Spiritual Secret", "Secreto espiritual", 6, 64],
+  ["seneschal", "Senescal", "Seneschal", "Senescal", "watcher_on_the_wall", "Vigia no Muro", "Watcher on the Wall", "Vigía en el muro", 8, 64],
+  ["seneschal", "Senescal", "Seneschal", "Senescal", "patrons_whisper", "Sussurro do Patrono", "Patron's Whisper", "Susurro del patrón", 10, 64],
+  ["seneschal", "Senescal", "Seneschal", "Senescal", "unstable_patronage", "Patronato Instável", "Unstable Patronage", "Patronazgo inestable", 14, 64],
+  ["seneschal", "Senescal", "Seneschal", "Senescal", "patron_reborn", "Patrono Renascido", "Patron Reborn", "Patrón renacido", 20, 64],
+  ["vindicator", "Vindicador", "Vindicator", "Vindicador", "interrogate", "Interrogar", "Interrogate", "Interrogar", 6, 65],
+  ["vindicator", "Vindicador", "Vindicator", "Vindicador", "disrupt_opposed_magic", "Romper Magia Oposta", "Disrupt Opposed Magic", "Interrumpir magia opuesta", 8, 65],
+  ["vindicator", "Vindicador", "Vindicator", "Vindicador", "vindicators_judgment", "Julgamento do Vindicador", "Vindicator's Judgment", "Juicio del vindicador", 10, 65],
+  ["vindicator", "Vindicador", "Vindicator", "Vindicador", "call_the_hunt", "Convocar a Caçada", "Call the Hunt", "Llamar a la cacería", 12, 65],
+  ["warrior_of_legend", "Guerreiro da Lenda", "Warrior of Legend", "Guerrero de leyenda", "heroic_defiance", "Desafio Heroico", "Heroic Defiance", "Desafío heroico", 4, 67],
+  ["warrior_of_legend", "Guerreiro da Lenda", "Warrior of Legend", "Guerrero de leyenda", "piercing_doom", "Perfurar o Destino", "Piercing Doom", "Perforar la condena", 8, 67],
+  ["warrior_of_legend", "Guerreiro da Lenda", "Warrior of Legend", "Guerrero de leyenda", "spear_of_doom", "Lança do Destino", "Spear of Doom", "Lanza de la condena", 10, 67],
+  ["warrior_of_legend", "Guerreiro da Lenda", "Warrior of Legend", "Guerrero de leyenda", "know_thy_doom", "Conheça seu Destino", "Know Thy Doom", "Conoce tu condena", 12, 67],
+  ["warrior_of_legend", "Guerreiro da Lenda", "Warrior of Legend", "Guerrero de leyenda", "only_my_doom_may_claim_me", "Somente Meu Destino Pode me Reclamar", "Only My Doom May Claim Me", "Solo mi condena puede reclamarme", 14, 67],
+  ["warrior_of_legend", "Guerreiro da Lenda", "Warrior of Legend", "Guerrero de leyenda", "spear_dancer", "Dançarino da Lança", "Spear Dancer", "Bailarín de la lanza", 6, 67],
+  ["warrior_of_legend", "Guerreiro da Lenda", "Warrior of Legend", "Guerrero de leyenda", "needle_in_the_gods_eyes", "Agulha nos Olhos dos Deuses", "Needle in the Gods' Eyes", "Aguja en los ojos de los dioses", 16, 67],
+  ["warrior_of_legend", "Guerreiro da Lenda", "Warrior of Legend", "Guerrero de leyenda", "razors_edge", "Fio da Navalha", "Razor's Edge", "Filo de la navaja", 18, 67],
+];
+for (const [archetype, ptArchetype, enArchetype, esArchetype, slug, pt, en, es, level, page] of WAR_IMMORTALS_CLASS_ARCHETYPE_FEATS) {
+  const id = `feat.archetype.${archetype}.${slug}`;
+  if ((PF2E_DATA.feats || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.feats.push({
+    id,
+    name: `${pt} (${en})`,
+    names: { "pt-BR": pt, en, es },
+    summaries: {
+      "pt-BR": `Talento do arquétipo ${ptArchetype} para personagens que possuem a dedicação correspondente.`,
+      en: `${enArchetype} archetype feat for characters with the corresponding dedication.`,
+      es: `Dote del arquetipo ${esArchetype} para personajes con la dedicación correspondiente.`,
+    },
+    description: `Talento do arquétipo ${ptArchetype}.`,
+    category: "Arquetipo",
+    type: "Talento",
+    level,
+    archetypeId: `archetype.${archetype}`,
+    prerequisites: [`Dedicação de ${ptArchetype}`],
+    prereq: [`Dedicação de ${ptArchetype}`],
+    traits: ["Arquetipo"],
+    source: { book: WAR_IMMORTALS_SOURCE, page },
+    ruleset: "remaster",
+    needs_review: true,
+  });
+}
+
+// Battlecry!, pp. 14–18: talentos de ancestralidade do Jotunnato.
+const BATTLECRY_JOTUNBORN_FEATS = [
+  ["caretakers_intuition", "Intuição do Cuidador", "Caretaker's Intuition", "Intuición del cuidador", 1, 14],
+  ["caretakers_restoration", "Restauração do Cuidador", "Caretaker's Restoration", "Restauración del cuidador", 1, 14],
+  ["jotunborn_weapon_familiarity", "Familiaridade com Armas Jotunnatas", "Jotunborn Weapon Familiarity", "Familiaridad con armas jotun", 1, 14],
+  ["plane_stepping_dash", "Arrancada entre Planos", "Plane-Stepping Dash", "Embestida entre planos", 1, 14],
+  ["jotuns_eyes", "Olhos de Jotun", "Jotun's Eyes", "Ojos de Jotun", 1, 14],
+  ["jotunborn_grappler", "Agarrador Jotunnato", "Jotunborn Grappler", "Agarrador jotun", 1, 14],
+  ["jotunborn_lore", "Saber Jotunnato", "Jotunborn Lore", "Saber jotun", 1, 14],
+  ["call_the_first_tools", "Convocar as Primeiras Ferramentas", "Call the First Tools", "Llamar a las primeras herramientas", 5, 15],
+  ["jotuns_battle_stance", "Postura de Batalha de Jotun", "Jotun's Battle Stance", "Postura de batalla de Jotun", 5, 15],
+  ["jotuns_grasp", "Agarrão de Jotun", "Jotun's Grasp", "Agarre de Jotun", 5, 15],
+  ["planar_resilience", "Resiliência Planar", "Planar Resilience", "Resiliencia planar", 5, 15],
+  ["pounding_leap", "Salto Poderoso", "Pounding Leap", "Salto contundente", 5, 15],
+  ["build_the_first_walls", "Construir as Primeiras Muralhas", "Build the First Walls", "Construir las primeras murallas", 9, 16],
+  ["iivlars_deflection", "Deflexão de Iivlar", "Iivlar's Deflection", "Desvío del iivlar", 9, 16],
+  ["jotuns_boost", "Impulso de Jotun", "Jotun's Boost", "Impulso de Jotun", 9, 16],
+  ["plane_step", "Passo Planar", "Plane Step", "Paso planar", 9, 16],
+  ["iivlars_boundary_break", "Ruptura da Fronteira de Iivlar", "Iivlar's Boundary Break", "Ruptura del límite del iivlar", 13, 17],
+  ["jotuns_restoration", "Restauração de Jotun", "Jotun's Restoration", "Restauración de Jotun", 13, 17],
+  ["plane_hop", "Salto Planar", "Plane Hop", "Salto planar", 13, 17],
+  ["smoothing_stomp", "Pisada Suavizadora", "Smoothing Stomp", "Pisotón suavizante", 13, 17],
+  ["jotuns_heart", "Coração de Jotun", "Jotun's Heart", "Corazón de Jotun", 17, 18],
+  ["jotuns_transposition", "Transposição de Jotun", "Jotun's Transposition", "Transposición de Jotun", 17, 18],
+  ["planar_traveler", "Viajante Planar", "Planar Traveler", "Viajero planar", 17, 18],
+];
+for (const [slug, pt, en, es, level, page] of BATTLECRY_JOTUNBORN_FEATS) {
+  const id = `feat.ancestry.jotunborn.${slug}`;
+  if ((PF2E_DATA.feats || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.feats.push({
+    id,
+    name: `${pt} (${en})`,
+    names: { "pt-BR": pt, en, es },
+    summaries: {
+      "pt-BR": `Talento de ancestralidade do Jotunnato, nível ${level}.`,
+      en: `Jotunborn ancestry feat, level ${level}.`,
+      es: `Dote de ascendencia jotun, nivel ${level}.`,
+    },
+    description: "Talento de ancestralidade do Jotunnato.",
+    category: "Ancestralidade",
+    type: "Talento",
+    level,
+    ancestryId: "ancestry.jotunborn",
+    traits: ["Jotunnato"],
+    source: { book: BATTLECRY_SOURCE, page },
+    sourceApproximate: true,
+    ruleset: "remaster",
+    needs_review: true,
+  });
+}
+
+// Battlecry!, pp. 52–53: progressão dos arquétipos multiclasse.
+const BATTLECRY_MULTICLASS_FEATS = [
+  ["commander", "Comandante", "Commander", "Comandante", "dedication", "Dedicação", "Dedication", "Dedicación", 2, 52],
+  ["commander", "Comandante", "Commander", "Comandante", "basic_field_training", "Treinamento de Campo Básico", "Basic Field Training", "Entrenamiento de campo básico", 4, 52],
+  ["commander", "Comandante", "Commander", "Comandante", "tactical_excellence", "Excelência Tática", "Tactical Excellence", "Excelencia táctica", 4, 52],
+  ["commander", "Comandante", "Commander", "Comandante", "advanced_field_training", "Treinamento de Campo Avançado", "Advanced Field Training", "Entrenamiento de campo avanzado", 6, 52],
+  ["commander", "Comandante", "Commander", "Comandante", "officers_expertise", "Maestria do Oficial", "Officer's Expertise", "Pericia del oficial", 12, 52],
+  ["commander", "Comandante", "Commander", "Comandante", "officers_mastery", "Maestria Superior do Oficial", "Officer's Mastery", "Maestría del oficial", 18, 52],
+  ["guardian", "Guardião", "Guardian", "Guardián", "dedication", "Dedicação", "Dedication", "Dedicación", 2, 53],
+  ["guardian", "Guardião", "Guardian", "Guardián", "armored_resistance", "Resistência Blindada", "Armored Resistance", "Resistencia blindada", 8, 53],
+  ["guardian", "Guardião", "Guardian", "Guardián", "ironclad_fortitude", "Fortitude de Ferro", "Ironclad Fortitude", "Fortaleza de hierro", 12, 53],
+  ["guardian", "Guardião", "Guardian", "Guardián", "basic_defender", "Defensor Básico", "Basic Defender", "Defensor básico", 4, 53],
+  ["guardian", "Guardião", "Guardian", "Guardián", "guardian_resiliency", "Resiliência de Guardião", "Guardian Resiliency", "Resiliencia del guardián", 4, 53],
+  ["guardian", "Guardião", "Guardian", "Guardián", "advanced_defender", "Defensor Avançado", "Advanced Defender", "Defensor avanzado", 6, 53],
+  ["guardian", "Guardião", "Guardian", "Guardián", "guardians_intercept", "Interceptação do Guardião", "Guardian's Intercept", "Intercepción del guardián", 6, 53],
+];
+for (const [archetype, ptArchetype, enArchetype, esArchetype, slug, pt, en, es, level, page] of BATTLECRY_MULTICLASS_FEATS) {
+  const id = `feat.archetype.${archetype}_multiclass.${slug}`;
+  if ((PF2E_DATA.feats || []).some((record) => record.id === id)) continue;
+  const dedicationLabel = `Dedicação de ${ptArchetype}`;
+  PF2E_DATA.feats.push({
+    id,
+    name: `${pt} (${en})`,
+    names: { "pt-BR": pt, en, es },
+    summaries: {
+      "pt-BR": `Talento do arquétipo multiclasse de ${ptArchetype}, nível ${level}.`,
+      en: `${enArchetype} multiclass archetype feat, level ${level}.`,
+      es: `Dote del arquetipo multiclase de ${esArchetype}, nivel ${level}.`,
+    },
+    description: `Talento do arquétipo multiclasse de ${ptArchetype}.`,
+    category: "Arquetipo",
+    type: "Talento",
+    level,
+    archetypeId: `archetype.${archetype}_multiclass`,
+    prerequisites: slug === "dedication" ? [`Classe ${ptArchetype}`] : [dedicationLabel],
+    prereq: slug === "dedication" ? [`Classe ${ptArchetype}`] : [dedicationLabel],
+    traits: ["Arquetipo", "Multiclasse"],
+    source: { book: BATTLECRY_SOURCE, page },
+    sourceApproximate: true,
+    ruleset: "remaster",
+    needs_review: true,
+  });
+}
+
+// Battlecry!, pp. 25–35: talentos de classe do Comandante.
+const BATTLECRY_COMMANDER_FEATS = [
+  ["armored_regiment_training", "Treinamento de Regimento Blindado", "Armored Regiment Training", "Entrenamiento de regimiento blindado", 1, 25],
+  ["combat_assessment", "Avaliação de Combate", "Combat Assessment", "Evaluación de combate", 1, 25],
+  ["commanders_companion", "Companheiro do Comandante", "Commander's Companion", "Compañero del comandante", 1, 25],
+  ["deceptive_tactics", "Táticas Enganosas", "Deceptive Tactics", "Tácticas engañosas", 1, 25],
+  ["officers_medical_training", "Treinamento Médico do Oficial", "Officer's Medical Training", "Entrenamiento médico del oficial", 1, 25],
+  ["plant_banner", "Plantar Estandarte", "Plant Banner", "Plantar estandarte", 1, 25],
+  ["adaptive_stratagem", "Estratagema Adaptável", "Adaptive Stratagem", "Estratagema adaptable", 2, 27],
+  ["defensive_swap", "Troca Defensiva", "Defensive Swap", "Intercambio defensivo", 2, 27],
+  ["guiding_shot", "Disparo Orientador", "Guiding Shot", "Disparo guiado", 2, 27],
+  ["rapid_assessment", "Avaliação Rápida", "Rapid Assessment", "Evaluación rápida", 2, 27],
+  ["set_up_strike", "Preparar Golpe", "Set-Up Strike", "Preparar golpe", 2, 27],
+  ["tactical_expansion", "Expansão Tática", "Tactical Expansion", "Expansión táctica", 2, 27],
+  ["banners_inspiration", "Inspiração do Estandarte", "Banner's Inspiration", "Inspiración del estandarte", 4, 29],
+  ["banner_twirl", "Giro do Estandarte", "Banner Twirl", "Giro del estandarte", 4, 29],
+  ["observational_analysis", "Análise Observacional", "Observational Analysis", "Análisis observacional", 4, 29],
+  ["shielded_recovery", "Recuperação Protegida", "Shielded Recovery", "Recuperación protegida", 4, 29],
+  ["unsteadying_strike", "Golpe Desequilibrante", "Unsteadying Strike", "Golpe desequilibrante", 4, 29],
+  ["battle_tested_companion", "Companheiro Testado em Batalha", "Battle-Tested Companion", "Compañero curtido en batalla", 6, 31],
+  ["claim_the_field", "Reivindicar o Campo", "Claim the Field", "Reclamar el campo", 6, 31],
+  ["efficient_preparation", "Preparação Eficiente", "Efficient Preparation", "Preparación eficiente", 6, 31],
+  ["reactive_strike", "Golpe Reativo", "Reactive Strike", "Golpe reactivo", 6, 31],
+  ["shield_warden", "Guardião do Escudo", "Shield Warden", "Guardián del escudo", 6, 31],
+  ["defiant_banner", "Estandarte Desafiador", "Defiant Banner", "Estandarte desafiante", 8, 33],
+  ["officers_education", "Educação do Oficial", "Officer's Education", "Educación del oficial", 8, 33],
+  ["rallying_banner", "Estandarte de Reagrupamento", "Rallying Banner", "Estandarte de reagrupamiento", 8, 33],
+  ["unrivaled_analysis", "Análise Inigualável", "Unrivaled Analysis", "Análisis inigualable", 8, 33],
+  ["drilled_reflexes", "Reflexos Treinados", "Drilled Reflexes", "Reflejos entrenados", 10, 34],
+  ["standard_bearers_sacrifice", "Sacrifício do Porta-Estandarte", "Standard-Bearer's Sacrifice", "Sacrificio del portaestandarte", 10, 34],
+  ["targeting_strike", "Golpe de Mira", "Targeting Strike", "Golpe de puntería", 10, 34],
+  ["fortunate_blow", "Golpe Afortunado", "Fortunate Blow", "Golpe afortunado", 12, 35],
+  ["perfected_evaluations", "Avaliações Aperfeiçoadas", "Perfected Evaluations", "Evaluaciones perfeccionadas", 12, 35],
+  ["reactive_interference", "Interferência Reativa", "Reactive Interference", "Interferencia reactiva", 12, 35],
+  ["contact_with_the_enemy", "Contato com o Inimigo", "Contact with the Enemy", "Contacto con el enemigo", 14, 35],
+  ["desperate_resuscitation", "Ressuscitação Desesperada", "Desperate Resuscitation", "Reanimación desesperada", 14, 35],
+  ["quickening_banner", "Estandarte Acelerador", "Quickening Banner", "Estandarte acelerador", 14, 35],
+  ["confusing_commands", "Comandos Confusos", "Confusing Commands", "Órdenes confusas", 16, 35],
+  ["mercenary_reversal", "Reversão Mercenária", "Mercenary Reversal", "Reversión mercenaria", 18, 35],
+  ["demand_surrender", "Exigir Rendição", "Demand Surrender", "Exigir rendición", 18, 35],
+  ["glorious_banner", "Estandarte Glorioso", "Glorious Banner", "Estandarte glorioso", 20, 35],
+  ["pennant_of_victory", "Pendente da Vitória", "Pennant of Victory", "Pendón de la victoria", 20, 35],
+];
+for (const [slug, pt, en, es, level, page] of BATTLECRY_COMMANDER_FEATS) {
+  const id = `feat.class.commander.${slug}`;
+  if ((PF2E_DATA.feats || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.feats.push({
+    id,
+    name: `${pt} (${en})`,
+    names: { "pt-BR": pt, en, es },
+    summaries: {
+      "pt-BR": `Talento de classe do Comandante, nível ${level}.`,
+      en: `Commander class feat, level ${level}.`,
+      es: `Dote de clase de Comandante, nivel ${level}.`,
+    },
+    description: "Talento de classe do Comandante.",
+    category: "Classe",
+    type: "Talento",
+    level,
+    classId: "class.commander",
+    traits: ["Comandante"],
+    source: { book: BATTLECRY_SOURCE, page },
+    sourceApproximate: true,
+    ruleset: "remaster",
+    needs_review: true,
+  });
+}
+
+// Battlecry!, pp. 41–51: talentos de classe do Guardião.
+const BATTLECRY_GUARDIAN_FEATS = [
+  ["bodyguard", "Guarda-Costas", "Bodyguard", "Guardaespaldas", 1, 41],
+  ["defensive_advance", "Avanço Defensivo", "Defensive Advance", "Avance defensivo", 1, 41],
+  ["larger_than_life", "Maior que a Vida", "Larger than Life", "Más grande que la vida", 1, 41],
+  ["reactive_shield", "Escudo Reativo", "Reactive Shield", "Escudo reactivo", 1, 41],
+  ["long_distance_taunt", "Provocação de Longa Distância", "Long-Distance Taunt", "Provocación a larga distancia", 1, 41],
+  ["punishing_shove", "Empurrão Punitivo", "Punishing Shove", "Empujón punitivo", 1, 41],
+  ["shield_warfare", "Guerra de Escudo", "Shield Warfare", "Guerra con escudo", 1, 41],
+  ["shoulder_check", "Trombada", "Shoulder Check", "Golpe de hombro", 1, 41],
+  ["aggressive_block", "Bloqueio Agressivo", "Aggressive Block", "Bloqueo agresivo", 2, 42],
+  ["covering_stance", "Postura de Cobertura", "Covering Stance", "Postura de cobertura", 2, 42],
+  ["hampering_stance", "Postura Impeditiva", "Hampering Stance", "Postura entorpecedora", 2, 42],
+  ["phalanx_formation", "Formação de Falange", "Phalanx Formation", "Formación de falange", 2, 42],
+  ["raise_haft", "Erguer o Cabo", "Raise Haft", "Alzar el asta", 2, 42],
+  ["shield_your_eyes", "Proteja seus Olhos", "Shield Your Eyes", "Protege tus ojos", 2, 42],
+  ["shielding_taunt", "Provocação Protetora", "Shielding Taunt", "Provocación protectora", 2, 42],
+  ["taunting_strike", "Golpe Provocador", "Taunting Strike", "Golpe provocador", 2, 42],
+  ["area_armor", "Armadura de Área", "Area Armor", "Armadura de área", 4, 44],
+  ["armored_courage", "Coragem Blindada", "Armored Courage", "Coraje blindado", 4, 44],
+  ["energy_interceptor", "Interceptor de Energia", "Energy Interceptor", "Interceptor de energía", 4, 44],
+  ["flying_tackle", "Agarrão Voador", "Flying Tackle", "Placaje volador", 4, 44],
+  ["not_so_fast", "Nem Tão Rápido!", "Not So Fast!", "¡No tan rápido!", 4, 44],
+  ["proud_nail", "Prego Orgulhoso", "Proud Nail", "Clavo orgulloso", 4, 44],
+  ["shielded_attrition", "Desgaste Protegido", "Shielded Attrition", "Desgaste protegido", 4, 44],
+  ["disarming_intercept", "Interceptação Desarmadora", "Disarming Intercept", "Intercepción desarmadora", 6, 46],
+  ["guarded_advance", "Avanço Guardado", "Guarded Advance", "Avance protegido", 6, 46],
+  ["lock_down", "Conter", "Lock Down", "Bloquear", 6, 46],
+  ["reactive_strike", "Golpe Reativo", "Reactive Strike", "Golpe reactivo", 6, 46],
+  ["reflexive_shield", "Escudo Reflexivo", "Reflexive Shield", "Escudo reflexivo", 6, 46],
+  ["retaliating_rescue", "Resgate Retaliatório", "Retaliating Rescue", "Rescate retaliatorio", 6, 46],
+  ["ring_their_bell", "Fazer Soar o Sino", "Ring Their Bell", "Hacer sonar su campana", 6, 46],
+  ["stomp_ground", "Bater o Pé no Chão", "Stomp Ground", "Pisar fuerte", 6, 46],
+  ["shield_wallop", "Pancada de Escudo", "Shield Wallop", "Golpe de escudo", 8, 48],
+  ["group_taunt", "Provocação em Grupo", "Group Taunt", "Provocación grupal", 8, 48],
+  ["juggernaut_charge", "Investida do Colosso", "Juggernaut Charge", "Carga del ariete", 8, 48],
+  ["mighty_bulwark", "Baluarte Poderoso", "Mighty Bulwark", "Baluarte poderoso", 8, 48],
+  ["repositioning_block", "Bloqueio de Reposicionamento", "Repositioning Block", "Bloqueo de reposicionamiento", 8, 48],
+  ["shield_from_arrows", "Escudo contra Flechas", "Shield from Arrows", "Escudo contra flechas", 8, 48],
+  ["belly_flop", "Barrigada", "Belly Flop", "Plancha", 10, 49],
+  ["get_behind_me", "Fique Atrás de Mim!", "Get Behind Me!", "¡Ponte detrás de mí!", 10, 49],
+  ["momentum_strike", "Golpe de Ímpeto", "Momentum Strike", "Golpe de impulso", 10, 49],
+  ["shield_salvation", "Salvação do Escudo", "Shield Salvation", "Salvación del escudo", 10, 49],
+  ["sure_footed", "Pés Firmes", "Sure-Footed", "De pies firmes", 10, 49],
+  ["tough_cookie", "Durão", "Tough Cookie", "Tipo duro", 10, 49],
+  ["armor_break", "Rompedor de Armadura", "Armor Break", "Romper armadura", 12, 50],
+  ["armored_counterattack", "Contra-Ataque Blindado", "Armored Counterattack", "Contraataque blindado", 12, 50],
+  ["right_where_you_want_them", "Exatamente Onde Você Quer", "Right Where You Want Them", "Justo donde los quieres", 12, 50],
+  ["scattering_charge", "Investida Dispersora", "Scattering Charge", "Carga dispersora", 12, 50],
+  ["weakening_assault", "Assalto Enfraquecedor", "Weakening Assault", "Asalto debilitante", 12, 50],
+  ["devastating_shield_wallop", "Pancada de Escudo Devastadora", "Devastating Shield Wallop", "Golpe de escudo devastador", 12, 50],
+  ["paragons_guard", "Guarda do Paragon", "Paragon's Guard", "Guardia del parangón", 12, 50],
+  ["blanket_defense", "Defesa Abrangente", "Blanket Defense", "Defensa general", 14, 51],
+  ["bloody_denial", "Negação Sangrenta", "Bloody Denial", "Negación sangrienta", 14, 51],
+  ["keep_up_the_good_fight", "Continue a Boa Luta", "Keep Up the Good Fight", "Sigue con la buena lucha", 14, 51],
+  ["opening_stance", "Postura de Abertura", "Opening Stance", "Postura de apertura", 14, 51],
+  ["clang", "Clang!", "Clang!", "¡Clang!", 16, 51],
+  ["clobber", "Esmagar", "Clobber", "Aporrear", 16, 51],
+  ["improved_reflexive_shield", "Escudo Reflexivo Aprimorado", "Improved Reflexive Shield", "Escudo reflexivo mejorado", 16, 51],
+  ["never", "Nunca!", "Never!", "¡Nunca!", 16, 51],
+  ["demolish_defenses", "Demolir Defesas", "Demolish Defenses", "Demoler defensas", 18, 51],
+  ["perfect_protection", "Proteção Perfeita", "Perfect Protection", "Protección perfecta", 18, 51],
+  ["quick_vengeance", "Vingança Rápida", "Quick Vengeance", "Venganza rápida", 18, 51],
+  ["shield_from_spells", "Escudo contra Magias", "Shield from Spells", "Escudo contra conjuros", 18, 51],
+  ["boundless_reprisal", "Retaliações sem Limite", "Boundless Reprisals", "Represalias ilimitadas", 20, 51],
+  ["great_shield_mastery", "Maestria do Grande Escudo", "Great Shield Mastery", "Maestría del gran escudo", 20, 51],
+  ["unyielding_force", "Força Inabalável", "Unyielding Force", "Fuerza inquebrantable", 20, 51],
+];
+for (const [slug, pt, en, es, level, page] of BATTLECRY_GUARDIAN_FEATS) {
+  const id = `feat.class.guardian.${slug}`;
+  if ((PF2E_DATA.feats || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.feats.push({
+    id,
+    name: `${pt} (${en})`,
+    names: { "pt-BR": pt, en, es },
+    summaries: {
+      "pt-BR": `Talento de classe do Guardião, nível ${level}.`,
+      en: `Guardian class feat, level ${level}.`,
+      es: `Dote de clase de Guardián, nivel ${level}.`,
+    },
+    description: "Talento de classe do Guardião.",
+    category: "Classe",
+    type: "Talento",
+    level,
+    classId: "class.guardian",
+    traits: ["Guardião"],
+    source: { book: BATTLECRY_SOURCE, page },
+    sourceApproximate: true,
+    ruleset: "remaster",
+    needs_review: true,
+  });
+}
+
+// Battlecry!, p. 118: armas e equipamento mundanos do capítulo Armory.
+const BATTLECRY_EQUIPMENT = [
+  ["battle_lute", "Lute de Batalha", "Battle Lute", "Laúd de batalla", "1d4", "Contundente", 1, "7 PO", "Simples"],
+  ["fauchard", "Fauchard", "Fauchard", "Fauchard", "1d8", "Cortante", 2, "1 PO 4 PP", "Marcial"],
+  ["gaff", "Gancho", "Gaff", "Garfio", "1d6", "Impacto", 1, "1 PO", "Marcial"],
+  ["scourge", "Chicote de Nós", "Scourge", "Azote", "1d4", "Cortante", 1, "1 PP", "Marcial"],
+  ["bladed_gauntlet", "Manopla Lâmina", "Bladed Gauntlet", "Guantelete afilado", "1d4", "Cortante", "L", "5 PO", "Marcial"],
+  ["lion_scythe", "Foice do Leão", "Lion Scythe", "Guadaña de león", "1d6", "Cortante", "L", "1 PO", "Marcial"],
+  ["war_lance", "Lança de Guerra", "War Lance", "Lanza de guerra", "1d8", "Perfurante", 2, "4 PO", "Marcial"],
+  ["aldori_dueling_sword", "Espada de Duelo Aldori", "Aldori Dueling Sword", "Espada de duelo aldori", "1d8", "Cortante", 1, "2 PO", "Avançada"],
+  ["bladesweeper", "Varredor de Lâminas", "Bladesweeper", "Barrid hojas", "1d10", "Cortante", 2, "4 PO", "Avançada"],
+  ["maul_spade", "Pá-Malho", "Maul-Spade", "Pala-mazo", "1d10", "Impacto", 2, "6 PO", "Avançada"],
+  ["gauntlet_bow", "Arco de Manopla", "Gauntlet Bow", "Arco de guantelete", "1d4", "Perfurante", 1, "9 PO", "Marcial"],
+  ["repeating_hand_crossbow", "Besta de Mão Repetidora", "Repeating Hand Crossbow", "Ballesta de mano repetidora", "1d6", "Perfurante", "L", "10 PO", "Avançada"],
+];
+for (const [slug, pt, en, es, damage, damageType, bulk, price, category] of BATTLECRY_EQUIPMENT) {
+  const id = `weapon.battlecry.${slug}`;
+  if ((PF2E_DATA.weapons || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.weapons.push({
+    id,
+    name: `${pt} (${en})`,
+    names: { "pt-BR": pt, en, es },
+    summaries: {
+      "pt-BR": `Arma de Battlecry!, dano ${damage}, categoria ${category}.`,
+      en: `Battlecry! weapon, ${damage} damage, ${category} category.`,
+      es: `Arma de Battlecry!, daño ${damage}, categoría ${category}.`,
+    },
+    description: `Arma mundana de Battlecry!, dano ${damage}.`,
+    category,
+    damage,
+    damageType,
+    bulk,
+    price,
+    level: 0,
+    source: { book: BATTLECRY_SOURCE, page: 118 },
+    sourceApproximate: true,
+    ruleset: "remaster",
+    needs_review: true,
+  });
+}
+const BATTLECRY_GEAR = [
+  ["repeater_bandolier", "Bandoleira de Repetidor", "Repeater Bandolier", "Bandolera de repetidor", "1 PO", "L"],
+  ["war_saddle", "Sela de Guerra", "War Saddle", "Silla de guerra", "50 PO", 1],
+];
+for (const [slug, pt, en, es, price, bulk] of BATTLECRY_GEAR) {
+  const id = `item.battlecry.${slug}`;
+  if ((PF2E_DATA.items || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.items.push({
+    id,
+    name: `${pt} (${en})`,
+    names: { "pt-BR": pt, en, es },
+    summaries: {
+      "pt-BR": `Equipamento de Battlecry!, preço ${price}.`,
+      en: `Battlecry! equipment, price ${price}.`,
+      es: `Equipo de Battlecry!, precio ${price}.`,
+    },
+    description: "Equipamento mundano de Battlecry!.",
+    category: "Equipamento",
+    price,
+    bulk,
+    level: 0,
+    source: { book: BATTLECRY_SOURCE, page: 118 },
+    sourceApproximate: true,
+    ruleset: "remaster",
+    needs_review: true,
+  });
+}
+
+// Battlecry!, pp. 120–125 e 132: índices das tabelas mágicas do armorial.
+const BATTLECRY_MAGIC_ARMOR = [
+  ["alkenstar_phalanx", "Falange de Alkenstar", "Alkenstar Phalanx", "Falange de Alkenstar", 14],
+  ["ankhrav_carapace", "Carapaça de Ankhrav", "Ankhrav Carapace", "Caparazón de ankhrav", 7],
+  ["autoload_leathers", "Couros de Autocarregamento", "Autoload Leathers", "Cueros de autocarga", 9],
+  ["balloon_padding", "Acolchoamento de Balão", "Balloon Padding", "Acolchado de globo", 8],
+  ["bismuth_armor", "Armadura de Bismuto", "Bismuth Armor", "Armadura de bismuto", 13],
+  ["buoyant_buckle", "Fivela Flutuante", "Buoyant Buckle", "Hebilla flotante", 6],
+  ["command_cuirass", "Couraça de Comando", "Command Cuirass", "Coraza de mando", 8],
+  ["crafting_leathers", "Couros de Ofício", "Crafting Leathers", "Cueros de artesanía", 5],
+  ["deep_pockets", "Bolsos Profundos", "Deep Pockets", "Bolsillos profundos", 6],
+  ["deep_sea_plate", "Placas do Mar Profundo", "Deep Sea Plate", "Placas de las profundidades", 8],
+  ["eagle_wing", "Asa de Águia", "Eagle Wing", "Ala de águila", 10],
+  ["frost_furs", "Peles de Geada", "Frost Furs", "Pieles de escarcha", 14],
+  ["grisly_brigandine", "Brigandina Macabra", "Grisly Brigandine", "Brigandina macabra", 12],
+  ["incendiary_plate", "Placas Incendiárias", "Incendiary Plate", "Placas incendiarias", 20],
+  ["juggernaut_plate", "Placas do Colosso", "Juggernaut Plate", "Placas del ariete", 19],
+  ["lifting_leather", "Couro de Levantamento", "Lifting Leather", "Cuero de levantamiento", 8],
+  ["locust_leather", "Couro de Gafanhoto", "Locust Leather", "Cuero de langosta", 8],
+  ["message_mail", "Malha de Mensagem", "Message Mail", "Malla de mensajes", 8],
+  ["shadow_shroud", "Sudário de Sombras", "Shadow Shroud", "Sudario de sombras", 10],
+  ["thunder_mail", "Malha do Trovão", "Thunder Mail", "Malla del trueno", 15],
+  ["umbral_armor", "Armadura Umbral", "Umbral Armor", "Armadura umbría", 10],
+  ["wilderness_weave", "Trama dos Ermos", "Wilderness Weave", "Tejido de la espesura", 5],
+];
+for (const [slug, pt, en, es, level] of BATTLECRY_MAGIC_ARMOR) {
+  const id = `armor.battlecry.${slug}`;
+  if ((PF2E_DATA.armors || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.armors.push({
+    id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es },
+    summaries: { "pt-BR": `Armadura mágica de Battlecry!, nível ${level}.`, en: `Battlecry! magic armor, level ${level}.`, es: `Armadura mágica de Battlecry!, nivel ${level}.` },
+    description: "Armadura mágica de Battlecry!; efeito detalhado pendente de revisão.", category: "Armadura Mágica", level,
+    source: { book: BATTLECRY_SOURCE, page: 120 }, sourceApproximate: true, ruleset: "remaster", needs_review: true,
+  });
+}
+const BATTLECRY_MAGIC_SHIELDS = [
+  ["bivouac_targe", "Broquel de Bivaque", "Bivouac Targe", "Rodela de vivac", 2],
+  ["dragon_shield", "Escudo de Dragão", "Dragon Shield", "Escudo de dragón", 13],
+  ["energized_shield", "Escudo Energizado", "Energized Shield", "Escudo energizado", 7],
+  ["medics_shield", "Escudo do Médico", "Medic's Shield", "Escudo del médico", 14],
+  ["siege_shield", "Escudo de Cerco", "Siege Shield", "Escudo de asedio", 3],
+  ["sun_slayer", "Matador do Sol", "Sun Slayer", "Asolador del sol", 10],
+  ["testudo_shield", "Escudo Testudo", "Testudo Shield", "Escudo testudo", 5],
+  ["tiger_shield", "Escudo do Tigre", "Tiger Shield", "Escudo del tigre", 5],
+  ["vambrace_of_gorum", "Vambrace de Gorum", "Vambrace of Gorum", "Brazal de Gorum", 20],
+  ["vanguards_shield", "Escudo da Vanguarda", "Vanguard's Shield", "Escudo de la vanguardia", 13],
+];
+for (const [slug, pt, en, es, level] of BATTLECRY_MAGIC_SHIELDS) {
+  const id = `shield.battlecry.${slug}`;
+  if ((PF2E_DATA.shields || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.shields.push({
+    id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es },
+    summaries: { "pt-BR": `Escudo mágico de Battlecry!, nível ${level}.`, en: `Battlecry! magic shield, level ${level}.`, es: `Escudo mágico de Battlecry!, nivel ${level}.` },
+    description: "Escudo mágico de Battlecry!; efeito detalhado pendente de revisão.", category: "Escudo Mágico", level,
+    source: { book: BATTLECRY_SOURCE, page: 124 }, sourceApproximate: true, ruleset: "remaster", needs_review: true,
+  });
+}
+const BATTLECRY_MAGIC_AMMUNITION = [
+  ["battering_ammunition", "Munição Impactante", "Battering Ammunition", "Munición contundente", 4],
+  ["burrowing_bolt", "Virote Escavador", "Burrowing Bolt", "Virote excavador", 7],
+  ["buoyant_shot", "Disparo Flutuante", "Buoyant Shot", "Disparo flotante", 5],
+  ["calling_stone", "Pedra Chamadora", "Calling Stone", "Piedra llamadora", 7],
+  ["extinguishing_ball", "Bola Extintora", "Extinguishing Ball", "Bola extintora", 8],
+  ["flooding_bolt", "Virote Inundante", "Flooding Bolt", "Virote inundador", 8],
+  ["infesting_shot", "Disparo Infestante", "Infesting Shot", "Disparo infestante", 10],
+  ["miring_round", "Projétil Lamacento", "Miring Round", "Proyectil fangoso", 7],
+  ["preserving_shot", "Disparo Preservador", "Preserving Shot", "Disparo preservador", 1],
+  ["scouting_arrow", "Flecha de Reconhecimento", "Scouting Arrow", "Flecha de exploración", 8],
+];
+for (const [slug, pt, en, es, level] of BATTLECRY_MAGIC_AMMUNITION) {
+  const id = `item.battlecry.${slug}`;
+  if ((PF2E_DATA.items || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.items.push({
+    id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es },
+    summaries: { "pt-BR": `Munição mágica de Battlecry!, nível ${level}.`, en: `Battlecry! magic ammunition, level ${level}.`, es: `Munición mágica de Battlecry!, nivel ${level}.` },
+    description: "Munição mágica de Battlecry!; efeito detalhado pendente de revisão.", category: "Munição Mágica", level,
+    source: { book: BATTLECRY_SOURCE, page: 132 }, sourceApproximate: true, ruleset: "remaster", needs_review: true,
+  });
+}
+const BATTLECRY_MAGIC_WEAPONS = [
+  ["belkzen_deadsmasher", "Esmagador de Mortos de Belkzen", "Belkzen Deadsmasher", "Destrozamuertos de Belkzen", 13],
+  ["cavalry_commanders_lance", "Lança do Comandante de Cavalaria", "Cavalry Commander's Lance", "Lanza del comandante de caballería", 6],
+  ["chain_of_command", "Cadeia de Comando", "Chain of Command", "Cadena de mando", 6],
+  ["chainbreaker", "Quebra-Correntes", "Chainbreaker", "Rompecadenas", 5],
+  ["dazzling_shortbow", "Arco Curto Deslumbrante", "Dazzling Shortbow", "Arco corto deslumbrante", 5],
+  ["doomsweeper", "Varredor do Destino", "Doomsweeper", "Barredor de la condena", 8],
+  ["draddeths_edge", "Fio de Draddeth", "Draddeth's Edge", "Filo de Draddeth", 16],
+  ["final_stand", "Última Resistência", "Final Stand", "Última resistencia", 17],
+  ["generals_word", "Palavra do General", "General's Word", "Palabra del general", 14],
+  ["gravediggers_call", "Chamado do Coveiro", "Gravedigger's Call", "Llamada del sepulturero", 12],
+  ["hells_judgment", "Julgamento do Inferno", "Hell's Judgment", "Juicio del infierno", 16],
+  ["horselords_longbow", "Arco Longo do Senhor dos Cavalos", "Horselord's Longbow", "Arco largo del señor de los caballos", 6],
+  ["jistkan_colossus_crusher", "Esmagador de Colossos Jistkan", "Jistkan Colossus Crusher", "Trituracolosos jistkan", 15],
+  ["jistkan_war_crossbow", "Besta de Guerra Jistkan", "Jistkan War Crossbow", "Ballesta de guerra jistkan", 18],
+  ["kithrender", "Rasgador de Kith", "Kithrender", "Desgarrakith", 16],
+  ["lamentation_of_the_faithless", "Lamento dos Sem-Fé", "Lamentation of the Faithless", "Lamento de los sin fe", 25],
+  ["last_hope", "Última Esperança", "Last Hope", "Última esperanza", 16],
+  ["mageslayer", "Matamagos", "Mageslayer", "Matahechiceros", 8],
+  ["radiant_victory", "Vitória Radiante", "Radiant Victory", "Victoria radiante", 6],
+  ["reapers_toll", "Ceifa do Ceifador", "Reaper's Toll", "Peaje del segador", 15],
+  ["revenant_blade", "Lâmina Revenante", "Revenant Blade", "Hoja revenante", 10],
+  ["righteous_fury", "Fúria Justa", "Righteous Fury", "Furia justa", 15],
+  ["talonstrike_blade", "Lâmina Golpe-Garra", "Talonstrike Blade", "Hoja golpegarra", 12],
+  ["undead_scourge", "Flagelo dos Mortos-Vivos", "Undead Scourge", "Azote de muertos vivientes", 7],
+  ["ulfen_shieldbreaker", "Quebra-Escudos Ulfen", "Ulfen Shieldbreaker", "Rompeescudos ulfen", 6],
+];
+for (const [slug, pt, en, es, level] of BATTLECRY_MAGIC_WEAPONS) {
+  const id = `weapon.battlecry.${slug}`;
+  if ((PF2E_DATA.weapons || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.weapons.push({
+    id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es },
+    summaries: { "pt-BR": `Arma mágica de Battlecry!, nível ${level}.`, en: `Battlecry! magic weapon, level ${level}.`, es: `Arma mágica de Battlecry!, nivel ${level}.` },
+    description: "Arma mágica de Battlecry!; efeito detalhado pendente de revisão.", category: "Arma Mágica", level,
+    source: { book: BATTLECRY_SOURCE, page: 126 }, sourceApproximate: true, ruleset: "remaster", needs_review: true,
+  });
+}
+
+// War of Immortals, pp. 146–147: Storied Equipment.
+// The table statistics are indexed here; descriptive special rules remain under review.
+const WAR_IMMORTALS_STORIED_ARMOR = [
+  ["kilted_breastplate", "Peitoral com Kilt", "Kilted Breastplate", "Coraza con faldón", 1, 2, 3, -1, 1, "plate", ["flexible"]],
+  ["rattan_armor", "Armadura de Rattan", "Rattan Armor", "Armadura de ratán", 1, 1, 4, -1, 0, "wood", ["aquadynamic"]],
+  ["sankeit", "Sankeit", "Sankeit", "Sankeit", 1, 2, 3, -1, 1, "wood", ["laminar"]],
+  ["lattice_armor", "Armadura de Treliça", "Lattice Armor", "Armadura de celosía", 2, 4, 1, -2, 3, "chain", ["skeletal", "laminar"]],
+  ["niyah_at", "Niyah’at", "Niyah’at", "Niyah’at", 2, 3, 2, -2, 2, "skeletal", ["laminar"]],
+];
+for (const [slug, pt, en, es, level, ac, dexCap, checkPenalty, strength, group, traits] of WAR_IMMORTALS_STORIED_ARMOR) {
+  const id = `armor.war_immortals.${slug}`;
+  if ((PF2E_DATA.armors || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.armors.push({
+    id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es },
+    summaries: { "pt-BR": `Armadura de War of Immortals, nível ${level}.`, en: `War of Immortals armor, level ${level}.`, es: `Armadura de War of Immortals, nivel ${level}.` },
+    description: "Armadura Storied Equipment; regras especiais e preço individual pendentes de revisão.", category: "Armadura", level, ac, dexCap, checkPenalty, strength, group, traits,
+    source: { book: WAR_IMMORTALS_SOURCE, page: 146 }, sourceApproximate: true, ruleset: "remaster", needs_review: true,
+  });
+}
+
+const WAR_IMMORTALS_STORIED_WEAPONS = [
+  ["fighting_oar", "Remo de Combate", "Fighting Oar", "Rema de combate", 1, "1d8", "B", 2, 2, "polearm", ["sweep", "versatile S"]],
+  ["palstave", "Palstave", "Palstave", "Palstave", 1, "1d6", "S", 1, 1, "axe", ["sweep"]],
+  ["war_gavel", "Malho de Guerra", "War Gavel", "Martillo de guerra", 1, "1d6", "B", 1, 1, "club", ["versatile P"]],
+  ["combat_fishing_pole", "Vara de Pesca de Combate", "Combat Fishing Pole", "Caña de pesca de combate", 1, "1d6", "B", 1, 2, "club", ["backswing", "versatile B"]],
+  ["gladius", "Gládio", "Gladius", "Gladius", 1, "1d6", "P", 1, 1, "sword", ["deadly d10", "versatile S"]],
+  ["macuahuitl", "Macuahuitl", "Macuahuitl", "Macuahuitl", 1, "1d8", "S", 1, 2, "club", ["backswing", "tearing", "versatile B"]],
+  ["war_javelin", "Azagaia de Guerra", "War Javelin", "Jabalina de guerra", 1, "1d6", "P", 1, 1, "dart", ["tethered", "thrown 30 ft."]],
+  ["kestros", "Kestros", "Kestros", "Kestros", 1, "1d6", "P", 1, 1, "sling", ["concussive", "propulsive"]],
+];
+for (const [slug, pt, en, es, level, damage, damageType, bulk, hands, group, traits] of WAR_IMMORTALS_STORIED_WEAPONS) {
+  const id = `weapon.war_immortals.${slug}`;
+  if ((PF2E_DATA.weapons || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.weapons.push({
+    id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es },
+    summaries: { "pt-BR": `Arma Storied Equipment de War of Immortals, nível ${level}.`, en: `War of Immortals Storied Equipment weapon, level ${level}.`, es: `Arma Storied Equipment de War of Immortals, nivel ${level}.` },
+    description: "Arma Storied Equipment; regras especiais, preço e munição associada pendentes de revisão.", category: "Arma", level, damage, damageType, bulk, hands, group, traits,
+    source: { book: WAR_IMMORTALS_SOURCE, page: 147 }, sourceApproximate: true, ruleset: "remaster", needs_review: true,
+  });
+}
+
+const warFightingLureId = "item.war_immortals.fishing_lure";
+if (!(PF2E_DATA.items || []).some((record) => record.id === warFightingLureId)) {
+  PF2E_DATA.items.push({
+    id: warFightingLureId, name: "Isca de Pesca (Fishing Lure)", names: { "pt-BR": "Isca de Pesca", en: "Fishing Lure", es: "Señuelo de pesca" },
+    summaries: { "pt-BR": "Acessório de Vara de Pesca de Combate, nível 1.", en: "Combat fishing pole accessory, level 1.", es: "Accesorio de caña de pesca de combate, nivel 1." },
+    description: "Acessório para a Vara de Pesca de Combate; efeitos detalhados pendentes de revisão.", category: "Equipamento", level: 1, bulk: "L", traits: ["tethered", "thrown 20 ft."],
+    source: { book: WAR_IMMORTALS_SOURCE, page: 147 }, sourceApproximate: true, ruleset: "remaster", needs_review: true,
+  });
+}
+
+// War of Immortals, pp. 154–157: Mythic Spells index.
+const WAR_IMMORTALS_MYTHIC_SPELLS = [
+  ["rainbows_end", "Fim do Arco-Íris", "Rainbow's End", "Al final del arcoíris", 1, 156],
+  ["banishing_touch", "Toque de Banimento", "Banishing Touch", "Toque desterrador", 2, 154],
+  ["perceive_threads_of_fate", "Perceber os Fios do Destino", "Perceive the Threads of Fate", "Percibir los hilos del destino", 3, 155],
+  ["it_is_written", "Está Escrito", "It Is Written", "Está escrito", 4, 155],
+  ["tricksters_feathers", "Penas do Trapaceiro", "Trickster's Feathers", "Plumas del embaucador", 4, 157],
+  ["diadem_of_divine_radiance", "Diadema do Esplendor Divino", "Diadem of Divine Radiance", "Diadema del resplandor divino", 5, 157],
+  ["bounty_of_the_sky", "Dádiva do Céu", "Bounty of the Sky", "Dádiva del cielo", 6, 154],
+  ["seize_identity", "Usurpar Identidade", "Seize Identity", "Usurpar identidad", 6, 156],
+  ["final_fate_of_the_locust_host", "Destino Final da Horda de Locustas", "Final Fate of the Locust Host", "Destino final de la horda de langostas", 7, 154],
+  ["part_the_mists_to_paradise", "Abrir as Brumas para o Paraíso", "Part the Mists to Paradise", "Abrir las brumas al paraíso", 8, 155],
+  ["beseech_arcanotheign", "Suplicar a Arcanotheign", "Beseech Arcanotheign", "Suplicar a Arcanotheign", 9, 154],
+  ["garden_of_the_green_mans_growth", "Jardim do Crescimento do Homem Verde", "Garden of the Green Man's Growth", "Jardín del crecimiento del Hombre Verde", 10, 155],
+  ["summon_oliphaunt_of_jandelay", "Convocar Olifante de Jandelay", "Summon Oliphaunt of Jandelay", "Convocar al olifante de Jandelay", 10, 156],
+];
+for (const [slug, pt, en, es, rank, page] of WAR_IMMORTALS_MYTHIC_SPELLS) {
+  const id = `spell.war_immortals.mythic.${slug}`;
+  if ((PF2E_DATA.spells || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.spells.push({
+    id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es }, rank, level: rank,
+    traditions: ["arcane", "divine", "occult", "primal"], category: "Magia Mítica", type: "Spell", traits: ["Mítico"],
+    summaries: { "pt-BR": `Magia mítica de War of Immortals, ranque ${rank}.`, en: `War of Immortals mythic spell, rank ${rank}.`, es: `Conjuro mítico de War of Immortals, rango ${rank}.` },
+    description: "Magia mítica; efeitos, requisitos de pontos míticos e tradições específicas permanecem pendentes de revisão.",
+    source: { book: WAR_IMMORTALS_SOURCE, page }, sourceApproximate: true, ruleset: "remaster", needs_review: true,
+  });
+}
+
+// War of Immortals, pp. 158–162: Mythic Rituals index.
+const WAR_IMMORTALS_MYTHIC_RITUALS = [
+  ["band_of_heroes", "Bando de Heróis", "Band of Heroes", "Banda de héroes", 3, 159],
+  ["wild_feast", "Banquete Selvagem", "Wild Feast", "Festín salvaje", 4, 159],
+  ["world_in_shadow", "Mundo nas Sombras", "World in Shadow", "Mundo en sombras", 5, 160],
+  ["kaiju_ward", "Proteção contra Kaiju", "Kaiju Ward", "Salvaguarda contra kaiju", 6, 160],
+  ["city_of_sin", "Cidade do Pecado", "City of Sin", "Ciudad del pecado", 7, 159],
+  ["unbearable_cacophony", "Cacofonia Insuportável", "Unbearable Cacophony", "Cacofonía insoportable", 7, 160],
+  ["awaken_curse", "Despertar Maldição", "Awaken Curse", "Despertar maldición", 8, 158],
+  ["create_demiplane", "Criar Semiplano", "Create Demiplane", "Crear semiplano", 8, 159],
+  ["freedom", "Liberdade", "Freedom", "Libertad", 8, 159],
+  ["imprisonment", "Aprisionamento", "Imprisonment", "Aprisionamiento", 8, 160],
+  ["curse_of_calamity", "Maldição da Calamidade", "Curse of Calamity", "Maldición de calamidad", 9, 160],
+  ["oceans_roar", "Rugido do Oceano", "Ocean's Roar", "Rugido del océano", 9, 161],
+  ["void_harvest", "Colheita do Vazio", "Void Harvest", "Cosecha del vacío", 9, 161],
+];
+for (const [slug, pt, en, es, rank, page] of WAR_IMMORTALS_MYTHIC_RITUALS) {
+  const id = `ritual.war_immortals.mythic.${slug}`;
+  if ((PF2E_DATA.rituals || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.rituals.push({
+    id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es }, rank, level: rank,
+    category: "Ritual Mítico", type: "Ritual", traits: ["Mítico"],
+    summaries: { "pt-BR": `Ritual mítico de War of Immortals, ranque ${rank}; requer Ponto Mítico.`, en: `War of Immortals mythic ritual, rank ${rank}; requires a Mythic Point.`, es: `Ritual mítico de War of Immortals, rango ${rank}; requiere un Punto Mítico.` },
+    description: "Ritual mítico; verificações, custos e efeitos completos permanecem pendentes de revisão.",
+    source: { book: WAR_IMMORTALS_SOURCE, page }, sourceApproximate: true, ruleset: "remaster", needs_review: true,
+  });
+}
+
+// Battlecry!, pp. 84–92: Battle Magic. The local OEF extraction provides the
+// stat-block headers and traditions; individual effects remain needs_review.
+const BATTLECRY_BATTLE_SPELLS = [
+  ["blinding_bottle", "Garrafa Cegante", "Blinding Bottle", "Botella cegadora", 5, ["arcane", "occult"], 84],
+  ["blister_bomb", "Bomba de Bolhas", "Blister Bomb", "Bomba de ampollas", 3, ["arcane", "primal"], 84],
+  ["boots_on_the_ground", "Pés no Chão", "Boots on the Ground", "Pies en tierra", 6, ["arcane", "occult"], 84],
+  ["clockwork_devotion", "Devoção Mecânica", "Clockwork Devotion", "Devoción mecánica", 8, ["arcane"], 84],
+  ["conquering_soldiers", "Soldados Conquistadores", "Conquering Soldiers", "Soldados conquistadores", 10, ["arcane", "divine"], 85],
+  ["curse_of_recoil", "Maldição do Recuo", "Curse of Recoil", "Maldición del retroceso", 1, ["divine", "occult"], 85],
+  ["dancing_shield", "Escudo Dançante", "Dancing Shield", "Escudo danzante", 2, ["arcane", "divine", "occult", "primal"], 85],
+  ["desperate_repair", "Reparo Desesperado", "Desperate Repair", "Reparación desesperada", 5, ["arcane", "primal"], 86],
+  ["dividing_trench", "Trincheira Divisória", "Dividing Trench", "Trinchera divisoria", 3, ["arcane", "primal"], 86],
+  ["explosive_barrage", "Barragem Explosiva", "Explosive Barrage", "Bombardeo explosivo", 6, ["arcane", "primal"], 86],
+  ["fallen_soldiers_lament", "Lamento do Soldado Caído", "Fallen Soldier's Lament", "Lamento del soldado caído", 4, ["divine", "occult"], 86],
+  ["filter_air", "Filtrar o Ar", "Filter Air", "Filtrar el aire", 4, ["arcane", "divine", "primal"], 86],
+  ["forced_mercy", "Misericórdia Forçada", "Forced Mercy", "Misericordia forzada", 1, ["divine", "occult"], 86],
+  ["frozen_fog", "Névoa Congelada", "Frozen Fog", "Niebla congelada", 6, ["arcane", "primal"], 86],
+  ["helpful_reload", "Recarga Prestativa", "Helpful Reload", "Recarga útil", 2, ["arcane", "divine", "occult"], 87],
+  ["holy_host", "Exército Sagrado", "Holy Host", "Hueste sagrada", 8, ["divine", "occult"], 87],
+  ["instant_minefield", "Campo Minado Instantâneo", "Instant Minefield", "Campo minado instantáneo", 5, ["arcane", "occult"], 88],
+  ["jassims_allegiance", "Lealdade de Jassim", "Jassim's Allegiance", "Lealtad de Jassim", 10, ["arcane", "occult"], 88],
+  ["lock_item", "Trancar Item", "Lock Item", "Bloquear objeto", 2, ["arcane", "primal"], 88],
+  ["pest_swarm", "Enxame de Pragas", "Pest Swarm", "Enjambre de plagas", 4, ["arcane", "occult", "primal"], 89],
+  ["shock_and_awe", "Choque e Pavor", "Shock and Awe", "Choque y pavor", 5, ["arcane", "occult"], 89],
+  ["siege_weapons_blessing", "Bênção da Arma de Cerco", "Siege Weapon's Blessing", "Bendición del arma de asedio", 6, ["arcane", "divine", "occult"], 89],
+  ["skeleton_army", "Exército de Esqueletos", "Skeleton Army", "Ejército de esqueletos", 6, ["arcane", "divine", "occult"], 90],
+  ["steel_fortifications", "Fortificações de Aço", "Steel Fortifications", "Fortificaciones de acero", 2, ["arcane", "primal"], 90],
+  ["sticky_fire", "Fogo Pegajoso", "Sticky Fire", "Fuego pegajoso", 2, ["arcane", "primal"], 91],
+  ["unholy_army", "Exército Profano", "Unholy Army", "Ejército impío", 8, ["divine", "occult"], 91],
+];
+for (const [slug, pt, en, es, rank, traditions, page] of BATTLECRY_BATTLE_SPELLS) {
+  const id = `spell.battlecry.battle_magic.${slug}`;
+  if ((PF2E_DATA.spells || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.spells.push({
+    id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es }, rank, level: rank,
+    category: "Magia de Batalha", type: "Spell", traditions, traits: ["Batalha"],
+    summaries: {
+      "pt-BR": `Magia de batalha de Battlecry!, ranque ${rank}.`,
+      en: `Battlecry! battle magic spell, rank ${rank}.`,
+      es: `Conjuro de batalla de Battlecry!, rango ${rank}.`,
+    },
+    description: "Magia de Battlecry!; efeito detalhado pendente de revisão.",
+    source: { book: BATTLECRY_SOURCE, page }, sourceApproximate: true, ruleset: "remaster", needs_review: true,
+  });
+}
+
+// Battlecry!, pp. 92–95: Siege Rituals.
+const BATTLECRY_SIEGE_RITUALS = [
+  ["army_of_shadows", "Exército de Sombras", "Army of Shadows", "Ejército de sombras", 2, 92],
+  ["oil_slicked_walls", "Muralhas Escorregadias de Óleo", "Oil-Slicked Walls", "Muros aceitosos", 2, 93],
+  ["secure_siege_weapons", "Proteger Armas de Cerco", "Secure Siege Weapons", "Asegurar armas de asedio", 3, 94],
+  ["reinforced_rations", "Rações Reforçadas", "Reinforced Rations", "Raciones reforzadas", 4, 93],
+  ["plague_shot", "Projétil Pestilento", "Plague Shot", "Proyectil pestilente", 5, 93],
+  ["sleepless_season", "Estação sem Sono", "Sleepless Season", "Estación sin sueño", 6, 94],
+  ["sprawling_tunnels", "Túneis Extensos", "Sprawling Tunnels", "Túneles extensos", 7, 94],
+  ["encroaching_woods", "Floresta Invasora", "Encroaching Woods", "Bosques invasores", 8, 92],
+  ["antimagic_artifice", "Artifício Antimagia", "Antimagic Artifice", "Artificio antimagia", 9, 92],
+  ["halt_death", "Deter a Morte", "Halt Death", "Detener la muerte", 10, 93],
+];
+for (const [slug, pt, en, es, rank, page] of BATTLECRY_SIEGE_RITUALS) {
+  const id = `ritual.battlecry.siege.${slug}`;
+  if ((PF2E_DATA.rituals || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.rituals.push({
+    id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es }, rank, level: rank,
+    category: "Ritual de Cerco", type: "Ritual", traits: ["Cerco"],
+    summaries: { "pt-BR": `Ritual de cerco de Battlecry!, ranque ${rank}.`, en: `Battlecry! siege ritual, rank ${rank}.`, es: `Ritual de asedio de Battlecry!, rango ${rank}.` },
+    description: "Ritual de cerco; verificações, componentes e efeitos completos pendentes de revisão.",
+    source: { book: BATTLECRY_SOURCE, page }, sourceApproximate: true, ruleset: "remaster", needs_review: true,
+  });
+}
+
+// Secrets of Magic, pp. 66–73: Magus class-feat index.
+const SECRETS_OF_MAGIC_MAGUS_FEATS = [
+  ["magus_analysis", "Análise do Magus", "Magus Analysis", "Análisis del magus", 1],
+  ["raise_a_tome", "Erguer um Tomo", "Raise a Tome", "Alzar un tomo", 1],
+  ["familiar", "Familiar", "Familiar", "Familiar", 1],
+  ["arcane_fists", "Punhos Arcanos", "Arcane Fists", "Puños arcanos", 1],
+  ["magic_parry", "Aparada de Magia", "Magic Parry", "Parada mágica", 2],
+  ["spiritual_bain", "Bainha Espiritual", "Spiritual Bain", "Vaina espiritual", 2],
+  ["cantrip_expansion", "Expansão de Truque Mágico", "Cantrip Expansion", "Expansión de trucos", 2],
+  ["enhanced_familiar", "Familiar Melhorado", "Enhanced Familiar", "Familiar mejorado", 2],
+  ["expansive_spellstrike", "Golpe de Magia Expansivo", "Expansive Spellstrike", "Golpe de conjuro expansivo", 2],
+  ["forcefangs", "Presa de Força", "Force Fang", "Colmillo de fuerza", 2],
+  ["consistent_spellcasting", "Conjuração Consistente", "Consistent Spellcasting", "Lanzamiento consistente", 4],
+  ["staff_student", "Estudante do Cajado", "Staff Student", "Estudiante del bastón", 4],
+  ["devastating_spellstrike", "Golpe de Magia Devastador", "Devastating Spellstrike", "Golpe de conjuro devastador", 4],
+  ["distracting_spellstrike", "Golpe de Magia Distra­tivo", "Distracting Spellstrike", "Golpe de conjuro distractor", 4],
+  ["attack_of_opportunity", "Ataque de Oportunidade", "Attack of Opportunity", "Ataque de oportunidad", 6],
+  ["knowledge_is_power", "Conhecimento é Poder", "Knowledge Is Power", "El conocimiento es poder", 6],
+  ["cascade_countermeasure", "Contramedida de Cascata", "Cascade Countermeasure", "Contramedida de cascada", 6],
+  ["armored_tome", "Tomo Blindado", "Armored Tome", "Tomo blindado", 6],
+  ["spell_swipe", "Arrebatar com Magia", "Spell Swipe", "Barrido de conjuros", 8],
+  ["fused_staff", "Cajado Fundido", "Fused Staff", "Bastón fusionado", 8],
+  ["capture_magic", "Capturar Magia", "Capture Magic", "Capturar magia", 8],
+  ["rune_engraving", "Impressão Rúnica", "Rune Engraving", "Grabado rúnico", 8],
+  ["standby_spell", "Magia em Espera", "Standby Spell", "Conjuro en espera", 8],
+  ["sustaining_steel", "Aço que Sustenta", "Sustaining Steel", "Acero sustentador", 10],
+  ["blazing_blur", "Bloqueio Ofuscante", "Blazing Blur", "Deslumbramiento llameante", 10],
+  ["dimensional_disappearance", "Desaparecimento Dimensional", "Dimensional Disappearance", "Desaparición dimensional", 10],
+  ["lunging_spellstrike", "Golpe de Magia de Estocada", "Lunging Spellstrike", "Golpe de conjuro de estocada", 10],
+  ["meteoric_spellstrike", "Golpe de Magia Meteórico", "Meteoric Spellstrike", "Golpe de conjuro meteórico", 10],
+  ["cascading_ray", "Raio Cascateante", "Cascading Ray", "Rayo en cascada", 10],
+  ["quickened_casting", "Recarga Rápida", "Quickened Casting", "Lanzamiento acelerado", 10],
+  ["conflux_focus", "Foco de Confluência", "Conflux Focus", "Foco de confluencia", 12],
+  ["overwhelming_spellstrike", "Golpe de Magia Avassalador", "Overwhelming Spellstrike", "Golpe de conjuro abrumador", 12],
+  ["magic_sense", "Sentido Mágico", "Magic Sense", "Sentido mágico", 12],
+  ["rapid_assault", "Ataque Rápido", "Rapid Assault", "Asalto rápido", 14],
+  ["supernatural_parry", "Aparada Sobrenatural", "Supernatural Parry", "Parada sobrenatural", 14],
+  ["arcane_cowl", "Manto Arcano", "Arcane Cowl", "Manto arcano", 14],
+  ["resonant_cascade", "Cascata Ressonante", "Resonant Cascade", "Cascada resonante", 16],
+  ["conflux_wealth", "Manancial de Confluência", "Conflux Wealth", "Fuente de confluencia", 18],
+  ["supreme_spellstrike", "Golpe de Magia Supremo", "Supreme Spellstrike", "Golpe de conjuro supremo", 20],
+];
+for (const [slug, pt, en, es, level] of SECRETS_OF_MAGIC_MAGUS_FEATS) {
+  const id = `feat.class.magus.${slug}`;
+  if ((PF2E_DATA.feats || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.feats.push({
+    id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es }, level,
+    summaries: { "pt-BR": `Talento de classe do Magus, nível ${level}.`, en: `Magus class feat, level ${level}.`, es: `Dote de clase del magus, nivel ${level}.` },
+    description: "Talento de Magus de Segredos da Magia; efeito detalhado pendente de revisão.", category: "Classe", type: "Talento", classId: "class.magus", traits: ["Magus"],
+    source: { book: SECRETS_OF_MAGIC_SOURCE, page: 66 }, sourceApproximate: true, ruleset: "legacy", needs_review: true,
+  });
+}
+
+// Dark Archive, pp. 25–29: talentos de classe do Psíquico.
+const DARK_ARCHIVE_PSYCHIC_FEATS = [
+  ["ancestral_mind", "Mente Ancestral", "Ancestral Mind", "Mente ancestral", 1],
+  ["counter_thought", "Contrapensamento", "Counter Thought", "Contrapensamiento", 1],
+  ["mental_buffer", "Barreira Mental", "Mental Buffer", "Amortiguador mental", 1],
+  ["psychic_rapport", "Sintonia Psíquica", "Psychic Rapport", "Afinidad psíquica", 1],
+  ["impose_order", "Impor Ordem", "Impose Order", "Imponer orden", 2],
+  ["mind_over_matter", "Mente sobre Matéria", "Mind Over Matter", "Mente sobre materia", 2],
+  ["psi_burst", "Explosão Psiônica", "Psi Burst", "Explosión psi", 2],
+  ["warp_space", "Distorcer Espaço", "Warp Space", "Distorsionar el espacio", 2],
+  ["unlimited_potential", "Potencial Ilimitado", "Unlimited Potential", "Potencial ilimitado", 2],
+  ["astral_tether", "Laço Astral", "Astral Tether", "Lazo astral", 4],
+  ["dream_guise", "Disfarce Onírico", "Dream Guise", "Disfraz onírico", 4],
+  ["parallel_breakthrough", "Avanço Paralelo", "Parallel Breakthrough", "Avance paralelo", 4],
+  ["steady_spellcasting", "Conjuração Estável", "Steady Spellcasting", "Lanzamiento estable", 4],
+  ["thoughts_sense", "Sentido dos Pensamentos", "Thoughtsense", "Sentido de los pensamientos", 4],
+  ["foreseen_failure", "Falha Prevista", "Foreseen Failure", "Fallo previsto", 6],
+  ["mental_static", "Estática Mental", "Mental Static", "Estática mental", 6],
+  ["scour_the_library", "Vasculhar a Biblioteca", "Scour the Library", "Rastrear la biblioteca", 6],
+  ["shatter_space", "Despedaçar Espaço", "Shatter Space", "Desgarrar el espacio", 6],
+  ["signature_spell_expansion", "Expansão de Magia Assinatura", "Signature Spell Expansion", "Expansión de conjuro de firma", 6],
+  ["constant_levitation", "Levitação Constante", "Constant Levitation", "Levitación constante", 8],
+  ["inertial_barrier", "Barreira Inercial", "Inertial Barrier", "Barrera inercial", 8],
+  ["psi_catastrophe", "Catástrofe Psiônica", "Psi Catastrophe", "Catástrofe psi", 8],
+  ["strain_mind", "Forçar a Mente", "Strain Mind", "Forzar la mente", 8],
+  ["dark_personas_presence", "Presença da Persona Sombria", "Dark Persona's Presence", "Presencia de la persona oscura", 10],
+  ["deep_roots", "Raízes Profundas", "Deep Roots", "Raíces profundas", 10],
+  ["emotional_surge", "Surto Emocional", "Emotional Surge", "Oleada emocional", 10],
+  ["psi_strikes", "Golpes Psiônicos", "Psi Strikes", "Golpes psi", 10],
+  ["remove_presence", "Remover Presença", "Remove Presence", "Eliminar presencia", 10],
+  ["deepest_wellspring", "Fonte Mais Profunda", "Deepest Wellspring", "Manantial más profundo", 12],
+  ["no", "Não!!!", "No!!!", "¡¡¡No!!!", 12],
+  ["become_thought", "Tornar-se Pensamento", "Become Thought", "Convertirse en pensamiento", 14],
+  ["psychic_rapport_advanced", "Sintonia Psíquica Avançada", "Psychic Rapport", "Afinidad psíquica", 14],
+  ["brain_drain", "Drenagem Cerebral", "Brain Drain", "Drenaje cerebral", 16],
+  ["sixth_sense", "Sexto Sentido", "Sixth Sense", "Sexto sentido", 16],
+  ["twin_psyche", "Psique Gêmea", "Twin Psyche", "Psique gemela", 16],
+  ["cranial_detonation", "Detonação Craniana", "Cranial Detonation", "Detonación craneal", 18],
+  ["conscious_spell_specialization", "Especialização Consciente em Magia", "Conscious Spell Specialization", "Especialización consciente de conjuros", 18],
+  ["mental_balm", "Bálsamo Mental", "Mental Balm", "Bálsamo mental", 20],
+  ["target_of_psychic_ire", "Alvo da Ira Psíquica", "Target of Psychic Ire", "Objetivo de la ira psíquica", 20],
+];
+for (const [slug, pt, en, es, level] of DARK_ARCHIVE_PSYCHIC_FEATS) {
+  const id = `feat.class.psychic.${slug}`;
+  if ((PF2E_DATA.feats || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.feats.push({
+    id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es },
+    summaries: { "pt-BR": `Talento de classe do Psíquico, nível ${level}.`, en: `Psychic class feat, level ${level}.`, es: `Dote de clase de Psíquico, nivel ${level}.` },
+    description: "Talento de classe do Psíquico; efeito detalhado pendente de revisão.", category: "Classe", type: "Talento", level,
+    classId: "class.psychic", traits: ["Psíquico"], source: { book: DARK_ARCHIVE_SOURCE, page: 25 }, sourceApproximate: true, ruleset: "legacy", needs_review: true,
+  });
+}
+
+// Dark Archive, pp. 47–57: índice de talentos de classe do Taumaturgo.
+const DARK_ARCHIVE_THAUMATURGE_FEATS = [
+  ["familiar", "Familiar", "Familiar", "Familiar", 1], ["haunt_ingenuity", "Engenho Assombrado", "Haunt Ingenuity", "Ingenio embrujado", 1],
+  ["ammunition_thaumaturgy", "Taumaturgia de Munição", "Ammunition Thaumaturgy", "Taumaturgia de munición", 1], ["diverse_lore", "Conhecimento Diverso", "Diverse Lore", "Conocimiento diverso", 1],
+  ["divine_disharmony", "Desarmonia Divina", "Divine Disharmony", "Desarmonía divina", 1], ["root_to_life", "Raiz da Vida", "Root to Life", "Raíz de vida", 1], ["scroll_thaumaturgy", "Taumaturgia de Pergaminho", "Scroll Thaumaturgy", "Taumaturgia de pergaminos", 1],
+  ["call_implement", "Chamar Implemento", "Call Implement", "Llamar implemento", 2], ["enhanced_familiar", "Familiar Aprimorado", "Enhanced Familiar", "Familiar mejorado", 2], ["esoteric_warden", "Guardião Esotérico", "Esoteric Warden", "Guardián esotérico", 2],
+  ["talisman_esoterica", "Esotérica de Talismãs", "Talisman Esoterica", "Esoterismo de talismanes", 2], ["turn_away_misfortune", "Afastar Infortúnio", "Turn Away Misfortune", "Rechazar la desgracia", 2],
+  ["breached_defenses", "Defesas Rompidas", "Breached Defenses", "Defensas quebradas", 4], ["instructive_strike", "Golpe Instrutivo", "Instructive Strike", "Golpe instructivo", 4], ["paired_link", "Ligação Pareada", "Paired Link", "Vínculo emparejado", 4], ["thaumaturgic_ritualist", "Ritualista Taumatúrgico", "Thaumaturgic Ritualist", "Ritualista taumatúrgico", 4],
+  ["one_more_activation", "Mais uma Ativação", "One More Activation", "Una activación más", 6], ["scroll_esoterica", "Esotérica de Pergaminho", "Scroll Esoterica", "Esoterismo de pergaminos", 6], ["sympathetic_vulnerabilities", "Vulnerabilidades Simpáticas", "Sympathetic Vulnerabilities", "Vulnerabilidades simpáticas", 6],
+  ["cursed_effigy", "Efígie Amaldiçoada", "Cursed Effigy", "Efigie maldita", 8], ["elaborate_talisman_esoterica", "Esotérica de Talismã Elaborado", "Elaborate Talisman Esoterica", "Esoterismo de talismán elaborado", 8], ["incredible_familiar", "Familiar Incrível", "Incredible Familiar", "Familiar increíble", 8], ["know_it_all", "Sabe-Tudo", "Know-It-All", "Sabelotodo", 8],
+  ["share_weakness", "Compartilhar Fraqueza", "Share Weakness", "Compartir debilidad", 10], ["thaumaturges_investiture", "Investidura do Taumaturgo", "Thaumaturge's Investiture", "Investidura del taumaturgo", 10], ["twin_weakness", "Fraqueza Gêmea", "Twin Weakness", "Debilidad gemela", 10],
+  ["elaborate_scroll_esoterica", "Esotérica de Pergaminho Elaborado", "Elaborate Scroll Esoterica", "Esoterismo de pergamino elaborado", 12], ["intensify_investiture", "Intensificar Investidura", "Intensify Investiture", "Intensificar investidura", 12], ["shared_warding", "Proteção Compartilhada", "Shared Warding", "Custodia compartida", 12], ["thaumaturges_demesne", "Domínio do Taumaturgo", "Thaumaturge's Demesne", "Dominio del taumaturgo", 12],
+  ["esoteric_reflexes", "Reflexos Esotéricos", "Esoteric Reflexes", "Reflejos esotéricos", 14], ["grand_talisman_esoterica", "Grande Esotérica de Talismã", "Grand Talisman Esoterica", "Gran esoterismo de talismanes", 14], ["trespass_teleportation", "Teletransporte Intruso", "Trespass Teleportation", "Teletransporte intruso", 14],
+  ["implements_flight", "Voo do Implemento", "Implement's Flight", "Vuelo del implemento", 16], ["seven_part_link", "Ligação de Sete Partes", "Seven-Part Link", "Vínculo de siete partes", 16], ["sever_magic", "Cortar Magia", "Sever Magic", "Cercenar magia", 16],
+  ["grand_scroll_esoterica", "Grande Esotérica de Pergaminho", "Grand Scroll Esoterica", "Gran esoterismo de pergaminos", 18], ["implements_assault", "Assalto do Implemento", "Implement's Assault", "Asalto del implemento", 18], ["intense_implement", "Implemento Intenso", "Intense Implement", "Implemento intenso", 18],
+  ["ubiquitous_weakness", "Fraqueza Ubíqua", "Ubiquitous Weakness", "Debilidad ubicua", 20], ["unlimited_demesne", "Domínio Ilimitado", "Unlimited Demesne", "Dominio ilimitado", 20], ["wonder_worker", "Obreiro de Maravilhas", "Wonder Worker", "Hacedor de maravillas", 20]
+];
+for (const [slug, pt, en, es, level] of DARK_ARCHIVE_THAUMATURGE_FEATS) {
+  const id = `feat.class.thaumaturge.${slug}`;
+  if ((PF2E_DATA.feats || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.feats.push({ id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es },
+    summaries: { "pt-BR": `Talento de classe do Taumaturgo, nível ${level}.`, en: `Thaumaturge class feat, level ${level}.`, es: `Dote de clase de Taumaturgo, nivel ${level}.` },
+    description: "Talento de classe do Taumaturgo; efeito detalhado pendente de revisão.", category: "Classe", type: "Talento", level,
+    classId: "class.thaumaturge", traits: ["Taumaturgo"], source: { book: DARK_ARCHIVE_SOURCE, page: 47 }, sourceApproximate: true, ruleset: "legacy", needs_review: true });
+}
+
+// Dark Archive, pp. 48–50: arquétipos multiclasse de Psíquico e Taumaturgo.
+const DARK_ARCHIVE_MULTICLASS_FEATS = [
+  ["psychic", "psychic_dedication", "Dedicação de Psíquico", "Psychic Dedication", "Dedicación de psíquico", 2, "Inteligência 14 ou Carisma 14", 48],
+  ["psychic", "basic_thoughtform", "Forma-Pensamento Básica", "Basic Thoughtform", "Forma de pensamiento básica", 4, "Dedicação de Psíquico", 48],
+  ["psychic", "basic_psychic_spellcasting", "Conjuração Psíquica Básica", "Basic Psychic Spellcasting", "Lanzamiento de conjuros psíquicos básico", 4, "Dedicação de Psíquico", 48],
+  ["psychic", "advanced_thoughtform", "Forma-Pensamento Avançada", "Advanced Thoughtform", "Forma de pensamiento avanzada", 6, "Forma-Pensamento Básica", 48],
+  ["psychic", "psi_development", "Desenvolvimento Psi", "Psi Development", "Desarrollo psi", 6, "Dedicação de Psíquico", 48],
+  ["psychic", "expert_psychic_spellcasting", "Conjuração Psíquica Especialista", "Expert Psychic Spellcasting", "Lanzamiento de conjuros psíquicos experto", 12, "Conjuração Psíquica Básica", 48],
+  ["psychic", "master_psychic_spellcasting", "Conjuração Psíquica Mestre", "Master Psychic Spellcasting", "Lanzamiento de conjuros psíquicos maestro", 12, "Conjuração Psíquica Especialista", 48],
+  ["thaumaturge", "thaumaturge_dedication", "Dedicação de Taumaturgo", "Thaumaturge Dedication", "Dedicación de taumaturgo", 2, "Carisma 14", 49],
+  ["thaumaturge", "basic_thaumaturgy", "Taumaturgia Básica", "Basic Thaumaturgy", "Taumaturgia básica", 4, "Dedicação de Taumaturgo", 50],
+  ["thaumaturge", "advanced_thaumaturgy", "Taumaturgia Avançada", "Advanced Thaumaturgy", "Taumaturgia avanzada", 6, "Taumaturgia Básica", 50],
+  ["thaumaturge", "implement_initiate", "Iniciação em Implemento", "Implement Initiate", "Iniciación en implemento", 6, "Dedicação de Taumaturgo", 50],
+  ["thaumaturge", "magical_knowledge", "Conhecimento Mágico", "Magical Knowledge", "Conocimiento mágico", 8, "Dedicação de Taumaturgo; treinado em uma entre Arcanismo, Natureza, Ocultismo ou Religião e especialista em outra", 50],
+  ["thaumaturge", "resolute", "Resoluto", "Resolute", "Resuelto", 12, "Dedicação de Taumaturgo e especialista em Vontade", 50],
+];
+for (const [archetype, slug, pt, en, es, level, prereq, page] of DARK_ARCHIVE_MULTICLASS_FEATS) {
+  const archetypeId = `archetype.${archetype}_dedication`;
+  const id = `feat.${archetypeId}.${slug}`;
+  if ((PF2E_DATA.feats || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.feats.push({
+    id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es },
+    summaries: {
+      "pt-BR": `Talento do arquétipo multiclasse de ${archetype === "psychic" ? "Psíquico" : "Taumaturgo"}, nível ${level}.`,
+      en: `${archetype === "psychic" ? "Psychic" : "Thaumaturge"} multiclass archetype feat, level ${level}.`,
+      es: `Dote del arquetipo multiclase de ${archetype === "psychic" ? "psíquico" : "taumaturgo"}, nivel ${level}.`,
+    },
+    description: "Opção de arquétipo de Dark Archive; efeito detalhado pendente de revisão.", category: "Arquétipo", type: "Talento", level,
+    archetypeId, prerequisites: [prereq], traits: ["Arquétipo", "Multiclasse"],
+    source: { book: DARK_ARCHIVE_SOURCE, page }, sourceApproximate: true, ruleset: "legacy", needs_review: true,
+  });
+}
+
+// Dark Archive, pp. 55–57: Aftermath feats (opções raras condicionadas a eventos).
+const DARK_ARCHIVE_AFTERMATH_FEATS = [
+  ["echo_of_the_fallen", "Eco dos Caídos", "Echo of the Fallen", "Eco de los caídos", 4, "Você ajudou a conduzir um espírito, fantasma ou assombração ao descanso.", 55],
+  ["devils_eye", "Olho do Diabo", "Devil's Eye", "Ojo del diablo", 4, "Você fez um pacto com um diabo ou venceu um caso legal, duelo de astúcia ou disputa semelhante contra um diabo.", 55],
+  ["lingering_chill", "Frio Persistente", "Lingering Chill", "Frío persistente", 4, "Você foi reduzido a 0 Pontos de Vida por um inimigo com o traço frio ou por uma habilidade desse inimigo.", 55],
+  ["elysiums_cadence", "Cadência de Elysium", "Elysium's Cadence", "Cadencia de Elysium", 6, "Você festejou extensivamente com um azata ou teve um relacionamento romântico com um azata.", 56],
+  ["jelly_body", "Corpo de Gelatina", "Jelly Body", "Cuerpo de gelatina", 6, "Você foi reduzido a 0 Pontos de Vida enquanto era engolfado por um limo.", 56],
+  ["gift_of_the_hoard", "Presente do Tesouro", "Gift of the Hoard", "Regalo del tesoro", 10, "Você teve sucesso em uma tarefa importante dada por um dragão, como obter um tesouro especial para o covil dele.", 56],
+  ["siphon_life", "Sifonar Vida", "Siphon Life", "Sifonar vida", 10, "Você foi reduzido a 0 Pontos de Vida por um inimigo com o traço negativo.", 56],
+  ["petrified_skin", "Pele Petrificada", "Petrified Skin", "Piel petrificada", 12, "Você foi petrificado por um inimigo.", 56],
+  ["dormant_eruption", "Erupção Adormecida", "Dormant Eruption", "Erupción latente", 14, "Você foi reduzido a 0 Pontos de Vida por um inimigo com o traço fogo ou por uma habilidade desse inimigo.", 57],
+  ["sink_and_swim", "Afundar e Nadar", "Sink and Swim", "Hundirse y nadar", 14, "Você foi reduzido a 0 Pontos de Vida por um inimigo com o traço água ou por uma habilidade desse inimigo.", 57],
+  ["fey_life", "Vida Feérica", "Fey Life", "Vida feérica", 16, "Você ajudou a salvar uma criatura feérica de um destino terrível e não é uma criatura feérica.", 57],
+  ["walk_on_the_wind", "Caminhar no Vento", "Walk on the Wind", "Caminar sobre el viento", 16, "Você foi reduzido a 0 Pontos de Vida por um inimigo com o traço ar ou por uma habilidade desse inimigo.", 57],
+];
+for (const [slug, pt, en, es, level, prereq, page] of DARK_ARCHIVE_AFTERMATH_FEATS) {
+  const id = `feat.dark_archive.aftermath.${slug}`;
+  if ((PF2E_DATA.feats || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.feats.push({
+    id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es },
+    summaries: {
+      "pt-BR": `Talento Aftermath raro de Dark Archive, nível ${level}.`,
+      en: `Rare Dark Archive aftermath feat, level ${level}.`,
+      es: `Dote Aftermath raro de Dark Archive, nivel ${level}.`,
+    },
+    description: "Talento Aftermath de Dark Archive; efeito detalhado pendente de revisão.", category: "Geral", type: "Talento", level,
+    prerequisites: [prereq], traits: ["Raro", "Aftermath"], rarity: "rare",
+    source: { book: DARK_ARCHIVE_SOURCE, page }, sourceApproximate: true, ruleset: "legacy", needs_review: true,
+  });
+}
+
+// Dark Archive, índice das opções (pp. 126, 140, 166, 168, 184, 186, 203, 204, 206).
+const DARK_ARCHIVE_ARCHETYPES = [
+  ["archetype.dark_archive.alter_ego", "Alter Ego", "Alter Ego", "Alter ego", 126],
+  ["archetype.dark_archive.living_vessel", "Vaso Vivo", "Living Vessel", "Vasija viviente", 140],
+  ["archetype.dark_archive.pactbinder", "Vinculador de Pactos", "Pactbinder", "Vinculador de pactos", 166],
+  ["archetype.dark_archive.curse_maelstrom", "Maremoto de Maldições", "Curse Maelstrom", "Maremoto de maldiciones", 168],
+  ["archetype.dark_archive.time_mage", "Mago do Tempo", "Time Mage", "Mago del tiempo", 184],
+  ["archetype.dark_archive.chronoskimmer", "Crononavegador", "Chronoskimmer", "Crononavegante", 186],
+  ["archetype.dark_archive.psychic_duelist", "Duelista Psíquico", "Psychic Duelist", "Duelista psíquico", 203],
+  ["archetype.dark_archive.mind_smith", "Ferreiro da Mente", "Mind Smith", "Forjador mental", 204],
+  ["archetype.dark_archive.sleepwalker", "Sonâmbulo", "Sleepwalker", "Sonámbulo", 206],
+];
+for (const [id, pt, en, es, page] of DARK_ARCHIVE_ARCHETYPES) {
+  if ((PF2E_DATA.archetypes || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.archetypes.push({
+    id, name: `${pt} (${en})`, subtype: "standard", dedicationLevel: 2,
+    names: { "pt-BR": pt, en, es },
+    summaries: {
+      "pt-BR": `Arquétipo de Dark Archive; requisitos e talentos individuais pendentes de revisão.`,
+      en: `Dark Archive archetype; individual prerequisites and feats pending review.`,
+      es: `Arquetipo de Dark Archive; requisitos y dotes individuales pendientes de revisión.`,
+    },
+    description: "Arquétipo indexado pelo índice do livro; dedicação, pré-requisitos e efeitos individuais aguardam transcrição detalhada.",
+    source: { book: DARK_ARCHIVE_SOURCE, page }, sourceApproximate: true, ruleset: "legacy", needs_review: true,
+  });
+}
+
+// Secrets of Magic, pp. 142–145: focus spells for Summoner and Magus.
+const SECRETS_OF_MAGIC_FOCUS_SPELLS = [
+  ["summoner", "eidolons_ire", "Ira do Eidolon", "Eidolon's Wrath", "Ira del eidolón", 3, 142, ["class.summoner"]],
+  ["summoner", "release_eidolon", "Libertar Eidolon", "Release Eidolon", "Liberar eidolón", 1, 142, ["class.summoner"]],
+  ["summoner", "extend_boost", "Prolongar Impulsionamento", "Extend Boost", "Extender impulso", 1, 143, ["class.summoner"]],
+  ["summoner", "evolution_surge", "Surto de Evolução", "Evolution Surge", "Oleada de evolución", 1, 143, ["class.summoner"]],
+  ["summoner", "vital_bond_surge", "Surto de Vínculo Vital", "Vital Bond Surge", "Oleada de vínculo vital", 2, 143, ["class.summoner"]],
+  ["summoner", "dimensional_assault", "Agressão Dimensional", "Dimensional Assault", "Asalto dimensional", 1, 144, ["class.summoner"]],
+  ["magus", "quickened_assault", "Ataque Rápido", "Hasted Assault", "Asalto acelerado", 7, 144, ["class.magus"]],
+  ["magus", "rune_engraving", "Impressão Rúnica", "Runic Impression", "Impresión rúnica", 4, 144, ["class.magus"]],
+  ["magus", "spinning_staff", "Cajado Giratório", "Spinning Staff", "Bastón giratorio", 1, 144, ["class.magus"]],
+  ["magus", "cascade_countermeasure", "Contramedida de Cascata", "Cascade Countermeasure", "Contramedida de cascada", 3, 145, ["class.magus"]],
+  ["magus", "shooting_star", "Estrela Cadente", "Shooting Star", "Estrella fugaz", 1, 145, ["class.magus"]],
+  ["magus", "shielding_strike", "Golpe e Escudo", "Shielding Strike", "Golpe y escudo", 1, 145, ["class.magus"]],
+  ["magus", "thunderous_strike", "Golpe Estrondoso", "Thunderous Strike", "Golpe atronador", 1, 145, ["class.magus"]],
+  ["magus", "force_fang", "Presa de Força", "Force Fang", "Colmillo de fuerza", 1, 145, ["class.magus"]],
+];
+for (const [classSlug, slug, pt, en, es, rank, page, classIds] of SECRETS_OF_MAGIC_FOCUS_SPELLS) {
+  const id = `spell.secrets_of_magic.${classSlug}.${slug}`;
+  if ((PF2E_DATA.spells || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.spells.push({
+    id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es }, rank, level: rank, focus: true,
+    traditions: ["arcane", "divine", "occult", "primal"], category: "Magia de Foco", type: "Focus Spell", classId: classIds[0], classIds,
+    summaries: { "pt-BR": `Magia de foco de ${classSlug === "magus" ? "Magus" : "Convocador"}, ranque ${rank}.`, en: `${classSlug === "magus" ? "Magus" : "Summoner"} focus spell, rank ${rank}.`, es: `Conjuro de foco del ${classSlug === "magus" ? "magus" : "convocador"}, rango ${rank}.` },
+    description: "Magia de foco de Segredos da Magia; tradição específica e efeito completo dependem da escolha de classe e permanecem em revisão.",
+    source: { book: SECRETS_OF_MAGIC_SOURCE, page }, sourceApproximate: true, ruleset: "legacy", needs_review: true,
+  });
+}
+
+// Secrets of Magic, pp. 75–78: multiclass archetype feats for Summoner and Magus.
+const SECRETS_OF_MAGIC_MULTICLASS_FEATS = [
+  ["summoner", "summoner_dedication", "Dedicação de Convocador", "Summoner Dedication", "Dedicación de convocador", 2, "Carisma 14", 75],
+  ["summoner", "initial_eidolon_ability", "Habilidade Inicial de Eidolon", "Initial Eidolon Ability", "Habilidad inicial del eidolón", 4, "Dedicação de Convocador", 76],
+  ["summoner", "basic_synergy", "Sinergia Básica", "Basic Synergy", "Sinergia básica", 4, "Dedicação de Convocador", 76],
+  ["summoner", "basic_summoner_spellcasting", "Conjuração Básica de Convocador", "Basic Summoner Spellcasting", "Lanzamiento de conjuros básico de convocador", 6, "Dedicação de Convocador", 76],
+  ["summoner", "advanced_synergy", "Sinergia Avançada", "Advanced Synergy", "Sinergia avanzada", 6, "Sinergia Básica", 76],
+  ["summoner", "expert_summoner_spellcasting", "Conjuração Especialista de Convocador", "Expert Summoner Spellcasting", "Lanzamiento de conjuros experto de convocador", 12, "Conjuração Básica de Convocador", 77],
+  ["summoner", "combat_specialist_eidolon", "Eidolon Especialista em Combate", "Combat Specialist Eidolon", "Eidolón especialista en combate", 12, "Dedicação de Convocador", 77],
+  ["summoner", "emblematic_synergy", "Sinergia Emblemática", "Signature Synergy", "Sinergia emblemática", 14, "Sinergia Avançada", 77],
+  ["summoner", "master_summoner_spellcasting", "Conjuração Mestre de Convocador", "Master Summoner Spellcasting", "Lanzamiento de conjuros maestro de convocador", 18, "Conjuração Especialista de Convocador", 77],
+  ["magus", "magus_dedication", "Dedicação de Magus", "Magus Dedication", "Dedicación de magus", 2, "Inteligência 14 ou Carisma 14", 78],
+  ["magus", "hybrid_study", "Estudo Híbrido de Magia", "Hybrid Study", "Estudio híbrido", 4, "Dedicação de Magus", 78],
+  ["magus", "spellstriker", "Golpeador de Magia", "Spellstriker", "Golpeador de conjuros", 4, "Dedicação de Magus", 78],
+  ["magus", "basic_martial_magic", "Magia Marcial Básica", "Basic Martial Magic", "Magia marcial básica", 4, "Dedicação de Magus", 78],
+  ["magus", "basic_magus_spellcasting", "Conjuração Básica de Magus", "Basic Magus Spellcasting", "Lanzamiento de conjuros básico de magus", 6, "Dedicação de Magus", 78],
+  ["magus", "advanced_martial_magic", "Magia Marcial Avançada", "Advanced Martial Magic", "Magia marcial avanzada", 6, "Magia Marcial Básica", 78],
+  ["magus", "expert_magus_spellcasting", "Conjuração Especialista de Magus", "Expert Magus Spellcasting", "Lanzamiento de conjuros experto de magus", 12, "Conjuração Básica de Magus", 78],
+  ["magus", "master_magus_spellcasting", "Conjuração Mestre de Magus", "Master Magus Spellcasting", "Lanzamiento de conjuros maestro de magus", 18, "Conjuração Especialista de Magus", 78],
+];
+for (const [classSlug, slug, pt, en, es, level, prereq, page] of SECRETS_OF_MAGIC_MULTICLASS_FEATS) {
+  const archetypeId = `archetype.${classSlug}_dedication`;
+  const id = `feat.${archetypeId}.${slug}`;
+  if ((PF2E_DATA.feats || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.feats.push({
+    id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es }, level,
+    summaries: { "pt-BR": `Talento do arquétipo multiclasse de ${classSlug === "magus" ? "Magus" : "Convocador"}, nível ${level}.`, en: `${classSlug === "magus" ? "Magus" : "Summoner"} multiclass archetype feat, level ${level}.`, es: `Dote del arquetipo multiclase de ${classSlug === "magus" ? "magus" : "convocador"}, nivel ${level}.` },
+    description: "Talento de arquétipo de Segredos da Magia; efeito detalhado pendente de revisão.", category: "Arquétipo", type: "Talento",
+    archetypeId, prerequisites: [prereq], prereq: [prereq], traits: ["Arquétipo", "Multiclasse"],
+    source: { book: SECRETS_OF_MAGIC_SOURCE, page }, sourceApproximate: true, ruleset: "legacy", needs_review: true,
+  });
+}
+
+// Livro dos Mortos, pp. 154–178: itens mágicos e consumíveis aplicáveis ao jogador.
+const BOOK_OF_DEAD_MAGIC_ITEMS = [
+  ["sinister_ring", "Anel Sinistro", "Sinister Ring", "Anillo siniestro", 5, "Item Mágico", 154],
+  ["peachwood_weapon", "Arma de Pessegueiro", "Peachwood Weapon", "Arma de madera de melocotonero", 12, "Arma Mágica", 155],
+  ["final_rest", "Descanso Final", "Final Rest", "Descanso final", 18, "Item Mágico", 156],
+  ["feast_for_hungry_ghosts", "Banquete para Fantasmas Famintos", "Feast for Hungry Ghosts", "Festín para fantasmas hambrientos", 9, "Consumível", 156],
+  ["celestial_peachwood_sword", "Espada de Pessegueiro Celestial", "Celestial Peachwood Sword", "Espada celestial de madera de melocotonero", 17, "Arma Mágica", 157],
+  ["bottled_sunlight", "Luz Solar Engarrafada", "Bottled Sunlight", "Luz solar embotellada", 2, "Consumível", 158],
+  ["ladys_spiral", "Espiral da Dama", "Lady's Spiral", "Espiral de la dama", 7, "Item Mágico", 159],
+  ["dawnlight", "Luz da Alvorada", "Dawnlight", "Luz del alba", 3, "Item Mágico", 160],
+  ["peachwood_talisman", "Talismã de Pessegueiro", "Peachwood Talisman", "Talismán de madera de melocotonero", 6, "Talismã", 161],
+  ["undead_detection_ink", "Tinta de Detecção de Mortos-Vivos", "Undead Detection Ink", "Tinta de detección de muertos vivientes", 4, "Consumível", 162],
+  ["ectoplasmic_marker", "Marcador Ectoplasmático", "Ectoplasmic Marker", "Marcador ectoplásmico", 3, "Consumível", 163],
+  ["vital_salt", "Sal Vital", "Vital Salt", "Sal vital", 5, "Consumível", 164],
+];
+for (const [slug, pt, en, es, level, category, page] of BOOK_OF_DEAD_MAGIC_ITEMS) {
+  const id = `item.book_of_dead.${slug}`;
+  if ((PF2E_DATA.items || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.items.push({
+    id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es }, level, category, type: "Item",
+    summaries: { "pt-BR": `Item de ${category.toLowerCase()} do Livro dos Mortos, nível ${level}; variantes e efeitos detalhados em revisão.`, en: `Book of the Dead ${category.toLowerCase()}, level ${level}; variants and detailed effects under review.`, es: `Objeto de ${category.toLowerCase()} del Libro de los Muertos, nivel ${level}; variantes y efectos detallados en revisión.` },
+    description: "Item do Livro dos Mortos; variantes de nível, ativação e efeitos completos permanecem em `needs_review`.",
+    // A origem do item não o torna uma criatura morta-viva; traços específicos
+    // só devem ser adicionados depois da conferência da entrada individual.
+    traits: [], source: { book: BOOK_DEAD_SOURCE, page }, sourceApproximate: true, ruleset: "legacy", needs_review: true,
+  });
+}
+
+// Livro dos Mortos, pp. 22–54: arquétipos de jogador adicionais.
+const BOOK_OF_DEAD_PLAYER_ARCHETYPES = [
+  ["exorcist", "Exorcista", "Exorcist", "Exorcista", "Treinado em Religião", 22],
+  ["soul_warden", "Guardião das Almas", "Soul Warden", "Guardián de almas", "Treinado em Religião", 24],
+  ["consecrated_necromancer", "Necromante Consagrado", "Consecrated Necromancer", "Nigromante consagrado", "Treinado em Religião ou Ocultismo", 28],
+  ["reanimator", "Reanimador", "Reanimator", "Reanimador", "Treinado em Medicina ou Ocultismo", 34],
+  ["undead_master", "Mestre de Mortos-Vivos", "Undead Master", "Maestro de muertos vivientes", "Treinado em Natureza, Ocultismo ou Religião", 41],
+  ["lich", "Lich", "Lich", "Liche", "Você é um conjurador e cumpre os requisitos de iniciação do arquétipo", 54],
+];
+for (const [slug, pt, en, es, prereq, page] of BOOK_OF_DEAD_PLAYER_ARCHETYPES) {
+  const id = `archetype.book_of_dead.${slug}`;
+  if ((PF2E_DATA.archetypes || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.archetypes.push({
+    id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es }, subtype: "standard", level: 2, dedicationLevel: 2,
+    prerequisites: [prereq], prereq: [prereq], category: "Arquétipo", type: "Dedicação", traits: ["Arquétipo", "Morto-Vivo"],
+    summaries: { "pt-BR": `Arquétipo de dedicação do Livro dos Mortos; requisitos e talentos individuais em revisão.`, en: `Book of the Dead dedication archetype; individual prerequisites and feats under review.`, es: `Arquetipo de dedicación del Libro de los Muertos; requisitos y dotes individuales en revisión.` },
+    description: "Arquétipo do Livro dos Mortos indexado pelo sumário; efeitos de dedicação e talentos individuais permanecem em revisão.",
+    source: { book: BOOK_DEAD_SOURCE, page }, sourceApproximate: true, ruleset: "legacy", needs_review: true,
+  });
+}
+
+// Howl of the Wild, pp. 66–82: dedication feats for the new archetypes.
+const HOWL_WILD_ARCHETYPE_DEDICATIONS = [
+  ["clawdancer", "Dedicação de Dançarino das Garras", "Clawdancer Dedication", "Dedicación de Danzagarras", 68, "Treinado em Acrobacia"],
+  ["ostilli_host", "Dedicação de Hospedeiro de Ostilli", "Ostilli Host Dedication", "Dedicación de anfitrión ostilli", 70, "Constituição 14"],
+  ["swarmkeeper", "Dedicação de Guardião do Enxame", "Swarmkeeper Dedication", "Dedicación de guardián del enjambre", 72, "Treinado em Natureza"],
+  ["thlipit_contestant", "Dedicação de Competidor Thlipit", "Thlipit Contestant Dedication", "Dedicación de competidor thlipit", 74, "Língua preênsil longa ou cauda"],
+  ["werecreature", "Dedicação de Licantropo", "Werecreature Dedication", "Dedicación de licántropo", 76, "Você não é uma criatura morta-viva"],
+  ["wild_mimic", "Dedicação de Mímico Selvagem", "Wild Mimic Dedication", "Dedicación de Mímico salvaje", 80, "Treinado em Natureza"],
+  ["winged_warrior", "Dedicação de Guerreiro Alado", "Winged Warrior Dedication", "Dedicación de guerrero alado", 82, "Você possui ou obtém uma forma de voo"],
+];
+for (const [slug, pt, en, es, page, prereq] of HOWL_WILD_ARCHETYPE_DEDICATIONS) {
+  const id = `feat.archetype.${slug}.dedication`;
+  const archetypeId = `archetype.${slug}`;
+  if ((PF2E_DATA.feats || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.feats.push({
+    id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es }, level: 2, dedicationLevel: 2,
+    summaries: { "pt-BR": `Dedicação de arquétipo de Howl of the Wild; requisito: ${prereq}.`, en: `Howl of the Wild archetype dedication; prerequisite: ${prereq}.`, es: `Dedicación de arquetipo de Howl of the Wild; requisito: ${prereq}.` },
+    description: "Dedicação de Howl of the Wild; efeitos e requisitos completos pendentes de revisão.", category: "Arquétipo", type: "Talento", archetypeId,
+    prerequisites: [prereq], prereq: [prereq], traits: ["Arquétipo", "Dedicação"],
+    source: { book: HOWL_WILD_SOURCE, page }, sourceApproximate: true, ruleset: "remaster", needs_review: true,
+  });
+}
+
+// Howl of the Wild, pp. 58–65: Warden spells and Witches of the Wild.
+const HOWL_WILD_WARDEN_AND_WITCH_SPELLS = [
+  ["ranger", "keen_smell", "Olfato Aguçado", "Keen Smell", "Olfato agudo", 1, 58, "Focus Spell", "Magia de Foco", ["primal"], "Warden"],
+  ["ranger", "slime_spit", "Cuspe de Limo", "Slime Spit", "Escupitajo de limo", 1, 58, "Focus Spell", "Magia de Foco", ["primal"], "Warden"],
+  ["ranger", "canopy_crawler", "Rastejador de Copas", "Canopy Crawler", "Trepador del dosel", 2, 59, "Focus Spell", "Magia de Foco", ["primal"], "Warden"],
+  ["ranger", "imitate_fauna", "Imitar Fauna", "Imitate Fauna", "Imitar fauna", 2, 59, "Focus Spell", "Magia de Foco", ["primal"], "Warden"],
+  ["ranger", "distracting_decoy", "Isca Distraidora", "Distracting Decoy", "Señuelo distractor", 1, 59, "Focus Spell", "Magia de Foco", ["primal"], "Warden"],
+  ["ranger", "threatening_mimicry", "Mimetismo Ameaçador", "Threatening Mimicry", "Mimetismo amenazador", 3, 60, "Focus Spell", "Magia de Foco", ["primal"], "Warden"],
+  ["ranger", "warning_stripes", "Listras de Aviso", "Warning Stripes", "Rayas de advertencia", 3, 60, "Focus Spell", "Magia de Foco", ["primal"], "Warden"],
+  ["ranger", "gluttonous_growth", "Crescimento Voraz", "Gluttonous Growth", "Crecimiento voraz", 5, 60, "Focus Spell", "Magia de Foco", ["primal"], "Warden"],
+  ["ranger", "pack_breaker", "Rompedor de Matilha", "Pack Breaker", "Rompe jaurías", 5, 60, "Focus Spell", "Magia de Foco", ["primal"], "Warden"],
+  ["ranger", "pulverizing_wake", "Rastro Pulverizador", "Pulverizing Wake", "Estela pulverizadora", 5, 60, "Focus Spell", "Magia de Foco", ["primal"], "Warden"],
+  ["witch", "sting_of_the_sea", "Ferrão do Mar", "Sting of the Sea", "Aguijón del mar", 1, 61, "Cantrip", "Truque Mágico", ["primal"], "Witch"],
+  ["witch", "scroungers_glee", "Alegria do Escarafunchador", "Scrounger's Glee", "Alegría del recolector", 1, 62, "Cantrip", "Truque Mágico", ["primal"], "Witch"],
+  ["witch", "murmuration", "Murmuração", "Murmuration", "Murmuración", 1, 62, "Cantrip", "Truque Mágico", ["primal"], "Witch"],
+  ["witch", "blood_in_the_water", "Sangue na Água", "Blood in the Water", "Sangre en el agua", 3, 63, "Focus Spell", "Magia de Foco", ["primal"], "Witch"],
+  ["witch", "mycological_malady", "Mal-Estar Micológico", "Mycological Malady", "Malestar micológico", 3, 64, "Focus Spell", "Magia de Foco", ["primal"], "Witch"],
+  ["witch", "sheltering_wings", "Asas Protetoras", "Sheltering Wings", "Alas protectoras", 3, 65, "Focus Spell", "Magia de Foco", ["primal"], "Witch"],
+];
+for (const [classSlug, slug, pt, en, es, rank, page, type, category, traditions, sourceSection] of HOWL_WILD_WARDEN_AND_WITCH_SPELLS) {
+  const id = `spell.howl.${slug}`;
+  if ((PF2E_DATA.spells || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.spells.push({
+    id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es }, rank, level: rank, focus: type === "Focus Spell",
+    traditions, category, type, classId: `class.${classSlug}`, traits: [sourceSection],
+    summaries: { "pt-BR": `${category} de Howl of the Wild para ${classSlug === "ranger" ? "Patrulheiro" : "Bruxa"}, ranque ${rank}.`, en: `Howl of the Wild ${category.toLowerCase()} for ${classSlug === "ranger" ? "Ranger" : "Witch"}, rank ${rank}.`, es: `${category} de Howl of the Wild para ${classSlug === "ranger" ? "explorador" : "bruja"}, rango ${rank}.` },
+    description: `Opção da seção ${sourceSection} de Howl of the Wild; efeito completo pendente de revisão.`,
+    source: { book: HOWL_WILD_SOURCE, page }, sourceApproximate: true, ruleset: "remaster", needs_review: true,
+  });
+}
+
+// Dark Archive, pp. 25–29: psi cantrips exclusivos das mentes conscientes.
+const DARK_ARCHIVE_PSYCHIC_CANTRIPS = [
+  ["telekinetic_rend", "Rasgo Telecinético", "Telekinetic Rend", "Desgarro telequinético", 1, 25],
+  ["vector_screen", "Tela Vetorial", "Vector Screen", "Pantalla vectorial", 3, 25],
+  ["dancing_blade", "Lâmina Dançante", "Dancing Blade", "Hoja danzante", 5, 25],
+  ["glimpse_weakness", "Vislumbrar Fraqueza", "Glimpse Weakness", "Vislumbrar debilidad", 1, 26],
+  ["omnidirectional_scan", "Varredura Omnidirecional", "Omnidirectional Scan", "Escaneo omnidireccional", 3, 26],
+  ["foresee_the_path", "Prever o Caminho", "Foresee the Path", "Prever el camino", 5, 26],
+  ["thermal_stasis", "Estase Térmica", "Thermal Stasis", "Estasis térmica", 1, 27],
+  ["entropic_wheel", "Roda Entrópica", "Entropic Wheel", "Rueda entrópica", 3, 27],
+  ["redistribute_potential", "Redistribuir Potencial", "Redistribute Potential", "Redistribuir potencial", 5, 27],
+  ["forbidden_thought", "Pensamento Proibido", "Forbidden Thought", "Pensamiento prohibido", 1, 28],
+  ["shatter_mind", "Despedaçar a Mente", "Shatter Mind", "Destrozar la mente", 3, 28],
+  ["contagious_idea", "Ideia Contagiosa", "Contagious Idea", "Idea contagiosa", 5, 28],
+  ["imaginary_weapon", "Arma Imaginária", "Imaginary Weapon", "Arma imaginaria", 1, 29],
+  ["astral_rain", "Chuva Astral", "Astral Rain", "Lluvia astral", 3, 29],
+  ["hologram_cage", "Jaula de Holograma", "Hologram Cage", "Jaula de holograma", 5, 29],
+  ["distortion_lens", "Lente de Distorção", "Distortion Lens", "Lente de distorsión", 1, 29],
+  ["ghostly_shift", "Deslocamento Fantasmagórico", "Ghostly Shift", "Desplazamiento fantasmal", 3, 29],
+  ["tesseract_tunnel", "Túnel de Tesserato", "Tesseract Tunnel", "Túnel de teseracto", 5, 29],
+];
+for (const [slug, pt, en, es, rank, page] of DARK_ARCHIVE_PSYCHIC_CANTRIPS) {
+  const id = `spell.dark_archive.psychic.${slug}`;
+  if ((PF2E_DATA.spells || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.spells.push({
+    id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es }, rank, level: rank,
+    traditions: ["occult"], category: "Psi Cantrip", type: "Cantrip", classId: "class.psychic",
+    traits: ["Psíquico", "Ocultista"],
+    summaries: {
+      "pt-BR": `Psi cantrip exclusivo do Psíquico, ranque ${rank}.`,
+      en: `Psychic exclusive psi cantrip, rank ${rank}.`,
+      es: `Truco psi exclusivo del Psíquico, rango ${rank}.`,
+    },
+    description: "Psi cantrip de Dark Archive; efeito detalhado pendente de revisão.",
+    source: { book: DARK_ARCHIVE_SOURCE, page }, sourceApproximate: true, ruleset: "legacy", needs_review: true,
+  });
+}
+
+// Dark Archive, pp. 104–107: magias Deviant; exigem uma habilidade desviante.
+const DARK_ARCHIVE_DEVIANT_SPELLS = [
+  ["bilocation", "Bilocação", "Bilocation", "Bilocación", 9, ["arcane", "occult"], 104],
+  ["bracing_tendrils", "Gavinhas de Sustentação", "Bracing Tendrils", "Zarcillos de refuerzo", 3, ["arcane", "occult"], 104],
+  ["empty_pack", "Mochila Vazia", "Empty Pack", "Mochila vacía", 2, ["arcane", "occult"], 104],
+  ["focusing_hum", "Zumbido de Foco", "Focusing Hum", "Zumbido focalizador", 3, ["divine", "occult"], 104],
+  ["implement_of_destruction", "Implemento de Destruição", "Implement of Destruction", "Implemento de destrucción", 4, ["divine", "occult"], 105],
+  ["etheric_shards", "Estilhaços Etéricos", "Etheric Shards", "Esquirlas etéricas", 5, ["arcane", "occult"], 105],
+  ["falling_sky", "Céu Cadente", "Falling Sky", "Cielo descendente", 8, ["arcane", "occult"], 105],
+  ["poltergeists_fury", "Fúria do Poltergeist", "Poltergeist's Fury", "Furia del poltergeist", 6, ["arcane", "occult"], 106],
+  ["momentary_recovery", "Recuperação Momentânea", "Momentary Recovery", "Recuperación momentánea", 7, ["arcane", "occult"], 106],
+  ["rally_point", "Ponto de Reunião", "Rally Point", "Punto de reunión", 3, ["arcane", "occult"], 106],
+  ["moths_supper", "Banquete das Mariposas", "Moth's Supper", "Banquete de polillas", 3, ["occult", "primal"], 106],
+  ["sea_of_thought", "Mar de Pensamento", "Sea of Thought", "Mar de pensamiento", 3, ["arcane", "occult"], 106],
+  ["shadow_spy", "Espião das Sombras", "Shadow Spy", "Espía de las sombras", 3, ["occult", "primal"], 107],
+  ["soft_landing", "Pouso Suave", "Soft Landing", "Aterrizaje suave", 4, ["arcane", "occult", "primal"], 107],
+  ["telekinetic_bombardment", "Bombardeio Telecinético", "Telekinetic Bombardment", "Bombardeo telequinético", 7, ["arcane", "occult"], 107],
+];
+for (const [slug, pt, en, es, rank, traditions, page] of DARK_ARCHIVE_DEVIANT_SPELLS) {
+  const id = `spell.dark_archive.deviant.${slug}`;
+  if ((PF2E_DATA.spells || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.spells.push({
+    id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es }, rank, level: rank, traditions,
+    category: "Deviant Spell", type: "Spell", requiresDeviant: true, traits: ["Desviante"],
+    summaries: {
+      "pt-BR": `Magia Deviant de Dark Archive, ranque ${rank}; requer habilidade desviante.`,
+      en: `Dark Archive deviant spell, rank ${rank}; requires a deviant ability.`,
+      es: `Conjuro Deviant de Dark Archive, rango ${rank}; requiere una habilidad desviada.`,
+    },
+    description: "Magia Deviant de Dark Archive; efeito detalhado pendente de revisão.",
+    source: { book: DARK_ARCHIVE_SOURCE, page }, sourceApproximate: true, ruleset: "legacy", needs_review: true,
+  });
+}
+
+// Dark Archive, pp. 142–145: magias de domínio apócrifo.
+const DARK_ARCHIVE_APOCRYPHAL_DOMAINS = [
+  ["euphoric_renewal", "Renovação Eufórica", "Euphoric Renewal", "Renovación eufórica", 4, "death", 142],
+  ["frenzied_revelry", "Folguedo Frenético", "Frenzied Revelry", "Jolgorio frenético", 1, "indulgence", 142],
+  ["cinder_gaze", "Olhar de Brasa", "Cinder Gaze", "Mirada de brasa", 1, "fire", 142],
+  ["hollow_heart", "Coração Vazio", "Hollow Heart", "Corazón hueco", 1, "ambition", 143],
+  ["shaken_confidence", "Confiança Abalada", "Shaken Confidence", "Confianza quebrada", 4, "confidence", 143],
+  ["isolation", "Isolamento", "Isolation", "Aislamiento", 4, "darkness", 143],
+  ["string_of_fate", "Fio do Destino", "String of Fate", "Hilo del destino", 1, "fate", 144],
+  ["inevitable_destination", "Destino Inevitável", "Inevitable Destination", "Destino inevitable", 4, "travel", 144],
+  ["victory_cry", "Grito de Vitória", "Victory Cry", "Grito de victoria", 1, "might", 144],
+  ["purifying_veil", "Véu Purificador", "Purifying Veil", "Velo purificador", 4, "water", 144],
+  ["weaponize_secret", "Armar Segredo", "Weaponize Secret", "Armar secreto", 4, "secrecy", 145],
+  ["wind_whispers", "Sussurros do Vento", "Wind Whispers", "Susurros del viento", 4, "air", 145],
+  ["wordsmith", "Mestre das Palavras", "Wordsmith", "Maestro de las palabras", 4, "knowledge", 145],
+];
+for (const [slug, pt, en, es, rank, domain, page] of DARK_ARCHIVE_APOCRYPHAL_DOMAINS) {
+  const id = `spell.dark_archive.domain.${slug}`;
+  if ((PF2E_DATA.spells || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.spells.push({
+    id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es }, rank, level: rank, focus: true, domain,
+    category: "Domínio Apócrifo", type: "Focus Spell", traditions: ["divine"], traits: ["Domínio", "Apócrifo"],
+    summaries: {
+      "pt-BR": `Magia de domínio apócrifo de ${domain}, foco ${rank}, de Dark Archive.`,
+      en: `Dark Archive apocryphal ${domain} domain focus spell, focus ${rank}.`,
+      es: `Conjuro de dominio apócrifo de ${domain} de Dark Archive, foco ${rank}.`,
+    },
+    description: "Magia de domínio apócrifo; efeitos e requisito de acesso ao domínio pendentes de revisão.",
+    source: { book: DARK_ARCHIVE_SOURCE, page }, sourceApproximate: true, ruleset: "legacy", needs_review: true,
+  });
+}
+
+// Dark Archive, pp. 181–183: magias temporais.
+const DARK_ARCHIVE_TEMPORAL_SPELLS = [
+  ["awaken_entropy", "Despertar Entropia", "Awaken Entropy", "Despertar la entropía", 6, 181],
+  ["behold_the_weave", "Contemplar a Trama", "Behold the Weave", "Contemplar la trama", 3, 181],
+  ["quicken_time", "Acelerar o Tempo", "Quicken Time", "Acelerar el tiempo", 5, 181],
+  ["stagnate_time", "Estagnar o Tempo", "Stagnate Time", "Estancar el tiempo", 5, 181],
+  ["loose_times_arrow", "Soltar a Flecha do Tempo", "Loose Time's Arrow", "Soltar la flecha del tiempo", 2, 182],
+  ["morass_of_ages", "Pântano das Eras", "Morass of Ages", "Pantano de las eras", 4, 182],
+  ["summon_irii", "Convocar Irii", "Summon Irii", "Convocar iri", 8, 182],
+  ["suspended_retribution", "Retribuição Suspensa", "Suspended Retribution", "Retribución suspendida", 6, 183],
+  ["time_pocket", "Bolso Temporal", "Time Pocket", "Bolsillo temporal", 3, 183],
+  ["time_sense", "Sentido Temporal", "Time Sense", "Sentido temporal", 1, 183],
+  ["temporal_twin", "Gêmeo Temporal", "Temporal Twin", "Gemelo temporal", 3, 183],
+];
+for (const [slug, pt, en, es, rank, page] of DARK_ARCHIVE_TEMPORAL_SPELLS) {
+  const id = `spell.dark_archive.temporal.${slug}`;
+  if ((PF2E_DATA.spells || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.spells.push({
+    id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es }, rank, level: rank,
+    category: "Magia Temporal", type: rank === 1 ? "Cantrip" : "Spell", traditions: ["arcane", "occult"], traits: ["Temporal"],
+    summaries: {
+      "pt-BR": `Magia temporal de Dark Archive, ranque ${rank}.`,
+      en: `Dark Archive temporal spell, rank ${rank}.`,
+      es: `Conjuro temporal de Dark Archive, rango ${rank}.`,
+    },
+    description: "Magia temporal de Dark Archive; efeito detalhado e acesso individual pendentes de revisão.",
+    source: { book: DARK_ARCHIVE_SOURCE, page }, sourceApproximate: true, ruleset: "legacy", needs_review: true,
+  });
+}
+
+// Dark Archive, pp. 160–165: itens amaldiçoados e contratos do capítulo de itens.
+const DARK_ARCHIVE_ITEMS = [
+  ["book_of_lost_days", "Livro dos Dias Perdidos", "Book of Lost Days", "Libro de los días perdidos", 15, "Amaldiçoado", 160],
+  ["gift_of_the_poisoned_heart", "Presente do Coração Envenenado", "Gift of the Poisoned Heart", "Regalo del corazón envenenado", 16, "Consumível Amaldiçoado", 160],
+  ["calamity_glass", "Vidro da Calamidade", "Calamity Glass", "Vidrio de la calamidad", 11, "Amaldiçoado", 160],
+  ["golden_goose", "Ganso Dourado", "Golden Goose", "Ganso dorado", 11, "Amaldiçoado", 160],
+  ["rose_of_loves_lost", "Rosa dos Amores Perdidos", "Rose of Loves Lost", "Rosa de los amores perdidos", 10, "Consumível Amaldiçoado", 161],
+  ["mistranslators_draft", "Rascunho do Tradutor Incorreto", "Mistranslator's Draft", "Borrador del mal traductor", 9, "Consumível Amaldiçoado", 161],
+  ["tablet_of_chained_souls", "Tábua das Almas Acorrentadas", "Tablet of Chained Souls", "Tabla de almas encadenadas", 8, "Amaldiçoado", 161],
+  ["ring_of_sneering_charity", "Anel da Caridade Zombeteira", "Ring of Sneering Charity", "Anillo de caridad burlona", 7, "Amaldiçoado", 161],
+  ["taletellers_ring", "Anel do Contador de Histórias", "Taleteller's Ring", "Anillo del cuentacuentos", 9, "Amaldiçoado", 161],
+  ["cryolite_eye", "Olho de Criolita", "Cryolite Eye", "Ojo de criolita", 6, "Contrato", 164],
+  ["hand_hewed_face", "Rosto Esculpido à Mão", "Hand-Hewed Face", "Rostro tallado a mano", 7, "Contrato", 164],
+  ["bottomless_purse", "Bolsa Inesgotável", "Bottomless Purse", "Bolsa inagotable", 8, "Contrato", 164],
+  ["key_to_the_stomach", "Chave do Estômago", "Key to the Stomach", "Llave del estómago", 9, "Contrato", 165],
+  ["vial_of_the_immortal_wellspring", "Frasco da Fonte Imortal", "Vial of the Immortal Wellspring", "Vial del manantial inmortal", 20, "Contrato", 165],
+  ["lost_ember", "Brasa Perdida", "Lost Ember", "Brasa perdida", 10, "Contrato", 165],
+  ["self_emptying_pocket", "Bolso que se Esvazia Sozinho", "Self-Emptying Pocket", "Bolsillo auto-vaciante", 9, "Contrato", 165],
+  ["stone_of_unrivaled_skill", "Pedra da Habilidade Inigualável", "Stone of Unrivaled Skill", "Piedra de habilidad sin igual", 17, "Contrato", 165],
+];
+for (const [slug, pt, en, es, level, category, page] of DARK_ARCHIVE_ITEMS) {
+  const id = `item.dark_archive.${slug}`;
+  if ((PF2E_DATA.items || []).some((record) => record.id === id)) continue;
+  const cursed = String(category).includes("Amaldiçoado");
+  PF2E_DATA.items.push({
+    id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es }, category, subcategory: "Itens Mágicos",
+    level, rarity: cursed ? "rare" : "uncommon", traits: ["Mágico", ...(cursed ? ["Amaldiçoado"] : ["Contrato"])],
+    summaries: {
+      "pt-BR": `Item de ${category.toLowerCase()} de Dark Archive, nível ${level}.`,
+      en: `Dark Archive ${String(category).toLowerCase()} item, level ${level}.`,
+      es: `Objeto de ${String(category).toLowerCase()} de Dark Archive, nivel ${level}.`,
+    },
+    description: "Item de Dark Archive; ativação, benefício e maldição detalhados pendentes de revisão.",
+    source: { book: DARK_ARCHIVE_SOURCE, page }, sourceApproximate: true, ruleset: "legacy", needs_review: true,
+  });
+}
+
+// Dark Archive, pp. 166–169: talentos dos arquétipos Pactbinder e Curse Maelstrom.
+const DARK_ARCHIVE_ARCHETYPE_FEATS = [
+  ["pactbinder", "pactbinder_dedication", "Dedicação de Vinculador de Pactos", "Pactbinder Dedication", "Dedicación de vinculador de pactos", 2, "Treinado em Diplomacia e treinado em Arcanismo, Natureza, Ocultismo ou Religião", 166],
+  ["pactbinder", "sociable_vow", "Voto Sociável", "Sociable Vow", "Voto sociable", 4, "Dedicação de Vinculador de Pactos e especialista em Diplomacia", 166],
+  ["pactbinder", "pact_of_fey_glamour", "Pacto do Glamour Feérico", "Pact of Fey Glamour", "Pacto del glamour feérico", 4, "Dedicação de Vinculador de Pactos", 166],
+  ["pactbinder", "pact_of_draconic_fury", "Pacto da Fúria Dracônica", "Pact of Draconic Fury", "Pacto de furia dracónica", 6, "Dedicação de Vinculador de Pactos", 166],
+  ["pactbinder", "pact_of_infernal_prowess", "Pacto da Proeza Infernal", "Pact of Infernal Prowess", "Pacto de proeza infernal", 8, "Dedicação de Vinculador de Pactos", 167],
+  ["pactbinder", "pact_of_the_final_breath", "Pacto do Último Suspiro", "Pact of the Final Breath", "Pacto del último aliento", 12, "Dedicação de Vinculador de Pactos", 167],
+  ["pactbinder", "pact_of_eldritch_eyes", "Pacto dos Olhos Sobrenaturais", "Pact of Eldritch Eyes", "Pacto de ojos sobrenaturales", 14, "Dedicação de Vinculador de Pactos", 167],
+  ["curse_maelstrom", "curse_maelstrom_dedication", "Dedicação de Maremoto de Maldições", "Curse Maelstrom Dedication", "Dedicación de maremoto de maldiciones", 2, "Você está amaldiçoado ou já foi amaldiçoado", 168],
+  ["curse_maelstrom", "familiar_oddities", "Excentricidades Familiares", "Familiar Oddities", "Rarezas familiares", 2, "Dedicação de Maremoto de Maldições e treinado em Ocultismo ou Saber de Maldições", 168],
+  ["curse_maelstrom", "unnerving_expansion", "Expansão Perturbadora", "Unnerving Expansion", "Expansión inquietante", 4, "Dedicação de Maremoto de Maldições", 168],
+  ["curse_maelstrom", "share_burden", "Compartilhar Fardo", "Share Burden", "Compartir carga", 6, "Dedicação de Maremoto de Maldições", 169],
+  ["curse_maelstrom", "accursed_magic", "Magia Amaldiçoada", "Accursed Magic", "Magia maldita", 8, "Dedicação de Maremoto de Maldições", 169],
+  ["curse_maelstrom", "counter_curse", "Contramaldición", "Counter Curse", "Contramaldición", 8, "Dedicação de Maremoto de Maldições", 169],
+  ["curse_maelstrom", "torrential_backlash", "Rebote Torrencial", "Torrential Backlash", "Reversión torrencial", 10, "Dedicação de Maremoto de Maldições", 169],
+  ["curse_maelstrom", "reverse_curse", "Reverter Maldição", "Reverse Curse", "Revertir maldición", 12, "Contramaldición", 169],
+];
+for (const [archetype, slug, pt, en, es, level, prereq, page] of DARK_ARCHIVE_ARCHETYPE_FEATS) {
+  const archetypeId = `archetype.dark_archive.${archetype}`;
+  const id = `feat.${archetypeId}.${slug}`;
+  if ((PF2E_DATA.feats || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.feats.push({
+    id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es },
+    summaries: {
+      "pt-BR": `Talento do arquétipo ${archetype === "pactbinder" ? "Vinculador de Pactos" : "Maremoto de Maldições"}, nível ${level}.`,
+      en: `${archetype === "pactbinder" ? "Pactbinder" : "Curse Maelstrom"} archetype feat, level ${level}.`,
+      es: `Dote del arquetipo ${archetype === "pactbinder" ? "Vinculador de pactos" : "Maremoto de maldiciones"}, nivel ${level}.`,
+    },
+    description: "Talento de Dark Archive; efeito detalhado pendente de revisão.", category: "Arquétipo", type: "Talento", level,
+    archetypeId, prerequisites: [prereq], traits: ["Arquétipo"],
+    source: { book: DARK_ARCHIVE_SOURCE, page }, sourceApproximate: true, ruleset: "legacy", needs_review: true,
   });
 }
 

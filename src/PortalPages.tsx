@@ -36,6 +36,7 @@ const catalogCategories: Array<{ type: PickerType; label: MessageKey }> = [
   { type: "ancestry", label: "ancestries" },
   { type: "heritage", label: "heritages" },
   { type: "class", label: "classes" },
+  { type: "subclass", label: "subclasses" },
   { type: "background", label: "backgrounds" },
   { type: "archetype", label: "archetypes" },
   { type: "spell", label: "spells" },
@@ -47,6 +48,7 @@ const catalogCategories: Array<{ type: PickerType; label: MessageKey }> = [
   { type: "action", label: "actions" },
   { type: "weapon", label: "weapons" },
   { type: "armor", label: "armors" },
+  { type: "shield", label: "shields" },
   { type: "condition", label: "conditions" },
   { type: "buff", label: "buffs" },
 ];
@@ -56,19 +58,19 @@ const validationCopy: Record<"pt-BR" | "en" | "es", string[]> = {
     "Classes Remaster usam CD de classe Treinado no nível 1 e salvamentos por proficiência.",
     "Perícias e Saberes recebem modificadores de atributo, proficiência e nível do personagem.",
     "Magias organizam ranques de 1 a 10 e validam compatibilidade com tradições da classe.",
-    "Exportação PDF preserva os 1087 campos de formulário editáveis oficiais do Pathfinder 2e.",
+    "A exportação PDF mantém editáveis os campos do modelo oficial que são preservados pelo preenchimento.",
   ],
   en: [
     "Remaster classes use Trained class DC at level 1 and proficiency-based saves.",
     "Skills and Lores compute ability, proficiency, and character level modifiers.",
     "Spells organize ranks 1 through 10 and validate class tradition compatibility.",
-    "PDF export preserves all 1,087 official fillable Pathfinder 2e form fields.",
+    "PDF export keeps the official template fields editable when they are preserved by the fill operation.",
   ],
   es: [
     "Las clases Remaster usan CD de clase Entrenada a nivel 1 y salvaciones por competencia.",
     "Las habilidades y saberes calculan modificadores de atributo, competencia y nivel.",
     "Los conjuros organizan rangos del 1 al 10 y validan compatibilidad con tradiciones.",
-    "La exportación PDF preserva los 1.087 campos de formulario editables oficiales de PF2e.",
+    "La exportación PDF mantiene editables los campos de la plantilla oficial que conserva el rellenado.",
   ],
 };
 
@@ -130,7 +132,7 @@ function CatalogPage() {
     });
   }, [bookFilter, category, entries, locale, query, rarityFilter, rulesetFilter]);
 
-  return <main className="portal-page" id="portal-content" tabIndex={-1}>
+  return <main className="portal-page portal-catalog-page" id="portal-content" tabIndex={-1}>
     <header className="portal-hero"><span>PATHBUILDER KNOWLEDGE BASE</span><h1>{t("compendiumTitle")}</h1><p>{t("compendiumIntro")}</p></header>
     <section className="catalog-toolbar" aria-label={t("searchOptions")}>
       <label className="catalog-search-label"><span>{t("catalogSearch")}</span><input value={query} onChange={(event) => setQuery(event.target.value)} type="search" placeholder={t("search")} /></label>
@@ -162,6 +164,8 @@ function CatalogPage() {
             <span className={inspectedEntry.data.ruleset === "remaster" ? "ruleset-badge remaster" : inspectedEntry.data.ruleset === "legacy" ? "ruleset-badge legacy" : "ruleset-badge needs_review"}>
               {inspectedEntry.data.ruleset === "remaster" ? t("rulesetRemaster") : inspectedEntry.data.ruleset === "legacy" ? t("rulesetLegacy") : t("rulesetReview")}
             </span>
+            {inspectedEntry.data.sourceApproximate && <span className="source-badge review">{t("sourceSectionReference")}</span>}
+            {hasFallbackTranslation(inspectedEntry) && <span className="source-badge translation-pending">{t("translationPending")}</span>}
             {inspectedEntry.data.traits?.map((trait: string) => <span key={trait} className="trait-tag">{trait}</span>)}
           </div>
 
@@ -186,7 +190,7 @@ function CatalogPage() {
           {/* SOURCE CITATION */}
           <footer className="compendium-modal-footer">
             <strong>{t("source")}:</strong>
-            <span>{inspectedEntry.data.source?.book ? `${inspectedEntry.data.source.book} · p. ${inspectedEntry.data.source.page ?? "-"}` : t("uncatalogued")}</span>
+            <span>{inspectedEntry.data.source?.book ? `${inspectedEntry.data.sourceApproximate ? `${t("sourceSectionReference")}: ` : ""}${inspectedEntry.data.source.book} · p. ${inspectedEntry.data.source.page ?? "-"}` : t("uncatalogued")}</span>
           </footer>
         </div>
       </div>
@@ -194,11 +198,24 @@ function CatalogPage() {
   </main>;
 }
 
+function hasFallbackTranslation(entry: { data?: { id?: string; summaries?: Partial<Record<"pt-BR" | "en" | "es", string>> } }): boolean {
+  const summaries = entry.data?.summaries;
+  const pt = summaries?.["pt-BR"];
+  const en = summaries?.en;
+  const es = summaries?.es;
+  return String(entry.data?.id ?? "").startsWith("item.compendium.")
+    && Boolean(pt)
+    && pt === en
+    && en === es;
+}
+
 function CatalogCard({ entry, onInspect }: { entry: PickerItem & { category: PickerType; categoryLabel: string }; onInspect?: () => void }) {
   const { locale, t } = useI18n();
   const source = entry.data.source;
-  const verified = Boolean(source?.book && source?.page);
+  const approximateSource = Boolean(entry.data.sourceApproximate);
+  const verified = Boolean(source?.book && source?.page) && !approximateSource;
   const legacy = verified && entry.data.ruleset === "legacy";
+  const translationPending = hasFallbackTranslation(entry);
   const rarity = entry.data.rarity === "rare" ? t("rarityRare") : entry.data.rarity === "uncommon" ? t("rarityUncommon") : entry.data.rarity === "common" ? t("rarityCommon") : null;
   const castingTimes = entry.data.castingTimes as Partial<Record<"pt-BR" | "en" | "es", string>> | undefined;
   const traditionNames = entry.data.traditionNames as Partial<Record<"pt-BR" | "en" | "es", string[]>> | undefined;
@@ -213,11 +230,11 @@ function CatalogCard({ entry, onInspect }: { entry: PickerItem & { category: Pic
   ].filter((fact): fact is string => Boolean(fact));
 
   return <article className="catalog-card interactive" onClick={onInspect} tabIndex={0} onKeyDown={(e) => e.key === "Enter" && onInspect?.()} role="button" aria-label={getItemDisplayName(entry, locale)}>
-    <div className="catalog-card-top"><div className="catalog-card-meta"><span>{entry.categoryLabel}</span>{rarity && <span className={`rarity-badge ${String(entry.data.rarity)}`}>{rarity}</span>}</div><span className={legacy ? "source-badge legacy" : verified ? "source-badge verified" : "source-badge review"}>{legacy ? t("catalogLegacy") : verified ? t("catalogVerified") : t("catalogReview")}</span></div>
+    <div className="catalog-card-top"><div className="catalog-card-meta"><span>{entry.categoryLabel}</span>{rarity && <span className={`rarity-badge ${String(entry.data.rarity)}`}>{rarity}</span>}</div><div className="catalog-card-status"><span className={legacy ? "source-badge legacy" : verified ? "source-badge verified" : "source-badge review"}>{legacy ? t("catalogLegacy") : verified ? t("catalogVerified") : t("catalogReview")}</span>{approximateSource && <span className="source-badge review">{t("sourceSectionReference")}</span>}{translationPending && <span className="source-badge translation-pending">{t("translationPending")}</span>}</div></div>
     <h2>{getItemDisplayName(entry, locale)}</h2>
     {facts.length > 0 && <div className="catalog-facts">{facts.map((fact) => <span key={fact}>{fact}</span>)}</div>}
     {(entry.data.summaries?.[locale] ?? entry.data.description) && <p>{entry.data.summaries?.[locale] ?? entry.data.description}</p>}
-    <footer>{source?.book ? `${source.book}${source.page ? ` · p. ${source.page}` : ""}` : t("uncatalogued")}</footer>
+    <footer>{source?.book ? `${approximateSource ? `${t("sourceSectionReference")}: ` : ""}${source.book}${source.page ? ` · p. ${source.page}` : ""}` : t("uncatalogued")}</footer>
   </article>;
 }
 
@@ -580,7 +597,7 @@ function AdminPage() {
       try { return (window as any).app?.getPickerItems(type) || []; } catch { return []; }
     });
     return {
-      verified: records.filter((record: any) => record.data.needs_review === false && record.data.source?.book && record.data.source?.page).length,
+      verified: records.filter((record: any) => record.data.needs_review === false && !record.data.sourceApproximate && record.data.source?.book && record.data.source?.page).length,
       review: records.filter((record: any) => record.data.needs_review !== false).length,
       sources: pathfinderSources.filter((source) => source.catalogStatus === "partial").length,
     };

@@ -1,6 +1,6 @@
 import { act, cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { PickerModal } from "./PickerModal";
+import { getWeaponProficiencyRank, PickerModal } from "./PickerModal";
 import type { PickerBridge, PickerController } from "./types";
 import { I18nProvider } from "./i18n";
 
@@ -17,6 +17,10 @@ describe("PickerModal", () => {
   beforeEach(() => {
     cleanup();
     localStorage.clear();
+  });
+
+  it("resolve a proficiência de arma para classe importada como objeto", () => {
+    expect(getWeaponProficiencyRank({ class: { id: "class.fighter", name: "Guerreiro" } }, { data: { category: "Marcial" } })).toBe("E");
   });
   it("abre como diálogo, filtra opções e confirma a seleção", () => {
     const applyPickerSelection = vi.fn();
@@ -50,6 +54,57 @@ describe("PickerModal", () => {
     act(() => bridge?.open("feat"));
     fireEvent.keyDown(document, { key: "Escape" });
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+  });
+
+  it("não exibe opções incompatíveis com a ficha", () => {
+    const applyPickerSelection = vi.fn();
+    window.app = {
+      ...controllerDefaults,
+      character: { id: "test", name: "Teste", level: 1 },
+      getPickerItems: () => [
+        { name: "Opção válida", type: "Talento", data: { id: "feat.valid", category: "Geral" } },
+        { name: "Opção incompatível", type: "Talento", data: { id: "feat.invalid", category: "Geral" } },
+      ],
+      applyPickerSelection,
+    } satisfies PickerController;
+    (window as any).PF2E_ENGINE = {
+      getPrerequisiteCompatibility: (_character: unknown, record: { id?: string }) =>
+        record?.id === "feat.invalid"
+          ? { state: "incompatible", reason: "level", requiredLevel: 2 }
+          : { state: "available", reason: "available" },
+    };
+
+    let bridge: PickerBridge | undefined;
+    renderPicker((value) => { bridge = value; });
+    act(() => bridge?.open("feat"));
+
+    expect(screen.getByRole("option", { name: /Opção válida/ })).toBeInTheDocument();
+    expect(screen.queryByRole("option", { name: /Opção incompatível/ })).not.toBeInTheDocument();
+  });
+
+  it("não exibe magia incompatível com a capacidade de conjuração", () => {
+    window.app = {
+      ...controllerDefaults,
+      character: { id: "test", name: "Teste", level: 1 },
+      getPickerItems: () => [
+        { name: "Magia disponível", type: "Magia", data: { id: "spell.valid", rank: 1 } },
+        { name: "Magia incompatível", type: "Magia", data: { id: "spell.invalid", rank: 1 } },
+      ],
+      applyPickerSelection: vi.fn(),
+    } satisfies PickerController;
+    (window as any).PF2E_ENGINE = {
+      getSpellCompatibility: (_character: unknown, record: { id?: string }) =>
+        record?.id === "spell.invalid"
+          ? { state: "incompatible", reason: "no-spellcasting" }
+          : { state: "available", reason: "compatible" },
+    };
+
+    let bridge: PickerBridge | undefined;
+    renderPicker((value) => { bridge = value; });
+    act(() => bridge?.open("spell"));
+
+    expect(screen.getByRole("option", { name: /Magia disponível/ })).toBeInTheDocument();
+    expect(screen.queryByRole("option", { name: /Magia incompatível/ })).not.toBeInTheDocument();
   });
 
   it("navega na lista com setas e confirma com Enter", () => {
@@ -203,11 +258,11 @@ describe("PickerModal", () => {
     fireEvent.click(screen.getByRole("option", { name: /Backpack Catapult/ }));
 
     // Botão Buy deve estar desabilitado por fundos insuficientes
-    const buyBtn = screen.getByRole("button", { name: /Buy/i });
+    const buyBtn = screen.getByRole("button", { name: /Comprar/i });
     expect(buyBtn).toBeDisabled();
 
     // Botão Give deve estar habilitado
-    const giveBtn = screen.getByRole("button", { name: "Give" });
+    const giveBtn = screen.getByRole("button", { name: "Adicionar" });
     expect(giveBtn).not.toBeDisabled();
     fireEvent.click(giveBtn);
     expect(applyPickerSelection).toHaveBeenCalledWith("weapon", expect.objectContaining({ name: "Backpack Catapult (1d12 B)" }));
@@ -238,7 +293,7 @@ describe("PickerModal", () => {
     renderPicker((value) => { bridge = value; });
     act(() => bridge?.open("weapon"));
 
-    const buyBtn = screen.getByRole("button", { name: /Buy/i });
+    const buyBtn = screen.getByRole("button", { name: /Comprar/i });
     expect(buyBtn).not.toBeDisabled();
     fireEvent.click(buyBtn);
     expect(applyPickerSelection).toHaveBeenCalledWith(
@@ -247,6 +302,28 @@ describe("PickerModal", () => {
       undefined,
       true
     );
+  });
+
+  it.each([
+    ["pt-BR", "Comprar", "Adicionar", "deduzir da carteira"],
+    ["en", "Buy", "Give", "deduct from purse"],
+    ["es", "Comprar", "Añadir", "deducir de la bolsa"],
+  ] as const)("localiza as ações de compra e inclusão em %s", (locale, buyLabel, giveLabel, titleFragment) => {
+    localStorage.setItem("pathbuilder.locale", locale);
+    window.app = {
+      ...controllerDefaults,
+      character: { id: "test", name: "Guerreiro", level: 1, coins: { gp: 10, sp: 0, cp: 0, pp: 0 } },
+      getPickerItems: () => [{ name: "Adze (1d10 S)", type: "Arma", data: { name: "Adze (1d10 S)", names: { "pt-BR": "Enxó", en: "Adze", es: "Azula" }, category: "Marcial", price: "2 PO" } }],
+      applyPickerSelection: vi.fn(),
+    };
+
+    let bridge: PickerBridge | undefined;
+    renderPicker((value) => { bridge = value; });
+    act(() => bridge?.open("weapon"));
+
+    const buyButton = screen.getByRole("button", { name: new RegExp(buyLabel) });
+    expect(buyButton).toHaveAttribute("title", expect.stringContaining(titleFragment));
+    expect(screen.getByRole("button", { name: giveLabel })).toBeInTheDocument();
   });
 
   it("renderiza abas de talentos e permite alternar entre Talentos Gerais, de Perícia e Todos os Talentos", () => {
@@ -310,4 +387,3 @@ describe("PickerModal", () => {
     expect(applyPickerSelection).toHaveBeenCalledWith("feat", expect.objectContaining({ name: "Medicina de Batalha (Battle Medicine)" }), { filterType: "Geral" });
   });
 });
-

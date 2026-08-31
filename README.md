@@ -100,18 +100,19 @@ Contagem de páginas, idioma, edição e catalogação são estados separados:
 - `ruleset`: `remaster` ou `legacy` somente quando a edição for confirmada; caso contrário `needs_review`;
 - `linkedRecords`: opções que já possuem livro e página editorial.
 
-O catálogo possui atualmente 137 registros vinculados: 101 Remaster nos dois
-Player Core, em Rage of Elements, Guerra dos Imortais, Howl of the Wild e Battlecry!, além de 36 opções pré-Remaster provenientes
-de Segredos da Magia, Pólvora e Engrenagens, Dark Archive e Livro dos Mortos.
-Entre elas estão Animista, Exemplar, Comandante, Guardião, Jotunnato, Athamaru, Animal Desperto,
-Centauro, Povo-Sereia, Minotauro, Surki, Cineticista, Convocador, Magus, Inventor,
-Pistoleiro, Psíquico, Taumaturgo, Autômato, Esqueleto, heranças versáteis, biografias temáticas,
-17 arquétipos confirmados de *Guerra dos Imortais* e *Battlecry!*, além de 8 magias e 4 rituais
-confirmados no Player Core. Os registros vinculados possuem
-nomes e resumos próprios em pt-BR, inglês e espanhol. No
+Na última auditoria (`npm run audit:catalog`), o catálogo continha 2205 registros,
+incluindo o compêndio expandido legado, subclasses derivadas, heranças específicas
+normalizadas, opções de Player Core 2, Pólvora e Engrenagens, Livro dos Mortos,
+Dark Archive, Rage of Elements, Howl of the Wild, War of Immortals e Battlecry!:
+2161 com livro e página registrados; 44 ainda não têm fonte/página local e 1572
+estão marcados como `needs_review`. Não há
+nomes ou resumos ausentes nos três idiomas configurados (pt-BR, inglês e
+espanhol), nem fallback de tradução detectado no compêndio; as opções sem fonte
+continuam visivelmente pendentes. No
 Player Core 2, as páginas foram conferidas no início real das seções porque o
-sumário brasileiro diverge do miolo em parte das classes e heranças. Todo o
-restante continua visivelmente marcado como não catalogado.
+sumário brasileiro diverge do miolo em parte das classes, heranças e tabelas.
+Essa contagem é um diagnóstico do estado atual, não uma alegação de cobertura
+integral dos livros.
 
 ## CRUD de personagens
 

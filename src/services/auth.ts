@@ -281,12 +281,12 @@ export async function signUp(username: string, email: string, password: string):
     throw new Error(`O e-mail '${cleanEmail}' já possui uma conta cadastrada.`);
   }
 
-  const salt = crypto?.randomUUID ? crypto.randomUUID() : String(Math.random());
+  const salt = globalThis.crypto?.randomUUID ? globalThis.crypto.randomUUID() : String(Math.random());
   const passwordHash = await hashPassword(password, salt);
   const isFirstUser = users.length === 0;
 
   const newUser: StoredLocalUser = {
-    id: `usr_${crypto?.randomUUID ? crypto.randomUUID().slice(0, 8) : Date.now()}`,
+    id: `usr_${globalThis.crypto?.randomUUID ? globalThis.crypto.randomUUID().slice(0, 8) : Date.now()}`,
     username: cleanUsername,
     email: cleanEmail,
     passwordHash,

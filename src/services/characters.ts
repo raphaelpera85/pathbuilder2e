@@ -47,7 +47,7 @@ export function validateCharacter(value: unknown): CharacterData {
     ...structuredClone(candidate),
     id: typeof candidate.id === "string" && candidate.id.trim()
       ? candidate.id.trim()
-      : `personagem_${crypto.randomUUID ? crypto.randomUUID().slice(0, 8) : Date.now()}`,
+      : `personagem_${globalThis.crypto?.randomUUID ? globalThis.crypto.randomUUID().slice(0, 8) : Date.now()}`,
     name: candidate.name.trim(),
     level,
     gmEmail: typeof candidate.gmEmail === "string" ? candidate.gmEmail.trim() : (typeof candidate.gm_email === "string" ? candidate.gm_email.trim() : undefined),
@@ -150,7 +150,7 @@ export async function saveCharacter(
   const index = existing.findIndex((c) => c.character_key === character.id);
 
   const cloudRecord: CloudCharacter = {
-    id: index >= 0 ? existing[index].id : `chr_${crypto?.randomUUID ? crypto.randomUUID().slice(0, 8) : Date.now()}`,
+    id: index >= 0 ? existing[index].id : `chr_${globalThis.crypto?.randomUUID ? globalThis.crypto.randomUUID().slice(0, 8) : Date.now()}`,
     user_id: activeUser.id,
     character_key: character.id,
     name: character.name,
@@ -182,14 +182,20 @@ export async function deleteCharacter(id: string, userOrSession?: { id: string }
 
   if (isSupabaseConfigured && supabase) {
     try {
-      const { error } = await supabase.from("characters").delete().eq("id", id).eq("user_id", activeUser.id);
-      if (!error) {
+      // A UI pode enviar tanto o id técnico do registro quanto a chave estável
+      // da ficha. Remover por ambos evita deixar uma cópia remota órfã.
+      const byRowId = await supabase.from("characters").delete().eq("id", id).eq("user_id", activeUser.id);
+      const byCharacterKey = byRowId.error
+        ? byRowId
+        : await supabase.from("characters").delete().eq("character_key", id).eq("user_id", activeUser.id);
+      if (!byRowId.error && !byCharacterKey.error) {
         // Também remove do local por sincronização
         const existing = getLocalCharacters(activeUser.id);
         const filtered = existing.filter((c) => c.id !== id && c.character_key !== id);
         saveLocalCharacters(activeUser.id, filtered);
         return;
       }
+      if (byCharacterKey.error) console.warn("Supabase delete aviso:", byCharacterKey.error.message);
     } catch (err) {
       console.warn("Supabase delete fallback para local:", err);
     }

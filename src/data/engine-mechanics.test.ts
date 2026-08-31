@@ -48,6 +48,38 @@ describe("PF2E_ENGINE Mechanics & Calculations", () => {
     expect(stats.saves.fortitude.total).toBe(7);
   });
 
+  it("resolve classe e ancestralidade por nome curto ao calcular PV", () => {
+    const stats = engine.calculateCharacterStats({
+      level: 1,
+      ancestry: "Human",
+      class: "Barbarian",
+      abilities: { str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10 },
+    });
+    expect(stats.maxHp).toBe(20); // 8 de ancestralidade + 12 de classe.
+  });
+
+  it("resolve classe e ancestralidade importadas como objetos por ID", () => {
+    const stats = engine.calculateCharacterStats({
+      level: 1,
+      ancestry: { id: "ancestry.human", name: "Humano" },
+      class: { id: "class.barbarian", name: "Bárbaro" },
+      abilities: { str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10 },
+    });
+    expect(stats.maxHp).toBe(20); // Humano 8 + Bárbaro 12.
+  });
+
+  it("preserva a perícia concedida pelo antecedente localizado", () => {
+    const stats = engine.calculateTrainedSkillsCount({
+      level: 1,
+      class: "Fighter",
+      background: "Artisan",
+      abilities: { int: 10 },
+      skills: {},
+    });
+    expect(stats.backgroundSkill).toBeTruthy();
+    expect(stats.totalAllowed).toBeGreaterThan(2);
+  });
+
   it("applies Off-Guard (Desprevenido) -2 circumstance penalty to AC", () => {
     const charWithOffGuard = {
       ...baseCharacter,
@@ -103,6 +135,94 @@ describe("PF2E_ENGINE Mechanics & Calculations", () => {
     expect(critRoll.total).toBe(critRoll.baseTotal * 2);
   });
 
+  it("normalizes imported string damage bonuses before building formulas", () => {
+    const details = engine.calculateStrikeDamageDetails(
+      { damage: "1d8", damageBonus: "1", traits: [] },
+      { str: 3 },
+    );
+    expect(details.normalFormula).toBe("1d8+4");
+  });
+
+  it("applies only attached weapon and armor runes", () => {
+    const weapon = {
+      damage: "1d8",
+      category: "Marcial",
+      traits: [],
+      runes: ["item.magic.weapon_potency_1", "item.magic.striking_rune"]
+    };
+    const details = engine.calculateStrikeDamageDetails(weapon, { str: 3 });
+    expect(details.activeDice).toBe("2d8");
+    expect(details.normalFormula).toBe("2d8+3");
+    expect(details.runeBonuses).toEqual({ potency: 1, striking: 1, resilient: 0 });
+
+    const greater = engine.calculateStrikeDamageDetails({
+      damage: "1d8",
+      runes: ["item.compendium.2_weapon_potency_rune", "item.compendium.greater_striking_rune"]
+    }, { str: 3 });
+    expect(greater.activeDice).toBe("3d8");
+    expect(greater.runeBonuses).toMatchObject({ potency: 2, striking: 2 });
+
+    const unetched = engine.calculateStrikeDamageDetails({ damage: "1d8", runes: [] }, { str: 3 });
+    expect(unetched.activeDice).toBe("1d8");
+    expect(unetched.normalFormula).toBe("1d8+3");
+    expect(engine.isRuneCompatible("item.compendium.1_armor_potency_rune", "weapon")).toBe(false);
+    expect(engine.isRuneCompatible("item.compendium.striking_rune", "armor")).toBe(false);
+  });
+
+  it("applies armor potency to AC and resilient to all saves", () => {
+    const stats = engine.calculateCharacterStats({
+      ...baseCharacter,
+      equippedArmor: {
+        ...baseCharacter.equippedArmor,
+        runes: ["item.magic.armor_potency_1", "item.magic.resilient_rune"]
+      }
+    });
+    expect(stats.ac.total).toBe(19);
+    expect(stats.saves.fortitude.item).toBe(1);
+    expect(stats.saves.reflex.item).toBe(1);
+    expect(stats.saves.will.item).toBe(1);
+  });
+
+  it("normalizes companion data without inventing missing combat values", () => {
+    const companion = engine.calculateCompanionStats({}, {
+      id: "pet.custom",
+      name: "Companheiro sem estatísticas",
+      type: "animal_companion"
+    });
+    expect(companion.hpMax).toBeUndefined();
+    expect(companion.ac).toBeUndefined();
+    expect(companion.attacks).toEqual([]);
+  });
+
+  it("reports ammunition availability for reload weapons", () => {
+    const weapon = { traits: ["Recarga 1"], reload: 1 };
+    expect(engine.getAmmunitionStatus({ inventory: [] }, weapon)).toMatchObject({
+      requiresAmmunition: true,
+      quantity: 0,
+      available: false,
+      reload: 1
+    });
+    expect(engine.getAmmunitionStatus({ inventory: [{ id: "item.ammunition.bolts", qty: 20 }] }, weapon).available).toBe(true);
+    const firearm = { name: "Pistola", traits: ["Recarga 1", "Fogo"] };
+    expect(engine.getAmmunitionStatus({ inventory: [{ id: "item.ammunition.bolts", qty: 20 }] }, firearm)).toMatchObject({ requiredType: "bullet", available: false });
+    expect(engine.getAmmunitionStatus({ inventory: [{ id: "item.guns_gears.ten_bullets", qty: 10 }] }, firearm).available).toBe(true);
+  });
+
+  it("applies ABP potency, striking, armor and resilience once", () => {
+    const stats = engine.calculateCharacterStats({
+      ...baseCharacter,
+      level: 12,
+      variantRules: { automaticBonusProgression: true },
+      weapons: [{ ...baseCharacter.weapons[0], damage: "1d8" }],
+      equippedArmor: { ...baseCharacter.equippedArmor }
+    });
+    expect(stats.abpBonuses).toMatchObject({ attackPotency: 2, strikingDice: 2, armorPotency: 2, saveResilience: 1 });
+    expect(stats.strikes[0].attackTotal).toBe(3 + 14 + 2);
+    expect(stats.strikes[0].damageDetails.activeDice).toBe("3d8");
+    expect(stats.ac.item).toBe(6);
+    expect(stats.saves.fortitude.item).toBe(1);
+  });
+
   it("computes spell slots for standard full casters vs bounded casters", () => {
     const wizardChar = {
       name: "Mago",
@@ -140,5 +260,24 @@ describe("PF2E_ENGINE Mechanics & Calculations", () => {
     expect(stats.bulk.max).toBe(13); // 10 + 3 Str
     expect(stats.bulk.encumbered).toBe(8); // 5 + 3 Str
     expect(stats.bulk.isEncumbered).toBe(false);
+  });
+
+  it("normalizes negative shield-block damage to zero", () => {
+    const result = engine.calculateShieldBlock(-20, { hardness: 5, maxHp: 20, currentHp: 20, bt: 10 });
+    expect(result.incomingDamage).toBe(0);
+    expect(result.damageBlocked).toBe(0);
+    expect(result.excessDamage).toBe(0);
+    expect(result.newShieldHp).toBe(20);
+    expect(result.characterDamage).toBe(0);
+  });
+
+  it("soma platina legada e platina remaster quando a ficha contém os dois aliases", () => {
+    const stats = engine.calculateCharacterStats({
+      level: 1,
+      abilities: { str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10 },
+      coins: { pl: 1000, pp: 1000, gp: 0, sp: 0, cp: 0 },
+      inventory: [],
+    });
+    expect(stats.bulk.coinsBulk).toBe(2);
   });
 });

@@ -93,16 +93,16 @@ describe("PortalPages", () => {
     expect(pathfinderSources).toHaveLength(10);
     expect(pathfinderSources.every((source) => source.pageCountStatus === "verified_with_pdfinfo")).toBe(true);
     expect(pathfinderSources.every((source) => source.languageEvidence === "inferred_from_filename")).toBe(true);
-    expect(pathfinderSources.find((source) => source.id === "player-core-pt")).toMatchObject({ catalogStatus: "partial", linkedRecords: 28 });
-    expect(pathfinderSources.find((source) => source.id === "player-core-2-pt")).toMatchObject({ catalogStatus: "partial", linkedRecords: 19 });
-    expect(pathfinderSources.find((source) => source.id === "secrets-of-magic-pt")).toMatchObject({ catalogStatus: "partial", linkedRecords: 20, ruleset: "legacy" });
-    expect(pathfinderSources.find((source) => source.id === "guns-gears-pt")).toMatchObject({ catalogStatus: "partial", linkedRecords: 3, ruleset: "legacy" });
-    expect(pathfinderSources.find((source) => source.id === "dark-archive")).toMatchObject({ catalogStatus: "partial", linkedRecords: 3, ruleset: "legacy" });
-    expect(pathfinderSources.find((source) => source.id === "rage-elements")).toMatchObject({ catalogStatus: "partial", linkedRecords: 13, ruleset: "remaster" });
-    expect(pathfinderSources.find((source) => source.id === "book-dead-pt")).toMatchObject({ catalogStatus: "partial", linkedRecords: 10, ruleset: "legacy" });
-    expect(pathfinderSources.find((source) => source.id === "war-immortals")).toMatchObject({ catalogStatus: "partial", linkedRecords: 9, ruleset: "remaster" });
-    expect(pathfinderSources.find((source) => source.id === "howl-wild")).toMatchObject({ catalogStatus: "partial", linkedRecords: 6, ruleset: "remaster" });
-    expect(pathfinderSources.find((source) => source.id === "battlecry")).toMatchObject({ catalogStatus: "partial", linkedRecords: 26, ruleset: "remaster" });
+    expect(pathfinderSources.find((source) => source.id === "player-core-pt")).toMatchObject({ catalogStatus: "partial", linkedRecords: 375 });
+    expect(pathfinderSources.find((source) => source.id === "player-core-2-pt")).toMatchObject({ catalogStatus: "partial", linkedRecords: 242 });
+    expect(pathfinderSources.find((source) => source.id === "secrets-of-magic-pt")).toMatchObject({ catalogStatus: "partial", linkedRecords: 112, ruleset: "legacy" });
+    expect(pathfinderSources.find((source) => source.id === "guns-gears-pt")).toMatchObject({ catalogStatus: "partial", linkedRecords: 144, ruleset: "legacy" });
+    expect(pathfinderSources.find((source) => source.id === "dark-archive")).toMatchObject({ catalogStatus: "partial", linkedRecords: 219, ruleset: "legacy" });
+    expect(pathfinderSources.find((source) => source.id === "rage-elements")).toMatchObject({ catalogStatus: "partial", linkedRecords: 306, ruleset: "remaster" });
+    expect(pathfinderSources.find((source) => source.id === "book-dead-pt")).toMatchObject({ catalogStatus: "partial", linkedRecords: 43, ruleset: "legacy" });
+    expect(pathfinderSources.find((source) => source.id === "war-immortals")).toMatchObject({ catalogStatus: "partial", linkedRecords: 189, ruleset: "remaster" });
+    expect(pathfinderSources.find((source) => source.id === "howl-wild")).toMatchObject({ catalogStatus: "partial", linkedRecords: 120, ruleset: "remaster" });
+    expect(pathfinderSources.find((source) => source.id === "battlecry")).toMatchObject({ catalogStatus: "partial", linkedRecords: 289, ruleset: "remaster" });
     expect(pathfinderSources.every((source) => source.catalogStatus === "partial" && source.linkedRecords > 0)).toBe(true);
   });
 

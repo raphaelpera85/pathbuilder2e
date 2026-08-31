@@ -171,6 +171,10 @@
 }
 
 .item-row-card {
+  width: 100%;
+  color: inherit;
+  font: inherit;
+  text-align: left;
   display: flex;
   justify-content: space-between;
   align-items: center;

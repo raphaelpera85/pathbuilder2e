@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { toCharacterPayload, validateCharacter } from "./characters";
+import { deleteCharacter, listCharacters, saveCharacter, toCharacterPayload, validateCharacter } from "./characters";
 
 describe("character cloud contract", () => {
   it("preserva campos desconhecidos da ficha PF2e", () => {
@@ -28,5 +28,16 @@ describe("character cloud contract", () => {
       character_key: "heroi",
       ruleset: "needs_review",
     });
+  });
+
+  it("exclui fichas locais tanto pela chave estável quanto pelo id do registro", async () => {
+    const user = { id: "user-delete" } as never;
+    const first = await saveCharacter({ id: "char-key", name: "Por chave", level: 1 }, user);
+    const second = await saveCharacter({ id: "char-other", name: "Por id", level: 1 }, user);
+
+    await deleteCharacter(first.character_key, user);
+    await deleteCharacter(second.id, user);
+
+    expect(await listCharacters(user)).toEqual([]);
   });
 });

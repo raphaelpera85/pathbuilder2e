@@ -105,14 +105,16 @@ describe("Expansão de Livros PF2e e Assistente de IA de Criação", () => {
   });
 
   describe("3. Heranças Versáteis e Arquétipos Oficiais", () => {
-    it("deve conter todas as novas heranças elementais e de mortos-vivos", () => {
+    it("deve conter heranças elementais e arquétipos de mortos-vivos", () => {
       const heritages = data.versatileHeritages;
       const names = heritages.map((h: any) => h.name);
       expect(names.some((n: string) => n.includes("Ardande"))).toBe(true);
       expect(names.some((n: string) => n.includes("Talos"))).toBe(true);
-      expect(names.some((n: string) => n.includes("Fantasma"))).toBe(true);
-      expect(names.some((n: string) => n.includes("Vampiro"))).toBe(true);
-      expect(names.some((n: string) => n.includes("Zumbi"))).toBe(true);
+      expect(heritages.some((h: any) => ["heritage.ghost.legacy_pending", "heritage.vampire.legacy_pending", "heritage.zombie.legacy_pending"].includes(h.id))).toBe(false);
+      const archetypeNames = data.archetypes.map((a: any) => a.name);
+      expect(archetypeNames.some((n: string) => n.includes("Fantasma"))).toBe(true);
+      expect(archetypeNames.some((n: string) => n.includes("Vampiro"))).toBe(true);
+      expect(archetypeNames.some((n: string) => n.includes("Zumbi"))).toBe(true);
     });
 
     it("deve catalogar um compêndio rico de arquétipos e dedicações", () => {

@@ -6,6 +6,7 @@ import {
   canAffordPrice,
   deductCoins,
   formatCopperToString,
+  formatPriceToLocale,
 } from "./economy";
 
 describe("economy utility", () => {
@@ -33,6 +34,9 @@ describe("economy utility", () => {
     expect(parsePriceToCopper("25 cp")).toBe(25);
     expect(parsePriceToCopper("1 pp")).toBe(10);
     expect(parsePriceToCopper("1 PL")).toBe(1000);
+    expect(parsePriceToCopper("1 PP", "en")).toBe(1000);
+    expect(parsePriceToCopper("1 PP", "es")).toBe(1000);
+    expect(parsePriceToCopper("1 PA", "es")).toBe(10);
     expect(parsePriceToCopper({ gp: 5, sp: 5 })).toBe(550);
     expect(parsePriceToCopper(0)).toBe(0);
     expect(parsePriceToCopper("—")).toBe(0);
@@ -65,5 +69,10 @@ describe("economy utility", () => {
     expect(formatCopperToString(1500, "pt-BR")).toBe("1 PL 5 PO");
     expect(formatCopperToString(250, "pt-BR")).toBe("2 PO 5 PP");
     expect(formatCopperToString(0, "pt-BR")).toBe("0 PO");
+    expect(formatCopperToString(1250, "en")).toBe("1 PP 2 GP 5 SP");
+    expect(formatCopperToString(1250, "es")).toBe("1 PP 2 PO 5 PA");
+    expect(formatPriceToLocale("2 PO", "en")).toBe("2 GP");
+    expect(formatPriceToLocale("1 PP", "es")).toBe("1 PP");
+    expect(formatPriceToLocale("1 PA", "es")).toBe("1 PA");
   });
 });

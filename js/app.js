@@ -11,11 +11,25 @@ function escapeInlineArgument(value) {
 function mergeCatalogRecords(primary = [], secondary = []) {
   const merged = [];
   const seen = new Set();
+  const identityKeys = (record) => [record.id, record.name, record.names?.["pt-BR"], record.names?.en, record.names?.es]
+    .filter(Boolean)
+    .flatMap((value) => {
+      const normalized = normalizeCatalogLabel(value);
+      const simplified = normalized
+        .replace(/\([^)]*\)/g, " ")
+        .replace(/\b(companion|mount|familiar|animal|companion|mascota|montura|animal)\b/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+      return [normalized, simplified].filter(Boolean);
+    });
   [...primary, ...secondary].forEach((record) => {
     if (!record) return;
-    const key = record.id || record.names?.en || record.name;
-    if (!key || seen.has(key)) return;
-    seen.add(key);
+    // Aliases mantêm fichas antigas compatíveis, mas nunca devem aparecer
+    // como escolhas duplicadas no construtor.
+    if (String(record.id || "").includes(".legacy_alias.")) return;
+    const keys = identityKeys(record);
+    if (!keys.length || keys.some((key) => seen.has(key))) return;
+    keys.forEach((key) => seen.add(key));
     merged.push(record);
   });
   return merged;
@@ -32,6 +46,16 @@ function getObjectCatalogRecords(collection = {}) {
     seen.add(semanticKey);
     return true;
   });
+}
+
+function normalizeCatalogLabel(value) {
+  return String(value || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+}
+
+function findCatalogRecord(collection, value) {
+  const needle = normalizeCatalogLabel(value);
+  return getObjectCatalogRecords(collection).find(({ key, record }) => [key, record?.id, record?.name, ...Object.values(record?.names || {})]
+    .filter(Boolean).some(candidate => normalizeCatalogLabel(candidate) === needle))?.record;
 }
 
 function assertSafeCharacterDocument(value) {
@@ -443,6 +467,8 @@ class PathbuilderApp {
       if (savedLocal) {
         try {
           this.character = assertSafeCharacterDocument(JSON.parse(savedLocal));
+          this.normalizeCharacterCoins();
+          this.saveCharacterLocal(false);
           this.renderAll();
           return;
         } catch (e) {
@@ -464,6 +490,8 @@ class PathbuilderApp {
     } catch (e) {
       this.character = this.getDefaultCharacter(charId);
     }
+    this.normalizeCharacterCoins();
+    this.saveCharacterLocal(false);
     this.renderAll();
   }
 
@@ -513,6 +541,18 @@ class PathbuilderApp {
       loreSkills: [{ name: "Saber de Duelo", rank: "Treinado" }, { name: "Saber de Oppara", rank: "Treinado" }],
       coins: { gp: 3, sp: 5 }
     };
+  }
+
+  normalizeCharacterCoins() {
+    if (!this.character) return;
+    const coins = this.character.coins || {};
+    if (coins.pp === undefined && coins.pl !== undefined) coins.pp = Number(coins.pl) || 0;
+    delete coins.pl;
+    if (coins.pp === undefined) coins.pp = 0;
+    if (coins.gp === undefined) coins.gp = 0;
+    if (coins.sp === undefined) coins.sp = 0;
+    if (coins.cp === undefined) coins.cp = 0;
+    this.character.coins = coins;
   }
 
   formatMovementSpeeds(calc = this.calc) {
@@ -715,6 +755,9 @@ class PathbuilderApp {
       const locName = this.localizeItemName(s.name, locale);
       const locCategory = catMap[s.category] || s.category;
       const traitsHtml = (s.traits || []).map(t => `<span class="trait-tag">${escapeHtml(this.localizeTrait(t, locale))}</span>`).join('');
+      const runesHtml = Array.isArray(s.runes) && s.runes.length
+        ? `<div style="font-size:11px; color:#cbd5e1;">🔹 ${escapeHtml(s.runes.map(rune => this.localizeItemName(rune.name || rune.id || "Runa", locale)).join(", "))}</div>`
+        : "";
       const atkLabel = isEn ? "Attack (MAP):" : isEs ? "Ataque (MAP):" : "Ataque (MAP):";
       const dmgLabel = isEn ? "💥 Damage:" : isEs ? "💥 Daño:" : "💥 Dano:";
       const firstAtk = isEn ? "1st Attack" : isEs ? "1º Ataque" : "1º Ataque";
@@ -725,7 +768,11 @@ class PathbuilderApp {
         <div class="strike-card" style="border-left-color: var(--pb-orange); background: var(--pb-bg-panel);">
           <div class="strike-header">
              <div style="font-weight:bold; font-size:14px; color:#fff;">🗡️ ${escapeHtml(locName)} <span style="font-size:11px; color:var(--pb-text-muted);">(${escapeHtml(locCategory)})</span></div>
-            <button onclick="app.removeWeapon(${idx})" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer;">🗑️</button>
+            <div style="display:flex; gap:4px;">
+              ${Array.isArray(s.runes) && s.runes.length ? `<button onclick="app.manageWeaponRunes(${idx})" title="${isEn ? "Manage runes" : isEs ? "Gestionar runas" : "Gerenciar runas"}" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer;">🔹</button>` : ""}
+              <button onclick="app.editCharacterCollectionItem('weapons', ${idx})" title="${isEn ? "Edit weapon" : isEs ? "Editar arma" : "Editar arma"}" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer;">✎</button>
+              <button onclick="app.removeWeapon(${idx})" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer;">🗑️</button>
+            </div>
           </div>
           
           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin: 6px 0;">
@@ -736,11 +783,14 @@ class PathbuilderApp {
                <button class="btn-strike-roll" onclick="app.rollStrike(${escapeInlineArgument(`${locName} [${thirdAtk}]`)}, ${s.map[2]})">${PF2E_ENGINE.formatMod(s.map[2])}</button>
             </div>
 
-             <button class="strike-damage-box" onclick="app.rollDamage(${escapeInlineArgument(locName)}, ${escapeInlineArgument(s.damageFormatted)})">
+          <button class="strike-damage-box" onclick="app.rollDamage(${escapeInlineArgument(locName)}, ${escapeInlineArgument(s.damageFormatted)})">
                ${dmgLabel} ${escapeHtml(s.damageFormatted)}
-            </button>
+             </button>
           </div>
 
+          ${s.ammunition?.requiresAmmunition ? `<div style="font-size:11px; color:${s.ammunition.available ? "var(--pb-text-muted)" : "#f87171"};">${isEn ? "Ammunition" : isEs ? "Munición" : "Munição"}: ${s.ammunition.quantity} · ${s.ammunition.available ? (isEn ? "available" : isEs ? "disponible" : "disponível") : (isEn ? "missing" : isEs ? "falta" : "em falta")}${s.ammunition.reload ? ` · ${isEn ? "Reload" : isEs ? "Recarga" : "Recarga"} ${escapeHtml(s.ammunition.reload)}` : ""}</div>` : ""}
+
+          ${runesHtml}
           <div class="traits-row">${traitsHtml}</div>
         </div>
       `;
@@ -757,6 +807,8 @@ class PathbuilderApp {
 
     const arm = this.character.equippedArmor || { name: isEn ? "Unarmored" : "Sem Armadura", acBonus: 0, dexCap: 5 };
     const shield = this.character.equippedShield || null;
+    const armorRunes = PF2E_ENGINE?.getRuneBonuses?.(arm) || { potency: 0, resilient: 0 };
+    const armorRuneItems = Array.isArray(arm.runes) ? arm.runes : [];
     const dexMod = this.calc?.attributes?.dex?.mod || 0;
     const effectiveDex = arm.dexCap !== undefined ? Math.min(dexMod, arm.dexCap) : dexMod;
     const profBonus = (this.character.level || 1) + 2;
@@ -774,7 +826,7 @@ class PathbuilderApp {
         </div>
         <div class="pb-defense-ac-breakdown">
           <span>${isEn ? "Base" : "Base"} <strong>10</strong></span>
-          <span>${isEn ? "Item" : "Item"} <strong>+${arm.acBonus || 0}</strong></span>
+          <span>${isEn ? "Item" : "Item"} <strong>+${(Number(arm.acBonus) || 0) + armorRunes.potency}</strong></span>
           <span>${isEn ? "Dex" : "Des"} <strong>+${effectiveDex}</strong></span>
           <span>${isEn ? "Proficiency" : isEs ? "Competencia" : "Proficiência"} <strong>+${profBonus}</strong></span>
         </div>
@@ -789,8 +841,8 @@ class PathbuilderApp {
       <div class="pb-defense-slot-card">
         <div class="pb-defense-slot-actions">
           <button class="pb-slot-btn" onclick="app.openPicker('armor')">${isEn ? "Change" : isEs ? "Cambiar" : "Trocar"}</button>
-          <button class="pb-slot-btn" onclick="alert('${isEn ? "Armor Options" : "Opções de Armadura"}: ' + (app.character.equippedArmor?.name || 'Unarmored'))">${isEn ? "Options" : isEs ? "Opciones" : "Opções"}</button>
-          <button class="pb-slot-btn" onclick="alert('${isEn ? "Armor Runes: None etched." : "Runas de Armadura: Nenhuma runa gravada."}')">${isEn ? "Runes" : isEs ? "Runas" : "Runas"}</button>
+          <button class="pb-slot-btn" onclick="app.editEquippedArmor()">${isEn ? "Options" : isEs ? "Opciones" : "Opções"}</button>
+          <button class="pb-slot-btn" onclick="app.manageEquippedArmorRunes()">${isEn ? "Runes" : isEs ? "Runas" : "Runas"} (${armorRuneItems.length})</button>
           <button class="pb-slot-btn" onclick="app.stowArmor()">${isEn ? "Stow" : isEs ? "Guardar" : "Guardar"}</button>
         </div>
         <div class="pb-defense-slot-content">
@@ -799,8 +851,9 @@ class PathbuilderApp {
             <span style="font-size:15px; color:#ffffff; font-weight:800;">${escapeHtml(locArmorName)}</span>
           </div>
           <div style="color: #94a3b8; font-size:13px;">
-            👕 ${isEn ? "Item Bonus" : isEs ? "Bonificador de Objeto" : "Bônus de Item"} +${arm.acBonus || 0}
-          </div>
+              👕 ${isEn ? "Item Bonus" : isEs ? "Bonificador de Objeto" : "Bônus de Item"} +${(Number(arm.acBonus) || 0) + armorRunes.potency}
+            </div>
+            ${armorRuneItems.length ? `<div style="color:#cbd5e1; font-size:12px;">🔹 ${escapeHtml(armorRuneItems.map(rune => this.localizeItemName(rune.name || rune.id || "", locale)).join(", "))}${armorRunes.resilient ? " · +1 salvaguardas" : ""}</div>` : ""}
           <div style="color: #94a3b8; font-size:13px;">
             ⬆️ ${isEn ? "Dex Cap" : isEs ? "Límite de Des" : "Limite de Des"} ${arm.dexCap !== undefined ? arm.dexCap : 5}
           </div>
@@ -811,6 +864,7 @@ class PathbuilderApp {
       <div class="pb-defense-slot-card">
         <div class="pb-defense-slot-actions">
           <button class="pb-slot-btn" onclick="app.openPicker('shield')">${isEn ? "Change" : isEs ? "Cambiar" : "Trocar"}</button>
+          ${shield ? `<button class="pb-slot-btn" onclick="app.editEquippedShield()">${isEn ? "Edit" : isEs ? "Editar" : "Editar"}</button>` : ''}
           ${shield ? `<button class="pb-slot-btn" onclick="app.stowShield()">${isEn ? "Stow" : isEs ? "Guardar" : "Guardar"}</button>` : ''}
         </div>
         <div class="pb-defense-slot-content">
@@ -838,11 +892,78 @@ class PathbuilderApp {
 
   stowArmor() {
     this.character.equippedArmor = { name: "Unarmored", acBonus: 0, dexCap: 5 };
+    this.saveCharacterLocal(false);
+    this.renderAll();
+  }
+
+  editEquippedArmor() {
+    const armor = this.character.equippedArmor;
+    if (!armor) return;
+    const locale = this.getLocale();
+    const label = locale === "en" ? "Armor name:" : locale === "es" ? "Nombre de la armadura:" : "Nome da armadura:";
+    const nextName = prompt(label, armor.name || "");
+    if (nextName === null) return;
+    if (nextName.trim()) armor.name = nextName.trim();
+    this.saveCharacterLocal(false);
+    this.renderAll();
+  }
+
+  manageEquippedArmorRunes() {
+    const armor = this.character.equippedArmor;
+    const runes = Array.isArray(armor?.runes) ? armor.runes : [];
+    if (!armor || !runes.length) return;
+    const locale = this.getLocale();
+    const list = runes.map((rune, index) => `${index + 1}: ${this.localizeItemName(rune.name || rune.id || "Runa", locale)}`).join("\n");
+    const selected = Number.parseInt(prompt(`${list}\n${locale === "en" ? "Rune number to remove:" : locale === "es" ? "Número de runa a quitar:" : "Número da runa para remover:"}`, "1"), 10) - 1;
+    if (!Number.isInteger(selected) || !runes[selected]) return;
+    const [rune] = runes.splice(selected, 1);
+    if (!this.character.inventory) this.character.inventory = [];
+    const existing = this.character.inventory.find(item => rune.id && item.id === rune.id);
+    if (existing) existing.qty = (Number(existing.qty) || 1) + 1;
+    else this.character.inventory.push({ ...rune, qty: 1, mainCategory: "magic_items", subCategory: "runes" });
+    this.saveCharacterLocal(false);
+    this.renderAll();
+  }
+
+  manageWeaponRunes(index) {
+    const weapon = this.character.weapons?.[index];
+    const runes = Array.isArray(weapon?.runes) ? weapon.runes : [];
+    if (!weapon || !runes.length) return;
+    const locale = this.getLocale();
+    const list = runes.map((rune, runeIndex) => `${runeIndex + 1}: ${this.localizeItemName(rune.name || rune.id || "Runa", locale)}`).join("\n");
+    const selected = Number.parseInt(prompt(`${list}\n${locale === "en" ? "Rune number to remove:" : locale === "es" ? "Número de runa a quitar:" : "Número da runa para remover:"}`, "1"), 10) - 1;
+    if (!Number.isInteger(selected) || !runes[selected]) return;
+    const [rune] = runes.splice(selected, 1);
+    if (!this.character.inventory) this.character.inventory = [];
+    const existing = this.character.inventory.find(item => rune.id && item.id === rune.id);
+    if (existing) existing.qty = (Number(existing.qty) || 1) + 1;
+    else this.character.inventory.push({ ...rune, qty: 1, mainCategory: "magic_items", subCategory: "runes" });
+    this.saveCharacterLocal(false);
+    this.renderAll();
+  }
+
+  editEquippedShield() {
+    const shield = this.character.equippedShield;
+    if (!shield) return;
+    const locale = this.getLocale();
+    const nameLabel = locale === "en" ? "Shield name:" : locale === "es" ? "Nombre del escudo:" : "Nome do escudo:";
+    const hpLabel = locale === "en" ? "Current shield HP:" : locale === "es" ? "PG actuales del escudo:" : "PV atuais do escudo:";
+    const nextName = prompt(nameLabel, shield.name || "");
+    if (nextName === null) return;
+    const nextHp = prompt(hpLabel, String(shield.currentHp ?? shield.maxHp ?? 0));
+    if (nextHp === null) return;
+    const maxHp = Math.max(0, Number(shield.maxHp) || 0);
+    const currentHp = Number.parseInt(nextHp, 10);
+    if (!Number.isFinite(currentHp) || currentHp < 0 || currentHp > maxHp) return;
+    if (nextName.trim()) shield.name = nextName.trim();
+    shield.currentHp = currentHp;
+    this.saveCharacterLocal(false);
     this.renderAll();
   }
 
   stowShield() {
     this.character.equippedShield = null;
+    this.saveCharacterLocal(false);
     this.renderAll();
   }
 
@@ -861,6 +982,7 @@ class PathbuilderApp {
     const encumberedLimit = this.calc?.bulk?.encumbered ?? 5;
     const maxBulk = this.calc?.bulk?.max ?? 10;
     const isEncumbered = this.calc?.bulk?.isEncumbered ?? false;
+    const containers = this.character.containers || [];
 
     const itemsGridHtml = inv.length === 0 ? `
       <div style="grid-column: 1 / -1; color:#64748b; text-align:center; padding: 24px;">${isEn ? "No items in inventory. Click 'Add Gear' to purchase or add gear." : isEs ? "No hay objetos en el inventario. Haz clic en 'Añadir Equipo' para comprar o añadir equipo." : "Nenhum item no inventário. Clique em 'Add Gear' para comprar ou adicionar itens."}</div>
@@ -870,9 +992,45 @@ class PathbuilderApp {
         <div class="pb-gear-item-box">
           <button class="pb-gear-qty-btn" onclick="app.adjustItemQty(${idx}, -1)" title="${isEn ? "Decrease quantity" : "Diminuir quantidade"}">-</button>
           <span class="pb-gear-qty-text">${isEn ? "Qty" : isEs ? "Cant" : "Qtd"} ${item.qty || 1}</span>
-          <button class="pb-gear-qty-btn" onclick="app.adjustItemQty(${idx}, 1)" title="${isEn ? "Increase quantity" : "Aumentar quantidade"}>+</button>
+          <button class="pb-gear-qty-btn" onclick="app.adjustItemQty(${idx}, 1)" title="${isEn ? "Increase quantity" : isEs ? "Aumentar cantidad" : "Aumentar quantidade"}">+</button>
           <span class="pb-gear-name-text" title="${escapeHtml(locItemName)}">${escapeHtml(locItemName)}</span>
+          ${/rune|runa|potency|impactante|impacto|resilient/i.test(String(item.id || item.name || "")) ? `<button class="pb-gear-edit-btn" onclick="app.attachInventoryRune(${idx})" title="${isEn ? "Attach rune" : isEs ? "Vincular runa" : "Vincular runa"}">↗</button>` : ""}
+          ${containers.length ? `<button class="pb-gear-edit-btn" onclick="app.moveInventoryItemToContainer(${idx})" title="${isEn ? "Move to container" : isEs ? "Mover al contenedor" : "Mover para recipiente"}">⇩</button>` : ""}
+          <button class="pb-gear-edit-btn" onclick="app.editInventoryItem(${idx})" title="${isEn ? "Edit item" : isEs ? "Editar objeto" : "Editar item"}">✎</button>
           <button class="pb-gear-remove-btn" onclick="app.removeInventoryItem(${idx})" title="${isEn ? "Remove item" : "Remover item"}">✕</button>
+        </div>
+      `;
+    }).join('');
+
+    const containersHtml = containers.length === 0 ? `
+      <div class="pb-inventory-section">
+        <div class="pb-inventory-section-title">
+          <span>${isEn ? "Containers" : isEs ? "Contenedores" : "Recipientes"}</span>
+        </div>
+        <div style="font-size:12px; color:#64748b; font-style:italic;">${isEn ? "No containers created." : isEs ? "No hay contenedores creados." : "Nenhum recipiente criado."}</div>
+      </div>
+    ` : containers.map((container, idx) => {
+      const itemCount = Array.isArray(container.items) ? container.items.reduce((sum, item) => sum + (Number(item.qty) || 1), 0) : 0;
+      const storedItemsHtml = Array.isArray(container.items) && container.items.length ? container.items.map((item, itemIdx) => `
+        <div class="pb-gear-item-box pb-container-item-box">
+          <button class="pb-gear-qty-btn" onclick="app.adjustContainerItemQty(${idx}, ${itemIdx}, -1)" title="${isEn ? "Decrease quantity" : isEs ? "Disminuir cantidad" : "Diminuir quantidade"}">-</button>
+          <span class="pb-gear-qty-text">${isEn ? "Qty" : isEs ? "Cant" : "Qtd"} ${Number(item.qty) || 1}</span>
+          <button class="pb-gear-qty-btn" onclick="app.adjustContainerItemQty(${idx}, ${itemIdx}, 1)" title="${isEn ? "Increase quantity" : isEs ? "Aumentar cantidad" : "Aumentar quantidade"}">+</button>
+          <span class="pb-gear-name-text">${escapeHtml(this.localizeItemName(item.name, locale))}</span>
+          <button class="pb-gear-edit-btn" onclick="app.moveContainerItemToInventory(${idx}, ${itemIdx})" title="${isEn ? "Return to inventory" : isEs ? "Devolver al inventario" : "Devolver ao inventário"}">⇧</button>
+          <button class="pb-gear-edit-btn" onclick="app.editContainerItem(${idx}, ${itemIdx})" title="${isEn ? "Edit item" : isEs ? "Editar objeto" : "Editar item"}">✎</button>
+          <button class="pb-gear-remove-btn" onclick="app.removeContainerItem(${idx}, ${itemIdx})" title="${isEn ? "Remove item" : isEs ? "Eliminar objeto" : "Remover item"}">✕</button>
+        </div>
+      `).join("") : `<div class="pb-container-empty">${isEn ? "Empty" : isEs ? "Vacío" : "Vazio"}</div>`;
+      return `
+        <div class="pb-inventory-section">
+          <div class="pb-inventory-section-title">
+            <span>${escapeHtml(container.name || (isEn ? "Unnamed Container" : isEs ? "Contenedor sin nombre" : "Recipiente sem nome"))}</span>
+            <span style="font-size:12px; color:#64748b;">${itemCount} ${isEn ? "items" : isEs ? "objetos" : "itens"}</span>
+            <button class="pb-slot-btn" onclick="app.editContainer(${idx})">${isEn ? "Edit" : isEs ? "Editar" : "Editar"}</button>
+            <button class="pb-gear-remove-btn" onclick="app.removeContainer(${idx})" title="${isEn ? "Remove container" : isEs ? "Eliminar contenedor" : "Remover recipiente"}">✕</button>
+          </div>
+          <div class="pb-container-items">${storedItemsHtml}</div>
         </div>
       `;
     }).join('');
@@ -907,13 +1065,7 @@ class PathbuilderApp {
       </div>
 
       <!-- CONTAINERS SECTIONS -->
-      <div class="pb-inventory-section">
-        <div class="pb-inventory-section-title">
-          <span>${isEn ? "Unnamed Container" : isEs ? "Contenedor Sin Nombre" : "Recipiente Sem Nome"}</span>
-          <button class="pb-slot-btn" onclick="alert('${isEn ? "Edit Container" : "Editar Recipiente"}')">${isEn ? "Edit" : isEs ? "Editar" : "Editar"}</button>
-        </div>
-        <div style="font-size:12px; color:#64748b; font-style:italic;">${isEn ? "Empty" : isEs ? "Vacío" : "Vazio"}</div>
-      </div>
+      ${containersHtml}
     `;
   }
 
@@ -924,35 +1076,212 @@ class PathbuilderApp {
     if (item.qty <= 0) {
       this.character.inventory.splice(idx, 1);
     }
+    this.saveCharacterLocal(false);
+    this.renderAll();
+  }
+
+  attachInventoryRune(idx) {
+    const rune = this.character.inventory?.[idx];
+    if (!rune || !/rune|runa|potency|impactante|impacto|resilient/i.test(String(rune.id || rune.name || ""))) return;
+    const locale = this.getLocale();
+    const weapons = this.character.weapons || [];
+    const armor = this.character.equippedArmor;
+    const targetLabel = locale === "en" ? "Enter A for weapon or R for equipped armor:" : locale === "es" ? "Escribe A para arma o R para armadura equipada:" : "Digite A para arma ou R para armadura equipada:";
+    const target = prompt(targetLabel, weapons.length ? "A" : "R");
+    if (target === null) return;
+    const normalized = target.trim().toLowerCase();
+    let equipment = null;
+    if (normalized === "r" || normalized === "armadura" || normalized === "armor") {
+      equipment = armor;
+    } else if (normalized === "a" || normalized === "arma" || normalized === "weapon") {
+      if (!weapons.length) return;
+      const list = weapons.map((weapon, weaponIdx) => `${weaponIdx + 1}: ${weapon.name || "Weapon"}`).join("\n");
+      const selected = Number.parseInt(prompt(`${list}\n${locale === "en" ? "Weapon number:" : locale === "es" ? "Número del arma:" : "Número da arma:"}`, "1"), 10) - 1;
+      equipment = weapons[selected];
+    }
+    if (!equipment) return;
+    const equipmentType = equipment === armor ? "armor" : "weapon";
+    if (PF2E_ENGINE?.isRuneCompatible && !PF2E_ENGINE.isRuneCompatible(rune, equipmentType)) {
+      alert(locale === "en" ? "This rune is incompatible with the selected equipment." : locale === "es" ? "Esta runa no es compatible con el equipo seleccionado." : "Esta runa não é compatível com o equipamento selecionado.");
+      return;
+    }
+    if (!Array.isArray(equipment.runes)) equipment.runes = [];
+    equipment.runes.push({ id: rune.id, name: rune.name, names: rune.names });
+    if ((Number(rune.qty) || 1) > 1) rune.qty = (Number(rune.qty) || 1) - 1;
+    else this.character.inventory.splice(idx, 1);
+    this.saveCharacterLocal(false);
+    this.renderAll();
+  }
+
+  editInventoryItem(idx) {
+    const item = this.character.inventory?.[idx];
+    if (!item) return;
+    const locale = this.getLocale();
+    const namePrompt = locale === "en" ? "Item name:" : locale === "es" ? "Nombre del objeto:" : "Nome do item:";
+    const qtyPrompt = locale === "en" ? "Quantity:" : locale === "es" ? "Cantidad:" : "Quantidade:";
+    const descriptionPrompt = locale === "en" ? "Description:" : locale === "es" ? "Descripción:" : "Descrição:";
+    const nextName = prompt(namePrompt, item.name || "");
+    if (nextName === null) return;
+    const nextQty = prompt(qtyPrompt, String(item.qty || 1));
+    if (nextQty === null) return;
+    const nextDescription = prompt(descriptionPrompt, item.description || item.summaries?.[locale] || "");
+    if (nextDescription === null) return;
+    const parsedQty = Number.parseInt(nextQty, 10);
+    if (!Number.isFinite(parsedQty) || parsedQty < 1) return;
+    const trimmedName = nextName.trim() || item.name;
+    const trimmedDescription = nextDescription.trim();
+    item.name = trimmedName;
+    item.qty = parsedQty;
+    item.description = trimmedDescription;
+    item.names = { "pt-BR": item.names?.["pt-BR"] || item.name, en: item.names?.en || item.name, es: item.names?.es || item.name, ...(item.names || {}), [locale]: trimmedName };
+    item.summaries = { "pt-BR": item.summaries?.["pt-BR"] || item.description || "", en: item.summaries?.en || item.description || "", es: item.summaries?.es || item.description || "", ...(item.summaries || {}), [locale]: trimmedDescription };
+    this.saveCharacterLocal(false);
     this.renderAll();
   }
 
   removeInventoryItem(idx) {
     if (this.character.inventory && this.character.inventory[idx]) {
       this.character.inventory.splice(idx, 1);
+      this.saveCharacterLocal(false);
       this.renderAll();
     }
   }
 
   promptEditCoin(coinKey) {
-    const names = { pp: "Platina (PP)", gp: "Ouro (GP)", sp: "Prata (SP)", cp: "Cobre (CP)" };
+    const locale = this.getLocale();
+    const names = locale === "en"
+      ? { pp: "Platinum (PP)", gp: "Gold (GP)", sp: "Silver (SP)", cp: "Copper (CP)" }
+      : locale === "es"
+        ? { pp: "Platino (PP)", gp: "Oro (GP)", sp: "Plata (SP)", cp: "Cobre (CP)" }
+        : { pp: "Platina (PL)", gp: "Ouro (PO)", sp: "Prata (PP)", cp: "Cobre (PC)" };
     const current = this.character.coins?.[coinKey] || 0;
-    const input = prompt(`Definir quantidade de moedas de ${names[coinKey]}:`, current);
+    const inputLabel = locale === "en" ? "Set coin quantity for" : locale === "es" ? "Definir cantidad de monedas de" : "Definir quantidade de moedas de";
+    const input = prompt(`${inputLabel} ${names[coinKey]}:`, current);
     if (input !== null) {
       const val = Math.max(0, parseInt(input, 10) || 0);
       if (!this.character.coins) this.character.coins = { pp: 0, gp: 0, sp: 0, cp: 0 };
       this.character.coins[coinKey] = val;
+      this.saveCharacterLocal(false);
       this.renderAll();
     }
   }
 
   addContainerPrompt() {
-    const name = prompt("Nome do novo recipiente/container (ex: Mochila de Carga, Coldre):", "Mochila de Aventureiro");
+    const locale = this.getLocale();
+    const label = locale === "en" ? "New container name (e.g. Backpack, Holster):" : locale === "es" ? "Nombre del nuevo contenedor (p. ej. Mochila, Funda):" : "Nome do novo recipiente (ex: Mochila de Carga, Coldre):";
+    const defaultName = locale === "en" ? "Adventurer's Backpack" : locale === "es" ? "Mochila de aventurero" : "Mochila de Aventureiro";
+    const name = prompt(label, defaultName);
     if (name) {
       if (!this.character.containers) this.character.containers = [];
       this.character.containers.push({ name, items: [] });
+      this.saveCharacterLocal(false);
       this.renderAll();
     }
+  }
+
+  editContainer(idx) {
+    const container = this.character.containers?.[idx];
+    if (!container) return;
+    const locale = this.getLocale();
+    const label = locale === "en" ? "Container name:" : locale === "es" ? "Nombre del contenedor:" : "Nome do recipiente:";
+    const nextName = prompt(label, container.name || "");
+    if (nextName === null) return;
+    container.name = nextName.trim() || container.name;
+    this.saveCharacterLocal(false);
+    this.renderAll();
+  }
+
+  moveInventoryItemToContainer(idx) {
+    const item = this.character.inventory?.[idx];
+    const containers = this.character.containers || [];
+    if (!item || !containers.length) return;
+    const locale = this.getLocale();
+    const promptLabel = locale === "en" ? "Container number:" : locale === "es" ? "Número del contenedor:" : "Número do recipiente:";
+    const list = containers.map((container, containerIdx) => `${containerIdx + 1}: ${container.name || (locale === "en" ? "Unnamed container" : locale === "es" ? "Contenedor sin nombre" : "Recipiente sem nome")}`).join("\n");
+    const selected = Number.parseInt(prompt(`${list}\n${promptLabel}`, "1"), 10) - 1;
+    if (!containers[selected]) return;
+    if (!Array.isArray(containers[selected].items)) containers[selected].items = [];
+    const identity = (entry) => String(entry?.id || entry?.name || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+    const existing = containers[selected].items.find((entry) => identity(entry) && identity(entry) === identity(item));
+    if (existing) existing.qty = (Number(existing.qty) || 1) + (Number(item.qty) || 1);
+    else containers[selected].items.push({ ...item });
+    this.character.inventory.splice(idx, 1);
+    this.saveCharacterLocal(false);
+    this.renderAll();
+  }
+
+  moveContainerItemToInventory(containerIdx, itemIdx) {
+    const container = this.character.containers?.[containerIdx];
+    const item = container?.items?.[itemIdx];
+    if (!container || !item) return;
+    if (!Array.isArray(this.character.inventory)) this.character.inventory = [];
+    const identity = (entry) => String(entry?.id || entry?.name || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+    const existing = this.character.inventory.find((entry) => identity(entry) && identity(entry) === identity(item));
+    if (existing) existing.qty = (Number(existing.qty) || 1) + (Number(item.qty) || 1);
+    else this.character.inventory.push(item);
+    container.items.splice(itemIdx, 1);
+    this.saveCharacterLocal(false);
+    this.renderAll();
+  }
+
+  adjustContainerItemQty(containerIdx, itemIdx, delta) {
+    const item = this.character.containers?.[containerIdx]?.items?.[itemIdx];
+    if (!item) return;
+    item.qty = (Number(item.qty) || 1) + delta;
+    if (item.qty <= 0) this.character.containers[containerIdx].items.splice(itemIdx, 1);
+    this.saveCharacterLocal(false);
+    this.renderAll();
+  }
+
+  editContainerItem(containerIdx, itemIdx) {
+    const item = this.character.containers?.[containerIdx]?.items?.[itemIdx];
+    if (!item) return;
+    const locale = this.getLocale();
+    const labels = locale === "en" ? { name: "Item name:", qty: "Quantity:", description: "Description:" } : locale === "es" ? { name: "Nombre del objeto:", qty: "Cantidad:", description: "Descripción:" } : { name: "Nome do item:", qty: "Quantidade:", description: "Descrição:" };
+    const name = prompt(labels.name, item.name || "");
+    if (name === null) return;
+    const qty = prompt(labels.qty, String(item.qty || 1));
+    if (qty === null) return;
+    const description = prompt(labels.description, item.description || item.summaries?.[locale] || "");
+    if (description === null) return;
+    const parsedQty = Number.parseInt(qty, 10);
+    if (!Number.isFinite(parsedQty) || parsedQty < 1) return;
+    item.name = name.trim() || item.name;
+    item.qty = parsedQty;
+    item.description = description.trim();
+    item.names = { "pt-BR": item.names?.["pt-BR"] || item.name, en: item.names?.en || item.name, es: item.names?.es || item.name, ...(item.names || {}), [locale]: item.name };
+    item.summaries = { "pt-BR": item.summaries?.["pt-BR"] || item.description, en: item.summaries?.en || item.description, es: item.summaries?.es || item.description, ...(item.summaries || {}), [locale]: item.description };
+    this.saveCharacterLocal(false);
+    this.renderAll();
+  }
+
+  removeContainerItem(containerIdx, itemIdx) {
+    const container = this.character.containers?.[containerIdx];
+    if (!container?.items?.[itemIdx]) return;
+    container.items.splice(itemIdx, 1);
+    this.saveCharacterLocal(false);
+    this.renderAll();
+  }
+
+  removeContainer(idx) {
+    const container = this.character.containers?.[idx];
+    if (!container) return;
+    const locale = this.getLocale();
+    const message = locale === "en" ? "Remove this container? Stored items will return to the main inventory." : locale === "es" ? "¿Eliminar este contenedor? Los objetos almacenados volverán al inventario principal." : "Remover este recipiente? Os itens armazenados voltarão ao inventário principal.";
+    if (typeof confirm === "function" && !confirm(message)) return;
+    if (!this.character.inventory) this.character.inventory = [];
+    if (Array.isArray(container.items)) {
+      const identity = (entry) => String(entry?.id || entry?.name || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+      container.items.forEach((item) => {
+        const incomingIdentity = identity(item);
+        const existing = this.character.inventory.find((entry) => incomingIdentity && identity(entry) === incomingIdentity);
+        if (existing) existing.qty = (Number(existing.qty) || 1) + (Number(item.qty) || 1);
+        else this.character.inventory.push({ ...item });
+      });
+    }
+    this.character.containers.splice(idx, 1);
+    this.saveCharacterLocal(false);
+    this.renderAll();
   }
 
   getCurrentLocale() {
@@ -977,21 +1306,66 @@ class PathbuilderApp {
         "no-spellcasting": "A classe atual não possui conjuração catalogada.",
         "tradition-required": "Escolha primeiro a tradição concedida pela subclasse.",
         "rank-too-high": `Seu nível permite magias de até ranque ${compatibility.maximumRank}.`,
-        "tradition-mismatch": `Esta magia não pertence à tradição ${tradition}.`
+        "tradition-mismatch": `Esta magia não pertence à tradição ${tradition}.`,
+        "class-mismatch": "O pré-requisito de classe não foi atendido.",
+        "deviant-required": "Requer uma habilidade desviante."
       },
       en: {
         "compatible": `Compatible with the ${tradition} tradition.`,
         "no-spellcasting": "The current class has no catalogued spellcasting.",
         "tradition-required": "First choose the tradition granted by the subclass.",
         "rank-too-high": `Your level allows spells up to rank ${compatibility.maximumRank}.`,
-        "tradition-mismatch": `This spell does not belong to the ${tradition} tradition.`
+        "tradition-mismatch": `This spell does not belong to the ${tradition} tradition.`,
+        "class-mismatch": "The class prerequisite is not met.",
+        "deviant-required": "Requires a deviant ability."
       },
       es: {
         "compatible": `Compatible con la tradición ${tradition}.`,
         "no-spellcasting": "La clase actual no tiene lanzamiento de conjuros catalogado.",
         "tradition-required": "Primero elige la tradición concedida por la subclase.",
         "rank-too-high": `Tu nivel permite conjuros de hasta rango ${compatibility.maximumRank}.`,
-        "tradition-mismatch": `Este conjuro no pertenece a la tradición ${tradition}.`
+        "tradition-mismatch": `Este conjuro no pertenece a la tradición ${tradition}.`,
+        "class-mismatch": "No se cumple el requisito de clase.",
+        "deviant-required": "Requiere una habilidad desviada."
+      }
+    };
+    return messages[locale]?.[compatibility.reason] || compatibility.reason;
+  }
+
+  getPrerequisiteCompatibilityMessage(compatibility, locale = this.getCurrentLocale()) {
+    const messages = {
+      "pt-BR": {
+        "level-too-low": `Requer nível ${compatibility.requiredLevel}.`,
+        "class-mismatch": "O pré-requisito de classe não foi atendido.",
+        "ancestry-mismatch": "O pré-requisito de ancestralidade não foi atendido.",
+        "ability-too-low": "O pré-requisito de atributo não foi atendido.",
+        "skill-rank-too-low": "O pré-requisito de proficiência de perícia não foi atendido.",
+        "proficiency-too-low": "O pré-requisito de proficiência de combate não foi atendido.",
+        "spellcasting-required": "Requer uma classe conjuradora.",
+        "dedication-required": "Requer a dedicação indicada.",
+        "deviant-required": "Requer uma habilidade desviante."
+      },
+      en: {
+        "level-too-low": `Requires level ${compatibility.requiredLevel}.`,
+        "class-mismatch": "The class prerequisite is not met.",
+        "ancestry-mismatch": "The ancestry prerequisite is not met.",
+        "ability-too-low": "The ability prerequisite is not met.",
+        "skill-rank-too-low": "The skill proficiency prerequisite is not met.",
+        "proficiency-too-low": "The combat proficiency prerequisite is not met.",
+        "spellcasting-required": "Requires a spellcasting class.",
+        "dedication-required": "Requires the listed dedication.",
+        "deviant-required": "Requires a deviant ability."
+      },
+      es: {
+        "level-too-low": `Requiere nivel ${compatibility.requiredLevel}.`,
+        "class-mismatch": "No se cumple el requisito de clase.",
+        "ancestry-mismatch": "No se cumple el requisito de ascendencia.",
+        "ability-too-low": "No se cumple el requisito de atributo.",
+        "skill-rank-too-low": "No se cumple el requisito de competencia de habilidad.",
+        "proficiency-too-low": "No se cumple el requisito de competencia de combate.",
+        "spellcasting-required": "Requiere una clase lanzadora de conjuros.",
+        "dedication-required": "Requiere la dedicación indicada.",
+        "deviant-required": "Requiere una habilidad desviada."
       }
     };
     return messages[locale]?.[compatibility.reason] || compatibility.reason;
@@ -1012,8 +1386,39 @@ class PathbuilderApp {
   }
 
   applyClassSelection(item) {
+    const classChanged = this.character.class !== item.name;
     this.character.class = item.name;
+    if (classChanged) {
+      // Subclasses and class-feat slots belong to the previous class. Remove
+      // stale choices instead of leaving an invalid character state behind.
+      this.character.subclass = "";
+      this.clearProgressionSlots("class_feat");
+      if (Array.isArray(this.character.feats)) {
+        this.character.feats = this.character.feats.filter(feat => {
+          if (String(feat?.slotId || "").includes("class_feat")) return false;
+          const classBound = feat?.classId || (Array.isArray(feat?.classIds) && feat.classIds.length);
+          return !classBound || PF2E_ENGINE.getPrerequisiteCompatibility(this.character, feat).state !== "incompatible";
+        });
+      }
+      if (Array.isArray(this.character.classFeats)) this.character.classFeats = [];
+      if (Array.isArray(this.character.archetypes)) {
+        this.character.archetypes = this.character.archetypes.filter(archetype => {
+          const classBound = archetype?.classId || (Array.isArray(archetype?.classIds) && archetype.classIds.length);
+          return !classBound || PF2E_ENGINE.getPrerequisiteCompatibility(this.character, archetype).state !== "incompatible";
+        });
+      }
+      if (Array.isArray(this.character.spells)) {
+        this.character.spells = this.character.spells.filter(spell => PF2E_ENGINE.getSpellCompatibility(this.character, spell).state !== "incompatible");
+      }
+    }
     this.reconcileSpellcastingProfile();
+  }
+
+  clearProgressionSlots(fragment) {
+    if (!this.character.progression) return;
+    Object.keys(this.character.progression).forEach(key => {
+      if (key.includes(fragment)) delete this.character.progression[key];
+    });
   }
 
   updateMagicTradition(value) {
@@ -1059,7 +1464,7 @@ class PathbuilderApp {
       es: { emptySpells: "No hay conjuros añadidos.", emptyRituals: "No hay rituales aprendidos.", rank: "Rango", source: "Fuente" }
     }[locale];
 
-    const spellcasting = this.calc.spellcasting || (typeof PF2E_ENGINE !== "undefined" && PF2E_ENGINE.calculateSpellcasting ? PF2E_ENGINE.calculateSpellcasting(this.character) : { dc: this.calc.classDc, attackMod: this.calc.classDc - 10, traditionName: "Arcana", maxFocusPoints: 1, currentFocusPoints: 1 });
+    const spellcasting = this.calc.spellcasting || (typeof PF2E_ENGINE !== "undefined" && PF2E_ENGINE.calculateSpellcasting ? PF2E_ENGINE.calculateSpellcasting(this.character) : { dc: this.calc.classDc, attackMod: this.calc.classDc - 10, traditionName: "Arcana", maxFocusPoints: 0, currentFocusPoints: 0 });
 
     const dcEl = document.getElementById("spellDcText");
     const atkEl = document.getElementById("spellAtkText");
@@ -1070,7 +1475,7 @@ class PathbuilderApp {
     if (atkEl) atkEl.innerText = PF2E_ENGINE.formatMod(spellcasting.attackMod !== undefined ? spellcasting.attackMod : (this.calc.classDc - 10));
     if (tradBadge) tradBadge.innerText = spellcasting.traditionName || "Arcana";
     if (focusDisp) {
-      const maxF = spellcasting.maxFocusPoints || 1;
+      const maxF = spellcasting.maxFocusPoints ?? 0;
       const curF = Math.min(maxF, spellcasting.currentFocusPoints !== undefined ? spellcasting.currentFocusPoints : maxF);
       focusDisp.innerText = "●".repeat(curF) + "○".repeat(Math.max(0, maxF - curF));
     }
@@ -1151,7 +1556,7 @@ class PathbuilderApp {
           <article class="strike-card spell-card">
             <div class="strike-header">
               <span><strong>✨ ${escapeHtml(displayName)}</strong> · ${copy.rank} ${escapeHtml(sp.rank ?? sp.level ?? "")}</span>
-              <button type="button" onclick="app.removeSpell(${idx})" aria-label="Remover ${escapeHtml(displayName)}">🗑️</button>
+              <div style="display:flex; gap:4px;"><button type="button" onclick="app.editCharacterCollectionItem('spells', ${idx})" aria-label="Editar ${escapeHtml(displayName)}">✎</button><button type="button" onclick="app.removeSpell(${idx})" aria-label="Remover ${escapeHtml(displayName)}">🗑️</button></div>
             </div>
             <div class="spell-card-meta">${escapeHtml(casting)}${traditions ? ` · ${escapeHtml(traditions)}` : ""}</div>
             ${compatibilityMessage ? `<div class="spell-compatibility-warning">⚠ ${escapeHtml(compatibilityMessage)}</div>` : sp.manual ? `<div class="spell-compatibility-warning review">⚠ ${locale === "pt-BR" ? "Entrada manual ainda não verificada." : locale === "en" ? "Manual entry not yet verified." : "Entrada manual aún no verificada."}</div>` : ""}
@@ -1174,7 +1579,7 @@ class PathbuilderApp {
         <article class="strike-card ritual-card">
           <div class="strike-header">
             <span><strong>◈ ${escapeHtml(displayName)}</strong> · ${copy.rank} ${escapeHtml(ritual.rank ?? "")}</span>
-            <button type="button" onclick="app.removeRitual(${idx})" aria-label="Remover ${escapeHtml(displayName)}">🗑️</button>
+            <div style="display:flex; gap:4px;"><button type="button" onclick="app.editCharacterCollectionItem('rituals', ${idx})" aria-label="Editar ${escapeHtml(displayName)}">✎</button><button type="button" onclick="app.removeRitual(${idx})" aria-label="Remover ${escapeHtml(displayName)}">🗑️</button></div>
           </div>
           <div class="spell-card-meta">${escapeHtml(casting)}${check ? ` · ${escapeHtml(check)}` : ""}</div>
           <p>${escapeHtml(description)}</p>
@@ -1190,18 +1595,7 @@ class PathbuilderApp {
     const isEn = locale === "en";
     const isEs = locale === "es";
 
-    const pets = this.character.pets || (this.character.id === "Joao_Ranger" ? [{
-      name: "Bóreas — O Bode Negro das Montanhas",
-      type: isEn ? "Animal Companion • Mountain Ram" : isEs ? "Compañero Animal • Carnero Montés" : "Companheiro Animal • Carneiro Montês",
-      hpMax: 18,
-      hpCurrent: 18,
-      ac: 16,
-      speed: "35ft",
-      perception: "+5",
-      attacks: [{ name: isEn ? "War Horns" : isEs ? "Cornada de Guerra" : "Chifrada de Guerra", bonus: "+6", damage: isEn ? "1d6+3 Bludgeoning [Shove]" : "1d6+3 Impacto [Empurrão]" }],
-      supportBenefit: isEn ? "Leaves opponent Off-Guard (-2 AC) against attacks." : "Deixa o oponente Desprevenido (-2 CA) contra as flechas de João.",
-      commandAction: isEn ? "Grants 2 actions to move and strike." : "Concede 2 ações para Bóreas se mover e chifrar."
-    }] : []);
+    const pets = Array.isArray(this.character.pets) ? this.character.pets : [];
 
     const petCardsHtml = pets.length === 0 ? `
       <div style="color:var(--pb-text-muted); text-align:center; padding:30px;">
@@ -1212,71 +1606,58 @@ class PathbuilderApp {
       <div style="margin-bottom:12px; display:flex; justify-content:flex-end;">
         <button class="btn-pb-action" onclick="app.openAddPetModal()">➕ ${isEn ? "Add Another Pet" : isEs ? "Añadir Otra Mascota" : "Adicionar Outro Mascote"}</button>
       </div>
-      ${pets.map((pet, idx) => `
+      ${pets.map((pet, idx) => {
+        const companion = PF2E_ENGINE?.calculateCompanionStats
+          ? PF2E_ENGINE.calculateCompanionStats(this.character, pet)
+          : pet;
+        return `
         <div class="strike-card" style="border-left-color: var(--pb-orange); background: var(--pb-bg-panel); margin-bottom:12px;">
           <div class="strike-header">
             <div style="font-weight:bold; color:var(--pb-orange); font-size:15px;">🐾 ${escapeHtml(this.localizeItemName(pet.name, locale))}</div>
-            <button onclick="app.removePet(${idx})" title="${isEn ? "Remove Pet" : "Remover Mascote"}" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer; font-size:14px;">🗑️</button>
+            <div style="display:flex; gap:4px;"><button onclick="app.editCharacterCollectionItem('pets', ${idx})" title="${isEn ? "Edit Pet" : isEs ? "Editar mascota" : "Editar mascote"}" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer; font-size:14px;">✎</button><button onclick="app.removePet(${idx})" title="${isEn ? "Remove Pet" : "Remover Mascote"}" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer; font-size:14px;">🗑️</button></div>
           </div>
           <div style="font-size:11px; color:var(--pb-text-muted); margin-bottom:8px;">${escapeHtml(pet.type || (isEn ? "Companion" : "Companheiro"))}</div>
           <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:6px; margin-bottom:10px;">
             <div class="vital-box">
               <span class="vital-label">${isEn ? "HP" : isEs ? "PG" : "PV"}</span>
-              <span class="vital-value" style="color:var(--hp-green);">${escapeHtml(pet.hpCurrent !== undefined ? pet.hpCurrent : pet.hpMax)} / ${escapeHtml(pet.hpMax || 16)}</span>
+              <span class="vital-value" style="color:var(--hp-green);">${escapeHtml(companion.hpCurrent ?? "—")} / ${escapeHtml(companion.hpMax ?? "—")}</span>
             </div>
-            <div class="vital-box"><span class="vital-label">${isEn ? "AC" : "CA"}</span><span class="vital-value" style="color:#60a5fa;">${escapeHtml(pet.ac || 16)}</span></div>
-            <div class="vital-box"><span class="vital-label">${isEn ? "Speed" : isEs ? "Velocidad" : "Velocidade"}</span><span class="vital-value">${escapeHtml(pet.speed || "35ft")}</span></div>
-            <div class="vital-box"><span class="vital-label">${isEn ? "Perception" : isEs ? "Percepción" : "Percepção"}</span><span class="vital-value">${escapeHtml(pet.perception || "+5")}</span></div>
+            <div class="vital-box"><span class="vital-label">${isEn ? "AC" : "CA"}</span><span class="vital-value" style="color:#60a5fa;">${escapeHtml(companion.ac ?? "—")}</span></div>
+            <div class="vital-box"><span class="vital-label">${isEn ? "Speed" : isEs ? "Velocidad" : "Velocidade"}</span><span class="vital-value">${escapeHtml(companion.speed ?? "—")}</span></div>
+            <div class="vital-box"><span class="vital-label">${isEn ? "Perception" : isEs ? "Percepción" : "Percepção"}</span><span class="vital-value">${escapeHtml(companion.perception ?? "—")}</span></div>
           </div>
           <div style="font-size:12px; line-height:1.6;">
-            ${(pet.attacks || []).map(atk => `• <strong>${isEn ? "Attack" : isEs ? "Ataque" : "Ataque"} ${escapeHtml(atk.name)}:</strong> ${escapeHtml(atk.bonus)} | <strong>${escapeHtml(atk.damage)}</strong>.<br>`).join('')}
-            ${pet.supportBenefit ? `• <strong>${isEn ? "Support Benefit:" : isEs ? "Beneficio de Soporte:" : "Benefício de Suporte:"}</strong> ${escapeHtml(pet.supportBenefit)}<br>` : ''}
-            ${pet.commandAction ? `• <strong>${isEn ? "Command Animal [1 Action]:" : isEs ? "Comandar Animal [1 Acción]:" : "Comandar Animal [1 Ação]:"}</strong> ${escapeHtml(pet.commandAction)}` : ''}
+            ${(companion.attacks || []).map(atk => `• <strong>${isEn ? "Attack" : isEs ? "Ataque" : "Ataque"} ${escapeHtml(atk.name)}:</strong> ${escapeHtml(atk.bonus ?? "—")} | <strong>${escapeHtml(atk.damage ?? "—")}</strong>.<br>`).join('')}
+            ${companion.supportBenefit ? `• <strong>${isEn ? "Support Benefit:" : isEs ? "Beneficio de Soporte:" : "Benefício de Suporte:"}</strong> ${escapeHtml(companion.supportBenefit)}<br>` : ''}
+            ${companion.commandAction ? `• <strong>${isEn ? "Command Animal [1 Action]:" : isEs ? "Comandar Animal [1 Acción]:" : "Comandar Animal [1 Ação]:"}</strong> ${escapeHtml(companion.commandAction)}` : ''}
           </div>
         </div>
-      `).join('')}
+      `;
+      }).join('')}
     `;
 
     p.innerHTML = petCardsHtml;
   }
 
   openAddPetModal() {
-    const presets = [
-      { name: "Lobo (Wolf)", type: "Companheiro Animal", hpMax: 18, ac: 16, speed: "40ft", perception: "+6", attacks: [{ name: "Mandíbulas", bonus: "+6", damage: "1d8+2 Perfuração [Derrubar]" }], supportBenefit: "Deixa inimigos Desprevenidos (-2 CA).", commandAction: "Concede 2 ações para se mover e morder." },
-      { name: "Urso (Bear)", type: "Companheiro Animal", hpMax: 20, ac: 15, speed: "35ft", perception: "+5", attacks: [{ name: "Mandíbulas", bonus: "+6", damage: "1d8+3 Perfuração" }, { name: "Garras", bonus: "+6", damage: "1d6+3 Corte [Ágil]" }], supportBenefit: "Causa +1d8 de dano de corte com seus ataques.", commandAction: "Concede 2 ações para se mover e golpear." },
-      { name: "Cavalo de Guerra (Horse)", type: "Montaria / Companheiro Animal", hpMax: 20, ac: 15, speed: "40ft", perception: "+5", attacks: [{ name: "Cascos", bonus: "+6", damage: "1d6+3 Impacto" }], supportBenefit: "+2 de dano de circunstância em ataques montados.", commandAction: "Concede 2 ações para avançar galopando." },
-      { name: "Ave de Rapina / Falcão", type: "Companheiro Animal", hpMax: 14, ac: 17, speed: "10ft (Voo 60ft)", perception: "+7", attacks: [{ name: "Garras / Bico", bonus: "+7", damage: "1d6+1 Corte [Finesse]" }], supportBenefit: "Deixa o alvo Deslumbrado (Dazzled).", commandAction: "Mergulha em voo e ataca." },
-      { name: "Familiar Místico", type: "Familiar", hpMax: 10, ac: 15, speed: "25ft", perception: "+5", attacks: [], supportBenefit: "Concede habilidades de mestre e entrega magias de toque.", commandAction: "Comanda o familiar a se posicionar ou entregar feitiço." }
-    ];
-    const choice = prompt(`Escolha o Mascote / Companheiro:\n1. Lobo (Wolf)\n2. Urso (Bear)\n3. Cavalo de Guerra (Horse)\n4. Ave de Rapina (Falcon)\n5. Familiar Místico\n(Digite o número de 1 a 5 ou nome personalizado):`, "1");
-    if (!choice) return;
-    let selected = presets[parseInt(choice, 10) - 1];
-    if (!selected) {
-      selected = { name: choice, type: "Mascote Personalizado", hpMax: 16, ac: 15, speed: "30ft", perception: "+5", attacks: [{ name: "Ataque", bonus: "+5", damage: "1d6+2" }], supportBenefit: "Apoio tático em combate.", commandAction: "Comandar criatura." };
-    }
-    if (!this.character.pets) this.character.pets = [];
-    this.character.pets.push(selected);
-    this.renderAll();
+    // Companheiros também passam pelo catálogo e pelo mesmo filtro de
+    // compatibilidade; não permita presets/nomes livres contornarem a origem.
+    this.openPicker("pet");
   }
 
   removePet(idx) {
     if (this.character.pets) {
       this.character.pets.splice(idx, 1);
+      this.saveCharacterLocal(false);
       this.renderAll();
     }
-  }
-
-  // ABA DE DETALHES
-  renderDetailsTab() {
-    document.getElementById("detDeity").value = this.character.deity || "";
-    document.getElementById("detAppearance").value = this.character.appearance || "";
-    document.getElementById("detBackstory").value = this.character.backstory || "";
   }
 
   // ABA DE TALENTOS
   renderFeatsTab() {
     const list = document.getElementById("featsFullList");
     const feats = this.character.feats || [];
+    const archetypes = this.character.archetypes || [];
     const locale = this.getLocale();
     const isEn = locale === "en";
     const isEs = locale === "es";
@@ -1287,12 +1668,24 @@ class PathbuilderApp {
         <div class="strike-card" style="border-left-color: var(--pb-teml-e);">
           <div class="strike-header">
             <span style="font-weight:bold; color:var(--pb-orange);">${escapeHtml(locName)} <span class="trait-tag">${escapeHtml(f.type || f.category || (isEn ? "Feat" : isEs ? "Dote" : "Talento"))}</span></span>
-            <button onclick="app.removeFeat(${idx})" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer;">🗑️</button>
+            <div style="display:flex; gap:4px;"><button onclick="app.editCharacterCollectionItem('feats', ${idx})" title="${isEn ? "Edit feat" : isEs ? "Editar dote" : "Editar talento"}" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer;">✎</button><button onclick="app.removeFeat(${idx})" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer;">🗑️</button></div>
           </div>
           <div style="font-size:12px; color:var(--pb-text); margin-top:4px;">${escapeHtml(f.description || "")}</div>
         </div>
       `;
     }).join('');
+    if (archetypes.length > 0) {
+      if (feats.length === 0) list.replaceChildren();
+      list.insertAdjacentHTML("afterbegin", archetypes.map((archetype, idx) => `
+        <div class="strike-card" style="border-left-color: var(--pb-orange);">
+          <div class="strike-header">
+            <span style="font-weight:bold; color:var(--pb-orange);">${escapeHtml(this.localizeItemName(archetype.name, locale))} <span class="trait-tag">${isEn ? "Archetype" : isEs ? "Arquetipo" : "Arquétipo"}</span></span>
+            <div style="display:flex; gap:4px;"><button onclick="app.editCharacterCollectionItem('archetypes', ${idx})" title="${isEn ? "Edit archetype" : isEs ? "Editar arquetipo" : "Editar arquétipo"}" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer;">✎</button><button onclick="app.removeArchetype(${idx})" title="${isEn ? "Remove archetype" : isEs ? "Eliminar arquetipo" : "Remover arquétipo"}" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer;">🗑️</button></div>
+          </div>
+          <div style="font-size:12px; color:var(--pb-text); margin-top:4px;">${escapeHtml(archetype.description || archetype.summaries?.[locale] || "")}</div>
+        </div>
+      `).join(''));
+    }
   }
 
   // ABA DE AÇÕES
@@ -1303,15 +1696,15 @@ class PathbuilderApp {
     const isEs = locale === "es";
 
     const defaultActions = [
-      { name: isEn ? "Strike" : isEs ? "Golpear (Strike)" : "Golpear (Strike)", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Make a melee or ranged attack with your weapon." : "Desfere um ataque corpo a corpo ou à distância com sua arma.", type: isEn ? "Basic" : "Básica" },
-      { name: isEn ? "Stride" : isEs ? "Zancada (Stride)" : "Movimentar-se (Stride)", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Move up to your Speed." : "Move-se até sua Velocidade em terra.", type: isEn ? "Basic" : "Básica" },
-      { name: isEn ? "Step" : isEs ? "Paso (Step)" : "Passo de Ajuste (Step)", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Carefully move 5 feet without triggering reactions." : "Move-se 5 pés sem provocar reações como Golpe Reativo.", type: isEn ? "Basic" : "Básica" },
-      { name: isEn ? "Raise a Shield" : isEs ? "Alzar Escudo (Raise a Shield)" : "Erguer Escudo (Raise a Shield)", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Gain a +2 circumstance bonus to AC until the start of your next turn." : "Concede +2 na CA de circunstância até o início do próximo turno.", type: isEn ? "Basic" : "Básica" },
-      { name: isEn ? "Take Cover" : isEs ? "Ponerse a Cubierto (Take Cover)" : "Buscar Cobertura (Take Cover)", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Gain or improve cover bonus to AC and Reflex saves." : "Melhora o bônus de cobertura para +2 ou +4 na CA e salvamentos de Reflexos.", type: isEn ? "Basic" : "Básica" },
-      { name: isEn ? "Demoralize" : isEs ? "Desmoralizar (Demoralize)" : "Desmoralizar (Demoralize)", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Intimidation vs Will to make target Frightened 1." : "Teste de Intimidação vs Vontade para deixar o alvo Aterrorizado 1.", type: isEn ? "Skill" : "Perícia" },
-      { name: isEn ? "Trip" : isEs ? "Derribar (Trip)" : "Derrubar (Trip)", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Athletics vs Reflex to knock opponent Prone." : "Teste de Atletismo vs Reflexos para derrubar o oponente Caído no chão.", type: isEn ? "Skill" : "Perícia" },
-      { name: isEn ? "Grapple" : isEs ? "Agarrar (Grapple)" : "Agarrar (Grapple)", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Athletics vs Fortitude to immobilize opponent." : "Teste de Atletismo vs Fortitude para imobilizar o oponente.", type: isEn ? "Skill" : "Perícia" },
-      { name: isEn ? "Treat Wounds" : isEs ? "Tratar Heridas (Treat Wounds)" : "Tratar Ferimentos (Treat Wounds)", cost: isEn ? "10 Minutes" : isEs ? "10 Minutos" : "10 Minutos", desc: isEn ? "Medicine out of combat to heal HP." : "Medicina fora de combate para curar grandes quantias de PV.", type: isEn ? "Exploration" : "Exploração" }
+      { name: isEn ? "Strike" : isEs ? "Golpear (Strike)" : "Golpear (Strike)", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Make a melee or ranged attack with your weapon." : isEs ? "Realiza un ataque cuerpo a cuerpo o a distancia con tu arma." : "Desfere um ataque corpo a corpo ou à distância com sua arma.", type: isEn ? "Basic" : isEs ? "Básica" : "Básica" },
+      { name: isEn ? "Stride" : isEs ? "Zancada (Stride)" : "Movimentar-se (Stride)", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Move up to your Speed." : isEs ? "Muévete hasta tu Velocidad." : "Move-se até sua Velocidade em terra.", type: isEn ? "Basic" : isEs ? "Básica" : "Básica" },
+      { name: isEn ? "Step" : isEs ? "Paso (Step)" : "Passo de Ajuste (Step)", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Carefully move 5 feet without triggering reactions." : isEs ? "Muévete con cuidado 5 pies sin provocar reacciones." : "Move-se 5 pés sem provocar reações como Golpe Reativo.", type: isEn ? "Basic" : isEs ? "Básica" : "Básica" },
+      { name: isEn ? "Raise a Shield" : isEs ? "Alzar Escudo (Raise a Shield)" : "Erguer Escudo (Raise a Shield)", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Gain a +2 circumstance bonus to AC until the start of your next turn." : isEs ? "Obtén un bonificador circunstancial +2 a la CA hasta el inicio de tu próximo turno." : "Concede +2 na CA de circunstância até o início do próximo turno.", type: isEn ? "Basic" : isEs ? "Básica" : "Básica" },
+      { name: isEn ? "Take Cover" : isEs ? "Ponerse a Cubierto (Take Cover)" : "Buscar Cobertura (Take Cover)", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Gain or improve cover bonus to AC and Reflex saves." : isEs ? "Obtén o mejora el bonificador de cobertura a la CA y salvaciones de Reflejos." : "Melhora o bônus de cobertura para +2 ou +4 na CA e salvamentos de Reflexos.", type: isEn ? "Basic" : isEs ? "Básica" : "Básica" },
+      { name: isEn ? "Demoralize" : isEs ? "Desmoralizar (Demoralize)" : "Desmoralizar (Demoralize)", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Intimidation vs Will to make target Frightened 1." : isEs ? "Intimidación contra Voluntad para dejar al objetivo Asustado 1." : "Teste de Intimidação vs Vontade para deixar o alvo Aterrorizado 1.", type: isEn ? "Skill" : isEs ? "Pericia" : "Perícia" },
+      { name: isEn ? "Trip" : isEs ? "Derribar (Trip)" : "Derrubar (Trip)", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Athletics vs Reflex to knock opponent Prone." : isEs ? "Atletismo contra Reflejos para derribar al oponente." : "Teste de Atletismo vs Reflexos para derrubar o oponente Caído no chão.", type: isEn ? "Skill" : isEs ? "Pericia" : "Perícia" },
+      { name: isEn ? "Grapple" : isEs ? "Agarrar (Grapple)" : "Agarrar (Grapple)", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Athletics vs Fortitude to immobilize opponent." : isEs ? "Atletismo contra Fortaleza para inmovilizar al oponente." : "Teste de Atletismo vs Fortitude para imobilizar o oponente.", type: isEn ? "Skill" : isEs ? "Pericia" : "Perícia" },
+      { name: isEn ? "Treat Wounds" : isEs ? "Tratar Heridas (Treat Wounds)" : "Tratar Ferimentos (Treat Wounds)", cost: isEn ? "10 Minutes" : isEs ? "10 Minutos" : "10 Minutos", desc: isEn ? "Medicine out of combat to heal HP." : isEs ? "Medicina fuera de combate para curar PV." : "Medicina fora de combate para curar grandes quantias de PV.", type: isEn ? "Exploration" : isEs ? "Exploración" : "Exploração" }
     ];
     const customActions = (this.character.classFeatures || []).concat(this.character.feats || []).map(a => ({
       name: this.localizeItemName(a.name, locale),
@@ -1748,32 +2141,23 @@ class PathbuilderApp {
     }
   }
 
-  updateField(field, value) {
-    if (!this.character) return;
-    this.character[field] = value;
-    if (field === "gmEmail") {
-      this.character.gm_email = value;
-    }
-    if (field === "notes") {
-      this.character.backstory = value;
-    }
-    this.saveCharacterLocal(false);
-    if (field !== "notes" && field !== "age" && field !== "gender") {
-      this.renderAll();
-    }
-  }
-
   // ABA DE LIVRO DE FÓRMULAS (FORMULA BOOK)
   renderFormulasTab() {
     const list = document.getElementById("formulasFullList");
     if (!list) return;
     const formulas = this.character.formulas || [];
+    const locale = this.getLocale();
+    const copy = locale === "en"
+      ? { empty: "No formulas recorded in your Formula Book.", add: "Click Add Formula to include potions, elixirs, bombs, or snares.", category: "Formula", level: "Rank", crafting: "Crafting DC", edit: "Edit formula", remove: "Remove formula" }
+      : locale === "es"
+        ? { empty: "No hay fórmulas registradas en tu Libro de Fórmulas.", add: "Haz clic en Añadir fórmula para incluir pociones, elixires, bombas o trampas.", category: "Fórmula", level: "Rango", crafting: "CD de Artesanía", edit: "Editar fórmula", remove: "Eliminar fórmula" }
+        : { empty: "Nenhuma fórmula cadastrada no seu Livro de Fórmulas.", add: "Clique em Adicionar Fórmula para incluir poções, elixires, bombas ou armadilhas.", category: "Fórmula", level: "Nível", crafting: "CD Manufatura", edit: "Editar Fórmula", remove: "Remover Fórmula" };
     if (formulas.length === 0) {
       list.innerHTML = `
         <div style="text-align:center; padding:32px; color:var(--pb-text-muted); font-size:13px;">
           <div style="font-size:28px; margin-bottom:8px;">📜</div>
-          Nenhuma fórmula cadastrada no seu Livro de Fórmulas.<br>
-          Clique em <strong>➕ Adicionar Fórmula</strong> para incluir poções, elixires, bombas ou armadilhas.
+          ${copy.empty}<br>
+          ${copy.add}
         </div>
       `;
       return;
@@ -1784,12 +2168,12 @@ class PathbuilderApp {
         <div class="strike-header">
           <div>
             <span style="font-weight:bold; color:#a78bfa; font-size:13px;">${escapeHtml(f.name)}</span>
-            <span class="trait-tag" style="background:#2e1065; color:#c4b5fd; border-color:#5b21b6; margin-left:6px;">${escapeHtml(f.category || "Fórmula")}</span>
-            <span class="trait-tag" style="background:#1e1b4b; color:#93c5fd; border-color:#3730a3; margin-left:4px;">Nível ${escapeHtml(f.level || 0)}</span>
+            <span class="trait-tag" style="background:#2e1065; color:#c4b5fd; border-color:#5b21b6; margin-left:6px;">${escapeHtml(f.category || copy.category)}</span>
+            <span class="trait-tag" style="background:#1e1b4b; color:#93c5fd; border-color:#3730a3; margin-left:4px;">${copy.level} ${escapeHtml(f.level || 0)}</span>
           </div>
           <div style="display:flex; align-items:center; gap:8px;">
-            ${f.craftingDC ? `<span style="font-size:11px; color:var(--pb-text-muted);">CD Manufatura: <strong style="color:var(--pb-orange);">${f.craftingDC}</strong></span>` : ""}
-            <button onclick="app.removeFormula(${idx})" title="Remover Fórmula" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer; font-size:14px;">🗑️</button>
+            ${f.craftingDC ? `<span style="font-size:11px; color:var(--pb-text-muted);">${copy.crafting}: <strong style="color:var(--pb-orange);">${f.craftingDC}</strong></span>` : ""}
+            <div style="display:flex; gap:4px;"><button onclick="app.editCharacterCollectionItem('formulas', ${idx})" title="${copy.edit}" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer; font-size:14px;">✎</button><button onclick="app.removeFormula(${idx})" title="${copy.remove}" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer; font-size:14px;">🗑️</button></div>
           </div>
         </div>
         <div style="font-size:12px; color:var(--pb-text); margin-top:4px;">${escapeHtml(f.description || "")}</div>
@@ -1809,21 +2193,10 @@ class PathbuilderApp {
     this.renderAll();
   }
 
-  renderConditions() {
-    const target = document.getElementById("activeConditions");
-    if (!target) return;
-    const conditions = this.character.conditions || [];
-    const buffs = this.character.buffs || [];
-    target.innerHTML = conditions.concat(buffs).map((item, idx) => `
-      <span class="trait-tag" title="${escapeHtml(item.description || "")}">${escapeHtml(item.name)}${item.value > 1 ? ` ${escapeHtml(item.value)}` : ""}
-        <button type="button" onclick="app.removeCondition(${idx}, ${idx >= conditions.length})" style="border:0;background:none;color:inherit;cursor:pointer">×</button>
-      </span>
-    `).join("");
-  }
-
   removeCondition(index, isBuff) {
     const key = isBuff ? "buffs" : "conditions";
     if (this.character[key]) this.character[key].splice(isBuff ? index - (this.character.conditions || []).length : index, 1);
+    this.saveCharacterLocal(false);
     this.renderAll();
   }
 
@@ -1846,71 +2219,85 @@ class PathbuilderApp {
     window.pathbuilderPicker?.close();
   }
 
+  filterPickerItemsByCompatibility(type, items = []) {
+    const checker = PF2E_ENGINE?.getPrerequisiteCompatibility;
+    return items.filter((item) => {
+      if (type === "spell") return PF2E_ENGINE?.getSpellCompatibility?.(this.character, item.data)?.state !== "incompatible";
+      if (typeof checker !== "function") return true;
+      return checker.call(PF2E_ENGINE, this.character, item.data)?.state !== "incompatible";
+    });
+  }
+
   getPickerItems(type) {
     const sharedCatalogs = window.pathbuilderCatalogs || {};
+    const finalize = (items) => this.filterPickerItemsByCompatibility(type, items);
     if (type === "ancestry") {
-      return getObjectCatalogRecords(PF2E_DATA.ancestries).map(({ key, record }) => ({ name: key, type: "Ancestralidade", data: record }));
+      return finalize(getObjectCatalogRecords(PF2E_DATA.ancestries).map(({ key, record }) => ({ name: key, type: "Ancestralidade", data: record })));
     }
     if (type === "class") {
-      return getObjectCatalogRecords(PF2E_DATA.classes).map(({ key, record }) => ({ name: key, type: "Classe", data: record }));
+      return finalize(getObjectCatalogRecords(PF2E_DATA.classes).map(({ key, record }) => ({ name: key, type: "Classe", data: record })));
+    }
+    if (type === "subclass") {
+      return finalize((PF2E_DATA.subclasses || []).filter(subclass => !String(subclass.id || "").includes(".legacy_alias.")).map(subclass => ({ name: subclass.name, type: "Subclasse", data: subclass })));
     }
     if (type === "background") {
-      return PF2E_DATA.backgrounds.map(b => ({ name: b.name, type: "Antecedente", data: b }));
+      return finalize(PF2E_DATA.backgrounds.map(b => ({ name: b.name, type: "Antecedente", data: b })));
     }
     if (type === "weapon") {
-      return PF2E_DATA.weapons.map(w => ({ name: w.name, type: "Arma", data: w }));
+      return finalize(PF2E_DATA.weapons.map(w => ({ name: w.name, type: "Arma", data: w })));
     }
     if (type === "armor") {
-      return PF2E_DATA.armors.map(a => ({ name: a.name, type: "Armadura", data: a }));
+      return finalize(PF2E_DATA.armors.map(a => ({ name: a.name, type: "Armadura", data: a })));
     }
     if (type === "shield") {
-      return (PF2E_DATA.shields || []).map(s => ({ name: s.name, type: "Escudo", data: s }));
+      return finalize((PF2E_DATA.shields || []).map(s => ({ name: s.name, type: "Escudo", data: s })));
     }
     if (type === "heritage") {
-      const ancestry = PF2E_DATA.ancestries[this.character?.ancestry];
-      const heritages = (ancestry?.heritages || []).map(name => ({ name, type: "Herança", data: { name, description: "Herança da ancestralidade selecionada." } }));
+      const ancestry = findCatalogRecord(PF2E_DATA.ancestries, this.character?.ancestry);
+      const heritages = (PF2E_DATA.heritages || []).filter(h => h.ancestryIds?.includes(ancestry?.id)).map(h => ({ name: h.name, type: "Herança", data: h }));
       const versatile = (PF2E_DATA.versatileHeritages || []).map(h => ({ name: h.name, type: "Herança Versátil", data: h }));
-      return heritages.concat(versatile);
+      return finalize(heritages.concat(versatile));
     }
     if (type === "archetype") {
-      return (PF2E_DATA.archetypes || []).map(a => ({ name: a.name, type: "Arquétipo", data: a }));
+      return finalize((PF2E_DATA.archetypes || []).map(a => ({ name: a.name, type: "Arquétipo", data: a })));
     }
     if (type === "spell") {
       const weights = { available: 0, "requires-choice": 1, incompatible: 2 };
-      return (PF2E_DATA.spells || []).map(spell => {
+      return finalize((PF2E_DATA.spells || []).map(spell => {
         const compatibility = PF2E_ENGINE.getSpellCompatibility(this.character, spell);
         const selectionMessages = Object.fromEntries(["pt-BR", "en", "es"].map(locale => [locale, this.getSpellCompatibilityMessage(compatibility, locale)]));
         return { name: spell.name, type: "Magia", data: { ...spell, selectionState: compatibility.state, selectionMessages } };
-      }).sort((a, b) => (weights[a.data.selectionState] - weights[b.data.selectionState]) || (a.data.rank - b.data.rank) || a.name.localeCompare(b.name));
+      }).sort((a, b) => (weights[a.data.selectionState] - weights[b.data.selectionState]) || (a.data.rank - b.data.rank) || a.name.localeCompare(b.name)));
     }
     if (type === "ritual") {
-      return (PF2E_DATA.rituals || []).map(r => ({ name: r.name, type: "Ritual", data: r }));
+      return finalize((PF2E_DATA.rituals || []).map(r => ({ name: r.name, type: "Ritual", data: r })));
     }
     if (type === "feat") {
-      return mergeCatalogRecords(sharedCatalogs.feats, PF2E_DATA.feats || this.getFallbackFeatCatalog()).map(f => ({ name: f.name, type: f.type || "Talento", data: f }));
+      return finalize(mergeCatalogRecords(sharedCatalogs.feats, PF2E_DATA.feats || this.getFallbackFeatCatalog()).map(f => ({ name: f.name, type: f.type || "Talento", data: f })));
     }
     if (type === "item" || type === "gear") {
-      return mergeCatalogRecords(sharedCatalogs.items, PF2E_DATA.items).map(i => ({ name: i.name, type: "Item", data: i }));
+      const itemCatalog = (PF2E_DATA.items || []).concat(PF2E_DATA.itemCompendium || []);
+      return finalize(mergeCatalogRecords(sharedCatalogs.items, itemCatalog).map(i => ({ name: i.name, type: "Item", data: i })));
     }
     if (type === "pet") {
-      return mergeCatalogRecords(sharedCatalogs.pets, PF2E_DATA.pets).map(p => ({ name: p.name, type: "Mascote", data: p }));
+      return finalize(mergeCatalogRecords(sharedCatalogs.pets, PF2E_DATA.pets).map(p => ({ name: p.name, type: "Mascote", data: p })));
     }
     if (type === "action") {
-      return mergeCatalogRecords(sharedCatalogs.actions, PF2E_DATA.actions).map(a => ({ name: a.name, type: "Ação", data: a }));
+      return finalize(mergeCatalogRecords(sharedCatalogs.actions, PF2E_DATA.actions).map(a => ({ name: a.name, type: "Ação", data: a })));
     }
     if (type === "formula") {
-      return (PF2E_DATA.formulas || []).map(f => ({ name: f.name, type: f.category || "Fórmula", data: f }));
+      return finalize((PF2E_DATA.formulas || []).map(f => ({ name: f.name, type: f.category || "Fórmula", data: f })));
     }
     if (type === "condition") {
-      return (PF2E_DATA.conditions || this.getConditionCatalog()).map(c => ({ name: c.name, type: "Condição", data: c }));
+      return finalize((PF2E_DATA.conditions || this.getConditionCatalog()).map(c => ({ name: c.name, type: "Condição", data: c })));
     }
     if (type === "buff") {
-      return (PF2E_DATA.buffs || this.getBuffCatalog()).map(b => ({ name: b.name, type: "Benefício", data: b }));
+      return finalize((PF2E_DATA.buffs || this.getBuffCatalog()).map(b => ({ name: b.name, type: "Benefício", data: b })));
     }
-    return PF2E_DATA.backgrounds.map(b => ({ name: b.name, type: "Geral", data: b }));
+    return finalize(PF2E_DATA.backgrounds.map(b => ({ name: b.name, type: "Geral", data: b })));
   }
 
-  parsePriceToCopper(price) {
+  parsePriceToCopper(price, locale = this.getLocale()) {
     if (!price && price !== 0) return 0;
     if (typeof price === "number") return Math.round(price * 100);
     if (typeof price === "object") {
@@ -1927,11 +2314,15 @@ class PathbuilderApp {
 
     const plMatch = str.match(/(\d+(?:\.\d+)?)\s*(?:pl|platina|platinum)\b/i);
     if (plMatch) { totalCp += Math.round(parseFloat(plMatch[1]) * 1000); matched = true; }
+    if (!plMatch && !String(locale).toLowerCase().startsWith("pt")) {
+      const ppIntlMatch = str.match(/(\d+(?:\.\d+)?)\s*pp\b/i);
+      if (ppIntlMatch) { totalCp += Math.round(parseFloat(ppIntlMatch[1]) * 1000); matched = true; }
+    }
     const gpMatch = str.match(/(\d+(?:\.\d+)?)\s*(?:gp|po|ouro|gold)\b/i);
     if (gpMatch) { totalCp += Math.round(parseFloat(gpMatch[1]) * 100); matched = true; }
-    const spMatch = str.match(/(\d+(?:\.\d+)?)\s*(?:sp|prata|silver)\b/i);
+    const spMatch = str.match(/(\d+(?:\.\d+)?)\s*(?:sp|pa|prata|plata|silver)\b/i);
     if (spMatch) { totalCp += Math.round(parseFloat(spMatch[1]) * 10); matched = true; }
-    else if (!plMatch && /\b\d+(?:\.\d+)?\s*pp\b/i.test(str)) {
+    else if (!plMatch && String(locale).toLowerCase().startsWith("pt") && /\b\d+(?:\.\d+)?\s*pp\b/i.test(str)) {
       const ppPt = str.match(/(\d+(?:\.\d+)?)\s*pp\b/i);
       if (ppPt) { totalCp += Math.round(parseFloat(ppPt[1]) * 10); matched = true; }
     }
@@ -1951,12 +2342,12 @@ class PathbuilderApp {
   }
 
   canCharacterAfford(price, qty = 1) {
-    const cost = this.parsePriceToCopper(price) * Math.max(1, qty);
+    const cost = this.parsePriceToCopper(price, this.getLocale()) * Math.max(1, qty);
     return this.getCharacterTotalCopper() >= cost;
   }
 
   deductCharacterPrice(price, qty = 1) {
-    const cost = this.parsePriceToCopper(price) * Math.max(1, qty);
+    const cost = this.parsePriceToCopper(price, this.getLocale()) * Math.max(1, qty);
     let current = this.getCharacterTotalCopper();
     if (current >= cost) {
       current -= cost;
@@ -1973,6 +2364,13 @@ class PathbuilderApp {
 
   applyPickerSelection(type, item, options, deductCoins = false) {
     if (!item) return;
+    const prerequisiteCompatibility = typeof PF2E_ENGINE?.getPrerequisiteCompatibility === "function"
+      ? PF2E_ENGINE.getPrerequisiteCompatibility(this.character, item.data)
+      : { state: "available" };
+    if (prerequisiteCompatibility.state === "incompatible") {
+      alert(this.getPrerequisiteCompatibilityMessage(prerequisiteCompatibility));
+      return;
+    }
     const changesMaximumHp = type === "ancestry" || type === "class";
     const previousMaxHp = this.calc?.maxHp ?? PF2E_ENGINE.calculateCharacterStats(this.character).maxHp;
     const previousCurrentHp = this.character.currentHp ?? previousMaxHp;
@@ -1981,6 +2379,12 @@ class PathbuilderApp {
 
     if (type === "ancestry") this.applyAncestrySelection(item);
     else if (type === "class") this.applyClassSelection(item);
+    else if (type === "subclass") this.character.subclass = item.name;
+    else if (type === "archetype") {
+      if (!this.character.archetypes) this.character.archetypes = [];
+      const exists = this.character.archetypes.some(archetype => (item.data.id && archetype.id === item.data.id) || archetype.name === item.name);
+      if (!exists) this.character.archetypes.push({ ...item.data, name: item.name });
+    }
     else if (type === "background") this.character.background = item.name;
     else if (type === "weapon") {
       if (!this.character.weapons) this.character.weapons = [];
@@ -2036,17 +2440,27 @@ class PathbuilderApp {
       if (!this.character.buffs) this.character.buffs = [];
       const exists = this.character.buffs.some(buff => (item.data.id && buff.id === item.data.id) || buff.name === item.name);
       if (!exists) this.character.buffs.push({ ...item.data, name: item.name });
+    } else if (type === "action") {
+      if (!this.character.actions) this.character.actions = [];
+      const exists = this.character.actions.some(action => (item.data.id && action.id === item.data.id) || action.name === item.name);
+      if (!exists) this.character.actions.push({ ...item.data, name: item.name });
     } else if (type === "item" || type === "gear") {
       if (!this.character.inventory) this.character.inventory = [];
-      this.character.inventory.push({ ...item.data, name: item.name, qty: 1 });
+      const qty = Math.max(1, Number(item.data?.qty ?? item.qty ?? 1) || 1);
+      const identity = (entry) => String(entry?.id || entry?.name || "").trim().toLowerCase();
+      const incomingIdentity = identity(item.data) || identity(item);
+      const existing = this.character.inventory.find((entry) => incomingIdentity && identity(entry) === incomingIdentity);
+      if (existing) existing.qty = Math.max(1, Number(existing.qty) || 1) + qty;
+      else this.character.inventory.push({ ...item.data, name: item.name, qty });
     }
 
     if (deductCoins && (item.data?.price || item.price)) {
-      this.deductCharacterPrice(item.data?.price || item.price);
+      this.deductCharacterPrice(item.data?.price || item.price, item.data?.qty || item.qty || 1);
     }
 
     if (changesMaximumHp) this.reconcileCurrentHp(previousMaxHp, previousCurrentHp);
 
+    this.saveCharacterLocal(false);
     this.renderAll();
   }
 
@@ -2057,7 +2471,19 @@ class PathbuilderApp {
   }
 
   applyAncestrySelection(item) {
+    const ancestryChanged = this.character.ancestry !== item.name;
     this.character.ancestry = item.name;
+    if (ancestryChanged) {
+      this.clearProgressionSlots("ancestry_feat");
+      if (Array.isArray(this.character.feats)) {
+        this.character.feats = this.character.feats.filter(feat => {
+          if (String(feat?.slotId || "").includes("ancestry_feat")) return false;
+          const ancestryBound = feat?.ancestryId || (Array.isArray(feat?.ancestryIds) && feat.ancestryIds.length);
+          return !ancestryBound || PF2E_ENGINE.getPrerequisiteCompatibility(this.character, feat).state !== "incompatible";
+        });
+      }
+      if (Array.isArray(this.character.ancestryFeats)) this.character.ancestryFeats = [];
+    }
     const groups = Array.isArray(item.data?.selectionGroups) ? item.data.selectionGroups : [];
     if (groups.length > 0) {
       const selectedOptions = {};
@@ -2101,6 +2527,10 @@ class PathbuilderApp {
       items = getObjectCatalogRecords(PF2E_DATA.ancestries).map(({ key, record }) => ({ name: key, type: "Ancestralidade", data: record }));
     } else if (this.currentPickerType === "class") {
       items = getObjectCatalogRecords(PF2E_DATA.classes).map(({ key, record }) => ({ name: key, type: "Classe", data: record }));
+    } else if (this.currentPickerType === "subclass") {
+      items = (PF2E_DATA.subclasses || []).map(s => ({ name: s.name, type: "Subclasse", data: s }));
+    } else if (this.currentPickerType === "archetype") {
+      items = (PF2E_DATA.archetypes || []).map(a => ({ name: a.name, type: "Arquétipo", data: a }));
     } else if (this.currentPickerType === "background") {
       items = PF2E_DATA.backgrounds.map(b => ({ name: b.name, type: "Antecedente", data: b }));
     } else if (this.currentPickerType === "weapon") {
@@ -2109,15 +2539,23 @@ class PathbuilderApp {
       items = PF2E_DATA.armors.map(a => ({ name: a.name, type: "Armadura", data: a }));
     } else if (this.currentPickerType === "shield") {
       items = (PF2E_DATA.shields || []).map(s => ({ name: s.name, type: "Escudo", data: s }));
+    } else if (this.currentPickerType === "spell") {
+      items = (PF2E_DATA.spells || []).map(spell => {
+        const compatibility = PF2E_ENGINE.getSpellCompatibility(this.character, spell);
+        return { name: spell.name, type: "Magia", data: { ...spell, selectionState: compatibility.state, selectionMessages: { "pt-BR": this.getSpellCompatibilityMessage(compatibility, "pt-BR"), en: this.getSpellCompatibilityMessage(compatibility, "en"), es: this.getSpellCompatibilityMessage(compatibility, "es") } } };
+      });
+    } else if (this.currentPickerType === "ritual") {
+      items = (PF2E_DATA.rituals || []).map(ritual => ({ name: ritual.name, type: "Ritual", data: ritual }));
     } else if (this.currentPickerType === "heritage") {
-      const ancestry = PF2E_DATA.ancestries[this.character?.ancestry];
-      const heritages = (ancestry?.heritages || []).map(name => ({ name, type: "Herança", data: { name, description: "Herança da ancestralidade selecionada." } }));
+      const ancestry = findCatalogRecord(PF2E_DATA.ancestries, this.character?.ancestry);
+      const heritages = (PF2E_DATA.heritages || []).filter(h => h.ancestryIds?.includes(ancestry?.id)).map(h => ({ name: h.name, type: "Herança", data: h }));
       const versatile = (PF2E_DATA.versatileHeritages || []).map(h => ({ name: h.name, type: "Herança Versátil", data: h }));
       items = heritages.concat(versatile);
     } else if (this.currentPickerType === "feat") {
       items = mergeCatalogRecords(sharedCatalogs.feats, PF2E_DATA.feats || this.getFallbackFeatCatalog()).map(f => ({ name: f.name, type: f.type || "Talento", data: f }));
     } else if (this.currentPickerType === "item" || this.currentPickerType === "gear") {
-      items = mergeCatalogRecords(sharedCatalogs.items, PF2E_DATA.items).map(i => ({ name: i.name, type: "Item", data: i }));
+      const itemCatalog = (PF2E_DATA.items || []).concat(PF2E_DATA.itemCompendium || []);
+      items = mergeCatalogRecords(sharedCatalogs.items, itemCatalog).map(i => ({ name: i.name, type: "Item", data: i }));
     } else if (this.currentPickerType === "pet") {
       items = mergeCatalogRecords(sharedCatalogs.pets, PF2E_DATA.pets).map(p => ({ name: p.name, type: "Mascote", data: p }));
     } else if (this.currentPickerType === "action") {
@@ -2132,6 +2570,18 @@ class PathbuilderApp {
       items = PF2E_DATA.backgrounds.map(b => ({ name: b.name, type: "Geral", data: b }));
     }
 
+    // O modal legado também é uma superfície de escolha: não apresente
+    // registros incompatíveis, mantendo a revalidação na confirmação.
+    const prerequisiteChecker = PF2E_ENGINE?.getPrerequisiteCompatibility;
+    if (typeof prerequisiteChecker === "function") {
+      items = items.filter(item => {
+        if (this.currentPickerType === "spell") {
+          return PF2E_ENGINE.getSpellCompatibility(this.character, item.data)?.state === "available";
+        }
+        return prerequisiteChecker.call(PF2E_ENGINE, this.character, item.data)?.state !== "incompatible";
+      });
+    }
+
     if (filterQuery) {
       items = items.filter(i => i.name.toLowerCase().includes(filterQuery.toLowerCase()));
     }
@@ -2140,7 +2590,7 @@ class PathbuilderApp {
       <div class="tree-node" style="margin-bottom:3px; padding:4px 6px;" onclick="app.selectPickerItem(${idx})">
         <div class="tree-node-icon" style="width:20px; height:20px; font-size:11px;">📜</div>
         <div class="tree-node-text">
-          <div class="tree-node-value" style="font-size:11px;">${escapeHtml(item.name)}</div>
+          <div class="tree-node-value" style="font-size:11px;">${escapeHtml(item.name)}${item.data?.rarity === "rare" ? ' <span style="color:#fca5a5; font-size:9px;">· RARO / APROVAÇÃO DO MESTRE</span>' : ''}</div>
         </div>
       </div>
     `).join('');
@@ -2172,6 +2622,7 @@ class PathbuilderApp {
 
     const source = item.data.source;
     const sourceText = source?.book ? `${source.book}${source.page ? `, p. ${source.page}` : ""}` : "Fonte ainda não catalogada — requer revisão";
+    if (item.data.rarity) contentHtml += `<div style="margin-top:8px; color:${item.data.rarity === "rare" ? "#fca5a5" : "#fde68a"}; font-size:11px; font-weight:bold;">${escapeHtml(item.data.rarity === "rare" ? "Raro — requer aprovação do Mestre" : item.data.rarity)}</div>`;
     contentHtml += `<div style="margin-top:auto; font-size:10px; color:var(--pb-text-dim);">${escapeHtml(sourceText)}</div>`;
     detail.innerHTML = contentHtml;
   }
@@ -2179,6 +2630,18 @@ class PathbuilderApp {
   confirmModalSelection() {
     if (!this.selectedPickerItem) return;
     const item = this.selectedPickerItem;
+    if (this.currentPickerType === "spell") {
+      const spellCompatibility = PF2E_ENGINE?.getSpellCompatibility?.(this.character, item.data);
+      if (spellCompatibility?.state !== "available") {
+        alert(this.getSpellCompatibilityMessage(spellCompatibility));
+        return;
+      }
+    }
+    const prerequisiteCompatibility = PF2E_ENGINE?.getPrerequisiteCompatibility?.(this.character, item.data);
+    if (prerequisiteCompatibility?.state === "incompatible") {
+      alert(this.getPrerequisiteCompatibilityMessage(prerequisiteCompatibility));
+      return;
+    }
     const changesMaximumHp = this.currentPickerType === "ancestry" || this.currentPickerType === "class";
     const previousMaxHp = this.calc?.maxHp ?? PF2E_ENGINE.calculateCharacterStats(this.character).maxHp;
     const previousCurrentHp = this.character.currentHp ?? previousMaxHp;
@@ -2187,6 +2650,12 @@ class PathbuilderApp {
       this.applyAncestrySelection(item);
     } else if (this.currentPickerType === "class") {
       this.applyClassSelection(item);
+    } else if (this.currentPickerType === "subclass") {
+      this.character.subclass = item.name;
+    } else if (this.currentPickerType === "archetype") {
+      if (!this.character.archetypes) this.character.archetypes = [];
+      const exists = this.character.archetypes.some(archetype => (item.data.id && archetype.id === item.data.id) || archetype.name === item.name);
+      if (!exists) this.character.archetypes.push({ ...item.data, name: item.name });
     } else if (this.currentPickerType === "background") {
       this.character.background = item.name;
     } else if (this.currentPickerType === "weapon") {
@@ -2199,8 +2668,24 @@ class PathbuilderApp {
     } else if (this.currentPickerType === "feat") {
       if (!this.character.feats) this.character.feats = [];
       this.character.feats.push({ ...item.data });
+    } else if (this.currentPickerType === "spell") {
+      if (!this.character.spells) this.character.spells = [];
+      const exists = this.character.spells.some(spell => (item.data.id && spell.id === item.data.id) || spell.name === item.name);
+      if (!exists) this.character.spells.push({ ...item.data, name: item.name, level: item.data.rank ?? item.data.level });
+    } else if (this.currentPickerType === "ritual") {
+      if (!this.character.rituals) this.character.rituals = [];
+      const exists = this.character.rituals.some(ritual => (item.data.id && ritual.id === item.data.id) || ritual.name === item.name);
+      if (!exists) this.character.rituals.push({ ...item.data, name: item.name });
     } else if (this.currentPickerType === "shield") {
       this.character.equippedShield = { ...item.data, currentHp: item.data.maxHp };
+    } else if (this.currentPickerType === "item" || this.currentPickerType === "gear") {
+      if (!this.character.inventory) this.character.inventory = [];
+      const qty = Math.max(1, Number(item.data?.qty ?? item.qty ?? 1) || 1);
+      const identity = (entry) => String(entry?.id || entry?.name || "").trim().toLowerCase();
+      const incomingIdentity = identity(item.data) || identity(item);
+      const existing = this.character.inventory.find((entry) => incomingIdentity && identity(entry) === incomingIdentity);
+      if (existing) existing.qty = Math.max(1, Number(existing.qty) || 1) + qty;
+      else this.character.inventory.push({ ...item.data, name: item.name, qty });
     } else if (this.currentPickerType === "formula") {
       if (!this.character.formulas) this.character.formulas = [];
       this.character.formulas.push({ ...item.data, name: item.name });
@@ -2209,7 +2694,8 @@ class PathbuilderApp {
       this.character.pets.push({ ...item.data, name: item.name });
     } else if (this.currentPickerType === "action") {
       if (!this.character.actions) this.character.actions = [];
-      this.character.actions.push({ ...item.data, name: item.name });
+      const exists = this.character.actions.some(action => (item.data.id && action.id === item.data.id) || action.name === item.name);
+      if (!exists) this.character.actions.push({ ...item.data, name: item.name });
     } else if (this.currentPickerType === "condition") {
       if (!this.character.conditions) this.character.conditions = [];
       if (!this.character.conditions.some(c => c.name === item.name)) this.character.conditions.push({ name: item.name, value: 1 });
@@ -2225,37 +2711,23 @@ class PathbuilderApp {
   }
 
   getFallbackFeatCatalog() {
-    return [
-      { name: "Robustez", type: "Talento Geral", description: "Você ganha pontos de vida adicionais iguais ao seu nível." },
-      { name: "Medicina de Batalha", type: "Talento de Perícia", description: "Você pode tratar ferimentos durante o combate." },
-      { name: "Aparar em Duelo", type: "Talento de Classe", description: "Erga sua arma para obter bônus circunstancial na CA." },
-      { name: "Palavra Mordaz", type: "Talento de Perícia", description: "Desestabilize um alvo com uma provocação inteligente." },
-      { name: "Finalizador Sangrento", type: "Talento de Classe", description: "Um finalizador que causa dano persistente quando acerta." },
-    ];
+    // Nunca invente opções de regra quando o catálogo oficial não carregou.
+    // O picker deve permanecer vazio até que a fonte de dados esteja disponível.
+    return [];
   }
 
   getConditionCatalog() {
     if (typeof PF2E_DATA !== "undefined" && Array.isArray(PF2E_DATA.conditions)) {
       return PF2E_DATA.conditions;
     }
-    return [
-      { name: "Amedrontado", description: "Penalidade em todos os testes e CDs.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 442 }, ruleset: "remaster" },
-      { name: "Desprevenido", description: "Penalidade na Classe de Armadura contra ataques.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 443 }, ruleset: "remaster" },
-      { name: "Enfraquecido", description: "Penalidade em Força e testes relacionados.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 442 }, ruleset: "remaster" },
-      { name: "Morrendo", description: "Você está à beira da morte.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 443 }, ruleset: "remaster" },
-      { name: "Ofuscado", description: "Visão prejudicada a longa distância.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 441 }, ruleset: "remaster" },
-    ];
+    return [];
   }
 
   getBuffCatalog() {
     if (typeof PF2E_DATA !== "undefined" && Array.isArray(PF2E_DATA.buffs)) {
       return PF2E_DATA.buffs;
     }
-    return [
-      { name: "Abençoado", description: "Bônus +1 de estado em jogadas de ataque.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 318 }, ruleset: "remaster" },
-      { name: "Aceleração", description: "Você recebe uma ação adicional em cada turno.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 444 }, ruleset: "remaster" },
-      { name: "Ocultado", description: "Ataques contra você têm chance de falha.", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 441 }, ruleset: "remaster" },
-    ];
+    return [];
   }
 
   // DRAWER MENU TOGGLE
@@ -2406,11 +2878,17 @@ class PathbuilderApp {
     const resultTotal = document.getElementById("diceResultTotal");
     const resultBreakdown = document.getElementById("diceResultBreakdown");
     const resultLabel = document.getElementById("diceResultLabel");
+    const locale = this.getLocale();
+    const copy = locale === "en"
+      ? { instruction: "Select dice using the buttons at the top", freeRoll: "Free Roll" }
+      : locale === "es"
+        ? { instruction: "Selecciona dados usando los botones de arriba", freeRoll: "Tirada libre" }
+        : { instruction: "Selecione os dados acima para rolar", freeRoll: "Rolagem Livre" };
 
     if (animContainer) animContainer.innerHTML = "";
     if (resultTotal) resultTotal.innerText = "0";
-    if (resultBreakdown) resultBreakdown.innerText = this.getLocale() === "en" ? "Select dice using the buttons at the top" : "Selecione os dados acima para rolar";
-    if (resultLabel) resultLabel.innerText = this.getLocale() === "en" ? "Free Roll" : "Rolagem Livre";
+    if (resultBreakdown) resultBreakdown.innerText = copy.instruction;
+    if (resultLabel) resultLabel.innerText = copy.freeRoll;
     if (placeholder) placeholder.style.display = "flex";
     if (stage) stage.style.display = "none";
   }
@@ -2422,6 +2900,12 @@ class PathbuilderApp {
     const resultLabel = document.getElementById("diceResultLabel");
     const resultTotal = document.getElementById("diceResultTotal");
     const resultBreakdown = document.getElementById("diceResultBreakdown");
+    const locale = this.getLocale();
+    const copy = locale === "en"
+      ? { last: "Last result", sum: "Sum", total: "Total", freeRoll: "Free Roll", empty: "Select dice using the buttons at the top" }
+      : locale === "es"
+        ? { last: "Último resultado", sum: "Suma", total: "Total", freeRoll: "Tirada libre", empty: "Selecciona dados usando los botones de arriba" }
+        : { last: "Último resultado", sum: "Soma", total: "Total", freeRoll: "Rolagem Livre", empty: "Selecione os dados acima para rolar" };
 
     if (placeholder) placeholder.style.display = "none";
     if (stage) stage.style.display = "flex";
@@ -2432,12 +2916,12 @@ class PathbuilderApp {
       total += d.value;
     });
 
-    if (resultLabel) resultLabel.innerText = "Free Roll";
+    if (resultLabel) resultLabel.innerText = copy.freeRoll;
     if (resultTotal) resultTotal.innerText = `${total}`;
     
     const lastRoll = list[list.length - 1];
-    const formulaStr = lastRoll ? `Último resultado: d${lastRoll.sides} (${lastRoll.value}) · Soma: ${total}` : "";
-    if (resultBreakdown) resultBreakdown.innerText = formulaStr || "Select dice using the buttons at the top";
+    const formulaStr = lastRoll ? `${copy.last}: d${lastRoll.sides} (${lastRoll.value}) · ${copy.sum}: ${total}` : "";
+    if (resultBreakdown) resultBreakdown.innerText = formulaStr || copy.empty;
 
     if (animContainer) {
       // A arena mostra somente o dado da última ação; o total continua acumulado.
@@ -2446,7 +2930,7 @@ class PathbuilderApp {
       const isCrit = d && d.sides === 20 && d.value === 20;
       const isFumble = d && d.sides === 20 && d.value === 1;
       animContainer.innerHTML = d ? `
-        <div class="polyhedral-die-wrapper rolling ${isCrit ? 'crit-nat20' : (isFumble ? 'fumble-nat1' : '')}" style="transform: rotate(${d.rot}deg);">
+        <div class="polyhedral-die-wrapper rolling ${isCrit ? 'crit-nat20' : (isFumble ? 'fumble-nat1' : '')}" role="img" aria-label="Dado d${d.sides}, resultado ${d.value}" style="transform: rotate(${d.rot}deg);">
           ${this.getPolyhedralDieSvg(d.sides, d.value, isCrit, isFumble)}
         </div>
       ` : '';
@@ -2455,8 +2939,8 @@ class PathbuilderApp {
     // Registra no histórico com timestamp (HH:MM:SS)
     const now = new Date();
     const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
-    const logItemTitle = `${timeStr} Your Free Roll: ${total}`;
-    const detailedRolls = lastRoll ? `Último: ${lastRoll.value} d${lastRoll.sides} · Total acumulado: ${total}` : "";
+    const logItemTitle = `${timeStr} ${copy.freeRoll}: ${total}`;
+    const detailedRolls = lastRoll ? `${copy.last}: ${lastRoll.value} d${lastRoll.sides} · ${copy.total}: ${total}` : "";
 
     this.upsertDiceLog("free-roll", logItemTitle, detailedRolls, total, formulaStr, false, false);
   }
@@ -2641,12 +3125,14 @@ class PathbuilderApp {
     }
 
     if (animContainer) {
-      // Cria os dados animados rolando na arena
-      animContainer.innerHTML = diceList.map(d => `
-        <div class="polyhedral-die-wrapper rolling ${isCrit ? 'crit-nat20' : (isFumble ? 'fumble-nat1' : '')}">
-          ${this.getPolyhedralDieSvg(d.sides, d.value, isCrit, isFumble)}
+      // A arena exibe somente o último dado da ação; o total e o detalhamento
+      // continuam representando todos os dados rolados.
+      const lastDie = diceList[diceList.length - 1];
+      animContainer.innerHTML = lastDie ? `
+        <div class="polyhedral-die-wrapper rolling ${isCrit ? 'crit-nat20' : (isFumble ? 'fumble-nat1' : '')}" role="img" aria-label="Rolagem de dados: ${formula || title}">
+          ${this.getPolyhedralDieSvg(lastDie.sides, lastDie.value, isCrit, isFumble)}
         </div>
-      `).join('');
+      ` : '';
     }
 
     // Após 500ms fixa o total calculado
@@ -2784,29 +3270,37 @@ class PathbuilderApp {
   clearDiceLog() {
     this.diceHistory = [];
     const content = document.getElementById("diceLogContent");
-    if (content) content.innerHTML = `<div class="dice-history-empty">Histórico limpo.</div>`;
+    const locale = this.getLocale();
+    const emptyText = locale === "en" ? "History cleared." : locale === "es" ? "Historial limpiado." : "Histórico limpo.";
+    if (content) content.innerHTML = `<div class="dice-history-empty">${emptyText}</div>`;
   }
 
   // HP & ESCUDO
   adjustHpPrompt() {
-    const val = prompt("Modificar PV (Ex: -5 para dano, +5 para cura):", "-1");
+    const locale = this.getLocale();
+    const label = locale === "en" ? "Adjust HP (e.g. -5 for damage, +5 for healing):" : locale === "es" ? "Modificar PG (p. ej. -5 para daño, +5 para curación):" : "Modificar PV (Ex: -5 para dano, +5 para cura):";
+    const val = prompt(label, "-1");
     if (val !== null) {
       const num = parseInt(val, 10) || 0;
       let cur = this.character.currentHp !== undefined ? this.character.currentHp : this.calc.maxHp;
       cur = Math.max(0, Math.min(this.calc.maxHp, cur + num));
       this.character.currentHp = cur;
+      this.saveCharacterLocal(false);
       this.renderAll();
     }
   }
 
   toggleShield() {
     this.character.shieldRaised = !this.character.shieldRaised;
+    this.saveCharacterLocal(false);
     this.renderAll();
   }
 
   // REAÇÃO: BLOQUEIO COM ESCUDO (SHIELD BLOCK)
   shieldBlockAction(incomingDamage) {
-    const damage = incomingDamage !== undefined ? Number(incomingDamage) : parseInt(prompt("Quanto de dano você está recebendo?", "10"), 10);
+    const locale = this.getLocale();
+    const damageLabel = locale === "en" ? "How much damage are you taking?" : locale === "es" ? "¿Cuánto daño recibes?" : "Quanto de dano você está recebendo?";
+    const damage = incomingDamage !== undefined ? Number(incomingDamage) : parseInt(prompt(damageLabel, "10"), 10);
     if (isNaN(damage) || damage <= 0) return;
 
     if (!this.character.equippedShield) {
@@ -2824,6 +3318,7 @@ class PathbuilderApp {
       const currentHp = this.character.currentHp !== undefined ? this.character.currentHp : this.calc.maxHp;
       this.character.currentHp = Math.max(0, currentHp - res.characterDamage);
     }
+    this.saveCharacterLocal(false);
     this.renderAll();
   }
 
@@ -2867,6 +3362,7 @@ class PathbuilderApp {
 
     const logMsg = `🎲 <strong>Teste de Recuperação (DC ${res.dc}):</strong> Rolagem d20: [${roll}] → ${outcomeText} | <strong>Resultado:</strong> ${statusText}`;
     this.logDiceRoll(logMsg);
+    this.saveCharacterLocal(false);
     this.renderAll();
   }
 
@@ -2875,6 +3371,7 @@ class PathbuilderApp {
     const cur = this.character.skills[skillId] || "Destreinado";
     const nextIdx = (ranks.indexOf(cur) + 1) % ranks.length;
     this.character.skills[skillId] = ranks[nextIdx];
+    this.saveCharacterLocal(false);
     this.renderAll();
   }
 
@@ -2884,36 +3381,16 @@ class PathbuilderApp {
     this.character.spellSlotsUsed = {};
     const slotsInfo = PF2E_ENGINE.getSpellSlots(this.character);
     this.character.focusPointsCurrent = slotsInfo.focusPoints;
+    this.saveCharacterLocal(false);
     this.renderAll();
-    alert("Descanso de 8 horas concluído! Todos os Pontos de Vida, Espaços de Magia e Foco foram restaurados.");
-  }
-
-  // GESTÃO DE EQUIPAMENTOS & MOEDAS
-  addInventoryItem() {
-    const name = prompt("Nome do Item:");
-    if (!name) return;
-    const qtyStr = prompt("Quantidade:", "1");
-    const qty = Math.max(1, parseInt(qtyStr, 10) || 1);
-    const bulkStr = prompt("Carga (Bulk) por item (ex: 1, 0, L ou 0.1):", "1");
-    let bulk = 0;
-    if (bulkStr?.toUpperCase() === "L") bulk = 0.1;
-    else bulk = Math.max(0, parseFloat(bulkStr) || 0);
-
-    if (!this.character.inventory) this.character.inventory = [];
-    this.character.inventory.push({ name, qty, bulk });
-    this.renderAll();
-  }
-
-  removeInventoryItem(idx) {
-    if (this.character.inventory && this.character.inventory[idx]) {
-      this.character.inventory.splice(idx, 1);
-      this.renderAll();
-    }
+    const locale = this.getLocale();
+    alert(locale === "en" ? "8-hour rest complete! HP, spell slots, and Focus Points were restored." : locale === "es" ? "¡Descanso de 8 horas completado! Se restauraron los PG, espacios de conjuro y Puntos de Foco." : "Descanso de 8 horas concluído! Todos os Pontos de Vida, Espaços de Magia e Foco foram restaurados.");
   }
 
   updateCoins(type, value) {
     if (!this.character.coins) this.character.coins = { pp: 0, gp: 15, sp: 0, cp: 0 };
     this.character.coins[type] = Math.max(0, parseInt(value, 10) || 0);
+    this.saveCharacterLocal(false);
     this.renderAll();
   }
 
@@ -2921,6 +3398,7 @@ class PathbuilderApp {
   expendSpellSlot(rank) {
     if (!this.character.spellSlotsUsed) this.character.spellSlotsUsed = {};
     this.character.spellSlotsUsed[rank] = (this.character.spellSlotsUsed[rank] || 0) + 1;
+    this.saveCharacterLocal(false);
     this.renderAll();
   }
 
@@ -2928,6 +3406,7 @@ class PathbuilderApp {
     if (!this.character.spellSlotsUsed) this.character.spellSlotsUsed = {};
     if (this.character.spellSlotsUsed[rank] > 0) {
       this.character.spellSlotsUsed[rank] -= 1;
+      this.saveCharacterLocal(false);
       this.renderAll();
     }
   }
@@ -2936,6 +3415,7 @@ class PathbuilderApp {
     this.character.spellSlotsUsed = {};
     const slotsInfo = PF2E_ENGINE.getSpellSlots(this.character);
     this.character.focusPointsCurrent = slotsInfo.focusPoints;
+    this.saveCharacterLocal(false);
     this.renderAll();
   }
 
@@ -2944,6 +3424,7 @@ class PathbuilderApp {
     const cur = this.character.focusPointsCurrent !== undefined ? this.character.focusPointsCurrent : slotsInfo.focusPoints;
     if (cur > 0) {
       this.character.focusPointsCurrent = cur - 1;
+      this.saveCharacterLocal(false);
       this.renderAll();
     }
   }
@@ -2953,6 +3434,7 @@ class PathbuilderApp {
     const cur = this.character.focusPointsCurrent !== undefined ? this.character.focusPointsCurrent : slotsInfo.focusPoints;
     if (cur < slotsInfo.focusPoints) {
       this.character.focusPointsCurrent = cur + 1;
+      this.saveCharacterLocal(false);
       this.renderAll();
     }
   }
@@ -3560,13 +4042,25 @@ class PathbuilderApp {
   }
 
   promptSkillIncrease(level) {
-    const skillsList = Object.keys(this.calc?.skills || {}).map(k => `${k} (${this.calc.skills[k].name})`).join(", ");
-    const skillName = prompt(`Escolha a perícia para aumento no Nível ${level}:\n(${skillsList})`);
+    const locale = this.getLocale();
+    const isEn = locale === "en";
+    const isEs = locale === "es";
+    const rankOrder = { "Destreinado": 0, Untrained: 0, "Treinado": 1, Trained: 1, "Especialista": 2, Expert: 2, Mestre: 3, Master: 3, "Lendário": 4, Legendary: 4 };
+    const maximumRank = Number(level) >= 15 ? 4 : Number(level) >= 7 ? 3 : Number(level) >= 3 ? 2 : 1;
+    const skillOptions = Object.keys(this.calc?.skills || {}).map(id => ({
+      id,
+      name: this.calc.skills[id].name || id,
+      rank: this.calc.skills[id].rank || "Destreinado"
+    })).filter(skill => (rankOrder[skill.rank] ?? 0) < maximumRank);
+    const skillsList = skillOptions.map(skill => `${skill.id} (${skill.name})`).join(", ");
+    const promptLabel = isEn ? `Choose a skill to increase at level ${level}:` : isEs ? `Elige una habilidad para aumentar al nivel ${level}:` : `Escolha a perícia para aumento no Nível ${level}:`;
+    const skillName = prompt(`${promptLabel}\n(${skillsList})`);
     if (skillName) {
       if (!this.character.progression) this.character.progression = {};
-      this.character.progression[`${level}_skill_increase`] = skillName;
-      const found = PF2E_DATA.skills.find(s => s.name.toLowerCase().includes(skillName.toLowerCase()) || s.id.toLowerCase() === skillName.toLowerCase());
+      const normalizedSkillName = skillName.trim().toLowerCase();
+      const found = skillOptions.find(s => s.name.toLowerCase().includes(normalizedSkillName) || s.id.toLowerCase() === normalizedSkillName);
       if (found) {
+        this.character.progression[`${level}_skill_increase`] = found.name;
         this.cycleSkillRank(found.id);
       } else {
         this.renderAll();
@@ -3575,45 +4069,104 @@ class PathbuilderApp {
   }
 
   promptSubclass() {
-    const sub = prompt("Defina o Estilo ou Subclasse do Personagem (ex: Fencer, Thief, Warpriest, Storm, Maestro):", this.character.subclass || "Fencer");
-    if (sub !== null) {
-      this.character.subclass = sub;
-      this.renderAll();
-    }
+    this.openPicker("subclass");
   }
 
   // CRUD DE CAMPOS
-  updateField(f, v) { this.character[f] = v; this.renderAll(); }
-  updateLevel(v) { this.character.level = parseInt(v, 10); this.renderAll(); }
-  removeWeapon(idx) { this.character.weapons.splice(idx, 1); this.renderAll(); }
-  removeInventoryItem(idx) { this.character.inventory.splice(idx, 1); this.renderAll(); }
-  removeFeat(idx) { this.character.feats.splice(idx, 1); this.renderAll(); }
-  removeSpell(idx) { this.character.spells.splice(idx, 1); this.renderAll(); }
-  removeRitual(idx) { this.character.rituals.splice(idx, 1); this.renderAll(); }
-  removeLoreSkill(idx) { this.character.loreSkills.splice(idx, 1); this.renderAll(); }
+  updateField(f, v) { this.character[f] = v; this.saveCharacterLocal(false); this.renderAll(); }
+  updateLevel(v) { this.character.level = parseInt(v, 10); this.saveCharacterLocal(false); this.renderAll(); }
+  editCharacterCollectionItem(collection, idx) {
+    const entry = this.character?.[collection]?.[idx];
+    if (!entry) return;
+    const locale = this.getLocale();
+    const labels = {
+      "pt-BR": { name: "Nome:", description: "Descrição:" },
+      en: { name: "Name:", description: "Description:" },
+      es: { name: "Nombre:", description: "Descripción:" }
+    };
+    const copy = labels[locale] || labels["pt-BR"];
+    const nextName = prompt(copy.name, entry.name || "");
+    if (nextName === null) return;
+    const nextDescription = prompt(copy.description, entry.description || entry.summaries?.[locale] || "");
+    if (nextDescription === null) return;
+    const trimmedName = nextName.trim();
+    if (trimmedName) {
+      entry.name = trimmedName;
+      if (entry.names && typeof entry.names === "object") entry.names[locale] = trimmedName;
+    }
+    entry.description = nextDescription.trim();
+    if (entry.summaries && typeof entry.summaries === "object") entry.summaries[locale] = entry.description;
+    this.saveCharacterLocal(false);
+    this.renderAll();
+  }
+  removeWeapon(idx) { this.character.weapons.splice(idx, 1); this.saveCharacterLocal(false); this.renderAll(); }
+  removeFeat(idx) { this.character.feats.splice(idx, 1); this.saveCharacterLocal(false); this.renderAll(); }
+  removeArchetype(idx) { if (!Array.isArray(this.character.archetypes)) return; this.character.archetypes.splice(idx, 1); this.saveCharacterLocal(false); this.renderAll(); }
+  removeSpell(idx) { this.character.spells.splice(idx, 1); this.saveCharacterLocal(false); this.renderAll(); }
+  removeRitual(idx) { this.character.rituals.splice(idx, 1); this.saveCharacterLocal(false); this.renderAll(); }
+  removeLoreSkill(idx) { this.character.loreSkills.splice(idx, 1); this.saveCharacterLocal(false); this.renderAll(); }
 
   addInventoryItem() {
     if (window.pathbuilderItemPicker && typeof window.pathbuilderItemPicker.open === "function") {
       window.pathbuilderItemPicker.open();
       return;
     }
-    const name = prompt("Nome do Item:");
+    const locale = this.getLocale();
+    const labels = locale === "en"
+      ? { name: "Item name:", qty: "Quantity:", bulk: "Bulk (e.g. 1, 0, L):", description: "Description:" }
+      : locale === "es"
+        ? { name: "Nombre del objeto:", qty: "Cantidad:", bulk: "Volumen (p. ej. 1, 0, L):", description: "Descripción:" }
+        : { name: "Nome do Item:", qty: "Quantidade:", bulk: "Carga (ex: 1, 0, L):", description: "Descrição:" };
+    const name = prompt(labels.name);
     if (name) {
-      const qty = parseInt(prompt("Quantidade:", "1"), 10) || 1;
-      const bulk = prompt("Carga (Ex: 1, 2, L, -):", "1");
+      const qty = parseInt(prompt(labels.qty, "1"), 10) || 1;
+      const bulk = prompt(labels.bulk, "1");
+      const description = prompt(labels.description, "") || "";
       if (!this.character.inventory) this.character.inventory = [];
-      this.character.inventory.push({ name, qty, bulk });
+      const trimmedName = name.trim();
+      if (!trimmedName) return;
+      const customId = `item.custom.${Date.now()}`;
+      this.character.inventory.push({
+        id: customId,
+        name: trimmedName,
+        names: { "pt-BR": trimmedName, en: trimmedName, es: trimmedName },
+        description: description.trim(),
+        summaries: { "pt-BR": description.trim(), en: description.trim(), es: description.trim() },
+        qty: Math.max(1, qty),
+        bulk: bulk?.trim() || "0",
+        custom: true,
+        manual: true,
+        ruleset: "needs_review",
+        needs_review: true
+      });
+      this.saveCharacterLocal(false);
       this.renderAll();
     }
   }
 
   openAddSpellModal() {
-    const name = prompt("Nome da Magia:");
+    const locale = this.getLocale();
+    const labels = locale === "en" ? { name: "Spell name:", level: "Spell rank (0 for cantrip, 1 to 10):", description: "Description:" } : locale === "es" ? { name: "Nombre del conjuro:", level: "Rango del conjuro (0 para truco, 1 a 10):", description: "Descripción:" } : { name: "Nome da Magia:", level: "Nível da Magia (0 para Truque, 1 a 10):", description: "Descrição:" };
+    const name = prompt(labels.name);
     if (name) {
-      const lvl = prompt("Nível da Magia (0 para Truque, 1 a 10):", "1");
-      const desc = prompt("Descrição:");
+      const lvl = Math.max(0, Math.min(10, parseInt(prompt(labels.level, "1"), 10) || 1));
+      const desc = prompt(labels.description) || "";
       if (!this.character.spells) this.character.spells = [];
-      this.character.spells.push({ name, level: lvl, description: desc, manual: true, ruleset: "needs_review", needs_review: true });
+      const trimmedName = name.trim();
+      if (!trimmedName) return;
+      this.character.spells.push({
+        id: `spell.custom.${Date.now()}`,
+        name: trimmedName,
+        names: { "pt-BR": trimmedName, en: trimmedName, es: trimmedName },
+        level: lvl,
+        description: desc.trim(),
+        summaries: { "pt-BR": desc.trim(), en: desc.trim(), es: desc.trim() },
+        manual: true,
+        custom: true,
+        ruleset: "needs_review",
+        needs_review: true
+      });
+      this.saveCharacterLocal(false);
       this.renderAll();
     }
   }
@@ -3634,6 +4187,7 @@ class PathbuilderApp {
   saveCharacterLocal(showAlert = false) {
     try {
       if (typeof localStorage !== "undefined" && this.character) {
+        this.normalizeCharacterCoins();
         localStorage.setItem("pf2e_current_character", JSON.stringify(this.character));
       }
     } catch (e) {
@@ -3665,7 +4219,7 @@ class PathbuilderApp {
       spells: [],
       rituals: [],
       inventory: [{ name: "Mochila de Aventureiro", qty: 1, bulk: 1 }],
-      coins: { pl: 0, gp: 15, sp: 0, cp: 0 }
+      coins: { pp: 0, gp: 15, sp: 0, cp: 0 }
     };
     this.saveCharacterLocal(false);
     this.renderAll();
@@ -3696,6 +4250,7 @@ class PathbuilderApp {
     try {
       this.character = assertSafeCharacterDocument(JSON.parse(document.getElementById("jsonArea").value));
       document.getElementById("modalJsonOverlay").classList.remove("active");
+      this.saveCharacterLocal(false);
       this.renderAll();
       alert("Personagem importado com sucesso!");
     } catch (e) {
@@ -3782,6 +4337,11 @@ class PathbuilderApp {
 
     const sensesList = PF2E_ENGINE.getCharacterSenses ? PF2E_ENGINE.getCharacterSenses(character).join(", ") : "Visão Normal";
     const sheetLocale = ["en", "es"].includes(localStorage.getItem("pathbuilder.locale")) ? localStorage.getItem("pathbuilder.locale") : "pt-BR";
+    const sheetCoinLabels = sheetLocale === "en"
+      ? { title: "Coins & Wealth", pp: "PP", gp: "GP", sp: "SP", cp: "CP" }
+      : sheetLocale === "es"
+        ? { title: "Monedas y riqueza", pp: "PP", gp: "PO", sp: "PA", cp: "PC" }
+        : { title: "Moedas & Fortuna", pp: "PL", gp: "PO", sp: "PP", cp: "PC" };
 
     // PÁGINA 1: Combate, Atributos, Defesas, Golpes e Perícias
     const p1SkillsHtml = Object.values(calc.skills).map(sk => {
@@ -3828,17 +4388,10 @@ class PathbuilderApp {
         <span style="text-align:center; color:#64748b;">${esc(item.qty || 1)}</span>
         <span style="text-align:center; font-weight:bold;">${esc(item.bulk || '—')}</span>
       </div>
-    `).join("") || `<div class="sheet-list-item" style="color:#94a3b8; font-style:italic;">Mochila de Aventureiro Padrão</div>`;
+    `).join("");
 
     // PÁGINA 3: Identidade, Histórico & Ações de Combate
-    const actionsHtml = (character.actions || [
-      { name: "Golpe (Strike) [◆]", desc: "Ataque corpo a corpo ou à distância com sua arma." },
-      { name: "Passo (Step) [◆]", desc: "Mova-se 5 pés sem desencadear reações." },
-      { name: "Andar (Stride) [◆]", desc: "Mova-se até o seu deslocamento." },
-      { name: "Erguer Escudo (Raise Shield) [◆]", desc: "+2 circunstancial na CA até o início do seu próximo turno." },
-      { name: "Bloqueio com Escudo (Shield Block) [↺]", desc: "Reação para absorver dano usando a dureza do escudo." },
-      { name: "Desarmar / Derrubar / Agarrar [◆]", desc: "Manobras de Atletismo usando armas compatíveis ou desarmado." }
-    ]).map(act => `
+    const actionsHtml = (character.actions || []).map(act => `
       <div class="sheet-list-item">
         <strong>${esc(act.name)}</strong>: <span style="color:#475569;">${esc(act.desc || act.description || '')}</span>
       </div>
@@ -4040,12 +4593,12 @@ class PathbuilderApp {
               ${cell("Limite de Sobrecarga", `${calc.bulk.encumbered} Bulk`)}
             </div>
 
-            <div class="sheet-box-title">💰 Moedas & Fortuna</div>
+            <div class="sheet-box-title">💰 ${sheetCoinLabels.title}</div>
             <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:4px; text-align:center;">
-              <div class="sheet-cell"><span class="sheet-cell-label">PPl</span><span style="font-weight:bold;">${character.coins?.pp || 0}</span></div>
-              <div class="sheet-cell"><span class="sheet-cell-label">PO</span><span style="font-weight:bold; color:#b45309;">${character.coins?.gp || 15}</span></div>
-              <div class="sheet-cell"><span class="sheet-cell-label">PP</span><span style="font-weight:bold;">${character.coins?.sp || 0}</span></div>
-              <div class="sheet-cell"><span class="sheet-cell-label">PC</span><span style="font-weight:bold;">${character.coins?.cp || 0}</span></div>
+              <div class="sheet-cell"><span class="sheet-cell-label">${sheetCoinLabels.pp}</span><span style="font-weight:bold;">${character.coins?.pp ?? 0}</span></div>
+              <div class="sheet-cell"><span class="sheet-cell-label">${sheetCoinLabels.gp}</span><span style="font-weight:bold; color:#b45309;">${character.coins?.gp ?? 0}</span></div>
+              <div class="sheet-cell"><span class="sheet-cell-label">${sheetCoinLabels.sp}</span><span style="font-weight:bold;">${character.coins?.sp ?? 0}</span></div>
+              <div class="sheet-cell"><span class="sheet-cell-label">${sheetCoinLabels.cp}</span><span style="font-weight:bold;">${character.coins?.cp ?? 0}</span></div>
             </div>
           </div>
         </div>
@@ -4418,27 +4971,51 @@ class PathbuilderApp {
     if (!container || typeof PF2E_DATA === "undefined" || !PF2E_DATA.classStarterKits) return;
 
     const kits = PF2E_DATA.classStarterKits;
-    container.innerHTML = Object.keys(kits).map(className => {
-      const kit = kits[className];
-      const isCurrentClass = this.character?.class && this.character.class.includes(className.split(" ")[0]);
+    const locale = this.getLocale();
+    const copy = {
+      "pt-BR": { current: "Sua Classe", equip: "⚡ Equipar este Kit", armor: "Armadura", weapons: "Armas", items: "Itens", coins: "Moedas Restantes", confirm: "Deseja equipar o pacote de equipamentos recomendado para", confirmTail: "? Suas armas, armadura e moedas serão configuradas automaticamente.", success: "🎒 Kit Inicial equipado com sucesso!" },
+      en: { current: "Your Class", equip: "⚡ Equip this Kit", armor: "Armor", weapons: "Weapons", items: "Items", coins: "Remaining Coins", confirm: "Equip the recommended equipment package for", confirmTail: "? Your weapons, armor, and coins will be configured automatically.", success: "🎒 Starter Kit equipped successfully!" },
+      es: { current: "Tu Clase", equip: "⚡ Equipar este Kit", armor: "Armadura", weapons: "Armas", items: "Objetos", coins: "Monedas Restantes", confirm: "¿Equipar el paquete de equipo recomendado para", confirmTail: "? Tus armas, armadura y monedas se configurarán automáticamente.", success: "🎒 ¡Kit inicial equipado correctamente!" }
+    }[locale] || {
+      current: "Sua Classe", equip: "⚡ Equipar este Kit", armor: "Armadura", weapons: "Armas", items: "Itens", coins: "Moedas Restantes", confirm: "Deseja equipar o pacote de equipamentos recomendado para", confirmTail: "? Suas armas, armadura e moedas serão configuradas automaticamente.", success: "🎒 Kit Inicial equipado com sucesso!"
+    };
+    const kitNames = {
+      "Guerreiro (Fighter)": { "pt-BR": "Kit Inicial do Guerreiro", en: "Fighter Starter Kit", es: "Kit inicial del guerrero" },
+      "Ladino (Rogue)": { "pt-BR": "Kit Inicial do Ladino", en: "Rogue Starter Kit", es: "Kit inicial del pícaro" },
+      "Mago (Wizard)": { "pt-BR": "Kit Inicial do Mago", en: "Wizard Starter Kit", es: "Kit inicial del mago" },
+      "Clérigo (Cleric)": { "pt-BR": "Kit Inicial do Clérigo", en: "Cleric Starter Kit", es: "Kit inicial del clérigo" },
+      "Bárbaro (Barbarian)": { "pt-BR": "Kit Inicial do Bárbaro", en: "Barbarian Starter Kit", es: "Kit inicial del bárbaro" },
+      "Bardo (Bard)": { "pt-BR": "Kit Inicial do Bardo", en: "Bard Starter Kit", es: "Kit inicial del bardo" },
+      "Druida (Druid)": { "pt-BR": "Kit Inicial do Druida", en: "Druid Starter Kit", es: "Kit inicial del druida" },
+      "Patrulheiro (Ranger)": { "pt-BR": "Kit Inicial do Patrulheiro", en: "Ranger Starter Kit", es: "Kit inicial del explorador" },
+      "Campeão (Champion)": { "pt-BR": "Kit Inicial do Campeão", en: "Champion Starter Kit", es: "Kit inicial del campeón" }
+    };
+    const selectedClass = String(this.character?.class || "").toLowerCase();
+    const kitEntries = Object.entries(kits).filter(([className]) => {
+      if (!selectedClass) return true;
+      const classKey = String(className).split(" (")[0].toLowerCase();
+      return selectedClass === String(className).toLowerCase() || selectedClass.includes(classKey) || classKey.includes(selectedClass);
+    });
+    container.innerHTML = kitEntries.map(([className, kit]) => {
+        const isCurrentClass = this.character?.class && this.character.class.includes(className.split(" ")[0]);
 
       return `
         <div style="background: ${isCurrentClass ? 'rgba(249, 115, 22, 0.08)' : '#111a2e'}; border: 1px solid ${isCurrentClass ? 'var(--pb-orange)' : '#1e293b'}; border-radius: 10px; padding: 14px; display: flex; flex-direction: column; gap: 8px;">
           <div style="display: flex; justify-content: space-between; align-items: center;">
             <div style="display: flex; align-items: center; gap: 8px;">
               <span style="font-size: 16px;">🎒</span>
-              <strong style="font-size: 14px; color: ${isCurrentClass ? 'var(--pb-orange)' : '#ffffff'};">${escapeHtml(kit.name)}</strong>
-              ${isCurrentClass ? '<span style="background: rgba(249,115,22,0.2); color: #fed7aa; font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: 4px;">Sua Classe</span>' : ''}
+              <strong style="font-size: 14px; color: ${isCurrentClass ? 'var(--pb-orange)' : '#ffffff'};">${escapeHtml(kitNames[className]?.[locale] || kit.name)}</strong>
+              ${isCurrentClass ? `<span style="background: rgba(249,115,22,0.2); color: #fed7aa; font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: 4px;">${copy.current}</span>` : ''}
             </div>
             <button type="button" onclick="app.applyStarterKit('${escapeHtml(className)}')" style="background: #16a34a; color: #fff; border: none; padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: bold; cursor: pointer; box-shadow: 0 2px 8px rgba(22,163,74,0.3);">
-              ⚡ Equipar este Kit
+              ${copy.equip}
             </button>
           </div>
           <div style="font-size: 11px; color: #cbd5e1; line-height: 1.5;">
-            <div>🛡️ <strong>Armadura:</strong> ${escapeHtml(kit.armor)}</div>
-            <div>⚔️ <strong>Armas:</strong> ${kit.weapons.map(w => escapeHtml(w.name)).join(", ")}</div>
-            <div>📦 <strong>Itens:</strong> ${kit.items.map(it => `${escapeHtml(it.name)} (x${it.qty || 1})`).join(", ")}</div>
-            <div>💰 <strong>Moedas Restantes:</strong> ${kit.remainingCoins.gp} PO, ${kit.remainingCoins.sp} PP</div>
+            <div>🛡️ <strong>${copy.armor}:</strong> ${escapeHtml(kit.armor)}</div>
+            <div>⚔️ <strong>${copy.weapons}:</strong> ${kit.weapons.map(w => escapeHtml(w.name)).join(", ")}</div>
+            <div>📦 <strong>${copy.items}:</strong> ${kit.items.map(it => `${escapeHtml(it.name)} (x${it.qty || 1})`).join(", ")}</div>
+            <div>💰 <strong>${copy.coins}:</strong> ${kit.remainingCoins.gp} GP, ${kit.remainingCoins.sp} SP</div>
           </div>
         </div>
       `;
@@ -4447,13 +5024,27 @@ class PathbuilderApp {
 
   applyStarterKit(className) {
     if (!this.character) return;
-    if (confirm(`Deseja equipar o pacote de equipamentos recomendado para ${className}? Suas armas, armadura e moedas serão configuradas automaticamente.`)) {
+    const selectedClass = String(this.character.class || "").toLowerCase();
+    const classKey = String(className).split(" (")[0].toLowerCase();
+    if (selectedClass && !selectedClass.includes(classKey) && !classKey.includes(selectedClass)) {
+      const locale = this.getLocale();
+      const message = locale === "en" ? "This starter kit is not compatible with the selected class." : locale === "es" ? "Este kit inicial no es compatible con la clase seleccionada." : "Este kit inicial não é compatível com a classe selecionada.";
+      alert(message);
+      return;
+    }
+    const locale = this.getLocale();
+    const confirmText = locale === "en"
+      ? `Equip the recommended equipment package for ${className}? Your weapons, armor, and coins will be configured automatically.`
+      : locale === "es"
+        ? `¿Equipar el paquete de equipo recomendado para ${className}? Tus armas, armadura y monedas se configurarán automáticamente.`
+        : `Deseja equipar o pacote de equipamentos recomendado para ${className}? Suas armas, armadura e moedas serão configuradas automaticamente.`;
+    if (confirm(confirmText)) {
       PF2E_ENGINE.applyClassStarterKit(this.character, className);
       this.saveCharacterLocal();
       this.renderAll();
       const overlay = document.getElementById("modalStarterKitsOverlay");
       if (overlay) overlay.classList.remove("active");
-      alert(`🎒 Kit Inicial equipado com sucesso!`);
+      alert(locale === "en" ? "🎒 Starter Kit equipped successfully!" : locale === "es" ? "🎒 ¡Kit inicial equipado correctamente!" : "🎒 Kit Inicial equipado com sucesso!");
     }
   }
 
@@ -4516,14 +5107,27 @@ class PathbuilderApp {
     const isEs = locale === "es";
 
     const conditions = this.normalizeConditionList();
+    const buffs = Array.isArray(this.character.buffs) ? this.character.buffs : [];
+    const entries = conditions.map((condition) => ({ ...condition, isBuff: false }))
+      .concat(buffs.map((buff, buffIndex) => ({ ...buff, isBuff: true, buffIndex })));
     const catalog = typeof PF2E_DATA !== "undefined" && PF2E_DATA.conditionsCatalog ? PF2E_DATA.conditionsCatalog : {};
 
-    if (conditions.length === 0) {
+    if (entries.length === 0) {
       container.innerHTML = `<span style="font-size: 11px; color: var(--pb-text-dim);">${isEn ? "No active conditions." : isEs ? "Ninguna condición activa." : "Nenhuma condição ativa."}</span>`;
       return;
     }
 
-    container.innerHTML = conditions.map(condition => {
+    container.innerHTML = entries.map(condition => {
+      if (condition.isBuff) {
+        const buffName = this.localizeItemName(condition.name, locale);
+        return `
+          <div style="background: rgba(34, 197, 94, 0.15); border: 1px solid rgba(34, 197, 94, 0.4); color: #86efac; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;" title="${escapeHtml(condition.description || "")}">
+            <span>✨ ${escapeHtml(buffName)}</span>
+            <button type="button" onclick="app.editCharacterCollectionItem('buffs', ${condition.buffIndex})" style="background: none; border: none; color: #86efac; cursor: pointer; font-weight: bold; padding: 0 2px;">✎</button>
+            <button type="button" onclick="app.removeBuff(${condition.buffIndex})" style="background: none; border: none; color: #86efac; cursor: pointer; font-weight: bold; padding: 0 2px;">✕</button>
+          </div>
+        `;
+      }
       const key = condition.key || condition.id || condition.name;
       const meta = catalog[key] || Object.values(catalog).find(item => item.name === condition.name) || { name: condition.name, hasValue: condition.value !== undefined };
       const val = condition.value;
@@ -4548,6 +5152,13 @@ class PathbuilderApp {
         </div>
       `;
     }).join("");
+  }
+
+  removeBuff(index) {
+    if (!Array.isArray(this.character?.buffs) || !this.character.buffs[index]) return;
+    this.character.buffs.splice(index, 1);
+    this.saveCharacterLocal(false);
+    this.renderAll();
   }
 
   setConditionLevel(condKey, delta) {
@@ -4592,9 +5203,12 @@ class PathbuilderApp {
   // =========================================================================
   adjustFocusPoints(delta) {
     if (!this.character) return;
-    const maxFocus = this.calc?.spellcasting?.maxFocusPoints || 1;
-    const current = this.character.focusPoints !== undefined ? this.character.focusPoints : maxFocus;
-    this.character.focusPoints = Math.max(0, Math.min(maxFocus, current + delta));
+    const maxFocus = this.calc?.spellcasting?.maxFocusPoints ?? 0;
+    const current = this.character.focusPointsCurrent !== undefined
+      ? this.character.focusPointsCurrent
+      : (this.character.focusPoints !== undefined ? this.character.focusPoints : maxFocus);
+    this.character.focusPointsCurrent = Math.max(0, Math.min(maxFocus, current + delta));
+    this.character.focusPoints = this.character.focusPointsCurrent;
     this.saveCharacterLocal();
     this.renderAll();
   }
@@ -4602,10 +5216,13 @@ class PathbuilderApp {
   restAndRecoverSlots() {
     if (!this.character) return;
     this.character.usedSpellSlots = {};
-    this.character.focusPoints = this.calc?.spellcasting?.maxFocusPoints || 1;
+    const maxFocus = this.calc?.spellcasting?.maxFocusPoints ?? 0;
+    this.character.focusPointsCurrent = maxFocus;
+    this.character.focusPoints = maxFocus;
     this.saveCharacterLocal();
     this.renderAll();
-    alert("💤 Todos os espaços de magia e pontos de foco foram totalmente restaurados!");
+    const locale = this.getLocale();
+    alert(locale === "en" ? "💤 All spell slots and Focus Points were fully restored!" : locale === "es" ? "💤 ¡Todos los espacios de conjuro y Puntos de Foco se restauraron por completo!" : "💤 Todos os espaços de magia e pontos de foco foram totalmente restaurados!");
   }
 }
 
