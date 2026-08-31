@@ -432,15 +432,21 @@ const PF2E_ENGINE = {
       ? item.requiredSubclass
       : item.requiredSubclass ? [item.requiredSubclass] : [];
     if (requiredSubclassValues.length) {
-      const selectedSubclasses = [char.subclass, char.instinct, char.bloodline, char.patron, char.order, char.mystery, char.doctrine, char.apparition, char.eidolon]
-        .map(normalize).filter(Boolean);
-      const subclassAliases = (value) => {
-        const normalized = normalize(value);
-        if (normalized.includes("dragao") || normalized.includes("dracon") || normalized.includes("dragon")) return ["dragao", "dracon", "draconico", "dragon", "draconic"];
-        if (normalized.includes("feérico") || normalized.includes("feerico") || normalized.includes("fey")) return ["feerico", "feérico", "fey"];
-        return [normalized];
+      const expandSubclassAliases = (value) => {
+        const record = this.resolveCatalogRecord(PF2E_DATA?.subclasses || [], value);
+        return [value, record?.id, record?.name, ...Object.values(record?.names || {})]
+          .filter(Boolean)
+          .map(normalize);
       };
-      if (!selectedSubclasses.length || !requiredSubclassValues.some((required) => subclassAliases(required).some((alias) => selectedSubclasses.some((selected) => selected.includes(normalize(alias)))))) {
+      const selectedSubclasses = [char.subclass, char.hybridStudy, char.instinct, char.bloodline, char.patron, char.order, char.mystery, char.doctrine, char.apparition, char.eidolon]
+        .flatMap(expandSubclassAliases).filter(Boolean);
+      const subclassAliases = (value) => {
+        const normalized = expandSubclassAliases(value);
+        if (normalized.some((alias) => alias.includes("dragao") || alias.includes("dracon") || alias.includes("dragon"))) return ["dragao", "dracon", "draconico", "dragon", "draconic"];
+        if (normalized.some((alias) => alias.includes("feérico") || alias.includes("feerico") || alias.includes("fey"))) return ["feerico", "feérico", "fey"];
+        return normalized;
+      };
+      if (!selectedSubclasses.length || !requiredSubclassValues.some((required) => subclassAliases(required).some((alias) => selectedSubclasses.some((selected) => selected.includes(alias))))) {
         return { state: "incompatible", reason: "subclass-mismatch", requiredSubclass: requiredSubclassValues };
       }
     }

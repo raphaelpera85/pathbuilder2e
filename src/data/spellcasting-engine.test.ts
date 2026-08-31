@@ -100,6 +100,14 @@ describe("P2: Motor de Grimório & Spellcasting Automático (Spellcasting Engine
     expect(studies).toHaveLength(5);
     expect(studies.map((record: any) => record.names.en)).toEqual(expect.arrayContaining(["Twisting Tree", "Inexorable Iron", "Laughing Shadow", "Sparkling Targe", "Starlit Span"]));
     expect(studies.every((record: any) => record.source?.book === "Segredos da Magia (pré-Remaster)" && [62, 63].includes(record.source.page) && record.needs_review === false)).toBe(true);
+    expect(studies.every((record: any) => record.confluxSpellId?.startsWith("spell.secrets_of_magic.magus."))).toBe(true);
+    const magus = { level: 1, class: "Magus", subclass: studies.find((record: any) => record.names.en === "Twisting Tree")?.name };
+    const spinningStaff = catalog.spells.find((record: any) => record.id === "spell.secrets_of_magic.magus.spinning_staff");
+    const shieldingStrike = catalog.spells.find((record: any) => record.id === "spell.secrets_of_magic.magus.shielding_strike");
+    const dimensionalAssault = catalog.spells.find((record: any) => record.id === "spell.secrets_of_magic.magus.dimensional_assault");
+    expect(dimensionalAssault).toMatchObject({ classId: "class.magus" });
+    expect(engine.getSpellCompatibility(magus, spinningStaff).state).toBe("available");
+    expect(engine.getSpellCompatibility(magus, shieldingStrike)).toMatchObject({ state: "incompatible", reason: "subclass-mismatch" });
   });
 
   it("cataloga os oito mistérios Remaster do Oráculo e inicia foco", () => {

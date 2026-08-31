@@ -286,19 +286,26 @@ function LibraryPage() {
   };
 
   useEffect(() => {
+    let active = true;
+    let authEventReceived = false;
     void getCurrentSession().then((cur) => {
+      if (!active || authEventReceived) return;
       setSession(cur);
       setSessionReady(true);
       if (cur) void loadUserCharacters(cur);
     });
 
     const unsubscribe = subscribeToAuth((next) => {
+      authEventReceived = true;
       setSession(next);
       setSessionReady(true);
       if (next) void loadUserCharacters(next);
       else setCharacters([]);
     });
-    return unsubscribe;
+    return () => {
+      active = false;
+      unsubscribe();
+    };
   }, []);
 
   if (!sessionReady) {

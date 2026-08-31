@@ -76,13 +76,17 @@ export function AccountPortal() {
   }, [session?.user, t]);
 
   useEffect(() => {
+    let active = true;
+    let authEventReceived = false;
     void getCurrentSession().then((cur) => {
+      if (!active || authEventReceived) return;
       setSession(cur);
       setProfileUsername(cur?.user.username || "");
       if (cur) void refreshCharacters(cur.user);
     });
 
     const unsubscribe = subscribeToAuth((nextSession) => {
+      authEventReceived = true;
       setSession(nextSession);
       setProfileUsername(nextSession?.user.username || "");
       if (nextSession) {
@@ -91,7 +95,10 @@ export function AccountPortal() {
         setCharacters([]);
       }
     });
-    return unsubscribe;
+    return () => {
+      active = false;
+      unsubscribe();
+    };
   }, [refreshCharacters]);
 
   useEffect(() => {

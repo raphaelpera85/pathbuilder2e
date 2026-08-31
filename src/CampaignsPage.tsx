@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useRef } from "react";
 import { useI18n, type MessageKey } from "./i18n";
 import {
   listCampaigns,
@@ -30,6 +30,7 @@ export function CampaignsPage() {
   const [selectedCampaignId, setSelectedCampaignId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [sessionReady, setSessionReady] = useState(false);
+  const authEpochRef = useRef(0);
   const [inspectedChar, setInspectedChar] = useState<CloudCharacter | null>(null);
 
   // Forms
@@ -63,10 +64,12 @@ export function CampaignsPage() {
     [campaigns, selectedCampaignId]
   );
 
-  const refreshData = async () => {
+  const refreshData = async (knownSession?: AuthSession | null) => {
+    const loadEpoch = authEpochRef.current;
     setLoading(true);
     try {
-      const cur = await getCurrentSession();
+      const cur = knownSession === undefined ? await getCurrentSession() : knownSession;
+      if (loadEpoch !== authEpochRef.current) return;
       setSession(cur);
       setSessionReady(true);
       if (cur?.user) {
@@ -75,6 +78,7 @@ export function CampaignsPage() {
           cur.user.email ? listCharactersSharedWithGM(cur.user.email) : Promise.resolve([]),
           listCharacters(cur.user),
         ]);
+        if (loadEpoch !== authEpochRef.current) return;
         setCampaigns(camps);
         setSharedCharacters(shared);
         setMyCharacters(own);
@@ -92,9 +96,10 @@ export function CampaignsPage() {
   useEffect(() => {
     void refreshData();
     const unsubscribe = subscribeToAuth((next) => {
+      authEpochRef.current += 1;
       setSession(next);
       setSessionReady(true);
-      if (next) void refreshData();
+      if (next) void refreshData(next);
       else {
         setCampaigns([]);
         setSharedCharacters([]);

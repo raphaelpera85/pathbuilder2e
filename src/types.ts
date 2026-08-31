@@ -180,6 +180,8 @@ export interface ICharacterDocument {
   wizardThesis?: string;
   /** Oracle mystery, selected separately while retaining legacy subclass data. */
   mystery?: string;
+  /** Magus hybrid study, retained with the legacy subclass field. */
+  hybridStudy?: string;
   abilities: ICharacterAbilities;
   savingThrows?: {
     fortitude?: string;

@@ -1578,6 +1578,20 @@ class PathbuilderApp {
       }
       return;
     }
+    const selectedHybridStudy = [this.character.hybridStudy, this.character.subclass]
+      .filter(Boolean)
+      .map((value) => PF2E_ENGINE.resolveCatalogRecord(PF2E_DATA.subclasses || [], value))
+      .find((record) => record?.classId === "class.magus" && record.hybridStudy === true);
+    if (selectedHybridStudy) {
+      this.character.hybridStudy = selectedHybridStudy.name;
+      this.character.subclass = selectedHybridStudy.name;
+      if (this.character.focusPointsMax === undefined) this.character.focusPointsMax = 1;
+      if (this.character.focusPointsCurrent === undefined) this.character.focusPointsCurrent = 1;
+      if (!Array.isArray(this.character.spells)) this.character.spells = [];
+      this.character.spells = this.character.spells.filter((spell) => !spell.grantedByHybridStudy || spell.grantedByHybridStudy === selectedHybridStudy.id);
+      const confluxSpell = (PF2E_DATA.spells || []).find((spell) => spell.id === selectedHybridStudy.confluxSpellId);
+      if (confluxSpell && !this.character.spells.some((spell) => spell.id === confluxSpell.id)) this.character.spells.push({ ...confluxSpell, grantedByHybridStudy: selectedHybridStudy.id });
+    }
     if (profile.traditionMode === "fixed") {
       this.character.magicTradition = profile.traditions[0];
       return;
@@ -1596,6 +1610,7 @@ class PathbuilderApp {
       this.character.patron = "";
       this.character.wizardThesis = "";
       this.character.mystery = "";
+      this.character.hybridStudy = "";
       this.clearProgressionSlots("class_feat");
       this.clearProgressionSlots("class_feature");
       if (Array.isArray(this.character.feats)) {
@@ -1635,6 +1650,7 @@ class PathbuilderApp {
     // sync so legacy spellcasting and the explicit character field agree.
     if (targetField === "patron") this.character.subclass = item.name;
     if (targetField === "mystery") this.character.subclass = item.name;
+    if (item.data?.hybridStudy === true) this.character.hybridStudy = item.name;
     if (previousValue === item.name) return;
     this.clearProgressionSlots("class_feature");
     this.reconcileSpellcastingProfile();
@@ -4848,6 +4864,7 @@ class PathbuilderApp {
       patron: "",
       wizardThesis: "",
       mystery: "",
+      hybridStudy: "",
       abilities: { str: 16, dex: 12, con: 14, int: 10, wis: 12, cha: 10 },
       savingThrows: { fortitude: "Especialista", reflex: "Especialista", will: "Treinado" },
       perceptionRank: "Especialista",

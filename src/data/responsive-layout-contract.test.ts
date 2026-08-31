@@ -186,6 +186,8 @@ describe("responsive layout contract", () => {
     expect(app).toContain('["Tese Arcana", "Select Thesis", "Seleccionar tesis", "subclass", "wizardThesis"]');
     expect(app).toContain('["Mistério", "Select Mystery", "Seleccionar misterio", "subclass", "mystery"]');
     expect(app).toContain("grantedByPatron: patron.id");
+    expect(app).toContain("grantedByHybridStudy: selectedHybridStudy.id");
+    expect(app).toContain("this.character.hybridStudy = selectedHybridStudy.name;");
     expect(app).toContain('pet.id === "pet.familiar.mystic"');
     expect(app).toContain('grantedByClass: "class.witch"');
     expect(app).toContain("applySubclassSelection(item, this.activePickerOptions || {})");

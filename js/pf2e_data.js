@@ -8435,11 +8435,19 @@ const SECRETS_OF_MAGIC_MAGUS_HYBRID_STUDIES = [
   ["sparkling_targe", "Targe Cintilante", "Sparkling Targe", "Broquel centelleante", 63, "Aprimora o escudo contra efeitos mágicos em Cascata Arcana e concede Golpe e Escudo.", "Improves a shield against magical effects in Arcane Cascade and grants Shielding Strike.", "Mejora el escudo contra efectos mágicos en Cascada arcana y concede Golpe y escudo."],
   ["starlit_span", "Vão Estrelado", "Starlit Span", "Vano estelar", 63, "Permite Golpe de Magia à distância no primeiro incremento e concede Estrela Cadente.", "Allows ranged Spellstrike within the first range increment and grants Shooting Star.", "Permite Golpe de conjuro a distancia dentro del primer incremento y concede Estrella fugaz."]
 ];
+const MAGUS_CONFLUX_SPELL_BY_STUDY = {
+  twisting_tree: "spinning_staff",
+  inexorable_iron: "thunderous_strike",
+  laughing_shadow: "dimensional_assault",
+  sparkling_targe: "shielding_strike",
+  starlit_span: "shooting_star"
+};
 for (const [slug, pt, en, es, page, summaryPt, summaryEn, summaryEs] of SECRETS_OF_MAGIC_MAGUS_HYBRID_STUDIES) {
   const record = PF2E_DATA.subclasses.find((candidate) => candidate.classId === "class.magus" && candidate.names?.en === `${en} / ${es}`);
   if (!record) continue;
   Object.assign(record, {
     id: `subclass.class.magus.hybrid_study_${slug}`, hybridStudy: true,
+    confluxSpellId: `spell.secrets_of_magic.magus.${MAGUS_CONFLUX_SPELL_BY_STUDY[slug]}`,
     name: `${pt} (${en} / ${es})`, names: { "pt-BR": pt, en, es },
     summaries: { "pt-BR": summaryPt, en: summaryEn, es: summaryEs },
     source: { book: SECRETS_OF_MAGIC_SOURCE, page }, sourceApproximate: false, ruleset: "legacy", needs_review: false
@@ -10149,7 +10157,7 @@ const SECRETS_OF_MAGIC_FOCUS_SPELLS = [
   ["summoner", "extend_boost", "Prolongar Impulsionamento", "Extend Boost", "Extender impulso", 1, 143, ["class.summoner"]],
   ["summoner", "evolution_surge", "Surto de Evolução", "Evolution Surge", "Oleada de evolución", 1, 143, ["class.summoner"]],
   ["summoner", "vital_bond_surge", "Surto de Vínculo Vital", "Vital Bond Surge", "Oleada de vínculo vital", 2, 143, ["class.summoner"]],
-  ["summoner", "dimensional_assault", "Agressão Dimensional", "Dimensional Assault", "Asalto dimensional", 1, 144, ["class.summoner"]],
+  ["magus", "dimensional_assault", "Agressão Dimensional", "Dimensional Assault", "Asalto dimensional", 1, 144, ["class.magus"]],
   ["magus", "quickened_assault", "Ataque Rápido", "Hasted Assault", "Asalto acelerado", 7, 144, ["class.magus"]],
   ["magus", "rune_engraving", "Impressão Rúnica", "Runic Impression", "Impresión rúnica", 4, 144, ["class.magus"]],
   ["magus", "spinning_staff", "Cajado Giratório", "Spinning Staff", "Bastón giratorio", 1, 144, ["class.magus"]],
@@ -10166,6 +10174,7 @@ for (const [classSlug, slug, pt, en, es, rank, page, classIds] of SECRETS_OF_MAG
     id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es }, rank, level: rank, focus: true,
     traditions: ["arcane", "divine", "occult", "primal"], category: "Magia de Foco", type: "Focus Spell", classId: classIds[0], classIds,
     summaries: { "pt-BR": `Magia de foco de ${classSlug === "magus" ? "Magus" : "Convocador"}, ranque ${rank}.`, en: `${classSlug === "magus" ? "Magus" : "Summoner"} focus spell, rank ${rank}.`, es: `Conjuro de foco del ${classSlug === "magus" ? "magus" : "convocador"}, rango ${rank}.` },
+    requiredSubclass: classSlug === "magus" ? Object.entries(MAGUS_CONFLUX_SPELL_BY_STUDY).filter(([, confluxSlug]) => confluxSlug === slug).map(([studySlug]) => `subclass.class.magus.hybrid_study_${studySlug}`) : undefined,
     description: "Magia de foco de Segredos da Magia; tradição específica e efeito completo dependem da escolha de classe e permanecem em revisão.",
     source: { book: SECRETS_OF_MAGIC_SOURCE, page }, sourceApproximate: true, ruleset: "legacy", needs_review: true,
   });
