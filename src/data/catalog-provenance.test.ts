@@ -83,9 +83,17 @@ describe("proveniência do catálogo legado", () => {
     expect(catalog.archetypes.find((item) => item.id === "archetype.warrior_of_legend")).toMatchObject({ source: { page: 66 }, rarity: "uncommon", needs_review: false });
     expect(catalog.archetypes.find((item) => item.id === "archetype.commander_multiclass")).toMatchObject({ source: { page: 52 }, dedicationLevel: 2, needs_review: false });
     expect(catalog.archetypes.find((item) => item.id === "archetype.war_mage")).toMatchObject({ source: { page: 68 }, ruleset: "remaster", needs_review: false });
-    expect(catalog.spells).toHaveLength(8);
+    expect(catalog.spells).toHaveLength(40);
     expect(catalog.spells.find((item) => item.id === "spell.soothe")).toMatchObject({ source: { page: 314 }, rank: 1, ruleset: "remaster", needs_review: false });
     expect(catalog.spells.find((item) => item.id === "spell.fireball")).toMatchObject({ source: { page: 319 }, rank: 3, traditions: ["arcane", "primal"] });
+    expect(catalog.spells.find((item) => item.id === "spell.electric_arc")).toMatchObject({ source: { page: 316 }, rank: 1, ruleset: "remaster", needs_review: false });
+    expect(catalog.spells.find((item) => item.id === "spell.augury")).toMatchObject({ source: { page: 318 }, rank: 2, ruleset: "remaster", needs_review: false });
+    expect(catalog.spells.find((item) => item.id === "spell.caustic_blast")).toMatchObject({ source: { page: 319 }, rank: 1, ruleset: "remaster", needs_review: false });
+    expect(catalog.spells.find((item) => item.id === "spell.natures_path")).toMatchObject({ source: { page: 322 }, rank: 5, ruleset: "remaster", needs_review: false });
+    expect(catalog.spells.find((item) => item.id === "spell.command")).toMatchObject({ source: { page: 325 }, rank: 1, ruleset: "remaster", needs_review: false });
+    expect(catalog.spells.find((item) => item.id === "spell.share_life")).toMatchObject({ source: { page: 325 }, rank: 2, ruleset: "remaster", needs_review: false });
+    expect(catalog.spells.find((item) => item.id === "spell.compel_undead")).toMatchObject({ source: { page: 327 }, rank: 2, ruleset: "remaster", needs_review: false });
+    expect(catalog.spells.find((item) => item.id === "spell.summon_dragon")).toMatchObject({ source: { page: 330 }, rank: 5, ruleset: "remaster", needs_review: false });
     expect(catalog.rituals).toHaveLength(4);
     expect(catalog.rituals.find((item) => item.id === "ritual.animate_object")).toMatchObject({ source: { page: 390 }, rank: 2, rarity: "uncommon", needs_review: false });
     expect(catalog.rituals.find((item) => item.id === "ritual.consecrate")).toMatchObject({ source: { page: 392 }, ruleset: "remaster", needs_review: false });

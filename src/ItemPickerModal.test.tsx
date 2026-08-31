@@ -62,6 +62,22 @@ describe("ItemPickerModal", () => {
     expect(screen.getAllByText(/Poção de Cura Menor/i).length).toBeGreaterThan(0);
   });
 
+  it("exibe prata e platina com as abreviações corretas", () => {
+    let bridge: any;
+    render(
+      <I18nProvider>
+        <ItemPickerModal onBridgeReady={(b) => { bridge = b; }} />
+      </I18nProvider>
+    );
+
+    act(() => {
+      bridge.open();
+    });
+
+    expect(screen.getAllByText("15 PP").length).toBeGreaterThan(0);
+    expect(screen.queryByText("15 PL")).toBeNull();
+  });
+
   it("adiciona item ao inventário e deduz moedas ao clicar em Comprar", () => {
     let bridge: any;
     render(

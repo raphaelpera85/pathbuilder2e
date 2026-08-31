@@ -260,13 +260,53 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
     const needle = query.toLocaleLowerCase(locale);
     let rawItems = window.app.getPickerItems(pickerType);
 
-    if (pickerOptions?.filterType && pickerType === "feat") {
-      const matchType = (item: PickerItem) => {
-        const itemType = String(item.type || item.data?.type || "").toLowerCase();
-        return itemType.includes(pickerOptions.filterType!.toLowerCase());
-      };
-      const matching = rawItems.filter(matchType);
-      if (matching.length > 0) rawItems = matching;
+    // Category Tabs Filtering for Feats
+    if (pickerType === "feat") {
+      if (activeCategoryTab === "General Feats") {
+        rawItems = rawItems.filter((i) => {
+          const cat = String(i.category || i.data?.category || i.type || "").toLowerCase();
+          const traits = (i.data?.traits || []).map((t: string) => t.toLowerCase());
+          return cat.includes("geral") || cat.includes("general") || traits.includes("geral") || traits.includes("general");
+        });
+      } else if (activeCategoryTab === "Skill Feats") {
+        rawItems = rawItems.filter((i) => {
+          const cat = String(i.category || i.data?.category || i.type || "").toLowerCase();
+          const traits = (i.data?.traits || []).map((t: string) => t.toLowerCase());
+          return cat.includes("perícia") || cat.includes("pericia") || cat.includes("skill") || traits.includes("perícia") || traits.includes("pericia") || traits.includes("skill");
+        });
+      } else if (activeCategoryTab === "Archetype Skill Feats") {
+        rawItems = rawItems.filter((i) => {
+          const cat = String(i.category || i.data?.category || i.type || "").toLowerCase();
+          const traits = (i.data?.traits || []).map((t: string) => t.toLowerCase());
+          const isArchetype = cat.includes("arquétipo") || cat.includes("arquetipo") || cat.includes("archetype") || traits.includes("arquétipo") || traits.includes("arquetipo") || traits.includes("archetype");
+          const isSkill = cat.includes("perícia") || cat.includes("pericia") || cat.includes("skill") || traits.includes("perícia") || traits.includes("pericia") || traits.includes("skill");
+          return isArchetype || isSkill;
+        });
+      } else if (activeCategoryTab === "Class Feats") {
+        rawItems = rawItems.filter((i) => {
+          const cat = String(i.category || i.data?.category || i.type || "").toLowerCase();
+          const traits = (i.data?.traits || []).map((t: string) => t.toLowerCase());
+          return cat.includes("classe") || cat.includes("class") || traits.includes("classe") || traits.includes("class");
+        });
+      } else if (activeCategoryTab === "Dedication Feats") {
+        rawItems = rawItems.filter((i) => {
+          const name = String(i.name || "").toLowerCase();
+          const traits = (i.data?.traits || []).map((t: string) => t.toLowerCase());
+          return name.includes("dedica") || name.includes("dedication") || traits.includes("dedicação") || traits.includes("dedicacao") || traits.includes("dedication");
+        });
+      } else if (activeCategoryTab === "Archetype Class Feats") {
+        rawItems = rawItems.filter((i) => {
+          const cat = String(i.category || i.data?.category || i.type || "").toLowerCase();
+          const traits = (i.data?.traits || []).map((t: string) => t.toLowerCase());
+          return cat.includes("arquétipo") || cat.includes("arquetipo") || cat.includes("archetype") || traits.includes("arquétipo") || traits.includes("arquetipo") || traits.includes("archetype");
+        });
+      } else if (activeCategoryTab === "Ancestry Feats") {
+        rawItems = rawItems.filter((i) => {
+          const cat = String(i.category || i.data?.category || i.type || "").toLowerCase();
+          const traits = (i.data?.traits || []).map((t: string) => t.toLowerCase());
+          return cat.includes("ancestr") || traits.includes("ancestr");
+        });
+      }
     }
 
     // Category Tabs Filtering for Weapons

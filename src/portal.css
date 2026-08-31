@@ -63,7 +63,7 @@
 .portal-nav a[aria-current="page"] { color: #fff; background: rgba(249,115,22,.12); border-color: rgba(249,115,22,.48); }
 
 .portal-page-active { height: 100dvh; overflow: hidden; }
-.portal-page-active #react-portal-root { min-height: 0; flex: 1 1 auto; overflow: auto; }
+.portal-page-active #react-portal-root { min-height: 0; flex: 1 1 auto; overflow: hidden; }
 .portal-page-active .dice-log-drawer { display: none; }
 .portal-page-active .pb-char-tab { display: none !important; }
 
@@ -73,6 +73,15 @@
   padding: clamp(28px, 5vw, 64px) 0 72px;
   color: var(--pb-text);
   outline: none;
+  min-width: 0;
+}
+
+.portal-page-active #react-portal-root > .portal-page,
+.portal-page-active #react-portal-root > .portal-page-active {
+  height: 100%;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 .portal-page[tabindex]:focus-visible { outline: none; }
 
@@ -418,6 +427,7 @@
   .portal-nav { position: sticky; top: 0; z-index: 90; justify-content: flex-start; }
   .portal-nav a { padding-inline: 10px; }
   .portal-page { width: min(100% - 24px, 1280px); padding-top: 28px; }
+  .portal-page-active #react-portal-root > .portal-page { padding-bottom: 40px; }
   .catalog-toolbar, .rules-layout { grid-template-columns: 1fr; }
   .catalog-count { justify-self: stretch; }
   .source-row { grid-template-columns: 1fr; }

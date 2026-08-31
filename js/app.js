@@ -27,8 +27,174 @@ function assertSafeCharacterDocument(value) {
   return structuredClone(value);
 }
 
+const UI_TRANSLATIONS = {
+  skills: {
+    acrobatics: { "pt-BR": "Acrobacias", en: "Acrobatics", es: "Acrobacias" },
+    arcana: { "pt-BR": "Arcanismo", en: "Arcana", es: "Arcanos" },
+    athletics: { "pt-BR": "Atletismo", en: "Athletics", es: "Atletismo" },
+    crafting: { "pt-BR": "Manufatura", en: "Crafting", es: "Artesanía" },
+    deception: { "pt-BR": "Enganação", en: "Deception", es: "Engaño" },
+    diplomacy: { "pt-BR": "Diplomacia", en: "Diplomacy", es: "Diplomacia" },
+    intimidation: { "pt-BR": "Intimidação", en: "Intimidation", es: "Intimidación" },
+    medicine: { "pt-BR": "Medicina", en: "Medicine", es: "Medicina" },
+    nature: { "pt-BR": "Natureza", en: "Nature", es: "Naturaleza" },
+    occultism: { "pt-BR": "Ocultismo", en: "Occultism", es: "Ocultismo" },
+    performance: { "pt-BR": "Atuação", en: "Performance", es: "Interpretación" },
+    religion: { "pt-BR": "Religião", en: "Religion", es: "Religión" },
+    society: { "pt-BR": "Sociedade", en: "Society", es: "Sociedad" },
+    stealth: { "pt-BR": "Furtividade", en: "Stealth", es: "Sigilo" },
+    survival: { "pt-BR": "Sobrevivência", en: "Survival", es: "Supervivencia" },
+    thievery: { "pt-BR": "Ladinagem", en: "Thievery", es: "Hurto" }
+  },
+  sizes: {
+    "Miúdo": { "pt-BR": "Miúdo", en: "Tiny", es: "Diminuto" },
+    "Pequeno": { "pt-BR": "Pequeno", en: "Small", es: "Pequeño" },
+    "Médio": { "pt-BR": "Médio", en: "Medium", es: "Mediano" },
+    "Grande": { "pt-BR": "Grande", en: "Large", es: "Grande" },
+    "Enorme": { "pt-BR": "Enorme", en: "Huge", es: "Enorme" },
+    "Imenso": { "pt-BR": "Imenso", en: "Gargantuan", es: "Gargantuesco" }
+  },
+  senses: {
+    "Visão Normal": { "pt-BR": "Visão Normal", en: "Normal Vision", es: "Visión Normal" },
+    "Visão no Escuro": { "pt-BR": "Visão no Escuro", en: "Darkvision", es: "Visión en la Oscuridad" },
+    "Visão na Penumbra": { "pt-BR": "Visão na Penumbra", en: "Low-Light Vision", es: "Visión en la Penumbra" },
+    "Visão Maior no Escuro": { "pt-BR": "Visão Maior no Escuro", en: "Greater Darkvision", es: "Visión en la Oscuridad Mayor" }
+  },
+  classes: {
+    "Alquimista": { "pt-BR": "Alquimista", en: "Alchemist", es: "Alquimista" },
+    "Bárbaro": { "pt-BR": "Bárbaro", en: "Barbarian", es: "Bárbaro" },
+    "Bardo": { "pt-BR": "Bardo", en: "Bard", es: "Bardo" },
+    "Campeão": { "pt-BR": "Campeão", en: "Champion", es: "Campeón" },
+    "Clérigo": { "pt-BR": "Clérigo", en: "Cleric", es: "Clérigo" },
+    "Druida": { "pt-BR": "Druida", en: "Druid", es: "Druida" },
+    "Guerreiro": { "pt-BR": "Guerreiro", en: "Fighter", es: "Guerrero" },
+    "Armífero": { "pt-BR": "Armífero", en: "Gunslinger", es: "Pistolero" },
+    "Inventor": { "pt-BR": "Inventor", en: "Inventor", es: "Inventor" },
+    "Investigador": { "pt-BR": "Investigador", en: "Investigator", es: "Investigador" },
+    "Cineticista": { "pt-BR": "Cineticista", en: "Kineticist", es: "Cinético" },
+    "Magus": { "pt-BR": "Magus", en: "Magus", es: "Magus" },
+    "Monge": { "pt-BR": "Monge", en: "Monk", es: "Monje" },
+    "Oráculo": { "pt-BR": "Oráculo", en: "Oracle", es: "Oráculo" },
+    "Psíquico": { "pt-BR": "Psíquico", en: "Psychic", es: "Psíquico" },
+    "Patrulheiro": { "pt-BR": "Patrulheiro", en: "Ranger", es: "Explorador" },
+    "Ladino": { "pt-BR": "Ladino", en: "Rogue", es: "Pícaro" },
+    "Feiticeiro": { "pt-BR": "Feiticeiro", en: "Sorcerer", es: "Hechicero" },
+    "Invocador": { "pt-BR": "Invocador", en: "Summoner", es: "Convocador" },
+    "Espadachim": { "pt-BR": "Espadachim", en: "Swashbuckler", es: "Espadachín" },
+    "Taumaturgo": { "pt-BR": "Taumaturgo", en: "Thaumaturge", es: "Taumaturgo" },
+    "Bruxo": { "pt-BR": "Bruxo", en: "Witch", es: "Brujo" },
+    "Mago": { "pt-BR": "Mago", en: "Wizard", es: "Mago" }
+  },
+  ancestries: {
+    "Humano": { "pt-BR": "Humano", en: "Human", es: "Humano" },
+    "Elfo": { "pt-BR": "Elfo", en: "Elf", es: "Elfo" },
+    "Anão": { "pt-BR": "Anão", en: "Dwarf", es: "Enano" },
+    "Gnomo": { "pt-BR": "Gnomo", en: "Gnome", es: "Gnomo" },
+    "Halfling": { "pt-BR": "Halfling", en: "Halfling", es: "Mediano" },
+    "Goblin": { "pt-BR": "Goblin", en: "Goblin", es: "Goblin" },
+    "Orc": { "pt-BR": "Orc", en: "Orc", es: "Orco" },
+    "Leshy": { "pt-BR": "Leshy", en: "Leshy", es: "Leshys" },
+    "Kobold": { "pt-BR": "Kobold", en: "Kobold", es: "Kobold" },
+    "Homem-Gato": { "pt-BR": "Homem-Gato", en: "Catfolk", es: "Hombre Gato" },
+    "Povo-Rato": { "pt-BR": "Povo-Rato", en: "Ratfolk", es: "Hombre Rata" },
+    "Tengu": { "pt-BR": "Tengu", en: "Tengu", es: "Tengu" },
+    "Homem-Lagarto": { "pt-BR": "Homem-Lagarto", en: "Lizardfolk", es: "Hombre Lagarto" },
+    "Autômato": { "pt-BR": "Autômato", en: "Automaton", es: "Autómata" },
+    "Androide": { "pt-BR": "Androide", en: "Android", es: "Androide" },
+    "Poppet": { "pt-BR": "Poppet", en: "Poppet", es: "Poppet" },
+    "Esqueleto": { "pt-BR": "Esqueleto", en: "Skeleton", es: "Esqueleto" },
+    "Sprite": { "pt-BR": "Sprite", en: "Sprite", es: "Sprite" },
+    "Fetchling": { "pt-BR": "Fetchling", en: "Fetchling", es: "Fetchling" },
+    "Kitsune": { "pt-BR": "Kitsune", en: "Kitsune", es: "Kitsune" },
+    "Strix": { "pt-BR": "Strix", en: "Strix", es: "Strix" }
+  },
+  heritages: {
+    "Humano Versátil": { "pt-BR": "Humano Versátil", en: "Versatile Human", es: "Humano Versátil" },
+    "Humano Talentoso": { "pt-BR": "Humano Talentoso", en: "Skilled Human", es: "Humano Diestro" },
+    "Elfo Silvestre": { "pt-BR": "Elfo Silvestre", en: "Woodland Elf", es: "Elfo Silvano" },
+    "Elfo Cavernar": { "pt-BR": "Elfo Cavernar", en: "Cavern Elf", es: "Elfo de las Cavernas" },
+    "Elfo Alto": { "pt-BR": "Elfo Alto", en: "Ancient Elf", es: "Elfo Ancestral" },
+    "Anão da Rocha Forte": { "pt-BR": "Anão da Rocha Forte", en: "Strong-Blooded Dwarf", es: "Enano de Sangre Fuerte" },
+    "Anão Escavador de Rocha": { "pt-BR": "Anão Escavador de Rocha", en: "Rock Dwarf", es: "Enano de las Rocas" },
+    "Meio-Elfo": { "pt-BR": "Meio-Elfo", en: "Half-Elf (Aiuvarin)", es: "Medio Elfo (Aiuvarin)" },
+    "Meio-Orc": { "pt-BR": "Meio-Orc", en: "Half-Orc (Dromaar)", es: "Medio Orco (Dromaar)" },
+    "Aasimar": { "pt-BR": "Aasimar", en: "Aasimar (Holy Nephilim)", es: "Aasimar" },
+    "Tiefling": { "pt-BR": "Tiefling", en: "Tiefling (Unholy Nephilim)", es: "Tiflin" },
+    "Dhampir": { "pt-BR": "Dhampir", en: "Dhampir", es: "Dampiro" },
+    "Changeling": { "pt-BR": "Changeling", en: "Changeling", es: "Cambion" }
+  },
+  backgrounds: {
+    "Guarda da Cidade": { "pt-BR": "Guarda da Cidade", en: "Guard", es: "Guardia" },
+    "Guarda": { "pt-BR": "Guarda", en: "Guard", es: "Guardia" },
+    "Gladiador": { "pt-BR": "Gladiador", en: "Gladiator", es: "Gladiador" },
+    "Nobre": { "pt-BR": "Nobre", en: "Noble", es: "Noble" },
+    "Acólito": { "pt-BR": "Acólito", en: "Acolyte", es: "Acólito" },
+    "Criminoso": { "pt-BR": "Criminoso", en: "Criminal", es: "Criminal" },
+    "Caçador": { "pt-BR": "Caçador", en: "Hunter", es: "Cazador" },
+    "Marinheiro": { "pt-BR": "Marinheiro", en: "Sailor", es: "Marinero" },
+    "Estudioso": { "pt-BR": "Estudioso", en: "Scholar", es: "Erudito" },
+    "Guerreiro": { "pt-BR": "Guerreiro", en: "Warrior", es: "Guerrero" },
+    "Artista": { "pt-BR": "Artista", en: "Entertainer", es: "Artista" },
+    "Artesão": { "pt-BR": "Artesão", en: "Artisan", es: "Artesano" },
+    "Charlatão": { "pt-BR": "Charlatão", en: "Charlatan", es: "Charlatán" },
+    "Eremita": { "pt-BR": "Eremita", en: "Hermit", es: "Ermitaño" },
+    "Mercador": { "pt-BR": "Mercador", en: "Merchant", es: "Comerciante" },
+    "Nômade": { "pt-BR": "Nômade", en: "Nomad", es: "Nómada" },
+    "Trabalhador": { "pt-BR": "Trabalhador", en: "Laborer", es: "Obrero" },
+    "Emissário": { "pt-BR": "Emissário", en: "Emissary", es: "Emisario" },
+    "Detetive": { "pt-BR": "Detetive", en: "Detective", es: "Detective" },
+    "Bandido": { "pt-BR": "Bandido", en: "Bandit", es: "Bandido" },
+    "Batedor": { "pt-BR": "Batedor", en: "Scout", es: "Explorador" },
+    "Herdeiro Nobre": { "pt-BR": "Herdeiro Nobre", en: "Noble Heir", es: "Heredero Noble" },
+    "Médico de Campo": { "pt-BR": "Médico de Campo", en: "Field Medic", es: "Médico de Campaña" },
+    "Prisioneiro": { "pt-BR": "Prisioneiro", en: "Prisoner", es: "Prisionero" },
+    "Garoto de Rua": { "pt-BR": "Garoto de Rua", en: "Street Urchin", es: "Pillo Callejero" }
+  },
+  weapons: {
+    "Espada Longa": { "pt-BR": "Espada Longa", en: "Longsword", es: "Espada Larga" },
+    "Espada Curta": { "pt-BR": "Espada Curta", en: "Shortsword", es: "Espada Corta" },
+    "Rapieira": { "pt-BR": "Rapieira", en: "Rapier", es: "Estoque" },
+    "Adaga": { "pt-BR": "Adaga", en: "Dagger", es: "Daga" },
+    "Arco Curto": { "pt-BR": "Arco Curto", en: "Shortbow", es: "Arco Corto" },
+    "Arco Longo": { "pt-BR": "Arco Longo", en: "Longbow", es: "Arco Largo" },
+    "Machado de Batalha": { "pt-BR": "Machado de Batalha", en: "Battle Axe", es: "Hacha de Batalla" },
+    "Montante": { "pt-BR": "Montante", en: "Greatsword", es: "Espadón" },
+    "Martelo de Guerra": { "pt-BR": "Martelo de Guerra", en: "Warhammer", es: "Martillo de Guerra" },
+    "Maça": { "pt-BR": "Maça", en: "Mace", es: "Maza" },
+    "Lança": { "pt-BR": "Lança", en: "Spear", es: "Lanza" },
+    "Besta": { "pt-BR": "Besta", en: "Crossbow", es: "Ballesta" },
+    "Cimitarra": { "pt-BR": "Cimitarra", en: "Scimitar", es: "Cimitarra" },
+    "Bordão": { "pt-BR": "Bordão", en: "Staff", es: "Bastón" },
+    "Escudo de Aço": { "pt-BR": "Escudo de Aço", en: "Steel Shield", es: "Escudo de Acero" },
+    "Escudo de Madeira": { "pt-BR": "Escudo de Madeira", en: "Wooden Shield", es: "Escudo de Madera" },
+    "Broquel": { "pt-BR": "Broquel", en: "Buckler", es: "Broquel" },
+    "Desarmado": { "pt-BR": "Desarmado", en: "Unarmed", es: "Desarmado" },
+    "Armadura de Couro": { "pt-BR": "Armadura de Couro", en: "Leather Armor", es: "Armadura de Cuero" },
+    "Cota de Malha": { "pt-BR": "Cota de Malha", en: "Chain Mail", es: "Cota de Malla" },
+    "Armadura Completa": { "pt-BR": "Armadura Completa", en: "Full Plate", es: "Armadura de Placas" },
+    "Sem Armadura": { "pt-BR": "Sem Armadura", en: "Unarmored", es: "Sin Armadura" }
+  },
+  traits: {
+    "Ágil": { "pt-BR": "Ágil", en: "Agile", es: "Ágil" },
+    "Finesse": { "pt-BR": "Finesse", en: "Finesse", es: "Sutileza" },
+    "Versátil P": { "pt-BR": "Versátil P", en: "Versatile P", es: "Versátil P" },
+    "Versátil C": { "pt-BR": "Versátil C", en: "Versatile S", es: "Versátil C" },
+    "Versátil I": { "pt-BR": "Versátil I", en: "Versatile B", es: "Versátil I" },
+    "Desarmado": { "pt-BR": "Desarmado", en: "Unarmed", es: "Desarmado" },
+    "Não Letal": { "pt-BR": "Não Letal", en: "Nonlethal", es: "No Letal" },
+    "Arremesso": { "pt-BR": "Arremesso", en: "Thrown", es: "Arrojadiza" },
+    "Aparar": { "pt-BR": "Aparar", en: "Parry", es: "Parada" },
+    "Derrubar": { "pt-BR": "Derrubar", en: "Trip", es: "Derribo" },
+    "Desarmar": { "pt-BR": "Desarmar", en: "Disarm", es: "Desarme" },
+    "Empurrão": { "pt-BR": "Empurrão", en: "Shove", es: "Empujón" },
+    "Alcance": { "pt-BR": "Alcance", en: "Reach", es: "Alcance" },
+    "Mãos 1+": { "pt-BR": "Mãos 1+", en: "Hands 1+", es: "Manos 1+" },
+    "Duas Mãos": { "pt-BR": "Duas Mãos", en: "Two-Hand", es: "Dos Manos" }
+  }
+};
+
 /**
- * PATHBUILDER 2E LOCAL - CONTROLADOR DA INTERFACE (PT-BR)
+ * PATHBUILDER 2E LOCAL - CONTROLADOR DA INTERFACE (MULTI-IDIOMA: PT-BR, EN, ES)
  * Construtor local com árvore de progressão, dados rápidos e ficha própria para impressão.
  */
 
@@ -57,6 +223,188 @@ class PathbuilderApp {
       if (loc === "en" || loc === "es" || loc === "pt-BR") return loc;
     }
     return "pt-BR";
+  }
+
+  localizeItemName(rawName, locale = this.getLocale()) {
+    if (!rawName || typeof rawName !== "string") return rawName || "";
+    if (locale === "pt-BR") {
+      const match = rawName.match(/^([^(]+?)\s*\(([^)]+)\)$/);
+      if (match) return match[1].trim();
+      return rawName;
+    }
+
+    const dicts = [
+      UI_TRANSLATIONS.classes,
+      UI_TRANSLATIONS.ancestries,
+      UI_TRANSLATIONS.backgrounds,
+      UI_TRANSLATIONS.heritages,
+      UI_TRANSLATIONS.weapons
+    ];
+
+    for (const dict of dicts) {
+      if (dict[rawName]?.[locale]) return dict[rawName][locale];
+    }
+
+    for (const dict of dicts) {
+      for (const [key, mapping] of Object.entries(dict)) {
+        if (rawName.startsWith(key) || rawName.includes(key)) {
+          return mapping[locale];
+        }
+      }
+    }
+
+    const match = rawName.match(/^([^(]+?)\s*\(([^)]+)\)$/);
+    if (match) {
+      const ptPart = match[1].trim();
+      const enParts = match[2].split("/").map(s => s.trim());
+      if (locale === "en") return enParts[0] || ptPart;
+      if (locale === "es") return enParts[1] || enParts[0] || ptPart;
+    }
+
+    return rawName;
+  }
+
+  localizeTrait(trait, locale = this.getLocale()) {
+    if (!trait || typeof trait !== "string") return trait || "";
+    return UI_TRANSLATIONS.traits[trait]?.[locale] || trait;
+  }
+
+  updateStaticLabels(locale = this.getLocale()) {
+    if (typeof document === "undefined" || typeof document.querySelector !== "function") return;
+    const isEn = locale === "en";
+    const isEs = locale === "es";
+
+    // 1. Plan Toggle Button
+    const btnToggle = document.getElementById("btnTogglePlan");
+    if (btnToggle) {
+      btnToggle.innerText = this.planHidden
+        ? (isEn ? "Show Plan" : isEs ? "Mostrar Plan" : "Mostrar Plano")
+        : (isEn ? "Hide Plan" : isEs ? "Ocultar Plan" : "Ocultar Plano");
+    }
+
+    // 2. Header Row Inputs Labels
+    const lvlBoxLabel = document.querySelector(".pb-header-row .stat-input-box:nth-child(2) label");
+    if (lvlBoxLabel) lvlBoxLabel.innerText = isEn ? "Level" : isEs ? "Nivel" : "Nível";
+
+    const nameBoxLabel = document.querySelector(".pb-header-row .stat-input-box:nth-child(4) label");
+    if (nameBoxLabel) nameBoxLabel.innerText = isEn ? "Character Name" : isEs ? "Nombre del Personaje" : "Nome do Personagem";
+
+    const variantBtn = document.getElementById("variantRulesBtn");
+    if (variantBtn) variantBtn.innerHTML = `⚙️ ${isEn ? "Variants" : isEs ? "Variantes" : "Variantes"}`;
+
+    // 3. Mini Bar Ability Labels
+    const miniBoxes = document.querySelectorAll(".abilities-summary-bar .mini-box");
+    if (miniBoxes && miniBoxes.length >= 6) {
+      const lbl0 = miniBoxes[0].querySelector("span:last-child");
+      if (lbl0) lbl0.innerText = isEn ? "SIZE" : isEs ? "TAMAÑO" : "TAMANHO";
+
+      const lbl1 = miniBoxes[1].querySelector("span:last-child");
+      if (lbl1) lbl1.innerText = isEn ? "SPEED" : isEs ? "VELOC." : "VELOC.";
+
+      const lbl2 = miniBoxes[2].querySelector("span:last-child");
+      if (lbl2) lbl2.innerText = isEn ? "STR" : isEs ? "FUE" : "FOR";
+
+      const lbl3 = miniBoxes[3].querySelector("span:last-child");
+      if (lbl3) lbl3.innerText = isEn ? "DEX" : isEs ? "DES" : "DES";
+
+      const lbl4 = miniBoxes[4].querySelector("span:last-child");
+      if (lbl4) lbl4.innerText = isEn ? "CON" : isEs ? "CON" : "CON";
+
+      const lbl5 = miniBoxes[5].querySelector("span:last-child");
+      if (lbl5) lbl5.innerText = isEn ? "INT" : isEs ? "INT" : "INT";
+    }
+
+    // 4. Vitals (AC, HP, Saves)
+    const acTitle = document.querySelector(".ac-shield-title");
+    if (acTitle) acTitle.innerText = isEn ? "AC" : "CA";
+
+    const hpTitle = document.querySelector(".hp-bar-container span:first-child");
+    if (hpTitle) hpTitle.innerText = isEn ? "HP" : isEs ? "PG" : "PV";
+
+    const saveRows = document.querySelectorAll(".saves-col-box .save-row-box");
+    if (saveRows && saveRows.length >= 3) {
+      const s0 = saveRows[0].querySelector(".save-name-label");
+      if (s0) s0.innerText = isEn ? "Fortitude" : isEs ? "Fortaleza" : "Fortitude";
+
+      const s1 = saveRows[1].querySelector(".save-name-label");
+      if (s1) s1.innerText = isEn ? "Reflex" : isEs ? "Reflejos" : "Reflexos";
+
+      const s2 = saveRows[2].querySelector(".save-name-label");
+      if (s2) s2.innerText = isEn ? "Will" : isEs ? "Voluntad" : "Vontade";
+    }
+
+    // 5. Sub-stats row
+    const heroPointsLabel = document.querySelector(".sub-stats-row .hero-points-box span:first-child");
+    if (heroPointsLabel) heroPointsLabel.innerText = isEn ? "Hero Points:" : isEs ? "Puntos Heroicos:" : "Pontos Heroicos:";
+
+    const perceptionLabel = document.querySelector(".sub-stats-row > div:nth-child(3) span:last-child");
+    if (perceptionLabel) perceptionLabel.innerText = isEn ? "Perception" : isEs ? "Percepción" : "Percepção";
+
+    const initiativeLabel = document.querySelector(".sub-stats-row > div:nth-child(4) span:last-child");
+    if (initiativeLabel) initiativeLabel.innerText = isEn ? "Initiative" : isEs ? "Iniciativa" : "Iniciativa";
+
+    // 6. Skills column header
+    const skillsHeader = document.querySelector(".skills-col-header span:first-child");
+    if (skillsHeader) skillsHeader.innerText = isEn ? "SKILLS" : isEs ? "HABILIDADES" : "PERÍCIAS";
+
+    // 7. Quick Action Bar Buttons
+    const quickButtons = document.querySelectorAll(".quick-actions-bar button");
+    if (quickButtons && quickButtons.length >= 7) {
+      quickButtons[0].innerText = isEn ? "💤 Rest (8h)" : isEs ? "💤 Descansar (8h)" : "💤 Descansar (8h)";
+      quickButtons[1].innerText = isEn ? "🛡️ Shield Block" : isEs ? "🛡️ Bloqueo c/ Escudo" : "🛡️ Bloqueio c/ Escudo";
+      quickButtons[2].innerText = isEn ? "🎲 Recovery Check" : isEs ? "🎲 Prueba de Recuperación" : "🎲 Teste de Recuperação";
+      quickButtons[3].innerText = isEn ? "➕ Add Condition" : isEs ? "➕ Añadir Condición" : "➕ Adicionar Condição";
+      quickButtons[4].innerText = isEn ? "⏱️ End Turn" : isEs ? "⏱️ Fin del Turno" : "⏱️ Fim do Turno";
+      quickButtons[5].innerText = isEn ? "✨ Clear Conditions" : isEs ? "✨ Limpiar Condiciones" : "✨ Limpar Condições";
+      quickButtons[6].innerText = isEn ? "➕ Add Buff" : isEs ? "➕ Añadir Buff" : "➕ Adicionar Buff";
+    }
+
+    // 8. Navigation Tab Buttons
+    const tabMap = {
+      "tab-button-weapons": isEn ? "Weapons" : isEs ? "Armas" : "Armas",
+      "tab-button-defense": isEn ? "Defense" : isEs ? "Defensa" : "Defesa",
+      "tab-button-gear": isEn ? "Gear" : isEs ? "Equipo" : "Equipamentos",
+      "tab-button-spells": isEn ? "Spells" : isEs ? "Conjuros" : "Magias",
+      "tab-button-pets": isEn ? "Pets" : isEs ? "Mascotas" : "Mascotes",
+      "tab-button-details": isEn ? "Details" : isEs ? "Detalles" : "Detalhes",
+      "tab-button-feats": isEn ? "Feats" : isEs ? "Dotes" : "Talentos",
+      "tab-button-actions": isEn ? "Actions" : isEs ? "Acciones" : "Ações",
+      "tab-button-formulas": isEn ? "Formulas & Alchemy" : isEs ? "Fórmulas y Alquimia" : "Fórmulas & Alquimia"
+    };
+    for (const [id, label] of Object.entries(tabMap)) {
+      const tabEl = document.getElementById(id);
+      if (tabEl) tabEl.innerText = label;
+    }
+
+    // 9. Weapons Tab Static Elements
+    const weaponProfs = document.querySelectorAll(".weapon-prof-group-item span:last-child");
+    if (weaponProfs && weaponProfs.length >= 4) {
+      weaponProfs[0].innerText = isEn ? "Simple Weapons" : isEs ? "Armas Simples" : "Armas Simples";
+      weaponProfs[1].innerText = isEn ? "Martial Weapons" : isEs ? "Armas Marciales" : "Armas Marciais";
+      weaponProfs[2].innerText = isEn ? "Advanced Weapons" : isEs ? "Armas Avanzadas" : "Armas Avançadas";
+      weaponProfs[3].innerText = isEn ? "Unarmed Attacks" : isEs ? "Ataques Desarmados" : "Ataques Desarmados";
+    }
+    const addWeaponBtn = document.querySelector("#tab-weapons button[onclick*=\"openPicker('weapon')\"]");
+    if (addWeaponBtn) addWeaponBtn.innerText = isEn ? "➕ Add Weapon" : isEs ? "➕ Añadir Arma" : "➕ Adicionar Arma";
+
+    const printSheetBtn = document.querySelector("#tab-weapons button[onclick*=\"printOfficialPdf\"]");
+    if (printSheetBtn) printSheetBtn.innerText = isEn ? "🖨️ Print Sheet" : isEs ? "🖨️ Imprimir Ficha" : "🖨️ Imprimir Ficha";
+
+    // 10. Mobile Nav Buttons
+    const btnViewPlan = document.querySelector("#btnViewPlan span:last-child");
+    if (btnViewPlan) btnViewPlan.innerText = isEn ? "Plan (Levels)" : isEs ? "Plan (Niveles)" : "Plano (Níveis)";
+
+    const btnViewStats = document.querySelector("#btnViewStats span:last-child");
+    if (btnViewStats) btnViewStats.innerText = isEn ? "Sheet & Skills" : isEs ? "Ficha y Habilidades" : "Ficha & Perícias";
+
+    const btnViewContent = document.querySelector("#btnViewContent span:last-child");
+    if (btnViewContent) btnViewContent.innerText = isEn ? "Actions & Tabs" : isEs ? "Acciones y Pestañas" : "Ações & Abas";
+
+    // 11. Topbar AI Assistant Button
+    const btnAIAssistant = document.getElementById("btnAIAssistantTopbar");
+    if (btnAIAssistant) {
+      btnAIAssistant.innerHTML = `✨ ${isEn ? "AI Assistant (Free)" : isEs ? "Asistente IA (Gratis)" : "Assistente IA (Grátis)"}`;
+    }
   }
 
   async init() {
@@ -152,10 +500,17 @@ class PathbuilderApp {
   // RENDERIZAÇÃO COMPLETA REATIVA
   renderAll() {
     if (!this.character) return;
+    const locale = this.getLocale();
+    const isEn = locale === "en";
+    const isEs = locale === "es";
+
     this.calc = PF2E_ENGINE.calculateCharacterStats(this.character);
 
+    // 0. Static Labels Update across DOM
+    this.updateStaticLabels(locale);
+
     // 1. Top Bar & Tab
-    const topTitle = `${this.character.name} - ${this.character.class} ${this.character.level}`;
+    const topTitle = `${this.character.name} - ${this.localizeItemName(this.character.class, locale)} ${this.character.level}`;
     document.getElementById("topCharTitle").innerText = topTitle;
     document.title = `${this.character.name} | Pathbuilder 2e Local`;
     window.dispatchEvent(new Event("pathbuilder:character-render"));
@@ -166,7 +521,7 @@ class PathbuilderApp {
     // 3. Middle Stats Column
     document.getElementById("charName").value = this.character.name || "";
     document.getElementById("charLevel").value = this.character.level || 1;
-    document.getElementById("charSize").innerText = this.calc.size || "Médio";
+    document.getElementById("charSize").innerText = UI_TRANSLATIONS.sizes[this.calc.size]?.[locale] || this.calc.size || (isEn ? "Medium" : isEs ? "Mediano" : "Médio");
     document.getElementById("charSpeed").innerText = this.formatMovementSpeeds();
 
     // Modificadores de Atributo (Mini Bar)
@@ -182,12 +537,12 @@ class PathbuilderApp {
     const shieldStatus = document.getElementById("shieldStatusText");
     const shieldBonus = document.getElementById("shieldBonusText");
     if (this.character.shieldRaised) {
-      shieldStatus.innerText = "Escudo Erguido (+2 CA)";
-      shieldBonus.innerText = "Abaixar";
+      shieldStatus.innerText = isEn ? "Shield Raised (+2 AC)" : isEs ? "Escudo Alzado (+2 CA)" : "Escudo Erguido (+2 CA)";
+      shieldBonus.innerText = isEn ? "Lower" : isEs ? "Bajar" : "Abaixar";
       shieldStatus.style.color = "var(--pb-orange)";
     } else {
-      shieldStatus.innerText = "Sem Escudo (+0)";
-      shieldBonus.innerText = "Erguer";
+      shieldStatus.innerText = isEn ? "No Shield (+0)" : isEs ? "Sin Escudo (+0)" : "Sem Escudo (+0)";
+      shieldBonus.innerText = isEn ? "Raise" : isEs ? "Alzar" : "Erguer";
       shieldStatus.style.color = "var(--pb-text-muted)";
     }
 
@@ -205,7 +560,8 @@ class PathbuilderApp {
     document.getElementById("willRankBadge").className = `teml-circle ${(this.calc.saves.will.rank || "E")[0].toLowerCase()}`;
 
     // CD de Classe, Percepção e Iniciativa
-    document.getElementById("classDcVal").innerText = `${this.calc.classDc} CD de Classe`;
+    const classDcText = isEn ? "Class DC" : isEs ? "CD de Clase" : "CD de Classe";
+    document.getElementById("classDcVal").innerText = `${this.calc.classDc} ${classDcText}`;
     document.getElementById("percVal").innerText = PF2E_ENGINE.formatMod(this.calc.perception.total);
     document.getElementById("initVal").innerText = PF2E_ENGINE.formatMod(this.calc.perception.total);
 
@@ -214,9 +570,13 @@ class PathbuilderApp {
     if (sensesContainer) {
       const senses = this.calc.senses || [];
       if (senses.length > 0) {
-        sensesContainer.innerHTML = senses.map(s => `<span style="background:rgba(59,130,246,0.15); color:var(--pb-blue); padding:1px 6px; border-radius:4px; border:1px solid rgba(59,130,246,0.3);">👁️ ${escapeHtml(s)}</span>`).join("");
+        sensesContainer.innerHTML = senses.map(s => {
+          const locSense = UI_TRANSLATIONS.senses[s]?.[locale] || s;
+          return `<span style="background:rgba(59,130,246,0.15); color:var(--pb-blue); padding:1px 6px; border-radius:4px; border:1px solid rgba(59,130,246,0.3);">👁️ ${escapeHtml(locSense)}</span>`;
+        }).join("");
       } else {
-        sensesContainer.innerHTML = `<span style="color:var(--pb-text-dim);">Visão Normal</span>`;
+        const normVision = isEn ? "Normal Vision" : isEs ? "Visión Normal" : "Visão Normal";
+        sensesContainer.innerHTML = `<span style="color:var(--pb-text-dim);">${normVision}</span>`;
       }
     }
 
@@ -240,7 +600,8 @@ class PathbuilderApp {
     const readinessText = document.getElementById("readinessBadgeText");
     const readinessBtn = document.getElementById("readinessBadgeBtn");
     if (readinessText && readinessBtn) {
-      readinessText.innerText = `${readiness.score}% Pronto`;
+      const readyLabel = isEn ? "Ready" : isEs ? "Listo" : "Pronto";
+      readinessText.innerText = `${readiness.score}% ${readyLabel}`;
       if (readiness.isReady) {
         readinessBtn.style.background = "rgba(34, 197, 94, 0.15)";
         readinessBtn.style.borderColor = "#22c55e";
@@ -257,11 +618,18 @@ class PathbuilderApp {
   renderSkillsColumn() {
     const list = document.getElementById("skillsColList");
     const badge = document.getElementById("trainedSkillsBadge");
+    const locale = this.getLocale();
+    const isEn = locale === "en";
+    const isEs = locale === "es";
     
     const trainedSummary = this.calc.trainedSkills || PF2E_ENGINE.calculateTrainedSkillsCount(this.character);
     if (badge) {
       badge.innerText = `${trainedSummary.selectedSkills.length} / ${trainedSummary.totalAllowed}`;
-      badge.title = `Treinadas: ${trainedSummary.selectedSkills.length} de ${trainedSummary.totalAllowed} (Classe: ${trainedSummary.classBase} + INT: ${PF2E_ENGINE.formatMod(trainedSummary.intMod)})`;
+      badge.title = isEn
+        ? `Trained: ${trainedSummary.selectedSkills.length} of ${trainedSummary.totalAllowed} (Class: ${trainedSummary.classBase} + INT: ${PF2E_ENGINE.formatMod(trainedSummary.intMod)})`
+        : isEs
+        ? `Entrenadas: ${trainedSummary.selectedSkills.length} de ${trainedSummary.totalAllowed} (Clase: ${trainedSummary.classBase} + INT: ${PF2E_ENGINE.formatMod(trainedSummary.intMod)})`
+        : `Treinadas: ${trainedSummary.selectedSkills.length} de ${trainedSummary.totalAllowed} (Classe: ${trainedSummary.classBase} + INT: ${PF2E_ENGINE.formatMod(trainedSummary.intMod)})`;
     }
 
     let html = "";
@@ -271,24 +639,26 @@ class PathbuilderApp {
       const calcSk = this.calc.skills[sk.id];
       const rankInitial = (calcSk.rank || "Destreinado")[0].toUpperCase();
       const rankClass = rankInitial.toLowerCase();
+      const localizedName = UI_TRANSLATIONS.skills[sk.id]?.[locale] || sk.name;
       html += `
-        <div class="skill-item-row" onclick="app.rollCheck(${escapeInlineArgument(`Perícia: ${sk.name}`)}, ${calcSk.total})" title="Clique para rolar d20 com bônus">
-          <span class="teml-circle ${rankClass}" onclick="event.stopPropagation(); app.cycleSkillRank(${escapeInlineArgument(sk.id)})" title="Alternar Proficiência">${rankInitial}</span>
+        <div class="skill-item-row" onclick="app.rollCheck(${escapeInlineArgument(`${isEn ? 'Skill' : isEs ? 'Habilidad' : 'Perícia'}: ${localizedName}`)}, ${calcSk.total})" title="${isEn ? 'Click to roll d20 + bonus' : 'Clique para rolar d20 com bônus'}">
+          <span class="teml-circle ${rankClass}" onclick="event.stopPropagation(); app.cycleSkillRank(${escapeInlineArgument(sk.id)})" title="${isEn ? 'Toggle Proficiency' : 'Alternar Proficiência'}">${rankInitial}</span>
           <span class="skill-roll-val">${PF2E_ENGINE.formatMod(calcSk.total)}</span>
-          <span class="skill-name-text">${escapeHtml(sk.name)}</span>
+          <span class="skill-name-text">${escapeHtml(localizedName)}</span>
         </div>
       `;
     });
 
     // Perícias de Lore (Conhecimento / Saberes)
-    const lorePrefix = this.getLocale() === "en" ? "Lore: " : "Saber: ";
+    const lorePrefix = isEn ? "Lore: " : isEs ? "Saber: " : "Saber: ";
     (this.calc.loreSkills || []).forEach((l, idx) => {
       const rankInitial = (l.rank || "Treinado")[0].toUpperCase();
+      const locLoreName = this.localizeItemName(l.name, locale);
       html += `
-        <div class="skill-item-row" style="background: rgba(249, 115, 22, 0.05);" onclick="app.rollCheck(${escapeInlineArgument(`${lorePrefix}${l.name}`)}, ${l.total})">
+        <div class="skill-item-row" style="background: rgba(249, 115, 22, 0.05);" onclick="app.rollCheck(${escapeInlineArgument(`${lorePrefix}${locLoreName}`)}, ${l.total})">
           <span class="teml-circle t">${rankInitial}</span>
           <span class="skill-roll-val">${PF2E_ENGINE.formatMod(l.total)}</span>
-          <span class="skill-name-text">${lorePrefix}${escapeHtml(l.name)}</span>
+          <span class="skill-name-text">${lorePrefix}${escapeHtml(locLoreName)}</span>
           <span onclick="event.stopPropagation(); app.removeLoreSkill(${idx})" style="color:var(--pb-text-dim); font-size:10px;">✕</span>
         </div>
       `;
@@ -299,31 +669,49 @@ class PathbuilderApp {
 
   // ABA DE ARMAS
   renderWeaponsTab() {
+    const locale = this.getLocale();
+    const isEn = locale === "en";
+    const isEs = locale === "es";
     const container = document.getElementById("weaponsList");
     if (!this.calc.strikes || this.calc.strikes.length === 0) {
-      container.innerHTML = `<div style="color:var(--pb-text-muted); text-align:center; padding:30px;">Nenhuma arma equipada. Clique em 'Adicionar Arma' para escolher no compêndio!</div>`;
+      container.innerHTML = `<div style="color:var(--pb-text-muted); text-align:center; padding:30px;">${isEn ? "No weapon equipped. Click 'Add Weapon' to choose from the compendium!" : isEs ? "¡Ninguna arma equipada. Haz clic en 'Añadir Arma' para elegir en el compendio!" : "Nenhuma arma equipada. Clique em 'Adicionar Arma' para escolher no compêndio!"}</div>`;
       return;
     }
 
+    const catMap = {
+      "Simples": isEn ? "Simple" : isEs ? "Simple" : "Simples",
+      "Marcial": isEn ? "Martial" : isEs ? "Marcial" : "Marcial",
+      "Avançada": isEn ? "Advanced" : isEs ? "Avanzada" : "Avançada",
+      "Desarmado": isEn ? "Unarmed" : isEs ? "Desarmado" : "Desarmado"
+    };
+
     container.innerHTML = this.calc.strikes.map((s, idx) => {
-       const traitsHtml = (s.traits || []).map(t => `<span class="trait-tag">${escapeHtml(t)}</span>`).join('');
+      const locName = this.localizeItemName(s.name, locale);
+      const locCategory = catMap[s.category] || s.category;
+      const traitsHtml = (s.traits || []).map(t => `<span class="trait-tag">${escapeHtml(this.localizeTrait(t, locale))}</span>`).join('');
+      const atkLabel = isEn ? "Attack (MAP):" : isEs ? "Ataque (MAP):" : "Ataque (MAP):";
+      const dmgLabel = isEn ? "💥 Damage:" : isEs ? "💥 Daño:" : "💥 Dano:";
+      const firstAtk = isEn ? "1st Attack" : isEs ? "1º Ataque" : "1º Ataque";
+      const secondAtk = isEn ? "2nd Attack MAP" : isEs ? "2º Ataque MAP" : "2º Ataque MAP";
+      const thirdAtk = isEn ? "3rd Attack MAP" : isEs ? "3º Ataque MAP" : "3º Ataque MAP";
+
       return `
         <div class="strike-card" style="border-left-color: var(--pb-orange); background: var(--pb-bg-panel);">
           <div class="strike-header">
-             <div style="font-weight:bold; font-size:14px; color:#fff;">🗡️ ${escapeHtml(s.name)} <span style="font-size:11px; color:var(--pb-text-muted);">(${escapeHtml(s.category)})</span></div>
+             <div style="font-weight:bold; font-size:14px; color:#fff;">🗡️ ${escapeHtml(locName)} <span style="font-size:11px; color:var(--pb-text-muted);">(${escapeHtml(locCategory)})</span></div>
             <button onclick="app.removeWeapon(${idx})" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer;">🗑️</button>
           </div>
           
           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin: 6px 0;">
             <div class="map-buttons-row">
-              <span style="font-size:11px; color:var(--pb-text-muted);">Ataque (MAP):</span>
-               <button class="btn-strike-roll" onclick="app.rollStrike(${escapeInlineArgument(`${s.name} [1º Ataque]`)}, ${s.map[0]})">${PF2E_ENGINE.formatMod(s.map[0])}</button>
-               <button class="btn-strike-roll" onclick="app.rollStrike(${escapeInlineArgument(`${s.name} [2º Ataque MAP]`)}, ${s.map[1]})">${PF2E_ENGINE.formatMod(s.map[1])}</button>
-               <button class="btn-strike-roll" onclick="app.rollStrike(${escapeInlineArgument(`${s.name} [3º Ataque MAP]`)}, ${s.map[2]})">${PF2E_ENGINE.formatMod(s.map[2])}</button>
+              <span style="font-size:11px; color:var(--pb-text-muted);">${atkLabel}</span>
+               <button class="btn-strike-roll" onclick="app.rollStrike(${escapeInlineArgument(`${locName} [${firstAtk}]`)}, ${s.map[0]})">${PF2E_ENGINE.formatMod(s.map[0])}</button>
+               <button class="btn-strike-roll" onclick="app.rollStrike(${escapeInlineArgument(`${locName} [${secondAtk}]`)}, ${s.map[1]})">${PF2E_ENGINE.formatMod(s.map[1])}</button>
+               <button class="btn-strike-roll" onclick="app.rollStrike(${escapeInlineArgument(`${locName} [${thirdAtk}]`)}, ${s.map[2]})">${PF2E_ENGINE.formatMod(s.map[2])}</button>
             </div>
 
-             <button class="strike-damage-box" onclick="app.rollDamage(${escapeInlineArgument(s.name)}, ${escapeInlineArgument(s.damageFormatted)})">
-               💥 Dano: ${escapeHtml(s.damageFormatted)}
+             <button class="strike-damage-box" onclick="app.rollDamage(${escapeInlineArgument(locName)}, ${escapeInlineArgument(s.damageFormatted)})">
+               ${dmgLabel} ${escapeHtml(s.damageFormatted)}
             </button>
           </div>
 
@@ -337,51 +725,58 @@ class PathbuilderApp {
   renderDefenseTab() {
     const d = document.getElementById("defenseDetails");
     if (!d) return;
-    const arm = this.character.equippedArmor || { name: "Unarmored", acBonus: 0, dexCap: 5 };
+    const locale = this.getLocale();
+    const isEn = locale === "en";
+    const isEs = locale === "es";
+
+    const arm = this.character.equippedArmor || { name: isEn ? "Unarmored" : "Sem Armadura", acBonus: 0, dexCap: 5 };
     const shield = this.character.equippedShield || null;
     const dexMod = this.calc?.attributes?.dex?.mod || 0;
     const effectiveDex = arm.dexCap !== undefined ? Math.min(dexMod, arm.dexCap) : dexMod;
     const profBonus = (this.character.level || 1) + 2;
 
+    const locArmorName = this.localizeItemName(arm.name, locale);
+    const locShieldName = shield ? this.localizeItemName(shield.name, locale) : (isEn ? "No Shield" : isEs ? "Sin Escudo" : "Sem Escudo");
+
     d.innerHTML = `
       <div class="pb-defense-header-bar">
         <div class="pb-defense-profs-row">
-          <div class="pb-defense-prof-item"><span class="picker-prof-badge t">T</span> Light Armor</div>
-          <div class="pb-defense-prof-item"><span class="picker-prof-badge u">U</span> Medium Armor</div>
-          <div class="pb-defense-prof-item"><span class="picker-prof-badge u">U</span> Heavy Armor</div>
-          <div class="pb-defense-prof-item"><span class="picker-prof-badge t">T</span> Unarmored</div>
+          <div class="pb-defense-prof-item"><span class="picker-prof-badge t">T</span> ${isEn ? "Light Armor" : isEs ? "Armadura Ligera" : "Armadura Leve"}</div>
+          <div class="pb-defense-prof-item"><span class="picker-prof-badge u">U</span> ${isEn ? "Medium Armor" : isEs ? "Armadura Intermedia" : "Armadura Média"}</div>
+          <div class="pb-defense-prof-item"><span class="picker-prof-badge u">U</span> ${isEn ? "Heavy Armor" : isEs ? "Armadura Pesada" : "Armadura Pesada"}</div>
+          <div class="pb-defense-prof-item"><span class="picker-prof-badge t">T</span> ${isEn ? "Unarmored" : isEs ? "Sin Armadura" : "Sem Armadura"}</div>
         </div>
         <div class="pb-defense-ac-breakdown">
-          <span>Base <strong>10</strong></span>
-          <span>Item <strong>+${arm.acBonus || 0}</strong></span>
-          <span>Dex <strong>+${effectiveDex}</strong></span>
-          <span>Proficiency <strong>+${profBonus}</strong></span>
+          <span>${isEn ? "Base" : "Base"} <strong>10</strong></span>
+          <span>${isEn ? "Item" : "Item"} <strong>+${arm.acBonus || 0}</strong></span>
+          <span>${isEn ? "Dex" : "Des"} <strong>+${effectiveDex}</strong></span>
+          <span>${isEn ? "Proficiency" : isEs ? "Competencia" : "Proficiência"} <strong>+${profBonus}</strong></span>
         </div>
         <div class="pb-defense-actions-row">
-          <button class="pb-defense-btn" onclick="app.openPicker('armor')">Stow Additional Armor</button>
-          <button class="pb-defense-btn" onclick="app.openPicker('shield')">Stow Additional Shield</button>
-          <button class="pb-defense-btn" onclick="app.printOfficialPdf()">Print</button>
+          <button class="pb-defense-btn" onclick="app.openPicker('armor')">${isEn ? "Stow Additional Armor" : isEs ? "Guardar Armadura Adicional" : "Guardar Armadura Adicional"}</button>
+          <button class="pb-defense-btn" onclick="app.openPicker('shield')">${isEn ? "Stow Additional Shield" : isEs ? "Guardar Escudo Adicional" : "Guardar Escudo Adicional"}</button>
+          <button class="pb-defense-btn" onclick="app.printOfficialPdf()">${isEn ? "Print" : isEs ? "Imprimir" : "Imprimir"}</button>
         </div>
       </div>
 
       <!-- EQUIPPED ARMOR CARD -->
       <div class="pb-defense-slot-card">
         <div class="pb-defense-slot-actions">
-          <button class="pb-slot-btn" onclick="app.openPicker('armor')">Change</button>
-          <button class="pb-slot-btn" onclick="alert('Opções de Armadura: ' + (app.character.equippedArmor?.name || 'Unarmored'))">Options</button>
-          <button class="pb-slot-btn" onclick="alert('Runas de Armadura: Nenhuma runa gravada.')">Runes</button>
-          <button class="pb-slot-btn" onclick="app.stowArmor()">Stow</button>
+          <button class="pb-slot-btn" onclick="app.openPicker('armor')">${isEn ? "Change" : isEs ? "Cambiar" : "Trocar"}</button>
+          <button class="pb-slot-btn" onclick="alert('${isEn ? "Armor Options" : "Opções de Armadura"}: ' + (app.character.equippedArmor?.name || 'Unarmored'))">${isEn ? "Options" : isEs ? "Opciones" : "Opções"}</button>
+          <button class="pb-slot-btn" onclick="alert('${isEn ? "Armor Runes: None etched." : "Runas de Armadura: Nenhuma runa gravada."}')">${isEn ? "Runes" : isEs ? "Runas" : "Runas"}</button>
+          <button class="pb-slot-btn" onclick="app.stowArmor()">${isEn ? "Stow" : isEs ? "Guardar" : "Guardar"}</button>
         </div>
         <div class="pb-defense-slot-content">
           <div style="display:flex; align-items:center; gap:8px;">
             <span class="picker-prof-badge t">T</span>
-            <span style="font-size:15px; color:#ffffff; font-weight:800;">${escapeHtml(arm.name || 'Unarmored')}</span>
+            <span style="font-size:15px; color:#ffffff; font-weight:800;">${escapeHtml(locArmorName)}</span>
           </div>
           <div style="color: #94a3b8; font-size:13px;">
-            👕 Item Bonus +${arm.acBonus || 0}
+            👕 ${isEn ? "Item Bonus" : isEs ? "Bonificador de Objeto" : "Bônus de Item"} +${arm.acBonus || 0}
           </div>
           <div style="color: #94a3b8; font-size:13px;">
-            ⬆️ Dex Cap ${arm.dexCap !== undefined ? arm.dexCap : 5}
+            ⬆️ ${isEn ? "Dex Cap" : isEs ? "Límite de Des" : "Limite de Des"} ${arm.dexCap !== undefined ? arm.dexCap : 5}
           </div>
         </div>
       </div>
@@ -389,26 +784,26 @@ class PathbuilderApp {
       <!-- EQUIPPED SHIELD CARD -->
       <div class="pb-defense-slot-card">
         <div class="pb-defense-slot-actions">
-          <button class="pb-slot-btn" onclick="app.openPicker('shield')">Change</button>
-          ${shield ? `<button class="pb-slot-btn" onclick="app.stowShield()">Stow</button>` : ''}
+          <button class="pb-slot-btn" onclick="app.openPicker('shield')">${isEn ? "Change" : isEs ? "Cambiar" : "Trocar"}</button>
+          ${shield ? `<button class="pb-slot-btn" onclick="app.stowShield()">${isEn ? "Stow" : isEs ? "Guardar" : "Guardar"}</button>` : ''}
         </div>
         <div class="pb-defense-slot-content">
           ${shield ? `
             <div style="display:flex; align-items:center; gap:8px;">
               <span class="picker-prof-badge t">T</span>
-              <span style="font-size:15px; color:#ffffff; font-weight:800;">${escapeHtml(shield.name)}</span>
+              <span style="font-size:15px; color:#ffffff; font-weight:800;">${escapeHtml(locShieldName)}</span>
             </div>
             <div style="color: #94a3b8; font-size:13px;">
-              🛡️ Hardness ${shield.hardness || 3}
+              🛡️ ${isEn ? "Hardness" : isEs ? "Dureza" : "Dureza"} ${shield.hardness || 3}
             </div>
             <div style="color: #94a3b8; font-size:13px;">
-              💚 Max HP ${shield.maxHp || 12} (BT ${shield.bt || 6})
+              💚 ${isEn ? "Max HP" : isEs ? "PG Máx" : "PV Máx"} ${shield.maxHp || 12} (${isEn ? "BT" : isEs ? "LCR" : "LQ"} ${shield.bt || 6})
             </div>
             <div style="color: #38bdf8; font-size:13px; font-weight:800;">
-              +${shield.acBonus || 2} AC (Raise Shield)
+              +${shield.acBonus || 2} ${isEn ? "AC (Raise Shield)" : isEs ? "CA (Alzar Escudo)" : "CA (Erguer Escudo)"}
             </div>
           ` : `
-            <div style="color: #94a3b8; font-size:14px; font-weight:700;">No Shield</div>
+            <div style="color: #94a3b8; font-size:14px; font-weight:700;">${isEn ? "No Shield" : isEs ? "Sin Escudo" : "Sem Escudo"}</div>
           `}
         </div>
       </div>
@@ -429,6 +824,10 @@ class PathbuilderApp {
   renderGearTab() {
     const list = document.getElementById("gearList");
     if (!list) return;
+    const locale = this.getLocale();
+    const isEn = locale === "en";
+    const isEs = locale === "es";
+
     const inv = this.character.inventory || [];
     const coins = this.character.coins || { pp: 0, gp: 1, sp: 5, cp: 0 };
     
@@ -438,40 +837,43 @@ class PathbuilderApp {
     const isEncumbered = this.calc?.bulk?.isEncumbered ?? false;
 
     const itemsGridHtml = inv.length === 0 ? `
-      <div style="grid-column: 1 / -1; color:#64748b; text-align:center; padding: 24px;">Nenhum item no inventário. Clique em 'Add Gear' para comprar ou adicionar itens.</div>
-    ` : inv.map((item, idx) => `
-      <div class="pb-gear-item-box">
-        <button class="pb-gear-qty-btn" onclick="app.adjustItemQty(${idx}, -1)" title="Diminuir quantidade">-</button>
-        <span class="pb-gear-qty-text">Qty ${item.qty || 1}</span>
-        <button class="pb-gear-qty-btn" onclick="app.adjustItemQty(${idx}, 1)" title="Aumentar quantidade">+</button>
-        <span class="pb-gear-name-text" title="${escapeHtml(item.name)}">${escapeHtml(item.name)}</span>
-        <button class="pb-gear-remove-btn" onclick="app.removeInventoryItem(${idx})" title="Remover item">✕</button>
-      </div>
-    `).join('');
+      <div style="grid-column: 1 / -1; color:#64748b; text-align:center; padding: 24px;">${isEn ? "No items in inventory. Click 'Add Gear' to purchase or add gear." : isEs ? "No hay objetos en el inventario. Haz clic en 'Añadir Equipo' para comprar o añadir equipo." : "Nenhum item no inventário. Clique em 'Add Gear' para comprar ou adicionar itens."}</div>
+    ` : inv.map((item, idx) => {
+      const locItemName = this.localizeItemName(item.name, locale);
+      return `
+        <div class="pb-gear-item-box">
+          <button class="pb-gear-qty-btn" onclick="app.adjustItemQty(${idx}, -1)" title="${isEn ? "Decrease quantity" : "Diminuir quantidade"}">-</button>
+          <span class="pb-gear-qty-text">${isEn ? "Qty" : isEs ? "Cant" : "Qtd"} ${item.qty || 1}</span>
+          <button class="pb-gear-qty-btn" onclick="app.adjustItemQty(${idx}, 1)" title="${isEn ? "Increase quantity" : "Aumentar quantidade"}>+</button>
+          <span class="pb-gear-name-text" title="${escapeHtml(locItemName)}">${escapeHtml(locItemName)}</span>
+          <button class="pb-gear-remove-btn" onclick="app.removeInventoryItem(${idx})" title="${isEn ? "Remove item" : "Remover item"}">✕</button>
+        </div>
+      `;
+    }).join('');
 
     list.innerHTML = `
       <div class="pb-gear-top-bar">
         <div class="pb-gear-coins-pillbox">
-          <div class="pb-gear-coin-item" onclick="app.promptEditCoin('pp')" style="cursor:pointer;" title="Clique para editar"><span class="coin-dot pp"></span> Platinum ${coins.pp || 0}</div>
-          <div class="pb-gear-coin-item" onclick="app.promptEditCoin('gp')" style="cursor:pointer;" title="Clique para editar"><span class="coin-dot gp"></span> Gold ${coins.gp || 0}</div>
-          <div class="pb-gear-coin-item" onclick="app.promptEditCoin('sp')" style="cursor:pointer;" title="Clique para editar"><span class="coin-dot sp"></span> Silver ${coins.sp || 0}</div>
-          <div class="pb-gear-coin-item" onclick="app.promptEditCoin('cp')" style="cursor:pointer;" title="Clique para editar"><span class="coin-dot cp"></span> Copper ${coins.cp || 0}</div>
+          <div class="pb-gear-coin-item" onclick="app.promptEditCoin('pp')" style="cursor:pointer;" title="${isEn ? "Click to edit" : "Clique para editar"}"><span class="coin-dot pp"></span> ${isEn ? "Platinum" : isEs ? "Platino" : "Platina"} ${coins.pp || 0}</div>
+          <div class="pb-gear-coin-item" onclick="app.promptEditCoin('gp')" style="cursor:pointer;" title="${isEn ? "Click to edit" : "Clique para editar"}"><span class="coin-dot gp"></span> ${isEn ? "Gold" : isEs ? "Oro" : "Ouro"} ${coins.gp || 0}</div>
+          <div class="pb-gear-coin-item" onclick="app.promptEditCoin('sp')" style="cursor:pointer;" title="${isEn ? "Click to edit" : "Clique para editar"}"><span class="coin-dot sp"></span> ${isEn ? "Silver" : isEs ? "Plata" : "Prata"} ${coins.sp || 0}</div>
+          <div class="pb-gear-coin-item" onclick="app.promptEditCoin('cp')" style="cursor:pointer;" title="${isEn ? "Click to edit" : "Clique para editar"}"><span class="coin-dot cp"></span> ${isEn ? "Copper" : isEs ? "Cobre" : "Cobre"} ${coins.cp || 0}</div>
         </div>
         <div class="pb-gear-bulk-status">
-          Total Bulk <strong>${totalBulk}</strong> ${isEncumbered ? '<span style="color:#ef4444; font-weight:900;">Encumbered</span>' : 'Unencumbered'} (Enc: ${encumberedLimit}; Max: ${maxBulk})
+          ${isEn ? "Total Bulk" : isEs ? "Volumen Total" : "Carga Total"} <strong>${totalBulk}</strong> ${isEncumbered ? `<span style="color:#ef4444; font-weight:900;">${isEn ? "Encumbered" : isEs ? "Sobrecargado" : "Sobrecarregado"}</span>` : (isEn ? "Unencumbered" : isEs ? "Sin Sobrecarga" : "Desimpedido")} (${isEn ? "Enc" : "Sob"}: ${encumberedLimit}; Max: ${maxBulk})
         </div>
         <div class="pb-gear-actions-bar">
-          <button class="pb-defense-btn" onclick="app.openPicker('gear')">Add Gear</button>
-          <button class="pb-defense-btn" onclick="app.addContainerPrompt()">Add Container</button>
-          <button class="pb-defense-btn" onclick="app.openPicker('formula')">Add Formula</button>
-          <button class="pb-defense-btn" onclick="app.printOfficialPdf()">Print</button>
+          <button class="pb-defense-btn" onclick="app.openPicker('gear')">${isEn ? "Add Gear" : isEs ? "Añadir Equipo" : "Adicionar Item"}</button>
+          <button class="pb-defense-btn" onclick="app.addContainerPrompt()">${isEn ? "Add Container" : isEs ? "Añadir Contenedor" : "Adicionar Recipiente"}</button>
+          <button class="pb-defense-btn" onclick="app.openPicker('formula')">${isEn ? "Add Formula" : isEs ? "Añadir Fórmula" : "Adicionar Fórmula"}</button>
+          <button class="pb-defense-btn" onclick="app.printOfficialPdf()">${isEn ? "Print" : isEs ? "Imprimir" : "Imprimir"}</button>
         </div>
       </div>
 
       <!-- MAIN INVENTORY SECTION -->
       <div class="pb-inventory-section">
         <div class="pb-inventory-section-title">
-          <span>Main Inventory</span>
+          <span>${isEn ? "Main Inventory" : isEs ? "Inventario Principal" : "Inventário Principal"}</span>
         </div>
         <div class="pb-inventory-grid">
           ${itemsGridHtml}
@@ -481,10 +883,10 @@ class PathbuilderApp {
       <!-- CONTAINERS SECTIONS -->
       <div class="pb-inventory-section">
         <div class="pb-inventory-section-title">
-          <span>Unnamed Container</span>
-          <button class="pb-slot-btn" onclick="alert('Editar Container')">Edit</button>
+          <span>${isEn ? "Unnamed Container" : isEs ? "Contenedor Sin Nombre" : "Recipiente Sem Nome"}</span>
+          <button class="pb-slot-btn" onclick="alert('${isEn ? "Edit Container" : "Editar Recipiente"}')">${isEn ? "Edit" : isEs ? "Editar" : "Editar"}</button>
         </div>
-        <div style="font-size:12px; color:#64748b; font-style:italic;">Vazio</div>
+        <div style="font-size:12px; color:#64748b; font-style:italic;">${isEn ? "Empty" : isEs ? "Vacío" : "Vazio"}</div>
       </div>
     `;
   }
@@ -758,48 +1160,52 @@ class PathbuilderApp {
   // ABA DE MASCOTES / COMPANHEIRO ANIMAL
   renderPetsTab() {
     const p = document.getElementById("petsContent");
+    const locale = this.getLocale();
+    const isEn = locale === "en";
+    const isEs = locale === "es";
+
     const pets = this.character.pets || (this.character.id === "Joao_Ranger" ? [{
       name: "Bóreas — O Bode Negro das Montanhas",
-      type: "Companheiro Animal • Carneiro Montês",
+      type: isEn ? "Animal Companion • Mountain Ram" : isEs ? "Compañero Animal • Carnero Montés" : "Companheiro Animal • Carneiro Montês",
       hpMax: 18,
       hpCurrent: 18,
       ac: 16,
       speed: "35ft",
       perception: "+5",
-      attacks: [{ name: "Chifrada de Guerra", bonus: "+6", damage: "1d6+3 Impacto [Empurrão]" }],
-      supportBenefit: "Deixa o oponente Desprevenido (-2 CA) contra as flechas de João.",
-      commandAction: "Concede 2 ações para Bóreas se mover e chifrar."
+      attacks: [{ name: isEn ? "War Horns" : isEs ? "Cornada de Guerra" : "Chifrada de Guerra", bonus: "+6", damage: isEn ? "1d6+3 Bludgeoning [Shove]" : "1d6+3 Impacto [Empurrão]" }],
+      supportBenefit: isEn ? "Leaves opponent Off-Guard (-2 AC) against attacks." : "Deixa o oponente Desprevenido (-2 CA) contra as flechas de João.",
+      commandAction: isEn ? "Grants 2 actions to move and strike." : "Concede 2 ações para Bóreas se mover e chifrar."
     }] : []);
 
     const petCardsHtml = pets.length === 0 ? `
       <div style="color:var(--pb-text-muted); text-align:center; padding:30px;">
-        <p>Nenhum mascote ou companheiro animal associado.</p>
-        <button class="btn-pb-action" onclick="app.openAddPetModal()" style="margin-top:10px;">➕ Adicionar Companheiro / Familiar / Montaria</button>
+        <p>${isEn ? "No animal companion or familiar associated." : isEs ? "Ninguna mascota o compañero animal asociado." : "Nenhum mascote ou companheiro animal associado."}</p>
+        <button class="btn-pb-action" onclick="app.openAddPetModal()" style="margin-top:10px;">➕ ${isEn ? "Add Companion / Familiar / Mount" : isEs ? "Añadir Compañero / Familiar / Montura" : "Adicionar Companheiro / Familiar / Montaria"}</button>
       </div>
     ` : `
       <div style="margin-bottom:12px; display:flex; justify-content:flex-end;">
-        <button class="btn-pb-action" onclick="app.openAddPetModal()">➕ Adicionar Outro Mascote</button>
+        <button class="btn-pb-action" onclick="app.openAddPetModal()">➕ ${isEn ? "Add Another Pet" : isEs ? "Añadir Otra Mascota" : "Adicionar Outro Mascote"}</button>
       </div>
       ${pets.map((pet, idx) => `
         <div class="strike-card" style="border-left-color: var(--pb-orange); background: var(--pb-bg-panel); margin-bottom:12px;">
           <div class="strike-header">
-            <div style="font-weight:bold; color:var(--pb-orange); font-size:15px;">🐾 ${escapeHtml(pet.name)}</div>
-            <button onclick="app.removePet(${idx})" title="Remover Mascote" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer; font-size:14px;">🗑️</button>
+            <div style="font-weight:bold; color:var(--pb-orange); font-size:15px;">🐾 ${escapeHtml(this.localizeItemName(pet.name, locale))}</div>
+            <button onclick="app.removePet(${idx})" title="${isEn ? "Remove Pet" : "Remover Mascote"}" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer; font-size:14px;">🗑️</button>
           </div>
-          <div style="font-size:11px; color:var(--pb-text-muted); margin-bottom:8px;">${escapeHtml(pet.type || "Companheiro")}</div>
+          <div style="font-size:11px; color:var(--pb-text-muted); margin-bottom:8px;">${escapeHtml(pet.type || (isEn ? "Companion" : "Companheiro"))}</div>
           <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:6px; margin-bottom:10px;">
             <div class="vital-box">
-              <span class="vital-label">PV</span>
+              <span class="vital-label">${isEn ? "HP" : isEs ? "PG" : "PV"}</span>
               <span class="vital-value" style="color:var(--hp-green);">${escapeHtml(pet.hpCurrent !== undefined ? pet.hpCurrent : pet.hpMax)} / ${escapeHtml(pet.hpMax || 16)}</span>
             </div>
-            <div class="vital-box"><span class="vital-label">CA</span><span class="vital-value" style="color:#60a5fa;">${escapeHtml(pet.ac || 16)}</span></div>
-            <div class="vital-box"><span class="vital-label">Velocidade</span><span class="vital-value">${escapeHtml(pet.speed || "35ft")}</span></div>
-            <div class="vital-box"><span class="vital-label">Percepção</span><span class="vital-value">${escapeHtml(pet.perception || "+5")}</span></div>
+            <div class="vital-box"><span class="vital-label">${isEn ? "AC" : "CA"}</span><span class="vital-value" style="color:#60a5fa;">${escapeHtml(pet.ac || 16)}</span></div>
+            <div class="vital-box"><span class="vital-label">${isEn ? "Speed" : isEs ? "Velocidad" : "Velocidade"}</span><span class="vital-value">${escapeHtml(pet.speed || "35ft")}</span></div>
+            <div class="vital-box"><span class="vital-label">${isEn ? "Perception" : isEs ? "Percepción" : "Percepção"}</span><span class="vital-value">${escapeHtml(pet.perception || "+5")}</span></div>
           </div>
           <div style="font-size:12px; line-height:1.6;">
-            ${(pet.attacks || []).map(atk => `• <strong>Ataque ${escapeHtml(atk.name)}:</strong> ${escapeHtml(atk.bonus)} no acerto | <strong>${escapeHtml(atk.damage)}</strong>.<br>`).join('')}
-            ${pet.supportBenefit ? `• <strong>Benefício de Suporte:</strong> ${escapeHtml(pet.supportBenefit)}<br>` : ''}
-            ${pet.commandAction ? `• <strong>Comandar Animal [1 Ação]:</strong> ${escapeHtml(pet.commandAction)}` : ''}
+            ${(pet.attacks || []).map(atk => `• <strong>${isEn ? "Attack" : isEs ? "Ataque" : "Ataque"} ${escapeHtml(atk.name)}:</strong> ${escapeHtml(atk.bonus)} | <strong>${escapeHtml(atk.damage)}</strong>.<br>`).join('')}
+            ${pet.supportBenefit ? `• <strong>${isEn ? "Support Benefit:" : isEs ? "Beneficio de Soporte:" : "Benefício de Suporte:"}</strong> ${escapeHtml(pet.supportBenefit)}<br>` : ''}
+            ${pet.commandAction ? `• <strong>${isEn ? "Command Animal [1 Action]:" : isEs ? "Comandar Animal [1 Acción]:" : "Comandar Animal [1 Ação]:"}</strong> ${escapeHtml(pet.commandAction)}` : ''}
           </div>
         </div>
       `).join('')}
@@ -845,36 +1251,47 @@ class PathbuilderApp {
   renderFeatsTab() {
     const list = document.getElementById("featsFullList");
     const feats = this.character.feats || [];
-    list.innerHTML = feats.length === 0 ? `<div style="color:var(--pb-text-muted); text-align:center; padding:20px;">Nenhum talento selecionado. Escolha talentos na árvore de evolução ou no Compêndio.</div>` : feats.map((f, idx) => `
-      <div class="strike-card" style="border-left-color: var(--pb-teml-e);">
-        <div class="strike-header">
-          <span style="font-weight:bold; color:var(--pb-orange);">${escapeHtml(f.name)} <span class="trait-tag">${escapeHtml(f.type || f.category || "Talento")}</span></span>
-          <button onclick="app.removeFeat(${idx})" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer;">🗑️</button>
+    const locale = this.getLocale();
+    const isEn = locale === "en";
+    const isEs = locale === "es";
+
+    list.innerHTML = feats.length === 0 ? `<div style="color:var(--pb-text-muted); text-align:center; padding:20px;">${isEn ? "No feats selected. Choose feats in the evolution tree or compendium." : isEs ? "No hay dotes seleccionadas. Elige dotes en el árbol de evolución o en el compendio." : "Nenhum talento selecionado. Escolha talentos na árvore de evolução ou no Compêndio."}</div>` : feats.map((f, idx) => {
+      const locName = this.localizeItemName(f.name, locale);
+      return `
+        <div class="strike-card" style="border-left-color: var(--pb-teml-e);">
+          <div class="strike-header">
+            <span style="font-weight:bold; color:var(--pb-orange);">${escapeHtml(locName)} <span class="trait-tag">${escapeHtml(f.type || f.category || (isEn ? "Feat" : isEs ? "Dote" : "Talento"))}</span></span>
+            <button onclick="app.removeFeat(${idx})" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer;">🗑️</button>
+          </div>
+          <div style="font-size:12px; color:var(--pb-text); margin-top:4px;">${escapeHtml(f.description || "")}</div>
         </div>
-        <div style="font-size:12px; color:var(--pb-text); margin-top:4px;">${escapeHtml(f.description || "")}</div>
-      </div>
-    `).join('');
+      `;
+    }).join('');
   }
 
   // ABA DE AÇÕES
   renderActionsTab() {
     const list = document.getElementById("actionsFullList");
+    const locale = this.getLocale();
+    const isEn = locale === "en";
+    const isEs = locale === "es";
+
     const defaultActions = [
-      { name: "Golpear (Strike)", cost: "1 Ação", desc: "Desfere um ataque corpo a corpo ou à distância com sua arma.", type: "Básica" },
-      { name: "Movimentar-se (Stride)", cost: "1 Ação", desc: "Move-se até sua Velocidade em terra.", type: "Básica" },
-      { name: "Passo de Ajuste (Step)", cost: "1 Ação", desc: "Move-se 5 pés sem provocar reações como Golpe Reativo.", type: "Básica" },
-      { name: "Erguer Escudo (Raise a Shield)", cost: "1 Ação", desc: "Concede +2 na CA de circunstância até o início do próximo turno.", type: "Básica" },
-      { name: "Buscar Cobertura (Take Cover)", cost: "1 Ação", desc: "Melhora o bônus de cobertura para +2 ou +4 na CA e salvamentos de Reflexos.", type: "Básica" },
-      { name: "Desmoralizar (Demoralize)", cost: "1 Ação", desc: "Teste de Intimidação vs Vontade para deixar o alvo Aterrorizado 1.", type: "Perícia" },
-      { name: "Derrubar (Trip)", cost: "1 Ação", desc: "Teste de Atletismo vs Reflexos para derrubar o oponente Caído no chão.", type: "Perícia" },
-      { name: "Agarrar (Grapple)", cost: "1 Ação", desc: "Teste de Atletismo vs Fortitude para imobilizar o oponente.", type: "Perícia" },
-      { name: "Tratar Ferimentos (Treat Wounds)", cost: "10 Minutos", desc: "Medicina fora de combate para curar grandes quantias de PV.", type: "Exploração" }
+      { name: isEn ? "Strike" : isEs ? "Golpear (Strike)" : "Golpear (Strike)", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Make a melee or ranged attack with your weapon." : "Desfere um ataque corpo a corpo ou à distância com sua arma.", type: isEn ? "Basic" : "Básica" },
+      { name: isEn ? "Stride" : isEs ? "Zancada (Stride)" : "Movimentar-se (Stride)", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Move up to your Speed." : "Move-se até sua Velocidade em terra.", type: isEn ? "Basic" : "Básica" },
+      { name: isEn ? "Step" : isEs ? "Paso (Step)" : "Passo de Ajuste (Step)", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Carefully move 5 feet without triggering reactions." : "Move-se 5 pés sem provocar reações como Golpe Reativo.", type: isEn ? "Basic" : "Básica" },
+      { name: isEn ? "Raise a Shield" : isEs ? "Alzar Escudo (Raise a Shield)" : "Erguer Escudo (Raise a Shield)", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Gain a +2 circumstance bonus to AC until the start of your next turn." : "Concede +2 na CA de circunstância até o início do próximo turno.", type: isEn ? "Basic" : "Básica" },
+      { name: isEn ? "Take Cover" : isEs ? "Ponerse a Cubierto (Take Cover)" : "Buscar Cobertura (Take Cover)", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Gain or improve cover bonus to AC and Reflex saves." : "Melhora o bônus de cobertura para +2 ou +4 na CA e salvamentos de Reflexos.", type: isEn ? "Basic" : "Básica" },
+      { name: isEn ? "Demoralize" : isEs ? "Desmoralizar (Demoralize)" : "Desmoralizar (Demoralize)", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Intimidation vs Will to make target Frightened 1." : "Teste de Intimidação vs Vontade para deixar o alvo Aterrorizado 1.", type: isEn ? "Skill" : "Perícia" },
+      { name: isEn ? "Trip" : isEs ? "Derribar (Trip)" : "Derrubar (Trip)", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Athletics vs Reflex to knock opponent Prone." : "Teste de Atletismo vs Reflexos para derrubar o oponente Caído no chão.", type: isEn ? "Skill" : "Perícia" },
+      { name: isEn ? "Grapple" : isEs ? "Agarrar (Grapple)" : "Agarrar (Grapple)", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Athletics vs Fortitude to immobilize opponent." : "Teste de Atletismo vs Fortitude para imobilizar o oponente.", type: isEn ? "Skill" : "Perícia" },
+      { name: isEn ? "Treat Wounds" : isEs ? "Tratar Heridas (Treat Wounds)" : "Tratar Ferimentos (Treat Wounds)", cost: isEn ? "10 Minutes" : isEs ? "10 Minutos" : "10 Minutos", desc: isEn ? "Medicine out of combat to heal HP." : "Medicina fora de combate para curar grandes quantias de PV.", type: isEn ? "Exploration" : "Exploração" }
     ];
     const customActions = (this.character.classFeatures || []).concat(this.character.feats || []).map(a => ({
-      name: a.name,
-      cost: a.actions ? `${a.actions} Ação(ões)` : "Especial",
+      name: this.localizeItemName(a.name, locale),
+      cost: a.actions ? `${a.actions} ${isEn ? "Action(s)" : "Ação(ões)"}` : (isEn ? "Special" : "Especial"),
       desc: a.description || "",
-      type: "Classe / Talento"
+      type: isEn ? "Class / Feat" : "Classe / Talento"
     }));
     const allActions = defaultActions.concat(customActions);
 
@@ -882,7 +1299,7 @@ class PathbuilderApp {
       <div class="strike-card" style="border-left-color: var(--pb-orange); margin-bottom:8px;">
         <div class="strike-header">
           <div style="font-weight:bold; color:var(--pb-orange); font-size:13px;">${escapeHtml(act.name)}</div>
-          <span class="trait-tag" style="background:#451a03; color:#fdba74; border-color:#78350f;">${escapeHtml(act.cost || "1 Ação")}</span>
+          <span class="trait-tag" style="background:#451a03; color:#fdba74; border-color:#78350f;">${escapeHtml(act.cost || (isEn ? "1 Action" : "1 Ação"))}</span>
         </div>
         <div style="font-size:12px; color:var(--pb-text); margin-top:4px;">${escapeHtml(act.desc || "")}</div>
       </div>
@@ -1404,6 +1821,7 @@ class PathbuilderApp {
   }
 
   getPickerItems(type) {
+    const sharedCatalogs = window.pathbuilderCatalogs || {};
     if (type === "ancestry") {
       return Object.keys(PF2E_DATA.ancestries).map(k => ({ name: k, type: "Ancestralidade", data: PF2E_DATA.ancestries[k] }));
     }
@@ -1418,6 +1836,9 @@ class PathbuilderApp {
     }
     if (type === "armor") {
       return PF2E_DATA.armors.map(a => ({ name: a.name, type: "Armadura", data: a }));
+    }
+    if (type === "shield") {
+      return (PF2E_DATA.shields || []).map(s => ({ name: s.name, type: "Escudo", data: s }));
     }
     if (type === "heritage") {
       const ancestry = PF2E_DATA.ancestries[this.character?.ancestry];
@@ -1440,16 +1861,16 @@ class PathbuilderApp {
       return (PF2E_DATA.rituals || []).map(r => ({ name: r.name, type: "Ritual", data: r }));
     }
     if (type === "feat") {
-      return (PF2E_DATA.feats || this.getFallbackFeatCatalog()).map(f => ({ name: f.name, type: f.type || "Talento", data: f }));
+      return (sharedCatalogs.feats || PF2E_DATA.feats || this.getFallbackFeatCatalog()).map(f => ({ name: f.name, type: f.type || "Talento", data: f }));
     }
     if (type === "item" || type === "gear") {
-      return (PF2E_DATA.items || []).map(i => ({ name: i.name, type: "Item", data: i }));
+      return (sharedCatalogs.items || PF2E_DATA.items || []).map(i => ({ name: i.name, type: "Item", data: i }));
     }
     if (type === "pet") {
-      return (PF2E_DATA.pets || []).map(p => ({ name: p.name, type: "Mascote", data: p }));
+      return (sharedCatalogs.pets || PF2E_DATA.pets || []).map(p => ({ name: p.name, type: "Mascote", data: p }));
     }
     if (type === "action") {
-      return (PF2E_DATA.actions || []).map(a => ({ name: a.name, type: "Ação", data: a }));
+      return (sharedCatalogs.actions || PF2E_DATA.actions || []).map(a => ({ name: a.name, type: "Ação", data: a }));
     }
     if (type === "formula") {
       return (PF2E_DATA.formulas || []).map(f => ({ name: f.name, type: f.category || "Fórmula", data: f }));
@@ -1539,6 +1960,7 @@ class PathbuilderApp {
       if (!this.character.weapons) this.character.weapons = [];
       this.character.weapons.push({ ...item.data });
     } else if (type === "armor") this.character.equippedArmor = { ...item.data };
+    else if (type === "shield") this.character.equippedShield = { ...item.data, currentHp: item.data.maxHp };
     else if (type === "heritage") this.character.heritage = item.name;
     else if (type === "spell") {
       const compatibility = PF2E_ENGINE.getSpellCompatibility(this.character, item.data);
@@ -1635,6 +2057,7 @@ class PathbuilderApp {
   renderModalLeftList(filterQuery = "") {
     const container = document.getElementById("modalLeftList");
     let items = [];
+    const sharedCatalogs = window.pathbuilderCatalogs || {};
 
     if (this.currentPickerType === "ancestry") {
       items = Object.keys(PF2E_DATA.ancestries).map(k => ({ name: k, type: "Ancestralidade", data: PF2E_DATA.ancestries[k] }));
@@ -1646,13 +2069,23 @@ class PathbuilderApp {
       items = PF2E_DATA.weapons.map(w => ({ name: w.name, type: "Arma", data: w }));
     } else if (this.currentPickerType === "armor") {
       items = PF2E_DATA.armors.map(a => ({ name: a.name, type: "Armadura", data: a }));
+    } else if (this.currentPickerType === "shield") {
+      items = (PF2E_DATA.shields || []).map(s => ({ name: s.name, type: "Escudo", data: s }));
     } else if (this.currentPickerType === "heritage") {
       const ancestry = PF2E_DATA.ancestries[this.character?.ancestry];
       const heritages = (ancestry?.heritages || []).map(name => ({ name, type: "Herança", data: { name, description: "Herança da ancestralidade selecionada." } }));
       const versatile = (PF2E_DATA.versatileHeritages || []).map(h => ({ name: h.name, type: "Herança Versátil", data: h }));
       items = heritages.concat(versatile);
     } else if (this.currentPickerType === "feat") {
-      items = (PF2E_DATA.feats || this.getFallbackFeatCatalog()).map(f => ({ name: f.name, type: f.type || "Talento", data: f }));
+      items = (sharedCatalogs.feats || PF2E_DATA.feats || this.getFallbackFeatCatalog()).map(f => ({ name: f.name, type: f.type || "Talento", data: f }));
+    } else if (this.currentPickerType === "item" || this.currentPickerType === "gear") {
+      items = (sharedCatalogs.items || PF2E_DATA.items || []).map(i => ({ name: i.name, type: "Item", data: i }));
+    } else if (this.currentPickerType === "pet") {
+      items = (sharedCatalogs.pets || PF2E_DATA.pets || []).map(p => ({ name: p.name, type: "Mascote", data: p }));
+    } else if (this.currentPickerType === "action") {
+      items = (sharedCatalogs.actions || PF2E_DATA.actions || []).map(a => ({ name: a.name, type: "Ação", data: a }));
+    } else if (this.currentPickerType === "formula") {
+      items = (PF2E_DATA.formulas || []).map(f => ({ name: f.name, type: f.category || "Fórmula", data: f }));
     } else if (this.currentPickerType === "condition") {
       items = (PF2E_DATA.conditions || this.getConditionCatalog()).map(c => ({ name: c.name, type: "Condição", data: c }));
     } else if (this.currentPickerType === "buff") {
@@ -1728,6 +2161,17 @@ class PathbuilderApp {
     } else if (this.currentPickerType === "feat") {
       if (!this.character.feats) this.character.feats = [];
       this.character.feats.push({ ...item.data });
+    } else if (this.currentPickerType === "shield") {
+      this.character.equippedShield = { ...item.data, currentHp: item.data.maxHp };
+    } else if (this.currentPickerType === "formula") {
+      if (!this.character.formulas) this.character.formulas = [];
+      this.character.formulas.push({ ...item.data, name: item.name });
+    } else if (this.currentPickerType === "pet") {
+      if (!this.character.pets) this.character.pets = [];
+      this.character.pets.push({ ...item.data, name: item.name });
+    } else if (this.currentPickerType === "action") {
+      if (!this.character.actions) this.character.actions = [];
+      this.character.actions.push({ ...item.data, name: item.name });
     } else if (this.currentPickerType === "condition") {
       if (!this.character.conditions) this.character.conditions = [];
       if (!this.character.conditions.some(c => c.name === item.name)) this.character.conditions.push({ name: item.name, value: 1 });
@@ -1947,39 +2391,37 @@ class PathbuilderApp {
 
     const list = this.freeRollDiceList || [];
     let total = 0;
-    const countMap = {};
-
     list.forEach(d => {
       total += d.value;
-      countMap[d.sides] = (countMap[d.sides] || 0) + 1;
     });
 
     if (resultLabel) resultLabel.innerText = "Free Roll";
     if (resultTotal) resultTotal.innerText = `${total}`;
     
-    const formulaParts = Object.keys(countMap).map(s => `${countMap[s]} d${s}`);
-    const formulaStr = formulaParts.join(" + ");
+    const lastRoll = list[list.length - 1];
+    const formulaStr = lastRoll ? `Último resultado: d${lastRoll.sides} (${lastRoll.value}) · Soma: ${total}` : "";
     if (resultBreakdown) resultBreakdown.innerText = formulaStr || "Select dice using the buttons at the top";
 
     if (animContainer) {
-      animContainer.innerHTML = list.map(d => {
-        const isCrit = d.sides === 20 && d.value === 20;
-        const isFumble = d.sides === 20 && d.value === 1;
-        return `
-          <div class="polyhedral-die-wrapper rolling ${isCrit ? 'crit-nat20' : (isFumble ? 'fumble-nat1' : '')}" style="transform: rotate(${d.rot}deg);">
-            ${this.getPolyhedralDieSvg(d.sides, d.value, isCrit, isFumble)}
-          </div>
-        `;
-      }).join('');
+      // A arena mostra somente o dado da última ação; o total continua acumulado.
+      // Isso mantém a leitura 3D clara mesmo após muitas rolagens consecutivas.
+      const d = list[list.length - 1];
+      const isCrit = d && d.sides === 20 && d.value === 20;
+      const isFumble = d && d.sides === 20 && d.value === 1;
+      animContainer.innerHTML = d ? `
+        <div class="polyhedral-die-wrapper rolling ${isCrit ? 'crit-nat20' : (isFumble ? 'fumble-nat1' : '')}" style="transform: rotate(${d.rot}deg);">
+          ${this.getPolyhedralDieSvg(d.sides, d.value, isCrit, isFumble)}
+        </div>
+      ` : '';
     }
 
     // Registra no histórico com timestamp (HH:MM:SS)
     const now = new Date();
     const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
     const logItemTitle = `${timeStr} Your Free Roll: ${total}`;
-    const detailedRolls = list.map(d => `${d.value} d${d.sides}`).join(" + ");
-    
-    this.addDiceLog(logItemTitle, detailedRolls, total, formulaStr, false, false);
+    const detailedRolls = lastRoll ? `Último: ${lastRoll.value} d${lastRoll.sides} · Total acumulado: ${total}` : "";
+
+    this.upsertDiceLog("free-roll", logItemTitle, detailedRolls, total, formulaStr, false, false);
   }
 
   getPolyhedralDieSvg(sides, value, isCrit = false, isFumble = false) {
@@ -2280,6 +2722,28 @@ class PathbuilderApp {
     `).join('');
   }
 
+  upsertDiceLog(key, title, formula, total, breakdown, isCrit = false, isFumble = false) {
+    const existingIndex = this.diceHistory.findIndex(entry => entry.key === key);
+    const time = new Date().toLocaleTimeString();
+    const entry = { key, title, formula, total, breakdown, time, isCrit, isFumble };
+    if (existingIndex >= 0) this.diceHistory.splice(existingIndex, 1);
+    this.diceHistory.unshift(entry);
+    const content = document.getElementById("diceLogContent");
+    if (!content) return;
+    content.innerHTML = this.diceHistory.slice(0, 25).map(item => `
+      <div class="dice-history-item" style="${item.isCrit ? 'border-left-color:#eab308;' : (item.isFumble ? 'border-left-color:#ef4444;' : '')}">
+        <div class="dice-history-info">
+          <div class="dice-history-title">${escapeHtml(item.title)}</div>
+          <div class="dice-history-details">${escapeHtml(item.breakdown || `${item.formula} = ${item.total}`)}</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:16px; font-weight:900; color:${item.isCrit ? '#eab308' : (item.isFumble ? '#ef4444' : '#fff')};">${item.total}</div>
+          <div class="dice-history-time">${escapeHtml(item.time)}</div>
+        </div>
+      </div>
+    `).join('');
+  }
+
   clearDiceLog() {
     this.diceHistory = [];
     const content = document.getElementById("diceLogContent");
@@ -2518,29 +2982,33 @@ class PathbuilderApp {
     let html = "";
 
     // 1. TOPO: PAINEL PRINCIPAL DE ESCOLHAS (ANCESTRY, BACKGROUND, CLASS)
+    const locAncestry = this.localizeItemName(char.ancestry || tLabels.defaultHuman, locale);
+    const locBackground = this.localizeItemName(char.background || tLabels.defaultNoble, locale);
+    const locClass = this.localizeItemName(char.class || tLabels.defaultSwashbuckler, locale);
+
     html += `
       <div class="pb-tree-group-box">
-        <div class="pb-tree-card" onclick="app.openPicker('ancestry')" title="Clique para alterar Ancestralidade">
+        <div class="pb-tree-card" onclick="app.openPicker('ancestry')" title="${isEn ? "Click to change Ancestry" : "Clique para alterar Ancestralidade"}">
           <div class="pb-tree-card-icon">${this.getTreeIconSvg('ancestry')}</div>
           <div class="pb-tree-card-content">
             <div class="pb-tree-card-label">${tLabels.ancestry}</div>
-            <div class="pb-tree-card-value ${!char.ancestry ? 'unselected' : ''}">${escapeHtml(char.ancestry || tLabels.defaultHuman)}</div>
+            <div class="pb-tree-card-value ${!char.ancestry ? 'unselected' : ''}">${escapeHtml(locAncestry)}</div>
           </div>
         </div>
 
-        <div class="pb-tree-card" onclick="app.openPicker('background')" title="Clique para alterar Biografia">
+        <div class="pb-tree-card" onclick="app.openPicker('background')" title="${isEn ? "Click to change Background" : "Clique para alterar Biografia"}">
           <div class="pb-tree-card-icon">${this.getTreeIconSvg('background')}</div>
           <div class="pb-tree-card-content">
             <div class="pb-tree-card-label">${tLabels.background}</div>
-            <div class="pb-tree-card-value ${!char.background ? 'unselected' : ''}">${escapeHtml(char.background || tLabels.defaultNoble)}</div>
+            <div class="pb-tree-card-value ${!char.background ? 'unselected' : ''}">${escapeHtml(locBackground)}</div>
           </div>
         </div>
 
-        <div class="pb-tree-card active" onclick="app.openPicker('class')" title="Clique para alterar Classe">
+        <div class="pb-tree-card active" onclick="app.openPicker('class')" title="${isEn ? "Click to change Class" : "Clique para alterar Classe"}">
           <div class="pb-tree-card-icon">${this.getTreeIconSvg('class')}</div>
           <div class="pb-tree-card-content">
             <div class="pb-tree-card-label">${tLabels.class}</div>
-            <div class="pb-tree-card-value ${!char.class ? 'unselected' : ''}">${escapeHtml(char.class || tLabels.defaultSwashbuckler)}</div>
+            <div class="pb-tree-card-value ${!char.class ? 'unselected' : ''}">${escapeHtml(locClass)}</div>
           </div>
         </div>
       </div>
@@ -2555,11 +3023,11 @@ class PathbuilderApp {
         // Botões rápidos de configuração no Nível 1
         html += `
           <div class="pb-tree-quick-row">
-            <div class="pb-tree-quick-btn" onclick="app.openSetAbilitiesModal(1)" title="Configurar Atributos">
+            <div class="pb-tree-quick-btn" onclick="app.openSetAbilitiesModal(1)" title="${isEn ? "Configure Abilities" : "Configurar Atributos"}">
               ${this.getTreeIconSvg('gear')}
               <span>${tLabels.setAbilities}</span>
             </div>
-            <div class="pb-tree-quick-btn" onclick="app.openSkillTrainingModal()" title="Configurar Treinamento de Perícias">
+            <div class="pb-tree-quick-btn" onclick="app.openSkillTrainingModal()" title="${isEn ? "Configure Skill Training" : "Configurar Treinamento de Perícias"}">
               ${this.getTreeIconSvg('gear')}
               <span>${tLabels.skillTraining}</span>
             </div>
@@ -2567,9 +3035,10 @@ class PathbuilderApp {
         `;
 
         // Heritage
-        const heritageVal = char.heritage || tLabels.defaultVersatileHuman;
+        const rawHeritage = char.heritage || tLabels.defaultVersatileHuman;
+        const heritageVal = this.localizeItemName(rawHeritage, locale);
         html += `
-          <div class="pb-tree-card" onclick="app.openPicker('heritage')" title="Escolher Herança">
+          <div class="pb-tree-card" onclick="app.openPicker('heritage')" title="${isEn ? "Choose Heritage" : "Escolher Herança"}">
             <div class="pb-tree-card-icon">${this.getTreeIconSvg('heritage')}</div>
             <div class="pb-tree-card-content">
               <div class="pb-tree-card-label">${tLabels.heritage}</div>
@@ -2579,9 +3048,10 @@ class PathbuilderApp {
         `;
 
         // General Feat (se humano versátil ou selecionado)
-        const generalFeatVal = prog["1_general_feat"] || (char.feats?.find(f => f.slotId === "1_general_feat" || f.type?.includes("Geral"))?.name || tLabels.defaultFleet);
+        const rawGeneralFeat = prog["1_general_feat"] || (char.feats?.find(f => f.slotId === "1_general_feat" || f.type?.includes("Geral"))?.name || tLabels.defaultFleet);
+        const generalFeatVal = this.localizeItemName(rawGeneralFeat, locale);
         html += `
-          <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '1_general_feat', level: 1, filterType: 'Geral' })" title="Escolher Talento Geral">
+          <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '1_general_feat', level: 1, filterType: 'Geral' })" title="${isEn ? "Choose General Feat" : "Escolher Talento Geral"}">
             <div class="pb-tree-card-icon">${this.getTreeIconSvg('general_feat')}</div>
             <div class="pb-tree-card-content">
               <div class="pb-tree-card-label">${tLabels.generalFeat}</div>
@@ -2591,9 +3061,10 @@ class PathbuilderApp {
         `;
 
         // Ancestry Feat
-        const ancestryFeatVal = prog["1_ancestry_feat"] || (char.feats?.find(f => f.slotId === "1_ancestry_feat" || f.type?.includes("Ancestral"))?.name || tLabels.defaultAmbition);
+        const rawAncestryFeat = prog["1_ancestry_feat"] || (char.feats?.find(f => f.slotId === "1_ancestry_feat" || f.type?.includes("Ancestral"))?.name || tLabels.defaultAmbition);
+        const ancestryFeatVal = this.localizeItemName(rawAncestryFeat, locale);
         html += `
-          <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '1_ancestry_feat', level: 1, filterType: 'Ancestral' })" title="Escolher Talento Ancestral">
+          <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '1_ancestry_feat', level: 1, filterType: 'Ancestral' })" title="${isEn ? "Choose Ancestry Feat" : "Escolher Talento Ancestral"}">
             <div class="pb-tree-card-icon">${this.getTreeIconSvg('ancestry_feat')}</div>
             <div class="pb-tree-card-content">
               <div class="pb-tree-card-label">${tLabels.ancestryFeat}</div>
@@ -2603,9 +3074,10 @@ class PathbuilderApp {
         `;
 
         // Class Feat (Principal)
-        const classFeatVal1 = prog["1_class_feat"] || (char.feats?.find(f => f.slotId === "1_class_feat" || f.type?.includes("Classe"))?.name || tLabels.defaultGoading);
+        const rawClassFeat1 = prog["1_class_feat"] || (char.feats?.find(f => f.slotId === "1_class_feat" || f.type?.includes("Classe"))?.name || tLabels.defaultGoading);
+        const classFeatVal1 = this.localizeItemName(rawClassFeat1, locale);
         html += `
-          <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '1_class_feat', level: 1, filterType: 'Classe' })" title="Escolher Talento de Classe">
+          <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '1_class_feat', level: 1, filterType: 'Classe' })" title="${isEn ? "Choose Class Feat" : "Escolher Talento de Classe"}">
             <div class="pb-tree-card-icon">${this.getTreeIconSvg('class_feat')}</div>
             <div class="pb-tree-card-content">
               <div class="pb-tree-card-label">${tLabels.classFeat}</div>
@@ -2615,9 +3087,10 @@ class PathbuilderApp {
         `;
 
         // Class Feat Secundário / Extra (concedido por Ambição Natural ou Guerreiro)
-        const classFeatVal2 = prog["1_class_feat_extra"] || (char.feats?.find(f => f.slotId === "1_class_feat_extra")?.name || tLabels.defaultParry);
+        const rawClassFeat2 = prog["1_class_feat_extra"] || (char.feats?.find(f => f.slotId === "1_class_feat_extra")?.name || tLabels.defaultParry);
+        const classFeatVal2 = this.localizeItemName(rawClassFeat2, locale);
         html += `
-          <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '1_class_feat_extra', level: 1, filterType: 'Classe' })" title="Escolher Talento de Classe Extra">
+          <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '1_class_feat_extra', level: 1, filterType: 'Classe' })" title="${isEn ? "Choose Extra Class Feat" : "Escolher Talento de Classe Extra"}">
             <div class="pb-tree-card-icon">${this.getTreeIconSvg('class_feat')}</div>
             <div class="pb-tree-card-content">
               <div class="pb-tree-card-label">${tLabels.classFeat}</div>
@@ -2630,12 +3103,13 @@ class PathbuilderApp {
         `;
 
         // Subclasse / Estilo de Classe (ex: Swashbuckler's Style, Cleric's Doctrine, etc.)
-        const className = char.class || tLabels.defaultSwashbuckler;
+        const className = this.localizeItemName(char.class || tLabels.defaultSwashbuckler, locale);
         const subclassHeading = isEn ? `${className}'s Style` : `${className} (${isEs ? 'Estilo / Doctrina' : 'Estilo / Doutrina'})`;
-        const styleVal = char.subclass || tLabels.defaultFencer;
+        const rawStyle = char.subclass || tLabels.defaultFencer;
+        const styleVal = this.localizeItemName(rawStyle, locale);
         html += `
           <div class="pb-tree-section-heading">${escapeHtml(subclassHeading)}</div>
-          <div class="pb-tree-card" onclick="app.promptSubclass()" title="Definir Estilo / Subclasse">
+          <div class="pb-tree-card" onclick="app.promptSubclass()" title="${isEn ? "Set Style / Subclass" : "Definir Estilo / Subclasse"}">
             <div class="pb-tree-card-content" style="padding-left: 2px;">
               <div class="pb-tree-card-label">${tLabels.selectStyle}</div>
               <div class="pb-tree-card-value">${escapeHtml(styleVal)}</div>
@@ -2647,7 +3121,7 @@ class PathbuilderApp {
         if ([5, 10, 15, 20].includes(lvl)) {
           html += `
             <div class="pb-tree-quick-row">
-              <div class="pb-tree-quick-btn" style="grid-column: span 2;" onclick="app.openSetAbilitiesModal(${lvl})" title="Aprimoramento de Atributos">
+              <div class="pb-tree-quick-btn" style="grid-column: span 2;" onclick="app.openSetAbilitiesModal(${lvl})" title="${isEn ? "Ability Boosts" : "Aprimoramento de Atributos"}">
                 ${this.getTreeIconSvg('gear')}
                 <span>${tLabels.setAbilitiesBoosts}</span>
               </div>
@@ -2656,7 +3130,8 @@ class PathbuilderApp {
         }
 
         if (lvl % 2 === 0) {
-          const val = prog[`${lvl}_class_feat`] || (char.feats?.find(f => f.slotId === `${lvl}_class_feat`)?.name || tLabels.unselected);
+          const rawVal = prog[`${lvl}_class_feat`] || (char.feats?.find(f => f.slotId === `${lvl}_class_feat`)?.name || tLabels.unselected);
+          const val = rawVal === tLabels.unselected ? rawVal : this.localizeItemName(rawVal, locale);
           html += `
             <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '${lvl}_class_feat', level: ${lvl}, filterType: 'Classe' })">
               <div class="pb-tree-card-icon">${this.getTreeIconSvg('class_feat')}</div>
@@ -2669,7 +3144,8 @@ class PathbuilderApp {
         }
 
         if (lvl % 2 === 0) {
-          const val = prog[`${lvl}_skill_feat`] || (char.feats?.find(f => f.slotId === `${lvl}_skill_feat`)?.name || tLabels.unselected);
+          const rawVal = prog[`${lvl}_skill_feat`] || (char.feats?.find(f => f.slotId === `${lvl}_skill_feat`)?.name || tLabels.unselected);
+          const val = rawVal === tLabels.unselected ? rawVal : this.localizeItemName(rawVal, locale);
           html += `
             <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '${lvl}_skill_feat', level: ${lvl}, filterType: 'Perícia' })">
               <div class="pb-tree-card-icon">${this.getTreeIconSvg('skill_feat')}</div>
@@ -2682,7 +3158,8 @@ class PathbuilderApp {
         }
 
         if ([3, 7, 11, 15, 19].includes(lvl)) {
-          const val = prog[`${lvl}_general_feat`] || (char.feats?.find(f => f.slotId === `${lvl}_general_feat`)?.name || tLabels.unselected);
+          const rawVal = prog[`${lvl}_general_feat`] || (char.feats?.find(f => f.slotId === `${lvl}_general_feat`)?.name || tLabels.unselected);
+          const val = rawVal === tLabels.unselected ? rawVal : this.localizeItemName(rawVal, locale);
           html += `
             <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '${lvl}_general_feat', level: ${lvl}, filterType: 'Geral' })">
               <div class="pb-tree-card-icon">${this.getTreeIconSvg('general_feat')}</div>
@@ -2695,7 +3172,8 @@ class PathbuilderApp {
         }
 
         if ([5, 9, 13, 17].includes(lvl)) {
-          const val = prog[`${lvl}_ancestry_feat`] || (char.feats?.find(f => f.slotId === `${lvl}_ancestry_feat`)?.name || tLabels.unselected);
+          const rawVal = prog[`${lvl}_ancestry_feat`] || (char.feats?.find(f => f.slotId === `${lvl}_ancestry_feat`)?.name || tLabels.unselected);
+          const val = rawVal === tLabels.unselected ? rawVal : this.localizeItemName(rawVal, locale);
           html += `
             <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '${lvl}_ancestry_feat', level: ${lvl}, filterType: 'Ancestral' })">
               <div class="pb-tree-card-icon">${this.getTreeIconSvg('ancestry_feat')}</div>
@@ -2708,7 +3186,8 @@ class PathbuilderApp {
         }
 
         if (lvl >= 3 && lvl % 2 !== 0) {
-          const val = prog[`${lvl}_skill_increase`] || tLabels.unselected;
+          const rawVal = prog[`${lvl}_skill_increase`] || tLabels.unselected;
+          const val = rawVal === tLabels.unselected ? rawVal : this.localizeItemName(rawVal, locale);
           html += `
             <div class="pb-tree-card" onclick="app.promptSkillIncrease(${lvl})">
               <div class="pb-tree-card-icon">${this.getTreeIconSvg('skill_increase')}</div>
@@ -3974,38 +4453,61 @@ class PathbuilderApp {
   // =========================================================================
   // 4. RASTREADOR DE CONDIÇÕES VIVAS COM AJUSTE EM TEMPO REAL
   // =========================================================================
+  normalizeConditionList() {
+    if (!this.character) return [];
+    if (Array.isArray(this.character.conditions)) return this.character.conditions;
+
+    const catalog = typeof PF2E_DATA !== "undefined" && PF2E_DATA.conditionsCatalog ? PF2E_DATA.conditionsCatalog : {};
+    const legacy = this.character.conditions || {};
+    const converted = Object.entries(legacy)
+      .filter(([, value]) => Boolean(value))
+      .map(([key, value]) => ({
+        key,
+        name: catalog[key]?.name || key,
+        value: typeof value === "number" ? value : undefined,
+        description: catalog[key]?.description
+      }));
+    this.character.conditions = converted;
+    return converted;
+  }
+
   renderConditions() {
     const container = document.getElementById("activeConditions");
     if (!container) return;
+    const locale = this.getLocale();
+    const isEn = locale === "en";
+    const isEs = locale === "es";
 
-    const conditions = this.character.conditions || {};
+    const conditions = this.normalizeConditionList();
     const catalog = typeof PF2E_DATA !== "undefined" && PF2E_DATA.conditionsCatalog ? PF2E_DATA.conditionsCatalog : {};
 
-    const activeKeys = Object.keys(conditions).filter(k => Boolean(conditions[k]));
-    if (activeKeys.length === 0) {
-      container.innerHTML = `<span style="font-size: 11px; color: var(--pb-text-dim);">Nenhuma condição ativa.</span>`;
+    if (conditions.length === 0) {
+      container.innerHTML = `<span style="font-size: 11px; color: var(--pb-text-dim);">${isEn ? "No active conditions." : isEs ? "Ninguna condición activa." : "Nenhuma condição ativa."}</span>`;
       return;
     }
 
-    container.innerHTML = activeKeys.map(k => {
-      const meta = catalog[k] || { name: k, hasValue: typeof conditions[k] === "number" };
-      const val = conditions[k];
+    container.innerHTML = conditions.map(condition => {
+      const key = condition.key || condition.id || condition.name;
+      const meta = catalog[key] || Object.values(catalog).find(item => item.name === condition.name) || { name: condition.name, hasValue: condition.value !== undefined };
+      const val = condition.value;
       const displayName = meta.name.split(" ")[0];
+      const locName = this.localizeItemName(displayName, locale);
+      const safeKey = escapeInlineArgument(key);
 
-      if (meta.hasValue) {
+      if (meta.hasValue || val !== undefined) {
         return `
           <div style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); color: #fca5a5; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;" title="${escapeHtml(meta.description || "")}">
-            <span>🩸 ${escapeHtml(displayName)} ${val}</span>
-            <button type="button" onclick="app.setConditionLevel('${k}', -1)" style="background: none; border: none; color: #fca5a5; cursor: pointer; font-weight: bold; padding: 0 2px;">-</button>
-            <button type="button" onclick="app.setConditionLevel('${k}', 1)" style="background: none; border: none; color: #fca5a5; cursor: pointer; font-weight: bold; padding: 0 2px;">+</button>
+            <span>🩸 ${escapeHtml(locName)} ${val}</span>
+            <button type="button" onclick="app.setConditionLevel(${safeKey}, -1)" style="background: none; border: none; color: #fca5a5; cursor: pointer; font-weight: bold; padding: 0 2px;">-</button>
+            <button type="button" onclick="app.setConditionLevel(${safeKey}, 1)" style="background: none; border: none; color: #fca5a5; cursor: pointer; font-weight: bold; padding: 0 2px;">+</button>
           </div>
         `;
       }
 
       return `
         <div style="background: rgba(234, 88, 12, 0.15); border: 1px solid rgba(234, 88, 12, 0.4); color: #fdba74; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;" title="${escapeHtml(meta.description || "")}">
-          <span>⚡ ${escapeHtml(displayName)}</span>
-          <button type="button" onclick="app.setConditionLevel('${k}', 0)" style="background: none; border: none; color: #fdba74; cursor: pointer; font-weight: bold; padding: 0 2px;">✕</button>
+          <span>⚡ ${escapeHtml(locName)}</span>
+          <button type="button" onclick="app.setConditionLevel(${safeKey}, 0)" style="background: none; border: none; color: #fdba74; cursor: pointer; font-weight: bold; padding: 0 2px;">✕</button>
         </div>
       `;
     }).join("");
@@ -4013,19 +4515,16 @@ class PathbuilderApp {
 
   setConditionLevel(condKey, delta) {
     if (!this.character) return;
-    if (!this.character.conditions) this.character.conditions = {};
+    const conditions = this.normalizeConditionList();
+    const index = conditions.findIndex(condition => condition.key === condKey || condition.id === condKey || condition.name === condKey);
+    const current = index >= 0 ? Number(conditions[index].value) || 1 : 0;
 
-    if (delta === 0) {
-      delete this.character.conditions[condKey];
-    } else if (typeof this.character.conditions[condKey] === "number") {
-      this.character.conditions[condKey] = Math.max(0, this.character.conditions[condKey] + delta);
-      if (this.character.conditions[condKey] === 0) {
-        delete this.character.conditions[condKey];
-      }
-    } else if (delta > 0) {
-      this.character.conditions[condKey] = 1;
-    } else {
-      delete this.character.conditions[condKey];
+    if (index < 0 && delta > 0) conditions.push({ key: condKey, name: condKey, value: 1 });
+    else if (index >= 0 && delta === 0) conditions.splice(index, 1);
+    else if (index >= 0) {
+      const next = Math.max(0, current + delta);
+      if (next === 0) conditions.splice(index, 1);
+      else conditions[index].value = next;
     }
 
     this.saveCharacterLocal();
@@ -4034,18 +4533,18 @@ class PathbuilderApp {
 
   clearAllConditions() {
     if (!this.character) return;
-    this.character.conditions = {};
+    this.character.conditions = [];
     this.saveCharacterLocal();
     this.renderAll();
   }
 
   tickEndTurnConditions() {
     if (!this.character || !this.character.conditions) return;
-    if (this.character.conditions.frightened) {
-      this.character.conditions.frightened = Math.max(0, this.character.conditions.frightened - 1);
-      if (this.character.conditions.frightened === 0) {
-        delete this.character.conditions.frightened;
-      }
+    const conditions = this.normalizeConditionList();
+    const frightened = conditions.findIndex(condition => /amedrontado|frightened/i.test(condition.name || condition.key || ""));
+    if (frightened >= 0) {
+      conditions[frightened].value = Math.max(0, (Number(conditions[frightened].value) || 1) - 1);
+      if (conditions[frightened].value === 0) conditions.splice(frightened, 1);
     }
     this.saveCharacterLocal();
     this.renderAll();
@@ -4075,4 +4574,3 @@ class PathbuilderApp {
 
 // Inicializa a aplicação Pathbuilder 2e Local
 window.app = new PathbuilderApp();
-

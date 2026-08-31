@@ -63,7 +63,7 @@ export function ItemPickerModal({ onBridgeReady }: { onBridgeReady?: (bridge: { 
   const formatPrice = (price?: ItemDefinition["price"]) => {
     if (!price) return "—";
     const parts = [];
-    if (price.pp) parts.push(`${price.pp} PP`);
+    if (price.pp) parts.push(`${price.pp} PL`);
     if (price.gp) parts.push(`${price.gp} PO`);
     if (price.sp) parts.push(`${price.sp} PP`);
     if (price.cp) parts.push(`${price.cp} PC`);

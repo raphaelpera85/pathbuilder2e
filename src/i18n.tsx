@@ -54,6 +54,21 @@ const messages = {
     formulas: "Fórmulas & Alquimia", allRulesets: "Todos os Conjuntos de Regras", allRarities: "Todas as Raridades", allBooks: "Todos os Livros / Fontes",
     inspectDetails: "Detalhes do Registro", filterRuleset: "Filtrar Regras", filterRarity: "Filtrar Raridade", filterBook: "Filtrar Livro / Fonte",
     bulk: "Carga (Bulk)", price: "Preço", prerequisites: "Pré-requisitos", actionsCount: "Ações necessárias", itemDetails: "Especificações & Efeitos",
+    hidePlan: "Ocultar Plano", showPlan: "Mostrar Plano", characterName: "Nome do Personagem", ready: "Pronto", variantRules: "Variantes",
+    armorClass: "CA", hitPoints: "PV", noShield: "Sem Escudo (+0)", shieldRaised: "Escudo Erguido (+2 CA)", raiseShield: "Erguer", lowerShield: "Abaixar",
+    fortitude: "Fortitude", reflex: "Reflexos", will: "Vontade", heroPoints: "Pontos Heroicos:", classDc: "CD de Classe", perception: "Percepção", initiative: "Iniciativa",
+    skillsTitle: "PERÍCIAS", normalVision: "Visão Normal", darkvision: "Visão no Escuro", lowLightVision: "Visão na Penumbra",
+    rest8h: "💤 Descansar (8h)", shieldBlock: "🛡️ Bloqueio c/ Escudo", recoveryCheck: "🎲 Teste de Recuperação", addCondition: "➕ Adicionar Condição",
+    endTurn: "⏱️ Fim do Turno", clearConditions: "✨ Limpar Condições", addBuff: "➕ Adicionar Buff", noActiveConditions: "Nenhuma condição ativa.",
+    tabWeapons: "Armas", tabDefense: "Defesa", tabGear: "Equipamentos", tabSpells: "Magias", tabPets: "Mascotes", tabDetails: "Detalhes", tabFeats: "Talentos", tabActions: "Ações", tabFormulas: "Fórmulas & Alquimia",
+    simpleWeapons: "Armas Simples", martialWeapons: "Armas Marciais", advancedWeapons: "Armas Avançadas", unarmedAttacks: "Ataques Desarmados",
+    addWeapon: "➕ Adicionar Arma", printSheet: "🖨️ Imprimir Ficha", attackMap: "Ataque (MAP):", none: "Nenhum",
+    noWeaponsEquipped: "Nenhuma arma equipada. Clique em 'Adicionar Arma' para escolher no compêndio!",
+    totalBulk: "Carga Total:", starterKitOneClick: "🎒 Equipar Kit Inicial (1-Clique)", addItem: "➕ Adicionar Item",
+    changeArmor: "🛡️ Trocar Armadura", toggleShield: "🛡️ Alternar Escudo",
+    spellcaster: "✨ Conjurador", spellDc: "CD de Magia:", spellAttack: "Ataque Mágico:", focusPoints: "Pontos de Foco:", recoverAllSlots: "💤 Recuperar Todos os Slots",
+    addPetBtn: "➕ Adicionar Companheiro / Familiar / Montaria", noPetsMsg: "Nenhum mascote ou companheiro animal associado.",
+    aiAssistantFree: "✨ Assistente IA (Grátis)", viewPlanMobile: "Plano (Níveis)", viewStatsMobile: "Ficha & Perícias", viewContentMobile: "Ações & Abas",
   },
   en: {
     language: "Language", portuguese: "Português", english: "English", spanish: "Español", menu: "Menu",
@@ -103,6 +118,21 @@ const messages = {
     formulas: "Formulas & Crafting", allRulesets: "All Rulesets", allRarities: "All Rarities", allBooks: "All Books / Sources",
     inspectDetails: "Record Details", filterRuleset: "Filter Ruleset", filterRarity: "Filter Rarity", filterBook: "Filter Book / Source",
     bulk: "Bulk", price: "Price", prerequisites: "Prerequisites", actionsCount: "Required Actions", itemDetails: "Specifications & Effects",
+    hidePlan: "Hide Plan", showPlan: "Show Plan", characterName: "Character Name", ready: "Ready", variantRules: "Variants",
+    armorClass: "AC", hitPoints: "HP", noShield: "No Shield (+0)", shieldRaised: "Shield Raised (+2 AC)", raiseShield: "Raise", lowerShield: "Lower",
+    fortitude: "Fortitude", reflex: "Reflex", will: "Will", heroPoints: "Hero Points:", classDc: "Class DC", perception: "Perception", initiative: "Initiative",
+    skillsTitle: "SKILLS", normalVision: "Normal Vision", darkvision: "Darkvision", lowLightVision: "Low-Light Vision",
+    rest8h: "💤 Rest (8h)", shieldBlock: "🛡️ Shield Block", recoveryCheck: "🎲 Recovery Check", addCondition: "➕ Add Condition",
+    endTurn: "⏱️ End Turn", clearConditions: "✨ Clear Conditions", addBuff: "➕ Add Buff", noActiveConditions: "No active conditions.",
+    tabWeapons: "Weapons", tabDefense: "Defense", tabGear: "Gear", tabSpells: "Spells", tabPets: "Pets", tabDetails: "Details", tabFeats: "Feats", tabActions: "Actions", tabFormulas: "Formulas & Alchemy",
+    simpleWeapons: "Simple Weapons", martialWeapons: "Martial Weapons", advancedWeapons: "Advanced Weapons", unarmedAttacks: "Unarmed Attacks",
+    addWeapon: "➕ Add Weapon", printSheet: "🖨️ Print Sheet", attackMap: "Attack (MAP):", none: "None",
+    noWeaponsEquipped: "No weapon equipped. Click 'Add Weapon' to choose from the compendium!",
+    totalBulk: "Total Bulk:", starterKitOneClick: "🎒 Equip Starter Kit (1-Click)", addItem: "➕ Add Item",
+    changeArmor: "🛡️ Change Armor", toggleShield: "🛡️ Toggle Shield",
+    spellcaster: "✨ Spellcaster", spellDc: "Spell DC:", spellAttack: "Spell Attack:", focusPoints: "Focus Points:", recoverAllSlots: "💤 Recover All Slots",
+    addPetBtn: "➕ Add Companion / Familiar / Mount", noPetsMsg: "No companion or animal associate linked.",
+    aiAssistantFree: "✨ AI Assistant (Free)", viewPlanMobile: "Plan (Levels)", viewStatsMobile: "Sheet & Skills", viewContentMobile: "Actions & Tabs",
   },
   es: {
     language: "Idioma", portuguese: "Português", english: "English", spanish: "Español", menu: "Menú",
@@ -114,17 +144,17 @@ const messages = {
     wait: "Espera…", adventurer: "Aventurero", administrator: "Administrador", saving: "Guardando…",
     saveCurrent: "Guardar ficha actual", newCharacter: "Nuevo personaje", refresh: "Actualizar", myCharacters: "Mis personajes",
     loadingSheets: "Cargando tus fichas…", noSheets: "No hay fichas guardadas", noSheetsDescription: "Abre o crea un personaje y guarda una copia en tu cuenta.",
-    level: "Nivel", rulesReview: "Reglas por revisar", profileSettings: "Configuración del perfil", updateUsername: "Actualizar usuario",
+    level: "Nivel", rulesReview: "Regras por revisar", profileSettings: "Configuración del perfil", updateUsername: "Actualizar usuario",
     newPassword: "Nueva contraseña", changePassword: "Cambiar contraseña", deleteAccount: "Eliminar mi cuenta", signOut: "Cerrar sesión",
     pickerCompendium: "Compendio PF2e", searchOptions: "Buscar opciones", search: "Buscar...", availableOptions: "Opciones disponibles",
     noOption: "No se encontraron opciones", searchAnother: "Prueba buscar otro nombre.", selectDetails: "Selecciona un elemento para ver los detalles.",
-    accept: "Aceptar", cancel: "Cancelar", source: "Fuente", uncatalogued: "Aún no catalogada", baseHp: "PG base",
-    speed: "Velocidad", feet: "pies", hpPerLevel: "PG por nivel", keyAbility: "Característica clave", damage: "Daño", traits: "Rasgos",
+    accept: "Aceptar", cancel: "Cancelar", source: "Fuente", uncatalogued: "No catalogada aún", baseHp: "PG base",
+    speed: "Velocidad", feet: "pies", hpPerLevel: "PG por nivel", keyAbility: "Atributo clave", damage: "Daño", traits: "Rasgos",
     select: "Seleccionar", ancestries: "Ascendencias", classes: "Clases", backgrounds: "Trasfondos", weapons: "Armas",
-    armors: "Armaduras", heritages: "Herencias", archetypes: "Arquetipos", spells: "Conjuros", rituals: "Rituales", feats: "Dotes", items: "Objetos y Equipo", pets: "Mascotas y Compañeros", actions: "Acciones", conditions: "Condiciones", buffs: "Beneficios", size: "Tamaño", configuration: "Configuración", landSpeed: "Velocidad terrestre", swimSpeed: "Velocidad de nado", climbSpeed: "Velocidad de trepar",
-    rank: "Rango", traditions: "Tradiciones", castingTime: "Lanzamiento", primaryCheck: "Prueba principal", spellCatalog: "Catálogo de Conjuros", addManualSpell: "Añadir Conjuro Manualmente", addRitual: "Añadir Ritual", knownSpells: "Conjuros Conocidos", knownRituals: "Rituales Aprendidos",
+    armors: "Armaduras", heritages: "Herencias", archetypes: "Arquetipos", spells: "Conjuros", rituals: "Rituales", feats: "Dotes", items: "Equipo y Objetos", pets: "Mascotas y Compañeros", actions: "Acciones", conditions: "Condiciones", buffs: "Beneficios", size: "Tamaño", configuration: "Configuración", landSpeed: "Velocidad terrestre", swimSpeed: "Velocidad de nado", climbSpeed: "Velocidad de escalada",
+    rank: "Rango", traditions: "Tradiciones", castingTime: "Lanzamiento", primaryCheck: "Prueba primaria", spellCatalog: "Catálogo de Conjuros", addManualSpell: "Añadir Conjuro Manualmente", addRitual: "Añadir Ritual", knownSpells: "Conjuros Conocidos", knownRituals: "Rituales Aprendidos",
     navLabel: "Navegación principal", navBuilder: "Creador", navCompendium: "Compendio", navRules: "Reglas y fuentes", navLibrary: "Biblioteca y perfil", navPrivacy: "Privacidad", navAdmin: "Curaduría", navCampaigns: "Campañas del DJ",
-    campaignsTitle: "Campañas y Mesas de RPG", campaignsIntro: "Organiza tus aventuras, sigue las fichas de tus jugadores en tiempo real y gestiona iniciativa y sesiones.",
+    campaignsTitle: "Campañas y Mesas de Rol", campaignsIntro: "Organiza tus aventuras, sigue las fichas de tus jugadores en tiempo real y gestiona iniciativa y sesiones.",
     gmEmail: "Correo del Director de Juego (DJ)", linkGM: "Vincular DJ", linkedGM: "DJ Vinculado", unlinkGM: "Desvincular DJ",
     createCampaign: "Nueva Campaña / Mesa", campaignName: "Nombre de la Campaña", campaignSchedule: "Horario", campaignDescription: "Sinopsis de la Aventura",
     manageParty: "Grupo de Aventureros", inspectSheet: "Inspeccionar Ficha", sharedPlayerSheets: "Fichas de Jugadores Vinculadas",
@@ -149,9 +179,24 @@ const messages = {
     adminLocalCopy: "Supabase no está configurado en este entorno; no se puede verificar la identidad administrativa.",
     adminVerified: "Registros verificados", adminReview: "Cola de revisión", adminSources: "Fuentes parciales", adminReadOnly: "Curaduría de solo lectura", adminReadOnlyCopy: "La edición y publicación de reglas solo se habilitará cuando exista una API administrativa auditada y políticas RLS específicas.",
     noCatalogResults: "Ningún registro coincide con los filtros.", filterCategory: "Filtrar categoría", catalogSearch: "Buscar en el compendio",
-    formulas: "Fórmulas y Artesanía", allRulesets: "Todos los Conjuntos de Reglas", allRarities: "Todas las Raridades", allBooks: "Todos los Libros / Fuentes",
+    formulas: "Fórmulas y Artesanía", allRulesets: "Todos los Conjuntos de Regras", allRarities: "Todas las Raridades", allBooks: "Todos los Libros / Fuentes",
     inspectDetails: "Detalles del Registro", filterRuleset: "Filtrar Reglas", filterRarity: "Filtrar Raridad", filterBook: "Filtrar Libro / Fuente",
     bulk: "Volumen (Bulk)", price: "Precio", prerequisites: "Requisitos previos", actionsCount: "Acciones necesarias", itemDetails: "Especificaciones y Efectos",
+    hidePlan: "Ocultar Plan", showPlan: "Mostrar Plan", characterName: "Nombre del Personaje", ready: "Listo", variantRules: "Variantes",
+    armorClass: "CA", hitPoints: "PG", noShield: "Sin Escudo (+0)", shieldRaised: "Escudo Levantado (+2 CA)", raiseShield: "Alzar", lowerShield: "Bajar",
+    fortitude: "Fortaleza", reflex: "Reflejos", will: "Voluntad", heroPoints: "Puntos Heroicos:", classDc: "CD de Clase", perception: "Percepción", initiative: "Iniciativa",
+    skillsTitle: "HABILIDADES", normalVision: "Visión Normal", darkvision: "Visión en la Oscuridad", lowLightVision: "Visión en la Penumbra",
+    rest8h: "💤 Descansar (8h)", shieldBlock: "🛡️ Bloqueo con Escudo", recoveryCheck: "🎲 Prueba de Recuperación", addCondition: "➕ Añadir Condición",
+    endTurn: "⏱️ Fin del Turno", clearConditions: "✨ Limpiar Condiciones", addBuff: "➕ Añadir Buff", noActiveConditions: "Ninguna condición activa.",
+    tabWeapons: "Armas", tabDefense: "Defensa", tabGear: "Equipo", tabSpells: "Conjuros", tabPets: "Mascotas", tabDetails: "Detalles", tabFeats: "Dotes", tabActions: "Acciones", tabFormulas: "Fórmulas y Alquimia",
+    simpleWeapons: "Armas Simples", martialWeapons: "Armas Marciales", advancedWeapons: "Armas Avanzadas", unarmedAttacks: "Ataques Desarmados",
+    addWeapon: "➕ Añadir Arma", printSheet: "🖨️ Imprimir Ficha", attackMap: "Ataque (MAP):", none: "Ninguno",
+    noWeaponsEquipped: "¡Ninguna arma equipada. Haz clic en 'Añadir Arma' para elegir en el compendio!",
+    totalBulk: "Volumen Total:", starterKitOneClick: "🎒 Equipar Kit Inicial (1-Clic)", addItem: "➕ Añadir Objeto",
+    changeArmor: "🛡️ Cambiar Armadura", toggleShield: "🛡️ Alternar Escudo",
+    spellcaster: "✨ Conjurador", spellDc: "CD de Conjuro:", spellAttack: "Ataque de Conjuro:", focusPoints: "Puntos de Foco:", recoverAllSlots: "💤 Recuperar Todos los Espacios",
+    addPetBtn: "➕ Añadir Compañero / Familiar / Montura", noPetsMsg: "Ningún compañero o mascota asociada.",
+    aiAssistantFree: "✨ Asistente IA (Gratis)", viewPlanMobile: "Plan (Niveles)", viewStatsMobile: "Ficha y Habilidades", viewContentMobile: "Acciones y Pestañas",
   },
 } as const;
 
@@ -268,6 +313,70 @@ export const ANCESTRY_TRANSLATIONS: Record<string, Record<Locale, string>> = {
   "Jotunnato (Jotunborn)": { "pt-BR": "Jotunnato", en: "Jotunborn", es: "Jotunborn" },
 };
 
+export const BACKGROUND_TRANSLATIONS: Record<string, Record<Locale, string>> = {
+  "Guarda da Cidade": { "pt-BR": "Guarda da Cidade", en: "Guard", es: "Guardia de la Ciudad" },
+  "Guarda da Cidade (Guard)": { "pt-BR": "Guarda da Cidade", en: "Guard", es: "Guardia de la Ciudad" },
+  "Acróbata (Acrobat)": { "pt-BR": "Acróbata", en: "Acrobat", es: "Acróbata" },
+  "Artesão (Artisan)": { "pt-BR": "Artesão", en: "Artisan", es: "Artesano" },
+  "Artista (Artist)": { "pt-BR": "Artista", en: "Artist", es: "Artista" },
+  "Batedor Selvagem (Wilderness Scout)": { "pt-BR": "Batedor Selvagem", en: "Scout", es: "Explorador" },
+  "Caçador (Hunter)": { "pt-BR": "Caçador", en: "Hunter", es: "Cazador" },
+  "Charlatão (Charlatan)": { "pt-BR": "Charlatão", en: "Charlatan", es: "Charlatán" },
+  "Cozinheiro (Cook)": { "pt-BR": "Cozinheiro", en: "Cook", es: "Cocinero" },
+  "Criminoso (Criminal)": { "pt-BR": "Criminoso", en: "Criminal", es: "Criminal" },
+  "Curandeiro de Campo (Field Medic)": { "pt-BR": "Curandeiro de Campo", en: "Field Medic", es: "Médico de Campaña" },
+  "Detetive (Detective)": { "pt-BR": "Detetive", en: "Detective", es: "Detective" },
+  "Duelista de Oppara (Dueling Noble)": { "pt-BR": "Duelista de Oppara", en: "Dueling Noble", es: "Noble Duelista" },
+  "Emissário (Emissary)": { "pt-BR": "Emissário", en: "Emissary", es: "Emisario" },
+  "Eremita (Hermit)": { "pt-BR": "Eremita", en: "Hermit", es: "Ermitaño" },
+  "Escudeiro (Squire)": { "pt-BR": "Escudeiro", en: "Squire", es: "Escudero" },
+  "Estudante da Academia (Scholar)": { "pt-BR": "Estudante da Academia", en: "Scholar", es: "Erudito" },
+  "Gladiador (Gladiator)": { "pt-BR": "Gladiador", en: "Gladiator", es: "Gladiador" },
+  "Herdeiro Nobre (Noble)": { "pt-BR": "Herdeiro Nobre", en: "Noble", es: "Noble" },
+  "Marinheiro (Sailor)": { "pt-BR": "Marinheiro", en: "Sailor", es: "Marinero" },
+  "Mercador (Merchant)": { "pt-BR": "Mercador", en: "Merchant", es: "Comerciante" },
+  "Mineiro (Miner)": { "pt-BR": "Mineiro", en: "Miner", es: "Minero" },
+  "Nômade (Nomad)": { "pt-BR": "Nômade", en: "Nomad", es: "Nómada" },
+  "Prisioneiro (Prisoner)": { "pt-BR": "Prisioneiro", en: "Prisoner", es: "Prisionero" },
+  "Trabalhador Braçal (Laborer)": { "pt-BR": "Trabalhador Braçal", en: "Laborer", es: "Obrero" },
+  "Taverneiro (Barkeeper)": { "pt-BR": "Taverneiro", en: "Barkeeper", es: "Tabernero" }
+};
+
+export const SKILL_TRANSLATIONS: Record<string, Record<Locale, string>> = {
+  acrobatics: { "pt-BR": "Acrobacias", en: "Acrobatics", es: "Acrobacias" },
+  arcana: { "pt-BR": "Arcanismo", en: "Arcana", es: "Arcanos" },
+  athletics: { "pt-BR": "Atletismo", en: "Athletics", es: "Atletismo" },
+  crafting: { "pt-BR": "Manufatura", en: "Crafting", es: "Artesanía" },
+  deception: { "pt-BR": "Enganação", en: "Deception", es: "Engaño" },
+  diplomacy: { "pt-BR": "Diplomacia", en: "Diplomacy", es: "Diplomacia" },
+  intimidation: { "pt-BR": "Intimidação", en: "Intimidation", es: "Intimidación" },
+  medicine: { "pt-BR": "Medicina", en: "Medicine", es: "Medicina" },
+  nature: { "pt-BR": "Natureza", en: "Nature", es: "Naturaleza" },
+  occultism: { "pt-BR": "Ocultismo", en: "Occultism", es: "Ocultismo" },
+  performance: { "pt-BR": "Performance", en: "Performance", es: "Interpretación" },
+  religion: { "pt-BR": "Religião", en: "Religion", es: "Religión" },
+  society: { "pt-BR": "Sociedade", en: "Society", es: "Sociedad" },
+  stealth: { "pt-BR": "Furtividade", en: "Stealth", es: "Sigilo" },
+  survival: { "pt-BR": "Sobrevivência", en: "Survival", es: "Supervivencia" },
+  thievery: { "pt-BR": "Ladinagem", en: "Thievery", es: "Latrocinio" }
+};
+
+export const SIZE_TRANSLATIONS: Record<string, Record<Locale, string>> = {
+  "Miúdo": { "pt-BR": "Miúdo", en: "Tiny", es: "Diminuto" },
+  "Pequeno": { "pt-BR": "Pequeno", en: "Small", es: "Pequeño" },
+  "Médio": { "pt-BR": "Médio", en: "Medium", es: "Mediano" },
+  "Grande": { "pt-BR": "Grande", en: "Large", es: "Grande" },
+  "Enorme": { "pt-BR": "Enorme", en: "Huge", es: "Enorme" },
+  "Imenso": { "pt-BR": "Imenso", en: "Gargantuan", es: "Gargantuesco" }
+};
+
+export const SENSE_TRANSLATIONS: Record<string, Record<Locale, string>> = {
+  "Visão Normal": { "pt-BR": "Visão Normal", en: "Normal Vision", es: "Visión Normal" },
+  "Visão no Escuro": { "pt-BR": "Visão no Escuro", en: "Darkvision", es: "Visión en la Oscuridad" },
+  "Visão na Penumbra": { "pt-BR": "Visão na Penumbra", en: "Low-Light Vision", es: "Visión en la Penumbra" },
+  "Visão Maior no Escuro": { "pt-BR": "Visão Maior no Escuro", en: "Greater Darkvision", es: "Visión en la Oscuridad Mayor" }
+};
+
 export function getItemDisplayName(item: { name?: string; data?: any } | undefined | null, locale: Locale = "pt-BR"): string {
   if (!item) return "";
   if (item.data?.names?.[locale]) return item.data.names[locale];
@@ -281,6 +390,11 @@ export function getItemDisplayName(item: { name?: string; data?: any } | undefin
     }
   }
   for (const [key, mapping] of Object.entries(ANCESTRY_TRANSLATIONS)) {
+    if (rawName.startsWith(key) || rawName === key) {
+      return mapping[locale] ?? rawName;
+    }
+  }
+  for (const [key, mapping] of Object.entries(BACKGROUND_TRANSLATIONS)) {
     if (rawName.startsWith(key) || rawName === key) {
       return mapping[locale] ?? rawName;
     }
@@ -393,4 +507,3 @@ export function LocaleSwitcher() {
     </div>
   );
 }
-

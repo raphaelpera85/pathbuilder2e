@@ -13,6 +13,7 @@ export interface PetCompanionDefinition {
   supportBenefit: string;
   specialAbility?: string;
   description: string;
+  summaries?: { "pt-BR": string; en: string; es: string };
   source?: { book: string; page?: number };
 }
 
@@ -34,6 +35,7 @@ export const PF2E_PETS_CATALOG: PetCompanionDefinition[] = [
     supportBenefit: "Seu lobo rasga os tendões do inimigo. Inimigos atingidos por você ficam Desprevenidos (-2 CA) até o início do seu próximo turno.",
     specialAbility: "Derrubar (Trip): Se o ataque de mandíbulas acertar, pode tentar Derrubar como ação livre.",
     description: "Um predador leal e veloz especializado em flanquear e derrubar presas.",
+    summaries: { "pt-BR": "Companheiro veloz que ajuda a flanquear e derrubar inimigos.", en: "Fast companion that helps flank and trip enemies.", es: "Compañero veloz que ayuda a flanquear y derribar enemigos." },
     source: { book: "Livro do Jogador (Player Core)", page: 212 }
   },
   {
@@ -54,6 +56,7 @@ export const PF2E_PETS_CATALOG: PetCompanionDefinition[] = [
     supportBenefit: "Seu urso despedaça o oponente. Seus ataques bem-sucedidos causam 1d8 de dano de corte adicional ao alvo adjacente ao urso.",
     specialAbility: "Abraço de Urso: Ao acertar com as duas garras, agarra automaticamente a vítima.",
     description: "Uma fera imponente de força bruta com mordidas e patadas devastadoras.",
+    summaries: { "pt-BR": "Companheiro resistente com mordida e garras poderosas.", en: "Durable companion with powerful jaws and claws.", es: "Compañero resistente con poderosas mordidas y garras." },
     source: { book: "Livro do Jogador (Player Core)", page: 212 }
   },
   {
@@ -73,6 +76,7 @@ export const PF2E_PETS_CATALOG: PetCompanionDefinition[] = [
     supportBenefit: "Seu cavalo adiciona impulso ao seu ataque. Se você se mover pelo menos 10 pés montado antes do Golpe, adiciona +2 de dano de circunstância.",
     specialAbility: "Montaria Confiável: Pode ser montado sem impor penalidades de controle de animal.",
     description: "Uma montaria nobre treinada para investidas em batalha e cargas com lança.",
+    summaries: { "pt-BR": "Montaria veloz para investidas e combate montado.", en: "Fast mount for charges and mounted combat.", es: "Montura veloz para cargas y combate montado." },
     source: { book: "Livro do Jogador (Player Core)", page: 213 }
   },
   {
@@ -92,6 +96,7 @@ export const PF2E_PETS_CATALOG: PetCompanionDefinition[] = [
     supportBenefit: "Sua ave mergulha nos olhos do inimigo. O alvo sofre a condição Deslumbrado (Dazzled) ou Cego temporariamente.",
     specialAbility: "Ataque Aéreo em Voo Rasante: Mergulha em velocidade e sobe sem provocar reações.",
     description: "Um falcão ou coruja ágil com voo rápido e ataques precisos nos pontos vitais.",
+    summaries: { "pt-BR": "Companheiro voador ágil para reconhecimento e ataques precisos.", en: "Agile flying companion for scouting and precise attacks.", es: "Compañero volador ágil para explorar y atacar con precisión." },
     source: { book: "Livro do Jogador (Player Core)", page: 213 }
   },
   {
@@ -111,6 +116,7 @@ export const PF2E_PETS_CATALOG: PetCompanionDefinition[] = [
     supportBenefit: "Seu bode investe violentamente, deixando o oponente Desprevenido (-2 CA) contra seus ataques à distância.",
     specialAbility: "Cabeçada Rompe-Ossos: Se mover 10 pés em linha reta, o dano da chifrada causa 1d8+3 e empurra o alvo por 10 pés.",
     description: "O lendário bode de guerra montês, guardião robusto e montaria de choque.",
+    summaries: { "pt-BR": "Bode robusto que investe e empurra inimigos.", en: "Tough mountain ram that charges and shoves enemies.", es: "Carnero montés resistente que carga y empuja enemigos." },
     source: { book: "Livro do Jogador (Player Core)", page: 213 }
   },
   {
@@ -127,6 +133,7 @@ export const PF2E_PETS_CATALOG: PetCompanionDefinition[] = [
     attacks: [],
     supportBenefit: "Concede 2 habilidades de familiar e 2 habilidades de mestre (como Espaço Extra de Magia, Toque de Magia, Fala e Voo).",
     description: "Um espírito animal ligado à sua essência mágica que entrega magias de toque e vigia os arredores.",
+    summaries: { "pt-BR": "Familiar mágico que amplia habilidades e entrega magias de toque.", en: "Magical familiar that expands abilities and delivers touch spells.", es: "Familiar mágico que amplía habilidades y entrega conjuros de toque." },
     source: { book: "Livro do Jogador (Player Core)", page: 214 }
   }
 ];

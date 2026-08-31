@@ -248,4 +248,66 @@ describe("PickerModal", () => {
       true
     );
   });
+
+  it("renderiza abas de talentos e permite alternar entre Talentos Gerais, de Perícia e Todos os Talentos", () => {
+    const applyPickerSelection = vi.fn();
+    window.app = {
+      ...controllerDefaults,
+      character: {
+        id: "test",
+        name: "Guerreiro",
+        class: "Guerreiro (Fighter)",
+        level: 1,
+        coins: { gp: 15, sp: 0, cp: 0, pp: 0 },
+      },
+      getPickerItems: () => [
+        {
+          name: "Robustez (Toughness)",
+          type: "Talento Geral",
+          data: { name: "Robustez (Toughness)", category: "Geral", level: 1, traits: ["Geral"] },
+        },
+        {
+          name: "Medicina de Batalha (Battle Medicine)",
+          type: "Talento de Perícia",
+          data: { name: "Medicina de Batalha (Battle Medicine)", category: "Perícia", level: 1, traits: ["Geral", "Perícia"] },
+        },
+        {
+          name: "Golpe Furioso (Power Attack)",
+          type: "Talento de Classe",
+          data: { name: "Golpe Furioso (Power Attack)", category: "Classe", level: 1, traits: ["Guerreiro"] },
+        },
+      ],
+      applyPickerSelection,
+    };
+
+    let bridge: PickerBridge | undefined;
+    renderPicker((value) => { bridge = value; });
+    act(() => bridge?.open("feat", { filterType: "Geral" }));
+
+    // Abas de talentos gerais
+    expect(screen.getByRole("button", { name: "Talentos Gerais" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Talentos de Perícia" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Todos os Talentos" })).toBeInTheDocument();
+
+    // Inicialmente na aba Geral
+    expect(screen.getByRole("option", { name: /Robustez/ })).toBeInTheDocument();
+    expect(screen.queryByRole("option", { name: /Golpe Furioso/ })).not.toBeInTheDocument();
+
+    // Clica em Talentos de Perícia
+    fireEvent.click(screen.getByRole("button", { name: "Talentos de Perícia" }));
+    expect(screen.getByRole("option", { name: /Medicina de Batalha/ })).toBeInTheDocument();
+    expect(screen.queryByRole("option", { name: /Golpe Furioso/ })).not.toBeInTheDocument();
+
+    // Clica em Todos os Talentos
+    fireEvent.click(screen.getByRole("button", { name: "Todos os Talentos" }));
+    expect(screen.getByRole("option", { name: /Robustez/ })).toBeInTheDocument();
+    expect(screen.getByRole("option", { name: /Medicina de Batalha/ })).toBeInTheDocument();
+    expect(screen.getByRole("option", { name: /Golpe Furioso/ })).toBeInTheDocument();
+
+    // Seleciona e confirma
+    fireEvent.click(screen.getByRole("option", { name: /Medicina de Batalha/ }));
+    fireEvent.click(screen.getByRole("button", { name: "Aceitar" }));
+    expect(applyPickerSelection).toHaveBeenCalledWith("feat", expect.objectContaining({ name: "Medicina de Batalha (Battle Medicine)" }), { filterType: "Geral" });
+  });
 });
+
