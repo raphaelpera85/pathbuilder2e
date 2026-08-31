@@ -2,14 +2,14 @@
 
 Backlog vivo para completar o construtor a partir dos PDFs locais em `D:\Users\rapha\Documents\Projetos\RPG\livros`. Cada registro de regra deve manter `id`, nomes em `pt-BR`, `en` e `es`, `ruleset`, `source.book`, `source.page` e `needs_review` quando a página ainda não estiver confirmada.
 
-Última auditoria executada com `npm run audit:catalog`: 571 registros; 78 sem nomes completos, 78 sem resumos completos, 78 sem fonte/página, 50 em revisão e nenhum ID duplicado. Esses números são diagnóstico do estado atual, não critério de conclusão.
+Última auditoria executada com `npm run audit:catalog`: 608 registros; 73 sem nomes completos, 73 sem resumos completos, 73 sem fonte/página, 45 em revisão e nenhum ID duplicado. Esses números são diagnóstico do estado atual, não critério de conclusão.
 
 ## P0 — bloqueios de integridade
 
 - [x] Corrigir propriedades duplicadas em `src/i18n.tsx` que impediam `npm run build`.
 - [x] Fazer `npm run build` passar novamente e manter `npm test`, `node --check js/pf2e_data.js` e `node --check js/app.js` verdes.
 - [x] Corrigir a inconsistência do formato de condições entre `ICharacterDocument` (lista) e o legado (objeto indexado), com migração compatível.
-- [ ] Corrigir o bridge legado para `shield`, `pet`, `formula`, `condition` e `buff`; cada tipo deve abrir o catálogo correto e persistir a seleção.
+- [x] Corrigir o bridge legado para `shield`, `pet`, `formula`, `condition` e `buff`; cada tipo deve abrir o catálogo correto e persistir a seleção.
 - [ ] Remover ou testar fallbacks que criam regras sem fonte; qualquer opção não confirmada deve aparecer como `needs_review`.
 
 ## P1 — catálogo jogável e proveniência
@@ -21,6 +21,7 @@ Backlog vivo para completar o construtor a partir dos PDFs locais em `D:\Users\r
 - [ ] Catalogar integralmente Dark Archive: Psíquico, Taumaturgo, subclasses, arquétipos, maldições, pactos, itens e magias.
 - [ ] Catalogar integralmente Rage of Elements: Cineticista, geniekin, impulsos, magias, itens e biografias elementais.
 - [ ] Catalogar integralmente Howl of the Wild: Athamaru, Animal Desperto, Centauro, Povo-Sereia, Minotauro, Surki, arquétipos, magias, equipamentos e companheiros.
+  - [x] Incluir as 16 magias das páginas 85–88 com rank, tradições, nomes/resumos trilíngues e proveniência; ainda faltam os textos/efeitos completos e demais opções do livro.
 - [ ] Catalogar integralmente War of Immortals: Animista, Exemplar, linhagens, arquétipos, opções míticas, equipamentos, magias e rituais.
 - [ ] Catalogar integralmente Battlecry!: Jotunnato, Comandante, Guardião, antecedentes, arquétipos, armas, armaduras, escudos, munições e equipamentos.
 - [ ] Reconciliar duplicatas pt/en e registrar também o Livro Básico e o Manual do Jogador como referências separadas, sem contar a mesma obra duas vezes.

@@ -52,6 +52,8 @@ describe("responsive layout contract", () => {
     expect(main).toContain("PF2E_FEATS_CATALOG");
     expect(app).toContain("const sharedCatalogs = window.pathbuilderCatalogs || {};");
     expect(app).toContain("function mergeCatalogRecords(primary = [], secondary = [])");
+    expect(app).toContain("function getObjectCatalogRecords(collection = {})");
+    expect(app).toContain(".legacy_alias.");
     expect(app).toContain("mergeCatalogRecords(sharedCatalogs.items, PF2E_DATA.items)");
     expect(app).toContain("mergeCatalogRecords(sharedCatalogs.feats, PF2E_DATA.feats");
   });

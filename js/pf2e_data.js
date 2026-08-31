@@ -4357,6 +4357,150 @@ for (const category of ["items", "formulas"]) {
   }
 }
 
+// Aliases históricos usados por fichas antigas apontam para as entradas
+// verificadas dos suplementos, mantendo a seleção compatível sem duplicar
+// regras ou perder a fonte original.
+const LEGACY_RECORD_ALIASES = [
+  [PF2E_DATA.ancestries, "Athamaru (Povo-Peixe)", "Athamaru"],
+  [PF2E_DATA.ancestries, "Surki (Povo-Inseto)", "Surki"],
+  [PF2E_DATA.ancestries, "Tritão / Sereia (Merfolk)", "Povo-Sereia (Merfolk)"],
+  [PF2E_DATA.classes, "Exemplar (Exemplar)", "Exemplar"]
+];
+for (const [collection, alias, canonical] of LEGACY_RECORD_ALIASES) {
+  if (!collection?.[alias] || !collection?.[canonical]) continue;
+  const legacySubclasses = Array.isArray(collection[alias].subclasses) ? [...collection[alias].subclasses] : null;
+  Object.assign(collection[alias], collection[canonical], {
+    id: `${collection[canonical].id}.legacy_alias.${alias.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "")}`,
+    name: alias
+  });
+  if (legacySubclasses && legacySubclasses.length > (collection[canonical].subclasses?.length || 0)) {
+    collection[alias].subclasses = legacySubclasses;
+  }
+}
+
+const HOWL_WILD_BEASTKIN = (PF2E_DATA.versatileHeritages || []).find((record) => record.name === "Beastkin (Toque Bestial / Teriantropo)");
+if (HOWL_WILD_BEASTKIN) {
+  Object.assign(HOWL_WILD_BEASTKIN, {
+    id: "heritage.beastkin",
+    names: { "pt-BR": "Beastkin", en: "Beastkin", es: "Bestial" },
+    summaries: {
+      "pt-BR": "Herança versátil que manifesta uma forma bestial e adaptações de animal.",
+      en: "A versatile heritage that manifests a bestial form and animal adaptations.",
+      es: "Una herencia versátil que manifiesta una forma bestial y adaptaciones animales."
+    },
+    source: { book: HOWL_WILD_SOURCE, page: 77 },
+    ruleset: "remaster",
+    needs_review: false
+  });
+}
+
+const HOWL_WILD_ARCHETYPES = [
+  ["archetype.beastmaster_howl_expansion", "Expansão do Mestre das Feras", "Beastmaster Expansion", "Expansión del Maestro de bestias", 66, "Expande as opções de companheiros e a progressão do arquétipo Mestre das Feras.", "Expands companion options and the Beastmaster archetype progression.", "Amplía las opciones de compañeros y la progresión del arquetipo Maestro de bestias."],
+  ["archetype.clawdancer", "Dançarino das Garras", "Clawdancer", "Danzagarras", 68, "Arquétipo marcial que transforma movimento e ataques naturais em uma dança predatória.", "A martial archetype that turns movement and natural attacks into a predatory dance.", "Un arquetipo marcial que convierte el movimiento y los ataques naturales en una danza depredadora."],
+  ["archetype.ostilli_host", "Hospedeiro de Ostilli", "Ostilli Host", "Anfitrión ostilli", 70, "Arquétipo que abriga uma criatura ostilli simbiótica e desenvolve seus poderes.", "An archetype that houses a symbiotic ostilli creature and develops its powers.", "Un arquetipo que alberga una criatura ostilli simbiótica y desarrolla sus poderes."],
+  ["archetype.swarmkeeper", "Guardião do Enxame", "Swarmkeeper", "Guardián del enjambre", 72, "Arquétipo que conduz e combate ao lado de um enxame de pequenas criaturas.", "An archetype that commands and fights alongside a swarm of tiny creatures.", "Un arquetipo que dirige y combate junto a un enjambre de criaturas diminutas."],
+  ["archetype.thlipit_contestant", "Competidor Thlipit", "Thlipit Contestant", "Competidor thlipit", 74, "Arquétipo inspirado no esporte thlipit, com técnicas de arremesso, deslocamento e competição.", "An archetype inspired by the thlipit sport, with throwing, movement, and competition techniques.", "Un arquetipo inspirado en el deporte thlipit, con técnicas de lanzamiento, movimiento y competición."],
+  ["archetype.werecreature", "Licantropo", "Werecreature", "Licántropo", 76, "Arquétipo que manifesta uma forma híbrida bestial e poderes de uma criatura metamórfica.", "An archetype that manifests a bestial hybrid form and shapeshifter powers.", "Un arquetipo que manifiesta una forma híbrida bestial y poderes de cambiaformas."],
+  ["archetype.wild_mimic", "Mímico Selvagem", "Wild Mimic", "Mímico salvaje", 80, "Arquétipo que imita formas, movimentos e características de animais selvagens.", "An archetype that mimics the forms, movements, and features of wild animals.", "Un arquetipo que imita las formas, movimientos y rasgos de animales salvajes."],
+  ["archetype.winged_warrior", "Guerreiro Alado", "Winged Warrior", "Guerrero alado", 82, "Arquétipo aéreo que combina voo, mobilidade e combate marcial.", "An aerial archetype combining flight, mobility, and martial combat.", "Un arquetipo aéreo que combina vuelo, movilidad y combate marcial."]
+];
+for (const [id, pt, en, es, page, ptSummary, enSummary, esSummary] of HOWL_WILD_ARCHETYPES) {
+  if ((PF2E_DATA.archetypes || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.archetypes.push({
+    id, name: `${pt} (${en})`, subtype: "standard", names: { "pt-BR": pt, en, es },
+    summaries: { "pt-BR": ptSummary, en: enSummary, es: esSummary }, description: ptSummary,
+    source: { book: HOWL_WILD_SOURCE, page }, ruleset: "remaster", needs_review: false
+  });
+}
+
+const HOWL_WILD_COMPANIONS = [
+  ["pet.howl.antelope", "Antílope", "Antelope", "Antílope", 91, "Companheiro veloz e montável que pode causar sangramento persistente.", "A swift mount companion that can cause persistent bleed damage.", "Compañero veloz y montable que puede causar daño persistente por sangrado."],
+  ["pet.howl.elk", "Alce", "Elk", "Alce", 91, "Companheiro montável que intimida inimigos com seus chifres.", "A mount companion that frightens enemies with its antlers.", "Compañero montable que asusta a los enemigos con sus astas."],
+  ["pet.howl.flying_squirrel", "Esquilo Voador", "Flying Squirrel", "Ardilla voladora", 92, "Companheiro que plana e dificulta o deslocamento dos inimigos.", "A companion that glides and hampers enemy movement.", "Compañero que planea y dificulta el movimiento enemigo."],
+  ["pet.howl.giraffe", "Girafa", "Giraffe", "Jirafa", 92, "Companheiro montável de pescoço longo que amplia manobras de Empurrar.", "A long-necked mount that improves Shove maneuvers.", "Montura de cuello largo que mejora las maniobras de Empujar."],
+  ["pet.howl.kangaroo", "Canguru", "Kangaroo", "Canguro", 92, "Companheiro saltador que combina mobilidade e ataques corporais.", "A leaping companion combining mobility and natural attacks.", "Compañero saltador que combina movilidad y ataques naturales."],
+  ["pet.howl.mongoose", "Mangusto", "Mongoose", "Mangosta", 93, "Companheiro ágil que protege criaturas próximas contra flanqueamento.", "An agile companion that protects nearby creatures from flanking.", "Compañero ágil que protege a criaturas cercanas contra el flanqueo."],
+  ["pet.howl.salamander", "Salamandra", "Salamander", "Salamandra", 93, "Companheiro anfíbio que secreta veneno e nada em águas rasas.", "An amphibious companion that secretes poison and swims in shallow water.", "Compañero anfibio que secreta veneno y nada en aguas poco profundas."],
+  ["pet.howl.giant_eel", "Enguia Gigante", "Giant Eel", "Anguila gigante", 94, "Companheiro aquático avançado que cria ângulos inesperados para flanquear.", "An advanced aquatic companion that creates unexpected flanking positions.", "Compañero acuático avanzado que crea posiciones inesperadas de flanqueo."],
+  ["pet.howl.giant_frog", "Sapo Gigante", "Giant Frog", "Rana gigante", 94, "Companheiro anfíbio avançado com língua de longo alcance e controle de reações.", "An advanced amphibious companion with a long-range tongue and reaction control.", "Compañero anfibio avanzado con lengua de largo alcance y control de reacciones."],
+  ["pet.howl.hippogriff", "Hipogrifo", "Hippogriff", "Hipogrifo", 95, "Companheiro voador avançado para montaria e ataques aéreos.", "An advanced flying companion for mounted and aerial attacks.", "Compañero volador avanzado para ataques montados y aéreos."],
+  ["pet.howl.riding_tarantula", "Tarântula de Montaria", "Riding Tarantula", "Tarántula de monta", 96, "Companheiro aracnídeo avançado que escala e perturba ações de concentração.", "An advanced arachnid companion that climbs and disrupts concentrate actions.", "Compañero arácnido avanzado que trepa y perturba acciones de concentración."],
+  ["pet.howl.roc", "Roc", "Roc", "Roc", 96, "Companheiro voador colossal avançado capaz de carregar criaturas e empurrá-las.", "A colossal advanced flying companion able to carry and push creatures.", "Compañero volador colosal avanzado capaz de transportar y empujar criaturas."],
+  ["pet.howl.umbrella_mushroom", "Cogumelo Guarda-Chuva", "Umbrella Mushroom", "Hongo sombrilla", 96, "Companheiro fungo avançado que flutua e deixa inimigos estupefatos.", "An advanced fungal companion that floats and leaves enemies stupefied.", "Compañero fúngico avanzado que flota y deja a los enemigos estupefactos."]
+];
+for (const [id, pt, en, es, page, ptSummary, enSummary, esSummary] of HOWL_WILD_COMPANIONS) {
+  if ((PF2E_DATA.pets || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.pets.push({
+    id, name: `${pt} (${en})`, type: "animal_companion", size: "Variável", speed: "Ver descrição",
+    attacks: [], supportBenefit: ptSummary, description: ptSummary,
+    names: { "pt-BR": pt, en, es }, summaries: { "pt-BR": ptSummary, en: enSummary, es: esSummary },
+    source: { book: HOWL_WILD_SOURCE, page }, ruleset: "remaster", needs_review: true
+  });
+}
+
+const HOWL_WILD_BASIC_COMPANION_STATS = {
+  "pet.howl.antelope": { size: "Médio ou Grande", speed: "40 pés", hp: 6, abilityMods: { str: 2, dex: 3, con: 2, int: -4, wis: 1, cha: 0 }, attacks: [{ name: "Chifres", bonus: "—", damage: "1d6 perfurante", traits: ["Acurada"] }, { name: "Casco", bonus: "—", damage: "1d4 impacto", traits: ["Ágil", "Acurada"] }], supportBenefit: "Enquanto montado, Golpes que causam dano no alcance do antílope também causam 1d6 de sangramento persistente até o início do seu próximo turno.", specialAbility: "Montaria; Manobra Avançada: Retirada Saltitante." },
+  "pet.howl.elk": { size: "Médio ou Grande", speed: "30 pés", hp: 8, abilityMods: { str: 3, dex: 2, con: 2, int: -4, wis: 1, cha: 0 }, attacks: [{ name: "Chifres", bonus: "—", damage: "1d8 perfurante", traits: [] }, { name: "Casco", bonus: "—", damage: "1d6 impacto", traits: ["Ágil"] }], supportBenefit: "Até o início do seu próximo turno, se você atingir e causar dano a uma criatura no alcance do alce, ela fica Amedrontada 1.", specialAbility: "Montaria; Manobra Avançada: Catapulta de Chifres." },
+  "pet.howl.flying_squirrel": { size: "Pequeno", speed: "25 pés, escalada 25 pés", hp: 6, abilityMods: { str: 2, dex: 3, con: 1, int: -4, wis: 2, cha: 0 }, attacks: [{ name: "Mandíbulas", bonus: "—", damage: "1d6 perfurante", traits: ["Acurada"] }, { name: "Garra", bonus: "—", damage: "1d4 cortante", traits: ["Ágil", "Acurada"] }], supportBenefit: "Até o fim do seu próximo turno, um alvo atingido por seu Golpe no alcance do esquilo sofre –10 pés de penalidade de circunstância em seus Deslocamentos por 1 rodada.", specialAbility: "Planar; Manobra Avançada: Morte do Alto." },
+  "pet.howl.giraffe": { size: "Grande", speed: "35 pés", hp: 8, abilityMods: { str: 3, dex: 2, con: 2, int: -4, wis: 1, cha: 0 }, attacks: [{ name: "Casco", bonus: "—", damage: "1d6 impacto", traits: ["Ágil"] }, { name: "Pescoço", bonus: "—", damage: "1d4 impacto", traits: ["Não-Letal", "Alcance 10 pés"] }], supportBenefit: "Enquanto montado na girafa, você não precisa de uma mão livre para Empurrar e um inimigo Empurrado move 10 pés (15 pés em sucesso crítico).", specialAbility: "Montaria; Manobra Avançada: Pisão Longo." },
+  "pet.howl.kangaroo": { size: "Pequeno", speed: "30 pés", hp: 6, abilityMods: { str: 3, dex: 2, con: 2, int: -4, wis: 1, cha: 0 }, attacks: [{ name: "Pé", bonus: "—", damage: "1d6 impacto", traits: ["Ágil"] }], supportBenefit: "Até o início do seu próximo turno, o canguru conta como estando em seu espaço ou em um espaço vazio a até 5 pés para determinar flanqueamento.", specialAbility: "Salto horizontal de até 25 pés; Manobra Avançada: Chute Saltitante." },
+  "pet.howl.mole": { size: "Pequeno", speed: "25 pés, escavação 20 pés", hp: 8, abilityMods: { str: 3, dex: 2, con: 2, int: -4, wis: 1, cha: 0 }, attacks: [{ name: "Mandíbulas", bonus: "—", damage: "1d8 perfurante", traits: [] }, { name: "Garra", bonus: "—", damage: "1d6 cortante", traits: ["Ágil"] }], supportBenefit: "Até o fim do seu próximo turno, se você atingir e causar dano a uma criatura adjacente à toupeira, ela fica Desajeitada 1 até sair da posição.", specialAbility: "Manobra Avançada: Emboscada Subterrânea." },
+  "pet.howl.mongoose": { size: "Pequeno", speed: "25 pés, escavação 10 pés", hp: 4, abilityMods: { str: 2, dex: 3, con: 1, int: -4, wis: 1, cha: 1 }, attacks: [{ name: "Mandíbulas", bonus: "—", damage: "1d6 perfurante", traits: ["Acurada"] }, { name: "Garra", bonus: "—", damage: "1d4 cortante", traits: ["Ágil", "Acurada"] }], supportBenefit: "Até o fim do seu próximo turno, criaturas adjacentes ao mangusto não podem flanquear você.", specialAbility: "Manobra Avançada: Mordida Libertadora." },
+  "pet.howl.salamander": { size: "Pequeno", speed: "20 pés, natação 10 pés", hp: 6, abilityMods: { str: 2, dex: 2, con: 2, int: -4, wis: 1, cha: 1 }, attacks: [{ name: "Cauda", bonus: "—", damage: "1d6 impacto", traits: [] }, { name: "Mandíbulas", bonus: "—", damage: "1d4 perfurante", traits: [] }], supportBenefit: "Até o início do seu próximo turno, uma criatura adjacente que atingir você ou a salamandra sofre 1d6 de dano de veneno.", specialAbility: "Visão no escuro; Manobra Avançada: Varredura Venenosa." }
+};
+for (const [id, stats] of Object.entries(HOWL_WILD_BASIC_COMPANION_STATS)) {
+  const record = (PF2E_DATA.pets || []).find((candidate) => candidate.id === id);
+  if (!record) continue;
+  Object.assign(record, stats, { needs_review: false });
+}
+
+const HOWL_WILD_ADVANCED_COMPANION_STATS = {
+  "pet.howl.giant_eel": { requiredLevel: 4, rarity: "uncommon", size: "Grande", speed: "10 pés, natação 40 pés", hp: 4, abilityMods: { str: 3, dex: 1, con: 2, int: -4, wis: 2, cha: 0 }, attacks: [{ name: "Mandíbulas", bonus: "—", damage: "1d8 perfurante", traits: [] }], supportBenefit: "Até o início do seu próximo turno, para determinar flanqueamento a enguia pode contar como estando em seu espaço ou em um espaço vazio a até 10 pés, escolhendo um espaço diferente a cada ataque.", specialAbility: "Aquático, montaria; Manobra Avançada: Estalo Nadador." },
+  "pet.howl.giant_frog": { requiredLevel: 6, size: "Grande", speed: "20 pés, escalada 20 pés, natação 25 pés", hp: 6, abilityMods: { str: 2, dex: 2, con: 3, int: -4, wis: 1, cha: 0 }, attacks: [{ name: "Mandíbulas", bonus: "—", damage: "1d8 perfurante", traits: [] }, { name: "Língua", bonus: "—", damage: "1d4 impacto", traits: ["Alcance 15 pés"] }], supportBenefit: "Até o início do seu próximo turno, quando você atingir com sucesso uma criatura ameaçada pelo sapo, ela não pode usar reações acionadas por suas ações, a menos que seu nível seja maior que o seu.", specialAbility: "Anfíbio, montaria; Manobra Avançada: Agarrão com a Língua." },
+  "pet.howl.hippogriff": { requiredLevel: 14, size: "Grande", speed: "30 pés, voo 60 pés", hp: 8, abilityMods: { str: 2, dex: 2, con: 2, int: -4, wis: 2, cha: 0 }, attacks: [{ name: "Bico", bonus: "—", damage: "1d6 perfurante", traits: [] }, { name: "Garra", bonus: "—", damage: "1d4 cortante", traits: ["Ágil"] }], supportBenefit: "Enquanto montado e após mover-se 10 pés ou mais antes de um Golpe corpo a corpo, adicione ao dano um bônus de circunstância igual ao dobro dos dados de dano da arma.", specialAbility: "Montaria; Manobra Avançada: Retirada Aérea." },
+  "pet.howl.riding_tarantula": { requiredLevel: 6, size: "Grande", speed: "30 pés, escalada 30 pés", hp: 4, abilityMods: { str: 2, dex: 3, con: 1, int: -4, wis: 2, cha: 0 }, attacks: [{ name: "Presas", bonus: "—", damage: "1d6 perfurante mais veneno", traits: ["Acurada"] }, { name: "Perna", bonus: "—", damage: "1d4 perfurante", traits: ["Ágil", "Acurada"] }], supportBenefit: "Até o início do seu próximo turno, uma criatura atingida por seu Golpe que esteja no alcance da tarântula deve passar em um teste simples CD 5 ao usar uma ação de concentração ou perde a ação.", specialAbility: "Montaria a partir do 8º nível; Manobra Avançada: Rajada de Pelos." },
+  "pet.howl.roc": { requiredLevel: 16, rarity: "uncommon", size: "Enorme", speed: "15 pés, voo 60 pés", hp: 8, abilityMods: { str: 3, dex: 1, con: 3, int: -4, wis: 1, cha: 0 }, attacks: [{ name: "Bico", bonus: "—", damage: "1d10 perfurante", traits: [] }, { name: "Garra", bonus: "—", damage: "1d8 cortante mais Agarrar", traits: ["Ágil"] }], supportBenefit: "Até o início do seu próximo turno, seus Golpes que causam dano a uma criatura ameaçada pelo roc empurram o alvo 5 pés para longe do roc.", specialAbility: "Montaria; Manobra Avançada: Arrebatar." },
+  "pet.howl.umbrella_mushroom": { requiredLevel: 14, rarity: "uncommon", size: "Grande", speed: "15 pés, voo 30 pés", hp: 6, abilityMods: { str: 2, dex: 2, con: 3, int: -4, wis: 1, cha: 0 }, attacks: [{ name: "Haste", bonus: "—", damage: "1d8 impacto", traits: [] }], supportBenefit: "Até o início do seu próximo turno, seus Golpes que causam dano a uma criatura no alcance do cogumelo deixam o alvo Estupefato 1 por 1 rodada; o efeito tem o traço veneno.", specialAbility: "Traço fungo, montaria; reação avançada Flutuar ao cair." }
+};
+for (const [id, stats] of Object.entries(HOWL_WILD_ADVANCED_COMPANION_STATS)) {
+  const record = (PF2E_DATA.pets || []).find((candidate) => candidate.id === id);
+  if (!record) continue;
+  Object.assign(record, stats, { needs_review: false });
+}
+
+// Magias de Howl of the Wild confirmadas no sumário e nas entradas do PDF
+// local (pp. 85-88). Os resumos são descrições de catálogo; o texto integral
+// de regras continua sendo consultado na fonte para evitar uma transcrição
+// parcial apresentada como regra completa.
+const HOWL_WILD_SPELLS = [
+  ["spell.howl.albatross_curse", "Maldição do Albatroz", "Albatross Curse", "Maldición del albatros", 2, ["occult", "primal"], 85, "Amaldiçoa uma criatura com azar e limita sua capacidade de voar ou se manter segura.", "Curses a creature with misfortune and limits its ability to fly or remain safe.", "Maldice a una criatura con infortunio y limita su capacidad de volar o mantenerse a salvo."],
+  ["spell.howl.antlion_trap", "Armadilha de Formigueiro-Leão", "Antlion Trap", "Trampa de hormiguero", 3, ["primal"], 85, "Cria uma armadilha escavada que prende e pune criaturas que atravessam a área.", "Creates a dug trap that restrains and punishes creatures crossing the area.", "Crea una trampa excavada que retiene y castiga a las criaturas que cruzan el área."],
+  ["spell.howl.camel_spit", "Cuspe de Camelo", "Camel Spit", "Escupitajo de camello", 1, ["arcane", "primal"], 85, "Lança um jato corrosivo de cuspe contra um alvo distante.", "Projects a corrosive spit attack at a distant target.", "Proyecta un ataque de saliva corrosiva contra un objetivo distante."],
+  ["spell.howl.claws_of_the_otter", "Garras da Lontra", "Claws of the Otter", "Garras de la nutria", 2, ["divine", "primal"], 85, "Concede garras e adaptações de lontra para lutar e se mover na água.", "Grants otter claws and adaptations for fighting and moving through water.", "Concede garras y adaptaciones de nutria para luchar y moverse en el agua."],
+  ["spell.howl.confusing_cry", "Grito Confuso", "Confusing Cry", "Grito confuso", 5, ["divine", "primal"], 85, "Um chamado desconcertante confunde criaturas na área e atrapalha suas ações.", "A disorienting cry confuses creatures in the area and disrupts their actions.", "Un grito desconcertante confunde a las criaturas del área y perturba sus acciones."],
+  ["spell.howl.croak_voice", "Voz de coaxar", "Croak Voice", "Voz de croar", 3, ["arcane", "primal"], 85, "Transforma a voz em um coaxar sobrenatural com efeitos sonoros e aquáticos.", "Transforms the voice into a supernatural croak with sonic and aquatic effects.", "Transforma la voz en un croar sobrenatural con efectos sónicos y acuáticos."],
+  ["spell.howl.foraging_friends", "Amigos Forrageadores", "Foraging Friends", "Amigos forrajeadores", 1, ["primal"], 86, "Convoca pequenos ajudantes animais para procurar recursos e auxiliar a exploração.", "Calls small animal helpers to forage for resources and aid exploration.", "Llama a pequeños ayudantes animales para buscar recursos y ayudar en la exploración."],
+  ["spell.howl.frog_tongue", "Língua de Sapo", "Frog Tongue", "Lengua de rana", 2, ["primal"], 86, "Estende uma língua pegajosa para alcançar, puxar ou manipular um alvo.", "Extends a sticky tongue to reach, pull, or manipulate a target.", "Extiende una lengua pegajosa para alcanzar, tirar o manipular un objetivo."],
+  ["spell.howl.hidebound", "Couro Resistente", "Hidebound", "Piel curtida", 2, ["arcane", "primal"], 86, "Uma reação endurece a pele do alvo para reduzir o impacto de um ataque.", "A reaction hardens the target's hide to reduce the impact of an attack.", "Una reacción endurece la piel del objetivo para reducir el impacto de un ataque."],
+  ["spell.howl.hippocampus_retreat", "Retirada do Hipocampo", "Hippocampus Retreat", "Retirada del hipocampo", 1, ["arcane", "primal"], 87, "Permite uma retirada veloz pela água, inspirada na agilidade de um hipocampo.", "Enables a swift retreat through water, inspired by a hippocampus's agility.", "Permite una retirada veloz por el agua, inspirada en la agilidad de un hipocampo."],
+  ["spell.howl.luring_wail", "Uivo Atraente", "Luring Wail", "Lamento atrayente", 4, ["occult", "primal"], 87, "Um lamento irresistível atrai criaturas para uma posição escolhida.", "An irresistible wail draws creatures toward a chosen position.", "Un lamento irresistible atrae a las criaturas hacia una posición elegida."],
+  ["spell.howl.primal_chorus", "Coro Primal", "Primal Chorus", "Coro primigenio", 3, ["primal"], 87, "Aliados entoam um coro natural que fortalece ataques, sentidos ou coordenação.", "Allies join a natural chorus that bolsters attacks, senses, or coordination.", "Los aliados entonan un coro natural que refuerza ataques, sentidos o coordinación."],
+  ["spell.howl.sacred_beasts", "Feras Sagradas", "Sacred Beasts", "Bestias sagradas", 1, ["divine", "primal"], 87, "Invoca a bênção de animais sagrados para proteger ou orientar os alvos.", "Invokes the blessing of sacred animals to protect or guide the targets.", "Invoca la bendición de animales sagrados para proteger u orientar a los objetivos."],
+  ["spell.howl.snake_fangs", "Presas de Serpente", "Snake Fangs", "Colmillos de serpiente", 4, ["primal"], 87, "Concede presas venenosas e uma mordida predatória por um período limitado.", "Grants venomous fangs and a predatory bite for a limited duration.", "Concede colmillos venenosos y una mordedura depredadora durante un tiempo limitado."],
+  ["spell.howl.summon_stampede", "Invocar Estampida", "Summon Stampede", "Invocar estampida", 7, ["primal"], 88, "Convoca uma estampida de animais que atravessa a área e causa caos e dano.", "Summons a stampede of animals that crosses the area, causing chaos and damage.", "Convoca una estampida de animales que atraviesa el área y causa caos y daño."],
+  ["spell.howl.summon_warden_of_the_wild", "Invocar Guardião da Natureza", "Summon Warden of the Wild", "Invocar guardián de lo salvaje", 8, ["primal"], 88, "Invoca um poderoso guardião primal para lutar ao lado do conjurador.", "Summons a powerful primal warden to fight alongside the caster.", "Convoca a un poderoso guardián primigenio para luchar junto al lanzador."]
+];
+for (const [id, pt, en, es, rank, traditions, page, ptSummary, enSummary, esSummary] of HOWL_WILD_SPELLS) {
+  if ((PF2E_DATA.spells || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.spells.push({
+    id, name: `${pt} (${en})`, rank, traditions,
+    names: { "pt-BR": pt, en, es },
+    summaries: { "pt-BR": ptSummary, en: enSummary, es: esSummary },
+    description: ptSummary,
+    source: { book: HOWL_WILD_SOURCE, page }, ruleset: "remaster", needs_review: false
+  });
+}
+
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = PF2E_DATA;
 }

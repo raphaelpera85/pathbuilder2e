@@ -21,6 +21,19 @@ function mergeCatalogRecords(primary = [], secondary = []) {
   return merged;
 }
 
+function getObjectCatalogRecords(collection = {}) {
+  const entries = Object.entries(collection || {});
+  const canonical = entries.filter(([, record]) => !String(record?.id || "").includes(".legacy_alias."));
+  const aliases = entries.filter(([, record]) => String(record?.id || "").includes(".legacy_alias."));
+  const seen = new Set();
+  return [...canonical, ...aliases].map(([key, record]) => ({ key, record })).filter(({ key, record }) => {
+    const semanticKey = record?.names?.en || record?.id || key;
+    if (seen.has(semanticKey)) return false;
+    seen.add(semanticKey);
+    return true;
+  });
+}
+
 function assertSafeCharacterDocument(value) {
   if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error("Ficha inválida.");
   const serialized = JSON.stringify(value);
@@ -1836,10 +1849,10 @@ class PathbuilderApp {
   getPickerItems(type) {
     const sharedCatalogs = window.pathbuilderCatalogs || {};
     if (type === "ancestry") {
-      return Object.keys(PF2E_DATA.ancestries).map(k => ({ name: k, type: "Ancestralidade", data: PF2E_DATA.ancestries[k] }));
+      return getObjectCatalogRecords(PF2E_DATA.ancestries).map(({ key, record }) => ({ name: key, type: "Ancestralidade", data: record }));
     }
     if (type === "class") {
-      return Object.keys(PF2E_DATA.classes).map(k => ({ name: k, type: "Classe", data: PF2E_DATA.classes[k] }));
+      return getObjectCatalogRecords(PF2E_DATA.classes).map(({ key, record }) => ({ name: key, type: "Classe", data: record }));
     }
     if (type === "background") {
       return PF2E_DATA.backgrounds.map(b => ({ name: b.name, type: "Antecedente", data: b }));
@@ -2085,9 +2098,9 @@ class PathbuilderApp {
     const sharedCatalogs = window.pathbuilderCatalogs || {};
 
     if (this.currentPickerType === "ancestry") {
-      items = Object.keys(PF2E_DATA.ancestries).map(k => ({ name: k, type: "Ancestralidade", data: PF2E_DATA.ancestries[k] }));
+      items = getObjectCatalogRecords(PF2E_DATA.ancestries).map(({ key, record }) => ({ name: key, type: "Ancestralidade", data: record }));
     } else if (this.currentPickerType === "class") {
-      items = Object.keys(PF2E_DATA.classes).map(k => ({ name: k, type: "Classe", data: PF2E_DATA.classes[k] }));
+      items = getObjectCatalogRecords(PF2E_DATA.classes).map(({ key, record }) => ({ name: key, type: "Classe", data: record }));
     } else if (this.currentPickerType === "background") {
       items = PF2E_DATA.backgrounds.map(b => ({ name: b.name, type: "Antecedente", data: b }));
     } else if (this.currentPickerType === "weapon") {
