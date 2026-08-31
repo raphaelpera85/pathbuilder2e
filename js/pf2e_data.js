@@ -555,7 +555,15 @@ const PF2E_DATA = {
       weapons: { "Simples": "Treinado", "Marcial": "Destreinado", "Desarmado": "Treinado" },
       classDc: "Treinado",
       description: "Estudiosos supremos das leis do arcano, preparando feitiços complexos em seus grimórios antigos.",
-      subclasses: ["Escola de Artes Cívicas", "Escola de Magia de Batalha", "Escola de Fronteiras Mentais", "Escola do Velo Unificado (Generalista)"]
+      subclasses: [
+        "Escola da Ars Grammatica (School of Ars Grammatica / Escuela de Ars Grammatica)",
+        "Escola da Forma Proteana (School of the Protean Form / Escuela de la Forma Proteica)",
+        "Escola dos Limiares (School of the Boundary / Escuela de los Límites)",
+        "Escola da Magia Bélica (School of Battle Magic / Escuela de Magia Bélica)",
+        "Escola da Magia Cívica (School of Civic Magic / Escuela de Magia Cívica)",
+        "Escola do Mentalismo (School of Mentalism / Escuela del Mentalismo)",
+        "Escola da Teoria Mágica Unificada (School of Unified Magical Theory / Escuela de Teoría Mágica Unificada)"
+      ]
     },
     "Magus": {
       hpPerLevel: 8,
@@ -568,7 +576,7 @@ const PF2E_DATA = {
       weapons: { "Simples": "Treinado", "Marcial": "Treinado", "Desarmado": "Treinado" },
       classDc: "Treinado",
       description: "Guerreiros arcanos que canalizam feitiços devastadores através de lâminas em Ataques Mágicos (Spellstrike).",
-      subclasses: ["Lâmina Risonha (Laughing Shadow)", "Defensor Cintilante (Sparkling Targe)", "Giro Inexorável (Inexorable Iron)", "Árvore de Raios (Starlit Span)"]
+      subclasses: ["Árvore Retorcida (Twisting Tree / Árbol retorcido)", "Ferro Inexorável (Inexorable Iron / Hierro inexorable)", "Sombra Jocosa (Laughing Shadow / Sombra jocosa)", "Targe Cintilante (Sparkling Targe / Broquel centelleante)", "Vão Estrelado (Starlit Span / Vano estelar)"]
     },
     "Monge (Monk)": {
       hpPerLevel: 10,
@@ -594,7 +602,7 @@ const PF2E_DATA = {
       weapons: { "Simples": "Treinado", "Marcial": "Destreinado", "Desarmado": "Treinado" },
       classDc: "Treinado",
       description: "Tocados por mistérios cósmicos avassaladores e amaldiçoados com poderes divinos incontroláveis.",
-      subclasses: ["Mistério da Batalha", "Mistério dos Ossos", "Mistério das Chamas", "Mistério dos Cosmos", "Mistério das Tempestades", "Mistério da Vida"]
+      subclasses: ["Mistério dos Ancestrais (Ancestors / Antepasados)", "Mistério da Batalha (Battle / Batalla)", "Mistério dos Ossos (Bones / Huesos)", "Mistério das Chamas (Flames / Llamas)", "Mistério dos Cosmos (Cosmos / Cosmos)", "Mistério do Saber (Lore / Saber)", "Mistério das Tempestades (Tempest / Tempestad)", "Mistério da Vida (Life / Vida)"]
     },
     "Patrulheiro (Ranger)": {
       hpPerLevel: 10,
@@ -5583,7 +5591,7 @@ PF2E_DATA.spellcastingByClass = {
   "Bardo (Bard)": { tradition: "Oculta", keyAbility: "cha", type: "Espontâneo", cantrips: 5, focusPoolMax: 3, slotsPerLevel: { 1: [2], 2: [3], 3: [3, 2], 4: [3, 3], 5: [3, 3, 2], 6: [3, 3, 3], 7: [3, 3, 3, 2], 8: [3, 3, 3, 3], 9: [3, 3, 3, 3, 2], 10: [3, 3, 3, 3, 3] } },
   "Feiticeiro (Sorcerer)": { tradition: "Variável (Linhagem)", keyAbility: "cha", type: "Espontâneo", cantrips: 5, focusPoolMax: 3, slotsPerLevel: { 1: [3], 2: [4], 3: [4, 3], 4: [4, 4], 5: [4, 4, 3], 6: [4, 4, 4], 7: [4, 4, 4, 3], 8: [4, 4, 4, 4], 9: [4, 4, 4, 4, 3], 10: [4, 4, 4, 4, 4] } },
   "Bruxo (Witch)": { tradition: "Variável (Patrono)", keyAbility: "int", type: "Preparado", cantrips: 5, initialFocusPoints: 1, focusPoolMax: 3, slotsPerLevel: { 1: [2], 2: [3], 3: [3, 2], 4: [3, 3], 5: [3, 3, 2], 6: [3, 3, 3], 7: [3, 3, 3, 2], 8: [3, 3, 3, 3], 9: [3, 3, 3, 3, 2], 10: [3, 3, 3, 3, 3] } },
-  "Oráculo (Oracle)": { tradition: "Divina", keyAbility: "cha", type: "Espontâneo", cantrips: 5, focusPoolMax: 3, slotsPerLevel: { 1: [2], 2: [3], 3: [3, 2], 4: [3, 3], 5: [3, 3, 2], 6: [3, 3, 3], 7: [3, 3, 3, 2], 8: [3, 3, 3, 3], 9: [3, 3, 3, 3, 2], 10: [3, 3, 3, 3, 3] } },
+  "Oráculo (Oracle)": { tradition: "Divina", keyAbility: "cha", type: "Espontâneo", cantrips: 5, initialFocusPoints: 1, focusPoolMax: 3, slotsPerLevel: { 1: [2], 2: [3], 3: [3, 2], 4: [3, 3], 5: [3, 3, 3], 6: [3, 3, 3], 7: [3, 3, 3, 2], 8: [3, 3, 3, 3], 9: [3, 3, 3, 3, 2], 10: [3, 3, 3, 3, 3] } },
   "Animista (Animist)": { tradition: "Divina", keyAbility: "wis", type: "Preparado", cantrips: 5, focusPoolMax: 3, slotsPerLevel: { 1: [2], 2: [3], 3: [3, 2], 4: [3, 3], 5: [3, 3, 2], 6: [3, 3, 3], 7: [3, 3, 3, 2], 8: [3, 3, 3, 3], 9: [3, 3, 3, 3, 2], 10: [3, 3, 3, 3, 3] } },
   "Magus": { tradition: "Arcana", keyAbility: "int", type: "Preparado Limitado (Bounded)", cantrips: 5, focusPoolMax: 3, slotsPerLevel: { 1: [1], 2: [2], 3: [2], 4: [2], 5: [2, 2], 6: [2, 2], 7: [2, 2], 8: [2, 2], 9: [2, 2], 10: [2, 2] } },
   "Convocador (Summoner)": { tradition: "Variável (Eidolon)", keyAbility: "cha", type: "Espontâneo Limitado (Bounded)", cantrips: 5, focusPoolMax: 3, slotsPerLevel: { 1: [1], 2: [2], 3: [2], 4: [2], 5: [2, 2], 6: [2, 2], 7: [2, 2], 8: [2, 2], 9: [2, 2], 10: [2, 2] } },
@@ -8370,6 +8378,94 @@ for (const patron of PLAYER_CORE_WITCH_PATRONS) {
       es: `Patrón de Bruja de tradición ${patron.tradition}; concede ${patron.hexCantrip.es} y ${patron.familiarAbility.es}.`
     },
     source: { book: PLAYER_CORE_SOURCE, page: patron.page }, sourceApproximate: false, ruleset: "remaster", needs_review: false
+  });
+}
+
+// Livro do Jogador Remaster, p. 183: a tese arcana é uma escolha independente
+// da escola. Mantê-la como opção própria evita que trocar a tese sobrescreva
+// o currículo/escola já escolhido pelo Mago.
+const PLAYER_CORE_WIZARD_THESES = [
+  ["spell_blending", "Mescla de Magia", "Spell Blending", "Mezcla de conjuros", "Troca dois espaços de mesmo ranque por um espaço até dois ranques maior durante as preparações.", "Trades two same-rank slots for one slot up to two ranks higher during daily preparations.", "Cambia dos espacios del mismo rango por uno de hasta dos rangos mayor durante las preparaciones."],
+  ["experimental_spellshape", "Moldamagia Experimental", "Experimental Spellshape", "Moldeado de conjuros experimental", "Concede um talento de moldamagia de Mago de 1º nível e permite trocar a escolha nas preparações a partir do 4º nível.", "Grants a 1st-level Wizard spellshape feat and allows changing it during preparations from 4th level.", "Otorga una dote de moldeado de conjuros de Mago de nivel 1 y permite cambiarla durante las preparaciones desde nivel 4."],
+  ["staff_nexus", "Nexo de Cajado", "Staff Nexus", "Nexo de bastón", "Concede um cajado improvisado e permite carregar o cajado durante as preparações diárias.", "Grants an improvised staff and lets you charge the staff during daily preparations.", "Otorga un bastón improvisado y permite cargarlo durante las preparaciones diarias."],
+  ["improved_familiar_attunement", "Sintonização com Familiar Aprimorada", "Improved Familiar Attunement", "Sintonización mejorada con familiar", "Concede Familiar, uma habilidade adicional e Drenar Familiar em vez de Drenar Item Vinculado.", "Grants Familiar, one extra familiar ability, and Drain Familiar instead of Drain Bonded Item.", "Otorga Familiar, una habilidad adicional y Drenar Familiar en vez de Drenar objeto vinculado."],
+  ["spell_substitution", "Substituição de Magia", "Spell Substitution", "Sustitución de conjuros", "Permite gastar 10 minutos para trocar uma magia preparada por outra do grimório em um espaço vazio.", "Lets you spend 10 minutes to replace a prepared spell with another spell from your spellbook in an empty slot.", "Permite gastar 10 minutos para sustituir un conjuro preparado por otro del libro de conjuros en un espacio vacío."]
+];
+const PLAYER_CORE_WIZARD_SCHOOLS = [
+  ["ars_grammatica", "Escola da Ars Grammatica", "School of Ars Grammatica", "Escuela de Ars Grammatica", 186, "Guarita de Proteção", "Protective Wards", "Guardas protectoras"],
+  ["protean_form", "Escola da Forma Proteana", "School of the Protean Form", "Escuela de la Forma Proteica", 187, "Embaralhar Corpo", "Scramble Body", "Desordenar cuerpo"],
+  ["boundary", "Escola dos Limiares", "School of the Boundary", "Escuela de los Límites", 187, "Fortificar Convocação", "Fortify Summoning", "Fortalecer invocación"],
+  ["battle_magic", "Escola da Magia Bélica", "School of Battle Magic", "Escuela de Magia Bélica", 188, "Raio de Força", "Force Bolt", "Rayo de fuerza"],
+  ["civic_magic", "Escola da Magia Cívica", "School of Civic Magic", "Escuela de Magia Cívica", 188, "Terraplenagem", "Earthworks", "Movimiento de tierras"],
+  ["mentalism", "Escola do Mentalismo", "School of Mentalism", "Escuela del Mentalismo", 188, "Ímpeto Cativante", "Charming Push", "Impulso encantador"],
+  ["unified_magical_theory", "Escola da Teoria Mágica Unificada", "School of Unified Magical Theory", "Escuela de Teoría Mágica Unificada", 188, "Mão do Aprendiz", "Hand of the Apprentice", "Mano del aprendiz"]
+];
+for (const [slug, pt, en, es, page, spellPt, spellEn, spellEs] of PLAYER_CORE_WIZARD_SCHOOLS) {
+  const record = PF2E_DATA.subclasses.find((candidate) => candidate.classId === "class.wizard" && candidate.names?.en === `${en} / ${es}`);
+  if (!record) continue;
+  Object.assign(record, {
+    id: `subclass.class.wizard.school_${slug}`, school: true,
+    name: `${pt} (${en} / ${es})`, names: { "pt-BR": pt, en, es },
+    initialSchoolSpell: { "pt-BR": spellPt, en: spellEn, es: spellEs },
+    summaries: {
+      "pt-BR": `Currículo arcano de Mago; concede a magia de escola inicial ${spellPt}.`,
+      en: `Wizard arcane curriculum; grants the initial school spell ${spellEn}.`,
+      es: `Plan de estudios arcano de Mago; concede el conjuro inicial de escuela ${spellEs}.`
+    },
+    source: { book: PLAYER_CORE_SOURCE, page }, sourceApproximate: false, ruleset: "remaster", needs_review: false
+  });
+}
+for (const [slug, pt, en, es, summaryPt, summaryEn, summaryEs] of PLAYER_CORE_WIZARD_THESES) {
+  const id = `subclass.class.wizard.thesis_${slug}`;
+  if (PF2E_DATA.subclasses.some((record) => record.id === id)) continue;
+  PF2E_DATA.subclasses.push({
+    id, classId: "class.wizard", className: "Mago (Wizard)", choiceField: "wizardThesis", thesis: true,
+    name: `${pt} (${en} / ${es})`, names: { "pt-BR": pt, en, es }, summaries: { "pt-BR": summaryPt, en: summaryEn, es: summaryEs },
+    source: { book: PLAYER_CORE_SOURCE, page: 183 }, sourceApproximate: false, ruleset: "remaster", needs_review: false
+  });
+}
+
+// Segredos da Magia, pp. 62–64: os cinco estudos híbridos são a escolha de
+// 1º nível do Magus. Eles não são arquétipos nem opções intercambiáveis de
+// outra classe, portanto recebem registros próprios e verificáveis.
+const SECRETS_OF_MAGIC_MAGUS_HYBRID_STUDIES = [
+  ["twisting_tree", "Árvore Retorcida", "Twisting Tree", "Árbol retorcido", 62, "Transforma o cajado em arma marcial versátil e concede a magia de confluência Cajado Giratório.", "Makes a staff a versatile martial weapon and grants the Spinning Staff conflux spell.", "Convierte un bastón en un arma marcial versátil y concede el conjuro de confluencia Bastón giratorio."],
+  ["inexorable_iron", "Ferro Inexorável", "Inexorable Iron", "Hierro inexorable", 62, "Canaliza armas pesadas para resistir ao combate e concede Golpe Estrondoso como magia de confluência.", "Channels heavy weapons to endure combat and grants Thunderous Strike as its conflux spell.", "Canaliza armas pesadas para resistir el combate y concede Golpe atronador como conjuro de confluencia."],
+  ["laughing_shadow", "Sombra Jocosa", "Laughing Shadow", "Sombra jocosa", 62, "Aumenta mobilidade e dano contra alvos desprevenidos em Cascata Arcana; concede Agressão Dimensional.", "Improves mobility and damage against off-guard targets in Arcane Cascade; grants Dimensional Assault.", "Mejora movilidad y daño contra objetivos desprevenidos en Cascada arcana; concede Asalto dimensional."],
+  ["sparkling_targe", "Targe Cintilante", "Sparkling Targe", "Broquel centelleante", 63, "Aprimora o escudo contra efeitos mágicos em Cascata Arcana e concede Golpe e Escudo.", "Improves a shield against magical effects in Arcane Cascade and grants Shielding Strike.", "Mejora el escudo contra efectos mágicos en Cascada arcana y concede Golpe y escudo."],
+  ["starlit_span", "Vão Estrelado", "Starlit Span", "Vano estelar", 63, "Permite Golpe de Magia à distância no primeiro incremento e concede Estrela Cadente.", "Allows ranged Spellstrike within the first range increment and grants Shooting Star.", "Permite Golpe de conjuro a distancia dentro del primer incremento y concede Estrella fugaz."]
+];
+for (const [slug, pt, en, es, page, summaryPt, summaryEn, summaryEs] of SECRETS_OF_MAGIC_MAGUS_HYBRID_STUDIES) {
+  const record = PF2E_DATA.subclasses.find((candidate) => candidate.classId === "class.magus" && candidate.names?.en === `${en} / ${es}`);
+  if (!record) continue;
+  Object.assign(record, {
+    id: `subclass.class.magus.hybrid_study_${slug}`, hybridStudy: true,
+    name: `${pt} (${en} / ${es})`, names: { "pt-BR": pt, en, es },
+    summaries: { "pt-BR": summaryPt, en: summaryEn, es: summaryEs },
+    source: { book: SECRETS_OF_MAGIC_SOURCE, page }, sourceApproximate: false, ruleset: "legacy", needs_review: false
+  });
+}
+
+// Livro do Jogador 2, pp. 161–163: os oito mistérios Remaster determinam
+// as magias de revelação, a perícia concedida e a maldição do Oráculo.
+const PLAYER_CORE_2_ORACLE_MYSTERIES = [
+  ["ancestors", "Mistério dos Ancestrais", "Ancestors", "Antepasados", 161, "Vozes das gerações passadas guiam e atrapalham suas ações.", "Voices of past generations guide and hinder your actions.", "Las voces de generaciones pasadas guían y dificultan tus acciones."],
+  ["battle", "Mistério da Batalha", "Battle", "Batalla", 161, "Forças bélicas concedem poder físico e conhecimento tático.", "Warlike forces grant physical power and tactical knowledge.", "Fuerzas bélicas conceden poder físico y conocimiento táctico."],
+  ["flames", "Mistério das Chamas", "Flames", "Llamas", 161, "O fogo alimenta seu poder e exige que você permaneça em movimento.", "Fire fuels your power and demands that you keep moving.", "El fuego alimenta tu poder y exige que sigas moviéndote."],
+  ["cosmos", "Mistério dos Cosmos", "Cosmos", "Cosmos", 162, "As estrelas e o espaço entre elas concedem seu poder.", "The stars and the space between them grant your power.", "Las estrellas y el espacio entre ellas conceden tu poder."],
+  ["bones", "Mistério dos Ossos", "Bones", "Huesos", 162, "A morte está próxima e os mortos conversam com você.", "Death is close, and the dead speak with you.", "La muerte está cerca y los muertos hablan contigo."],
+  ["lore", "Mistério do Saber", "Lore", "Saber", 163, "Conhecimento vasto e avassalador transborda para sua mente.", "Vast and overwhelming knowledge pours into your mind.", "Un conocimiento vasto y abrumador inunda tu mente."],
+  ["tempest", "Mistério das Tempestades", "Tempest", "Tempestad", 163, "Ventos, ondas e tempestades respondem ao seu chamado.", "Winds, waves, and storms answer your call.", "Vientos, olas y tormentas responden a tu llamado."],
+  ["life", "Mistério da Vida", "Life", "Vida", 163, "As energias vibrantes da vida fluem através de você e pelo mundo.", "The vibrant energies of life flow through you and the world.", "Las energías vibrantes de la vida fluyen por ti y por el mundo."]
+];
+for (const [slug, pt, en, es, page, summaryPt, summaryEn, summaryEs] of PLAYER_CORE_2_ORACLE_MYSTERIES) {
+  const record = PF2E_DATA.subclasses.find((candidate) => candidate.classId === "class.oracle" && candidate.names?.en === `${en} / ${es}`);
+  if (!record) continue;
+  Object.assign(record, {
+    id: `subclass.class.oracle.mystery_${slug}`, mystery: true,
+    name: `${pt} (${en} / ${es})`, names: { "pt-BR": pt, en, es },
+    summaries: { "pt-BR": summaryPt, en: summaryEn, es: summaryEs },
+    source: { book: PLAYER_CORE_2_SOURCE, page }, sourceApproximate: false, ruleset: "remaster", needs_review: false
   });
 }
 

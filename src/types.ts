@@ -176,6 +176,10 @@ export interface ICharacterDocument {
   patronHex?: string;
   patronFamiliarSpell?: string;
   patronFamiliarAbility?: string;
+  /** Wizard arcane thesis, selected separately from the school/curriculum. */
+  wizardThesis?: string;
+  /** Oracle mystery, selected separately while retaining legacy subclass data. */
+  mystery?: string;
   abilities: ICharacterAbilities;
   savingThrows?: {
     fortitude?: string;

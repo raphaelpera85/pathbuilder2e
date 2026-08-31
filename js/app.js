@@ -1565,6 +1565,17 @@ class PathbuilderApp {
       if (patronHex && !this.character.spells.some((spell) => spell.id === patronHex.id)) {
         this.character.spells.push({ ...patronHex, grantedByPatron: patron.id });
       }
+      const familiarCatalog = [...(PF2E_DATA.pets || []), ...((window.pathbuilderCatalogs || {}).pets || [])];
+      const witchFamiliar = familiarCatalog.find((pet) => pet.id === "pet.familiar.mystic");
+      if (!Array.isArray(this.character.pets)) this.character.pets = [];
+      const existingFamiliar = this.character.pets.find((pet) => pet.id === "pet.familiar.mystic" && pet.grantedByClass === "class.witch");
+      if (existingFamiliar) {
+        existingFamiliar.grantedByPatron = patron.id;
+        existingFamiliar.patronAbility = this.character.patronFamiliarAbility;
+        existingFamiliar.familiarSpell = this.character.patronFamiliarSpell;
+      } else if (witchFamiliar) {
+        this.character.pets.push({ ...witchFamiliar, classId: "class.witch", grantedByClass: "class.witch", grantedByPatron: patron.id, patronAbility: this.character.patronFamiliarAbility, familiarSpell: this.character.patronFamiliarSpell });
+      }
       return;
     }
     if (profile.traditionMode === "fixed") {
@@ -1583,6 +1594,8 @@ class PathbuilderApp {
       // stale choices instead of leaving an invalid character state behind.
       this.character.subclass = "";
       this.character.patron = "";
+      this.character.wizardThesis = "";
+      this.character.mystery = "";
       this.clearProgressionSlots("class_feat");
       this.clearProgressionSlots("class_feature");
       if (Array.isArray(this.character.feats)) {
@@ -1611,14 +1624,17 @@ class PathbuilderApp {
 
   applySubclassSelection(item, options = {}) {
     if (!item) return;
-    const targetField = options.targetField === "patron" ? "patron" : "subclass";
+    const targetField = ["patron", "wizardThesis", "mystery"].includes(options.targetField) ? options.targetField : "subclass";
     if (targetField === "patron" && item.data?.patron !== true) return;
+    if (targetField === "wizardThesis" && item.data?.thesis !== true) return;
+    if (targetField === "mystery" && item.data?.mystery !== true) return;
     const previousValue = this.character[targetField];
     this.character[targetField] = item.name;
     // Witch patrons are represented by the class subclass catalog because
     // PF2e grants the patron at the same creation step. Keep both fields in
     // sync so legacy spellcasting and the explicit character field agree.
     if (targetField === "patron") this.character.subclass = item.name;
+    if (targetField === "mystery") this.character.subclass = item.name;
     if (previousValue === item.name) return;
     this.clearProgressionSlots("class_feature");
     this.reconcileSpellcastingProfile();
@@ -2529,6 +2545,10 @@ class PathbuilderApp {
     const checker = PF2E_ENGINE?.getPrerequisiteCompatibility;
     const compatibilityCharacter = this.getPickerCompatibilityCharacter(type);
     return items.filter((item) => {
+      if (type === "subclass" && this.activePickerOptions?.targetField === "wizardThesis" && item.data?.thesis !== true) return false;
+      if (type === "subclass" && this.activePickerOptions?.targetField === "patron" && item.data?.patron !== true) return false;
+      if (type === "subclass" && this.activePickerOptions?.targetField === "mystery" && item.data?.mystery !== true) return false;
+      if (type === "subclass" && (this.activePickerOptions?.targetField === "subclass" || !this.activePickerOptions?.targetField) && (item.data?.thesis === true || item.data?.patron === true || item.data?.mystery === true)) return false;
       const heritageInnateSpell = type === "spell" && this.activePickerOptions?.heritageInnate === true;
       // A escolha de truque ocultista inato não exige que a ficha tenha um
       // perfil de conjuração próprio, mas ainda deve respeitar todos os outros
@@ -2957,6 +2977,13 @@ class PathbuilderApp {
       items = (PF2E_DATA.buffs || this.getBuffCatalog()).map(b => ({ name: b.name, type: "Benefício", data: b }));
     } else {
       items = PF2E_DATA.backgrounds.map(b => ({ name: b.name, type: "Geral", data: b }));
+    }
+
+    if (this.currentPickerType === "subclass") {
+      if (this.activePickerOptions?.targetField === "wizardThesis") items = items.filter((item) => item.data?.thesis === true);
+      else if (this.activePickerOptions?.targetField === "patron") items = items.filter((item) => item.data?.patron === true);
+      else if (this.activePickerOptions?.targetField === "mystery") items = items.filter((item) => item.data?.mystery === true);
+      else items = items.filter((item) => item.data?.thesis !== true && item.data?.patron !== true && item.data?.mystery !== true);
     }
 
     // O modal legado também é uma superfície de escolha: não apresente
@@ -4110,7 +4137,7 @@ class PathbuilderApp {
           },
           wizard: {
             heading: ["Escola Arcana", "Arcane School", "Escuela arcana"],
-            entries: [["Escola Arcana", "Select Arcane School", "Seleccionar escuela arcana", "subclass"], ["Tese Arcana", "Select Thesis", "Seleccionar tesis", "none"], ["Vínculo Arcano", "Arcane Bond", "Vínculo arcano", "none"], ["Drenar Item Vinculado", "Drain Bonded Item", "Drenar objeto vinculado", "none"], ["Grimório", "Spellbook", "Libro de conjuros", "none"], ["Conjuração de Mago", "Wizard Spellcasting", "Lanzamiento de mago", "none"]]
+            entries: [["Escola Arcana", "Select Arcane School", "Seleccionar escuela arcana", "subclass"], ["Tese Arcana", "Select Thesis", "Seleccionar tesis", "subclass", "wizardThesis"], ["Vínculo Arcano", "Arcane Bond", "Vínculo arcano", "none"], ["Drenar Item Vinculado", "Drain Bonded Item", "Drenar objeto vinculado", "none"], ["Grimório", "Spellbook", "Libro de conjuros", "none"], ["Conjuração de Mago", "Wizard Spellcasting", "Lanzamiento de mago", "none"]]
           },
           magus: {
             heading: ["Estudo Híbrido", "Hybrid Study", "Estudio híbrido"],
@@ -4118,7 +4145,7 @@ class PathbuilderApp {
           },
           oracle: {
             heading: ["Mistério", "Mystery", "Misterio"],
-            entries: [["Mistério", "Select Mystery", "Seleccionar misterio", "subclass"], ["Maldição Oracular", "Oracular Curse", "Maldición oracular", "none"], ["Feitiços de Revelação", "Revelation Spells", "Conjuros de revelación", "none"]]
+            entries: [["Mistério", "Select Mystery", "Seleccionar misterio", "subclass", "mystery"], ["Maldição Oracular", "Oracular Curse", "Maldición oracular", "none"], ["Feitiços de Revelação", "Revelation Spells", "Conjuros de revelación", "none"]]
           },
           necromancer: {
             heading: ["Método Fatal", "Fatal Method", "Método fatal"],
@@ -4819,6 +4846,8 @@ class PathbuilderApp {
       background: "Guarda da Cidade",
       subclass: "Escudo e Lâmina",
       patron: "",
+      wizardThesis: "",
+      mystery: "",
       abilities: { str: 16, dex: 12, con: 14, int: 10, wis: 12, cha: 10 },
       savingThrows: { fortitude: "Especialista", reflex: "Especialista", will: "Treinado" },
       perceptionRank: "Especialista",

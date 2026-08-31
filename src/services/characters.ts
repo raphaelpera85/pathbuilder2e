@@ -1,5 +1,6 @@
 import { isSupabaseConfigured, supabase } from "../lib/supabase";
 import { getCurrentSession, type UserProfile } from "./auth";
+import { withRequestTimeout } from "./requestTimeout";
 
 export interface CharacterData extends Record<string, unknown> {
   id: string;
@@ -101,11 +102,11 @@ export async function listCharacters(currentUser?: UserProfile): Promise<CloudCh
 
   if (isSupabaseConfigured && supabase) {
     try {
-      const { data, error } = await supabase
+      const { data, error } = await withRequestTimeout(supabase
         .from("characters")
         .select("id,user_id,character_key,name,level,ruleset,gm_email,player_email,player_name,data,created_at,updated_at")
         .eq("user_id", activeUser.id)
-        .order("updated_at", { ascending: false });
+        .order("updated_at", { ascending: false }), 8_000, "A biblioteca demorou para responder. Usando as fichas salvas neste dispositivo.");
       if (!error && data) return (data ?? []) as CloudCharacter[];
       if (error) console.warn("Supabase characters query aviso:", error.message);
     } catch (err) {

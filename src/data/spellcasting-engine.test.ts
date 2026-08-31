@@ -83,6 +83,33 @@ describe("P2: Motor de Grimório & Spellcasting Automático (Spellcasting Engine
     expect(engine.getSpellCompatibility(witch, hexes.find((spell: any) => spell.id.endsWith("the_resentment")))).toMatchObject({ state: "incompatible", reason: "subclass-mismatch" });
   });
 
+  it("separa as cinco teses arcanas da escola do Mago", () => {
+    const theses = catalog.subclasses.filter((record: any) => record.classId === "class.wizard" && record.thesis === true);
+    expect(theses).toHaveLength(5);
+    expect(theses.every((record: any) => record.choiceField === "wizardThesis" && record.source?.page === 183 && record.needs_review === false)).toBe(true);
+  });
+
+  it("cataloga os sete currículos arcanos Remaster do Mago", () => {
+    const schools = catalog.subclasses.filter((record: any) => record.classId === "class.wizard" && record.school === true);
+    expect(schools).toHaveLength(7);
+    expect(schools.every((record: any) => record.initialSchoolSpell && record.source?.page >= 186 && record.source?.page <= 188 && record.needs_review === false)).toBe(true);
+  });
+
+  it("cataloga os cinco estudos híbridos do Magus com fontes exatas", () => {
+    const studies = catalog.subclasses.filter((record: any) => record.classId === "class.magus" && record.hybridStudy === true);
+    expect(studies).toHaveLength(5);
+    expect(studies.map((record: any) => record.names.en)).toEqual(expect.arrayContaining(["Twisting Tree", "Inexorable Iron", "Laughing Shadow", "Sparkling Targe", "Starlit Span"]));
+    expect(studies.every((record: any) => record.source?.book === "Segredos da Magia (pré-Remaster)" && [62, 63].includes(record.source.page) && record.needs_review === false)).toBe(true);
+  });
+
+  it("cataloga os oito mistérios Remaster do Oráculo e inicia foco", () => {
+    const mysteries = catalog.subclasses.filter((record: any) => record.classId === "class.oracle" && record.mystery === true);
+    expect(mysteries).toHaveLength(8);
+    expect(mysteries.map((record: any) => record.names.en)).toEqual(expect.arrayContaining(["Ancestors", "Battle", "Bones", "Flames", "Cosmos", "Lore", "Tempest", "Life"]));
+    expect(mysteries.every((record: any) => record.source?.book === "Livro do Jogador 2 (Player Core 2, Remaster)" && [161, 162, 163].includes(record.source.page) && record.needs_review === false)).toBe(true);
+    expect(engine.calculateSpellcasting({ level: 1, class: "Oráculo (Oracle)", abilities: { cha: 18 } })).toMatchObject({ maxFocusPoints: 1, focusPoints: 1 });
+  });
+
   it("usa level como fallback de ranque para magias importadas do formato legado", () => {
     const compatibility = engine.getSpellCompatibility(
       { level: 1, class: "Mago (Wizard)", magicTradition: "Arcana" },

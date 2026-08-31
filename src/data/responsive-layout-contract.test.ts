@@ -181,7 +181,13 @@ describe("responsive layout contract", () => {
     expect(app).toContain('promptSubclass(options = {}) {\n    this.openPicker("subclass", options);\n  }');
     expect(app).toContain('["Patrono", "Patron", "Patrón", "subclass", "patron"]');
     expect(app).toContain('targetField === "patron"');
+    expect(app).toContain('targetField === "wizardThesis"');
+    expect(app).toContain('targetField === "mystery"');
+    expect(app).toContain('["Tese Arcana", "Select Thesis", "Seleccionar tesis", "subclass", "wizardThesis"]');
+    expect(app).toContain('["Mistério", "Select Mystery", "Seleccionar misterio", "subclass", "mystery"]');
     expect(app).toContain("grantedByPatron: patron.id");
+    expect(app).toContain('pet.id === "pet.familiar.mystic"');
+    expect(app).toContain('grantedByClass: "class.witch"');
     expect(app).toContain("applySubclassSelection(item, this.activePickerOptions || {})");
     expect(app).toContain('["Hex Inicial", "Initial Hex", "Maleficio inicial", "none", "patronHex"]');
     expect(app).toContain("this.character.spells = this.character.spells.filter((spell) => PF2E_ENGINE.getSpellCompatibility(this.character, spell).state !== \"incompatible\")");

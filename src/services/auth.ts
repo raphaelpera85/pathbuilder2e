@@ -1,4 +1,5 @@
 import { isSupabaseConfigured, supabase } from "../lib/supabase";
+import { withRequestTimeout } from "./requestTimeout";
 
 export interface UserProfile {
   id: string;
@@ -77,14 +78,22 @@ function notifyAuthChange(session: AuthSession | null): void {
 async function readCurrentSession(): Promise<AuthSession | null> {
   if (isSupabaseConfigured && supabase) {
     try {
-      const { data: { session }, error } = await supabase.auth.getSession();
+      const { data: { session }, error } = await withRequestTimeout(
+        supabase.auth.getSession(),
+        8_000,
+        "A verificação da sua sessão demorou para responder.",
+      );
       if (error || !session) return null;
 
-      const { data: profile } = await supabase
-        .from("profiles")
-        .select("id,username,role,email")
-        .eq("id", session.user.id)
-        .maybeSingle();
+      const { data: profile } = await withRequestTimeout(
+        supabase
+          .from("profiles")
+          .select("id,username,role,email")
+          .eq("id", session.user.id)
+          .maybeSingle(),
+        8_000,
+        "O perfil demorou para responder.",
+      );
 
       const userRole = (profile as any)?.role === "admin" || session.user.email?.toLowerCase() === "raphaelpera85@gmail.com" ? "admin" : "user";
       const username = (profile as any)?.username || session.user.user_metadata?.username || session.user.email?.split("@")[0] || "Aventureiro";

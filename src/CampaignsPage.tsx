@@ -902,13 +902,13 @@ export function CampaignsPage() {
               {/* ESTATÍSTICAS FUNDAMENTAIS */}
               <div className="inspect-stat-grid">
                 <div className="inspect-stat-card">
-                  <span className="inspect-label">Pontos de Vida</span>
+                  <span className="inspect-label">{t("hitPoints")}</span>
                   <strong className="inspect-val hp">
                     {(inspectedChar.data as any).currentHp ?? (inspectedChar.data as any).maxHp ?? 20} / {(inspectedChar.data as any).maxHp ?? 20}
                   </strong>
                 </div>
                 <div className="inspect-stat-card">
-                  <span className="inspect-label">Classe de Armadura (CA)</span>
+                  <span className="inspect-label">{t("armorClass")}</span>
                   <strong className="inspect-val ca">{(inspectedChar.data as any).ac || 15}</strong>
                 </div>
                 <div className="inspect-stat-card">
@@ -916,14 +916,14 @@ export function CampaignsPage() {
                   <strong className="inspect-val">+{(inspectedChar.data as any).perception || 5}</strong>
                 </div>
                 <div className="inspect-stat-card">
-                  <span className="inspect-label">Deslocamento</span>
+                  <span className="inspect-label">{t("speedLabel")}</span>
                   <strong className="inspect-val">{(inspectedChar.data as any).speed || 25} {t("feet")}</strong>
                 </div>
               </div>
 
               {/* ATRIBUTOS */}
               <div className="inspect-section">
-                <h4>Atributos & Modificadores</h4>
+                <h4>{t("attributesModifiers")}</h4>
                 <div className="inspect-abilities-row">
                   {Object.entries((inspectedChar.data as any).abilities || {
                     str: 14, dex: 16, con: 12, int: 10, wis: 12, cha: 14
@@ -943,11 +943,11 @@ export function CampaignsPage() {
 
               {/* SALVAMENTOS */}
               <div className="inspect-section">
-                <h4>Salvamentos</h4>
+                <h4>{t("savingThrows")}</h4>
                 <div className="inspect-saves-row">
-                  <div className="save-chip">Fortitude: +{(inspectedChar.data as any).saves?.fortitude || 6}</div>
-                  <div className="save-chip">Reflexos: +{(inspectedChar.data as any).saves?.reflex || 8}</div>
-                  <div className="save-chip">Vontade: +{(inspectedChar.data as any).saves?.will || 5}</div>
+                  <div className="save-chip">{t("fortitude")}: +{(inspectedChar.data as any).saves?.fortitude || 6}</div>
+                  <div className="save-chip">{t("reflex")}: +{(inspectedChar.data as any).saves?.reflex || 8}</div>
+                  <div className="save-chip">{t("will")}: +{(inspectedChar.data as any).saves?.will || 5}</div>
                 </div>
               </div>
 
@@ -955,10 +955,10 @@ export function CampaignsPage() {
               <div className="inspect-section">
                 <h4>{t("historyDeity")}</h4>
                 <p style={{ fontSize: "13px", color: "var(--pb-text-muted)" }}>
-                  <strong>Divindade:</strong> {(inspectedChar.data as any).deity || t("noDeity")}
+                  <strong>{t("deity")}:</strong> {(inspectedChar.data as any).deity || t("noDeity")}
                 </p>
                 <p style={{ fontSize: "13px", color: "var(--pb-text-muted)", marginTop: "4px" }}>
-                  <strong>Histórico:</strong> {(inspectedChar.data as any).backstory || t("noBackstory")}
+                  <strong>{t("backstory")}:</strong> {(inspectedChar.data as any).backstory || t("noBackstory")}
                 </p>
               </div>
             </div>

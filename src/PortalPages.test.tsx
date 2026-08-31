@@ -93,9 +93,9 @@ describe("PortalPages", () => {
     expect(pathfinderSources).toHaveLength(12);
     expect(pathfinderSources.every((source) => source.pageCountStatus === "verified_with_pdfinfo")).toBe(true);
     expect(pathfinderSources.every((source) => source.languageEvidence === "inferred_from_filename")).toBe(true);
-    expect(pathfinderSources.find((source) => source.id === "player-core-pt")).toMatchObject({ catalogStatus: "partial", linkedRecords: 957 });
-    expect(pathfinderSources.find((source) => source.id === "player-core-2-pt")).toMatchObject({ catalogStatus: "partial", linkedRecords: 1100 });
-    expect(pathfinderSources.find((source) => source.id === "secrets-of-magic-pt")).toMatchObject({ catalogStatus: "partial", linkedRecords: 172, ruleset: "legacy" });
+    expect(pathfinderSources.find((source) => source.id === "player-core-pt")).toMatchObject({ catalogStatus: "partial", linkedRecords: 965 });
+    expect(pathfinderSources.find((source) => source.id === "player-core-2-pt")).toMatchObject({ catalogStatus: "partial", linkedRecords: 1102 });
+    expect(pathfinderSources.find((source) => source.id === "secrets-of-magic-pt")).toMatchObject({ catalogStatus: "partial", linkedRecords: 173, ruleset: "legacy" });
     expect(pathfinderSources.find((source) => source.id === "guns-gears-pt")).toMatchObject({ catalogStatus: "partial", linkedRecords: 192, ruleset: "legacy" });
     expect(pathfinderSources.find((source) => source.id === "dark-archive")).toMatchObject({ catalogStatus: "partial", linkedRecords: 219, ruleset: "legacy" });
     expect(pathfinderSources.find((source) => source.id === "rage-elements")).toMatchObject({ catalogStatus: "partial", linkedRecords: 306, ruleset: "remaster" });
