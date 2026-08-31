@@ -22,8 +22,8 @@ describe("P1: Validador de Prontidão da Ficha & Regras ABC (Readiness Engine)",
   const { engine, data } = loadEngine();
 
   it("mantém contagens de registros ligadas aos PDFs atuais", () => {
-    expect(pathfinderSources.find((source) => source.id === "player-core-pt")?.linkedRecords).toBe(947);
-    expect(pathfinderSources.find((source) => source.id === "player-core-2-pt")?.linkedRecords).toBe(1094);
+    expect(pathfinderSources.find((source) => source.id === "player-core-pt")?.linkedRecords).toBe(957);
+    expect(pathfinderSources.find((source) => source.id === "player-core-2-pt")?.linkedRecords).toBe(1100);
     expect(pathfinderSources.find((source) => source.id === "guns-gears-pt")?.linkedRecords).toBe(192);
     expect(pathfinderSources.find((source) => source.id === "howl-wild")?.linkedRecords).toBe(120);
   });
@@ -408,6 +408,16 @@ describe("P1: Validador de Prontidão da Ficha & Regras ABC (Readiness Engine)",
     });
     expect(engine.getPrerequisiteCompatibility({ level: 1, class: "Bárbaro (Barbarian)", subclass: "Instinto Dracônico", abilities: { con: 12 } }, draconicFeat).state).toBe("available");
     expect(engine.getPrerequisiteCompatibility({ level: 1, class: "Bárbaro (Barbarian)", instinct: "Animal Instinct", abilities: { con: 12 } }, draconicFeat)).toMatchObject({ state: "incompatible", reason: "subclass-mismatch" });
+  });
+
+  it("considera o campo contextual correto mesmo quando uma ficha importada mantém outro alias", () => {
+    const record = { id: "feat.test.dragon", requiredSubclass: ["Instinto Dracônico"] };
+    expect(engine.getPrerequisiteCompatibility({
+      level: 1,
+      class: "Bárbaro (Barbarian)",
+      subclass: "Instinto Animal",
+      instinct: "Draconic Instinct",
+    }, record)).toMatchObject({ state: "available" });
   });
 
   it("valida dependências explícitas de divindade e patrono", () => {

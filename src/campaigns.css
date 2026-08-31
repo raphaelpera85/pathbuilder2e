@@ -198,6 +198,22 @@
   gap: 20px;
 }
 
+/* Em telas portáteis a página fica presa à viewport; apenas o painel de
+   campanhas recebe rolagem, evitando scroll concorrente no documento. */
+@media (max-width: 1080px) {
+  .campaigns-layout {
+    min-height: 0;
+    flex: 1 1 auto;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-right: 3px;
+  }
+  .campaigns-sidebar,
+  .campaign-main-content {
+    min-width: 0;
+  }
+}
+
 .campaign-hero-panel {
   background: var(--pb-bg-card, #131b26);
   border: 1px solid var(--pb-border, #1f2937);

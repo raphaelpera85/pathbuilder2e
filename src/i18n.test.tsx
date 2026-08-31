@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import { beforeEach, describe, expect, it } from "vitest";
 import { I18nProvider, LocaleSwitcher, translate } from "./i18n";
 
@@ -17,10 +17,14 @@ describe("i18n", () => {
     expect(localStorage.getItem("pathbuilder.locale")).toBe("en");
     expect(document.documentElement.lang).toBe("en");
     expect(screen.getByLabelText("Language")).toHaveValue("en");
+    const switcher = screen.getByTitle("Language");
+    expect(within(switcher).getAllByRole("button")).toHaveLength(3);
+    expect(within(switcher).getAllByRole("button").filter((button) => button.classList.contains("active"))).toHaveLength(1);
 
     // Alterna via botão de bandeira da Espanha
     fireEvent.click(screen.getByRole("button", { name: "Español (España)" }));
     expect(localStorage.getItem("pathbuilder.locale")).toBe("es");
     expect(document.documentElement.lang).toBe("es");
+    expect(within(screen.getByTitle("Idioma")).getAllByRole("button").filter((button) => button.classList.contains("active"))).toHaveLength(1);
   });
 });

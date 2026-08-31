@@ -251,8 +251,9 @@ function RulesPage() {
 }
 
 function LibraryPage() {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
   const [session, setSession] = useState<AuthSession | null>(null);
+  const [sessionReady, setSessionReady] = useState(false);
   const [characters, setCharacters] = useState<CloudCharacter[]>([]);
   const [loading, setLoading] = useState(false);
   const [working, setWorking] = useState<string | null>(null);
@@ -287,16 +288,26 @@ function LibraryPage() {
   useEffect(() => {
     void getCurrentSession().then((cur) => {
       setSession(cur);
+      setSessionReady(true);
       if (cur) void loadUserCharacters(cur);
     });
 
     const unsubscribe = subscribeToAuth((next) => {
       setSession(next);
+      setSessionReady(true);
       if (next) void loadUserCharacters(next);
       else setCharacters([]);
     });
     return unsubscribe;
   }, []);
+
+  if (!sessionReady) {
+    return (
+      <main className="portal-page library-auth-page" id="portal-content" tabIndex={-1}>
+        <div className="portal-empty" role="status">{t("loadingSheets")}</div>
+      </main>
+    );
+  }
 
   const handleAuth = async (e: FormEvent) => {
     e.preventDefault();
@@ -312,15 +323,15 @@ function LibraryPage() {
         }
         const next = await signUp(username, email, password);
         if ((next as any)?.pendingConfirmation) {
-          setNotice("Conta criada com sucesso! Enviamos um link de confirmação para o seu e-mail.");
+          setNotice(t("accountCreatedNotice"));
         } else {
           setSession(next);
-          setNotice("Conta criada com sucesso! Bem-vindo.");
+          setNotice(t("welcomeNotice"));
         }
       } else {
         const next = await signIn(email, password);
         setSession(next);
-        setNotice("Conectado com sucesso!");
+        setNotice(t("signedInNotice"));
       }
       if (rememberMe) {
         try {
@@ -338,7 +349,7 @@ function LibraryPage() {
       setPassword("");
       setConfirmPassword("");
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Falha na autenticação.");
+      setError(err instanceof Error ? err.message : t("authenticationFailed"));
     } finally {
       setWorking(null);
     }
@@ -355,15 +366,15 @@ function LibraryPage() {
   };
 
   const handleDeleteCharacter = async (char: CloudCharacter) => {
-    if (!window.confirm(`Excluir '${char.name}' da sua conta?`)) return;
+    if (!window.confirm(`${t("deleteCharacterConfirm")} ${char.name}`)) return;
     if (!session) return;
     setWorking(char.id);
     try {
       await deleteCharacter(char.id, session.user);
       setCharacters((prev) => prev.filter((c) => c.id !== char.id));
-      setNotice("Personagem excluído com sucesso.");
+      setNotice(t("characterDeletedNotice"));
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Erro ao excluir.");
+      setError(err instanceof Error ? err.message : t("deleteCharacterFailed"));
     } finally {
       setWorking(null);
     }
@@ -380,8 +391,8 @@ function LibraryPage() {
       <main className="portal-page library-auth-page" id="portal-content" tabIndex={-1}>
         <div className="auth-card-hero">
           <span className="auth-kicker">PATHBUILDER 2E · CONSTRUTOR DE PERSONAGENS</span>
-          <h1>Acesso à Sua Biblioteca</h1>
-          <p>Entre na sua conta para acessar e gerenciar apenas os seus personagens, ou crie uma conta em segundos.</p>
+          <h1>{t("libraryAccessTitle")}</h1>
+          <p>{t("libraryAccessIntro")}</p>
         </div>
 
         <div className="auth-main-container">
@@ -392,20 +403,20 @@ function LibraryPage() {
                 className={authMode === "signin" ? "active" : ""}
                 onClick={() => { setAuthMode("signin"); setError(null); setNotice(null); }}
               >
-                Entrar
+                {t("enter")}
               </button>
               <button
                 type="button"
                 className={authMode === "signup" ? "active" : ""}
                 onClick={() => { setAuthMode("signup"); setError(null); setNotice(null); }}
               >
-                Criar Nova Conta
+                {t("createNewAccount")}
               </button>
             </div>
 
             {authMode === "signup" && (
               <label>
-                Nome de Usuário
+                {t("username")}
                 <input
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
@@ -416,7 +427,7 @@ function LibraryPage() {
             )}
 
             <label>
-              {authMode === "signup" ? "E-mail" : "Usuário ou E-mail"}
+              {authMode === "signup" ? t("email") : t("usernameOrEmail")}
               <input
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -426,7 +437,7 @@ function LibraryPage() {
             </label>
 
             <label>
-              Senha
+              {t("password")}
               <input
                 type="password"
                 value={password}
@@ -462,7 +473,7 @@ function LibraryPage() {
             </label>
 
             <button className="auth-submit-btn" type="submit" disabled={working === "auth"}>
-              {working === "auth" ? "Processando…" : authMode === "signup" ? "Criar Minha Conta" : "Entrar na Minha Conta"}
+              {working === "auth" ? t("processing") : authMode === "signup" ? t("createMyAccount") : t("signInToAccount")}
             </button>
 
             {error && <div className="account-feedback error" role="alert">{error}</div>}
@@ -471,8 +482,8 @@ function LibraryPage() {
 
           <div className="auth-guest-card">
             <span className="guest-icon">⚔️</span>
-            <h3>Deseja apenas testar?</h3>
-            <p>Você pode acessar o construtor diretamente sem login no modo rápido.</p>
+            <h3>{t("testOnly")}</h3>
+            <p>{t("guestModeDescription")}</p>
             <button
               type="button"
               className="guest-btn"
@@ -481,7 +492,7 @@ function LibraryPage() {
                 window.location.hash = "#/builder";
               }}
             >
-              Criar Ficha Rápida (Convidado)
+              {t("createGuestSheet")}
             </button>
           </div>
         </div>
@@ -493,16 +504,16 @@ function LibraryPage() {
     <main className="portal-page library-dashboard-page" id="portal-content" tabIndex={-1}>
       <header className="library-dash-header">
         <div>
-          <span className="account-kicker">CONECTADO COMO</span>
-          <h1>Biblioteca de {session.user.username}</h1>
-          <p>Gerencie seus personagens criados. Apenas você tem acesso às suas fichas nesta conta.</p>
+          <span className="account-kicker">{t("connectedAs")}</span>
+          <h1>{t("yourLibrary")} · {session.user.username}</h1>
+          <p>{t("libraryManageCopy")}</p>
         </div>
         <div className="library-header-actions">
           <button className="create-char-hero-btn" type="button" onClick={handleCreateNew}>
-            ➕ Criar Novo Personagem
+            ➕ {t("createNewCharacterCta")}
           </button>
           <button className="signout-alt-btn" type="button" onClick={handleSignOut}>
-            🚪 Sair da Conta
+            🚪 {t("signOutAccount")}
           </button>
         </div>
       </header>
@@ -512,19 +523,19 @@ function LibraryPage() {
 
       <section className="library-characters-section">
         <div className="section-heading">
-          <h2>Meus Personagens</h2>
+          <h2>{t("myCharactersTitle")}</h2>
           <span className="char-count-badge">{characters.length}</span>
         </div>
 
         {loading ? (
-          <div className="portal-empty">Carregando seus personagens…</div>
+          <div className="portal-empty">{t("loadingCharacters")}</div>
         ) : characters.length === 0 ? (
           <div className="portal-empty-card">
             <span className="empty-icon">📜</span>
-            <h3>Você ainda não possui nenhum personagem nesta conta</h3>
-            <p>Clique no botão abaixo para criar sua primeira ficha no construtor completo com regras Remaster e IA.</p>
+            <h3>{t("noCharactersTitle")}</h3>
+            <p>{t("noCharactersDescription")}</p>
             <button type="button" className="create-char-hero-btn" onClick={handleCreateNew}>
-              ➕ Começar Primeiro Personagem
+              ➕ {t("startFirstCharacter")}
             </button>
           </div>
         ) : (
@@ -537,16 +548,16 @@ function LibraryPage() {
                     <div>
                       <h3>{char.name}</h3>
                       <span className="char-class-ancestry">
-                        {charData.ancestry || "Humano"} · {charData.class || "Guerreiro"}
+                        {charData.ancestry || t("human")} · {charData.class || t("warrior")}
                       </span>
                     </div>
-                    <span className="char-level-badge">Nível {char.level}</span>
+                    <span className="char-level-badge">{t("level")} {char.level}</span>
                   </div>
 
                   <div className="char-card-stats">
-                    <span><strong>CA:</strong> {charData.ac || 10 + Number(char.level)}</span>
-                    <span><strong>PV:</strong> {charData.maxHp || 20}</span>
-                    <span><strong>Atualizado:</strong> {new Date(char.updated_at).toLocaleDateString()}</span>
+                    <span><strong>{t("armorClassShort")}:</strong> {charData.ac || 10 + Number(char.level)}</span>
+                    <span><strong>{t("hitPointsShort")}:</strong> {charData.maxHp || 20}</span>
+                    <span><strong>{t("updatedAt")}:</strong> {new Date(char.updated_at).toLocaleDateString(locale)}</span>
                   </div>
 
                   <div className="char-card-actions">
@@ -555,14 +566,14 @@ function LibraryPage() {
                       type="button"
                       onClick={() => handleLoadCharacter(char)}
                     >
-                      ⚔️ Abrir no Construtor
+                      ⚔️ {t("openBuilder")}
                     </button>
                     <button
                       className="btn-card-delete"
                       type="button"
                       onClick={() => handleDeleteCharacter(char)}
                       disabled={working === char.id}
-                      title="Excluir ficha"
+                      title={t("deleteSheet")}
                     >
                       🗑️
                     </button>

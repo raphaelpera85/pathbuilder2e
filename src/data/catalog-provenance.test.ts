@@ -963,7 +963,7 @@ describe("proveniência do catálogo legado", () => {
       expect(catalog.archetypes.find((item) => item.id === id)).toMatchObject({ source: { book: "Livro dos Mortos (pré-Remaster)", page }, level: 2, dedicationLevel: 2, prerequisites: ["Você está morto-vivo"], needs_review: false });
     }
     expect(catalog.archetypes.find((item) => item.id === "archetype.viking")).toMatchObject({ source: { page: 223 }, sourceApproximate: true, ruleset: "remaster", needs_review: true });
-    expect(catalog.spells).toHaveLength(370);
+    expect(catalog.spells).toHaveLength(384);
     expect(catalog.spells.find((item) => item.id === "spell.soothe")).toMatchObject({ source: { page: 314 }, rank: 1, ruleset: "remaster", needs_review: false });
     expect(catalog.spells.find((item) => item.id === "spell.fireball")).toMatchObject({ source: { page: 319 }, rank: 3, traditions: ["arcane", "primal"] });
     expect(catalog.spells.find((item) => item.id === "spell.electric_arc")).toMatchObject({ source: { page: 316 }, rank: 1, ruleset: "remaster", needs_review: false });
@@ -977,6 +977,9 @@ describe("proveniência do catálogo legado", () => {
     expect(catalog.spells.find((item) => item.id === "spell.howl.albatross_curse")).toMatchObject({ source: { page: 85 }, rank: 2, traditions: ["occult", "primal"], needs_review: false });
     expect(catalog.spells.find((item) => item.id === "spell.howl.hidebound")).toMatchObject({ source: { page: 86 }, rank: 2, traditions: ["arcane", "primal"], needs_review: false });
     expect(catalog.spells.find((item) => item.id === "spell.howl.summon_warden_of_the_wild")).toMatchObject({ source: { page: 88 }, rank: 8, traditions: ["primal"], needs_review: false });
+    expect(catalog.spells.filter((item) => item.category === "Magia de Devoção" && item.classId === "class.champion")).toHaveLength(6);
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.champion.champions_sacrifice")).toMatchObject({ source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 257 }, rank: 6, focus: true, needs_review: false });
+    expect(catalog.spells.find((item) => item.id === "spell.book_of_dead.consecrated_ground")).toMatchObject({ source: { book: "Livro dos Mortos (pré-Remaster)", page: 29 }, rank: 1, focus: true, needs_review: false });
     expect(catalog.spells.filter((item) => item.category === "Domínio Apócrifo")).toHaveLength(13);
     expect(catalog.spells.find((item) => item.id === "spell.dark_archive.domain.euphoric_renewal")).toMatchObject({ source: { page: 142 }, rank: 4, focus: true, traditions: ["divine"], needs_review: true });
     expect(catalog.spells.filter((item) => item.category === "Magia Temporal")).toHaveLength(11);

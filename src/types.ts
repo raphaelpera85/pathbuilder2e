@@ -69,6 +69,8 @@ export interface IPickerItemData {
   requiredFamiliarAbilities?: number;
   requiredSubclass?: string | string[];
   requiresDeity?: boolean;
+  requiresSelectedDeity?: boolean;
+  requiredDivineFont?: "heal" | "harm";
   requiresNoPatron?: boolean;
   requiredSanctification?: string | string[];
   prohibitedSanctification?: string;
@@ -166,6 +168,14 @@ export interface ICharacterDocument {
   background: string;
   class: string;
   subclass: string;
+  /** Witch patron (kept separate from subclass while accepting legacy sheets). */
+  patron?: string;
+  patronId?: string;
+  patronSkill?: string;
+  patronLesson?: string;
+  patronHex?: string;
+  patronFamiliarSpell?: string;
+  patronFamiliarAbility?: string;
   abilities: ICharacterAbilities;
   savingThrows?: {
     fortitude?: string;

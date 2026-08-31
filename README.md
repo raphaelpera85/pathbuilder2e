@@ -100,11 +100,11 @@ Contagem de páginas, idioma, edição e catalogação são estados separados:
 - `ruleset`: `remaster` ou `legacy` somente quando a edição for confirmada; caso contrário `needs_review`;
 - `linkedRecords`: opções que já possuem livro e página editorial.
 
-Na última auditoria (`npm run audit:catalog`), o catálogo continha 2205 registros,
+Na última auditoria (`npm run audit:catalog`), o catálogo continha 3744 registros,
 incluindo o compêndio expandido legado, subclasses derivadas, heranças específicas
 normalizadas, opções de Player Core 2, Pólvora e Engrenagens, Livro dos Mortos,
 Dark Archive, Rage of Elements, Howl of the Wild, War of Immortals e Battlecry!:
-2161 com livro e página registrados; 44 ainda não têm fonte/página local e 1572
+3701 com livro e página registrados; 43 ainda não têm fonte/página local e 3115
 estão marcados como `needs_review`. Não há
 nomes ou resumos ausentes nos três idiomas configurados (pt-BR, inglês e
 espanhol), nem fallback de tradução detectado no compêndio; as opções sem fonte

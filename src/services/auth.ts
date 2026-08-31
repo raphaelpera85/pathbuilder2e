@@ -17,6 +17,12 @@ const LOCAL_USERS_KEY = "pf2e_local_users_v1";
 const LOCAL_SESSION_KEY = "pf2e_local_active_session_v1";
 const AUTH_STATE_EVENT = "pf2e:auth-state-change";
 
+// AccountPortal e PortalPages podem montar ao mesmo tempo. Compartilhar a
+// leitura inicial impede que uma árvore renderize login enquanto a outra já
+// encontrou a sessão persistida.
+let cachedSession: AuthSession | null | undefined;
+let sessionRequest: Promise<AuthSession | null> | null = null;
+
 interface StoredLocalUser {
   id: string;
   username: string;
@@ -64,10 +70,11 @@ function saveStoredLocalUsers(users: StoredLocalUser[]): void {
 }
 
 function notifyAuthChange(session: AuthSession | null): void {
+  cachedSession = session;
   window.dispatchEvent(new CustomEvent(AUTH_STATE_EVENT, { detail: session }));
 }
 
-export async function getCurrentSession(): Promise<AuthSession | null> {
+async function readCurrentSession(): Promise<AuthSession | null> {
   if (isSupabaseConfigured && supabase) {
     try {
       const { data: { session }, error } = await supabase.auth.getSession();
@@ -111,10 +118,22 @@ export async function getCurrentSession(): Promise<AuthSession | null> {
   }
 }
 
+export async function getCurrentSession(): Promise<AuthSession | null> {
+  if (cachedSession !== undefined) return cachedSession;
+  if (!sessionRequest) sessionRequest = readCurrentSession();
+  try {
+    cachedSession = await sessionRequest;
+    return cachedSession;
+  } finally {
+    sessionRequest = null;
+  }
+}
+
 export async function signIn(emailOrUsername: string, password: string): Promise<AuthSession> {
   const cleanId = emailOrUsername.trim().toLowerCase();
 
   if (isSupabaseConfigured && supabase) {
+    cachedSession = undefined;
     const isEmail = cleanId.includes("@");
     let emailToUse = cleanId;
 
@@ -203,6 +222,7 @@ export async function signUp(username: string, email: string, password: string):
   }
 
   if (isSupabaseConfigured && supabase) {
+    cachedSession = undefined;
     // 1. Verificar se o nome de usuário já está em uso na tabela profiles
     try {
       const { data: existingProfile } = await supabase
@@ -315,11 +335,88 @@ export async function signUp(username: string, email: string, password: string):
 }
 
 export async function signOut(): Promise<void> {
-  if (isSupabaseConfigured && supabase) {
-    await supabase.auth.signOut({ scope: "local" });
+  try {
+    if (isSupabaseConfigured && supabase) await supabase.auth.signOut({ scope: "local" });
+  } finally {
+    localStorage.removeItem(LOCAL_SESSION_KEY);
+    notifyAuthChange(null);
   }
-  localStorage.removeItem(LOCAL_SESSION_KEY);
-  notifyAuthChange(null);
+}
+
+function validateUsername(username: string): string {
+  const clean = username.trim();
+  if (!/^[a-zA-Z0-9_]{3,32}$/.test(clean)) {
+    throw new Error("O nome de usuário deve ter de 3 a 32 letras, números ou _.");
+  }
+  return clean;
+}
+
+function requireSession(session?: AuthSession | null): AuthSession {
+  if (!session) throw new Error("Sessão ausente.");
+  return session;
+}
+
+export async function updateUsername(username: string, currentSession?: AuthSession | null): Promise<AuthSession> {
+  const cleanUsername = validateUsername(username);
+  const active = requireSession(currentSession ?? await getCurrentSession());
+
+  if (isSupabaseConfigured && supabase) {
+    const { data, error } = await supabase
+      .from("profiles")
+      .update({ username: cleanUsername })
+      .eq("id", active.user.id)
+      .select("username")
+      .single();
+    if (error) throw error;
+    const next = { ...active, user: { ...active.user, username: (data as any)?.username || cleanUsername } };
+    notifyAuthChange(next);
+    return next;
+  }
+
+  const users = getStoredLocalUsers();
+  if (users.some((user) => user.id !== active.user.id && user.username.toLowerCase() === cleanUsername.toLowerCase())) {
+    throw new Error(`O nome de usuário '${cleanUsername}' já está em uso.`);
+  }
+  const index = users.findIndex((user) => user.id === active.user.id);
+  if (index < 0) throw new Error("Conta local não encontrada.");
+  users[index] = { ...users[index], username: cleanUsername };
+  saveStoredLocalUsers(users);
+  const next = { ...active, user: { ...active.user, username: cleanUsername } };
+  localStorage.setItem(LOCAL_SESSION_KEY, JSON.stringify(next));
+  notifyAuthChange(next);
+  return next;
+}
+
+export async function changePassword(newPassword: string, currentPassword: string, currentSession?: AuthSession | null): Promise<void> {
+  if (newPassword.length < 6) throw new Error("A senha deve ter no mínimo 6 caracteres.");
+  const active = requireSession(currentSession ?? await getCurrentSession());
+
+  if (isSupabaseConfigured && supabase) {
+    const { error } = await supabase.auth.updateUser({ password: newPassword });
+    if (error) throw error;
+    return;
+  }
+
+  const users = getStoredLocalUsers();
+  const index = users.findIndex((user) => user.id === active.user.id);
+  if (index < 0) throw new Error("Conta local não encontrada.");
+  if (await hashPassword(currentPassword, users[index].salt) !== users[index].passwordHash) {
+    throw new Error("Senha atual incorreta.");
+  }
+  users[index] = { ...users[index], passwordHash: await hashPassword(newPassword, users[index].salt) };
+  saveStoredLocalUsers(users);
+}
+
+export async function deleteAccount(currentSession?: AuthSession | null): Promise<void> {
+  const active = requireSession(currentSession ?? await getCurrentSession());
+  if (isSupabaseConfigured && supabase) {
+    const { error } = await supabase.functions.invoke("delete-account", { body: {} });
+    if (error) throw error;
+  } else {
+    saveStoredLocalUsers(getStoredLocalUsers().filter((user) => user.id !== active.user.id));
+    localStorage.removeItem(`pf2e_user_${active.user.id}_characters_v1`);
+  }
+  await signOut();
 }
 
 export function subscribeToAuth(callback: (session: AuthSession | null) => void): () => void {
@@ -331,6 +428,7 @@ export function subscribeToAuth(callback: (session: AuthSession | null) => void)
   let supabaseUnsub: (() => void) | undefined;
   if (isSupabaseConfigured && supabase) {
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, nextSession) => {
+      cachedSession = undefined;
       if (nextSession) {
         const cur = await getCurrentSession();
         callback(cur);

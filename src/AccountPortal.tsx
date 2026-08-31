@@ -1,10 +1,13 @@
 import { useCallback, useEffect, useRef, useState, type FormEvent } from "react";
 import {
   getCurrentSession,
+  changePassword,
+  deleteAccount,
   signIn,
   signOut,
   signUp,
   subscribeToAuth,
+  updateUsername,
   type AuthSession,
   type UserProfile,
 } from "./services/auth";
@@ -42,6 +45,9 @@ export function AccountPortal() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [profileUsername, setProfileUsername] = useState("");
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
   const triggerRef = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLElement>(null);
 
@@ -72,11 +78,13 @@ export function AccountPortal() {
   useEffect(() => {
     void getCurrentSession().then((cur) => {
       setSession(cur);
+      setProfileUsername(cur?.user.username || "");
       if (cur) void refreshCharacters(cur.user);
     });
 
     const unsubscribe = subscribeToAuth((nextSession) => {
       setSession(nextSession);
+      setProfileUsername(nextSession?.user.username || "");
       if (nextSession) {
         void refreshCharacters(nextSession.user);
       } else {
@@ -144,16 +152,16 @@ export function AccountPortal() {
         }
         const newSession = await signUp(username, email, password);
         if ((newSession as any)?.pendingConfirmation) {
-          setNotice("Conta criada com sucesso! Enviamos um link de confirmação para o seu e-mail.");
+          setNotice(t("accountCreatedNotice"));
         } else {
           setSession(newSession);
-          setNotice("Conta criada com sucesso! Bem-vindo.");
+          setNotice(t("welcomeNotice"));
           setOpen(false);
         }
       } else {
         const logged = await signIn(email, password);
         setSession(logged);
-        setNotice("Conectado com sucesso!");
+        setNotice(t("signedInNotice"));
         setOpen(false);
       }
       if (rememberMe) {
@@ -172,7 +180,7 @@ export function AccountPortal() {
       setPassword("");
       setConfirmPassword("");
     } catch (caught) {
-      setError(caught instanceof Error ? caught.message : "Não foi possível autenticar.");
+      setError(caught instanceof Error ? caught.message : t("authenticationFailed"));
     } finally {
       setWorking(null);
     }
@@ -190,23 +198,23 @@ export function AccountPortal() {
       await refreshCharacters(session.user);
       setNotice(t("saveCurrent"));
     } catch (caught) {
-      setError(caught instanceof Error ? caught.message : "Não foi possível salvar a ficha.");
+      setError(caught instanceof Error ? caught.message : t("saveCharacterFailed"));
     } finally {
       setWorking(null);
     }
   };
 
   const removeCharacter = async (character: CloudCharacter) => {
-    if (!window.confirm(`Excluir '${character.name}'? Esta ação não pode ser desfeita.`)) return;
+    if (!window.confirm(`${t("deleteCharacterConfirm")} ${character.name}`)) return;
     if (!session) return;
     setWorking(character.id);
     setError(null);
     try {
       await deleteCharacter(character.id, session.user);
       setCharacters((current) => current.filter((item) => item.id !== character.id));
-      setNotice("Personagem excluído com sucesso.");
+      setNotice(t("characterDeletedNotice"));
     } catch (caught) {
-      setError(caught instanceof Error ? caught.message : "Não foi possível excluir o personagem.");
+      setError(caught instanceof Error ? caught.message : t("deleteCharacterFailed"));
     } finally {
       setWorking(null);
     }
@@ -220,6 +228,44 @@ export function AccountPortal() {
     setWorking(null);
     setOpen(false);
     window.location.hash = "#/library";
+  };
+
+  const saveProfile = async (event: FormEvent) => {
+    event.preventDefault();
+    if (!session) return;
+    setWorking("profile"); setError(null); setNotice(null);
+    try {
+      const next = await updateUsername(profileUsername, session);
+      setSession(next);
+      setNotice(t("profileUpdated"));
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : t("profileUpdateFailed"));
+    } finally { setWorking(null); }
+  };
+
+  const savePassword = async (event: FormEvent) => {
+    event.preventDefault();
+    if (!session) return;
+    setWorking("password"); setError(null); setNotice(null);
+    try {
+      await changePassword(newPassword, currentPassword, session);
+      setCurrentPassword(""); setNewPassword("");
+      setNotice(t("passwordUpdated"));
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : t("passwordUpdateFailed"));
+    } finally { setWorking(null); }
+  };
+
+  const removeAccount = async () => {
+    if (!session || !window.confirm(t("deleteAccountConfirm"))) return;
+    setWorking("delete-account"); setError(null); setNotice(null);
+    try {
+      await deleteAccount(session);
+      setSession(null); setCharacters([]); setOpen(false);
+      window.location.hash = "#/library";
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : t("deleteAccountFailed"));
+    } finally { setWorking(null); }
   };
 
   return (
@@ -250,7 +296,7 @@ export function AccountPortal() {
                 {authMode === "signup" && (
                   <label>{t("username")}<input value={username} onChange={(event) => setUsername(event.target.value)} placeholder="Ex: mestre_arthur" required /></label>
                 )}
-                <label>{authMode === "signup" ? t("email") : "Usuário ou E-mail"}<input value={email} onChange={(event) => setEmail(event.target.value)} placeholder={authMode === "signup" ? "seu@email.com" : "seu_usuario ou seu@email.com"} required /></label>
+                <label>{authMode === "signup" ? t("email") : t("usernameOrEmail")}<input value={email} onChange={(event) => setEmail(event.target.value)} placeholder={authMode === "signup" ? "you@example.com" : "username or you@example.com"} required /></label>
                 <label>{t("password")}<input type="password" value={password} onChange={(event) => setPassword(event.target.value)} minLength={6} placeholder="••••••••" required /></label>
                 {authMode === "signup" && (
                   <label>{t("confirmPassword")}<input type="password" value={confirmPassword} onChange={(event) => setConfirmPassword(event.target.value)} minLength={6} placeholder="••••••••" required /></label>
@@ -278,6 +324,20 @@ export function AccountPortal() {
                   </div>
                   {session.user.role === "admin" && <span className="admin-badge">{t("administrator")}</span>}
                 </div>
+
+                <details className="profile-settings">
+                  <summary>{t("profileSettings")}</summary>
+                  <form onSubmit={saveProfile}>
+                    <label>{t("username")}<input value={profileUsername} onChange={(event) => setProfileUsername(event.target.value)} minLength={3} maxLength={32} required /></label>
+                    <button type="submit" disabled={working === "profile"}>{working === "profile" ? t("wait") : t("updateUsername")}</button>
+                  </form>
+                  <form onSubmit={savePassword}>
+                    <label>{t("currentPassword")}<input type="password" value={currentPassword} onChange={(event) => setCurrentPassword(event.target.value)} minLength={6} required /></label>
+                    <label>{t("newPassword")}<input type="password" value={newPassword} onChange={(event) => setNewPassword(event.target.value)} minLength={6} required /></label>
+                    <button type="submit" disabled={working === "password"}>{working === "password" ? t("wait") : t("changePassword")}</button>
+                  </form>
+                  <button className="danger-button" type="button" onClick={removeAccount} disabled={working === "delete-account"}>{t("deleteAccount")}</button>
+                </details>
 
                 <div className="cloud-actions">
                   <button className="account-primary" onClick={saveCurrent} disabled={working === "save"} type="button">

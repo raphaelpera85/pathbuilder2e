@@ -18,7 +18,7 @@ import {
   unlinkCharacterFromGM,
   type CloudCharacter,
 } from "./services/characters";
-import { getCurrentSession, type AuthSession } from "./services/auth";
+import { getCurrentSession, subscribeToAuth, type AuthSession } from "./services/auth";
 import "./campaigns.css";
 
 export function CampaignsPage() {
@@ -29,6 +29,7 @@ export function CampaignsPage() {
   const [myCharacters, setMyCharacters] = useState<CloudCharacter[]>([]);
   const [selectedCampaignId, setSelectedCampaignId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const [sessionReady, setSessionReady] = useState(false);
   const [inspectedChar, setInspectedChar] = useState<CloudCharacter | null>(null);
 
   // Forms
@@ -67,6 +68,7 @@ export function CampaignsPage() {
     try {
       const cur = await getCurrentSession();
       setSession(cur);
+      setSessionReady(true);
       if (cur?.user) {
         const [camps, shared, own] = await Promise.all([
           listCampaigns(cur.user),
@@ -89,6 +91,17 @@ export function CampaignsPage() {
 
   useEffect(() => {
     void refreshData();
+    const unsubscribe = subscribeToAuth((next) => {
+      setSession(next);
+      setSessionReady(true);
+      if (next) void refreshData();
+      else {
+        setCampaigns([]);
+        setSharedCharacters([]);
+        setMyCharacters([]);
+      }
+    });
+    return unsubscribe;
   }, []);
 
   const handleCreateCampaign = async (e: React.FormEvent) => {
@@ -259,6 +272,14 @@ export function CampaignsPage() {
     return Array.from(unique.values());
   }, [activeCampaign, sharedCharacters, myCharacters]);
 
+  if (!sessionReady) {
+    return (
+      <main className="portal-page" id="portal-content" tabIndex={-1}>
+        <div className="portal-empty" role="status">{t("loadingSheets")}</div>
+      </main>
+    );
+  }
+
   if (!session) {
     return (
       <main className="portal-page" id="portal-content" tabIndex={-1}>
@@ -269,9 +290,9 @@ export function CampaignsPage() {
         </header>
         <section className="portal-panel" style={{ textAlign: "center", padding: "40px 20px" }}>
           <span style={{ fontSize: "42px" }}>🏰</span>
-          <h2 style={{ marginTop: "12px", color: "var(--pb-orange)" }}>Faça login na sua conta</h2>
+          <h2 style={{ marginTop: "12px", color: "var(--pb-orange)" }}>{t("loginCampaigns")}</h2>
           <p style={{ maxWidth: "500px", margin: "10px auto 20px auto", color: "var(--pb-text-muted)" }}>
-            Para organizar campanhas, gerenciar mesas de RPG e ter acesso em tempo real às fichas enviadas por seus jogadores, conecte-se à sua conta.
+            {t("loginCampaignsDescription")}
           </p>
           <button
             className="btn-card-open"
@@ -279,7 +300,7 @@ export function CampaignsPage() {
             onClick={() => window.dispatchEvent(new Event("pathbuilder:open-account"))}
             style={{ display: "inline-flex", width: "auto", padding: "10px 24px", fontSize: "14px" }}
           >
-            🛡️ Acessar Minha Conta
+            🛡️ {t("accessAccount")}
           </button>
         </section>
       </main>
@@ -298,15 +319,15 @@ export function CampaignsPage() {
       <section className="campaign-stats-banner">
         <div className="camp-stat-box">
           <span className="stat-num">{campaigns.length}</span>
-          <span className="stat-label">Campanhas Ativas</span>
+          <span className="stat-label">{t("campaignsActive")}</span>
         </div>
         <div className="camp-stat-box">
           <span className="stat-num">{sharedCharacters.length}</span>
-          <span className="stat-label">Fichas de Jogadores Conectadas</span>
+          <span className="stat-label">{t("connectedPlayerSheets")}</span>
         </div>
         <div className="camp-stat-box">
           <span className="stat-num">{session.user.email}</span>
-          <span className="stat-label">Seu E-mail de Mestre</span>
+          <span className="stat-label">{t("gmEmailLabel")}</span>
         </div>
       </section>
 
@@ -315,25 +336,25 @@ export function CampaignsPage() {
         {/* COLUNA ESQUERDA: LISTA DE MESAS / CAMPANHAS */}
         <aside className="campaigns-sidebar">
           <div className="campaigns-sidebar-header">
-            <h3>🏰 Suas Mesas de RPG</h3>
+            <h3>🏰 {t("yourTables")}</h3>
             <button
               className="btn-add-camp"
               type="button"
               onClick={() => setShowCreateModal(true)}
             >
-              ➕ Nova Mesa
+              ➕ {t("newTable")}
             </button>
           </div>
 
           {campaigns.length === 0 ? (
             <div className="camp-empty-state">
-              <p>Nenhuma campanha criada ainda.</p>
+              <p>{t("noCampaigns")}</p>
               <button
                 className="btn-card-open"
                 type="button"
                 onClick={() => setShowCreateModal(true)}
               >
-                Criar Primeira Campanha
+                {t("createFirstCampaign")}
               </button>
             </div>
           ) : (
@@ -348,7 +369,7 @@ export function CampaignsPage() {
                   <div className="camp-nav-main">
                     <strong>{camp.title}</strong>
                     <span className="camp-nav-meta">
-                      {camp.character_keys.length} jogadores · {camp.schedule || "Sem horário"}
+                      {camp.character_keys.length} {t("playerLabel").toLowerCase()} · {camp.schedule || t("flexibleSchedule")}
                     </span>
                   </div>
                   <span className="camp-nav-arrow">❯</span>
@@ -359,9 +380,9 @@ export function CampaignsPage() {
 
           {/* VINCULAR MEU PERSONAGEM A OUTRO MESTRE (PLAYER MODE) */}
           <div className="link-gm-widget">
-            <h4>🎲 Vincular minha Ficha a um Mestre</h4>
+            <h4>🎲 {t("linkMySheet")}</h4>
             <p className="widget-desc">
-              Você também é jogador em outra mesa? Indique o e-mail do seu Mestre:
+              {t("playerModeDescription")}
             </p>
             {linkNotice && <div className="link-feedback">{linkNotice}</div>}
             <form onSubmit={handleLinkMyCharacter} className="link-gm-form">
@@ -371,7 +392,7 @@ export function CampaignsPage() {
                 required
                 className="camp-input"
               >
-                <option value="">Selecione seu personagem...</option>
+                <option value="">{t("selectCharacter")}</option>
                 {myCharacters.map((c) => (
                   <option key={c.character_key} value={c.character_key}>
                     {c.name} (Nv {c.level}) {c.gm_email ? `[GM: ${c.gm_email}]` : ""}
@@ -387,7 +408,7 @@ export function CampaignsPage() {
                 className="camp-input"
               />
               <button type="submit" className="btn-link-gm">
-                🔗 Conceder Acesso ao Mestre
+                🔗 {t("grantGmAccess")}
               </button>
             </form>
           </div>
@@ -403,7 +424,7 @@ export function CampaignsPage() {
                     <h2>{activeCampaign.title}</h2>
                     <span className="camp-tags">
                       <span className="camp-tag-system">{activeCampaign.system}</span>
-                      <span className="camp-tag-schedule">📅 {activeCampaign.schedule || "Horário flexível"}</span>
+                      <span className="camp-tag-schedule">📅 {activeCampaign.schedule || t("flexibleSchedule")}</span>
                     </span>
                   </div>
                   <div className="camp-hero-actions">
@@ -412,7 +433,7 @@ export function CampaignsPage() {
                       type="button"
                       onClick={() => handleDeleteCampaign(activeCampaign.id)}
                     >
-                      🗑️ Excluir Mesa
+                      🗑️ {t("deleteCampaign")}
                     </button>
                   </div>
                 </div>
@@ -431,9 +452,9 @@ export function CampaignsPage() {
 
                   {campaignPartyCharacters.length === 0 ? (
                     <div className="empty-party-notice">
-                      <p>Nenhum personagem foi atribuído a esta mesa ainda.</p>
+                      <p>{t("noAssignedCharacters")}</p>
                       <span style={{ fontSize: "12px", color: "var(--pb-text-muted)" }}>
-                        Selecione jogadores na lista abaixo de fichas vinculadas para adicioná-los.
+                        {t("selectLinkedPlayers")}
                       </span>
                     </div>
                   ) : (
@@ -446,11 +467,11 @@ export function CampaignsPage() {
                               <div>
                                 <h4>{char.name}</h4>
                                 <span className="member-subtitle">
-                                  {charData.ancestry || "Humano"} {charData.class || "Aventureiro"} · Nv {char.level}
+                                  {charData.ancestry || "Human"} {charData.class || "Adventurer"} · {t("levelLabel")} {char.level}
                                 </span>
                               </div>
                               <span className="player-badge">
-                                👤 {char.player_name || char.player_email || "Jogador"}
+                                👤 {char.player_name || char.player_email || t("playerLabel")}
                               </span>
                             </div>
 
@@ -464,11 +485,11 @@ export function CampaignsPage() {
                                 <span className="vital-val ca">{charData.ac || 15}</span>
                               </div>
                               <div className="vital-item">
-                                <span className="vital-lbl">Percepção</span>
+                                <span className="vital-lbl">{t("perception")}</span>
                                 <span className="vital-val">+{charData.perception || 5}</span>
                               </div>
                               <div className="vital-item">
-                                <span className="vital-lbl">Velocidade</span>
+                                <span className="vital-lbl">{t("speedLabel")}</span>
                                 <span className="vital-val">{charData.speed || 25}ft</span>
                               </div>
                             </div>
@@ -479,13 +500,13 @@ export function CampaignsPage() {
                                 type="button"
                                 onClick={() => setInspectedChar(char)}
                               >
-                                🔍 Inspecionar Ficha
+                                🔍 {t("inspectSheet")}
                               </button>
                               <button
                                 className="btn-remove-party"
                                 type="button"
                                 onClick={() => handleToggleCharInCampaign(char.character_key)}
-                                title="Remover desta campanha"
+                                title={t("removeFromCampaign")}
                               >
                                 ✕
                               </button>
@@ -498,7 +519,7 @@ export function CampaignsPage() {
 
                   {/* ADICIONAR JOGADORES VINCULADOS A ESTA MESA */}
                   <div className="assign-party-box">
-                    <h4>➕ Adicionar Fichas Disponíveis a esta Campanha:</h4>
+                    <h4>➕ {t("availableSheetsTitle")}</h4>
                     <div className="assign-chips">
                       {[...sharedCharacters, ...myCharacters].map((c) => {
                         const isInside = activeCampaign.character_keys.includes(c.character_key);
@@ -516,7 +537,7 @@ export function CampaignsPage() {
                       })}
                       {sharedCharacters.length === 0 && myCharacters.length === 0 && (
                         <span style={{ fontSize: "12px", color: "var(--pb-text-muted)" }}>
-                          Nenhuma ficha vinculada ao seu e-mail ({session.user.email}). Peça aos jogadores para informarem seu e-mail.
+                          {t("noLinkedSheets")} ({session.user.email})
                         </span>
                       )}
                     </div>
@@ -533,7 +554,7 @@ export function CampaignsPage() {
                         type="button"
                         onClick={handleRollPartyInitiative}
                       >
-                        🎲 Rolar Iniciativa do Grupo
+                        🎲 {t("rollPartyInitiative")}
                       </button>
                     </div>
                   </div>
@@ -541,19 +562,19 @@ export function CampaignsPage() {
                   {/* TABELA DE COMBATE */}
                   {(!activeCampaign.combatants || activeCampaign.combatants.length === 0) ? (
                     <p style={{ color: "var(--pb-text-muted)", fontSize: "13px", padding: "10px 0" }}>
-                      Nenhum combate em andamento. Clique em "Rolar Iniciativa do Grupo" ou adicione monstros abaixo.
+                      {t("noCombat")}
                     </p>
                   ) : (
                     <div className="combat-table-wrap">
                       <table className="combat-table">
                         <thead>
                           <tr>
-                            <th>Iniciativa</th>
-                            <th>Combatente</th>
-                            <th>Tipo</th>
-                            <th>CA</th>
-                            <th>Pontos de Vida (PV)</th>
-                            <th>Ações</th>
+                            <th>{t("initiative")}</th>
+                            <th>{t("combatant")}</th>
+                            <th>{t("type")}</th>
+                            <th>{t("armorClassShort")}</th>
+                            <th>{t("hitPoints")}</th>
+                            <th>{t("actions")}</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -567,7 +588,7 @@ export function CampaignsPage() {
                               </td>
                               <td>
                                 <span className={`type-tag ${comb.isPlayer ? "player" : "monster"}`}>
-                                  {comb.isPlayer ? "Jogador" : "Monstro/NPC"}
+                                  {comb.isPlayer ? t("playerLabel") : t("monsterNpc")}
                                 </span>
                               </td>
                               <td><strong>{comb.ac}</strong></td>
@@ -611,7 +632,7 @@ export function CampaignsPage() {
                                   type="button"
                                   className="btn-del-combatant"
                                   onClick={() => handleRemoveCombatant(comb.id)}
-                                  title="Remover do combate"
+                                  title={t("removeFromCombat")}
                                 >
                                   ✕
                                 </button>
@@ -627,7 +648,7 @@ export function CampaignsPage() {
                   <div className="add-monster-row">
                     <input
                       type="text"
-                      placeholder="Nome do Monstro / NPC (Ex: Dragão Vermelho Jovem)"
+                      placeholder={t("monsterNpcPlaceholder")}
                       value={npcName}
                       onChange={(e) => setNpcName(e.target.value)}
                       className="camp-input"
@@ -662,7 +683,7 @@ export function CampaignsPage() {
                       className="btn-action-secondary"
                       onClick={handleAddCombatant}
                     >
-                      ➕ Adicionar ao Combate
+                      ➕ {t("addToCombat")}
                     </button>
                   </div>
                 </div>
@@ -676,7 +697,7 @@ export function CampaignsPage() {
                       type="button"
                       onClick={() => setShowSessionForm(!showSessionForm)}
                     >
-                      {showSessionForm ? "Fechar Formulário" : "➕ Registrar Nova Sessão"}
+                      {showSessionForm ? t("closeForm") : `➕ ${t("newSession")}`}
                     </button>
                   </div>
 
@@ -685,7 +706,7 @@ export function CampaignsPage() {
                       <div className="form-row">
                         <input
                           type="text"
-                          placeholder="Título da Sessão (Ex: Sessão 04 - O Templo Subterrâneo)"
+                          placeholder={t("sessionTitlePlaceholder")}
                           value={sessionTitle}
                           onChange={(e) => setSessionTitle(e.target.value)}
                           required
@@ -710,7 +731,7 @@ export function CampaignsPage() {
                         />
                       </div>
                       <textarea
-                        placeholder="Resumo dos acontecimentos, decisões dos jogadores e segredos descobertos..."
+                          placeholder={t("sessionSummaryPlaceholder")}
                         value={sessionSummary}
                         onChange={(e) => setSessionSummary(e.target.value)}
                         required
@@ -718,7 +739,7 @@ export function CampaignsPage() {
                       />
                       <input
                         type="text"
-                        placeholder="Tesouros & Itens Encontrados (Loot)"
+                        placeholder={t("treasureFoundPlaceholder")}
                         value={sessionLoot}
                         onChange={(e) => setSessionLoot(e.target.value)}
                         className="camp-input"
@@ -729,10 +750,10 @@ export function CampaignsPage() {
                           className="btn-secondary-sm"
                           onClick={() => setShowSessionForm(false)}
                         >
-                          Cancelar
+                          {t("cancelAction")}
                         </button>
                         <button type="submit" className="btn-action-primary">
-                          💾 Salvar Registro de Sessão
+                          💾 {t("saveSessionLog")}
                         </button>
                       </div>
                     </form>
@@ -741,7 +762,7 @@ export function CampaignsPage() {
                   <div className="sessions-timeline">
                     {(!activeCampaign.sessions || activeCampaign.sessions.length === 0) ? (
                       <p style={{ color: "var(--pb-text-muted)", fontSize: "13px" }}>
-                        Nenhuma sessão registrada para esta aventura ainda.
+                        {t("noSessions")}
                       </p>
                     ) : (
                       activeCampaign.sessions.map((sess) => (
@@ -771,8 +792,8 @@ export function CampaignsPage() {
           ) : (
             <div className="no-campaign-selected">
               <span style={{ fontSize: "40px" }}>🛡️</span>
-              <h3>Selecione ou Crie uma Campanha</h3>
-              <p>Gerencie grupos de RPG, aventureiros e encontros em um só lugar.</p>
+              <h3>{t("selectOrCreateCampaign")}</h3>
+              <p>{t("manageRpgGroups")}</p>
             </div>
           )}
         </section>
@@ -794,10 +815,10 @@ export function CampaignsPage() {
             </header>
             <form onSubmit={handleCreateCampaign} className="modal-camp-form">
               <div>
-                <label>Nome da Campanha / Mesa:</label>
+                <label>{t("campaignTableName")}:</label>
                 <input
                   type="text"
-                  placeholder="Ex: A Maldição do Trono Carmesim"
+                  placeholder={t("campaignNamePlaceholder")}
                   value={newTitle}
                   onChange={(e) => setNewTitle(e.target.value)}
                   required
@@ -806,17 +827,17 @@ export function CampaignsPage() {
               </div>
               <div style={{ display: "flex", gap: "12px" }}>
                 <div style={{ flex: 1 }}>
-                  <label>Horário das Sessões:</label>
+                  <label>{t("sessionSchedule")}:</label>
                   <input
                     type="text"
-                    placeholder="Ex: Quintas-feiras às 19:30"
+                    placeholder={t("sessionSchedulePlaceholder")}
                     value={newSchedule}
                     onChange={(e) => setNewSchedule(e.target.value)}
                     className="camp-input"
                   />
                 </div>
                 <div style={{ flex: 1 }}>
-                  <label>Sistema / Edição:</label>
+                  <label>{t("systemEdition")}:</label>
                   <select
                     value={newSystem}
                     onChange={(e) => setNewSystem(e.target.value)}
@@ -829,9 +850,9 @@ export function CampaignsPage() {
                 </div>
               </div>
               <div>
-                <label>Sinopse da Aventura & Notas Iniciais:</label>
+                <label>{t("adventureNotes")}:</label>
                 <textarea
-                  placeholder="Descreva o cenário, premissa da campanha e ganchos de aventura..."
+                  placeholder={t("campaignDescriptionPlaceholder")}
                   value={newDesc}
                   onChange={(e) => setNewDesc(e.target.value)}
                   className="camp-textarea"
@@ -843,10 +864,10 @@ export function CampaignsPage() {
                   className="btn-secondary-sm"
                   onClick={() => setShowCreateModal(false)}
                 >
-                  Cancelar
+                  {t("cancelAction")}
                 </button>
                 <button type="submit" className="btn-action-primary">
-                  🏰 Criar Mesa de RPG
+                  🏰 {t("createRpgTable")}
                 </button>
               </div>
             </form>
@@ -865,7 +886,7 @@ export function CampaignsPage() {
               <div>
                 <h3>📜 Ficha de {inspectedChar.name}</h3>
                 <span style={{ fontSize: "12px", color: "var(--pb-text-muted)" }}>
-                  Jogador: {inspectedChar.player_name || inspectedChar.player_email || "Convidado"} · Nível {inspectedChar.level}
+                  {t("playerInspect")}: {inspectedChar.player_name || inspectedChar.player_email || t("guestLabel")} · {t("levelLabel")} {inspectedChar.level}
                 </span>
               </div>
               <button
@@ -891,12 +912,12 @@ export function CampaignsPage() {
                   <strong className="inspect-val ca">{(inspectedChar.data as any).ac || 15}</strong>
                 </div>
                 <div className="inspect-stat-card">
-                  <span className="inspect-label">Percepção</span>
+                  <span className="inspect-label">{t("perception")}</span>
                   <strong className="inspect-val">+{(inspectedChar.data as any).perception || 5}</strong>
                 </div>
                 <div className="inspect-stat-card">
                   <span className="inspect-label">Deslocamento</span>
-                  <strong className="inspect-val">{(inspectedChar.data as any).speed || 25} pés</strong>
+                  <strong className="inspect-val">{(inspectedChar.data as any).speed || 25} {t("feet")}</strong>
                 </div>
               </div>
 
@@ -932,12 +953,12 @@ export function CampaignsPage() {
 
               {/* HISTÓRICO E DETALHES */}
               <div className="inspect-section">
-                <h4>Histórico & Divindade</h4>
+                <h4>{t("historyDeity")}</h4>
                 <p style={{ fontSize: "13px", color: "var(--pb-text-muted)" }}>
-                  <strong>Divindade:</strong> {(inspectedChar.data as any).deity || "Nenhuma especificada"}
+                  <strong>Divindade:</strong> {(inspectedChar.data as any).deity || t("noDeity")}
                 </p>
                 <p style={{ fontSize: "13px", color: "var(--pb-text-muted)", marginTop: "4px" }}>
-                  <strong>Histórico:</strong> {(inspectedChar.data as any).backstory || "Sem histórico preenchido."}
+                  <strong>Histórico:</strong> {(inspectedChar.data as any).backstory || t("noBackstory")}
                 </p>
               </div>
             </div>

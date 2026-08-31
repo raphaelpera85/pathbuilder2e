@@ -391,7 +391,15 @@ const PF2E_DATA = {
       weapons: { "Simples": "Treinado", "Marcial": "Destreinado", "Desarmado": "Treinado" },
       classDc: "Treinado",
       description: "Conjuradores ligados a patronos enigmáticos através de um familiar místico vivo.",
-      subclasses: ["Patrono do Silêncio Noturno", "Patrono do Destino Tecido", "Patrono da Tempestade Selvagem", "Patrono dos Males Risonhos"]
+      subclasses: [
+        "Guardião da Fé Irrefreável (Faith's Flamekeeper / Guardián de la Fe Inquebrantable)",
+        "Sentinela dos Ermos (Wilding Steward / Guardián de las Tierras Salvajes)",
+        "O Inscrito (The Inscribed One / El Inscrito)",
+        "O Ressentimento (The Resentment / El Resentimiento)",
+        "O Tecelão de Destinos (Spinner of Threads / Tejedor de Destinos)",
+        "O Silêncio Invernal (Silence in Snow / Silencio Invernal)",
+        "A Sombra Inconstelada (Starless Shadow / Sombra sin Estrellas)"
+      ]
     },
     "Campeão (Champion / Paladino)": {
       hpPerLevel: 10,
@@ -5574,11 +5582,11 @@ PF2E_DATA.spellcastingByClass = {
   "Druida (Druid)": { tradition: "Primal", keyAbility: "wis", type: "Preparado", cantrips: 5, focusPoolMax: 3, slotsPerLevel: { 1: [2], 2: [3], 3: [3, 2], 4: [3, 3], 5: [3, 3, 2], 6: [3, 3, 3], 7: [3, 3, 3, 2], 8: [3, 3, 3, 3], 9: [3, 3, 3, 3, 2], 10: [3, 3, 3, 3, 3] } },
   "Bardo (Bard)": { tradition: "Oculta", keyAbility: "cha", type: "Espontâneo", cantrips: 5, focusPoolMax: 3, slotsPerLevel: { 1: [2], 2: [3], 3: [3, 2], 4: [3, 3], 5: [3, 3, 2], 6: [3, 3, 3], 7: [3, 3, 3, 2], 8: [3, 3, 3, 3], 9: [3, 3, 3, 3, 2], 10: [3, 3, 3, 3, 3] } },
   "Feiticeiro (Sorcerer)": { tradition: "Variável (Linhagem)", keyAbility: "cha", type: "Espontâneo", cantrips: 5, focusPoolMax: 3, slotsPerLevel: { 1: [3], 2: [4], 3: [4, 3], 4: [4, 4], 5: [4, 4, 3], 6: [4, 4, 4], 7: [4, 4, 4, 3], 8: [4, 4, 4, 4], 9: [4, 4, 4, 4, 3], 10: [4, 4, 4, 4, 4] } },
-  "Bruxo (Witch)": { tradition: "Variável (Patrono)", keyAbility: "int", type: "Preparado", cantrips: 5, focusPoolMax: 3, slotsPerLevel: { 1: [2], 2: [3], 3: [3, 2], 4: [3, 3], 5: [3, 3, 2], 6: [3, 3, 3], 7: [3, 3, 3, 2], 8: [3, 3, 3, 3], 9: [3, 3, 3, 3, 2], 10: [3, 3, 3, 3, 3] } },
+  "Bruxo (Witch)": { tradition: "Variável (Patrono)", keyAbility: "int", type: "Preparado", cantrips: 5, initialFocusPoints: 1, focusPoolMax: 3, slotsPerLevel: { 1: [2], 2: [3], 3: [3, 2], 4: [3, 3], 5: [3, 3, 2], 6: [3, 3, 3], 7: [3, 3, 3, 2], 8: [3, 3, 3, 3], 9: [3, 3, 3, 3, 2], 10: [3, 3, 3, 3, 3] } },
   "Oráculo (Oracle)": { tradition: "Divina", keyAbility: "cha", type: "Espontâneo", cantrips: 5, focusPoolMax: 3, slotsPerLevel: { 1: [2], 2: [3], 3: [3, 2], 4: [3, 3], 5: [3, 3, 2], 6: [3, 3, 3], 7: [3, 3, 3, 2], 8: [3, 3, 3, 3], 9: [3, 3, 3, 3, 2], 10: [3, 3, 3, 3, 3] } },
   "Animista (Animist)": { tradition: "Divina", keyAbility: "wis", type: "Preparado", cantrips: 5, focusPoolMax: 3, slotsPerLevel: { 1: [2], 2: [3], 3: [3, 2], 4: [3, 3], 5: [3, 3, 2], 6: [3, 3, 3], 7: [3, 3, 3, 2], 8: [3, 3, 3, 3], 9: [3, 3, 3, 3, 2], 10: [3, 3, 3, 3, 3] } },
   "Magus": { tradition: "Arcana", keyAbility: "int", type: "Preparado Limitado (Bounded)", cantrips: 5, focusPoolMax: 3, slotsPerLevel: { 1: [1], 2: [2], 3: [2], 4: [2], 5: [2, 2], 6: [2, 2], 7: [2, 2], 8: [2, 2], 9: [2, 2], 10: [2, 2] } },
-  "Invocador (Summoner)": { tradition: "Variável (Eidolon)", keyAbility: "cha", type: "Espontâneo Limitado (Bounded)", cantrips: 5, focusPoolMax: 3, slotsPerLevel: { 1: [1], 2: [2], 3: [2], 4: [2], 5: [2, 2], 6: [2, 2], 7: [2, 2], 8: [2, 2], 9: [2, 2], 10: [2, 2] } },
+  "Convocador (Summoner)": { tradition: "Variável (Eidolon)", keyAbility: "cha", type: "Espontâneo Limitado (Bounded)", cantrips: 5, focusPoolMax: 3, slotsPerLevel: { 1: [1], 2: [2], 3: [2], 4: [2], 5: [2, 2], 6: [2, 2], 7: [2, 2], 8: [2, 2], 9: [2, 2], 10: [2, 2] } },
   "Psíquico (Psychic)": { tradition: "Oculta", keyAbility: "int", type: "Espontâneo Consciente", cantrips: 5, focusPoolMax: 3, slotsPerLevel: { 1: [1], 2: [2], 3: [2, 1], 4: [2, 2], 5: [2, 2, 1], 6: [2, 2, 2], 7: [2, 2, 2, 1], 8: [2, 2, 2, 2], 9: [2, 2, 2, 2, 1], 10: [2, 2, 2, 2, 2] } }
 };
 
@@ -8332,6 +8340,63 @@ for (const subclass of PF2E_DATA.subclasses) {
   }
 }
 
+// Livro do Jogador Remaster, pp. 114-115: o Patrono determina tradição,
+// perícia, lição/hex inicial, magia e habilidade patronal do familiar.
+const PLAYER_CORE_WITCH_PATRONS = [
+  ["faiths_flamekeeper", "Guardião da Fé Irrefreável", "Faith's Flamekeeper", "Guardián de la Fe Inquebrantable", 114, "divine", "religion", "Lição do Abraço do Fervor", "Lesson of Fervor's Embrace", "Lección del Abrazo del Fervor", "Avivar o Coração", "Stoke the Heart", "Avivar el Corazón", "Comando", "Command", "Orden imperiosa", "Familiar do Espírito Restaurado", "Familiar of Restored Spirit", "Familiar del Espíritu Restaurado"],
+  ["wilding_steward", "Sentinela dos Ermos", "Wilding Steward", "Guardián de las Tierras Salvajes", 114, "primal", "nature", "Lição da Fala Selvagem", "Lesson of Wild Speech", "Lección del Habla Salvaje", "Palavra dos Ermos", "Wilding Word", "Palabra Salvaje", "Convocar Animal ou Convocar Planta ou Fungo", "Summon Animal or Summon Plant or Fungus", "Convocar Animal o Convocar Planta u Hongo", "Familiar dos Sentidos Aguçados", "Familiar of Keen Senses", "Familiar de Sentidos Agudos"],
+  ["the_inscribed_one", "O Inscrito", "The Inscribed One", "El Inscrito", 114, "arcane", "arcana", "Lição da Supremacia dos Glifos", "Lesson of Glyph's Supremacy", "Lección de la Supremacía de los Glifos", "Discernir Segredos", "Discern Secrets", "Discernir Secretos", "Arma Rúnica", "Runic Weapon", "Arma Rúnica", "Familiar da Escrita Fluida", "Familiar of Flowing Script", "Familiar de Escritura Fluida"],
+  ["the_resentment", "O Ressentimento", "The Resentment", "El Resentimiento", 115, "occult", "occultism", "Lição da Impermanência da Força", "Lesson of Strength's Impermanence", "Lección de la Impermanencia de la Fuerza", "Mau-Olhado", "Evil Eye", "Mal de Ojo", "Enfraquecer", "Enfeeble", "Debilitar", "Familiar da Miséria Persistente", "Familiar of Ongoing Misery", "Familiar de la Miseria Persistente"],
+  ["spinner_of_threads", "O Tecelão de Destinos", "Spinner of Threads", "Tejedor de Destinos", 115, "occult", "occultism", "Lição das Vicissitudes do Destino", "Lesson of Fate's Vicissitudes", "Lección de las Vicisitudes del Destino", "Tocar o Destino", "Nudge Fate", "Tocar el Destino", "Golpe Certeiro", "Sure Strike", "Golpe Certero", "Familiar da Sorte Equilibrada", "Familiar of Balanced Luck", "Familiar de la Suerte Equilibrada"],
+  ["silence_in_snow", "O Silêncio Invernal", "Silence in Snow", "Silencio Invernal", 115, "primal", "nature", "Lição do Frio Invernal", "Lesson of Winter's Chill", "Lección del Frío Invernal", "Gelo Duradouro", "Clinging Ice", "Hielo Persistente", "Lufada de Vento", "Gust of Wind", "Ráfaga de Viento", "Familiar da Geada Congelante", "Familiar of Freezing Rime", "Familiar de Escarcha Helada"],
+  ["starless_shadow", "A Sombra Inconstelada", "Starless Shadow", "Sombra sin Estrellas", 115, "occult", "occultism", "Lição dos Terrores da Noite", "Lesson of Night's Terrors", "Lección de los Terrores Nocturnos", "Mortalha da Noite", "Shroud of Night", "Sudario de la Noche", "Medo", "Fear", "Miedo", "Familiar da Noite que Espreita", "Familiar of Stalking Night", "Familiar de la Noche Acechante"]
+].map(([slug, pt, en, es, page, tradition, patronSkill, lessonPt, lessonEn, lessonEs, hexPt, hexEn, hexEs, spellPt, spellEn, spellEs, abilityPt, abilityEn, abilityEs]) => ({
+  slug, page, tradition, patronSkill, hexSpellId: `spell.player_core.witch.${slug}`, names: { "pt-BR": pt, en, es },
+  initialLesson: { "pt-BR": lessonPt, en: lessonEn, es: lessonEs },
+  hexCantrip: { "pt-BR": hexPt, en: hexEn, es: hexEs },
+  familiarSpell: { "pt-BR": spellPt, en: spellEn, es: spellEs },
+  familiarAbility: { "pt-BR": abilityPt, en: abilityEn, es: abilityEs }
+}));
+for (const patron of PLAYER_CORE_WITCH_PATRONS) {
+  const record = PF2E_DATA.subclasses.find((candidate) => candidate.classId === "class.witch" && candidate.names?.en === `${patron.names.en} / ${patron.names.es}`);
+  if (!record) continue;
+  Object.assign(record, patron, {
+    id: `subclass.class.witch.patron_${patron.slug}`,
+    name: `${patron.names["pt-BR"]} (${patron.names.en} / ${patron.names.es})`,
+    patron: true,
+    summaries: {
+      "pt-BR": `Patrono de Bruxa da tradição ${patron.tradition}; concede ${patron.hexCantrip["pt-BR"]} e ${patron.familiarAbility["pt-BR"]}.`,
+      en: `Witch patron of the ${patron.tradition} tradition; grants ${patron.hexCantrip.en} and ${patron.familiarAbility.en}.`,
+      es: `Patrón de Bruja de tradición ${patron.tradition}; concede ${patron.hexCantrip.es} y ${patron.familiarAbility.es}.`
+    },
+    source: { book: PLAYER_CORE_SOURCE, page: patron.page }, sourceApproximate: false, ruleset: "remaster", needs_review: false
+  });
+}
+
+const PLAYER_CORE_WITCH_HEX_SUMMARIES = {
+  faiths_flamekeeper: { "pt-BR": "O alvo recebe +2 de bônus de estado nas jogadas de dano; aumenta em 1 a cada dois ranques elevados.", en: "The target gains a +2 status bonus to damage rolls, increasing by 1 for every two heightened ranks.", es: "El objetivo obtiene +2 de bonificador de estado al daño, que aumenta en 1 cada dos rangos aumentados." },
+  wilding_steward: { "pt-BR": "Protege você da hostilidade do alvo; animais, fungos e plantas sofrem penalidade adicional no salvamento.", en: "Hinders the target from harming you; animals, fungi, and plants take an additional penalty to the save.", es: "Dificulta que el objetivo te dañe; animales, hongos y plantas sufren una penalización adicional a la salvación." },
+  the_inscribed_one: { "pt-BR": "Permite ao alvo Buscar, Recordar Conhecimento ou Sentir Motivação como ação livre com +1 de bônus de estado.", en: "Lets the target Seek, Recall Knowledge, or Sense Motive as a free action with a +1 status bonus.", es: "Permite al objetivo Buscar, Recordar Saber o Percibir Motivación como acción libre con +1 de bonificador de estado." },
+  the_resentment: { "pt-BR": "Em uma falha de Vontade, o alvo fica enjoado 1, ou enjoado 2 em falha crítica, enquanto o hex for sustentado.", en: "On a failed Will save, the target becomes sickened 1, or sickened 2 on a critical failure, while the hex is sustained.", es: "Con una salvación de Voluntad fallida, el objetivo queda mareado 1, o mareado 2 con fallo crítico, mientras se mantenga el maleficio." },
+  spinner_of_threads: { "pt-BR": "Concede retroativamente +1 de bônus de estado quando isso melhorar em um grau um teste recém-falhado do alvo.", en: "Retroactively grants a +1 status bonus when it improves the target's newly failed check by one degree.", es: "Concede retroactivamente +1 de bonificador de estado cuando mejora en un grado una prueba recién fallida del objetivo." },
+  silence_in_snow: { "pt-BR": "Causa dano de frio e penalidade de circunstância nas Velocidades do alvo enquanto for sustentado.", en: "Deals cold damage and imposes a circumstance penalty to the target's Speeds while sustained.", es: "Inflige daño de frío e impone una penalización de circunstancia a las Velocidades del objetivo mientras se mantenga." },
+  starless_shadow: { "pt-BR": "Uma falha de Vontade envolve o alvo em escuridão, fazendo luz forte contar como luz fraca e criaturas ficarem ocultadas.", en: "A failed Will save shrouds the target in darkness, making bright light count as dim light and creatures concealed.", es: "Una salvación de Voluntad fallida cubre al objetivo de oscuridad, haciendo que la luz brillante cuente como tenue y las criaturas queden ocultas." }
+};
+for (const patron of PLAYER_CORE_WITCH_PATRONS) {
+  if (PF2E_DATA.spells.some((spell) => spell.id === patron.hexSpellId)) continue;
+  PF2E_DATA.spells.push({
+    id: patron.hexSpellId,
+    name: `${patron.hexCantrip["pt-BR"]} (${patron.hexCantrip.en} / ${patron.hexCantrip.es})`,
+    names: patron.hexCantrip,
+    summaries: PLAYER_CORE_WITCH_HEX_SUMMARIES[patron.slug],
+    description: PLAYER_CORE_WITCH_HEX_SUMMARIES[patron.slug]["pt-BR"],
+    rank: 1, level: 1, focus: true, cantrip: true, actionType: "one-action", category: "Truque de Sortilégio", type: "Focus Cantrip",
+    traditions: [patron.tradition], classId: "class.witch", classIds: ["class.witch"], requiredSubclass: [patron.names["pt-BR"], patron.names.en, patron.names.es],
+    traits: ["Bruxo", "Incomum", "Sortilégio", "Truque"],
+    source: { book: PLAYER_CORE_SOURCE, page: patron.slug === "spinner_of_threads" ? 375 : 374 }, ruleset: "remaster", needs_review: false
+  });
+}
+
 // Rótulos históricos do Campeão são mantidos para importar fichas antigas,
 // mas não devem competir com as causas remasterizadas no picker atual.
 for (const subclass of PF2E_DATA.subclasses) {
@@ -8370,6 +8435,44 @@ for (const [slug, pt, en, es, page, sanctification] of PLAYER_CORE_2_CHAMPION_CA
     sourceApproximate: true,
     ruleset: "remaster",
     needs_review: true,
+  });
+}
+
+// Player Core 2, pp. 89 e 256-257: a progressão do Campeão é marcial, mas a
+// classe recebe uma magia de devoção (magia de foco divina) desde o 1º nível.
+// Ela não concede espaços nem truques; o motor usa este perfil somente para
+// calcular CD, ataque e reserva de foco da própria classe.
+const PLAYER_CORE_2_CHAMPION_FOCUS_SPELLCASTING = {
+  tradition: "divine",
+  traditionName: "Divina",
+  keyAbility: "cha",
+  type: "focus",
+  initialFocusPoints: 1,
+};
+const playerCore2Champion = PF2E_DATA.classes["Campeão (Champion / Paladino)"];
+if (playerCore2Champion) playerCore2Champion.focusSpellcasting = PLAYER_CORE_2_CHAMPION_FOCUS_SPELLCASTING;
+
+// Player Core 2, pp. 256-257: as seis magias de devoção do Campeão. A fonte
+// local confirma nomes, ranques, traços e requisitos; os resumos abaixo são
+// estruturados para seleção e permanecem vinculados às páginas editoriais.
+const PLAYER_CORE_2_CHAMPION_DEVOTION_SPELLS = [
+  ["shields_of_the_spirit", "Escudos do Espírito", "Shields of the Spirit", "Escudos del espíritu", 1, 256, ["Campeão", "Concentração", "Espírito", "Foco", "Santificado"], "Você Ergue seu Escudo e concede +1 de bônus de estado na CA aos aliados em sua aura; atacantes sofrem dano espiritual.", "You Raise your Shield and grant allies in your aura a +1 status bonus to AC; attackers take spirit damage.", "Alzas tu escudo y otorgas a los aliados en tu aura un bonificador de estado +1 a la CA; los atacantes sufren daño espiritual.", { requiresShield: true }],
+  ["lay_on_hands", "Imposição de Mãos", "Lay on Hands", "Imposición de manos", 1, 256, ["Campeão", "Cura", "Foco", "Manuseio", "Vitalidade"], "Cura uma criatura viva voluntária ou fere uma criatura morta-viva com vitalidade, concedendo proteção temporária ao aliado curado.", "Heals a willing living creature or harms an undead creature with vitality, granting temporary protection to a healed ally.", "Cura a una criatura viva voluntaria o daña a una criatura no muerta con vitalidad, otorgando protección temporal al aliado curado.", { requiresDeity: true, requiredDivineFont: "heal" }],
+  ["touch_of_the_void", "Toque do Vazio", "Touch of the Void", "Toque del vacío", 1, 256, ["Campeão", "Eversão", "Foco", "Manuseio"], "Cura uma criatura morta-viva voluntária ou causa dano eversivo a uma criatura viva, com penalidade de CA em uma falha.", "Heals a willing undead creature or deals void damage to a living creature, with an AC penalty on a failure.", "Cura a una criatura no muerta voluntaria o inflige daño de vacío a una criatura viva, con penalización a la CA en un fallo.", { requiresDeity: true, requiredDivineFont: "harm" }],
+  ["spectral_advance", "Avanço Espectral", "Spectral Advance", "Avance espectral", 5, 257, ["Campeão", "Concentração", "Espírito", "Foco", "Polimorfia"], "Move-se em forma espiritual sem ativar reações, ignorando terreno difícil e recebendo resistência durante o deslocamento.", "Move in spiritual form without triggering reactions, ignoring difficult terrain and gaining resistance during the movement.", "Te mueves en forma espiritual sin activar reacciones, ignoras terreno difícil y obtienes resistencia durante el movimiento."],
+  ["heros_defiance", "Desafio do Herói", "Hero's Defiance", "Desafío del héroe", 10, 257, ["Campeão", "Concentração", "Cura", "Foco", "Vitalidade"], "Quando um ataque reduziria você a 0 PV, recupera vida antes do dano e pode evitar cair inconsciente ou morrendo.", "When an attack would reduce you to 0 HP, regain health before damage and may avoid becoming unconscious or dying.", "Cuando un ataque te reduciría a 0 PG, recuperas vida antes del daño y puedes evitar quedar inconsciente o moribundo."],
+  ["champions_sacrifice", "Sacrifício do Campeão", "Champion's Sacrifice", "Sacrificio del campeón", 6, 257, ["Campeão", "Foco", "Manuseio"], "Em reação, recebe em vez de um aliado os efeitos de um acerto ou falha no salvamento que o atingiria.", "As a reaction, take the effects of a hit or failed save that would affect an ally instead.", "Como reacción, recibes en lugar de un aliado los efectos de un impacto o una salvación fallida que lo afectaría."],
+];
+for (const [slug, pt, en, es, rank, page, traits, ptSummary, enSummary, esSummary, gates = {}] of PLAYER_CORE_2_CHAMPION_DEVOTION_SPELLS) {
+  const id = `spell.player_core_2.champion.${slug}`;
+  if ((PF2E_DATA.spells || []).some((record) => record.id === id)) continue;
+  PF2E_DATA.spells.push({
+    id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es }, rank, level: rank,
+    focus: true, category: "Magia de Devoção", type: "Focus Spell", traditions: ["divine"],
+    classId: "class.champion", classIds: ["class.champion"], className: "Campeão", prerequisites: ["Campeão"], requiresSelectedDeity: true, traits,
+    summaries: { "pt-BR": ptSummary, en: enSummary, es: esSummary }, description: ptSummary,
+    source: { book: PLAYER_CORE_2_SOURCE, page }, ruleset: "remaster", needs_review: false, rarity: "uncommon",
+    ...gates,
   });
 }
 
@@ -10053,6 +10156,24 @@ for (const [slug, pt, en, es, prereq, page] of BOOK_OF_DEAD_PLAYER_ARCHETYPES) {
     source: { book: BOOK_DEAD_SOURCE, page }, sourceApproximate: true, ruleset: "legacy", needs_review: true,
   });
 }
+
+// Livro dos Mortos, p. 29: magia de foco inicial concedida pela Dedicação de
+// Necromante Consagrado. A tradição acompanha a conjuração que qualificou a
+// dedicação; por isso as quatro tradições ficam disponíveis após o gate.
+const CONSECRATED_GROUND_SPELL = {
+  id: "spell.book_of_dead.consecrated_ground", name: "Solo Consagrado (Consecrated Ground)",
+  names: { "pt-BR": "Solo Consagrado", en: "Consecrated Ground", es: "Suelo consagrado" },
+  rank: 1, level: 1, focus: true, category: "Magia de Foco", type: "Focus Spell",
+  traditions: ["arcane", "divine", "occult", "primal"], archetypeId: "archetype.book_of_dead.consecrated_necromancer",
+  prerequisites: ["Dedicação de Necromante Consagrado"], traits: ["Bondoso", "Necromancia", "Positivo", "Foco"],
+  summaries: {
+    "pt-BR": "Cria uma área hostil a mortos-vivos: causa dano positivo e bondoso, aumenta sua fraqueza a dano positivo e impede criações de mortos-vivos.",
+    en: "Creates an area hostile to undead: it deals positive and good damage, increases weakness to positive damage, and counters undead creation.",
+    es: "Crea un área hostil a los no muertos: inflige daño positivo y bueno, aumenta su debilidad al daño positivo y contrarresta la creación de no muertos."
+  },
+  description: "Magia de foco inicial de Necromante Consagrado.", source: { book: BOOK_DEAD_SOURCE, page: 29 }, ruleset: "legacy", needs_review: false, rarity: "uncommon"
+};
+if (!(PF2E_DATA.spells || []).some((record) => record.id === CONSECRATED_GROUND_SPELL.id)) PF2E_DATA.spells.push(CONSECRATED_GROUND_SPELL);
 
 // Howl of the Wild, pp. 66–82: dedication feats for the new archetypes.
 const HOWL_WILD_ARCHETYPE_DEDICATIONS = [

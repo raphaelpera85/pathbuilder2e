@@ -2,6 +2,9 @@
 
 body.portal-page-active { width: 100vw; min-width: 0; max-width: 100vw; overflow-x: hidden; }
 body.portal-page-active .pb-topbar { width: 100%; min-width: 0; max-width: 100vw; }
+/* O builder legado tem elementos posicionados; o atributo hidden sozinho não
+   deve permitir que um controle escape sobre Campanhas/Biblioteca. */
+body.portal-page-active #legacy-builder-root { display: none !important; }
 
 .skip-link {
   position: fixed;

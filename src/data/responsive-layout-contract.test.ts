@@ -59,6 +59,8 @@ describe("responsive layout contract", () => {
 
     expect(css).toContain("body.portal-page-active { width: 100vw; min-width: 0; max-width: 100vw; overflow-x: hidden; }");
     expect(css).toContain("body.portal-page-active .pb-topbar { width: 100%; min-width: 0; max-width: 100vw; }");
+    expect(read("src/account.css")).toContain(".locale-switcher .flag-btn:not(.active) { display: none; }");
+    expect(css).toContain("body.portal-page-active #legacy-builder-root { display: none !important; }");
     expect(css).toContain("#react-portal-root { flex: 0 0 auto; width: 100%; max-width: 100%; min-width: 0; }");
     expect(css).toContain(".portal-page-active #react-portal-root { min-height: 0; flex: 1 1 0%; width: 100%; max-width: 100%; overflow: hidden; }");
     expect(css).toContain(".portal-page-active #react-portal-root > * { min-width: 0; max-width: 100%; }");
@@ -71,6 +73,9 @@ describe("responsive layout contract", () => {
     expect(css).toContain(".portal-page-active #react-portal-root > .portal-page > .rules-layout");
     expect(css).toContain(".portal-page-active #react-portal-root > .portal-catalog-page { overflow: hidden;");
     expect(css).toContain(".portal-page-active .portal-catalog-page .catalog-grid { flex: 1 1 auto; overflow-y: auto;");
+    const campaignsCss = read("src/campaigns.css");
+    expect(campaignsCss).toContain(".campaigns-layout {\n    min-height: 0;\n    flex: 1 1 auto;\n    overflow-y: auto;");
+    expect(campaignsCss).toContain("overscroll-behavior: contain;");
     expect(css).toContain("flex: 1 1 auto;\n    min-height: 0;\n    overflow-y: auto;");
     expect(css).toContain("@media (max-width: 1080px)");
     expect(css).toContain("Tablets e portáteis também mantêm a viewport fixa");
@@ -173,8 +178,12 @@ describe("responsive layout contract", () => {
     expect(app).toContain("mergeCatalogRecords([], PF2E_DATA.archetypes || [])");
     expect(app).toContain("mergeCatalogRecords([], PF2E_DATA.weapons || [])");
     expect(app).toContain("mergeCatalogRecords([], PF2E_DATA.armors || [])");
-    expect(app).toContain('promptSubclass() {\n    this.openPicker("subclass");\n  }');
-    expect(app).toContain("applySubclassSelection(item)");
+    expect(app).toContain('promptSubclass(options = {}) {\n    this.openPicker("subclass", options);\n  }');
+    expect(app).toContain('["Patrono", "Patron", "Patrón", "subclass", "patron"]');
+    expect(app).toContain('targetField === "patron"');
+    expect(app).toContain("grantedByPatron: patron.id");
+    expect(app).toContain("applySubclassSelection(item, this.activePickerOptions || {})");
+    expect(app).toContain('["Hex Inicial", "Initial Hex", "Maleficio inicial", "none", "patronHex"]');
     expect(app).toContain("this.character.spells = this.character.spells.filter((spell) => PF2E_ENGINE.getSpellCompatibility(this.character, spell).state !== \"incompatible\")");
     expect(app).toContain("function findCatalogRecord(collection, value)");
     expect(app).toContain("const heritages = (PF2E_DATA.heritages || []).map(h => ({ name: h.name, type: \"Herança\", data: h }));");
@@ -316,6 +325,18 @@ describe("responsive layout contract", () => {
     expect(read("js/pf2e_data.js")).toContain("sourceApproximate = true");
     expect(read("js/app.js")).toContain("spell.custom.${Date.now()}");
     expect(read("js/app.js")).toContain('summaries: { "pt-BR": desc.trim(), en: desc.trim(), es: desc.trim() }');
+  });
+
+  it("mantém blocos de progressão específicos para as classes das referências", () => {
+    const app = read("js/app.js");
+    ["Hex Spells", "Arcane School", "Hybrid Study", "Mystery", "Fatal Method", "Research Field", "Instinct", "Muse", "Doctrine", "Order", "Martial Training", "Racket", "Hunter's Edge", "Cause", "Bloodline", "Methodology", "Innovation", "Conscious Mind", "Implement", "Apparition", "Banner", "Elemental Gate", "Eidolon"].forEach((label) => {
+      expect(app).toContain(label);
+    });
+    expect(app).toContain('this.clearProgressionSlots("class_feature");');
+    expect(app).toContain("options?.classFeatureSlot");
+    expect(app).toContain("activePickerOptions?.classFeatureSlot");
+    expect(app).toContain("const stableSlot = `1_class_feature_${classFeatureId}_${entryIndex}`;");
+    expect(app).toContain("const legacySlot = `1_class_feature_${key}`;");
   });
 
   it("merges rich records without collapsing distinct ruleset variants", () => {

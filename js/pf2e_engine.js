@@ -157,7 +157,10 @@ const PF2E_ENGINE = {
         /besta|crossbow/.test(weaponText) ? "bolt" :
           /fogo|firearm|pistol|rifle|mosquete|arcabuz|gun/.test(weaponText) ? "bullet" : null
     );
-    const requiresAmmunition = traits.some(trait => /recarga|reload|pente|magazine|muni[cç][aã]o|ammunition/i.test(String(trait))) || Boolean(weapon.requiresAmmunition) || weapon.reload !== undefined && weapon.reload !== null && weapon.reload !== 0;
+    const requiresAmmunition = Boolean(requiredType)
+      || traits.some(trait => /recarga|reload|pente|magazine|muni[cç][aã]o|ammunition/i.test(String(trait)))
+      || Boolean(weapon.requiresAmmunition)
+      || weapon.reload !== undefined && weapon.reload !== null && weapon.reload !== 0;
     const ammunition = (character?.inventory || []).filter(item => {
       const text = `${item?.id || ""} ${item?.name || ""} ${(item?.traits || []).join(" ")} ${item?.subCategory || ""}`;
       if (!/ammunition|muni[cç][aã]o|bullet|balas|bolt|virote|sphere|esfera|arrow|flecha/i.test(text)) return false;
@@ -309,6 +312,16 @@ const PF2E_ENGINE = {
     return this.resolveCatalogRecord(PF2E_DATA.classes, character?.class)?.spellcasting || null;
   },
 
+  getSelectedPatron(character) {
+    const selected = character?.patron || character?.subclass;
+    const patron = this.resolveCatalogRecord(PF2E_DATA.subclasses, selected);
+    return patron?.classId === "class.witch" && patron?.patron === true ? patron : null;
+  },
+
+  getCharacterMagicTradition(character) {
+    return this.getSelectedPatron(character)?.tradition || this.normalizeTradition(character?.magicTradition);
+  },
+
   getMaximumSpellRank(character) {
     const level = Math.min(20, Math.max(1, Number(character?.level) || 1));
     return Math.min(10, Math.ceil(level / 2));
@@ -316,8 +329,6 @@ const PF2E_ENGINE = {
 
   getSpellCompatibility(character, spell) {
     const profile = this.getSpellcastingProfile(character);
-    if (!profile) return { state: "incompatible", reason: "no-spellcasting", tradition: "", maximumRank: 0 };
-
     // Class-gated and explicitly gated spells must not leak into a generic
     // spell list. Keep rank/tradition checks below, but reuse the prerequisite
     // interpreter for gates independent of the casting tradition.
@@ -326,10 +337,29 @@ const PF2E_ENGINE = {
       return { ...prerequisiteCompatibility, tradition: "", maximumRank: this.getMaximumSpellRank(character) };
     }
 
-    const selectedTradition = this.normalizeTradition(character?.magicTradition);
+    const maximumRank = this.getMaximumSpellRank(character);
+    // Magias de foco são concedidas por características de classe, não pela
+    // progressão normal de espaços. Uma classe marcial pode ter essa fonte
+    // (como o Campeão) sem ganhar acesso ao catálogo de magias comuns.
+    const isFocusSpell = spell?.focus === true || /focus spell|magia de foco/i.test(String(spell?.type || spell?.category || ""));
+    const hasExplicitClassGate = Boolean(spell?.classId) || (Array.isArray(spell?.classIds) && spell.classIds.length > 0);
+    const spellRank = Number(spell?.rank ?? spell?.level ?? 0);
+    if (isFocusSpell && !profile && hasExplicitClassGate) {
+      if (spellRank > maximumRank) {
+        return { state: "incompatible", reason: "rank-too-high", tradition: "", maximumRank };
+      }
+      return {
+        state: "available",
+        reason: "focus-compatible",
+        tradition: Array.isArray(spell?.traditions) ? spell.traditions[0] || "" : "",
+        maximumRank
+      };
+    }
+    if (!profile) return { state: "incompatible", reason: "no-spellcasting", tradition: "", maximumRank: 0 };
+
+    const selectedTradition = this.getCharacterMagicTradition(character);
     const allowedTraditions = Array.isArray(profile.traditions) ? profile.traditions : [];
     const tradition = profile.traditionMode === "fixed" ? allowedTraditions[0] : selectedTradition;
-    const maximumRank = this.getMaximumSpellRank(character);
 
     if (profile.traditionMode !== "fixed" && !allowedTraditions.includes(tradition)) {
       return { state: "requires-choice", reason: "tradition-required", tradition: "", maximumRank };
@@ -337,7 +367,6 @@ const PF2E_ENGINE = {
     // Fichas/importações antigas usam `level` para o círculo da magia;
     // normalizar aqui evita que uma magia de alto nível seja tratada como
     // truque quando passa pelo bridge legado.
-    const spellRank = Number(spell?.rank ?? spell?.level ?? 0);
     if (spellRank > maximumRank) {
       return { state: "incompatible", reason: "rank-too-high", tradition, maximumRank };
     }
@@ -403,15 +432,15 @@ const PF2E_ENGINE = {
       ? item.requiredSubclass
       : item.requiredSubclass ? [item.requiredSubclass] : [];
     if (requiredSubclassValues.length) {
-      const selectedSubclass = [char.subclass, char.instinct, char.bloodline, char.patron, char.order, char.mystery, char.doctrine, char.apparition, char.eidolon]
-        .map(normalize).find(Boolean) || "";
+      const selectedSubclasses = [char.subclass, char.instinct, char.bloodline, char.patron, char.order, char.mystery, char.doctrine, char.apparition, char.eidolon]
+        .map(normalize).filter(Boolean);
       const subclassAliases = (value) => {
         const normalized = normalize(value);
-        if (normalized.includes("dragao") || normalized.includes("dragon")) return ["dragao", "draconico", "dragon", "draconic"];
+        if (normalized.includes("dragao") || normalized.includes("dracon") || normalized.includes("dragon")) return ["dragao", "dracon", "draconico", "dragon", "draconic"];
         if (normalized.includes("feérico") || normalized.includes("feerico") || normalized.includes("fey")) return ["feerico", "feérico", "fey"];
         return [normalized];
       };
-      if (!selectedSubclass || !requiredSubclassValues.some((required) => subclassAliases(required).some((alias) => selectedSubclass.includes(normalize(alias))))) {
+      if (!selectedSubclasses.length || !requiredSubclassValues.some((required) => subclassAliases(required).some((alias) => selectedSubclasses.some((selected) => selected.includes(normalize(alias)))))) {
         return { state: "incompatible", reason: "subclass-mismatch", requiredSubclass: requiredSubclassValues };
       }
     }
@@ -642,6 +671,22 @@ const PF2E_ENGINE = {
     if (item.requiresDeity && hasDeityField && !normalize(char.deity)) {
       return { state: "incompatible", reason: "deity-required" };
     }
+    // Registros novos podem exigir escolha explícita. Diferente do gate
+    // legado acima, ausência do campo também não libera a opção.
+    if (item.requiresSelectedDeity && !normalize(char.deity)) {
+      return { state: "incompatible", reason: "deity-required" };
+    }
+    const requiredDivineFont = normalize(item.requiredDivineFont);
+    const hasDivineFontField = Object.prototype.hasOwnProperty.call(char, "divineFont")
+      || Object.prototype.hasOwnProperty.call(char, "deityFont");
+    const selectedDivineFont = normalize(char.divineFont || char.deityFont);
+    if (requiredDivineFont && hasDivineFontField && selectedDivineFont) {
+      const fontAliases = requiredDivineFont === "heal" ? ["heal", "healing", "curar", "cura"]
+        : requiredDivineFont === "harm" ? ["harm", "harming", "ferir", "dano"] : [requiredDivineFont];
+      if (!fontAliases.includes(selectedDivineFont)) {
+        return { state: "incompatible", reason: "divine-font-mismatch", requiredDivineFont };
+      }
+    }
     const hasPatronField = Object.prototype.hasOwnProperty.call(char, "patron");
     if (item.requiresNoPatron && hasPatronField && normalize(char.patron)) {
       return { state: "incompatible", reason: "patron-must-be-absent" };
@@ -785,7 +830,7 @@ const PF2E_ENGINE = {
     let recognized = 0;
     if (item.requiredSkillByTradition) {
       const traditionSkills = { arcane: "arcana", divine: "religion", occult: "occultism", primal: "nature" };
-      const tradition = this.normalizeTradition(char.magicTradition);
+      const tradition = this.getCharacterMagicTradition(char);
       const skill = traditionSkills[tradition];
       if (skill) {
         const requiredRank = rankValues[normalize(item.requiredSkillRank || "trained")] ?? 2;
@@ -1879,9 +1924,11 @@ const PF2E_ENGINE = {
       ? char.class.id || char.class.name || char.class["pt-BR"] || char.class.en || char.class.es
       : char.class;
     const classNames = [classData?.name, classData?.names?.["pt-BR"], classData?.names?.en, classData?.names?.es, classIdentity].filter(Boolean).map(value => String(value).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""));
-    const spellData = (typeof PF2E_DATA !== "undefined" && PF2E_DATA.spellcastingByClass)
+    const standardSpellData = (typeof PF2E_DATA !== "undefined" && PF2E_DATA.spellcastingByClass)
       ? Object.entries(PF2E_DATA.spellcastingByClass).find(([key]) => classNames.includes(String(key).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")) || classNames.some(name => String(key).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").split(" ")[0] === name.split(" ")[0]))?.[1]
       : null;
+    const spellData = standardSpellData || classData?.focusSpellcasting || null;
+    const focusOnly = !standardSpellData && Boolean(classData?.focusSpellcasting);
 
     if (!spellData) {
       return { isSpellcaster: false, tradition: null, keyAbility: null, spellDc: 0, spellAttack: 0, focusPoints: 0, maxFocusPoints: 0, slots: {} };
@@ -1905,7 +1952,7 @@ const PF2E_ENGINE = {
 
     const configuredFocusMax = char.focusPointsMax !== undefined
       ? char.focusPointsMax
-      : (char.focusPoints !== undefined || char.focusPointsCurrent !== undefined ? 1 : 0);
+      : (char.focusPoints !== undefined || char.focusPointsCurrent !== undefined ? 1 : (spellData.initialFocusPoints || 0));
     const maxFocusPoints = Math.min(3, Math.max(0, Number(configuredFocusMax) || 0));
     const configuredFocus = char.focusPointsCurrent !== undefined ? char.focusPointsCurrent : char.focusPoints;
     const currentFocusPoints = configuredFocus !== undefined
@@ -1913,10 +1960,10 @@ const PF2E_ENGINE = {
       : maxFocusPoints;
 
     // Slots por círculo
-    const slotsTable = spellData.slotsPerLevel?.[level] || [2];
+    const slotsTable = focusOnly ? [] : (spellData.slotsPerLevel?.[level] || [2]);
     const slotsByRank = {};
     const slots = {
-      cantrips: spellData.cantrips || 5,
+      cantrips: focusOnly ? 0 : (spellData.cantrips || 5),
       ranks: {}
     };
 
@@ -1932,7 +1979,8 @@ const PF2E_ENGINE = {
     });
 
     const rawTrad = (spellData.tradition || "").toLowerCase();
-    const tradition = rawTrad.includes("arc") ? "arcane" : (rawTrad.includes("div") ? "divine" : (rawTrad.includes("oc") ? "occult" : (rawTrad.includes("prim") ? "primal" : spellData.tradition)));
+    const tradition = this.getCharacterMagicTradition(char)
+      || (rawTrad.includes("arc") ? "arcane" : (rawTrad.includes("div") ? "divine" : (rawTrad.includes("oc") ? "occult" : (rawTrad.includes("prim") ? "primal" : spellData.tradition))));
 
     return {
       hasSpellcasting: true,
@@ -1941,6 +1989,7 @@ const PF2E_ENGINE = {
       tradition,
       traditionName: spellData.traditionName || spellData.tradition,
       type: spellData.type,
+      focusOnly,
       keyAbility: keyAttr,
       keyAttr: keyAttr,
       keyModifier: keyMod,
@@ -1953,7 +2002,7 @@ const PF2E_ENGINE = {
       focusPoints: currentFocusPoints,
       currentFocusPoints,
       maxFocusPoints,
-      cantripsAllowed: spellData.cantrips || 5,
+      cantripsAllowed: focusOnly ? 0 : (spellData.cantrips || 5),
       slotsByRank,
       slots
     };

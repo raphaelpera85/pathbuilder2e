@@ -12,12 +12,12 @@ function loadEngine() {
     globalThis: {}
   };
   createContext(sandbox);
-  runInContext(`${dataCode}; ${engineCode}; sandboxEngine = PF2E_ENGINE;`, sandbox);
-  return sandbox.sandboxEngine;
+  runInContext(`${dataCode}; ${engineCode}; sandboxEngine = PF2E_ENGINE; sandboxCatalog = PF2E_DATA;`, sandbox);
+  return { engine: sandbox.sandboxEngine, catalog: sandbox.sandboxCatalog };
 }
 
 describe("P2: Motor de Grimório & Spellcasting Automático (Spellcasting Engine)", () => {
-  const engine = loadEngine();
+  const { engine, catalog } = loadEngine();
 
   it("deve calcular CD de magia e ataque mágico para Mago (Arcano / INT)", () => {
     const wizardChar = {
@@ -44,9 +44,43 @@ describe("P2: Motor de Grimório & Spellcasting Automático (Spellcasting Engine
     expect(engine.calculateSpellcasting({ level: 1, class: "Mago", abilities: { int: 16 } })).toMatchObject({ isSpellcaster: true, tradition: "arcane", keyAbility: "int" });
   });
 
+  it("resolve conjuração de Convocador pelo nome local", () => {
+    const spellcasting = engine.calculateSpellcasting({
+      level: 1,
+      class: "Convocador (Summoner)",
+      abilities: { cha: 16 },
+    });
+
+    expect(spellcasting).toMatchObject({
+      hasSpellcasting: true,
+      keyAttr: "cha",
+      slotsByRank: { 1: 1 },
+    });
+  });
+
   it("mantém magias válidas que ainda exigem escolher uma tradição", () => {
     const compatibility = engine.getSpellCompatibility({ level: 1, class: "Bruxo (Witch)" }, { level: 1, traditions: ["arcane"] });
     expect(compatibility).toMatchObject({ state: "requires-choice", reason: "tradition-required" });
+  });
+
+  it("deriva a tradição da Bruxa do Patrono e oculta magias incompatíveis", () => {
+    const witch = { level: 1, class: "Bruxo (Witch)", patron: "O Inscrito (The Inscribed One / El Inscrito)" };
+    expect(engine.getSelectedPatron(witch)).toMatchObject({ id: "subclass.class.witch.patron_the_inscribed_one", tradition: "arcane", patronSkill: "arcana" });
+    expect(engine.getSpellCompatibility(witch, { rank: 1, traditions: ["arcane"] })).toMatchObject({ state: "available", tradition: "arcane" });
+    expect(engine.getSpellCompatibility(witch, { rank: 1, traditions: ["occult"] })).toMatchObject({ state: "incompatible", reason: "tradition-mismatch", tradition: "arcane" });
+    expect(engine.calculateSpellcasting({ ...witch, abilities: { int: 18 } })).toMatchObject({ tradition: "arcane", maxFocusPoints: 1, focusPoints: 1 });
+  });
+
+  it("cataloga os sete Patronos Remaster com benefícios e fonte exata", () => {
+    const patrons = catalog.subclasses.filter((record: any) => record.classId === "class.witch" && record.patron === true);
+    expect(patrons).toHaveLength(7);
+    expect(patrons.every((record: any) => record.tradition && record.patronSkill && record.initialLesson && record.hexCantrip && record.familiarSpell && record.familiarAbility)).toBe(true);
+    expect(patrons.every((record: any) => record.source?.book && [114, 115].includes(record.source.page) && record.needs_review === false)).toBe(true);
+    const hexes = catalog.spells.filter((record: any) => record.id?.startsWith("spell.player_core.witch."));
+    expect(hexes).toHaveLength(7);
+    const witch = { level: 1, class: "Bruxo (Witch)", patron: "O Inscrito (The Inscribed One / El Inscrito)" };
+    expect(engine.getSpellCompatibility(witch, hexes.find((spell: any) => spell.id.endsWith("the_inscribed_one"))).state).toBe("available");
+    expect(engine.getSpellCompatibility(witch, hexes.find((spell: any) => spell.id.endsWith("the_resentment")))).toMatchObject({ state: "incompatible", reason: "subclass-mismatch" });
   });
 
   it("usa level como fallback de ranque para magias importadas do formato legado", () => {
@@ -75,6 +109,44 @@ describe("P2: Motor de Grimório & Spellcasting Automático (Spellcasting Engine
     };
     expect(engine.getSpellCompatibility({ level: 1, class: "Animista", magicTradition: "Divina" }, vesselSpell)).toMatchObject({ state: "available", tradition: "divine" });
     expect(engine.getSpellCompatibility({ level: 1, class: "Mago", magicTradition: "Arcana" }, vesselSpell)).toMatchObject({ state: "incompatible", reason: "class-mismatch" });
+  });
+
+  it("oferece magias de devoção apenas ao Campeão e preserva seus gates contextuais", () => {
+    const shields = catalog.spells.find((spell: any) => spell.id === "spell.player_core_2.champion.shields_of_the_spirit");
+    const layOnHands = catalog.spells.find((spell: any) => spell.id === "spell.player_core_2.champion.lay_on_hands");
+    const spectralAdvance = catalog.spells.find((spell: any) => spell.id === "spell.player_core_2.champion.spectral_advance");
+
+    expect(shields).toMatchObject({ focus: true, rank: 1, traditions: ["divine"], classId: "class.champion", requiresShield: true, source: { page: 256 } });
+    expect(layOnHands).toMatchObject({ focus: true, rank: 1, source: { page: 256 } });
+    expect(engine.getSpellCompatibility({ level: 1, class: "Campeão", deity: "Iomedae", equippedShield: { name: "Escudo" } }, shields)).toMatchObject({ state: "available", reason: "focus-compatible", tradition: "divine" });
+    expect(engine.getSpellCompatibility({ level: 1, class: "Campeão", equippedShield: null }, shields)).toMatchObject({ state: "incompatible", reason: "shield-required" });
+    expect(engine.getSpellCompatibility({ level: 1, class: "Campeão", equippedShield: { name: "Escudo" } }, shields)).toMatchObject({ state: "incompatible", reason: "deity-required" });
+    expect(engine.getSpellCompatibility({ level: 1, class: "Campeão", deity: "Urgathoa", divineFont: "harm" }, layOnHands)).toMatchObject({ state: "incompatible", reason: "divine-font-mismatch" });
+    expect(engine.getSpellCompatibility({ level: 1, class: "Campeão", deity: "Iomedae", divineFont: "heal" }, layOnHands)).toMatchObject({ state: "available" });
+    expect(engine.getSpellCompatibility({ level: 1, class: "Mago", magicTradition: "Arcana" }, layOnHands)).toMatchObject({ state: "incompatible", reason: "class-mismatch" });
+    expect(engine.getSpellCompatibility({ level: 8, class: "Campeão", deity: "Iomedae" }, spectralAdvance)).toMatchObject({ state: "incompatible", reason: "rank-too-high", maximumRank: 4 });
+    expect(engine.getSpellCompatibility({ level: 9, class: "Campeão", deity: "Iomedae" }, spectralAdvance)).toMatchObject({ state: "available", reason: "focus-compatible" });
+  });
+
+  it("calcula a conjuração de foco do Campeão sem conceder espaços de magia comuns", () => {
+    const champion = engine.calculateSpellcasting({ level: 1, class: "Campeão", abilities: { cha: 18 } });
+    expect(champion).toMatchObject({ hasSpellcasting: true, focusOnly: true, tradition: "divine", keyAbility: "cha", maxFocusPoints: 1, cantripsAllowed: 0 });
+    expect(champion.slots.ranks).toEqual({});
+    expect(engine.getSpellCompatibility({ level: 1, class: "Campeão" }, { rank: 1, traditions: ["divine"] })).toMatchObject({ state: "incompatible", reason: "no-spellcasting" });
+  });
+
+  it("mantém o painel legado ciente de conjuração exclusiva de foco", () => {
+    const appCode = readFileSync(resolve(process.cwd(), "js", "app.js"), "utf8");
+    expect(appCode).toContain("const focusSpellcasting = PF2E_ENGINE.calculateSpellcasting(this.character);");
+    expect(appCode).toContain("if (focusSpellcasting.focusOnly)");
+    expect(appCode).toContain("Magias de foco divinas da classe; não concede espaços de magia comuns.");
+    expect(appCode).toContain("setDivineFont(value)");
+    expect(appCode).toContain("Deity divine font");
+    expect(appCode).toContain("Fuente divina de la deidad");
+    expect(appCode).toContain("divineFontLabel.textContent = divineFontCopy.label");
+    expect(appCode).toContain("Fonte pertence à divindade escolhida.");
+    expect(appCode.match(/this\.character\.divineFont = "";/g)).toHaveLength(2);
+    expect(readFileSync(resolve(process.cwd(), "index.html"), "utf8")).toContain('id="divineFontInput"');
   });
 
   it("aceita gates com múltiplas classes ou ancestralidades", () => {

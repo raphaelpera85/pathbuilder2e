@@ -265,10 +265,11 @@ describe("PF2E_ENGINE Mechanics & Calculations", () => {
       available: false,
     });
     expect(engine.getAmmunitionStatus({ inventory: [] }, { name: "Arco", reload: 0 })).toMatchObject({
-      requiresAmmunition: false,
+      requiresAmmunition: true,
       quantity: 0,
-      available: true,
+      available: false,
     });
+    expect(engine.getAmmunitionStatus({ inventory: [{ id: "item.ammunition.arrows", qty: 12 }] }, { name: "Arco", reload: 0 }).available).toBe(true);
   });
 
   it("applies ABP potency, striking, armor and resilience once", () => {

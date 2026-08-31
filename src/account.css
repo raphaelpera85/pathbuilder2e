@@ -1,11 +1,15 @@
 .portal-controls {
   margin-left: auto;
-  min-width: 190px;
+  min-width: 0;
+  max-width: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 8px;
 }
+
+/* A conta não pode forçar a topbar a recalcular linhas ao trocar de rota. */
+#react-account-root { min-width: 0; flex: 0 1 auto; }
 
 .locale-switcher {
   min-height: 36px;
@@ -47,6 +51,10 @@
   border-color: #f97316;
   box-shadow: 0 0 10px rgba(249, 115, 22, 0.35);
 }
+
+/* A bandeira ativa identifica o idioma; as demais continuam disponíveis no
+   seletor textual, mas não ocupam espaço nem fazem a barra superior tremer. */
+.locale-switcher .flag-btn:not(.active) { display: none; }
 
 .flag-svg {
   width: 24px;
@@ -203,6 +211,8 @@ button:disabled { opacity: .56; cursor: not-allowed; }
 }
 
 @media (max-width: 420px) {
+  #btnAIAssistantTopbar { display: none !important; }
+  .pb-char-tab { max-width: 42vw; }
   .account-trigger { width: 40px; justify-content: center; font-size: 0; }
   .account-trigger > span:first-child { font-size: 16px; }
 }

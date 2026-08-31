@@ -15,7 +15,7 @@
 
   <!-- BARRA SUPERIOR (TOPBAR) -->
   <div class="pb-topbar">
-    <button class="pb-menu-btn" onclick="app.toggleDrawer()">☰ Menu</button>
+    <button class="pb-menu-btn" id="pbMenuButton" onclick="app.toggleDrawer()">☰ Menu</button>
     <div class="pb-char-tab" id="topCharTab">
       <span class="close-tab" onclick="app.closeTab()">✕</span>
       <span id="topCharTitle">Lorenzo LaRosa - Swashbuckler 1</span>
@@ -42,20 +42,20 @@
 
       <!-- GRUPOS DE MENU -->
       <div class="drawer-group">
-        <div class="drawer-group-title">Assistente de IA & Criação</div>
-        <div class="drawer-item" style="color: #a78bfa; font-weight: bold;" onclick="app.openAIAssistantModal(); app.toggleDrawer();">🤖 Criar Personagem com IA</div>
+        <div class="drawer-group-title" data-i18n-key="drawerAiTitle">Assistente de IA & Criação</div>
+        <div class="drawer-item" id="drawerAiCharacter" style="color: #a78bfa; font-weight: bold;" onclick="app.openAIAssistantModal(); app.toggleDrawer();">🤖 Criar Personagem com IA</div>
       </div>
 
       <div class="drawer-group">
-        <div class="drawer-group-title">Personagem & Biblioteca</div>
-        <div class="drawer-item" style="color: #fb923c; font-weight: bold;" onclick="window.location.hash='#/library'; app.toggleDrawer();">🛡️ Meus Personagens (Biblioteca)</div>
-        <div class="drawer-item" style="color: #c084fc; font-weight: bold;" onclick="window.location.hash='#/campaigns'; app.toggleDrawer();">🏰 Campanhas do Mestre (Mesas de RPG)</div>
-        <div class="drawer-item" onclick="app.createNewCharacter(); app.toggleDrawer(); window.location.hash='#/builder';">➕ Novo Personagem em Branco</div>
-        <div class="drawer-item" onclick="app.saveCharacterLocal(true); app.toggleDrawer();">💾 Salvar Personagem (Local)</div>
+        <div class="drawer-group-title" data-i18n-key="drawerCharacterTitle">Personagem & Biblioteca</div>
+        <div class="drawer-item" id="drawerLibrary" style="color: #fb923c; font-weight: bold;" onclick="window.location.hash='#/library'; app.toggleDrawer();">🛡️ Meus Personagens (Biblioteca)</div>
+        <div class="drawer-item" id="drawerCampaigns" style="color: #c084fc; font-weight: bold;" onclick="window.location.hash='#/campaigns'; app.toggleDrawer();">🏰 Campanhas do Mestre (Mesas de RPG)</div>
+        <div class="drawer-item" id="drawerNewCharacter" onclick="app.createNewCharacter(); app.toggleDrawer(); window.location.hash='#/builder';">➕ Novo Personagem em Branco</div>
+        <div class="drawer-item" id="drawerSaveCharacter" onclick="app.saveCharacterLocal(true); app.toggleDrawer();">💾 Salvar Personagem (Local)</div>
       </div>
 
       <div class="drawer-group">
-        <div class="drawer-group-title">Exportação & Impressão</div>
+        <div class="drawer-group-title" data-i18n-key="drawerExportTitle">Exportação & Impressão</div>
         <div class="drawer-item" style="color: #38bdf8; font-weight: bold;" onclick="app.downloadOfficialFillablePdf(); app.toggleDrawer();">📥 Baixar PDF Editável (Ficha Oficial)</div>
         <div class="drawer-item" onclick="app.printOfficialPdf(); app.toggleDrawer();">📄 Imprimir ficha personalizada</div>
         <div class="drawer-item" onclick="app.openExportModal(); app.toggleDrawer();">📤 Exportar JSON</div>
@@ -64,7 +64,7 @@
       </div>
 
       <div class="drawer-group">
-        <div class="drawer-group-title">Compêndio & Dados</div>
+        <div class="drawer-group-title" data-i18n-key="drawerCompendiumTitle">Compêndio & Dados</div>
         <a class="drawer-item" href="#/compendium" onclick="app.toggleDrawer();">📚 Compêndio de criação</a>
         <a class="drawer-item" href="#/rules" onclick="app.toggleDrawer();">📖 Guia de regras e fontes</a>
         <a class="drawer-item" href="#/library" onclick="app.toggleDrawer();">🛡️ Biblioteca e perfil</a>
@@ -616,7 +616,14 @@
         <!-- Lista de Divindades -->
       </div>
       <div class="pb-modal-footer" style="background: #070a10; border-top: 1px solid #1e293b; padding: 12px 18px; display: flex; justify-content: space-between; align-items: center;">
-        <div style="display: flex; gap: 8px; flex: 1; margin-right: 12px;">
+        <div style="display: flex; gap: 8px; flex: 1; margin-right: 12px; flex-wrap: wrap;">
+          <label for="divineFontInput" style="display:flex; align-items:center; gap:6px; color:#94a3b8; font-size:12px;"><span id="divineFontLabel">Fonte divina</span>
+            <select id="divineFontInput" aria-label="Fonte divina da divindade" onchange="app.setDivineFont(this.value)" style="background:#182234; border:1px solid #283548; color:#fff; border-radius:6px; padding:6px 8px; font-size:12px;">
+              <option value="">Não informada</option>
+              <option value="heal">Permite curar</option>
+              <option value="harm">Permite ferir</option>
+            </select>
+          </label>
           <input type="text" id="customDeityInput" placeholder="Outra divindade/filosofia..." style="flex: 1; background: #182234; border: 1px solid #283548; color: #fff; border-radius: 6px; padding: 6px 10px; font-size: 12px;" />
           <button type="button" class="btn-pb-action" onclick="app.setCustomDeity()" style="background: #334155; color: #fff; font-size: 12px; padding: 6px 12px;">Definir</button>
         </div>
