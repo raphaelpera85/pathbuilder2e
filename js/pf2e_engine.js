@@ -1553,7 +1553,7 @@ const PF2E_ENGINE = {
   // descrições ainda marcadas como needs_review não são interpretadas por
   // inferência.
   getFeatStatEffects(character) {
-    const effects = { bonusHpPerLevel: 0, speedBonus: 0, initiativeBonus: 0, recoveryDcReduction: 0, maxDying: 4, bulkLimitBonus: 0, ignoreArmorSpeedPenalty: false, untrainedSkillBonus: false, conditionalSaveBonuses: {}, proficiencyChoices: {} };
+    const effects = { bonusHpPerLevel: 0, speedBonus: 0, initiativeBonus: 0, recoveryDcReduction: 0, maxDying: 4, dailyRecoveryMultiplier: 1, bulkLimitBonus: 0, ignoreArmorSpeedPenalty: false, untrainedSkillBonus: false, conditionalSaveBonuses: {}, proficiencyChoices: {} };
     const feats = Array.isArray(character?.feats) ? character.feats : [];
     for (const feat of feats) {
       const id = String(feat?.id || "").toLowerCase();
@@ -1570,6 +1570,7 @@ const PF2E_ENGINE = {
         else if (effect?.type === "initiative") effects.initiativeBonus += value;
         else if (effect?.type === "recovery_dc") effects.recoveryDcReduction += Math.max(0, -value);
         else if (effect?.type === "max_dying") effects.maxDying = Math.max(effects.maxDying, value);
+        else if (effect?.type === "daily_recovery_multiplier") effects.dailyRecoveryMultiplier = Math.max(effects.dailyRecoveryMultiplier, value);
         else if (effect?.type === "save_bonus" && effect?.target) effects.conditionalSaveBonuses[effect.target] = Math.max(effects.conditionalSaveBonuses[effect.target] || 0, value);
         else if (effect?.type === "bulk_limit") effects.bulkLimitBonus += value;
         else if (effect?.type === "ignore_armor_speed_penalty") effects.ignoreArmorSpeedPenalty = Boolean(value);

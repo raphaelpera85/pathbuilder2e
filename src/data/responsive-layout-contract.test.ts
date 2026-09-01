@@ -283,7 +283,8 @@ describe("responsive layout contract", () => {
 
   it("persists and restores the dice history with the character document", () => {
     const app = read("js/app.js");
-    expect(app).toContain("this.revalidateLoadedSelections();\n          this.saveCharacterLocal(false);");
+    expect(app).toContain("this.revalidateLoadedSelections();");
+    expect(app).toContain("this.skipCloudAutosave = true;");
     expect(app).toContain("this.revalidateLoadedSelections();\n    this.normalizeCharacterCoins();");
     expect(app).toContain("snapshot.diceHistory = structuredClone(this.diceHistory.slice(0, 100));");
     expect(app).toContain("this.diceHistory = Array.isArray(this.character.diceHistory) ? this.character.diceHistory.slice(0, 100) : [];");
@@ -968,9 +969,15 @@ describe("responsive layout contract", () => {
   it("revalida a sessão compartilhada antes de abrir o login pelo salvamento do construtor", () => {
     const account = read("src/AccountPortal.tsx");
     const app = read("js/app.js");
-    expect(account).toContain("const saveCurrent = async (activeSession: AuthSession | null = session, silent = false)");
+    expect(account).toContain("const saveCurrent = async (activeSession: AuthSession | null = session, silent = false, queuedCharacter?: Record<string, unknown>)");
     expect(account).toContain('pathbuilder:character-changed');
     expect(app).toContain('pathbuilder:character-changed');
+    expect(account).toContain('pf2e_pending_cloud_save_');
+    expect(account).toContain('Math.min(30_000, 1_000 * (2 ** Math.min(autoSaveAttemptRef.current, 5)))');
+    expect(account).toContain('autoSaveStatus === "syncing"');
+    expect(account).toContain('JSON.parse(pending)');
+    expect(account).toContain("void saveCurrent(activeSession, true, char || undefined);");
+    expect(account).toContain("window.setTimeout(() => void saveCurrent(activeSession, true), 0);");
     expect(account).toContain("const activeSession = session || await getCurrentSession();");
     expect(account).toContain("void saveCurrent(activeSession);");
   });
@@ -1131,6 +1138,9 @@ describe("responsive layout contract", () => {
     expect(app).toContain("const finalize = (items, finalizeOptions = {}) =>");
     expect(app).toContain("if (resolvedOptions.collapseDuplicateLabels) return result;");
     expect(app).toContain("{ collapseDuplicateLabels: true });");
+    expect(app).toContain("localizeSourceBookName(source.book, locale)");
+    expect(app).toContain("const recoveryMultiplier = Math.max(1, Number(this.calc.featEffects?.dailyRecoveryMultiplier) || 1);");
+    expect(app).toContain("const naturalRecovery = Math.max(1, conModifier * (Number(this.character.level) || 1)) * recoveryMultiplier;");
     expect(app).toContain('if (["class", "formula", "pet", "heritage"].includes(this.currentPickerType))');
     expect(app).toContain("if (!label || visibleLabels.has(label)) return false;");
     expect(app).toContain("mergeCatalogRecords(sharedCatalogs.pets, PF2E_DATA.pets)");

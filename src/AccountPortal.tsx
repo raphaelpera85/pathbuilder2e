@@ -222,7 +222,7 @@ export function AccountPortal() {
     }
   };
 
-  const saveCurrent = async (activeSession: AuthSession | null = session, silent = false) => {
+  const saveCurrent = async (activeSession: AuthSession | null = session, silent = false, queuedCharacter?: Record<string, unknown>) => {
     if (!activeSession) return;
     if (silent && autoSaveInFlightRef.current) {
       autoSavePendingRef.current = true;
@@ -235,8 +235,9 @@ export function AccountPortal() {
       setError(null);
       setNotice(null);
     }
+    let char: Record<string, unknown> | null = null;
     try {
-      const char = (window as any).app?.getCurrentCharacter();
+      char = queuedCharacter || (window as any).app?.getCurrentCharacter();
       if (!char) throw new Error(t("noActiveCharacter"));
       await saveCharacter(char, activeSession.user);
       if (silent) {
@@ -252,15 +253,16 @@ export function AccountPortal() {
       if (silent) {
         setAutoSaveStatus("pending");
         try {
-          const pending = (window as any).app?.getCurrentCharacter();
-          if (pending) localStorage.setItem(`pf2e_pending_cloud_save_${activeSession.user.id}`, JSON.stringify(pending));
+          if (char) localStorage.setItem(`pf2e_pending_cloud_save_${activeSession.user.id}`, JSON.stringify(char));
         } catch { /* preserve the in-memory retry path */ }
         const retryDelay = Math.min(30_000, 1_000 * (2 ** Math.min(autoSaveAttemptRef.current, 5)));
         autoSaveAttemptRef.current += 1;
         if (autoSaveRetryTimerRef.current) window.clearTimeout(autoSaveRetryTimerRef.current);
         autoSaveRetryTimerRef.current = window.setTimeout(() => {
           autoSaveRetryTimerRef.current = null;
-          void saveCurrent(activeSession, true);
+          // Retry the exact snapshot that failed, even if the builder has
+          // since emitted another event or the current app state was replaced.
+          void saveCurrent(activeSession, true, char || undefined);
         }, retryDelay);
       }
     } finally {
@@ -269,6 +271,8 @@ export function AccountPortal() {
         autoSaveInFlightRef.current = false;
         if (autoSavePendingRef.current) {
           autoSavePendingRef.current = false;
+          // Coalesced changes must read the newest builder snapshot, not the
+          // older snapshot that was already in flight.
           window.setTimeout(() => void saveCurrent(activeSession, true), 0);
         }
       }
@@ -300,10 +304,13 @@ export function AccountPortal() {
     window.addEventListener("pathbuilder:character-changed", autoSaveFromBuilder);
     if (session) {
       try {
-        if (localStorage.getItem(`pf2e_pending_cloud_save_${session.user.id}`)) {
+        const pending = localStorage.getItem(`pf2e_pending_cloud_save_${session.user.id}`);
+        if (pending) {
+          let queuedCharacter: Record<string, unknown> | undefined;
+          try { queuedCharacter = JSON.parse(pending); } catch { queuedCharacter = undefined; }
           autoSaveTimerRef.current = window.setTimeout(() => {
             autoSaveTimerRef.current = null;
-            void saveCurrent(session, true);
+            void saveCurrent(session, true, queuedCharacter);
           }, 0);
         }
       } catch { /* ignore unavailable storage */ }

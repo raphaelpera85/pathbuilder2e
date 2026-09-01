@@ -15,6 +15,13 @@ describe("localização das perícias", () => {
     const legacyData = readFileSync(resolve(process.cwd(), "js", "pf2e_data.js"), "utf8");
     expect(legacyData).toContain('performance: ["Atuação", "Performance", "Interpretación", 244]');
   });
+
+  it("não deixa a tradução legada Acrobatismo no pt-BR", () => {
+    const legacyData = readFileSync(resolve(process.cwd(), "js", "pf2e_data.js"), "utf8");
+    expect(legacyData).toContain('acrobatics: { "pt-BR": "Acrobacia", en: "Acrobatics", es: "Acrobacias" }');
+    expect(legacyData).toContain('acrobatics: ["Acrobacia", "Acrobatics", "Acrobacias", 233]');
+    expect(legacyData).not.toContain("Acrobatismo");
+  });
 });
 
 describe("catálogos TypeScript compartilhados", () => {

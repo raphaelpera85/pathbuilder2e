@@ -80,6 +80,7 @@ describe("PF2E_ENGINE Mechanics & Calculations", () => {
     expect(engine.getConditionalSaveBonus(character, "poison_disease")).toBe(2);
     expect(engine.getConditionalSaveBonus(character, "inhaled_poison_suffocation")).toBe(1);
     expect(engine.getConditionalSaveBonus(character, "fire")).toBe(0);
+    expect(engine.getFeatStatEffects({ feats: [{ id: "feat.general.fast_recovery" }] }).dailyRecoveryMultiplier).toBe(2);
   });
 
   it("aplica carga, velocidade, armadura e improvisação destreinada", () => {

@@ -357,6 +357,14 @@ Auditoria atual após os 43 talentos de Oráculo: 3004 registros, 2382 em revis�
 Implementação desta etapa (2026-09-01): alterações persistidas localmente agora emitem `pathbuilder:character-changed`; o Portal de Conta sincroniza a ficha autenticada automaticamente após 750 ms, coalescendo alterações durante salvamentos concorrentes e mantendo o fallback local. Validação: suíte completa com 26 arquivos/462 testes, build e sintaxe aprovados. Falta a fila offline/backoff, indicador e teste end-to-end contra Supabase real.
 
 Implementação adicional desta etapa: falhas do salvamento automático agora deixam um snapshot por usuário, mostram o estado pendente, tentam novamente com backoff e retomam a sincronização na próxima hidratação da sessão. Validação: build, 85 testes do contrato responsivo, sintaxe e `git diff --check` aprovados. Falta validar concorrência real entre dispositivos/Supabase e o merge de conflitos.
+
+Correção adicional desta etapa: os retries agora reutilizam o snapshot exato que falhou, inclusive após recarregar a sessão, em vez de depender somente do estado atual do construtor. Validação: build, 85 testes do contrato responsivo, sintaxe e `git diff --check` aprovados.
+
+Validação integral após o autosave: suíte completa = 26 arquivos e 462 testes aprovados. O build permanece aprovado com os avisos conhecidos de scripts legados e bundle grande. A prova de concorrência entre dispositivos e Supabase real ainda está pendente.
+
+Correção adicional desta etapa: carregamentos locais, exemplos e fichas vindas da Biblioteca agora podem marcar `skipCloudAutosave`, evitando que a hidratação inicial regrave silenciosamente uma versão antiga na nuvem; alterações posteriores continuam disparando o autosave. Validação: build, 85 testes do contrato responsivo, sintaxe e `git diff --check` aprovados.
+
+Cobertura adicional desta etapa: o contrato responsivo passou a verificar o evento de alteração, a chave de fila por usuário, o snapshot pendente, o backoff, o indicador de sincronização e a restauração do snapshot após hidratação. Validação: 85 testes do contrato responsivo aprovados.
     - [x] Cachear localmente o retorno de um salvamento remoto bem-sucedido para que uma falha transitória da próxima leitura não deixe a biblioteca vazia.
     - [x] Biblioteca com renomear/excluir/abrir e sincronização entre as duas visões de conta.
     - [x] Incluir a configuração integral já presente no documento da ficha e até 100 registros do histórico de rolagens no snapshot salvo/restaurado; o CRUD cloud continua pendente de validação end-to-end.
@@ -842,3 +850,39 @@ Validação desta etapa (2026-09-01): contrato de idioma passou com 4 testes e `
 Validação consolidada desta sequência (2026-09-01): `npm test -- --run` passou com 26 arquivos e 448 testes; `npm run build`, `node --check js/app.js` e `git diff --check` também passaram. O trabalho permanece aberto por falta de validação browser/Supabase, cobertura mecânica completa dos livros e gate integral pt-BR.
 
 Validação após esta etapa (2026-09-01): `npm test -- --run` aprovado com 26 arquivos e 446 testes; `npm run build` aprovado; `node --check js/app.js`, `node --check js/pf2e_data.js` e `git diff --check` aprovados. Permanecem apenas os avisos já conhecidos do build sobre scripts legados sem `type="module"` e chunk maior que 500 kB. Ainda falta validação browser/end-to-end e o gate final pt-BR.
+
+Correção desta etapa (2026-09-01): variantes homônimas mantidas no picker agora localizam também o nome do livro na etiqueta de proveniência, evitando vazamento de inglês quando o idioma ativo é pt-BR. Arquivos: `js/app.js`, `src/data/responsive-layout-contract.test.ts`. Falta validar visualmente os pickers nos três idiomas após o gate funcional pt-BR.
+
+Validação desta etapa (2026-09-01): `npm test -- --run src/data/responsive-layout-contract.test.ts` passou com 85 testes; `npm run build`, `node --check js/app.js` e `git diff --check` passaram. Permanecem os avisos conhecidos do Vite sobre scripts legados sem `type="module"` e chunk acima de 500 kB; validação visual/browser continua pendente.
+
+Correção desta etapa (2026-09-01): o autosave cloud agora repete exatamente o snapshot que falhou e, quando mudanças chegam durante uma sincronização, salva o snapshot mais recente do construtor em vez de repetir o snapshot antigo. Arquivos: `src/AccountPortal.tsx`, `src/data/responsive-layout-contract.test.ts`. Falta validar offline/rede real e conflitos no Supabase.
+
+Validação desta etapa (2026-09-01): contrato responsivo passou com 85 testes; `npm run build`, `node --check js/app.js` e `git diff --check` passaram. Permanecem os avisos conhecidos do Vite sobre scripts legados sem `type="module"` e chunk acima de 500 kB; a validação browser/Supabase permanece pendente.
+
+Validação consolidada desta sequência (2026-09-01): `npm test -- --run` passou com 26 arquivos e 462 testes; `npm run build`, `node --check js/app.js` e `git diff --check` também passaram. O autosave ainda precisa de prova no navegador, offline/rede real e conflitos do Supabase antes de marcar o CRUD cloud como concluído.
+
+Correção desta etapa (2026-09-01): o talento Recuperação Rápida passou a expor o multiplicador estruturado de recuperação no motor (`dailyRecoveryMultiplier: 2`), mantendo separado o bônus condicional contra venenos/doenças; o valor fica disponível em `featEffects` para o descanso e demais telas não perderem a regra. Arquivos: `src/data/featsData.ts`, `js/pf2e_data.js`, `js/pf2e_engine.js`, `src/data/engine-mechanics.test.ts`. Falta integrar a recuperação diária ao fluxo de descanso com a regra de cura adotada pelo sistema.
+
+Validação desta etapa (2026-09-01): `src/data/engine-mechanics.test.ts` passou com 31 testes; `node --check js/pf2e_engine.js`, `node --check js/pf2e_data.js` e `git diff --check` passaram. Build completo e suíte completa permanecem no próximo ciclo de validação.
+
+Validação consolidada desta etapa (2026-09-01): `npm test -- --run` passou com 26 arquivos e 462 testes; `npm run build` passou. Permanecem os avisos conhecidos do Vite sobre scripts legados sem `type="module"` e chunk acima de 500 kB; a integração visual/browser da recuperação diária ainda falta.
+
+Correção desta etapa (2026-09-01): o descanso de 8 horas passou a aplicar recuperação natural de PV baseada em Constituição × nível, limitada ao máximo, multiplicada por Recuperação Rápida; espaços de magia e foco continuam sendo restaurados. A mensagem informa o PV recuperado nos três idiomas. Arquivos: `js/app.js`, `src/data/responsive-layout-contract.test.ts`. Falta validar o fluxo visual/interativo no navegador com e sem o talento.
+
+Validação desta etapa (2026-09-01): os contratos de engine e layout passaram com 116 testes; `npm run build`, `node --check js/app.js` e `git diff --check` passaram. Permanecem os avisos conhecidos do Vite; a validação browser continua pendente.
+
+Correção desta etapa (2026-09-01): corrigidas denominações pt-BR inconsistentes da perícia Acrobacia (antes “Acrobatismo”), Atuação (antes “Performance”) e Ladinagem (antes “Ladroagem”) nos metadados e pré-requisitos legados. Arquivo: `js/pf2e_data.js`. Falta varredura visual completa do construtor e validação dos pickers em cada idioma.
+
+Validação desta etapa (2026-09-01): contratos de idioma/proveniência passaram com 109 testes; `node --check js/pf2e_data.js` e `git diff --check` passaram. A suíte completa e o build já foram aprovados antes desta alteração; a validação visual permanece pendente.
+
+Teste de regressão desta etapa (2026-09-01): o contrato de idioma agora impede o retorno de `Acrobatismo` no catálogo pt-BR e confirma Acrobacia nos metadados legado. Falta repetir a suíte completa após este teste adicional.
+
+Correção complementar desta etapa (2026-09-01): removidas todas as ocorrências residuais de “Acrobatismo” em pré-requisitos e descrições de talentos legados, além de alinhar Ladinagem nos requisitos relacionados. Validação: contrato de idioma passou com 5 testes; falta repetir a suíte completa/build após esta limpeza.
+
+Correção pt-BR desta etapa (2026-09-01): alinhados pré-requisitos que ainda exibiam “Arcana” e “Performance” em registros de Mestre de Rituais, Truque de Item Mágico e Fenômeno da Pistola, usando “Arcanismo” e “Atuação” sem alterar os nomes en/es. Arquivos: `src/data/featsData.ts`, `js/pf2e_data.js`. Falta varredura funcional/visual completa.
+
+Validação desta etapa (2026-09-01): contratos de idioma/prontidão passaram com 69 testes; `node --check js/pf2e_data.js` e `git diff --check` passaram. Build e suíte completa após a limpeza permanecem pendentes.
+
+Validação consolidada desta limpeza (2026-09-01): suíte completa passou com 26 arquivos e 463 testes; `npm run build` passou. Permanecem os avisos conhecidos do Vite sobre scripts legados sem `type="module"` e chunk acima de 500 kB; a validação visual/browser segue pendente.
+
+Auditoria de catálogo desta etapa (2026-09-01): `npm run audit:catalog:provenance` confirmou 3.786 registros, nomes e resumos presentes em pt-BR/en/es, 0 IDs duplicados, 43 registros sem fonte/página confirmados (todos marcados `needs_review`), 3.114 registros em revisão e 1.490 com mecânica pendente. As traduções completas e a conferência mecânica/fontes dos itens pendentes continuam necessárias antes do gate final.

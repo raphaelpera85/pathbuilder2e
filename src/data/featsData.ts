@@ -114,7 +114,7 @@ export const PF2E_FEATS_CATALOG: FeatDefinition[] = [
       en: "Recover twice HP during daily rest; +2 vs poisons and diseases.",
       es: "Recuperas el doble de PG al descansar; +2 contra venenos y enfermedades."
     },
-    effects: [{ type: "save_bonus", target: "poison_disease", value: 2 }],
+    effects: [{ type: "save_bonus", target: "poison_disease", value: 2 }, { type: "daily_recovery_multiplier", value: 2 }],
     source: { book: "Livro do Jogador (Player Core)", page: 256 },
     ruleset: "remaster",
     rarity: "common"
@@ -1059,7 +1059,7 @@ export const PF2E_FEATS_CATALOG: FeatDefinition[] = [
     level: 1,
     traits: ["Geral", "Perícia"],
     actions: 1,
-    prereq: "Treinado em Arcana, Natureza, Ocultismo ou Religião",
+    prereq: "Treinado em Arcanismo, Natureza, Ocultismo ou Religião",
     description: "Você emula a tradição mágica necessária para ativar varinhas, pergaminhos e itens mágicos que normalmente não poderia usar.",
     summaries: {
       "pt-BR": "Ativa itens mágicos, cajados e pergaminhos de qualquer tradição.",

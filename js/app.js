@@ -340,6 +340,7 @@ class PathbuilderApp {
     this.dicePool = [];
     this.freeRollTotal = 0;
     this.lastFreeRoll = null;
+    this.skipCloudAutosave = false;
     this.diceAnimationTimer = null;
     this.currentPickerType = null;
     this.selectedPickerItem = null;
@@ -833,7 +834,9 @@ class PathbuilderApp {
           this.diceHistory = Array.isArray(this.character.diceHistory) ? this.character.diceHistory.slice(0, 100) : [];
           this.normalizeCharacterCoins();
           this.revalidateLoadedSelections();
+          this.skipCloudAutosave = true;
           this.saveCharacterLocal(false);
+          this.skipCloudAutosave = false;
           this.renderAll();
           return;
         } catch (e) {
@@ -1307,7 +1310,9 @@ class PathbuilderApp {
       acBonus: 0,
       dexCap: 5
     };
+    this.skipCloudAutosave = true;
     this.saveCharacterLocal(false);
+    this.skipCloudAutosave = false;
     this.renderAll();
   }
 
@@ -3178,7 +3183,7 @@ class PathbuilderApp {
           // mas recebem uma identificação visível em vez de parecerem cópias.
           const source = item.data?.source;
           const sourceTag = source?.book
-            ? `${source.book}${source.page ? `, p. ${source.page}` : ""}`
+            ? `${localizeSourceBookName(source.book, locale)}${source.page ? `, p. ${source.page}` : ""}`
             : String(item.data?.id || item.name || "").split(".").pop();
           const suffix = sourceTag ? ` · ${sourceTag}` : ` · ${String(item.data?.id || "").split(".").pop()}`;
           const names = { ...(item.data?.names || {}) };
@@ -4660,7 +4665,12 @@ class PathbuilderApp {
   }
 
   restCharacter() {
-    this.character.currentHp = this.calc.maxHp;
+    const conModifier = PF2E_ENGINE.getModifier(this.character.abilities?.con || 10);
+    const recoveryMultiplier = Math.max(1, Number(this.calc.featEffects?.dailyRecoveryMultiplier) || 1);
+    const naturalRecovery = Math.max(1, conModifier * (Number(this.character.level) || 1)) * recoveryMultiplier;
+    const currentHp = Number.isFinite(Number(this.character.currentHp)) ? Number(this.character.currentHp) : this.calc.maxHp;
+    const recoveredHp = Math.min(this.calc.maxHp, Math.max(0, currentHp) + naturalRecovery);
+    this.character.currentHp = recoveredHp;
     this.character.shieldRaised = false;
     this.character.spellSlotsUsed = {};
     const slotsInfo = PF2E_ENGINE.getSpellSlots(this.character);
@@ -4668,7 +4678,12 @@ class PathbuilderApp {
     this.saveCharacterLocal(false);
     this.renderAll();
     const locale = this.getLocale();
-    alert(locale === "en" ? "8-hour rest complete! HP, spell slots, and Focus Points were restored." : locale === "es" ? "¡Descanso de 8 horas completado! Se restauraron los PG, espacios de conjuro y Puntos de Foco." : "Descanso de 8 horas concluído! Todos os Pontos de Vida, Espaços de Magia e Foco foram restaurados.");
+    const recoveryText = locale === "en"
+      ? `8-hour rest complete! You recovered ${Math.max(0, recoveredHp - Math.max(0, currentHp))} HP; spell slots and Focus Points were restored.`
+      : locale === "es"
+        ? `¡Descanso de 8 horas completado! Recuperaste ${Math.max(0, recoveredHp - Math.max(0, currentHp))} PG; se restauraron los espacios de conjuro y los Puntos de Foco.`
+        : `Descanso de 8 horas concluído! Você recuperou ${Math.max(0, recoveredHp - Math.max(0, currentHp))} PV; os espaços de magia e pontos de foco foram restaurados.`;
+    alert(recoveryText);
   }
 
   updateCoins(type, value) {
@@ -5654,7 +5669,9 @@ class PathbuilderApp {
     this.revalidateLoadedSelections();
     this.diceHistory = Array.isArray(this.character.diceHistory) ? this.character.diceHistory.slice(0, 100) : [];
     this.reconcileSpellcastingProfile();
+    this.skipCloudAutosave = true;
     this.saveCharacterLocal(false);
+    this.skipCloudAutosave = false;
     this.renderAll();
   }
 
@@ -5668,7 +5685,7 @@ class PathbuilderApp {
         // autenticada após uma breve janela de debounce. O armazenamento
         // local continua sendo escrito primeiro para não perder alterações
         // durante quedas de rede ou quando a sessão ainda está carregando.
-        if (typeof window !== "undefined") window.dispatchEvent(new CustomEvent("pathbuilder:character-changed"));
+        if (typeof window !== "undefined" && !this.skipCloudAutosave) window.dispatchEvent(new CustomEvent("pathbuilder:character-changed"));
       }
     } catch (e) {
       console.warn("Erro ao salvar no localStorage:", e);

@@ -753,7 +753,7 @@ const PF2E_DATA = {
     { name: "Cavaleiro (Cavalier)", category: "Montaria", description: "Mestre do combate montado, lealdade a juramentos e cargas devastadoras com lança.", prereq: "Treinado em Natureza ou Cavalgar" },
     { name: "Sentinela (Sentinel)", category: "Defensivo", description: "Especialista em blindagem pesada e técnicas avançadas de armadura.", prereq: "Treinado em Armaduras Leves ou Médias" },
     { name: "Lutador (Wrestler)", category: "Desarmado", description: "Mestre de agarrões, chaves de braço e arremessos corporais brutais.", prereq: "Treinado em Atletismo e Ataques Desarmados" },
-    { name: "Mestre de Rituais (Ritualist)", category: "Mágico", description: "Conjurador de rituais ocultos e cerimoniais de alto nível sem gastar espaços de magia diários.", prereq: "Especialista em Arcana, Natureza, Ocultismo ou Religião" },
+    { name: "Mestre de Rituais (Ritualist)", category: "Mágico", description: "Conjurador de rituais ocultos e cerimoniais de alto nível sem gastar espaços de magia diários.", prereq: "Especialista em Arcanismo, Natureza, Ocultismo ou Religião" },
     { name: "Espião Noturno (Shadowdancer)", category: "Sombra", description: "Manipulador de sombras capaz de se teletransportar na escuridão e conjurar ilusões de penumbra.", prereq: "Mestre em Furtividade e Especialista em Acrobacia" },
     { name: "Dedicação: Alquimista", category: "Multiclasse", description: "Acesso a infusões alquímicas, fórmulas e bombas mágicas diárias.", prereq: "Inteligência +2" },
     { name: "Dedicação: Bárbaro", category: "Multiclasse", description: "Acesso à Fúria bárbara e talentos de instinto violento.", prereq: "Força +2, Constituição +2" },
@@ -1950,7 +1950,7 @@ const GUNS_GEARS_ARCHETYPES = [
   ["archetype.bullet_dancer", "Dançarino da Bala", "Bullet Dancer", "Bailarín de la bala", 132, ["Especialista em defesa sem armadura e treinado em armas simples"], "Arquetipo marcial que usa armas de fogo com movimentos e posturas de artes marciais.", "A martial archetype that uses firearms through martial-arts movement and stances.", "Un arquetipo marcial que usa armas de fuego mediante movimientos y posturas de artes marciales."],
   ["archetype.demolitionist", "Demolidor", "Demolitionist", "Demoledor", 133, ["Treinado em Manufatura"], "Especialista em explosivos que prepara e posiciona bombas para romper estruturas.", "An explosives specialist who prepares and places bombs to breach structures.", "Un especialista en explosivos que prepara y coloca bombas para derribar estructuras."],
   ["archetype.fireworks_technician", "Técnico de Fogos de Artifício", "Firework Technician", "Técnico de fuegos artificiales", 134, ["Treinado em Manufatura"], "Arquetipo de manufatura que transforma pólvora, metais e papel em espetáculos e efeitos táticos.", "A Crafting archetype that turns powder, metal, and paper into spectacles and tactical effects.", "Un arquetipo de Artesanía que convierte pólvora, metal y papel en espectáculos y efectos tácticos."],
-  ["archetype.pistol_phenom", "Fenômeno da Pistola", "Pistol Phenom", "Fenómeno de la pistola", 136, ["Treinado em Dissimulação e treinado em Performance"], "Arquetipo de pistoleiro performático que combina fintas, estilo e armas de fogo de uma mão.", "A performative gunslinger archetype combining feints, style, and one-handed firearms.", "Un arquetipo de pistolero performático que combina fintas, estilo y armas de fuego de una mano."],
+  ["archetype.pistol_phenom", "Fenômeno da Pistola", "Pistol Phenom", "Fenómeno de la pistola", 136, ["Treinado em Dissimulação e treinado em Atuação"], "Arquetipo de pistoleiro performático que combina fintas, estilo e armas de fogo de uma mão.", "A performative gunslinger archetype combining feints, style, and one-handed firearms.", "Un arquetipo de pistolero performático que combina fintas, estilo y armas de fuego de una mano."],
   ["archetype.dueling_pair", "Dupla de Precisão", "Sniping Duo", "Dúo de francotiradores", 138, ["Treinado em Furtividade e em arcos ou armas de fogo"], "Arquetipo de cooperação entre atirador e observador para coordenar tiros e abrir brechas.", "A cooperative archetype for a shooter and spotter who coordinate attacks and openings.", "Un arquetipo cooperativo para un tirador y un observador que coordinan ataques y oportunidades."]
 ];
 for (const [id, pt, en, es, page, prerequisites, ptSummary, enSummary, esSummary] of GUNS_GEARS_ARCHETYPES) {
@@ -2834,7 +2834,7 @@ PF2E_DATA.feats = [
       en: "Recover twice HP during daily rest; +2 vs poisons and diseases.",
       es: "Recuperas el doble de PG al descansar; +2 contra venenos y enfermedades."
     },
-    effects: [{ type: "save_bonus", target: "poison_disease", value: 2 }],
+    effects: [{ type: "save_bonus", target: "poison_disease", value: 2 }, { type: "daily_recovery_multiplier", value: 2 }],
     source: { book: "Livro do Jogador (Player Core)", page: 256 },
     ruleset: "remaster",
     rarity: "common"
@@ -3779,7 +3779,7 @@ PF2E_DATA.feats = [
     level: 1,
     traits: ["Geral", "Perícia"],
     actions: 1,
-    prereq: "Treinado em Arcana, Natureza, Ocultismo ou Religião",
+    prereq: "Treinado em Arcanismo, Natureza, Ocultismo ou Religião",
     description: "Você emula a tradição mágica necessária para ativar varinhas, pergaminhos e itens mágicos que normalmente não poderia usar.",
     summaries: {
       "pt-BR": "Ativa itens mágicos, cajados e pergaminhos de qualquer tradição.",
@@ -4788,11 +4788,11 @@ for (const [slug, pt, en, es, level, prerequisites] of PLAYER_CORE_RANGER_MULTIC
 
 // Livro do Jogador, pp. 249–250: primeiros talentos de perícia do catálogo.
 const PLAYER_CORE_SKILL_FEATS = [
-  ["acrobatics", "stable_balance", "Equilíbrio Estável", "Steady Balance", "Equilibrio estable", 1, "Treinado em Acrobatismo", 249],
-  ["acrobatics", "quick_squeeze", "Espremer-se Rápido", "Quick Squeeze", "Escurrirse rápido", 1, "Treinado em Acrobatismo", 249],
-  ["acrobatics", "cat_fall", "Queda do Gato", "Cat Fall", "Caída de gato", 1, "Treinado em Acrobatismo", 249],
-  ["acrobatics", "quick_crawl", "Rastejo Ligeiro", "Quick Crawl", "Gateo rápido", 2, "Especialista em Acrobatismo", 249],
-  ["acrobatics", "kip_up", "Levantar Rápido", "Kip Up", "Levantarse rápido", 7, "Mestre em Acrobatismo", 249],
+  ["acrobatics", "stable_balance", "Equilíbrio Estável", "Steady Balance", "Equilibrio estable", 1, "Treinado em Acrobacia", 249],
+  ["acrobatics", "quick_squeeze", "Espremer-se Rápido", "Quick Squeeze", "Escurrirse rápido", 1, "Treinado em Acrobacia", 249],
+  ["acrobatics", "cat_fall", "Queda do Gato", "Cat Fall", "Caída de gato", 1, "Treinado em Acrobacia", 249],
+  ["acrobatics", "quick_crawl", "Rastejo Ligeiro", "Quick Crawl", "Gateo rápido", 2, "Especialista em Acrobacia", 249],
+  ["acrobatics", "kip_up", "Levantar Rápido", "Kip Up", "Levantarse rápido", 7, "Mestre em Acrobacia", 249],
   ["arcana", "arcane_sense", "Sentido Arcano", "Arcane Sense", "Sentido arcano", 1, "Treinado em Arcanismo", 249],
   ["arcana", "unified_theory", "Teoria Unificada", "Unified Theory", "Teoría unificada", 15, "Lendário em Arcanismo", 249],
   ["athletics", "hefty_hauler", "Carregador Robusto", "Hefty Hauler", "Cargador robusto", 1, "Treinado em Atletismo", 249],
@@ -4808,19 +4808,19 @@ const PLAYER_CORE_SKILL_FEATS = [
   ["athletics", "cloud_jump", "Salto nas Nuvens", "Cloud Jump", "Salto en las nubes", 15, "Lendário em Atletismo", 250],
 ];
 const PLAYER_CORE_SKILL_NAMES = {
-  acrobatics: { "pt-BR": "Acrobatismo", en: "Acrobatics", es: "Acrobacias" },
+  acrobatics: { "pt-BR": "Acrobacia", en: "Acrobatics", es: "Acrobacias" },
   arcana: { "pt-BR": "Arcanismo", en: "Arcana", es: "Arcanismo" },
   athletics: { "pt-BR": "Atletismo", en: "Athletics", es: "Atletismo" },
   diplomacy: { "pt-BR": "Diplomacia", en: "Diplomacy", es: "Diplomacia" },
   deception: { "pt-BR": "Dissimulação", en: "Deception", es: "Engaño" },
   stealth: { "pt-BR": "Furtividade", en: "Stealth", es: "Sigilo" },
   intimidation: { "pt-BR": "Intimidação", en: "Intimidation", es: "Intimidación" },
-  thievery: { "pt-BR": "Ladroagem", en: "Thievery", es: "Juego de manos" },
+  thievery: { "pt-BR": "Ladinagem", en: "Thievery", es: "Juego de manos" },
   crafting: { "pt-BR": "Manufatura", en: "Crafting", es: "Artesanía" },
   medicine: { "pt-BR": "Medicina", en: "Medicine", es: "Medicina" },
   nature: { "pt-BR": "Natureza", en: "Nature", es: "Naturaleza" },
   occultism: { "pt-BR": "Ocultismo", en: "Occultism", es: "Ocultismo" },
-  performance: { "pt-BR": "Performance", en: "Performance", es: "Interpretación" },
+  performance: { "pt-BR": "Atuação", en: "Performance", es: "Interpretación" },
   religion: { "pt-BR": "Religião", en: "Religion", es: "Religión" },
   survival: { "pt-BR": "Sobrevivência", en: "Survival", es: "Supervivencia" },
   society: { "pt-BR": "Sociedade", en: "Society", es: "Sociedad" },
@@ -5900,7 +5900,7 @@ const PLAYER_CORE_EQUIPMENT_METADATA = {
 
 const localizedEquipmentSummary = (pt, en, es) => ({ "pt-BR": pt, en, es });
 const PLAYER_CORE_SKILL_METADATA = {
-  acrobatics: ["Acrobatismo", "Acrobatics", "Acrobatismo", 233],
+  acrobatics: ["Acrobacia", "Acrobatics", "Acrobacias", 233],
   arcana: ["Arcanismo", "Arcana", "Arcanismo", 234],
   athletics: ["Atletismo", "Athletics", "Atletismo", 234],
   crafting: ["Manufatura", "Crafting", "Artesanía", 241],
@@ -5915,7 +5915,7 @@ const PLAYER_CORE_SKILL_METADATA = {
   society: ["Sociedade", "Society", "Sociedad", 247],
   stealth: ["Furtividade", "Stealth", "Sigilo", 238],
   survival: ["Sobrevivência", "Survival", "Supervivencia", 246],
-  thievery: ["Ladroagem", "Thievery", "Latrocinio", 240]
+  thievery: ["Ladinagem", "Thievery", "Latrocinio", 240]
 };
 Object.entries(PLAYER_CORE_SKILL_METADATA).forEach(([id, [pt, en, es, page]]) => {
   const record = (PF2E_DATA.skills || []).find((skill) => skill.id === id);
@@ -6641,7 +6641,7 @@ const PLAYER_CORE_2_AMURRUN_FEATS = [
   ["danca_do_povo_felino", "Dança do Povo-Felino", "Catfolk Dance", "Danza del pueblo felino", 1, "", "Uma manobra acrobática que desequilibra uma criatura adjacente."],
   ["dentes_de_sabre", "Dentes-de-Sabre", "Saberteeth", "Dientes de sable", 1, "", "Você possui mandíbulas desarmadas que causam 1d6 de dano perfurante."],
   ["familiaridade_armas_amurruni", "Familiaridade com Armas Amurruni", "Amurrun Weapon Familiarity", "Familiaridad con armas amurrun", 1, "", "Você recebe familiaridade com armas amurruni e um grupo de armas associado."],
-  ["saber_amurruni", "Saber Amurruni", "Amurrun Lore", "Saber amurrun", 1, "", "Você se torna treinado em Acrobatismo, Sobrevivência e Saber de Amurrun."],
+  ["saber_amurruni", "Saber Amurruni", "Amurrun Lore", "Saber amurrun", 1, "", "Você se torna treinado em Acrobacia, Sobrevivência e Saber de Amurrun."],
   ["soneca_de_gato", "Soneca de Gato", "Cat Nap", "Siesta felina", 1, "", "Uma soneca de dez minutos concede Pontos de Vida temporários por uma hora."],
   ["sorte_de_gato", "Sorte de Gato", "Cat's Luck", "Suerte felina", 1, "", "Você pode rejogar um salvamento de Reflexos uma vez por dia."],
   ["viajante_bem_recebido", "Viajante Bem-Recebido", "Well-Met Traveler", "Viajero bien recibido", 1, "", "Você se torna treinado em Diplomacia e pode substituir uma perícia já concedida."],
@@ -6865,7 +6865,7 @@ const PLAYER_CORE_2_KOBOLD_FEATS = [
   ["magicornio_evoluido", "Magicórnio Evoluído", "Evolved Kobold", "Kobold evolucionado", 9, "Herança Kobold Magicórnio"],
   ["voo_com_asinhas", "Voo com Asinhas", "Winged Flight", "Vuelo con alitas", 9, "Asinhas"],
   ["arapucas_perversas", "Arapucas Perversas", "Vicious Snares", "Trampas perversas", 13, ""],
-  ["distracao_acrobatica", "Distração Acrobática", "Acrobatic Distraction", "Distracción acrobática", 13, "Especialista em Acrobatismo e Dissimulação"],
+  ["distracao_acrobatica", "Distração Acrobática", "Acrobatic Distraction", "Distracción acrobática", 13, "Especialista em Acrobacia e Dissimulação"],
   ["magicornio_resplandecente", "Magicórnio Resplandecente", "Shining Kobold", "Kobold resplandeciente", 13, "Magicórnio Evoluído"],
   ["grandiosidade_do_benfeitor", "Grandiosidade do Benfeitor", "Benefactor's Grandeur", "Grandeza del benefactor", 17, ""],
 ];
@@ -7134,13 +7134,13 @@ const PLAYER_CORE_2_SKILL_FEATS = [
   ["varied", "certain_identification", "Identificação Certa", "Certain Identification", "Identificación certera", 2, "Especialista em Arcanismo, Natureza, Ocultismo ou Religião"],
   ["varied", "discreet_inquiry", "Inquérito Discreto", "Discreet Inquiry", "Indagación discreta", 2, "Especialista em Dissimulação ou Diplomacia"],
   ["varied", "city_eyes", "Olhos da Cidade", "City Eyes", "Ojos de la ciudad", 2, "Treinado em Diplomacia ou Sociedade"],
-  ["varied", "slippery_prey", "Presa Escorregadia", "Slippery Prey", "Presa escurridiza", 2, "Treinado em Acrobatismo ou Atletismo"],
+  ["varied", "slippery_prey", "Presa Escorregadia", "Slippery Prey", "Presa escurridiza", 2, "Treinado em Acrobacia ou Atletismo"],
   ["varied", "consult_the_spirits", "Consultar os Espíritos", "Consult the Spirits", "Consultar a los espíritus", 7, "Mestre em Natureza, Ocultismo ou Religião"],
-  ["varied", "acrobatics_thievery", "Furto Acrobático", "Acrobatic Theft", "Hurto acrobático", 7, "Especialista em Acrobatismo e Ladroagem"],
-  ["acrobatics", "acrobatics_artist", "Artista Acrobático", "Acrobatic Artist", "Artista acrobático", 1, "Treinado em Acrobatismo"],
-  ["acrobatics", "acrobatics_teamwork", "Acrobatismo em Equipe", "Acrobatics Teamwork", "Acrobacias en equipo", 2, "Especialista em Acrobatismo"],
+  ["varied", "acrobatics_thievery", "Furto Acrobático", "Acrobatic Theft", "Hurto acrobático", 7, "Especialista em Acrobacia e Ladinagem"],
+  ["acrobatics", "acrobatics_artist", "Artista Acrobático", "Acrobatic Artist", "Artista acrobático", 1, "Treinado em Acrobacia"],
+  ["acrobatics", "acrobatics_teamwork", "Acrobacia em Equipe", "Acrobatics Teamwork", "Acrobacias en equipo", 2, "Especialista em Acrobacia"],
   ["acrobatics", "rolling_fall", "Cair Rolando", "Rolling Landing", "Caída rodando", 2, "Queda do Gato"],
-  ["acrobatics", "aerobatic_mastery", "Maestria Aerobática", "Aerobatic Mastery", "Maestría acrobática", 7, "Mestre em Acrobatismo"],
+  ["acrobatics", "aerobatic_mastery", "Maestria Aerobática", "Aerobatic Mastery", "Maestría acrobática", 7, "Mestre em Acrobacia"],
   ["diplomacy", "cutting_comment", "Comentário Maldoso", "Cutting Comment", "Comentario mordaz", 1, "Treinado em Diplomacia"],
   ["diplomacy", "evangelize", "Evangelizar", "Evangelize", "Evangelizar", 7, "Mestre em Diplomacia"],
   ["deception", "reserve_disguise", "Disfarce Reserva", "Reserve Disguise", "Disfraz de reserva", 2, "Especialista em Dissimulação"],
