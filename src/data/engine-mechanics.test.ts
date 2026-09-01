@@ -57,6 +57,72 @@ describe("PF2E_ENGINE Mechanics & Calculations", () => {
     expect(stats.saves.fortitude.total).toBe(7);
   });
 
+  it("aplica efeitos numéricos confirmados de talentos nas estatísticas corretas", () => {
+    const stats = engine.calculateCharacterStats({
+      ...baseCharacter,
+      level: 5,
+      feats: [
+        { id: "feat.general.toughness" },
+        { id: "feat.general.fleet" },
+        { id: "feat.general.incredible_initiative" },
+        { id: "feat.general.diehard" }
+      ]
+    });
+    expect(stats.maxHp).toBe(8 + (10 + 2) * 5 + 5);
+    expect(stats.speed).toBe(30);
+    expect(stats.initiative).toBe(stats.perception.total + 2);
+    expect(stats.featEffects).toMatchObject({ bonusHpPerLevel: 1, speedBonus: 5, initiativeBonus: 2, maxDying: 5 });
+    expect(engine.calculateDyingRecovery(3, 13, { recoveryDcReduction: 1, maxDying: 5 }).dc).toBe(12);
+  });
+
+  it("mantém bônus condicionais de salvamento separados do cálculo geral", () => {
+    const character = { feats: [{ id: "feat.general.fast_recovery" }, { id: "feat.general.breath_control" }] };
+    expect(engine.getConditionalSaveBonus(character, "poison_disease")).toBe(2);
+    expect(engine.getConditionalSaveBonus(character, "inhaled_poison_suffocation")).toBe(1);
+    expect(engine.getConditionalSaveBonus(character, "fire")).toBe(0);
+  });
+
+  it("aplica carga, velocidade, armadura e improvisação destreinada", () => {
+    const stats = engine.calculateCharacterStats({
+      ...baseCharacter,
+      level: 7,
+      ancestry: "Elfo",
+      feats: [
+        { id: "feat.skill.hefty_hauler" },
+        { id: "feat.ancestry.unburdened_iron" },
+        { id: "feat.ancestry.nimble_elf" },
+        { id: "feat.general.untrained_improvisation" }
+      ],
+      equippedArmor: { name: "Armadura", category: "Pesada", acBonus: 5, dexCap: 0, speedPenalty: -10, bulk: 4 },
+      skills: { stealth: "Destreinado" }
+    });
+    expect(stats.bulk.max).toBe(15);
+    expect(stats.bulk.encumbered).toBe(10);
+    expect(stats.speed).toBe(35);
+    expect(stats.skills.stealth.total).toBe(9);
+  });
+
+  it("aplica Percepção Astuta ao salvamento ou à percepção escolhidos", () => {
+    const fortitude = engine.calculateCharacterStats({
+      ...baseCharacter,
+      level: 1,
+      feats: [{ id: "feat.general.canny_acumen", selectedStatistic: "Fortitude" }]
+    });
+    const perception = engine.calculateCharacterStats({
+      ...baseCharacter,
+      level: 1,
+      feats: [{ id: "feat.general.canny_acumen", selectedStatistic: "Percepção" }]
+    });
+    const reflexosEspanhol = engine.calculateCharacterStats({
+      ...baseCharacter,
+      level: 1,
+      feats: [{ id: "feat.general.canny_acumen", selectedStatistic: "Reflejos" }]
+    });
+    expect(fortitude.saves.fortitude.rank).toBe("Especialista");
+    expect(perception.perception.rank).toBe("Especialista");
+    expect(reflexosEspanhol.saves.reflex.rank).toBe("Especialista");
+  });
+
   it("resolve classe e ancestralidade por nome curto ao calcular PV", () => {
     const stats = engine.calculateCharacterStats({
       level: 1,

@@ -376,7 +376,7 @@ export const SKILL_TRANSLATIONS: Record<string, Record<Locale, string>> = {
   medicine: { "pt-BR": "Medicina", en: "Medicine", es: "Medicina" },
   nature: { "pt-BR": "Natureza", en: "Nature", es: "Naturaleza" },
   occultism: { "pt-BR": "Ocultismo", en: "Occultism", es: "Ocultismo" },
-  performance: { "pt-BR": "Performance", en: "Performance", es: "Interpretación" },
+  performance: { "pt-BR": "Atuação", en: "Performance", es: "Interpretación" },
   religion: { "pt-BR": "Religião", en: "Religion", es: "Religión" },
   society: { "pt-BR": "Sociedade", en: "Society", es: "Sociedad" },
   stealth: { "pt-BR": "Furtividade", en: "Stealth", es: "Sigilo" },
@@ -478,6 +478,11 @@ function SpainFlag() {
 
 export function LocaleSwitcher() {
   const { locale, setLocale, t } = useI18n();
+  const currentLocale = locale === "en"
+    ? { label: "English (USA)", flag: <USAFlag /> }
+    : locale === "es"
+      ? { label: "Español (España)", flag: <SpainFlag /> }
+      : { label: "Português (Brasil)", flag: <BrazilFlag /> };
 
   return (
     <div className="locale-switcher" title={t("language")}>
@@ -497,35 +502,13 @@ export function LocaleSwitcher() {
 
       <button
         type="button"
-        className={`flag-btn ${locale === "pt-BR" ? "active" : ""}`}
-        onClick={() => setLocale("pt-BR")}
-        title="Português (Brasil)"
-        aria-pressed={locale === "pt-BR"}
-        aria-label="Português (Brasil)"
+        className="flag-btn active"
+        onClick={() => setLocale(locale === "pt-BR" ? "en" : locale === "en" ? "es" : "pt-BR")}
+        title={`${t("language")}: ${currentLocale.label}`}
+        aria-label={currentLocale.label}
+        aria-controls="locale-hidden-select"
       >
-        <BrazilFlag />
-      </button>
-
-      <button
-        type="button"
-        className={`flag-btn ${locale === "en" ? "active" : ""}`}
-        onClick={() => setLocale("en")}
-        title="English (USA)"
-        aria-pressed={locale === "en"}
-        aria-label="English (USA)"
-      >
-        <USAFlag />
-      </button>
-
-      <button
-        type="button"
-        className={`flag-btn ${locale === "es" ? "active" : ""}`}
-        onClick={() => setLocale("es")}
-        title="Español (España)"
-        aria-pressed={locale === "es"}
-        aria-label="Español (España)"
-      >
-        <SpainFlag />
+        {currentLocale.flag}
       </button>
     </div>
   );

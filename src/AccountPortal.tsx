@@ -40,6 +40,7 @@ export function AccountPortal() {
   const [working, setWorking] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
+  const [autoSaveStatus, setAutoSaveStatus] = useState<"idle" | "syncing" | "saved" | "pending">("idle");
   const [authMode, setAuthMode] = useState<AuthMode>("signin");
   const [rememberMe, setRememberMe] = useState(true);
   const [email, setEmail] = useState(() => {
@@ -58,6 +59,11 @@ export function AccountPortal() {
   const triggerRef = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLElement>(null);
   const charactersLoadIdRef = useRef(0);
+  const autoSaveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const autoSaveRetryTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const autoSaveInFlightRef = useRef(false);
+  const autoSavePendingRef = useRef(false);
+  const autoSaveAttemptRef = useRef(0);
 
   useEffect(() => {
     const openAccount = () => setOpen(true);
@@ -216,32 +222,96 @@ export function AccountPortal() {
     }
   };
 
-  const saveCurrent = async () => {
-    if (!session) return;
+  const saveCurrent = async (activeSession: AuthSession | null = session, silent = false) => {
+    if (!activeSession) return;
+    if (silent && autoSaveInFlightRef.current) {
+      autoSavePendingRef.current = true;
+      return;
+    }
+    if (silent) autoSaveInFlightRef.current = true;
+    if (silent) setAutoSaveStatus("syncing");
     setWorking("save");
-    setError(null);
-    setNotice(null);
+    if (!silent) {
+      setError(null);
+      setNotice(null);
+    }
     try {
       const char = (window as any).app?.getCurrentCharacter();
       if (!char) throw new Error(t("noActiveCharacter"));
-      await saveCharacter(char, session.user);
-      await refreshCharacters(session.user);
+      await saveCharacter(char, activeSession.user);
+      if (silent) {
+        autoSaveAttemptRef.current = 0;
+        setAutoSaveStatus("saved");
+        try { localStorage.removeItem(`pf2e_pending_cloud_save_${activeSession.user.id}`); } catch { /* ignore */ }
+      }
+      await refreshCharacters(activeSession.user);
       window.dispatchEvent(new Event("pathbuilder:characters-changed"));
-      setNotice(t("saveCurrent"));
+      if (!silent) setNotice(t("saveCurrent"));
     } catch (caught) {
-      setError(t("saveCharacterFailed"));
+      if (!silent) setError(t("saveCharacterFailed"));
+      if (silent) {
+        setAutoSaveStatus("pending");
+        try {
+          const pending = (window as any).app?.getCurrentCharacter();
+          if (pending) localStorage.setItem(`pf2e_pending_cloud_save_${activeSession.user.id}`, JSON.stringify(pending));
+        } catch { /* preserve the in-memory retry path */ }
+        const retryDelay = Math.min(30_000, 1_000 * (2 ** Math.min(autoSaveAttemptRef.current, 5)));
+        autoSaveAttemptRef.current += 1;
+        if (autoSaveRetryTimerRef.current) window.clearTimeout(autoSaveRetryTimerRef.current);
+        autoSaveRetryTimerRef.current = window.setTimeout(() => {
+          autoSaveRetryTimerRef.current = null;
+          void saveCurrent(activeSession, true);
+        }, retryDelay);
+      }
     } finally {
       setWorking(null);
+      if (silent) {
+        autoSaveInFlightRef.current = false;
+        if (autoSavePendingRef.current) {
+          autoSavePendingRef.current = false;
+          window.setTimeout(() => void saveCurrent(activeSession, true), 0);
+        }
+      }
     }
   };
 
   useEffect(() => {
-    const saveFromBuilder = () => {
-      if (session) void saveCurrent();
-      else setOpen(true);
+    const saveFromBuilder = async () => {
+      // A builder action can arrive in the same tick as the auth event. Read
+      // the shared session cache before showing the login form again.
+      const activeSession = session || await getCurrentSession();
+      if (activeSession) {
+        setSession(activeSession);
+        void saveCurrent(activeSession);
+      } else {
+        setOpen(true);
+      }
     };
     window.addEventListener("pathbuilder:save-account-character", saveFromBuilder);
-    return () => window.removeEventListener("pathbuilder:save-account-character", saveFromBuilder);
+    const autoSaveFromBuilder = () => {
+      if (!session) return;
+      if (autoSaveTimerRef.current) window.clearTimeout(autoSaveTimerRef.current);
+      if (autoSaveRetryTimerRef.current) window.clearTimeout(autoSaveRetryTimerRef.current);
+      autoSaveTimerRef.current = window.setTimeout(() => {
+        autoSaveTimerRef.current = null;
+        void saveCurrent(session, true);
+      }, 750);
+    };
+    window.addEventListener("pathbuilder:character-changed", autoSaveFromBuilder);
+    try {
+      if (localStorage.getItem(`pf2e_pending_cloud_save_${session.user.id}`)) {
+        autoSaveTimerRef.current = window.setTimeout(() => {
+          autoSaveTimerRef.current = null;
+          void saveCurrent(session, true);
+        }, 0);
+      }
+    } catch { /* ignore unavailable storage */ }
+    return () => {
+      window.removeEventListener("pathbuilder:save-account-character", saveFromBuilder);
+      window.removeEventListener("pathbuilder:character-changed", autoSaveFromBuilder);
+      if (autoSaveTimerRef.current) window.clearTimeout(autoSaveTimerRef.current);
+      if (autoSaveRetryTimerRef.current) window.clearTimeout(autoSaveRetryTimerRef.current);
+    };
   }, [session]);
 
   const removeCharacter = async (character: CloudCharacter) => {
@@ -407,7 +477,7 @@ export function AccountPortal() {
                 </details>
 
                 <div className="cloud-actions">
-                  <button className="account-primary" onClick={saveCurrent} disabled={working === "save"} type="button">
+                  <button className="account-primary" onClick={() => void saveCurrent()} disabled={working === "save"} type="button">
                     {working === "save" ? t("saving") : t("saveCurrent")}
                   </button>
                   <button onClick={() => { (window as any).app?.createNewCharacter(); setOpen(false); window.location.hash = "#/builder"; }} type="button">
@@ -417,6 +487,12 @@ export function AccountPortal() {
                     🔄 {t("refresh")}
                   </button>
                 </div>
+                <small role="status" aria-live="polite" className="account-sync-status">
+                  {autoSaveStatus === "syncing" ? (locale === "en" ? "Saving changes to cloud…" : locale === "es" ? "Guardando cambios en la nube…" : "Salvando alterações na nuvem…")
+                    : autoSaveStatus === "pending" ? (locale === "en" ? "Cloud sync pending; retrying automatically." : locale === "es" ? "Sincronización pendiente; reintentando automáticamente." : "Sincronização pendente; tentando novamente automaticamente.")
+                      : autoSaveStatus === "saved" ? (locale === "en" ? "Changes synced." : locale === "es" ? "Cambios sincronizados." : "Alterações sincronizadas.")
+                        : ""}
+                </small>
 
                 <section className="cloud-library" aria-labelledby="library-title">
                   <div className="section-heading">

@@ -128,7 +128,7 @@ function CatalogPage() {
 
   const entries = useMemo(() => catalogCategories.flatMap(({ type, label }) => {
     try {
-      return (window as any).app?.getPickerItems(type).map((item: any) => ({ ...item, category: type, categoryLabel: t(label) })) || [];
+      return (window as any).app?.getPickerItems(type, { includeIncompatible: true }).map((item: any) => ({ ...item, category: type, categoryLabel: t(label) })) || [];
     } catch {
       return [];
     }
@@ -759,7 +759,7 @@ function AdminPage() {
   const account = useAccountViewState();
   const metrics = useMemo(() => {
     const records = catalogCategories.flatMap(({ type }) => {
-      try { return (window as any).app?.getPickerItems(type) || []; } catch { return []; }
+      try { return (window as any).app?.getPickerItems(type, { includeIncompatible: true }) || []; } catch { return []; }
     });
     return {
       verified: records.filter((record: any) => record.data.needs_review === false && !record.data.sourceApproximate && record.data.source?.book && record.data.source?.page).length,

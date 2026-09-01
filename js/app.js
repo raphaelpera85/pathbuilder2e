@@ -651,7 +651,7 @@ class PathbuilderApp {
 
     // 7. Quick Action Bar Buttons
     const quickButtons = document.querySelectorAll(".quick-action-bar button");
-    if (quickButtons && quickButtons.length >= 7) {
+    if (quickButtons && quickButtons.length >= 8) {
       quickButtons[0].innerText = isEn ? "💤 Rest (8h)" : isEs ? "💤 Descansar (8h)" : "💤 Descansar (8h)";
       quickButtons[1].innerText = isEn ? "🛡️ Shield Block" : isEs ? "🛡️ Bloqueo c/ Escudo" : "🛡️ Bloqueio c/ Escudo";
       quickButtons[2].innerText = isEn ? "🎲 Recovery Check" : isEs ? "🎲 Prueba de Recuperación" : "🎲 Teste de Recuperação";
@@ -659,6 +659,7 @@ class PathbuilderApp {
       quickButtons[4].innerText = isEn ? "⏱️ End Turn" : isEs ? "⏱️ Fin del Turno" : "⏱️ Fim do Turno";
       quickButtons[5].innerText = isEn ? "✨ Clear Conditions" : isEs ? "✨ Limpiar Condiciones" : "✨ Limpar Condições";
       quickButtons[6].innerText = isEn ? "➕ Add Buff" : isEs ? "➕ Añadir Buff" : "➕ Adicionar Buff";
+      quickButtons[7].innerText = isEn ? "☁️ Save to Account" : isEs ? "☁️ Guardar en la cuenta" : "☁️ Salvar na Conta";
     }
 
     // 8. Navigation Tab Buttons
@@ -1002,7 +1003,7 @@ class PathbuilderApp {
     const classDcText = isEn ? "Class DC" : isEs ? "CD de Clase" : "CD de Classe";
     document.getElementById("classDcVal").innerText = `${this.calc.classDc} ${classDcText}`;
     document.getElementById("percVal").innerText = PF2E_ENGINE.formatMod(this.calc.perception.total);
-    document.getElementById("initVal").innerText = PF2E_ENGINE.formatMod(this.calc.perception.total);
+    document.getElementById("initVal").innerText = PF2E_ENGINE.formatMod(this.calc.initiative ?? this.calc.perception.total);
 
     // Sentidos Especiais
     const sensesContainer = document.getElementById("sensesBadgeList");
@@ -2046,9 +2047,12 @@ class PathbuilderApp {
     if (!fieldMatches) return;
     const compatibility = PF2E_ENGINE.getPrerequisiteCompatibility(this.character, itemData);
     if (compatibility?.state === "incompatible") return;
-    if (targetField === "patron" && item.data?.patron !== true) return;
-    if (targetField === "wizardThesis" && item.data?.thesis !== true) return;
-    if (targetField === "mystery" && item.data?.mystery !== true) return;
+    // O bridge legado normalmente recebe `{ name, data }`, mas integrações
+    // antigas também podem enviar o registro cru. Use o dado normalizado para
+    // que escolhas específicas continuem funcionando nos dois contratos.
+    if (targetField === "patron" && itemData?.patron !== true) return;
+    if (targetField === "wizardThesis" && itemData?.thesis !== true) return;
+    if (targetField === "mystery" && itemData?.mystery !== true) return;
     const canonicalValue = item.data?.id || item.name;
     const previousValue = this.character[targetField];
     this.character[targetField] = canonicalValue;
@@ -2082,23 +2086,45 @@ class PathbuilderApp {
     this.character.archetypes = filterCompatible(this.character.archetypes, (record) => PF2E_ENGINE.getPrerequisiteCompatibility(this.character, record));
     this.character.pets = filterCompatible(this.character.pets, (record) => PF2E_ENGINE.getPrerequisiteCompatibility(this.character, record));
     this.character.spells = filterCompatible(this.character.spells, (record) => PF2E_ENGINE.getSpellCompatibility(this.character, record));
-    const classText = String(this.character.class || "").toLowerCase();
+    const classValue = this.character.class && typeof this.character.class === "object"
+      ? this.character.class.id || this.character.class.name || this.character.class["pt-BR"] || this.character.class.en || this.character.class.es
+      : this.character.class;
+    const classText = String(classValue || "").toLowerCase();
     const classRecord = Object.values(PF2E_DATA.classes || {}).find((candidate) => {
       const names = [candidate?.id, candidate?.name, candidate?.names?.["pt-BR"], candidate?.names?.en, candidate?.names?.es]
         .filter(Boolean).map((value) => normalizeCatalogLabel(value));
-      const selected = normalizeCatalogLabel(this.character.class);
+      const selected = normalizeCatalogLabel(classValue);
       return names.some((name) => selected === name || selected.includes(name) || name.includes(selected));
     });
     const classId = classRecord?.id || "";
     const isClass = (...ids) => ids.includes(classId);
+    const classHasText = (...parts) => parts.some((part) => classText.includes(part));
+    const isWitch = isClass("class.witch") || classHasText("brux", "witch", "bruja");
+    const isWizard = isClass("class.wizard") || classHasText("mago", "wizard");
+    const isMagus = isClass("class.magus") || classHasText("magus");
+    const isOracle = isClass("class.oracle") || classHasText("oráculo", "oraculo", "oracle");
+    // Concessões automáticas pertencem à classe que as originou. Fichas
+    // importadas podem trazer marcadores antigos mesmo sem passar por
+    // applyClassSelection; removê-los aqui impede estado mágico incompatível.
+    if (Array.isArray(this.character.spells)) {
+      this.character.spells = this.character.spells.filter((spell) =>
+        (!spell?.grantedByPatron || isWitch)
+        && (!spell?.grantedByArcaneSchool || isWizard)
+        && (!spell?.grantedByHybridStudy || isMagus)
+        && (!spell?.grantedByMystery || isOracle)
+      );
+    }
+    if (Array.isArray(this.character.pets)) {
+      this.character.pets = this.character.pets.filter((pet) => !pet?.grantedByPatron || isWitch);
+    }
     const clearFields = (fields) => fields.forEach((field) => { this.character[field] = ""; });
-    if (!isClass("class.witch") && !classText.includes("brux") && !classText.includes("witch") && !classText.includes("bruja")) {
+    if (!isWitch) {
       clearFields(["patron", "patronId", "patronSkill", "patronLesson", "patronHex", "patronHexId", "patronFamiliarSpell", "patronFamiliarAbility"]);
     }
-    if (!isClass("class.wizard") && !classText.includes("mago") && !classText.includes("wizard")) clearFields(["wizardThesis", "arcaneSchool"]);
-    if (!isClass("class.magus") && !classText.includes("magus")) clearFields(["hybridStudy"]);
-    if (!isClass("class.oracle") && !classText.includes("oráculo") && !classText.includes("oracle") && !classText.includes("oraculo")) clearFields(["mystery", "mysterySkill", "mysteryCurse"]);
-    if (!isClass("class.necromancer") && !classText.includes("necromant") && !classText.includes("necromancer") && !classText.includes("nigromant")) clearFields(["fatalMethod", "grimFascination"]);
+    if (!isWizard) clearFields(["wizardThesis", "arcaneSchool"]);
+    if (!isMagus) clearFields(["hybridStudy"]);
+    if (!isOracle) clearFields(["mystery", "mysterySkill", "mysteryCurse"]);
+    if (!isClass("class.necromancer") && !classHasText("necromant", "necromancer", "nigromant")) clearFields(["fatalMethod", "grimFascination"]);
 
     // Campos específicos de classe também precisam apontar para uma opção
     // catalogada da classe atual. Isso protege fichas importadas/antigas que
@@ -2116,6 +2142,15 @@ class PathbuilderApp {
         this.character.patron = patron.id;
         this.character.subclass = patron.id;
         this.character.patronId = patron.id;
+        // Concessões de uma ficha antiga podem apontar para outro patrono.
+        // Depois de resolver o patrono canônico, preserve somente as
+        // concessões dele e mantenha escolhas manuais intactas.
+        if (Array.isArray(this.character.spells)) {
+          this.character.spells = this.character.spells.filter((spell) => !spell?.grantedByPatron || spell.grantedByPatron === patron.id);
+        }
+        if (Array.isArray(this.character.pets)) {
+          this.character.pets = this.character.pets.filter((pet) => !pet?.grantedByPatron || pet.grantedByPatron === patron.id);
+        }
       }
       if (this.character.patronHexId || this.character.patronHex) {
         const hexValue = this.character.patronHexId || this.character.patronHex;
@@ -2146,7 +2181,7 @@ class PathbuilderApp {
     const choiceFields = new Set([
       "researchField", "instinct", "muse", "doctrine", "order", "racket", "hunterEdge", "style", "cause",
       "bloodline", "methodology", "innovation", "way", "consciousMind", "implement", "apparition", "icon",
-      "banner", "guardianDefense", "elementalGate", "eidolon", "arcaneSchool", "hybridStudy", "fatalMethod"
+      "banner", "guardianDefense", "elementalGate", "eidolon", "arcaneSchool", "hybridStudy", "fatalMethod", "grimFascination"
     ]);
     if (classRecord?.id) {
       for (const field of choiceFields) {
@@ -3122,10 +3157,11 @@ class PathbuilderApp {
     });
   }
 
-  getPickerItems(type) {
+  getPickerItems(type, options = {}) {
     const sharedCatalogs = window.pathbuilderCatalogs || {};
-    const finalize = (items, options = {}) => {
-      const compatible = this.filterPickerItemsByCompatibility(type, items);
+    const finalize = (items, finalizeOptions = {}) => {
+      const resolvedOptions = { ...options, ...finalizeOptions };
+      const compatible = resolvedOptions.includeIncompatible ? items : this.filterPickerItemsByCompatibility(type, items);
       const seenLabels = new Set();
       return compatible.reduce((result, item) => {
         if (item.data?.legacyAlias) return result;
@@ -3137,7 +3173,7 @@ class PathbuilderApp {
           // selecionáveis com o mesmo nome visível. Registros duplicados
           // desses grupos vêm de pontes/aliases de catálogos diferentes e
           // devem aparecer uma única vez no picker.
-          if (options.collapseDuplicateLabels) return result;
+          if (resolvedOptions.collapseDuplicateLabels) return result;
           // Variantes homônimas de livros diferentes continuam disponíveis,
           // mas recebem uma identificação visível em vez de parecerem cópias.
           const source = item.data?.source;
@@ -3164,7 +3200,14 @@ class PathbuilderApp {
       return finalize(getObjectCatalogRecords(PF2E_DATA.classes).filter(({ record }) => !record?.legacyAlias).map(({ key, record }) => ({ name: key, type: "Classe", data: record })), { collapseDuplicateLabels: true });
     }
     if (type === "subclass") {
-      return finalize(mergeCatalogRecords([], PF2E_DATA.subclasses || []).filter(subclass => !subclass.legacyAlias).map(subclass => ({ name: subclass.name, type: "Subclasse", data: subclass })));
+      const targetField = options.includeIncompatible ? undefined : this.activePickerOptions?.targetField;
+      const subclasses = mergeCatalogRecords([], PF2E_DATA.subclasses || [])
+        .filter(subclass => !subclass.legacyAlias)
+        .filter(subclass => !targetField || targetField === "subclass"
+          ? true
+          : subclass.choiceField === targetField || subclass[targetField] === true)
+        .map(subclass => ({ name: subclass.name, type: "Subclasse", data: subclass }));
+      return finalize(subclasses, options);
     }
     if (type === "background") {
       return finalize(PF2E_DATA.backgrounds.map(b => ({ name: b.name, type: "Antecedente", data: b })));
@@ -3210,8 +3253,8 @@ class PathbuilderApp {
         return { name: spell.name, type: "Magia", data: { ...spell, selectionState: compatibility.state, selectionMessages } };
       });
       return heritageInnate
-        ? finalize(spellItems)
-        : finalize(spellItems).sort((a, b) => (weights[a.data.selectionState] - weights[b.data.selectionState]) || (a.data.rank - b.data.rank) || a.name.localeCompare(b.name));
+        ? finalize(spellItems, options)
+        : finalize(spellItems, options).sort((a, b) => (weights[a.data.selectionState] - weights[b.data.selectionState]) || (a.data.rank - b.data.rank) || a.name.localeCompare(b.name));
     }
     if (type === "ritual") {
       return finalize(mergeCatalogRecords([], PF2E_DATA.rituals || []).map(r => ({ name: r.name, type: "Ritual", data: r })));
@@ -3405,11 +3448,23 @@ class PathbuilderApp {
       const exists = this.character.formulas.some(f => (item.data.id && f.id === item.data.id) || f.name === item.name);
       if (!exists) this.character.formulas.push({ ...item.data, name: item.name });
     } else if (type === "feat") {
+      if (!this.character.feats) this.character.feats = [];
+      const featObj = { ...item.data, name: item.name, slotId: options?.slotId, level: options?.level || this.character.level };
+      if (item.data?.id === "feat.general.canny_acumen") {
+        const locale = this.getLocale();
+        const labels = locale === "en"
+          ? ["Perception", "Fortitude", "Reflex", "Will"]
+          : locale === "es"
+            ? ["Percepción", "Fortaleza", "Reflejos", "Voluntad"]
+            : ["Percepção", "Fortitude", "Reflexos", "Vontade"];
+        const selected = prompt(`${locale === "en" ? "Canny Acumen target (1-4):" : locale === "es" ? "Objetivo de Percepción Astuta (1-4):" : "Alvo de Percepção Astuta (1-4):"}\n${labels.map((label, index) => `${index + 1}. ${label}`).join("\n")}`, "1");
+        const selectedIndex = Number.parseInt(selected, 10) - 1;
+        if (!Number.isInteger(selectedIndex) || !labels[selectedIndex]) return;
+        featObj.selectedStatistic = labels[selectedIndex];
+      }
       if (options?.slotId) {
         this.character.progression[options.slotId] = item.name;
       }
-      if (!this.character.feats) this.character.feats = [];
-      const featObj = { ...item.data, name: item.name, slotId: options?.slotId, level: options?.level || this.character.level };
       if (options?.slotId) {
         const existingIdx = this.character.feats.findIndex(f => f.slotId === options.slotId);
         if (existingIdx >= 0) this.character.feats[existingIdx] = featObj;
@@ -3615,10 +3670,12 @@ class PathbuilderApp {
     }
 
     if (this.currentPickerType === "subclass") {
-      if (this.activePickerOptions?.targetField === "wizardThesis") items = items.filter((item) => item.data?.thesis === true);
-      else if (this.activePickerOptions?.targetField === "patron") items = items.filter((item) => item.data?.patron === true);
-      else if (this.activePickerOptions?.targetField === "mystery") items = items.filter((item) => item.data?.mystery === true);
-      else items = items.filter((item) => item.data?.thesis !== true && item.data?.patron !== true && item.data?.mystery !== true);
+      const targetField = this.activePickerOptions?.targetField;
+      if (targetField && targetField !== "subclass") {
+        items = items.filter((item) => item.data?.choiceField === targetField || item.data?.[targetField] === true);
+      } else {
+        items = items.filter((item) => item.data?.thesis !== true && item.data?.patron !== true && item.data?.mystery !== true);
+      }
     }
 
     // O modal legado também é uma superfície de escolha: não apresente
@@ -4049,7 +4106,8 @@ class PathbuilderApp {
     }
 
     this.lastFreeRoll = rollEntry;
-    this.freeRollTotal = Number(this.freeRollTotal) + rollEntry.value;
+    const previousTotal = Number(this.freeRollTotal);
+    this.freeRollTotal = (Number.isFinite(previousTotal) ? previousTotal : 0) + rollEntry.value;
     // Compatibilidade com integrações antigas: a lista visual nunca acumula
     // dados; o total acumulado fica separado em freeRollTotal.
     this.freeRollDiceList = [rollEntry];
@@ -4552,7 +4610,8 @@ class PathbuilderApp {
     const roll = Math.floor(Math.random() * 20) + 1;
     const isNat20 = roll === 20;
     const isNat1 = roll === 1;
-    const res = PF2E_ENGINE.calculateDyingRecovery(dyingVal, roll, { doomed: doomedVal, isNat20, isNat1 });
+    const featEffects = PF2E_ENGINE.getFeatStatEffects?.(this.character) || {};
+    const res = PF2E_ENGINE.calculateDyingRecovery(dyingVal, roll, { doomed: doomedVal, isNat20, isNat1, ...featEffects });
 
     const recoveryCopy = locale === "en"
       ? { criticalSuccess: "🌟 Critical Success (Dying decreases by 2)", success: "✅ Success (Dying decreases by 1)", criticalFailure: "💀 Critical Failure (Dying increases by 2)", failure: "❌ Failure (Dying increases by 1)", dying: "Dying", dead: "☠️ DEAD (Maximum threshold reached)", stabilized: "💖 Stabilized! Gains Wounded +1", check: "Recovery Check", roll: "d20 roll" }
@@ -4852,7 +4911,10 @@ class PathbuilderApp {
         // A progressão de nível 1 muda por classe. O bloco específico mantém
         // a forma do Pathbuilder e evita mostrar apenas um rótulo genérico de
         // subclasse para conjuradores com escolhas próprias.
-        const classText = String(char.class || "").toLowerCase();
+        const classValue = char.class && typeof char.class === "object"
+          ? char.class.id || char.class.name || char.class["pt-BR"] || char.class.en || char.class.es
+          : char.class;
+        const classText = String(classValue || "").toLowerCase();
         const featureCopy = {
           witch: {
             heading: ["Feitiços Hex", "Hex Spells", "Hechizos de maleficio"],
@@ -5602,6 +5664,11 @@ class PathbuilderApp {
         this.normalizeCharacterCoins();
         this.character.diceHistory = structuredClone(this.diceHistory.slice(0, 100));
         localStorage.setItem("pf2e_current_character", JSON.stringify(this.character));
+        // O Portal de Conta observa este evento e sincroniza a ficha
+        // autenticada após uma breve janela de debounce. O armazenamento
+        // local continua sendo escrito primeiro para não perder alterações
+        // durante quedas de rede ou quando a sessão ainda está carregando.
+        if (typeof window !== "undefined") window.dispatchEvent(new CustomEvent("pathbuilder:character-changed"));
       }
     } catch (e) {
       console.warn("Erro ao salvar no localStorage:", e);

@@ -1,5 +1,88 @@
 # Cobertura PF2e, bugs e melhorias
 
+## HANDOFF PARA CONTINUIDADE (atualizado em 01/09/2026)
+
+Este documento é a fonte de verdade para continuar o trabalho quando esta sessão terminar. Toda tarefa nova deve ser registrada aqui antes da implementação; ao concluir qualquer tarefa, marcar `[x]` e acrescentar imediatamente uma linha de evidência nesta seção ou na seção correspondente. Não remover o histórico de auditorias.
+
+### Objetivo integral do usuário
+
+Entregar o portal/construtor de personagens Pathfinder 2e com catálogo derivado dos livros locais em `D:\Users\rapha\Documents\Projetos\RPG\livros`, regras e pré-requisitos reais, CRUD completo, persistência por conta e histórico, compras confirmadas, rolagem 3D agregada, autenticação estável, interface responsiva e conteúdo correto em três idiomas. A ordem é obrigatória: concluir e validar todo o produto em pt-BR; somente depois iniciar a revisão/expansão equivalente em inglês e espanhol.
+
+### Requisitos explícitos a preservar
+
+- Catalogar e disponibilizar classes, subclasses, ancestrais/raças, heranças, antecedentes, arquétipos, talentos, magias, magias de foco, rituais, armas, armaduras, escudos, equipamentos, fórmulas, consumíveis, pets, familiares, companheiros, eidolons, montarias, ações, condições, buffs e demais opções utilizáveis pelo personagem.
+- Aplicar pré-requisitos por nível, classe, ancestralidade, subclasse, atributos, perícias, proficiência, tradição, divindade, equipamento, anatomia, voo, dedicação, santificação, morto-vivo e demais gates estruturados; opções incompatíveis não podem aparecer no picker e devem ser revalidadas antes de persistir/importar.
+- Reproduzir os blocos de progressão específicos das classes, especialmente Bruxa (Hex inicial, Patrono, Familiar e conjuração), Mago (Escola, Tese, Vínculo, Grimório e conjuração), Magus (Estudo Híbrido, Cascata, Confluxo, Golpe de Magia), Necromante (Método Fatal, Fascinação, Servo, Lamento, Sepultura e Saber), Oráculo (Mistério, Maldição e Revelações) e equivalentes de todas as outras classes catalogadas.
+- Corrigir duplicatas sem fundir variantes legítimas de edição/livro: Exemplar, mascotes/companheiros, fórmulas/alquimia e heranças. Exibir descrições completas, fonte, página, edição e estado `needs_review` quando a confirmação mecânica/proveniência faltar.
+- Implementar CRUD para todos os itens utilizáveis e para personagens da conta: criar, listar, abrir, editar, excluir, equipar/guardar, quantidades, recipientes, moedas, importação/exportação, histórico e salvamento explícito no banco ligado ao usuário autenticado.
+- Compras: adicionar ao pool sem deduzir; somar o total; confirmar em Comprar; revalidar carteira e estado concorrente no instante da confirmação; deduzir somente então; cancelar atomicamente se faltar saldo.
+- Interface: desktop/tablet/mobile sem overflow horizontal; em portáteis não rolar a página, apenas listas/painéis internos; manter ações primárias visíveis, teclado/acessibilidade, toque e `prefers-reduced-motion`.
+- Dados: rolagem visual 3D; animar somente o último dado; histórico/painel deve conter uma entrada agregada com soma, não uma linha acumulada por dado/clique.
+- Portal: corrigir sessão ao abrir Biblioteca/Perfil/Campanhas, fim do carregamento de personagens, fallback/error localizado, menu superior estável sem tremor/sobreposição, perfil/gestão de conta/logoff e seletor de idioma exibindo somente a bandeira selecionada.
+- pt-BR deve ser o gate primário. Não pesquisar, implementar ou “completar” inglês/espanhol antes do aceite pt-BR; depois repetir a matriz funcional e visual nos dois idiomas.
+
+### Estado confirmado nesta sessão
+
+- O picker React e o modal legado agora filtram subclasses pelo `choiceField` do bloco específico ativo, em vez de mostrar subclasses de outros campos; o bridge aceita tanto registro cru quanto `{ name, data }`.
+- Foi preservada a ordem correta: filtrar pré-requisitos primeiro e deduplicar depois, mantendo a variante homônima compatível de mascotes, fórmulas e heranças.
+- Validação executada: `npm test -- --run` = 26 arquivos/445 testes aprovados; `npm run build` aprovado; `node --check js/app.js` e `node --check js/pf2e_data.js` aprovados; `git diff --check` aprovado.
+- Auditoria de catálogo: 3.786 registros; nomes e resumos pt-BR/en/es presentes; 0 IDs duplicados; 43 sem livro/página confirmados, todos `needs_review`; 3.114 em revisão e 1.490 com mecânica provisória.
+- Auditoria de livros: 17 PDFs legíveis, 15 TXT pareados úteis, nenhum PDF inválido. As cópias traduzidas grandes de War of Immortals, Howl of the Wild e Battlecry excedem o limite do parser; Dark Archive_pt e Rage of Elements_pt têm extração insuficiente. Não atribuir páginas por inferência.
+- Nenhum commit ou push foi feito: só executar no gate final, após todas as tarefas e validações.
+
+### Próxima sequência obrigatória para o próximo agente
+
+1. Continuar o bloco P0/P1/P2 abaixo, começando pelas tarefas não marcadas em `[ ]` de progressão específica de classe e ligação entre escolhas, efeitos e revalidação.
+2. Fechar a cobertura e a proveniência dos registros pendentes usando somente os PDFs/TXT locais; manter `needs_review` quando não houver confirmação suficiente e registrar livro/página quando houver.
+3. Executar testes de comportamento (não somente testes estáticos), incluindo todos os tipos de picker, todas as classes, troca de classe/subclasse/ancestralidade, importação, conta, CRUD, compras concorrentes, histórico, rolagem 3D e duplicatas.
+4. Fazer validação visual/browser real nos viewports `320x568`, `375x667`, `414x896`, `768x1024` e `1440x900`; comprovar `scrollWidth === clientWidth`, scroll apenas interno no portátil, diálogos acessíveis e navegação por teclado/toque.
+5. Fazer o aceite integral pt-BR e registrar evidências. Só então revisar inglês e espanhol, incluindo testes por locale e busca de vazamentos/fallbacks.
+6. Reexecutar testes, build, sintaxe, auditorias, revisar `git diff`, conferir `git status --short --branch`, criar commit descritivo e executar push. Não fazer isso antes de o backlog estar integralmente concluído.
+
+### Regra de atualização contínua
+
+Cada implementação deve atualizar este documento com: (a) tarefa marcada `[x]`; (b) resumo do que mudou; (c) arquivos/testes/evidência; (d) limitações ou o que ainda falta. Se uma validação falhar, registrar a falha e a próxima ação, sem marcar a tarefa como concluída.
+
+Correção desta etapa (2026-09-01): o seletor de idioma passou a renderizar somente a bandeira do idioma atual; o clique nela avança ciclicamente entre pt-BR, inglês e espanhol, mantendo o seletor nativo para acessibilidade. Isso elimina a ocupação simultânea das três bandeiras e reduz a instabilidade visual da barra superior.
+
+Validação desta etapa: `npm test -- --run src/i18n.test.tsx src/data/responsive-layout-contract.test.ts` = 2 arquivos/88 testes aprovados; `npm run build` aprovado; `git diff --check` aprovado. Falta validar o comportamento visual real nos viewports portáteis e concluir o gate integral pt-BR antes de iniciar a revisão en/es.
+
+Validação consolidada desta etapa (2026-09-01): `npm test -- --run` = 26 arquivos/451 testes aprovados; build, sintaxe de `js/app.js`/`js/pf2e_data.js` e `git diff --check` aprovados. Permanecem apenas os avisos conhecidos do build sobre scripts legados sem `type="module"` e bundle grande; não há commit/push porque o backlog funcional ainda não terminou.
+
+Correção desta etapa (2026-09-01): o metadado central da perícia `Performance` também foi corrigido para `Atuação` em `js/pf2e_data.js`; antes, o catálogo legado sobrescrevia a tradução correta do construtor e podia exibir inglês no pt-BR. O contrato de localização agora cobre as duas fontes.
+
+Falta nesta frente: auditar visualmente todos os 3.786 registros e textos estruturais, corrigir os demais vazamentos comprovados e só iniciar a expansão en/es após o aceite completo em pt-BR.
+
+Auditoria repetida (2026-09-01 12:10): `npm run audit:catalog:provenance` confirmou 3.786 registros, 0 nomes/resumos ausentes nos três idiomas, 0 IDs duplicados, 43 registros sem livro/página confirmado (todos `needs_review`), 3.114 em revisão e 1.490 com mecânica provisória. `npm run audit:books` confirmou 17 PDFs legíveis, 15 TXT úteis e nenhum PDF inválido; as duas traduções com extração insuficiente e os três PDFs traduzidos grandes continuam pendentes. O próximo trabalho deve priorizar essas pendências verificáveis, sem atribuição especulativa.
+
+Correção desta etapa (2026-09-01): iniciado o fechamento pt-BR dos impulsos de Ar de Rage of Elements; os 15 nomes agora têm tradução pt-BR/espanhol própria, mantendo o título inglês separado e o registro marcado para revisão mecânica.
+
+Validação desta etapa: `src/data/catalog-provenance.test.ts` = 99 testes aprovados; sintaxe de `js/pf2e_data.js` e `git diff --check` aprovados. Faltam os demais grupos de impulsos, efeitos mecânicos completos e a validação visual do picker.
+
+Correção desta etapa (2026-09-01): concluída a localização dos 15 impulsos de Terra de Rage of Elements em pt-BR e espanhol, mantendo os títulos ingleses originais e o estado `needs_review` para os efeitos.
+
+Validação atualizada: `src/data/catalog-provenance.test.ts` = 100 testes aprovados; sintaxe de `js/pf2e_data.js` e `git diff --check` aprovados. Ainda faltam os demais grupos de impulsos, a confirmação mecânica individual e a validação visual.
+
+Correção desta etapa (2026-09-01): localizados os 16 impulsos de Fogo de Rage of Elements em pt-BR e espanhol, mantendo o texto original inglês separado e `needs_review` para efeitos não conferidos.
+
+Validação atualizada: `src/data/catalog-provenance.test.ts` = 101 testes aprovados; sintaxe de `js/pf2e_data.js` e `git diff --check` aprovados. Faltam os grupos Metal, Água, Madeira e compostos, além dos efeitos mecânicos e validação visual.
+
+Correção desta etapa (2026-09-01): localizados os 15 impulsos de Água de Rage of Elements em pt-BR e espanhol, mantendo o título inglês original, a fonte de seção e o estado `needs_review` dos efeitos.
+
+Validação atualizada: `src/data/catalog-provenance.test.ts` = 102 testes aprovados; sintaxe de `js/pf2e_data.js` e `git diff --check` aprovados. Faltam Metal, Madeira e compostos, além da revisão mecânica individual e validação visual.
+
+Correção desta etapa (2026-09-01): localizados os 15 impulsos de Madeira de Rage of Elements em pt-BR e espanhol, com o inglês original preservado e `needs_review` mantido para efeitos não confirmados.
+
+Validação atualizada: `src/data/catalog-provenance.test.ts` = 103 testes aprovados; sintaxe de `js/pf2e_data.js` e `git diff --check` aprovados. Faltam Metal e compostos, além da revisão mecânica individual e validação visual.
+
+Correção desta etapa (2026-09-01): localizados os 15 impulsos de Metal de Rage of Elements em pt-BR e espanhol, preservando os títulos ingleses originais e `needs_review` para efeitos ainda não confirmados.
+
+Validação atualizada: `src/data/catalog-provenance.test.ts` = 104 testes aprovados; `node --check js/pf2e_data.js` e `git diff --check` aprovados. Faltam os impulsos compostos, a revisão mecânica individual dos impulsos e a validação visual do picker.
+
+Correção desta etapa (2026-09-01): localizados os 12 impulsos compostos de Rage of Elements em pt-BR e espanhol, mantendo o inglês original e o estado `needs_review` para efeitos não confirmados.
+
+Validação atualizada: `src/data/catalog-provenance.test.ts` = 105 testes aprovados; `node --check js/pf2e_data.js` e `git diff --check` aprovados. Falta revisar mecanicamente cada impulso, confirmar páginas nos PDFs/TXT locais quando possível e validar o picker no navegador.
+
 Atualização desta etapa: adicionados nove talentos gerais e 43 talentos de perícia do Player Core 2 (pp. 225–226), com pré-requisitos localizados e filtro contextual; a regra de Resiliência de Guerreiro/Patrulheiro agora também valida `hpPerLevel` contra 8 + modificador de Constituição. O arquétipo Espião Noturno recebeu a fonte confirmada do Livro Básico local (p. 382). Auditoria anterior: 3755 registros, 3091 em revisão, 43 sem fonte/página e nenhum ID duplicado.
 
 Auditoria estrita atualizada (2026-09-01): 3.762 registros; nomes, resumos e traduções presentes nos três idiomas; 43 registros sem livro/página confirmados, todos marcados `needs_review`; 1.490 registros ainda possuem efeito mecânico explicitamente provisório; nenhum ID, fonte ou regraset inválido. Esses registros continuam bloqueados para confirmação nos PDFs antes de receberem regra oficial.
@@ -9,6 +92,20 @@ Auditoria estrita após as revelações do Oráculo (2026-09-01): 3.786 registro
 Auditoria após as revelações avançadas e maiores do Oráculo (2026-09-01): os 24 registros de revelação do Player Core 2 possuem nomes trilíngues, vínculo de mistério e fonte local; somente a revelação inicial é concedida automaticamente no 1º nível.
 
 Correção desta etapa: o modal legado agora filtra pré-requisitos antes de consolidar nomes repetidos de mascotes, fórmulas e heranças, preservando a variante compatível quando registros homônimos possuem requisitos diferentes.
+
+Correção desta etapa: os pickers React e legado agora restringem subclasses pelo `choiceField` do bloco ativo (incluindo campos específicos de Bruxa, Mago, Magus, Oráculo e demais classes); o bridge também aceita registros crus e envelopados sem perder a validação da escolha.
+
+Teste desta etapa: a matriz de proveniência agora verifica que todas as subclasses com `choiceField` usam campos contextuais permitidos e uma classe válida; os contratos React/legado cobrem a filtragem correspondente. Resultado: 179 testes direcionados aprovados.
+
+Correção desta etapa: a revalidação de fichas importadas/restauradas remove concessões automáticas de Patrono, Escola Arcana, Estudo Híbrido e Mistério quando a classe atual não corresponde, incluindo o familiar concedido pelo Patrono.
+
+Correção desta etapa: `grimFascination` agora é limpo para classes diferentes de Necromante e validado junto aos demais campos de subclasse, evitando que uma Fascinação Sombria antiga sobreviva à troca/importação da ficha. Teste do contrato: 82 casos aprovados.
+
+Correção desta etapa: a revalidação de escolhas agora resolve a classe persistida também quando ela chega como objeto localizado (`id`, `name`, `pt-BR`, `en` ou `es`), evitando perder os gates de classe em importações estruturadas.
+
+Teste desta etapa: os contratos de prontidão e responsividade cobrem a resolução de classe localizada e a limpeza de campos/concessões incompatíveis; resultado atual: 146 testes direcionados aprovados.
+
+Correção desta etapa: a árvore de progressão também resolve a classe quando a ficha a armazena como objeto localizado, mantendo visíveis os blocos corretos de Bruxa, Mago, Magus, Oráculo, Necromante e demais classes.
 
 Auditoria das fontes locais (2026-09-01): 17 PDFs de livros identificados; 15 possuem TXT pareado útil. As cópias `Dark Archive_pt.pdf` e `Rage of Elements_pt.pdf` têm extração local insuficiente (1.859 e 1.036 caracteres para 226 e 242 páginas), portanto permanecem pendentes e não podem servir como confirmação de página/conteúdo. Nenhum texto foi sobrescrito.
 
@@ -250,6 +347,12 @@ Auditoria atual após os 43 talentos de Oráculo: 3004 registros, 2382 em revis�
   - [x] Localizar o nome das fontes exibido nos detalhes dos pickers React, distinguindo Player Core, Player Core 2 e expansões nos três idiomas.
   - [x] Localizar também as referências do Livro Básico legado e do Manual do Jogador nas interfaces dos pickers.
   - [ ] Expor no construtor Salvar personagem na conta e CRUD completo de fichas cloud, vinculando `user_id`, configuração integral e histórico; atualizar a biblioteca após salvar.
+    - [ ] Sincronizar automaticamente cada alteração do personagem autenticado com a nuvem, com debounce/coalescência de mudanças, fila offline, retry seguro, indicação de status e resolução de conflitos; o botão manual deve permanecer apenas como ação opcional de confirmação.
+      - [ ] Validar que alterações em atributos, progressão, inventário, moedas, condições, rolagens, configurações e histórico sejam persistidas sem exigir clique em `Salvar na Conta`.
+      - [x] Disparar sincronização automática após alterações locais, com debounce de 750 ms e coalescência enquanto outro salvamento remoto está em andamento; preservar o fallback local.
+      - [ ] Completar fila offline, retry com backoff, indicador de estado e resolução de conflitos; validar com Supabase real.
+
+Implementação desta etapa (2026-09-01): alterações persistidas localmente agora emitem `pathbuilder:character-changed`; o Portal de Conta sincroniza a ficha autenticada automaticamente após 750 ms, coalescendo alterações durante salvamentos concorrentes e mantendo o fallback local. Validação: suíte completa com 26 arquivos/462 testes, build e sintaxe aprovados. Falta a fila offline/backoff, indicador e teste end-to-end contra Supabase real.
     - [x] Cachear localmente o retorno de um salvamento remoto bem-sucedido para que uma falha transitória da próxima leitura não deixe a biblioteca vazia.
     - [x] Biblioteca com renomear/excluir/abrir e sincronização entre as duas visões de conta.
     - [x] Incluir a configuração integral já presente no documento da ficha e até 100 registros do histórico de rolagens no snapshot salvo/restaurado; o CRUD cloud continua pendente de validação end-to-end.
@@ -257,6 +360,7 @@ Auditoria atual após os 43 talentos de Oráculo: 3004 registros, 2382 em revis�
     - [x] Exibir o histórico recente de versões na Biblioteca, com nome, nível e data formatada no locale ativo.
     - [x] Permitir restaurar uma versão histórica diretamente na Biblioteca, reabrindo a configuração completa no construtor.
     - [x] Adicionar ação explícita no menu do construtor para salvar a ficha atual na conta autenticada ou abrir o login quando a sessão não estiver disponível.
+    - [x] Expor também o botão `Salvar na Conta` diretamente na barra de ações rápidas do construtor, mantendo a mesma ponte de sessão e localização pt-BR/en/es; CRUD cloud end-to-end ainda precisa de validação.
     - [x] Atualizar imediatamente a biblioteca do painel de conta após login/cadastro e invalidar cargas pendentes ao sair, evitando listas vazias ou dados de sessão anterior.
     - [x] Adicionar renomeação direta de fichas na biblioteca, preservando o documento completo e vinculando a atualização à conta autenticada.
     - [x] Ao trocar de classe, limpar concessões específicas da classe anterior (patrono, hex, familiar, tese, mistério e tradição) antes de revalidar a nova progressão.
@@ -402,6 +506,34 @@ Auditoria atual após os 43 talentos de Oráculo: 3004 registros, 2382 em revis�
 ## P2 — validação de personagem
 
 - [ ] Validar pré-requisitos de talentos, arquétipos, heranças, magias, armas e armaduras por nível, proficiência, classe e tradição.
+  - [ ] Interpretar todas as características/efeitos catalogados que alteram atributos, PV, CA, salvamentos, perícias, proficiências, deslocamento, sentidos, resistências, fraquezas, imunidades, ações, recursos e demais estatísticas; refletir os modificadores nos cálculos, painel, ficha, exportações e histórico, com explicação localizada e teste por categoria. Registros sem efeito confirmado devem permanecer `needs_review` e não receber regra inventada.
+    - [x] Aplicar os efeitos confirmados de Robustez, Movimento Rápido, Iniciativa Incrível e Duro de Matar a PV, deslocamento, iniciativa, CD de recuperação e limiar de Morrendo.
+    - [x] Expor os efeitos aplicados no resultado do motor e cobrir a integração com testes de cálculo e teste de recuperação.
+    - [x] Registrar os quatro efeitos confirmados no catálogo (`effects`) e manter fallback por ID para fichas antigas.
+    - [x] Aplicar Percepção Astuta à estatística escolhida (Percepção, Fortitude, Reflexos ou Vontade), persistindo a escolha e promovendo a proficiência conforme o nível.
+    - [ ] Continuar a matriz de efeitos confirmados por categoria, incluindo CA, salvamentos, perícias, proficiências, sentidos, resistências, ações e recursos; não inferir efeitos de registros `needs_review`.
+
+Atualização desta etapa (2026-09-01): o motor passou a consumir efeitos estruturados do catálogo e refletir os quatro talentos gerais confirmados em PV, deslocamento, iniciativa e regras de Morrendo. Validação: `engine-mechanics.test.ts` + `catalog-provenance.test.ts` = 133 testes aprovados; sintaxe do motor/dados e `git diff --check` aprovados. Ainda faltam os demais efeitos confirmados e a validação integral do portal.
+
+Validação adicional desta etapa: os efeitos estruturados também foram espelhados no catálogo TypeScript (`src/data/featsData.ts`) e o tipo `FeatDefinition` foi ampliado. `catalog-language-contract.test.ts` + `engine-mechanics.test.ts` = 32 testes aprovados; `npm run build`, sintaxe do motor e `git diff --check` aprovados. Permanecem pendentes os efeitos das demais categorias e a validação visual/runtime.
+
+Correção desta etapa: o motor agora resolve efeitos pelo ID do talento no catálogo quando a ficha persistida contém somente a referência canônica, corrigindo a perda de bônus condicionais em fichas reabertas/importadas. Validação: 33 testes direcionados aprovados; sintaxe do motor e `git diff --check` aprovados. Ainda falta executar a suíte completa após esta correção.
+
+Correção desta etapa: ligados ao motor os efeitos confirmados de Carregador Robusto (+2 aos limites de Carga/Sobrecarga), Elfo Ágil (+5 pés), Ferro Desembaraçado (ignora penalidade de deslocamento de armadura) e Improvisação Destreinada (bônus por nível em perícias destreinadas), com dados espelhados no catálogo TypeScript e fallback por ID.
+
+Validação atualizada: `engine-mechanics.test.ts` = 30 testes aprovados; `npm run build`, sintaxe do motor e `git diff --check` aprovados. O build mantém apenas os avisos conhecidos de scripts legados e bundle grande. Ainda faltam os demais efeitos confirmados e a suíte completa após esta alteração.
+
+Correção desta etapa: Percepção Astuta passou a exigir e persistir a estatística escolhida (Percepção, Fortitude, Reflexos ou Vontade), e o motor promove a proficiência correspondente conforme o nível.
+
+Validação atualizada: `engine-mechanics.test.ts` = 31 testes aprovados; suíte completa = 26 arquivos e 462 testes aprovados; `npm run build`, sintaxe de `js/app.js`/`js/pf2e_engine.js` e `git diff --check` aprovados. Permanecem os avisos conhecidos do build e a matriz de efeitos/catalogação ainda incompleta.
+
+Auditoria desta etapa (2026-09-01): `npm run audit:catalog:provenance` encontrou 3.786 registros, nomes e resumos presentes em pt-BR/en/es, zero IDs duplicados e zero registros sem fonte não marcados; 43 registros continuam sem livro/página confirmado, 3.114 estão em revisão e 1.490 têm mecânica provisória. A cobertura de características/efeitos segue pendente por categoria e exige confirmação nos livros locais antes de ser marcada como concluída.
+
+Correção adicional desta etapa: a escolha de Percepção Astuta agora reconhece os rótulos equivalentes em português, inglês e espanhol ao calcular salvamentos e Percepção. Validação: 31 testes direcionados aprovados, sintaxe do motor e `git diff --check` aprovados.
+
+Correção adicional desta etapa: ao reabrir uma ficha de Bruxa, a revalidação agora remove hexes, magias e familiares concedidos por um patrono diferente do patrono selecionado, preservando itens escolhidos manualmente. Validação: 175 testes direcionados aprovados, sintaxe e `git diff --check` aprovados.
+
+Correção desta etapa: Recuperação Rápida e Controle da Respiração passaram a declarar bônus condicionais estruturados no catálogo legado e TypeScript; o motor expõe `getConditionalSaveBonus` para que cada contexto aplique somente o bônus correspondente. O teste também confirmou que bônus de veneno/doença não vazam para outros contextos. Validação final da etapa: 460 testes completos e build aprovados. Falta integrar esses contextos a rolagens específicas e continuar a matriz das demais características.
   - [x] Cobrir com testes os gates de escudo, armadura sem armadura, proficiência de arma e equipamento obrigatório dentro de recipientes, incluindo mensagens e aliases localizados.
   - [x] Ocultar opções incompatíveis nos pickers React e legado, revalidar na confirmação e aplicar o nível do talento como requisito mínimo mesmo sem texto explícito.
   - [x] Resolver `classId` e `ancestryId` por chave, ID e nomes localizados, evitando rejeitar escolhas válidas salvas com nome curto.
@@ -674,3 +806,35 @@ Só marcar uma tarefa como concluída quando houver registro de fonte, testes co
 - [x] Persistir e exibir a perícia de mistério e a maldição específica do Oráculo, localizadas nos três idiomas e limpas ao trocar de classe.
 - [x] Exibir na progressão da ficha as magias de revelação concedidas pelo mistério selecionado, mantendo a denominação localizada.
 - [x] Limpar perícia e maldição derivadas do Oráculo ao trocar ou revalidar a classe, evitando dados residuais no JSON da ficha.
+
+Atualização desta etapa (2026-09-01): o construtor passou a exibir `Salvar na Conta` na barra de ações rápidas, acionando a ponte de salvamento autenticado já existente; a tradução da ação foi adicionada para pt-BR, inglês e espanhol. Arquivos: `index.html`, `js/app.js`, `src/data/responsive-layout-contract.test.ts`. Validação: contrato estático responsivo; falta validar no navegador o fluxo autenticado e concluir o CRUD cloud end-to-end.
+
+Correção adicional desta etapa (2026-09-01): o evento de salvar vindo do construtor agora consulta a sessão compartilhada antes de reabrir o login, evitando falso logout durante a sincronização entre Portal, Biblioteca e construtor; `saveCurrent` aceita explicitamente a sessão resolvida. Arquivos: `src/AccountPortal.tsx`, `src/data/responsive-layout-contract.test.ts`. Falta validação browser com navegação rápida entre Builder/Biblioteca e sessão Supabase real.
+
+Validação da correção adicional (2026-09-01): 2 arquivos e 97 testes direcionados aprovados; `npm run build` e `git diff --check` aprovados. Os avisos do build permanecem somente os já conhecidos sobre scripts legados/chunk grande. O fluxo real de navegador e Supabase continua pendente.
+
+Correção desta etapa (2026-09-01): o Compêndio e os indicadores administrativos passaram a solicitar o catálogo completo, incluindo opções incompatíveis apenas para consulta; pickers de escolha continuam filtrando pré-requisitos, tradição, classe e contexto. O filtro contextual de subclasse também não herda mais o campo ativo do construtor ao listar o Compêndio. Arquivos: `js/app.js`, `src/types.ts`, `src/PortalPages.tsx`, `src/data/responsive-layout-contract.test.ts`. Falta validar visualmente que o Compêndio exibe todos os registros sem permitir seleção inválida.
+
+Validação desta etapa (2026-09-01): contrato responsivo aprovado com 84 testes; build TypeScript/Vite aprovado e `node --check js/app.js`/`git diff --check` aprovados. Os avisos do build continuam conhecidos. Falta teste browser comparando Compêndio completo e pickers contextuais em todos os tipos.
+
+Auditoria de proveniência atualizada (2026-09-01): `npm run audit:catalog:provenance` encontrou 3.786 registros, 0 nomes/resumos ausentes nos três idiomas, 0 IDs duplicados, 43 registros sem livro/página confirmados (todos `needs_review`), 3.114 em revisão e 1.490 com mecânica provisória. As fontes continuam limitadas aos PDFs/TXT locais; não marcar como oficial sem conferência dirigida.
+
+Correção desta etapa (2026-09-01): a rolagem livre 3D agora se recupera de totais antigos inválidos (`NaN`/não numéricos), mantém somente o último dado na arena e registra uma única entrada agregada com a soma acumulada. Arquivos: `js/app.js`, `src/data/responsive-layout-contract.test.ts`. Falta validação visual/interativa no navegador em desktop e portátil.
+
+Validação desta etapa (2026-09-01): contratos de rolagem 3D e dados passaram com 88 testes direcionados; `node --check js/app.js` e `git diff --check` passaram. A validação interativa nos viewports exigidos ainda está pendente.
+
+Correção desta etapa (2026-09-01): o mapa canônico de campos de subclasse passou a incluir `patron` para Bruxa e `mystery` para Oráculo, evitando que subclasses geradas a partir dos registros de classe percam o vínculo contextual e apareçam no bloco genérico. Arquivos: `js/pf2e_data.js`, `src/data/catalog-provenance.test.ts`. Falta validar todos os registros gerados no picker e a aplicação dos efeitos de patrono/mistério.
+
+Validação desta etapa (2026-09-01): testes de proveniência e contrato responsivo passaram com 183 casos; `node --check js/pf2e_data.js` e `git diff --check` passaram. Falta build final e validação browser dos registros gerados.
+
+Validação comportamental complementar (2026-09-01): a auditoria de proveniência carregou o catálogo real em VM e confirmou o mapa de subclasse de Bruxa/Oráculo junto com os demais campos; 98 testes de proveniência passaram. O build/browser e a confirmação visual dos pickers continuam pendentes.
+
+Validação consolidada (2026-09-01): suíte completa aprovada com 26 arquivos e 450 testes; `npm run build`, verificações de sintaxe de `js/app.js`/`js/pf2e_data.js` e `git diff --check` também aprovados. Permanecem os avisos conhecidos do Vite sobre scripts legados sem `type="module"` e chunk acima de 500 kB; validações browser/Supabase ainda faltam.
+
+Correção desta etapa (2026-09-01): corrigido o vazamento da perícia `Performance` no pt-BR, que agora aparece como `Atuação` na fonte de localização; inglês e espanhol foram preservados. Arquivos: `src/i18n.tsx`, `src/data/catalog-language-contract.test.ts`. Falta varredura visual completa de todos os rótulos no construtor.
+
+Validação desta etapa (2026-09-01): contrato de idioma passou com 4 testes e `git diff --check` passou; o build já havia passado após a alteração de localização. A varredura visual completa do construtor em pt-BR continua pendente.
+
+Validação consolidada desta sequência (2026-09-01): `npm test -- --run` passou com 26 arquivos e 448 testes; `npm run build`, `node --check js/app.js` e `git diff --check` também passaram. O trabalho permanece aberto por falta de validação browser/Supabase, cobertura mecânica completa dos livros e gate integral pt-BR.
+
+Validação após esta etapa (2026-09-01): `npm test -- --run` aprovado com 26 arquivos e 446 testes; `npm run build` aprovado; `node --check js/app.js`, `node --check js/pf2e_data.js` e `git diff --check` aprovados. Permanecem apenas os avisos já conhecidos do build sobre scripts legados sem `type="module"` e chunk maior que 500 kB. Ainda falta validação browser/end-to-end e o gate final pt-BR.

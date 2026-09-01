@@ -240,7 +240,7 @@ describe("responsive layout contract", () => {
     const arena = app.slice(app.indexOf("  renderFreeRollArena()"), app.indexOf("  getPolyhedralDieSvg", app.indexOf("  renderFreeRollArena()")));
 
     expect(arena).toContain("const d = list[list.length - 1];");
-    expect(app).toContain("this.freeRollTotal = Number(this.freeRollTotal) + rollEntry.value;");
+    expect(app).toContain("this.freeRollTotal = (Number.isFinite(previousTotal) ? previousTotal : 0) + rollEntry.value;");
     expect(app).toContain("this.freeRollDiceList = [rollEntry];");
     expect(app).toContain("this.freeRollTotal = 0;");
     expect(arena).toContain('this.upsertDiceLog("free-roll"');
@@ -414,12 +414,14 @@ describe("responsive layout contract", () => {
     const index = read("index.html");
     const app = read("js/app.js");
     expect(index).toContain('class="quick-action-bar"');
+    expect(index).toContain('pathbuilder:save-account-character');
     expect(index).toContain('class="weapon-prof-label"');
     expect(index).toContain('class="skills-column-heading"');
     expect(index).toContain('id="drawerPdf"');
     expect(index).toContain('id="drawerCompendium"');
     expect(index).toContain('id="skipToContent"');
     expect(app).toContain('document.querySelectorAll(".quick-action-bar button")');
+    expect(app).toContain('quickButtons[7].innerText = isEn ? "☁️ Save to Account"');
     expect(app).toContain('document.querySelectorAll(".weapon-prof-group-item .weapon-prof-label")');
     expect(app).toContain('document.querySelector(".skills-column-heading")');
     expect(app).toContain('drawerPdf: isEn ?');
@@ -427,6 +429,22 @@ describe("responsive layout contract", () => {
     expect(app).toContain('skipToContent.textContent = isEn ? "Skip to content"');
     expect(app).toContain('document.querySelector("#percVal")?.parentElement?.querySelector("span:last-child")');
     expect(app).toContain('document.querySelector("#initVal")?.parentElement?.querySelector("span:last-child")');
+  });
+
+  it("mantém o Compêndio completo sem relaxar a filtragem dos pickers de escolha", () => {
+    const app = read("js/app.js");
+    const portal = read("src/PortalPages.tsx");
+    expect(app).toContain("getPickerItems(type, options = {})");
+    expect(app).toContain("resolvedOptions.includeIncompatible ? items : this.filterPickerItemsByCompatibility(type, items)");
+    expect(portal).toContain("getPickerItems(type, { includeIncompatible: true })");
+  });
+
+  it("mantém a rolagem livre 3D com apenas o último dado visual e soma finita", () => {
+    const app = read("js/app.js");
+    expect(app).toContain("const previousTotal = Number(this.freeRollTotal);");
+    expect(app).toContain("this.freeRollTotal = (Number.isFinite(previousTotal) ? previousTotal : 0) + rollEntry.value;");
+    expect(app).toContain("this.freeRollDiceList = [rollEntry];");
+    expect(app).toContain('this.upsertDiceLog("free-roll", logItemTitle, detailedRolls, total, formulaStr, false, false);');
   });
 
   it("expõe uma única fonte canônica para os módulos legado e React", () => {
@@ -605,6 +623,8 @@ describe("responsive layout contract", () => {
     expect(app).toContain('alchemist: "researchField", barbarian: "instinct", bard: "muse"');
     expect(app).toContain('summoner: "eidolon", wizard: "arcaneSchool", magus: "hybridStudy", necromancer: "fatalMethod"');
     expect(app).toContain('"fatalMethod", "grimFascination"');
+    expect(app).toContain('clearFields(["fatalMethod", "grimFascination"])');
+    expect(app).toContain('"fatalMethod", "grimFascination"\n    ]);');
     expect(app).toContain("const choiceFields = new Set([");
     expect(app).toContain("record.choiceField === field || record[field] === true");
     expect(read("js/pf2e_data.js")).toContain("const CLASS_CHOICE_FIELDS = {");
@@ -614,6 +634,11 @@ describe("responsive layout contract", () => {
     expect(app).toContain('["Patrono", "Patron", "Patrón", "subclass", "patron"]');
     expect(app).toContain('targetField === "patron"');
     expect(app).toContain('targetField === "wizardThesis"');
+    expect(app).toContain('targetField === "patron" && itemData?.patron !== true');
+    expect(app).toContain('targetField === "wizardThesis" && itemData?.thesis !== true');
+    expect(app).toContain('targetField === "mystery" && itemData?.mystery !== true');
+    expect(app).toContain('subclass.choiceField === targetField || subclass[targetField] === true');
+    expect(app).toContain('item.data?.choiceField === targetField || item.data?.[targetField] === true');
     expect(app).toContain('itemData.classId !== selectedClass.id');
     expect(app).toContain('compatibility?.state === "incompatible"');
     expect(app).toContain('targetField === "mystery"');
@@ -622,6 +647,10 @@ describe("responsive layout contract", () => {
     expect(app).toContain('["Tese Arcana", "Select Thesis", "Seleccionar tesis", "subclass", "wizardThesis"]');
     expect(app).toContain('["Mistério", "Select Mystery", "Seleccionar misterio", "subclass", "mystery"]');
     expect(app).toContain("grantedByPatron: patron.id");
+    expect(app).toContain("(!spell?.grantedByArcaneSchool || isWizard)");
+    expect(app).toContain("(!spell?.grantedByHybridStudy || isMagus)");
+    expect(app).toContain("(!spell?.grantedByMystery || isOracle)");
+    expect(app).toContain("!pet?.grantedByPatron || isWitch");
     expect(app).toContain("grantedByArcaneSchool: schoolId");
     expect(app).toContain("spell?.grantedByArcaneSchool");
     expect(app).toContain("grantedByHybridStudy: selectedHybridStudy.id");
@@ -654,6 +683,9 @@ describe("responsive layout contract", () => {
     expect(app).toContain('"bloodline", "methodology", "style", "innovation", "way"');
     expect(app).toContain('"implement", "apparition", "icon", "banner", "guardianDefense"');
     expect(app).toContain("const selectedClassRecord = Object.entries(PF2E_DATA.classes || {}).find");
+    expect(app).toContain('const classValue = this.character.class && typeof this.character.class === "object"');
+    expect(app).toContain('const classText = String(classValue || "").toLowerCase();');
+    expect(app).toContain('const classValue = char.class && typeof char.class === "object"');
     expect(app).toContain("const classHasSubclassOptions = Boolean(selectedClassRecord?.id)");
     expect(app).toContain('picker === "subclass" && classHasSubclassOptions');
     expect(app).toContain("this.character.archetypes = this.character.archetypes.filter(archetype => {");
@@ -688,7 +720,7 @@ describe("responsive layout contract", () => {
     expect(app).toContain("removeContainerItem(containerIdx, itemIdx)");
     expect(app).toContain("const existing = containers[selected].items.find");
     expect(app).toContain("const existing = this.character.inventory.find");
-    expect(app).toContain("const compatible = this.filterPickerItemsByCompatibility(type, items);");
+    expect(app).toContain("const compatible = resolvedOptions.includeIncompatible ? items : this.filterPickerItemsByCompatibility(type, items);");
     expect(app).toContain("items = items.filter(item => item.data?.selectionState !== \"incompatible\");");
     expect(app).toContain("heritageInnateSpell");
     expect(app).toContain("compatibility.reason !== \"spellcasting-required\"");
@@ -933,6 +965,16 @@ describe("responsive layout contract", () => {
     expect(account).toContain('role="status" aria-live="polite"');
   });
 
+  it("revalida a sessão compartilhada antes de abrir o login pelo salvamento do construtor", () => {
+    const account = read("src/AccountPortal.tsx");
+    const app = read("js/app.js");
+    expect(account).toContain("const saveCurrent = async (activeSession: AuthSession | null = session, silent = false)");
+    expect(account).toContain('pathbuilder:character-changed');
+    expect(app).toContain('pathbuilder:character-changed');
+    expect(account).toContain("const activeSession = session || await getCurrentSession();");
+    expect(account).toContain("void saveCurrent(activeSession);");
+  });
+
   it("localiza os subtítulos estruturais do portal", () => {
     const portal = read("src/PortalPages.tsx");
     const campaigns = read("src/CampaignsPage.tsx");
@@ -949,6 +991,8 @@ describe("responsive layout contract", () => {
   it("revalida escolhas específicas de classe contra o catálogo", () => {
     const app = read("js/app.js");
     expect(app).toContain('record.classId === "class.witch" && record.patron === true');
+    expect(app).toContain('spell.grantedByPatron === patron.id');
+    expect(app).toContain('pet.grantedByPatron === patron.id');
     expect(app).toContain('record.classId === "class.wizard" && record.thesis === true');
     expect(app).toContain('record.classId === "class.wizard" && record.school === true');
     expect(app).toContain('record.classId === "class.magus" && record.hybridStudy === true');
@@ -1084,8 +1128,8 @@ describe("responsive layout contract", () => {
 
   it("colapsa duplicatas exatas nos pickers sem esconder variantes de itens", () => {
     const app = read("js/app.js");
-    expect(app).toContain("const finalize = (items, options = {}) =>");
-    expect(app).toContain("if (options.collapseDuplicateLabels) return result;");
+    expect(app).toContain("const finalize = (items, finalizeOptions = {}) =>");
+    expect(app).toContain("if (resolvedOptions.collapseDuplicateLabels) return result;");
     expect(app).toContain("{ collapseDuplicateLabels: true });");
     expect(app).toContain('if (["class", "formula", "pet", "heritage"].includes(this.currentPickerType))');
     expect(app).toContain("if (!label || visibleLabels.has(label)) return false;");

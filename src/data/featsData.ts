@@ -9,6 +9,7 @@ export interface FeatDefinition {
   actions?: number | "reaction" | "free" | null;
   description: string;
   summaries?: { "pt-BR": string; en: string; es: string };
+  effects?: Array<{ type: string; target?: string; value: number }>;
   source?: { book: string; page?: number };
   ruleset?: "remaster" | "legacy" | "needs_review";
   rarity?: "common" | "uncommon" | "rare" | "unique";
@@ -37,6 +38,7 @@ export const PF2E_FEATS_CATALOG: FeatDefinition[] = [
       en: "Gain +1 Max HP per level and reduce death recovery DC by 1.",
       es: "Gana +1 PG por nivel y reduce en 1 la CD de recuperación de muerte."
     },
+    effects: [{ type: "max_hp_per_level", value: 1 }, { type: "recovery_dc", value: -1 }],
     source: { book: "Livro do Jogador (Player Core)", page: 256 },
     ruleset: "remaster",
     rarity: "common"
@@ -55,6 +57,7 @@ export const PF2E_FEATS_CATALOG: FeatDefinition[] = [
       en: "Increases your land Speed by +5 feet.",
       es: "Aumenta tu velocidad terrestre en +5 pies."
     },
+    effects: [{ type: "land_speed", value: 5 }],
     source: { book: "Livro do Jogador (Player Core)", page: 256 },
     ruleset: "remaster",
     rarity: "common"
@@ -73,6 +76,7 @@ export const PF2E_FEATS_CATALOG: FeatDefinition[] = [
       en: "+2 circumstance bonus to initiative rolls.",
       es: "+2 de bonificador por circunstancia a tiradas de iniciativa."
     },
+    effects: [{ type: "initiative", value: 2 }],
     source: { book: "Livro do Jogador (Player Core)", page: 256 },
     ruleset: "remaster",
     rarity: "common"
@@ -91,6 +95,7 @@ export const PF2E_FEATS_CATALOG: FeatDefinition[] = [
       en: "You die from the Dying condition at Dying 5 instead of Dying 4.",
       es: "Solo mueres al alcanzar la condición Moribundo 5."
     },
+    effects: [{ type: "max_dying", value: 5 }],
     source: { book: "Livro do Jogador (Player Core)", page: 256 },
     ruleset: "remaster",
     rarity: "common"
@@ -109,6 +114,7 @@ export const PF2E_FEATS_CATALOG: FeatDefinition[] = [
       en: "Recover twice HP during daily rest; +2 vs poisons and diseases.",
       es: "Recuperas el doble de PG al descansar; +2 contra venenos y enfermedades."
     },
+    effects: [{ type: "save_bonus", target: "poison_disease", value: 2 }],
     source: { book: "Livro do Jogador (Player Core)", page: 256 },
     ruleset: "remaster",
     rarity: "common"
@@ -182,6 +188,7 @@ export const PF2E_FEATS_CATALOG: FeatDefinition[] = [
       en: "Become Expert in a save or Perception (Master at lvl 17).",
       es: "Te vuelves Experto en una salvación o Percepción (Maestro a nv 17)."
     },
+    effects: [{ type: "proficiency_choice", target: "perception_or_save", value: 1 }],
     source: { book: "Livro do Jogador (Player Core)", page: 257 },
     ruleset: "remaster",
     rarity: "common"
@@ -236,6 +243,7 @@ export const PF2E_FEATS_CATALOG: FeatDefinition[] = [
       en: "Hold breath 25x longer; +1 circumstance bonus vs inhaled poisons.",
       es: "Aguantas la respiración 25 veces más tiempo y +1 contra asfixia."
     },
+    effects: [{ type: "save_bonus", target: "inhaled_poison_suffocation", value: 1 }],
     source: { book: "Livro do Jogador (Player Core)", page: 257 },
     ruleset: "remaster",
     rarity: "common"
@@ -290,6 +298,7 @@ export const PF2E_FEATS_CATALOG: FeatDefinition[] = [
       en: "Add half your level (full level at 7th) to untrained skill checks.",
       es: "Suma la mitad de tu nivel a habilidades no entrenadas."
     },
+    effects: [{ type: "untrained_skill_bonus", value: 1 }],
     source: { book: "Livro do Jogador (Player Core)", page: 257 },
     ruleset: "remaster",
     rarity: "common"
@@ -514,6 +523,7 @@ export const PF2E_FEATS_CATALOG: FeatDefinition[] = [
       en: "Increases your Bulk carrying limits by 2.",
       es: "Aumenta tus límites de volumen y sobrecarga en +2 Bulk."
     },
+    effects: [{ type: "bulk_limit", value: 2 }],
     source: { book: "Livro do Jogador (Player Core)", page: 250 },
     ruleset: "remaster",
     rarity: "common"
@@ -1195,6 +1205,7 @@ export const PF2E_FEATS_CATALOG: FeatDefinition[] = [
       en: "Ignore Speed penalties from medium or heavy armor.",
       es: "Ignora penalizaciones de velocidad por armaduras pesadas."
     },
+    effects: [{ type: "ignore_armor_speed_penalty", value: 1 }],
     source: { book: "Livro do Jogador (Player Core)", page: 40 },
     ruleset: "remaster",
     rarity: "common"
@@ -1235,6 +1246,7 @@ export const PF2E_FEATS_CATALOG: FeatDefinition[] = [
       en: "Increases your land Speed by +5 feet.",
       es: "+5 pies a tu velocidad terrestre."
     },
+    effects: [{ type: "land_speed", value: 5 }],
     source: { book: "Livro do Jogador (Player Core)", page: 48 },
     ruleset: "remaster",
     rarity: "common"

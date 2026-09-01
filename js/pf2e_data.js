@@ -2758,6 +2758,7 @@ PF2E_DATA.feats = [
       en: "Gain +1 Max HP per level and reduce death recovery DC by 1.",
       es: "Gana +1 PG por nivel y reduce en 1 la CD de recuperación de muerte."
     },
+    effects: [{ type: "max_hp_per_level", value: 1 }, { type: "recovery_dc", value: -1 }],
     source: { book: "Livro do Jogador (Player Core)", page: 256 },
     ruleset: "remaster",
     rarity: "common"
@@ -2776,6 +2777,7 @@ PF2E_DATA.feats = [
       en: "Increases your land Speed by +5 feet.",
       es: "Aumenta tu velocidad terrestre en +5 pies."
     },
+    effects: [{ type: "land_speed", value: 5 }],
     source: { book: "Livro do Jogador (Player Core)", page: 256 },
     ruleset: "remaster",
     rarity: "common"
@@ -2794,6 +2796,7 @@ PF2E_DATA.feats = [
       en: "+2 circumstance bonus to initiative rolls.",
       es: "+2 de bonificador por circunstancia a tiradas de iniciativa."
     },
+    effects: [{ type: "initiative", value: 2 }],
     source: { book: "Livro do Jogador (Player Core)", page: 256 },
     ruleset: "remaster",
     rarity: "common"
@@ -2812,6 +2815,7 @@ PF2E_DATA.feats = [
       en: "You die from the Dying condition at Dying 5 instead of Dying 4.",
       es: "Solo mueres al alcanzar la condición Moribundo 5."
     },
+    effects: [{ type: "max_dying", value: 5 }],
     source: { book: "Livro do Jogador (Player Core)", page: 256 },
     ruleset: "remaster",
     rarity: "common"
@@ -2830,6 +2834,7 @@ PF2E_DATA.feats = [
       en: "Recover twice HP during daily rest; +2 vs poisons and diseases.",
       es: "Recuperas el doble de PG al descansar; +2 contra venenos y enfermedades."
     },
+    effects: [{ type: "save_bonus", target: "poison_disease", value: 2 }],
     source: { book: "Livro do Jogador (Player Core)", page: 256 },
     ruleset: "remaster",
     rarity: "common"
@@ -2903,6 +2908,7 @@ PF2E_DATA.feats = [
       en: "Become Expert in a save or Perception (Master at lvl 17).",
       es: "Te vuelves Experto en una salvación o Percepción (Maestro a nv 17)."
     },
+    effects: [{ type: "proficiency_choice", target: "perception_or_save", value: 1 }],
     source: { book: "Livro do Jogador (Player Core)", page: 257 },
     ruleset: "remaster",
     rarity: "common"
@@ -2957,6 +2963,7 @@ PF2E_DATA.feats = [
       en: "Hold breath 25x longer; +1 circumstance bonus vs inhaled poisons.",
       es: "Aguantas la respiración 25 veces más tiempo y +1 contra asfixia."
     },
+    effects: [{ type: "save_bonus", target: "inhaled_poison_suffocation", value: 1 }],
     source: { book: "Livro do Jogador (Player Core)", page: 257 },
     ruleset: "remaster",
     rarity: "common"
@@ -3011,6 +3018,7 @@ PF2E_DATA.feats = [
       en: "Add half your level (full level at 7th) to untrained skill checks.",
       es: "Suma la mitad de tu nivel a habilidades no entrenadas."
     },
+    effects: [{ type: "untrained_skill_bonus", value: 1 }],
     source: { book: "Livro do Jogador (Player Core)", page: 257 },
     ruleset: "remaster",
     rarity: "common"
@@ -3235,6 +3243,7 @@ PF2E_DATA.feats = [
       en: "Increases your Bulk carrying limits by 2.",
       es: "Aumenta tus límites de volumen y sobrecarga en +2 Bulk."
     },
+    effects: [{ type: "bulk_limit", value: 2 }],
     source: { book: "Livro do Jogador (Player Core)", page: 250 },
     ruleset: "remaster",
     rarity: "common"
@@ -3916,6 +3925,7 @@ PF2E_DATA.feats = [
       en: "Ignore Speed penalties from medium or heavy armor.",
       es: "Ignora penalizaciones de velocidad por armaduras pesadas."
     },
+    effects: [{ type: "ignore_armor_speed_penalty", value: 1 }],
     source: { book: "Livro do Jogador (Player Core)", page: 40 },
     ruleset: "remaster",
     rarity: "common"
@@ -3956,6 +3966,7 @@ PF2E_DATA.feats = [
       en: "Increases your land Speed by +5 feet.",
       es: "+5 pies a tu velocidad terrestre."
     },
+    effects: [{ type: "land_speed", value: 5 }],
     source: { book: "Livro do Jogador (Player Core)", page: 48 },
     ruleset: "remaster",
     rarity: "common"
@@ -5899,7 +5910,7 @@ const PLAYER_CORE_SKILL_METADATA = {
   medicine: ["Medicina", "Medicine", "Medicina", 242],
   nature: ["Natureza", "Nature", "Naturaleza", 244],
   occultism: ["Ocultismo", "Occultism", "Ocultismo", 244],
-  performance: ["Performance", "Performance", "Interpretación", 244],
+  performance: ["Atuação", "Performance", "Interpretación", 244],
   religion: ["Religião", "Religion", "Religión", 245],
   society: ["Sociedade", "Society", "Sociedad", 247],
   stealth: ["Furtividade", "Stealth", "Sigilo", 238],
@@ -8325,7 +8336,8 @@ const CLASS_CHOICE_FIELDS = {
   "class.inventor": "innovation", "class.gunslinger": "way", "class.psychic": "consciousMind",
   "class.thaumaturge": "implement", "class.animist": "apparition", "class.exemplar": "icon",
   "class.commander": "banner", "class.guardian": "guardianDefense", "class.kineticist": "elementalGate",
-  "class.summoner": "eidolon", "class.wizard": "arcaneSchool", "class.magus": "hybridStudy",
+  "class.summoner": "eidolon", "class.witch": "patron", "class.wizard": "arcaneSchool", "class.magus": "hybridStudy",
+  "class.oracle": "mystery",
   "class.necromancer": "fatalMethod"
 };
 for (const [classKey, classRecord] of Object.entries(PF2E_DATA.classes || {})) {
@@ -9039,16 +9051,73 @@ const RAGE_OF_ELEMENTS_IMPULSES = [
   ["fresh_produce", "Fresh Produce", 1], ["hail_of_splinters", "Hail of Splinters", 1], ["hardwood_armor", "Hardwood Armor", 1], ["timber_sentinel", "Timber Sentinel", 1], ["ravel_of_thorns", "Ravel of Thorns", 4], ["tumbling_lumber", "Tumbling Lumber", 4], ["dash_of_herbs", "Dash of Herbs", 6], ["wooden_palisade", "Wooden Palisade", 6], ["drifting_pollen", "Drifting Pollen", 8], ["sanguivolent_roots", "Sanguivolent Roots", 8], ["hedge_maze", "Hedge Maze", 12], ["witchwood_seed", "Witchwood Seed", 12], ["orchards_endurance", "Orchard's Endurance", 14], ["rouse_the_forests_fury", "Rouse the Forest's Fury", 18], ["turn_the_wheel_of_seasons", "Turn the Wheel of Seasons", 18],
   ["ambush_bladderwort", "Ambush Bladderwort", 4], ["lava_leap", "Lava Leap", 4], ["living_bonfire", "Living Bonfire", 4], ["whirling_grindstone", "Whirling Grindstone", 4], ["ash_strider", "Ash Strider", 6], ["desert_wind", "Desert Wind", 6], ["elemental_artillery", "Elemental Artillery", 6], ["chain_infusion", "Chain Infusion", 10], ["elemental_transformation", "Elemental Transformation", 10], ["effortless_impulse", "Effortless Impulse", 12], ["imperious_aura", "Imperious Aura", 16], ["omnikinesis", "Omnikinesis", 20],
 ];
+const RAGE_OF_ELEMENTS_IMPULSE_TRANSLATIONS = {
+  aerial_boomerang: ["Bumerangue Aéreo", "Bumerán aéreo"], air_cushion: ["Almofada de Ar", "Cojín de aire"],
+  four_winds: ["Quatro Ventos", "Cuatro vientos"], whisper_on_the_wind: ["Sussurro ao Vento", "Susurro del viento"],
+  air_shroud: ["Mortalha de Ar", "Sudario de aire"], clear_as_air: ["Claro como o Ar", "Claro como el aire"],
+  flinging_updraft: ["Rajada Ascendente", "Corriente ascendente arrojadiza"], lightning_dash: ["Arrancada Relampejante", "Carrera relampagueante"],
+  cyclonic_ascent: ["Ascensão Ciclônica", "Ascenso ciclónico"], storm_spiral: ["Espiral da Tempestade", "Espiral de tormenta"],
+  ghosts_in_the_storm: ["Fantasmas na Tempestade", "Fantasmas en la tormenta"], wiles_on_the_wind: ["Artimanhas do Vento", "Astucias del viento"],
+  body_of_air: ["Corpo de Ar", "Cuerpo de aire"], crowned_in_tempests_fury: ["Coroado pela Fúria das Tempestades", "Coronado por la furia de las tormentas"],
+  infinite_expanse_of_bluest_heaven: ["Extensão Infinita do Céu Mais Azul", "Extensión infinita del cielo más azul"],
+  armor_in_earth: ["Armadura de Terra", "Armadura de tierra"], geologic_attunement: ["Sintonia Geológica", "Sintonía geológica"],
+  stepping_stones: ["Pedras de Passagem", "Piedras de paso"], tremor: ["Tremor", "Temblor"],
+  calcifying_sand: ["Areia Calcificante", "Arena calcificante"], igneogenesis: ["Igneogênese", "Igneogénesis"],
+  sand_snatcher: ["Ladrão de Areia", "Ladrón de arena"], weight_of_stone: ["Peso da Pedra", "Peso de la piedra"],
+  spike_skin: ["Pele de Espinhos", "Piel de espinas"], swim_through_earth: ["Nadar pela Terra", "Nadar por la tierra"],
+  rattle_the_earth: ["Fazer a Terra Tremer", "Hacer temblar la tierra"], rock_rampart: ["Muralha de Rocha", "Baluarte de roca"],
+  assume_earths_mantle: ["Vestir o Manto da Terra", "Asumir el manto de la tierra"], rebirth_in_living_stone: ["Renascimento na Pedra Viva", "Renacer en piedra viva"],
+  the_shattered_mountain_weeps: ["A Montanha Estilhaçada Chora", "La montaña destrozada llora"],
+  burning_jet: ["Jato Ardente", "Chorro ardiente"], eternal_torch: ["Tocha Eterna", "Antorcha eterna"],
+  flying_flame: ["Chama Voadora", "Llama voladora"], scorching_column: ["Coluna Abrasadora", "Columna abrasadora"],
+  blazing_wave: ["Onda Flamejante", "Ola llameante"], thermal_nimbus: ["Nimbo Térmico", "Nimbo térmico"],
+  crawling_fire: ["Fogo Rastejante", "Fuego rastrero"], volcanic_escape: ["Fuga Vulcânica", "Escape volcánico"],
+  kindle_inner_flames: ["Acender as Chamas Interiores", "Encender las llamas interiores"], solar_detonation: ["Detonação Solar", "Detonación solar"],
+  architect_of_flame: ["Arquiteto das Chamas", "Arquitecto de las llamas"], furnace_form: ["Forma de Fornalha", "Forma de horno"],
+  walk_through_the_conflagration: ["Atravessar a Conflagração", "Atravesar la conflagración"], all_shall_end_in_flames: ["Tudo Terminará em Chamas", "Todo acabará en llamas"],
+  death_fire: ["Fogo da Morte", "Fuego de la muerte"], ignite_the_sun: ["Acender o Sol", "Encender el sol"],
+  deflecting_wave: ["Onda Defletora", "Ola deflectora"], ocean_balm: ["Bálsamo do Oceano", "Bálsamo del océano"],
+  tidal_hands: ["Mãos da Maré", "Manos de la marea"], winters_clutch: ["Abraço do Inverno", "Abrazo del invierno"],
+  return_to_the_sea: ["Retorno ao Mar", "Regreso al mar"], winter_sleet: ["Granizo Invernal", "Aguanieve invernal"],
+  driving_rain: ["Chuva Impelida", "Lluvia impulsada"], torrent_in_the_blood: ["Torrente no Sangue", "Torrente en la sangre"],
+  call_the_hurricane: ["Invocar o Furacão", "Invocar el huracán"], impenetrable_fog: ["Névoa Impenetrável", "Niebla impenetrable"],
+  glacial_prison: ["Prisão Glacial", "Prisión glacial"], sea_glass_guardians: ["Guardiões de Vidro Marinho", "Guardianes de vidrio marino"],
+  barrier_of_boreal_frost: ["Barreira da Geada Boreal", "Barrera de escarcha boreal"], ride_the_tsunami: ["Cavalgar o Tsunami", "Cabalgar el tsunami"],
+  usurp_the_lunar_reins: ["Usurpar as Rédeas Lunares", "Usurpar las riendas lunares"],
+  fresh_produce: ["Produtos Frescos", "Productos frescos"], hail_of_splinters: ["Chuva de Lascas", "Granizo de astillas"],
+  hardwood_armor: ["Armadura de Madeira Dura", "Armadura de madera dura"], timber_sentinel: ["Sentinela de Madeira", "Centinela de madera"],
+  ravel_of_thorns: ["Emaranhado de Espinhos", "Enredo de espinas"], tumbling_lumber: ["Madeira Rolante", "Madera rodante"],
+  dash_of_herbs: ["Arrancada de Ervas", "Carrera de hierbas"], wooden_palisade: ["Paliçada de Madeira", "Empalizada de madera"],
+  drifting_pollen: ["Pólen à Deriva", "Polen a la deriva"], sanguivolent_roots: ["Raízes Sanguinolentas", "Raíces sanguinolentas"],
+  hedge_maze: ["Labirinto de Sebe", "Laberinto de setos"], witchwood_seed: ["Semente de Madeira-Bruxa", "Semilla de madera de bruja"],
+  orchards_endurance: ["Resistência do Pomar", "Resistencia del huerto"], rouse_the_forests_fury: ["Despertar a Fúria da Floresta", "Despertar la furia del bosque"],
+  turn_the_wheel_of_seasons: ["Girar a Roda das Estações", "Girar la rueda de las estaciones"],
+  flashforge: ["Forja Relâmpago", "Forja relámpago"], magnetic_pinions: ["Pinhões Magnéticos", "Piñones magnéticos"],
+  metal_carapace: ["Carapaça Metálica", "Caparazón metálico"], shard_strike: ["Golpe de Estilhaço", "Golpe de esquirla"],
+  magnetic_field: ["Campo Magnético", "Campo magnético"], plate_in_treasure: ["Placa no Tesouro", "Placa en el tesoro"],
+  consume_power: ["Consumir Poder", "Consumir poder"], scrap_barricade: ["Barricada de Sucata", "Barricada de chatarra"],
+  conductive_sphere: ["Esfera Condutora", "Esfera conductora"], retch_rust: ["Regurgitar Ferrugem", "Vomitar óxido"],
+  alloy_flesh_and_steel: ["Liga de Carne e Aço", "Aleación de carne y acero"], rain_of_razors: ["Chuva de Navalhas", "Lluvia de navajas"],
+  shattershields: ["Despedaçar Escudos", "Rompeescudos"], beasts_of_slumbering_steel: ["Feras de Aço Adormecido", "Bestias de acero durmiente"],
+  hell_of_one_million_needles: ["Inferno de Um Milhão de Agulhas", "Infierno de un millón de agujas"],
+  ambush_bladderwort: ["Emboscada de Bexiga-de-Água", "Emboscada de vejiga de agua"], lava_leap: ["Salto de Lava", "Salto de lava"],
+  living_bonfire: ["Fogueira Viva", "Hoguera viviente"], whirling_grindstone: ["Rebolo Giratório", "Piedra de afilar giratoria"],
+  ash_strider: ["Caminhante das Cinzas", "Caminante de cenizas"], desert_wind: ["Vento do Deserto", "Viento del desierto"],
+  elemental_artillery: ["Artilharia Elemental", "Artillería elemental"], chain_infusion: ["Infusão de Correntes", "Infusión de cadenas"],
+  elemental_transformation: ["Transformação Elemental", "Transformación elemental"], effortless_impulse: ["Impulso sem Esforço", "Impulso sin esfuerzo"],
+  imperious_aura: ["Aura Imperiosa", "Aura imperiosa"], omnikinesis: ["Omnicinese", "Omnicinesia"],
+};
 for (const [slug, title, level] of RAGE_OF_ELEMENTS_IMPULSES) {
   const id = `feat.impulse.${slug}`;
   if ((PF2E_DATA.feats || []).some((record) => record.id === id)) continue;
+  const [ptTitle, esTitle] = RAGE_OF_ELEMENTS_IMPULSE_TRANSLATIONS[slug] || [title, title];
   PF2E_DATA.feats.push({
     id, name: `${title} (Impulse)`, category: "Impulso", level,
     classId: "class.kineticist", prerequisites: ["Cineticista"],
     traits: ["Impulso", "Cineticista"],
-    names: { "pt-BR": title, en: title, es: title },
+    names: { "pt-BR": ptTitle, en: title, es: esTitle },
     summaries: {
-      "pt-BR": `Impulso elemental de ${title}; consulte a entrada da página para o efeito completo.`,
+      "pt-BR": `Impulso elemental de ${ptTitle}; consulte a entrada da página para o efeito completo.`,
       en: `Elemental impulse ${title}; consult the page entry for the complete effect.`,
       es: `Impulso elemental ${title}; consulta la entrada de la página para el efecto completo.`,
     },

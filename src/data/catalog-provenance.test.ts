@@ -1209,6 +1209,48 @@ describe("proveniência do catálogo legado", () => {
     expect(hexes.every((item) => ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
   });
 
+  it("não deixa os impulsos de Ar no pt-BR com o título inglês", () => {
+    const catalog = loadCatalog() as { feats: Array<LegacyRecord & { classId?: string }> };
+    const impulse = catalog.feats.find((item) => item.id === "feat.impulse.aerial_boomerang");
+    expect(impulse).toMatchObject({ names: { "pt-BR": "Bumerangue Aéreo", en: "Aerial Boomerang" } });
+  });
+
+  it("localiza o primeiro impulso de Terra nos três idiomas", () => {
+    const catalog = loadCatalog() as { feats: Array<LegacyRecord> };
+    const impulse = catalog.feats.find((item) => item.id === "feat.impulse.armor_in_earth");
+    expect(impulse).toMatchObject({ names: { "pt-BR": "Armadura de Terra", en: "Armor in Earth", es: "Armadura de tierra" } });
+  });
+
+  it("localiza o primeiro impulso de Fogo nos três idiomas", () => {
+    const catalog = loadCatalog() as { feats: Array<LegacyRecord> };
+    const impulse = catalog.feats.find((item) => item.id === "feat.impulse.burning_jet");
+    expect(impulse).toMatchObject({ names: { "pt-BR": "Jato Ardente", en: "Burning Jet", es: "Chorro ardiente" } });
+  });
+
+  it("localiza o primeiro impulso de Água nos três idiomas", () => {
+    const catalog = loadCatalog() as { feats: Array<LegacyRecord> };
+    const impulse = catalog.feats.find((item) => item.id === "feat.impulse.deflecting_wave");
+    expect(impulse).toMatchObject({ names: { "pt-BR": "Onda Defletora", en: "Deflecting Wave", es: "Ola deflectora" } });
+  });
+
+  it("localiza o primeiro impulso de Madeira nos três idiomas", () => {
+    const catalog = loadCatalog() as { feats: Array<LegacyRecord> };
+    const impulse = catalog.feats.find((item) => item.id === "feat.impulse.fresh_produce");
+    expect(impulse).toMatchObject({ names: { "pt-BR": "Produtos Frescos", en: "Fresh Produce", es: "Productos frescos" } });
+  });
+
+  it("localiza o primeiro impulso de Metal nos três idiomas", () => {
+    const catalog = loadCatalog() as { feats: Array<LegacyRecord> };
+    const impulse = catalog.feats.find((item) => item.id === "feat.impulse.flashforge");
+    expect(impulse).toMatchObject({ names: { "pt-BR": "Forja Relâmpago", en: "Flashforge", es: "Forja relámpago" } });
+  });
+
+  it("localiza o primeiro impulso composto nos três idiomas", () => {
+    const catalog = loadCatalog() as { feats: Array<LegacyRecord> };
+    const impulse = catalog.feats.find((item) => item.id === "feat.impulse.ambush_bladderwort");
+    expect(impulse).toMatchObject({ names: { "pt-BR": "Emboscada de Bexiga-de-Água", en: "Ambush Bladderwort", es: "Emboscada de vejiga de agua" } });
+  });
+
   it("indexa o bloco de talentos de Convocador de Segredos da Magia", () => {
     const catalog = loadCatalog() as { feats: Array<LegacyRecord & { classId?: string; level?: number }> };
     const feats = catalog.feats.filter((item) => item.classId === "class.summoner");
@@ -1237,10 +1279,32 @@ describe("proveniência do catálogo legado", () => {
       "class.sorcerer": "bloodline", "class.investigator": "methodology", "class.inventor": "innovation",
       "class.gunslinger": "way", "class.psychic": "consciousMind", "class.thaumaturge": "implement",
       "class.animist": "apparition", "class.exemplar": "icon", "class.kineticist": "elementalGate",
-      "class.summoner": "eidolon", "class.wizard": "arcaneSchool", "class.magus": "hybridStudy",
+      "class.summoner": "eidolon", "class.witch": "patron", "class.wizard": "arcaneSchool", "class.magus": "hybridStudy",
+      "class.oracle": "mystery",
     };
     for (const [classId, choiceField] of Object.entries(expected)) {
       expect(catalog.subclasses.some((record) => record.classId === classId && record.choiceField === choiceField)).toBe(true);
     }
+  });
+
+  it("não mistura subclasses de campos específicos entre classes", () => {
+    const catalog = loadCatalog() as { subclasses: Array<{ id?: string; classId?: string; choiceField?: string; [key: string]: unknown }> };
+    const allowedFields = new Set([
+      "researchField", "instinct", "muse", "cause", "elementalGate", "doctrine", "eidolon", "order", "style",
+      "bloodline", "methodology", "innovation", "racket", "arcaneSchool", "hybridStudy", "hunterEdge", "way",
+      "consciousMind", "implement", "apparition", "icon", "wizardThesis", "patron", "mystery", "fatalMethod", "grimFascination",
+    ]);
+    const contextual = catalog.subclasses.filter((record) => record.choiceField);
+    expect(contextual.length).toBeGreaterThan(0);
+    for (const record of contextual) {
+      expect(allowedFields.has(record.choiceField as string), record.id).toBe(true);
+      expect(record.classId).toMatch(/^class\./);
+    }
+  });
+
+  it("mapeia os campos específicos de Bruxa e Oráculo", () => {
+    const data = readFileSync(resolve(process.cwd(), "js", "pf2e_data.js"), "utf8");
+    expect(data).toContain('"class.witch": "patron"');
+    expect(data).toContain('"class.oracle": "mystery"');
   });
 });

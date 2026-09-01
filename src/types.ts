@@ -298,7 +298,7 @@ export interface IPickerOpenOptions {
 
 export interface IPickerController {
   character?: any;
-  getPickerItems(type: PickerType): IPickerItem[];
+  getPickerItems(type: PickerType, options?: { includeIncompatible?: boolean }): IPickerItem[];
   applyPickerSelection(type: PickerType, item: IPickerItem | null, options?: IPickerOpenOptions, deductCoins?: boolean): void;
   consumePendingPicker?(): { type: PickerType; options?: IPickerOpenOptions } | null;
   getCurrentCharacter(): Record<string, unknown>;
