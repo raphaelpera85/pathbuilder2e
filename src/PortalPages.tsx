@@ -24,6 +24,11 @@ import {
   renameCharacter,
   type CloudCharacter,
 } from "./services/characters";
+import {
+  getAdminDashboardMetrics,
+  recordAppAccess,
+  type AdminDashboardMetrics,
+} from "./services/admin";
 import { CampaignsPage } from "./CampaignsPage";
 import "./portal.css";
 
@@ -927,9 +932,13 @@ function PrivacyPage() {
 }
 
 function AdminPage() {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
   const account = useAccountViewState();
-  const metrics = useMemo(() => {
+  const [dashboardMetrics, setDashboardMetrics] = useState<AdminDashboardMetrics | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [feedback, setFeedback] = useState<string | null>(null);
+
+  const compendiumMetrics = useMemo(() => {
     const records = catalogCategories.flatMap(({ type }) => {
       try { return (window as any).app?.getPickerItems(type, { includeIncompatible: true }) || []; } catch { return []; }
     });
@@ -939,17 +948,232 @@ function AdminPage() {
       sources: pathfinderSources.filter((source) => source.catalogStatus === "partial").length,
     };
   }, []);
+
+  const loadMetrics = async () => {
+    setLoading(true);
+    try {
+      const data = await getAdminDashboardMetrics();
+      setDashboardMetrics(data);
+    } catch (e) {
+      console.warn("Erro ao buscar métricas admin:", e);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (account.isAdmin) {
+      loadMetrics();
+    }
+  }, [account.isAdmin]);
+
+  const exportReport = () => {
+    if (!dashboardMetrics) return;
+    const reportData = {
+      title: "Pathbuilder 2e Local - Relatório de Gestão & Auditoria",
+      generatedAt: new Date().toISOString(),
+      admin: account.username,
+      metrics: {
+        totalAccesses: dashboardMetrics.totalAccesses,
+        accessesToday: dashboardMetrics.accessesToday,
+        registeredAccounts: dashboardMetrics.registeredAccounts,
+        charactersCreated: dashboardMetrics.charactersCreated,
+        activeCampaigns: dashboardMetrics.activeCampaigns,
+        adminUsers: dashboardMetrics.adminUsers,
+        compendiumVerified: compendiumMetrics.verified,
+        compendiumReviewQueue: compendiumMetrics.review,
+      },
+      characterDistribution: dashboardMetrics.characterRulesetDistribution,
+      users: dashboardMetrics.usersList,
+      recentAccessLogs: dashboardMetrics.recentAccesses,
+    };
+    const blob = new Blob([JSON.stringify(reportData, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `pathbuilder2e-gestao-${new Date().toISOString().slice(0, 10)}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+    setFeedback(t("metricsUpdated"));
+    setTimeout(() => setFeedback(null), 3000);
+  };
+
   if (!account.isAdmin) return <main className="portal-page access-page" id="portal-content" tabIndex={-1}>
     <section className="access-card"><span aria-hidden="true">🔐</span><h1>{t("adminRestricted")}</h1><p>{account.configured ? t("adminRestrictedCopy") : t("adminLocalCopy")}</p><button type="button" onClick={() => window.dispatchEvent(new Event("pathbuilder:open-account"))}>{t("openAccount")}</button></section>
   </main>;
+
   return <main className="portal-page" id="portal-content" tabIndex={-1}>
-    <header className="portal-hero"><span>ADMIN · {account.username}</span><h1>{t("adminTitle")}</h1><p>{t("adminIntro")}</p></header>
+    <header className="portal-hero">
+      <span>ADMIN · {account.username}</span>
+      <h1>{t("adminTitle")}</h1>
+      <p>{t("adminIntro")}</p>
+    </header>
+
+    <div className="admin-toolbar">
+      <div className="admin-toolbar-info">
+        <span className="role-badge admin">🛡️ {t("administrator")}</span>
+        {dashboardMetrics?.lastUpdated && (
+          <span style={{ color: "var(--pb-text-muted)", fontSize: "11px", marginLeft: "10px" }}>
+            {t("updatedAt")}: {new Date(dashboardMetrics.lastUpdated).toLocaleTimeString(locale)}
+          </span>
+        )}
+      </div>
+      <div className="admin-toolbar-actions">
+        <button className="admin-btn" type="button" onClick={loadMetrics} disabled={loading}>
+          {loading ? "⏳" : "🔄"} {t("refreshMetrics")}
+        </button>
+        <button className="admin-btn admin-btn-primary" type="button" onClick={exportReport} disabled={!dashboardMetrics}>
+          📥 {t("exportAuditReport")}
+        </button>
+      </div>
+    </div>
+
+    {feedback && (
+      <div className="account-feedback success" style={{ margin: "0 0 16px 0" }}>
+        {feedback}
+      </div>
+    )}
+
+    {/* Primary KPIs: Accesses, Registered Accounts, Characters Created */}
     <section className="metric-grid">
-      <article><span>{t("adminVerified")}</span><strong>{metrics.verified}</strong></article>
-      <article><span>{t("adminReview")}</span><strong>{metrics.review}</strong></article>
-      <article><span>{t("adminSources")}</span><strong>{metrics.sources}</strong></article>
+      <article>
+        <div className="metric-header">
+          <span>{t("totalAccesses")}</span>
+          <span className="metric-badge">👁️ +{dashboardMetrics?.accessesToday ?? 0} {t("accessesToday").toLowerCase()}</span>
+        </div>
+        <strong>{dashboardMetrics ? dashboardMetrics.totalAccesses.toLocaleString(locale) : "—"}</strong>
+        <span className="metric-subtext">Visitas e sessões registradas</span>
+      </article>
+
+      <article>
+        <div className="metric-header">
+          <span>{t("registeredAccounts")}</span>
+          <span className="metric-badge">👥 {dashboardMetrics?.adminUsers ?? 1} admins</span>
+        </div>
+        <strong>{dashboardMetrics ? dashboardMetrics.registeredAccounts.toLocaleString(locale) : "—"}</strong>
+        <span className="metric-subtext">Usuários cadastrados no banco</span>
+      </article>
+
+      <article>
+        <div className="metric-header">
+          <span>{t("charactersCreated")}</span>
+          <span className="metric-badge">🧙 Remaster: {dashboardMetrics?.characterRulesetDistribution.remaster ?? 0}</span>
+        </div>
+        <strong>{dashboardMetrics ? dashboardMetrics.charactersCreated.toLocaleString(locale) : "—"}</strong>
+        <span className="metric-subtext">Fichas criadas e salvas na nuvem</span>
+      </article>
+
+      <article>
+        <div className="metric-header">
+          <span>{t("activeCampaigns")}</span>
+          <span className="metric-badge">🎲 Mesas</span>
+        </div>
+        <strong>{dashboardMetrics ? dashboardMetrics.activeCampaigns.toLocaleString(locale) : "—"}</strong>
+        <span className="metric-subtext">Campanhas ativas criadas</span>
+      </article>
+
+      <article>
+        <div className="metric-header">
+          <span>{t("adminVerified")}</span>
+          <span className="metric-badge">✅ Pronto</span>
+        </div>
+        <strong>{compendiumMetrics.verified.toLocaleString(locale)}</strong>
+        <span className="metric-subtext">Itens, magias e talentos oficiais</span>
+      </article>
+
+      <article>
+        <div className="metric-header">
+          <span>{t("adminReview")}</span>
+          <span className="metric-badge">⏳ Fila</span>
+        </div>
+        <strong>{compendiumMetrics.review.toLocaleString(locale)}</strong>
+        <span className="metric-subtext">Registros aguardando revisão</span>
+      </article>
     </section>
-    <section className="portal-panel admin-note"><h2>{t("adminReadOnly")}</h2><p>{t("adminReadOnlyCopy")}</p></section>
+
+    {/* Tables Section: Recent Visits Log & Registered Users */}
+    <div className="admin-sections-grid">
+      <section className="admin-table-panel">
+        <h2>📊 {t("recentVisitsLog")} ({dashboardMetrics?.recentAccesses?.length ?? 0})</h2>
+        <div className="admin-table-wrapper">
+          <table className="admin-table">
+            <thead>
+              <tr>
+                <th>{t("timestampColumn")}</th>
+                <th>{t("routeColumn")}</th>
+                <th>{t("userTypeColumn")}</th>
+                <th>Usuário</th>
+              </tr>
+            </thead>
+            <tbody>
+              {dashboardMetrics && dashboardMetrics.recentAccesses && dashboardMetrics.recentAccesses.length > 0 ? (
+                dashboardMetrics.recentAccesses.map((log) => (
+                  <tr key={log.id}>
+                    <td>{new Date(log.timestamp).toLocaleTimeString(locale)}</td>
+                    <td><span className="route-pill">#/{log.route}</span></td>
+                    <td>
+                      <span className={`role-badge ${log.userType}`}>{log.userType}</span>
+                    </td>
+                    <td>{log.username || (log.userType === "guest" ? t("guest") : "Anônimo")}</td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan={4} style={{ textAlign: "center", color: "var(--pb-text-muted)", padding: "16px" }}>
+                    Nenhum acesso recente registrado nesta sessão.
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section className="admin-table-panel">
+        <h2>👥 {t("registeredUsersList")} ({dashboardMetrics?.usersList?.length ?? 0})</h2>
+        <div className="admin-table-wrapper">
+          <table className="admin-table">
+            <thead>
+              <tr>
+                <th>Usuário</th>
+                <th>E-mail</th>
+                <th>{t("roleColumn")}</th>
+                <th>{t("registeredDate")}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {dashboardMetrics && dashboardMetrics.usersList && dashboardMetrics.usersList.length > 0 ? (
+                dashboardMetrics.usersList.map((user) => (
+                  <tr key={user.id}>
+                    <td><strong>{user.username}</strong></td>
+                    <td>{user.email || "—"}</td>
+                    <td>
+                      <span className={`role-badge ${user.role}`}>{user.role}</span>
+                    </td>
+                    <td>
+                      {user.createdAt
+                        ? new Date(user.createdAt).toLocaleDateString(locale)
+                        : "Recente"}
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan={4} style={{ textAlign: "center", color: "var(--pb-text-muted)", padding: "16px" }}>
+                    Nenhuma conta cadastrada encontrada no banco de dados.
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <section className="portal-panel admin-note">
+      <h2>{t("adminReadOnly")}</h2>
+      <p>{t("adminReadOnlyCopy")}</p>
+    </section>
   </main>;
 }
 
@@ -958,7 +1182,12 @@ export function PortalPages() {
   const account = useAccountViewState();
   const [route, setRoute] = useState<PortalRoute>(getRoute);
   useEffect(() => {
-    const update = () => setRoute(getRoute());
+    const update = () => {
+      const currentRoute = getRoute();
+      setRoute(currentRoute);
+      recordAppAccess(currentRoute);
+    };
+    recordAppAccess(getRoute());
     window.addEventListener("hashchange", update);
     return () => window.removeEventListener("hashchange", update);
   }, []);
