@@ -21,6 +21,11 @@ describe("i18n", () => {
     expect(coverage.es).toEqual({ missing: [], extra: [] });
   });
 
+  it("não reutiliza português silenciosamente quando uma chave de locale faltar", () => {
+    expect(translate("en", "__missing_translation__" as never)).toBe("__missing_translation__");
+    expect(translate("es", "__missing_translation__" as never)).toBe("__missing_translation__");
+  });
+
   it("persiste o idioma e atualiza o atributo lang", () => {
     render(<I18nProvider><LocaleSwitcher /></I18nProvider>);
     fireEvent.change(screen.getByLabelText("Idioma"), { target: { value: "en" } });

@@ -9,6 +9,14 @@ const pickerLabelKeys: Record<PickerType, MessageKey> = {
   heritage: "heritages", archetype: "archetypes", spell: "spells", ritual: "rituals", feat: "feats", item: "items", gear: "items", pet: "pets", action: "actions", condition: "conditions", buff: "buffs", formula: "formulas",
 };
 
+function normalizePickerDedupLabel(value: string, pickerType: PickerType): string {
+  let label = value.toLocaleLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+  if (["class", "background", "heritage", "pet", "formula"].includes(pickerType)) {
+    label = label.replace(/^formula\s*:\s*/, "").replace(/\s*\([^)]*\)\s*$/, "").trim();
+  }
+  return label;
+}
+
 function getTraitDisplayName(trait: string, locale: "pt-BR" | "en" | "es") {
   const legacyApp = typeof window !== "undefined" ? (window as any).app : null;
   return legacyApp?.localizeTrait?.(trait, locale) || trait;
@@ -817,15 +825,31 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
       return nameA.localeCompare(nameB, locale, { sensitivity: "base", numeric: true });
     });
     const collapseExactLabels = ["class", "background", "heritage", "pet", "formula"].includes(pickerType);
-    const collapsedLabels = new Set<string>();
+    const collapsedLabels = new Map<string, PickerItem>();
+    const score = (item: PickerItem) => {
+      const data = item.data || {};
+      return Object.keys(data).length
+        + (String(data.description || "").length / 1000)
+        + (data.source?.book ? 2 : 0)
+        + (data.source?.page ? 1 : 0);
+    };
+    const visibleItems = collapseExactLabels
+      ? sorted.reduce<PickerItem[]>((result, item) => {
+        const normalizedLabel = normalizePickerDedupLabel(getItemDisplayName(item, locale), pickerType);
+        const previous = collapsedLabels.get(normalizedLabel);
+        if (!previous) {
+          collapsedLabels.set(normalizedLabel, item);
+          result.push(item);
+        } else if (score(item) > score(previous)) {
+          const index = result.indexOf(previous);
+          if (index >= 0) result[index] = item;
+          collapsedLabels.set(normalizedLabel, item);
+        }
+        return result;
+      }, [])
+      : sorted;
     const seenLabels = new Map<string, number>();
-    return sorted.filter((item) => {
-      if (!collapseExactLabels) return true;
-      const normalizedLabel = getItemDisplayName(item, locale).toLocaleLowerCase(locale).normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-      if (collapsedLabels.has(normalizedLabel)) return false;
-      collapsedLabels.add(normalizedLabel);
-      return true;
-    }).map((item) => {
+    return visibleItems.map((item) => {
       const baseLabel = getItemDisplayName(item, locale);
       const normalizedLabel = baseLabel.toLocaleLowerCase(locale).normalize("NFD").replace(/[\u0300-\u036f]/g, "");
       const occurrence = (seenLabels.get(normalizedLabel) || 0) + 1;

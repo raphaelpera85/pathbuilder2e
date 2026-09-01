@@ -330,6 +330,7 @@ Auditoria atual após os 43 talentos de Oráculo: 3004 registros, 2382 em revis�
   - [x] Expandir descrições de mascotes/companheiros e fórmulas com efeitos, ações, requisitos, uso e referência verificável nos registros já catalogados; novas entradas continuam sujeitas ao gate de fonte.
   - [x] Consolidar duplicidades semânticas na superfície de escolha de Exemplar, mascotes/companheiros, fórmulas e heranças, mantendo o registro mais rico por idioma/proveniência; IDs distintos permanecem preservados para compatibilidade legada.
   - [ ] Auditar todos os textos ainda em inglês em cada locale, inclusive detalhes de itens e mensagens do construtor.
+    - [x] Alterar o seletor de idioma para exibir somente as bandeiras como opções clicáveis, mantendo nome/idioma acessível por tooltip e leitor de tela; mostrar apenas a bandeira atualmente selecionada fora do menu.
     - [x] Remover parentéticos ingleses vazados no shell pt-BR (variantes, upload manual, rolagem e Saberes), preservando as traduções completas nos outros locales.
     - [x] Impedir que o detalhe do picker reaproveite mecânicas pt-BR ou traços sem localização quando outro locale estiver ativo.
     - [x] Localizar pré-requisitos textuais legados no detalhe do picker, incluindo proficiências, atributos, perícias e conectivos em inglês/espanhol.
@@ -380,6 +381,14 @@ Validação consolidada desta correção (2026-09-01): suíte completa passou co
 Correção complementar desta etapa: o picker React também passou a colapsar antecedentes com o mesmo rótulo localizado, alinhando o comportamento ao picker legado e eliminando a duplicação no fluxo de escolha moderno. Validação: contrato responsivo com 86 testes, sintaxe e `git diff --check` aprovados; a suíte completa após esta alteração ainda deve ser repetida.
 
 Correção desta etapa (2026-09-01): compras em lote agora passam por `applyPurchasePoolSelection`, que revalida compatibilidade e saldo do pool antes de inserir qualquer item e debita o total uma única vez. O fluxo mantém o fallback para integrações externas com callback. Arquivos: `js/app.js`, `src/ItemPickerModal.tsx`, `src/data/responsive-layout-contract.test.ts`. Falta validar concorrência com carteira remota/Supabase real.
+
+Correção desta etapa (2026-09-01): `subscribeToAuth` agora entrega imediatamente a sessão compartilhada já hidratada ao remontar o Portal de Conta. Isso evita que Biblioteca/Perfil mostre o login por um intervalo ao reabrir a tela enquanto o usuário continua autenticado. Validação: contrato responsivo com 88 testes aprovados. Falta validar o fluxo visual em navegador com sessão Supabase real e confirmar a correção nos menus Campanhas/usuário.
+
+Correção desta etapa (2026-09-01): os pickers legado e React passaram a normalizar prefixos de fórmula e traduções entre parênteses ao consolidar duplicatas de classe, antecedente, herança, mascote e fórmula. Assim, registros legados/canônicos equivalentes não aparecem como duas opções, enquanto variantes fora desses grupos continuam preservadas. Validação: 2 arquivos de teste, 114 testes aprovados, sintaxe e `git diff --check`; falta aceite visual nos três idiomas e auditoria do catálogo bruto contra cada fonte.
+
+Auditoria de cobertura (2026-09-01): os 17 PDFs da pasta de livros são legíveis; 15 possuem TXT útil e 2 traduções `_pt` possuem extração insuficiente, enquanto 3 PDFs traduzidos excedem o limite do parser. O catálogo atual contém 3.786 registros, sem IDs duplicados e com nomes/resumos nos três idiomas, mas ainda há 3.114 registros `needs_review`, 1.490 com mecânica pendente e 43 fontes sem página confirmada. Permanecem prioritários a catalogação mecânica/proveniência por livro, a validação browser/Supabase real, a matriz responsiva e o gate completo pt-BR antes de considerar en/es concluídos.
+
+Correção desta etapa (2026-09-01): ao consolidar duplicatas nos pickers, o sistema agora escolhe o registro mais rico (descrição, metadados e fonte) em vez de manter arbitrariamente o primeiro registro legado. Isso melhora os detalhes exibidos para fórmulas, mascotes e heranças sem apagar os registros brutos usados para proveniência. Validação: 114 testes direcionados, build, sintaxe e `git diff --check` aprovados.
 
 Validação desta etapa: contrato responsivo passou com 87 testes; `node --check js/app.js`, `npm run build` e `git diff --check` passaram. Permanecem os avisos conhecidos do Vite e a validação browser/Supabase real.
     - [x] Cachear localmente o retorno de um salvamento remoto bem-sucedido para que uma falha transitória da próxima leitura não deixe a biblioteca vazia.
@@ -907,3 +916,25 @@ Correção responsiva desta etapa (2026-09-01): o shell do picker de itens passo
 Validação desta etapa (2026-09-01): contrato responsivo passou com 86 testes; `node --check js/pf2e_data.js`, `node --check js/pf2e_engine.js` e `git diff --check` passaram. Build/suíte completa após esta alteração permanecem pendentes.
 
 Auditoria de catálogo desta etapa (2026-09-01): `npm run audit:catalog:provenance` confirmou 3.786 registros, nomes e resumos presentes em pt-BR/en/es, 0 IDs duplicados, 43 registros sem fonte/página confirmados (todos marcados `needs_review`), 3.114 registros em revisão e 1.490 com mecânica pendente. As traduções completas e a conferência mecânica/fontes dos itens pendentes continuam necessárias antes do gate final.
+
+Correção desta etapa (2026-09-01): pickers agora consolidam rótulos semanticamente equivalentes (incluindo prefixo `Fórmula:` e nomes parentéticos legados), preservando o registro com descrição, fonte e metadados mais completos; variantes legítimas com identidade distinta permanecem disponíveis. Arquivos: `js/app.js`, `src/PickerModal.tsx`, `src/data/responsive-layout-contract.test.ts`. Validação: suíte completa com 26 arquivos e 467 testes, build Vite, sintaxe de `js/app.js` e `git diff --check` aprovados. Falta validação browser dos pickers e continuar a cobertura mecânica/proveniência completa do catálogo.
+
+Correção desta etapa (2026-09-01): quando uma mudança nova chega durante um autosave cloud que falhou, o retry atrasado do snapshot antigo é cancelado antes do envio do snapshot mais recente, evitando gravações concorrentes fora de ordem. Arquivos: `src/AccountPortal.tsx`, `src/data/responsive-layout-contract.test.ts`. Falta validar rede/offline real, concorrência entre dispositivos e conflitos do Supabase.
+
+Validação desta etapa (2026-09-01): suíte completa aprovada com 26 arquivos e 467 testes; `npm run build` e `git diff --check` também aprovados. Permanecem os avisos conhecidos do Vite sobre scripts legados sem `type=\"module\"` e chunk acima de 500 kB; as provas browser/Supabase continuam pendentes.
+
+Correção pt-BR/en/es desta etapa (2026-09-01): a opção vazia de divindade passou a usar rótulo e descrição próprios em espanhol, eliminando mais um retorno silencioso ao português no construtor legado. Arquivos: `js/app.js`, `src/data/responsive-layout-contract.test.ts`. Falta auditar visualmente todos os textos dinâmicos e descrições de divindades nos três idiomas.
+
+Correção desta etapa (2026-09-01): `translate` deixou de reutilizar silenciosamente mensagens pt-BR quando uma chave estiver ausente em inglês/espanhol; agora retorna a chave até a tradução ser preenchida, enquanto o contrato de cobertura denuncia a lacuna. Arquivos: `src/i18n.tsx`, `src/i18n.test.tsx`. Falta completar a auditoria visual e os textos de catálogo/detalhes.
+
+Correção desta etapa (2026-09-01): as descrições das divindades do construtor legado passaram a possuir textos pt-BR, inglês e espanhol, em vez de reutilizar sempre o português. Arquivos: `js/app.js`, `src/data/responsive-layout-contract.test.ts`. Falta validar visualmente a janela de divindades e revisar a terminologia completa por idioma.
+
+Validação desta etapa (2026-09-01): suíte completa aprovada com 26 arquivos e 469 testes; contrato responsivo (90 testes), `node --check js/app.js`, build e `git diff --check` aprovados. Os avisos do Vite sobre scripts legados e chunk grande permanecem conhecidos; a validação visual/browser ainda está pendente.
+
+Validação complementar desta etapa (2026-09-01): contrato responsivo passou novamente com 90 testes após a localização das divindades; `node --check js/app.js` e `git diff --check` aprovados. A suíte completa de 469 testes e o build permanecem aprovados na mesma sequência; falta a confirmação visual/browser.
+
+Correção desta etapa (2026-09-01): a opção “nenhuma divindade” em espanhol agora é reconhecida ao filtrar e selecionar, evitando persistir `No seleccionada` como se fosse uma divindade real. Arquivos: `js/app.js`, `src/data/responsive-layout-contract.test.ts`. Falta validar a interação visual da janela nos três idiomas.
+
+Validação desta etapa (2026-09-01): contrato responsivo passou com 90 testes; `node --check js/app.js` e `git diff --check` aprovados. A suíte completa de 469 testes e o build permanecem aprovados na sequência anterior; falta validação browser.
+
+Validação desta etapa (2026-09-01): suíte completa aprovada com 26 arquivos e 469 testes; `npm run audit:catalog:provenance` confirmou 3.786 registros sem nomes/resumos ausentes nos três idiomas; build e verificações de sintaxe permanecem aprovados. Persistem pendentes as traduções semanticamente equivalentes, a confirmação de mecânicas/fontes nos registros `needs_review` e as validações browser/Supabase reais.

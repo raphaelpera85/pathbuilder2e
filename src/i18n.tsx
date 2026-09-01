@@ -240,7 +240,10 @@ export function getStoredLocale(): Locale {
 }
 
 export function translate(locale: Locale, key: MessageKey): string {
-  return messages[locale][key] ?? messages["pt-BR"][key];
+  // Never hide an incomplete locale by silently displaying Portuguese. The
+  // coverage contract catches missing keys; this last-resort key is safer at
+  // runtime until the missing translation is supplied.
+  return messages[locale][key] ?? String(key);
 }
 
 export function applyLegacyTranslations(locale: Locale) {

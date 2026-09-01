@@ -271,6 +271,12 @@ export function AccountPortal() {
         autoSaveInFlightRef.current = false;
         if (autoSavePendingRef.current) {
           autoSavePendingRef.current = false;
+          // A newer snapshot supersedes the failed snapshot. Cancel its
+          // delayed retry so the two snapshots cannot race in the cloud.
+          if (autoSaveRetryTimerRef.current) {
+            window.clearTimeout(autoSaveRetryTimerRef.current);
+            autoSaveRetryTimerRef.current = null;
+          }
           // Coalesced changes must read the newest builder snapshot, not the
           // older snapshot that was already in flight.
           window.setTimeout(() => void saveCurrent(activeSession, true), 0);

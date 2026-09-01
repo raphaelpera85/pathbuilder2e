@@ -518,6 +518,11 @@ export function subscribeToAuth(callback: (session: AuthSession | null) => void)
   window.addEventListener(AUTH_STATE_EVENT, handler);
   ensureSupabaseAuthSubscription();
 
+  // Reaberturas do portal (Biblioteca/Perfil) podem montar uma nova árvore
+  // depois que a sessão já foi hidratada. Entregue o cache imediatamente para
+  // não exibir o formulário de login entre a montagem e o próximo evento.
+  if (cachedSession !== undefined) callback(cachedSession);
+
   return () => {
     window.removeEventListener(AUTH_STATE_EVENT, handler);
   };

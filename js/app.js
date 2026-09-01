@@ -99,6 +99,16 @@ function normalizeCatalogLabel(value) {
   return String(value || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
 }
 
+function normalizePickerDedupLabel(value, type) {
+  let label = normalizeCatalogLabel(value);
+  if (["class", "background", "heritage", "pet", "formula"].includes(type)) {
+    // Prefixos e traduções parentéticas de registros legados não são opções
+    // diferentes para o jogador.
+    label = label.replace(/^formula\s*:\s*/, "").replace(/\s*\([^)]*\)\s*$/, "").trim();
+  }
+  return label;
+}
+
 function getCatalogDisplayName(record, locale = "pt-BR") {
   return record?.names?.[locale] || record?.names?.["pt-BR"] || record?.name || "";
 }
@@ -2868,32 +2878,36 @@ class PathbuilderApp {
   }
 
   openDeityModal() {
-    const noDeityName = this.getLocale() === "en" ? "Not set" : "Não definida";
-    const noDeityDesc = this.getLocale() === "en" ? "No deity" : "Nenhuma divindade";
-    const deities = [
-      { name: noDeityName, title: noDeityDesc },
-      { name: "Abadar", title: "Cidades, Riqueza, Lei, Comércio (LN)" },
-      { name: "Arazni", title: "Sobrevivência, Dignidade Reclamada (N)" },
-      { name: "Asmodeus", title: "Tirania, Orgulho, Contratos (LM)" },
-      { name: "Calistria", title: "Luxúria, Vingança, Truques (CN)" },
-      { name: "Cayden Cailean", title: "Liberdade, Bebida, Bravura (CB)" },
-      { name: "Desna", title: "Sonhos, Estrelas, Viagens, Sorte (CB)" },
-      { name: "Erastil", title: "Família, Caça, Agricultura, Comunidade (LB)" },
-      { name: "Gorum", title: "Guerra, Batalha, Força (CN)" },
-      { name: "Gozreh", title: "Natureza, Mares, Céu, Tempestades (N)" },
-      { name: "Iomedae", title: "Justiça, Honra, Valor, Liderança (LB)" },
-      { name: "Irori", title: "Perfeição, Conhecimento, Iluminação (LN)" },
-      { name: "Lamashtu", title: "Monstros, Pesadelos, Deformidade (CM)" },
-      { name: "Nethys", title: "Magia em todas as suas formas (N)" },
-      { name: "Norgorber", title: "Segredos, Venenos, Ganância, Assassinato (NE)" },
-      { name: "Pharasma", title: "Destino, Morte, Nascimento, Almas (N)" },
-      { name: "Rovagug", title: "Destruição, Ruína, Monstros (CM)" },
-      { name: "Sarenrae", title: "Sol, Cura, Redenção, Honestidade (NB)" },
-      { name: "Shelyn", title: "Arte, Beleza, Amor, Música (NB)" },
-      { name: "Torag", title: "Forja, Proteção, Estratégia, Criação (LB)" },
-      { name: "Urgathoa", title: "Mortos-vivos, Glutonaria, Doenças (NM)" },
-      { name: "Zon-Kuthon", title: "Trevas, Dor, Perda, Tortura (LM)" }
-    ];
+    const locale = this.getLocale();
+    const noDeityName = locale === "en" ? "Not set" : locale === "es" ? "No seleccionada" : "Não definida";
+    const noDeityDesc = locale === "en" ? "No deity" : locale === "es" ? "Ninguna deidad" : "Nenhuma divindade";
+    const deityTitles = {
+      Abadar: ["Cidades, Riqueza, Lei, Comércio (LN)", "Cities, wealth, law, commerce (LN)", "Ciudades, riqueza, ley, comercio (LN)"],
+      Arazni: ["Sobrevivência, Dignidade Reclamada (N)", "Survival, reclaimed dignity (N)", "Supervivencia, dignidad reivindicada (N)"],
+      Asmodeus: ["Tirania, Orgulho, Contratos (LM)", "Tyranny, pride, contracts (LE)", "Tiranía, orgullo, contratos (LM)"],
+      Calistria: ["Luxúria, Vingança, Truques (CN)", "Lust, vengeance, trickery (CN)", "Lujuria, venganza, engaños (CN)"],
+      "Cayden Cailean": ["Liberdade, Bebida, Bravura (CB)", "Freedom, drink, bravery (CG)", "Libertad, bebida, valentía (CB)"],
+      Desna: ["Sonhos, Estrelas, Viagens, Sorte (CB)", "Dreams, stars, travel, luck (CG)", "Sueños, estrellas, viajes, suerte (CB)"],
+      Erastil: ["Família, Caça, Agricultura, Comunidade (LB)", "Family, hunting, farming, community (LG)", "Familia, caza, agricultura, comunidad (LB)"],
+      Gorum: ["Guerra, Batalha, Força (CN)", "War, battle, strength (CN)", "Guerra, batalla, fuerza (CN)"],
+      Gozreh: ["Natureza, Mares, Céu, Tempestades (N)", "Nature, seas, sky, storms (N)", "Naturaleza, mares, cielo, tormentas (N)"],
+      Iomedae: ["Justiça, Honra, Valor, Liderança (LB)", "Justice, honor, valor, leadership (LG)", "Justicia, honor, valor, liderazgo (LB)"],
+      Irori: ["Perfeição, Conhecimento, Iluminação (LN)", "Perfection, knowledge, enlightenment (LN)", "Perfección, conocimiento, iluminación (LN)"],
+      Lamashtu: ["Monstros, Pesadelos, Deformidade (CM)", "Monsters, nightmares, deformity (CE)", "Monstruos, pesadillas, deformidad (CM)"],
+      Nethys: ["Magia em todas as suas formas (N)", "Magic in all its forms (N)", "Magia en todas sus formas (N)"],
+      Norgorber: ["Segredos, Venenos, Ganância, Assassinato (NE)", "Secrets, poison, greed, murder (NE)", "Secretos, venenos, codicia, asesinato (NE)"],
+      Pharasma: ["Destino, Morte, Nascimento, Almas (N)", "Fate, death, birth, souls (N)", "Destino, muerte, nacimiento, almas (N)"],
+      Rovagug: ["Destruição, Ruína, Monstros (CM)", "Destruction, ruin, monsters (CE)", "Destrucción, ruina, monstruos (CM)"],
+      Sarenrae: ["Sol, Cura, Redenção, Honestidade (NB)", "Sun, healing, redemption, honesty (NG)", "Sol, curación, redención, honestidad (NB)"],
+      Shelyn: ["Arte, Beleza, Amor, Música (NB)", "Art, beauty, love, music (NG)", "Arte, belleza, amor, música (NB)"],
+      Torag: ["Forja, Proteção, Estratégia, Criação (LB)", "Forge, protection, strategy, creation (LG)", "Forja, protección, estrategia, creación (LB)"],
+      Urgathoa: ["Mortos-vivos, Glutonaria, Doenças (NM)", "Undead, gluttony, disease (NE)", "No muertos, glotonería, enfermedades (NM)"],
+      "Zon-Kuthon": ["Trevas, Dor, Perda, Tortura (LM)", "Darkness, pain, loss, torture (LE)", "Oscuridad, dolor, pérdida, tortura (LM)"]
+    };
+    const deities = [{ name: noDeityName, title: noDeityDesc }, ...Object.entries(deityTitles).map(([name, titles]) => ({
+      name,
+      title: titles[locale === "en" ? 1 : locale === "es" ? 2 : 0]
+    }))];
 
     this._deitiesCache = deities;
     const divineFontInput = document.getElementById("divineFontInput");
@@ -2918,7 +2932,8 @@ class PathbuilderApp {
     const list = document.getElementById("deitySelectList");
     if (!list) return;
     const q = (query || "").toLowerCase();
-    const current = (this.character?.deity || (this.getLocale() === "en" ? "Not set" : "Não definida")).toLowerCase();
+    const locale = this.getLocale();
+    const current = (this.character?.deity || (locale === "en" ? "Not set" : locale === "es" ? "No seleccionada" : "Não definida")).toLowerCase();
     const filtered = (this._deitiesCache || []).filter(d => 
       d.name.toLowerCase().includes(q) || d.title.toLowerCase().includes(q)
     );
@@ -2939,7 +2954,7 @@ class PathbuilderApp {
 
   selectDeity(deityName) {
     if (!this.character) return;
-    const isNone = deityName === "Not set" || deityName === "Não definida" || deityName === "No definida";
+    const isNone = deityName === "Not set" || deityName === "Não definida" || deityName === "No definida" || deityName === "No seleccionada";
     this.character.deity = isNone ? "" : deityName;
     // Fonte pertence à divindade escolhida. Nunca carregue a fonte anterior
     // para uma divindade nova, pois isso ocultaria escolhas válidas/inválidas.
@@ -3167,18 +3182,29 @@ class PathbuilderApp {
     const finalize = (items, finalizeOptions = {}) => {
       const resolvedOptions = { ...options, ...finalizeOptions };
       const compatible = resolvedOptions.includeIncompatible ? items : this.filterPickerItemsByCompatibility(type, items);
-      const seenLabels = new Set();
+      const seenLabels = new Map();
+      const recordScore = (entry) => {
+        const data = entry?.data || {};
+        return Object.keys(data).length
+          + (String(data.description || "").length / 1000)
+          + (data.source?.book ? 2 : 0)
+          + (data.source?.page ? 1 : 0);
+      };
       return compatible.reduce((result, item) => {
         if (item.data?.legacyAlias) return result;
         const locale = this.getLocale();
-        const label = normalizeCatalogLabel(item.data?.names?.[locale] || item.data?.names?.["pt-BR"] || item.name || item.data?.name || "");
+        const label = normalizePickerDedupLabel(item.data?.names?.[locale] || item.data?.names?.["pt-BR"] || item.name || item.data?.name || "", type);
         if (!label) return result;
         if (seenLabels.has(label)) {
           // Classes, heranças, mascotes e fórmulas não possuem variantes
           // selecionáveis com o mesmo nome visível. Registros duplicados
           // desses grupos vêm de pontes/aliases de catálogos diferentes e
           // devem aparecer uma única vez no picker.
-          if (resolvedOptions.collapseDuplicateLabels) return result;
+          if (resolvedOptions.collapseDuplicateLabels) {
+            const previousIndex = seenLabels.get(label);
+            if (recordScore(item) > recordScore(result[previousIndex])) result[previousIndex] = item;
+            return result;
+          }
           // Variantes homônimas de livros diferentes continuam disponíveis,
           // mas recebem uma identificação visível em vez de parecerem cópias.
           const source = item.data?.source;
@@ -3193,7 +3219,7 @@ class PathbuilderApp {
           result.push({ ...item, name: `${item.name || label}${suffix}`, data: { ...item.data, names } });
           return result;
         }
-        seenLabels.add(label);
+        seenLabels.set(label, result.length);
         result.push(item);
         return result;
       }, []);
@@ -3654,10 +3680,10 @@ class PathbuilderApp {
       };
       const bestByLabel = new Map();
       for (const entry of entries) {
-        const label = normalizeCatalogLabel(this.localizeItemName(
+        const label = normalizePickerDedupLabel(this.localizeItemName(
           entry?.data?.names || entry?.name || entry?.data?.name || "",
           locale,
-        ));
+        ), this.currentPickerType);
         if (!label) continue;
         const previous = bestByLabel.get(label);
         if (!previous || score(entry) > score(previous)) bestByLabel.set(label, entry);
