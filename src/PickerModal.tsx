@@ -4,9 +4,38 @@ import { useI18n, getItemDisplayName, type MessageKey } from "./i18n";
 import { coinsToCopper, parsePriceToCopper, canAffordPrice, formatCopperToString, formatPriceToLocale } from "./utils/economy";
 
 const pickerLabelKeys: Record<PickerType, MessageKey> = {
-  ancestry: "ancestries", class: "classes", subclass: "subclasses", background: "backgrounds", weapon: "weapons", armor: "armors", shield: "armors",
+  ancestry: "ancestries", class: "classes", subclass: "subclasses", background: "backgrounds", weapon: "weapons", armor: "armors", shield: "shields",
   heritage: "heritages", archetype: "archetypes", spell: "spells", ritual: "rituals", feat: "feats", item: "items", gear: "items", pet: "pets", action: "actions", condition: "conditions", buff: "buffs", formula: "formulas",
 };
+
+function getTraitDisplayName(trait: string, locale: "pt-BR" | "en" | "es") {
+  const legacyApp = typeof window !== "undefined" ? (window as any).app : null;
+  return legacyApp?.localizeTrait?.(trait, locale) || trait;
+}
+
+function getLocalizedPrerequisiteNames(values: string[], type: PickerType, locale: "pt-BR" | "en" | "es") {
+  const legacyApp = typeof window !== "undefined" ? (window as any).app : null;
+  const catalog = typeof legacyApp?.getPickerItems === "function" ? legacyApp.getPickerItems(type) : [];
+  return values.map((value) => {
+    const normalized = String(value).toLowerCase().replace(/^(class|ancestry)\./, "");
+    const match = catalog.find((item: any) => {
+      const ids = [item.id, item.data?.id, item.name, item.data?.name].filter(Boolean).map((entry) => String(entry).toLowerCase());
+      return ids.includes(String(value).toLowerCase()) || ids.some((entry) => entry === normalized || entry.endsWith(`.${normalized}`));
+    });
+    return match ? getItemDisplayName(match, locale) : value;
+  }).join(", ");
+}
+
+function formatGeneratedPrerequisite(data: any, locale: "pt-BR" | "en" | "es") {
+  const levelLabel = locale === "en" ? "Level" : locale === "es" ? "Nivel" : "Nível";
+  const classLabel = locale === "en" ? "Class" : locale === "es" ? "Clase" : "Classe";
+  const ancestryLabel = locale === "en" ? "Ancestry" : locale === "es" ? "Ascendencia" : "Ancestralidade";
+  if (data?.requiredLevel) return `${levelLabel} ${data.requiredLevel}`;
+  if (data?.classId || data?.classIds?.length) {
+    return `${classLabel} ${getLocalizedPrerequisiteNames(data.classIds || [data.classId], "class", locale)}`;
+  }
+  return `${ancestryLabel} ${getLocalizedPrerequisiteNames(data.ancestryIds || [data.ancestryId], "ancestry", locale)}`;
+}
 
 function getPrerequisiteMessage(reason: string, locale: "pt-BR" | "en" | "es", details: any = {}) {
   const copy = {
@@ -948,7 +977,7 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
                         <div className="pws-stat">
                           <span className="pws-label">{t("price")}</span>
                           <strong className="pws-value" style={{ color: "var(--pb-gold, #f59e0b)" }}>
-                            {String(selectedItem.data?.price || "—")}
+                            {formatPriceToLocale(selectedItem.data?.price, locale)}
                           </strong>
                         </div>
                         <div className="pws-stat">
@@ -980,7 +1009,7 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
                         <div className="pws-stat">
                           <span className="pws-label">{t("price")}</span>
                           <strong className="pws-value" style={{ color: "var(--pb-gold, #f59e0b)" }}>
-                            {String(selectedItem.data?.price || "—")}
+                            {formatPriceToLocale(selectedItem.data?.price, locale)}
                           </strong>
                         </div>
                         <div className="pws-stat">
@@ -1014,7 +1043,7 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
                         <div className="pws-stat">
                           <span className="pws-label">{t("price")}</span>
                           <strong className="pws-value" style={{ color: "var(--pb-gold, #f59e0b)" }}>
-                            {String(selectedItem.data?.price || "—")}
+                            {formatPriceToLocale(selectedItem.data?.price, locale)}
                           </strong>
                         </div>
                       </div>
@@ -1026,7 +1055,7 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
                         <div className="pws-stat">
                           <span className="pws-label">{t("price")}</span>
                           <strong className="pws-value" style={{ color: "var(--pb-gold, #f59e0b)" }}>
-                            {String(selectedItem.data?.price || "—")}
+                            {formatPriceToLocale(selectedItem.data?.price, locale)}
                           </strong>
                         </div>
                         <div className="pws-stat">
@@ -1044,7 +1073,7 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
                     {Array.isArray(selectedItem.data?.traits) && selectedItem.data.traits.length > 0 && (
                       <div className="picker-traits-row">
                         {selectedItem.data.traits.map((trait: string) => (
-                          <span key={trait} className="picker-trait-pill">{trait}</span>
+                          <span key={trait} className="picker-trait-pill">{getTraitDisplayName(trait, locale)}</span>
                         ))}
                       </div>
                     )}
@@ -1063,7 +1092,7 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
                     {(selectedItem.data?.prereq || selectedItem.data?.prerequisites || selectedItem.data?.requiredLevel || selectedItem.data?.classId || selectedItem.data?.classIds?.length || selectedItem.data?.ancestryId || selectedItem.data?.ancestryIds?.length) && (
                       <div className="picker-prereqs" role="note">
                         <strong>{t("prerequisites")}:</strong>{" "}
-                        {String(selectedItem.data?.prereq || (Array.isArray(selectedItem.data?.prerequisites) ? selectedItem.data.prerequisites.join(", ") : selectedItem.data?.prerequisites) || (selectedItem.data?.requiredLevel ? `${locale === "en" ? "Level" : locale === "es" ? "Nivel" : "Nível"} ${selectedItem.data.requiredLevel}` : selectedItem.data?.classId || selectedItem.data?.classIds?.length ? `${locale === "en" ? "Class" : locale === "es" ? "Clase" : "Classe"} ${(selectedItem.data.classIds || [selectedItem.data.classId]).join(", ")}` : `${locale === "en" ? "Ancestry" : locale === "es" ? "Ascendencia" : "Ancestralidade"} ${(selectedItem.data.ancestryIds || [selectedItem.data.ancestryId]).join(", ")}`))}
+                        {String(selectedItem.data?.prereq || (Array.isArray(selectedItem.data?.prerequisites) ? selectedItem.data.prerequisites.join(", ") : selectedItem.data?.prerequisites) || formatGeneratedPrerequisite(selectedItem.data, locale))}
                       </div>
                     )}
 

@@ -14,6 +14,7 @@ import {
 import {
   deleteCharacter,
   listCharacters,
+  renameCharacter,
   saveCharacter,
   type CloudCharacter,
 } from "./services/characters";
@@ -25,7 +26,12 @@ import { updateAccountViewState } from "./accountState";
 type AuthMode = "signin" | "signup";
 
 export function AccountPortal() {
-  const { t } = useI18n();
+  const { locale, t } = useI18n();
+  const localizedRuleset = (ruleset: CloudCharacter["ruleset"]) => ruleset === "remaster"
+    ? t("rulesetRemaster")
+    : ruleset === "legacy"
+      ? t("rulesetLegacy")
+      : t("rulesetReview");
   const [open, setOpen] = useState(false);
   const [session, setSession] = useState<AuthSession | null>(null);
   const [characters, setCharacters] = useState<CloudCharacter[]>([]);
@@ -50,6 +56,7 @@ export function AccountPortal() {
   const [newPassword, setNewPassword] = useState("");
   const triggerRef = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLElement>(null);
+  const charactersLoadIdRef = useRef(0);
 
   useEffect(() => {
     const openAccount = () => setOpen(true);
@@ -58,20 +65,24 @@ export function AccountPortal() {
   }, []);
 
   const refreshCharacters = useCallback(async (user?: UserProfile) => {
+    const requestId = ++charactersLoadIdRef.current;
     const targetUser = user || session?.user;
     if (!targetUser) {
       setCharacters([]);
+      setLoading(false);
       return;
     }
     setLoading(true);
     setError(null);
     try {
       const items = await listCharacters(targetUser);
+      if (requestId !== charactersLoadIdRef.current) return;
       setCharacters(items);
     } catch (caught) {
+      if (requestId !== charactersLoadIdRef.current) return;
       setError(caught instanceof Error ? caught.message : t("loadingSheets"));
     } finally {
-      setLoading(false);
+      if (requestId === charactersLoadIdRef.current) setLoading(false);
     }
   }, [session?.user, t]);
 
@@ -92,6 +103,8 @@ export function AccountPortal() {
       if (nextSession) {
         void refreshCharacters(nextSession.user);
       } else {
+        charactersLoadIdRef.current += 1;
+        setLoading(false);
         setCharacters([]);
       }
     });
@@ -153,7 +166,7 @@ export function AccountPortal() {
     try {
       if (authMode === "signup") {
         if (password !== confirmPassword) {
-          setError(t("passwordsDontMatch") || "As senhas não coincidem.");
+          setError(t("passwordsDontMatch"));
           setWorking(null);
           return;
         }
@@ -200,9 +213,10 @@ export function AccountPortal() {
     setNotice(null);
     try {
       const char = (window as any).app?.getCurrentCharacter();
-      if (!char) throw new Error("Nenhum personagem ativo no momento.");
+      if (!char) throw new Error(t("noActiveCharacter"));
       await saveCharacter(char, session.user);
       await refreshCharacters(session.user);
+      window.dispatchEvent(new Event("pathbuilder:characters-changed"));
       setNotice(t("saveCurrent"));
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : t("saveCharacterFailed"));
@@ -210,6 +224,15 @@ export function AccountPortal() {
       setWorking(null);
     }
   };
+
+  useEffect(() => {
+    const saveFromBuilder = () => {
+      if (session) void saveCurrent();
+      else setOpen(true);
+    };
+    window.addEventListener("pathbuilder:save-account-character", saveFromBuilder);
+    return () => window.removeEventListener("pathbuilder:save-account-character", saveFromBuilder);
+  }, [session]);
 
   const removeCharacter = async (character: CloudCharacter) => {
     if (!window.confirm(`${t("deleteCharacterConfirm")} ${character.name}`)) return;
@@ -219,12 +242,28 @@ export function AccountPortal() {
     try {
       await deleteCharacter(character.id, session.user);
       setCharacters((current) => current.filter((item) => item.id !== character.id));
+      window.dispatchEvent(new Event("pathbuilder:characters-changed"));
       setNotice(t("characterDeletedNotice"));
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : t("deleteCharacterFailed"));
     } finally {
       setWorking(null);
     }
+  };
+
+  const rename = async (character: CloudCharacter) => {
+    if (!session) return;
+    const nextName = window.prompt(t("renamePrompt"), character.name)?.trim();
+    if (!nextName || nextName === character.name) return;
+    setWorking(character.id); setError(null); setNotice(null);
+    try {
+      await renameCharacter(character.id, nextName, session.user);
+      await refreshCharacters(session.user);
+      window.dispatchEvent(new Event("pathbuilder:characters-changed"));
+      setNotice(t("saveCurrent"));
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : t("saveCharacterFailed"));
+    } finally { setWorking(null); }
   };
 
   const handleSignOut = async () => {
@@ -277,7 +316,14 @@ export function AccountPortal() {
 
   return (
     <>
-      <button ref={triggerRef} className="account-trigger" type="button" onClick={() => setOpen(true)}>
+      <button
+        ref={triggerRef}
+        className="account-trigger"
+        type="button"
+        aria-expanded={open}
+        aria-controls="account-panel"
+        onClick={() => setOpen(true)}
+      >
         <span aria-hidden="true">{session ? "🛡️" : "👤"}</span>
         {session?.user.username ?? t("signIn")}
         {session?.user.role === "admin" && <span className="admin-badge">{t("admin")}</span>}
@@ -285,11 +331,11 @@ export function AccountPortal() {
 
       {open && (
         <div className="account-overlay" onClick={(event) => event.target === event.currentTarget && setOpen(false)}>
-          <section ref={dialogRef} className="account-panel" role="dialog" aria-modal="true" aria-labelledby="account-title" tabIndex={-1}>
+          <section id="account-panel" ref={dialogRef} className="account-panel" role="dialog" aria-modal="true" aria-labelledby="account-title" tabIndex={-1}>
             <header className="account-header">
               <div>
-                <span className="account-kicker">{isSupabaseConfigured ? "Nuvem (Supabase)" : "Armazenamento Seguro Local"}</span>
-                <h2 id="account-title">{session ? `Biblioteca de ${session.user.username}` : t("yourAccount")}</h2>
+                <span className="account-kicker">{isSupabaseConfigured ? t("accountStorageCloud") : t("accountStorageLocal")}</span>
+                <h2 id="account-title">{session ? `${t("libraryOf")} ${session.user.username}` : t("yourAccount")}</h2>
               </div>
               <button className="account-close" onClick={() => setOpen(false)} aria-label={t("close")} type="button">✕</button>
             </header>
@@ -301,9 +347,9 @@ export function AccountPortal() {
                   <button role="tab" aria-selected={authMode === "signup"} type="button" className={authMode === "signup" ? "active" : ""} onClick={() => setAuthMode("signup")}>{t("createAccount")}</button>
                 </div>
                 {authMode === "signup" && (
-                  <label>{t("username")}<input value={username} onChange={(event) => setUsername(event.target.value)} placeholder="Ex: mestre_arthur" required /></label>
+                <label>{t("username")}<input value={username} onChange={(event) => setUsername(event.target.value)} placeholder={locale === "en" ? "e.g. game_master" : locale === "es" ? "ej.: maestro_arthur" : "Ex.: mestre_arthur"} required /></label>
                 )}
-                <label>{authMode === "signup" ? t("email") : t("usernameOrEmail")}<input value={email} onChange={(event) => setEmail(event.target.value)} placeholder={authMode === "signup" ? "you@example.com" : "username or you@example.com"} required /></label>
+                <label>{authMode === "signup" ? t("email") : t("usernameOrEmail")}<input value={email} onChange={(event) => setEmail(event.target.value)} placeholder={authMode === "signup" ? (locale === "pt-BR" ? "voce@exemplo.com" : "you@example.com") : locale === "en" ? "username or you@example.com" : locale === "es" ? "usuario o tu@ejemplo.com" : "usuário ou voce@exemplo.com"} required /></label>
                 <label>{t("password")}<input type="password" value={password} onChange={(event) => setPassword(event.target.value)} minLength={6} placeholder="••••••••" required /></label>
                 {authMode === "signup" && (
                   <label>{t("confirmPassword")}<input type="password" value={confirmPassword} onChange={(event) => setConfirmPassword(event.target.value)} minLength={6} placeholder="••••••••" required /></label>
@@ -384,13 +430,22 @@ export function AccountPortal() {
                             type="button"
                           >
                             <strong>{character.name}</strong>
-                            <span>{t("level")} {character.level} · {character.ruleset}</span>
+                            <span>{t("level")} {character.level} · {localizedRuleset(character.ruleset)}</span>
+                          </button>
+                          <button
+                            className="character-rename"
+                            onClick={() => rename(character)}
+                            disabled={working === character.id}
+                            aria-label={`${t("renameCharacter")} ${character.name}`}
+                            type="button"
+                          >
+                            ✏️
                           </button>
                           <button
                             className="character-delete"
                             onClick={() => removeCharacter(character)}
                             disabled={working === character.id}
-                            aria-label={`Excluir ${character.name}`}
+                            aria-label={`${t("deleteCharacterLabel")} ${character.name}`}
                             type="button"
                           >
                             🗑

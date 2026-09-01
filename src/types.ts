@@ -19,6 +19,8 @@ export type PickerType =
   | "buff"
   | "formula";
 
+export type LocalizedString = Partial<Record<"pt-BR" | "en" | "es", string>>;
+
 export interface IPickerItemData {
   name?: string;
   description?: string;
@@ -172,10 +174,10 @@ export interface ICharacterDocument {
   patron?: string;
   patronId?: string;
   patronSkill?: string;
-  patronLesson?: string;
-  patronHex?: string;
-  patronFamiliarSpell?: string;
-  patronFamiliarAbility?: string;
+  patronLesson?: string | LocalizedString;
+  patronHex?: string | LocalizedString;
+  patronFamiliarSpell?: string | LocalizedString;
+  patronFamiliarAbility?: string | LocalizedString;
   /** Wizard arcane thesis, selected separately from the school/curriculum. */
   wizardThesis?: string;
   /** Oracle mystery, selected separately while retaining legacy subclass data. */

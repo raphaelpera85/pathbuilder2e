@@ -89,7 +89,7 @@ export function CampaignsPage() {
     } catch (err) {
       console.error("Erro ao carregar campanhas:", err);
     } finally {
-      setLoading(false);
+      if (loadEpoch === authEpochRef.current) setLoading(false);
     }
   };
 
@@ -246,11 +246,11 @@ export function CampaignsPage() {
     if (!playerSelectedCharKey || !targetGMEmail.trim() || !session?.user) return;
     try {
       await linkCharacterToGM(playerSelectedCharKey, targetGMEmail.trim(), session.user);
-      setLinkNotice(`Ficha vinculada com sucesso ao Mestre: ${targetGMEmail.trim()}`);
+      setLinkNotice(`${t("linkCharacterSuccess")} ${targetGMEmail.trim()}`);
       setTargetGMEmail("");
       await refreshData();
     } catch (err) {
-      alert("Erro ao vincular: " + (err instanceof Error ? err.message : String(err)));
+      alert(`${t("linkCharacterError")} ${err instanceof Error ? err.message : String(err)}`);
     }
   };
 
@@ -258,10 +258,10 @@ export function CampaignsPage() {
     if (!session?.user) return;
     try {
       await unlinkCharacterFromGM(charKey, session.user);
-      setLinkNotice("Ficha desvinculada do Mestre com sucesso.");
+      setLinkNotice(t("unlinkCharacterSuccess"));
       await refreshData();
     } catch (err) {
-      alert("Erro: " + (err instanceof Error ? err.message : String(err)));
+      alert(`${t("unlinkCharacterError")} ${err instanceof Error ? err.message : String(err)}`);
     }
   };
 

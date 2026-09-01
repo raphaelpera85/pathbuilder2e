@@ -304,11 +304,16 @@ class PathbuilderApp {
     this.diceAnimationTimer = null;
     this.currentPickerType = null;
     this.selectedPickerItem = null;
+    this.catalogNameIndex = null;
     this.activeModalTab = "All";
     this.mobileActiveView = "stats";
     if (typeof window !== "undefined") {
       window.addEventListener("pathbuilder:locale-change", () => {
         this.renderAll();
+      });
+      window.addEventListener("pathbuilder:catalogs-ready", () => {
+        this.catalogNameIndex = null;
+        if (this.character) this.renderAll();
       });
     }
     this.init();
@@ -322,8 +327,36 @@ class PathbuilderApp {
     return "pt-BR";
   }
 
+  getCatalogNameIndex() {
+    if (this.catalogNameIndex) return this.catalogNameIndex;
+    const index = new Map();
+    const addRecord = (record, key = "") => {
+      if (!record || typeof record !== "object") return;
+      const names = record.names && typeof record.names === "object" ? record.names : null;
+      if (names) {
+        for (const value of [record.name, key, ...Object.values(names)]) {
+          const normalized = normalizeCatalogLabel(value);
+          if (normalized) index.set(normalized, names);
+        }
+      }
+    };
+    const addCollection = (collection) => {
+      if (Array.isArray(collection)) collection.forEach((record) => addRecord(record));
+      else if (collection && typeof collection === "object") Object.entries(collection).forEach(([key, record]) => addRecord(record, key));
+    };
+    if (typeof PF2E_DATA !== "undefined" && PF2E_DATA) Object.values(PF2E_DATA).forEach(addCollection);
+    if (typeof window !== "undefined" && window.pathbuilderCatalogs) Object.values(window.pathbuilderCatalogs).forEach(addCollection);
+    this.catalogNameIndex = index;
+    return index;
+  }
+
   localizeItemName(rawName, locale = this.getLocale()) {
+    if (rawName && typeof rawName === "object") {
+      return rawName[locale] || rawName["pt-BR"] || rawName.en || rawName.es || "";
+    }
     if (!rawName || typeof rawName !== "string") return rawName || "";
+    const catalogNames = this.getCatalogNameIndex().get(normalizeCatalogLabel(rawName));
+    if (catalogNames?.[locale]) return catalogNames[locale];
     if (locale === "pt-BR") {
       const match = rawName.match(/^([^(]+?)\s*\(([^)]+)\)$/);
       if (match) return match[1].trim();
@@ -515,7 +548,8 @@ class PathbuilderApp {
       drawerLibrary: isEn ? "🛡️ My Characters (Library)" : isEs ? "🛡️ Mis personajes (biblioteca)" : "🛡️ Meus Personagens (Biblioteca)",
       drawerCampaigns: isEn ? "🏰 GM Campaigns (RPG Tables)" : isEs ? "🏰 Campañas del DJ (mesas de rol)" : "🏰 Campanhas do Mestre (Mesas de RPG)",
       drawerNewCharacter: isEn ? "➕ New Blank Character" : isEs ? "➕ Nuevo personaje en blanco" : "➕ Novo Personagem em Branco",
-      drawerSaveCharacter: isEn ? "💾 Save Character (Local)" : isEs ? "💾 Guardar personaje (local)" : "💾 Salvar Personagem (Local)"
+      drawerSaveCharacter: isEn ? "💾 Save Character (Local)" : isEs ? "💾 Guardar personaje (local)" : "💾 Salvar Personagem (Local)",
+      drawerSaveAccountCharacter: isEn ? "☁️ Save Character to Account" : isEs ? "☁️ Guardar personaje en la cuenta" : "☁️ Salvar Personagem na Conta"
     };
     for (const [id, label] of Object.entries(legacyLabels)) {
       const element = document.getElementById(id);
@@ -538,6 +572,7 @@ class PathbuilderApp {
       if (savedLocal) {
         try {
           this.character = assertSafeCharacterDocument(JSON.parse(savedLocal));
+          this.diceHistory = Array.isArray(this.character.diceHistory) ? this.character.diceHistory.slice(0, 100) : [];
           this.normalizeCharacterCoins();
           this.saveCharacterLocal(false);
           this.renderAll();
@@ -555,6 +590,7 @@ class PathbuilderApp {
       const resp = await fetch(`characters/${charId}.json`);
       if (resp.ok) {
         this.character = assertSafeCharacterDocument(await resp.json());
+        this.diceHistory = Array.isArray(this.character.diceHistory) ? this.character.diceHistory.slice(0, 100) : [];
       } else {
         this.character = this.getDefaultCharacter(charId);
       }
@@ -778,8 +814,8 @@ class PathbuilderApp {
       const rankClass = rankInitial.toLowerCase();
       const localizedName = UI_TRANSLATIONS.skills[sk.id]?.[locale] || sk.name;
       html += `
-        <div class="skill-item-row" onclick="app.rollCheck(${escapeInlineArgument(`${isEn ? 'Skill' : isEs ? 'Habilidad' : 'Perícia'}: ${localizedName}`)}, ${calcSk.total})" title="${isEn ? 'Click to roll d20 + bonus' : 'Clique para rolar d20 com bônus'}">
-          <span class="teml-circle ${rankClass}" onclick="event.stopPropagation(); app.cycleSkillRank(${escapeInlineArgument(sk.id)})" title="${isEn ? 'Toggle Proficiency' : 'Alternar Proficiência'}">${rankInitial}</span>
+        <div class="skill-item-row" onclick="app.rollCheck(${escapeInlineArgument(`${isEn ? 'Skill' : isEs ? 'Habilidad' : 'Perícia'}: ${localizedName}`)}, ${calcSk.total})" title="${isEn ? 'Click to roll d20 + bonus' : isEs ? 'Haz clic para tirar 1d20 + bonificador' : 'Clique para rolar d20 com bônus'}">
+          <span class="teml-circle ${rankClass}" onclick="event.stopPropagation(); app.cycleSkillRank(${escapeInlineArgument(sk.id)})" title="${isEn ? 'Toggle Proficiency' : isEs ? 'Alternar competencia' : 'Alternar Proficiência'}">${rankInitial}</span>
           <span class="skill-roll-val">${PF2E_ENGINE.formatMod(calcSk.total)}</span>
           <span class="skill-name-text">${escapeHtml(localizedName)}</span>
         </div>
@@ -876,7 +912,7 @@ class PathbuilderApp {
     const isEn = locale === "en";
     const isEs = locale === "es";
 
-    const arm = this.character.equippedArmor || { name: isEn ? "Unarmored" : "Sem Armadura", acBonus: 0, dexCap: 5 };
+    const arm = this.character.equippedArmor || { name: isEn ? "Unarmored" : isEs ? "Sin Armadura" : "Sem Armadura", acBonus: 0, dexCap: 5 };
     const shield = this.character.equippedShield || null;
     const armorRunes = PF2E_ENGINE?.getRuneBonuses?.(arm) || { potency: 0, resilient: 0 };
     const armorRuneItems = Array.isArray(arm.runes) ? arm.runes : [];
@@ -998,7 +1034,12 @@ class PathbuilderApp {
 
   stowArmor() {
     this.storeInventoryEntry(this.character.equippedArmor);
-    this.character.equippedArmor = { name: "Unarmored", acBonus: 0, dexCap: 5 };
+    const locale = this.getLocale();
+    this.character.equippedArmor = {
+      name: locale === "en" ? "Unarmored" : locale === "es" ? "Sin Armadura" : "Sem Armadura",
+      acBonus: 0,
+      dexCap: 5
+    };
     this.saveCharacterLocal(false);
     this.renderAll();
   }
@@ -1093,19 +1134,19 @@ class PathbuilderApp {
     const containers = this.character.containers || [];
 
     const itemsGridHtml = inv.length === 0 ? `
-      <div style="grid-column: 1 / -1; color:#64748b; text-align:center; padding: 24px;">${isEn ? "No items in inventory. Click 'Add Gear' to purchase or add gear." : isEs ? "No hay objetos en el inventario. Haz clic en 'Añadir Equipo' para comprar o añadir equipo." : "Nenhum item no inventário. Clique em 'Add Gear' para comprar ou adicionar itens."}</div>
+      <div style="grid-column: 1 / -1; color:#64748b; text-align:center; padding: 24px;">${isEn ? "No items in inventory. Click 'Add Gear' to purchase or add gear." : isEs ? "No hay objetos en el inventario. Haz clic en 'Añadir Equipo' para comprar o añadir equipo." : "Nenhum item no inventário. Clique em 'Adicionar Item' para comprar ou adicionar itens."}</div>
     ` : inv.map((item, idx) => {
       const locItemName = this.localizeItemName(item.name, locale);
       return `
         <div class="pb-gear-item-box">
-          <button class="pb-gear-qty-btn" onclick="app.adjustItemQty(${idx}, -1)" title="${isEn ? "Decrease quantity" : "Diminuir quantidade"}">-</button>
+          <button class="pb-gear-qty-btn" onclick="app.adjustItemQty(${idx}, -1)" title="${isEn ? "Decrease quantity" : isEs ? "Disminuir cantidad" : "Diminuir quantidade"}">-</button>
           <span class="pb-gear-qty-text">${isEn ? "Qty" : isEs ? "Cant" : "Qtd"} ${item.qty || 1}</span>
           <button class="pb-gear-qty-btn" onclick="app.adjustItemQty(${idx}, 1)" title="${isEn ? "Increase quantity" : isEs ? "Aumentar cantidad" : "Aumentar quantidade"}">+</button>
           <span class="pb-gear-name-text" title="${escapeHtml(locItemName)}">${escapeHtml(locItemName)}</span>
           ${/rune|runa|potency|impactante|impacto|resilient/i.test(String(item.id || item.name || "")) ? `<button class="pb-gear-edit-btn" onclick="app.attachInventoryRune(${idx})" title="${isEn ? "Attach rune" : isEs ? "Vincular runa" : "Vincular runa"}">↗</button>` : ""}
           ${containers.length ? `<button class="pb-gear-edit-btn" onclick="app.moveInventoryItemToContainer(${idx})" title="${isEn ? "Move to container" : isEs ? "Mover al contenedor" : "Mover para recipiente"}">⇩</button>` : ""}
           <button class="pb-gear-edit-btn" onclick="app.editInventoryItem(${idx})" title="${isEn ? "Edit item" : isEs ? "Editar objeto" : "Editar item"}">✎</button>
-          <button class="pb-gear-remove-btn" onclick="app.removeInventoryItem(${idx})" title="${isEn ? "Remove item" : "Remover item"}">✕</button>
+          <button class="pb-gear-remove-btn" onclick="app.removeInventoryItem(${idx})" title="${isEn ? "Remove item" : isEs ? "Eliminar objeto" : "Remover item"}">✕</button>
         </div>
       `;
     }).join('');
@@ -1203,7 +1244,8 @@ class PathbuilderApp {
       equipment = armor;
     } else if (normalized === "a" || normalized === "arma" || normalized === "weapon") {
       if (!weapons.length) return;
-      const list = weapons.map((weapon, weaponIdx) => `${weaponIdx + 1}: ${weapon.name || "Weapon"}`).join("\n");
+      const unnamedWeapon = locale === "en" ? "Weapon" : locale === "es" ? "Arma" : "Arma";
+      const list = weapons.map((weapon, weaponIdx) => `${weaponIdx + 1}: ${weapon.name || unnamedWeapon}`).join("\n");
       const selected = Number.parseInt(prompt(`${list}\n${locale === "en" ? "Weapon number:" : locale === "es" ? "Número del arma:" : "Número da arma:"}`, "1"), 10) - 1;
       equipment = weapons[selected];
     }
@@ -1547,7 +1589,7 @@ class PathbuilderApp {
     }
     const patron = PF2E_ENGINE.getSelectedPatron(this.character);
     if (patron) {
-      const trilingual = (value) => value ? `${value["pt-BR"]} (${value.en} / ${value.es})` : "";
+      const trilingual = (value) => value ? { ...value } : "";
       this.character.patron = patron.name;
       this.character.subclass = patron.name;
       this.character.patronId = patron.id;
@@ -1715,7 +1757,7 @@ class PathbuilderApp {
       es: { emptySpells: "No hay conjuros añadidos.", emptyRituals: "No hay rituales aprendidos.", rank: "Rango", source: "Fuente", available: "Disp.", spend: "Gastar", restore: "Restaurar", focus: "Puntos de Foco", useFocus: "Usar Foco", refocus: "Recobrar (+1)", spellSlots: "Espacios de Conjuros", bounded: "Magia Limitada", caster: "Lanzador", restoreAll: "Restaurar Todos los Espacios", edit: "Editar", remove: "Eliminar" }
     }[locale];
 
-    const spellcasting = this.calc.spellcasting || (typeof PF2E_ENGINE !== "undefined" && PF2E_ENGINE.calculateSpellcasting ? PF2E_ENGINE.calculateSpellcasting(this.character) : { dc: this.calc.classDc, attackMod: this.calc.classDc - 10, traditionName: "Arcana", maxFocusPoints: 0, currentFocusPoints: 0 });
+    const spellcasting = this.calc.spellcasting || (typeof PF2E_ENGINE !== "undefined" && PF2E_ENGINE.calculateSpellcasting ? PF2E_ENGINE.calculateSpellcasting(this.character) : { dc: this.calc.classDc, attackMod: this.calc.classDc - 10, traditionName: this.getTraditionLabel("arcane", locale), maxFocusPoints: 0, currentFocusPoints: 0 });
 
     const dcEl = document.getElementById("spellDcText");
     const atkEl = document.getElementById("spellAtkText");
@@ -1724,7 +1766,7 @@ class PathbuilderApp {
 
     if (dcEl) dcEl.innerText = spellcasting.dc || this.calc.classDc;
     if (atkEl) atkEl.innerText = PF2E_ENGINE.formatMod(spellcasting.attackMod !== undefined ? spellcasting.attackMod : (this.calc.classDc - 10));
-    if (tradBadge) tradBadge.innerText = spellcasting.traditionName || "Arcana";
+    if (tradBadge) tradBadge.innerText = spellcasting.traditionName || this.getTraditionLabel("arcane", locale);
     if (focusDisp) {
       const maxF = spellcasting.maxFocusPoints ?? 0;
       const curF = Math.min(maxF, spellcasting.currentFocusPoints !== undefined ? spellcasting.currentFocusPoints : maxF);
@@ -1877,6 +1919,14 @@ class PathbuilderApp {
         const companion = PF2E_ENGINE?.calculateCompanionStats
           ? PF2E_ENGINE.calculateCompanionStats(this.character, pet)
           : pet;
+        const petTypeKey = String(pet.type || "").toLowerCase();
+        const petTypeLabel = petTypeKey.includes("familiar")
+          ? (isEn ? "Familiar" : isEs ? "Familiar" : "Familiar")
+          : petTypeKey.includes("mount") || petTypeKey.includes("montaria")
+            ? (isEn ? "Mount" : isEs ? "Montura" : "Montaria")
+            : petTypeKey.includes("eidolon")
+              ? "Eidolon"
+              : (isEn ? "Animal companion" : isEs ? "Compañero animal" : "Companheiro animal");
         const profileLabel = isEn ? "Eidolon matrices" : isEs ? "Matrices del eidolon" : "Matrizes do eidolon";
         const profileOptions = Array.isArray(companion.profiles) ? companion.profiles : [];
         const activeProfileIndex = Number.isInteger(companion.profileIndex) ? companion.profileIndex : 0;
@@ -1888,10 +1938,10 @@ class PathbuilderApp {
               : { str: "FOR", dex: "DES", con: "CON", int: "INT", wis: "SAB", cha: "CAR" };
           const scores = Object.entries(profile.abilities || {}).map(([key, value]) => `${abilityNames[key] || key.toUpperCase()} ${value}`).join(" · ");
           const selectedMark = profileOptions[activeProfileIndex] === profile ? " ✓" : "";
-          return `<div><strong>${escapeHtml(profile.name || "")}${selectedMark}</strong> · ${escapeHtml(scores)} · CA +${escapeHtml(profile.acBonus ?? 0)} (DES +${escapeHtml(profile.dexCap ?? 0)})</div>`;
+          return `<div><strong>${escapeHtml(this.localizeItemName(profile.name || "", locale))}${selectedMark}</strong> · ${escapeHtml(scores)} · CA +${escapeHtml(profile.acBonus ?? 0)} (DES +${escapeHtml(profile.dexCap ?? 0)})</div>`;
         }).join("") : "";
         const profileSelector = profileOptions.length > 1
-          ? `<label style="display:flex; align-items:center; gap:6px; margin-top:6px;"><span>${isEn ? "Active matrix:" : isEs ? "Matriz activa:" : "Matriz ativa:"}</span><select onchange="app.setCompanionProfile(${idx}, Number(this.value))">${profileOptions.map((profile, profileIndex) => `<option value="${profileIndex}" ${profileIndex === activeProfileIndex ? "selected" : ""}>${escapeHtml(profile.name || `Profile ${profileIndex + 1}`)}</option>`).join("")}</select></label>`
+              ? `<label style="display:flex; align-items:center; gap:6px; margin-top:6px;"><span>${isEn ? "Active matrix:" : isEs ? "Matriz activa:" : "Matriz ativa:"}</span><select onchange="app.setCompanionProfile(${idx}, Number(this.value))">${profileOptions.map((profile, profileIndex) => `<option value="${profileIndex}" ${profileIndex === activeProfileIndex ? "selected" : ""}>${escapeHtml(this.localizeItemName(profile.name || `Profile ${profileIndex + 1}`, locale))}</option>`).join("")}</select></label>`
           : "";
         return `
         <div class="strike-card" style="border-left-color: var(--pb-orange); background: var(--pb-bg-panel); margin-bottom:12px;">
@@ -1899,7 +1949,7 @@ class PathbuilderApp {
             <div style="font-weight:bold; color:var(--pb-orange); font-size:15px;">🐾 ${escapeHtml(this.localizeItemName(pet.name, locale))}</div>
             <div style="display:flex; gap:4px;"><button onclick="app.editCharacterCollectionItem('pets', ${idx})" title="${isEn ? "Edit Pet" : isEs ? "Editar mascota" : "Editar mascote"}" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer; font-size:14px;">✎</button><button onclick="app.removePet(${idx})" title="${isEn ? "Remove Pet" : isEs ? "Eliminar mascota" : "Remover mascote"}" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer; font-size:14px;">🗑️</button></div>
           </div>
-          <div style="font-size:11px; color:var(--pb-text-muted); margin-bottom:8px;">${escapeHtml(pet.type || (isEn ? "Companion" : "Companheiro"))}</div>
+          <div style="font-size:11px; color:var(--pb-text-muted); margin-bottom:8px;">${escapeHtml(petTypeLabel)}</div>
           ${profileStats ? `<div style="font-size:11px; line-height:1.5; color:#cbd5e1; border:1px solid var(--pb-border); border-radius:5px; padding:6px; margin-bottom:8px;"><strong>${profileLabel}:</strong>${profileStats}${profileSelector}</div>` : ""}
           <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:6px; margin-bottom:10px;">
             <div class="vital-box">
@@ -1911,7 +1961,7 @@ class PathbuilderApp {
             <div class="vital-box"><span class="vital-label">${isEn ? "Perception" : isEs ? "Percepción" : "Percepção"}</span><span class="vital-value">${escapeHtml(companion.perception ?? "—")}</span></div>
           </div>
           <div style="font-size:12px; line-height:1.6;">
-            ${(companion.attacks || []).map(atk => `• <strong>${isEn ? "Attack" : isEs ? "Ataque" : "Ataque"} ${escapeHtml(atk.name)}:</strong> ${escapeHtml(atk.bonus ?? "—")} | <strong>${escapeHtml(atk.damage ?? "—")}</strong>.<br>`).join('')}
+            ${(companion.attacks || []).map(atk => `• <strong>${isEn ? "Attack" : isEs ? "Ataque" : "Ataque"} ${escapeHtml(this.localizeItemName(atk.name || "", locale))}:</strong> ${escapeHtml(atk.bonus ?? "—")} | <strong>${escapeHtml(atk.damage ?? "—")}</strong>.<br>`).join('')}
             ${Array.isArray(pet.grantedAbilities) && pet.grantedAbilities.length ? `• <strong>${isEn ? "Granted familiar abilities:" : isEs ? "Habilidades concedidas:" : "Habilidades concedidas:"}</strong> ${escapeHtml(pet.grantedAbilities.join(", "))}<br>` : ''}
             ${pet.requiredFamiliarAbilities ? `• <strong>${isEn ? "Required familiar abilities:" : isEs ? "Habilidades de familiar requeridas:" : "Habilidades de familiar necessárias:"}</strong> ${escapeHtml(pet.requiredFamiliarAbilities)}${pet.requiresSpellcasting ? ` (${isEn ? "spellcasting required" : isEs ? "requiere lanzamiento de conjuros" : "requer conjuração"})` : ''}<br>` : ''}
             ${companion.supportBenefit ? `• <strong>${isEn ? "Support Benefit:" : isEs ? "Beneficio de Soporte:" : "Benefício de Suporte:"}</strong> ${escapeHtml(companion.supportBenefit)}<br>` : ''}
@@ -1962,10 +2012,10 @@ class PathbuilderApp {
       return `
         <div class="strike-card" style="border-left-color: var(--pb-teml-e);">
           <div class="strike-header">
-            <span style="font-weight:bold; color:var(--pb-orange);">${escapeHtml(locName)} <span class="trait-tag">${escapeHtml(f.type || f.category || (isEn ? "Feat" : isEs ? "Dote" : "Talento"))}</span></span>
+            <span style="font-weight:bold; color:var(--pb-orange);">${escapeHtml(locName)} <span class="trait-tag">${escapeHtml(this.localizeTrait(f.type || f.category || (isEn ? "Feat" : isEs ? "Dote" : "Talento"), locale))}</span></span>
             <div style="display:flex; gap:4px;"><button onclick="app.editCharacterCollectionItem('feats', ${idx})" title="${isEn ? "Edit feat" : isEs ? "Editar dote" : "Editar talento"}" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer;">✎</button><button onclick="app.removeFeat(${idx})" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer;">🗑️</button></div>
           </div>
-          <div style="font-size:12px; color:var(--pb-text); margin-top:4px;">${escapeHtml(f.description || "")}</div>
+          <div style="font-size:12px; color:var(--pb-text); margin-top:4px;">${escapeHtml(f.summaries?.[locale] || f.description || "")}</div>
         </div>
       `;
     }).join('');
@@ -1977,7 +2027,7 @@ class PathbuilderApp {
             <span style="font-weight:bold; color:var(--pb-orange);">${escapeHtml(this.localizeItemName(archetype.name, locale))} <span class="trait-tag">${isEn ? "Archetype" : isEs ? "Arquetipo" : "Arquétipo"}</span></span>
             <div style="display:flex; gap:4px;"><button onclick="app.editCharacterCollectionItem('archetypes', ${idx})" title="${isEn ? "Edit archetype" : isEs ? "Editar arquetipo" : "Editar arquétipo"}" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer;">✎</button><button onclick="app.removeArchetype(${idx})" title="${isEn ? "Remove archetype" : isEs ? "Eliminar arquetipo" : "Remover arquétipo"}" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer;">🗑️</button></div>
           </div>
-          <div style="font-size:12px; color:var(--pb-text); margin-top:4px;">${escapeHtml(archetype.description || archetype.summaries?.[locale] || "")}</div>
+          <div style="font-size:12px; color:var(--pb-text); margin-top:4px;">${escapeHtml(archetype.summaries?.[locale] || archetype.description || "")}</div>
         </div>
       `).join(''));
     }
@@ -1991,26 +2041,26 @@ class PathbuilderApp {
     const isEs = locale === "es";
 
     const defaultActions = [
-      { name: isEn ? "Strike" : isEs ? "Golpear (Strike)" : "Golpear (Strike)", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Make a melee or ranged attack with your weapon." : isEs ? "Realiza un ataque cuerpo a cuerpo o a distancia con tu arma." : "Desfere um ataque corpo a corpo ou à distância com sua arma.", type: isEn ? "Basic" : isEs ? "Básica" : "Básica" },
-      { name: isEn ? "Stride" : isEs ? "Zancada (Stride)" : "Movimentar-se (Stride)", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Move up to your Speed." : isEs ? "Muévete hasta tu Velocidad." : "Move-se até sua Velocidade em terra.", type: isEn ? "Basic" : isEs ? "Básica" : "Básica" },
-      { name: isEn ? "Step" : isEs ? "Paso (Step)" : "Passo de Ajuste (Step)", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Carefully move 5 feet without triggering reactions." : isEs ? "Muévete con cuidado 5 pies sin provocar reacciones." : "Move-se 5 pés sem provocar reações como Golpe Reativo.", type: isEn ? "Basic" : isEs ? "Básica" : "Básica" },
-      { name: isEn ? "Raise a Shield" : isEs ? "Alzar Escudo (Raise a Shield)" : "Erguer Escudo (Raise a Shield)", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Gain a +2 circumstance bonus to AC until the start of your next turn." : isEs ? "Obtén un bonificador circunstancial +2 a la CA hasta el inicio de tu próximo turno." : "Concede +2 na CA de circunstância até o início do próximo turno.", type: isEn ? "Basic" : isEs ? "Básica" : "Básica" },
-      { name: isEn ? "Take Cover" : isEs ? "Ponerse a Cubierto (Take Cover)" : "Buscar Cobertura (Take Cover)", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Gain or improve cover bonus to AC and Reflex saves." : isEs ? "Obtén o mejora el bonificador de cobertura a la CA y salvaciones de Reflejos." : "Melhora o bônus de cobertura para +2 ou +4 na CA e salvamentos de Reflexos.", type: isEn ? "Basic" : isEs ? "Básica" : "Básica" },
+      { name: isEn ? "Strike" : isEs ? "Golpear" : "Golpear", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Make a melee or ranged attack with your weapon." : isEs ? "Realiza un ataque cuerpo a cuerpo o a distancia con tu arma." : "Desfere um ataque corpo a corpo ou à distância com sua arma.", type: isEn ? "Basic" : isEs ? "Básica" : "Básica" },
+      { name: isEn ? "Stride" : isEs ? "Zancada" : "Movimentar-se", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Move up to your Speed." : isEs ? "Muévete hasta tu Velocidad." : "Move-se até sua Velocidade em terra.", type: isEn ? "Basic" : isEs ? "Básica" : "Básica" },
+      { name: isEn ? "Step" : isEs ? "Paso" : "Passo de Ajuste", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Carefully move 5 feet without triggering reactions." : isEs ? "Muévete con cuidado 5 pies sin provocar reacciones." : "Move-se 1,5 m sem provocar reações como Golpe Reativo.", type: isEn ? "Basic" : isEs ? "Básica" : "Básica" },
+      { name: isEn ? "Raise a Shield" : isEs ? "Alzar Escudo" : "Erguer Escudo", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Gain a +2 circumstance bonus to AC until the start of your next turn." : isEs ? "Obtén un bonificador circunstancial +2 a la CA hasta el inicio de tu próximo turno." : "Concede +2 de bônus circunstancial na CA até o início do próximo turno.", type: isEn ? "Basic" : isEs ? "Básica" : "Básica" },
+      { name: isEn ? "Take Cover" : isEs ? "Ponerse a Cubierto" : "Buscar Cobertura", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Gain or improve cover bonus to AC and Reflex saves." : isEs ? "Obtén o mejora el bonificador de cobertura a la CA y salvaciones de Reflejos." : "Obtenha ou melhore o bônus de cobertura na CA e nos salvamentos de Reflexos.", type: isEn ? "Basic" : isEs ? "Básica" : "Básica" },
       { name: isEn ? "Demoralize" : isEs ? "Desmoralizar (Demoralize)" : "Desmoralizar (Demoralize)", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Intimidation vs Will to make target Frightened 1." : isEs ? "Intimidación contra Voluntad para dejar al objetivo Asustado 1." : "Teste de Intimidação vs Vontade para deixar o alvo Aterrorizado 1.", type: isEn ? "Skill" : isEs ? "Pericia" : "Perícia" },
-      { name: isEn ? "Trip" : isEs ? "Derribar (Trip)" : "Derrubar (Trip)", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Athletics vs Reflex to knock opponent Prone." : isEs ? "Atletismo contra Reflejos para derribar al oponente." : "Teste de Atletismo vs Reflexos para derrubar o oponente Caído no chão.", type: isEn ? "Skill" : isEs ? "Pericia" : "Perícia" },
-      { name: isEn ? "Grapple" : isEs ? "Agarrar (Grapple)" : "Agarrar (Grapple)", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Athletics vs Fortitude to immobilize opponent." : isEs ? "Atletismo contra Fortaleza para inmovilizar al oponente." : "Teste de Atletismo vs Fortitude para imobilizar o oponente.", type: isEn ? "Skill" : isEs ? "Pericia" : "Perícia" },
-      { name: isEn ? "Treat Wounds" : isEs ? "Tratar Heridas (Treat Wounds)" : "Tratar Ferimentos (Treat Wounds)", cost: isEn ? "10 Minutes" : isEs ? "10 Minutos" : "10 Minutos", desc: isEn ? "Medicine out of combat to heal HP." : isEs ? "Medicina fuera de combate para curar PV." : "Medicina fora de combate para curar grandes quantias de PV.", type: isEn ? "Exploration" : isEs ? "Exploración" : "Exploração" }
+      { name: isEn ? "Trip" : isEs ? "Derribar" : "Derrubar", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Athletics vs Reflex to knock opponent Prone." : isEs ? "Atletismo contra Reflejos para derribar al oponente." : "Teste de Atletismo contra Reflexos para derrubar o oponente.", type: isEn ? "Skill" : isEs ? "Pericia" : "Perícia" },
+      { name: isEn ? "Grapple" : isEs ? "Agarrar" : "Agarrar", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Athletics vs Fortitude to immobilize opponent." : isEs ? "Atletismo contra Fortaleza para inmovilizar al oponente." : "Teste de Atletismo contra Fortitude para imobilizar o oponente.", type: isEn ? "Skill" : isEs ? "Pericia" : "Perícia" },
+      { name: isEn ? "Treat Wounds" : isEs ? "Tratar Heridas" : "Tratar Ferimentos", cost: isEn ? "10 Minutes" : isEs ? "10 Minutos" : "10 Minutos", desc: isEn ? "Medicine out of combat to heal HP." : isEs ? "Medicina fuera de combate para curar PV." : "Use Medicina fora de combate para recuperar PV.", type: isEn ? "Exploration" : isEs ? "Exploración" : "Exploração" }
     ];
     const customActions = (this.character.classFeatures || []).concat(this.character.feats || []).map(a => ({
       name: this.localizeItemName(a.name, locale),
-      cost: a.actions ? `${a.actions} ${isEn ? "Action(s)" : "Ação(ões)"}` : (isEn ? "Special" : "Especial"),
-      desc: a.description || "",
-      type: isEn ? "Class / Feat" : "Classe / Talento"
+      cost: a.actions ? `${a.actions} ${isEn ? "Action(s)" : isEs ? "Acción(es)" : "Ação(ões)"}` : (isEn ? "Special" : isEs ? "Especial" : "Especial"),
+      desc: a.summaries?.[locale] || a.description || "",
+      type: isEn ? "Class / Feat" : isEs ? "Clase / Dote" : "Classe / Talento"
     }));
     const selectedActions = (this.character.actions || []).map((action, index) => ({
       name: this.localizeItemName(action.name, locale),
       cost: action.actionType || action.actions || (isEn ? "Special" : isEs ? "Especial" : "Especial"),
-      desc: action.description || action.desc || "",
+      desc: action.summaries?.[locale] || action.description || action.desc || "",
       type: isEn ? "Selected action" : isEs ? "Acción seleccionada" : "Ação selecionada",
       collectionIndex: index
     }));
@@ -2021,7 +2071,7 @@ class PathbuilderApp {
         <div class="strike-header">
           <div style="font-weight:bold; color:var(--pb-orange); font-size:13px;">${escapeHtml(act.name)}</div>
           <div style="display:flex; align-items:center; gap:5px;">
-            <span class="trait-tag" style="background:#451a03; color:#fdba74; border-color:#78350f;">${escapeHtml(act.cost || (isEn ? "1 Action" : "1 Ação"))}</span>
+            <span class="trait-tag" style="background:#451a03; color:#fdba74; border-color:#78350f;">${escapeHtml(act.cost || (isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação"))}</span>
             ${act.collectionIndex !== undefined ? `<button type="button" onclick="app.editCharacterCollectionItem('actions', ${act.collectionIndex})" aria-label="${isEn ? "Edit action" : isEs ? "Editar acción" : "Editar ação"}" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer;">✎</button><button type="button" onclick="app.removeAction(${act.collectionIndex})" aria-label="${isEn ? "Remove action" : isEs ? "Eliminar acción" : "Remover ação"}" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer;">🗑️</button>` : ""}
           </div>
         </div>
@@ -2054,7 +2104,7 @@ class PathbuilderApp {
     // 2. Deity Display
     const deityDisplay = document.getElementById("detailsDeityDisplay");
     if (deityDisplay) {
-      deityDisplay.textContent = this.character.deity || (this.getLocale() === "en" ? "Not set" : "Não definida");
+      deityDisplay.textContent = this.character.deity || (this.getLocale() === "en" ? "Not set" : this.getLocale() === "es" ? "No definida" : "Não definida");
     }
 
     // 3. Age & Gender Inputs
@@ -2077,7 +2127,7 @@ class PathbuilderApp {
       } else if (typeof langs === "string" && langs.trim().length > 0) {
         langDisplay.textContent = langs;
       } else {
-        langDisplay.textContent = this.getLocale() === "en" ? "None selected" : "Nenhum selecionado";
+        langDisplay.textContent = this.getLocale() === "en" ? "None selected" : this.getLocale() === "es" ? "Ninguno seleccionado" : "Nenhum selecionado";
       }
     }
 
@@ -2497,7 +2547,7 @@ class PathbuilderApp {
       <div class="strike-card" style="border-left-color: #8b5cf6; margin-bottom: 8px;">
         <div class="strike-header">
           <div>
-            <span style="font-weight:bold; color:#a78bfa; font-size:13px;">${escapeHtml(f.name)}</span>
+            <span style="font-weight:bold; color:#a78bfa; font-size:13px;">${escapeHtml(this.localizeItemName(f.name, locale))}</span>
             <span class="trait-tag" style="background:#2e1065; color:#c4b5fd; border-color:#5b21b6; margin-left:6px;">${escapeHtml(f.category || copy.category)}</span>
             <span class="trait-tag" style="background:#1e1b4b; color:#93c5fd; border-color:#3730a3; margin-left:4px;">${copy.level} ${escapeHtml(f.level || 0)}</span>
           </div>
@@ -2506,10 +2556,10 @@ class PathbuilderApp {
             <div style="display:flex; gap:4px;"><button onclick="app.editCharacterCollectionItem('formulas', ${idx})" title="${copy.edit}" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer; font-size:14px;">✎</button><button onclick="app.removeFormula(${idx})" title="${copy.remove}" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer; font-size:14px;">🗑️</button></div>
           </div>
         </div>
-        <div style="font-size:12px; color:var(--pb-text); margin-top:4px;">${escapeHtml(f.description || "")}</div>
+        <div style="font-size:12px; color:var(--pb-text); margin-top:4px;">${escapeHtml(f.summaries?.[locale] || f.description || "")}</div>
         ${f.traits && f.traits.length > 0 ? `
           <div class="traits-row" style="margin-top:6px;">
-            ${f.traits.map(t => `<span class="trait-tag" style="font-size:10px;">${escapeHtml(t)}</span>`).join('')}
+            ${f.traits.map(t => `<span class="trait-tag" style="font-size:10px;">${escapeHtml(this.localizeTrait(t, locale))}</span>`).join('')}
           </div>
         ` : ""}
       </div>
@@ -2582,12 +2632,22 @@ class PathbuilderApp {
 
   getPickerItems(type) {
     const sharedCatalogs = window.pathbuilderCatalogs || {};
-    const finalize = (items) => this.filterPickerItemsByCompatibility(type, items);
+    const finalize = (items) => {
+      const compatible = this.filterPickerItemsByCompatibility(type, items);
+      const seenLabels = new Set();
+      return compatible.filter((item) => {
+        const locale = this.getLocale();
+        const label = normalizeCatalogLabel(item.data?.names?.[locale] || item.data?.names?.["pt-BR"] || item.name || item.data?.name || "");
+        if (!label || seenLabels.has(label)) return false;
+        seenLabels.add(label);
+        return true;
+      });
+    };
     if (type === "ancestry") {
       return finalize(getObjectCatalogRecords(PF2E_DATA.ancestries).map(({ key, record }) => ({ name: key, type: "Ancestralidade", data: record })));
     }
     if (type === "class") {
-      return finalize(getObjectCatalogRecords(PF2E_DATA.classes).map(({ key, record }) => ({ name: key, type: "Classe", data: record })));
+      return finalize(getObjectCatalogRecords(PF2E_DATA.classes).filter(({ record }) => !record?.legacyAlias).map(({ key, record }) => ({ name: key, type: "Classe", data: record })));
     }
     if (type === "subclass") {
       return finalize(mergeCatalogRecords([], PF2E_DATA.subclasses || []).filter(subclass => !subclass.legacyAlias).map(subclass => ({ name: subclass.name, type: "Subclasse", data: subclass })));
@@ -2607,9 +2667,8 @@ class PathbuilderApp {
     if (type === "heritage") {
       // Deixe o resolvedor contextual tratar IDs, chaves, nomes localizados e
       // gates alternativos; comparação literal ocultava heranças válidas.
-      const heritages = (PF2E_DATA.heritages || []).map(h => ({ name: h.name, type: "Herança", data: h }));
-      const versatile = (PF2E_DATA.versatileHeritages || []).map(h => ({ name: h.name, type: "Herança Versátil", data: h }));
-      return finalize(heritages.concat(versatile));
+      const heritages = mergeCatalogRecords([], (PF2E_DATA.heritages || []).concat(PF2E_DATA.versatileHeritages || []));
+      return finalize(heritages.map(h => ({ name: h.name, type: "Herança", data: h })));
     }
     if (type === "archetype") {
       return finalize(mergeCatalogRecords([], PF2E_DATA.archetypes || []).map(a => ({ name: a.name, type: "Arquétipo", data: a })));
@@ -3068,12 +3127,13 @@ class PathbuilderApp {
     const locale = this.getLocale();
     let contentHtml = `<div style="font-size:16px; font-weight:bold; color:var(--pb-orange);">${escapeHtml(item.name)}</div>`;
     
-    if (item.data.description) {
-      contentHtml += `<div style="font-size:12px; margin-top:8px; line-height:1.6;">${escapeHtml(item.data.description)}</div>`;
+    const localizedDescription = item.data.summaries?.[locale] || item.data.description || "";
+    if (localizedDescription) {
+      contentHtml += `<div style="font-size:12px; margin-top:8px; line-height:1.6;">${escapeHtml(localizedDescription)}</div>`;
     }
     if (item.data.hp) {
       const labels = locale === "en" ? { hp: "Ancestry base HP", speed: "Speed" } : locale === "es" ? { hp: "PG base de ascendencia", speed: "Velocidad" } : { hp: "PV Base da Ancestralidade", speed: "Velocidade" };
-      contentHtml += `<div style="font-size:12px; margin-top:6px; color:var(--pb-text-muted);">${labels.hp}: <strong>${escapeHtml(item.data.hp)}</strong> | ${labels.speed}: <strong>${escapeHtml(item.data.speed)} ${locale === "en" ? "feet" : "pés"}</strong></div>`;
+      contentHtml += `<div style="font-size:12px; margin-top:6px; color:var(--pb-text-muted);">${labels.hp}: <strong>${escapeHtml(item.data.hp)}</strong> | ${labels.speed}: <strong>${escapeHtml(item.data.speed)} ${locale === "en" ? "feet" : locale === "es" ? "pies" : "pés"}</strong></div>`;
     }
     if (item.data.hpPerLevel) {
       const labels = locale === "en" ? { hp: "HP per level", key: "Key ability" } : locale === "es" ? { hp: "PG por nivel", key: "Atributo clave" } : { hp: "PV por Nível", key: "Atributo-Chave" };
@@ -3747,6 +3807,8 @@ class PathbuilderApp {
   addDiceLog(title, formula, total, breakdown, isCrit = false, isFumble = false) {
     const time = new Date().toLocaleTimeString();
     this.diceHistory.unshift({ title, formula, total, breakdown, time, isCrit, isFumble });
+    this.diceHistory = this.diceHistory.slice(0, 100);
+    this.saveCharacterLocal(false);
     const content = document.getElementById("diceLogContent");
     if (!content) return;
     content.innerHTML = this.diceHistory.slice(0, 25).map(entry => `
@@ -3769,6 +3831,8 @@ class PathbuilderApp {
     const entry = { key, title, formula, total, breakdown, time, isCrit, isFumble };
     if (existingIndex >= 0) this.diceHistory.splice(existingIndex, 1);
     this.diceHistory.unshift(entry);
+    this.diceHistory = this.diceHistory.slice(0, 100);
+    this.saveCharacterLocal(false);
     const content = document.getElementById("diceLogContent");
     if (!content) return;
     content.innerHTML = this.diceHistory.slice(0, 25).map(item => `
@@ -3787,6 +3851,7 @@ class PathbuilderApp {
 
   clearDiceLog() {
     this.diceHistory = [];
+    this.saveCharacterLocal(false);
     const content = document.getElementById("diceLogContent");
     const locale = this.getLocale();
     const emptyText = locale === "en" ? "History cleared." : locale === "es" ? "Historial limpiado." : "Histórico limpo.";
@@ -4005,13 +4070,13 @@ class PathbuilderApp {
       levelPrefix: isEn ? "Level " : (isEs ? "Nivel " : "Nível "),
       unselected: isEn ? "Unselected" : (isEs ? "No Seleccionado" : "Não Selecionado"),
       setAbilitiesBoosts: isEn ? "Set Abilities (+4 Boosts)" : (isEs ? "Aumentos (+4 Características)" : "Aprimoramentos (+4 Atributos)"),
-      defaultHuman: isEn ? "Human" : "Humano",
+      defaultHuman: isEn ? "Human" : (isEs ? "Humano" : "Humano"),
       defaultNoble: isEn ? "Noble (Heraldry)" : (isEs ? "Noble (Heráldica)" : "Nobre (Heráldica)"),
       defaultSwashbuckler: isEn ? "Swashbuckler" : (isEs ? "Espadachín" : "Espadachim"),
       defaultVersatileHuman: isEn ? "Versatile Human" : (isEs ? "Humano Versátil" : "Humano Versátil"),
       defaultFleet: isEn ? "Fleet" : (isEs ? "Pies Ligeros" : "Pés Velozes"),
       defaultAmbition: isEn ? "Natural Ambition" : (isEs ? "Ambición Natural" : "Ambição Natural"),
-      defaultGoading: isEn ? "Goading Feint" : "Finta Provocadora",
+      defaultGoading: isEn ? "Goading Feint" : (isEs ? "Finta Provocadora" : "Finta Provocadora"),
       defaultParry: isEn ? "Extravagant Parry" : (isEs ? "Parada Extravagante" : "Aparada Extravagante"),
       defaultFencer: isEn ? "Fencer" : (isEs ? "Esgrimista" : "Esgrimista"),
     };
@@ -4025,7 +4090,7 @@ class PathbuilderApp {
 
     html += `
       <div class="pb-tree-group-box">
-        <div class="pb-tree-card" onclick="app.openPicker('ancestry')" title="${isEn ? "Click to change Ancestry" : "Clique para alterar Ancestralidade"}">
+        <div class="pb-tree-card" onclick="app.openPicker('ancestry')" title="${isEn ? "Click to change Ancestry" : isEs ? "Haz clic para cambiar la ascendencia" : "Clique para alterar Ancestralidade"}">
           <div class="pb-tree-card-icon">${this.getTreeIconSvg('ancestry')}</div>
           <div class="pb-tree-card-content">
             <div class="pb-tree-card-label">${tLabels.ancestry}</div>
@@ -4033,7 +4098,7 @@ class PathbuilderApp {
           </div>
         </div>
 
-        <div class="pb-tree-card" onclick="app.openPicker('background')" title="${isEn ? "Click to change Background" : "Clique para alterar Biografia"}">
+        <div class="pb-tree-card" onclick="app.openPicker('background')" title="${isEn ? "Click to change Background" : isEs ? "Haz clic para cambiar el trasfondo" : "Clique para alterar Biografia"}">
           <div class="pb-tree-card-icon">${this.getTreeIconSvg('background')}</div>
           <div class="pb-tree-card-content">
             <div class="pb-tree-card-label">${tLabels.background}</div>
@@ -4041,7 +4106,7 @@ class PathbuilderApp {
           </div>
         </div>
 
-        <div class="pb-tree-card active" onclick="app.openPicker('class')" title="${isEn ? "Click to change Class" : "Clique para alterar Classe"}">
+        <div class="pb-tree-card active" onclick="app.openPicker('class')" title="${isEn ? "Click to change Class" : isEs ? "Haz clic para cambiar la clase" : "Clique para alterar Classe"}">
           <div class="pb-tree-card-icon">${this.getTreeIconSvg('class')}</div>
           <div class="pb-tree-card-content">
             <div class="pb-tree-card-label">${tLabels.class}</div>
@@ -4060,11 +4125,11 @@ class PathbuilderApp {
         // Botões rápidos de configuração no Nível 1
         html += `
           <div class="pb-tree-quick-row">
-            <div class="pb-tree-quick-btn" onclick="app.openSetAbilitiesModal(1)" title="${isEn ? "Configure Abilities" : "Configurar Atributos"}">
+            <div class="pb-tree-quick-btn" onclick="app.openSetAbilitiesModal(1)" title="${isEn ? "Configure Abilities" : isEs ? "Configurar atributos" : "Configurar Atributos"}">
               ${this.getTreeIconSvg('gear')}
               <span>${tLabels.setAbilities}</span>
             </div>
-            <div class="pb-tree-quick-btn" onclick="app.openSkillTrainingModal()" title="${isEn ? "Configure Skill Training" : "Configurar Treinamento de Perícias"}">
+            <div class="pb-tree-quick-btn" onclick="app.openSkillTrainingModal()" title="${isEn ? "Configure Skill Training" : isEs ? "Configurar entrenamiento de habilidades" : "Configurar Treinamento de Perícias"}">
               ${this.getTreeIconSvg('gear')}
               <span>${tLabels.skillTraining}</span>
             </div>
@@ -4075,7 +4140,7 @@ class PathbuilderApp {
         const rawHeritage = char.heritage || tLabels.defaultVersatileHuman;
         const heritageVal = this.localizeItemName(rawHeritage, locale);
         html += `
-          <div class="pb-tree-card" onclick="app.openPicker('heritage')" title="${isEn ? "Choose Heritage" : "Escolher Herança"}">
+          <div class="pb-tree-card" onclick="app.openPicker('heritage')" title="${isEn ? "Choose Heritage" : isEs ? "Elegir herencia" : "Escolher Herança"}">
             <div class="pb-tree-card-icon">${this.getTreeIconSvg('heritage')}</div>
             <div class="pb-tree-card-content">
               <div class="pb-tree-card-label">${tLabels.heritage}</div>
@@ -4088,7 +4153,7 @@ class PathbuilderApp {
         const rawGeneralFeat = prog["1_general_feat"] || (char.feats?.find(f => f.slotId === "1_general_feat" || f.type?.includes("Geral"))?.name || tLabels.defaultFleet);
         const generalFeatVal = this.localizeItemName(rawGeneralFeat, locale);
         html += `
-          <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '1_general_feat', level: 1, filterType: 'Geral' })" title="${isEn ? "Choose General Feat" : "Escolher Talento Geral"}">
+          <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '1_general_feat', level: 1, filterType: 'Geral' })" title="${isEn ? "Choose General Feat" : isEs ? "Elegir dote general" : "Escolher Talento Geral"}">
             <div class="pb-tree-card-icon">${this.getTreeIconSvg('general_feat')}</div>
             <div class="pb-tree-card-content">
               <div class="pb-tree-card-label">${tLabels.generalFeat}</div>
@@ -4101,7 +4166,7 @@ class PathbuilderApp {
         const rawAncestryFeat = prog["1_ancestry_feat"] || (char.feats?.find(f => f.slotId === "1_ancestry_feat" || f.type?.includes("Ancestral"))?.name || tLabels.defaultAmbition);
         const ancestryFeatVal = this.localizeItemName(rawAncestryFeat, locale);
         html += `
-          <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '1_ancestry_feat', level: 1, filterType: 'Ancestral' })" title="${isEn ? "Choose Ancestry Feat" : "Escolher Talento Ancestral"}">
+          <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '1_ancestry_feat', level: 1, filterType: 'Ancestral' })" title="${isEn ? "Choose Ancestry Feat" : isEs ? "Elegir dote de ascendencia" : "Escolher Talento Ancestral"}">
             <div class="pb-tree-card-icon">${this.getTreeIconSvg('ancestry_feat')}</div>
             <div class="pb-tree-card-content">
               <div class="pb-tree-card-label">${tLabels.ancestryFeat}</div>
@@ -4117,7 +4182,7 @@ class PathbuilderApp {
         const rawClassFeat1 = prog["1_class_feat"] || (char.feats?.find(f => f.slotId === "1_class_feat" || f.type?.includes("Classe"))?.name || tLabels.defaultGoading);
         const classFeatVal1 = this.localizeItemName(rawClassFeat1, locale);
         if (!hasDedicatedClassProgression) html += `
-          <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '1_class_feat', level: 1, filterType: 'Classe' })" title="${isEn ? "Choose Class Feat" : "Escolher Talento de Classe"}">
+          <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '1_class_feat', level: 1, filterType: 'Classe' })" title="${isEn ? "Choose Class Feat" : isEs ? "Elegir dote de clase" : "Escolher Talento de Classe"}">
             <div class="pb-tree-card-icon">${this.getTreeIconSvg('class_feat')}</div>
             <div class="pb-tree-card-content">
               <div class="pb-tree-card-label">${tLabels.classFeat}</div>
@@ -4130,7 +4195,7 @@ class PathbuilderApp {
         const rawClassFeat2 = prog["1_class_feat_extra"] || (char.feats?.find(f => f.slotId === "1_class_feat_extra")?.name || tLabels.defaultParry);
         const classFeatVal2 = this.localizeItemName(rawClassFeat2, locale);
         if (!hasDedicatedClassProgression) html += `
-          <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '1_class_feat_extra', level: 1, filterType: 'Classe' })" title="${isEn ? "Choose Extra Class Feat" : "Escolher Talento de Classe Extra"}">
+          <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '1_class_feat_extra', level: 1, filterType: 'Classe' })" title="${isEn ? "Choose Extra Class Feat" : isEs ? "Elegir dote de clase adicional" : "Escolher Talento de Classe Extra"}">
             <div class="pb-tree-card-icon">${this.getTreeIconSvg('class_feat')}</div>
             <div class="pb-tree-card-content">
               <div class="pb-tree-card-label">${tLabels.classFeat}</div>
@@ -4173,7 +4238,7 @@ class PathbuilderApp {
           cleric: { heading: ["Doutrina", "Doctrine", "Doctrina"], entries: [["Doutrina", "Select Doctrine", "Seleccionar doctrina", "subclass"], ["Divindade", "Deity", "Deidad", "none"], ["Fonte Divina", "Divine Font", "Fuente divina", "none"], ["Conjuração Divina", "Divine Spellcasting", "Lanzamiento divino", "none"]] },
           druid: { heading: ["Ordem", "Order", "Orden"], entries: [["Ordem", "Select Order", "Seleccionar orden", "subclass"], ["Anátema", "Anathema", "Anatema", "none"], ["Magia de Ordem", "Order Magic", "Magia de la orden", "none"], ["Conjuração Primal", "Primal Spellcasting", "Lanzamiento primal", "none"]] },
           fighter: { heading: ["Treinamento Marcial", "Martial Training", "Entrenamiento marcial"], entries: [["Treinamento Marcial", "Martial Training", "Entrenamiento marcial", "none"], ["Reação de Guerreiro", "Reactive Strike", "Golpe reactivo", "none"], ["Flexibilidade", "Fighter's Flexibility", "Flexibilidad del guerrero", "none"]] },
-          rogue: { heading: ["Racket", "Racket", "Racket"], entries: [["Racket", "Select Racket", "Seleccionar racket", "subclass"], ["Ataque Surpresa", "Surprise Attack", "Ataque sorpresa", "none"], ["Ataque Furtivo", "Sneak Attack", "Ataque furtivo", "none"]] },
+          rogue: { heading: ["Especialização", "Racket", "Especialización"], entries: [["Especialização", "Select Racket", "Seleccionar especialización", "subclass"], ["Ataque Surpresa", "Surprise Attack", "Ataque sorpresa", "none"], ["Ataque Furtivo", "Sneak Attack", "Ataque furtivo", "none"]] },
           ranger: { heading: ["Vantagem do Caçador", "Hunter's Edge", "Ventaja del cazador"], entries: [["Vantagem do Caçador", "Select Hunter's Edge", "Seleccionar ventaja del cazador", "subclass"], ["Presa Caçada", "Hunted Prey", "Presa cazada", "none"], ["Conjuração de Patrulheiro", "Ranger Spellcasting", "Lanzamiento de explorador", "none"]] },
           monk: { heading: ["Disciplina", "Discipline", "Disciplina"], entries: [["Estilo", "Select Style", "Seleccionar estilo", "subclass"], ["Punho Poderoso", "Powerful Fist", "Puño poderoso", "none"], ["Rajada de Golpes", "Flurry of Blows", "Ráfaga de golpes", "none"]] },
           champion: { heading: ["Causa", "Cause", "Causa"], entries: [["Causa", "Select Cause", "Seleccionar causa", "subclass"], ["Reação do Campeão", "Champion's Reaction", "Reacción del campeón", "none"], ["Magias de Devoção", "Devotion Spells", "Conjuros de devoción", "none"]] },
@@ -4189,7 +4254,7 @@ class PathbuilderApp {
           commander: { heading: ["Estandarte", "Banner", "Estandarte"], entries: [["Estandarte", "Select Banner", "Seleccionar estandarte", "subclass"], ["Táticas", "Tactics", "Tácticas", "none"], ["Ordens", "Commands", "Órdenes", "none"]] },
           guardian: { heading: ["Defesa do Guardião", "Guardian's Defense", "Defensa del guardián"], entries: [["Defesa do Guardião", "Select Guardian's Defense", "Seleccionar defensa del guardián", "subclass"], ["Interceptar Ataque", "Intercept Attack", "Interceptar ataque", "none"], ["Proteger Aliado", "Protect Ally", "Proteger aliado", "none"]]
           },
-          kineticist: { heading: ["Portão Elemental", "Elemental Gate", "Puerta elemental"], entries: [["Portão Elemental", "Select Elemental Gate", "Seleccionar puerta elemental", "subclass"], ["Impulsos Elementais", "Elemental Impulses", "Impulsos elementales", "none"], ["Constituição", "Kineticist Class DC", "CD de clase del cineticista", "none"]] },
+          kineticist: { heading: ["Portão Elemental", "Elemental Gate", "Puerta elemental"], entries: [["Portão Elemental", "Select Elemental Gate", "Seleccionar puerta elemental", "subclass"], ["Impulsos Elementais", "Elemental Impulses", "Impulsos elementales", "none"], ["CD de Classe do Cineticista", "Kineticist Class DC", "CD de clase del cineticista", "none"]] },
           summoner: { heading: ["Eidolon", "Eidolon", "Eidolon"], entries: [["Eidolon", "Select Eidolon", "Seleccionar eidolon", "subclass"], ["Vínculo Vital", "Evolution Surge", "Oleada de evolución", "none"], ["Conjuração Compartilhada", "Shared Spellcasting", "Lanzamiento compartido", "none"]]
           }
         };
@@ -4244,7 +4309,7 @@ class PathbuilderApp {
           const styleVal = this.localizeItemName(rawStyle, locale);
           html += `
             <div class="pb-tree-section-heading">${escapeHtml(subclassHeading)}</div>
-            <div class="pb-tree-card" onclick="app.promptSubclass()" title="${isEn ? "Set Style / Subclass" : "Definir Estilo / Subclasse"}">
+            <div class="pb-tree-card" onclick="app.promptSubclass()" title="${isEn ? "Set Style / Subclass" : isEs ? "Definir estilo / subclase" : "Definir Estilo / Subclasse"}">
               <div class="pb-tree-card-content" style="padding-left: 2px;">
                 <div class="pb-tree-card-label">${tLabels.selectStyle}</div>
                 <div class="pb-tree-card-value">${escapeHtml(styleVal)}</div>
@@ -4257,7 +4322,7 @@ class PathbuilderApp {
         if ([5, 10, 15, 20].includes(lvl)) {
           html += `
             <div class="pb-tree-quick-row">
-              <div class="pb-tree-quick-btn" style="grid-column: span 2;" onclick="app.openSetAbilitiesModal(${lvl})" title="${isEn ? "Ability Boosts" : "Aprimoramento de Atributos"}">
+              <div class="pb-tree-quick-btn" style="grid-column: span 2;" onclick="app.openSetAbilitiesModal(${lvl})" title="${isEn ? "Ability Boosts" : isEs ? "Aumentos de atributos" : "Aprimoramento de Atributos"}">
                 ${this.getTreeIconSvg('gear')}
                 <span>${tLabels.setAbilitiesBoosts}</span>
               </div>
@@ -4426,7 +4491,7 @@ class PathbuilderApp {
       override: isEn ? "Override character creation ability modifiers" : (isEs ? "Anular modificadores de creación de personaje" : "Substituir modificadores de atributo na criação"),
     };
 
-    const defaultClassAbilityName = abilityOptions.find(o => o.id === (b.class || 'dex'))?.name || (isEn ? 'Dexterity' : 'Destreza');
+    const defaultClassAbilityName = abilityOptions.find(o => o.id === (b.class || 'dex'))?.name || (isEn ? 'Dexterity' : isEs ? 'Destreza' : 'Destreza');
 
     container.innerHTML = `
       <!-- Ancestry Boosts -->
@@ -4826,12 +4891,16 @@ class PathbuilderApp {
 
   // PERSISTÊNCIA & EXPORTAÇÃO
   getCurrentCharacter() {
-    return structuredClone(this.character);
+    if (!this.character) return null;
+    const snapshot = structuredClone(this.character);
+    snapshot.diceHistory = structuredClone(this.diceHistory.slice(0, 100));
+    return snapshot;
   }
 
   loadCharacter(character) {
     if (!character) return;
     this.character = assertSafeCharacterDocument(character);
+    this.diceHistory = Array.isArray(this.character.diceHistory) ? this.character.diceHistory.slice(0, 100) : [];
     this.reconcileSpellcastingProfile();
     this.saveCharacterLocal(false);
     this.renderAll();
@@ -4841,6 +4910,7 @@ class PathbuilderApp {
     try {
       if (typeof localStorage !== "undefined" && this.character) {
         this.normalizeCharacterCoins();
+        this.character.diceHistory = structuredClone(this.diceHistory.slice(0, 100));
         localStorage.setItem("pf2e_current_character", JSON.stringify(this.character));
       }
     } catch (e) {
@@ -4884,14 +4954,16 @@ class PathbuilderApp {
   }
 
   openExportModal() {
-    document.getElementById("jsonTitle").innerText = "📤 Exportar JSON";
+    const locale = this.getLocale();
+    document.getElementById("jsonTitle").innerText = locale === "en" ? "📤 Export JSON" : locale === "es" ? "📤 Exportar JSON" : "📤 Exportar JSON";
     document.getElementById("jsonArea").value = JSON.stringify(this.character, null, 2);
     document.getElementById("btnImportAction").style.display = "none";
     document.getElementById("modalJsonOverlay").classList.add("active");
   }
 
   openImportModal() {
-    document.getElementById("jsonTitle").innerText = "📥 Importar JSON";
+    const locale = this.getLocale();
+    document.getElementById("jsonTitle").innerText = locale === "en" ? "📥 Import JSON" : locale === "es" ? "📥 Importar JSON" : "📥 Importar JSON";
     document.getElementById("jsonArea").value = "";
     document.getElementById("btnImportAction").style.display = "inline-block";
     document.getElementById("modalJsonOverlay").classList.add("active");
@@ -4906,6 +4978,7 @@ class PathbuilderApp {
   applyJson() {
     try {
       this.character = assertSafeCharacterDocument(JSON.parse(document.getElementById("jsonArea").value));
+      this.diceHistory = Array.isArray(this.character.diceHistory) ? this.character.diceHistory.slice(0, 100) : [];
       document.getElementById("modalJsonOverlay").classList.remove("active");
       this.saveCharacterLocal(false);
       this.renderAll();
@@ -5020,8 +5093,19 @@ class PathbuilderApp {
       </div>
     `;
 
-    const sensesList = PF2E_ENGINE.getCharacterSenses ? PF2E_ENGINE.getCharacterSenses(character).join(", ") : "Visão Normal";
     const sheetLocale = ["en", "es"].includes(localStorage.getItem("pathbuilder.locale")) ? localStorage.getItem("pathbuilder.locale") : "pt-BR";
+    const sheetCopy = sheetLocale === "en"
+      ? {
+          officialSubtitle: "Official Character Sheet · Remaster", level: "LEVEL", heroPoints: "Hero Points", name: "Character Name", ancestryHeritage: "Ancestry & Heritage", background: "Background", classSubclass: "Class & Subclass", sizeSpace: "Size & Space", speed: "Speed / Movement", deity: "Deity & Philosophy", edicts: "Edicts & Principles", defaultHeritage: "Standard", defaultDeity: "Free", defaultEdicts: "Protect allies", defaultSize: "Medium (5 feet)", magic: "Magic", normalVision: "Normal Vision", melee: "Melee", damage: "Damage:", traits: "Traits:", none: "None", noWeapon: "No weapons equipped.", classDc: "Class DC", spellAttack: "Spell DC / Attack", skills: "Official Skills Table (TEML)", skill: "Skill", total: "Total", ability: "Ability", item: "Item", page: "Page", character: "Character", pageOf: "Page {page} of 4", progression: "PROGRESSION & INVENTORY", featsSkillsItems: "Feats, Class Features & Items", featTree: "🌟 Feat & Ability Tree (1–20)", inventory: "🎒 Inventory & Adventurer's Pack", itemLabel: "Item", quantity: "Qty", bulk: "Bulk", capacity: "⚖️ Bulk Capacity & Wealth", totalBulk: "Total Bulk / Limit", encumbered: "Encumbered Limit", spells: "SPELLCASTER, SPELLS & RITUALS", noSpells: "No spells recorded. Non-spellcaster or no prepared spells.", noRituals: "No rituals catalogued.", circle: "Rank {rank}", senses: "Senses", shield: "Shield", fortitude: "FORTITUDE", reflex: "REFLEX", will: "WILL", deathRisk: "Death Risk", dying: "Dying", wounded: "Wounded", doomed: "Doomed", attacks: "⚔️ Strikes & Equipped Weapons", resources: "Resources & Wealth"
+        }
+      : sheetLocale === "es"
+        ? {
+            officialSubtitle: "Hoja oficial de personaje · Remaster", level: "NIVEL", heroPoints: "Puntos de héroe", name: "Nombre del personaje", ancestryHeritage: "Ascendencia y herencia", background: "Trasfondo", classSubclass: "Clase y subclase", sizeSpace: "Tamaño y espacio", speed: "Velocidad / Movimiento", deity: "Deidad y filosofía", edicts: "Edictos y principios", defaultHeritage: "Estándar", defaultDeity: "Libre", defaultEdicts: "Proteger aliados", defaultSize: "Mediano (5 pies)", magic: "Magia", normalVision: "Visión normal", melee: "Cuerpo a cuerpo", damage: "Daño:", traits: "Rasgos:", none: "Ninguno", noWeapon: "Ningún arma equipada.", classDc: "CD de clase", spellAttack: "CD de conjuro / ataque", skills: "Tabla oficial de habilidades (TEML)", skill: "Habilidad", total: "Total", ability: "Atrib.", item: "Objeto", page: "Página", character: "Personaje", pageOf: "Página {page} de 4", progression: "PROGRESIÓN E INVENTARIO", featsSkillsItems: "Dotes, capacidades de clase y objetos", featTree: "🌟 Árbol de dotes y capacidades (1–20)", inventory: "🎒 Inventario y mochila de aventurero", itemLabel: "Objeto", quantity: "Cant.", bulk: "Volumen", capacity: "⚖️ Capacidad de volumen y riqueza", totalBulk: "Volumen total / límite", encumbered: "Límite de sobrecarga", spells: "LANZADOR, CONJUROS Y RITUALES", noSpells: "No hay conjuros registrados. No lanzador o sin conjuros preparados.", noRituals: "No hay rituales catalogados.", circle: "Rango {rank}", senses: "Sentidos", shield: "Escudo", fortitude: "FORTALEZA", reflex: "REFLEJOS", will: "VOLUNTAD", deathRisk: "Riesgo de muerte", dying: "Morribundo", wounded: "Herido", doomed: "Condenado", attacks: "⚔️ Golpes y armas equipadas", resources: "Recursos y riqueza"
+          }
+        : {
+            officialSubtitle: "Ficha Oficial de Personagem · Remaster", level: "NÍVEL", heroPoints: "Pontos de Heroísmo", name: "Nome do Personagem", ancestryHeritage: "Ancestralidade & Herança", background: "Antecedente", classSubclass: "Classe & Subclasse", sizeSpace: "Tamanho & Espaço", speed: "Velocidade / Deslocamento", deity: "Divindade & Filosofia", edicts: "Éditos & Princípios", defaultHeritage: "Padrão", defaultDeity: "Livre", defaultEdicts: "Proteger aliados", defaultSize: "Médio (5 pés)", magic: "Magia", normalVision: "Visão Normal", melee: "Corpo a Corpo", damage: "Dano:", traits: "Traços:", none: "Nenhum", noWeapon: "Nenhuma arma equipada.", classDc: "CD de Classe", spellAttack: "CD de Magia / Ataque", skills: "Tabela de Perícias Oficiais (TEML)", skill: "Perícia", total: "Total", ability: "Atr", item: "Item", page: "Página", character: "Personagem", pageOf: "Página {page} de 4", progression: "PROGRESSÃO & INVENTÁRIO", featsSkillsItems: "Talentos, Habilidades de Classe & Itens", featTree: "🌟 Árvore de Talentos & Habilidades (1–20)", inventory: "🎒 Inventário & Mochila de Aventureiro", itemLabel: "Item", quantity: "Qtd", bulk: "Carga", capacity: "⚖️ Capacidade de Carga & Riqueza", totalBulk: "Carga Total / Limite", encumbered: "Limite de Sobrecarga", spells: "CONJURADOR, MAGIAS & RITUAIS", noSpells: "Nenhuma magia registrada. Conjurador não-mágico ou sem magias preparadas.", noRituals: "Nenhum ritual catalogado.", circle: "{rank}º Círculo", senses: "Sentidos", shield: "Escudo", fortitude: "FORTITUDE", reflex: "REFLEXOS", will: "VONTADE", deathRisk: "Risco de Morte", dying: "Morrendo", wounded: "Ferido", doomed: "Condenado", attacks: "⚔️ Golpes & Armas Equipadas", resources: "Recursos & Riqueza"
+          };
+    const sensesList = PF2E_ENGINE.getCharacterSenses ? PF2E_ENGINE.getCharacterSenses(character).join(", ") : sheetCopy.normalVision;
     const sheetCoinLabels = sheetLocale === "en"
       ? { title: "Coins & Wealth", pp: "PP", gp: "GP", sp: "SP", cp: "CP" }
       : sheetLocale === "es"
@@ -5057,11 +5141,11 @@ class PathbuilderApp {
     const p1StrikesHtml = calc.strikes.map(st => `
       <div class="sheet-strike-box">
         <div class="sheet-strike-top">
-          <span>⚔️ ${esc(st.name)} <small style="font-size:6pt; color:#64748b;">(${esc(st.category || 'Corpo a Corpo')})</small></span>
+          <span>⚔️ ${esc(st.name)} <small style="font-size:6pt; color:#64748b;">(${esc(st.category || sheetCopy.melee)})</small></span>
           <span>${esc(PF2E_ENGINE.formatMod(st.map[0]))} / ${esc(PF2E_ENGINE.formatMod(st.map[1]))} / ${esc(PF2E_ENGINE.formatMod(st.map[2]))}</span>
         </div>
         <div class="sheet-strike-meta">
-          <strong>Dano:</strong> ${esc(st.damageFormatted)} | <strong>Traços:</strong> ${esc((st.traits || []).join(", ") || "Nenhum")}
+          <strong>${sheetCopy.damage}</strong> ${esc(st.damageFormatted)} | <strong>${sheetCopy.traits}</strong> ${esc((st.traits || []).join(", ") || sheetCopy.none)}
         </div>
       </div>
     `).join("");
@@ -5099,7 +5183,7 @@ class PathbuilderApp {
       const rank = idx + 1;
       return `
         <div class="sheet-slot-box">
-          <div style="font-size:6pt; font-weight:bold; color:#0f172a;">${rank}º Círculo</div>
+          <div style="font-size:6pt; font-weight:bold; color:#0f172a;">${sheetCopy.circle.replace("{rank}", rank)}</div>
           <div style="font-size:7pt; color:#475569; letter-spacing:2px; margin-top:2px;">□ □ □ □</div>
         </div>
       `;
@@ -5108,16 +5192,16 @@ class PathbuilderApp {
     const spellsListHtml = (character.spells || []).map(sp => `
       <div class="sheet-list-item" style="display:grid; grid-template-columns: 1fr 45px 50px; gap:4px;">
         <span title="${esc(sheetRecordMeta(sp))}"><strong>✨ ${esc(sp.names?.[sheetLocale] || sp.name)}</strong><small style="display:block; color:#64748b; font-size:4.5pt;">${esc(sheetRecordMeta(sp))}</small></span>
-        <span style="text-align:center;">${esc(sp.rank ?? sp.level ?? 1)}º Círculo</span>
+        <span style="text-align:center;">${sheetCopy.circle.replace("{rank}", esc(sp.rank ?? sp.level ?? 1))}</span>
         <span style="text-align:right; color:#64748b;">${esc(sp.castingTimes?.[sheetLocale] || sp.actions || '◆◆')}</span>
       </div>
-    `).join("") || `<div class="sheet-list-item" style="color:#94a3b8; font-style:italic;">Nenhuma magia registrada. Conjurador não-mágico ou sem magias preparadas.</div>`;
+    `).join("") || `<div class="sheet-list-item" style="color:#94a3b8; font-style:italic;">${sheetCopy.noSpells}</div>`;
 
     const ritualsListHtml = (character.rituals || []).map(rit => `
       <div class="sheet-list-item" title="${esc(sheetRecordMeta(rit))}">
-        <strong>◈ ${esc(rit.names?.[sheetLocale] || rit.name)}</strong> · ${esc(rit.rank ?? 1)}º Círculo (${esc(rit.castingTimes?.[sheetLocale] || '1 dia')})<small style="display:block; color:#64748b; font-size:4.5pt;">${esc(sheetRecordMeta(rit))}</small>
+        <strong>◈ ${esc(rit.names?.[sheetLocale] || rit.name)}</strong> · ${sheetCopy.circle.replace("{rank}", esc(rit.rank ?? 1))} (${esc(rit.castingTimes?.[sheetLocale] || (sheetLocale === "en" ? "1 day" : sheetLocale === "es" ? "1 día" : "1 dia"))})<small style="display:block; color:#64748b; font-size:4.5pt;">${esc(sheetRecordMeta(rit))}</small>
       </div>
-    `).join("") || `<div class="sheet-list-item" style="color:#94a3b8; font-style:italic;">Nenhum ritual catalogado.</div>`;
+    `).join("") || `<div class="sheet-list-item" style="color:#94a3b8; font-style:italic;">${sheetCopy.noRituals}</div>`;
 
     area.innerHTML = `
       <!-- PÁGINA 1: COMBATE, ATRIBUTOS, DEFESAS E PERÍCIAS -->
@@ -5125,23 +5209,23 @@ class PathbuilderApp {
         <header class="sheet-official-header">
           <div class="sheet-logo-block">
             <span class="sheet-logo-title">PATHFINDER</span>
-            <span class="sheet-logo-subtitle">Ficha Oficial de Personagem · Remaster</span>
+            <span class="sheet-logo-subtitle">${sheetCopy.officialSubtitle}</span>
           </div>
           <div style="text-align:right;">
-            <span style="font-size:11pt; font-weight:900; color:#0f172a;">NÍVEL ${character.level}</span>
-            <div style="font-size:6pt; color:#64748b;">Pontos de Heroísmo: ◇ ◇ ◇</div>
+            <span style="font-size:11pt; font-weight:900; color:#0f172a;">${sheetCopy.level} ${character.level}</span>
+            <div style="font-size:6pt; color:#64748b;">${sheetCopy.heroPoints}: ◇ ◇ ◇</div>
           </div>
         </header>
 
         <div class="sheet-header-grid">
-          ${cell("Nome do Personagem", character.name)}
-          ${cell("Ancestralidade & Herança", `${character.ancestry} (${character.heritage || 'Padrão'})`)}
-          ${cell("Antecedente (Background)", character.background)}
-          ${cell("Classe & Subclasse", `${character.class} (${character.subclass || 'Padrão'})`)}
-          ${cell("Tamanho & Espaço", calc.size || 'Médio (5 pés)')}
-          ${cell("Velocidade / Deslocamento", this.formatMovementSpeeds(calc))}
-          ${cell("Divindade & Filosofia", character.deity || 'Livre')}
-          ${cell("Éditos & Princípios", character.edicts || 'Proteger aliados')}
+          ${cell(sheetCopy.name, character.name)}
+          ${cell(sheetCopy.ancestryHeritage, `${character.ancestry} (${character.heritage || sheetCopy.defaultHeritage})`)}
+          ${cell(sheetCopy.background, character.background)}
+          ${cell(sheetCopy.classSubclass, `${character.class} (${character.subclass || sheetCopy.defaultHeritage})`)}
+          ${cell(sheetCopy.sizeSpace, calc.size || sheetCopy.defaultSize)}
+          ${cell(sheetCopy.speed, this.formatMovementSpeeds(calc))}
+          ${cell(sheetCopy.deity, character.deity || sheetCopy.defaultDeity)}
+          ${cell(sheetCopy.edicts, character.edicts || sheetCopy.defaultEdicts)}
         </div>
 
         <div class="sheet-abilities-bar">
@@ -5180,68 +5264,68 @@ class PathbuilderApp {
         <div class="sheet-main-layout">
           <!-- COLUNA ESQUERDA: Defesas, PV, Escudo, Golpes -->
           <div>
-            <div class="sheet-box-title">🛡️ Classe de Armadura & Defesas</div>
+            <div class="sheet-box-title">🛡️ ${sheetLocale === "en" ? "Armor Class & Defenses" : sheetLocale === "es" ? "Clase de armadura y defensas" : "Classe de Armadura & Defesas"}</div>
             <div class="sheet-defense-row">
               <div class="sheet-big-badge">
                 <div class="sheet-badge-val">${calc.ac.total}</div>
-                <div class="sheet-badge-sub">CLASSE DE ARMADURA</div>
+              <div class="sheet-badge-sub">${sheetLocale === "en" ? "ARMOR CLASS" : sheetLocale === "es" ? "CLASE DE ARMADURA" : "CLASSE DE ARMADURA"}</div>
               </div>
               <div class="sheet-big-badge">
                 <div class="sheet-badge-val">${calc.currentHp} / ${calc.maxHp}</div>
-                <div class="sheet-badge-sub">PONTOS DE VIDA</div>
+              <div class="sheet-badge-sub">${sheetLocale === "en" ? "HIT POINTS" : sheetLocale === "es" ? "PUNTOS DE GOLPE" : "PONTOS DE VIDA"}</div>
               </div>
               <div class="sheet-big-badge">
                 <div class="sheet-badge-val">${PF2E_ENGINE.formatMod(calc.perception.total)}</div>
-                <div class="sheet-badge-sub">PERCEPÇÃO (${temlDots(calc.perception.rank)})</div>
+              <div class="sheet-badge-sub">${sheetLocale === "en" ? "PERCEPTION" : sheetLocale === "es" ? "PERCEPCIÓN" : "PERCEPÇÃO"} (${temlDots(calc.perception.rank)})</div>
               </div>
             </div>
 
             <div style="font-size:6pt; margin-bottom:4px; display:flex; justify-content:space-between; background:#f8fafc; border:1px solid #cbd5e1; padding:2px 4px; border-radius:2px;">
-              <span><strong>Sentidos:</strong> ${esc(sensesList)}</span>
-              <span><strong>Escudo:</strong> Dureza 5 | PV 20/20 | BT 10</span>
+              <span><strong>${sheetCopy.senses}:</strong> ${esc(sensesList)}</span>
+              <span><strong>${sheetCopy.shield}:</strong> Hardness 5 | ${sheetLocale === "en" ? "HP" : sheetLocale === "es" ? "PG" : "PV"} 20/20 | ${sheetLocale === "en" ? "BT" : "LM"} 10</span>
             </div>
 
-            <div class="sheet-box-title">❤️ Salvaguardas & Condições</div>
+            <div class="sheet-box-title">❤️ ${sheetLocale === "en" ? "Saves & Conditions" : sheetLocale === "es" ? "Salvaciones y condiciones" : "Salvaguardas & Condições"}</div>
             <div class="sheet-defense-row">
               <div class="sheet-cell" style="text-align:center;">
-                <span class="sheet-cell-label">FORTITUDE (${temlDots(calc.saves.fortitude.rank)})</span>
+                <span class="sheet-cell-label">${sheetCopy.fortitude} (${temlDots(calc.saves.fortitude.rank)})</span>
                 <span style="font-size:11pt; font-weight:900;">${PF2E_ENGINE.formatMod(calc.saves.fortitude.total)}</span>
               </div>
               <div class="sheet-cell" style="text-align:center;">
-                <span class="sheet-cell-label">REFLEXOS (${temlDots(calc.saves.reflex.rank)})</span>
+                <span class="sheet-cell-label">${sheetCopy.reflex} (${temlDots(calc.saves.reflex.rank)})</span>
                 <span style="font-size:11pt; font-weight:900;">${PF2E_ENGINE.formatMod(calc.saves.reflex.total)}</span>
               </div>
               <div class="sheet-cell" style="text-align:center;">
-                <span class="sheet-cell-label">VONTADE (${temlDots(calc.saves.will.rank)})</span>
+                <span class="sheet-cell-label">${sheetCopy.will} (${temlDots(calc.saves.will.rank)})</span>
                 <span style="font-size:11pt; font-weight:900;">${PF2E_ENGINE.formatMod(calc.saves.will.total)}</span>
               </div>
             </div>
 
             <div style="font-size:6pt; background:#f8fafc; border:1px solid #cbd5e1; padding:2px 4px; border-radius:2px; margin-bottom:4px;">
-              <strong>Risco de Morte:</strong> Morrendo [ 1 ] [ 2 ] [ 3 ] [ 4 ] · Ferido [ 1 ] [ 2 ] [ 3 ] · Condenado [ 1 ] [ 2 ] [ 3 ]
+              <strong>${sheetCopy.deathRisk}:</strong> ${sheetCopy.dying} [ 1 ] [ 2 ] [ 3 ] [ 4 ] · ${sheetCopy.wounded} [ 1 ] [ 2 ] [ 3 ] · ${sheetCopy.doomed} [ 1 ] [ 2 ] [ 3 ]
             </div>
 
-            <div class="sheet-box-title">⚔️ Golpes & Armas Equipadas</div>
-            ${p1StrikesHtml || '<div style="font-size:6pt; color:#94a3b8; font-style:italic;">Nenhuma arma equipada.</div>'}
+            <div class="sheet-box-title">${sheetCopy.attacks}</div>
+            ${p1StrikesHtml || `<div style="font-size:6pt; color:#94a3b8; font-style:italic;">${sheetCopy.noWeapon}</div>`}
 
-            <div class="sheet-box-title" style="margin-top:4px;">🎯 CD de Classe & Magia</div>
+            <div class="sheet-box-title" style="margin-top:4px;">🎯 ${sheetCopy.classDc} & ${sheetCopy.magic}</div>
             <div style="display:grid; grid-template-columns: 1fr 1fr; gap:4px;">
-              ${cell("CD de Classe", `${calc.classDc} (Base 10 + Nível + Prof)`)}
-              ${cell("CD de Magia / Ataque", `${calc.classDc} / +${calc.level + 4}`)}
+              ${cell(sheetCopy.classDc, `${calc.classDc} (Base 10 + ${sheetCopy.level} + Prof)`)}
+              ${cell(sheetCopy.spellAttack, `${calc.classDc} / +${calc.level + 4}`)}
             </div>
           </div>
 
           <!-- COLUNA DIREITA: Tabela de Perícias Oficiais (16 Perícias + Saberes) -->
           <div>
-            <div class="sheet-box-title">📜 Tabela de Perícias Oficiais (TEML)</div>
+            <div class="sheet-box-title">📜 ${sheetCopy.skills}</div>
             <table class="sheet-skills-table">
               <thead>
                 <tr>
-                  <th>Perícia</th>
+                  <th>${sheetCopy.skill}</th>
                   <th style="text-align:center;">TEML</th>
-                  <th style="text-align:center;">Total</th>
-                  <th style="text-align:center;">Atr</th>
-                  <th style="text-align:center;">Item</th>
+                  <th style="text-align:center;">${sheetCopy.total}</th>
+                  <th style="text-align:center;">${sheetCopy.ability}</th>
+                  <th style="text-align:center;">${sheetCopy.item}</th>
                 </tr>
               </thead>
               <tbody>
@@ -5252,8 +5336,8 @@ class PathbuilderApp {
         </div>
 
         <footer class="sheet-page-footer">
-          <span>Pathfinder 2e Remaster · Página 1 de 4</span>
-          <span>Personagem: ${esc(character.name)}</span>
+          <span>Pathfinder 2e Remaster · ${sheetCopy.pageOf.replace("{page}", "1")}</span>
+          <span>${sheetCopy.character}: ${esc(character.name)}</span>
         </footer>
       </div>
 
@@ -5261,33 +5345,33 @@ class PathbuilderApp {
       <div class="sheet-page">
         <header class="sheet-official-header">
           <div class="sheet-logo-block">
-            <span class="sheet-logo-title">PROGRESSÃO & INVENTÁRIO</span>
-            <span class="sheet-logo-subtitle">Talentos, Habilidades de Classe & Itens</span>
+            <span class="sheet-logo-title">${sheetCopy.progression}</span>
+            <span class="sheet-logo-subtitle">${sheetCopy.featsSkillsItems}</span>
           </div>
-          <div style="font-size:8pt; font-weight:bold; color:#0f172a;">${esc(character.name)} · Nível ${character.level}</div>
+          <div style="font-size:8pt; font-weight:bold; color:#0f172a;">${esc(character.name)} · ${sheetCopy.level} ${character.level}</div>
         </header>
 
         <div class="sheet-grid-2col">
           <!-- Talentos e Progressão -->
           <div>
-            <div class="sheet-box-title">🌟 Árvore de Talentos & Habilidades (1–20)</div>
+            <div class="sheet-box-title">${sheetCopy.featTree}</div>
             ${featProgressionRows}
           </div>
 
           <!-- Inventário e Carga -->
           <div>
-            <div class="sheet-box-title">🎒 Inventário & Mochila de Aventureiro</div>
+            <div class="sheet-box-title">${sheetCopy.inventory}</div>
             <div style="border-bottom:1px solid #0f172a; padding-bottom:2px; margin-bottom:4px; display:grid; grid-template-columns: 1fr 30px 30px; font-weight:bold; font-size:6pt;">
-              <span>Item</span>
-              <span style="text-align:center;">Qtd</span>
-              <span style="text-align:center;">Carga</span>
+              <span>${sheetCopy.itemLabel}</span>
+              <span style="text-align:center;">${sheetCopy.quantity}</span>
+              <span style="text-align:center;">${sheetCopy.bulk}</span>
             </div>
             ${inventoryRows}
 
-            <div class="sheet-box-title" style="margin-top:8px;">⚖️ Capacidade de Carga & Riqueza</div>
+            <div class="sheet-box-title" style="margin-top:8px;">${sheetCopy.capacity}</div>
             <div style="display:grid; grid-template-columns: 1fr 1fr; gap:4px; margin-bottom:6px;">
-              ${cell("Carga Total / Limite", `${calc.bulk.current} / ${calc.bulk.max} Bulk`)}
-              ${cell("Limite de Sobrecarga", `${calc.bulk.encumbered} Bulk`)}
+              ${cell(sheetCopy.totalBulk, `${calc.bulk.current} / ${calc.bulk.max} ${sheetCopy.bulk}`)}
+              ${cell(sheetCopy.encumbered, `${calc.bulk.encumbered} ${sheetCopy.bulk}`)}
             </div>
 
             <div class="sheet-box-title">💰 ${sheetCoinLabels.title}</div>
@@ -5301,8 +5385,8 @@ class PathbuilderApp {
         </div>
 
         <footer class="sheet-page-footer">
-          <span>Pathfinder 2e Remaster · Página 2 de 4</span>
-          <span>Personagem: ${esc(character.name)}</span>
+          <span>Pathfinder 2e Remaster · ${sheetCopy.pageOf.replace("{page}", "2")}</span>
+          <span>${sheetCopy.character}: ${esc(character.name)}</span>
         </footer>
       </div>
 
@@ -5349,8 +5433,8 @@ class PathbuilderApp {
         </div>
 
         <footer class="sheet-page-footer">
-          <span>Pathfinder 2e Remaster · Página 3 de 4</span>
-          <span>Personagem: ${esc(character.name)}</span>
+          <span>Pathfinder 2e Remaster · ${sheetCopy.pageOf.replace("{page}", "3")}</span>
+          <span>${sheetCopy.character}: ${esc(character.name)}</span>
         </footer>
       </div>
 
@@ -5394,8 +5478,8 @@ class PathbuilderApp {
         </div>
 
         <footer class="sheet-page-footer">
-          <span>Pathfinder 2e Remaster · Página 4 de 4</span>
-          <span>Personagem: ${esc(character.name)}</span>
+          <span>Pathfinder 2e Remaster · ${sheetCopy.pageOf.replace("{page}", "4")}</span>
+          <span>${sheetCopy.character}: ${esc(character.name)}</span>
         </footer>
       </div>
     `;
@@ -5572,6 +5656,7 @@ class PathbuilderApp {
     if (!this.lastAIGeneratedChar) return;
     try {
       this.character = assertSafeCharacterDocument(this.lastAIGeneratedChar);
+      this.diceHistory = Array.isArray(this.character.diceHistory) ? this.character.diceHistory.slice(0, 100) : [];
       this.saveCharacterLocal();
       this.renderAll();
       this.closeAIAssistantModal();
@@ -5592,12 +5677,33 @@ class PathbuilderApp {
 
   renderReadinessModal() {
     const readiness = this.calc?.readiness || (typeof PF2E_ENGINE !== "undefined" && PF2E_ENGINE.validateCharacterReadiness ? PF2E_ENGINE.validateCharacterReadiness(this.character) : { score: 100, isReady: true, issues: [] });
+    const locale = this.getLocale();
+    const copy = locale === "en"
+      ? { ready: "Ready to Play", incomplete: "Incomplete", excellent: "Excellent!", excellentBody: "All required level 1 choices (Ancestry, Background, Class, Abilities, and Skills) are complete. Your sheet is ready to play!", resolve: "Resolve ➔", close: "Close" }
+      : locale === "es"
+        ? { ready: "Listo para jugar", incomplete: "Incompleto", excellent: "¡Excelente!", excellentBody: "Todas las elecciones obligatorias de nivel 1 (Ascendencia, Trasfondo, Clase, Atributos y Habilidades) están completas. ¡Tu ficha está lista para jugar!", resolve: "Resolver ➔", close: "Cerrar" }
+        : { ready: "Pronto para Jogar", incomplete: "Incompleto", excellent: "Excelente!", excellentBody: "Todas as escolhas obrigatórias de nível 1 (Ancestralidade, Biografia, Classe, Atributos e Perícias) foram preenchidas. Sua ficha está pronta para jogar!", resolve: "Resolver ➔", close: "Fechar" };
+    const localizedIssue = (issue) => {
+      const messages = {
+        en: { ancestry: "Ancestry not selected", background: "Background not selected", class: "Class not selected", subclass: "Class specialization / subclass is pending", abilities: "Abilities are incomplete or unset", weapons: "No weapon added to the character", deity: "Required deity has not been selected" },
+        es: { ancestry: "No se ha seleccionado la ascendencia", background: "No se ha seleccionado el trasfondo", class: "No se ha seleccionado la clase", subclass: "La especialización / subclase está pendiente", abilities: "Los atributos están incompletos o sin definir", weapons: "No se ha añadido ningún arma al personaje", deity: "No se ha seleccionado la deidad obligatoria" },
+        "pt-BR": { ancestry: "Ancestralidade não selecionada", background: "Biografia não selecionada", class: "Classe não selecionada", subclass: "Especialização / subclasse pendente", abilities: "Atributos incompletos ou não definidos", weapons: "Nenhuma arma adicionada ao personagem", deity: "Divindade obrigatória não escolhida" }
+      };
+      if (issue.id === "skills") {
+        const count = String(issue.message || "").match(/\(([^)]+)\)/)?.[1] || "";
+        return locale === "en" ? `Trained skills (${count}) are below the allowed total` : locale === "es" ? `Habilidades entrenadas (${count}) están por debajo del total permitido` : `Perícias treinadas (${count}) abaixo do total permitido`;
+      }
+      return messages[locale]?.[issue.id] || issue.message;
+    };
     const scoreEl = document.getElementById("readinessModalScore");
     const barEl = document.getElementById("readinessProgressBar");
     const listEl = document.getElementById("readinessIssuesList");
+    const closeEl = document.getElementById("readinessModalClose");
+
+    if (closeEl) closeEl.innerText = copy.close;
 
     if (scoreEl) {
-      scoreEl.innerText = `${readiness.score}% ${readiness.isReady ? "Pronto para Jogar" : "Incompleto"}`;
+      scoreEl.innerText = `${readiness.score}% ${readiness.isReady ? copy.ready : copy.incomplete}`;
       scoreEl.style.color = readiness.isReady ? "#22c55e" : "#f97316";
     }
     if (barEl) {
@@ -5609,7 +5715,7 @@ class PathbuilderApp {
     if (!readiness.issues || readiness.issues.length === 0) {
       listEl.innerHTML = `
         <div style="background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 8px; padding: 14px; text-align: center; color: #86efac; font-size: 13px;">
-          ✅ <strong>Excelente!</strong> Todas as escolhas obrigatórias de nível 1 foram preenchidas (Ancestralidade, Biografia, Classe, Atributos e Perícias). Sua ficha está pronta para jogar!
+          ✅ <strong>${copy.excellent}</strong> ${copy.excellentBody}
         </div>
       `;
       return;
@@ -5627,10 +5733,10 @@ class PathbuilderApp {
         <div style="background: ${bgColor}; border: 1px solid ${borderColor}; border-radius: 8px; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center; gap: 10px;">
           <div style="display: flex; align-items: center; gap: 8px;">
             <span>${icon}</span>
-            <span style="font-size: 12px; color: ${textColor}; font-weight: 600;">${escapeHtml(iss.message)}</span>
+            <span style="font-size: 12px; color: ${textColor}; font-weight: 600;">${escapeHtml(localizedIssue(iss))}</span>
           </div>
           <button type="button" onclick="app.resolveReadinessIssue('${iss.id}', '${iss.tab}', '${iss.targetId}')" style="background: #1e293b; border: 1px solid #3b82f6; color: #93c5fd; padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: bold; cursor: pointer; white-space: nowrap;">
-            Resolver ➔
+            ${copy.resolve}
           </button>
         </div>
       `;
@@ -5756,6 +5862,39 @@ class PathbuilderApp {
     const chkFree = document.getElementById("chkFreeArchetype");
     const chkAbp = document.getElementById("chkABP");
     const chkParagon = document.getElementById("chkAncestryParagon");
+    const locale = this.getLocale();
+    const copy = locale === "en"
+      ? {
+          intro: "Enable official Game Master variant rules to customize your character and table progression:",
+          freeTitle: "⚔️ Free Archetype", freeDescription: "Grant an extra archetype feat at every even level (2, 4, 6, 8, 10, etc.) without spending class feats.",
+          abpTitle: "✨ Automatic Bonus Progression (ABP)", abpDescription: "Automatically increase attack, save resilience, and skill bonuses by level without fundamental runes.",
+          paragonTitle: "🧬 Ancestry Paragon", paragonDescription: "Grant extra ancestry feats at levels 1, 3, 7, 11, 15, and 19 to deepen the character's cultural roots.",
+          close: "Save and Close"
+        }
+      : locale === "es"
+        ? {
+            intro: "Activa las reglas variantes oficiales del Director de Juego para personalizar la progresión de tu personaje y mesa:",
+            freeTitle: "⚔️ Arquetipo Libre", freeDescription: "Concede un dote de arquetipo adicional en cada nivel par (2, 4, 6, 8, 10, etc.) sin gastar dotes de clase.",
+            abpTitle: "✨ Progresión Automática de Bonos (ABP)", abpDescription: "Aumenta automáticamente los bonos de ataque, salvaciones y habilidades según el nivel, sin runas fundamentales.",
+            paragonTitle: "🧬 Parangón de Ascendencia", paragonDescription: "Concede dotes de ascendencia adicionales en los niveles 1, 3, 7, 11, 15 y 19 para profundizar las raíces culturales del personaje.",
+            close: "Guardar y cerrar"
+          }
+        : {
+            intro: "Ative regras variantes oficiais do Guia do Mestre para customizar a progressão do seu personagem e da sua mesa de jogo:",
+            freeTitle: "⚔️ Arquétipo Livre", freeDescription: "Concede um talento de arquétipo extra em todos os níveis pares (2, 4, 6, 8, 10, etc.) sem gastar talentos de classe.",
+            abpTitle: "✨ Progressão Automática de Bônus (ABP)", abpDescription: "Aumenta automaticamente bônus de ataque, salvaguardas e perícias com base no nível, sem necessidade de runas fundamentais.",
+            paragonTitle: "🧬 Ancestralidade Exemplar", paragonDescription: "Concede talentos ancestrais extras nos níveis 1, 3, 7, 11, 15 e 19 para aprofundar as raízes culturais do personagem.",
+            close: "Salvar e Fechar"
+          };
+    const setText = (id, value) => { const element = document.getElementById(id); if (element) element.textContent = value; };
+    setText("variantRulesIntro", copy.intro);
+    setText("variantFreeTitle", copy.freeTitle);
+    setText("variantFreeDescription", copy.freeDescription);
+    setText("variantAbpTitle", copy.abpTitle);
+    setText("variantAbpDescription", copy.abpDescription);
+    setText("variantParagonTitle", copy.paragonTitle);
+    setText("variantParagonDescription", copy.paragonDescription);
+    setText("variantRulesClose", copy.close);
 
     if (chkFree) chkFree.checked = Boolean(this.character.variantRules.freeArchetype);
     if (chkAbp) chkAbp.checked = Boolean(this.character.variantRules.automaticBonusProgression);

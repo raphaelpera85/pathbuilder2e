@@ -1,6 +1,7 @@
 import { isSupabaseConfigured, supabase } from "../lib/supabase";
 import { getCurrentSession, type UserProfile } from "./auth";
 import { listCharactersSharedWithGM, type CloudCharacter } from "./characters";
+import { withRequestTimeout } from "./requestTimeout";
 
 export interface CampaignSession {
   id: string;
@@ -62,6 +63,15 @@ function saveLocalCampaigns(gmId: string, items: Campaign[]): void {
   }
 }
 
+function mergeCampaignLists(remote: Campaign[], local: Campaign[]): Campaign[] {
+  const merged = new Map<string, Campaign>();
+  for (const campaign of remote) merged.set(campaign.id, campaign);
+  for (const campaign of local) if (!merged.has(campaign.id)) merged.set(campaign.id, campaign);
+  return Array.from(merged.values()).sort((a, b) =>
+    new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime(),
+  );
+}
+
 export async function listCampaigns(currentUser?: UserProfile): Promise<Campaign[]> {
   const activeUser = currentUser || (await getCurrentSession())?.user;
   if (!activeUser) {
@@ -70,19 +80,18 @@ export async function listCampaigns(currentUser?: UserProfile): Promise<Campaign
 
   if (isSupabaseConfigured && supabase) {
     try {
-      const { data, error } = await supabase
+      const { data, error } = await withRequestTimeout(supabase
         .from("campaigns")
         .select("*")
         .eq("gm_id", activeUser.id)
-        .order("updated_at", { ascending: false });
-      if (!error && data) return data as Campaign[];
+        .order("updated_at", { ascending: false }), 8_000, "As campanhas demoraram para responder. Exibindo os dados disponíveis neste dispositivo.");
+      if (!error && data) return mergeCampaignLists(data as Campaign[], getLocalCampaigns(activeUser.id));
     } catch (err) {
       console.warn("Falha ao buscar campanhas no Supabase, usando armazenamento local:", err);
     }
   }
 
-  const items = getLocalCampaigns(activeUser.id);
-  return items.sort((a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime());
+  return mergeCampaignLists([], getLocalCampaigns(activeUser.id));
 }
 
 export async function getCampaign(campaignId: string, currentUser?: UserProfile): Promise<Campaign | null> {
@@ -119,11 +128,11 @@ export async function saveCampaign(
 
   if (isSupabaseConfigured && supabase) {
     try {
-      const { data: result, error } = await supabase
+      const { data: result, error } = await withRequestTimeout(supabase
         .from("campaigns")
         .upsert(campaignRecord, { onConflict: "id" })
         .select()
-        .single();
+        .single(), 8_000, "O salvamento da campanha demorou para responder. A campanha será mantida neste dispositivo.");
       if (!error && result) return result as Campaign;
     } catch (err) {
       console.warn("Falha ao salvar no Supabase, usando armazenamento local:", err);
@@ -150,7 +159,11 @@ export async function deleteCampaign(campaignId: string, currentUser?: UserProfi
 
   if (isSupabaseConfigured && supabase) {
     try {
-      await supabase.from("campaigns").delete().eq("id", campaignId).eq("gm_id", activeUser.id);
+      await withRequestTimeout(
+        supabase.from("campaigns").delete().eq("id", campaignId).eq("gm_id", activeUser.id),
+        8_000,
+        "A exclusão da campanha demorou para responder. A campanha será removida deste dispositivo.",
+      );
     } catch (err) {
       console.warn("Erro ao deletar no Supabase:", err);
     }

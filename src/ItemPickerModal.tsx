@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState, useCallback, useRef } from "react";
 import { PF2E_ITEMS_CATALOG, type ItemDefinition } from "./data/equipmentData";
 import { useI18n, getItemDisplayName, type Locale } from "./i18n";
-import { canAffordPrice, deductCoins as deductPurseCoins, coinsToCopper } from "./utils/economy";
+import { canAffordPrice, deductCoins as deductPurseCoins, coinsToCopper, parsePriceToCopper, formatPriceToLocale } from "./utils/economy";
 import "./itemPicker.css";
 
 interface ItemPickerState {
@@ -15,8 +15,9 @@ const itemPickerCopy: Record<Locale, Record<string, string>> = {
   es: { gear: "🎒 Equipo", consumables: "🧪 Consumibles", magicItems: "🔮 Objetos Mágicos", all: "📦 Todos", custom: "⚙️ Personalizado", close: "Cerrar", allSub: "Todos", adventuring: "Aventura", ammunition: "Munición", toolkits: "Herramientas", potions: "Pociones", elixirs: "Elixires", scrolls: "Pergaminos", bombs: "Bombas alquímicas", worn: "Vestibles", wands: "Varitas", runes: "Piedras rúnicas", search: "Buscar objeto...", none: "No se encontró ningún objeto en esta categoría.", select: "Selecciona un objeto para ver sus detalles.", customTitle: "Crear objeto personalizado / casero", requiredName: "Nombre del objeto *", bulk: "Carga (Bulk)", quantity: "Cantidad", estimatedPrice: "Precio estimado", description: "Descripción / Efectos especiales", addInventory: "➕ Añadir al inventario", free: "Añadir gratis", buy: "🛒 Comprar (deducir monedas)", wallet: "Bolsa de monedas:", addQuantity: "Cantidad a añadir:", price: "Precio", hands: "Manos", incompatible: "Este objeto no es compatible con el personaje actual.", insufficientFunds: "No tienes monedas suficientes para comprar este objeto.", namePlaceholder: "Ej.: Amuleto ancestral", bulkPlaceholder: "1, 2, L o -", pricePlaceholder: "Ej.: 25 PO, 5 PP", descriptionPlaceholder: "Notas sobre propiedades mágicas, historia o bonificadores...", rulesetRemaster: "Remaster", rulesetLegacy: "Legado", rulesetReview: "Revisión pendiente", sourceSection: "Referencia de sección" }
 };
 
-export function formatItemPrice(price: ItemDefinition["price"] | undefined, locale: Locale): string {
+export function formatItemPrice(price: ItemDefinition["price"] | string | number | undefined, locale: Locale): string {
   if (!price) return "—";
+  if (typeof price !== "object") return formatPriceToLocale(price, locale);
   const labels: Record<Locale, { pp: string; gp: string; sp: string; cp: string; zero: string }> = {
     "pt-BR": { pp: "PL", gp: "PO", sp: "PP", cp: "PC", zero: "PO" },
     en: { pp: "PP", gp: "GP", sp: "SP", cp: "CP", zero: "GP" },
@@ -24,11 +25,35 @@ export function formatItemPrice(price: ItemDefinition["price"] | undefined, loca
   };
   const label = labels[locale];
   const parts = [];
-  if (price.pp) parts.push(`${price.pp} ${label.pp}`);
+  const structuredPrice = price as ItemDefinition["price"] & { pl?: number };
+  if (structuredPrice.pp || structuredPrice.pl) parts.push(`${structuredPrice.pp ?? structuredPrice.pl} ${label.pp}`);
   if (price.gp) parts.push(`${price.gp} ${label.gp}`);
   if (price.sp) parts.push(`${price.sp} ${label.sp}`);
   if (price.cp) parts.push(`${price.cp} ${label.cp}`);
   return parts.join(" ") || `0 ${label.zero}`;
+}
+
+function formatItemCategory(mainCategory: string, subCategory: string, locale: Locale): string {
+  const labels: Record<Locale, Record<string, string>> = {
+    "pt-BR": {
+      gear: "Equipamentos", consumables: "Consumíveis", magic_items: "Itens Mágicos",
+      adventuring: "Aventura", ammunition: "Munição", toolkits: "Ferramentas", potions: "Poções",
+      elixirs: "Elixires", bombs: "Bombas Alquímicas", scrolls: "Pergaminhos", worn: "Vestíveis",
+      wands: "Varinhas", runes: "Pedras Rúnicas", guns_gears: "Pólvora e Engrenagens"
+    },
+    en: {
+      gear: "Gear", consumables: "Consumables", magic_items: "Magic Items", adventuring: "Adventuring",
+      ammunition: "Ammunition", toolkits: "Tools", potions: "Potions", elixirs: "Elixirs", bombs: "Alchemical Bombs",
+      scrolls: "Scrolls", worn: "Worn", wands: "Wands", runes: "Runestones", guns_gears: "Guns & Gears"
+    },
+    es: {
+      gear: "Equipo", consumables: "Consumibles", magic_items: "Objetos Mágicos", adventuring: "Aventura",
+      ammunition: "Munición", toolkits: "Herramientas", potions: "Pociones", elixirs: "Elixires", bombs: "Bombas alquímicas",
+      scrolls: "Pergaminos", worn: "Vestibles", wands: "Varitas", runes: "Piedras rúnicas", guns_gears: "Pólvora y Engranajes"
+    }
+  };
+  const dictionary = labels[locale];
+  return `${dictionary[mainCategory] || mainCategory} · ${dictionary[subCategory] || subCategory}`;
 }
 
 const itemIdentityKeys = (item: ItemDefinition) => [item.id, item.name, item.names?.["pt-BR"], item.names?.en, item.names?.es]
@@ -96,6 +121,7 @@ export function ItemPickerModal({ onBridgeReady }: { onBridgeReady?: (bridge: { 
   const [query, setQuery] = useState("");
   const [selectedId, setSelectedId] = useState<string>(PF2E_ITEMS_CATALOG[0]?.id || "");
   const [quantity, setQuantity] = useState<number>(1);
+  const [purchasePool, setPurchasePool] = useState<Array<{ item: ItemDefinition; qty: number }>>([]);
 
   // Custom Item Form State
   const [customName, setCustomName] = useState("");
@@ -115,6 +141,7 @@ export function ItemPickerModal({ onBridgeReady }: { onBridgeReady?: (bridge: { 
         returnFocusRef.current = document.activeElement as HTMLElement | null;
         setModalState({ isOpen: true, onSelect: callback });
         setQuantity(1);
+        setPurchasePool([]);
         setQuery("");
         setTimeout(() => searchInputRef.current?.focus(), 50);
       },
@@ -186,6 +213,7 @@ export function ItemPickerModal({ onBridgeReady }: { onBridgeReady?: (bridge: { 
       description: String(item.description || item.summaries?.[locale] || ""),
     })) as ItemDefinition[];
     const catalog = mergeItemCatalogRecords([...PF2E_ITEMS_CATALOG, ...legacyCatalog]);
+    const seenLabels = new Set<string>();
     return catalog.filter((item) => {
       if (typeof checker === "function" && checker.call((window as any).PF2E_ENGINE, character, item as any)?.state === "incompatible") return false;
       const matchMain = mainTab === "all" || item.mainCategory === mainTab;
@@ -194,7 +222,10 @@ export function ItemPickerModal({ onBridgeReady }: { onBridgeReady?: (bridge: { 
       const localizedNames = Object.values(item.names || {}).join(" ");
       const searchTarget = `${localizedName} ${localizedNames} ${item.name} ${item.description}`.toLocaleLowerCase(locale);
       const matchQuery = !query.trim() || searchTarget.includes(query.trim().toLowerCase());
-      return matchMain && matchSub && matchQuery;
+      const dedupeKey = localizedName.toLocaleLowerCase(locale).normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      if (seenLabels.has(dedupeKey)) return false;
+      if (matchMain && matchSub && matchQuery) { seenLabels.add(dedupeKey); return true; }
+      return false;
     }).sort((a, b) => {
       const nameA = getItemDisplayName(a as any, locale);
       const nameB = getItemDisplayName(b as any, locale);
@@ -256,6 +287,51 @@ export function ItemPickerModal({ onBridgeReady }: { onBridgeReady?: (bridge: { 
         }
       }
     }
+    setModalState({ isOpen: false });
+  };
+
+  const addSelectedToPurchasePool = () => {
+    if (!selectedItem) return;
+    setPurchasePool((pool) => {
+      const existing = pool.find((entry) => entry.item.id === selectedItem.id);
+      if (existing) return pool.map((entry) => entry.item.id === selectedItem.id ? { ...entry, qty: entry.qty + quantity } : entry);
+      return [...pool, { item: selectedItem, qty: quantity }];
+    });
+  };
+
+  const purchasePoolTotal = purchasePool.reduce((total, entry) => total + parsePriceToCopper(entry.item.price, locale) * entry.qty, 0);
+
+  const updatePurchasePoolQuantity = (id: string, delta: number) => {
+    setPurchasePool((pool) => pool
+      .map((entry) => entry.item.id === id ? { ...entry, qty: entry.qty + delta } : entry)
+      .filter((entry) => entry.qty > 0));
+  };
+
+  const commitPurchasePool = () => {
+    const entries = purchasePool.length ? purchasePool : selectedItem ? [{ item: selectedItem, qty: quantity }] : [];
+    if (!entries.length) return;
+    const currentCoins = (window as any).app?.character?.coins || { pp: 0, gp: 0, sp: 0, cp: 0 };
+    const total = entries.reduce((sum, entry) => sum + parsePriceToCopper(entry.item.price, locale) * entry.qty, 0);
+    if (coinsToCopper(currentCoins) < total) {
+      window.alert(copy.insufficientFunds);
+      return;
+    }
+    for (const entry of entries) {
+      const itemData = { ...entry.item, name: getItemDisplayName(entry.item as any, locale), qty: entry.qty, rawPrice: entry.item.price, price: formatItemPrice(entry.item.price, locale) };
+      if (modalState.onSelect) modalState.onSelect(itemData, true);
+      else {
+        const app = (window as any).app;
+        if (typeof app?.applyPickerSelection === "function") app.applyPickerSelection("item", { name: itemData.name, data: itemData }, undefined, true);
+        else if (app?.character) {
+          app.character.inventory = Array.isArray(app.character.inventory) ? app.character.inventory : [];
+          app.character.inventory.push(itemData);
+          app.character.coins = deductPurseCoins(app.character.coins, entry.item.price, entry.qty, locale);
+          app.saveCharacterLocal?.(false);
+          app.renderAll?.();
+        }
+      }
+    }
+    setPurchasePool([]);
     setModalState({ isOpen: false });
   };
 
@@ -496,8 +572,8 @@ export function ItemPickerModal({ onBridgeReady }: { onBridgeReady?: (bridge: { 
                 {selectedItem ? (
                   <div className="item-detail-inner">
                     <div className="detail-header">
-                      <span className="detail-category">{selectedItem.mainCategory.toUpperCase()} · {selectedItem.subCategory}</span>
-                      {selectedItem.level > 0 && <span className="item-level-tag">Nível {selectedItem.level}</span>}
+                      <span className="detail-category">{formatItemCategory(selectedItem.mainCategory, selectedItem.subCategory, locale)}</span>
+                      {selectedItem.level > 0 && <span className="item-level-tag">{locale === "en" ? "Level" : locale === "es" ? "Nivel" : "Nível"} {selectedItem.level}</span>}
                     </div>
                     <h2 className="detail-title">{getItemDisplayName(selectedItem as any, locale)}</h2>
                     <div className="detail-specs-grid">
@@ -563,7 +639,9 @@ export function ItemPickerModal({ onBridgeReady }: { onBridgeReady?: (bridge: { 
         {/* Footer Bar */}
         {(() => {
           const coins = (window as any).app?.character?.coins || { pp: 0, gp: 15, sp: 0, cp: 0 };
-          const canAfford = canAffordPrice(coins, selectedItem?.price, quantity, locale);
+          const canAfford = purchasePool.length > 0
+            ? coinsToCopper(coins) >= purchasePoolTotal
+            : canAffordPrice(coins, selectedItem?.price, quantity, locale);
           const priceText = formatItemPrice(selectedItem?.price, locale);
           const coinLabels = locale === "pt-BR"
             ? { pp: "PL", gp: "PO", sp: "PP", cp: "PC", buy: "Comprar por", insufficient: "Moedas insuficientes! Custo:" }
@@ -580,23 +658,41 @@ export function ItemPickerModal({ onBridgeReady }: { onBridgeReady?: (bridge: { 
                 <span className="coin-tag cp">🟤 {coins.cp || 0} {coinLabels.cp}</span>
               </div>
 
+              {purchasePool.length > 0 && (
+                <div className="purchase-pool" aria-label={locale === "en" ? "Purchase pool" : locale === "es" ? "Carrito de compra" : "Pool de compras"}>
+                  {purchasePool.map((entry) => (
+                    <div className="purchase-pool-row" key={entry.item.id}>
+                      <span>{getItemDisplayName(entry.item as any, locale)}</span>
+                      <button type="button" onClick={() => updatePurchasePoolQuantity(entry.item.id, -1)} aria-label="-">−</button>
+                      <strong>{entry.qty}</strong>
+                      <button type="button" onClick={() => updatePurchasePoolQuantity(entry.item.id, 1)} aria-label="+">+</button>
+                      <small>{formatPriceToLocale(parsePriceToCopper(entry.item.price, locale) * entry.qty, locale)}</small>
+                    </div>
+                  ))}
+                </div>
+              )}
+
               <div className="picker-footer-actions">
                 <button className="btn-secondary" onClick={() => setModalState({ isOpen: false })}>
                   {copy.close}
                 </button>
                 {mainTab !== "custom" && (
                   <>
-                    <button className="btn-add-free" onClick={() => handleAddOrBuy(false)}>
+                    <button className="btn-add-free" onClick={addSelectedToPurchasePool}>
+                      {locale === "pt-BR" ? "Adicionar ao pool" : locale === "en" ? "Add to purchase pool" : "Añadir al carrito"}
+                    </button>
+                    <button className="btn-secondary" onClick={() => handleAddOrBuy(false)}>
                       {copy.free}
                     </button>
                     <button
                       className={`btn-buy-action ${!canAfford ? "disabled-funds" : ""}`}
-                      onClick={() => handleAddOrBuy(true)}
+                      onClick={commitPurchasePool}
                       disabled={!canAfford}
                       title={canAfford ? `${coinLabels.buy} ${priceText}` : `${coinLabels.insufficient} ${priceText}`}
                     >
-                      {copy.buy} — {priceText}
+                      {copy.buy} — {purchasePool.length ? formatPriceToLocale(purchasePoolTotal, locale) : priceText}
                     </button>
+                    {purchasePool.length > 0 && <span className="purchase-pool-summary">{purchasePool.length} {locale === "en" ? "item groups" : locale === "es" ? "grupos" : "grupos"} · {formatPriceToLocale(purchasePoolTotal, locale)}</span>}
                   </>
                 )}
               </div>

@@ -59,6 +59,7 @@ if (!modalRoot || !accountRoot || !portalRoot) {
   feats: PF2E_FEATS_CATALOG,
   pets: PF2E_PETS_CATALOG,
 };
+window.dispatchEvent(new Event("pathbuilder:catalogs-ready"));
 
 createRoot(modalRoot).render(
   <StrictMode>

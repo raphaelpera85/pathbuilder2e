@@ -12,6 +12,12 @@ describe("ItemPickerModal", () => {
     expect(price).toEqual({ pp: 1, gp: 2, sp: 3, cp: 4 });
   });
 
+  it("formata preços legados em texto, número e alias de platina", () => {
+    expect(formatItemPrice("25 PO", "pt-BR")).not.toContain("[object Object]");
+    expect(formatItemPrice(2, "pt-BR")).toBe("2 PO");
+    expect(formatItemPrice({ pl: 1 }, "pt-BR")).toBe("1 PL");
+  });
+
   beforeEach(() => {
     delete (window as any).PF2E_ENGINE;
     (window as any).app = {
@@ -145,7 +151,7 @@ describe("ItemPickerModal", () => {
 
     // Deve exibir o diálogo e abas
     expect(screen.getByRole("dialog")).toBeTruthy();
-    expect(screen.getByText(/Equipamentos/i)).toBeTruthy();
+    expect(screen.getAllByText(/Equipamentos/i).length).toBeGreaterThanOrEqual(1);
     expect(screen.getByText(/Consumíveis/i)).toBeTruthy();
     expect(screen.getByText(/Itens Mágicos/i)).toBeTruthy();
     expect(screen.getByText(/Personalizado/i)).toBeTruthy();

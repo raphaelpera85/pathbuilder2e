@@ -1,8 +1,9 @@
-import { useEffect, useMemo, useState, type FormEvent } from "react";
-import { pathfinderSources } from "./data/sources";
+import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
+import { pathfinderSources, type PathfinderSource } from "./data/sources";
 import { useI18n, getItemDisplayName, type MessageKey } from "./i18n";
 import type { PickerItem, PickerType } from "./types";
 import { useAccountViewState } from "./accountState";
+import { formatPriceToLocale } from "./utils/economy";
 import {
   getCurrentSession,
   signIn,
@@ -52,6 +53,33 @@ const catalogCategories: Array<{ type: PickerType; label: MessageKey }> = [
   { type: "condition", label: "conditions" },
   { type: "buff", label: "buffs" },
 ];
+
+function localizeSourceBook(book: string, locale: "pt-BR" | "en" | "es"): string {
+  if (locale === "pt-BR") return book;
+  const translations: Array<[RegExp, string, string]> = [
+    [/Livro do Jogador 2/i, "Player Core 2", "Núcleo del jugador 2"],
+    [/Livro do Jogador/i, "Player Core", "Núcleo del jugador"],
+    [/Segredos da Magia/i, "Secrets of Magic", "Secretos de la magia"],
+    [/Pólvora e Engrenagens/i, "Guns & Gears", "Pólvora y engranajes"],
+    [/Livro dos Mortos/i, "Book of the Dead", "Libro de los muertos"],
+    [/Guerra dos Imortais/i, "War of Immortals", "Guerra de los inmortales"],
+    [/Livro Básico/i, "Core Rulebook", "Reglamento básico"],
+    [/Manual do Jogador/i, "PF2e Player Guide compilation", "Compilación del manual del jugador PF2e"],
+    [/Guia Completo do Jogador/i, "PF2e Player Guide compilation", "Compilación de guía del jugador PF2e"],
+  ];
+  const match = translations.find(([pattern]) => pattern.test(book));
+  return match ? (locale === "en" ? match[1] : match[2]) : book;
+}
+
+function localizeSourceTitle(source: PathfinderSource, locale: "pt-BR" | "en" | "es"): string {
+  if (locale === "pt-BR") return source.title;
+  return localizeSourceBook(source.title, locale);
+}
+
+function localizeSourceLanguage(language: PathfinderSource["language"], locale: "pt-BR" | "en" | "es"): string {
+  if (language === "pt-BR") return locale === "en" ? "Brazilian Portuguese" : locale === "es" ? "Portugués brasileño" : "Português (Brasil)";
+  return locale === "es" ? "Inglés" : "English";
+}
 
 const validationCopy: Record<"pt-BR" | "en" | "es", string[]> = {
   "pt-BR": [
@@ -139,7 +167,7 @@ function CatalogPage() {
       <label><span>{t("filterCategory")}</span><select value={category} onChange={(event) => setCategory(event.target.value as PickerType | "all")}><option value="all">{t("allCategories")}</option>{catalogCategories.map((item) => <option key={item.type} value={item.type}>{t(item.label)}</option>)}</select></label>
       <label><span>{t("filterRuleset")}</span><select value={rulesetFilter} onChange={(event) => setRulesetFilter(event.target.value)}><option value="all">{t("allRulesets")}</option><option value="remaster">{t("rulesetRemaster")}</option><option value="legacy">{t("rulesetLegacy")}</option><option value="needs_review">{t("rulesetReview")}</option></select></label>
       <label><span>{t("filterRarity")}</span><select value={rarityFilter} onChange={(event) => setRarityFilter(event.target.value)}><option value="all">{t("allRarities")}</option><option value="common">{t("rarityCommon")}</option><option value="uncommon">{t("rarityUncommon")}</option><option value="rare">{t("rarityRare")}</option></select></label>
-      {availableBooks.length > 0 && <label><span>{t("filterBook")}</span><select value={bookFilter} onChange={(event) => setBookFilter(event.target.value)}><option value="all">{t("allBooks")}</option>{availableBooks.map((b) => <option key={b} value={b}>{b}</option>)}</select></label>}
+      {availableBooks.length > 0 && <label><span>{t("filterBook")}</span><select value={bookFilter} onChange={(event) => setBookFilter(event.target.value)}><option value="all">{t("allBooks")}</option>{availableBooks.map((b) => <option key={b} value={b}>{localizeSourceBook(b, locale)}</option>)}</select></label>}
       <strong className="catalog-count" aria-live="polite">{filtered.length} {t("results")}</strong>
     </section>
     {filtered.length === 0 ? <div className="portal-empty">{t("noCatalogResults")}</div> : <section className="catalog-grid" aria-label={t("compendiumTitle")}>
@@ -166,7 +194,7 @@ function CatalogPage() {
             </span>
             {inspectedEntry.data.sourceApproximate && <span className="source-badge review">{t("sourceSectionReference")}</span>}
             {hasFallbackTranslation(inspectedEntry) && <span className="source-badge translation-pending">{t("translationPending")}</span>}
-            {inspectedEntry.data.traits?.map((trait: string) => <span key={trait} className="trait-tag">{trait}</span>)}
+            {inspectedEntry.data.traits?.map((trait: string) => <span key={trait} className="trait-tag">{getLocalizedTrait(trait, locale)}</span>)}
           </div>
 
           {/* STATS MATRIX */}
@@ -176,9 +204,9 @@ function CatalogPage() {
             {inspectedEntry.data.hp !== undefined ? <div className="stat-box"><strong>{t("baseHp")}</strong><span>{String(inspectedEntry.data.hp)}</span></div> : null}
             {inspectedEntry.data.speed !== undefined ? <div className="stat-box"><strong>{t("speed")}</strong><span>{String(inspectedEntry.data.speed)} {t("feet")}</span></div> : null}
             {inspectedEntry.data.damage ? <div className="stat-box"><strong>{t("damage")}</strong><span>{String(inspectedEntry.data.damage)}</span></div> : null}
-            {inspectedEntry.data.price ? <div className="stat-box"><strong>{t("price")}</strong><span>{String(inspectedEntry.data.price)}</span></div> : null}
+            {inspectedEntry.data.price ? <div className="stat-box"><strong>{t("price")}</strong><span>{formatPriceToLocale(inspectedEntry.data.price, locale)}</span></div> : null}
             {inspectedEntry.data.bulk !== undefined ? <div className="stat-box"><strong>{t("bulk")}</strong><span>{String(inspectedEntry.data.bulk)}</span></div> : null}
-            {inspectedEntry.data.prerequisites ? <div className="stat-box"><strong>{t("prerequisites")}</strong><span>{String(inspectedEntry.data.prerequisites)}</span></div> : null}
+            {inspectedEntry.data.prerequisites ? <div className="stat-box"><strong>{t("prerequisites")}</strong><span>{formatCatalogValue(inspectedEntry.data.prerequisites)}</span></div> : null}
           </div>
 
           {/* DESCRIPTION */}
@@ -190,7 +218,7 @@ function CatalogPage() {
           {/* SOURCE CITATION */}
           <footer className="compendium-modal-footer">
             <strong>{t("source")}:</strong>
-            <span>{inspectedEntry.data.source?.book ? `${inspectedEntry.data.sourceApproximate ? `${t("sourceSectionReference")}: ` : ""}${inspectedEntry.data.source.book} · p. ${inspectedEntry.data.source.page ?? "-"}` : t("uncatalogued")}</span>
+            <span>{inspectedEntry.data.source?.book ? `${inspectedEntry.data.sourceApproximate ? `${t("sourceSectionReference")}: ` : ""}${localizeSourceBook(inspectedEntry.data.source.book, locale)} · p. ${inspectedEntry.data.source.page ?? "-"}` : t("uncatalogued")}</span>
           </footer>
         </div>
       </div>
@@ -207,6 +235,21 @@ function hasFallbackTranslation(entry: { data?: { id?: string; summaries?: Parti
     && Boolean(pt)
     && pt === en
     && en === es;
+}
+
+function formatCatalogValue(value: unknown): string {
+  if (Array.isArray(value)) return value.map(formatCatalogValue).join(", ");
+  if (value && typeof value === "object") {
+    return Object.entries(value as Record<string, unknown>)
+      .map(([key, item]) => `${key}: ${formatCatalogValue(item)}`)
+      .join(", ");
+  }
+  return String(value ?? "");
+}
+
+function getLocalizedTrait(trait: string, locale: "pt-BR" | "en" | "es"): string {
+  const legacyApp = typeof window !== "undefined" ? (window as any).app : null;
+  return legacyApp?.localizeTrait?.(trait, locale) || trait;
 }
 
 function CatalogCard({ entry, onInspect }: { entry: PickerItem & { category: PickerType; categoryLabel: string }; onInspect?: () => void }) {
@@ -226,7 +269,7 @@ function CatalogCard({ entry, onInspect }: { entry: PickerItem & { category: Pic
     castingTimes?.[locale] ? `${t("castingTime")}: ${castingTimes[locale]}` : null,
     traditionNames?.[locale]?.length ? `${t("traditions")}: ${traditionNames[locale]?.join(", ")}` : null,
     primaryChecks?.[locale] ? `${t("primaryCheck")}: ${primaryChecks[locale]}` : null,
-    entry.data.price ? `${t("price")}: ${entry.data.price}` : null,
+    entry.data.price ? `${t("price")}: ${formatPriceToLocale(entry.data.price, locale)}` : null,
   ].filter((fact): fact is string => Boolean(fact));
 
   return <article className="catalog-card interactive" onClick={onInspect} tabIndex={0} onKeyDown={(e) => e.key === "Enter" && onInspect?.()} role="button" aria-label={getItemDisplayName(entry, locale)}>
@@ -234,7 +277,7 @@ function CatalogCard({ entry, onInspect }: { entry: PickerItem & { category: Pic
     <h2>{getItemDisplayName(entry, locale)}</h2>
     {facts.length > 0 && <div className="catalog-facts">{facts.map((fact) => <span key={fact}>{fact}</span>)}</div>}
     {(entry.data.summaries?.[locale] ?? entry.data.description) && <p>{entry.data.summaries?.[locale] ?? entry.data.description}</p>}
-    <footer>{source?.book ? `${approximateSource ? `${t("sourceSectionReference")}: ` : ""}${source.book}${source.page ? ` · p. ${source.page}` : ""}` : t("uncatalogued")}</footer>
+    <footer>{source?.book ? `${approximateSource ? `${t("sourceSectionReference")}: ` : ""}${localizeSourceBook(source.book, locale)}${source.page ? ` · p. ${source.page}` : ""}` : t("uncatalogued")}</footer>
   </article>;
 }
 
@@ -245,7 +288,7 @@ function RulesPage() {
     <header className="portal-hero"><span>PF2E RULES PROVENANCE</span><h1>{t("rulesTitle")}</h1><p>{t("rulesIntro")}</p></header>
     <section className="rules-layout">
       <article className="portal-panel"><h2>{t("validationTitle")}</h2><ul className="validation-list">{validationCopy[locale].map((item) => <li key={item}><span aria-hidden="true">✓</span>{item}</li>)}</ul></article>
-      <article className="portal-panel"><h2>{t("sourcesTitle")}</h2><p>{t("sourcesIntro")}</p><div className="source-list">{pathfinderSources.map((source) => <div className="source-row" key={source.id}><div><strong>{source.title}</strong><span>{source.pages} {t("pages")} · {t("pageCountVerified")}</span><small>{t("localLanguage")}: {source.language} · {t("languageInferred")}</small></div><div><span className={`ruleset-badge ${source.ruleset}`}>{rulesetLabel(source.ruleset)}</span><small>{source.catalogStatus === "pending" ? t("contentPending") : `${source.linkedRecords} ${t("linkedRecords")}`}</small></div></div>)}</div></article>
+      <article className="portal-panel"><h2>{t("sourcesTitle")}</h2><p>{t("sourcesIntro")}</p><div className="source-list">{pathfinderSources.map((source) => <div className="source-row" key={source.id}><div><strong>{localizeSourceTitle(source, locale)}</strong><span>{source.pages} {t("pages")} · {t("pageCountVerified")}</span><small>{t("localLanguage")}: {localizeSourceLanguage(source.language, locale)} · {t("languageInferred")}</small></div><div><span className={`ruleset-badge ${source.ruleset}`}>{rulesetLabel(source.ruleset)}</span><small>{source.catalogStatus === "pending" ? t("contentPending") : `${source.linkedRecords} ${t("linkedRecords")}`}</small></div></div>)}</div></article>
     </section>
   </main>;
 }
@@ -271,17 +314,22 @@ function LibraryPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
+  const charactersLoadIdRef = useRef(0);
+  const sessionRef = useRef<AuthSession | null>(null);
 
   const loadUserCharacters = async (activeSession: AuthSession) => {
+    const requestId = ++charactersLoadIdRef.current;
     setLoading(true);
     setError(null);
     try {
       const list = await listCharacters(activeSession.user);
+      if (requestId !== charactersLoadIdRef.current) return;
       setCharacters(list);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Erro ao carregar fichas.");
+      if (requestId !== charactersLoadIdRef.current) return;
+      setError(err instanceof Error ? err.message : t("loadAccountFailed"));
     } finally {
-      setLoading(false);
+      if (requestId === charactersLoadIdRef.current) setLoading(false);
     }
   };
 
@@ -290,6 +338,7 @@ function LibraryPage() {
     let authEventReceived = false;
     void getCurrentSession().then((cur) => {
       if (!active || authEventReceived) return;
+      sessionRef.current = cur;
       setSession(cur);
       setSessionReady(true);
       if (cur) void loadUserCharacters(cur);
@@ -297,14 +346,24 @@ function LibraryPage() {
 
     const unsubscribe = subscribeToAuth((next) => {
       authEventReceived = true;
+      sessionRef.current = next;
       setSession(next);
       setSessionReady(true);
       if (next) void loadUserCharacters(next);
-      else setCharacters([]);
+      else {
+        charactersLoadIdRef.current += 1;
+        setLoading(false);
+        setCharacters([]);
+      }
     });
+    const refreshAfterCharacterChange = () => {
+      if (sessionRef.current) void loadUserCharacters(sessionRef.current);
+    };
+    window.addEventListener("pathbuilder:characters-changed", refreshAfterCharacterChange);
     return () => {
       active = false;
       unsubscribe();
+      window.removeEventListener("pathbuilder:characters-changed", refreshAfterCharacterChange);
     };
   }, []);
 
@@ -324,7 +383,7 @@ function LibraryPage() {
     try {
       if (authMode === "signup") {
         if (password !== confirmPassword) {
-          setError(t("passwordsDontMatch") || "As senhas não coincidem.");
+          setError(t("passwordsDontMatch"));
           setWorking(null);
           return;
         }
@@ -427,7 +486,7 @@ function LibraryPage() {
                 <input
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  placeholder="Ex: MestreArthur"
+                  placeholder="MestreArthur"
                   required
                 />
               </label>
@@ -438,7 +497,7 @@ function LibraryPage() {
               <input
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder={authMode === "signup" ? "seu@email.com" : "seu_usuario ou seu@email.com"}
+                placeholder={authMode === "signup" ? "email@example.com" : "username / email"}
                 required
               />
             </label>
@@ -457,7 +516,7 @@ function LibraryPage() {
 
             {authMode === "signup" && (
               <label>
-                {t("confirmPassword") || "Confirmar Senha"}
+                {t("confirmPassword")}
                 <input
                   type="password"
                   value={confirmPassword}

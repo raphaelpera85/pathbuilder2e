@@ -23,6 +23,7 @@ const AUTH_STATE_EVENT = "pf2e:auth-state-change";
 // encontrou a sessão persistida.
 let cachedSession: AuthSession | null | undefined;
 let sessionRequest: Promise<AuthSession | null> | null = null;
+let authEventEpoch = 0;
 
 interface StoredLocalUser {
   id: string;
@@ -71,6 +72,7 @@ function saveStoredLocalUsers(users: StoredLocalUser[]): void {
 }
 
 function notifyAuthChange(session: AuthSession | null): void {
+  authEventEpoch += 1;
   cachedSession = session;
   window.dispatchEvent(new CustomEvent(AUTH_STATE_EVENT, { detail: session }));
 }
@@ -149,11 +151,11 @@ export async function signIn(emailOrUsername: string, password: string): Promise
     if (!isEmail) {
       // Busca email pelo username na tabela de perfis
       try {
-        const { data: profile } = await supabase
+        const { data: profile } = await withRequestTimeout(supabase
           .from("profiles")
           .select("id,username,email")
           .ilike("username", cleanId)
-          .maybeSingle();
+          .maybeSingle(), 8_000, "A busca do usuário demorou para responder.");
 
         if (profile && (profile as any).email) {
           emailToUse = (profile as any).email;
@@ -163,10 +165,11 @@ export async function signIn(emailOrUsername: string, password: string): Promise
       }
     }
 
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email: emailToUse,
-      password,
-    });
+    const { data, error } = await withRequestTimeout(
+      supabase.auth.signInWithPassword({ email: emailToUse, password }),
+      8_000,
+      "O login demorou para responder. Tente novamente.",
+    );
 
     if (error) {
       const msg = (error.message || "").toLowerCase();
@@ -234,11 +237,11 @@ export async function signUp(username: string, email: string, password: string):
     cachedSession = undefined;
     // 1. Verificar se o nome de usuário já está em uso na tabela profiles
     try {
-      const { data: existingProfile } = await supabase
+      const { data: existingProfile } = await withRequestTimeout(supabase
         .from("profiles")
         .select("id")
         .ilike("username", cleanUsername)
-        .maybeSingle();
+        .maybeSingle(), 8_000, "A verificação do usuário demorou para responder.");
 
       if (existingProfile) {
         throw new Error(`O nome de usuário '${cleanUsername}' já está em uso.`);
@@ -247,14 +250,18 @@ export async function signUp(username: string, email: string, password: string):
       if (err instanceof Error && err.message.includes("já está em uso")) throw err;
     }
 
-    const { data, error } = await supabase.auth.signUp({
-      email: cleanEmail,
-      password,
-      options: {
-        data: { username: cleanUsername },
-        emailRedirectTo: `${window.location.origin}/`,
-      },
-    });
+    const { data, error } = await withRequestTimeout(
+      supabase.auth.signUp({
+        email: cleanEmail,
+        password,
+        options: {
+          data: { username: cleanUsername },
+          emailRedirectTo: `${window.location.origin}/`,
+        },
+      }),
+      8_000,
+      "O cadastro demorou para responder. Tente novamente.",
+    );
 
     if (error) {
       const msg = (error.message || "").toLowerCase();
@@ -271,12 +278,16 @@ export async function signUp(username: string, email: string, password: string):
     // Tenta atualizar/inserir o perfil do usuário para garantir sincronização
     if (data.user?.id) {
       try {
-        await supabase.from("profiles").upsert({
-          id: data.user.id,
-          username: cleanUsername,
-          email: cleanEmail,
-          role: cleanEmail === "raphaelpera85@gmail.com" ? "admin" : "user",
-        });
+        await withRequestTimeout(
+          supabase.from("profiles").upsert({
+            id: data.user.id,
+            username: cleanUsername,
+            email: cleanEmail,
+            role: cleanEmail === "raphaelpera85@gmail.com" ? "admin" : "user",
+          }),
+          8_000,
+          "A sincronização do perfil demorou para responder.",
+        );
       } catch {
         // trigger no banco lida se necessário
       }
@@ -345,7 +356,9 @@ export async function signUp(username: string, email: string, password: string):
 
 export async function signOut(): Promise<void> {
   try {
-    if (isSupabaseConfigured && supabase) await supabase.auth.signOut({ scope: "local" });
+    if (isSupabaseConfigured && supabase) {
+      await withRequestTimeout(supabase.auth.signOut({ scope: "local" }), 8_000, "O encerramento da sessão demorou para responder.");
+    }
   } finally {
     localStorage.removeItem(LOCAL_SESSION_KEY);
     notifyAuthChange(null);
@@ -370,12 +383,12 @@ export async function updateUsername(username: string, currentSession?: AuthSess
   const active = requireSession(currentSession ?? await getCurrentSession());
 
   if (isSupabaseConfigured && supabase) {
-    const { data, error } = await supabase
+    const { data, error } = await withRequestTimeout(supabase
       .from("profiles")
       .update({ username: cleanUsername })
       .eq("id", active.user.id)
       .select("username")
-      .single();
+      .single(), 8_000, "A atualização do usuário demorou para responder.");
     if (error) throw error;
     const next = { ...active, user: { ...active.user, username: (data as any)?.username || cleanUsername } };
     notifyAuthChange(next);
@@ -401,7 +414,11 @@ export async function changePassword(newPassword: string, currentPassword: strin
   const active = requireSession(currentSession ?? await getCurrentSession());
 
   if (isSupabaseConfigured && supabase) {
-    const { error } = await supabase.auth.updateUser({ password: newPassword });
+    const { error } = await withRequestTimeout(
+      supabase.auth.updateUser({ password: newPassword }),
+      8_000,
+      "A alteração da senha demorou para responder.",
+    );
     if (error) throw error;
     return;
   }
@@ -419,7 +436,11 @@ export async function changePassword(newPassword: string, currentPassword: strin
 export async function deleteAccount(currentSession?: AuthSession | null): Promise<void> {
   const active = requireSession(currentSession ?? await getCurrentSession());
   if (isSupabaseConfigured && supabase) {
-    const { error } = await supabase.functions.invoke("delete-account", { body: {} });
+    const { error } = await withRequestTimeout(
+      supabase.functions.invoke("delete-account", { body: {} }),
+      8_000,
+      "A exclusão da conta demorou para responder.",
+    );
     if (error) throw error;
   } else {
     saveStoredLocalUsers(getStoredLocalUsers().filter((user) => user.id !== active.user.id));
@@ -437,11 +458,14 @@ export function subscribeToAuth(callback: (session: AuthSession | null) => void)
   let supabaseUnsub: (() => void) | undefined;
   if (isSupabaseConfigured && supabase) {
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, nextSession) => {
+      const eventEpoch = ++authEventEpoch;
       cachedSession = undefined;
       if (nextSession) {
         const cur = await getCurrentSession();
+        if (eventEpoch !== authEventEpoch) return;
         callback(cur);
       } else {
+        cachedSession = null;
         callback(null);
       }
     });

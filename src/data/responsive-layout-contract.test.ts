@@ -100,6 +100,9 @@ describe("responsive layout contract", () => {
     expect(itemPickerCss).toContain(".item-picker-list {");
     expect(itemPickerCss).toContain("overflow-y: auto;");
     expect(itemPickerCss).toContain(".item-picker-detail {\n  padding: 20px;\n  overflow-y: auto;");
+    expect(itemPickerCss).toContain("height: calc(100dvh - 8px);");
+    expect(itemPickerCss).toContain("grid-template-rows: 180px minmax(0, 1fr);");
+    expect(itemPickerCss).toContain(".picker-footer-actions { display: grid;");
   });
 
   it("restringe o primeiro aprimoramento aos atributos do antecedente", () => {
@@ -153,6 +156,163 @@ describe("responsive layout contract", () => {
     expect(css).toContain("height: min(540px, calc(var(--pb-viewport-height, 100dvh) - 24px))");
     expect(css).toContain(".pb-modal-left-list {");
     expect(css).toContain("overscroll-behavior: contain");
+  });
+
+  it("persists and restores the dice history with the character document", () => {
+    const app = read("js/app.js");
+    expect(app).toContain("snapshot.diceHistory = structuredClone(this.diceHistory.slice(0, 100));");
+    expect(app).toContain("this.diceHistory = Array.isArray(this.character.diceHistory) ? this.character.diceHistory.slice(0, 100) : [];");
+    expect(app).toContain("this.character.diceHistory = structuredClone(this.diceHistory.slice(0, 100));");
+    expect(app).toContain("this.saveCharacterLocal(false);\n    const content = document.getElementById(\"diceLogContent\");");
+  });
+
+  it("não expõe o nome inglês entre parênteses no Livro de Fórmulas em pt-BR", () => {
+    const app = read("js/app.js");
+    expect(app).toContain("escapeHtml(this.localizeItemName(f.name, locale))");
+  });
+
+  it("mantém as ações básicas somente em português no locale pt-BR", () => {
+    const app = read("js/app.js");
+    expect(app).toContain('isEs ? "Golpear" : "Golpear"');
+    expect(app).toContain('isEs ? "Zancada" : "Movimentar-se"');
+    expect(app).not.toContain('"Golpear (Strike)"');
+    expect(app).not.toContain('"Movimentar-se (Stride)"');
+  });
+
+  it("prioriza o resumo localizado nas descrições de talentos, arquétipos e fórmulas", () => {
+    const app = read("js/app.js");
+    expect(app).toContain("f.summaries?.[locale] || f.description || \"\"");
+    expect(app).toContain("archetype.summaries?.[locale] || archetype.description || \"\"");
+    expect(app).toContain("const localizedDescription = item.data.summaries?.[locale] || item.data.description || \"\"");
+  });
+
+  it("mantém os nomes estruturais do Ladino e do Cineticista em pt-BR", () => {
+    const app = read("js/app.js");
+    expect(app).toContain('["Especialização", "Racket", "Especialización"]');
+    expect(app).toContain('["CD de Classe do Cineticista", "Kineticist Class DC", "CD de clase del cineticista", "none"]');
+  });
+
+  it("mantém as concessões do Patrono separadas por idioma", () => {
+    const app = read("js/app.js");
+    expect(app).toContain("if (rawName && typeof rawName === \"object\")");
+    expect(app).toContain("return rawName[locale] || rawName[\"pt-BR\"] || rawName.en || rawName.es || \"\";");
+    expect(app).toContain("const trilingual = (value) => value ? { ...value } : \"\";");
+  });
+
+  it("reindexa nomes quando os catálogos React ficam disponíveis", () => {
+    const app = read("js/app.js");
+    const main = read("src/main.tsx");
+    expect(app).toContain('window.addEventListener("pathbuilder:catalogs-ready"');
+    expect(app).toContain("this.catalogNameIndex = null;");
+    expect(main).toContain('window.dispatchEvent(new Event("pathbuilder:catalogs-ready"));');
+  });
+
+  it("mantém consultas e mutações de campanhas com fallback quando o backend trava", () => {
+    const campaigns = read("src/services/campaigns.ts");
+    expect(campaigns).toContain('import { withRequestTimeout } from "./requestTimeout";');
+    expect(campaigns).toContain("As campanhas demoraram para responder");
+    expect(campaigns).toContain("O salvamento da campanha demorou para responder");
+    expect(campaigns).toContain("A exclusão da campanha demorou para responder");
+  });
+
+  it("não deixa a janela de regras variantes vazar o idioma padrão", () => {
+    const index = read("index.html");
+    const app = read("js/app.js");
+    expect(index).toContain('id="variantRulesIntro"');
+    expect(index).toContain('id="variantParagonTitle"');
+    expect(app).toContain('setText("variantRulesIntro", copy.intro);');
+    expect(app).toContain('paragonTitle: "🧬 Ancestry Paragon"');
+    expect(app).toContain('paragonTitle: "🧬 Parangón de Ascendencia"');
+  });
+
+  it("evita que uma resposta antiga da biblioteca sobrescreva a sessão atual", () => {
+    const portal = read("src/PortalPages.tsx");
+    expect(portal).toContain("const charactersLoadIdRef = useRef(0);");
+    expect(portal).toContain("if (requestId !== charactersLoadIdRef.current) return;");
+    expect(portal).toContain("const refreshAfterCharacterChange = () => {");
+    expect(portal).toContain("if (sessionRef.current) void loadUserCharacters(sessionRef.current);");
+    expect(portal).toContain("}, []);");
+  });
+
+  it("impede que o login remoto fique indefinidamente em Processando", () => {
+    const auth = read("src/services/auth.ts");
+    expect(auth).toContain('supabase.auth.signInWithPassword({ email: emailToUse, password })');
+    expect(auth).toContain('"O login demorou para responder. Tente novamente."');
+    expect(auth).toContain('"A busca do usuário demorou para responder."');
+    expect(auth).toContain('"O cadastro demorou para responder. Tente novamente."');
+    expect(auth).toContain('"A exclusão da conta demorou para responder."');
+  });
+
+  it("não permite que um carregamento antigo reative o estado da tela de campanhas", () => {
+    const campaigns = read("src/CampaignsPage.tsx");
+    expect(campaigns).toContain("const loadEpoch = authEpochRef.current;");
+    expect(campaigns).toContain("if (loadEpoch !== authEpochRef.current) return;");
+    expect(campaigns).toContain("if (loadEpoch === authEpochRef.current) setLoading(false);");
+  });
+
+  it("invalida eventos assíncronos antigos de autenticação", () => {
+    const auth = read("src/services/auth.ts");
+    expect(auth).toContain("let authEventEpoch = 0;");
+    expect(auth).toContain("const eventEpoch = ++authEventEpoch;");
+    expect(auth).toContain("if (eventEpoch !== authEventEpoch) return;");
+    expect(auth).toContain("authEventEpoch += 1;");
+  });
+
+  it("localiza a unidade de deslocamento nos detalhes de ancestralidade", () => {
+    const app = read("js/app.js");
+    expect(app).toContain('locale === "en" ? "feet" : locale === "es" ? "pies" : "pés"');
+  });
+
+  it("prioriza descrições localizadas nas ações da ficha", () => {
+    const app = read("js/app.js");
+    expect(app).toContain("desc: a.summaries?.[locale] || a.description || \"\"");
+    expect(app).toContain("desc: action.summaries?.[locale] || action.description || action.desc || \"\"");
+  });
+
+  it("localiza traços exibidos no detalhe do compêndio", () => {
+    const portal = read("src/PortalPages.tsx");
+    expect(portal).toContain("function getLocalizedTrait(trait: string");
+    expect(portal).toContain("getLocalizedTrait(trait, locale)");
+  });
+
+  it("localiza títulos e idiomas das fontes do compêndio", () => {
+    const portal = read("src/PortalPages.tsx");
+    expect(portal).toContain("function localizeSourceBook(book: string");
+    expect(portal).toContain("localizeSourceTitle(source, locale)");
+    expect(portal).toContain("localizeSourceLanguage(source.language, locale)");
+  });
+
+  it("localiza nomes de perfis e ataques dos mascotes", () => {
+    const app = read("js/app.js");
+    expect(app).toContain("this.localizeItemName(profile.name || \"\", locale)");
+    expect(app).toContain("this.localizeItemName(atk.name || \"\", locale)");
+    expect(app).toContain('"Companheiro animal"');
+    expect(app).toContain("const petTypeLabel = petTypeKey.includes");
+  });
+
+  it("impede overflow dos botões de navegação em telas portáteis estreitas", () => {
+    const css = read("css/style.css");
+    expect(css).toContain(".pb-mobile-view-btn {");
+    expect(css).toContain("min-width: 0;");
+    expect(css).toContain("overflow-wrap: anywhere;");
+  });
+
+  it("rotula o picker de escudos como escudos", () => {
+    const picker = read("src/PickerModal.tsx");
+    expect(picker).toContain('armor: "armors", shield: "shields"');
+  });
+
+  it("usa o mesmo localizador de traços no picker React", () => {
+    const picker = read("src/PickerModal.tsx");
+    expect(picker).toContain("function getTraitDisplayName(trait: string");
+    expect(picker).toContain("getTraitDisplayName(trait, locale)");
+  });
+
+  it("não exibe categorias brutas em inglês no detalhe do item", () => {
+    const picker = read("src/ItemPickerModal.tsx");
+    expect(picker).toContain("function formatItemCategory(mainCategory: string");
+    expect(picker).toContain("formatItemCategory(selectedItem.mainCategory, selectedItem.subCategory, locale)");
+    expect(picker).toContain('locale === "en" ? "Level" : locale === "es" ? "Nivel" : "Nível"');
   });
 
   it("shares the richer React catalogs with the legacy picker bridge", () => {
@@ -236,7 +396,7 @@ describe("responsive layout contract", () => {
     expect(app).toContain("removeContainerItem(containerIdx, itemIdx)");
     expect(app).toContain("const existing = containers[selected].items.find");
     expect(app).toContain("const existing = this.character.inventory.find");
-    expect(app).toContain("const finalize = (items) => this.filterPickerItemsByCompatibility(type, items);");
+    expect(app).toContain("const compatible = this.filterPickerItemsByCompatibility(type, items);");
     expect(app).toContain("items = items.filter(item => item.data?.selectionState !== \"incompatible\");");
     expect(app).toContain("heritageInnateSpell");
     expect(app).toContain("compatibility.reason !== \"spellcasting-required\"");
@@ -477,11 +637,42 @@ describe("responsive layout contract", () => {
     expect(app).toContain("Nombre del nuevo contenedor");
   });
 
+  it("localizes readiness status, issues, actions, and close control", () => {
+    const app = read("js/app.js");
+    const html = read("index.html");
+    const readiness = app.slice(app.indexOf("  renderReadinessModal()"), app.indexOf("  resolveReadinessIssue(", app.indexOf("  renderReadinessModal()")));
+
+    expect(readiness).toContain('const copy = locale === "en"');
+    expect(readiness).toContain("const localizedIssue = (issue)");
+    expect(readiness).toContain('const closeEl = document.getElementById("readinessModalClose");');
+    expect(readiness).toContain("closeEl.innerText = copy.close;");
+    expect(html).toContain('id="readinessModalClose"');
+  });
+
+  it("builds the printable reference sheet from the selected locale", () => {
+    const app = read("js/app.js");
+    const print = app.slice(app.indexOf("  printReferenceSheet()"), app.indexOf("  printLegacySheet()", app.indexOf("  printReferenceSheet()")));
+
+    expect(print).toContain('const sheetCopy = sheetLocale === "en"');
+    expect(print).toContain("${sheetCopy.officialSubtitle}");
+    expect(print).toContain("${sheetCopy.pageOf.replace(\"{page}\", \"4\")}");
+    expect(print).toContain("${sheetCopy.noSpells}");
+    expect(print).toContain('sheetCopy.circle.replace("{rank}"');
+  });
+
   it("does not hide object-catalog variants that have distinct IDs", () => {
     const app = read("js/app.js");
 
     expect(app).toContain("const identityKey = record?.id ? `id:${record.id}` : `name:${record?.names?.en || record?.name || key}`;");
     expect(app).toContain("Registros com IDs distintos podem compartilhar um nome localizado");
+  });
+
+  it("keeps the Exemplar legacy alias importable but out of visible class pickers", () => {
+    const data = read("js/pf2e_data.js");
+    const app = read("js/app.js");
+
+    expect(data).toContain('legacyAlias: true');
+    expect(app).toContain('getObjectCatalogRecords(PF2E_DATA.classes).filter(({ record }) => !record?.legacyAlias)');
   });
 
   it("provides a strict catalog audit command for the remaining coverage work", () => {

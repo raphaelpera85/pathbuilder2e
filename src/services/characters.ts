@@ -94,6 +94,20 @@ function saveLocalCharacters(userId: string, items: CloudCharacter[]): void {
   }
 }
 
+function mergeCharacterLists(remote: CloudCharacter[], local: CloudCharacter[]): CloudCharacter[] {
+  const merged = new Map<string, CloudCharacter>();
+  // A versão remota tem prioridade quando a mesma chave existe nos dois
+  // lugares; fichas locais ainda não sincronizadas continuam visíveis.
+  for (const item of remote) merged.set(item.character_key || item.id, item);
+  for (const item of local) {
+    const key = item.character_key || item.id;
+    if (!merged.has(key)) merged.set(key, item);
+  }
+  return Array.from(merged.values()).sort((a, b) =>
+    new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime(),
+  );
+}
+
 export async function listCharacters(currentUser?: UserProfile): Promise<CloudCharacter[]> {
   const activeUser = currentUser || (await getCurrentSession())?.user;
   if (!activeUser) {
@@ -107,7 +121,10 @@ export async function listCharacters(currentUser?: UserProfile): Promise<CloudCh
         .select("id,user_id,character_key,name,level,ruleset,gm_email,player_email,player_name,data,created_at,updated_at")
         .eq("user_id", activeUser.id)
         .order("updated_at", { ascending: false }), 8_000, "A biblioteca demorou para responder. Usando as fichas salvas neste dispositivo.");
-      if (!error && data) return (data ?? []) as CloudCharacter[];
+      if (!error && data) {
+        const remote = (data ?? []) as CloudCharacter[];
+        return mergeCharacterLists(remote, getLocalCharacters(activeUser.id));
+      }
       if (error) console.warn("Supabase characters query aviso:", error.message);
     } catch (err) {
       console.warn("Supabase characters fallback para local:", err);
@@ -133,11 +150,11 @@ export async function saveCharacter(
 
   if (isSupabaseConfigured && supabase) {
     try {
-      const { data, error } = await supabase
+      const { data, error } = await withRequestTimeout(supabase
         .from("characters")
         .upsert(payload, { onConflict: "user_id,character_key" })
         .select("id,user_id,character_key,name,level,ruleset,gm_email,player_email,player_name,data,created_at,updated_at")
-        .single();
+        .single(), 8_000, "O salvamento remoto demorou para responder. A ficha será mantida neste dispositivo.");
       if (!error && data) return data as CloudCharacter;
       if (error) console.warn("Supabase upsert aviso:", error.message);
     } catch (err) {
@@ -185,10 +202,18 @@ export async function deleteCharacter(id: string, userOrSession?: { id: string }
     try {
       // A UI pode enviar tanto o id técnico do registro quanto a chave estável
       // da ficha. Remover por ambos evita deixar uma cópia remota órfã.
-      const byRowId = await supabase.from("characters").delete().eq("id", id).eq("user_id", activeUser.id);
+      const byRowId = await withRequestTimeout(
+        supabase.from("characters").delete().eq("id", id).eq("user_id", activeUser.id),
+        8_000,
+        "A exclusão remota demorou para responder. A ficha será removida deste dispositivo.",
+      );
       const byCharacterKey = byRowId.error
         ? byRowId
-        : await supabase.from("characters").delete().eq("character_key", id).eq("user_id", activeUser.id);
+        : await withRequestTimeout(
+          supabase.from("characters").delete().eq("character_key", id).eq("user_id", activeUser.id),
+          8_000,
+          "A exclusão remota demorou para responder. A ficha será removida deste dispositivo.",
+        );
       if (!byRowId.error && !byCharacterKey.error) {
         // Também remove do local por sincronização
         const existing = getLocalCharacters(activeUser.id);
@@ -208,6 +233,21 @@ export async function deleteCharacter(id: string, userOrSession?: { id: string }
   saveLocalCharacters(activeUser.id, filtered);
 }
 
+export async function renameCharacter(
+  characterKeyOrId: string,
+  name: string,
+  userOrSession?: { id: string; email?: string; username?: string },
+): Promise<CloudCharacter> {
+  const nextName = name.trim();
+  if (!nextName) throw new Error("O nome do personagem não pode ficar vazio.");
+  const activeUser = userOrSession || (await getCurrentSession())?.user;
+  if (!activeUser) throw new Error("Você precisa estar conectado.");
+  const existingList = await listCharacters(activeUser as any);
+  const target = existingList.find((c) => c.character_key === characterKeyOrId || c.id === characterKeyOrId);
+  if (!target) throw new Error("Personagem não encontrado.");
+  return saveCharacter({ ...target.data, name: nextName }, activeUser);
+}
+
 /**
  * Retorna todas as fichas de personagens de jogadores que indicaram o GM através do seu e-mail.
  */
@@ -217,11 +257,11 @@ export async function listCharactersSharedWithGM(gmEmail: string): Promise<Cloud
 
   if (isSupabaseConfigured && supabase) {
     try {
-      const { data, error } = await supabase
+      const { data, error } = await withRequestTimeout(supabase
         .from("characters")
         .select("id,user_id,character_key,name,level,ruleset,gm_email,player_name,player_email,data,created_at,updated_at")
         .ilike("gm_email", normalizedEmail)
-        .order("updated_at", { ascending: false });
+        .order("updated_at", { ascending: false }), 8_000, "A busca das fichas compartilhadas demorou para responder. Exibindo os dados disponíveis neste dispositivo.");
       if (!error && data) return data as CloudCharacter[];
     } catch (err) {
       console.warn("Falha ao buscar personagens vinculados via Supabase, usando armazenamento local:", err);

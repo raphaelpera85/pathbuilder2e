@@ -995,8 +995,8 @@ describe("proveniência do catálogo legado", () => {
     expect(catalog.rituals.find((item) => item.id === "ritual.battlecry.siege.antimagic_artifice")).toMatchObject({ source: { page: 92 }, rank: 9, needs_review: true });
     expect(catalog.feats.filter((item) => item.classId === "class.magus")).toHaveLength(39);
     expect(catalog.feats.find((item) => item.id === "feat.class.magus.supreme_spellstrike")).toMatchObject({ source: { page: 66 }, level: 20, needs_review: true });
-    expect(catalog.spells.filter((item) => item.category === "Magia de Foco" && item.classId === "class.magus")).toHaveLength(8);
-    expect(catalog.spells.filter((item) => item.category === "Magia de Foco" && item.classId === "class.summoner")).toHaveLength(6);
+    expect(catalog.spells.filter((item) => item.category === "Magia de Foco" && item.classId === "class.magus")).toHaveLength(9);
+    expect(catalog.spells.filter((item) => item.category === "Magia de Foco" && item.classId === "class.summoner")).toHaveLength(5);
     expect(catalog.spells.find((item) => item.id === "spell.secrets_of_magic.magus.rune_engraving")).toMatchObject({ source: { page: 144 }, focus: true, classId: "class.magus", needs_review: true });
     expect(catalog.feats.filter((item) => item.archetypeId === "archetype.summoner_dedication")).toHaveLength(9);
     expect(catalog.feats.filter((item) => item.archetypeId === "archetype.magus_dedication")).toHaveLength(8);
