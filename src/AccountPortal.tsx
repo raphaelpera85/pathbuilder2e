@@ -298,14 +298,16 @@ export function AccountPortal() {
       }, 750);
     };
     window.addEventListener("pathbuilder:character-changed", autoSaveFromBuilder);
-    try {
-      if (localStorage.getItem(`pf2e_pending_cloud_save_${session.user.id}`)) {
-        autoSaveTimerRef.current = window.setTimeout(() => {
-          autoSaveTimerRef.current = null;
-          void saveCurrent(session, true);
-        }, 0);
-      }
-    } catch { /* ignore unavailable storage */ }
+    if (session) {
+      try {
+        if (localStorage.getItem(`pf2e_pending_cloud_save_${session.user.id}`)) {
+          autoSaveTimerRef.current = window.setTimeout(() => {
+            autoSaveTimerRef.current = null;
+            void saveCurrent(session, true);
+          }, 0);
+        }
+      } catch { /* ignore unavailable storage */ }
+    }
     return () => {
       window.removeEventListener("pathbuilder:save-account-character", saveFromBuilder);
       window.removeEventListener("pathbuilder:character-changed", autoSaveFromBuilder);

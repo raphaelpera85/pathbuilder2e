@@ -351,8 +351,12 @@ Auditoria atual após os 43 talentos de Oráculo: 3004 registros, 2382 em revis�
       - [ ] Validar que alterações em atributos, progressão, inventário, moedas, condições, rolagens, configurações e histórico sejam persistidas sem exigir clique em `Salvar na Conta`.
       - [x] Disparar sincronização automática após alterações locais, com debounce de 750 ms e coalescência enquanto outro salvamento remoto está em andamento; preservar o fallback local.
       - [ ] Completar fila offline, retry com backoff, indicador de estado e resolução de conflitos; validar com Supabase real.
+      - [x] Manter snapshot pendente por conta no armazenamento local, exibir estado de sincronização e repetir automaticamente com backoff até 30 segundos.
+      - [ ] Validar conflitos entre dispositivos e o fluxo completo contra Supabase real; a fila atual conserva o snapshot mais recente e ainda não faz merge semântico.
 
 Implementação desta etapa (2026-09-01): alterações persistidas localmente agora emitem `pathbuilder:character-changed`; o Portal de Conta sincroniza a ficha autenticada automaticamente após 750 ms, coalescendo alterações durante salvamentos concorrentes e mantendo o fallback local. Validação: suíte completa com 26 arquivos/462 testes, build e sintaxe aprovados. Falta a fila offline/backoff, indicador e teste end-to-end contra Supabase real.
+
+Implementação adicional desta etapa: falhas do salvamento automático agora deixam um snapshot por usuário, mostram o estado pendente, tentam novamente com backoff e retomam a sincronização na próxima hidratação da sessão. Validação: build, 85 testes do contrato responsivo, sintaxe e `git diff --check` aprovados. Falta validar concorrência real entre dispositivos/Supabase e o merge de conflitos.
     - [x] Cachear localmente o retorno de um salvamento remoto bem-sucedido para que uma falha transitória da próxima leitura não deixe a biblioteca vazia.
     - [x] Biblioteca com renomear/excluir/abrir e sincronização entre as duas visões de conta.
     - [x] Incluir a configuração integral já presente no documento da ficha e até 100 registros do histórico de rolagens no snapshot salvo/restaurado; o CRUD cloud continua pendente de validação end-to-end.
