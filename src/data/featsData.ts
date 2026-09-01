@@ -1863,4 +1863,7295 @@ export const PF2E_FEATS_CATALOG: FeatDefinition[] = [
     sourceApproximate: true,
     rarity: "common"
   }
+,
+  {
+    "id": "feat.ancestry.dwarf.estrategia_da_montanha",
+    "name": "Estratégia Da Montanha (Mountain's Stoutness)",
+    "names": {
+      "pt-BR": "Estratégia Da Montanha",
+      "en": "Mountain's Stoutness",
+      "es": "Firmeza de la montaña"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Anão",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Anão catalogado do Livro do Jogador (Player Core), página 44.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Anão (Nível 1).",
+      "en": "Dwarf ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Enano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 44
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Anão",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.dwarf.familiaridade_com_armas_enanicas",
+    "name": "Familiaridade Com Armas Enânicas (Dwarven Weapon Familiarity)",
+    "names": {
+      "pt-BR": "Familiaridade Com Armas Enânicas",
+      "en": "Dwarven Weapon Familiarity",
+      "es": "Familiaridad con armas enanas"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Anão",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Anão catalogado do Livro do Jogador (Player Core), página 44.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Anão (Nível 1).",
+      "en": "Dwarf ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Enano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 44
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Anão",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.dwarf.desafiar_a_escuridao",
+    "name": "Desafiar A Escuridão (Defy the Darkness)",
+    "names": {
+      "pt-BR": "Desafiar A Escuridão",
+      "en": "Defy the Darkness",
+      "es": "Desafiar la oscuridad"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Anão",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Anão catalogado do Livro do Jogador (Player Core), página 44.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Anão (Nível 5).",
+      "en": "Dwarf ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Enano (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 44
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Anão",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.dwarf.ferro_desimpedido",
+    "name": "Ferro Desimpedido (Unburdened Iron)",
+    "names": {
+      "pt-BR": "Ferro Desimpedido",
+      "en": "Unburdened Iron",
+      "es": "Hierro sin trabas"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Anão",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Anão catalogado do Livro do Jogador (Player Core), página 44.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Anão (Nível 1).",
+      "en": "Dwarf ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Enano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 44
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Anão",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.dwarf.reforco_enanico",
+    "name": "Reforço Enânico (Dwarven Reinforcement)",
+    "names": {
+      "pt-BR": "Reforço Enânico",
+      "en": "Dwarven Reinforcement",
+      "es": "Refuerzo enano"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Anão",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Anão catalogado do Livro do Jogador (Player Core), página 44.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Anão (Nível 5).",
+      "en": "Dwarf ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Enano (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 44
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Anão",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.dwarf.olho_do_pedreiro",
+    "name": "Olho Do Pedreiro (Stonecunning)",
+    "names": {
+      "pt-BR": "Olho Do Pedreiro",
+      "en": "Stonecunning",
+      "es": "Ojo del cantero"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Anão",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Anão catalogado do Livro do Jogador (Player Core), página 44.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Anão (Nível 1).",
+      "en": "Dwarf ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Enano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 44
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Anão",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.dwarf.portal_de_pedra",
+    "name": "Portal De Pedra (Stonegate)",
+    "names": {
+      "pt-BR": "Portal De Pedra",
+      "en": "Stonegate",
+      "es": "Portal de piedra"
+    },
+    "category": "Ancestralidade",
+    "level": 17,
+    "traits": [
+      "Anão",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Anão catalogado do Livro do Jogador (Player Core), página 44.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Anão (Nível 17).",
+      "en": "Dwarf ancestry feat (Level 17).",
+      "es": "Dote de ascendencia de Enano (Nivel 17)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 44
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Anão",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.elf.semblante_inabalavel",
+    "name": "Semblante Inabalável (Unwavering Mien)",
+    "names": {
+      "pt-BR": "Semblante Inabalável",
+      "en": "Unwavering Mien",
+      "es": "Semblante inquebrantable"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Elfo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Elfo catalogado do Livro do Jogador (Player Core), página 48.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Elfo (Nível 1).",
+      "en": "Elf ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Elfo (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 48
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Elfo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.elf.abandonado",
+    "name": "Abandonado (Abandonado)",
+    "names": {
+      "pt-BR": "Abandonado",
+      "en": "Abandonado",
+      "es": "Abandonado"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Elfo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Elfo catalogado do Livro do Jogador (Player Core), página 48.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Elfo (Nível 1).",
+      "en": "Elf ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Elfo (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 48
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Elfo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.elf.ligeiro",
+    "name": "Ligeiro (Ligeiro)",
+    "names": {
+      "pt-BR": "Ligeiro",
+      "en": "Ligeiro",
+      "es": "Ligeiro"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Elfo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Elfo catalogado do Livro do Jogador (Player Core), página 48.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Elfo (Nível 1).",
+      "en": "Elf ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Elfo (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 48
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Elfo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.elf.experiencia_marcial",
+    "name": "Experiência Marcial (Martial Experience)",
+    "names": {
+      "pt-BR": "Experiência Marcial",
+      "en": "Martial Experience",
+      "es": "Experiencia marcial"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Elfo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Elfo catalogado do Livro do Jogador (Player Core), página 48.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Elfo (Nível 5).",
+      "en": "Elf ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Elfo (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 48
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Elfo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.elf.familiaridade_com_armas_elficas",
+    "name": "Familiaridade Com Armas Élficas (Elven Weapon Familiarity)",
+    "names": {
+      "pt-BR": "Familiaridade Com Armas Élficas",
+      "en": "Elven Weapon Familiarity",
+      "es": "Familiaridad con armas élficas"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Elfo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Elfo catalogado do Livro do Jogador (Player Core), página 48.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Elfo (Nível 1).",
+      "en": "Elf ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Elfo (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 48
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Elfo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.elf.paciencia_eterna",
+    "name": "Paciência Eterna (Ageless Patience)",
+    "names": {
+      "pt-BR": "Paciência Eterna",
+      "en": "Ageless Patience",
+      "es": "Paciencia eterna"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Elfo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Elfo catalogado do Livro do Jogador (Player Core), página 48.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Elfo (Nível 5).",
+      "en": "Elf ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Elfo (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 48
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Elfo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.elf.longevidade_ancestral",
+    "name": "Longevidade Ancestral (Ancestral Longevity)",
+    "names": {
+      "pt-BR": "Longevidade Ancestral",
+      "en": "Ancestral Longevity",
+      "es": "Longevidad ancestral"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Elfo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Elfo catalogado do Livro do Jogador (Player Core), página 48.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Elfo (Nível 1).",
+      "en": "Elf ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Elfo (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 48
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Elfo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.elf.magia_extraterrena",
+    "name": "Magia Extraterrena (Otherworldly Magic)",
+    "names": {
+      "pt-BR": "Magia Extraterrena",
+      "en": "Otherworldly Magic",
+      "es": "Magia de otro mundo"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Elfo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Elfo catalogado do Livro do Jogador (Player Core), página 48.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Elfo (Nível 1).",
+      "en": "Elf ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Elfo (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 48
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Elfo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.elf.suspeita_ancestral",
+    "name": "Suspeita Ancestral (Ancestral Suspicion)",
+    "names": {
+      "pt-BR": "Suspeita Ancestral",
+      "en": "Ancestral Suspicion",
+      "es": "Sospecha ancestral"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Elfo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Elfo catalogado do Livro do Jogador (Player Core), página 48.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Elfo (Nível 5).",
+      "en": "Elf ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Elfo (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 48
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Elfo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.elf.saber_elfico",
+    "name": "Saber Élfico (Elven Lore)",
+    "names": {
+      "pt-BR": "Saber Élfico",
+      "en": "Elven Lore",
+      "es": "Saber élfico"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Elfo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Elfo catalogado do Livro do Jogador (Player Core), página 48.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Elfo (Nível 1).",
+      "en": "Elf ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Elfo (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 48
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Elfo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.elf.escalador_de_arvores",
+    "name": "Escalador De Árvores (Tree Climber)",
+    "names": {
+      "pt-BR": "Escalador De Árvores",
+      "en": "Tree Climber",
+      "es": "Trepatrepadores"
+    },
+    "category": "Ancestralidade",
+    "level": 9,
+    "traits": [
+      "Elfo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Elfo catalogado do Livro do Jogador (Player Core), página 48.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Elfo (Nível 9).",
+      "en": "Elf ancestry feat (Level 9).",
+      "es": "Dote de ascendencia de Elfo (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 48
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Elfo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.elf.longevidade_de_especialista",
+    "name": "Longevidade De Especialista (Expert Longevity)",
+    "names": {
+      "pt-BR": "Longevidade De Especialista",
+      "en": "Expert Longevity",
+      "es": "Longevidad de experto"
+    },
+    "category": "Ancestralidade",
+    "level": 9,
+    "traits": [
+      "Elfo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Elfo catalogado do Livro do Jogador (Player Core), página 48.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Elfo (Nível 9).",
+      "en": "Elf ancestry feat (Level 9).",
+      "es": "Dote de ascendencia de Elfo (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 48
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Elfo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.elf.viajante_magico",
+    "name": "Viajante Mágico (Magic's Vessel)",
+    "names": {
+      "pt-BR": "Viajante Mágico",
+      "en": "Magic's Vessel",
+      "es": "Viajero mágico"
+    },
+    "category": "Ancestralidade",
+    "level": 17,
+    "traits": [
+      "Elfo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Elfo catalogado do Livro do Jogador (Player Core), página 48.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Elfo (Nível 17).",
+      "en": "Elf ancestry feat (Level 17).",
+      "es": "Dote de ascendencia de Elfo (Nivel 17)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 48
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Elfo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.elf.perspicacia_extraterrena",
+    "name": "Perspicácia Extraterrena (Otherworldly Acumen)",
+    "names": {
+      "pt-BR": "Perspicácia Extraterrena",
+      "en": "Otherworldly Acumen",
+      "es": "Perspicacia de otro mundo"
+    },
+    "category": "Ancestralidade",
+    "level": 9,
+    "traits": [
+      "Elfo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Elfo catalogado do Livro do Jogador (Player Core), página 48.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Elfo (Nível 9).",
+      "en": "Elf ancestry feat (Level 9).",
+      "es": "Dote de ascendencia de Elfo (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 48
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Elfo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.gnome.magia_do_primeiro_mundo",
+    "name": "Magia Do Primeiro Mundo (First World Magic)",
+    "names": {
+      "pt-BR": "Magia Do Primeiro Mundo",
+      "en": "First World Magic",
+      "es": "Magia del Primer Mundo"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Gnomo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Gnomo catalogado do Livro do Jogador (Player Core), página 52.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Gnomo (Nível 1).",
+      "en": "Gnome ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Gnomo (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 52
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Gnomo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.gnome.obsessao_gnomica",
+    "name": "Obsessão Gnômica (Gnome Obsession)",
+    "names": {
+      "pt-BR": "Obsessão Gnômica",
+      "en": "Gnome Obsession",
+      "es": "Obsesión gnómica"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Gnomo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Gnomo catalogado do Livro do Jogador (Player Core), página 52.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Gnomo (Nível 1).",
+      "en": "Gnome ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Gnomo (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 52
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Gnomo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.gnome.cumplice_animal",
+    "name": "Cúmplice Animal (Animal Accomplice)",
+    "names": {
+      "pt-BR": "Cúmplice Animal",
+      "en": "Animal Accomplice",
+      "es": "Cómplice animal"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Gnomo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Gnomo catalogado do Livro do Jogador (Player Core), página 52.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Gnomo (Nível 1).",
+      "en": "Gnome ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Gnomo (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 52
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Gnomo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.gnome.sentir_ilusao",
+    "name": "Sentir Ilusão (Illusion Sense)",
+    "names": {
+      "pt-BR": "Sentir Ilusão",
+      "en": "Illusion Sense",
+      "es": "Sentir ilusión"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Gnomo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Gnomo catalogado do Livro do Jogador (Player Core), página 52.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Gnomo (Nível 1).",
+      "en": "Gnome ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Gnomo (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 52
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Gnomo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.gnome.companheiro_das_fadas",
+    "name": "Companheiro Das Fadas (Fey Fellowship)",
+    "names": {
+      "pt-BR": "Companheiro Das Fadas",
+      "en": "Fey Fellowship",
+      "es": "Compañerismo feérico"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Gnomo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Gnomo catalogado do Livro do Jogador (Player Core), página 52.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Gnomo (Nível 1).",
+      "en": "Gnome ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Gnomo (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 52
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Gnomo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.gnome.elocucionista_animal",
+    "name": "Elocucionista Animal (Animal Elocutionist)",
+    "names": {
+      "pt-BR": "Elocucionista Animal",
+      "en": "Animal Elocutionist",
+      "es": "Elocucionista animal"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Gnomo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Gnomo catalogado do Livro do Jogador (Player Core), página 52.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Gnomo (Nível 1).",
+      "en": "Gnome ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Gnomo (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 52
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Gnomo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.gnome.familiaridade_com_armas_gnomicas",
+    "name": "Familiaridade Com Armas Gnômicas (Gnome Weapon Familiarity)",
+    "names": {
+      "pt-BR": "Familiaridade Com Armas Gnômicas",
+      "en": "Gnome Weapon Familiarity",
+      "es": "Familiaridad con armas gnómicas"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Gnomo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Gnomo catalogado do Livro do Jogador (Player Core), página 52.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Gnomo (Nível 1).",
+      "en": "Gnome ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Gnomo (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 52
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Gnomo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.gnome.de_volta_para_casa",
+    "name": "De Volta Para Casa (Homeward Bound)",
+    "names": {
+      "pt-BR": "De Volta Para Casa",
+      "en": "Homeward Bound",
+      "es": "Regreso al hogar"
+    },
+    "category": "Ancestralidade",
+    "level": 17,
+    "traits": [
+      "Gnomo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Gnomo catalogado do Livro do Jogador (Player Core), página 52.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Gnomo (Nível 17).",
+      "en": "Gnome ancestry feat (Level 17).",
+      "es": "Dote de ascendencia de Gnomo (Nivel 17)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 52
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Gnomo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.gnome.curiosidade_cautelosa",
+    "name": "Curiosidade Cautelosa (Cautious Curiosity)",
+    "names": {
+      "pt-BR": "Curiosidade Cautelosa",
+      "en": "Cautious Curiosity",
+      "es": "Curiosidad cautelosa"
+    },
+    "category": "Ancestralidade",
+    "level": 9,
+    "traits": [
+      "Gnomo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Gnomo catalogado do Livro do Jogador (Player Core), página 52.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Gnomo (Nível 9).",
+      "en": "Gnome ancestry feat (Level 9).",
+      "es": "Dote de ascendencia de Gnomo (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 52
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Gnomo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.goblin.muito_sorrateiro",
+    "name": "Muito Sorrateiro (Very Sneaky)",
+    "names": {
+      "pt-BR": "Muito Sorrateiro",
+      "en": "Very Sneaky",
+      "es": "Muy sigiloso"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Goblin",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Goblin catalogado do Livro do Jogador (Player Core), página 56.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Goblin (Nível 1).",
+      "en": "Goblin ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Goblin (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 56
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Goblin",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.goblin.catador_da_cidade",
+    "name": "Catador Da Cidade (City Scavenger)",
+    "names": {
+      "pt-BR": "Catador Da Cidade",
+      "en": "City Scavenger",
+      "es": "Carroñero de ciudad"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Goblin",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Goblin catalogado do Livro do Jogador (Player Core), página 56.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Goblin (Nível 1).",
+      "en": "Goblin ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Goblin (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 56
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Goblin",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.goblin.cavaleiro_brusco",
+    "name": "Cavaleiro Brusco (Rough Rider)",
+    "names": {
+      "pt-BR": "Cavaleiro Brusco",
+      "en": "Rough Rider",
+      "es": "Jinete rudo"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Goblin",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Goblin catalogado do Livro do Jogador (Player Core), página 56.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Goblin (Nível 1).",
+      "en": "Goblin ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Goblin (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 56
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Goblin",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.goblin.saber_goblinico",
+    "name": "Saber Goblínico (Goblin Lore)",
+    "names": {
+      "pt-BR": "Saber Goblínico",
+      "en": "Goblin Lore",
+      "es": "Saber trasgo"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Goblin",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Goblin catalogado do Livro do Jogador (Player Core), página 56.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Goblin (Nível 1).",
+      "en": "Goblin ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Goblin (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 56
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Goblin",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.goblin.familiaridade_com_armas_de_goblin",
+    "name": "Familiaridade Com Armas De Goblin (Goblin Weapon Familiarity)",
+    "names": {
+      "pt-BR": "Familiaridade Com Armas De Goblin",
+      "en": "Goblin Weapon Familiarity",
+      "es": "Familiaridad con armas de trasgo"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Goblin",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Goblin catalogado do Livro do Jogador (Player Core), página 56.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Goblin (Nível 1).",
+      "en": "Goblin ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Goblin (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 56
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Goblin",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.goblin.funileiro_de_sucata",
+    "name": "Funileiro De Sucata (Junk Tinker)",
+    "names": {
+      "pt-BR": "Funileiro De Sucata",
+      "en": "Junk Tinker",
+      "es": "Chatarrero"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Goblin",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Goblin catalogado do Livro do Jogador (Player Core), página 56.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Goblin (Nível 1).",
+      "en": "Goblin ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Goblin (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 56
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Goblin",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.goblin.cantar_alto",
+    "name": "Cantar Alto (Goblin Song)",
+    "names": {
+      "pt-BR": "Cantar Alto",
+      "en": "Goblin Song",
+      "es": "Canción de trasgo"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Goblin",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Goblin catalogado do Livro do Jogador (Player Core), página 56.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Goblin (Nível 5).",
+      "en": "Goblin ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Goblin (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 56
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Goblin",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.goblin.vandalo",
+    "name": "Vândalo (Vandal)",
+    "names": {
+      "pt-BR": "Vândalo",
+      "en": "Vandal",
+      "es": "Vándalo"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Goblin",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Goblin catalogado do Livro do Jogador (Player Core), página 56.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Goblin (Nível 5).",
+      "en": "Goblin ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Goblin (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 56
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Goblin",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.goblin.corridinha_de_goblin",
+    "name": "Corridinha De Goblin (Goblin Scurry)",
+    "names": {
+      "pt-BR": "Corridinha De Goblin",
+      "en": "Goblin Scurry",
+      "es": "Carrera de trasgo"
+    },
+    "category": "Ancestralidade",
+    "level": 9,
+    "traits": [
+      "Goblin",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Goblin catalogado do Livro do Jogador (Player Core), página 56.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Goblin (Nível 9).",
+      "en": "Goblin ancestry feat (Level 9).",
+      "es": "Dote de ascendencia de Goblin (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 56
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Goblin",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.cavaleiro_de_pradaria",
+    "name": "Cavaleiro De Pradaria (Prairie Rider)",
+    "names": {
+      "pt-BR": "Cavaleiro De Pradaria",
+      "en": "Prairie Rider",
+      "es": "Jinete de la pradera"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 1).",
+      "en": "Halfling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Mediano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.distracao_nas_sombras",
+    "name": "Distração Nas Sombras (Distracting Shadows)",
+    "names": {
+      "pt-BR": "Distração Nas Sombras",
+      "en": "Distracting Shadows",
+      "es": "Distracción en las sombras"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 1).",
+      "en": "Halfling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Mediano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.halfling_liberto",
+    "name": "Halfling Liberto (Unfettered Halfling)",
+    "names": {
+      "pt-BR": "Halfling Liberto",
+      "en": "Unfettered Halfling",
+      "es": "Mediano liberado"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 1).",
+      "en": "Halfling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Mediano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.expressoes_idiomaticas",
+    "name": "Expressões Idiomáticas (Cultural Adaptability)",
+    "names": {
+      "pt-BR": "Expressões Idiomáticas",
+      "en": "Cultural Adaptability",
+      "es": "Expresiones idiomáticas"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 1).",
+      "en": "Halfling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Mediano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.pes_firmes",
+    "name": "Pés Firmes (Surefoot)",
+    "names": {
+      "pt-BR": "Pés Firmes",
+      "en": "Surefoot",
+      "es": "Pies firmes"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 1).",
+      "en": "Halfling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Mediano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.saber_halfling",
+    "name": "Saber Halfling (Halfling Lore)",
+    "names": {
+      "pt-BR": "Saber Halfling",
+      "en": "Halfling Lore",
+      "es": "Saber mediano"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 1).",
+      "en": "Halfling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Mediano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.familiaridade_com_armas_de_halfling",
+    "name": "Familiaridade Com Armas De Halfling (Halfling Weapon Familiarity)",
+    "names": {
+      "pt-BR": "Familiaridade Com Armas De Halfling",
+      "en": "Halfling Weapon Familiarity",
+      "es": "Familiaridad con armas de mediano"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 1).",
+      "en": "Halfling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Mediano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.fundeiro_titanico",
+    "name": "Fundeiro Titânico (Titan Slinger)",
+    "names": {
+      "pt-BR": "Fundeiro Titânico",
+      "en": "Titan Slinger",
+      "es": "Hondero titánico"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 1).",
+      "en": "Halfling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Mediano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.adaptabilidade_cultural",
+    "name": "Adaptabilidade Cultural (Cultural Adaptability)",
+    "names": {
+      "pt-BR": "Adaptabilidade Cultural",
+      "en": "Cultural Adaptability",
+      "es": "Adaptabilidad cultural"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 5).",
+      "en": "Halfling ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Mediano (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.halfling_atento",
+    "name": "Halfling Atento (Watchful Halfling)",
+    "names": {
+      "pt-BR": "Halfling Atento",
+      "en": "Watchful Halfling",
+      "es": "Mediano vigilante"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 1).",
+      "en": "Halfling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Mediano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.sombras_incessantes",
+    "name": "Sombras Incessantes (Ceaseless Shadows)",
+    "names": {
+      "pt-BR": "Sombras Incessantes",
+      "en": "Ceaseless Shadows",
+      "es": "Sombras incesantes"
+    },
+    "category": "Ancestralidade",
+    "level": 13,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 13).",
+      "en": "Halfling ancestry feat (Level 13).",
+      "es": "Dote de ascendencia de Mediano (Nivel 13)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.dancar_sob_pernas",
+    "name": "Dançar Sob Pernas (Dance Underfoot)",
+    "names": {
+      "pt-BR": "Dançar Sob Pernas",
+      "en": "Dance Underfoot",
+      "es": "Bailar bajo las piernas"
+    },
+    "category": "Ancestralidade",
+    "level": 9,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 9).",
+      "en": "Halfling ancestry feat (Level 9).",
+      "es": "Dote de ascendencia de Mediano (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.na_propria_sombra",
+    "name": "Na Própria Sombra (Shadow Self)",
+    "names": {
+      "pt-BR": "Na Própria Sombra",
+      "en": "Shadow Self",
+      "es": "En la propia sombra"
+    },
+    "category": "Ancestralidade",
+    "level": 17,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 17).",
+      "en": "Halfling ancestry feat (Level 17).",
+      "es": "Dote de ascendencia de Mediano (Nivel 17)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.irreprimivel",
+    "name": "Irreprimível (Irrepressible)",
+    "names": {
+      "pt-BR": "Irreprimível",
+      "en": "Irrepressible",
+      "es": "Irreprimible"
+    },
+    "category": "Ancestralidade",
+    "level": 9,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 9).",
+      "en": "Halfling ancestry feat (Level 9).",
+      "es": "Dote de ascendencia de Mediano (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.passagem_desimpedida",
+    "name": "Passagem Desimpedida (Unobstructed Path)",
+    "names": {
+      "pt-BR": "Passagem Desimpedida",
+      "en": "Unobstructed Path",
+      "es": "Paso despejado"
+    },
+    "category": "Ancestralidade",
+    "level": 9,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 9).",
+      "en": "Halfling ancestry feat (Level 9).",
+      "es": "Dote de ascendencia de Mediano (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.sorte_guiada",
+    "name": "Sorte Guiada (Guiding Luck)",
+    "names": {
+      "pt-BR": "Sorte Guiada",
+      "en": "Guiding Luck",
+      "es": "Suerte guiada"
+    },
+    "category": "Ancestralidade",
+    "level": 9,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 9).",
+      "en": "Halfling ancestry feat (Level 9).",
+      "es": "Dote de ascendencia de Mediano (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.dancar_e_tombar",
+    "name": "Dançar E Tombar (Dance and Tumble)",
+    "names": {
+      "pt-BR": "Dançar E Tombar",
+      "en": "Dance and Tumble",
+      "es": "Bailar y rodar"
+    },
+    "category": "Ancestralidade",
+    "level": 13,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 13).",
+      "en": "Halfling ancestry feat (Level 13).",
+      "es": "Dote de ascendencia de Mediano (Nivel 13)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.ambicao_natural",
+    "name": "Ambição Natural (Natural Ambition)",
+    "names": {
+      "pt-BR": "Ambição Natural",
+      "en": "Natural Ambition",
+      "es": "Ambición natural"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 1).",
+      "en": "Halfling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Mediano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.armamento_nao_convencional",
+    "name": "Armamento Não Convencional (Unconventional Weaponry)",
+    "names": {
+      "pt-BR": "Armamento Não Convencional",
+      "en": "Unconventional Weaponry",
+      "es": "Armamento no convencional"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 1).",
+      "en": "Halfling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Mediano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.discipulo_adaptativo",
+    "name": "Discípulo Adaptativo (Adaptive Adept)",
+    "names": {
+      "pt-BR": "Discípulo Adaptativo",
+      "en": "Adaptive Adept",
+      "es": "Discípulo adaptativo"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 5).",
+      "en": "Halfling ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Mediano (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.obstinacao_altiva",
+    "name": "Obstinação Altiva (Haughty Obstinacy)",
+    "names": {
+      "pt-BR": "Obstinação Altiva",
+      "en": "Haughty Obstinacy",
+      "es": "Obstinación altiva"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 1).",
+      "en": "Halfling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Mediano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.improvisador_astuto",
+    "name": "Improvisador Astuto (Clever Improviser)",
+    "names": {
+      "pt-BR": "Improvisador Astuto",
+      "en": "Clever Improviser",
+      "es": "Improvisador astuto"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 5).",
+      "en": "Halfling ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Mediano (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.perceber_aliados",
+    "name": "Perceber Aliados (Sense Allies)",
+    "names": {
+      "pt-BR": "Perceber Aliados",
+      "en": "Sense Allies",
+      "es": "Sentir aliados"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 5).",
+      "en": "Halfling ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Mediano (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.pericia_natural",
+    "name": "Perícia Natural (Natural Skill)",
+    "names": {
+      "pt-BR": "Perícia Natural",
+      "en": "Natural Skill",
+      "es": "Habilidad natural"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 1).",
+      "en": "Halfling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Mediano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.human.multitalentoso",
+    "name": "Multitalentoso (Multitalented)",
+    "names": {
+      "pt-BR": "Multitalentoso",
+      "en": "Multitalented",
+      "es": "Multitalentoso"
+    },
+    "category": "Ancestralidade",
+    "level": 9,
+    "traits": [
+      "Humano",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Humano catalogado do Livro do Jogador (Player Core), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Humano (Nível 9).",
+      "en": "Human ancestry feat (Level 9).",
+      "es": "Dote de ascendencia de Humano (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Humano",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.human.viajante_calejado",
+    "name": "Viajante Calejado (Hardy Traveler)",
+    "names": {
+      "pt-BR": "Viajante Calejado",
+      "en": "Hardy Traveler",
+      "es": "Viajero curtido"
+    },
+    "category": "Ancestralidade",
+    "level": 9,
+    "traits": [
+      "Humano",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Humano catalogado do Livro do Jogador (Player Core), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Humano (Nível 9).",
+      "en": "Human ancestry feat (Level 9).",
+      "es": "Dote de ascendencia de Humano (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Humano",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.human.sombra_dos_ermos",
+    "name": "Sombra Dos Ermos (Shadow of the Wild)",
+    "names": {
+      "pt-BR": "Sombra Dos Ermos",
+      "en": "Shadow of the Wild",
+      "es": "Sombra de los yermos"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Humano",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Humano catalogado do Livro do Jogador (Player Core), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Humano (Nível 1).",
+      "en": "Human ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Humano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Humano",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.human.alcance_alongado",
+    "name": "Alcance Alongado (Grasping Reach)",
+    "names": {
+      "pt-BR": "Alcance Alongado",
+      "en": "Grasping Reach",
+      "es": "Alcance extendido"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Humano",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Humano catalogado do Livro do Jogador (Player Core), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Humano (Nível 1).",
+      "en": "Human ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Humano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Humano",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.human.falar_com_parentes",
+    "name": "Falar Com Parentes (Speak with Kindred)",
+    "names": {
+      "pt-BR": "Falar Com Parentes",
+      "en": "Speak with Kindred",
+      "es": "Hablar con semejantes"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Humano",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Humano catalogado do Livro do Jogador (Player Core), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Humano (Nível 5).",
+      "en": "Human ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Humano (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Humano",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.human.disparar_sementes",
+    "name": "Disparar Sementes (Seedpod)",
+    "names": {
+      "pt-BR": "Disparar Sementes",
+      "en": "Seedpod",
+      "es": "Disparar semillas"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Humano",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Humano catalogado do Livro do Jogador (Player Core), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Humano (Nível 1).",
+      "en": "Human ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Humano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Humano",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.human.fofura_inofensiva",
+    "name": "Fofura Inofensiva (Harmlessly Cute)",
+    "names": {
+      "pt-BR": "Fofura Inofensiva",
+      "en": "Harmlessly Cute",
+      "es": "Ternura inofensiva"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Humano",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Humano catalogado do Livro do Jogador (Player Core), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Humano (Nível 1).",
+      "en": "Human ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Humano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Humano",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.human.raizes_ancorantes",
+    "name": "Raízes Ancorantes (Anchoring Roots)",
+    "names": {
+      "pt-BR": "Raízes Ancorantes",
+      "en": "Anchoring Roots",
+      "es": "Raíces ancladas"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Humano",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Humano catalogado do Livro do Jogador (Player Core), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Humano (Nível 5).",
+      "en": "Human ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Humano (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Humano",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.human.impavido",
+    "name": "Impávido (Undaunted)",
+    "names": {
+      "pt-BR": "Impávido",
+      "en": "Undaunted",
+      "es": "Impávido"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Humano",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Humano catalogado do Livro do Jogador (Player Core), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Humano (Nível 1).",
+      "en": "Human ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Humano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Humano",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.human.saber_leshyn",
+    "name": "Saber Leshyn (Leshy Lore)",
+    "names": {
+      "pt-BR": "Saber Leshyn",
+      "en": "Leshy Lore",
+      "es": "Saber leshy"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Humano",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Humano catalogado do Livro do Jogador (Player Core), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Humano (Nível 1).",
+      "en": "Human ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Humano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Humano",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.leshy.rebrotar",
+    "name": "Rebrotar (Regrowth)",
+    "names": {
+      "pt-BR": "Rebrotar",
+      "en": "Regrowth",
+      "es": "Rebrote"
+    },
+    "category": "Ancestralidade",
+    "level": 17,
+    "traits": [
+      "Leshy",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Leshy catalogado do Livro do Jogador (Player Core), página 68.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Leshy (Nível 17).",
+      "en": "Leshy ancestry feat (Level 17).",
+      "es": "Dote de ascendencia de Leshy (Nivel 17)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 68
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Leshy",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.leshy.disparar_sementes_espinhosas",
+    "name": "Disparar Sementes Espinhosas (Thorned Seedpod)",
+    "names": {
+      "pt-BR": "Disparar Sementes Espinhosas",
+      "en": "Thorned Seedpod",
+      "es": "Disparar semillas espinosas"
+    },
+    "category": "Ancestralidade",
+    "level": 9,
+    "traits": [
+      "Leshy",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Leshy catalogado do Livro do Jogador (Player Core), página 68.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Leshy (Nível 9).",
+      "en": "Leshy ancestry feat (Level 9).",
+      "es": "Dote de ascendencia de Leshy (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 68
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Leshy",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.leshy.chamado_do_homem_verde",
+    "name": "Chamado Do Homem Verde (Call of the Green Man)",
+    "names": {
+      "pt-BR": "Chamado Do Homem Verde",
+      "en": "Call of the Green Man",
+      "es": "Llamada del hombre verde"
+    },
+    "category": "Ancestralidade",
+    "level": 13,
+    "traits": [
+      "Leshy",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Leshy catalogado do Livro do Jogador (Player Core), página 68.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Leshy (Nível 13).",
+      "en": "Leshy ancestry feat (Level 13).",
+      "es": "Dote de ascendencia de Leshy (Nivel 13)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 68
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Leshy",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.leshy.punhos_de_ferro",
+    "name": "Punhos De Ferro (Iron Fists)",
+    "names": {
+      "pt-BR": "Punhos De Ferro",
+      "en": "Iron Fists",
+      "es": "Puños de hierro"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Leshy",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Leshy catalogado do Livro do Jogador (Player Core), página 68.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Leshy (Nível 1).",
+      "en": "Leshy ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Leshy (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 68
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Leshy",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.leshy.saber_orquico",
+    "name": "Saber Órquico (Orc Lore)",
+    "names": {
+      "pt-BR": "Saber Órquico",
+      "en": "Orc Lore",
+      "es": "Saber orco"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Leshy",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Leshy catalogado do Livro do Jogador (Player Core), página 68.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Leshy (Nível 1).",
+      "en": "Leshy ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Leshy (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 68
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Leshy",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.leshy.familiaridade_com_armas_orquicas",
+    "name": "Familiaridade Com Armas Órquicas (Orc Weapon Familiarity)",
+    "names": {
+      "pt-BR": "Familiaridade Com Armas Órquicas",
+      "en": "Orc Weapon Familiarity",
+      "es": "Familiaridad con armas orcas"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Leshy",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Leshy catalogado do Livro do Jogador (Player Core), página 68.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Leshy (Nível 1).",
+      "en": "Leshy ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Leshy (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 68
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Leshy",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.leshy.treinador_de_feras",
+    "name": "Treinador De Feras (Beast Trainer)",
+    "names": {
+      "pt-BR": "Treinador De Feras",
+      "en": "Beast Trainer",
+      "es": "Entrenador de bestias"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Leshy",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Leshy catalogado do Livro do Jogador (Player Core), página 68.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Leshy (Nível 1).",
+      "en": "Leshy ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Leshy (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 68
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Leshy",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.leshy.marca_do_dominio",
+    "name": "Marca Do Domínio (Mark of Dominion)",
+    "names": {
+      "pt-BR": "Marca Do Domínio",
+      "en": "Mark of Dominion",
+      "es": "Marca de dominio"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Leshy",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Leshy catalogado do Livro do Jogador (Player Core), página 68.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Leshy (Nível 1).",
+      "en": "Leshy ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Leshy (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 68
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Leshy",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.leshy.desafiar_a_morte",
+    "name": "Desafiar A Morte (Defy Death)",
+    "names": {
+      "pt-BR": "Desafiar A Morte",
+      "en": "Defy Death",
+      "es": "Desafiar a la muerte"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Leshy",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Leshy catalogado do Livro do Jogador (Player Core), página 68.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Leshy (Nível 5).",
+      "en": "Leshy ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Leshy (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 68
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Leshy",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.leshy.presas",
+    "name": "Presas (Tusks)",
+    "names": {
+      "pt-BR": "Presas",
+      "en": "Tusks",
+      "es": "Colmillos"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Leshy",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Leshy catalogado do Livro do Jogador (Player Core), página 68.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Leshy (Nível 1).",
+      "en": "Leshy ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Leshy (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 68
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Leshy",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.leshy.golpes_sangrentos",
+    "name": "Golpes Sangrentos (Bloody Blows)",
+    "names": {
+      "pt-BR": "Golpes Sangrentos",
+      "en": "Bloody Blows",
+      "es": "Golpes sangrientos"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Leshy",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Leshy catalogado do Livro do Jogador (Player Core), página 68.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Leshy (Nível 5).",
+      "en": "Leshy ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Leshy (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 68
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Leshy",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.leshy.poderio_atletico",
+    "name": "Poderio Atlético (Athletic Might)",
+    "names": {
+      "pt-BR": "Poderio Atlético",
+      "en": "Athletic Might",
+      "es": "Poderío atlético"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Leshy",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Leshy catalogado do Livro do Jogador (Player Core), página 68.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Leshy (Nível 5).",
+      "en": "Leshy ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Leshy (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 68
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Leshy",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.orc.donzela_escoriacea",
+    "name": "Donzela Escoriácea (Slag May)",
+    "names": {
+      "pt-BR": "Donzela Escoriácea",
+      "en": "Slag May",
+      "es": "Doncella escoriácea"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Orc",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Orc catalogado do Livro do Jogador (Player Core), página 72.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Orc (Nível 1).",
+      "en": "Orc ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Orco (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 72
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Orc",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.orc.visao_de_estriga",
+    "name": "Visão De Estriga (Hag Eyes)",
+    "names": {
+      "pt-BR": "Visão De Estriga",
+      "en": "Hag Eyes",
+      "es": "Visión de meiga"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Orc",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Orc catalogado do Livro do Jogador (Player Core), página 72.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Orc (Nível 1).",
+      "en": "Orc ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Orco (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 72
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Orc",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.orc.donzela_inocente",
+    "name": "Donzela Inocente (Child of the Snow)",
+    "names": {
+      "pt-BR": "Donzela Inocente",
+      "en": "Child of the Snow",
+      "es": "Doncella inocente"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Orc",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Orc catalogado do Livro do Jogador (Player Core), página 72.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Orc (Nível 1).",
+      "en": "Orc ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Orco (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 72
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Orc",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.orc.chamado",
+    "name": "Chamado (The Call)",
+    "names": {
+      "pt-BR": "Chamado",
+      "en": "The Call",
+      "es": "La llamada"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Orc",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Orc catalogado do Livro do Jogador (Player Core), página 72.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Orc (Nível 5).",
+      "en": "Orc ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Orco (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 72
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Orc",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.orc.donzela_onirica",
+    "name": "Donzela Onírica (Dream May)",
+    "names": {
+      "pt-BR": "Donzela Onírica",
+      "en": "Dream May",
+      "es": "Doncella onírica"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Orc",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Orc catalogado do Livro do Jogador (Player Core), página 72.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Orc (Nível 1).",
+      "en": "Orc ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Orco (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 72
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Orc",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.orc.crianca_das_brumas",
+    "name": "Criança Das Brumas (Mist Child)",
+    "names": {
+      "pt-BR": "Criança Das Brumas",
+      "en": "Mist Child",
+      "es": "Hijo de las brumas"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Orc",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Orc catalogado do Livro do Jogador (Player Core), página 72.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Orc (Nível 5).",
+      "en": "Orc ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Orco (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 72
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Orc",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.orc.garras_amaldicoadas",
+    "name": "Garras Amaldiçoadas (Cursed Claws)",
+    "names": {
+      "pt-BR": "Garras Amaldiçoadas",
+      "en": "Cursed Claws",
+      "es": "Garras malditas"
+    },
+    "category": "Ancestralidade",
+    "level": 9,
+    "traits": [
+      "Orc",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Orc catalogado do Livro do Jogador (Player Core), página 72.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Orc (Nível 9).",
+      "en": "Orc ancestry feat (Level 9).",
+      "es": "Dote de ascendencia de Orco (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 72
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Orc",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.orc.donzela_salobra",
+    "name": "Donzela Salobra (Brine May)",
+    "names": {
+      "pt-BR": "Donzela Salobra",
+      "en": "Brine May",
+      "es": "Doncella salobre"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Orc",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Orc catalogado do Livro do Jogador (Player Core), página 72.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Orc (Nível 1).",
+      "en": "Orc ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Orco (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 72
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Orc",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.orc.resistencia_ocultista",
+    "name": "Resistência Ocultista (Occult Resistance)",
+    "names": {
+      "pt-BR": "Resistência Ocultista",
+      "en": "Occult Resistance",
+      "es": "Resistencia ocultista"
+    },
+    "category": "Ancestralidade",
+    "level": 9,
+    "traits": [
+      "Orc",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Orc catalogado do Livro do Jogador (Player Core), página 72.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Orc (Nível 9).",
+      "en": "Orc ancestry feat (Level 9).",
+      "es": "Dote de ascendencia de Orco (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 72
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Orc",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.changeling.prole_nefasta",
+    "name": "Prole Nefasta (Grim Spawn)",
+    "names": {
+      "pt-BR": "Prole Nefasta",
+      "en": "Grim Spawn",
+      "es": "Prole nefasta"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Cambiante",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Cambiante catalogado do Livro do Jogador (Player Core), página 76.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Cambiante (Nível 1).",
+      "en": "Changeling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Cambiante (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 76
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Cambiante",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.changeling.tocado_pela_musa",
+    "name": "Tocado-pela-musa (Musetouched)",
+    "names": {
+      "pt-BR": "Tocado-pela-musa",
+      "en": "Musetouched",
+      "es": "Tocado por la musa"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Cambiante",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Cambiante catalogado do Livro do Jogador (Player Core), página 76.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Cambiante (Nível 1).",
+      "en": "Changeling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Cambiante (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 76
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Cambiante",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.changeling.angelical",
+    "name": "Angelical (Angelkin)",
+    "names": {
+      "pt-BR": "Angelical",
+      "en": "Angelkin",
+      "es": "Angelical"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Cambiante",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Cambiante catalogado do Livro do Jogador (Player Core), página 76.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Cambiante (Nível 1).",
+      "en": "Changeling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Cambiante (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 76
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Cambiante",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.changeling.arauto_da_lei",
+    "name": "Arauto Da Lei (Lawbringer)",
+    "names": {
+      "pt-BR": "Arauto Da Lei",
+      "en": "Lawbringer",
+      "es": "Heraldo de la ley"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Cambiante",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Cambiante catalogado do Livro do Jogador (Player Core), página 76.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Cambiante (Nível 1).",
+      "en": "Changeling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Cambiante (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 76
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Cambiante",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.changeling.nascido_do_fosso",
+    "name": "Nascido Do Fosso (Pitborn)",
+    "names": {
+      "pt-BR": "Nascido Do Fosso",
+      "en": "Pitborn",
+      "es": "Nacido del foso"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Cambiante",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Cambiante catalogado do Livro do Jogador (Player Core), página 76.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Cambiante (Nível 1).",
+      "en": "Changeling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Cambiante (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 76
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Cambiante",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.changeling.prole_infernal",
+    "name": "Prole Infernal (Hellspawn)",
+    "names": {
+      "pt-BR": "Prole Infernal",
+      "en": "Hellspawn",
+      "es": "Prole infernal"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Cambiante",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Cambiante catalogado do Livro do Jogador (Player Core), página 76.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Cambiante (Nível 1).",
+      "en": "Changeling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Cambiante (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 76
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Cambiante",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.changeling.aureola",
+    "name": "Auréola (Halo)",
+    "names": {
+      "pt-BR": "Auréola",
+      "en": "Halo",
+      "es": "Aureola"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Cambiante",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Cambiante catalogado do Livro do Jogador (Player Core), página 76.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Cambiante (Nível 1).",
+      "en": "Changeling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Cambiante (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 76
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Cambiante",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.changeling.herdeiro_de_muitos_planos",
+    "name": "Herdeiro De Muitos Planos (Heir of the Planes)",
+    "names": {
+      "pt-BR": "Herdeiro De Muitos Planos",
+      "en": "Heir of the Planes",
+      "es": "Heredero de muchos planos"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Cambiante",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Cambiante catalogado do Livro do Jogador (Player Core), página 76.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Cambiante (Nível 5).",
+      "en": "Changeling ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Cambiante (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 76
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Cambiante",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.changeling.cascos_ligeiros",
+    "name": "Cascos Ligeiros (Swift Hooves)",
+    "names": {
+      "pt-BR": "Cascos Ligeiros",
+      "en": "Swift Hooves",
+      "es": "Pezuñas veloces"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Cambiante",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Cambiante catalogado do Livro do Jogador (Player Core), página 76.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Cambiante (Nível 1).",
+      "en": "Changeling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Cambiante (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 76
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Cambiante",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.changeling.resistencia_de_nefilim",
+    "name": "Resistência De Nefilim (Nephilim Resistance)",
+    "names": {
+      "pt-BR": "Resistência De Nefilim",
+      "en": "Nephilim Resistance",
+      "es": "Resistencia de nefilim"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Cambiante",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Cambiante catalogado do Livro do Jogador (Player Core), página 76.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Cambiante (Nível 5).",
+      "en": "Changeling ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Cambiante (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 76
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Cambiante",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.changeling.manifestacao_bestial",
+    "name": "Manifestação Bestial (Beast Manifestation)",
+    "names": {
+      "pt-BR": "Manifestação Bestial",
+      "en": "Beast Manifestation",
+      "es": "Manifestación bestial"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Cambiante",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Cambiante catalogado do Livro do Jogador (Player Core), página 76.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Cambiante (Nível 1).",
+      "en": "Changeling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Cambiante (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 76
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Cambiante",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.changeling.sangue_abencoado",
+    "name": "Sangue Abençoado (Blessed Blood)",
+    "names": {
+      "pt-BR": "Sangue Abençoado",
+      "en": "Blessed Blood",
+      "es": "Sangre bendita"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Cambiante",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Cambiante catalogado do Livro do Jogador (Player Core), página 76.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Cambiante (Nível 5).",
+      "en": "Changeling ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Cambiante (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 76
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Cambiante",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.changeling.olhos_de_nefilim",
+    "name": "Olhos De Nefilim (Eyes of the Nephilim)",
+    "names": {
+      "pt-BR": "Olhos De Nefilim",
+      "en": "Eyes of the Nephilim",
+      "es": "Ojos de nefilim"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Cambiante",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Cambiante catalogado do Livro do Jogador (Player Core), página 76.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Cambiante (Nível 1).",
+      "en": "Changeling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Cambiante (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 76
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Cambiante",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.changeling.suplica_extraplanar",
+    "name": "Súplica Extraplanar (Planar Plea)",
+    "names": {
+      "pt-BR": "Súplica Extraplanar",
+      "en": "Planar Plea",
+      "es": "Súplica extraplanar"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Cambiante",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Cambiante catalogado do Livro do Jogador (Player Core), página 76.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Cambiante (Nível 5).",
+      "en": "Changeling ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Cambiante (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 76
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Cambiante",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.changeling.saber_nefelinico",
+    "name": "Saber Nefelínico (Nephilim Lore)",
+    "names": {
+      "pt-BR": "Saber Nefelínico",
+      "en": "Nephilim Lore",
+      "es": "Saber nefelínico"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Cambiante",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Cambiante catalogado do Livro do Jogador (Player Core), página 76.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Cambiante (Nível 1).",
+      "en": "Changeling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Cambiante (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 76
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Cambiante",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.changeling.cauda_habilidosa",
+    "name": "Cauda Habilidosa (Prehensile Tail)",
+    "names": {
+      "pt-BR": "Cauda Habilidosa",
+      "en": "Prehensile Tail",
+      "es": "Cola prensil"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Cambiante",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Cambiante catalogado do Livro do Jogador (Player Core), página 76.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Cambiante (Nível 5).",
+      "en": "Changeling ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Cambiante (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 76
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Cambiante",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.changeling.magia_celestial",
+    "name": "Magia Celestial (Celestial Magic)",
+    "names": {
+      "pt-BR": "Magia Celestial",
+      "en": "Celestial Magic",
+      "es": "Magia celestial"
+    },
+    "category": "Ancestralidade",
+    "level": 9,
+    "traits": [
+      "Cambiante",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Cambiante catalogado do Livro do Jogador (Player Core), página 76.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Cambiante (Nível 9).",
+      "en": "Changeling ancestry feat (Level 9).",
+      "es": "Dote de ascendencia de Cambiante (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 76
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Cambiante",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.changeling.asas_eternas",
+    "name": "Asas Eternas (Eternal Wings)",
+    "names": {
+      "pt-BR": "Asas Eternas",
+      "en": "Eternal Wings",
+      "es": "Alas eternas"
+    },
+    "category": "Ancestralidade",
+    "level": 17,
+    "traits": [
+      "Cambiante",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Cambiante catalogado do Livro do Jogador (Player Core), página 76.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Cambiante (Nível 17).",
+      "en": "Changeling ancestry feat (Level 17).",
+      "es": "Dote de ascendencia de Cambiante (Nivel 17)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 76
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Cambiante",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.nephilim.magia_inferal",
+    "name": "Magia Inferal (Fiendish Magic)",
+    "names": {
+      "pt-BR": "Magia Inferal",
+      "en": "Fiendish Magic",
+      "es": "Magia infernal"
+    },
+    "category": "Ancestralidade",
+    "level": 9,
+    "traits": [
+      "Nefilim",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Nefilim catalogado do Livro do Jogador (Player Core), página 78.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Nefilim (Nível 9).",
+      "en": "Nephilim ancestry feat (Level 9).",
+      "es": "Dote de ascendencia de Nefilim (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 78
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Nefilim",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.nephilim.gloria_conquistada",
+    "name": "Glória Conquistada (Glória Conquistada)",
+    "names": {
+      "pt-BR": "Glória Conquistada",
+      "en": "Glória Conquistada",
+      "es": "Glória Conquistada"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Nefilim",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Nefilim catalogado do Livro do Jogador (Player Core), página 78.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Nefilim (Nível 1).",
+      "en": "Nephilim ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Nefilim (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 78
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Nefilim",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.nephilim.inspirar_imitacao",
+    "name": "Inspirar Imitação (Inspirar Imitação)",
+    "names": {
+      "pt-BR": "Inspirar Imitação",
+      "en": "Inspirar Imitação",
+      "es": "Inspirar Imitação"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Nefilim",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Nefilim catalogado do Livro do Jogador (Player Core), página 78.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Nefilim (Nível 5).",
+      "en": "Nephilim ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Nefilim (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 78
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Nefilim",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.nephilim.visao_orquica",
+    "name": "Visão Órquica (Visão Órquica)",
+    "names": {
+      "pt-BR": "Visão Órquica",
+      "en": "Visão Órquica",
+      "es": "Visão Órquica"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Nefilim",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Nefilim catalogado do Livro do Jogador (Player Core), página 78.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Nefilim (Nível 1).",
+      "en": "Nephilim ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Nefilim (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 78
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Nefilim",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.triturar",
+    "name": "Triturar (Triturar)",
+    "names": {
+      "pt-BR": "Triturar",
+      "en": "Triturar",
+      "es": "Triturar"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 1).",
+      "en": "Alchemist class feat (Level 1).",
+      "es": "Dote de clase de Alquimista (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.cacador_de_bando",
+    "name": "Caçador De Bando (Caçador De Bando)",
+    "names": {
+      "pt-BR": "Caçador De Bando",
+      "en": "Caçador De Bando",
+      "es": "Caçador De Bando"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 1).",
+      "en": "Alchemist class feat (Level 1).",
+      "es": "Dote de clase de Alquimista (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.familiar_hiena",
+    "name": "Familiar Hiena (Familiar Hiena)",
+    "names": {
+      "pt-BR": "Familiar Hiena",
+      "en": "Familiar Hiena",
+      "es": "Familiar Hiena"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 1).",
+      "en": "Alchemist class feat (Level 1).",
+      "es": "Dote de clase de Alquimista (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.familiaridade_com_armas_kholoanas",
+    "name": "Familiaridade Com Armas Kholoanas (Familiaridade Com Armas Kholoanas)",
+    "names": {
+      "pt-BR": "Familiaridade Com Armas Kholoanas",
+      "en": "Familiaridade Com Armas Kholoanas",
+      "es": "Familiaridade Com Armas Kholoanas"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 1).",
+      "en": "Alchemist class feat (Level 1).",
+      "es": "Dote de clase de Alquimista (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.espreitador_de_bando",
+    "name": "Espreitador De Bando (Espreitador De Bando)",
+    "names": {
+      "pt-BR": "Espreitador De Bando",
+      "en": "Espreitador De Bando",
+      "es": "Espreitador De Bando"
+    },
+    "category": "Classe",
+    "level": 5,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 5).",
+      "en": "Alchemist class feat (Level 5).",
+      "es": "Dote de clase de Alquimista (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.nariz_sensivel",
+    "name": "Nariz Sensível (Nariz Sensível)",
+    "names": {
+      "pt-BR": "Nariz Sensível",
+      "en": "Nariz Sensível",
+      "es": "Nariz Sensível"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 1).",
+      "en": "Alchemist class feat (Level 1).",
+      "es": "Dote de clase de Alquimista (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.gargalhada_distante",
+    "name": "Gargalhada Distante (Gargalhada Distante)",
+    "names": {
+      "pt-BR": "Gargalhada Distante",
+      "en": "Gargalhada Distante",
+      "es": "Gargalhada Distante"
+    },
+    "category": "Classe",
+    "level": 5,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 5).",
+      "en": "Alchemist class feat (Level 5).",
+      "es": "Dote de clase de Alquimista (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.resistencia_a_aflicao",
+    "name": "Resistência A Aflição (Resistência A Aflição)",
+    "names": {
+      "pt-BR": "Resistência A Aflição",
+      "en": "Resistência A Aflição",
+      "es": "Resistência A Aflição"
+    },
+    "category": "Classe",
+    "level": 5,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 5).",
+      "en": "Alchemist class feat (Level 5).",
+      "es": "Dote de clase de Alquimista (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.saber_kholoano",
+    "name": "Saber Kholoano (Saber Kholoano)",
+    "names": {
+      "pt-BR": "Saber Kholoano",
+      "en": "Saber Kholoano",
+      "es": "Saber Kholoano"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 1).",
+      "en": "Alchemist class feat (Level 1).",
+      "es": "Dote de clase de Alquimista (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.sangue_da_mao_direita",
+    "name": "Sangue Da Mão Direita (Sangue Da Mão Direita)",
+    "names": {
+      "pt-BR": "Sangue Da Mão Direita",
+      "en": "Sangue Da Mão Direita",
+      "es": "Sangue Da Mão Direita"
+    },
+    "category": "Classe",
+    "level": 5,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 5).",
+      "en": "Alchemist class feat (Level 5).",
+      "es": "Dote de clase de Alquimista (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.gargalhada_lendaria",
+    "name": "Gargalhada Lendária (Gargalhada Lendária)",
+    "names": {
+      "pt-BR": "Gargalhada Lendária",
+      "en": "Gargalhada Lendária",
+      "es": "Gargalhada Lendária"
+    },
+    "category": "Classe",
+    "level": 17,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 17).",
+      "en": "Alchemist class feat (Level 17).",
+      "es": "Dote de clase de Alquimista (Nivel 17)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.cacador_de_emboscada",
+    "name": "Caçador De Emboscada (Caçador De Emboscada)",
+    "names": {
+      "pt-BR": "Caçador De Emboscada",
+      "en": "Caçador De Emboscada",
+      "es": "Caçador De Emboscada"
+    },
+    "category": "Classe",
+    "level": 9,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 9).",
+      "en": "Alchemist class feat (Level 9).",
+      "es": "Dote de clase de Alquimista (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.osso_empalador",
+    "name": "Osso Empalador (Osso Empalador)",
+    "names": {
+      "pt-BR": "Osso Empalador",
+      "en": "Osso Empalador",
+      "es": "Osso Empalador"
+    },
+    "category": "Classe",
+    "level": 17,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 17).",
+      "en": "Alchemist class feat (Level 17).",
+      "es": "Dote de clase de Alquimista (Nivel 17)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.halito_de_mel",
+    "name": "Hálito De Mel (Hálito De Mel)",
+    "names": {
+      "pt-BR": "Hálito De Mel",
+      "en": "Hálito De Mel",
+      "es": "Hálito De Mel"
+    },
+    "category": "Classe",
+    "level": 9,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 9).",
+      "en": "Alchemist class feat (Level 9).",
+      "es": "Dote de clase de Alquimista (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.primeiro_a_cair",
+    "name": "Primeiro A Cair (Primeiro A Cair)",
+    "names": {
+      "pt-BR": "Primeiro A Cair",
+      "en": "Primeiro A Cair",
+      "es": "Primeiro A Cair"
+    },
+    "category": "Classe",
+    "level": 17,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 17).",
+      "en": "Alchemist class feat (Level 17).",
+      "es": "Dote de clase de Alquimista (Nivel 17)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.ira_do_ancestral",
+    "name": "Ira Do Ancestral (Ira Do Ancestral)",
+    "names": {
+      "pt-BR": "Ira Do Ancestral",
+      "en": "Ira Do Ancestral",
+      "es": "Ira Do Ancestral"
+    },
+    "category": "Classe",
+    "level": 13,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 13).",
+      "en": "Alchemist class feat (Level 13).",
+      "es": "Dote de clase de Alquimista (Nivel 13)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.ruina_do_zelaossos",
+    "name": "Ruína Do Zelaossos (Ruína Do Zelaossos)",
+    "names": {
+      "pt-BR": "Ruína Do Zelaossos",
+      "en": "Ruína Do Zelaossos",
+      "es": "Ruína Do Zelaossos"
+    },
+    "category": "Classe",
+    "level": 13,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 13).",
+      "en": "Alchemist class feat (Level 13).",
+      "es": "Dote de clase de Alquimista (Nivel 13)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.saber_koboldino",
+    "name": "Saber Koboldino (Saber Koboldino)",
+    "names": {
+      "pt-BR": "Saber Koboldino",
+      "en": "Saber Koboldino",
+      "es": "Saber Koboldino"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 1).",
+      "en": "Alchemist class feat (Level 1).",
+      "es": "Dote de clase de Alquimista (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.armador_de_arapuca",
+    "name": "Armador De Arapuca (Armador De Arapuca)",
+    "names": {
+      "pt-BR": "Armador De Arapuca",
+      "en": "Armador De Arapuca",
+      "es": "Armador De Arapuca"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 1).",
+      "en": "Alchemist class feat (Level 1).",
+      "es": "Dote de clase de Alquimista (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.asinhas",
+    "name": "Asinhas (Asinhas)",
+    "names": {
+      "pt-BR": "Asinhas",
+      "en": "Asinhas",
+      "es": "Asinhas"
+    },
+    "category": "Classe",
+    "level": 5,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 5).",
+      "en": "Alchemist class feat (Level 5).",
+      "es": "Dote de clase de Alquimista (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.familiaridade_com_armas_koboldinas",
+    "name": "Familiaridade Com Armas Koboldinas (Familiaridade Com Armas Koboldinas)",
+    "names": {
+      "pt-BR": "Familiaridade Com Armas Koboldinas",
+      "en": "Familiaridade Com Armas Koboldinas",
+      "es": "Familiaridade Com Armas Koboldinas"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 1).",
+      "en": "Alchemist class feat (Level 1).",
+      "es": "Dote de clase de Alquimista (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.genio_da_arapuca",
+    "name": "Gênio Da Arapuca (Gênio Da Arapuca)",
+    "names": {
+      "pt-BR": "Gênio Da Arapuca",
+      "en": "Gênio Da Arapuca",
+      "es": "Gênio Da Arapuca"
+    },
+    "category": "Classe",
+    "level": 5,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 5).",
+      "en": "Alchemist class feat (Level 5).",
+      "es": "Dote de clase de Alquimista (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.presenca_draconica",
+    "name": "Presença Dracônica (Presença Dracônica)",
+    "names": {
+      "pt-BR": "Presença Dracônica",
+      "en": "Presença Dracônica",
+      "es": "Presença Dracônica"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 1).",
+      "en": "Alchemist class feat (Level 1).",
+      "es": "Dote de clase de Alquimista (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.bem_de_perto",
+    "name": "Bem De Perto (Bem De Perto)",
+    "names": {
+      "pt-BR": "Bem De Perto",
+      "en": "Bem De Perto",
+      "es": "Bem De Perto"
+    },
+    "category": "Classe",
+    "level": 9,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 9).",
+      "en": "Alchemist class feat (Level 9).",
+      "es": "Dote de clase de Alquimista (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.entre_as_escamas",
+    "name": "Entre As Escamas (Entre As Escamas)",
+    "names": {
+      "pt-BR": "Entre As Escamas",
+      "en": "Entre As Escamas",
+      "es": "Entre As Escamas"
+    },
+    "category": "Classe",
+    "level": 9,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 9).",
+      "en": "Alchemist class feat (Level 9).",
+      "es": "Dote de clase de Alquimista (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.magicornio_resplandecente",
+    "name": "Magicórnio Resplandecente (Magicórnio Resplandecente)",
+    "names": {
+      "pt-BR": "Magicórnio Resplandecente",
+      "en": "Magicórnio Resplandecente",
+      "es": "Magicórnio Resplandecente"
+    },
+    "category": "Classe",
+    "level": 13,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 13).",
+      "en": "Alchemist class feat (Level 13).",
+      "es": "Dote de clase de Alquimista (Nivel 13)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.lutador_de_arbusto",
+    "name": "Lutador De Arbusto (Lutador De Arbusto)",
+    "names": {
+      "pt-BR": "Lutador De Arbusto",
+      "en": "Lutador De Arbusto",
+      "es": "Lutador De Arbusto"
+    },
+    "category": "Classe",
+    "level": 9,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 9).",
+      "en": "Alchemist class feat (Level 9).",
+      "es": "Dote de clase de Alquimista (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.magicornio_evoluido",
+    "name": "Magicórnio Evoluído (Magicórnio Evoluído)",
+    "names": {
+      "pt-BR": "Magicórnio Evoluído",
+      "en": "Magicórnio Evoluído",
+      "es": "Magicórnio Evoluído"
+    },
+    "category": "Classe",
+    "level": 9,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 9).",
+      "en": "Alchemist class feat (Level 9).",
+      "es": "Dote de clase de Alquimista (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.acoite_da_tempestade",
+    "name": "Açoite Da Tempestade (Açoite Da Tempestade)",
+    "names": {
+      "pt-BR": "Açoite Da Tempestade",
+      "en": "Açoite Da Tempestade",
+      "es": "Açoite Da Tempestade"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 1).",
+      "en": "Alchemist class feat (Level 1).",
+      "es": "Dote de clase de Alquimista (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.agilidade_excepcional",
+    "name": "Agilidade Excepcional (Agilidade Excepcional)",
+    "names": {
+      "pt-BR": "Agilidade Excepcional",
+      "en": "Agilidade Excepcional",
+      "es": "Agilidade Excepcional"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 1).",
+      "en": "Alchemist class feat (Level 1).",
+      "es": "Dote de clase de Alquimista (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.concentracao_divino_tengu",
+    "name": "Concentração Divino Tengu (Concentração Divino Tengu)",
+    "names": {
+      "pt-BR": "Concentração Divino Tengu",
+      "en": "Concentração Divino Tengu",
+      "es": "Concentração Divino Tengu"
+    },
+    "category": "Classe",
+    "level": 5,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 5).",
+      "en": "Alchemist class feat (Level 5).",
+      "es": "Dote de clase de Alquimista (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.familiaridade_com_armas_tengu",
+    "name": "Familiaridade Com Armas Tengu (Familiaridade Com Armas Tengu)",
+    "names": {
+      "pt-BR": "Familiaridade Com Armas Tengu",
+      "en": "Familiaridade Com Armas Tengu",
+      "es": "Familiaridade Com Armas Tengu"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 1).",
+      "en": "Alchemist class feat (Level 1).",
+      "es": "Dote de clase de Alquimista (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.tengu",
+    "name": "Tengu (Tengu)",
+    "names": {
+      "pt-BR": "Tengu",
+      "en": "Tengu",
+      "es": "Tengu"
+    },
+    "category": "Classe",
+    "level": 5,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 5).",
+      "en": "Alchemist class feat (Level 5).",
+      "es": "Dote de clase de Alquimista (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.fogo_de_marinheiro",
+    "name": "Fogo De Marinheiro (Fogo De Marinheiro)",
+    "names": {
+      "pt-BR": "Fogo De Marinheiro",
+      "en": "Fogo De Marinheiro",
+      "es": "Fogo De Marinheiro"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 1).",
+      "en": "Alchemist class feat (Level 1).",
+      "es": "Dote de clase de Alquimista (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.tengu_procura_do_catador",
+    "name": "Tengu Procura Do Catador (Tengu Procura Do Catador)",
+    "names": {
+      "pt-BR": "Tengu Procura Do Catador",
+      "en": "Tengu Procura Do Catador",
+      "es": "Tengu Procura Do Catador"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 1).",
+      "en": "Alchemist class feat (Level 1).",
+      "es": "Dote de clase de Alquimista (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.saber_tengu",
+    "name": "Saber Tengu (Saber Tengu)",
+    "names": {
+      "pt-BR": "Saber Tengu",
+      "en": "Saber Tengu",
+      "es": "Saber Tengu"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 1).",
+      "en": "Alchemist class feat (Level 1).",
+      "es": "Dote de clase de Alquimista (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.forma_do_grande_tengu",
+    "name": "Forma Do Grande Tengu (Forma Do Grande Tengu)",
+    "names": {
+      "pt-BR": "Forma Do Grande Tengu",
+      "en": "Forma Do Grande Tengu",
+      "es": "Forma Do Grande Tengu"
+    },
+    "category": "Classe",
+    "level": 17,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 17).",
+      "en": "Alchemist class feat (Level 17).",
+      "es": "Dote de clase de Alquimista (Nivel 17)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.tengu_enganador",
+    "name": "Tengu Enganador (Tengu Enganador)",
+    "names": {
+      "pt-BR": "Tengu Enganador",
+      "en": "Tengu Enganador",
+      "es": "Tengu Enganador"
+    },
+    "category": "Classe",
+    "level": 17,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 17).",
+      "en": "Alchemist class feat (Level 17).",
+      "es": "Dote de clase de Alquimista (Nivel 17)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.leque_do_deus_do_vento",
+    "name": "Leque Do Deus Do Vento (Leque Do Deus Do Vento)",
+    "names": {
+      "pt-BR": "Leque Do Deus Do Vento",
+      "en": "Leque Do Deus Do Vento",
+      "es": "Leque Do Deus Do Vento"
+    },
+    "category": "Classe",
+    "level": 9,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 9).",
+      "en": "Alchemist class feat (Level 9).",
+      "es": "Dote de clase de Alquimista (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.glutao_de_agouros",
+    "name": "Glutão De Agouros (Glutão De Agouros)",
+    "names": {
+      "pt-BR": "Glutão De Agouros",
+      "en": "Glutão De Agouros",
+      "es": "Glutão De Agouros"
+    },
+    "category": "Classe",
+    "level": 13,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 13).",
+      "en": "Alchemist class feat (Level 13).",
+      "es": "Dote de clase de Alquimista (Nivel 13)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.alchemist.leque_do_deus_do_trovao",
+    "name": "Leque Do Deus Do Trovão (Leque Do Deus Do Trovão)",
+    "names": {
+      "pt-BR": "Leque Do Deus Do Trovão",
+      "en": "Leque Do Deus Do Trovão",
+      "es": "Leque Do Deus Do Trovão"
+    },
+    "category": "Classe",
+    "level": 13,
+    "traits": [
+      "Classe",
+      "Alquimista"
+    ],
+    "prereq": "Nenhum",
+    "className": "Alquimista",
+    "description": "Talento de classe de Alquimista catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Alquimista (Nível 13).",
+      "en": "Alchemist class feat (Level 13).",
+      "es": "Dote de clase de Alquimista (Nivel 13)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.croaxador",
+    "name": "Croaxador (Croaxador)",
+    "names": {
+      "pt-BR": "Croaxador",
+      "en": "Croaxador",
+      "es": "Croaxador"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 1).",
+      "en": "Barbarian class feat (Level 1).",
+      "es": "Dote de clase de Bárbaro (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.lingua_longa",
+    "name": "Língua Longa (Língua Longa)",
+    "names": {
+      "pt-BR": "Língua Longa",
+      "en": "Língua Longa",
+      "es": "Língua Longa"
+    },
+    "category": "Classe",
+    "level": 5,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 5).",
+      "en": "Barbarian class feat (Level 5).",
+      "es": "Dote de clase de Bárbaro (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.familiaridade_com_armas_tripkeenas",
+    "name": "Familiaridade Com Armas Tripkeenas (Familiaridade Com Armas Tripkeenas)",
+    "names": {
+      "pt-BR": "Familiaridade Com Armas Tripkeenas",
+      "en": "Familiaridade Com Armas Tripkeenas",
+      "es": "Familiaridade Com Armas Tripkeenas"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 1).",
+      "en": "Barbarian class feat (Level 1).",
+      "es": "Dote de clase de Bárbaro (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.saltos_fantasticos",
+    "name": "Saltos Fantásticos (Saltos Fantásticos)",
+    "names": {
+      "pt-BR": "Saltos Fantásticos",
+      "en": "Saltos Fantásticos",
+      "es": "Saltos Fantásticos"
+    },
+    "category": "Classe",
+    "level": 5,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 5).",
+      "en": "Barbarian class feat (Level 5).",
+      "es": "Dote de clase de Bárbaro (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.saber_tripkeeno",
+    "name": "Saber Tripkeeno (Saber Tripkeeno)",
+    "names": {
+      "pt-BR": "Saber Tripkeeno",
+      "en": "Saber Tripkeeno",
+      "es": "Saber Tripkeeno"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 1).",
+      "en": "Barbarian class feat (Level 1).",
+      "es": "Dote de clase de Bárbaro (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.tripkee_noturno",
+    "name": "Tripkee Noturno (Tripkee Noturno)",
+    "names": {
+      "pt-BR": "Tripkee Noturno",
+      "en": "Tripkee Noturno",
+      "es": "Tripkee Noturno"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 1).",
+      "en": "Barbarian class feat (Level 1).",
+      "es": "Dote de clase de Bárbaro (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.saltador_imbativel",
+    "name": "Saltador Imbatível (Saltador Imbatível)",
+    "names": {
+      "pt-BR": "Saltador Imbatível",
+      "en": "Saltador Imbatível",
+      "es": "Saltador Imbatível"
+    },
+    "category": "Classe",
+    "level": 17,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 17).",
+      "en": "Barbarian class feat (Level 17).",
+      "es": "Dote de clase de Bárbaro (Nivel 17)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.lingua_fixante",
+    "name": "Língua Fixante (Língua Fixante)",
+    "names": {
+      "pt-BR": "Língua Fixante",
+      "en": "Língua Fixante",
+      "es": "Língua Fixante"
+    },
+    "category": "Classe",
+    "level": 9,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 9).",
+      "en": "Barbarian class feat (Level 9).",
+      "es": "Dote de clase de Bárbaro (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.salto_ricochete",
+    "name": "Salto Ricochete (Salto Ricochete)",
+    "names": {
+      "pt-BR": "Salto Ricochete",
+      "en": "Salto Ricochete",
+      "es": "Salto Ricochete"
+    },
+    "category": "Classe",
+    "level": 9,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 9).",
+      "en": "Barbarian class feat (Level 9).",
+      "es": "Dote de clase de Bárbaro (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.extremidades_envenenadas",
+    "name": "Extremidades Envenenadas (Extremidades Envenenadas)",
+    "names": {
+      "pt-BR": "Extremidades Envenenadas",
+      "en": "Extremidades Envenenadas",
+      "es": "Extremidades Envenenadas"
+    },
+    "category": "Classe",
+    "level": 13,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 13).",
+      "en": "Barbarian class feat (Level 13).",
+      "es": "Dote de clase de Bárbaro (Nivel 13)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.rato_de_caravana",
+    "name": "Rato De Caravana (Rato De Caravana)",
+    "names": {
+      "pt-BR": "Rato De Caravana",
+      "en": "Rato De Caravana",
+      "es": "Rato De Caravana"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 1).",
+      "en": "Barbarian class feat (Level 1).",
+      "es": "Dote de clase de Bárbaro (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.saber_ysokiano",
+    "name": "Saber Ysokiano (Saber Ysokiano)",
+    "names": {
+      "pt-BR": "Saber Ysokiano",
+      "en": "Saber Ysokiano",
+      "es": "Saber Ysokiano"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 1).",
+      "en": "Barbarian class feat (Level 1).",
+      "es": "Dote de clase de Bárbaro (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.dedos_de_funileiro",
+    "name": "Dedos De Funileiro (Dedos De Funileiro)",
+    "names": {
+      "pt-BR": "Dedos De Funileiro",
+      "en": "Dedos De Funileiro",
+      "es": "Dedos De Funileiro"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 1).",
+      "en": "Barbarian class feat (Level 1).",
+      "es": "Dote de clase de Bárbaro (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.familiar_rato",
+    "name": "Familiar Rato (Familiar Rato)",
+    "names": {
+      "pt-BR": "Familiar Rato",
+      "en": "Familiar Rato",
+      "es": "Familiar Rato"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 1).",
+      "en": "Barbarian class feat (Level 1).",
+      "es": "Dote de clase de Bárbaro (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.furor_encurralado",
+    "name": "Furor Encurralado (Furor Encurralado)",
+    "names": {
+      "pt-BR": "Furor Encurralado",
+      "en": "Furor Encurralado",
+      "es": "Furor Encurralado"
+    },
+    "category": "Classe",
+    "level": 5,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 5).",
+      "en": "Barbarian class feat (Level 5).",
+      "es": "Dote de clase de Bárbaro (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.ysoki_incisivos_afiados",
+    "name": "Ysoki Incisivos Afiados (Ysoki Incisivos Afiados)",
+    "names": {
+      "pt-BR": "Ysoki Incisivos Afiados",
+      "en": "Ysoki Incisivos Afiados",
+      "es": "Ysoki Incisivos Afiados"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 1).",
+      "en": "Barbarian class feat (Level 1).",
+      "es": "Dote de clase de Bárbaro (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.magia_de_rato",
+    "name": "Magia De Rato (Magia De Rato)",
+    "names": {
+      "pt-BR": "Magia De Rato",
+      "en": "Magia De Rato",
+      "es": "Magia De Rato"
+    },
+    "category": "Classe",
+    "level": 5,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 5).",
+      "en": "Barbarian class feat (Level 5).",
+      "es": "Dote de clase de Bárbaro (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.linguagem_muridea",
+    "name": "Linguagem Murídea (Linguagem Murídea)",
+    "names": {
+      "pt-BR": "Linguagem Murídea",
+      "en": "Linguagem Murídea",
+      "es": "Linguagem Murídea"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 1).",
+      "en": "Barbarian class feat (Level 1).",
+      "es": "Dote de clase de Bárbaro (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.rato_de_laboratorio",
+    "name": "Rato De Laboratório (Rato De Laboratório)",
+    "names": {
+      "pt-BR": "Rato De Laboratório",
+      "en": "Rato De Laboratório",
+      "es": "Rato De Laboratório"
+    },
+    "category": "Classe",
+    "level": 5,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 5).",
+      "en": "Barbarian class feat (Level 5).",
+      "es": "Dote de clase de Bárbaro (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.navegador_de_tocas",
+    "name": "Navegador De Tocas (Navegador De Tocas)",
+    "names": {
+      "pt-BR": "Navegador De Tocas",
+      "en": "Navegador De Tocas",
+      "es": "Navegador De Tocas"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 1).",
+      "en": "Barbarian class feat (Level 1).",
+      "es": "Dote de clase de Bárbaro (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.esgueirar_apressado",
+    "name": "Esgueirar Apressado (Esgueirar Apressado)",
+    "names": {
+      "pt-BR": "Esgueirar Apressado",
+      "en": "Esgueirar Apressado",
+      "es": "Esgueirar Apressado"
+    },
+    "category": "Classe",
+    "level": 13,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 13).",
+      "en": "Barbarian class feat (Level 13).",
+      "es": "Dote de clase de Bárbaro (Nivel 13)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.aglomerar",
+    "name": "Aglomerar (Aglomerar)",
+    "names": {
+      "pt-BR": "Aglomerar",
+      "en": "Aglomerar",
+      "es": "Aglomerar"
+    },
+    "category": "Classe",
+    "level": 9,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 9).",
+      "en": "Barbarian class feat (Level 9).",
+      "es": "Dote de clase de Bárbaro (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.boca_grande",
+    "name": "Boca Grande (Boca Grande)",
+    "names": {
+      "pt-BR": "Boca Grande",
+      "en": "Boca Grande",
+      "es": "Boca Grande"
+    },
+    "category": "Classe",
+    "level": 9,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 9).",
+      "en": "Barbarian class feat (Level 9).",
+      "es": "Dote de clase de Bárbaro (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.maior_que_a_soma",
+    "name": "Maior Que A Soma (Maior Que A Soma)",
+    "names": {
+      "pt-BR": "Maior Que A Soma",
+      "en": "Maior Que A Soma",
+      "es": "Maior Que A Soma"
+    },
+    "category": "Classe",
+    "level": 17,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 17).",
+      "en": "Barbarian class feat (Level 17).",
+      "es": "Dote de clase de Bárbaro (Nivel 17)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.bolsa_jugal_excepcional",
+    "name": "Bolsa-jugal Excepcional (Bolsa-jugal Excepcional)",
+    "names": {
+      "pt-BR": "Bolsa-jugal Excepcional",
+      "en": "Bolsa-jugal Excepcional",
+      "es": "Bolsa-jugal Excepcional"
+    },
+    "category": "Classe",
+    "level": 9,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 9).",
+      "en": "Barbarian class feat (Level 9).",
+      "es": "Dote de clase de Bárbaro (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.escavador_de_tocas",
+    "name": "Escavador De Tocas (Escavador De Tocas)",
+    "names": {
+      "pt-BR": "Escavador De Tocas",
+      "en": "Escavador De Tocas",
+      "es": "Escavador De Tocas"
+    },
+    "category": "Classe",
+    "level": 13,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 13).",
+      "en": "Barbarian class feat (Level 13).",
+      "es": "Dote de clase de Bárbaro (Nivel 13)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.esfaqueador_de_canela",
+    "name": "Esfaqueador De Canela (Esfaqueador De Canela)",
+    "names": {
+      "pt-BR": "Esfaqueador De Canela",
+      "en": "Esfaqueador De Canela",
+      "es": "Esfaqueador De Canela"
+    },
+    "category": "Classe",
+    "level": 13,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 13).",
+      "en": "Barbarian class feat (Level 13).",
+      "es": "Dote de clase de Bárbaro (Nivel 13)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.cacador_de_fantasmas",
+    "name": "Caçador De Fantasmas (Caçador De Fantasmas)",
+    "names": {
+      "pt-BR": "Caçador De Fantasmas",
+      "en": "Caçador De Fantasmas",
+      "es": "Caçador De Fantasmas"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 1).",
+      "en": "Barbarian class feat (Level 1).",
+      "es": "Dote de clase de Bárbaro (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.protecao_contra_corrupcao",
+    "name": "Proteção Contra Corrupção (Proteção Contra Corrupção)",
+    "names": {
+      "pt-BR": "Proteção Contra Corrupção",
+      "en": "Proteção Contra Corrupção",
+      "es": "Proteção Contra Corrupção"
+    },
+    "category": "Classe",
+    "level": 5,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 5).",
+      "en": "Barbarian class feat (Level 5).",
+      "es": "Dote de clase de Bárbaro (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.sentido_vital",
+    "name": "Sentido Vital (Sentido Vital)",
+    "names": {
+      "pt-BR": "Sentido Vital",
+      "en": "Sentido Vital",
+      "es": "Sentido Vital"
+    },
+    "category": "Classe",
+    "level": 5,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 5).",
+      "en": "Barbarian class feat (Level 5).",
+      "es": "Dote de clase de Bárbaro (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.golpes_terminais",
+    "name": "Golpes Terminais (Golpes Terminais)",
+    "names": {
+      "pt-BR": "Golpes Terminais",
+      "en": "Golpes Terminais",
+      "es": "Golpes Terminais"
+    },
+    "category": "Classe",
+    "level": 9,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 9).",
+      "en": "Barbarian class feat (Level 9).",
+      "es": "Dote de clase de Bárbaro (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.saber_crepuscular",
+    "name": "Saber Crepuscular (Saber Crepuscular)",
+    "names": {
+      "pt-BR": "Saber Crepuscular",
+      "en": "Saber Crepuscular",
+      "es": "Saber Crepuscular"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 1).",
+      "en": "Barbarian class feat (Level 1).",
+      "es": "Dote de clase de Bárbaro (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.magia_crepuscular",
+    "name": "Magia Crepuscular (Magia Crepuscular)",
+    "names": {
+      "pt-BR": "Magia Crepuscular",
+      "en": "Magia Crepuscular",
+      "es": "Magia Crepuscular"
+    },
+    "category": "Classe",
+    "level": 9,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 9).",
+      "en": "Barbarian class feat (Level 9).",
+      "es": "Dote de clase de Bárbaro (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.ruina",
+    "name": "Ruína (Ruína)",
+    "names": {
+      "pt-BR": "Ruína",
+      "en": "Ruína",
+      "es": "Ruína"
+    },
+    "category": "Classe",
+    "level": 13,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 13).",
+      "en": "Barbarian class feat (Level 13).",
+      "es": "Dote de clase de Bárbaro (Nivel 13)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.crepusculante_visao_tumular",
+    "name": "Crepusculante Visão Tumular (Crepusculante Visão Tumular)",
+    "names": {
+      "pt-BR": "Crepusculante Visão Tumular",
+      "en": "Crepusculante Visão Tumular",
+      "es": "Crepusculante Visão Tumular"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 1).",
+      "en": "Barbarian class feat (Level 1).",
+      "es": "Dote de clase de Bárbaro (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.chamado_do_ossario",
+    "name": "Chamado Do Ossário (Chamado Do Ossário)",
+    "names": {
+      "pt-BR": "Chamado Do Ossário",
+      "en": "Chamado Do Ossário",
+      "es": "Chamado Do Ossário"
+    },
+    "category": "Classe",
+    "level": 17,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 17).",
+      "en": "Barbarian class feat (Level 17).",
+      "es": "Dote de clase de Bárbaro (Nivel 17)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.omum_crepusculante_apaziguador_de_espiritos",
+    "name": "Omum Crepusculante Apaziguador De Espíritos (Omum Crepusculante Apaziguador De Espíritos)",
+    "names": {
+      "pt-BR": "Omum Crepusculante Apaziguador De Espíritos",
+      "en": "Omum Crepusculante Apaziguador De Espíritos",
+      "es": "Omum Crepusculante Apaziguador De Espíritos"
+    },
+    "category": "Classe",
+    "level": 5,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 5).",
+      "en": "Barbarian class feat (Level 5).",
+      "es": "Dote de clase de Bárbaro (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.straveika",
+    "name": "Straveika (Straveika)",
+    "names": {
+      "pt-BR": "Straveika",
+      "en": "Straveika",
+      "es": "Straveika"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 1).",
+      "en": "Barbarian class feat (Level 1).",
+      "es": "Dote de clase de Bárbaro (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.fisiologia_necromantica",
+    "name": "Fisiologia Necromântica (Fisiologia Necromântica)",
+    "names": {
+      "pt-BR": "Fisiologia Necromântica",
+      "en": "Fisiologia Necromântica",
+      "es": "Fisiologia Necromântica"
+    },
+    "category": "Classe",
+    "level": 5,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 5).",
+      "en": "Barbarian class feat (Level 5).",
+      "es": "Dote de clase de Bárbaro (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.svetocher",
+    "name": "Svetocher (Svetocher)",
+    "names": {
+      "pt-BR": "Svetocher",
+      "en": "Svetocher",
+      "es": "Svetocher"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 1).",
+      "en": "Barbarian class feat (Level 1).",
+      "es": "Dote de clase de Bárbaro (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.seducao_fascinante",
+    "name": "Sedução Fascinante (Sedução Fascinante)",
+    "names": {
+      "pt-BR": "Sedução Fascinante",
+      "en": "Sedução Fascinante",
+      "es": "Sedução Fascinante"
+    },
+    "category": "Classe",
+    "level": 5,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 5).",
+      "en": "Barbarian class feat (Level 5).",
+      "es": "Dote de clase de Bárbaro (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.olhos_da_noite",
+    "name": "Olhos Da Noite (Olhos Da Noite)",
+    "names": {
+      "pt-BR": "Olhos Da Noite",
+      "en": "Olhos Da Noite",
+      "es": "Olhos Da Noite"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 1).",
+      "en": "Barbarian class feat (Level 1).",
+      "es": "Dote de clase de Bárbaro (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.presas",
+    "name": "Presas (Presas)",
+    "names": {
+      "pt-BR": "Presas",
+      "en": "Presas",
+      "es": "Presas"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 1).",
+      "en": "Barbarian class feat (Level 1).",
+      "es": "Dote de clase de Bárbaro (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.magia_da_noite",
+    "name": "Magia Da Noite (Magia Da Noite)",
+    "names": {
+      "pt-BR": "Magia Da Noite",
+      "en": "Magia Da Noite",
+      "es": "Magia Da Noite"
+    },
+    "category": "Classe",
+    "level": 9,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 9).",
+      "en": "Barbarian class feat (Level 9).",
+      "es": "Dote de clase de Bárbaro (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.saber_vampirico",
+    "name": "Saber Vampírico (Saber Vampírico)",
+    "names": {
+      "pt-BR": "Saber Vampírico",
+      "en": "Saber Vampírico",
+      "es": "Saber Vampírico"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 1).",
+      "en": "Barbarian class feat (Level 1).",
+      "es": "Dote de clase de Bárbaro (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.presas_exsanguinantes",
+    "name": "Presas Exsanguinantes (Presas Exsanguinantes)",
+    "names": {
+      "pt-BR": "Presas Exsanguinantes",
+      "en": "Presas Exsanguinantes",
+      "es": "Presas Exsanguinantes"
+    },
+    "category": "Classe",
+    "level": 9,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 9).",
+      "en": "Barbarian class feat (Level 9).",
+      "es": "Dote de clase de Bárbaro (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.voz_da_noite",
+    "name": "Voz Da Noite (Voz Da Noite)",
+    "names": {
+      "pt-BR": "Voz Da Noite",
+      "en": "Voz Da Noite",
+      "es": "Voz Da Noite"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 1).",
+      "en": "Barbarian class feat (Level 1).",
+      "es": "Dote de clase de Bárbaro (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.sinfonia_do_sangue",
+    "name": "Sinfonia Do Sangue (Sinfonia Do Sangue)",
+    "names": {
+      "pt-BR": "Sinfonia Do Sangue",
+      "en": "Sinfonia Do Sangue",
+      "es": "Sinfonia Do Sangue"
+    },
+    "category": "Classe",
+    "level": 17,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 17).",
+      "en": "Barbarian class feat (Level 17).",
+      "es": "Dote de clase de Bárbaro (Nivel 17)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.cacador_de_mortos_vivos",
+    "name": "Caçador De Mortos-vivos (Caçador De Mortos-vivos)",
+    "names": {
+      "pt-BR": "Caçador De Mortos-vivos",
+      "en": "Caçador De Mortos-vivos",
+      "es": "Caçador De Mortos-vivos"
+    },
+    "category": "Classe",
+    "level": 5,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 5).",
+      "en": "Barbarian class feat (Level 5).",
+      "es": "Dote de clase de Bárbaro (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.dracano_arcano",
+    "name": "Dracano Arcano (Dracano Arcano)",
+    "names": {
+      "pt-BR": "Dracano Arcano",
+      "en": "Dracano Arcano",
+      "es": "Dracano Arcano"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 1).",
+      "en": "Barbarian class feat (Level 1).",
+      "es": "Dote de clase de Bárbaro (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.dracano_divino",
+    "name": "Dracano Divino (Dracano Divino)",
+    "names": {
+      "pt-BR": "Dracano Divino",
+      "en": "Dracano Divino",
+      "es": "Dracano Divino"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 1).",
+      "en": "Barbarian class feat (Level 1).",
+      "es": "Dote de clase de Bárbaro (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.dracano_ocultista",
+    "name": "Dracano Ocultista (Dracano Ocultista)",
+    "names": {
+      "pt-BR": "Dracano Ocultista",
+      "en": "Dracano Ocultista",
+      "es": "Dracano Ocultista"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 1).",
+      "en": "Barbarian class feat (Level 1).",
+      "es": "Dote de clase de Bárbaro (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.aspecto_draconico",
+    "name": "Aspecto Dracônico (Aspecto Dracônico)",
+    "names": {
+      "pt-BR": "Aspecto Dracônico",
+      "en": "Aspecto Dracônico",
+      "es": "Aspecto Dracônico"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 1).",
+      "en": "Barbarian class feat (Level 1).",
+      "es": "Dote de clase de Bárbaro (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.dracano_primal",
+    "name": "Dracano Primal (Dracano Primal)",
+    "names": {
+      "pt-BR": "Dracano Primal",
+      "en": "Dracano Primal",
+      "es": "Dracano Primal"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 1).",
+      "en": "Barbarian class feat (Level 1).",
+      "es": "Dote de clase de Bárbaro (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.escamas_draconicas",
+    "name": "Escamas Dracônicas (Escamas Dracônicas)",
+    "names": {
+      "pt-BR": "Escamas Dracônicas",
+      "en": "Escamas Dracônicas",
+      "es": "Escamas Dracônicas"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 1).",
+      "en": "Barbarian class feat (Level 1).",
+      "es": "Dote de clase de Bárbaro (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.resistencia_draconica",
+    "name": "Resistência Dracônica (Resistência Dracônica)",
+    "names": {
+      "pt-BR": "Resistência Dracônica",
+      "en": "Resistência Dracônica",
+      "es": "Resistência Dracônica"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 1).",
+      "en": "Barbarian class feat (Level 1).",
+      "es": "Dote de clase de Bárbaro (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.saber_draconico",
+    "name": "Saber Dracônico (Saber Dracônico)",
+    "names": {
+      "pt-BR": "Saber Dracônico",
+      "en": "Saber Dracônico",
+      "es": "Saber Dracônico"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 1).",
+      "en": "Barbarian class feat (Level 1).",
+      "es": "Dote de clase de Bárbaro (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.visao_draconica",
+    "name": "Visão Dracônica (Visão Dracônica)",
+    "names": {
+      "pt-BR": "Visão Dracônica",
+      "en": "Visão Dracônica",
+      "es": "Visão Dracônica"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 1).",
+      "en": "Barbarian class feat (Level 1).",
+      "es": "Dote de clase de Bárbaro (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.barbarian.aspecto_mortal",
+    "name": "Aspecto Mortal (Aspecto Mortal)",
+    "names": {
+      "pt-BR": "Aspecto Mortal",
+      "en": "Aspecto Mortal",
+      "es": "Aspecto Mortal"
+    },
+    "category": "Classe",
+    "level": 5,
+    "traits": [
+      "Classe",
+      "Bárbaro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Bárbaro",
+    "description": "Talento de classe de Bárbaro catalogado do Livro do Jogador 2 (Player Core 2, Remaster), página 77.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Bárbaro (Nível 5).",
+      "en": "Barbarian class feat (Level 5).",
+      "es": "Dote de clase de Bárbaro (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+      "page": 77
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.modulacao_de_amplificador",
+    "name": "Modulação De Amplificador (Modulação De Amplificador)",
+    "names": {
+      "pt-BR": "Modulação De Amplificador",
+      "en": "Modulação De Amplificador",
+      "es": "Modulação De Amplificador"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 1).",
+      "en": "Gunslinger class feat (Level 1).",
+      "es": "Dote de clase de Pistolero (Nivel 1)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.redundancias_instaveis",
+    "name": "Redundâncias Instáveis (Redundâncias Instáveis)",
+    "names": {
+      "pt-BR": "Redundâncias Instáveis",
+      "en": "Redundâncias Instáveis",
+      "es": "Redundâncias Instáveis"
+    },
+    "category": "Classe",
+    "level": 14,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 14).",
+      "en": "Gunslinger class feat (Level 14).",
+      "es": "Dote de clase de Pistolero (Nivel 14)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.armamento_devastador",
+    "name": "Armamento Devastador (Armamento Devastador)",
+    "names": {
+      "pt-BR": "Armamento Devastador",
+      "en": "Armamento Devastador",
+      "es": "Armamento Devastador"
+    },
+    "category": "Classe",
+    "level": 18,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 18).",
+      "en": "Gunslinger class feat (Level 18).",
+      "es": "Dote de clase de Pistolero (Nivel 18)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.amplificador_persistente",
+    "name": "Inventor Amplificador Persistente (Inventor Amplificador Persistente)",
+    "names": {
+      "pt-BR": "Inventor Amplificador Persistente",
+      "en": "Inventor Amplificador Persistente",
+      "es": "Inventor Amplificador Persistente"
+    },
+    "category": "Classe",
+    "level": 16,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 16).",
+      "en": "Gunslinger class feat (Level 16).",
+      "es": "Dote de clase de Pistolero (Nivel 16)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.maquina_de_destruicao",
+    "name": "Máquina De Destruição (Máquina De Destruição)",
+    "names": {
+      "pt-BR": "Máquina De Destruição",
+      "en": "Máquina De Destruição",
+      "es": "Máquina De Destruição"
+    },
+    "category": "Classe",
+    "level": 18,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 18).",
+      "en": "Gunslinger class feat (Level 18).",
+      "es": "Dote de clase de Pistolero (Nivel 18)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.negar_dano",
+    "name": "Negar Dano (Negar Dano)",
+    "names": {
+      "pt-BR": "Negar Dano",
+      "en": "Negar Dano",
+      "es": "Negar Dano"
+    },
+    "category": "Classe",
+    "level": 18,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 18).",
+      "en": "Gunslinger class feat (Level 18).",
+      "es": "Dote de clase de Pistolero (Nivel 18)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.s_construtos_prototipos_automacao_total",
+    "name": "S Construtos Protótipos Automação Total (S Construtos Protótipos Automação Total)",
+    "names": {
+      "pt-BR": "S Construtos Protótipos Automação Total",
+      "en": "S Construtos Protótipos Automação Total",
+      "es": "S Construtos Protótipos Automação Total"
+    },
+    "category": "Classe",
+    "level": 20,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 20).",
+      "en": "Gunslinger class feat (Level 20).",
+      "es": "Dote de clase de Pistolero (Nivel 20)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.sobrecarga_abundante",
+    "name": "Sobrecarga Abundante (Sobrecarga Abundante)",
+    "names": {
+      "pt-BR": "Sobrecarga Abundante",
+      "en": "Sobrecarga Abundante",
+      "es": "Sobrecarga Abundante"
+    },
+    "category": "Classe",
+    "level": 20,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 20).",
+      "en": "Gunslinger class feat (Level 20).",
+      "es": "Dote de clase de Pistolero (Nivel 20)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.armamento_de_automato",
+    "name": "Armamento De Autômato (Armamento De Autômato)",
+    "names": {
+      "pt-BR": "Armamento De Autômato",
+      "en": "Armamento De Autômato",
+      "es": "Armamento De Autômato"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 1).",
+      "en": "Gunslinger class feat (Level 1).",
+      "es": "Dote de clase de Pistolero (Nivel 1)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.chassi_reforcado",
+    "name": "Chassi Reforçado (Chassi Reforçado)",
+    "names": {
+      "pt-BR": "Chassi Reforçado",
+      "en": "Chassi Reforçado",
+      "es": "Chassi Reforçado"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 1).",
+      "en": "Gunslinger class feat (Level 1).",
+      "es": "Dote de clase de Pistolero (Nivel 1)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.comunicacao_arcana",
+    "name": "Comunicação Arcana (Comunicação Arcana)",
+    "names": {
+      "pt-BR": "Comunicação Arcana",
+      "en": "Comunicação Arcana",
+      "es": "Comunicação Arcana"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 1).",
+      "en": "Gunslinger class feat (Level 1).",
+      "es": "Dote de clase de Pistolero (Nivel 1)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.feixe_de_energia",
+    "name": "Feixe De Energia (Feixe De Energia)",
+    "names": {
+      "pt-BR": "Feixe De Energia",
+      "en": "Feixe De Energia",
+      "es": "Feixe De Energia"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 1).",
+      "en": "Gunslinger class feat (Level 1).",
+      "es": "Dote de clase de Pistolero (Nivel 1)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.olho_arcano",
+    "name": "Olho Arcano (Olho Arcano)",
+    "names": {
+      "pt-BR": "Olho Arcano",
+      "en": "Olho Arcano",
+      "es": "Olho Arcano"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 1).",
+      "en": "Gunslinger class feat (Level 1).",
+      "es": "Dote de clase de Pistolero (Nivel 1)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.saber_automatonico",
+    "name": "Saber Automatônico (Saber Automatônico)",
+    "names": {
+      "pt-BR": "Saber Automatônico",
+      "en": "Saber Automatônico",
+      "es": "Saber Automatônico"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 1).",
+      "en": "Gunslinger class feat (Level 1).",
+      "es": "Dote de clase de Pistolero (Nivel 1)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.armamento_integrado",
+    "name": "Armamento Integrado (Armamento Integrado)",
+    "names": {
+      "pt-BR": "Armamento Integrado",
+      "en": "Armamento Integrado",
+      "es": "Armamento Integrado"
+    },
+    "category": "Classe",
+    "level": 5,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 5).",
+      "en": "Gunslinger class feat (Level 5).",
+      "es": "Dote de clase de Pistolero (Nivel 5)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.aprimoramento_menor",
+    "name": "Aprimoramento Menor (Aprimoramento Menor)",
+    "names": {
+      "pt-BR": "Aprimoramento Menor",
+      "en": "Aprimoramento Menor",
+      "es": "Aprimoramento Menor"
+    },
+    "category": "Classe",
+    "level": 9,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 9).",
+      "en": "Gunslinger class feat (Level 9).",
+      "es": "Dote de clase de Pistolero (Nivel 9)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.camuflagem_arcana",
+    "name": "Camuflagem Arcana (Camuflagem Arcana)",
+    "names": {
+      "pt-BR": "Camuflagem Arcana",
+      "en": "Camuflagem Arcana",
+      "es": "Camuflagem Arcana"
+    },
+    "category": "Classe",
+    "level": 9,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 9).",
+      "en": "Gunslinger class feat (Level 9).",
+      "es": "Dote de clase de Pistolero (Nivel 9)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.automato_resistencia_magica",
+    "name": "Autômato Resistência Mágica (Autômato Resistência Mágica)",
+    "names": {
+      "pt-BR": "Autômato Resistência Mágica",
+      "en": "Autômato Resistência Mágica",
+      "es": "Autômato Resistência Mágica"
+    },
+    "category": "Classe",
+    "level": 5,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 5).",
+      "en": "Gunslinger class feat (Level 5).",
+      "es": "Dote de clase de Pistolero (Nivel 5)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.chuva_de_raios",
+    "name": "Chuva De Raios (Chuva De Raios)",
+    "names": {
+      "pt-BR": "Chuva De Raios",
+      "en": "Chuva De Raios",
+      "es": "Chuva De Raios"
+    },
+    "category": "Classe",
+    "level": 9,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 9).",
+      "en": "Gunslinger class feat (Level 9).",
+      "es": "Dote de clase de Pistolero (Nivel 9)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.automato_salvaguardas_arcanas",
+    "name": "Autômato Salvaguardas Arcanas (Autômato Salvaguardas Arcanas)",
+    "names": {
+      "pt-BR": "Autômato Salvaguardas Arcanas",
+      "en": "Autômato Salvaguardas Arcanas",
+      "es": "Autômato Salvaguardas Arcanas"
+    },
+    "category": "Classe",
+    "level": 5,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 5).",
+      "en": "Gunslinger class feat (Level 5).",
+      "es": "Dote de clase de Pistolero (Nivel 5)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.propulsao_arcana",
+    "name": "Propulsão Arcana (Propulsão Arcana)",
+    "names": {
+      "pt-BR": "Propulsão Arcana",
+      "en": "Propulsão Arcana",
+      "es": "Propulsão Arcana"
+    },
+    "category": "Classe",
+    "level": 9,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 9).",
+      "en": "Gunslinger class feat (Level 9).",
+      "es": "Dote de clase de Pistolero (Nivel 9)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.sintonia_do_nucleo",
+    "name": "Sintonia Do Núcleo (Sintonia Do Núcleo)",
+    "names": {
+      "pt-BR": "Sintonia Do Núcleo",
+      "en": "Sintonia Do Núcleo",
+      "es": "Sintonia Do Núcleo"
+    },
+    "category": "Classe",
+    "level": 9,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 9).",
+      "en": "Gunslinger class feat (Level 9).",
+      "es": "Dote de clase de Pistolero (Nivel 9)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.pancada_arcana",
+    "name": "Pancada Arcana (Pancada Arcana)",
+    "names": {
+      "pt-BR": "Pancada Arcana",
+      "en": "Pancada Arcana",
+      "es": "Pancada Arcana"
+    },
+    "category": "Classe",
+    "level": 9,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 9).",
+      "en": "Gunslinger class feat (Level 9).",
+      "es": "Dote de clase de Pistolero (Nivel 9)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.chassi_ampliado",
+    "name": "Chassi Ampliado (Chassi Ampliado)",
+    "names": {
+      "pt-BR": "Chassi Ampliado",
+      "en": "Chassi Ampliado",
+      "es": "Chassi Ampliado"
+    },
+    "category": "Classe",
+    "level": 13,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 13).",
+      "en": "Gunslinger class feat (Level 13).",
+      "es": "Dote de clase de Pistolero (Nivel 13)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.locomocao_arcana",
+    "name": "Locomoção Arcana (Locomoção Arcana)",
+    "names": {
+      "pt-BR": "Locomoção Arcana",
+      "en": "Locomoção Arcana",
+      "es": "Locomoção Arcana"
+    },
+    "category": "Classe",
+    "level": 13,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 13).",
+      "en": "Gunslinger class feat (Level 13).",
+      "es": "Dote de clase de Pistolero (Nivel 13)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.rejuvenescer_nucleo",
+    "name": "Rejuvenescer Núcleo (Rejuvenescer Núcleo)",
+    "names": {
+      "pt-BR": "Rejuvenescer Núcleo",
+      "en": "Rejuvenescer Núcleo",
+      "es": "Rejuvenescer Núcleo"
+    },
+    "category": "Classe",
+    "level": 13,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 13).",
+      "en": "Gunslinger class feat (Level 13).",
+      "es": "Dote de clase de Pistolero (Nivel 13)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.chamado_do_eixo",
+    "name": "Chamado Do Eixo (Chamado Do Eixo)",
+    "names": {
+      "pt-BR": "Chamado Do Eixo",
+      "en": "Chamado Do Eixo",
+      "es": "Chamado Do Eixo"
+    },
+    "category": "Classe",
+    "level": 17,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 17).",
+      "en": "Gunslinger class feat (Level 17).",
+      "es": "Dote de clase de Pistolero (Nivel 17)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  }
 ];

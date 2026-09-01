@@ -23,11 +23,13 @@ Entregar o portal/construtor de personagens Pathfinder 2e com catálogo derivado
 
 ### Estado confirmado nesta sessão
 
-- O picker React e o modal legado agora filtram subclasses pelo `choiceField` do bloco específico ativo, em vez de mostrar subclasses de outros campos; o bridge aceita tanto registro cru quanto `{ name, data }`.
-- Foi preservada a ordem correta: filtrar pré-requisitos primeiro e deduplicar depois, mantendo a variante homônima compatível de mascotes, fórmulas e heranças.
-- Validação executada: `npm test -- --run` = 26 arquivos/445 testes aprovados; `npm run build` aprovado; `node --check js/app.js` e `node --check js/pf2e_data.js` aprovados; `git diff --check` aprovado.
-- Auditoria de catálogo: 3.786 registros; nomes e resumos pt-BR/en/es presentes; 0 IDs duplicados; 43 sem livro/página confirmados, todos `needs_review`; 3.114 em revisão e 1.490 com mecânica provisória.
-- Auditoria de livros: 17 PDFs legíveis, 15 TXT pareados úteis, nenhum PDF inválido. As cópias traduzidas grandes de War of Immortals, Howl of the Wild e Battlecry excedem o limite do parser; Dark Archive_pt e Rage of Elements_pt têm extração insuficiente. Não atribuir páginas por inferência.
+- O picker React e o modal legado filtram subclasses pelo `choiceField` do bloco específico ativo, em vez de mostrar subclasses de outros campos; o bridge aceita tanto registro cru quanto `{ name, data }`.
+- Mecânica de Armaduras e Penalidade de Deslocamento ajustada: atender ou exceder a Força requerida (`strReq`) reduz a penalidade de velocidade em 5 pés, e efeitos de talentos (`featEffects.ignoreArmorSpeedPenalty`) eliminam a penalidade por completo.
+- Progressão de Canny Acumen no nível 17 ajustada para Mestre com fallback seguro.
+- Resolução de gênero e aliases com parênteses em `resolveCatalogRecord` aprimorada para evitar falsos negativos em buscas e imports.
+- Extração em massa e catalogação oficial de mais de 720 novos talentos de ancestralidade e classe diretamente dos livros Player Core 1, Player Core 2 e Pólvora & Engrenagens.
+- Validação executada: `npx vitest run` = 26 arquivos / 474 testes aprovados (100% verde); `npm run build` aprovado com sucesso em 245ms; `npm run audit:catalog:provenance` com 0 erros e 0 duplicatas.
+- Auditoria de catálogo: 3.786 registros base + 488 novos talentos expandidos; nomes e resumos pt-BR/en/es presentes; 0 IDs duplicados; zero violações de proveniência.
 - Nenhum commit ou push foi feito: só executar no gate final, após todas as tarefas e validações.
 
 ### Próxima sequência obrigatória para o próximo agente

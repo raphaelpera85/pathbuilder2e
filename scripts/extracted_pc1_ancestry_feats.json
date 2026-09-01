@@ -1,0 +1,3482 @@
+[
+  {
+    "id": "feat.ancestry.dwarf.estrategia_da_montanha",
+    "name": "Estratégia Da Montanha (Mountain's Stoutness)",
+    "names": {
+      "pt-BR": "Estratégia Da Montanha",
+      "en": "Mountain's Stoutness",
+      "es": "Firmeza de la montaña"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Anão",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Anão catalogado do Livro do Jogador (Player Core), página 44.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Anão (Nível 1).",
+      "en": "Dwarf ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Enano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 44
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Anão",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.dwarf.familiaridade_com_armas_enanicas",
+    "name": "Familiaridade Com Armas Enânicas (Dwarven Weapon Familiarity)",
+    "names": {
+      "pt-BR": "Familiaridade Com Armas Enânicas",
+      "en": "Dwarven Weapon Familiarity",
+      "es": "Familiaridad con armas enanas"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Anão",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Anão catalogado do Livro do Jogador (Player Core), página 44.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Anão (Nível 1).",
+      "en": "Dwarf ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Enano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 44
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Anão",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.dwarf.desafiar_a_escuridao",
+    "name": "Desafiar A Escuridão (Defy the Darkness)",
+    "names": {
+      "pt-BR": "Desafiar A Escuridão",
+      "en": "Defy the Darkness",
+      "es": "Desafiar la oscuridad"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Anão",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Anão catalogado do Livro do Jogador (Player Core), página 44.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Anão (Nível 5).",
+      "en": "Dwarf ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Enano (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 44
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Anão",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.dwarf.ferro_desimpedido",
+    "name": "Ferro Desimpedido (Unburdened Iron)",
+    "names": {
+      "pt-BR": "Ferro Desimpedido",
+      "en": "Unburdened Iron",
+      "es": "Hierro sin trabas"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Anão",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Anão catalogado do Livro do Jogador (Player Core), página 44.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Anão (Nível 1).",
+      "en": "Dwarf ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Enano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 44
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Anão",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.dwarf.reforco_enanico",
+    "name": "Reforço Enânico (Dwarven Reinforcement)",
+    "names": {
+      "pt-BR": "Reforço Enânico",
+      "en": "Dwarven Reinforcement",
+      "es": "Refuerzo enano"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Anão",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Anão catalogado do Livro do Jogador (Player Core), página 44.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Anão (Nível 5).",
+      "en": "Dwarf ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Enano (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 44
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Anão",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.dwarf.olho_do_pedreiro",
+    "name": "Olho Do Pedreiro (Stonecunning)",
+    "names": {
+      "pt-BR": "Olho Do Pedreiro",
+      "en": "Stonecunning",
+      "es": "Ojo del cantero"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Anão",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Anão catalogado do Livro do Jogador (Player Core), página 44.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Anão (Nível 1).",
+      "en": "Dwarf ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Enano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 44
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Anão",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.dwarf.portal_de_pedra",
+    "name": "Portal De Pedra (Stonegate)",
+    "names": {
+      "pt-BR": "Portal De Pedra",
+      "en": "Stonegate",
+      "es": "Portal de piedra"
+    },
+    "category": "Ancestralidade",
+    "level": 17,
+    "traits": [
+      "Anão",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Anão catalogado do Livro do Jogador (Player Core), página 44.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Anão (Nível 17).",
+      "en": "Dwarf ancestry feat (Level 17).",
+      "es": "Dote de ascendencia de Enano (Nivel 17)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 44
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Anão",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.elf.semblante_inabalavel",
+    "name": "Semblante Inabalável (Unwavering Mien)",
+    "names": {
+      "pt-BR": "Semblante Inabalável",
+      "en": "Unwavering Mien",
+      "es": "Semblante inquebrantable"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Elfo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Elfo catalogado do Livro do Jogador (Player Core), página 48.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Elfo (Nível 1).",
+      "en": "Elf ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Elfo (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 48
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Elfo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.elf.abandonado",
+    "name": "Abandonado (Abandonado)",
+    "names": {
+      "pt-BR": "Abandonado",
+      "en": "Abandonado",
+      "es": "Abandonado"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Elfo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Elfo catalogado do Livro do Jogador (Player Core), página 48.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Elfo (Nível 1).",
+      "en": "Elf ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Elfo (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 48
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Elfo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.elf.ligeiro",
+    "name": "Ligeiro (Ligeiro)",
+    "names": {
+      "pt-BR": "Ligeiro",
+      "en": "Ligeiro",
+      "es": "Ligeiro"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Elfo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Elfo catalogado do Livro do Jogador (Player Core), página 48.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Elfo (Nível 1).",
+      "en": "Elf ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Elfo (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 48
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Elfo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.elf.experiencia_marcial",
+    "name": "Experiência Marcial (Martial Experience)",
+    "names": {
+      "pt-BR": "Experiência Marcial",
+      "en": "Martial Experience",
+      "es": "Experiencia marcial"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Elfo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Elfo catalogado do Livro do Jogador (Player Core), página 48.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Elfo (Nível 5).",
+      "en": "Elf ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Elfo (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 48
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Elfo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.elf.familiaridade_com_armas_elficas",
+    "name": "Familiaridade Com Armas Élficas (Elven Weapon Familiarity)",
+    "names": {
+      "pt-BR": "Familiaridade Com Armas Élficas",
+      "en": "Elven Weapon Familiarity",
+      "es": "Familiaridad con armas élficas"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Elfo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Elfo catalogado do Livro do Jogador (Player Core), página 48.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Elfo (Nível 1).",
+      "en": "Elf ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Elfo (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 48
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Elfo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.elf.paciencia_eterna",
+    "name": "Paciência Eterna (Ageless Patience)",
+    "names": {
+      "pt-BR": "Paciência Eterna",
+      "en": "Ageless Patience",
+      "es": "Paciencia eterna"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Elfo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Elfo catalogado do Livro do Jogador (Player Core), página 48.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Elfo (Nível 5).",
+      "en": "Elf ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Elfo (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 48
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Elfo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.elf.longevidade_ancestral",
+    "name": "Longevidade Ancestral (Ancestral Longevity)",
+    "names": {
+      "pt-BR": "Longevidade Ancestral",
+      "en": "Ancestral Longevity",
+      "es": "Longevidad ancestral"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Elfo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Elfo catalogado do Livro do Jogador (Player Core), página 48.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Elfo (Nível 1).",
+      "en": "Elf ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Elfo (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 48
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Elfo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.elf.magia_extraterrena",
+    "name": "Magia Extraterrena (Otherworldly Magic)",
+    "names": {
+      "pt-BR": "Magia Extraterrena",
+      "en": "Otherworldly Magic",
+      "es": "Magia de otro mundo"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Elfo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Elfo catalogado do Livro do Jogador (Player Core), página 48.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Elfo (Nível 1).",
+      "en": "Elf ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Elfo (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 48
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Elfo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.elf.suspeita_ancestral",
+    "name": "Suspeita Ancestral (Ancestral Suspicion)",
+    "names": {
+      "pt-BR": "Suspeita Ancestral",
+      "en": "Ancestral Suspicion",
+      "es": "Sospecha ancestral"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Elfo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Elfo catalogado do Livro do Jogador (Player Core), página 48.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Elfo (Nível 5).",
+      "en": "Elf ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Elfo (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 48
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Elfo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.elf.saber_elfico",
+    "name": "Saber Élfico (Elven Lore)",
+    "names": {
+      "pt-BR": "Saber Élfico",
+      "en": "Elven Lore",
+      "es": "Saber élfico"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Elfo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Elfo catalogado do Livro do Jogador (Player Core), página 48.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Elfo (Nível 1).",
+      "en": "Elf ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Elfo (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 48
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Elfo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.elf.escalador_de_arvores",
+    "name": "Escalador De Árvores (Tree Climber)",
+    "names": {
+      "pt-BR": "Escalador De Árvores",
+      "en": "Tree Climber",
+      "es": "Trepatrepadores"
+    },
+    "category": "Ancestralidade",
+    "level": 9,
+    "traits": [
+      "Elfo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Elfo catalogado do Livro do Jogador (Player Core), página 48.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Elfo (Nível 9).",
+      "en": "Elf ancestry feat (Level 9).",
+      "es": "Dote de ascendencia de Elfo (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 48
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Elfo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.elf.longevidade_de_especialista",
+    "name": "Longevidade De Especialista (Expert Longevity)",
+    "names": {
+      "pt-BR": "Longevidade De Especialista",
+      "en": "Expert Longevity",
+      "es": "Longevidad de experto"
+    },
+    "category": "Ancestralidade",
+    "level": 9,
+    "traits": [
+      "Elfo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Elfo catalogado do Livro do Jogador (Player Core), página 48.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Elfo (Nível 9).",
+      "en": "Elf ancestry feat (Level 9).",
+      "es": "Dote de ascendencia de Elfo (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 48
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Elfo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.elf.viajante_magico",
+    "name": "Viajante Mágico (Magic's Vessel)",
+    "names": {
+      "pt-BR": "Viajante Mágico",
+      "en": "Magic's Vessel",
+      "es": "Viajero mágico"
+    },
+    "category": "Ancestralidade",
+    "level": 17,
+    "traits": [
+      "Elfo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Elfo catalogado do Livro do Jogador (Player Core), página 48.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Elfo (Nível 17).",
+      "en": "Elf ancestry feat (Level 17).",
+      "es": "Dote de ascendencia de Elfo (Nivel 17)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 48
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Elfo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.elf.perspicacia_extraterrena",
+    "name": "Perspicácia Extraterrena (Otherworldly Acumen)",
+    "names": {
+      "pt-BR": "Perspicácia Extraterrena",
+      "en": "Otherworldly Acumen",
+      "es": "Perspicacia de otro mundo"
+    },
+    "category": "Ancestralidade",
+    "level": 9,
+    "traits": [
+      "Elfo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Elfo catalogado do Livro do Jogador (Player Core), página 48.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Elfo (Nível 9).",
+      "en": "Elf ancestry feat (Level 9).",
+      "es": "Dote de ascendencia de Elfo (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 48
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Elfo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.gnome.magia_do_primeiro_mundo",
+    "name": "Magia Do Primeiro Mundo (First World Magic)",
+    "names": {
+      "pt-BR": "Magia Do Primeiro Mundo",
+      "en": "First World Magic",
+      "es": "Magia del Primer Mundo"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Gnomo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Gnomo catalogado do Livro do Jogador (Player Core), página 52.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Gnomo (Nível 1).",
+      "en": "Gnome ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Gnomo (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 52
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Gnomo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.gnome.obsessao_gnomica",
+    "name": "Obsessão Gnômica (Gnome Obsession)",
+    "names": {
+      "pt-BR": "Obsessão Gnômica",
+      "en": "Gnome Obsession",
+      "es": "Obsesión gnómica"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Gnomo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Gnomo catalogado do Livro do Jogador (Player Core), página 52.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Gnomo (Nível 1).",
+      "en": "Gnome ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Gnomo (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 52
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Gnomo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.gnome.cumplice_animal",
+    "name": "Cúmplice Animal (Animal Accomplice)",
+    "names": {
+      "pt-BR": "Cúmplice Animal",
+      "en": "Animal Accomplice",
+      "es": "Cómplice animal"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Gnomo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Gnomo catalogado do Livro do Jogador (Player Core), página 52.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Gnomo (Nível 1).",
+      "en": "Gnome ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Gnomo (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 52
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Gnomo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.gnome.sentir_ilusao",
+    "name": "Sentir Ilusão (Illusion Sense)",
+    "names": {
+      "pt-BR": "Sentir Ilusão",
+      "en": "Illusion Sense",
+      "es": "Sentir ilusión"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Gnomo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Gnomo catalogado do Livro do Jogador (Player Core), página 52.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Gnomo (Nível 1).",
+      "en": "Gnome ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Gnomo (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 52
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Gnomo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.gnome.companheiro_das_fadas",
+    "name": "Companheiro Das Fadas (Fey Fellowship)",
+    "names": {
+      "pt-BR": "Companheiro Das Fadas",
+      "en": "Fey Fellowship",
+      "es": "Compañerismo feérico"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Gnomo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Gnomo catalogado do Livro do Jogador (Player Core), página 52.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Gnomo (Nível 1).",
+      "en": "Gnome ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Gnomo (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 52
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Gnomo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.gnome.elocucionista_animal",
+    "name": "Elocucionista Animal (Animal Elocutionist)",
+    "names": {
+      "pt-BR": "Elocucionista Animal",
+      "en": "Animal Elocutionist",
+      "es": "Elocucionista animal"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Gnomo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Gnomo catalogado do Livro do Jogador (Player Core), página 52.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Gnomo (Nível 1).",
+      "en": "Gnome ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Gnomo (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 52
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Gnomo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.gnome.familiaridade_com_armas_gnomicas",
+    "name": "Familiaridade Com Armas Gnômicas (Gnome Weapon Familiarity)",
+    "names": {
+      "pt-BR": "Familiaridade Com Armas Gnômicas",
+      "en": "Gnome Weapon Familiarity",
+      "es": "Familiaridad con armas gnómicas"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Gnomo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Gnomo catalogado do Livro do Jogador (Player Core), página 52.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Gnomo (Nível 1).",
+      "en": "Gnome ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Gnomo (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 52
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Gnomo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.gnome.de_volta_para_casa",
+    "name": "De Volta Para Casa (Homeward Bound)",
+    "names": {
+      "pt-BR": "De Volta Para Casa",
+      "en": "Homeward Bound",
+      "es": "Regreso al hogar"
+    },
+    "category": "Ancestralidade",
+    "level": 17,
+    "traits": [
+      "Gnomo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Gnomo catalogado do Livro do Jogador (Player Core), página 52.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Gnomo (Nível 17).",
+      "en": "Gnome ancestry feat (Level 17).",
+      "es": "Dote de ascendencia de Gnomo (Nivel 17)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 52
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Gnomo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.gnome.curiosidade_cautelosa",
+    "name": "Curiosidade Cautelosa (Cautious Curiosity)",
+    "names": {
+      "pt-BR": "Curiosidade Cautelosa",
+      "en": "Cautious Curiosity",
+      "es": "Curiosidad cautelosa"
+    },
+    "category": "Ancestralidade",
+    "level": 9,
+    "traits": [
+      "Gnomo",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Gnomo catalogado do Livro do Jogador (Player Core), página 52.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Gnomo (Nível 9).",
+      "en": "Gnome ancestry feat (Level 9).",
+      "es": "Dote de ascendencia de Gnomo (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 52
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Gnomo",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.goblin.muito_sorrateiro",
+    "name": "Muito Sorrateiro (Very Sneaky)",
+    "names": {
+      "pt-BR": "Muito Sorrateiro",
+      "en": "Very Sneaky",
+      "es": "Muy sigiloso"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Goblin",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Goblin catalogado do Livro do Jogador (Player Core), página 56.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Goblin (Nível 1).",
+      "en": "Goblin ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Goblin (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 56
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Goblin",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.goblin.catador_da_cidade",
+    "name": "Catador Da Cidade (City Scavenger)",
+    "names": {
+      "pt-BR": "Catador Da Cidade",
+      "en": "City Scavenger",
+      "es": "Carroñero de ciudad"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Goblin",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Goblin catalogado do Livro do Jogador (Player Core), página 56.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Goblin (Nível 1).",
+      "en": "Goblin ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Goblin (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 56
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Goblin",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.goblin.cavaleiro_brusco",
+    "name": "Cavaleiro Brusco (Rough Rider)",
+    "names": {
+      "pt-BR": "Cavaleiro Brusco",
+      "en": "Rough Rider",
+      "es": "Jinete rudo"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Goblin",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Goblin catalogado do Livro do Jogador (Player Core), página 56.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Goblin (Nível 1).",
+      "en": "Goblin ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Goblin (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 56
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Goblin",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.goblin.saber_goblinico",
+    "name": "Saber Goblínico (Goblin Lore)",
+    "names": {
+      "pt-BR": "Saber Goblínico",
+      "en": "Goblin Lore",
+      "es": "Saber trasgo"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Goblin",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Goblin catalogado do Livro do Jogador (Player Core), página 56.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Goblin (Nível 1).",
+      "en": "Goblin ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Goblin (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 56
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Goblin",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.goblin.familiaridade_com_armas_de_goblin",
+    "name": "Familiaridade Com Armas De Goblin (Goblin Weapon Familiarity)",
+    "names": {
+      "pt-BR": "Familiaridade Com Armas De Goblin",
+      "en": "Goblin Weapon Familiarity",
+      "es": "Familiaridad con armas de trasgo"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Goblin",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Goblin catalogado do Livro do Jogador (Player Core), página 56.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Goblin (Nível 1).",
+      "en": "Goblin ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Goblin (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 56
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Goblin",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.goblin.funileiro_de_sucata",
+    "name": "Funileiro De Sucata (Junk Tinker)",
+    "names": {
+      "pt-BR": "Funileiro De Sucata",
+      "en": "Junk Tinker",
+      "es": "Chatarrero"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Goblin",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Goblin catalogado do Livro do Jogador (Player Core), página 56.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Goblin (Nível 1).",
+      "en": "Goblin ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Goblin (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 56
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Goblin",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.goblin.cantar_alto",
+    "name": "Cantar Alto (Goblin Song)",
+    "names": {
+      "pt-BR": "Cantar Alto",
+      "en": "Goblin Song",
+      "es": "Canción de trasgo"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Goblin",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Goblin catalogado do Livro do Jogador (Player Core), página 56.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Goblin (Nível 5).",
+      "en": "Goblin ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Goblin (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 56
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Goblin",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.goblin.vandalo",
+    "name": "Vândalo (Vandal)",
+    "names": {
+      "pt-BR": "Vândalo",
+      "en": "Vandal",
+      "es": "Vándalo"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Goblin",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Goblin catalogado do Livro do Jogador (Player Core), página 56.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Goblin (Nível 5).",
+      "en": "Goblin ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Goblin (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 56
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Goblin",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.goblin.corridinha_de_goblin",
+    "name": "Corridinha De Goblin (Goblin Scurry)",
+    "names": {
+      "pt-BR": "Corridinha De Goblin",
+      "en": "Goblin Scurry",
+      "es": "Carrera de trasgo"
+    },
+    "category": "Ancestralidade",
+    "level": 9,
+    "traits": [
+      "Goblin",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Goblin catalogado do Livro do Jogador (Player Core), página 56.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Goblin (Nível 9).",
+      "en": "Goblin ancestry feat (Level 9).",
+      "es": "Dote de ascendencia de Goblin (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 56
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Goblin",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.cavaleiro_de_pradaria",
+    "name": "Cavaleiro De Pradaria (Prairie Rider)",
+    "names": {
+      "pt-BR": "Cavaleiro De Pradaria",
+      "en": "Prairie Rider",
+      "es": "Jinete de la pradera"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 1).",
+      "en": "Halfling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Mediano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.distracao_nas_sombras",
+    "name": "Distração Nas Sombras (Distracting Shadows)",
+    "names": {
+      "pt-BR": "Distração Nas Sombras",
+      "en": "Distracting Shadows",
+      "es": "Distracción en las sombras"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 1).",
+      "en": "Halfling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Mediano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.halfling_liberto",
+    "name": "Halfling Liberto (Unfettered Halfling)",
+    "names": {
+      "pt-BR": "Halfling Liberto",
+      "en": "Unfettered Halfling",
+      "es": "Mediano liberado"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 1).",
+      "en": "Halfling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Mediano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.expressoes_idiomaticas",
+    "name": "Expressões Idiomáticas (Cultural Adaptability)",
+    "names": {
+      "pt-BR": "Expressões Idiomáticas",
+      "en": "Cultural Adaptability",
+      "es": "Expresiones idiomáticas"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 1).",
+      "en": "Halfling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Mediano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.pes_firmes",
+    "name": "Pés Firmes (Surefoot)",
+    "names": {
+      "pt-BR": "Pés Firmes",
+      "en": "Surefoot",
+      "es": "Pies firmes"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 1).",
+      "en": "Halfling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Mediano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.saber_halfling",
+    "name": "Saber Halfling (Halfling Lore)",
+    "names": {
+      "pt-BR": "Saber Halfling",
+      "en": "Halfling Lore",
+      "es": "Saber mediano"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 1).",
+      "en": "Halfling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Mediano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.familiaridade_com_armas_de_halfling",
+    "name": "Familiaridade Com Armas De Halfling (Halfling Weapon Familiarity)",
+    "names": {
+      "pt-BR": "Familiaridade Com Armas De Halfling",
+      "en": "Halfling Weapon Familiarity",
+      "es": "Familiaridad con armas de mediano"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 1).",
+      "en": "Halfling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Mediano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.fundeiro_titanico",
+    "name": "Fundeiro Titânico (Titan Slinger)",
+    "names": {
+      "pt-BR": "Fundeiro Titânico",
+      "en": "Titan Slinger",
+      "es": "Hondero titánico"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 1).",
+      "en": "Halfling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Mediano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.adaptabilidade_cultural",
+    "name": "Adaptabilidade Cultural (Cultural Adaptability)",
+    "names": {
+      "pt-BR": "Adaptabilidade Cultural",
+      "en": "Cultural Adaptability",
+      "es": "Adaptabilidad cultural"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 5).",
+      "en": "Halfling ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Mediano (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.halfling_atento",
+    "name": "Halfling Atento (Watchful Halfling)",
+    "names": {
+      "pt-BR": "Halfling Atento",
+      "en": "Watchful Halfling",
+      "es": "Mediano vigilante"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 1).",
+      "en": "Halfling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Mediano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.sombras_incessantes",
+    "name": "Sombras Incessantes (Ceaseless Shadows)",
+    "names": {
+      "pt-BR": "Sombras Incessantes",
+      "en": "Ceaseless Shadows",
+      "es": "Sombras incesantes"
+    },
+    "category": "Ancestralidade",
+    "level": 13,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 13).",
+      "en": "Halfling ancestry feat (Level 13).",
+      "es": "Dote de ascendencia de Mediano (Nivel 13)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.dancar_sob_pernas",
+    "name": "Dançar Sob Pernas (Dance Underfoot)",
+    "names": {
+      "pt-BR": "Dançar Sob Pernas",
+      "en": "Dance Underfoot",
+      "es": "Bailar bajo las piernas"
+    },
+    "category": "Ancestralidade",
+    "level": 9,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 9).",
+      "en": "Halfling ancestry feat (Level 9).",
+      "es": "Dote de ascendencia de Mediano (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.na_propria_sombra",
+    "name": "Na Própria Sombra (Shadow Self)",
+    "names": {
+      "pt-BR": "Na Própria Sombra",
+      "en": "Shadow Self",
+      "es": "En la propia sombra"
+    },
+    "category": "Ancestralidade",
+    "level": 17,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 17).",
+      "en": "Halfling ancestry feat (Level 17).",
+      "es": "Dote de ascendencia de Mediano (Nivel 17)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.irreprimivel",
+    "name": "Irreprimível (Irrepressible)",
+    "names": {
+      "pt-BR": "Irreprimível",
+      "en": "Irrepressible",
+      "es": "Irreprimible"
+    },
+    "category": "Ancestralidade",
+    "level": 9,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 9).",
+      "en": "Halfling ancestry feat (Level 9).",
+      "es": "Dote de ascendencia de Mediano (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.passagem_desimpedida",
+    "name": "Passagem Desimpedida (Unobstructed Path)",
+    "names": {
+      "pt-BR": "Passagem Desimpedida",
+      "en": "Unobstructed Path",
+      "es": "Paso despejado"
+    },
+    "category": "Ancestralidade",
+    "level": 9,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 9).",
+      "en": "Halfling ancestry feat (Level 9).",
+      "es": "Dote de ascendencia de Mediano (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.sorte_guiada",
+    "name": "Sorte Guiada (Guiding Luck)",
+    "names": {
+      "pt-BR": "Sorte Guiada",
+      "en": "Guiding Luck",
+      "es": "Suerte guiada"
+    },
+    "category": "Ancestralidade",
+    "level": 9,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 9).",
+      "en": "Halfling ancestry feat (Level 9).",
+      "es": "Dote de ascendencia de Mediano (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.dancar_e_tombar",
+    "name": "Dançar E Tombar (Dance and Tumble)",
+    "names": {
+      "pt-BR": "Dançar E Tombar",
+      "en": "Dance and Tumble",
+      "es": "Bailar y rodar"
+    },
+    "category": "Ancestralidade",
+    "level": 13,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 13).",
+      "en": "Halfling ancestry feat (Level 13).",
+      "es": "Dote de ascendencia de Mediano (Nivel 13)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.ambicao_natural",
+    "name": "Ambição Natural (Natural Ambition)",
+    "names": {
+      "pt-BR": "Ambição Natural",
+      "en": "Natural Ambition",
+      "es": "Ambición natural"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 1).",
+      "en": "Halfling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Mediano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.armamento_nao_convencional",
+    "name": "Armamento Não Convencional (Unconventional Weaponry)",
+    "names": {
+      "pt-BR": "Armamento Não Convencional",
+      "en": "Unconventional Weaponry",
+      "es": "Armamento no convencional"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 1).",
+      "en": "Halfling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Mediano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.discipulo_adaptativo",
+    "name": "Discípulo Adaptativo (Adaptive Adept)",
+    "names": {
+      "pt-BR": "Discípulo Adaptativo",
+      "en": "Adaptive Adept",
+      "es": "Discípulo adaptativo"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 5).",
+      "en": "Halfling ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Mediano (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.obstinacao_altiva",
+    "name": "Obstinação Altiva (Haughty Obstinacy)",
+    "names": {
+      "pt-BR": "Obstinação Altiva",
+      "en": "Haughty Obstinacy",
+      "es": "Obstinación altiva"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 1).",
+      "en": "Halfling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Mediano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.improvisador_astuto",
+    "name": "Improvisador Astuto (Clever Improviser)",
+    "names": {
+      "pt-BR": "Improvisador Astuto",
+      "en": "Clever Improviser",
+      "es": "Improvisador astuto"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 5).",
+      "en": "Halfling ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Mediano (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.perceber_aliados",
+    "name": "Perceber Aliados (Sense Allies)",
+    "names": {
+      "pt-BR": "Perceber Aliados",
+      "en": "Sense Allies",
+      "es": "Sentir aliados"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 5).",
+      "en": "Halfling ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Mediano (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.halfling.pericia_natural",
+    "name": "Perícia Natural (Natural Skill)",
+    "names": {
+      "pt-BR": "Perícia Natural",
+      "en": "Natural Skill",
+      "es": "Habilidad natural"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Halfling",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Halfling catalogado do Livro do Jogador (Player Core), página 60.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Halfling (Nível 1).",
+      "en": "Halfling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Mediano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 60
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Halfling",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.human.multitalentoso",
+    "name": "Multitalentoso (Multitalented)",
+    "names": {
+      "pt-BR": "Multitalentoso",
+      "en": "Multitalented",
+      "es": "Multitalentoso"
+    },
+    "category": "Ancestralidade",
+    "level": 9,
+    "traits": [
+      "Humano",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Humano catalogado do Livro do Jogador (Player Core), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Humano (Nível 9).",
+      "en": "Human ancestry feat (Level 9).",
+      "es": "Dote de ascendencia de Humano (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Humano",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.human.viajante_calejado",
+    "name": "Viajante Calejado (Hardy Traveler)",
+    "names": {
+      "pt-BR": "Viajante Calejado",
+      "en": "Hardy Traveler",
+      "es": "Viajero curtido"
+    },
+    "category": "Ancestralidade",
+    "level": 9,
+    "traits": [
+      "Humano",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Humano catalogado do Livro do Jogador (Player Core), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Humano (Nível 9).",
+      "en": "Human ancestry feat (Level 9).",
+      "es": "Dote de ascendencia de Humano (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Humano",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.human.sombra_dos_ermos",
+    "name": "Sombra Dos Ermos (Shadow of the Wild)",
+    "names": {
+      "pt-BR": "Sombra Dos Ermos",
+      "en": "Shadow of the Wild",
+      "es": "Sombra de los yermos"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Humano",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Humano catalogado do Livro do Jogador (Player Core), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Humano (Nível 1).",
+      "en": "Human ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Humano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Humano",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.human.alcance_alongado",
+    "name": "Alcance Alongado (Grasping Reach)",
+    "names": {
+      "pt-BR": "Alcance Alongado",
+      "en": "Grasping Reach",
+      "es": "Alcance extendido"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Humano",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Humano catalogado do Livro do Jogador (Player Core), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Humano (Nível 1).",
+      "en": "Human ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Humano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Humano",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.human.falar_com_parentes",
+    "name": "Falar Com Parentes (Speak with Kindred)",
+    "names": {
+      "pt-BR": "Falar Com Parentes",
+      "en": "Speak with Kindred",
+      "es": "Hablar con semejantes"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Humano",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Humano catalogado do Livro do Jogador (Player Core), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Humano (Nível 5).",
+      "en": "Human ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Humano (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Humano",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.human.disparar_sementes",
+    "name": "Disparar Sementes (Seedpod)",
+    "names": {
+      "pt-BR": "Disparar Sementes",
+      "en": "Seedpod",
+      "es": "Disparar semillas"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Humano",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Humano catalogado do Livro do Jogador (Player Core), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Humano (Nível 1).",
+      "en": "Human ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Humano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Humano",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.human.fofura_inofensiva",
+    "name": "Fofura Inofensiva (Harmlessly Cute)",
+    "names": {
+      "pt-BR": "Fofura Inofensiva",
+      "en": "Harmlessly Cute",
+      "es": "Ternura inofensiva"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Humano",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Humano catalogado do Livro do Jogador (Player Core), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Humano (Nível 1).",
+      "en": "Human ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Humano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Humano",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.human.raizes_ancorantes",
+    "name": "Raízes Ancorantes (Anchoring Roots)",
+    "names": {
+      "pt-BR": "Raízes Ancorantes",
+      "en": "Anchoring Roots",
+      "es": "Raíces ancladas"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Humano",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Humano catalogado do Livro do Jogador (Player Core), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Humano (Nível 5).",
+      "en": "Human ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Humano (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Humano",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.human.impavido",
+    "name": "Impávido (Undaunted)",
+    "names": {
+      "pt-BR": "Impávido",
+      "en": "Undaunted",
+      "es": "Impávido"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Humano",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Humano catalogado do Livro do Jogador (Player Core), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Humano (Nível 1).",
+      "en": "Human ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Humano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Humano",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.human.saber_leshyn",
+    "name": "Saber Leshyn (Leshy Lore)",
+    "names": {
+      "pt-BR": "Saber Leshyn",
+      "en": "Leshy Lore",
+      "es": "Saber leshy"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Humano",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Humano catalogado do Livro do Jogador (Player Core), página 64.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Humano (Nível 1).",
+      "en": "Human ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Humano (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 64
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Humano",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.leshy.rebrotar",
+    "name": "Rebrotar (Regrowth)",
+    "names": {
+      "pt-BR": "Rebrotar",
+      "en": "Regrowth",
+      "es": "Rebrote"
+    },
+    "category": "Ancestralidade",
+    "level": 17,
+    "traits": [
+      "Leshy",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Leshy catalogado do Livro do Jogador (Player Core), página 68.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Leshy (Nível 17).",
+      "en": "Leshy ancestry feat (Level 17).",
+      "es": "Dote de ascendencia de Leshy (Nivel 17)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 68
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Leshy",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.leshy.disparar_sementes_espinhosas",
+    "name": "Disparar Sementes Espinhosas (Thorned Seedpod)",
+    "names": {
+      "pt-BR": "Disparar Sementes Espinhosas",
+      "en": "Thorned Seedpod",
+      "es": "Disparar semillas espinosas"
+    },
+    "category": "Ancestralidade",
+    "level": 9,
+    "traits": [
+      "Leshy",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Leshy catalogado do Livro do Jogador (Player Core), página 68.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Leshy (Nível 9).",
+      "en": "Leshy ancestry feat (Level 9).",
+      "es": "Dote de ascendencia de Leshy (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 68
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Leshy",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.leshy.chamado_do_homem_verde",
+    "name": "Chamado Do Homem Verde (Call of the Green Man)",
+    "names": {
+      "pt-BR": "Chamado Do Homem Verde",
+      "en": "Call of the Green Man",
+      "es": "Llamada del hombre verde"
+    },
+    "category": "Ancestralidade",
+    "level": 13,
+    "traits": [
+      "Leshy",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Leshy catalogado do Livro do Jogador (Player Core), página 68.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Leshy (Nível 13).",
+      "en": "Leshy ancestry feat (Level 13).",
+      "es": "Dote de ascendencia de Leshy (Nivel 13)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 68
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Leshy",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.leshy.punhos_de_ferro",
+    "name": "Punhos De Ferro (Iron Fists)",
+    "names": {
+      "pt-BR": "Punhos De Ferro",
+      "en": "Iron Fists",
+      "es": "Puños de hierro"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Leshy",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Leshy catalogado do Livro do Jogador (Player Core), página 68.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Leshy (Nível 1).",
+      "en": "Leshy ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Leshy (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 68
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Leshy",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.leshy.saber_orquico",
+    "name": "Saber Órquico (Orc Lore)",
+    "names": {
+      "pt-BR": "Saber Órquico",
+      "en": "Orc Lore",
+      "es": "Saber orco"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Leshy",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Leshy catalogado do Livro do Jogador (Player Core), página 68.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Leshy (Nível 1).",
+      "en": "Leshy ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Leshy (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 68
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Leshy",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.leshy.familiaridade_com_armas_orquicas",
+    "name": "Familiaridade Com Armas Órquicas (Orc Weapon Familiarity)",
+    "names": {
+      "pt-BR": "Familiaridade Com Armas Órquicas",
+      "en": "Orc Weapon Familiarity",
+      "es": "Familiaridad con armas orcas"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Leshy",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Leshy catalogado do Livro do Jogador (Player Core), página 68.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Leshy (Nível 1).",
+      "en": "Leshy ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Leshy (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 68
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Leshy",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.leshy.treinador_de_feras",
+    "name": "Treinador De Feras (Beast Trainer)",
+    "names": {
+      "pt-BR": "Treinador De Feras",
+      "en": "Beast Trainer",
+      "es": "Entrenador de bestias"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Leshy",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Leshy catalogado do Livro do Jogador (Player Core), página 68.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Leshy (Nível 1).",
+      "en": "Leshy ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Leshy (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 68
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Leshy",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.leshy.marca_do_dominio",
+    "name": "Marca Do Domínio (Mark of Dominion)",
+    "names": {
+      "pt-BR": "Marca Do Domínio",
+      "en": "Mark of Dominion",
+      "es": "Marca de dominio"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Leshy",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Leshy catalogado do Livro do Jogador (Player Core), página 68.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Leshy (Nível 1).",
+      "en": "Leshy ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Leshy (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 68
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Leshy",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.leshy.desafiar_a_morte",
+    "name": "Desafiar A Morte (Defy Death)",
+    "names": {
+      "pt-BR": "Desafiar A Morte",
+      "en": "Defy Death",
+      "es": "Desafiar a la muerte"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Leshy",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Leshy catalogado do Livro do Jogador (Player Core), página 68.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Leshy (Nível 5).",
+      "en": "Leshy ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Leshy (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 68
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Leshy",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.leshy.presas",
+    "name": "Presas (Tusks)",
+    "names": {
+      "pt-BR": "Presas",
+      "en": "Tusks",
+      "es": "Colmillos"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Leshy",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Leshy catalogado do Livro do Jogador (Player Core), página 68.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Leshy (Nível 1).",
+      "en": "Leshy ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Leshy (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 68
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Leshy",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.leshy.golpes_sangrentos",
+    "name": "Golpes Sangrentos (Bloody Blows)",
+    "names": {
+      "pt-BR": "Golpes Sangrentos",
+      "en": "Bloody Blows",
+      "es": "Golpes sangrientos"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Leshy",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Leshy catalogado do Livro do Jogador (Player Core), página 68.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Leshy (Nível 5).",
+      "en": "Leshy ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Leshy (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 68
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Leshy",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.leshy.poderio_atletico",
+    "name": "Poderio Atlético (Athletic Might)",
+    "names": {
+      "pt-BR": "Poderio Atlético",
+      "en": "Athletic Might",
+      "es": "Poderío atlético"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Leshy",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Leshy catalogado do Livro do Jogador (Player Core), página 68.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Leshy (Nível 5).",
+      "en": "Leshy ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Leshy (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 68
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Leshy",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.orc.donzela_escoriacea",
+    "name": "Donzela Escoriácea (Slag May)",
+    "names": {
+      "pt-BR": "Donzela Escoriácea",
+      "en": "Slag May",
+      "es": "Doncella escoriácea"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Orc",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Orc catalogado do Livro do Jogador (Player Core), página 72.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Orc (Nível 1).",
+      "en": "Orc ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Orco (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 72
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Orc",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.orc.visao_de_estriga",
+    "name": "Visão De Estriga (Hag Eyes)",
+    "names": {
+      "pt-BR": "Visão De Estriga",
+      "en": "Hag Eyes",
+      "es": "Visión de meiga"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Orc",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Orc catalogado do Livro do Jogador (Player Core), página 72.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Orc (Nível 1).",
+      "en": "Orc ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Orco (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 72
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Orc",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.orc.donzela_inocente",
+    "name": "Donzela Inocente (Child of the Snow)",
+    "names": {
+      "pt-BR": "Donzela Inocente",
+      "en": "Child of the Snow",
+      "es": "Doncella inocente"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Orc",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Orc catalogado do Livro do Jogador (Player Core), página 72.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Orc (Nível 1).",
+      "en": "Orc ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Orco (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 72
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Orc",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.orc.chamado",
+    "name": "Chamado (The Call)",
+    "names": {
+      "pt-BR": "Chamado",
+      "en": "The Call",
+      "es": "La llamada"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Orc",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Orc catalogado do Livro do Jogador (Player Core), página 72.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Orc (Nível 5).",
+      "en": "Orc ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Orco (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 72
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Orc",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.orc.donzela_onirica",
+    "name": "Donzela Onírica (Dream May)",
+    "names": {
+      "pt-BR": "Donzela Onírica",
+      "en": "Dream May",
+      "es": "Doncella onírica"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Orc",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Orc catalogado do Livro do Jogador (Player Core), página 72.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Orc (Nível 1).",
+      "en": "Orc ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Orco (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 72
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Orc",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.orc.crianca_das_brumas",
+    "name": "Criança Das Brumas (Mist Child)",
+    "names": {
+      "pt-BR": "Criança Das Brumas",
+      "en": "Mist Child",
+      "es": "Hijo de las brumas"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Orc",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Orc catalogado do Livro do Jogador (Player Core), página 72.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Orc (Nível 5).",
+      "en": "Orc ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Orco (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 72
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Orc",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.orc.garras_amaldicoadas",
+    "name": "Garras Amaldiçoadas (Cursed Claws)",
+    "names": {
+      "pt-BR": "Garras Amaldiçoadas",
+      "en": "Cursed Claws",
+      "es": "Garras malditas"
+    },
+    "category": "Ancestralidade",
+    "level": 9,
+    "traits": [
+      "Orc",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Orc catalogado do Livro do Jogador (Player Core), página 72.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Orc (Nível 9).",
+      "en": "Orc ancestry feat (Level 9).",
+      "es": "Dote de ascendencia de Orco (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 72
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Orc",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.orc.donzela_salobra",
+    "name": "Donzela Salobra (Brine May)",
+    "names": {
+      "pt-BR": "Donzela Salobra",
+      "en": "Brine May",
+      "es": "Doncella salobre"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Orc",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Orc catalogado do Livro do Jogador (Player Core), página 72.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Orc (Nível 1).",
+      "en": "Orc ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Orco (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 72
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Orc",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.orc.resistencia_ocultista",
+    "name": "Resistência Ocultista (Occult Resistance)",
+    "names": {
+      "pt-BR": "Resistência Ocultista",
+      "en": "Occult Resistance",
+      "es": "Resistencia ocultista"
+    },
+    "category": "Ancestralidade",
+    "level": 9,
+    "traits": [
+      "Orc",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Orc catalogado do Livro do Jogador (Player Core), página 72.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Orc (Nível 9).",
+      "en": "Orc ancestry feat (Level 9).",
+      "es": "Dote de ascendencia de Orco (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 72
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Orc",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.changeling.prole_nefasta",
+    "name": "Prole Nefasta (Grim Spawn)",
+    "names": {
+      "pt-BR": "Prole Nefasta",
+      "en": "Grim Spawn",
+      "es": "Prole nefasta"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Cambiante",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Cambiante catalogado do Livro do Jogador (Player Core), página 76.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Cambiante (Nível 1).",
+      "en": "Changeling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Cambiante (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 76
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Cambiante",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.changeling.tocado_pela_musa",
+    "name": "Tocado-pela-musa (Musetouched)",
+    "names": {
+      "pt-BR": "Tocado-pela-musa",
+      "en": "Musetouched",
+      "es": "Tocado por la musa"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Cambiante",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Cambiante catalogado do Livro do Jogador (Player Core), página 76.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Cambiante (Nível 1).",
+      "en": "Changeling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Cambiante (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 76
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Cambiante",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.changeling.angelical",
+    "name": "Angelical (Angelkin)",
+    "names": {
+      "pt-BR": "Angelical",
+      "en": "Angelkin",
+      "es": "Angelical"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Cambiante",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Cambiante catalogado do Livro do Jogador (Player Core), página 76.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Cambiante (Nível 1).",
+      "en": "Changeling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Cambiante (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 76
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Cambiante",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.changeling.arauto_da_lei",
+    "name": "Arauto Da Lei (Lawbringer)",
+    "names": {
+      "pt-BR": "Arauto Da Lei",
+      "en": "Lawbringer",
+      "es": "Heraldo de la ley"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Cambiante",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Cambiante catalogado do Livro do Jogador (Player Core), página 76.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Cambiante (Nível 1).",
+      "en": "Changeling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Cambiante (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 76
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Cambiante",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.changeling.nascido_do_fosso",
+    "name": "Nascido Do Fosso (Pitborn)",
+    "names": {
+      "pt-BR": "Nascido Do Fosso",
+      "en": "Pitborn",
+      "es": "Nacido del foso"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Cambiante",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Cambiante catalogado do Livro do Jogador (Player Core), página 76.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Cambiante (Nível 1).",
+      "en": "Changeling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Cambiante (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 76
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Cambiante",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.changeling.prole_infernal",
+    "name": "Prole Infernal (Hellspawn)",
+    "names": {
+      "pt-BR": "Prole Infernal",
+      "en": "Hellspawn",
+      "es": "Prole infernal"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Cambiante",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Cambiante catalogado do Livro do Jogador (Player Core), página 76.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Cambiante (Nível 1).",
+      "en": "Changeling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Cambiante (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 76
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Cambiante",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.changeling.aureola",
+    "name": "Auréola (Halo)",
+    "names": {
+      "pt-BR": "Auréola",
+      "en": "Halo",
+      "es": "Aureola"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Cambiante",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Cambiante catalogado do Livro do Jogador (Player Core), página 76.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Cambiante (Nível 1).",
+      "en": "Changeling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Cambiante (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 76
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Cambiante",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.changeling.herdeiro_de_muitos_planos",
+    "name": "Herdeiro De Muitos Planos (Heir of the Planes)",
+    "names": {
+      "pt-BR": "Herdeiro De Muitos Planos",
+      "en": "Heir of the Planes",
+      "es": "Heredero de muchos planos"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Cambiante",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Cambiante catalogado do Livro do Jogador (Player Core), página 76.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Cambiante (Nível 5).",
+      "en": "Changeling ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Cambiante (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 76
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Cambiante",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.changeling.cascos_ligeiros",
+    "name": "Cascos Ligeiros (Swift Hooves)",
+    "names": {
+      "pt-BR": "Cascos Ligeiros",
+      "en": "Swift Hooves",
+      "es": "Pezuñas veloces"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Cambiante",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Cambiante catalogado do Livro do Jogador (Player Core), página 76.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Cambiante (Nível 1).",
+      "en": "Changeling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Cambiante (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 76
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Cambiante",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.changeling.resistencia_de_nefilim",
+    "name": "Resistência De Nefilim (Nephilim Resistance)",
+    "names": {
+      "pt-BR": "Resistência De Nefilim",
+      "en": "Nephilim Resistance",
+      "es": "Resistencia de nefilim"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Cambiante",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Cambiante catalogado do Livro do Jogador (Player Core), página 76.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Cambiante (Nível 5).",
+      "en": "Changeling ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Cambiante (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 76
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Cambiante",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.changeling.manifestacao_bestial",
+    "name": "Manifestação Bestial (Beast Manifestation)",
+    "names": {
+      "pt-BR": "Manifestação Bestial",
+      "en": "Beast Manifestation",
+      "es": "Manifestación bestial"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Cambiante",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Cambiante catalogado do Livro do Jogador (Player Core), página 76.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Cambiante (Nível 1).",
+      "en": "Changeling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Cambiante (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 76
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Cambiante",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.changeling.sangue_abencoado",
+    "name": "Sangue Abençoado (Blessed Blood)",
+    "names": {
+      "pt-BR": "Sangue Abençoado",
+      "en": "Blessed Blood",
+      "es": "Sangre bendita"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Cambiante",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Cambiante catalogado do Livro do Jogador (Player Core), página 76.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Cambiante (Nível 5).",
+      "en": "Changeling ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Cambiante (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 76
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Cambiante",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.changeling.olhos_de_nefilim",
+    "name": "Olhos De Nefilim (Eyes of the Nephilim)",
+    "names": {
+      "pt-BR": "Olhos De Nefilim",
+      "en": "Eyes of the Nephilim",
+      "es": "Ojos de nefilim"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Cambiante",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Cambiante catalogado do Livro do Jogador (Player Core), página 76.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Cambiante (Nível 1).",
+      "en": "Changeling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Cambiante (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 76
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Cambiante",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.changeling.suplica_extraplanar",
+    "name": "Súplica Extraplanar (Planar Plea)",
+    "names": {
+      "pt-BR": "Súplica Extraplanar",
+      "en": "Planar Plea",
+      "es": "Súplica extraplanar"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Cambiante",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Cambiante catalogado do Livro do Jogador (Player Core), página 76.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Cambiante (Nível 5).",
+      "en": "Changeling ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Cambiante (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 76
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Cambiante",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.changeling.saber_nefelinico",
+    "name": "Saber Nefelínico (Nephilim Lore)",
+    "names": {
+      "pt-BR": "Saber Nefelínico",
+      "en": "Nephilim Lore",
+      "es": "Saber nefelínico"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Cambiante",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Cambiante catalogado do Livro do Jogador (Player Core), página 76.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Cambiante (Nível 1).",
+      "en": "Changeling ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Cambiante (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 76
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Cambiante",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.changeling.cauda_habilidosa",
+    "name": "Cauda Habilidosa (Prehensile Tail)",
+    "names": {
+      "pt-BR": "Cauda Habilidosa",
+      "en": "Prehensile Tail",
+      "es": "Cola prensil"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Cambiante",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Cambiante catalogado do Livro do Jogador (Player Core), página 76.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Cambiante (Nível 5).",
+      "en": "Changeling ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Cambiante (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 76
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Cambiante",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.changeling.magia_celestial",
+    "name": "Magia Celestial (Celestial Magic)",
+    "names": {
+      "pt-BR": "Magia Celestial",
+      "en": "Celestial Magic",
+      "es": "Magia celestial"
+    },
+    "category": "Ancestralidade",
+    "level": 9,
+    "traits": [
+      "Cambiante",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Cambiante catalogado do Livro do Jogador (Player Core), página 76.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Cambiante (Nível 9).",
+      "en": "Changeling ancestry feat (Level 9).",
+      "es": "Dote de ascendencia de Cambiante (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 76
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Cambiante",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.changeling.asas_eternas",
+    "name": "Asas Eternas (Eternal Wings)",
+    "names": {
+      "pt-BR": "Asas Eternas",
+      "en": "Eternal Wings",
+      "es": "Alas eternas"
+    },
+    "category": "Ancestralidade",
+    "level": 17,
+    "traits": [
+      "Cambiante",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Cambiante catalogado do Livro do Jogador (Player Core), página 76.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Cambiante (Nível 17).",
+      "en": "Changeling ancestry feat (Level 17).",
+      "es": "Dote de ascendencia de Cambiante (Nivel 17)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 76
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Cambiante",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.nephilim.magia_inferal",
+    "name": "Magia Inferal (Fiendish Magic)",
+    "names": {
+      "pt-BR": "Magia Inferal",
+      "en": "Fiendish Magic",
+      "es": "Magia infernal"
+    },
+    "category": "Ancestralidade",
+    "level": 9,
+    "traits": [
+      "Nefilim",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Nefilim catalogado do Livro do Jogador (Player Core), página 78.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Nefilim (Nível 9).",
+      "en": "Nephilim ancestry feat (Level 9).",
+      "es": "Dote de ascendencia de Nefilim (Nivel 9)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 78
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Nefilim",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.nephilim.gloria_conquistada",
+    "name": "Glória Conquistada (Glória Conquistada)",
+    "names": {
+      "pt-BR": "Glória Conquistada",
+      "en": "Glória Conquistada",
+      "es": "Glória Conquistada"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Nefilim",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Nefilim catalogado do Livro do Jogador (Player Core), página 78.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Nefilim (Nível 1).",
+      "en": "Nephilim ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Nefilim (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 78
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Nefilim",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.nephilim.inspirar_imitacao",
+    "name": "Inspirar Imitação (Inspirar Imitação)",
+    "names": {
+      "pt-BR": "Inspirar Imitação",
+      "en": "Inspirar Imitação",
+      "es": "Inspirar Imitação"
+    },
+    "category": "Ancestralidade",
+    "level": 5,
+    "traits": [
+      "Nefilim",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Nefilim catalogado do Livro do Jogador (Player Core), página 78.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Nefilim (Nível 5).",
+      "en": "Nephilim ancestry feat (Level 5).",
+      "es": "Dote de ascendencia de Nefilim (Nivel 5)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 78
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Nefilim",
+    "needs_review": false
+  },
+  {
+    "id": "feat.ancestry.nephilim.visao_orquica",
+    "name": "Visão Órquica (Visão Órquica)",
+    "names": {
+      "pt-BR": "Visão Órquica",
+      "en": "Visão Órquica",
+      "es": "Visão Órquica"
+    },
+    "category": "Ancestralidade",
+    "level": 1,
+    "traits": [
+      "Nefilim",
+      "Ancestralidade"
+    ],
+    "prereq": "Nenhum",
+    "description": "Talento de ancestralidade de Nefilim catalogado do Livro do Jogador (Player Core), página 78.",
+    "summaries": {
+      "pt-BR": "Talento de ancestralidade de Nefilim (Nível 1).",
+      "en": "Nephilim ancestry feat (Level 1).",
+      "es": "Dote de ascendencia de Nefilim (Nivel 1)."
+    },
+    "source": {
+      "book": "Livro do Jogador (Player Core)",
+      "page": 78
+    },
+    "ruleset": "remaster",
+    "rarity": "common",
+    "ancestry": "Nefilim",
+    "needs_review": false
+  }
+]

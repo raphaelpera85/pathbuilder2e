@@ -1,0 +1,812 @@
+[
+  {
+    "id": "feat.class.gunslinger.modulacao_de_amplificador",
+    "name": "Modulação De Amplificador (Modulação De Amplificador)",
+    "names": {
+      "pt-BR": "Modulação De Amplificador",
+      "en": "Modulação De Amplificador",
+      "es": "Modulação De Amplificador"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 1).",
+      "en": "Gunslinger class feat (Level 1).",
+      "es": "Dote de clase de Pistolero (Nivel 1)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.redundancias_instaveis",
+    "name": "Redundâncias Instáveis (Redundâncias Instáveis)",
+    "names": {
+      "pt-BR": "Redundâncias Instáveis",
+      "en": "Redundâncias Instáveis",
+      "es": "Redundâncias Instáveis"
+    },
+    "category": "Classe",
+    "level": 14,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 14).",
+      "en": "Gunslinger class feat (Level 14).",
+      "es": "Dote de clase de Pistolero (Nivel 14)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.armamento_devastador",
+    "name": "Armamento Devastador (Armamento Devastador)",
+    "names": {
+      "pt-BR": "Armamento Devastador",
+      "en": "Armamento Devastador",
+      "es": "Armamento Devastador"
+    },
+    "category": "Classe",
+    "level": 18,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 18).",
+      "en": "Gunslinger class feat (Level 18).",
+      "es": "Dote de clase de Pistolero (Nivel 18)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.amplificador_persistente",
+    "name": "Inventor Amplificador Persistente (Inventor Amplificador Persistente)",
+    "names": {
+      "pt-BR": "Inventor Amplificador Persistente",
+      "en": "Inventor Amplificador Persistente",
+      "es": "Inventor Amplificador Persistente"
+    },
+    "category": "Classe",
+    "level": 16,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 16).",
+      "en": "Gunslinger class feat (Level 16).",
+      "es": "Dote de clase de Pistolero (Nivel 16)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.maquina_de_destruicao",
+    "name": "Máquina De Destruição (Máquina De Destruição)",
+    "names": {
+      "pt-BR": "Máquina De Destruição",
+      "en": "Máquina De Destruição",
+      "es": "Máquina De Destruição"
+    },
+    "category": "Classe",
+    "level": 18,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 18).",
+      "en": "Gunslinger class feat (Level 18).",
+      "es": "Dote de clase de Pistolero (Nivel 18)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.negar_dano",
+    "name": "Negar Dano (Negar Dano)",
+    "names": {
+      "pt-BR": "Negar Dano",
+      "en": "Negar Dano",
+      "es": "Negar Dano"
+    },
+    "category": "Classe",
+    "level": 18,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 18).",
+      "en": "Gunslinger class feat (Level 18).",
+      "es": "Dote de clase de Pistolero (Nivel 18)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.s_construtos_prototipos_automacao_total",
+    "name": "S Construtos Protótipos Automação Total (S Construtos Protótipos Automação Total)",
+    "names": {
+      "pt-BR": "S Construtos Protótipos Automação Total",
+      "en": "S Construtos Protótipos Automação Total",
+      "es": "S Construtos Protótipos Automação Total"
+    },
+    "category": "Classe",
+    "level": 20,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 20).",
+      "en": "Gunslinger class feat (Level 20).",
+      "es": "Dote de clase de Pistolero (Nivel 20)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.sobrecarga_abundante",
+    "name": "Sobrecarga Abundante (Sobrecarga Abundante)",
+    "names": {
+      "pt-BR": "Sobrecarga Abundante",
+      "en": "Sobrecarga Abundante",
+      "es": "Sobrecarga Abundante"
+    },
+    "category": "Classe",
+    "level": 20,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 20).",
+      "en": "Gunslinger class feat (Level 20).",
+      "es": "Dote de clase de Pistolero (Nivel 20)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.armamento_de_automato",
+    "name": "Armamento De Autômato (Armamento De Autômato)",
+    "names": {
+      "pt-BR": "Armamento De Autômato",
+      "en": "Armamento De Autômato",
+      "es": "Armamento De Autômato"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 1).",
+      "en": "Gunslinger class feat (Level 1).",
+      "es": "Dote de clase de Pistolero (Nivel 1)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.chassi_reforcado",
+    "name": "Chassi Reforçado (Chassi Reforçado)",
+    "names": {
+      "pt-BR": "Chassi Reforçado",
+      "en": "Chassi Reforçado",
+      "es": "Chassi Reforçado"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 1).",
+      "en": "Gunslinger class feat (Level 1).",
+      "es": "Dote de clase de Pistolero (Nivel 1)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.comunicacao_arcana",
+    "name": "Comunicação Arcana (Comunicação Arcana)",
+    "names": {
+      "pt-BR": "Comunicação Arcana",
+      "en": "Comunicação Arcana",
+      "es": "Comunicação Arcana"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 1).",
+      "en": "Gunslinger class feat (Level 1).",
+      "es": "Dote de clase de Pistolero (Nivel 1)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.feixe_de_energia",
+    "name": "Feixe De Energia (Feixe De Energia)",
+    "names": {
+      "pt-BR": "Feixe De Energia",
+      "en": "Feixe De Energia",
+      "es": "Feixe De Energia"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 1).",
+      "en": "Gunslinger class feat (Level 1).",
+      "es": "Dote de clase de Pistolero (Nivel 1)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.olho_arcano",
+    "name": "Olho Arcano (Olho Arcano)",
+    "names": {
+      "pt-BR": "Olho Arcano",
+      "en": "Olho Arcano",
+      "es": "Olho Arcano"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 1).",
+      "en": "Gunslinger class feat (Level 1).",
+      "es": "Dote de clase de Pistolero (Nivel 1)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.saber_automatonico",
+    "name": "Saber Automatônico (Saber Automatônico)",
+    "names": {
+      "pt-BR": "Saber Automatônico",
+      "en": "Saber Automatônico",
+      "es": "Saber Automatônico"
+    },
+    "category": "Classe",
+    "level": 1,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 1).",
+      "en": "Gunslinger class feat (Level 1).",
+      "es": "Dote de clase de Pistolero (Nivel 1)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.armamento_integrado",
+    "name": "Armamento Integrado (Armamento Integrado)",
+    "names": {
+      "pt-BR": "Armamento Integrado",
+      "en": "Armamento Integrado",
+      "es": "Armamento Integrado"
+    },
+    "category": "Classe",
+    "level": 5,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 5).",
+      "en": "Gunslinger class feat (Level 5).",
+      "es": "Dote de clase de Pistolero (Nivel 5)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.aprimoramento_menor",
+    "name": "Aprimoramento Menor (Aprimoramento Menor)",
+    "names": {
+      "pt-BR": "Aprimoramento Menor",
+      "en": "Aprimoramento Menor",
+      "es": "Aprimoramento Menor"
+    },
+    "category": "Classe",
+    "level": 9,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 9).",
+      "en": "Gunslinger class feat (Level 9).",
+      "es": "Dote de clase de Pistolero (Nivel 9)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.camuflagem_arcana",
+    "name": "Camuflagem Arcana (Camuflagem Arcana)",
+    "names": {
+      "pt-BR": "Camuflagem Arcana",
+      "en": "Camuflagem Arcana",
+      "es": "Camuflagem Arcana"
+    },
+    "category": "Classe",
+    "level": 9,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 9).",
+      "en": "Gunslinger class feat (Level 9).",
+      "es": "Dote de clase de Pistolero (Nivel 9)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.automato_resistencia_magica",
+    "name": "Autômato Resistência Mágica (Autômato Resistência Mágica)",
+    "names": {
+      "pt-BR": "Autômato Resistência Mágica",
+      "en": "Autômato Resistência Mágica",
+      "es": "Autômato Resistência Mágica"
+    },
+    "category": "Classe",
+    "level": 5,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 5).",
+      "en": "Gunslinger class feat (Level 5).",
+      "es": "Dote de clase de Pistolero (Nivel 5)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.chuva_de_raios",
+    "name": "Chuva De Raios (Chuva De Raios)",
+    "names": {
+      "pt-BR": "Chuva De Raios",
+      "en": "Chuva De Raios",
+      "es": "Chuva De Raios"
+    },
+    "category": "Classe",
+    "level": 9,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 9).",
+      "en": "Gunslinger class feat (Level 9).",
+      "es": "Dote de clase de Pistolero (Nivel 9)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.automato_salvaguardas_arcanas",
+    "name": "Autômato Salvaguardas Arcanas (Autômato Salvaguardas Arcanas)",
+    "names": {
+      "pt-BR": "Autômato Salvaguardas Arcanas",
+      "en": "Autômato Salvaguardas Arcanas",
+      "es": "Autômato Salvaguardas Arcanas"
+    },
+    "category": "Classe",
+    "level": 5,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 5).",
+      "en": "Gunslinger class feat (Level 5).",
+      "es": "Dote de clase de Pistolero (Nivel 5)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.propulsao_arcana",
+    "name": "Propulsão Arcana (Propulsão Arcana)",
+    "names": {
+      "pt-BR": "Propulsão Arcana",
+      "en": "Propulsão Arcana",
+      "es": "Propulsão Arcana"
+    },
+    "category": "Classe",
+    "level": 9,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 9).",
+      "en": "Gunslinger class feat (Level 9).",
+      "es": "Dote de clase de Pistolero (Nivel 9)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.sintonia_do_nucleo",
+    "name": "Sintonia Do Núcleo (Sintonia Do Núcleo)",
+    "names": {
+      "pt-BR": "Sintonia Do Núcleo",
+      "en": "Sintonia Do Núcleo",
+      "es": "Sintonia Do Núcleo"
+    },
+    "category": "Classe",
+    "level": 9,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 9).",
+      "en": "Gunslinger class feat (Level 9).",
+      "es": "Dote de clase de Pistolero (Nivel 9)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.pancada_arcana",
+    "name": "Pancada Arcana (Pancada Arcana)",
+    "names": {
+      "pt-BR": "Pancada Arcana",
+      "en": "Pancada Arcana",
+      "es": "Pancada Arcana"
+    },
+    "category": "Classe",
+    "level": 9,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 9).",
+      "en": "Gunslinger class feat (Level 9).",
+      "es": "Dote de clase de Pistolero (Nivel 9)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.chassi_ampliado",
+    "name": "Chassi Ampliado (Chassi Ampliado)",
+    "names": {
+      "pt-BR": "Chassi Ampliado",
+      "en": "Chassi Ampliado",
+      "es": "Chassi Ampliado"
+    },
+    "category": "Classe",
+    "level": 13,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 13).",
+      "en": "Gunslinger class feat (Level 13).",
+      "es": "Dote de clase de Pistolero (Nivel 13)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.locomocao_arcana",
+    "name": "Locomoção Arcana (Locomoção Arcana)",
+    "names": {
+      "pt-BR": "Locomoção Arcana",
+      "en": "Locomoção Arcana",
+      "es": "Locomoção Arcana"
+    },
+    "category": "Classe",
+    "level": 13,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 13).",
+      "en": "Gunslinger class feat (Level 13).",
+      "es": "Dote de clase de Pistolero (Nivel 13)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.rejuvenescer_nucleo",
+    "name": "Rejuvenescer Núcleo (Rejuvenescer Núcleo)",
+    "names": {
+      "pt-BR": "Rejuvenescer Núcleo",
+      "en": "Rejuvenescer Núcleo",
+      "es": "Rejuvenescer Núcleo"
+    },
+    "category": "Classe",
+    "level": 13,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 13).",
+      "en": "Gunslinger class feat (Level 13).",
+      "es": "Dote de clase de Pistolero (Nivel 13)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  },
+  {
+    "id": "feat.class.gunslinger.chamado_do_eixo",
+    "name": "Chamado Do Eixo (Chamado Do Eixo)",
+    "names": {
+      "pt-BR": "Chamado Do Eixo",
+      "en": "Chamado Do Eixo",
+      "es": "Chamado Do Eixo"
+    },
+    "category": "Classe",
+    "level": 17,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "prereq": "Nenhum",
+    "className": "Pistoleiro",
+    "description": "Talento de classe de Pistoleiro catalogado de Pólvora e Engrenagens (Guns & Gears), página 114.",
+    "summaries": {
+      "pt-BR": "Talento de classe de Pistoleiro (Nível 17).",
+      "en": "Gunslinger class feat (Level 17).",
+      "es": "Dote de clase de Pistolero (Nivel 17)."
+    },
+    "source": {
+      "book": "Pólvora e Engrenagens (Guns & Gears)",
+      "page": 114
+    },
+    "ruleset": "legacy",
+    "rarity": "common",
+    "needs_review": false
+  }
+]
