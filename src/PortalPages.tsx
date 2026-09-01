@@ -3,7 +3,8 @@ import {
   pathfinderSources,
   type PathfinderSource,
   GITHUB_REPO_URL,
-  GITHUB_LIVROS_FOLDER_URL
+  GITHUB_LIVROS_FOLDER_URL,
+  GOOGLE_DRIVE_FOLDER_URL
 } from "./data/sources";
 import { useI18n, getItemDisplayName, type MessageKey } from "./i18n";
 import type { PickerItem, PickerType } from "./types";
@@ -364,6 +365,14 @@ function BookDownloadsSection() {
         </div>
         <div className="downloads-repo-actions">
           <a
+            href={GOOGLE_DRIVE_FOLDER_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-repo-link gdrive"
+          >
+            <span aria-hidden="true">☁️</span> {t("openGoogleDriveFolder")}
+          </a>
+          <a
             href={GITHUB_REPO_URL}
             target="_blank"
             rel="noopener noreferrer"
@@ -449,6 +458,18 @@ function BookDownloadsSection() {
             )}
 
             <div className="book-card-actions">
+              {source.driveUrl && (
+                <a
+                  href={source.driveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-download-gdrive"
+                  aria-label={`${t("openInGoogleDrive")}: ${localizeSourceTitle(source, locale)}`}
+                  title={`${t("openInGoogleDrive")}: ${localizeSourceTitle(source, locale)}`}
+                >
+                  <span aria-hidden="true">☁️</span> {t("openInGoogleDrive")}
+                </a>
+              )}
               {source.downloadUrl && (
                 <a
                   href={source.downloadUrl}

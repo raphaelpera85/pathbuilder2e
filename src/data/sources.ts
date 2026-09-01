@@ -13,12 +13,14 @@ export interface PathfinderSource {
   filename?: string;
   downloadUrl?: string;
   viewUrl?: string;
+  driveUrl?: string;
 }
 
 export const GITHUB_REPO_URL = "https://github.com/raphaelpera85/pathbuilder2e";
 export const GITHUB_LIVROS_FOLDER_URL = "https://github.com/raphaelpera85/pathbuilder2e/tree/main/livros";
 export const GITHUB_RAW_BASE_URL = "https://raw.githubusercontent.com/raphaelpera85/pathbuilder2e/main/livros";
 export const GITHUB_BLOB_BASE_URL = "https://github.com/raphaelpera85/pathbuilder2e/blob/main/livros";
+export const GOOGLE_DRIVE_FOLDER_URL = "https://drive.google.com/drive/folders/1d15Y0hqio9BbEzY87omM3vQLSH0tLQxg";
 
 export function localizeSourceBookName(book: string, locale: "pt-BR" | "en" | "es"): string {
   const normalized = String(book || "").trim().toLocaleLowerCase("pt-BR");
@@ -56,7 +58,8 @@ export const pathfinderSources: PathfinderSource[] = [
     verifiedAt: "2026-08-31",
     filename: "Player Core - Livro do Jogador.pdf",
     downloadUrl: `${GITHUB_RAW_BASE_URL}/Player%20Core%20-%20Livro%20do%20Jogador.pdf`,
-    viewUrl: `${GITHUB_BLOB_BASE_URL}/Player%20Core%20-%20Livro%20do%20Jogador.pdf`
+    viewUrl: `${GITHUB_BLOB_BASE_URL}/Player%20Core%20-%20Livro%20do%20Jogador.pdf`,
+    driveUrl: GOOGLE_DRIVE_FOLDER_URL
   },
   {
     id: "player-core-2-pt",
@@ -72,7 +75,8 @@ export const pathfinderSources: PathfinderSource[] = [
     verifiedAt: "2026-08-31",
     filename: "Player Core 2 - Livro do Jogador 2.pdf",
     downloadUrl: `${GITHUB_RAW_BASE_URL}/Player%20Core%202%20-%20Livro%20do%20Jogador%202.pdf`,
-    viewUrl: `${GITHUB_BLOB_BASE_URL}/Player%20Core%202%20-%20Livro%20do%20Jogador%202.pdf`
+    viewUrl: `${GITHUB_BLOB_BASE_URL}/Player%20Core%202%20-%20Livro%20do%20Jogador%202.pdf`,
+    driveUrl: GOOGLE_DRIVE_FOLDER_URL
   },
   {
     id: "secrets-of-magic-pt",
@@ -88,7 +92,8 @@ export const pathfinderSources: PathfinderSource[] = [
     verifiedAt: "2026-08-31",
     filename: "Pathfinder 2e - Segredos da Magia.pdf",
     downloadUrl: `${GITHUB_RAW_BASE_URL}/Pathfinder%202e%20-%20Segredos%20da%20Magia.pdf`,
-    viewUrl: `${GITHUB_BLOB_BASE_URL}/Pathfinder%202e%20-%20Segredos%20da%20Magia.pdf`
+    viewUrl: `${GITHUB_BLOB_BASE_URL}/Pathfinder%202e%20-%20Segredos%20da%20Magia.pdf`,
+    driveUrl: GOOGLE_DRIVE_FOLDER_URL
   },
   {
     id: "guns-gears-pt",
@@ -104,7 +109,8 @@ export const pathfinderSources: PathfinderSource[] = [
     verifiedAt: "2026-08-31",
     filename: "Pathfinder 2e - Pólvora e Engrenagens.pdf",
     downloadUrl: `${GITHUB_RAW_BASE_URL}/Pathfinder%202e%20-%20P%C3%B3lvora%20e%20Engrenagens.pdf`,
-    viewUrl: `${GITHUB_BLOB_BASE_URL}/Pathfinder%202e%20-%20P%C3%B3lvora%20e%20Engrenagens.pdf`
+    viewUrl: `${GITHUB_BLOB_BASE_URL}/Pathfinder%202e%20-%20P%C3%B3lvora%20e%20Engrenagens.pdf`,
+    driveUrl: GOOGLE_DRIVE_FOLDER_URL
   },
   {
     id: "book-dead-pt",
@@ -120,7 +126,8 @@ export const pathfinderSources: PathfinderSource[] = [
     verifiedAt: "2026-08-31",
     filename: "Pathfinder 2e - Livro dos Mortos.pdf",
     downloadUrl: `${GITHUB_RAW_BASE_URL}/Pathfinder%202e%20-%20Livro%20dos%20Mortos.pdf`,
-    viewUrl: `${GITHUB_BLOB_BASE_URL}/Pathfinder%202e%20-%20Livro%20dos%20Mortos.pdf`
+    viewUrl: `${GITHUB_BLOB_BASE_URL}/Pathfinder%202e%20-%20Livro%20dos%20Mortos.pdf`,
+    driveUrl: GOOGLE_DRIVE_FOLDER_URL
   },
   {
     id: "dark-archive",
@@ -136,7 +143,8 @@ export const pathfinderSources: PathfinderSource[] = [
     verifiedAt: "2026-08-31",
     filename: "Pathfinder 2e - Dark Archive.pdf",
     downloadUrl: `${GITHUB_RAW_BASE_URL}/Pathfinder%202e%20-%20Dark%20Archive.pdf`,
-    viewUrl: `${GITHUB_BLOB_BASE_URL}/Pathfinder%202e%20-%20Dark%20Archive.pdf`
+    viewUrl: `${GITHUB_BLOB_BASE_URL}/Pathfinder%202e%20-%20Dark%20Archive.pdf`,
+    driveUrl: GOOGLE_DRIVE_FOLDER_URL
   },
   {
     id: "rage-elements",
@@ -152,7 +160,8 @@ export const pathfinderSources: PathfinderSource[] = [
     verifiedAt: "2026-08-31",
     filename: "Pathfinder 2e - Rage of Elements.pdf",
     downloadUrl: `${GITHUB_RAW_BASE_URL}/Pathfinder%202e%20-%20Rage%20of%20Elements.pdf`,
-    viewUrl: `${GITHUB_BLOB_BASE_URL}/Pathfinder%202e%20-%20Rage%20of%20Elements.pdf`
+    viewUrl: `${GITHUB_BLOB_BASE_URL}/Pathfinder%202e%20-%20Rage%20of%20Elements.pdf`,
+    driveUrl: GOOGLE_DRIVE_FOLDER_URL
   },
   {
     id: "war-immortals",
@@ -168,7 +177,8 @@ export const pathfinderSources: PathfinderSource[] = [
     verifiedAt: "2026-08-31",
     filename: "Pathfinder 2e - War of Immortals.pdf",
     downloadUrl: `${GITHUB_RAW_BASE_URL}/Pathfinder%202e%20-%20War%20of%20Immortals.pdf`,
-    viewUrl: `${GITHUB_BLOB_BASE_URL}/Pathfinder%202e%20-%20War%20of%20Immortals.pdf`
+    viewUrl: `${GITHUB_BLOB_BASE_URL}/Pathfinder%202e%20-%20War%20of%20Immortals.pdf`,
+    driveUrl: GOOGLE_DRIVE_FOLDER_URL
   },
   {
     id: "howl-wild",
@@ -184,7 +194,8 @@ export const pathfinderSources: PathfinderSource[] = [
     verifiedAt: "2026-08-31",
     filename: "Pathfinder 2e - Howl of the Wild.pdf",
     downloadUrl: `${GITHUB_RAW_BASE_URL}/Pathfinder%202e%20-%20Howl%20of%20the%20Wild.pdf`,
-    viewUrl: `${GITHUB_BLOB_BASE_URL}/Pathfinder%202e%20-%20Howl%20of%20the%20Wild.pdf`
+    viewUrl: `${GITHUB_BLOB_BASE_URL}/Pathfinder%202e%20-%20Howl%20of%20the%20Wild.pdf`,
+    driveUrl: GOOGLE_DRIVE_FOLDER_URL
   },
   {
     id: "battlecry",
@@ -200,7 +211,8 @@ export const pathfinderSources: PathfinderSource[] = [
     verifiedAt: "2026-08-31",
     filename: "Pathfinder 2e - Battlecry!.pdf",
     downloadUrl: `${GITHUB_RAW_BASE_URL}/Pathfinder%202e%20-%20Battlecry!.pdf`,
-    viewUrl: `${GITHUB_BLOB_BASE_URL}/Pathfinder%202e%20-%20Battlecry!.pdf`
+    viewUrl: `${GITHUB_BLOB_BASE_URL}/Pathfinder%202e%20-%20Battlecry!.pdf`,
+    driveUrl: GOOGLE_DRIVE_FOLDER_URL
   },
   {
     id: "core-legacy-pt",
@@ -216,7 +228,8 @@ export const pathfinderSources: PathfinderSource[] = [
     verifiedAt: "2026-08-31",
     filename: "Pathfinder 2e - Livro Básico.pdf",
     downloadUrl: `${GITHUB_RAW_BASE_URL}/Pathfinder%202e%20-%20Livro%20B%C3%A1sico.pdf`,
-    viewUrl: `${GITHUB_BLOB_BASE_URL}/Pathfinder%202e%20-%20Livro%20B%C3%A1sico.pdf`
+    viewUrl: `${GITHUB_BLOB_BASE_URL}/Pathfinder%202e%20-%20Livro%20B%C3%A1sico.pdf`,
+    driveUrl: GOOGLE_DRIVE_FOLDER_URL
   },
   {
     id: "manual-jogador-compilacao-pt",
@@ -232,6 +245,7 @@ export const pathfinderSources: PathfinderSource[] = [
     verifiedAt: "2026-08-31",
     filename: "Manual do Jogador PF2e.pdf",
     downloadUrl: `${GITHUB_RAW_BASE_URL}/Manual%20do%20Jogador%20PF2e.pdf`,
-    viewUrl: `${GITHUB_BLOB_BASE_URL}/Manual%20do%20Jogador%20PF2e.pdf`
+    viewUrl: `${GITHUB_BLOB_BASE_URL}/Manual%20do%20Jogador%20PF2e.pdf`,
+    driveUrl: GOOGLE_DRIVE_FOLDER_URL
   },
 ];

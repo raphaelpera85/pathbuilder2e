@@ -78,6 +78,7 @@ const messages = {
     addPetBtn: "➕ Adicionar Companheiro / Familiar / Montaria", noPetsMsg: "Nenhum mascote ou companheiro animal associado.",
     aiAssistantFree: "✨ Assistente IA (Grátis)", viewPlanMobile: "Plano (Níveis)", viewStatsMobile: "Ficha & Perícias", viewContentMobile: "Ações & Abas", deleteCampaignConfirm: "Deseja realmente excluir esta campanha/mesa?", campaignCreateFailed: "Erro ao criar campanha", remasterEdition: "Pathfinder 2e Remaster", classicEdition: "Pathfinder 2e Clássico", customEdition: "Regras Variantes / Híbrido",
     navDownloads: "Downloads de Livros", downloadsKicker: "REPOSITÓRIO & RECURSOS GITHUB", downloadsTitle: "Download dos Livros e Suplementos PF2e", downloadsIntro: "Baixe diretamente os livros de regras oficiais e suplementos em PDF hospedados no repositório do projeto no GitHub.", downloadPdfDirect: "Baixar PDF direto", viewOnGithub: "Ver no GitHub", openGithubRepo: "Repositório GitHub", openLivrosFolder: "Pasta /livros no GitHub", searchBooks: "Buscar livro por título ou idioma...", allLanguages: "Todos os Idiomas", downloadDirectNote: "Links diretos para download e visualização dos arquivos PDF armazenados no repositório GitHub.", downloadFromGithub: "Download GitHub", verifiedPdfsCount: "PDFs Oficiais Catalogados", downloadAllNotice: "Os arquivos PDF podem ser baixados individualmente abaixo ou acessados na pasta /livros do repositório.",
+    openGoogleDriveFolder: "Pasta Google Drive", openInGoogleDrive: "Ver no Google Drive",
   },
   en: {
     language: "Language", portuguese: "Português", english: "English", spanish: "Español", menu: "Menu",
@@ -151,6 +152,7 @@ const messages = {
     addPetBtn: "➕ Add Companion / Familiar / Mount", noPetsMsg: "No companion or animal associate linked.",
     aiAssistantFree: "✨ AI Assistant (Free)", viewPlanMobile: "Plan (Levels)", viewStatsMobile: "Sheet & Stats", viewContentMobile: "Actions & Tabs", deleteCampaignConfirm: "Are you sure you want to delete this campaign / table?", campaignCreateFailed: "Error creating campaign", remasterEdition: "Pathfinder 2e Remaster", classicEdition: "Pathfinder 2e Classic", customEdition: "Variant / Custom Rules",
     navDownloads: "Book Downloads", downloadsKicker: "GITHUB REPOSITORY & RESOURCES", downloadsTitle: "PF2e Books & Reference Downloads", downloadsIntro: "Directly download official rulebooks and supplements in PDF format hosted in the project's GitHub repository.", downloadPdfDirect: "Direct PDF Download", viewOnGithub: "View on GitHub", openGithubRepo: "GitHub Repository", openLivrosFolder: "GitHub /livros Folder", searchBooks: "Search book by title or language...", allLanguages: "All Languages", downloadDirectNote: "Direct download and viewing links for PDF files stored in the GitHub repository.", downloadFromGithub: "GitHub Download", verifiedPdfsCount: "Catalogued Official PDFs", downloadAllNotice: "PDF files can be downloaded individually below or accessed in the /livros repository directory.",
+    openGoogleDriveFolder: "Google Drive Folder", openInGoogleDrive: "View on Google Drive",
   },
   es: {
     language: "Idioma", portuguese: "Português", english: "English", spanish: "Español", menu: "Menú",
@@ -224,6 +226,7 @@ const messages = {
     addPetBtn: "➕ Añadir Compañero / Familiar / Montura", noPetsMsg: "Ningún compañero o mascota asociada.",
     aiAssistantFree: "✨ Asistente IA (Gratis)", viewPlanMobile: "Plan (Niveles)", viewStatsMobile: "Ficha y Habilidades", viewContentMobile: "Acciones y Pestañas", deleteCampaignConfirm: "¿Seguro que deseas eliminar esta campaña/mesa?", campaignCreateFailed: "Error al crear la campaña", remasterEdition: "Pathfinder 2e Remaster", classicEdition: "Pathfinder 2e Clássico", customEdition: "Regras Variantes / Híbridas",
     navDownloads: "Descargas de Libros", downloadsKicker: "REPOSITORIO Y RECURSOS GITHUB", downloadsTitle: "Descarga de Libros y Suplementos PF2e", downloadsIntro: "Descarga directamente los libros de reglas oficiales y suplementos en PDF alojados en el repositorio del proyecto en GitHub.", downloadPdfDirect: "Descargar PDF directo", viewOnGithub: "Ver en GitHub", openGithubRepo: "Repositorio GitHub", openLivrosFolder: "Carpeta /livros en GitHub", searchBooks: "Buscar libro por título o idioma...", allLanguages: "Todos los Idiomas", downloadDirectNote: "Enlaces directos para descarga y visualización de los archivos PDF almacenados en el repositorio de GitHub.", downloadFromGithub: "Descargar GitHub", verifiedPdfsCount: "PDFs Oficiales Catalogados", downloadAllNotice: "Los archivos PDF se pueden descargar individualmente abajo o acceder en la carpeta /livros del repositorio.",
+    openGoogleDriveFolder: "Carpeta de Google Drive", openInGoogleDrive: "Ver en Google Drive",
   },
 } as const;
 

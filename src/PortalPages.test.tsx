@@ -140,12 +140,16 @@ describe("PortalPages", () => {
     expect(screen.getByRole("link", { name: /Curadoria/ })).toBeInTheDocument();
   });
 
-  it("renderiza a seção de download dos livros com links diretos do github", async () => {
+  it("renderiza a seção de download dos livros com links diretos do github e google drive", async () => {
     window.location.hash = "#/downloads";
     render(<I18nProvider><PortalPages /></I18nProvider>, { container: document.getElementById("test-root")! });
     expect(screen.getByRole("heading", { level: 1, name: "Download dos Livros e Suplementos PF2e" })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /Pasta Google Drive/ })).toHaveAttribute("href", "https://drive.google.com/drive/folders/1d15Y0hqio9BbEzY87omM3vQLSH0tLQxg");
     expect(screen.getByRole("link", { name: /Repositório GitHub/ })).toHaveAttribute("href", "https://github.com/raphaelpera85/pathbuilder2e");
     expect(screen.getByRole("link", { name: /Pasta \/livros/ })).toHaveAttribute("href", "https://github.com/raphaelpera85/pathbuilder2e/tree/main/livros");
+
+    const playerCoreDrive = screen.getByRole("link", { name: "Ver no Google Drive: Livro do Jogador" });
+    expect(playerCoreDrive).toHaveAttribute("href", "https://drive.google.com/drive/folders/1d15Y0hqio9BbEzY87omM3vQLSH0tLQxg");
 
     const playerCoreDownload = screen.getByRole("link", { name: "Baixar PDF direto: Livro do Jogador" });
     expect(playerCoreDownload).toHaveAttribute("href", "https://raw.githubusercontent.com/raphaelpera85/pathbuilder2e/main/livros/Player%20Core%20-%20Livro%20do%20Jogador.pdf");
