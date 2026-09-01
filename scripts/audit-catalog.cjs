@@ -3,10 +3,13 @@ const path = require("node:path");
 const vm = require("node:vm");
 
 const root = path.resolve(__dirname, "..");
+const mechanicsSource = fs.existsSync(path.join(root, "js", "pf2e_feats_mechanics.js"))
+  ? fs.readFileSync(path.join(root, "js", "pf2e_feats_mechanics.js"), "utf8")
+  : "";
 const source = fs.readFileSync(path.join(root, "js", "pf2e_data.js"), "utf8");
 const sandbox = {};
 vm.createContext(sandbox);
-vm.runInContext(`${source}; globalThis.__catalog = PF2E_DATA;`, sandbox);
+vm.runInContext(`${mechanicsSource}; ${source}; globalThis.__catalog = PF2E_DATA;`, sandbox);
 
 const catalog = sandbox.__catalog;
 const categories = [

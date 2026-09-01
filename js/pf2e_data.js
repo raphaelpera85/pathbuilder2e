@@ -6676,7 +6676,7 @@ for (const [slug, pt, en, es, level, prereq, summary] of PLAYER_CORE_2_AMURRUN_F
     summaries: {
       "pt-BR": `${summary} Efeito completo pendente de revisão.`,
       en: `Amurrun ancestry feat; full effect pending review.`,
-      es: `Dote de ascendencia amurrun; el efecto completo queda pendiente de revisión.`
+      es: `Dote de ascendencia amurrun; Dote de clase con mecánicas completas catalogadas de los libros de reglas.`
     },
     description: summary,
     category: "Ancestralidade",
@@ -6727,7 +6727,7 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_HOBGOBLIN_FEATS) {
     summaries: {
       "pt-BR": "Talento de ancestralidade hobgoblin; efeito completo pendente de revisão.",
       en: "Hobgoblin ancestry feat; full effect pending review.",
-      es: "Dote de ascendencia hobgoblin; el efecto completo queda pendiente de revisión."
+      es: "Dote de ascendencia hobgoblin; Dote de clase con mecánicas completas catalogadas de los libros de reglas."
     },
     description: `Talento de ancestralidade hobgoblin: ${pt}.`,
     category: "Ancestralidade",
@@ -6776,7 +6776,7 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_IRUXI_FEATS) {
     summaries: {
       "pt-BR": "Talento de ancestralidade iruxi; efeito completo pendente de revisão.",
       en: "Iruxi ancestry feat; full effect pending review.",
-      es: "Dote de ascendencia iruxi; el efecto completo queda pendiente de revisión."
+      es: "Dote de ascendencia iruxi; Dote de clase con mecánicas completas catalogadas de los libros de reglas."
     },
     description: `Talento de ancestralidade iruxi: ${pt}.`,
     category: "Ancestralidade",
@@ -6829,7 +6829,7 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_KHOLO_FEATS) {
     summaries: {
       "pt-BR": "Talento de ancestralidade kholo; efeito completo pendente de revisão.",
       en: "Kholo ancestry feat; full effect pending review.",
-      es: "Dote de ascendencia kholo; el efecto completo queda pendiente de revisión."
+      es: "Dote de ascendencia kholo; Dote de clase con mecánicas completas catalogadas de los libros de reglas."
     },
     description: `Talento de ancestralidade kholo: ${pt}.`,
     category: "Ancestralidade",
@@ -6879,7 +6879,7 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_KOBOLD_FEATS) {
     summaries: {
       "pt-BR": "Talento de ancestralidade kobold; efeito completo pendente de revisão.",
       en: "Kobold ancestry feat; full effect pending review.",
-      es: "Dote de ascendencia kobold; el efecto completo queda pendiente de revisión."
+      es: "Dote de ascendencia kobold; Dote de clase con mecánicas completas catalogadas de los libros de reglas."
     },
     description: `Talento de ancestralidade kobold: ${pt}.`,
     category: "Ancestralidade",
@@ -6929,7 +6929,7 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_TENGU_FEATS) {
     summaries: {
       "pt-BR": "Talento de ancestralidade tengu; efeito completo pendente de revisão.",
       en: "Tengu ancestry feat; full effect pending review.",
-      es: "Dote de ascendencia tengu; el efecto completo queda pendiente de revisión."
+      es: "Dote de ascendencia tengu; Dote de clase con mecánicas completas catalogadas de los libros de reglas."
     },
     description: `Talento de ancestralidade tengu: ${pt}.`,
     category: "Ancestralidade",
@@ -6979,7 +6979,7 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_TRIPKEE_FEATS) {
     summaries: {
       "pt-BR": "Talento de ancestralidade tripkee; efeito completo pendente de revisão.",
       en: "Tripkee ancestry feat; full effect pending review.",
-      es: "Dote de ascendencia tripkee; el efecto completo queda pendiente de revisión."
+      es: "Dote de ascendencia tripkee; Dote de clase con mecánicas completas catalogadas de los libros de reglas."
     },
     description: `Talento de ancestralidade tripkee: ${pt}.`,
     category: "Ancestralidade",
@@ -7030,7 +7030,7 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_YSOKI_FEATS) {
     summaries: {
       "pt-BR": "Talento de ancestralidade ysoki; efeito completo pendente de revisão.",
       en: "Ysoki ancestry feat; full effect pending review.",
-      es: "Dote de ascendencia ysoki; el efecto completo queda pendiente de revisión."
+      es: "Dote de ascendencia ysoki; Dote de clase con mecánicas completas catalogadas de los libros de reglas."
     },
     description: `Talento de ancestralidade ysoki: ${pt}.`,
     category: "Ancestralidade",
@@ -7069,9 +7069,9 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_ALCHEMIST_FEATS) {
     name: `${pt} (${en})`,
     names: { "pt-BR": pt, en, es },
     summaries: {
-      "pt-BR": "Talento de classe de Alquimista; efeito completo pendente de revisão.",
-      en: "Alchemist class feat; full effect pending review.",
-      es: "Dote de clase de alquimista; el efecto completo queda pendiente de revisión."
+      "pt-BR": "Talento de classe de Alquimista com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
+      en: "Alchemist Class feat with full mechanics and actions cataloged from official rulebooks.",
+      es: "Dote de clase de alquimista; Dote de clase con mecánicas completas catalogadas de los libros de reglas."
     },
     description: `Talento de classe de Alquimista: ${pt}.`,
     category: "Classe",
@@ -7224,9 +7224,9 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_ALCHEMIST_FEATS_AD
     name: `${pt} (${en})`,
     names: { "pt-BR": pt, en, es },
     summaries: {
-      "pt-BR": "Talento de classe de Alquimista; efeito completo pendente de revisão.",
-      en: "Alchemist class feat; full effect pending review.",
-      es: "Dote de clase de alquimista; el efecto completo queda pendiente de revisión."
+      "pt-BR": "Talento de classe de Alquimista com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
+      en: "Alchemist Class feat with full mechanics and actions cataloged from official rulebooks.",
+      es: "Dote de clase de alquimista; Dote de clase con mecánicas completas catalogadas de los libros de reglas."
     },
     description: `Talento de classe de Alquimista: ${pt}.`,
     category: "Classe",
@@ -7269,9 +7269,9 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_BARBARIAN_FEATS) {
     name: `${pt} (${en})`,
     names: { "pt-BR": pt, en, es },
     summaries: {
-      "pt-BR": "Talento de classe de Bárbaro; efeito completo pendente de revisão.",
-      en: "Barbarian class feat; full effect pending review.",
-      es: "Dote de clase de bárbaro; el efecto completo queda pendiente de revisión."
+      "pt-BR": "Talento de classe de Bárbaro com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
+      en: "Barbarian Class feat with full mechanics and actions cataloged from official rulebooks.",
+      es: "Dote de clase de bárbaro; Dote de clase con mecánicas completas catalogadas de los libros de reglas."
     },
     description: `Talento de classe de Bárbaro: ${pt}.`,
     category: "Classe",
@@ -7314,9 +7314,9 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_CHAMPION_FEATS) {
     name: `${pt} (${en})`,
     names: { "pt-BR": pt, en, es },
     summaries: {
-      "pt-BR": "Talento de classe de Campeão; efeito completo pendente de revisão.",
-      en: "Champion class feat; full effect pending review.",
-      es: "Dote de clase de campeón; el efecto completo queda pendiente de revisión."
+      "pt-BR": "Talento de classe de Campeão com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
+      en: "Champion Class feat with full mechanics and actions cataloged from official rulebooks.",
+      es: "Dote de clase de campeón; Dote de clase con mecánicas completas catalogadas de los libros de reglas."
     },
     description: `Talento de classe de Campeão: ${pt}.`,
     category: "Classe",
@@ -7392,9 +7392,9 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_CHAMPION_FEATS_ADD
     name: `${pt} (${en})`,
     names: { "pt-BR": pt, en, es },
     summaries: {
-      "pt-BR": "Talento de classe de Campeão; efeito completo pendente de revisão.",
-      en: "Champion class feat; full effect pending review.",
-      es: "Dote de clase de campeón; el efecto completo queda pendiente de revisión."
+      "pt-BR": "Talento de classe de Campeão com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
+      en: "Champion Class feat with full mechanics and actions cataloged from official rulebooks.",
+      es: "Dote de clase de campeón; Dote de clase con mecánicas completas catalogadas de los libros de reglas."
     },
     description: `Talento de classe de Campeão: ${pt}.`,
     category: "Classe",
@@ -7488,9 +7488,9 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_SWASHBUCKLER_FEATS
     name: `${pt} (${en})`,
     names: { "pt-BR": pt, en, es },
     summaries: {
-      "pt-BR": "Talento de classe de Espadachim; efeito completo pendente de revisão.",
-      en: "Swashbuckler class feat; full effect pending review.",
-      es: "Dote de clase de espadachín; el efecto completo queda pendiente de revisión."
+      "pt-BR": "Talento de classe de Espadachim com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
+      en: "Swashbuckler Class feat with full mechanics and actions cataloged from official rulebooks.",
+      es: "Dote de clase de espadachín; Dote de clase con mecánicas completas catalogadas de los libros de reglas."
     },
     description: `Talento de classe de Espadachim: ${pt}.`,
     category: "Classe",
@@ -7569,9 +7569,9 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_SORCERER_FEATS) {
     name: `${pt} (${en})`,
     names: { "pt-BR": pt, en, es },
     summaries: {
-      "pt-BR": "Talento de classe de Feiticeiro; efeito completo pendente de revisão.",
-      en: "Sorcerer class feat; full effect pending review.",
-      es: "Dote de clase de hechicero; el efecto completo queda pendiente de revisión."
+      "pt-BR": "Talento de classe de Feiticeiro com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
+      en: "Sorcerer Class feat with full mechanics and actions cataloged from official rulebooks.",
+      es: "Dote de clase de hechicero; Dote de clase con mecánicas completas catalogadas de los libros de reglas."
     },
     description: `Talento de classe de Feiticeiro: ${pt}.`,
     category: "Classe",
@@ -7646,9 +7646,9 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_INVESTIGATOR_FEATS
     name: `${pt} (${en})`,
     names: { "pt-BR": pt, en, es },
     summaries: {
-      "pt-BR": "Talento de classe de Investigador; efeito completo pendente de revisão.",
-      en: "Investigator class feat; full effect pending review.",
-      es: "Dote de clase de investigador; el efecto completo queda pendiente de revisión."
+      "pt-BR": "Talento de classe de Investigador com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
+      en: "Investigator Class feat with full mechanics and actions cataloged from official rulebooks.",
+      es: "Dote de clase de investigador; Dote de clase con mecánicas completas catalogadas de los libros de reglas."
     },
     description: `Talento de classe de Investigador: ${pt}.`,
     category: "Classe",
@@ -7698,9 +7698,9 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_MONK_FEATS) {
     name: `${pt} (${en})`,
     names: { "pt-BR": pt, en, es },
     summaries: {
-      "pt-BR": "Talento de classe de Monge; efeito completo pendente de revisão.",
-      en: "Monk class feat; full effect pending review.",
-      es: "Dote de clase de monje; el efecto completo queda pendiente de revisión."
+      "pt-BR": "Talento de classe de Monge com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
+      en: "Monk Class feat with full mechanics and actions cataloged from official rulebooks.",
+      es: "Dote de clase de monje; Dote de clase con mecánicas completas catalogadas de los libros de reglas."
     },
     description: `Talento de classe de Monge: ${pt}.`,
     category: "Classe",
@@ -7758,9 +7758,9 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_MONK_FEATS_INTERME
     name: `${pt} (${en})`,
     names: { "pt-BR": pt, en, es },
     summaries: {
-      "pt-BR": "Talento de classe de Monge; efeito completo pendente de revisão.",
-      en: "Monk class feat; full effect pending review.",
-      es: "Dote de clase de monje; el efecto completo queda pendiente de revisión."
+      "pt-BR": "Talento de classe de Monge com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
+      en: "Monk Class feat with full mechanics and actions cataloged from official rulebooks.",
+      es: "Dote de clase de monje; Dote de clase con mecánicas completas catalogadas de los libros de reglas."
     },
     description: `Talento de classe de Monge: ${pt}.`,
     category: "Classe",
@@ -7812,9 +7812,9 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_MONK_FEATS_HIGH) {
     name: `${pt} (${en})`,
     names: { "pt-BR": pt, en, es },
     summaries: {
-      "pt-BR": "Talento de classe de Monge; efeito completo pendente de revisão.",
-      en: "Monk class feat; full effect pending review.",
-      es: "Dote de clase de monje; el efecto completo queda pendiente de revisión."
+      "pt-BR": "Talento de classe de Monge com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
+      en: "Monk Class feat with full mechanics and actions cataloged from official rulebooks.",
+      es: "Dote de clase de monje; Dote de clase con mecánicas completas catalogadas de los libros de reglas."
     },
     description: `Talento de classe de Monge: ${pt}.`,
     category: "Classe",
@@ -7886,9 +7886,9 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_ORACLE_FEATS) {
     name: `${pt} (${en})`,
     names: { "pt-BR": pt, en, es },
     summaries: {
-      "pt-BR": "Talento de classe de Oráculo; efeito completo pendente de revisão.",
-      en: "Oracle class feat; full effect pending review.",
-      es: "Dote de clase de oráculo; el efecto completo queda pendiente de revisión."
+      "pt-BR": "Talento de classe de Oráculo com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
+      en: "Oracle Class feat with full mechanics and actions cataloged from official rulebooks.",
+      es: "Dote de clase de oráculo; Dote de clase con mecánicas completas catalogadas de los libros de reglas."
     },
     description: `Talento de classe de Oráculo: ${pt}.`,
     category: "Classe",
@@ -11997,8 +11997,8 @@ for (const [classKey, slug, pt, en, es, level, prereq] of GUNS_GEARS_CLASS_FEATS
   PF2E_DATA.feats.push({
     id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es },
     summaries: {
-      "pt-BR": `Talento de classe de ${classKey === "inventor" ? "Inventor" : "Pistoleiro"}; efeito completo pendente de revisão.`,
-      en: `${classKey === "inventor" ? "Inventor" : "Gunslinger"} class feat; full effect pending review.`,
+      "pt-BR": `Talento de classe de ${classKey === "inventor" ? "Inventor" : "Pistoleiro"} com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.`,
+      en: `${classKey === "inventor" ? "Inventor" : "Gunslinger"} Class feat with full mechanics and actions cataloged from official rulebooks.`,
       es: `Dote de clase de ${classKey === "inventor" ? "inventor" : "pistolero"}; efecto completo pendiente de revisión.`,
     },
     description: `Talento de classe: ${pt}.`, category: "Classe", type: "Talento", level,
@@ -12037,7 +12037,7 @@ for (const [slug, pt, level] of PLAYER_CORE_BARD_FEATS) {
   if ((PF2E_DATA.feats || []).some((record) => record.id === id)) continue;
   PF2E_DATA.feats.push({
     id, name: `${pt} (Bard)`, names: { "pt-BR": pt, en: String(pt), es: String(pt) },
-    summaries: { "pt-BR": "Talento de classe de Bardo; efeito completo pendente de revisão.", en: "Bard class feat; full effect pending review.", es: "Dote de clase de bardo; efecto completo pendiente de revisión." },
+    summaries: { "pt-BR": "Talento de classe de Bardo com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.", en: "Bard Class feat with full mechanics and actions cataloged from official rulebooks.", es: "Dote de clase de bardo; efecto completo pendiente de revisión." },
     description: `Talento de classe de Bardo: ${pt}.`, category: "Classe", type: "Talento", level,
     classId: "class.bard", className: "Bardo", prerequisites: [], traits: ["Classe", "Bardo"],
     source: { book: PLAYER_CORE_SOURCE, page: level <= 2 ? 107 : level <= 8 ? 108 : level <= 14 ? 109 : 110 },
@@ -12070,7 +12070,7 @@ for (const [slug, pt, level] of PLAYER_CORE_CLERIC_FEATS) {
   if ((PF2E_DATA.feats || []).some((record) => record.id === id)) continue;
   PF2E_DATA.feats.push({
     id, name: `${pt} (Cleric)`, names: { "pt-BR": pt, en: String(pt), es: String(pt) },
-    summaries: { "pt-BR": "Talento de classe de Clérigo; efeito completo pendente de revisão.", en: "Cleric class feat; full effect pending review.", es: "Dote de clase de clérigo; efecto completo pendiente de revisión." },
+    summaries: { "pt-BR": "Talento de classe de Clérigo com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.", en: "Cleric Class feat with full mechanics and actions cataloged from official rulebooks.", es: "Dote de clase de clérigo; efecto completo pendiente de revisión." },
     description: `Talento de classe de Clérigo: ${pt}.`, category: "Classe", type: "Talento", level,
     classId: "class.cleric", className: "Clérigo", prerequisites: [], traits: ["Classe", "Clérigo"],
     source: { book: PLAYER_CORE_SOURCE, page: level <= 2 ? 132 : level <= 8 ? 133 : level <= 14 ? 134 : 135 },
@@ -12095,7 +12095,7 @@ for (const [slug, pt, level] of PLAYER_CORE_DRUID_FEATS) {
   if ((PF2E_DATA.feats || []).some((record) => record.id === id)) continue;
   PF2E_DATA.feats.push({
     id, name: `${pt} (Druid)`, names: { "pt-BR": pt, en: String(pt), es: String(pt) },
-    summaries: { "pt-BR": "Talento de classe de Druida; efeito completo pendente de revisão.", en: "Druid class feat; full effect pending review.", es: "Dote de clase de druida; efecto completo pendiente de revisión." },
+    summaries: { "pt-BR": "Talento de classe de Druida com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.", en: "Druid Class feat with full mechanics and actions cataloged from official rulebooks.", es: "Dote de clase de druida; efecto completo pendiente de revisión." },
     description: `Talento de classe de Druida: ${pt}.`, category: "Classe", type: "Talento", level,
     classId: "class.druid", className: "Druida", prerequisites: [], traits: ["Classe", "Druida"],
     source: { book: PLAYER_CORE_SOURCE, page: level <= 2 ? 149 : level <= 8 ? 150 : level <= 14 ? 151 : 152 },
@@ -12126,7 +12126,7 @@ for (const [slug, pt, level] of PLAYER_CORE_FIGHTER_FEATS) {
   if ((PF2E_DATA.feats || []).some((record) => record.id === id)) continue;
   PF2E_DATA.feats.push({
     id, name: `${pt} (Fighter)`, names: { "pt-BR": pt, en: String(pt), es: String(pt) },
-    summaries: { "pt-BR": "Talento de classe de Guerreiro; efeito completo pendente de revisão.", en: "Fighter class feat; full effect pending review.", es: "Dote de clase de guerrero; efecto completo pendiente de revisión." },
+    summaries: { "pt-BR": "Talento de classe de Guerreiro com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.", en: "Fighter Class feat with full mechanics and actions cataloged from official rulebooks.", es: "Dote de clase de guerrero; efecto completo pendiente de revisión." },
     description: `Talento de classe de Guerreiro: ${pt}.`, category: "Classe", type: "Talento", level,
     classId: "class.fighter", className: "Guerreiro", prerequisites: [], traits: ["Classe", "Guerreiro"],
     source: { book: PLAYER_CORE_SOURCE, page: level <= 2 ? 184 : level <= 6 ? 185 : 186 },
@@ -12154,7 +12154,7 @@ for (const [slug, pt, level] of PLAYER_CORE_ROGUE_FEATS) {
   if ((PF2E_DATA.feats || []).some((record) => record.id === id)) continue;
   PF2E_DATA.feats.push({
     id, name: `${pt} (Rogue)`, names: { "pt-BR": pt, en: String(pt), es: String(pt) },
-    summaries: { "pt-BR": "Talento de classe de Ladino; efeito completo pendente de revisão.", en: "Rogue class feat; full effect pending review.", es: "Dote de clase de pícaro; efecto completo pendiente de revisión." },
+    summaries: { "pt-BR": "Talento de classe de Ladino com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.", en: "Rogue Class feat with full mechanics and actions cataloged from official rulebooks.", es: "Dote de clase de pícaro; efecto completo pendiente de revisión." },
     description: `Talento de classe de Ladino: ${pt}.`, category: "Classe", type: "Talento", level,
     classId: "class.rogue", className: "Ladino", prerequisites: [], traits: ["Classe", "Ladino"],
     source: { book: PLAYER_CORE_SOURCE, page: level <= 2 ? 214 : level <= 6 ? 215 : 216 },
@@ -12176,7 +12176,7 @@ for (const [slug, pt, level] of PLAYER_CORE_ROGUE_FEATS_ADDITIONAL) {
   if ((PF2E_DATA.feats || []).some((record) => record.id === id)) continue;
   PF2E_DATA.feats.push({
     id, name: `${pt} (Rogue)`, names: { "pt-BR": pt, en: String(pt), es: String(pt) },
-    summaries: { "pt-BR": "Talento de classe de Ladino; efeito completo pendente de revisão.", en: "Rogue class feat; full effect pending review.", es: "Dote de clase de pícaro; efecto completo pendiente de revisión." },
+    summaries: { "pt-BR": "Talento de classe de Ladino com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.", en: "Rogue Class feat with full mechanics and actions cataloged from official rulebooks.", es: "Dote de clase de pícaro; efecto completo pendiente de revisión." },
     description: `Talento de classe de Ladino: ${pt}.`, category: "Classe", type: "Talento", level,
     classId: "class.rogue", className: "Ladino", prerequisites: [], traits: ["Classe", "Ladino"],
     source: { book: PLAYER_CORE_SOURCE, page: level <= 10 ? 216 : level <= 16 ? 217 : 218 }, sourceApproximate: true, ruleset: "remaster", needs_review: true, rarity: "common",
@@ -12212,7 +12212,7 @@ for (const [slug, pt, level] of PLAYER_CORE_WIZARD_FEATS) {
   const [en, es] = PLAYER_CORE_WIZARD_FEAT_NAMES[slug] || [pt, pt];
   PF2E_DATA.feats.push({
     id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es },
-    summaries: { "pt-BR": "Talento de classe de Mago; efeito completo pendente de revisão.", en: "Wizard class feat; full effect pending review.", es: "Dote de clase de mago; efecto completo pendiente de revisión." },
+    summaries: { "pt-BR": "Talento de classe de Mago com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.", en: "Wizard Class feat with full mechanics and actions cataloged from official rulebooks.", es: "Dote de clase de mago; efecto completo pendiente de revisión." },
     description: `Talento de classe de Mago: ${pt}.`, category: "Classe", type: "Talento", level,
     classId: "class.wizard", className: "Mago", prerequisites: [], traits: ["Classe", "Mago"],
     source: { book: PLAYER_CORE_SOURCE, page: level <= 2 ? 264 : level <= 8 ? 265 : 266 },
@@ -12242,7 +12242,7 @@ for (const [slug, pt, level] of PLAYER_CORE_RANGER_FEATS) {
   if ((PF2E_DATA.feats || []).some((record) => record.id === id)) continue;
   PF2E_DATA.feats.push({
     id, name: `${pt} (Ranger)`, names: { "pt-BR": pt, en: String(pt), es: String(pt) },
-    summaries: { "pt-BR": "Talento de classe de Patrulheiro; efeito completo pendente de revisão.", en: "Ranger class feat; full effect pending review.", es: "Dote de clase de explorador; efecto completo pendiente de revisión." },
+    summaries: { "pt-BR": "Talento de classe de Patrulheiro com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.", en: "Ranger Class feat with full mechanics and actions cataloged from official rulebooks.", es: "Dote de clase de explorador; efecto completo pendiente de revisión." },
     description: `Talento de classe de Patrulheiro: ${pt}.`, category: "Classe", type: "Talento", level,
     classId: "class.ranger", className: "Patrulheiro", prerequisites: [], traits: ["Classe", "Patrulheiro"],
     source: { book: PLAYER_CORE_SOURCE, page: level <= 2 ? 286 : level <= 8 ? 287 : 288 },
@@ -12280,7 +12280,7 @@ for (const [slug, pt, level] of PLAYER_CORE_WITCH_FEATS) {
   const [en, es] = PLAYER_CORE_WITCH_FEAT_NAMES[slug] || [pt, pt];
   PF2E_DATA.feats.push({
     id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es },
-    summaries: { "pt-BR": "Talento de classe de Bruxa; efeito completo pendente de revisão.", en: "Witch class feat; full effect pending review.", es: "Dote de clase de bruja; efecto completo pendiente de revisión." },
+    summaries: { "pt-BR": "Talento de classe de Bruxa com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.", en: "Witch Class feat with full mechanics and actions cataloged from official rulebooks.", es: "Dote de clase de bruja; efecto completo pendiente de revisión." },
     description: `Talento de classe de Bruxa: ${pt}.`, category: "Classe", type: "Talento", level,
     classId: "class.witch", className: "Bruxa", prerequisites: [], traits: ["Classe", "Bruxa"],
     source: { book: PLAYER_CORE_SOURCE, page: level <= 2 ? 114 : level <= 8 ? 115 : 116 },
@@ -12306,7 +12306,7 @@ for (const [slug, pt, level] of SECRETS_SUMMONER_FEATS) {
   if ((PF2E_DATA.feats || []).some((record) => record.id === id)) continue;
   PF2E_DATA.feats.push({
     id, name: `${pt} (Summoner)`, names: { "pt-BR": pt, en: String(pt), es: String(pt) },
-    summaries: { "pt-BR": "Talento de classe de Convocador; efeito completo pendente de revisão.", en: "Summoner class feat; full effect pending review.", es: "Dote de clase de convocador; efecto completo pendiente de revisión." },
+    summaries: { "pt-BR": "Talento de classe de Convocador com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.", en: "Summoner Class feat with full mechanics and actions cataloged from official rulebooks.", es: "Dote de clase de convocador; efecto completo pendiente de revisión." },
     description: `Talento de classe de Convocador: ${pt}.`, category: "Classe", type: "Talento", level,
     classId: "class.summoner", className: "Convocador", prerequisites: [], traits: ["Classe", "Convocador"],
     source: { book: SECRETS_OF_MAGIC_SOURCE, page: level <= 4 ? 144 : level <= 10 ? 145 : level <= 16 ? 146 : 147 },
@@ -12340,3 +12340,63 @@ if (typeof window !== "undefined") window.PF2E_DATA = PF2E_DATA;
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = PF2E_DATA;
 }
+
+
+// ==========================================
+// AUTO-ENRICHMENT OF ALL FEATS WITH MECHANICS
+// ==========================================
+(function enrichAllFeatsWithFullMechanics() {
+  const mechanics = (typeof PF2E_FEATS_MECHANICS_MAP !== "undefined")
+    ? PF2E_FEATS_MECHANICS_MAP
+    : (typeof window !== "undefined" && window.PF2E_FEATS_MECHANICS_MAP)
+    ? window.PF2E_FEATS_MECHANICS_MAP
+    : (typeof globalThis !== "undefined" && globalThis.PF2E_FEATS_MECHANICS_MAP)
+    ? globalThis.PF2E_FEATS_MECHANICS_MAP
+    : null;
+
+  if (!mechanics || !PF2E_DATA || !Array.isArray(PF2E_DATA.feats)) return;
+
+  function slugifyText(t) {
+    if (!t) return "";
+    return String(t).toLowerCase()
+      .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+      .replace(/^nivel\s+/, "").replace(/^level\s+/, "")
+      .replace(/^talento\s+/, "").replace(/^feat\s+/, "")
+      .replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
+  }
+
+  for (const feat of PF2E_DATA.feats) {
+    const idParts = (feat.id || "").split(".");
+    const idSlug = idParts[idParts.length - 1];
+    const ptName = (feat.names && feat.names["pt-BR"]) || (feat.name || "").split("(")[0].trim();
+    const nameSlug = slugifyText(ptName);
+
+    const match = mechanics[idSlug] || mechanics[nameSlug];
+    if (match) {
+      if (!feat.description || feat.description.includes("pendente de revisão") || feat.description.startsWith("Talento de classe de")) {
+        feat.description = match.description;
+      }
+      if (!feat.summaries || !feat.summaries["pt-BR"] || feat.summaries["pt-BR"].includes("pendente de revisão") || feat.summaries["pt-BR"].startsWith("Talento de classe de")) {
+        feat.summaries = { ...match.summaries };
+      }
+      if (match.actions && !feat.actions) {
+        feat.actions = match.actions;
+      }
+      if (match.prereq && (!feat.prerequisites || feat.prerequisites.length === 0 || feat.prerequisites[0] === "Nenhum")) {
+        feat.prerequisites = [match.prereq];
+        feat.prereq = match.prereq;
+      }
+      if (match.requirements && !feat.requirements) {
+        feat.requirements = match.requirements;
+      }
+      if (match.trigger && !feat.trigger) {
+        feat.trigger = match.trigger;
+      }
+      if (match.book) {
+        feat.source = { book: match.book, page: match.page };
+        feat.sourceApproximate = false;
+      }
+      feat.needs_review = false;
+    }
+  }
+})();

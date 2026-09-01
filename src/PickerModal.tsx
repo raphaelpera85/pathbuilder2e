@@ -896,6 +896,15 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
       ? `${locale === "en" ? "Armor Training" : locale === "es" ? "Entrenamiento en Armadura" : "Treinamento em Armadura"}: ${selectedItem.data.armorProf.map((a: string) => a === "medium" ? (locale === "en" ? "Medium" : locale === "es" ? "Media" : "Média") : a === "light" ? (locale === "en" ? "Light" : locale === "es" ? "Ligera" : "Leve") : a).join(", ")}` : null,
     selectedItem.data.rageDamage
       ? `${locale === "en" ? "Rage Damage" : locale === "es" ? "Daño de Furia" : "Dano de Fúria"}: +${(selectedItem.data.rageDamage as any).base}/+${(selectedItem.data.rageDamage as any).spec}/+${(selectedItem.data.rageDamage as any).greater}` : null,
+    (selectedItem.data.actions !== undefined && selectedItem.data.actions !== null)
+      ? (selectedItem.data.actions === "reaction"
+          ? (locale === "en" ? "Reaction [Reaction]" : locale === "es" ? "Reacción [Reacción]" : "Reação [Reação]")
+          : selectedItem.data.actions === "free"
+          ? (locale === "en" ? "Free Action [Free]" : locale === "es" ? "Acción Libre [Libre]" : "Ação Livre [Livre]")
+          : `${selectedItem.data.actions} ${selectedItem.data.actions === 1 ? (locale === "en" ? "Action" : locale === "es" ? "Acción" : "Ação") : (locale === "en" ? "Actions" : locale === "es" ? "Acciones" : "Ações")}`)
+      : null,
+    selectedItem.data.requirements ? `${locale === "en" ? "Requirements" : locale === "es" ? "Requisitos" : "Requerimentos"}: ${selectedItem.data.requirements}` : null,
+    selectedItem.data.trigger ? `${locale === "en" ? "Trigger" : locale === "es" ? "Disparador" : "Acionamento"}: ${selectedItem.data.trigger}` : null,
   ].filter((fact): fact is string => Boolean(fact)) : [];
   const selectionGroups = selectedItem?.data.selectionGroups ?? [];
   const resolvedSelections = Object.fromEntries(selectionGroups.map((group) => {
