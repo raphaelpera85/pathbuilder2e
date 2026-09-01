@@ -348,6 +348,7 @@ Auditoria atual após os 43 talentos de Oráculo: 3004 registros, 2382 em revis�
   - [x] Localizar também as referências do Livro Básico legado e do Manual do Jogador nas interfaces dos pickers.
   - [ ] Expor no construtor Salvar personagem na conta e CRUD completo de fichas cloud, vinculando `user_id`, configuração integral e histórico; atualizar a biblioteca após salvar.
     - [ ] Sincronizar automaticamente cada alteração do personagem autenticado com a nuvem, com debounce/coalescência de mudanças, fila offline, retry seguro, indicação de status e resolução de conflitos; o botão manual deve permanecer apenas como ação opcional de confirmação.
+      - [ ] Nova solicitação: após o personagem ser criado, cada alteração subsequente deve ser salva automaticamente na nuvem, sem exigir que o usuário clique em `Salvar personagem`; preservar a associação à conta, configuração integral e histórico.
       - [ ] Validar que alterações em atributos, progressão, inventário, moedas, condições, rolagens, configurações e histórico sejam persistidas sem exigir clique em `Salvar na Conta`.
       - [x] Disparar sincronização automática após alterações locais, com debounce de 750 ms e coalescência enquanto outro salvamento remoto está em andamento; preservar o fallback local.
       - [ ] Completar fila offline, retry com backoff, indicador de estado e resolução de conflitos; validar com Supabase real.
@@ -365,6 +366,22 @@ Validação integral após o autosave: suíte completa = 26 arquivos e 462 teste
 Correção adicional desta etapa: carregamentos locais, exemplos e fichas vindas da Biblioteca agora podem marcar `skipCloudAutosave`, evitando que a hidratação inicial regrave silenciosamente uma versão antiga na nuvem; alterações posteriores continuam disparando o autosave. Validação: build, 85 testes do contrato responsivo, sintaxe e `git diff --check` aprovados.
 
 Cobertura adicional desta etapa: o contrato responsivo passou a verificar o evento de alteração, a chave de fila por usuário, o snapshot pendente, o backoff, o indicador de sincronização e a restauração do snapshot após hidratação. Validação: 85 testes do contrato responsivo aprovados.
+
+Registro da solicitação (2026-09-01): confirmado no backlog o autosave cloud após a criação da ficha, disparado a cada mudança sem clique manual, mantendo conta, configuração e histórico. A base de debounce, coalescência, fila local, retry e indicador já existe; ainda faltam a validação end-to-end com Supabase, conflitos entre dispositivos e o aceite visual/browser.
+
+Validação desta etapa (2026-09-01): suíte completa passou com 26 arquivos e 464 testes; `npm run build` também passou. Permanecem os avisos conhecidos do Vite sobre scripts legados sem `type="module"` e chunk grande; autosave ainda requer prova browser/Supabase real e resolução de conflitos.
+
+Correção desta etapa (2026-09-01): os pickers React e legado agora colapsam duplicatas exatas de antecedentes pelo rótulo localizado, escolhendo o registro mais rico sem remover variantes legítimas de outras categorias. Isso corrige, por exemplo, o Escudeiro repetido; a seleção continua sujeita aos gates de compatibilidade.
+
+Validação desta etapa: contrato de layout/seleção passou com 86 testes e `git diff --check` passou. A auditoria de catálogo ainda reporta duplicatas semânticas no inventário bruto (incluindo antecedentes de edições distintas), pois elas permanecem preservadas para proveniência; falta validação visual dos pickers nos três idiomas.
+
+Validação consolidada desta correção (2026-09-01): suíte completa passou com 26 arquivos e 464 testes; a auditoria segue distinguindo duplicatas de dados preservadas por edição das duplicatas ocultadas na escolha. A validação browser/visual nos três idiomas continua pendente.
+
+Correção complementar desta etapa: o picker React também passou a colapsar antecedentes com o mesmo rótulo localizado, alinhando o comportamento ao picker legado e eliminando a duplicação no fluxo de escolha moderno. Validação: contrato responsivo com 86 testes, sintaxe e `git diff --check` aprovados; a suíte completa após esta alteração ainda deve ser repetida.
+
+Correção desta etapa (2026-09-01): compras em lote agora passam por `applyPurchasePoolSelection`, que revalida compatibilidade e saldo do pool antes de inserir qualquer item e debita o total uma única vez. O fluxo mantém o fallback para integrações externas com callback. Arquivos: `js/app.js`, `src/ItemPickerModal.tsx`, `src/data/responsive-layout-contract.test.ts`. Falta validar concorrência com carteira remota/Supabase real.
+
+Validação desta etapa: contrato responsivo passou com 87 testes; `node --check js/app.js`, `npm run build` e `git diff --check` passaram. Permanecem os avisos conhecidos do Vite e a validação browser/Supabase real.
     - [x] Cachear localmente o retorno de um salvamento remoto bem-sucedido para que uma falha transitória da próxima leitura não deixe a biblioteca vazia.
     - [x] Biblioteca com renomear/excluir/abrir e sincronização entre as duas visões de conta.
     - [x] Incluir a configuração integral já presente no documento da ficha e até 100 registros do histórico de rolagens no snapshot salvo/restaurado; o CRUD cloud continua pendente de validação end-to-end.
@@ -884,5 +901,9 @@ Correção pt-BR desta etapa (2026-09-01): alinhados pré-requisitos que ainda e
 Validação desta etapa (2026-09-01): contratos de idioma/prontidão passaram com 69 testes; `node --check js/pf2e_data.js` e `git diff --check` passaram. Build e suíte completa após a limpeza permanecem pendentes.
 
 Validação consolidada desta limpeza (2026-09-01): suíte completa passou com 26 arquivos e 463 testes; `npm run build` passou. Permanecem os avisos conhecidos do Vite sobre scripts legados sem `type="module"` e chunk acima de 500 kB; a validação visual/browser segue pendente.
+
+Correção responsiva desta etapa (2026-09-01): o shell do picker de itens passou a aceitar largura mínima zero e usar `box-sizing: border-box`; as abas mantêm overflow horizontal interno, evitando ampliar a viewport em dispositivos portáteis. Arquivos: `src/itemPicker.css`, `src/data/responsive-layout-contract.test.ts`. Falta validação visual nos viewports 320×568, 375×667 e 414×896.
+
+Validação desta etapa (2026-09-01): contrato responsivo passou com 86 testes; `node --check js/pf2e_data.js`, `node --check js/pf2e_engine.js` e `git diff --check` passaram. Build/suíte completa após esta alteração permanecem pendentes.
 
 Auditoria de catálogo desta etapa (2026-09-01): `npm run audit:catalog:provenance` confirmou 3.786 registros, nomes e resumos presentes em pt-BR/en/es, 0 IDs duplicados, 43 registros sem fonte/página confirmados (todos marcados `needs_review`), 3.114 registros em revisão e 1.490 com mecânica pendente. As traduções completas e a conferência mecânica/fontes dos itens pendentes continuam necessárias antes do gate final.

@@ -3215,7 +3215,7 @@ class PathbuilderApp {
       return finalize(subclasses, options);
     }
     if (type === "background") {
-      return finalize(PF2E_DATA.backgrounds.map(b => ({ name: b.name, type: "Antecedente", data: b })));
+      return finalize(PF2E_DATA.backgrounds.map(b => ({ name: b.name, type: "Antecedente", data: b })), { collapseDuplicateLabels: true });
     }
     if (type === "weapon") {
       return finalize(mergeCatalogRecords([], PF2E_DATA.weapons || []).map(w => ({ name: w.name, type: "Arma", data: w })));
@@ -3510,6 +3510,56 @@ class PathbuilderApp {
     this.renderAll();
   }
 
+  applyPurchasePoolSelection(entries = []) {
+    if (!this.character || !Array.isArray(entries) || entries.length === 0) return false;
+    const normalizedEntries = entries.map((entry) => {
+      const data = entry?.item?.data || entry?.item || entry?.data || {};
+      const qty = Math.max(1, Number(entry?.qty ?? data.qty ?? 1) || 1);
+      return { data, qty, name: entry?.item?.name || data.name };
+    }).filter((entry) => entry.data && (entry.data.id || entry.name));
+    if (!normalizedEntries.length) return false;
+
+    const compatibilityChecker = PF2E_ENGINE?.getPrerequisiteCompatibility;
+    if (typeof compatibilityChecker === "function") {
+      const incompatible = normalizedEntries.find((entry) => compatibilityChecker.call(
+        PF2E_ENGINE,
+        this.getPickerCompatibilityCharacter("item"),
+        entry.data,
+      )?.state === "incompatible");
+      if (incompatible) {
+        alert(this.getPrerequisiteCompatibilityMessage({ state: "incompatible" }));
+        return false;
+      }
+    }
+
+    const totalCopper = normalizedEntries.reduce((total, entry) => total
+      + this.parsePriceToCopper(entry.data.price || entry.data.rawPrice || "0", this.getLocale()) * entry.qty, 0);
+    if (this.getCharacterTotalCopper() < totalCopper) {
+      const locale = this.getLocale();
+      alert(locale === "en" ? "Insufficient coins for this purchase." : locale === "es" ? "No tienes monedas suficientes para esta compra." : "Moedas insuficientes para esta compra.");
+      return false;
+    }
+
+    this.character.inventory = Array.isArray(this.character.inventory) ? this.character.inventory : [];
+    for (const entry of normalizedEntries) {
+      const identity = String(entry.data.id || entry.name || "").trim().toLowerCase();
+      const existing = this.character.inventory.find((candidate) => String(candidate?.id || candidate?.name || "").trim().toLowerCase() === identity);
+      if (existing) existing.qty = Math.max(1, Number(existing.qty) || 1) + entry.qty;
+      else this.character.inventory.push({ ...entry.data, name: entry.name || entry.data.name, qty: entry.qty });
+    }
+    let remaining = this.getCharacterTotalCopper() - totalCopper;
+    const pp = Math.floor(remaining / 1000);
+    remaining %= 1000;
+    const gp = Math.floor(remaining / 100);
+    remaining %= 100;
+    const sp = Math.floor(remaining / 10);
+    const cp = remaining % 10;
+    this.character.coins = { pp, gp, sp, cp };
+    this.saveCharacterLocal(false);
+    this.renderAll();
+    return true;
+  }
+
   reconcileCurrentHp(previousMaxHp, previousCurrentHp) {
     const damageTaken = Math.max(0, previousMaxHp - previousCurrentHp);
     const nextMaxHp = PF2E_ENGINE.calculateCharacterStats(this.character).maxHp;
@@ -3710,8 +3760,8 @@ class PathbuilderApp {
     // O modal legado precisa aplicar a mesma identificação contextual do
     // picker React. Variantes de livros diferentes com o mesmo nome visível
     // continuam selecionáveis, mas deixam de parecer cópias indistinguíveis.
-    if (["class", "formula", "pet", "heritage"].includes(this.currentPickerType)) {
-      items = ["formula", "pet", "heritage"].includes(this.currentPickerType)
+    if (["class", "background", "formula", "pet", "heritage"].includes(this.currentPickerType)) {
+      items = ["background", "formula", "pet", "heritage"].includes(this.currentPickerType)
         ? collapseDuplicateLabels(items)
         : (() => {
           const locale = this.getLocale();

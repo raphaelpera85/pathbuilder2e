@@ -320,6 +320,14 @@ export function ItemPickerModal({ onBridgeReady }: { onBridgeReady?: (bridge: { 
       window.alert(copy.insufficientFunds);
       return;
     }
+    const app = (window as any).app;
+    if (!modalState.onSelect && typeof app?.applyPurchasePoolSelection === "function") {
+      const applied = app.applyPurchasePoolSelection(entries);
+      if (!applied) return;
+      setPurchasePool([]);
+      setModalState({ isOpen: false });
+      return;
+    }
     for (const entry of entries) {
       const itemData = { ...entry.item, name: getItemDisplayName(entry.item as any, locale), qty: entry.qty, rawPrice: entry.item.price, price: formatItemPrice(entry.item.price, locale) };
       if (modalState.onSelect) modalState.onSelect(itemData, true);

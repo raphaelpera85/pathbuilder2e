@@ -18,6 +18,7 @@
   border: 1px solid var(--pb-border, #334155);
   border-radius: 12px;
   width: 1000px;
+  min-width: 0;
   max-width: 96vw;
   height: 85vh;
   max-height: 820px;
@@ -25,6 +26,7 @@
   flex-direction: column;
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75);
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .item-picker-header {
@@ -39,6 +41,7 @@
 .item-picker-main-tabs {
   display: flex;
   gap: 4px;
+  min-width: 0;
   overflow-x: auto;
 }
 

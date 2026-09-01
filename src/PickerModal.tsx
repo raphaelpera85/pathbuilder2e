@@ -816,7 +816,7 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
       const nameB = getItemDisplayName(b, locale);
       return nameA.localeCompare(nameB, locale, { sensitivity: "base", numeric: true });
     });
-    const collapseExactLabels = ["class", "heritage", "pet", "formula"].includes(pickerType);
+    const collapseExactLabels = ["class", "background", "heritage", "pet", "formula"].includes(pickerType);
     const collapsedLabels = new Set<string>();
     const seenLabels = new Map<string, number>();
     return sorted.filter((item) => {

@@ -101,6 +101,14 @@ describe("responsive layout contract", () => {
     expect(css).toContain(".catalog-card-status");
   });
 
+  it("prevents the item picker shell from widening portable viewports", () => {
+    const css = read("src/itemPicker.css");
+    expect(css).toContain("min-width: 0;");
+    expect(css).toContain("box-sizing: border-box;");
+    expect(css).toContain(".item-picker-main-tabs");
+    expect(css).toContain("overflow-x: auto;");
+  });
+
   it("fecha o drawer antes de navegar para evitar sobreposição da barra superior", () => {
     const app = read("js/app.js");
     const html = read("index.html");
@@ -559,7 +567,7 @@ describe("responsive layout contract", () => {
     const app = read("js/app.js");
     expect(app).toContain("const collapseDuplicateLabels = (entries) => {");
     expect(app).toContain("this.localizeItemName(");
-    expect(app).toContain('["formula", "pet", "heritage"].includes(this.currentPickerType)');
+    expect(app).toContain('["background", "formula", "pet", "heritage"].includes(this.currentPickerType)');
     expect(app).toContain("if (!previous || score(entry) > score(previous)) bestByLabel.set(label, entry);");
     const compatibilityFilter = app.indexOf("items = items.filter(item => {");
     const deduplication = app.lastIndexOf("collapseDuplicateLabels(items)");
@@ -782,7 +790,7 @@ describe("responsive layout contract", () => {
     expect(picker).toContain('cat.includes("impulso") || cat.includes("impulse")');
     expect(picker).toContain('locale === "en" ? "AC Bonus"');
     expect(picker).toContain('locale === "es" ? "PG (LCR)"');
-    expect(picker).toContain('const collapseExactLabels = ["class", "heritage", "pet", "formula"].includes(pickerType);');
+    expect(picker).toContain('const collapseExactLabels = ["class", "background", "heritage", "pet", "formula"].includes(pickerType);');
     expect(picker).toContain('if (collapsedLabels.has(normalizedLabel)) return false;');
     expect(picker).toContain("const canStillApply = purchasePool.every");
     expect(picker).toContain("const currentCopper = typeof (window as any).app?.getCharacterTotalCopper");
@@ -918,7 +926,7 @@ describe("responsive layout contract", () => {
     expect(app).toContain("app.editCharacterCollectionItem('spells', ${idx})");
     expect(app).toContain("app.editCharacterCollectionItem('formulas', ${formulaIndex})");
     expect(app).toContain("this.saveCharacterLocal(false);\n    this.renderAll();\n    return true;\n  }\n  removeCharacterCollectionItem(collection, idx)");
-    expect(app).toContain("this.saveCharacterLocal(false);\n    this.renderAll();\n  }\n\n  reconcileCurrentHp");
+    expect(app).toContain("this.saveCharacterLocal(false);\n    this.renderAll();\n  }\n\n  applyPurchasePoolSelection");
     expect(app).toContain("this.closePicker();\n    this.saveCharacterLocal(false);\n    this.renderAll();\n  }\n\n  getFallbackFeatCatalog");
     expect(app).toContain("stowArmor()");
     expect(app).toContain("stowShield()");
@@ -1100,7 +1108,7 @@ describe("responsive layout contract", () => {
     expect(app).toContain('btnGenerateAICharacter: isEn ? "✨ Generate Character with AI"');
     expect(app).toContain('const diceTitle = isEn ? "Open Dice Roller (Free Roll / History)"');
     expect(app).toContain('button.title = isEn ? `Roll ${label}`');
-    expect(app).toContain('["class", "formula", "pet", "heritage"].includes(this.currentPickerType)');
+    expect(app).toContain('["class", "background", "formula", "pet", "heritage"].includes(this.currentPickerType)');
     expect(app).toContain('if ((type === "item" || type === "gear") && deductCoins)');
     expect(app).toContain('if (type === "spell" && options?.hexOnly && item.data?.hex !== true');
     expect(app).toContain('if (this.currentPickerType === "spell" && this.activePickerOptions?.hexOnly && item.data?.hex !== true');
@@ -1141,10 +1149,19 @@ describe("responsive layout contract", () => {
     expect(app).toContain("localizeSourceBookName(source.book, locale)");
     expect(app).toContain("const recoveryMultiplier = Math.max(1, Number(this.calc.featEffects?.dailyRecoveryMultiplier) || 1);");
     expect(app).toContain("const naturalRecovery = Math.max(1, conModifier * (Number(this.character.level) || 1)) * recoveryMultiplier;");
-    expect(app).toContain('if (["class", "formula", "pet", "heritage"].includes(this.currentPickerType))');
+    expect(app).toContain('if (["class", "background", "formula", "pet", "heritage"].includes(this.currentPickerType))');
     expect(app).toContain("if (!label || visibleLabels.has(label)) return false;");
     expect(app).toContain("mergeCatalogRecords(sharedCatalogs.pets, PF2E_DATA.pets)");
     expect(app).toContain("mergeCatalogRecords([], PF2E_DATA.formulas || [])");
+  });
+
+  it("aplica o pool de compras de itens atomicamente", () => {
+    const app = read("js/app.js");
+    const picker = read("src/ItemPickerModal.tsx");
+    expect(app).toContain("applyPurchasePoolSelection(entries = [])");
+    expect(app).toContain("const totalCopper = normalizedEntries.reduce");
+    expect(app).toContain("this.character.coins = { pp, gp, sp, cp };");
+    expect(picker).toContain("app.applyPurchasePoolSelection(entries)");
   });
 
   it("mantém os textos iniciais do shell em português sem parentéticos ingleses", () => {
