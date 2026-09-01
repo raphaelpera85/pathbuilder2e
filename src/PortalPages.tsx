@@ -458,43 +458,16 @@ function BookDownloadsSection() {
             )}
 
             <div className="book-card-actions">
-              {source.driveUrl && (
-                <a
-                  href={source.driveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-download-gdrive"
-                  aria-label={`${t("openInGoogleDrive")}: ${localizeSourceTitle(source, locale)}`}
-                  title={`${t("openInGoogleDrive")}: ${localizeSourceTitle(source, locale)}`}
-                >
-                  <span aria-hidden="true">☁️</span> {t("openInGoogleDrive")}
-                </a>
-              )}
-              {source.downloadUrl && (
-                <a
-                  href={source.downloadUrl}
-                  download={source.filename || true}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-download-primary"
-                  aria-label={`${t("downloadPdfDirect")}: ${localizeSourceTitle(source, locale)}`}
-                  title={`${t("downloadPdfDirect")}: ${localizeSourceTitle(source, locale)}`}
-                >
-                  <span aria-hidden="true">📥</span> {t("downloadPdfDirect")}
-                </a>
-              )}
-              {source.viewUrl && (
-                <a
-                  href={source.viewUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-download-secondary"
-                  aria-label={`${t("viewOnGithub")}: ${localizeSourceTitle(source, locale)}`}
-                  title={`${t("viewOnGithub")}: ${localizeSourceTitle(source, locale)}`}
-                >
-                  <span aria-hidden="true">👁️</span> {t("viewOnGithub")}
-                </a>
-              )}
+              <a
+                href={source.driveUrl || GOOGLE_DRIVE_FOLDER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-download-primary"
+                aria-label={`${t("downloadPdfDirect")}: ${localizeSourceTitle(source, locale)}`}
+                title={`${t("downloadPdfDirect")}: ${localizeSourceTitle(source, locale)}`}
+              >
+                <span aria-hidden="true">📥</span> {t("downloadPdfDirect")}
+              </a>
             </div>
           </article>
         ))}
