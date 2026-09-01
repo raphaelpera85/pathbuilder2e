@@ -22,13 +22,14 @@ import { getCurrentSession, subscribeToAuth, type AuthSession } from "./services
 import "./campaigns.css";
 
 export function CampaignsPage() {
-  const { t } = useI18n();
+  const { locale, t } = useI18n();
   const [session, setSession] = useState<AuthSession | null>(null);
   const [campaigns, setCampaigns] = useState<Campaign[]>([]);
   const [sharedCharacters, setSharedCharacters] = useState<CloudCharacter[]>([]);
   const [myCharacters, setMyCharacters] = useState<CloudCharacter[]>([]);
   const [selectedCampaignId, setSelectedCampaignId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
   const [sessionReady, setSessionReady] = useState(false);
   const authEpochRef = useRef(0);
   const [inspectedChar, setInspectedChar] = useState<CloudCharacter | null>(null);
@@ -38,7 +39,7 @@ export function CampaignsPage() {
   const [newTitle, setNewTitle] = useState("");
   const [newDesc, setNewDesc] = useState("");
   const [newSchedule, setNewSchedule] = useState("");
-  const [newSystem, setNewSystem] = useState("Pathfinder 2e Remaster");
+  const [newSystem, setNewSystem] = useState("remaster");
 
   // New Session Log Form
   const [sessionTitle, setSessionTitle] = useState("");
@@ -64,6 +65,13 @@ export function CampaignsPage() {
     [campaigns, selectedCampaignId]
   );
 
+  const localizeSystem = (system: string | undefined) => {
+    const normalized = String(system || "").toLowerCase();
+    if (normalized.includes("custom") || normalized.includes("variant") || normalized.includes("variante") || normalized === "custom") return t("customEdition");
+    if (normalized.includes("classic") || normalized.includes("clássico") || normalized.includes("classico") || normalized === "classic") return t("classicEdition");
+    return t("remasterEdition");
+  };
+
   const refreshData = async (knownSession?: AuthSession | null) => {
     const loadEpoch = authEpochRef.current;
     setLoading(true);
@@ -82,12 +90,19 @@ export function CampaignsPage() {
         setCampaigns(camps);
         setSharedCharacters(shared);
         setMyCharacters(own);
+        setLoadError(false);
         if (camps.length > 0 && !selectedCampaignId) {
           setSelectedCampaignId(camps[0].id);
         }
+      } else {
+        setCampaigns([]);
+        setSharedCharacters([]);
+        setMyCharacters([]);
+        setSelectedCampaignId(null);
       }
     } catch (err) {
       console.error("Erro ao carregar campanhas:", err);
+      if (loadEpoch === authEpochRef.current) setLoadError(true);
     } finally {
       if (loadEpoch === authEpochRef.current) setLoading(false);
     }
@@ -101,6 +116,7 @@ export function CampaignsPage() {
       setSessionReady(true);
       if (next) void refreshData(next);
       else {
+        setLoadError(false);
         setCampaigns([]);
         setSharedCharacters([]);
         setMyCharacters([]);
@@ -129,12 +145,13 @@ export function CampaignsPage() {
       await refreshData();
       setSelectedCampaignId(created.id);
     } catch (err) {
-      alert("Erro ao criar campanha: " + (err instanceof Error ? err.message : String(err)));
+      console.error("Erro ao criar campanha:", err);
+      alert(t("campaignCreateFailed"));
     }
   };
 
   const handleDeleteCampaign = async (id: string) => {
-    if (!confirm("Deseja realmente excluir esta campanha/mesa?") || !session?.user) return;
+    if (!confirm(t("deleteCampaignConfirm")) || !session?.user) return;
     await deleteCampaign(id, session.user);
     if (selectedCampaignId === id) setSelectedCampaignId(null);
     await refreshData();
@@ -250,7 +267,8 @@ export function CampaignsPage() {
       setTargetGMEmail("");
       await refreshData();
     } catch (err) {
-      alert(`${t("linkCharacterError")} ${err instanceof Error ? err.message : String(err)}`);
+      console.error("Erro ao vincular personagem:", err);
+      alert(t("linkCharacterError"));
     }
   };
 
@@ -261,7 +279,8 @@ export function CampaignsPage() {
       setLinkNotice(t("unlinkCharacterSuccess"));
       await refreshData();
     } catch (err) {
-      alert(`${t("unlinkCharacterError")} ${err instanceof Error ? err.message : String(err)}`);
+      console.error("Erro ao desvincular personagem:", err);
+      alert(t("unlinkCharacterError"));
     }
   };
 
@@ -289,7 +308,7 @@ export function CampaignsPage() {
     return (
       <main className="portal-page" id="portal-content" tabIndex={-1}>
         <header className="portal-hero">
-          <span>PAINEL DO MESTRE · GAME MASTER</span>
+          <span>{t("gmPanelKicker")}</span>
           <h1>{t("campaignsTitle")}</h1>
           <p>{t("campaignsIntro")}</p>
         </header>
@@ -315,7 +334,7 @@ export function CampaignsPage() {
   return (
     <main className="portal-page" id="portal-content" tabIndex={-1}>
       <header className="portal-hero">
-        <span>MESTRE DA MESA · {session.user.username || session.user.email}</span>
+        <span>{t("gmPanelKicker")} · {session.user.username || session.user.email}</span>
         <h1>{t("campaignsTitle")}</h1>
         <p>{t("campaignsIntro")}</p>
       </header>
@@ -335,6 +354,12 @@ export function CampaignsPage() {
           <span className="stat-label">{t("gmEmailLabel")}</span>
         </div>
       </section>
+
+      {loadError && (
+        <div className="portal-error" role="alert">
+          {t("loadAccountFailed")} <button type="button" onClick={() => void refreshData(session)}>{t("retry")}</button>
+        </div>
+      )}
 
       {/* MAIN TWO-COLUMN SPLIT: CAMPAIGNS LIST & CAMPAIGN DETAILS */}
       <div className="campaigns-layout">
@@ -406,7 +431,7 @@ export function CampaignsPage() {
               </select>
               <input
                 type="email"
-                placeholder="email.do.mestre@exemplo.com"
+                placeholder={t("gmEmailPlaceholder")}
                 value={targetGMEmail}
                 onChange={(e) => setTargetGMEmail(e.target.value)}
                 required
@@ -428,7 +453,7 @@ export function CampaignsPage() {
                   <div>
                     <h2>{activeCampaign.title}</h2>
                     <span className="camp-tags">
-                      <span className="camp-tag-system">{activeCampaign.system}</span>
+                      <span className="camp-tag-system">{localizeSystem(activeCampaign.system)}</span>
                       <span className="camp-tag-schedule">📅 {activeCampaign.schedule || t("flexibleSchedule")}</span>
                     </span>
                   </div>
@@ -452,7 +477,7 @@ export function CampaignsPage() {
                 {/* 1. GRUPO DE AVENTUREIROS (PARTY) */}
                 <div className="camp-section-box">
                   <div className="section-header-row">
-                    <h3>🛡️ Grupo de Aventureiros ({campaignPartyCharacters.length})</h3>
+                    <h3>🛡️ {t("campaignParty")} ({campaignPartyCharacters.length})</h3>
                   </div>
 
                   {campaignPartyCharacters.length === 0 ? (
@@ -466,13 +491,20 @@ export function CampaignsPage() {
                     <div className="party-cards-grid">
                       {campaignPartyCharacters.map((char) => {
                         const charData = (char.data || {}) as any;
+                        const localizeCharacterValue = (value: unknown, fallback: string) => {
+                          if (!value) return fallback;
+                          const legacyLocalizer = (window as any).app?.localizeItemName;
+                          if (typeof legacyLocalizer === "function") return legacyLocalizer(value, locale);
+                          const text = String(value);
+                          return locale === "pt-BR" ? text.replace(/\s*\([^)]*\)\s*$/, "") : text;
+                        };
                         return (
                           <div className="party-member-card" key={char.id}>
                             <div className="member-top">
                               <div>
                                 <h4>{char.name}</h4>
                                 <span className="member-subtitle">
-                                  {charData.ancestry || "Human"} {charData.class || "Adventurer"} · {t("levelLabel")} {char.level}
+                                  {localizeCharacterValue(charData.ancestry, t("ancestry"))} {localizeCharacterValue(charData.class, t("adventurer"))} · {t("levelLabel")} {char.level}
                                 </span>
                               </div>
                               <span className="player-badge">
@@ -482,11 +514,11 @@ export function CampaignsPage() {
 
                             <div className="member-vitals">
                               <div className="vital-item">
-                                <span className="vital-lbl">PV</span>
+                                <span className="vital-lbl">{t("hitPointsShort")}</span>
                                 <span className="vital-val pv">{charData.maxHp || 20}</span>
                               </div>
                               <div className="vital-item">
-                                <span className="vital-lbl">CA</span>
+                                <span className="vital-lbl">{t("armorClassShort")}</span>
                                 <span className="vital-val ca">{charData.ac || 15}</span>
                               </div>
                               <div className="vital-item">
@@ -661,7 +693,7 @@ export function CampaignsPage() {
                     />
                     <input
                       type="number"
-                      placeholder="PV"
+                      placeholder={t("hpPlaceholder")}
                       value={npcHp}
                       onChange={(e) => setNpcHp(Number(e.target.value))}
                       className="camp-input"
@@ -669,7 +701,7 @@ export function CampaignsPage() {
                     />
                     <input
                       type="number"
-                      placeholder="CA"
+                      placeholder={t("acPlaceholder")}
                       value={npcAc}
                       onChange={(e) => setNpcAc(Number(e.target.value))}
                       className="camp-input"
@@ -677,7 +709,7 @@ export function CampaignsPage() {
                     />
                     <input
                       type="number"
-                      placeholder="Inic."
+                      placeholder={t("initiativePlaceholder")}
                       value={npcInit}
                       onChange={(e) => setNpcInit(Number(e.target.value))}
                       className="camp-input"
@@ -728,7 +760,7 @@ export function CampaignsPage() {
                         />
                         <input
                           type="number"
-                          placeholder="XP"
+                          placeholder={t("xpPlaceholder")}
                           value={sessionXp}
                           onChange={(e) => setSessionXp(Number(e.target.value))}
                           className="camp-input"
@@ -784,7 +816,7 @@ export function CampaignsPage() {
                           <p className="session-summary">{sess.summary}</p>
                           {sess.loot && (
                             <div className="session-loot-box">
-                              <strong>💎 Tesouro Concedido:</strong> {sess.loot}
+                              <strong>💎 {t("treasureGranted")}:</strong> {sess.loot}
                             </div>
                           )}
                         </article>
@@ -848,9 +880,9 @@ export function CampaignsPage() {
                     onChange={(e) => setNewSystem(e.target.value)}
                     className="camp-input"
                   >
-                    <option value="Pathfinder 2e Remaster">Pathfinder 2e Remaster</option>
-                    <option value="Pathfinder 2e Clássico">Pathfinder 2e Clássico</option>
-                    <option value="Pathfinder 2e (Custom)">Regras Variantes / Híbrido</option>
+                    <option value="remaster">{t("remasterEdition")}</option>
+                    <option value="classic">{t("classicEdition")}</option>
+                    <option value="custom">{t("customEdition")}</option>
                   </select>
                 </div>
               </div>

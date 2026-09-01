@@ -14,6 +14,20 @@ export interface AuthSession {
   expires_at: number;
 }
 
+export function buildUserProfileFromAuth(
+  authUser: { id: string; email?: string | null; user_metadata?: { username?: string }; created_at?: string },
+  profile?: Partial<UserProfile> | null,
+): UserProfile {
+  const email = authUser.email || profile?.email || "";
+  return {
+    id: authUser.id,
+    username: profile?.username || authUser.user_metadata?.username || email.split("@")[0] || "Aventureiro",
+    email,
+    role: profile?.role === "admin" || email.toLowerCase() === "raphaelpera85@gmail.com" ? "admin" : "user",
+    created_at: authUser.created_at || profile?.created_at || new Date(0).toISOString(),
+  };
+}
+
 const LOCAL_USERS_KEY = "pf2e_local_users_v1";
 const LOCAL_SESSION_KEY = "pf2e_local_active_session_v1";
 const AUTH_STATE_EVENT = "pf2e:auth-state-change";
@@ -24,6 +38,44 @@ const AUTH_STATE_EVENT = "pf2e:auth-state-change";
 let cachedSession: AuthSession | null | undefined;
 let sessionRequest: Promise<AuthSession | null> | null = null;
 let authEventEpoch = 0;
+let supabaseAuthSubscription: { unsubscribe: () => void } | null = null;
+
+function ensureSupabaseAuthSubscription(): void {
+  if (supabaseAuthSubscription || !isSupabaseConfigured || !supabase) return;
+  const { data: { subscription } } = supabase.auth.onAuthStateChange((event, nextSession) => {
+    const eventEpoch = ++authEventEpoch;
+
+    // O SDK emite INITIAL_SESSION antes de getSession terminar. Um null
+    // nesse ponto não é uma confirmação de logout e não deve apagar a sessão
+    // persistida nem fazer a biblioteca voltar para o formulário de login.
+    if (event === "INITIAL_SESSION" && !nextSession) return;
+
+    cachedSession = undefined;
+    if (!nextSession) {
+      cachedSession = null;
+      window.dispatchEvent(new CustomEvent(AUTH_STATE_EVENT, { detail: null }));
+      return;
+    }
+
+    // Não chame getSession dentro do callback do Supabase: o SDK pode manter
+    // o lock interno de autenticação enquanto o callback aguarda a leitura.
+    const fallback: AuthSession = {
+      user: buildUserProfileFromAuth(nextSession.user),
+      expires_at: nextSession.expires_at ? nextSession.expires_at * 1000 : Date.now() + 86400000,
+    };
+    cachedSession = fallback;
+    window.dispatchEvent(new CustomEvent(AUTH_STATE_EVENT, { detail: fallback }));
+
+    // Hidrata username/role do perfil somente depois de liberar o callback.
+    void Promise.resolve().then(async () => {
+      const current = await readCurrentSession();
+      if (eventEpoch !== authEventEpoch || !current) return;
+      cachedSession = current;
+      window.dispatchEvent(new CustomEvent(AUTH_STATE_EVENT, { detail: current }));
+    });
+  });
+  supabaseAuthSubscription = subscription;
+}
 
 interface StoredLocalUser {
   id: string;
@@ -87,27 +139,28 @@ async function readCurrentSession(): Promise<AuthSession | null> {
       );
       if (error || !session) return null;
 
-      const { data: profile } = await withRequestTimeout(
-        supabase
-          .from("profiles")
-          .select("id,username,role,email")
-          .eq("id", session.user.id)
-          .maybeSingle(),
-        8_000,
-        "O perfil demorou para responder.",
-      );
-
-      const userRole = (profile as any)?.role === "admin" || session.user.email?.toLowerCase() === "raphaelpera85@gmail.com" ? "admin" : "user";
-      const username = (profile as any)?.username || session.user.user_metadata?.username || session.user.email?.split("@")[0] || "Aventureiro";
+      // A sessão do Auth continua válida mesmo quando a leitura opcional do
+      // perfil falha ou está lenta. Não transforme esse segundo request em
+      // um falso logout/login infinito; os metadados do usuário fornecem um
+      // fallback seguro até a próxima hidratação.
+      let profile: any = null;
+      try {
+        const result = await withRequestTimeout(
+          supabase
+            .from("profiles")
+            .select("id,username,role,email")
+            .eq("id", session.user.id)
+            .maybeSingle(),
+          8_000,
+          "O perfil demorou para responder.",
+        );
+        profile = result.data;
+      } catch (profileError) {
+        console.warn("Perfil não disponível; usando metadados da sessão.", profileError);
+      }
 
       return {
-        user: {
-          id: session.user.id,
-          username,
-          email: session.user.email || (profile as any)?.email || "",
-          role: userRole,
-          created_at: session.user.created_at,
-        },
+        user: buildUserProfileFromAuth(session.user, profile),
         expires_at: session.expires_at ? session.expires_at * 1000 : Date.now() + 86400000,
       };
     } catch {
@@ -130,10 +183,19 @@ async function readCurrentSession(): Promise<AuthSession | null> {
 }
 
 export async function getCurrentSession(): Promise<AuthSession | null> {
+  // Register the SDK listener before the first read. Otherwise an auth event
+  // can hydrate a valid session while this older getSession() result is still
+  // in flight, and the stale null would make the library show the login form.
+  ensureSupabaseAuthSubscription();
   if (cachedSession !== undefined) return cachedSession;
   if (!sessionRequest) sessionRequest = readCurrentSession();
+  const requestEpoch = authEventEpoch;
   try {
-    cachedSession = await sessionRequest;
+    const result = await sessionRequest;
+    if (requestEpoch !== authEventEpoch && cachedSession !== undefined) {
+      return cachedSession;
+    }
+    cachedSession = result;
     return cachedSession;
   } finally {
     sessionRequest = null;
@@ -454,26 +516,9 @@ export function subscribeToAuth(callback: (session: AuthSession | null) => void)
     callback((event as CustomEvent).detail);
   };
   window.addEventListener(AUTH_STATE_EVENT, handler);
-
-  let supabaseUnsub: (() => void) | undefined;
-  if (isSupabaseConfigured && supabase) {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, nextSession) => {
-      const eventEpoch = ++authEventEpoch;
-      cachedSession = undefined;
-      if (nextSession) {
-        const cur = await getCurrentSession();
-        if (eventEpoch !== authEventEpoch) return;
-        callback(cur);
-      } else {
-        cachedSession = null;
-        callback(null);
-      }
-    });
-    supabaseUnsub = () => subscription.unsubscribe();
-  }
+  ensureSupabaseAuthSubscription();
 
   return () => {
     window.removeEventListener(AUTH_STATE_EVENT, handler);
-    if (supabaseUnsub) supabaseUnsub();
   };
 }

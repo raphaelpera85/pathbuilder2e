@@ -1,9 +1,10 @@
-import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import { pathfinderSources, type PathfinderSource } from "./data/sources";
 import { useI18n, getItemDisplayName, type MessageKey } from "./i18n";
 import type { PickerItem, PickerType } from "./types";
 import { useAccountViewState } from "./accountState";
 import { formatPriceToLocale } from "./utils/economy";
+import { getLocalizedSkillName, getTraditionDisplayNames, localizePrerequisiteText } from "./PickerModal";
 import {
   getCurrentSession,
   signIn,
@@ -15,6 +16,7 @@ import {
 import {
   deleteCharacter,
   listCharacters,
+  renameCharacter,
   type CloudCharacter,
 } from "./services/characters";
 import { CampaignsPage } from "./CampaignsPage";
@@ -55,23 +57,27 @@ const catalogCategories: Array<{ type: PickerType; label: MessageKey }> = [
 ];
 
 function localizeSourceBook(book: string, locale: "pt-BR" | "en" | "es"): string {
-  if (locale === "pt-BR") return book;
-  const translations: Array<[RegExp, string, string]> = [
-    [/Livro do Jogador 2/i, "Player Core 2", "Núcleo del jugador 2"],
-    [/Livro do Jogador/i, "Player Core", "Núcleo del jugador"],
-    [/Segredos da Magia/i, "Secrets of Magic", "Secretos de la magia"],
-    [/Pólvora e Engrenagens/i, "Guns & Gears", "Pólvora y engranajes"],
-    [/Livro dos Mortos/i, "Book of the Dead", "Libro de los muertos"],
-    [/Guerra dos Imortais/i, "War of Immortals", "Guerra de los inmortales"],
-    [/Livro Básico/i, "Core Rulebook", "Reglamento básico"],
-    [/Manual do Jogador/i, "PF2e Player Guide compilation", "Compilación del manual del jugador PF2e"],
-    [/Guia Completo do Jogador/i, "PF2e Player Guide compilation", "Compilación de guía del jugador PF2e"],
+  const translations: Array<[RegExp, string, string, string]> = [
+    [/Livro do Jogador 2|Player Core 2/i, "Livro do Jogador 2", "Player Core 2", "Núcleo del jugador 2"],
+    [/Livro do Jogador|Player Core/i, "Livro do Jogador", "Player Core", "Núcleo del jugador"],
+    [/Segredos da Magia|Secrets of Magic/i, "Segredos da Magia", "Secrets of Magic", "Secretos de la magia"],
+    [/Pólvora e Engrenagens|Guns & Gears/i, "Pólvora e Engrenagens", "Guns & Gears", "Pólvora y engranajes"],
+    [/Livro dos Mortos|Book of the Dead/i, "Livro dos Mortos", "Book of the Dead", "Libro de los muertos"],
+    [/Guerra dos Imortais|War of Immortals/i, "Guerra dos Imortais", "War of Immortals", "Guerra de los inmortales"],
+    [/Dark Archive/i, "Arquivo Sombrio", "Dark Archive", "Archivo oscuro"],
+    [/Rage of Elements/i, "Fúria dos Elementos", "Rage of Elements", "Furia de los elementos"],
+    [/Howl of the Wild/i, "Uivo da Natureza", "Howl of the Wild", "Aullido de lo salvaje"],
+    [/Battlecry/i, "Grito de Batalha!", "Battlecry!", "¡Grito de batalla!"],
+    [/Livro Básico|Core Rulebook/i, "Livro Básico", "Core Rulebook", "Reglamento básico"],
+    [/Manual do Jogador/i, "Manual do Jogador PF2e", "PF2e Player Guide compilation", "Compilación del manual del jugador PF2e"],
+    [/Guia Completo do Jogador/i, "Guia Completo do Jogador PF2e", "PF2e Player Guide compilation", "Compilación de guía del jugador PF2e"],
   ];
   const match = translations.find(([pattern]) => pattern.test(book));
-  return match ? (locale === "en" ? match[1] : match[2]) : book;
+  return match ? match[locale === "pt-BR" ? 1 : locale === "en" ? 2 : 3] : book;
 }
 
 function localizeSourceTitle(source: PathfinderSource, locale: "pt-BR" | "en" | "es"): string {
+  if (source.titles?.[locale]) return source.titles[locale];
   if (locale === "pt-BR") return source.title;
   return localizeSourceBook(source.title, locale);
 }
@@ -161,7 +167,7 @@ function CatalogPage() {
   }, [bookFilter, category, entries, locale, query, rarityFilter, rulesetFilter]);
 
   return <main className="portal-page portal-catalog-page" id="portal-content" tabIndex={-1}>
-    <header className="portal-hero"><span>PATHBUILDER KNOWLEDGE BASE</span><h1>{t("compendiumTitle")}</h1><p>{t("compendiumIntro")}</p></header>
+    <header className="portal-hero"><span>{t("compendiumKicker")}</span><h1>{t("compendiumTitle")}</h1><p>{t("compendiumIntro")}</p></header>
     <section className="catalog-toolbar" aria-label={t("searchOptions")}>
       <label className="catalog-search-label"><span>{t("catalogSearch")}</span><input value={query} onChange={(event) => setQuery(event.target.value)} type="search" placeholder={t("search")} /></label>
       <label><span>{t("filterCategory")}</span><select value={category} onChange={(event) => setCategory(event.target.value as PickerType | "all")}><option value="all">{t("allCategories")}</option>{catalogCategories.map((item) => <option key={item.type} value={item.type}>{t(item.label)}</option>)}</select></label>
@@ -206,7 +212,7 @@ function CatalogPage() {
             {inspectedEntry.data.damage ? <div className="stat-box"><strong>{t("damage")}</strong><span>{String(inspectedEntry.data.damage)}</span></div> : null}
             {inspectedEntry.data.price ? <div className="stat-box"><strong>{t("price")}</strong><span>{formatPriceToLocale(inspectedEntry.data.price, locale)}</span></div> : null}
             {inspectedEntry.data.bulk !== undefined ? <div className="stat-box"><strong>{t("bulk")}</strong><span>{String(inspectedEntry.data.bulk)}</span></div> : null}
-            {inspectedEntry.data.prerequisites ? <div className="stat-box"><strong>{t("prerequisites")}</strong><span>{formatCatalogValue(inspectedEntry.data.prerequisites)}</span></div> : null}
+            {inspectedEntry.data.prerequisites ? <div className="stat-box"><strong>{t("prerequisites")}</strong><span>{formatCatalogValue(inspectedEntry.data.prerequisites, locale)}</span></div> : null}
           </div>
 
           {/* DESCRIPTION */}
@@ -218,7 +224,7 @@ function CatalogPage() {
           {/* SOURCE CITATION */}
           <footer className="compendium-modal-footer">
             <strong>{t("source")}:</strong>
-            <span>{inspectedEntry.data.source?.book ? `${inspectedEntry.data.sourceApproximate ? `${t("sourceSectionReference")}: ` : ""}${localizeSourceBook(inspectedEntry.data.source.book, locale)} · p. ${inspectedEntry.data.source.page ?? "-"}` : t("uncatalogued")}</span>
+            <span>{inspectedEntry.data.source?.book ? `${inspectedEntry.data.sourceApproximate ? `${t("sourceSectionReference")}: ` : ""}${localizeSourceBook(inspectedEntry.data.source.book, locale)} · p. ${inspectedEntry.data.source.page ?? "-"}` : inspectedEntry.data.needs_review ? t("sourcePending") : t("uncatalogued")}</span>
           </footer>
         </div>
       </div>
@@ -237,14 +243,47 @@ function hasFallbackTranslation(entry: { data?: { id?: string; summaries?: Parti
     && en === es;
 }
 
-function formatCatalogValue(value: unknown): string {
-  if (Array.isArray(value)) return value.map(formatCatalogValue).join(", ");
+export function formatCatalogValue(value: unknown, locale: "pt-BR" | "en" | "es", key = ""): string {
+  if (Array.isArray(value)) return value.map((entry) => formatCatalogValue(entry, locale, key)).join(", ");
   if (value && typeof value === "object") {
     return Object.entries(value as Record<string, unknown>)
-      .map(([key, item]) => `${key}: ${formatCatalogValue(item)}`)
+      .map(([childKey, item]) => `${localizeCatalogKey(childKey, locale)}: ${formatCatalogValue(item, locale, childKey)}`)
       .join(", ");
   }
-  return String(value ?? "");
+  return localizeCatalogValue(value, locale, key);
+}
+
+function localizeCatalogValue(value: unknown, locale: "pt-BR" | "en" | "es", key: string): string {
+  const enumLabels: Record<string, Record<"pt-BR" | "en" | "es", string>> = {
+    ability: { "pt-BR": "atributo", en: "ability", es: "atributo" },
+    attribute: { "pt-BR": "atributo", en: "attribute", es: "atributo" },
+    level: { "pt-BR": "nível", en: "level", es: "nivel" },
+    skill: { "pt-BR": "perícia", en: "skill", es: "habilidad" },
+    feat: { "pt-BR": "talento", en: "feat", es: "dote" },
+  };
+  const raw = String(value ?? "");
+  if (key === "type" && enumLabels[raw]) return enumLabels[raw][locale];
+  return localizePrerequisiteText(value, locale);
+}
+
+function localizeCatalogKey(key: string, locale: "pt-BR" | "en" | "es"): string {
+  const labels: Record<string, Record<"pt-BR" | "en" | "es", string>> = {
+    type: { "pt-BR": "Tipo", en: "Type", es: "Tipo" },
+    minimum: { "pt-BR": "Mínimo", en: "Minimum", es: "Mínimo" },
+    maximum: { "pt-BR": "Máximo", en: "Maximum", es: "Máximo" },
+    value: { "pt-BR": "Valor", en: "Value", es: "Valor" },
+    level: { "pt-BR": "Nível", en: "Level", es: "Nivel" },
+    rank: { "pt-BR": "Grau", en: "Rank", es: "Rango" },
+    ability: { "pt-BR": "Atributo", en: "Ability", es: "Atributo" },
+    attribute: { "pt-BR": "Atributo", en: "Attribute", es: "Atributo" },
+    skill: { "pt-BR": "Perícia", en: "Skill", es: "Habilidad" },
+    feat: { "pt-BR": "Talento", en: "Feat", es: "Dote" },
+    class: { "pt-BR": "Classe", en: "Class", es: "Clase" },
+    ancestry: { "pt-BR": "Ancestralidade", en: "Ancestry", es: "Ascendencia" },
+    minimumModifier: { "pt-BR": "Modificador mínimo", en: "Minimum modifier", es: "Modificador mínimo" },
+    requiresSpellcasting: { "pt-BR": "Exige conjuração", en: "Requires spellcasting", es: "Requiere lanzamiento de conjuros" },
+  };
+  return labels[key]?.[locale] || key;
 }
 
 function getLocalizedTrait(trait: string, locale: "pt-BR" | "en" | "es"): string {
@@ -267,8 +306,10 @@ function CatalogCard({ entry, onInspect }: { entry: PickerItem & { category: Pic
     typeof entry.data.rank === "number" ? `${t("rank")} ${entry.data.rank}` : null,
     typeof entry.data.level === "number" ? `${t("level")} ${entry.data.level}` : null,
     castingTimes?.[locale] ? `${t("castingTime")}: ${castingTimes[locale]}` : null,
-    traditionNames?.[locale]?.length ? `${t("traditions")}: ${traditionNames[locale]?.join(", ")}` : null,
-    primaryChecks?.[locale] ? `${t("primaryCheck")}: ${primaryChecks[locale]}` : null,
+    getTraditionDisplayNames(entry.data.traditions, traditionNames, locale).length
+      ? `${t("traditions")}: ${getTraditionDisplayNames(entry.data.traditions, traditionNames, locale).join(", ")}` : null,
+    (primaryChecks?.[locale] || primaryChecks?.["pt-BR"] || primaryChecks?.en)
+      ? `${t("primaryCheck")}: ${getLocalizedSkillName(primaryChecks?.[locale] || primaryChecks?.["pt-BR"] || primaryChecks?.en, locale)}` : null,
     entry.data.price ? `${t("price")}: ${formatPriceToLocale(entry.data.price, locale)}` : null,
   ].filter((fact): fact is string => Boolean(fact));
 
@@ -277,7 +318,7 @@ function CatalogCard({ entry, onInspect }: { entry: PickerItem & { category: Pic
     <h2>{getItemDisplayName(entry, locale)}</h2>
     {facts.length > 0 && <div className="catalog-facts">{facts.map((fact) => <span key={fact}>{fact}</span>)}</div>}
     {(entry.data.summaries?.[locale] ?? entry.data.description) && <p>{entry.data.summaries?.[locale] ?? entry.data.description}</p>}
-    <footer>{source?.book ? `${approximateSource ? `${t("sourceSectionReference")}: ` : ""}${localizeSourceBook(source.book, locale)}${source.page ? ` · p. ${source.page}` : ""}` : t("uncatalogued")}</footer>
+    <footer>{source?.book ? `${approximateSource ? `${t("sourceSectionReference")}: ` : ""}${localizeSourceBook(source.book, locale)}${source.page ? ` · p. ${source.page}` : ""}` : entry.data.needs_review ? t("sourcePending") : t("uncatalogued")}</footer>
   </article>;
 }
 
@@ -285,7 +326,7 @@ function RulesPage() {
   const { locale, t } = useI18n();
   const rulesetLabel = (ruleset: "remaster" | "legacy" | "needs_review") => ruleset === "remaster" ? t("rulesetRemaster") : ruleset === "legacy" ? t("rulesetLegacy") : t("rulesetReview");
   return <main className="portal-page" id="portal-content" tabIndex={-1}>
-    <header className="portal-hero"><span>PF2E RULES PROVENANCE</span><h1>{t("rulesTitle")}</h1><p>{t("rulesIntro")}</p></header>
+    <header className="portal-hero"><span>{t("rulesKicker")}</span><h1>{t("rulesTitle")}</h1><p>{t("rulesIntro")}</p></header>
     <section className="rules-layout">
       <article className="portal-panel"><h2>{t("validationTitle")}</h2><ul className="validation-list">{validationCopy[locale].map((item) => <li key={item}><span aria-hidden="true">✓</span>{item}</li>)}</ul></article>
       <article className="portal-panel"><h2>{t("sourcesTitle")}</h2><p>{t("sourcesIntro")}</p><div className="source-list">{pathfinderSources.map((source) => <div className="source-row" key={source.id}><div><strong>{localizeSourceTitle(source, locale)}</strong><span>{source.pages} {t("pages")} · {t("pageCountVerified")}</span><small>{t("localLanguage")}: {localizeSourceLanguage(source.language, locale)} · {t("languageInferred")}</small></div><div><span className={`ruleset-badge ${source.ruleset}`}>{rulesetLabel(source.ruleset)}</span><small>{source.catalogStatus === "pending" ? t("contentPending") : `${source.linkedRecords} ${t("linkedRecords")}`}</small></div></div>)}</div></article>
@@ -327,7 +368,7 @@ function LibraryPage() {
       setCharacters(list);
     } catch (err) {
       if (requestId !== charactersLoadIdRef.current) return;
-      setError(err instanceof Error ? err.message : t("loadAccountFailed"));
+      setError(t("loadAccountFailed"));
     } finally {
       if (requestId === charactersLoadIdRef.current) setLoading(false);
     }
@@ -335,17 +376,9 @@ function LibraryPage() {
 
   useEffect(() => {
     let active = true;
-    let authEventReceived = false;
-    void getCurrentSession().then((cur) => {
-      if (!active || authEventReceived) return;
-      sessionRef.current = cur;
-      setSession(cur);
-      setSessionReady(true);
-      if (cur) void loadUserCharacters(cur);
-    });
-
-    const unsubscribe = subscribeToAuth((next) => {
-      authEventReceived = true;
+    let initialSessionResolved = false;
+    const applySession = (next: AuthSession | null) => {
+      if (!active) return;
       sessionRef.current = next;
       setSession(next);
       setSessionReady(true);
@@ -355,6 +388,20 @@ function LibraryPage() {
         setLoading(false);
         setCharacters([]);
       }
+    };
+    void getCurrentSession().then((cur) => {
+      if (!active) return;
+      initialSessionResolved = true;
+      // A null event can arrive while Supabase is still hydrating a persisted
+      // session. The resolved read is authoritative for the initial render.
+      applySession(cur);
+    });
+
+    const unsubscribe = subscribeToAuth((next) => {
+      if (!initialSessionResolved && !next) {
+        return;
+      }
+      applySession(next);
     });
     const refreshAfterCharacterChange = () => {
       if (sessionRef.current) void loadUserCharacters(sessionRef.current);
@@ -391,12 +438,18 @@ function LibraryPage() {
         if ((next as any)?.pendingConfirmation) {
           setNotice(t("accountCreatedNotice"));
         } else {
+          sessionRef.current = next;
           setSession(next);
+          setSessionReady(true);
+          void loadUserCharacters(next);
           setNotice(t("welcomeNotice"));
         }
       } else {
         const next = await signIn(email, password);
+        sessionRef.current = next;
         setSession(next);
+        setSessionReady(true);
+        void loadUserCharacters(next);
         setNotice(t("signedInNotice"));
       }
       if (rememberMe) {
@@ -415,7 +468,7 @@ function LibraryPage() {
       setPassword("");
       setConfirmPassword("");
     } catch (err) {
-      setError(err instanceof Error ? err.message : t("authenticationFailed"));
+      setError(t("authenticationFailed"));
     } finally {
       setWorking(null);
     }
@@ -438,9 +491,28 @@ function LibraryPage() {
     try {
       await deleteCharacter(char.id, session.user);
       setCharacters((prev) => prev.filter((c) => c.id !== char.id));
+      window.dispatchEvent(new Event("pathbuilder:characters-changed"));
       setNotice(t("characterDeletedNotice"));
     } catch (err) {
-      setError(err instanceof Error ? err.message : t("deleteCharacterFailed"));
+      setError(t("deleteCharacterFailed"));
+    } finally {
+      setWorking(null);
+    }
+  };
+
+  const handleRenameCharacter = async (char: CloudCharacter) => {
+    if (!session) return;
+    const nextName = window.prompt(t("renamePrompt"), char.name)?.trim();
+    if (!nextName || nextName === char.name) return;
+    setWorking(char.id);
+    setError(null);
+    try {
+      const renamed = await renameCharacter(char.character_key || char.id, nextName, session.user);
+      setCharacters((prev) => prev.map((item) => item.id === char.id ? renamed : item));
+      window.dispatchEvent(new Event("pathbuilder:characters-changed"));
+      setNotice(t("saveCurrent"));
+    } catch (err) {
+      setError(t("saveCharacterFailed"));
     } finally {
       setWorking(null);
     }
@@ -448,7 +520,11 @@ function LibraryPage() {
 
   const handleSignOut = async () => {
     await signOut();
+    sessionRef.current = null;
+    charactersLoadIdRef.current += 1;
     setSession(null);
+    setSessionReady(true);
+    setLoading(false);
     setCharacters([]);
   };
 
@@ -456,7 +532,7 @@ function LibraryPage() {
     return (
       <main className="portal-page library-auth-page" id="portal-content" tabIndex={-1}>
         <div className="auth-card-hero">
-          <span className="auth-kicker">PATHBUILDER 2E · CONSTRUTOR DE PERSONAGENS</span>
+          <span className="auth-kicker">{t("libraryKicker")}</span>
           <h1>{t("libraryAccessTitle")}</h1>
           <p>{t("libraryAccessIntro")}</p>
         </div>
@@ -486,7 +562,7 @@ function LibraryPage() {
                 <input
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  placeholder="MestreArthur"
+                  placeholder={locale === "en" ? "GameMasterArthur" : locale === "es" ? "MaestroArthur" : "MestreArthur"}
                   required
                 />
               </label>
@@ -497,7 +573,9 @@ function LibraryPage() {
               <input
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder={authMode === "signup" ? "email@example.com" : "username / email"}
+                placeholder={authMode === "signup"
+                  ? (locale === "pt-BR" ? "email@exemplo.com" : locale === "es" ? "correo@ejemplo.com" : "email@example.com")
+                  : (locale === "pt-BR" ? "usuário / e-mail" : locale === "es" ? "usuario / correo" : "username / email")}
                 required
               />
             </label>
@@ -635,6 +713,16 @@ function LibraryPage() {
                       ⚔️ {t("openBuilder")}
                     </button>
                     <button
+                      className="btn-card-rename"
+                      type="button"
+                      onClick={() => handleRenameCharacter(char)}
+                      disabled={working === char.id}
+                      aria-label={`${t("renameCharacter")} ${char.name}`}
+                      title={t("renameCharacter")}
+                    >
+                      ✏️
+                    </button>
+                    <button
                       className="btn-card-delete"
                       type="button"
                       onClick={() => handleDeleteCharacter(char)}
@@ -661,7 +749,7 @@ function PrivacyPage() {
     ["privacyControlTitle", "privacyControlCopy", "🛡️"], ["privacyBooksTitle", "privacyBooksCopy", "📚"],
   ];
   return <main className="portal-page" id="portal-content" tabIndex={-1}>
-    <header className="portal-hero"><span>PRIVACY BY DESIGN</span><h1>{t("privacyPageTitle")}</h1><p>{t("privacyPageIntro")}</p></header>
+    <header className="portal-hero"><span>{t("privacyKicker")}</span><h1>{t("privacyPageTitle")}</h1><p>{t("privacyPageIntro")}</p></header>
     <section className="privacy-grid">{cards.map(([title, copy, icon]) => <article className="portal-panel" key={title}><span className="panel-icon" aria-hidden="true">{icon}</span><h2>{t(title)}</h2><p>{t(copy)}</p></article>)}</section>
   </main>;
 }
@@ -702,7 +790,7 @@ export function PortalPages() {
     window.addEventListener("hashchange", update);
     return () => window.removeEventListener("hashchange", update);
   }, []);
-  useEffect(() => {
+  useLayoutEffect(() => {
     const builder = document.getElementById("legacy-builder-root");
     const characterTab = document.getElementById("topCharTab");
     const onBuilder = route === "builder";

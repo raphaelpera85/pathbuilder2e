@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { createContext, runInContext } from "node:vm";
 import { describe, expect, it } from "vitest";
-import { pathfinderSources } from "./sources";
+import { localizeSourceBookName, pathfinderSources } from "./sources";
 
 interface LegacyRecord {
   id?: string;
@@ -16,6 +16,16 @@ interface LegacyRecord {
   summaries?: Record<string, string>;
   mechanics?: Record<string, { abilityBoostRules?: string[]; trainedSkills?: string[]; specialActions?: string[]; specialRules?: string[]; senses?: string[]; grants?: string[] }>;
 }
+
+describe("localização de fontes", () => {
+  it("não confunde Player Core 2 com Player Core ao localizar a referência", () => {
+    expect(localizeSourceBookName("Livro do Jogador 2 (Player Core 2, Remaster)", "en")).toBe("Player Core 2");
+    expect(localizeSourceBookName("Livro do Jogador (Player Core, Remaster)", "en")).toBe("Player Core");
+    expect(localizeSourceBookName("Dark Archive", "pt-BR")).toBe("Arquivo Sombrio");
+    expect(localizeSourceBookName("Pathfinder RPG Livro Básico (edição legada)", "es")).toBe("Reglamento básico (edición legada)");
+    expect(localizeSourceBookName("Manual do Jogador PF2e (compilação local)", "en")).toContain("local");
+  });
+});
 
 function loadCatalog(): Record<string, unknown> {
   const source = readFileSync(resolve(process.cwd(), "js", "pf2e_data.js"), "utf8");
@@ -76,7 +86,7 @@ describe("proveniência do catálogo legado", () => {
     expect(catalog.weapons.find((item) => item.id === "weapon.arquebus")).toMatchObject({ level: 0, price: "10 PO", source: { page: 151 }, needs_review: false });
     expect(catalog.weapons.find((item) => item.id === "weapon.dueling_pistol")).toMatchObject({ level: 1, source: { page: 151 }, needs_review: false });
     expect(catalog.weapons.find((item) => item.id === "weapon.axe_musket_ranged")).toMatchObject({ level: 1, price: "10 PO", source: { page: 158 }, needs_review: false });
-    expect(catalog.weapons.find((item) => item.id === "weapon.broadsword")).toMatchObject({ name: "Espada Longa (Longsword)", price: "1 PO", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 279 }, needs_review: false });
+    expect(catalog.weapons.find((item) => item.id === "weapon.broadsword")).toMatchObject({ name: "Espada Larga (Broadsword)", price: "2 PO", source: { book: "Livro do Jogador (Player Core, Remaster)", page: 279 }, needs_review: false });
     expect(catalog.weapons.find((item) => item.id === "weapon.katar")).toMatchObject({ source: { page: 278 }, needs_review: false });
     expect(catalog.weapons.find((item) => item.id === "weapon.orc_knuckle_dagger")).toMatchObject({ source: { page: 279 }, needs_review: false });
     expect(catalog.weapons.find((item) => item.id === "weapon.khopesh")).toMatchObject({ names: { "pt-BR": "Khopesh", en: "Khopesh", es: "Khopesh" }, source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 275 }, needs_review: false });
@@ -963,7 +973,7 @@ describe("proveniência do catálogo legado", () => {
       expect(catalog.archetypes.find((item) => item.id === id)).toMatchObject({ source: { book: "Livro dos Mortos (pré-Remaster)", page }, level: 2, dedicationLevel: 2, prerequisites: ["Você está morto-vivo"], needs_review: false });
     }
     expect(catalog.archetypes.find((item) => item.id === "archetype.viking")).toMatchObject({ source: { page: 223 }, sourceApproximate: true, ruleset: "remaster", needs_review: true });
-    expect(catalog.spells).toHaveLength(384);
+    expect(catalog.spells).toHaveLength(415);
     expect(catalog.spells.find((item) => item.id === "spell.soothe")).toMatchObject({ source: { page: 314 }, rank: 1, ruleset: "remaster", needs_review: false });
     expect(catalog.spells.find((item) => item.id === "spell.fireball")).toMatchObject({ source: { page: 319 }, rank: 3, traditions: ["arcane", "primal"] });
     expect(catalog.spells.find((item) => item.id === "spell.electric_arc")).toMatchObject({ source: { page: 316 }, rank: 1, ruleset: "remaster", needs_review: false });
@@ -1090,6 +1100,14 @@ describe("proveniência do catálogo legado", () => {
     expect(heritage?.summaries).toEqual(expect.objectContaining({ "pt-BR": expect.any(String), en: expect.any(String), es: expect.any(String) }));
   });
 
+  it("mantém apenas um Exemplar selecionável e marca o alias legado", () => {
+    const catalog = loadCatalog() as { classes: Record<string, LegacyRecord & { legacyAlias?: boolean }> };
+    const exemplars = Object.values(catalog.classes).filter((item) => item.names?.["pt-BR"] === "Exemplar");
+    expect(exemplars).toHaveLength(2);
+    expect(exemplars.filter((item) => !item.legacyAlias)).toHaveLength(1);
+    expect(exemplars.filter((item) => item.legacyAlias)).toHaveLength(1);
+  });
+
   it("indexa os talentos de classe de Inventor e Pistoleiro de Pólvora e Engrenagens", () => {
     const catalog = loadCatalog() as { feats: Array<LegacyRecord & { classId?: string; level?: number; prerequisites?: string[] }> };
     const inventor = catalog.feats.filter((item) => item.classId === "class.inventor");
@@ -1156,6 +1174,7 @@ describe("proveniência do catálogo legado", () => {
     const feats = catalog.feats.filter((item) => item.classId === "class.wizard");
     expect(feats).toHaveLength(39);
     expect(feats.every((item) => item.source?.book === "Livro do Jogador (Player Core, Remaster)" && item.sourceApproximate && item.needs_review && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
+    expect(feats.filter((item) => item.id?.startsWith("feat.class.wizard.") && item.id !== "feat.class.wizard.familiar").every((item) => item.names?.en !== item.names?.["pt-BR"] && item.names?.es !== item.names?.["pt-BR"])).toBe(true);
     expect(feats.filter((item) => item.level === 1)).toHaveLength(4);
     expect(feats.find((item) => item.id === "feat.class.wizard.contramagica")).toMatchObject({ level: 1 });
   });
@@ -1176,8 +1195,18 @@ describe("proveniência do catálogo legado", () => {
     expect(feats).toHaveLength(38);
     const indexed = feats.filter((item) => item.id?.startsWith("feat.class.witch."));
     expect(indexed.every((item) => item.source?.book === "Livro do Jogador (Player Core, Remaster)" && item.sourceApproximate && item.needs_review && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
+    expect(indexed.every((item) => item.names?.en !== item.names?.["pt-BR"] && item.names?.es !== item.names?.["pt-BR"])).toBe(true);
     expect(indexed.filter((item) => item.level === 1)).toHaveLength(4);
     expect(indexed.find((item) => item.id === "feat.class.witch.armamentos_de_bruxo")).toMatchObject({ level: 1 });
+  });
+
+  it("indexa os sortilégios de patrono da Bruxa como truques de foco selecionáveis", () => {
+    const catalog = loadCatalog() as { spells: Array<LegacyRecord & { hex?: boolean; focus?: boolean; cantrip?: boolean; classId?: string }> };
+    const hexes = catalog.spells.filter((item) => item.id?.startsWith("spell.player_core.witch.") && item.classId === "class.witch");
+    expect(hexes.length).toBeGreaterThanOrEqual(7);
+    expect(hexes.every((item) => item.hex && item.focus && item.cantrip)).toBe(true);
+    expect(hexes.every((item) => item.source?.book === "Livro do Jogador (Player Core, Remaster)" && item.source?.page && !item.needs_review)).toBe(true);
+    expect(hexes.every((item) => ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
   });
 
   it("indexa o bloco de talentos de Convocador de Segredos da Magia", () => {
@@ -1197,5 +1226,21 @@ describe("proveniência do catálogo legado", () => {
       return Array.isArray(value) ? value : Object.values((value || {}) as Record<string, unknown>);
     }) as Array<{ id?: string }>;
     expect(records.filter((record) => record.id && /\s/.test(record.id))).toEqual([]);
+  });
+
+  it("declara o campo persistido das subclasses legadas por classe", () => {
+    const catalog = loadCatalog() as { subclasses: Array<{ classId?: string; choiceField?: string }> };
+    const expected: Record<string, string> = {
+      "class.alchemist": "researchField", "class.barbarian": "instinct", "class.bard": "muse",
+      "class.cleric": "doctrine", "class.druid": "order", "class.rogue": "racket",
+      "class.ranger": "hunterEdge", "class.monk": "style", "class.champion": "cause",
+      "class.sorcerer": "bloodline", "class.investigator": "methodology", "class.inventor": "innovation",
+      "class.gunslinger": "way", "class.psychic": "consciousMind", "class.thaumaturge": "implement",
+      "class.animist": "apparition", "class.exemplar": "icon", "class.kineticist": "elementalGate",
+      "class.summoner": "eidolon", "class.wizard": "arcaneSchool", "class.magus": "hybridStudy",
+    };
+    for (const [classId, choiceField] of Object.entries(expected)) {
+      expect(catalog.subclasses.some((record) => record.classId === classId && record.choiceField === choiceField)).toBe(true);
+    }
   });
 });

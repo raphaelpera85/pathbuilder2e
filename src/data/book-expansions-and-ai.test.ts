@@ -27,6 +27,28 @@ describe("Expansão de Livros PF2e e Assistente de IA de Criação", () => {
   const { engine, data, ai } = loadModules();
 
   describe("1. Novas Classes de Todos os Livros", () => {
+    it("mantém todas as classes selecionáveis com dados trilíngues e progressão", () => {
+      const expected = [
+        "Alquimista (Alchemist)", "Bárbaro (Barbarian)", "Bardo (Bard)", "Bruxo (Witch)",
+        "Campeão (Champion / Paladino)", "Cineticista (Kineticist)", "Clérigo (Cleric)",
+        "Convocador (Summoner)", "Druida (Druid)", "Espadachim (Swashbuckler)",
+        "Feiticeiro (Sorcerer)", "Guerreiro (Fighter)", "Inquisidor / Investigador (Investigator)",
+        "Inventor", "Ladino (Rogue)", "Mago (Wizard)", "Magus", "Monge (Monk)",
+        "Oráculo (Oracle)", "Patrulheiro (Ranger)", "Pistoleiro (Gunslinger)",
+        "Psíquico (Psychic)", "Taumaturgo (Thaumaturge)", "Exemplar (Exemplar)",
+        "Animista (Animist)", "Comandante (Commander)", "Guardião (Guardian)"
+      ];
+      for (const key of expected) {
+        const record = data.classes[key];
+        expect(record, key).toBeDefined();
+        expect(record.names).toMatchObject({ "pt-BR": expect.any(String), en: expect.any(String), es: expect.any(String) });
+        expect(record.summaries).toMatchObject({ "pt-BR": expect.any(String), en: expect.any(String), es: expect.any(String) });
+        if (!["Comandante (Commander)", "Guardião (Guardian)"].includes(key)) {
+          expect(record.subclasses?.length).toBeGreaterThan(0);
+        }
+      }
+    });
+
     it("deve conter Exemplar (War of Immortals) com 10 PV, Ikons e perícias corretas", () => {
       const exemplar = data.classes["Exemplar (Exemplar)"];
       expect(exemplar).toBeDefined();
@@ -125,6 +147,29 @@ describe("Expansão de Livros PF2e e Assistente de IA de Criação", () => {
       expect(names.some((n: string) => n.includes("Médico de Batalha"))).toBe(true);
       expect(names.some((n: string) => n.includes("Marechal"))).toBe(true);
       expect(names.some((n: string) => n.includes("Dedicação: Guerreiro"))).toBe(true);
+    });
+  });
+
+  describe("3.1 Contrato mínimo das categorias selecionáveis", () => {
+    it("mantém cada categoria do compêndio não vazia e trilíngue", () => {
+      const categories = [
+        "ancestries", "heritages", "versatileHeritages", "classes", "backgrounds", "subclasses",
+        "archetypes", "feats", "spells", "rituals", "items", "itemCompendium", "formulas", "pets",
+        "actions", "weapons", "armors", "shields"
+      ];
+      for (const category of categories) {
+        const collection = data[category];
+        const records = Array.isArray(collection) ? collection : Object.values(collection || {});
+        expect(records.length, category).toBeGreaterThan(0);
+        for (const record of records) {
+          expect(record.names, `${category}:${record.id || record.name}`).toMatchObject({
+            "pt-BR": expect.any(String), en: expect.any(String), es: expect.any(String)
+          });
+          expect(record.summaries, `${category}:${record.id || record.name}`).toMatchObject({
+            "pt-BR": expect.any(String), en: expect.any(String), es: expect.any(String)
+          });
+        }
+      }
     });
   });
 

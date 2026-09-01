@@ -70,6 +70,30 @@ describe("ItemPickerModal", () => {
     expect(screen.getAllByText(/Equipamento Dinâmico/i).length).toBeGreaterThan(0);
   });
 
+  it("oculta duplicatas visuais do mesmo item no idioma ativo", () => {
+    (window as any).PF2E_DATA.itemCompendium.push({
+      id: "item.test.dynamic_compendium_duplicate",
+      name: "Outra identidade técnica",
+      names: { "pt-BR": "Equipamento Dinâmico", en: "Dynamic Gear", es: "Equipo dinámico" },
+      mainCategory: "gear",
+      subCategory: "test",
+      level: 1,
+      price: { gp: 1 },
+      bulk: "L",
+      traits: [],
+      description: "Variante técnica duplicada para testar a apresentação.",
+      summaries: { "pt-BR": "Variante técnica duplicada.", en: "Technical duplicate variant.", es: "Variante técnica duplicada." },
+      source: { book: "Livro Básico", page: 382 },
+      ruleset: "legacy",
+      needs_review: true,
+    });
+    let bridge: any;
+    render(<I18nProvider><ItemPickerModal onBridgeReady={(b) => { bridge = b; }} /></I18nProvider>);
+    act(() => bridge.open());
+
+    expect(screen.getAllByRole("button", { name: "Equipamento Dinâmico" })).toHaveLength(1);
+  });
+
   it("exibe regraset e proveniência no detalhe do item", () => {
     let bridge: any;
     render(<I18nProvider><ItemPickerModal onBridgeReady={(b) => { bridge = b; }} /></I18nProvider>);
@@ -78,6 +102,16 @@ describe("ItemPickerModal", () => {
     fireEvent.click(screen.getByRole("button", { name: /Equipamento Dinâmico/i }));
     expect(screen.getByText(/Livro Básico/)).toBeInTheDocument();
     expect(screen.getByText("Legado")).toBeInTheDocument();
+  });
+
+  it("preserva preços legados em texto ao montar o catálogo do modal", () => {
+    (window as any).PF2E_DATA.itemCompendium[0].price = "25 PO";
+    let bridge: any;
+    render(<I18nProvider><ItemPickerModal onBridgeReady={(b) => { bridge = b; }} /></I18nProvider>);
+    act(() => bridge.open());
+    fireEvent.change(screen.getByPlaceholderText("Pesquisar item..."), { target: { value: "Equipamento Dinâmico" } });
+    fireEvent.click(screen.getByRole("button", { name: /Equipamento Dinâmico/i }));
+    expect(screen.getAllByText(/2 PL 5 PO/).length).toBeGreaterThan(0);
   });
 
   it("não exibe item incompatível com a ficha atual", () => {

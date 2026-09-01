@@ -1,8 +1,20 @@
 # Cobertura PF2e, bugs e melhorias
 
-Atualização desta etapa: adicionados nove talentos gerais e 43 talentos de perícia do Player Core 2 (pp. 225–226), com pré-requisitos localizados e filtro contextual; a regra de Resiliência de Guerreiro/Patrulheiro agora também valida `hpPerLevel` contra 8 + modificador de Constituição. O arquétipo Espião Noturno recebeu a fonte confirmada do Livro Básico local (p. 382). Auditoria: 3744 registros, 3115 em revisão, 43 sem fonte/página e nenhum ID duplicado.
+Atualização desta etapa: adicionados nove talentos gerais e 43 talentos de perícia do Player Core 2 (pp. 225–226), com pré-requisitos localizados e filtro contextual; a regra de Resiliência de Guerreiro/Patrulheiro agora também valida `hpPerLevel` contra 8 + modificador de Constituição. O arquétipo Espião Noturno recebeu a fonte confirmada do Livro Básico local (p. 382). Auditoria anterior: 3755 registros, 3091 em revisão, 43 sem fonte/página e nenhum ID duplicado.
 
-Auditoria estrita atual (2026-09-01): 3.765 registros; nomes, resumos e traduções presentes nos três idiomas; 43 registros sem livro/página confirmados, todos marcados `needs_review`; nenhum ID, fonte ou regraset inválido. Esses registros continuam bloqueados para confirmação nos PDFs antes de receberem regra oficial.
+Auditoria estrita atualizada (2026-09-01): 3.762 registros; nomes, resumos e traduções presentes nos três idiomas; 43 registros sem livro/página confirmados, todos marcados `needs_review`; 1.490 registros ainda possuem efeito mecânico explicitamente provisório; nenhum ID, fonte ou regraset inválido. Esses registros continuam bloqueados para confirmação nos PDFs antes de receberem regra oficial.
+
+Auditoria estrita após as revelações do Oráculo (2026-09-01): 3.786 registros; nenhum nome, resumo ou ID duplicado; 3.114 registros permanecem marcados para revisão e 43 sem fonte/página confirmados, todos marcados `needs_review`.
+
+Auditoria após as revelações avançadas e maiores do Oráculo (2026-09-01): os 24 registros de revelação do Player Core 2 possuem nomes trilíngues, vínculo de mistério e fonte local; somente a revelação inicial é concedida automaticamente no 1º nível.
+
+Correção desta etapa: o modal legado agora filtra pré-requisitos antes de consolidar nomes repetidos de mascotes, fórmulas e heranças, preservando a variante compatível quando registros homônimos possuem requisitos diferentes.
+
+Auditoria das fontes locais (2026-09-01): 17 PDFs de livros identificados; 15 possuem TXT pareado útil. As cópias `Dark Archive_pt.pdf` e `Rage of Elements_pt.pdf` têm extração local insuficiente (1.859 e 1.036 caracteres para 226 e 242 páginas), portanto permanecem pendentes e não podem servir como confirmação de página/conteúdo. Nenhum texto foi sobrescrito.
+
+Verificação física dos PDFs (2026-09-01): os 17 arquivos foram inventariados e tiveram suas páginas contadas; 3 cópias traduzidas excedem o limite de 2 GiB do parser de conteúdo, mas foram confirmadas como legíveis por metadados (`pdfinfo`) e permanecem marcadas como `tooLargeForParser`. A falta de texto útil das duas cópias pequenas continua pendente.
+
+Busca de confirmação (2026-09-01): os nomes completos das 43 opções sem fonte não aparecem como entradas editoriais identificáveis nos TXT locais. Há apenas menções incidentais a alguns termos (por exemplo, `azarketi`, `androide`, `ifrit`, `oread` e `klar`), insuficientes para atribuir livro/página ou confirmar a mecânica. Esses registros continuam `needs_review`, sem atribuição especulativa.
 
 Correção desta etapa: consultas, salvamento e exclusão de campanhas e fichas agora possuem timeout e fallback local; campanhas locais não sincronizadas continuam visíveis quando a consulta remota retorna vazia. A janela de regras variantes também passou a renderizar seus textos no locale selecionado, sem o vazamento de “Free Archetype/Ancestry Paragon” no pt-BR.
 
@@ -11,6 +23,18 @@ Correção adicional: a resolução de usuário por nome e o `signInWithPassword
 Correção adicional: a tela de Campanhas agora ignora respostas antigas também no encerramento do carregamento, impedindo que uma sessão anterior desligue o estado de carregamento ou sobrescreva a sessão atual.
 
 Correção adicional: eventos assíncronos do provedor de autenticação agora usam uma época monotônica; respostas de login/logout antigas são descartadas antes de atualizar a biblioteca, campanhas ou painel de conta.
+
+Correção adicional: a troca de idioma do construtor legado agora atinge as linhas reais de salvamento (`Fortitude`, `Reflexos` e `Vontade`); o seletor anterior não correspondia ao markup e deixava rótulos em português no inglês.
+
+Correção adicional: falha ao carregar personagens agora apresenta mensagem de erro específica e localizada, em vez de manter o texto de carregamento como se a consulta ainda estivesse em andamento.
+
+Correção adicional: o pool de compras refaz a verificação da carteira no instante da confirmação; alterações concorrentes no personagem agora cancelam a operação inteira, evitando compra parcial.
+
+Correção adicional: a atualização de idioma também cobre os cartões reais de atributos (`ability-mini-label`), evitando que `TAMANHO`, `FOR` e demais abreviações permaneçam em português após a troca de locale.
+
+Correção adicional: subclasses legadas agora carregam `choiceField` por classe; a revalidação de fichas importadas rejeita escolhas persistidas de outra classe mesmo quando o nome localizado coincide.
+
+Correção adicional: personagens restaurados do `localStorage` e dos exemplos agora passam pela mesma revalidação de pré-requisitos aplicada a fichas importadas e salvas na conta.
 
 Correção de localização: a unidade de deslocamento nos detalhes de ancestralidade agora respeita inglês, espanhol e pt-BR, sem reutilizar “pés” quando espanhol está selecionado.
 
@@ -31,6 +55,8 @@ Correção desta etapa: armas que identificam flechas, virotes ou balas agora ex
 Backlog vivo para completar o construtor a partir dos PDFs locais em `D:\Users\rapha\Documents\Projetos\RPG\livros`. Cada registro de regra deve manter `id`, nomes em `pt-BR`, `en` e `es`, `ruleset`, `source.book`, `source.page` e `needs_review` quando a página ainda não estiver confirmada.
 
 Ordem obrigatória de localização: terminar e validar todo o portal, catálogo, regras, pré-requisitos, CRUD, mensagens, compras, responsividade e dados em pt-BR antes de buscar ou implementar qualquer correção em inglês ou espanhol. Só após o aceite integral do pt-BR devem ser consolidadas as versões equivalentes em inglês e espanhol, com testes separados por locale.
+
+Regra de execução solicitada (01/09/2026): nenhuma busca em fontes, revisão de interface ou nova implementação em inglês/espanhol deve começar enquanto o objetivo pt-BR não estiver concluído. O aceite pt-BR exige evidência dos fluxos de criação por classe/ancestralidade, pré-requisitos e opções incompatíveis ocultas, catálogo sem duplicatas, CRUD/persistência da conta e histórico, compras confirmadas, rolagem 3D agregada, autenticação/biblioteca/campanhas, responsividade portátil e ausência de vazamento de idioma. Depois desse gate, repetir a mesma matriz para inglês e espanhol.
 
 Atualização desta etapa: a auditoria atual soma 2.316 registros, 1.709 em revisão, 44 sem fonte confirmada (todos marcados para revisão) e nenhum ID duplicado, incluindo a Bola de Fumaça utilizável do Player Core 2 (p. 295), além dos 12 talentos do arquétipo Cavaleiro do Player Core 2, as cinco heranças de Jotunnato, oito biografias raras, 14 biografias comuns novas e o índice inicial de 76 magias do *Player Core 2* (pp. 50–53 e 240–255) e as 26 magias de batalha de *Battlecry!* (pp. 84–92), psi cantrips, magias Deviant, domínios apócrifos, magias temporais, talentos, arquétipos, itens amaldiçoados/contratos e talentos de Pactbinder/Curse Maelstrom de *Dark Archive*, além dos conteúdos elementais de *Rage of Elements*, do equipamento Storied Equipment e das magias/rituais míticos de *War of Immortals*, dos rituais de cerco de *Battlecry!*, dos talentos/magias de foco/dedicação de Magus e Convocador de *Segredos da Magia*, dos itens mágicos e arquétipos adicionais de *Livro dos Mortos*, das dedicações de *Howl of the Wild* e das magias de Warden/Bruxa.
 
@@ -136,7 +162,7 @@ Validação ampla após os blocos de perícias: 24 arquivos e 291 testes passand
 
 Atualização de Dark Archive: o índice de 42 talentos de classe do Taumaturgo foi incorporado com classe, nível, nomes trilíngues e referência aproximada à seção de talentos; efeitos e páginas individuais permanecem em revisão.
 
-Última auditoria executada com `npm run audit:catalog`: 2469 registros (incluindo o compêndio expandido, a Bola de Fumaça utilizável do Player Core 2, a tabela alquímica, subclasses derivadas, cinco heranças estruturadas de Jotunnato, heranças específicas normalizadas, antecedentes comuns e biografias raras, 12 talentos de Cavaleiro, sete familiares específicos, armas fantásticas, munição especial, armas de cerco, equipamentos de Pólvora e Engrenagens, o índice de equipamentos de Howl of the Wild, eidolons, impulsos elementais, 39 talentos de Animista, 37 talentos de Exemplar, 11 magias de receptáculo, cinco dedicações, 31 talentos de arquétipos de classe, seis talentos do arquétipo multiclasse de Exemplar, 23 talentos de ancestralidade de Jotunnato, 13 talentos de arquétipos multiclasse, 40 talentos de classe de Comandante, 65 talentos de classe de Guardião, 12 armas, dois equipamentos mundanos, 22 armaduras mágicas, 10 escudos mágicos, 10 munições mágicas, 25 armas mágicas de Battlecry!, 26 magias de batalha, 39 talentos de classe de Psíquico, 42 talentos de classe de Taumaturgo, 13 talentos de arquétipo multiclasse, 12 Aftermath, nove arquétipos adicionais, 18 psi cantrips, 15 magias Deviant, 13 magias de domínio apócrifo, 11 magias temporais, 17 itens amaldiçoados/contratos e 15 talentos de Pactbinder/Curse Maelstrom de Dark Archive, 17 magias de Ar, 14 magias de Terra, 13 magias de Fogo, 15 magias de Metal, 17 magias de Água, 19 magias de Madeira, quatro focos de domínio, dois rituais, 15 itens de Madeira, 13 itens de Água, 13 itens de Ar, 12 itens de Terra, 13 itens de Fogo e 11 itens de Metal de Rage of Elements, cinco armaduras, oito armas, uma isca, 13 magias míticas e 13 rituais míticos de War of Immortals, 10 rituais de cerco de Battlecry!, 39 talentos de Magus, 14 magias de foco, 17 talentos de dedicação multiclasse de Magus/Convocador de Segredos da Magia, 12 itens mágicos/consumíveis e seis arquétipos de jogador de Livro dos Mortos, sete dedicações e 16 magias de Howl of the Wild, 76 magias indexadas, oito biografias raras e 14 biografias comuns de Player Core 2, além do Disfarce do Diabo Sorridente e do Manto do Amoque em versões normal e maior); 0 sem nomes completos, 0 sem resumos completos, 0 com fallback de tradução detectado, 44 sem fonte/página, 1847 em revisão e nenhum ID duplicado. Esses números são diagnóstico do estado atual, não critério de conclusão.
+Última auditoria executada com `npm run audit:catalog`: 3755 registros; 0 sem nomes, 0 sem resumos, 0 com placeholders de tradução, 43 sem fonte/página confirmada, 3091 em revisão mecânica/proveniência e nenhum ID duplicado. `npm run audit:books` confirmou 17 PDFs legíveis, 15 TXT pareados, 3 PDFs pt-BR grandes demais para o parser e 2 TXT pt-BR sem extração suficiente. Esses números são diagnóstico do estado atual, não critério de conclusão.
 Auditoria atual após os 25 talentos de Amurrun e a correção da revalidação contextual do picker: 2494 registros, 1872 em revisão, 44 sem fonte/página e nenhum ID duplicado.
 Auditoria atual após os 21 talentos de Hobgoblin: 2515 registros, 1893 em revisão, 44 sem fonte/página e nenhum ID duplicado.
 Auditoria atual após os 19 talentos de Iruxi: 2534 registros, 1912 em revisão, 44 sem fonte/página e nenhum ID duplicado.
@@ -200,17 +226,45 @@ Auditoria atual após os 43 talentos de Oráculo: 3004 registros, 2382 em revis�
   - [x] Permitir listar, ajustar, editar, remover e mover itens armazenados em recipientes, com retorno seguro ao inventário principal.
   - [x] Devolver ao inventário a armadura ou o escudo anterior ao trocar/guardar equipamento, preservando quantidade, runas e PV atuais do escudo.
   - [x] Centralizar remoções de coleções em uma operação validada, evitando exceções com índices inválidos ou coleções ausentes em fichas importadas.
-  - [x] Corrigir o modal dual-pane legado para não duplicar fórmulas/pets, inicializar PV dos pets e persistir a confirmação antes do redesenho.
+  - [x] Corrigir o modal dual-pane legado para ocultar aliases duplicados, diferenciar variantes homônimas por fonte/página, inicializar PV dos pets e persistir a confirmação antes do redesenho.
   - [x] Garantir que a filtragem contextual seja aplicada tanto ao catálogo compartilhado React quanto à lista renderizada do modal dual-pane legado antes da confirmação.
   - [x] Exibir ações selecionadas pelo personagem na aba de ações, com edição, remoção e persistência pelo mesmo CRUD das demais coleções.
   - [x] Implementar carrinho de compras transacional no picker: adicionar itens ao pool, exibir preço estruturado localizado e só confirmar inventário/moedas ao clicar em Comprar, somando o pool inteiro.
   - [x] Expandir descrições de mascotes/companheiros e fórmulas com efeitos, ações, requisitos, uso e referência verificável nos registros já catalogados; novas entradas continuam sujeitas ao gate de fonte.
   - [x] Consolidar duplicidades semânticas na superfície de escolha de Exemplar, mascotes/companheiros, fórmulas e heranças, mantendo o registro mais rico por idioma/proveniência; IDs distintos permanecem preservados para compatibilidade legada.
   - [ ] Auditar todos os textos ainda em inglês em cada locale, inclusive detalhes de itens e mensagens do construtor.
+    - [x] Remover parentéticos ingleses vazados no shell pt-BR (variantes, upload manual, rolagem e Saberes), preservando as traduções completas nos outros locales.
+    - [x] Impedir que o detalhe do picker reaproveite mecânicas pt-BR ou traços sem localização quando outro locale estiver ativo.
+    - [x] Localizar pré-requisitos textuais legados no detalhe do picker, incluindo proficiências, atributos, perícias e conectivos em inglês/espanhol.
+    - [x] Localizar também tipos de dano no detalhe legado de armas e itens, mantendo React e legado consistentes.
+    - [x] Alinhar a tradução de perícias e atributos do pré-requisito entre o detalhe React e o modal legado, incluindo variações de capitalização.
+    - [x] Normalizar pré-requisitos estruturados no detalhe, evitando a exibição literal `[object Object]`.
+  - [x] Localizar os fallbacks de ancestralidade e classe no resumo de personagens das campanhas, evitando `Human`/`Adventurer` no pt-BR.
+  - [x] Completar os nomes trilíngues dos talentos gerados de Bruxa e Mago, mantendo o nome pt-BR separado do inglês/espanhol no catálogo.
+  - [x] Corrigir vazamentos residuais da aba de equipamentos: títulos de edição, bônus de salvaguardas e abreviações de carga agora respeitam o locale ativo.
+  - [x] Localizar os subtítulos estruturais do Compêndio, Regras, Biblioteca, Privacidade e Campanhas, eliminando headings fixos em português/inglês nos locales alternativos.
+  - [x] Localizar os indicadores de PV/CA exibidos no painel de Campanhas, evitando abreviações fixas em pt-BR.
+  - [x] Localizar títulos de fontes que ainda apareciam em inglês no pt-BR, preservando o título canônico e a proveniência original.
+  - [x] Corrigir os títulos de fontes do legado exibidos pelo construtor (incluindo Fúria dos Elementos, Uivo da Natureza, Guerra dos Imortais, Grito de Batalha e Arquivo Sombrio) no pt-BR.
+  - [x] Localizar também a referência da compilação local do Manual do Jogador nos detalhes e exportações do construtor legado.
+  - [x] Localizar o nome das fontes exibido nos detalhes dos pickers React, distinguindo Player Core, Player Core 2 e expansões nos três idiomas.
+  - [x] Localizar também as referências do Livro Básico legado e do Manual do Jogador nas interfaces dos pickers.
   - [ ] Expor no construtor Salvar personagem na conta e CRUD completo de fichas cloud, vinculando `user_id`, configuração integral e histórico; atualizar a biblioteca após salvar.
+    - [x] Cachear localmente o retorno de um salvamento remoto bem-sucedido para que uma falha transitória da próxima leitura não deixe a biblioteca vazia.
+    - [x] Biblioteca com renomear/excluir/abrir e sincronização entre as duas visões de conta.
     - [x] Incluir a configuração integral já presente no documento da ficha e até 100 registros do histórico de rolagens no snapshot salvo/restaurado; o CRUD cloud continua pendente de validação end-to-end.
+    - [x] Manter até 50 snapshots de versões da ficha no documento persistido, sem aninhar históricos anteriores; a validação cloud end-to-end permanece pendente.
+    - [x] Exibir o histórico recente de versões na Biblioteca, com nome, nível e data formatada no locale ativo.
+    - [x] Permitir restaurar uma versão histórica diretamente na Biblioteca, reabrindo a configuração completa no construtor.
     - [x] Adicionar ação explícita no menu do construtor para salvar a ficha atual na conta autenticada ou abrir o login quando a sessão não estiver disponível.
+    - [x] Atualizar imediatamente a biblioteca do painel de conta após login/cadastro e invalidar cargas pendentes ao sair, evitando listas vazias ou dados de sessão anterior.
     - [x] Adicionar renomeação direta de fichas na biblioteca, preservando o documento completo e vinculando a atualização à conta autenticada.
+    - [x] Ao trocar de classe, limpar concessões específicas da classe anterior (patrono, hex, familiar, tese, mistério e tradição) antes de revalidar a nova progressão.
+    - [x] Remover também magias, familiares e outras concessões automáticas marcadas pela classe anterior, preservando somente entradas manuais.
+    - [x] Limpar todas as escolhas específicas da classe anterior (instinto, musa, doutrina, ordem, linhagem, inovação, caminho, implemento, aparição, eidolon, portão elemental e equivalentes), além de ações e recursos automáticos marcados por classe.
+    - [x] Desabilitar o gatilho de subclasse quando a classe não possui opções cadastradas, evitando seletor vazio para Comandante e Guardião.
+    - [x] Corrigir o gatilho de cota do Supabase para permitir editar/atualizar a ficha de número 100 sem contá-la como uma nova inserção; a validação end-to-end da migration permanece pendente.
+    - [x] Normalizar regrasets antigos e localizados (Remaster, Clássico, variante/híbrido) antes do upsert, evitando rejeição de fichas importadas pelo check do banco.
 
 - [x] Completar o contrato trilíngue dos registros históricos já exibidos nos pickers (ancestralidades, heranças, arquétipos, armas, armaduras e escudos); as entradas sem fonte continuam sinalizadas para revisão.
   - [x] Associar heranças normalizadas à página de seção da ancestralidade quando disponível, marcando `sourceApproximate` e mantendo `needs_review` até a página individual e a mecânica serem conferidas.
@@ -218,6 +272,7 @@ Auditoria atual após os 43 talentos de Oráculo: 3004 registros, 2382 em revis�
 ## P1 — catálogo jogável e proveniência
 
 - [ ] Inventariar Player Core 1 e 2: ancestralidades, heranças, biografias, classes, subclasses, talentos, armas, armaduras, escudos, equipamentos, magias, magias de foco, rituais e regras necessárias à criação.
+  - [x] Criar auditoria reproduzível do corpus (`npm run audit:books`), contabilizando PDFs de livros, páginas legíveis, TXT pareados, arquivos acima do limite do parser e arquivos sem texto extraído; execução atual: 17 PDFs, 17 com páginas contadas por `pdf-lib`/`pdfinfo`, 3 cópias `_pt` acima de 2 GiB e 2 cópias `_pt` sem extração suficiente.
   - [x] Indexar 66 talentos de Bardo do Livro do Jogador, com nível, classe, nomes trilíngues, referência local e gate de classe; efeitos individuais permanecem `needs_review`.
   - [x] Indexar 63 talentos de Clérigo do Livro do Jogador, com nível, classe, nomes trilíngues, referência local e gate de classe; efeitos individuais permanecem `needs_review`.
   - [x] Indexar 31 talentos de Druida do Livro do Jogador, com nível, classe, nomes trilíngues, referência local e gate de classe; efeitos individuais permanecem `needs_review`.
@@ -304,6 +359,7 @@ Auditoria atual após os 43 talentos de Oráculo: 3004 registros, 2382 em revis�
   - [x] Derivar referências de seção para subclasses quando a classe possui fonte, marcando `sourceApproximate` e mantendo a revisão da página/mecânica específica.
   - [x] Derivar referências de seção para 15 dedicações multiclasse a partir da classe correspondente, mantendo `Shadowdancer` sem fonte não confirmada.
   - [x] Exibir `sourceApproximate` como referência de seção na interface e excluir esses registros da métrica de fonte verificada.
+  - [x] Expor o catálogo legado canônico ao `window` e registrá-lo na ponte React, permitindo que os dois módulos compartilhem a mesma origem de dados.
 - [x] Gerar/validar nomes e resumos em pt-BR, inglês e espanhol para cada registro catalogado.
   - [x] Traduzir editorialmente os 84 itens do compêndio, preservando nomes, números, bônus e efeitos nos três idiomas.
   - [x] Traduzir a superfície do modal de kits iniciais (títulos, rótulos, confirmação e mensagens) nos três idiomas configurados.
@@ -314,6 +370,8 @@ Auditoria atual após os 43 talentos de Oráculo: 3004 registros, 2382 em revis�
 - [x] Adicionar validação automatizada de traduções ausentes, IDs duplicados, páginas inválidas e regrasets incompatíveis.
   - [x] Auditoria agora acusa páginas não positivas/não inteiras, regrasets desconhecidos e registros marcados como verificados sem fonte.
   - [x] Auditoria e teste de proveniência exigem `needs_review: true` em todo registro sem livro/página confirmados; `npm run audit:catalog:provenance` valida esse gate sem bloquear o catálogo por revisões legítimas ainda abertas.
+  - [x] Auditoria passou a separar ausências de nomes e resumos por locale; execução atual: pt-BR 0, inglês 0 e espanhol 0.
+  - [x] Verificar por teste que o catálogo de mensagens mantém o mesmo conjunto de chaves em pt-BR, inglês e espanhol, evitando fallback silencioso após novas inclusões.
 - [ ] Garantir que filtros, detalhes, seleção, exportação JSON/Markdown e ficha imprimível preservem idioma, fonte e edição.
   - [x] Expandir o Markdown exportado para todas as coleções utilizáveis e incluir nome localizado, fonte, referência aproximada, regraset e revisão pendente; o JSON já preserva o documento integral.
   - [x] Localizar os controles de espaços de magia, pontos de foco e ações de edição/remoção da aba de magias nos três idiomas.
@@ -327,11 +385,24 @@ Auditoria atual após os 43 talentos de Oráculo: 3004 registros, 2382 em revis�
   - [x] Localizar rótulos restantes do painel autenticado de campanhas (combate, ficha, criação de mesa e diário) em pt-BR/en/es.
   - [x] Localizar a Biblioteca React e o painel de conta em pt-BR, inglês e espanhol, incluindo estados de carregamento/vazio, CRUD de fichas, autenticação e mensagens de erro.
   - [x] Corrigir títulos de ações do construtor que ainda retornavam português quando o idioma espanhol estava selecionado.
+  - [x] Persistir escolhas de subclasse por ID canônico, preservando a resolução de variantes homônimas após salvar e reabrir a ficha.
   - [x] Localizar placeholders de usuário e e-mail do painel de autenticação nos três idiomas.
+  - [x] Localizar placeholders restantes da autenticação do portal e do formulário de item personalizado, evitando exemplos em português quando inglês ou espanhol estiverem ativos.
+  - [x] Localizar as mensagens das ações de Bloqueio com Escudo e Teste de Recuperação, incluindo resultados críticos, dano, dureza, Morrendo e estabilização.
+  - [x] Persistir escolhas de Escola Arcana, Estudo Híbrido e Método Fatal nos campos específicos da ficha, evitando reduzir essas escolhas a um `subclass` genérico.
+  - [x] Corrigir seletores do construtor legado que impediam a tradução de ações rápidas, proficiências de armas, Perícias e navegação portátil.
+  - [x] Remover o vazamento visível de “Game Master Sync” no detalhe da ficha: o rótulo agora é localizado como “Sincronização do Mestre” em pt-BR e possui variantes próprias em inglês/espanhol.
+  - [x] Localizar os rótulos estáticos restantes da aba de Magias e Equipamentos (conjurador, CD/ataque, foco, catálogo, rituais, recuperação e carga) sem destruir badges dinâmicos.
+  - [x] Localizar o rolador 3D completo, incluindo instrução da arena, total, reset, fechamento e estado vazio do histórico.
+  - [x] Normalizar traços importados em inglês nos detalhes do construtor e do Compêndio, incluindo parâmetros de alcance/arremesso, com teste de regressão.
+  - [x] Traduzir pré-requisitos legados em inglês nos pickers React e no Compêndio quando o idioma-base pt-BR estiver ativo.
+  - [x] Traduzir também pré-requisitos estruturados com `name` sem mapa `names`, evitando vazamento de inglês em objetos importados.
+  - [x] Localizar títulos, críticos e detalhamento das rolagens de ataque/dano da arena 3D, incluindo rótulos recebidos do HTML legado.
 
 ## P2 — validação de personagem
 
 - [ ] Validar pré-requisitos de talentos, arquétipos, heranças, magias, armas e armaduras por nível, proficiência, classe e tradição.
+  - [x] Cobrir com testes os gates de escudo, armadura sem armadura, proficiência de arma e equipamento obrigatório dentro de recipientes, incluindo mensagens e aliases localizados.
   - [x] Ocultar opções incompatíveis nos pickers React e legado, revalidar na confirmação e aplicar o nível do talento como requisito mínimo mesmo sem texto explícito.
   - [x] Resolver `classId` e `ancestryId` por chave, ID e nomes localizados, evitando rejeitar escolhas válidas salvas com nome curto.
   - [x] Aceitar gates de acesso com `classIds`/`ancestryIds` alternativos, mantendo somente opções compatíveis com a ficha atual.
@@ -340,7 +411,10 @@ Auditoria atual após os 43 talentos de Oráculo: 3004 registros, 2382 em revis�
   - [x] Restringir kits iniciais à classe selecionada e remover fallback silencioso para o primeiro kit.
   - [x] Criar validador contextual para nível, classe, ancestralidade, atributos, proficiência de perícia, conjuração e dedicação, com mensagens pt-BR/en/es; requisitos não interpretáveis permanecem em revisão.
   - [x] Exibir os pré-requisitos declarados no detalhe do picker e revalidar a seleção no bridge legado antes de persistir.
+  - [x] Exibir e localizar os pré-requisitos declarados também no detalhe do picker legado, incluindo listas e registros estruturados.
+  - [x] Cobrir por contrato a presença do detalhe localizado no picker legado.
   - [x] Localizar no detalhe do picker os nomes de classes e ancestralidades usados nos pré-requisitos, sem expor IDs internos como `class.witch` ou `ancestry.human`.
+  - [x] Resolver nomes de pré-requisitos também no catálogo bruto, mesmo quando o registro exigido estiver oculto pelo filtro contextual do picker.
   - [x] Remover do picker as opções incompatíveis com a ficha atual, mantendo a revalidação no bridge como defesa adicional.
   - [x] Aplicar a mesma filtragem e revalidação ao modal legado, incluindo escolhas de subclasses.
   - [x] Normalizar heranças específicas como registros com `ancestryId`, evitando strings soltas e mantendo o filtro pela ancestralidade atual.
@@ -390,23 +464,52 @@ Auditoria atual após os 43 talentos de Oráculo: 3004 registros, 2382 em revis�
   - [x] Aplicar o nível do espaço de progressão ao filtro e à confirmação de talentos, evitando exibir talentos futuros em espaços de nível inferior.
   - [x] Alinhar o modal legado aos filtros de categoria dos espaços de talento, evitando misturar talentos gerais, de perícia, ancestrais e de classe.
   - [ ] Reproduzir a progressão específica por classe no construtor: Bruxa (hex inicial, patrono, familiar e conjuração), Mago (escola, tese, vínculo, item vinculado, grimório e conjuração), Magus (estudo híbrido, cascata arcana, magias Confluxo, Spellstrike e especificidades), Necromante (método fatal, fascinação sombria, servo, lamento, magias de sepultura e saber morto-vivo) e Oráculo (mistério, maldição e magias de revelação), além dos equivalentes de todas as outras classes.
+    - [x] Corrigir a resolução de classe no construtor legado para abrir o seletor de subclasse somente quando houver opções compatíveis para a classe localizada atual.
     - [x] Renderizar blocos iniciais específicos para as classes catalogadas (incluindo Alquimista, Bárbaro, Bardo, Clérigo, Druida, Guerreiro, Ladino, Patrulheiro, Monge, Campeão, Feiticeiro, Investigador, Espadachim, Inventor, Pistoleiro, Psíquico, Taumaturgo, Animista, Exemplar, Comandante e Guardião), em três idiomas.
     - [x] Persistir os slots específicos com IDs estáveis por classe/posição, mantendo leitura de fichas antigas que usavam o rótulo localizado.
     - [ ] Ligar cada campo específico à escolha catalogada correta e aplicar a revalidação completa de pré-requisitos/efeitos; nomes visuais sozinhos não concluem a regra.
     - [x] Renderizar no plano legado os blocos próprios de Bruxa, Mago, Magus, Oráculo e Necromante, com rótulos trilíngues e escolhas principais encaminhadas ao picker contextual; Necromante permanece marcado como conteúdo não-base até fonte oficial.
+    - [x] Reservar e limpar o campo persistido `grimFascination` do Necromante, encaminhando a escolha ao picker contextual quando houver registro compatível, sem confundir a Fascinação Sombria com o Método Fatal.
     - [ ] Bruxa: concluir a integração completa do Patrono com hexes, familiar e efeitos de conjuração.
       - [x] Exibir a escolha pelo catálogo da Bruxa, em três idiomas, gravar `character.patron`, manter compatibilidade com fichas legadas e persistir o slot estável.
+      - [x] Tornar o campo de Hex Inicial acionável pelo picker de magias, preservando o campo específico `patronHex` e a validação contextual.
+      - [x] Restringir o picker de Hex Inicial aos truques de sortilégio da Bruxa, sem liberar magias comuns como se fossem Hexes.
+      - [x] Persistir também o ID do Hex escolhido (`patronHexId`) e limpar esse vínculo ao trocar de classe ou Patrono.
+      - [x] Revalidar o tipo do Hex na confirmação e no bridge legado, bloqueando seleções externas que tentem inserir uma magia comum nesse campo.
+      - [x] Revalidar `patronHex`/`patronHexId` ao importar ou reabrir a ficha, removendo Hex inexistente ou incompatível com Bruxa.
+      - [x] Revalidar também a seleção de Hex no caminho de confirmação direta do picker, impedindo bypass do filtro por integrações externas.
+      - [x] Permitir escolher o Hex antes do Patrono quando o registro é um Hex válido de Bruxa, mantendo os demais requisitos ativos.
+      - [x] Manter a mesma exceção controlada nos fluxos de confirmação do picker e impedir que o estado de compatibilidade do conjurador bloqueie um Hex válido antes da escolha do Patrono.
+      - [x] Cobrir por teste o catálogo de Hexes de Patrono como truques de foco, com nomes/resumos nos três idiomas e proveniência do Player Core.
       - [x] Substituir os quatro Patronos provisórios pelos sete temas Remaster das pp. 114-115 e derivar tradição, perícia, lição, hex, magia e habilidade do familiar; magias de tradição incompatível ficam ocultas.
       - [x] Catalogar e conceder automaticamente o hex inicial do Patrono, iniciar o pool com 1 Ponto de Foco e remover o hex anterior ao trocar de Patrono.
     - [x] Adicionar o Familiar Místico concedido pela classe à ficha e atualizar sua habilidade/magia patronal ao trocar de Patrono.
     - [x] Catalogar as cinco teses arcanas de Mago, separá-las da escola/currículo e persistir a escolha em `character.wizardThesis`.
     - [x] Corrigir e completar os sete currículos/escolas arcanas Remaster do Mago, com magia inicial e fonte nas pp. 186-188.
+    - [x] Conceder automaticamente a magia inicial da Escola Arcana do Mago, persistir sua origem e remover a concessão anterior ao trocar de escola.
+    - [x] Materializar no catálogo as sete magias iniciais de escola que não tinham registro selecionável, com nomes/resumos trilíngues e `needs_review` quando o efeito integral ainda exige conferência.
+    - [x] Remover a magia concedida pela escola anterior ao trocar de classe ou currículo, evitando que uma concessão automática permaneça como magia manual.
     - [x] Corrigir e completar os cinco estudos híbridos do Magus, incluindo Árvore Retorcida e Vão Estrelado, com efeitos resumidos e fonte nas pp. 62-63 de Segredos da Magia.
     - [x] Vincular cada estudo híbrido à sua magia de Confluxo inicial, concedendo-a automaticamente e ocultando as quatro opções incompatíveis.
     - [x] Corrigir e completar os oito mistérios Remaster do Oráculo, incluindo Ancestrais e Saber, com fonte nas pp. 161-163 e reserva inicial de foco.
     - [x] Persistir o mistério do Oráculo em `character.mystery`, mantendo compatibilidade com `subclass` e filtrando o picker para opções de mistério.
+  - [x] Revalidar seleções incompatíveis também em fichas importadas por JSON e personagens gerados pela IA, além das fichas carregadas da conta/local.
+    - [x] Revalidar escolhas específicas de classe contra registros catalogados, removendo Patrono, Escola/Tese, Estudo Híbrido e Mistério inválidos antes da renderização.
+    - [x] Bloquear também no ponto de aplicação escolhas externas de subclasse/campo específico de outra classe ou com pré-requisito incompatível, antes de persistir a ficha.
   - [ ] Garantir que cada bloco de classe seja localizado em pt-BR/en/es, persistido no JSON, revalidado ao trocar classe/subclasse e exibido apenas quando seus pré-requisitos forem satisfeitos.
 - [ ] Completar cálculos de companheiros, familiar, eidolon, montaria, impulsos, foco, carga e munição.
+  - [x] Normalizar ataques textuais dos companheiros catalogados em estruturas editáveis, preservando ataques personalizados e casos sem ataque.
+  - [x] Exibir os modificadores de atributo catalogados dos companheiros separadamente de valores-base, com abreviações localizadas.
+  - [x] Exibir e localizar os traços dos ataques estruturados dos companheiros, sem perder detalhes ao converter entradas textuais.
+  - [x] Localizar tipos de dano dos ataques de companheiros no detalhe do construtor, evitando termos de combate em português nos outros idiomas.
+  - [x] Localizar o fallback de tradições de magias quando o catálogo não possui `traditionNames`, evitando exibir chaves técnicas como `arcane`/`occult` na ficha.
+  - [x] Aplicar o mesmo fallback localizado aos detalhes React do picker e do compêndio, cobrindo tradições canônicas sem nomes traduzidos.
+  - [x] Localizar também a perícia do teste principal de rituais/magias quando `primaryChecks` estiver disponível apenas em outro idioma.
+  - [x] Normalizar aliases de perícias entre pt-BR, inglês e espanhol antes de renderizar testes principais.
+  - [x] Aplicar a normalização de perícias também às cartas de rituais do construtor legado.
+  - [x] Incluir Performance/Atuação/Interpretación na normalização trilíngue de perícias.
+  - [x] Localizar o título do grupo de aventureiros na tela de Campanhas usando a chave trilíngue, removendo texto estrutural fixo em português.
+  - [x] Exibir estado de erro localizado e ação de nova tentativa quando a carga de Campanhas falhar.
   - [x] Aplicar runas fundamentais vinculadas à arma/armadura nos ataques, dados de dano, CA e salvaguardas; runas apenas guardadas permanecem sem efeito automático.
   - [x] Bloquear runas de arma em armaduras e runas de armadura em armas, inclusive para IDs do compêndio e fichas importadas.
   - [x] Unificar a normalização de estatísticas exibidas dos companheiros e remover defaults silenciosos de PV/CA/percepção/ataques.
@@ -416,6 +519,7 @@ Auditoria atual após os 43 talentos de Oráculo: 3004 registros, 2382 em revis�
   - [x] Verificar compatibilidade básica de munição por tipo conhecido (flecha, virote e bala/esfera), evitando abastecer armas com munição incompatível.
   - [x] Corrigir o contador de munição para respeitar quantidade zero e reconhecer dependência de munição pelo campo `reload`, mesmo sem traço textual.
   - [x] Completar os bônus ABP de potência/impacto de armas, potência de armadura e resiliência, sem dupla aplicação com runas ou bônus de item.
+  - [x] Recuperar ataques do catálogo quando fichas antigas persistirem uma lista de ataques vazia, preservando ataques personalizados não vazios.
   - [x] Corrigir pontos de foco implícitos: conjuradores sem recurso de foco declarado não recebem pontos automaticamente; o pool depende da ficha, não apenas da classe.
   - [x] Unificar `focusPointsCurrent` e `focusPoints` entre interface e motor, priorizando o estado atual após gastar/refocar.
   - [x] Corrigir o cálculo de Bulk para que itens com quantidade zero não continuem pesando no inventário.
@@ -424,8 +528,11 @@ Auditoria atual após os 43 talentos de Oráculo: 3004 registros, 2382 em revis�
   - [x] Restringir eidolons ao Convocador e impulsos ao Cineticista no validador contextual, ocultando-os dos demais personagens.
   - [x] Preservar as matrizes de atributos, CA, limite de Destreza, perícias, sentidos, velocidade e habilidades iniciais dos 10 eidolons de Segredos da Magia, exibindo-as na ficha em três idiomas.
 - [ ] Cobrir Remaster/legado explicitamente e bloquear somente escolhas realmente inválidas.
+  - [x] Normalizar edições localizadas/antigas da ficha (`Remaster`, `Edição Clássica`, variantes e híbridas) ao carregar e persistir o personagem, mantendo o padrão Remaster para novas fichas.
 - [ ] Adicionar casos de teste para todas as classes e categorias de conteúdo dos livros.
   - [x] Adicionar matriz automatizada de gate de classe para todas as classes com talentos vinculados, incluindo IDs canônicos e aliases legados do Exemplar.
+  - [x] Adicionar contrato de presença trilíngue e progressão para todas as classes selecionáveis, incluindo as classes novas de Battlecry sem subclasses tradicionais.
+  - [x] Adicionar contrato automatizado de presença e nomes/resumos nos três idiomas para todas as categorias selecionáveis do compêndio.
 
 ## P2 — UX, acessibilidade e operação
 
@@ -433,11 +540,13 @@ Auditoria atual após os 43 talentos de Oráculo: 3004 registros, 2382 em revis�
 - [ ] **Responsividade transversal:** adaptar portal, construtor, pickers, biblioteca, compêndio e telas de conta para desktop, tablet e dispositivos portáteis, sem overflow horizontal.
   - [x] Implementar contenção responsiva do shell, diálogos e pickers e fallback sem hover para touch.
 - [ ] **Viewport portátil sem scroll da página:** em telas menores, manter o shell e os diálogos dentro da viewport; permitir rolagem vertical somente nos painéis/listas longas de itens, talentos, magias, equipamentos e demais opções catalogadas.
+  - [x] Fixar a altura da topbar portátil e impedir quebra de linha que causava tremor/sobreposição durante a navegação.
   - [x] Descontar a altura real da barra superior e da navegação móvel via `ResizeObserver`, evitando corte quando o cabeçalho quebra em telas estreitas.
   - [x] Implementar viewport confinada e rolagem interna nos painéis longos.
   - [x] Bloquear rolagem global de `html/body` em mobile/tablet, preservando `overflow-y: auto` apenas nas listas e diálogos internos.
   - [x] Confinar a página de compêndio em mobile e deixar a grade de resultados como área rolável interna.
   - [x] Limitar overlays e modais legados à altura dinâmica da viewport, mantendo listas e detalhes como áreas internas roláveis em telas estreitas.
+  - [x] Confinar também painéis simples de Regras, Privacidade e Curadoria em áreas internas no tablet/portátil, evitando corte de conteúdo sem devolver scroll ao documento.
 - [ ] **Scroll containment:** aplicar áreas internas com altura máxima calculada, `overflow-y: auto`, foco/teclado preservado e `overscroll-behavior: contain`, sem prender a página em desktop onde a rolagem global é necessária.
   - [x] Aplicar `overflow-y: auto` e `overscroll-behavior: contain` nas áreas internas cobertas pelo contrato.
   - [x] Impedir que o overlay do picker dual-pane role como página em telas de até 640px; lista, detalhe e rodapé agora dividem a viewport em áreas internas.
@@ -446,9 +555,10 @@ Auditoria atual após os 43 talentos de Oráculo: 3004 registros, 2382 em revis�
   - [x] Registrar ponteiro coarse/touch, preferência de movimento reduzido e altura efetiva de `visualViewport`, reagindo a mudanças sem depender de hover.
 - [x] **Rolador 3D:** substituir a aparência plana por uma representação 3D leve, com fallback acessível e desempenho aceitável em touch/mobile.
   - [x] Implementar visual 3D leve com `transform-style: preserve-3d`, animação e fallback textual.
-- [ ] **Rolagens agregadas:** a arena deve exibir somente o último dado animado; o painel deve somar resultados e atualizar uma entrada agregada, sem acumular dados/linhas a cada clique.
+- [x] **Rolagens agregadas:** a arena deve exibir somente o último dado animado; o painel deve somar resultados e atualizar uma entrada agregada, sem acumular dados/linhas a cada clique.
   - [x] Implementar arena com último dado animado e histórico agregado por rolagem.
   - [x] Aplicar a mesma regra às rolagens de perícias, salvaguardas, ataques e danos: anima somente o último dado, mantendo a soma completa no resultado.
+  - [x] Separar o total acumulado do último dado no estado da rolagem livre, evitando manter uma lista crescente de dados na memória e na interface.
 - [ ] Testar os pickers em 320px, teclado, leitor de tela, estados vazio/carregando/erro e confirmação após atualização de estado React.
 - [ ] Substituir conteúdo provisório e ícones inconsistentes por rótulos traduzidos e acessíveis.
 - [ ] Testar persistência local, biblioteca, importação/exportação e Supabase sem expor segredos.
@@ -458,19 +568,41 @@ Auditoria atual após os 43 talentos de Oráculo: 3004 registros, 2382 em revis�
     - [x] Compartilhar a leitura inicial da sessão entre o cabeçalho e a página da biblioteca e não renderizar o formulário de login antes da sessão ser resolvida.
     - [x] Aplicar limite de 8 segundos na consulta remota de fichas e usar o armazenamento local do usuário como fallback, impedindo carregamento infinito.
     - [x] Mesclar fichas remotas e locais por `character_key`, preservando fichas criadas neste dispositivo quando a conta remota retorna uma lista vazia.
+    - [x] Resolver conflitos entre cópias remota e local pela data de atualização mais recente, evitando regressão de alterações offline.
   - [x] Preservar a sessão ao navegar repetidamente para "Biblioteca e perfil": não exibir o formulário de login para usuário autenticado; sincronizar sessão inicial, evento de autenticação e troca de rota.
     - [x] Sincronizar listas abertas da Biblioteca e do painel de conta após salvar ou excluir uma ficha.
     - [x] Ignorar leituras iniciais obsoletas após evento de autenticação na Biblioteca, conta e Campanhas, evitando que uma resposta antiga sobrescreva a sessão ativa.
     - [x] Invalidar e atualizar o cache compartilhado em login, logout e eventos de autenticação Supabase.
-  - [ ] Corrigir o menu superior de usuário/campanhas: eliminar tremor, sobreposição e conteúdo ambíguo; oferecer painel estável com nome, e-mail, perfil, gestão de conta e logoff, além de renderizar campanhas autenticadas sem voltar indevidamente ao login.
+    - [x] Sincronizar imediatamente a sessão e iniciar a carga da biblioteca após login/cadastro concluído, sem depender apenas do evento assíncrono de autenticação.
+    - [x] Revalidar fichas salvas ao abri-las pela Biblioteca, Campanhas ou portal, removendo escolhas incompatíveis antes de renderizar o construtor.
+    - [x] Revalidar Patrono, Escola/Tese do Mago, Estudo Híbrido e Mistério do Oráculo contra o catálogo e limpar valores inválidos de fichas importadas.
+- [ ] Corrigir o menu superior de usuário/campanhas: eliminar tremor, sobreposição e conteúdo ambíguo; oferecer painel estável com nome, e-mail, perfil, gestão de conta e logoff, além de renderizar campanhas autenticadas sem voltar indevidamente ao login.
+  - [x] Fechar o painel de conta ao trocar de rota, evitando que o overlay persista sobre Campanhas, Biblioteca ou Construtor.
+  - [x] Compartilhar a assinatura de mudanças do Supabase entre as árvores React, evitando corridas de sessão ao navegar ou autenticar.
     - [x] Renderizar no painel de usuário a gestão de nome, troca de senha, exclusão protegida da conta e botão de logoff traduzidos nos três idiomas.
     - [x] Garantir que o logoff local seja concluído mesmo quando a chamada remota falha, limpando sessão compartilhada e notificando a aplicação.
     - [x] Aguardar a resolução da sessão e ouvir eventos de autenticação na tela de Campanhas, evitando o falso estado de login após navegar pelo portal.
+    - [x] Limpar campanhas e fichas compartilhadas quando uma leitura de sessão retorna usuário deslogado, evitando exibir dados de uma sessão anterior durante expiração ou troca de conta.
+    - [x] Evitar nova leitura síncrona de sessão dentro do callback do Supabase; publicar fallback imediato e hidratar o perfil após liberar o lock de autenticação.
+    - [x] Ignorar o `INITIAL_SESSION` nulo emitido durante a hidratação do SDK, evitando que a sessão persistida seja apagada e a Biblioteca volte ao login.
+    - [x] Priorizar o evento de autenticação mais recente sobre uma leitura `getSession()` obsoleta, evitando que o retorno tardio de `null` reabra o login após a sessão já estar válida.
+    - [x] Manter a sessão autenticada quando a leitura opcional de `profiles` falhar ou expirar, usando metadados do Auth em vez de reabrir o login.
+    - [x] Cobrir por teste a construção do perfil de fallback a partir dos metadados do Auth.
+    - [x] Manter o painel de conta em estado de hidratação até resolver a sessão, evitando o flash do formulário de login durante a navegação.
     - [x] Ocultar explicitamente o workspace legado durante as páginas do portal, impedindo controles posicionados do construtor de aparecerem sobre a barra superior.
+    - [x] Ocultar também a navegação móvel, barra de ações rápidas e gaveta de rolagem legadas nas rotas do portal, eliminando sobreposição residual ao abrir Campanhas ou Biblioteca.
     - [x] Localizar os estados vazios, formulários, combate, inspeção de ficha e placeholders da tela de Campanhas em pt-BR, inglês e espanhol.
     - [x] Tornar o gatilho do painel de conta explicitamente controlado por `aria-expanded`/`aria-controls`, com alvo estável para teclado e leitor de tela.
     - [x] Localizar os rótulos do topbar e do drawer legado ao trocar o idioma, evitando mistura de português em Builder inglês/espanhol.
+    - [x] Localizar confirmações/erros de criação e exclusão de campanhas e substituir valores fixos de edição do sistema por opções traduzíveis.
+    - [x] Cobrir por contrato a ausência desses textos fixos, evitando regressão de idioma na tela de Campanhas.
+    - [x] Evitar exibir mensagens brutas dos serviços em português ao usar inglês/espanhol; detalhes continuam no console para diagnóstico.
+    - [x] Aplicar o mesmo bloqueio de mensagens brutas aos painéis de Conta e Biblioteca, usando somente falhas localizadas na interface.
+    - [x] Impedir que erros crus de JSON, PDF e geração de personagem vazem mensagens técnicas/inglesas no pt-BR, mantendo detalhes apenas no console.
+    - [x] Impedir que requisitos de prontidão desconhecidos reutilizem a mensagem bruta do motor em outro idioma; usar fallback localizado e manter o diagnóstico técnico fora da interface.
     - [x] Exibir somente a bandeira do idioma ativo; as demais opções permanecem no seletor textual acessível, evitando ocupação e tremor da barra superior.
+    - [x] Persistir cada salvamento remoto também em `character_revisions`, com vínculo ao personagem/conta, RLS e retenção do histórico embutido para o fallback local.
+    - [x] Corrigir a resolução dos nomes espanhóis de classes no construtor legado (Explorador, Pícaro, Hechicero, Monje, Pistolero, Guardián e Cinético), evitando a queda para o bloco genérico.
 - [x] Atualizar README e tela de proveniência para refletirem números observados, não metas ou contagens históricas.
   - [x] Tornar a geração de IDs resiliente em ambientes sem Web Crypto, usando `globalThis.crypto` com fallback local.
 
@@ -497,6 +629,48 @@ Só marcar uma tarefa como concluída quando houver registro de fonte, testes co
 ### Progresso recente — localização e sessão
 
 - [x] Localizar o checklist de prontidão da ficha em pt-BR, inglês e espanhol, incluindo status, mensagens de pendência, ações de resolução e botão de fechamento.
-- [x] Validar a correção com 365 testes, build de produção, sintaxe do legado, auditoria estrita de proveniência e `git diff --check`.
+- [x] Validar a correção com 445 testes, build de produção, sintaxe do legado, auditoria estrita de proveniência, auditoria física dos livros e `git diff --check`.
+- [x] Reforçar a validação das fichas antes da persistência, rejeitando chaves perigosas e estruturas excessivamente profundas; coberto por teste de serviço.
+- [x] Ajustar a barra de pesquisa/filtros dos pickers para quebrar em telefones de até 420px, mantendo a rolagem vertical confinada aos painéis internos; contrato responsivo coberto por teste.
+- [x] Tornar a remoção de condições e buffs um CRUD seguro, rejeitando índices inválidos sem mutar a ficha; contrato coberto por teste.
 - [x] Corrigir a duplicação visual de Exemplar: o alias legado continua disponível para importação, mas não aparece nos seletores de classe.
 - [x] Localizar a ficha de referência imprimível conforme o idioma selecionado, incluindo cabeçalhos, níveis, páginas, habilidades, defesas, inventário e mensagens vazias; coberto por teste de impressão e contrato de layout.
+  - [x] Localizar também os nomes e valores exibidos nos seis cartões de atributos da ficha imprimível, eliminando o rótulo fixo “Score” fora do idioma ativo.
+  - [x] Localizar as chaves e valores enumerados de pré-requisitos estruturados no Compêndio, evitando exibir `minimum`, `ability`, `skill` e `type` em inglês no gate pt-BR.
+  - [x] Localizar a etiqueta do conjunto de regras na proveniência da ficha imprimível, evitando expor `legacy`, `remaster` ou `needs_review` como códigos técnicos.
+  - [x] Remover termos ingleses fixos de dureza, subtítulo mágico e espaços de magia na saída pt-BR, mantendo versões equivalentes localizadas nos demais idiomas.
+- [x] Localizar também a ficha legada imprimível e escapar valores controlados pelo personagem antes de gerar o HTML de impressão; coberto por contrato específico.
+  - [x] Localizar também as abreviações dos seis atributos na ficha legada imprimível (STR/DEX/WIS etc.), eliminando siglas portuguesas quando o idioma ativo for inglês ou espanhol.
+- [x] Localizar prompts, alertas de importação/exportação/PDF e o preview do assistente de IA; escapar conteúdo gerado antes de inseri-lo no HTML; coberto por contrato específico.
+- [x] Localizar estados do retrato por IA, vínculo com Mestre, alternância do plano e mensagens de sucesso/falha crítica da rolagem nos três idiomas; contrato estrutural atualizado.
+- [x] Corrigir a troca de idioma nos títulos e ações dos modais legados de retrato, JSON e assistente de IA; os nós receberam IDs estáveis e contrato de localização.
+- [x] Fortalecer a auditoria para separar nomes repetidos entre idiomas de duplicatas reais no mesmo locale; o relatório agora expõe `duplicateLocalizedNames` por categoria sem confundir traduções legítimas.
+- [x] Aplicar a deduplicação por nome localizado também ao modal legado de escolha de fórmulas, mascotes e heranças, mantendo variantes distintas quando possuem nomes visíveis diferentes.
+- [x] Fazer o modal legado renderizar o nome catalogado no idioma ativo, mantendo o valor canônico separado para a aplicação da regra; raridade e busca também respeitam o locale.
+- [x] Diferenciar no Compêndio uma opção com proveniência pendente de uma opção ainda não catalogada, com mensagem localizada nos três idiomas.
+- [x] Corrigir a denominação exibida da classe Witch para “Bruxa” em pt-BR, preservando a chave canônica legada `Bruxo (Witch)` para compatibilidade de fichas existentes.
+- [x] Ocultar o alias legado duplicado de Exemplar no picker, preservando o registro canônico enriquecido e a compatibilidade com fichas antigas.
+- [x] Ocultar aliases legados de classe também no modal de seleção antigo, eliminando a segunda ocorrência visual de Exemplar em todos os fluxos do construtor.
+- [x] Localizar título, descrição acessível e títulos dos botões d4–d100 do rolador 3D conforme o idioma ativo.
+  - [x] Localizar também o nome acessível da arena do último dado animado.
+- [x] Localizar velocidade, unidade de movimento e percepção no preview de personagem gerado por IA.
+- [x] Localizar CA/PV (AC/HP/CA/PG) no preview de personagem gerado por IA.
+- [x] Implementar pool de compras para armas, armaduras, escudos e itens: adicionar acumula quantidades e total em cobre, Comprar confirma tudo de uma vez e deduz o total da carteira; coberto por teste de agregação pt-BR.
+- [x] Fechar o CRUD das coleções utilizáveis da ficha: edição e remoção seguras para armas, magias, magias inatas, rituais, mascotes, talentos, arquétipos, ações, fórmulas, buffs e Saberes, além do inventário e itens em recipientes; mutações persistem localmente.
+- [x] Preservar preços legados em texto/número ao normalizar o catálogo React, evitando que o preço desapareça no detalhe ou no pool de compras; coberto por teste do modal de itens.
+- [x] Localizar no painel legado os rótulos estruturais de nível, personagem, tamanho, velocidade, atributos, salvamentos, pontos heroicos, variantes e prontidão ao trocar para inglês ou espanhol.
+- [x] Cobrir a localização desses rótulos estruturais no contrato de layout para evitar regressão entre os três idiomas.
+- [ ] Gate de idioma: concluir a auditoria funcional e visual completa em pt-BR (portal, construtor, catálogo, regras, requisitos, CRUD, compras, rolagens 3D, responsividade e persistência) e registrar evidência antes de iniciar qualquer nova correção ou expansão em inglês/espanhol.
+  - [ ] Auditar novamente todos os textos visíveis, tooltips, placeholders, estados vazios, erros e modais em pt-BR; nenhum texto de interface em inglês pode permanecer antes do início do trabalho en/es.
+- [ ] Ordem obrigatória de entrega: finalizar, testar e registrar todo o objetivo funcional e visual em pt-BR antes de pesquisar, implementar ou expandir qualquer conteúdo em inglês ou espanhol.
+- [ ] Critério de bloqueio de idioma: não iniciar tradução, busca de conteúdo ou correção exclusiva de inglês/espanhol até o gate pt-BR acima estar concluído com evidência funcional e visual; depois criar as versões equivalentes e seus testes.
+  - [ ] Registrar no handoff do gate a data, comandos, evidências visuais e fluxos pt-BR aprovados; qualquer expansão en/es fica bloqueada até esse registro existir.
+  - [x] Registrar o bloqueio técnico atual da auditoria: as traduções PDF de War of Immortals, Howl of the Wild e Battlecry! excedem o limite do parser; Dark Archive_pt e Rage of Elements_pt não possuem texto extraído suficiente. Os originais em inglês e os PDFs continuam preservados para revisão dirigida, sem inventar páginas.
+- [x] Ligar os campos de escolha de subclasse das classes catalogadas aos campos persistidos correspondentes (pesquisa, instinto, musa, doutrina, ordem, racket, vantagem, causa, linhagem, metodologia, inovação, caminho, mente consciente, implemento, aparição, ícone, estandarte, defesa, portão elemental e eidolon); efeitos derivados ainda exigem validação mecânica individual.
+- [x] Deduplicar mascotes/companheiros já salvos na renderização por identidade canônica, preservando os índices reais para edição/remoção e localizando a matriz do eidolon.
+- [x] Deduplicar fórmulas já salvas pela denominação localizada, preservando o índice real para as ações de edição e remoção.
+- [x] Indexar as oito magias de revelação iniciais do Oráculo (Livro do Jogador 2, pp. 262–265), com vínculo de subclasse, fonte local e nomes nos três idiomas.
+- [x] Conceder e substituir automaticamente a revelação inicial ao escolher o mistério do Oráculo, removendo concessões antigas e evitando duplicatas na ficha.
+- [x] Persistir e exibir a perícia de mistério e a maldição específica do Oráculo, localizadas nos três idiomas e limpas ao trocar de classe.
+- [x] Exibir na progressão da ficha as magias de revelação concedidas pelo mistério selecionado, mantendo a denominação localizada.
+- [x] Limpar perícia e maldição derivadas do Oráculo ao trocar ou revalidar a classe, evitando dados residuais no JSON da ficha.

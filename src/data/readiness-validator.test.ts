@@ -22,8 +22,8 @@ describe("P1: Validador de Prontidão da Ficha & Regras ABC (Readiness Engine)",
   const { engine, data } = loadEngine();
 
   it("mantém contagens de registros ligadas aos PDFs atuais", () => {
-    expect(pathfinderSources.find((source) => source.id === "player-core-pt")?.linkedRecords).toBe(965);
-    expect(pathfinderSources.find((source) => source.id === "player-core-2-pt")?.linkedRecords).toBe(1102);
+    expect(pathfinderSources.find((source) => source.id === "player-core-pt")?.linkedRecords).toBe(972);
+    expect(pathfinderSources.find((source) => source.id === "player-core-2-pt")?.linkedRecords).toBe(1126);
     expect(pathfinderSources.find((source) => source.id === "guns-gears-pt")?.linkedRecords).toBe(192);
     expect(pathfinderSources.find((source) => source.id === "howl-wild")?.linkedRecords).toBe(120);
   });
@@ -78,6 +78,24 @@ describe("P1: Validador de Prontidão da Ficha & Regras ABC (Readiness Engine)",
     const readiness = engine.validateCharacterReadiness(clericWithoutDeity);
     const issueIds = readiness.issues.map((i: any) => i.id);
     expect(issueIds).toContain("deity");
+  });
+
+  it("reconhece classes localizadas e estados vazios traduzidos na prontidão", () => {
+    const spanishCleric = {
+      name: "Clérigo sin fe",
+      level: 1,
+      ancestry: "Humano",
+      background: "Acólito",
+      class: "Clérigo",
+      subclass: "No seleccionada",
+      deity: "No definida",
+      abilities: { str: 10, dex: 12, con: 14, int: 10, wis: 18, cha: 12 },
+      skills: { religion: "Entrenado" },
+      weapons: [{ name: "Maza" }],
+    };
+
+    const readiness = engine.validateCharacterReadiness(spanishCleric);
+    expect(readiness.issues.map((issue: any) => issue.id)).toContain("deity");
   });
 
   it("deve validar personagem 100% completo com 100% de prontidão", () => {
@@ -429,6 +447,28 @@ describe("P1: Validador de Prontidão da Ficha & Regras ABC (Readiness Engine)",
     expect(engine.getPrerequisiteCompatibility({ level: 2, class: "Patrulheiro", deity: "" }, vindicator)).toMatchObject({ state: "incompatible", reason: "deity-required" });
     expect(engine.getPrerequisiteCompatibility({ level: 2, class: "Bruxo", patron: "Patrono do Silêncio" }, seneschal)).toMatchObject({ state: "incompatible", reason: "patron-must-be-absent" });
     expect(engine.getPrerequisiteCompatibility({ level: 2, class: "Bruxo", patron: "" }, seneschal).state).toBe("available");
+  });
+
+  it("oculta escolhas que exigem escudo, armadura específica ou proficiência de arma", () => {
+    const shieldFeat = { id: "feat.test.shield", requiresShield: true };
+    const unarmoredFeat = { id: "feat.test.unarmored", requiresUnarmored: true };
+    const advancedWeaponFeat = { id: "feat.test.weapon", requiresWeaponProficiency: "Mestre" };
+
+    expect(engine.getPrerequisiteCompatibility({ level: 1, equippedShield: null }, shieldFeat)).toMatchObject({ state: "incompatible", reason: "shield-required" });
+    expect(engine.getPrerequisiteCompatibility({ level: 1, equippedShield: { name: "Escudo" } }, shieldFeat).state).toBe("available");
+    expect(engine.getPrerequisiteCompatibility({ level: 1, equippedArmor: { name: "Cota de Malha" } }, unarmoredFeat)).toMatchObject({ state: "incompatible", reason: "unarmored-required" });
+    expect(engine.getPrerequisiteCompatibility({ level: 1, equippedArmor: null }, unarmoredFeat).state).toBe("available");
+    expect(engine.getPrerequisiteCompatibility({ level: 1, weaponProficiencies: { "Armas Avançadas": "Especialista" } }, advancedWeaponFeat)).toMatchObject({ state: "incompatible", reason: "weapon-proficiency-too-low" });
+  });
+
+  it("encontra equipamento obrigatório dentro de recipientes e aceita aliases do catálogo", () => {
+    const requirement = { id: "feat.test.item", requiredEquipment: ["item.test.rope"] };
+    const character = {
+      level: 1,
+      inventory: [{ name: "Mochila", contents: [{ id: "item.test.rope", names: { "pt-BR": "Corda" } }] }],
+    };
+    expect(engine.getPrerequisiteCompatibility(character, requirement).state).toBe("available");
+    expect(engine.getPrerequisiteCompatibility({ level: 1, inventory: [{ name: "Mochila" }] }, requirement)).toMatchObject({ state: "incompatible", reason: "equipment-required" });
   });
 
   it("oculta Resiliência quando a classe concede PV demais para a Constituição", () => {

@@ -63,6 +63,13 @@ function saveLocalCampaigns(gmId: string, items: Campaign[]): void {
   }
 }
 
+function normalizeCampaignSystem(value: string | undefined): string {
+  const normalized = String(value || "").toLowerCase();
+  if (normalized.includes("custom") || normalized.includes("variant") || normalized.includes("variante")) return "custom";
+  if (normalized.includes("classic") || normalized.includes("clássico") || normalized.includes("classico")) return "classic";
+  return "remaster";
+}
+
 function mergeCampaignLists(remote: Campaign[], local: Campaign[]): Campaign[] {
   const merged = new Map<string, Campaign>();
   for (const campaign of remote) merged.set(campaign.id, campaign);
@@ -117,7 +124,7 @@ export async function saveCampaign(
     title: (data.title || "Nova Campanha de RPG").trim(),
     description: (data.description || "").trim(),
     schedule: data.schedule?.trim() || "A combinar",
-    system: data.system || "Pathfinder 2e Remaster",
+    system: normalizeCampaignSystem(data.system),
     character_keys: Array.isArray(data.character_keys) ? data.character_keys : [],
     notes: data.notes || "",
     sessions: Array.isArray(data.sessions) ? data.sessions : [],

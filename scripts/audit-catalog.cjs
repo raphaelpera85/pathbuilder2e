@@ -23,6 +23,7 @@ function recordsFor(category) {
     const compendium = Array.isArray(catalog?.itemCompendium) ? catalog.itemCompendium : [];
     const seen = new Set();
     return [...primary, ...compendium].filter((record) => {
+      if (record?.legacyAlias) return false;
       const key = record?.id || record?.names?.en || record?.name;
       if (!key || seen.has(key)) return false;
       seen.add(key);
@@ -30,8 +31,8 @@ function recordsFor(category) {
     });
   }
   const value = catalog?.[category];
-  if (Array.isArray(value)) return value;
-  if (value && typeof value === "object") return Object.values(value);
+  if (Array.isArray(value)) return value.filter((record) => !record?.legacyAlias);
+  if (value && typeof value === "object") return Object.values(value).filter((record) => !record?.legacyAlias);
   return [];
 }
 
@@ -42,6 +43,8 @@ for (const category of categories) {
   const records = recordsFor(category);
   const missingNames = [];
   const missingSummaries = [];
+  const missingNamesByLocale = Object.fromEntries(locales.map((locale) => [locale, []]));
+  const missingSummariesByLocale = Object.fromEntries(locales.map((locale) => [locale, []]));
   const missingSource = [];
   const missingSourceNotMarkedReview = [];
   const placeholderTranslations = [];
@@ -49,26 +52,51 @@ for (const category of categories) {
   const invalidRuleset = [];
   const verifiedWithoutSource = [];
   const needsReview = [];
+  const mechanicsReview = [];
   const duplicateNames = new Map();
+  const duplicateLocalizedNames = new Map();
 
   records.forEach((record, index) => {
     const label = record.id || record.name || `${category}[${index}]`;
-    const nameCandidates = [record.name, ...(Object.values(record.names || {}))]
+    // `duplicateLocalizedNames` below already checks each locale. Keeping
+    // translated aliases in this cross-locale map creates false positives
+    // when a valid Spanish name matches a Portuguese name.
+    const nameCandidates = [record.name]
       .filter(Boolean)
-      .map((value) => String(value).toLocaleLowerCase("pt-BR").normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\([^)]*\)/g, " ").replace(/\s+/g, " ").trim())
+      // Parenthetical qualifiers are meaningful identities (for example,
+      // Nephilim Celestial vs. Nephilim Infernal); do not erase them when
+      // looking for accidental duplicate options.
+      .map((value) => String(value).toLocaleLowerCase("pt-BR").normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, " ").trim())
       .filter(Boolean);
     for (const name of new Set(nameCandidates)) {
       const locations = duplicateNames.get(name) || [];
       locations.push(label);
       duplicateNames.set(name, locations);
     }
+    for (const locale of locales) {
+      const localizedName = record.names?.[locale] || record.name;
+      const key = String(localizedName || "").toLocaleLowerCase(locale).normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, " ").trim();
+      if (!key) continue;
+      const duplicateKey = `${locale}:${key}`;
+      const locations = duplicateLocalizedNames.get(duplicateKey) || [];
+      locations.push(label);
+      duplicateLocalizedNames.set(duplicateKey, locations);
+    }
     if (record.id) {
       const previous = ids.get(record.id);
       if (previous) previous.push(`${category}:${index}`);
       else ids.set(record.id, [`${category}:${index}`]);
     }
-    if (!locales.every((locale) => record.names?.[locale])) missingNames.push(label);
-    if (!locales.every((locale) => record.summaries?.[locale])) missingSummaries.push(label);
+    let recordMissingName = false;
+    let recordMissingSummary = false;
+    for (const locale of locales) {
+      if (!String(record.names?.[locale] || "").trim()) missingNamesByLocale[locale].push(label);
+      if (!String(record.summaries?.[locale] || "").trim()) missingSummariesByLocale[locale].push(label);
+      recordMissingName ||= !String(record.names?.[locale] || "").trim();
+      recordMissingSummary ||= !String(record.summaries?.[locale] || "").trim();
+    }
+    if (recordMissingName) missingNames.push(label);
+    if (recordMissingSummary) missingSummaries.push(label);
     // O compêndio legado recebeu descrições provisórias em português. Não
     // trate uma cópia idêntica como tradução completa; nomes próprios podem
     // permanecer iguais e por isso só detectamos o fallback conhecido.
@@ -83,12 +111,18 @@ for (const category of categories) {
     if (record.ruleset !== undefined && !validRulesets.has(record.ruleset)) invalidRuleset.push(label);
     if (record.needs_review === false && (!record.source?.book || !Number.isInteger(record.source?.page))) verifiedWithoutSource.push(label);
     if (record.needs_review === true || record.ruleset === "needs_review") needsReview.push(label);
+    const summaries = locales.map((locale) => String(record.summaries?.[locale] || "").toLocaleLowerCase());
+    if (summaries.some((summary) => /pendente de revisão|pending review|pendiente de revisión|efeitos completos|complete effects|efectos completos/.test(summary))) {
+      mechanicsReview.push(label);
+    }
   });
 
   report.categories[category] = {
     total: records.length,
     missingNames,
     missingSummaries,
+    missingNamesByLocale,
+    missingSummariesByLocale,
     placeholderTranslations,
     missingSource,
     missingSourceNotMarkedReview,
@@ -96,10 +130,14 @@ for (const category of categories) {
     invalidRuleset,
     verifiedWithoutSource,
     needsReview,
+    mechanicsReview,
     duplicateNames: [...duplicateNames.entries()]
       .map(([name, locations]) => [name, [...new Set(locations)].filter((location) => !location.includes(".legacy_alias."))])
       .filter(([, locations]) => locations.length > 1)
       .map(([name, locations]) => ({ name, locations })),
+    duplicateLocalizedNames: [...duplicateLocalizedNames.entries()]
+      .map(([key, locations]) => ({ locale: key.split(":", 1)[0], name: key.slice(key.indexOf(":") + 1), locations: [...new Set(locations)].filter((location) => !location.includes(".legacy_alias.")) }))
+      .filter(({ locations }) => locations.length > 1),
   };
 }
 
@@ -107,6 +145,8 @@ report.totals = {
   records: Object.values(report.categories).reduce((sum, item) => sum + item.total, 0),
   missingNames: Object.values(report.categories).reduce((sum, item) => sum + item.missingNames.length, 0),
   missingSummaries: Object.values(report.categories).reduce((sum, item) => sum + item.missingSummaries.length, 0),
+  missingNamesByLocale: Object.fromEntries(locales.map((locale) => [locale, Object.values(report.categories).reduce((sum, item) => sum + item.missingNamesByLocale[locale].length, 0)])),
+  missingSummariesByLocale: Object.fromEntries(locales.map((locale) => [locale, Object.values(report.categories).reduce((sum, item) => sum + item.missingSummariesByLocale[locale].length, 0)])),
   placeholderTranslations: Object.values(report.categories).reduce((sum, item) => sum + item.placeholderTranslations.length, 0),
   missingSource: Object.values(report.categories).reduce((sum, item) => sum + item.missingSource.length, 0),
   missingSourceNotMarkedReview: Object.values(report.categories).reduce((sum, item) => sum + item.missingSourceNotMarkedReview.length, 0),
@@ -114,6 +154,7 @@ report.totals = {
   invalidRuleset: Object.values(report.categories).reduce((sum, item) => sum + item.invalidRuleset.length, 0),
   verifiedWithoutSource: Object.values(report.categories).reduce((sum, item) => sum + item.verifiedWithoutSource.length, 0),
   needsReview: Object.values(report.categories).reduce((sum, item) => sum + item.needsReview.length, 0),
+  mechanicsReview: Object.values(report.categories).reduce((sum, item) => sum + item.mechanicsReview.length, 0),
   duplicateIds: [...ids.entries()].filter(([, locations]) => locations.length > 1).map(([id, locations]) => ({ id, locations })),
 };
 

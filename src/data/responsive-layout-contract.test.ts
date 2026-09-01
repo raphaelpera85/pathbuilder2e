@@ -59,8 +59,17 @@ describe("responsive layout contract", () => {
 
     expect(css).toContain("body.portal-page-active { width: 100vw; min-width: 0; max-width: 100vw; overflow-x: hidden; }");
     expect(css).toContain("body.portal-page-active .pb-topbar { width: 100%; min-width: 0; max-width: 100vw; }");
-    expect(read("src/account.css")).toContain(".locale-switcher .flag-btn:not(.active) { display: none; }");
+    const accountCss = read("src/account.css");
+    expect(accountCss).toContain(".locale-switcher .flag-btn:not(.active) { display: none; }");
+    expect(accountCss).toContain(".account-overlay");
+    expect(accountCss).toContain("overflow: hidden;");
+    expect(accountCss).toContain("overscroll-behavior: contain;");
     expect(css).toContain("body.portal-page-active #legacy-builder-root { display: none !important; }");
+    expect(css).toContain("body.portal-page-active #mobileViewNav,");
+    expect(css).toContain("body.portal-page-active .quick-action-bar,");
+    expect(css).toContain("body.portal-page-active .dice-roller-drawer { display: none !important; }");
+    expect(read("src/PortalPages.tsx")).toContain("useLayoutEffect");
+    expect(read("src/PortalPages.tsx")).toContain("useLayoutEffect(() => {");
     expect(css).toContain("#react-portal-root { flex: 0 0 auto; width: 100%; max-width: 100%; min-width: 0; }");
     expect(css).toContain(".portal-page-active #react-portal-root { min-height: 0; flex: 1 1 0%; width: 100%; max-width: 100%; overflow: hidden; }");
     expect(css).toContain(".portal-page-active #react-portal-root > * { min-width: 0; max-width: 100%; }");
@@ -78,6 +87,10 @@ describe("responsive layout contract", () => {
     expect(campaignsCss).toContain("overscroll-behavior: contain;");
     expect(css).toContain("flex: 1 1 auto;\n    min-height: 0;\n    overflow-y: auto;");
     expect(css).toContain("@media (max-width: 1080px)");
+    const legacyCss = read("css/style.css");
+    expect(legacyCss).toContain("height: 52px;\n    min-height: 52px;");
+    expect(legacyCss).toContain("flex-wrap: nowrap;");
+    expect(legacyCss).toContain("top: 52px;");
     expect(css).toContain("Tablets e portáteis também mantêm a viewport fixa");
     expect(css).toContain(".portal-page { width: min(calc(100vw - 24px), 1280px); max-width: calc(100vw - 24px); padding-top: 28px; box-sizing: border-box; }");
     expect(css).toContain(".characters-library-grid { grid-template-columns: minmax(0, 1fr); }");
@@ -88,15 +101,111 @@ describe("responsive layout contract", () => {
     expect(css).toContain(".catalog-card-status");
   });
 
+  it("fecha o drawer antes de navegar para evitar sobreposição da barra superior", () => {
+    const app = read("js/app.js");
+    const html = read("index.html");
+    expect(app).toContain("navigatePortal(route)");
+    expect(app).toContain('document.getElementById("drawerOverlay")?.classList.remove("active");');
+    expect(app).toContain("window.location.hash = `#/${cleanRoute}`;");
+    expect(html).toContain("onclick=\"app.navigatePortal('campaigns');\"");
+    expect(html).toContain("onclick=\"app.navigatePortal('library');\"");
+  });
+
+  it("mantém a descrição acessível do dado na língua ativa", () => {
+    const app = read("js/app.js");
+    expect(app).toContain('const diceAriaPrefix = locale === "en" ? "Die"');
+    expect(app).toContain('locale === "es" ? "resultado" : "resultado"');
+  });
+
+  it("exibe o resumo localizado dos mascotes na ficha", () => {
+    const app = read("js/app.js");
+    expect(app).toContain('pet.summaries?.[locale] || pet.description');
+    expect(app).toContain('class="companion-description"');
+  });
+
+  it("indexa aliases legados para localizar nomes antigos da ficha", () => {
+    const app = read("js/app.js");
+    expect(app).toContain('Array.isArray(record.legacyNames) ? record.legacyNames : []');
+  });
+
+  it("revalida escolhas de classe por ID canônico também em fichas localizadas", () => {
+    const app = read("js/app.js");
+    expect(app).toContain('const classId = classRecord?.id || "";');
+    expect(app).toContain('isClass("class.witch")');
+    expect(app).toContain('isClass("class.oracle")');
+    expect(app).toContain('classText.includes("bruja")');
+  });
+
+  it("deduplica mascotes pelo ID sem ocultar variantes homônimas", () => {
+    const app = read("js/app.js");
+    expect(app).toContain('pet?.id\n        ? `id:${String(pet.id).trim().toLowerCase()}`');
+    expect(app).toContain('`name:${this.localizeItemName(pet?.name || "", locale)');
+  });
+
+  it("targets the actual legacy save-row markup during locale changes", () => {
+    const app = read("js/app.js");
+    expect(app).toContain('document.querySelectorAll(".saves-col-box .save-badge-row")');
+    expect(app).toContain('querySelector("span:last-child")');
+    expect(app).not.toContain('.saves-col-box .save-row-box');
+  });
+
+  it("targets the actual legacy ability-card markup during locale changes", () => {
+    const app = read("js/app.js");
+    expect(app).toContain('document.querySelectorAll(".abilities-summary-bar .ability-mini-box")');
+    expect(app).not.toContain('.abilities-summary-bar .mini-box');
+  });
+
+  it("revalidates account and campaign characters before rendering", () => {
+    const app = read("js/app.js");
+    const start = app.indexOf("  loadCharacter(character) {");
+    const end = app.indexOf("\n  openExportModal()", start);
+    expect(start).toBeGreaterThanOrEqual(0);
+    const loader = app.slice(start, end);
+    expect(loader).toContain("assertSafeCharacterDocument(character)");
+    expect(loader).toContain("this.revalidateLoadedSelections();");
+    expect(loader).toContain("this.renderAll();");
+    expect(app).toContain("this.character = assertSafeCharacterDocument(JSON.parse(document.getElementById(\"jsonArea\").value));\n      this.revalidateLoadedSelections();");
+    expect(app).toContain("this.character = assertSafeCharacterDocument(this.lastAIGeneratedChar);\n      this.revalidateLoadedSelections();");
+  });
+
+  it("keeps campaign destructive actions and edition labels localized", () => {
+    const campaigns = read("src/CampaignsPage.tsx");
+    expect(campaigns).toContain('confirm(t("deleteCampaignConfirm"))');
+    expect(campaigns).toContain('t("campaignCreateFailed")');
+    expect(campaigns).not.toContain('err.message : String(err)');
+    expect(campaigns).toContain('t("remasterEdition")');
+    expect(campaigns).not.toContain('confirm("Deseja realmente excluir');
+  });
+
+  it("clears campaign data when the session resolves as signed out", () => {
+    const campaigns = read("src/CampaignsPage.tsx");
+    expect(campaigns).toContain("setCampaigns([]);");
+    expect(campaigns).toContain("setSharedCharacters([]);");
+    expect(campaigns).toContain("setMyCharacters([]);");
+    expect(campaigns).toContain("setSelectedCampaignId(null);");
+  });
+
+  it("does not render raw service errors in account and library panels", () => {
+    const app = read("js/app.js");
+    const account = read("src/AccountPortal.tsx");
+    const portal = read("src/PortalPages.tsx");
+    expect(account).not.toContain("caught.message");
+    expect(portal).not.toContain("err.message");
+    expect(app).not.toContain("prefix + e.message");
+    expect(app).not.toContain("prefix + (err.message || err)");
+    expect(app).not.toContain("messages[locale]?.[issue.id] || issue.message");
+  });
+
   it("keeps picker dialogs internally scrollable on touch screens", () => {
     const pickerCss = read("src/picker.css");
     const itemPickerCss = read("src/itemPicker.css");
 
-    expect(pickerCss).toContain(".picker-list { overflow-y: auto;");
+    expect(pickerCss).toContain(".picker-list { min-height: 0; overflow-y: auto;");
     expect(pickerCss).toContain("overflow: hidden;");
     expect(pickerCss).toContain("grid-template-rows: minmax(138px, 34%) minmax(0, 1fr);");
     expect(pickerCss).toContain("@media (max-width: 640px)");
-    expect(pickerCss).toContain(".picker-detail {\n  min-width: 0;\n  overflow-y: auto;");
+    expect(pickerCss).toContain(".picker-detail {\n  min-width: 0;\n  min-height: 0;\n  overflow-y: auto;");
+    expect(pickerCss).toContain(".picker-list { min-height: 0;");
     expect(itemPickerCss).toContain(".item-picker-list {");
     expect(itemPickerCss).toContain("overflow-y: auto;");
     expect(itemPickerCss).toContain(".item-picker-detail {\n  padding: 20px;\n  overflow-y: auto;");
@@ -131,14 +240,28 @@ describe("responsive layout contract", () => {
     const arena = app.slice(app.indexOf("  renderFreeRollArena()"), app.indexOf("  getPolyhedralDieSvg", app.indexOf("  renderFreeRollArena()")));
 
     expect(arena).toContain("const d = list[list.length - 1];");
+    expect(app).toContain("this.freeRollTotal = Number(this.freeRollTotal) + rollEntry.value;");
+    expect(app).toContain("this.freeRollDiceList = [rollEntry];");
+    expect(app).toContain("this.freeRollTotal = 0;");
     expect(arena).toContain('this.upsertDiceLog("free-roll"');
     expect(arena).not.toContain("list.map(d => {");
     expect(app).toContain("upsertDiceLog(key, title, formula, total, breakdown");
     expect(app).toContain("heritageInnateSpells");
     expect(app).toContain("heritageInnate: true");
     expect(app).toContain("Number(item.data?.rank ?? item.data?.level) !== 0");
-    expect(app).toContain('role="img" aria-label="Dado d${d.sides}, resultado ${d.value}"');
+    expect(app).toContain('const diceAriaPrefix = locale === "en" ? "Die"');
+    expect(app).toContain('aria-label="${diceAriaPrefix} d${d.sides}');
     expect(app).toContain("Tirada libre");
+    expect(read("index.html")).toContain('id="detGmLabel"');
+    expect(app).toContain("Sincronização do Mestre");
+    expect(app).toContain("staticLegacyLabels");
+    expect(read("index.html")).toContain('id="knownRitualsHeading"');
+    expect(read("index.html")).toContain('id="formulaBookIntro"');
+    expect(app).toContain("formulaBookIntro");
+    expect(read("index.html")).toContain('id="legacyRulesContent"');
+    expect(app).toContain("The 4-Step Ability Boost Method");
+    expect(read("index.html")).toContain('id="diceHistoryTitle"');
+    expect(app).toContain("diceStaticLabels");
     expect(app).toContain("Selecciona dados usando los botones de arriba");
     const css = read("css/style.css");
     expect(css).toContain(".polyhedral-die-wrapper::before");
@@ -160,6 +283,8 @@ describe("responsive layout contract", () => {
 
   it("persists and restores the dice history with the character document", () => {
     const app = read("js/app.js");
+    expect(app).toContain("this.revalidateLoadedSelections();\n          this.saveCharacterLocal(false);");
+    expect(app).toContain("this.revalidateLoadedSelections();\n    this.normalizeCharacterCoins();");
     expect(app).toContain("snapshot.diceHistory = structuredClone(this.diceHistory.slice(0, 100));");
     expect(app).toContain("this.diceHistory = Array.isArray(this.character.diceHistory) ? this.character.diceHistory.slice(0, 100) : [];");
     expect(app).toContain("this.character.diceHistory = structuredClone(this.diceHistory.slice(0, 100));");
@@ -177,6 +302,7 @@ describe("responsive layout contract", () => {
     expect(app).toContain('isEs ? "Zancada" : "Movimentar-se"');
     expect(app).not.toContain('"Golpear (Strike)"');
     expect(app).not.toContain('"Movimentar-se (Stride)"');
+    expect(app).not.toContain('"Desmoralizar (Demoralize)"');
   });
 
   it("prioriza o resumo localizado nas descrições de talentos, arquétipos e fórmulas", () => {
@@ -190,6 +316,65 @@ describe("responsive layout contract", () => {
     const app = read("js/app.js");
     expect(app).toContain('["Especialização", "Racket", "Especialización"]');
     expect(app).toContain('["CD de Classe do Cineticista", "Kineticist Class DC", "CD de clase del cineticista", "none"]');
+  });
+
+  it("renderiza o bloco específico do Necromante também para fichas em inglês", () => {
+    const app = read("js/app.js");
+    expect(app).toContain('"class.necromancer": "necromancer"');
+    expect(app).toContain('const classFeature = classFeatureKey ? featureCopy[classFeatureKey] : null;');
+    expect(app).toContain('"necromant", "nigromant", "necromancer"');
+  });
+
+  it("localiza unidades e nomes de deslocamento no construtor", () => {
+    const app = read("js/app.js");
+    expect(app).toContain('const unit = locale === "en" ? "ft." : locale === "es" ? "pies" : "pés";');
+    expect(app).toContain('{ swim: "Swim", climb: "Climb" }');
+    expect(app).toContain('{ swim: "Nadar", climb: "Trepar" }');
+    expect(app).toContain('this.getTraditionLabel(spellcasting.tradition, locale)');
+  });
+
+  it("localiza atributos estáticos acessíveis fora do React", () => {
+    const index = read("index.html");
+    const app = read("js/app.js");
+    expect(index).toContain('id="trainedSkillsBadge"');
+    expect(index).toContain('id="divineFontInput"');
+    expect(index).toContain('id="aiPortraitPromptInput"');
+    expect(app).toContain('trainedSkillsBadge.title = isEn ? "Selected Skills / Total Granted"');
+    expect(app).toContain('divineFontInput.setAttribute("aria-label", isEn ? "Deity divine font"');
+    expect(app).toContain('aiPortraitPrompt.setAttribute("placeholder", isEn ? "Character description for the AI..."');
+  });
+
+  it("mantém Bruxa como denominação pt-BR em todos os fallbacks", () => {
+    const i18n = read("src/i18n.tsx");
+    expect(i18n).toContain('"Bruxo": { "pt-BR": "Bruxa", en: "Witch", es: "Bruja" }');
+  });
+
+  it("normaliza traços importados em inglês antes de exibi-los em pt-BR", () => {
+    const app = read("js/app.js");
+    expect(app).toContain("const aliasKey = Object.keys(aliases).find((key) => normalized === key || normalized.startsWith(`${key} `));");
+    expect(app).toContain('suffix = suffix.replace(/\\bfeet?\\b|\\bft\\.?\\b/gi, "pés")');
+    expect(app).toContain('tethered: ["Ancorada", "Tethered", "Atada"]');
+    expect(app).toContain('aftermath: ["Consequência", "Aftermath", "Consecuencia"]');
+  });
+
+  it("mantém os resultados do rolador 3D no idioma ativo", () => {
+    const app = read("js/app.js");
+    expect(app).toContain('title: `${locale === "en" ? "Damage" : locale === "es" ? "Daño" : "Dano"}: ${weaponName}`');
+    expect(app).toContain('tag: isCrit ? (locale === "en" ? "Doubled Damage!"');
+    expect(app).toContain('const displayLabel = checkLabels[locale]?.[label] || label;');
+  });
+
+  it("quebra a barra do picker em telefones estreitos sem criar scroll da página", () => {
+    const pickerCss = read("src/picker.css");
+    expect(pickerCss).toContain("@media (max-width: 420px)");
+    expect(pickerCss).toContain(".picker-nav > div:last-child");
+    expect(pickerCss).toContain("margin-left: 0 !important");
+  });
+
+  it("protege a remoção de condições e buffs contra índices inválidos", () => {
+    const app = read("js/app.js");
+    expect(app).toContain("if (!Array.isArray(entries) || !Number.isInteger(position) || position < 0 || position >= entries.length) return false;");
+    expect(app).toContain("return true;\n  }\n\n  // MODAL PICKER DUAL-PANE");
   });
 
   it("mantém as concessões do Patrono separadas por idioma", () => {
@@ -225,13 +410,52 @@ describe("responsive layout contract", () => {
     expect(app).toContain('paragonTitle: "🧬 Parangón de Ascendencia"');
   });
 
+  it("usa os seletores reais do painel legado ao localizar ações e proficiências", () => {
+    const index = read("index.html");
+    const app = read("js/app.js");
+    expect(index).toContain('class="quick-action-bar"');
+    expect(index).toContain('class="weapon-prof-label"');
+    expect(index).toContain('class="skills-column-heading"');
+    expect(index).toContain('id="drawerPdf"');
+    expect(index).toContain('id="drawerCompendium"');
+    expect(index).toContain('id="skipToContent"');
+    expect(app).toContain('document.querySelectorAll(".quick-action-bar button")');
+    expect(app).toContain('document.querySelectorAll(".weapon-prof-group-item .weapon-prof-label")');
+    expect(app).toContain('document.querySelector(".skills-column-heading")');
+    expect(app).toContain('drawerPdf: isEn ?');
+    expect(app).toContain('drawerCompendium: isEn ?');
+    expect(app).toContain('skipToContent.textContent = isEn ? "Skip to content"');
+    expect(app).toContain('document.querySelector("#percVal")?.parentElement?.querySelector("span:last-child")');
+    expect(app).toContain('document.querySelector("#initVal")?.parentElement?.querySelector("span:last-child")');
+  });
+
+  it("expõe uma única fonte canônica para os módulos legado e React", () => {
+    const data = read("js/pf2e_data.js");
+    const main = read("src/main.tsx");
+    expect(data).toContain('window.PF2E_DATA = PF2E_DATA;');
+    expect(main).toContain('canonical: (window as any).PF2E_DATA');
+    expect(main).toContain('window.dispatchEvent(new Event("pathbuilder:catalogs-ready"));');
+  });
+
   it("evita que uma resposta antiga da biblioteca sobrescreva a sessão atual", () => {
     const portal = read("src/PortalPages.tsx");
     expect(portal).toContain("const charactersLoadIdRef = useRef(0);");
     expect(portal).toContain("if (requestId !== charactersLoadIdRef.current) return;");
     expect(portal).toContain("const refreshAfterCharacterChange = () => {");
     expect(portal).toContain("if (sessionRef.current) void loadUserCharacters(sessionRef.current);");
+    expect(portal).toContain("sessionRef.current = next;");
+    expect(portal).toContain("setSessionReady(true);");
+    expect(portal).toContain("void loadUserCharacters(next);");
+    expect(portal).toContain("charactersLoadIdRef.current += 1;");
     expect(portal).toContain("}, []);");
+  });
+
+  it("atualiza a lista de personagens imediatamente no painel de conta", () => {
+    const account = read("src/AccountPortal.tsx");
+    expect(account).toContain("void refreshCharacters(newSession.user);");
+    expect(account).toContain("void refreshCharacters(logged.user);");
+    expect(account).toContain("charactersLoadIdRef.current += 1;");
+    expect(account).toContain("setLoading(false);");
   });
 
   it("impede que o login remoto fique indefinidamente em Processando", () => {
@@ -254,8 +478,13 @@ describe("responsive layout contract", () => {
     const auth = read("src/services/auth.ts");
     expect(auth).toContain("let authEventEpoch = 0;");
     expect(auth).toContain("const eventEpoch = ++authEventEpoch;");
-    expect(auth).toContain("if (eventEpoch !== authEventEpoch) return;");
+    expect(auth).toContain("if (eventEpoch !== authEventEpoch || !current) return;");
     expect(auth).toContain("authEventEpoch += 1;");
+    const callbackStart = auth.indexOf("supabase.auth.onAuthStateChange");
+    const callbackEnd = auth.indexOf("supabaseAuthSubscription = subscription", callbackStart);
+    const callback = auth.slice(callbackStart, callbackEnd);
+    expect(callback).not.toContain("await getCurrentSession()");
+    expect(callback).toContain("void Promise.resolve().then");
   });
 
   it("localiza a unidade de deslocamento nos detalhes de ancestralidade", () => {
@@ -302,6 +531,35 @@ describe("responsive layout contract", () => {
     expect(picker).toContain('armor: "armors", shield: "shields"');
   });
 
+  it("oculta o alias legado duplicado de Exemplar no catálogo de classes", () => {
+    const data = read("js/pf2e_data.js");
+    expect(data).toContain('PF2E_DATA.classes["Exemplar (Exemplar)"].legacyAlias = true');
+  });
+
+  it("consolida nomes repetidos de mascotes, fórmulas e heranças no picker legado", () => {
+    const app = read("js/app.js");
+    expect(app).toContain("const collapseDuplicateLabels = (entries) => {");
+    expect(app).toContain("this.localizeItemName(");
+    expect(app).toContain('["formula", "pet", "heritage"].includes(this.currentPickerType)');
+    expect(app).toContain("if (!previous || score(entry) > score(previous)) bestByLabel.set(label, entry);");
+    const compatibilityFilter = app.indexOf("items = items.filter(item => {");
+    const deduplication = app.lastIndexOf("collapseDuplicateLabels(items)");
+    expect(compatibilityFilter).toBeGreaterThan(-1);
+    expect(deduplication).toBeGreaterThan(compatibilityFilter);
+  });
+
+  it("mantém controles da topbar com largura estável ao trocar rota ou idioma", () => {
+    const css = read("src/account.css");
+    expect(css).toContain(".locale-switcher {\n  flex: 0 0 auto;");
+    expect(css).toContain(".account-trigger {\n  flex: 0 0 auto;");
+  });
+
+  it("confina o conteúdo de páginas simples em painéis internos no portátil", () => {
+    const css = read("src/portal.css");
+    expect(css).toContain(".portal-page-active #react-portal-root > .portal-page > .portal-panel,");
+    expect(css).toContain(".portal-page-active #react-portal-root > .portal-page > .privacy-card,");
+  });
+
   it("usa o mesmo localizador de traços no picker React", () => {
     const picker = read("src/PickerModal.tsx");
     expect(picker).toContain("function getTraitDisplayName(trait: string");
@@ -335,26 +593,52 @@ describe("responsive layout contract", () => {
     expect(app).toContain("function getObjectCatalogRecords(collection = {})");
     expect(app).toContain('if (type === "subclass")');
     expect(app).toContain("PF2E_DATA.subclasses");
+    expect(app).toContain("const hexValueLabels = typeof hexValue === \"object\"");
+    expect(app).toContain("this.character.patronHexId = hex.id");
     expect(app).toContain("mergeCatalogRecords([], PF2E_DATA.archetypes || [])");
     expect(app).toContain("mergeCatalogRecords([], PF2E_DATA.weapons || [])");
     expect(app).toContain("mergeCatalogRecords([], PF2E_DATA.armors || [])");
     expect(app).toContain('promptSubclass(options = {}) {\n    this.openPicker("subclass", options);\n  }');
+    expect(app).toContain('const supportedTargetFields = new Set([');
+    expect(app).toContain('"researchField", "instinct", "muse", "doctrine", "order"');
+    expect(app).toContain('const classTargetFields = {');
+    expect(app).toContain('alchemist: "researchField", barbarian: "instinct", bard: "muse"');
+    expect(app).toContain('summoner: "eidolon", wizard: "arcaneSchool", magus: "hybridStudy", necromancer: "fatalMethod"');
+    expect(app).toContain('"fatalMethod", "grimFascination"');
+    expect(app).toContain("const choiceFields = new Set([");
+    expect(app).toContain("record.choiceField === field || record[field] === true");
+    expect(read("js/pf2e_data.js")).toContain("const CLASS_CHOICE_FIELDS = {");
+    expect(read("js/pf2e_data.js")).toContain("choiceField: CLASS_CHOICE_FIELDS[classId]");
+    expect(app).toContain('const recoveryCopy = locale === "en"');
+    expect(app).toContain('const shieldCopy = locale === "en"');
     expect(app).toContain('["Patrono", "Patron", "Patrón", "subclass", "patron"]');
     expect(app).toContain('targetField === "patron"');
     expect(app).toContain('targetField === "wizardThesis"');
+    expect(app).toContain('itemData.classId !== selectedClass.id');
+    expect(app).toContain('compatibility?.state === "incompatible"');
     expect(app).toContain('targetField === "mystery"');
+    expect(app).toContain('const canonicalValue = item.data?.id || item.name;');
+    expect(app).toContain('this.character[targetField] = canonicalValue;');
     expect(app).toContain('["Tese Arcana", "Select Thesis", "Seleccionar tesis", "subclass", "wizardThesis"]');
     expect(app).toContain('["Mistério", "Select Mystery", "Seleccionar misterio", "subclass", "mystery"]');
     expect(app).toContain("grantedByPatron: patron.id");
+    expect(app).toContain("grantedByArcaneSchool: schoolId");
+    expect(app).toContain("spell?.grantedByArcaneSchool");
     expect(app).toContain("grantedByHybridStudy: selectedHybridStudy.id");
     expect(app).toContain("this.character.hybridStudy = selectedHybridStudy.name;");
+    expect(app).toContain('key === "Feitiços de Revelação" && selectedOracle?.revelationSpellIds');
+    expect(app).toContain("grantedByMystery: selectedOracleMystery.id");
+    expect(app).toContain("this.character.mystery = selectedOracleMystery.name;");
     expect(app).toContain('pet.id === "pet.familiar.mystic"');
     expect(app).toContain('grantedByClass: "class.witch"');
     expect(app).toContain("applySubclassSelection(item, this.activePickerOptions || {})");
-    expect(app).toContain('["Hex Inicial", "Initial Hex", "Maleficio inicial", "none", "patronHex"]');
+    expect(app).toContain("spell?.grantedByClass || spell?.grantedByPatron || spell?.grantedByHybridStudy");
+    expect(app).toContain("pet?.grantedByClass || pet?.grantedByPatron || pet?.grantedByHybridStudy");
+    expect(app).toContain('getObjectCatalogRecords(PF2E_DATA.classes).filter(({ record }) => !record?.legacyAlias)');
+    expect(app).toContain('["Hex Inicial", "Initial Hex", "Maleficio inicial", "spell", "patronHex"]');
     expect(app).toContain("this.character.spells = this.character.spells.filter((spell) => PF2E_ENGINE.getSpellCompatibility(this.character, spell).state !== \"incompatible\")");
     expect(app).toContain("function findCatalogRecord(collection, value)");
-    expect(app).toContain("const heritages = (PF2E_DATA.heritages || []).map(h => ({ name: h.name, type: \"Herança\", data: h }));");
+    expect(app).toContain("const heritages = (PF2E_DATA.heritages || []).filter(h => !h?.legacyAlias).map(h => ({ name: h.name, type: \"Herança\", data: h }));");
     expect(app).toContain("const maximumRank = Number(level) >= 15 ? 4 : Number(level) >= 7 ? 3 : Number(level) >= 3 ? 2 : 1;");
     expect(app).toContain("const skillOptions = Object.keys(this.calc?.skills || {})");
     expect(app).toContain('this.clearProgressionSlots("class_feat");');
@@ -364,6 +648,14 @@ describe("responsive layout contract", () => {
     expect(app).toContain("this.character.archetypes = this.character.archetypes.filter");
     expect(app).toContain("this.character.spells = this.character.spells.filter(spell => PF2E_ENGINE.getSpellCompatibility");
     expect(app).toContain("this.character.pets = this.character.pets.filter(pet => PF2E_ENGINE.getPrerequisiteCompatibility(this.character, pet).state !== \"incompatible\")");
+    expect(app).toContain('"researchField", "instinct", "muse", "doctrine", "order", "racket", "hunterEdge"');
+    expect(app).toContain('this.character.actions = this.character.actions.filter((action) => !action?.grantedByClass);');
+    expect(app).toContain('this.character.classFeatures = this.character.classFeatures.filter((feature) => !feature?.grantedByClass);');
+    expect(app).toContain('"bloodline", "methodology", "style", "innovation", "way"');
+    expect(app).toContain('"implement", "apparition", "icon", "banner", "guardianDefense"');
+    expect(app).toContain("const selectedClassRecord = Object.entries(PF2E_DATA.classes || {}).find");
+    expect(app).toContain("const classHasSubclassOptions = Boolean(selectedClassRecord?.id)");
+    expect(app).toContain('picker === "subclass" && classHasSubclassOptions');
     expect(app).toContain("this.character.archetypes = this.character.archetypes.filter(archetype => {");
     expect(app).toContain("this.character.spells = this.character.spells.filter(spell => PF2E_ENGINE.getSpellCompatibility(this.character, spell).state !== \"incompatible\")");
     expect(app).toContain("this.character.spells.push({ ...item.data, name: item.name, level: item.data.rank ?? item.data.level })");
@@ -417,7 +709,7 @@ describe("responsive layout contract", () => {
     expect(app).toContain('return this.removeCharacterCollectionItem("formulas", idx);');
     expect(app).toContain("const profileStats = Array.isArray(companion.profiles)");
     expect(app).toContain("Eidolon matrices");
-    expect(app).toContain("const mechanics = item.data.mechanics?.[locale] || item.data.mechanics?.[\"pt-BR\"];");
+    expect(app).toContain("const mechanics = item.data.mechanics?.[locale];");
     expect(app).toContain("mechanicsLabels.actions");
     expect(picker).toContain('className="picker-prereqs"');
     expect(picker).toContain('item.data?.selectionState !== "incompatible"');
@@ -450,8 +742,19 @@ describe("responsive layout contract", () => {
     expect(picker).toContain("const footerCopy = {");
     expect(picker).toContain("footerCopy.give");
     expect(picker).toContain("footerCopy.clear");
+    expect(app).toContain("const abilityCopy = isEn ? [\"SIZE\", \"SPEED\", \"STR\", \"DEX\", \"CON\", \"INT\"]");
+    expect(app).toContain("Character Name");
+    expect(app).toContain("Configure variant rules (Free Archetype, ABP)");
     expect(picker).toContain('"Impulse Feats"');
     expect(picker).toContain('cat.includes("impulso") || cat.includes("impulse")');
+    expect(picker).toContain('locale === "en" ? "AC Bonus"');
+    expect(picker).toContain('locale === "es" ? "PG (LCR)"');
+    expect(picker).toContain('const collapseExactLabels = ["class", "heritage", "pet", "formula"].includes(pickerType);');
+    expect(picker).toContain('if (collapsedLabels.has(normalizedLabel)) return false;');
+    expect(picker).toContain("const canStillApply = purchasePool.every");
+    expect(picker).toContain("const currentCopper = typeof (window as any).app?.getCharacterTotalCopper");
+    expect(picker).toContain("currentCopper < purchasePoolTotalCopper");
+    expect(picker).toContain("O pool é confirmado como uma transação");
     const portalPages = read("src/PortalPages.tsx");
     const i18n = read("src/i18n.tsx");
     expect(portalPages).toContain("function hasFallbackTranslation");
@@ -473,6 +776,8 @@ describe("responsive layout contract", () => {
     expect(app).toContain('openAddPetModal() {');
     expect(app).toContain('this.openPicker("pet");');
     expect(app).toContain('const pets = Array.isArray(this.character.pets) ? this.character.pets : [];');
+    expect(app).toContain("const seenPetIdentities = new Set();");
+    expect(app).toContain("const profileAcLabel = isEn ? \"AC\" : \"CA\";");
     expect(app).not.toContain('this.character.id === "Joao_Ranger" ? [{');
     expect(app).toContain("// Nunca invente opções de regra quando o catálogo oficial não carregou.");
     expect(app).toContain("getFallbackFeatCatalog() {\n    // Nunca invente opções de regra");
@@ -501,6 +806,8 @@ describe("responsive layout contract", () => {
       expect(app).toContain(label);
     });
     expect(app).toContain('this.clearProgressionSlots("class_feature");');
+    expect(app).toContain('this.character.patronFamiliarSpell = "";');
+    expect(app).toContain('this.character.magicTradition = "";');
     expect(app).toContain("options?.classFeatureSlot");
     expect(app).toContain("activePickerOptions?.classFeatureSlot");
     expect(app).toContain("const stableSlot = `1_class_feature_${classFeatureId}_${entryIndex}`;");
@@ -564,6 +871,9 @@ describe("responsive layout contract", () => {
     const gear = app.slice(app.indexOf("  adjustItemQty("), app.indexOf("  promptEditCoin(", app.indexOf("  adjustItemQty(")));
 
     expect(app).toContain("editInventoryItem(idx)");
+    expect(app).toContain('const editableCollections = new Set(["weapons", "spells", "heritageInnateSpells", "rituals", "pets", "feats", "archetypes", "actions", "formulas", "buffs", "loreSkills"]);');
+    expect(app).toContain('const removableCollections = new Set(["weapons", "spells", "heritageInnateSpells", "rituals", "pets", "feats", "archetypes", "actions", "formulas", "buffs", "loreSkills"]);');
+    expect(app).toContain("return true;\n    }\n    return false;\n  }\n\n  promptEditCoin");
     expect(gear).toContain("this.saveCharacterLocal(false);");
     expect(gear).toContain("this.character.inventory.splice(idx, 1);");
     expect(app).toContain("onclick=\"app.editInventoryItem(${idx})\"");
@@ -573,8 +883,8 @@ describe("responsive layout contract", () => {
     expect(app).toContain("incomingIdentity && identity(entry) === incomingIdentity");
     expect(app).toContain("editCharacterCollectionItem(collection, idx)");
     expect(app).toContain("app.editCharacterCollectionItem('spells', ${idx})");
-    expect(app).toContain("app.editCharacterCollectionItem('formulas', ${idx})");
-    expect(app).toContain("this.saveCharacterLocal(false);\n    this.renderAll();\n  }\n\n  // MODAL PICKER DUAL-PANE");
+    expect(app).toContain("app.editCharacterCollectionItem('formulas', ${formulaIndex})");
+    expect(app).toContain("this.saveCharacterLocal(false);\n    this.renderAll();\n    return true;\n  }\n  removeCharacterCollectionItem(collection, idx)");
     expect(app).toContain("this.saveCharacterLocal(false);\n    this.renderAll();\n  }\n\n  reconcileCurrentHp");
     expect(app).toContain("this.closePicker();\n    this.saveCharacterLocal(false);\n    this.renderAll();\n  }\n\n  getFallbackFeatCatalog");
     expect(app).toContain("stowArmor()");
@@ -583,7 +893,7 @@ describe("responsive layout contract", () => {
     expect(app).toContain("storeInventoryEntry(this.character.equippedShield)");
     expect(app).toContain("equipArmorFromPicker(item.data)");
     expect(app).toContain("equipShieldFromPicker(item.data)");
-    expect(app).toContain("const heritages = (PF2E_DATA.heritages || []).map(h => ({ name: h.name, type: \"Herança\", data: h }));");
+    expect(app).toContain("const heritages = (PF2E_DATA.heritages || []).filter(h => !h?.legacyAlias).map(h => ({ name: h.name, type: \"Herança\", data: h }));");
     expect(app).toContain("comparação literal ocultava heranças válidas");
     expect(app).toContain('identity === "armor.unarmored"');
     expect(app).toContain("isUnarmoredEntry(previous)");
@@ -601,6 +911,51 @@ describe("responsive layout contract", () => {
     expect(app).toContain('const copy = {');
     expect(app).toContain('Fighter Starter Kit');
     expect(app).toContain('Starter Kit equipped successfully!');
+  });
+
+  it("não deixa textos de equipamentos em português nos locales alternativos", () => {
+    const app = read("js/app.js");
+    expect(app).toContain('isEn ? "Click to edit" : isEs ? "Haz clic para editar" : "Clique para editar"');
+    expect(app).toContain('isEn ? " · +1 saves" : isEs ? " · +1 salvaciones" : " · +1 salvaguardas"');
+    expect(app).toContain('isEn ? "Max" : isEs ? "Máx." : "Máx."');
+  });
+
+  it("não trata INITIAL_SESSION nula como logout durante a hidratação", () => {
+    const auth = read("src/services/auth.ts");
+    expect(auth).toContain('event === "INITIAL_SESSION" && !nextSession');
+    expect(auth).toContain("não é uma confirmação de logout");
+  });
+
+  it("não renderiza o formulário de login antes da sessão ser resolvida", () => {
+    const account = read("src/AccountPortal.tsx");
+    expect(account).toContain("const [sessionReady, setSessionReady] = useState(false);");
+    expect(account).toContain("!sessionReady ? (");
+    expect(account).toContain('role="status" aria-live="polite"');
+  });
+
+  it("localiza os subtítulos estruturais do portal", () => {
+    const portal = read("src/PortalPages.tsx");
+    const campaigns = read("src/CampaignsPage.tsx");
+    expect(portal).toContain('t("compendiumKicker")');
+    expect(portal).toContain('t("rulesKicker")');
+    expect(portal).toContain('t("libraryKicker")');
+    expect(portal).toContain('t("privacyKicker")');
+    expect(campaigns).toContain('t("gmPanelKicker")');
+    expect(campaigns).toContain('t("treasureGranted")');
+    expect(campaigns).toContain('t("hitPointsShort")');
+    expect(campaigns).toContain('t("armorClassShort")');
+  });
+
+  it("revalida escolhas específicas de classe contra o catálogo", () => {
+    const app = read("js/app.js");
+    expect(app).toContain('record.classId === "class.witch" && record.patron === true');
+    expect(app).toContain('record.classId === "class.wizard" && record.thesis === true');
+    expect(app).toContain('record.classId === "class.wizard" && record.school === true');
+    expect(app).toContain('record.classId === "class.magus" && record.hybridStudy === true');
+    expect(app).toContain('record.classId === "class.oracle" && record.mystery === true');
+    expect(read("js/pf2e_data.js")).toContain("const PLAYER_CORE_2_ORACLE_INITIAL_REVELATIONS");
+    expect(read("js/pf2e_data.js")).toContain("revelationSpellIds: [spell.id]");
+    expect(read("js/pf2e_data.js")).toContain("const PLAYER_CORE_2_ORACLE_MYSTERY_DETAILS");
   });
 
   it("normalizes legacy platinum aliases before rendering or persisting", () => {
@@ -660,6 +1015,57 @@ describe("responsive layout contract", () => {
     expect(print).toContain('sheetCopy.circle.replace("{rank}"');
   });
 
+  it("localizes the legacy printable sheet and escapes character-controlled labels", () => {
+    const app = read("js/app.js");
+    const legacyPrint = app.slice(app.indexOf("  printLegacySheet()"), app.indexOf("  // =========================================================================\n  // CONTROLADOR DO ASSISTENTE", app.indexOf("  printLegacySheet()")));
+
+    expect(legacyPrint).toContain('const copy = locale === "en"');
+    expect(legacyPrint).toContain("${copy.title}");
+    expect(legacyPrint).toContain("${esc(this.character.name)}");
+    expect(legacyPrint).toContain("${copy.saves}");
+    expect(legacyPrint).toContain("const abilityShort = locale === \"en\"");
+    expect(legacyPrint).toContain("str: \"STR\"");
+    expect(legacyPrint).toContain("str: \"FUE\"");
+    expect(legacyPrint).toContain("${abilityShort.str}");
+  });
+
+  it("localizes interactive alerts and escapes AI preview content", () => {
+    const app = read("js/app.js");
+
+    expect(app).toContain('prompt(locale === "en"');
+    expect(app).toContain('alert(locale === "en" ? "JSON copied!"');
+    expect(app).toContain("Editable PDF module was not loaded.");
+    expect(app).toContain('locale === "en" ? "Weapons"');
+    expect(app).toContain("escapeHtml(generated.equippedArmor?.name");
+    expect(app).toContain("escapeHtml(generated.aiNotes.tacticalTip)");
+    expect(app).toContain('locale === "en" ? "Speed"');
+    expect(app).toContain('locale === "en" ? "Perception"');
+    expect(app).toContain('locale === "en" ? "AC"');
+    expect(app).toContain('locale === "en" ? "HP"');
+    expect(app).toContain('const copy = locale === "en"');
+    expect(app).toContain('const critText = locale === "en"');
+    expect(app).toContain('No GM linked');
+    expect(app).toContain('avatarModalTitle: isEn ? "Portrait & Avatar Studio"');
+    expect(app).toContain('btnGenerateAICharacter: isEn ? "✨ Generate Character with AI"');
+    expect(app).toContain('const diceTitle = isEn ? "Open Dice Roller (Free Roll / History)"');
+    expect(app).toContain('button.title = isEn ? `Roll ${label}`');
+    expect(app).toContain('["class", "formula", "pet", "heritage"].includes(this.currentPickerType)');
+    expect(app).toContain('if ((type === "item" || type === "gear") && deductCoins)');
+    expect(app).toContain('if (type === "spell" && options?.hexOnly && item.data?.hex !== true');
+    expect(app).toContain('if (this.currentPickerType === "spell" && this.activePickerOptions?.hexOnly && item.data?.hex !== true');
+    expect(app).toContain("const isWitchHex = options?.hexOnly");
+    expect(app).toContain("const isWitchHex = this.activePickerOptions?.hexOnly");
+    expect(app).toContain("nunca adicionar o item e deixar o");
+    expect(app).toContain("const visibleLabels = new Set();");
+    expect(app).toContain("function getCatalogDisplayName(record, locale = \"pt-BR\")");
+    expect(app).toContain("function localizeSourceBookName(book, locale = \"pt-BR\")");
+    expect(app).toContain("localizeSourceBookName(record.source.book, locale)");
+    expect(app).toContain("Manual do Jogador PF2e (compilação local)");
+    expect(app).toContain("getCatalogDisplayName(item.data, locale)");
+    expect(read("js/pf2e_data.js")).toContain('legacyNames: ["Bruxo"]');
+    expect(read("js/pf2e_engine.js")).toContain("...(record.legacyNames || [])");
+  });
+
   it("does not hide object-catalog variants that have distinct IDs", () => {
     const app = read("js/app.js");
 
@@ -673,6 +1079,81 @@ describe("responsive layout contract", () => {
 
     expect(data).toContain('legacyAlias: true');
     expect(app).toContain('getObjectCatalogRecords(PF2E_DATA.classes).filter(({ record }) => !record?.legacyAlias)');
+    expect(app).toContain('getObjectCatalogRecords(PF2E_DATA.classes).filter(({ record }) => !record?.legacyAlias).map(({ key, record }) => ({ name: key, type: "Classe", data: record }))');
+  });
+
+  it("colapsa duplicatas exatas nos pickers sem esconder variantes de itens", () => {
+    const app = read("js/app.js");
+    expect(app).toContain("const finalize = (items, options = {}) =>");
+    expect(app).toContain("if (options.collapseDuplicateLabels) return result;");
+    expect(app).toContain("{ collapseDuplicateLabels: true });");
+    expect(app).toContain('if (["class", "formula", "pet", "heritage"].includes(this.currentPickerType))');
+    expect(app).toContain("if (!label || visibleLabels.has(label)) return false;");
+    expect(app).toContain("mergeCatalogRecords(sharedCatalogs.pets, PF2E_DATA.pets)");
+    expect(app).toContain("mergeCatalogRecords([], PF2E_DATA.formulas || [])");
+  });
+
+  it("mantém os textos iniciais do shell em português sem parentéticos ingleses", () => {
+    const html = read("index.html");
+    expect(html).toContain("Arquétipo Livre, Progressão Automática de Bônus");
+    expect(html).toContain("📁 Enviar imagem / URL");
+    expect(html).toContain("Rolagem Livre / Histórico");
+    expect(html).not.toContain("Free Archetype)");
+    expect(html).not.toContain("Ancestry Paragon)");
+    expect(html).not.toContain("Upload / URL Manual");
+    expect(html).not.toContain("Saberes (Lores)");
+  });
+
+  it("exibe pré-requisitos localizados no detalhe do picker legado", () => {
+    const app = read("js/app.js");
+    expect(app).toContain("localizePrerequisiteText(value, locale = this.getLocale())");
+    expect(app).toContain("const prerequisite = item.data.prereq || item.data.prerequisites;");
+    expect(app).toContain('"Requisitos previos"');
+  });
+
+  it("permite atualizar a ficha de número 100 sem quebrar a cota", () => {
+    const migration = read("supabase/migrations/202608270002_character_limits.sql");
+    const schema = read("supabase/schema_full.sql");
+    for (const sql of [migration, schema]) {
+      expect(sql).toContain("where user_id = new.user_id");
+      expect(sql).toContain("and character_key = new.character_key");
+      expect(sql).toContain("if not exists (");
+      expect(sql).toContain("count(*) from public.characters where user_id = new.user_id");
+      expect(sql).toContain("pg_catalog.pg_advisory_xact_lock");
+      expect(sql).toContain("pg_catalog.hashtextextended(new.user_id::text, 0)");
+    }
+  });
+
+  it("mantém histórico normalizado de revisões no banco além do fallback embutido", () => {
+    const migration = read("supabase/migrations/202608270002_character_limits.sql");
+    const schema = read("supabase/schema_full.sql");
+    for (const sql of [migration, schema]) {
+      expect(sql).toContain("create table if not exists public.character_revisions");
+      expect(sql).toContain("references public.characters(id) on delete cascade");
+      expect(sql).toContain("character_revisions_owner_saved_idx");
+      expect(sql).toContain('create policy "character_revisions_own"');
+      expect(sql).toContain("auth.uid()) = user_id");
+    }
+    const service = read("src/services/characters.ts");
+    expect(service).toContain('from("character_revisions").insert');
+    expect(service).toContain("persistRemoteRevision(saved, savedCharacter.history?.[0])");
+    expect(service).toContain('from("character_revisions")');
+    expect(service).toContain("hydrateRemoteHistory(remote, activeUser.id)");
+    expect(service).toContain("character_id,saved_at,name,level,data");
+  });
+
+  it("reconhece nomes espanhóis de classes ao renderizar a progressão legada", () => {
+    const app = read("js/app.js");
+    expect(app).toContain('"class.ranger": "ranger"');
+    expect(app).toContain('"class.monk": "monk"');
+    expect(app).toContain('"class.sorcerer": "sorcerer"');
+    expect(app).toContain('"class.gunslinger": "gunslinger"');
+    expect(app).toContain('"class.rogue": "rogue"');
+    expect(app).toContain('"class.guardian": "guardian"');
+    expect(app).toContain('"class.kineticist": "kineticist"');
+    expect(app).toContain('"bruja"');
+    expect(app).toContain('"guerr"');
+    expect(app).toContain('"hechicer"');
   });
 
   it("provides a strict catalog audit command for the remaining coverage work", () => {
@@ -684,6 +1165,7 @@ describe("responsive layout contract", () => {
     expect(audit).toContain("missingSummaries");
     expect(audit).toContain("duplicateIds");
     expect(audit).toContain("duplicateNames");
+    expect(audit).toContain("duplicateLocalizedNames");
     expect(audit).toContain('category === "items"');
     expect(audit).toContain("itemCompendium");
     expect(audit).toContain('"subclasses"');

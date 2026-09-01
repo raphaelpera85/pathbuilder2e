@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "test": "vitest run",
     "audit:catalog": "node scripts/audit-catalog.cjs",
-    "audit:catalog:provenance": "node scripts/audit-catalog.cjs --strict-provenance"
+    "audit:catalog:provenance": "node scripts/audit-catalog.cjs --strict-provenance",
+    "audit:books": "node scripts/audit-books.cjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "latest",

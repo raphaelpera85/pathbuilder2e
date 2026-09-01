@@ -100,12 +100,13 @@ Contagem de páginas, idioma, edição e catalogação são estados separados:
 - `ruleset`: `remaster` ou `legacy` somente quando a edição for confirmada; caso contrário `needs_review`;
 - `linkedRecords`: opções que já possuem livro e página editorial.
 
-Na última auditoria (`npm run audit:catalog`), o catálogo continha 3744 registros,
+Na última auditoria (`npm run audit:catalog`), o catálogo continha 3755 registros,
 incluindo o compêndio expandido legado, subclasses derivadas, heranças específicas
 normalizadas, opções de Player Core 2, Pólvora e Engrenagens, Livro dos Mortos,
 Dark Archive, Rage of Elements, Howl of the Wild, War of Immortals e Battlecry!:
-3701 com livro e página registrados; 43 ainda não têm fonte/página local e 3115
-estão marcados como `needs_review`. Não há
+3712 com livro e página registrados; 43 ainda não têm fonte/página local, 3091
+estão marcados como `needs_review` e 1483 possuem efeito mecânico explicitamente
+provisório. Não há
 nomes ou resumos ausentes nos três idiomas configurados (pt-BR, inglês e
 espanhol), nem fallback de tradução detectado no compêndio; as opções sem fonte
 continuam visivelmente pendentes. No
@@ -113,6 +114,12 @@ Player Core 2, as páginas foram conferidas no início real das seções porque 
 sumário brasileiro diverge do miolo em parte das classes, heranças e tabelas.
 Essa contagem é um diagnóstico do estado atual, não uma alegação de cobertura
 integral dos livros.
+
+Para repetir a auditoria física do corpus, execute `npm run audit:books`. O
+relatório distingue PDFs abertos pelo parser, arquivos acima do limite de 2 GiB
+(`tooLargeForParser`) e PDFs que ainda não possuem TXT pareado com extração útil;
+`npm run audit:books -- --strict` retorna falha enquanto houver texto extraído
+insuficiente, sem confundir arquivos grandes com PDFs corrompidos.
 
 ## CRUD de personagens
 

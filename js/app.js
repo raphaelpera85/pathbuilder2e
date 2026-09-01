@@ -99,10 +99,44 @@ function normalizeCatalogLabel(value) {
   return String(value || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
 }
 
+function getCatalogDisplayName(record, locale = "pt-BR") {
+  return record?.names?.[locale] || record?.names?.["pt-BR"] || record?.name || "";
+}
+
+function localizeSourceBookName(book, locale = "pt-BR") {
+  const value = String(book || "");
+  const labels = [
+    [/Livro do Jogador 2|Player Core 2/i, ["Livro do Jogador 2", "Player Core 2", "Núcleo del jugador 2"]],
+    [/Livro do Jogador|Player Core/i, ["Livro do Jogador", "Player Core", "Núcleo del jugador"]],
+    [/Livro Básico|Core Rulebook/i, ["Livro Básico", "Core Rulebook", "Reglamento básico"]],
+    [/Segredos da Magia|Secrets of Magic/i, ["Segredos da Magia", "Secrets of Magic", "Secretos de la Magia"]],
+    [/Pólvora e Engrenagens|Guns & Gears/i, ["Pólvora e Engrenagens", "Guns & Gears", "Pólvora y Engranajes"]],
+    [/Livro dos Mortos|Book of the Dead/i, ["Livro dos Mortos", "Book of the Dead", "Libro de los Muertos"]],
+    [/Rage of Elements/i, ["Fúria dos Elementos", "Rage of Elements", "Furia de los Elementos"]],
+    [/Howl of the Wild/i, ["Uivo da Natureza", "Howl of the Wild", "Aullido de lo Salvaje"]],
+    [/War of Immortals/i, ["Guerra dos Imortais", "War of Immortals", "Guerra de los Inmortales"]],
+    [/Battlecry/i, ["Grito de Batalha!", "Battlecry!", "¡Grito de Batalla!"]],
+    [/Dark Archive/i, ["Arquivo Sombrio", "Dark Archive", "Archivo Oscuro"]],
+    [/Manual do Jogador|PF2e Player Guide compilation|Guia Completo do Jogador/i, ["Manual do Jogador PF2e (compilação local)", "PF2e Player Guide compilation (local)", "Compilación de guía del jugador PF2e (local)"]],
+  ];
+  const match = labels.find(([pattern]) => pattern.test(value));
+  if (!match) return value;
+  const localized = match[1];
+  return localized[locale === "en" ? 1 : locale === "es" ? 2 : 0];
+}
+
 function findCatalogRecord(collection, value) {
   const needle = normalizeCatalogLabel(value);
   return getObjectCatalogRecords(collection).find(({ key, record }) => [key, record?.id, record?.name, ...Object.values(record?.names || {})]
     .filter(Boolean).some(candidate => normalizeCatalogLabel(candidate) === needle))?.record;
+}
+
+function normalizeCharacterRuleset(value) {
+  const raw = String(value ?? "").trim().toLocaleLowerCase();
+  if (raw === "remaster" || raw.includes("remaster")) return "remaster";
+  if (raw === "legacy" || raw.includes("classic") || raw.includes("clássic") || raw.includes("classico") || raw.includes("clássico")) return "legacy";
+  if (raw === "both" || raw.includes("custom") || raw.includes("variant") || raw.includes("variante") || raw.includes("hybrid") || raw.includes("híbrida") || raw.includes("hibrida") || raw.includes("híbrido") || raw.includes("hibrido")) return "both";
+  return "needs_review";
 }
 
 function assertSafeCharacterDocument(value) {
@@ -121,7 +155,9 @@ function assertSafeCharacterDocument(value) {
     }
   };
   visit(value);
-  return structuredClone(value);
+  const document = structuredClone(value);
+  document.ruleset = normalizeCharacterRuleset(document.ruleset || "remaster");
+  return document;
 }
 
 const UI_TRANSLATIONS = {
@@ -179,7 +215,8 @@ const UI_TRANSLATIONS = {
     "Invocador": { "pt-BR": "Invocador", en: "Summoner", es: "Convocador" },
     "Espadachim": { "pt-BR": "Espadachim", en: "Swashbuckler", es: "Espadachín" },
     "Taumaturgo": { "pt-BR": "Taumaturgo", en: "Thaumaturge", es: "Taumaturgo" },
-    "Bruxo": { "pt-BR": "Bruxo", en: "Witch", es: "Brujo" },
+    "Bruxo": { "pt-BR": "Bruxa", en: "Witch", es: "Bruja" },
+    "Bruxa": { "pt-BR": "Bruxa", en: "Witch", es: "Bruja" },
     "Mago": { "pt-BR": "Mago", en: "Wizard", es: "Mago" }
   },
   ancestries: {
@@ -301,6 +338,8 @@ class PathbuilderApp {
     this.calc = null;
     this.diceHistory = [];
     this.dicePool = [];
+    this.freeRollTotal = 0;
+    this.lastFreeRoll = null;
     this.diceAnimationTimer = null;
     this.currentPickerType = null;
     this.selectedPickerItem = null;
@@ -334,7 +373,7 @@ class PathbuilderApp {
       if (!record || typeof record !== "object") return;
       const names = record.names && typeof record.names === "object" ? record.names : null;
       if (names) {
-        for (const value of [record.name, key, ...Object.values(names)]) {
+        for (const value of [record.name, key, ...(Array.isArray(record.legacyNames) ? record.legacyNames : []), ...Object.values(names)]) {
           const normalized = normalizeCatalogLabel(value);
           if (normalized) index.set(normalized, names);
         }
@@ -394,15 +433,96 @@ class PathbuilderApp {
     return rawName;
   }
 
+  localizePrerequisiteText(value, locale = this.getLocale()) {
+    if (value && typeof value === "object") return value.names?.[locale] || value.name || value.id || "";
+    const text = String(value ?? "");
+    if (locale === "pt-BR" || !text) return text;
+    const dictionary = locale === "en"
+      ? [["Treinado em", "Trained in"], ["Treinado com", "Trained with"], ["Especialista em", "Expert in"], ["Mestre em", "Master in"], ["Lendário em", "Legendary in"], ["Acrobacia", "Acrobatics"], ["Atletismo", "Athletics"], ["Arcanismo", "Arcana"], ["Manufatura", "Crafting"], ["Enganação", "Deception"], ["Diplomacia", "Diplomacy"], ["Intimidação", "Intimidation"], ["Medicina", "Medicine"], ["Natureza", "Nature"], ["Ocultismo", "Occultism"], ["Religião", "Religion"], ["Sociedade", "Society"], ["Furtividade", "Stealth"], ["Sobrevivência", "Survival"], ["Ladinagem", "Thievery"], ["Força", "Strength"], ["Destreza", "Dexterity"], ["Constituição", "Constitution"], ["Inteligência", "Intelligence"], ["Sabedoria", "Wisdom"], ["Carisma", "Charisma"], [" e ", " and "]]
+      : [["Treinado em", "Entrenado en"], ["Treinado com", "Entrenado con"], ["Especialista em", "Experto en"], ["Mestre em", "Maestro en"], ["Lendário em", "Legendario en"], ["Acrobacia", "Acrobacias"], ["Atletismo", "Atletismo"], ["Arcanismo", "Arcana"], ["Manufatura", "Artesanía"], ["Enganação", "Engaño"], ["Diplomacia", "Diplomacia"], ["Intimidação", "Intimidación"], ["Medicina", "Medicina"], ["Natureza", "Naturaleza"], ["Ocultismo", "Ocultismo"], ["Religião", "Religión"], ["Sociedade", "Sociedad"], ["Furtividade", "Sigilo"], ["Sobrevivência", "Supervivencia"], ["Ladinagem", "Latrocinio"], ["Força", "Fuerza"], ["Destreza", "Destreza"], ["Constituição", "Constitución"], ["Inteligência", "Inteligencia"], ["Sabedoria", "Sabiduría"], ["Carisma", "Carisma"], [" e ", " y "]];
+    return dictionary.reduce((result, [from, to]) => result.replace(new RegExp(from.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi"), to), text);
+  }
+
   localizeTrait(trait, locale = this.getLocale()) {
     if (!trait || typeof trait !== "string") return trait || "";
-    return UI_TRANSLATIONS.traits[trait]?.[locale] || trait;
+    const direct = UI_TRANSLATIONS.traits[trait]?.[locale];
+    if (direct) return direct;
+
+    // Alguns registros importados dos livros preservam o traço canônico em
+    // inglês, inclusive parâmetros (por exemplo, "thrown 20 ft."). Nunca
+    // deixe esse valor cru escapar para a interface em pt-BR/espanhol.
+    const normalized = trait.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const aliases = {
+      agile: ["Ágil", "Agile", "Ágil"],
+      backswing: ["Reversível", "Backswing", "Rebote"],
+      deadly: ["Mortal", "Deadly", "Mortal"],
+      finesse: ["Finesse", "Finesse", "Sutileza"],
+      forceful: ["Enérgica", "Forceful", "Potente"],
+      reach: ["Alcance", "Reach", "Alcance"],
+      sweep: ["Amplitude", "Sweep", "Barrido"],
+      tethered: ["Ancorada", "Tethered", "Atada"],
+      thrown: ["Arremesso", "Thrown", "Arrojadiza"],
+      "two-hand": ["Duas Mãos", "Two-Hand", "Dos Manos"],
+      versatile: ["Versátil", "Versatile", "Versátil"],
+      volley: ["Voleio", "Volley", "Volea"],
+      reload: ["Recarga", "Reload", "Recarga"],
+      concussive: ["Concussiva", "Concussive", "Conmocionante"],
+      combination: ["Combinação", "Combination", "Combinación"],
+      aftermath: ["Consequência", "Aftermath", "Consecuencia"],
+      flourish: ["Floreio", "Flourish", "Floritura"],
+      construct: ["Constructo", "Construct", "Constructo"],
+      monitor: ["Monitorar", "Monitor", "Monitorizar"],
+      parry: ["Aparar", "Parry", "Parada"],
+      trip: ["Derrubar", "Trip", "Derribo"],
+      disarm: ["Desarmar", "Disarm", "Desarmar"],
+      shove: ["Empurrão", "Shove", "Empujón"],
+      unarmed: ["Desarmado", "Unarmed", "Desarmado"],
+    };
+    const aliasKey = Object.keys(aliases).find((key) => normalized === key || normalized.startsWith(`${key} `));
+    const alias = aliasKey ? aliases[aliasKey] : null;
+    if (alias) {
+      const label = alias[locale === "en" ? 1 : locale === "es" ? 2 : 0];
+      let suffix = trait.trim().slice(aliasKey.length).trim();
+      if (locale === "pt-BR") suffix = suffix.replace(/\bfeet?\b|\bft\.?\b/gi, "pés");
+      if (locale === "es") suffix = suffix.replace(/\bfeet?\b|\bft\.?\b/gi, "pies");
+      return suffix ? `${label} ${suffix}` : label;
+    }
+    return trait;
+  }
+
+  localizeSkillName(skill, locale = this.getLocale()) {
+    if (!skill || typeof skill !== "string") return skill || "";
+    const normalize = (value) => String(value).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+    const key = normalize(skill);
+    const entry = Object.entries(UI_TRANSLATIONS.skills).find(([id, names]) =>
+      normalize(id) === key || Object.values(names).some((name) => normalize(name) === key));
+    return entry?.[1]?.[locale] || skill;
+  }
+
+  localizeCompanionAttackText(value, locale = this.getLocale()) {
+    if (!value || locale === "pt-BR") return value || "";
+    const dictionary = locale === "en"
+      ? [["cortante", "slashing"], ["perfurante", "piercing"], ["impacto", "bludgeoning"], ["sangramento", "bleed"], ["veneno", "poison"], ["fogo", "fire"], ["frio", "cold"], ["ácido", "acid"], ["energia", "force"]]
+      : [["cortante", "cortante"], ["perfurante", "perforante"], ["impacto", "contundente"], ["sangramento", "sangrado"], ["veneno", "veneno"], ["fogo", "fuego"], ["frio", "frío"], ["ácido", "ácido"], ["energia", "fuerza"]];
+    return dictionary.reduce((result, [from, to]) => result.replace(new RegExp(from, "gi"), to), String(value));
   }
 
   updateStaticLabels(locale = this.getLocale()) {
     if (typeof document === "undefined" || typeof document.querySelector !== "function") return;
     const isEn = locale === "en";
     const isEs = locale === "es";
+    const mobileViewNav = document.getElementById("mobileViewNav");
+    if (mobileViewNav) mobileViewNav.setAttribute("aria-label", isEn ? "Character sheet sections" : isEs ? "Secciones de la ficha" : "Navegação de seções da ficha");
+    const skipToContent = document.getElementById("skipToContent");
+    if (skipToContent) skipToContent.textContent = isEn ? "Skip to content" : isEs ? "Saltar al contenido" : "Pular para o conteúdo";
+    const trainedSkillsBadge = document.getElementById("trainedSkillsBadge");
+    if (trainedSkillsBadge) trainedSkillsBadge.title = isEn ? "Selected Skills / Total Granted" : isEs ? "Habilidades seleccionadas / Total concedido" : "Perícias Selecionadas / Total Concedido";
+    const avatarClear = document.getElementById("detailsAvatarClearBtn");
+    if (avatarClear) avatarClear.title = isEn ? "Remove image" : isEs ? "Eliminar imagen" : "Remover imagem";
+    const divineFontInput = document.getElementById("divineFontInput");
+    if (divineFontInput) divineFontInput.setAttribute("aria-label", isEn ? "Deity divine font" : isEs ? "Fuente divina de la deidad" : "Fonte divina da divindade");
+    const aiPortraitPrompt = document.getElementById("aiPortraitPromptInput");
+    if (aiPortraitPrompt) aiPortraitPrompt.setAttribute("placeholder", isEn ? "Character description for the AI..." : isEs ? "Descripción del personaje para la IA..." : "Descrição do personagem para a IA...");
 
     // 1. Plan Toggle Button
     const btnToggle = document.getElementById("btnTogglePlan");
@@ -423,7 +543,8 @@ class PathbuilderApp {
     if (variantBtn) variantBtn.innerHTML = `⚙️ ${isEn ? "Variants" : isEs ? "Variantes" : "Variantes"}`;
 
     // 3. Mini Bar Ability Labels
-    const miniBoxes = document.querySelectorAll(".abilities-summary-bar .mini-box");
+    // The rendered legacy cards are `.ability-mini-box` (not `.mini-box`).
+    const miniBoxes = document.querySelectorAll(".abilities-summary-bar .ability-mini-box");
     if (miniBoxes && miniBoxes.length >= 6) {
       const lbl0 = miniBoxes[0].querySelector("span:last-child");
       if (lbl0) lbl0.innerText = isEn ? "SIZE" : isEs ? "TAMAÑO" : "TAMANHO";
@@ -451,34 +572,85 @@ class PathbuilderApp {
     const hpTitle = document.querySelector(".hp-bar-container span:first-child");
     if (hpTitle) hpTitle.innerText = isEn ? "HP" : isEs ? "PG" : "PV";
 
-    const saveRows = document.querySelectorAll(".saves-col-box .save-row-box");
+    // The legacy markup uses `save-badge-row`; the old selector silently
+    // left the Portuguese save names visible after switching locale.
+    const saveRows = document.querySelectorAll(".saves-col-box .save-badge-row");
     if (saveRows && saveRows.length >= 3) {
-      const s0 = saveRows[0].querySelector(".save-name-label");
+      const s0 = saveRows[0].querySelector("span:last-child");
       if (s0) s0.innerText = isEn ? "Fortitude" : isEs ? "Fortaleza" : "Fortitude";
 
-      const s1 = saveRows[1].querySelector(".save-name-label");
+      const s1 = saveRows[1].querySelector("span:last-child");
       if (s1) s1.innerText = isEn ? "Reflex" : isEs ? "Reflejos" : "Reflexos";
 
-      const s2 = saveRows[2].querySelector(".save-name-label");
+      const s2 = saveRows[2].querySelector("span:last-child");
       if (s2) s2.innerText = isEn ? "Will" : isEs ? "Voluntad" : "Vontade";
     }
 
     // 5. Sub-stats row
-    const heroPointsLabel = document.querySelector(".sub-stats-row .hero-points-box span:first-child");
+    const heroPointsLabel = document.querySelector(".sub-stats-row > div:first-child > span:first-child");
     if (heroPointsLabel) heroPointsLabel.innerText = isEn ? "Hero Points:" : isEs ? "Puntos Heroicos:" : "Pontos Heroicos:";
 
-    const perceptionLabel = document.querySelector(".sub-stats-row > div:nth-child(3) span:last-child");
+    const perceptionLabel = document.querySelector("#percVal")?.parentElement?.querySelector("span:last-child");
     if (perceptionLabel) perceptionLabel.innerText = isEn ? "Perception" : isEs ? "Percepción" : "Percepção";
 
-    const initiativeLabel = document.querySelector(".sub-stats-row > div:nth-child(4) span:last-child");
+    const initiativeLabel = document.querySelector("#initVal")?.parentElement?.querySelector("span:last-child");
     if (initiativeLabel) initiativeLabel.innerText = isEn ? "Initiative" : isEs ? "Iniciativa" : "Iniciativa";
 
+    const gmSyncLabel = document.getElementById("detGmLabel");
+    if (gmSyncLabel) gmSyncLabel.innerText = isEn ? "🎲 Game Master Sync:" : isEs ? "🎲 Sincronización del DJ:" : "🎲 Sincronização do Mestre:";
+    const staticLegacyLabels = {
+      gearBulkLabel: isEn ? "Total Bulk:" : isEs ? "Volumen total:" : "Carga Total:",
+      spellcasterLabel: isEn ? "✨ Spellcaster" : isEs ? "✨ Lanzador" : "✨ Conjurador",
+      spellDcLabel: isEn ? "Spell DC:" : isEs ? "CD de conjuro:" : "CD de Magia:",
+      spellAtkLabel: isEn ? "Spell Attack:" : isEs ? "Ataque de conjuro:" : "Ataque Mágico:",
+      focusPointsLabel: isEn ? "Focus Points:" : isEs ? "Puntos de Foco:" : "Pontos de Foco:",
+      spellCatalogButton: isEn ? "Spell Catalog" : isEs ? "Catálogo de Conjuros" : "Catálogo de Magias",
+      manualSpellButton: isEn ? "Add Spell Manually" : isEs ? "Añadir Conjuro Manualmente" : "Adicionar Magia Manualmente",
+      ritualButton: isEn ? "Add Ritual" : isEs ? "Añadir Ritual" : "Adicionar Ritual",
+      recoverSlotsButton: isEn ? "💤 Recover All Slots" : isEs ? "💤 Recuperar Todos los Espacios" : "💤 Recuperar Todos os Slots",
+      knownSpellsHeading: isEn ? "Known Spells" : isEs ? "Conjuros Conocidos" : "Magias Conhecidas",
+      knownRitualsHeading: isEn ? "Learned Rituals" : isEs ? "Rituales Aprendidos" : "Rituais Aprendidos",
+      formulaBookIntro: isEn ? "Recipes for alchemical items, potions, snares, and Crafting." : isEs ? "Recetas para objetos alquímicos, pociones, trampas y artesanía." : "Receitas para itens alquímicos, poções, armadilhas e manufatura."
+    };
+    for (const [id, label] of Object.entries(staticLegacyLabels)) {
+      const element = document.getElementById(id);
+      if (element) element.innerText = label;
+    }
+    const diceStaticLabels = {
+      diceResetButton: isEn ? "Reset" : isEs ? "Restablecer" : "Resetar",
+      diceCloseButton: isEn ? "Close Roller" : isEs ? "Cerrar lanzador" : "Fechar Rolador",
+      diceArenaInstruction: isEn ? "Click a die above or any skill, save, or weapon on the sheet to roll with a 3D animation!" : isEs ? "¡Haz clic en un dado o en cualquier habilidad, salvación o arma de la ficha para tirar con animación 3D!" : "Clique em um dado acima ou em qualquer perícia, salvamento ou arma da ficha para rolar com animação 3D!",
+      diceTotalLabel: isEn ? "TOTAL" : isEs ? "TOTAL" : "TOTAL",
+      diceHistoryTitle: isEn ? "📜 Roll History" : isEs ? "📜 Historial de tiradas" : "📜 Histórico de Rolagens",
+      diceClearButton: isEn ? "🗑️ Clear" : isEs ? "🗑️ Limpiar" : "🗑️ Limpar",
+      diceHistoryEmpty: isEn ? "No recent rolls." : isEs ? "No hay tiradas recientes." : "Nenhuma rolagem recente."
+    };
+    for (const [id, label] of Object.entries(diceStaticLabels)) {
+      const element = document.getElementById(id);
+      if (element) element.innerText = label;
+    }
+    const diceResetButton = document.getElementById("diceResetButton");
+    const diceCloseButton = document.getElementById("diceCloseButton");
+    const diceClearButton = document.getElementById("diceClearButton");
+    if (diceResetButton) diceResetButton.title = isEn ? "Reset rolls" : isEs ? "Restablecer tiradas" : "Resetar rolagens";
+    if (diceCloseButton) diceCloseButton.setAttribute("aria-label", isEn ? "Close" : isEs ? "Cerrar" : "Fechar");
+    if (diceClearButton) diceClearButton.title = isEn ? "Clear history" : isEs ? "Limpiar historial" : "Limpar histórico";
+    const legacyRulesContent = document.getElementById("legacyRulesContent");
+    if (legacyRulesContent) {
+      const rulesCopy = isEn
+        ? { title: "📖 Character Creation Guide & PF2e Rules", method: "The 4-Step Ability Boost Method:", lines: ["1. Start at 10 in every ability.", "2. Ancestry (+2, +2, -2, or 2 free boosts).", "3. Background (+2 from the background, +2 free).", "4. Class key ability (+2).", "5. Four free boosts at level 1 (+2 to four different abilities)."] }
+        : isEs
+          ? { title: "📖 Guía de creación de personajes y reglas PF2e", method: "Método de 4 pasos para los aumentos de característica:", lines: ["1. Comienza con 10 en cada característica.", "2. Ascendencia (+2, +2, -2 o 2 aumentos libres).", "3. Trasfondo (+2 del trasfondo, +2 libre).", "4. Característica clave de la clase (+2).", "5. Cuatro aumentos libres en el nivel 1 (+2 a cuatro características distintas)."] }
+          : { title: "📖 Guia de Criação de Personagem & Regras PF2e", method: "Método dos 4 Passos de Aprimoramentos:", lines: ["1. Base 10 em todos os atributos.", "2. Ancestralidade (+2, +2, -2 ou 2 livres).", "3. Antecedente (+2 do antecedente, +2 livre).", "4. Atributo-chave da classe (+2).", "5. Quatro aprimoramentos livres no nível 1 (+2 em quatro atributos distintos)."] };
+      legacyRulesContent.innerHTML = `<h3 style="color: var(--pb-orange); margin-bottom: 10px;">${rulesCopy.title}</h3><p style="font-size: 12px; line-height: 1.6;"><strong>${rulesCopy.method}</strong><br>${rulesCopy.lines.join("<br>")}</p>`;
+    }
+
     // 6. Skills column header
-    const skillsHeader = document.querySelector(".skills-col-header span:first-child");
+    const skillsHeader = document.querySelector(".skills-column-heading");
     if (skillsHeader) skillsHeader.innerText = isEn ? "SKILLS" : isEs ? "HABILIDADES" : "PERÍCIAS";
 
     // 7. Quick Action Bar Buttons
-    const quickButtons = document.querySelectorAll(".quick-actions-bar button");
+    const quickButtons = document.querySelectorAll(".quick-action-bar button");
     if (quickButtons && quickButtons.length >= 7) {
       quickButtons[0].innerText = isEn ? "💤 Rest (8h)" : isEs ? "💤 Descansar (8h)" : "💤 Descansar (8h)";
       quickButtons[1].innerText = isEn ? "🛡️ Shield Block" : isEs ? "🛡️ Bloqueo c/ Escudo" : "🛡️ Bloqueio c/ Escudo";
@@ -507,7 +679,7 @@ class PathbuilderApp {
     }
 
     // 9. Weapons Tab Static Elements
-    const weaponProfs = document.querySelectorAll(".weapon-prof-group-item span:last-child");
+    const weaponProfs = document.querySelectorAll(".weapon-prof-group-item .weapon-prof-label");
     if (weaponProfs && weaponProfs.length >= 4) {
       weaponProfs[0].innerText = isEn ? "Simple Weapons" : isEs ? "Armas Simples" : "Armas Simples";
       weaponProfs[1].innerText = isEn ? "Martial Weapons" : isEs ? "Armas Marciales" : "Armas Marciais";
@@ -540,6 +712,8 @@ class PathbuilderApp {
     // so they must be translated explicitly whenever the locale changes.
     const legacyLabels = {
       pbMenuButton: isEn ? "☰ Menu" : isEs ? "☰ Menú" : "☰ Menu",
+      drawerEdition: isEn ? "Remaster Edition" : isEs ? "Edición Remaster" : "Edição Remaster",
+      drawerStatus: isEn ? "● Online & Local" : isEs ? "● En línea y local" : "● Online & Local",
       drawerAiTitle: isEn ? "AI Assistant & Creation" : isEs ? "Asistente de IA y creación" : "Assistente de IA & Criação",
       drawerCharacterTitle: isEn ? "Character & Library" : isEs ? "Personaje y biblioteca" : "Personagem & Biblioteca",
       drawerExportTitle: isEn ? "Export & Print" : isEs ? "Exportación e impresión" : "Exportação & Impressão",
@@ -549,12 +723,95 @@ class PathbuilderApp {
       drawerCampaigns: isEn ? "🏰 GM Campaigns (RPG Tables)" : isEs ? "🏰 Campañas del DJ (mesas de rol)" : "🏰 Campanhas do Mestre (Mesas de RPG)",
       drawerNewCharacter: isEn ? "➕ New Blank Character" : isEs ? "➕ Nuevo personaje en blanco" : "➕ Novo Personagem em Branco",
       drawerSaveCharacter: isEn ? "💾 Save Character (Local)" : isEs ? "💾 Guardar personaje (local)" : "💾 Salvar Personagem (Local)",
-      drawerSaveAccountCharacter: isEn ? "☁️ Save Character to Account" : isEs ? "☁️ Guardar personaje en la cuenta" : "☁️ Salvar Personagem na Conta"
+      drawerSaveAccountCharacter: isEn ? "☁️ Save Character to Account" : isEs ? "☁️ Guardar personaje en la cuenta" : "☁️ Salvar Personagem na Conta",
+      drawerPdf: isEn ? "📥 Download Editable PDF (Official Sheet)" : isEs ? "📥 Descargar PDF editable (hoja oficial)" : "📥 Baixar PDF Editável (Ficha Oficial)",
+      drawerPrint: isEn ? "📄 Print Custom Sheet" : isEs ? "📄 Imprimir hoja personalizada" : "📄 Imprimir ficha personalizada",
+      drawerExportJson: isEn ? "📤 Export JSON" : isEs ? "📤 Exportar JSON" : "📤 Exportar JSON",
+      drawerImportJson: isEn ? "📥 Import JSON" : isEs ? "📥 Importar JSON" : "📥 Importar JSON",
+      drawerExportMarkdown: isEn ? "📜 Export Markdown" : isEs ? "📜 Exportar Markdown" : "📜 Exportar Markdown",
+      drawerCompendium: isEn ? "📚 Character Creation Compendium" : isEs ? "📚 Compendio de creación" : "📚 Compêndio de criação",
+      drawerRules: isEn ? "📖 Rules & Sources Guide" : isEs ? "📖 Guía de reglas y fuentes" : "📖 Guia de regras e fontes",
+      drawerProfile: isEn ? "🛡️ Library & Profile" : isEs ? "🛡️ Biblioteca y perfil" : "🛡️ Biblioteca e perfil"
     };
     for (const [id, label] of Object.entries(legacyLabels)) {
       const element = document.getElementById(id);
       if (element) element.innerText = label;
     }
+
+    // Labels estruturais do painel legado também precisam acompanhar o locale;
+    // eles ficam no HTML inicial e não passam pelo renderizador React.
+    const statLabels = document.querySelectorAll(".stat-input-box label");
+    if (statLabels.length >= 3) {
+      statLabels[0].textContent = isEn ? "Level" : isEs ? "Nivel" : "Nível";
+      statLabels[1].textContent = "XP";
+      statLabels[2].textContent = isEn ? "Character Name" : isEs ? "Nombre del personaje" : "Nome do Personagem";
+    }
+    const legacyPlaceholders = {
+      detailsAgeInput: isEn ? "Age" : isEs ? "Edad" : "Idade",
+      detailsGenderInput: isEn ? "Gender" : isEs ? "Género" : "Gênero",
+      detailsNotesTextarea: isEn ? "Notes, history, campaign journal..." : isEs ? "Notas, historial, diario de campaña..." : "Notas, histórico, diário de bordo...",
+      detGmEmail: isEn ? "gm.email@example.com" : isEs ? "correo.del.dj@ejemplo.com" : "email.do.mestre@exemplo.com",
+      deitySearchInput: isEn ? "Search deity or philosophy..." : isEs ? "Buscar deidad o filosofía..." : "Buscar divindade ou filosofia...",
+      customDeityInput: isEn ? "Other deity/philosophy..." : isEs ? "Otra deidad/filosofía..." : "Outra divindade/filosofia...",
+      languagesSearchInput: isEn ? "Filter languages..." : isEs ? "Filtrar idiomas..." : "Filtrar idiomas...",
+      customLanguageInput: isEn ? "Other language..." : isEs ? "Otro idioma..." : "Outro idioma...",
+      aiPortraitPromptInput: isEn ? "Character description for the AI..." : isEs ? "Descripción del personaje para la IA..." : "Descrição do personagem para a IA...",
+      aiPortraitExtraDetails: isEn ? "E.g. Bright golden eyes, fiery aura, horned helmet..." : isEs ? "Ej.: Ojos dorados brillantes, aura de fuego, casco con cuernos..." : "Ex: Olhos dourados brilhantes, aura de fogo, elmo com chifres...",
+      avatarUrlInput: isEn ? "https://example.com/image.png" : isEs ? "https://ejemplo.com/imagen.png" : "https://exemplo.com/imagem.png",
+      aiPromptInput: isEn ? "E.g. I want a demigod exemplar with a radiant spear focused on highly mobile combat..." : isEs ? "Ej.: Quiero un ejemplar semidivino con una lanza radiante centrado en combate de alta movilidad..." : "Ex: Quero um exemplar semidivino com lança radiante focado em combate de alta mobilidade..."
+    };
+    for (const [id, placeholder] of Object.entries(legacyPlaceholders)) {
+      const element = document.getElementById(id);
+      if (element) element.setAttribute("placeholder", placeholder);
+    }
+    const abilityLabels = document.querySelectorAll(".ability-mini-label");
+    const abilityCopy = isEn ? ["SIZE", "SPEED", "STR", "DEX", "CON", "INT"] : isEs ? ["TAMAÑO", "VEL.", "FUE", "DES", "CON", "INT"] : ["TAMANHO", "VELOC.", "FOR", "DES", "CON", "INT"];
+    abilityLabels.forEach((element, index) => { if (abilityCopy[index]) element.textContent = abilityCopy[index]; });
+    const shieldTitle = document.querySelector(".ac-shield-title");
+    if (shieldTitle) shieldTitle.textContent = isEn ? "AC" : "CA";
+    const hpLabel = document.querySelector(".hp-bar-container > span:first-child");
+    if (hpLabel) hpLabel.textContent = isEn ? "HP" : isEs ? "PG" : "PV";
+    const saveNames = document.querySelectorAll(".saves-col-box .save-badge-row > span:last-child");
+    [isEn ? "Fortitude" : isEs ? "Fortaleza" : "Fortitude", isEn ? "Reflex" : isEs ? "Reflejos" : "Reflexos", isEn ? "Will" : isEs ? "Voluntad" : "Vontade"].forEach((label, index) => {
+      if (saveNames[index]) saveNames[index].textContent = label;
+    });
+    const heroLabel = document.querySelector(".sub-stats-row > div:first-child > span:first-child");
+    if (heroLabel) heroLabel.textContent = isEn ? "Hero Points:" : isEs ? "Puntos Heroicos:" : "Pontos Heroicos:";
+    const variantButton = document.getElementById("variantRulesBtn");
+    if (variantButton) {
+      variantButton.innerHTML = `⚙️ ${isEn ? "Variants" : isEs ? "Variantes" : "Variantes"}`;
+      variantButton.title = isEn ? "Configure variant rules (Free Archetype, ABP)" : isEs ? "Configurar reglas variantes (Arquetipo libre, ABP)" : "Configurar Regras Variantes (Arquétipo Livre, ABP)";
+    }
+    const readinessButton = document.getElementById("readinessBadgeBtn");
+    if (readinessButton) readinessButton.title = isEn ? "Character readiness audit" : isEs ? "Auditoría de preparación del personaje" : "Auditoria de prontidão da ficha";
+
+    const modalLabels = {
+      avatarModalTitle: isEn ? "Portrait & Avatar Studio" : isEs ? "Estudio de retratos y avatar" : "Estúdio de Retratos & Avatar",
+      avatarModalSubtitle: isEn ? "Create epic AI portraits or import custom images" : isEs ? "Crea retratos épicos con IA o importa imágenes personalizadas" : "Gere retratos épicos com IA ou importe imagens personalizadas",
+      tabBtnAvatarAIText: isEn ? "✨ Create with AI (Recommended)" : isEs ? "✨ Crear con IA (Recomendado)" : "✨ Criar com IA (Recomendado)",
+      tabBtnAvatarManualText: isEn ? "📁 Manual Upload / URL" : isEs ? "📁 Carga / URL manual" : "📁 Upload / URL Manual",
+      btnCopyJson: isEn ? "Copy" : isEs ? "Copiar" : "Copiar",
+      btnImportAction: isEn ? "Import" : isEs ? "Importar" : "Importar",
+      aiAssistantModalTitle: isEn ? "PF2e Expert AI Assistant (100% Free)" : isEs ? "Asistente de IA experto en PF2e (100% gratis)" : "Assistente de IA Especialista PF2e (100% Gratuito)",
+      btnGenerateAICharacter: isEn ? "✨ Generate Character with AI" : isEs ? "✨ Generar personaje con IA" : "✨ Gerar Ficha com IA",
+      btnRandomAIPreset: isEn ? "🎲 Random Concept" : isEs ? "🎲 Sortear concepto" : "🎲 Sortear Conceito"
+    };
+    for (const [id, label] of Object.entries(modalLabels)) {
+      const element = document.getElementById(id);
+      if (element) element.innerText = label;
+    }
+
+    const diceDrawer = document.getElementById("btnToggleDiceDrawer");
+    if (diceDrawer) {
+      const diceTitle = isEn ? "Open Dice Roller (Free Roll / History)" : isEs ? "Abrir lanzador de dados (tirada libre / historial)" : "Abrir Rolador de Dados (Rolagem Livre / Histórico)";
+      diceDrawer.title = diceTitle;
+      diceDrawer.setAttribute("aria-label", isEn ? "Open Dice Roller" : isEs ? "Abrir lanzador de dados" : "Abrir Rolador de Dados");
+    }
+    const diceButtons = [[4, "d4"], [6, "d6"], [8, "d8"], [10, "d10"], [12, "d12"], [20, "d20"], [100, "d100 (2d10)"]];
+    diceButtons.forEach(([sides, label]) => {
+      const button = document.getElementById(`btnDie${sides}`);
+      if (button) button.title = isEn ? `Roll ${label}` : isEs ? `Lanzar ${label}` : `Rolar ${label}`;
+    });
     document.querySelectorAll("[data-i18n-key]").forEach((element) => {
       const key = element.getAttribute("data-i18n-key");
       const label = key ? legacyLabels[key] : undefined;
@@ -574,6 +831,7 @@ class PathbuilderApp {
           this.character = assertSafeCharacterDocument(JSON.parse(savedLocal));
           this.diceHistory = Array.isArray(this.character.diceHistory) ? this.character.diceHistory.slice(0, 100) : [];
           this.normalizeCharacterCoins();
+          this.revalidateLoadedSelections();
           this.saveCharacterLocal(false);
           this.renderAll();
           return;
@@ -597,6 +855,7 @@ class PathbuilderApp {
     } catch (e) {
       this.character = this.getDefaultCharacter(charId);
     }
+    this.revalidateLoadedSelections();
     this.normalizeCharacterCoins();
     this.saveCharacterLocal(false);
     this.renderAll();
@@ -664,9 +923,16 @@ class PathbuilderApp {
 
   formatMovementSpeeds(calc = this.calc) {
     const movement = calc?.movementSpeeds || { land: calc?.speed || 0, swim: 0, climb: 0 };
-    const parts = [`${movement.land}ft.`];
-    if (movement.swim > 0) parts.push(`Natação ${movement.swim}ft.`);
-    if (movement.climb > 0) parts.push(`Escalada ${movement.climb}ft.`);
+    const locale = this.getLocale();
+    const unit = locale === "en" ? "ft." : locale === "es" ? "pies" : "pés";
+    const labels = locale === "en"
+      ? { swim: "Swim", climb: "Climb" }
+      : locale === "es"
+        ? { swim: "Nadar", climb: "Trepar" }
+        : { swim: "Natação", climb: "Escalada" };
+    const parts = [`${movement.land}${unit}`];
+    if (movement.swim > 0) parts.push(`${labels.swim} ${movement.swim}${unit}`);
+    if (movement.climb > 0) parts.push(`${labels.climb} ${movement.climb}${unit}`);
     return parts.join(" · ");
   }
 
@@ -960,7 +1226,7 @@ class PathbuilderApp {
           <div style="color: #94a3b8; font-size:13px;">
               👕 ${isEn ? "Item Bonus" : isEs ? "Bonificador de Objeto" : "Bônus de Item"} +${(Number(arm.acBonus) || 0) + armorRunes.potency}
             </div>
-            ${armorRuneItems.length ? `<div style="color:#cbd5e1; font-size:12px;">🔹 ${escapeHtml(armorRuneItems.map(rune => this.localizeItemName(rune.name || rune.id || "", locale)).join(", "))}${armorRunes.resilient ? " · +1 salvaguardas" : ""}</div>` : ""}
+            ${armorRuneItems.length ? `<div style="color:#cbd5e1; font-size:12px;">🔹 ${escapeHtml(armorRuneItems.map(rune => this.localizeItemName(rune.name || rune.id || "", locale)).join(", "))}${armorRunes.resilient ? (isEn ? " · +1 saves" : isEs ? " · +1 salvaciones" : " · +1 salvaguardas") : ""}</div>` : ""}
           <div style="color: #94a3b8; font-size:13px;">
             ⬆️ ${isEn ? "Dex Cap" : isEs ? "Límite de Des" : "Limite de Des"} ${arm.dexCap !== undefined ? arm.dexCap : 5}
           </div>
@@ -1187,13 +1453,13 @@ class PathbuilderApp {
     list.innerHTML = `
       <div class="pb-gear-top-bar">
         <div class="pb-gear-coins-pillbox">
-          <div class="pb-gear-coin-item" onclick="app.promptEditCoin('pp')" style="cursor:pointer;" title="${isEn ? "Click to edit" : "Clique para editar"}"><span class="coin-dot pp"></span> ${isEn ? "Platinum" : isEs ? "Platino" : "Platina"} ${coins.pp || 0}</div>
-          <div class="pb-gear-coin-item" onclick="app.promptEditCoin('gp')" style="cursor:pointer;" title="${isEn ? "Click to edit" : "Clique para editar"}"><span class="coin-dot gp"></span> ${isEn ? "Gold" : isEs ? "Oro" : "Ouro"} ${coins.gp || 0}</div>
-          <div class="pb-gear-coin-item" onclick="app.promptEditCoin('sp')" style="cursor:pointer;" title="${isEn ? "Click to edit" : "Clique para editar"}"><span class="coin-dot sp"></span> ${isEn ? "Silver" : isEs ? "Plata" : "Prata"} ${coins.sp || 0}</div>
-          <div class="pb-gear-coin-item" onclick="app.promptEditCoin('cp')" style="cursor:pointer;" title="${isEn ? "Click to edit" : "Clique para editar"}"><span class="coin-dot cp"></span> ${isEn ? "Copper" : isEs ? "Cobre" : "Cobre"} ${coins.cp || 0}</div>
+          <div class="pb-gear-coin-item" onclick="app.promptEditCoin('pp')" style="cursor:pointer;" title="${isEn ? "Click to edit" : isEs ? "Haz clic para editar" : "Clique para editar"}"><span class="coin-dot pp"></span> ${isEn ? "Platinum" : isEs ? "Platino" : "Platina"} ${coins.pp || 0}</div>
+          <div class="pb-gear-coin-item" onclick="app.promptEditCoin('gp')" style="cursor:pointer;" title="${isEn ? "Click to edit" : isEs ? "Haz clic para editar" : "Clique para editar"}"><span class="coin-dot gp"></span> ${isEn ? "Gold" : isEs ? "Oro" : "Ouro"} ${coins.gp || 0}</div>
+          <div class="pb-gear-coin-item" onclick="app.promptEditCoin('sp')" style="cursor:pointer;" title="${isEn ? "Click to edit" : isEs ? "Haz clic para editar" : "Clique para editar"}"><span class="coin-dot sp"></span> ${isEn ? "Silver" : isEs ? "Plata" : "Prata"} ${coins.sp || 0}</div>
+          <div class="pb-gear-coin-item" onclick="app.promptEditCoin('cp')" style="cursor:pointer;" title="${isEn ? "Click to edit" : isEs ? "Haz clic para editar" : "Clique para editar"}"><span class="coin-dot cp"></span> ${isEn ? "Copper" : isEs ? "Cobre" : "Cobre"} ${coins.cp || 0}</div>
         </div>
         <div class="pb-gear-bulk-status">
-          ${isEn ? "Total Bulk" : isEs ? "Volumen Total" : "Carga Total"} <strong>${totalBulk}</strong> ${isEncumbered ? `<span style="color:#ef4444; font-weight:900;">${isEn ? "Encumbered" : isEs ? "Sobrecargado" : "Sobrecarregado"}</span>` : (isEn ? "Unencumbered" : isEs ? "Sin Sobrecarga" : "Desimpedido")} (${isEn ? "Enc" : "Sob"}: ${encumberedLimit}; Max: ${maxBulk})
+          ${isEn ? "Total Bulk" : isEs ? "Volumen Total" : "Carga Total"} <strong>${totalBulk}</strong> ${isEncumbered ? `<span style="color:#ef4444; font-weight:900;">${isEn ? "Encumbered" : isEs ? "Sobrecargado" : "Sobrecarregado"}</span>` : (isEn ? "Unencumbered" : isEs ? "Sin Sobrecarga" : "Desimpedido")} (${isEn ? "Enc" : isEs ? "Sob" : "Sob"}: ${encumberedLimit}; ${isEn ? "Max" : isEs ? "Máx." : "Máx."}: ${maxBulk})
         </div>
         <div class="pb-gear-actions-bar">
           <button class="pb-defense-btn" onclick="app.openPicker('gear')">${isEn ? "Add Gear" : isEs ? "Añadir Equipo" : "Adicionar Item"}</button>
@@ -1294,7 +1560,9 @@ class PathbuilderApp {
       this.character.inventory.splice(idx, 1);
       this.saveCharacterLocal(false);
       this.renderAll();
+      return true;
     }
+    return false;
   }
 
   promptEditCoin(coinKey) {
@@ -1331,25 +1599,26 @@ class PathbuilderApp {
 
   editContainer(idx) {
     const container = this.character.containers?.[idx];
-    if (!container) return;
+    if (!container) return false;
     const locale = this.getLocale();
     const label = locale === "en" ? "Container name:" : locale === "es" ? "Nombre del contenedor:" : "Nome do recipiente:";
     const nextName = prompt(label, container.name || "");
-    if (nextName === null) return;
+    if (nextName === null) return false;
     container.name = nextName.trim() || container.name;
     this.saveCharacterLocal(false);
     this.renderAll();
+    return true;
   }
 
   moveInventoryItemToContainer(idx) {
     const item = this.character.inventory?.[idx];
     const containers = this.character.containers || [];
-    if (!item || !containers.length) return;
+    if (!item || !containers.length) return false;
     const locale = this.getLocale();
     const promptLabel = locale === "en" ? "Container number:" : locale === "es" ? "Número del contenedor:" : "Número do recipiente:";
     const list = containers.map((container, containerIdx) => `${containerIdx + 1}: ${container.name || (locale === "en" ? "Unnamed container" : locale === "es" ? "Contenedor sin nombre" : "Recipiente sem nome")}`).join("\n");
     const selected = Number.parseInt(prompt(`${list}\n${promptLabel}`, "1"), 10) - 1;
-    if (!containers[selected]) return;
+    if (!containers[selected]) return false;
     if (!Array.isArray(containers[selected].items)) containers[selected].items = [];
     const identity = (entry) => String(entry?.id || entry?.name || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
     const existing = containers[selected].items.find((entry) => identity(entry) && identity(entry) === identity(item));
@@ -1358,12 +1627,13 @@ class PathbuilderApp {
     this.character.inventory.splice(idx, 1);
     this.saveCharacterLocal(false);
     this.renderAll();
+    return true;
   }
 
   moveContainerItemToInventory(containerIdx, itemIdx) {
     const container = this.character.containers?.[containerIdx];
     const item = container?.items?.[itemIdx];
-    if (!container || !item) return;
+    if (!container || !item) return false;
     if (!Array.isArray(this.character.inventory)) this.character.inventory = [];
     const identity = (entry) => String(entry?.id || entry?.name || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
     const existing = this.character.inventory.find((entry) => identity(entry) && identity(entry) === identity(item));
@@ -1372,30 +1642,32 @@ class PathbuilderApp {
     container.items.splice(itemIdx, 1);
     this.saveCharacterLocal(false);
     this.renderAll();
+    return true;
   }
 
   adjustContainerItemQty(containerIdx, itemIdx, delta) {
     const item = this.character.containers?.[containerIdx]?.items?.[itemIdx];
-    if (!item) return;
+    if (!item) return false;
     item.qty = (Number(item.qty) || 1) + delta;
     if (item.qty <= 0) this.character.containers[containerIdx].items.splice(itemIdx, 1);
     this.saveCharacterLocal(false);
     this.renderAll();
+    return true;
   }
 
   editContainerItem(containerIdx, itemIdx) {
     const item = this.character.containers?.[containerIdx]?.items?.[itemIdx];
-    if (!item) return;
+    if (!item) return false;
     const locale = this.getLocale();
     const labels = locale === "en" ? { name: "Item name:", qty: "Quantity:", description: "Description:" } : locale === "es" ? { name: "Nombre del objeto:", qty: "Cantidad:", description: "Descripción:" } : { name: "Nome do item:", qty: "Quantidade:", description: "Descrição:" };
     const name = prompt(labels.name, item.name || "");
-    if (name === null) return;
+    if (name === null) return false;
     const qty = prompt(labels.qty, String(item.qty || 1));
-    if (qty === null) return;
+    if (qty === null) return false;
     const description = prompt(labels.description, item.description || item.summaries?.[locale] || "");
-    if (description === null) return;
+    if (description === null) return false;
     const parsedQty = Number.parseInt(qty, 10);
-    if (!Number.isFinite(parsedQty) || parsedQty < 1) return;
+    if (!Number.isFinite(parsedQty) || parsedQty < 1) return false;
     item.name = name.trim() || item.name;
     item.qty = parsedQty;
     item.description = description.trim();
@@ -1403,22 +1675,24 @@ class PathbuilderApp {
     item.summaries = { "pt-BR": item.summaries?.["pt-BR"] || item.description, en: item.summaries?.en || item.description, es: item.summaries?.es || item.description, ...(item.summaries || {}), [locale]: item.description };
     this.saveCharacterLocal(false);
     this.renderAll();
+    return true;
   }
 
   removeContainerItem(containerIdx, itemIdx) {
     const container = this.character.containers?.[containerIdx];
-    if (!container?.items?.[itemIdx]) return;
+    if (!container?.items?.[itemIdx]) return false;
     container.items.splice(itemIdx, 1);
     this.saveCharacterLocal(false);
     this.renderAll();
+    return true;
   }
 
   removeContainer(idx) {
     const container = this.character.containers?.[idx];
-    if (!container) return;
+    if (!container) return false;
     const locale = this.getLocale();
     const message = locale === "en" ? "Remove this container? Stored items will return to the main inventory." : locale === "es" ? "¿Eliminar este contenedor? Los objetos almacenados volverán al inventario principal." : "Remover este recipiente? Os itens armazenados voltarão ao inventário principal.";
-    if (typeof confirm === "function" && !confirm(message)) return;
+    if (typeof confirm === "function" && !confirm(message)) return false;
     if (!this.character.inventory) this.character.inventory = [];
     if (Array.isArray(container.items)) {
       const identity = (entry) => String(entry?.id || entry?.name || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
@@ -1432,6 +1706,7 @@ class PathbuilderApp {
     this.character.containers.splice(idx, 1);
     this.saveCharacterLocal(false);
     this.renderAll();
+    return true;
   }
 
   getCurrentLocale() {
@@ -1596,6 +1871,7 @@ class PathbuilderApp {
       this.character.patronSkill = patron.patronSkill;
       this.character.patronLesson = trilingual(patron.initialLesson);
       this.character.patronHex = trilingual(patron.hexCantrip);
+      this.character.patronHexId = patron.hexSpellId;
       this.character.patronFamiliarSpell = trilingual(patron.familiarSpell);
       this.character.patronFamiliarAbility = trilingual(patron.familiarAbility);
       this.character.magicTradition = patron.tradition;
@@ -1620,6 +1896,21 @@ class PathbuilderApp {
       }
       return;
     }
+    const selectedWizardSchool = [this.character.arcaneSchool, this.character.subclass]
+      .filter(Boolean)
+      .map((value) => PF2E_ENGINE.resolveCatalogRecord(PF2E_DATA.subclasses || [], value))
+      .find((record) => record?.classId === "class.wizard" && record.school === true);
+    if (selectedWizardSchool || String(this.character.class || "").toLowerCase().includes("mago") || String(this.character.class || "").toLowerCase().includes("wizard")) {
+      if (!Array.isArray(this.character.spells)) this.character.spells = [];
+      const schoolId = selectedWizardSchool?.id || "";
+      this.character.spells = this.character.spells.filter((spell) => !spell.grantedByArcaneSchool || spell.grantedByArcaneSchool === schoolId);
+      const schoolSpell = selectedWizardSchool?.initialSchoolSpellId
+        ? (PF2E_DATA.spells || []).find((spell) => spell.id === selectedWizardSchool.initialSchoolSpellId)
+        : null;
+      if (schoolSpell && !this.character.spells.some((spell) => spell.id === schoolSpell.id)) {
+        this.character.spells.push({ ...schoolSpell, grantedByArcaneSchool: schoolId });
+      }
+    }
     const selectedHybridStudy = [this.character.hybridStudy, this.character.subclass]
       .filter(Boolean)
       .map((value) => PF2E_ENGINE.resolveCatalogRecord(PF2E_DATA.subclasses || [], value))
@@ -1633,6 +1924,24 @@ class PathbuilderApp {
       this.character.spells = this.character.spells.filter((spell) => !spell.grantedByHybridStudy || spell.grantedByHybridStudy === selectedHybridStudy.id);
       const confluxSpell = (PF2E_DATA.spells || []).find((spell) => spell.id === selectedHybridStudy.confluxSpellId);
       if (confluxSpell && !this.character.spells.some((spell) => spell.id === confluxSpell.id)) this.character.spells.push({ ...confluxSpell, grantedByHybridStudy: selectedHybridStudy.id });
+    }
+    const selectedOracleMystery = [this.character.mystery, this.character.subclass]
+      .filter(Boolean)
+      .map((value) => PF2E_ENGINE.resolveCatalogRecord(PF2E_DATA.subclasses || [], value))
+      .find((record) => record?.classId === "class.oracle" && record.mystery === true);
+    if (selectedOracleMystery) {
+      this.character.mystery = selectedOracleMystery.name;
+      this.character.subclass = selectedOracleMystery.name;
+      this.character.mysterySkill = selectedOracleMystery.mysterySkill ? { ...selectedOracleMystery.mysterySkill } : "";
+      this.character.mysteryCurse = selectedOracleMystery.curseNames ? { ...selectedOracleMystery.curseNames } : "";
+      if (this.character.focusPointsMax === undefined) this.character.focusPointsMax = 1;
+      if (this.character.focusPointsCurrent === undefined) this.character.focusPointsCurrent = 1;
+      if (!Array.isArray(this.character.spells)) this.character.spells = [];
+      this.character.spells = this.character.spells.filter((spell) => !spell.grantedByMystery || spell.grantedByMystery === selectedOracleMystery.id);
+      for (const spellId of selectedOracleMystery.initialRevelationSpellId ? [selectedOracleMystery.initialRevelationSpellId] : []) {
+        const revelation = (PF2E_DATA.spells || []).find((spell) => spell.id === spellId);
+        if (revelation && !this.character.spells.some((spell) => spell.id === revelation.id)) this.character.spells.push({ ...revelation, grantedByMystery: selectedOracleMystery.id });
+      }
     }
     if (profile.traditionMode === "fixed") {
       this.character.magicTradition = profile.traditions[0];
@@ -1650,11 +1959,49 @@ class PathbuilderApp {
       // stale choices instead of leaving an invalid character state behind.
       this.character.subclass = "";
       this.character.patron = "";
+      this.character.patronId = "";
+      this.character.patronSkill = "";
+      this.character.patronLesson = "";
+      this.character.patronHex = "";
+      this.character.patronFamiliarSpell = "";
+      this.character.patronFamiliarAbility = "";
       this.character.wizardThesis = "";
+      this.character.arcaneSchool = "";
       this.character.mystery = "";
+      this.character.mysterySkill = "";
+      this.character.mysteryCurse = "";
       this.character.hybridStudy = "";
+      this.character.magicTradition = "";
+      // Cada classe possui um campo de escolha próprio. Limpar esses campos
+      // evita que a ficha mostre uma subclasse válida da classe anterior
+      // como se fosse uma opção da nova classe.
+      [
+        "researchField", "instinct", "muse", "doctrine", "order", "racket", "hunterEdge",
+        "bloodline", "methodology", "style", "innovation", "way", "consciousMind", "subconsciousMind",
+        "implement", "apparition", "icon", "banner", "guardianDefense", "eidolon", "elementalGate", "cause", "sanctification", "arcaneSchool", "hybridStudy",
+        "fatalMethod", "grimFascination"
+      ].forEach((field) => { this.character[field] = ""; });
       this.clearProgressionSlots("class_feat");
       this.clearProgressionSlots("class_feature");
+      // Remove concessões automáticas da classe anterior antes de revalidar
+      // a nova ficha. Entradas manuais não possuem esses marcadores e ficam
+      // preservadas.
+      if (Array.isArray(this.character.spells)) {
+        this.character.spells = this.character.spells.filter((spell) => !(
+          spell?.grantedByClass || spell?.grantedByPatron || spell?.grantedByHybridStudy || spell?.grantedByArcaneSchool || spell?.grantedByMystery
+        ));
+      }
+      if (Array.isArray(this.character.pets)) {
+        this.character.pets = this.character.pets.filter((pet) => !(
+          pet?.grantedByClass || pet?.grantedByPatron || pet?.grantedByHybridStudy
+        ));
+      }
+      if (Array.isArray(this.character.actions)) {
+        this.character.actions = this.character.actions.filter((action) => !action?.grantedByClass);
+      }
+      if (Array.isArray(this.character.classFeatures)) {
+        this.character.classFeatures = this.character.classFeatures.filter((feature) => !feature?.grantedByClass);
+      }
       if (Array.isArray(this.character.feats)) {
         this.character.feats = this.character.feats.filter(feat => {
           if (String(feat?.slotId || "").includes("class_feat")) return false;
@@ -1681,19 +2028,37 @@ class PathbuilderApp {
 
   applySubclassSelection(item, options = {}) {
     if (!item) return;
-    const targetField = ["patron", "wizardThesis", "mystery"].includes(options.targetField) ? options.targetField : "subclass";
+    const supportedTargetFields = new Set([
+      "patron", "wizardThesis", "mystery", "hybridStudy", "researchField", "instinct", "muse", "doctrine", "order",
+      "racket", "hunterEdge", "style", "cause", "bloodline", "methodology", "innovation", "way", "consciousMind",
+      "implement", "apparition", "icon", "banner", "guardianDefense", "elementalGate", "eidolon", "arcaneSchool", "fatalMethod", "grimFascination"
+    ]);
+    const targetField = supportedTargetFields.has(options.targetField) ? options.targetField : "subclass";
+    const selectedClass = PF2E_ENGINE.resolveCatalogRecord(
+      Object.values(PF2E_DATA.classes || {}),
+      this.character.class,
+    );
+    const itemData = item.data || item;
+    if (selectedClass?.id && itemData.classId && itemData.classId !== selectedClass.id) return;
+    const fieldMatches = targetField === "subclass"
+      ? true
+      : itemData.choiceField === targetField || itemData[targetField] === true;
+    if (!fieldMatches) return;
+    const compatibility = PF2E_ENGINE.getPrerequisiteCompatibility(this.character, itemData);
+    if (compatibility?.state === "incompatible") return;
     if (targetField === "patron" && item.data?.patron !== true) return;
     if (targetField === "wizardThesis" && item.data?.thesis !== true) return;
     if (targetField === "mystery" && item.data?.mystery !== true) return;
+    const canonicalValue = item.data?.id || item.name;
     const previousValue = this.character[targetField];
-    this.character[targetField] = item.name;
+    this.character[targetField] = canonicalValue;
     // Witch patrons are represented by the class subclass catalog because
     // PF2e grants the patron at the same creation step. Keep both fields in
     // sync so legacy spellcasting and the explicit character field agree.
-    if (targetField === "patron") this.character.subclass = item.name;
-    if (targetField === "mystery") this.character.subclass = item.name;
-    if (item.data?.hybridStudy === true) this.character.hybridStudy = item.name;
-    if (previousValue === item.name) return;
+    if (targetField === "patron") this.character.subclass = canonicalValue;
+    if (targetField === "mystery") this.character.subclass = canonicalValue;
+    if (item.data?.hybridStudy === true) this.character.hybridStudy = canonicalValue;
+    if (previousValue === canonicalValue) return;
     this.clearProgressionSlots("class_feature");
     this.reconcileSpellcastingProfile();
     if (Array.isArray(this.character.spells)) {
@@ -1706,6 +2071,91 @@ class PathbuilderApp {
     Object.keys(this.character.progression).forEach(key => {
       if (key.includes(fragment)) delete this.character.progression[key];
     });
+  }
+
+  revalidateLoadedSelections() {
+    if (!this.character || typeof PF2E_ENGINE === "undefined") return;
+    const filterCompatible = (records, checker) => Array.isArray(records)
+      ? records.filter((record) => checker(record)?.state !== "incompatible")
+      : records;
+    this.character.feats = filterCompatible(this.character.feats, (record) => PF2E_ENGINE.getPrerequisiteCompatibility(this.character, record));
+    this.character.archetypes = filterCompatible(this.character.archetypes, (record) => PF2E_ENGINE.getPrerequisiteCompatibility(this.character, record));
+    this.character.pets = filterCompatible(this.character.pets, (record) => PF2E_ENGINE.getPrerequisiteCompatibility(this.character, record));
+    this.character.spells = filterCompatible(this.character.spells, (record) => PF2E_ENGINE.getSpellCompatibility(this.character, record));
+    const classText = String(this.character.class || "").toLowerCase();
+    const classRecord = Object.values(PF2E_DATA.classes || {}).find((candidate) => {
+      const names = [candidate?.id, candidate?.name, candidate?.names?.["pt-BR"], candidate?.names?.en, candidate?.names?.es]
+        .filter(Boolean).map((value) => normalizeCatalogLabel(value));
+      const selected = normalizeCatalogLabel(this.character.class);
+      return names.some((name) => selected === name || selected.includes(name) || name.includes(selected));
+    });
+    const classId = classRecord?.id || "";
+    const isClass = (...ids) => ids.includes(classId);
+    const clearFields = (fields) => fields.forEach((field) => { this.character[field] = ""; });
+    if (!isClass("class.witch") && !classText.includes("brux") && !classText.includes("witch") && !classText.includes("bruja")) {
+      clearFields(["patron", "patronId", "patronSkill", "patronLesson", "patronHex", "patronHexId", "patronFamiliarSpell", "patronFamiliarAbility"]);
+    }
+    if (!isClass("class.wizard") && !classText.includes("mago") && !classText.includes("wizard")) clearFields(["wizardThesis", "arcaneSchool"]);
+    if (!isClass("class.magus") && !classText.includes("magus")) clearFields(["hybridStudy"]);
+    if (!isClass("class.oracle") && !classText.includes("oráculo") && !classText.includes("oracle") && !classText.includes("oraculo")) clearFields(["mystery", "mysterySkill", "mysteryCurse"]);
+    if (!isClass("class.necromancer") && !classText.includes("necromant") && !classText.includes("necromancer") && !classText.includes("nigromant")) clearFields(["fatalMethod", "grimFascination"]);
+
+    // Campos específicos de classe também precisam apontar para uma opção
+    // catalogada da classe atual. Isso protege fichas importadas/antigas que
+    // poderiam manter um ID incompatível sem passar pelo picker.
+    const subclasses = PF2E_DATA.subclasses || [];
+    const selectedRecord = (value, predicate) => {
+      if (!value) return null;
+      const record = PF2E_ENGINE.resolveCatalogRecord(subclasses, value);
+      return record && predicate(record) ? record : null;
+    };
+    if (isClass("class.witch") || classText.includes("brux") || classText.includes("witch") || classText.includes("bruja")) {
+      const patron = selectedRecord(this.character.patron || this.character.subclass, (record) => record.classId === "class.witch" && record.patron === true);
+      if ((this.character.patron || this.character.subclass) && !patron) clearFields(["patron", "patronId", "patronSkill", "patronLesson", "patronHex", "patronHexId", "patronFamiliarSpell", "patronFamiliarAbility", "subclass"]);
+      else if (patron) {
+        this.character.patron = patron.id;
+        this.character.subclass = patron.id;
+        this.character.patronId = patron.id;
+      }
+      if (this.character.patronHexId || this.character.patronHex) {
+        const hexValue = this.character.patronHexId || this.character.patronHex;
+        const hexValueLabels = typeof hexValue === "object"
+          ? [hexValue.id, hexValue.name, ...Object.values(hexValue)].filter(Boolean).map((value) => String(value).toLowerCase())
+          : [String(hexValue).toLowerCase()];
+        const hex = (PF2E_DATA.spells || []).find((record) => (
+          (this.character.patronHexId && record.id === this.character.patronHexId)
+          || (!this.character.patronHexId && [record.id, record.name, ...Object.values(record.names || {})].filter(Boolean).some((value) => hexValueLabels.includes(String(value).toLowerCase())))
+        ) && (record.hex === true || String(record.id || "").startsWith("spell.player_core.witch.")));
+        if (!hex) clearFields(["patronHex", "patronHexId"]);
+        else {
+          this.character.patronHexId = hex.id;
+          this.character.patronHex = { ...(hex.names || {}), "pt-BR": hex.names?.["pt-BR"] || hex.name, en: hex.names?.en || hex.name, es: hex.names?.es || hex.name };
+        }
+      }
+    }
+    if (isClass("class.wizard") || classText.includes("mago") || classText.includes("wizard")) {
+      if (this.character.wizardThesis && !selectedRecord(this.character.wizardThesis, (record) => record.classId === "class.wizard" && record.thesis === true)) clearFields(["wizardThesis"]);
+      if (this.character.arcaneSchool && !selectedRecord(this.character.arcaneSchool, (record) => record.classId === "class.wizard" && record.school === true)) clearFields(["arcaneSchool"]);
+    }
+    if (classText.includes("magus") && this.character.hybridStudy && !selectedRecord(this.character.hybridStudy, (record) => record.classId === "class.magus" && record.hybridStudy === true)) clearFields(["hybridStudy"]);
+    if ((isClass("class.oracle") || classText.includes("oráculo") || classText.includes("oracle") || classText.includes("oraculo")) && this.character.mystery && !selectedRecord(this.character.mystery, (record) => record.classId === "class.oracle" && record.mystery === true)) clearFields(["mystery"]);
+
+    // As subclasses legadas também recebem um campo de escolha explícito.
+    // Assim, fichas importadas não mantêm uma subclasse de outra classe só
+    // porque o rótulo localizado coincide.
+    const choiceFields = new Set([
+      "researchField", "instinct", "muse", "doctrine", "order", "racket", "hunterEdge", "style", "cause",
+      "bloodline", "methodology", "innovation", "way", "consciousMind", "implement", "apparition", "icon",
+      "banner", "guardianDefense", "elementalGate", "eidolon", "arcaneSchool", "hybridStudy", "fatalMethod"
+    ]);
+    if (classRecord?.id) {
+      for (const field of choiceFields) {
+        const value = this.character[field];
+        if (!value) continue;
+        const valid = selectedRecord(value, (record) => record.classId === classRecord.id && (record.choiceField === field || record[field] === true));
+        if (!valid) clearFields([field]);
+      }
+    }
   }
 
   updateMagicTradition(value) {
@@ -1766,7 +2216,7 @@ class PathbuilderApp {
 
     if (dcEl) dcEl.innerText = spellcasting.dc || this.calc.classDc;
     if (atkEl) atkEl.innerText = PF2E_ENGINE.formatMod(spellcasting.attackMod !== undefined ? spellcasting.attackMod : (this.calc.classDc - 10));
-    if (tradBadge) tradBadge.innerText = spellcasting.traditionName || this.getTraditionLabel("arcane", locale);
+    if (tradBadge) tradBadge.innerText = this.getTraditionLabel(spellcasting.tradition, locale) || spellcasting.traditionName || this.getTraditionLabel("arcane", locale);
     if (focusDisp) {
       const maxF = spellcasting.maxFocusPoints ?? 0;
       const curF = Math.min(maxF, spellcasting.currentFocusPoints !== undefined ? spellcasting.currentFocusPoints : maxF);
@@ -1841,8 +2291,10 @@ class PathbuilderApp {
         const displayName = sp.names?.[locale] || sp.name;
         const description = sp.summaries?.[locale] || sp.description || "";
         const casting = sp.castingTimes?.[locale] || sp.actions || "";
-        const traditions = sp.traditionNames?.[locale]?.join(", ") || sp.traditions?.join(", ") || "";
-        const source = sp.source?.book ? `${sp.source.book}${sp.source.page ? ` · p. ${sp.source.page}` : ""}` : "";
+        const traditions = sp.traditionNames?.[locale]?.join(", ")
+          || (sp.traditions || []).map((tradition) => this.getTraditionLabel(tradition, locale)).join(", ")
+          || "";
+        const source = sp.source?.book ? `${localizeSourceBookName(sp.source.book, locale)}${sp.source.page ? ` · p. ${sp.source.page}` : ""}` : "";
         const compatibility = sp.manual ? null : PF2E_ENGINE.getSpellCompatibility(this.character, sp);
         const compatibilityMessage = compatibility && compatibility.state !== "available" ? this.getSpellCompatibilityMessage(compatibility, locale) : "";
         return `
@@ -1865,8 +2317,10 @@ class PathbuilderApp {
       spellsContent += innateSpells.map((sp, idx) => {
         const displayName = sp.names?.[locale] || sp.name;
         const description = sp.summaries?.[locale] || sp.description || "";
-        const traditions = sp.traditionNames?.[locale]?.join(", ") || sp.traditions?.join(", ") || "occult";
-        const source = sp.source?.book ? `${sp.source.book}${sp.source.page ? ` · p. ${sp.source.page}` : ""}` : "";
+        const traditions = sp.traditionNames?.[locale]?.join(", ")
+          || (sp.traditions || []).map((tradition) => this.getTraditionLabel(tradition, locale)).join(", ")
+          || this.getTraditionLabel("occult", locale);
+        const source = sp.source?.book ? `${localizeSourceBookName(sp.source.book, locale)}${sp.source.page ? ` · p. ${sp.source.page}` : ""}` : "";
         return `<article class="strike-card spell-card">
           <div class="strike-header"><span><strong>✨ ${escapeHtml(displayName)}</strong> · ${innateLabel} · ${copy.rank} 0</span>
             <div style="display:flex; gap:4px;"><button type="button" onclick="app.editCharacterCollectionItem('heritageInnateSpells', ${idx})" aria-label="${copy.edit} ${escapeHtml(displayName)}">✎</button><button type="button" onclick="app.removeHeritageInnateSpell(${idx})" aria-label="${copy.remove} ${escapeHtml(displayName)}">🗑️</button></div>
@@ -1882,8 +2336,8 @@ class PathbuilderApp {
       const displayName = ritual.names?.[locale] || ritual.name;
       const description = ritual.summaries?.[locale] || ritual.description || "";
       const casting = ritual.castingTimes?.[locale] || "";
-      const check = ritual.primaryChecks?.[locale] || "";
-      const source = ritual.source?.book ? `${ritual.source.book}${ritual.source.page ? ` · p. ${ritual.source.page}` : ""}` : "";
+      const check = this.localizeSkillName(ritual.primaryChecks?.[locale] || ritual.primaryChecks?.["pt-BR"] || ritual.primaryChecks?.en || "", locale);
+      const source = ritual.source?.book ? `${localizeSourceBookName(ritual.source.book, locale)}${ritual.source.page ? ` · p. ${ritual.source.page}` : ""}` : "";
       return `
         <article class="strike-card ritual-card">
           <div class="strike-header">
@@ -1905,8 +2359,17 @@ class PathbuilderApp {
     const isEs = locale === "es";
 
     const pets = Array.isArray(this.character.pets) ? this.character.pets : [];
+    const seenPetIdentities = new Set();
+    const petEntries = pets.map((pet, index) => ({ pet, index })).filter(({ pet }) => {
+      const identity = pet?.id
+        ? `id:${String(pet.id).trim().toLowerCase()}`
+        : `name:${this.localizeItemName(pet?.name || "", locale).trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, " ")}`;
+      if (!identity || seenPetIdentities.has(identity)) return false;
+      seenPetIdentities.add(identity);
+      return true;
+    });
 
-    const petCardsHtml = pets.length === 0 ? `
+    const petCardsHtml = petEntries.length === 0 ? `
       <div style="color:var(--pb-text-muted); text-align:center; padding:30px;">
         <p>${isEn ? "No animal companion or familiar associated." : isEs ? "Ninguna mascota o compañero animal asociado." : "Nenhum mascote ou companheiro animal associado."}</p>
         <button class="btn-pb-action" onclick="app.openAddPetModal()" style="margin-top:10px;">➕ ${isEn ? "Add Companion / Familiar / Mount" : isEs ? "Añadir Compañero / Familiar / Montura" : "Adicionar Companheiro / Familiar / Montaria"}</button>
@@ -1915,7 +2378,7 @@ class PathbuilderApp {
       <div style="margin-bottom:12px; display:flex; justify-content:flex-end;">
         <button class="btn-pb-action" onclick="app.openAddPetModal()">➕ ${isEn ? "Add Another Pet" : isEs ? "Añadir Otra Mascota" : "Adicionar Outro Mascote"}</button>
       </div>
-      ${pets.map((pet, idx) => {
+      ${petEntries.map(({ pet, index: petIndex }) => {
         const companion = PF2E_ENGINE?.calculateCompanionStats
           ? PF2E_ENGINE.calculateCompanionStats(this.character, pet)
           : pet;
@@ -1928,6 +2391,8 @@ class PathbuilderApp {
               ? "Eidolon"
               : (isEn ? "Animal companion" : isEs ? "Compañero animal" : "Companheiro animal");
         const profileLabel = isEn ? "Eidolon matrices" : isEs ? "Matrices del eidolon" : "Matrizes do eidolon";
+        const profileAcLabel = isEn ? "AC" : "CA";
+        const profileDexLabel = isEn ? "DEX" : isEs ? "DES" : "DES";
         const profileOptions = Array.isArray(companion.profiles) ? companion.profiles : [];
         const activeProfileIndex = Number.isInteger(companion.profileIndex) ? companion.profileIndex : 0;
         const profileStats = Array.isArray(companion.profiles) ? companion.profiles.map((profile) => {
@@ -1938,19 +2403,26 @@ class PathbuilderApp {
               : { str: "FOR", dex: "DES", con: "CON", int: "INT", wis: "SAB", cha: "CAR" };
           const scores = Object.entries(profile.abilities || {}).map(([key, value]) => `${abilityNames[key] || key.toUpperCase()} ${value}`).join(" · ");
           const selectedMark = profileOptions[activeProfileIndex] === profile ? " ✓" : "";
-          return `<div><strong>${escapeHtml(this.localizeItemName(profile.name || "", locale))}${selectedMark}</strong> · ${escapeHtml(scores)} · CA +${escapeHtml(profile.acBonus ?? 0)} (DES +${escapeHtml(profile.dexCap ?? 0)})</div>`;
+          return `<div><strong>${escapeHtml(this.localizeItemName(profile.name || "", locale))}${selectedMark}</strong> · ${escapeHtml(scores)} · ${profileAcLabel} +${escapeHtml(profile.acBonus ?? 0)} (${profileDexLabel} +${escapeHtml(profile.dexCap ?? 0)})</div>`;
         }).join("") : "";
         const profileSelector = profileOptions.length > 1
-              ? `<label style="display:flex; align-items:center; gap:6px; margin-top:6px;"><span>${isEn ? "Active matrix:" : isEs ? "Matriz activa:" : "Matriz ativa:"}</span><select onchange="app.setCompanionProfile(${idx}, Number(this.value))">${profileOptions.map((profile, profileIndex) => `<option value="${profileIndex}" ${profileIndex === activeProfileIndex ? "selected" : ""}>${escapeHtml(this.localizeItemName(profile.name || `Profile ${profileIndex + 1}`, locale))}</option>`).join("")}</select></label>`
-          : "";
+              ? `<label style="display:flex; align-items:center; gap:6px; margin-top:6px;"><span>${isEn ? "Active matrix:" : isEs ? "Matriz activa:" : "Matriz ativa:"}</span><select onchange="app.setCompanionProfile(${petIndex}, Number(this.value))">${profileOptions.map((profile, profileIndex) => `<option value="${profileIndex}" ${profileIndex === activeProfileIndex ? "selected" : ""}>${escapeHtml(this.localizeItemName(profile.name || `Profile ${profileIndex + 1}`, locale))}</option>`).join("")}</select></label>`
+              : "";
+        const abilityNames = isEn
+          ? { str: "STR", dex: "DEX", con: "CON", int: "INT", wis: "WIS", cha: "CHA" }
+          : isEs
+            ? { str: "FUE", dex: "DES", con: "CON", int: "INT", wis: "SAB", cha: "CAR" }
+            : { str: "FOR", dex: "DES", con: "CON", int: "INT", wis: "SAB", cha: "CAR" };
+        const abilityModifiers = Object.entries(companion.abilityModifiers || {}).map(([key, value]) => `${abilityNames[key] || key.toUpperCase()} ${Number(value) >= 0 ? "+" : ""}${value}`).join(" · ");
         return `
         <div class="strike-card" style="border-left-color: var(--pb-orange); background: var(--pb-bg-panel); margin-bottom:12px;">
           <div class="strike-header">
             <div style="font-weight:bold; color:var(--pb-orange); font-size:15px;">🐾 ${escapeHtml(this.localizeItemName(pet.name, locale))}</div>
-            <div style="display:flex; gap:4px;"><button onclick="app.editCharacterCollectionItem('pets', ${idx})" title="${isEn ? "Edit Pet" : isEs ? "Editar mascota" : "Editar mascote"}" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer; font-size:14px;">✎</button><button onclick="app.removePet(${idx})" title="${isEn ? "Remove Pet" : isEs ? "Eliminar mascota" : "Remover mascote"}" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer; font-size:14px;">🗑️</button></div>
+            <div style="display:flex; gap:4px;"><button onclick="app.editCharacterCollectionItem('pets', ${petIndex})" title="${isEn ? "Edit Pet" : isEs ? "Editar mascota" : "Editar mascote"}" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer; font-size:14px;">✎</button><button onclick="app.removePet(${petIndex})" title="${isEn ? "Remove Pet" : isEs ? "Eliminar mascota" : "Remover mascote"}" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer; font-size:14px;">🗑️</button></div>
           </div>
           <div style="font-size:11px; color:var(--pb-text-muted); margin-bottom:8px;">${escapeHtml(petTypeLabel)}</div>
           ${profileStats ? `<div style="font-size:11px; line-height:1.5; color:#cbd5e1; border:1px solid var(--pb-border); border-radius:5px; padding:6px; margin-bottom:8px;"><strong>${profileLabel}:</strong>${profileStats}${profileSelector}</div>` : ""}
+          ${abilityModifiers ? `<div class="companion-ability-modifiers" style="margin-bottom:8px; color:#cbd5e1;"><strong>${isEn ? "Ability modifiers:" : isEs ? "Modificadores de atributo:" : "Modificadores de atributo:"}</strong> ${escapeHtml(abilityModifiers)}</div>` : ""}
           <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:6px; margin-bottom:10px;">
             <div class="vital-box">
               <span class="vital-label">${isEn ? "HP" : isEs ? "PG" : "PV"}</span>
@@ -1960,8 +2432,9 @@ class PathbuilderApp {
             <div class="vital-box"><span class="vital-label">${isEn ? "Speed" : isEs ? "Velocidad" : "Velocidade"}</span><span class="vital-value">${escapeHtml(companion.speed ?? "—")}</span></div>
             <div class="vital-box"><span class="vital-label">${isEn ? "Perception" : isEs ? "Percepción" : "Percepção"}</span><span class="vital-value">${escapeHtml(companion.perception ?? "—")}</span></div>
           </div>
-          <div style="font-size:12px; line-height:1.6;">
-            ${(companion.attacks || []).map(atk => `• <strong>${isEn ? "Attack" : isEs ? "Ataque" : "Ataque"} ${escapeHtml(this.localizeItemName(atk.name || "", locale))}:</strong> ${escapeHtml(atk.bonus ?? "—")} | <strong>${escapeHtml(atk.damage ?? "—")}</strong>.<br>`).join('')}
+           <div style="font-size:12px; line-height:1.6;">
+             ${(pet.summaries?.[locale] || pet.description) ? `<div class="companion-description" style="margin-bottom:6px; color:#e2e8f0;">${escapeHtml(pet.summaries?.[locale] || pet.description)}</div>` : ''}
+             ${(companion.attacks || []).map(atk => `• <strong>${isEn ? "Attack" : isEs ? "Ataque" : "Ataque"} ${escapeHtml(this.localizeItemName(atk.name || "", locale))}:</strong> ${escapeHtml(atk.bonus ?? "—")} | <strong>${escapeHtml(this.localizeCompanionAttackText(atk.damage ?? "—", locale))}</strong>${Array.isArray(atk.traits) && atk.traits.length ? ` · ${escapeHtml(atk.traits.map(trait => this.localizeTrait(trait, locale)).join(", "))}` : ""}.<br>`).join('')}
             ${Array.isArray(pet.grantedAbilities) && pet.grantedAbilities.length ? `• <strong>${isEn ? "Granted familiar abilities:" : isEs ? "Habilidades concedidas:" : "Habilidades concedidas:"}</strong> ${escapeHtml(pet.grantedAbilities.join(", "))}<br>` : ''}
             ${pet.requiredFamiliarAbilities ? `• <strong>${isEn ? "Required familiar abilities:" : isEs ? "Habilidades de familiar requeridas:" : "Habilidades de familiar necessárias:"}</strong> ${escapeHtml(pet.requiredFamiliarAbilities)}${pet.requiresSpellcasting ? ` (${isEn ? "spellcasting required" : isEs ? "requiere lanzamiento de conjuros" : "requer conjuração"})` : ''}<br>` : ''}
             ${companion.supportBenefit ? `• <strong>${isEn ? "Support Benefit:" : isEs ? "Beneficio de Soporte:" : "Benefício de Suporte:"}</strong> ${escapeHtml(companion.supportBenefit)}<br>` : ''}
@@ -2046,7 +2519,7 @@ class PathbuilderApp {
       { name: isEn ? "Step" : isEs ? "Paso" : "Passo de Ajuste", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Carefully move 5 feet without triggering reactions." : isEs ? "Muévete con cuidado 5 pies sin provocar reacciones." : "Move-se 1,5 m sem provocar reações como Golpe Reativo.", type: isEn ? "Basic" : isEs ? "Básica" : "Básica" },
       { name: isEn ? "Raise a Shield" : isEs ? "Alzar Escudo" : "Erguer Escudo", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Gain a +2 circumstance bonus to AC until the start of your next turn." : isEs ? "Obtén un bonificador circunstancial +2 a la CA hasta el inicio de tu próximo turno." : "Concede +2 de bônus circunstancial na CA até o início do próximo turno.", type: isEn ? "Basic" : isEs ? "Básica" : "Básica" },
       { name: isEn ? "Take Cover" : isEs ? "Ponerse a Cubierto" : "Buscar Cobertura", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Gain or improve cover bonus to AC and Reflex saves." : isEs ? "Obtén o mejora el bonificador de cobertura a la CA y salvaciones de Reflejos." : "Obtenha ou melhore o bônus de cobertura na CA e nos salvamentos de Reflexos.", type: isEn ? "Basic" : isEs ? "Básica" : "Básica" },
-      { name: isEn ? "Demoralize" : isEs ? "Desmoralizar (Demoralize)" : "Desmoralizar (Demoralize)", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Intimidation vs Will to make target Frightened 1." : isEs ? "Intimidación contra Voluntad para dejar al objetivo Asustado 1." : "Teste de Intimidação vs Vontade para deixar o alvo Aterrorizado 1.", type: isEn ? "Skill" : isEs ? "Pericia" : "Perícia" },
+      { name: isEn ? "Demoralize" : "Desmoralizar", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Intimidation vs Will to make target Frightened 1." : isEs ? "Intimidación contra Voluntad para dejar al objetivo Asustado 1." : "Teste de Intimidação contra Vontade para deixar o alvo Amedrontado 1.", type: isEn ? "Skill" : isEs ? "Pericia" : "Perícia" },
       { name: isEn ? "Trip" : isEs ? "Derribar" : "Derrubar", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Athletics vs Reflex to knock opponent Prone." : isEs ? "Atletismo contra Reflejos para derribar al oponente." : "Teste de Atletismo contra Reflexos para derrubar o oponente.", type: isEn ? "Skill" : isEs ? "Pericia" : "Perícia" },
       { name: isEn ? "Grapple" : isEs ? "Agarrar" : "Agarrar", cost: isEn ? "1 Action" : isEs ? "1 Acción" : "1 Ação", desc: isEn ? "Athletics vs Fortitude to immobilize opponent." : isEs ? "Atletismo contra Fortaleza para inmovilizar al oponente." : "Teste de Atletismo contra Fortitude para imobilizar o oponente.", type: isEn ? "Skill" : isEs ? "Pericia" : "Perícia" },
       { name: isEn ? "Treat Wounds" : isEs ? "Tratar Heridas" : "Tratar Ferimentos", cost: isEn ? "10 Minutes" : isEs ? "10 Minutos" : "10 Minutos", desc: isEn ? "Medicine out of combat to heal HP." : isEs ? "Medicina fuera de combate para curar PV." : "Use Medicina fora de combate para recuperar PV.", type: isEn ? "Exploration" : isEs ? "Exploración" : "Exploração" }
@@ -2144,11 +2617,13 @@ class PathbuilderApp {
       detGmEmail.value = this.character.gmEmail || this.character.gm_email || "";
     }
     if (detGmStatus) {
+      const locale = this.getLocale();
       const email = this.character.gmEmail || this.character.gm_email;
       if (email && email.trim()) {
-        detGmStatus.innerHTML = `✓ Vinculado ao Mestre: <strong>${escapeHtml(email.trim())}</strong>`;
+        const linkedLabel = locale === "en" ? "Linked to GM" : locale === "es" ? "Vinculado al GM" : "Vinculado ao Mestre";
+        detGmStatus.innerHTML = `✓ ${linkedLabel}: <strong>${escapeHtml(email.trim())}</strong>`;
       } else {
-        detGmStatus.innerText = "Sem mestre vinculado";
+        detGmStatus.innerText = locale === "en" ? "No GM linked" : locale === "es" ? "Ningún GM vinculado" : "Sem mestre vinculado";
       }
     }
   }
@@ -2215,6 +2690,12 @@ class PathbuilderApp {
   }
 
   generateAIPortrait(customSeed = null) {
+    const locale = this.getLocale();
+    const copy = locale === "en"
+      ? { empty: "Please enter or generate a portrait description.", loading: "Generating Image...", new: "Generate New AI Portrait", retry: "Try Again" }
+      : locale === "es"
+        ? { empty: "Escribe o genera una descripción para el retrato.", loading: "Generando imagen...", new: "Generar nuevo retrato con IA", retry: "Intentar de nuevo" }
+        : { empty: "Por favor, digite ou gere uma descrição para o retrato.", loading: "Gerando imagem...", new: "Gerar novo retrato com IA", retry: "Tentar novamente" };
     const promptInput = document.getElementById("aiPortraitPromptInput");
     let prompt = promptInput ? promptInput.value.trim() : "";
     if (!prompt) {
@@ -2223,7 +2704,7 @@ class PathbuilderApp {
     }
 
     if (!prompt) {
-      alert("Por favor, digite ou gere uma descrição para o retrato.");
+      alert(copy.empty);
       return;
     }
 
@@ -2238,7 +2719,7 @@ class PathbuilderApp {
     if (spinner) spinner.style.display = "flex";
     if (imgContainer) imgContainer.style.display = "none";
     if (btnGenerate) btnGenerate.style.opacity = "0.7";
-    if (btnText) btnText.textContent = "Gerando Imagem...";
+    if (btnText) btnText.textContent = copy.loading;
 
     const seed = customSeed !== null ? customSeed : Math.floor(Math.random() * 9999999);
     const portraitUrl = typeof PF2E_AI_ASSISTANT !== "undefined" && PF2E_AI_ASSISTANT.generatePortraitUrl
@@ -2255,14 +2736,14 @@ class PathbuilderApp {
       if (spinner) spinner.style.display = "none";
       if (imgContainer) imgContainer.style.display = "flex";
       if (btnGenerate) btnGenerate.style.opacity = "1";
-      if (btnText) btnText.textContent = "Gerar Novo Retrato com IA";
+      if (btnText) btnText.textContent = copy.new;
     };
     imgLoader.onerror = () => {
       if (previewImg) previewImg.src = portraitUrl;
       if (spinner) spinner.style.display = "none";
       if (imgContainer) imgContainer.style.display = "flex";
       if (btnGenerate) btnGenerate.style.opacity = "1";
-      if (btnText) btnText.textContent = "Tentar Novamente";
+      if (btnText) btnText.textContent = copy.retry;
     };
     imgLoader.src = portraitUrl;
   }
@@ -2527,12 +3008,19 @@ class PathbuilderApp {
     if (!list) return;
     const formulas = this.character.formulas || [];
     const locale = this.getLocale();
+    const seenFormulaIdentities = new Set();
+    const formulaEntries = formulas.map((formula, index) => ({ formula, index })).filter(({ formula }) => {
+      const identity = this.localizeItemName(formula?.name || formula?.id || "", locale).trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, " ");
+      if (!identity || seenFormulaIdentities.has(identity)) return false;
+      seenFormulaIdentities.add(identity);
+      return true;
+    });
     const copy = locale === "en"
       ? { empty: "No formulas recorded in your Formula Book.", add: "Click Add Formula to include potions, elixirs, bombs, or snares.", category: "Formula", level: "Rank", crafting: "Crafting DC", edit: "Edit formula", remove: "Remove formula" }
       : locale === "es"
         ? { empty: "No hay fórmulas registradas en tu Libro de Fórmulas.", add: "Haz clic en Añadir fórmula para incluir pociones, elixires, bombas o trampas.", category: "Fórmula", level: "Rango", crafting: "CD de Artesanía", edit: "Editar fórmula", remove: "Eliminar fórmula" }
         : { empty: "Nenhuma fórmula cadastrada no seu Livro de Fórmulas.", add: "Clique em Adicionar Fórmula para incluir poções, elixires, bombas ou armadilhas.", category: "Fórmula", level: "Nível", crafting: "CD Manufatura", edit: "Editar Fórmula", remove: "Remover Fórmula" };
-    if (formulas.length === 0) {
+    if (formulaEntries.length === 0) {
       list.innerHTML = `
         <div style="text-align:center; padding:32px; color:var(--pb-text-muted); font-size:13px;">
           <div style="font-size:28px; margin-bottom:8px;">📜</div>
@@ -2543,7 +3031,7 @@ class PathbuilderApp {
       return;
     }
 
-    list.innerHTML = formulas.map((f, idx) => `
+    list.innerHTML = formulaEntries.map(({ formula: f, index: formulaIndex }) => `
       <div class="strike-card" style="border-left-color: #8b5cf6; margin-bottom: 8px;">
         <div class="strike-header">
           <div>
@@ -2553,7 +3041,7 @@ class PathbuilderApp {
           </div>
           <div style="display:flex; align-items:center; gap:8px;">
             ${f.craftingDC ? `<span style="font-size:11px; color:var(--pb-text-muted);">${copy.crafting}: <strong style="color:var(--pb-orange);">${f.craftingDC}</strong></span>` : ""}
-            <div style="display:flex; gap:4px;"><button onclick="app.editCharacterCollectionItem('formulas', ${idx})" title="${copy.edit}" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer; font-size:14px;">✎</button><button onclick="app.removeFormula(${idx})" title="${copy.remove}" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer; font-size:14px;">🗑️</button></div>
+            <div style="display:flex; gap:4px;"><button onclick="app.editCharacterCollectionItem('formulas', ${formulaIndex})" title="${copy.edit}" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer; font-size:14px;">✎</button><button onclick="app.removeFormula(${formulaIndex})" title="${copy.remove}" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer; font-size:14px;">🗑️</button></div>
           </div>
         </div>
         <div style="font-size:12px; color:var(--pb-text); margin-top:4px;">${escapeHtml(f.summaries?.[locale] || f.description || "")}</div>
@@ -2572,9 +3060,13 @@ class PathbuilderApp {
 
   removeCondition(index, isBuff) {
     const key = isBuff ? "buffs" : "conditions";
-    if (this.character[key]) this.character[key].splice(isBuff ? index - (this.character.conditions || []).length : index, 1);
+    const entries = this.character?.[key];
+    const position = Number(index);
+    if (!Array.isArray(entries) || !Number.isInteger(position) || position < 0 || position >= entries.length) return false;
+    entries.splice(position, 1);
     this.saveCharacterLocal(false);
     this.renderAll();
+    return true;
   }
 
   // MODAL PICKER DUAL-PANE (SCREENSHOT 3 RECREATION)
@@ -2632,22 +3124,44 @@ class PathbuilderApp {
 
   getPickerItems(type) {
     const sharedCatalogs = window.pathbuilderCatalogs || {};
-    const finalize = (items) => {
+    const finalize = (items, options = {}) => {
       const compatible = this.filterPickerItemsByCompatibility(type, items);
       const seenLabels = new Set();
-      return compatible.filter((item) => {
+      return compatible.reduce((result, item) => {
+        if (item.data?.legacyAlias) return result;
         const locale = this.getLocale();
         const label = normalizeCatalogLabel(item.data?.names?.[locale] || item.data?.names?.["pt-BR"] || item.name || item.data?.name || "");
-        if (!label || seenLabels.has(label)) return false;
+        if (!label) return result;
+        if (seenLabels.has(label)) {
+          // Classes, heranças, mascotes e fórmulas não possuem variantes
+          // selecionáveis com o mesmo nome visível. Registros duplicados
+          // desses grupos vêm de pontes/aliases de catálogos diferentes e
+          // devem aparecer uma única vez no picker.
+          if (options.collapseDuplicateLabels) return result;
+          // Variantes homônimas de livros diferentes continuam disponíveis,
+          // mas recebem uma identificação visível em vez de parecerem cópias.
+          const source = item.data?.source;
+          const sourceTag = source?.book
+            ? `${source.book}${source.page ? `, p. ${source.page}` : ""}`
+            : String(item.data?.id || item.name || "").split(".").pop();
+          const suffix = sourceTag ? ` · ${sourceTag}` : ` · ${String(item.data?.id || "").split(".").pop()}`;
+          const names = { ...(item.data?.names || {}) };
+          for (const nameLocale of ["pt-BR", "en", "es"]) {
+            if (names[nameLocale]) names[nameLocale] = `${names[nameLocale]}${suffix}`;
+          }
+          result.push({ ...item, name: `${item.name || label}${suffix}`, data: { ...item.data, names } });
+          return result;
+        }
         seenLabels.add(label);
-        return true;
-      });
+        result.push(item);
+        return result;
+      }, []);
     };
     if (type === "ancestry") {
       return finalize(getObjectCatalogRecords(PF2E_DATA.ancestries).map(({ key, record }) => ({ name: key, type: "Ancestralidade", data: record })));
     }
     if (type === "class") {
-      return finalize(getObjectCatalogRecords(PF2E_DATA.classes).filter(({ record }) => !record?.legacyAlias).map(({ key, record }) => ({ name: key, type: "Classe", data: record })));
+      return finalize(getObjectCatalogRecords(PF2E_DATA.classes).filter(({ record }) => !record?.legacyAlias).map(({ key, record }) => ({ name: key, type: "Classe", data: record })), { collapseDuplicateLabels: true });
     }
     if (type === "subclass") {
       return finalize(mergeCatalogRecords([], PF2E_DATA.subclasses || []).filter(subclass => !subclass.legacyAlias).map(subclass => ({ name: subclass.name, type: "Subclasse", data: subclass })));
@@ -2667,8 +3181,9 @@ class PathbuilderApp {
     if (type === "heritage") {
       // Deixe o resolvedor contextual tratar IDs, chaves, nomes localizados e
       // gates alternativos; comparação literal ocultava heranças válidas.
-      const heritages = mergeCatalogRecords([], (PF2E_DATA.heritages || []).concat(PF2E_DATA.versatileHeritages || []));
-      return finalize(heritages.map(h => ({ name: h.name, type: "Herança", data: h })));
+      const heritages = mergeCatalogRecords([], (PF2E_DATA.heritages || []).concat(PF2E_DATA.versatileHeritages || []))
+        .filter((heritage) => !heritage?.legacyAlias);
+      return finalize(heritages.map(h => ({ name: h.name, type: "Herança", data: h })), { collapseDuplicateLabels: true });
     }
     if (type === "archetype") {
       return finalize(mergeCatalogRecords([], PF2E_DATA.archetypes || []).map(a => ({ name: a.name, type: "Arquétipo", data: a })));
@@ -2677,7 +3192,9 @@ class PathbuilderApp {
       const heritageInnate = this.activePickerOptions?.heritageInnate === true;
       const compatibilityCharacter = this.getPickerCompatibilityCharacter(type);
       const weights = { available: 0, "requires-choice": 1, incompatible: 2 };
-      const spellItems = (PF2E_DATA.spells || []).filter((spell) => !heritageInnate || (
+      const hexOnly = this.activePickerOptions?.hexOnly === true;
+      const spellItems = (PF2E_DATA.spells || []).filter((spell) => !hexOnly || spell.hex === true || String(spell.id || "").startsWith("spell.player_core.witch."))
+        .filter((spell) => !heritageInnate || (
         Number(spell.rank ?? spell.level) === 0 &&
         (spell.traditions || []).some((tradition) => String(tradition).toLowerCase() === "occult")
       )).map(spell => {
@@ -2707,13 +3224,13 @@ class PathbuilderApp {
       return finalize(mergeCatalogRecords(sharedCatalogs.items, itemCatalog).map(i => ({ name: i.name, type: "Item", data: i })));
     }
     if (type === "pet") {
-      return finalize(mergeCatalogRecords(sharedCatalogs.pets, PF2E_DATA.pets).map(p => ({ name: p.name, type: "Mascote", data: p })));
+      return finalize(mergeCatalogRecords(sharedCatalogs.pets, PF2E_DATA.pets).map(p => ({ name: p.name, type: "Mascote", data: p })), { collapseDuplicateLabels: true });
     }
     if (type === "action") {
       return finalize(mergeCatalogRecords(sharedCatalogs.actions, PF2E_DATA.actions).map(a => ({ name: a.name, type: "Ação", data: a })));
     }
     if (type === "formula") {
-      return finalize(mergeCatalogRecords([], PF2E_DATA.formulas || []).map(f => ({ name: f.name, type: f.category || "Fórmula", data: f })));
+      return finalize(mergeCatalogRecords([], PF2E_DATA.formulas || []).map(f => ({ name: f.name, type: f.category || "Fórmula", data: f })), { collapseDuplicateLabels: true });
     }
     if (type === "condition") {
       return finalize((PF2E_DATA.conditions || this.getConditionCatalog()).map(c => ({ name: c.name, type: "Condição", data: c })));
@@ -2791,6 +3308,23 @@ class PathbuilderApp {
 
   applyPickerSelection(type, item, options, deductCoins = false) {
     if (!item) return;
+    if (type === "spell" && options?.hexOnly && item.data?.hex !== true && !String(item.data?.id || "").startsWith("spell.player_core.witch.")) {
+      const locale = this.getLocale();
+      alert(locale === "en" ? "Only Witch hexes can be selected here." : locale === "es" ? "Aquí solo se pueden seleccionar maleficios de Bruja." : "Aqui só é possível selecionar Hexes de Bruxa.");
+      return;
+    }
+    // A compra deve ser atômica também quando a seleção chega pelo picker
+    // legado ou por uma integração externa: nunca adicionar o item e deixar o
+    // dinheiro intacto silenciosamente por falta de saldo.
+    if ((type === "item" || type === "gear") && deductCoins) {
+      const price = item.data?.price || item.price;
+      const quantity = Math.max(1, Number(item.data?.qty ?? item.qty ?? 1) || 1);
+      if (price && !this.canCharacterAfford(price, quantity)) {
+        const locale = this.getLocale();
+        alert(locale === "en" ? "Insufficient coins for this purchase." : locale === "es" ? "No tienes monedas suficientes para esta compra." : "Moedas insuficientes para esta compra.");
+        return;
+      }
+    }
     const prerequisiteCompatibility = typeof PF2E_ENGINE?.getPrerequisiteCompatibility === "function"
       ? PF2E_ENGINE.getPrerequisiteCompatibility(this.getPickerCompatibilityCharacter(this.currentPickerType), item.data)
       : { state: "available" };
@@ -2840,13 +3374,18 @@ class PathbuilderApp {
         return;
       }
       const compatibility = PF2E_ENGINE.getSpellCompatibility(this.character, item.data);
-      if (compatibility.state !== "available") {
+      const isWitchHex = options?.hexOnly && (item.data?.hex === true || String(item.data?.id || "").startsWith("spell.player_core.witch."));
+      if (compatibility.state !== "available" && !isWitchHex) {
         alert(this.getSpellCompatibilityMessage(compatibility));
         return;
       }
       if (!this.character.spells) this.character.spells = [];
       const exists = this.character.spells.some(spell => item.data.id ? spell.id === item.data.id : spell.name === item.name);
       if (!exists) this.character.spells.push({ ...item.data, name: item.name, level: item.data.rank ?? item.data.level });
+      if (options?.hexOnly) {
+        this.character.patronHex = { ...(item.data?.names || {}), "pt-BR": item.data?.names?.["pt-BR"] || item.name, en: item.data?.names?.en || item.name, es: item.data?.names?.es || item.name };
+        this.character.patronHexId = item.data?.id;
+      }
       if (options?.classFeatureSlot) this.character.progression[options.classFeatureSlot] = item.name;
     } else if (type === "ritual") {
       if (!this.character.rituals) this.character.rituals = [];
@@ -2994,11 +3533,32 @@ class PathbuilderApp {
     let items = [];
     const sharedCatalogs = window.pathbuilderCatalogs || {};
     const compatibilityCharacter = this.getPickerCompatibilityCharacter(this.currentPickerType);
+    const collapseDuplicateLabels = (entries) => {
+      const locale = this.getLocale();
+      const score = (entry) => {
+        const data = entry?.data || {};
+        return Object.keys(data).length
+          + (String(data.description || "").length / 1000)
+          + (data.source?.book ? 2 : 0)
+          + (data.source?.page ? 1 : 0);
+      };
+      const bestByLabel = new Map();
+      for (const entry of entries) {
+        const label = normalizeCatalogLabel(this.localizeItemName(
+          entry?.data?.names || entry?.name || entry?.data?.name || "",
+          locale,
+        ));
+        if (!label) continue;
+        const previous = bestByLabel.get(label);
+        if (!previous || score(entry) > score(previous)) bestByLabel.set(label, entry);
+      }
+      return [...bestByLabel.values()];
+    };
 
     if (this.currentPickerType === "ancestry") {
       items = getObjectCatalogRecords(PF2E_DATA.ancestries).map(({ key, record }) => ({ name: key, type: "Ancestralidade", data: record }));
     } else if (this.currentPickerType === "class") {
-      items = getObjectCatalogRecords(PF2E_DATA.classes).map(({ key, record }) => ({ name: key, type: "Classe", data: record }));
+      items = getObjectCatalogRecords(PF2E_DATA.classes).filter(({ record }) => !record?.legacyAlias).map(({ key, record }) => ({ name: key, type: "Classe", data: record }));
     } else if (this.currentPickerType === "subclass") {
       items = mergeCatalogRecords([], PF2E_DATA.subclasses || []).filter(s => !s.legacyAlias).map(s => ({ name: s.name, type: "Subclasse", data: s }));
     } else if (this.currentPickerType === "archetype") {
@@ -3032,8 +3592,8 @@ class PathbuilderApp {
     } else if (this.currentPickerType === "heritage") {
       // Deixe o resolvedor contextual tratar IDs, chaves, nomes localizados e
       // gates alternativos; comparação literal ocultava heranças válidas.
-      const heritages = (PF2E_DATA.heritages || []).map(h => ({ name: h.name, type: "Herança", data: h }));
-      const versatile = (PF2E_DATA.versatileHeritages || []).map(h => ({ name: h.name, type: "Herança Versátil", data: h }));
+      const heritages = (PF2E_DATA.heritages || []).filter(h => !h?.legacyAlias).map(h => ({ name: h.name, type: "Herança", data: h }));
+      const versatile = (PF2E_DATA.versatileHeritages || []).filter(h => !h?.legacyAlias).map(h => ({ name: h.name, type: "Herança Versátil", data: h }));
       items = heritages.concat(versatile);
     } else if (this.currentPickerType === "feat") {
       items = mergeCatalogRecords(sharedCatalogs.feats, PF2E_DATA.feats || this.getFallbackFeatCatalog()).map(f => ({ name: f.name, type: f.type || "Talento", data: f }));
@@ -3085,6 +3645,24 @@ class PathbuilderApp {
     // inicialização do modal legado).
     items = items.filter(item => item.data?.selectionState !== "incompatible");
 
+    // O modal legado precisa aplicar a mesma identificação contextual do
+    // picker React. Variantes de livros diferentes com o mesmo nome visível
+    // continuam selecionáveis, mas deixam de parecer cópias indistinguíveis.
+    if (["class", "formula", "pet", "heritage"].includes(this.currentPickerType)) {
+      items = ["formula", "pet", "heritage"].includes(this.currentPickerType)
+        ? collapseDuplicateLabels(items)
+        : (() => {
+          const locale = this.getLocale();
+          const visibleLabels = new Set();
+          return items.filter((item) => {
+            const label = normalizeCatalogLabel(item.data?.names?.[locale] || item.data?.names?.["pt-BR"] || item.name || "");
+            if (!label || visibleLabels.has(label)) return false;
+            visibleLabels.add(label);
+            return true;
+          });
+        })();
+    }
+
     // O modal legado recebe os mesmos espaços contextuais do picker React:
     // além dos pré-requisitos, respeite a categoria do espaço de progressão.
     if (this.currentPickerType === "feat" && this.activePickerOptions?.filterType) {
@@ -3102,14 +3680,15 @@ class PathbuilderApp {
     }
 
     if (filterQuery) {
-      items = items.filter(i => i.name.toLowerCase().includes(filterQuery.toLowerCase()));
+      items = items.filter(i => getCatalogDisplayName(i.data, this.getLocale()).toLocaleLowerCase(this.getLocale()).includes(filterQuery.toLocaleLowerCase(this.getLocale())));
     }
 
+    const locale = this.getLocale();
     container.innerHTML = items.map((item, idx) => `
       <div class="tree-node" style="margin-bottom:3px; padding:4px 6px;" onclick="app.selectPickerItem(${idx})">
         <div class="tree-node-icon" style="width:20px; height:20px; font-size:11px;">📜</div>
         <div class="tree-node-text">
-          <div class="tree-node-value" style="font-size:11px;">${escapeHtml(item.name)}${item.data?.rarity === "rare" ? ' <span style="color:#fca5a5; font-size:9px;">· RARO / APROVAÇÃO DO MESTRE</span>' : ''}</div>
+          <div class="tree-node-value" style="font-size:11px;">${escapeHtml(getCatalogDisplayName(item.data, locale))}${item.data?.rarity === "rare" ? ` <span style="color:#fca5a5; font-size:9px;">· ${locale === "en" ? "RARE / GM APPROVAL" : locale === "es" ? "RARO / APROBACIÓN DEL DJ" : "RARO / APROVAÇÃO DO MESTRE"}</span>` : ''}</div>
         </div>
       </div>
     `).join('');
@@ -3125,11 +3704,18 @@ class PathbuilderApp {
 
     const detail = document.getElementById("modalRightDetail");
     const locale = this.getLocale();
-    let contentHtml = `<div style="font-size:16px; font-weight:bold; color:var(--pb-orange);">${escapeHtml(item.name)}</div>`;
+    let contentHtml = `<div style="font-size:16px; font-weight:bold; color:var(--pb-orange);">${escapeHtml(getCatalogDisplayName(item.data, locale))}</div>`;
     
     const localizedDescription = item.data.summaries?.[locale] || item.data.description || "";
     if (localizedDescription) {
       contentHtml += `<div style="font-size:12px; margin-top:8px; line-height:1.6;">${escapeHtml(localizedDescription)}</div>`;
+    }
+    const prerequisite = item.data.prereq || item.data.prerequisites;
+    if (prerequisite) {
+      const prerequisiteText = Array.isArray(prerequisite)
+        ? prerequisite.map((entry) => this.localizePrerequisiteText(entry, locale)).join(", ")
+        : this.localizePrerequisiteText(prerequisite, locale);
+      contentHtml += `<div style="font-size:11px; margin-top:8px; color:var(--pb-text-muted);"><strong>${locale === "en" ? "Prerequisites" : locale === "es" ? "Requisitos previos" : "Pré-requisitos"}:</strong> ${escapeHtml(prerequisiteText)}</div>`;
     }
     if (item.data.hp) {
       const labels = locale === "en" ? { hp: "Ancestry base HP", speed: "Speed" } : locale === "es" ? { hp: "PG base de ascendencia", speed: "Velocidad" } : { hp: "PV Base da Ancestralidade", speed: "Velocidade" };
@@ -3141,13 +3727,14 @@ class PathbuilderApp {
     }
     if (item.data.damage) {
       const labels = locale === "en" ? { damage: "Damage", traits: "Traits" } : locale === "es" ? { damage: "Daño", traits: "Rasgos" } : { damage: "Dano", traits: "Traços" };
-      contentHtml += `<div style="font-size:12px; margin-top:6px;">${labels.damage}: <strong>${escapeHtml(item.data.damage)} ${escapeHtml(item.data.damageType || '')}</strong> | ${labels.traits}: <strong>${escapeHtml((item.data.traits || []).join(', '))}</strong></div>`;
+      const localizedTraits = (item.data.traits || []).map((trait) => this.localizeTrait(trait, locale));
+      contentHtml += `<div style="font-size:12px; margin-top:6px;">${labels.damage}: <strong>${escapeHtml(item.data.damage)} ${escapeHtml(this.localizeCompanionAttackText(item.data.damageType || '', locale))}</strong> | ${labels.traits}: <strong>${escapeHtml(localizedTraits.join(', '))}</strong></div>`;
     }
 
     // Biografias raras do Player Core 2 carregam mecânicas estruturadas e
     // localizadas; exibi-las no detalhe evita que a escolha pareça apenas
     // narrativa e mantém ações/sentidos visíveis antes da confirmação.
-    const mechanics = item.data.mechanics?.[locale] || item.data.mechanics?.["pt-BR"];
+    const mechanics = item.data.mechanics?.[locale];
     if (mechanics) {
       const mechanicsLabels = locale === "en"
         ? { boosts: "Ability boosts", skills: "Trained", actions: "Actions", senses: "Senses", grants: "Granted", rules: "Rules" }
@@ -3173,7 +3760,7 @@ class PathbuilderApp {
       : locale === "es"
         ? { baseHp: "PG base de ascendencia", speed: "Velocidad", hpPerLevel: "PG por nivel", keyAbility: "Atributo clave", damage: "Daño", traits: "Rasgos", noSource: "Fuente aún no catalogada — requiere revisión", rare: "Raro — requiere aprobación del DJ", page: "p." }
         : { baseHp: "PV Base da Ancestralidade", speed: "Velocidade", hpPerLevel: "PV por Nível", keyAbility: "Atributo-Chave", damage: "Dano", traits: "Traços", noSource: "Fonte ainda não catalogada — requer revisão", rare: "Raro — requer aprovação do Mestre", page: "p." };
-    const sourceText = source?.book ? `${source.book}${source.page ? `, ${detailCopy.page} ${source.page}` : ""}` : detailCopy.noSource;
+    const sourceText = source?.book ? `${localizeSourceBookName(source.book, locale)}${source.page ? `, ${detailCopy.page} ${source.page}` : ""}` : detailCopy.noSource;
     const rarityText = item.data.rarity === "rare" ? detailCopy.rare : item.data.rarity;
     if (item.data.rarity) contentHtml += `<div style="margin-top:8px; color:${item.data.rarity === "rare" ? "#fca5a5" : "#fde68a"}; font-size:11px; font-weight:bold;">${escapeHtml(rarityText)}</div>`;
     const rulesetText = locale === "en"
@@ -3189,9 +3776,15 @@ class PathbuilderApp {
   confirmModalSelection() {
     if (!this.selectedPickerItem) return;
     const item = this.selectedPickerItem;
+    if (this.currentPickerType === "spell" && this.activePickerOptions?.hexOnly && item.data?.hex !== true && !String(item.data?.id || "").startsWith("spell.player_core.witch.")) {
+      const locale = this.getLocale();
+      alert(locale === "en" ? "Only Witch hexes can be selected here." : locale === "es" ? "Aquí solo se pueden seleccionar maleficios de Bruja." : "Aqui só é possível selecionar Hexes de Bruxa.");
+      return;
+    }
     if (this.currentPickerType === "spell" && !this.activePickerOptions?.heritageInnate) {
       const spellCompatibility = PF2E_ENGINE?.getSpellCompatibility?.(this.character, item.data);
-      if (spellCompatibility?.state !== "available") {
+      const isWitchHex = this.activePickerOptions?.hexOnly && (item.data?.hex === true || String(item.data?.id || "").startsWith("spell.player_core.witch."));
+      if (spellCompatibility?.state !== "available" && !isWitchHex) {
         alert(this.getSpellCompatibilityMessage(spellCompatibility));
         return;
       }
@@ -3241,6 +3834,10 @@ class PathbuilderApp {
       if (!this.character.spells) this.character.spells = [];
       const exists = this.character.spells.some(spell => (item.data.id && spell.id === item.data.id) || spell.name === item.name);
       if (!exists) this.character.spells.push({ ...item.data, name: item.name, level: item.data.rank ?? item.data.level });
+      if (this.activePickerOptions?.hexOnly) {
+        this.character.patronHex = { ...(item.data?.names || {}), "pt-BR": item.data?.names?.["pt-BR"] || item.name, en: item.data?.names?.en || item.name, es: item.data?.names?.es || item.name };
+        this.character.patronHexId = item.data?.id;
+      }
       if (this.activePickerOptions?.classFeatureSlot) this.character.progression[this.activePickerOptions.classFeatureSlot] = item.name;
     } else if (this.currentPickerType === "ritual") {
       if (!this.character.rituals) this.character.rituals = [];
@@ -3310,7 +3907,13 @@ class PathbuilderApp {
 
   // DRAWER MENU TOGGLE
   toggleDrawer() {
-    document.getElementById("drawerOverlay").classList.toggle("active");
+    document.getElementById("drawerOverlay")?.classList.toggle("active");
+  }
+
+  navigatePortal(route) {
+    const cleanRoute = String(route || "library").replace(/^#\/?/, "");
+    document.getElementById("drawerOverlay")?.classList.remove("active");
+    window.location.hash = `#/${cleanRoute}`;
   }
 
   closeDrawerOnOverlay(e) {
@@ -3329,7 +3932,13 @@ class PathbuilderApp {
     if (!tree) return;
     tree.classList.toggle("collapsed");
     if (btn) {
-      btn.innerText = tree.classList.contains("collapsed") ? "Mostrar Plano" : "Ocultar Plano";
+      const locale = this.getLocale();
+      const copy = locale === "en"
+        ? { show: "Show Plan", hide: "Hide Plan" }
+        : locale === "es"
+          ? { show: "Mostrar plan", hide: "Ocultar plan" }
+          : { show: "Mostrar Plano", hide: "Ocultar Plano" };
+      btn.innerText = tree.classList.contains("collapsed") ? copy.show : copy.hide;
     }
   }
 
@@ -3414,31 +4023,36 @@ class PathbuilderApp {
   }
 
   addDiceToPool(sides) {
-    if (!this.freeRollDiceList) this.freeRollDiceList = [];
-    
-    // Gera rolagem do dado
+    let rollEntry;
+    // Gera a rolagem, mantendo apenas o último dado para a arena 3D.
     if (sides === 100) {
       const tensRoll = Math.floor(Math.random() * 10);
       const unitsRoll = Math.floor(Math.random() * 10);
       const tensVal = tensRoll * 10;
       const totalVal = (tensVal === 0 && unitsRoll === 0) ? 100 : tensVal + unitsRoll;
-      this.freeRollDiceList.push({
+      rollEntry = {
         id: Math.random().toString(36).substring(2, 8),
         sides: 100,
         tens: tensVal,
         units: unitsRoll,
         value: totalVal,
         rot: Math.floor(Math.random() * 50) - 25
-      });
+      };
     } else {
       const roll = Math.floor(Math.random() * sides) + 1;
-      this.freeRollDiceList.push({
+      rollEntry = {
         id: Math.random().toString(36).substring(2, 8),
         sides,
         value: roll,
         rot: Math.floor(Math.random() * 50) - 25
-      });
+      };
     }
+
+    this.lastFreeRoll = rollEntry;
+    this.freeRollTotal = Number(this.freeRollTotal) + rollEntry.value;
+    // Compatibilidade com integrações antigas: a lista visual nunca acumula
+    // dados; o total acumulado fica separado em freeRollTotal.
+    this.freeRollDiceList = [rollEntry];
 
     this.openDiceRoller();
     this.renderFreeRollArena();
@@ -3446,6 +4060,8 @@ class PathbuilderApp {
 
   resetDicePool() {
     this.freeRollDiceList = [];
+    this.freeRollTotal = 0;
+    this.lastFreeRoll = null;
     this.dicePool = [];
     const modInput = document.getElementById("dicePoolMod");
     if (modInput) modInput.value = 0;
@@ -3484,15 +4100,13 @@ class PathbuilderApp {
       : locale === "es"
         ? { last: "Último resultado", sum: "Suma", total: "Total", freeRoll: "Tirada libre", empty: "Selecciona dados usando los botones de arriba" }
         : { last: "Último resultado", sum: "Soma", total: "Total", freeRoll: "Rolagem Livre", empty: "Selecione os dados acima para rolar" };
+    const diceAriaPrefix = locale === "en" ? "Die" : locale === "es" ? "Dado" : "Dado";
 
     if (placeholder) placeholder.style.display = "none";
     if (stage) stage.style.display = "flex";
 
     const list = this.freeRollDiceList || [];
-    let total = 0;
-    list.forEach(d => {
-      total += d.value;
-    });
+    const total = Number(this.freeRollTotal) || list.reduce((sum, die) => sum + die.value, 0);
 
     if (resultLabel) resultLabel.innerText = copy.freeRoll;
     if (resultTotal) resultTotal.innerText = `${total}`;
@@ -3508,7 +4122,7 @@ class PathbuilderApp {
       const isCrit = d && d.sides === 20 && d.value === 20;
       const isFumble = d && d.sides === 20 && d.value === 1;
       animContainer.innerHTML = d ? `
-        <div class="polyhedral-die-wrapper rolling ${isCrit ? 'crit-nat20' : (isFumble ? 'fumble-nat1' : '')}" role="img" aria-label="Dado d${d.sides}, resultado ${d.value}" style="transform: rotate(${d.rot}deg);">
+        <div class="polyhedral-die-wrapper rolling ${isCrit ? 'crit-nat20' : (isFumble ? 'fumble-nat1' : '')}" role="img" aria-label="${diceAriaPrefix} d${d.sides}, ${locale === "en" ? "result" : locale === "es" ? "resultado" : "resultado"} ${d.value}" style="transform: rotate(${d.rot}deg);">
           ${this.getPolyhedralDieSvg(d.sides, d.value, isCrit, isFumble)}
         </div>
       ` : '';
@@ -3685,12 +4299,15 @@ class PathbuilderApp {
     if (resultBreakdown) resultBreakdown.innerText = formula || breakdown;
 
     if (resultTag) {
+      const locale = this.getLocale();
+      const critText = locale === "en" ? "🌟 Critical Success (Nat 20)!" : locale === "es" ? "🌟 Éxito crítico (Nat 20)!" : "🌟 Sucesso Crítico (Nat 20)!";
+      const fumbleText = locale === "en" ? "💀 Critical Failure (Nat 1)!" : locale === "es" ? "💀 Fallo crítico (Nat 1)!" : "💀 Falha Crítica (Nat 1)!";
       if (isCrit) {
-        resultTag.innerText = "🌟 Sucesso Crítico (Nat 20)!";
+        resultTag.innerText = critText;
         resultTag.className = "dice-result-tag tag-crit";
         resultTag.style.display = "inline-block";
       } else if (isFumble) {
-        resultTag.innerText = "💀 Falha Crítica (Nat 1)!";
+        resultTag.innerText = fumbleText;
         resultTag.className = "dice-result-tag tag-fumble";
         resultTag.style.display = "inline-block";
       } else if (tag) {
@@ -3706,8 +4323,9 @@ class PathbuilderApp {
       // A arena exibe somente o último dado da ação; o total e o detalhamento
       // continuam representando todos os dados rolados.
       const lastDie = diceList[diceList.length - 1];
+      const diceAriaPrefix = this.getLocale() === "en" ? "Dice roll" : this.getLocale() === "es" ? "Tirada de dados" : "Rolagem de dados";
       animContainer.innerHTML = lastDie ? `
-        <div class="polyhedral-die-wrapper rolling ${isCrit ? 'crit-nat20' : (isFumble ? 'fumble-nat1' : '')}" role="img" aria-label="Rolagem de dados: ${formula || title}">
+        <div class="polyhedral-die-wrapper rolling ${isCrit ? 'crit-nat20' : (isFumble ? 'fumble-nat1' : '')}" role="img" aria-label="${diceAriaPrefix}: ${formula || title}">
           ${this.getPolyhedralDieSvg(lastDie.sides, lastDie.value, isCrit, isFumble)}
         </div>
       ` : '';
@@ -3740,6 +4358,13 @@ class PathbuilderApp {
   }
 
   rollCheck(label, modifier) {
+    const locale = this.getLocale();
+    const checkLabels = {
+      en: { "Teste de Força": "Strength Check", "Teste de Destreza": "Dexterity Check", "Teste de Constituição": "Constitution Check", "Teste de Inteligência": "Intelligence Check", "Fortitude (CON)": "Fortitude (CON)", "Reflexos (DES)": "Reflex", "Vontade (SAB)": "Will", "Percepção": "Perception", "Iniciativa": "Initiative" },
+      es: { "Teste de Força": "Prueba de Fuerza", "Teste de Destreza": "Prueba de Destreza", "Teste de Constituição": "Prueba de Constitución", "Teste de Inteligência": "Prueba de Inteligencia", "Fortitude (CON)": "Fortaleza (CON)", "Reflexos (DES)": "Reflejos (DES)", "Vontade (SAB)": "Voluntad (SAB)", "Percepção": "Percepción", "Iniciativa": "Iniciativa" },
+      "pt-BR": {}
+    };
+    const displayLabel = checkLabels[locale]?.[label] || label;
     const d20 = Math.floor(Math.random() * 20) + 1;
     const total = d20 + modifier;
     const isCrit = d20 === 20;
@@ -3747,7 +4372,7 @@ class PathbuilderApp {
     const modStr = PF2E_ENGINE.formatMod(modifier);
 
     this.animateDiceRoll({
-      title: label,
+      title: displayLabel,
       diceList: [{ sides: 20, value: d20 }],
       modifier,
       total,
@@ -3759,6 +4384,7 @@ class PathbuilderApp {
   }
 
   rollStrike(label, modifier) {
+    const locale = this.getLocale();
     const d20 = Math.floor(Math.random() * 20) + 1;
     const total = d20 + modifier;
     const isCrit = d20 === 20;
@@ -3766,7 +4392,7 @@ class PathbuilderApp {
     const modStr = PF2E_ENGINE.formatMod(modifier);
 
     this.animateDiceRoll({
-      title: `Ataque: ${label}`,
+      title: `${locale === "en" ? "Attack" : locale === "es" ? "Ataque" : "Ataque"}: ${label}`,
       diceList: [{ sides: 20, value: d20 }],
       modifier,
       total,
@@ -3774,11 +4400,12 @@ class PathbuilderApp {
       breakdown: `d20 (${d20}) ${modStr} = ${total}`,
       isCrit,
       isFumble,
-      tag: isCrit ? "Dano Dobrado!" : ""
+      tag: isCrit ? (locale === "en" ? "Doubled Damage!" : locale === "es" ? "¡Daño duplicado!" : "Dano Dobrado!") : ""
     });
   }
 
   rollDamage(weaponName, damageFormula) {
+    const locale = this.getLocale();
     const rolled = PF2E_ENGINE.evaluateDiceExpression(damageFormula);
     const critRolled = PF2E_ENGINE.evaluateDiceExpression(damageFormula, { isCritical: true });
     
@@ -3794,13 +4421,17 @@ class PathbuilderApp {
     }
 
     this.animateDiceRoll({
-      title: `Dano: ${weaponName}`,
+      title: `${locale === "en" ? "Damage" : locale === "es" ? "Daño" : "Dano"}: ${weaponName}`,
       diceList,
       modifier: rolled.staticModifier || 0,
       total: rolled.total,
       formula: damageFormula,
-      breakdown: `Rolou [${damageFormula}]: ${rolled.total} (Crítico: ${critRolled.total})`,
-      tag: `Crítico: ${critRolled.total}`
+      breakdown: locale === "en"
+        ? `Rolled [${damageFormula}]: ${rolled.total} (Critical: ${critRolled.total})`
+        : locale === "es"
+          ? `Tirada [${damageFormula}]: ${rolled.total} (Crítico: ${critRolled.total})`
+          : `Rolou [${damageFormula}]: ${rolled.total} (Crítico: ${critRolled.total})`,
+      tag: `${locale === "en" ? "Critical" : locale === "es" ? "Crítico" : "Crítico"}: ${critRolled.total}`
     });
   }
 
@@ -3894,7 +4525,12 @@ class PathbuilderApp {
     const res = PF2E_ENGINE.calculateShieldBlock(damage, shield);
     shield.currentHp = res.newShieldHp;
 
-    const msg = `🛡️ <strong>Bloqueio com Escudo:</strong> Dano Recebido: ${damage} | Bloqueado: ${res.damageBlocked} (Dureza: ${shield.hardness}) | Dano no Escudo: ${res.excessDamage} (PV Escudo: ${shield.currentHp}/${shield.maxHp}${res.isBroken ? " - QUEBRADO!" : ""}) | Dano no Personagem: ${res.characterDamage}`;
+    const shieldCopy = locale === "en"
+      ? { title: "Shield Block", received: "Damage Taken", blocked: "Blocked", hardness: "Hardness", shieldDamage: "Shield Damage", shieldHp: "Shield HP", broken: "BROKEN!", characterDamage: "Character Damage" }
+      : locale === "es"
+        ? { title: "Bloqueo con Escudo", received: "Daño recibido", blocked: "Bloqueado", hardness: "Dureza", shieldDamage: "Daño al escudo", shieldHp: "PG del escudo", broken: "¡ROTO!", characterDamage: "Daño al personaje" }
+        : { title: "Bloqueio com Escudo", received: "Dano Recebido", blocked: "Bloqueado", hardness: "Dureza", shieldDamage: "Dano no Escudo", shieldHp: "PV do Escudo", broken: "QUEBRADO!", characterDamage: "Dano no Personagem" };
+    const msg = `🛡️ <strong>${shieldCopy.title}:</strong> ${shieldCopy.received}: ${damage} | ${shieldCopy.blocked}: ${res.damageBlocked} (${shieldCopy.hardness}: ${shield.hardness}) | ${shieldCopy.shieldDamage}: ${res.excessDamage} (${shieldCopy.shieldHp}: ${shield.currentHp}/${shield.maxHp}${res.isBroken ? ` - ${shieldCopy.broken}` : ""}) | ${shieldCopy.characterDamage}: ${res.characterDamage}`;
     this.logDiceRoll(msg);
     
     if (res.characterDamage > 0) {
@@ -3907,6 +4543,7 @@ class PathbuilderApp {
 
   // AÇÃO: TESTE DE RECUPERAÇÃO (RECOVERY CHECK - MORRENDO)
   recoveryCheckAction() {
+    const locale = this.getLocale();
     const conditions = this.character.conditions || [];
     const dyingIdx = conditions.findIndex(c => /morrendo|dying/i.test(c.name || ""));
     const dyingVal = dyingIdx >= 0 ? Math.max(1, Number(conditions[dyingIdx].value) || 1) : 1;
@@ -3917,15 +4554,20 @@ class PathbuilderApp {
     const isNat1 = roll === 1;
     const res = PF2E_ENGINE.calculateDyingRecovery(dyingVal, roll, { doomed: doomedVal, isNat20, isNat1 });
 
+    const recoveryCopy = locale === "en"
+      ? { criticalSuccess: "🌟 Critical Success (Dying decreases by 2)", success: "✅ Success (Dying decreases by 1)", criticalFailure: "💀 Critical Failure (Dying increases by 2)", failure: "❌ Failure (Dying increases by 1)", dying: "Dying", dead: "☠️ DEAD (Maximum threshold reached)", stabilized: "💖 Stabilized! Gains Wounded +1", check: "Recovery Check", roll: "d20 roll" }
+      : locale === "es"
+        ? { criticalSuccess: "🌟 Éxito crítico (Morribundo disminuye en 2)", success: "✅ Éxito (Morribundo disminuye en 1)", criticalFailure: "💀 Fallo crítico (Morribundo aumenta en 2)", failure: "❌ Fallo (Morribundo aumenta en 1)", dying: "Morribundo", dead: "☠️ MUERTO (Se alcanzó el umbral máximo)", stabilized: "💖 ¡Estabilizado! Gana Herido +1", check: "Prueba de recuperación", roll: "tirada d20" }
+        : { criticalSuccess: "🌟 Sucesso Crítico (Reduz Morrendo em 2)", success: "✅ Sucesso (Reduz Morrendo em 1)", criticalFailure: "💀 Falha Crítica (Aumenta Morrendo em 2)", failure: "❌ Falha (Aumenta Morrendo em 1)", dying: "Morrendo", dead: "☠️ MORTO (Atingiu Limiar Máximo)", stabilized: "💖 Estabilizado! Ganha condição Ferido +1", check: "Teste de Recuperação", roll: "Rolagem d20" };
     let outcomeText = "";
-    if (res.outcome === "critical_success") outcomeText = "🌟 Sucesso Crítico (Reduz Morrendo em 2)";
-    else if (res.outcome === "success") outcomeText = "✅ Sucesso (Reduz Morrendo em 1)";
-    else if (res.outcome === "critical_failure") outcomeText = "💀 Falha Crítica (Aumenta Morrendo em 2)";
-    else outcomeText = "❌ Falha (Aumenta Morrendo em 1)";
+    if (res.outcome === "critical_success") outcomeText = recoveryCopy.criticalSuccess;
+    else if (res.outcome === "success") outcomeText = recoveryCopy.success;
+    else if (res.outcome === "critical_failure") outcomeText = recoveryCopy.criticalFailure;
+    else outcomeText = recoveryCopy.failure;
 
-    let statusText = `Morrendo ${res.newDying}`;
-    if (res.isDead) statusText = "☠️ MORTO (Atingiu Limiar Máximo)";
-    else if (res.isStabilized) statusText = "💖 Estabilizado! Ganha condição Ferido +1";
+    let statusText = `${recoveryCopy.dying} ${res.newDying}`;
+    if (res.isDead) statusText = recoveryCopy.dead;
+    else if (res.isStabilized) statusText = recoveryCopy.stabilized;
 
     if (dyingIdx >= 0) {
       if (res.newDying <= 0) {
@@ -3943,7 +4585,7 @@ class PathbuilderApp {
       conditions.push({ name: "Morrendo", value: res.newDying });
     }
 
-    const logMsg = `🎲 <strong>Teste de Recuperação (DC ${res.dc}):</strong> Rolagem d20: [${roll}] → ${outcomeText} | <strong>Resultado:</strong> ${statusText}`;
+    const logMsg = `🎲 <strong>${recoveryCopy.check} (DC ${res.dc}):</strong> ${recoveryCopy.roll}: [${roll}] → ${outcomeText} | <strong>${locale === "en" ? "Result" : locale === "es" ? "Resultado" : "Resultado"}:</strong> ${statusText}`;
     this.logDiceRoll(logMsg);
     this.saveCharacterLocal(false);
     this.renderAll();
@@ -4176,7 +4818,7 @@ class PathbuilderApp {
         `;
 
         const classTextAtLevelOne = String(char.class || "").toLowerCase();
-        const hasDedicatedClassProgression = ["brux", "witch", "mago", "wizard", "magus", "oráculo", "oracle", "necromant", "alquim", "alchemist", "bárbar", "barbar", "bardo", "bard", "clér", "cleric", "druida", "druid", "guerre", "fighter", "ladino", "rogue", "patrul", "ranger", "monge", "monk", "campe", "champion", "feitice", "sorcerer", "investig", "espadach", "swashbuckler", "inventor", "pistole", "gunslinger", "psíqu", "psychic", "taumatur", "thaumaturge", "animist", "exemplar", "comandante", "commander", "guardião", "guardian", "cinetic", "kineticist", "convocador", "summoner"].some((name) => classTextAtLevelOne.includes(name));
+        const hasDedicatedClassProgression = ["brux", "bruja", "witch", "mago", "wizard", "magus", "oráculo", "oracle", "necromant", "nigromant", "necromancer", "alquim", "alchemist", "bárbar", "barbar", "bardo", "bard", "clér", "cleric", "druida", "druid", "guerre", "guerr", "fighter", "ladino", "pícar", "rogue", "patrul", "explorador", "ranger", "monge", "monk", "campe", "champion", "feitice", "hechicer", "sorcerer", "investig", "espadach", "swashbuckler", "inventor", "pistole", "pistolero", "gunslinger", "psíqu", "psychic", "taumatur", "thaumaturge", "animist", "exemplar", "comandante", "commander", "guardião", "guardián", "guardian", "cinetic", "cinét", "kineticist", "convocador", "summoner"].some((name) => classTextAtLevelOne.includes(name));
 
         // Class Feat (Principal)
         const rawClassFeat1 = prog["1_class_feat"] || (char.feats?.find(f => f.slotId === "1_class_feat" || f.type?.includes("Classe"))?.name || tLabels.defaultGoading);
@@ -4214,7 +4856,7 @@ class PathbuilderApp {
         const featureCopy = {
           witch: {
             heading: ["Feitiços Hex", "Hex Spells", "Hechizos de maleficio"],
-            entries: [["Hex Inicial", "Initial Hex", "Maleficio inicial", "none", "patronHex"], ["Patrono", "Patron", "Patrón", "subclass", "patron"], ["Lição Inicial", "Initial Lesson", "Lección inicial", "none", "patronLesson"], ["Magia do Familiar", "Familiar Spell", "Conjuro del familiar", "none", "patronFamiliarSpell"], ["Habilidade do Familiar", "Familiar Ability", "Habilidad del familiar", "none", "patronFamiliarAbility"], ["Conjuração de Bruxa", "Witch Spellcasting", "Lanzamiento de bruja", "none", "magicTradition"]]
+            entries: [["Hex Inicial", "Initial Hex", "Maleficio inicial", "spell", "patronHex"], ["Patrono", "Patron", "Patrón", "subclass", "patron"], ["Lição Inicial", "Initial Lesson", "Lección inicial", "none", "patronLesson"], ["Magia do Familiar", "Familiar Spell", "Conjuro del familiar", "none", "patronFamiliarSpell"], ["Habilidade do Familiar", "Familiar Ability", "Habilidad del familiar", "none", "patronFamiliarAbility"], ["Conjuração de Bruxa", "Witch Spellcasting", "Lanzamiento de bruja", "none", "magicTradition"]]
           },
           wizard: {
             heading: ["Escola Arcana", "Arcane School", "Escuela arcana"],
@@ -4226,11 +4868,11 @@ class PathbuilderApp {
           },
           oracle: {
             heading: ["Mistério", "Mystery", "Misterio"],
-            entries: [["Mistério", "Select Mystery", "Seleccionar misterio", "subclass", "mystery"], ["Maldição Oracular", "Oracular Curse", "Maldición oracular", "none"], ["Feitiços de Revelação", "Revelation Spells", "Conjuros de revelación", "none"]]
+            entries: [["Mistério", "Select Mystery", "Seleccionar misterio", "subclass", "mystery"], ["Perícia de Mistério", "Mystery Skill", "Habilidad de misterio", "none", "mysterySkill"], ["Maldição Oracular", "Oracular Curse", "Maldición oracular", "none", "mysteryCurse"], ["Feitiços de Revelação", "Revelation Spells", "Conjuros de revelación", "none"]]
           },
           necromancer: {
             heading: ["Método Fatal", "Fatal Method", "Método fatal"],
-            entries: [["Método Fatal", "Select Fatal Method", "Seleccionar método fatal", "subclass"], ["Fascinação Sombria", "Select Grim Fascination", "Seleccionar fascinación sombría", "none"], ["Servo", "Command a Thrall", "Comandar un siervo", "none"], ["Lamento", "Dirge", "Lamento", "none"], ["Magias de Sepultura", "Grave Spells", "Conjuros de sepultura", "none"], ["Maestria da Vida e da Morte", "Mastery of Life and Death", "Maestría de la vida y la muerte", "none"], ["Conjuração de Necromante", "Necromancer Spellcasting", "Lanzamiento de nigromante", "none"], ["Servos", "Thralls", "Siervos", "none"], ["Saber Morto-Vivo", "Undead Lore", "Saber de muertos vivientes", "none"]]
+            entries: [["Método Fatal", "Select Fatal Method", "Seleccionar método fatal", "subclass"], ["Fascinação Sombria", "Select Grim Fascination", "Seleccionar fascinación sombría", "subclass", "grimFascination"], ["Servo", "Command a Thrall", "Comandar un siervo", "none"], ["Lamento", "Dirge", "Lamento", "none"], ["Magias de Sepultura", "Grave Spells", "Conjuros de sepultura", "none"], ["Maestria da Vida e da Morte", "Mastery of Life and Death", "Maestría de la vida y la muerte", "none"], ["Conjuração de Necromante", "Necromancer Spellcasting", "Lanzamiento de nigromante", "none"], ["Servos", "Thralls", "Siervos", "none"], ["Saber Morto-Vivo", "Undead Lore", "Saber de muertos vivientes", "none"]]
           },
           alchemist: { heading: ["Campo de Pesquisa", "Research Field", "Campo de investigación"], entries: [["Campo de Pesquisa", "Select Research Field", "Seleccionar campo de investigación", "subclass"], ["Alquimia Avançada", "Advanced Alchemy", "Alquimia avanzada", "none"], ["Reagentes Infundidos", "Infused Reagents", "Reactivos infundidos", "none"], ["Vials Versáteis", "Versatile Vials", "Viales versátiles", "none"]] },
           barbarian: { heading: ["Instinto", "Instinct", "Instinto"], entries: [["Instinto", "Select Instinct", "Seleccionar instinto", "subclass"], ["Fúria", "Rage", "Furia", "none"], ["Ataque Instintivo", "Instinct Ability", "Habilidad del instinto", "none"]] },
@@ -4258,48 +4900,85 @@ class PathbuilderApp {
           summoner: { heading: ["Eidolon", "Eidolon", "Eidolon"], entries: [["Eidolon", "Select Eidolon", "Seleccionar eidolon", "subclass"], ["Vínculo Vital", "Evolution Surge", "Oleada de evolución", "none"], ["Conjuração Compartilhada", "Shared Spellcasting", "Lanzamiento compartido", "none"]]
           }
         };
-        const classFeature = classText.includes("brux") || classText.includes("witch") ? featureCopy.witch
-          : classText.includes("mago") || classText.includes("wizard") ? featureCopy.wizard
-          : classText.includes("magus") ? featureCopy.magus
-          : classText.includes("oráculo") || classText.includes("oracle") ? featureCopy.oracle
-          : classText.includes("necromant") ? featureCopy.necromancer
-          : classText.includes("alquim") || classText.includes("alchemist") ? featureCopy.alchemist
-          : classText.includes("bárbar") || classText.includes("barbar") ? featureCopy.barbarian
-          : classText.includes("bardo") || classText.includes("bard") ? featureCopy.bard
-          : classText.includes("clér") || classText.includes("cleric") ? featureCopy.cleric
-          : classText.includes("druida") || classText.includes("druid") ? featureCopy.druid
-          : classText.includes("guerre") || classText.includes("fighter") ? featureCopy.fighter
-          : classText.includes("ladino") || classText.includes("rogue") ? featureCopy.rogue
-          : classText.includes("patrul") || classText.includes("ranger") ? featureCopy.ranger
-          : classText.includes("monge") || classText.includes("monk") ? featureCopy.monk
-          : classText.includes("campe") || classText.includes("champion") ? featureCopy.champion
-          : classText.includes("feitice") || classText.includes("sorcerer") ? featureCopy.sorcerer
-          : classText.includes("investig") ? featureCopy.investigator
-          : classText.includes("espadach") || classText.includes("swashbuckler") ? featureCopy.swashbuckler
-          : classText.includes("inventor") ? featureCopy.inventor
-          : classText.includes("pistole") || classText.includes("gunslinger") ? featureCopy.gunslinger
-          : classText.includes("psíqu") || classText.includes("psychic") ? featureCopy.psychic
-          : classText.includes("taumatur") || classText.includes("thaumaturge") ? featureCopy.thaumaturge
-          : classText.includes("animist") ? featureCopy.animist
-          : classText.includes("exemplar") ? featureCopy.exemplar
-          : classText.includes("comandante") || classText.includes("commander") ? featureCopy.commander
-          : classText.includes("guardião") || classText.includes("guardian") ? featureCopy.guardian
-          : classText.includes("cinetic") || classText.includes("kineticist") ? featureCopy.kineticist
-          : classText.includes("convocador") || classText.includes("summoner") ? featureCopy.summoner
-          : null;
+        const classFeatureKeyById = {
+          "class.alchemist": "alchemist", "class.barbarian": "barbarian", "class.bard": "bard",
+          "class.witch": "witch", "class.wizard": "wizard", "class.magus": "magus", "class.oracle": "oracle",
+          "class.necromancer": "necromancer", "class.champion": "champion", "class.cleric": "cleric",
+          "class.druid": "druid", "class.fighter": "fighter", "class.rogue": "rogue", "class.ranger": "ranger",
+          "class.monk": "monk", "class.sorcerer": "sorcerer", "class.investigator": "investigator",
+          "class.swashbuckler": "swashbuckler", "class.inventor": "inventor", "class.gunslinger": "gunslinger",
+          "class.psychic": "psychic", "class.thaumaturge": "thaumaturge", "class.animist": "animist",
+          "class.exemplar": "exemplar", "class.commander": "commander", "class.guardian": "guardian",
+          "class.kineticist": "kineticist", "class.summoner": "summoner"
+        };
+        const selectedClassRecord = Object.entries(PF2E_DATA.classes || {}).find(([key, candidate]) => {
+          const names = [key, candidate?.name, candidate?.names?.["pt-BR"], candidate?.names?.en, candidate?.names?.es]
+            .filter(Boolean).map((name) => String(name).toLowerCase());
+          return names.some((name) => classText === name || classText.includes(name) || name.includes(classText));
+        })?.[1];
+        const classFeatureKey = classFeatureKeyById[selectedClassRecord?.id]
+          || (classText.includes("brux") || classText.includes("witch") ? "witch"
+            : classText.includes("mago") || classText.includes("wizard") ? "wizard"
+            : classText.includes("magus") ? "magus"
+            : classText.includes("oráculo") || classText.includes("oracle") ? "oracle"
+            : classText.includes("necromant") || classText.includes("necromancer") ? "necromancer"
+            : classText.includes("alquim") || classText.includes("alchemist") ? "alchemist"
+            : classText.includes("bárbar") || classText.includes("barbar") ? "barbarian"
+            : classText.includes("bardo") || classText.includes("bard") ? "bard"
+            : classText.includes("clér") || classText.includes("cleric") ? "cleric"
+            : classText.includes("druida") || classText.includes("druid") ? "druid"
+            : classText.includes("guerre") || classText.includes("fighter") ? "fighter"
+            : classText.includes("ladino") || classText.includes("rogue") || classText.includes("pícar") ? "rogue"
+            : classText.includes("patrul") || classText.includes("ranger") || classText.includes("explorador") ? "ranger"
+            : classText.includes("monge") || classText.includes("monk") || classText.includes("monje") ? "monk"
+            : classText.includes("campe") || classText.includes("champion") ? "champion"
+            : classText.includes("feitice") || classText.includes("sorcerer") || classText.includes("hechicer") ? "sorcerer"
+            : classText.includes("investig") ? "investigator"
+            : classText.includes("espadach") || classText.includes("swashbuckler") ? "swashbuckler"
+            : classText.includes("inventor") ? "inventor"
+            : classText.includes("pistole") || classText.includes("gunslinger") || classText.includes("pistolero") ? "gunslinger"
+            : classText.includes("psíqu") || classText.includes("psychic") ? "psychic"
+            : classText.includes("taumatur") || classText.includes("thaumaturge") ? "thaumaturge"
+            : classText.includes("animist") ? "animist"
+            : classText.includes("exemplar") ? "exemplar"
+            : classText.includes("comandante") || classText.includes("commander") ? "commander"
+            : classText.includes("guardião") || classText.includes("guardián") || classText.includes("guardian") ? "guardian"
+            : classText.includes("cinetic") || classText.includes("cinét") || classText.includes("kineticist") ? "kineticist"
+            : classText.includes("convocador") || classText.includes("summoner") ? "summoner" : null);
+        const classFeature = classFeatureKey ? featureCopy[classFeatureKey] : null;
         if (classFeature) {
           const heading = classFeature.heading[isEn ? 1 : isEs ? 2 : 0];
           html += `<div class="pb-tree-section-heading">${escapeHtml(heading)}</div>`;
           const classFeatureId = Object.keys(featureCopy).find((featureKey) => featureCopy[featureKey] === classFeature) || "class";
+          const classIdentity = String(char.class || "").toLowerCase();
+          const classHasSubclassOptions = Boolean(selectedClassRecord?.id) && Array.isArray(PF2E_DATA?.subclasses)
+            && PF2E_DATA.subclasses.some((record) => !record?.legacyAlias && String(record?.classId || "").toLowerCase() === String(selectedClassRecord.id).toLowerCase());
           classFeature.entries.forEach(([key, en, es, picker, targetField], entryIndex) => {
             const stableSlot = `1_class_feature_${classFeatureId}_${entryIndex}`;
             const legacySlot = `1_class_feature_${key}`;
-            const fieldValue = targetField ? char[targetField] : (entryIndex === 0 ? char.subclass : "");
-            const value = prog[stableSlot] || prog[legacySlot] || fieldValue || "";
+            const classTargetFields = {
+              alchemist: "researchField", barbarian: "instinct", bard: "muse", cleric: "doctrine", druid: "order", rogue: "racket",
+              ranger: "hunterEdge", monk: "style", champion: "cause", sorcerer: "bloodline", investigator: "methodology",
+              swashbuckler: "style", inventor: "innovation", gunslinger: "way", psychic: "consciousMind", thaumaturge: "implement",
+              animist: "apparition", exemplar: "icon", commander: "banner", guardian: "guardianDefense", kineticist: "elementalGate",
+              summoner: "eidolon", wizard: "arcaneSchool", magus: "hybridStudy", necromancer: "fatalMethod"
+            };
+            const resolvedTargetField = targetField || (entryIndex === 0 ? classTargetFields[classFeatureId] : undefined);
+            const fieldValue = resolvedTargetField ? char[resolvedTargetField] : (entryIndex === 0 ? char.subclass : "");
+            const selectedOracle = classFeatureId === "oracle"
+              ? PF2E_ENGINE.resolveCatalogRecord(PF2E_DATA.subclasses || [], char.mystery || char.subclass)
+              : null;
+            const derivedValue = key === "Feitiços de Revelação" && selectedOracle?.revelationSpellIds
+              ? selectedOracle.revelationSpellIds.map((spellId) => {
+                const spell = (PF2E_DATA.spells || []).find((candidate) => candidate.id === spellId);
+                return spell ? this.localizeItemName(spell.name, locale) : "";
+              }).filter(Boolean).join(", ")
+              : "";
+            const value = prog[stableSlot] || prog[legacySlot] || fieldValue || derivedValue || "";
             const empty = isEn ? "Not Selected" : isEs ? "No Seleccionado" : "Não Selecionado";
             const label = isEn ? en : isEs ? es : key;
             const display = value ? this.localizeItemName(value, locale) : (entryIndex === 0 ? empty : label);
-            const action = picker === "subclass" ? ` onclick=\"app.promptSubclass({ targetField: '${targetField || "subclass"}', classFeatureSlot: '${stableSlot}' })\"` : picker === "spell" ? ` onclick=\"app.openPicker('spell', { classFeatureSlot: '${stableSlot}' })\"` : "";
+            const action = picker === "subclass" && classHasSubclassOptions ? ` onclick=\"app.promptSubclass({ targetField: '${resolvedTargetField || "subclass"}', classFeatureSlot: '${stableSlot}' })\"` : picker === "spell" ? ` onclick=\"app.openPicker('spell', { classFeatureSlot: '${stableSlot}', hexOnly: ${classFeatureId === "witch"} })\"` : "";
             html += `<div class="pb-tree-card"${action} title="${escapeHtml(label)}"><div class="pb-tree-card-content" style="padding-left: 2px;"><div class="pb-tree-card-label">${escapeHtml(label)}</div><div class="pb-tree-card-value ${value ? "" : "unselected"}">${escapeHtml(display)}</div></div></div>`;
           });
         } else {
@@ -4736,7 +5415,12 @@ class PathbuilderApp {
   }
 
   promptAddLoreSkill() {
-    const name = prompt("Nome do Saber / Conhecimento (ex: Warfare, Sailing, Architecture, Heraldry):");
+    const locale = this.getLocale();
+    const name = prompt(locale === "en"
+      ? "Lore name (e.g. Warfare, Sailing, Architecture, Heraldry):"
+      : locale === "es"
+        ? "Nombre del saber (p. ej., Guerra, Navegación, Arquitectura, Heráldica):"
+        : "Nome do Saber / Conhecimento (ex: Guerra, Navegação, Arquitetura, Heráldica):");
     if (name && name.trim()) {
       if (!this.character.loreSkills) this.character.loreSkills = [];
       const id = `lore_${name.trim().toLowerCase().replace(/\s+/g, '_')}`;
@@ -4783,8 +5467,10 @@ class PathbuilderApp {
   updateField(f, v) { this.character[f] = v; this.saveCharacterLocal(false); this.renderAll(); }
   updateLevel(v) { this.character.level = parseInt(v, 10); this.saveCharacterLocal(false); this.renderAll(); }
   editCharacterCollectionItem(collection, idx) {
+    const editableCollections = new Set(["weapons", "spells", "heritageInnateSpells", "rituals", "pets", "feats", "archetypes", "actions", "formulas", "buffs", "loreSkills"]);
+    if (!editableCollections.has(collection)) return false;
     const entry = this.character?.[collection]?.[idx];
-    if (!entry) return;
+    if (!entry) return false;
     const locale = this.getLocale();
     const labels = {
       "pt-BR": { name: "Nome:", description: "Descrição:" },
@@ -4793,9 +5479,9 @@ class PathbuilderApp {
     };
     const copy = labels[locale] || labels["pt-BR"];
     const nextName = prompt(copy.name, entry.name || "");
-    if (nextName === null) return;
+    if (nextName === null) return false;
     const nextDescription = prompt(copy.description, entry.description || entry.summaries?.[locale] || "");
-    if (nextDescription === null) return;
+    if (nextDescription === null) return false;
     const trimmedName = nextName.trim();
     if (trimmedName) {
       entry.name = trimmedName;
@@ -4805,8 +5491,11 @@ class PathbuilderApp {
     if (entry.summaries && typeof entry.summaries === "object") entry.summaries[locale] = entry.description;
     this.saveCharacterLocal(false);
     this.renderAll();
+    return true;
   }
   removeCharacterCollectionItem(collection, idx) {
+    const removableCollections = new Set(["weapons", "spells", "heritageInnateSpells", "rituals", "pets", "feats", "archetypes", "actions", "formulas", "buffs", "loreSkills"]);
+    if (!removableCollections.has(collection)) return false;
     const entries = this.character?.[collection];
     const position = Number(idx);
     if (!Array.isArray(entries) || !Number.isInteger(position) || position < 0 || position >= entries.length) return false;
@@ -4900,6 +5589,7 @@ class PathbuilderApp {
   loadCharacter(character) {
     if (!character) return;
     this.character = assertSafeCharacterDocument(character);
+    this.revalidateLoadedSelections();
     this.diceHistory = Array.isArray(this.character.diceHistory) ? this.character.diceHistory.slice(0, 100) : [];
     this.reconcileSpellcastingProfile();
     this.saveCharacterLocal(false);
@@ -4917,7 +5607,12 @@ class PathbuilderApp {
       console.warn("Erro ao salvar no localStorage:", e);
     }
     if (showAlert && typeof alert !== "undefined") {
-      alert(`Personagem '${this.character?.name || "atual"}' salvo neste dispositivo.`);
+      const locale = this.getLocale();
+      alert(locale === "en"
+        ? `Character '${this.character?.name || "current"}' saved on this device.`
+        : locale === "es"
+          ? `Personaje '${this.character?.name || "actual"}' guardado en este dispositivo.`
+          : `Personagem '${this.character?.name || "atual"}' salvo neste dispositivo.`);
     }
   }
 
@@ -4926,6 +5621,7 @@ class PathbuilderApp {
       id: "char_" + Date.now(),
       name: "Novo Herói",
       level: 1,
+      ruleset: "remaster",
       ancestry: "Humano",
       heritage: "Humano Versátil",
       class: "Guerreiro (Fighter)",
@@ -4972,19 +5668,26 @@ class PathbuilderApp {
   copyJson() {
     document.getElementById("jsonArea").select();
     document.execCommand("copy");
-    alert("JSON copiado!");
+    const locale = this.getLocale();
+    alert(locale === "en" ? "JSON copied!" : locale === "es" ? "¡JSON copiado!" : "JSON copiado!");
   }
 
   applyJson() {
     try {
       this.character = assertSafeCharacterDocument(JSON.parse(document.getElementById("jsonArea").value));
+      this.revalidateLoadedSelections();
       this.diceHistory = Array.isArray(this.character.diceHistory) ? this.character.diceHistory.slice(0, 100) : [];
       document.getElementById("modalJsonOverlay").classList.remove("active");
       this.saveCharacterLocal(false);
       this.renderAll();
-      alert("Personagem importado com sucesso!");
+      const locale = this.getLocale();
+      alert(locale === "en" ? "Character imported successfully!" : locale === "es" ? "¡Personaje importado correctamente!" : "Personagem importado com sucesso!");
     } catch (e) {
-      alert("Erro ao importar JSON: " + e.message);
+      const locale = this.getLocale();
+      const prefix = locale === "en" ? "Error importing JSON: " : locale === "es" ? "Error al importar JSON: " : "Erro ao importar JSON: ";
+      console.error("Erro ao importar JSON:", e);
+      const detail = locale === "en" ? "The JSON or character sheet is invalid." : locale === "es" ? "El JSON o la ficha de personaje no son válidos." : "O JSON ou a ficha de personagem é inválida.";
+      alert(prefix + detail);
     }
   }
 
@@ -4998,7 +5701,7 @@ class PathbuilderApp {
     const displayName = (record) => record?.names?.[locale] || record?.name || record?.id || copy.none;
     const metadata = (record) => {
       const source = record?.source?.book
-        ? `${record.source.book}${record.source.page ? `, p. ${record.source.page}` : record.sourceApproximate ? ` (${copy.approximate})` : ""}`
+        ? `${localizeSourceBookName(record.source.book, locale)}${record.source.page ? `, p. ${record.source.page}` : record.sourceApproximate ? ` (${copy.approximate})` : ""}`
         : "";
       const tags = [record?.ruleset, record?.needs_review ? copy.review : ""].filter(Boolean);
       return [source && `${copy.source}: ${source}`, tags.length && `${copy.ruleset}: ${tags.join(", ")}`].filter(Boolean).join(" · ");
@@ -5031,9 +5734,10 @@ class PathbuilderApp {
 
   // EXPORTAÇÃO E DOWNLOAD DA FICHA OFICIAL PDF EDITÁVEL (ACROFORM)
   async downloadOfficialFillablePdf() {
+    const locale = this.getLocale();
     try {
       if (typeof PF2E_PDF_FILLER === "undefined") {
-        alert("Módulo de PDF Editável não carregado.");
+        alert(locale === "en" ? "Editable PDF module was not loaded." : locale === "es" ? "No se cargó el módulo de PDF editable." : "Módulo de PDF Editável não carregado.");
         return;
       }
       
@@ -5064,7 +5768,9 @@ class PathbuilderApp {
       URL.revokeObjectURL(a.href);
     } catch (err) {
       console.error("Erro ao gerar PDF editável:", err);
-      alert("Erro ao preencher PDF oficial: " + (err.message || err));
+      const prefix = locale === "en" ? "Error filling official PDF: " : locale === "es" ? "Error al completar el PDF oficial: " : "Erro ao preencher PDF oficial: ";
+      const detail = locale === "en" ? "The official sheet could not be generated." : locale === "es" ? "No se pudo generar la ficha oficial." : "Não foi possível gerar a ficha oficial.";
+      alert(prefix + detail);
     }
   }
 
@@ -5103,8 +5809,13 @@ class PathbuilderApp {
             officialSubtitle: "Hoja oficial de personaje · Remaster", level: "NIVEL", heroPoints: "Puntos de héroe", name: "Nombre del personaje", ancestryHeritage: "Ascendencia y herencia", background: "Trasfondo", classSubclass: "Clase y subclase", sizeSpace: "Tamaño y espacio", speed: "Velocidad / Movimiento", deity: "Deidad y filosofía", edicts: "Edictos y principios", defaultHeritage: "Estándar", defaultDeity: "Libre", defaultEdicts: "Proteger aliados", defaultSize: "Mediano (5 pies)", magic: "Magia", normalVision: "Visión normal", melee: "Cuerpo a cuerpo", damage: "Daño:", traits: "Rasgos:", none: "Ninguno", noWeapon: "Ningún arma equipada.", classDc: "CD de clase", spellAttack: "CD de conjuro / ataque", skills: "Tabla oficial de habilidades (TEML)", skill: "Habilidad", total: "Total", ability: "Atrib.", item: "Objeto", page: "Página", character: "Personaje", pageOf: "Página {page} de 4", progression: "PROGRESIÓN E INVENTARIO", featsSkillsItems: "Dotes, capacidades de clase y objetos", featTree: "🌟 Árbol de dotes y capacidades (1–20)", inventory: "🎒 Inventario y mochila de aventurero", itemLabel: "Objeto", quantity: "Cant.", bulk: "Volumen", capacity: "⚖️ Capacidad de volumen y riqueza", totalBulk: "Volumen total / límite", encumbered: "Límite de sobrecarga", spells: "LANZADOR, CONJUROS Y RITUALES", noSpells: "No hay conjuros registrados. No lanzador o sin conjuros preparados.", noRituals: "No hay rituales catalogados.", circle: "Rango {rank}", senses: "Sentidos", shield: "Escudo", fortitude: "FORTALEZA", reflex: "REFLEJOS", will: "VOLUNTAD", deathRisk: "Riesgo de muerte", dying: "Morribundo", wounded: "Herido", doomed: "Condenado", attacks: "⚔️ Golpes y armas equipadas", resources: "Recursos y riqueza"
           }
         : {
-            officialSubtitle: "Ficha Oficial de Personagem · Remaster", level: "NÍVEL", heroPoints: "Pontos de Heroísmo", name: "Nome do Personagem", ancestryHeritage: "Ancestralidade & Herança", background: "Antecedente", classSubclass: "Classe & Subclasse", sizeSpace: "Tamanho & Espaço", speed: "Velocidade / Deslocamento", deity: "Divindade & Filosofia", edicts: "Éditos & Princípios", defaultHeritage: "Padrão", defaultDeity: "Livre", defaultEdicts: "Proteger aliados", defaultSize: "Médio (5 pés)", magic: "Magia", normalVision: "Visão Normal", melee: "Corpo a Corpo", damage: "Dano:", traits: "Traços:", none: "Nenhum", noWeapon: "Nenhuma arma equipada.", classDc: "CD de Classe", spellAttack: "CD de Magia / Ataque", skills: "Tabela de Perícias Oficiais (TEML)", skill: "Perícia", total: "Total", ability: "Atr", item: "Item", page: "Página", character: "Personagem", pageOf: "Página {page} de 4", progression: "PROGRESSÃO & INVENTÁRIO", featsSkillsItems: "Talentos, Habilidades de Classe & Itens", featTree: "🌟 Árvore de Talentos & Habilidades (1–20)", inventory: "🎒 Inventário & Mochila de Aventureiro", itemLabel: "Item", quantity: "Qtd", bulk: "Carga", capacity: "⚖️ Capacidade de Carga & Riqueza", totalBulk: "Carga Total / Limite", encumbered: "Limite de Sobrecarga", spells: "CONJURADOR, MAGIAS & RITUAIS", noSpells: "Nenhuma magia registrada. Conjurador não-mágico ou sem magias preparadas.", noRituals: "Nenhum ritual catalogado.", circle: "{rank}º Círculo", senses: "Sentidos", shield: "Escudo", fortitude: "FORTITUDE", reflex: "REFLEXOS", will: "VONTADE", deathRisk: "Risco de Morte", dying: "Morrendo", wounded: "Ferido", doomed: "Condenado", attacks: "⚔️ Golpes & Armas Equipadas", resources: "Recursos & Riqueza"
+          officialSubtitle: "Ficha Oficial de Personagem · Remaster", level: "NÍVEL", heroPoints: "Pontos de Heroísmo", name: "Nome do Personagem", ancestryHeritage: "Ancestralidade & Herança", background: "Antecedente", classSubclass: "Classe & Subclasse", sizeSpace: "Tamanho & Espaço", speed: "Velocidade / Deslocamento", deity: "Divindade & Filosofia", edicts: "Éditos & Princípios", defaultHeritage: "Padrão", defaultDeity: "Livre", defaultEdicts: "Proteger aliados", defaultSize: "Médio (5 pés)", magic: "Magia", normalVision: "Visão Normal", melee: "Corpo a Corpo", damage: "Dano:", traits: "Traços:", none: "Nenhum", noWeapon: "Nenhuma arma equipada.", classDc: "CD de Classe", spellAttack: "CD de Magia / Ataque", skills: "Tabela de Perícias Oficiais (TEML)", skill: "Perícia", total: "Total", ability: "Atr", item: "Item", page: "Página", character: "Personagem", pageOf: "Página {page} de 4", progression: "PROGRESSÃO & INVENTÁRIO", featsSkillsItems: "Talentos, Habilidades de Classe & Itens", featTree: "🌟 Árvore de Talentos & Habilidades (1–20)", inventory: "🎒 Inventário & Mochila de Aventureiro", itemLabel: "Item", quantity: "Qtd", bulk: "Carga", capacity: "⚖️ Capacidade de Carga & Riqueza", totalBulk: "Carga Total / Limite", encumbered: "Limite de Sobrecarga", spells: "CONJURADOR, MAGIAS & RITUAIS", noSpells: "Nenhuma magia registrada. Conjurador não-mágico ou sem magias preparadas.", noRituals: "Nenhum ritual catalogado.", circle: "{rank}º Círculo", senses: "Sentidos", shield: "Escudo", fortitude: "FORTITUDE", reflex: "REFLEXOS", will: "VONTADE", deathRisk: "Risco de Morte", dying: "Morrendo", wounded: "Ferido", doomed: "Condenado", attacks: "⚔️ Golpes & Armas Equipadas", resources: "Recursos & Riqueza"
           };
+    const abilityLabels = sheetLocale === "en"
+      ? { str: "STRENGTH", dex: "DEXTERITY", con: "CONSTITUTION", int: "INTELLIGENCE", wis: "WISDOM", cha: "CHARISMA", score: "Score" }
+      : sheetLocale === "es"
+        ? { str: "FUERZA", dex: "DESTREZA", con: "CONSTITUCIÓN", int: "INTELIGENCIA", wis: "SABIDURÍA", cha: "CARISMA", score: "Puntuación" }
+        : { str: "FORÇA", dex: "DESTREZA", con: "CONSTITUIÇÃO", int: "INTELIGÊNCIA", wis: "SABEDORIA", cha: "CARISMA", score: "Valor" };
     const sensesList = PF2E_ENGINE.getCharacterSenses ? PF2E_ENGINE.getCharacterSenses(character).join(", ") : sheetCopy.normalVision;
     const sheetCoinLabels = sheetLocale === "en"
       ? { title: "Coins & Wealth", pp: "PP", gp: "GP", sp: "SP", cp: "CP" }
@@ -5116,12 +5827,20 @@ class PathbuilderApp {
       : sheetLocale === "es"
         ? { noSource: "fuente no confirmada", section: "referencia de sección", review: "revisión pendiente" }
         : { noSource: "sem fonte confirmada", section: "referência de seção", review: "revisão pendente" };
+    const sheetRulesetLabels = sheetLocale === "en"
+      ? { remaster: "Remaster", legacy: "Pre-Remaster", review: "Review pending" }
+      : sheetLocale === "es"
+        ? { remaster: "Remaster", legacy: "Pre-Remaster", review: "Revisión pendiente" }
+        : { remaster: "Remaster", legacy: "Pré-Remaster", review: "Revisão pendente" };
     const sheetRecordMeta = (record) => {
       const source = record?.source?.book
-        ? `${record.source.book}${record.source.page ? `, p. ${record.source.page}` : record.sourceApproximate ? ` (${sheetMetaLabels.section})` : ""}`
+        ? `${localizeSourceBookName(record.source.book, locale)}${record.source.page ? `, p. ${record.source.page}` : record.sourceApproximate ? ` (${sheetMetaLabels.section})` : ""}`
         : sheetMetaLabels.noSource;
       const review = record?.needs_review ? ` · ${sheetMetaLabels.review}` : "";
-      return `${source}${record?.ruleset ? ` · ${record.ruleset}` : ""}${review}`;
+      const ruleset = record?.ruleset === "remaster" ? sheetRulesetLabels.remaster
+        : record?.ruleset === "legacy" ? sheetRulesetLabels.legacy
+          : record?.ruleset === "needs_review" ? sheetRulesetLabels.review : "";
+      return `${source}${ruleset ? ` · ${ruleset}` : ""}${review}`;
     };
 
     // PÁGINA 1: Combate, Atributos, Defesas, Golpes e Perícias
@@ -5230,34 +5949,34 @@ class PathbuilderApp {
 
         <div class="sheet-abilities-bar">
           <div class="sheet-ability-card">
-            <div class="sheet-ability-name">FORÇA</div>
+            <div class="sheet-ability-name">${abilityLabels.str}</div>
             <div class="sheet-ability-mod">${esc(PF2E_ENGINE.formatMod(calc.mods.str))}</div>
-            <div class="sheet-ability-score">Score: ${calc.scores.str}</div>
+            <div class="sheet-ability-score">${abilityLabels.score}: ${calc.scores.str}</div>
           </div>
           <div class="sheet-ability-card">
-            <div class="sheet-ability-name">DESTREZA</div>
+            <div class="sheet-ability-name">${abilityLabels.dex}</div>
             <div class="sheet-ability-mod">${esc(PF2E_ENGINE.formatMod(calc.mods.dex))}</div>
-            <div class="sheet-ability-score">Score: ${calc.scores.dex}</div>
+            <div class="sheet-ability-score">${abilityLabels.score}: ${calc.scores.dex}</div>
           </div>
           <div class="sheet-ability-card">
-            <div class="sheet-ability-name">CONSTITUIÇÃO</div>
+            <div class="sheet-ability-name">${abilityLabels.con}</div>
             <div class="sheet-ability-mod">${esc(PF2E_ENGINE.formatMod(calc.mods.con))}</div>
-            <div class="sheet-ability-score">Score: ${calc.scores.con}</div>
+            <div class="sheet-ability-score">${abilityLabels.score}: ${calc.scores.con}</div>
           </div>
           <div class="sheet-ability-card">
-            <div class="sheet-ability-name">INTELIGÊNCIA</div>
+            <div class="sheet-ability-name">${abilityLabels.int}</div>
             <div class="sheet-ability-mod">${esc(PF2E_ENGINE.formatMod(calc.mods.int))}</div>
-            <div class="sheet-ability-score">Score: ${calc.scores.int}</div>
+            <div class="sheet-ability-score">${abilityLabels.score}: ${calc.scores.int}</div>
           </div>
           <div class="sheet-ability-card">
-            <div class="sheet-ability-name">SABEDORIA</div>
+            <div class="sheet-ability-name">${abilityLabels.wis}</div>
             <div class="sheet-ability-mod">${esc(PF2E_ENGINE.formatMod(calc.mods.wis))}</div>
-            <div class="sheet-ability-score">Score: ${calc.scores.wis}</div>
+            <div class="sheet-ability-score">${abilityLabels.score}: ${calc.scores.wis}</div>
           </div>
           <div class="sheet-ability-card">
-            <div class="sheet-ability-name">CARISMA</div>
+            <div class="sheet-ability-name">${abilityLabels.cha}</div>
             <div class="sheet-ability-mod">${esc(PF2E_ENGINE.formatMod(calc.mods.cha))}</div>
-            <div class="sheet-ability-score">Score: ${calc.scores.cha}</div>
+            <div class="sheet-ability-score">${abilityLabels.score}: ${calc.scores.cha}</div>
           </div>
         </div>
 
@@ -5282,7 +6001,7 @@ class PathbuilderApp {
 
             <div style="font-size:6pt; margin-bottom:4px; display:flex; justify-content:space-between; background:#f8fafc; border:1px solid #cbd5e1; padding:2px 4px; border-radius:2px;">
               <span><strong>${sheetCopy.senses}:</strong> ${esc(sensesList)}</span>
-              <span><strong>${sheetCopy.shield}:</strong> Hardness 5 | ${sheetLocale === "en" ? "HP" : sheetLocale === "es" ? "PG" : "PV"} 20/20 | ${sheetLocale === "en" ? "BT" : "LM"} 10</span>
+              <span><strong>${sheetCopy.shield}:</strong> ${sheetLocale === "en" ? "Hardness" : sheetLocale === "es" ? "Dureza" : "Dureza"} 5 | ${sheetLocale === "en" ? "HP" : sheetLocale === "es" ? "PG" : "PV"} 20/20 | ${sheetLocale === "en" ? "BT" : "LM"} 10</span>
             </div>
 
             <div class="sheet-box-title">❤️ ${sheetLocale === "en" ? "Saves & Conditions" : sheetLocale === "es" ? "Salvaciones y condiciones" : "Salvaguardas & Condições"}</div>
@@ -5443,7 +6162,7 @@ class PathbuilderApp {
         <header class="sheet-official-header">
           <div class="sheet-logo-block">
             <span class="sheet-logo-title">GRIMÓRIO & CONJURAÇÃO</span>
-            <span class="sheet-logo-subtitle">Tradições Mágicas, Espaços de Magia, Foco & Rituais</span>
+            <span class="sheet-logo-subtitle">${sheetLocale === "en" ? "Magical Traditions, Spell Slots, Focus & Rituals" : sheetLocale === "es" ? "Tradiciones mágicas, espacios de conjuro, foco y rituales" : "Tradições Mágicas, Espaços de Magia, Foco & Rituais"}</span>
           </div>
           <div style="font-size:8pt; font-weight:bold; color:#0f172a;">${esc(character.name)}</div>
         </header>
@@ -5455,7 +6174,7 @@ class PathbuilderApp {
           ${cell("CD de Salvaguarda de Magia", `${calc.classDc}`)}
         </div>
 
-        <div class="sheet-box-title">✨ Espaços de Magia por Círculo (Spell Slots 1–10)</div>
+        <div class="sheet-box-title">✨ ${sheetLocale === "en" ? "Spell Slots by Rank (1–10)" : sheetLocale === "es" ? "Espacios de conjuro por rango (1–10)" : "Espaços de Magia por Círculo (1–10)"}</div>
         <div class="sheet-slot-grid">
           ${spellSlotsHtml}
         </div>
@@ -5488,56 +6207,68 @@ class PathbuilderApp {
 
   printLegacySheet() {
     const area = document.getElementById("printSheetArea");
+    const esc = (value) => String(value ?? "").replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]));
+    const locale = this.getLocale();
+    const copy = locale === "en"
+      ? { title: "PATHFINDER 2E — CHARACTER SHEET", level: "Level", ancestry: "Ancestry", class: "Class", defaultHeritage: "Common", defaultSubclass: "Standard", ac: "ARMOR CLASS (AC)", hp: "HIT POINTS (HP)", speedPerception: "SPEED / PERCEPTION", strikes: "⚔️ STRIKES & ARSENAL", attack: "Attack", damage: "Damage", traits: "Traits", saves: "🛡️ SAVING THROWS", fortitude: "Fortitude", reflex: "Reflex", will: "Will" }
+      : locale === "es"
+        ? { title: "PATHFINDER 2E — HOJA DE PERSONAJE", level: "Nivel", ancestry: "Ascendencia", class: "Clase", defaultHeritage: "Común", defaultSubclass: "Estándar", ac: "CLASE DE ARMADURA (CA)", hp: "PUNTOS DE GOLPE (PG)", speedPerception: "VELOCIDAD / PERCEPCIÓN", strikes: "⚔️ GOLPES Y ARSENAL", attack: "Ataque", damage: "Daño", traits: "Rasgos", saves: "🛡️ SALVACIONES", fortitude: "Fortaleza", reflex: "Reflejos", will: "Voluntad" }
+        : { title: "PATHFINDER 2E — FICHA DE PERSONAGEM", level: "Nível", ancestry: "Ancestralidade", class: "Classe", defaultHeritage: "Comum", defaultSubclass: "Padrão", ac: "CLASSE DE ARMADURA (CA)", hp: "PONTOS DE VIDA (PV)", speedPerception: "VELOCIDADE / PERCEPÇÃO", strikes: "⚔️ GOLPES & ARSENAL", attack: "Ataque", damage: "Dano", traits: "Traços", saves: "🛡️ SALVAGUARDAS", fortitude: "Fortitude", reflex: "Reflexos", will: "Vontade" };
+    const abilityShort = locale === "en"
+      ? { str: "STR", dex: "DEX", con: "CON", int: "INT", wis: "WIS", cha: "CHA" }
+      : locale === "es"
+        ? { str: "FUE", dex: "DES", con: "CON", int: "INT", wis: "SAB", cha: "CAR" }
+        : { str: "FOR", dex: "DES", con: "CON", int: "INT", wis: "SAB", cha: "CAR" };
     area.innerHTML = `
       <div style="font-family: 'Cinzel', Georgia, serif; border: 3px solid #000; padding: 20px;">
         <div style="display:flex; justify-content:space-between; border-bottom:2px solid #000; padding-bottom:10px;">
           <div>
-            <h1 style="font-size:24px; margin:0;">PATHFINDER 2E — FICHA DE PERSONAGEM</h1>
-            <h2 style="font-size:18px; margin:4px 0 0 0; color:#333;">${this.character.name}</h2>
+            <h1 style="font-size:24px; margin:0;">${copy.title}</h1>
+            <h2 style="font-size:18px; margin:4px 0 0 0; color:#333;">${esc(this.character.name)}</h2>
           </div>
           <div style="text-align:right; font-size:12px;">
-            <strong>Nível:</strong> ${this.character.level}<br>
-            <strong>Ancestralidade:</strong> ${this.character.ancestry} (${this.character.heritage || 'Comum'})<br>
-            <strong>Classe:</strong> ${this.character.class} (${this.character.subclass || 'Padrão'})
+            <strong>${copy.level}:</strong> ${this.character.level}<br>
+            <strong>${copy.ancestry}:</strong> ${esc(this.character.ancestry)} (${esc(this.character.heritage || copy.defaultHeritage)})<br>
+            <strong>${copy.class}:</strong> ${esc(this.character.class)} (${esc(this.character.subclass || copy.defaultSubclass)})
           </div>
         </div>
 
         <div style="display:grid; grid-template-columns: repeat(6, 1fr); gap:10px; margin:15px 0; text-align:center;">
-          <div style="border:1px solid #000; padding:6px;"><strong>FOR</strong><br><span style="font-size:18px;">${this.calc.scores.str}</span><br>(${PF2E_ENGINE.formatMod(this.calc.mods.str)})</div>
-          <div style="border:1px solid #000; padding:6px;"><strong>DES</strong><br><span style="font-size:18px;">${this.calc.scores.dex}</span><br>(${PF2E_ENGINE.formatMod(this.calc.mods.dex)})</div>
-          <div style="border:1px solid #000; padding:6px;"><strong>CON</strong><br><span style="font-size:18px;">${this.calc.scores.con}</span><br>(${PF2E_ENGINE.formatMod(this.calc.mods.con)})</div>
-          <div style="border:1px solid #000; padding:6px;"><strong>INT</strong><br><span style="font-size:18px;">${this.calc.scores.int}</span><br>(${PF2E_ENGINE.formatMod(this.calc.mods.int)})</div>
-          <div style="border:1px solid #000; padding:6px;"><strong>SAB</strong><br><span style="font-size:18px;">${this.calc.scores.wis}</span><br>(${PF2E_ENGINE.formatMod(this.calc.mods.wis)})</div>
-          <div style="border:1px solid #000; padding:6px;"><strong>CAR</strong><br><span style="font-size:18px;">${this.calc.scores.cha}</span><br>(${PF2E_ENGINE.formatMod(this.calc.mods.cha)})</div>
+          <div style="border:1px solid #000; padding:6px;"><strong>${abilityShort.str}</strong><br><span style="font-size:18px;">${this.calc.scores.str}</span><br>(${PF2E_ENGINE.formatMod(this.calc.mods.str)})</div>
+          <div style="border:1px solid #000; padding:6px;"><strong>${abilityShort.dex}</strong><br><span style="font-size:18px;">${this.calc.scores.dex}</span><br>(${PF2E_ENGINE.formatMod(this.calc.mods.dex)})</div>
+          <div style="border:1px solid #000; padding:6px;"><strong>${abilityShort.con}</strong><br><span style="font-size:18px;">${this.calc.scores.con}</span><br>(${PF2E_ENGINE.formatMod(this.calc.mods.con)})</div>
+          <div style="border:1px solid #000; padding:6px;"><strong>${abilityShort.int}</strong><br><span style="font-size:18px;">${this.calc.scores.int}</span><br>(${PF2E_ENGINE.formatMod(this.calc.mods.int)})</div>
+          <div style="border:1px solid #000; padding:6px;"><strong>${abilityShort.wis}</strong><br><span style="font-size:18px;">${this.calc.scores.wis}</span><br>(${PF2E_ENGINE.formatMod(this.calc.mods.wis)})</div>
+          <div style="border:1px solid #000; padding:6px;"><strong>${abilityShort.cha}</strong><br><span style="font-size:18px;">${this.calc.scores.cha}</span><br>(${PF2E_ENGINE.formatMod(this.calc.mods.cha)})</div>
         </div>
 
         <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:10px; margin:15px 0;">
           <div style="border:2px solid #000; padding:10px; text-align:center;">
-            <strong>CLASSE DE ARMADURA (CA)</strong><br>
+            <strong>${copy.ac}</strong><br>
             <span style="font-size:26px; font-weight:bold;">${this.calc.ac.total}</span>
           </div>
           <div style="border:2px solid #000; padding:10px; text-align:center;">
-            <strong>PONTOS DE VIDA (PV)</strong><br>
+            <strong>${copy.hp}</strong><br>
             <span style="font-size:26px; font-weight:bold;">${this.calc.currentHp} / ${this.calc.maxHp}</span>
           </div>
           <div style="border:2px solid #000; padding:10px; text-align:center;">
-            <strong>VELOCIDADE / PERCEPÇÃO</strong><br>
+            <strong>${copy.speedPerception}</strong><br>
             <span style="font-size:16px;">${this.formatMovementSpeeds()} | ${PF2E_ENGINE.formatMod(this.calc.perception.total)}</span>
           </div>
         </div>
 
         <div style="margin:15px 0;">
-          <h3 style="border-bottom:1px solid #000;">⚔️ GOLPES & ARSENAL</h3>
+          <h3 style="border-bottom:1px solid #000;">${copy.strikes}</h3>
           ${this.calc.strikes.map(s => `
             <div style="margin-bottom:6px;">
-              <strong>${s.name}</strong> (${s.category}) — Ataque: <strong>${PF2E_ENGINE.formatMod(s.map[0])} / ${PF2E_ENGINE.formatMod(s.map[1])} / ${PF2E_ENGINE.formatMod(s.map[2])}</strong> | Dano: <strong>${s.damageFormatted}</strong> | Traços: <em>${(s.traits || []).join(', ')}</em>
+              <strong>${esc(s.name)}</strong> (${esc(s.category)}) — ${copy.attack}: <strong>${PF2E_ENGINE.formatMod(s.map[0])} / ${PF2E_ENGINE.formatMod(s.map[1])} / ${PF2E_ENGINE.formatMod(s.map[2])}</strong> | ${copy.damage}: <strong>${esc(s.damageFormatted)}</strong> | ${copy.traits}: <em>${esc((s.traits || []).join(', '))}</em>
             </div>
           `).join('')}
         </div>
 
         <div style="margin:15px 0;">
-          <h3 style="border-bottom:1px solid #000;">🛡️ SALVAGUARDAS</h3>
-          <div><strong>Fortitude:</strong> ${PF2E_ENGINE.formatMod(this.calc.saves.fortitude.total)} (${this.calc.saves.fortitude.rank}) | <strong>Reflexos:</strong> ${PF2E_ENGINE.formatMod(this.calc.saves.reflex.total)} (${this.calc.saves.reflex.rank}) | <strong>Vontade:</strong> ${PF2E_ENGINE.formatMod(this.calc.saves.will.total)} (${this.calc.saves.will.rank})</div>
+          <h3 style="border-bottom:1px solid #000;">${copy.saves}</h3>
+          <div><strong>${copy.fortitude}:</strong> ${PF2E_ENGINE.formatMod(this.calc.saves.fortitude.total)} (${esc(this.calc.saves.fortitude.rank)}) | <strong>${copy.reflex}:</strong> ${PF2E_ENGINE.formatMod(this.calc.saves.reflex.total)} (${esc(this.calc.saves.reflex.rank)}) | <strong>${copy.will}:</strong> ${PF2E_ENGINE.formatMod(this.calc.saves.will.total)} (${esc(this.calc.saves.will.rank)})</div>
         </div>
       </div>
     `;
@@ -5599,7 +6330,8 @@ class PathbuilderApp {
     const promptInput = document.getElementById("aiPromptInput");
     const promptText = promptInput ? promptInput.value.trim() : "";
     if (!promptText) {
-      alert("Por favor, digite uma descrição ou escolha um conceito acima para a IA criar o personagem.");
+      const locale = this.getLocale();
+      alert(locale === "en" ? "Please enter a description or choose a concept above so the AI can create the character." : locale === "es" ? "Escribe una descripción o elige un concepto para que la IA cree el personaje." : "Por favor, digite uma descrição ou escolha um conceito acima para a IA criar o personagem.");
       return;
     }
 
@@ -5620,9 +6352,10 @@ class PathbuilderApp {
     const btnApply = document.getElementById("btnApplyAICharacter");
 
     if (resultBox && nameEl && detailsEl) {
+      const locale = this.getLocale();
       nameEl.innerText = generated.name;
-      taglineEl.innerText = `${generated.ancestry} (${generated.heritage}) · ${generated.class} (${generated.subclass}) · Nv ${generated.level}`;
-      roleEl.innerText = generated.aiNotes?.combatRole || "⚔️ Herói de Aventura";
+      taglineEl.innerText = `${generated.ancestry} (${generated.heritage}) · ${generated.class} (${generated.subclass}) · ${locale === "en" ? "Lv" : locale === "es" ? "Nv" : "Nv"} ${generated.level}`;
+      roleEl.innerText = generated.aiNotes?.combatRole || (locale === "en" ? "⚔️ Adventuring Hero" : locale === "es" ? "⚔️ Héroe aventurero" : "⚔️ Herói de Aventura");
 
       detailsEl.innerHTML = `
         <div style="display:grid; grid-template-columns: repeat(6, 1fr); gap: 4px; background: rgba(0,0,0,0.25); padding: 6px; border-radius: 4px; margin-bottom: 6px; text-align: center;">
@@ -5634,17 +6367,17 @@ class PathbuilderApp {
           <div><strong style="color:#f97316;">CAR</strong><br>${calc.scores.cha} (${PF2E_ENGINE.formatMod(calc.mods.cha)})</div>
         </div>
         <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
-          <span>🛡️ <strong>CA:</strong> ${calc.ac.total}</span>
-          <span>❤️ <strong>PV:</strong> ${calc.maxHp}</span>
-          <span>🏃 <strong>Deslocamento:</strong> ${calc.speed}ft.</span>
-          <span>👁️ <strong>Percepção:</strong> ${PF2E_ENGINE.formatMod(calc.perception.total)}</span>
+          <span>🛡️ <strong>${locale === "en" ? "AC" : locale === "es" ? "CA" : "CA"}:</strong> ${calc.ac.total}</span>
+          <span>❤️ <strong>${locale === "en" ? "HP" : locale === "es" ? "PG" : "PV"}:</strong> ${calc.maxHp}</span>
+          <span>🏃 <strong>${locale === "en" ? "Speed" : locale === "es" ? "Velocidad" : "Deslocamento"}:</strong> ${calc.speed}${locale === "en" ? " ft." : locale === "es" ? " pies" : " pés"}</span>
+          <span>👁️ <strong>${locale === "en" ? "Perception" : locale === "es" ? "Percepción" : "Percepção"}:</strong> ${PF2E_ENGINE.formatMod(calc.perception.total)}</span>
         </div>
-        <div>⚔️ <strong>Armas:</strong> ${(generated.weapons || []).map(w => w.name).join(", ")}</div>
-        <div>🛡️ <strong>Armadura:</strong> ${generated.equippedArmor?.name || "Roupas de Explorador"} ${generated.shieldRaised ? "(Escudo Equipado)" : ""}</div>
+        <div>⚔️ <strong>${locale === "en" ? "Weapons" : locale === "es" ? "Armas" : "Armas"}:</strong> ${(generated.weapons || []).map(w => escapeHtml(w.name)).join(", ")}</div>
+        <div>🛡️ <strong>${locale === "en" ? "Armor" : locale === "es" ? "Armadura" : "Armadura"}:</strong> ${escapeHtml(generated.equippedArmor?.name || (locale === "en" ? "Explorer's Clothing" : locale === "es" ? "Ropa de explorador" : "Roupas de Explorador"))} ${generated.shieldRaised ? (locale === "en" ? "(Shield Equipped)" : locale === "es" ? "(Escudo equipado)" : "(Escudo Equipado)") : ""}</div>
       `;
 
       if (tacticsEl && generated.aiNotes?.tacticalTip) {
-        tacticsEl.innerHTML = `<strong>💡 Dica Tática da IA:</strong> ${generated.aiNotes.tacticalTip}`;
+        tacticsEl.innerHTML = `<strong>💡 ${locale === "en" ? "AI Tactical Tip:" : locale === "es" ? "Consejo táctico de IA:" : "Dica Tática da IA:"}</strong> ${escapeHtml(generated.aiNotes.tacticalTip)}`;
       }
 
       resultBox.style.display = "block";
@@ -5656,13 +6389,17 @@ class PathbuilderApp {
     if (!this.lastAIGeneratedChar) return;
     try {
       this.character = assertSafeCharacterDocument(this.lastAIGeneratedChar);
+      this.revalidateLoadedSelections();
       this.diceHistory = Array.isArray(this.character.diceHistory) ? this.character.diceHistory.slice(0, 100) : [];
       this.saveCharacterLocal();
       this.renderAll();
       this.closeAIAssistantModal();
-      alert(`✨ Personagem "${this.character.name}" criado com sucesso pela IA e carregado no construtor!`);
+      const locale = this.getLocale();
+      alert(locale === "en" ? `✨ Character "${this.character.name}" created by AI and loaded in the builder!` : locale === "es" ? `✨ ¡Personaje "${this.character.name}" creado por la IA y cargado en el constructor!` : `✨ Personagem "${this.character.name}" criado com sucesso pela IA e carregado no construtor!`);
     } catch (err) {
-      alert("Erro ao aplicar personagem gerado: " + err.message);
+      const locale = this.getLocale();
+      console.error("Erro ao aplicar personagem gerado:", err);
+      alert(locale === "en" ? "Error applying generated character. Check the character data and try again." : locale === "es" ? "Error al aplicar el personaje generado. Verifica los datos e inténtalo de nuevo." : "Erro ao aplicar personagem gerado. Verifique os dados e tente novamente.");
     }
   }
 
@@ -5693,7 +6430,11 @@ class PathbuilderApp {
         const count = String(issue.message || "").match(/\(([^)]+)\)/)?.[1] || "";
         return locale === "en" ? `Trained skills (${count}) are below the allowed total` : locale === "es" ? `Habilidades entrenadas (${count}) están por debajo del total permitido` : `Perícias treinadas (${count}) abaixo do total permitido`;
       }
-      return messages[locale]?.[issue.id] || issue.message;
+      return messages[locale]?.[issue.id] || (locale === "en"
+        ? "This requirement needs review."
+        : locale === "es"
+          ? "Este requisito necesita revisión."
+          : "Este requisito precisa de revisão.");
     };
     const scoreEl = document.getElementById("readinessModalScore");
     const barEl = document.getElementById("readinessProgressBar");

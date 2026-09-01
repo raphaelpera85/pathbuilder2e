@@ -36,6 +36,7 @@ export function AccountPortal() {
   const [session, setSession] = useState<AuthSession | null>(null);
   const [characters, setCharacters] = useState<CloudCharacter[]>([]);
   const [loading, setLoading] = useState(false);
+  const [sessionReady, setSessionReady] = useState(false);
   const [working, setWorking] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
@@ -60,8 +61,13 @@ export function AccountPortal() {
 
   useEffect(() => {
     const openAccount = () => setOpen(true);
+    const closeAccountOnNavigation = () => setOpen(false);
     window.addEventListener("pathbuilder:open-account", openAccount);
-    return () => window.removeEventListener("pathbuilder:open-account", openAccount);
+    window.addEventListener("hashchange", closeAccountOnNavigation);
+    return () => {
+      window.removeEventListener("pathbuilder:open-account", openAccount);
+      window.removeEventListener("hashchange", closeAccountOnNavigation);
+    };
   }, []);
 
   const refreshCharacters = useCallback(async (user?: UserProfile) => {
@@ -80,7 +86,7 @@ export function AccountPortal() {
       setCharacters(items);
     } catch (caught) {
       if (requestId !== charactersLoadIdRef.current) return;
-      setError(caught instanceof Error ? caught.message : t("loadingSheets"));
+      setError(t("charactersLoadFailed"));
     } finally {
       if (requestId === charactersLoadIdRef.current) setLoading(false);
     }
@@ -88,16 +94,18 @@ export function AccountPortal() {
 
   useEffect(() => {
     let active = true;
-    let authEventReceived = false;
-    void getCurrentSession().then((cur) => {
-      if (!active || authEventReceived) return;
-      setSession(cur);
-      setProfileUsername(cur?.user.username || "");
-      if (cur) void refreshCharacters(cur.user);
-    });
+    void getCurrentSession()
+      .then((cur) => {
+        if (!active) return;
+        setSession(cur);
+        setProfileUsername(cur?.user.username || "");
+        if (cur) void refreshCharacters(cur.user);
+      })
+      .finally(() => {
+        if (active) setSessionReady(true);
+      });
 
     const unsubscribe = subscribeToAuth((nextSession) => {
-      authEventReceived = true;
       setSession(nextSession);
       setProfileUsername(nextSession?.user.username || "");
       if (nextSession) {
@@ -175,12 +183,14 @@ export function AccountPortal() {
           setNotice(t("accountCreatedNotice"));
         } else {
           setSession(newSession);
+          void refreshCharacters(newSession.user);
           setNotice(t("welcomeNotice"));
           setOpen(false);
         }
       } else {
         const logged = await signIn(email, password);
         setSession(logged);
+        void refreshCharacters(logged.user);
         setNotice(t("signedInNotice"));
         setOpen(false);
       }
@@ -200,7 +210,7 @@ export function AccountPortal() {
       setPassword("");
       setConfirmPassword("");
     } catch (caught) {
-      setError(caught instanceof Error ? caught.message : t("authenticationFailed"));
+      setError(t("authenticationFailed"));
     } finally {
       setWorking(null);
     }
@@ -219,7 +229,7 @@ export function AccountPortal() {
       window.dispatchEvent(new Event("pathbuilder:characters-changed"));
       setNotice(t("saveCurrent"));
     } catch (caught) {
-      setError(caught instanceof Error ? caught.message : t("saveCharacterFailed"));
+      setError(t("saveCharacterFailed"));
     } finally {
       setWorking(null);
     }
@@ -245,7 +255,7 @@ export function AccountPortal() {
       window.dispatchEvent(new Event("pathbuilder:characters-changed"));
       setNotice(t("characterDeletedNotice"));
     } catch (caught) {
-      setError(caught instanceof Error ? caught.message : t("deleteCharacterFailed"));
+      setError(t("deleteCharacterFailed"));
     } finally {
       setWorking(null);
     }
@@ -262,14 +272,16 @@ export function AccountPortal() {
       window.dispatchEvent(new Event("pathbuilder:characters-changed"));
       setNotice(t("saveCurrent"));
     } catch (caught) {
-      setError(caught instanceof Error ? caught.message : t("saveCharacterFailed"));
+      setError(t("saveCharacterFailed"));
     } finally { setWorking(null); }
   };
 
   const handleSignOut = async () => {
     setWorking("signout");
     await signOut();
+    charactersLoadIdRef.current += 1;
     setSession(null);
+    setLoading(false);
     setCharacters([]);
     setWorking(null);
     setOpen(false);
@@ -285,7 +297,7 @@ export function AccountPortal() {
       setSession(next);
       setNotice(t("profileUpdated"));
     } catch (caught) {
-      setError(caught instanceof Error ? caught.message : t("profileUpdateFailed"));
+      setError(t("profileUpdateFailed"));
     } finally { setWorking(null); }
   };
 
@@ -298,7 +310,7 @@ export function AccountPortal() {
       setCurrentPassword(""); setNewPassword("");
       setNotice(t("passwordUpdated"));
     } catch (caught) {
-      setError(caught instanceof Error ? caught.message : t("passwordUpdateFailed"));
+      setError(t("passwordUpdateFailed"));
     } finally { setWorking(null); }
   };
 
@@ -310,7 +322,7 @@ export function AccountPortal() {
       setSession(null); setCharacters([]); setOpen(false);
       window.location.hash = "#/library";
     } catch (caught) {
-      setError(caught instanceof Error ? caught.message : t("deleteAccountFailed"));
+      setError(t("deleteAccountFailed"));
     } finally { setWorking(null); }
   };
 
@@ -325,7 +337,7 @@ export function AccountPortal() {
         onClick={() => setOpen(true)}
       >
         <span aria-hidden="true">{session ? "🛡️" : "👤"}</span>
-        {session?.user.username ?? t("signIn")}
+        {session?.user.username ?? (sessionReady ? t("signIn") : t("wait"))}
         {session?.user.role === "admin" && <span className="admin-badge">{t("admin")}</span>}
       </button>
 
@@ -340,7 +352,9 @@ export function AccountPortal() {
               <button className="account-close" onClick={() => setOpen(false)} aria-label={t("close")} type="button">✕</button>
             </header>
 
-            {!session ? (
+            {!sessionReady ? (
+              <div className="account-state" role="status" aria-live="polite">{t("loadingSheets")}</div>
+            ) : !session ? (
               <form className="auth-form" onSubmit={submitAuth}>
                 <div className="auth-switch" role="tablist" aria-label={t("accountAccess")}>
                   <button role="tab" aria-selected={authMode === "signin"} type="button" className={authMode === "signin" ? "active" : ""} onClick={() => setAuthMode("signin")}>{t("signIn")}</button>
@@ -432,6 +446,30 @@ export function AccountPortal() {
                             <strong>{character.name}</strong>
                             <span>{t("level")} {character.level} · {localizedRuleset(character.ruleset)}</span>
                           </button>
+                          {Array.isArray(character.data.history) && character.data.history.length > 0 && (
+                            <details className="character-history">
+                              <summary>{t("characterHistory")} ({character.data.history.length})</summary>
+                              <ol>
+                                {character.data.history.slice(0, 10).map((revision, index) => (
+                                  <li key={`${revision.savedAt}-${index}`}>
+                                    <strong>{revision.name}</strong> · {t("level")} {revision.level}<br />
+                                    <span>{t("savedAt")} {new Date(revision.savedAt).toLocaleString(locale)}</span>
+                                    <button
+                                      className="character-history-restore"
+                                      type="button"
+                                      onClick={() => {
+                                        (window as any).app?.loadCharacter({ ...revision.data, id: character.character_key });
+                                        setOpen(false);
+                                        window.location.hash = "#/builder";
+                                      }}
+                                    >
+                                      {t("restoreVersion")}
+                                    </button>
+                                  </li>
+                                ))}
+                              </ol>
+                            </details>
+                          )}
                           <button
                             className="character-rename"
                             onClick={() => rename(character)}

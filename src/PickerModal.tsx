@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { PickerBridge, PickerItem, PickerSelectionOption, PickerType } from "./types";
 import { useI18n, getItemDisplayName, type MessageKey } from "./i18n";
-import { coinsToCopper, parsePriceToCopper, canAffordPrice, formatCopperToString, formatPriceToLocale } from "./utils/economy";
+import { coinsToCopper, parsePriceToCopper, formatCopperToString, formatPriceToLocale } from "./utils/economy";
+import { localizeSourceBookName } from "./data/sources";
 
 const pickerLabelKeys: Record<PickerType, MessageKey> = {
   ancestry: "ancestries", class: "classes", subclass: "subclasses", background: "backgrounds", weapon: "weapons", armor: "armors", shield: "shields",
@@ -13,17 +14,180 @@ function getTraitDisplayName(trait: string, locale: "pt-BR" | "en" | "es") {
   return legacyApp?.localizeTrait?.(trait, locale) || trait;
 }
 
-function getLocalizedPrerequisiteNames(values: string[], type: PickerType, locale: "pt-BR" | "en" | "es") {
+export function getTraditionDisplayNames(
+  traditions: unknown,
+  localized: Partial<Record<"pt-BR" | "en" | "es", string[]>> | undefined,
+  locale: "pt-BR" | "en" | "es",
+) {
+  if (localized?.[locale]?.length) return localized[locale] as string[];
+  const labels: Record<string, Record<"pt-BR" | "en" | "es", string>> = {
+    arcane: { "pt-BR": "Arcana", en: "Arcane", es: "Arcana" },
+    divine: { "pt-BR": "Divina", en: "Divine", es: "Divina" },
+    occult: { "pt-BR": "Oculta", en: "Occult", es: "Oculta" },
+    primal: { "pt-BR": "Primal", en: "Primal", es: "Primordial" },
+  };
+  return (Array.isArray(traditions) ? traditions : []).map((tradition) => {
+    const key = String(tradition ?? "").trim().toLowerCase();
+    return labels[key]?.[locale] || String(tradition ?? "");
+  }).filter(Boolean);
+}
+
+export function getLocalizedPrerequisiteNames(values: unknown[], type: PickerType, locale: "pt-BR" | "en" | "es") {
   const legacyApp = typeof window !== "undefined" ? (window as any).app : null;
-  const catalog = typeof legacyApp?.getPickerItems === "function" ? legacyApp.getPickerItems(type) : [];
+  const shared = typeof window !== "undefined" ? (window as any).pathbuilderCatalogs || {} : {};
+  const legacyCatalog = typeof window !== "undefined" ? (window as any).PF2E_DATA || {} : {};
+  const source = type === "class" ? legacyCatalog.classes
+    : type === "ancestry" ? legacyCatalog.ancestries
+      : type === "feat" ? [...(shared.feats || []), ...(legacyCatalog.feats || [])]
+        : type === "action" ? [...(shared.actions || []), ...(legacyCatalog.actions || [])]
+          : type === "item" || type === "gear" ? [...(shared.items || []), ...(legacyCatalog.items || [])]
+            : [];
+  const rawRecords = Array.isArray(source) ? source : Object.entries(source || {}).map(([key, record]) => ({ name: key, ...(record as any) }));
+  const catalog = [
+    ...(typeof legacyApp?.getPickerItems === "function" ? legacyApp.getPickerItems(type) : []),
+    ...rawRecords.map((record: any) => ({ name: record.name, data: record })),
+  ];
   return values.map((value) => {
-    const normalized = String(value).toLowerCase().replace(/^(class|ancestry)\./, "");
+    const rawValue = value && typeof value === "object"
+      ? (value as any).id || (value as any).name || (value as any)["pt-BR"] || (value as any).en || (value as any).es || ""
+      : value;
+    const normalized = String(rawValue).toLowerCase().replace(/^(class|ancestry)\./, "");
     const match = catalog.find((item: any) => {
       const ids = [item.id, item.data?.id, item.name, item.data?.name].filter(Boolean).map((entry) => String(entry).toLowerCase());
-      return ids.includes(String(value).toLowerCase()) || ids.some((entry) => entry === normalized || entry.endsWith(`.${normalized}`));
+      return ids.includes(String(rawValue).toLowerCase()) || ids.some((entry) => entry === normalized || entry.endsWith(`.${normalized}`));
     });
-    return match ? getItemDisplayName(match, locale) : value;
+    return match ? getItemDisplayName(match, locale) : String(rawValue);
   }).join(", ");
+}
+
+export function getLocalizedSkillName(value: unknown, locale: "pt-BR" | "en" | "es") {
+  const key = String(value ?? "").trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  const aliases: Record<string, string> = {
+    acrobacia: "acrobatics", acrobacias: "acrobatics",
+    atletismo: "athletics",
+    arcana: "arcana", arcanismo: "arcana", arcanos: "arcana",
+    manufatura: "crafting", artesania: "crafting",
+    enganacao: "deception", engano: "deception",
+    diplomacia: "diplomacy",
+    intimidacao: "intimidation", intimidacion: "intimidation",
+    medicina: "medicine",
+    natureza: "nature", naturalez: "nature",
+    ocultismo: "occultism",
+    atuacao: "performance", interpretacion: "performance", performance: "performance",
+    religiao: "religion", religion: "religion",
+    sociedade: "society", sociedad: "society",
+    furtividade: "stealth", sigilo: "stealth",
+    sobrevivencia: "survival", supervivencia: "survival",
+    ladinagem: "thievery", latrocinio: "thievery", hurto: "thievery",
+  };
+  const names: Record<string, Record<"pt-BR" | "en" | "es", string>> = {
+    acrobatics: { "pt-BR": "Acrobacia", en: "Acrobatics", es: "Acrobacias" },
+    athletics: { "pt-BR": "Atletismo", en: "Athletics", es: "Atletismo" },
+    arcana: { "pt-BR": "Arcanismo", en: "Arcana", es: "Arcana" },
+    crafting: { "pt-BR": "Manufatura", en: "Crafting", es: "Artesanía" },
+    deception: { "pt-BR": "Enganação", en: "Deception", es: "Engaño" },
+    diplomacy: { "pt-BR": "Diplomacia", en: "Diplomacy", es: "Diplomacia" },
+    intimidation: { "pt-BR": "Intimidação", en: "Intimidation", es: "Intimidación" },
+    medicine: { "pt-BR": "Medicina", en: "Medicine", es: "Medicina" },
+    nature: { "pt-BR": "Natureza", en: "Nature", es: "Naturaleza" },
+    occultism: { "pt-BR": "Ocultismo", en: "Occultism", es: "Ocultismo" },
+    performance: { "pt-BR": "Atuação", en: "Performance", es: "Interpretación" },
+    religion: { "pt-BR": "Religião", en: "Religion", es: "Religión" },
+    society: { "pt-BR": "Sociedade", en: "Society", es: "Sociedad" },
+    stealth: { "pt-BR": "Furtividade", en: "Stealth", es: "Sigilo" },
+    survival: { "pt-BR": "Sobrevivência", en: "Survival", es: "Supervivencia" },
+    thievery: { "pt-BR": "Ladinagem", en: "Thievery", es: "Latrocinio" },
+  };
+  const canonical = aliases[key] || key;
+  return names[canonical]?.[locale] || String(value ?? "");
+}
+
+export function localizePrerequisiteText(value: unknown, locale: "pt-BR" | "en" | "es") {
+  if (value && typeof value === "object") {
+    const record = value as { names?: Partial<Record<"pt-BR" | "en" | "es", string>>; name?: string; id?: string };
+    const localized = record.names?.[locale];
+    if (localized) return localized;
+    value = record.name || record.id || "";
+  }
+  const text = String(value ?? "");
+  if (!text) return text;
+  if (locale === "pt-BR") {
+    // Parte do catálogo legado foi importada com o pré-requisito em inglês.
+    // O pt-BR é o idioma-base do projeto, portanto também precisa remover
+    // esse fallback cru antes do gate de idiomas seguintes.
+    const englishToPortuguese: Array<[RegExp, string]> = [
+      [/Trained with Shields/gi, "Treinado com Escudos"],
+      [/Trained in martial weapons/gi, "Treinado em Armas Marciais"],
+      [/Trained in light or medium armor/gi, "Treinado em Armaduras Leves ou Médias"],
+      [/Expert in unarmored defense/gi, "Especialista em Defesa sem Armadura"],
+      [/Legendary in/gi, "Lendário em"],
+      [/Master in/gi, "Mestre em"],
+      [/Expert in/gi, "Especialista em"],
+      [/Trained in/gi, "Treinado em"],
+      [/Trained with/gi, "Treinado com"],
+      [/Acrobatics/gi, "Acrobacia"], [/Athletics/gi, "Atletismo"],
+      [/Arcana/gi, "Arcanismo"], [/Crafting/gi, "Manufatura"],
+      [/Deception/gi, "Enganação"], [/Diplomacy/gi, "Diplomacia"],
+      [/Intimidation/gi, "Intimidação"], [/Medicine/gi, "Medicina"],
+      [/Nature/gi, "Natureza"], [/Occultism/gi, "Ocultismo"],
+      [/Religion/gi, "Religião"], [/Society/gi, "Sociedade"],
+      [/Stealth/gi, "Furtividade"], [/Survival/gi, "Sobrevivência"],
+      [/Thievery/gi, "Ladinagem"], [/Strength/gi, "Força"],
+      [/Dexterity/gi, "Destreza"], [/Constitution/gi, "Constituição"],
+      [/Intelligence/gi, "Inteligência"], [/Wisdom/gi, "Sabedoria"],
+      [/Charisma/gi, "Carisma"], [/None/gi, "Nenhum"],
+      [/\band\/or\b/gi, "e/ou"],
+      [/\band\b/gi, "e"],
+    ];
+    return englishToPortuguese.reduce((result, [pattern, replacement]) => result.replace(pattern, replacement), text);
+  }
+  const replacements: Array<[RegExp, string, string]> = [
+    [/Treinado com Escudos/gi, "Trained with Shields", "Entrenado con escudos"],
+    [/Treinado em Armas Marciais/gi, "Trained in martial weapons", "Entrenado en armas marciales"],
+    [/Treinado em Armaduras Leves ou Médias/gi, "Trained in light or medium armor", "Entrenado en armaduras ligeras o medias"],
+    [/Especialista em Defesa sem Armadura/gi, "Expert in unarmored defense", "Experto en defensa sin armadura"],
+    [/Lendário em/gi, "Legendary in", "Legendario en"],
+    [/Mestre em/gi, "Master in", "Maestro en"],
+    [/Especialista em/gi, "Expert in", "Experto en"],
+    [/Treinado em/gi, "Trained in", "Entrenado en"],
+    [/Treinado com/gi, "Trained with", "Entrenado con"],
+    [/Acrobacia/gi, "Acrobatics", "Acrobacias"],
+    [/Atletismo/gi, "Athletics", "Atletismo"],
+    [/Arcanismo/gi, "Arcana", "Arcana"],
+    [/Manufatura/gi, "Crafting", "Artesanía"],
+    [/Enganação/gi, "Deception", "Engaño"],
+    [/Diplomacia/gi, "Diplomacy", "Diplomacia"],
+    [/Intimidação/gi, "Intimidation", "Intimidación"],
+    [/Medicina/gi, "Medicine", "Medicina"],
+    [/Natureza/gi, "Nature", "Naturaleza"],
+    [/Ocultismo/gi, "Occultism", "Ocultismo"],
+    [/Religião/gi, "Religion", "Religión"],
+    [/Sociedade/gi, "Society", "Sociedad"],
+    [/Furtividade/gi, "Stealth", "Sigilo"],
+    [/Sobrevivência/gi, "Survival", "Supervivencia"],
+    [/Ladinagem/gi, "Thievery", "Latrocinio"],
+    [/Força/gi, "Strength", "Fuerza"],
+    [/Destreza/gi, "Dexterity", "Destreza"],
+    [/Constituição/gi, "Constitution", "Constitución"],
+    [/Inteligência/gi, "Intelligence", "Inteligencia"],
+    [/Sabedoria/gi, "Wisdom", "Sabiduría"],
+    [/Carisma/gi, "Charisma", "Carisma"],
+    [/Nenhum/gi, "None", "Ninguno"],
+    [/Força/gi, "Strength", "Fuerza"],
+    [/Destreza/gi, "Dexterity", "Destreza"],
+    [/Constituição/gi, "Constitution", "Constitución"],
+    [/Inteligência/gi, "Intelligence", "Inteligencia"],
+    [/Sabedoria/gi, "Wisdom", "Sabiduría"],
+    [/Carisma/gi, "Charisma", "Carisma"],
+    [/e\/ou/gi, "and/or", "y/o"],
+    [/ e /gi, " and ", " y "]
+  ];
+  return replacements.reduce((result, [pattern, english, spanish]) => result.replace(pattern, locale === "en" ? english : spanish), text);
+}
+
+function localizePrerequisiteList(value: unknown, locale: "pt-BR" | "en" | "es") {
+  if (Array.isArray(value)) return value.map((entry) => localizePrerequisiteText(entry, locale)).join(", ");
+  return localizePrerequisiteText(value, locale);
 }
 
 function formatGeneratedPrerequisite(data: any, locale: "pt-BR" | "en" | "es") {
@@ -48,7 +212,7 @@ function getPrerequisiteMessage(reason: string, locale: "pt-BR" | "en" | "es", d
       "proficiency-too-low": "O pré-requisito de proficiência de combate não foi atendido.",
       "weapon-proficiency-too-low": "O pré-requisito de proficiência com armas não foi atendido.",
       "spellcasting-required": "Requer uma classe conjuradora.",
-      "equipment-required": `Requer o equipamento: ${details.missingEquipment}.`,
+      "equipment-required": `Requer o equipamento: ${getLocalizedPrerequisiteNames([details.missingEquipment], "item", "pt-BR")}.`,
       "familiar-abilities-too-low": `Requer ${details.requiredFamiliarAbilities} habilidades de familiar.`,
       "dedication-required": "Requer a dedicação indicada.",
       "flight-required": "Requer uma forma de voo conhecida ou obtida.",
@@ -63,11 +227,11 @@ function getPrerequisiteMessage(reason: string, locale: "pt-BR" | "en" | "es", d
       "deity-required": "Requer uma divindade ou filosofia selecionada.",
       "patron-must-be-absent": "Requer que a ficha não tenha patrono.",
       "subclass-mismatch": "A subclasse escolhida não atende ao pré-requisito.",
-      "tradition-skill-rank-too-low": `Requer ${details.requiredRank} em ${details.skill}.`,
+      "tradition-skill-rank-too-low": `Requer ${details.requiredRank} em ${getLocalizedSkillName(details.skill, "pt-BR")}.`,
       "sanctification-mismatch": "A santificação da causa não atende ao pré-requisito.",
       "sanctification-prohibited": "A santificação da causa é proibida para esta opção.",
-      "feat-required": `Requer o talento: ${details.requiredFeat}.`,
-      "action-required": `Requer a ação: ${details.requiredFeat}.`,
+      "feat-required": `Requer o talento: ${getLocalizedPrerequisiteNames([details.requiredFeat], "feat", "pt-BR")}.`,
+      "action-required": `Requer a ação: ${getLocalizedPrerequisiteNames([details.requiredFeat], "action", "pt-BR")}.`,
       "undead-prohibited": "Esta opção exige que o personagem não seja morto-vivo.",
       "research-field-mismatch": "O campo de pesquisa selecionado não atende ao requisito.",
     },
@@ -80,7 +244,7 @@ function getPrerequisiteMessage(reason: string, locale: "pt-BR" | "en" | "es", d
       "proficiency-too-low": "The combat proficiency prerequisite is not met.",
       "weapon-proficiency-too-low": "The weapon proficiency prerequisite is not met.",
       "spellcasting-required": "Requires a spellcasting class.",
-      "equipment-required": `Requires the equipment: ${details.missingEquipment}.`,
+      "equipment-required": `Requires the equipment: ${getLocalizedPrerequisiteNames([details.missingEquipment], "item", "en")}.`,
       "familiar-abilities-too-low": `Requires ${details.requiredFamiliarAbilities} familiar abilities.`,
       "dedication-required": "Requires the listed dedication.",
       "flight-required": "Requires a known or granted form of flight.",
@@ -95,11 +259,11 @@ function getPrerequisiteMessage(reason: string, locale: "pt-BR" | "en" | "es", d
       "deity-required": "Requires a selected deity or philosophy.",
       "patron-must-be-absent": "Requires the character to have no patron.",
       "subclass-mismatch": "The selected subclass does not meet the prerequisite.",
-      "tradition-skill-rank-too-low": `Requires ${details.requiredRank} in ${details.skill}.`,
+      "tradition-skill-rank-too-low": `Requires ${details.requiredRank} in ${getLocalizedSkillName(details.skill, "en")}.`,
       "sanctification-mismatch": "The cause's sanctification does not meet the prerequisite.",
       "sanctification-prohibited": "The cause's sanctification is prohibited for this option.",
-      "feat-required": `Requires the feat: ${details.requiredFeat}.`,
-      "action-required": `Requires the action: ${details.requiredFeat}.`,
+      "feat-required": `Requires the feat: ${getLocalizedPrerequisiteNames([details.requiredFeat], "feat", "en")}.`,
+      "action-required": `Requires the action: ${getLocalizedPrerequisiteNames([details.requiredFeat], "action", "en")}.`,
       "undead-prohibited": "This option requires the character not to be undead.",
       "research-field-mismatch": "The selected research field does not meet the requirement.",
     },
@@ -112,7 +276,7 @@ function getPrerequisiteMessage(reason: string, locale: "pt-BR" | "en" | "es", d
       "proficiency-too-low": "No se cumple el requisito de competencia de combate.",
       "weapon-proficiency-too-low": "No se cumple el requisito de competencia con armas.",
       "spellcasting-required": "Requiere una clase lanzadora de conjuros.",
-      "equipment-required": `Requiere el equipo: ${details.missingEquipment}.`,
+      "equipment-required": `Requiere el equipo: ${getLocalizedPrerequisiteNames([details.missingEquipment], "item", "es")}.`,
       "familiar-abilities-too-low": `Requiere ${details.requiredFamiliarAbilities} habilidades de familiar.`,
       "dedication-required": "Requiere la dedicación indicada.",
       "flight-required": "Requiere una forma de vuelo conocida u obtenida.",
@@ -127,11 +291,11 @@ function getPrerequisiteMessage(reason: string, locale: "pt-BR" | "en" | "es", d
       "deity-required": "Requiere una deidad o filosofía seleccionada.",
       "patron-must-be-absent": "Requiere que el personaje no tenga patrón.",
       "subclass-mismatch": "La subclase elegida no cumple el requisito.",
-      "tradition-skill-rank-too-low": `Requiere ${details.requiredRank} en ${details.skill}.`,
+      "tradition-skill-rank-too-low": `Requiere ${details.requiredRank} en ${getLocalizedSkillName(details.skill, "es")}.`,
       "sanctification-mismatch": "La santificación de la causa no cumple el requisito.",
       "sanctification-prohibited": "La santificación de la causa está prohibida para esta opción.",
-      "feat-required": `Requiere el dote: ${details.requiredFeat}.`,
-      "action-required": `Requiere la acción: ${details.requiredFeat}.`,
+      "feat-required": `Requiere el dote: ${getLocalizedPrerequisiteNames([details.requiredFeat], "feat", "es")}.`,
+      "action-required": `Requiere la acción: ${getLocalizedPrerequisiteNames([details.requiredFeat], "action", "es")}.`,
       "undead-prohibited": "Esta opción exige que el personaje no sea muerto viviente.",
       "research-field-mismatch": "El campo de investigación elegido no cumple el requisito.",
     },
@@ -247,6 +411,15 @@ function rankToInitial(rank: string): "U" | "T" | "E" | "M" | "L" {
   return "U";
 }
 
+interface PurchasePoolEntry {
+  key: string;
+  item: PickerItem;
+  options?: import("./types").IPickerOpenOptions;
+  quantity: number;
+  unitPriceCopper: number;
+  label: string;
+}
+
 export function PickerModal({ onBridgeReady }: PickerModalProps) {
   const { locale, t } = useI18n();
   const customCopy = {
@@ -255,9 +428,9 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
     es: { create: "Crear", weapon: "Arma personalizada", armor: "Armadura personalizada", shield: "Escudo personalizado", item: "Objeto personalizado", name: "Nombre", category: "Categoría", damageDie: "Dado de daño", damageType: "Tipo de daño", bulk: "Carga (Bulk)", hands: "Manos", price: "Precio", traits: "Rasgos (separados por comas)", description: "Descripción / Efectos", free: "Añadir gratis", buy: "Comprar", namePlaceholder: "Ej.: Hacha vorpal ancestral", traitsPlaceholder: "Ej.: Ágil, Sutil, Versátil P", descriptionPlaceholder: "Reglas especiales y trasfondo...", customDescription: "Objeto personalizado creado por el jugador." },
   }[locale];
   const footerCopy = {
-    "pt-BR": { buy: "Comprar", give: "Adicionar", custom: "Personalizado", prd: "PRD", clear: "Limpar", buyTitle: "Comprar e deduzir moedas", giveTitle: "Adicionar sem deduzir moedas", walletTitle: "Sua carteira de moedas atual" },
-    en: { buy: "Buy", give: "Give", custom: "Custom", prd: "PRD", clear: "Clear", buyTitle: "Buy and deduct coins", giveTitle: "Add without deducting coins", walletTitle: "Your current coin purse" },
-    es: { buy: "Comprar", give: "Añadir", custom: "Personalizado", prd: "PRD", clear: "Limpiar", buyTitle: "Comprar y deducir monedas", giveTitle: "Añadir sin deducir monedas", walletTitle: "Tu bolsa de monedas actual" },
+    "pt-BR": { buy: "Comprar", give: "Adicionar", custom: "Personalizado", prd: "PRD", clear: "Limpar", buyTitle: "Comprar o pool e deduzir da carteira", giveTitle: "Adicionar sem deduzir moedas", walletTitle: "Sua carteira de moedas atual", pool: "Pool de compras", poolEmpty: "Nenhum item no pool", addToPool: "Adicionar ao pool", removeFromPool: "Remover do pool", total: "Total" },
+    en: { buy: "Buy", give: "Give", custom: "Custom", prd: "PRD", clear: "Clear", buyTitle: "Buy the pool and deduct from purse", giveTitle: "Add without deducting coins", walletTitle: "Your current coin purse", pool: "Purchase pool", poolEmpty: "No items in the pool", addToPool: "Add to pool", removeFromPool: "Remove from pool", total: "Total" },
+    es: { buy: "Comprar", give: "Añadir", custom: "Personalizado", prd: "PRD", clear: "Limpiar", buyTitle: "Comprar el conjunto y deducir de la bolsa", giveTitle: "Añadir sin deducir monedas", walletTitle: "Tu bolsa de monedas actual", pool: "Conjunto de compras", poolEmpty: "No hay objetos en el conjunto", addToPool: "Añadir al conjunto", removeFromPool: "Quitar del conjunto", total: "Total" },
   }[locale];
   const [pickerType, setPickerType] = useState<PickerType | null>(null);
   const [pickerOptions, setPickerOptions] = useState<import("./types").IPickerOpenOptions | undefined>();
@@ -267,6 +440,7 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
   const [activeCategoryTab, setActiveCategoryTab] = useState<string>("All");
   const [activeSubTab, setActiveSubTab] = useState<string>("Standard");
   const [characterRevision, setCharacterRevision] = useState(0);
+  const [purchasePool, setPurchasePool] = useState<PurchasePoolEntry[]>([]);
 
   // Custom weapon form state
   const [customName, setCustomName] = useState("");
@@ -342,10 +516,12 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
       setSelectedIndex(0);
       setOptionSelections({});
       setActiveSubTab("Standard");
+      setPurchasePool([]);
     },
     close() {
       setPickerType(null);
       setPickerOptions(undefined);
+      setPurchasePool([]);
       requestAnimationFrame(() => returnFocusRef.current?.focus());
     },
   }), []);
@@ -628,7 +804,7 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
       return `${localizedName} ${item.name || ""} ${localizedSummary}`.toLocaleLowerCase(locale).includes(needle);
     });
 
-    return filtered.slice().sort((a, b) => {
+    const sorted = filtered.slice().sort((a, b) => {
       if (pickerType === "spell") {
         const weights: Record<string, number> = { available: 0, "requires-choice": 1, incompatible: 2 };
         const stateA = weights[a.data?.selectionState ?? "available"] ?? 0;
@@ -639,6 +815,25 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
       const nameA = getItemDisplayName(a, locale);
       const nameB = getItemDisplayName(b, locale);
       return nameA.localeCompare(nameB, locale, { sensitivity: "base", numeric: true });
+    });
+    const collapseExactLabels = ["class", "heritage", "pet", "formula"].includes(pickerType);
+    const collapsedLabels = new Set<string>();
+    const seenLabels = new Map<string, number>();
+    return sorted.filter((item) => {
+      if (!collapseExactLabels) return true;
+      const normalizedLabel = getItemDisplayName(item, locale).toLocaleLowerCase(locale).normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      if (collapsedLabels.has(normalizedLabel)) return false;
+      collapsedLabels.add(normalizedLabel);
+      return true;
+    }).map((item) => {
+      const baseLabel = getItemDisplayName(item, locale);
+      const normalizedLabel = baseLabel.toLocaleLowerCase(locale).normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      const occurrence = (seenLabels.get(normalizedLabel) || 0) + 1;
+      seenLabels.set(normalizedLabel, occurrence);
+      if (occurrence === 1) return { ...item, displayName: baseLabel };
+      const source = item.data?.source;
+      const suffix = source?.book ? `${source.book}${source.page ? `, p. ${source.page}` : ""}` : item.data?.id || "variante";
+      return { ...item, displayName: `${baseLabel} — ${suffix}` };
     });
   }, [locale, pickerOptions, pickerType, query, activeCategoryTab, activeSubTab, character, characterRevision]);
 
@@ -654,7 +849,7 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
   const canConfirm = Boolean(selectedItem) && selectedState === "available";
   const source = selectedItem?.data.source;
   const sourceLabel = source?.book
-    ? `${source.book}${source.page ? `, p. ${source.page}` : ""}`
+    ? `${localizeSourceBookName(source.book, locale)}${source.page ? `, p. ${source.page}` : ""}`
     : t("catalogReview");
   const rarity = selectedItem?.data.rarity === "rare" ? t("rarityRare") : selectedItem?.data.rarity === "uncommon" ? t("rarityUncommon") : selectedItem?.data.rarity === "common" ? t("rarityCommon") : null;
   const castingTimes = selectedItem?.data.castingTimes as Partial<Record<"pt-BR" | "en" | "es", string>> | undefined;
@@ -663,8 +858,10 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
   const ruleFacts = selectedItem ? [
     typeof selectedItem.data.rank === "number" ? `${t("rank")} ${selectedItem.data.rank}` : null,
     castingTimes?.[locale] ? `${t("castingTime")}: ${castingTimes[locale]}` : null,
-    traditionNames?.[locale]?.length ? `${t("traditions")}: ${traditionNames[locale]?.join(", ")}` : null,
-    primaryChecks?.[locale] ? `${t("primaryCheck")}: ${primaryChecks[locale]}` : null,
+    getTraditionDisplayNames(selectedItem?.data.traditions, traditionNames, locale).length
+      ? `${t("traditions")}: ${getTraditionDisplayNames(selectedItem?.data.traditions, traditionNames, locale).join(", ")}` : null,
+    (primaryChecks?.[locale] || primaryChecks?.["pt-BR"] || primaryChecks?.en)
+      ? `${t("primaryCheck")}: ${getLocalizedSkillName(primaryChecks?.[locale] || primaryChecks?.["pt-BR"] || primaryChecks?.en, locale)}` : null,
   ].filter((fact): fact is string => Boolean(fact)) : [];
   const selectionGroups = selectedItem?.data.selectionGroups ?? [];
   const resolvedSelections = Object.fromEntries(selectionGroups.map((group) => {
@@ -676,30 +873,90 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
   const resolvedHp = resolvedSize?.hp ?? selectedItem?.data.hp;
   const resolvedSpeed = resolvedHeritage?.speed ?? selectedItem?.data.speed;
 
-  // Economy & Price Affordability
-  const itemPrice = selectedItem?.data?.price ?? selectedItem?.price ?? (locale === "en" ? "0 GP" : "0 PO");
-  const isAffordable = canAffordPrice(characterCoins, itemPrice, 1, locale);
-  const itemPriceText = formatPriceToLocale(itemPrice, locale);
+  // Economy: purchasable entries are staged locally until the user confirms.
+  const purchasePoolTotalCopper = purchasePool.reduce((total, entry) => total + (entry.unitPriceCopper * entry.quantity), 0);
+  const purchasePoolAffordable = coinsToCopper(characterCoins) >= purchasePoolTotalCopper;
+  const purchasePoolText = formatCopperToString(purchasePoolTotalCopper, locale);
+
+  const buildItemPayload = (item: PickerItem) => {
+    const selection = Object.fromEntries(selectionGroups.map((group) => [group.id, resolvedSelections[group.id]?.id ?? group.options[0]?.id]));
+    return { ...item, ...(selectionGroups.length ? { selection } : {}) };
+  };
+
+  const addSelectedToPurchasePool = () => {
+    if (!selectedItem || selectedState !== "available") return;
+    const itemPayload = buildItemPayload(selectedItem);
+    const itemId = itemPayload.data?.id || itemPayload.data?.name || itemPayload.name;
+    const selectionKey = JSON.stringify(itemPayload.selection || {});
+    const key = `${pickerType}:${itemId}:${selectionKey}`;
+    const unitPriceCopper = parsePriceToCopper(itemPayload.data?.price ?? itemPayload.price, locale);
+    setPurchasePool((current) => {
+      const existing = current.find((entry) => entry.key === key);
+      if (existing) return current.map((entry) => entry.key === key ? { ...entry, quantity: entry.quantity + 1 } : entry);
+      return [...current, { key, item: itemPayload, options: pickerOptions, quantity: 1, unitPriceCopper, label: getItemDisplayName(itemPayload, locale) }];
+    });
+  };
+
+  const removeFromPurchasePool = (key: string) => {
+    setPurchasePool((current) => current.flatMap((entry) => {
+      if (entry.key !== key) return [entry];
+      if (entry.quantity > 1) return [{ ...entry, quantity: entry.quantity - 1 }];
+      return [];
+    }));
+  };
+
+  const buyPurchasePool = () => {
+    if (!purchasePool.length || !purchasePoolAffordable) return;
+    const engine = (window as any).PF2E_ENGINE;
+    const currentCharacter = (window as any).app?.character;
+    // Recalcula o saldo no instante da confirmação. A ficha pode ter sido
+    // alterada por outro painel enquanto este modal permanecia aberto; sem
+    // este preflight, a transação poderia aplicar apenas parte do pool.
+    const currentCopper = typeof (window as any).app?.getCharacterTotalCopper === "function"
+      ? Number((window as any).app.getCharacterTotalCopper())
+      : coinsToCopper(currentCharacter?.coins);
+    if (!Number.isFinite(currentCopper) || currentCopper < purchasePoolTotalCopper) {
+      window.alert(locale === "en"
+        ? "The character no longer has enough coins for this purchase pool."
+        : locale === "es"
+          ? "El personaje ya no tiene monedas suficientes para este conjunto de compras."
+          : "O personagem não tem mais moedas suficientes para este pool de compras.");
+      return;
+    }
+    const canStillApply = purchasePool.every((entry) => {
+      if (entry.item.data?.selectionState === "incompatible") return false;
+      if (typeof engine?.getPrerequisiteCompatibility !== "function") return true;
+      return engine.getPrerequisiteCompatibility(currentCharacter, entry.item.data)?.state !== "incompatible";
+    });
+    // O pool é confirmado como uma transação: se o estado da ficha mudou
+    // enquanto o diálogo estava aberto, nenhuma entrada é aplicada parcialmente.
+    if (!canStillApply) {
+      window.alert(locale === "en"
+        ? "The character changed and one or more pooled choices are no longer compatible."
+        : locale === "es"
+          ? "El personaje cambió y una o más opciones del carrito ya no son compatibles."
+          : "O personagem mudou e uma ou mais opções do pool não são mais compatíveis.");
+      return;
+    }
+    purchasePool.forEach((entry) => {
+      const itemPayload = entry.quantity > 1
+        ? { ...entry.item, data: { ...entry.item.data, qty: entry.quantity } }
+        : entry.item;
+      (window.app?.applyPickerSelection as any)?.(pickerType, itemPayload, entry.options, true);
+    });
+    bridge.close();
+  };
 
   const confirm = (deductCoins: boolean = false) => {
     if (!selectedItem || selectedState !== "available") return;
     // A UI desabilitada não é uma barreira suficiente: teclado, automação ou
     // uma integração externa ainda podem chamar o confirmador diretamente.
-    if (deductCoins && !isAffordable) return;
-    const selection = Object.fromEntries(selectionGroups.map((group) => [group.id, resolvedSelections[group.id]?.id ?? group.options[0]?.id]));
-    const itemPayload = { ...selectedItem, ...(selectionGroups.length ? { selection } : {}) };
+    if (deductCoins) return addSelectedToPurchasePool();
+    const itemPayload = buildItemPayload(selectedItem);
     if (pickerOptions) {
-      if (deductCoins) {
-        (window.app?.applyPickerSelection as any)?.(pickerType, itemPayload, pickerOptions, true);
-      } else {
-        (window.app?.applyPickerSelection as any)?.(pickerType, itemPayload, pickerOptions);
-      }
+      (window.app?.applyPickerSelection as any)?.(pickerType, itemPayload, pickerOptions);
     } else {
-      if (deductCoins) {
-        (window.app?.applyPickerSelection as any)?.(pickerType, itemPayload, undefined, true);
-      } else {
-        (window.app?.applyPickerSelection as any)?.(pickerType, itemPayload);
-      }
+      (window.app?.applyPickerSelection as any)?.(pickerType, itemPayload);
     }
     bridge.close();
   };
@@ -730,10 +987,22 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
         custom: true,
       }
     };
+    if (deductCoins) {
+      const unitPriceCopper = parsePriceToCopper(customItem.data?.price, locale);
+      setPurchasePool((current) => [...current, {
+        key: `${pickerType}:${customId}`,
+        item: customItem,
+        options: pickerOptions,
+        quantity: 1,
+        unitPriceCopper,
+        label: normalizedName,
+      }]);
+      return;
+    }
     if (pickerOptions) {
-      (window.app?.applyPickerSelection as any)?.(pickerType, customItem, pickerOptions, deductCoins);
+      (window.app?.applyPickerSelection as any)?.(pickerType, customItem, pickerOptions);
     } else {
-      (window.app?.applyPickerSelection as any)?.(pickerType, customItem, undefined, deductCoins);
+      (window.app?.applyPickerSelection as any)?.(pickerType, customItem);
     }
     bridge.close();
   };
@@ -856,11 +1125,11 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
                 </label>
                 <label>
                   <span>{customCopy.bulk}:</span>
-                  <input value={customBulk} onChange={(e) => setCustomBulk(e.target.value)} placeholder="1 ou L" />
+                  <input value={customBulk} onChange={(e) => setCustomBulk(e.target.value)} placeholder={locale === "en" ? "1 or L" : locale === "es" ? "1 o L" : "1 ou L"} />
                 </label>
                 <label>
                   <span>{customCopy.hands}:</span>
-                  <input value={customHands} onChange={(e) => setCustomHands(e.target.value)} placeholder="1 ou 2" />
+                  <input value={customHands} onChange={(e) => setCustomHands(e.target.value)} placeholder={locale === "en" ? "1 or 2" : locale === "es" ? "1 o 2" : "1 ou 2"} />
                 </label>
                 <label>
                   <span>{customCopy.price}:</span>
@@ -928,7 +1197,7 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
                           </span>
                         )}
                         <span className="picker-item-name">
-                          {getItemDisplayName(item, locale)}
+                          {item.displayName || getItemDisplayName(item, locale)}
                         </span>
                         {item.data?.rarity === "rare" && (
                           <span className="picker-trait-pill" style={{ marginLeft: "6px", color: "#fca5a5", borderColor: "#b91c1c", background: "#450a0a" }}>
@@ -950,9 +1219,9 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
                   <>
                     <header className="picker-detail-header">
                       <div>
-                        <h3>{getItemDisplayName(selectedItem, locale)}</h3>
+                        <h3>{selectedItem.displayName || getItemDisplayName(selectedItem, locale)}</h3>
                         <div style={{ fontSize: "12px", color: "var(--pb-text-muted)", marginTop: "2px" }}>
-                          {selectedItem.data?.category ? `${selectedItem.data.category} ${locale === "en" ? "Weapon" : locale === "es" ? "Arma" : "Arma"}` : selectedItem.type}
+                           {selectedItem.data?.category ? `${selectedItem.data.category} ${locale === "en" ? "Weapon" : "Arma"}` : selectedItem.type}
                         </div>
                         {rarity && (
                           <span className="picker-trait-pill" style={{ display: "inline-flex", marginTop: "6px", color: selectedItem.data?.rarity === "rare" ? "#fca5a5" : "#fde68a", borderColor: selectedItem.data?.rarity === "rare" ? "#b91c1c" : "#a16207", background: selectedItem.data?.rarity === "rare" ? "#450a0a" : "#422006" }}>
@@ -995,13 +1264,13 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
                     {pickerType === "armor" && (
                       <div className="picker-weapon-stats-bar" style={{ gridTemplateColumns: "repeat(4, 1fr)" }}>
                         <div className="pws-stat">
-                          <span className="pws-label">Bônus CA</span>
+                           <span className="pws-label">{locale === "en" ? "AC Bonus" : locale === "es" ? "Bonificador CA" : "Bônus CA"}</span>
                           <strong className="pws-value" style={{ color: "#38bdf8" }}>
                             +{String(selectedItem.data?.acBonus || 0)}
                           </strong>
                         </div>
                         <div className="pws-stat">
-                          <span className="pws-label">Limite Des</span>
+                           <span className="pws-label">{locale === "en" ? "Dex Cap" : locale === "es" ? "Límite Des" : "Limite Des"}</span>
                           <strong className="pws-value">
                             +{String(selectedItem.data?.dexCap !== undefined ? selectedItem.data.dexCap : 5)}
                           </strong>
@@ -1023,19 +1292,19 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
                     {pickerType === "shield" && (
                       <div className="picker-weapon-stats-bar" style={{ gridTemplateColumns: "repeat(4, 1fr)" }}>
                         <div className="pws-stat">
-                          <span className="pws-label">Bônus CA</span>
+                           <span className="pws-label">{locale === "en" ? "AC Bonus" : locale === "es" ? "Bonificador CA" : "Bônus CA"}</span>
                           <strong className="pws-value" style={{ color: "#38bdf8" }}>
                             +{String(selectedItem.data?.acBonus || 2)}
                           </strong>
                         </div>
                         <div className="pws-stat">
-                          <span className="pws-label">Dureza</span>
+                           <span className="pws-label">{locale === "en" ? "Hardness" : locale === "es" ? "Dureza" : "Dureza"}</span>
                           <strong className="pws-value" style={{ color: "var(--pb-orange)" }}>
                             {String(selectedItem.data?.hardness || 3)}
                           </strong>
                         </div>
                         <div className="pws-stat">
-                          <span className="pws-label">PV (BT)</span>
+                           <span className="pws-label">{locale === "en" ? "HP (BT)" : locale === "es" ? "PG (LCR)" : "PV (BT)"}</span>
                           <strong className="pws-value">
                             {String(selectedItem.data?.maxHp || 12)} ({String(selectedItem.data?.bt || 6)})
                           </strong>
@@ -1092,7 +1361,7 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
                     {(selectedItem.data?.prereq || selectedItem.data?.prerequisites || selectedItem.data?.requiredLevel || selectedItem.data?.classId || selectedItem.data?.classIds?.length || selectedItem.data?.ancestryId || selectedItem.data?.ancestryIds?.length) && (
                       <div className="picker-prereqs" role="note">
                         <strong>{t("prerequisites")}:</strong>{" "}
-                        {String(selectedItem.data?.prereq || (Array.isArray(selectedItem.data?.prerequisites) ? selectedItem.data.prerequisites.join(", ") : selectedItem.data?.prerequisites) || formatGeneratedPrerequisite(selectedItem.data, locale))}
+                        {localizePrerequisiteList(selectedItem.data?.prereq || selectedItem.data?.prerequisites || formatGeneratedPrerequisite(selectedItem.data, locale), locale)}
                       </div>
                     )}
 
@@ -1152,16 +1421,33 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
         <footer className="picker-footer">
           {isPurchasable ? (
             <>
+              <div className="picker-purchase-pool" aria-live="polite">
+                <div className="picker-purchase-pool-heading">
+                  <strong>{footerCopy.pool}</strong>
+                  <span>{footerCopy.total}: {purchasePoolText}</span>
+                </div>
+                {purchasePool.length ? purchasePool.map((entry) => (
+                  <button
+                    key={entry.key}
+                    className="picker-purchase-pool-entry"
+                    onClick={() => removeFromPurchasePool(entry.key)}
+                    title={footerCopy.removeFromPool}
+                    type="button"
+                  >
+                    {entry.label} ×{entry.quantity} · {formatCopperToString(entry.unitPriceCopper * entry.quantity, locale)}
+                  </button>
+                )) : <span className="picker-purchase-pool-empty">{footerCopy.poolEmpty}</span>}
+              </div>
               <button
-                className={`picker-buy-btn ${!isAffordable ? "insufficient-funds" : ""}`}
-                onClick={() => confirm(true)}
-                disabled={!canConfirm || !isAffordable}
+                className={`picker-buy-btn ${!purchasePoolAffordable ? "insufficient-funds" : ""}`}
+                onClick={buyPurchasePool}
+                disabled={!purchasePool.length || !purchasePoolAffordable}
                 type="button"
-                title={isAffordable ? `${footerCopy.buy} ${locale === "en" ? "for" : locale === "es" ? "por" : "por"} ${itemPriceText} ${locale === "en" ? "and deduct from purse" : locale === "es" ? "y deducir de la bolsa" : "e deduzir da carteira"}` : `${locale === "en" ? "Insufficient coins! Cost" : locale === "es" ? "¡Monedas insuficientes! Coste" : "Moedas insuficientes! Custo"}: ${itemPriceText}`}
+                title={purchasePoolAffordable ? footerCopy.buyTitle : `${locale === "en" ? "Insufficient coins! Total" : locale === "es" ? "¡Monedas insuficientes! Total" : "Moedas insuficientes! Total"}: ${purchasePoolText}`}
               >
-                {footerCopy.buy} ({itemPriceText})
+                {footerCopy.buy} ({purchasePoolText})
               </button>
-              <button className="picker-confirm" onClick={() => confirm(false)} disabled={!canConfirm} type="button" title={footerCopy.giveTitle}>
+              <button className="picker-confirm" onClick={() => confirm(true)} disabled={!canConfirm} type="button" title={`${footerCopy.addToPool} · ${footerCopy.giveTitle}`}>
                 {footerCopy.give}
               </button>
               <button className="picker-cancel" onClick={bridge.close} type="button">

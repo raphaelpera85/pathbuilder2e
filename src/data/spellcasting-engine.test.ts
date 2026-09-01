@@ -93,6 +93,31 @@ describe("P2: Motor de Grimório & Spellcasting Automático (Spellcasting Engine
     const schools = catalog.subclasses.filter((record: any) => record.classId === "class.wizard" && record.school === true);
     expect(schools).toHaveLength(7);
     expect(schools.every((record: any) => record.initialSchoolSpell && record.source?.page >= 186 && record.source?.page <= 188 && record.needs_review === false)).toBe(true);
+    expect(schools.every((record: any) => record.initialSchoolSpellId && catalog.spells.some((spell: any) => spell.id === record.initialSchoolSpellId && spell.classId === "class.wizard"))).toBe(true);
+  });
+
+  it("links every Oracle mystery to its initial revelation spell", () => {
+    const mysteries = catalog.subclasses.filter((record: any) => record.classId === "class.oracle" && record.mystery);
+    expect(mysteries).toHaveLength(8);
+    for (const mystery of mysteries) {
+      expect(mystery.revelationSpellIds).toHaveLength(3);
+      const spell = catalog.spells.find((record: any) => record.id === mystery.initialRevelationSpellId);
+      expect(spell?.classId).toBe("class.oracle");
+      expect(spell?.requiredSubclass).toContain(mystery.id);
+      expect(mystery.mysterySkill?.["pt-BR"]).toBeTruthy();
+      expect(mystery.curseNames?.["pt-BR"]).toBeTruthy();
+    }
+  });
+
+  it("filtra revelações avançadas do Oráculo por mistério e ranque", () => {
+    const mystery = catalog.subclasses.find((record: any) => record.id === "subclass.class.oracle.mystery.ancestors")
+      || catalog.subclasses.find((record: any) => record.id === "subclass.class.oracle.mystery_ancestors");
+    const advanced = catalog.spells.find((record: any) => record.id.includes("oracle.revelation_ancestors_") && record.rank === 3);
+    expect(mystery).toBeTruthy();
+    expect(advanced).toMatchObject({ classId: "class.oracle", requiredSubclass: [mystery?.id] });
+    expect(engine.getSpellCompatibility({ level: 1, class: "Oráculo", mystery: mystery?.id }, advanced)).toMatchObject({ state: "incompatible", reason: "rank-too-high", maximumRank: 1 });
+    expect(engine.getSpellCompatibility({ level: 5, class: "Oráculo", mystery: mystery?.id }, advanced)).toMatchObject({ state: "available", reason: "compatible" });
+    expect(engine.getSpellCompatibility({ level: 5, class: "Oráculo", mystery: "subclass.class.oracle.mystery_battle" }, advanced)).toMatchObject({ state: "incompatible", reason: "subclass-mismatch" });
   });
 
   it("cataloga os cinco estudos híbridos do Magus com fontes exatas", () => {

@@ -54,6 +54,7 @@ if (!modalRoot || !accountRoot || !portalRoot) {
 // O legado continua sendo carregado primeiro, mas passa a consumir os mesmos
 // catálogos ricos usados pelos componentes React quando o bridge estiver pronto.
 (window as any).pathbuilderCatalogs = {
+  canonical: (window as any).PF2E_DATA,
   actions: PF2E_ACTIONS_CATALOG,
   items: PF2E_ITEMS_CATALOG,
   feats: PF2E_FEATS_CATALOG,

@@ -1480,7 +1480,7 @@ const PLAYER_CORE_CATALOG = {
   },
   classes: {
     "Bardo (Bard)": { id: "class.bard", page: 94, names: { "pt-BR": "Bardo", en: "Bard", es: "Bardo" }, summaries: { "pt-BR": "Conjurador carismático que inspira aliados por meio de composições.", en: "A charismatic spellcaster who inspires allies through compositions.", es: "Un lanzador carismático que inspira a sus aliados mediante composiciones." } },
-    "Bruxo (Witch)": { id: "class.witch", page: 178, names: { "pt-BR": "Bruxo", en: "Witch", es: "Bruja" }, summaries: { "pt-BR": "Conjurador ligado a um patrono misterioso e acompanhado por um familiar.", en: "A spellcaster bound to a mysterious patron and accompanied by a familiar.", es: "Un lanzador ligado a un patrón misterioso y acompañado por un familiar." } },
+    "Bruxo (Witch)": { id: "class.witch", page: 178, legacyNames: ["Bruxo"], names: { "pt-BR": "Bruxa", en: "Witch", es: "Bruja" }, summaries: { "pt-BR": "Conjuradora ligada a um patrono misterioso e acompanhada por um familiar.", en: "A spellcaster bound to a mysterious patron and accompanied by a familiar.", es: "Una lanzadora ligada a un patrón misterioso y acompañada por un familiar." } },
     "Clérigo (Cleric)": { id: "class.cleric", page: 108, names: { "pt-BR": "Clérigo", en: "Cleric", es: "Clérigo" }, summaries: { "pt-BR": "Conjurador divino cuja doutrina e divindade definem capacidades centrais.", en: "A divine spellcaster whose doctrine and deity define core capabilities.", es: "Un lanzador divino cuya doctrina y deidad definen capacidades centrales." } },
     "Druida (Druid)": { id: "class.druid", page: 122, names: { "pt-BR": "Druida", en: "Druid", es: "Druida" }, summaries: { "pt-BR": "Conjurador primal vinculado à natureza e a uma ordem druídica.", en: "A primal spellcaster tied to nature and a druidic order.", es: "Un lanzador primal vinculado a la naturaleza y a una orden druídica." } },
     "Guerreiro (Fighter)": { id: "class.fighter", page: 136, names: { "pt-BR": "Guerreiro", en: "Fighter", es: "Guerrero" }, summaries: { "pt-BR": "Combatente especializado em armas, precisão e domínio tático.", en: "A combatant specialized in weapons, accuracy, and tactical mastery.", es: "Un combatiente especializado en armas, precisión y dominio táctico." } },
@@ -2433,6 +2433,10 @@ PF2E_DATA.classes["Exemplar"] = {
   summaries: { "pt-BR": "Combatente raro que desloca uma centelha divina entre ícones para alternar efeitos de imanência e transcendência.", en: "A rare martial hero who shifts a divine spark among ikons to alternate immanence and transcendence effects.", es: "Un héroe marcial raro que desplaza una chispa divina entre iconos para alternar efectos de inmanencia y trascendencia." },
   source: { book: WAR_IMMORTALS_SOURCE, page: 28 }, ruleset: "remaster", needs_review: false
 };
+// O bloco base legado usa a chave "Exemplar (Exemplar)" para a mesma classe.
+// O registro acima é a versão canônica enriquecida; o alias não deve aparecer
+// como uma segunda opção no picker, mas permanece disponível para fichas antigas.
+if (PF2E_DATA.classes["Exemplar (Exemplar)"]) PF2E_DATA.classes["Exemplar (Exemplar)"].legacyAlias = true;
 
 const WAR_IMMORTALS_ARCHETYPES = [
   {
@@ -6122,6 +6126,7 @@ for (const [heritageId, page] of [["heritage.ardande.legacy_pending", 46], ["her
     source: { book: RAGE_ELEMENTS_SOURCE, page },
     sourceApproximate: false,
     ruleset: "remaster",
+    legacyAlias: true,
     needs_review: true
   });
 }
@@ -6454,9 +6459,9 @@ const verifiedPlayerCoreWeapons = {
     source: { book: PLAYER_CORE_SOURCE, page: 279 }
   },
   "weapon.broadsword": {
-    name: "Espada Longa (Longsword)", category: "Marcial", damage: "1d8", damageType: "Cortante (Ct)",
-    level: 0, price: "1 PO", bulk: 1, traits: ["Versátil Pf"],
-    names: { "pt-BR": "Espada Longa", en: "Longsword", es: "Espada larga" },
+    name: "Espada Larga (Broadsword)", category: "Marcial", damage: "1d8", damageType: "Cortante (Ct)",
+    level: 0, price: "2 PO", bulk: 1, traits: ["Versátil Pf"],
+    names: { "pt-BR": "Espada Larga", en: "Broadsword", es: "Espada ancha" },
     summaries: { "pt-BR": "Espada marcial de uma mão com lâmina versátil para cortes ou estocadas.", en: "A martial one-handed sword with a versatile blade for slashing or thrusting.", es: "Una espada marcial de una mano con hoja versátil para cortar o apuñalar." },
     source: { book: PLAYER_CORE_SOURCE, page: 279 }
   },
@@ -7935,8 +7940,8 @@ PLAYER_CORE_2_MISSING_ARCHETYPES.forEach(([id, pt, en, es, page, summary]) => {
 });
 
 const PLAYER_CORE_VERSATILE_HERITAGE_METADATA = {
-  "Nephilim (Celestial / Aasimar)": ["heritage.nephilim.celestial", "Nefilim", "Nephilim", "Nefilim", 79, "Herança versátil de linhagem celestial ou aasimar."],
-  "Nephilim (Infernal / Tiefling)": ["heritage.nephilim.infernal", "Nefilim", "Nephilim", "Nefilim", 79, "Herança versátil de linhagem infernal ou tiefling."],
+  "Nephilim (Celestial / Aasimar)": ["heritage.nephilim.celestial", "Nefilim Celestial", "Celestial Nephilim", "Nefilim celestial", 79, "Herança versátil de linhagem celestial ou aasimar."],
+  "Nephilim (Infernal / Tiefling)": ["heritage.nephilim.infernal", "Nefilim Infernal", "Infernal Nephilim", "Nefilim infernal", 79, "Herança versátil de linhagem infernal ou tiefling."],
   "Changeling (Cambionte / Filho de Bruxa)": ["heritage.changeling", "Cambiante", "Changeling", "Cambiante", 77, "Herança versátil ligada à linhagem de uma estriga e à magia ocultista."]
 };
 Object.entries(PLAYER_CORE_VERSATILE_HERITAGE_METADATA).forEach(([legacyName, [id, pt, en, es, page, summary]]) => {
@@ -8092,7 +8097,8 @@ for (const [collection, alias, canonical] of LEGACY_RECORD_ALIASES) {
   const legacySubclasses = Array.isArray(collection[alias].subclasses) ? [...collection[alias].subclasses] : null;
   Object.assign(collection[alias], collection[canonical], {
     id: `${collection[canonical].id}.legacy_alias.${alias.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "")}`,
-    name: alias
+    name: alias,
+    legacyAlias: true
   });
   if (legacySubclasses && legacySubclasses.length > (collection[canonical].subclasses?.length || 0)) {
     collection[alias].subclasses = legacySubclasses;
@@ -8311,6 +8317,17 @@ for (const [id, pt, en, es, level, page, prerequisites, archetypeId, ptSummary, 
 // preservando a origem da classe e sinalizando a ausência de página específica.
 const subclassSeen = new Set();
 PF2E_DATA.subclasses = [];
+const CLASS_CHOICE_FIELDS = {
+  "class.alchemist": "researchField", "class.barbarian": "instinct", "class.bard": "muse",
+  "class.cleric": "doctrine", "class.druid": "order", "class.rogue": "racket",
+  "class.ranger": "hunterEdge", "class.monk": "style", "class.champion": "cause",
+  "class.sorcerer": "bloodline", "class.investigator": "methodology", "class.swashbuckler": "style",
+  "class.inventor": "innovation", "class.gunslinger": "way", "class.psychic": "consciousMind",
+  "class.thaumaturge": "implement", "class.animist": "apparition", "class.exemplar": "icon",
+  "class.commander": "banner", "class.guardian": "guardianDefense", "class.kineticist": "elementalGate",
+  "class.summoner": "eidolon", "class.wizard": "arcaneSchool", "class.magus": "hybridStudy",
+  "class.necromancer": "fatalMethod"
+};
 for (const [classKey, classRecord] of Object.entries(PF2E_DATA.classes || {})) {
   for (const rawSubclass of (classRecord.subclasses || [])) {
     const label = String(rawSubclass || "").trim();
@@ -8326,6 +8343,7 @@ for (const [classKey, classRecord] of Object.entries(PF2E_DATA.classes || {})) {
       id: `subclass.${slug}`,
       classId,
       className: classKey,
+      choiceField: CLASS_CHOICE_FIELDS[classId],
       name: `${pt} (${en})`,
       names: { "pt-BR": pt, en, es: en },
       summaries: {
@@ -8406,10 +8424,32 @@ const PLAYER_CORE_WIZARD_SCHOOLS = [
 for (const [slug, pt, en, es, page, spellPt, spellEn, spellEs] of PLAYER_CORE_WIZARD_SCHOOLS) {
   const record = PF2E_DATA.subclasses.find((candidate) => candidate.classId === "class.wizard" && candidate.names?.en === `${en} / ${es}`);
   if (!record) continue;
+  let schoolSpell = PF2E_DATA.spells.find((spell) => [spell.id, spell.name, ...(Object.values(spell.names || {}))]
+    .filter(Boolean).some((value) => String(value).toLocaleLowerCase() === String(spellEn).toLocaleLowerCase()));
+  if (!schoolSpell) {
+    schoolSpell = {
+      id: `spell.player_core.wizard.school_${slug}`,
+      name: `${spellPt} (${spellEn} / ${spellEs})`,
+      names: { "pt-BR": spellPt, en: spellEn, es: spellEs },
+      summaries: {
+        "pt-BR": `Magia inicial do currículo ${pt}; efeito integral pendente de revisão mecânica.`,
+        en: `Initial spell of the ${en}; full mechanical effect pending review.`,
+        es: `Conjuro inicial del plan ${es}; efecto mecánico completo pendiente de revisión.`
+      },
+      description: `Magia inicial do currículo ${pt}; efeito integral pendente de revisão mecânica.`,
+      rank: 1, level: 1, cantrip: true, focus: true, type: "Focus Cantrip",
+      category: "Magia de Escola", classId: "class.wizard", classIds: ["class.wizard"],
+      requiredSubclass: [`subclass.class.wizard.school_${slug}`],
+      traits: ["Mago", "Concentração"],
+      source: { book: PLAYER_CORE_SOURCE, page }, ruleset: "remaster", needs_review: true
+    };
+    PF2E_DATA.spells.push(schoolSpell);
+  }
   Object.assign(record, {
     id: `subclass.class.wizard.school_${slug}`, school: true,
     name: `${pt} (${en} / ${es})`, names: { "pt-BR": pt, en, es },
     initialSchoolSpell: { "pt-BR": spellPt, en: spellEn, es: spellEs },
+    initialSchoolSpellId: schoolSpell.id,
     summaries: {
       "pt-BR": `Currículo arcano de Mago; concede a magia de escola inicial ${spellPt}.`,
       en: `Wizard arcane curriculum; grants the initial school spell ${spellEn}.`,
@@ -8457,6 +8497,37 @@ for (const [slug, pt, en, es, page, summaryPt, summaryEn, summaryEs] of SECRETS_
   });
 }
 
+// Livro do Jogador 2, pp. 262–265: cada mistério concede uma magia de
+// revelação inicial no 1º nível.
+const PLAYER_CORE_2_ORACLE_INITIAL_REVELATIONS = [
+  ["ancestors", "Toque Ancestral", "Ancestral Touch", "Toque ancestral", 262, "Você força o alvo a perceber os ancestrais ao seu redor, causando dano mental."],
+  ["battle", "Transe Bélico", "Battle Trance", "Trance bélico", 262, "Você entra em um transe marcial e trata sua proficiência com armas marciais como armas simples."],
+  ["flames", "Aura Incendiária", "Incendiary Aura", "Aura incendiaria", 262, "Uma aura de fogo envolve você e incendeia criaturas que sofrem dano de fogo na área."],
+  ["cosmos", "Leque de Estrelas", "Spray of Stars", "Abanico de estrellas", 263, "Você lança estrelas cadentes em cone, causando dano de fogo e podendo ofuscar os alvos."],
+  ["bones", "Sifão de Alma", "Soul Siphon", "Sifón de alma", 263, "Você extrai parte da alma de uma criatura viva, causando dano e recebendo Pontos de Vida temporários."],
+  ["lore", "Drenar Cérebro", "Brain Drain", "Drenaje cerebral", 263, "Você investiga a mente do alvo, causando dano mental e podendo usar o conhecimento roubado."],
+  ["tempest", "Toque da Tempestade", "Tempest Touch", "Toque de la tempestad", 264, "Seu toque invoca água gelada turbulenta, causando dano contundente e frio e reduzindo Velocidades."],
+  ["life", "Vínculo Vital", "Life Link", "Vínculo vital", 265, "Você compartilha dano com uma criatura ligada e concede uma pequena cura inicial."],
+];
+for (const [slug, pt, en, es, page, summaryPt] of PLAYER_CORE_2_ORACLE_INITIAL_REVELATIONS) {
+  const mysteryId = `subclass.class.oracle.mystery_${slug}`;
+  const id = `spell.player_core_2.oracle.revelation_${slug}`;
+  let spell = PF2E_DATA.spells.find((record) => record.id === id);
+  if (!spell) {
+    spell = {
+      id, name: `${pt} (${en} / ${es})`, names: { "pt-BR": pt, en, es },
+      summaries: { "pt-BR": summaryPt, en: `Initial revelation spell of the ${en} mystery.`, es: `Conjuro de revelación inicial del misterio ${es}.` },
+      description: summaryPt, rank: 1, level: 1, focus: true, type: "Focus Spell",
+      category: "Magia de Revelação", traditions: ["divine"], classId: "class.oracle", classIds: ["class.oracle"],
+      requiredSubclass: [mysteryId], traits: ["Oráculo", "Incomum", "Foco"],
+      source: { book: PLAYER_CORE_2_SOURCE, page }, ruleset: "remaster", needs_review: false,
+    };
+    PF2E_DATA.spells.push(spell);
+  }
+  const mystery = PF2E_DATA.subclasses.find((record) => record.id === mysteryId);
+  if (mystery) Object.assign(mystery, { initialRevelationSpellId: spell.id, revelationSpellIds: [spell.id] });
+}
+
 // Livro do Jogador 2, pp. 161–163: os oito mistérios Remaster determinam
 // as magias de revelação, a perícia concedida e a maldição do Oráculo.
 const PLAYER_CORE_2_ORACLE_MYSTERIES = [
@@ -8479,6 +8550,58 @@ for (const [slug, pt, en, es, page, summaryPt, summaryEn, summaryEs] of PLAYER_C
     source: { book: PLAYER_CORE_2_SOURCE, page }, sourceApproximate: false, ruleset: "remaster", needs_review: false
   });
 }
+for (const revelation of PLAYER_CORE_2_ORACLE_INITIAL_REVELATIONS) {
+  const mystery = PF2E_DATA.subclasses.find((record) => record.id === `subclass.class.oracle.mystery_${revelation[0]}`);
+  const spell = PF2E_DATA.spells.find((record) => record.id === `spell.player_core_2.oracle.revelation_${revelation[0]}`);
+  if (mystery && spell) Object.assign(mystery, {
+    initialRevelationSpellId: spell.id,
+    revelationSpellIds: [...new Set(PF2E_DATA.spells.filter((candidate) => candidate.category === "Magia de Revelação" && candidate.requiredSubclass?.includes(mystery.id)).map((candidate) => candidate.id))],
+  });
+}
+const PLAYER_CORE_2_ORACLE_ADDITIONAL_REVELATIONS = [
+  ["ancestors", "Defesa Ancestral", "Ancestral Defense", "Defensa ancestral", 262, "Uma proteção espiritual ancestral defende você contra ameaças."],
+  ["ancestors", "Forma Ancestral", "Ancestral Form", "Forma ancestral", 262, "Você assume uma forma moldada pelos espíritos ancestrais."],
+  ["battle", "Persistência em Batalha", "Battle Persistence", "Persistencia en batalla", 262, "Sua determinação melhora um salvamento antes que o resultado seja conhecido."],
+  ["battle", "Glória na Retaliação", "Glory in Retribution", "Gloria en la represalia", 262, "Você recebe reações adicionais para realizar Golpes Reativos durante o combate."],
+  ["flames", "Turbilhão de Chamas", "Flames Whirlpool", "Remolino de llamas", 263, "Explosões de chamas atingem criaturas em uma área e causam dano de fogo."],
+  ["flames", "Saraivada Flamejante", "Blazing Armament", "Arsenal llameante", 263, "Uma saraivada de chamas intensifica suas ignições e envolve o campo de batalha."],
+  ["cosmos", "Vazio Interestelar", "Interstellar Void", "Vacío interestelar", 263, "Um vazio congelante envolve o alvo, causando dano de frio a cada rodada."],
+  ["cosmos", "Ponte de Luz Lunar", "Moonlit Bridge", "Puente de luz lunar", 263, "Você cria uma ponte de luz lunar que atravessa o espaço escolhido."],
+  ["bones", "Armadura de Ossos", "Bones Armor", "Armadura de huesos", 264, "Sua forma endurece e recebe resistência contra vários tipos de dano."],
+  ["bones", "Reivindicar Morto-Vivo", "Claim Undead", "Reclamar no muerto", 264, "Você tenta controlar uma criatura morta-viva por meio de sua autoridade sobre a morte."],
+  ["lore", "Acessar Saber", "Access Lore", "Acceder al saber", 264, "Você consulta o conhecimento divino e assume temporariamente uma graduação de Saber."],
+  ["lore", "Segredo Aterrador", "Terrifying Secret", "Secreto aterrador", 264, "Você revela uma fraqueza ou resistência oculta, abalando seus inimigos."],
+  ["tempest", "Explosão-Trovão", "Thunderburst", "Estallido de trueno", 265, "Uma rajada de ar e trovão causa dano contundente e sônico em uma área."],
+  ["tempest", "Forma de Tempestade", "Storm Form", "Forma de tormenta", 265, "Seu corpo se torna ar, água ou névoa para atravessar o campo de batalha."],
+  ["life", "Adiar Aflição", "Delay Affliction", "Retrasar aflicción", 265, "Você suspende temporariamente uma aflição e restaura parte da vitalidade do alvo."],
+  ["life", "Forma Vivificante", "Vivifying Form", "Forma vivificante", 265, "Você se torna um farol de energia vital que cura aliados e fere mortos-vivos."],
+];
+for (const [slug, pt, en, es, page, summaryPt] of PLAYER_CORE_2_ORACLE_ADDITIONAL_REVELATIONS) {
+  const id = `spell.player_core_2.oracle.revelation_${slug}_${String(pt).toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "")}`;
+  if (!PF2E_DATA.spells.some((record) => record.id === id)) PF2E_DATA.spells.push({
+    id, name: `${pt} (${en} / ${es})`, names: { "pt-BR": pt, en, es },
+    summaries: { "pt-BR": summaryPt, en: `Additional revelation spell of the ${en} mystery.`, es: `Conjuro de revelación adicional del misterio ${es}.` },
+    description: summaryPt, rank: pt.includes("Forma") || pt.includes("Saraivada") || pt.includes("Glória") || pt.includes("Reivindicar") || pt.includes("Segredo") || pt.includes("Ponte") || pt.includes("Aterrador") ? 6 : 3,
+    level: 1, focus: true, type: "Focus Spell", category: "Magia de Revelação", traditions: ["divine"], classId: "class.oracle", classIds: ["class.oracle"],
+    requiredSubclass: [`subclass.class.oracle.mystery_${slug}`], traits: ["Oráculo", "Incomum", "Foco"], source: { book: PLAYER_CORE_2_SOURCE, page }, ruleset: "remaster", needs_review: true,
+  });
+  const mystery = PF2E_DATA.subclasses.find((record) => record.id === `subclass.class.oracle.mystery_${slug}`);
+  if (mystery) mystery.revelationSpellIds = [...new Set([...(mystery.revelationSpellIds || []), id])];
+}
+const PLAYER_CORE_2_ORACLE_MYSTERY_DETAILS = {
+  ancestors: { skill: { "pt-BR": "Sociedade", en: "Society", es: "Sociedad" }, curse: { "pt-BR": "Maldição da Interferência Ancestral", en: "Ancestral Interference Curse", es: "Maldición de la interferencia ancestral" } },
+  battle: { skill: { "pt-BR": "Atletismo", en: "Athletics", es: "Atletismo" }, curse: { "pt-BR": "Maldição do Guerreiro Mortal", en: "Mortal Warrior Curse", es: "Maldición del guerrero mortal" } },
+  flames: { skill: { "pt-BR": "Acrobacia", en: "Acrobatics", es: "Acrobacias" }, curse: { "pt-BR": "Maldição das Chamas Engolfantes", en: "Flames Curse", es: "Maldición de las llamas envolventes" } },
+  cosmos: { skill: { "pt-BR": "Natureza", en: "Nature", es: "Naturaleza" }, curse: { "pt-BR": "Maldição do Chamado do Céu", en: "Call of the Sky Curse", es: "Maldición del llamado del cielo" } },
+  bones: { skill: { "pt-BR": "Medicina", en: "Medicine", es: "Medicina" }, curse: { "pt-BR": "Maldição da Morte Viva", en: "Living Death Curse", es: "Maldición de la muerte viviente" } },
+  lore: { skill: { "pt-BR": "Ocultismo e uma perícia de Saber", en: "Occultism and one Lore skill", es: "Ocultismo y una habilidad de Saber" }, curse: { "pt-BR": "Maldição do Conhecimento Torrencial", en: "Torrent of Knowledge Curse", es: "Maldición del conocimiento torrencial" } },
+  tempest: { skill: { "pt-BR": "Natureza", en: "Nature", es: "Naturaleza" }, curse: { "pt-BR": "Maldição dos Ventos Desfavoráveis e Impiedosos", en: "Malicious Winds Curse", es: "Maldición de los vientos desfavorables e implacables" } },
+  life: { skill: { "pt-BR": "Medicina", en: "Medicine", es: "Medicina" }, curse: { "pt-BR": "Maldição da Efusão de Vida", en: "Life's Overflow Curse", es: "Maldición de la efusión de vida" } },
+};
+for (const [slug, details] of Object.entries(PLAYER_CORE_2_ORACLE_MYSTERY_DETAILS)) {
+  const mystery = PF2E_DATA.subclasses.find((record) => record.id === `subclass.class.oracle.mystery_${slug}`);
+  if (mystery) Object.assign(mystery, { mysterySkill: details.skill, curseNames: details.curse });
+}
 
 const PLAYER_CORE_WITCH_HEX_SUMMARIES = {
   faiths_flamekeeper: { "pt-BR": "O alvo recebe +2 de bônus de estado nas jogadas de dano; aumenta em 1 a cada dois ranques elevados.", en: "The target gains a +2 status bonus to damage rolls, increasing by 1 for every two heightened ranks.", es: "El objetivo obtiene +2 de bonificador de estado al daño, que aumenta en 1 cada dos rangos aumentados." },
@@ -8497,7 +8620,7 @@ for (const patron of PLAYER_CORE_WITCH_PATRONS) {
     names: patron.hexCantrip,
     summaries: PLAYER_CORE_WITCH_HEX_SUMMARIES[patron.slug],
     description: PLAYER_CORE_WITCH_HEX_SUMMARIES[patron.slug]["pt-BR"],
-    rank: 1, level: 1, focus: true, cantrip: true, actionType: "one-action", category: "Truque de Sortilégio", type: "Focus Cantrip",
+    rank: 1, level: 1, focus: true, cantrip: true, hex: true, actionType: "one-action", category: "Truque de Sortilégio", type: "Focus Cantrip",
     traditions: [patron.tradition], classId: "class.witch", classIds: ["class.witch"], requiredSubclass: [patron.names["pt-BR"], patron.names.en, patron.names.es],
     traits: ["Bruxo", "Incomum", "Sortilégio", "Truque"],
     source: { book: PLAYER_CORE_SOURCE, page: patron.slug === "spinner_of_threads" ? 375 : 374 }, ruleset: "remaster", needs_review: false
@@ -9775,7 +9898,7 @@ for (const [slug, pt, en, es, level, ac, dexCap, checkPenalty, strength, group, 
 const WAR_IMMORTALS_STORIED_WEAPONS = [
   ["fighting_oar", "Remo de Combate", "Fighting Oar", "Rema de combate", 1, "1d8", "B", 2, 2, "polearm", ["sweep", "versatile S"]],
   ["palstave", "Palstave", "Palstave", "Palstave", 1, "1d6", "S", 1, 1, "axe", ["sweep"]],
-  ["war_gavel", "Malho de Guerra", "War Gavel", "Martillo de guerra", 1, "1d6", "B", 1, 1, "club", ["versatile P"]],
+  ["war_gavel", "Malho de Guerra", "War Gavel", "Mazo de guerra", 1, "1d6", "B", 1, 1, "club", ["versatile P"]],
   ["combat_fishing_pole", "Vara de Pesca de Combate", "Combat Fishing Pole", "Caña de pesca de combate", 1, "1d6", "B", 1, 2, "club", ["backswing", "versatile B"]],
   ["gladius", "Gládio", "Gladius", "Gladius", 1, "1d6", "P", 1, 1, "sword", ["deadly d10", "versatile S"]],
   ["macuahuitl", "Macuahuitl", "Macuahuitl", "Macuahuitl", 1, "1d8", "S", 1, 2, "club", ["backswing", "tearing", "versatile B"]],
@@ -10804,11 +10927,23 @@ const PLAYER_CORE_WIZARD_FEATS = [
   ["refletir_magia", "Refletir Magia", 14], ["vinculo_superior", "Vínculo Superior", 14], ["concentracao_sem_esforco", "Concentração sem Esforço", 16], ["magia_cintilante", "Magia Cintilante", 16],
   ["combinacao_de_magias", "Combinação de Magias", 20], ["maestria_em_magias", "Maestria em Magias", 20], ["maestria_em_moldamagia", "Maestria em Moldamagia", 20], ["poder_do_arquimago", "Poder do Arquimago", 20],
 ];
+const PLAYER_CORE_WIZARD_FEAT_NAMES = {
+  ampliar_magia: ["Widen Spell", "Ensanchar conjuro"], contramagica: ["Counterspell", "Contraconjuro"], estender_magia: ["Reach Spell", "Alcance del conjuro"], familiar: ["Familiar", "Familiar"],
+  ablacao_de_energia: ["Energy Ablation", "Ablación de energía"], expansao_de_truque_magico: ["Cantrip Expansion", "Expansión de truco"], familiar_melhorado: ["Enhanced Familiar", "Familiar mejorado"], magia_nao_letal: ["Nonlethal Spell", "Conjuro no letal"], ocultar_magia: ["Conceal Spell", "Ocultar conjuro"],
+  convocar_ferramentas_magicas: ["Summon Magical Tools", "Convocar herramientas mágicas"], foco_vinculado: ["Linked Focus", "Foco vinculado"], golpes_encantados: ["Enchanting Strikes", "Golpes encantados"], matriz_de_protecao_magica: ["Magical Fortress", "Matriz de protección mágica"],
+  chegada_explosiva: ["Explosive Arrival", "Llegada explosiva"], conjuracao_consistente: ["Steady Spellcasting", "Lanzamiento constante"], dividir_espaco_de_magia: ["Split Slot", "Dividir espacio de conjuro"], ilusao_convincente: ["Convincing Illusion", "Ilusión convincente"], magia_irresistivel: ["Irresistible Magic", "Magia irresistible"],
+  conservacao_de_vinculo: ["Bond Conservation", "Conservación del vínculo"], conhecimento_e_poder: ["Knowledge Is Power", "El conocimiento es poder"], magia_de_escola_avancada: ["Advanced School Spell", "Conjuro de escuela avanzada"], retencao_de_forma: ["Form Retention", "Retención de forma"],
+  adepto_de_pergaminhos: ["Scroll Savant", "Adepto de pergaminos"], conjuracao_acelerada: ["Quickened Casting", "Lanzamiento acelerado"], energia_avassaladora: ["Overwhelming Energy", "Energía abrumadora"], deteccao_magica_agucada: ["Heightened Magic Detection", "Detección mágica aguzada"], energia_forcosa: ["Forceful Energy", "Energía forzosa"],
+  sentido_magico: ["Magic Sense", "Sentido mágico"], trespassar_contramagica: ["Spell Turning", "Traspasar contraconjuro"], foco_de_vinculo: ["Bonded Focus", "Foco del vínculo"], matriz_de_detonacao_secundaria: ["Secondary Detonation Matrix", "Matriz de detonación secundaria"],
+  refletir_magia: ["Reflect Spell", "Reflejar conjuro"], vinculo_superior: ["Greater Bond", "Vínculo superior"], concentracao_sem_esforco: ["Effortless Concentration", "Concentración sin esfuerzo"], magia_cintilante: ["Dazzling Flash", "Magia centelleante"],
+  combinacao_de_magias: ["Spell Combination", "Combinación de conjuros"], maestria_em_magias: ["Spell Mastery", "Maestría en conjuros"], maestria_em_moldamagia: ["Masterful Metamagic", "Maestría en metamágica"], poder_do_arquimago: ["Archwizard's Might", "Poder del archimago"],
+};
 for (const [slug, pt, level] of PLAYER_CORE_WIZARD_FEATS) {
   const id = `feat.class.wizard.${String(slug).replace(/ /g, "_")}`;
   if ((PF2E_DATA.feats || []).some((record) => record.id === id)) continue;
+  const [en, es] = PLAYER_CORE_WIZARD_FEAT_NAMES[slug] || [pt, pt];
   PF2E_DATA.feats.push({
-    id, name: `${pt} (Wizard)`, names: { "pt-BR": pt, en: String(pt), es: String(pt) },
+    id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es },
     summaries: { "pt-BR": "Talento de classe de Mago; efeito completo pendente de revisão.", en: "Wizard class feat; full effect pending review.", es: "Dote de clase de mago; efecto completo pendiente de revisión." },
     description: `Talento de classe de Mago: ${pt}.`, category: "Classe", type: "Talento", level,
     classId: "class.wizard", className: "Mago", prerequisites: [], traits: ["Classe", "Mago"],
@@ -10857,14 +10992,29 @@ const PLAYER_CORE_WITCH_FEATS = [
   ["magia_de_coventiculo", "Magia de Coventículo", 12], ["vassoura_de_bruxo", "Vassoura de Bruxo", 12], ["presenca_do_patrono", "Presença do Patrono", 14], ["refletir_magia", "Refletir Magia", 14], ["ritos_de_transfiguracao", "Ritos de Transfiguração", 14],
   ["concentracao_sem_esforco", "Concentração sem Esforço", 16], ["sifonar_poder", "Sifonar Poder", 16], ["dividir_sortilegio", "Dividir Sortilégio", 18], ["reivindicacao_do_patrono", "Reivindicação do Patrono", 18], ["cabana_do_bruxo", "Cabana do Bruxo", 20], ["mestre_dos_sortilegios", "Mestre dos Sortilégios", 20], ["verdade_do_patrono", "Verdade do Patrono", 20],
 ];
+const PLAYER_CORE_WITCH_FEAT_NAMES = {
+  ampliar_magia: ["Widen Spell", "Ensanchar conjuro"], armamentos_de_bruxo: ["Witch's Armaments", "Armas de bruja"], contramagica: ["Counterspell", "Contraconjuro"],
+  estender_magia: ["Reach Spell", "Alcance del conjuro"], expansao_de_truque_magico: ["Cantrip Expansion", "Expansión de truco"], familiar_melhorado: ["Enhanced Familiar", "Familiar mejorado"],
+  idioma_de_familiar: ["Familiar's Language", "Idioma del familiar"], licao_basica: ["Basic Lesson", "Lección básica"], ocultar_magia: ["Conceal Spell", "Ocultar conjuro"],
+  golpe_empatico: ["Empathic Strikes", "Golpes empáticos"], ritos_de_convocacao: ["Summoning Rituals", "Rituales de convocación"], carga_de_bruxo: ["Witch's Charge", "Carga de bruja"],
+  conjuracao_consistente: ["Steady Spellcasting", "Lanzamiento constante"], faca_cerimonial: ["Ceremonial Knife", "Cuchillo ceremonial"], licao_maior: ["Major Lesson", "Lección mayor"],
+  familiar_costurado: ["Stitched Familiar", "Familiar cosido"], familiar_espirito: ["Spirit Familiar", "Familiar espiritual"], familiar_incrivel: ["Incredible Familiar", "Familiar increíble"],
+  frasco_de_bruxo: ["Witch's Bottle", "Frasco de bruja"], visao_na_cerrao: ["Vision in the Mist", "Visión en la niebla"], comunhao_do_bruxo: ["Witch's Communion", "Comunión de bruja"],
+  conjuracao_acelerada: ["Quickened Casting", "Lanzamiento acelerado"], licao_superior: ["Greater Lesson", "Lección superior"], mais_fogo_para_a_panela: ["More Fire in the Cauldron", "Más fuego en el caldero"],
+  foco_de_sortilegio: ["Hex Focus", "Foco de maleficio"], magia_de_coventiculo: ["Coven Spell", "Conjuro del aquelarre"], vassoura_de_bruxo: ["Witch's Broom", "Escoba de bruja"],
+  presenca_do_patrono: ["Patron's Presence", "Presencia del patrón"], refletir_magia: ["Reflect Spell", "Reflejar conjuro"], ritos_de_transfiguracao: ["Transfiguration Rituals", "Rituales de transfiguración"],
+  concentracao_sem_esforco: ["Effortless Concentration", "Concentración sin esfuerzo"], sifonar_poder: ["Siphon Power", "Sifonar poder"], dividir_sortilegio: ["Split Hex", "Dividir maleficio"],
+  reivindicacao_do_patrono: ["Patron's Claim", "Pretensión del patrón"], cabana_do_bruxo: ["Witch's Hut", "Cabaña de bruja"], mestre_dos_sortilegios: ["Hex Master", "Maestro de maleficios"], verdade_do_patrono: ["Patron's Truth", "Verdad del patrón"],
+};
 for (const [slug, pt, level] of PLAYER_CORE_WITCH_FEATS) {
   const id = `feat.class.witch.${slug}`;
   if ((PF2E_DATA.feats || []).some((record) => record.id === id)) continue;
+  const [en, es] = PLAYER_CORE_WITCH_FEAT_NAMES[slug] || [pt, pt];
   PF2E_DATA.feats.push({
-    id, name: `${pt} (Witch)`, names: { "pt-BR": pt, en: String(pt), es: String(pt) },
-    summaries: { "pt-BR": "Talento de classe de Bruxo; efeito completo pendente de revisão.", en: "Witch class feat; full effect pending review.", es: "Dote de clase de bruja; efecto completo pendiente de revisión." },
-    description: `Talento de classe de Bruxo: ${pt}.`, category: "Classe", type: "Talento", level,
-    classId: "class.witch", className: "Bruxo", prerequisites: [], traits: ["Classe", "Bruxo"],
+    id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es },
+    summaries: { "pt-BR": "Talento de classe de Bruxa; efeito completo pendente de revisão.", en: "Witch class feat; full effect pending review.", es: "Dote de clase de bruja; efecto completo pendiente de revisión." },
+    description: `Talento de classe de Bruxa: ${pt}.`, category: "Classe", type: "Talento", level,
+    classId: "class.witch", className: "Bruxa", prerequisites: [], traits: ["Classe", "Bruxa"],
     source: { book: PLAYER_CORE_SOURCE, page: level <= 2 ? 114 : level <= 8 ? 115 : 116 },
     sourceApproximate: true, ruleset: "remaster", needs_review: true, rarity: "common",
   });
@@ -10913,6 +11063,11 @@ for (const [id, gate] of Object.entries(CONTEXTUAL_PREREQUISITE_GATES)) {
   const archetype = (PF2E_DATA.archetypes || []).find((candidate) => candidate.id === id);
   if (archetype) Object.assign(archetype, gate);
 }
+
+// Ponte explícita para os módulos React. O legado continua usando a variável
+// global lexical, enquanto os componentes modernos passam a poder consultar
+// exatamente o mesmo catálogo sem manter uma cópia paralela.
+if (typeof window !== "undefined") window.PF2E_DATA = PF2E_DATA;
 
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = PF2E_DATA;

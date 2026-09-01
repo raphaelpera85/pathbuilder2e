@@ -42,6 +42,11 @@ describe("Campaigns & GM Service", () => {
     expect(list[0].title).toBe("A Maldição da Coroa Carmesim");
   });
 
+  it("normaliza edições antigas para valores internos estáveis", async () => {
+    expect((await saveCampaign({ title: "Clássica", system: "Pathfinder 2e Clássico" }, gmUser)).system).toBe("classic");
+    expect((await saveCampaign({ title: "Variantes", system: "Pathfinder 2e (Custom)" }, gmUser)).system).toBe("custom");
+  });
+
   it("permite ao jogador indicar o e-mail do Mestre e o Mestre encontra a ficha vinculada", async () => {
     // 1. Jogador cria sua ficha
     const char = await saveCharacter(

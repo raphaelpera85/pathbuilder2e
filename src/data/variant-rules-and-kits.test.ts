@@ -72,6 +72,13 @@ describe("P3, P4, P5, P6: Regras Variantes, Starter Kits, Condições Vivas e He
     expect(char.inventory.length).toBeGreaterThan(0);
   });
 
+  it("aceita o kit inicial quando a ficha usa o nome da classe em espanhol", () => {
+    const char = { class: "Guerrero", weapons: [], inventory: [], coins: { gp: 15, sp: 0, cp: 0 } } as any;
+    engine.applyClassStarterKit(char, "Guerrero");
+    expect(char.weapons.length).toBeGreaterThan(0);
+    expect(char.inventory.length).toBeGreaterThan(0);
+  });
+
   it("não aplica kit de outra classe nem faz fallback silencioso", () => {
     const char = { class: "Mago (Wizard)", weapons: [], inventory: [], coins: { gp: 10, sp: 0, cp: 0, pp: 0 } } as any;
     engine.applyClassStarterKit(char, "Guerreiro (Fighter)");

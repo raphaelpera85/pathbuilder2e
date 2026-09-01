@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <a class="skip-link" href="#react-portal-root">Pular para o conteúdo</a>
+  <a class="skip-link" id="skipToContent" href="#react-portal-root">Pular para o conteúdo</a>
 
   <!-- BARRA SUPERIOR (TOPBAR) -->
   <div class="pb-topbar">
@@ -35,8 +35,8 @@
           <button class="btn-pb-action" style="width: 100%; border-color: var(--pb-orange); color: var(--pb-orange); font-weight: 900; letter-spacing: 0.05em; font-size: 13px; padding: 7px 12px; background: rgba(249, 115, 22, 0.08);">⚔️ PATHBUILDER 2E REMASTER</button>
         </div>
         <div style="display: flex; justify-content: space-between; font-size: 11px; color: var(--pb-text-muted); margin-top: 6px;">
-          <span>Edição Remaster</span>
-          <span style="color: #4ade80; font-weight: bold;">● Online & Local</span>
+          <span id="drawerEdition">Edição Remaster</span>
+          <span id="drawerStatus" style="color: #4ade80; font-weight: bold;">● Online & Local</span>
         </div>
       </div>
 
@@ -48,8 +48,8 @@
 
       <div class="drawer-group">
         <div class="drawer-group-title" data-i18n-key="drawerCharacterTitle">Personagem & Biblioteca</div>
-        <div class="drawer-item" id="drawerLibrary" style="color: #fb923c; font-weight: bold;" onclick="window.location.hash='#/library'; app.toggleDrawer();">🛡️ Meus Personagens (Biblioteca)</div>
-        <div class="drawer-item" id="drawerCampaigns" style="color: #c084fc; font-weight: bold;" onclick="window.location.hash='#/campaigns'; app.toggleDrawer();">🏰 Campanhas do Mestre (Mesas de RPG)</div>
+        <div class="drawer-item" id="drawerLibrary" style="color: #fb923c; font-weight: bold;" onclick="app.navigatePortal('library');">🛡️ Meus Personagens (Biblioteca)</div>
+        <div class="drawer-item" id="drawerCampaigns" style="color: #c084fc; font-weight: bold;" onclick="app.navigatePortal('campaigns');">🏰 Campanhas do Mestre (Mesas de RPG)</div>
         <div class="drawer-item" id="drawerNewCharacter" onclick="app.createNewCharacter(); app.toggleDrawer(); window.location.hash='#/builder';">➕ Novo Personagem em Branco</div>
         <div class="drawer-item" id="drawerSaveCharacter" onclick="app.saveCharacterLocal(true); app.toggleDrawer();">💾 Salvar Personagem (Local)</div>
         <div class="drawer-item" id="drawerSaveAccountCharacter" onclick="window.dispatchEvent(new Event('pathbuilder:save-account-character')); app.toggleDrawer();">☁️ Salvar Personagem na Conta</div>
@@ -57,18 +57,18 @@
 
       <div class="drawer-group">
         <div class="drawer-group-title" data-i18n-key="drawerExportTitle">Exportação & Impressão</div>
-        <div class="drawer-item" style="color: #38bdf8; font-weight: bold;" onclick="app.downloadOfficialFillablePdf(); app.toggleDrawer();">📥 Baixar PDF Editável (Ficha Oficial)</div>
-        <div class="drawer-item" onclick="app.printOfficialPdf(); app.toggleDrawer();">📄 Imprimir ficha personalizada</div>
-        <div class="drawer-item" onclick="app.openExportModal(); app.toggleDrawer();">📤 Exportar JSON</div>
-        <div class="drawer-item" onclick="app.openImportModal(); app.toggleDrawer();">📥 Importar JSON</div>
-        <div class="drawer-item" onclick="app.exportMarkdown(); app.toggleDrawer();">📜 Exportar Markdown</div>
+        <div class="drawer-item" id="drawerPdf" style="color: #38bdf8; font-weight: bold;" onclick="app.downloadOfficialFillablePdf(); app.toggleDrawer();">📥 Baixar PDF Editável (Ficha Oficial)</div>
+        <div class="drawer-item" id="drawerPrint" onclick="app.printOfficialPdf(); app.toggleDrawer();">📄 Imprimir ficha personalizada</div>
+        <div class="drawer-item" id="drawerExportJson" onclick="app.openExportModal(); app.toggleDrawer();">📤 Exportar JSON</div>
+        <div class="drawer-item" id="drawerImportJson" onclick="app.openImportModal(); app.toggleDrawer();">📥 Importar JSON</div>
+        <div class="drawer-item" id="drawerExportMarkdown" onclick="app.exportMarkdown(); app.toggleDrawer();">📜 Exportar Markdown</div>
       </div>
 
       <div class="drawer-group">
         <div class="drawer-group-title" data-i18n-key="drawerCompendiumTitle">Compêndio & Dados</div>
-        <a class="drawer-item" href="#/compendium" onclick="app.toggleDrawer();">📚 Compêndio de criação</a>
-        <a class="drawer-item" href="#/rules" onclick="app.toggleDrawer();">📖 Guia de regras e fontes</a>
-        <a class="drawer-item" href="#/library" onclick="app.toggleDrawer();">🛡️ Biblioteca e perfil</a>
+        <a class="drawer-item" id="drawerCompendium" href="#/compendium" onclick="app.navigatePortal('compendium'); return false;">📚 Compêndio de criação</a>
+        <a class="drawer-item" id="drawerRules" href="#/rules" onclick="app.navigatePortal('rules'); return false;">📖 Guia de regras e fontes</a>
+        <a class="drawer-item" id="drawerProfile" href="#/library" onclick="app.navigatePortal('library'); return false;">🛡️ Biblioteca e perfil</a>
       </div>
     </div>
   </div>
@@ -124,7 +124,7 @@
         <button type="button" id="readinessBadgeBtn" onclick="app.openReadinessModal()" style="background: rgba(34, 197, 94, 0.15); border: 1px solid #22c55e; color: #86efac; padding: 4px 8px; border-radius: 6px; font-size: 11px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 4px; white-space: nowrap;" title="Auditoria de Prontidão da Ficha">
           🛡️ <span id="readinessBadgeText">100% Pronto</span>
         </button>
-        <button type="button" id="variantRulesBtn" onclick="app.openVariantRulesModal()" style="background: #182234; border: 1px solid #3b82f6; color: #93c5fd; padding: 4px 8px; border-radius: 6px; font-size: 11px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 4px; white-space: nowrap;" title="Configurar Regras Variantes (Free Archetype, ABP)">
+        <button type="button" id="variantRulesBtn" onclick="app.openVariantRulesModal()" style="background: #182234; border: 1px solid #3b82f6; color: #93c5fd; padding: 4px 8px; border-radius: 6px; font-size: 11px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 4px; white-space: nowrap;" title="Configurar Regras Variantes (Arquétipo Livre, Progressão Automática de Bônus)">
           ⚙️ Variantes
         </button>
       </div>
@@ -211,7 +211,7 @@
 
       <!-- LISTA COMPLETA DE PERÍCIAS (COLUNA) -->
       <div style="display:flex; justify-content:space-between; align-items:center; margin:6px 0 2px; font-size:11px; font-weight:bold; color:var(--pb-text-muted);">
-        <span>PERÍCIAS</span>
+        <span class="skills-column-heading">PERÍCIAS</span>
         <span id="trainedSkillsBadge" style="font-size:10px; background:rgba(249,115,22,0.15); color:var(--pb-orange); padding:1px 6px; border-radius:10px;" title="Perícias Selecionadas / Total Concedido">0 / 0</span>
       </div>
       <div class="skills-column-list" id="skillsColList">
@@ -255,10 +255,10 @@
         <div id="tab-weapons" class="tab-panel active" role="tabpanel" aria-labelledby="tab-button-weapons">
           <!-- PROFICIÊNCIAS DE ARMAS -->
           <div style="display: flex; gap: 14px; margin-bottom: 14px; flex-wrap: wrap; font-size: 11px;">
-            <div style="display:flex; align-items:center; gap:4px;"><span class="teml-circle t">T</span> Armas Simples</div>
-            <div style="display:flex; align-items:center; gap:4px;"><span class="teml-circle t">T</span> Armas Marciais</div>
-            <div style="display:flex; align-items:center; gap:4px;"><span class="teml-circle u">U</span> Armas Avançadas</div>
-            <div style="display:flex; align-items:center; gap:4px;"><span class="teml-circle t">T</span> Ataques Desarmados</div>
+            <div class="weapon-prof-group-item" style="display:flex; align-items:center; gap:4px;"><span class="teml-circle t">T</span><span class="weapon-prof-label">Armas Simples</span></div>
+            <div class="weapon-prof-group-item" style="display:flex; align-items:center; gap:4px;"><span class="teml-circle t">T</span><span class="weapon-prof-label">Armas Marciais</span></div>
+            <div class="weapon-prof-group-item" style="display:flex; align-items:center; gap:4px;"><span class="teml-circle u">U</span><span class="weapon-prof-label">Armas Avançadas</span></div>
+            <div class="weapon-prof-group-item" style="display:flex; align-items:center; gap:4px;"><span class="teml-circle t">T</span><span class="weapon-prof-label">Ataques Desarmados</span></div>
           </div>
 
           <div style="display: flex; gap: 8px; margin-bottom: 16px;">
@@ -283,7 +283,7 @@
         <!-- ABA 3: EQUIPAMENTOS (GEAR) -->
         <div id="tab-gear" class="tab-panel" role="tabpanel" aria-labelledby="tab-button-gear" hidden>
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
-            <div style="font-size: 12px; color: var(--pb-text-muted);">Carga Total: <span id="gearBulkDisplay" style="color:#fff; font-weight:bold;">3 / 10</span></div>
+            <div style="font-size: 12px; color: var(--pb-text-muted);"><span id="gearBulkLabel">Carga Total:</span> <span id="gearBulkDisplay" style="color:#fff; font-weight:bold;">3 / 10</span></div>
             <div style="display: flex; gap: 8px;">
               <button class="btn-pb-action" onclick="app.openStarterKitsModal()" style="background: rgba(249, 115, 22, 0.15); border: 1px solid var(--pb-orange); color: #fed7aa; font-weight: bold;">🎒 Equipar Kit Inicial (1-Clique)</button>
               <button class="btn-pb-action" onclick="app.addInventoryItem()">➕ Adicionar Item</button>
@@ -298,11 +298,11 @@
           <div class="spell-tab-header" style="background: #0d1524; border: 1px solid #1e293b; border-radius: 10px; padding: 14px; margin-bottom: 16px; display: flex; flex-direction: column; gap: 12px;">
             <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
               <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
-                <div style="font-size: 13px; font-weight: 800; color: #38bdf8;">✨ Conjurador <span id="spellTraditionBadge" style="background: rgba(56, 189, 248, 0.15); color: #7dd3fc; padding: 2px 8px; border-radius: 12px; font-size: 11px;">Arcana</span></div>
-                <div class="spell-stat-line" style="font-size: 12px; color: #cbd5e1;">CD de Magia: <strong id="spellDcText" style="color: #f97316; font-size: 14px;">17</strong> • Ataque Mágico: <strong id="spellAtkText" style="color: #4ade80; font-size: 14px;">+7</strong></div>
+                <div style="font-size: 13px; font-weight: 800; color: #38bdf8;"><span id="spellcasterLabel">✨ Conjurador</span> <span id="spellTraditionBadge" style="background: rgba(56, 189, 248, 0.15); color: #7dd3fc; padding: 2px 8px; border-radius: 12px; font-size: 11px;">Arcana</span></div>
+                <div class="spell-stat-line" style="font-size: 12px; color: #cbd5e1;"><span id="spellDcLabel">CD de Magia:</span> <strong id="spellDcText" style="color: #f97316; font-size: 14px;">17</strong> • <span id="spellAtkLabel">Ataque Mágico:</span> <strong id="spellAtkText" style="color: #4ade80; font-size: 14px;">+7</strong></div>
               </div>
               <div id="focusPointsContainer" style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: #c084fc; font-weight: 700;">
-                <span>Pontos de Foco:</span>
+                <span id="focusPointsLabel">Pontos de Foco:</span>
                 <span id="focusPointsDisplay">● ○ ○</span>
                 <button type="button" onclick="app.adjustFocusPoints(-1)" style="background: #1e293b; border: 1px solid #475569; color: #cbd5e1; border-radius: 4px; padding: 1px 6px; cursor: pointer;">-</button>
                 <button type="button" onclick="app.adjustFocusPoints(1)" style="background: #1e293b; border: 1px solid #475569; color: #cbd5e1; border-radius: 4px; padding: 1px 6px; cursor: pointer;">+</button>
@@ -315,10 +315,10 @@
             </div>
 
             <div class="spell-actions" style="display: flex; gap: 8px; flex-wrap: wrap;">
-              <button class="btn-pb-action" onclick="app.openPicker('spell')"><span aria-hidden="true">📚</span> <span>Catálogo de Magias</span></button>
-              <button class="btn-pb-action secondary" onclick="app.openAddSpellModal()"><span aria-hidden="true">✎</span> <span>Adicionar Magia Manualmente</span></button>
-              <button class="btn-pb-action secondary" onclick="app.openPicker('ritual')"><span aria-hidden="true">◈</span> <span>Adicionar Ritual</span></button>
-              <button class="btn-pb-action" onclick="app.restAndRecoverSlots()" style="background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; color: #6ee7b7; margin-left: auto;">💤 Recuperar Todos os Slots</button>
+              <button class="btn-pb-action" onclick="app.openPicker('spell')"><span aria-hidden="true">📚</span> <span id="spellCatalogButton">Catálogo de Magias</span></button>
+              <button class="btn-pb-action secondary" onclick="app.openAddSpellModal()"><span aria-hidden="true">✎</span> <span id="manualSpellButton">Adicionar Magia Manualmente</span></button>
+              <button class="btn-pb-action secondary" onclick="app.openPicker('ritual')"><span aria-hidden="true">◈</span> <span id="ritualButton">Adicionar Ritual</span></button>
+              <button class="btn-pb-action" onclick="app.restAndRecoverSlots()" style="background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; color: #6ee7b7; margin-left: auto;" id="recoverSlotsButton">💤 Recuperar Todos os Slots</button>
             </div>
           </div>
 
@@ -425,7 +425,7 @@
             <!-- MESTRE DA MESA (GAME MASTER SYNC) -->
             <div style="background: rgba(249, 115, 22, 0.06); border: 1px solid rgba(249, 115, 22, 0.25); border-radius: 6px; padding: 10px 14px; margin-top: 4px;">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                <label style="font-size: 11px; font-weight: bold; color: var(--pb-orange);">🎲 Mestre da Mesa (Game Master Sync):</label>
+                <label id="detGmLabel" style="font-size: 11px; font-weight: bold; color: var(--pb-orange);">🎲 Mestre da Mesa (Sincronização do Mestre):</label>
                 <span id="detGmStatus" style="font-size: 10px; color: #4ade80; font-weight: bold;"></span>
               </div>
               <div style="display: flex; gap: 8px;">
@@ -455,7 +455,7 @@
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
             <div>
               <span style="font-weight: bold; color: var(--pb-orange);">📜 Fórmulas Conhecidas (Alquimia & Manufatura)</span>
-              <div style="font-size: 11px; color: var(--pb-text-muted);">Receitas para itens alquímicos, poções, armadilhas e manufatura (Crafting).</div>
+              <div id="formulaBookIntro" style="font-size: 11px; color: var(--pb-text-muted);">Receitas para itens alquímicos, poções, armadilhas e manufatura.</div>
             </div>
             <button class="btn-pb-action" onclick="app.openPicker('formula')">➕ Adicionar Fórmula</button>
           </div>
@@ -464,21 +464,23 @@
 
         <!-- ABA 9: REGRAS -->
         <div id="tab-rules" class="tab-panel" role="tabpanel" hidden>
-          <h3 style="color: var(--pb-orange); margin-bottom: 10px;">📖 Guia de Criação de Personagem & Regras PF2e</h3>
-          <p style="font-size: 12px; line-height: 1.6;">
-            <strong>Método dos 4 Passos de Aprimoramentos:</strong><br>
-            1. Base 10 em todos os atributos.<br>
-            2. Ancestralidade (+2, +2, -2 ou 2 Livres).<br>
-            3. Antecedente (+2 do trabalho, +2 Livre).<br>
-            4. Atributo-Chave da Classe (+2).<br>
-            5. 4 Aprimoramentos Livres no Nível 1 (+2 em 4 atributos distintos).
-          </p>
+          <div id="legacyRulesContent">
+            <h3 style="color: var(--pb-orange); margin-bottom: 10px;">📖 Guia de Criação de Personagem & Regras PF2e</h3>
+            <p style="font-size: 12px; line-height: 1.6;">
+              <strong>Método dos 4 Passos de Aprimoramentos:</strong><br>
+              1. Base 10 em todos os atributos.<br>
+              2. Ancestralidade (+2, +2, -2 ou 2 Livres).<br>
+              3. Antecedente (+2 do trabalho, +2 Livre).<br>
+              4. Atributo-Chave da Classe (+2).<br>
+              5. 4 Aprimoramentos Livres no Nível 1 (+2 em 4 atributos distintos).
+            </p>
+          </div>
         </div>
 
       </div>
 
       <!-- D20 FLUTUANTE LARANJA (CANTO INFERIOR DIREITO) -->
-      <button class="pb-floating-d20" id="btnToggleDiceDrawer" onclick="app.toggleDiceRoller()" title="Abrir Rolador de Dados (Free Roll / Histórico)" aria-label="Abrir Rolador de Dados" type="button">
+      <button class="pb-floating-d20" id="btnToggleDiceDrawer" onclick="app.toggleDiceRoller()" title="Abrir Rolador de Dados (Rolagem Livre / Histórico)" aria-label="Abrir Rolador de Dados" type="button">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 2L3 8.5L5.5 19L12 22L18.5 19L21 8.5L12 2Z" />
           <path d="M12 2V22" />
@@ -501,8 +503,8 @@
   <div class="dice-roller-drawer" id="diceRollerDrawer" aria-hidden="true">
     <div class="dice-roller-header">
       <div style="display: flex; gap: 8px; width: 100%;">
-        <button class="dice-roller-reset-btn" onclick="app.resetDicePool()" type="button" style="flex: 1; padding: 6px 12px; font-weight: 800; font-size: 13px;" title="Resetar rolagens">Resetar</button>
-        <button class="dice-roller-close-btn" onclick="app.closeDiceRoller()" type="button" title="Fechar Rolador" aria-label="Fechar">✕</button>
+        <button id="diceResetButton" class="dice-roller-reset-btn" onclick="app.resetDicePool()" type="button" style="flex: 1; padding: 6px 12px; font-weight: 800; font-size: 13px;" title="Resetar rolagens">Resetar</button>
+        <button id="diceCloseButton" class="dice-roller-close-btn" onclick="app.closeDiceRoller()" type="button" title="Fechar Rolador" aria-label="Fechar">✕</button>
       </div>
 
       <!-- BOTÕES DE DADOS RÁPIDOS (1d4, 1d6, 1d8, 1d10, 1d12, 1d20, 1d100) -->
@@ -526,7 +528,7 @@
     <div class="dice-roller-arena" id="diceArena">
       <div class="dice-arena-placeholder" id="diceArenaPlaceholder">
         <span class="dice-arena-icon">🎲</span>
-        <p>Clique em um dado acima ou em qualquer perícia, salvaguarda ou arma da ficha para rolar com animação 3D!</p>
+        <p id="diceArenaInstruction">Clique em um dado acima ou em qualquer perícia, salvaguarda ou arma da ficha para rolar com animação 3D!</p>
       </div>
       <div class="dice-arena-stage" id="diceArenaStage" style="display: none;">
         <div class="dice-animation-container" id="diceAnimContainer"></div>
@@ -534,18 +536,18 @@
     </div>
 
     <div style="text-align: center; padding: 10px 16px; background: rgba(0,0,0,0.2);">
-      <div style="font-size: 12px; font-weight: 900; color: #94a3b8; letter-spacing: 0.08em; text-transform: uppercase;">TOTAL</div>
+      <div id="diceTotalLabel" style="font-size: 12px; font-weight: 900; color: #94a3b8; letter-spacing: 0.08em; text-transform: uppercase;">TOTAL</div>
       <div id="diceResultTotal" style="font-size: 38px; font-weight: 900; color: #ffffff; text-shadow: 0 0 20px rgba(249,115,22,0.6); line-height: 1.1;">0</div>
       <div class="dice-result-tag" id="diceResultTag" style="display: none;"></div>
     </div>
 
     <!-- HISTÓRICO DE ROLAGENS -->
     <div class="dice-roller-history-header">
-      <span>📜 Histórico de Rolagens</span>
-      <button onclick="app.clearDiceLog()" class="dice-clear-btn" type="button" title="Limpar histórico">🗑️ Limpar</button>
+      <span id="diceHistoryTitle">📜 Histórico de Rolagens</span>
+      <button id="diceClearButton" onclick="app.clearDiceLog()" class="dice-clear-btn" type="button" title="Limpar histórico">🗑️ Limpar</button>
     </div>
     <div class="dice-roller-history-list" id="diceLogContent">
-      <div class="dice-history-empty">Nenhuma rolagem recente.</div>
+      <div id="diceHistoryEmpty" class="dice-history-empty">Nenhuma rolagem recente.</div>
     </div>
   </div>
 
@@ -598,7 +600,7 @@
       </div>
       <div class="pb-modal-footer" style="background: #070a10; border-top: 1px solid #1e293b; padding: 12px 18px; display: flex; gap: 10px;">
         <button class="pb-pill-btn" onclick="document.getElementById('modalSkillTrainingOverlay').classList.remove('active'); app.renderAll();">Concluído</button>
-        <button class="pb-pill-btn" onclick="app.promptAddLoreSkill()">Saberes (Lores)</button>
+        <button class="pb-pill-btn" onclick="app.promptAddLoreSkill()">Saberes</button>
       </div>
     </div>
   </div>
@@ -665,8 +667,8 @@
         <div style="display: flex; align-items: center; gap: 10px;">
           <span style="font-size: 22px;">🎨</span>
           <div>
-            <h3 style="margin: 0; color: #ffffff; font-size: 17px; font-weight: 900; letter-spacing: -0.01em;">Estúdio de Retratos & Avatar</h3>
-            <span style="font-size: 11px; color: #94a3b8;">Gere retratos épicos com IA ou importe imagens personalizadas</span>
+            <h3 id="avatarModalTitle" style="margin: 0; color: #ffffff; font-size: 17px; font-weight: 900; letter-spacing: -0.01em;">Estúdio de Retratos & Avatar</h3>
+            <span id="avatarModalSubtitle" style="font-size: 11px; color: #94a3b8;">Gere retratos épicos com IA ou importe imagens personalizadas</span>
           </div>
         </div>
         <button onclick="document.getElementById('modalAvatarOverlay').classList.remove('active')" style="background: #182234; border: 1px solid #283548; color: #cbd5e1; width: 32px; height: 32px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 16px;">✕</button>
@@ -675,10 +677,10 @@
       <!-- SELETOR DE ABAS DO ESTÚDIO -->
       <div style="display: flex; background: #070a12; border-bottom: 1px solid #1e293b; padding: 6px 14px; gap: 8px;">
         <button type="button" id="tabBtnAvatarAI" onclick="app.switchAvatarTab('ai')" style="flex: 1; padding: 8px 12px; background: rgba(249, 115, 22, 0.15); border: 1px solid var(--pb-orange); color: #fed7aa; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s;">
-          ✨ Criar com IA (Recomendado)
+          <span id="tabBtnAvatarAIText">✨ Criar com IA (Recomendado)</span>
         </button>
         <button type="button" id="tabBtnAvatarManual" onclick="app.switchAvatarTab('manual')" style="flex: 1; padding: 8px 12px; background: #0e1626; border: 1px solid #1e293b; color: #94a3b8; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s;">
-          📁 Upload / URL Manual
+          <span id="tabBtnAvatarManualText">📁 Enviar imagem / URL</span>
         </button>
       </div>
 
@@ -797,7 +799,7 @@
         <textarea id="jsonArea" style="width: 100%; height: 100%; background: var(--pb-bg-input); border: 1px solid var(--pb-border); color: #fff; font-family: var(--font-mono); font-size: 11px; padding: 8px;"></textarea>
       </div>
       <div class="pb-modal-footer">
-        <button class="btn-pb-action" onclick="app.copyJson()">Copiar</button>
+          <button class="btn-pb-action" id="btnCopyJson" onclick="app.copyJson()">Copiar</button>
         <button class="btn-pb-action" id="btnImportAction" style="background: var(--pb-orange-dark); color: #fff;" onclick="app.applyJson()">Importar</button>
       </div>
     </div>
@@ -809,7 +811,7 @@
       <div class="pb-modal-nav" style="background: linear-gradient(90deg, #1e1b4b, #312e81); border-bottom: 1px solid rgba(124, 58, 237, 0.3);">
         <div style="display: flex; align-items: center; gap: 8px;">
           <span style="font-size: 18px;">🤖</span>
-          <span style="font-weight: bold; color: #c4b5fd; font-size: 14px;">Assistente de IA Especialista PF2e (100% Gratuito)</span>
+          <span id="aiAssistantModalTitle" style="font-weight: bold; color: #c4b5fd; font-size: 14px;">Assistente de IA Especialista PF2e (100% Gratuito)</span>
         </div>
         <button onclick="app.closeAIAssistantModal()" style="background:none; border:none; color:#fff; cursor:pointer; font-size: 16px;">✕</button>
       </div>
@@ -832,8 +834,8 @@
         </div>
 
         <div style="display: flex; gap: 8px;">
-          <button class="btn-pb-action" onclick="app.generateCharacterWithAI()" style="flex: 2; background: linear-gradient(135deg, #7c3aed, #4f46e5); color: #fff; font-weight: bold; padding: 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2);">✨ Gerar Ficha com IA</button>
-          <button class="btn-pb-action" onclick="app.pickRandomAIPreset()" style="flex: 1; background: #334155; color: #e2e8f0; padding: 8px; border-radius: 6px;">🎲 Sortear Conceito</button>
+          <button class="btn-pb-action" id="btnGenerateAICharacter" onclick="app.generateCharacterWithAI()" style="flex: 2; background: linear-gradient(135deg, #7c3aed, #4f46e5); color: #fff; font-weight: bold; padding: 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2);">✨ Gerar Ficha com IA</button>
+          <button class="btn-pb-action" id="btnRandomAIPreset" onclick="app.pickRandomAIPreset()" style="flex: 1; background: #334155; color: #e2e8f0; padding: 8px; border-radius: 6px;">🎲 Sortear Conceito</button>
         </div>
 
         <!-- ÁREA DE PREVIEW DA FICHA GERADA -->
@@ -938,7 +940,7 @@
         <label style="display: flex; gap: 12px; background: #111a2e; border: 1px solid #1e293b; border-radius: 8px; padding: 12px; cursor: pointer; align-items: flex-start;">
           <input type="checkbox" id="chkFreeArchetype" onchange="app.toggleVariantRule('freeArchetype', this.checked)" style="margin-top: 3px; accent-color: var(--pb-orange); width: 16px; height: 16px;" />
           <div style="display: flex; flex-direction: column; gap: 2px;">
-            <strong id="variantFreeTitle" style="font-size: 13px; color: #f8fafc;">⚔️ Arquétipo Livre (Free Archetype)</strong>
+            <strong id="variantFreeTitle" style="font-size: 13px; color: #f8fafc;">⚔️ Arquétipo Livre</strong>
             <span id="variantFreeDescription" style="font-size: 11px; color: #94a3b8;">Concede um talento de arquétipo extra em todos os níveis pares (2, 4, 6, 8, 10, etc.) sem gastar talentos de classe.</span>
           </div>
         </label>
@@ -956,7 +958,7 @@
         <label style="display: flex; gap: 12px; background: #111a2e; border: 1px solid #1e293b; border-radius: 8px; padding: 12px; cursor: pointer; align-items: flex-start;">
           <input type="checkbox" id="chkAncestryParagon" onchange="app.toggleVariantRule('ancestryParagon', this.checked)" style="margin-top: 3px; accent-color: var(--pb-orange); width: 16px; height: 16px;" />
           <div style="display: flex; flex-direction: column; gap: 2px;">
-            <strong id="variantParagonTitle" style="font-size: 13px; color: #f8fafc;">🧬 Ancestralidade Exemplar (Ancestry Paragon)</strong>
+            <strong id="variantParagonTitle" style="font-size: 13px; color: #f8fafc;">🧬 Ancestralidade Exemplar</strong>
             <span id="variantParagonDescription" style="font-size: 11px; color: #94a3b8;">Concede talentos ancestrais extras nos níveis 1, 3, 7, 11, 15 e 19 para aprofundar as raízes culturais do personagem.</span>
           </div>
         </label>

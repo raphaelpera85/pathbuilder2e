@@ -25,7 +25,15 @@ const PF2E_ENGINE = {
 
   // Retorna o bônus numérico de proficiência TEML (adiciona o nível se treinado ou superior)
   getProficiencyBonus(rank, level) {
-    const base = this.PROFICIENCY_VALUES[rank] || 0;
+    const rawRank = String(rank ?? "").trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const rankAliases = {
+      u: 0, destreinado: 0, untrained: 0, sin_entrenar: 0,
+      t: 2, treinado: 2, trained: 2, entrenado: 2,
+      e: 4, especialista: 4, expert: 4, experto: 4,
+      m: 6, mestre: 6, master: 6, maestro: 6,
+      l: 8, lendario: 8, legendary: 8, legendario: 8,
+    };
+    const base = rankAliases[rawRank] ?? (Number.isFinite(Number(rank)) ? Number(rank) : 0);
     if (base === 0) return 0;
     return base + (level || 1);
   },
@@ -120,11 +128,29 @@ const PF2E_ENGINE = {
       const numeric = Number(value);
       return Number.isFinite(numeric) ? numeric : undefined;
     };
-    const attacksSource = Array.isArray(companion.attacks) ? companion.attacks : source.attacks;
-    const attacks = Array.isArray(attacksSource) ? attacksSource.map(attack => ({
+    // Fichas antigas podem persistir `attacks: []` antes de o catálogo receber
+    // os ataques do companheiro. Nesse caso, use os ataques catalogados; uma
+    // lista personalizada não vazia continua tendo prioridade.
+    const attacksSource = Array.isArray(companion.attacks) && companion.attacks.length
+      ? companion.attacks
+      : source.attacks;
+    const normalizeAttacks = value => {
+      if (Array.isArray(value)) return value;
+      if (typeof value !== "string" || !value.trim() || /sem ataque|no attack|sin ataque/i.test(value)) return [];
+      return value.split(/,\s*(?=[^,:(]+:\s*)/).map(entry => {
+        const match = entry.trim().match(/^([^:]+):\s*([^()]+?)(?:\s*\(([^)]+)\))?$/);
+        if (!match) return { name: entry.trim() };
+        return {
+          name: match[1].trim(),
+          damage: match[2].trim(),
+          traits: match[3] ? match[3].split(/,\s*/).map(trait => trait.trim()).filter(Boolean) : []
+        };
+      }).filter(attack => attack.name);
+    };
+    const attacks = normalizeAttacks(attacksSource).map(attack => ({
       ...attack,
       bonus: numericOrUndefined(attack.bonus)
-    })) : [];
+    }));
     const profiles = Array.isArray(source.profiles) ? source.profiles : [];
     const requestedProfile = Number(companion.profileIndex ?? source.profileIndex ?? 0);
     const profileIndex = profiles.length ? Math.min(profiles.length - 1, Math.max(0, Number.isInteger(requestedProfile) ? requestedProfile : 0)) : undefined;
@@ -141,6 +167,7 @@ const PF2E_ENGINE = {
       profileIndex,
       selectedProfile,
       abilityScores: companion.abilityScores ?? selectedProfile?.abilities ?? source.abilityScores,
+      abilityModifiers: companion.abilityModifiers ?? selectedProfile?.abilityMods ?? source.abilityModifiers ?? source.abilityMods,
       acBonus: companion.acBonus ?? selectedProfile?.acBonus ?? source.acBonus,
       dexCap: companion.dexCap ?? selectedProfile?.dexCap ?? source.dexCap,
       attacks,
@@ -304,7 +331,7 @@ const PF2E_ENGINE = {
       : value;
     const needle = normalize(valueIdentity);
     return Object.entries(collection || {}).map(([key, record]) => ({ key, record: record || {} })).find(({ key, record }) => {
-      return [key, record.id, record.name, ...Object.values(record.names || {})].filter(Boolean).some(candidate => normalize(candidate) === needle);
+      return [key, record.id, record.name, ...(record.legacyNames || []), ...Object.values(record.names || {})].filter(Boolean).some(candidate => normalize(candidate) === needle);
     })?.record || null;
   },
 
@@ -610,7 +637,7 @@ const PF2E_ENGINE = {
     const resolveCatalogRecord = (collection, value) => {
       const needle = normalize(value);
       return Object.entries(collection || {}).map(([key, record]) => ({ key, record: record || {} })).find(({ key, record }) => {
-        const candidates = [key, record.id, record.name, ...Object.values(record.names || {})].filter(Boolean).map(normalize);
+        const candidates = [key, record.id, record.name, ...(record.legacyNames || []), ...Object.values(record.names || {})].filter(Boolean).map(normalize);
         return candidates.includes(needle);
       })?.record;
     };
@@ -622,7 +649,7 @@ const PF2E_ENGINE = {
         // o catálogo expõe também uma chave/nome localizado. Igualdade exata
         // de ID ou chave é segura e deve vencer a resolução de aliases.
         if (selectedNeedle && selectedNeedle === normalize(allowedValue)) return true;
-        const selectedLabels = [selected?.id, selected?.name, ...Object.values(selected?.names || {})]
+        const selectedLabels = [selected?.id, selected?.name, ...(selected?.legacyNames || []), ...Object.values(selected?.names || {})]
           .filter(Boolean).map(normalize);
         if (selectedLabels.includes(normalize(allowedValue))) return true;
         const allowed = resolveCatalogRecord(collection, allowedValue);
@@ -772,7 +799,7 @@ const PF2E_ENGINE = {
       || /skeleton|esqueleto/.test(normalize(ancestryRecord.id || char.ancestry));
     const catalogNames = (collection) => Object.entries(collection || {}).flatMap(([key, value]) => {
       const record = value || {};
-      return [key, record.name, ...(Object.values(record.names || {}))].filter(Boolean).map(normalize);
+      return [key, record.name, ...(record.legacyNames || []), ...(Object.values(record.names || {}))].filter(Boolean).map(normalize);
     });
     const classNames = new Set(catalogNames(PF2E_DATA?.classes));
     const ancestryNames = new Set(catalogNames(PF2E_DATA?.ancestries));
@@ -1837,34 +1864,42 @@ const PF2E_ENGINE = {
       return String(value || "");
     };
     const classText = identityText(char.class);
+    const normalizeReadinessText = (value) => identityText(value).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+    const isEmptySelection = (value) => !normalizeReadinessText(value)
+      || ["nao definida", "nao definido", "no definida", "no definido", "not set", "none", "ninguno seleccionado", "ninguna seleccionada", "no seleccionado", "no seleccionada"].includes(normalizeReadinessText(value));
     const issues = [];
     let passedCount = 0;
     const totalChecks = 8;
 
     // 1. Ancestralidade
-    if (!char.ancestry || char.ancestry === "Não definida" || char.ancestry === "Not set") {
+    if (isEmptySelection(char.ancestry)) {
       issues.push({ id: "ancestry", type: "error", message: "Ancestralidade não selecionada", tab: "build", targetId: "ancestryBtn" });
     } else {
       passedCount++;
     }
 
     // 2. Biografia (Background)
-    if (!char.background || char.background === "Não definida" || char.background === "Not set") {
+    if (isEmptySelection(char.background)) {
       issues.push({ id: "background", type: "error", message: "Biografia (Background) não selecionada", tab: "build", targetId: "backgroundBtn" });
     } else {
       passedCount++;
     }
 
     // 3. Classe
-    if (!char.class || char.class === "Não definida" || char.class === "Not set") {
+    if (isEmptySelection(char.class)) {
       issues.push({ id: "class", type: "error", message: "Classe não selecionada", tab: "build", targetId: "classBtn" });
     } else {
       passedCount++;
     }
 
     // 4. Subclasse (se aplicável)
-    const classData = (typeof PF2E_DATA !== "undefined" && PF2E_DATA.classes) ? this.resolveCatalogRecord(PF2E_DATA.classes, char.class) : null;
-    if (classData && classData.subclasses && classData.subclasses.length > 0 && (!char.subclass || char.subclass === "Não definida")) {
+    const classCatalog = (typeof PF2E_DATA !== "undefined" && PF2E_DATA.classes) ? PF2E_DATA.classes : null;
+    const classData = classCatalog
+      ? (this.resolveCatalogRecord(classCatalog, char.class) || Object.values(classCatalog).find((record) => [record?.id, record?.name, ...(record?.legacyNames || []), ...Object.values(record?.names || {})]
+        .filter(Boolean)
+        .some((value) => normalizeReadinessText(value) === normalizeReadinessText(char.class))))
+      : null;
+    if (classData && classData.subclasses && classData.subclasses.length > 0 && isEmptySelection(char.subclass)) {
       issues.push({ id: "subclass", type: "warning", message: `Especialização / Subclasse de ${classText.split(" ")[0]} pendente`, tab: "build", targetId: "subclassBtn" });
     } else {
       passedCount++;
@@ -1904,8 +1939,11 @@ const PF2E_ENGINE = {
     }
 
     // 8. Divindade (se Clérigo ou Campeão)
-    const isClericOrChampion = classText && (classText.includes("Clérigo") || classText.includes("Campeão") || classText.includes("Cleric") || classText.includes("Champion"));
-    if (isClericOrChampion && (!char.deity || char.deity === "Não definida" || char.deity === "Not set")) {
+    const normalizedClassId = normalizeReadinessText(classData?.id);
+    const normalizedClassText = normalizeReadinessText(classText);
+    const isClericOrChampion = normalizedClassId === "class.cleric" || normalizedClassId === "class.champion"
+      || ["clerigo", "clergigo", "campeao", "cleric", "champion"].some((name) => normalizedClassText.includes(name));
+    if (isClericOrChampion && isEmptySelection(char.deity)) {
       issues.push({ id: "deity", type: "error", message: "Divindade obrigatória para a classe não escolhida", tab: "details", targetId: "detailsDeityDisplay" });
     } else {
       passedCount++;
@@ -2017,14 +2055,32 @@ const PF2E_ENGINE = {
   // APLICAÇÃO DE KIT INICIAL DE EQUIPAMENTO (1-CLIQUE)
   applyClassStarterKit(character, className) {
     if (!character || typeof PF2E_DATA === "undefined" || !PF2E_DATA.classStarterKits) return character;
-    const selectedClass = String(character.class || "").toLowerCase();
-    const classKey = String(className || "").split(" (")[0].toLowerCase();
-    if (selectedClass && !selectedClass.includes(classKey) && !classKey.includes(selectedClass)) return character;
     const normalizeClass = (value) => String(value || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+    const resolveClassId = (value) => {
+      const normalized = normalizeClass(value);
+      if (!normalized) return null;
+      return Object.values(PF2E_DATA.classes || {}).find((record) => {
+        const names = [record?.id, record?.name, record?.names?.["pt-BR"], record?.names?.en, record?.names?.es]
+          .filter(Boolean).map(normalizeClass);
+        return names.some((name) => name === normalized || name.includes(normalized) || normalized.includes(name));
+      })?.id || null;
+    };
+    const selectedClass = normalizeClass(character.class);
+    const classKey = normalizeClass(String(className || "").split(" (")[0]);
+    const selectedClassId = resolveClassId(character.class);
+    const requestedClassId = resolveClassId(className);
+    if (selectedClassId && requestedClassId && selectedClassId !== requestedClassId) return character;
+    if (!selectedClassId && selectedClass && classKey && !selectedClass.includes(classKey) && !classKey.includes(selectedClass)) return character;
     const requestedClass = normalizeClass(className);
     const kitKey = Object.keys(PF2E_DATA.classStarterKits).find((key) => {
       const normalizedKey = normalizeClass(key);
-      return normalizedKey === requestedClass || normalizedKey.startsWith(`${requestedClass} (`) || normalizedKey.includes(`(${requestedClass})`) || requestedClass.startsWith(`${normalizedKey} (`);
+      const keyClassId = resolveClassId(key);
+      return (selectedClassId && keyClassId && selectedClassId === keyClassId)
+        || (requestedClassId && keyClassId && requestedClassId === keyClassId)
+        || normalizedKey === requestedClass
+        || normalizedKey.startsWith(`${requestedClass} (`)
+        || normalizedKey.includes(`(${requestedClass})`)
+        || requestedClass.startsWith(`${normalizedKey} (`);
     });
     const kit = kitKey ? PF2E_DATA.classStarterKits[kitKey] : null;
     if (!kit) return character;

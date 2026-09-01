@@ -1,6 +1,6 @@
 import { act, cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { getWeaponProficiencyRank, PickerModal } from "./PickerModal";
+import { getLocalizedPrerequisiteNames, getLocalizedSkillName, getTraditionDisplayNames, getWeaponProficiencyRank, localizePrerequisiteText, PickerModal } from "./PickerModal";
 import type { PickerBridge, PickerController } from "./types";
 import { I18nProvider } from "./i18n";
 
@@ -14,6 +14,19 @@ const controllerDefaults = {
 };
 
 describe("PickerModal", () => {
+  it("localiza tradições quando o registro só possui chaves canônicas", () => {
+    expect(getTraditionDisplayNames(["arcane", "occult"], undefined, "pt-BR")).toEqual(["Arcana", "Oculta"]);
+    expect(getTraditionDisplayNames(["primal"], undefined, "en")).toEqual(["Primal"]);
+    expect(getTraditionDisplayNames(["primal"], undefined, "es")).toEqual(["Primordial"]);
+  });
+
+  it("localiza a perícia do teste principal quando só há um idioma no registro", () => {
+    expect(getLocalizedSkillName("Arcana", "pt-BR")).toBe("Arcanismo");
+    expect(getLocalizedSkillName("Arcanismo", "en")).toBe("Arcana");
+    expect(getLocalizedSkillName("Arcana", "es")).toBe("Arcana");
+    expect(getLocalizedSkillName("Atuação", "en")).toBe("Performance");
+    expect(getLocalizedSkillName("Interpretación", "pt-BR")).toBe("Atuação");
+  });
   beforeEach(() => {
     cleanup();
     localStorage.clear();
@@ -21,6 +34,27 @@ describe("PickerModal", () => {
 
   it("resolve a proficiência de arma para classe importada como objeto", () => {
     expect(getWeaponProficiencyRank({ class: { id: "class.fighter", name: "Guerreiro" } }, { data: { category: "Marcial" } })).toBe("E");
+  });
+
+  it("localiza um pré-requisito usando o catálogo bruto quando a opção está filtrada", () => {
+    window.app = { ...controllerDefaults, getPickerItems: () => [] } satisfies PickerController;
+    (window as any).PF2E_DATA = {
+      classes: {
+        "class.witch": { id: "class.witch", name: "Bruxa", names: { "pt-BR": "Bruxa", en: "Witch", es: "Bruja" } },
+      },
+    };
+    (window as any).pathbuilderCatalogs = {};
+
+    expect(getLocalizedPrerequisiteNames(["class.witch"], "class", "en")).toBe("Witch");
+    expect(getLocalizedPrerequisiteNames(["class.witch"], "class", "es")).toBe("Bruja");
+  });
+
+  it("não reapresenta o texto de pré-requisito em português nos locales alternativos", () => {
+    expect(localizePrerequisiteText("Trained in Acrobatics and Strength +2", "pt-BR")).toBe("Treinado em Acrobacia e Força +2");
+    expect(localizePrerequisiteText({ name: "Expert in Stealth" }, "pt-BR")).toBe("Especialista em Furtividade");
+    expect(localizePrerequisiteText("Treinado em Acrobacia e Destreza +2", "en")).toBe("Trained in Acrobatics and Dexterity +2");
+    expect(localizePrerequisiteText("Treinado em Acrobacia e Destreza +2", "es")).toBe("Entrenado en Acrobacias y Destreza +2");
+    expect(localizePrerequisiteText({ id: "feat.witch", names: { "pt-BR": "Hex Inicial", en: "Initial Hex", es: "Hex inicial" } }, "en")).toBe("Initial Hex");
   });
   it("abre como diálogo, filtra opções e confirma a seleção", () => {
     const applyPickerSelection = vi.fn();
@@ -389,7 +423,8 @@ describe("PickerModal", () => {
     const giveBtn = screen.getByRole("button", { name: "Adicionar" });
     expect(giveBtn).not.toBeDisabled();
     fireEvent.click(giveBtn);
-    expect(applyPickerSelection).toHaveBeenCalledWith("weapon", expect.objectContaining({ name: "Backpack Catapult (1d12 B)" }));
+    expect(applyPickerSelection).not.toHaveBeenCalled();
+    expect(screen.getByText(/Total:/)).toBeInTheDocument();
   });
 
   it("permite comprar arma acessível deduzindo moedas", () => {
@@ -417,12 +452,16 @@ describe("PickerModal", () => {
     renderPicker((value) => { bridge = value; });
     act(() => bridge?.open("weapon"));
 
+    const addBtn = screen.getByRole("button", { name: "Adicionar" });
+    fireEvent.click(addBtn);
+    fireEvent.click(addBtn);
+    expect(screen.getByText(/Adze.*×2/)).toBeInTheDocument();
     const buyBtn = screen.getByRole("button", { name: /Comprar/i });
     expect(buyBtn).not.toBeDisabled();
     fireEvent.click(buyBtn);
     expect(applyPickerSelection).toHaveBeenCalledWith(
       "weapon",
-      expect.objectContaining({ name: "Adze (1d10 S)" }),
+      expect.objectContaining({ name: "Adze (1d10 S)", data: expect.objectContaining({ qty: 2 }) }),
       undefined,
       true
     );

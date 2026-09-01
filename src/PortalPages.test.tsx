@@ -1,10 +1,12 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { I18nProvider } from "./i18n";
-import { PortalPages } from "./PortalPages";
+import { formatCatalogValue, PortalPages } from "./PortalPages";
 import { pathfinderSources } from "./data/sources";
 import type { PickerController, PickerType } from "./types";
 import { updateAccountViewState } from "./accountState";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 
 const verifiedAncestry = {
   name: "Anão",
@@ -63,6 +65,11 @@ describe("PortalPages", () => {
     expect(screen.getAllByText("Fonte Remaster").length).toBeGreaterThan(0);
   });
 
+  it("localiza chaves de pré-requisitos estruturados no pt-BR", () => {
+    expect(formatCatalogValue({ type: "ability", minimum: 2, skill: "Acrobatics" }, "pt-BR"))
+      .toBe("Tipo: atributo, Mínimo: 2, Perícia: Acrobacia");
+  });
+
   it("busca pelos nomes localizados do catálogo", () => {
     localStorage.setItem("pathbuilder.locale", "en");
     window.location.hash = "#/compendium";
@@ -89,12 +96,23 @@ describe("PortalPages", () => {
     expect(screen.getByText("Primary check: Arcana")).toBeInTheDocument();
   });
 
+  it.each([
+    ["pt-BR", "BASE DE CONHECIMENTO PATHBUILDER"],
+    ["en", "PATHBUILDER KNOWLEDGE BASE"],
+    ["es", "BASE DE CONOCIMIENTO PATHBUILDER"],
+  ])("localiza o subtítulo do compêndio em %s", (locale, kicker) => {
+    localStorage.setItem("pathbuilder.locale", locale);
+    window.location.hash = "#/compendium";
+    render(<I18nProvider><PortalPages /></I18nProvider>, { container: document.getElementById("test-root")! });
+    expect(screen.getByText(kicker)).toBeInTheDocument();
+  });
+
   it("mantém evidências de metadados separadas da catalogação", () => {
     expect(pathfinderSources).toHaveLength(12);
     expect(pathfinderSources.every((source) => source.pageCountStatus === "verified_with_pdfinfo")).toBe(true);
     expect(pathfinderSources.every((source) => source.languageEvidence === "inferred_from_filename")).toBe(true);
-    expect(pathfinderSources.find((source) => source.id === "player-core-pt")).toMatchObject({ catalogStatus: "partial", linkedRecords: 965 });
-    expect(pathfinderSources.find((source) => source.id === "player-core-2-pt")).toMatchObject({ catalogStatus: "partial", linkedRecords: 1102 });
+    expect(pathfinderSources.find((source) => source.id === "player-core-pt")).toMatchObject({ catalogStatus: "partial", linkedRecords: 972 });
+    expect(pathfinderSources.find((source) => source.id === "player-core-2-pt")).toMatchObject({ catalogStatus: "partial", linkedRecords: 1126 });
     expect(pathfinderSources.find((source) => source.id === "secrets-of-magic-pt")).toMatchObject({ catalogStatus: "partial", linkedRecords: 173, ruleset: "legacy" });
     expect(pathfinderSources.find((source) => source.id === "guns-gears-pt")).toMatchObject({ catalogStatus: "partial", linkedRecords: 192, ruleset: "legacy" });
     expect(pathfinderSources.find((source) => source.id === "dark-archive")).toMatchObject({ catalogStatus: "partial", linkedRecords: 219, ruleset: "legacy" });
@@ -106,6 +124,7 @@ describe("PortalPages", () => {
     expect(pathfinderSources.filter((source) => source.catalogStatus === "partial").every((source) => source.linkedRecords > 0)).toBe(true);
     expect(pathfinderSources.filter((source) => source.catalogStatus === "pending")).toHaveLength(2);
     expect(pathfinderSources.find((source) => source.id === "manual-jogador-compilacao-pt")).toMatchObject({ ruleset: "remaster", catalogStatus: "pending" });
+    expect(pathfinderSources.every((source) => source.titles?.["pt-BR"] && source.titles?.en && source.titles?.es)).toBe(true);
   });
 
   it("oferece privacidade pública e protege a curadoria por papel", async () => {
@@ -119,5 +138,12 @@ describe("PortalPages", () => {
     view.rerender(<I18nProvider><PortalPages /></I18nProvider>);
     await waitFor(() => expect(screen.getByRole("heading", { name: "Curadoria do compêndio" })).toBeInTheDocument());
     expect(screen.getByRole("link", { name: /Curadoria/ })).toBeInTheDocument();
+  });
+
+  it("não troca uma sessão persistida pelo evento inicial nulo do Supabase", () => {
+    const source = readFileSync(resolve(process.cwd(), "src/PortalPages.tsx"), "utf8");
+    expect(source).toContain("let initialSessionResolved = false;");
+    expect(source).toContain("if (!initialSessionResolved && !next) {");
+    expect(source).toContain("A null event can arrive while Supabase is still hydrating");
   });
 });

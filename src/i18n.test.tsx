@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import { beforeEach, describe, expect, it } from "vitest";
-import { I18nProvider, LocaleSwitcher, translate } from "./i18n";
+import { getTranslationCoverage, I18nProvider, LocaleSwitcher, translate } from "./i18n";
 
 describe("i18n", () => {
   beforeEach(() => localStorage.clear());
@@ -9,6 +9,16 @@ describe("i18n", () => {
     expect(translate("pt-BR", "newCharacter")).toBe("Novo personagem");
     expect(translate("en", "newCharacter")).toBe("New character");
     expect(translate("es", "newCharacter")).toBe("Nuevo personaje");
+    expect(translate("pt-BR", "charactersLoadFailed")).toContain("carregar");
+    expect(translate("en", "charactersLoadFailed")).toContain("load");
+    expect(translate("es", "charactersLoadFailed")).toContain("cargar");
+  });
+
+  it("mantém o mesmo conjunto de chaves em pt-BR, inglês e espanhol", () => {
+    const coverage = getTranslationCoverage();
+    expect(coverage["pt-BR"]).toEqual({ missing: [], extra: [] });
+    expect(coverage.en).toEqual({ missing: [], extra: [] });
+    expect(coverage.es).toEqual({ missing: [], extra: [] });
   });
 
   it("persiste o idioma e atualiza o atributo lang", () => {

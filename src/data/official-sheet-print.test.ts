@@ -45,7 +45,8 @@ function loadAppAndPrint() {
       addEventListener: () => {}
     },
     localStorage: { getItem: () => "pt-BR", setItem: () => {} },
-    globalThis: {}
+    globalThis: {},
+    structuredClone
   };
 
   createContext(sandbox);
@@ -63,6 +64,16 @@ function loadAppAndPrint() {
 }
 
 describe("Ficha Oficial de Personagem Paizo Remaster (Impressão em 4 Páginas)", () => {
+  it("deve normalizar a edição da ficha ao carregar documentos antigos ou localizados", () => {
+    const { app } = loadAppAndPrint();
+
+    app.loadCharacter({ name: "Ficha Clássica", level: 1, ruleset: "Edição Clássica", abilities: {} });
+    expect(app.character.ruleset).toBe("legacy");
+
+    app.loadCharacter({ name: "Ficha Remaster", level: 1, ruleset: "Remaster", abilities: {} });
+    expect(app.character.ruleset).toBe("remaster");
+  });
+
   it("deve renderizar a estrutura exata de 4 páginas (.sheet-page)", () => {
     const { app, engine, printArea } = loadAppAndPrint();
     expect(app).toBeDefined();
@@ -105,7 +116,7 @@ describe("Ficha Oficial de Personagem Paizo Remaster (Impressão em 4 Páginas)"
     expect(output).toContain("Valeros de Golarion");
     expect(output).toContain("NÍVEL 5");
     expect(output).toContain("FORÇA");
-    expect(output).toContain("Score: 18");
+    expect(output).toContain("Valor: 18");
     expect(output).toContain("CLASSE DE ARMADURA");
     expect(output).toContain("PONTOS DE VIDA");
     expect(output).toContain("Espada Longa");
@@ -127,7 +138,7 @@ describe("Ficha Oficial de Personagem Paizo Remaster (Impressão em 4 Páginas)"
 
     // 5. Página 4: Grimório, Espaços de Magia por Círculo (1 a 10) e Rituais
     expect(output).toContain("GRIMÓRIO & CONJURAÇÃO");
-    expect(output).toContain("Espaços de Magia por Círculo (Spell Slots 1–10)");
+    expect(output).toContain("Espaços de Magia por Círculo (1–10)");
     expect(output).toContain("1º Círculo");
     expect(output).toContain("10º Círculo");
     expect(output).toContain("Página 4 de 4");

@@ -12,6 +12,7 @@
 #react-account-root { min-width: 0; flex: 0 1 auto; }
 
 .locale-switcher {
+  flex: 0 0 auto;
   min-height: 36px;
   display: inline-flex;
   align-items: center;
@@ -72,6 +73,7 @@
 }
 
 .account-trigger {
+  flex: 0 0 auto;
   min-width: 0;
   max-width: 210px;
   display: inline-flex;
@@ -107,7 +109,8 @@
   display: grid;
   place-items: center;
   padding: clamp(10px, 3vw, 36px);
-  overflow: auto;
+  overflow: hidden;
+  overscroll-behavior: contain;
   background: rgba(3, 5, 9, .78);
   backdrop-filter: blur(5px);
 }
@@ -185,6 +188,12 @@ button:disabled { opacity: .56; cursor: not-allowed; }
 .character-load span { color: var(--pb-text-muted); font-size: 10px; }
 .character-rename { color: #bfdbfe; background: rgba(30,64,175,.18); }
 .character-delete { color: #fca5a5; background: rgba(127,29,29,.18); }
+.character-history { grid-column: 1 / -1; color: var(--pb-text-muted); font-size: 11px; }
+.character-history summary { cursor: pointer; color: var(--pb-orange-light); font-weight: 700; }
+.character-history ol { margin: 8px 0 0 20px; padding: 0; }
+.character-history li { margin: 5px 0; }
+.character-history li span { color: var(--pb-text-muted); }
+.character-history-restore { margin-left: 8px; padding: 3px 7px; color: var(--pb-text); background: var(--pb-bg-card); border: 1px solid var(--pb-border-light); border-radius: 6px; cursor: pointer; font-size: 10px; }
 
 .account-state, .account-feedback { margin: 18px 22px; padding: 15px; border: 1px solid var(--pb-border); border-radius: 10px; color: var(--pb-text-muted); text-align: center; }
 .account-state strong { display: block; margin-bottom: 6px; color: var(--pb-text); }

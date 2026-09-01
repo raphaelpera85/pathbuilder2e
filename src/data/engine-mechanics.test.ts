@@ -19,6 +19,15 @@ function loadEngine() {
 describe("PF2E_ENGINE Mechanics & Calculations", () => {
   const engine = loadEngine();
 
+  it("calcula proficiência com ranks dos três idiomas e abreviações", () => {
+    expect(engine.getProficiencyBonus("Treinado", 1)).toBe(3);
+    expect(engine.getProficiencyBonus("Entrenado", 1)).toBe(3);
+    expect(engine.getProficiencyBonus("expert", 5)).toBe(9);
+    expect(engine.getProficiencyBonus("Mestre", 10)).toBe(16);
+    expect(engine.getProficiencyBonus("L", 20)).toBe(28);
+    expect(engine.getProficiencyBonus("Destreinado", 20)).toBe(0);
+  });
+
   const baseCharacter = {
     name: "Herói de Teste",
     level: 1,
@@ -224,6 +233,38 @@ describe("PF2E_ENGINE Mechanics & Calculations", () => {
     expect(companion.hpCurrent).toBe(0);
     expect(companion.ac).toBe(0);
     expect(companion.attacks[0].bonus).toBe(0);
+  });
+
+  it("recupera ataques catalogados quando uma ficha antiga os persistiu vazios", () => {
+    const companion = engine.calculateCompanionStats({ pets: [{
+      id: "pet.catalogado",
+      attacks: [{ name: "Mordida", bonus: 6, damage: "1d6", traits: [] }]
+    }] }, {
+      id: "pet.catalogado",
+      attacks: []
+    });
+    expect(companion.attacks).toHaveLength(1);
+    expect(companion.attacks[0].name).toBe("Mordida");
+  });
+
+  it("converte ataques textuais de companheiros do catálogo em ataques editáveis", () => {
+    const companion = engine.calculateCompanionStats({}, {
+      id: "pet.textual",
+      attacks: "Garras: 1d6 cortante (Ágil), Mordida: 1d8 perfuração"
+    });
+    expect(companion.attacks).toEqual([
+      { name: "Garras", damage: "1d6 cortante", traits: ["Ágil"], bonus: undefined },
+      { name: "Mordida", damage: "1d8 perfuração", traits: [], bonus: undefined }
+    ]);
+  });
+
+  it("preserva os modificadores de atributo dos companheiros sem tratá-los como valores-base", () => {
+    const companion = engine.calculateCompanionStats({}, {
+      id: "pet.with-modifiers",
+      abilityMods: { str: 2, dex: 3, con: 1 }
+    });
+    expect(companion.abilityModifiers).toEqual({ str: 2, dex: 3, con: 1 });
+    expect(companion.abilityScores).toBeUndefined();
   });
 
   it("aplica a matriz de eidolon selecionada sem sobrescrever PV ou ataques editados", () => {

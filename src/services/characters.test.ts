@@ -1,7 +1,23 @@
 import { describe, expect, it } from "vitest";
-import { deleteCharacter, listCharacters, renameCharacter, saveCharacter, toCharacterPayload, validateCharacter } from "./characters";
+import { buildCharacterRevisionHistory, deleteCharacter, listCharacters, mergeCharacterLists, normalizeCharacterRuleset, renameCharacter, saveCharacter, toCharacterPayload, validateCharacter } from "./characters";
 
 describe("character cloud contract", () => {
+  it.each([
+    ["Pathfinder 2e Remaster", "remaster"],
+    ["Pathfinder 2e Clássico", "legacy"],
+    ["Variant / Hybrid Rules", "both"],
+    ["desconhecido", "needs_review"],
+  ])("normaliza regraset localizado %s", (value, expected) => {
+    expect(normalizeCharacterRuleset(value)).toBe(expected);
+  });
+
+  it("mantém a cópia mais recente ao mesclar nuvem e dispositivo", () => {
+    const base = { id: "row-1", user_id: "user-1", character_key: "char-1", name: "Herói", level: 1, ruleset: "remaster" as const, data: { id: "char-1", name: "Herói", level: 1 }, created_at: "2026-01-01T00:00:00.000Z" };
+    const remote = { ...base, updated_at: "2026-01-01T00:00:00.000Z" };
+    const local = { ...base, updated_at: "2026-01-02T00:00:00.000Z", data: { ...base.data, name: "Herói atualizado" } };
+    expect(mergeCharacterLists([remote], [local])[0].data.name).toBe("Herói atualizado");
+  });
+
   it("preserva campos desconhecidos da ficha PF2e", () => {
     const character = validateCharacter({
       id: "Lorenzo_LaRosa",
@@ -32,9 +48,31 @@ describe("character cloud contract", () => {
     });
   });
 
+  it("mantém até 50 versões da ficha sem aninhar o próprio histórico", () => {
+    const previous = validateCharacter({
+      id: "historico",
+      name: "Versão anterior",
+      level: 1,
+      history: Array.from({ length: 50 }, (_, index) => ({ savedAt: `2026-01-${String(index + 1).padStart(2, "0")}`, name: "Antiga", level: 1, data: { index } })),
+    });
+    const current = validateCharacter({ id: "historico", name: "Versão atual", level: 2, notes: "configuração integral" });
+    const history = buildCharacterRevisionHistory(current, previous, "2026-09-01T00:00:00.000Z");
+    expect(history).toHaveLength(50);
+    expect(history[0]).toMatchObject({ savedAt: "2026-09-01T00:00:00.000Z", name: "Versão atual", level: 2 });
+    expect(history[0].data).not.toHaveProperty("history");
+  });
+
   it("rejeita fichas sem nome ou fora dos níveis 1 a 20", () => {
     expect(() => validateCharacter({ id: "x", name: "", level: 1 })).toThrow(/nome/);
     expect(() => validateCharacter({ id: "x", name: "Herói", level: 21 })).toThrow(/1 e 20/);
+  });
+
+  it("rejeita chaves perigosas e profundidade excessiva antes de persistir", () => {
+    const polluted = JSON.parse('{"id":"x","name":"Herói","level":1,"__proto__":{"polluted":true}}');
+    expect(() => validateCharacter(polluted)).toThrow(/chave não permitida/);
+    let nested: Record<string, unknown> = {};
+    for (let index = 0; index < 14; index += 1) nested = { child: nested };
+    expect(() => validateCharacter({ id: "x", name: "Herói", level: 1, nested })).toThrow(/aninhados demais/);
   });
 
   it("cria payload isolado pelo usuário e marca regras incertas", () => {
@@ -64,5 +102,15 @@ describe("character cloud contract", () => {
     const renamed = await renameCharacter("char-rename", "  Renomeado  ", user);
     expect(renamed.name).toBe("Renomeado");
     expect(renamed.data.variantRules).toEqual({ freeArchetype: true });
+  });
+
+  it("acumula versões quando a mesma ficha é salva novamente", async () => {
+    const user = { id: "user-history-save" } as never;
+    await saveCharacter({ id: "char-history-save", name: "Inicial", level: 1 }, user);
+    const saved = await saveCharacter({ id: "char-history-save", name: "Atualizada", level: 2, notes: "mudança" }, user);
+    const history = saved.data.history as Array<{ name: string; level: number }>;
+    expect(history.length).toBe(2);
+    expect(history[0]).toMatchObject({ name: "Atualizada", level: 2 });
+    expect(history[1]).toMatchObject({ name: "Inicial", level: 1 });
   });
 });

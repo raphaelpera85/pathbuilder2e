@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState, useCallback, useRef } from "react";
 import { PF2E_ITEMS_CATALOG, type ItemDefinition } from "./data/equipmentData";
 import { useI18n, getItemDisplayName, type Locale } from "./i18n";
 import { canAffordPrice, deductCoins as deductPurseCoins, coinsToCopper, parsePriceToCopper, formatPriceToLocale } from "./utils/economy";
+import { localizeSourceBookName } from "./data/sources";
 import "./itemPicker.css";
 
 interface ItemPickerState {
@@ -207,7 +208,10 @@ export function ItemPickerModal({ onBridgeReady }: { onBridgeReady?: (bridge: { 
       mainCategory: item.mainCategory || "gear",
       subCategory: item.subCategory || "catalog",
       level: Number.isFinite(Number(item.level)) ? Number(item.level) : 0,
-      price: item.price && typeof item.price === "object" ? item.price : {},
+      // O catálogo legado ainda possui preços em texto/número. Não descarte
+      // esses valores ao normalizar a coleção, pois isso zerava o preço no
+      // detalhe e no pool de compras.
+      price: item.price ?? {},
       bulk: String(item.bulk ?? "-"),
       traits: Array.isArray(item.traits) ? item.traits : [],
       description: String(item.description || item.summaries?.[locale] || ""),
@@ -605,7 +609,7 @@ export function ItemPickerModal({ onBridgeReady }: { onBridgeReady?: (bridge: { 
 
                     {selectedItem.source && (
                       <div className="detail-source">
-                        📖 {selectedItem.source.book} {selectedItem.source.page ? `· p. ${selectedItem.source.page}` : ""}
+                        📖 {localizeSourceBookName(selectedItem.source.book, locale)} {selectedItem.source.page ? `· p. ${selectedItem.source.page}` : ""}
                         <span className={`source-badge ${selectedItem.ruleset === "legacy" ? "legacy" : selectedItem.ruleset === "remaster" && selectedItem.needs_review === false ? "verified" : "review"}`}>
                           {selectedItem.ruleset === "legacy" ? copy.rulesetLegacy : selectedItem.ruleset === "remaster" && selectedItem.needs_review === false ? copy.rulesetRemaster : copy.rulesetReview}
                         </span>

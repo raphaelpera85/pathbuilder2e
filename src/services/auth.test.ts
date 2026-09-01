@@ -1,7 +1,13 @@
 import { beforeEach, describe, expect, it } from "vitest";
-import { changePassword, deleteAccount, getCurrentSession, signIn, signOut, signUp, updateUsername } from "./auth";
+import { buildUserProfileFromAuth, changePassword, deleteAccount, getCurrentSession, signIn, signOut, signUp, updateUsername } from "./auth";
 
 describe("auth session coordination", () => {
+  it("usa metadados do Auth quando o perfil remoto não está disponível", () => {
+    expect(buildUserProfileFromAuth({ id: "u1", email: "hero@example.com", user_metadata: { username: "Hero" } }, null)).toMatchObject({
+      id: "u1", username: "Hero", email: "hero@example.com", role: "user",
+    });
+  });
+
   beforeEach(async () => {
     await signOut();
     localStorage.clear();

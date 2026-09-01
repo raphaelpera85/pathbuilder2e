@@ -41,7 +41,21 @@ create index if not exists characters_user_updated_idx
 create index if not exists characters_gm_email_lower_idx
   on public.characters (lower(gm_email));
 
--- 3. TABELA DE CAMPANHAS / MESAS DO MESTRE
+-- 3. HISTÓRICO DE REVISÕES DAS FICHAS
+create table if not exists public.character_revisions (
+  id uuid primary key default gen_random_uuid(),
+  character_id uuid not null references public.characters(id) on delete cascade,
+  user_id uuid not null references auth.users(id) on delete cascade,
+  saved_at timestamptz not null default now(),
+  name text not null check (char_length(trim(name)) between 1 and 120),
+  level smallint not null check (level between 1 and 20),
+  data jsonb not null check (jsonb_typeof(data) = 'object' and pg_column_size(data) <= 1000000)
+);
+
+create index if not exists character_revisions_owner_saved_idx
+  on public.character_revisions (user_id, character_id, saved_at desc);
+
+-- 4. TABELA DE CAMPANHAS / MESAS DO MESTRE
 create table if not exists public.campaigns (
   id uuid primary key default gen_random_uuid(),
   gm_id uuid not null references auth.users(id) on delete cascade,
@@ -131,7 +145,16 @@ security definer
 set search_path = ''
 as $$
 begin
-  if (select count(*) from public.characters where user_id = new.user_id) >= 100 then
+  perform pg_catalog.pg_advisory_xact_lock(
+    pg_catalog.hashtextextended(new.user_id::text, 0)
+  );
+  if not exists (
+    select 1
+    from public.characters
+    where user_id = new.user_id
+      and character_key = new.character_key
+  )
+  and (select count(*) from public.characters where user_id = new.user_id) >= 100 then
     raise exception 'Limite de 100 personagens por conta atingido.' using errcode = 'check_violation';
   end if;
   return new;
@@ -146,16 +169,19 @@ for each row execute function public.enforce_character_quota();
 -- 7. SEGURANÇA E POLÍTICAS RLS (ROW LEVEL SECURITY)
 alter table public.profiles enable row level security;
 alter table public.characters enable row level security;
+alter table public.character_revisions enable row level security;
 alter table public.campaigns enable row level security;
 
 revoke all on table public.profiles from anon, authenticated;
 revoke all on table public.characters from anon, authenticated;
+revoke all on table public.character_revisions from anon, authenticated;
 revoke all on table public.campaigns from anon, authenticated;
 
 grant select on table public.profiles to authenticated;
 grant update (username) on table public.profiles to authenticated;
 
 grant select, insert, update, delete on table public.characters to authenticated;
+grant select, insert, delete on table public.character_revisions to authenticated;
 grant select, insert, update, delete on table public.campaigns to authenticated;
 
 -- Políticas de perfis
@@ -201,6 +227,13 @@ drop policy if exists "characters_delete_own" on public.characters;
 create policy "characters_delete_own"
 on public.characters for delete to authenticated
 using ((select auth.uid()) = user_id);
+
+-- Histórico: somente o dono da ficha pode consultar ou gravar revisões.
+drop policy if exists "character_revisions_own" on public.character_revisions;
+create policy "character_revisions_own"
+on public.character_revisions for all to authenticated
+using ((select auth.uid()) = user_id)
+with check ((select auth.uid()) = user_id);
 
 -- Políticas de campanhas (Apenas o Mestre dono da campanha)
 drop policy if exists "campaigns_all_own" on public.campaigns;
