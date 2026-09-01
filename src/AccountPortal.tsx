@@ -727,20 +727,46 @@ export function AccountPortal() {
                         <div className="character-list">
                           {characters.map((character) => (
                             <article className="cloud-character" key={character.id}>
-                              <button
-                                className="character-load"
-                                onClick={() => {
-                                  (window as any).app?.loadCharacter(character.data);
-                                  setOpen(false);
-                                  window.location.hash = "#/builder";
-                                }}
-                                type="button"
-                              >
-                                <strong>{character.name}</strong>
-                                <span>
-                                  {t("level")} {character.level} · {localizedRuleset(character.ruleset)}
-                                </span>
-                              </button>
+                              <div className="character-card-main">
+                                <button
+                                  className="character-load"
+                                  onClick={() => {
+                                    (window as any).app?.loadCharacter(character.data);
+                                    setOpen(false);
+                                    window.location.hash = "#/builder";
+                                  }}
+                                  type="button"
+                                >
+                                  <strong>{character.name}</strong>
+                                  <span>
+                                    {t("level")} {character.level} · {localizedRuleset(character.ruleset)}
+                                    {character.data?.class ? ` · ${String(character.data.class).replace(/^class\./, "")}` : ""}
+                                    {character.data?.ancestry ? ` (${String(character.data.ancestry).replace(/^ancestry\./, "")})` : ""}
+                                  </span>
+                                </button>
+                                <div className="character-actions">
+                                  <button
+                                    className="character-rename"
+                                    onClick={() => rename(character)}
+                                    disabled={working === character.id}
+                                    aria-label={`${t("renameCharacter")} ${character.name}`}
+                                    title={t("renameCharacter")}
+                                    type="button"
+                                  >
+                                    ✏️
+                                  </button>
+                                  <button
+                                    className="character-delete"
+                                    onClick={() => removeCharacter(character)}
+                                    disabled={working === character.id}
+                                    aria-label={`${t("deleteCharacterLabel")} ${character.name}`}
+                                    title={t("deleteCharacterLabel")}
+                                    type="button"
+                                  >
+                                    🗑
+                                  </button>
+                                </div>
+                              </div>
                               {Array.isArray(character.data.history) &&
                                 character.data.history.length > 0 && (
                                   <details className="character-history">
@@ -750,50 +776,36 @@ export function AccountPortal() {
                                     <ol>
                                       {character.data.history.slice(0, 10).map((revision, index) => (
                                         <li key={`${revision.savedAt}-${index}`}>
-                                          <strong>{revision.name}</strong> · {t("level")}{" "}
-                                          {revision.level}
-                                          <br />
-                                          <span>
-                                            {t("savedAt")}{" "}
-                                            {new Date(revision.savedAt).toLocaleString(locale)}
-                                          </span>
-                                          <button
-                                            className="character-history-restore"
-                                            type="button"
-                                            onClick={() => {
-                                              (window as any).app?.loadCharacter({
-                                                ...revision.data,
-                                                id: character.character_key,
-                                              });
-                                              setOpen(false);
-                                              window.location.hash = "#/builder";
-                                            }}
-                                          >
-                                            {t("restoreVersion")}
-                                          </button>
+                                          <div className="character-history-item">
+                                            <div>
+                                              <strong>{revision.name}</strong> · {t("level")}{" "}
+                                              {revision.level}
+                                              <br />
+                                              <span>
+                                                {t("savedAt")}{" "}
+                                                {new Date(revision.savedAt).toLocaleString(locale)}
+                                              </span>
+                                            </div>
+                                            <button
+                                              className="character-history-restore"
+                                              type="button"
+                                              onClick={() => {
+                                                (window as any).app?.loadCharacter({
+                                                  ...revision.data,
+                                                  id: character.character_key,
+                                                });
+                                                setOpen(false);
+                                                window.location.hash = "#/builder";
+                                              }}
+                                            >
+                                              {t("restoreVersion")}
+                                            </button>
+                                          </div>
                                         </li>
                                       ))}
                                     </ol>
                                   </details>
                                 )}
-                              <button
-                                className="character-rename"
-                                onClick={() => rename(character)}
-                                disabled={working === character.id}
-                                aria-label={`${t("renameCharacter")} ${character.name}`}
-                                type="button"
-                              >
-                                ✏️
-                              </button>
-                              <button
-                                className="character-delete"
-                                onClick={() => removeCharacter(character)}
-                                disabled={working === character.id}
-                                aria-label={`${t("deleteCharacterLabel")} ${character.name}`}
-                                type="button"
-                              >
-                                🗑
-                              </button>
                             </article>
                           ))}
                         </div>
