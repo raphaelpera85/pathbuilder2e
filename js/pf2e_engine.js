@@ -1354,6 +1354,53 @@ const PF2E_ENGINE = {
     }) || null;
   },
 
+  resolveSubclassRecord(character) {
+    if (!character) return null;
+    const identityValue = (value) => value && typeof value === "object"
+      ? value.id || value.name || value["pt-BR"] || value.en || value.es || ""
+      : value;
+    const normalize = (value) => String(identityValue(value) || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+    
+    const candidates = [
+      character.subclass,
+      character.style,
+      character.racket,
+      character.instinct,
+      character.doctrine,
+      character.order,
+      character.muse,
+      character.researchField,
+      character.hunterEdge,
+      character.way,
+      character.innovation,
+      character.methodology,
+      character.elementalGate,
+      character.implement,
+      character.consciousMind,
+      character.bloodline,
+      character.eidolon,
+      character.cause,
+      character.apparition,
+      character.icon,
+      character.banner,
+      character.guardianDefense
+    ].filter(Boolean);
+
+    if (candidates.length === 0) return null;
+
+    const subclasses = PF2E_DATA?.subclasses || [];
+    for (const raw of candidates) {
+      const target = normalize(raw);
+      if (!target) continue;
+      const match = subclasses.find((sc) => {
+        const scNames = [sc.id, sc.name, sc.causeId, ...Object.values(sc.names || {})].filter(Boolean).map(normalize);
+        return scNames.some(nameNorm => nameNorm === target || nameNorm.endsWith(target) || target.endsWith(nameNorm));
+      });
+      if (match) return match;
+    }
+    return null;
+  },
+
   getCharacterSenses(character) {
     const ancestryData = this.resolveCatalogRecord(PF2E_DATA.ancestries, character?.ancestry) || {};
     const sensesSet = new Set(ancestryData.senses || []);
@@ -1364,6 +1411,13 @@ const PF2E_ENGINE = {
       sensesSet.add("Visão no Escuro");
     } else if (heritage.includes("visão na penumbra") || heritage.includes("low-light") || heritage.includes("meio-elfo")) {
       sensesSet.add("Visão na Penumbra");
+    }
+
+    if (typeof this.getEquipmentBonuses === "function") {
+      const equip = this.getEquipmentBonuses(character);
+      for (const sense of equip.senses || []) {
+        if (sense) sensesSet.add(sense);
+      }
     }
 
     return Array.from(sensesSet);
@@ -1558,6 +1612,114 @@ const PF2E_ENGINE = {
       acPenalty
     };
   },
+  // Extrai e agrega bônus de equipamentos, itens vestidos e investidos no inventário
+  getEquipmentBonuses(character) {
+    const bonuses = {
+      skills: {},
+      saves: { fortitude: 0, reflex: 0, will: 0 },
+      perception: 0,
+      speed: 0,
+      hp: 0,
+      ac: 0,
+      initiative: 0,
+      bulkLimit: 0,
+      senses: [],
+      resistances: []
+    };
+
+    const isEquippedOrInvested = (item, forceEquipped = false) => {
+      if (!item || typeof item !== "object") return false;
+      if (forceEquipped) return true;
+      return Boolean(item.equipped || item.worn || item.invested || item.active);
+    };
+
+    const processItem = (item, forceEquipped = false) => {
+      if (!item || typeof item !== "object") return;
+      if (!isEquippedOrInvested(item, forceEquipped)) return;
+
+      // Bônus de item em perícias específicas
+      if (item.skill && (item.itemBonus || item.bonus)) {
+        const skId = String(item.skill).toLowerCase();
+        bonuses.skills[skId] = Math.max(bonuses.skills[skId] || 0, Number(item.itemBonus || item.bonus) || 0);
+      }
+      if (item.skillBonuses && typeof item.skillBonuses === "object") {
+        for (const [sk, val] of Object.entries(item.skillBonuses)) {
+          const skId = String(sk).toLowerCase();
+          bonuses.skills[skId] = Math.max(bonuses.skills[skId] || 0, Number(val) || 0);
+        }
+      }
+      if (item.skillBonus && typeof item.skillBonus === "object") {
+        for (const [sk, val] of Object.entries(item.skillBonus)) {
+          const skId = String(sk).toLowerCase();
+          bonuses.skills[skId] = Math.max(bonuses.skills[skId] || 0, Number(val) || 0);
+        }
+      }
+
+      // Bônus de salvaguardas
+      if (item.saveBonus !== undefined) {
+        if (typeof item.saveBonus === "object") {
+          for (const [s, val] of Object.entries(item.saveBonus)) {
+            const sKey = String(s).toLowerCase();
+            if (bonuses.saves[sKey] !== undefined) bonuses.saves[sKey] = Math.max(bonuses.saves[sKey], Number(val) || 0);
+          }
+        } else {
+          const val = Number(item.saveBonus) || 0;
+          bonuses.saves.fortitude = Math.max(bonuses.saves.fortitude, val);
+          bonuses.saves.reflex = Math.max(bonuses.saves.reflex, val);
+          bonuses.saves.will = Math.max(bonuses.saves.will, val);
+        }
+      }
+      if (item.saveBonuses && typeof item.saveBonuses === "object") {
+        for (const [s, val] of Object.entries(item.saveBonuses)) {
+          const sKey = String(s).toLowerCase();
+          if (bonuses.saves[sKey] !== undefined) bonuses.saves[sKey] = Math.max(bonuses.saves[sKey], Number(val) || 0);
+        }
+      }
+
+      // Outros bônus de item
+      if (item.perceptionBonus || item.perception) {
+        bonuses.perception = Math.max(bonuses.perception, Number(item.perceptionBonus || item.perception) || 0);
+      }
+      if (item.speedBonus || item.speed) {
+        bonuses.speed = Math.max(bonuses.speed, Number(item.speedBonus || item.speed) || 0);
+      }
+      if (item.hpBonus || item.hp) {
+        bonuses.hp += Number(item.hpBonus || item.hp) || 0;
+      }
+      if (item.acBonus && item !== character?.equippedArmor && !item.category && item.type !== "armor") {
+        bonuses.ac = Math.max(bonuses.ac, Number(item.acBonus) || 0);
+      }
+      if (item.bulkLimitBonus) {
+        bonuses.bulkLimit += Number(item.bulkLimitBonus) || 0;
+      }
+
+      // Sentidos e Resistências
+      if (Array.isArray(item.senses)) bonuses.senses.push(...item.senses);
+      else if (typeof item.senses === "string") bonuses.senses.push(item.senses);
+      if (Array.isArray(item.resistances)) bonuses.resistances.push(...item.resistances);
+      else if (typeof item.resistances === "string") bonuses.resistances.push(item.resistances);
+    };
+
+    if (character?.equippedArmor) processItem(character.equippedArmor, true);
+    if (character?.equippedShield) processItem(character.equippedShield, true);
+
+    const scanList = (list) => {
+      if (!Array.isArray(list)) return;
+      for (const item of list) {
+        processItem(item);
+        if (Array.isArray(item.items)) scanList(item.items);
+        if (Array.isArray(item.contents)) scanList(item.contents);
+      }
+    };
+
+    scanList(character?.inventory);
+    scanList(character?.containers);
+    scanList(character?.equippedItems);
+    scanList(character?.wornItems);
+    scanList(character?.items);
+
+    return bonuses;
+  },
 
   // Apenas efeitos numéricos explicitamente modelados alteram os cálculos;
   // descrições ainda marcadas como needs_review não são interpretadas por
@@ -1623,6 +1785,7 @@ const PF2E_ENGINE = {
     const level = character.level || 1;
     const conditionMods = this.getConditionModifiers(character);
     const featEffects = this.getFeatStatEffects(character);
+    const equipmentBonuses = this.getEquipmentBonuses(character);
     
     // 1. Modificadores de Atributo
     const scores = character.abilities || { str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10 };
@@ -1648,10 +1811,13 @@ const PF2E_ENGINE = {
     const sizeOption = resolveAncestryOption("size");
     const heritageOption = resolveAncestryOption("heritage");
     const heritageData = this.resolveHeritageRecord(character) || heritageOption || {};
+    const subclassData = this.resolveSubclassRecord(character) || {};
     const ancestryHp = sizeOption?.hp ?? ancestryData.hp ?? 8;
     const classHpPerLvl = classData.hpPerLevel || 10;
     const conBonus = mods.con;
-    const bonusHp = (character.bonusHp || 0) + featEffects.bonusHpPerLevel * level;
+    const heritageHpBonus = (heritageData.bonusHpPerLevel || 0) * level;
+    const itemHpBonus = equipmentBonuses.hp || 0;
+    const bonusHp = (character.bonusHp || 0) + itemHpBonus + heritageHpBonus + featEffects.bonusHpPerLevel * level;
     const drainedPenalty = conditionMods.drained * level;
     const maxHp = Math.max(1, ancestryHp + (classHpPerLvl + conBonus) * level + bonusHp - drainedPenalty);
 
@@ -1690,8 +1856,8 @@ const PF2E_ENGINE = {
     bulkEntries(character.containers, bulkSeen);
 
     const currentBulk = Math.floor(inventoryBulk + coinBulk);
-    const maxBulk = 10 + mods.str + (featEffects.bulkLimitBonus || 0);
-    const encumberedBulk = 5 + mods.str + (featEffects.bulkLimitBonus || 0);
+    const maxBulk = 10 + mods.str + (featEffects.bulkLimitBonus || 0) + (equipmentBonuses.bulkLimit || 0);
+    const encumberedBulk = 5 + mods.str + (featEffects.bulkLimitBonus || 0) + (equipmentBonuses.bulkLimit || 0);
     const isEncumbered = currentBulk > encumberedBulk;
 
     // Se estiver sobrecarregado, aplica Clumsy 1 se não for maior, e penalidade de 10ft de velocidade
@@ -1703,13 +1869,15 @@ const PF2E_ENGINE = {
 
     // 4. Classe de Armadura (CA)
     const equippedArmor = character.equippedArmor || { name: "Sem Armadura (Trajes)", category: "Sem Armadura", acBonus: 0, dexCap: 5, checkPenalty: 0, speedPenalty: 0 };
-    const armorProfRank = character.armorProficiencies?.[equippedArmor.category] || "Treinado";
+    const isMediumTrainedSubclass = Array.isArray(subclassData.armorProf) && subclassData.armorProf.includes("medium");
+    const armorProfRank = character.armorProficiencies?.[equippedArmor.category] || (isMediumTrainedSubclass && (equippedArmor.category === "Média" || equippedArmor.category === "Medium") ? "Treinado" : "Treinado");
     const armorProfBonus = this.getProficiencyBonus(armorProfRank, level);
     const effectiveDex = Math.min(mods.dex, equippedArmor.dexCap !== undefined ? equippedArmor.dexCap : 5);
     const shieldBonus = character.shieldRaised ? (character.shieldBonus || 2) : 0;
     const armorRunes = this.getRuneBonuses(equippedArmor, "armor");
-    const itemAcBonus = (Number(equippedArmor.acBonus) || 0) + Math.max(armorRunes.potency, abpBonuses.armorPotency);
-    const acTotal = 10 + itemAcBonus + effectiveDex + armorProfBonus + shieldBonus - conditionMods.circumstanceAcPenalty - effectiveClumsyPenalty;
+    const itemAcBonus = (Number(equippedArmor.acBonus) || 0) + Math.max(armorRunes.potency, abpBonuses.armorPotency, equipmentBonuses.ac || 0);
+    const rageAcPenalty = (character.rageActive || character.buffs?.rage) ? 1 : 0;
+    const acTotal = 10 + itemAcBonus + effectiveDex + armorProfBonus + shieldBonus - conditionMods.circumstanceAcPenalty - effectiveClumsyPenalty - rageAcPenalty;
 
     // 5. Salvaguardas
     const cannyTarget = String(featEffects.proficiencyChoices?.perception_or_save || "").toLowerCase();
@@ -1721,49 +1889,55 @@ const PF2E_ENGINE = {
     const willRank = bestRank(character.savingThrows?.will || classData.savingThrows?.will || "Treinado", ["vontade", "will", "voluntad"].includes(cannyTarget));
 
     const resilientBonus = Math.max(armorRunes.resilient, abpBonuses.saveResilience);
+    const fortItem = Math.max(Number(character.itemBonuses?.fortitude) || 0, equipmentBonuses.saves.fortitude, resilientBonus);
+    const reflexItem = Math.max(Number(character.itemBonuses?.reflex) || 0, equipmentBonuses.saves.reflex, resilientBonus);
+    const willItem = Math.max(Number(character.itemBonuses?.will) || 0, equipmentBonuses.saves.will, resilientBonus);
+
     const saves = {
       fortitude: {
         rank: fortRank,
         prof: this.getProficiencyBonus(fortRank, level),
         mod: mods.con,
-        item: Math.max(Number(character.itemBonuses?.fortitude) || 0, resilientBonus),
+        item: fortItem,
         statusPenalty: conditionMods.conStatusPenalty,
-        total: mods.con + this.getProficiencyBonus(fortRank, level) + Math.max(Number(character.itemBonuses?.fortitude) || 0, resilientBonus) - conditionMods.conStatusPenalty
+        total: mods.con + this.getProficiencyBonus(fortRank, level) + fortItem - conditionMods.conStatusPenalty
       },
       reflex: {
         rank: reflexRank,
         prof: this.getProficiencyBonus(reflexRank, level),
         mod: mods.dex,
-        item: Math.max(Number(character.itemBonuses?.reflex) || 0, resilientBonus),
+        item: reflexItem,
         statusPenalty: effectiveClumsyPenalty,
-        total: mods.dex + this.getProficiencyBonus(reflexRank, level) + Math.max(Number(character.itemBonuses?.reflex) || 0, resilientBonus) - effectiveClumsyPenalty
+        total: mods.dex + this.getProficiencyBonus(reflexRank, level) + reflexItem - effectiveClumsyPenalty
       },
       will: {
         rank: willRank,
         prof: this.getProficiencyBonus(willRank, level),
         mod: mods.wis,
-        item: Math.max(Number(character.itemBonuses?.will) || 0, resilientBonus),
+        item: willItem,
         statusPenalty: conditionMods.mentalStatusPenalty,
-        total: mods.wis + this.getProficiencyBonus(willRank, level) + Math.max(Number(character.itemBonuses?.will) || 0, resilientBonus) - conditionMods.mentalStatusPenalty
+        total: mods.wis + this.getProficiencyBonus(willRank, level) + willItem - conditionMods.mentalStatusPenalty
       }
     };
 
     // 6. Percepção & Iniciativa
     const percRank = bestRank(character.perceptionRank || classData.perception || "Treinado", ["percepção", "percepcao", "perception", "percepción"].includes(cannyTarget));
     const percProf = this.getProficiencyBonus(percRank, level);
-    const perceptionTotal = mods.wis + percProf + (character.itemBonuses?.perception || 0) - conditionMods.mentalStatusPenalty;
-    const initiativeTotal = perceptionTotal + featEffects.initiativeBonus;
+    const percItem = Math.max(Number(character.itemBonuses?.perception) || 0, equipmentBonuses.perception);
+    const perceptionTotal = mods.wis + percProf + percItem - conditionMods.mentalStatusPenalty;
+    const initiativeTotal = perceptionTotal + featEffects.initiativeBonus + equipmentBonuses.initiative;
 
     // 7. Perícias
     const skillsCalculated = {};
     const armorPenalty = (equippedArmor.checkPenalty && scores.str < (equippedArmor.strReq || 10)) ? equippedArmor.checkPenalty : 0;
 
     PF2E_DATA.skills.forEach(sk => {
+      const subclassTrained = Array.isArray(subclassData.trainedSkills) && subclassData.trainedSkills.includes(sk.id);
       const heritageTrained = Array.isArray(heritageData.trainedSkills) && heritageData.trainedSkills.includes(sk.id);
-      const rank = character.skills?.[sk.id] || (heritageTrained ? "Treinado" : "Destreinado");
+      const rank = character.skills?.[sk.id] || ((subclassTrained || heritageTrained) ? "Treinado" : "Destreinado");
       const profBonus = this.getProficiencyBonus(rank, level) + (featEffects.untrainedSkillBonus && (rank === "Destreinado" || rank === "U") ? (level >= 7 ? level : Math.floor(level / 2)) : 0);
       const attrMod = mods[sk.ability];
-      const itemBonus = character.itemBonuses?.[sk.id] || 0;
+      const itemBonus = Math.max(Number(character.itemBonuses?.[sk.id]) || 0, equipmentBonuses.skills[sk.id] || 0);
       const pen = sk.armorPenalty ? armorPenalty : 0;
       
       let skillStatusPenalty = conditionMods.generalStatusPenalty;
@@ -1772,6 +1946,10 @@ const PF2E_ENGINE = {
       else if (sk.ability === "con") skillStatusPenalty = conditionMods.conStatusPenalty;
       else if (["int", "wis", "cha"].includes(sk.ability)) skillStatusPenalty = conditionMods.mentalStatusPenalty;
 
+      // Swashbuckler Panache circumstance bonus (+1 to Acrobatics or style skill)
+      const swashStyleSkill = character.swashbucklerStyleSkill || subclassData.styleSkill || "acrobatics";
+      const panacheBonus = (character.panacheActive || character.buffs?.panache) && (sk.id === "acrobatics" || sk.id === swashStyleSkill) ? 1 : 0;
+
       skillsCalculated[sk.id] = {
         name: sk.name,
         ability: sk.ability,
@@ -1779,9 +1957,10 @@ const PF2E_ENGINE = {
         profBonus: profBonus,
         attrMod: attrMod,
         itemBonus: itemBonus,
+        circumstanceBonus: panacheBonus,
         penalty: pen,
         statusPenalty: skillStatusPenalty,
-        total: attrMod + profBonus + itemBonus + pen - skillStatusPenalty
+        total: attrMod + profBonus + itemBonus + panacheBonus + pen - skillStatusPenalty
       };
     });
 
@@ -1831,13 +2010,30 @@ const PF2E_ENGINE = {
       const map2 = attackTotal - (isAgile ? 4 : 5);
       const map3 = attackTotal - (isAgile ? 8 : 10);
 
-      // Dano
-      let damageAttrBonus = isRanged ? 0 : mods.str;
-      if (w.traits?.some(t => t.toLowerCase().includes("propulsivo"))) {
+      // Dano - Suporte para Esquema de Ladrão (Thief Racket) e Fúria (Rage)
+      const isThiefRacket = subclassData.id?.includes("thief") || String(character.subclass || character.racket || "").toLowerCase().includes("thief") || String(character.subclass || character.racket || "").toLowerCase().includes("ladrao") || String(character.subclass || character.racket || "").toLowerCase().includes("ladrão");
+      let damageAttrBonus = isRanged ? 0 : (isThiefRacket && isFinesse ? mods.dex : mods.str);
+      if (isRanged && w.traits?.some(t => t.toLowerCase().includes("propulsivo"))) {
         damageAttrBonus = Math.max(0, Math.floor(mods.str / 2));
       }
+      let rageBonusVal = 2;
+      if (subclassData.rageDamage) {
+        rageBonusVal = level >= 15 ? subclassData.rageDamage.greater : level >= 7 ? subclassData.rageDamage.spec : subclassData.rageDamage.base;
+      } else {
+        const subName = String(character.subclass || character.instinct || "").toLowerCase();
+        if (subName.includes("giant") || subName.includes("gigante")) {
+          rageBonusVal = level >= 15 ? 18 : level >= 7 ? 10 : 6;
+        } else if (subName.includes("dragon") || subName.includes("drac")) {
+          rageBonusVal = level >= 15 ? 16 : level >= 7 ? 8 : 4;
+        } else if (subName.includes("spirit") || subName.includes("espirit")) {
+          rageBonusVal = level >= 15 ? 13 : level >= 7 ? 7 : 3;
+        } else {
+          rageBonusVal = level >= 15 ? 12 : level >= 7 ? 5 : 2;
+        }
+      }
+      const rageDamageBonus = (character.rageActive || character.buffs?.rage) && !isRanged ? rageBonusVal : 0;
       const damageEnfeebledPenalty = isRanged ? 0 : conditionMods.enfeebled;
-      const netDamageBonus = Math.max(0, damageAttrBonus + (Number(w.damageBonus) || 0) - damageEnfeebledPenalty);
+      const netDamageBonus = Math.max(0, damageAttrBonus + (Number(w.damageBonus) || 0) + rageDamageBonus - damageEnfeebledPenalty);
       const isUnarmedStrike = /unarmed|desarmad|punho|fist/i.test(`${w.category || ""} ${w.name || ""}`);
       const strikeWeapon = heritageData.fistDamageDie && isUnarmedStrike
         ? { ...w, damage: heritageData.fistDamageDie }
@@ -1861,7 +2057,14 @@ const PF2E_ENGINE = {
       rawArmorSpeedPenalty = Math.min(0, rawArmorSpeedPenalty + 5);
     }
     const armorSpeedPenalty = featEffects.ignoreArmorSpeedPenalty && ["Média", "Pesada", "Pesada (Heavy)", "Média (Medium)", "Medium", "Heavy"].includes(equippedArmor.category) ? 0 : rawArmorSpeedPenalty;
-    const rawLandSpeed = (heritageData?.speed !== undefined ? heritageData.speed : (ancestryData.speed ?? 25)) + (character.speedBonus || 0) + featEffects.speedBonus + armorSpeedPenalty;
+    
+    // Status speed bonus (Monk Incredible Movement & Swashbuckler Panache)
+    const isMonk = (classData.id === "class.monk" || classData.name === "Monge" || String(character.class || "").toLowerCase().includes("monk") || String(character.class || "").toLowerCase().includes("monge")) && (!equippedArmor.category || equippedArmor.category === "Sem Armadura" || equippedArmor.category === "Trajes");
+    const monkSpeedBonus = isMonk && level >= 3 ? (level >= 19 ? 30 : level >= 15 ? 25 : level >= 11 ? 20 : level >= 7 ? 15 : 10) : 0;
+    const swashbucklerSpeedBonus = (character.panacheActive || character.buffs?.panache) ? (level >= 3 ? 10 : 5) : 0;
+    const statusSpeedBonus = Math.max(monkSpeedBonus, swashbucklerSpeedBonus, conditionMods.speedStatusBonus || 0);
+
+    const rawLandSpeed = (heritageData?.speed !== undefined ? heritageData.speed : (ancestryData.speed ?? 25)) + (heritageData.speedBonus || 0) + Math.max(Number(character.speedBonus) || 0, equipmentBonuses.speed || 0) + featEffects.speedBonus + statusSpeedBonus + armorSpeedPenalty;
     const finalLandSpeed = rawLandSpeed > 0 ? Math.max(5, rawLandSpeed + encumberedSpeedPenalty) : 0;
     const senses = this.getCharacterSenses(character);
     const trainedSkills = this.calculateTrainedSkillsCount(character);
@@ -1885,7 +2088,7 @@ const PF2E_ENGINE = {
       mods,
       maxHp,
       currentHp: character.currentHp !== undefined ? character.currentHp : maxHp,
-      tempHp: character.tempHp || 0,
+      tempHp: (character.tempHp || 0) + ((character.rageActive || character.buffs?.rage) ? (level + mods.con) : 0),
       ac: {
         total: acTotal,
         item: itemAcBonus,
@@ -1893,7 +2096,7 @@ const PF2E_ENGINE = {
         prof: armorProfBonus,
         shield: shieldBonus,
         offGuardPenalty: conditionMods.circumstanceAcPenalty,
-        statusPenalty: effectiveClumsyPenalty
+        statusPenalty: effectiveClumsyPenalty + rageAcPenalty
       },
       size: heritageData?.size ?? sizeOption?.size ?? ancestryData.size ?? character.size ?? "Médio",
       speed: finalLandSpeed,
@@ -1903,6 +2106,7 @@ const PF2E_ENGINE = {
         climb: heritageData?.climbSpeed ?? ancestryData.climbSpeed ?? 0
       },
       senses,
+      resistances: [...(heritageData.resistances || []), ...(ancestryData.resistances || []), ...equipmentBonuses.resistances],
       saves,
       perception: {
         rank: percRank,
@@ -1911,13 +2115,16 @@ const PF2E_ENGINE = {
       },
       initiative: initiativeTotal,
       featEffects,
+      equipmentBonuses,
       skills: skillsCalculated,
       loreSkills: loreCalculated,
       trainedSkills,
       classDc,
       bulk: {
         max: maxBulk,
+        maxLimit: maxBulk,
         encumbered: encumberedBulk,
+        encumberedLimit: encumberedBulk,
         current: currentBulk,
         total: currentBulk,
         coinBulk,

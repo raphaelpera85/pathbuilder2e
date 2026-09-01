@@ -105,25 +105,49 @@
 .account-overlay {
   position: fixed;
   inset: 0;
-  z-index: 2200;
+  z-index: 10000;
   display: grid;
   place-items: center;
-  padding: clamp(10px, 3vw, 36px);
-  overflow: hidden;
+  padding: clamp(12px, 3vw, 36px);
+  overflow-y: auto;
   overscroll-behavior: contain;
-  background: rgba(3, 5, 9, .78);
-  backdrop-filter: blur(5px);
+  background: rgba(3, 5, 9, 0.82);
+  backdrop-filter: blur(8px);
+  animation: accountOverlayFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes accountOverlayFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .account-panel {
-  width: min(680px, 100%);
-  max-height: min(820px, calc(100dvh - 20px));
+  position: relative;
+  width: min(680px, 94vw);
+  max-height: min(840px, calc(100dvh - 36px));
+  margin: auto;
   overflow: auto;
   color: var(--pb-text);
   background: linear-gradient(155deg, #141b27, #0c1119 70%);
-  border: 1px solid rgba(249, 115, 22, .68);
-  border-radius: 14px;
-  box-shadow: 0 28px 90px rgba(0,0,0,.72), 0 0 30px rgba(249,115,22,.11);
+  border: 1px solid rgba(249, 115, 22, 0.68);
+  border-radius: 16px;
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.85), 0 0 35px rgba(249, 115, 22, 0.15);
+  animation: accountPanelZoomIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes accountPanelZoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 .account-header {

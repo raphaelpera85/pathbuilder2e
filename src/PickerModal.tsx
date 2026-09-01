@@ -886,6 +886,16 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
       ? `${t("traditions")}: ${getTraditionDisplayNames(selectedItem?.data.traditions, traditionNames, locale).join(", ")}` : null,
     (primaryChecks?.[locale] || primaryChecks?.["pt-BR"] || primaryChecks?.en)
       ? `${t("primaryCheck")}: ${getLocalizedSkillName(primaryChecks?.[locale] || primaryChecks?.["pt-BR"] || primaryChecks?.en, locale)}` : null,
+    Array.isArray(selectedItem.data.trainedSkills) && selectedItem.data.trainedSkills.length > 0
+      ? `${locale === "en" ? "Trained Skill" : locale === "es" ? "Habilidad Entrenada" : "Perícia Treinada"}: ${selectedItem.data.trainedSkills.map((sk: string) => getLocalizedSkillName(sk, locale)).join(", ")}` : null,
+    selectedItem.data.styleSkill
+      ? `${locale === "en" ? "Style Skill" : locale === "es" ? "Habilidad de Estilo" : "Perícia de Estilo"}: ${getLocalizedSkillName(selectedItem.data.styleSkill, locale)}` : null,
+    Array.isArray(selectedItem.data.grants) && selectedItem.data.grants.length > 0
+      ? `${locale === "en" ? "Grants" : locale === "es" ? "Otorga" : "Concede"}: ${selectedItem.data.grants.join(", ")}` : null,
+    Array.isArray(selectedItem.data.armorProf) && selectedItem.data.armorProf.length > 0
+      ? `${locale === "en" ? "Armor Training" : locale === "es" ? "Entrenamiento en Armadura" : "Treinamento em Armadura"}: ${selectedItem.data.armorProf.map((a: string) => a === "medium" ? (locale === "en" ? "Medium" : locale === "es" ? "Media" : "Média") : a === "light" ? (locale === "en" ? "Light" : locale === "es" ? "Ligera" : "Leve") : a).join(", ")}` : null,
+    selectedItem.data.rageDamage
+      ? `${locale === "en" ? "Rage Damage" : locale === "es" ? "Daño de Furia" : "Dano de Fúria"}: +${(selectedItem.data.rageDamage as any).base}/+${(selectedItem.data.rageDamage as any).spec}/+${(selectedItem.data.rageDamage as any).greater}` : null,
   ].filter((fact): fact is string => Boolean(fact)) : [];
   const selectionGroups = selectedItem?.data.selectionGroups ?? [];
   const resolvedSelections = Object.fromEntries(selectionGroups.map((group) => {

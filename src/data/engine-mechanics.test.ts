@@ -553,4 +553,134 @@ describe("PF2E_ENGINE Mechanics & Calculations", () => {
     expect(stats.spellcasting.maxFocusPoints).toBe(1);
     expect(stats.spellcasting.focusPoints).toBe(1);
   });
+
+  it("reflete bônus de equipamentos investidos e vestidos no inventário (perícias, salvaguardas, percepção e sentidos)", () => {
+    const charWithWornItems = {
+      ...baseCharacter,
+      level: 4,
+      inventory: [
+        { name: "Botas de Elfo", equipped: true, skillBonus: { acrobatics: 1 }, speedBonus: 5 },
+        { name: "Capa da Furtividade", worn: true, skillBonuses: { stealth: 2 }, saveBonus: 1 },
+        { name: "Óculos da Noite", invested: true, perceptionBonus: 1, senses: ["Visão no Escuro"] },
+        { name: "Amuleto de Saúde", equipped: true, hpBonus: 10 }
+      ]
+    };
+    const stats = engine.calculateCharacterStats(charWithWornItems);
+    expect(stats.equipmentBonuses.skills.acrobatics).toBe(1);
+    expect(stats.equipmentBonuses.skills.stealth).toBe(2);
+    expect(stats.skills.acrobatics.itemBonus).toBe(1);
+    expect(stats.skills.stealth.itemBonus).toBe(2);
+    expect(stats.equipmentBonuses.saves.fortitude).toBe(1);
+    expect(stats.saves.fortitude.item).toBe(1);
+    expect(stats.equipmentBonuses.perception).toBe(1);
+    expect(stats.senses).toContain("Visão no Escuro");
+    expect(stats.maxHp).toBe(8 + (10 + 2) * 4 + 10); // +10 hpBonus
+    expect(stats.speed).toBe(30); // 25 base + 5 item
+  });
+
+  it("reflete bônus de status de Movimento Incrível do Monge", () => {
+    const monkLvl3 = {
+      ...baseCharacter,
+      class: "Monge (Monk)",
+      level: 3,
+      equippedArmor: { name: "Trajes", category: "Sem Armadura", acBonus: 0, dexCap: 5 }
+    };
+    const statsLvl3 = engine.calculateCharacterStats(monkLvl3);
+    expect(statsLvl3.speed).toBe(35); // 25 base + 10 status
+
+    const monkLvl11 = {
+      ...monkLvl3,
+      level: 11
+    };
+    const statsLvl11 = engine.calculateCharacterStats(monkLvl11);
+    expect(statsLvl11.speed).toBe(45); // 25 base + 20 status
+  });
+
+  it("reflete bônus de Panache do Espadachim na velocidade e perícias", () => {
+    const swashbuckler = {
+      ...baseCharacter,
+      class: "Espadachim (Swashbuckler)",
+      level: 3,
+      panacheActive: true,
+      swashbucklerStyleSkill: "diplomacy"
+    };
+    const stats = engine.calculateCharacterStats(swashbuckler);
+    expect(stats.speed).toBe(35); // 25 base + 10 status
+    expect(stats.skills.acrobatics.circumstanceBonus).toBe(1);
+    expect(stats.skills.diplomacy.circumstanceBonus).toBe(1);
+  });
+
+  it("reflete modificador de Destreza no dano corpo a corpo para Esquema de Ladrão (Thief Racket)", () => {
+    const thiefRogue = {
+      ...baseCharacter,
+      class: "Ladino (Rogue)",
+      subclass: "subclass.class.rogue.thief_racket",
+      abilities: { str: 10, dex: 18, con: 12, int: 14, wis: 12, cha: 10 },
+      weapons: [
+        { name: "Rapieira", category: "Marcial", damage: "1d6", traits: ["Finesse", "Aparar"] }
+      ]
+    };
+    const stats = engine.calculateCharacterStats(thiefRogue);
+    // Dex mod is 4, Str mod is 0. Thief racket applies Dex mod to finesse damage!
+    expect(stats.strikes[0].damageFormatted).toContain("+4");
+  });
+
+  it("reflete bônus de Fúria (Rage) no dano, PV temporários e penalidade de CA", () => {
+    const barbarianRage = {
+      ...baseCharacter,
+      class: "Bárbaro (Barbarian)",
+      level: 4,
+      abilities: { str: 18, dex: 14, con: 16, int: 10, wis: 10, cha: 10 },
+      rageActive: true,
+      weapons: [
+        { name: "Machado de Guerra", category: "Marcial", damage: "1d12", traits: ["Varredura"] }
+      ]
+    };
+    const stats = engine.calculateCharacterStats(barbarianRage);
+    expect(stats.tempHp).toBe(4 + 3); // level 4 + Con mod 3 = 7 temp HP
+    expect(stats.ac.statusPenalty).toBe(1); // -1 AC penalty
+    expect(stats.strikes[0].damageFormatted).toContain("+6"); // Str 4 + Rage 2 = +6 damage
+  });
+
+  it("reflete bônus de itens de equipamento em perícias, sentidos, resistências e limite de volume", () => {
+    const characterWithEquip = {
+      ...baseCharacter,
+      equippedArmor: {
+        id: "armor.battlecry.shadow_shroud",
+        name: "Sudário de Sombras (Shadow Shroud)",
+        category: "Leve",
+        acBonus: 2,
+        dexCap: 3,
+        checkPenalty: -1,
+        speedPenalty: 0,
+        strReq: 10,
+        itemBonus: 1,
+        skill: "stealth",
+        senses: ["Visão no Escuro"],
+        resistances: ["Frio 2"]
+      },
+      inventory: [
+        {
+          id: "item.backpack",
+          name: "Mochila",
+          equipped: true,
+          bulkLimitBonus: 2
+        },
+        {
+          id: "item.alchemist_goggles",
+          name: "Óculos de Alquimista",
+          invested: true,
+          itemBonus: 1,
+          skill: "crafting"
+        }
+      ]
+    };
+    const stats = engine.calculateCharacterStats(characterWithEquip);
+    expect(stats.skills.stealth.itemBonus).toBe(1);
+    expect(stats.skills.crafting.itemBonus).toBe(1);
+    expect(stats.senses).toContain("Visão no Escuro");
+    expect(stats.resistances).toContain("Frio 2");
+    expect(stats.bulk.encumberedLimit).toBe(5 + stats.mods.str + 2); // 5 + 3 + 2 = 10
+  });
 });
+

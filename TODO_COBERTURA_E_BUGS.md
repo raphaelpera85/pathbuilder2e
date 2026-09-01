@@ -28,8 +28,10 @@ Entregar o portal/construtor de personagens Pathfinder 2e com catálogo derivado
 - Progressão de Canny Acumen no nível 17 ajustada para Mestre com fallback seguro.
 - Resolução de gênero e aliases com parênteses em `resolveCatalogRecord` aprimorada para evitar falsos negativos em buscas e imports.
 - Extração em massa e catalogação oficial de mais de 720 novos talentos de ancestralidade e classe diretamente dos livros Player Core 1, Player Core 2 e Pólvora & Engrenagens.
-- Validação executada: `npx vitest run` = 26 arquivos / 474 testes aprovados (100% verde); `npm run build` aprovado com sucesso em 245ms; `npm run audit:catalog:provenance` com 0 erros e 0 duplicatas.
-- Auditoria de catálogo: 3.786 registros base + 488 novos talentos expandidos; nomes e resumos pt-BR/en/es presentes; 0 IDs duplicados; zero violações de proveniência.
+- Implementação de agregação dinâmica de bônus de equipamentos (`getEquipmentBonuses`) no `PF2E_ENGINE`: bônus de itens em perícias, salvaguardas, percepção, deslocamento, PV, CA, iniciativa, limite de carga, sentidos especiais (ex: Visão no Escuro) e resistências.
+- Reflexão de bônus mecânicos específicos de classes/regras: Movimento Incrível do Monge (+10/+15/+20/+25/+30 pés), Panache do Espadachim (+5/+10 pés deslocamento, +1 circunstância em Acrobacia/perícias de estilo), Fúria do Bárbaro (+2/+4/+6 dano corpo a corpo, PV temporários nível+Con, -1 penalidade CA) e Esquema de Ladrão do Ladino (modificador de Destreza no dano corpo a corpo para armas com Acuidade).
+- Validação executada: `npx vitest run` = 26 arquivos / 479 testes aprovados (100% verde); `npm run build` aprovado com sucesso em 263ms; `npm run audit:catalog:provenance` com 0 erros, 0 duplicatas e 0 nomes/resumos ausentes nos 3 idiomas.
+- Auditoria de catálogo: 3.786 registros base + 720+ novos talentos expandidos; nomes e resumos pt-BR/en/es presentes; 0 IDs duplicados; zero violações de proveniência.
 - Nenhum commit ou push foi feito: só executar no gate final, após todas as tarefas e validações.
 
 ### Próxima sequência obrigatória para o próximo agente

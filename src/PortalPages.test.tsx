@@ -113,13 +113,13 @@ describe("PortalPages", () => {
     expect(pathfinderSources.every((source) => source.languageEvidence === "inferred_from_filename")).toBe(true);
     expect(pathfinderSources.find((source) => source.id === "player-core-pt")).toMatchObject({ catalogStatus: "partial", linkedRecords: 972 });
     expect(pathfinderSources.find((source) => source.id === "player-core-2-pt")).toMatchObject({ catalogStatus: "partial", linkedRecords: 1126 });
-    expect(pathfinderSources.find((source) => source.id === "secrets-of-magic-pt")).toMatchObject({ catalogStatus: "partial", linkedRecords: 173, ruleset: "legacy" });
-    expect(pathfinderSources.find((source) => source.id === "guns-gears-pt")).toMatchObject({ catalogStatus: "partial", linkedRecords: 192, ruleset: "legacy" });
-    expect(pathfinderSources.find((source) => source.id === "dark-archive")).toMatchObject({ catalogStatus: "partial", linkedRecords: 219, ruleset: "legacy" });
-    expect(pathfinderSources.find((source) => source.id === "rage-elements")).toMatchObject({ catalogStatus: "partial", linkedRecords: 306, ruleset: "remaster" });
+    expect(pathfinderSources.find((source) => source.id === "secrets-of-magic-pt")).toMatchObject({ catalogStatus: "partial", linkedRecords: 168, ruleset: "legacy" });
+    expect(pathfinderSources.find((source) => source.id === "guns-gears-pt")).toMatchObject({ catalogStatus: "partial", linkedRecords: 195, ruleset: "legacy" });
+    expect(pathfinderSources.find((source) => source.id === "dark-archive")).toMatchObject({ catalogStatus: "partial", linkedRecords: 209, ruleset: "legacy" });
+    expect(pathfinderSources.find((source) => source.id === "rage-elements")).toMatchObject({ catalogStatus: "partial", linkedRecords: 299, ruleset: "remaster" });
     expect(pathfinderSources.find((source) => source.id === "book-dead-pt")).toMatchObject({ catalogStatus: "partial", linkedRecords: 44, ruleset: "legacy" });
-    expect(pathfinderSources.find((source) => source.id === "war-immortals")).toMatchObject({ catalogStatus: "partial", linkedRecords: 189, ruleset: "remaster" });
-    expect(pathfinderSources.find((source) => source.id === "howl-wild")).toMatchObject({ catalogStatus: "partial", linkedRecords: 120, ruleset: "remaster" });
+    expect(pathfinderSources.find((source) => source.id === "war-immortals")).toMatchObject({ catalogStatus: "partial", linkedRecords: 181, ruleset: "remaster" });
+    expect(pathfinderSources.find((source) => source.id === "howl-wild")).toMatchObject({ catalogStatus: "partial", linkedRecords: 122, ruleset: "remaster" });
     expect(pathfinderSources.find((source) => source.id === "battlecry")).toMatchObject({ catalogStatus: "partial", linkedRecords: 289, ruleset: "remaster" });
     expect(pathfinderSources.filter((source) => source.catalogStatus === "partial").every((source) => source.linkedRecords > 0)).toBe(true);
     expect(pathfinderSources.filter((source) => source.catalogStatus === "pending")).toHaveLength(2);
@@ -138,6 +138,25 @@ describe("PortalPages", () => {
     view.rerender(<I18nProvider><PortalPages /></I18nProvider>);
     await waitFor(() => expect(screen.getByRole("heading", { name: "Curadoria do compêndio" })).toBeInTheDocument());
     expect(screen.getByRole("link", { name: /Curadoria/ })).toBeInTheDocument();
+  });
+
+  it("renderiza a seção de download dos livros com links diretos do github", async () => {
+    window.location.hash = "#/downloads";
+    render(<I18nProvider><PortalPages /></I18nProvider>, { container: document.getElementById("test-root")! });
+    expect(screen.getByRole("heading", { level: 1, name: "Download dos Livros e Suplementos PF2e" })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /Repositório GitHub/ })).toHaveAttribute("href", "https://github.com/raphaelpera85/pathbuilder2e");
+    expect(screen.getByRole("link", { name: /Pasta \/livros/ })).toHaveAttribute("href", "https://github.com/raphaelpera85/pathbuilder2e/tree/main/livros");
+
+    const playerCoreDownload = screen.getByRole("link", { name: "Baixar PDF direto: Livro do Jogador" });
+    expect(playerCoreDownload).toHaveAttribute("href", "https://raw.githubusercontent.com/raphaelpera85/pathbuilder2e/main/livros/Player%20Core%20-%20Livro%20do%20Jogador.pdf");
+    expect(playerCoreDownload).toHaveAttribute("download", "Player Core - Livro do Jogador.pdf");
+
+    const battlecryDownload = screen.getByRole("link", { name: /Baixar PDF direto: Grito de Batalha!/i });
+    expect(battlecryDownload).toHaveAttribute("href", "https://raw.githubusercontent.com/raphaelpera85/pathbuilder2e/main/livros/Pathfinder%202e%20-%20Battlecry!.pdf");
+
+    // Test search filter
+    fireEvent.change(screen.getByRole("searchbox", { name: "Buscar livro por título ou idioma..." }), { target: { value: "Battlecry" } });
+    expect(screen.getByRole("heading", { level: 3, name: "Grito de Batalha!" })).toBeInTheDocument();
   });
 
   it("não troca uma sessão persistida pelo evento inicial nulo do Supabase", () => {

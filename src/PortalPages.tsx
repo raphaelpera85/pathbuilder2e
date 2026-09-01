@@ -1,5 +1,10 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type FormEvent } from "react";
-import { pathfinderSources, type PathfinderSource } from "./data/sources";
+import {
+  pathfinderSources,
+  type PathfinderSource,
+  GITHUB_REPO_URL,
+  GITHUB_LIVROS_FOLDER_URL
+} from "./data/sources";
 import { useI18n, getItemDisplayName, type MessageKey } from "./i18n";
 import type { PickerItem, PickerType } from "./types";
 import { useAccountViewState } from "./accountState";
@@ -22,15 +27,16 @@ import {
 import { CampaignsPage } from "./CampaignsPage";
 import "./portal.css";
 
-type PortalRoute = "builder" | "compendium" | "rules" | "library" | "campaigns" | "privacy" | "admin";
+type PortalRoute = "builder" | "compendium" | "rules" | "downloads" | "library" | "campaigns" | "privacy" | "admin";
 
-const routes: PortalRoute[] = ["builder", "compendium", "rules", "library", "campaigns", "privacy", "admin"];
+const routes: PortalRoute[] = ["builder", "compendium", "rules", "downloads", "library", "campaigns", "privacy", "admin"];
 const navItems: Array<{ route: PortalRoute; label: MessageKey; icon: string }> = [
   { route: "library", label: "navLibrary", icon: "🛡" },
   { route: "campaigns", label: "navCampaigns", icon: "🏰" },
   { route: "builder", label: "navBuilder", icon: "⚔" },
   { route: "compendium", label: "navCompendium", icon: "📖" },
   { route: "rules", label: "navRules", icon: "📜" },
+  { route: "downloads", label: "navDownloads", icon: "📚" },
   { route: "privacy", label: "navPrivacy", icon: "🔒" },
   { route: "admin", label: "navAdmin", icon: "⚙" },
 ];
@@ -322,6 +328,169 @@ function CatalogCard({ entry, onInspect }: { entry: PickerItem & { category: Pic
   </article>;
 }
 
+function BookDownloadsSection() {
+  const { locale, t } = useI18n();
+  const [query, setQuery] = useState("");
+  const [rulesetFilter, setRulesetFilter] = useState<string>("all");
+  const [langFilter, setLangFilter] = useState<string>("all");
+
+  const rulesetLabel = (ruleset: "remaster" | "legacy" | "needs_review") =>
+    ruleset === "remaster" ? t("rulesetRemaster") : ruleset === "legacy" ? t("rulesetLegacy") : t("rulesetReview");
+
+  const filteredSources = useMemo(() => {
+    return pathfinderSources.filter((source) => {
+      const title = localizeSourceTitle(source, locale).toLowerCase();
+      const filename = (source.filename || "").toLowerCase();
+      const matchesQuery = !query || title.includes(query.toLowerCase()) || filename.includes(query.toLowerCase());
+      const matchesRuleset = rulesetFilter === "all" || source.ruleset === rulesetFilter;
+      const matchesLang = langFilter === "all" || source.language === langFilter;
+      return matchesQuery && matchesRuleset && matchesLang;
+    });
+  }, [query, rulesetFilter, langFilter, locale]);
+
+  return (
+    <section className="downloads-section" aria-label={t("downloadsTitle")}>
+      <div className="downloads-header-card">
+        <div className="downloads-header-info">
+          <span className="downloads-kicker">{t("downloadsKicker")}</span>
+          <h2>{t("downloadsTitle")}</h2>
+          <p>{t("downloadsIntro")}</p>
+          <small className="downloads-note">ℹ️ {t("downloadDirectNote")}</small>
+        </div>
+        <div className="downloads-repo-actions">
+          <a
+            href={GITHUB_REPO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-repo-link"
+          >
+            <span aria-hidden="true">🐙</span> {t("openGithubRepo")}
+          </a>
+          <a
+            href={GITHUB_LIVROS_FOLDER_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-repo-link secondary"
+          >
+            <span aria-hidden="true">📁</span> {t("openLivrosFolder")}
+          </a>
+        </div>
+      </div>
+
+      <div className="downloads-filter-bar">
+        <input
+          type="search"
+          placeholder={t("searchBooks")}
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          className="downloads-search-input"
+          aria-label={t("searchBooks")}
+        />
+        <select
+          value={rulesetFilter}
+          onChange={(e) => setRulesetFilter(e.target.value)}
+          className="downloads-filter-select"
+          aria-label={t("filterRuleset")}
+        >
+          <option value="all">{t("allRulesets")}</option>
+          <option value="remaster">{t("rulesetRemaster")}</option>
+          <option value="legacy">{t("rulesetLegacy")}</option>
+        </select>
+        <select
+          value={langFilter}
+          onChange={(e) => setLangFilter(e.target.value)}
+          className="downloads-filter-select"
+          aria-label={t("localLanguage")}
+        >
+          <option value="all">{t("allLanguages")}</option>
+          <option value="pt-BR">Português (Brasil)</option>
+          <option value="en">English</option>
+        </select>
+      </div>
+
+      <div className="downloads-grid">
+        {filteredSources.map((source) => (
+          <article className="book-download-card" key={source.id}>
+            <div className="book-card-top">
+              <div className="book-card-title-group">
+                <h3>{localizeSourceTitle(source, locale)}</h3>
+                {source.titles?.en && source.titles?.["pt-BR"] && (
+                  <span className="book-alt-title">
+                    {locale === "pt-BR" ? source.titles.en : source.titles["pt-BR"]}
+                  </span>
+                )}
+              </div>
+              <span className={`ruleset-badge ${source.ruleset}`}>
+                {rulesetLabel(source.ruleset)}
+              </span>
+            </div>
+
+            <div className="book-card-meta">
+              <span className="book-meta-item">
+                📄 {source.pages} {t("pages")}
+              </span>
+              <span className="book-meta-item">
+                🌐 {localizeSourceLanguage(source.language, locale)}
+              </span>
+              <span className="book-meta-item">
+                🔗 {source.catalogStatus === "pending" ? t("contentPending") : `${source.linkedRecords} ${t("linkedRecords")}`}
+              </span>
+            </div>
+
+            {source.filename && (
+              <div className="book-card-filename" title={source.filename}>
+                <code>📦 {source.filename}</code>
+              </div>
+            )}
+
+            <div className="book-card-actions">
+              {source.downloadUrl && (
+                <a
+                  href={source.downloadUrl}
+                  download={source.filename || true}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-download-primary"
+                  aria-label={`${t("downloadPdfDirect")}: ${localizeSourceTitle(source, locale)}`}
+                  title={`${t("downloadPdfDirect")}: ${localizeSourceTitle(source, locale)}`}
+                >
+                  <span aria-hidden="true">📥</span> {t("downloadPdfDirect")}
+                </a>
+              )}
+              {source.viewUrl && (
+                <a
+                  href={source.viewUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-download-secondary"
+                  aria-label={`${t("viewOnGithub")}: ${localizeSourceTitle(source, locale)}`}
+                  title={`${t("viewOnGithub")}: ${localizeSourceTitle(source, locale)}`}
+                >
+                  <span aria-hidden="true">👁️</span> {t("viewOnGithub")}
+                </a>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function DownloadsPage() {
+  const { t } = useI18n();
+  return (
+    <main className="portal-page" id="portal-content" tabIndex={-1}>
+      <header className="portal-hero">
+        <span>{t("downloadsKicker")}</span>
+        <h1>{t("downloadsTitle")}</h1>
+        <p>{t("downloadsIntro")}</p>
+      </header>
+      <BookDownloadsSection />
+    </main>
+  );
+}
+
 function RulesPage() {
   const { locale, t } = useI18n();
   const rulesetLabel = (ruleset: "remaster" | "legacy" | "needs_review") => ruleset === "remaster" ? t("rulesetRemaster") : ruleset === "legacy" ? t("rulesetLegacy") : t("rulesetReview");
@@ -331,6 +500,9 @@ function RulesPage() {
       <article className="portal-panel"><h2>{t("validationTitle")}</h2><ul className="validation-list">{validationCopy[locale].map((item) => <li key={item}><span aria-hidden="true">✓</span>{item}</li>)}</ul></article>
       <article className="portal-panel"><h2>{t("sourcesTitle")}</h2><p>{t("sourcesIntro")}</p><div className="source-list">{pathfinderSources.map((source) => <div className="source-row" key={source.id}><div><strong>{localizeSourceTitle(source, locale)}</strong><span>{source.pages} {t("pages")} · {t("pageCountVerified")}</span><small>{t("localLanguage")}: {localizeSourceLanguage(source.language, locale)} · {t("languageInferred")}</small></div><div><span className={`ruleset-badge ${source.ruleset}`}>{rulesetLabel(source.ruleset)}</span><small>{source.catalogStatus === "pending" ? t("contentPending") : `${source.linkedRecords} ${t("linkedRecords")}`}</small></div></div>)}</div></article>
     </section>
+    <div style={{ marginTop: "36px" }}>
+      <BookDownloadsSection />
+    </div>
   </main>;
 }
 
@@ -815,6 +987,7 @@ export function PortalPages() {
     {route === "campaigns" && <CampaignsPage />}
     {route === "compendium" && <CatalogPage />}
     {route === "rules" && <RulesPage />}
+    {route === "downloads" && <DownloadsPage />}
     {route === "privacy" && <PrivacyPage />}
     {route === "admin" && <AdminPage />}
   </>;

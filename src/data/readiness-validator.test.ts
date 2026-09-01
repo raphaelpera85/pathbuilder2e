@@ -24,8 +24,8 @@ describe("P1: Validador de Prontidão da Ficha & Regras ABC (Readiness Engine)",
   it("mantém contagens de registros ligadas aos PDFs atuais", () => {
     expect(pathfinderSources.find((source) => source.id === "player-core-pt")?.linkedRecords).toBe(972);
     expect(pathfinderSources.find((source) => source.id === "player-core-2-pt")?.linkedRecords).toBe(1126);
-    expect(pathfinderSources.find((source) => source.id === "guns-gears-pt")?.linkedRecords).toBe(192);
-    expect(pathfinderSources.find((source) => source.id === "howl-wild")?.linkedRecords).toBe(120);
+    expect(pathfinderSources.find((source) => source.id === "guns-gears-pt")?.linkedRecords).toBe(195);
+    expect(pathfinderSources.find((source) => source.id === "howl-wild")?.linkedRecords).toBe(122);
   });
 
   it("mantém no catálogo compartilhado a postura exigida por Envenenamento da Naja", () => {

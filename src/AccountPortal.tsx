@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState, type FormEvent } from "react";
+import { createPortal } from "react-dom";
 import {
   getCurrentSession,
   changePassword,
@@ -439,176 +440,392 @@ export function AccountPortal() {
         {session?.user.role === "admin" && <span className="admin-badge">{t("admin")}</span>}
       </button>
 
-      {open && (
-        <div className="account-overlay" onClick={(event) => event.target === event.currentTarget && setOpen(false)}>
-          <section id="account-panel" ref={dialogRef} className="account-panel" role="dialog" aria-modal="true" aria-labelledby="account-title" tabIndex={-1}>
-            <header className="account-header">
-              <div>
-                <span className="account-kicker">{isSupabaseConfigured ? t("accountStorageCloud") : t("accountStorageLocal")}</span>
-                <h2 id="account-title">{session ? `${t("libraryOf")} ${session.user.username}` : t("yourAccount")}</h2>
-              </div>
-              <button className="account-close" onClick={() => setOpen(false)} aria-label={t("close")} type="button">✕</button>
-            </header>
-
-            {!sessionReady ? (
-              <div className="account-state" role="status" aria-live="polite">{t("loadingSheets")}</div>
-            ) : !session ? (
-              <form className="auth-form" onSubmit={submitAuth}>
-                <div className="auth-switch" role="tablist" aria-label={t("accountAccess")}>
-                  <button role="tab" aria-selected={authMode === "signin"} type="button" className={authMode === "signin" ? "active" : ""} onClick={() => setAuthMode("signin")}>{t("signIn")}</button>
-                  <button role="tab" aria-selected={authMode === "signup"} type="button" className={authMode === "signup" ? "active" : ""} onClick={() => setAuthMode("signup")}>{t("createAccount")}</button>
-                </div>
-                {authMode === "signup" && (
-                <label>{t("username")}<input value={username} onChange={(event) => setUsername(event.target.value)} placeholder={locale === "en" ? "e.g. game_master" : locale === "es" ? "ej.: maestro_arthur" : "Ex.: mestre_arthur"} required /></label>
-                )}
-                <label>{authMode === "signup" ? t("email") : t("usernameOrEmail")}<input value={email} onChange={(event) => setEmail(event.target.value)} placeholder={authMode === "signup" ? (locale === "pt-BR" ? "voce@exemplo.com" : "you@example.com") : locale === "en" ? "username or you@example.com" : locale === "es" ? "usuario o tu@ejemplo.com" : "usuário ou voce@exemplo.com"} required /></label>
-                <label>{t("password")}<input type="password" value={password} onChange={(event) => setPassword(event.target.value)} minLength={6} placeholder="••••••••" required /></label>
-                {authMode === "signup" && (
-                  <label>{t("confirmPassword")}<input type="password" value={confirmPassword} onChange={(event) => setConfirmPassword(event.target.value)} minLength={6} placeholder="••••••••" required /></label>
-                )}
-                <label style={{ display: "flex", alignItems: "center", gap: "8px", cursor: "pointer", fontSize: "13px", color: "var(--pb-text, #cbd5e1)", margin: "4px 0 10px", userSelect: "none" }}>
-                  <input
-                    type="checkbox"
-                    checked={rememberMe}
-                    onChange={(e) => setRememberMe(e.target.checked)}
-                    style={{ accentColor: "var(--pb-orange, #f97316)", width: "16px", height: "16px", cursor: "pointer" }}
-                  />
-                  <span>{t("rememberAccount")}</span>
-                </label>
-                <button className="account-primary" disabled={working === "auth"} type="submit">
-                  {working === "auth" ? t("wait") : authMode === "signup" ? t("createAccount") : t("signIn")}
-                </button>
-              </form>
-            ) : (
-              <div className="account-content">
-                <div className="profile-summary">
-                  <div className="profile-avatar">{session.user.username.slice(0, 1).toUpperCase()}</div>
+      {open && typeof document !== "undefined"
+        ? createPortal(
+            <div
+              className="account-overlay"
+              onClick={(event) => event.target === event.currentTarget && setOpen(false)}
+            >
+              <section
+                id="account-panel"
+                ref={dialogRef}
+                className="account-panel"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="account-title"
+                tabIndex={-1}
+              >
+                <header className="account-header">
                   <div>
-                    <strong>{session.user.username}</strong>
-                    <span>{session.user.email}</span>
+                    <span className="account-kicker">
+                      {isSupabaseConfigured ? t("accountStorageCloud") : t("accountStorageLocal")}
+                    </span>
+                    <h2 id="account-title">
+                      {session ? `${t("libraryOf")} ${session.user.username}` : t("yourAccount")}
+                    </h2>
                   </div>
-                  {session.user.role === "admin" && <span className="admin-badge">{t("administrator")}</span>}
-                </div>
-
-                <details className="profile-settings">
-                  <summary>{t("profileSettings")}</summary>
-                  <form onSubmit={saveProfile}>
-                    <label>{t("username")}<input value={profileUsername} onChange={(event) => setProfileUsername(event.target.value)} minLength={3} maxLength={32} required /></label>
-                    <button type="submit" disabled={working === "profile"}>{working === "profile" ? t("wait") : t("updateUsername")}</button>
-                  </form>
-                  <form onSubmit={savePassword}>
-                    <label>{t("currentPassword")}<input type="password" value={currentPassword} onChange={(event) => setCurrentPassword(event.target.value)} minLength={6} required /></label>
-                    <label>{t("newPassword")}<input type="password" value={newPassword} onChange={(event) => setNewPassword(event.target.value)} minLength={6} required /></label>
-                    <button type="submit" disabled={working === "password"}>{working === "password" ? t("wait") : t("changePassword")}</button>
-                  </form>
-                  <button className="danger-button" type="button" onClick={removeAccount} disabled={working === "delete-account"}>{t("deleteAccount")}</button>
-                </details>
-
-                <div className="cloud-actions">
-                  <button className="account-primary" onClick={() => void saveCurrent()} disabled={working === "save"} type="button">
-                    {working === "save" ? t("saving") : t("saveCurrent")}
+                  <button
+                    className="account-close"
+                    onClick={() => setOpen(false)}
+                    aria-label={t("close")}
+                    type="button"
+                  >
+                    ✕
                   </button>
-                  <button onClick={() => { (window as any).app?.createNewCharacter(); setOpen(false); window.location.hash = "#/builder"; }} type="button">
-                    ➕ {t("newCharacter")}
-                  </button>
-                  <button onClick={() => refreshCharacters(session.user)} disabled={loading} type="button">
-                    🔄 {t("refresh")}
-                  </button>
-                </div>
-                <small role="status" aria-live="polite" className="account-sync-status">
-                  {autoSaveStatus === "syncing" ? (locale === "en" ? "Saving changes to cloud…" : locale === "es" ? "Guardando cambios en la nube…" : "Salvando alterações na nuvem…")
-                    : autoSaveStatus === "pending" ? (locale === "en" ? "Cloud sync pending; retrying automatically." : locale === "es" ? "Sincronización pendiente; reintentando automáticamente." : "Sincronização pendente; tentando novamente automaticamente.")
-                      : autoSaveStatus === "saved" ? (locale === "en" ? "Changes synced." : locale === "es" ? "Cambios sincronizados." : "Alterações sincronizadas.")
-                        : ""}
-                </small>
+                </header>
 
-                <section className="cloud-library" aria-labelledby="library-title">
-                  <div className="section-heading">
-                    <h3 id="library-title">{t("myCharacters")}</h3>
-                    <span>{characters.length}</span>
+                {!sessionReady ? (
+                  <div className="account-state" role="status" aria-live="polite">
+                    {t("loadingSheets")}
                   </div>
-                  {loading && characters.length === 0 ? (
-                    <div className="account-state" role="status">{t("loadingSheets")}</div>
-                  ) : characters.length === 0 ? (
-                    <div className="account-state">
-                      <strong>{t("noSheets")}</strong>
-                      <p>{t("noSheetsDescription")}</p>
+                ) : !session ? (
+                  <form className="auth-form" onSubmit={submitAuth}>
+                    <div className="auth-switch" role="tablist" aria-label={t("accountAccess")}>
+                      <button
+                        role="tab"
+                        aria-selected={authMode === "signin"}
+                        type="button"
+                        className={authMode === "signin" ? "active" : ""}
+                        onClick={() => setAuthMode("signin")}
+                      >
+                        {t("signIn")}
+                      </button>
+                      <button
+                        role="tab"
+                        aria-selected={authMode === "signup"}
+                        type="button"
+                        className={authMode === "signup" ? "active" : ""}
+                        onClick={() => setAuthMode("signup")}
+                      >
+                        {t("createAccount")}
+                      </button>
                     </div>
-                  ) : (
-                    <div className="character-list">
-                      {characters.map((character) => (
-                        <article className="cloud-character" key={character.id}>
-                          <button
-                            className="character-load"
-                            onClick={() => {
-                              (window as any).app?.loadCharacter(character.data);
-                              setOpen(false);
-                              window.location.hash = "#/builder";
-                            }}
-                            type="button"
-                          >
-                            <strong>{character.name}</strong>
-                            <span>{t("level")} {character.level} · {localizedRuleset(character.ruleset)}</span>
-                          </button>
-                          {Array.isArray(character.data.history) && character.data.history.length > 0 && (
-                            <details className="character-history">
-                              <summary>{t("characterHistory")} ({character.data.history.length})</summary>
-                              <ol>
-                                {character.data.history.slice(0, 10).map((revision, index) => (
-                                  <li key={`${revision.savedAt}-${index}`}>
-                                    <strong>{revision.name}</strong> · {t("level")} {revision.level}<br />
-                                    <span>{t("savedAt")} {new Date(revision.savedAt).toLocaleString(locale)}</span>
-                                    <button
-                                      className="character-history-restore"
-                                      type="button"
-                                      onClick={() => {
-                                        (window as any).app?.loadCharacter({ ...revision.data, id: character.character_key });
-                                        setOpen(false);
-                                        window.location.hash = "#/builder";
-                                      }}
-                                    >
-                                      {t("restoreVersion")}
-                                    </button>
-                                  </li>
-                                ))}
-                              </ol>
-                            </details>
-                          )}
-                          <button
-                            className="character-rename"
-                            onClick={() => rename(character)}
-                            disabled={working === character.id}
-                            aria-label={`${t("renameCharacter")} ${character.name}`}
-                            type="button"
-                          >
-                            ✏️
-                          </button>
-                          <button
-                            className="character-delete"
-                            onClick={() => removeCharacter(character)}
-                            disabled={working === character.id}
-                            aria-label={`${t("deleteCharacterLabel")} ${character.name}`}
-                            type="button"
-                          >
-                            🗑
-                          </button>
-                        </article>
-                      ))}
+                    {authMode === "signup" && (
+                      <label>
+                        {t("username")}
+                        <input
+                          value={username}
+                          onChange={(event) => setUsername(event.target.value)}
+                          placeholder={
+                            locale === "en"
+                              ? "e.g. game_master"
+                              : locale === "es"
+                                ? "ej.: maestro_arthur"
+                                : "Ex.: mestre_arthur"
+                          }
+                          required
+                        />
+                      </label>
+                    )}
+                    <label>
+                      {authMode === "signup" ? t("email") : t("usernameOrEmail")}
+                      <input
+                        value={email}
+                        onChange={(event) => setEmail(event.target.value)}
+                        placeholder={
+                          authMode === "signup"
+                            ? locale === "pt-BR"
+                              ? "voce@exemplo.com"
+                              : "you@example.com"
+                            : locale === "en"
+                              ? "username or you@example.com"
+                              : locale === "es"
+                                ? "usuario o tu@ejemplo.com"
+                                : "usuário ou voce@exemplo.com"
+                        }
+                        required
+                      />
+                    </label>
+                    <label>
+                      {t("password")}
+                      <input
+                        type="password"
+                        value={password}
+                        onChange={(event) => setPassword(event.target.value)}
+                        minLength={6}
+                        placeholder="••••••••"
+                        required
+                      />
+                    </label>
+                    {authMode === "signup" && (
+                      <label>
+                        {t("confirmPassword")}
+                        <input
+                          type="password"
+                          value={confirmPassword}
+                          onChange={(event) => setConfirmPassword(event.target.value)}
+                          minLength={6}
+                          placeholder="••••••••"
+                          required
+                        />
+                      </label>
+                    )}
+                    <label
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "8px",
+                        cursor: "pointer",
+                        fontSize: "13px",
+                        color: "var(--pb-text, #cbd5e1)",
+                        margin: "4px 0 10px",
+                        userSelect: "none",
+                      }}
+                    >
+                      <input
+                        type="checkbox"
+                        checked={rememberMe}
+                        onChange={(e) => setRememberMe(e.target.checked)}
+                        style={{
+                          accentColor: "var(--pb-orange, #f97316)",
+                          width: "16px",
+                          height: "16px",
+                          cursor: "pointer",
+                        }}
+                      />
+                      <span>{t("rememberAccount")}</span>
+                    </label>
+                    <button className="account-primary" disabled={working === "auth"} type="submit">
+                      {working === "auth"
+                        ? t("wait")
+                        : authMode === "signup"
+                          ? t("createAccount")
+                          : t("signIn")}
+                    </button>
+                  </form>
+                ) : (
+                  <div className="account-content">
+                    <div className="profile-summary">
+                      <div className="profile-avatar">
+                        {session.user.username.slice(0, 1).toUpperCase()}
+                      </div>
+                      <div>
+                        <strong>{session.user.username}</strong>
+                        <span>{session.user.email}</span>
+                      </div>
+                      {session.user.role === "admin" && (
+                        <span className="admin-badge">{t("administrator")}</span>
+                      )}
                     </div>
-                  )}
-                </section>
 
-                <button className="signout-button" onClick={handleSignOut} disabled={working === "signout"} type="button">
-                  🚪 {t("signOut")}
-                </button>
-              </div>
-            )}
+                    <details className="profile-settings">
+                      <summary>{t("profileSettings")}</summary>
+                      <form onSubmit={saveProfile}>
+                        <label>
+                          {t("username")}
+                          <input
+                            value={profileUsername}
+                            onChange={(event) => setProfileUsername(event.target.value)}
+                            minLength={3}
+                            maxLength={32}
+                            required
+                          />
+                        </label>
+                        <button type="submit" disabled={working === "profile"}>
+                          {working === "profile" ? t("wait") : t("updateUsername")}
+                        </button>
+                      </form>
+                      <form onSubmit={savePassword}>
+                        <label>
+                          {t("currentPassword")}
+                          <input
+                            type="password"
+                            value={currentPassword}
+                            onChange={(event) => setCurrentPassword(event.target.value)}
+                            minLength={6}
+                            required
+                          />
+                        </label>
+                        <label>
+                          {t("newPassword")}
+                          <input
+                            type="password"
+                            value={newPassword}
+                            onChange={(event) => setNewPassword(event.target.value)}
+                            minLength={6}
+                            required
+                          />
+                        </label>
+                        <button type="submit" disabled={working === "password"}>
+                          {working === "password" ? t("wait") : t("changePassword")}
+                        </button>
+                      </form>
+                      <button
+                        className="danger-button"
+                        type="button"
+                        onClick={removeAccount}
+                        disabled={working === "delete-account"}
+                      >
+                        {t("deleteAccount")}
+                      </button>
+                    </details>
 
-            {error && <div className="account-feedback error" role="alert">{error}</div>}
-            {notice && <div className="account-feedback success" role="status">{notice}</div>}
-          </section>
-        </div>
-      )}
+                    <div className="cloud-actions">
+                      <button
+                        className="account-primary"
+                        onClick={() => void saveCurrent()}
+                        disabled={working === "save"}
+                        type="button"
+                      >
+                        {working === "save" ? t("saving") : t("saveCurrent")}
+                      </button>
+                      <button
+                        onClick={() => {
+                          (window as any).app?.createNewCharacter();
+                          setOpen(false);
+                          window.location.hash = "#/builder";
+                        }}
+                        type="button"
+                      >
+                        ➕ {t("newCharacter")}
+                      </button>
+                      <button
+                        onClick={() => refreshCharacters(session.user)}
+                        disabled={loading}
+                        type="button"
+                      >
+                        🔄 {t("refresh")}
+                      </button>
+                    </div>
+                    <small role="status" aria-live="polite" className="account-sync-status">
+                      {autoSaveStatus === "syncing"
+                        ? locale === "en"
+                          ? "Saving changes to cloud…"
+                          : locale === "es"
+                            ? "Guardando cambios en la nube…"
+                            : "Salvando alterações na nuvem…"
+                        : autoSaveStatus === "pending"
+                          ? locale === "en"
+                            ? "Cloud sync pending; retrying automatically."
+                            : locale === "es"
+                              ? "Sincronización pendiente; reintentando automáticamente."
+                              : "Sincronização pendente; tentando novamente automaticamente."
+                          : autoSaveStatus === "saved"
+                            ? locale === "en"
+                              ? "Changes synced."
+                              : locale === "es"
+                                ? "Cambios sincronizados."
+                                : "Alterações sincronizadas."
+                            : ""}
+                    </small>
+
+                    <section className="cloud-library" aria-labelledby="library-title">
+                      <div className="section-heading">
+                        <h3 id="library-title">{t("myCharacters")}</h3>
+                        <span>{characters.length}</span>
+                      </div>
+                      {loading && characters.length === 0 ? (
+                        <div className="account-state" role="status">
+                          {t("loadingSheets")}
+                        </div>
+                      ) : characters.length === 0 ? (
+                        <div className="account-state">
+                          <strong>{t("noSheets")}</strong>
+                          <p>{t("noSheetsDescription")}</p>
+                        </div>
+                      ) : (
+                        <div className="character-list">
+                          {characters.map((character) => (
+                            <article className="cloud-character" key={character.id}>
+                              <button
+                                className="character-load"
+                                onClick={() => {
+                                  (window as any).app?.loadCharacter(character.data);
+                                  setOpen(false);
+                                  window.location.hash = "#/builder";
+                                }}
+                                type="button"
+                              >
+                                <strong>{character.name}</strong>
+                                <span>
+                                  {t("level")} {character.level} · {localizedRuleset(character.ruleset)}
+                                </span>
+                              </button>
+                              {Array.isArray(character.data.history) &&
+                                character.data.history.length > 0 && (
+                                  <details className="character-history">
+                                    <summary>
+                                      {t("characterHistory")} ({character.data.history.length})
+                                    </summary>
+                                    <ol>
+                                      {character.data.history.slice(0, 10).map((revision, index) => (
+                                        <li key={`${revision.savedAt}-${index}`}>
+                                          <strong>{revision.name}</strong> · {t("level")}{" "}
+                                          {revision.level}
+                                          <br />
+                                          <span>
+                                            {t("savedAt")}{" "}
+                                            {new Date(revision.savedAt).toLocaleString(locale)}
+                                          </span>
+                                          <button
+                                            className="character-history-restore"
+                                            type="button"
+                                            onClick={() => {
+                                              (window as any).app?.loadCharacter({
+                                                ...revision.data,
+                                                id: character.character_key,
+                                              });
+                                              setOpen(false);
+                                              window.location.hash = "#/builder";
+                                            }}
+                                          >
+                                            {t("restoreVersion")}
+                                          </button>
+                                        </li>
+                                      ))}
+                                    </ol>
+                                  </details>
+                                )}
+                              <button
+                                className="character-rename"
+                                onClick={() => rename(character)}
+                                disabled={working === character.id}
+                                aria-label={`${t("renameCharacter")} ${character.name}`}
+                                type="button"
+                              >
+                                ✏️
+                              </button>
+                              <button
+                                className="character-delete"
+                                onClick={() => removeCharacter(character)}
+                                disabled={working === character.id}
+                                aria-label={`${t("deleteCharacterLabel")} ${character.name}`}
+                                type="button"
+                              >
+                                🗑
+                              </button>
+                            </article>
+                          ))}
+                        </div>
+                      )}
+                    </section>
+
+                    <button
+                      className="signout-button"
+                      onClick={handleSignOut}
+                      disabled={working === "signout"}
+                      type="button"
+                    >
+                      🚪 {t("signOut")}
+                    </button>
+                  </div>
+                )}
+
+                {error && (
+                  <div className="account-feedback error" role="alert">
+                    {error}
+                  </div>
+                )}
+                {notice && (
+                  <div className="account-feedback success" role="status">
+                    {notice}
+                  </div>
+                )}
+              </section>
+            </div>,
+            document.getElementById("react-modal-root") || document.body,
+          )
+        : null}
     </>
   );
 }

@@ -132,9 +132,9 @@ describe("proveniência do catálogo legado", () => {
       ruleset: "needs_review",
     });
     expect(catalog.subclasses.find((item) => item.id === "subclass.class_exemplar_icones_e_epitetos")).toMatchObject({
-      names: { "pt-BR": "Ícones e epítetos", en: "Ícones e epítetos", es: "Ícones e epítetos" },
+      names: { "pt-BR": "Ícones e Epítetos Divinos", en: "Icons and Epithets", es: "Iconos y Epítetos" },
       classId: "class.exemplar",
-      needs_review: true,
+      needs_review: false,
     });
     expect(catalog.weapons.find((item) => item.id === "weapon.shield_boss")).toMatchObject({ name: "Bossa de Escudo (Shield Boss)", source: { page: 279 }, needs_review: false });
     expect(catalog.weapons.find((item) => item.id === "weapon.shield_spikes")).toMatchObject({ name: "Cravos de Escudo (Shield Spikes)", source: { page: 279 }, needs_review: false });

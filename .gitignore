@@ -14,3 +14,7 @@ __pycache__/
 .vscode/
 .idea/
 .DS_Store
+livros/
+*.pdf
+!public/ficha.pdf
+!ficha.pdf
