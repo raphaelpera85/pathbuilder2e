@@ -3241,7 +3241,10 @@ class PathbuilderApp {
       return finalize(subclasses, options);
     }
     if (type === "background") {
-      return finalize(PF2E_DATA.backgrounds.map(b => ({ name: b.name, type: "Antecedente", data: b })), { collapseDuplicateLabels: true });
+      // Antecedentes homônimos de livros/edições diferentes podem ter
+      // perícias, talentos e regras distintas. Preserve as variantes e
+      // acrescente a fonte no rótulo em vez de descartar uma delas.
+      return finalize(PF2E_DATA.backgrounds.map(b => ({ name: b.name, type: "Antecedente", data: b })));
     }
     if (type === "weapon") {
       return finalize(mergeCatalogRecords([], PF2E_DATA.weapons || []).map(w => ({ name: w.name, type: "Arma", data: w })));
@@ -4051,6 +4054,17 @@ class PathbuilderApp {
   navigatePortal(route) {
     const cleanRoute = String(route || "library").replace(/^#\/?/, "");
     document.getElementById("drawerOverlay")?.classList.remove("active");
+    // A troca de rota pode acontecer enquanto uma janela legada ainda está
+    // aberta. Feche-a no mesmo evento do clique para que seu backdrop/toolbar
+    // não atravesse a primeira renderização da Biblioteca ou das Campanhas.
+    document.querySelectorAll(".pb-drawer-overlay.active, .pb-modal-overlay.active").forEach((overlay) => {
+      overlay.classList.remove("active");
+      overlay.setAttribute("aria-hidden", "true");
+    });
+    const onBuilder = cleanRoute === "builder";
+    document.getElementById("legacy-builder-root")?.toggleAttribute("hidden", !onBuilder);
+    document.getElementById("topCharTab")?.toggleAttribute("hidden", !onBuilder);
+    document.body.classList.toggle("portal-page-active", !onBuilder);
     window.location.hash = `#/${cleanRoute}`;
   }
 

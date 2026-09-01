@@ -771,6 +771,8 @@ Correção desta etapa: Recuperação Rápida e Controle da Respiração passara
     - [x] Impedir que erros crus de JSON, PDF e geração de personagem vazem mensagens técnicas/inglesas no pt-BR, mantendo detalhes apenas no console.
     - [x] Impedir que requisitos de prontidão desconhecidos reutilizem a mensagem bruta do motor em outro idioma; usar fallback localizado e manter o diagnóstico técnico fora da interface.
     - [x] Exibir somente a bandeira do idioma ativo; as demais opções permanecem no seletor textual acessível, evitando ocupação e tremor da barra superior.
+    - [x] Fechar imediatamente drawers/modais legados e aplicar o estado visual da rota no clique de Biblioteca/Campanhas, eliminando a janela de transição em que a barra do Construtor podia aparecer ou tremer; a validação browser continua pendente.
+    - [x] Corrigir a deduplicação excessiva de antecedentes: opções homônimas de livros/edições diferentes agora permanecem selecionáveis e recebem identificação da fonte; aliases realmente duplicados continuam consolidados.
     - [x] Persistir cada salvamento remoto também em `character_revisions`, com vínculo ao personagem/conta, RLS e retenção do histórico embutido para o fallback local.
     - [x] Corrigir a resolução dos nomes espanhóis de classes no construtor legado (Explorador, Pícaro, Hechicero, Monje, Pistolero, Guardián e Cinético), evitando a queda para o bloco genérico.
 - [x] Atualizar README e tela de proveniência para refletirem números observados, não metas ou contagens históricas.
@@ -936,5 +938,37 @@ Validação complementar desta etapa (2026-09-01): contrato responsivo passou no
 Correção desta etapa (2026-09-01): a opção “nenhuma divindade” em espanhol agora é reconhecida ao filtrar e selecionar, evitando persistir `No seleccionada` como se fosse uma divindade real. Arquivos: `js/app.js`, `src/data/responsive-layout-contract.test.ts`. Falta validar a interação visual da janela nos três idiomas.
 
 Validação desta etapa (2026-09-01): contrato responsivo passou com 90 testes; `node --check js/app.js` e `git diff --check` aprovados. A suíte completa de 469 testes e o build permanecem aprovados na sequência anterior; falta validação browser.
+
+Correção desta etapa (2026-09-01): eventos de alteração emitidos enquanto a sessão autenticada ainda está sendo hidratada agora recuperam a sessão compartilhada e agendam o autosave, em vez de serem descartados por `session` ainda nula. Arquivos: `src/AccountPortal.tsx`, `src/data/responsive-layout-contract.test.ts`. Falta validar o cenário em navegador com login e alteração imediata.
+
+Validação desta etapa (2026-09-01): testes direcionados passaram com 94 casos; suíte completa passou com 26 arquivos e 469 testes; build, sintaxe e `git diff --check` também passaram. Permanecem pendentes a prova em navegador, rede/offline real e conflitos do Supabase.
+
+Correção desta etapa (2026-09-01): a mesclagem de fichas agora trata `updated_at` ausente ou inválido como data antiga, preservando a cópia local válida e evitando que a Biblioteca mostre versão remota inconsistente. Arquivos: `src/services/characters.ts`, `src/services/characters.test.ts`. Falta validar respostas reais do Supabase e a recuperação da Biblioteca após falha de rede.
+
+Validação desta etapa (2026-09-01): testes direcionados passaram com 105 casos; suíte completa passou com 26 arquivos e 470 testes; build e `git diff --check` aprovados. A validação contra respostas reais do Supabase permanece pendente.
+
+Correção desta etapa (2026-09-01): a leitura da Biblioteca local agora valida que o armazenamento é uma lista e ignora entradas corrompidas ou sem `user_id`/`character_key`, evitando falhas durante o carregamento de personagens. Arquivos: `src/services/characters.ts`, `src/services/characters.test.ts`. Falta validar migração/recuperação com dados reais e Supabase.
+
+Correção complementar desta etapa (2026-09-01): a Biblioteca local passou a aceitar somente registros com nome, nível inteiro e objeto `data` válido, além do vínculo de usuário/chave, ocultando entradas parcialmente corrompidas. Arquivos: `src/services/characters.ts`, `src/services/characters.test.ts`. Falta definir migração para registros antigos inválidos no backend real.
+
+Correção de isolamento desta etapa (2026-09-01): a leitura particionada da Biblioteca agora exige que cada registro tenha `user_id` exatamente igual à conta ativa, impedindo que dados deslocados entre chaves locais sejam exibidos para outro usuário. Arquivos: `src/services/characters.ts`, `src/services/characters.test.ts`. Falta validar o isolamento com dados reais do backend e múltiplas contas.
+
+Validação desta etapa (2026-09-01): testes direcionados passaram com 16 casos; suíte completa passou com 26 arquivos e 471 testes; build e `git diff --check` aprovados. A migração/recuperação de dados inválidos no Supabase real permanece pendente.
+
+Validação desta etapa (2026-09-01): testes de personagens passaram com 16 casos; build e `git diff --check` aprovados. A suíte completa deve ser repetida no próximo ciclo; validação browser/Supabase permanece pendente.
+
+Correção complementar desta etapa (2026-09-01): a ordenação do fallback local da Biblioteca agora usa a mesma normalização segura de timestamps da mesclagem nuvem/dispositivo, evitando ordem imprevisível para registros sem data válida. Arquivo: `src/services/characters.ts`. Falta validação com respostas reais do backend.
+
+Validação desta etapa (2026-09-01): testes de personagens passaram com 16 casos; build e `git diff --check` aprovados. A suíte completa de 471 testes permanece aprovada antes desta alteração mínima; falta validação do comportamento com backend real.
+
+Validação consolidada desta etapa (2026-09-01): suíte completa repetida com 26 arquivos e 471 testes aprovados após a proteção contra armazenamento local corrompido. O build já havia passado; validação browser/Supabase real permanece pendente.
+
+Validação desta etapa (2026-09-01): o teste direcionado de personagens passou com 16 casos; `npm run build`, `git diff --check` e o hook de atualização também passaram após exigir `user_id` igual ao usuário ativo na leitura local. Permanecem pendentes a suíte completa posterior, teste browser e validação Supabase real com múltiplas contas.
+
+Validação consolidada desta etapa (2026-09-01): suíte completa repetida após a proteção de isolamento local: 26 arquivos e 471 testes aprovados. Build e verificação de diff permanecem aprovados; navegador, Supabase real e migração de registros antigos ainda não foram comprovados.
+
+Correção desta etapa (2026-09-01): a Biblioteca agora migra fichas locais antigas completas que não possuíam `user_id`, atribuindo o usuário apenas dentro da chave de armazenamento já particionada; registros explicitamente pertencentes a outra conta continuam descartados. Arquivos: `src/services/characters.ts`, `src/services/characters.test.ts`. Falta validar a migração com dados reais e a Biblioteca no navegador.
+
+Validação desta etapa (2026-09-01): teste direcionado de personagens passou com 17 casos e o build passou. Permanecem os avisos conhecidos do Vite sobre scripts legados/bundle grande; falta validação browser, Supabase real e `git diff --check` após esta alteração.
 
 Validação desta etapa (2026-09-01): suíte completa aprovada com 26 arquivos e 469 testes; `npm run audit:catalog:provenance` confirmou 3.786 registros sem nomes/resumos ausentes nos três idiomas; build e verificações de sintaxe permanecem aprovados. Persistem pendentes as traduções semanticamente equivalentes, a confirmação de mecânicas/fontes nos registros `needs_review` e as validações browser/Supabase reais.

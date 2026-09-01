@@ -330,8 +330,18 @@ const PF2E_ENGINE = {
       ? value.id || value.name || value["pt-BR"] || value.en || value.es
       : value;
     const needle = normalize(valueIdentity);
+    if (!needle) return null;
     return Object.entries(collection || {}).map(([key, record]) => ({ key, record: record || {} })).find(({ key, record }) => {
-      return [key, record.id, record.name, ...(record.legacyNames || []), ...Object.values(record.names || {})].filter(Boolean).some(candidate => normalize(candidate) === needle);
+      const candidates = [key, record.id, record.name, ...(record.legacyNames || []), ...Object.values(record.names || {})].filter(Boolean).map(normalize);
+      return candidates.some(candidate => {
+        if (candidate === needle) return true;
+        const stripGender = (str) => str.replace(/\b(brux|feiticeir|ladin|guerreir|mag)[oa]\b/g, "$1").replace(/\b(campe[aã]|campeao)\b/g, "campe");
+        if (stripGender(candidate) === stripGender(needle)) return true;
+        const needleParen = needle.match(/\(([^)]+)\)/)?.[1]?.trim();
+        const candParen = candidate.match(/\(([^)]+)\)/)?.[1]?.trim();
+        if (needleParen && candParen && (needleParen === candParen || needleParen.includes(candParen) || candParen.includes(needleParen))) return true;
+        return false;
+      });
     })?.record || null;
   },
 
@@ -1596,6 +1606,8 @@ const PF2E_ENGINE = {
         effects.speedBonus += 5;
       } else if (!explicitEffects.length && id === "feat.general.untrained_improvisation") {
         effects.untrainedSkillBonus = true;
+      } else if (!explicitEffects.length && id === "feat.general.canny_acumen" && feat?.selectedStatistic) {
+        effects.proficiencyChoices["perception_or_save"] = String(feat.selectedStatistic);
       }
     }
     return effects;
@@ -1844,7 +1856,11 @@ const PF2E_ENGINE = {
       };
     });
 
-    const armorSpeedPenalty = featEffects.ignoreArmorSpeedPenalty && ["Média", "Pesada", "Medium", "Heavy"].includes(equippedArmor.category) ? 0 : (equippedArmor.speedPenalty || 0);
+    let rawArmorSpeedPenalty = Number(equippedArmor.speedPenalty) || 0;
+    if (rawArmorSpeedPenalty < 0 && scores.str >= (equippedArmor.strReq || 10)) {
+      rawArmorSpeedPenalty = Math.min(0, rawArmorSpeedPenalty + 5);
+    }
+    const armorSpeedPenalty = featEffects.ignoreArmorSpeedPenalty && ["Média", "Pesada", "Pesada (Heavy)", "Média (Medium)", "Medium", "Heavy"].includes(equippedArmor.category) ? 0 : rawArmorSpeedPenalty;
     const rawLandSpeed = (heritageData?.speed !== undefined ? heritageData.speed : (ancestryData.speed ?? 25)) + (character.speedBonus || 0) + featEffects.speedBonus + armorSpeedPenalty;
     const finalLandSpeed = rawLandSpeed > 0 ? Math.max(5, rawLandSpeed + encumberedSpeedPenalty) : 0;
     const senses = this.getCharacterSenses(character);
@@ -2037,16 +2053,18 @@ const PF2E_ENGINE = {
     const classNames = [classData?.name, classData?.names?.["pt-BR"], classData?.names?.en, classData?.names?.es, classIdentity].filter(Boolean).map(value => String(value).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""));
     const standardSpellData = (typeof PF2E_DATA !== "undefined" && PF2E_DATA.spellcastingByClass)
       ? Object.entries(PF2E_DATA.spellcastingByClass).find(([key]) => classNames.includes(String(key).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")) || classNames.some(name => String(key).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").split(" ")[0] === name.split(" ")[0]))?.[1]
-      : null;
-    const spellData = standardSpellData || classData?.focusSpellcasting || null;
-    const focusOnly = !standardSpellData && Boolean(classData?.focusSpellcasting);
+      : this.getSpellcastingProfile(char);
+    const spellData = standardSpellData || this.getSpellcastingProfile(char) || classData?.focusSpellcasting || null;
+    const focusOnly = !standardSpellData && !this.getSpellcastingProfile(char) && Boolean(classData?.focusSpellcasting);
 
     if (!spellData) {
       return { isSpellcaster: false, tradition: null, keyAbility: null, spellDc: 0, spellAttack: 0, focusPoints: 0, maxFocusPoints: 0, slots: {} };
     }
 
     const scores = char.abilities || { str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10 };
-    const keyAttr = spellData.keyAbility || "int";
+    const keyAttr = spellData.keyAbility
+      ? this.normalizeAttributeKey(spellData.keyAbility)
+      : ((classData?.keyAbility && classData.keyAbility[0]) ? this.normalizeAttributeKey(classData.keyAbility[0]) : "int");
     const keyMod = this.getModifier(scores[keyAttr] || 10);
     const profRank = char.spellcastingRank || char.spellProficiency || "Treinado";
     const profBonus = this.getProficiencyBonus(profRank, level);
@@ -2061,26 +2079,24 @@ const PF2E_ENGINE = {
     const spellDc = 10 + keyMod + profBonus - mentalPenalty;
     const spellAttack = keyMod + profBonus + itemBonus + statusBonus - mentalPenalty;
 
+    const isOracleOrWitch = classNames.some(name => name.includes("orac") || name.includes("brux") || name.includes("witch"));
     const configuredFocusMax = char.focusPointsMax !== undefined
       ? char.focusPointsMax
-      : (char.focusPoints !== undefined || char.focusPointsCurrent !== undefined ? 1 : (spellData.initialFocusPoints || 0));
+      : (char.focusPoints !== undefined || char.focusPointsCurrent !== undefined || isOracleOrWitch || standardSpellData?.traditionMode === "subclass-choice" || classData?.focusSpellcasting ? 1 : (spellData.initialFocusPoints || 0));
     const maxFocusPoints = Math.min(3, Math.max(0, Number(configuredFocusMax) || 0));
     const configuredFocus = char.focusPointsCurrent !== undefined ? char.focusPointsCurrent : char.focusPoints;
     const currentFocusPoints = configuredFocus !== undefined
       ? Math.min(Math.max(0, Number(configuredFocus) || 0), maxFocusPoints)
       : maxFocusPoints;
 
-    // Slots por círculo
-    const slotsTable = focusOnly ? [] : (spellData.slotsPerLevel?.[level] || [2]);
-    const slotsByRank = {};
+    const spellSlots = this.getSpellSlots(char);
+    const slotsByRank = spellSlots?.slots || {};
     const slots = {
-      cantrips: focusOnly ? 0 : (spellData.cantrips || 5),
+      cantrips: focusOnly ? 0 : (spellSlots?.cantrips || 5),
       ranks: {}
     };
 
-    slotsTable.forEach((maxSlots, index) => {
-      const rankNum = index + 1;
-      slotsByRank[rankNum] = maxSlots;
+    Object.entries(slotsByRank).forEach(([rankNum, maxSlots]) => {
       const usedSlots = char.usedSpellSlots?.[rankNum] || 0;
       slots.ranks[rankNum] = {
         max: maxSlots,
@@ -2089,17 +2105,17 @@ const PF2E_ENGINE = {
       };
     });
 
-    const rawTrad = (spellData.tradition || "").toLowerCase();
+    const rawTrad = (spellData.traditions?.[0] || spellData.tradition || "").toLowerCase();
     const tradition = this.getCharacterMagicTradition(char)
-      || (rawTrad.includes("arc") ? "arcane" : (rawTrad.includes("div") ? "divine" : (rawTrad.includes("oc") ? "occult" : (rawTrad.includes("prim") ? "primal" : spellData.tradition))));
+      || (rawTrad.includes("arc") ? "arcane" : (rawTrad.includes("div") ? "divine" : (rawTrad.includes("oc") ? "occult" : (rawTrad.includes("prim") ? "primal" : (spellData.traditions?.[0] || spellData.tradition)))));
 
     return {
       hasSpellcasting: true,
       isSpellcaster: true,
       className: char.class,
       tradition,
-      traditionName: spellData.traditionName || spellData.tradition,
-      type: spellData.type,
+      traditionName: spellData.traditionName || spellData.tradition || tradition,
+      type: spellData.type || spellData.preparation,
       focusOnly,
       keyAbility: keyAttr,
       keyAttr: keyAttr,
@@ -2113,7 +2129,7 @@ const PF2E_ENGINE = {
       focusPoints: currentFocusPoints,
       currentFocusPoints,
       maxFocusPoints,
-      cantripsAllowed: focusOnly ? 0 : (spellData.cantrips || 5),
+      cantripsAllowed: focusOnly ? 0 : (spellSlots?.cantrips || 5),
       slotsByRank,
       slots
     };

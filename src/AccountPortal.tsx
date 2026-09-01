@@ -298,14 +298,27 @@ export function AccountPortal() {
       }
     };
     window.addEventListener("pathbuilder:save-account-character", saveFromBuilder);
-    const autoSaveFromBuilder = () => {
-      if (!session) return;
+    const scheduleAutoSave = (activeSession: AuthSession) => {
       if (autoSaveTimerRef.current) window.clearTimeout(autoSaveTimerRef.current);
       if (autoSaveRetryTimerRef.current) window.clearTimeout(autoSaveRetryTimerRef.current);
       autoSaveTimerRef.current = window.setTimeout(() => {
         autoSaveTimerRef.current = null;
-        void saveCurrent(session, true);
+        void saveCurrent(activeSession, true);
       }, 750);
+    };
+    const autoSaveFromBuilder = () => {
+      if (session) {
+        scheduleAutoSave(session);
+        return;
+      }
+      // The builder can emit a change in the same window where auth has
+      // already hydrated its shared cache but React has not committed state.
+      // Resolve that session instead of dropping the cloud-save event.
+      void getCurrentSession().then((activeSession) => {
+        if (!activeSession) return;
+        setSession(activeSession);
+        scheduleAutoSave(activeSession);
+      });
     };
     window.addEventListener("pathbuilder:character-changed", autoSaveFromBuilder);
     if (session) {

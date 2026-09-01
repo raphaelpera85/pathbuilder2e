@@ -18,6 +18,12 @@ describe("character cloud contract", () => {
     expect(mergeCharacterLists([remote], [local])[0].data.name).toBe("Herói atualizado");
   });
 
+  it("preserva a cópia local quando a nuvem não informa uma data válida", () => {
+    const remote = { id: "row-2", user_id: "user-2", character_key: "char-2", name: "Remota", level: 1, ruleset: "remaster" as const, data: { id: "char-2", name: "Remota", level: 1 }, created_at: "2026-01-01T00:00:00.000Z", updated_at: "invalid" };
+    const local = { ...remote, name: "Local atualizada", data: { ...remote.data, name: "Local atualizada" }, updated_at: "2026-01-02T00:00:00.000Z" };
+    expect(mergeCharacterLists([remote], [local])[0].data.name).toBe("Local atualizada");
+  });
+
   it("preserva campos desconhecidos da ficha PF2e", () => {
     const character = validateCharacter({
       id: "Lorenzo_LaRosa",
@@ -94,6 +100,23 @@ describe("character cloud contract", () => {
     await deleteCharacter(second.id, user);
 
     expect(await listCharacters(user)).toEqual([]);
+  });
+
+  it("ignora armazenamento local corrompido sem travar a Biblioteca", async () => {
+    localStorage.setItem("pf2e_user_user-corrupt_characters_v1", JSON.stringify({ invalid: true }));
+    expect(await listCharacters({ id: "user-corrupt" } as never)).toEqual([]);
+    localStorage.setItem("pf2e_user_user-corrupt_characters_v1", JSON.stringify([{ invalid: true }, { user_id: "other-user", character_key: "other", name: "Outra conta", level: 1, data: { id: "other", name: "Outra conta", level: 1 } }, { user_id: "user-corrupt", character_key: "partial" }, { user_id: "user-corrupt", character_key: "ok", name: "Ok", level: 1, data: { id: "ok", name: "Ok", level: 1 } }]));
+    expect((await listCharacters({ id: "user-corrupt" } as never))).toHaveLength(1);
+  });
+
+  it("migra uma ficha local antiga válida sem user_id dentro da chave particionada", async () => {
+    localStorage.setItem("pf2e_user_user-legacy_characters_v1", JSON.stringify([{
+      character_key: "legacy-sheet", name: "Ficha antiga", level: 2,
+      data: { id: "legacy-sheet", name: "Ficha antiga", level: 2 },
+    }]));
+    const listed = await listCharacters({ id: "user-legacy" } as never);
+    expect(listed).toHaveLength(1);
+    expect(listed[0].user_id).toBe("user-legacy");
   });
 
   it("renomeia uma ficha sem perder a configuração persistida", async () => {

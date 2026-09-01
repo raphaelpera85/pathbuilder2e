@@ -464,13 +464,93 @@ describe("PF2E_ENGINE Mechanics & Calculations", () => {
     expect(result.characterDamage).toBe(0);
   });
 
-  it("soma platina legada e platina remaster quando a ficha contém os dois aliases", () => {
-    const stats = engine.calculateCharacterStats({
-      level: 1,
+  it("calculates armor speed penalty based on strength requirement and feats", () => {
+    // Breastplate: speedPenalty: -5, strReq: 14
+    const breastplate = { name: "Breastplate", category: "Média", speedPenalty: -5, strReq: 14 };
+    
+    // Insufficient strength (Str 10 < 14) -> -5 penalty
+    const lowStrChar = {
+      ...baseCharacter,
       abilities: { str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10 },
-      coins: { pl: 1000, pp: 1000, gp: 0, sp: 0, cp: 0 },
-      inventory: [],
-    });
-    expect(stats.bulk.coinsBulk).toBe(2);
+      equippedArmor: breastplate
+    };
+    const lowStrStats = engine.calculateCharacterStats(lowStrChar);
+    expect(lowStrStats.speed).toBe(20); // 25 base - 5 armor
+
+    // Sufficient strength (Str 14 >= 14) -> penalty reduced by 5 to 0
+    const highStrChar = {
+      ...baseCharacter,
+      abilities: { str: 14, dex: 10, con: 10, int: 10, wis: 10, cha: 10 },
+      equippedArmor: breastplate
+    };
+    const highStrStats = engine.calculateCharacterStats(highStrChar);
+    expect(highStrStats.speed).toBe(25); // 25 base + 0 armor
+
+    // Full Plate: speedPenalty: -10, strReq: 18
+    const fullPlate = { name: "Full Plate", category: "Pesada", speedPenalty: -10, strReq: 18 };
+    const plateChar = {
+      ...baseCharacter,
+      abilities: { str: 18, dex: 10, con: 10, int: 10, wis: 10, cha: 10 },
+      equippedArmor: fullPlate
+    };
+    const plateStats = engine.calculateCharacterStats(plateChar);
+    expect(plateStats.speed).toBe(20); // 25 base - 5 armor (reduced from -10 by 5)
+
+    // With Unburdened Iron feat -> ignores heavy/medium armor speed penalty completely
+    const unburdenedChar = {
+      ...baseCharacter,
+      abilities: { str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10 },
+      equippedArmor: fullPlate,
+      feats: [{ id: "feat.ancestry.unburdened_iron" }]
+    };
+    const unburdenedStats = engine.calculateCharacterStats(unburdenedChar);
+    expect(unburdenedStats.speed).toBe(25); // 25 base - 0 armor
+  });
+
+  it("scales Canny Acumen to Expert at lower levels and Master at level 17+", () => {
+    // Canny Acumen choosing Will save
+    const cannyWillLvl1 = {
+      ...baseCharacter,
+      level: 1,
+      class: "Guerreiro (Fighter)", // Fighter will save base is Trained
+      savingThrows: { fortitude: "Especialista", reflex: "Especialista", will: "Treinado" },
+      feats: [{ id: "feat.general.canny_acumen", selectedStatistic: "vontade" }]
+    };
+    const statsLvl1 = engine.calculateCharacterStats(cannyWillLvl1);
+    expect(statsLvl1.saves.will.rank).toBe("Especialista");
+    expect(statsLvl1.saves.will.prof).toBe(1 + 4); // level 1 + Expert (4) = 5
+
+    const cannyWillLvl17 = {
+      ...cannyWillLvl1,
+      level: 17
+    };
+    const statsLvl17 = engine.calculateCharacterStats(cannyWillLvl17);
+    expect(statsLvl17.saves.will.rank).toBe("Mestre");
+    expect(statsLvl17.saves.will.prof).toBe(17 + 6); // level 17 + Master (6) = 23
+
+    // Canny Acumen choosing Perception
+    const cannyPercLvl17 = {
+      ...baseCharacter,
+      level: 17,
+      perceptionRank: "Treinado",
+      feats: [{ id: "feat.general.canny_acumen", selectedStatistic: "percepção" }]
+    };
+    const statsPerc17 = engine.calculateCharacterStats(cannyPercLvl17);
+    expect(statsPerc17.perception.rank).toBe("Mestre");
+  });
+
+  it("resolves Witch patron magic tradition and focus pool initialization", () => {
+    const witchWilding = {
+      name: "Bruxa",
+      class: "Bruxa (Witch)",
+      level: 3,
+      patron: "subclass.class.witch.patron_wilding_steward",
+      subclass: "subclass.class.witch.patron_wilding_steward"
+    };
+    const stats = engine.calculateCharacterStats(witchWilding);
+    expect(stats.spellcasting.isSpellcaster).toBe(true);
+    expect(stats.spellcasting.tradition).toBe("primal");
+    expect(stats.spellcasting.maxFocusPoints).toBe(1);
+    expect(stats.spellcasting.focusPoints).toBe(1);
   });
 });

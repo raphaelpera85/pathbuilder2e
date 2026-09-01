@@ -114,7 +114,11 @@ describe("responsive layout contract", () => {
     const html = read("index.html");
     expect(app).toContain("navigatePortal(route)");
     expect(app).toContain('document.getElementById("drawerOverlay")?.classList.remove("active");');
+    expect(app).toContain('document.querySelectorAll(".pb-drawer-overlay.active, .pb-modal-overlay.active")');
+    expect(app).toContain('document.body.classList.toggle("portal-page-active", !onBuilder);');
     expect(app).toContain("window.location.hash = `#/${cleanRoute}`;");
+    expect(app).toContain("// Antecedentes homônimos de livros/edições diferentes podem ter");
+    expect(app).toContain("return finalize(PF2E_DATA.backgrounds.map(b => ({ name: b.name, type: \"Antecedente\", data: b })));");
     expect(html).toContain("onclick=\"app.navigatePortal('campaigns');\"");
     expect(html).toContain("onclick=\"app.navigatePortal('library');\"");
   });
@@ -990,6 +994,8 @@ describe("responsive layout contract", () => {
     expect(account).toContain('Math.min(30_000, 1_000 * (2 ** Math.min(autoSaveAttemptRef.current, 5)))');
     expect(account).toContain('autoSaveStatus === "syncing"');
     expect(account).toContain('JSON.parse(pending)');
+    expect(account).toContain("const scheduleAutoSave = (activeSession: AuthSession) =>");
+    expect(account).toContain("void getCurrentSession().then((activeSession) => {");
     expect(account).toContain("void saveCurrent(activeSession, true, char || undefined);");
     expect(account).toContain("window.setTimeout(() => void saveCurrent(activeSession, true), 0);");
     expect(account).toContain("window.clearTimeout(autoSaveRetryTimerRef.current);");

@@ -210,7 +210,22 @@ function getLocalUserKey(userId: string): string {
 function getLocalCharacters(userId: string): CloudCharacter[] {
   try {
     const raw = localStorage.getItem(getLocalUserKey(userId));
-    return raw ? JSON.parse(raw) : [];
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed)) return [];
+    return parsed.flatMap((item): CloudCharacter[] => {
+      if (!item || typeof item !== "object"
+        || typeof item.character_key !== "string"
+        || typeof item.name !== "string"
+        || !Number.isInteger(item.level)
+        || !item.data || typeof item.data !== "object" || Array.isArray(item.data)) return [];
+      // Before the account storage contract included user_id, records were
+      // already isolated by this user's storage key. Migrate only such a
+      // complete legacy record; a record explicitly belonging to another
+      // account is never accepted or rewritten.
+      if (item.user_id !== undefined && item.user_id !== userId) return [];
+      return [{ ...item, user_id: userId } as CloudCharacter];
+    });
   } catch {
     return [];
   }
@@ -233,6 +248,11 @@ function cacheLocalCharacter(userId: string, character: CloudCharacter): void {
   saveLocalCharacters(userId, existing);
 }
 
+function characterTimestamp(value: unknown): number {
+  const parsed = Date.parse(String(value ?? ""));
+  return Number.isFinite(parsed) ? parsed : 0;
+}
+
 export function mergeCharacterLists(remote: CloudCharacter[], local: CloudCharacter[]): CloudCharacter[] {
   const merged = new Map<string, CloudCharacter>();
   // Em conflito, mantém a versão mais recentemente atualizada. Isso evita
@@ -242,10 +262,10 @@ export function mergeCharacterLists(remote: CloudCharacter[], local: CloudCharac
   for (const item of local) {
     const key = item.character_key || item.id;
     const current = merged.get(key);
-    if (!current || new Date(item.updated_at).getTime() > new Date(current.updated_at).getTime()) merged.set(key, item);
+    if (!current || characterTimestamp(item.updated_at) > characterTimestamp(current.updated_at)) merged.set(key, item);
   }
   return Array.from(merged.values()).sort((a, b) =>
-    new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime(),
+    characterTimestamp(b.updated_at) - characterTimestamp(a.updated_at),
   );
 }
 
@@ -275,7 +295,7 @@ export async function listCharacters(currentUser?: UserProfile): Promise<CloudCh
 
   // Armazenamento local particionado por dono (user_id)
   const items = getLocalCharacters(activeUser.id);
-  return items.sort((a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime());
+  return items.sort((a, b) => characterTimestamp(b.updated_at) - characterTimestamp(a.updated_at));
 }
 
 export async function saveCharacter(
