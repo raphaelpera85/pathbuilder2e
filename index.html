@@ -230,8 +230,8 @@
         <button class="btn-pb-action" onclick="app.shieldBlockAction()">🛡️ Bloqueio c/ Escudo</button>
         <button class="btn-pb-action" onclick="app.recoveryCheckAction()">🎲 Teste de Recuperação</button>
         <button class="btn-pb-action" onclick="app.openPicker('condition')">➕ Adicionar Condição</button>
-        <button class="btn-pb-action" onclick="app.tickEndTurnConditions()" style="background: rgba(234, 88, 12, 0.15); border: 1px solid var(--pb-orange); color: #fed7aa;" title="Passa o turno e reduz 1 ponto de Amedrontado">⏱️ Fim do Turno</button>
-        <button class="btn-pb-action" onclick="app.clearAllConditions()" style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.5); color: #fca5a5;">✨ Limpar Condições</button>
+        <button class="btn-pb-action btn-end-turn" onclick="app.tickEndTurnConditions()" title="Passa o turno e reduz 1 ponto de Amedrontado">⏱️ Fim do Turno</button>
+        <button class="btn-pb-action btn-clear-conditions" onclick="app.clearAllConditions()">✨ Limpar Condições</button>
         <button class="btn-pb-action" onclick="app.openPicker('buff')">➕ Adicionar Buff</button>
         <button class="btn-pb-action" onclick="window.dispatchEvent(new Event('pathbuilder:save-account-character'))">☁️ Salvar na Conta</button>
       </div>
@@ -287,7 +287,7 @@
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
             <div style="font-size: 12px; color: var(--pb-text-muted);"><span id="gearBulkLabel">Carga Total:</span> <span id="gearBulkDisplay" style="color:#fff; font-weight:bold;">3 / 10</span></div>
             <div style="display: flex; gap: 8px;">
-              <button class="btn-pb-action" onclick="app.openStarterKitsModal()" style="background: rgba(249, 115, 22, 0.15); border: 1px solid var(--pb-orange); color: #fed7aa; font-weight: bold;">🎒 Equipar Kit Inicial (1-Clique)</button>
+              <button class="btn-pb-action btn-starter-kit" onclick="app.openStarterKitsModal()">🎒 Equipar Kit Inicial (1-Clique)</button>
               <button class="btn-pb-action" onclick="app.addInventoryItem()">➕ Adicionar Item</button>
             </div>
           </div>
@@ -297,7 +297,7 @@
         <!-- ABA 4: MAGIAS (SPELLS) -->
         <div id="tab-spells" class="tab-panel" role="tabpanel" aria-labelledby="tab-button-spells" hidden>
           <!-- HEADER & PERFIL DE SPELLCASTING -->
-          <div class="spell-tab-header" style="background: #0d1524; border: 1px solid #1e293b; border-radius: 10px; padding: 14px; margin-bottom: 16px; display: flex; flex-direction: column; gap: 12px;">
+          <div class="spell-tab-header" style="border-radius: 10px; padding: 14px; margin-bottom: 16px; display: flex; flex-direction: column; gap: 12px;">
             <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
               <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
                 <div style="font-size: 13px; font-weight: 800; color: #38bdf8;"><span id="spellcasterLabel">✨ Conjurador</span> <span id="spellTraditionBadge" style="background: rgba(56, 189, 248, 0.15); color: #7dd3fc; padding: 2px 8px; border-radius: 12px; font-size: 11px;">Arcana</span></div>
@@ -320,7 +320,7 @@
               <button class="btn-pb-action" onclick="app.openPicker('spell')"><span aria-hidden="true">📚</span> <span id="spellCatalogButton">Catálogo de Magias</span></button>
               <button class="btn-pb-action secondary" onclick="app.openAddSpellModal()"><span aria-hidden="true">✎</span> <span id="manualSpellButton">Adicionar Magia Manualmente</span></button>
               <button class="btn-pb-action secondary" onclick="app.openPicker('ritual')"><span aria-hidden="true">◈</span> <span id="ritualButton">Adicionar Ritual</span></button>
-              <button class="btn-pb-action" onclick="app.restAndRecoverSlots()" style="background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; color: #6ee7b7; margin-left: auto;" id="recoverSlotsButton">💤 Recuperar Todos os Slots</button>
+              <button class="btn-pb-action btn-recover-slots" onclick="app.restAndRecoverSlots()" id="recoverSlotsButton">💤 Recuperar Todos os Slots</button>
             </div>
           </div>
 

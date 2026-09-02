@@ -1162,20 +1162,149 @@ body.portal-page-active .dice-roller-drawer { display: none !important; }
   color: #782b08;
 }
 
+/* CURADORIA / ADMIN DASHBOARD (LIGHT THEME) */
+[data-theme="light"] .metric-grid article,
+body.theme-light .metric-grid article {
+  background: #faf5e8 !important;
+  border: 1px solid #ccbe9f !important;
+  box-shadow: 0 4px 16px rgba(40, 29, 19, 0.06) !important;
+}
+
+[data-theme="light"] .metric-grid article:hover,
+body.theme-light .metric-grid article:hover {
+  border-color: #9c4210 !important;
+  box-shadow: 0 8px 24px rgba(156, 66, 16, 0.12) !important;
+}
+
+[data-theme="light"] .metric-grid span,
+body.theme-light .metric-grid span {
+  color: #5e4d3a !important;
+}
+
+[data-theme="light"] .metric-grid strong,
+body.theme-light .metric-grid strong {
+  color: #9c4210 !important;
+}
+
+[data-theme="light"] .metric-grid .metric-subtext,
+body.theme-light .metric-grid .metric-subtext {
+  color: #786550 !important;
+}
+
+[data-theme="light"] .metric-grid .metric-badge,
+body.theme-light .metric-grid .metric-badge {
+  background: #eee5cf !important;
+  border: 1px solid #ccbe9f !important;
+  color: #9c4210 !important;
+}
+
+[data-theme="light"] .admin-toolbar-info span,
+body.theme-light .admin-toolbar-info span {
+  color: #5e4d3a !important;
+}
+
+[data-theme="light"] .admin-btn,
+body.theme-light .admin-btn {
+  background: #fdfaf2 !important;
+  border: 1px solid #ccbe9f !important;
+  color: #281d13 !important;
+}
+
+[data-theme="light"] .admin-btn:hover,
+body.theme-light .admin-btn:hover {
+  background: #f5eedc !important;
+  border-color: #9c4210 !important;
+  color: #782b08 !important;
+}
+
+[data-theme="light"] .admin-btn-primary,
+body.theme-light .admin-btn-primary {
+  background: #9c4210 !important;
+  border-color: #9c4210 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .admin-btn-primary:hover,
+body.theme-light .admin-btn-primary:hover {
+  background: #782b08 !important;
+  border-color: #782b08 !important;
+}
+
+[data-theme="light"] .admin-sections-grid,
+body.theme-light .admin-sections-grid {
+  background: transparent;
+}
+
+[data-theme="light"] .admin-table-panel,
+body.theme-light .admin-table-panel {
+  background: #faf5e8 !important;
+  border: 1px solid #ccbe9f !important;
+  box-shadow: 0 4px 16px rgba(40, 29, 19, 0.06) !important;
+}
+
+[data-theme="light"] .admin-table-panel h2,
+body.theme-light .admin-table-panel h2 {
+  color: #281d13 !important;
+}
+
+[data-theme="light"] .admin-table-wrapper,
+body.theme-light .admin-table-wrapper {
+  background: #fdfaf2 !important;
+  border: 1px solid #ccbe9f !important;
+}
+
 [data-theme="light"] .admin-table,
-[data-theme="light"] .admin-stat-card {
+body.theme-light .admin-table,
+[data-theme="light"] .admin-stat-card,
+body.theme-light .admin-stat-card {
   background: #faf5e8;
   border-color: #ccbe9f;
 }
 
-[data-theme="light"] .admin-table th {
-  background: #eee5cf;
-  color: #5e4d3a;
+[data-theme="light"] .admin-table th,
+body.theme-light .admin-table th {
+  background: #eee5cf !important;
+  color: #5e4d3a !important;
+  border-bottom: 1px solid #ccbe9f !important;
 }
 
-[data-theme="light"] .admin-table td {
-  color: #281d13;
-  border-bottom-color: #e0d5bd;
+[data-theme="light"] .admin-table td,
+body.theme-light .admin-table td {
+  color: #281d13 !important;
+  border-bottom: 1px solid #e0d5bd !important;
+}
+
+[data-theme="light"] .admin-table tr:hover td,
+body.theme-light .admin-table tr:hover td {
+  background: #fbf1d8 !important;
+}
+
+[data-theme="light"] .role-badge.admin,
+body.theme-light .role-badge.admin {
+  background: #fed7aa !important;
+  color: #9a3412 !important;
+  border: 1px solid #ea580c !important;
+}
+
+[data-theme="light"] .role-badge.user,
+body.theme-light .role-badge.user {
+  background: #dbeafe !important;
+  color: #1e40af !important;
+  border: 1px solid #93c5fd !important;
+}
+
+[data-theme="light"] .role-badge.guest,
+body.theme-light .role-badge.guest {
+  background: #eee5cf !important;
+  color: #475569 !important;
+  border: 1px solid #ccbe9f !important;
+}
+
+[data-theme="light"] .route-pill,
+body.theme-light .route-pill {
+  background: #eee5cf !important;
+  color: #281d13 !important;
+  border: 1px solid #ccbe9f !important;
 }
 
 @media print {
