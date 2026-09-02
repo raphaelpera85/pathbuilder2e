@@ -133,4 +133,37 @@ describe("Subclasses Catalog and Mechanics Reflection", () => {
     // Also trained in Thievery automatically
     expect(stats.skills.thievery.rank).toBe("Treinado");
   });
+
+  it("should localize subclass IDs cleanly in localizeItemName for pt-BR, en, and es", () => {
+    const appCode = fs.readFileSync("js/app.js", "utf8");
+    const getCatalogStart = appCode.indexOf("getCatalogNameIndex()");
+    const localizeStart = appCode.indexOf("localizeItemName(rawName, locale = this.getLocale())");
+    const localizeEnd = appCode.indexOf("localizePrerequisiteText", localizeStart);
+
+    const fn = new Function("PF2E_DATA", "UI_TRANSLATIONS", "normalizeCatalogLabel", `
+      const app = {
+        getLocale() { return "pt-BR"; },
+        ${appCode.slice(getCatalogStart, localizeStart).trim()},
+        ${appCode.slice(localizeStart, localizeEnd).trim()}
+      };
+      return app;
+    `);
+
+    const app = fn(
+      PF2E_DATA,
+      { classes: {}, ancestries: {}, backgrounds: {}, heritages: {}, weapons: {} },
+      (value: any) => String(value ?? "").trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, " ")
+    );
+
+    expect(app.localizeItemName("subclass.class_swashbuckler_fencer", "pt-BR")).toBe("Esgrimista");
+    expect(app.localizeItemName("subclass.class_swashbuckler_fencer", "en")).toBe("Fencer");
+    expect(app.localizeItemName("subclass.class_swashbuckler_fencer", "es")).toBe("Esgrimista");
+
+    expect(app.localizeItemName("subclass.class_swashbuckler_braggart", "pt-BR")).toBe("Fanfarrão");
+    expect(app.localizeItemName("subclass.class_swashbuckler_braggart", "en")).toBe("Braggart");
+    expect(app.localizeItemName("subclass.class_swashbuckler_braggart", "es")).toBe("Fanfarrón");
+
+    expect(app.localizeItemName("subclass.class_rogue_thief", "pt-BR")).toBe("Ladrão Furtivo");
+    expect(app.localizeItemName("subclass.class_rogue_thief", "en")).toBe("Thief");
+  });
 });

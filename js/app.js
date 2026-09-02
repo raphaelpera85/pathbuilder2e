@@ -382,9 +382,11 @@ class PathbuilderApp {
     const index = new Map();
     const addRecord = (record, key = "") => {
       if (!record || typeof record !== "object") return;
-      const names = record.names && typeof record.names === "object" ? record.names : null;
+      const names = record.names && typeof record.names === "object"
+        ? record.names
+        : (record.name ? { "pt-BR": record.name, en: record.name, es: record.name } : null);
       if (names) {
-        for (const value of [record.name, key, ...(Array.isArray(record.legacyNames) ? record.legacyNames : []), ...Object.values(names)]) {
+        for (const value of [record.name, record.id, key, ...(Array.isArray(record.legacyNames) ? record.legacyNames : []), ...Object.values(names)]) {
           const normalized = normalizeCatalogLabel(value);
           if (normalized) index.set(normalized, names);
         }
@@ -407,6 +409,20 @@ class PathbuilderApp {
     if (!rawName || typeof rawName !== "string") return rawName || "";
     const catalogNames = this.getCatalogNameIndex().get(normalizeCatalogLabel(rawName));
     if (catalogNames?.[locale]) return catalogNames[locale];
+    if (catalogNames?.["pt-BR"] && locale === "pt-BR") return catalogNames["pt-BR"];
+    if (catalogNames?.en && locale === "en") return catalogNames.en;
+    if (catalogNames?.es && locale === "es") return catalogNames.es;
+
+    if (typeof PF2E_DATA !== "undefined" && PF2E_DATA) {
+      if (Array.isArray(PF2E_DATA.subclasses)) {
+        const matchSub = PF2E_DATA.subclasses.find(s => s.id === rawName || s.name === rawName);
+        if (matchSub) {
+          const names = matchSub.names || {};
+          return names[locale] || (locale === "pt-BR" ? (names["pt-BR"] || matchSub.name?.split("(")[0]?.trim()) : (names.en || matchSub.name));
+        }
+      }
+    }
+
     if (locale === "pt-BR") {
       const match = rawName.match(/^([^(]+?)\s*\(([^)]+)\)$/);
       if (match) return match[1].trim();
