@@ -3367,17 +3367,61 @@ body.theme-light,
   color: #281d13 !important;
 }
 
-[data-theme="light"] .pb-center-gear-badge {
-  background: #fdfaf2 !important;
-  border: 2px solid #ccbe9f !important;
+[data-theme="light"] .pb-skill-training-row {
+  background: transparent;
+}
+
+[data-theme="light"] .pb-skill-training-row:hover {
+  background: #fbf1d8 !important;
+}
+
+[data-theme="light"] .pb-skill-row-title-trained {
+  color: #9c4210 !important;
+  font-weight: 900;
 }
 
 [data-theme="light"] .pb-skill-row-title-untrained {
   color: #281d13 !important;
+  font-weight: 700;
+}
+
+[data-theme="light"] .pb-teml-dot {
+  background: #eee5cf !important;
+  border: 1px solid #ccbe9f !important;
+  color: #5e4d3a !important;
+}
+
+[data-theme="light"] .pb-teml-dot.t.active {
+  background: #9c4210 !important;
+  border-color: #782b08 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 6px rgba(156, 66, 16, 0.4) !important;
+}
+
+[data-theme="light"] .pb-skill-stat-header {
+  color: #5e4d3a !important;
 }
 
 [data-theme="light"] .pb-skill-stat-num {
   color: #281d13 !important;
+  font-weight: 800;
+}
+
+[data-theme="light"] #modalSkillTrainingList {
+  background: #fdfaf2 !important;
+}
+
+[data-theme="light"] .pb-modal-subnav span {
+  color: #281d13 !important;
+}
+
+[data-theme="light"] .pb-modal-legend-title {
+  color: #5e4d3a !important;
+}
+
+[data-theme="light"] .pb-modal-legend-header {
+  color: #5e4d3a !important;
+  border-top-color: #ccbe9f !important;
 }
 
 [data-theme="light"] .pb-picker-item-row {
