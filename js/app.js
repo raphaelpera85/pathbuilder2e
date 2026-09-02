@@ -3758,6 +3758,309 @@ class PathbuilderApp {
     }
   }
 
+  toggleTreeFeature(featureId) {
+    if (!this.expandedTreeFeatures) {
+      this.expandedTreeFeatures = {};
+    }
+    this.expandedTreeFeatures[featureId] = !this.expandedTreeFeatures[featureId];
+    this.renderPlanTree();
+  }
+
+  getFeatureDetails(featureName, locale = "pt-BR") {
+    if (!featureName) return null;
+    const isEn = locale?.startsWith("en");
+    const isEs = locale?.startsWith("es");
+    const norm = String(featureName).toLowerCase().trim().replace(/^talento grátis:\s*|^free feat:\s*|^dote gratis:\s*/i, "");
+
+    const DB = {
+      "confident finisher": {
+        traits: ["Finisher", "Swashbuckler"],
+        desc: {
+          en: "You make an incredibly graceful attack, piercing your foe's defenses. Make a Strike with the following failure effect.\n\nFailure You deal half your precise strike damage to the target. This damage type is that of the weapon or unarmed attack you used for the Strike.",
+          pt: "Você faz um ataque incrivelmente gracioso, perfurando as defesas do seu oponente. Faça um Golpe com o seguinte efeito de falha.\n\nFalha Você causa metade do seu dano de golpe preciso ao alvo. Este tipo de dano é o da arma ou ataque desarmado usado no Golpe.",
+          es: "Haces un ataque increíblemente elegante, perforando las defensas de tu enemigo. Haz un Golpe con el siguiente efecto de fallo.\n\nFallo Infliges la mitad del daño de tu golpe preciso al objetivo. Este tipo de daño es el del arma o ataque desarmado que usaste para el Golpe."
+        }
+      },
+      "remate confiante": {
+        traits: ["Finisher", "Swashbuckler"],
+        desc: {
+          en: "You make an incredibly graceful attack, piercing your foe's defenses. Make a Strike with the following failure effect.\n\nFailure You deal half your precise strike damage to the target. This damage type is that of the weapon or unarmed attack you used for the Strike.",
+          pt: "Você faz um ataque incrivelmente gracioso, perfurando as defesas do seu oponente. Faça um Golpe com o seguinte efeito de falha.\n\nFalha Você causa metade do seu dano de golpe preciso ao alvo. Este tipo de dano é o da arma ou ataque desarmado usado no Golpe.",
+          es: "Haces un ataque increíblemente elegante, perforando las defensas de tu enemigo. Haz un Golpe con el siguiente efecto de fallo.\n\nFallo Infliges la mitad del daño de tu golpe preciso al objetivo. Este tipo de daño es el del arma o ataque desarmado que usaste para el Golpe."
+        }
+      },
+      "remate confiado": {
+        traits: ["Finisher", "Swashbuckler"],
+        desc: {
+          en: "You make an incredibly graceful attack, piercing your foe's defenses. Make a Strike with the following failure effect.\n\nFailure You deal half your precise strike damage to the target. This damage type is that of the weapon or unarmed attack you used for the Strike.",
+          pt: "Você faz um ataque incrivelmente gracioso, perfurando as defesas do seu oponente. Faça um Golpe com o seguinte efeito de falha.\n\nFalha Você causa metade do seu dano de golpe preciso ao alvo. Este tipo de dano é o da arma ou ataque desarmado usado no Golpe.",
+          es: "Haces un ataque increíblemente elegante, perforando las defensas de tu enemigo. Haz un Golpe con el siguiente efecto de fallo.\n\nFallo Infliges la mitad del daño de tu golpe preciso al objetivo. Este tipo de daño es el del arma o ataque desarmado que usaste para el Golpe."
+        }
+      },
+      "panache": {
+        traits: ["Swashbuckler"],
+        desc: {
+          en: "You gain panache by performing stylish actions in combat (like Tumble Through or style actions). While you have panache, you gain a +5-foot status bonus to your Speeds and a +1 circumstance bonus to checks using the skill associated with your style. You also qualify to use finishers.",
+          pt: "Você ganha garbo realizando ações estilosas em combate (como Passar por Baixo ou ações do seu estilo). Enquanto tiver garbo, você ganha um bônus de estado de +1,5m em suas Velocidades e um bônus de circunstância de +1 em testes usando a perícia associada ao seu estilo. Você também se qualifica para usar remates.",
+          es: "Obtienes garbo realizando acciones elegantes en combate (como Rodar por debajo o acciones de estilo). Mientras tienes garbo, obtienes una bonificación de estado de +5 pies a tus velocidades y una bonificación de circunstancia de +1 a las pruebas que usen la habilidad asociada a tu estilo. También calificas para usar remates."
+        }
+      },
+      "garbo": {
+        traits: ["Swashbuckler"],
+        desc: {
+          en: "You gain panache by performing stylish actions in combat (like Tumble Through or style actions). While you have panache, you gain a +5-foot status bonus to your Speeds and a +1 circumstance bonus to checks using the skill associated with your style. You also qualify to use finishers.",
+          pt: "Você ganha garbo realizando ações estilosas em combate (como Passar por Baixo ou ações do seu estilo). Enquanto tiver garbo, você ganha um bônus de estado de +1,5m em suas Velocidades e um bônus de circunstância de +1 em testes usando a perícia associada ao seu estilo. Você também se qualifica para usar remates.",
+          es: "Obtienes garbo realizando acciones elegantes en combate (como Rodar por debajo o acciones de estilo). Mientras tienes garbo, obtienes una bonificación de estado de +5 pies a tus velocidades y una bonificación de circunstancia de +1 a las pruebas que usen la habilidad asociada a tu estilo. También calificas para usar remates."
+        }
+      },
+      "precise strike": {
+        traits: ["Swashbuckler"],
+        desc: {
+          en: "You strike with precision and flair. When you make a Strike using an agile or finesse melee weapon or agile or finesse unarmed attack, you deal 2 additional precision damage (or 2d6 precision damage when you use a finisher).",
+          pt: "Você ataca com precisão e estilo. Quando você faz um Golpe usando uma arma corpo a corpo ágil ou acurada ou ataque desarmado ágil/acurado, você causa 2 de dano de precisão adicional (ou 2d6 de dano de precisão ao usar um remate).",
+          es: "Golpeas con precisión y estilo. Cuando realizas un Golpe usando un arma cuerpo a cuerpo ágil o sutil o un ataque desarmado ágil o sutil, infliges 2 de daño de precisión adicional (o 2d6 de daño de precisión cuando usas un remate)."
+        }
+      },
+      "golpe preciso": {
+        traits: ["Swashbuckler"],
+        desc: {
+          en: "You strike with precision and flair. When you make a Strike using an agile or finesse melee weapon or agile or finesse unarmed attack, you deal 2 additional precision damage (or 2d6 precision damage when you use a finisher).",
+          pt: "Você ataca com precisão e estilo. Quando você faz um Golpe usando uma arma corpo a corpo ágil ou acurada ou ataque desarmado ágil/acurado, você causa 2 de dano de precisão adicional (ou 2d6 de dano de precisão ao usar um remate).",
+          es: "Golpeas con precisión y estilo. Cuando realizas un Golpe usando un arma cuerpo a cuerpo ágil o sutil o un ataque desarmado ágil o sutil, infliges 2 de daño de precisión adicional (o 2d6 de daño de precisión cuando usas un remate)."
+        }
+      },
+      "stylish combatant": {
+        traits: ["Swashbuckler"],
+        desc: {
+          en: "You gain special stylish actions based on your style to gain panache and harass your foes.",
+          pt: "Você recebe ações especiais e habilidades baseadas no seu estilo para obter garbo e desestabilizar seus inimigos.",
+          es: "Obtienes acciones elegantes especiales según tu estilo para ganar garbo y hostigar a tus enemigos."
+        }
+      },
+      "combatente estiloso": {
+        traits: ["Swashbuckler"],
+        desc: {
+          en: "You gain special stylish actions based on your style to gain panache and harass your foes.",
+          pt: "Você recebe ações especiais e habilidades baseadas no seu estilo para obter garbo e desestabilizar seus inimigos.",
+          es: "Obtienes acciones elegantes especiales según tu estilo para ganar garbo y hostigar a tus enemigos."
+        }
+      },
+      "combatiente elegante": {
+        traits: ["Swashbuckler"],
+        desc: {
+          en: "You gain special stylish actions based on your style to gain panache and harass your foes.",
+          pt: "Você recebe ações especiais e habilidades baseadas no seu estilo para obter garbo e desestabilizar seus inimigos.",
+          es: "Obtienes acciones elegantes especiales según tu estilo para ganar garbo y hostigar a tus enemigos."
+        }
+      },
+      "bon mot": {
+        traits: ["Auditory", "Concentrate", "Emotion", "General", "Linguistic", "Mental", "Skill"],
+        desc: {
+          en: "You distract your foe with a witty quip. Make a Diplomacy check against a target's Will DC. On a success, the target takes a -2 status penalty to Perception and Will saves for 1 minute (or -3 on a critical success).",
+          pt: "Você distrai seu inimigo com uma frase espirituosa. Faça um teste de Diplomacia contra a CD de Vontade do alvo. No sucesso, o alvo sofre uma penalidade de estado de -2 na Percepção e salvaguardas de Vontade por 1 minuto (-3 no sucesso crítico).",
+          es: "Distraes a tu enemigo con una réplica ingeniosa. Haz una prueba de Diplomacia contra la CD de Voluntad del objetivo. En un éxito, el objetivo recibe una penalización de estado de -2 a Percepción y tiros de salvación de Voluntad durante 1 minuto (-3 en éxito crítico)."
+        }
+      },
+      "fascinating performance": {
+        traits: ["Auditory", "Concentrate", "General", "Skill", "Visual"],
+        desc: {
+          en: "Make a Performance check against the Will DC of one observer. On a success, the target is fascinated with you for 1 round.",
+          pt: "Faça um teste de Performance contra a CD de Vontade de um observador. No sucesso, o alvo fica fascinado por você por 1 rodada.",
+          es: "Haz una prueba de Interpretación contra la CD de Voluntad de un observador. En un éxito, el objetivo queda fascinado por ti durante 1 asalto."
+        }
+      },
+      "performance fascinante": {
+        traits: ["Auditory", "Concentrate", "General", "Skill", "Visual"],
+        desc: {
+          en: "Make a Performance check against the Will DC of one observer. On a success, the target is fascinated with you for 1 round.",
+          pt: "Faça um teste de Performance contra a CD de Vontade de um observador. No sucesso, o alvo fica fascinado por você por 1 rodada.",
+          es: "Haz una prueba de Interpretación contra la CD de Voluntad de un observador. En un éxito, el objetivo queda fascinado por ti durante 1 asalto."
+        }
+      },
+      "actuación fascinante": {
+        traits: ["Auditory", "Concentrate", "General", "Skill", "Visual"],
+        desc: {
+          en: "Make a Performance check against the Will DC of one observer. On a success, the target is fascinated with you for 1 round.",
+          pt: "Faça um teste de Performance contra a CD de Vontade de um observador. No sucesso, o alvo fica fascinado por você por 1 rodada.",
+          es: "Haz una prueba de Interpretación contra la CD de Voluntad de un observador. En un éxito, el objetivo queda fascinado por ti durante 1 asalto."
+        }
+      },
+      "you're next": {
+        traits: ["Emotion", "Fear", "General", "Mental", "Skill"],
+        desc: {
+          en: "Trigger You reduce an enemy to 0 HP.\n\nYou make a terrifying boast. Make an Intimidation check to Demoralize a single creature you can see.",
+          pt: "Gatilho Você reduz um inimigo a 0 PV.\n\nFaça um teste de Intimidação para Desmoralizar uma criatura que você possa ver.",
+          es: "Disparador Reduces a un enemigo a 0 PG.\n\nHaz una prueba de Intimidación para Desmoralizar a una criatura que puedas ver."
+        }
+      },
+      "você é o próximo": {
+        traits: ["Emotion", "Fear", "General", "Mental", "Skill"],
+        desc: {
+          en: "Trigger You reduce an enemy to 0 HP.\n\nYou make a terrifying boast. Make an Intimidation check to Demoralize a single creature you can see.",
+          pt: "Gatilho Você reduz um inimigo a 0 PV.\n\nFaça um teste de Intimidação para Desmoralizar uma criatura que você possa ver.",
+          es: "Disparador Reduces a un enemigo a 0 PG.\n\nHaz una prueba de Intimidación para Desmoralizar a una criatura que puedas ver."
+        }
+      },
+      "tú eres el siguiente": {
+        traits: ["Emotion", "Fear", "General", "Mental", "Skill"],
+        desc: {
+          en: "Trigger You reduce an enemy to 0 HP.\n\nYou make a terrifying boast. Make an Intimidation check to Demoralize a single creature you can see.",
+          pt: "Gatilho Você reduz um inimigo a 0 PV.\n\nFaça um teste de Intimidação para Desmoralizar uma criatura que você possa ver.",
+          es: "Disparador Reduces a un enemigo a 0 PG.\n\nHaz una prueba de Intimidación para Desmoralizar a una criatura que puedas ver."
+        }
+      },
+      "dirty trick": {
+        traits: ["Attack", "Concentrate", "Swashbuckler"],
+        desc: {
+          en: "Make a Thievery check against an adjacent creature's Reflex DC to temporarily blind, clumsy, or off-guard the foe.",
+          pt: "Faça um teste de Ladinagem contra a CD de Reflexos de uma criatura adjacente para deixá-la temporariamente cega, desajeitada ou desprevenida.",
+          es: "Haz una prueba de Latrocinio contra la CD de Reflejos de una criatura adyacente para dejarla temporalmente cegada, torpe o desprevenida."
+        }
+      },
+      "truque sujo": {
+        traits: ["Attack", "Concentrate", "Swashbuckler"],
+        desc: {
+          en: "Make a Thievery check against an adjacent creature's Reflex DC to temporarily blind, clumsy, or off-guard the foe.",
+          pt: "Faça um teste de Ladinagem contra a CD de Reflexos de uma criatura adjacente para deixá-la temporariamente cega, desajeitada ou desprevenida.",
+          es: "Haz una prueba de Latrocinio contra la CD de Reflejos de uma criatura adyacente para dejarla temporalmente cegada, torpe o desprevenida."
+        }
+      },
+      "truco sucio": {
+        traits: ["Attack", "Concentrate", "Swashbuckler"],
+        desc: {
+          en: "Make a Thievery check against an adjacent creature's Reflex DC to temporarily blind, clumsy, or off-guard the foe.",
+          pt: "Faça um teste de Ladinagem contra a CD de Reflexos de uma criatura adjacente para deixá-la temporariamente cega, desajeitada ou desprevenida.",
+          es: "Haz una prueba de Latrocinio contra la CD de Reflejos de una criatura adyacente para dejarla temporalmente cegada, torpe o desprevenida."
+        }
+      },
+      "reactive strike": {
+        traits: ["Fighter"],
+        desc: {
+          en: "Trigger A creature within your reach uses a manipulate action or a move action, makes a ranged attack, or leaves a square during a move action.\n\nYou lash out at a foe that leaves an opening. Make a melee Strike against the triggering creature. If your Strike is a critical hit, you disrupt the triggering action.",
+          pt: "Gatilho Uma criatura ao seu alcance usa uma ação de manipular ou mover, faz um ataque à distância ou sai de um quadrado.\n\nVocê golpeia um inimigo que deixa uma brecha. Faça um Golpe corpo a corpo contra a criatura. Se for um acerto crítico, você interrompe a ação.",
+          es: "Disparador Una criatura dentro de tu alcance usa una acción de manipular o mover, hace un ataque a distancia o abandona una casilla.\n\nAtacas a un enemigo que deja una apertura. Haz un Golpe cuerpo a cuerpo. Si es un golpe crítico, interrumpes la acción."
+        }
+      },
+      "golpe reativo": {
+        traits: ["Fighter"],
+        desc: {
+          en: "Trigger A creature within your reach uses a manipulate action or a move action, makes a ranged attack, or leaves a square during a move action.\n\nVocê golpeia um inimigo que deixa uma brecha. Faça um Golpe corpo a corpo contra a criatura. Se for um acerto crítico, você interrompe a ação.",
+          pt: "Gatilho Uma criatura ao seu alcance usa uma ação de manipular ou mover, faz um ataque à distância ou sai de um quadrado.\n\nVocê golpeia um inimigo que deixa uma brecha. Faça um Golpe corpo a corpo contra a criatura. Se for um acerto crítico, você interrompe a ação.",
+          es: "Disparador Una criatura dentro de tu alcance usa una acción de manipular o mover, hace un ataque a distancia o abandona una casilla.\n\nAtacas a un enemigo que deja una apertura. Haz un Golpe cuerpo a cuerpo. Si es un golpe crítico, interrumpes la acción."
+        }
+      },
+      "shield block": {
+        traits: ["General"],
+        desc: {
+          en: "Trigger While you have your shield raised, you would take damage from a physical attack.\n\nYou snap your shield into place to ward off the blow. The shield absorbs damage up to its Hardness. Both you and the shield take any remaining damage.",
+          pt: "Gatilho Enquanto estiver com o escudo erguido, você sofreria dano de um ataque físico.\n\nVocê posiciona o escudo para amortecer o golpe. O escudo absorve o dano até a sua Dureza. Você e o escudo sofrem o dano restante.",
+          es: "Disparador Mientras tienes el escudo levantado, recibirías daño de un ataque físico.\n\nColocas tu escudo para desviar el golpe. El escudo absorbe daño hasta su Dureza. Tanto tú como el escudo reciben el daño restante."
+        }
+      },
+      "bloqueio com escudo": {
+        traits: ["General"],
+        desc: {
+          en: "Trigger While you have your shield raised, you would take damage from a physical attack.\n\nYou snap your shield into place to ward off the blow. The shield absorbs damage up to its Hardness. Both you and the shield take any remaining damage.",
+          pt: "Gatilho Enquanto estiver com o escudo erguido, você sofreria dano de um ataque físico.\n\nVocê posiciona o escudo para amortecer o golpe. O escudo absorve o dano até a sua Dureza. Você e o escudo sofrem o dano restante.",
+          es: "Disparador Mientras tienes el escudo levantado, recibirías daño de un ataque físico.\n\nColocas tu escudo para desviar el golpe. El escudo absorbe daño hasta su Dureza. Tanto tú como el escudo reciben el daño restante."
+        }
+      },
+      "sneak attack": {
+        traits: ["Rogue"],
+        desc: {
+          en: "When your Strike hits a creature that has the off-guard condition with an agile or finesse melee weapon, an agile or finesse unarmed attack, a ranged weapon attack, or a ranged unarmed attack, you deal an extra 1d6 precision damage.",
+          pt: "Quando seu Golpe atinge uma criatura que tem a condição desprevenido com uma arma ágil ou acurada, você causa 1d6 de dano de precisão extra.",
+          es: "Cuando tu Golpe impacta a una criatura desprevenida con un arma ágil o sutil, infliges 1d6 de daño de precisión adicional."
+        }
+      },
+      "ataque furtivo": {
+        traits: ["Rogue"],
+        desc: {
+          en: "When your Strike hits a creature that has the off-guard condition with an agile or finesse melee weapon, an agile or finesse unarmed attack, a ranged weapon attack, or a ranged unarmed attack, you deal an extra 1d6 precision damage.",
+          pt: "Quando seu Golpe atinge uma criatura que tem a condição desprevenido com uma arma ágil ou acurada, você causa 1d6 de dano de precisão extra.",
+          es: "Cuando tu Golpe impacta a una criatura desprevenida con un arma ágil o sutil, infliges 1d6 de daño de precisión adicional."
+        }
+      },
+      "surprise attack": {
+        traits: ["Rogue"],
+        desc: {
+          en: "You act before foes can react. On the first round of combat, creatures that haven't acted yet are off-guard to you.",
+          pt: "Você age antes que seus inimigos possam reagir. Na primeira rodada de combate, criaturas que ainda não agiram estão desprevenidas contra você.",
+          es: "Actúas antes de que los enemigos puedan reaccionar. En el primer asalto de combate, las criaturas que aún no han actuado están desprevenidas para ti."
+        }
+      },
+      "ataque surpresa": {
+        traits: ["Rogue"],
+        desc: {
+          en: "You act before foes can react. On the first round of combat, creatures that haven't acted yet are off-guard to you.",
+          pt: "Você age antes que seus inimigos possam reagir. Na primeira rodada de combate, criaturas que ainda não agiram estão desprevenidas contra você.",
+          es: "Actúas antes de que los enemigos puedan reaccionar. En el primer asalto de combate, las criaturas que aún no han actuado están desprevenidas para ti."
+        }
+      },
+      "rage": {
+        traits: ["Barbarian", "Concentrate", "Emotion", "Mental"],
+        desc: {
+          en: "Requirements You aren't fatigued or raging.\n\nYou tap into your inner fury. You gain temporary Hit Points equal to your level + your Constitution modifier, a +2 status bonus to melee damage rolls, and a -1 penalty to AC. Rage lasts for 1 minute.",
+          pt: "Requisitos Você não está fadigado ou em fúria.\n\nVocê canaliza sua fúria interior. Você ganha Pontos de Vida temporários iguais ao seu nível + modificador de Constituição, um bônus de estado de +2 em rolagens de dano corpo a corpo e uma penalidade de -1 na CA. A Fúria dura 1 minuto.",
+          es: "Requisitos No estás fatigado ni enfurecido.\n\nCanalizas tu furia interior. Obtienes Puntos de Golpe temporales iguales a tu nivel + modificador de Constitución, una bonificación de estado de +2 al daño y una penalización de -1 a la CA."
+        }
+      },
+      "fúria": {
+        traits: ["Barbarian", "Concentrate", "Emotion", "Mental"],
+        desc: {
+          en: "Requirements You aren't fatigued or raging.\n\nYou tap into your inner fury. You gain temporary Hit Points equal to your level + your Constitution modifier, a +2 status bonus to melee damage rolls, and a -1 penalty to AC. Rage lasts for 1 minute.",
+          pt: "Requisitos Você não está fadigado ou em fúria.\n\nVocê canaliza sua fúria interior. Você ganha Pontos de Vida temporários iguais ao seu nível + modificador de Constituição, um bônus de estado de +2 em rolagens de dano corpo a corpo e uma penalidade de -1 na CA. A Fúria dura 1 minuto.",
+          es: "Requisitos No estás fatigado ni enfurecido.\n\nCanalizas tu furia interior. Obtienes Puntos de Golpe temporales iguales a tu nivel + modificador de Constitución, una bonificación de estado de +2 al daño y una penalización de -1 a la CA."
+        }
+      },
+      "flurry of blows": {
+        traits: ["Monk"],
+        desc: {
+          en: "Frequency once per round.\n\nMake two unarmed Strikes. If both hit the same creature, combine their damage for the purpose of resistances and weaknesses.",
+          pt: "Frequência uma vez por rodada.\n\nFaça dois Golpes desarmados. Se ambos acertarem a mesma criatura, combine o dano para fins de resistências e fraquezas.",
+          es: "Frecuencia una vez por asalto.\n\nHaz dos Golpes desarmados. Si ambos impactan a la misma criatura, combina su daño a efectos de resistencias y debilidades."
+        }
+      },
+      "rajada de golpes": {
+        traits: ["Monk"],
+        desc: {
+          en: "Frequency once per round.\n\nMake two unarmed Strikes. If both hit the same creature, combine their damage for the purpose of resistances and weaknesses.",
+          pt: "Frequência uma vez por rodada.\n\nFaça dois Golpes desarmados. Se ambos acertarem a mesma criatura, combine o dano para fins de resistências e fraquezas.",
+          es: "Frecuencia una vez por asalto.\n\nHaz dos Golpes desarmados. Si ambos impactan a la mesma criatura, combina su daño a efectos de resistencias y debilidades."
+        }
+      }
+    };
+
+    let match = null;
+    for (const [k, v] of Object.entries(DB)) {
+      if (norm === k || norm.includes(k) || k.includes(norm)) {
+        match = v;
+        break;
+      }
+    }
+
+    if (match) {
+      const descText = isEn ? match.desc.en : (isEs ? match.desc.es : match.desc.pt);
+      return {
+        traits: match.traits || [],
+        description: descText
+      };
+    }
+
+    const catalogFeat = (PF2E_DATA?.feats || []).find(f => String(f.name).toLowerCase() === norm || String(f.id).toLowerCase() === norm);
+    if (catalogFeat) {
+      return {
+        traits: Array.isArray(catalogFeat.traits) ? catalogFeat.traits : (catalogFeat.type ? [catalogFeat.type] : []),
+        description: catalogFeat.description || catalogFeat.summary || ""
+      };
+    }
+
+    return {
+      traits: ["Classe", "Habilidade"],
+      description: isEn ? "Class feature granted by your class progression." : (isEs ? "Característica de clase otorgada por tu progresión." : "Característica de classe concedida pela sua progressão.")
+    };
+  }
+
   clearProgressionSlots(prefix) {
     if (!this.character.progression) return;
     Object.keys(this.character.progression).forEach((k) => {
@@ -5512,26 +5815,52 @@ class PathbuilderApp {
               }
               const freePrefix = isEn ? "Free Feat: " : isEs ? "Dote gratis: " : "Talento Grátis: ";
               const freeDisplay = `${freePrefix}${freeFeatName}`;
+              const featureKey = `free_feat_${String(freeFeatName).toLowerCase().replace(/[^a-z0-9]/g, '_')}`;
+              const isExpanded = Boolean(this.expandedTreeFeatures && this.expandedTreeFeatures[featureKey]);
+              const details = isExpanded ? this.getFeatureDetails(freeFeatName, locale) : null;
               html += `
-                <div class="pb-tree-card" title="${escapeHtml(freeDisplay)}">
-                  <div class="pb-tree-card-content" style="padding-left: 2px;">
+                <div class="pb-tree-card interactive-feature ${isExpanded ? 'expanded' : ''}" onclick="app.toggleTreeFeature('${featureKey}')" title="${escapeHtml(freeDisplay)}">
+                  <div class="pb-tree-card-content" style="padding-left: 2px; width: 100%;">
                     <div class="pb-tree-card-value" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
                       <span>${escapeHtml(freeDisplay)}</span>
                       ${freeGlyph ? `<span class="pb-action-glyph">${escapeHtml(freeGlyph)}</span>` : ""}
                     </div>
+                    ${isExpanded && details ? `
+                      <div class="pb-tree-feature-details">
+                        ${details.traits?.length ? `
+                          <div class="pb-tree-feature-traits">
+                            ${details.traits.map(t => `<span class="pb-trait-tag">${escapeHtml(t)}</span>`).join("")}
+                          </div>
+                        ` : ""}
+                        <div class="pb-tree-feature-desc">${escapeHtml(details.description).replace(/\n\n/g, '<br><br>').replace(/^(Trigger|Gatilho|Disparador|Requirements|Requisitos|Frequency|Frequência|Failure|Falha|Fallo)/gm, '<strong>$1</strong>')}</div>
+                      </div>
+                    ` : ""}
                   </div>
                 </div>
               `;
             } else if (picker === "none") {
               const featName = isEn ? en : isEs ? es : key;
               const featGlyph = glyph || "";
+              const featureKey = `feature_${String(en || key).toLowerCase().replace(/[^a-z0-9]/g, '_')}`;
+              const isExpanded = Boolean(this.expandedTreeFeatures && this.expandedTreeFeatures[featureKey]);
+              const details = isExpanded ? this.getFeatureDetails(en || key, locale) : null;
               html += `
-                <div class="pb-tree-card" title="${escapeHtml(featName)}">
-                  <div class="pb-tree-card-content" style="padding-left: 2px;">
+                <div class="pb-tree-card interactive-feature ${isExpanded ? 'expanded' : ''}" onclick="app.toggleTreeFeature('${featureKey}')" title="${escapeHtml(featName)}">
+                  <div class="pb-tree-card-content" style="padding-left: 2px; width: 100%;">
                     <div class="pb-tree-card-value" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
                       <span>${escapeHtml(featName)}</span>
                       ${featGlyph ? `<span class="pb-action-glyph">${escapeHtml(featGlyph)}</span>` : ""}
                     </div>
+                    ${isExpanded && details ? `
+                      <div class="pb-tree-feature-details">
+                        ${details.traits?.length ? `
+                          <div class="pb-tree-feature-traits">
+                            ${details.traits.map(t => `<span class="pb-trait-tag">${escapeHtml(t)}</span>`).join("")}
+                          </div>
+                        ` : ""}
+                        <div class="pb-tree-feature-desc">${escapeHtml(details.description).replace(/\n\n/g, '<br><br>').replace(/^(Trigger|Gatilho|Disparador|Requirements|Requisitos|Frequency|Frequência|Failure|Falha|Fallo)/gm, '<strong>$1</strong>')}</div>
+                      </div>
+                    ` : ""}
                   </div>
                 </div>
               `;

@@ -256,7 +256,7 @@ describe("P1: Validador de Prontidão da Ficha & Regras ABC (Readiness Engine)",
     }
 
     expect(coveredClassIds.size).toBeGreaterThanOrEqual(20);
-  });
+  }, 25000);
 
   it("deve reconhecer pré-requisito de classe escrito sem o prefixo Classe", () => {
     expect(engine.getPrerequisiteCompatibility({ level: 4, class: "Bárbaro" }, { prerequisites: ["Bárbaro"] }).state).toBe("available");

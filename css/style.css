@@ -3641,3 +3641,97 @@ body.theme-light .pb-modal-container input::placeholder,
 body.theme-light .pb-modal-container textarea::placeholder {
   color: #887560 !important;
 }
+
+/* ==========================================================================
+   INTERACTIVE TREE FEATURES & TRAITS ACCORDION
+   ========================================================================== */
+.pb-tree-card.interactive-feature {
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+  user-select: text;
+}
+
+.pb-tree-card.interactive-feature:hover {
+  background: rgba(59, 130, 246, 0.08);
+}
+
+.pb-tree-card.interactive-feature.expanded {
+  background: rgba(30, 41, 59, 0.7);
+  border-color: rgba(96, 165, 250, 0.4);
+}
+
+.pb-tree-feature-details {
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  animation: pbFadeIn 0.2s ease-out;
+}
+
+.pb-tree-feature-traits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.pb-trait-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.2;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: #1e293b;
+  color: #93c5fd;
+  border: 1px solid #334155;
+  text-transform: capitalize;
+  letter-spacing: 0.02em;
+}
+
+.pb-tree-feature-desc {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #cbd5e1;
+  word-break: break-word;
+}
+
+.pb-tree-feature-desc strong {
+  color: #f8fafc;
+  font-weight: 700;
+}
+
+/* Light Theme Support */
+[data-theme="light"] .pb-tree-card.interactive-feature:hover,
+body.theme-light .pb-tree-card.interactive-feature:hover {
+  background: #fbf1d8 !important;
+}
+
+[data-theme="light"] .pb-tree-card.interactive-feature.expanded,
+body.theme-light .pb-tree-card.interactive-feature.expanded {
+  background: #fdfaf2 !important;
+  border-color: #9c4210 !important;
+}
+
+[data-theme="light"] .pb-tree-feature-details,
+body.theme-light .pb-tree-feature-details {
+  border-top-color: #ccbe9f !important;
+}
+
+[data-theme="light"] .pb-trait-tag,
+body.theme-light .pb-trait-tag {
+  background: #eee5cf !important;
+  color: #78350f !important;
+  border-color: #ccbe9f !important;
+}
+
+[data-theme="light"] .pb-tree-feature-desc,
+body.theme-light .pb-tree-feature-desc {
+  color: #281d13 !important;
+}
+
+[data-theme="light"] .pb-tree-feature-desc strong,
+body.theme-light .pb-tree-feature-desc strong {
+  color: #78350f !important;
+}
