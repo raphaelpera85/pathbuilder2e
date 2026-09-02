@@ -75,36 +75,88 @@ async function run() {
     fs.writeFileSync(path.join(OUTPUT_DIR, '04_builder_structure.json'), JSON.stringify(builderStructure, null, 2));
     console.log('Estrutura de nós do builder salva.');
 
-    // Clica no card NEW CHARACTER na tela inicial
-    console.log('Clicando em NEW CHARACTER...');
-    await page.evaluate(() => {
-      const allElements = Array.from(document.querySelectorAll('div, span, p, a, h1, h2, h3'));
-      const newCharCard = allElements.find(el => el.innerText && el.innerText.includes('NEW') && el.innerText.includes('CHARACTER'));
-      if (newCharCard) {
-        newCharCard.click();
+    // Clica no card NEW CHARACTER com mouse real baseado em bounding rect
+    console.log('Localizando e clicando em NEW CHARACTER com coordenadas reais...');
+    const clickedNew = await page.evaluate(() => {
+      const allDivs = Array.from(document.querySelectorAll('div, img, span, p'));
+      const target = allDivs.find(el => el.innerText && el.innerText.includes('NEW') && el.innerText.includes('CHARACTER') && !el.innerText.includes('LOAD'));
+      if (target) {
+        const rect = target.getBoundingClientRect();
+        return { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2, rect };
       }
+      return null;
     });
 
-    await new Promise(r => setTimeout(r, 4000));
+    if (clickedNew) {
+      console.log('Coordenadas do botão NEW CHARACTER:', clickedNew.x, clickedNew.y);
+      await page.mouse.click(clickedNew.x, clickedNew.y);
+    } else {
+      console.log('Fallback: clicando no centro da tela superior (x: 720, y: 380)');
+      await page.mouse.click(720, 380);
+    }
+
+    await new Promise(r => setTimeout(r, 6000));
 
     // Capturar tela principal do construtor
     await page.screenshot({ path: path.join(OUTPUT_DIR, '04_character_builder_ready.png') });
     console.log('Tela do construtor pronta salva: audit_snapshots/04_character_builder_ready.png');
 
-    // Agora vamos testar as classes
-    const classesToTest = ['Swashbuckler', 'Fighter', 'Wizard', 'Cleric', 'Kineticist', 'Rogue', 'Witch', 'Champion'];
+    // Clica no botão "Get Started" do modal de novo personagem
+    console.log('Clicando em Get Started...');
+    await page.evaluate(() => {
+      const btns = Array.from(document.querySelectorAll('button, div, span, a'));
+      const getStartedBtn = btns.find(b => b.innerText && b.innerText.trim() === 'Get Started');
+      if (getStartedBtn) {
+        getStartedBtn.click();
+      }
+    });
+
+    await new Promise(r => setTimeout(r, 4000));
+
+    // Capturar tela principal do construtor aberto
+    await page.screenshot({ path: path.join(OUTPUT_DIR, '05_builder_loaded.png') });
+    console.log('Tela do construtor carregado salva: audit_snapshots/05_builder_loaded.png');
+
+    // Extrair todos os elementos clicáveis do construtor no nível 1 inicial
+    const builderCards = await page.evaluate(() => {
+      const cards = [];
+      document.querySelectorAll('div, tr, li, p, span').forEach(el => {
+        const text = el.innerText?.trim();
+        if (text && text.length > 2 && text.length < 80 && !cards.includes(text)) {
+          cards.push({ text, id: el.id, className: el.className });
+        }
+      });
+      return cards;
+    });
+
+    fs.writeFileSync(path.join(OUTPUT_DIR, '05_initial_builder_cards.json'), JSON.stringify(builderCards, null, 2));
+
+    const classesToTest = [
+      'Swashbuckler',
+      'Fighter',
+      'Wizard',
+      'Cleric',
+      'Kineticist',
+      'Rogue',
+      'Witch',
+      'Champion',
+      'Barbarian',
+      'Alchemist'
+    ];
     const classResults = {};
 
     for (const className of classesToTest) {
-      console.log(`\n=== Testando Classe: ${className} ===`);
+      console.log(`\n========================================`);
+      console.log(`>>> Testando Classe no Original: ${className} <<<`);
+      console.log(`========================================`);
 
-      // 1. Clicar no botão/card de seleção de Classe
-      const clicked = await page.evaluate(() => {
-        const divs = Array.from(document.querySelectorAll('div, button, span'));
-        // No Pathbuilder, o card de classe contém "Select Class" ou o nome da classe atual
-        const target = divs.find(d => {
+      // 1. Clicar no seletor de Classe
+      const clickedClass = await page.evaluate(() => {
+        const allDivs = Array.from(document.querySelectorAll('div, span, button'));
+        // Procura card de classe (geralmente tem "Class" e "Select" ou nome de classe)
+        const target = allDivs.find(d => {
           const t = d.innerText?.trim();
-          return t === 'Select Class' || t?.includes('Select Class') || d.id === 'class-selection' || d.className?.includes('class-card');
+          return t === 'Class' || t?.startsWith('Class\n') || t?.includes('Select Class') || d.id === 'divClass' || d.className?.includes('class-card');
         });
         if (target) {
           target.click();
@@ -113,12 +165,12 @@ async function run() {
         return false;
       });
 
-      console.log(`Clicou no card de classe: ${clicked}`);
+      console.log(`Clique no seletor de classe: ${clickedClass}`);
       await new Promise(r => setTimeout(r, 2000));
 
-      // 2. No modal de seleção de classes, procurar e clicar na classe desejada
+      // 2. No modal de seleção, clicar na classe
       const selected = await page.evaluate((cls) => {
-        const items = Array.from(document.querySelectorAll('div, tr, td, li, span, button'));
+        const items = Array.from(document.querySelectorAll('div, tr, td, li, span, button, p'));
         const opt = items.find(el => el.innerText && el.innerText.trim().toLowerCase() === cls.toLowerCase());
         if (opt) {
           opt.click();
@@ -127,43 +179,44 @@ async function run() {
         return false;
       }, className);
 
-      console.log(`Selecionou classe ${className}: ${selected}`);
+      console.log(`Seleção da classe ${className}: ${selected}`);
       await new Promise(r => setTimeout(r, 1500));
 
-      // 3. Clicar no botão de confirmação do modal (ex: "Select", "Accept", "Choose")
+      // 3. Confirmar no modal se houver botão Select / Choose / Accept
       await page.evaluate(() => {
-        const btns = Array.from(document.querySelectorAll('button, div, span'));
-        const selBtn = btns.find(b => {
+        const confirmBtns = Array.from(document.querySelectorAll('button, div, span'));
+        const confirm = confirmBtns.find(b => {
           const t = b.innerText?.trim();
           return t === 'Select' || t === 'Choose' || t === 'Accept' || t === 'Confirm';
         });
-        if (selBtn) selBtn.click();
+        if (confirm) confirm.click();
       });
 
       await new Promise(r => setTimeout(r, 3000));
 
-      // 4. Capturar screenshot do Nível 1 com a classe
-      const screenshotPath = path.join(OUTPUT_DIR, `class_${className.toLowerCase()}_live.png`);
+      // 4. Captura screenshot da árvore de Nível 1 com a classe aplicada
+      const screenshotPath = path.join(OUTPUT_DIR, `class_${className.toLowerCase()}_live_tree.png`);
       await page.screenshot({ path: screenshotPath });
       console.log(`Screenshot salva: ${screenshotPath}`);
 
-      // 5. Extrair todos os cards de features e feats do Nível 1
-      const levelData = await page.evaluate(() => {
-        const elements = Array.from(document.querySelectorAll('div, span, p')).map(el => el.innerText?.trim()).filter(Boolean);
-        const unique = [];
-        for (const t of elements) {
-          if (t.length > 2 && t.length < 120 && !unique.includes(t)) {
-            unique.push(t);
+      // 5. Extrai todos os cards e opções exibidas no Nível 1
+      const level1Cards = await page.evaluate(() => {
+        const buildSection = document.getElementById('divBuild') || document.querySelector('.main-column-left') || document.body;
+        const entries = [];
+        buildSection.querySelectorAll('div, span, p, tr').forEach(el => {
+          const text = el.innerText?.trim();
+          if (text && text.length > 2 && text.length < 100 && !entries.some(e => e.text === text)) {
+            entries.push({ text, id: el.id, className: el.className });
           }
-        }
-        return unique.slice(0, 60);
+        });
+        return entries;
       });
 
-      classResults[className] = levelData;
+      classResults[className] = level1Cards;
     }
 
-    fs.writeFileSync(path.join(OUTPUT_DIR, '06_live_classes_data.json'), JSON.stringify(classResults, null, 2));
-    console.log('Resultados completos salvos em 06_live_classes_data.json');
+    fs.writeFileSync(path.join(OUTPUT_DIR, '07_detailed_classes_live_data.json'), JSON.stringify(classResults, null, 2));
+    console.log('\nTodos os dados detalhados das classes salvos em 07_detailed_classes_live_data.json');
 
   } catch (err) {
     console.error('Erro no teste de classes:', err);

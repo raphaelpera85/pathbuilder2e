@@ -53,7 +53,13 @@
     "Damage",
     "Critical",
     "Dice Tray",
-    "Menu"
+    "Menu",
+    "New Pathbuilder 2e Character",
+    "You can Get Started right away, or keep things simple by selecting Core Game Only.",
+    "Include Adventure Path content?\nOn",
+    "Include Adventure Path content?",
+    "Off",
+    "Legacy options for new characters can be enabled under Character Options -> New Character Options."
   ],
   "Fighter": [
     "Web Version 109",
@@ -109,7 +115,13 @@
     "Damage",
     "Critical",
     "Dice Tray",
-    "Menu"
+    "Menu",
+    "New Pathbuilder 2e Character",
+    "You can Get Started right away, or keep things simple by selecting Core Game Only.",
+    "Include Adventure Path content?\nOn",
+    "Include Adventure Path content?",
+    "Off",
+    "Legacy options for new characters can be enabled under Character Options -> New Character Options."
   ],
   "Wizard": [
     "Web Version 109",
@@ -165,7 +177,13 @@
     "Damage",
     "Critical",
     "Dice Tray",
-    "Menu"
+    "Menu",
+    "New Pathbuilder 2e Character",
+    "You can Get Started right away, or keep things simple by selecting Core Game Only.",
+    "Include Adventure Path content?\nOn",
+    "Include Adventure Path content?",
+    "Off",
+    "Legacy options for new characters can be enabled under Character Options -> New Character Options."
   ],
   "Cleric": [
     "Web Version 109",
@@ -221,7 +239,13 @@
     "Damage",
     "Critical",
     "Dice Tray",
-    "Menu"
+    "Menu",
+    "New Pathbuilder 2e Character",
+    "You can Get Started right away, or keep things simple by selecting Core Game Only.",
+    "Include Adventure Path content?\nOn",
+    "Include Adventure Path content?",
+    "Off",
+    "Legacy options for new characters can be enabled under Character Options -> New Character Options."
   ],
   "Kineticist": [
     "Web Version 109",
@@ -277,7 +301,13 @@
     "Damage",
     "Critical",
     "Dice Tray",
-    "Menu"
+    "Menu",
+    "New Pathbuilder 2e Character",
+    "You can Get Started right away, or keep things simple by selecting Core Game Only.",
+    "Include Adventure Path content?\nOn",
+    "Include Adventure Path content?",
+    "Off",
+    "Legacy options for new characters can be enabled under Character Options -> New Character Options."
   ],
   "Rogue": [
     "Web Version 109",
@@ -333,7 +363,13 @@
     "Damage",
     "Critical",
     "Dice Tray",
-    "Menu"
+    "Menu",
+    "New Pathbuilder 2e Character",
+    "You can Get Started right away, or keep things simple by selecting Core Game Only.",
+    "Include Adventure Path content?\nOn",
+    "Include Adventure Path content?",
+    "Off",
+    "Legacy options for new characters can be enabled under Character Options -> New Character Options."
   ],
   "Witch": [
     "Web Version 109",
@@ -389,7 +425,13 @@
     "Damage",
     "Critical",
     "Dice Tray",
-    "Menu"
+    "Menu",
+    "New Pathbuilder 2e Character",
+    "You can Get Started right away, or keep things simple by selecting Core Game Only.",
+    "Include Adventure Path content?\nOn",
+    "Include Adventure Path content?",
+    "Off",
+    "Legacy options for new characters can be enabled under Character Options -> New Character Options."
   ],
   "Champion": [
     "Web Version 109",
@@ -445,6 +487,12 @@
     "Damage",
     "Critical",
     "Dice Tray",
-    "Menu"
+    "Menu",
+    "New Pathbuilder 2e Character",
+    "You can Get Started right away, or keep things simple by selecting Core Game Only.",
+    "Include Adventure Path content?\nOn",
+    "Include Adventure Path content?",
+    "Off",
+    "Legacy options for new characters can be enabled under Character Options -> New Character Options."
   ]
 }

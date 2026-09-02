@@ -1,0 +1,5872 @@
+{
+  "Swashbuckler": [
+    {
+      "text": "Ancestry\nHuman\nBackground\nBarkeep\nClass\nFighter",
+      "id": "divTopButtons",
+      "className": "rounded-rectangle build-section"
+    },
+    {
+      "text": "Ancestry\nHuman",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Ancestry",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Human",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Prerequisites not met or taken too many times!",
+      "id": "",
+      "className": "warning-text hidden small-text"
+    },
+    {
+      "text": "Background\nBarkeep",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Background",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Barkeep",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Class\nFighter",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Class",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Fighter",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Dual ClassPrerequisites not met or taken too many times!",
+      "id": "",
+      "className": "small-margin-right-bottom div-button hidden"
+    },
+    {
+      "text": "Dual Class",
+      "id": "",
+      "className": "button-column"
+    },
+    {
+      "text": "Level 1",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "4\nSet Abilities\n3\nSkill Training\n1\nClass Skill",
+      "id": "",
+      "className": "centered-flex"
+    },
+    {
+      "text": "4\nSet Abilities",
+      "id": "",
+      "className": "div-button small-margin-right-bottom padding5 cogButton"
+    },
+    {
+      "text": "Set Abilities",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "3\nSkill Training",
+      "id": "",
+      "className": "div-button small-margin-right-bottom padding5 cogButton"
+    },
+    {
+      "text": "Skill Training",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "1\nClass Skill",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Class Skill",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "Heritage\nNot Selected\nAncestry Feat\nNot Selected\nClass Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "Heritage\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Heritage",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Not Selected",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Ancestry Feat\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Ancestry Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Class Feat\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Class Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Reactive Strike\nFree Feat: Shield Block\nFree Feat: Hobnobber",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Reactive Strike",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Free Feat: Shield Block",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "General",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Free Feat: Hobnobber",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "GeneralSkill",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Skill",
+      "id": "",
+      "className": "trait trait-common"
+    },
+    {
+      "text": "Level 2\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 2",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Class Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "99Skill Increase",
+      "id": "",
+      "className": "div-button small-margin-right-bottom padding5 cogButton hidden"
+    },
+    {
+      "text": "Skill Increase",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "Skill Feat\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Skill Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Level 3\n1\nSkill Increase\nGeneral Feat\nNot Selected\nBravery",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 3",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nBravery",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "1\nSkill Increase",
+      "id": "",
+      "className": "centered-flex"
+    },
+    {
+      "text": "General Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "General Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Bravery",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Level 4\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 4",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 5",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\n4\nAbility Boosts",
+      "id": "",
+      "className": "centered-flex"
+    },
+    {
+      "text": "4\nAbility Boosts",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Ability Boosts",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "Fighter Weapon Mastery\nWeapon Mastery Group\nNot Selected",
+      "id": "id_parent_options",
+      "className": ""
+    },
+    {
+      "text": "Fighter Weapon Mastery",
+      "id": "",
+      "className": "top-div listview-topdiv"
+    },
+    {
+      "text": "Weapon Mastery Group\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Weapon Mastery Group",
+      "id": "",
+      "className": "small-text grey-text button-text"
+    },
+    {
+      "text": "Level 6\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 6",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 7\n1\nSkill Increase\nGeneral Feat\nNot Selected\nBattlefield Surveyor\nWeapon Specialization",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 7",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nBattlefield Surveyor\nWeapon Specialization",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Battlefield Surveyor\nWeapon Specialization",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Battlefield Surveyor",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Weapon Specialization",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 8\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 8",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 9",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Combat Flexibility\nNot Selected\nAncestry Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "Combat Flexibility\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Combat Flexibility",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Battle Hardened\nCombat Flexibility",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Battle Hardened",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 10\n4\nAbility Boosts\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 10",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "4\nAbility Boosts\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Level 11\n1\nSkill Increase\nGeneral Feat\nNot Selected\nArmor Expertise\nFighter Expertise",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 11",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nArmor Expertise\nFighter Expertise",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Armor Expertise\nFighter Expertise",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Armor Expertise",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Fighter Expertise",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 12\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 12",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 13\n1\nSkill Increase\nAncestry Feat\nNot Selected\nWeapon Legend\nWeapon Legend Group\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 13",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nAncestry Feat\nNot Selected\nWeapon Legend\nWeapon Legend Group\nNot Selected",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Weapon Legend\nWeapon Legend Group\nNot Selected",
+      "id": "id_parent_options",
+      "className": ""
+    },
+    {
+      "text": "Weapon Legend",
+      "id": "",
+      "className": "top-div listview-topdiv"
+    },
+    {
+      "text": "Weapon Legend Group\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Weapon Legend Group",
+      "id": "",
+      "className": "small-text grey-text button-text"
+    },
+    {
+      "text": "Level 14\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 14",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 15",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Improved Flexibility\nNot Selected\nGeneral Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "Improved Flexibility\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Improved Flexibility",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Greater Weapon Specialization\nImproved Flexibility\nTempered Reflexes",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Greater Weapon Specialization",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Tempered Reflexes",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 16\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 16",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 17\n1\nSkill Increase\nAncestry Feat\nNot Selected\nArmor Mastery",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 17",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nAncestry Feat\nNot Selected\nArmor Mastery",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Armor Mastery",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Level 18\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 18",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 19\n1\nSkill Increase\nGeneral Feat\nNot Selected\nVersatile Legend",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 19",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nVersatile Legend",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Versatile Legend",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Level 20\n4\nAbility Boosts\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 20",
+      "id": "",
+      "className": "centered-div-holder"
+    }
+  ],
+  "Fighter": [
+    {
+      "text": "Ancestry\nHuman\nBackground\nBarkeep\nClass\nFighter",
+      "id": "divTopButtons",
+      "className": "rounded-rectangle build-section"
+    },
+    {
+      "text": "Ancestry\nHuman",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Ancestry",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Human",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Prerequisites not met or taken too many times!",
+      "id": "",
+      "className": "warning-text hidden small-text"
+    },
+    {
+      "text": "Background\nBarkeep",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Background",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Barkeep",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Class\nFighter",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Class",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Fighter",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Dual ClassPrerequisites not met or taken too many times!",
+      "id": "",
+      "className": "small-margin-right-bottom div-button hidden"
+    },
+    {
+      "text": "Dual Class",
+      "id": "",
+      "className": "button-column"
+    },
+    {
+      "text": "Level 1",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "4\nSet Abilities\n3\nSkill Training\n1\nClass Skill",
+      "id": "",
+      "className": "centered-flex"
+    },
+    {
+      "text": "4\nSet Abilities",
+      "id": "",
+      "className": "div-button small-margin-right-bottom padding5 cogButton"
+    },
+    {
+      "text": "Set Abilities",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "3\nSkill Training",
+      "id": "",
+      "className": "div-button small-margin-right-bottom padding5 cogButton"
+    },
+    {
+      "text": "Skill Training",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "1\nClass Skill",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Class Skill",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "Heritage\nNot Selected\nAncestry Feat\nNot Selected\nClass Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "Heritage\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Heritage",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Not Selected",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Ancestry Feat\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Ancestry Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Class Feat\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Class Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Reactive Strike\nFree Feat: Shield Block\nFree Feat: Hobnobber",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Reactive Strike",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Free Feat: Shield Block",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "General",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Free Feat: Hobnobber",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "GeneralSkill",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Skill",
+      "id": "",
+      "className": "trait trait-common"
+    },
+    {
+      "text": "Level 2\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 2",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Class Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "99Skill Increase",
+      "id": "",
+      "className": "div-button small-margin-right-bottom padding5 cogButton hidden"
+    },
+    {
+      "text": "Skill Increase",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "Skill Feat\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Skill Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Level 3\n1\nSkill Increase\nGeneral Feat\nNot Selected\nBravery",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 3",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nBravery",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "1\nSkill Increase",
+      "id": "",
+      "className": "centered-flex"
+    },
+    {
+      "text": "General Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "General Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Bravery",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Level 4\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 4",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 5",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\n4\nAbility Boosts",
+      "id": "",
+      "className": "centered-flex"
+    },
+    {
+      "text": "4\nAbility Boosts",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Ability Boosts",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "Fighter Weapon Mastery\nWeapon Mastery Group\nNot Selected",
+      "id": "id_parent_options",
+      "className": ""
+    },
+    {
+      "text": "Fighter Weapon Mastery",
+      "id": "",
+      "className": "top-div listview-topdiv"
+    },
+    {
+      "text": "Weapon Mastery Group\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Weapon Mastery Group",
+      "id": "",
+      "className": "small-text grey-text button-text"
+    },
+    {
+      "text": "Level 6\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 6",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 7\n1\nSkill Increase\nGeneral Feat\nNot Selected\nBattlefield Surveyor\nWeapon Specialization",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 7",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nBattlefield Surveyor\nWeapon Specialization",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Battlefield Surveyor\nWeapon Specialization",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Battlefield Surveyor",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Weapon Specialization",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 8\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 8",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 9",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Combat Flexibility\nNot Selected\nAncestry Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "Combat Flexibility\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Combat Flexibility",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Battle Hardened\nCombat Flexibility",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Battle Hardened",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 10\n4\nAbility Boosts\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 10",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "4\nAbility Boosts\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Level 11\n1\nSkill Increase\nGeneral Feat\nNot Selected\nArmor Expertise\nFighter Expertise",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 11",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nArmor Expertise\nFighter Expertise",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Armor Expertise\nFighter Expertise",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Armor Expertise",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Fighter Expertise",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 12\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 12",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 13\n1\nSkill Increase\nAncestry Feat\nNot Selected\nWeapon Legend\nWeapon Legend Group\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 13",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nAncestry Feat\nNot Selected\nWeapon Legend\nWeapon Legend Group\nNot Selected",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Weapon Legend\nWeapon Legend Group\nNot Selected",
+      "id": "id_parent_options",
+      "className": ""
+    },
+    {
+      "text": "Weapon Legend",
+      "id": "",
+      "className": "top-div listview-topdiv"
+    },
+    {
+      "text": "Weapon Legend Group\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Weapon Legend Group",
+      "id": "",
+      "className": "small-text grey-text button-text"
+    },
+    {
+      "text": "Level 14\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 14",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 15",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Improved Flexibility\nNot Selected\nGeneral Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "Improved Flexibility\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Improved Flexibility",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Greater Weapon Specialization\nImproved Flexibility\nTempered Reflexes",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Greater Weapon Specialization",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Tempered Reflexes",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 16\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 16",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 17\n1\nSkill Increase\nAncestry Feat\nNot Selected\nArmor Mastery",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 17",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nAncestry Feat\nNot Selected\nArmor Mastery",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Armor Mastery",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Level 18\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 18",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 19\n1\nSkill Increase\nGeneral Feat\nNot Selected\nVersatile Legend",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 19",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nVersatile Legend",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Versatile Legend",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Level 20\n4\nAbility Boosts\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 20",
+      "id": "",
+      "className": "centered-div-holder"
+    }
+  ],
+  "Wizard": [
+    {
+      "text": "Ancestry\nHuman\nBackground\nBarkeep\nClass\nFighter",
+      "id": "divTopButtons",
+      "className": "rounded-rectangle build-section"
+    },
+    {
+      "text": "Ancestry\nHuman",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Ancestry",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Human",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Prerequisites not met or taken too many times!",
+      "id": "",
+      "className": "warning-text hidden small-text"
+    },
+    {
+      "text": "Background\nBarkeep",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Background",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Barkeep",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Class\nFighter",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Class",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Fighter",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Dual ClassPrerequisites not met or taken too many times!",
+      "id": "",
+      "className": "small-margin-right-bottom div-button hidden"
+    },
+    {
+      "text": "Dual Class",
+      "id": "",
+      "className": "button-column"
+    },
+    {
+      "text": "Level 1",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "4\nSet Abilities\n3\nSkill Training\n1\nClass Skill",
+      "id": "",
+      "className": "centered-flex"
+    },
+    {
+      "text": "4\nSet Abilities",
+      "id": "",
+      "className": "div-button small-margin-right-bottom padding5 cogButton"
+    },
+    {
+      "text": "Set Abilities",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "3\nSkill Training",
+      "id": "",
+      "className": "div-button small-margin-right-bottom padding5 cogButton"
+    },
+    {
+      "text": "Skill Training",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "1\nClass Skill",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Class Skill",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "Heritage\nNot Selected\nAncestry Feat\nNot Selected\nClass Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "Heritage\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Heritage",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Not Selected",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Ancestry Feat\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Ancestry Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Class Feat\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Class Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Reactive Strike\nFree Feat: Shield Block\nFree Feat: Hobnobber",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Reactive Strike",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Free Feat: Shield Block",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "General",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Free Feat: Hobnobber",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "GeneralSkill",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Skill",
+      "id": "",
+      "className": "trait trait-common"
+    },
+    {
+      "text": "Level 2\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 2",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Class Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "99Skill Increase",
+      "id": "",
+      "className": "div-button small-margin-right-bottom padding5 cogButton hidden"
+    },
+    {
+      "text": "Skill Increase",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "Skill Feat\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Skill Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Level 3\n1\nSkill Increase\nGeneral Feat\nNot Selected\nBravery",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 3",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nBravery",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "1\nSkill Increase",
+      "id": "",
+      "className": "centered-flex"
+    },
+    {
+      "text": "General Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "General Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Bravery",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Level 4\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 4",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 5",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\n4\nAbility Boosts",
+      "id": "",
+      "className": "centered-flex"
+    },
+    {
+      "text": "4\nAbility Boosts",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Ability Boosts",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "Fighter Weapon Mastery\nWeapon Mastery Group\nNot Selected",
+      "id": "id_parent_options",
+      "className": ""
+    },
+    {
+      "text": "Fighter Weapon Mastery",
+      "id": "",
+      "className": "top-div listview-topdiv"
+    },
+    {
+      "text": "Weapon Mastery Group\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Weapon Mastery Group",
+      "id": "",
+      "className": "small-text grey-text button-text"
+    },
+    {
+      "text": "Level 6\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 6",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 7\n1\nSkill Increase\nGeneral Feat\nNot Selected\nBattlefield Surveyor\nWeapon Specialization",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 7",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nBattlefield Surveyor\nWeapon Specialization",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Battlefield Surveyor\nWeapon Specialization",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Battlefield Surveyor",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Weapon Specialization",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 8\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 8",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 9",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Combat Flexibility\nNot Selected\nAncestry Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "Combat Flexibility\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Combat Flexibility",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Battle Hardened\nCombat Flexibility",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Battle Hardened",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 10\n4\nAbility Boosts\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 10",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "4\nAbility Boosts\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Level 11\n1\nSkill Increase\nGeneral Feat\nNot Selected\nArmor Expertise\nFighter Expertise",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 11",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nArmor Expertise\nFighter Expertise",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Armor Expertise\nFighter Expertise",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Armor Expertise",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Fighter Expertise",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 12\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 12",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 13\n1\nSkill Increase\nAncestry Feat\nNot Selected\nWeapon Legend\nWeapon Legend Group\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 13",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nAncestry Feat\nNot Selected\nWeapon Legend\nWeapon Legend Group\nNot Selected",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Weapon Legend\nWeapon Legend Group\nNot Selected",
+      "id": "id_parent_options",
+      "className": ""
+    },
+    {
+      "text": "Weapon Legend",
+      "id": "",
+      "className": "top-div listview-topdiv"
+    },
+    {
+      "text": "Weapon Legend Group\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Weapon Legend Group",
+      "id": "",
+      "className": "small-text grey-text button-text"
+    },
+    {
+      "text": "Level 14\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 14",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 15",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Improved Flexibility\nNot Selected\nGeneral Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "Improved Flexibility\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Improved Flexibility",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Greater Weapon Specialization\nImproved Flexibility\nTempered Reflexes",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Greater Weapon Specialization",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Tempered Reflexes",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 16\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 16",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 17\n1\nSkill Increase\nAncestry Feat\nNot Selected\nArmor Mastery",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 17",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nAncestry Feat\nNot Selected\nArmor Mastery",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Armor Mastery",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Level 18\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 18",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 19\n1\nSkill Increase\nGeneral Feat\nNot Selected\nVersatile Legend",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 19",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nVersatile Legend",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Versatile Legend",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Level 20\n4\nAbility Boosts\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 20",
+      "id": "",
+      "className": "centered-div-holder"
+    }
+  ],
+  "Cleric": [
+    {
+      "text": "Ancestry\nHuman\nBackground\nBarkeep\nClass\nFighter",
+      "id": "divTopButtons",
+      "className": "rounded-rectangle build-section"
+    },
+    {
+      "text": "Ancestry\nHuman",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Ancestry",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Human",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Prerequisites not met or taken too many times!",
+      "id": "",
+      "className": "warning-text hidden small-text"
+    },
+    {
+      "text": "Background\nBarkeep",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Background",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Barkeep",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Class\nFighter",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Class",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Fighter",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Dual ClassPrerequisites not met or taken too many times!",
+      "id": "",
+      "className": "small-margin-right-bottom div-button hidden"
+    },
+    {
+      "text": "Dual Class",
+      "id": "",
+      "className": "button-column"
+    },
+    {
+      "text": "Level 1",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "4\nSet Abilities\n3\nSkill Training\n1\nClass Skill",
+      "id": "",
+      "className": "centered-flex"
+    },
+    {
+      "text": "4\nSet Abilities",
+      "id": "",
+      "className": "div-button small-margin-right-bottom padding5 cogButton"
+    },
+    {
+      "text": "Set Abilities",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "3\nSkill Training",
+      "id": "",
+      "className": "div-button small-margin-right-bottom padding5 cogButton"
+    },
+    {
+      "text": "Skill Training",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "1\nClass Skill",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Class Skill",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "Heritage\nNot Selected\nAncestry Feat\nNot Selected\nClass Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "Heritage\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Heritage",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Not Selected",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Ancestry Feat\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Ancestry Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Class Feat\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Class Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Reactive Strike\nFree Feat: Shield Block\nFree Feat: Hobnobber",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Reactive Strike",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Free Feat: Shield Block",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "General",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Free Feat: Hobnobber",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "GeneralSkill",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Skill",
+      "id": "",
+      "className": "trait trait-common"
+    },
+    {
+      "text": "Level 2\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 2",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Class Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "99Skill Increase",
+      "id": "",
+      "className": "div-button small-margin-right-bottom padding5 cogButton hidden"
+    },
+    {
+      "text": "Skill Increase",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "Skill Feat\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Skill Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Level 3\n1\nSkill Increase\nGeneral Feat\nNot Selected\nBravery",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 3",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nBravery",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "1\nSkill Increase",
+      "id": "",
+      "className": "centered-flex"
+    },
+    {
+      "text": "General Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "General Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Bravery",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Level 4\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 4",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 5",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\n4\nAbility Boosts",
+      "id": "",
+      "className": "centered-flex"
+    },
+    {
+      "text": "4\nAbility Boosts",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Ability Boosts",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "Fighter Weapon Mastery\nWeapon Mastery Group\nNot Selected",
+      "id": "id_parent_options",
+      "className": ""
+    },
+    {
+      "text": "Fighter Weapon Mastery",
+      "id": "",
+      "className": "top-div listview-topdiv"
+    },
+    {
+      "text": "Weapon Mastery Group\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Weapon Mastery Group",
+      "id": "",
+      "className": "small-text grey-text button-text"
+    },
+    {
+      "text": "Level 6\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 6",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 7\n1\nSkill Increase\nGeneral Feat\nNot Selected\nBattlefield Surveyor\nWeapon Specialization",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 7",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nBattlefield Surveyor\nWeapon Specialization",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Battlefield Surveyor\nWeapon Specialization",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Battlefield Surveyor",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Weapon Specialization",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 8\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 8",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 9",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Combat Flexibility\nNot Selected\nAncestry Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "Combat Flexibility\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Combat Flexibility",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Battle Hardened\nCombat Flexibility",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Battle Hardened",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 10\n4\nAbility Boosts\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 10",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "4\nAbility Boosts\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Level 11\n1\nSkill Increase\nGeneral Feat\nNot Selected\nArmor Expertise\nFighter Expertise",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 11",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nArmor Expertise\nFighter Expertise",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Armor Expertise\nFighter Expertise",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Armor Expertise",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Fighter Expertise",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 12\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 12",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 13\n1\nSkill Increase\nAncestry Feat\nNot Selected\nWeapon Legend\nWeapon Legend Group\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 13",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nAncestry Feat\nNot Selected\nWeapon Legend\nWeapon Legend Group\nNot Selected",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Weapon Legend\nWeapon Legend Group\nNot Selected",
+      "id": "id_parent_options",
+      "className": ""
+    },
+    {
+      "text": "Weapon Legend",
+      "id": "",
+      "className": "top-div listview-topdiv"
+    },
+    {
+      "text": "Weapon Legend Group\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Weapon Legend Group",
+      "id": "",
+      "className": "small-text grey-text button-text"
+    },
+    {
+      "text": "Level 14\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 14",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 15",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Improved Flexibility\nNot Selected\nGeneral Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "Improved Flexibility\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Improved Flexibility",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Greater Weapon Specialization\nImproved Flexibility\nTempered Reflexes",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Greater Weapon Specialization",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Tempered Reflexes",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 16\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 16",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 17\n1\nSkill Increase\nAncestry Feat\nNot Selected\nArmor Mastery",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 17",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nAncestry Feat\nNot Selected\nArmor Mastery",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Armor Mastery",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Level 18\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 18",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 19\n1\nSkill Increase\nGeneral Feat\nNot Selected\nVersatile Legend",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 19",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nVersatile Legend",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Versatile Legend",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Level 20\n4\nAbility Boosts\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 20",
+      "id": "",
+      "className": "centered-div-holder"
+    }
+  ],
+  "Kineticist": [
+    {
+      "text": "Ancestry\nHuman\nBackground\nBarkeep\nClass\nFighter",
+      "id": "divTopButtons",
+      "className": "rounded-rectangle build-section"
+    },
+    {
+      "text": "Ancestry\nHuman",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Ancestry",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Human",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Prerequisites not met or taken too many times!",
+      "id": "",
+      "className": "warning-text hidden small-text"
+    },
+    {
+      "text": "Background\nBarkeep",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Background",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Barkeep",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Class\nFighter",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Class",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Fighter",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Dual ClassPrerequisites not met or taken too many times!",
+      "id": "",
+      "className": "small-margin-right-bottom div-button hidden"
+    },
+    {
+      "text": "Dual Class",
+      "id": "",
+      "className": "button-column"
+    },
+    {
+      "text": "Level 1",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "4\nSet Abilities\n3\nSkill Training\n1\nClass Skill",
+      "id": "",
+      "className": "centered-flex"
+    },
+    {
+      "text": "4\nSet Abilities",
+      "id": "",
+      "className": "div-button small-margin-right-bottom padding5 cogButton"
+    },
+    {
+      "text": "Set Abilities",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "3\nSkill Training",
+      "id": "",
+      "className": "div-button small-margin-right-bottom padding5 cogButton"
+    },
+    {
+      "text": "Skill Training",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "1\nClass Skill",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Class Skill",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "Heritage\nNot Selected\nAncestry Feat\nNot Selected\nClass Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "Heritage\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Heritage",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Not Selected",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Ancestry Feat\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Ancestry Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Class Feat\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Class Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Reactive Strike\nFree Feat: Shield Block\nFree Feat: Hobnobber",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Reactive Strike",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Free Feat: Shield Block",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "General",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Free Feat: Hobnobber",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "GeneralSkill",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Skill",
+      "id": "",
+      "className": "trait trait-common"
+    },
+    {
+      "text": "Level 2\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 2",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Class Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "99Skill Increase",
+      "id": "",
+      "className": "div-button small-margin-right-bottom padding5 cogButton hidden"
+    },
+    {
+      "text": "Skill Increase",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "Skill Feat\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Skill Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Level 3\n1\nSkill Increase\nGeneral Feat\nNot Selected\nBravery",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 3",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nBravery",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "1\nSkill Increase",
+      "id": "",
+      "className": "centered-flex"
+    },
+    {
+      "text": "General Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "General Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Bravery",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Level 4\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 4",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 5",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\n4\nAbility Boosts",
+      "id": "",
+      "className": "centered-flex"
+    },
+    {
+      "text": "4\nAbility Boosts",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Ability Boosts",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "Fighter Weapon Mastery\nWeapon Mastery Group\nNot Selected",
+      "id": "id_parent_options",
+      "className": ""
+    },
+    {
+      "text": "Fighter Weapon Mastery",
+      "id": "",
+      "className": "top-div listview-topdiv"
+    },
+    {
+      "text": "Weapon Mastery Group\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Weapon Mastery Group",
+      "id": "",
+      "className": "small-text grey-text button-text"
+    },
+    {
+      "text": "Level 6\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 6",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 7\n1\nSkill Increase\nGeneral Feat\nNot Selected\nBattlefield Surveyor\nWeapon Specialization",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 7",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nBattlefield Surveyor\nWeapon Specialization",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Battlefield Surveyor\nWeapon Specialization",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Battlefield Surveyor",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Weapon Specialization",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 8\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 8",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 9",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Combat Flexibility\nNot Selected\nAncestry Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "Combat Flexibility\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Combat Flexibility",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Battle Hardened\nCombat Flexibility",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Battle Hardened",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 10\n4\nAbility Boosts\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 10",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "4\nAbility Boosts\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Level 11\n1\nSkill Increase\nGeneral Feat\nNot Selected\nArmor Expertise\nFighter Expertise",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 11",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nArmor Expertise\nFighter Expertise",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Armor Expertise\nFighter Expertise",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Armor Expertise",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Fighter Expertise",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 12\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 12",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 13\n1\nSkill Increase\nAncestry Feat\nNot Selected\nWeapon Legend\nWeapon Legend Group\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 13",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nAncestry Feat\nNot Selected\nWeapon Legend\nWeapon Legend Group\nNot Selected",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Weapon Legend\nWeapon Legend Group\nNot Selected",
+      "id": "id_parent_options",
+      "className": ""
+    },
+    {
+      "text": "Weapon Legend",
+      "id": "",
+      "className": "top-div listview-topdiv"
+    },
+    {
+      "text": "Weapon Legend Group\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Weapon Legend Group",
+      "id": "",
+      "className": "small-text grey-text button-text"
+    },
+    {
+      "text": "Level 14\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 14",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 15",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Improved Flexibility\nNot Selected\nGeneral Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "Improved Flexibility\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Improved Flexibility",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Greater Weapon Specialization\nImproved Flexibility\nTempered Reflexes",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Greater Weapon Specialization",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Tempered Reflexes",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 16\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 16",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 17\n1\nSkill Increase\nAncestry Feat\nNot Selected\nArmor Mastery",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 17",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nAncestry Feat\nNot Selected\nArmor Mastery",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Armor Mastery",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Level 18\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 18",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 19\n1\nSkill Increase\nGeneral Feat\nNot Selected\nVersatile Legend",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 19",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nVersatile Legend",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Versatile Legend",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Level 20\n4\nAbility Boosts\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 20",
+      "id": "",
+      "className": "centered-div-holder"
+    }
+  ],
+  "Rogue": [
+    {
+      "text": "Ancestry\nHuman\nBackground\nBarkeep\nClass\nFighter",
+      "id": "divTopButtons",
+      "className": "rounded-rectangle build-section"
+    },
+    {
+      "text": "Ancestry\nHuman",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Ancestry",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Human",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Prerequisites not met or taken too many times!",
+      "id": "",
+      "className": "warning-text hidden small-text"
+    },
+    {
+      "text": "Background\nBarkeep",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Background",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Barkeep",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Class\nFighter",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Class",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Fighter",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Dual ClassPrerequisites not met or taken too many times!",
+      "id": "",
+      "className": "small-margin-right-bottom div-button hidden"
+    },
+    {
+      "text": "Dual Class",
+      "id": "",
+      "className": "button-column"
+    },
+    {
+      "text": "Level 1",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "4\nSet Abilities\n3\nSkill Training\n1\nClass Skill",
+      "id": "",
+      "className": "centered-flex"
+    },
+    {
+      "text": "4\nSet Abilities",
+      "id": "",
+      "className": "div-button small-margin-right-bottom padding5 cogButton"
+    },
+    {
+      "text": "Set Abilities",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "3\nSkill Training",
+      "id": "",
+      "className": "div-button small-margin-right-bottom padding5 cogButton"
+    },
+    {
+      "text": "Skill Training",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "1\nClass Skill",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Class Skill",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "Heritage\nNot Selected\nAncestry Feat\nNot Selected\nClass Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "Heritage\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Heritage",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Not Selected",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Ancestry Feat\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Ancestry Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Class Feat\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Class Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Reactive Strike\nFree Feat: Shield Block\nFree Feat: Hobnobber",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Reactive Strike",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Free Feat: Shield Block",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "General",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Free Feat: Hobnobber",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "GeneralSkill",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Skill",
+      "id": "",
+      "className": "trait trait-common"
+    },
+    {
+      "text": "Level 2\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 2",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Class Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "99Skill Increase",
+      "id": "",
+      "className": "div-button small-margin-right-bottom padding5 cogButton hidden"
+    },
+    {
+      "text": "Skill Increase",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "Skill Feat\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Skill Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Level 3\n1\nSkill Increase\nGeneral Feat\nNot Selected\nBravery",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 3",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nBravery",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "1\nSkill Increase",
+      "id": "",
+      "className": "centered-flex"
+    },
+    {
+      "text": "General Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "General Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Bravery",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Level 4\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 4",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 5",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\n4\nAbility Boosts",
+      "id": "",
+      "className": "centered-flex"
+    },
+    {
+      "text": "4\nAbility Boosts",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Ability Boosts",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "Fighter Weapon Mastery\nWeapon Mastery Group\nNot Selected",
+      "id": "id_parent_options",
+      "className": ""
+    },
+    {
+      "text": "Fighter Weapon Mastery",
+      "id": "",
+      "className": "top-div listview-topdiv"
+    },
+    {
+      "text": "Weapon Mastery Group\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Weapon Mastery Group",
+      "id": "",
+      "className": "small-text grey-text button-text"
+    },
+    {
+      "text": "Level 6\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 6",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 7\n1\nSkill Increase\nGeneral Feat\nNot Selected\nBattlefield Surveyor\nWeapon Specialization",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 7",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nBattlefield Surveyor\nWeapon Specialization",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Battlefield Surveyor\nWeapon Specialization",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Battlefield Surveyor",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Weapon Specialization",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 8\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 8",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 9",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Combat Flexibility\nNot Selected\nAncestry Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "Combat Flexibility\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Combat Flexibility",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Battle Hardened\nCombat Flexibility",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Battle Hardened",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 10\n4\nAbility Boosts\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 10",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "4\nAbility Boosts\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Level 11\n1\nSkill Increase\nGeneral Feat\nNot Selected\nArmor Expertise\nFighter Expertise",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 11",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nArmor Expertise\nFighter Expertise",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Armor Expertise\nFighter Expertise",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Armor Expertise",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Fighter Expertise",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 12\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 12",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 13\n1\nSkill Increase\nAncestry Feat\nNot Selected\nWeapon Legend\nWeapon Legend Group\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 13",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nAncestry Feat\nNot Selected\nWeapon Legend\nWeapon Legend Group\nNot Selected",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Weapon Legend\nWeapon Legend Group\nNot Selected",
+      "id": "id_parent_options",
+      "className": ""
+    },
+    {
+      "text": "Weapon Legend",
+      "id": "",
+      "className": "top-div listview-topdiv"
+    },
+    {
+      "text": "Weapon Legend Group\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Weapon Legend Group",
+      "id": "",
+      "className": "small-text grey-text button-text"
+    },
+    {
+      "text": "Level 14\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 14",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 15",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Improved Flexibility\nNot Selected\nGeneral Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "Improved Flexibility\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Improved Flexibility",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Greater Weapon Specialization\nImproved Flexibility\nTempered Reflexes",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Greater Weapon Specialization",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Tempered Reflexes",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 16\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 16",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 17\n1\nSkill Increase\nAncestry Feat\nNot Selected\nArmor Mastery",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 17",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nAncestry Feat\nNot Selected\nArmor Mastery",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Armor Mastery",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Level 18\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 18",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 19\n1\nSkill Increase\nGeneral Feat\nNot Selected\nVersatile Legend",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 19",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nVersatile Legend",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Versatile Legend",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Level 20\n4\nAbility Boosts\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 20",
+      "id": "",
+      "className": "centered-div-holder"
+    }
+  ],
+  "Witch": [
+    {
+      "text": "Ancestry\nHuman\nBackground\nBarkeep\nClass\nFighter",
+      "id": "divTopButtons",
+      "className": "rounded-rectangle build-section"
+    },
+    {
+      "text": "Ancestry\nHuman",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Ancestry",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Human",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Prerequisites not met or taken too many times!",
+      "id": "",
+      "className": "warning-text hidden small-text"
+    },
+    {
+      "text": "Background\nBarkeep",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Background",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Barkeep",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Class\nFighter",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Class",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Fighter",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Dual ClassPrerequisites not met or taken too many times!",
+      "id": "",
+      "className": "small-margin-right-bottom div-button hidden"
+    },
+    {
+      "text": "Dual Class",
+      "id": "",
+      "className": "button-column"
+    },
+    {
+      "text": "Level 1",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "4\nSet Abilities\n3\nSkill Training\n1\nClass Skill",
+      "id": "",
+      "className": "centered-flex"
+    },
+    {
+      "text": "4\nSet Abilities",
+      "id": "",
+      "className": "div-button small-margin-right-bottom padding5 cogButton"
+    },
+    {
+      "text": "Set Abilities",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "3\nSkill Training",
+      "id": "",
+      "className": "div-button small-margin-right-bottom padding5 cogButton"
+    },
+    {
+      "text": "Skill Training",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "1\nClass Skill",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Class Skill",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "Heritage\nNot Selected\nAncestry Feat\nNot Selected\nClass Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "Heritage\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Heritage",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Not Selected",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Ancestry Feat\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Ancestry Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Class Feat\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Class Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Reactive Strike\nFree Feat: Shield Block\nFree Feat: Hobnobber",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Reactive Strike",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Free Feat: Shield Block",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "General",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Free Feat: Hobnobber",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "GeneralSkill",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Skill",
+      "id": "",
+      "className": "trait trait-common"
+    },
+    {
+      "text": "Level 2\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 2",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Class Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "99Skill Increase",
+      "id": "",
+      "className": "div-button small-margin-right-bottom padding5 cogButton hidden"
+    },
+    {
+      "text": "Skill Increase",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "Skill Feat\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Skill Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Level 3\n1\nSkill Increase\nGeneral Feat\nNot Selected\nBravery",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 3",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nBravery",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "1\nSkill Increase",
+      "id": "",
+      "className": "centered-flex"
+    },
+    {
+      "text": "General Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "General Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Bravery",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Level 4\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 4",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 5",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\n4\nAbility Boosts",
+      "id": "",
+      "className": "centered-flex"
+    },
+    {
+      "text": "4\nAbility Boosts",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Ability Boosts",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "Fighter Weapon Mastery\nWeapon Mastery Group\nNot Selected",
+      "id": "id_parent_options",
+      "className": ""
+    },
+    {
+      "text": "Fighter Weapon Mastery",
+      "id": "",
+      "className": "top-div listview-topdiv"
+    },
+    {
+      "text": "Weapon Mastery Group\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Weapon Mastery Group",
+      "id": "",
+      "className": "small-text grey-text button-text"
+    },
+    {
+      "text": "Level 6\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 6",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 7\n1\nSkill Increase\nGeneral Feat\nNot Selected\nBattlefield Surveyor\nWeapon Specialization",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 7",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nBattlefield Surveyor\nWeapon Specialization",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Battlefield Surveyor\nWeapon Specialization",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Battlefield Surveyor",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Weapon Specialization",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 8\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 8",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 9",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Combat Flexibility\nNot Selected\nAncestry Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "Combat Flexibility\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Combat Flexibility",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Battle Hardened\nCombat Flexibility",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Battle Hardened",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 10\n4\nAbility Boosts\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 10",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "4\nAbility Boosts\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Level 11\n1\nSkill Increase\nGeneral Feat\nNot Selected\nArmor Expertise\nFighter Expertise",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 11",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nArmor Expertise\nFighter Expertise",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Armor Expertise\nFighter Expertise",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Armor Expertise",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Fighter Expertise",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 12\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 12",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 13\n1\nSkill Increase\nAncestry Feat\nNot Selected\nWeapon Legend\nWeapon Legend Group\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 13",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nAncestry Feat\nNot Selected\nWeapon Legend\nWeapon Legend Group\nNot Selected",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Weapon Legend\nWeapon Legend Group\nNot Selected",
+      "id": "id_parent_options",
+      "className": ""
+    },
+    {
+      "text": "Weapon Legend",
+      "id": "",
+      "className": "top-div listview-topdiv"
+    },
+    {
+      "text": "Weapon Legend Group\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Weapon Legend Group",
+      "id": "",
+      "className": "small-text grey-text button-text"
+    },
+    {
+      "text": "Level 14\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 14",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 15",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Improved Flexibility\nNot Selected\nGeneral Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "Improved Flexibility\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Improved Flexibility",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Greater Weapon Specialization\nImproved Flexibility\nTempered Reflexes",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Greater Weapon Specialization",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Tempered Reflexes",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 16\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 16",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 17\n1\nSkill Increase\nAncestry Feat\nNot Selected\nArmor Mastery",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 17",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nAncestry Feat\nNot Selected\nArmor Mastery",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Armor Mastery",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Level 18\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 18",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 19\n1\nSkill Increase\nGeneral Feat\nNot Selected\nVersatile Legend",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 19",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nVersatile Legend",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Versatile Legend",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Level 20\n4\nAbility Boosts\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 20",
+      "id": "",
+      "className": "centered-div-holder"
+    }
+  ],
+  "Champion": [
+    {
+      "text": "Ancestry\nHuman\nBackground\nBarkeep\nClass\nFighter",
+      "id": "divTopButtons",
+      "className": "rounded-rectangle build-section"
+    },
+    {
+      "text": "Ancestry\nHuman",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Ancestry",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Human",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Prerequisites not met or taken too many times!",
+      "id": "",
+      "className": "warning-text hidden small-text"
+    },
+    {
+      "text": "Background\nBarkeep",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Background",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Barkeep",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Class\nFighter",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Class",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Fighter",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Dual ClassPrerequisites not met or taken too many times!",
+      "id": "",
+      "className": "small-margin-right-bottom div-button hidden"
+    },
+    {
+      "text": "Dual Class",
+      "id": "",
+      "className": "button-column"
+    },
+    {
+      "text": "Level 1",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "4\nSet Abilities\n3\nSkill Training\n1\nClass Skill",
+      "id": "",
+      "className": "centered-flex"
+    },
+    {
+      "text": "4\nSet Abilities",
+      "id": "",
+      "className": "div-button small-margin-right-bottom padding5 cogButton"
+    },
+    {
+      "text": "Set Abilities",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "3\nSkill Training",
+      "id": "",
+      "className": "div-button small-margin-right-bottom padding5 cogButton"
+    },
+    {
+      "text": "Skill Training",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "1\nClass Skill",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Class Skill",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "Heritage\nNot Selected\nAncestry Feat\nNot Selected\nClass Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "Heritage\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Heritage",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Not Selected",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Ancestry Feat\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Ancestry Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Class Feat\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Class Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Reactive Strike\nFree Feat: Shield Block\nFree Feat: Hobnobber",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Reactive Strike",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Free Feat: Shield Block",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "General",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Free Feat: Hobnobber",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "GeneralSkill",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Skill",
+      "id": "",
+      "className": "trait trait-common"
+    },
+    {
+      "text": "Level 2\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 2",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Class Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "99Skill Increase",
+      "id": "",
+      "className": "div-button small-margin-right-bottom padding5 cogButton hidden"
+    },
+    {
+      "text": "Skill Increase",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "Skill Feat\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Skill Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Level 3\n1\nSkill Increase\nGeneral Feat\nNot Selected\nBravery",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 3",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nBravery",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "1\nSkill Increase",
+      "id": "",
+      "className": "centered-flex"
+    },
+    {
+      "text": "General Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "General Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Bravery",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Level 4\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 4",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 5",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\n4\nAbility Boosts",
+      "id": "",
+      "className": "centered-flex"
+    },
+    {
+      "text": "4\nAbility Boosts",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Ability Boosts",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "Fighter Weapon Mastery\nWeapon Mastery Group\nNot Selected",
+      "id": "id_parent_options",
+      "className": ""
+    },
+    {
+      "text": "Fighter Weapon Mastery",
+      "id": "",
+      "className": "top-div listview-topdiv"
+    },
+    {
+      "text": "Weapon Mastery Group\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Weapon Mastery Group",
+      "id": "",
+      "className": "small-text grey-text button-text"
+    },
+    {
+      "text": "Level 6\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 6",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 7\n1\nSkill Increase\nGeneral Feat\nNot Selected\nBattlefield Surveyor\nWeapon Specialization",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 7",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nBattlefield Surveyor\nWeapon Specialization",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Battlefield Surveyor\nWeapon Specialization",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Battlefield Surveyor",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Weapon Specialization",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 8\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 8",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 9",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Combat Flexibility\nNot Selected\nAncestry Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "Combat Flexibility\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Combat Flexibility",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Battle Hardened\nCombat Flexibility",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Battle Hardened",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 10\n4\nAbility Boosts\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 10",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "4\nAbility Boosts\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Level 11\n1\nSkill Increase\nGeneral Feat\nNot Selected\nArmor Expertise\nFighter Expertise",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 11",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nArmor Expertise\nFighter Expertise",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Armor Expertise\nFighter Expertise",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Armor Expertise",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Fighter Expertise",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 12\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 12",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 13\n1\nSkill Increase\nAncestry Feat\nNot Selected\nWeapon Legend\nWeapon Legend Group\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 13",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nAncestry Feat\nNot Selected\nWeapon Legend\nWeapon Legend Group\nNot Selected",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Weapon Legend\nWeapon Legend Group\nNot Selected",
+      "id": "id_parent_options",
+      "className": ""
+    },
+    {
+      "text": "Weapon Legend",
+      "id": "",
+      "className": "top-div listview-topdiv"
+    },
+    {
+      "text": "Weapon Legend Group\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Weapon Legend Group",
+      "id": "",
+      "className": "small-text grey-text button-text"
+    },
+    {
+      "text": "Level 14\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 14",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 15",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Improved Flexibility\nNot Selected\nGeneral Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "Improved Flexibility\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Improved Flexibility",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Greater Weapon Specialization\nImproved Flexibility\nTempered Reflexes",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Greater Weapon Specialization",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Tempered Reflexes",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 16\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 16",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 17\n1\nSkill Increase\nAncestry Feat\nNot Selected\nArmor Mastery",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 17",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nAncestry Feat\nNot Selected\nArmor Mastery",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Armor Mastery",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Level 18\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 18",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 19\n1\nSkill Increase\nGeneral Feat\nNot Selected\nVersatile Legend",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 19",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nVersatile Legend",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Versatile Legend",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Level 20\n4\nAbility Boosts\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 20",
+      "id": "",
+      "className": "centered-div-holder"
+    }
+  ],
+  "Barbarian": [
+    {
+      "text": "Ancestry\nHuman\nBackground\nBarkeep\nClass\nFighter",
+      "id": "divTopButtons",
+      "className": "rounded-rectangle build-section"
+    },
+    {
+      "text": "Ancestry\nHuman",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Ancestry",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Human",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Prerequisites not met or taken too many times!",
+      "id": "",
+      "className": "warning-text hidden small-text"
+    },
+    {
+      "text": "Background\nBarkeep",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Background",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Barkeep",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Class\nFighter",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Class",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Fighter",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Dual ClassPrerequisites not met or taken too many times!",
+      "id": "",
+      "className": "small-margin-right-bottom div-button hidden"
+    },
+    {
+      "text": "Dual Class",
+      "id": "",
+      "className": "button-column"
+    },
+    {
+      "text": "Level 1",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "4\nSet Abilities\n3\nSkill Training\n1\nClass Skill",
+      "id": "",
+      "className": "centered-flex"
+    },
+    {
+      "text": "4\nSet Abilities",
+      "id": "",
+      "className": "div-button small-margin-right-bottom padding5 cogButton"
+    },
+    {
+      "text": "Set Abilities",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "3\nSkill Training",
+      "id": "",
+      "className": "div-button small-margin-right-bottom padding5 cogButton"
+    },
+    {
+      "text": "Skill Training",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "1\nClass Skill",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Class Skill",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "Heritage\nNot Selected\nAncestry Feat\nNot Selected\nClass Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "Heritage\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Heritage",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Not Selected",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Ancestry Feat\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Ancestry Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Class Feat\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Class Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Reactive Strike\nFree Feat: Shield Block\nFree Feat: Hobnobber",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Reactive Strike",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Free Feat: Shield Block",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "General",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Free Feat: Hobnobber",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "GeneralSkill",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Skill",
+      "id": "",
+      "className": "trait trait-common"
+    },
+    {
+      "text": "Level 2\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 2",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Class Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "99Skill Increase",
+      "id": "",
+      "className": "div-button small-margin-right-bottom padding5 cogButton hidden"
+    },
+    {
+      "text": "Skill Increase",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "Skill Feat\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Skill Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Level 3\n1\nSkill Increase\nGeneral Feat\nNot Selected\nBravery",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 3",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nBravery",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "1\nSkill Increase",
+      "id": "",
+      "className": "centered-flex"
+    },
+    {
+      "text": "General Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "General Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Bravery",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Level 4\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 4",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 5",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\n4\nAbility Boosts",
+      "id": "",
+      "className": "centered-flex"
+    },
+    {
+      "text": "4\nAbility Boosts",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Ability Boosts",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "Fighter Weapon Mastery\nWeapon Mastery Group\nNot Selected",
+      "id": "id_parent_options",
+      "className": ""
+    },
+    {
+      "text": "Fighter Weapon Mastery",
+      "id": "",
+      "className": "top-div listview-topdiv"
+    },
+    {
+      "text": "Weapon Mastery Group\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Weapon Mastery Group",
+      "id": "",
+      "className": "small-text grey-text button-text"
+    },
+    {
+      "text": "Level 6\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 6",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 7\n1\nSkill Increase\nGeneral Feat\nNot Selected\nBattlefield Surveyor\nWeapon Specialization",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 7",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nBattlefield Surveyor\nWeapon Specialization",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Battlefield Surveyor\nWeapon Specialization",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Battlefield Surveyor",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Weapon Specialization",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 8\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 8",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 9",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Combat Flexibility\nNot Selected\nAncestry Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "Combat Flexibility\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Combat Flexibility",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Battle Hardened\nCombat Flexibility",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Battle Hardened",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 10\n4\nAbility Boosts\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 10",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "4\nAbility Boosts\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Level 11\n1\nSkill Increase\nGeneral Feat\nNot Selected\nArmor Expertise\nFighter Expertise",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 11",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nArmor Expertise\nFighter Expertise",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Armor Expertise\nFighter Expertise",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Armor Expertise",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Fighter Expertise",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 12\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 12",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 13\n1\nSkill Increase\nAncestry Feat\nNot Selected\nWeapon Legend\nWeapon Legend Group\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 13",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nAncestry Feat\nNot Selected\nWeapon Legend\nWeapon Legend Group\nNot Selected",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Weapon Legend\nWeapon Legend Group\nNot Selected",
+      "id": "id_parent_options",
+      "className": ""
+    },
+    {
+      "text": "Weapon Legend",
+      "id": "",
+      "className": "top-div listview-topdiv"
+    },
+    {
+      "text": "Weapon Legend Group\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Weapon Legend Group",
+      "id": "",
+      "className": "small-text grey-text button-text"
+    },
+    {
+      "text": "Level 14\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 14",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 15",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Improved Flexibility\nNot Selected\nGeneral Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "Improved Flexibility\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Improved Flexibility",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Greater Weapon Specialization\nImproved Flexibility\nTempered Reflexes",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Greater Weapon Specialization",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Tempered Reflexes",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 16\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 16",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 17\n1\nSkill Increase\nAncestry Feat\nNot Selected\nArmor Mastery",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 17",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nAncestry Feat\nNot Selected\nArmor Mastery",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Armor Mastery",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Level 18\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 18",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 19\n1\nSkill Increase\nGeneral Feat\nNot Selected\nVersatile Legend",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 19",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nVersatile Legend",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Versatile Legend",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Level 20\n4\nAbility Boosts\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 20",
+      "id": "",
+      "className": "centered-div-holder"
+    }
+  ],
+  "Alchemist": [
+    {
+      "text": "Ancestry\nHuman\nBackground\nBarkeep\nClass\nFighter",
+      "id": "divTopButtons",
+      "className": "rounded-rectangle build-section"
+    },
+    {
+      "text": "Ancestry\nHuman",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Ancestry",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Human",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Prerequisites not met or taken too many times!",
+      "id": "",
+      "className": "warning-text hidden small-text"
+    },
+    {
+      "text": "Background\nBarkeep",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Background",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Barkeep",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Class\nFighter",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Class",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Fighter",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Dual ClassPrerequisites not met or taken too many times!",
+      "id": "",
+      "className": "small-margin-right-bottom div-button hidden"
+    },
+    {
+      "text": "Dual Class",
+      "id": "",
+      "className": "button-column"
+    },
+    {
+      "text": "Level 1",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "4\nSet Abilities\n3\nSkill Training\n1\nClass Skill",
+      "id": "",
+      "className": "centered-flex"
+    },
+    {
+      "text": "4\nSet Abilities",
+      "id": "",
+      "className": "div-button small-margin-right-bottom padding5 cogButton"
+    },
+    {
+      "text": "Set Abilities",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "3\nSkill Training",
+      "id": "",
+      "className": "div-button small-margin-right-bottom padding5 cogButton"
+    },
+    {
+      "text": "Skill Training",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "1\nClass Skill",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Class Skill",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "Heritage\nNot Selected\nAncestry Feat\nNot Selected\nClass Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "Heritage\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Heritage",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Not Selected",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Ancestry Feat\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Ancestry Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Class Feat\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Class Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Reactive Strike\nFree Feat: Shield Block\nFree Feat: Hobnobber",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Reactive Strike",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Free Feat: Shield Block",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "General",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Free Feat: Hobnobber",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "GeneralSkill",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Skill",
+      "id": "",
+      "className": "trait trait-common"
+    },
+    {
+      "text": "Level 2\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 2",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Class Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "99Skill Increase",
+      "id": "",
+      "className": "div-button small-margin-right-bottom padding5 cogButton hidden"
+    },
+    {
+      "text": "Skill Increase",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "Skill Feat\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Skill Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Level 3\n1\nSkill Increase\nGeneral Feat\nNot Selected\nBravery",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 3",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nBravery",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "1\nSkill Increase",
+      "id": "",
+      "className": "centered-flex"
+    },
+    {
+      "text": "General Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "General Feat",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Bravery",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Level 4\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 4",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 5",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\n4\nAbility Boosts",
+      "id": "",
+      "className": "centered-flex"
+    },
+    {
+      "text": "4\nAbility Boosts",
+      "id": "",
+      "className": ""
+    },
+    {
+      "text": "Ability Boosts",
+      "id": "",
+      "className": "centered-tiny centered-flex button-text"
+    },
+    {
+      "text": "Fighter Weapon Mastery\nWeapon Mastery Group\nNot Selected",
+      "id": "id_parent_options",
+      "className": ""
+    },
+    {
+      "text": "Fighter Weapon Mastery",
+      "id": "",
+      "className": "top-div listview-topdiv"
+    },
+    {
+      "text": "Weapon Mastery Group\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Weapon Mastery Group",
+      "id": "",
+      "className": "small-text grey-text button-text"
+    },
+    {
+      "text": "Level 6\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 6",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 7\n1\nSkill Increase\nGeneral Feat\nNot Selected\nBattlefield Surveyor\nWeapon Specialization",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 7",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nBattlefield Surveyor\nWeapon Specialization",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Battlefield Surveyor\nWeapon Specialization",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Battlefield Surveyor",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Weapon Specialization",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 8\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 8",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 9",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Combat Flexibility\nNot Selected\nAncestry Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "Combat Flexibility\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Combat Flexibility",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Battle Hardened\nCombat Flexibility",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Battle Hardened",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 10\n4\nAbility Boosts\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 10",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "4\nAbility Boosts\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Level 11\n1\nSkill Increase\nGeneral Feat\nNot Selected\nArmor Expertise\nFighter Expertise",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 11",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nArmor Expertise\nFighter Expertise",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Armor Expertise\nFighter Expertise",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Armor Expertise",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Fighter Expertise",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 12\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 12",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 13\n1\nSkill Increase\nAncestry Feat\nNot Selected\nWeapon Legend\nWeapon Legend Group\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 13",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nAncestry Feat\nNot Selected\nWeapon Legend\nWeapon Legend Group\nNot Selected",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Weapon Legend\nWeapon Legend Group\nNot Selected",
+      "id": "id_parent_options",
+      "className": ""
+    },
+    {
+      "text": "Weapon Legend",
+      "id": "",
+      "className": "top-div listview-topdiv"
+    },
+    {
+      "text": "Weapon Legend Group\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Weapon Legend Group",
+      "id": "",
+      "className": "small-text grey-text button-text"
+    },
+    {
+      "text": "Level 14\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 14",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 15",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Improved Flexibility\nNot Selected\nGeneral Feat\nNot Selected",
+      "id": "id_parent_feats",
+      "className": ""
+    },
+    {
+      "text": "Improved Flexibility\nNot Selected",
+      "id": "",
+      "className": "small-margin-right-bottom div-button"
+    },
+    {
+      "text": "Improved Flexibility",
+      "id": "",
+      "className": "small-text grey-text"
+    },
+    {
+      "text": "Greater Weapon Specialization\nImproved Flexibility\nTempered Reflexes",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Greater Weapon Specialization",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Tempered Reflexes",
+      "id": "",
+      "className": "listview-item"
+    },
+    {
+      "text": "Level 16\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 16",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 17\n1\nSkill Increase\nAncestry Feat\nNot Selected\nArmor Mastery",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 17",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nAncestry Feat\nNot Selected\nArmor Mastery",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Armor Mastery",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Level 18\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 18",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "Level 19\n1\nSkill Increase\nGeneral Feat\nNot Selected\nVersatile Legend",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 19",
+      "id": "",
+      "className": "centered-div-holder"
+    },
+    {
+      "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nVersatile Legend",
+      "id": "",
+      "className": "rounded-rectangle"
+    },
+    {
+      "text": "Versatile Legend",
+      "id": "id_parent_free",
+      "className": ""
+    },
+    {
+      "text": "Level 20\n4\nAbility Boosts\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+      "id": "",
+      "className": "build-section"
+    },
+    {
+      "text": "Level 20",
+      "id": "",
+      "className": "centered-div-holder"
+    }
+  ]
+}

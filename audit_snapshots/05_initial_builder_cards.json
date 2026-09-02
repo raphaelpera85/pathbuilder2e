@@ -1,0 +1,3402 @@
+[
+  {
+    "text": "Web Version 109",
+    "id": "version",
+    "className": ""
+  },
+  {
+    "text": "Remaster: On",
+    "id": "sidenav-remaster-toggle",
+    "className": ""
+  },
+  {
+    "text": "Dark",
+    "id": "mode-toggle-holder",
+    "className": ""
+  },
+  {
+    "text": "Dark",
+    "id": "",
+    "className": "checkbox-container sidenav-part"
+  },
+  {
+    "text": "Dark",
+    "id": "",
+    "className": "slider round sidenav-part"
+  },
+  {
+    "text": "Dark",
+    "id": "",
+    "className": "on sidenav-part"
+  },
+  {
+    "text": "Light",
+    "id": "",
+    "className": "off sidenav-part"
+  },
+  {
+    "text": "Signin",
+    "id": "menu-header-signin",
+    "className": "menu-group-header"
+  },
+  {
+    "text": "Login and Upgrade App",
+    "id": "",
+    "className": "menu-group"
+  },
+  {
+    "text": "Login and Upgrade App",
+    "id": "sidenav-upgrade",
+    "className": "sidenav-link"
+  },
+  {
+    "text": "Character",
+    "id": "",
+    "className": "menu-group-header lm-menu-group-header"
+  },
+  {
+    "text": "Convert to Remaster Rules",
+    "id": "sidenav-remaster-convert",
+    "className": "sidenav-link"
+  },
+  {
+    "text": "Character Options",
+    "id": "sidenav-options",
+    "className": "sidenav-link"
+  },
+  {
+    "text": "New Character",
+    "id": "sidenav-new",
+    "className": "sidenav-link"
+  },
+  {
+    "text": "Save Character (Local)",
+    "id": "sidenav-save",
+    "className": "sidenav-link"
+  },
+  {
+    "text": "Open Character",
+    "id": "sidenav-load",
+    "className": "sidenav-link"
+  },
+  {
+    "text": "Connect",
+    "id": "",
+    "className": "menu-group-header"
+  },
+  {
+    "text": "Connect to GM\nLaunch GM Mode",
+    "id": "",
+    "className": "menu-group"
+  },
+  {
+    "text": "Connect to GM",
+    "id": "sidenav-connect",
+    "className": "sidenav-link"
+  },
+  {
+    "text": "Launch GM Mode",
+    "id": "sidenav-gm-mode",
+    "className": "sidenav-link grey-text"
+  },
+  {
+    "text": "Export",
+    "id": "",
+    "className": "menu-group-header"
+  },
+  {
+    "text": "Character Sheet PDF\nStat Block PDF\nExport JSON\nShare Copy of Character",
+    "id": "",
+    "className": "menu-group"
+  },
+  {
+    "text": "Character Sheet PDF",
+    "id": "sidenav-pdf",
+    "className": "sidenav-link"
+  },
+  {
+    "text": "Stat Block PDF",
+    "id": "sidenav-statblock",
+    "className": "sidenav-link"
+  },
+  {
+    "text": "Export JSON",
+    "id": "sidenav-json",
+    "className": "sidenav-link"
+  },
+  {
+    "text": "Share Copy of Character",
+    "id": "sidenav-share",
+    "className": "sidenav-link"
+  },
+  {
+    "text": "Data",
+    "id": "",
+    "className": "menu-group-header"
+  },
+  {
+    "text": "Backup/Restore\nCampaign Management\nFeat Browser\nRemaster Information",
+    "id": "",
+    "className": "menu-group"
+  },
+  {
+    "text": "Backup/Restore",
+    "id": "sidenav-export",
+    "className": "sidenav-link"
+  },
+  {
+    "text": "Campaign Management",
+    "id": "sidenav-campaign",
+    "className": "sidenav-link"
+  },
+  {
+    "text": "Feat Browser",
+    "id": "sidenav-feat-browser",
+    "className": "sidenav-link"
+  },
+  {
+    "text": "Remaster Information",
+    "id": "sidenav-remaster-info",
+    "className": "sidenav-link"
+  },
+  {
+    "text": "Custom",
+    "id": "",
+    "className": "menu-group-header"
+  },
+  {
+    "text": "Custom Pack\nCustom Ability Increases\nCustom Feat Choice\nCustom Skill Increases",
+    "id": "",
+    "className": "menu-group"
+  },
+  {
+    "text": "Custom Pack",
+    "id": "sidenav-custom-pack",
+    "className": "sidenav-link grey-text"
+  },
+  {
+    "text": "Custom Ability Increases",
+    "id": "sidenav-custom-ability",
+    "className": "sidenav-link grey-text"
+  },
+  {
+    "text": "Custom Feat Choice",
+    "id": "sidenav-custom-feat-choice",
+    "className": "sidenav-link grey-text"
+  },
+  {
+    "text": "Custom Skill Increases",
+    "id": "sidenav-custom-skill-increase",
+    "className": "sidenav-link grey-text"
+  },
+  {
+    "text": "Help",
+    "id": "",
+    "className": "menu-group-header"
+  },
+  {
+    "text": "Help\nLicenses\nPatch Notes\nReport Error",
+    "id": "",
+    "className": "menu-group"
+  },
+  {
+    "text": "Help",
+    "id": "sidenav-help",
+    "className": "sidenav-link"
+  },
+  {
+    "text": "Licenses",
+    "id": "sidenav-ogl",
+    "className": "sidenav-link"
+  },
+  {
+    "text": "Patch Notes",
+    "id": "sidenav-patch",
+    "className": "sidenav-link"
+  },
+  {
+    "text": "Report Error",
+    "id": "sidenav-error",
+    "className": "sidenav-link"
+  },
+  {
+    "text": "Reset\n1d4\n1d6\n1d8\n1d10\n1d12\n1d20\nFree Roll\nDamage\nCritical\nDice Tray",
+    "id": "",
+    "className": "dice-tray"
+  },
+  {
+    "text": "Reset\n1d4\n1d6\n1d8\n1d10\n1d12\n1d20\nFree Roll\nDamage\nCritical\nDice Tray",
+    "id": "",
+    "className": "dice-content"
+  },
+  {
+    "text": "Reset\n1d4\n1d6\n1d8\n1d10\n1d12\n1d20",
+    "id": "",
+    "className": "dice-buttons"
+  },
+  {
+    "text": "Reset",
+    "id": "dice-buttons-1",
+    "className": ""
+  },
+  {
+    "text": "Reset",
+    "id": "",
+    "className": "small-margin-right-bottom div-button-simple button-simple button-text"
+  },
+  {
+    "text": "1d4\n1d6\n1d8\n1d10\n1d12\n1d20",
+    "id": "dice-buttons-0",
+    "className": "grid-container"
+  },
+  {
+    "text": "1d4",
+    "id": "",
+    "className": "small-margin-right-bottom div-button-simple button-simple button-text grid-item"
+  },
+  {
+    "text": "1d6",
+    "id": "",
+    "className": "small-margin-right-bottom div-button-simple button-simple button-text grid-item"
+  },
+  {
+    "text": "1d8",
+    "id": "",
+    "className": "small-margin-right-bottom div-button-simple button-simple button-text grid-item"
+  },
+  {
+    "text": "1d10",
+    "id": "",
+    "className": "small-margin-right-bottom div-button-simple button-simple button-text grid-item"
+  },
+  {
+    "text": "1d12",
+    "id": "",
+    "className": "small-margin-right-bottom div-button-simple button-simple button-text grid-item"
+  },
+  {
+    "text": "1d20",
+    "id": "",
+    "className": "small-margin-right-bottom div-button-simple button-simple button-text grid-item"
+  },
+  {
+    "text": "Free Roll",
+    "id": "dice-title",
+    "className": "subtitle"
+  },
+  {
+    "text": "Damage\nCritical",
+    "id": "dice-buttons-roll",
+    "className": ""
+  },
+  {
+    "text": "Damage\nCritical",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Damage\nCritical",
+    "id": "",
+    "className": "grid-container"
+  },
+  {
+    "text": "Damage",
+    "id": "",
+    "className": "small-margin-right-bottom div-button-simple button-simple button-text grid-item"
+  },
+  {
+    "text": "Critical",
+    "id": "",
+    "className": "small-margin-right-bottom div-button-simple button-simple button-text grid-item"
+  },
+  {
+    "text": "Dice Tray",
+    "id": "dice-summary",
+    "className": ""
+  },
+  {
+    "text": "Menu\nXUnknown Adventurer - Fighter 1",
+    "id": "",
+    "className": "top-bar"
+  },
+  {
+    "text": "Menu\nXUnknown Adventurer - Fighter 1",
+    "id": "",
+    "className": "menu-bar"
+  },
+  {
+    "text": "Menu",
+    "id": "menu",
+    "className": ""
+  },
+  {
+    "text": "Menu",
+    "id": "",
+    "className": "menu-title button-text"
+  },
+  {
+    "text": "XUnknown Adventurer - Fighter 1",
+    "id": "active-builds",
+    "className": ""
+  },
+  {
+    "text": "XUnknown Adventurer - Fighter 1",
+    "id": "",
+    "className": "active-build-section active-build-section-active"
+  },
+  {
+    "text": "Unknown Adventurer - Fighter 1",
+    "id": "",
+    "className": "button-active-build button-text"
+  },
+  {
+    "text": "Ancestry\nHuman\nBackground\nBarkeep\nClass\nFighter",
+    "id": "divTopButtons",
+    "className": "rounded-rectangle build-section"
+  },
+  {
+    "text": "Ancestry\nHuman",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "Ancestry\nHuman",
+    "id": "",
+    "className": "button-column"
+  },
+  {
+    "text": "Ancestry",
+    "id": "",
+    "className": "small-text grey-text"
+  },
+  {
+    "text": "Human",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Human",
+    "id": "",
+    "className": "button-selection"
+  },
+  {
+    "text": "Prerequisites not met or taken too many times!",
+    "id": "",
+    "className": "warning-text hidden small-text"
+  },
+  {
+    "text": "Background\nBarkeep",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "Background\nBarkeep",
+    "id": "",
+    "className": "button-column"
+  },
+  {
+    "text": "Background",
+    "id": "",
+    "className": "small-text grey-text"
+  },
+  {
+    "text": "Barkeep",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Barkeep",
+    "id": "",
+    "className": "button-selection"
+  },
+  {
+    "text": "Prerequisites not met or taken too many times!",
+    "id": "",
+    "className": "warning-text hidden small-text"
+  },
+  {
+    "text": "Class\nFighter",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "Class\nFighter",
+    "id": "",
+    "className": "button-column"
+  },
+  {
+    "text": "Class",
+    "id": "",
+    "className": "small-text grey-text"
+  },
+  {
+    "text": "Fighter",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Fighter",
+    "id": "",
+    "className": "button-selection"
+  },
+  {
+    "text": "Prerequisites not met or taken too many times!",
+    "id": "",
+    "className": "warning-text hidden small-text"
+  },
+  {
+    "text": "Dual ClassPrerequisites not met or taken too many times!",
+    "id": "",
+    "className": "small-margin-right-bottom div-button hidden"
+  },
+  {
+    "text": "Dual Class",
+    "id": "",
+    "className": "button-column"
+  },
+  {
+    "text": "Dual Class",
+    "id": "",
+    "className": "small-text grey-text"
+  },
+  {
+    "text": "Prerequisites not met or taken too many times!",
+    "id": "",
+    "className": "warning-text hidden small-text"
+  },
+  {
+    "text": "Level 1",
+    "id": "",
+    "className": "centered-div-holder"
+  },
+  {
+    "text": "Level 1",
+    "id": "id_header",
+    "className": "subtitle subtitle-build"
+  },
+  {
+    "text": "4\nSet Abilities\n3\nSkill Training\n1\nClass Skill",
+    "id": "",
+    "className": "centered-flex"
+  },
+  {
+    "text": "4\nSet Abilities\n3\nSkill Training\n1\nClass Skill",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "4\nSet Abilities",
+    "id": "",
+    "className": "div-button small-margin-right-bottom padding5 cogButton"
+  },
+  {
+    "text": "Set Abilities",
+    "id": "",
+    "className": "centered-tiny centered-flex button-text"
+  },
+  {
+    "text": "3\nSkill Training",
+    "id": "",
+    "className": "div-button small-margin-right-bottom padding5 cogButton"
+  },
+  {
+    "text": "Skill Training",
+    "id": "",
+    "className": "centered-tiny centered-flex button-text"
+  },
+  {
+    "text": "1\nClass Skill",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "1\nClass Skill",
+    "id": "",
+    "className": "div-button small-margin-right-bottom padding5 cogButton"
+  },
+  {
+    "text": "Class Skill",
+    "id": "",
+    "className": "centered-tiny centered-flex button-text"
+  },
+  {
+    "text": "Heritage\nNot Selected\nAncestry Feat\nNot Selected\nClass Feat\nNot Selected",
+    "id": "id_parent_feats",
+    "className": ""
+  },
+  {
+    "text": "Heritage\nNot Selected",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "Heritage\nNot Selected",
+    "id": "",
+    "className": "button-column"
+  },
+  {
+    "text": "Heritage",
+    "id": "",
+    "className": "small-text grey-text"
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": "button-selection red-text"
+  },
+  {
+    "text": "Prerequisites not met or taken too many times!",
+    "id": "",
+    "className": "warning-text hidden small-text"
+  },
+  {
+    "text": "Ancestry Feat\nNot Selected",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "Ancestry Feat\nNot Selected",
+    "id": "",
+    "className": "button-column"
+  },
+  {
+    "text": "Ancestry Feat",
+    "id": "",
+    "className": "small-text grey-text"
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": "button-selection red-text"
+  },
+  {
+    "text": "Prerequisites not met or taken too many times!",
+    "id": "",
+    "className": "warning-text hidden small-text"
+  },
+  {
+    "text": "Class Feat\nNot Selected",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "Class Feat\nNot Selected",
+    "id": "",
+    "className": "button-column"
+  },
+  {
+    "text": "Class Feat",
+    "id": "",
+    "className": "small-text grey-text"
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": "button-selection red-text"
+  },
+  {
+    "text": "Prerequisites not met or taken too many times!",
+    "id": "",
+    "className": "warning-text hidden small-text"
+  },
+  {
+    "text": "Reactive Strike\nFree Feat: Shield Block\nFree Feat: Hobnobber",
+    "id": "id_parent_free",
+    "className": ""
+  },
+  {
+    "text": "Reactive Strike",
+    "id": "",
+    "className": "listview-item"
+  },
+  {
+    "text": "Reactive Strike",
+    "id": "",
+    "className": "top-div listview-topdiv"
+  },
+  {
+    "text": "Reactive Strike",
+    "id": "",
+    "className": "listview-title"
+  },
+  {
+    "text": "Free Feat: Shield Block",
+    "id": "",
+    "className": "listview-item"
+  },
+  {
+    "text": "Free Feat: Shield Block",
+    "id": "",
+    "className": "top-div listview-topdiv"
+  },
+  {
+    "text": "Free Feat: Shield Block",
+    "id": "",
+    "className": "listview-title"
+  },
+  {
+    "text": "General",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "General",
+    "id": "",
+    "className": "trait trait-common"
+  },
+  {
+    "text": "Free Feat: Hobnobber",
+    "id": "",
+    "className": "listview-item"
+  },
+  {
+    "text": "Free Feat: Hobnobber",
+    "id": "",
+    "className": "top-div listview-topdiv"
+  },
+  {
+    "text": "Free Feat: Hobnobber",
+    "id": "",
+    "className": "listview-title"
+  },
+  {
+    "text": "GeneralSkill",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "General",
+    "id": "",
+    "className": "trait trait-common"
+  },
+  {
+    "text": "Skill",
+    "id": "",
+    "className": "trait trait-common"
+  },
+  {
+    "text": "Level 2\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+    "id": "",
+    "className": "build-section"
+  },
+  {
+    "text": "Level 2",
+    "id": "",
+    "className": "centered-div-holder"
+  },
+  {
+    "text": "Level 2",
+    "id": "id_header",
+    "className": "subtitle subtitle-build"
+  },
+  {
+    "text": "Class Feat\nNot Selected\nSkill Feat\nNot Selected",
+    "id": "",
+    "className": "rounded-rectangle"
+  },
+  {
+    "text": "99Skill Increase",
+    "id": "",
+    "className": "div-button small-margin-right-bottom padding5 cogButton hidden"
+  },
+  {
+    "text": "Skill Increase",
+    "id": "",
+    "className": "centered-tiny centered-flex button-text"
+  },
+  {
+    "text": "Class Feat\nNot Selected\nSkill Feat\nNot Selected",
+    "id": "id_parent_feats",
+    "className": ""
+  },
+  {
+    "text": "Class Feat\nNot Selected",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "Class Feat\nNot Selected",
+    "id": "",
+    "className": "button-column"
+  },
+  {
+    "text": "Class Feat",
+    "id": "",
+    "className": "small-text grey-text"
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": "button-selection red-text"
+  },
+  {
+    "text": "Prerequisites not met or taken too many times!",
+    "id": "",
+    "className": "warning-text hidden small-text"
+  },
+  {
+    "text": "Skill Feat\nNot Selected",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "Skill Feat\nNot Selected",
+    "id": "",
+    "className": "button-column"
+  },
+  {
+    "text": "Skill Feat",
+    "id": "",
+    "className": "small-text grey-text"
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": "button-selection red-text"
+  },
+  {
+    "text": "Prerequisites not met or taken too many times!",
+    "id": "",
+    "className": "warning-text hidden small-text"
+  },
+  {
+    "text": "Level 3\n1\nSkill Increase\nGeneral Feat\nNot Selected\nBravery",
+    "id": "",
+    "className": "build-section"
+  },
+  {
+    "text": "Level 3",
+    "id": "",
+    "className": "centered-div-holder"
+  },
+  {
+    "text": "Level 3",
+    "id": "id_header",
+    "className": "subtitle subtitle-build"
+  },
+  {
+    "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nBravery",
+    "id": "",
+    "className": "rounded-rectangle"
+  },
+  {
+    "text": "1\nSkill Increase",
+    "id": "",
+    "className": "centered-flex"
+  },
+  {
+    "text": "1\nSkill Increase",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "1\nSkill Increase",
+    "id": "",
+    "className": "div-button small-margin-right-bottom padding5 cogButton"
+  },
+  {
+    "text": "Skill Increase",
+    "id": "",
+    "className": "centered-tiny centered-flex button-text"
+  },
+  {
+    "text": "General Feat\nNot Selected",
+    "id": "id_parent_feats",
+    "className": ""
+  },
+  {
+    "text": "General Feat\nNot Selected",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "General Feat\nNot Selected",
+    "id": "",
+    "className": "button-column"
+  },
+  {
+    "text": "General Feat",
+    "id": "",
+    "className": "small-text grey-text"
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": "button-selection red-text"
+  },
+  {
+    "text": "Prerequisites not met or taken too many times!",
+    "id": "",
+    "className": "warning-text hidden small-text"
+  },
+  {
+    "text": "Bravery",
+    "id": "id_parent_free",
+    "className": ""
+  },
+  {
+    "text": "Bravery",
+    "id": "",
+    "className": "listview-item"
+  },
+  {
+    "text": "Bravery",
+    "id": "",
+    "className": "top-div listview-topdiv"
+  },
+  {
+    "text": "Bravery",
+    "id": "",
+    "className": "listview-title"
+  },
+  {
+    "text": "Level 4\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+    "id": "",
+    "className": "build-section"
+  },
+  {
+    "text": "Level 4",
+    "id": "",
+    "className": "centered-div-holder"
+  },
+  {
+    "text": "Level 4",
+    "id": "id_header",
+    "className": "subtitle subtitle-build"
+  },
+  {
+    "text": "Class Feat\nNot Selected\nSkill Feat\nNot Selected",
+    "id": "",
+    "className": "rounded-rectangle"
+  },
+  {
+    "text": "99Skill Increase",
+    "id": "",
+    "className": "div-button small-margin-right-bottom padding5 cogButton hidden"
+  },
+  {
+    "text": "Skill Increase",
+    "id": "",
+    "className": "centered-tiny centered-flex button-text"
+  },
+  {
+    "text": "Class Feat\nNot Selected\nSkill Feat\nNot Selected",
+    "id": "id_parent_feats",
+    "className": ""
+  },
+  {
+    "text": "Class Feat\nNot Selected",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "Class Feat\nNot Selected",
+    "id": "",
+    "className": "button-column"
+  },
+  {
+    "text": "Class Feat",
+    "id": "",
+    "className": "small-text grey-text"
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": "button-selection red-text"
+  },
+  {
+    "text": "Prerequisites not met or taken too many times!",
+    "id": "",
+    "className": "warning-text hidden small-text"
+  },
+  {
+    "text": "Skill Feat\nNot Selected",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "Skill Feat\nNot Selected",
+    "id": "",
+    "className": "button-column"
+  },
+  {
+    "text": "Skill Feat",
+    "id": "",
+    "className": "small-text grey-text"
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": "button-selection red-text"
+  },
+  {
+    "text": "Prerequisites not met or taken too many times!",
+    "id": "",
+    "className": "warning-text hidden small-text"
+  },
+  {
+    "text": "Level 5",
+    "id": "",
+    "className": "centered-div-holder"
+  },
+  {
+    "text": "Level 5",
+    "id": "id_header",
+    "className": "subtitle subtitle-build"
+  },
+  {
+    "text": "1\nSkill Increase\n4\nAbility Boosts",
+    "id": "",
+    "className": "centered-flex"
+  },
+  {
+    "text": "1\nSkill Increase\n4\nAbility Boosts",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "1\nSkill Increase",
+    "id": "",
+    "className": "div-button small-margin-right-bottom padding5 cogButton"
+  },
+  {
+    "text": "Skill Increase",
+    "id": "",
+    "className": "centered-tiny centered-flex button-text"
+  },
+  {
+    "text": "4\nAbility Boosts",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "4\nAbility Boosts",
+    "id": "",
+    "className": "div-button small-margin-right-bottom padding5 cogButton"
+  },
+  {
+    "text": "Ability Boosts",
+    "id": "",
+    "className": "centered-tiny centered-flex button-text"
+  },
+  {
+    "text": "Ancestry Feat\nNot Selected",
+    "id": "id_parent_feats",
+    "className": ""
+  },
+  {
+    "text": "Ancestry Feat\nNot Selected",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "Ancestry Feat\nNot Selected",
+    "id": "",
+    "className": "button-column"
+  },
+  {
+    "text": "Ancestry Feat",
+    "id": "",
+    "className": "small-text grey-text"
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": "button-selection red-text"
+  },
+  {
+    "text": "Prerequisites not met or taken too many times!",
+    "id": "",
+    "className": "warning-text hidden small-text"
+  },
+  {
+    "text": "Fighter Weapon Mastery\nWeapon Mastery Group\nNot Selected",
+    "id": "id_parent_options",
+    "className": ""
+  },
+  {
+    "text": "Fighter Weapon Mastery\nWeapon Mastery Group\nNot Selected",
+    "id": "",
+    "className": "listview-item"
+  },
+  {
+    "text": "Fighter Weapon Mastery",
+    "id": "",
+    "className": "top-div listview-topdiv"
+  },
+  {
+    "text": "Fighter Weapon Mastery",
+    "id": "",
+    "className": "listview-title"
+  },
+  {
+    "text": "Weapon Mastery Group\nNot Selected",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "Weapon Mastery Group",
+    "id": "",
+    "className": "small-text grey-text button-text"
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": "button-text button-selection red-text"
+  },
+  {
+    "text": "Level 6\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+    "id": "",
+    "className": "build-section"
+  },
+  {
+    "text": "Level 6",
+    "id": "",
+    "className": "centered-div-holder"
+  },
+  {
+    "text": "Level 6",
+    "id": "id_header",
+    "className": "subtitle subtitle-build"
+  },
+  {
+    "text": "Class Feat\nNot Selected\nSkill Feat\nNot Selected",
+    "id": "",
+    "className": "rounded-rectangle"
+  },
+  {
+    "text": "99Skill Increase",
+    "id": "",
+    "className": "div-button small-margin-right-bottom padding5 cogButton hidden"
+  },
+  {
+    "text": "Skill Increase",
+    "id": "",
+    "className": "centered-tiny centered-flex button-text"
+  },
+  {
+    "text": "Class Feat\nNot Selected\nSkill Feat\nNot Selected",
+    "id": "id_parent_feats",
+    "className": ""
+  },
+  {
+    "text": "Class Feat\nNot Selected",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "Class Feat\nNot Selected",
+    "id": "",
+    "className": "button-column"
+  },
+  {
+    "text": "Class Feat",
+    "id": "",
+    "className": "small-text grey-text"
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": "button-selection red-text"
+  },
+  {
+    "text": "Prerequisites not met or taken too many times!",
+    "id": "",
+    "className": "warning-text hidden small-text"
+  },
+  {
+    "text": "Skill Feat\nNot Selected",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "Skill Feat\nNot Selected",
+    "id": "",
+    "className": "button-column"
+  },
+  {
+    "text": "Skill Feat",
+    "id": "",
+    "className": "small-text grey-text"
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": "button-selection red-text"
+  },
+  {
+    "text": "Prerequisites not met or taken too many times!",
+    "id": "",
+    "className": "warning-text hidden small-text"
+  },
+  {
+    "text": "Level 7",
+    "id": "",
+    "className": "centered-div-holder"
+  },
+  {
+    "text": "Level 7",
+    "id": "id_header",
+    "className": "subtitle subtitle-build"
+  },
+  {
+    "text": "1\nSkill Increase",
+    "id": "",
+    "className": "centered-flex"
+  },
+  {
+    "text": "1\nSkill Increase",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "1\nSkill Increase",
+    "id": "",
+    "className": "div-button small-margin-right-bottom padding5 cogButton"
+  },
+  {
+    "text": "Skill Increase",
+    "id": "",
+    "className": "centered-tiny centered-flex button-text"
+  },
+  {
+    "text": "General Feat\nNot Selected",
+    "id": "id_parent_feats",
+    "className": ""
+  },
+  {
+    "text": "General Feat\nNot Selected",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "General Feat\nNot Selected",
+    "id": "",
+    "className": "button-column"
+  },
+  {
+    "text": "General Feat",
+    "id": "",
+    "className": "small-text grey-text"
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": "button-selection red-text"
+  },
+  {
+    "text": "Prerequisites not met or taken too many times!",
+    "id": "",
+    "className": "warning-text hidden small-text"
+  },
+  {
+    "text": "Battlefield Surveyor\nWeapon Specialization",
+    "id": "id_parent_free",
+    "className": ""
+  },
+  {
+    "text": "Battlefield Surveyor",
+    "id": "",
+    "className": "listview-item"
+  },
+  {
+    "text": "Battlefield Surveyor",
+    "id": "",
+    "className": "top-div listview-topdiv"
+  },
+  {
+    "text": "Battlefield Surveyor",
+    "id": "",
+    "className": "listview-title"
+  },
+  {
+    "text": "Weapon Specialization",
+    "id": "",
+    "className": "listview-item"
+  },
+  {
+    "text": "Weapon Specialization",
+    "id": "",
+    "className": "top-div listview-topdiv"
+  },
+  {
+    "text": "Weapon Specialization",
+    "id": "",
+    "className": "listview-title"
+  },
+  {
+    "text": "Level 8\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+    "id": "",
+    "className": "build-section"
+  },
+  {
+    "text": "Level 8",
+    "id": "",
+    "className": "centered-div-holder"
+  },
+  {
+    "text": "Level 8",
+    "id": "id_header",
+    "className": "subtitle subtitle-build"
+  },
+  {
+    "text": "Class Feat\nNot Selected\nSkill Feat\nNot Selected",
+    "id": "",
+    "className": "rounded-rectangle"
+  },
+  {
+    "text": "99Skill Increase",
+    "id": "",
+    "className": "div-button small-margin-right-bottom padding5 cogButton hidden"
+  },
+  {
+    "text": "Skill Increase",
+    "id": "",
+    "className": "centered-tiny centered-flex button-text"
+  },
+  {
+    "text": "Class Feat\nNot Selected\nSkill Feat\nNot Selected",
+    "id": "id_parent_feats",
+    "className": ""
+  },
+  {
+    "text": "Class Feat\nNot Selected",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "Class Feat\nNot Selected",
+    "id": "",
+    "className": "button-column"
+  },
+  {
+    "text": "Class Feat",
+    "id": "",
+    "className": "small-text grey-text"
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": "button-selection red-text"
+  },
+  {
+    "text": "Prerequisites not met or taken too many times!",
+    "id": "",
+    "className": "warning-text hidden small-text"
+  },
+  {
+    "text": "Skill Feat\nNot Selected",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "Skill Feat\nNot Selected",
+    "id": "",
+    "className": "button-column"
+  },
+  {
+    "text": "Skill Feat",
+    "id": "",
+    "className": "small-text grey-text"
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": "button-selection red-text"
+  },
+  {
+    "text": "Prerequisites not met or taken too many times!",
+    "id": "",
+    "className": "warning-text hidden small-text"
+  },
+  {
+    "text": "Level 9",
+    "id": "",
+    "className": "centered-div-holder"
+  },
+  {
+    "text": "Level 9",
+    "id": "id_header",
+    "className": "subtitle subtitle-build"
+  },
+  {
+    "text": "1\nSkill Increase",
+    "id": "",
+    "className": "centered-flex"
+  },
+  {
+    "text": "1\nSkill Increase",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "1\nSkill Increase",
+    "id": "",
+    "className": "div-button small-margin-right-bottom padding5 cogButton"
+  },
+  {
+    "text": "Skill Increase",
+    "id": "",
+    "className": "centered-tiny centered-flex button-text"
+  },
+  {
+    "text": "Combat Flexibility\nNot Selected\nAncestry Feat\nNot Selected",
+    "id": "id_parent_feats",
+    "className": ""
+  },
+  {
+    "text": "Combat Flexibility\nNot Selected",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "Combat Flexibility\nNot Selected",
+    "id": "",
+    "className": "button-column"
+  },
+  {
+    "text": "Combat Flexibility",
+    "id": "",
+    "className": "small-text grey-text"
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": "button-selection red-text"
+  },
+  {
+    "text": "Prerequisites not met or taken too many times!",
+    "id": "",
+    "className": "warning-text hidden small-text"
+  },
+  {
+    "text": "Ancestry Feat\nNot Selected",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "Ancestry Feat\nNot Selected",
+    "id": "",
+    "className": "button-column"
+  },
+  {
+    "text": "Ancestry Feat",
+    "id": "",
+    "className": "small-text grey-text"
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": "button-selection red-text"
+  },
+  {
+    "text": "Prerequisites not met or taken too many times!",
+    "id": "",
+    "className": "warning-text hidden small-text"
+  },
+  {
+    "text": "Battle Hardened\nCombat Flexibility",
+    "id": "id_parent_free",
+    "className": ""
+  },
+  {
+    "text": "Battle Hardened",
+    "id": "",
+    "className": "listview-item"
+  },
+  {
+    "text": "Battle Hardened",
+    "id": "",
+    "className": "top-div listview-topdiv"
+  },
+  {
+    "text": "Battle Hardened",
+    "id": "",
+    "className": "listview-title"
+  },
+  {
+    "text": "Combat Flexibility",
+    "id": "",
+    "className": "listview-item"
+  },
+  {
+    "text": "Combat Flexibility",
+    "id": "",
+    "className": "top-div listview-topdiv"
+  },
+  {
+    "text": "Combat Flexibility",
+    "id": "",
+    "className": "listview-title"
+  },
+  {
+    "text": "Level 10\n4\nAbility Boosts\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+    "id": "",
+    "className": "build-section"
+  },
+  {
+    "text": "Level 10",
+    "id": "",
+    "className": "centered-div-holder"
+  },
+  {
+    "text": "Level 10",
+    "id": "id_header",
+    "className": "subtitle subtitle-build"
+  },
+  {
+    "text": "4\nAbility Boosts\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+    "id": "",
+    "className": "rounded-rectangle"
+  },
+  {
+    "text": "4\nAbility Boosts",
+    "id": "",
+    "className": "centered-flex"
+  },
+  {
+    "text": "4\nAbility Boosts",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "99Skill Increase",
+    "id": "",
+    "className": "div-button small-margin-right-bottom padding5 cogButton hidden"
+  },
+  {
+    "text": "Skill Increase",
+    "id": "",
+    "className": "centered-tiny centered-flex button-text"
+  },
+  {
+    "text": "4\nAbility Boosts",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "4\nAbility Boosts",
+    "id": "",
+    "className": "div-button small-margin-right-bottom padding5 cogButton"
+  },
+  {
+    "text": "Ability Boosts",
+    "id": "",
+    "className": "centered-tiny centered-flex button-text"
+  },
+  {
+    "text": "Class Feat\nNot Selected\nSkill Feat\nNot Selected",
+    "id": "id_parent_feats",
+    "className": ""
+  },
+  {
+    "text": "Class Feat\nNot Selected",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "Class Feat\nNot Selected",
+    "id": "",
+    "className": "button-column"
+  },
+  {
+    "text": "Class Feat",
+    "id": "",
+    "className": "small-text grey-text"
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": "button-selection red-text"
+  },
+  {
+    "text": "Prerequisites not met or taken too many times!",
+    "id": "",
+    "className": "warning-text hidden small-text"
+  },
+  {
+    "text": "Skill Feat\nNot Selected",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "Skill Feat\nNot Selected",
+    "id": "",
+    "className": "button-column"
+  },
+  {
+    "text": "Skill Feat",
+    "id": "",
+    "className": "small-text grey-text"
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": "button-selection red-text"
+  },
+  {
+    "text": "Prerequisites not met or taken too many times!",
+    "id": "",
+    "className": "warning-text hidden small-text"
+  },
+  {
+    "text": "Level 11",
+    "id": "",
+    "className": "centered-div-holder"
+  },
+  {
+    "text": "Level 11",
+    "id": "id_header",
+    "className": "subtitle subtitle-build"
+  },
+  {
+    "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nArmor Expertise\nFighter Expertise",
+    "id": "",
+    "className": "rounded-rectangle"
+  },
+  {
+    "text": "1\nSkill Increase",
+    "id": "",
+    "className": "centered-flex"
+  },
+  {
+    "text": "1\nSkill Increase",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "1\nSkill Increase",
+    "id": "",
+    "className": "div-button small-margin-right-bottom padding5 cogButton"
+  },
+  {
+    "text": "Skill Increase",
+    "id": "",
+    "className": "centered-tiny centered-flex button-text"
+  },
+  {
+    "text": "General Feat\nNot Selected",
+    "id": "id_parent_feats",
+    "className": ""
+  },
+  {
+    "text": "General Feat\nNot Selected",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "General Feat\nNot Selected",
+    "id": "",
+    "className": "button-column"
+  },
+  {
+    "text": "General Feat",
+    "id": "",
+    "className": "small-text grey-text"
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": "button-selection red-text"
+  },
+  {
+    "text": "Prerequisites not met or taken too many times!",
+    "id": "",
+    "className": "warning-text hidden small-text"
+  },
+  {
+    "text": "Armor Expertise\nFighter Expertise",
+    "id": "id_parent_free",
+    "className": ""
+  },
+  {
+    "text": "Armor Expertise",
+    "id": "",
+    "className": "listview-item"
+  },
+  {
+    "text": "Armor Expertise",
+    "id": "",
+    "className": "top-div listview-topdiv"
+  },
+  {
+    "text": "Armor Expertise",
+    "id": "",
+    "className": "listview-title"
+  },
+  {
+    "text": "Fighter Expertise",
+    "id": "",
+    "className": "listview-item"
+  },
+  {
+    "text": "Fighter Expertise",
+    "id": "",
+    "className": "top-div listview-topdiv"
+  },
+  {
+    "text": "Fighter Expertise",
+    "id": "",
+    "className": "listview-title"
+  },
+  {
+    "text": "Level 12\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+    "id": "",
+    "className": "build-section"
+  },
+  {
+    "text": "Level 12",
+    "id": "",
+    "className": "centered-div-holder"
+  },
+  {
+    "text": "Level 12",
+    "id": "id_header",
+    "className": "subtitle subtitle-build"
+  },
+  {
+    "text": "Class Feat\nNot Selected\nSkill Feat\nNot Selected",
+    "id": "",
+    "className": "rounded-rectangle"
+  },
+  {
+    "text": "99Skill Increase",
+    "id": "",
+    "className": "div-button small-margin-right-bottom padding5 cogButton hidden"
+  },
+  {
+    "text": "Skill Increase",
+    "id": "",
+    "className": "centered-tiny centered-flex button-text"
+  },
+  {
+    "text": "Class Feat\nNot Selected\nSkill Feat\nNot Selected",
+    "id": "id_parent_feats",
+    "className": ""
+  },
+  {
+    "text": "Class Feat\nNot Selected",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "Class Feat\nNot Selected",
+    "id": "",
+    "className": "button-column"
+  },
+  {
+    "text": "Class Feat",
+    "id": "",
+    "className": "small-text grey-text"
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": "button-selection red-text"
+  },
+  {
+    "text": "Prerequisites not met or taken too many times!",
+    "id": "",
+    "className": "warning-text hidden small-text"
+  },
+  {
+    "text": "Skill Feat\nNot Selected",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "Skill Feat\nNot Selected",
+    "id": "",
+    "className": "button-column"
+  },
+  {
+    "text": "Skill Feat",
+    "id": "",
+    "className": "small-text grey-text"
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": "button-selection red-text"
+  },
+  {
+    "text": "Prerequisites not met or taken too many times!",
+    "id": "",
+    "className": "warning-text hidden small-text"
+  },
+  {
+    "text": "Level 13",
+    "id": "",
+    "className": "centered-div-holder"
+  },
+  {
+    "text": "Level 13",
+    "id": "id_header",
+    "className": "subtitle subtitle-build"
+  },
+  {
+    "text": "1\nSkill Increase",
+    "id": "",
+    "className": "centered-flex"
+  },
+  {
+    "text": "1\nSkill Increase",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "1\nSkill Increase",
+    "id": "",
+    "className": "div-button small-margin-right-bottom padding5 cogButton"
+  },
+  {
+    "text": "Skill Increase",
+    "id": "",
+    "className": "centered-tiny centered-flex button-text"
+  },
+  {
+    "text": "Ancestry Feat\nNot Selected",
+    "id": "id_parent_feats",
+    "className": ""
+  },
+  {
+    "text": "Ancestry Feat\nNot Selected",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "Ancestry Feat\nNot Selected",
+    "id": "",
+    "className": "button-column"
+  },
+  {
+    "text": "Ancestry Feat",
+    "id": "",
+    "className": "small-text grey-text"
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": "button-selection red-text"
+  },
+  {
+    "text": "Prerequisites not met or taken too many times!",
+    "id": "",
+    "className": "warning-text hidden small-text"
+  },
+  {
+    "text": "Weapon Legend\nWeapon Legend Group\nNot Selected",
+    "id": "id_parent_options",
+    "className": ""
+  },
+  {
+    "text": "Weapon Legend\nWeapon Legend Group\nNot Selected",
+    "id": "",
+    "className": "listview-item"
+  },
+  {
+    "text": "Weapon Legend",
+    "id": "",
+    "className": "top-div listview-topdiv"
+  },
+  {
+    "text": "Weapon Legend",
+    "id": "",
+    "className": "listview-title"
+  },
+  {
+    "text": "Weapon Legend Group\nNot Selected",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "Weapon Legend Group",
+    "id": "",
+    "className": "small-text grey-text button-text"
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": "button-text button-selection red-text"
+  },
+  {
+    "text": "Level 14\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+    "id": "",
+    "className": "build-section"
+  },
+  {
+    "text": "Level 14",
+    "id": "",
+    "className": "centered-div-holder"
+  },
+  {
+    "text": "Level 14",
+    "id": "id_header",
+    "className": "subtitle subtitle-build"
+  },
+  {
+    "text": "Class Feat\nNot Selected\nSkill Feat\nNot Selected",
+    "id": "",
+    "className": "rounded-rectangle"
+  },
+  {
+    "text": "99Skill Increase",
+    "id": "",
+    "className": "div-button small-margin-right-bottom padding5 cogButton hidden"
+  },
+  {
+    "text": "Skill Increase",
+    "id": "",
+    "className": "centered-tiny centered-flex button-text"
+  },
+  {
+    "text": "Class Feat\nNot Selected\nSkill Feat\nNot Selected",
+    "id": "id_parent_feats",
+    "className": ""
+  },
+  {
+    "text": "Class Feat\nNot Selected",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "Class Feat\nNot Selected",
+    "id": "",
+    "className": "button-column"
+  },
+  {
+    "text": "Class Feat",
+    "id": "",
+    "className": "small-text grey-text"
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": "button-selection red-text"
+  },
+  {
+    "text": "Prerequisites not met or taken too many times!",
+    "id": "",
+    "className": "warning-text hidden small-text"
+  },
+  {
+    "text": "Skill Feat\nNot Selected",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "Skill Feat\nNot Selected",
+    "id": "",
+    "className": "button-column"
+  },
+  {
+    "text": "Skill Feat",
+    "id": "",
+    "className": "small-text grey-text"
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": "button-selection red-text"
+  },
+  {
+    "text": "Prerequisites not met or taken too many times!",
+    "id": "",
+    "className": "warning-text hidden small-text"
+  },
+  {
+    "text": "Level 15",
+    "id": "",
+    "className": "centered-div-holder"
+  },
+  {
+    "text": "Level 15",
+    "id": "id_header",
+    "className": "subtitle subtitle-build"
+  },
+  {
+    "text": "1\nSkill Increase\n4\nAbility Boosts",
+    "id": "",
+    "className": "centered-flex"
+  },
+  {
+    "text": "1\nSkill Increase\n4\nAbility Boosts",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "1\nSkill Increase",
+    "id": "",
+    "className": "div-button small-margin-right-bottom padding5 cogButton"
+  },
+  {
+    "text": "Skill Increase",
+    "id": "",
+    "className": "centered-tiny centered-flex button-text"
+  },
+  {
+    "text": "4\nAbility Boosts",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "4\nAbility Boosts",
+    "id": "",
+    "className": "div-button small-margin-right-bottom padding5 cogButton"
+  },
+  {
+    "text": "Ability Boosts",
+    "id": "",
+    "className": "centered-tiny centered-flex button-text"
+  },
+  {
+    "text": "Improved Flexibility\nNot Selected\nGeneral Feat\nNot Selected",
+    "id": "id_parent_feats",
+    "className": ""
+  },
+  {
+    "text": "Improved Flexibility\nNot Selected",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "Improved Flexibility\nNot Selected",
+    "id": "",
+    "className": "button-column"
+  },
+  {
+    "text": "Improved Flexibility",
+    "id": "",
+    "className": "small-text grey-text"
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": "button-selection red-text"
+  },
+  {
+    "text": "Prerequisites not met or taken too many times!",
+    "id": "",
+    "className": "warning-text hidden small-text"
+  },
+  {
+    "text": "General Feat\nNot Selected",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "General Feat\nNot Selected",
+    "id": "",
+    "className": "button-column"
+  },
+  {
+    "text": "General Feat",
+    "id": "",
+    "className": "small-text grey-text"
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": "button-selection red-text"
+  },
+  {
+    "text": "Prerequisites not met or taken too many times!",
+    "id": "",
+    "className": "warning-text hidden small-text"
+  },
+  {
+    "text": "Greater Weapon Specialization\nImproved Flexibility\nTempered Reflexes",
+    "id": "id_parent_free",
+    "className": ""
+  },
+  {
+    "text": "Greater Weapon Specialization",
+    "id": "",
+    "className": "listview-item"
+  },
+  {
+    "text": "Greater Weapon Specialization",
+    "id": "",
+    "className": "top-div listview-topdiv"
+  },
+  {
+    "text": "Greater Weapon Specialization",
+    "id": "",
+    "className": "listview-title"
+  },
+  {
+    "text": "Improved Flexibility",
+    "id": "",
+    "className": "listview-item"
+  },
+  {
+    "text": "Improved Flexibility",
+    "id": "",
+    "className": "top-div listview-topdiv"
+  },
+  {
+    "text": "Improved Flexibility",
+    "id": "",
+    "className": "listview-title"
+  },
+  {
+    "text": "Tempered Reflexes",
+    "id": "",
+    "className": "listview-item"
+  },
+  {
+    "text": "Tempered Reflexes",
+    "id": "",
+    "className": "top-div listview-topdiv"
+  },
+  {
+    "text": "Tempered Reflexes",
+    "id": "",
+    "className": "listview-title"
+  },
+  {
+    "text": "Level 16\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+    "id": "",
+    "className": "build-section"
+  },
+  {
+    "text": "Level 16",
+    "id": "",
+    "className": "centered-div-holder"
+  },
+  {
+    "text": "Level 16",
+    "id": "id_header",
+    "className": "subtitle subtitle-build"
+  },
+  {
+    "text": "Class Feat\nNot Selected\nSkill Feat\nNot Selected",
+    "id": "",
+    "className": "rounded-rectangle"
+  },
+  {
+    "text": "99Skill Increase",
+    "id": "",
+    "className": "div-button small-margin-right-bottom padding5 cogButton hidden"
+  },
+  {
+    "text": "Skill Increase",
+    "id": "",
+    "className": "centered-tiny centered-flex button-text"
+  },
+  {
+    "text": "Class Feat\nNot Selected\nSkill Feat\nNot Selected",
+    "id": "id_parent_feats",
+    "className": ""
+  },
+  {
+    "text": "Class Feat\nNot Selected",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "Class Feat\nNot Selected",
+    "id": "",
+    "className": "button-column"
+  },
+  {
+    "text": "Class Feat",
+    "id": "",
+    "className": "small-text grey-text"
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": "button-selection red-text"
+  },
+  {
+    "text": "Prerequisites not met or taken too many times!",
+    "id": "",
+    "className": "warning-text hidden small-text"
+  },
+  {
+    "text": "Skill Feat\nNot Selected",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "Skill Feat\nNot Selected",
+    "id": "",
+    "className": "button-column"
+  },
+  {
+    "text": "Skill Feat",
+    "id": "",
+    "className": "small-text grey-text"
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": "button-selection red-text"
+  },
+  {
+    "text": "Prerequisites not met or taken too many times!",
+    "id": "",
+    "className": "warning-text hidden small-text"
+  },
+  {
+    "text": "Level 17\n1\nSkill Increase\nAncestry Feat\nNot Selected\nArmor Mastery",
+    "id": "",
+    "className": "build-section"
+  },
+  {
+    "text": "Level 17",
+    "id": "",
+    "className": "centered-div-holder"
+  },
+  {
+    "text": "Level 17",
+    "id": "id_header",
+    "className": "subtitle subtitle-build"
+  },
+  {
+    "text": "1\nSkill Increase\nAncestry Feat\nNot Selected\nArmor Mastery",
+    "id": "",
+    "className": "rounded-rectangle"
+  },
+  {
+    "text": "1\nSkill Increase",
+    "id": "",
+    "className": "centered-flex"
+  },
+  {
+    "text": "1\nSkill Increase",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "1\nSkill Increase",
+    "id": "",
+    "className": "div-button small-margin-right-bottom padding5 cogButton"
+  },
+  {
+    "text": "Skill Increase",
+    "id": "",
+    "className": "centered-tiny centered-flex button-text"
+  },
+  {
+    "text": "Ancestry Feat\nNot Selected",
+    "id": "id_parent_feats",
+    "className": ""
+  },
+  {
+    "text": "Ancestry Feat\nNot Selected",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "Ancestry Feat\nNot Selected",
+    "id": "",
+    "className": "button-column"
+  },
+  {
+    "text": "Ancestry Feat",
+    "id": "",
+    "className": "small-text grey-text"
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": "button-selection red-text"
+  },
+  {
+    "text": "Prerequisites not met or taken too many times!",
+    "id": "",
+    "className": "warning-text hidden small-text"
+  },
+  {
+    "text": "Armor Mastery",
+    "id": "id_parent_free",
+    "className": ""
+  },
+  {
+    "text": "Armor Mastery",
+    "id": "",
+    "className": "listview-item"
+  },
+  {
+    "text": "Armor Mastery",
+    "id": "",
+    "className": "top-div listview-topdiv"
+  },
+  {
+    "text": "Armor Mastery",
+    "id": "",
+    "className": "listview-title"
+  },
+  {
+    "text": "Level 18\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+    "id": "",
+    "className": "build-section"
+  },
+  {
+    "text": "Level 18",
+    "id": "",
+    "className": "centered-div-holder"
+  },
+  {
+    "text": "Level 18",
+    "id": "id_header",
+    "className": "subtitle subtitle-build"
+  },
+  {
+    "text": "Class Feat\nNot Selected\nSkill Feat\nNot Selected",
+    "id": "",
+    "className": "rounded-rectangle"
+  },
+  {
+    "text": "99Skill Increase",
+    "id": "",
+    "className": "div-button small-margin-right-bottom padding5 cogButton hidden"
+  },
+  {
+    "text": "Skill Increase",
+    "id": "",
+    "className": "centered-tiny centered-flex button-text"
+  },
+  {
+    "text": "Class Feat\nNot Selected\nSkill Feat\nNot Selected",
+    "id": "id_parent_feats",
+    "className": ""
+  },
+  {
+    "text": "Class Feat\nNot Selected",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "Class Feat\nNot Selected",
+    "id": "",
+    "className": "button-column"
+  },
+  {
+    "text": "Class Feat",
+    "id": "",
+    "className": "small-text grey-text"
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": "button-selection red-text"
+  },
+  {
+    "text": "Prerequisites not met or taken too many times!",
+    "id": "",
+    "className": "warning-text hidden small-text"
+  },
+  {
+    "text": "Skill Feat\nNot Selected",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "Skill Feat\nNot Selected",
+    "id": "",
+    "className": "button-column"
+  },
+  {
+    "text": "Skill Feat",
+    "id": "",
+    "className": "small-text grey-text"
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": "button-selection red-text"
+  },
+  {
+    "text": "Prerequisites not met or taken too many times!",
+    "id": "",
+    "className": "warning-text hidden small-text"
+  },
+  {
+    "text": "Level 19\n1\nSkill Increase\nGeneral Feat\nNot Selected\nVersatile Legend",
+    "id": "",
+    "className": "build-section"
+  },
+  {
+    "text": "Level 19",
+    "id": "",
+    "className": "centered-div-holder"
+  },
+  {
+    "text": "Level 19",
+    "id": "id_header",
+    "className": "subtitle subtitle-build"
+  },
+  {
+    "text": "1\nSkill Increase\nGeneral Feat\nNot Selected\nVersatile Legend",
+    "id": "",
+    "className": "rounded-rectangle"
+  },
+  {
+    "text": "1\nSkill Increase",
+    "id": "",
+    "className": "centered-flex"
+  },
+  {
+    "text": "1\nSkill Increase",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "1\nSkill Increase",
+    "id": "",
+    "className": "div-button small-margin-right-bottom padding5 cogButton"
+  },
+  {
+    "text": "Skill Increase",
+    "id": "",
+    "className": "centered-tiny centered-flex button-text"
+  },
+  {
+    "text": "General Feat\nNot Selected",
+    "id": "id_parent_feats",
+    "className": ""
+  },
+  {
+    "text": "General Feat\nNot Selected",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "General Feat\nNot Selected",
+    "id": "",
+    "className": "button-column"
+  },
+  {
+    "text": "General Feat",
+    "id": "",
+    "className": "small-text grey-text"
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": "button-selection red-text"
+  },
+  {
+    "text": "Prerequisites not met or taken too many times!",
+    "id": "",
+    "className": "warning-text hidden small-text"
+  },
+  {
+    "text": "Versatile Legend",
+    "id": "id_parent_free",
+    "className": ""
+  },
+  {
+    "text": "Versatile Legend",
+    "id": "",
+    "className": "listview-item"
+  },
+  {
+    "text": "Versatile Legend",
+    "id": "",
+    "className": "top-div listview-topdiv"
+  },
+  {
+    "text": "Versatile Legend",
+    "id": "",
+    "className": "listview-title"
+  },
+  {
+    "text": "Level 20\n4\nAbility Boosts\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+    "id": "",
+    "className": "build-section"
+  },
+  {
+    "text": "Level 20",
+    "id": "",
+    "className": "centered-div-holder"
+  },
+  {
+    "text": "Level 20",
+    "id": "id_header",
+    "className": "subtitle subtitle-build"
+  },
+  {
+    "text": "4\nAbility Boosts\nClass Feat\nNot Selected\nSkill Feat\nNot Selected",
+    "id": "",
+    "className": "rounded-rectangle"
+  },
+  {
+    "text": "4\nAbility Boosts",
+    "id": "",
+    "className": "centered-flex"
+  },
+  {
+    "text": "4\nAbility Boosts",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "99Skill Increase",
+    "id": "",
+    "className": "div-button small-margin-right-bottom padding5 cogButton hidden"
+  },
+  {
+    "text": "Skill Increase",
+    "id": "",
+    "className": "centered-tiny centered-flex button-text"
+  },
+  {
+    "text": "4\nAbility Boosts",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "4\nAbility Boosts",
+    "id": "",
+    "className": "div-button small-margin-right-bottom padding5 cogButton"
+  },
+  {
+    "text": "Ability Boosts",
+    "id": "",
+    "className": "centered-tiny centered-flex button-text"
+  },
+  {
+    "text": "Class Feat\nNot Selected\nSkill Feat\nNot Selected",
+    "id": "id_parent_feats",
+    "className": ""
+  },
+  {
+    "text": "Class Feat\nNot Selected",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "Class Feat\nNot Selected",
+    "id": "",
+    "className": "button-column"
+  },
+  {
+    "text": "Class Feat",
+    "id": "",
+    "className": "small-text grey-text"
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": "button-selection red-text"
+  },
+  {
+    "text": "Prerequisites not met or taken too many times!",
+    "id": "",
+    "className": "warning-text hidden small-text"
+  },
+  {
+    "text": "Skill Feat\nNot Selected",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "Skill Feat\nNot Selected",
+    "id": "",
+    "className": "button-column"
+  },
+  {
+    "text": "Skill Feat",
+    "id": "",
+    "className": "small-text grey-text"
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Not Selected",
+    "id": "",
+    "className": "button-selection red-text"
+  },
+  {
+    "text": "Prerequisites not met or taken too many times!",
+    "id": "",
+    "className": "warning-text hidden small-text"
+  },
+  {
+    "text": "Hide Plan\nLevel\n1\nXP\n0\nCharacter Name\nUnknown Adventurer",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Hide Plan",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Hide Plan",
+    "id": "",
+    "className": "small-margin-right-bottom div-button-simple button-simple button-text button-show-plan"
+  },
+  {
+    "text": "Level\n1",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Level\n1",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "Level",
+    "id": "",
+    "className": "small-text grey-text button-text"
+  },
+  {
+    "text": "XP\n0",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "XP\n0",
+    "id": "",
+    "className": "small-margin-right-bottom div-button"
+  },
+  {
+    "text": "Character Name\nUnknown Adventurer",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Character Name\nUnknown Adventurer",
+    "id": "",
+    "className": "small-margin-right-bottom div-button button-name"
+  },
+  {
+    "text": "Character Name",
+    "id": "",
+    "className": "small-text grey-text button-text"
+  },
+  {
+    "text": "Unknown Adventurer",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Unknown Adventurer",
+    "id": "",
+    "className": "button-text button-selection"
+  },
+  {
+    "text": "SIZE\nMedium\nSPEED\n25ft.\nSTR\n+3\nDEX\n+1\nCON\n+1\nINT\n+0\nWIS\n+0\nCHA\n+0",
+    "id": "",
+    "className": "speedsizerow"
+  },
+  {
+    "text": "SIZE\nMedium",
+    "id": "",
+    "className": "speed-size-section"
+  },
+  {
+    "text": "SIZE\nMedium",
+    "id": "",
+    "className": "speed-size-right"
+  },
+  {
+    "text": "SIZE",
+    "id": "",
+    "className": "speed-size-label"
+  },
+  {
+    "text": "Medium",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "SPEED\n25ft.",
+    "id": "",
+    "className": "speed-size-section"
+  },
+  {
+    "text": "SPEED\n25ft.",
+    "id": "",
+    "className": "speed-size-right"
+  },
+  {
+    "text": "SPEED",
+    "id": "",
+    "className": "speed-size-label"
+  },
+  {
+    "text": "25ft.",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "STR\n+3",
+    "id": "",
+    "className": "ability-span"
+  },
+  {
+    "text": "STR",
+    "id": "",
+    "className": "abilityLabel"
+  },
+  {
+    "text": "DEX\n+1",
+    "id": "",
+    "className": "ability-span"
+  },
+  {
+    "text": "DEX",
+    "id": "",
+    "className": "abilityLabel"
+  },
+  {
+    "text": "CON\n+1",
+    "id": "",
+    "className": "ability-span"
+  },
+  {
+    "text": "CON",
+    "id": "",
+    "className": "abilityLabel"
+  },
+  {
+    "text": "INT\n+0",
+    "id": "",
+    "className": "ability-span"
+  },
+  {
+    "text": "INT",
+    "id": "",
+    "className": "abilityLabel"
+  },
+  {
+    "text": "WIS\n+0",
+    "id": "",
+    "className": "ability-span"
+  },
+  {
+    "text": "WIS",
+    "id": "",
+    "className": "abilityLabel"
+  },
+  {
+    "text": "CHA\n+0",
+    "id": "",
+    "className": "ability-span"
+  },
+  {
+    "text": "CHA",
+    "id": "",
+    "className": "abilityLabel"
+  },
+  {
+    "text": "AC\n14\nHP 19/19\nNo Shield\n+6Fortitude\n+6Reflex\n+3Will",
+    "id": "",
+    "className": "section-defenses rounded-rectangle"
+  },
+  {
+    "text": "AC\n14",
+    "id": "",
+    "className": "ac-holder"
+  },
+  {
+    "text": "HP 19/19\nNo Shield\n+6Fortitude\n+6Reflex\n+3Will",
+    "id": "",
+    "className": "defense-lines"
+  },
+  {
+    "text": "HP 19/19\nNo Shield",
+    "id": "",
+    "className": "defense-top-line"
+  },
+  {
+    "text": "HP 19/19",
+    "id": "",
+    "className": "button-text healthbar"
+  },
+  {
+    "text": "HP 19/19",
+    "id": "",
+    "className": "progress-bar-container"
+  },
+  {
+    "text": "HP 19/19",
+    "id": "",
+    "className": "progress-bar-text"
+  },
+  {
+    "text": "No Shield",
+    "id": "",
+    "className": "button-text shield-healthbar"
+  },
+  {
+    "text": "No Shield",
+    "id": "",
+    "className": "progress-bar-container"
+  },
+  {
+    "text": "No Shield",
+    "id": "",
+    "className": "progress-bar-text"
+  },
+  {
+    "text": "+6Fortitude\n+6Reflex\n+3Will",
+    "id": "",
+    "className": "defense-second-line"
+  },
+  {
+    "text": "+6Fortitude",
+    "id": "",
+    "className": "section-skill saves-button"
+  },
+  {
+    "text": "Fortitude",
+    "id": "",
+    "className": "section-skill-name"
+  },
+  {
+    "text": "+6Reflex",
+    "id": "",
+    "className": "section-skill saves-button"
+  },
+  {
+    "text": "Reflex",
+    "id": "",
+    "className": "section-skill-name"
+  },
+  {
+    "text": "+3Will",
+    "id": "",
+    "className": "section-skill saves-button"
+  },
+  {
+    "text": "Will",
+    "id": "",
+    "className": "section-skill-name"
+  },
+  {
+    "text": "Rest\nAdd Condition\nAdd Custom Buff",
+    "id": "section-conditions",
+    "className": ""
+  },
+  {
+    "text": "Rest\nAdd Condition\nAdd Custom Buff",
+    "id": "",
+    "className": "rounded-rectangle grid-container"
+  },
+  {
+    "text": "Rest",
+    "id": "",
+    "className": "small-margin-right-bottom div-button-simple button-simple button-text grid-item"
+  },
+  {
+    "text": "Add Condition",
+    "id": "",
+    "className": "small-margin-right-bottom div-button-simple button-simple button-text grid-item"
+  },
+  {
+    "text": "Add Custom Buff",
+    "id": "",
+    "className": "small-margin-right-bottom div-button-simple button-simple button-text grid-item modal-button-disabled"
+  },
+  {
+    "text": "Hero Points",
+    "id": "",
+    "className": "rounded-rectangle"
+  },
+  {
+    "text": "Hero Points",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "16Fighter DC",
+    "id": "",
+    "className": "rounded-rectangle"
+  },
+  {
+    "text": "16Fighter DC",
+    "id": "",
+    "className": "section-skill"
+  },
+  {
+    "text": "Fighter DC",
+    "id": "",
+    "className": "section-skill-name"
+  },
+  {
+    "text": "+5Perception\n+0Initiative",
+    "id": "",
+    "className": "rounded-rectangle"
+  },
+  {
+    "text": "+5Perception",
+    "id": "",
+    "className": "section-skill"
+  },
+  {
+    "text": "Perception",
+    "id": "",
+    "className": "section-skill-name"
+  },
+  {
+    "text": "+0Initiative",
+    "id": "",
+    "className": "section-skill"
+  },
+  {
+    "text": "Initiative",
+    "id": "",
+    "className": "section-skill-name"
+  },
+  {
+    "text": "+1Acrobatics",
+    "id": "",
+    "className": "section-skill"
+  },
+  {
+    "text": "Acrobatics",
+    "id": "",
+    "className": "section-skill-name"
+  },
+  {
+    "text": "+0Arcana",
+    "id": "",
+    "className": "section-skill"
+  },
+  {
+    "text": "Arcana",
+    "id": "",
+    "className": "section-skill-name"
+  },
+  {
+    "text": "+3Athletics",
+    "id": "",
+    "className": "section-skill"
+  },
+  {
+    "text": "Athletics",
+    "id": "",
+    "className": "section-skill-name"
+  },
+  {
+    "text": "+0Crafting",
+    "id": "",
+    "className": "section-skill"
+  },
+  {
+    "text": "Crafting",
+    "id": "",
+    "className": "section-skill-name"
+  },
+  {
+    "text": "+0Deception",
+    "id": "",
+    "className": "section-skill"
+  },
+  {
+    "text": "Deception",
+    "id": "",
+    "className": "section-skill-name"
+  },
+  {
+    "text": "+3Diplomacy",
+    "id": "",
+    "className": "section-skill"
+  },
+  {
+    "text": "Diplomacy",
+    "id": "",
+    "className": "section-skill-name"
+  },
+  {
+    "text": "+0Intimidation",
+    "id": "",
+    "className": "section-skill"
+  },
+  {
+    "text": "Intimidation",
+    "id": "",
+    "className": "section-skill-name"
+  },
+  {
+    "text": "+3Lore: Alcohol",
+    "id": "",
+    "className": "section-skill"
+  },
+  {
+    "text": "Lore: Alcohol",
+    "id": "",
+    "className": "section-skill-name"
+  },
+  {
+    "text": "+0Medicine",
+    "id": "",
+    "className": "section-skill"
+  },
+  {
+    "text": "Medicine",
+    "id": "",
+    "className": "section-skill-name"
+  },
+  {
+    "text": "+0Nature",
+    "id": "",
+    "className": "section-skill"
+  },
+  {
+    "text": "Nature",
+    "id": "",
+    "className": "section-skill-name"
+  },
+  {
+    "text": "+0Occultism",
+    "id": "",
+    "className": "section-skill"
+  },
+  {
+    "text": "Occultism",
+    "id": "",
+    "className": "section-skill-name"
+  },
+  {
+    "text": "+0Performance",
+    "id": "",
+    "className": "section-skill"
+  },
+  {
+    "text": "Performance",
+    "id": "",
+    "className": "section-skill-name"
+  },
+  {
+    "text": "+0Religion",
+    "id": "",
+    "className": "section-skill"
+  },
+  {
+    "text": "Religion",
+    "id": "",
+    "className": "section-skill-name"
+  },
+  {
+    "text": "+0Society",
+    "id": "",
+    "className": "section-skill"
+  },
+  {
+    "text": "Society",
+    "id": "",
+    "className": "section-skill-name"
+  },
+  {
+    "text": "+1Stealth",
+    "id": "",
+    "className": "section-skill"
+  },
+  {
+    "text": "Stealth",
+    "id": "",
+    "className": "section-skill-name"
+  },
+  {
+    "text": "+0Survival",
+    "id": "",
+    "className": "section-skill"
+  },
+  {
+    "text": "Survival",
+    "id": "",
+    "className": "section-skill-name"
+  },
+  {
+    "text": "+1Thievery",
+    "id": "",
+    "className": "section-skill"
+  },
+  {
+    "text": "Thievery",
+    "id": "",
+    "className": "section-skill-name"
+  },
+  {
+    "text": "WeaponsDefenseGearSpellsPetsDetailsFeatsActions",
+    "id": "",
+    "className": "tabbed-area-menu"
+  },
+  {
+    "text": "Weapons",
+    "id": "",
+    "className": "section-menu section-menu-selected"
+  },
+  {
+    "text": "Defense",
+    "id": "",
+    "className": "section-menu"
+  },
+  {
+    "text": "Gear",
+    "id": "",
+    "className": "section-menu"
+  },
+  {
+    "text": "Spells",
+    "id": "",
+    "className": "section-menu"
+  },
+  {
+    "text": "Pets",
+    "id": "",
+    "className": "section-menu"
+  },
+  {
+    "text": "Details",
+    "id": "",
+    "className": "section-menu"
+  },
+  {
+    "text": "Feats",
+    "id": "",
+    "className": "section-menu"
+  },
+  {
+    "text": "Actions",
+    "id": "",
+    "className": "section-menu"
+  },
+  {
+    "text": "Rituals",
+    "id": "",
+    "className": "lm-section-menu-background submenu"
+  },
+  {
+    "text": "Rituals",
+    "id": "",
+    "className": "section-menu section-menu-selected"
+  },
+  {
+    "text": "Simple WeaponsMartial WeaponsAdvanced WeaponsUnarmed Attacks\nAdd Weapon\nPrint",
+    "id": "",
+    "className": "tabbed-area-display-holder"
+  },
+  {
+    "text": "Simple WeaponsMartial WeaponsAdvanced WeaponsUnarmed Attacks\nAdd Weapon\nPrint",
+    "id": "",
+    "className": "tabbed-area-display"
+  },
+  {
+    "text": "Simple WeaponsMartial WeaponsAdvanced WeaponsUnarmed Attacks\nAdd Weapon\nPrint",
+    "id": "",
+    "className": "layout-tabbed-line"
+  },
+  {
+    "text": "Simple WeaponsMartial WeaponsAdvanced WeaponsUnarmed Attacks",
+    "id": "",
+    "className": "tabbed-area-top-holder"
+  },
+  {
+    "text": "Simple WeaponsMartial WeaponsAdvanced WeaponsUnarmed Attacks",
+    "id": "",
+    "className": "tabbed-area-top"
+  },
+  {
+    "text": "Simple WeaponsMartial WeaponsAdvanced WeaponsUnarmed Attacks",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "Simple Weapons",
+    "id": "",
+    "className": "short-proficiency"
+  },
+  {
+    "text": "Simple Weapons",
+    "id": "",
+    "className": "section-skill-name"
+  },
+  {
+    "text": "Martial Weapons",
+    "id": "",
+    "className": "short-proficiency"
+  },
+  {
+    "text": "Martial Weapons",
+    "id": "",
+    "className": "section-skill-name"
+  },
+  {
+    "text": "Advanced Weapons",
+    "id": "",
+    "className": "short-proficiency"
+  },
+  {
+    "text": "Advanced Weapons",
+    "id": "",
+    "className": "section-skill-name"
+  },
+  {
+    "text": "Unarmed Attacks",
+    "id": "",
+    "className": "short-proficiency"
+  },
+  {
+    "text": "Unarmed Attacks",
+    "id": "",
+    "className": "section-skill-name"
+  },
+  {
+    "text": "Add Weapon\nPrint",
+    "id": "",
+    "className": "tabbed-area-top-holder"
+  },
+  {
+    "text": "Add Weapon",
+    "id": "",
+    "className": "small-margin-right-bottom div-button-simple button-simple button-text"
+  },
+  {
+    "text": "Print",
+    "id": "",
+    "className": "small-margin-right-bottom div-button-simple button-simple button-text"
+  },
+  {
+    "text": "Graviton Attuned?OnOffPhoton Attuned?OnOff",
+    "id": "",
+    "className": "layout-tabbed-line hidden"
+  },
+  {
+    "text": "Graviton Attuned?OnOff",
+    "id": "",
+    "className": "checkbox-container"
+  },
+  {
+    "text": "Graviton Attuned?",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "OnOff",
+    "id": "",
+    "className": "slider round"
+  },
+  {
+    "text": "Off",
+    "id": "",
+    "className": "off"
+  },
+  {
+    "text": "Photon Attuned?OnOff",
+    "id": "",
+    "className": "checkbox-container"
+  },
+  {
+    "text": "Photon Attuned?",
+    "id": "",
+    "className": ""
+  },
+  {
+    "text": "OnOff",
+    "id": "",
+    "className": "slider round"
+  },
+  {
+    "text": "Off",
+    "id": "",
+    "className": "off"
+  },
+  {
+    "text": "Help",
+    "id": "",
+    "className": "dialog-top-bar"
+  },
+  {
+    "text": "Help",
+    "id": "",
+    "className": "dialog-title"
+  },
+  {
+    "text": "Accept",
+    "id": "",
+    "className": "modal-buttons"
+  },
+  {
+    "text": "Accept",
+    "id": "",
+    "className": "modal-button"
+  }
+]
