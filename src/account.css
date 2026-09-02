@@ -11,6 +11,67 @@
 /* A conta não pode forçar a topbar a recalcular linhas ao trocar de rota. */
 #react-account-root { min-width: 0; flex: 0 1 auto; }
 
+.theme-switcher {
+  flex: 0 0 auto;
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 5px;
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid var(--pb-border-light);
+  border-radius: 9px;
+  backdrop-filter: blur(8px);
+}
+
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 4px 8px;
+  min-height: 28px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  color: var(--pb-text);
+  font-size: 11px;
+  font-weight: 700;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+}
+
+.theme-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.theme-icon {
+  font-size: 13px;
+  line-height: 1;
+}
+
+.theme-toggle-text {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+[data-theme="light"] .theme-switcher,
+[data-theme="light"] .locale-switcher {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: #cbd5e1;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .theme-toggle-btn:hover {
+  background: rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
 .locale-switcher {
   flex: 0 0 auto;
   min-height: 36px;

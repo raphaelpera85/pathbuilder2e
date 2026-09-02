@@ -6,6 +6,7 @@ import { PickerModal } from "./PickerModal";
 import { ItemPickerModal } from "./ItemPickerModal";
 import { AccountPortal } from "./AccountPortal";
 import { I18nProvider, LocaleSwitcher } from "./i18n";
+import { ThemeProvider, ThemeSwitcher } from "./theme";
 import { PF2E_ACTIONS_CATALOG } from "./data/actionsData";
 import { PF2E_ITEMS_CATALOG } from "./data/equipmentData";
 import { PF2E_FEATS_CATALOG } from "./data/featsData";
@@ -64,26 +65,38 @@ window.dispatchEvent(new Event("pathbuilder:catalogs-ready"));
 
 createRoot(modalRoot).render(
   <StrictMode>
-    <I18nProvider>
-      <ViewportSignals />
-      <PickerModal />
-      <ItemPickerModal />
-    </I18nProvider>
+    <ThemeProvider>
+      <I18nProvider>
+        <ViewportSignals />
+        <PickerModal />
+        <ItemPickerModal />
+      </I18nProvider>
+    </ThemeProvider>
   </StrictMode>,
 );
 
 createRoot(accountRoot).render(
   <StrictMode>
-    <I18nProvider><div className="portal-controls"><LocaleSwitcher /><AccountPortal /></div></I18nProvider>
+    <ThemeProvider>
+      <I18nProvider>
+        <div className="portal-controls">
+          <ThemeSwitcher />
+          <LocaleSwitcher />
+          <AccountPortal />
+        </div>
+      </I18nProvider>
+    </ThemeProvider>
   </StrictMode>,
 );
 
 createRoot(portalRoot).render(
   <StrictMode>
-    <I18nProvider>
-      <PortalPages />
-      <SpeedInsights />
-      <Analytics />
-    </I18nProvider>
+    <ThemeProvider>
+      <I18nProvider>
+        <PortalPages />
+        <SpeedInsights />
+        <Analytics />
+      </I18nProvider>
+    </ThemeProvider>
   </StrictMode>,
 );

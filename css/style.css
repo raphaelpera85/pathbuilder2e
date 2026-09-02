@@ -35,6 +35,36 @@
   --font-mono: 'Consolas', 'Courier New', monospace;
 }
 
+:root[data-theme="light"],
+html[data-theme="light"],
+body.theme-light {
+  --pb-bg-darkest: #f1f5f9;
+  --pb-bg-main: #f8fafc;
+  --pb-bg-panel: #ffffff;
+  --pb-bg-card: #ffffff;
+  --pb-bg-input: #f8fafc;
+  --pb-bg-hover: #e2e8f0;
+  
+  --pb-border: #cbd5e1;
+  --pb-border-light: #e2e8f0;
+  --pb-border-orange: #ea580c;
+
+  --pb-orange: #ea580c;
+  --pb-orange-dark: #9a3412;
+  --pb-orange-light: #c2410c;
+  --pb-orange-glow: rgba(234, 88, 12, 0.18);
+
+  --pb-text: #0f172a;
+  --pb-text-muted: #475569;
+  --pb-text-dim: #64748b;
+
+  --pb-teml-u: #94a3b8;
+  --pb-teml-t: #ea580c;
+  --pb-teml-e: #c2410c;
+  --pb-teml-m: #b45309;
+  --pb-teml-l: #b91c1c;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -63,6 +93,22 @@ body {
   padding: 0 12px;
   gap: 16px;
   z-index: 100;
+}
+
+[data-theme="light"] .pb-topbar {
+  background-color: #ffffff;
+  border-bottom: 2px solid var(--pb-border-orange);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .pb-menu-btn {
+  color: #0f172a;
+}
+
+[data-theme="light"] .pb-drawer {
+  background-color: #ffffff;
+  color: #0f172a;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.12);
 }
 
 #react-account-root {

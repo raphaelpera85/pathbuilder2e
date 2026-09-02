@@ -857,3 +857,42 @@
   color: #cbd5e1;
   text-align: center;
 }
+
+/* Light Theme Overrides for Campaigns */
+[data-theme="light"] .campaigns-sidebar-header h3,
+[data-theme="light"] .camp-card h2,
+[data-theme="light"] .camp-section-header h3,
+[data-theme="light"] .character-row-name strong,
+[data-theme="light"] .ab-score {
+  color: #0f172a;
+}
+
+[data-theme="light"] .camp-card,
+[data-theme="light"] .campaigns-sidebar,
+[data-theme="light"] .camp-stat-box {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .ability-box {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+[data-theme="light"] .save-chip {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #1e293b;
+}
+
+[data-theme="light"] .inspect-modal {
+  background: #ffffff;
+  border-color: rgba(234, 88, 12, 0.4);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="light"] .inspect-header h3 {
+  color: #0f172a;
+}
+
