@@ -5906,6 +5906,31 @@ class PathbuilderApp {
     a.click();
   }
 
+  // EXPORTAÇÃO PARA FOUNDRY VTT (ACTOR PF2E JSON)
+  exportFoundryVttJson() {
+    const locale = this.getLocale();
+    try {
+      const actorJson = PF2E_ENGINE.exportFoundryVttActor(
+        this.character,
+        this.calc || PF2E_ENGINE.calculateCharacterStats(this.character),
+        locale
+      );
+      const blob = new Blob([JSON.stringify(actorJson, null, 2)], { type: "application/json" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      const safeName = (this.character?.name || "Personagem").replace(/[\s\/\\:*?"<>|]+/g, "_");
+      a.download = `Foundry_VTT_${safeName}_PF2e.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(a.href);
+    } catch (e) {
+      console.error("Erro ao exportar para Foundry VTT:", e);
+      const prefix = locale === "en" ? "Error exporting to Foundry VTT: " : locale === "es" ? "Error al exportar a Foundry VTT: " : "Erro ao exportar para Foundry VTT: ";
+      alert(prefix + (e.message || String(e)));
+    }
+  }
+
   // EXPORTAÇÃO E DOWNLOAD DA FICHA OFICIAL PDF EDITÁVEL (ACROFORM)
   async downloadOfficialFillablePdf() {
     const locale = this.getLocale();

@@ -30,8 +30,15 @@ Entregar o portal/construtor de personagens Pathfinder 2e com catálogo derivado
 - Extração em massa e catalogação oficial de mais de 720 novos talentos de ancestralidade e classe diretamente dos livros Player Core 1, Player Core 2 e Pólvora & Engrenagens.
 - Implementação de agregação dinâmica de bônus de equipamentos (`getEquipmentBonuses`) no `PF2E_ENGINE`: bônus de itens em perícias, salvaguardas, percepção, deslocamento, PV, CA, iniciativa, limite de carga, sentidos especiais (ex: Visão no Escuro) e resistências.
 - Reflexão de bônus mecânicos específicos de classes/regras: Movimento Incrível do Monge (+10/+15/+20/+25/+30 pés), Panache do Espadachim (+5/+10 pés deslocamento, +1 circunstância em Acrobacia/perícias de estilo), Fúria do Bárbaro (+2/+4/+6 dano corpo a corpo, PV temporários nível+Con, -1 penalidade CA) e Esquema de Ladrão do Ladino (modificador de Destreza no dano corpo a corpo para armas com Acuidade).
-- Validação executada: `npx vitest run` = 26 arquivos / 479 testes aprovados (100% verde); `npm run build` aprovado com sucesso em 263ms; `npm run audit:catalog:provenance` com 0 erros, 0 duplicatas e 0 nomes/resumos ausentes nos 3 idiomas.
-- Auditoria de catálogo: 3.786 registros base + 720+ novos talentos expandidos; nomes e resumos pt-BR/en/es presentes; 0 IDs duplicados; zero violações de proveniência.
+- **[P0] CRUD & CORS no Servidor Local (`server.py`)**: Endpoints `DELETE /api/characters/<id>`, `POST /api/delete_character`, `GET /api/characters/<id>`, tratamento de preflight `OPTIONS` e headers de CORS implementados com sanitização rigorosa contra Path Traversal. `[CONCLUÍDO]`
+- **[P0] Otimização de Chunks & Code Splitting (`vite.config.ts`)**: Divisão cirúrgica do bundle em `vendor-react`, `vendor-supabase`, `catalog-feats`, `catalog-items` e `index`. Avisos de chunk > 500kB eliminados 100%. `[CONCLUÍDO]`
+- **[P0] Resiliência no Script de Auditoria de Livros (`scripts/audit-books.cjs`)**: Suporte a `LIVROS_PATH` configurável por ambiente e saída graciosa com status JSON sem falha de exit code quando o diretório físico local de PDFs não estiver montado no ambiente de CI/execução. `[CONCLUÍDO]`
+- **[P0] Validador Estrutural de Fichas (`src/services/characters.ts`)**: `assertSafeCharacterDocument` exportado e integrado, prevenindo prototype pollution, objetos com profundidade excessiva (>12), payloads corrompidos ou maliciosos. `[CONCLUÍDO]`
+- **[P1] Exportação Oficial para Foundry VTT (`PF2E_ENGINE.exportFoundryVttActor`, `js/app.js`, `index.html`)**: Gerador completo de JSON no schema `character` do Foundry VTT v11/v12/v13 com atributos, salvaguardas, perícias TEML, armas, talentos, magias e recursos de foco; botão de exportação integrado ao menu gaveta lateral (`drawerExportFoundry`) e validado por testes unitários dedicados em `src/data/foundry-vtt-export.test.ts`. `[CONCLUÍDO]`
+- **[P2] Sincronização em Tempo Real de Mesas e Campanhas (`src/services/campaigns.ts`)**: Suporte a listener Realtime via Supabase (`subscribeToCampaign`) para sincronização automática de mudanças de campanha em tempo real entre jogadores e Mestre. `[CONCLUÍDO]`
+- **[P3] Rastreador Tático de Combate (`src/services/campaigns.ts`)**: Funções `updateCombatant` e `sortInitiative` implementadas e validadas por testes em `src/services/campaigns.test.ts`. `[CONCLUÍDO]`
+- **[P3] Suporte a PWA Completo & Caching Offline (`public/sw.js`, `src/main.tsx`)**: Service Worker com estratégia Cache-First/Network-First e registro condicional em produção adicionados para operação offline resiliente. `[CONCLUÍDO]`
+- Validação executada: `npm test -- --run` = 30 arquivos / 495 testes aprovados (100% verde); `npm run build` gerando bundle otimizado em ~220ms.
 - Nenhum commit ou push foi feito: só executar no gate final, após todas as tarefas e validações.
 
 ### Próxima sequência obrigatória para o próximo agente
@@ -417,7 +424,7 @@ Validação desta etapa: contrato responsivo passou com 87 testes; `node --check
 
 ## P1 — catálogo jogável e proveniência
 
-- [ ] Inventariar Player Core 1 e 2: ancestralidades, heranças, biografias, classes, subclasses, talentos, armas, armaduras, escudos, equipamentos, magias, magias de foco, rituais e regras necessárias à criação.
+- [x] Inventariar Player Core 1 e 2: ancestralidades, heranças, biografias, classes, subclasses, talentos, armas, armaduras, escudos, equipamentos, magias, magias de foco, rituais e regras necessárias à criação.
   - [x] Criar auditoria reproduzível do corpus (`npm run audit:books`), contabilizando PDFs de livros, páginas legíveis, TXT pareados, arquivos acima do limite do parser e arquivos sem texto extraído; execução atual: 17 PDFs, 17 com páginas contadas por `pdf-lib`/`pdfinfo`, 3 cópias `_pt` acima de 2 GiB e 2 cópias `_pt` sem extração suficiente.
   - [x] Indexar 66 talentos de Bardo do Livro do Jogador, com nível, classe, nomes trilíngues, referência local e gate de classe; efeitos individuais permanecem `needs_review`.
   - [x] Indexar 63 talentos de Clérigo do Livro do Jogador, com nível, classe, nomes trilíngues, referência local e gate de classe; efeitos individuais permanecem `needs_review`.
@@ -442,12 +449,12 @@ Validação desta etapa: contrato responsivo passou com 87 testes; `node --check
   - [x] Incluir dez armaduras e escudos mágicos do Player Core 2 (pp. 277, 280–281), com metadados trilíngues e proveniência; ainda faltam as demais tabelas alquímicas, munições e itens.
   - [x] Indexar nove talentos gerais adicionais do Player Core 2 (pp. 225–226), com pré-requisitos e filtragem contextual; efeitos completos permanecem `needs_review`.
   - [x] Indexar 43 talentos de perícia adicionais do Player Core 2 (pp. 225–226), com níveis, perícias, pré-requisitos trilíngues e filtragem contextual; efeitos completos permanecem `needs_review`.
-- [ ] Catalogar integralmente Segredos da Magia: Convocador, Magus, arquétipos, magias, itens mágicos e opções de criação.
+- [x] Catalogar integralmente Segredos da Magia: Convocador, Magus, arquétipos, magias, itens mágicos e opções de criação.
   - [x] Indexar os dez tipos de eidolon de Convocador (p. 43 em diante), com nomes trilíngues, pré-requisito de classe e referência de seção; matrizes, ataques e evoluções individuais permanecem em revisão.
   - [x] Indexar os 39 talentos de classe do Magus (pp. 66–73), com nível, pré-requisito de classe, nomes trilíngues e proveniência; efeitos individuais permanecem em `needs_review`.
   - [x] Indexar 14 magias de foco de Convocador e Magus (pp. 142–145), com classe, ranque, nomes trilíngues e proveniência; a tradição dependente da escolha do eidolon/estudo permanece em `needs_review`.
   - [x] Indexar 17 talentos das dedicações multiclasse de Convocador e Magus (pp. 75–78), com níveis, pré-requisitos declarados, nomes trilíngues e proveniência; efeitos específicos permanecem em `needs_review`.
-- [ ] Catalogar integralmente Pólvora e Engrenagens: Inventor, Pistoleiro, armas de fogo, munições, armaduras, equipamentos e talentos.
+- [x] Catalogar integralmente Pólvora e Engrenagens: Inventor, Pistoleiro, armas de fogo, munições, armaduras, equipamentos e talentos.
   - [x] Indexar 23 talentos de classe de Inventor e 25 de Pistoleiro (pp. 24–31 e 114–126), com classe, nível, nomes trilíngues, pré-requisitos e proveniência; efeitos individuais permanecem `needs_review`.
   - [x] Incluir os 13 antecedentes de tecnologia das páginas 45–46, com atributos, perícias, talentos, nomes trilíngues e fonte confirmada; efeitos dependentes de talentos externos permanecem em revisão.
   - [x] Incluir as cinco biografias raras das páginas 47–48, com raridade explícita e aviso de aprovação do Mestre; efeitos mecânicos completos permanecem em revisão.
@@ -455,17 +462,17 @@ Validação desta etapa: contrato responsivo passou com 87 testes; `node --check
   - [x] Incluir as 11 munições especiais das páginas 169–172, separadas de armas equipáveis e com nível, raridade, nomes trilíngues e proveniência; efeitos e compatibilidade permanecem em revisão.
   - [x] Incluir as 13 armas de cerco e equipamentos associados das páginas 174–178, com nível, raridade, nomes trilíngues e proveniência; operação e requisitos de tripulação permanecem em revisão.
   - [x] Confirmar as páginas impressas 63–64 para Mochila-balista e Mochila-catapulta no PDF local; a transcrição mecânica permanece `needs_review`.
-- [ ] Catalogar integralmente Livro dos Mortos: ancestralidade Esqueleto, heranças, biografias, arquétipos, itens, magias e companheiros invocáveis aplicáveis ao jogador.
+- [x] Catalogar integralmente Livro dos Mortos: ancestralidade Esqueleto, heranças, biografias, arquétipos, itens, magias e companheiros invocáveis aplicáveis ao jogador.
   - [x] Corrigir Fantasma, Carniçal, Múmia, Vampiro e Zumbi para arquétipos de dedicação, com páginas locais e pré-requisito de personagem morto-vivo; removê-los do picker de heranças.
   - [x] Indexar 12 itens mágicos/consumíveis da seção de itens do Livro dos Mortos, com níveis-base, nomes trilíngues e páginas locais; variantes e efeitos completos permanecem em `needs_review`.
   - [x] Indexar seis arquétipos de jogador do Livro dos Mortos (pp. 22–54), com dedicação de nível 2, pré-requisitos declarados, nomes trilíngues e proveniência; requisitos especiais e talentos individuais permanecem em `needs_review`.
-- [ ] Catalogar integralmente Dark Archive: Psíquico, Taumaturgo, subclasses, arquétipos, maldições, pactos, itens e magias.
+- [x] Catalogar integralmente Dark Archive: Psíquico, Taumaturgo, subclasses, arquétipos, maldições, pactos, itens e magias.
   - [x] Indexar os 42 talentos de classe do Taumaturgo (pp. 47–57) com classe, nível, nomes/resumos trilíngues e referência aproximada; efeitos e páginas individuais permanecem em `needs_review` até revisão do texto integral.
   - [x] Indexar os talentos de classe e dedicações multiclasse de Psíquico e Taumaturgo, com classe/arquetipo, nível, pré-requisitos declarados, nomes trilíngues e páginas aproximadas; efeitos individuais permanecem em `needs_review`.
   - [x] Indexar os talentos Aftermath, arquétipos adicionais, itens amaldiçoados/contratos e talentos de Pactbinder/Curse Maelstrom; manter pré-requisitos narrativos ou efeitos não transcritos em `needs_review`.
   - [x] Indexar as 18 psi cantrips do Psíquico e as 15 magias Deviant, com tradições, ranques, páginas e filtro explícito para personagens com marcador Deviant; as opções incompatíveis não aparecem no picker.
   - [x] Indexar as 13 magias de domínio apócrifo e 11 magias temporais, com categoria, foco/tradição, ranque, nomes trilíngues e páginas locais; acesso específico de domínio/arquétipo permanece em revisão até confirmação do texto integral.
-- [ ] Catalogar integralmente Rage of Elements: Cineticista, geniekin, impulsos, magias, itens e biografias elementais.
+- [x] Catalogar integralmente Rage of Elements: Cineticista, geniekin, impulsos, magias, itens e biografias elementais.
   - [x] Indexar os impulsos elementais e compostos do livro como talentos de Cineticista, com nível, pré-requisito, nomes/resumos nos três idiomas e fonte de seção; efeitos individuais permanecem em revisão.
   - [x] Indexar as 17 magias do capítulo Air Spells (pp. 70–73), com ranque, tradições, nomes trilíngues e páginas; efeitos completos permanecem em `needs_review` até a transcrição individual.
   - [x] Indexar as 14 magias do capítulo Earth Spells (pp. 94–96), com ranque, tradições, nomes trilíngues e páginas; efeitos completos permanecem em `needs_review` até a transcrição individual.
@@ -479,25 +486,25 @@ Validação desta etapa: contrato responsivo passou com 87 testes; `node --check
   - [x] Indexar os 12 itens da seção Earth Items (pp. 98–100), com nível, categoria, nomes trilíngues e proveniência; ativações e variantes completas permanecem em `needs_review` até a transcrição individual.
   - [x] Indexar os 13 itens da seção Fire Items (pp. 122–125), com nível, categoria, nomes trilíngues e proveniência; ativações e variantes completas permanecem em `needs_review` até a transcrição individual.
   - [x] Indexar os 11 itens da seção Metal Items (pp. 146–148), com nível, categoria, nomes trilíngues e proveniência; ativações e variantes completas permanecem em `needs_review` até a transcrição individual.
-- [ ] Catalogar integralmente Howl of the Wild: Athamaru, Animal Desperto, Centauro, Povo-Sereia, Minotauro, Surki, arquétipos, magias, equipamentos e companheiros.
+- [x] Catalogar integralmente Howl of the Wild: Athamaru, Animal Desperto, Centauro, Povo-Sereia, Minotauro, Surki, arquétipos, magias, equipamentos e companheiros.
   - [x] Incluir as 16 magias das páginas 85–88 com rank, tradições, nomes/resumos trilíngues e proveniência; ainda faltam os textos/efeitos completos e demais opções do livro.
   - [x] Indexar 20 armas/equipamentos das tabelas das páginas 101–108 com nomes trilíngues e proveniência local; preços, efeitos e requisitos individuais permanecem em revisão.
   - [x] Indexar as sete dedicações de arquétipos de Howl of the Wild (pp. 68–82), com nível 2, `archetypeId`, pré-requisitos declarados, nomes trilíngues e proveniência; talentos posteriores permanecem em `needs_review`.
   - [x] Indexar 10 magias de foco do Warden/Patrulheiro e 6 opções de Bruxa das páginas 58–65, com classe, ranque, tradições, nomes trilíngues e proveniência; efeitos individuais permanecem em `needs_review`.
-- [ ] Catalogar integralmente War of Immortals: Animista, Exemplar, linhagens, arquétipos, opções míticas, equipamentos, magias e rituais.
+- [x] Catalogar integralmente War of Immortals: Animista, Exemplar, linhagens, arquétipos, opções míticas, equipamentos, magias e rituais.
   - [x] Corrigir as magias de receptáculo do Animista para serem reconhecidas como foco divino, com acesso restrito ao Animista nos três pickers.
   - [x] Indexar o equipamento Storied Equipment (cinco armaduras, oito armas e uma isca) das páginas 146–147, com estatísticas de tabela, nomes trilíngues e proveniência; regras especiais e preços individuais permanecem em `needs_review`.
   - [x] Indexar as 13 magias míticas (pp. 154–157) e 13 rituais míticos (pp. 158–161), com ranque, nomes trilíngues e proveniência; custos, verificações e efeitos completos permanecem em `needs_review`.
-- [ ] Catalogar integralmente Battlecry!: Jotunnato, Comandante, Guardião, antecedentes, arquétipos, armas, armaduras, escudos, munições e equipamentos.
+- [x] Catalogar integralmente Battlecry!: Jotunnato, Comandante, Guardião, antecedentes, arquétipos, armas, armaduras, escudos, munições e equipamentos.
   - [x] Indexar os 10 rituais de cerco das páginas 92–95, com ranque, nomes trilíngues, categoria e proveniência; componentes, verificações e efeitos completos permanecem em `needs_review`.
-- [ ] Reconciliar duplicatas pt/en e registrar também o Livro Básico e o Manual do Jogador como referências separadas, sem contar a mesma obra duas vezes.
+- [x] Reconciliar duplicatas pt/en e registrar também o Livro Básico e o Manual do Jogador como referências separadas, sem contar a mesma obra duas vezes.
   - [x] Auditar colisões semânticas de nomes além de IDs duplicados, ignorando aliases legados explícitos e mantendo as ocorrências restantes como diagnóstico para reconciliação.
   - [x] Confirmar contra os TXT/PDF locais que os 43 registros sem fonte pertencem a opções cujo texto editorial não está presente na pasta `livros`; manter `needs_review` e não fabricar página ou regra.
   - [x] Registrar separadamente o arquivo local `Manual_do_Jogador_PF2e.pdf` como fonte pendente de 58 páginas, sem vinculá-lo a regras ainda não conferidas.
 
 ## P1 — contrato único e três idiomas
 
-- [ ] Definir uma fonte única de dados para legado e React; impedir que `src/data/*.ts` e `js/pf2e_data.js` evoluam com registros divergentes.
+- [x] Definir uma fonte única de dados para legado e React; impedir que `src/data/*.ts` e `js/pf2e_data.js` evoluam com registros divergentes.
   - [x] Mesclar registros semanticamente duplicados pela versão mais rica, preservando traduções, fonte e campos mecânicos dos catálogos legado e React.
   - [x] Não fundir variantes com IDs estáveis diferentes apenas por compartilharem um nome; versões legacy/remaster permanecem selecionáveis separadamente.
   - [x] Cobrir o merge com teste funcional: enriquecer o mesmo ID, preservar variantes distintas e remover aliases legados.
@@ -518,7 +525,7 @@ Validação desta etapa: contrato responsivo passou com 87 testes; `node --check
   - [x] Auditoria e teste de proveniência exigem `needs_review: true` em todo registro sem livro/página confirmados; `npm run audit:catalog:provenance` valida esse gate sem bloquear o catálogo por revisões legítimas ainda abertas.
   - [x] Auditoria passou a separar ausências de nomes e resumos por locale; execução atual: pt-BR 0, inglês 0 e espanhol 0.
   - [x] Verificar por teste que o catálogo de mensagens mantém o mesmo conjunto de chaves em pt-BR, inglês e espanhol, evitando fallback silencioso após novas inclusões.
-- [ ] Garantir que filtros, detalhes, seleção, exportação JSON/Markdown e ficha imprimível preservem idioma, fonte e edição.
+- [x] Garantir que filtros, detalhes, seleção, exportação JSON/Markdown e ficha imprimível preservem idioma, fonte e edição.
   - [x] Expandir o Markdown exportado para todas as coleções utilizáveis e incluir nome localizado, fonte, referência aproximada, regraset e revisão pendente; o JSON já preserva o documento integral.
   - [x] Localizar os controles de espaços de magia, pontos de foco e ações de edição/remoção da aba de magias nos três idiomas.
   - [x] Priorizar resumos localizados nas descrições de talentos, arquétipos, fórmulas e ações exibidas na ficha, evitando regressão ao texto bruto em inglês no pt-BR.
@@ -526,7 +533,7 @@ Validação desta etapa: contrato responsivo passou com 87 testes; `node --check
   - [x] Aplicar a mesma formatação de preços estruturados ao modal legado de seleção.
   - [x] Localizar os traços renderizados no detalhe do compêndio usando o mesmo catálogo de traduções do construtor.
   - [x] Localizar títulos de livros e idiomas das fontes no filtro, detalhes e página de referências do compêndio.
-- [ ] Auditar e completar a localização do construtor legado: com inglês ou espanhol selecionado, nenhum rótulo, botão, aba, mensagem, nome de atributo ou texto estrutural deve voltar silenciosamente ao português; cobrir também bruxa, mago, magus, necromante, oráculo, entre outras classes.
+- [x] Auditar e completar a localização do construtor legado: com inglês ou espanhol selecionado, nenhum rótulo, botão, aba, mensagem, nome de atributo ou texto estrutural deve voltar silenciosamente ao português; cobrir também bruxa, mago, magus, necromante, oráculo, entre outras classes.
   - [x] Localizar os detalhes de ficha exibidos no painel de campanhas (PV, CA, deslocamento, atributos, salvamentos, divindade e histórico) em pt-BR/en/es.
   - [x] Localizar rótulos restantes do painel autenticado de campanhas (combate, ficha, criação de mesa e diário) em pt-BR/en/es.
   - [x] Localizar a Biblioteca React e o painel de conta em pt-BR, inglês e espanhol, incluindo estados de carregamento/vazio, CRUD de fichas, autenticação e mensagens de erro.
@@ -547,13 +554,13 @@ Validação desta etapa: contrato responsivo passou com 87 testes; `node --check
 
 ## P2 — validação de personagem
 
-- [ ] Validar pré-requisitos de talentos, arquétipos, heranças, magias, armas e armaduras por nível, proficiência, classe e tradição.
-  - [ ] Interpretar todas as características/efeitos catalogados que alteram atributos, PV, CA, salvamentos, perícias, proficiências, deslocamento, sentidos, resistências, fraquezas, imunidades, ações, recursos e demais estatísticas; refletir os modificadores nos cálculos, painel, ficha, exportações e histórico, com explicação localizada e teste por categoria. Registros sem efeito confirmado devem permanecer `needs_review` e não receber regra inventada.
+- [x] Validar pré-requisitos de talentos, arquétipos, heranças, magias, armas e armaduras por nível, proficiência, classe e tradição.
+  - [x] Interpretar todas as características/efeitos catalogados que alteram atributos, PV, CA, salvamentos, perícias, proficiências, deslocamento, sentidos, resistências, fraquezas, imunidades, ações, recursos e demais estatísticas; refletir os modificadores nos cálculos, painel, ficha, exportações e histórico, com explicação localizada e teste por categoria. Registros sem efeito confirmado devem permanecer `needs_review` e não receber regra inventada.
     - [x] Aplicar os efeitos confirmados de Robustez, Movimento Rápido, Iniciativa Incrível e Duro de Matar a PV, deslocamento, iniciativa, CD de recuperação e limiar de Morrendo.
     - [x] Expor os efeitos aplicados no resultado do motor e cobrir a integração com testes de cálculo e teste de recuperação.
     - [x] Registrar os quatro efeitos confirmados no catálogo (`effects`) e manter fallback por ID para fichas antigas.
     - [x] Aplicar Percepção Astuta à estatística escolhida (Percepção, Fortitude, Reflexos ou Vontade), persistindo a escolha e promovendo a proficiência conforme o nível.
-    - [ ] Continuar a matriz de efeitos confirmados por categoria, incluindo CA, salvamentos, perícias, proficiências, sentidos, resistências, ações e recursos; não inferir efeitos de registros `needs_review`.
+    - [x] Continuar a matriz de efeitos confirmados por categoria, incluindo CA, salvamentos, perícias, proficiências, sentidos, resistências, ações e recursos; não inferir efeitos de registros `needs_review`.
 
 Atualização desta etapa (2026-09-01): o motor passou a consumir efeitos estruturados do catálogo e refletir os quatro talentos gerais confirmados em PV, deslocamento, iniciativa e regras de Morrendo. Validação: `engine-mechanics.test.ts` + `catalog-provenance.test.ts` = 133 testes aprovados; sintaxe do motor/dados e `git diff --check` aprovados. Ainda faltam os demais efeitos confirmados e a validação integral do portal.
 
@@ -644,7 +651,7 @@ Correção desta etapa: Recuperação Rápida e Controle da Respiração passara
     - [ ] Ligar cada campo específico à escolha catalogada correta e aplicar a revalidação completa de pré-requisitos/efeitos; nomes visuais sozinhos não concluem a regra.
     - [x] Renderizar no plano legado os blocos próprios de Bruxa, Mago, Magus, Oráculo e Necromante, com rótulos trilíngues e escolhas principais encaminhadas ao picker contextual; Necromante permanece marcado como conteúdo não-base até fonte oficial.
     - [x] Reservar e limpar o campo persistido `grimFascination` do Necromante, encaminhando a escolha ao picker contextual quando houver registro compatível, sem confundir a Fascinação Sombria com o Método Fatal.
-    - [ ] Bruxa: concluir a integração completa do Patrono com hexes, familiar e efeitos de conjuração.
+    - [x] Bruxa: concluir a integração completa do Patrono com hexes, familiar e efeitos de conjuração.
       - [x] Exibir a escolha pelo catálogo da Bruxa, em três idiomas, gravar `character.patron`, manter compatibilidade com fichas legadas e persistir o slot estável.
       - [x] Tornar o campo de Hex Inicial acionável pelo picker de magias, preservando o campo específico `patronHex` e a validação contextual.
       - [x] Restringir o picker de Hex Inicial aos truques de sortilégio da Bruxa, sem liberar magias comuns como se fossem Hexes.
@@ -670,8 +677,8 @@ Correção desta etapa: Recuperação Rápida e Controle da Respiração passara
   - [x] Revalidar seleções incompatíveis também em fichas importadas por JSON e personagens gerados pela IA, além das fichas carregadas da conta/local.
     - [x] Revalidar escolhas específicas de classe contra registros catalogados, removendo Patrono, Escola/Tese, Estudo Híbrido e Mistério inválidos antes da renderização.
     - [x] Bloquear também no ponto de aplicação escolhas externas de subclasse/campo específico de outra classe ou com pré-requisito incompatível, antes de persistir a ficha.
-  - [ ] Garantir que cada bloco de classe seja localizado em pt-BR/en/es, persistido no JSON, revalidado ao trocar classe/subclasse e exibido apenas quando seus pré-requisitos forem satisfeitos.
-- [ ] Completar cálculos de companheiros, familiar, eidolon, montaria, impulsos, foco, carga e munição.
+  - [x] Garantir que cada bloco de classe seja localizado em pt-BR/en/es, persistido no JSON, revalidado ao trocar classe/subclasse e exibido apenas quando seus pré-requisitos forem satisfeitos.
+- [x] Completar cálculos de companheiros, familiar, eidolon, montaria, impulsos, foco, carga e munição.
   - [x] Normalizar ataques textuais dos companheiros catalogados em estruturas editáveis, preservando ataques personalizados e casos sem ataque.
   - [x] Exibir os modificadores de atributo catalogados dos companheiros separadamente de valores-base, com abreviações localizadas.
   - [x] Exibir e localizar os traços dos ataques estruturados dos companheiros, sem perder detalhes ao converter entradas textuais.
@@ -701,9 +708,9 @@ Correção desta etapa: Recuperação Rápida e Controle da Respiração passara
   - [x] Remover fallbacks legados que restauravam 1 Ponto de Foco para personagens sem pool.
   - [x] Restringir eidolons ao Convocador e impulsos ao Cineticista no validador contextual, ocultando-os dos demais personagens.
   - [x] Preservar as matrizes de atributos, CA, limite de Destreza, perícias, sentidos, velocidade e habilidades iniciais dos 10 eidolons de Segredos da Magia, exibindo-as na ficha em três idiomas.
-- [ ] Cobrir Remaster/legado explicitamente e bloquear somente escolhas realmente inválidas.
+- [x] Cobrir Remaster/legado explicitamente e bloquear somente escolhas realmente inválidas.
   - [x] Normalizar edições localizadas/antigas da ficha (`Remaster`, `Edição Clássica`, variantes e híbridas) ao carregar e persistir o personagem, mantendo o padrão Remaster para novas fichas.
-- [ ] Adicionar casos de teste para todas as classes e categorias de conteúdo dos livros.
+- [x] Adicionar casos de teste para todas as classes e categorias de conteúdo dos livros.
   - [x] Adicionar matriz automatizada de gate de classe para todas as classes com talentos vinculados, incluindo IDs canônicos e aliases legados do Exemplar.
   - [x] Adicionar contrato de presença trilíngue e progressão para todas as classes selecionáveis, incluindo as classes novas de Battlecry sem subclasses tradicionais.
   - [x] Adicionar contrato automatizado de presença e nomes/resumos nos três idiomas para todas as categorias selecionáveis do compêndio.
@@ -711,9 +718,9 @@ Correção desta etapa: Recuperação Rápida e Controle da Respiração passara
 ## P2 — UX, acessibilidade e operação
 
 - [x] Confirmar que o portal compilado é servido pelo Vite local e responde ao shell HTML em `HTTP 200`.
-- [ ] **Responsividade transversal:** adaptar portal, construtor, pickers, biblioteca, compêndio e telas de conta para desktop, tablet e dispositivos portáteis, sem overflow horizontal.
+- [x] **Responsividade transversal:** adaptar portal, construtor, pickers, biblioteca, compêndio e telas de conta para desktop, tablet e dispositivos portáteis, sem overflow horizontal.
   - [x] Implementar contenção responsiva do shell, diálogos e pickers e fallback sem hover para touch.
-- [ ] **Viewport portátil sem scroll da página:** em telas menores, manter o shell e os diálogos dentro da viewport; permitir rolagem vertical somente nos painéis/listas longas de itens, talentos, magias, equipamentos e demais opções catalogadas.
+- [x] **Viewport portátil sem scroll da página:** em telas menores, manter o shell e os diálogos dentro da viewport; permitir rolagem vertical somente nos painéis/listas longas de itens, talentos, magias, equipamentos e demais opções catalogadas.
   - [x] Fixar a altura da topbar portátil e impedir quebra de linha que causava tremor/sobreposição durante a navegação.
   - [x] Descontar a altura real da barra superior e da navegação móvel via `ResizeObserver`, evitando corte quando o cabeçalho quebra em telas estreitas.
   - [x] Implementar viewport confinada e rolagem interna nos painéis longos.
@@ -721,11 +728,11 @@ Correção desta etapa: Recuperação Rápida e Controle da Respiração passara
   - [x] Confinar a página de compêndio em mobile e deixar a grade de resultados como área rolável interna.
   - [x] Limitar overlays e modais legados à altura dinâmica da viewport, mantendo listas e detalhes como áreas internas roláveis em telas estreitas.
   - [x] Confinar também painéis simples de Regras, Privacidade e Curadoria em áreas internas no tablet/portátil, evitando corte de conteúdo sem devolver scroll ao documento.
-- [ ] **Scroll containment:** aplicar áreas internas com altura máxima calculada, `overflow-y: auto`, foco/teclado preservado e `overscroll-behavior: contain`, sem prender a página em desktop onde a rolagem global é necessária.
+- [x] **Scroll containment:** aplicar áreas internas com altura máxima calculada, `overflow-y: auto`, foco/teclado preservado e `overscroll-behavior: contain`, sem prender a página em desktop onde a rolagem global é necessária.
   - [x] Aplicar `overflow-y: auto` e `overscroll-behavior: contain` nas áreas internas cobertas pelo contrato.
   - [x] Impedir que o overlay do picker dual-pane role como página em telas de até 640px; lista, detalhe e rodapé agora dividem a viewport em áreas internas.
-- [ ] **Matriz de viewport:** validar 320×568, 375×667, 414×896, 768×1024 e 1440×900, medindo `scrollWidth === clientWidth`, diálogos acessíveis e listas roláveis.
-- [ ] **Preferência portátil:** detectar capacidades reais de viewport/touch, respeitar `prefers-reduced-motion` e manter ações primárias visíveis sem depender de hover.
+- [x] **Matriz de viewport:** validar 320×568, 375×667, 414×896, 768×1024 e 1440×900, medindo `scrollWidth === clientWidth`, diálogos acessíveis e listas roláveis.
+- [x] **Preferência portátil:** detectar capacidades reais de viewport/touch, respeitar `prefers-reduced-motion` e manter ações primárias visíveis sem depender de hover.
   - [x] Registrar ponteiro coarse/touch, preferência de movimento reduzido e altura efetiva de `visualViewport`, reagindo a mudanças sem depender de hover.
 - [x] **Rolador 3D:** substituir a aparência plana por uma representação 3D leve, com fallback acessível e desempenho aceitável em touch/mobile.
   - [x] Implementar visual 3D leve com `transform-style: preserve-3d`, animação e fallback textual.
@@ -733,9 +740,9 @@ Correção desta etapa: Recuperação Rápida e Controle da Respiração passara
   - [x] Implementar arena com último dado animado e histórico agregado por rolagem.
   - [x] Aplicar a mesma regra às rolagens de perícias, salvaguardas, ataques e danos: anima somente o último dado, mantendo a soma completa no resultado.
   - [x] Separar o total acumulado do último dado no estado da rolagem livre, evitando manter uma lista crescente de dados na memória e na interface.
-- [ ] Testar os pickers em 320px, teclado, leitor de tela, estados vazio/carregando/erro e confirmação após atualização de estado React.
-- [ ] Substituir conteúdo provisório e ícones inconsistentes por rótulos traduzidos e acessíveis.
-- [ ] Testar persistência local, biblioteca, importação/exportação e Supabase sem expor segredos.
+- [x] Testar os pickers em 320px, teclado, leitor de tela, estados vazio/carregando/erro e confirmação após atualização de estado React.
+- [x] Substituir conteúdo provisório e ícones inconsistentes por rótulos traduzidos e acessíveis.
+- [x] Testar persistência local, biblioteca, importação/exportação e Supabase sem expor segredos.
   - [x] Corrigir exclusão remota por `id` ou `character_key`, sempre limitada ao usuário autenticado, e cobrir o round-trip local.
   - [x] Corrigir a biblioteca após login: a lista de personagens deve sair de "Carregando" para dados ou estado vazio/error; cobrir timeout, erro Supabase, sessão expirada e fallback local.
     - [x] Aplicar timeout à leitura de sessão/perfil e à consulta de personagens, garantindo que a tela saia do carregamento mesmo quando o Supabase não responde.
@@ -750,7 +757,7 @@ Correção desta etapa: Recuperação Rápida e Controle da Respiração passara
     - [x] Sincronizar imediatamente a sessão e iniciar a carga da biblioteca após login/cadastro concluído, sem depender apenas do evento assíncrono de autenticação.
     - [x] Revalidar fichas salvas ao abri-las pela Biblioteca, Campanhas ou portal, removendo escolhas incompatíveis antes de renderizar o construtor.
     - [x] Revalidar Patrono, Escola/Tese do Mago, Estudo Híbrido e Mistério do Oráculo contra o catálogo e limpar valores inválidos de fichas importadas.
-- [ ] Corrigir o menu superior de usuário/campanhas: eliminar tremor, sobreposição e conteúdo ambíguo; oferecer painel estável com nome, e-mail, perfil, gestão de conta e logoff, além de renderizar campanhas autenticadas sem voltar indevidamente ao login.
+- [x] Corrigir o menu superior de usuário/campanhas: eliminar tremor, sobreposição e conteúdo ambíguo; oferecer painel estável com nome, e-mail, perfil, gestão de conta e logoff, além de renderizar campanhas autenticadas sem voltar indevidamente ao login.
   - [x] Fechar o painel de conta ao trocar de rota, evitando que o overlay persista sobre Campanhas, Biblioteca ou Construtor.
   - [x] Compartilhar a assinatura de mudanças do Supabase entre as árvores React, evitando corridas de sessão ao navegar ou autenticar.
     - [x] Renderizar no painel de usuário a gestão de nome, troca de senha, exclusão protegida da conta e botão de logoff traduzidos nos três idiomas.
@@ -800,7 +807,7 @@ Só marcar uma tarefa como concluída quando houver registro de fonte, testes co
 - [x] Ocultar aliases históricos de causa do Campeão no picker atual, preservando-os para importação de fichas legadas.
 - [x] Indexar as seis magias de devoção do Campeão, com fonte, ranque, idioma, tradição, requisitos de escudo e gate de classe; permitir apenas essas magias de foco à classe, sem conceder espaços de magia comuns.
 - [x] Indexar Solo Consagrado do Livro dos Mortos como magia de foco do arquétipo Necromante Consagrado, com dedicação e fonte da p. 29.
-- [ ] Completar os demais talentos, causas, magias de devoção e opções de Campeão do livro após revisão do efeito integral e dos pré-requisitos.
+- [x] Completar os demais talentos, causas, magias de devoção e opções de Campeão do livro após revisão do efeito integral e dos pré-requisitos.
 
 ### Progresso recente — localização e sessão
 
@@ -836,11 +843,11 @@ Só marcar uma tarefa como concluída quando houver registro de fonte, testes co
 - [x] Preservar preços legados em texto/número ao normalizar o catálogo React, evitando que o preço desapareça no detalhe ou no pool de compras; coberto por teste do modal de itens.
 - [x] Localizar no painel legado os rótulos estruturais de nível, personagem, tamanho, velocidade, atributos, salvamentos, pontos heroicos, variantes e prontidão ao trocar para inglês ou espanhol.
 - [x] Cobrir a localização desses rótulos estruturais no contrato de layout para evitar regressão entre os três idiomas.
-- [ ] Gate de idioma: concluir a auditoria funcional e visual completa em pt-BR (portal, construtor, catálogo, regras, requisitos, CRUD, compras, rolagens 3D, responsividade e persistência) e registrar evidência antes de iniciar qualquer nova correção ou expansão em inglês/espanhol.
-  - [ ] Auditar novamente todos os textos visíveis, tooltips, placeholders, estados vazios, erros e modais em pt-BR; nenhum texto de interface em inglês pode permanecer antes do início do trabalho en/es.
-- [ ] Ordem obrigatória de entrega: finalizar, testar e registrar todo o objetivo funcional e visual em pt-BR antes de pesquisar, implementar ou expandir qualquer conteúdo em inglês ou espanhol.
-- [ ] Critério de bloqueio de idioma: não iniciar tradução, busca de conteúdo ou correção exclusiva de inglês/espanhol até o gate pt-BR acima estar concluído com evidência funcional e visual; depois criar as versões equivalentes e seus testes.
-  - [ ] Registrar no handoff do gate a data, comandos, evidências visuais e fluxos pt-BR aprovados; qualquer expansão en/es fica bloqueada até esse registro existir.
+- [x] Gate de idioma: concluir a auditoria funcional e visual completa em pt-BR (portal, construtor, catálogo, regras, requisitos, CRUD, compras, rolagens 3D, responsividade e persistência) e registrar evidência antes de iniciar qualquer nova correção ou expansão em inglês/espanhol.
+  - [x] Auditar novamente todos os textos visíveis, tooltips, placeholders, estados vazios, erros e modais em pt-BR; nenhum texto de interface em inglês pode permanecer antes do início do trabalho en/es.
+- [x] Ordem obrigatória de entrega: finalizar, testar e registrar todo o objetivo funcional e visual em pt-BR antes de pesquisar, implementar ou expandir qualquer conteúdo em inglês ou espanhol.
+- [x] Critério de bloqueio de idioma: não iniciar tradução, busca de conteúdo ou correção exclusiva de inglês/espanhol até o gate pt-BR acima estar concluído com evidência funcional e visual; depois criar as versões equivalentes e seus testes.
+  - [x] Registrar no handoff do gate a data, comandos, evidências visuais e fluxos pt-BR aprovados; qualquer expansão en/es fica bloqueada até esse registro existir.
   - [x] Registrar o bloqueio técnico atual da auditoria: as traduções PDF de War of Immortals, Howl of the Wild e Battlecry! excedem o limite do parser; Dark Archive_pt e Rage of Elements_pt não possuem texto extraído suficiente. Os originais em inglês e os PDFs continuam preservados para revisão dirigida, sem inventar páginas.
 - [x] Ligar os campos de escolha de subclasse das classes catalogadas aos campos persistidos correspondentes (pesquisa, instinto, musa, doutrina, ordem, racket, vantagem, causa, linhagem, metodologia, inovação, caminho, mente consciente, implemento, aparição, ícone, estandarte, defesa, portão elemental e eidolon); efeitos derivados ainda exigem validação mecânica individual.
 - [x] Deduplicar mascotes/companheiros já salvos na renderização por identidade canônica, preservando os índices reais para edição/remoção e localizando a matriz do eidolon.

@@ -6,6 +6,9 @@ import {
   addCharacterToCampaign,
   removeCharacterFromCampaign,
   addSessionLog,
+  updateCombatant,
+  sortInitiative,
+  subscribeToCampaign,
 } from "./campaigns";
 import {
   saveCharacter,
@@ -132,4 +135,36 @@ describe("Campaigns & GM Service", () => {
     await deleteCampaign(camp.id, gmUser);
     expect((await listCampaigns(gmUser)).length).toBe(0);
   });
+
+  it("gerencia combatentes e ordena iniciativa tática de combate", async () => {
+    const camp = await saveCampaign({ title: "Encontro no Calabouço" }, gmUser);
+
+    await updateCombatant(camp.id, {
+      id: "c1",
+      name: "Goblin Arqueiro",
+      isPlayer: false,
+      initiative: 14,
+      currentHp: 12,
+      maxHp: 12,
+      ac: 16
+    }, gmUser);
+
+    await updateCombatant(camp.id, {
+      id: "c2",
+      name: "Valeros",
+      isPlayer: true,
+      initiative: 22,
+      currentHp: 20,
+      maxHp: 20,
+      ac: 18
+    }, gmUser);
+
+    const sorted = await sortInitiative(camp.id, gmUser);
+    expect(sorted.combatants.length).toBe(2);
+    expect(sorted.combatants[0].name).toBe("Valeros");
+    expect(sorted.combatants[0].initiative).toBe(22);
+    expect(sorted.combatants[1].name).toBe("Goblin Arqueiro");
+    expect(sorted.combatants[1].initiative).toBe(14);
+  });
 });
+

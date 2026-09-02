@@ -223,3 +223,67 @@ export async function addSessionLog(
   campaign.sessions = [newSession, ...(campaign.sessions || [])];
   return await saveCampaign(campaign, currentUser);
 }
+
+// SINCRONIZAÇÃO EM TEMPO REAL VIA SUPABASE REALTIME
+export function subscribeToCampaign(
+  campaignId: string,
+  onUpdate: (payload: { eventType: string; newRecord: any; oldRecord: any }) => void
+): () => void {
+  if (!isSupabaseConfigured || !supabase) {
+    return () => {};
+  }
+  const channel = supabase
+    .channel(`realtime:campaign:${campaignId}`)
+    .on(
+      "postgres_changes",
+      {
+        event: "*",
+        schema: "public",
+        table: "campaigns",
+        filter: `id=eq.${campaignId}`,
+      },
+      (payload) => {
+        onUpdate({
+          eventType: payload.eventType,
+          newRecord: payload.new,
+          oldRecord: payload.old,
+        });
+      }
+    )
+    .subscribe();
+
+  return () => {
+    supabase?.removeChannel(channel);
+  };
+}
+
+// RASTREADOR TÁTICO: ATUALIZAR COMBATENTE E INICIATIVA
+export async function updateCombatant(
+  campaignId: string,
+  combatantUpdate: Partial<Combatant> & { id: string },
+  currentUser?: UserProfile
+): Promise<Campaign> {
+  const campaign = await getCampaign(campaignId, currentUser);
+  if (!campaign) throw new Error("Campanha não encontrada.");
+
+  const combatants = campaign.combatants || [];
+  const idx = combatants.findIndex((c) => c.id === combatantUpdate.id);
+  if (idx >= 0) {
+    combatants[idx] = { ...combatants[idx], ...combatantUpdate };
+  } else {
+    combatants.push(combatantUpdate as Combatant);
+  }
+  campaign.combatants = combatants;
+  return await saveCampaign(campaign, currentUser);
+}
+
+export async function sortInitiative(
+  campaignId: string,
+  currentUser?: UserProfile
+): Promise<Campaign> {
+  const campaign = await getCampaign(campaignId, currentUser);
+  if (!campaign) throw new Error("Campanha não encontrada.");
+
+  campaign.combatants = (campaign.combatants || []).sort((a, b) => (b.initiative || 0) - (a.initiative || 0));
+  return await saveCampaign(campaign, currentUser);
+}

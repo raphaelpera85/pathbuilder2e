@@ -2379,8 +2379,127 @@ const PF2E_ENGINE = {
     character.equippedArmor = { name: kit.armor, category: kit.armor.includes("Leve") || kit.armor.includes("Couro") ? "Leve" : (kit.armor.includes("Talas") || kit.armor.includes("Malha") || kit.armor.includes("Brunea") ? "Média" : "Sem Armadura") };
     character.inventory = [...(character.inventory || []), ...kit.items.map(it => ({ ...it, id: `inv_${Date.now()}_${Math.random().toString(36).substr(2, 4)}` }))];
     character.coins = { ...kit.remainingCoins, pl: 0, pp: 0 };
-
     return character;
+  },
+
+  // EXPORTAÇÃO COMPLETA PARA FORMATO FOUNDRY VTT (PF2E ACTOR JSON)
+  exportFoundryVttActor(character, calc = null, locale = "pt-BR") {
+    const char = character || {};
+    const pipeline = this.calculateAttributePipeline ? this.calculateAttributePipeline(char) : null;
+    const stats = calc || {};
+    const rankToProf = {
+      "Destreinado": 0, "Untrained": 0,
+      "Treinado": 1, "Trained": 1,
+      "Especialista": 2, "Expert": 2,
+      "Mestre": 3, "Master": 3,
+      "Lendário": 4, "Legendary": 4
+    };
+
+    const getScore = (attr) => stats.abilities?.[attr] ?? stats.scores?.[attr] ?? char.abilities?.[attr] ?? pipeline?.scores?.[attr] ?? 10;
+    const getMod = (attr) => stats.mods?.[attr] ?? this.getModifier(getScore(attr));
+
+    const actor = {
+      name: char.name || "Personagem",
+      type: "character",
+      system: {
+        details: {
+          level: { value: Number(char.level) || 1 },
+          ancestry: { name: typeof char.ancestry === "object" ? (char.ancestry.name || "") : (char.ancestry || "") },
+          heritage: { name: typeof char.heritage === "object" ? (char.heritage.name || "") : (char.heritage || "") },
+          background: { name: typeof char.background === "object" ? (char.background.name || "") : (char.background || "") },
+          class: { name: typeof char.class === "object" ? (char.class.name || "") : (char.class || "") },
+          gender: { value: char.gender || "" },
+          age: { value: char.age ? String(char.age) : "" },
+          alignment: { value: "N" },
+          deity: { name: char.deity || "" },
+          biography: { value: char.notes || char.backstory || "" }
+        },
+        abilities: {
+          str: { value: getScore("str"), mod: getMod("str") },
+          dex: { value: getScore("dex"), mod: getMod("dex") },
+          con: { value: getScore("con"), mod: getMod("con") },
+          int: { value: getScore("int"), mod: getMod("int") },
+          wis: { value: getScore("wis"), mod: getMod("wis") },
+          cha: { value: getScore("cha"), mod: getMod("cha") }
+        },
+        attributes: {
+          hp: { value: stats.currentHp ?? stats.maxHp ?? 20, max: stats.maxHp ?? 20, temp: 0 },
+          ac: { value: stats.ac?.total ?? 10 },
+          speed: { value: stats.speed ?? 25 },
+          perception: { value: stats.perception?.total ?? 0, rank: rankToProf[char.perceptionRank] ?? 1 },
+          classDC: { value: stats.classDc ?? 10, rank: 1 }
+        },
+        saves: {
+          fortitude: { rank: rankToProf[char.savingThrows?.fortitude] ?? 1, value: stats.saves?.fortitude?.total ?? 0 },
+          reflex: { rank: rankToProf[char.savingThrows?.reflex] ?? 1, value: stats.saves?.reflex?.total ?? 0 },
+          will: { rank: rankToProf[char.savingThrows?.will] ?? 1, value: stats.saves?.will?.total ?? 0 }
+        },
+        skills: {},
+        traits: {
+          size: { value: String(stats.size || "med").toLowerCase().slice(0, 3) },
+          languages: { value: Array.isArray(char.languages) ? char.languages : [] },
+          senses: (stats.senses || []).map(s => ({ type: String(s).toLowerCase().replace(/\s+/g, "-") }))
+        },
+        resources: {
+          focus: { value: char.focusPointsCurrent ?? 1, max: stats.spellcasting?.maxFocusPoints ?? 1 },
+          heroPoints: { value: Number(char.heroPoints) || 1, max: 3 }
+        }
+      },
+      items: []
+    };
+
+    const skillKeys = [
+      "acrobatics", "arcana", "athletics", "crafting", "deception", "diplomacy",
+      "intimidation", "medicine", "nature", "occultism", "performance", "religion",
+      "society", "stealth", "survival", "thievery"
+    ];
+    skillKeys.forEach(k => {
+      const sk = stats.skills?.[k];
+      const rank = rankToProf[char.skills?.[k]] ?? 0;
+      actor.system.skills[k] = { rank, mod: sk?.total ?? 0 };
+    });
+
+    (char.weapons || []).forEach((w, i) => {
+      actor.items.push({
+        _id: `weapon_${i}`,
+        name: w.name || "Arma",
+        type: "weapon",
+        system: {
+          category: String(w.category || "simple").toLowerCase(),
+          damage: { dice: 1, die: w.damage || "d6", damageType: String(w.damageType || "slashing").toLowerCase() },
+          traits: { value: Array.isArray(w.traits) ? w.traits : [] },
+          equipped: { value: true }
+        }
+      });
+    });
+
+    (char.feats || []).forEach((f, i) => {
+      actor.items.push({
+        _id: `feat_${i}`,
+        name: f.name || "Talento",
+        type: "feat",
+        system: {
+          featType: { value: String(f.type || f.category || "general").toLowerCase() },
+          level: { value: Number(f.level) || 1 },
+          description: { value: f.description || f.summaries?.[locale] || "" }
+        }
+      });
+    });
+
+    (char.spells || []).forEach((sp, i) => {
+      actor.items.push({
+        _id: `spell_${i}`,
+        name: sp.name || "Magia",
+        type: "spell",
+        system: {
+          level: { value: Number(sp.rank ?? sp.level) || 1 },
+          traditions: { value: Array.isArray(sp.traditions) ? sp.traditions : ["arcane"] },
+          description: { value: sp.description || sp.summaries?.[locale] || "" }
+        }
+      });
+    });
+
+    return actor;
   }
 };
 

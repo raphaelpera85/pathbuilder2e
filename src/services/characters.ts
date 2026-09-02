@@ -164,6 +164,8 @@ export function validateCharacter(value: unknown): CharacterData {
   } as CharacterData;
 }
 
+export const assertSafeCharacterDocument = validateCharacter;
+
 export function toCharacterPayload(character: CharacterData, user: { id: string; email?: string; username?: string }) {
   const ruleset = normalizeCharacterRuleset(character.ruleset);
   const gmEmail = (typeof character.gmEmail === "string" && character.gmEmail.trim()) ||

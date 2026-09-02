@@ -4,10 +4,16 @@ const { spawnSync } = require("node:child_process");
 const { PDFDocument } = require("pdf-lib");
 
 const positionalArgs = process.argv.slice(2).filter((argument) => !argument.startsWith("--"));
-const booksDir = path.resolve(positionalArgs[0] || "D:\\Users\\rapha\\Documents\\Projetos\\RPG\\livros");
+const booksDir = path.resolve(positionalArgs[0] || process.env.LIVROS_PATH || "D:\\Users\\rapha\\Documents\\Projetos\\RPG\\livros");
 if (!fs.existsSync(booksDir)) {
-  console.error(`Pasta de livros não encontrada: ${booksDir}`);
-  process.exitCode = 1;
+  console.warn(`[AVISO] Pasta de livros não encontrada em: ${booksDir}. Verifique a variável LIVROS_PATH.`);
+  console.log(JSON.stringify({
+    generatedAt: new Date().toISOString(),
+    directory: booksDir,
+    status: "skipped_missing_directory",
+    bookPdfs: 0,
+    readablePdfs: 0
+  }, null, 2));
 } else {
 const excluded = /ficha|poster|map|folio|raw|test/i;
   const pdfInfoPath = process.env.PDFINFO_PATH || "pdfinfo";

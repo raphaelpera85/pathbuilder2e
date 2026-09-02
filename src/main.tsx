@@ -100,3 +100,12 @@ createRoot(portalRoot).render(
     </ThemeProvider>
   </StrictMode>,
 );
+
+if (typeof window !== "undefined" && "serviceWorker" in navigator && import.meta.env.PROD) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js").catch((err) => {
+      console.warn("Falha ao registrar Service Worker PWA:", err);
+    });
+  });
+}
+
