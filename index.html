@@ -865,23 +865,23 @@
 
   <!-- MODAL CHECKLIST DE PRONTIDÃO DA FICHA & REGRAS ABC -->
   <div class="pb-drawer-overlay" id="modalReadinessOverlay">
-    <div class="pb-modal-container" style="max-width: 540px; width: 95%; max-height: 85vh; background: #0b121e; border: 1px solid #1e293b; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.95); display: flex; flex-direction: column;">
-      <div class="pb-modal-nav" style="background: #060a12; border-bottom: 1px solid #1e293b; padding: 12px 18px; display: flex; justify-content: space-between; align-items: center;">
+    <div class="pb-modal-container" style="max-width: 540px; width: 95%; max-height: 85vh; border-radius: 12px; display: flex; flex-direction: column;">
+      <div class="pb-modal-nav" style="padding: 12px 18px; display: flex; justify-content: space-between; align-items: center;">
         <div style="display: flex; align-items: center; gap: 8px;">
           <span style="font-size: 20px;">🛡️</span>
-          <span style="font-weight: 800; color: #ffffff; font-size: 15px;">Auditoria de Prontidão da Ficha</span>
+          <span style="font-weight: 800; color: var(--pb-text); font-size: 15px;">Auditoria de Prontidão da Ficha</span>
         </div>
-        <button onclick="document.getElementById('modalReadinessOverlay').classList.remove('active')" style="background:none; border:none; color:#94a3b8; cursor:pointer; font-size: 18px;">✕</button>
+        <button onclick="document.getElementById('modalReadinessOverlay').classList.remove('active')" class="pb-modal-close-btn" style="background:none; border:none; cursor:pointer; font-size: 18px;">✕</button>
       </div>
 
       <div style="padding: 16px 18px; flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 12px;">
         <!-- BARRA DE PROGRESSO DE PRONTIDÃO -->
-        <div style="background: #111a2e; border: 1px solid #1e293b; border-radius: 10px; padding: 12px;">
+        <div style="background: var(--pb-bg-card); border: 1px solid var(--pb-border); border-radius: 10px; padding: 12px;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-            <span style="font-size: 13px; font-weight: 700; color: #cbd5e1;">Status de Criação:</span>
+            <span style="font-size: 13px; font-weight: 700; color: var(--pb-text);">Status de Criação:</span>
             <span id="readinessModalScore" style="font-size: 14px; font-weight: 800; color: #22c55e;">100% Pronto para Jogar</span>
           </div>
-          <div style="width: 100%; height: 8px; background: #1e293b; border-radius: 4px; overflow: hidden;">
+          <div style="width: 100%; height: 8px; background: var(--pb-bg-input); border-radius: 4px; overflow: hidden;">
             <div id="readinessProgressBar" style="width: 100%; height: 100%; background: linear-gradient(90deg, #16a34a, #22c55e); transition: width 0.3s ease;"></div>
           </div>
         </div>
@@ -892,7 +892,7 @@
         </div>
       </div>
 
-      <div class="pb-modal-footer" style="background: #060a12; border-top: 1px solid #1e293b; padding: 12px 18px; display: flex; justify-content: flex-end;">
+      <div class="pb-modal-footer" style="padding: 12px 18px; display: flex; justify-content: flex-end;">
         <button id="readinessModalClose" class="pb-pill-btn" onclick="document.getElementById('modalReadinessOverlay').classList.remove('active')">Fechar</button>
       </div>
     </div>
@@ -900,23 +900,23 @@
 
   <!-- MODAL PACOTES INICIAIS DE EQUIPAMENTO (STARTER KITS) -->
   <div class="pb-drawer-overlay" id="modalStarterKitsOverlay">
-    <div class="pb-modal-container" style="max-width: 600px; width: 95%; max-height: 85vh; background: #0b121e; border: 1px solid #1e293b; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.95); display: flex; flex-direction: column;">
-      <div class="pb-modal-nav" style="background: #060a12; border-bottom: 1px solid #1e293b; padding: 12px 18px; display: flex; justify-content: space-between; align-items: center;">
+    <div class="pb-modal-container" style="max-width: 600px; width: 95%; max-height: 85vh; border-radius: 12px; display: flex; flex-direction: column;">
+      <div class="pb-modal-nav" style="padding: 12px 18px; display: flex; justify-content: space-between; align-items: center;">
         <div style="display: flex; align-items: center; gap: 8px;">
           <span style="font-size: 20px;">🎒</span>
           <div>
-            <span style="font-weight: 800; color: #ffffff; font-size: 15px;">Kits Iniciais de Equipamento por Classe</span>
-            <div style="font-size: 11px; color: #94a3b8;">Equipe seu herói de nível 1 com 1 clique respeitando o orçamento de 15 PO</div>
+            <span style="font-weight: 800; color: var(--pb-text); font-size: 15px;">Kits Iniciais de Equipamento por Classe</span>
+            <div style="font-size: 11px; color: var(--pb-text-muted);">Equipe seu herói de nível 1 com 1 clique respeitando o orçamento de 15 PO</div>
           </div>
         </div>
-        <button onclick="document.getElementById('modalStarterKitsOverlay').classList.remove('active')" style="background:none; border:none; color:#94a3b8; cursor:pointer; font-size: 18px;">✕</button>
+        <button onclick="document.getElementById('modalStarterKitsOverlay').classList.remove('active')" class="pb-modal-close-btn" style="background:none; border:none; cursor:pointer; font-size: 18px;">✕</button>
       </div>
 
       <div style="padding: 16px 18px; flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 12px;" id="starterKitsListContainer">
         <!-- Renderizado dinamicamente por app.renderStarterKitsModal() -->
       </div>
 
-      <div class="pb-modal-footer" style="background: #060a12; border-top: 1px solid #1e293b; padding: 12px 18px; display: flex; justify-content: flex-end;">
+      <div class="pb-modal-footer" style="padding: 12px 18px; display: flex; justify-content: flex-end;">
         <button class="pb-pill-btn" onclick="document.getElementById('modalStarterKitsOverlay').classList.remove('active')">Fechar</button>
       </div>
     </div>
@@ -924,49 +924,49 @@
 
   <!-- MODAL CONFIGURAÇÕES DE REGRAS VARIANTES -->
   <div class="pb-drawer-overlay" id="modalVariantRulesOverlay">
-    <div class="pb-modal-container" style="max-width: 540px; width: 95%; max-height: 85vh; background: #0b121e; border: 1px solid #1e293b; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.95); display: flex; flex-direction: column;">
-      <div class="pb-modal-nav" style="background: #060a12; border-bottom: 1px solid #1e293b; padding: 12px 18px; display: flex; justify-content: space-between; align-items: center;">
+    <div class="pb-modal-container" style="max-width: 540px; width: 95%; max-height: 85vh; border-radius: 12px; display: flex; flex-direction: column;">
+      <div class="pb-modal-nav" style="padding: 12px 18px; display: flex; justify-content: space-between; align-items: center;">
         <div style="display: flex; align-items: center; gap: 8px;">
           <span style="font-size: 20px;">⚙️</span>
-          <span style="font-weight: 800; color: #ffffff; font-size: 15px;">Regras Variantes Oficiais</span>
+          <span style="font-weight: 800; color: var(--pb-text); font-size: 15px;">Regras Variantes Oficiais</span>
         </div>
-        <button onclick="document.getElementById('modalVariantRulesOverlay').classList.remove('active')" style="background:none; border:none; color:#94a3b8; cursor:pointer; font-size: 18px;">✕</button>
+        <button onclick="document.getElementById('modalVariantRulesOverlay').classList.remove('active')" class="pb-modal-close-btn" style="background:none; border:none; cursor:pointer; font-size: 18px;">✕</button>
       </div>
 
       <div style="padding: 18px; flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 14px;">
-        <p style="font-size: 12px; color: #94a3b8; margin: 0;">
+        <p style="font-size: 12px; color: var(--pb-text-muted); margin: 0;">
           <span id="variantRulesIntro">Ative regras variantes oficiais do Guia do Mestre para customizar a progressão do seu personagem e da sua mesa de jogo:</span>
         </p>
 
         <!-- VARIANTE 1: FREE ARCHETYPE -->
-        <label style="display: flex; gap: 12px; background: #111a2e; border: 1px solid #1e293b; border-radius: 8px; padding: 12px; cursor: pointer; align-items: flex-start;">
+        <label style="display: flex; gap: 12px; background: var(--pb-bg-card); border: 1px solid var(--pb-border); border-radius: 8px; padding: 12px; cursor: pointer; align-items: flex-start;">
           <input type="checkbox" id="chkFreeArchetype" onchange="app.toggleVariantRule('freeArchetype', this.checked)" style="margin-top: 3px; accent-color: var(--pb-orange); width: 16px; height: 16px;" />
           <div style="display: flex; flex-direction: column; gap: 2px;">
-            <strong id="variantFreeTitle" style="font-size: 13px; color: #f8fafc;">⚔️ Arquétipo Livre</strong>
-            <span id="variantFreeDescription" style="font-size: 11px; color: #94a3b8;">Concede um talento de arquétipo extra em todos os níveis pares (2, 4, 6, 8, 10, etc.) sem gastar talentos de classe.</span>
+            <strong id="variantFreeTitle" style="font-size: 13px; color: var(--pb-text);">⚔️ Arquétipo Livre</strong>
+            <span id="variantFreeDescription" style="font-size: 11px; color: var(--pb-text-muted);">Concede um talento de arquétipo extra em todos os níveis pares (2, 4, 6, 8, 10, etc.) sem gastar talentos de classe.</span>
           </div>
         </label>
 
         <!-- VARIANTE 2: AUTOMATIC BONUS PROGRESSION (ABP) -->
-        <label style="display: flex; gap: 12px; background: #111a2e; border: 1px solid #1e293b; border-radius: 8px; padding: 12px; cursor: pointer; align-items: flex-start;">
+        <label style="display: flex; gap: 12px; background: var(--pb-bg-card); border: 1px solid var(--pb-border); border-radius: 8px; padding: 12px; cursor: pointer; align-items: flex-start;">
           <input type="checkbox" id="chkABP" onchange="app.toggleVariantRule('automaticBonusProgression', this.checked)" style="margin-top: 3px; accent-color: var(--pb-orange); width: 16px; height: 16px;" />
           <div style="display: flex; flex-direction: column; gap: 2px;">
-            <strong id="variantAbpTitle" style="font-size: 13px; color: #f8fafc;">✨ Progressão Automática de Bônus (ABP)</strong>
-            <span id="variantAbpDescription" style="font-size: 11px; color: #94a3b8;">Aumenta automaticamente o bônus de ataque (+1..+3), resiliência de salvaguardas (+1..+3) e perícias com base no nível sem necessidade de runas fundamentais.</span>
+            <strong id="variantAbpTitle" style="font-size: 13px; color: var(--pb-text);">✨ Progressão Automática de Bônus (ABP)</strong>
+            <span id="variantAbpDescription" style="font-size: 11px; color: var(--pb-text-muted);">Aumenta automaticamente o bônus de ataque (+1..+3), resiliência de salvaguardas (+1..+3) e perícias com base no nível sem necessidade de runas fundamentais.</span>
           </div>
         </label>
 
         <!-- VARIANTE 3: ANCESTRY PARAGON -->
-        <label style="display: flex; gap: 12px; background: #111a2e; border: 1px solid #1e293b; border-radius: 8px; padding: 12px; cursor: pointer; align-items: flex-start;">
+        <label style="display: flex; gap: 12px; background: var(--pb-bg-card); border: 1px solid var(--pb-border); border-radius: 8px; padding: 12px; cursor: pointer; align-items: flex-start;">
           <input type="checkbox" id="chkAncestryParagon" onchange="app.toggleVariantRule('ancestryParagon', this.checked)" style="margin-top: 3px; accent-color: var(--pb-orange); width: 16px; height: 16px;" />
           <div style="display: flex; flex-direction: column; gap: 2px;">
-            <strong id="variantParagonTitle" style="font-size: 13px; color: #f8fafc;">🧬 Ancestralidade Exemplar</strong>
-            <span id="variantParagonDescription" style="font-size: 11px; color: #94a3b8;">Concede talentos ancestrais extras nos níveis 1, 3, 7, 11, 15 e 19 para aprofundar as raízes culturais do personagem.</span>
+            <strong id="variantParagonTitle" style="font-size: 13px; color: var(--pb-text);">🧬 Ancestralidade Exemplar</strong>
+            <span id="variantParagonDescription" style="font-size: 11px; color: var(--pb-text-muted);">Concede talentos ancestrais extras nos níveis 1, 3, 7, 11, 15 e 19 para aprofundar as raízes culturais do personagem.</span>
           </div>
         </label>
       </div>
 
-      <div class="pb-modal-footer" style="background: #060a12; border-top: 1px solid #1e293b; padding: 12px 18px; display: flex; justify-content: flex-end;">
+      <div class="pb-modal-footer" style="padding: 12px 18px; display: flex; justify-content: flex-end;">
         <button id="variantRulesClose" class="pb-pill-btn" onclick="document.getElementById('modalVariantRulesOverlay').classList.remove('active')">Salvar e Fechar</button>
       </div>
     </div>

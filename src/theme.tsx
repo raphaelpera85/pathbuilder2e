@@ -30,6 +30,7 @@ export function applyThemeToDOM(theme: Theme) {
   document.documentElement.classList.remove("theme-dark", "theme-light");
   document.documentElement.classList.add(`theme-${theme}`);
   if (document.body) {
+    document.body.setAttribute("data-theme", theme);
     document.body.classList.remove("theme-dark", "theme-light");
     document.body.classList.add(`theme-${theme}`);
   }

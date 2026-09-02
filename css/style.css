@@ -3357,98 +3357,187 @@ body.theme-light,
   color: #281d13 !important;
 }
 
-[data-theme="light"] .pb-boost-select option {
+[data-theme="light"] .pb-boost-select option,
+body.theme-light .pb-boost-select option {
   background: #faf5e8 !important;
   color: #281d13 !important;
 }
 
 [data-theme="light"] .pb-free-boost-label,
-[data-theme="light"] .pb-free-boost-mod {
+[data-theme="light"] .pb-free-boost-mod,
+body.theme-light .pb-free-boost-label,
+body.theme-light .pb-free-boost-mod {
   color: #281d13 !important;
 }
 
-[data-theme="light"] .pb-skill-training-row {
-  background: transparent;
+/* SKILL TRAINING MODAL (PERGAMINHO CLARO) */
+[data-theme="light"] #modalSkillTrainingOverlay .pb-modal-container,
+body.theme-light #modalSkillTrainingOverlay .pb-modal-container,
+[data-theme="light"] .pb-modal-skills,
+body.theme-light .pb-modal-skills {
+  background: #faf5e8 !important;
+  border: 2px solid #9c4210 !important;
+  box-shadow: 0 16px 48px rgba(40, 29, 19, 0.35) !important;
+  color: #281d13 !important;
 }
 
-[data-theme="light"] .pb-skill-training-row:hover {
+[data-theme="light"] #modalSkillTrainingOverlay .pb-modal-nav,
+body.theme-light #modalSkillTrainingOverlay .pb-modal-nav,
+[data-theme="light"] .pb-modal-skills .pb-modal-nav,
+body.theme-light .pb-modal-skills .pb-modal-nav {
+  background: #eee5cf !important;
+  border-bottom: 1px solid #ccbe9f !important;
+}
+
+[data-theme="light"] #modalRemainingSkillsTitle,
+body.theme-light #modalRemainingSkillsTitle {
+  color: #281d13 !important;
+  font-weight: 900 !important;
+}
+
+[data-theme="light"] #modalSkillTrainingOverlay .pb-modal-subnav,
+body.theme-light #modalSkillTrainingOverlay .pb-modal-subnav,
+[data-theme="light"] .pb-modal-skills .pb-modal-subnav,
+body.theme-light .pb-modal-skills .pb-modal-subnav {
+  background: #f5eedc !important;
+  border-bottom: 1px solid #ccbe9f !important;
+}
+
+[data-theme="light"] .pb-modal-subnav span,
+body.theme-light .pb-modal-subnav span {
+  color: #281d13 !important;
+}
+
+[data-theme="light"] .pb-modal-legend-title,
+body.theme-light .pb-modal-legend-title {
+  color: #5e4d3a !important;
+  font-weight: 800 !important;
+}
+
+[data-theme="light"] .pb-modal-legend-header,
+body.theme-light .pb-modal-legend-header {
+  color: #5e4d3a !important;
+  border-top: 1px dashed #ccbe9f !important;
+  font-weight: 800 !important;
+}
+
+[data-theme="light"] #modalSkillTrainingList,
+body.theme-light #modalSkillTrainingList {
+  background: #fdfaf2 !important;
+}
+
+[data-theme="light"] .pb-skill-training-row,
+body.theme-light .pb-skill-training-row {
+  background: transparent;
+  border-bottom: 1px solid #f0e6d2;
+}
+
+[data-theme="light"] .pb-skill-training-row:hover,
+body.theme-light .pb-skill-training-row:hover {
   background: #fbf1d8 !important;
 }
 
-[data-theme="light"] .pb-skill-row-title-trained {
+[data-theme="light"] .pb-skill-row-title-trained,
+body.theme-light .pb-skill-row-title-trained {
   color: #9c4210 !important;
-  font-weight: 900;
+  font-weight: 900 !important;
 }
 
-[data-theme="light"] .pb-skill-row-title-untrained {
+[data-theme="light"] .pb-skill-row-title-untrained,
+body.theme-light .pb-skill-row-title-untrained {
   color: #281d13 !important;
-  font-weight: 700;
+  font-weight: 700 !important;
 }
 
-[data-theme="light"] .pb-teml-dot {
+[data-theme="light"] .pb-teml-dot,
+body.theme-light .pb-teml-dot {
   background: #eee5cf !important;
   border: 1px solid #ccbe9f !important;
   color: #5e4d3a !important;
 }
 
-[data-theme="light"] .pb-teml-dot.t.active {
+[data-theme="light"] .pb-teml-dot.t.active,
+body.theme-light .pb-teml-dot.t.active {
   background: #9c4210 !important;
   border-color: #782b08 !important;
   color: #ffffff !important;
   box-shadow: 0 0 6px rgba(156, 66, 16, 0.4) !important;
 }
 
-[data-theme="light"] .pb-skill-stat-header {
-  color: #5e4d3a !important;
+[data-theme="light"] .pb-teml-dot.e.active,
+body.theme-light .pb-teml-dot.e.active {
+  background: #1d4ed8 !important;
+  border-color: #1e40af !important;
+  color: #ffffff !important;
 }
 
-[data-theme="light"] .pb-skill-stat-num {
+[data-theme="light"] .pb-teml-dot.m.active,
+body.theme-light .pb-teml-dot.m.active {
+  background: #7e22ce !important;
+  border-color: #6b21a8 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .pb-teml-dot.l.active,
+body.theme-light .pb-teml-dot.l.active {
+  background: #b45309 !important;
+  border-color: #92400e !important;
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .pb-skill-stat-header,
+body.theme-light .pb-skill-stat-header {
+  color: #786550 !important;
+  font-weight: 800 !important;
+}
+
+[data-theme="light"] .pb-skill-stat-num,
+body.theme-light .pb-skill-stat-num {
   color: #281d13 !important;
-  font-weight: 800;
+  font-weight: 900 !important;
 }
 
-[data-theme="light"] #modalSkillTrainingList {
-  background: #fdfaf2 !important;
+[data-theme="light"] #modalSkillTrainingOverlay .pb-modal-footer,
+body.theme-light #modalSkillTrainingOverlay .pb-modal-footer,
+[data-theme="light"] .pb-modal-skills .pb-modal-footer,
+body.theme-light .pb-modal-skills .pb-modal-footer {
+  background: #eee5cf !important;
+  border-top: 1px solid #ccbe9f !important;
 }
 
-[data-theme="light"] .pb-modal-subnav span {
-  color: #281d13 !important;
-}
-
-[data-theme="light"] .pb-modal-legend-title {
-  color: #5e4d3a !important;
-}
-
-[data-theme="light"] .pb-modal-legend-header {
-  color: #5e4d3a !important;
-  border-top-color: #ccbe9f !important;
-}
-
-[data-theme="light"] .pb-picker-item-row {
+[data-theme="light"] .pb-picker-item-row,
+body.theme-light .pb-picker-item-row {
   background: #fdfaf2 !important;
   border: 1px solid #ccbe9f !important;
   color: #281d13 !important;
 }
 
-[data-theme="light"] .pb-picker-item-row:hover {
+[data-theme="light"] .pb-picker-item-row:hover,
+body.theme-light .pb-picker-item-row:hover {
   background: #fbf1d8 !important;
   border-color: #9c4210 !important;
 }
 
-[data-theme="light"] .pb-container-item-box {
+[data-theme="light"] .pb-container-item-box,
+body.theme-light .pb-container-item-box {
   background: #fdfaf2 !important;
   border: 1px solid #ccbe9f !important;
 }
 
 [data-theme="light"] .pb-modal-container input,
 [data-theme="light"] .pb-modal-container select,
-[data-theme="light"] .pb-modal-container textarea {
+[data-theme="light"] .pb-modal-container textarea,
+body.theme-light .pb-modal-container input,
+body.theme-light .pb-modal-container select,
+body.theme-light .pb-modal-container textarea {
   background: #fdfaf2 !important;
   border: 1px solid #ccbe9f !important;
   color: #281d13 !important;
 }
 
 [data-theme="light"] .pb-modal-container input::placeholder,
-[data-theme="light"] .pb-modal-container textarea::placeholder {
+[data-theme="light"] .pb-modal-container textarea::placeholder,
+body.theme-light .pb-modal-container input::placeholder,
+body.theme-light .pb-modal-container textarea::placeholder {
   color: #887560 !important;
 }
