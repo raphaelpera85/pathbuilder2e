@@ -3173,15 +3173,23 @@ class PathbuilderApp {
   filterPickerItemsByCompatibility(type, items = []) {
     const checker = PF2E_ENGINE?.getPrerequisiteCompatibility;
     const compatibilityCharacter = this.getPickerCompatibilityCharacter(type);
+    const selectedClass = PF2E_ENGINE?.resolveClassRecord?.(this.character) || {};
+    const targetField = this.activePickerOptions?.targetField || "subclass";
     return items.filter((item) => {
-      if (type === "subclass" && this.activePickerOptions?.targetField === "wizardThesis" && item.data?.thesis !== true) return false;
-      if (type === "subclass" && this.activePickerOptions?.targetField === "patron" && item.data?.patron !== true) return false;
-      if (type === "subclass" && this.activePickerOptions?.targetField === "mystery" && item.data?.mystery !== true) return false;
-      if (type === "subclass" && (this.activePickerOptions?.targetField === "subclass" || !this.activePickerOptions?.targetField) && (item.data?.thesis === true || item.data?.patron === true || item.data?.mystery === true)) return false;
+      const itemData = item.data || {};
+      if (type === "subclass") {
+        if (targetField === "patron" && itemData?.patron !== true) return false;
+        if (targetField === "wizardThesis" && itemData?.thesis !== true) return false;
+        if (targetField === "mystery" && itemData?.mystery !== true) return false;
+        if (targetField === "patron") return itemData?.patron === true;
+        if (targetField === "wizardThesis") return itemData?.thesis === true;
+        if (targetField === "mystery") return itemData?.mystery === true;
+        if (itemData.classId && selectedClass.id && itemData.classId !== selectedClass.id) return false;
+        if (item.data?.choiceField === targetField || item.data?.[targetField] === true) return true;
+        const subclass = item.data || {};
+        if (subclass.choiceField === targetField || subclass[targetField] === true) return true;
+      }
       const heritageInnateSpell = type === "spell" && this.activePickerOptions?.heritageInnate === true;
-      // A escolha de truque ocultista inato não exige que a ficha tenha um
-      // perfil de conjuração próprio, mas ainda deve respeitar todos os outros
-      // pré-requisitos explícitos (classe, ancestralidade, Deviant, nível etc.).
       if (heritageInnateSpell && typeof checker === "function") {
         const compatibility = checker.call(PF2E_ENGINE, compatibilityCharacter, item.data);
         if (compatibility?.state === "incompatible" && compatibility.reason !== "spellcasting-required") return false;
@@ -3189,7 +3197,8 @@ class PathbuilderApp {
       if (heritageInnateSpell) return true;
       if (type === "spell") return PF2E_ENGINE?.getSpellCompatibility?.(compatibilityCharacter, item.data)?.state !== "incompatible";
       if (typeof checker !== "function") return true;
-      return checker.call(PF2E_ENGINE, compatibilityCharacter, item.data)?.state !== "incompatible";
+      const compatibility = checker.call(PF2E_ENGINE, compatibilityCharacter, item.data);
+      return compatibility?.state !== "incompatible";
     });
   }
 
@@ -3433,7 +3442,7 @@ class PathbuilderApp {
 
     if (type === "ancestry") this.applyAncestrySelection(item);
     else if (type === "class") this.applyClassSelection(item);
-    else if (type === "subclass") this.applySubclassSelection(item, options);
+    else if (type === "subclass") this.applySubclassSelection(item, this.activePickerOptions || {});
     else if (type === "archetype") {
       if (!this.character.archetypes) this.character.archetypes = [];
       const exists = this.character.archetypes.some(archetype => (item.data.id && archetype.id === item.data.id) || archetype.name === item.name);
@@ -3669,6 +3678,91 @@ class PathbuilderApp {
     if (item.data?.innateSpellChoice?.tradition === "occult") {
       setTimeout(() => this.openPicker("spell", { heritageInnate: true }), 0);
     }
+  }
+
+  applyClassSelection(item) {
+    if (!item) return;
+    const classChanged = this.character.class !== item.name;
+    this.character.class = item.name;
+    if (classChanged) {
+      const clearFields = (fields = []) => {
+        fields.forEach(field => {
+          delete this.character[field];
+        });
+      };
+      const supportedTargetFields = new Set([
+        "researchField", "instinct", "muse", "doctrine", "order", "racket", "hunterEdge",
+        "style", "innovation", "way", "consciousMind", "subconsciousMind",
+        "implement", "apparition", "icon", "banner", "guardianDefense", "elementalGate",
+        "eidolon", "arcaneSchool", "wizardThesis", "hybridStudy", "patron", "mystery",
+        "fatalMethod", "grimFascination"
+      ]);
+      clearFields([
+        "researchField", "instinct", "muse", "doctrine", "order", "racket", "hunterEdge",
+        "style", "innovation", "way", "consciousMind", "subconsciousMind",
+        "implement", "apparition", "icon", "banner", "guardianDefense", "elementalGate",
+        "eidolon", "arcaneSchool", "wizardThesis", "hybridStudy", "patron", "mystery",
+        "fatalMethod", "grimFascination"
+      ]);
+      clearFields(["fatalMethod", "grimFascination"]);
+      this.clearProgressionSlots("class_feature");
+      this.clearProgressionSlots("class_feat");
+      this.character.subclass = "";
+      this.character.wizardThesis = "";
+      this.character.patron = "";
+      this.character.mystery = "";
+      this.character.patronHex = null;
+      this.character.patronHexId = "";
+      this.character.patronFamiliarSpell = "";
+      this.character.magicTradition = "";
+      if (Array.isArray(this.character.actions)) {
+        this.character.actions = this.character.actions.filter((action) => !action?.grantedByClass);
+      }
+      if (Array.isArray(this.character.classFeatures)) {
+        this.character.classFeatures = this.character.classFeatures.filter((feature) => !feature?.grantedByClass);
+      }
+      if (Array.isArray(this.character.feats)) {
+        this.character.feats = this.character.feats.filter(feat => {
+          if (String(feat?.slotId || "").includes("class_feat")) return false;
+          const classBound = feat?.classId || (Array.isArray(feat?.classIds) && feat.classIds.length);
+          return !classBound || PF2E_ENGINE.getPrerequisiteCompatibility(this.character, feat).state !== "incompatible";
+        });
+      }
+      if (Array.isArray(this.character.archetypes)) {
+        this.character.archetypes = this.character.archetypes.filter(archetype => {
+          const classBound = archetype?.classId || (Array.isArray(archetype?.classIds) && archetype.classIds.length);
+          return !classBound || PF2E_ENGINE.getPrerequisiteCompatibility(this.character, archetype).state !== "incompatible";
+        });
+      }
+      if (Array.isArray(this.character.spells)) {
+        this.character.spells = this.character.spells.filter(spell => PF2E_ENGINE.getSpellCompatibility(this.character, spell).state !== "incompatible");
+      }
+      if (Array.isArray(this.character.pets)) {
+        this.character.pets = this.character.pets.filter(pet => PF2E_ENGINE.getPrerequisiteCompatibility(this.character, pet).state !== "incompatible");
+      }
+    }
+  }
+
+  applySubclassSelection(item, options = {}) {
+    if (!item) return;
+    const targetField = options?.targetField || this.activePickerOptions?.targetField || "subclass";
+    const canonicalValue = item.data?.id || item.name;
+    this.character[targetField] = canonicalValue;
+    if (targetField === "mystery") {
+      this.character.mystery = canonicalValue;
+    }
+    const classFeatureSlot = options?.classFeatureSlot || this.activePickerOptions?.classFeatureSlot;
+    if (classFeatureSlot) {
+      if (!this.character.progression) this.character.progression = {};
+      this.character.progression[classFeatureSlot] = item.name;
+    }
+  }
+
+  clearProgressionSlots(prefix) {
+    if (!this.character.progression) return;
+    Object.keys(this.character.progression).forEach((k) => {
+      if (k.includes(prefix)) delete this.character.progression[k];
+    });
   }
 
   setModalTab(tabName, clickEvent) {
@@ -4971,118 +5065,41 @@ class PathbuilderApp {
           </div>
         `;
 
-        // General Feat (se humano versátil ou selecionado)
-        const rawGeneralFeat = prog["1_general_feat"] || (char.feats?.find(f => f.slotId === "1_general_feat" || f.type?.includes("Geral"))?.name || tLabels.defaultFleet);
-        const generalFeatVal = this.localizeItemName(rawGeneralFeat, locale);
-        html += `
-          <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '1_general_feat', level: 1, filterType: 'Geral' })" title="${isEn ? "Choose General Feat" : isEs ? "Elegir dote general" : "Escolher Talento Geral"}">
-            <div class="pb-tree-card-icon">${this.getTreeIconSvg('general_feat')}</div>
-            <div class="pb-tree-card-content">
-              <div class="pb-tree-card-label">${tLabels.generalFeat}</div>
-              <div class="pb-tree-card-value">${escapeHtml(generalFeatVal)}</div>
+        // General Feat (se concedido no nível 1 por Humano Versátil / herança ou selecionado)
+        const isVersatileHuman = /versatile|versátil/i.test(String(char.heritage || ""));
+        const hasGeneralFeatAt1 = isVersatileHuman || Boolean(prog["1_general_feat"]) || (char.feats?.some(f => f.slotId === "1_general_feat"));
+        if (hasGeneralFeatAt1) {
+          const rawGeneralFeat = prog["1_general_feat"] || (char.feats?.find(f => f.slotId === "1_general_feat" || f.type?.includes("Geral"))?.name || (isVersatileHuman ? tLabels.defaultFleet : tLabels.unselected));
+          const generalFeatVal = rawGeneralFeat === tLabels.unselected ? tLabels.unselected : this.localizeItemName(rawGeneralFeat, locale);
+          html += `
+            <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '1_general_feat', level: 1, filterType: 'Geral' })" title="${isEn ? "Choose General Feat" : isEs ? "Elegir dote general" : "Escolher Talento Geral"}">
+              <div class="pb-tree-card-icon">${this.getTreeIconSvg('general_feat')}</div>
+              <div class="pb-tree-card-content">
+                <div class="pb-tree-card-label">${tLabels.generalFeat}</div>
+                <div class="pb-tree-card-value ${rawGeneralFeat === tLabels.unselected ? 'unselected' : ''}">${escapeHtml(generalFeatVal)}</div>
+              </div>
             </div>
-          </div>
-        `;
+          `;
+        }
 
         // Ancestry Feat
-        const rawAncestryFeat = prog["1_ancestry_feat"] || (char.feats?.find(f => f.slotId === "1_ancestry_feat" || f.type?.includes("Ancestral"))?.name || tLabels.defaultAmbition);
-        const ancestryFeatVal = this.localizeItemName(rawAncestryFeat, locale);
+        const rawAncestryFeat = prog["1_ancestry_feat"] || (char.feats?.find(f => f.slotId === "1_ancestry_feat" || f.type?.includes("Ancestral"))?.name || (char.ancestry ? tLabels.defaultAmbition : tLabels.unselected));
+        const ancestryFeatVal = rawAncestryFeat === tLabels.unselected ? tLabels.unselected : this.localizeItemName(rawAncestryFeat, locale);
         html += `
           <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '1_ancestry_feat', level: 1, filterType: 'Ancestral' })" title="${isEn ? "Choose Ancestry Feat" : isEs ? "Elegir dote de ascendencia" : "Escolher Talento Ancestral"}">
             <div class="pb-tree-card-icon">${this.getTreeIconSvg('ancestry_feat')}</div>
             <div class="pb-tree-card-content">
               <div class="pb-tree-card-label">${tLabels.ancestryFeat}</div>
-              <div class="pb-tree-card-value">${escapeHtml(ancestryFeatVal)}</div>
+              <div class="pb-tree-card-value ${rawAncestryFeat === tLabels.unselected ? 'unselected' : ''}">${escapeHtml(ancestryFeatVal)}</div>
             </div>
           </div>
         `;
 
-        const classTextAtLevelOne = String(char.class || "").toLowerCase();
-        const hasDedicatedClassProgression = ["brux", "bruja", "witch", "mago", "wizard", "magus", "oráculo", "oracle", "necromant", "nigromant", "necromancer", "alquim", "alchemist", "bárbar", "barbar", "bardo", "bard", "clér", "cleric", "druida", "druid", "guerre", "guerr", "fighter", "ladino", "pícar", "rogue", "patrul", "explorador", "ranger", "monge", "monk", "campe", "champion", "feitice", "hechicer", "sorcerer", "investig", "espadach", "swashbuckler", "inventor", "pistole", "pistolero", "gunslinger", "psíqu", "psychic", "taumatur", "thaumaturge", "animist", "exemplar", "comandante", "commander", "guardião", "guardián", "guardian", "cinetic", "cinét", "kineticist", "convocador", "summoner"].some((name) => classTextAtLevelOne.includes(name));
-
-        // Class Feat (Principal)
-        const rawClassFeat1 = prog["1_class_feat"] || (char.feats?.find(f => f.slotId === "1_class_feat" || f.type?.includes("Classe"))?.name || tLabels.defaultGoading);
-        const classFeatVal1 = this.localizeItemName(rawClassFeat1, locale);
-        if (!hasDedicatedClassProgression) html += `
-          <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '1_class_feat', level: 1, filterType: 'Classe' })" title="${isEn ? "Choose Class Feat" : isEs ? "Elegir dote de clase" : "Escolher Talento de Classe"}">
-            <div class="pb-tree-card-icon">${this.getTreeIconSvg('class_feat')}</div>
-            <div class="pb-tree-card-content">
-              <div class="pb-tree-card-label">${tLabels.classFeat}</div>
-              <div class="pb-tree-card-value">${escapeHtml(classFeatVal1)}</div>
-            </div>
-          </div>
-        `;
-
-        // Class Feat Secundário / Extra (concedido por Ambição Natural ou Guerreiro)
-        const rawClassFeat2 = prog["1_class_feat_extra"] || (char.feats?.find(f => f.slotId === "1_class_feat_extra")?.name || tLabels.defaultParry);
-        const classFeatVal2 = this.localizeItemName(rawClassFeat2, locale);
-        if (!hasDedicatedClassProgression) html += `
-          <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '1_class_feat_extra', level: 1, filterType: 'Classe' })" title="${isEn ? "Choose Extra Class Feat" : isEs ? "Elegir dote de clase adicional" : "Escolher Talento de Classe Extra"}">
-            <div class="pb-tree-card-icon">${this.getTreeIconSvg('class_feat')}</div>
-            <div class="pb-tree-card-content">
-              <div class="pb-tree-card-label">${tLabels.classFeat}</div>
-              <div class="pb-tree-card-value">
-                <span>${escapeHtml(classFeatVal2)}</span>
-                <span class="pb-action-glyph">◆</span>
-              </div>
-            </div>
-          </div>
-        `;
-
-        // A progressão de nível 1 muda por classe. O bloco específico mantém
-        // a forma do Pathbuilder e evita mostrar apenas um rótulo genérico de
-        // subclasse para conjuradores com escolhas próprias.
+        // Identificação da Classe para Features de Nível 1
         const classValue = char.class && typeof char.class === "object"
           ? char.class.id || char.class.name || char.class["pt-BR"] || char.class.en || char.class.es
           : char.class;
         const classText = String(classValue || "").toLowerCase();
-        const featureCopy = {
-          witch: {
-            heading: ["Feitiços Hex", "Hex Spells", "Hechizos de maleficio"],
-            entries: [["Hex Inicial", "Initial Hex", "Maleficio inicial", "spell", "patronHex"], ["Patrono", "Patron", "Patrón", "subclass", "patron"], ["Lição Inicial", "Initial Lesson", "Lección inicial", "none", "patronLesson"], ["Magia do Familiar", "Familiar Spell", "Conjuro del familiar", "none", "patronFamiliarSpell"], ["Habilidade do Familiar", "Familiar Ability", "Habilidad del familiar", "none", "patronFamiliarAbility"], ["Conjuração de Bruxa", "Witch Spellcasting", "Lanzamiento de bruja", "none", "magicTradition"]]
-          },
-          wizard: {
-            heading: ["Escola Arcana", "Arcane School", "Escuela arcana"],
-            entries: [["Escola Arcana", "Select Arcane School", "Seleccionar escuela arcana", "subclass"], ["Tese Arcana", "Select Thesis", "Seleccionar tesis", "subclass", "wizardThesis"], ["Vínculo Arcano", "Arcane Bond", "Vínculo arcano", "none"], ["Drenar Item Vinculado", "Drain Bonded Item", "Drenar objeto vinculado", "none"], ["Grimório", "Spellbook", "Libro de conjuros", "none"], ["Conjuração de Mago", "Wizard Spellcasting", "Lanzamiento de mago", "none"]]
-          },
-          magus: {
-            heading: ["Estudo Híbrido", "Hybrid Study", "Estudio híbrido"],
-            entries: [["Estudo Híbrido", "Select Hybrid Study", "Seleccionar estudio híbrido", "subclass"], ["Cascata Arcana", "Arcane Cascade", "Cascada arcana", "none"], ["Feitiços de Confluxo", "Conflux Spells", "Conjuros de conflux", "none"], ["Conjuração de Magus", "Magus Spellcasting", "Lanzamiento de magus", "none"], ["Grimório", "Spellbook", "Libro de conjuros", "none"], ["Golpe de Magia", "Spellstrike", "Golpe de conjuro", "none"]]
-          },
-          oracle: {
-            heading: ["Mistério", "Mystery", "Misterio"],
-            entries: [["Mistério", "Select Mystery", "Seleccionar misterio", "subclass", "mystery"], ["Perícia de Mistério", "Mystery Skill", "Habilidad de misterio", "none", "mysterySkill"], ["Maldição Oracular", "Oracular Curse", "Maldición oracular", "none", "mysteryCurse"], ["Feitiços de Revelação", "Revelation Spells", "Conjuros de revelación", "none"]]
-          },
-          necromancer: {
-            heading: ["Método Fatal", "Fatal Method", "Método fatal"],
-            entries: [["Método Fatal", "Select Fatal Method", "Seleccionar método fatal", "subclass"], ["Fascinação Sombria", "Select Grim Fascination", "Seleccionar fascinación sombría", "subclass", "grimFascination"], ["Servo", "Command a Thrall", "Comandar un siervo", "none"], ["Lamento", "Dirge", "Lamento", "none"], ["Magias de Sepultura", "Grave Spells", "Conjuros de sepultura", "none"], ["Maestria da Vida e da Morte", "Mastery of Life and Death", "Maestría de la vida y la muerte", "none"], ["Conjuração de Necromante", "Necromancer Spellcasting", "Lanzamiento de nigromante", "none"], ["Servos", "Thralls", "Siervos", "none"], ["Saber Morto-Vivo", "Undead Lore", "Saber de muertos vivientes", "none"]]
-          },
-          alchemist: { heading: ["Campo de Pesquisa", "Research Field", "Campo de investigación"], entries: [["Campo de Pesquisa", "Select Research Field", "Seleccionar campo de investigación", "subclass"], ["Alquimia Avançada", "Advanced Alchemy", "Alquimia avanzada", "none"], ["Reagentes Infundidos", "Infused Reagents", "Reactivos infundidos", "none"], ["Vials Versáteis", "Versatile Vials", "Viales versátiles", "none"]] },
-          barbarian: { heading: ["Instinto", "Instinct", "Instinto"], entries: [["Instinto", "Select Instinct", "Seleccionar instinto", "subclass"], ["Fúria", "Rage", "Furia", "none"], ["Ataque Instintivo", "Instinct Ability", "Habilidad del instinto", "none"]] },
-          bard: { heading: ["Musa", "Muse", "Musa"], entries: [["Musa", "Select Muse", "Seleccionar musa", "subclass"], ["Composições", "Compositions", "Composiciones", "none"], ["Conjuração Oculta", "Occult Spellcasting", "Lanzamiento ocultista", "none"]] },
-          cleric: { heading: ["Doutrina", "Doctrine", "Doctrina"], entries: [["Doutrina", "Select Doctrine", "Seleccionar doctrina", "subclass"], ["Divindade", "Deity", "Deidad", "none"], ["Fonte Divina", "Divine Font", "Fuente divina", "none"], ["Conjuração Divina", "Divine Spellcasting", "Lanzamiento divino", "none"]] },
-          druid: { heading: ["Ordem", "Order", "Orden"], entries: [["Ordem", "Select Order", "Seleccionar orden", "subclass"], ["Anátema", "Anathema", "Anatema", "none"], ["Magia de Ordem", "Order Magic", "Magia de la orden", "none"], ["Conjuração Primal", "Primal Spellcasting", "Lanzamiento primal", "none"]] },
-          fighter: { heading: ["Treinamento Marcial", "Martial Training", "Entrenamiento marcial"], entries: [["Treinamento Marcial", "Martial Training", "Entrenamiento marcial", "none"], ["Reação de Guerreiro", "Reactive Strike", "Golpe reactivo", "none"], ["Flexibilidade", "Fighter's Flexibility", "Flexibilidad del guerrero", "none"]] },
-          rogue: { heading: ["Especialização", "Racket", "Especialización"], entries: [["Especialização", "Select Racket", "Seleccionar especialización", "subclass"], ["Ataque Surpresa", "Surprise Attack", "Ataque sorpresa", "none"], ["Ataque Furtivo", "Sneak Attack", "Ataque furtivo", "none"]] },
-          ranger: { heading: ["Vantagem do Caçador", "Hunter's Edge", "Ventaja del cazador"], entries: [["Vantagem do Caçador", "Select Hunter's Edge", "Seleccionar ventaja del cazador", "subclass"], ["Presa Caçada", "Hunted Prey", "Presa cazada", "none"], ["Conjuração de Patrulheiro", "Ranger Spellcasting", "Lanzamiento de explorador", "none"]] },
-          monk: { heading: ["Disciplina", "Discipline", "Disciplina"], entries: [["Estilo", "Select Style", "Seleccionar estilo", "subclass"], ["Punho Poderoso", "Powerful Fist", "Puño poderoso", "none"], ["Rajada de Golpes", "Flurry of Blows", "Ráfaga de golpes", "none"]] },
-          champion: { heading: ["Causa", "Cause", "Causa"], entries: [["Causa", "Select Cause", "Seleccionar causa", "subclass"], ["Reação do Campeão", "Champion's Reaction", "Reacción del campeón", "none"], ["Magias de Devoção", "Devotion Spells", "Conjuros de devoción", "none"]] },
-          sorcerer: { heading: ["Linhagem", "Bloodline", "Linaje"], entries: [["Linhagem", "Select Bloodline", "Seleccionar linaje", "subclass"], ["Magia de Linhagem", "Bloodline Spell", "Conjuro de linaje", "none"], ["Conjuração de Feiticeiro", "Sorcerer Spellcasting", "Lanzamiento de hechicero", "none"]] },
-          investigator: { heading: ["Metodologia", "Methodology", "Metodología"], entries: [["Metodologia", "Select Methodology", "Seleccionar metodología", "subclass"], ["Perseguir uma Pista", "Pursue a Lead", "Perseguir una pista", "none"], ["Elaborar Estratagema", "Devise a Stratagem", "Idear una estrategia", "none"]] },
-          swashbuckler: { heading: ["Estilo", "Style", "Estilo"], entries: [["Estilo", "Select Style", "Seleccionar estilo", "subclass"], ["Garbo", "Panache", "Garbo", "none"], ["Finalizadores", "Finishers", "Remates", "none"]] },
-          inventor: { heading: ["Inovação", "Innovation", "Innovación"], entries: [["Inovação", "Select Innovation", "Seleccionar innovación", "subclass"], ["Sobrecarga", "Overdrive", "Sobrecarga", "none"], ["Ações Instáveis", "Unstable Actions", "Acciones inestables", "none"]] },
-          gunslinger: { heading: ["Caminho", "Way", "Camino"], entries: [["Caminho", "Select Way", "Seleccionar camino", "subclass"], ["Especialista em Armas de Fogo", "Firearm Expertise", "Experto en armas de fuego", "none"], ["Recarregar", "Reload", "Recargar", "none"]] },
-          psychic: { heading: ["Mente Consciente", "Conscious Mind", "Mente consciente"], entries: [["Mente Consciente", "Select Conscious Mind", "Seleccionar mente consciente", "subclass"], ["Mente Subconsciente", "Subconscious Mind", "Mente subconsciente", "none"], ["Truques Psi", "Psi Cantrips", "Trucos psi", "none"]] },
-          thaumaturge: { heading: ["Implemento", "Implement", "Implemento"], entries: [["Implemento", "Select Implement", "Seleccionar implemento", "subclass"], ["Esoterismo", "Esoterica", "Esoterismo", "none"], ["Explorar Vulnerabilidade", "Exploit Vulnerability", "Explotar vulnerabilidad", "none"]] },
-          animist: { heading: ["Aparição", "Apparition", "Aparición"], entries: [["Aparição", "Select Apparition", "Seleccionar aparición", "subclass"], ["Receptáculo Espiritual", "Spiritual Vessel", "Vasija espiritual", "none"], ["Conjuração Espiritual", "Spiritual Spellcasting", "Lanzamiento espiritual", "none"]] },
-          exemplar: { heading: ["Ícone", "Icon", "Icono"], entries: [["Ícone", "Select Icon", "Seleccionar icono", "subclass"], ["Centelha Divina", "Divine Spark", "Chispa divina", "none"], ["Epíteto", "Epithet", "Epíteto", "none"]] },
-          commander: { heading: ["Estandarte", "Banner", "Estandarte"], entries: [["Estandarte", "Select Banner", "Seleccionar estandarte", "subclass"], ["Táticas", "Tactics", "Tácticas", "none"], ["Ordens", "Commands", "Órdenes", "none"]] },
-          guardian: { heading: ["Defesa do Guardião", "Guardian's Defense", "Defensa del guardián"], entries: [["Defesa do Guardião", "Select Guardian's Defense", "Seleccionar defensa del guardián", "subclass"], ["Interceptar Ataque", "Intercept Attack", "Interceptar ataque", "none"], ["Proteger Aliado", "Protect Ally", "Proteger aliado", "none"]]
-          },
-          kineticist: { heading: ["Portão Elemental", "Elemental Gate", "Puerta elemental"], entries: [["Portão Elemental", "Select Elemental Gate", "Seleccionar puerta elemental", "subclass"], ["Impulsos Elementais", "Elemental Impulses", "Impulsos elementales", "none"], ["CD de Classe do Cineticista", "Kineticist Class DC", "CD de clase del cineticista", "none"]] },
-          summoner: { heading: ["Eidolon", "Eidolon", "Eidolon"], entries: [["Eidolon", "Select Eidolon", "Seleccionar eidolon", "subclass"], ["Vínculo Vital", "Evolution Surge", "Oleada de evolución", "none"], ["Conjuração Compartilhada", "Shared Spellcasting", "Lanzamiento compartido", "none"]]
-          }
-        };
         const classFeatureKeyById = {
           "class.alchemist": "alchemist", "class.barbarian": "barbarian", "class.bard": "bard",
           "class.witch": "witch", "class.wizard": "wizard", "class.magus": "magus", "class.oracle": "oracle",
@@ -5100,22 +5117,22 @@ class PathbuilderApp {
           return names.some((name) => classText === name || classText.includes(name) || name.includes(classText));
         })?.[1];
         const classFeatureKey = classFeatureKeyById[selectedClassRecord?.id]
-          || (classText.includes("brux") || classText.includes("witch") ? "witch"
+          || (classText.includes("brux") || classText.includes("bruja") || classText.includes("witch") ? "witch"
             : classText.includes("mago") || classText.includes("wizard") ? "wizard"
             : classText.includes("magus") ? "magus"
             : classText.includes("oráculo") || classText.includes("oracle") ? "oracle"
-            : classText.includes("necromant") || classText.includes("necromancer") ? "necromancer"
+            : ["necromant", "nigromant", "necromancer"].some(token => classText.includes(token)) ? "necromancer"
             : classText.includes("alquim") || classText.includes("alchemist") ? "alchemist"
             : classText.includes("bárbar") || classText.includes("barbar") ? "barbarian"
             : classText.includes("bardo") || classText.includes("bard") ? "bard"
             : classText.includes("clér") || classText.includes("cleric") ? "cleric"
             : classText.includes("druida") || classText.includes("druid") ? "druid"
-            : classText.includes("guerre") || classText.includes("fighter") ? "fighter"
+            : classText.includes("guerre") || classText.includes("guerr") || classText.includes("fighter") ? "fighter"
             : classText.includes("ladino") || classText.includes("rogue") || classText.includes("pícar") ? "rogue"
             : classText.includes("patrul") || classText.includes("ranger") || classText.includes("explorador") ? "ranger"
             : classText.includes("monge") || classText.includes("monk") || classText.includes("monje") ? "monk"
             : classText.includes("campe") || classText.includes("champion") ? "champion"
-            : classText.includes("feitice") || classText.includes("sorcerer") || classText.includes("hechicer") ? "sorcerer"
+            : classText.includes("feitice") || classText.includes("hechicer") || classText.includes("sorcerer") ? "sorcerer"
             : classText.includes("investig") ? "investigator"
             : classText.includes("espadach") || classText.includes("swashbuckler") ? "swashbuckler"
             : classText.includes("inventor") ? "inventor"
@@ -5128,6 +5145,315 @@ class PathbuilderApp {
             : classText.includes("guardião") || classText.includes("guardián") || classText.includes("guardian") ? "guardian"
             : classText.includes("cinetic") || classText.includes("cinét") || classText.includes("kineticist") ? "kineticist"
             : classText.includes("convocador") || classText.includes("summoner") ? "summoner" : null);
+
+        // Classes com Talento de Classe no Nível 1 no PF2e Remaster
+        const classesWithLevel1ClassFeat = [
+          "alchemist", "animist", "barbarian", "champion", "commander", "exemplar",
+          "fighter", "guardian", "gunslinger", "inventor", "investigator", "kineticist",
+          "magus", "monk", "necromancer", "ranger", "rogue", "summoner", "swashbuckler", "thaumaturge"
+        ];
+        const getsLevel1ClassFeat = classesWithLevel1ClassFeat.includes(classFeatureKey) || Boolean(prog["1_class_feat"]) || char.feats?.some(f => f.slotId === "1_class_feat");
+
+        // Class Feat (Principal)
+        if (getsLevel1ClassFeat) {
+          const rawClassFeat1 = prog["1_class_feat"] || (char.feats?.find(f => f.slotId === "1_class_feat" || f.type?.includes("Classe"))?.name || (classFeatureKey ? tLabels.defaultGoading : tLabels.unselected));
+          const classFeatVal1 = rawClassFeat1 === tLabels.unselected ? tLabels.unselected : this.localizeItemName(rawClassFeat1, locale);
+          html += `
+            <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '1_class_feat', level: 1, filterType: 'Classe' })" title="${isEn ? "Choose Class Feat" : isEs ? "Elegir dote de clase" : "Escolher Talento de Classe"}">
+              <div class="pb-tree-card-icon">${this.getTreeIconSvg('class_feat')}</div>
+              <div class="pb-tree-card-content">
+                <div class="pb-tree-card-label">${tLabels.classFeat}</div>
+                <div class="pb-tree-card-value ${rawClassFeat1 === tLabels.unselected ? 'unselected' : ''}">
+                  <span>${escapeHtml(classFeatVal1)}</span>
+                  ${rawClassFeat1 !== tLabels.unselected ? '<span class="pb-action-glyph">◆</span>' : ''}
+                </div>
+              </div>
+            </div>
+          `;
+        }
+
+        // Class Feat Secundário / Extra (concedido por Ambição Natural ou concessão de herança)
+        const hasNaturalAmbition = /natural ambition|ambição natural|ambición natural/i.test(String(rawAncestryFeat || ""));
+        const hasExtraClassFeat = hasNaturalAmbition || Boolean(prog["1_class_feat_extra"]) || char.feats?.some(f => f.slotId === "1_class_feat_extra");
+        if (hasExtraClassFeat) {
+          const rawClassFeat2 = prog["1_class_feat_extra"] || (char.feats?.find(f => f.slotId === "1_class_feat_extra")?.name || (hasNaturalAmbition ? tLabels.defaultParry : tLabels.unselected));
+          const classFeatVal2 = rawClassFeat2 === tLabels.unselected ? tLabels.unselected : this.localizeItemName(rawClassFeat2, locale);
+          html += `
+            <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '1_class_feat_extra', level: 1, filterType: 'Classe' })" title="${isEn ? "Choose Extra Class Feat" : isEs ? "Elegir dote de clase adicional" : "Escolher Talento de Classe Extra"}">
+              <div class="pb-tree-card-icon">${this.getTreeIconSvg('class_feat')}</div>
+              <div class="pb-tree-card-content">
+                <div class="pb-tree-card-label">${tLabels.classFeat}</div>
+                <div class="pb-tree-card-value ${rawClassFeat2 === tLabels.unselected ? 'unselected' : ''}">
+                  <span>${escapeHtml(classFeatVal2)}</span>
+                  ${rawClassFeat2 !== tLabels.unselected ? '<span class="pb-action-glyph">◆</span>' : ''}
+                </div>
+              </div>
+            </div>
+          `;
+        }
+
+        const featureCopy = {
+          swashbuckler: {
+            heading: ["Estilo de Espadachim", "Swashbuckler's Style", "Estilo de espadachín"],
+            entries: [
+              ["Selecionar Estilo", "Select Style", "Seleccionar estilo", "subclass", "style"],
+              ["Remate Confiante", "Confident Finisher", "Remate confiado", "none", null, "◆"],
+              ["Garbo", "Panache", "Garbo", "none"],
+              ["Golpe Preciso", "Precise Strike", "Golpe preciso", "none"],
+              ["Combatente Estiloso", "Stylish Combatant", "Combatiente elegante", "none"],
+              ["Talento Grátis", "Free Feat", "Dote gratis", "free_style_feat", null, "◆"]
+            ]
+          },
+          fighter: {
+            heading: ["Treinamento Marcial", "Martial Training", "Entrenamiento marcial"],
+            entries: [
+              ["Treinamento Marcial", "Martial Training", "Entrenamiento marcial", "none"],
+              ["Golpe Reativo", "Reactive Strike", "Golpe reactivo", "none", null, "↺"],
+              ["Bloqueio com Escudo", "Shield Block", "Bloqueo con escudo", "none", null, "↺"]
+            ]
+          },
+          rogue: {
+            heading: ["Especialização", "Racket", "Especialización"],
+            entries: [
+              ["Selecionar Especialização", "Select Racket", "Seleccionar especialización", "subclass", "racket"],
+              ["Ataque Furtivo", "Sneak Attack", "Ataque furtivo", "none"],
+              ["Ataque Surpresa", "Surprise Attack", "Ataque sorpresa", "none"]
+            ]
+          },
+          champion: {
+            heading: ["Causa", "Cause", "Causa"],
+            entries: [
+              ["Selecionar Causa", "Select Cause", "Seleccionar causa", "subclass", "cause"],
+              ["Reação do Campeão", "Champion's Reaction", "Reacción del campeón", "none", null, "↺"],
+              ["Magias de Devoção", "Devotion Spells", "Conjuros de devoción", "none"],
+              ["Bloqueio com Escudo", "Shield Block", "Bloqueo con escudo", "none", null, "↺"]
+            ]
+          },
+          alchemist: {
+            heading: ["Campo de Pesquisa", "Research Field", "Campo de investigación"],
+            entries: [
+              ["Selecionar Campo de Pesquisa", "Select Research Field", "Seleccionar campo de investigación", "subclass", "researchField"],
+              ["Alquimia Avançada", "Advanced Alchemy", "Alquimia avanzada", "none"],
+              ["Reagentes Infundidos", "Infused Reagents", "Reactivos infundidos", "none"],
+              ["Vials Versáteis", "Versatile Vials", "Viales versátiles", "none"],
+              ["Alquimia Rápida", "Quick Alchemy", "Alquimia rápida", "none", null, "◆"]
+            ]
+          },
+          barbarian: {
+            heading: ["Instinto", "Instinct", "Instinto"],
+            entries: [
+              ["Selecionar Instinto", "Select Instinct", "Seleccionar instinto", "subclass", "instinct"],
+              ["Fúria", "Rage", "Furia", "none", null, "◆"],
+              ["Habilidade de Instinto", "Instinct Ability", "Habilidad del instinto", "none"],
+              ["Anátema", "Anathema", "Anatema", "none"]
+            ]
+          },
+          bard: {
+            heading: ["Musa", "Muse", "Musa"],
+            entries: [
+              ["Selecionar Musa", "Select Muse", "Seleccionar musa", "subclass", "muse"],
+              ["Magias de Composição", "Composition Spells", "Conjuros de composición", "none"],
+              ["Conjuração Oculta", "Occult Spellcasting", "Lanzamiento ocultista", "none"]
+            ]
+          },
+          cleric: {
+            heading: ["Doutrina", "Doctrine", "Doctrina"],
+            entries: [
+              ["Selecionar Doutrina", "Select Doctrine", "Seleccionar doctrina", "subclass", "doctrine"],
+              ["Divindade", "Deity", "Deidad", "deity"],
+              ["Fonte Divina", "Divine Font", "Fuente divina", "none"],
+              ["Conjuração Divina", "Divine Spellcasting", "Lanzamiento divino", "none"]
+            ]
+          },
+          druid: {
+            heading: ["Ordem", "Order", "Orden"],
+            entries: [
+              ["Selecionar Ordem", "Select Order", "Seleccionar orden", "subclass", "order"],
+              ["Magia de Ordem", "Order Magic", "Magia de la orden", "none"],
+              ["Anátema", "Anathema", "Anatema", "none"],
+              ["Conjuração Primal", "Primal Spellcasting", "Lanzamiento primal", "none"]
+            ]
+          },
+          gunslinger: {
+            heading: ["Caminho do Pistoleiro", "Gunslinger's Way", "Camino del pistolero"],
+            entries: [
+              ["Selecionar Caminho", "Select Way", "Seleccionar camino", "subclass", "way"],
+              ["Recarga do Pistoleiro", "Slinger's Reload", "Recarga del pistolero", "none", null, "◆"],
+              ["Feito Inicial", "Initial Deed", "Hazaña inicial", "none"],
+              ["Especialização Singular", "Singular Expertise", "Pericia singular", "none"]
+            ]
+          },
+          inventor: {
+            heading: ["Inovação", "Innovation", "Innovación"],
+            entries: [
+              ["Selecionar Inovação", "Select Innovation", "Seleccionar innovación", "subclass", "innovation"],
+              ["Sobrecarga", "Overdrive", "Sobrecarga", "none", null, "◆"],
+              ["Explodir", "Explode", "Explotar", "none", null, "◆◆"],
+              ["Modificação Inicial", "Initial Modification", "Modificación inicial", "none"]
+            ]
+          },
+          investigator: {
+            heading: ["Metodologia", "Methodology", "Metodología"],
+            entries: [
+              ["Selecionar Metodologia", "Select Methodology", "Seleccionar metodología", "subclass", "methodology"],
+              ["Elaborar Estratagema", "Devise a Stratagem", "Idear una estratagema", "none", null, "◆"],
+              ["Perseguir uma Pista", "Pursue a Lead", "Perseguir una pista", "none"],
+              ["Pista para Aliados", "Clue In", "Pista para aliados", "none", null, "↺"]
+            ]
+          },
+          kineticist: {
+            heading: ["Portão Elemental", "Elemental Gate", "Puerta elemental"],
+            entries: [
+              ["Selecionar Portão Elemental", "Select Elemental Gate", "Seleccionar puerta elemental", "subclass", "elementalGate"],
+              ["Canalizar Elementos", "Channel Elements", "Canalizar elementos", "none", null, "◆"],
+              ["Aura Cinética", "Kinetic Aura", "Aura cinética", "none"],
+              ["Cinese Básica", "Base Kinesis", "Cinesis básica", "none", null, "◆◆"],
+              ["CD de Classe do Cineticista", "Kineticist Class DC", "CD de clase del cineticista", "none"]
+            ]
+          },
+          magus: {
+            heading: ["Estudo Híbrido", "Hybrid Study", "Estudio híbrido"],
+            entries: [
+              ["Selecionar Estudo Híbrido", "Select Hybrid Study", "Seleccionar estudio híbrido", "subclass", "hybridStudy"],
+              ["Golpe de Magia", "Spellstrike", "Golpe de conjuro", "none", null, "◆◆"],
+              ["Cascata Arcana", "Arcane Cascade", "Cascada arcana", "none", null, "◆"],
+              ["Feitiços de Confluxo", "Conflux Spells", "Conjuros de conflux", "none"],
+              ["Grimório", "Spellbook", "Libro de conjuros", "none"],
+              ["Conjuração de Magus", "Magus Spellcasting", "Lanzamiento de magus", "none"]
+            ]
+          },
+          monk: {
+            heading: ["Características do Monge", "Monk Features", "Características del monje"],
+            entries: [
+              ["Rajada de Golpes", "Flurry of Blows", "Ráfaga de golpes", "none", null, "◆"],
+              ["Punho Poderoso", "Powerful Fist", "Puño poderoso", "none"],
+              ["Golpes Místicos", "Mystic Strikes", "Golpes místicos", "none"]
+            ]
+          },
+          oracle: {
+            heading: ["Mistério", "Mystery", "Misterio"],
+            entries: [
+              ["Mistério", "Select Mystery", "Seleccionar misterio", "subclass", "mystery"],
+              ["Perícia de Mistério", "Mystery Skill", "Habilidad de misterio", "none", "mysterySkill"],
+              ["Maldição Oracular", "Oracular Curse", "Maldición oracular", "none", "mysteryCurse"],
+              ["Feitiços de Revelação", "Revelation Spells", "Conjuros de revelación", "none"],
+              ["Conjuração Divina", "Divine Spellcasting", "Lanzamiento divino", "none"]
+            ]
+          },
+          psychic: {
+            heading: ["Mente Consciente", "Conscious Mind", "Mente consciente"],
+            entries: [
+              ["Selecionar Mente Consciente", "Select Conscious Mind", "Seleccionar mente consciente", "subclass", "consciousMind"],
+              ["Selecionar Mente Subconsciente", "Select Subconscious Mind", "Seleccionar mente subconsciente", "subclass", "subconsciousMind"],
+              ["Truques Psi e Amplificadores", "Psi Cantrips & Amps", "Trucos psi y amplificaciones", "none"],
+              ["Liberar Psique", "Unleash Psyche", "Desatar psique", "none", null, "◆"],
+              ["Conjuração Oculta", "Occult Spellcasting", "Lanzamiento ocultista", "none"]
+            ]
+          },
+          ranger: {
+            heading: ["Vantagem do Caçador", "Hunter's Edge", "Ventaja del cazador"],
+            entries: [
+              ["Selecionar Vantagem do Caçador", "Select Hunter's Edge", "Seleccionar ventaja del cazador", "subclass", "hunterEdge"],
+              ["Caçar Presa", "Hunt Prey", "Cazar presa", "none", null, "◆"],
+              ["Conjuração de Patrulheiro", "Ranger Spellcasting", "Lanzamiento de explorador", "none"]
+            ]
+          },
+          sorcerer: {
+            heading: ["Linhagem", "Bloodline", "Linaje"],
+            entries: [
+              ["Selecionar Linhagem", "Select Bloodline", "Seleccionar linaje", "subclass", "bloodline"],
+              ["Magia de Linhagem", "Bloodline Spell", "Conjuro de linaje", "none"],
+              ["Magia de Sangue", "Blood Magic", "Magia de sangre", "none"],
+              ["Conjuração de Feiticeiro", "Sorcerer Spellcasting", "Lanzamiento de hechicero", "none"]
+            ]
+          },
+          summoner: {
+            heading: ["Eidolon", "Eidolon", "Eidolon"],
+            entries: [
+              ["Selecionar Eidolon", "Select Eidolon", "Seleccionar eidolon", "subclass", "eidolon"],
+              ["Agir em Conjunto", "Act Together", "Actuar en conjunto", "none", null, "◆"],
+              ["Surto de Evolução", "Evolution Surge", "Oleada de evolución", "none"],
+              ["Conjuração Compartilhada", "Shared Spellcasting", "Lanzamiento compartido", "none"]
+            ]
+          },
+          thaumaturge: {
+            heading: ["Implemento", "Implement", "Implemento"],
+            entries: [
+              ["Selecionar Implemento", "Select Implement", "Seleccionar implemento", "subclass", "implement"],
+              ["Explorar Vulnerabilidade", "Exploit Vulnerability", "Explotar vulnerabilidad", "none", null, "◆"],
+              ["Empoderamento do Implemento", "Implement's Empowerment", "Empoderamiento del implemento", "none"],
+              ["Esoterismo", "Esoterica", "Esoterismo", "none"]
+            ]
+          },
+          witch: {
+            heading: ["Feitiços Hex", "Hex Spells", "Hechizos de maleficio"],
+            entries: [
+              ["Patrono", "Patron", "Patrón", "subclass", "patron"],
+              ["Hex Inicial", "Initial Hex", "Maleficio inicial", "spell", "patronHex"],
+              ["Lição Inicial", "Initial Lesson", "Lección inicial", "none", "patronLesson"],
+              ["Magia do Familiar", "Familiar Spell", "Conjuro del familiar", "none", "patronFamiliarSpell"],
+              ["Habilidade do Familiar", "Familiar Ability", "Habilidad del familiar", "none", "patronFamiliarAbility"],
+              ["Conjuração de Bruxa", "Witch Spellcasting", "Lanzamiento de bruja", "none"]
+            ]
+          },
+          wizard: {
+            heading: ["Escola Arcana", "Arcane School", "Escuela arcana"],
+            entries: [
+              ["Selecionar Escola Arcana", "Select Arcane School", "Seleccionar escuela arcana", "subclass", "arcaneSchool"],
+              ["Tese Arcana", "Select Thesis", "Seleccionar tesis", "subclass", "wizardThesis"],
+              ["Vínculo Arcano", "Arcane Bond", "Vínculo arcano", "none"],
+              ["Drenar Item Vinculado", "Drain Bonded Item", "Drenar objeto vinculado", "none", null, "◇"],
+              ["Grimório", "Spellbook", "Libro de conjuros", "none"],
+              ["Conjuração de Mago", "Wizard Spellcasting", "Lanzamiento de mago", "none"]
+            ]
+          },
+          animist: {
+            heading: ["Aparição", "Apparition", "Aparición"],
+            entries: [
+              ["Selecionar Aparição", "Select Apparition", "Seleccionar aparición", "subclass", "apparition"],
+              ["Receptáculo Espiritual", "Spiritual Vessel", "Vasija espiritual", "none"],
+              ["Conjuração Espiritual", "Spiritual Spellcasting", "Lanzamiento espiritual", "none"]
+            ]
+          },
+          exemplar: {
+            heading: ["Ícone do Exemplar", "Exemplar's Ikon", "Icono del ejemplar"],
+            entries: [
+              ["Selecionar Ícone", "Select Icon", "Seleccionar icono", "subclass", "icon"],
+              ["Centelha Divina", "Divine Spark", "Chispa divina", "none"],
+              ["Epíteto", "Epithet", "Epíteto", "none"]
+            ]
+          },
+          commander: {
+            heading: ["Estandarte", "Banner", "Estandarte"],
+            entries: [
+              ["Selecionar Estandarte", "Select Banner", "Seleccionar estandarte", "subclass", "banner"],
+              ["Táticas de Comandante", "Commander's Tactics", "Tácticas de comandante", "none"],
+              ["Emitir Ordens", "Issue Commands", "Emitir órdenes", "none"]
+            ]
+          },
+          guardian: {
+            heading: ["Defesa do Guardião", "Guardian's Defense", "Defensa del guardián"],
+            entries: [
+              ["Selecionar Defesa", "Select Guardian's Defense", "Seleccionar defensa del guardián", "subclass", "guardianDefense"],
+              ["Interceptar Ataque", "Intercept Attack", "Interceptar ataque", "none", null, "↺"],
+              ["Provocar", "Taunt", "Provocar", "none", null, "◆"],
+              ["Maestria com Armadura", "Armor Mastery", "Maestría con armadura", "none"]
+            ]
+          },
+          necromancer: {
+            heading: ["Método Fatal", "Fatal Method", "Método fatal"],
+            entries: [
+              ["Selecionar Método Fatal", "Select Fatal Method", "Seleccionar método fatal", "subclass", "fatalMethod"],
+              ["Selecionar Fascinação Sombria", "Select Grim Fascination", "Seleccionar fascinación sombría", "subclass", "grimFascination"],
+              ["Comandar Siervo", "Command a Thrall", "Comandar un siervo", "none", null, "◆"],
+              ["Lamento", "Dirge", "Lamento", "none", null, "◆"],
+              ["Magias de Sepultura", "Grave Spells", "Conjuros de sepultura", "none"],
+              ["Maestria da Vida e da Morte", "Mastery of Life and Death", "Maestría de la vida y la muerte", "none"],
+              ["Conjuração de Necromante", "Necromancer Spellcasting", "Lanzamiento de nigromante", "none"]
+            ]
+          }
+        };
+
         const classFeature = classFeatureKey ? featureCopy[classFeatureKey] : null;
         if (classFeature) {
           const heading = classFeature.heading[isEn ? 1 : isEs ? 2 : 0];
@@ -5136,7 +5462,7 @@ class PathbuilderApp {
           const classIdentity = String(char.class || "").toLowerCase();
           const classHasSubclassOptions = Boolean(selectedClassRecord?.id) && Array.isArray(PF2E_DATA?.subclasses)
             && PF2E_DATA.subclasses.some((record) => !record?.legacyAlias && String(record?.classId || "").toLowerCase() === String(selectedClassRecord.id).toLowerCase());
-          classFeature.entries.forEach(([key, en, es, picker, targetField], entryIndex) => {
+          classFeature.entries.forEach(([key, en, es, picker, targetField, glyph], entryIndex) => {
             const stableSlot = `1_class_feature_${classFeatureId}_${entryIndex}`;
             const legacySlot = `1_class_feature_${key}`;
             const classTargetFields = {
@@ -5160,9 +5486,70 @@ class PathbuilderApp {
             const value = prog[stableSlot] || prog[legacySlot] || fieldValue || derivedValue || "";
             const empty = isEn ? "Not Selected" : isEs ? "No Seleccionado" : "Não Selecionado";
             const label = isEn ? en : isEs ? es : key;
-            const display = value ? this.localizeItemName(value, locale) : (entryIndex === 0 ? empty : label);
-            const action = picker === "subclass" && classHasSubclassOptions ? ` onclick=\"app.promptSubclass({ targetField: '${resolvedTargetField || "subclass"}', classFeatureSlot: '${stableSlot}' })\"` : picker === "spell" ? ` onclick=\"app.openPicker('spell', { classFeatureSlot: '${stableSlot}', hexOnly: ${classFeatureId === "witch"} })\"` : "";
-            html += `<div class="pb-tree-card"${action} title="${escapeHtml(label)}"><div class="pb-tree-card-content" style="padding-left: 2px;"><div class="pb-tree-card-label">${escapeHtml(label)}</div><div class="pb-tree-card-value ${value ? "" : "unselected"}">${escapeHtml(display)}</div></div></div>`;
+
+            if (picker === "free_style_feat") {
+              const styleRaw = String(char.style || char.subclass || prog[`1_class_feature_${classFeatureId}_0`] || "").toLowerCase();
+              let freeFeatName = "Bon Mot";
+              let freeGlyph = "◆";
+              if (styleRaw.includes("fencer") || styleRaw.includes("esgrimista")) {
+                freeFeatName = "Bon Mot";
+                freeGlyph = "◆";
+              } else if (styleRaw.includes("battledancer") || styleRaw.includes("dançarino") || styleRaw.includes("bailarín")) {
+                freeFeatName = isEn ? "Fascinating Performance" : isEs ? "Actuación fascinante" : "Performance Fascinante";
+                freeGlyph = "◆";
+              } else if (styleRaw.includes("braggart") || styleRaw.includes("fanfarrão") || styleRaw.includes("fanfarrón")) {
+                freeFeatName = isEn ? "You're Next" : isEs ? "Tú eres el siguiente" : "Você é o Próximo";
+                freeGlyph = "↺";
+              } else if (styleRaw.includes("wit") || styleRaw.includes("espirituoso") || styleRaw.includes("ingenioso")) {
+                freeFeatName = "Bon Mot";
+                freeGlyph = "◆";
+              } else if (styleRaw.includes("gymnast") || styleRaw.includes("ginasta") || styleRaw.includes("gimnasta")) {
+                freeFeatName = isEn ? "Stylish Combatant (Athletics)" : isEs ? "Combatiente elegante (Atletismo)" : "Combatente Estiloso (Atletismo)";
+                freeGlyph = "";
+              } else if (styleRaw.includes("rascal") || styleRaw.includes("malandro") || styleRaw.includes("pillo")) {
+                freeFeatName = isEn ? "Dirty Trick" : isEs ? "Truco sucio" : "Truque Sujo";
+                freeGlyph = "◆";
+              }
+              const freePrefix = isEn ? "Free Feat: " : isEs ? "Dote gratis: " : "Talento Grátis: ";
+              const freeDisplay = `${freePrefix}${freeFeatName}`;
+              html += `
+                <div class="pb-tree-card" title="${escapeHtml(freeDisplay)}">
+                  <div class="pb-tree-card-content" style="padding-left: 2px;">
+                    <div class="pb-tree-card-value" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                      <span>${escapeHtml(freeDisplay)}</span>
+                      ${freeGlyph ? `<span class="pb-action-glyph">${escapeHtml(freeGlyph)}</span>` : ""}
+                    </div>
+                  </div>
+                </div>
+              `;
+            } else if (picker === "none") {
+              const featName = isEn ? en : isEs ? es : key;
+              const featGlyph = glyph || "";
+              html += `
+                <div class="pb-tree-card" title="${escapeHtml(featName)}">
+                  <div class="pb-tree-card-content" style="padding-left: 2px;">
+                    <div class="pb-tree-card-value" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                      <span>${escapeHtml(featName)}</span>
+                      ${featGlyph ? `<span class="pb-action-glyph">${escapeHtml(featGlyph)}</span>` : ""}
+                    </div>
+                  </div>
+                </div>
+              `;
+            } else {
+              const display = value ? this.localizeItemName(value, locale) : (entryIndex === 0 ? empty : label);
+              const action = picker === "subclass" && classHasSubclassOptions ? ` onclick=\"app.promptSubclass({ targetField: '${resolvedTargetField || "subclass"}', classFeatureSlot: '${stableSlot}' })\"` : picker === "spell" ? ` onclick=\"app.openPicker('spell', { classFeatureSlot: '${stableSlot}', hexOnly: ${classFeatureId === "witch"} })\"` : "";
+              html += `
+                <div class="pb-tree-card"${action} title="${escapeHtml(label)}">
+                  <div class="pb-tree-card-content" style="padding-left: 2px;">
+                    <div class="pb-tree-card-label">${escapeHtml(label)}</div>
+                    <div class="pb-tree-card-value ${value ? "" : "unselected"}">
+                      <span>${escapeHtml(display)}</span>
+                      ${glyph ? `<span class="pb-action-glyph">${escapeHtml(glyph)}</span>` : ""}
+                    </div>
+                  </div>
+                </div>
+              `;
+            }
           });
         } else {
           const className = this.localizeItemName(char.class || tLabels.defaultSwashbuckler, locale);
