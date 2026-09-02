@@ -770,112 +770,249 @@
 }
 
 /* ==========================================================================
-   LIGHT THEME OVERRIDES FOR PICKER MODAL
+   LIGHT THEME OVERRIDES FOR PICKER MODAL (ANCIENT PARCHMENT)
    ========================================================================== */
 [data-theme="light"] .picker-dialog {
-  background: #ffffff;
-  border: 1px solid var(--pb-border-orange);
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.15), 0 0 18px var(--pb-orange-glow);
-  color: #0f172a;
+  background: #faf5e8;
+  border: 1px solid #9c4210;
+  box-shadow: 0 24px 80px rgba(40, 29, 19, 0.25), 0 0 18px rgba(156, 66, 16, 0.12);
+  color: #281d13;
 }
 
 [data-theme="light"] .picker-nav,
-[data-theme="light"] .picker-footer {
-  background: #f8fafc;
+[data-theme="light"] .picker-footer,
+[data-theme="light"] .picker-subtabs-bar {
+  background: #eee5cf;
+  border-color: #ccbe9f;
 }
 
 [data-theme="light"] .picker-nav {
-  border-bottom: 2px solid var(--pb-border-orange);
+  border-bottom: 2px solid #9c4210;
 }
 
 [data-theme="light"] .picker-tab-btn {
-  color: #64748b;
+  color: #5e4d3a;
 }
 
 [data-theme="light"] .picker-tab-btn:hover {
-  color: #0f172a;
+  color: #281d13;
 }
 
 [data-theme="light"] .picker-tab-btn.active {
-  color: var(--pb-orange);
+  color: #9c4210;
+  border-bottom-color: #9c4210;
+}
+
+[data-theme="light"] .picker-subtab-btn {
+  background: #fdfaf2;
+  border: 1px solid #ccbe9f;
+  color: #5e4d3a;
+}
+
+[data-theme="light"] .picker-subtab-btn:hover {
+  background: #fbf1d8;
+  border-color: #9c4210;
+  color: #281d13;
+}
+
+[data-theme="light"] .picker-subtab-btn.active {
+  background: #f5eedc;
+  border-color: #9c4210;
+  color: #9c4210;
 }
 
 [data-theme="light"] .picker-filter-btn {
-  border-color: #cbd5e1;
-  color: #0f172a;
+  border-color: #ccbe9f;
+  color: #281d13;
+  background: #fdfaf2;
+}
+
+[data-theme="light"] .picker-filter-btn:hover {
+  border-color: #9c4210;
+  color: #9c4210;
 }
 
 [data-theme="light"] .picker-search input {
-  background: #ffffff;
-  border: 1px solid #cbd5e1;
-  color: #0f172a;
+  background: #fdfaf2;
+  border: 1px solid #ccbe9f;
+  color: #281d13;
+}
+
+[data-theme="light"] .picker-search input::placeholder {
+  color: #887560;
 }
 
 [data-theme="light"] .picker-list {
-  background: #f8fafc;
-  border-right: 1px solid #cbd5e1;
+  background: #f5eedc;
+  border-right: 1px solid #ccbe9f;
 }
 
 [data-theme="light"] .picker-item {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  color: #0f172a;
+  background: #fdfaf2;
+  border: 1px solid #ccbe9f;
+  color: #281d13;
 }
 
 [data-theme="light"] .picker-item:hover {
-  background: #fff7ed;
-  border-color: var(--pb-orange);
+  background: #fbf1d8;
+  border-color: #9c4210;
+  color: #281d13;
 }
 
 [data-theme="light"] .picker-item.selected {
-  background: #fff7ed;
-  border-color: var(--pb-orange);
-  color: var(--pb-orange-dark);
+  background: #eee5cf;
+  border-color: #9c4210;
+  color: #9c4210;
 }
 
-[data-theme="light"] .picker-detail {
-  background: #ffffff;
-  color: #0f172a;
+[data-theme="light"] .picker-item.blocked {
+  color: #887560;
+  opacity: 0.65;
 }
 
-[data-theme="light"] .picker-detail-title {
-  color: #0f172a;
+[data-theme="light"] .picker-item-name {
+  color: #281d13;
 }
 
-[data-theme="light"] .picker-detail-desc {
-  color: #334155;
-}
-
-[data-theme="light"] .picker-btn-select {
-  background: #ea580c;
+[data-theme="light"] .picker-item-level-box {
+  background: #1e3a8a;
+  border: 1px solid #3b82f6;
   color: #ffffff;
 }
 
+[data-theme="light"] .picker-detail {
+  background: #fdfaf2;
+  color: #281d13;
+}
+
+[data-theme="light"] .picker-detail h3 {
+  color: #281d13 !important;
+}
+
+[data-theme="light"] .picker-detail-title {
+  color: #281d13 !important;
+}
+
+[data-theme="light"] .picker-desc,
+[data-theme="light"] .picker-detail-desc {
+  color: #281d13 !important;
+  font-weight: 500;
+  line-height: 1.65;
+}
+
+[data-theme="light"] .picker-prereqs {
+  color: #4a3828 !important;
+  font-weight: 600;
+}
+
+[data-theme="light"] .picker-prereqs strong {
+  color: #281d13 !important;
+  font-weight: 800;
+}
+
+[data-theme="light"] .picker-source-tag {
+  color: #5e4d3a !important;
+  font-weight: 600;
+}
+
+[data-theme="light"] .picker-weapon-stats-bar {
+  background: #eee5cf;
+  border: 1px solid #ccbe9f;
+}
+
+[data-theme="light"] .pws-label {
+  color: #5e4d3a;
+}
+
+[data-theme="light"] .pws-value {
+  color: #281d13;
+}
+
+[data-theme="light"] .picker-configuration {
+  background: #faf5e8;
+  border: 1px solid #ccbe9f;
+}
+
+[data-theme="light"] .picker-configuration legend {
+  color: #9c4210;
+}
+
+[data-theme="light"] .picker-configuration label {
+  color: #5e4d3a;
+}
+
+[data-theme="light"] .picker-configuration select {
+  background: #fdfaf2;
+  border: 1px solid #ccbe9f;
+  color: #281d13;
+}
+
+[data-theme="light"] .picker-purchase-pool {
+  background: #eee5cf;
+  border: 1px solid #ccbe9f;
+  color: #281d13;
+}
+
+[data-theme="light"] .picker-purchase-pool-heading {
+  color: #9c4210;
+}
+
+[data-theme="light"] .picker-purchase-pool-heading span {
+  color: #281d13;
+}
+
+[data-theme="light"] .picker-purchase-pool-empty {
+  color: #887560;
+}
+
+[data-theme="light"] .picker-footer button {
+  background: #fdfaf2;
+  border: 1px solid #ccbe9f;
+  color: #281d13;
+}
+
+[data-theme="light"] .picker-footer button:hover {
+  background: #fbf1d8;
+  border-color: #9c4210;
+  color: #782b08;
+}
+
+[data-theme="light"] .picker-footer .picker-confirm,
+[data-theme="light"] .picker-footer .picker-buy-btn,
+[data-theme="light"] .picker-btn-select {
+  background: #9c4210 !important;
+  border-color: #9c4210 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .picker-footer .picker-confirm:hover,
+[data-theme="light"] .picker-footer .picker-buy-btn:hover,
 [data-theme="light"] .picker-btn-select:hover {
-  background: #c2410c;
+  background: #782b08 !important;
+  border-color: #782b08 !important;
 }
 
 [data-theme="light"] .picker-btn-cancel {
-  background: #f1f5f9;
-  border: 1px solid #cbd5e1;
-  color: #0f172a;
+  background: #fdfaf2;
+  border: 1px solid #ccbe9f;
+  color: #281d13;
 }
 
 [data-theme="light"] .pb-gear-item-box {
-  background: #ffffff;
-  border: 1px solid #cbd5e1;
+  background: #fdfaf2;
+  border: 1px solid #ccbe9f;
 }
 
 [data-theme="light"] .pb-gear-qty-btn {
-  background: #f1f5f9;
-  border: 1px solid #cbd5e1;
-  color: #0f172a;
+  background: #eee5cf;
+  border: 1px solid #ccbe9f;
+  color: #281d13;
 }
 
 [data-theme="light"] .pb-gear-qty-text {
-  color: #475569;
+  color: #5e4d3a;
 }
 
 [data-theme="light"] .pb-gear-name-text {
-  color: #0f172a;
+  color: #281d13;
 }

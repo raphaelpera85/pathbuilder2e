@@ -924,51 +924,51 @@ body.portal-page-active .dice-roller-drawer { display: none !important; }
 }
 
 [data-theme="light"] .catalog-toolbar {
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  background: #faf5e8;
+  border: 1px solid #ccbe9f;
+  box-shadow: 0 4px 16px rgba(40, 29, 19, 0.06);
 }
 
 [data-theme="light"] .catalog-toolbar input,
 [data-theme="light"] .catalog-toolbar select {
-  background: #ffffff;
-  color: #0f172a;
-  border-color: #cbd5e1;
+  background: #fdfaf2;
+  color: #281d13;
+  border-color: #ccbe9f;
 }
 
 [data-theme="light"] .catalog-count {
-  background: rgba(234, 88, 12, 0.08);
-  border-color: rgba(234, 88, 12, 0.25);
-  color: #c2410c;
+  background: rgba(156, 66, 16, 0.08);
+  border-color: rgba(156, 66, 16, 0.25);
+  color: #9c4210;
 }
 
 [data-theme="light"] .catalog-card {
-  background: linear-gradient(145deg, #ffffff, #f8fafc);
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  background: #fdfaf2;
+  border: 1px solid #ccbe9f;
+  box-shadow: 0 4px 16px rgba(40, 29, 19, 0.06);
 }
 
 [data-theme="light"] .catalog-card h2 {
-  color: #0f172a;
+  color: #281d13;
 }
 
 [data-theme="light"] .catalog-card.interactive:hover,
 [data-theme="light"] .catalog-card.interactive:focus {
-  border-color: rgba(234, 88, 12, 0.6);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08), 0 0 16px rgba(234, 88, 12, 0.12);
+  border-color: #9c4210;
+  box-shadow: 0 12px 28px rgba(40, 29, 19, 0.1), 0 0 16px rgba(156, 66, 16, 0.12);
 }
 
 [data-theme="light"] .catalog-facts span {
-  color: #1e40af;
-  background: rgba(219, 234, 254, 0.6);
+  color: #1e3a8a;
+  background: rgba(191, 219, 254, 0.4);
   border-color: rgba(147, 197, 253, 0.6);
 }
 
 [data-theme="light"] .rarity-badge.common,
 [data-theme="light"] .picker-rarity.common {
   color: #334155;
-  background: #f1f5f9;
-  border-color: #cbd5e1;
+  background: #eee5cf;
+  border-color: #ccbe9f;
 }
 
 [data-theme="light"] .rarity-badge.uncommon,
@@ -987,54 +987,55 @@ body.portal-page-active .dice-roller-drawer { display: none !important; }
 
 [data-theme="light"] .portal-panel,
 [data-theme="light"] .privacy-card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  background: #faf5e8;
+  border: 1px solid #ccbe9f;
+  box-shadow: 0 4px 16px rgba(40, 29, 19, 0.05);
 }
 
 [data-theme="light"] .source-row {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
+  background: #fdfaf2;
+  border: 1px solid #ccbe9f;
 }
 
 [data-theme="light"] .source-row strong {
-  color: #0f172a;
+  color: #281d13;
 }
 
 [data-theme="light"] .auth-card {
-  background: linear-gradient(155deg, #ffffff, #f8fafc 80%);
-  border: 1px solid rgba(234, 88, 12, 0.35);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08), 0 0 20px rgba(234, 88, 12, 0.06);
+  background: #faf5e8;
+  border: 1px solid #ccbe9f;
+  box-shadow: 0 16px 40px rgba(40, 29, 19, 0.12), 0 0 20px rgba(156, 66, 16, 0.08);
 }
 
 [data-theme="light"] .auth-card h2,
 [data-theme="light"] .auth-card-hero h1,
 [data-theme="light"] .portal-hero h1 {
-  color: #0f172a;
+  color: #281d13;
 }
 
 [data-theme="light"] .compendium-modal-overlay {
-  background: rgba(15, 23, 42, 0.5);
+  background: rgba(40, 29, 19, 0.6);
 }
 
 [data-theme="light"] .compendium-modal {
-  background: linear-gradient(155deg, #ffffff, #f8fafc 90%);
-  border: 1px solid rgba(234, 88, 12, 0.4);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.15), 0 0 30px rgba(234, 88, 12, 0.08);
+  background: #faf5e8;
+  border: 1px solid #9c4210;
+  box-shadow: 0 24px 60px rgba(40, 29, 19, 0.25), 0 0 30px rgba(156, 66, 16, 0.1);
 }
 
 [data-theme="light"] .compendium-modal-header {
-  border-bottom: 1px solid #e2e8f0;
+  background: #eee5cf;
+  border-bottom: 1px solid #ccbe9f;
 }
 
 [data-theme="light"] .compendium-modal-title h2 {
-  color: #0f172a;
+  color: #281d13;
 }
 
 [data-theme="light"] .compendium-modal-close {
-  background: #f1f5f9;
-  border: 1px solid #cbd5e1;
-  color: #475569;
+  background: #fdfaf2;
+  border: 1px solid #ccbe9f;
+  color: #5e4d3a;
 }
 
 [data-theme="light"] .compendium-modal-close:hover {
@@ -1044,136 +1045,137 @@ body.portal-page-active .dice-roller-drawer { display: none !important; }
 }
 
 [data-theme="light"] .trait-tag {
-  background: rgba(6, 182, 212, 0.12);
-  border-color: rgba(6, 182, 212, 0.3);
+  background: rgba(14, 116, 144, 0.1);
+  border-color: rgba(14, 116, 144, 0.25);
   color: #0e7490;
 }
 
 [data-theme="light"] .stat-box {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
+  background: #fdfaf2;
+  border: 1px solid #ccbe9f;
 }
 
 [data-theme="light"] .stat-box span {
-  color: #0f172a;
+  color: #281d13;
 }
 
 [data-theme="light"] .compendium-modal-description {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
+  background: #fdfaf2;
+  border: 1px solid #ccbe9f;
 }
 
 [data-theme="light"] .compendium-modal-description p {
-  color: #1e293b;
+  color: #281d13;
 }
 
 [data-theme="light"] .compendium-modal-footer {
-  border-top: 1px solid #e2e8f0;
+  background: #eee5cf;
+  border-top: 1px solid #ccbe9f;
 }
 
 [data-theme="light"] .downloads-header-card {
-  background: linear-gradient(145deg, #ffffff, #f8fafc);
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  background: #faf5e8;
+  border: 1px solid #ccbe9f;
+  box-shadow: 0 4px 16px rgba(40, 29, 19, 0.05);
 }
 
 [data-theme="light"] .downloads-header-card h2 {
-  color: #0f172a;
+  color: #281d13;
 }
 
 [data-theme="light"] .downloads-toolbar-card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  background: #faf5e8;
+  border: 1px solid #ccbe9f;
+  box-shadow: 0 4px 16px rgba(40, 29, 19, 0.05);
 }
 
 [data-theme="light"] .downloads-toolbar-card input,
 [data-theme="light"] .downloads-toolbar-card select {
-  background: #ffffff;
-  color: #0f172a;
-  border-color: #cbd5e1;
+  background: #fdfaf2;
+  color: #281d13;
+  border-color: #ccbe9f;
 }
 
 [data-theme="light"] .book-card {
-  background: linear-gradient(145deg, #ffffff, #f8fafc);
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  background: #fdfaf2;
+  border: 1px solid #ccbe9f;
+  box-shadow: 0 4px 16px rgba(40, 29, 19, 0.05);
 }
 
 [data-theme="light"] .book-card:hover {
-  border-color: rgba(234, 88, 12, 0.45);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  border-color: #9c4210;
+  box-shadow: 0 12px 28px rgba(40, 29, 19, 0.1);
 }
 
 [data-theme="light"] .book-card h3 {
-  color: #0f172a;
+  color: #281d13;
 }
 
 [data-theme="light"] .book-meta-item {
-  background: #f1f5f9;
-  border: 1px solid #e2e8f0;
-  color: #475569;
+  background: #eee5cf;
+  border: 1px solid #ccbe9f;
+  color: #5e4d3a;
 }
 
 [data-theme="light"] .book-card-filename {
-  background: #f8fafc;
-  border: 1px dashed #cbd5e1;
+  background: #eee5cf;
+  border: 1px dashed #ccbe9f;
 }
 
 [data-theme="light"] .book-card-filename code {
-  color: #c2410c;
+  color: #9c4210;
 }
 
 [data-theme="light"] .btn-repo-link {
-  background: #ffffff;
-  color: #334155;
-  border-color: #cbd5e1;
+  background: #fdfaf2;
+  color: #281d13;
+  border-color: #ccbe9f;
 }
 
 [data-theme="light"] .btn-repo-link:hover {
-  background: #f1f5f9;
-  color: #0f172a;
-  border-color: var(--pb-orange);
+  background: #f5eedc;
+  color: #9c4210;
+  border-color: #9c4210;
 }
 
 [data-theme="light"] .btn-download-secondary {
-  background: #ffffff;
-  color: #334155;
-  border-color: #cbd5e1;
+  background: #fdfaf2;
+  color: #281d13;
+  border-color: #ccbe9f;
 }
 
 [data-theme="light"] .btn-download-secondary:hover {
-  background: #f1f5f9;
-  color: #0f172a;
-  border-color: var(--pb-orange);
+  background: #f5eedc;
+  color: #9c4210;
+  border-color: #9c4210;
 }
 
 [data-theme="light"] .btn-download-gdrive {
-  background: rgba(37, 99, 235, 0.08);
-  border-color: rgba(37, 99, 235, 0.3);
-  color: #1d4ed8;
+  background: rgba(156, 66, 16, 0.08);
+  border-color: rgba(156, 66, 16, 0.3);
+  color: #9c4210;
 }
 
 [data-theme="light"] .btn-download-gdrive:hover {
-  background: rgba(37, 99, 235, 0.15);
-  border-color: #2563eb;
-  color: #1e40af;
+  background: rgba(156, 66, 16, 0.15);
+  border-color: #9c4210;
+  color: #782b08;
 }
 
 [data-theme="light"] .admin-table,
 [data-theme="light"] .admin-stat-card {
-  background: #ffffff;
-  border-color: #e2e8f0;
+  background: #faf5e8;
+  border-color: #ccbe9f;
 }
 
 [data-theme="light"] .admin-table th {
-  background: #f8fafc;
-  color: #475569;
+  background: #eee5cf;
+  color: #5e4d3a;
 }
 
 [data-theme="light"] .admin-table td {
-  color: #1e293b;
-  border-bottom-color: #f1f5f9;
+  color: #281d13;
+  border-bottom-color: #e0d5bd;
 }
 
 @media print {
