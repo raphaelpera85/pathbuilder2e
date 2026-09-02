@@ -768,3 +768,114 @@
 .pb-gear-remove-btn:hover {
   color: #ef4444;
 }
+
+/* ==========================================================================
+   LIGHT THEME OVERRIDES FOR PICKER MODAL
+   ========================================================================== */
+[data-theme="light"] .picker-dialog {
+  background: #ffffff;
+  border: 1px solid var(--pb-border-orange);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.15), 0 0 18px var(--pb-orange-glow);
+  color: #0f172a;
+}
+
+[data-theme="light"] .picker-nav,
+[data-theme="light"] .picker-footer {
+  background: #f8fafc;
+}
+
+[data-theme="light"] .picker-nav {
+  border-bottom: 2px solid var(--pb-border-orange);
+}
+
+[data-theme="light"] .picker-tab-btn {
+  color: #64748b;
+}
+
+[data-theme="light"] .picker-tab-btn:hover {
+  color: #0f172a;
+}
+
+[data-theme="light"] .picker-tab-btn.active {
+  color: var(--pb-orange);
+}
+
+[data-theme="light"] .picker-filter-btn {
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+[data-theme="light"] .picker-search input {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+}
+
+[data-theme="light"] .picker-list {
+  background: #f8fafc;
+  border-right: 1px solid #cbd5e1;
+}
+
+[data-theme="light"] .picker-item {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #0f172a;
+}
+
+[data-theme="light"] .picker-item:hover {
+  background: #fff7ed;
+  border-color: var(--pb-orange);
+}
+
+[data-theme="light"] .picker-item.selected {
+  background: #fff7ed;
+  border-color: var(--pb-orange);
+  color: var(--pb-orange-dark);
+}
+
+[data-theme="light"] .picker-detail {
+  background: #ffffff;
+  color: #0f172a;
+}
+
+[data-theme="light"] .picker-detail-title {
+  color: #0f172a;
+}
+
+[data-theme="light"] .picker-detail-desc {
+  color: #334155;
+}
+
+[data-theme="light"] .picker-btn-select {
+  background: #ea580c;
+  color: #ffffff;
+}
+
+[data-theme="light"] .picker-btn-select:hover {
+  background: #c2410c;
+}
+
+[data-theme="light"] .picker-btn-cancel {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+}
+
+[data-theme="light"] .pb-gear-item-box {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+}
+
+[data-theme="light"] .pb-gear-qty-btn {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+}
+
+[data-theme="light"] .pb-gear-qty-text {
+  color: #475569;
+}
+
+[data-theme="light"] .pb-gear-name-text {
+  color: #0f172a;
+}
