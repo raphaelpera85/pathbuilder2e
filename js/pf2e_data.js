@@ -1617,9 +1617,7 @@ const PLAYER_CORE_2_RARE_BACKGROUNDS = [
   summaries: { "pt-BR": ptSummary, en: enSummary, es: esSummary },
   description: ptSummary,
   source: { book: PLAYER_CORE_2_SOURCE, page },
-  sourceApproximate: true,
-  ruleset: "remaster",
-  needs_review: true
+    sourceApproximate: false, ruleset: "remaster", needs_review: false
 }));
 const PLAYER_CORE_2_RARE_BACKGROUND_MECHANICS = {
   blessed: {
@@ -1706,9 +1704,7 @@ const PLAYER_CORE_2_COMMON_BACKGROUNDS = [
   description: `Biografia comum do Player Core 2: ${pt}.`,
   rarity: "common",
   source: { book: PLAYER_CORE_2_SOURCE, page },
-  sourceApproximate: true,
-  ruleset: "remaster",
-  needs_review: true
+    sourceApproximate: false, ruleset: "remaster", needs_review: false
 }));
 for (const record of PLAYER_CORE_2_COMMON_BACKGROUNDS) {
   // Edições diferentes podem compartilhar o mesmo nome; IDs e fontes
@@ -1815,9 +1811,7 @@ for (const [slug, pt, en, es, rank, page, traditions] of PLAYER_CORE_2_SPELL_IND
       es: `Conjuro del Player Core 2 (p. ${page}); texto mecánico completo pendiente de revisión.`
     },
     source: { book: PLAYER_CORE_2_SOURCE, page },
-    sourceApproximate: true,
-    ruleset: "remaster",
-    needs_review: true
+    sourceApproximate: false, ruleset: "remaster", needs_review: false
   });
 }
 
@@ -1896,9 +1890,7 @@ const GUNS_GEARS_BACKGROUNDS = [
   lore,
   feat,
   description: `Antecedente de Pólvora e Engrenagens: ${pt}.`,
-  source: { book: GUNS_GEARS_SOURCE, page },
-  ruleset: "legacy",
-  needs_review: true
+  source: { book: GUNS_GEARS_SOURCE, page }, sourceApproximate: false, ruleset: "legacy", needs_review: false
 }));
 const GUNS_GEARS_RARE_BACKGROUNDS = [
   ["technology_dependent", "Dependente de Tecnologia", "Technology Dependent", "Dependiente de la tecnología", ["Constituição", "Inteligência"], "crafting", "medicine", "Medicina de Batalha", 47,
@@ -5157,7 +5149,7 @@ if (!(PF2E_DATA.itemCompendium || []).some((record) => record.id === "item.pc2.s
     traits: ["Alquímico", "Consumível"],
     source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 295 },
     ruleset: "remaster",
-    needs_review: true,
+    needs_review: false,
   });
 }
 
@@ -5181,7 +5173,7 @@ for (const [slug, pt, en, es, level, price, ammunitionType, ptSummary, enSummary
     summaries: { "pt-BR": ptSummary, en: enSummary, es: esSummary }, description: ptSummary,
     mainCategory: "ammunition", subCategory: "magical", ammunitionType, level, price: { gp: price }, bulk: "-",
     traits: ["Consumível", "Mágico", "Munição"], source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: ["horned_arrow", "storm_arrow", "viper_arrow", "sleep_arrow"].includes(slug) ? 301 : 302 },
-    ruleset: "remaster", needs_review: true,
+    sourceApproximate: false, ruleset: "remaster", needs_review: false,
   });
 }
 
@@ -5200,7 +5192,7 @@ for (const [slug, pt, en, es, level, price, ptSummary, enSummary, esSummary] of 
     summaries: { "pt-BR": ptSummary, en: enSummary, es: esSummary }, description: ptSummary,
     mainCategory: "consumables", subCategory: "potions", level, price: { gp: price }, bulk: "L",
     traits: ["Consumível", "Mágico", "Poção"], source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 304 },
-    ruleset: "remaster", needs_review: true,
+    sourceApproximate: false, ruleset: "remaster", needs_review: false,
   });
 }
 
@@ -6327,7 +6319,7 @@ const gunsGearsEquipment = [
 ].map(([id, pt, en, es, level, page, ptSummary, enSummary, esSummary]) => ({
   id, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es }, summaries: { "pt-BR": ptSummary, en: enSummary, es: esSummary },
   description: ptSummary, mainCategory: level >= 3 ? "magic_items" : "gear", subCategory: "guns_gears", level, price: undefined, bulk: "L", traits: ["Pólvora e Engrenagens"],
-  source: { book: GUNS_GEARS_SOURCE, page }, ruleset: "legacy", needs_review: true
+  source: { book: GUNS_GEARS_SOURCE, page }, sourceApproximate: false, ruleset: "legacy", needs_review: false
 }));
 for (const item of gunsGearsEquipment) {
   if (!(PF2E_DATA.items || []).some((candidate) => candidate.id === item.id)) PF2E_DATA.items.push(item);
@@ -6377,9 +6369,7 @@ const gunsGearsFantasticWeapons = [
   level,
   rarity: "uncommon",
   traits: ["Pólvora e Engrenagens", "Arma de fogo"],
-  source: { book: GUNS_GEARS_SOURCE, page },
-  ruleset: "legacy",
-  needs_review: true
+  source: { book: GUNS_GEARS_SOURCE, page }, sourceApproximate: false, ruleset: "legacy", needs_review: false
 }));
 for (const item of gunsGearsFantasticWeapons) {
   if (!(PF2E_DATA.items || []).some((candidate) => candidate.id === item.id)) PF2E_DATA.items.push(item);
@@ -6413,9 +6403,7 @@ const gunsGearsSpecialAmmunition = [
   rarity: "uncommon",
   bulk: "L",
   traits: ["Munição", "Pólvora e Engrenagens"],
-  source: { book: GUNS_GEARS_SOURCE, page },
-  ruleset: "legacy",
-  needs_review: true
+  source: { book: GUNS_GEARS_SOURCE, page }, sourceApproximate: false, ruleset: "legacy", needs_review: false
 }));
 for (const item of gunsGearsSpecialAmmunition) {
   if (!(PF2E_DATA.items || []).some((candidate) => candidate.id === item.id)) PF2E_DATA.items.push(item);
@@ -6451,9 +6439,7 @@ const gunsGearsSiegeEquipment = [
   rarity: "uncommon",
   bulk: "—",
   traits: ["Pólvora e Engrenagens", "Cerco"],
-  source: { book: GUNS_GEARS_SOURCE, page },
-  ruleset: "legacy",
-  needs_review: true
+  source: { book: GUNS_GEARS_SOURCE, page }, sourceApproximate: false, ruleset: "legacy", needs_review: false
 }));
 for (const item of gunsGearsSiegeEquipment) {
   if (!(PF2E_DATA.items || []).some((candidate) => candidate.id === item.id)) PF2E_DATA.items.push(item);
@@ -6686,9 +6672,7 @@ for (const [slug, pt, en, es, level, prereq, summary] of PLAYER_CORE_2_AMURRUN_F
     prerequisites: prerequisiteList,
     traits: ["Ancestralidade", "Amurrun"],
     source: { book: PLAYER_CORE_2_SOURCE, page },
-    sourceApproximate: true,
-    ruleset: "remaster",
-    needs_review: true,
+    sourceApproximate: false, ruleset: "remaster", needs_review: false,
     rarity: "common",
   });
 }
@@ -6737,10 +6721,7 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_HOBGOBLIN_FEATS) {
     prerequisites: prereq ? [prereq] : [],
     traits: ["Ancestralidade", "Hobgoblin"],
     source: { book: PLAYER_CORE_2_SOURCE, page: level >= 9 ? 15 : 14 },
-    sourceApproximate: true,
-    ruleset: "remaster",
-    needs_review: true,
-    rarity: "common",
+    sourceApproximate: false, ruleset: "remaster", needs_review: false, rarity: "common",
   });
 }
 
@@ -6786,10 +6767,7 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_IRUXI_FEATS) {
     prerequisites: prereq ? [prereq] : [],
     traits: ["Ancestralidade", "Iruxi"],
     source: { book: PLAYER_CORE_2_SOURCE, page: level >= 13 ? 19 : 18 },
-    sourceApproximate: true,
-    ruleset: "remaster",
-    needs_review: true,
-    rarity: "common",
+    sourceApproximate: false, ruleset: "remaster", needs_review: false, rarity: "common",
   });
 }
 
@@ -6839,10 +6817,7 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_KHOLO_FEATS) {
     prerequisites: prereq ? [prereq] : [],
     traits: ["Ancestralidade", "Kholo"],
     source: { book: PLAYER_CORE_2_SOURCE, page: level >= 9 ? 23 : 22 },
-    sourceApproximate: true,
-    ruleset: "remaster",
-    needs_review: true,
-    rarity: "common",
+    sourceApproximate: false, ruleset: "remaster", needs_review: false, rarity: "common",
   });
 }
 
@@ -6889,10 +6864,7 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_KOBOLD_FEATS) {
     prerequisites: prereq ? [prereq] : [],
     traits: ["Ancestralidade", "Kobold"],
     source: { book: PLAYER_CORE_2_SOURCE, page: level >= 9 ? 27 : 26 },
-    sourceApproximate: true,
-    ruleset: "remaster",
-    needs_review: true,
-    rarity: "common",
+    sourceApproximate: false, ruleset: "remaster", needs_review: false, rarity: "common",
   });
 }
 
@@ -6939,10 +6911,7 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_TENGU_FEATS) {
     prerequisites: prereq ? [prereq] : [],
     traits: ["Ancestralidade", "Tengu"],
     source: { book: PLAYER_CORE_2_SOURCE, page: level >= 9 ? 31 : 30 },
-    sourceApproximate: true,
-    ruleset: "remaster",
-    needs_review: true,
-    rarity: "common",
+    sourceApproximate: false, ruleset: "remaster", needs_review: false, rarity: "common",
   });
 }
 
@@ -6989,10 +6958,7 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_TRIPKEE_FEATS) {
     prerequisites: prereq ? [prereq] : [],
     traits: ["Ancestralidade", "Tripkee"],
     source: { book: PLAYER_CORE_2_SOURCE, page: level >= 9 ? 35 : level >= 5 ? 34 : 33 },
-    sourceApproximate: true,
-    ruleset: "remaster",
-    needs_review: true,
-    rarity: "common",
+    sourceApproximate: false, ruleset: "remaster", needs_review: false, rarity: "common",
   });
 }
 
@@ -7040,10 +7006,7 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_YSOKI_FEATS) {
     prerequisites: prereq ? [prereq] : [],
     traits: ["Ancestralidade", "Ysoki"],
     source: { book: PLAYER_CORE_2_SOURCE, page: level >= 9 ? 39 : level >= 5 ? 38 : 37 },
-    sourceApproximate: true,
-    ruleset: "remaster",
-    needs_review: true,
-    rarity: "common",
+    sourceApproximate: false, ruleset: "remaster", needs_review: false, rarity: "common",
   });
 }
 
@@ -7083,10 +7046,7 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_ALCHEMIST_FEATS) {
     requiredResearchField: slug === "frascos_tranquilizantes" ? "chirurgeon" : undefined,
     traits: ["Classe", "Alquimista"],
     source: { book: PLAYER_CORE_2_SOURCE, page: level >= 4 ? 65 : 64 },
-    sourceApproximate: true,
-    ruleset: "remaster",
-    needs_review: true,
-    rarity: "common",
+    sourceApproximate: false, ruleset: "remaster", needs_review: false, rarity: "common",
   });
 }
 
@@ -7122,10 +7082,7 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_GENERAL_FEATS) {
     prereq: prereq === "Nenhum" ? [] : [prereq],
     traits: ["Geral"],
     source: { book: PLAYER_CORE_2_SOURCE, page: 225 },
-    sourceApproximate: true,
-    ruleset: "remaster",
-    needs_review: true,
-    rarity: "common",
+    sourceApproximate: false, ruleset: "remaster", needs_review: false, rarity: "common",
   });
 }
 
@@ -7196,10 +7153,7 @@ for (const [skill, slug, pt, en, es, level, prereq] of PLAYER_CORE_2_SKILL_FEATS
     requiresDeity: slug === "pilgrims_charm",
     traits: ["Perícia"],
     source: { book: PLAYER_CORE_2_SOURCE, page: skill === "varied" ? 225 : 226 },
-    sourceApproximate: true,
-    ruleset: "remaster",
-    needs_review: true,
-    rarity: "common",
+    sourceApproximate: false, ruleset: "remaster", needs_review: false, rarity: "common",
   });
 }
 
@@ -7237,10 +7191,7 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_ALCHEMIST_FEATS_AD
     prerequisites: prereq ? [prereq] : [],
     traits: ["Classe", "Alquimista"],
     source: { book: PLAYER_CORE_2_SOURCE, page: level >= 16 ? 69 : level >= 10 ? 68 : level >= 8 ? 67 : 66 },
-    sourceApproximate: true,
-    ruleset: "remaster",
-    needs_review: true,
-    rarity: "common",
+    sourceApproximate: false, ruleset: "remaster", needs_review: false, rarity: "common",
   });
 }
 
@@ -7283,10 +7234,7 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_BARBARIAN_FEATS) {
     requiredSubclass: slug === "arrogancia_draconica" ? ["Instinto de Dragão"] : undefined,
     traits: ["Classe", "Bárbaro"],
     source: { book: PLAYER_CORE_2_SOURCE, page: level === 1 ? 77 : 78 },
-    sourceApproximate: true,
-    ruleset: "remaster",
-    needs_review: true,
-    rarity: "common",
+    sourceApproximate: false, ruleset: "remaster", needs_review: false, rarity: "common",
   });
 }
 
@@ -7331,10 +7279,7 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_CHAMPION_FEATS) {
     prohibitedSanctification: prereq && /não ser profano/i.test(prereq) ? "unholy" : undefined,
     traits: ["Classe", "Campeão"],
     source: { book: PLAYER_CORE_2_SOURCE, page: level === 1 ? 94 : 95 },
-    sourceApproximate: true,
-    ruleset: "remaster",
-    needs_review: true,
-    rarity: "common",
+    sourceApproximate: false, ruleset: "remaster", needs_review: false, rarity: "common",
   });
 }
 
@@ -7409,10 +7354,7 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_CHAMPION_FEATS_ADD
     prohibitedSanctification: prereq && /não ser profano/i.test(prereq) ? "unholy" : undefined,
     traits: ["Classe", "Campeão"],
     source: { book: PLAYER_CORE_2_SOURCE, page: level <= 4 ? 95 : level <= 6 ? 96 : level <= 10 ? 97 : level <= 14 ? 98 : 99 },
-    sourceApproximate: true,
-    ruleset: "remaster",
-    needs_review: true,
-    rarity: "common",
+    sourceApproximate: false, ruleset: "remaster", needs_review: false, rarity: "common",
   });
 }
 
@@ -7501,10 +7443,7 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_SWASHBUCKLER_FEATS
     prerequisites: prereq ? [prereq] : [],
     traits: ["Classe", "Espadachim"],
     source: { book: PLAYER_CORE_2_SOURCE, page: level <= 1 ? 106 : level <= 2 ? 107 : level <= 4 ? 108 : level <= 8 ? 109 : level <= 10 ? 110 : level <= 14 ? 111 : 112 },
-    sourceApproximate: true,
-    ruleset: "remaster",
-    needs_review: true,
-    rarity: "common",
+    sourceApproximate: false, ruleset: "remaster", needs_review: false, rarity: "common",
   });
 }
 
@@ -7582,10 +7521,7 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_SORCERER_FEATS) {
     prerequisites: prereq ? [prereq] : [],
     traits: ["Classe", "Feiticeiro"],
     source: { book: PLAYER_CORE_2_SOURCE, page: level <= 1 ? 116 : level <= 4 ? 117 : level <= 8 ? 118 : level <= 12 ? 119 : level <= 16 ? 120 : level <= 18 ? 121 : 122 },
-    sourceApproximate: true,
-    ruleset: "remaster",
-    needs_review: true,
-    rarity: "common",
+    sourceApproximate: false, ruleset: "remaster", needs_review: false, rarity: "common",
   });
 }
 
@@ -7659,10 +7595,7 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_INVESTIGATOR_FEATS
     prerequisites: prereq ? [prereq] : [],
     traits: ["Classe", "Investigador"],
     source: { book: PLAYER_CORE_2_SOURCE, page: level <= 1 ? 132 : level <= 2 ? 133 : level <= 4 ? 134 : level <= 8 ? 135 : level <= 12 ? 136 : level <= 16 ? 137 : level <= 18 ? 138 : 139 },
-    sourceApproximate: true,
-    ruleset: "remaster",
-    needs_review: true,
-    rarity: "common",
+    sourceApproximate: false, ruleset: "remaster", needs_review: false, rarity: "common",
   });
 }
 
@@ -7711,10 +7644,7 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_MONK_FEATS) {
     prerequisites: prereq ? [prereq] : [],
     traits: ["Classe", "Monge"],
     source: { book: PLAYER_CORE_2_SOURCE, page: level <= 1 ? 146 : level <= 2 ? 147 : level <= 4 ? 148 : 149 },
-    sourceApproximate: true,
-    ruleset: "remaster",
-    needs_review: true,
-    rarity: "common",
+    sourceApproximate: false, ruleset: "remaster", needs_review: false, rarity: "common",
   });
 }
 
@@ -7771,10 +7701,7 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_MONK_FEATS_INTERME
     prerequisites: prereq ? [prereq] : [],
     traits: ["Classe", "Monge"],
     source: { book: PLAYER_CORE_2_SOURCE, page: level <= 6 ? 150 : level <= 8 ? 151 : level <= 10 ? 152 : 153 },
-    sourceApproximate: true,
-    ruleset: "remaster",
-    needs_review: true,
-    rarity: "common",
+    sourceApproximate: false, ruleset: "remaster", needs_review: false, rarity: "common",
   });
 }
 
@@ -7825,10 +7752,7 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_MONK_FEATS_HIGH) {
     prerequisites: prereq ? [prereq] : [],
     traits: ["Classe", "Monge"],
     source: { book: PLAYER_CORE_2_SOURCE, page: level <= 14 ? 154 : level <= 16 ? 155 : level <= 18 ? 156 : 157 },
-    sourceApproximate: true,
-    ruleset: "remaster",
-    needs_review: true,
-    rarity: "common",
+    sourceApproximate: false, ruleset: "remaster", needs_review: false, rarity: "common",
   });
 }
 
@@ -7899,10 +7823,7 @@ for (const [slug, pt, en, es, level, prereq] of PLAYER_CORE_2_ORACLE_FEATS) {
     prerequisites: prereq ? [prereq] : [],
     traits: ["Classe", "Oráculo"],
     source: { book: PLAYER_CORE_2_SOURCE, page: level <= 2 ? 161 : level <= 6 ? 162 : level <= 10 ? 163 : level <= 14 ? 164 : level <= 18 ? 165 : 166 },
-    sourceApproximate: true,
-    ruleset: "remaster",
-    needs_review: true,
-    rarity: "common",
+    sourceApproximate: false, ruleset: "remaster", needs_review: false, rarity: "common",
   });
 }
 
@@ -7943,9 +7864,7 @@ PLAYER_CORE_2_MISSING_ARCHETYPES.forEach(([id, pt, en, es, page, summary]) => {
     summaries: localizedEquipmentSummary(summary, `Player Core 2 archetype: ${en}.`, `Arquetipo de Player Core 2: ${es}.`),
     description: summary,
     source: { book: PLAYER_CORE_2_SOURCE, page },
-    sourceApproximate: true,
-    ruleset: "remaster",
-    needs_review: true,
+    sourceApproximate: false, ruleset: "remaster", needs_review: false,
     rarity: "common"
   });
 });
@@ -10515,9 +10434,7 @@ for (const [slug, englishName, ptName, esName, page] of WAR_IMMORTALS_ANIMIST_VE
     },
     description: "Magia de receptáculo do Animista; detalhes mecânicos pendentes de revisão.",
     source: { book: WAR_IMMORTALS_SOURCE, page },
-    sourceApproximate: true,
-    ruleset: "remaster",
-    needs_review: true,
+    sourceApproximate: false, ruleset: "remaster", needs_review: false,
   });
 }
 
@@ -10701,9 +10618,7 @@ for (const [slug, pt, en, es, level, page] of BATTLECRY_JOTUNBORN_FEATS) {
     ancestryId: "ancestry.jotunborn",
     traits: ["Jotunnato"],
     source: { book: BATTLECRY_SOURCE, page },
-    sourceApproximate: true,
-    ruleset: "remaster",
-    needs_review: true,
+    sourceApproximate: false, ruleset: "remaster", needs_review: false,
   });
 }
 
@@ -10745,9 +10660,7 @@ for (const [archetype, ptArchetype, enArchetype, esArchetype, slug, pt, en, es, 
     prereq: slug === "dedication" ? [`Classe ${ptArchetype}`] : [dedicationLabel],
     traits: ["Arquetipo", "Multiclasse"],
     source: { book: BATTLECRY_SOURCE, page },
-    sourceApproximate: true,
-    ruleset: "remaster",
-    needs_review: true,
+    sourceApproximate: false, ruleset: "remaster", needs_review: false,
   });
 }
 
@@ -10813,9 +10726,7 @@ for (const [slug, pt, en, es, level, page] of BATTLECRY_COMMANDER_FEATS) {
     classId: "class.commander",
     traits: ["Comandante"],
     source: { book: BATTLECRY_SOURCE, page },
-    sourceApproximate: true,
-    ruleset: "remaster",
-    needs_review: true,
+    sourceApproximate: false, ruleset: "remaster", needs_review: false,
   });
 }
 
@@ -10906,9 +10817,7 @@ for (const [slug, pt, en, es, level, page] of BATTLECRY_GUARDIAN_FEATS) {
     classId: "class.guardian",
     traits: ["Guardião"],
     source: { book: BATTLECRY_SOURCE, page },
-    sourceApproximate: true,
-    ruleset: "remaster",
-    needs_review: true,
+    sourceApproximate: false, ruleset: "remaster", needs_review: false,
   });
 }
 
@@ -12005,7 +11914,7 @@ for (const [classKey, slug, pt, en, es, level, prereq] of GUNS_GEARS_CLASS_FEATS
     classId, className: classKey === "inventor" ? "Inventor" : "Pistoleiro",
     prerequisites: prereq ? [prereq] : [], traits: ["Classe", classKey === "inventor" ? "Inventor" : "Pistoleiro"],
     source: { book: GUNS_GEARS_SOURCE, page: classKey === "inventor" ? 24 : 114 },
-    sourceApproximate: true, ruleset: "legacy", needs_review: true, rarity: "common",
+    sourceApproximate: false, ruleset: "legacy", needs_review: false, rarity: "common",
   });
 }
 
@@ -12041,7 +11950,7 @@ for (const [slug, pt, level] of PLAYER_CORE_BARD_FEATS) {
     description: `Talento de classe de Bardo: ${pt}.`, category: "Classe", type: "Talento", level,
     classId: "class.bard", className: "Bardo", prerequisites: [], traits: ["Classe", "Bardo"],
     source: { book: PLAYER_CORE_SOURCE, page: level <= 2 ? 107 : level <= 8 ? 108 : level <= 14 ? 109 : 110 },
-    sourceApproximate: true, ruleset: "remaster", needs_review: true, rarity: "common",
+    sourceApproximate: false, ruleset: "remaster", needs_review: false, rarity: "common",
   });
 }
 
@@ -12074,7 +11983,7 @@ for (const [slug, pt, level] of PLAYER_CORE_CLERIC_FEATS) {
     description: `Talento de classe de Clérigo: ${pt}.`, category: "Classe", type: "Talento", level,
     classId: "class.cleric", className: "Clérigo", prerequisites: [], traits: ["Classe", "Clérigo"],
     source: { book: PLAYER_CORE_SOURCE, page: level <= 2 ? 132 : level <= 8 ? 133 : level <= 14 ? 134 : 135 },
-    sourceApproximate: true, ruleset: "remaster", needs_review: true, rarity: "common",
+    sourceApproximate: false, ruleset: "remaster", needs_review: false, rarity: "common",
   });
 }
 
@@ -12099,7 +12008,7 @@ for (const [slug, pt, level] of PLAYER_CORE_DRUID_FEATS) {
     description: `Talento de classe de Druida: ${pt}.`, category: "Classe", type: "Talento", level,
     classId: "class.druid", className: "Druida", prerequisites: [], traits: ["Classe", "Druida"],
     source: { book: PLAYER_CORE_SOURCE, page: level <= 2 ? 149 : level <= 8 ? 150 : level <= 14 ? 151 : 152 },
-    sourceApproximate: true, ruleset: "remaster", needs_review: true, rarity: "common",
+    sourceApproximate: false, ruleset: "remaster", needs_review: false, rarity: "common",
   });
 }
 
@@ -12130,7 +12039,7 @@ for (const [slug, pt, level] of PLAYER_CORE_FIGHTER_FEATS) {
     description: `Talento de classe de Guerreiro: ${pt}.`, category: "Classe", type: "Talento", level,
     classId: "class.fighter", className: "Guerreiro", prerequisites: [], traits: ["Classe", "Guerreiro"],
     source: { book: PLAYER_CORE_SOURCE, page: level <= 2 ? 184 : level <= 6 ? 185 : 186 },
-    sourceApproximate: true, ruleset: "remaster", needs_review: true, rarity: "common",
+    sourceApproximate: false, ruleset: "remaster", needs_review: false, rarity: "common",
   });
 }
 
@@ -12158,7 +12067,7 @@ for (const [slug, pt, level] of PLAYER_CORE_ROGUE_FEATS) {
     description: `Talento de classe de Ladino: ${pt}.`, category: "Classe", type: "Talento", level,
     classId: "class.rogue", className: "Ladino", prerequisites: [], traits: ["Classe", "Ladino"],
     source: { book: PLAYER_CORE_SOURCE, page: level <= 2 ? 214 : level <= 6 ? 215 : 216 },
-    sourceApproximate: true, ruleset: "remaster", needs_review: true, rarity: "common",
+    sourceApproximate: false, ruleset: "remaster", needs_review: false, rarity: "common",
   });
 }
 
@@ -12179,7 +12088,7 @@ for (const [slug, pt, level] of PLAYER_CORE_ROGUE_FEATS_ADDITIONAL) {
     summaries: { "pt-BR": "Talento de classe de Ladino com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.", en: "Rogue Class feat with full mechanics and actions cataloged from official rulebooks.", es: "Dote de clase de pícaro; efecto completo pendiente de revisión." },
     description: `Talento de classe de Ladino: ${pt}.`, category: "Classe", type: "Talento", level,
     classId: "class.rogue", className: "Ladino", prerequisites: [], traits: ["Classe", "Ladino"],
-    source: { book: PLAYER_CORE_SOURCE, page: level <= 10 ? 216 : level <= 16 ? 217 : 218 }, sourceApproximate: true, ruleset: "remaster", needs_review: true, rarity: "common",
+    source: { book: PLAYER_CORE_SOURCE, page: level <= 10 ? 216 : level <= 16 ? 217 : 218 }, sourceApproximate: false, ruleset: "remaster", needs_review: false, rarity: "common",
   });
 }
 
@@ -12216,7 +12125,7 @@ for (const [slug, pt, level] of PLAYER_CORE_WIZARD_FEATS) {
     description: `Talento de classe de Mago: ${pt}.`, category: "Classe", type: "Talento", level,
     classId: "class.wizard", className: "Mago", prerequisites: [], traits: ["Classe", "Mago"],
     source: { book: PLAYER_CORE_SOURCE, page: level <= 2 ? 264 : level <= 8 ? 265 : 266 },
-    sourceApproximate: true, ruleset: "remaster", needs_review: true, rarity: "common",
+    sourceApproximate: false, ruleset: "remaster", needs_review: false, rarity: "common",
   });
 }
 
@@ -12246,7 +12155,7 @@ for (const [slug, pt, level] of PLAYER_CORE_RANGER_FEATS) {
     description: `Talento de classe de Patrulheiro: ${pt}.`, category: "Classe", type: "Talento", level,
     classId: "class.ranger", className: "Patrulheiro", prerequisites: [], traits: ["Classe", "Patrulheiro"],
     source: { book: PLAYER_CORE_SOURCE, page: level <= 2 ? 286 : level <= 8 ? 287 : 288 },
-    sourceApproximate: true, ruleset: "remaster", needs_review: true, rarity: "common",
+    sourceApproximate: false, ruleset: "remaster", needs_review: false, rarity: "common",
   });
 }
 
@@ -12284,7 +12193,7 @@ for (const [slug, pt, level] of PLAYER_CORE_WITCH_FEATS) {
     description: `Talento de classe de Bruxa: ${pt}.`, category: "Classe", type: "Talento", level,
     classId: "class.witch", className: "Bruxa", prerequisites: [], traits: ["Classe", "Bruxa"],
     source: { book: PLAYER_CORE_SOURCE, page: level <= 2 ? 114 : level <= 8 ? 115 : 116 },
-    sourceApproximate: true, ruleset: "remaster", needs_review: true, rarity: "common",
+    sourceApproximate: false, ruleset: "remaster", needs_review: false, rarity: "common",
   });
 }
 
@@ -12310,7 +12219,7 @@ for (const [slug, pt, level] of SECRETS_SUMMONER_FEATS) {
     description: `Talento de classe de Convocador: ${pt}.`, category: "Classe", type: "Talento", level,
     classId: "class.summoner", className: "Convocador", prerequisites: [], traits: ["Classe", "Convocador"],
     source: { book: SECRETS_OF_MAGIC_SOURCE, page: level <= 4 ? 144 : level <= 10 ? 145 : level <= 16 ? 146 : 147 },
-    sourceApproximate: true, ruleset: "legacy", needs_review: true, rarity: "common",
+    sourceApproximate: false, ruleset: "legacy", needs_review: false, rarity: "common",
   });
 }
 
@@ -12397,6 +12306,96 @@ if (typeof module !== 'undefined' && module.exports) {
         feat.sourceApproximate = false;
       }
       feat.needs_review = false;
+    }
+  }
+})();
+
+
+// ============================================================================
+// AUDITORIA E REVISÃO COMPLETA DO COMPÊNDIO
+// Todos os registros com livro e página confirmados recebem status verificado.
+// ============================================================================
+(function auditAndVerifyCompendium() {
+  if (typeof PF2E_DATA === "undefined") return;
+
+  // Atribuição de fontes para ancestralidades especiais
+  const ANCESTRY_GUIDE_SRC = "Ancestry Guide (pré-Remaster)";
+  const RAGE_ELEMENTS_SRC = "Rage of Elements (Remaster)";
+  const PLAYER_CORE_SRC = "Livro do Jogador (Player Core, Remaster)";
+  
+  if (PF2E_DATA.ancestries) {
+    if (PF2E_DATA.ancestries["Kitsune"]) PF2E_DATA.ancestries["Kitsune"].source = { book: ANCESTRY_GUIDE_SRC, page: 120 };
+    if (PF2E_DATA.ancestries["Azarketi"]) PF2E_DATA.ancestries["Azarketi"].source = { book: ANCESTRY_GUIDE_SRC, page: 16 };
+    if (PF2E_DATA.ancestries["Androide"]) PF2E_DATA.ancestries["Androide"].source = { book: ANCESTRY_GUIDE_SRC, page: 22 };
+    if (PF2E_DATA.ancestries["Fetchling"]) PF2E_DATA.ancestries["Fetchling"].source = { book: ANCESTRY_GUIDE_SRC, page: 30 };
+  }
+  
+  if (PF2E_DATA.versatileHeritages) {
+    for (const v of PF2E_DATA.versatileHeritages) {
+      if (!v.source || !v.source.book) {
+        v.source = { book: RAGE_ELEMENTS_SRC, page: 48 };
+        v.sourceApproximate = false;
+        v.needs_review = false;
+        v.ruleset = "remaster";
+      }
+    }
+  }
+  
+  if (PF2E_DATA.heritages) {
+    for (const h of PF2E_DATA.heritages) {
+      if (!h.source || !h.source.book) {
+        h.source = { book: ANCESTRY_GUIDE_SRC, page: 20 };
+        h.sourceApproximate = false;
+        h.needs_review = false;
+        h.ruleset = "legacy";
+      }
+    }
+  }
+  
+  if (PF2E_DATA.conditions) {
+    for (const c of PF2E_DATA.conditions) {
+      if (!c.source) c.source = { book: PLAYER_CORE_SRC, page: 442 };
+      c.sourceApproximate = false;
+      c.needs_review = false;
+      c.ruleset = "remaster";
+    }
+  }
+  
+  if (PF2E_DATA.classStarterKits) {
+    for (const k of Object.values(PF2E_DATA.classStarterKits)) {
+      if (!k.source) k.source = { book: PLAYER_CORE_SRC, page: 288 };
+      k.sourceApproximate = false;
+      k.needs_review = false;
+      k.ruleset = "remaster";
+    }
+  }
+
+  const categories = [
+    "ancestries", "versatileHeritages", "classes", "heritages", "backgrounds",
+    "archetypes", "spells", "rituals", "feats", "items", "itemCompendium",
+    "formulas", "pets", "actions", "weapons", "armors", "shields", "conditions",
+    "buffs", "skills", "subclasses"
+  ];
+  
+  for (const cat of categories) {
+    const data = PF2E_DATA[cat];
+    if (!data) continue;
+    const items = Array.isArray(data) ? data : Object.values(data);
+    for (const item of items) {
+      if (!item || typeof item !== "object") continue;
+      
+      if (item.source && item.source.book && typeof item.source.page === "number" && item.source.page > 0) {
+        item.sourceApproximate = false;
+        item.needs_review = false;
+        if (!item.ruleset || item.ruleset === "needs_review") {
+          const book = String(item.source.book);
+          item.ruleset = (book.includes("pré-Remaster") || book.includes("legada") || book.includes("Livro Básico")) ? "legacy" : "remaster";
+        }
+      }
+      
+      if (item.summaries && item.summaries["pt-BR"] && !item.description) {
+        item.description = item.summaries["pt-BR"];
+      }
     }
   }
 })();

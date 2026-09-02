@@ -46,7 +46,7 @@ describe("catálogos TypeScript compartilhados", () => {
   it("mantém os sete familiares específicos do Player Core 2 com requisitos e fonte", () => {
     const familiars = PF2E_PETS_CATALOG.filter((record) => record.id.startsWith("pet.familiar.specific."));
     expect(familiars).toHaveLength(7);
-    expect(familiars.every((record) => record.requiredFamiliarAbilities && record.source?.page && record.sourceApproximate && record.needs_review)).toBe(true);
+    expect(familiars.every((record) => record.requiredFamiliarAbilities && record.source?.page && record.needs_review === false && !record.sourceApproximate)).toBe(true);
     expect(familiars.every((record) => locales.every((locale) => record.names?.[locale] && record.summaries?.[locale]))).toBe(true);
     expect(familiars.find((record) => record.id.endsWith("gosmagia"))).toMatchObject({ requiresSpellcasting: true, requiredFamiliarAbilities: 4 });
   });

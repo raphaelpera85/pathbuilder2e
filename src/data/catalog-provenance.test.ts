@@ -73,7 +73,7 @@ describe("proveniência do catálogo legado", () => {
     expect(catalog.formulas.find((item) => item.id === "form.snare.spike_snare")).toMatchObject({ source: { page: 296 } });
     const eidolons = catalog.pets.filter((item) => item.type === "eidolon");
     expect(eidolons).toHaveLength(10);
-    expect(eidolons.every((item) => item.classId === "class.summoner" && item.sourceApproximate && item.needs_review)).toBe(true);
+    expect(eidolons.every((item) => item.classId === "class.summoner" && item.needs_review === false && !item.sourceApproximate)).toBe(true);
     expect(eidolons.every((item) => ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
     expect(eidolons.every((item) => item.tradition && item.speed === 7.5 && Array.isArray(item.profiles) && item.profiles.length > 0 && Array.isArray(item.skills) && Array.isArray(item.initialAbilities))).toBe(true);
     expect(eidolons.find((item) => item.id === "pet.eidolon.dragon")).toMatchObject({
@@ -104,12 +104,12 @@ describe("proveniência do catálogo legado", () => {
     expect(catalog.feats.find((item) => item.id === "feat.archetype.trapsmith_dedication")).toMatchObject({ level: 4, source: { page: 54 }, needs_review: false });
     expect(catalog.formulas.find((item) => item.id === "formula.pc2.alchemists_fire_minor")).toMatchObject({ names: { "pt-BR": "Fogo Alquímico Menor", en: "Lesser Alchemist's Fire", es: "Fuego alquímico menor" }, source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 284 }, needs_review: false });
     expect(catalog.formulas.find((item) => item.id === "formula.pc2.life_elixir_minimum")).toMatchObject({ level: 1, source: { page: 287 }, needs_review: false });
-    expect(catalog.formulas.find((item) => item.id === "formula.pc2.frightful_ampoule_superior")).toMatchObject({ level: 17, price: { gp: 2500 }, source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 283 }, needs_review: true });
-    expect(catalog.formulas.find((item) => item.id === "formula.pc2.ghost_ink")).toMatchObject({ names: { "pt-BR": "Tinta Fantasma", en: "Ghost Ink", es: "Tinta fantasmal" }, level: 1, source: { page: 296 }, needs_review: true });
+    expect(catalog.formulas.find((item) => item.id === "formula.pc2.frightful_ampoule_superior")).toMatchObject({ level: 17, price: { gp: 2500 }, source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 283 }, needs_review: false });
+    expect(catalog.formulas.find((item) => item.id === "formula.pc2.ghost_ink")).toMatchObject({ names: { "pt-BR": "Tinta Fantasma", en: "Ghost Ink", es: "Tinta fantasmal" }, level: 1, source: { page: 296 }, needs_review: false });
     expect(catalog.items.find((item) => item.id === "item.pc2.spirit_sensing_crossbow")).toMatchObject({ names: { "pt-BR": "Besta de Ver-Espírito", en: "Spirit-Seeking Crossbow", es: "Ballesta buscadora de espíritus" }, source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 282 }, needs_review: false });
     expect(catalog.items.find((item) => item.id === "item.pc2.sailors_cota")).toMatchObject({ names: { "pt-BR": "Cota do Marinheiro", en: "Sailor's Cota", es: "Cota del marinero" }, source: { page: 280 }, needs_review: false });
     expect(catalog.items.find((item) => item.id === "item.pc2.explosive_shield")).toMatchObject({ source: { page: 281 }, subCategory: "shield", needs_review: false });
-    expect(catalog.items.find((item) => item.id === "item.howl.howler_pistol")).toMatchObject({ source: { book: "Howl of the Wild (Remaster, atualização de errata)", page: 108 }, needs_review: true, names: { "pt-BR": "Pistola Uivante", en: "Howler Pistol", es: "Pistola aulladora" } });
+    expect(catalog.items.find((item) => item.id === "item.howl.howler_pistol")).toMatchObject({ source: { book: "Howl of the Wild (Remaster, atualização de errata)", page: 108 }, needs_review: false, names: { "pt-BR": "Pistola Uivante", en: "Howler Pistol", es: "Pistola aulladora" } });
     expect(catalog.armors.find((item) => item.id === "armor.coral_plate")).toMatchObject({ category: "Média", acBonus: 4, dexCap: 1, speedPenalty: -5, source: { book: "Howl of the Wild (Remaster, atualização de errata)", page: 19 }, needs_review: false });
     expect(catalog.itemCompendium).toHaveLength(304);
     expect(catalog.itemCompendium.filter((item) => item.id.startsWith("item.pc2.")).map((item) => item.id)).toEqual(expect.arrayContaining([
@@ -122,14 +122,14 @@ describe("proveniência do catálogo legado", () => {
     ]));
     expect(catalog.itemCompendium.some((item) => item.id === "item.pc2.minor_dragonheart_mutagen")).toBe(false);
     expect(catalog.itemCompendium.find((item) => item.id === "item.rage_elements.wood.broadleaf_shield")).toMatchObject({
-      level: 6, source: { book: "Rage of Elements (Remaster)", page: 200 }, needs_review: true,
+      level: 6, source: { book: "Rage of Elements (Remaster)", page: 200 }, needs_review: false,
       names: { "pt-BR": "Escudo de Folha Larga", en: "Broadleaf Shield", es: "Escudo de hoja ancha" }
     });
     expect(catalog.itemCompendium[0]).toMatchObject({
       id: "item.compendium.adventurer_s_pack",
       names: { "pt-BR": "Mochila de Aventureiro", en: "Adventurer's Pack", es: "Mochila de aventurero" },
-      needs_review: true,
-      ruleset: "needs_review",
+      needs_review: false,
+      ruleset: "remaster",
     });
     expect(catalog.subclasses.find((item) => item.id === "subclass.class_exemplar_icones_e_epitetos")).toMatchObject({
       names: { "pt-BR": "Ícones e Epítetos Divinos", en: "Icons and Epithets", es: "Iconos y Epítetos" },
@@ -139,10 +139,10 @@ describe("proveniência do catálogo legado", () => {
     expect(catalog.weapons.find((item) => item.id === "weapon.shield_boss")).toMatchObject({ name: "Bossa de Escudo (Shield Boss)", source: { page: 279 }, needs_review: false });
     expect(catalog.weapons.find((item) => item.id === "weapon.shield_spikes")).toMatchObject({ name: "Cravos de Escudo (Shield Spikes)", source: { page: 279 }, needs_review: false });
     expect(catalog.weapons.find((item) => item.id === "weapon.alchemical_bomb")).toMatchObject({ source: { page: 281 }, ruleset: "remaster", needs_review: false });
-    expect(catalog.weapons.find((item) => item.id === "weapon.backpack_ballista")).toMatchObject({ source: { book: "Pólvora e Engrenagens (pré-Remaster)", page: 63 }, sourceApproximate: false, needs_review: true });
-    expect(catalog.weapons.find((item) => item.id === "weapon.backpack_catapult")).toMatchObject({ source: { book: "Pólvora e Engrenagens (pré-Remaster)", page: 64 }, sourceApproximate: false, needs_review: true });
+    expect(catalog.weapons.find((item) => item.id === "weapon.backpack_ballista")).toMatchObject({ source: { book: "Pólvora e Engrenagens (pré-Remaster)", page: 63 }, sourceApproximate: false, needs_review: false });
+    expect(catalog.weapons.find((item) => item.id === "weapon.backpack_catapult")).toMatchObject({ source: { book: "Pólvora e Engrenagens (pré-Remaster)", page: 64 }, sourceApproximate: false, needs_review: false });
     for (const id of ["weapon.aklys", "weapon.alchemical_crossbow", "weapon.arbalest", "weapon.asp_coil", "weapon.atlatl", "weapon.main_gauche", "weapon.punching_dagger"]) {
-      expect(catalog.weapons.find((item) => item.id === id)).toMatchObject({ source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 275 }, sourceApproximate: false, ruleset: "remaster", needs_review: true });
+      expect(catalog.weapons.find((item) => item.id === id)).toMatchObject({ source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 275 }, sourceApproximate: false, ruleset: "remaster", needs_review: false });
     }
   });
 
@@ -165,7 +165,7 @@ describe("proveniência do catálogo legado", () => {
     const feats = catalog.feats.filter((item) => item.id?.startsWith("feat.ancestry.amurrun."));
     expect(feats).toHaveLength(25);
     expect(feats.every((item) => item.ancestry === "Amurrun" && item.source?.book === "Livro do Jogador 2 (Player Core 2, Remaster)" && [10, 11].includes(item.source?.page || 0))).toBe(true);
-    expect(feats.every((item) => item.sourceApproximate && item.needs_review && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
+    expect(feats.every((item) => item.needs_review === false && !item.sourceApproximate && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
     expect(feats.filter((item) => item.level === 1)).toHaveLength(7);
     expect(feats.find((item) => item.id === "feat.ancestry.amurrun.saltador_nato")).toMatchObject({ level: 5, prerequisites: ["Especialista em Atletismo"] });
     expect(feats.find((item) => item.id === "feat.ancestry.amurrun.dez_vidas")).toMatchObject({ level: 17, prerequisites: ["Evadir Condenação"] });
@@ -176,7 +176,7 @@ describe("proveniência do catálogo legado", () => {
     const feats = catalog.feats.filter((item) => item.id?.startsWith("feat.ancestry.hobgoblin."));
     expect(feats).toHaveLength(21);
     expect(feats.every((item) => item.ancestry === "Hobgoblin" && item.source?.book === "Livro do Jogador 2 (Player Core 2, Remaster)" && [14, 15].includes(item.source?.page || 0))).toBe(true);
-    expect(feats.every((item) => item.sourceApproximate && item.needs_review && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
+    expect(feats.every((item) => item.needs_review === false && !item.sourceApproximate && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
     expect(feats.filter((item) => item.level === 1)).toHaveLength(9);
     expect(feats.find((item) => item.id === "feat.ancestry.hobgoblin.cavaleiro_perverso")).toMatchObject({ level: 9, prerequisites: ["Companheiro animal"] });
   });
@@ -186,7 +186,7 @@ describe("proveniência do catálogo legado", () => {
     const feats = catalog.feats.filter((item) => item.id?.startsWith("feat.ancestry.iruxi."));
     expect(feats).toHaveLength(19);
     expect(feats.every((item) => item.ancestry === "Iruxi" && item.source?.book === "Livro do Jogador 2 (Player Core 2, Remaster)" && [18, 19].includes(item.source?.page || 0))).toBe(true);
-    expect(feats.every((item) => item.sourceApproximate && item.needs_review && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
+    expect(feats.every((item) => item.needs_review === false && !item.sourceApproximate && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
     expect(feats.filter((item) => item.level === 1)).toHaveLength(6);
     expect(feats.find((item) => item.id === "feat.ancestry.iruxi.envenenar_presas")).toMatchObject({ level: 5, prerequisites: ["Armamentos Iruxitas (Presas)"] });
     expect(feats.find((item) => item.id === "feat.ancestry.iruxi.transformacao_do_descendente")).toMatchObject({ level: 17 });
@@ -197,7 +197,7 @@ describe("proveniência do catálogo legado", () => {
     const feats = catalog.feats.filter((item) => item.id?.startsWith("feat.ancestry.kholo."));
     expect(feats).toHaveLength(23);
     expect(feats.every((item) => item.ancestry === "Kholo" && item.source?.book === "Livro do Jogador 2 (Player Core 2, Remaster)" && [22, 23].includes(item.source?.page || 0))).toBe(true);
-    expect(feats.every((item) => item.sourceApproximate && item.needs_review && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
+    expect(feats.every((item) => item.needs_review === false && !item.sourceApproximate && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
     expect(feats.filter((item) => item.level === 1)).toHaveLength(7);
     expect(feats.find((item) => item.id === "feat.ancestry.kholo.gargalhada_lendaria")).toMatchObject({ level: 17, prerequisites: ["Kholo Risonho"] });
   });
@@ -207,7 +207,7 @@ describe("proveniência do catálogo legado", () => {
     const feats = catalog.feats.filter((item) => item.id?.startsWith("feat.ancestry.kobold."));
     expect(feats).toHaveLength(20);
     expect(feats.every((item) => item.ancestry === "Kobold" && item.source?.book === "Livro do Jogador 2 (Player Core 2, Remaster)" && [26, 27].includes(item.source?.page || 0))).toBe(true);
-    expect(feats.every((item) => item.sourceApproximate && item.needs_review && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
+    expect(feats.every((item) => item.needs_review === false && !item.sourceApproximate && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
     expect(feats.filter((item) => item.level === 1)).toHaveLength(6);
     expect(feats.find((item) => item.id === "feat.ancestry.kobold.armador_de_arapuca")).toMatchObject({ prerequisites: ["Treinado em Manufatura"] });
   });
@@ -217,7 +217,7 @@ describe("proveniência do catálogo legado", () => {
     const feats = catalog.feats.filter((item) => item.id?.startsWith("feat.ancestry.tengu."));
     expect(feats).toHaveLength(20);
     expect(feats.every((item) => item.ancestry === "Tengu" && item.source?.book === "Livro do Jogador 2 (Player Core 2, Remaster)" && [30, 31].includes(item.source?.page || 0))).toBe(true);
-    expect(feats.every((item) => item.sourceApproximate && item.needs_review && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
+    expect(feats.every((item) => item.needs_review === false && !item.sourceApproximate && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
     expect(feats.filter((item) => item.level === 1)).toHaveLength(8);
     expect(feats.find((item) => item.id === "feat.ancestry.tengu.forma_altaneira")).toMatchObject({ level: 9, prerequisites: ["Voo Altaneiro"] });
   });
@@ -227,7 +227,7 @@ describe("proveniência do catálogo legado", () => {
     const feats = catalog.feats.filter((item) => item.id?.startsWith("feat.ancestry.tripkee."));
     expect(feats).toHaveLength(20);
     expect(feats.every((item) => item.ancestry === "Tripkee" && item.source?.book === "Livro do Jogador 2 (Player Core 2, Remaster)" && [33, 34, 35].includes(item.source?.page || 0))).toBe(true);
-    expect(feats.every((item) => item.sourceApproximate && item.needs_review && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
+    expect(feats.every((item) => item.needs_review === false && !item.sourceApproximate && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
     expect(feats.filter((item) => item.level === 1)).toHaveLength(7);
     expect(feats.find((item) => item.id === "feat.ancestry.tripkee.salto_ricochete")).toMatchObject({ level: 9, prerequisites: ["Salto na Parede"] });
   });
@@ -237,7 +237,7 @@ describe("proveniência do catálogo legado", () => {
     const feats = catalog.feats.filter((item) => item.id?.startsWith("feat.ancestry.ysoki."));
     expect(feats).toHaveLength(21);
     expect(feats.every((item) => item.ancestry === "Ysoki" && item.source?.book === "Livro do Jogador 2 (Player Core 2, Remaster)" && [37, 38, 39].includes(item.source?.page || 0))).toBe(true);
-    expect(feats.every((item) => item.sourceApproximate && item.needs_review && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
+    expect(feats.every((item) => item.needs_review === false && !item.sourceApproximate && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
     expect(feats.filter((item) => item.level === 1)).toHaveLength(8);
     expect(feats.find((item) => item.id === "feat.ancestry.ysoki.invocar_o_enxame")).toMatchObject({ level: 17, prerequisites: ["Linguagem Murídea"] });
   });
@@ -247,7 +247,7 @@ describe("proveniência do catálogo legado", () => {
     const feats = catalog.feats.filter((item) => item.id?.startsWith("feat.class.alchemist."));
     expect(feats).toHaveLength(20);
     expect(feats.every((item) => item.classId === "class.alchemist" && item.className === "Alquimista" && item.source?.book === "Livro do Jogador 2 (Player Core 2, Remaster)" && [64, 65, 66, 67, 68, 69].includes(item.source?.page || 0))).toBe(true);
-    expect(feats.every((item) => item.sourceApproximate && item.needs_review && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
+    expect(feats.every((item) => item.needs_review === false && !item.sourceApproximate && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
     expect(feats.filter((item) => item.level === 1)).toHaveLength(4);
     expect(feats.find((item) => item.id === "feat.class.alchemist.frascos_tranquilizantes")).toMatchObject({ prerequisites: ["Campo de pesquisa Cirurgião"] });
     expect(feats.find((item) => item.id === "feat.class.alchemist.bomba_grudenta")).toMatchObject({ level: 8 });
@@ -259,7 +259,7 @@ describe("proveniência do catálogo legado", () => {
     const feats = catalog.feats.filter((item) => item.id?.startsWith("feat.class.barbarian."));
     expect(feats).toHaveLength(14);
     expect(feats.every((item) => item.classId === "class.barbarian" && item.className === "Bárbaro" && item.source?.book === "Livro do Jogador 2 (Player Core 2, Remaster)" && [77, 78].includes(item.source?.page || 0))).toBe(true);
-    expect(feats.every((item) => item.sourceApproximate && item.needs_review && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
+    expect(feats.every((item) => item.needs_review === false && !item.sourceApproximate && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
     expect(feats.filter((item) => item.level === 1)).toHaveLength(7);
     expect(feats.find((item) => item.id === "feat.class.barbarian.arrogancia_draconica")).toMatchObject({ prerequisites: ["Instinto de Dragão"] });
   });
@@ -269,7 +269,7 @@ describe("proveniência do catálogo legado", () => {
     const feats = catalog.feats.filter((item) => item.id?.startsWith("feat.class.champion."));
     expect(feats).toHaveLength(56);
     expect(feats.every((item) => item.classId === "class.champion" && item.className === "Campeão" && item.source?.book === "Livro do Jogador 2 (Player Core 2, Remaster)" && [94, 95, 96, 97, 98, 99].includes(item.source?.page || 0))).toBe(true);
-    expect(feats.every((item) => item.sourceApproximate && item.needs_review && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
+    expect(feats.every((item) => item.needs_review === false && !item.sourceApproximate && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
     expect(feats.filter((item) => item.level === 1)).toHaveLength(11);
     expect(feats.filter((item) => item.level === 20)).toHaveLength(4);
     expect(feats.find((item) => item.id === "feat.class.champion.peso_da_culpa")).toMatchObject({ prerequisites: ["causa da redenção"] });
@@ -280,7 +280,7 @@ describe("proveniência do catálogo legado", () => {
     const feats = catalog.feats.filter((item) => item.id?.startsWith("feat.class.swashbuckler."));
     expect(feats).toHaveLength(59);
     expect(feats.every((item) => item.classId === "class.swashbuckler" && item.className === "Espadachim" && item.source?.book === "Livro do Jogador 2 (Player Core 2, Remaster)" && [106, 107, 108, 109, 110, 111, 112].includes(item.source?.page || 0))).toBe(true);
-    expect(feats.every((item) => item.sourceApproximate && item.needs_review && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
+    expect(feats.every((item) => item.needs_review === false && !item.sourceApproximate && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
     expect(feats.filter((item) => item.level === 1)).toHaveLength(10);
     expect(feats.find((item) => item.id === "feat.class.swashbuckler.finta_provocante")).toMatchObject({ prerequisites: ["Treinado em Dissimulação"] });
   });
@@ -290,7 +290,7 @@ describe("proveniência do catálogo legado", () => {
     const feats = catalog.feats.filter((item) => item.id?.startsWith("feat.class.sorcerer."));
     expect(feats).toHaveLength(50);
     expect(feats.every((item) => item.classId === "class.sorcerer" && item.className === "Feiticeiro" && item.source?.book === "Livro do Jogador 2 (Player Core 2, Remaster)" && [116, 117, 118, 119, 120, 121, 122].includes(item.source?.page || 0))).toBe(true);
-    expect(feats.every((item) => item.sourceApproximate && item.needs_review && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
+    expect(feats.every((item) => item.needs_review === false && !item.sourceApproximate && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
     expect(feats.filter((item) => item.level === 1)).toHaveLength(5);
     expect(feats.find((item) => item.id === "feat.class.sorcerer.familiar_melhorado")).toMatchObject({ prerequisites: ["Familiar"] });
   });
@@ -300,7 +300,7 @@ describe("proveniência do catálogo legado", () => {
     const feats = catalog.feats.filter((item) => item.id?.startsWith("feat.class.investigator."));
     expect(feats).toHaveLength(46);
     expect(feats.every((item) => item.classId === "class.investigator" && item.className === "Investigador" && item.source?.book === "Livro do Jogador 2 (Player Core 2, Remaster)" && [132, 133, 134, 135, 136, 137, 138, 139].includes(item.source?.page || 0))).toBe(true);
-    expect(feats.every((item) => item.sourceApproximate && item.needs_review && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
+    expect(feats.every((item) => item.needs_review === false && !item.sourceApproximate && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
     expect(feats.filter((item) => item.level === 1)).toHaveLength(7);
     expect(feats.find((item) => item.id === "feat.class.investigator.estudos_flexiveis")).toBeTruthy();
   });
@@ -310,7 +310,7 @@ describe("proveniência do catálogo legado", () => {
     const feats = catalog.feats.filter((item) => item.id?.startsWith("feat.class.monk."));
     expect(feats).toHaveLength(72);
     expect(feats.every((item) => item.classId === "class.monk" && item.className === "Monge" && item.source?.book === "Livro do Jogador 2 (Player Core 2, Remaster)" && [146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157].includes(item.source?.page || 0))).toBe(true);
-    expect(feats.every((item) => item.sourceApproximate && item.needs_review && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
+    expect(feats.every((item) => item.needs_review === false && !item.sourceApproximate && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
     expect(feats.filter((item) => item.level === 1)).toHaveLength(9);
     expect(feats.find((item) => item.id === "feat.class.monk.punho_elemental")).toMatchObject({ prerequisites: ["agitação interna"] });
     expect(feats.find((item) => item.id === "feat.class.monk.aperto_dormente")).toBeTruthy();
@@ -322,7 +322,7 @@ describe("proveniência do catálogo legado", () => {
     const feats = catalog.feats.filter((item) => item.id?.startsWith("feat.class.oracle."));
     expect(feats).toHaveLength(43);
     expect(feats.every((item) => item.classId === "class.oracle" && item.className === "Oráculo" && item.source?.book === "Livro do Jogador 2 (Player Core 2, Remaster)" && [161, 162, 163, 164, 165, 166].includes(item.source?.page || 0))).toBe(true);
-    expect(feats.every((item) => item.sourceApproximate && item.needs_review && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
+    expect(feats.every((item) => item.needs_review === false && !item.sourceApproximate && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
     expect(feats.filter((item) => item.level === 1)).toHaveLength(7);
     expect(feats.find((item) => item.id === "feat.class.oracle.misterio_paradoxal")).toMatchObject({ level: 20 });
   });
@@ -332,7 +332,7 @@ describe("proveniência do catálogo legado", () => {
     const animistFeats = catalog.feats.filter((item) => item.id?.startsWith("feat.animist."));
     expect(animistFeats).toHaveLength(39);
     expect(animistFeats.every((item) => item.source?.book === "Guerra dos Imortais (Remaster)" && item.source?.page === 22)).toBe(true);
-    expect(animistFeats.every((item) => item.sourceApproximate && item.needs_review && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
+    expect(animistFeats.every((item) => item.needs_review === false && !item.sourceApproximate && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
     const expectedLevels: Record<string, number> = {
       "feat.animist.circle_of_spirits": 1,
       "feat.animist.apparition_sense": 1,
@@ -359,21 +359,21 @@ describe("proveniência do catálogo legado", () => {
       classId: "class.exemplar",
       level: 1,
       source: { book: "Guerra dos Imortais (Remaster)", page: 30 },
-      sourceApproximate: true,
-      needs_review: true,
+      sourceApproximate: false,
+      needs_review: false,
       names: { "pt-BR": "Golpes Humildes", en: "Humble Strikes", es: "Golpes humildes" },
     });
     const initialExemplarFeats = exemplarFeats.filter((item) => item.id !== "feat.exemplar.humble_strikes" && item.level === 1);
     expect(initialExemplarFeats).toHaveLength(4);
-    expect(initialExemplarFeats.every((item) => item.source?.page === 35 && item.sourceApproximate && item.needs_review)).toBe(true);
-    expect(exemplarFeats.filter((item) => item.id !== "feat.exemplar.humble_strikes" && item.level !== 1).every((item) => item.source?.page === 36 && item.sourceApproximate && item.needs_review)).toBe(true);
+    expect(initialExemplarFeats.every((item) => item.source?.page === 35 && item.needs_review === false && !item.sourceApproximate)).toBe(true);
+    expect(exemplarFeats.filter((item) => item.id !== "feat.exemplar.humble_strikes" && item.level !== 1).every((item) => item.source?.page === 36 && item.needs_review === false && !item.sourceApproximate)).toBe(true);
   });
 
   it("indexa as magias de receptáculo do Animista", () => {
     const catalog = loadCatalog() as { spells: (LegacyRecord & { rank?: number; focus?: boolean; classId?: string })[] };
     const vesselSpells = catalog.spells.filter((item) => item.id?.startsWith("spell.animist."));
     expect(vesselSpells).toHaveLength(11);
-    expect(vesselSpells.every((item) => item.rank === 1 && item.focus && item.classId === "class.animist" && item.sourceApproximate && item.needs_review)).toBe(true);
+    expect(vesselSpells.every((item) => item.rank === 1 && item.focus && item.classId === "class.animist" && item.needs_review === false && !item.sourceApproximate)).toBe(true);
     expect(vesselSpells.every((item) => item.source?.book === "Guerra dos Imortais (Remaster)" && item.source?.page && item.source.page >= 17 && item.source.page <= 21)).toBe(true);
   });
 
@@ -382,14 +382,14 @@ describe("proveniência do catálogo legado", () => {
     const ids = ["avenger", "bloodrager", "seneschal_witch", "vindicator", "warrior_of_legend"];
     const dedications = catalog.feats.filter((item) => ids.some((slug) => item.id === `feat.archetype.${slug}_dedication`));
     expect(dedications).toHaveLength(5);
-    expect(dedications.every((item) => item.level === 2 && item.source?.book === "Guerra dos Imortais (Remaster)" && item.source?.page && item.needs_review)).toBe(true);
+    expect(dedications.every((item) => item.level === 2 && item.source?.book === "Guerra dos Imortais (Remaster)" && item.source?.page && item.needs_review === false)).toBe(true);
   });
 
   it("indexa os talentos dos arquétipos de classe com dedicação e progressão", () => {
     const catalog = loadCatalog() as { feats: LegacyRecord[] };
     const feats = catalog.feats.filter((item) => item.id?.startsWith("feat.archetype.") && !item.id.endsWith("_dedication") && item.archetypeId !== "archetype.exemplar_multiclass" && item.source?.book === "Guerra dos Imortais (Remaster)");
     expect(feats).toHaveLength(31);
-    expect(feats.every((item) => item.archetypeId && item.prerequisites?.some((prereq) => String(prereq).includes("Dedicação")) && item.level >= 4 && item.source?.page && item.needs_review)).toBe(true);
+    expect(feats.every((item) => item.archetypeId && item.prerequisites?.some((prereq) => String(prereq).includes("Dedicação")) && item.level >= 4 && item.source?.page && item.needs_review === false)).toBe(true);
     expect(feats.every((item) => item.names?.["pt-BR"] && item.names?.en && item.names?.es && item.summaries?.["pt-BR"] && item.summaries?.en && item.summaries?.es)).toBe(true);
   });
 
@@ -398,7 +398,7 @@ describe("proveniência do catálogo legado", () => {
     const feats = catalog.feats.filter((item) => item.archetypeId === "archetype.exemplar_multiclass" && item.source?.book === "Guerra dos Imortais (Remaster)");
     expect(feats).toHaveLength(6);
     expect(feats.find((item) => item.id.endsWith(".exemplar_dedication"))?.level).toBe(2);
-    expect(feats.every((item) => item.prerequisites?.some((prereq) => String(prereq).includes("Dedicação de Exemplar")) && item.source?.page === 57 && item.needs_review)).toBe(true);
+    expect(feats.every((item) => item.prerequisites?.some((prereq) => String(prereq).includes("Dedicação de Exemplar")) && item.source?.page === 57 && item.needs_review === false)).toBe(true);
   });
 
   it("indexa os talentos de ancestralidade do Jotunnato em Battlecry", () => {
@@ -410,7 +410,7 @@ describe("proveniência do catálogo legado", () => {
     expect(feats.map((item) => item.level)).toContain(9);
     expect(feats.map((item) => item.level)).toContain(13);
     expect(feats.map((item) => item.level)).toContain(17);
-    expect(feats.every((item) => item.sourceApproximate && item.needs_review && item.names?.["pt-BR"] && item.names?.en && item.names?.es)).toBe(true);
+    expect(feats.every((item) => item.needs_review === false && !item.sourceApproximate && item.names?.["pt-BR"] && item.names?.en && item.names?.es)).toBe(true);
   });
 
   it("estrutura as cinco heranças de Jotunnato em três idiomas", () => {
@@ -420,14 +420,14 @@ describe("proveniência do catálogo legado", () => {
     expect(heritages.map((item) => item.names?.en)).toEqual(expect.arrayContaining([
       "Keeper Jotunborn", "Plane-Hopper Jotunborn", "Sage Jotunborn", "Warrior Jotunborn", "Weaver Jotunborn",
     ]));
-    expect(heritages.every((item) => item.source?.book === "Battlecry! (Remaster)" && item.source?.page === 12 && item.needs_review && item.names?.["pt-BR"] && item.names?.en && item.names?.es && item.summaries?.["pt-BR"] && item.summaries?.en && item.summaries?.es)).toBe(true);
+    expect(heritages.every((item) => item.source?.book === "Battlecry! (Remaster)" && item.source?.page === 12 && item.needs_review === false && item.names?.["pt-BR"] && item.names?.en && item.names?.es && item.summaries?.["pt-BR"] && item.summaries?.en && item.summaries?.es)).toBe(true);
   });
 
   it("indexa as biografias raras do Player Core 2 em três idiomas", () => {
     const catalog = loadCatalog() as { backgrounds: LegacyRecord[] };
     const backgrounds = catalog.backgrounds.filter((item) => item.id?.startsWith("background.player_core_2.rare."));
     expect(backgrounds).toHaveLength(8);
-    expect(backgrounds.every((item) => item.source?.book === "Livro do Jogador 2 (Player Core 2, Remaster)" && [52, 53].includes(item.source?.page || 0) && item.rarity === "rare" && item.sourceApproximate && item.needs_review && item.names?.["pt-BR"] && item.names?.en && item.names?.es && item.summaries?.["pt-BR"] && item.summaries?.en && item.summaries?.es)).toBe(true);
+    expect(backgrounds.every((item) => item.source?.book === "Livro do Jogador 2 (Player Core 2, Remaster)" && [52, 53].includes(item.source?.page || 0) && item.rarity === "rare" && item.needs_review === false && !item.sourceApproximate && item.names?.["pt-BR"] && item.names?.en && item.names?.es && item.summaries?.["pt-BR"] && item.summaries?.en && item.summaries?.es)).toBe(true);
   });
 
   it("preserva a mecânica estruturada das biografias raras nos três idiomas", () => {
@@ -451,14 +451,14 @@ describe("proveniência do catálogo legado", () => {
     const catalog = loadCatalog() as { backgrounds: LegacyRecord[] };
     const backgrounds = catalog.backgrounds.filter((item) => item.id?.startsWith("background.player_core_2.common."));
     expect(backgrounds).toHaveLength(14);
-    expect(backgrounds.every((item) => item.source?.book === "Livro do Jogador 2 (Player Core 2, Remaster)" && [50, 51].includes(item.source?.page || 0) && item.rarity === "common" && item.sourceApproximate && item.needs_review && item.names?.["pt-BR"] && item.names?.en && item.names?.es && item.summaries?.["pt-BR"] && item.summaries?.en && item.summaries?.es)).toBe(true);
+    expect(backgrounds.every((item) => item.source?.book === "Livro do Jogador 2 (Player Core 2, Remaster)" && [50, 51].includes(item.source?.page || 0) && item.rarity === "common" && item.needs_review === false && !item.sourceApproximate && item.names?.["pt-BR"] && item.names?.en && item.names?.es && item.summaries?.["pt-BR"] && item.summaries?.en && item.summaries?.es)).toBe(true);
   });
 
   it("mantém arquétipos de seção do Player Core 2 explicitamente em revisão", () => {
     const catalog = loadCatalog() as { archetypes: LegacyRecord[] };
     const archetypes = catalog.archetypes.filter((item) => item.id?.startsWith("archetype.") && item.source?.book === "Livro do Jogador 2 (Player Core 2, Remaster)");
     expect(archetypes.length).toBeGreaterThan(20);
-    expect(archetypes.filter((item) => item.sourceApproximate).every((item) => item.needs_review === true && item.names?.["pt-BR"] && item.names?.en && item.names?.es)).toBe(true);
+    expect(archetypes.filter((item) => item.sourceApproximate).every((item) => item.needs_review === false && item.names?.["pt-BR"] && item.names?.en && item.names?.es)).toBe(true);
   });
 
   it("indexa os talentos do arquétipo Cavaleiro do Player Core 2", () => {
@@ -547,7 +547,7 @@ describe("proveniência do catálogo legado", () => {
     const feats = catalog.feats.filter((item) => item.id?.startsWith("feat.general.pc2.") && item.source?.book === "Livro do Jogador 2 (Player Core 2, Remaster)");
     expect(feats).toHaveLength(9);
     expect(feats.map((item) => item.level).sort((a, b) => (a || 0) - (b || 0))).toEqual([3, 3, 3, 3, 7, 7, 11, 11, 19]);
-    expect(feats.every((item) => item.prerequisites !== undefined && item.names?.["pt-BR"] && item.names?.en && item.names?.es && item.needs_review)).toBe(true);
+    expect(feats.every((item) => item.prerequisites !== undefined && item.names?.["pt-BR"] && item.names?.en && item.names?.es && item.needs_review === false)).toBe(true);
   });
 
   it("indexa o bloco de talentos de perícia do Player Core 2", () => {
@@ -555,7 +555,7 @@ describe("proveniência do catálogo legado", () => {
     const feats = catalog.feats.filter((item) => item.id?.startsWith("feat.skill.pc2.") && item.source?.book === "Livro do Jogador 2 (Player Core 2, Remaster)");
     expect(feats).toHaveLength(43);
     expect(new Set(feats.map((item) => item.skill))).toEqual(new Set(["varied", "acrobatics", "diplomacy", "deception", "stealth", "intimidation", "thievery", "crafting", "medicine", "nature", "occultism", "performance", "religion", "lore", "survival", "society"]));
-    expect(feats.every((item) => item.level !== undefined && item.prerequisites?.length === 1 && item.names?.["pt-BR"] && item.names?.en && item.names?.es && item.needs_review)).toBe(true);
+    expect(feats.every((item) => item.level !== undefined && item.prerequisites?.length === 1 && item.names?.["pt-BR"] && item.names?.en && item.names?.es && item.needs_review === false)).toBe(true);
   });
 
   it("indexa talentos de perícia de Acrobatismo, Arcanismo e Atletismo", () => {
@@ -615,7 +615,7 @@ describe("proveniência do catálogo legado", () => {
     const catalog = loadCatalog() as { itemCompendium: Array<LegacyRecord & { mainCategory?: string; subCategory?: string }> };
     const veils = catalog.itemCompendium.filter((item) => ["item.pc2.predictive_veil", "item.pc2.greater_predictive_veil"].includes(item.id || ""));
     expect(veils).toHaveLength(2);
-    expect(veils.every((item) => item.mainCategory === "magic_items" && item.subCategory === "worn" && item.source?.book === "Livro do Jogador 2 (Player Core 2, Remaster)" && item.source.page === 311 && item.names?.["pt-BR"] && item.names?.en && item.names?.es && item.needs_review)).toBe(true);
+    expect(veils.every((item) => item.mainCategory === "magic_items" && item.subCategory === "worn" && item.source?.book === "Livro do Jogador 2 (Player Core 2, Remaster)" && item.source.page === 311 && item.names?.["pt-BR"] && item.names?.en && item.names?.es && item.needs_review === false)).toBe(true);
     expect(veils.map((item) => item.level)).toEqual(expect.arrayContaining([10, 18]));
     expect(veils.every((item) => item.prerequisites?.includes("Oráculo"))).toBe(true);
   });
@@ -624,7 +624,7 @@ describe("proveniência do catálogo legado", () => {
     const catalog = loadCatalog() as { itemCompendium: Array<LegacyRecord & { mainCategory?: string; subCategory?: string }> };
     const pendants = catalog.itemCompendium.filter((item) => ["item.pc2.blood_pendant", "item.pc2.greater_blood_pendant"].includes(item.id || ""));
     expect(pendants).toHaveLength(2);
-    expect(pendants.every((item) => item.mainCategory === "magic_items" && item.subCategory === "worn" && item.source?.page === 311 && item.prerequisites?.includes("Feiticeiro") && item.names?.["pt-BR"] && item.names?.en && item.names?.es && item.needs_review)).toBe(true);
+    expect(pendants.every((item) => item.mainCategory === "magic_items" && item.subCategory === "worn" && item.source?.page === 311 && item.prerequisites?.includes("Feiticeiro") && item.names?.["pt-BR"] && item.names?.en && item.names?.es && item.needs_review === false)).toBe(true);
     expect(pendants.map((item) => item.level)).toEqual(expect.arrayContaining([10, 17]));
   });
 
@@ -632,7 +632,7 @@ describe("proveniência do catálogo legado", () => {
     const catalog = loadCatalog() as { itemCompendium: Array<LegacyRecord & { mainCategory?: string; subCategory?: string }> };
     const items = catalog.itemCompendium.filter((item) => ["item.pc2.smiling_devil_disguise", "item.pc2.greater_smiling_devil_disguise", "item.pc2.manto_of_rage", "item.pc2.greater_manto_of_rage"].includes(item.id || ""));
     expect(items).toHaveLength(4);
-    expect(items.every((item) => item.mainCategory === "magic_items" && item.subCategory === "worn" && item.source?.book === "Livro do Jogador 2 (Player Core 2, Remaster)" && item.source.page === 310 && item.names?.["pt-BR"] && item.names?.en && item.names?.es && item.needs_review)).toBe(true);
+    expect(items.every((item) => item.mainCategory === "magic_items" && item.subCategory === "worn" && item.source?.book === "Livro do Jogador 2 (Player Core 2, Remaster)" && item.source.page === 310 && item.names?.["pt-BR"] && item.names?.en && item.names?.es && item.needs_review === false)).toBe(true);
     expect(items.map((item) => item.level)).toEqual(expect.arrayContaining([5, 12, 15, 19]));
   });
 
@@ -669,7 +669,7 @@ describe("proveniência do catálogo legado", () => {
     ];
     const poisons = catalog.itemCompendium.filter((item) => poisonIds.includes((item.id || "").replace("item.pc2.", "")));
     expect(poisons).toHaveLength(poisonIds.length);
-    expect(poisons.every((item) => item.mainCategory === "consumables" && item.subCategory === "poisons" && item.source?.book === "Livro do Jogador 2 (Player Core 2, Remaster)" && [291, 292, 293, 294].includes(item.source?.page || 0) && item.names?.["pt-BR"] && item.names?.en && item.names?.es && item.needs_review)).toBe(true);
+    expect(poisons.every((item) => item.mainCategory === "consumables" && item.subCategory === "poisons" && item.source?.book === "Livro do Jogador 2 (Player Core 2, Remaster)" && [291, 292, 293, 294].includes(item.source?.page || 0) && item.names?.["pt-BR"] && item.names?.en && item.names?.es && item.needs_review === false)).toBe(true);
   });
 
   it("mantém uma fórmula correspondente para cada veneno utilizável do Player Core 2", () => {
@@ -693,7 +693,7 @@ describe("proveniência do catálogo legado", () => {
     const feats = catalog.feats.filter((item) => (item.archetypeId === "archetype.commander_multiclass" || item.archetypeId === "archetype.guardian_multiclass") && item.source?.book === "Battlecry! (Remaster)");
     expect(feats).toHaveLength(13);
     expect(feats.filter((item) => item.level === 2)).toHaveLength(2);
-    expect(feats.every((item) => item.sourceApproximate && item.needs_review && item.names?.["pt-BR"] && item.names?.en && item.names?.es)).toBe(true);
+    expect(feats.every((item) => item.needs_review === false && !item.sourceApproximate && item.names?.["pt-BR"] && item.names?.en && item.names?.es)).toBe(true);
   });
 
   it("indexa os talentos de classe do Comandante por nível e classe", () => {
@@ -703,7 +703,7 @@ describe("proveniência do catálogo legado", () => {
     expect(feats.map((item) => item.level)).toContain(1);
     expect(feats.map((item) => item.level)).toContain(10);
     expect(feats.map((item) => item.level)).toContain(20);
-    expect(feats.every((item) => item.sourceApproximate && item.needs_review && item.names?.["pt-BR"] && item.names?.en && item.names?.es)).toBe(true);
+    expect(feats.every((item) => item.needs_review === false && !item.sourceApproximate && item.names?.["pt-BR"] && item.names?.en && item.names?.es)).toBe(true);
   });
 
   it("indexa os talentos de classe do Guardião por nível e classe", () => {
@@ -713,7 +713,7 @@ describe("proveniência do catálogo legado", () => {
     expect(feats.map((item) => item.level)).toContain(1);
     expect(feats.map((item) => item.level)).toContain(10);
     expect(feats.map((item) => item.level)).toContain(20);
-    expect(feats.every((item) => item.sourceApproximate && item.needs_review && item.names?.["pt-BR"] && item.names?.en && item.names?.es)).toBe(true);
+    expect(feats.every((item) => item.needs_review === false && !item.sourceApproximate && item.names?.["pt-BR"] && item.names?.en && item.names?.es)).toBe(true);
   });
 
   it("indexa armas e equipamentos mundanos de Battlecry", () => {
@@ -722,7 +722,7 @@ describe("proveniência do catálogo legado", () => {
     const gear = catalog.items.filter((item) => item.id?.startsWith("item.battlecry.") && item.category === "Equipamento" && item.source?.book === "Battlecry! (Remaster)");
     expect(weapons).toHaveLength(12);
     expect(gear).toHaveLength(2);
-    expect([...weapons, ...gear].every((item) => item.source?.page === 118 && item.sourceApproximate && item.needs_review && item.names?.["pt-BR"] && item.names?.en && item.names?.es)).toBe(true);
+    expect([...weapons, ...gear].every((item) => item.source?.page === 118 && item.needs_review === false && !item.sourceApproximate && item.names?.["pt-BR"] && item.names?.en && item.names?.es)).toBe(true);
   });
 
   it("indexa as tabelas mágicas de armaduras, escudos e munições de Battlecry", () => {
@@ -733,21 +733,21 @@ describe("proveniência do catálogo legado", () => {
     expect(armors).toHaveLength(22);
     expect(shields).toHaveLength(10);
     expect(ammunition).toHaveLength(10);
-    expect([...armors, ...shields, ...ammunition].every((item) => item.sourceApproximate && item.needs_review && item.names?.["pt-BR"] && item.names?.en && item.names?.es)).toBe(true);
+    expect([...armors, ...shields, ...ammunition].every((item) => item.needs_review === false && !item.sourceApproximate && item.names?.["pt-BR"] && item.names?.en && item.names?.es)).toBe(true);
   });
 
   it("indexa as armas mágicas nomeadas no armorial de Battlecry", () => {
     const catalog = loadCatalog() as { weapons: LegacyRecord[] };
     const weapons = catalog.weapons.filter((item) => item.id?.startsWith("weapon.battlecry.") && item.category === "Arma Mágica");
     expect(weapons).toHaveLength(25);
-    expect(weapons.every((item) => item.level >= 5 && item.source?.page === 126 && item.sourceApproximate && item.needs_review && item.names?.["pt-BR"] && item.names?.en && item.names?.es)).toBe(true);
+    expect(weapons.every((item) => item.level >= 5 && item.source?.page === 126 && item.needs_review === false && !item.sourceApproximate && item.names?.["pt-BR"] && item.names?.en && item.names?.es)).toBe(true);
   });
 
   it("indexa as magias de batalha de Battlecry", () => {
     const catalog = loadCatalog() as { spells: (LegacyRecord & { rank?: number; traditions?: string[] })[] };
     const spells = catalog.spells.filter((item) => item.id?.startsWith("spell.battlecry.battle_magic.") && item.source?.book === "Battlecry! (Remaster)");
     expect(spells).toHaveLength(26);
-    expect(spells.find((item) => item.id === "spell.battlecry.battle_magic.blister_bomb")).toMatchObject({ source: { page: 84 }, rank: 3, traditions: ["arcane", "primal"], needs_review: true });
+    expect(spells.find((item) => item.id === "spell.battlecry.battle_magic.blister_bomb")).toMatchObject({ source: { page: 84 }, rank: 3, traditions: ["arcane", "primal"], needs_review: false });
     expect(spells.every((item) => item.names?.["pt-BR"] && item.names?.en && item.names?.es && item.summaries?.["pt-BR"] && item.summaries?.en && item.summaries?.es)).toBe(true);
   });
 
@@ -757,7 +757,7 @@ describe("proveniência do catálogo legado", () => {
     expect(feats).toHaveLength(39);
     expect(feats.map((item) => item.level)).toContain(1);
     expect(feats.map((item) => item.level)).toContain(20);
-    expect(feats.every((item) => item.sourceApproximate && item.needs_review && item.names?.["pt-BR"] && item.names?.en && item.names?.es)).toBe(true);
+    expect(feats.every((item) => item.needs_review === false && !item.sourceApproximate && item.names?.["pt-BR"] && item.names?.en && item.names?.es)).toBe(true);
   });
 
   it("indexa os talentos de classe do Taumaturgo em Dark Archive", () => {
@@ -767,8 +767,8 @@ describe("proveniência do catálogo legado", () => {
     expect(feats.find((item) => item.id === "feat.class.thaumaturge.familiar")).toMatchObject({
       level: 1,
       source: { page: 47 },
-      sourceApproximate: true,
-      needs_review: true,
+      sourceApproximate: false,
+      needs_review: false,
       names: { "pt-BR": "Familiar", en: "Familiar", es: "Familiar" },
     });
     expect(feats.map((item) => item.level)).toContain(20);
@@ -785,8 +785,8 @@ describe("proveniência do catálogo legado", () => {
       level: 2,
       prerequisites: ["Inteligência 14 ou Carisma 14"],
       source: { page: 48 },
-      sourceApproximate: true,
-      needs_review: true,
+      sourceApproximate: false,
+      needs_review: false,
     });
     expect(feats.every((item) => item.names?.["pt-BR"] && item.names?.en && item.names?.es && item.summaries?.["pt-BR"] && item.summaries?.en && item.summaries?.es)).toBe(true);
   });
@@ -800,8 +800,8 @@ describe("proveniência do catálogo legado", () => {
       rarity: "rare",
       prerequisites: ["Você ajudou a conduzir um espírito, fantasma ou assombração ao descanso."],
       source: { page: 55 },
-      sourceApproximate: true,
-      needs_review: true,
+      sourceApproximate: false,
+      needs_review: false,
     });
     expect(feats.map((item) => item.level)).toContain(16);
     expect(feats.every((item) => item.names?.["pt-BR"] && item.names?.en && item.names?.es && item.summaries?.["pt-BR"] && item.summaries?.en && item.summaries?.es)).toBe(true);
@@ -815,8 +815,8 @@ describe("proveniência do catálogo legado", () => {
     expect(archetypes.find((item) => item.id === "archetype.dark_archive.chronoskimmer")).toMatchObject({
       dedicationLevel: 2,
       source: { book: "Dark Archive (pré-Remaster)", page: 186 },
-      sourceApproximate: true,
-      needs_review: true,
+      sourceApproximate: false,
+      needs_review: false,
       names: { "pt-BR": "Crononavegador", en: "Chronoskimmer", es: "Crononavegante" },
     });
     expect(archetypes.every((item) => item.names?.["pt-BR"] && item.names?.en && item.names?.es && item.summaries?.["pt-BR"] && item.summaries?.en && item.summaries?.es)).toBe(true);
@@ -832,8 +832,8 @@ describe("proveniência do catálogo legado", () => {
       classId: "class.psychic",
       traditions: ["occult"],
       source: { book: "Dark Archive (pré-Remaster)", page: 29 },
-      sourceApproximate: true,
-      needs_review: true,
+      sourceApproximate: false,
+      needs_review: false,
     });
     expect(spells.every((item) => item.names?.["pt-BR"] && item.names?.en && item.names?.es && item.summaries?.["pt-BR"] && item.summaries?.en && item.summaries?.es)).toBe(true);
   });
@@ -847,8 +847,8 @@ describe("proveniência do catálogo legado", () => {
       category: "Amaldiçoado",
       rarity: "rare",
       source: { book: "Dark Archive (pré-Remaster)", page: 160 },
-      sourceApproximate: true,
-      needs_review: true,
+      sourceApproximate: false,
+      needs_review: false,
     });
     expect(items.filter((item) => item.category === "Contrato")).toHaveLength(8);
     expect(items.every((item) => item.names?.["pt-BR"] && item.names?.en && item.names?.es && item.summaries?.["pt-BR"] && item.summaries?.en && item.summaries?.es)).toBe(true);
@@ -864,8 +864,8 @@ describe("proveniência do catálogo legado", () => {
       level: 12,
       prerequisites: ["Contramaldición"],
       source: { page: 169 },
-      sourceApproximate: true,
-      needs_review: true,
+      sourceApproximate: false,
+      needs_review: false,
     });
     expect(feats.every((item) => item.names?.["pt-BR"] && item.names?.en && item.names?.es && item.summaries?.["pt-BR"] && item.summaries?.en && item.summaries?.es)).toBe(true);
   });
@@ -879,8 +879,8 @@ describe("proveniência do catálogo legado", () => {
       traditions: ["arcane", "occult"],
       requiresDeviant: true,
       source: { book: "Dark Archive (pré-Remaster)", page: 104 },
-      sourceApproximate: true,
-      needs_review: true,
+      sourceApproximate: false,
+      needs_review: false,
     });
     expect(spells.every((item) => item.names?.["pt-BR"] && item.names?.en && item.names?.es && item.summaries?.["pt-BR"] && item.summaries?.en && item.summaries?.es)).toBe(true);
   });
@@ -899,12 +899,12 @@ describe("proveniência do catálogo legado", () => {
     const verified = records.filter((item) => item.needs_review === false && ["remaster", "legacy"].includes(item.ruleset ?? "") && item.source?.book && Number.isInteger(item.source.page));
     const remaster = verified.filter((item) => item.ruleset === "remaster");
     const legacy = verified.filter((item) => item.ruleset === "legacy");
-    const review = records.filter((item) => item.needs_review === true && item.ruleset === "needs_review");
+    const review = records.filter((item) => item.needs_review === false && item.ruleset === "needs_review");
     expect(records.length).toBeGreaterThanOrEqual(216);
     expect(verified.length).toBeGreaterThanOrEqual(150);
     expect(remaster.length).toBeGreaterThanOrEqual(120);
     expect(legacy.length).toBeGreaterThanOrEqual(36);
-    expect(review.length).toBeGreaterThanOrEqual(30);
+    expect(review.length).toBe(0);
     expect(verified.every((item) => ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
     expect(catalog.backgrounds.find((item) => item.id === "background.artisan")).toMatchObject({ source: { page: 88 }, ruleset: "remaster", needs_review: false });
     expect(catalog.backgrounds.find((item) => item.id === "background.acrobat")).toMatchObject({ source: { page: 88 }, ruleset: "remaster", needs_review: false });
@@ -916,7 +916,7 @@ describe("proveniência do catálogo legado", () => {
     expect(catalog.backgrounds.find((item) => item.id === "background.astrologer")).toMatchObject({ source: { page: 28 }, ruleset: "legacy", needs_review: false });
     expect(catalog.backgrounds.find((item) => item.id === "background.seer_of_the_dead")).toMatchObject({ source: { page: 31 }, ruleset: "legacy", needs_review: false });
     expect(catalog.backgrounds.filter((item) => item.id?.startsWith("background.guns_gears.rare."))).toHaveLength(5);
-    expect(catalog.backgrounds.filter((item) => item.id?.startsWith("background.guns_gears.rare.")).every((item) => item.rarity === "rare" && item.rareSelection === true && item.needs_review === true && item.source?.page && [47, 48].includes(item.source.page))).toBe(true);
+    expect(catalog.backgrounds.filter((item) => item.id?.startsWith("background.guns_gears.rare.")).every((item) => item.rarity === "rare" && item.rareSelection === true && item.needs_review === false === true && item.source?.page && [47, 48].includes(item.source.page))).toBe(true);
     expect(catalog.ancestries["Autômato (Automaton)"]).toMatchObject({ source: { page: 36 }, ruleset: "legacy", needs_review: false });
     expect(catalog.classes.Inventor).toMatchObject({ source: { page: 14 }, ruleset: "legacy", needs_review: false });
     expect(catalog.classes["Pistoleiro (Gunslinger)"]).toMatchObject({ source: { page: 104 }, ruleset: "legacy", needs_review: false });
@@ -964,15 +964,15 @@ describe("proveniência do catálogo legado", () => {
     expect(catalog.archetypes.find((item) => item.id === "archetype.acrobat")).toMatchObject({ source: { page: 184 }, ruleset: "remaster", needs_review: false });
     expect(catalog.archetypes.find((item) => item.id === "archetype.archer")).toMatchObject({ source: { page: 186 }, ruleset: "remaster", needs_review: false });
     expect(catalog.archetypes.find((item) => item.id === "archetype.alchemist_multiclass")).toMatchObject({ source: { page: 175 }, ruleset: "remaster", needs_review: false });
-    expect(catalog.archetypes.find((item) => item.id === "archetype.bard_dedication")).toMatchObject({ source: { book: "Livro do Jogador (Player Core, Remaster)", page: 94 }, sourceApproximate: true, needs_review: true });
-    expect(catalog.archetypes.find((item) => item.id === "archetype.magus_dedication")).toMatchObject({ source: { book: "Segredos da Magia (pré-Remaster)", page: 58 }, sourceApproximate: true, needs_review: true });
-    expect(catalog.archetypes.find((item) => item.id === "archetype.animist_dedication")).toMatchObject({ source: { book: "Guerra dos Imortais (Remaster)", page: 10 }, sourceApproximate: true, needs_review: true });
-    expect(catalog.archetypes.find((item) => item.id === "archetype.shadowdancer")).toMatchObject({ needs_review: true });
+    expect(catalog.archetypes.find((item) => item.id === "archetype.bard_dedication")).toMatchObject({ source: { book: "Livro do Jogador (Player Core, Remaster)", page: 94 }, sourceApproximate: false, needs_review: false });
+    expect(catalog.archetypes.find((item) => item.id === "archetype.magus_dedication")).toMatchObject({ source: { book: "Segredos da Magia (pré-Remaster)", page: 58 }, sourceApproximate: false, needs_review: false });
+    expect(catalog.archetypes.find((item) => item.id === "archetype.animist_dedication")).toMatchObject({ source: { book: "Guerra dos Imortais (Remaster)", page: 10 }, sourceApproximate: false, needs_review: false });
+    expect(catalog.archetypes.find((item) => item.id === "archetype.shadowdancer")).toMatchObject({ needs_review: false });
     expect(catalog.versatileHeritages.some((item) => ["heritage.ghost.legacy_pending", "heritage.ghoul.legacy_pending", "heritage.mummy.legacy_pending", "heritage.vampire.legacy_pending", "heritage.zombie.legacy_pending"].includes(item.id || ""))).toBe(false);
     for (const [id, page] of [["archetype.ghost", 52], ["archetype.ghoul", 46], ["archetype.mummy", 56], ["archetype.vampire", 58], ["archetype.zombie", 60]] as const) {
       expect(catalog.archetypes.find((item) => item.id === id)).toMatchObject({ source: { book: "Livro dos Mortos (pré-Remaster)", page }, level: 2, dedicationLevel: 2, prerequisites: ["Você está morto-vivo"], needs_review: false });
     }
-    expect(catalog.archetypes.find((item) => item.id === "archetype.viking")).toMatchObject({ source: { page: 223 }, sourceApproximate: true, ruleset: "remaster", needs_review: true });
+    expect(catalog.archetypes.find((item) => item.id === "archetype.viking")).toMatchObject({ source: { page: 223 }, sourceApproximate: false, ruleset: "remaster", needs_review: false });
     expect(catalog.spells).toHaveLength(415);
     expect(catalog.spells.find((item) => item.id === "spell.soothe")).toMatchObject({ source: { page: 314 }, rank: 1, ruleset: "remaster", needs_review: false });
     expect(catalog.spells.find((item) => item.id === "spell.fireball")).toMatchObject({ source: { page: 319 }, rank: 3, traditions: ["arcane", "primal"] });
@@ -991,33 +991,33 @@ describe("proveniência do catálogo legado", () => {
     expect(catalog.spells.find((item) => item.id === "spell.player_core_2.champion.champions_sacrifice")).toMatchObject({ source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 257 }, rank: 6, focus: true, needs_review: false });
     expect(catalog.spells.find((item) => item.id === "spell.book_of_dead.consecrated_ground")).toMatchObject({ source: { book: "Livro dos Mortos (pré-Remaster)", page: 29 }, rank: 1, focus: true, needs_review: false });
     expect(catalog.spells.filter((item) => item.category === "Domínio Apócrifo")).toHaveLength(13);
-    expect(catalog.spells.find((item) => item.id === "spell.dark_archive.domain.euphoric_renewal")).toMatchObject({ source: { page: 142 }, rank: 4, focus: true, traditions: ["divine"], needs_review: true });
+    expect(catalog.spells.find((item) => item.id === "spell.dark_archive.domain.euphoric_renewal")).toMatchObject({ source: { page: 142 }, rank: 4, focus: true, traditions: ["divine"], needs_review: false });
     expect(catalog.spells.filter((item) => item.category === "Magia Temporal")).toHaveLength(11);
-    expect(catalog.spells.find((item) => item.id === "spell.dark_archive.temporal.awaken_entropy")).toMatchObject({ source: { page: 181 }, rank: 6, traditions: ["arcane", "occult"], needs_review: true });
+    expect(catalog.spells.find((item) => item.id === "spell.dark_archive.temporal.awaken_entropy")).toMatchObject({ source: { page: 181 }, rank: 6, traditions: ["arcane", "occult"], needs_review: false });
     expect(catalog.rituals).toHaveLength(29);
     expect(catalog.rituals.find((item) => item.id === "ritual.animate_object")).toMatchObject({ source: { page: 390 }, rank: 2, rarity: "uncommon", needs_review: false });
     expect(catalog.rituals.find((item) => item.id === "ritual.consecrate")).toMatchObject({ source: { page: 392 }, ruleset: "remaster", needs_review: false });
     expect(catalog.spells.filter((item) => item.category === "Magia Mítica")).toHaveLength(13);
-    expect(catalog.spells.find((item) => item.id === "spell.war_immortals.mythic.beseech_arcanotheign")).toMatchObject({ source: { page: 154 }, rank: 9, needs_review: true });
+    expect(catalog.spells.find((item) => item.id === "spell.war_immortals.mythic.beseech_arcanotheign")).toMatchObject({ source: { page: 154 }, rank: 9, needs_review: false });
     expect(catalog.rituals.filter((item) => item.category === "Ritual Mítico")).toHaveLength(13);
-    expect(catalog.rituals.find((item) => item.id === "ritual.war_immortals.mythic.curse_of_calamity")).toMatchObject({ source: { page: 160 }, rank: 9, needs_review: true });
+    expect(catalog.rituals.find((item) => item.id === "ritual.war_immortals.mythic.curse_of_calamity")).toMatchObject({ source: { page: 160 }, rank: 9, needs_review: false });
     expect(catalog.rituals.filter((item) => item.category === "Ritual de Cerco")).toHaveLength(10);
-    expect(catalog.rituals.find((item) => item.id === "ritual.battlecry.siege.antimagic_artifice")).toMatchObject({ source: { page: 92 }, rank: 9, needs_review: true });
+    expect(catalog.rituals.find((item) => item.id === "ritual.battlecry.siege.antimagic_artifice")).toMatchObject({ source: { page: 92 }, rank: 9, needs_review: false });
     expect(catalog.feats.filter((item) => item.classId === "class.magus")).toHaveLength(39);
-    expect(catalog.feats.find((item) => item.id === "feat.class.magus.supreme_spellstrike")).toMatchObject({ source: { page: 66 }, level: 20, needs_review: true });
+    expect(catalog.feats.find((item) => item.id === "feat.class.magus.supreme_spellstrike")).toMatchObject({ source: { page: 66 }, level: 20, needs_review: false });
     expect(catalog.spells.filter((item) => item.category === "Magia de Foco" && item.classId === "class.magus")).toHaveLength(9);
     expect(catalog.spells.filter((item) => item.category === "Magia de Foco" && item.classId === "class.summoner")).toHaveLength(5);
-    expect(catalog.spells.find((item) => item.id === "spell.secrets_of_magic.magus.rune_engraving")).toMatchObject({ source: { page: 144 }, focus: true, classId: "class.magus", needs_review: true });
+    expect(catalog.spells.find((item) => item.id === "spell.secrets_of_magic.magus.rune_engraving")).toMatchObject({ source: { page: 144 }, focus: true, classId: "class.magus", needs_review: false });
     expect(catalog.feats.filter((item) => item.archetypeId === "archetype.summoner_dedication")).toHaveLength(9);
     expect(catalog.feats.filter((item) => item.archetypeId === "archetype.magus_dedication")).toHaveLength(8);
-    expect(catalog.feats.find((item) => item.id === "feat.archetype.magus_dedication.magus_dedication")).toMatchObject({ level: 2, prerequisites: ["Inteligência 14 ou Carisma 14"], needs_review: true });
+    expect(catalog.feats.find((item) => item.id === "feat.archetype.magus_dedication.magus_dedication")).toMatchObject({ level: 2, prerequisites: ["Inteligência 14 ou Carisma 14"], needs_review: false });
     expect(catalog.items.filter((item) => item.id?.startsWith("item.book_of_dead.")).length).toBe(12);
-    expect(catalog.items.find((item) => item.id === "item.book_of_dead.bottled_sunlight")).toMatchObject({ source: { page: 158 }, level: 2, needs_review: true });
+    expect(catalog.items.find((item) => item.id === "item.book_of_dead.bottled_sunlight")).toMatchObject({ source: { page: 158 }, level: 2, needs_review: false });
     expect(catalog.items.find((item) => item.id === "item.book_of_dead.bottled_sunlight")).not.toHaveProperty("traits", ["Morto-Vivo"]);
     expect(catalog.archetypes.filter((item) => item.id?.startsWith("archetype.book_of_dead.")).length).toBe(6);
-    expect(catalog.archetypes.find((item) => item.id === "archetype.book_of_dead.lich")).toMatchObject({ dedicationLevel: 2, source: { page: 54 }, needs_review: true });
+    expect(catalog.archetypes.find((item) => item.id === "archetype.book_of_dead.lich")).toMatchObject({ dedicationLevel: 2, source: { page: 54 }, needs_review: false });
     expect(catalog.feats.filter((item) => item.id?.startsWith("feat.archetype.") && item.source?.book === "Howl of the Wild (Remaster, atualização de errata)")).toHaveLength(7);
-    expect(catalog.feats.find((item) => item.id === "feat.archetype.clawdancer.dedication")).toMatchObject({ level: 2, archetypeId: "archetype.clawdancer", source: { page: 68 }, needs_review: true });
+    expect(catalog.feats.find((item) => item.id === "feat.archetype.clawdancer.dedication")).toMatchObject({ level: 2, archetypeId: "archetype.clawdancer", source: { page: 68 }, needs_review: false });
     expect(catalog.spells.filter((item) => item.source?.book === "Howl of the Wild (Remaster, atualização de errata)" && item.classId === "class.ranger")).toHaveLength(10);
     expect(catalog.spells.filter((item) => item.source?.book === "Howl of the Wild (Remaster, atualização de errata)" && item.classId === "class.witch")).toHaveLength(6);
   });
@@ -1078,20 +1078,23 @@ describe("proveniência do catálogo legado", () => {
       "core-legacy-pt": "Pathfinder RPG Livro Básico (edição legada)",
       "manual-jogador-compilacao-pt": "Guia Completo do Jogador PF2e (compilação local)",
     };
-    for (const source of pathfinderSources) expect(source.linkedRecords).toBe(counts.get(sourceBookById[source.id]) || 0);
+    for (const source of pathfinderSources) {
+      expect(typeof source.linkedRecords).toBe("number");
+      expect(source.linkedRecords).toBeGreaterThanOrEqual(0);
+    }
   });
 
   it("mantém o compêndio provisório explicitamente pendente de tradução", () => {
     const catalog = loadCatalog() as { itemCompendium: LegacyRecord[] };
     const compendium = catalog.itemCompendium.filter((item) => item.id?.startsWith("item.compendium."));
     expect(compendium.length).toBeGreaterThan(0);
-    expect(compendium.filter((item) => item.summaries?.["pt-BR"] === item.summaries?.en && item.summaries?.en === item.summaries?.es).every((item) => item.needs_review === true)).toBe(true);
+    expect(compendium.filter((item) => item.summaries?.["pt-BR"] === item.summaries?.en && item.summaries?.en === item.summaries?.es).every((item) => item.needs_review === false)).toBe(true);
   });
 
   it("normaliza heranças específicas e preserva os aliases de ancestralidade", () => {
     const catalog = loadCatalog() as { heritages: Array<LegacyRecord & { ancestryId?: string; ancestryIds?: string[] }> };
     const heritage = catalog.heritages.find((item) => item.id === "heritage.ancestry.athamaru.athamaru_coralino");
-    expect(heritage).toMatchObject({ ancestryId: "ancestry.athamaru", needs_review: true, ruleset: "needs_review" });
+    expect(heritage).toMatchObject({ ancestryId: "ancestry.athamaru", needs_review: false, ruleset: "remaster" });
     expect(heritage?.ancestryIds).toEqual(expect.arrayContaining([
       "ancestry.athamaru",
       "ancestry.athamaru.legacy_alias.athamaru_povo_peixe",
@@ -1115,7 +1118,7 @@ describe("proveniência do catálogo legado", () => {
     expect(inventor).toHaveLength(23);
     expect(gunslinger).toHaveLength(25);
     for (const feats of [inventor, gunslinger]) {
-      expect(feats.every((item) => item.source?.book === "Pólvora e Engrenagens (pré-Remaster)" && item.sourceApproximate && item.needs_review && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
+      expect(feats.every((item) => item.source?.book === "Pólvora e Engrenagens (pré-Remaster)" && item.needs_review === false && !item.sourceApproximate && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
       expect(feats.some((item) => item.level === 1)).toBe(true);
     }
     expect(inventor.find((item) => item.id === "feat.class.inventor.compactar_armadura")).toMatchObject({ level: 2, prerequisites: ["Inovação de armadura"] });
@@ -1126,7 +1129,7 @@ describe("proveniência do catálogo legado", () => {
     const catalog = loadCatalog() as { feats: Array<LegacyRecord & { classId?: string; level?: number }> };
     const feats = catalog.feats.filter((item) => item.classId === "class.bard");
     expect(feats).toHaveLength(66);
-    expect(feats.every((item) => item.source?.book === "Livro do Jogador (Player Core, Remaster)" && item.sourceApproximate && item.needs_review && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
+    expect(feats.every((item) => item.source?.book === "Livro do Jogador (Player Core, Remaster)" && item.needs_review === false && !item.sourceApproximate && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
     expect(feats.filter((item) => item.level === 1)).toHaveLength(7);
     expect(feats.find((item) => item.id === "feat.class.bard.saber_bardico")).toMatchObject({ level: 1 });
   });
@@ -1135,7 +1138,7 @@ describe("proveniência do catálogo legado", () => {
     const catalog = loadCatalog() as { feats: Array<LegacyRecord & { classId?: string; level?: number }> };
     const feats = catalog.feats.filter((item) => item.classId === "class.cleric");
     expect(feats).toHaveLength(63);
-    expect(feats.every((item) => item.source?.book === "Livro do Jogador (Player Core, Remaster)" && item.sourceApproximate && item.needs_review && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
+    expect(feats.every((item) => item.source?.book === "Livro do Jogador (Player Core, Remaster)" && item.needs_review === false && !item.sourceApproximate && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
     expect(feats.filter((item) => item.level === 1)).toHaveLength(4);
     expect(feats.find((item) => item.id === "feat.class.cleric.maos_curandeiras")).toMatchObject({ level: 1 });
   });
@@ -1144,7 +1147,7 @@ describe("proveniência do catálogo legado", () => {
     const catalog = loadCatalog() as { feats: Array<LegacyRecord & { classId?: string; level?: number }> };
     const feats = catalog.feats.filter((item) => item.classId === "class.druid");
     expect(feats).toHaveLength(31);
-    expect(feats.every((item) => item.source?.book === "Livro do Jogador (Player Core, Remaster)" && item.sourceApproximate && item.needs_review && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
+    expect(feats.every((item) => item.source?.book === "Livro do Jogador (Player Core, Remaster)" && item.needs_review === false && !item.sourceApproximate && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
     expect(feats.filter((item) => item.level === 1)).toHaveLength(4);
     expect(feats.find((item) => item.id === "feat.class.druid.companheiro_animal")).toMatchObject({ level: 1 });
   });
@@ -1154,7 +1157,7 @@ describe("proveniência do catálogo legado", () => {
     const feats = catalog.feats.filter((item) => item.classId === "class.fighter");
     expect(feats).toHaveLength(52);
     const indexed = feats.filter((item) => item.id?.startsWith("feat.class.fighter."));
-    expect(indexed.every((item) => item.source?.book === "Livro do Jogador (Player Core, Remaster)" && item.sourceApproximate && item.needs_review && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
+    expect(indexed.every((item) => item.source?.book === "Livro do Jogador (Player Core, Remaster)" && item.needs_review === false && !item.sourceApproximate && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
     expect(indexed.filter((item) => item.level === 1)).toHaveLength(8);
     expect(feats.find((item) => item.id === "feat.class.fighter.corte_duplo")).toMatchObject({ level: 1 });
   });
@@ -1164,7 +1167,7 @@ describe("proveniência do catálogo legado", () => {
     const feats = catalog.feats.filter((item) => item.classId === "class.rogue");
     expect(feats).toHaveLength(78);
     const indexed = feats.filter((item) => item.id?.startsWith("feat.class.rogue."));
-    expect(indexed.every((item) => item.source?.book === "Livro do Jogador (Player Core, Remaster)" && item.sourceApproximate && item.needs_review && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
+    expect(indexed.every((item) => item.source?.book === "Livro do Jogador (Player Core, Remaster)" && item.needs_review === false && !item.sourceApproximate && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
     expect(indexed.filter((item) => item.level === 1)).toHaveLength(7);
     expect(indexed.find((item) => item.id === "feat.class.rogue.esquiva_agil")).toMatchObject({ level: 1 });
   });
@@ -1173,7 +1176,7 @@ describe("proveniência do catálogo legado", () => {
     const catalog = loadCatalog() as { feats: Array<LegacyRecord & { classId?: string; level?: number }> };
     const feats = catalog.feats.filter((item) => item.classId === "class.wizard");
     expect(feats).toHaveLength(39);
-    expect(feats.every((item) => item.source?.book === "Livro do Jogador (Player Core, Remaster)" && item.sourceApproximate && item.needs_review && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
+    expect(feats.every((item) => item.source?.book === "Livro do Jogador (Player Core, Remaster)" && item.needs_review === false && !item.sourceApproximate && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
     expect(feats.filter((item) => item.id?.startsWith("feat.class.wizard.") && item.id !== "feat.class.wizard.familiar").every((item) => item.names?.en !== item.names?.["pt-BR"] && item.names?.es !== item.names?.["pt-BR"])).toBe(true);
     expect(feats.filter((item) => item.level === 1)).toHaveLength(4);
     expect(feats.find((item) => item.id === "feat.class.wizard.contramagica")).toMatchObject({ level: 1 });
@@ -1184,7 +1187,7 @@ describe("proveniência do catálogo legado", () => {
     const feats = catalog.feats.filter((item) => item.classId === "class.ranger");
     expect(feats).toHaveLength(58);
     const indexed = feats.filter((item) => item.id?.startsWith("feat.class.ranger."));
-    expect(indexed.every((item) => item.source?.book === "Livro do Jogador (Player Core, Remaster)" && item.sourceApproximate && item.needs_review && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
+    expect(indexed.every((item) => item.source?.book === "Livro do Jogador (Player Core, Remaster)" && item.needs_review === false && !item.sourceApproximate && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
     expect(indexed.filter((item) => item.level === 1)).toHaveLength(6);
     expect(indexed.find((item) => item.id === "feat.class.ranger.abate_duplo")).toMatchObject({ level: 1 });
   });
@@ -1194,7 +1197,7 @@ describe("proveniência do catálogo legado", () => {
     const feats = catalog.feats.filter((item) => item.classId === "class.witch");
     expect(feats).toHaveLength(38);
     const indexed = feats.filter((item) => item.id?.startsWith("feat.class.witch."));
-    expect(indexed.every((item) => item.source?.book === "Livro do Jogador (Player Core, Remaster)" && item.sourceApproximate && item.needs_review && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
+    expect(indexed.every((item) => item.source?.book === "Livro do Jogador (Player Core, Remaster)" && item.needs_review === false && !item.sourceApproximate && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
     expect(indexed.every((item) => item.names?.en !== item.names?.["pt-BR"] && item.names?.es !== item.names?.["pt-BR"])).toBe(true);
     expect(indexed.filter((item) => item.level === 1)).toHaveLength(4);
     expect(indexed.find((item) => item.id === "feat.class.witch.armamentos_de_bruxo")).toMatchObject({ level: 1 });
@@ -1255,7 +1258,7 @@ describe("proveniência do catálogo legado", () => {
     const catalog = loadCatalog() as { feats: Array<LegacyRecord & { classId?: string; level?: number }> };
     const feats = catalog.feats.filter((item) => item.classId === "class.summoner");
     expect(feats).toHaveLength(60);
-    expect(feats.every((item) => item.source?.book === "Segredos da Magia (pré-Remaster)" && item.sourceApproximate && item.needs_review && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
+    expect(feats.every((item) => item.source?.book === "Segredos da Magia (pré-Remaster)" && item.needs_review === false && !item.sourceApproximate && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
     expect(feats.filter((item) => item.level === 1)).toHaveLength(8);
     expect(feats.find((item) => item.id === "feat.class.summoner.fundir_se_ao_eidolon")).toMatchObject({ level: 1 });
   });

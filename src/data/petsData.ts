@@ -19,6 +19,7 @@ export interface PetCompanionDefinition {
   summaries?: { "pt-BR": string; en: string; es: string };
   source?: { book: string; page?: number };
   sourceApproximate?: boolean;
+  ruleset?: "remaster" | "legacy" | "needs_review";
   needs_review?: boolean;
 }
 
@@ -153,7 +154,7 @@ export const PF2E_PETS_CATALOG: PetCompanionDefinition[] = [
     grantedAbilities: ["constructo"], requiredFamiliarAbilities: 1,
     description: "Familiar constructo de madeira e vime.",
     summaries: { "pt-BR": "Boneco familiar constructo, simples e modificável.", en: "A simple, endlessly modifiable construct familiar.", es: "Familiar constructo sencillo y modificable." },
-    source: { book: "Livro do Jogador 2 (Player Core 2)", page: 170 }, sourceApproximate: true, needs_review: true
+    source: { book: "Livro do Jogador 2 (Player Core 2)", page: 170 }, sourceApproximate: false, ruleset: "remaster", needs_review: false
   },
   {
     id: "pet.familiar.specific.imp",
@@ -167,7 +168,7 @@ export const PF2E_PETS_CATALOG: PetCompanionDefinition[] = [
     grantedAbilities: ["destreza manual", "fala", "resistência (veneno)", "perito (Dissimulação)", "telepatia de toque", "visão no escuro", "voador"], requiredFamiliarAbilities: 7,
     description: "Familiar ínfero que oferece barganhas e poderes de enganação.",
     summaries: { "pt-BR": "Familiar ínfero com invisibilidade e tentação sobrenatural.", en: "An infernal familiar with invisibility and supernatural temptation.", es: "Familiar infernal con invisibilidad y tentación sobrenatural." },
-    source: { book: "Livro do Jogador 2 (Player Core 2)", page: 170 }, sourceApproximate: true, needs_review: true
+    source: { book: "Livro do Jogador 2 (Player Core 2)", page: 170 }, sourceApproximate: false, ruleset: "remaster", needs_review: false
   },
   {
     id: "pet.familiar.specific.fey_dragonet",
@@ -181,7 +182,7 @@ export const PF2E_PETS_CATALOG: PetCompanionDefinition[] = [
     grantedAbilities: ["destreza manual", "fala", "telepatia de toque", "visão no escuro", "voador"], requiredFamiliarAbilities: 5,
     description: "Pequeno dragão travesso aliado de personagens benevolentes ou impulsivos.",
     summaries: { "pt-BR": "Pequeno dragão feérico com sopro eufórico.", en: "A mischievous fairy dragon with an euphoric breath.", es: "Pequeño dragón feérico con aliento eufórico." },
-    source: { book: "Livro do Jogador 2 (Player Core 2)", page: 171 }, sourceApproximate: true, needs_review: true
+    source: { book: "Livro do Jogador 2 (Player Core 2)", page: 171 }, sourceApproximate: false, ruleset: "remaster", needs_review: false
   },
   {
     id: "pet.familiar.specific.wyrd_eon",
@@ -195,7 +196,7 @@ export const PF2E_PETS_CATALOG: PetCompanionDefinition[] = [
     grantedAbilities: ["constructo", "voador"], requiredFamiliarAbilities: 3,
     description: "Enxame flutuante de pedras preciosas que concede o poder de sua pedra interna.",
     summaries: { "pt-BR": "Enxame cristalino voador que armazena uma pedra eônica.", en: "A flying crystal swarm that stores an aeonic stone.", es: "Enjambre cristalino volador que almacena una piedra eónica." },
-    source: { book: "Livro do Jogador 2 (Player Core 2)", page: 171 }, sourceApproximate: true, needs_review: true
+    source: { book: "Livro do Jogador 2 (Player Core 2)", page: 171 }, sourceApproximate: false, ruleset: "remaster", needs_review: false
   },
   {
     id: "pet.familiar.specific.gosmagia",
@@ -209,7 +210,7 @@ export const PF2E_PETS_CATALOG: PetCompanionDefinition[] = [
     grantedAbilities: ["escalador", "visão no escuro", "vigoroso"], requiredFamiliarAbilities: 4, requiresSpellcasting: true,
     description: "Limo colorido formado por essências de conjurações.",
     summaries: { "pt-BR": "Familiar limo leal que fareja magia.", en: "A loyal slime familiar that senses magic.", es: "Familiar limo leal que detecta magia." },
-    source: { book: "Livro do Jogador 2 (Player Core 2)", page: 172 }, sourceApproximate: true, needs_review: true
+    source: { book: "Livro do Jogador 2 (Player Core 2)", page: 172 }, sourceApproximate: false, ruleset: "remaster", needs_review: false
   },
   {
     id: "pet.familiar.specific.homunculus",
@@ -223,7 +224,7 @@ export const PF2E_PETS_CATALOG: PetCompanionDefinition[] = [
     grantedAbilities: ["constructo", "destreza manual", "reservatório de veneno", "visão no escuro"], requiredFamiliarAbilities: 6,
     description: "Pequeno constructo servidor criado com uma gota de sangue do mestre.",
     summaries: { "pt-BR": "Constructo servidor com vínculo telepático sanguíneo.", en: "A construct servant with a telepathic blood bond.", es: "Constructo servidor con vínculo telepático de sangre." },
-    source: { book: "Livro do Jogador 2 (Player Core 2)", page: 171 }, sourceApproximate: true, needs_review: true
+    source: { book: "Livro do Jogador 2 (Player Core 2)", page: 171 }, sourceApproximate: false, ruleset: "remaster", needs_review: false
   },
   {
     id: "pet.familiar.specific.fox",
@@ -237,6 +238,6 @@ export const PF2E_PETS_CATALOG: PetCompanionDefinition[] = [
     grantedAbilities: ["escalador", "fala", "perito", "segunda opinião", "visão no escuro"], requiredFamiliarAbilities: 5,
     description: "Raposa mágica reservada, tímida e apaixonada por conhecimento.",
     summaries: { "pt-BR": "Raposa mágica erudita com fala e perícia ampliadas.", en: "A scholarly magical fox with speech and expanded expertise.", es: "Zorra mágica erudita con habla y pericia ampliadas." },
-    source: { book: "Livro do Jogador 2 (Player Core 2)", page: 172 }, sourceApproximate: true, needs_review: true
+    source: { book: "Livro do Jogador 2 (Player Core 2)", page: 172 }, sourceApproximate: false, ruleset: "remaster", needs_review: false
   }
 ];

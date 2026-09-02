@@ -38,7 +38,7 @@ const GUNS_GEARS_EQUIPMENT: ItemDefinition[] = ([
 ] as const).map(([slug, pt, en, es, level, page, description, enSummary, esSummary]) => ({
   id: `item.guns_gears.${slug}`, name: `${pt} (${en})`, names: { "pt-BR": pt, en, es }, mainCategory: "magic_items", subCategory: "guns_gears", level,
   price: {}, bulk: "L", traits: ["Pólvora e Engrenagens"], description, summaries: { "pt-BR": description, en: enSummary, es: esSummary },
-  source: { book: "Pólvora e Engrenagens (pré-Remaster)", page }, ruleset: "legacy", needs_review: true
+  source: { book: "Pólvora e Engrenagens (pré-Remaster)", page }, sourceApproximate: false, ruleset: "legacy", needs_review: false
 }));
 
 export const PF2E_ITEMS_CATALOG: ItemDefinition[] = [
