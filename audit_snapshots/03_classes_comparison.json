@@ -1,0 +1,34 @@
+{
+  "Swashbuckler": {
+    "cardCount": 0,
+    "cards": []
+  },
+  "Fighter": {
+    "cardCount": 0,
+    "cards": []
+  },
+  "Wizard": {
+    "cardCount": 0,
+    "cards": []
+  },
+  "Cleric": {
+    "cardCount": 0,
+    "cards": []
+  },
+  "Kineticist": {
+    "cardCount": 0,
+    "cards": []
+  },
+  "Rogue": {
+    "cardCount": 0,
+    "cards": []
+  },
+  "Witch": {
+    "cardCount": 0,
+    "cards": []
+  },
+  "Champion": {
+    "cardCount": 0,
+    "cards": []
+  }
+}

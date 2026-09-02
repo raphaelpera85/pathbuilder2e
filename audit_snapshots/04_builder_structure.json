@@ -1,0 +1,281 @@
+{
+  "totalLeaves": 46,
+  "leaves": [
+    {
+      "tag": "TITLE",
+      "id": "",
+      "className": "",
+      "text": "Pathbuilder 2e"
+    },
+    {
+      "tag": "P",
+      "id": "version",
+      "className": "",
+      "text": "Web Version 109"
+    },
+    {
+      "tag": "DIV",
+      "id": "sidenav-remaster-toggle",
+      "className": "",
+      "text": "Remaster: On"
+    },
+    {
+      "tag": "DIV",
+      "id": "menu-header-signin",
+      "className": "menu-group-header",
+      "text": "Signin"
+    },
+    {
+      "tag": "DIV",
+      "id": "sidenav-upgrade",
+      "className": "sidenav-link",
+      "text": "Login and Upgrade App"
+    },
+    {
+      "tag": "DIV",
+      "id": "",
+      "className": "menu-group-header lm-menu-group-header",
+      "text": "Character"
+    },
+    {
+      "tag": "DIV",
+      "id": "sidenav-remaster-convert",
+      "className": "sidenav-link",
+      "text": "Convert to Remaster Rules"
+    },
+    {
+      "tag": "DIV",
+      "id": "sidenav-options",
+      "className": "sidenav-link",
+      "text": "Character Options"
+    },
+    {
+      "tag": "DIV",
+      "id": "sidenav-new",
+      "className": "sidenav-link",
+      "text": "New Character"
+    },
+    {
+      "tag": "DIV",
+      "id": "sidenav-save",
+      "className": "sidenav-link",
+      "text": "Save Character"
+    },
+    {
+      "tag": "DIV",
+      "id": "sidenav-load",
+      "className": "sidenav-link",
+      "text": "Open Character"
+    },
+    {
+      "tag": "DIV",
+      "id": "",
+      "className": "menu-group-header",
+      "text": "Connect"
+    },
+    {
+      "tag": "DIV",
+      "id": "sidenav-connect",
+      "className": "sidenav-link",
+      "text": "Connect to GM"
+    },
+    {
+      "tag": "DIV",
+      "id": "sidenav-gm-mode",
+      "className": "sidenav-link",
+      "text": "Launch GM Mode"
+    },
+    {
+      "tag": "DIV",
+      "id": "",
+      "className": "menu-group-header",
+      "text": "Export"
+    },
+    {
+      "tag": "DIV",
+      "id": "sidenav-pdf",
+      "className": "sidenav-link",
+      "text": "Character Sheet PDF"
+    },
+    {
+      "tag": "DIV",
+      "id": "sidenav-statblock",
+      "className": "sidenav-link",
+      "text": "Stat Block PDF"
+    },
+    {
+      "tag": "DIV",
+      "id": "sidenav-json",
+      "className": "sidenav-link",
+      "text": "Export JSON"
+    },
+    {
+      "tag": "DIV",
+      "id": "sidenav-share",
+      "className": "sidenav-link",
+      "text": "Share Copy of Character"
+    },
+    {
+      "tag": "DIV",
+      "id": "",
+      "className": "menu-group-header",
+      "text": "Data"
+    },
+    {
+      "tag": "DIV",
+      "id": "sidenav-export",
+      "className": "sidenav-link",
+      "text": "Backup/Restore"
+    },
+    {
+      "tag": "DIV",
+      "id": "sidenav-campaign",
+      "className": "sidenav-link",
+      "text": "Campaign Management"
+    },
+    {
+      "tag": "DIV",
+      "id": "sidenav-feat-browser",
+      "className": "sidenav-link",
+      "text": "Feat Browser"
+    },
+    {
+      "tag": "DIV",
+      "id": "sidenav-remaster-info",
+      "className": "sidenav-link",
+      "text": "Remaster Information"
+    },
+    {
+      "tag": "DIV",
+      "id": "",
+      "className": "menu-group-header",
+      "text": "Custom"
+    },
+    {
+      "tag": "DIV",
+      "id": "sidenav-custom-pack",
+      "className": "sidenav-link",
+      "text": "Custom Pack"
+    },
+    {
+      "tag": "DIV",
+      "id": "sidenav-custom-ability",
+      "className": "sidenav-link",
+      "text": "Custom Ability Increases"
+    },
+    {
+      "tag": "DIV",
+      "id": "sidenav-custom-feat-choice",
+      "className": "sidenav-link",
+      "text": "Custom Feat Choice"
+    },
+    {
+      "tag": "DIV",
+      "id": "sidenav-custom-skill-increase",
+      "className": "sidenav-link",
+      "text": "Custom Skill Increases"
+    },
+    {
+      "tag": "DIV",
+      "id": "",
+      "className": "menu-group-header",
+      "text": "Help"
+    },
+    {
+      "tag": "DIV",
+      "id": "sidenav-help",
+      "className": "sidenav-link",
+      "text": "Help"
+    },
+    {
+      "tag": "DIV",
+      "id": "sidenav-ogl",
+      "className": "sidenav-link",
+      "text": "Licenses"
+    },
+    {
+      "tag": "DIV",
+      "id": "sidenav-patch",
+      "className": "sidenav-link",
+      "text": "Patch Notes"
+    },
+    {
+      "tag": "DIV",
+      "id": "sidenav-error",
+      "className": "sidenav-link",
+      "text": "Report Error"
+    },
+    {
+      "tag": "DIV",
+      "id": "",
+      "className": "small-margin-right-bottom div-button-simple button-simple button-text",
+      "text": "Reset"
+    },
+    {
+      "tag": "DIV",
+      "id": "",
+      "className": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "text": "1d4"
+    },
+    {
+      "tag": "DIV",
+      "id": "",
+      "className": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "text": "1d6"
+    },
+    {
+      "tag": "DIV",
+      "id": "",
+      "className": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "text": "1d8"
+    },
+    {
+      "tag": "DIV",
+      "id": "",
+      "className": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "text": "1d10"
+    },
+    {
+      "tag": "DIV",
+      "id": "",
+      "className": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "text": "1d12"
+    },
+    {
+      "tag": "DIV",
+      "id": "",
+      "className": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "text": "1d20"
+    },
+    {
+      "tag": "DIV",
+      "id": "dice-title",
+      "className": "subtitle",
+      "text": "Free Roll"
+    },
+    {
+      "tag": "DIV",
+      "id": "",
+      "className": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "text": "Damage"
+    },
+    {
+      "tag": "DIV",
+      "id": "",
+      "className": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "text": "Critical"
+    },
+    {
+      "tag": "DIV",
+      "id": "dice-summary",
+      "className": "",
+      "text": "Dice Tray"
+    },
+    {
+      "tag": "DIV",
+      "id": "",
+      "className": "menu-title button-text",
+      "text": "Menu"
+    }
+  ]
+}

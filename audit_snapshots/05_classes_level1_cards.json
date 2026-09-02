@@ -1,0 +1,296 @@
+{
+  "Swashbuckler": [
+    {
+      "text": "1d4",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "1d6",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "1d8",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "1d10",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "1d12",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "1d20",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "Damage",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "Critical",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    }
+  ],
+  "Fighter": [
+    {
+      "text": "1d4",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "1d6",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "1d8",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "1d10",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "1d12",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "1d20",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "Damage",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "Critical",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    }
+  ],
+  "Wizard": [
+    {
+      "text": "1d4",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "1d6",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "1d8",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "1d10",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "1d12",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "1d20",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "Damage",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "Critical",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    }
+  ],
+  "Cleric": [
+    {
+      "text": "1d4",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "1d6",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "1d8",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "1d10",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "1d12",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "1d20",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "Damage",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "Critical",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    }
+  ],
+  "Kineticist": [
+    {
+      "text": "1d4",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "1d6",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "1d8",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "1d10",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "1d12",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "1d20",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "Damage",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "Critical",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    }
+  ],
+  "Rogue": [
+    {
+      "text": "1d4",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "1d6",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "1d8",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "1d10",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "1d12",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "1d20",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "Damage",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "Critical",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    }
+  ],
+  "Champion": [
+    {
+      "text": "1d4",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "1d6",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "1d8",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "1d10",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "1d12",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "1d20",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "Damage",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    },
+    {
+      "text": "Critical",
+      "class": "small-margin-right-bottom div-button-simple button-simple button-text grid-item",
+      "id": ""
+    }
+  ]
+}

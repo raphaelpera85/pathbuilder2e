@@ -33,95 +33,137 @@ async function run() {
     await page.waitForSelector('#main-container:not(.hidden), #backdrop, .menu-bar', { timeout: 30000 });
     await new Promise(r => setTimeout(r, 4000));
 
-    // Se houver modal de boas-vindas / alert, clica em aceitar ou fechar
-    try {
-      await page.evaluate(() => {
-        const acceptBtn = document.querySelector('#alert-accept, .btn-accept, #modal-accept');
-        if (acceptBtn) acceptBtn.click();
-        const backdrop = document.querySelector('#backdrop');
-        if (backdrop && backdrop.style.display !== 'none') backdrop.click();
-      });
-    } catch (e) {}
+    // Aguarda e clica no botão Accept do diálogo inicial de cache
+    console.log('Aguardando diálogo inicial de permissão...');
+    await new Promise(r => setTimeout(r, 3000));
 
+    await page.evaluate(() => {
+      const btns = Array.from(document.querySelectorAll('button, div, span, a'));
+      const acceptBtn = btns.find(b => b.innerText && b.innerText.trim() === 'Accept');
+      if (acceptBtn) {
+        console.log('Clicando em Accept...');
+        acceptBtn.click();
+      }
+    });
+
+    // Aguarda o app carregar todos os dados (3mb+ de compêndio)
+    console.log('Aguardando carregamento completo do app...');
+    await new Promise(r => setTimeout(r, 8000));
+
+    // Capturar tela principal após aceitar permissão
+    await page.screenshot({ path: path.join(OUTPUT_DIR, '03_main_builder.png') });
+    console.log('Tela principal salva: audit_snapshots/03_main_builder.png');
+
+    // Analisa a estrutura do construtor no nível 1
+    const builderStructure = await page.evaluate(() => {
+      const allElements = Array.from(document.querySelectorAll('*')).filter(el => {
+        const text = el.innerText?.trim();
+        return text && text.length > 2 && text.length < 80 && el.children.length === 0;
+      }).map(el => ({
+        tag: el.tagName,
+        id: el.id,
+        className: el.className,
+        text: el.innerText.trim()
+      }));
+
+      return {
+        totalLeaves: allElements.length,
+        leaves: allElements
+      };
+    });
+
+    fs.writeFileSync(path.join(OUTPUT_DIR, '04_builder_structure.json'), JSON.stringify(builderStructure, null, 2));
+    console.log('Estrutura de nós do builder salva.');
+
+    // Clica no card NEW CHARACTER na tela inicial
+    console.log('Clicando em NEW CHARACTER...');
+    await page.evaluate(() => {
+      const allElements = Array.from(document.querySelectorAll('div, span, p, a, h1, h2, h3'));
+      const newCharCard = allElements.find(el => el.innerText && el.innerText.includes('NEW') && el.innerText.includes('CHARACTER'));
+      if (newCharCard) {
+        newCharCard.click();
+      }
+    });
+
+    await new Promise(r => setTimeout(r, 4000));
+
+    // Capturar tela principal do construtor
+    await page.screenshot({ path: path.join(OUTPUT_DIR, '04_character_builder_ready.png') });
+    console.log('Tela do construtor pronta salva: audit_snapshots/04_character_builder_ready.png');
+
+    // Agora vamos testar as classes
     const classesToTest = ['Swashbuckler', 'Fighter', 'Wizard', 'Cleric', 'Kineticist', 'Rogue', 'Witch', 'Champion'];
-    const results = {};
+    const classResults = {};
 
     for (const className of classesToTest) {
-      console.log(`\n=== Testando Classe: ${className} no Pathbuilder Original ===`);
+      console.log(`\n=== Testando Classe: ${className} ===`);
 
-      // 1. Criar novo personagem
-      await page.evaluate(() => {
-        const sideNav = document.getElementById('mySidenav');
-        if (sideNav) sideNav.classList.add('open');
-        const newBtn = document.getElementById('sidenav-new');
-        if (newBtn) newBtn.click();
+      // 1. Clicar no botão/card de seleção de Classe
+      const clicked = await page.evaluate(() => {
+        const divs = Array.from(document.querySelectorAll('div, button, span'));
+        // No Pathbuilder, o card de classe contém "Select Class" ou o nome da classe atual
+        const target = divs.find(d => {
+          const t = d.innerText?.trim();
+          return t === 'Select Class' || t?.includes('Select Class') || d.id === 'class-selection' || d.className?.includes('class-card');
+        });
+        if (target) {
+          target.click();
+          return true;
+        }
+        return false;
       });
-      await new Promise(r => setTimeout(r, 1500));
 
-      // Aceita criar novo se pedir confirmação
-      await page.evaluate(() => {
-        const accept = document.querySelector('#alert-accept, .alert-accept, #modal-confirm, .dialog-button');
-        if (accept) accept.click();
-      });
-      await new Promise(r => setTimeout(r, 1500));
+      console.log(`Clicou no card de classe: ${clicked}`);
+      await new Promise(r => setTimeout(r, 2000));
 
-      // 2. Clicar no seletor de Classe no Level 1
-      await page.evaluate((targetClass) => {
-        // Encontra o card de classe
-        const classCards = Array.from(document.querySelectorAll('.build-card, .tree-card, .plan-card, div'));
-        const classEntry = classCards.find(el => el.innerText && (el.innerText.includes('Select Class') || el.innerText.includes('Class\nSelect') || el.innerText.includes('Class:')));
-        if (classEntry) classEntry.click();
-      }, className);
-      await new Promise(r => setTimeout(r, 1500));
-
-      // 3. Selecionar a classe no modal
-      await page.evaluate((targetClass) => {
-        const options = Array.from(document.querySelectorAll('.list-item, .modal-item, .choice-item, div, button'));
-        const opt = options.find(el => el.innerText && el.innerText.trim().toLowerCase() === targetClass.toLowerCase());
+      // 2. No modal de seleção de classes, procurar e clicar na classe desejada
+      const selected = await page.evaluate((cls) => {
+        const items = Array.from(document.querySelectorAll('div, tr, td, li, span, button'));
+        const opt = items.find(el => el.innerText && el.innerText.trim().toLowerCase() === cls.toLowerCase());
         if (opt) {
           opt.click();
-          // Clica em select/accept se houver
-          const selBtn = document.querySelector('#modal-select, .modal-confirm, #choice-accept');
-          if (selBtn) selBtn.click();
+          return true;
         }
+        return false;
       }, className);
-      await new Promise(r => setTimeout(r, 2500));
 
-      // 4. Capturar screenshot e dados estruturais da árvore do Nível 1
-      const filename = `class_${className.toLowerCase()}.png`;
-      await page.screenshot({ path: path.join(OUTPUT_DIR, filename) });
-      console.log(`Screenshot salva: audit_snapshots/${filename}`);
+      console.log(`Selecionou classe ${className}: ${selected}`);
+      await new Promise(r => setTimeout(r, 1500));
 
-      const classData = await page.evaluate(() => {
-        // Pega todos os cards e itens da coluna de build
-        const buildCol = document.getElementById('divBuild') || document.querySelector('.main-column-left') || document.body;
-        const cards = Array.from(buildCol.querySelectorAll('.build-section, .build-card, .item-container, div'))
-          .map(el => {
-            const text = el.innerText?.trim();
-            const classes = el.className;
-            return { text, classes };
-          })
-          .filter(c => c.text && c.text.length > 2 && c.text.length < 200);
-
-        // Agrupa textos únicos relevantes
-        const uniqueTexts = [];
-        for (const c of cards) {
-          if (!uniqueTexts.some(t => t.text === c.text)) {
-            uniqueTexts.push(c);
-          }
-        }
-
-        return {
-          cardCount: uniqueTexts.length,
-          cards: uniqueTexts.slice(0, 40)
-        };
+      // 3. Clicar no botão de confirmação do modal (ex: "Select", "Accept", "Choose")
+      await page.evaluate(() => {
+        const btns = Array.from(document.querySelectorAll('button, div, span'));
+        const selBtn = btns.find(b => {
+          const t = b.innerText?.trim();
+          return t === 'Select' || t === 'Choose' || t === 'Accept' || t === 'Confirm';
+        });
+        if (selBtn) selBtn.click();
       });
 
-      results[className] = classData;
+      await new Promise(r => setTimeout(r, 3000));
+
+      // 4. Capturar screenshot do Nível 1 com a classe
+      const screenshotPath = path.join(OUTPUT_DIR, `class_${className.toLowerCase()}_live.png`);
+      await page.screenshot({ path: screenshotPath });
+      console.log(`Screenshot salva: ${screenshotPath}`);
+
+      // 5. Extrair todos os cards de features e feats do Nível 1
+      const levelData = await page.evaluate(() => {
+        const elements = Array.from(document.querySelectorAll('div, span, p')).map(el => el.innerText?.trim()).filter(Boolean);
+        const unique = [];
+        for (const t of elements) {
+          if (t.length > 2 && t.length < 120 && !unique.includes(t)) {
+            unique.push(t);
+          }
+        }
+        return unique.slice(0, 60);
+      });
+
+      classResults[className] = levelData;
     }
 
-    fs.writeFileSync(path.join(OUTPUT_DIR, '03_classes_comparison.json'), JSON.stringify(results, null, 2));
-    console.log('\nTodos os dados de classes comparados e salvos em audit_snapshots/03_classes_comparison.json');
+    fs.writeFileSync(path.join(OUTPUT_DIR, '06_live_classes_data.json'), JSON.stringify(classResults, null, 2));
+    console.log('Resultados completos salvos em 06_live_classes_data.json');
 
   } catch (err) {
     console.error('Erro no teste de classes:', err);
