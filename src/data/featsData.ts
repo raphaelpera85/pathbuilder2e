@@ -1684,24 +1684,6 @@ export const PF2E_FEATS_CATALOG: FeatDefinition[] = [
     rarity: "common"
   },
   {
-    id: "feat.archetype.medic_dedication",
-    name: "Dedicação de Médico (Medic Dedication)",
-    names: { "pt-BR": "Dedicação de Médico", en: "Medic Dedication", es: "Dedicación de médico" },
-    category: "Arquétipo",
-    level: 2,
-    traits: ["Arquétipo", "Dedicação", "Perícia"],
-    prereq: "Treinado em Medicina e Medicina de Batalha",
-    description: "Você se torna Especialista em Medicina e aumenta o valor de cura de Medicina de Batalha em +5 PV (ou +10 PV se Mestre).",
-    summaries: {
-      "pt-BR": "Aumenta a cura de Medicina de Batalha e sobe Medicina para Especialista.",
-      en: "Become Expert in Medicine and increase Battle Medicine healing by +5/+10.",
-      es: "Sube a Experto en Medicina y aumenta la curación en combate."
-    },
-    source: { book: "Guia de Personagens Avançados (APG / PC2)", page: 180 },
-    ruleset: "remaster",
-    rarity: "uncommon"
-  },
-  {
     id: "feat.archetype.doctors_visitation",
     name: "Visita do Médico (Doctor's Visitation)",
     names: { "pt-BR": "Visita do Médico", en: "Doctor's Visitation", es: "Visita del médico" },
@@ -1714,14 +1696,13 @@ export const PF2E_FEATS_CATALOG: FeatDefinition[] = [
     summaries: {
       "pt-BR": "[1 Ação] Move-se e aplica Medicina de Batalha no mesmo movimento.",
       en: "[1 Action] Stride and administer Battle Medicine in a single action.",
-      es: "[1 Acción] Desplázate y cura a un aliado en una sola acción."
+      es: "[1 Acción] Desplázate y cura a un aliado en una sola ação."
     },
     source: { book: "Guia de Personagens Avançados (APG / PC2)", page: 180 },
     ruleset: "remaster",
     rarity: "uncommon"
   },
-  // Player Core 2, pp. 195–196: Cavaleiro. Mantemos estes registros no
-  // catálogo compartilhado para que o picker React não dependa do legado.
+  // Player Core 2, pp. 195–196: Cavaleiro.
   {
     id: "feat.archetype.cavalier.cavalier_dedication",
     name: "Dedicação de Cavaleiro (Cavalier Dedication)",
@@ -1730,7 +1711,7 @@ export const PF2E_FEATS_CATALOG: FeatDefinition[] = [
     prereq: "Treinado em Natureza ou Sociedade", archetypeId: "archetype.cavalier",
     description: "Adquire um companheiro animal jovem que serve como sua montaria; ele deve ser pelo menos um tamanho maior que você.",
     summaries: { "pt-BR": "Adquire um companheiro animal jovem como montaria.", en: "Gain a young animal companion as a mount.", es: "Obtienes un compañero animal joven como montura." },
-    source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 195 }, ruleset: "remaster", needs_review: true, rarity: "uncommon"
+    source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 195 }, ruleset: "remaster", needs_review: false, sourceApproximate: false, rarity: "uncommon"
   },
   {
     id: "feat.archetype.cavalier.knights_banner",
@@ -1740,7 +1721,7 @@ export const PF2E_FEATS_CATALOG: FeatDefinition[] = [
     prereq: "Dedicação de Cavaleiro; juramento a uma organização ou ideal", archetypeId: "archetype.cavalier",
     description: "Ergue o estandarte do juramento na montaria e inspira aliados próximos contra efeitos de medo.",
     summaries: { "pt-BR": "Ergue o estandarte do juramento e inspira aliados contra medo.", en: "Raise your oath's banner and inspire nearby allies against fear.", es: "Alzas el estandarte de tu juramento e inspiras a los aliados contra el miedo." },
-    source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 195 }, ruleset: "remaster", needs_review: true, rarity: "uncommon"
+    source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 195 }, ruleset: "remaster", needs_review: false, sourceApproximate: false, rarity: "uncommon"
   },
   {
     id: "feat.archetype.cavalier.knights_charge",
@@ -1750,7 +1731,7 @@ export const PF2E_FEATS_CATALOG: FeatDefinition[] = [
     prereq: "Dedicação de Cavaleiro", archetypeId: "archetype.cavalier",
     description: "Comanda a montaria para Andar duas vezes e realiza um Golpe durante o movimento.",
     summaries: { "pt-BR": "Ordena dois movimentos da montaria e realiza um Golpe durante o movimento.", en: "Command your mount to Stride twice and make a Strike during the movement.", es: "Ordenas a tu montura Avanzar dos veces y haces un Golpe durante el movimiento." },
-    source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 195 }, ruleset: "remaster", needs_review: true, rarity: "uncommon"
+    source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 195 }, ruleset: "remaster", needs_review: false, sourceApproximate: false, rarity: "uncommon"
   },
   {
     id: "feat.archetype.cavalier.rapid_mount",
@@ -1760,7 +1741,7 @@ export const PF2E_FEATS_CATALOG: FeatDefinition[] = [
     prereq: "Dedicação de Cavaleiro; especialista em Natureza", archetypeId: "archetype.cavalier",
     description: "Monta uma criatura disposta e ordena uma ação com Comandar um Animal.",
     summaries: { "pt-BR": "Monta rapidamente e ordena uma ação à criatura.", en: "Mount a willing creature and give it an order.", es: "Montas una criatura dispuesta y le das una orden." },
-    source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 195 }, ruleset: "remaster", needs_review: true, rarity: "uncommon"
+    source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 195 }, ruleset: "remaster", needs_review: false, sourceApproximate: false, rarity: "uncommon"
   },
   {
     id: "feat.archetype.cavalier.impressive_mount",
@@ -1770,7 +1751,7 @@ export const PF2E_FEATS_CATALOG: FeatDefinition[] = [
     prereq: "Dedicação de Cavaleiro", archetypeId: "archetype.cavalier",
     description: "A montaria se torna um companheiro animal maduro e pode agir com uma ação mesmo sem ser comandada.",
     summaries: { "pt-BR": "A montaria se torna um companheiro animal maduro.", en: "Your mount becomes a mature animal companion.", es: "Tu montura se vuelve un compañero animal maduro." },
-    source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 195 }, ruleset: "remaster", needs_review: true, rarity: "uncommon"
+    source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 195 }, ruleset: "remaster", needs_review: false, sourceApproximate: false, rarity: "uncommon"
   },
   {
     id: "feat.archetype.cavalier.defend_mount",
@@ -1780,7 +1761,7 @@ export const PF2E_FEATS_CATALOG: FeatDefinition[] = [
     prereq: "Dedicação de Cavaleiro", archetypeId: "archetype.cavalier",
     description: "Protege a montaria usando sua própria defesa contra um ataque acionador.",
     summaries: { "pt-BR": "Protege a montaria com sua própria defesa.", en: "Protect your mount with your own defense.", es: "Proteges a tu montura con tu propia defensa." },
-    source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 195 }, ruleset: "remaster", needs_review: true, rarity: "uncommon"
+    source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 195 }, ruleset: "remaster", needs_review: false, sourceApproximate: false, rarity: "uncommon"
   },
   {
     id: "feat.archetype.cavalier.mounted_shield",
@@ -1790,7 +1771,7 @@ export const PF2E_FEATS_CATALOG: FeatDefinition[] = [
     prereq: "Dedicação de Cavaleiro", archetypeId: "archetype.cavalier",
     description: "Enquanto montado, compartilha o bônus do escudo com a montaria e pode Bloquear por ela.",
     summaries: { "pt-BR": "Compartilha o bônus do escudo e pode Bloquear pela montaria.", en: "Share your shield bonus with your mount and Shield Block for it.", es: "Compartes el bonificador del escudo y puedes Bloquear por tu montura." },
-    source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 195 }, ruleset: "remaster", needs_review: true, rarity: "uncommon"
+    source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 195 }, ruleset: "remaster", needs_review: false, sourceApproximate: false, rarity: "uncommon"
   },
   {
     id: "feat.archetype.cavalier.incredible_mount",
@@ -1800,7 +1781,7 @@ export const PF2E_FEATS_CATALOG: FeatDefinition[] = [
     prereq: "Montaria Impressionante", archetypeId: "archetype.cavalier",
     description: "A montaria se torna ágil ou selvagem e recebe capacidades adicionais.",
     summaries: { "pt-BR": "A montaria recebe uma especialização ágil ou selvagem.", en: "Your mount becomes nimble or savage and gains additional capabilities.", es: "Tu montura se vuelve ágil o salvaje y obtiene capacidades adicionales." },
-    source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 196 }, ruleset: "remaster", needs_review: true, rarity: "uncommon"
+    source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 196 }, ruleset: "remaster", needs_review: false, sourceApproximate: false, rarity: "uncommon"
   },
   {
     id: "feat.archetype.cavalier.trampling_charge",
@@ -1810,7 +1791,7 @@ export const PF2E_FEATS_CATALOG: FeatDefinition[] = [
     prereq: "Dedicação de Cavaleiro", archetypeId: "archetype.cavalier",
     description: "A montaria avança através dos espaços de adversários e causa dano com um Golpe.",
     summaries: { "pt-BR": "A montaria atravessa espaços inimigos e realiza um Golpe.", en: "Your mount moves through opponents' spaces and makes a Strike.", es: "Tu montura atraviesa espacios enemigos y hace un Golpe." },
-    source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 196 }, ruleset: "remaster", needs_review: true, rarity: "uncommon"
+    source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 196 }, ruleset: "remaster", needs_review: false, sourceApproximate: false, rarity: "uncommon"
   },
   {
     id: "feat.archetype.cavalier.unseat",
@@ -1820,7 +1801,7 @@ export const PF2E_FEATS_CATALOG: FeatDefinition[] = [
     prereq: "Dedicação de Cavaleiro; montado e empunhando uma arma de justa", archetypeId: "archetype.cavalier",
     description: "Ataca uma criatura montada e tenta derrubá-la da montaria.",
     summaries: { "pt-BR": "Tenta derrubar uma criatura da montaria.", en: "Attack a mounted creature and attempt to knock it from its mount.", es: "Atacas a una criatura montada e intentas derribarla." },
-    source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 196 }, ruleset: "remaster", needs_review: true, rarity: "uncommon"
+    source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 196 }, ruleset: "remaster", needs_review: false, sourceApproximate: false, rarity: "uncommon"
   },
   {
     id: "feat.archetype.cavalier.specialized_mount",
@@ -1830,7 +1811,7 @@ export const PF2E_FEATS_CATALOG: FeatDefinition[] = [
     prereq: "Montaria Incrível", archetypeId: "archetype.cavalier",
     description: "A montaria adquire uma especialização, até três vezes com especializações diferentes.",
     summaries: { "pt-BR": "A montaria adquire uma especialização adicional.", en: "Your mount gains a specialization, up to three different specializations.", es: "Tu montura obtiene una especialización, hasta tres distintas." },
-    source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 196 }, ruleset: "remaster", needs_review: true, rarity: "uncommon"
+    source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 196 }, ruleset: "remaster", needs_review: false, sourceApproximate: false, rarity: "uncommon"
   },
   {
     id: "feat.archetype.cavalier.legendary_knight",
@@ -1840,7 +1821,7 @@ export const PF2E_FEATS_CATALOG: FeatDefinition[] = [
     prereq: "Dedicação de Cavaleiro", archetypeId: "archetype.cavalier",
     description: "Fica acelerado enquanto montado, usando a ação adicional apenas para comandar a montaria.",
     summaries: { "pt-BR": "Fica acelerado enquanto montado para comandar a montaria.", en: "While mounted, become quickened and use the extra action only to Command your mount.", es: "Mientras estás montado, quedas acelerado para Comandar tu montura." },
-    source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 196 }, ruleset: "remaster", needs_review: true, rarity: "uncommon"
+    source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 196 }, ruleset: "remaster", needs_review: false, sourceApproximate: false, rarity: "uncommon"
   },
   {
     id: "feat.class.monk.postura_da_naja",
@@ -1859,8 +1840,8 @@ export const PF2E_FEATS_CATALOG: FeatDefinition[] = [
     },
     source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 148 },
     ruleset: "remaster",
-    needs_review: true,
-    sourceApproximate: true,
+    needs_review: false,
+    sourceApproximate: false,
     rarity: "common"
   }
 ,
