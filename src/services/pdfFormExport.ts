@@ -1,6 +1,13 @@
 import { PDFDocument } from "pdf-lib";
 
 declare const PF2E_ENGINE: any;
+declare const PF2E_DATA: any;
+
+export type PdfLocale = "pt-BR" | "en" | "es";
+
+export interface PdfExportOptions {
+  locale?: PdfLocale;
+}
 
 export interface CharacterDocument {
   id?: string;
@@ -74,14 +81,349 @@ export interface CharacterDocument {
   focusPoints?: number;
   focusSpellRank?: number;
   spellSlotsUsed?: Record<number, number>;
+  locale?: PdfLocale;
+}
+
+export const PDF_SIZES: Record<string, Record<PdfLocale, string>> = {
+  "Minúsculo": { "pt-BR": "Minúsculo", en: "Tiny", es: "Diminuto" },
+  "Pequeno": { "pt-BR": "Pequeno", en: "Small", es: "Pequeño" },
+  "Médio": { "pt-BR": "Médio", en: "Medium", es: "Mediano" },
+  "Grande": { "pt-BR": "Grande", en: "Large", es: "Grande" },
+  "Enorme": { "pt-BR": "Enorme", en: "Huge", es: "Enorme" },
+  "Imenso": { "pt-BR": "Imenso", en: "Gargantuan", es: "Gargantuesco" },
+  "Medium": { "pt-BR": "Médio", en: "Medium", es: "Mediano" },
+  "Small": { "pt-BR": "Pequeno", en: "Small", es: "Pequeño" },
+  "Large": { "pt-BR": "Grande", en: "Large", es: "Grande" },
+  "Tiny": { "pt-BR": "Minúsculo", en: "Tiny", es: "Diminuto" },
+  "Huge": { "pt-BR": "Enorme", en: "Huge", es: "Enorme" },
+  "Gargantuan": { "pt-BR": "Imenso", en: "Gargantuan", es: "Gargantuesco" }
+};
+
+export const PDF_ALIGNMENTS: Record<string, Record<PdfLocale, string>> = {
+  "Ordeiro e Bom": { "pt-BR": "Ordeiro e Bom", en: "Lawful Good", es: "Legal Bueno" },
+  "Neutro e Bom": { "pt-BR": "Neutro e Bom", en: "Neutral Good", es: "Neutral Bueno" },
+  "Caótico e Bom": { "pt-BR": "Caótico e Bom", en: "Chaotic Good", es: "Caótico Bueno" },
+  "Ordeiro e Neutro": { "pt-BR": "Ordeiro e Neutro", en: "Lawful Neutral", es: "Legal Neutral" },
+  "Neutro": { "pt-BR": "Neutro", en: "Neutral", es: "Neutral" },
+  "Neutral": { "pt-BR": "Neutro", en: "Neutral", es: "Neutral" },
+  "Caótico e Neutro": { "pt-BR": "Caótico e Neutro", en: "Chaotic Neutral", es: "Caótico Neutral" },
+  "Ordeiro e Mau": { "pt-BR": "Ordeiro e Mau", en: "Lawful Evil", es: "Legal Maligno" },
+  "Neutro e Mau": { "pt-BR": "Neutro e Mau", en: "Neutral Evil", es: "Neutral Maligno" },
+  "Caótico e Mau": { "pt-BR": "Caótico e Mau", en: "Chaotic Evil", es: "Caótico Maligno" }
+};
+
+export const PDF_TRAITS_DICT: Record<string, Record<PdfLocale, string>> = {
+  "acuidade": { "pt-BR": "Acuidade", en: "Finesse", es: "Sutileza" },
+  "finesse": { "pt-BR": "Acuidade", en: "Finesse", es: "Sutileza" },
+  "ágil": { "pt-BR": "Ágil", en: "Agile", es: "Ágil" },
+  "agile": { "pt-BR": "Ágil", en: "Agile", es: "Ágil" },
+  "não-letal": { "pt-BR": "Não-Letal", en: "Nonlethal", es: "No Letal" },
+  "nao-letal": { "pt-BR": "Não-Letal", en: "Nonlethal", es: "No Letal" },
+  "nonlethal": { "pt-BR": "Não-Letal", en: "Nonlethal", es: "No Letal" },
+  "arremesso 3m": { "pt-BR": "Arremesso 3m", en: "Thrown 10 ft.", es: "Arrojadiza 3m" },
+  "arremesso": { "pt-BR": "Arremesso", en: "Thrown", es: "Arrojadiza" },
+  "thrown": { "pt-BR": "Arremesso", en: "Thrown", es: "Arrojadiza" },
+  "versátil c": { "pt-BR": "Versátil C", en: "Versatile S", es: "Versátil C" },
+  "versatil c": { "pt-BR": "Versátil C", en: "Versatile S", es: "Versátil C" },
+  "versatile s": { "pt-BR": "Versátil C", en: "Versatile S", es: "Versátil C" },
+  "versátil p": { "pt-BR": "Versátil P", en: "Versatile P", es: "Versátil P" },
+  "versatil p": { "pt-BR": "Versátil P", en: "Versatile P", es: "Versátil P" },
+  "versatile p": { "pt-BR": "Versátil P", en: "Versatile P", es: "Versátil P" },
+  "versátil i": { "pt-BR": "Versátil I", en: "Versatile B", es: "Versátil C" },
+  "versatil i": { "pt-BR": "Versátil I", en: "Versatile B", es: "Versátil C" },
+  "versatile b": { "pt-BR": "Versátil I", en: "Versatile B", es: "Versátil C" },
+  "aparar": { "pt-BR": "Aparar", en: "Parry", es: "Parada" },
+  "parry": { "pt-BR": "Aparar", en: "Parry", es: "Parada" },
+  "desarmado": { "pt-BR": "Desarmado", en: "Unarmed", es: "Desarmado" },
+  "unarmed": { "pt-BR": "Desarmado", en: "Unarmed", es: "Desarmado" },
+  "alcance": { "pt-BR": "Alcance", en: "Reach", es: "Alcance" },
+  "reach": { "pt-BR": "Alcance", en: "Reach", es: "Alcance" },
+  "florescer": { "pt-BR": "Florescer", en: "Flourish", es: "Floritura" },
+  "flourish": { "pt-BR": "Florescer", en: "Flourish", es: "Floritura" },
+  "abertura": { "pt-BR": "Abertura", en: "Open", es: "Apertura" },
+  "open": { "pt-BR": "Abertura", en: "Open", es: "Apertura" },
+  "geral": { "pt-BR": "Geral", en: "General", es: "General" },
+  "general": { "pt-BR": "Geral", en: "General", es: "General" },
+  "perícia": { "pt-BR": "Perícia", en: "Skill", es: "Habilidad" },
+  "pericia": { "pt-BR": "Perícia", en: "Skill", es: "Habilidad" },
+  "skill": { "pt-BR": "Perícia", en: "Skill", es: "Habilidad" },
+  "humano": { "pt-BR": "Humano", en: "Human", es: "Humano" },
+  "human": { "pt-BR": "Humano", en: "Human", es: "Humano" },
+  "humanoide": { "pt-BR": "Humanoide", en: "Humanoid", es: "Humanoide" },
+  "humanoid": { "pt-BR": "Humanoide", en: "Humanoid", es: "Humanoide" },
+  "anão": { "pt-BR": "Anão", en: "Dwarf", es: "Enano" },
+  "dwarf": { "pt-BR": "Anão", en: "Dwarf", es: "Enano" },
+  "elfo": { "pt-BR": "Elfo", en: "Elf", es: "Elfo" },
+  "elf": { "pt-BR": "Elfo", en: "Elf", es: "Elfo" },
+  "gnomo": { "pt-BR": "Gnomo", en: "Gnome", es: "Gnomo" },
+  "gnome": { "pt-BR": "Gnomo", en: "Gnome", es: "Gnomo" },
+  "goblin": { "pt-BR": "Goblin", en: "Goblin", es: "Goblin" }
+};
+
+export const PDF_CATALOG_DICT: Record<string, Record<PdfLocale, string>> = {
+  // Classes
+  "Guerreiro": { "pt-BR": "Guerreiro", en: "Fighter", es: "Guerrero" },
+  "Fighter": { "pt-BR": "Guerreiro", en: "Fighter", es: "Guerrero" },
+  "Ladino": { "pt-BR": "Ladino", en: "Rogue", es: "Pícaro" },
+  "Rogue": { "pt-BR": "Ladino", en: "Rogue", es: "Pícaro" },
+  "Clérigo": { "pt-BR": "Clérigo", en: "Cleric", es: "Clérigo" },
+  "Cleric": { "pt-BR": "Clérigo", en: "Cleric", es: "Clérigo" },
+  "Mago": { "pt-BR": "Mago", en: "Wizard", es: "Mago" },
+  "Wizard": { "pt-BR": "Mago", en: "Wizard", es: "Mago" },
+  "Bárbaro": { "pt-BR": "Bárbaro", en: "Barbarian", es: "Bárbaro" },
+  "Barbarian": { "pt-BR": "Bárbaro", en: "Barbarian", es: "Bárbaro" },
+  "Bardo": { "pt-BR": "Bardo", en: "Bard", es: "Bardo" },
+  "Bard": { "pt-BR": "Bardo", en: "Bard", es: "Bardo" },
+  "Campeão": { "pt-BR": "Campeão", en: "Champion", es: "Campeón" },
+  "Champion": { "pt-BR": "Campeão", en: "Champion", es: "Campeón" },
+  "Druida": { "pt-BR": "Druida", en: "Druid", es: "Druida" },
+  "Druid": { "pt-BR": "Druida", en: "Druid", es: "Druida" },
+  "Monge": { "pt-BR": "Monge", en: "Monk", es: "Monje" },
+  "Monk": { "pt-BR": "Monge", en: "Monk", es: "Monje" },
+  "Patrulheiro": { "pt-BR": "Patrulheiro", en: "Ranger", es: "Ranger" },
+  "Ranger": { "pt-BR": "Patrulheiro", en: "Ranger", es: "Ranger" },
+  "Feiticeiro": { "pt-BR": "Feiticeiro", en: "Sorcerer", es: "Hechicero" },
+  "Sorcerer": { "pt-BR": "Feiticeiro", en: "Sorcerer", es: "Hechicero" },
+  "Alquimista": { "pt-BR": "Alquimista", en: "Alchemist", es: "Alquimista" },
+  "Alchemist": { "pt-BR": "Alquimista", en: "Alchemist", es: "Alquimista" },
+  "Espadachim": { "pt-BR": "Espadachim", en: "Swashbuckler", es: "Espadachín" },
+  "Swashbuckler": { "pt-BR": "Espadachim", en: "Swashbuckler", es: "Espadachín" },
+  "Bruxo": { "pt-BR": "Bruxa", en: "Witch", es: "Bruja" },
+  "Bruxa": { "pt-BR": "Bruxa", en: "Witch", es: "Bruja" },
+  "Witch": { "pt-BR": "Bruxa", en: "Witch", es: "Bruja" },
+  "Investigador": { "pt-BR": "Investigador", en: "Investigator", es: "Investigador" },
+  "Investigator": { "pt-BR": "Investigador", en: "Investigator", es: "Investigador" },
+  "Oráculo": { "pt-BR": "Oráculo", en: "Oracle", es: "Oráculo" },
+  "Oracle": { "pt-BR": "Oráculo", en: "Oracle", es: "Oráculo" },
+  "Cineticista": { "pt-BR": "Cineticista", en: "Kineticist", es: "Cinético" },
+  "Kineticist": { "pt-BR": "Cineticista", en: "Kineticist", es: "Cinético" },
+  "Magus": { "pt-BR": "Magus", en: "Magus", es: "Magus" },
+  "Invocador": { "pt-BR": "Invocador", en: "Summoner", es: "Convocador" },
+  "Summoner": { "pt-BR": "Invocador", en: "Summoner", es: "Convocador" },
+  "Pistoleiro": { "pt-BR": "Pistoleiro", en: "Gunslinger", es: "Pistolero" },
+  "Gunslinger": { "pt-BR": "Pistoleiro", en: "Gunslinger", es: "Pistolero" },
+  "Inventor": { "pt-BR": "Inventor", en: "Inventor", es: "Inventor" },
+  "Psíquico": { "pt-BR": "Psíquico", en: "Psychic", es: "Psíquico" },
+  "Taumaturgo": { "pt-BR": "Taumaturgo", en: "Thaumaturge", es: "Taumaturgo" },
+  "Animista": { "pt-BR": "Animista", en: "Animist", es: "Animista" },
+  "Comandante": { "pt-BR": "Comandante", en: "Commander", es: "Comandante" },
+  "Guardião": { "pt-BR": "Guardião", en: "Guardian", es: "Guardián" },
+
+  // Subclasses / Rackets / Doctrines
+  "Esquema de Ladrão": { "pt-BR": "Esquema de Ladrão", en: "Thief Racket", es: "Pícaro Ladrón" },
+  "Thief": { "pt-BR": "Esquema de Ladrão", en: "Thief Racket", es: "Pícaro Ladrón" },
+  "Sacerdote Guerreiro": { "pt-BR": "Sacerdote Guerreiro", en: "Warpriest", es: "Sacerdote Guerrero" },
+  "Warpriest": { "pt-BR": "Sacerdote Guerreiro", en: "Warpriest", es: "Sacerdote Guerrero" },
+
+  // Ancestries
+  "Humano": { "pt-BR": "Humano", en: "Human", es: "Humano" },
+  "Human": { "pt-BR": "Humano", en: "Human", es: "Humano" },
+  "Anão": { "pt-BR": "Anão", en: "Dwarf", es: "Enano" },
+  "Dwarf": { "pt-BR": "Anão", en: "Dwarf", es: "Enano" },
+  "Elfo": { "pt-BR": "Elfo", en: "Elf", es: "Elfo" },
+  "Elf": { "pt-BR": "Elfo", en: "Elf", es: "Elfo" },
+  "Gnomo": { "pt-BR": "Gnomo", en: "Gnome", es: "Gnomo" },
+  "Gnome": { "pt-BR": "Gnomo", en: "Gnome", es: "Gnomo" },
+  "Goblin": { "pt-BR": "Goblin", en: "Goblin", es: "Goblin" },
+  "Halfling": { "pt-BR": "Halfling", en: "Halfling", es: "Mediano" },
+  "Leshy": { "pt-BR": "Leshy", en: "Leshy", es: "Leshy" },
+  "Orc": { "pt-BR": "Orc", en: "Orc", es: "Orco" },
+
+  // Heritages
+  "Humano Versátil": { "pt-BR": "Humano Versátil", en: "Versatile Human", es: "Humano Versátil" },
+  "Versatile Human": { "pt-BR": "Humano Versátil", en: "Versatile Human", es: "Humano Versátil" },
+  "Humano Habilidoso": { "pt-BR": "Humano Habilidoso", en: "Skilled Human", es: "Humano Diestro" },
+  "Skilled Human": { "pt-BR": "Humano Habilidoso", en: "Skilled Human", es: "Humano Diestro" },
+  "Elfo Ancestral": { "pt-BR": "Elfo Ancestral", en: "Ancient Elf", es: "Elfo Ancestral" },
+  "Ancient Elf": { "pt-BR": "Elfo Ancestral", en: "Ancient Elf", es: "Elfo Ancestral" },
+  "Anão da Forja": { "pt-BR": "Anão da Forja", en: "Forge Dwarf", es: "Enano de la Forja" },
+  "Forge Dwarf": { "pt-BR": "Anão da Forja", en: "Forge Dwarf", es: "Enano de la Forja" },
+  "Anão Couro-de-Pedra": { "pt-BR": "Anão Couro-de-Pedra", en: "Strong-Blooded Dwarf", es: "Enano de Sangre Fuerte" },
+  "Strong-Blooded Dwarf": { "pt-BR": "Anão Couro-de-Pedra", en: "Strong-Blooded Dwarf", es: "Enano de Sangre Fuerte" },
+  "Gnomo Feérico": { "pt-BR": "Gnomo Feérico", en: "Fey Gnome", es: "Gnomo Feérico" },
+  "Fey Gnome": { "pt-BR": "Gnomo Feérico", en: "Fey Gnome", es: "Gnomo Feérico" },
+  "Gnomo do Poço de Vigor": { "pt-BR": "Gnomo do Poço de Vigor", en: "Wellspring Gnome", es: "Gnomo de Fuente Vital" },
+  "Wellspring Gnome": { "pt-BR": "Gnomo do Poço de Vigor", en: "Wellspring Gnome", es: "Gnomo de Fuente Vital" },
+  "Orc Cicatrizado": { "pt-BR": "Orc Cicatrizado", en: "Hold-Scarred Orc", es: "Orco Curtido" },
+  "Hold-Scarred Orc": { "pt-BR": "Orc Cicatrizado", en: "Hold-Scarred Orc", es: "Orco Curtido" },
+  "Goblin Dente-de-Navalha": { "pt-BR": "Goblin Dente-de-Navalha", en: "Razortooth Goblin", es: "Goblin de Dientes Afilados" },
+  "Razortooth Goblin": { "pt-BR": "Goblin Dente-de-Navalha", en: "Razortooth Goblin", es: "Goblin de Dientes Afilados" },
+
+  // Backgrounds
+  "Guarda": { "pt-BR": "Guarda", en: "Guard", es: "Guardia" },
+  "Guard": { "pt-BR": "Guarda", en: "Guard", es: "Guardia" },
+  "Nobre": { "pt-BR": "Nobre", en: "Noble", es: "Noble" },
+  "Noble": { "pt-BR": "Nobre", en: "Noble", es: "Noble" },
+  "Acólito": { "pt-BR": "Acólito", en: "Acolyte", es: "Acólito" },
+  "Acolyte": { "pt-BR": "Acólito", en: "Acolyte", es: "Acólito" },
+  "Criminoso": { "pt-BR": "Criminoso", en: "Criminal", es: "Criminal" },
+  "Criminal": { "pt-BR": "Criminoso", en: "Criminal", es: "Criminal" },
+  "Guerreiro (Antecedente)": { "pt-BR": "Guerreiro", en: "Warrior", es: "Guerrero" },
+  "Warrior": { "pt-BR": "Guerreiro", en: "Warrior", es: "Guerrero" },
+  "Fazendeiro": { "pt-BR": "Fazendeiro", en: "Farmhand", es: "Granjero" },
+  "Farmhand": { "pt-BR": "Fazendeiro", en: "Farmhand", es: "Granjero" },
+
+  // Weapons & Attacks
+  "Punho": { "pt-BR": "Punho", en: "Fist", es: "Puño" },
+  "Fist": { "pt-BR": "Punho", en: "Fist", es: "Puño" },
+  "Mandíbulas": { "pt-BR": "Mandíbulas", en: "Jaws", es: "Mandíbulas" },
+  "Jaws": { "pt-BR": "Mandíbulas", en: "Jaws", es: "Mandíbulas" },
+  "Adaga": { "pt-BR": "Adaga", en: "Dagger", es: "Daga" },
+  "Dagger": { "pt-BR": "Adaga", en: "Dagger", es: "Daga" },
+  "Espada Longa": { "pt-BR": "Espada Longa", en: "Longsword", es: "Espada Larga" },
+  "Longsword": { "pt-BR": "Espada Longa", en: "Longsword", es: "Espada Larga" },
+  "Espada Curta": { "pt-BR": "Espada Curta", en: "Shortsword", es: "Espada Corta" },
+  "Shortsword": { "pt-BR": "Espada Curta", en: "Shortsword", es: "Espada Corta" },
+  "Rapieira": { "pt-BR": "Rapieira", en: "Rapier", es: "Estoque" },
+  "Rapier": { "pt-BR": "Rapieira", en: "Rapier", es: "Estoque" },
+  "Arco Curto": { "pt-BR": "Arco Curto", en: "Shortbow", es: "Arco Corto" },
+  "Shortbow": { "pt-BR": "Arco Curto", en: "Shortbow", es: "Arco Corto" },
+  "Arco Longo": { "pt-BR": "Arco Longo", en: "Longbow", es: "Arco Largo" },
+  "Longbow": { "pt-BR": "Arco Longo", en: "Longbow", es: "Arco Largo" },
+  "Machado de Batalha": { "pt-BR": "Machado de Batalha", en: "Battle Axe", es: "Hacha de Batalla" },
+  "Battle Axe": { "pt-BR": "Machado de Batalha", en: "Battle Axe", es: "Hacha de Batalla" },
+  "Montante": { "pt-BR": "Montante", en: "Greatsword", es: "Espadón" },
+  "Greatsword": { "pt-BR": "Montante", en: "Greatsword", es: "Espadón" },
+  "Martelo de Guerra": { "pt-BR": "Martelo de Guerra", en: "Warhammer", es: "Martillo de Guerra" },
+  "Warhammer": { "pt-BR": "Martelo de Guerra", en: "Warhammer", es: "Martillo de Guerra" },
+  "Bordão": { "pt-BR": "Bordão", en: "Staff", es: "Bastón" },
+  "Staff": { "pt-BR": "Bordão", en: "Staff", es: "Bastón" },
+
+  // Feats
+  "Duro de Matar": { "pt-BR": "Duro de Matar", en: "Diehard", es: "Duro de Matar" },
+  "Diehard": { "pt-BR": "Duro de Matar", en: "Diehard", es: "Duro de Matar" },
+  "Pés Velozes": { "pt-BR": "Pés Velozes", en: "Fleet", es: "Pies Ligeros" },
+  "Fleet": { "pt-BR": "Pés Velozes", en: "Fleet", es: "Pies Ligeros" },
+  "Tenacidade": { "pt-BR": "Tenacidade", en: "Toughness", es: "Dureza" },
+  "Robustez": { "pt-BR": "Tenacidade", en: "Toughness", es: "Dureza" },
+  "Toughness": { "pt-BR": "Tenacidade", en: "Toughness", es: "Dureza" },
+  "Iniciativa Incrível": { "pt-BR": "Iniciativa Incrível", en: "Incredible Initiative", es: "Iniciativa Increíble" },
+  "Incredible Initiative": { "pt-BR": "Iniciativa Incrível", en: "Incredible Initiative", es: "Iniciativa Increíble" },
+  "Investida Repentina": { "pt-BR": "Investida Repentina", en: "Sudden Charge", es: "Carga Repentina" },
+  "Sudden Charge": { "pt-BR": "Investida Repentina", en: "Sudden Charge", es: "Carga Repentina" },
+  "Golpe Duplo": { "pt-BR": "Golpe Duplo", en: "Double Slice", es: "Tajo Doble" },
+  "Double Slice": { "pt-BR": "Golpe Duplo", en: "Double Slice", es: "Tajo Doble" },
+  "Ataque de Oportunidade": { "pt-BR": "Ataque de Oportunidade", en: "Attack of Opportunity", es: "Ataque de Oportunidad" },
+  "Attack of Opportunity": { "pt-BR": "Ataque de Oportunidade", en: "Attack of Opportunity", es: "Ataque de Oportunidad" },
+  "Ambição Natural": { "pt-BR": "Ambição Natural", en: "Natural Ambition", es: "Ambición Natural" },
+  "Natural Ambition": { "pt-BR": "Ambição Natural", en: "Natural Ambition", es: "Ambición Natural" },
+  "Treinamento Versátil": { "pt-BR": "Treinamento Versátil", en: "General Training", es: "Entrenamiento General" },
+  "General Training": { "pt-BR": "Treinamento Versátil", en: "General Training", es: "Entrenamiento General" },
+
+  // Senses
+  "Visão no Escuro": { "pt-BR": "Visão no Escuro", en: "Darkvision", es: "Visión en la Oscuridad" },
+  "Darkvision": { "pt-BR": "Visão no Escuro", en: "Darkvision", es: "Visión en la Oscuridad" },
+  "Visão na Penumbra": { "pt-BR": "Visão na Penumbra", en: "Low-Light Vision", es: "Visión en la Penumbra" },
+  "Low-Light Vision": { "pt-BR": "Visão na Penumbra", en: "Low-Light Vision", es: "Visión en la Penumbra" }
+};
+
+export const PDF_DAMAGE_TYPES_DICT: Record<string, Record<PdfLocale, string>> = {
+  "perfurante": { "pt-BR": "perfurante", en: "piercing", es: "perforante" },
+  "piercing": { "pt-BR": "perfurante", en: "piercing", es: "perforante" },
+  "cortante": { "pt-BR": "cortante", en: "slashing", es: "cortante" },
+  "slashing": { "pt-BR": "cortante", en: "slashing", es: "cortante" },
+  "impacto": { "pt-BR": "impacto", en: "bludgeoning", es: "contundente" },
+  "bludgeoning": { "pt-BR": "impacto", en: "bludgeoning", es: "contundente" }
+};
+
+export function localizeCatalogItem(rawName: string | undefined | null, locale: PdfLocale): string {
+  if (!rawName) return "";
+  const trimmed = String(rawName).trim();
+  if (PDF_CATALOG_DICT[trimmed]?.[locale]) {
+    return PDF_CATALOG_DICT[trimmed][locale];
+  }
+  const cleanKey = trimmed.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+  for (const [key, map] of Object.entries(PDF_CATALOG_DICT)) {
+    const kNorm = key.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+    if (kNorm === cleanKey && map[locale]) return map[locale];
+  }
+  const data = typeof PF2E_DATA !== "undefined" ? PF2E_DATA : (globalThis as any).PF2E_DATA;
+  if (data) {
+    const collections = [data.heritages, data.feats, data.actions, data.ancestries, data.classes, data.backgrounds, data.spells, data.weapons];
+    for (const col of collections) {
+      if (!col) continue;
+      const found = (Array.isArray(col) ? col : Object.values(col)).find((entry: any) => {
+        if (!entry) return false;
+        if (entry.id === trimmed || entry.name === trimmed) return true;
+        if (entry.names && Object.values(entry.names).includes(trimmed)) return true;
+        const eNorm = String(entry.name || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+        return eNorm === cleanKey;
+      });
+      if (found) {
+        if (found.names && found.names[locale]) return found.names[locale];
+        if (locale === "pt-BR" && found.name) return found.name;
+        if (found.en && locale === "en") return found.en;
+        if (found.es && locale === "es") return found.es;
+      }
+    }
+  }
+  return trimmed;
+}
+
+export function localizeTrait(trait: string | undefined | null, locale: PdfLocale): string {
+  if (!trait) return "";
+  const trimmed = String(trait).trim();
+  const lower = trimmed.toLowerCase();
+  if (PDF_TRAITS_DICT[lower]?.[locale]) return PDF_TRAITS_DICT[lower][locale];
+  const cleanKey = lower.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+  for (const [key, map] of Object.entries(PDF_TRAITS_DICT)) {
+    const kNorm = key.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+    if (kNorm === cleanKey && map[locale]) return map[locale];
+  }
+  return trimmed;
+}
+
+export function localizeDamageType(dt: string | undefined | null, locale: PdfLocale): string {
+  if (!dt) return "";
+  const lower = String(dt).toLowerCase().trim();
+  return PDF_DAMAGE_TYPES_DICT[lower]?.[locale] || dt;
+}
+
+export function localizeSense(sense: string | undefined | null, locale: PdfLocale): string {
+  if (!sense) return "";
+  return localizeCatalogItem(sense, locale);
+}
+
+export function getLocalizedFeatDetails(featNameOrId: string | undefined | null, locale: PdfLocale) {
+  const locName = localizeCatalogItem(featNameOrId, locale);
+  let notes = "";
+  let traits = "";
+  let description = "";
+
+  const data = typeof PF2E_DATA !== "undefined" ? PF2E_DATA : (globalThis as any).PF2E_DATA;
+  if (data && data.feats && Array.isArray(data.feats)) {
+    const cleanKey = String(featNameOrId || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+    const found = data.feats.find((f: any) => {
+      if (!f) return false;
+      if (f.id === featNameOrId || f.name === featNameOrId) return true;
+      if (f.names && Object.values(f.names).includes(featNameOrId)) return true;
+      const fNorm = String(f.name || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+      return fNorm === cleanKey;
+    });
+    if (found) {
+      if (found.source?.book) {
+        notes = `${found.source.book}${found.source.page ? ` p.${found.source.page}` : ""}`;
+      }
+      if (Array.isArray(found.traits)) {
+        traits = found.traits.map((t: string) => localizeTrait(t, locale)).join(", ");
+      }
+      description = found.summaries?.[locale] || found.description || "";
+    }
+  }
+
+  return { name: locName, notes, traits, description };
 }
 
 export async function fillCharacterPdfForm(
   character: CharacterDocument,
-  pdfTemplateBytes: Uint8Array | ArrayBuffer
+  pdfTemplateBytes: Uint8Array | ArrayBuffer,
+  options?: PdfExportOptions
 ): Promise<Uint8Array> {
   const engine = typeof PF2E_ENGINE !== "undefined" ? PF2E_ENGINE : (globalThis as any).PF2E_ENGINE;
   const level = Number(character.level || 1);
+  const locale: PdfLocale = options?.locale || character.locale || (typeof window !== "undefined" && (window.localStorage?.getItem("pathbuilder.locale") as any)) || "pt-BR";
+  const isEn = locale === "en";
+  const isEs = locale === "es";
 
   const getProfBonus = (rank: string | undefined, lvl: number): number => {
     if (engine && typeof engine.getProficiencyBonus === "function") {
@@ -187,20 +529,29 @@ export async function fillCharacterPdfForm(
   // ----------------------------------------------------
   // 1. CABEÇALHO & INFORMAÇÕES BÁSICAS
   // ----------------------------------------------------
-  setTxt("Character Name", character.name || "Sem Nome");
+  setTxt("Character Name", character.name || (isEn ? "Unnamed" : (isEs ? "Sin Nombre" : "Sem Nome")));
   setTxt("Player Name", character.playerName || "");
-  setTxt("Ancestry", character.ancestry || "");
-  const traitsStr = Array.isArray(character.traits) ? character.traits.join(", ") : "";
-  const heritageTraits = [character.heritage, traitsStr].filter(Boolean).join(" · ");
+  const locAncestry = localizeCatalogItem(character.ancestry, locale);
+  setTxt("Ancestry", locAncestry);
+  const locHeritage = localizeCatalogItem(character.heritage, locale);
+  const locTraits = (character.traits || []).map(t => localizeTrait(t, locale));
+  const heritageTraits = [locHeritage, ...locTraits].filter(Boolean).join(" · ");
   setTxt("Heritage and Traits", heritageTraits);
-  setTxt("Background", character.background || "");
-  const fullClass = [character.class, character.subclass].filter(Boolean).join(" - ");
+  const locBackground = localizeCatalogItem(character.background, locale);
+  setTxt("Background", locBackground);
+  const locClass = localizeCatalogItem(character.class, locale);
+  const locSubclass = localizeCatalogItem(character.subclass, locale);
+  const fullClass = [locClass, locSubclass].filter(Boolean).join(" - ");
   setTxt("Class", fullClass);
   setTxt("LEVEL", String(character.level || 1));
-  setTxt("Size", character.size || "Médio");
+  const rawSize = character.size || "Médio";
+  const locSize = PDF_SIZES[rawSize]?.[locale] || rawSize;
+  setTxt("Size", locSize);
   setTxt("Deity or Philosophy", character.deity || "");
-  setTxt("Attitude", character.alignment || "Neutro");
-  setTxt("LANGUAGES", Array.isArray(character.languages) ? character.languages.join(", ") : "Comum");
+  const rawAlignment = character.alignment || "Neutro";
+  const locAlignment = PDF_ALIGNMENTS[rawAlignment]?.[locale] || rawAlignment;
+  setTxt("Attitude", locAlignment);
+  setTxt("LANGUAGES", Array.isArray(character.languages) ? character.languages.join(", ") : (isEn ? "Common" : (isEs ? "Común" : "Comum")));
   setTxt("EXPERIENCE POINTS", String(character.xp || 0));
 
   const heroPoints = Number(character.heroPoints || 1);
@@ -264,7 +615,7 @@ export async function fillCharacterPdfForm(
   const charResistances = (Array.isArray(character.resistances) && character.resistances.length > 0)
     ? character.resistances
     : (Array.isArray(calc.resistances) ? calc.resistances : []);
-  setTxt("RESISTANCE AND IMMUNITIES", charResistances.map((r: any) => typeof r === "object" ? `${r.type || r.name} ${r.value || ""}`.trim() : String(r)).join(", "));
+  setTxt("RESISTANCE AND IMMUNITIES", charResistances.map((r: any) => typeof r === "object" ? `${localizeCatalogItem(r.type || r.name, locale)} ${r.value || ""}`.trim() : localizeCatalogItem(String(r), locale)).join(", "));
   if (character.defenseNotes) {
     setTxt("DEFENSE NOTES", character.defenseNotes);
   }
@@ -294,12 +645,14 @@ export async function fillCharacterPdfForm(
   setTxt("PERCEPTION ITEM", character.itemBonuses?.perception || 0);
   setProfChecks("PERCEPTION", character.perceptionRank || "Treinado");
 
-  const sensesList = Array.isArray(character.senses)
-    ? character.senses.join(", ")
-    : (character.senses || (calc.senses ? (Array.isArray(calc.senses) ? calc.senses.join(", ") : String(calc.senses)) : ""));
+  const sensesList = (Array.isArray(character.senses)
+    ? character.senses
+    : (character.senses ? [String(character.senses)] : (calc.senses || [])))
+    .map(s => localizeSense(String(s), locale))
+    .join(", ");
   setTxt("SENSES AND NOTES", sensesList);
 
-  setTxt("SPEED", `${calc.speed || 25} pés`);
+  setTxt("SPEED", `${calc.speed || 25} ${isEn ? "ft" : (isEs ? "pies" : "pés")}`);
   setTxt("SPECIAL MOVEMENT", character.specialMovements || "");
 
   // ----------------------------------------------------
@@ -361,8 +714,9 @@ export async function fillCharacterPdfForm(
   // Lores
   const loreSkills = character.loreSkills || [];
   if (loreSkills[0]) {
-    setTxt("LORE CATAGORY 1", loreSkills[0].name || "Saber");
-    setTxt("LORE CATEGORY 1", loreSkills[0].name || "Saber");
+    const locLoreName = localizeCatalogItem(loreSkills[0].name, locale) || (isEn ? "Lore" : (isEs ? "Saber" : "Saber"));
+    setTxt("LORE CATAGORY 1", locLoreName);
+    setTxt("LORE CATEGORY 1", locLoreName);
     const l1Prof = getProfBonus(loreSkills[0].rank || "Treinado", level);
     setTxt("LORE1", formatMod(mods.int + l1Prof));
     setTxt("LORE 1 INTELLIGENCE", formatMod(mods.int));
@@ -371,7 +725,8 @@ export async function fillCharacterPdfForm(
     setProfChecks("LORE1", loreSkills[0].rank || "Treinado");
   }
   if (loreSkills[1]) {
-    setTxt("LORE CATEGORY 2", loreSkills[1].name || "Saber");
+    const locLoreName2 = localizeCatalogItem(loreSkills[1].name, locale) || (isEn ? "Lore" : (isEs ? "Saber" : "Saber"));
+    setTxt("LORE CATEGORY 2", locLoreName2);
     const l2Prof = getProfBonus(loreSkills[1].rank || "Treinado", level);
     setTxt("LORE2", formatMod(mods.int + l2Prof));
     setTxt("LORE CATEGORY 2 ITENLLIGENCE", formatMod(mods.int));
@@ -389,13 +744,13 @@ export async function fillCharacterPdfForm(
 
   const applyDamageTypeChecks = (dt: string | undefined, suffix: string) => {
     const t = String(dt || "").toLowerCase();
-    if (t.includes("impacto") || t.includes("bludgeoning") || t.includes("esmagamento") || t.includes("b")) {
+    if (t.includes("impacto") || t.includes("bludgeoning") || t.includes("contundente") || t.includes("esmagamento") || t === "b") {
       setChk(`B${suffix}`, true);
     }
-    if (t.includes("perfuração") || t.includes("piercing") || t.includes("perfurante") || t.includes("p")) {
+    if (t.includes("perfuração") || t.includes("piercing") || t.includes("perfurante") || t === "p") {
       setChk(`P${suffix}`, true);
     }
-    if (t.includes("cortante") || t.includes("slashing") || t.includes("corte") || t.includes("s")) {
+    if (t.includes("cortante") || t.includes("slashing") || t.includes("corte") || t === "s") {
       setChk(`S${suffix}`, true);
     }
   };
@@ -403,28 +758,36 @@ export async function fillCharacterPdfForm(
   meleeStrikes.slice(0, 3).forEach((st: any, idx: number) => {
     const n = idx + 1;
     const totalAtk = st.totalAttack !== undefined ? st.totalAttack : (st.attackBonus || 0);
-    setTxt(`MELEE STRIKE ${n}`, st.name);
+    const locStrikeName = localizeCatalogItem(st.name, locale);
+    const locDamageType = localizeDamageType(st.damageType, locale);
+    const locTraitsStr = (st.traits || []).map((t: string) => localizeTrait(t, locale)).join(", ");
+
+    setTxt(`MELEE STRIKE ${n}`, locStrikeName);
     setTxt(`MELEE STRIKE ${n} ATTACK BONUS`, formatMod(totalAtk));
     setTxt(`MELEE STRIKE ${n} STRENGTH`, formatMod(mods.str));
     setTxt(`MELEE STRIKE ${n} PROFICIENCY`, getProfBonus(st.rank || "Treinado", level));
     setTxt(`MELEE STRIKE ${n} ITEM BONUS`, st.itemBonus || 0);
     setTxt(`MELEE STRIKE ${n} ITEM`, st.itemBonus || 0);
-    setTxt(`MELEE STRIKE ${n} DAMAGE`, `${st.damage} ${st.damageType || ""}`.trim());
-    setTxt(`MELEE STRIKE ${n} TRAITS AND NOTES`, (st.traits || []).join(", "));
+    setTxt(`MELEE STRIKE ${n} DAMAGE`, `${st.damage} ${locDamageType}`.trim());
+    setTxt(`MELEE STRIKE ${n} TRAITS AND NOTES`, locTraitsStr);
     applyDamageTypeChecks(st.damageType, n === 1 ? "" : `_${n}`);
   });
 
   rangedStrikes.slice(0, 2).forEach((st: any, idx: number) => {
     const n = idx + 4;
     const totalAtk = st.totalAttack !== undefined ? st.totalAttack : (st.attackBonus || 0);
-    setTxt(`RANGED STRIKE ${n}`, st.name);
+    const locStrikeName = localizeCatalogItem(st.name, locale);
+    const locDamageType = localizeDamageType(st.damageType, locale);
+    const locTraitsStr = (st.traits || []).map((t: string) => localizeTrait(t, locale)).join(", ");
+
+    setTxt(`RANGED STRIKE ${n}`, locStrikeName);
     setTxt(`RANGED STRIKE ${n} ATTACK BONUS`, formatMod(totalAtk));
     setTxt(`RANGED STRIKE ${n} DEXTERITY`, formatMod(mods.dex));
     setTxt(`RANGED STRIKE ${n} PROFICIENCY`, getProfBonus(st.rank || "Treinado", level));
     setTxt(`RANGED STRIKE ${n} ITEM BONUS`, st.itemBonus || 0);
     setTxt(`RANGED STRIKE ${n} ITEM`, st.itemBonus || 0);
-    setTxt(`RANGED STRIKE ${n} DAMAGE`, `${st.damage} ${st.damageType || ""}`.trim());
-    setTxt(`RANGED STRIKE ${n} TRAITS AND NOTES`, (st.traits || []).join(", "));
+    setTxt(`RANGED STRIKE ${n} DAMAGE`, `${st.damage} ${locDamageType}`.trim());
+    setTxt(`RANGED STRIKE ${n} TRAITS AND NOTES`, locTraitsStr);
     applyDamageTypeChecks(st.damageType, `_${n}`);
   });
 
@@ -486,36 +849,47 @@ export async function fillCharacterPdfForm(
     }
   });
 
+  const tLabels = {
+    ancestry: isEn ? "Ancestry" : (isEs ? "Ascendencia" : "Ancestralidade"),
+    heritage: isEn ? "Heritage" : (isEs ? "Herencia" : "Herança"),
+    senses: isEn ? "Senses" : (isEs ? "Sentidos" : "Sentidos"),
+    movement: isEn ? "Movement" : (isEs ? "Movimiento" : "Movimento"),
+    generalFeats: isEn ? "General Feats" : (isEs ? "Dotes Generales" : "Talentos Gerais"),
+  };
+
+  const locGeneralFeatsStr = generalFeatsList.map(f => localizeCatalogItem(f, locale)).join(", ");
   const ancestryAndHeritageAbilities = [
-    character.ancestry ? `Ancestralidade: ${character.ancestry}` : "",
-    character.heritage ? `Herança: ${character.heritage}` : "",
-    sensesList ? `Sentidos: ${sensesList}` : "",
-    character.specialMovements ? `Movimento: ${character.specialMovements}` : "",
-    generalFeatsList.length ? `Talentos Gerais: ${generalFeatsList.join(", ")}` : ""
+    locAncestry ? `${tLabels.ancestry}: ${locAncestry}` : "",
+    locHeritage ? `${tLabels.heritage}: ${locHeritage}` : "",
+    sensesList ? `${tLabels.senses}: ${sensesList}` : "",
+    character.specialMovements ? `${tLabels.movement}: ${character.specialMovements}` : "",
+    generalFeatsList.length ? `${tLabels.generalFeats}: ${locGeneralFeatsStr}` : ""
   ].filter(Boolean).join("\n");
   setTxt("ANCESTRY & HERITAGE ABILITIES", ancestryAndHeritageAbilities);
-  setTxt("ANCESTRY FEAT", ancestryFeatsList.join(", "));
-  setTxt("BACKGROUND SKILL FEAT", backgroundSkillFeat || (progression["background_feat"] || ""));
+  setTxt("ANCESTRY FEAT", ancestryFeatsList.map(f => localizeCatalogItem(f, locale)).join(", "));
+  setTxt("BACKGROUND SKILL FEAT", localizeCatalogItem(backgroundSkillFeat || (progression["background_feat"] || ""), locale));
 
   const classFeatures = Array.isArray(character.classFeatures) && character.classFeatures.length
     ? character.classFeatures
     : Object.entries(progression).filter(([k]) => k.includes("class_feature")).map(([, v]) => String(v));
-  setTxt("CLASS FEATS & FEATURES", classFeatures.join("\n"));
+  setTxt("CLASS FEATS & FEATURES", classFeatures.map(f => localizeCatalogItem(f, locale)).join("\n"));
 
   // Preenche linhas numeradas de Talentos de Classe (1-20)
   classFeatsList.slice(0, 20).forEach((f, idx) => {
     const lvl = idx + 1;
-    setTxt(`CLASS FEAT ${lvl}-1`, f.name);
-    if (f.notes) setTxt(`CLASS FEAT ${lvl}-2`, f.notes);
-    if (f.traits) setTxt(`CLASS FEAT ${lvl}-3`, f.traits);
+    const details = getLocalizedFeatDetails(f.name, locale);
+    setTxt(`CLASS FEAT ${lvl}-1`, details.name);
+    setTxt(`CLASS FEAT ${lvl}-2`, details.notes || f.notes || details.description || "");
+    setTxt(`CLASS FEAT ${lvl}-3`, details.traits || f.traits || "");
   });
 
   // Preenche linhas numeradas de Talentos de Perícia (2-20)
   skillFeatsList.slice(0, 20).forEach((f, idx) => {
     const lvl = idx + 2;
-    setTxt(`SKILL FEAT ${lvl}-1`, f.name);
-    if (f.notes) setTxt(`SKILL FEAT ${lvl}-2`, f.notes);
-    if (f.traits) setTxt(`SKILL FEAT ${lvl}-3`, f.traits);
+    const details = getLocalizedFeatDetails(f.name, locale);
+    setTxt(`SKILL FEAT ${lvl}-1`, details.name);
+    setTxt(`SKILL FEAT ${lvl}-2`, details.notes || f.notes || details.description || "");
+    setTxt(`SKILL FEAT ${lvl}-3`, details.traits || f.traits || "");
   });
 
   // ----------------------------------------------------
@@ -524,7 +898,8 @@ export async function fillCharacterPdfForm(
   const actionsList = character.actions || [];
   actionsList.slice(0, 10).forEach((act, idx) => {
     const n = idx + 1;
-    setTxt(`ACTION NAME ${n}`, act.name);
+    const locActName = localizeCatalogItem(act.name, locale);
+    setTxt(`ACTION NAME ${n}`, locActName);
     setTxt(`ACTIONS COUNT ${n}`, String(act.actions || "◆"));
     setTxt(`ACTION SOURCE ${n}`, act.source || act.description || "");
   });
@@ -532,7 +907,8 @@ export async function fillCharacterPdfForm(
   const reactionsList = character.reactions || [];
   reactionsList.slice(0, 5).forEach((react, idx) => {
     const n = idx + 1;
-    setTxt(`REACTION NAME ${n}`, react.name);
+    const locReactName = localizeCatalogItem(react.name, locale);
+    setTxt(`REACTION NAME ${n}`, locReactName);
     setTxt(`REACTIONS TRIGGER ${n}`, react.trigger || "");
     setTxt(`REACTIONS EFFECTS ${n}`, react.effect || react.description || "");
   });
@@ -547,19 +923,22 @@ export async function fillCharacterPdfForm(
 
   wornItems.slice(0, 19).forEach((item, idx) => {
     const n = idx + 1;
-    setTxt(`WORN ${n}`, `${item.qty && item.qty > 1 ? item.qty + 'x ' : ''}${item.name}`);
+    const locItemName = localizeCatalogItem(item.name, locale);
+    setTxt(`WORN ${n}`, `${item.qty && item.qty > 1 ? item.qty + 'x ' : ''}${locItemName}`);
     setTxt(`WORN BULK ${n}`, String(item.bulk || "—"));
   });
   heldItems.slice(0, 11).forEach((item, idx) => {
     const n = idx + 1;
-    const text = `${item.qty && item.qty > 1 ? item.qty + 'x ' : ''}${item.name}`;
+    const locItemName = localizeCatalogItem(item.name, locale);
+    const text = `${item.qty && item.qty > 1 ? item.qty + 'x ' : ''}${locItemName}`;
     if (n === 1) setTxt("HELD1", text);
     setTxt(`HELD ${n}`, text);
     setTxt(`HELD BULK ${n}`, String(item.bulk || "—"));
   });
   consumableItems.slice(0, 11).forEach((item, idx) => {
     const n = idx + 1;
-    setTxt(`CONSUMABLES ${n}`, `${item.qty && item.qty > 1 ? item.qty + 'x ' : ''}${item.name}`);
+    const locItemName = localizeCatalogItem(item.name, locale);
+    setTxt(`CONSUMABLES ${n}`, `${item.qty && item.qty > 1 ? item.qty + 'x ' : ''}${locItemName}`);
     setTxt(`CONSUMABLES BULK ${n}`, String(item.bulk || "—"));
   });
 
@@ -637,7 +1016,8 @@ export async function fillCharacterPdfForm(
   setTxt("CANTRIPS RANK", String(cantripHeightenedRank));
   cantrips.slice(0, 18).forEach((c, idx) => {
     const n = idx + 1;
-    setTxt(`CANTRIP NAME ${n}`, c.name);
+    const locSpellName = localizeCatalogItem(c.name, locale);
+    setTxt(`CANTRIP NAME ${n}`, locSpellName);
     setTxt(`CANTRIP ${n} ACTIONS`, c.actions || "◆◆");
     setChk(`CANTRIP ${n} PREPARED`, true);
   });
@@ -645,7 +1025,8 @@ export async function fillCharacterPdfForm(
   // Preenche Magias de Nível
   leveledSpells.slice(0, 35).forEach((sp, idx) => {
     const n = idx + 1;
-    setTxt(`SPELL ${n}`, sp.name);
+    const locSpellName = localizeCatalogItem(sp.name, locale);
+    setTxt(`SPELL ${n}`, locSpellName);
     setTxt(`SPELL RANK ${n}`, String(sp.rank || 1));
     setTxt(`SPELL ACTION ${n}`, sp.actions || "◆◆");
     setChk(`SPELL PREPARED ${n}`, true);
@@ -655,8 +1036,9 @@ export async function fillCharacterPdfForm(
   const innateSpells = Array.isArray(character.innateSpells) ? character.innateSpells : [];
   innateSpells.slice(0, 6).forEach((insp, idx) => {
     const n = idx + 1;
-    setTxt(`INNATE SPELL ${n}`, insp.name);
-    setTxt(`INNATE FREQ ${n}`, insp.freq || "1/dia");
+    const locSpellName = localizeCatalogItem(insp.name, locale);
+    setTxt(`INNATE SPELL ${n}`, locSpellName);
+    setTxt(`INNATE FREQ ${n}`, insp.freq || (isEn ? "1/day" : (isEs ? "1/día" : "1/dia")));
     setTxt(`INNATE SPELL ACTION ${n}`, insp.actions || "◆◆");
   });
 
@@ -664,7 +1046,8 @@ export async function fillCharacterPdfForm(
   const focusSpells = Array.isArray(character.focusSpells) ? character.focusSpells : [];
   focusSpells.slice(0, 8).forEach((fsp, idx) => {
     const n = idx + 1;
-    setTxt(`FOCUS SPELL ${n}`, fsp.name);
+    const locSpellName = localizeCatalogItem(fsp.name, locale);
+    setTxt(`FOCUS SPELL ${n}`, locSpellName);
     setTxt(`FOCUS SPELL ACTIONS ${n}`, fsp.actions || "◆");
   });
   setTxt("FOCUS SPELL RANK", String(character.focusSpellRank || cantripHeightenedRank));

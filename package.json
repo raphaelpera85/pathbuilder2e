@@ -29,6 +29,7 @@
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "jsdom": "latest",
+    "playwright": "^1.62.1",
     "puppeteer-core": "^25.9.0",
     "vitest": "latest"
   }
