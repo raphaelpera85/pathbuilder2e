@@ -1944,6 +1944,7 @@ const PF2E_ENGINE = {
     const heritageOption = resolveAncestryOption("heritage");
     const heritageData = this.resolveHeritageRecord(character) || heritageOption || {};
     const subclassData = this.resolveSubclassRecord(character) || {};
+    const backgroundData = this.resolveCatalogRecord(PF2E_DATA.backgrounds, character.background) || {};
     const ancestryHp = sizeOption?.hp ?? ancestryData.hp ?? 8;
     const classHpPerLvl = classData.hpPerLevel || 10;
     const conBonus = mods.con;
@@ -2001,7 +2002,26 @@ const PF2E_ENGINE = {
     const abpBonuses = this.getAutomaticBonusProgression(level, isAbp);
 
     // 4. Classe de Armadura (CA)
-    const equippedArmor = character.equippedArmor || { name: "Sem Armadura (Trajes)", category: "Sem Armadura", acBonus: 0, dexCap: 5, checkPenalty: 0, speedPenalty: 0 };
+    let equippedArmor = character.equippedArmor;
+    if (!equippedArmor && Array.isArray(character.inventory)) {
+      const armorsCatalog = (typeof PF2E_DATA !== "undefined" && PF2E_DATA.armors) ? PF2E_DATA.armors : [];
+      const armorItem = character.inventory.find(i => i.equipped && (i.category === "Armadura" || /armadura|armor|couro|leather|cota|chain|malha|placa|plate/i.test(i.name)));
+      if (armorItem) {
+        const aNorm = String(armorItem.name).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        const found = armorsCatalog.find(a => {
+          const catNorm = String(a.name).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+          return aNorm.includes(catNorm) || catNorm.includes(aNorm) ||
+            (aNorm.includes("couro batido") && catNorm.includes("studded leather")) ||
+            (aNorm.includes("couro") && catNorm.includes("leather"));
+        });
+        if (found) {
+          equippedArmor = { ...found, name: armorItem.name, runes: armorItem.runes };
+        }
+      }
+    }
+    if (!equippedArmor) {
+      equippedArmor = { name: "Sem Armadura (Trajes)", category: "Sem Armadura", acBonus: 0, dexCap: 5, checkPenalty: 0, speedPenalty: 0 };
+    }
     const isMediumTrainedSubclass = Array.isArray(subclassData.armorProf) && subclassData.armorProf.includes("medium");
     const armorProfRank = character.armorProficiencies?.[equippedArmor.category] || (isMediumTrainedSubclass && (equippedArmor.category === "Média" || equippedArmor.category === "Medium") ? "Treinado" : "Treinado");
     const armorProfBonus = this.getProficiencyBonus(armorProfRank, level);
@@ -2065,9 +2085,13 @@ const PF2E_ENGINE = {
     const armorPenalty = (equippedArmor.checkPenalty && scores.str < (equippedArmor.strReq || 10)) ? equippedArmor.checkPenalty : 0;
 
     PF2E_DATA.skills.forEach(sk => {
+      const classFixed = Array.isArray(classData.fixedSkills) && classData.fixedSkills.includes(sk.id);
+      const classTrained = Array.isArray(classData.trainedSkills) && classData.trainedSkills.includes(sk.id);
+      const bgTrained = (backgroundData.skill === sk.id || (Array.isArray(backgroundData.skills) && backgroundData.skills.includes(sk.id)));
       const subclassTrained = Array.isArray(subclassData.trainedSkills) && subclassData.trainedSkills.includes(sk.id);
       const heritageTrained = Array.isArray(heritageData.trainedSkills) && heritageData.trainedSkills.includes(sk.id);
-      const rank = character.skills?.[sk.id] || ((subclassTrained || heritageTrained) ? "Treinado" : "Destreinado");
+      const isAutoTrained = classFixed || classTrained || bgTrained || subclassTrained || heritageTrained;
+      const rank = character.skills?.[sk.id] || (isAutoTrained ? "Treinado" : "Destreinado");
       const profBonus = this.getProficiencyBonus(rank, level) + (featEffects.untrainedSkillBonus && (rank === "Destreinado" || rank === "U") ? (level >= 7 ? level : Math.floor(level / 2)) : 0);
       const attrMod = mods[sk.ability];
       const itemBonus = Math.max(Number(character.itemBonuses?.[sk.id]) || 0, equipmentBonuses.skills[sk.id] || 0);
@@ -2120,7 +2144,55 @@ const PF2E_ENGINE = {
     const classDc = 10 + (mods[keyAttr] || mods.dex) + classDcProf - classDcPenalty;
 
     // 9. Armas e Golpes
-    const baseWeapons = Array.isArray(character.weapons) ? [...character.weapons] : [];
+    const catalogWeapons = (typeof PF2E_DATA !== "undefined" && PF2E_DATA.weapons) ? PF2E_DATA.weapons : [];
+    const rawWeapons = Array.isArray(character.weapons) && character.weapons.length ? [...character.weapons] : [];
+    if (!rawWeapons.length && Array.isArray(character.inventory)) {
+      character.inventory.forEach(item => {
+        if (!item || !item.name) return;
+        const itemName = String(item.name).toLowerCase();
+        const foundCat = catalogWeapons.find(cw => {
+          const cwName = String(cw.name).toLowerCase();
+          const cleanCw = cwName.replace(/\s*\([^)]*\)/g, "");
+          const slashParts = cleanCw.split("/").map(p => p.trim());
+          return slashParts.some(p => p && itemName.includes(p)) || itemName.includes("rapieira") || itemName.includes("rapier") || itemName.includes("main-gauche") || itemName.includes("adaga");
+        });
+        if (foundCat && (item.equipped || rawWeapons.length < 2)) {
+          rawWeapons.push({
+            name: item.name,
+            ...foundCat,
+            qty: item.qty || 1
+          });
+        }
+      });
+    }
+    const baseWeapons = rawWeapons.map(w => {
+      if (!w || typeof w !== "object") return w;
+      const wName = String(w.name || "").trim().toLowerCase();
+      const wNorm = wName.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+      const cat = catalogWeapons.find(cw => {
+        if (cw.id && cw.id === w.id) return true;
+        const cwName = String(cw.name || "").trim().toLowerCase();
+        if (cwName === wName) return true;
+        const cwNorm = cwName.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+        if (cwNorm && cwNorm === wNorm) return true;
+        for (const val of Object.values(cw.names || {})) {
+          const valNorm = String(val).trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+          if (valNorm && (valNorm === wNorm || wNorm.startsWith(valNorm) || valNorm.startsWith(wNorm))) return true;
+        }
+        return false;
+      });
+      if (cat) {
+        return {
+          ...cat,
+          ...w,
+          traits: (Array.isArray(w.traits) && w.traits.length) ? w.traits : cat.traits,
+          damage: w.damage || cat.damage,
+          damageType: w.damageType || cat.damageType,
+          category: w.category || cat.category
+        };
+      }
+      return w;
+    });
     const heritageAttacks = Array.isArray(heritageData.attacks) ? heritageData.attacks : [];
     for (const ha of heritageAttacks) {
       const exists = baseWeapons.some(w => String(w.name || "").toLowerCase() === String(ha.name || "").toLowerCase());
@@ -2289,6 +2361,15 @@ const PF2E_ENGINE = {
       loreSkills: loreCalculated,
       trainedSkills,
       classDc,
+      classDcObj: {
+        total: classDc,
+        key: mods[keyAttr] !== undefined ? mods[keyAttr] : mods.dex,
+        prof: classDcProf,
+        item: 0,
+        rank: character.classDcRank || "Treinado"
+      },
+      keyAttribute: keyAttr,
+      equippedArmor,
       bulk: {
         max: maxBulk,
         maxLimit: maxBulk,

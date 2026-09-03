@@ -346,6 +346,17 @@
     "bludgeoning": { "pt-BR": "Impacto", en: "Bludgeoning", es: "Contundente" }
   };
 
+  function cleanWeaponName(name, locale) {
+    if (!name) return "";
+    let clean = String(name).replace(/\s*\([^)]*\d+d\d+[^)]*\)/g, "").trim();
+    if (clean.includes("/")) {
+      const parts = clean.split("/").map(s => s.trim());
+      if (locale === "pt-BR") clean = parts[1] || parts[0];
+      else clean = parts[0];
+    }
+    return clean;
+  }
+
   function localizeCatalogItem(rawName, locale) {
     if (!rawName) return "";
     const trimmed = String(rawName).trim();
@@ -441,6 +452,13 @@
 
   function getLocalizedFeatDetails(featNameOrId, locale) {
     const locName = localizeCatalogItem(featNameOrId, locale);
+    let cleanName = locName;
+    const matchParentheses = locName.match(/^([^(]+?)\s*\(([^)]+)\)$/);
+    if (matchParentheses) {
+      if (locale === "pt-BR") cleanName = matchParentheses[1].trim();
+      else if (locale === "en") cleanName = matchParentheses[2].trim();
+      else cleanName = matchParentheses[1].trim();
+    }
     let notes = "";
     let traits = "";
     let description = "";
@@ -466,7 +484,7 @@
       }
     }
 
-    return { name: locName, notes, traits, description };
+    return { name: cleanName, notes, traits, description };
   }
 
   const PF2E_PDF_FILLER = {
@@ -627,15 +645,16 @@
       // 3. CLASSE DE ARMADURA, PONTOS DE VIDA & DEFESAS
       // ----------------------------------------------------
       const equippedArmor = calc.equippedArmor || { name: "Roupas de Explorador", category: "Sem Armadura", acBonus: 0 };
-      setTxt("AC", calc.ac || 10);
-      setTxt("AC CALCULATION 1 DEXTERITY", formatMod(mods.dex));
+      const acTotal = typeof calc.ac === "object" ? (calc.ac.total !== undefined ? calc.ac.total : 10) : (calc.ac || 10);
+      setTxt("AC", acTotal);
+      setTxt("AC CALCULATION 1 DEXTERITY", formatMod(calc.ac && calc.ac.dex !== undefined ? calc.ac.dex : mods.dex));
       const armorRank = (character.armorProficiencies && character.armorProficiencies[equippedArmor.category]) || "Treinado";
-      const armorProfBonus = getProfBonus(armorRank, level);
+      const armorProfBonus = (calc.ac && calc.ac.prof !== undefined) ? calc.ac.prof : getProfBonus(armorRank, level);
       setTxt("AC CALCULATION 2 PROFICIENCY", armorProfBonus);
-      setTxt("AC CALCULATION 3 ITEM", equippedArmor.acBonus || 0);
+      setTxt("AC CALCULATION 3 ITEM", (calc.ac && calc.ac.item !== undefined) ? calc.ac.item : (equippedArmor.acBonus || 0));
 
       // Escudo
-      const shieldBonus = character.shieldRaised ? (character.shieldBonus || 2) : 0;
+      const shieldBonus = (calc.ac && calc.ac.shield !== undefined) ? calc.ac.shield : (character.shieldRaised ? (character.shieldBonus || 2) : 0);
       setTxt("SHIELD", shieldBonus);
       const shieldHardness = character.shieldHardness !== undefined ? character.shieldHardness : (calc.equippedShield && calc.equippedShield.hardness ? calc.equippedShield.hardness : "");
       setTxt("Hardness Max HP", String(shieldHardness));
@@ -669,26 +688,37 @@
       // 4. SALVAGUARDAS (FORTITUDE, REFLEXOS, VONTADE)
       // ----------------------------------------------------
       const saves = calc.saves;
+      // Fortitude: Con + Prof + Item
       setTxt("FORTITUDE", formatMod(saves.fortitude.total));
+      setTxt("CONSTITUTION", formatMod(mods.con));
+      setTxt("PROFICIENCY", saves.fortitude.prof !== undefined ? saves.fortitude.prof : getProfBonus(saves.fortitude.rank, level));
       setTxt("FORTITUDE ITEM", saves.fortitude.item || 0);
       setProfChecks("FORTITUDE", saves.fortitude.rank);
 
+      // Reflexos: Dex + Prof + Item
       setTxt("REFLEX", formatMod(saves.reflex.total));
+      setTxt("DEXTERITY", formatMod(mods.dex));
+      setTxt("PROFICIENCY2", saves.reflex.prof !== undefined ? saves.reflex.prof : getProfBonus(saves.reflex.rank, level));
+      setTxt("ITEM2", saves.reflex.item || 0);
       setProfChecks("REFLEX", saves.reflex.rank);
 
+      // Vontade: Wis + Prof + Item
       setTxt("WILL", formatMod(saves.will.total));
+      setTxt("WISDOM", formatMod(mods.wis));
+      setTxt("PROFICIENCY3", saves.will.prof !== undefined ? saves.will.prof : getProfBonus(saves.will.rank, level));
       setTxt("WILL ITEM", saves.will.item || 0);
       setProfChecks("WILL", saves.will.rank);
 
       // ----------------------------------------------------
       // 5. PERCEPÇÃO, SENTIDOS & DESLOCAMENTO
       // ----------------------------------------------------
-      setTxt("PERCEPTION", formatMod(calc.perception.total));
+      const percRank = character.perceptionRank || (calc.perception && calc.perception.rank) || "Treinado";
+      setTxt("PERCEPTION", formatMod((calc.perception && calc.perception.total) !== undefined ? calc.perception.total : (mods.wis + getProfBonus(percRank, level))));
       setTxt("PERCEPTION WISDOM", formatMod(mods.wis));
-      const percProf = getProfBonus(character.perceptionRank || "Treinado", level);
+      const percProf = (calc.perception && calc.perception.prof) !== undefined ? calc.perception.prof : getProfBonus(percRank, level);
       setTxt("PERCEPTION PROFICIENCY", percProf);
-      setTxt("PERCEPTION ITEM", (character.itemBonuses && character.itemBonuses.perception) || 0);
-      setProfChecks("PERCEPTION", character.perceptionRank || "Treinado");
+      setTxt("PERCEPTION ITEM", (calc.perception && calc.perception.item) || (character.itemBonuses && character.itemBonuses.perception) || 0);
+      setProfChecks("PERCEPTION", percRank);
 
       const sensesList = (Array.isArray(character.senses)
         ? character.senses
@@ -703,10 +733,12 @@
       // ----------------------------------------------------
       // 6. CD DE CLASSE & PROFICIÊNCIAS DE ARMAS
       // ----------------------------------------------------
-      const classDcObj = calc.classDcObj || (calc.classDc ? { total: calc.classDc, key: mods.str, prof: getProfBonus("Treinado", level), item: 0 } : null);
-      const classDcTotal = (classDcObj && classDcObj.total) || calc.classDc || (10 + mods.str + getProfBonus("Treinado", level));
+      const keyAttr = (calc.keyAttribute || character.keyAbility || "dex").slice(0, 3).toLowerCase();
+      const defaultKeyMod = mods[keyAttr] !== undefined ? mods[keyAttr] : mods.dex;
+      const classDcObj = calc.classDcObj || (calc.classDc ? { total: calc.classDc, key: defaultKeyMod, prof: getProfBonus("Treinado", level), item: 0 } : null);
+      const classDcTotal = (classDcObj && classDcObj.total) || calc.classDc || (10 + defaultKeyMod + getProfBonus("Treinado", level));
       setTxt("CLASS DC", classDcTotal);
-      setTxt("CLASS DC KEY", formatMod(classDcObj && classDcObj.key !== undefined ? classDcObj.key : mods.str));
+      setTxt("CLASS DC KEY", formatMod(classDcObj && classDcObj.key !== undefined ? classDcObj.key : defaultKeyMod));
       setTxt("CLASS DC PROFICIENCY", classDcObj && classDcObj.prof !== undefined ? classDcObj.prof : getProfBonus("Treinado", level));
       setTxt("CLASS DC ITEM", (classDcObj && classDcObj.item) || 0);
       const classDcRank = character.classDcRank || "Treinado";
@@ -743,10 +775,13 @@
       };
 
       for (const [skKey, meta] of Object.entries(skillsMap)) {
-        const sk = (calc.skills && calc.skills[skKey]) || { total: 0, rank: "Destreinado", profBonus: 0, itemBonus: 0 };
+        const sk = (calc.skills && calc.skills[skKey]) || { total: 0, rank: "Destreinado", profBonus: 0, itemBonus: 0, penalty: 0 };
         setTxt(meta.name, formatMod(sk.total));
         setTxt(`${meta.name} PROFICIENCY`, sk.profBonus || 0);
         setTxt(`${meta.name} ITEM`, sk.itemBonus || 0);
+        if (sk.penalty) {
+          setTxt(`${meta.name} ARMOR`, String(Math.abs(sk.penalty)));
+        }
         const attrMod = mods[meta.attrKey];
         if (meta.attrKey === "str") setTxt(`${meta.name} STRENGTH`, formatMod(attrMod));
         if (meta.attrKey === "dex") setTxt(`${meta.name} DEXTERITY`, formatMod(attrMod));
@@ -802,28 +837,38 @@
 
       meleeStrikes.slice(0, 3).forEach((st, idx) => {
         const n = idx + 1;
-        const totalAtk = st.totalAttack !== undefined ? st.totalAttack : (st.attackBonus || 0);
-        const locStrikeName = localizeCatalogItem(st.name, locale);
-        const locDamageType = localizeDamageType(st.damageType, locale);
+        const totalAtk = st.attackTotal !== undefined ? st.attackTotal : (st.totalAttack !== undefined ? st.totalAttack : (st.attackBonus || 0));
+        const locStrikeName = cleanWeaponName(st.name, locale);
         const locTraitsStr = (st.traits || []).map((t) => localizeTrait(t, locale)).join(", ");
+        const isFinesse = (st.traits || []).some((t) => /finesse|acurada|acuidade/i.test(t));
+        const strikeAttrMod = (isFinesse && mods.dex >= mods.str) ? mods.dex : mods.str;
+        const locDamageType = localizeDamageType(st.damageType, locale);
+        const dmgFormatted = (st.damageFormatted || st.damage || "1d6").trim();
+        const fullDamageStr = locDamageType && !dmgFormatted.toLowerCase().includes(locDamageType.toLowerCase())
+          ? `${dmgFormatted} ${locDamageType}`
+          : dmgFormatted;
 
         setTxt(`MELEE STRIKE ${n}`, locStrikeName);
         setTxt(`MELEE STRIKE ${n} ATTACK BONUS`, formatMod(totalAtk));
-        setTxt(`MELEE STRIKE ${n} STRENGTH`, formatMod(mods.str));
+        setTxt(`MELEE STRIKE ${n} STRENGTH`, formatMod(strikeAttrMod));
         setTxt(`MELEE STRIKE ${n} PROFICIENCY`, getProfBonus(st.rank || "Treinado", level));
         setTxt(`MELEE STRIKE ${n} ITEM BONUS`, st.itemBonus || 0);
         setTxt(`MELEE STRIKE ${n} ITEM`, st.itemBonus || 0);
-        setTxt(`MELEE STRIKE ${n} DAMAGE`, `${st.damage} ${locDamageType}`.trim());
+        setTxt(`MELEE STRIKE ${n} DAMAGE`, fullDamageStr);
         setTxt(`MELEE STRIKE ${n} TRAITS AND NOTES`, locTraitsStr);
         applyDamageTypeChecks(st.damageType, n === 1 ? "" : `_${n}`);
       });
 
       rangedStrikes.slice(0, 2).forEach((st, idx) => {
         const n = idx + 4;
-        const totalAtk = st.totalAttack !== undefined ? st.totalAttack : (st.attackBonus || 0);
-        const locStrikeName = localizeCatalogItem(st.name, locale);
-        const locDamageType = localizeDamageType(st.damageType, locale);
+        const totalAtk = st.attackTotal !== undefined ? st.attackTotal : (st.totalAttack !== undefined ? st.totalAttack : (st.attackBonus || 0));
+        const locStrikeName = cleanWeaponName(st.name, locale);
         const locTraitsStr = (st.traits || []).map((t) => localizeTrait(t, locale)).join(", ");
+        const locDamageType = localizeDamageType(st.damageType, locale);
+        const dmgFormatted = (st.damageFormatted || st.damage || "1d6").trim();
+        const fullDamageStr = locDamageType && !dmgFormatted.toLowerCase().includes(locDamageType.toLowerCase())
+          ? `${dmgFormatted} ${locDamageType}`
+          : dmgFormatted;
 
         setTxt(`RANGED STRIKE ${n}`, locStrikeName);
         setTxt(`RANGED STRIKE ${n} ATTACK BONUS`, formatMod(totalAtk));
@@ -831,7 +876,7 @@
         setTxt(`RANGED STRIKE ${n} PROFICIENCY`, getProfBonus(st.rank || "Treinado", level));
         setTxt(`RANGED STRIKE ${n} ITEM BONUS`, st.itemBonus || 0);
         setTxt(`RANGED STRIKE ${n} ITEM`, st.itemBonus || 0);
-        setTxt(`RANGED STRIKE ${n} DAMAGE`, `${st.damage} ${locDamageType}`.trim());
+        setTxt(`RANGED STRIKE ${n} DAMAGE`, fullDamageStr);
         setTxt(`RANGED STRIKE ${n} TRAITS AND NOTES`, locTraitsStr);
         applyDamageTypeChecks(st.damageType, `_${n}`);
       });
@@ -863,18 +908,17 @@
           const name = typeof f === "string" ? f : f.name;
           const slotId = String(f.slotId || "");
           const typeStr = String(f.type || "").toLowerCase();
-          const itemLevel = f.level || 1;
           const notes = f.source && f.source.book ? `${f.source.book}${f.source.page ? ` p.${f.source.page}` : ""}` : "";
           const traits = Array.isArray(f.traits) ? f.traits.join(", ") : "";
 
           if (slotId.includes("ancestry_feat") || typeStr.includes("ancestral") || typeStr.includes("ancestry")) {
             ancestryFeatsList.push(name);
           } else if (slotId.includes("skill_feat") || typeStr.includes("perícia") || typeStr.includes("skill")) {
-            skillFeatsList.push({ name, level: itemLevel, notes, traits });
+            skillFeatsList.push({ name, level: f.level, notes, traits });
           } else if (slotId.includes("general_feat") || typeStr.includes("geral") || typeStr.includes("general")) {
             generalFeatsList.push(name);
           } else {
-            classFeatsList.push({ name, level: itemLevel, notes, traits });
+            classFeatsList.push({ name, level: f.level, notes, traits });
           }
         });
       }
@@ -892,6 +936,14 @@
           generalFeatsList.push(val);
         }
       });
+
+      // Resolve background feat if omitted
+      if (!backgroundSkillFeat && character.background) {
+        const data = typeof PF2E_DATA !== "undefined" ? PF2E_DATA : (globalThis && globalThis.PF2E_DATA);
+        const bgList = (data && data.backgrounds) || [];
+        const bgEntry = bgList.find(b => b.name === character.background || b.id === character.background || (b.names && Object.values(b.names).includes(character.background)));
+        if (bgEntry && bgEntry.feat) backgroundSkillFeat = bgEntry.feat;
+      }
 
       const tLabels = {
         ancestry: isEn ? "Ancestry" : (isEs ? "Ascendencia" : "Ancestralidade"),
@@ -911,20 +963,44 @@
       ].filter(Boolean).join("\n");
       setTxt("ANCESTRY & HERITAGE ABILITIES", ancestryAndHeritageAbilities);
       setTxt("ANCESTRY FEAT", ancestryFeatsList.map(f => localizeCatalogItem(f, locale)).join(", "));
-      setTxt("BACKGROUND SKILL FEAT", localizeCatalogItem(backgroundSkillFeat || (progression["background_feat"] || ""), locale));
+      const bgFeatDetails = getLocalizedFeatDetails(backgroundSkillFeat || (progression["background_feat"] || ""), locale);
+      setTxt("BACKGROUND SKILL FEAT", bgFeatDetails.name);
 
       const classFeatures = Array.isArray(character.classFeatures) && character.classFeatures.length
-        ? character.classFeatures
+        ? character.classFeatures.map(f => typeof f === "string" ? f : f.name)
         : Object.entries(progression).filter(([k]) => k.includes("class_feature")).map(([, v]) => String(v));
-      setTxt("CLASS FEATS & FEATURES", classFeatures.map(f => localizeCatalogItem(f, locale)).join("\n"));
 
-      // Preenche linhas numeradas de Talentos de Classe (1-20)
-      classFeatsList.slice(0, 20).forEach((f, idx) => {
-        const lvl = idx + 1;
-        const details = getLocalizedFeatDetails(f.name, locale);
-        setTxt(`CLASS FEAT ${lvl}-1`, details.name);
-        setTxt(`CLASS FEAT ${lvl}-2`, details.notes || f.notes || details.description || "");
-        setTxt(`CLASS FEAT ${lvl}-3`, details.traits || f.traits || "");
+      let lvl1ClassFeats = [];
+      let higherClassFeats = [];
+
+      if (level === 1) {
+        // No nível 1, nenhum talento de classe vai para a linha CLASS FEAT 1-1 (que é do nível 2)
+        lvl1ClassFeats = classFeatsList;
+        higherClassFeats = [];
+      } else {
+        // A partir do nível 2, os talentos de classe preenchem as linhas numeradas (1-1 é nível 2, 2-1 é nível 4, etc.)
+        lvl1ClassFeats = [];
+        higherClassFeats = classFeatsList;
+      }
+
+      const allLvl1Features = [
+        ...classFeatures.map(f => localizeCatalogItem(f, locale)),
+        ...lvl1ClassFeats.map(f => {
+          const d = getLocalizedFeatDetails(f.name, locale);
+          return `${d.name}${d.notes ? ` (${d.notes})` : ""}`;
+        })
+      ];
+      setTxt("CLASS FEATS & FEATURES", allLvl1Features.join("\n"));
+
+      // Higher level class feats:
+      higherClassFeats.forEach((f, idx) => {
+        const slotIdx = idx + 1;
+        if (slotIdx >= 1 && slotIdx <= 10) {
+          const details = getLocalizedFeatDetails(f.name, locale);
+          setTxt(`CLASS FEAT ${slotIdx}-1`, details.name);
+          setTxt(`CLASS FEAT ${slotIdx}-2`, details.notes || f.notes || details.description || "");
+          setTxt(`CLASS FEAT ${slotIdx}-3`, details.traits || f.traits || "");
+        }
       });
 
       // Preenche linhas numeradas de Talentos de Perícia (2-20)
@@ -939,22 +1015,52 @@
       // ----------------------------------------------------
       // 10. AÇÕES ESPECIAIS & REAÇÕES (PÁGINA 1 E 2)
       // ----------------------------------------------------
+      // Limpa campos padrão do PDF para não vazar texto de exemplo da Paizo
+      for (let i = 1; i <= 4; i++) {
+        setTxt(`ACTION NAME ${i}`, "");
+        setTxt(`ACTIONS COUNT ${i}`, "");
+        setTxt(`ACTION SOURCE ${i}`, "");
+        setTxt(`ACTIONS SOURCE ${i}`, "");
+        setTxt(`TRAIT(S)${i}`, "");
+        setTxt(`EFFECTS ${i}-1`, "");
+      }
+      for (let i = 1; i <= 4; i++) {
+        setTxt(`REACTION NAME ${i}`, "");
+        setTxt(`REACTIONS TRIGGER ${i}-1`, "");
+        setTxt(`REACTIONS TRIGGER ${i}-2`, "");
+        setTxt(`REACTIONS EFFECTS ${i}-1`, "");
+        setTxt(`REACTIONS SOURCE ${i}`, "");
+        setTxt(`REACTIONS PAGE ${i}`, "");
+        setTxt(`REACTIONS TRAITS ${i}`, "");
+      }
+
       const actionsList = character.actions || [];
-      actionsList.slice(0, 10).forEach((act, idx) => {
+      actionsList.slice(0, 4).forEach((act, idx) => {
         const n = idx + 1;
         const locActName = localizeCatalogItem(act.name, locale);
         setTxt(`ACTION NAME ${n}`, locActName);
         setTxt(`ACTIONS COUNT ${n}`, String(act.actions || "◆"));
-        setTxt(`ACTION SOURCE ${n}`, act.source || act.description || "");
+        setTxt(`ACTION SOURCE ${n}`, act.source || "");
+        setTxt(`ACTIONS SOURCE ${n}`, act.source || "");
+        const traits = Array.isArray(act.traits)
+          ? act.traits.map(t => localizeTrait(t, locale)).join(", ")
+          : (act.traits ? localizeTrait(String(act.traits), locale) : "");
+        setTxt(`TRAIT(S)${n}`, traits);
+        setTxt(`EFFECTS ${n}-1`, act.description || act.effect || "");
       });
 
       const reactionsList = character.reactions || [];
-      reactionsList.slice(0, 5).forEach((react, idx) => {
+      reactionsList.slice(0, 4).forEach((react, idx) => {
         const n = idx + 1;
         const locReactName = localizeCatalogItem(react.name, locale);
         setTxt(`REACTION NAME ${n}`, locReactName);
-        setTxt(`REACTIONS TRIGGER ${n}`, react.trigger || "");
-        setTxt(`REACTIONS EFFECTS ${n}`, react.effect || react.description || "");
+        setTxt(`REACTIONS TRIGGER ${n}-1`, react.trigger || "");
+        setTxt(`REACTIONS EFFECTS ${n}-1`, react.effect || react.description || "");
+        setTxt(`REACTIONS SOURCE ${n}`, react.source || "");
+        const traits = Array.isArray(react.traits)
+          ? react.traits.map(t => localizeTrait(t, locale)).join(", ")
+          : (react.traits ? localizeTrait(String(react.traits), locale) : "");
+        setTxt(`REACTIONS TRAITS ${n}`, traits);
       });
 
       // ----------------------------------------------------
@@ -1011,98 +1117,134 @@
       // ----------------------------------------------------
       // 13. GRIMÓRIO, MAGIAS, TRUQUES & CONJURAÇÃO (PÁGINA 4)
       // ----------------------------------------------------
-      const tradition = character.magicalTradition || "Arcana";
-      setTxt("Magical Tradition", tradition);
-      const tradNorm = tradition.toLowerCase();
-      setChk("ARCANE", tradNorm.includes("arcan"));
-      setChk("DIVINE", tradNorm.includes("divin"));
-      setChk("OCCULT", tradNorm.includes("ocult") || tradNorm.includes("occult"));
-      setChk("PRIMAL", tradNorm.includes("primal") || tradNorm.includes("primordial"));
+      // Limpa campos padrão de magia para não vazar em personagens não conjuradores
+      setTxt("Magical Tradition", "");
+      setChk("ARCANE", false);
+      setChk("DIVINE", false);
+      setChk("OCCULT", false);
+      setChk("PRIMAL", false);
+      setTxt("SPELL ATTACK", "");
+      setTxt("SPELL ATTACK KEY", "");
+      setTxt("SPELL ATTACK PROFICIENCY", "");
+      setTxt("SPELL SAVE DC", "");
+      setTxt("SPELL SAVE DC KEY", "");
+      setTxt("SPELL SAVE DC PROFICIENCY", "");
+      setChk("FP1", false);
+      setChk("FP 1", false);
+      setChk("FP2", false);
+      setChk("FP 2", false);
+      setChk("FP 3", false);
 
-      // Ataque Mágico & CD de Magia
-      const abilityKey = (character.spellcastingAbility || "int").slice(0, 3).toLowerCase();
-      const spellKeyMod = mods[abilityKey] !== undefined ? mods[abilityKey] : mods.int;
-      const spellAttackRank = character.spellAttackRank || "Treinado";
-      const spellAttackProf = getProfBonus(spellAttackRank, level);
-      const spellAttackTotal = spellKeyMod + spellAttackProf;
-      setTxt("SPELL ATTACK", formatMod(spellAttackTotal));
-      setTxt("SPELL ATTACK KEY", formatMod(spellKeyMod));
-      setTxt("SPELL ATTACK PROFICIENCY", spellAttackProf);
-      setProfChecks("SPELL ATTACK", spellAttackRank);
-
-      const spellDcRank = character.spellDcRank || "Treinado";
-      const spellDcProf = getProfBonus(spellDcRank, level);
-      const spellDcTotal = 10 + spellKeyMod + spellDcProf;
-      setTxt("SPELL SAVE DC", spellDcTotal);
-      setTxt("SPELL SAVE DC KEY", formatMod(spellKeyMod));
-      setTxt("SPELL SAVE DC PROFICIENCY", spellDcProf);
-      setProfChecks("SPELL SAVE DC", spellDcRank);
-
-      // Espaços por dia
-      const engine = typeof PF2E_ENGINE !== "undefined" ? PF2E_ENGINE : (globalThis && globalThis.PF2E_ENGINE);
-      const spellSlots = (engine && typeof engine.getSpellSlots === "function")
-        ? engine.getSpellSlots(character)
-        : null;
-      const slotsObj = (spellSlots && spellSlots.slots) ? spellSlots.slots : {};
-      for (let r = 1; r <= 10; r++) {
-        const slotsCount = slotsObj[r] || 0;
-        if (slotsCount > 0) {
-          setTxt(`SPELLS PER DAY ${r}`, String(slotsCount));
-          setTxt(`SPELLS REMAINING ${r}`, String(slotsCount));
-        }
-      }
-
-      // Separação de Truques (Rank 0) vs Magias de Nível (Rank 1 a 10)
       const allSpells = Array.isArray(character.spells) ? character.spells : [];
       const cantrips = allSpells.filter(sp => Number(sp.rank) === 0).concat(character.cantrips || []);
       const leveledSpells = allSpells.filter(sp => Number(sp.rank) > 0);
-
-      // Preenche Truques nos campos dedicados
-      const cantripHeightenedRank = Math.ceil(level / 2);
-      setTxt("CANTRIPS RANK", String(cantripHeightenedRank));
-      cantrips.slice(0, 18).forEach((c, idx) => {
-        const n = idx + 1;
-        const locSpellName = localizeCatalogItem(c.name, locale);
-        setTxt(`CANTRIP NAME ${n}`, locSpellName);
-        setTxt(`CANTRIP ${n} ACTIONS`, c.actions || "◆◆");
-        setChk(`CANTRIP ${n} PREPARED`, true);
-      });
-
-      // Preenche Magias de Nível
-      leveledSpells.slice(0, 35).forEach((sp, idx) => {
-        const n = idx + 1;
-        const locSpellName = localizeCatalogItem(sp.name, locale);
-        setTxt(`SPELL ${n}`, locSpellName);
-        setTxt(`SPELL RANK ${n}`, String(sp.rank || 1));
-        setTxt(`SPELL ACTION ${n}`, sp.actions || "◆◆");
-        setChk(`SPELL PREPARED ${n}`, true);
-      });
-
-      // Magias Inatas
       const innateSpells = Array.isArray(character.innateSpells) ? character.innateSpells : [];
-      innateSpells.slice(0, 6).forEach((insp, idx) => {
-        const n = idx + 1;
-        const locSpellName = localizeCatalogItem(insp.name, locale);
-        setTxt(`INNATE SPELL ${n}`, locSpellName);
-        setTxt(`INNATE FREQ ${n}`, insp.freq || (isEn ? "1/day" : (isEs ? "1/día" : "1/dia")));
-        setTxt(`INNATE SPELL ACTION ${n}`, insp.actions || "◆◆");
-      });
-
-      // Magias de Foco & Pontos de Foco
       const focusSpells = Array.isArray(character.focusSpells) ? character.focusSpells : [];
-      focusSpells.slice(0, 8).forEach((fsp, idx) => {
-        const n = idx + 1;
-        const locSpellName = localizeCatalogItem(fsp.name, locale);
-        setTxt(`FOCUS SPELL ${n}`, locSpellName);
-        setTxt(`FOCUS SPELL ACTIONS ${n}`, fsp.actions || "◆");
-      });
-      setTxt("FOCUS SPELL RANK", String(character.focusSpellRank || cantripHeightenedRank));
-      const focusPoints = Number(character.focusPoints || (focusSpells.length ? Math.min(3, focusSpells.length) : 1));
-      setChk("FP1", focusPoints >= 1);
-      setChk("FP 1", focusPoints >= 1);
-      setChk("FP2", focusPoints >= 2);
-      setChk("FP 2", focusPoints >= 2);
-      setChk("FP 3", focusPoints >= 3);
+
+      const casterClasses = ["mago", "wizard", "clérigo", "clerigo", "cleric", "druida", "druid", "bardo", "bard", "feiticeiro", "sorcerer", "oráculo", "oraculo", "oracle", "bruxa", "witch", "psíquico", "psiquico", "psychic", "magus", "conjurador", "summoner", "animista", "animist", "exemplar"];
+      const charClassLower = String(character.class || "").toLowerCase();
+      const isCasterClass = casterClasses.some(c => charClassLower.includes(c));
+      const hasSpells = cantrips.length > 0 || leveledSpells.length > 0 || innateSpells.length > 0 || focusSpells.length > 0;
+      const isSpellcaster = Boolean(character.magicalTradition) || isCasterClass || hasSpells;
+
+      if (isSpellcaster) {
+        const tradition = character.magicalTradition || (isCasterClass ? "Arcana" : "");
+        if (tradition) {
+          setTxt("Magical Tradition", tradition);
+          const tradNorm = tradition.toLowerCase();
+          setChk("ARCANE", tradNorm.includes("arcan"));
+          setChk("DIVINE", tradNorm.includes("divin"));
+          setChk("OCCULT", tradNorm.includes("ocult") || tradNorm.includes("occult"));
+          setChk("PRIMAL", tradNorm.includes("primal") || tradNorm.includes("primordial"));
+        }
+
+        // Ataque Mágico & CD de Magia
+        const abilityKey = (character.spellcastingAbility || "int").slice(0, 3).toLowerCase();
+        const spellKeyMod = mods[abilityKey] !== undefined ? mods[abilityKey] : mods.int;
+        const spellAttackRank = character.spellAttackRank || (isCasterClass ? "Treinado" : "Destreinado");
+        const spellAttackProf = getProfBonus(spellAttackRank, level);
+        const spellAttackTotal = spellKeyMod + spellAttackProf;
+        if (spellAttackRank !== "Destreinado" || isCasterClass) {
+          setTxt("SPELL ATTACK", formatMod(spellAttackTotal));
+          setTxt("SPELL ATTACK KEY", formatMod(spellKeyMod));
+          setTxt("SPELL ATTACK PROFICIENCY", spellAttackProf);
+          setProfChecks("SPELL ATTACK", spellAttackRank);
+        }
+
+        const spellDcRank = character.spellDcRank || (isCasterClass ? "Treinado" : "Destreinado");
+        const spellDcProf = getProfBonus(spellDcRank, level);
+        const spellDcTotal = 10 + spellKeyMod + spellDcProf;
+        if (spellDcRank !== "Destreinado" || isCasterClass) {
+          setTxt("SPELL SAVE DC", spellDcTotal);
+          setTxt("SPELL SAVE DC KEY", formatMod(spellKeyMod));
+          setTxt("SPELL SAVE DC PROFICIENCY", spellDcProf);
+          setProfChecks("SPELL SAVE DC", spellDcRank);
+        }
+
+        // Espaços por dia
+        const engine = typeof PF2E_ENGINE !== "undefined" ? PF2E_ENGINE : (globalThis && globalThis.PF2E_ENGINE);
+        const spellSlots = (engine && typeof engine.getSpellSlots === "function")
+          ? engine.getSpellSlots(character)
+          : null;
+        const slotsObj = (spellSlots && spellSlots.slots) ? spellSlots.slots : {};
+        for (let r = 1; r <= 10; r++) {
+          const slotsCount = slotsObj[r] || 0;
+          if (slotsCount > 0) {
+            setTxt(`SPELLS PER DAY ${r}`, String(slotsCount));
+            setTxt(`SPELLS REMAINING ${r}`, String(slotsCount));
+          }
+        }
+
+        // Preenche Truques nos campos dedicados
+        const cantripHeightenedRank = Math.ceil(level / 2);
+        if (cantrips.length > 0) {
+          setTxt("CANTRIPS RANK", String(cantripHeightenedRank));
+          cantrips.slice(0, 18).forEach((c, idx) => {
+            const n = idx + 1;
+            const locSpellName = localizeCatalogItem(c.name, locale);
+            setTxt(`CANTRIP NAME ${n}`, locSpellName);
+            setTxt(`CANTRIP ${n} ACTIONS`, c.actions || "◆◆");
+            setChk(`CANTRIP ${n} PREPARED`, true);
+          });
+        }
+
+        // Preenche Magias de Nível
+        leveledSpells.slice(0, 35).forEach((sp, idx) => {
+          const n = idx + 1;
+          const locSpellName = localizeCatalogItem(sp.name, locale);
+          setTxt(`SPELL ${n}`, locSpellName);
+          setTxt(`SPELL RANK ${n}`, String(sp.rank || 1));
+          setTxt(`SPELL ACTION ${n}`, sp.actions || "◆◆");
+          setChk(`SPELL PREPARED ${n}`, true);
+        });
+
+        // Magias Inatas
+        innateSpells.slice(0, 6).forEach((insp, idx) => {
+          const n = idx + 1;
+          const locSpellName = localizeCatalogItem(insp.name, locale);
+          setTxt(`INNATE SPELL ${n}`, locSpellName);
+          setTxt(`INNATE FREQ ${n}`, insp.freq || (isEn ? "1/day" : (isEs ? "1/día" : "1/dia")));
+          setTxt(`INNATE SPELL ACTION ${n}`, insp.actions || "◆◆");
+        });
+
+        // Magias de Foco & Pontos de Foco
+        focusSpells.slice(0, 8).forEach((fsp, idx) => {
+          const n = idx + 1;
+          const locSpellName = localizeCatalogItem(fsp.name, locale);
+          setTxt(`FOCUS SPELL ${n}`, locSpellName);
+          setTxt(`FOCUS SPELL ACTIONS ${n}`, fsp.actions || "◆");
+        });
+        if (focusSpells.length > 0 || Number(character.focusPoints) > 0) {
+          const cantripHeightenedRank = Math.ceil(level / 2);
+          setTxt("FOCUS SPELL RANK", String(character.focusSpellRank || cantripHeightenedRank));
+          const focusPoints = Number(character.focusPoints || Math.min(3, focusSpells.length));
+          setChk("FP1", focusPoints >= 1);
+          setChk("FP 1", focusPoints >= 1);
+          setChk("FP2", focusPoints >= 2);
+          setChk("FP 2", focusPoints >= 2);
+          setChk("FP 3", focusPoints >= 3);
+        }
+      }
 
       return await pdfDoc.save();
     }

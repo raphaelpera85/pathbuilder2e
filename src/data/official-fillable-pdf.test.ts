@@ -323,4 +323,78 @@ describe("Exportação para Ficha Oficial PDF Editável (AcroForm)", () => {
     expect(formEn.getTextField("WORN 5").getText()).toBe("Rope (50 ft)");
     expect(formEn.getTextField("WORN 6").getText()).toBe("Rations (1 week)");
   }, 20000);
+
+  it("deve aplicar as correções universalmente para qualquer personagem (Swashbuckler, Mago, Bárbaro, etc.)", async () => {
+    // 1. Personagem Não-Conjurador Nível 1 com Arma Ágil/Acurada (ex: Swashbuckler Lorenzo)
+    const swashbuckler1: CharacterDocument = {
+      name: "Lorenzo LaRosa",
+      level: 1,
+      ancestry: "Humano",
+      class: "Espadachim",
+      background: "Duelista",
+      abilities: { str: 10, dex: 18, con: 14, int: 10, wis: 12, cha: 16 },
+      equippedArmor: { name: "Couro Batido", category: "Leve", acBonus: 1, dexCap: 4, checkPenalty: 0 },
+      armorProficiencies: { "Sem Armadura": "Treinado", "Leve": "Treinado", "Média": "Destreinado", "Pesada": "Destreinado" },
+      weapons: [
+        { name: "Rapieira", category: "Marcial", damage: "1d6", damageType: "Perfuração", traits: ["Acurada (Finesse)", "Mortal d8", "Desarmar"] }
+      ],
+      feats: [
+        { name: "Aparar em Duelo", level: 1, type: "Classe", slotId: "1_class_feat" }
+      ]
+    };
+
+    const filledSwash = await fillCharacterPdfForm(swashbuckler1, templateBytes);
+    const docSwash = await PDFDocument.load(filledSwash);
+    const formSwash = docSwash.getForm();
+
+    // CA = 10 + 1 (armadura) + 4 (dex) + 3 (treinado nível 1) = 18
+    expect(formSwash.getTextField("AC").getText()).toBe("18");
+    // Golpe de Rapieira (Finesse): Dex (+4) + Prof (+3) = +7
+    expect(formSwash.getTextField("MELEE STRIKE 1 ATTACK BONUS").getText()).toBe("+7");
+    expect(formSwash.getTextField("MELEE STRIKE 1 STRENGTH").getText()).toBe("+4");
+    expect(formSwash.getTextField("MELEE STRIKE 1 DAMAGE").getText()).toContain("Perfuração");
+    expect(formSwash.getCheckBox("P").isChecked()).toBe(true);
+
+    // No nível 1, a linha CLASS FEAT 1-1 (que é do nível 2) DEVE ficar vazia universalmente
+    expect(formSwash.getTextField("CLASS FEAT 1-1").getText() || "").toBe("");
+    expect(formSwash.getTextField("CLASS FEATS & FEATURES").getText()).toContain("Aparar em Duelo");
+
+    // Limpeza de texto fantasma de ações e reações da Paizo
+    expect(formSwash.getTextField("ACTION SOURCE 1").getText() || "").not.toContain("Golarion");
+    expect(formSwash.getTextField("REACTIONS SOURCE 1").getText() || "").not.toContain("Golarion");
+
+    // Não-conjurador NÃO deve ter tradições marcadas nem texto fantasma de magia
+    expect(formSwash.getCheckBox("ARCANE").isChecked()).toBe(false);
+    expect(formSwash.getCheckBox("DIVINE").isChecked()).toBe(false);
+    expect(formSwash.getTextField("SPELL ATTACK").getText() || "").toBe("");
+    expect(formSwash.getTextField("SPELL SAVE DC").getText() || "").toBe("");
+    expect(formSwash.getCheckBox("FP1").isChecked()).toBe(false);
+
+    // 2. Conjurador Nível 1 (ex: Mago Arcano)
+    const wizard1: CharacterDocument = {
+      name: "Ezren",
+      level: 1,
+      ancestry: "Humano",
+      class: "Mago",
+      background: "Erudito",
+      abilities: { str: 10, dex: 12, con: 12, int: 18, wis: 14, cha: 10 },
+      magicalTradition: "Arcana",
+      spellcastingAbility: "int",
+      spellAttackRank: "Treinado",
+      spellDcRank: "Treinado",
+      cantrips: [{ name: "Raio de Gelo", actions: "◆◆" }],
+      spells: [{ name: "Mísseis Mágicos", rank: 1, actions: "◆ a ◆◆◆" }]
+    };
+
+    const filledWiz = await fillCharacterPdfForm(wizard1, templateBytes);
+    const docWiz = await PDFDocument.load(filledWiz);
+    const formWiz = docWiz.getForm();
+
+    // Conjurador DEVE ter tradição Arcana marcada e CD/Ataque preenchidos (Int +4, Prof +3 = +7 / CD 17)
+    expect(formWiz.getCheckBox("ARCANE").isChecked()).toBe(true);
+    expect(formWiz.getTextField("SPELL ATTACK").getText()).toBe("+7");
+    expect(formWiz.getTextField("SPELL SAVE DC").getText()).toBe("17");
+    expect(formWiz.getTextField("CANTRIP NAME 1").getText()).toBe("Raio de Gelo");
+    expect(formWiz.getTextField("SPELL 1").getText()).toBe("Mísseis Mágicos");
+  }, 30000);
 });
