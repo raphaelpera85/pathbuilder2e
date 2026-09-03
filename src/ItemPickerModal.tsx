@@ -214,7 +214,7 @@ export function ItemPickerModal({ onBridgeReady }: { onBridgeReady?: (bridge: { 
       price: item.price ?? {},
       bulk: String(item.bulk ?? "-"),
       traits: Array.isArray(item.traits) ? item.traits : [],
-      description: String(item.description || item.summaries?.[locale] || ""),
+      description: String(item.summaries?.[locale] || item.description || item.summaries?.["pt-BR"] || item.summaries?.en || item.summaries?.es || item.summary || item.desc || item.text || ""),
     })) as ItemDefinition[];
     const catalog = mergeItemCatalogRecords([...PF2E_ITEMS_CATALOG, ...legacyCatalog]);
     const seenLabels = new Set<string>();

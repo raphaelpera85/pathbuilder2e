@@ -66,17 +66,52 @@
         return n >= 0 ? `+${n}` : `${n}`;
       };
 
+      const level = Number(character.level || 1);
+      const getProfBonus = (rank, lvl) => {
+        const r = String(rank || "").toLowerCase();
+        if (r.includes("lendário") || r.includes("legendary")) return lvl + 8;
+        if (r.includes("mestre") || r.includes("master")) return lvl + 6;
+        if (r.includes("especialista") || r.includes("expert")) return lvl + 4;
+        if (r.includes("treinado") || r.includes("trained")) return lvl + 2;
+        return 0;
+      };
+
+      const setProfChecks = (prefix, rank) => {
+        const r = String(rank || "").toLowerCase();
+        const isTrained = r.includes("treinado") || r.includes("trained") || r.includes("especialista") || r.includes("expert") || r.includes("mestre") || r.includes("master") || r.includes("lendário") || r.includes("legendary");
+        const isExpert = r.includes("especialista") || r.includes("expert") || r.includes("mestre") || r.includes("master") || r.includes("lendário") || r.includes("legendary");
+        const isMaster = r.includes("mestre") || r.includes("master") || r.includes("lendário") || r.includes("legendary");
+        const isLegendary = r.includes("lendário") || r.includes("legendary");
+
+        setChk(`${prefix} TRAINED`, isTrained);
+        setChk(`${prefix} EXPERT`, isExpert);
+        setChk(`${prefix} MASTER`, isMaster);
+        setChk(`${prefix} LEGENDARY`, isLegendary);
+
+        // Tratamento de erros de digitação históricos da Paizo em ficha.pdf
+        if (prefix === "ATHLETICS") {
+          setChk("ATHELETICS TRAINED", isTrained);
+          setChk("ATHELETICS EXPERT", isExpert);
+          setChk("ATHELETICS MASTER", isMaster);
+          setChk("ATHELETICS LEGENDARY", isLegendary);
+        }
+        if (prefix === "MEDICINE") {
+          setChk("MEDECINE TRAINED", isTrained);
+        }
+        if (prefix === "MARTIAL WEAPONS") {
+          setChk("MARTIAL WEAPONS LEGEANDARY", isLegendary);
+        }
+      };
+
       // ----------------------------------------------------
       // 1. CABEÇALHO & INFORMAÇÕES BÁSICAS
       // ----------------------------------------------------
       setTxt("Character Name", character.name || "Sem Nome");
       setTxt("Player Name", character.playerName || "");
       setTxt("Ancestry", character.ancestry || "");
-      
       const traitsStr = Array.isArray(character.traits) ? character.traits.join(", ") : "";
       const heritageTraits = [character.heritage, traitsStr].filter(Boolean).join(" · ");
       setTxt("Heritage and Traits", heritageTraits);
-
       setTxt("Background", character.background || "");
       const fullClass = [character.class, character.subclass].filter(Boolean).join(" - ");
       setTxt("Class", fullClass);
@@ -93,17 +128,16 @@
       setChk("HERO POINT 3", heroPoints >= 3);
 
       // ----------------------------------------------------
-      // 2. ATRIBUTOS (VALORES BRUTOS E MODIFICADORES)
+      // 2. ATRIBUTOS
       // ----------------------------------------------------
       const scores = calc.scores || { str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10 };
       const mods = calc.mods || { str: 0, dex: 0, con: 0, int: 0, wis: 0, cha: 0 };
-
-      setTxt("STRENGTH STAT", String(scores.str));
-      setTxt("DEXTERITY STAT", String(scores.dex));
-      setTxt("CONSTITUTION STAT", String(scores.con));
-      setTxt("INTELLIGENCE STAT", String(scores.int));
-      setTxt("WISDOM STAT", String(scores.wis));
-      setTxt("CHARISMA STAT", String(scores.cha));
+      setTxt("STRENGTH STAT", scores.str);
+      setTxt("DEXTERITY STAT", scores.dex);
+      setTxt("CONSTITUTION STAT", scores.con);
+      setTxt("INTELLIGENCE STAT", scores.int);
+      setTxt("WISDOM STAT", scores.wis);
+      setTxt("CHARISMA STAT", scores.cha);
 
       setTxt("STRENGTH", formatMod(mods.str));
       setTxt("DEXTERITY", formatMod(mods.dex));
@@ -115,184 +149,310 @@
       // ----------------------------------------------------
       // 3. CLASSE DE ARMADURA, PONTOS DE VIDA & DEFESAS
       // ----------------------------------------------------
-      const level = Number(character.level || 1);
       const equippedArmor = calc.equippedArmor || { name: "Roupas de Explorador", category: "Sem Armadura", acBonus: 0 };
-
-      setTxt("AC", String(calc.ac || 10));
+      setTxt("AC", calc.ac || 10);
       setTxt("AC CALCULATION 1 DEXTERITY", formatMod(mods.dex));
-      
       const armorRank = character.armorProficiencies?.[equippedArmor.category] || "Treinado";
-      const armorProfBonus = (typeof PF2E_ENGINE !== "undefined" && PF2E_ENGINE.getProficiencyBonus)
-        ? PF2E_ENGINE.getProficiencyBonus(armorRank, level)
-        : (armorRank === "Treinado" ? 2 + level : 0);
-      setTxt("AC CALCULATION 2 PROFICIENCY", String(armorProfBonus));
-      setTxt("AC CALCULATION 3 ITEM", String(equippedArmor.acBonus || 0));
-      setTxt("SHIELD", character.shieldRaised ? String(character.shieldBonus || 2) : "0");
-      setTxt("Hardness Max HP", String(character.shieldHp || ""));
+      const armorProfBonus = getProfBonus(armorRank, level);
+      setTxt("AC CALCULATION 2 PROFICIENCY", armorProfBonus);
+      setTxt("AC CALCULATION 3 ITEM", equippedArmor.acBonus || 0);
 
-      // Proficiências de Armadura (Checkboxes)
-      const setProfChecks = (prefix, rank) => {
-        const r = String(rank || "").toLowerCase();
-        setChk(`${prefix} TRAINED`, r.includes("treinado") || r.includes("trained") || r.includes("especialista") || r.includes("expert") || r.includes("mestre") || r.includes("master") || r.includes("lendário") || r.includes("legendary"));
-        setChk(`${prefix} EXPERT`, r.includes("especialista") || r.includes("expert") || r.includes("mestre") || r.includes("master") || r.includes("lendário") || r.includes("legendary"));
-        setChk(`${prefix} MASTER`, r.includes("mestre") || r.includes("master") || r.includes("lendário") || r.includes("legendary"));
-        setChk(`${prefix} LEGENDARY`, r.includes("lendário") || r.includes("legendary"));
-      };
+      // Escudo
+      const shieldBonus = character.shieldRaised ? (character.shieldBonus || 2) : 0;
+      setTxt("SHIELD", shieldBonus);
+      const shieldHardness = character.shieldHardness !== undefined ? character.shieldHardness : (calc.equippedShield?.hardness || "");
+      setTxt("Hardness Max HP", String(shieldHardness));
+      const shieldMaxHp = character.shieldMaxHp !== undefined ? character.shieldMaxHp : (calc.equippedShield?.maxHp || character.shieldHp || "");
+      const shieldBt = character.shieldBt !== undefined ? character.shieldBt : (calc.equippedShield?.bt || (Number(shieldMaxHp) ? Math.floor(Number(shieldMaxHp) / 2) : ""));
+      setTxt("BT", String(shieldBt));
 
-      setProfChecks("UNARMORED", character.armorProficiencies?.["Sem Armadura"] || "Treinado");
-      setProfChecks("LIGHT", character.armorProficiencies?.["Leve"] || "Destreinado");
-      setProfChecks("MEDIUM", character.armorProficiencies?.["Média"] || "Destreinado");
-      setProfChecks("HEAVY", character.armorProficiencies?.["Pesada"] || "Destreinado");
+      // Proficiências de Armadura
+      setProfChecks("UNARMORED", character.armorProficiencies?.["Sem Armadura"] || character.armorProficiencies?.unarmored || "Treinado");
+      setProfChecks("LIGHT", character.armorProficiencies?.["Leve"] || character.armorProficiencies?.light || "Destreinado");
+      setProfChecks("MEDIUM", character.armorProficiencies?.["Média"] || character.armorProficiencies?.medium || "Destreinado");
+      setProfChecks("HEAVY", character.armorProficiencies?.["Pesada"] || character.armorProficiencies?.heavy || "Destreinado");
 
       // Pontos de Vida
-      setTxt("MAX HP", String(calc.maxHp || 10));
-      setTxt("MAXIMUM HIT POINTS", String(calc.maxHp || 10));
-      setTxt("HP", String(character.currentHp !== undefined ? character.currentHp : calc.maxHp));
-      setTxt("Current HP", String(character.currentHp !== undefined ? character.currentHp : calc.maxHp));
-      setTxt("Temporary HP", String(character.tempHp || 0));
-      setTxt("WOUNDED", String(character.wounded || 0));
+      setTxt("MAX HP", calc.maxHp || 10);
+      setTxt("MAXIMUM HIT POINTS", calc.maxHp || 10);
+      setTxt("HP", character.currentHp !== undefined ? character.currentHp : calc.maxHp);
+      setTxt("Current HP", character.currentHp !== undefined ? character.currentHp : calc.maxHp);
+      setTxt("Temporary HP", character.tempHp || 0);
+      setTxt("WOUNDED", character.wounded || 0);
       setTxt("CONDITIONS", Array.isArray(character.conditions) ? character.conditions.join(", ") : "");
       setTxt("RESISTANCE AND IMMUNITIES", Array.isArray(character.resistances) ? character.resistances.join(", ") : "");
+      if (character.defenseNotes) {
+        setTxt("DEFENSE NOTES", character.defenseNotes);
+      }
 
       // ----------------------------------------------------
       // 4. SALVAGUARDAS (FORTITUDE, REFLEXOS, VONTADE)
       // ----------------------------------------------------
-      const saves = calc.saves || {
-        fortitude: { total: mods.con + 2 + level, rank: "Treinado", item: 0 },
-        reflex: { total: mods.dex + 2 + level, rank: "Treinado", item: 0 },
-        will: { total: mods.wis + 2 + level, rank: "Treinado", item: 0 }
-      };
-
+      const saves = calc.saves;
       setTxt("FORTITUDE", formatMod(saves.fortitude.total));
-      setTxt("FORTITUDE ITEM", String(saves.fortitude.item || 0));
+      setTxt("FORTITUDE ITEM", saves.fortitude.item || 0);
       setProfChecks("FORTITUDE", saves.fortitude.rank);
 
       setTxt("REFLEX", formatMod(saves.reflex.total));
       setProfChecks("REFLEX", saves.reflex.rank);
 
       setTxt("WILL", formatMod(saves.will.total));
-      setTxt("WILL ITEM", String(saves.will.item || 0));
+      setTxt("WILL ITEM", saves.will.item || 0);
       setProfChecks("WILL", saves.will.rank);
 
       // ----------------------------------------------------
-      // 5. PERCEPÇÃO & DESLOCAMENTO
+      // 5. PERCEPÇÃO, SENTIDOS & DESLOCAMENTO
       // ----------------------------------------------------
-      const perc = calc.perception || { total: mods.wis + 2 + level, rank: "Treinado" };
-      setTxt("PERCEPTION", formatMod(perc.total));
+      setTxt("PERCEPTION", formatMod(calc.perception.total));
       setTxt("PERCEPTION WISDOM", formatMod(mods.wis));
-      const percProf = (typeof PF2E_ENGINE !== "undefined" && PF2E_ENGINE.getProficiencyBonus)
-        ? PF2E_ENGINE.getProficiencyBonus(character.perceptionRank || "Treinado", level)
-        : (2 + level);
-      setTxt("PERCEPTION PROFICIENCY", String(percProf));
-      setTxt("PERCEPTION ITEM", String(character.itemBonuses?.perception || 0));
+      const percProf = getProfBonus(character.perceptionRank || "Treinado", level);
+      setTxt("PERCEPTION PROFICIENCY", percProf);
+      setTxt("PERCEPTION ITEM", character.itemBonuses?.perception || 0);
       setProfChecks("PERCEPTION", character.perceptionRank || "Treinado");
+
+      const sensesList = Array.isArray(character.senses)
+        ? character.senses.join(", ")
+        : (character.senses || (calc.senses ? (Array.isArray(calc.senses) ? calc.senses.join(", ") : String(calc.senses)) : ""));
+      setTxt("SENSES AND NOTES", sensesList);
 
       setTxt("SPEED", `${calc.speed || 25} pés`);
       setTxt("SPECIAL MOVEMENT", character.specialMovements || "");
 
       // ----------------------------------------------------
-      // 6. PERÍCIAS (16 OFICIAIS + LORES)
+      // 6. CD DE CLASSE & PROFICIÊNCIAS DE ARMAS
+      // ----------------------------------------------------
+      const classDcObj = calc.classDcObj || (calc.classDc ? { total: calc.classDc, key: mods.str, prof: getProfBonus("Treinado", level), item: 0 } : null);
+      const classDcTotal = classDcObj?.total || calc.classDc || (10 + mods.str + getProfBonus("Treinado", level));
+      setTxt("CLASS DC", classDcTotal);
+      setTxt("CLASS DC KEY", formatMod(classDcObj?.key !== undefined ? classDcObj.key : mods.str));
+      setTxt("CLASS DC PROFICIENCY", classDcObj?.prof !== undefined ? classDcObj.prof : getProfBonus("Treinado", level));
+      setTxt("CLASS DC ITEM", classDcObj?.item || 0);
+      const classDcRank = character.classDcRank || "Treinado";
+      setProfChecks("CLASS DC", classDcRank);
+
+      // Proficiências de Armas
+      const weaponProfs = character.weaponProficiencies || (calc.weaponProficiencies || {});
+      setProfChecks("UNARMED", weaponProfs["Desarmado"] || weaponProfs.unarmed || "Treinado");
+      setProfChecks("SIMPLE WEAPONS", weaponProfs["Simples"] || weaponProfs.simple || "Treinado");
+      setProfChecks("MARTIAL WEAPONS", weaponProfs["Marcial"] || weaponProfs.martial || "Destreinado");
+      setProfChecks("ADVANCED WEAPON", weaponProfs["Avançada"] || weaponProfs.advanced || "Destreinado");
+      setProfChecks("OTHER WEAPONS", weaponProfs["Outras"] || weaponProfs.other || "Destreinado");
+
+      // ----------------------------------------------------
+      // 7. PERÍCIAS (16) & LORES
       // ----------------------------------------------------
       const skillsMap = {
-        acrobatics: { name: "ACROBATICS", attr: "DEXTERITY" },
-        arcana: { name: "ARCANA", attr: "INTELLIGENCE" },
-        athletics: { name: "ATHLETICS", attr: "STRENGTH" },
-        crafting: { name: "CRAFTING", attr: "INTELLIGENCE" },
-        deception: { name: "DECEPTION", attr: "CHARISMA" },
-        diplomacy: { name: "DIPLOMACY", attr: "CHARISMA" },
-        intimidation: { name: "INTIMIDATION", attr: "CHARISMA" },
-        medicine: { name: "MEDICINE", attr: "WISDOM" },
-        nature: { name: "NATURE", attr: "WISDOM" },
-        occultism: { name: "OCCULTISM", attr: "INTELLIGENCE" },
-        performance: { name: "PERFORMANCE", attr: "CHARISMA" },
-        religion: { name: "RELIGION", attr: "WISDOM" },
-        society: { name: "SOCIETY", attr: "INTELLIGENCE" },
-        stealth: { name: "STEALTH", attr: "DEXTERITY" },
-        survival: { name: "SURVIVAL", attr: "WISDOM" },
-        thievery: { name: "THIEVERY", attr: "DEXTERITY" }
+        acrobatics: { name: "ACROBATICS", attrKey: "dex" },
+        arcana: { name: "ARCANA", attrKey: "int" },
+        athletics: { name: "ATHLETICS", attrKey: "str" },
+        crafting: { name: "CRAFTING", attrKey: "int" },
+        deception: { name: "DECEPTION", attrKey: "cha" },
+        diplomacy: { name: "DIPLOMACY", attrKey: "cha" },
+        intimidation: { name: "INTIMIDATION", attrKey: "cha" },
+        medicine: { name: "MEDICINE", attrKey: "wis" },
+        nature: { name: "NATURE", attrKey: "wis" },
+        occultism: { name: "OCCULTISM", attrKey: "int" },
+        performance: { name: "PERFORMANCE", attrKey: "cha" },
+        religion: { name: "RELIGION", attrKey: "wis" },
+        society: { name: "SOCIETY", attrKey: "int" },
+        stealth: { name: "STEALTH", attrKey: "dex" },
+        survival: { name: "SURVIVAL", attrKey: "wis" },
+        thievery: { name: "THIEVERY", attrKey: "dex" }
       };
 
-      const skillsCalc = calc.skills || {};
       for (const [skKey, meta] of Object.entries(skillsMap)) {
-        const sk = skillsCalc[skKey] || { total: 0, rank: "Destreinado", profBonus: 0, itemBonus: 0 };
+        const sk = calc.skills?.[skKey] || { total: 0, rank: "Destreinado", profBonus: 0, itemBonus: 0 };
         setTxt(meta.name, formatMod(sk.total));
-        setTxt(`${meta.name} PROFICIENCY`, String(sk.profBonus || 0));
-        setTxt(`${meta.name} ITEM`, String(sk.itemBonus || 0));
+        setTxt(`${meta.name} PROFICIENCY`, sk.profBonus || 0);
+        setTxt(`${meta.name} ITEM`, sk.itemBonus || 0);
+        const attrMod = mods[meta.attrKey];
+        if (meta.attrKey === "str") setTxt(`${meta.name} STRENGTH`, formatMod(attrMod));
+        if (meta.attrKey === "dex") setTxt(`${meta.name} DEXTERITY`, formatMod(attrMod));
+        if (meta.attrKey === "int") setTxt(`${meta.name} INTELLIGENCE`, formatMod(attrMod));
+        if (meta.attrKey === "wis") setTxt(`${meta.name} WISDOM`, formatMod(attrMod));
+        if (meta.attrKey === "cha") setTxt(`${meta.name} CHARISMA`, formatMod(attrMod));
         setProfChecks(meta.name, sk.rank);
       }
 
-      // Lore 1 & Lore 2
+      // Lores
       const loreSkills = character.loreSkills || [];
       if (loreSkills[0]) {
         setTxt("LORE CATAGORY 1", loreSkills[0].name || "Saber");
-        const l1Prof = (typeof PF2E_ENGINE !== "undefined" && PF2E_ENGINE.getProficiencyBonus)
-          ? PF2E_ENGINE.getProficiencyBonus(loreSkills[0].rank || "Treinado", level)
-          : (2 + level);
+        setTxt("LORE CATEGORY 1", loreSkills[0].name || "Saber");
+        const l1Prof = getProfBonus(loreSkills[0].rank || "Treinado", level);
         setTxt("LORE1", formatMod(mods.int + l1Prof));
         setTxt("LORE 1 INTELLIGENCE", formatMod(mods.int));
-        setTxt("LORE 1 PFOCIENCY", String(l1Prof));
+        setTxt("LORE 1 PFOCIENCY", l1Prof);
+        setTxt("LORE 1 PROFICIENCY", l1Prof);
         setProfChecks("LORE1", loreSkills[0].rank || "Treinado");
       }
       if (loreSkills[1]) {
         setTxt("LORE CATEGORY 2", loreSkills[1].name || "Saber");
-        const l2Prof = (typeof PF2E_ENGINE !== "undefined" && PF2E_ENGINE.getProficiencyBonus)
-          ? PF2E_ENGINE.getProficiencyBonus(loreSkills[1].rank || "Treinado", level)
-          : (2 + level);
+        const l2Prof = getProfBonus(loreSkills[1].rank || "Treinado", level);
         setTxt("LORE2", formatMod(mods.int + l2Prof));
         setTxt("LORE CATEGORY 2 ITENLLIGENCE", formatMod(mods.int));
-        setTxt("LORE 2 PROFICIENCY", String(l2Prof));
+        setTxt("LORE 2 INTELLIGENCE", formatMod(mods.int));
+        setTxt("LORE 2 PROFICIENCY", l2Prof);
         setProfChecks("LORE2", loreSkills[1].rank || "Treinado");
       }
 
       // ----------------------------------------------------
-      // 7. GOLPES & ATAQUES (MELEE & RANGED)
+      // 8. GOLPES & ATAQUES (MELEE & RANGED) COM CAIXAS B/P/S
       // ----------------------------------------------------
-      const strikes = calc.strikes || [];
-      const meleeStrikes = strikes.filter(s => !s.isRanged);
-      const rangedStrikes = strikes.filter(s => s.isRanged);
+      const strikes = (calc.strikes && calc.strikes.length) ? calc.strikes : (character.weapons || []);
+      const meleeStrikes = strikes.filter((s) => !s.isRanged);
+      const rangedStrikes = strikes.filter((s) => s.isRanged);
 
-      // Melee 1, 2, 3
+      const applyDamageTypeChecks = (dt, suffix) => {
+        const t = String(dt || "").toLowerCase();
+        if (t.includes("impacto") || t.includes("bludgeoning") || t.includes("esmagamento") || t.includes("b")) {
+          setChk(`B${suffix}`, true);
+        }
+        if (t.includes("perfuração") || t.includes("piercing") || t.includes("perfurante") || t.includes("p")) {
+          setChk(`P${suffix}`, true);
+        }
+        if (t.includes("cortante") || t.includes("slashing") || t.includes("corte") || t.includes("s")) {
+          setChk(`S${suffix}`, true);
+        }
+      };
+
       meleeStrikes.slice(0, 3).forEach((st, idx) => {
         const n = idx + 1;
+        const totalAtk = st.totalAttack !== undefined ? st.totalAttack : (st.attackBonus || 0);
         setTxt(`MELEE STRIKE ${n}`, st.name);
-        setTxt(`MELEE STRIKE ${n} ATTACK BONUS`, formatMod(st.totalAttack));
+        setTxt(`MELEE STRIKE ${n} ATTACK BONUS`, formatMod(totalAtk));
         setTxt(`MELEE STRIKE ${n} STRENGTH`, formatMod(mods.str));
-        setTxt(`MELEE STRIKE ${n} DAMAGE`, `${st.damage} ${st.damageType}`);
+        setTxt(`MELEE STRIKE ${n} PROFICIENCY`, getProfBonus(st.rank || "Treinado", level));
+        setTxt(`MELEE STRIKE ${n} ITEM BONUS`, st.itemBonus || 0);
+        setTxt(`MELEE STRIKE ${n} ITEM`, st.itemBonus || 0);
+        setTxt(`MELEE STRIKE ${n} DAMAGE`, `${st.damage} ${st.damageType || ""}`.trim());
         setTxt(`MELEE STRIKE ${n} TRAITS AND NOTES`, (st.traits || []).join(", "));
+        applyDamageTypeChecks(st.damageType, n === 1 ? "" : `_${n}`);
       });
 
-      // Ranged 4, 5
       rangedStrikes.slice(0, 2).forEach((st, idx) => {
         const n = idx + 4;
+        const totalAtk = st.totalAttack !== undefined ? st.totalAttack : (st.attackBonus || 0);
         setTxt(`RANGED STRIKE ${n}`, st.name);
-        setTxt(`RANGED STRIKE ${n} ATTACK BONUS`, formatMod(st.totalAttack));
+        setTxt(`RANGED STRIKE ${n} ATTACK BONUS`, formatMod(totalAtk));
         setTxt(`RANGED STRIKE ${n} DEXTERITY`, formatMod(mods.dex));
-        setTxt(`RANGED STRIKE ${n} DAMAGE`, `${st.damage} ${st.damageType}`);
+        setTxt(`RANGED STRIKE ${n} PROFICIENCY`, getProfBonus(st.rank || "Treinado", level));
+        setTxt(`RANGED STRIKE ${n} ITEM BONUS`, st.itemBonus || 0);
+        setTxt(`RANGED STRIKE ${n} ITEM`, st.itemBonus || 0);
+        setTxt(`RANGED STRIKE ${n} DAMAGE`, `${st.damage} ${st.damageType || ""}`.trim());
         setTxt(`RANGED STRIKE ${n} TRAITS AND NOTES`, (st.traits || []).join(", "));
+        applyDamageTypeChecks(st.damageType, `_${n}`);
       });
 
       // ----------------------------------------------------
-      // 8. TALENTOS & HABILIDADES (PÁGINA 2)
+      // 9. TALENTOS & PROGRESSÃO (PÁGINA 2)
       // ----------------------------------------------------
-      setTxt("ANCESTRY FEAT", Array.isArray(character.feats?.ancestry) ? character.feats.ancestry.join(", ") : "");
-      setTxt("BACKGROUND SKILL FEAT", character.feats?.background || "");
-      setTxt("CLASS FEATS & FEATURES", Array.isArray(character.classFeatures) ? character.classFeatures.join("\n") : "");
+      const rawFeats = character.feats;
+      const progression = character.progression || {};
 
-      // Preenche lista de Talentos de Classe e Perícia
-      const classFeats = Array.isArray(character.feats?.class) ? character.feats.class : [];
-      classFeats.slice(0, 20).forEach((f, idx) => {
+      let ancestryFeatsList = [];
+      let classFeatsList = [];
+      let skillFeatsList = [];
+      let generalFeatsList = [];
+      let backgroundSkillFeat = "";
+
+      if (rawFeats && !Array.isArray(rawFeats) && typeof rawFeats === "object") {
+        if (Array.isArray(rawFeats.ancestry)) ancestryFeatsList.push(...rawFeats.ancestry);
+        if (rawFeats.background) backgroundSkillFeat = String(rawFeats.background);
+        if (Array.isArray(rawFeats.class)) {
+          rawFeats.class.forEach((cf, i) => classFeatsList.push({ name: typeof cf === "string" ? cf : cf.name, level: (i + 1) }));
+        }
+        if (Array.isArray(rawFeats.skill)) {
+          rawFeats.skill.forEach((sf, i) => skillFeatsList.push({ name: typeof sf === "string" ? sf : sf.name, level: (i + 2) }));
+        }
+        if (Array.isArray(rawFeats.general)) generalFeatsList.push(...rawFeats.general);
+      } else if (Array.isArray(rawFeats)) {
+        rawFeats.forEach((f) => {
+          const name = typeof f === "string" ? f : f.name;
+          const slotId = String(f.slotId || "");
+          const typeStr = String(f.type || "").toLowerCase();
+          const itemLevel = f.level || 1;
+          const notes = f.source?.book ? `${f.source.book}${f.source.page ? ` p.${f.source.page}` : ""}` : "";
+          const traits = Array.isArray(f.traits) ? f.traits.join(", ") : "";
+
+          if (slotId.includes("ancestry_feat") || typeStr.includes("ancestral") || typeStr.includes("ancestry")) {
+            ancestryFeatsList.push(name);
+          } else if (slotId.includes("skill_feat") || typeStr.includes("perícia") || typeStr.includes("skill")) {
+            skillFeatsList.push({ name, level: itemLevel, notes, traits });
+          } else if (slotId.includes("general_feat") || typeStr.includes("geral") || typeStr.includes("general")) {
+            generalFeatsList.push(name);
+          } else {
+            classFeatsList.push({ name, level: itemLevel, notes, traits });
+          }
+        });
+      }
+
+      // Complementa com o dicionário de progressão de níveis se disponível
+      Object.entries(progression).forEach(([slot, val]) => {
+        if (!val || typeof val !== "string") return;
+        if (slot.includes("ancestry_feat") && !ancestryFeatsList.includes(val)) {
+          ancestryFeatsList.push(val);
+        } else if (slot.includes("class_feat") && !classFeatsList.some(f => f.name === val)) {
+          classFeatsList.push({ name: val });
+        } else if (slot.includes("skill_feat") && !skillFeatsList.some(f => f.name === val)) {
+          skillFeatsList.push({ name: val });
+        } else if (slot.includes("general_feat") && !generalFeatsList.includes(val)) {
+          generalFeatsList.push(val);
+        }
+      });
+
+      const ancestryAndHeritageAbilities = [
+        character.ancestry ? `Ancestralidade: ${character.ancestry}` : "",
+        character.heritage ? `Herança: ${character.heritage}` : "",
+        sensesList ? `Sentidos: ${sensesList}` : "",
+        character.specialMovements ? `Movimento: ${character.specialMovements}` : ""
+      ].filter(Boolean).join("\n");
+      setTxt("ANCESTRY & HERITAGE ABILITIES", ancestryAndHeritageAbilities);
+      setTxt("ANCESTRY FEAT", ancestryFeatsList.join(", "));
+      setTxt("BACKGROUND SKILL FEAT", backgroundSkillFeat || (progression["background_feat"] || ""));
+
+      const classFeatures = Array.isArray(character.classFeatures) && character.classFeatures.length
+        ? character.classFeatures
+        : Object.entries(progression).filter(([k]) => k.includes("class_feature")).map(([, v]) => String(v));
+      setTxt("CLASS FEATS & FEATURES", classFeatures.join("\n"));
+
+      // Preenche linhas numeradas de Talentos de Classe (1-20)
+      classFeatsList.slice(0, 20).forEach((f, idx) => {
         const lvl = idx + 1;
-        setTxt(`CLASS FEAT ${lvl}-1`, f);
+        setTxt(`CLASS FEAT ${lvl}-1`, f.name);
+        if (f.notes) setTxt(`CLASS FEAT ${lvl}-2`, f.notes);
+        if (f.traits) setTxt(`CLASS FEAT ${lvl}-3`, f.traits);
       });
 
-      const skillFeats = Array.isArray(character.feats?.skill) ? character.feats.skill : [];
-      skillFeats.slice(0, 20).forEach((f, idx) => {
+      // Preenche linhas numeradas de Talentos de Perícia (2-20)
+      skillFeatsList.slice(0, 20).forEach((f, idx) => {
         const lvl = idx + 2;
-        setTxt(`SKILL FEAT ${lvl}-1`, f);
+        setTxt(`SKILL FEAT ${lvl}-1`, f.name);
+        if (f.notes) setTxt(`SKILL FEAT ${lvl}-2`, f.notes);
+        if (f.traits) setTxt(`SKILL FEAT ${lvl}-3`, f.traits);
       });
 
       // ----------------------------------------------------
-      // 9. INVENTÁRIO, CARGA & MOEDAS
+      // 10. AÇÕES ESPECIAIS & REAÇÕES (PÁGINA 1 E 2)
+      // ----------------------------------------------------
+      const actionsList = character.actions || [];
+      actionsList.slice(0, 10).forEach((act, idx) => {
+        const n = idx + 1;
+        setTxt(`ACTION NAME ${n}`, act.name);
+        setTxt(`ACTIONS COUNT ${n}`, String(act.actions || "◆"));
+        setTxt(`ACTION SOURCE ${n}`, act.source || act.description || "");
+      });
+
+      const reactionsList = character.reactions || [];
+      reactionsList.slice(0, 5).forEach((react, idx) => {
+        const n = idx + 1;
+        setTxt(`REACTION NAME ${n}`, react.name);
+        setTxt(`REACTIONS TRIGGER ${n}`, react.trigger || "");
+        setTxt(`REACTIONS EFFECTS ${n}`, react.effect || react.description || "");
+      });
+
+      // ----------------------------------------------------
+      // 11. INVENTÁRIO, CARGA & MOEDAS (PÁGINA 3)
       // ----------------------------------------------------
       const inventory = Array.isArray(character.inventory) ? character.inventory : [];
       const wornItems = inventory.filter(i => !i.isHeld && !i.isConsumable);
@@ -304,7 +464,6 @@
         setTxt(`WORN ${n}`, `${item.qty && item.qty > 1 ? item.qty + 'x ' : ''}${item.name}`);
         setTxt(`WORN BULK ${n}`, String(item.bulk || "—"));
       });
-
       heldItems.slice(0, 11).forEach((item, idx) => {
         const n = idx + 1;
         const text = `${item.qty && item.qty > 1 ? item.qty + 'x ' : ''}${item.name}`;
@@ -312,7 +471,6 @@
         setTxt(`HELD ${n}`, text);
         setTxt(`HELD BULK ${n}`, String(item.bulk || "—"));
       });
-
       consumableItems.slice(0, 11).forEach((item, idx) => {
         const n = idx + 1;
         setTxt(`CONSUMABLES ${n}`, `${item.qty && item.qty > 1 ? item.qty + 'x ' : ''}${item.name}`);
@@ -321,7 +479,6 @@
 
       setTxt("BULK TOTAL", String(calc.bulk?.current || 0));
 
-      // Moedas
       const coins = character.coins || { cp: 0, sp: 0, gp: 15, pp: 0 };
       setTxt("COPPER", String(coins.cp || 0));
       setTxt("SILVER", String(coins.sp || 0));
@@ -329,7 +486,7 @@
       setTxt("PLATINUM", String(coins.pp || 0));
 
       // ----------------------------------------------------
-      // 10. IDENTIDADE, BIOGRAFIA & APARÊNCIA (PÁGINA 3)
+      // 12. IDENTIDADE, BIOGRAFIA & APARÊNCIA (PÁGINA 3)
       // ----------------------------------------------------
       setTxt("AGE", String(character.age || ""));
       setTxt("GENDER & PRONOUNS", [character.gender, character.pronouns].filter(Boolean).join(" / "));
@@ -343,17 +500,41 @@
       setTxt("Anathema", character.anathema || "");
 
       // ----------------------------------------------------
-      // 11. GRIMÓRIO, ESPAÇOS DE MAGIA & CONJURAÇÃO (PÁGINA 4)
+      // 13. GRIMÓRIO, MAGIAS, TRUQUES & CONJURAÇÃO (PÁGINA 4)
       // ----------------------------------------------------
-      setTxt("Magical Tradition", character.magicalTradition || "Arcana");
-      setTxt("SPELL ATTACK", formatMod(calc.classDc ? calc.classDc - 10 : 9));
-      setTxt("SPELL SAVE DC", String(calc.classDc || 19));
+      const tradition = character.magicalTradition || "Arcana";
+      setTxt("Magical Tradition", tradition);
+      const tradNorm = tradition.toLowerCase();
+      setChk("ARCANE", tradNorm.includes("arcan"));
+      setChk("DIVINE", tradNorm.includes("divin"));
+      setChk("OCCULT", tradNorm.includes("ocult") || tradNorm.includes("occult"));
+      setChk("PRIMAL", tradNorm.includes("primal") || tradNorm.includes("primordial"));
 
-      const spellSlots = (typeof PF2E_ENGINE !== "undefined" && PF2E_ENGINE.getSpellSlots)
-        ? PF2E_ENGINE.getSpellSlots(character)
+      // Ataque Mágico & CD de Magia
+      const abilityKey = (character.spellcastingAbility || "int").slice(0, 3).toLowerCase();
+      const spellKeyMod = mods[abilityKey] !== undefined ? mods[abilityKey] : mods.int;
+      const spellAttackRank = character.spellAttackRank || "Treinado";
+      const spellAttackProf = getProfBonus(spellAttackRank, level);
+      const spellAttackTotal = spellKeyMod + spellAttackProf;
+      setTxt("SPELL ATTACK", formatMod(spellAttackTotal));
+      setTxt("SPELL ATTACK KEY", formatMod(spellKeyMod));
+      setTxt("SPELL ATTACK PROFICIENCY", spellAttackProf);
+      setProfChecks("SPELL ATTACK", spellAttackRank);
+
+      const spellDcRank = character.spellDcRank || "Treinado";
+      const spellDcProf = getProfBonus(spellDcRank, level);
+      const spellDcTotal = 10 + spellKeyMod + spellDcProf;
+      setTxt("SPELL SAVE DC", spellDcTotal);
+      setTxt("SPELL SAVE DC KEY", formatMod(spellKeyMod));
+      setTxt("SPELL SAVE DC PROFICIENCY", spellDcProf);
+      setProfChecks("SPELL SAVE DC", spellDcRank);
+
+      // Espaços por dia
+      const engine = typeof PF2E_ENGINE !== "undefined" ? PF2E_ENGINE : (globalThis && globalThis.PF2E_ENGINE);
+      const spellSlots = (engine && typeof engine.getSpellSlots === "function")
+        ? engine.getSpellSlots(character)
         : null;
       const slotsObj = (spellSlots && spellSlots.slots) ? spellSlots.slots : {};
-
       for (let r = 1; r <= 10; r++) {
         const slotsCount = slotsObj[r] || 0;
         if (slotsCount > 0) {
@@ -362,36 +543,62 @@
         }
       }
 
-      // Preenche lista de magias
-      const spells = Array.isArray(character.spells) ? character.spells : [];
-      spells.slice(0, 35).forEach((sp, idx) => {
+      // Separação de Truques (Rank 0) vs Magias de Nível (Rank 1 a 10)
+      const allSpells = Array.isArray(character.spells) ? character.spells : [];
+      const cantrips = allSpells.filter(sp => Number(sp.rank) === 0).concat(character.cantrips || []);
+      const leveledSpells = allSpells.filter(sp => Number(sp.rank) > 0);
+
+      // Preenche Truques nos campos dedicados
+      const cantripHeightenedRank = Math.ceil(level / 2);
+      setTxt("CANTRIPS RANK", String(cantripHeightenedRank));
+      cantrips.slice(0, 18).forEach((c, idx) => {
         const n = idx + 1;
-        setTxt(`SPELL ${n}`, sp.name);
-        setTxt(`SPELL RANK ${n}`, String(sp.rank || 0));
-        setTxt(`SPELL ACTION ${n}`, sp.actions || "◆◆");
-        setTxt(`SPELL PREPARED ${n}`, "Sim");
+        setTxt(`CANTRIP NAME ${n}`, c.name);
+        setTxt(`CANTRIP ${n} ACTIONS`, c.actions || "◆◆");
+        setChk(`CANTRIP ${n} PREPARED`, true);
       });
 
-      // Magias de Foco
+      // Preenche Magias de Nível
+      leveledSpells.slice(0, 35).forEach((sp, idx) => {
+        const n = idx + 1;
+        setTxt(`SPELL ${n}`, sp.name);
+        setTxt(`SPELL RANK ${n}`, String(sp.rank || 1));
+        setTxt(`SPELL ACTION ${n}`, sp.actions || "◆◆");
+        setChk(`SPELL PREPARED ${n}`, true);
+      });
+
+      // Magias Inatas
+      const innateSpells = Array.isArray(character.innateSpells) ? character.innateSpells : [];
+      innateSpells.slice(0, 6).forEach((insp, idx) => {
+        const n = idx + 1;
+        setTxt(`INNATE SPELL ${n}`, insp.name);
+        setTxt(`INNATE FREQ ${n}`, insp.freq || "1/dia");
+        setTxt(`INNATE SPELL ACTION ${n}`, insp.actions || "◆◆");
+      });
+
+      // Magias de Foco & Pontos de Foco
       const focusSpells = Array.isArray(character.focusSpells) ? character.focusSpells : [];
       focusSpells.slice(0, 8).forEach((fsp, idx) => {
         const n = idx + 1;
         setTxt(`FOCUS SPELL ${n}`, fsp.name);
         setTxt(`FOCUS SPELL ACTIONS ${n}`, fsp.actions || "◆");
       });
+      setTxt("FOCUS SPELL RANK", String(character.focusSpellRank || cantripHeightenedRank));
+      const focusPoints = Number(character.focusPoints || (focusSpells.length ? Math.min(3, focusSpells.length) : 1));
+      setChk("FP1", focusPoints >= 1);
+      setChk("FP 1", focusPoints >= 1);
+      setChk("FP2", focusPoints >= 2);
+      setChk("FP 2", focusPoints >= 2);
+      setChk("FP 3", focusPoints >= 3);
 
-      // Retorna os bytes do PDF com campos editáveis preservados
       return await pdfDoc.save();
     }
   };
 
   if (typeof module !== "undefined" && module.exports) {
     module.exports = PF2E_PDF_FILLER;
-  }
-  if (typeof global !== "undefined") {
+    module.exports.PF2E_PDF_FILLER = PF2E_PDF_FILLER;
+  } else {
     global.PF2E_PDF_FILLER = PF2E_PDF_FILLER;
   }
-  if (typeof window !== "undefined") {
-    window.PF2E_PDF_FILLER = PF2E_PDF_FILLER;
-  }
-})(typeof globalThis !== "undefined" ? globalThis : this);
+})(typeof window !== "undefined" ? window : globalThis);

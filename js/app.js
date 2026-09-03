@@ -3773,44 +3773,45 @@ class PathbuilderApp {
     const norm = String(featureName).toLowerCase().trim().replace(/^talento grátis:\s*|^free feat:\s*|^dote gratis:\s*/i, "");
 
     const DB = {
+      // Swashbuckler
       "confident finisher": {
         traits: ["Finisher", "Swashbuckler"],
         desc: {
-          en: "You make an incredibly graceful attack, piercing your foe's defenses. Make a Strike with the following failure effect.\n\nFailure You deal half your precise strike damage to the target. This damage type is that of the weapon or unarmed attack you used for the Strike.",
-          pt: "Você faz um ataque incrivelmente gracioso, perfurando as defesas do seu oponente. Faça um Golpe com o seguinte efeito de falha.\n\nFalha Você causa metade do seu dano de golpe preciso ao alvo. Este tipo de dano é o da arma ou ataque desarmado usado no Golpe.",
-          es: "Haces un ataque increíblemente elegante, perforando las defensas de tu enemigo. Haz un Golpe con el siguiente efecto de fallo.\n\nFallo Infliges la mitad del daño de tu golpe preciso al objetivo. Este tipo de daño es el del arma o ataque desarmado que usaste para el Golpe."
+          en: "You make an incredibly graceful attack, piercing your foe's defenses. Make a Strike with the following failure effect.\n\nFailure You deal half your precise strike damage to the target.",
+          pt: "Você faz um ataque incrivelmente gracioso, perfurando as defesas do seu oponente. Faça um Golpe com o seguinte efeito de falha.\n\nFalha Você causa metade do seu dano de golpe preciso ao alvo.",
+          es: "Haces un ataque increíblemente elegante, perforando las defensas de tu enemigo. Haz un Golpe con el siguiente efecto de fallo.\n\nFallo Infliges la mitad del daño de tu golpe preciso al objetivo."
         }
       },
       "remate confiante": {
         traits: ["Finisher", "Swashbuckler"],
         desc: {
-          en: "You make an incredibly graceful attack, piercing your foe's defenses. Make a Strike with the following failure effect.\n\nFailure You deal half your precise strike damage to the target. This damage type is that of the weapon or unarmed attack you used for the Strike.",
-          pt: "Você faz um ataque incrivelmente gracioso, perfurando as defesas do seu oponente. Faça um Golpe com o seguinte efeito de falha.\n\nFalha Você causa metade do seu dano de golpe preciso ao alvo. Este tipo de dano é o da arma ou ataque desarmado usado no Golpe.",
-          es: "Haces un ataque increíblemente elegante, perforando las defensas de tu enemigo. Haz un Golpe con el siguiente efecto de fallo.\n\nFallo Infliges la mitad del daño de tu golpe preciso al objetivo. Este tipo de daño es el del arma o ataque desarmado que usaste para el Golpe."
+          en: "You make an incredibly graceful attack, piercing your foe's defenses. Make a Strike with the following failure effect.\n\nFailure You deal half your precise strike damage to the target.",
+          pt: "Você faz um ataque incrivelmente gracioso, perfurando as defesas do seu oponente. Faça um Golpe com o seguinte efeito de falha.\n\nFalha Você causa metade do seu dano de golpe preciso ao alvo.",
+          es: "Haces un ataque increíblemente elegante, perforando las defensas de tu enemigo. Haz un Golpe con el siguiente efecto de fallo.\n\nFallo Infliges la mitad del daño de tu golpe preciso al objetivo."
         }
       },
       "remate confiado": {
         traits: ["Finisher", "Swashbuckler"],
         desc: {
-          en: "You make an incredibly graceful attack, piercing your foe's defenses. Make a Strike with the following failure effect.\n\nFailure You deal half your precise strike damage to the target. This damage type is that of the weapon or unarmed attack you used for the Strike.",
-          pt: "Você faz um ataque incrivelmente gracioso, perfurando as defesas do seu oponente. Faça um Golpe com o seguinte efeito de falha.\n\nFalha Você causa metade do seu dano de golpe preciso ao alvo. Este tipo de dano é o da arma ou ataque desarmado usado no Golpe.",
-          es: "Haces un ataque increíblemente elegante, perforando las defensas de tu enemigo. Haz un Golpe con el siguiente efecto de fallo.\n\nFallo Infliges la mitad del daño de tu golpe preciso al objetivo. Este tipo de daño es el del arma o ataque desarmado que usaste para el Golpe."
+          en: "You make an incredibly graceful attack, piercing your foe's defenses. Make a Strike with the following failure effect.\n\nFailure You deal half your precise strike damage to the target.",
+          pt: "Você faz um ataque incrivelmente gracioso, perfurando as defesas do seu oponente. Faça um Golpe com o seguinte efeito de falha.\n\nFalha Você causa metade do seu dano de golpe preciso ao alvo.",
+          es: "Haces un ataque increíblemente elegante, perforando las defensas de tu enemigo. Haz un Golpe con el siguiente efecto de fallo.\n\nFallo Infliges la mitad del daño de tu golpe preciso al objetivo."
         }
       },
       "panache": {
         traits: ["Swashbuckler"],
         desc: {
-          en: "You gain panache by performing stylish actions in combat (like Tumble Through or style actions). While you have panache, you gain a +5-foot status bonus to your Speeds and a +1 circumstance bonus to checks using the skill associated with your style. You also qualify to use finishers.",
+          en: "You gain panache by performing stylish actions in combat (like Tumble Through or style actions). While you have panache, you gain a +5-foot status bonus to Speeds and a +1 circumstance bonus to checks using the skill associated with your style. You also qualify to use finishers.",
           pt: "Você ganha garbo realizando ações estilosas em combate (como Passar por Baixo ou ações do seu estilo). Enquanto tiver garbo, você ganha um bônus de estado de +1,5m em suas Velocidades e um bônus de circunstância de +1 em testes usando a perícia associada ao seu estilo. Você também se qualifica para usar remates.",
-          es: "Obtienes garbo realizando acciones elegantes en combate (como Rodar por debajo o acciones de estilo). Mientras tienes garbo, obtienes una bonificación de estado de +5 pies a tus velocidades y una bonificación de circunstancia de +1 a las pruebas que usen la habilidad asociada a tu estilo. También calificas para usar remates."
+          es: "Obtienes garbo realizando acciones elegantes en combate. Mientras tienes garbo, obtienes una bonificación de estado de +5 pies a tus velocidades y +1 de circunstancia a pruebas de la habilidad asociada a tu estilo."
         }
       },
       "garbo": {
         traits: ["Swashbuckler"],
         desc: {
-          en: "You gain panache by performing stylish actions in combat (like Tumble Through or style actions). While you have panache, you gain a +5-foot status bonus to your Speeds and a +1 circumstance bonus to checks using the skill associated with your style. You also qualify to use finishers.",
+          en: "You gain panache by performing stylish actions in combat (like Tumble Through or style actions). While you have panache, you gain a +5-foot status bonus to Speeds and a +1 circumstance bonus to checks using the skill associated with your style. You also qualify to use finishers.",
           pt: "Você ganha garbo realizando ações estilosas em combate (como Passar por Baixo ou ações do seu estilo). Enquanto tiver garbo, você ganha um bônus de estado de +1,5m em suas Velocidades e um bônus de circunstância de +1 em testes usando a perícia associada ao seu estilo. Você também se qualifica para usar remates.",
-          es: "Obtienes garbo realizando acciones elegantes en combate (como Rodar por debajo o acciones de estilo). Mientras tienes garbo, obtienes una bonificación de estado de +5 pies a tus velocidades y una bonificación de circunstancia de +1 a las pruebas que usen la habilidad asociada a tu estilo. También calificas para usar remates."
+          es: "Obtienes garbo realizando acciones elegantes en combate. Mientras tienes garbo, obtienes una bonificación de estado de +5 pies a tus velocidades y +1 de circunstancia a pruebas de la habilidad asociada a tu estilo."
         }
       },
       "precise strike": {
@@ -3818,7 +3819,7 @@ class PathbuilderApp {
         desc: {
           en: "You strike with precision and flair. When you make a Strike using an agile or finesse melee weapon or agile or finesse unarmed attack, you deal 2 additional precision damage (or 2d6 precision damage when you use a finisher).",
           pt: "Você ataca com precisão e estilo. Quando você faz um Golpe usando uma arma corpo a corpo ágil ou acurada ou ataque desarmado ágil/acurado, você causa 2 de dano de precisão adicional (ou 2d6 de dano de precisão ao usar um remate).",
-          es: "Golpeas con precisión y estilo. Cuando realizas un Golpe usando un arma cuerpo a cuerpo ágil o sutil o un ataque desarmado ágil o sutil, infliges 2 de daño de precisión adicional (o 2d6 de daño de precisión cuando usas un remate)."
+          es: "Cuando realizas un Golpe usando un arma cuerpo a cuerpo ágil o sutil, infliges 2 de daño de precisión adicional (o 2d6 cuando usas un remate)."
         }
       },
       "golpe preciso": {
@@ -3826,7 +3827,7 @@ class PathbuilderApp {
         desc: {
           en: "You strike with precision and flair. When you make a Strike using an agile or finesse melee weapon or agile or finesse unarmed attack, you deal 2 additional precision damage (or 2d6 precision damage when you use a finisher).",
           pt: "Você ataca com precisão e estilo. Quando você faz um Golpe usando uma arma corpo a corpo ágil ou acurada ou ataque desarmado ágil/acurado, você causa 2 de dano de precisão adicional (ou 2d6 de dano de precisão ao usar um remate).",
-          es: "Golpeas con precisión y estilo. Cuando realizas un Golpe usando un arma cuerpo a cuerpo ágil o sutil o un ataque desarmado ágil o sutil, infliges 2 de daño de precisión adicional (o 2d6 de daño de precisión cuando usas un remate)."
+          es: "Cuando realizas un Golpe usando un arma cuerpo a cuerpo ágil o sutil, infliges 2 de daño de precisión adicional (o 2d6 cuando usas un remate)."
         }
       },
       "stylish combatant": {
@@ -3840,97 +3841,27 @@ class PathbuilderApp {
       "combatente estiloso": {
         traits: ["Swashbuckler"],
         desc: {
-          en: "You gain special stylish actions based on your style to gain panache and harass your foes.",
+          en: "Você recebe ações especiais e habilidades baseadas no seu estilo para obter garbo e desestabilizar seus inimigos.",
           pt: "Você recebe ações especiais e habilidades baseadas no seu estilo para obter garbo e desestabilizar seus inimigos.",
           es: "Obtienes acciones elegantes especiales según tu estilo para ganar garbo y hostigar a tus enemigos."
         }
       },
-      "combatiente elegante": {
-        traits: ["Swashbuckler"],
+
+      // Fighter
+      "martial training": {
+        traits: ["Fighter"],
         desc: {
-          en: "You gain special stylish actions based on your style to gain panache and harass your foes.",
-          pt: "Você recebe ações especiais e habilidades baseadas no seu estilo para obter garbo e desestabilizar seus inimigos.",
-          es: "Obtienes acciones elegantes especiales según tu estilo para ganar garbo y hostigar a tus enemigos."
+          en: "Your rigorous martial training grants expert proficiency in all simple and martial weapons as well as unarmed attacks.",
+          pt: "Seu treinamento marcial rigoroso concede proficiência de especialista em todas as armas simples, marciais e ataques desarmados.",
+          es: "Tu entrenamiento marcial te concede competencia de experto en armas simples y marciales."
         }
       },
-      "bon mot": {
-        traits: ["Auditory", "Concentrate", "Emotion", "General", "Linguistic", "Mental", "Skill"],
+      "treinamento marcial": {
+        traits: ["Fighter"],
         desc: {
-          en: "You distract your foe with a witty quip. Make a Diplomacy check against a target's Will DC. On a success, the target takes a -2 status penalty to Perception and Will saves for 1 minute (or -3 on a critical success).",
-          pt: "Você distrai seu inimigo com uma frase espirituosa. Faça um teste de Diplomacia contra a CD de Vontade do alvo. No sucesso, o alvo sofre uma penalidade de estado de -2 na Percepção e salvaguardas de Vontade por 1 minuto (-3 no sucesso crítico).",
-          es: "Distraes a tu enemigo con una réplica ingeniosa. Haz una prueba de Diplomacia contra la CD de Voluntad del objetivo. En un éxito, el objetivo recibe una penalización de estado de -2 a Percepción y tiros de salvación de Voluntad durante 1 minuto (-3 en éxito crítico)."
-        }
-      },
-      "fascinating performance": {
-        traits: ["Auditory", "Concentrate", "General", "Skill", "Visual"],
-        desc: {
-          en: "Make a Performance check against the Will DC of one observer. On a success, the target is fascinated with you for 1 round.",
-          pt: "Faça um teste de Performance contra a CD de Vontade de um observador. No sucesso, o alvo fica fascinado por você por 1 rodada.",
-          es: "Haz una prueba de Interpretación contra la CD de Voluntad de un observador. En un éxito, el objetivo queda fascinado por ti durante 1 asalto."
-        }
-      },
-      "performance fascinante": {
-        traits: ["Auditory", "Concentrate", "General", "Skill", "Visual"],
-        desc: {
-          en: "Make a Performance check against the Will DC of one observer. On a success, the target is fascinated with you for 1 round.",
-          pt: "Faça um teste de Performance contra a CD de Vontade de um observador. No sucesso, o alvo fica fascinado por você por 1 rodada.",
-          es: "Haz una prueba de Interpretación contra la CD de Voluntad de un observador. En un éxito, el objetivo queda fascinado por ti durante 1 asalto."
-        }
-      },
-      "actuación fascinante": {
-        traits: ["Auditory", "Concentrate", "General", "Skill", "Visual"],
-        desc: {
-          en: "Make a Performance check against the Will DC of one observer. On a success, the target is fascinated with you for 1 round.",
-          pt: "Faça um teste de Performance contra a CD de Vontade de um observador. No sucesso, o alvo fica fascinado por você por 1 rodada.",
-          es: "Haz una prueba de Interpretación contra la CD de Voluntad de un observador. En un éxito, el objetivo queda fascinado por ti durante 1 asalto."
-        }
-      },
-      "you're next": {
-        traits: ["Emotion", "Fear", "General", "Mental", "Skill"],
-        desc: {
-          en: "Trigger You reduce an enemy to 0 HP.\n\nYou make a terrifying boast. Make an Intimidation check to Demoralize a single creature you can see.",
-          pt: "Gatilho Você reduz um inimigo a 0 PV.\n\nFaça um teste de Intimidação para Desmoralizar uma criatura que você possa ver.",
-          es: "Disparador Reduces a un enemigo a 0 PG.\n\nHaz una prueba de Intimidación para Desmoralizar a una criatura que puedas ver."
-        }
-      },
-      "você é o próximo": {
-        traits: ["Emotion", "Fear", "General", "Mental", "Skill"],
-        desc: {
-          en: "Trigger You reduce an enemy to 0 HP.\n\nYou make a terrifying boast. Make an Intimidation check to Demoralize a single creature you can see.",
-          pt: "Gatilho Você reduz um inimigo a 0 PV.\n\nFaça um teste de Intimidação para Desmoralizar uma criatura que você possa ver.",
-          es: "Disparador Reduces a un enemigo a 0 PG.\n\nHaz una prueba de Intimidación para Desmoralizar a una criatura que puedas ver."
-        }
-      },
-      "tú eres el siguiente": {
-        traits: ["Emotion", "Fear", "General", "Mental", "Skill"],
-        desc: {
-          en: "Trigger You reduce an enemy to 0 HP.\n\nYou make a terrifying boast. Make an Intimidation check to Demoralize a single creature you can see.",
-          pt: "Gatilho Você reduz um inimigo a 0 PV.\n\nFaça um teste de Intimidação para Desmoralizar uma criatura que você possa ver.",
-          es: "Disparador Reduces a un enemigo a 0 PG.\n\nHaz una prueba de Intimidación para Desmoralizar a una criatura que puedas ver."
-        }
-      },
-      "dirty trick": {
-        traits: ["Attack", "Concentrate", "Swashbuckler"],
-        desc: {
-          en: "Make a Thievery check against an adjacent creature's Reflex DC to temporarily blind, clumsy, or off-guard the foe.",
-          pt: "Faça um teste de Ladinagem contra a CD de Reflexos de uma criatura adjacente para deixá-la temporariamente cega, desajeitada ou desprevenida.",
-          es: "Haz una prueba de Latrocinio contra la CD de Reflejos de una criatura adyacente para dejarla temporalmente cegada, torpe o desprevenida."
-        }
-      },
-      "truque sujo": {
-        traits: ["Attack", "Concentrate", "Swashbuckler"],
-        desc: {
-          en: "Make a Thievery check against an adjacent creature's Reflex DC to temporarily blind, clumsy, or off-guard the foe.",
-          pt: "Faça um teste de Ladinagem contra a CD de Reflexos de uma criatura adjacente para deixá-la temporariamente cega, desajeitada ou desprevenida.",
-          es: "Haz una prueba de Latrocinio contra la CD de Reflejos de uma criatura adyacente para dejarla temporalmente cegada, torpe o desprevenida."
-        }
-      },
-      "truco sucio": {
-        traits: ["Attack", "Concentrate", "Swashbuckler"],
-        desc: {
-          en: "Make a Thievery check against an adjacent creature's Reflex DC to temporarily blind, clumsy, or off-guard the foe.",
-          pt: "Faça um teste de Ladinagem contra a CD de Reflexos de uma criatura adjacente para deixá-la temporariamente cega, desajeitada ou desprevenida.",
-          es: "Haz una prueba de Latrocinio contra la CD de Reflejos de una criatura adyacente para dejarla temporalmente cegada, torpe o desprevenida."
+          en: "Your rigorous martial training grants expert proficiency in all simple and martial weapons as well as unarmed attacks.",
+          pt: "Seu treinamento marcial rigoroso concede proficiência de especialista em todas as armas simples, marciais e ataques desarmados.",
+          es: "Tu entrenamiento marcial te concede competencia de experto en armas simples y marciales."
         }
       },
       "reactive strike": {
@@ -3944,7 +3875,7 @@ class PathbuilderApp {
       "golpe reativo": {
         traits: ["Fighter"],
         desc: {
-          en: "Trigger A creature within your reach uses a manipulate action or a move action, makes a ranged attack, or leaves a square during a move action.\n\nVocê golpeia um inimigo que deixa uma brecha. Faça um Golpe corpo a corpo contra a criatura. Se for um acerto crítico, você interrompe a ação.",
+          en: "Trigger A creature within your reach uses a manipulate action or a move action, makes a ranged attack, or leaves a square during a move action.\n\nMake a melee Strike against the triggering creature. If your Strike is a critical hit, you disrupt the triggering action.",
           pt: "Gatilho Uma criatura ao seu alcance usa uma ação de manipular ou mover, faz um ataque à distância ou sai de um quadrado.\n\nVocê golpeia um inimigo que deixa uma brecha. Faça um Golpe corpo a corpo contra a criatura. Se for um acerto crítico, você interrompe a ação.",
           es: "Disparador Una criatura dentro de tu alcance usa una acción de manipular o mover, hace un ataque a distancia o abandona una casilla.\n\nAtacas a un enemigo que deja una apertura. Haz un Golpe cuerpo a cuerpo. Si es un golpe crítico, interrumpes la acción."
         }
@@ -3965,6 +3896,8 @@ class PathbuilderApp {
           es: "Disparador Mientras tienes el escudo levantado, recibirías daño de un ataque físico.\n\nColocas tu escudo para desviar el golpe. El escudo absorbe daño hasta su Dureza. Tanto tú como el escudo reciben el daño restante."
         }
       },
+
+      // Rogue
       "sneak attack": {
         traits: ["Rogue"],
         desc: {
@@ -3997,6 +3930,42 @@ class PathbuilderApp {
           es: "Actúas antes de que los enemigos puedan reaccionar. En el primer asalto de combate, las criaturas que aún no han actuado están desprevenidas para ti."
         }
       },
+
+      // Champion
+      "champion's reaction": {
+        traits: ["Champion"],
+        desc: {
+          en: "Your cause gives you a powerful reaction to defend allies (such as Retributive Strike, Glimpse of Redemption, or Liberating Step) or punish enemies.",
+          pt: "Sua causa sagrada concede uma reação poderosa para defender aliados (como Golpe Retributivo, Vislumbre da Redenção ou Passo Libertador) ou castigar adversários.",
+          es: "Tu causa te otorga una reacción para defender aliados o castigar enemigos."
+        }
+      },
+      "reação do campeão": {
+        traits: ["Champion"],
+        desc: {
+          en: "Your cause gives you a powerful reaction to defend allies (such as Retributive Strike, Glimpse of Redemption, or Liberating Step) or punish enemies.",
+          pt: "Sua causa sagrada concede uma reação poderosa para defender aliados (como Golpe Retributivo, Vislumbre da Redenção ou Passo Libertador) ou castigar adversários.",
+          es: "Tu causa te otorga una reacción para defender aliados o castigar enemigos."
+        }
+      },
+      "devotion spells": {
+        traits: ["Champion", "Divine"],
+        desc: {
+          en: "Your deity grants you divine devotion focus spells (such as Lay on Hands or Touch of Corruption) powered by a pool of focus points.",
+          pt: "Sua divindade concede magias de foco de devoção divinas (como Impor as Mãos ou Toque da Corrupção) alimentadas por pontos de foco.",
+          es: "Tu deidad te otorga conjuros de foco de devoción divina usando puntos de foco."
+        }
+      },
+      "magias de devoção": {
+        traits: ["Champion", "Divine"],
+        desc: {
+          en: "Your deity grants you divine devotion focus spells (such as Lay on Hands or Touch of Corruption) powered by a pool of focus points.",
+          pt: "Sua divindade concede magias de foco de devoção divinas (como Impor as Mãos ou Toque da Corrupção) alimentadas por pontos de foco.",
+          es: "Tu deidad te otorga conjuros de foco de devoción divina usando puntos de foco."
+        }
+      },
+
+      // Barbarian
       "rage": {
         traits: ["Barbarian", "Concentrate", "Emotion", "Mental"],
         desc: {
@@ -4013,6 +3982,40 @@ class PathbuilderApp {
           es: "Requisitos No estás fatigado ni enfurecido.\n\nCanalizas tu furia interior. Obtienes Puntos de Golpe temporales iguales a tu nivel + modificador de Constitución, una bonificación de estado de +2 al daño y una penalización de -1 a la CA."
         }
       },
+      "instinct ability": {
+        traits: ["Barbarian"],
+        desc: {
+          en: "Your instinct channels supernatural rage, granting additional damage types, resistances, or unique capabilities while raging.",
+          pt: "Seu instinto alimenta sua fúria sobrenatural, adicionando dano adicional, resistências e habilidades únicas enquanto estiver em fúria.",
+          es: "Tu instinto alimenta tu furia sobrenatural concediendo daño y resistencias únicas."
+        }
+      },
+      "habilidade de instinto": {
+        traits: ["Barbarian"],
+        desc: {
+          en: "Your instinct channels supernatural rage, granting additional damage types, resistances, or unique capabilities while raging.",
+          pt: "Seu instinto alimenta sua fúria sobrenatural, adicionando dano adicional, resistências e habilidades únicas enquanto estiver em fúria.",
+          es: "Tu instinto alimenta tu furia sobrenatural concediendo daño y resistencias únicas."
+        }
+      },
+      "anathema": {
+        traits: ["Barbarian"],
+        desc: {
+          en: "Violating your class anathema causes you to lose focus and your instinct or divine abilities until you atone.",
+          pt: "Violar o anátema da sua classe faz você perder a concentração e os poderes do seu instinto ou divindade até reparar o erro.",
+          es: "Violar el anatema te priva temporalmente de los dones de tu clase."
+        }
+      },
+      "anátema": {
+        traits: ["Barbarian"],
+        desc: {
+          en: "Violating your class anathema causes you to lose focus and your instinct or divine abilities until you atone.",
+          pt: "Violar o anátema da sua classe faz você perder a concentração e os poderes do seu instinto ou divindade até reparar o erro.",
+          es: "Violar el anatema te priva temporalmente de los dones de tu clase."
+        }
+      },
+
+      // Monk
       "flurry of blows": {
         traits: ["Monk"],
         desc: {
@@ -4026,11 +4029,524 @@ class PathbuilderApp {
         desc: {
           en: "Frequency once per round.\n\nMake two unarmed Strikes. If both hit the same creature, combine their damage for the purpose of resistances and weaknesses.",
           pt: "Frequência uma vez por rodada.\n\nFaça dois Golpes desarmados. Se ambos acertarem a mesma criatura, combine o dano para fins de resistências e fraquezas.",
-          es: "Frecuencia una vez por asalto.\n\nHaz dos Golpes desarmados. Si ambos impactan a la mesma criatura, combina su daño a efectos de resistencias y debilidades."
+          es: "Frecuencia una vez por asalto.\n\nHaz dos Golpes desarmados. Si ambos impactan a la misma criatura, combina su daño a efectos de resistencias y debilidades."
+        }
+      },
+      "powerful fist": {
+        traits: ["Monk"],
+        desc: {
+          en: "Your fist Strikes deal 1d6 damage instead of 1d4, and you don't take the -2 circumstance penalty when making a nonlethal attack.",
+          pt: "Seus Golpes de punho causam 1d6 de dano em vez de 1d4, e você não sofre a penalidade de circunstância de -2 ao fazer ataques não-letais.",
+          es: "Tus puñetazos causan 1d6 de daño y puedes elegir si son letales sin penalización."
+        }
+      },
+      "punho poderoso": {
+        traits: ["Monk"],
+        desc: {
+          en: "Your fist Strikes deal 1d6 damage instead of 1d4, and you don't take the -2 circumstance penalty when making a nonlethal attack.",
+          pt: "Seus Golpes de punho causam 1d6 de dano em vez de 1d4, e você não sofre a penalidade de circunstância de -2 ao fazer ataques não-letais.",
+          es: "Tus puñetazos causan 1d6 de daño y puedes elegir si son letales sin penalización."
+        }
+      },
+      "mystic strikes": {
+        traits: ["Monk"],
+        desc: {
+          en: "The focus of your body turns your unarmed attacks magical, allowing them to overcome resistances to non-magical physical attacks.",
+          pt: "A disciplina do seu corpo torna seus ataques desarmados mágicos, permitindo superar resistências contra armas mundanas.",
+          es: "Tus ataques desarmados se vuelven mágicos superando resistencias."
+        }
+      },
+      "golpes místicos": {
+        traits: ["Monk"],
+        desc: {
+          en: "The focus of your body turns your unarmed attacks magical, allowing them to overcome resistances to non-magical physical attacks.",
+          pt: "A disciplina do seu corpo torna seus ataques desarmados mágicos, permitindo superar resistências contra armas mundanas.",
+          es: "Tus ataques desarmados se vuelven mágicos superando resistencias."
+        }
+      },
+
+      // Alchemist
+      "advanced alchemy": {
+        traits: ["Alchemist"],
+        desc: {
+          en: "During daily preparations, you create infused alchemical items that last until your next preparations without spending gold.",
+          pt: "Durante seus preparativos diários, você cria itens alquímicos infundidos que duram até seus próximos preparativos sem gastar moedas.",
+          es: "Durante tus preparativos diarios creas objetos alquímicos imbuidos que duran 24 horas sin gastar oro."
+        }
+      },
+      "alquimia avançada": {
+        traits: ["Alchemist"],
+        desc: {
+          en: "During daily preparations, you create infused alchemical items that last until your next preparations without spending gold.",
+          pt: "Durante seus preparativos diários, você cria itens alquímicos infundidos que duram até seus próximos preparativos sem gastar moedas.",
+          es: "Durante tus preparativos diarios creas objetos alquímicos imbuidos que duran 24 horas sin gastar oro."
+        }
+      },
+      "infused reagents": {
+        traits: ["Alchemist"],
+        desc: {
+          en: "You obtain infused reagents equal to your level + Intelligence modifier each day to power your alchemical creations.",
+          pt: "Você obtém reagentes infundidos iguais ao seu nível + modificador de Inteligência todos os dias para alimentar suas criações alquímicas.",
+          es: "Obtienes reactivos imbuidos iguales a tu nivel + Inteligencia cada día."
+        }
+      },
+      "reagentes infundidos": {
+        traits: ["Alchemist"],
+        desc: {
+          en: "You obtain infused reagents equal to your level + Intelligence modifier each day to power your alchemical creations.",
+          pt: "Você obtém reagentes infundidos iguais ao seu nível + modificador de Inteligência todos os dias para alimentar suas criações alquímicas.",
+          es: "Obtienes reactivos imbuidos iguales a tu nivel + Inteligencia cada día."
+        }
+      },
+      "versatile vials": {
+        traits: ["Alchemist"],
+        desc: {
+          en: "In the Remaster, you produce versatile vials that can be thrown as acid bombs or used on the fly to craft quick items.",
+          pt: "No Remaster, você produz frascos versáteis que podem ser arremessados como bombas de ácido ou consumidos no calor da batalha para sintetizar fórmulas rápidas.",
+          es: "En el Remaster, produces viales versátiles para arrojar como ácido o activar alquimia rápida."
+        }
+      },
+      "vials versáteis": {
+        traits: ["Alchemist"],
+        desc: {
+          en: "In the Remaster, you produce versatile vials that can be thrown as acid bombs or used on the fly to craft quick items.",
+          pt: "No Remaster, você produz frascos versáteis que podem ser arremessados como bombas de ácido ou consumidos no calor da batalha para sintetizar fórmulas rápidas.",
+          es: "En el Remaster, produces viales versátiles para arrojar como ácido o activar alquimia rápida."
+        }
+      },
+      "quick alchemy": {
+        traits: ["Alchemist"],
+        desc: {
+          en: "Cost: 1 action. You swiftly synthesize a temporary alchemical item from your formula book using a versatile vial or infused reagent.",
+          pt: "Custo: 1 ação. Você sintetiza rapidamente um item alquímico temporário do seu livro de fórmulas consumindo um reagente ou frasco versátil.",
+          es: "Coste: 1 acción. Sintetizas rápidamente un objeto alquímico temporal de tu recetario."
+        }
+      },
+      "alquimia rápida": {
+        traits: ["Alchemist"],
+        desc: {
+          en: "Cost: 1 action. You swiftly synthesize a temporary alchemical item from your formula book using a versatile vial or infused reagent.",
+          pt: "Custo: 1 ação. Você sintetiza rapidamente um item alquímico temporário do seu livro de fórmulas consumindo um reagente ou frasco versátil.",
+          es: "Coste: 1 acción. Sintetizas rápidamente un objeto alquímico temporal de tu recetario."
+        }
+      },
+
+      // Bard
+      "composition spells": {
+        traits: ["Bard", "Occult"],
+        desc: {
+          en: "You cast composition cantrips (such as Courageous Anthem) and composition focus spells to empower allies and confound adversaries.",
+          pt: "Você conjura truques de composição (como Hino Corajoso) e magias de foco para inspirar seus aliados e desorientar adversários.",
+          es: "Lanzas trucos y conjuros de composición para inspirar aliados y confundir enemigos."
+        }
+      },
+      "magias de composição": {
+        traits: ["Bard", "Occult"],
+        desc: {
+          en: "You cast composition cantrips (such as Courageous Anthem) and composition focus spells to empower allies and confound adversaries.",
+          pt: "Você conjura truques de composição (como Hino Corajoso) e magias de foco para inspirar seus aliados e desorientar adversários.",
+          es: "Lanzas trucos y conjuros de composición para inspirar aliados y confundir enemigos."
+        }
+      },
+
+      // Cleric
+      "divine font": {
+        traits: ["Cleric", "Divine"],
+        desc: {
+          en: "Your deity grants you extra spell slots of your highest spell rank solely dedicated to Heal or Harm spells.",
+          pt: "Sua divindade concede espaços de magia extras do seu rank mais alto dedicados exclusivamente a Curar ou Ferir.",
+          es: "Tu deidad te otorga espacios de conjuro adicionales dedicados a Curar o Infligir heridas."
+        }
+      },
+      "fonte divina": {
+        traits: ["Cleric", "Divine"],
+        desc: {
+          en: "Your deity grants you extra spell slots of your highest spell rank solely dedicated to Heal or Harm spells.",
+          pt: "Sua divindade concede espaços de magia extras do seu rank mais alto dedicados exclusivamente a Curar ou Ferir.",
+          es: "Tu deidad te otorga espacios de conjuro adicionales dedicados a Curar o Infligir heridas."
+        }
+      },
+
+      // Druid
+      "order magic": {
+        traits: ["Druid", "Primal"],
+        desc: {
+          en: "Your druidic order grants you an order focus spell and an additional trained skill reflecting your natural bond.",
+          pt: "Sua ordem druídica concede uma magia de foco inicial e treinamento em perícias ligadas ao seu juramento com a natureza.",
+          es: "Tu orden druídica te concede un conjuro de foco temático y habilidades."
+        }
+      },
+      "magia de ordem": {
+        traits: ["Druid", "Primal"],
+        desc: {
+          en: "Your druidic order grants you an order focus spell and an additional trained skill reflecting your natural bond.",
+          pt: "Sua ordem druídica concede uma magia de foco inicial e treinamento em perícias ligadas ao seu juramento com a natureza.",
+          es: "Tu orden druídica te concede un conjuro de foco temático y habilidades."
+        }
+      },
+
+      // Gunslinger
+      "slinger's reload": {
+        traits: ["Gunslinger"],
+        desc: {
+          en: "You reload your firearm or crossbow while performing a specialized action granted by your Way (such as Hide, Demoralize, or Create a Diversion).",
+          pt: "Você recarrega sua arma de fogo ou besta enquanto realiza uma ação especializada do seu Estilo (como Esconder-se, Desmoralizar ou Criar Distração).",
+          es: "Recargas tu arma de fuego o ballesta mientras realizas una acción asociada a tu estilo."
+        }
+      },
+      "recarga do pistoleiro": {
+        traits: ["Gunslinger"],
+        desc: {
+          en: "You reload your firearm or crossbow while performing a specialized action granted by your Way (such as Hide, Demoralize, or Create a Diversion).",
+          pt: "Você recarrega sua arma de fogo ou besta enquanto realiza uma ação especializada do seu Estilo (como Esconder-se, Desmoralizar ou Criar Distração).",
+          es: "Recargas tu arma de fuego o ballesta mientras realizas una acción asociada a tu estilo."
+        }
+      },
+      "singular expertise": {
+        traits: ["Gunslinger"],
+        desc: {
+          en: "You gain a +1 circumstance bonus to damage rolls with firearms and crossbows.",
+          pt: "Você ganha um bônus de circunstância de +1 no dano com armas de fogo e bestas devido à sua dedicação e maestria.",
+          es: "Ganas un bonificador de circunstancia de +1 al daño con armas de fuego y ballestas."
+        }
+      },
+      "especialização singular": {
+        traits: ["Gunslinger"],
+        desc: {
+          en: "You gain a +1 circumstance bonus to damage rolls with firearms and crossbows.",
+          pt: "Você ganha um bônus de circunstância de +1 no dano com armas de fogo e bestas devido à sua dedicação e maestria.",
+          es: "Ganas un bonificador de circunstancia de +1 al daño con armas de fogo y ballestas."
+        }
+      },
+
+      // Inventor
+      "overdrive": {
+        traits: ["Inventor"],
+        desc: {
+          en: "Make a Crafting check to push your innovation into overdrive, dealing extra damage on all Strikes for 1 minute.",
+          pt: "Faça um teste de Manufatura para colocar sua inovação em sobrecarga, adicionando dano extra a todos os seus Golpes por 1 minuto.",
+          es: "Haz una prueba de Artesanía para sobrecargar tu innovación e infligir daño adicional."
+        }
+      },
+      "sobrecarga": {
+        traits: ["Inventor"],
+        desc: {
+          en: "Make a Crafting check to push your innovation into overdrive, dealing extra damage on all Strikes for 1 minute.",
+          pt: "Faça um teste de Manufatura para colocar sua inovação em sobrecarga, adicionando dano extra a todos os seus Golpes por 1 minuto.",
+          es: "Haz una prueba de Artesanía para sobrecargar tu innovación e infligir daño adicional."
+        }
+      },
+      "explode": {
+        traits: ["Inventor", "Fire"],
+        desc: {
+          en: "Cause your innovation to detonate in an unstable fiery blast, dealing fire damage in a 5-foot emanation.",
+          pt: "Faz sua inovação detonar em uma explosão instável de fogo, causando dano a todas as criaturas em uma emanação de 1,5m.",
+          es: "Detonas tu innovación en una llamarada inestable dañando a las criaturas adyacentes."
+        }
+      },
+      "explodir": {
+        traits: ["Inventor", "Fire"],
+        desc: {
+          en: "Cause your innovation to detonate in an unstable fiery blast, dealing fire damage in a 5-foot emanation.",
+          pt: "Faz sua inovação detonar em uma explosão instável de fogo, causando dano a todas as criaturas em uma emanação de 1,5m.",
+          es: "Detonas tu innovación en una llamarada inestable dañando a las criaturas adyacentes."
+        }
+      },
+
+      // Investigator
+      "devise a stratagem": {
+        traits: ["Investigator", "Concentrate", "Fortune"],
+        desc: {
+          en: "Roll a d20 in advance against a target. If you Strike that target this round, use this roll and substitute Intelligence for your attack roll.",
+          pt: "Role um d20 com antecedência contra um alvo. Se atacar esse alvo nesta rodada, use esse resultado e substitua Força/Destreza por Inteligência no ataque.",
+          es: "Tira un d20 por adelantado contra un objetivo y sustituye Inteligencia en tu tirada de ataque."
+        }
+      },
+      "elaborar estratagema": {
+        traits: ["Investigator", "Concentrate", "Fortune"],
+        desc: {
+          en: "Roll a d20 in advance against a target. If you Strike that target this round, use this roll and substitute Intelligence for your attack roll.",
+          pt: "Role um d20 com antecedência contra um alvo. Se atacar esse alvo nesta rodada, use esse resultado e substitua Força/Destreza por Inteligência no ataque.",
+          es: "Tira un d20 por adelantado contra un objetivo y sustituye Inteligencia en tu tirada de ataque."
+        }
+      },
+      "pursue a lead": {
+        traits: ["Investigator", "Concentrate", "Exploration"],
+        desc: {
+          en: "Designate a subject of investigation. You gain a +1 circumstance bonus to Perception and skill checks to investigate that lead.",
+          pt: "Designe um mistério ou sujeito como sua investigação ativa. Você ganha +1 de circunstância em testes de Percepção e perícias ligados à pista.",
+          es: "Designa una pista para obtener +1 de circunstancia a pruebas relacionadas con ella."
+        }
+      },
+      "perseguir uma pista": {
+        traits: ["Investigator", "Concentrate", "Exploration"],
+        desc: {
+          en: "Designate a subject of investigation. You gain a +1 circumstance bonus to Perception and skill checks to investigate that lead.",
+          pt: "Designe um mistério ou sujeito como sua investigação ativa. Você ganha +1 de circunstância em testes de Percepção e perícias ligados à pista.",
+          es: "Designa una pista para obtener +1 de circunstancia a pruebas relacionadas con ella."
+        }
+      },
+      "clue in": {
+        traits: ["Investigator", "Concentrate"],
+        desc: {
+          en: "Trigger An ally makes a check to investigate your active lead.\n\nYou share your deductions, granting them a circumstance bonus.",
+          pt: "Gatilho Um aliado faz um teste para investigar sua pista ativa.\n\nVocê compartilha suas deduções, concedendo-lhe um bônus de circunstância.",
+          es: "Compartes tus deducciones para otorgar una bonificación de circunstancia a un aliado."
+        }
+      },
+      "pista para aliados": {
+        traits: ["Investigator", "Concentrate"],
+        desc: {
+          en: "Trigger An ally makes a check to investigate your active lead.\n\nYou share your deductions, granting them a circumstance bonus.",
+          pt: "Gatilho Um aliado faz um teste para investigar sua pista ativa.\n\nVocê compartilha suas deduções, concedendo-lhe um bônus de circunstância.",
+          es: "Compartes tus deducciones para otorgar una bonificación de circunstancia a un aliado."
+        }
+      },
+
+      // Kineticist
+      "channel elements": {
+        traits: ["Kineticist", "Primal"],
+        desc: {
+          en: "Activate your Kinetic Aura and immediately use an elemental impulse.",
+          pt: "Ativa sua Aura Cinética e executa um impulso elemental imediatamente.",
+          es: "Activas tu Aura Cinética y desatas un impulso elemental de inmediato."
+        }
+      },
+      "canalizar elementos": {
+        traits: ["Kineticist", "Primal"],
+        desc: {
+          en: "Activate your Kinetic Aura and immediately use an elemental impulse.",
+          pt: "Ativa sua Aura Cinética e executa um impulso elemental imediatamente.",
+          es: "Activas tu Aura Cinética y desatas un impulso elemental de inmediato."
+        }
+      },
+      "base kinesis": {
+        traits: ["Kineticist", "Primal"],
+        desc: {
+          en: "Cost: 2 actions. Generate, shape, move, or suppress a small amount of your chosen elements within 30 feet.",
+          pt: "Custo: 2 ações. Você gera, molda, move ou suprime uma pequena porção dos seus elementos escolhidos a até 9 metros.",
+          es: "Generas, moldeas o mueves tus elementos hasta 30 pies."
+        }
+      },
+      "cinese básica": {
+        traits: ["Kineticist", "Primal"],
+        desc: {
+          en: "Cost: 2 actions. Generate, shape, move, or suppress a small amount of your chosen elements within 30 feet.",
+          pt: "Custo: 2 ações. Você gera, molda, move ou suprime uma pequena porção dos seus elementos escolhidos a até 9 metros.",
+          es: "Generas, moldeas o mueves tus elementos hasta 30 pies."
+        }
+      },
+
+      // Magus
+      "spellstrike": {
+        traits: ["Magus"],
+        desc: {
+          en: "Cost: 2 actions. Channel a spell into your weapon or unarmed attack and make a Strike. The spell discharges on impact.",
+          pt: "Custo: 2 ações. Canalize uma magia em sua arma ou ataque desarmado e desfira um Golpe. A magia é descarregada no impacto.",
+          es: "Coste: 2 acciones. Canalizas un conjuro en tu arma y realizas un Golpe."
+        }
+      },
+      "golpe de magia": {
+        traits: ["Magus"],
+        desc: {
+          en: "Custo: 2 ações. Canalize uma magia em sua arma ou ataque desarmado e desfira um Golpe. A magia é descarregada no impacto.",
+          pt: "Custo: 2 ações. Canalize uma magia em sua arma ou ataque desarmado e desfira um Golpe. A magia é descarregada no impacto.",
+          es: "Coste: 2 acciones. Canalizas un conjuro en tu arma y realizas un Golpe."
+        }
+      },
+      "arcane cascade": {
+        traits: ["Magus", "Concentrate"],
+        desc: {
+          en: "Enter a stance channeling leftover magic, adding extra damage of the spell's type to your weapon Strikes.",
+          pt: "Entre em uma postura mágica após conjurar, adicionando dano adicional do tipo da magia aos seus Golpes.",
+          es: "Adoptas una postura mágica que añade daño del tipo de conjuro a tus Golpes."
+        }
+      },
+      "cascata arcana": {
+        traits: ["Magus", "Concentrate"],
+        desc: {
+          en: "Enter a stance channeling leftover magic, adding extra damage of the spell's type to your weapon Strikes.",
+          pt: "Entre em uma postura mágica após conjurar, adicionando dano adicional do tipo da magia aos seus Golpes.",
+          es: "Adoptas una postura mágica que añade daño del tipo de conjuro a tus Golpes."
+        }
+      },
+
+      // Oracle
+      "oracular curse": {
+        traits: ["Oracle", "Cursebound", "Divine"],
+        desc: {
+          en: "Drawing upon cosmic mystery advances your divine curse, granting powerful benefits alongside escalating detriments.",
+          pt: "Canalizar o mistério cósmico avança sua maldição divina, concedendo poderes transcendentais ao custo de penalidades crescentes.",
+          es: "Canalizar poder cósmico avanza tu maldición otorgando dones y penalizadores."
+        }
+      },
+      "maldição oracular": {
+        traits: ["Oracle", "Cursebound", "Divine"],
+        desc: {
+          en: "Drawing upon cosmic mystery advances your divine curse, granting powerful benefits alongside escalating detriments.",
+          pt: "Canalizar o mistério cósmico avança sua maldição divina, concedendo poderes transcendentais ao custo de penalidades crescentes.",
+          es: "Canalizar poder cósmico avanza tu maldición otorgando dones y penalizadores."
+        }
+      },
+
+      // Psychic
+      "unleash psyche": {
+        traits: ["Psychic"],
+        desc: {
+          en: "Unleash your psychic mind, gaining a status bonus to spell damage for 2 rounds followed by brief psychic strain.",
+          pt: "Liberte sua mente psíquica, ganhando um bônus de estado ao dano das suas magias por 2 rodadas, seguido de exaustão mental.",
+          es: "Desatas tu mente psíquica aumentando el daño de tus conjuros durante 2 asaltos."
+        }
+      },
+      "liberar psique": {
+        traits: ["Psychic"],
+        desc: {
+          en: "Unleash your psychic mind, gaining a status bonus to spell damage for 2 rounds followed by brief psychic strain.",
+          pt: "Liberte sua mente psíquica, ganhando um bônus de estado ao dano das suas magias por 2 rodadas, seguido de exaustão mental.",
+          es: "Desatas tu mente psíquica aumentando el daño de tus conjuros durante 2 asaltos."
+        }
+      },
+
+      // Ranger
+      "hunt prey": {
+        traits: ["Ranger", "Concentrate"],
+        desc: {
+          en: "Designate a creature as your prey. You gain benefits from your Hunter's Edge and ignore second range increment penalties.",
+          pt: "Designe uma criatura como sua presa. Você recebe os benefícios da sua Vantagem do Caçador e ignora penalidades do segundo incremento de distância.",
+          es: "Designas a un objetivo como presa para activar tu Ventaja del cazador."
+        }
+      },
+      "caçar presa": {
+        traits: ["Ranger", "Concentrate"],
+        desc: {
+          en: "Designate a creature as your prey. You gain benefits from your Hunter's Edge and ignore second range increment penalties.",
+          pt: "Designe uma criatura como sua presa. Você recebe os benefícios da sua Vantagem do Caçador e ignora penalidades do segundo incremento de distância.",
+          es: "Designas a un objetivo como presa para activar tu Ventaja del cazador."
+        }
+      },
+
+      // Summoner
+      "act together": {
+        traits: ["Summoner", "Tandem"],
+        desc: {
+          en: "Frequency once per round.\n\nYou and your eidolon take actions simultaneously, combining a 1-action and a 2-action activity into 3 actions.",
+          pt: "Frequência uma vez por rodada.\n\nVocê e seu eidolon agem simultaneamente em sinergia, combinando ações individuais em um único turno coeso de 3 ações.",
+          es: "Frecuencia una vez por asalto.\n\nTú y tu eidolon actuáis a la vez combinando acciones."
+        }
+      },
+      "agir em conjunto": {
+        traits: ["Summoner", "Tandem"],
+        desc: {
+          en: "Frequency once per round.\n\nYou and your eidolon take actions simultaneously, combining a 1-action and a 2-action activity into 3 actions.",
+          pt: "Frequência uma vez por rodada.\n\nVocê e seu eidolon agem simultaneamente em sinergia, combinando ações individuais em um único turno coeso de 3 ações.",
+          es: "Frecuencia una vez por asalto.\n\nTú y tu eidolon actuáis a la vez combinando acciones."
+        }
+      },
+
+      // Thaumaturge
+      "exploit vulnerability": {
+        traits: ["Thaumaturge", "Esoterica"],
+        desc: {
+          en: "Make an Esoteric Lore check against a creature's Recall Knowledge DC to trigger its weakness or apply personal antithesis damage.",
+          pt: "Faça um teste de Saber Esotérico para descobrir e ativar a fraqueza do inimigo ou impor sua antítese pessoal em cada Golpe.",
+          es: "Haces una prueba de Saber esotérico para explotar la debilidad del enemigo."
+        }
+      },
+      "explorar vulnerabilidade": {
+        traits: ["Thaumaturge", "Esoterica"],
+        desc: {
+          en: "Make an Esoteric Lore check against a creature's Recall Knowledge DC to trigger its weakness or apply personal antithesis damage.",
+          pt: "Faça um teste de Saber Esotérico para descobrir e ativar a fraqueza do inimigo ou impor sua antítese pessoal em cada Golpe.",
+          es: "Haces una prueba de Saber esotérico para explotar la debilidad del enemigo."
+        }
+      },
+
+      // Wizard
+      "drain bonded item": {
+        traits: ["Wizard", "Arcane"],
+        desc: {
+          en: "Frequency once per day.\n\nYou tap the magic stored in your bonded item to recast a spell you have already cast today.",
+          pt: "Frequência uma vez por dia.\n\nVocê canaliza a energia residual do seu item vinculado para reconjurar uma magia que já utilizou hoje sem gastar espaço adicional.",
+          es: "Frecuencia una vez al día.\n\nDrenas tu objeto vinculado para volver a lanzar un conjuro ya usado."
+        }
+      },
+      "drenar item vinculado": {
+        traits: ["Wizard", "Arcane"],
+        desc: {
+          en: "Frequency once per day.\n\nYou tap the magic stored in your bonded item to recast a spell you have already cast today.",
+          pt: "Frequência uma vez por dia.\n\nVocê canaliza a energia residual do seu item vinculado para reconjurar uma magia que já utilizou hoje sem gastar espaço adicional.",
+          es: "Frecuencia una vez al día.\n\nDrenas tu objeto vinculado para volver a lanzar un conjuro ya usado."
+        }
+      },
+
+      // Progression Features
+      "weapon specialization": {
+        traits: ["Classe"],
+        desc: {
+          en: "You inflict 2 additional damage with weapons and unarmed attacks in which you are an expert, 3 if master, 4 if legendary.",
+          pt: "Você causa 2 de dano adicional com armas e ataques desarmados nos quais é especialista, 3 se for mestre e 4 se for lendário.",
+          es: "Infliges 2 de daño adicional con armas en las que eres experto, 3 si eres maestro y 4 si eres legendario."
+        }
+      },
+      "especialização em armas": {
+        traits: ["Classe"],
+        desc: {
+          en: "You inflict 2 additional damage with weapons and unarmed attacks in which you are an expert, 3 if master, 4 if legendary.",
+          pt: "Você causa 2 de dano adicional com armas e ataques desarmados nos quais é especialista, 3 se for mestre e 4 se for lendário.",
+          es: "Infliges 2 de daño adicional con armas en las que eres experto, 3 si eres maestro y 4 si eres legendario."
+        }
+      },
+      "evasion": {
+        traits: ["Classe"],
+        desc: {
+          en: "When you roll a success on a Reflex saving throw, you get a critical success instead.",
+          pt: "Quando você obtém um sucesso em uma salvaguarda de Reflexos, você obtém um sucesso crítico em vez disso.",
+          es: "Cuando obtienes un éxito en un tiro de salvación de Reflejos, obtienes un éxito crítico en su lugar."
+        }
+      },
+      "evasão": {
+        traits: ["Classe"],
+        desc: {
+          en: "When you roll a success on a Reflex saving throw, you get a critical success instead.",
+          pt: "Quando você obtém um sucesso em uma salvaguarda de Reflexos, você obtém um sucesso crítico em vez disso.",
+          es: "Cuando obtienes un éxito en un tiro de salvación de Reflejos, obtienes un éxito crítico en su lugar."
+        }
+      },
+      "juggernaut": {
+        traits: ["Classe"],
+        desc: {
+          en: "Your proficiency rank for Fortitude saves increases to master. When you roll a success on a Fortitude save, you get a critical success instead.",
+          pt: "Sua proficiência em Fortitude sobe para mestre. Quando você obtém um sucesso em uma salvaguarda de Fortitude, obtém um sucesso crítico em vez disso.",
+          es: "Tu rango en Fortaleza sube a maestro. Cuando obtienes un éxito en Fortaleza, obtienes un éxito crítico."
+        }
+      },
+      "implacável": {
+        traits: ["Classe"],
+        desc: {
+          en: "Your proficiency rank for Fortitude saves increases to master. When you roll a success on a Fortitude save, you get a critical success instead.",
+          pt: "Sua proficiência em Fortitude sobe para mestre. Quando você obtém um sucesso em uma salvaguarda de Fortitude, obtém um sucesso crítico em vez disso.",
+          es: "Tu rango en Fortaleza sube a maestro. Cuando obtienes un éxito en Fortaleza, obtienes un éxito crítico."
+        }
+      },
+      "resolve": {
+        traits: ["Classe"],
+        desc: {
+          en: "Your proficiency rank for Will saves increases to master. When you roll a success on a Will save, you get a critical success instead.",
+          pt: "Sua proficiência em Vontade sobe para mestre. Quando você obtém um sucesso em uma salvaguarda de Vontade, obtém um sucesso crítico em vez disso.",
+          es: "Tu rango en Voluntad sube a maestro. Cuando obtienes un éxito en Voluntad, obtienes un éxito crítico."
+        }
+      },
+      "determinação": {
+        traits: ["Classe"],
+        desc: {
+          en: "Your proficiency rank for Will saves increases to master. When you roll a success on a Will save, you get a critical success instead.",
+          pt: "Sua proficiência em Vontade sobe para mestre. Quando você obtém um sucesso em uma salvaguarda de Vontade, obtém um sucesso crítico em vez disso.",
+          es: "Tu rango en Voluntad sube a maestro. Quando obtienes un éxito en Voluntad, obtienes un éxito crítico."
         }
       }
     };
 
+    // Busca exata ou por substring no DB de habilidades
     let match = null;
     for (const [k, v] of Object.entries(DB)) {
       if (norm === k || norm.includes(k) || k.includes(norm)) {
@@ -4047,11 +4563,128 @@ class PathbuilderApp {
       };
     }
 
-    const catalogFeat = (PF2E_DATA?.feats || []).find(f => String(f.name).toLowerCase() === norm || String(f.id).toLowerCase() === norm);
+    // 2. Busca abrangente em PF2E_DATA.feats
+    const feats = Array.isArray(PF2E_DATA?.feats) ? PF2E_DATA.feats : Object.values(PF2E_DATA?.feats || {});
+    const catalogFeat = feats.find(f => {
+      if (!f) return false;
+      const fNorm = String(f.name || "").toLowerCase();
+      const fId = String(f.id || "").toLowerCase();
+      const fPt = String(f.names?.["pt-BR"] || "").toLowerCase();
+      const fEn = String(f.names?.en || "").toLowerCase();
+      const fEs = String(f.names?.es || "").toLowerCase();
+      return fNorm === norm || fId === norm || fPt === norm || fEn === norm || fEs === norm || fNorm.includes(norm) || norm.includes(fNorm);
+    });
     if (catalogFeat) {
+      const desc = catalogFeat.summaries?.[locale] || catalogFeat.description || catalogFeat.summaries?.["pt-BR"] || catalogFeat.summaries?.en || catalogFeat.summary || "";
       return {
-        traits: Array.isArray(catalogFeat.traits) ? catalogFeat.traits : (catalogFeat.type ? [catalogFeat.type] : []),
-        description: catalogFeat.description || catalogFeat.summary || ""
+        traits: Array.isArray(catalogFeat.traits) ? catalogFeat.traits : (catalogFeat.type ? [catalogFeat.type] : ["Talento"]),
+        description: desc
+      };
+    }
+
+    // 3. Busca em PF2E_DATA.actions
+    const actions = Array.isArray(PF2E_DATA?.actions) ? PF2E_DATA.actions : Object.values(PF2E_DATA?.actions || {});
+    const catalogAction = actions.find(a => {
+      if (!a) return false;
+      const aNorm = String(a.name || "").toLowerCase();
+      const aId = String(a.id || "").toLowerCase();
+      const aPt = String(a.names?.["pt-BR"] || "").toLowerCase();
+      const aEn = String(a.names?.en || "").toLowerCase();
+      return aNorm === norm || aId === norm || aPt === norm || aEn === norm || aNorm.includes(norm) || norm.includes(aNorm);
+    });
+    if (catalogAction) {
+      const desc = catalogAction.summaries?.[locale] || catalogAction.description || catalogAction.summaries?.["pt-BR"] || catalogAction.summary || "";
+      return {
+        traits: Array.isArray(catalogAction.traits) ? catalogAction.traits : ["Ação"],
+        description: desc
+      };
+    }
+
+    // 4. Busca em PF2E_DATA.subclasses
+    const subclasses = Array.isArray(PF2E_DATA?.subclasses) ? PF2E_DATA.subclasses : Object.values(PF2E_DATA?.subclasses || {});
+    const catalogSubclass = subclasses.find(s => {
+      if (!s) return false;
+      const sNorm = String(s.name || "").toLowerCase();
+      const sId = String(s.id || "").toLowerCase();
+      const sPt = String(s.names?.["pt-BR"] || "").toLowerCase();
+      const sEn = String(s.names?.en || "").toLowerCase();
+      return sNorm === norm || sId === norm || sPt === norm || sEn === norm || sNorm.includes(norm) || norm.includes(sNorm);
+    });
+    if (catalogSubclass) {
+      const desc = catalogSubclass.summaries?.[locale] || catalogSubclass.description || catalogSubclass.summaries?.["pt-BR"] || catalogSubclass.summary || "";
+      return {
+        traits: Array.isArray(catalogSubclass.traits) ? catalogSubclass.traits : ["Subclasse"],
+        description: desc
+      };
+    }
+
+    // 5. Busca em PF2E_DATA.heritages / versatileHeritages
+    const allHeritages = [
+      ...(Array.isArray(PF2E_DATA?.heritages) ? PF2E_DATA.heritages : Object.values(PF2E_DATA?.heritages || {})),
+      ...(Array.isArray(PF2E_DATA?.versatileHeritages) ? PF2E_DATA.versatileHeritages : Object.values(PF2E_DATA?.versatileHeritages || {}))
+    ];
+    const catalogHeritage = allHeritages.find(h => {
+      if (!h) return false;
+      const hNorm = String(h.name || "").toLowerCase();
+      const hId = String(h.id || "").toLowerCase();
+      const hPt = String(h.names?.["pt-BR"] || "").toLowerCase();
+      return hNorm === norm || hId === norm || hPt === norm || hNorm.includes(norm) || norm.includes(hNorm);
+    });
+    if (catalogHeritage) {
+      const desc = catalogHeritage.summaries?.[locale] || catalogHeritage.description || catalogHeritage.summaries?.["pt-BR"] || catalogHeritage.summary || "";
+      return {
+        traits: Array.isArray(catalogHeritage.traits) ? catalogHeritage.traits : ["Herança"],
+        description: desc
+      };
+    }
+
+    // 6. Busca em PF2E_DATA.ancestries
+    const ancestries = Array.isArray(PF2E_DATA?.ancestries) ? PF2E_DATA.ancestries : Object.values(PF2E_DATA?.ancestries || {});
+    const catalogAncestry = ancestries.find(anc => {
+      if (!anc) return false;
+      const ancNorm = String(anc.name || "").toLowerCase();
+      const ancPt = String(anc.names?.["pt-BR"] || "").toLowerCase();
+      return ancNorm === norm || ancPt === norm || ancNorm.includes(norm) || norm.includes(ancNorm);
+    });
+    if (catalogAncestry) {
+      const desc = catalogAncestry.summaries?.[locale] || catalogAncestry.description || catalogAncestry.summaries?.["pt-BR"] || "";
+      return {
+        traits: ["Ancestralidade"],
+        description: desc
+      };
+    }
+
+    // 7. Busca em Itens (PF2E_ITEMS_CATALOG)
+    const itemsCatalog = (typeof PF2E_ITEMS_CATALOG !== "undefined" && Array.isArray(PF2E_ITEMS_CATALOG)) ? PF2E_ITEMS_CATALOG : [];
+    const catalogItem = itemsCatalog.find(it => {
+      if (!it) return false;
+      const itNorm = String(it.name || "").toLowerCase();
+      const itId = String(it.id || "").toLowerCase();
+      const itPt = String(it.names?.["pt-BR"] || "").toLowerCase();
+      return itNorm === norm || itId === norm || itPt === norm;
+    });
+    if (catalogItem) {
+      const desc = catalogItem.summaries?.[locale] || catalogItem.description || catalogItem.summaries?.["pt-BR"] || catalogItem.summary || "";
+      return {
+        traits: Array.isArray(catalogItem.traits) ? catalogItem.traits : ["Item"],
+        description: desc
+      };
+    }
+
+    // 8. Busca em PF2E_DATA.spells
+    const spells = Array.isArray(PF2E_DATA?.spells) ? PF2E_DATA.spells : Object.values(PF2E_DATA?.spells || {});
+    const catalogSpell = spells.find(sp => {
+      if (!sp) return false;
+      const spNorm = String(sp.name || "").toLowerCase();
+      const spId = String(sp.id || "").toLowerCase();
+      const spPt = String(sp.names?.["pt-BR"] || "").toLowerCase();
+      return spNorm === norm || spId === norm || spPt === norm;
+    });
+    if (catalogSpell) {
+      const desc = catalogSpell.summaries?.[locale] || catalogSpell.description || catalogSpell.summaries?.["pt-BR"] || catalogSpell.summary || "";
+      return {
+        traits: Array.isArray(catalogSpell.traits) ? catalogSpell.traits : ["Magia"],
+        description: desc
       };
     }
 
@@ -4261,8 +4894,9 @@ class PathbuilderApp {
     let contentHtml = `<div style="font-size:16px; font-weight:bold; color:var(--pb-orange);">${escapeHtml(getCatalogDisplayName(item.data, locale))}</div>`;
     
     const localizedDescription = item.data.summaries?.[locale] || item.data.description || "";
-    if (localizedDescription) {
-      contentHtml += `<div style="font-size:12px; margin-top:8px; line-height:1.6;">${escapeHtml(localizedDescription)}</div>`;
+    const fullDescription = localizedDescription || item.data.summaries?.["pt-BR"] || item.data.summaries?.en || item.data.summaries?.es || item.data.summary || item.data.desc || item.data.text || "";
+    if (fullDescription) {
+      contentHtml += `<div style="font-size:12px; margin-top:8px; line-height:1.6;">${escapeHtml(fullDescription)}</div>`;
     }
     const prerequisite = item.data.prereq || item.data.prerequisites;
     if (prerequisite) {

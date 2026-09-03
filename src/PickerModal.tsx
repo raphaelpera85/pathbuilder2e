@@ -808,7 +808,7 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
     const filtered = rawItems.filter((item) => {
       if (!item) return false;
       const localizedName = getItemDisplayName(item, locale);
-      const localizedSummary = item.data?.summaries?.[locale] ?? item.data?.description ?? "";
+      const localizedSummary = String(item.data?.summaries?.[locale] ?? item.data?.description ?? item.data?.summaries?.["pt-BR"] ?? item.data?.summaries?.en ?? item.data?.summary ?? "");
       return `${localizedName} ${item.name || ""} ${localizedSummary}`.toLocaleLowerCase(locale).includes(needle);
     });
 
@@ -1444,7 +1444,7 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
 
                     {/* DESCRIPTION */}
                     <div className="picker-desc">
-                      {selectedItem.data?.summaries?.[locale] ?? selectedItem.data?.description ?? t("selectDetails")}
+                      {String(selectedItem.data?.summaries?.[locale] ?? selectedItem.data?.description ?? selectedItem.data?.summaries?.["pt-BR"] ?? selectedItem.data?.summaries?.en ?? selectedItem.data?.summary ?? t("selectDetails"))}
                     </div>
 
                     {/* SOURCE BOOK */}

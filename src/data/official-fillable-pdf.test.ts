@@ -18,7 +18,7 @@ function loadEngine() {
   runInContext(`${dataCode};\n${engineCode};\n${fillerCode};\nglobalThis.engine = PF2E_ENGINE;`, sandbox);
   return {
     engine: sandbox.globalThis.engine,
-    filler: sandbox.globalThis.PF2E_PDF_FILLER || sandbox.module.exports
+    filler: sandbox.globalThis.PF2E_PDF_FILLER || sandbox.module.exports?.PF2E_PDF_FILLER || sandbox.module.exports
   };
 }
 
@@ -48,9 +48,16 @@ describe("Exportação para Ficha Oficial PDF Editável (AcroForm)", () => {
     xp: 600,
     currentHp: 68,
     tempHp: 10,
+    shieldRaised: true,
+    shieldBonus: 2,
+    shieldHardness: 5,
+    shieldBt: 10,
+    shieldMaxHp: 20,
     wounded: 1,
     conditions: ["Amedrontado 1"],
     resistances: ["Fogo 5"],
+    senses: ["Visão na Penumbra"],
+    defenseNotes: "Resistência ao medo +1",
     savingThrows: {
       fortitude: "Mestre",
       reflex: "Especialista",
@@ -63,10 +70,18 @@ describe("Exportação para Ficha Oficial PDF Editável (AcroForm)", () => {
       "Média": "Treinado",
       "Pesada": "Especialista"
     },
+    weaponProficiencies: {
+      "Desarmado": "Treinado",
+      "Simples": "Especialista",
+      "Marcial": "Mestre",
+      "Avançada": "Treinado"
+    },
+    classDcRank: "Mestre",
     skills: {
       athletics: "Mestre",
       acrobatics: "Especialista",
-      intimidation: "Treinado"
+      intimidation: "Treinado",
+      medicine: "Treinado"
     },
     loreSkills: [
       { name: "Guerra", rank: "Treinado" }
@@ -91,11 +106,17 @@ describe("Exportação para Ficha Oficial PDF Editável (AcroForm)", () => {
     ],
     feats: {
       ancestry: ["Ambição Natural", "Orgulho Humano"],
-      background: ["Aparência Imponente"],
+      background: "Aparência Imponente",
       class: ["Golpe Duplo", "Bloqueio Agressivo"],
       skill: ["Intimidação Rápida", "Salto Poderoso"]
     },
     classFeatures: ["Ataque de Oportunidade", "Especialização em Armas"],
+    actions: [
+      { name: "Golpe", actions: "◆", source: "Básico" }
+    ],
+    reactions: [
+      { name: "Ataque de Oportunidade", trigger: "Inimigo sai do alcance", effect: "Desfere um golpe corpo a corpo" }
+    ],
     inventory: [
       { name: "Cota de Malha Completa", qty: 1, bulk: "3" },
       { name: "Escudo de Aço", qty: 1, bulk: "1", isHeld: true },
@@ -148,42 +169,103 @@ describe("Exportação para Ficha Oficial PDF Editável (AcroForm)", () => {
     expect(form.getTextField("DEXTERITY").getText()).toMatch(/^[+-]\d+$/);
     expect(form.getTextField("CONSTITUTION").getText()).toMatch(/^[+-]\d+$/);
 
-    // 3. CA e Pontos de Vida
+    // 3. CA, Escudo e Pontos de Vida
     expect(form.getTextField("AC").getText()).not.toBe("");
+    expect(form.getTextField("SHIELD").getText()).toBe("2");
+    expect(form.getTextField("Hardness Max HP").getText()).toBe("5");
+    expect(form.getTextField("BT").getText()).toBe("10");
     expect(form.getTextField("MAX HP").getText()).not.toBe("");
+    expect(form.getTextField("SENSES AND NOTES").getText()).toContain("Penumbra");
+    expect(form.getTextField("DEFENSE NOTES").getText()).toContain("Resistência");
 
     // 4. Salvaguardas e Checkboxes TEML
     expect(form.getTextField("FORTITUDE").getText()).toMatch(/^[+-]\d+$/);
     expect(form.getCheckBox("FORTITUDE MASTER").isChecked()).toBe(true);
 
-    // 5. Perícias e Checkboxes TEML
+    // 5. Perícias e Checkboxes TEML (incluindo correção de grafia Paizo ATHELETICS e MEDECINE)
     expect(form.getTextField("ATHLETICS").getText()).toMatch(/^[+-]\d+$/);
     expect(form.getCheckBox("ACROBATICS EXPERT").isChecked()).toBe(true);
+    expect(form.getCheckBox("ATHELETICS MASTER").isChecked()).toBe(true);
+    expect(form.getCheckBox("MEDECINE TRAINED").isChecked()).toBe(true);
 
-    // 6. Golpes Melee & Ranged
+    // 6. CD de Classe e Proficiências de Armas
+    expect(form.getTextField("CLASS DC").getText()).not.toBe("");
+    expect(form.getCheckBox("MARTIAL WEAPONS MASTER").isChecked()).toBe(true);
+
+    // 7. Golpes Melee & Ranged com Caixas de Dano B/P/S
     expect(form.getTextField("MELEE STRIKE 1").getText()).toBe("Espada Longa +1 Impressionante");
     expect(form.getTextField("MELEE STRIKE 1 DAMAGE").getText()).toContain("Cortante");
+    expect(form.getCheckBox("S").isChecked()).toBe(true); // Cortante / Slashing marcado
     expect(form.getTextField("RANGED STRIKE 4").getText()).toBe("Arco Curto Composto");
+    expect(form.getCheckBox("P_4").isChecked()).toBe(true); // Perfurante / Piercing marcado
 
-    // 7. Inventário, Carga & Moedas
+    // 8. Talentos e Habilidades (Página 2)
+    expect(form.getTextField("ANCESTRY FEAT").getText()).toContain("Ambição Natural");
+    expect(form.getTextField("BACKGROUND SKILL FEAT").getText()).toBe("Aparência Imponente");
+    expect(form.getTextField("CLASS FEATS & FEATURES").getText()).toContain("Ataque de Oportunidade");
+    expect(form.getTextField("CLASS FEAT 1-1").getText()).toBe("Golpe Duplo");
+    expect(form.getTextField("CLASS FEAT 2-1").getText()).toBe("Bloqueio Agressivo");
+    expect(form.getTextField("SKILL FEAT 2-1").getText()).toBe("Intimidação Rápida");
+    expect(form.getTextField("SKILL FEAT 3-1").getText()).toBe("Salto Poderoso");
+
+    // 9. Ações e Reações
+    expect(form.getTextField("ACTION NAME 1").getText()).toBe("Golpe");
+    expect(form.getTextField("REACTION NAME 1").getText()).toBe("Ataque de Oportunidade");
+
+    // 10. Inventário, Carga & Moedas
     expect(form.getTextField("GOLD").getText()).toBe("45");
     expect(form.getTextField("PLATINUM").getText()).toBe("2");
     expect(form.getTextField("WORN 1").getText()).toContain("Cota de Malha");
     expect(form.getTextField("HELD1").getText()).toContain("Escudo de Aço");
     expect(form.getTextField("CONSUMABLES 1").getText()).toContain("Poção de Cura");
 
-    // 8. Identidade & Biografia
+    // 11. Identidade & Biografia
     expect(form.getTextField("AGE").getText()).toBe("28");
     expect(form.getTextField("ETHNICITY").getText()).toBe("Taldano");
     expect(form.getTextField("Appearance").getText()).toContain("Guerreiro forte");
     expect(form.getTextField("Edicts").getText()).toContain("Proteger os inocentes");
+
+    // 12. Magias, Truques, Foco e Tradição (Página 4)
+    expect(form.getCheckBox("DIVINE").isChecked()).toBe(true);
+    expect(form.getTextField("CANTRIP NAME 1").getText()).toBe("Luz");
+    expect(form.getCheckBox("CANTRIP 1 PREPARED").isChecked()).toBe(true);
+    expect(form.getTextField("SPELL 1").getText()).toBe("Curar");
+    expect(form.getTextField("FOCUS SPELL 1").getText()).toBe("Impor as Mãos");
+    expect(form.getCheckBox("FP1").isChecked()).toBe(true);
   }, 20000);
 
-  it("deve funcionar via módulo JS PF2E_PDF_FILLER e calcular estatísticas automaticamente", async () => {
+  it("deve funcionar via módulo JS PF2E_PDF_FILLER e calcular estatísticas automaticamente com feats em array ou progression", async () => {
     const { engine, filler } = loadEngine();
-    const calc = engine.calculateCharacterStats(sampleCharacter as any);
+
+    // Personagem com feats no formato plano e progression (como no construtor runtime do app)
+    const runtimeChar = {
+      name: "Kyra Sacerdotisa",
+      level: 3,
+      class: "Clérigo",
+      ancestry: "Humano",
+      heritage: "Humano Habilidoso",
+      background: "Acólito",
+      magicalTradition: "Divina",
+      spellcastingAbility: "Sabedoria",
+      progression: {
+        "1_ancestry_feat": "Conhecimento Geral",
+        "1_class_feat": "Canalizar Cura",
+        "2_skill_feat": "Medicina de Batalha",
+        "3_general_feat": "Tenacidade",
+        "background_feat": "Foco Estudioso"
+      },
+      feats: [
+        { name: "Conhecimento Geral", slotId: "1_ancestry_feat", type: "Ancestral" },
+        { name: "Canalizar Cura", slotId: "1_class_feat", type: "Classe" },
+        { name: "Medicina de Batalha", slotId: "2_skill_feat", type: "Perícia" }
+      ],
+      cantrips: [{ name: "Guia", actions: "◆" }],
+      focusSpells: [{ name: "Bênção da Cura", actions: "◆" }]
+    };
+
+    const calc = engine.calculateCharacterStats(runtimeChar);
     const filledBytes = await filler.fillOfficialPdf(
-      sampleCharacter,
+      runtimeChar,
       calc,
       templateBytes,
       { PDFDocument }
@@ -192,10 +274,13 @@ describe("Exportação para Ficha Oficial PDF Editável (AcroForm)", () => {
     const filledDoc = await PDFDocument.load(filledBytes);
     const form = filledDoc.getForm();
 
-    expect(form.getTextField("Character Name").getText()).toBe("Valeros de Golarion");
+    expect(form.getTextField("Character Name").getText()).toBe("Kyra Sacerdotisa");
     expect(form.getTextField("SPEED").getText()).toContain("pés");
-    expect(form.getCheckBox("HERO POINT 1").isChecked()).toBe(true);
-    expect(form.getCheckBox("HERO POINT 2").isChecked()).toBe(true);
-    expect(form.getCheckBox("HERO POINT 3").isChecked()).toBe(false);
+    expect(form.getTextField("ANCESTRY FEAT").getText()).toContain("Conhecimento Geral");
+    expect(form.getTextField("BACKGROUND SKILL FEAT").getText()).toBe("Foco Estudioso");
+    expect(form.getTextField("CLASS FEAT 1-1").getText()).toBe("Canalizar Cura");
+    expect(form.getTextField("SKILL FEAT 2-1").getText()).toBe("Medicina de Batalha");
+    expect(form.getTextField("CANTRIP NAME 1").getText()).toBe("Guia");
+    expect(form.getTextField("FOCUS SPELL 1").getText()).toBe("Bênção da Cura");
   }, 20000);
 });
