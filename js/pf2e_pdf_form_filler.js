@@ -236,16 +236,114 @@
     "Visão no Escuro": { "pt-BR": "Visão no Escuro", en: "Darkvision", es: "Visión en la Oscuridad" },
     "Darkvision": { "pt-BR": "Visão no Escuro", en: "Darkvision", es: "Visión en la Oscuridad" },
     "Visão na Penumbra": { "pt-BR": "Visão na Penumbra", en: "Low-Light Vision", es: "Visión en la Penumbra" },
-    "Low-Light Vision": { "pt-BR": "Visão na Penumbra", en: "Low-Light Vision", es: "Visión en la Penumbra" }
+    "Low-Light Vision": { "pt-BR": "Visão na Penumbra", en: "Low-Light Vision", es: "Visión en la Penumbra" },
+    // Equipment & Adventuring Items
+    "Adventurer's Pack": { "pt-BR": "Mochila de Aventureiro", en: "Adventurer's Pack", es: "Mochila de aventurero" },
+    "Mochila de Aventureiro": { "pt-BR": "Mochila de Aventureiro", en: "Adventurer's Pack", es: "Mochila de aventurero" },
+    "Dueling Cape": { "pt-BR": "Capa de Duelo", en: "Dueling Cape", es: "Capa de duelo" },
+    "Capa de Duelo": { "pt-BR": "Capa de Duelo", en: "Dueling Cape", es: "Capa de duelo" },
+    "Disguise Kit": { "pt-BR": "Kit de Disfarce", en: "Disguise Kit", es: "Kit de disfraces" },
+    "Kit de Disfarce": { "pt-BR": "Kit de Disfarce", en: "Disguise Kit", es: "Kit de disfraces" },
+    "Bedroll": { "pt-BR": "Saco de Dormir", en: "Bedroll", es: "Saco de dormir" },
+    "Saco de Dormir": { "pt-BR": "Saco de Dormir", en: "Bedroll", es: "Saco de dormir" },
+    "Rations (1 week)": { "pt-BR": "Rações (1 semana)", en: "Rations (1 week)", es: "Raciones (1 semana)" },
+    "Rações (1 semana)": { "pt-BR": "Rações (1 semana)", en: "Rations (1 week)", es: "Raciones (1 semana)" },
+    "Rations": { "pt-BR": "Rações", en: "Rations", es: "Raciones" },
+    "Rações": { "pt-BR": "Rações", en: "Rations", es: "Raciones" },
+    "Rope (50 ft)": { "pt-BR": "Corda de Cânhamo (15m)", en: "Rope (50 ft)", es: "Cuerda (15 metros)" },
+    "Rope (50 feet)": { "pt-BR": "Corda de Cânhamo (15m)", en: "Rope (50 ft)", es: "Cuerda (15 metros)" },
+    "Corda (15 metros)": { "pt-BR": "Corda de Cânhamo (15m)", en: "Rope (50 ft)", es: "Cuerda (15 metros)" },
+    "Corda de Cânhamo (50 pés)": { "pt-BR": "Corda de Cânhamo (15m)", en: "Rope (50 ft)", es: "Cuerda (15 metros)" },
+    "Corda de Cânhamo - 15m (Rope)": { "pt-BR": "Corda de Cânhamo (15m)", en: "Rope (50 ft)", es: "Cuerda (15 metros)" },
+    "Healer's Toolkit": { "pt-BR": "Kit de Primeiros Socorros", en: "Healer's Toolkit", es: "Herramientas de sanador" },
+    "Kit de Primeiros Socorros": { "pt-BR": "Kit de Primeiros Socorros", en: "Healer's Toolkit", es: "Herramientas de sanador" },
+    "Kit de Curandeiro": { "pt-BR": "Kit de Primeiros Socorros", en: "Healer's Toolkit", es: "Herramientas de sanador" },
+    "Thieves' Tools": { "pt-BR": "Ferramentas de Ladrão", en: "Thieves' Tools", es: "Herramientas de ladrón" },
+    "Thieves' Toolkit": { "pt-BR": "Ferramentas de Ladrão", en: "Thieves' Tools", es: "Herramientas de ladrón" },
+    "Ferramentas de Ladrão": { "pt-BR": "Ferramentas de Ladrão", en: "Thieves' Tools", es: "Herramientas de ladrón" },
+    "Air Bladder": { "pt-BR": "Bexiga de Ar", en: "Air Bladder", es: "Vejiga de aire" },
+    "Bexiga de Ar": { "pt-BR": "Bexiga de Ar", en: "Air Bladder", es: "Vejiga de aire" },
+    "Alchemist's Lab": { "pt-BR": "Laboratório de Alquimista", en: "Alchemist's Lab", es: "Laboratorio de alquimista" },
+    "Laboratório de Alquimista": { "pt-BR": "Laboratório de Alquimista", en: "Alchemist's Lab", es: "Laboratorio de alquimista" },
+    "Alchemist's Toolkit": { "pt-BR": "Kit de Alquimista", en: "Alchemist's Toolkit", es: "Kit de alquimista" },
+    "Kit de Alquimista": { "pt-BR": "Kit de Alquimista", en: "Alchemist's Toolkit", es: "Kit de alquimista" },
+    "Animal Blind": { "pt-BR": "Abrigo de Observação Animal", en: "Animal Blind", es: "Escondite para animales" },
+    "Animal Call": { "pt-BR": "Chamado de Animal", en: "Animal Call", es: "Llamador de animales" },
+    "Armored Skirt": { "pt-BR": "Saia Blindada", en: "Armored Skirt", es: "Falda blindada" },
+    "Artisan's Toolkit": { "pt-BR": "Kit de Artesão", en: "Artisan's Toolkit", es: "Kit de artesano" },
+    "Traje de Respiração Atmosférica": { "pt-BR": "Traje de Respiração Atmosférica", en: "Atmospheric Breathing Suit", es: "Traje de respiración atmosférica" },
+    "Atmospheric Breathing Suit": { "pt-BR": "Traje de Respiração Atmosférica", en: "Atmospheric Breathing Suit", es: "Traje de respiración atmosférica" },
+    "Backpack": { "pt-BR": "Mochila", en: "Backpack", es: "Mochila" },
+    "Mochila": { "pt-BR": "Mochila", en: "Backpack", es: "Mochila" },
+    "Bandolier": { "pt-BR": "Cartucheira", en: "Bandolier", es: "Bandolera" },
+    "Belt Pouch": { "pt-BR": "Bolsa de Cinto", en: "Belt Pouch", es: "Bolsa de cinturón" },
+    "Caltrops": { "pt-BR": "Estrepes", en: "Caltrops", es: "Abrojos" },
+    "Candle": { "pt-BR": "Vela", en: "Candle", es: "Vela" },
+    "Chalk (10 pieces)": { "pt-BR": "Giz (10 pedaços)", en: "Chalk (10 pieces)", es: "Tiza (10 piezas)" },
+    "Chalk": { "pt-BR": "Giz", en: "Chalk", es: "Tiza" },
+    "Climbing Kit": { "pt-BR": "Kit de Escalada", en: "Climbing Kit", es: "Kit de escalada" },
+    "Compass": { "pt-BR": "Bússola", en: "Compass", es: "Brújula" },
+    "Crowbar": { "pt-BR": "Pé de Cabra", en: "Crowbar", es: "Palanca" },
+    "Fishing Tackle": { "pt-BR": "Equipamento de Pesca", en: "Fishing Tackle", es: "Equipo de pesca" },
+    "Flint and Steel": { "pt-BR": "Pederneira e Isqueiro", en: "Flint and Steel", es: "Pedernal y acero" },
+    "Pederneira e Isqueiro": { "pt-BR": "Pederneira e Isqueiro", en: "Flint and Steel", es: "Pedernal y acero" },
+    "Grappling Hook": { "pt-BR": "Gancho de Escalada", en: "Grappling Hook", es: "Garfio de escalada" },
+    "Lantern (Bullseye)": { "pt-BR": "Lanterna de Foco", en: "Lantern (Bullseye)", es: "Linterna de foco" },
+    "Lantern (Hooded)": { "pt-BR": "Lanterna Furta-Fogo", en: "Lantern (Hooded)", es: "Linterna con capucha" },
+    "Lock (Simple)": { "pt-BR": "Cadeado Simples", en: "Lock (Simple)", es: "Cerradura simple" },
+    "Lock (Average)": { "pt-BR": "Fechadura Média", en: "Lock (Average)", es: "Cerradura media" },
+    "Magnifying Glass": { "pt-BR": "Lupa", en: "Magnifying Glass", es: "Lupa" },
+    "Manacles (Simple)": { "pt-BR": "Algemas Simples", en: "Manacles (Simple)", es: "Grilletes simples" },
+    "Mirror": { "pt-BR": "Espelho", en: "Mirror", es: "Espejo" },
+    "Oil (1 pint)": { "pt-BR": "Óleo (1 caneca)", en: "Oil (1 pint)", es: "Aceite (1 pinta)" },
+    "Piton": { "pt-BR": "Píton", en: "Piton", es: "Pitón" },
+    "Religious Symbol (Wooden)": { "pt-BR": "Símbolo Religioso (Madeira)", en: "Religious Symbol (Wooden)", es: "Símbolo religioso (madera)" },
+    "Religious Symbol (Silver)": { "pt-BR": "Símbolo Religioso (Prata)", en: "Religious Symbol (Silver)", es: "Símbolo religioso (plata)" },
+    "Sack": { "pt-BR": "Saco", en: "Sack", es: "Saco" },
+    "Scroll Case": { "pt-BR": "Estojo de Pergaminho", en: "Scroll Case", es: "Estuche de pergaminos" },
+    "Signal Whistle": { "pt-BR": "Apito de Sinal", en: "Signal Whistle", es: "Silbato de señales" },
+    "Soap": { "pt-BR": "Sabão", en: "Soap", es: "Jabón" },
+    "Spyglass": { "pt-BR": "Luneta", en: "Spyglass", es: "Catalejo" },
+    "Ten-foot Pole": { "pt-BR": "Vara de 3 Metros", en: "Ten-foot Pole", es: "Vara de 3 metros" },
+    "Torch": { "pt-BR": "Tocha", en: "Torch", es: "Antorcha" },
+    "Waterskin": { "pt-BR": "Odre", en: "Waterskin", es: "Odre" },
+    "Writing Set": { "pt-BR": "Material de Escrita", en: "Writing Set", es: "Útiles de escritura" },
+    "Elixir of Life (Minor)": { "pt-BR": "Elixir da Vida (Menor)", en: "Elixir of Life (Minor)", es: "Elixir de la vida (menor)" },
+    "Elixir of Life (Lesser)": { "pt-BR": "Elixir da Vida (Inferior)", en: "Elixir of Life (Lesser)", es: "Elixir de la vida (inferior)" },
+    "Healing Potion (Minor)": { "pt-BR": "Poção de Cura Menor", en: "Minor Healing Potion", es: "Poción de curación menor" },
+    "Minor Healing Potion": { "pt-BR": "Poção de Cura Menor", en: "Minor Healing Potion", es: "Poción de curación menor" },
+    "Poção de Cura Menor": { "pt-BR": "Poção de Cura Menor", en: "Minor Healing Potion", es: "Poción de curación menor" },
+    "Healing Potion (Lesser)": { "pt-BR": "Poção de Cura Inferior", en: "Lesser Healing Potion", es: "Poción de curación inferior" },
+    "Lesser Healing Potion": { "pt-BR": "Poção de Cura Inferior", en: "Lesser Healing Potion", es: "Poción de curación inferior" },
+    "Poção de Cura Inferior": { "pt-BR": "Poção de Cura Inferior", en: "Lesser Healing Potion", es: "Poción de curación inferior" },
+    "Alchemist's Fire (Lesser)": { "pt-BR": "Fogo Alquímico (Inferior)", en: "Alchemist's Fire (Lesser)", es: "Fuego alquímico (inferior)" },
+    "Acid Flask (Lesser)": { "pt-BR": "Frasco de Ácido (Inferior)", en: "Acid Flask (Lesser)", es: "Frasco de ácido (inferior)" },
+    "Frost Vial (Lesser)": { "pt-BR": "Frasco de Gelo (Inferior)", en: "Frost Vial (Lesser)", es: "Vial de escarcha (inferior)" },
+    "Bottled Lightning (Lesser)": { "pt-BR": "Relâmpago Engarrafado (Inferior)", en: "Bottled Lightning (Lesser)", es: "Rayo embotellado (inferior)" },
+    "Tanglefoot Bag (Lesser)": { "pt-BR": "Bolsa Enredadora (Inferior)", en: "Tanglefoot Bag (Lesser)", es: "Bolsa enredadora (inferior)" },
+    "Antidote (Lesser)": { "pt-BR": "Antídoto (Inferior)", en: "Antidote (Lesser)", es: "Antídoto (inferior)" },
+    "Antiplague (Lesser)": { "pt-BR": "Antipraga (Inferior)", en: "Antiplague (Lesser)", es: "Antipeste (inferior)" },
+    "Smokestick (Lesser)": { "pt-BR": "Bastão de Fumaça (Inferior)", en: "Smokestick (Lesser)", es: "Bastón de humo (inferior)" },
+    "Sunrod": { "pt-BR": "Bastão Solar", en: "Sunrod", es: "Bastón solar" },
+    "Tindertwig": { "pt-BR": "Graveto Incendiário", en: "Tindertwig", es: "Ramita incendiaria" },
+    "Spacious Pouch (Bag of Holding)": { "pt-BR": "Bolsa Espaçosa (Bolsa de Carga)", en: "Spacious Pouch (Bag of Holding)", es: "Bolsa espaciosa (bolsa de contención)" },
+    "Boots of Elvenkind": { "pt-BR": "Botas Élficas", en: "Boots of Elvenkind", es: "Botas élficas" },
+    "Botas Élficas": { "pt-BR": "Botas Élficas", en: "Boots of Elvenkind", es: "Botas élficas" },
+    "Cloak of Elvenkind": { "pt-BR": "Manto Élfico", en: "Cloak of Elvenkind", es: "Capa élfica" },
+    "Manto Élfico": { "pt-BR": "Manto Élfico", en: "Cloak of Elvenkind", es: "Capa élfica" },
+    "Goggles of Night": { "pt-BR": "Óculos da Noite", en: "Goggles of Night", es: "Gafas de la noche" },
+    "Óculos da Noite": { "pt-BR": "Óculos da Noite", en: "Goggles of Night", es: "Gafas de la noche" },
+    "Wand of Heal (1st-Rank)": { "pt-BR": "Varinha de Curar (1º Ranque)", en: "Wand of Heal (1st-Rank)", es: "Varita de curar (rango 1)" },
+    "Staff of Fire": { "pt-BR": "Cajado do Fogo", en: "Staff of Fire", es: "Bastón de fuego" }
   };
 
   const PDF_DAMAGE_TYPES_DICT = {
-    "perfurante": { "pt-BR": "perfurante", en: "piercing", es: "perforante" },
-    "piercing": { "pt-BR": "perfurante", en: "piercing", es: "perforante" },
-    "cortante": { "pt-BR": "cortante", en: "slashing", es: "cortante" },
-    "slashing": { "pt-BR": "cortante", en: "slashing", es: "cortante" },
-    "impacto": { "pt-BR": "impacto", en: "bludgeoning", es: "contundente" },
-    "bludgeoning": { "pt-BR": "impacto", en: "bludgeoning", es: "contundente" }
+    "perfurante": { "pt-BR": "Perfurante", en: "Piercing", es: "Perforante" },
+    "piercing": { "pt-BR": "Perfurante", en: "Piercing", es: "Perforante" },
+    "cortante": { "pt-BR": "Cortante", en: "Slashing", es: "Cortante" },
+    "slashing": { "pt-BR": "Cortante", en: "Slashing", es: "Cortante" },
+    "impacto": { "pt-BR": "Impacto", en: "Bludgeoning", es: "Contundente" },
+    "bludgeoning": { "pt-BR": "Impacto", en: "Bludgeoning", es: "Contundente" }
   };
 
   function localizeCatalogItem(rawName, locale) {
@@ -261,7 +359,42 @@
     }
     const data = typeof PF2E_DATA !== "undefined" ? PF2E_DATA : (global.PF2E_DATA);
     if (data) {
-      const collections = [data.heritages, data.feats, data.actions, data.ancestries, data.classes, data.backgrounds, data.spells, data.weapons];
+      if (data.COMPENDIUM_TRANSLATIONS) {
+        for (const [id, trans] of Object.entries(data.COMPENDIUM_TRANSLATIONS)) {
+          if (!Array.isArray(trans)) continue;
+          const [pt, en, es] = trans;
+          for (const candidate of [id, pt, en, es]) {
+            if (!candidate) continue;
+            if (candidate === trimmed) {
+              if (locale === "pt-BR") return pt || trimmed;
+              if (locale === "en") return en || trimmed;
+              if (locale === "es") return es || trimmed;
+            }
+            const cNorm = String(candidate).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+            if (cNorm === cleanKey) {
+              if (locale === "pt-BR") return pt || trimmed;
+              if (locale === "en") return en || trimmed;
+              if (locale === "es") return es || trimmed;
+            }
+          }
+        }
+      }
+
+      const collections = [
+        data.heritages,
+        data.feats,
+        data.actions,
+        data.ancestries,
+        data.classes,
+        data.backgrounds,
+        data.spells,
+        data.weapons,
+        data.items,
+        data.itemCompendium,
+        data.armors,
+        data.shields,
+        data.pets
+      ];
       for (const col of collections) {
         if (!col) continue;
         const found = (Array.isArray(col) ? col : Object.values(col)).find((entry) => {

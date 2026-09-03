@@ -396,7 +396,20 @@ class PathbuilderApp {
       if (Array.isArray(collection)) collection.forEach((record) => addRecord(record));
       else if (collection && typeof collection === "object") Object.entries(collection).forEach(([key, record]) => addRecord(record, key));
     };
-    if (typeof PF2E_DATA !== "undefined" && PF2E_DATA) Object.values(PF2E_DATA).forEach(addCollection);
+    if (typeof PF2E_DATA !== "undefined" && PF2E_DATA) {
+      Object.values(PF2E_DATA).forEach(addCollection);
+      if (PF2E_DATA.COMPENDIUM_TRANSLATIONS) {
+        for (const [id, trans] of Object.entries(PF2E_DATA.COMPENDIUM_TRANSLATIONS)) {
+          if (!Array.isArray(trans)) continue;
+          const [pt, en, es] = trans;
+          const names = { "pt-BR": pt, en, es };
+          for (const value of [id, pt, en, es]) {
+            const normalized = normalizeCatalogLabel(value);
+            if (normalized) index.set(normalized, names);
+          }
+        }
+      }
+    }
     if (typeof window !== "undefined" && window.pathbuilderCatalogs) Object.values(window.pathbuilderCatalogs).forEach(addCollection);
     this.catalogNameIndex = index;
     return index;
@@ -7413,7 +7426,8 @@ class PathbuilderApp {
         this.character,
         this.calc || PF2E_ENGINE.calculateCharacterStats(this.character),
         arrayBuffer,
-        (typeof PDFLib !== "undefined" ? PDFLib : (typeof window !== "undefined" ? window.PDFLib : null))
+        (typeof PDFLib !== "undefined" ? PDFLib : (typeof window !== "undefined" ? window.PDFLib : null)),
+        locale
       );
       
       const blob = new Blob([filledPdfBytes], { type: "application/pdf" });

@@ -459,6 +459,29 @@ export function getItemDisplayName(item: { name?: string; data?: any } | undefin
     if (locale === "es") return item.data?.names?.["es"] || ptPart;
   }
 
+  const app = typeof window !== "undefined" ? (window as any).app : null;
+  if (app && typeof app.localizeItemName === "function") {
+    const loc = app.localizeItemName(rawName, locale);
+    if (loc && loc !== rawName) return loc;
+  }
+
+  const pf2eData = typeof window !== "undefined" ? (window as any).PF2E_DATA : null;
+  if (pf2eData?.COMPENDIUM_TRANSLATIONS) {
+    const cleanKey = rawName.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+    for (const [id, trans] of Object.entries(pf2eData.COMPENDIUM_TRANSLATIONS)) {
+      if (!Array.isArray(trans)) continue;
+      const [pt, en, es] = trans as string[];
+      for (const val of [id, pt, en, es]) {
+        if (!val) continue;
+        if (val === rawName || String(val).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "") === cleanKey) {
+          if (locale === "pt-BR") return pt;
+          if (locale === "en") return en;
+          if (locale === "es") return es;
+        }
+      }
+    }
+  }
+
   return rawName;
 }
 

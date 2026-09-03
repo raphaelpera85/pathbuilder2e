@@ -283,4 +283,44 @@ describe("Exportação para Ficha Oficial PDF Editável (AcroForm)", () => {
     expect(form.getTextField("CANTRIP NAME 1").getText()).toBe("Guia");
     expect(form.getTextField("FOCUS SPELL 1").getText()).toBe("Bênção da Cura");
   }, 20000);
+
+  it("deve traduzir itens do inventário para português (pt-BR) e idiomas selecionados", async () => {
+    const charWithEnglishItems: CharacterDocument = {
+      name: "Aventureiro Teste",
+      level: 1,
+      class: "Guerreiro",
+      inventory: [
+        { name: "Mochila de Aventureiro", qty: 1, bulk: "1" },
+        { name: "Dueling Cape", qty: 1, bulk: "L" },
+        { name: "Disguise Kit", qty: 1, bulk: "L" },
+        { name: "Bedroll", qty: 1, bulk: "L" },
+        { name: "Corda de Cânhamo - 15m (Rope)", qty: 1, bulk: "1" },
+        { name: "Rations (1 week)", qty: 1, bulk: "L" }
+      ]
+    };
+
+    // 1. Exportação em Português (pt-BR)
+    const filledBytesPt = await fillCharacterPdfForm(charWithEnglishItems, templateBytes, "pt-BR");
+    const docPt = await PDFDocument.load(filledBytesPt);
+    const formPt = docPt.getForm();
+
+    expect(formPt.getTextField("WORN 1").getText()).toBe("Mochila de Aventureiro");
+    expect(formPt.getTextField("WORN 2").getText()).toBe("Capa de Duelo");
+    expect(formPt.getTextField("WORN 3").getText()).toBe("Kit de Disfarce");
+    expect(formPt.getTextField("WORN 4").getText()).toBe("Saco de Dormir");
+    expect(formPt.getTextField("WORN 5").getText()).toBe("Corda de Cânhamo (15m)");
+    expect(formPt.getTextField("WORN 6").getText()).toBe("Rações (1 semana)");
+
+    // 2. Exportação em Inglês (en)
+    const filledBytesEn = await fillCharacterPdfForm(charWithEnglishItems, templateBytes, "en");
+    const docEn = await PDFDocument.load(filledBytesEn);
+    const formEn = docEn.getForm();
+
+    expect(formEn.getTextField("WORN 1").getText()).toBe("Adventurer's Pack");
+    expect(formEn.getTextField("WORN 2").getText()).toBe("Dueling Cape");
+    expect(formEn.getTextField("WORN 3").getText()).toBe("Disguise Kit");
+    expect(formEn.getTextField("WORN 4").getText()).toBe("Bedroll");
+    expect(formEn.getTextField("WORN 5").getText()).toBe("Rope (50 ft)");
+    expect(formEn.getTextField("WORN 6").getText()).toBe("Rations (1 week)");
+  }, 20000);
 });

@@ -12739,12 +12739,23 @@ const COMPENDIUM_TRANSLATIONS = {
   ,"item.compendium.wand_of_heal_1st_rank": ["Varinha de Curar (1º Ranque)", "Wand of Heal (1st-Rank)", "Varita de curar (rango 1)", "Varinha entalhada em freixo que permite conjurar a magia Curar de 1º ranque uma vez ao dia (ou arriscar sobrecarga).", "An ash wand that lets you cast the 1st-rank heal spell once per day (or risk overcharging it).", "Una varita de fresno que permite lanzar curar de rango 1 una vez al día (o arriesgarse a sobrecargarla)."]
   ,"item.compendium.staff_of_fire": ["Cajado do Fogo", "Staff of Fire", "Bastón de fuego", "Cajado mágico forjado em madeira carbonizada com cargas diárias para conjurar Raio de Fogo e Mãos Flamejantes.", "A magic staff of charred wood with daily charges for casting Produce Flame and Burning Hands.", "Un bastón mágico de madera carbonizada con cargas diarias para lanzar producir llama y manos ardientes."]
 };
+PF2E_DATA.COMPENDIUM_TRANSLATIONS = COMPENDIUM_TRANSLATIONS;
 for (const record of PF2E_DATA.itemCompendium || []) {
   const translation = COMPENDIUM_TRANSLATIONS[record.id];
   if (!translation) continue;
   const [pt, en, es, ptSummary, enSummary, esSummary] = translation;
   record.names = { "pt-BR": pt, en, es };
   record.summaries = { "pt-BR": ptSummary, en: enSummary, es: esSummary };
+}
+for (const record of PF2E_DATA.items || []) {
+  const label = String(record.name || "").trim();
+  const baseSlug = label.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "");
+  const translation = COMPENDIUM_TRANSLATIONS[record.id] || COMPENDIUM_TRANSLATIONS[`item.compendium.${baseSlug}`];
+  if (!translation) continue;
+  const [pt, en, es, ptSummary, enSummary, esSummary] = translation;
+  record.names = { "pt-BR": pt, en, es };
+  if (!record.description && ptSummary) record.description = ptSummary;
+  if (!record.summaries) record.summaries = { "pt-BR": ptSummary, en: enSummary, es: esSummary };
 }
 
 // Tipos de eidolon descritos na seção de Convocador/Eidolons de Segredos da
