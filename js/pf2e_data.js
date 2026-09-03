@@ -3822,7 +3822,16 @@ PF2E_DATA.feats = [
     },
     source: { book: "Livro do Jogador (Player Core)", page: 44 },
     ruleset: "remaster",
-    rarity: "common"
+    rarity: "common",
+    grants: {
+      featSlot: "1_class_feat_extra",
+      filterType: "Classe",
+      label: {
+        "pt-BR": "Talento de Classe Extra (Ambição Natural)",
+        "en": "Extra Class Feat (Natural Ambition)",
+        "es": "Dote de clase adicional (Ambición natural)"
+      }
+    }
   },
   {
     id: "feat.ancestry.general_training",
@@ -3841,7 +3850,16 @@ PF2E_DATA.feats = [
     },
     source: { book: "Livro do Jogador (Player Core)", page: 44 },
     ruleset: "remaster",
-    rarity: "common"
+    rarity: "common",
+    grants: {
+      featSlot: "1_general_feat_training",
+      filterType: "Geral",
+      label: {
+        "pt-BR": "Talento Geral (Treinamento Versátil)",
+        "en": "General Feat (General Training)",
+        "es": "Dote general (Entrenamiento general)"
+      }
+    }
   },
   {
     id: "feat.ancestry.clever_improviser",
@@ -9920,7 +9938,17 @@ const ALL_HERITAGE_DETAILS = {
       "page": 44
     },
     "ruleset": "remaster",
-    "needs_review": false
+    "needs_review": false,
+    "grants": {
+      "type": "feat",
+      "slotId": "1_general_feat",
+      "filterType": "Geral",
+      "label": {
+        "pt-BR": "Talento Geral (Humano Versátil)",
+        "en": "General Feat (Versatile Human)",
+        "es": "Dote general (Humano versátil)"
+      }
+    }
   },
   "heritage.ancestry.human.humano_habilidoso_pericia_extra": {
     "names": {
@@ -9938,7 +9966,8 @@ const ALL_HERITAGE_DETAILS = {
       "page": 44
     },
     "ruleset": "remaster",
-    "needs_review": false
+    "needs_review": false,
+    "extraSkillCount": 1
   },
   "heritage.ancestry.human.meio_elfo_aelfin": {
     "names": {
@@ -10118,7 +10147,17 @@ const ALL_HERITAGE_DETAILS = {
       "page": 52
     },
     "ruleset": "remaster",
-    "needs_review": false
+    "needs_review": false,
+    "grants": {
+      "type": "archetype",
+      "slotId": "1_archetype_feat",
+      "filterType": "Dedicação",
+      "label": {
+        "pt-BR": "Dedicação de Arquétipo (Elfo Ancestral)",
+        "en": "Archetype Dedication (Ancient Elf)",
+        "es": "Dedicación de arquetipo (Elfo anciano)"
+      }
+    }
   },
   "heritage.ancestry.elf.elfo_do_artico": {
     "names": {
@@ -10232,7 +10271,19 @@ const ALL_HERITAGE_DETAILS = {
       "page": 56
     },
     "ruleset": "remaster",
-    "needs_review": false
+    "needs_review": false,
+    "grants": {
+      "type": "spell",
+      "slotId": "1_heritage_innate_spell",
+      "tradition": "primal",
+      "rank": 0,
+      "innate": true,
+      "label": {
+        "pt-BR": "Truque Inato (Gnomo Feérico)",
+        "en": "Innate Cantrip (Fey-Touched Gnome)",
+        "es": "Truco innato (Gnomo tocado por las hadas)"
+      }
+    }
   },
   "heritage.ancestry.gnome.gnomo_sensitivo": {
     "names": {
@@ -10292,7 +10343,18 @@ const ALL_HERITAGE_DETAILS = {
       "page": 56
     },
     "ruleset": "remaster",
-    "needs_review": false
+    "needs_review": false,
+    "grants": {
+      "type": "spell",
+      "slotId": "1_heritage_innate_spell",
+      "rank": 0,
+      "innate": true,
+      "label": {
+        "pt-BR": "Truque Inato (Gnomo Poço de Vigor)",
+        "en": "Innate Cantrip (Wellspring Gnome)",
+        "es": "Truco innato (Gnomo manantial)"
+      }
+    }
   },
   "heritage.ancestry.goblin.goblin_cabeca_dura": {
     "names": {
@@ -10676,7 +10738,11 @@ const ALL_HERITAGE_DETAILS = {
     },
     "ruleset": "remaster",
     "needs_review": false,
-    "hpBonus": 2
+    "hpBonus": 2,
+    "grantedFeat": {
+      "id": "feat.general.diehard",
+      "name": "Duro de Matar"
+    }
   },
   "heritage.ancestry.orc.orc_presa_de_ferro": {
     "names": {

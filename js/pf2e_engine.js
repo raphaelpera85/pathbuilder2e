@@ -1317,12 +1317,21 @@ const PF2E_ENGINE = {
     const backgroundSkill = bgData?.skill;
     const heritage = this.resolveHeritageRecord(character);
     const heritageSkills = Array.isArray(heritage?.trainedSkills) ? heritage.trainedSkills : [];
+    const isSkilledHuman = /skilled|habilidoso/i.test(String(character?.heritage || "")) || heritage?.id?.includes("habilidoso");
+    let extraHeritageSkills = Number(heritage?.extraSkillCount) || 0;
+    if (isSkilledHuman) {
+      const skilledBonus = Number(character?.level || 1) >= 5 ? 2 : 1;
+      extraHeritageSkills = Math.max(extraHeritageSkills, skilledBonus);
+    }
 
-    // Perícias concedidas por herança não consomem escolhas da classe. Se a
+    const subclassData = this.resolveSubclassRecord(character) || {};
+    const subclassSkills = Array.isArray(subclassData?.trainedSkills) ? subclassData.trainedSkills : [];
+
+    // Perícias concedidas por herança e subclasse não consomem escolhas da classe. Se a
     // ficha também as guardar explicitamente, remova-as da contagem de
     // escolhas para evitar dupla contabilização.
-    const totalAllowed = classBase + Math.max(0, intMod) + (backgroundSkill ? 1 : 0) + fixedSkills.length;
-    const selectedSkills = Object.keys(character?.skills || {}).filter(k => character.skills[k] && character.skills[k] !== "Destreinado" && !heritageSkills.includes(k));
+    const totalAllowed = classBase + Math.max(0, intMod) + (backgroundSkill ? 1 : 0) + fixedSkills.length + extraHeritageSkills;
+    const selectedSkills = Object.keys(character?.skills || {}).filter(k => character.skills[k] && character.skills[k] !== "Destreinado" && !heritageSkills.includes(k) && !subclassSkills.includes(k));
     const remainingCount = Math.max(0, totalAllowed - selectedSkills.length);
 
     return {
@@ -1331,6 +1340,8 @@ const PF2E_ENGINE = {
       intMod,
       backgroundSkill,
       heritageSkills,
+      subclassSkills,
+      extraHeritageSkills,
       fixedSkills,
       selectedSkills,
       remainingCount
@@ -1343,7 +1354,7 @@ const PF2E_ENGINE = {
     const identityValue = (value) => value && typeof value === "object"
       ? value.id || value.name || value["pt-BR"] || value.en || value.es || ""
       : value;
-    const normalize = (value) => String(identityValue(value) || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const normalize = (value) => String(identityValue(value) || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
     const selected = normalize(character?.heritage);
     if (!selected) return null;
     return [...(PF2E_DATA.heritages || []), ...(PF2E_DATA.versatileHeritages || [])].find((heritage) => {
@@ -1407,10 +1418,22 @@ const PF2E_ENGINE = {
 
     const heritageRecord = this.resolveHeritageRecord(character);
     const heritage = String(character?.heritage || "").toLowerCase();
-    if ((heritageRecord?.traits || []).some((trait) => /visão no escuro|darkvision/.test(String(trait).toLowerCase())) || heritage.includes("visão no escuro") || heritage.includes("darkvision") || heritage.includes("nephilim") || heritage.includes("meio-orc")) {
+
+    // Senses declarados explicitamente na herança
+    if (Array.isArray(heritageRecord?.senses)) {
+      for (const s of heritageRecord.senses) {
+        if (s) sensesSet.add(s);
+      }
+    }
+
+    if ((heritageRecord?.traits || []).some((trait) => /visão no escuro|darkvision/.test(String(trait).toLowerCase())) || heritage.includes("visão no escuro") || heritage.includes("darkvision") || heritage.includes("nephilim") || heritage.includes("meio-orc") || heritage.includes("caverna")) {
       sensesSet.add("Visão no Escuro");
-    } else if (heritage.includes("visão na penumbra") || heritage.includes("low-light") || heritage.includes("meio-elfo")) {
+    } else if (heritage.includes("visão na penumbra") || heritage.includes("low-light") || heritage.includes("meio-elfo") || heritage.includes("esguio")) {
       sensesSet.add("Visão na Penumbra");
+    }
+
+    if (heritage.includes("faro") || heritage.includes("scent") || heritage.includes("sensitivo")) {
+      sensesSet.add("Faro (impreciso, 9m)");
     }
 
     if (typeof this.getEquipmentBonuses === "function") {
@@ -1421,6 +1444,80 @@ const PF2E_ENGINE = {
     }
 
     return Array.from(sensesSet);
+  },
+
+  // Calcula resistências a dano concedidas por herança, ancestralidade e equipamentos
+  getCharacterResistances(character, heritageData, ancestryData, equipmentBonuses, level) {
+    const resistancesList = [];
+    const addResistance = (type, val) => {
+      if (!type || !val) return;
+      const formatted = `${type} ${val}`;
+      if (!resistancesList.includes(formatted)) resistancesList.push(formatted);
+    };
+
+    const evalFormula = (val) => {
+      if (typeof val === "number") return val;
+      const str = String(val || "").toLowerCase();
+      if (str.includes("half") && str.includes("level")) {
+        return Math.max(1, Math.floor(level / 2));
+      }
+      const num = parseInt(str, 10);
+      return isNaN(num) ? Math.max(1, Math.floor(level / 2)) : num;
+    };
+
+    const translateResistanceType = (t) => {
+      const lower = String(t || "").toLowerCase();
+      if (lower === "fire" || lower === "fogo") return "Fogo";
+      if (lower === "cold" || lower === "frio") return "Frio";
+      if (lower === "poison" || lower === "veneno") return "Veneno";
+      if (lower === "void" || lower === "vazio" || lower === "negative") return "Vazio";
+      if (lower === "vitality" || lower === "vitalidade" || lower === "positive") return "Vitalidade";
+      if (lower === "acid" || lower === "ácido" || lower === "acido") return "Ácido";
+      if (lower === "electricity" || lower === "eletricidade") return "Eletricidade";
+      if (lower === "sonic" || lower === "sônico" || lower === "sonico") return "Sônico";
+      if (lower === "slashing" || lower === "cortante") return "Cortante";
+      if (lower === "piercing" || lower === "perfurante") return "Perfurante";
+      if (lower === "bludgeoning" || lower === "impacto") return "Impacto";
+      return t.charAt(0).toUpperCase() + t.slice(1);
+    };
+
+    const processRes = (res) => {
+      if (!res) return;
+      if (Array.isArray(res)) {
+        res.forEach(item => {
+          if (typeof item === "string") {
+            if (!resistancesList.includes(item)) resistancesList.push(item);
+          } else if (item && typeof item === "object") {
+            addResistance(translateResistanceType(item.type || item.name), evalFormula(item.value || item.formula || item.val));
+          }
+        });
+      } else if (typeof res === "object") {
+        for (const [key, val] of Object.entries(res)) {
+          addResistance(translateResistanceType(key), evalFormula(val));
+        }
+      }
+    };
+
+    processRes(heritageData?.resistances);
+    processRes(ancestryData?.resistances);
+    if (equipmentBonuses?.resistances) processRes(equipmentBonuses.resistances);
+
+    // Heranças conhecidas por texto caso não tenham objeto resistances estruturado
+    const heritageStr = String(character?.heritage || "").toLowerCase();
+    if (heritageStr.includes("forja") || heritageStr.includes("forge") || heritageStr.includes("carbonizado") || heritageStr.includes("charhide")) {
+      addResistance("Fogo", Math.max(1, Math.floor(level / 2)));
+    }
+    if (heritageStr.includes("ártico") || heritageStr.includes("artico") || heritageStr.includes("arctic") || heritageStr.includes("inverno") || heritageStr.includes("winter") || heritageStr.includes("neve") || heritageStr.includes("snow")) {
+      addResistance("Frio", Math.max(1, Math.floor(level / 2)));
+    }
+    if (heritageStr.includes("couro-de-pedra") || heritageStr.includes("strong-blooded")) {
+      addResistance("Veneno", Math.max(1, Math.floor(level / 2)));
+    }
+    if (heritageStr.includes("tumba") || heritageStr.includes("death warden")) {
+      addResistance("Vazio", Math.max(1, Math.floor(level / 2)));
+    }
+
+    return resistancesList;
   },
 
   // Resolução da Reação de Bloqueio com Escudo (Shield Block)
@@ -1726,12 +1823,34 @@ const PF2E_ENGINE = {
   // inferência.
   getFeatStatEffects(character) {
     const effects = { bonusHpPerLevel: 0, speedBonus: 0, initiativeBonus: 0, recoveryDcReduction: 0, maxDying: 4, dailyRecoveryMultiplier: 1, bulkLimitBonus: 0, ignoreArmorSpeedPenalty: false, untrainedSkillBonus: false, conditionalSaveBonuses: {}, proficiencyChoices: {} };
-    const feats = Array.isArray(character?.feats) ? character.feats : [];
-    for (const feat of feats) {
+    
+    // Coleta talentos de character.feats e character.progression
+    const rawFeats = Array.isArray(character?.feats) ? [...character.feats] : [];
+    const prog = character?.progression || {};
+    for (const [key, val] of Object.entries(prog)) {
+      if ((key.includes("feat") || key.includes("dedication") || key.includes("archetype")) && val && typeof val === "string") {
+        const exists = rawFeats.some(f => f?.name === val || f?.id === val);
+        if (!exists) {
+          rawFeats.push({ name: val, slotId: key });
+        }
+      }
+    }
+
+    const normalize = (str) => String(str || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+
+    for (const feat of rawFeats) {
       const id = String(feat?.id || "").toLowerCase();
-      const catalogFeat = id && typeof PF2E_DATA !== "undefined"
-        ? (PF2E_DATA.feats || []).find((record) => String(record?.id || "").toLowerCase() === id)
+      const featName = normalize(feat?.name || feat?.label || id);
+
+      const catalogFeat = typeof PF2E_DATA !== "undefined"
+        ? (PF2E_DATA.feats || []).find((record) => {
+            const recId = String(record?.id || "").toLowerCase();
+            if (id && recId === id) return true;
+            const names = [record.id, record.name, record["pt-BR"], record.en, record.es, ...(Object.values(record.names || {}))].filter(Boolean).map(normalize);
+            return names.includes(featName);
+          })
         : null;
+
       const explicitEffects = Array.isArray(feat?.effects)
         ? feat.effects
         : Array.isArray(catalogFeat?.effects) ? catalogFeat.effects : [];
@@ -1749,29 +1868,42 @@ const PF2E_ENGINE = {
         else if (effect?.type === "untrained_skill_bonus") effects.untrainedSkillBonus = true;
         else if (effect?.type === "proficiency_choice" && effect?.target && feat?.selectedStatistic) effects.proficiencyChoices[effect.target] = String(feat.selectedStatistic);
       }
-      // Compatibilidade com fichas antigas que salvaram somente o ID do
-      // talento antes do campo estruturado existir.
-      if (!explicitEffects.length && id === "feat.general.toughness") {
-        effects.bonusHpPerLevel += 1;
-        effects.recoveryDcReduction += 1;
-      } else if (!explicitEffects.length && id === "feat.general.fleet") {
-        effects.speedBonus += 5;
-      } else if (!explicitEffects.length && id === "feat.general.incredible_initiative") {
-        effects.initiativeBonus += 2;
-      } else if (!explicitEffects.length && id === "feat.general.diehard") {
-        effects.maxDying = Math.max(effects.maxDying, 5);
-      } else if (!explicitEffects.length && id === "feat.skill.hefty_hauler") {
-        effects.bulkLimitBonus += 2;
-      } else if (!explicitEffects.length && id === "feat.ancestry.unburdened_iron") {
-        effects.ignoreArmorSpeedPenalty = true;
-      } else if (!explicitEffects.length && id === "feat.ancestry.nimble_elf") {
-        effects.speedBonus += 5;
-      } else if (!explicitEffects.length && id === "feat.general.untrained_improvisation") {
-        effects.untrainedSkillBonus = true;
-      } else if (!explicitEffects.length && id === "feat.general.canny_acumen" && feat?.selectedStatistic) {
-        effects.proficiencyChoices["perception_or_save"] = String(feat.selectedStatistic);
+
+      if (!explicitEffects.length) {
+        const checkMatch = (regex, featId) => (id && id === featId) || regex.test(featName);
+
+        if (checkMatch(/toughness|robustez|tenacidade/, "feat.general.toughness")) {
+          effects.bonusHpPerLevel += 1;
+          effects.recoveryDcReduction += 1;
+        } else if (checkMatch(/fleet|passo ligeiro|pes velozes|pies ligeros/, "feat.general.fleet")) {
+          effects.speedBonus += 5;
+        } else if (checkMatch(/incredible initiative|iniciativa incrivel|iniciativa increible/, "feat.general.incredible_initiative")) {
+          effects.initiativeBonus += 2;
+        } else if (checkMatch(/diehard|duro de matar/, "feat.general.diehard")) {
+          effects.maxDying = Math.max(effects.maxDying, 5);
+        } else if (checkMatch(/hefty hauler|carregador robusto|cargador robusto/, "feat.skill.hefty_hauler")) {
+          effects.bulkLimitBonus += 2;
+        } else if (checkMatch(/unburdened iron|ferro desimpedido|hierro sin carga/, "feat.ancestry.unburdened_iron")) {
+          effects.ignoreArmorSpeedPenalty = true;
+        } else if (checkMatch(/nimble elf|elfo agil|elfo ligeiro/, "feat.ancestry.nimble_elf")) {
+          effects.speedBonus += 5;
+        } else if (checkMatch(/untrained improvisation|improvisacao destreinada|improvisacion sin entrenar/, "feat.general.untrained_improvisation")) {
+          effects.untrainedSkillBonus = true;
+        } else if (checkMatch(/fast recovery|recuperacao rapida|recuperacion rapida/, "feat.general.fast_recovery")) {
+          effects.dailyRecoveryMultiplier = Math.max(effects.dailyRecoveryMultiplier, 2);
+        } else if (checkMatch(/canny acumen|percepcao astuta|percepcion astuta/, "feat.general.canny_acumen") && feat?.selectedStatistic) {
+          effects.proficiencyChoices["perception_or_save"] = String(feat.selectedStatistic);
+        }
       }
     }
+
+    // Herança concedendo Diehard (ex: Hold-Scarred Orc / Orc Cicatrizado)
+    const heritageStr = normalize(character?.heritage);
+    if (/cicatrizado|hold-scarred|holdscarred/.test(heritageStr)) {
+      effects.maxDying = Math.max(effects.maxDying, 5);
+    }
+    effects.hasDiehard = effects.maxDying >= 5;
+
     return effects;
   },
 
@@ -1815,7 +1947,8 @@ const PF2E_ENGINE = {
     const ancestryHp = sizeOption?.hp ?? ancestryData.hp ?? 8;
     const classHpPerLvl = classData.hpPerLevel || 10;
     const conBonus = mods.con;
-    const heritageHpBonus = (heritageData.bonusHpPerLevel || 0) * level;
+    const heritageFlatHp = Number(heritageData.bonusHp || heritageData.hpBonus) || 0;
+    const heritageHpBonus = heritageFlatHp + (heritageData.bonusHpPerLevel || 0) * level;
     const itemHpBonus = equipmentBonuses.hp || 0;
     const bonusHp = (character.bonusHp || 0) + itemHpBonus + heritageHpBonus + featEffects.bonusHpPerLevel * level;
     const drainedPenalty = conditionMods.drained * level;
@@ -1987,10 +2120,39 @@ const PF2E_ENGINE = {
     const classDc = 10 + (mods[keyAttr] || mods.dex) + classDcProf - classDcPenalty;
 
     // 9. Armas e Golpes
-    const strikes = (character.weapons || []).map(w => {
-      const isFinesse = (w.traits || []).some(t => t.toLowerCase().includes("finesse") || t.toLowerCase().includes("acurada"));
-      const isAgile = (w.traits || []).some(t => t.toLowerCase().includes("ágil") || t.toLowerCase().includes("agile"));
-      const isRanged = (w.traits || []).some(t => t.toLowerCase().includes("distância") || t.toLowerCase().includes("arco") || t.toLowerCase().includes("fogo"));
+    const baseWeapons = Array.isArray(character.weapons) ? [...character.weapons] : [];
+    const heritageAttacks = Array.isArray(heritageData.attacks) ? heritageData.attacks : [];
+    for (const ha of heritageAttacks) {
+      const exists = baseWeapons.some(w => String(w.name || "").toLowerCase() === String(ha.name || "").toLowerCase());
+      if (!exists) {
+        baseWeapons.push({
+          name: ha.name,
+          category: "Desarmado",
+          damage: ha.damage || "1d6",
+          damageType: ha.type || "perfurante",
+          traits: Array.isArray(ha.traits) ? [...ha.traits] : ["acuidade", "desarmado"],
+          qty: 1,
+          isNaturalAttack: true
+        });
+      }
+    }
+    const hasUnarmed = baseWeapons.some(w => /desarmad|punho|fist|mandíbula|mandibula|jaws|garra|claw|espinhos|spine/i.test(`${w.category || ""} ${w.name || ""}`));
+    if (!hasUnarmed) {
+      const isMonkClass = classData.id === "class.monk" || /monk|monge/i.test(String(character.class || ""));
+      baseWeapons.push({
+        name: "Punho",
+        category: "Desarmado",
+        damage: isMonkClass ? "1d6" : "1d4",
+        damageType: "impacto",
+        traits: ["ágil", "acuidade", "não letal", "desarmado"],
+        qty: 1
+      });
+    }
+
+    const strikes = baseWeapons.map(w => {
+      const isFinesse = (w.traits || []).some(t => t.toLowerCase().includes("finesse") || t.toLowerCase().includes("acurada") || t.toLowerCase().includes("acuidade"));
+      const isAgile = (w.traits || []).some(t => t.toLowerCase().includes("ágil") || t.toLowerCase().includes("agil") || t.toLowerCase().includes("agile"));
+      const isRanged = (w.traits || []).some(t => t.toLowerCase().includes("distância") || t.toLowerCase().includes("distancia") || t.toLowerCase().includes("arco") || t.toLowerCase().includes("fogo") || t.toLowerCase().includes("ranged"));
       
       const attackAttr = (isFinesse || isRanged) ? Math.max(mods.str, mods.dex) : mods.str;
       const attackAttrType = (isFinesse || isRanged) && mods.dex >= mods.str ? "dex" : "str";
@@ -2034,10 +2196,17 @@ const PF2E_ENGINE = {
       const rageDamageBonus = (character.rageActive || character.buffs?.rage) && !isRanged ? rageBonusVal : 0;
       const damageEnfeebledPenalty = isRanged ? 0 : conditionMods.enfeebled;
       const netDamageBonus = Math.max(0, damageAttrBonus + (Number(w.damageBonus) || 0) + rageDamageBonus - damageEnfeebledPenalty);
-      const isUnarmedStrike = /unarmed|desarmad|punho|fist/i.test(`${w.category || ""} ${w.name || ""}`);
-      const strikeWeapon = heritageData.fistDamageDie && isUnarmedStrike
-        ? { ...w, damage: heritageData.fistDamageDie }
-        : w;
+      const isUnarmedStrike = /unarmed|desarmad|punho|fist|mandíbula|mandibula|jaws|garra|claw|espinhos|spine/i.test(`${w.category || ""} ${w.name || ""}`);
+      const isMonkClass = classData.id === "class.monk" || /monk|monge/i.test(String(character.class || ""));
+      const isFist = /punho|fist/i.test(w.name || "");
+      let weaponDamage = w.damage;
+      if (isFist && isMonkClass && weaponDamage === "1d4") {
+        weaponDamage = "1d6";
+      }
+      if (heritageData.fistDamageDie && isUnarmedStrike) {
+        weaponDamage = heritageData.fistDamageDie;
+      }
+      const strikeWeapon = { ...w, damage: weaponDamage };
       const damageDetails = this.calculateStrikeDamageDetails(strikeWeapon, mods, { level, abpStrikingDice: abpBonuses.strikingDice });
       const damageStr = `${damageDetails.activeDice} ${this.formatMod(netDamageBonus)}`;
 
@@ -2106,7 +2275,7 @@ const PF2E_ENGINE = {
         climb: heritageData?.climbSpeed ?? ancestryData.climbSpeed ?? 0
       },
       senses,
-      resistances: [...(heritageData.resistances || []), ...(ancestryData.resistances || []), ...equipmentBonuses.resistances],
+      resistances: this.getCharacterResistances(character, heritageData, ancestryData, equipmentBonuses, level),
       saves,
       perception: {
         rank: percRank,

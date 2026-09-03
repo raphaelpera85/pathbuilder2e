@@ -261,7 +261,10 @@ export async function fillCharacterPdfForm(
   setTxt("Temporary HP", character.tempHp || 0);
   setTxt("WOUNDED", character.wounded || 0);
   setTxt("CONDITIONS", Array.isArray(character.conditions) ? character.conditions.join(", ") : "");
-  setTxt("RESISTANCE AND IMMUNITIES", Array.isArray(character.resistances) ? character.resistances.join(", ") : "");
+  const charResistances = (Array.isArray(character.resistances) && character.resistances.length > 0)
+    ? character.resistances
+    : (Array.isArray(calc.resistances) ? calc.resistances : []);
+  setTxt("RESISTANCE AND IMMUNITIES", charResistances.map((r: any) => typeof r === "object" ? `${r.type || r.name} ${r.value || ""}`.trim() : String(r)).join(", "));
   if (character.defenseNotes) {
     setTxt("DEFENSE NOTES", character.defenseNotes);
   }
@@ -474,7 +477,7 @@ export async function fillCharacterPdfForm(
     if (!val || typeof val !== "string") return;
     if (slot.includes("ancestry_feat") && !ancestryFeatsList.includes(val)) {
       ancestryFeatsList.push(val);
-    } else if (slot.includes("class_feat") && !classFeatsList.some(f => f.name === val)) {
+    } else if ((slot.includes("class_feat") || slot.includes("archetype")) && !classFeatsList.some(f => f.name === val)) {
       classFeatsList.push({ name: val });
     } else if (slot.includes("skill_feat") && !skillFeatsList.some(f => f.name === val)) {
       skillFeatsList.push({ name: val });
@@ -487,7 +490,8 @@ export async function fillCharacterPdfForm(
     character.ancestry ? `Ancestralidade: ${character.ancestry}` : "",
     character.heritage ? `Herança: ${character.heritage}` : "",
     sensesList ? `Sentidos: ${sensesList}` : "",
-    character.specialMovements ? `Movimento: ${character.specialMovements}` : ""
+    character.specialMovements ? `Movimento: ${character.specialMovements}` : "",
+    generalFeatsList.length ? `Talentos Gerais: ${generalFeatsList.join(", ")}` : ""
   ].filter(Boolean).join("\n");
   setTxt("ANCESTRY & HERITAGE ABILITIES", ancestryAndHeritageAbilities);
   setTxt("ANCESTRY FEAT", ancestryFeatsList.join(", "));

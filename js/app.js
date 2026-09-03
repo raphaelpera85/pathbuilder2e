@@ -3292,13 +3292,14 @@ class PathbuilderApp {
     }
     if (type === "spell") {
       const heritageInnate = this.activePickerOptions?.heritageInnate === true;
+      const traditionFilter = this.activePickerOptions?.tradition ? String(this.activePickerOptions.tradition).toLowerCase() : null;
       const compatibilityCharacter = this.getPickerCompatibilityCharacter(type);
       const weights = { available: 0, "requires-choice": 1, incompatible: 2 };
       const hexOnly = this.activePickerOptions?.hexOnly === true;
       const spellItems = (PF2E_DATA.spells || []).filter((spell) => !hexOnly || spell.hex === true || String(spell.id || "").startsWith("spell.player_core.witch."))
         .filter((spell) => !heritageInnate || (
         Number(spell.rank ?? spell.level) === 0 &&
-        (spell.traditions || []).some((tradition) => String(tradition).toLowerCase() === "occult")
+        (!traditionFilter || (spell.traditions || []).some((tradition) => String(tradition).toLowerCase() === traditionFilter))
       )).map(spell => {
         if (heritageInnate) {
           const prerequisiteCompatibility = PF2E_ENGINE?.getPrerequisiteCompatibility?.(compatibilityCharacter, spell);
@@ -3445,8 +3446,11 @@ class PathbuilderApp {
     else if (type === "subclass") this.applySubclassSelection(item, this.activePickerOptions || {});
     else if (type === "archetype") {
       if (!this.character.archetypes) this.character.archetypes = [];
-      const exists = this.character.archetypes.some(archetype => (item.data.id && archetype.id === item.data.id) || archetype.name === item.name);
+      const exists = this.character.archetypes.some(archetype => (item.data?.id && archetype.id === item.data.id) || archetype.name === item.name);
       if (!exists) this.character.archetypes.push({ ...item.data, name: item.name });
+      if (options?.slotId) {
+        this.character.progression[options.slotId] = item.name;
+      }
     }
     else if (type === "background") {
       this.character.background = item.name;
@@ -3467,10 +3471,14 @@ class PathbuilderApp {
     else if (type === "heritage") this.applyHeritageSelection(item);
     else if (type === "spell") {
       if (options?.heritageInnate) {
-        if (Number(item.data?.rank ?? item.data?.level) !== 0 || !(item.data?.traditions || []).some((tradition) => String(tradition).toLowerCase() === "occult")) return;
+        const traditionFilter = options?.tradition ? String(options.tradition).toLowerCase() : null;
+        if (Number(item.data?.rank ?? item.data?.level) !== 0 || (traditionFilter && !(item.data?.traditions || []).some((tradition) => String(tradition).toLowerCase() === traditionFilter))) return;
         if (!Array.isArray(this.character.heritageInnateSpells)) this.character.heritageInnateSpells = [];
-        const exists = this.character.heritageInnateSpells.some(spell => item.data.id ? spell.id === item.data.id : spell.name === item.name);
+        const exists = this.character.heritageInnateSpells.some(spell => item.data?.id ? spell.id === item.data.id : spell.name === item.name);
         if (!exists) this.character.heritageInnateSpells.push({ ...item.data, name: item.name, level: 0, innate: true });
+        if (options?.slotId) {
+          this.character.progression[options.slotId] = item.name;
+        }
         this.saveCharacterLocal(false);
         this.renderAll();
         return;
@@ -3489,6 +3497,7 @@ class PathbuilderApp {
         this.character.patronHexId = item.data?.id;
       }
       if (options?.classFeatureSlot) this.character.progression[options.classFeatureSlot] = item.name;
+      if (options?.slotId) this.character.progression[options.slotId] = item.name;
     } else if (type === "ritual") {
       if (!this.character.rituals) this.character.rituals = [];
       const exists = this.character.rituals.some(ritual => item.data.id ? ritual.id === item.data.id : ritual.name === item.name);
@@ -3530,6 +3539,13 @@ class PathbuilderApp {
         else this.character.feats.push(featObj);
       } else {
         this.character.feats.push(featObj);
+      }
+      if (item.data?.grants?.featSlot) {
+        const grantedSlot = item.data.grants.featSlot;
+        const grantedFilter = item.data.grants.filterType || "Classe";
+        if (!this.character.progression?.[grantedSlot]) {
+          setTimeout(() => this.openPicker("feat", { slotId: grantedSlot, level: 1, filterType: grantedFilter }), 100);
+        }
       }
     } else if (type === "condition") {
       if (!this.character.conditions) this.character.conditions = [];
@@ -3674,9 +3690,29 @@ class PathbuilderApp {
     if (!item) return;
     const previous = PF2E_ENGINE.resolveHeritageRecord?.(this.character);
     this.character.heritage = item.name;
-    if (previous?.id !== item.data?.id) this.character.heritageInnateSpells = [];
-    if (item.data?.innateSpellChoice?.tradition === "occult") {
-      setTimeout(() => this.openPicker("spell", { heritageInnate: true }), 0);
+    if (previous?.id !== item.data?.id) {
+      this.character.heritageInnateSpells = [];
+      if (previous?.grants?.slotId && !item.data?.grants?.slotId && this.character.progression) {
+        delete this.character.progression[previous.grants.slotId];
+      }
+    }
+    const grants = item.data?.grants;
+    if (grants?.type === "feat" && grants?.slotId) {
+      const slotId = grants.slotId;
+      if (!this.character.progression?.[slotId]) {
+        setTimeout(() => this.openPicker("feat", { slotId, level: 1, filterType: grants.filterType || "Geral" }), 50);
+      }
+    } else if (grants?.type === "archetype" && grants?.slotId) {
+      const slotId = grants.slotId;
+      if (!this.character.progression?.[slotId]) {
+        setTimeout(() => this.openPicker("archetype", { slotId, level: 1 }), 50);
+      }
+    } else if (grants?.type === "spell" || item.data?.innateSpellChoice) {
+      const slotId = grants?.slotId || "1_heritage_innate_spell";
+      const tradition = grants?.tradition || item.data?.innateSpellChoice?.tradition;
+      if (!this.character.progression?.[slotId]) {
+        setTimeout(() => this.openPicker("spell", { heritageInnate: true, slotId, tradition }), 50);
+      }
     }
   }
 
@@ -5990,37 +6026,77 @@ class PathbuilderApp {
         `;
 
         // Heritage
-        const rawHeritage = char.heritage || tLabels.defaultVersatileHuman;
-        const heritageVal = this.localizeItemName(rawHeritage, locale);
+        const heritageRecord = PF2E_ENGINE?.resolveHeritageRecord?.(char) || {};
+        const rawHeritage = char.heritage || "";
+        const heritageVal = rawHeritage ? this.localizeItemName(rawHeritage, locale) : tLabels.unselected;
         html += `
           <div class="pb-tree-card" onclick="app.openPicker('heritage')" title="${isEn ? "Choose Heritage" : isEs ? "Elegir herencia" : "Escolher Herança"}">
             <div class="pb-tree-card-icon">${this.getTreeIconSvg('heritage')}</div>
             <div class="pb-tree-card-content">
               <div class="pb-tree-card-label">${tLabels.heritage}</div>
-              <div class="pb-tree-card-value">${escapeHtml(heritageVal)}</div>
+              <div class="pb-tree-card-value ${!rawHeritage ? 'unselected' : ''}">${escapeHtml(heritageVal)}</div>
             </div>
           </div>
         `;
 
         // General Feat (se concedido no nível 1 por Humano Versátil / herança ou selecionado)
-        const isVersatileHuman = /versatile|versátil/i.test(String(char.heritage || ""));
+        const isVersatileHuman = /versatile|versátil/i.test(String(char.heritage || "")) || heritageRecord?.id?.includes("versatil") || heritageRecord?.grants?.slotId === "1_general_feat";
         const hasGeneralFeatAt1 = isVersatileHuman || Boolean(prog["1_general_feat"]) || (char.feats?.some(f => f.slotId === "1_general_feat"));
         if (hasGeneralFeatAt1) {
-          const rawGeneralFeat = prog["1_general_feat"] || (char.feats?.find(f => f.slotId === "1_general_feat" || f.type?.includes("Geral"))?.name || (isVersatileHuman ? tLabels.defaultFleet : tLabels.unselected));
+          const rawGeneralFeat = prog["1_general_feat"] || (char.feats?.find(f => f.slotId === "1_general_feat" || f.type?.includes("Geral"))?.name || tLabels.unselected);
           const generalFeatVal = rawGeneralFeat === tLabels.unselected ? tLabels.unselected : this.localizeItemName(rawGeneralFeat, locale);
+          const generalFeatLabel = isVersatileHuman
+            ? (isEn ? "General Feat (Versatile Human)" : isEs ? "Dote general (Humano versátil)" : "Talento Geral (Humano Versátil)")
+            : tLabels.generalFeat;
           html += `
-            <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '1_general_feat', level: 1, filterType: 'Geral' })" title="${isEn ? "Choose General Feat" : isEs ? "Elegir dote general" : "Escolher Talento Geral"}">
+            <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '1_general_feat', level: 1, filterType: 'Geral' })" title="${generalFeatLabel}">
               <div class="pb-tree-card-icon">${this.getTreeIconSvg('general_feat')}</div>
               <div class="pb-tree-card-content">
-                <div class="pb-tree-card-label">${tLabels.generalFeat}</div>
+                <div class="pb-tree-card-label">${generalFeatLabel}</div>
                 <div class="pb-tree-card-value ${rawGeneralFeat === tLabels.unselected ? 'unselected' : ''}">${escapeHtml(generalFeatVal)}</div>
               </div>
             </div>
           `;
         }
 
+        // Dedication Feat / Archetype (concedido por Elfo Ancestral / herança)
+        const isAncientElf = /ancient|antiga/i.test(String(char.heritage || "")) || heritageRecord?.id?.includes("antiga") || heritageRecord?.grants?.type === "archetype";
+        const hasAncientElfDedication = isAncientElf || Boolean(prog["1_archetype_feat"]) || (char.feats?.some(f => f.slotId === "1_archetype_feat"));
+        if (hasAncientElfDedication) {
+          const rawDedFeat = prog["1_archetype_feat"] || (char.feats?.find(f => f.slotId === "1_archetype_feat" || f.type?.includes("Dedicação") || f.type?.includes("Dedication"))?.name || tLabels.unselected);
+          const dedFeatVal = rawDedFeat === tLabels.unselected ? tLabels.unselected : this.localizeItemName(rawDedFeat, locale);
+          const dedFeatLabel = isEn ? "Archetype Dedication (Ancient Elf)" : isEs ? "Dedicación de arquetipo (Elfo anciano)" : "Dedicação de Arquétipo (Elfo Ancestral)";
+          html += `
+            <div class="pb-tree-card" onclick="app.openPicker('archetype', { slotId: '1_archetype_feat', level: 1 })" title="${dedFeatLabel}">
+              <div class="pb-tree-card-icon">${this.getTreeIconSvg('class_feat')}</div>
+              <div class="pb-tree-card-content">
+                <div class="pb-tree-card-label">${dedFeatLabel}</div>
+                <div class="pb-tree-card-value ${rawDedFeat === tLabels.unselected ? 'unselected' : ''}">${escapeHtml(dedFeatVal)}</div>
+              </div>
+            </div>
+          `;
+        }
+
+        // Truque / Magia Inata de Herança (Gnomo Feérico, Gnomo do Poço de Vigor, etc.)
+        const hasHeritageSpell = (heritageRecord?.grants?.type === "spell") || /poço|poco|wellspring|feerico|feérico|fey-touched|vidente|seer/i.test(String(char.heritage || "")) || Boolean(prog["1_heritage_innate_spell"]) || Boolean(char.heritageInnateSpells?.length);
+        if (hasHeritageSpell) {
+          const tradition = heritageRecord?.grants?.tradition || heritageRecord?.innateSpellChoice?.tradition;
+          const rawHeritageSpell = prog["1_heritage_innate_spell"] || char.heritageInnateSpells?.[0]?.name || tLabels.unselected;
+          const heritageSpellVal = rawHeritageSpell === tLabels.unselected ? tLabels.unselected : this.localizeItemName(rawHeritageSpell, locale);
+          const spellSlotLabel = isEn ? "Innate Cantrip (Heritage)" : isEs ? "Truco innato (Herencia)" : "Truque Inato (Herança)";
+          html += `
+            <div class="pb-tree-card" onclick="app.openPicker('spell', { slotId: '1_heritage_innate_spell', heritageInnate: true, tradition: '${tradition || ""}' })" title="${spellSlotLabel}">
+              <div class="pb-tree-card-icon">${this.getTreeIconSvg('spells')}</div>
+              <div class="pb-tree-card-content">
+                <div class="pb-tree-card-label">${spellSlotLabel}</div>
+                <div class="pb-tree-card-value ${rawHeritageSpell === tLabels.unselected ? 'unselected' : ''}">${escapeHtml(heritageSpellVal)}</div>
+              </div>
+            </div>
+          `;
+        }
+
         // Ancestry Feat
-        const rawAncestryFeat = prog["1_ancestry_feat"] || (char.feats?.find(f => f.slotId === "1_ancestry_feat" || f.type?.includes("Ancestral"))?.name || (char.ancestry ? tLabels.defaultAmbition : tLabels.unselected));
+        const rawAncestryFeat = prog["1_ancestry_feat"] || (char.feats?.find(f => f.slotId === "1_ancestry_feat" || f.type?.includes("Ancestral"))?.name || tLabels.unselected);
         const ancestryFeatVal = rawAncestryFeat === tLabels.unselected ? tLabels.unselected : this.localizeItemName(rawAncestryFeat, locale);
         html += `
           <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '1_ancestry_feat', level: 1, filterType: 'Ancestral' })" title="${isEn ? "Choose Ancestry Feat" : isEs ? "Elegir dote de ascendencia" : "Escolher Talento Ancestral"}">
@@ -6031,6 +6107,23 @@ class PathbuilderApp {
             </div>
           </div>
         `;
+
+        // Talento Geral de Treinamento Versátil (General Training)
+        const hasGeneralTraining = /general training|treinamento versátil|treinamento versatil|entrenamiento general/i.test(String(rawAncestryFeat || ""));
+        if (hasGeneralTraining || Boolean(prog["1_general_feat_training"])) {
+          const rawGenTraining = prog["1_general_feat_training"] || (char.feats?.find(f => f.slotId === "1_general_feat_training")?.name || tLabels.unselected);
+          const genTrainingVal = rawGenTraining === tLabels.unselected ? tLabels.unselected : this.localizeItemName(rawGenTraining, locale);
+          const genTrainingLabel = isEn ? "General Feat (General Training)" : isEs ? "Dote general (Entrenamiento)" : "Talento Geral (Treinamento Versátil)";
+          html += `
+            <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '1_general_feat_training', level: 1, filterType: 'Geral' })" title="${genTrainingLabel}">
+              <div class="pb-tree-card-icon">${this.getTreeIconSvg('general_feat')}</div>
+              <div class="pb-tree-card-content">
+                <div class="pb-tree-card-label">${genTrainingLabel}</div>
+                <div class="pb-tree-card-value ${rawGenTraining === tLabels.unselected ? 'unselected' : ''}">${escapeHtml(genTrainingVal)}</div>
+              </div>
+            </div>
+          `;
+        }
 
         // Identificação da Classe para Features de Nível 1
         const classValue = char.class && typeof char.class === "object"
@@ -6093,7 +6186,7 @@ class PathbuilderApp {
 
         // Class Feat (Principal)
         if (getsLevel1ClassFeat) {
-          const rawClassFeat1 = prog["1_class_feat"] || (char.feats?.find(f => f.slotId === "1_class_feat" || f.type?.includes("Classe"))?.name || (classFeatureKey ? tLabels.defaultGoading : tLabels.unselected));
+          const rawClassFeat1 = prog["1_class_feat"] || (char.feats?.find(f => f.slotId === "1_class_feat" || f.type?.includes("Classe"))?.name || tLabels.unselected);
           const classFeatVal1 = rawClassFeat1 === tLabels.unselected ? tLabels.unselected : this.localizeItemName(rawClassFeat1, locale);
           html += `
             <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '1_class_feat', level: 1, filterType: 'Classe' })" title="${isEn ? "Choose Class Feat" : isEs ? "Elegir dote de clase" : "Escolher Talento de Classe"}">
@@ -6110,16 +6203,17 @@ class PathbuilderApp {
         }
 
         // Class Feat Secundário / Extra (concedido por Ambição Natural ou concessão de herança)
-        const hasNaturalAmbition = /natural ambition|ambição natural|ambición natural/i.test(String(rawAncestryFeat || ""));
+        const hasNaturalAmbition = /natural ambition|ambição natural|ambicao natural|ambición natural/i.test(String(rawAncestryFeat || ""));
         const hasExtraClassFeat = hasNaturalAmbition || Boolean(prog["1_class_feat_extra"]) || char.feats?.some(f => f.slotId === "1_class_feat_extra");
         if (hasExtraClassFeat) {
-          const rawClassFeat2 = prog["1_class_feat_extra"] || (char.feats?.find(f => f.slotId === "1_class_feat_extra")?.name || (hasNaturalAmbition ? tLabels.defaultParry : tLabels.unselected));
+          const extraLabel = hasNaturalAmbition ? (isEn ? "Class Feat (Natural Ambition)" : isEs ? "Dote de clase (Ambición natural)" : "Talento de Classe (Ambição Natural)") : tLabels.classFeat;
+          const rawClassFeat2 = prog["1_class_feat_extra"] || (char.feats?.find(f => f.slotId === "1_class_feat_extra")?.name || tLabels.unselected);
           const classFeatVal2 = rawClassFeat2 === tLabels.unselected ? tLabels.unselected : this.localizeItemName(rawClassFeat2, locale);
           html += `
             <div class="pb-tree-card" onclick="app.openPicker('feat', { slotId: '1_class_feat_extra', level: 1, filterType: 'Classe' })" title="${isEn ? "Choose Extra Class Feat" : isEs ? "Elegir dote de clase adicional" : "Escolher Talento de Classe Extra"}">
               <div class="pb-tree-card-icon">${this.getTreeIconSvg('class_feat')}</div>
               <div class="pb-tree-card-content">
-                <div class="pb-tree-card-label">${tLabels.classFeat}</div>
+                <div class="pb-tree-card-label">${extraLabel}</div>
                 <div class="pb-tree-card-value ${rawClassFeat2 === tLabels.unselected ? 'unselected' : ''}">
                   <span>${escapeHtml(classFeatVal2)}</span>
                   ${rawClassFeat2 !== tLabels.unselected ? '<span class="pb-action-glyph">◆</span>' : ''}
