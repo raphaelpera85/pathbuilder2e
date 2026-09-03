@@ -60,7 +60,7 @@ describe("responsive layout contract", () => {
     expect(css).toContain("body.portal-page-active { width: 100vw; min-width: 0; max-width: 100vw; overflow-x: hidden; }");
     expect(css).toContain("body.portal-page-active .pb-topbar { width: 100%; min-width: 0; max-width: 100vw; }");
     const accountCss = read("src/account.css");
-    expect(accountCss).toContain(".locale-switcher .flag-btn:not(.active) { display: none; }");
+    expect(accountCss).toContain(".locale-switcher .flag-btn");
     expect(accountCss).toContain(".account-overlay");
     expect(accountCss).toContain("overflow: hidden;");
     expect(accountCss).toContain("overscroll-behavior: contain;");

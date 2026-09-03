@@ -114,9 +114,28 @@
   box-shadow: 0 0 10px rgba(249, 115, 22, 0.35);
 }
 
-/* A bandeira ativa identifica o idioma; as demais continuam disponíveis no
-   seletor textual, mas não ocupam espaço nem fazem a barra superior tremer. */
-.locale-switcher .flag-btn:not(.active) { display: none; }
+/* Classes de acessibilidade (oculto visualmente, legível por leitores de tela) */
+.sr-only,
+.locale-switcher label.sr-only,
+.locale-switcher select.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Exibição direta das bandeiras dos idiomas */
+.locale-switcher .flag-btn:not(.active) {
+  opacity: 0.72;
+}
+.locale-switcher .flag-btn:not(.active):hover {
+  opacity: 1;
+}
 
 .flag-svg {
   width: 24px;
@@ -124,13 +143,6 @@
   border-radius: 3px;
   display: block;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-}
-
-.locale-switcher select {
-  color: var(--pb-text);
-  background: var(--pb-bg-input);
-  border: 0;
-  cursor: pointer;
 }
 
 .account-trigger {

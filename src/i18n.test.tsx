@@ -33,13 +33,18 @@ describe("i18n", () => {
     expect(document.documentElement.lang).toBe("en");
     expect(screen.getByLabelText("Language")).toHaveValue("en");
     const switcher = screen.getByTitle("Language");
-    expect(within(switcher).getAllByRole("button")).toHaveLength(1);
+    expect(within(switcher).getAllByRole("button")).toHaveLength(3);
     expect(within(switcher).getAllByRole("button").filter((button) => button.classList.contains("active"))).toHaveLength(1);
 
-    // O único botão visível avança para o próximo idioma.
-    fireEvent.click(within(switcher).getByRole("button", { name: "English (USA)" }));
+    // O botão de espanhol troca diretamente para espanhol
+    fireEvent.click(within(switcher).getByRole("button", { name: "Español (España)" }));
     expect(localStorage.getItem("pathbuilder.locale")).toBe("es");
     expect(document.documentElement.lang).toBe("es");
     expect(within(screen.getByTitle("Idioma")).getAllByRole("button").filter((button) => button.classList.contains("active"))).toHaveLength(1);
+
+    // O botão de português troca diretamente para português
+    fireEvent.click(within(screen.getByTitle("Idioma")).getByRole("button", { name: "Português (Brasil)" }));
+    expect(localStorage.getItem("pathbuilder.locale")).toBe("pt-BR");
+    expect(document.documentElement.lang).toBe("pt-BR");
   });
 });
