@@ -1,7 +1,7 @@
 # Graph Report - pathbuilder2e_local  (2026-09-04)
 
 ## Corpus Check
-- 223 files · ~3,175,313 words
+- 223 files · ~3,175,485 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
