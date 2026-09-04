@@ -1,23 +1,23 @@
 # Graph Report - pathbuilder2e_local  (2026-09-04)
 
 ## Corpus Check
-- 174 files · ~2,904,679 words
+- 180 files · ~3,151,093 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1750 nodes · 2881 edges · 128 communities (109 shown, 19 thin omitted)
+- 1748 nodes · 2878 edges · 131 communities (110 shown, 21 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 51 edges (avg confidence: 0.5)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `09df8377`
+- Built from commit: `17fc1daa`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - pf2e_data.js
 - PathbuilderApp
-- characters.ts
+- PortalPages.tsx
 - js/pdf-lib.min.js
 - public/js/pdf-lib.min.js
 - dependencies
@@ -34,7 +34,7 @@
 - escapeHtml
 - .renderModalLeftList
 - merge-and-sync-all.cjs
-- PortalPages.tsx
+- sources.ts
 - audit-catalog.cjs
 - 2. Regras que Faltavam e Foram Implementadas
 - .loadInitialCharacter
@@ -82,7 +82,7 @@
 - extract-all-core-class-feats.cjs
 - extract-core-ancestry-feats.cjs
 - inspect-flagged-details.cjs
-- theme.tsx
+- useI18n
 - extract-gng-class-feats.cjs
 - extract-pc2-class-feats.cjs
 - extract-som-class-feats.cjs
@@ -123,6 +123,9 @@
 - generate-catalog-seed.cjs
 - catalog.ts
 - migrate-catalog-to-supabase.cjs
+- PortalPages.test.tsx
+- IPickerBridge
+- PickerItem
 
 ## God Nodes (most connected - your core abstractions)
 1. `PathbuilderApp` - 210 edges
@@ -137,29 +140,29 @@
 10. `AccountPortal()` - 16 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `AccountPortal()` --calls--> `useI18n()`  [EXTRACTED]
-  src/AccountPortal.tsx → src/i18n.tsx
-- `CampaignsPage()` --calls--> `useI18n()`  [EXTRACTED]
-  src/CampaignsPage.tsx → src/i18n.tsx
-- `ItemPickerModal()` --calls--> `getItemDisplayName()`  [EXTRACTED]
-  src/ItemPickerModal.tsx → src/i18n.tsx
-- `ItemPickerModal()` --calls--> `useI18n()`  [EXTRACTED]
-  src/ItemPickerModal.tsx → src/i18n.tsx
-- `CatalogCard()` --calls--> `getLocalizedSkillName()`  [EXTRACTED]
-  src/PortalPages.tsx → src/PickerModal.tsx
+- `CatalogPage()` --calls--> `getItemDisplayName()`  [EXTRACTED]
+  src/PortalPages.tsx → src/i18n.tsx
+- `CatalogPage()` --calls--> `useI18n()`  [EXTRACTED]
+  src/PortalPages.tsx → src/i18n.tsx
+- `CatalogPage()` --calls--> `fetchCatalogCategory()`  [EXTRACTED]
+  src/PortalPages.tsx → src/services/catalog.ts
+- `CatalogPage()` --calls--> `getCatalogSyncStatus()`  [EXTRACTED]
+  src/PortalPages.tsx → src/services/catalog.ts
+- `CatalogPage()` --calls--> `formatPriceToLocale()`  [EXTRACTED]
+  src/PortalPages.tsx → src/utils/economy.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (128 total, 19 thin omitted)
+## Communities (131 total, 21 thin omitted)
 
 ### Community 0 - "pf2e_data.js"
 Cohesion: 0.01
 Nodes (210): ACTION_SPANISH_NAMES, additionalAdvancedFirearms, additionalGunsGearsFirearms, ALL_HERITAGE_DETAILS, ARCHETYPE_CLASS_SECTION_REFERENCES, backpackBallista, backpackCatapult, BATTLECRY_ARCHETYPES (+202 more)
 
-### Community 2 - "characters.ts"
-Cohesion: 0.08
-Nodes (80): AccountPortal(), AuthMode, updateAccountViewState(), CampaignsPage(), isSupabaseConfigured, supabase, SUPABASE_PROJECT_KEY, SUPABASE_PROJECT_URL (+72 more)
+### Community 2 - "PortalPages.tsx"
+Cohesion: 0.06
+Nodes (103): AccountPortal(), AuthMode, AccountViewState, listeners, snapshot, subscribe(), updateAccountViewState(), useAccountViewState() (+95 more)
 
 ### Community 4 - "js/pdf-lib.min.js"
 Cohesion: 0.04
@@ -182,15 +185,15 @@ Cohesion: 0.03
 Nodes (78): Communities (112 total, 15 thin omitted), Community 0 - "pf2e_data.js", Community 100 - "clean_provenance_assertions.cjs", Community 101 - "fix_all_provenance_test_expectations.cjs", Community 102 - "revise_all_compendium.cjs", Community 103 - "update_provenance_tests.cjs", Community 104 - "audit-all-needs-review.cjs", Community 105 - "breakdown-review.cjs" (+70 more)
 
 ### Community 9 - "types.ts"
-Cohesion: 0.08
-Nodes (21): IAttributePipelineResult, ICharacterAbilities, ICharacterCoins, ICharacterDocument, IDyingState, IPickerBridge, IPickerItem, IPickerItemData (+13 more)
+Cohesion: 0.09
+Nodes (21): IAttributePipelineResult, ICharacterAbilities, ICharacterCoins, ICharacterDocument, IDyingState, IPickerItem, IPickerItemData, IPickerOpenOptions (+13 more)
 
 ### Community 10 - "PickerModal.tsx"
-Cohesion: 0.15
-Nodes (22): getItemDisplayName(), MessageKey, formatGeneratedPrerequisite(), getLocalizedPrerequisiteNames(), getLocalizedSkillName(), getPrerequisiteMessage(), getTraitDisplayName(), getWeaponProficiencyRank() (+14 more)
+Cohesion: 0.20
+Nodes (19): getItemDisplayName(), formatGeneratedPrerequisite(), getLocalizedPrerequisiteNames(), getLocalizedSkillName(), getPrerequisiteMessage(), getTraditionDisplayNames(), getTraitDisplayName(), getWeaponProficiencyRank() (+11 more)
 
 ### Community 11 - "main.tsx"
-Cohesion: 0.14
+Cohesion: 0.16
 Nodes (13): ActionDefinition, PF2E_ACTIONS_CATALOG, locales, GUNS_GEARS_EQUIPMENT, ItemDefinition, PF2E_ITEMS_CATALOG, FeatDefinition, PF2E_FEATS_CATALOG (+5 more)
 
 ### Community 12 - "i"
@@ -203,7 +206,7 @@ Nodes (19): a(), ae(), as(), _e(), i(), a(), l(), s() (+11 more)
 
 ### Community 14 - "i18n.tsx"
 Cohesion: 0.12
-Nodes (17): ANCESTRY_TRANSLATIONS, applyLegacyTranslations(), BACKGROUND_TRANSLATIONS, CLASS_TRANSLATIONS, getStoredLocale(), getTranslationCoverage(), I18nContext, I18nProvider() (+9 more)
+Nodes (16): ANCESTRY_TRANSLATIONS, applyLegacyTranslations(), BACKGROUND_TRANSLATIONS, CLASS_TRANSLATIONS, getStoredLocale(), getTranslationCoverage(), I18nContext, I18nProvider() (+8 more)
 
 ### Community 16 - "sync-feats.cjs"
 Cohesion: 0.11
@@ -221,9 +224,9 @@ Nodes (8): findCatalogRecord(), getCatalogDisplayName(), getObjectCatalogRecords
 Cohesion: 0.08
 Nodes (23): allExtracted, catalog, categories, counts, evalFn, existingFeatIds, featsDataTsPath, featsToAdd (+15 more)
 
-### Community 21 - "PortalPages.tsx"
-Cohesion: 0.07
-Nodes (43): AccountViewState, listeners, snapshot, subscribe(), useAccountViewState(), LegacyRecord, GITHUB_BLOB_BASE_URL, GITHUB_LIVROS_FOLDER_URL (+35 more)
+### Community 21 - "sources.ts"
+Cohesion: 0.18
+Nodes (9): LegacyRecord, GITHUB_BLOB_BASE_URL, GITHUB_LIVROS_FOLDER_URL, GITHUB_RAW_BASE_URL, GITHUB_REPO_URL, GOOGLE_DRIVE_FOLDER_URL, localizeSourceBookName(), PathfinderSource (+1 more)
 
 ### Community 22 - "audit-catalog.cjs"
 Cohesion: 0.15
@@ -239,7 +242,7 @@ Nodes (11): Configurar o Supabase, Conta administrativa, CRUD de personagens, Da
 
 ### Community 26 - "ItemPickerModal.tsx"
 Cohesion: 0.24
-Nodes (18): localizeSourceBookName(), formatItemCategory(), formatItemPrice(), ItemCatalogRecord, itemIdentityKeys(), itemPickerCopy, ItemPickerModal(), ItemPickerState (+10 more)
+Nodes (18): Locale, formatItemCategory(), formatItemPrice(), ItemCatalogRecord, itemIdentityKeys(), itemPickerCopy, ItemPickerModal(), ItemPickerState (+10 more)
 
 ### Community 27 - "compilerOptions"
 Cohesion: 0.20
@@ -373,9 +376,9 @@ Nodes (8): ancestries, enNames, esNames, extractedFeats, fs, path, seenSlugs, tx
 Cohesion: 0.20
 Nodes (9): archFlagged, bgFlagged, dataFilePath, fs, path, petFlagged, sandbox, source (+1 more)
 
-### Community 83 - "theme.tsx"
-Cohesion: 0.27
-Nodes (8): applyThemeToDOM(), getInitialTheme(), Theme, ThemeContext, ThemeContextType, ThemeProvider(), ThemeSwitcher(), useTheme()
+### Community 83 - "useI18n"
+Cohesion: 0.19
+Nodes (14): LocaleSwitcher(), useI18n(), DownloadsPage(), getRoute(), PortalPages(), PrivacyPage(), applyThemeToDOM(), getInitialTheme() (+6 more)
 
 ### Community 84 - "extract-gng-class-feats.cjs"
 Cohesion: 0.22
@@ -502,32 +505,36 @@ Cohesion: 0.05
 Nodes (42): actionsData, allHeritages, ancestriesData, ancestryNameToId, archetypesData, armorsData, backgroundsData, buffsData (+34 more)
 
 ### Community 125 - "catalog.ts"
-Cohesion: 0.27
+Cohesion: 0.26
 Nodes (13): CatalogItemRecord, CatalogSyncStatus, CatalogTableName, fetchCatalogCategory(), fetchCatalogItemById(), getCatalogSyncStatus(), getFromLocalCache(), getLocalRuntimeItems() (+5 more)
 
 ### Community 127 - "migrate-catalog-to-supabase.cjs"
 Cohesion: 0.25
 Nodes (6): { createClient }, dataDir, fs, path, supabase, tableOrder
 
+### Community 128 - "PortalPages.test.tsx"
+Cohesion: 0.25
+Nodes (6): verifiedAncestry, verifiedArchetype, verifiedHeritage, verifiedRitual, verifiedSpell, PickerController
+
 ## Knowledge Gaps
-- **837 isolated node(s):** `UI_TRANSLATIONS`, `PF2E_DATA`, `PLAYER_CORE_SPELLS`, `PLAYER_CORE_RITUALS`, `PLAYER_CORE_CATALOG` (+832 more)
+- **837 isolated node(s):** `fs`, `path`, `vm`, `dataPath`, `fileContent` (+832 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **19 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **21 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `PathbuilderApp` connect `PathbuilderApp` to `.renderAll`, `.applyPickerSelection`, `.renderDetailsTab`, `escapeHtml`, `.renderModalLeftList`, `.loadInitialCharacter`, `.openSetAbilitiesModal`?**
   _High betweenness centrality (0.017) - this node is a cross-community bridge._
-- **Why does `getCurrentSession()` connect `characters.ts` to `PortalPages.tsx`?**
+- **Why does `useI18n()` connect `useI18n` to `PickerModal.tsx`, `PortalPages.tsx`, `ItemPickerModal.tsx`, `i18n.tsx`?**
   _High betweenness centrality (0.002) - this node is a cross-community bridge._
-- **Why does `useI18n()` connect `PortalPages.tsx` to `characters.ts`, `PickerModal.tsx`, `i18n.tsx`, `theme.tsx`, `ItemPickerModal.tsx`?**
+- **Why does `Communities (112 total, 15 thin omitted)` connect `Communities (112 total, 15 thin omitted)` to `Graph Report - pathbuilder2e_local  (2026-09-03)`?**
   _High betweenness centrality (0.002) - this node is a cross-community bridge._
-- **What connects `UI_TRANSLATIONS`, `PF2E_DATA`, `PLAYER_CORE_SPELLS` to the rest of the system?**
+- **What connects `fs`, `path`, `vm` to the rest of the system?**
   _837 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `pf2e_data.js` be split into smaller, more focused modules?**
   _Cohesion score 0.009345794392523364 - nodes in this community are weakly interconnected._
 - **Should `PathbuilderApp` be split into smaller, more focused modules?**
   _Cohesion score 0.06458635703918723 - nodes in this community are weakly interconnected._
-- **Should `characters.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.07641272020132693 - nodes in this community are weakly interconnected._
+- **Should `PortalPages.tsx` be split into smaller, more focused modules?**
+  _Cohesion score 0.056117362199116935 - nodes in this community are weakly interconnected._

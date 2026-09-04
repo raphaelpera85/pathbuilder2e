@@ -1,7 +1,16 @@
 /**
- * Gerador de Seed SQL para o Banco de Dados do Catálogo no Supabase
- * Extrai todos os dados de js/pf2e_data.js e compõe instruções relacionais com FKs,
- * suporte trilíngue e integridade referencial.
+ * Script de Geração de Seed SQL para o Banco Supabase do Pathfinder 2e Remaster
+ * Mapeia 100% dos dados estruturados de js/pf2e_data.js para as 18 tabelas relacionais criadas.
+ * 
+ * Saídas:
+ * - supabase/seed_catalog.sql (Arquivo único consolidado)
+ * - supabase/seeds/01_ancestries_classes_items.sql
+ * - supabase/seeds/02_heritages_subclasses_backgrounds_archetypes.sql
+ * - supabase/seeds/03_spells_rituals_actions_conditions_pets.sql
+ * - supabase/seeds/04_weapons_armors_shields_formulas.sql
+ * - supabase/seeds/05_feats_part1.sql
+ * - supabase/seeds/06_feats_part2.sql
+ * - scripts/catalog_data/*.json (Datasets individuais por tabela)
  */
 
 const fs = require('fs');
@@ -9,7 +18,7 @@ const path = require('path');
 const vm = require('vm');
 
 function slugify(text) {
-  if (!text) return '';
+  if (!text) return 'unnamed';
   return String(text)
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
@@ -117,7 +126,7 @@ for (const [rawName, item] of Object.entries(d.ancestries || {})) {
     description_en: item.summaries?.en || null,
     description_es: item.summaries?.es || null,
     hp_base: Number(item.hp) || 8,
-    size: item.size || 'Médio',
+    size: item.size || 'Medium',
     speed_feet: Number(item.speed) || 25,
     attribute_boosts: Array.isArray(item.boosts) ? item.boosts : [],
     attribute_flaw: Array.isArray(item.flaws) && item.flaws.length ? item.flaws[0] : null,
@@ -154,10 +163,10 @@ for (const [rawName, item] of Object.entries(d.classes || {})) {
     description_es: item.summaries?.es || null,
     hp_per_level: Number(item.hpPerLevel) || 8,
     key_attributes: Array.isArray(item.keyAbility) ? item.keyAbility : [],
-    perception_rank: item.perception || 'Treinado',
-    fortitude_rank: item.savingThrows?.fortitude || 'Treinado',
-    reflex_rank: item.savingThrows?.reflex || 'Treinado',
-    will_rank: item.savingThrows?.will || 'Treinado',
+    perception_rank: item.perception || 'T',
+    fortitude_rank: item.savingThrows?.fortitude || 'T',
+    reflex_rank: item.savingThrows?.reflex || 'T',
+    will_rank: item.savingThrows?.will || 'T',
     class_dc_stat: item.classDc || null,
     traits: Array.isArray(item.traits) ? item.traits : [],
     rarity: item.rarity || 'common',
@@ -179,7 +188,7 @@ for (const [rawName, item] of Object.entries(d.classes || {})) {
 const itemsData = [];
 const seenItemIds = new Set();
 
-function registerItem(item, defaultType = 'item') {
+function registerItem(item, defaultCategory = 'gear') {
   const rawName = item.name || 'Item Sem Nome';
   const id = item.id || `item.${slugify(item.names?.en || rawName)}`;
   if (seenItemIds.has(id)) return;
@@ -194,17 +203,17 @@ function registerItem(item, defaultType = 'item') {
     description_pt: item.summaries?.['pt-BR'] || item.description || null,
     description_en: item.summaries?.en || null,
     description_es: item.summaries?.es || null,
-    category: item.category || defaultType,
+    item_category: item.category || defaultCategory,
     level: Number(item.level) || 0,
-    price: formatPrice(item.price),
-    bulk: typeof item.bulk === 'number' ? item.bulk : 0,
+    price_gp: priceToGpNumber(item.price),
+    bulk: item.bulk !== undefined && item.bulk !== null ? String(item.bulk) : 'L',
+    hands: item.hands ? String(item.hands) : null,
     traits: Array.isArray(item.traits) ? item.traits : [],
     rarity: item.rarity || 'common',
     ruleset: item.ruleset || 'remaster',
     source_book: item.source?.book || null,
     source_page: item.source?.page || item.page || null,
     data: {
-      hands: item.hands || null,
       usage: item.usage || null,
       effects: item.effects || [],
       needs_review: item.needs_review ?? false,
@@ -230,14 +239,15 @@ const archetypesData = [];
     description_pt: item.summaries?.['pt-BR'] || item.description || null,
     description_en: item.summaries?.en || null,
     description_es: item.summaries?.es || null,
-    prerequisite: item.prereq || item.prerequisite || null,
-    dedication_feat_id: item.dedicationFeatId || null,
+    archetype_type: item.type || 'dedication',
+    dedication_feat: item.dedicationFeat || item.dedicationFeatId || null,
     traits: Array.isArray(item.traits) ? item.traits : [],
     rarity: item.rarity || 'common',
     ruleset: item.ruleset || 'remaster',
     source_book: item.source?.book || null,
     source_page: item.source?.page || item.page || null,
     data: {
+      prerequisite: item.prereq || item.prerequisite || null,
       feats: item.feats || [],
       needs_review: item.needs_review ?? false,
     }
@@ -302,13 +312,13 @@ const subclassesData = [];
     classId = classNameToId.get(item.className.toLowerCase()) || null;
   }
   if (!validClassIds.has(classId)) {
-    classId = null;
+    return; // Pula subclasses sem classe válida correspondente
   }
 
   subclassesData.push({
     id,
     class_id: classId,
-    choice_field: item.choiceField || null,
+    subclass_type: item.choiceField || item.type || 'doctrine',
     name_pt: item.names?.['pt-BR'] || rawName,
     name_en: item.names?.en || null,
     name_es: item.names?.es || null,
@@ -316,10 +326,12 @@ const subclassesData = [];
     description_en: item.summaries?.en || null,
     description_es: item.summaries?.es || null,
     traits: Array.isArray(item.traits) ? item.traits : [],
+    rarity: item.rarity || 'common',
     ruleset: item.ruleset || 'remaster',
     source_book: item.source?.book || null,
     source_page: item.source?.page || item.page || null,
     data: {
+      choiceField: item.choiceField || null,
       trainedSkills: item.trainedSkills || [],
       grants: item.grants || null,
       needs_review: item.needs_review ?? false,
@@ -344,12 +356,13 @@ const backgroundsData = [];
     attribute_boosts: Array.isArray(item.boosts) ? item.boosts : [],
     trained_skills: Array.isArray(item.skills) ? item.skills : (item.skill ? [item.skill] : []),
     granted_feat: item.feat || null,
-    lore_skill: item.lore || null,
+    traits: Array.isArray(item.traits) ? item.traits : [],
     rarity: item.rarity || 'common',
     ruleset: item.ruleset || 'remaster',
     source_book: item.source?.book || null,
     source_page: item.source?.page || item.page || null,
     data: {
+      lore: item.lore || null,
       needs_review: item.needs_review ?? false,
     }
   });
@@ -370,12 +383,14 @@ const spellsData = [];
     description_en: item.summaries?.en || null,
     description_es: item.summaries?.es || null,
     rank: Number(item.rank ?? item.level) || 1,
+    is_cantrip: Boolean(item.isCantrip || (Array.isArray(item.traits) && item.traits.some(t => /cantrip|truque/i.test(t)))),
+    is_focus: Boolean(item.isFocus || (Array.isArray(item.traits) && item.traits.some(t => /focus|foco/i.test(t)))),
     traditions: Array.isArray(item.traditions) ? item.traditions : [],
-    action_type: item.actionType || item.actions || 'two-actions',
+    cast_actions: item.castActions || item.actionType || item.actions || 'two-actions',
     range: item.range || null,
     targets: item.targets || null,
     duration: item.duration || null,
-    saving_throw: item.savingThrow || item.save || null,
+    defense: item.defense || item.savingThrow || item.save || null,
     traits: Array.isArray(item.traits) ? item.traits : [],
     rarity: item.rarity || 'common',
     ruleset: item.ruleset || 'remaster',
@@ -404,16 +419,16 @@ const ritualsData = [];
     description_es: item.summaries?.es || null,
     rank: Number(item.rank ?? item.level) || 1,
     cast_time: item.castTime || item.time || '1 dia',
+    cost: item.cost || null,
     primary_check: item.primaryCheck || null,
-    secondary_casters: Number(item.secondaryCasters) || 0,
     secondary_checks: Array.isArray(item.secondaryChecks) ? item.secondaryChecks : [],
+    secondary_casters: Number(item.secondaryCasters) || 0,
     traits: Array.isArray(item.traits) ? item.traits : [],
     rarity: item.rarity || 'uncommon',
     ruleset: item.ruleset || 'remaster',
     source_book: item.source?.book || null,
     source_page: item.source?.page || item.page || null,
     data: {
-      cost: item.cost || null,
       needs_review: item.needs_review ?? false,
     }
   });
@@ -460,19 +475,19 @@ const featsData = [];
 
   featsData.push({
     id,
+    class_id: validClassIds.has(classId) ? classId : null,
+    ancestry_id: validAncestryIds.has(ancestryId) ? ancestryId : null,
+    archetype_id: validArchetypeIds.has(archetypeId) ? archetypeId : null,
+    feat_type: item.category || 'general',
+    level: Number(item.level) || 1,
     name_pt: item.names?.['pt-BR'] || rawName,
     name_en: item.names?.en || null,
     name_es: item.names?.es || null,
     description_pt: item.summaries?.['pt-BR'] || item.description || null,
     description_en: item.summaries?.en || null,
     description_es: item.summaries?.es || null,
-    category: item.category || 'Geral',
-    level: Number(item.level) || 1,
-    prerequisite: item.prereq || item.prerequisite || null,
-    action_type: item.actionType || item.actions || null,
-    class_id: validClassIds.has(classId) ? classId : null,
-    ancestry_id: validAncestryIds.has(ancestryId) ? ancestryId : null,
-    archetype_id: validArchetypeIds.has(archetypeId) ? archetypeId : null,
+    prerequisites: item.prereq || item.prerequisite || null,
+    action_cost: item.actionType || item.actions || null,
     traits: Array.isArray(item.traits) ? item.traits : [],
     rarity: item.rarity || 'common',
     ruleset: item.ruleset || 'remaster',
@@ -501,16 +516,17 @@ const weaponsData = [];
     description_pt: item.summaries?.['pt-BR'] || item.description || null,
     description_en: item.summaries?.en || null,
     description_es: item.summaries?.es || null,
-    category: item.category || 'Simples',
+    weapon_category: item.category || 'simple',
     weapon_group: item.group || null,
     damage_dice: item.damage || '1d6',
-    damage_type: item.damageType || 'Perfurante',
+    damage_type: item.damageType || 'slashing',
     range_feet: Number(item.range) || null,
-    reload_actions: item.reload || null,
-    bulk: typeof item.bulk === 'number' ? item.bulk : 1,
-    price: formatPrice(item.price),
-    hands: item.hands || '1',
+    reload: item.reload ? String(item.reload) : null,
+    hands: item.hands ? String(item.hands) : '1',
+    bulk: item.bulk !== undefined && item.bulk !== null ? String(item.bulk) : '1',
+    price_gp: priceToGpNumber(item.price),
     traits: Array.isArray(item.traits) ? item.traits : [],
+    rarity: item.rarity || 'common',
     ruleset: item.ruleset || 'remaster',
     source_book: item.source?.book || null,
     source_page: item.source?.page || item.page || null,
@@ -536,15 +552,17 @@ const armorsData = [];
     description_pt: item.summaries?.['pt-BR'] || item.description || null,
     description_en: item.summaries?.en || null,
     description_es: item.summaries?.es || null,
-    category: item.category || 'Leve',
+    armor_category: item.category || 'medium',
+    armor_group: item.group || null,
     ac_bonus: Number(item.acBonus || item.ac) || 1,
-    dex_cap: Number(item.dexCap) ?? null,
+    dex_cap: item.dexCap !== undefined && item.dexCap !== null ? Number(item.dexCap) : null,
     check_penalty: Number(item.checkPenalty) || 0,
-    speed_penalty: Number(item.speedPenalty) || 0,
+    speed_penalty_feet: Number(item.speedPenalty) || 0,
     strength_req: Number(item.strengthReq || item.str) || 10,
-    bulk: typeof item.bulk === 'number' ? item.bulk : 1,
-    price: formatPrice(item.price),
+    bulk: item.bulk !== undefined && item.bulk !== null ? String(item.bulk) : '1',
+    price_gp: priceToGpNumber(item.price),
     traits: Array.isArray(item.traits) ? item.traits : [],
+    rarity: item.rarity || 'common',
     ruleset: item.ruleset || 'remaster',
     source_book: item.source?.book || null,
     source_page: item.source?.page || item.page || null,
@@ -572,12 +590,13 @@ const shieldsData = [];
     description_es: item.summaries?.es || null,
     ac_bonus: Number(item.acBonus || item.ac) || 2,
     hardness: Number(item.hardness) || 5,
-    max_hp: Number(item.maxHp || item.hp) || 20,
+    hp_max: Number(item.maxHp || item.hp) || 20,
     broken_threshold: Number(item.bt) || 10,
-    speed_penalty: Number(item.speedPenalty) || 0,
-    bulk: typeof item.bulk === 'number' ? item.bulk : 1,
-    price: formatPrice(item.price),
+    speed_penalty_feet: Number(item.speedPenalty) || 0,
+    bulk: item.bulk !== undefined && item.bulk !== null ? String(item.bulk) : '1',
+    price_gp: priceToGpNumber(item.price),
     traits: Array.isArray(item.traits) ? item.traits : [],
+    rarity: item.rarity || 'common',
     ruleset: item.ruleset || 'remaster',
     source_book: item.source?.book || null,
     source_page: item.source?.page || item.page || null,
@@ -603,14 +622,17 @@ const formulasData = [];
     description_pt: item.summaries?.['pt-BR'] || item.description || null,
     description_en: item.summaries?.en || null,
     description_es: item.summaries?.es || null,
-    level: Number(item.level) || 0,
-    price: formatPrice(item.price),
-    category: item.category || 'Alquímica',
+    craft_dc: Number(item.craftDc || item.dc) || 15,
+    batch_size: Number(item.batchSize || item.batch) || 4,
+    level: Number(item.level) || 1,
     traits: Array.isArray(item.traits) ? item.traits : [],
+    rarity: item.rarity || 'common',
     ruleset: item.ruleset || 'remaster',
     source_book: item.source?.book || null,
     source_page: item.source?.page || item.page || null,
     data: {
+      category: item.category || 'Alquímica',
+      price: formatPrice(item.price),
       needs_review: item.needs_review ?? false,
     }
   });
@@ -631,17 +653,18 @@ const petsData = [];
     description_en: item.summaries?.en || null,
     description_es: item.summaries?.es || null,
     pet_type: item.type || 'animal_companion',
-    size: item.size || 'Médio',
-    speed_feet: Number(item.speed) || 30,
-    hp_base: Number(item.hp) || 8,
-    support_benefit: item.supportBenefit || null,
-    advanced_maneuver: item.advancedManeuver || null,
+    size: item.size || 'Small',
+    speed: typeof item.speed === 'number' ? `${item.speed} feet` : (item.speed || '25 feet'),
+    attacks: Array.isArray(item.attacks) ? item.attacks : [],
     traits: Array.isArray(item.traits) ? item.traits : [],
+    rarity: item.rarity || 'common',
     ruleset: item.ruleset || 'remaster',
     source_book: item.source?.book || null,
     source_page: item.source?.page || item.page || null,
     data: {
-      attacks: item.attacks || [],
+      hp_base: Number(item.hp) || 8,
+      support_benefit: item.supportBenefit || null,
+      advanced_maneuver: item.advancedManeuver || null,
       needs_review: item.needs_review ?? false,
     }
   });
@@ -661,9 +684,10 @@ const actionsData = [];
     description_pt: item.summaries?.['pt-BR'] || item.description || null,
     description_en: item.summaries?.en || null,
     description_es: item.summaries?.es || null,
-    action_type: item.actionType || item.actions || '1',
-    category: item.category || 'Básica',
+    action_cost: item.actionCost || item.actions || item.actionType || '1',
+    action_type: item.category || 'basic',
     traits: Array.isArray(item.traits) ? item.traits : [],
+    rarity: item.rarity || 'common',
     ruleset: item.ruleset || 'remaster',
     source_book: item.source?.book || null,
     source_page: item.source?.page || item.page || null,
@@ -689,8 +713,10 @@ const conditionsData = [];
     description_pt: item.summaries?.['pt-BR'] || item.description || null,
     description_en: item.summaries?.en || null,
     description_es: item.summaries?.es || null,
-    category: item.category || 'Geral',
     has_value: Boolean(item.hasValue || item.numeric),
+    condition_group: item.category || 'general',
+    traits: Array.isArray(item.traits) ? item.traits : [],
+    rarity: item.rarity || 'common',
     ruleset: item.ruleset || 'remaster',
     source_book: item.source?.book || null,
     source_page: item.source?.page || item.page || null,
@@ -714,9 +740,16 @@ const buffsData = [];
     description_pt: item.summaries?.['pt-BR'] || item.description || null,
     description_en: item.summaries?.en || null,
     description_es: item.summaries?.es || null,
-    category: item.category || 'Geral',
+    duration_rounds: Number(item.durationRounds) || null,
+    bonus_type: item.bonusType || 'status',
+    target_stat: item.targetStat || null,
+    traits: Array.isArray(item.traits) ? item.traits : [],
+    rarity: item.rarity || 'common',
     ruleset: item.ruleset || 'remaster',
+    source_book: item.source?.book || null,
+    source_page: item.source?.page || item.page || null,
     data: {
+      category: item.category || 'Geral',
       modifiers: item.modifiers || [],
       needs_review: item.needs_review ?? false,
     }
@@ -759,7 +792,7 @@ function generateInsertSql(tableName, rows) {
         if (c.endsWith('_array') || c === 'attribute_boosts' || c === 'languages' || c === 'traits' || c === 'key_attributes' || c === 'traditions' || c === 'trained_skills' || c === 'secondary_checks') {
           return sqlTextArray(val);
         }
-        if (c === 'data') {
+        if (c === 'data' || c === 'attacks') {
           return sqlJsonb(val);
         }
         return sqlEscape(val);
@@ -903,4 +936,3 @@ fs.writeFileSync(
 );
 
 console.log(`[Seed] 6 arquivos SQL particionados criados em: ${seedsDir}`);
-
