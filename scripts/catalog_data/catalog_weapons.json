@@ -3860,7 +3860,7 @@
     "range_feet": null,
     "reload_actions": null,
     "bulk": 2,
-    "price": "1 PO",
+    "price": "0 PO",
     "hands": 2,
     "traits": [
       "sweep",
@@ -3889,7 +3889,7 @@
     "range_feet": null,
     "reload_actions": null,
     "bulk": 1,
-    "price": "1 PO",
+    "price": "0 PO",
     "hands": 1,
     "traits": [
       "sweep"
@@ -3917,7 +3917,7 @@
     "range_feet": null,
     "reload_actions": null,
     "bulk": 1,
-    "price": "1 PO",
+    "price": "0 PO",
     "hands": 1,
     "traits": [
       "versatile P"
@@ -3945,7 +3945,7 @@
     "range_feet": null,
     "reload_actions": null,
     "bulk": 1,
-    "price": "1 PO",
+    "price": "0 PO",
     "hands": 2,
     "traits": [
       "backswing",
@@ -3974,7 +3974,7 @@
     "range_feet": null,
     "reload_actions": null,
     "bulk": 1,
-    "price": "1 PO",
+    "price": "0 PO",
     "hands": 1,
     "traits": [
       "deadly d10",
@@ -4003,7 +4003,7 @@
     "range_feet": null,
     "reload_actions": null,
     "bulk": 1,
-    "price": "1 PO",
+    "price": "0 PO",
     "hands": 2,
     "traits": [
       "backswing",
@@ -4033,7 +4033,7 @@
     "range_feet": null,
     "reload_actions": null,
     "bulk": 1,
-    "price": "1 PO",
+    "price": "0 PO",
     "hands": 1,
     "traits": [
       "tethered",
@@ -4062,7 +4062,7 @@
     "range_feet": null,
     "reload_actions": null,
     "bulk": 1,
-    "price": "1 PO",
+    "price": "0 PO",
     "hands": 1,
     "traits": [
       "concussive",

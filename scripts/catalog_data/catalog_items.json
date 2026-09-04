@@ -9,9 +9,7 @@
     "description_es": "Kit esencial de exploración con mochila, refugio, cuerda, luz y raciones.",
     "category": "equipamento",
     "level": 0,
-    "price": {
-      "sp": 15
-    },
+    "price": "15 PP",
     "bulk": 0,
     "traits": [],
     "rarity": "common",
@@ -35,9 +33,7 @@
     "description_es": "Mochila que guarda equipo y reduce la Carga de los primeros objetos almacenados.",
     "category": "equipamento",
     "level": 0,
-    "price": {
-      "sp": 1
-    },
+    "price": "1 PP",
     "bulk": 0,
     "traits": [],
     "rarity": "common",
@@ -61,9 +57,7 @@
     "description_es": "Herramientas necesarias para usar Medicina y Tratar Heridas.",
     "category": "equipamento",
     "level": 0,
-    "price": {
-      "gp": 5
-    },
+    "price": "5 PO",
     "bulk": 0,
     "traits": [],
     "rarity": "common",
@@ -87,9 +81,7 @@
     "description_es": "Herramientas necesarias para abrir cerraduras y desactivar trampas.",
     "category": "equipamento",
     "level": 0,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [],
     "rarity": "common",
@@ -113,9 +105,7 @@
     "description_es": "Poción consumible que restaura 1d8 Puntos de Golpe.",
     "category": "equipamento",
     "level": 1,
-    "price": {
-      "gp": 4
-    },
+    "price": "4 PO",
     "bulk": 0,
     "traits": [
       "Consumível",
@@ -144,9 +134,7 @@
     "description_es": "Poción consumible que restaura 2d8+5 Puntos de Golpe.",
     "category": "equipamento",
     "level": 3,
-    "price": {
-      "gp": 12
-    },
+    "price": "12 PO",
     "bulk": 0,
     "traits": [
       "Consumível",
@@ -175,9 +163,7 @@
     "description_es": "Botas mágicas que mejoran Acrobacia y conceden un Paso élfico.",
     "category": "equipamento",
     "level": 7,
-    "price": {
-      "gp": 250
-    },
+    "price": "250 PO",
     "bulk": 0,
     "traits": [
       "Investido",
@@ -205,9 +191,7 @@
     "description_es": "Runa que concede un bonificador de objeto +1 a las tiradas de ataque del arma.",
     "category": "equipamento",
     "level": 2,
-    "price": {
-      "gp": 35
-    },
+    "price": "35 PO",
     "bulk": 0,
     "traits": [
       "Mágico",
@@ -234,9 +218,7 @@
     "description_es": "Una espada-bastón +1 impactante que puede ocultar mágicamente su hoja.",
     "category": "equipamento",
     "level": 5,
-    "price": {
-      "gp": 150
-    },
+    "price": "150 PO",
     "bulk": 0,
     "traits": [
       "Mágico"
@@ -262,9 +244,7 @@
     "description_es": "Una ballesta +1 impactante de toque fantasmal que percibe y dispara a través del Plano Etéreo.",
     "category": "equipamento",
     "level": 8,
-    "price": {
-      "gp": 450
-    },
+    "price": "450 PO",
     "bulk": 0,
     "traits": [
       "Mágico"
@@ -290,9 +270,7 @@
     "description_es": "Una espada larga sagrada +2 impactante mayor que puede restaurar Puntos de Golpe y castigar criaturas impías.",
     "category": "equipamento",
     "level": 14,
-    "price": {
-      "gp": 4500
-    },
+    "price": "4500 PO",
     "bulk": 0,
     "traits": [
       "Mágico"
@@ -318,9 +296,7 @@
     "description_es": "Un cortacorte +2 impactante con una runa de propiedad elemental seleccionable a la vez.",
     "category": "equipamento",
     "level": 12,
-    "price": {
-      "gp": 1700
-    },
+    "price": "1700 PO",
     "bulk": 0,
     "traits": [
       "Mágico"
@@ -346,9 +322,7 @@
     "description_es": "Una daga de parada +1 impactante que aplica su bonificador de CA también contra conjuros.",
     "category": "equipamento",
     "level": 7,
-    "price": {
-      "gp": 320
-    },
+    "price": "320 PO",
     "bulk": 0,
     "traits": [
       "Mágico"
@@ -374,9 +348,7 @@
     "description_es": "Una armadura de láminas +1 que mejora Atletismo y el movimiento al Trepar y Nadar.",
     "category": "equipamento",
     "level": 5,
-    "price": {
-      "gp": 180
-    },
+    "price": "180 PO",
     "bulk": 2,
     "traits": [
       "Mágico"
@@ -402,9 +374,7 @@
     "description_es": "Una armadura de pieles +1 que protege contra maldiciones y otorga inmunidad al hedor de los gules.",
     "category": "equipamento",
     "level": 6,
-    "price": {
-      "gp": 220
-    },
+    "price": "220 PO",
     "bulk": 2,
     "traits": [
       "Mágico"
@@ -430,9 +400,7 @@
     "description_es": "Una armadura de pieles +1 resistente que reduce su penalización y añade daño a los Golpes de Carga súbita.",
     "category": "equipamento",
     "level": 9,
-    "price": {
-      "gp": 700
-    },
+    "price": "700 PO",
     "bulk": 2,
     "traits": [
       "Mágico"
@@ -484,9 +452,7 @@
     "description_es": "Una armadura completa +2 resistente con cuernos ofensivos y una activación de teletransporte para criaturas impías.",
     "category": "equipamento",
     "level": 13,
-    "price": {
-      "gp": 2500
-    },
+    "price": "2500 PO",
     "bulk": 2,
     "traits": [
       "Mágico"
@@ -512,9 +478,7 @@
     "description_es": "Armadura completa de cuero de dragón +2 resistente mayor con aliento de dragón una vez al día.",
     "category": "equipamento",
     "level": 16,
-    "price": {
-      "gp": 10000
-    },
+    "price": "10000 PO",
     "bulk": 2,
     "traits": [
       "Mágico"
@@ -540,9 +504,7 @@
     "description_es": "Un broquel mágico que mejora Engañar mientras está alzado y puede deslumbrar a un objetivo.",
     "category": "equipamento",
     "level": 2,
-    "price": {
-      "gp": 35
-    },
+    "price": "35 PO",
     "bulk": 1,
     "traits": [
       "Mágico"
@@ -568,9 +530,7 @@
     "description_es": "Un escudo mágico de madera que explota al ser destruido y daña a los enemigos cercanos.",
     "category": "equipamento",
     "level": 5,
-    "price": {
-      "gp": 25
-    },
+    "price": "25 PO",
     "bulk": 1,
     "traits": [
       "Mágico"
@@ -622,9 +582,7 @@
     "description_es": "Un escudo de cuero de dragón inmune a un tipo de daño según la tradición del dragón.",
     "category": "equipamento",
     "level": 8,
-    "price": {
-      "gp": 400
-    },
+    "price": "400 PO",
     "bulk": 1,
     "traits": [
       "Mágico"
@@ -7983,9 +7941,7 @@
     "description_es": "Objeto alquímico que libera una nube de humo para ocultar un área.",
     "category": "compendio",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -8012,9 +7968,7 @@
     "description_es": "Al impactar, unas astas luminosas fijan al objetivo a una superficie tras una salvación de Reflejos.",
     "category": "compendio",
     "level": 2,
-    "price": {
-      "gp": 7
-    },
+    "price": "7 PO",
     "bulk": 0,
     "traits": [
       "Consumível",
@@ -8042,9 +7996,7 @@
     "description_es": "Al impactar, causa 3d12 de daño eléctrico y requiere una salvación de Reflejos.",
     "category": "compendio",
     "level": 9,
-    "price": {
-      "gp": 130
-    },
+    "price": "130 PO",
     "bulk": 0,
     "traits": [
       "Consumível",
@@ -8072,9 +8024,7 @@
     "description_es": "Al impactar, se transforma en una víbora convocada cuyo veneno afecta al objetivo.",
     "category": "compendio",
     "level": 4,
-    "price": {
-      "gp": 17
-    },
+    "price": "17 PO",
     "bulk": 0,
     "traits": [
       "Consumível",
@@ -8102,9 +8052,7 @@
     "description_es": "No causa daño; una criatura viva impactada debe hacer una salvación de Voluntad o queda aletargada y ralentizada.",
     "category": "compendio",
     "level": 3,
-    "price": {
-      "gp": 10
-    },
+    "price": "10 PO",
     "bulk": 0,
     "traits": [
       "Consumível",
@@ -8132,9 +8080,7 @@
     "description_es": "Al herir, llena la mente del objetivo de visiones aterradoras y puede asustarlo.",
     "category": "compendio",
     "level": 6,
-    "price": {
-      "gp": 50
-    },
+    "price": "50 PO",
     "bulk": 0,
     "traits": [
       "Consumível",
@@ -8162,9 +8108,7 @@
     "description_es": "Al impactar, requiere una salvación de Fortaleza o ralentiza al objetivo por el frío intenso.",
     "category": "compendio",
     "level": 5,
-    "price": {
-      "gp": 25
-    },
+    "price": "25 PO",
     "bulk": 0,
     "traits": [
       "Consumível",
@@ -8192,9 +8136,7 @@
     "description_es": "Al impactar, causa 1d8 de daño de ácido persistente que ignora la Dureza de la armadura.",
     "category": "compendio",
     "level": 7,
-    "price": {
-      "gp": 70
-    },
+    "price": "70 PO",
     "bulk": 0,
     "traits": [
       "Consumível",
@@ -8222,9 +8164,7 @@
     "description_es": "Al impactar, afecta al objetivo como el conjuro desintegrar tras una salvación de Fortaleza.",
     "category": "compendio",
     "level": 15,
-    "price": {
-      "gp": 1300
-    },
+    "price": "1300 PO",
     "bulk": 0,
     "traits": [
       "Consumível",
@@ -8252,9 +8192,7 @@
     "description_es": "Al beberla, huyes durante 1 minuto, obtienes +12 metros a las Velocidades y Avanzas inmediatamente.",
     "category": "compendio",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Consumível",
@@ -8282,9 +8220,7 @@
     "description_es": "Durante 1 minuto, una aura causa 1 de daño de ácido, electricidad, fuego o frío a quienes te toquen.",
     "category": "compendio",
     "level": 1,
-    "price": {
-      "gp": 4
-    },
+    "price": "4 PO",
     "bulk": 0,
     "traits": [
       "Consumível",
@@ -8312,9 +8248,7 @@
     "description_es": "Al beberlo, quedas alimentado mágicamente con el equivalente a un día de comida y agua.",
     "category": "compendio",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Consumível",
@@ -8342,9 +8276,7 @@
     "description_es": "Oculta temporalmente el olor y la apariencia de un objeto para dificultar su identificación.",
     "category": "compendio",
     "level": 1,
-    "price": {
-      "gp": 2
-    },
+    "price": "2 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -8371,9 +8303,7 @@
     "description_es": "Tinta alquímica que permanece invisible hasta que un método apropiado la revela.",
     "category": "compendio",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -8400,9 +8330,7 @@
     "description_es": "Refuerza temporalmente una armadura o escudo contra un tipo de energía elegido.",
     "category": "compendio",
     "level": 2,
-    "price": {
-      "gp": 4
-    },
+    "price": "4 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -8429,9 +8357,7 @@
     "description_es": "Revela marcas, escrituras y propiedades ocultas en una superficie tratada.",
     "category": "compendio",
     "level": 5,
-    "price": {
-      "gp": 25
-    },
+    "price": "25 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -8458,9 +8384,7 @@
     "description_es": "Un ungüento mágico que mejora temporalmente una prueba de Engaño o disfraz.",
     "category": "compendio",
     "level": 4,
-    "price": {
-      "gp": 25
-    },
+    "price": "25 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -8487,9 +8411,7 @@
     "description_es": "Elixir alquímico que ayuda contra venenos; consulta la entrada completa para la prueba y duración.",
     "category": "compendio",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -8515,9 +8437,7 @@
     "description_es": "Elixir alquímico que otorga +2 contra enfermedades durante 24 horas.",
     "category": "compendio",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -8543,9 +8463,7 @@
     "description_es": "Una trampa que emite una alerta cuando una criatura entra en el área preparada.",
     "category": "compendio",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -8571,9 +8489,7 @@
     "description_es": "Una trampa que hiere y puede impedir el movimiento de una criatura que la activa.",
     "category": "compendio",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -8599,9 +8515,7 @@
     "description_es": "Una trampa que dispersa abrojos y dificulta el movimiento en el área preparada.",
     "category": "compendio",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -8627,9 +8541,7 @@
     "description_es": "Veneno ingerido; la CD, el daño y los efectos detallados deben verificarse en la entrada del libro.",
     "category": "compendio",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -8655,9 +8567,7 @@
     "description_es": "Herramienta alquímica que proporciona iluminación intensa durante su duración.",
     "category": "compendio",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -8683,9 +8593,7 @@
     "description_es": "Loción alquímica aplicada a una criatura u objeto para interactuar con efectos de plata.",
     "category": "compendio",
     "level": 2,
-    "price": {
-      "gp": 6
-    },
+    "price": "6 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -8711,9 +8619,7 @@
     "description_es": "Veneno ingerido de nivel 2; la progresión y los efectos completos quedan para verificación.",
     "category": "compendio",
     "level": 2,
-    "price": {
-      "gp": 5
-    },
+    "price": "5 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -8739,9 +8645,7 @@
     "description_es": "Talismán consumible que ayuda contra una criatura elegida como presa.",
     "category": "compendio",
     "level": 2,
-    "price": {
-      "gp": 6
-    },
+    "price": "6 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -8767,9 +8671,7 @@
     "description_es": "Bomba alquímica que vuelve pegajosa un área o criatura; verifica CD y duración en el libro.",
     "category": "compendio",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -8795,9 +8697,7 @@
     "description_es": "Bomba alquímica que debilita temporalmente al objetivo alcanzado.",
     "category": "compendio",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -8823,9 +8723,7 @@
     "description_es": "Bomba alquímica con un efecto especialmente útil contra criaturas incorpóreas.",
     "category": "compendio",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -8851,9 +8749,7 @@
     "description_es": "Herramienta alquímica que ayuda a marcar o revelar pruebas durante una investigación.",
     "category": "compendio",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -8879,9 +8775,7 @@
     "description_es": "Elixir que restaura una pequeña cantidad de Puntos de Golpe al consumirse.",
     "category": "compendio",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -8907,9 +8801,7 @@
     "description_es": "Elixir que cambia temporalmente características sexuales según la descripción.",
     "category": "compendio",
     "level": 1,
-    "price": {
-      "gp": 1
-    },
+    "price": "1 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -8935,9 +8827,7 @@
     "description_es": "Elixir que mejora temporalmente la Velocidad y la movilidad.",
     "category": "compendio",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -8963,9 +8853,7 @@
     "description_es": "Elixir que mejora temporalmente la percepción visual y los ataques a distancia.",
     "category": "compendio",
     "level": 1,
-    "price": {
-      "gp": 4
-    },
+    "price": "4 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -8991,9 +8879,7 @@
     "description_es": "Bomba alquímica que causa daño de fuego y puede iniciar combustión persistente.",
     "category": "compendio",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -9019,9 +8905,7 @@
     "description_es": "Bomba alquímica que causa daño de frío y deja al objetivo vulnerable al hielo.",
     "category": "compendio",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -9047,9 +8931,7 @@
     "description_es": "Bomba alquímica que causa daño de ácido, incluido posible daño persistente.",
     "category": "compendio",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -9075,9 +8957,7 @@
     "description_es": "Mutágeno que altera temporalmente el cuerpo con beneficios y penalizaciones descritos en la entrada.",
     "category": "compendio",
     "level": 1,
-    "price": {
-      "gp": 4
-    },
+    "price": "4 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -9103,9 +8983,7 @@
     "description_es": "Mutágeno que mejora temporalmente la comunicación y las habilidades sociales.",
     "category": "compendio",
     "level": 1,
-    "price": {
-      "gp": 4
-    },
+    "price": "4 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -9131,9 +9009,7 @@
     "description_es": "Mutágeno que cambia temporalmente reflejos y movilidad, con efectos secundarios.",
     "category": "compendio",
     "level": 1,
-    "price": {
-      "gp": 4
-    },
+    "price": "4 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -9159,9 +9035,7 @@
     "description_es": "Mutágeno que refuerza el cuerpo contra ciertos efectos, con penalizaciones propias de la entrada.",
     "category": "compendio",
     "level": 1,
-    "price": {
-      "gp": 4
-    },
+    "price": "4 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -9187,9 +9061,7 @@
     "description_es": "Mutágeno que estabiliza la mente y cambia temporalmente las respuestas emocionales.",
     "category": "compendio",
     "level": 1,
-    "price": {
-      "gp": 4
-    },
+    "price": "4 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -9215,9 +9087,7 @@
     "description_es": "Bomba alquímica que provoca una detonación de impacto en el área afectada.",
     "category": "compendio",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -9243,9 +9113,7 @@
     "description_es": "Bomba alquímica eléctrica que puede dejar desprevenido al objetivo brevemente.",
     "category": "compendio",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -9271,9 +9139,7 @@
     "description_es": "Veneno aplicado; verifica la entrada para CD, daño y progresión.",
     "category": "compendio",
     "level": 1,
-    "price": {
-      "gp": 4
-    },
+    "price": "4 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -9299,9 +9165,7 @@
     "description_es": "Trampa que aumenta el peso del objetivo y dificulta su movimiento al activarse.",
     "category": "compendio",
     "level": 2,
-    "price": {
-      "gp": 6
-    },
+    "price": "6 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -9327,9 +9191,7 @@
     "description_es": "Trampa que produce una señal audible o visual cuando una criatura entra en el área preparada.",
     "category": "compendio",
     "level": 2,
-    "price": {
-      "gp": 5
-    },
+    "price": "5 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -9355,9 +9217,7 @@
     "description_es": "Trampa que marca a la criatura alcanzada para facilitar su rastreo.",
     "category": "compendio",
     "level": 2,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -9383,9 +9243,7 @@
     "description_es": "Trampa que penaliza el movimiento o crea una obstrucción al activarse.",
     "category": "compendio",
     "level": 2,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -9411,9 +9269,7 @@
     "description_es": "Veneno de herida CD 16; inflige estado ralentizado y parálisis.",
     "category": "compendio",
     "level": 2,
-    "price": {
-      "gp": 7
-    },
+    "price": "7 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -9439,9 +9295,7 @@
     "description_es": "Veneno de herida CD 18; inflige daño continuado de veneno y torpe.",
     "category": "compendio",
     "level": 2,
-    "price": {
-      "gp": 6
-    },
+    "price": "6 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -9467,9 +9321,7 @@
     "description_es": "Aceite venenoso aplicado; verifica la entrada para CD, daño y progresión.",
     "category": "compendio",
     "level": 3,
-    "price": {
-      "gp": 10
-    },
+    "price": "10 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -9495,9 +9347,7 @@
     "description_es": "Veneno de contacto CD 19; causa daño de veneno y estado estupefacto.",
     "category": "compendio",
     "level": 3,
-    "price": {
-      "gp": 10
-    },
+    "price": "10 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -9523,9 +9373,7 @@
     "description_es": "Veneno aplicado de araña; verifica la entrada para CD, daño y progresión.",
     "category": "compendio",
     "level": 5,
-    "price": {
-      "gp": 25
-    },
+    "price": "25 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -9551,9 +9399,7 @@
     "description_es": "Veneno aplicado de escorpión gigante; verifica la entrada para CD, daño y progresión.",
     "category": "compendio",
     "level": 6,
-    "price": {
-      "gp": 40
-    },
+    "price": "40 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -9579,9 +9425,7 @@
     "description_es": "Veneno de herida CD 21; reduce velocidad e inmoviliza al objetivo.",
     "category": "compendio",
     "level": 7,
-    "price": {
-      "gp": 55
-    },
+    "price": "55 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -9607,9 +9451,7 @@
     "description_es": "Veneno de contacto que causa daño persistente; verifica CD y etapas en el libro.",
     "category": "compendio",
     "level": 8,
-    "price": {
-      "gp": 75
-    },
+    "price": "75 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -9635,9 +9477,7 @@
     "description_es": "Veneno aplicado de wyvern; verifica la entrada para CD, daño y progresión.",
     "category": "compendio",
     "level": 8,
-    "price": {
-      "gp": 80
-    },
+    "price": "80 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -9663,9 +9503,7 @@
     "description_es": "Veneno inhalado CD 22; impone niveles crecientes de la condición debilitado.",
     "category": "compendio",
     "level": 9,
-    "price": {
-      "gp": 110
-    },
+    "price": "110 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -9691,9 +9529,7 @@
     "description_es": "Veneno ingerido CD 24; inflige gran daño de veneno, torpe y parálisis corta.",
     "category": "compendio",
     "level": 9,
-    "price": {
-      "gp": 110
-    },
+    "price": "110 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -9719,9 +9555,7 @@
     "description_es": "Veneno ingerido de acónito; verifica la entrada para CD, daño y progresión.",
     "category": "compendio",
     "level": 10,
-    "price": {
-      "gp": 155
-    },
+    "price": "155 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -9747,9 +9581,7 @@
     "description_es": "Veneno de herida CD 26; causa daño de veneno y drena la vitalidad máxima.",
     "category": "compendio",
     "level": 10,
-    "price": {
-      "gp": 160
-    },
+    "price": "160 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -9775,9 +9607,7 @@
     "description_es": "Veneno de contacto virulento; verifica la entrada para CD, daño y progresión.",
     "category": "compendio",
     "level": 19,
-    "price": {
-      "gp": 6500
-    },
+    "price": "6500 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -9803,9 +9633,7 @@
     "description_es": "Veneno de contacto virulento; verifica la entrada para CD, daño y progresión.",
     "category": "compendio",
     "level": 20,
-    "price": {
-      "gp": 12000
-    },
+    "price": "12000 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -9831,9 +9659,7 @@
     "description_es": "Veneno de herida CD 29; causa daño de veneno, torpe y drenado.",
     "category": "compendio",
     "level": 12,
-    "price": {
-      "gp": 500
-    },
+    "price": "500 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -9859,9 +9685,7 @@
     "description_es": "Veneno ingerido con efecto de sueño; verifica el libro para CD, daño y progresión.",
     "category": "compendio",
     "level": 12,
-    "price": {
-      "gp": 325
-    },
+    "price": "325 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -9887,9 +9711,7 @@
     "description_es": "Veneno ingerido de alta letalidad; verifica la entrada para CD, daño y progresión.",
     "category": "compendio",
     "level": 17,
-    "price": {
-      "gp": 2250
-    },
+    "price": "2250 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -9915,9 +9737,7 @@
     "description_es": "Veneno ingerido CD 25; inflige daño de veneno y estado indispuesto.",
     "category": "compendio",
     "level": 13,
-    "price": {
-      "gp": 450
-    },
+    "price": "450 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -9943,9 +9763,7 @@
     "description_es": "Veneno ingerido virulento de larga duración; verifica el libro para CD, daño y progresión.",
     "category": "compendio",
     "level": 18,
-    "price": {
-      "gp": 4000
-    },
+    "price": "4000 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -9971,9 +9789,7 @@
     "description_es": "Veneno de contacto CD 22; inflige daño de veneno, torpe y estupefacto.",
     "category": "compendio",
     "level": 16,
-    "price": {
-      "gp": 1450
-    },
+    "price": "1450 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -9999,9 +9815,7 @@
     "description_es": "Veneno inhalado CD 19; causa daño de veneno, deslumbrado y ceguera.",
     "category": "compendio",
     "level": 16,
-    "price": {
-      "gp": 1500
-    },
+    "price": "1500 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -10027,9 +9841,7 @@
     "description_es": "Veneno inhalado que perjudica las facultades mentales; verifica el libro para CD, daño y progresión.",
     "category": "compendio",
     "level": 15,
-    "price": {
-      "gp": 1000
-    },
+    "price": "1000 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -10055,9 +9867,7 @@
     "description_es": "Veneno ingerido CD 20; causa miedo progresivo, huida y confusión.",
     "category": "compendio",
     "level": 4,
-    "price": {
-      "gp": 16
-    },
+    "price": "16 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -10083,9 +9893,7 @@
     "description_es": "Prótesis básica que restaura la movilidad funcional del usuario.",
     "category": "compendio",
     "level": 4,
-    "price": {
-      "gp": 15
-    },
+    "price": "15 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -10111,9 +9919,7 @@
     "description_es": "Veneno de contacto que causa daño persistente; verifica la entrada para CD y progresión.",
     "category": "compendio",
     "level": 11,
-    "price": {
-      "gp": 225
-    },
+    "price": "225 PO",
     "bulk": 0,
     "traits": [
       "Consumível"
@@ -10139,9 +9945,7 @@
     "description_es": "Moneda mágica con un resultado predecible que puede ayudar en una decisión o apuesta.",
     "category": "compendio",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Mágico"
@@ -10167,9 +9971,7 @@
     "description_es": "Alambre mágico flexible para manipular, asegurar o alcanzar objetos a corta distancia.",
     "category": "compendio",
     "level": 3,
-    "price": {
-      "gp": 45
-    },
+    "price": "45 PO",
     "bulk": 0,
     "traits": [
       "Mágico"
@@ -10195,9 +9997,7 @@
     "description_es": "Gafas investidas que ayudan a identificar y trabajar con sustancias alquímicas.",
     "category": "compendio",
     "level": 4,
-    "price": {
-      "gp": 100
-    },
+    "price": "100 PO",
     "bulk": 0,
     "traits": [
       "Mágico"
@@ -10223,9 +10023,7 @@
     "description_es": "Velo enfocado que concede un bonificador a Religión y puede alimentar un conjuro de revelación una vez al día; requiere un oráculo.",
     "category": "compendio",
     "level": 10,
-    "price": {
-      "gp": 1000
-    },
+    "price": "1000 PO",
     "bulk": 0,
     "traits": [
       "Mágico"
@@ -10251,9 +10049,7 @@
     "description_es": "Versión mayor del Velo pronóstico, con bonificador mejorado y activación adicional; requiere un oráculo.",
     "category": "compendio",
     "level": 18,
-    "price": {
-      "gp": 21000
-    },
+    "price": "21000 PO",
     "bulk": 0,
     "traits": [
       "Mágico"
@@ -10279,9 +10075,7 @@
     "description_es": "Colgante enfocado vinculado a una línea de sangre de hechicero; concede un bonificador a las habilidades de linaje y puede generar 1 Punto de Foco una vez al día.",
     "category": "compendio",
     "level": 10,
-    "price": {
-      "gp": 1000
-    },
+    "price": "1000 PO",
     "bulk": 0,
     "traits": [
       "Mágico"
@@ -10307,9 +10101,7 @@
     "description_es": "Versión mayor del Colgante sanguíneo, con bonificador mejorado; requiere un hechicero del linaje asociado.",
     "category": "compendio",
     "level": 17,
-    "price": {
-      "gp": 13000
-    },
+    "price": "13000 PO",
     "bulk": 0,
     "traits": [
       "Mágico"
@@ -10335,9 +10127,7 @@
     "description_es": "Kit de disfraz alquímico que concede +1 de bonificador de objeto en Engaño.",
     "category": "compendio",
     "level": 5,
-    "price": {
-      "gp": 700
-    },
+    "price": "700 PO",
     "bulk": 0,
     "traits": [
       "Mágico"
@@ -10363,9 +10153,7 @@
     "description_es": "Kit superior de disfraz que otorga +2 de bonificador de objeto en Engaño.",
     "category": "compendio",
     "level": 15,
-    "price": {
-      "gp": 35000
-    },
+    "price": "35000 PO",
     "bulk": 0,
     "traits": [
       "Mágico"
@@ -10391,9 +10179,7 @@
     "description_es": "Capa que concede 5 PG temporales adicionales y +1 de objeto en Intimidación al enfurecerse.",
     "category": "compendio",
     "level": 12,
-    "price": {
-      "gp": 2000
-    },
+    "price": "2000 PO",
     "bulk": 0,
     "traits": [
       "Mágico"
@@ -10419,9 +10205,7 @@
     "description_es": "Capa superior que otorga 15 PG temporales, +2 de objeto en Intimidación y cono ígneo.",
     "category": "compendio",
     "level": 19,
-    "price": {
-      "gp": 40000
-    },
+    "price": "40000 PO",
     "bulk": 0,
     "traits": [
       "Mágico"
@@ -10447,9 +10231,7 @@
     "description_es": "Elixir que ayuda a terminar una condición emocional o mental según la entrada.",
     "category": "compendio",
     "level": 1,
-    "price": {
-      "gp": 5
-    },
+    "price": "5 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -10477,9 +10259,7 @@
     "description_es": "Elixir que mejora temporalmente la comprensión de idiomas y la comunicación.",
     "category": "compendio",
     "level": 2,
-    "price": {
-      "gp": 7
-    },
+    "price": "7 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -10507,9 +10287,7 @@
     "description_es": "Elixir que concede visión en la oscuridad durante su duración.",
     "category": "compendio",
     "level": 2,
-    "price": {
-      "gp": 6
-    },
+    "price": "6 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -10537,9 +10315,7 @@
     "description_es": "Elixir que agudiza la vista y ayuda en situaciones de poca luz.",
     "category": "compendio",
     "level": 2,
-    "price": {
-      "gp": 7
-    },
+    "price": "7 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -10567,9 +10343,7 @@
     "description_es": "Elixir que refuerza temporalmente el valor contra miedo y efectos similares.",
     "category": "compendio",
     "level": 2,
-    "price": {
-      "gp": 7
-    },
+    "price": "7 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -10597,9 +10371,7 @@
     "description_es": "Elixir que restaura vigor y proporciona recuperación limitada según la descripción completa.",
     "category": "compendio",
     "level": 1,
-    "price": {
-      "gp": 5
-    },
+    "price": "5 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -10627,9 +10399,7 @@
     "description_es": "Elixir que mejora temporalmente la percepción y el uso de bombas alquímicas.",
     "category": "compendio",
     "level": 4,
-    "price": {
-      "gp": 14
-    },
+    "price": "14 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -10657,9 +10427,7 @@
     "description_es": "Elixir que endurece los golpes desarmados y altera temporalmente el cuerpo.",
     "category": "compendio",
     "level": 4,
-    "price": {
-      "gp": 13
-    },
+    "price": "13 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -10687,9 +10455,7 @@
     "description_es": "Elixir que concede visión en la oscuridad mejorada durante su duración.",
     "category": "compendio",
     "level": 4,
-    "price": {
-      "gp": 11
-    },
+    "price": "11 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -10717,9 +10483,7 @@
     "description_es": "Elixir que concede resistencia y capacidades relacionadas con el frío durante su duración.",
     "category": "compendio",
     "level": 4,
-    "price": {
-      "gp": 15
-    },
+    "price": "15 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -10747,9 +10511,7 @@
     "description_es": "Elixir que restaura una cantidad importante de Puntos de Golpe al consumirse.",
     "category": "compendio",
     "level": 5,
-    "price": {
-      "gp": 30
-    },
+    "price": "30 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -10777,9 +10539,7 @@
     "description_es": "Elixir que concede capacidades acuáticas temporales según la descripción.",
     "category": "compendio",
     "level": 5,
-    "price": {
-      "gp": 22
-    },
+    "price": "22 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -10807,9 +10567,7 @@
     "description_es": "Ámpula pavorosa menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
     "category": "Alquímico (Bomba)",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -10837,9 +10595,7 @@
     "description_es": "Bolsa de maraña menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
     "category": "Alquímico (Bomba)",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -10867,9 +10623,7 @@
     "description_es": "Bomba debilitante menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
     "category": "Alquímico (Bomba)",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -10897,9 +10651,7 @@
     "description_es": "Carga fantasmal menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
     "category": "Alquímico (Bomba)",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -10927,9 +10679,7 @@
     "description_es": "Fuego alquímico menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
     "category": "Alquímico (Bomba)",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -10957,9 +10707,7 @@
     "description_es": "Vial de escarcha menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
     "category": "Alquímico (Bomba)",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -10987,9 +10735,7 @@
     "description_es": "Frasco de ácido menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
     "category": "Alquímico (Bomba)",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -11017,9 +10763,7 @@
     "description_es": "Piedra detonante menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
     "category": "Alquímico (Bomba)",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -11047,9 +10791,7 @@
     "description_es": "Relámpago embotellado menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
     "category": "Alquímico (Bomba)",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -11077,9 +10819,7 @@
     "description_es": "Antídoto menor es una fórmula alquímica de elixir del Player Core 2 para equipo y fabricación del personaje.",
     "category": "Alquímico (Elixir)",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -11107,9 +10847,7 @@
     "description_es": "Antiplaga menor es una fórmula alquímica de elixir del Player Core 2 para equipo y fabricación del personaje.",
     "category": "Alquímico (Elixir)",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -11137,9 +10875,7 @@
     "description_es": "Elixir de la vida mínimo es una fórmula alquímica de elixir del Player Core 2 para equipo y fabricación del personaje.",
     "category": "Alquímico (Elixir)",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -11167,9 +10903,7 @@
     "description_es": "Elixir de transición de género menor es una fórmula alquímica de elixir del Player Core 2 para equipo y fabricación del personaje.",
     "category": "Alquímico (Elixir)",
     "level": 1,
-    "price": {
-      "gp": 1
-    },
+    "price": "1 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -11197,9 +10931,7 @@
     "description_es": "Elixir del guepardo menor es una fórmula alquímica de elixir del Player Core 2 para equipo y fabricación del personaje.",
     "category": "Alquímico (Elixir)",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -11227,9 +10959,7 @@
     "description_es": "Elixir del ojo de águila menor es una fórmula alquímica de elixir del Player Core 2 para equipo y fabricación del personaje.",
     "category": "Alquímico (Elixir)",
     "level": 1,
-    "price": {
-      "gp": 4
-    },
+    "price": "4 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -11257,9 +10987,7 @@
     "description_es": "Versión moderada de la bomba alquímica ampolla pavorosa; consulta la página 283 para los efectos completos.",
     "category": "Alquímico (Bomba)",
     "level": 3,
-    "price": {
-      "gp": 10
-    },
+    "price": "10 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -11287,9 +11015,7 @@
     "description_es": "Versión mayor de la bomba alquímica ampolla pavorosa; consulta la página 283 para los efectos completos.",
     "category": "Alquímico (Bomba)",
     "level": 11,
-    "price": {
-      "gp": 250
-    },
+    "price": "250 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -11317,9 +11043,7 @@
     "description_es": "Versión superior de la bomba alquímica ampolla pavorosa; consulta la página 283 para los efectos completos.",
     "category": "Alquímico (Bomba)",
     "level": 17,
-    "price": {
-      "gp": 2500
-    },
+    "price": "2500 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -11347,9 +11071,7 @@
     "description_es": "Versión moderada de la bomba alquímica bomba de cola; consulta la página 283 para los efectos completos.",
     "category": "Alquímico (Bomba)",
     "level": 3,
-    "price": {
-      "gp": 10
-    },
+    "price": "10 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -11377,9 +11099,7 @@
     "description_es": "Versión mayor de la bomba alquímica bomba de cola; consulta la página 283 para los efectos completos.",
     "category": "Alquímico (Bomba)",
     "level": 11,
-    "price": {
-      "gp": 250
-    },
+    "price": "250 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -11407,9 +11127,7 @@
     "description_es": "Versión superior de la bomba alquímica bomba de cola; consulta la página 283 para los efectos completos.",
     "category": "Alquímico (Bomba)",
     "level": 17,
-    "price": {
-      "gp": 2500
-    },
+    "price": "2500 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -11437,9 +11155,7 @@
     "description_es": "Versión moderada de la bomba alquímica bomba debilitante; consulta la página 283 para los efectos completos.",
     "category": "Alquímico (Bomba)",
     "level": 3,
-    "price": {
-      "gp": 10
-    },
+    "price": "10 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -11467,9 +11183,7 @@
     "description_es": "Versión mayor de la bomba alquímica bomba debilitante; consulta la página 283 para los efectos completos.",
     "category": "Alquímico (Bomba)",
     "level": 11,
-    "price": {
-      "gp": 250
-    },
+    "price": "250 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -11497,9 +11211,7 @@
     "description_es": "Versión superior de la bomba alquímica bomba debilitante; consulta la página 283 para los efectos completos.",
     "category": "Alquímico (Bomba)",
     "level": 17,
-    "price": {
-      "gp": 2500
-    },
+    "price": "2500 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -11527,9 +11239,7 @@
     "description_es": "Versión moderada de la bomba alquímica carga fantasmal; consulta la página 284 para los efectos completos.",
     "category": "Alquímico (Bomba)",
     "level": 3,
-    "price": {
-      "gp": 10
-    },
+    "price": "10 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -11557,9 +11267,7 @@
     "description_es": "Versión mayor de la bomba alquímica carga fantasmal; consulta la página 284 para los efectos completos.",
     "category": "Alquímico (Bomba)",
     "level": 11,
-    "price": {
-      "gp": 250
-    },
+    "price": "250 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -11587,9 +11295,7 @@
     "description_es": "Versión superior de la bomba alquímica carga fantasmal; consulta la página 284 para los efectos completos.",
     "category": "Alquímico (Bomba)",
     "level": 17,
-    "price": {
-      "gp": 2500
-    },
+    "price": "2500 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -11617,9 +11323,7 @@
     "description_es": "Versión moderada de la bomba alquímica fuego alquímico; consulta la página 284 para los efectos completos.",
     "category": "Alquímico (Bomba)",
     "level": 3,
-    "price": {
-      "gp": 10
-    },
+    "price": "10 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -11647,9 +11351,7 @@
     "description_es": "Versión mayor de la bomba alquímica fuego alquímico; consulta la página 284 para los efectos completos.",
     "category": "Alquímico (Bomba)",
     "level": 11,
-    "price": {
-      "gp": 250
-    },
+    "price": "250 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -11677,9 +11379,7 @@
     "description_es": "Versión superior de la bomba alquímica fuego alquímico; consulta la página 284 para los efectos completos.",
     "category": "Alquímico (Bomba)",
     "level": 17,
-    "price": {
-      "gp": 2500
-    },
+    "price": "2500 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -11707,9 +11407,7 @@
     "description_es": "Versión moderada de la bomba alquímica vial de escarcha; consulta la página 285 para los efectos completos.",
     "category": "Alquímico (Bomba)",
     "level": 3,
-    "price": {
-      "gp": 10
-    },
+    "price": "10 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -11737,9 +11435,7 @@
     "description_es": "Versión mayor de la bomba alquímica vial de escarcha; consulta la página 285 para los efectos completos.",
     "category": "Alquímico (Bomba)",
     "level": 11,
-    "price": {
-      "gp": 250
-    },
+    "price": "250 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -11767,9 +11463,7 @@
     "description_es": "Versión superior de la bomba alquímica vial de escarcha; consulta la página 285 para los efectos completos.",
     "category": "Alquímico (Bomba)",
     "level": 17,
-    "price": {
-      "gp": 2500
-    },
+    "price": "2500 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -11797,9 +11491,7 @@
     "description_es": "Versión moderada de la bomba alquímica frasco de ácido; consulta la página 285 para los efectos completos.",
     "category": "Alquímico (Bomba)",
     "level": 3,
-    "price": {
-      "gp": 10
-    },
+    "price": "10 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -11827,9 +11519,7 @@
     "description_es": "Versión mayor de la bomba alquímica frasco de ácido; consulta la página 285 para los efectos completos.",
     "category": "Alquímico (Bomba)",
     "level": 11,
-    "price": {
-      "gp": 250
-    },
+    "price": "250 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -11857,9 +11547,7 @@
     "description_es": "Versión superior de la bomba alquímica frasco de ácido; consulta la página 285 para los efectos completos.",
     "category": "Alquímico (Bomba)",
     "level": 17,
-    "price": {
-      "gp": 2500
-    },
+    "price": "2500 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -11887,9 +11575,7 @@
     "description_es": "Versión moderada de la bomba alquímica piedra detonante; consulta la página 285 para los efectos completos.",
     "category": "Alquímico (Bomba)",
     "level": 3,
-    "price": {
-      "gp": 10
-    },
+    "price": "10 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -11917,9 +11603,7 @@
     "description_es": "Versión mayor de la bomba alquímica piedra detonante; consulta la página 285 para los efectos completos.",
     "category": "Alquímico (Bomba)",
     "level": 11,
-    "price": {
-      "gp": 250
-    },
+    "price": "250 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -11947,9 +11631,7 @@
     "description_es": "Versión superior de la bomba alquímica piedra detonante; consulta la página 285 para los efectos completos.",
     "category": "Alquímico (Bomba)",
     "level": 17,
-    "price": {
-      "gp": 2500
-    },
+    "price": "2500 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -11977,9 +11659,7 @@
     "description_es": "Versión moderada de la bomba alquímica relámpago embotellado; consulta la página 285 para los efectos completos.",
     "category": "Alquímico (Bomba)",
     "level": 3,
-    "price": {
-      "gp": 10
-    },
+    "price": "10 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -12007,9 +11687,7 @@
     "description_es": "Versión mayor de la bomba alquímica relámpago embotellado; consulta la página 285 para los efectos completos.",
     "category": "Alquímico (Bomba)",
     "level": 11,
-    "price": {
-      "gp": 250
-    },
+    "price": "250 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -12037,9 +11715,7 @@
     "description_es": "Versión superior de la bomba alquímica relámpago embotellado; consulta la página 285 para los efectos completos.",
     "category": "Alquímico (Bomba)",
     "level": 17,
-    "price": {
-      "gp": 2500
-    },
+    "price": "2500 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -12067,9 +11743,7 @@
     "description_es": "Objeto alquímico de categoría ferramenta listado en la tabla del Player Core 2; consulta la página 295 para los efectos completos.",
     "category": "Alquímico (Ferramenta)",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "bulk": 0,
     "traits": [
       "Alquímico",
@@ -12097,9 +11771,7 @@
     "description_es": "Objeto alquímico de categoría ferramenta listado en la tabla del Player Core 2; consulta la página 295 para los efectos completos.",
     "category": "Alquímico (Ferramenta)",
     "level": 1,
-    "price": {
-      "pp": 2
-    },
+    "price": "2 PL",
     "bulk": 0,
     "traits": [
       "Alquímico",

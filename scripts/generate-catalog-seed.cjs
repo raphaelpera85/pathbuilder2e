@@ -26,14 +26,49 @@ function sqlEscape(val) {
 }
 
 function sqlTextArray(arr) {
-  if (!Array.isArray(arr) || arr.length === 0) return "'{}'::text[]";
-  const escaped = arr.map(item => {
-    const s = String(item).replace(/\\/g, '\\\\').replace(/"/g, '\\"');
-    return `"${s}"`;
-  });
-  return `'${escaped.join(',')}'::text[]`.replace(/'([^']*)'::text\[\]/, (match, content) => {
-    return `'${content.replace(/'/g, "''")}'::text[]`;
-  });
+  if (!Array.isArray(arr) || arr.length === 0) return "ARRAY[]::text[]";
+  const elements = arr.map(item => `'${String(item).replace(/'/g, "''")}'`);
+  return `ARRAY[${elements.join(', ')}]::text[]`;
+}
+
+function formatPrice(price) {
+  if (price === null || price === undefined) return '0 PO';
+  if (typeof price === 'string') return price;
+  if (typeof price === 'number') return `${price} PO`;
+  if (typeof price === 'object') {
+    const parts = [];
+    if (price.pp || price.pl) parts.push(`${price.pp || price.pl} PL`);
+    if (price.gp || price.po) parts.push(`${price.gp || price.po} PO`);
+    if (price.sp || price.pa) parts.push(`${price.sp || price.pa} PP`);
+    if (price.cp || price.pc) parts.push(`${price.cp || price.pc} PC`);
+    return parts.join(', ') || '0 PO';
+  }
+  return String(price);
+}
+
+function priceToGpNumber(price) {
+  if (price === null || price === undefined) return 0;
+  if (typeof price === 'number') return Number.isFinite(price) ? price : 0;
+  if (typeof price === 'object') {
+    const cp = (price.pp || price.pl || 0) * 1000 + (price.gp || price.po || 0) * 100 + (price.sp || price.pa || 0) * 10 + (price.cp || price.pc || 0);
+    return Math.round((cp / 100) * 100) / 100;
+  }
+  const str = String(price).toLowerCase();
+  let totalCp = 0;
+  let matched = false;
+  const plM = str.match(/(\d+(?:\.\d+)?)\s*(?:pl|platina|platinum)/i);
+  if (plM) { totalCp += parseFloat(plM[1]) * 1000; matched = true; }
+  const gpM = str.match(/(\d+(?:\.\d+)?)\s*(?:gp|po|ouro|gold)/i);
+  if (gpM) { totalCp += parseFloat(gpM[1]) * 100; matched = true; }
+  const spM = str.match(/(\d+(?:\.\d+)?)\s*(?:sp|pa|prata|silver)/i);
+  if (spM) { totalCp += parseFloat(spM[1]) * 10; matched = true; }
+  const cpM = str.match(/(\d+(?:\.\d+)?)\s*(?:cp|pc|cobre|copper)/i);
+  if (cpM) { totalCp += parseFloat(cpM[1]); matched = true; }
+  if (!matched) {
+    const num = parseFloat(str.replace(/[^\d.]/g, ''));
+    if (!isNaN(num)) return num;
+  }
+  return Math.round((totalCp / 100) * 100) / 100;
 }
 
 function sqlJsonb(obj) {
@@ -161,7 +196,7 @@ function registerItem(item, defaultType = 'item') {
     description_es: item.summaries?.es || null,
     category: item.category || defaultType,
     level: Number(item.level) || 0,
-    price: item.price || '0 PO',
+    price: formatPrice(item.price),
     bulk: typeof item.bulk === 'number' ? item.bulk : 0,
     traits: Array.isArray(item.traits) ? item.traits : [],
     rarity: item.rarity || 'common',
@@ -473,7 +508,7 @@ const weaponsData = [];
     range_feet: Number(item.range) || null,
     reload_actions: item.reload || null,
     bulk: typeof item.bulk === 'number' ? item.bulk : 1,
-    price: item.price || '1 PO',
+    price: formatPrice(item.price),
     hands: item.hands || '1',
     traits: Array.isArray(item.traits) ? item.traits : [],
     ruleset: item.ruleset || 'remaster',
@@ -508,7 +543,7 @@ const armorsData = [];
     speed_penalty: Number(item.speedPenalty) || 0,
     strength_req: Number(item.strengthReq || item.str) || 10,
     bulk: typeof item.bulk === 'number' ? item.bulk : 1,
-    price: item.price || '1 PO',
+    price: formatPrice(item.price),
     traits: Array.isArray(item.traits) ? item.traits : [],
     ruleset: item.ruleset || 'remaster',
     source_book: item.source?.book || null,
@@ -541,7 +576,7 @@ const shieldsData = [];
     broken_threshold: Number(item.bt) || 10,
     speed_penalty: Number(item.speedPenalty) || 0,
     bulk: typeof item.bulk === 'number' ? item.bulk : 1,
-    price: item.price || '1 PO',
+    price: formatPrice(item.price),
     traits: Array.isArray(item.traits) ? item.traits : [],
     ruleset: item.ruleset || 'remaster',
     source_book: item.source?.book || null,
@@ -569,7 +604,7 @@ const formulasData = [];
     description_en: item.summaries?.en || null,
     description_es: item.summaries?.es || null,
     level: Number(item.level) || 0,
-    price: item.price || '0 PO',
+    price: formatPrice(item.price),
     category: item.category || 'Alquímica',
     traits: Array.isArray(item.traits) ? item.traits : [],
     ruleset: item.ruleset || 'remaster',
@@ -800,3 +835,72 @@ for (const [table, data] of Object.entries(datasets)) {
   fs.writeFileSync(path.join(jsonDir, `${table}.json`), JSON.stringify(data, null, 2), 'utf8');
 }
 console.log(`[Seed] Datasets JSON salvos em: ${jsonDir}`);
+
+// Gera automaticamente as 6 partes leves para o SQL Editor do Supabase em supabase/seeds/
+const seedsDir = path.resolve(__dirname, '../supabase/seeds');
+if (!fs.existsSync(seedsDir)) fs.mkdirSync(seedsDir, { recursive: true });
+
+fs.writeFileSync(
+  path.join(seedsDir, '01_ancestries_classes_items.sql'),
+  [
+    '-- PARTE 1: TABELAS BASE (Ancestralidades, Classes, Itens)',
+    generateInsertSql('catalog_ancestries', ancestriesData),
+    generateInsertSql('catalog_classes', classesData),
+    generateInsertSql('catalog_items', itemsData)
+  ].join('\n\n'),
+  'utf8'
+);
+
+fs.writeFileSync(
+  path.join(seedsDir, '02_heritages_subclasses_backgrounds_archetypes.sql'),
+  [
+    '-- PARTE 2: HERANÇAS, SUBCLASSES, ANTECEDENTES E ARQUÉTIPOS',
+    generateInsertSql('catalog_heritages', heritagesData),
+    generateInsertSql('catalog_subclasses', subclassesData),
+    generateInsertSql('catalog_backgrounds', backgroundsData),
+    generateInsertSql('catalog_archetypes', archetypesData)
+  ].join('\n\n'),
+  'utf8'
+);
+
+fs.writeFileSync(
+  path.join(seedsDir, '03_spells_rituals_actions_conditions_pets.sql'),
+  [
+    '-- PARTE 3: MAGIAS, RITUAIS, COMPANHEIROS, AÇÕES, CONDIÇÕES E BUFFS',
+    generateInsertSql('catalog_spells', spellsData),
+    generateInsertSql('catalog_rituals', ritualsData),
+    generateInsertSql('catalog_pets', petsData),
+    generateInsertSql('catalog_actions', actionsData),
+    generateInsertSql('catalog_conditions', conditionsData),
+    generateInsertSql('catalog_buffs', buffsData)
+  ].join('\n\n'),
+  'utf8'
+);
+
+fs.writeFileSync(
+  path.join(seedsDir, '04_weapons_armors_shields_formulas.sql'),
+  [
+    '-- PARTE 4: EQUIPAMENTOS ESPECIALIZADOS (Armas, Armaduras, Escudos, Fórmulas)',
+    generateInsertSql('catalog_weapons', weaponsData),
+    generateInsertSql('catalog_armors', armorsData),
+    generateInsertSql('catalog_shields', shieldsData),
+    generateInsertSql('catalog_formulas', formulasData)
+  ].join('\n\n'),
+  'utf8'
+);
+
+const featsHalf = Math.ceil(featsData.length / 2);
+fs.writeFileSync(
+  path.join(seedsDir, '05_feats_part1.sql'),
+  '-- PARTE 5: TALENTOS (PARTE 1/2)\n' + generateInsertSql('catalog_feats', featsData.slice(0, featsHalf)),
+  'utf8'
+);
+
+fs.writeFileSync(
+  path.join(seedsDir, '06_feats_part2.sql'),
+  '-- PARTE 6: TALENTOS (PARTE 2/2)\n' + generateInsertSql('catalog_feats', featsData.slice(featsHalf)),
+  'utf8'
+);
+
+console.log(`[Seed] 6 arquivos SQL particionados criados em: ${seedsDir}`);
+

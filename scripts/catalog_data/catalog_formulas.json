@@ -9,9 +9,7 @@
     "description_en": "Formula for an alchemical elixir that restores Hit Points.",
     "description_es": "Fórmula de un elixir alquímico que restaura Puntos de Golpe.",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "category": "Alquímico (Elixir)",
     "traits": [
       "Alquímico",
@@ -36,9 +34,7 @@
     "description_en": "Formula for an alchemical bomb that deals fire and persistent fire damage.",
     "description_es": "Fórmula de una bomba alquímica que causa daño de fuego y fuego persistente.",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
@@ -64,9 +60,7 @@
     "description_en": "Formula for an elixir that protects against poisons.",
     "description_es": "Fórmula de un elixir que protege contra venenos.",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "category": "Alquímico (Elixir)",
     "traits": [
       "Alquímico",
@@ -90,9 +84,7 @@
     "description_en": "Formula for an alchemical coating that makes a weapon count as silver.",
     "description_es": "Fórmula de un recubrimiento alquímico que hace que un arma cuente como plata.",
     "level": 2,
-    "price": {
-      "gp": 6
-    },
+    "price": "6 PO",
     "category": "Alquímico (Óleo)",
     "traits": [
       "Alquímico",
@@ -116,9 +108,7 @@
     "description_en": "Formula for a consumable that creates an obscuring cloud of smoke.",
     "description_es": "Fórmula de un consumible que crea una nube de humo que oscurece.",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "category": "Alquímico (Consumível)",
     "traits": [
       "Alquímico",
@@ -141,9 +131,7 @@
     "description_en": "Formula for crafting a Minor Healing Potion.",
     "description_es": "Fórmula para fabricar una Poción de curación menor.",
     "level": 1,
-    "price": {
-      "gp": 4
-    },
+    "price": "4 PO",
     "category": "Mágico (Poção)",
     "traits": [
       "Mágico",
@@ -168,9 +156,7 @@
     "description_en": "Formula for a snare that deals piercing damage when triggered.",
     "description_es": "Fórmula de una trampa que causa daño perforante al activarse.",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "category": "Armadilha (Snare)",
     "traits": [
       "Armadilha",
@@ -194,9 +180,7 @@
     "description_en": "Minor Frightful Ampoule is a Player Core 2 alchemical bomba formula for character equipment and crafting.",
     "description_es": "Ámpula pavorosa menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
@@ -220,9 +204,7 @@
     "description_en": "Lesser Tanglefoot Bag is a Player Core 2 alchemical bomba formula for character equipment and crafting.",
     "description_es": "Bolsa de maraña menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
@@ -246,9 +228,7 @@
     "description_en": "Lesser Weakening Bomb is a Player Core 2 alchemical bomba formula for character equipment and crafting.",
     "description_es": "Bomba debilitante menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
@@ -272,9 +252,7 @@
     "description_en": "Lesser Ghost Charge is a Player Core 2 alchemical bomba formula for character equipment and crafting.",
     "description_es": "Carga fantasmal menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
@@ -298,9 +276,7 @@
     "description_en": "Lesser Alchemist's Fire is a Player Core 2 alchemical bomba formula for character equipment and crafting.",
     "description_es": "Fuego alquímico menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
@@ -324,9 +300,7 @@
     "description_en": "Lesser Frost Vial is a Player Core 2 alchemical bomba formula for character equipment and crafting.",
     "description_es": "Vial de escarcha menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
@@ -350,9 +324,7 @@
     "description_en": "Lesser Acid Flask is a Player Core 2 alchemical bomba formula for character equipment and crafting.",
     "description_es": "Frasco de ácido menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
@@ -376,9 +348,7 @@
     "description_en": "Lesser Detonating Stone is a Player Core 2 alchemical bomba formula for character equipment and crafting.",
     "description_es": "Piedra detonante menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
@@ -402,9 +372,7 @@
     "description_en": "Lesser Bottled Lightning is a Player Core 2 alchemical bomba formula for character equipment and crafting.",
     "description_es": "Relámpago embotellado menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
@@ -428,9 +396,7 @@
     "description_en": "Lesser Antidote is a Player Core 2 alchemical elixir formula for character equipment and crafting.",
     "description_es": "Antídoto menor es una fórmula alquímica de elixir del Player Core 2 para equipo y fabricación del personaje.",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "category": "Alquímico (Elixir)",
     "traits": [
       "Alquímico",
@@ -454,9 +420,7 @@
     "description_en": "Lesser Antiplague is a Player Core 2 alchemical elixir formula for character equipment and crafting.",
     "description_es": "Antiplaga menor es una fórmula alquímica de elixir del Player Core 2 para equipo y fabricación del personaje.",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "category": "Alquímico (Elixir)",
     "traits": [
       "Alquímico",
@@ -480,9 +444,7 @@
     "description_en": "Minor Elixir of Life is a Player Core 2 alchemical elixir formula for character equipment and crafting.",
     "description_es": "Elixir de la vida mínimo es una fórmula alquímica de elixir del Player Core 2 para equipo y fabricación del personaje.",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "category": "Alquímico (Elixir)",
     "traits": [
       "Alquímico",
@@ -506,9 +468,7 @@
     "description_en": "Lesser Gender Transition Elixir is a Player Core 2 alchemical elixir formula for character equipment and crafting.",
     "description_es": "Elixir de transición de género menor es una fórmula alquímica de elixir del Player Core 2 para equipo y fabricación del personaje.",
     "level": 1,
-    "price": {
-      "gp": 1
-    },
+    "price": "1 PO",
     "category": "Alquímico (Elixir)",
     "traits": [
       "Alquímico",
@@ -532,9 +492,7 @@
     "description_en": "Lesser Cheetah Elixir is a Player Core 2 alchemical elixir formula for character equipment and crafting.",
     "description_es": "Elixir del guepardo menor es una fórmula alquímica de elixir del Player Core 2 para equipo y fabricación del personaje.",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "category": "Alquímico (Elixir)",
     "traits": [
       "Alquímico",
@@ -558,9 +516,7 @@
     "description_en": "Lesser Eagle-Eye Elixir is a Player Core 2 alchemical elixir formula for character equipment and crafting.",
     "description_es": "Elixir del ojo de águila menor es una fórmula alquímica de elixir del Player Core 2 para equipo y fabricación del personaje.",
     "level": 1,
-    "price": {
-      "gp": 4
-    },
+    "price": "4 PO",
     "category": "Alquímico (Elixir)",
     "traits": [
       "Alquímico",
@@ -584,9 +540,7 @@
     "description_en": "Moderate version of the frightful ampoule alchemical bomb; consult page 283 for the complete effects.",
     "description_es": "Versión moderada de la bomba alquímica ampolla pavorosa; consulta la página 283 para los efectos completos.",
     "level": 3,
-    "price": {
-      "gp": 10
-    },
+    "price": "10 PO",
     "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
@@ -610,9 +564,7 @@
     "description_en": "Greater version of the frightful ampoule alchemical bomb; consult page 283 for the complete effects.",
     "description_es": "Versión mayor de la bomba alquímica ampolla pavorosa; consulta la página 283 para los efectos completos.",
     "level": 11,
-    "price": {
-      "gp": 250
-    },
+    "price": "250 PO",
     "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
@@ -636,9 +588,7 @@
     "description_en": "Major version of the frightful ampoule alchemical bomb; consult page 283 for the complete effects.",
     "description_es": "Versión superior de la bomba alquímica ampolla pavorosa; consulta la página 283 para los efectos completos.",
     "level": 17,
-    "price": {
-      "gp": 2500
-    },
+    "price": "2500 PO",
     "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
@@ -662,9 +612,7 @@
     "description_en": "Moderate version of the tanglefoot bag alchemical bomb; consult page 283 for the complete effects.",
     "description_es": "Versión moderada de la bomba alquímica bomba de cola; consulta la página 283 para los efectos completos.",
     "level": 3,
-    "price": {
-      "gp": 10
-    },
+    "price": "10 PO",
     "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
@@ -688,9 +636,7 @@
     "description_en": "Greater version of the tanglefoot bag alchemical bomb; consult page 283 for the complete effects.",
     "description_es": "Versión mayor de la bomba alquímica bomba de cola; consulta la página 283 para los efectos completos.",
     "level": 11,
-    "price": {
-      "gp": 250
-    },
+    "price": "250 PO",
     "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
@@ -714,9 +660,7 @@
     "description_en": "Major version of the tanglefoot bag alchemical bomb; consult page 283 for the complete effects.",
     "description_es": "Versión superior de la bomba alquímica bomba de cola; consulta la página 283 para los efectos completos.",
     "level": 17,
-    "price": {
-      "gp": 2500
-    },
+    "price": "2500 PO",
     "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
@@ -740,9 +684,7 @@
     "description_en": "Moderate version of the weakening bomb alchemical bomb; consult page 283 for the complete effects.",
     "description_es": "Versión moderada de la bomba alquímica bomba debilitante; consulta la página 283 para los efectos completos.",
     "level": 3,
-    "price": {
-      "gp": 10
-    },
+    "price": "10 PO",
     "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
@@ -766,9 +708,7 @@
     "description_en": "Greater version of the weakening bomb alchemical bomb; consult page 283 for the complete effects.",
     "description_es": "Versión mayor de la bomba alquímica bomba debilitante; consulta la página 283 para los efectos completos.",
     "level": 11,
-    "price": {
-      "gp": 250
-    },
+    "price": "250 PO",
     "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
@@ -792,9 +732,7 @@
     "description_en": "Major version of the weakening bomb alchemical bomb; consult page 283 for the complete effects.",
     "description_es": "Versión superior de la bomba alquímica bomba debilitante; consulta la página 283 para los efectos completos.",
     "level": 17,
-    "price": {
-      "gp": 2500
-    },
+    "price": "2500 PO",
     "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
@@ -818,9 +756,7 @@
     "description_en": "Moderate version of the ghost charge alchemical bomb; consult page 284 for the complete effects.",
     "description_es": "Versión moderada de la bomba alquímica carga fantasmal; consulta la página 284 para los efectos completos.",
     "level": 3,
-    "price": {
-      "gp": 10
-    },
+    "price": "10 PO",
     "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
@@ -844,9 +780,7 @@
     "description_en": "Greater version of the ghost charge alchemical bomb; consult page 284 for the complete effects.",
     "description_es": "Versión mayor de la bomba alquímica carga fantasmal; consulta la página 284 para los efectos completos.",
     "level": 11,
-    "price": {
-      "gp": 250
-    },
+    "price": "250 PO",
     "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
@@ -870,9 +804,7 @@
     "description_en": "Major version of the ghost charge alchemical bomb; consult page 284 for the complete effects.",
     "description_es": "Versión superior de la bomba alquímica carga fantasmal; consulta la página 284 para los efectos completos.",
     "level": 17,
-    "price": {
-      "gp": 2500
-    },
+    "price": "2500 PO",
     "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
@@ -896,9 +828,7 @@
     "description_en": "Moderate version of the alchemist's fire alchemical bomb; consult page 284 for the complete effects.",
     "description_es": "Versión moderada de la bomba alquímica fuego alquímico; consulta la página 284 para los efectos completos.",
     "level": 3,
-    "price": {
-      "gp": 10
-    },
+    "price": "10 PO",
     "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
@@ -922,9 +852,7 @@
     "description_en": "Greater version of the alchemist's fire alchemical bomb; consult page 284 for the complete effects.",
     "description_es": "Versión mayor de la bomba alquímica fuego alquímico; consulta la página 284 para los efectos completos.",
     "level": 11,
-    "price": {
-      "gp": 250
-    },
+    "price": "250 PO",
     "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
@@ -948,9 +876,7 @@
     "description_en": "Major version of the alchemist's fire alchemical bomb; consult page 284 for the complete effects.",
     "description_es": "Versión superior de la bomba alquímica fuego alquímico; consulta la página 284 para los efectos completos.",
     "level": 17,
-    "price": {
-      "gp": 2500
-    },
+    "price": "2500 PO",
     "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
@@ -974,9 +900,7 @@
     "description_en": "Moderate version of the frost vial alchemical bomb; consult page 285 for the complete effects.",
     "description_es": "Versión moderada de la bomba alquímica vial de escarcha; consulta la página 285 para los efectos completos.",
     "level": 3,
-    "price": {
-      "gp": 10
-    },
+    "price": "10 PO",
     "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
@@ -1000,9 +924,7 @@
     "description_en": "Greater version of the frost vial alchemical bomb; consult page 285 for the complete effects.",
     "description_es": "Versión mayor de la bomba alquímica vial de escarcha; consulta la página 285 para los efectos completos.",
     "level": 11,
-    "price": {
-      "gp": 250
-    },
+    "price": "250 PO",
     "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
@@ -1026,9 +948,7 @@
     "description_en": "Major version of the frost vial alchemical bomb; consult page 285 for the complete effects.",
     "description_es": "Versión superior de la bomba alquímica vial de escarcha; consulta la página 285 para los efectos completos.",
     "level": 17,
-    "price": {
-      "gp": 2500
-    },
+    "price": "2500 PO",
     "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
@@ -1052,9 +972,7 @@
     "description_en": "Moderate version of the acid flask alchemical bomb; consult page 285 for the complete effects.",
     "description_es": "Versión moderada de la bomba alquímica frasco de ácido; consulta la página 285 para los efectos completos.",
     "level": 3,
-    "price": {
-      "gp": 10
-    },
+    "price": "10 PO",
     "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
@@ -1078,9 +996,7 @@
     "description_en": "Greater version of the acid flask alchemical bomb; consult page 285 for the complete effects.",
     "description_es": "Versión mayor de la bomba alquímica frasco de ácido; consulta la página 285 para los efectos completos.",
     "level": 11,
-    "price": {
-      "gp": 250
-    },
+    "price": "250 PO",
     "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
@@ -1104,9 +1020,7 @@
     "description_en": "Major version of the acid flask alchemical bomb; consult page 285 for the complete effects.",
     "description_es": "Versión superior de la bomba alquímica frasco de ácido; consulta la página 285 para los efectos completos.",
     "level": 17,
-    "price": {
-      "gp": 2500
-    },
+    "price": "2500 PO",
     "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
@@ -1130,9 +1044,7 @@
     "description_en": "Moderate version of the detonating stone alchemical bomb; consult page 285 for the complete effects.",
     "description_es": "Versión moderada de la bomba alquímica piedra detonante; consulta la página 285 para los efectos completos.",
     "level": 3,
-    "price": {
-      "gp": 10
-    },
+    "price": "10 PO",
     "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
@@ -1156,9 +1068,7 @@
     "description_en": "Greater version of the detonating stone alchemical bomb; consult page 285 for the complete effects.",
     "description_es": "Versión mayor de la bomba alquímica piedra detonante; consulta la página 285 para los efectos completos.",
     "level": 11,
-    "price": {
-      "gp": 250
-    },
+    "price": "250 PO",
     "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
@@ -1182,9 +1092,7 @@
     "description_en": "Major version of the detonating stone alchemical bomb; consult page 285 for the complete effects.",
     "description_es": "Versión superior de la bomba alquímica piedra detonante; consulta la página 285 para los efectos completos.",
     "level": 17,
-    "price": {
-      "gp": 2500
-    },
+    "price": "2500 PO",
     "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
@@ -1208,9 +1116,7 @@
     "description_en": "Moderate version of the bottled lightning alchemical bomb; consult page 285 for the complete effects.",
     "description_es": "Versión moderada de la bomba alquímica relámpago embotellado; consulta la página 285 para los efectos completos.",
     "level": 3,
-    "price": {
-      "gp": 10
-    },
+    "price": "10 PO",
     "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
@@ -1234,9 +1140,7 @@
     "description_en": "Greater version of the bottled lightning alchemical bomb; consult page 285 for the complete effects.",
     "description_es": "Versión mayor de la bomba alquímica relámpago embotellado; consulta la página 285 para los efectos completos.",
     "level": 11,
-    "price": {
-      "gp": 250
-    },
+    "price": "250 PO",
     "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
@@ -1260,9 +1164,7 @@
     "description_en": "Major version of the bottled lightning alchemical bomb; consult page 285 for the complete effects.",
     "description_es": "Versión superior de la bomba alquímica relámpago embotellado; consulta la página 285 para los efectos completos.",
     "level": 17,
-    "price": {
-      "gp": 2500
-    },
+    "price": "2500 PO",
     "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
@@ -1286,9 +1188,7 @@
     "description_en": "Player Core 2 alchemical ferramenta listed in the item table; consult page 295 for the complete effects.",
     "description_es": "Objeto alquímico de categoría ferramenta listado en la tabla del Player Core 2; consulta la página 295 para los efectos completos.",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "category": "Alquímico (Ferramenta)",
     "traits": [
       "Alquímico",
@@ -1312,9 +1212,7 @@
     "description_en": "Player Core 2 alchemical ferramenta listed in the item table; consult page 295 for the complete effects.",
     "description_es": "Objeto alquímico de categoría ferramenta listado en la tabla del Player Core 2; consulta la página 295 para los efectos completos.",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "category": "Alquímico (Ferramenta)",
     "traits": [
       "Alquímico",
@@ -1338,9 +1236,7 @@
     "description_en": "Player Core 2 alchemical ferramenta listed in the item table; consult page 295 for the complete effects.",
     "description_es": "Objeto alquímico de categoría ferramenta listado en la tabla del Player Core 2; consulta la página 295 para los efectos completos.",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "category": "Alquímico (Ferramenta)",
     "traits": [
       "Alquímico",
@@ -1364,9 +1260,7 @@
     "description_en": "Player Core 2 alchemical ferramenta listed in the item table; consult page 295 for the complete effects.",
     "description_es": "Objeto alquímico de categoría ferramenta listado en la tabla del Player Core 2; consulta la página 295 para los efectos completos.",
     "level": 1,
-    "price": {
-      "pp": 2
-    },
+    "price": "2 PL",
     "category": "Alquímico (Ferramenta)",
     "traits": [
       "Alquímico",
@@ -1390,9 +1284,7 @@
     "description_en": "Player Core 2 alchemical ferramenta listed in the item table; consult page 295 for the complete effects.",
     "description_es": "Objeto alquímico de categoría ferramenta listado en la tabla del Player Core 2; consulta la página 295 para los efectos completos.",
     "level": 1,
-    "price": {
-      "gp": 2
-    },
+    "price": "2 PO",
     "category": "Alquímico (Ferramenta)",
     "traits": [
       "Alquímico",
@@ -1416,9 +1308,7 @@
     "description_en": "Player Core 2 alchemical ferramenta listed in the item table; consult page 296 for the complete effects.",
     "description_es": "Objeto alquímico de categoría ferramenta listado en la tabla del Player Core 2; consulta la página 296 para los efectos completos.",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "category": "Alquímico (Ferramenta)",
     "traits": [
       "Alquímico",
@@ -1442,9 +1332,7 @@
     "description_en": "Player Core 2 alchemical veneno listed in the item table; consult page 291 for the complete effects.",
     "description_es": "Objeto alquímico de categoría veneno listado en la tabla del Player Core 2; consulta la página 291 para los efectos completos.",
     "level": 2,
-    "price": {
-      "gp": 5
-    },
+    "price": "5 PO",
     "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
@@ -1468,9 +1356,7 @@
     "description_en": "Player Core 2 alchemical veneno listed in the item table; consult page 291 for the complete effects.",
     "description_es": "Objeto alquímico de categoría veneno listado en la tabla del Player Core 2; consulta la página 291 para los efectos completos.",
     "level": 1,
-    "price": {
-      "gp": 3
-    },
+    "price": "3 PO",
     "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
@@ -1494,9 +1380,7 @@
     "description_en": "Player Core 2 alchemical veneno listed in the item table; consult page 294 for the complete effects.",
     "description_es": "Objeto alquímico de categoría veneno listado en la tabla del Player Core 2; consulta la página 294 para los efectos completos.",
     "level": 1,
-    "price": {
-      "gp": 4
-    },
+    "price": "4 PO",
     "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
@@ -1520,9 +1404,7 @@
     "description_en": "Injury poison DC 16; inflicts slowed condition and paralysis.",
     "description_es": "Veneno de herida CD 16; inflige estado ralentizado y parálisis.",
     "level": 2,
-    "price": {
-      "gp": 7
-    },
+    "price": "7 PO",
     "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
@@ -1546,9 +1428,7 @@
     "description_en": "Injury poison DC 18; deals continuous poison damage and clumsy.",
     "description_es": "Veneno de herida CD 18; inflige daño continuado de veneno y torpe.",
     "level": 2,
-    "price": {
-      "gp": 6
-    },
+    "price": "6 PO",
     "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
@@ -1572,9 +1452,7 @@
     "description_en": "Player Core 2 alchemical veneno listed in the item table; consult page 292 for the complete effects.",
     "description_es": "Objeto alquímico de categoría veneno listado en la tabla del Player Core 2; consulta la página 292 para los efectos completos.",
     "level": 3,
-    "price": {
-      "gp": 10
-    },
+    "price": "10 PO",
     "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
@@ -1598,9 +1476,7 @@
     "description_en": "Contact poison DC 19; deals poison damage and stupefied mental condition.",
     "description_es": "Veneno de contacto CD 19; causa daño de veneno y estado estupefacto.",
     "level": 3,
-    "price": {
-      "gp": 10
-    },
+    "price": "10 PO",
     "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
@@ -1624,9 +1500,7 @@
     "description_en": "Player Core 2 alchemical veneno listed in the item table; consult page 294 for the complete effects.",
     "description_es": "Objeto alquímico de categoría veneno listado en la tabla del Player Core 2; consulta la página 294 para los efectos completos.",
     "level": 5,
-    "price": {
-      "gp": 25
-    },
+    "price": "25 PO",
     "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
@@ -1650,9 +1524,7 @@
     "description_en": "Player Core 2 alchemical veneno listed in the item table; consult page 292 for the complete effects.",
     "description_es": "Objeto alquímico de categoría veneno listado en la tabla del Player Core 2; consulta la página 292 para los efectos completos.",
     "level": 6,
-    "price": {
-      "gp": 40
-    },
+    "price": "40 PO",
     "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
@@ -1676,9 +1548,7 @@
     "description_en": "Injury poison DC 21; reduces speed and immobilizes target.",
     "description_es": "Veneno de herida CD 21; reduce velocidad e inmoviliza al objetivo.",
     "level": 7,
-    "price": {
-      "gp": 55
-    },
+    "price": "55 PO",
     "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
@@ -1702,9 +1572,7 @@
     "description_en": "Player Core 2 alchemical veneno listed in the item table; consult page 293 for the complete effects.",
     "description_es": "Objeto alquímico de categoría veneno listado en la tabla del Player Core 2; consulta la página 293 para los efectos completos.",
     "level": 8,
-    "price": {
-      "gp": 75
-    },
+    "price": "75 PO",
     "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
@@ -1728,9 +1596,7 @@
     "description_en": "Player Core 2 alchemical veneno listed in the item table; consult page 294 for the complete effects.",
     "description_es": "Objeto alquímico de categoría veneno listado en la tabla del Player Core 2; consulta la página 294 para los efectos completos.",
     "level": 8,
-    "price": {
-      "gp": 80
-    },
+    "price": "80 PO",
     "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
@@ -1754,9 +1620,7 @@
     "description_en": "Inhaled poison DC 22; imposes escalating levels of the enfeebled condition.",
     "description_es": "Veneno inhalado CD 22; impone niveles crecientes de la condición debilitado.",
     "level": 9,
-    "price": {
-      "gp": 110
-    },
+    "price": "110 PO",
     "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
@@ -1780,9 +1644,7 @@
     "description_en": "Ingested poison DC 24; causes heavy poison damage, clumsy, and short paralysis.",
     "description_es": "Veneno ingerido CD 24; inflige gran daño de veneno, torpe y parálisis corta.",
     "level": 9,
-    "price": {
-      "gp": 110
-    },
+    "price": "110 PO",
     "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
@@ -1806,9 +1668,7 @@
     "description_en": "Player Core 2 alchemical veneno listed in the item table; consult page 291 for the complete effects.",
     "description_es": "Objeto alquímico de categoría veneno listado en la tabla del Player Core 2; consulta la página 291 para los efectos completos.",
     "level": 10,
-    "price": {
-      "gp": 155
-    },
+    "price": "155 PO",
     "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
@@ -1832,9 +1692,7 @@
     "description_en": "Injury poison DC 26; inflicts poison damage and drains maximum vitality.",
     "description_es": "Veneno de herida CD 26; causa daño de veneno y drena la vitalidad máxima.",
     "level": 10,
-    "price": {
-      "gp": 160
-    },
+    "price": "160 PO",
     "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
@@ -1858,9 +1716,7 @@
     "description_en": "Player Core 2 alchemical veneno listed in the item table; consult page 292 for the complete effects.",
     "description_es": "Objeto alquímico de categoría veneno listado en la tabla del Player Core 2; consulta la página 292 para los efectos completos.",
     "level": 19,
-    "price": {
-      "gp": 6500
-    },
+    "price": "6500 PO",
     "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
@@ -1884,9 +1740,7 @@
     "description_en": "Player Core 2 alchemical veneno listed in the item table; consult page 292 for the complete effects.",
     "description_es": "Objeto alquímico de categoría veneno listado en la tabla del Player Core 2; consulta la página 292 para los efectos completos.",
     "level": 20,
-    "price": {
-      "gp": 12000
-    },
+    "price": "12000 PO",
     "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
@@ -1910,9 +1764,7 @@
     "description_en": "Injury poison DC 29; inflicts poison damage, clumsy, and drained.",
     "description_es": "Veneno de herida CD 29; causa daño de veneno, torpe y drenado.",
     "level": 12,
-    "price": {
-      "gp": 500
-    },
+    "price": "500 PO",
     "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
@@ -1936,9 +1788,7 @@
     "description_en": "Ingested poison with a sleep effect; check the book for DC, damage, and progression.",
     "description_es": "Veneno ingerido con efecto de sueño; verifica el libro para CD, daño y progresión.",
     "level": 12,
-    "price": {
-      "gp": 325
-    },
+    "price": "325 PO",
     "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
@@ -1962,9 +1812,7 @@
     "description_en": "Highly lethal ingested poison; check the book entry for DC, damage, and progression.",
     "description_es": "Veneno ingerido de alta letalidad; verifica la entrada para CD, daño y progresión.",
     "level": 17,
-    "price": {
-      "gp": 2250
-    },
+    "price": "2250 PO",
     "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
@@ -1988,9 +1836,7 @@
     "description_en": "Ingested poison DC 25; deals poison damage and sickened condition.",
     "description_es": "Veneno ingerido CD 25; inflige daño de veneno y estado indispuesto.",
     "level": 13,
-    "price": {
-      "gp": 450
-    },
+    "price": "450 PO",
     "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
@@ -2014,9 +1860,7 @@
     "description_en": "Long-duration virulent ingested poison; check the book for DC, damage, and progression.",
     "description_es": "Veneno ingerido virulento de larga duración; verifica el libro para CD, daño y progresión.",
     "level": 18,
-    "price": {
-      "gp": 4000
-    },
+    "price": "4000 PO",
     "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
@@ -2040,9 +1884,7 @@
     "description_en": "Contact poison DC 22; deals poison damage, clumsy, and stupefied.",
     "description_es": "Veneno de contacto CD 22; inflige daño de veneno, torpe y estupefacto.",
     "level": 16,
-    "price": {
-      "gp": 1450
-    },
+    "price": "1450 PO",
     "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
@@ -2066,9 +1908,7 @@
     "description_en": "Inhaled poison DC 19; inflicts poison damage, dazzled, and blindness.",
     "description_es": "Veneno inhalado CD 19; causa daño de veneno, deslumbrado y ceguera.",
     "level": 16,
-    "price": {
-      "gp": 1500
-    },
+    "price": "1500 PO",
     "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
@@ -2092,9 +1932,7 @@
     "description_en": "Inhaled poison that impairs mental faculties; check the book for DC, damage, and progression.",
     "description_es": "Veneno inhalado que perjudica las facultades mentales; verifica el libro para CD, daño y progresión.",
     "level": 15,
-    "price": {
-      "gp": 1000
-    },
+    "price": "1000 PO",
     "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
@@ -2118,9 +1956,7 @@
     "description_en": "Ingested poison DC 20; causes escalating fear, fleeing, and confusion.",
     "description_es": "Veneno ingerido CD 20; causa miedo progresivo, huida y confusión.",
     "level": 4,
-    "price": {
-      "gp": 16
-    },
+    "price": "16 PO",
     "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
@@ -2144,9 +1980,7 @@
     "description_en": "Basic prosthetic restoring functional mobility to the wearer.",
     "description_es": "Prótesis básica que restaura la movilidad funcional del usuario.",
     "level": 4,
-    "price": {
-      "gp": 15
-    },
+    "price": "15 PO",
     "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
@@ -2170,9 +2004,7 @@
     "description_en": "Contact poison that deals persistent damage; check the book entry for DC and progression.",
     "description_es": "Veneno de contacto que causa daño persistente; verifica la entrada para CD y progresión.",
     "level": 11,
-    "price": {
-      "gp": 225
-    },
+    "price": "225 PO",
     "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
