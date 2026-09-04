@@ -1,7 +1,7 @@
 # Graph Report - pathbuilder2e_local  (2026-09-04)
 
 ## Corpus Check
-- 223 files · ~3,174,492 words
+- 223 files · ~3,174,866 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `037bbe41`
+- Built from commit: `0f5d9110`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -580,10 +580,8 @@ Nodes (5): How to Use, References, Rule Categories by Priority, Supabase Postgre
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `PathbuilderApp` connect `PathbuilderApp` to `.renderAll`, `.applyPickerSelection`, `.renderDetailsTab`, `escapeHtml`, `.renderModalLeftList`, `.loadInitialCharacter`, `.openSetAbilitiesModal`?**
-  _High betweenness centrality (0.014) - this node is a cross-community bridge._
+  _High betweenness centrality (0.015) - this node is a cross-community bridge._
 - **Why does `Communities (112 total, 15 thin omitted)` connect `Communities (112 total, 15 thin omitted)` to `Graph Report - pathbuilder2e_local  (2026-09-03)`?**
-  _High betweenness centrality (0.002) - this node is a cross-community bridge._
-- **Why does `IPickerController` connect `IPickerController` to `types.ts`?**
   _High betweenness centrality (0.002) - this node is a cross-community bridge._
 - **What connects `PortalRoute`, `routes`, `navItems` to the rest of the system?**
   _926 weakly-connected nodes found - possible documentation gaps or missing edges._
@@ -593,3 +591,5 @@ _Questions this graph is uniquely positioned to answer:_
   _Cohesion score 0.06458635703918723 - nodes in this community are weakly interconnected._
 - **Should `PortalPages.tsx` be split into smaller, more focused modules?**
   _Cohesion score 0.058797524314765696 - nodes in this community are weakly interconnected._
+- **Should `.renderAll` be split into smaller, more focused modules?**
+  _Cohesion score 0.06821787414066631 - nodes in this community are weakly interconnected._

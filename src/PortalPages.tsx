@@ -2,9 +2,9 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState, type FormEvent }
 import {
   pathfinderSources,
   type PathfinderSource,
-  GITHUB_REPO_URL,
-  GITHUB_LIVROS_FOLDER_URL,
-  GOOGLE_DRIVE_FOLDER_URL
+  GOOGLE_DRIVE_FOLDER_URL,
+  BLANK_SHEET_DRIVE_URL,
+  POSTER_MAP_FOLIO_DRIVE_URL,
 } from "./data/sources";
 import { useI18n, getItemDisplayName, type MessageKey } from "./i18n";
 import type { PickerItem, PickerType } from "./types";
@@ -471,20 +471,20 @@ function BookDownloadsSection() {
             <span aria-hidden="true">☁️</span> {t("openGoogleDriveFolder")}
           </a>
           <a
-            href={GITHUB_REPO_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-repo-link"
-          >
-            <span aria-hidden="true">🐙</span> {t("openGithubRepo")}
-          </a>
-          <a
-            href={GITHUB_LIVROS_FOLDER_URL}
+            href={BLANK_SHEET_DRIVE_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-repo-link secondary"
           >
-            <span aria-hidden="true">📁</span> {t("openLivrosFolder")}
+            <span aria-hidden="true">📄</span> {t("downloadBlankSheet")}
+          </a>
+          <a
+            href={POSTER_MAP_FOLIO_DRIVE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-repo-link secondary"
+          >
+            <span aria-hidden="true">🗺️</span> {t("downloadMapFolio")}
           </a>
         </div>
       </div>

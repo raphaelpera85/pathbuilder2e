@@ -21,12 +21,14 @@ export const GITHUB_LIVROS_FOLDER_URL = "https://github.com/raphaelpera85/pathbu
 export const GITHUB_RAW_BASE_URL = "https://raw.githubusercontent.com/raphaelpera85/pathbuilder2e/main/livros";
 export const GITHUB_BLOB_BASE_URL = "https://github.com/raphaelpera85/pathbuilder2e/blob/main/livros";
 export const GOOGLE_DRIVE_FOLDER_URL = "https://drive.google.com/drive/folders/1d15Y0hqio9BbEzY87omM3vQLSH0tLQxg";
+export const BLANK_SHEET_DRIVE_URL = "https://drive.google.com/file/d/1dasE2CoEyoUVKNytJ0WNXdnlonZUNLGh/view?usp=drive_link";
+export const POSTER_MAP_FOLIO_DRIVE_URL = "https://drive.google.com/file/d/1pnfMKbEWKl3BfE9XwFmN-aRH6mNBpRmT/view?usp=drive_link";
 
 export function localizeSourceBookName(book: string, locale: "pt-BR" | "en" | "es"): string {
   const normalized = String(book || "").trim().toLocaleLowerCase("pt-BR");
   const labels: Record<string, { "pt-BR": string; en: string; es: string }> = {
     "livro do jogador": { "pt-BR": "Livro do Jogador", en: "Player Core", es: "Núcleo del jugador" },
-    "livro do jogador 2": { "pt-BR": "Livro do Jogador 2", en: "Player Core 2", es: "Núcleo del jugador 2" },
+    "livro do jogador 2": { "pt-BR": "Livro do Jogador 2", en: "Player Core 2", es: "Núcleo del jogador 2" },
     "segredos da magia": { "pt-BR": "Segredos da Magia", en: "Secrets of Magic", es: "Secretos de la magia" },
     "pólvora e engrenagens": { "pt-BR": "Pólvora e Engrenagens", en: "Guns & Gears", es: "Pólvora y engranajes" },
     "livro dos mortos": { "pt-BR": "Livro dos Mortos", en: "Book of the Dead", es: "Libro de los muertos" },
@@ -36,7 +38,7 @@ export function localizeSourceBookName(book: string, locale: "pt-BR" | "en" | "e
     "howl of the wild": { "pt-BR": "Uivo da Natureza", en: "Howl of the Wild", es: "Aullido de lo salvaje" },
     "battlecry!": { "pt-BR": "Grito de Batalha!", en: "Battlecry!", es: "¡Grito de batalla!" },
     "pathfinder rpg livro básico": { "pt-BR": "Livro Básico (edição legada)", en: "Core Rulebook (legacy edition)", es: "Reglamento básico (edición legada)" },
-    "manual do jogador pf2e": { "pt-BR": "Manual do Jogador PF2e (compilação local)", en: "PF2e Player Guide compilation (local)", es: "Compilación de guía del jugador PF2e (local)" },
+    "manual do jogador pf2e": { "pt-BR": "Manual do Jogador PF2e (compilação local)", en: "PF2e Player Guide compilation (local)", es: "Compilación de guía del jogador PF2e (local)" },
   };
   const match = Object.entries(labels).sort(([a], [b]) => b.length - a.length).find(([key]) => normalized.includes(key));
   return match ? match[1][locale] : book;
@@ -56,10 +58,10 @@ export const pathfinderSources: PathfinderSource[] = [
     catalogStatus: "partial",
     linkedRecords: 972,
     verifiedAt: "2026-08-31",
-    filename: "Player Core - Livro do Jogador.pdf",
-    downloadUrl: `${GITHUB_RAW_BASE_URL}/Player%20Core%20-%20Livro%20do%20Jogador.pdf`,
-    viewUrl: `${GITHUB_BLOB_BASE_URL}/Player%20Core%20-%20Livro%20do%20Jogador.pdf`,
-    driveUrl: GOOGLE_DRIVE_FOLDER_URL
+    filename: "[ REMASTER ] (2023-12) PF2e – Livro do Jogador.pdf",
+    downloadUrl: "https://drive.google.com/file/d/16JYQNFQt96ikLtY5A0jaNN5SOIgCF4mM/view?usp=drive_link",
+    viewUrl: "https://drive.google.com/file/d/16JYQNFQt96ikLtY5A0jaNN5SOIgCF4mM/view?usp=drive_link",
+    driveUrl: "https://drive.google.com/file/d/16JYQNFQt96ikLtY5A0jaNN5SOIgCF4mM/view?usp=drive_link"
   },
   {
     id: "player-core-2-pt",
@@ -73,10 +75,10 @@ export const pathfinderSources: PathfinderSource[] = [
     catalogStatus: "partial",
     linkedRecords: 1126,
     verifiedAt: "2026-08-31",
-    filename: "Player Core 2 - Livro do Jogador 2.pdf",
-    downloadUrl: `${GITHUB_RAW_BASE_URL}/Player%20Core%202%20-%20Livro%20do%20Jogador%202.pdf`,
-    viewUrl: `${GITHUB_BLOB_BASE_URL}/Player%20Core%202%20-%20Livro%20do%20Jogador%202.pdf`,
-    driveUrl: GOOGLE_DRIVE_FOLDER_URL
+    filename: "[ REMASTER ] (2024-07) PF2e – Livro do Jogador 2.pdf",
+    downloadUrl: "https://drive.google.com/file/d/1gqarSAhXDVfVFuIp6e6XJYT_9m6Ik6Rs/view?usp=drive_link",
+    viewUrl: "https://drive.google.com/file/d/1gqarSAhXDVfVFuIp6e6XJYT_9m6Ik6Rs/view?usp=drive_link",
+    driveUrl: "https://drive.google.com/file/d/1gqarSAhXDVfVFuIp6e6XJYT_9m6Ik6Rs/view?usp=drive_link"
   },
   {
     id: "secrets-of-magic-pt",
@@ -90,10 +92,10 @@ export const pathfinderSources: PathfinderSource[] = [
     catalogStatus: "partial",
     linkedRecords: 168,
     verifiedAt: "2026-08-31",
-    filename: "Pathfinder 2e - Segredos da Magia.pdf",
-    downloadUrl: `${GITHUB_RAW_BASE_URL}/Pathfinder%202e%20-%20Segredos%20da%20Magia.pdf`,
-    viewUrl: `${GITHUB_BLOB_BASE_URL}/Pathfinder%202e%20-%20Segredos%20da%20Magia.pdf`,
-    driveUrl: GOOGLE_DRIVE_FOLDER_URL
+    filename: "(2021-09) Pathfinder 2e - Segredos da Magia.pdf",
+    downloadUrl: "https://drive.google.com/file/d/1HbxDYyIHRAr0_pCVXVPhcYFLeWIBD-ns/view?usp=drive_link",
+    viewUrl: "https://drive.google.com/file/d/1HbxDYyIHRAr0_pCVXVPhcYFLeWIBD-ns/view?usp=drive_link",
+    driveUrl: "https://drive.google.com/file/d/1HbxDYyIHRAr0_pCVXVPhcYFLeWIBD-ns/view?usp=drive_link"
   },
   {
     id: "guns-gears-pt",
@@ -107,10 +109,10 @@ export const pathfinderSources: PathfinderSource[] = [
     catalogStatus: "partial",
     linkedRecords: 195,
     verifiedAt: "2026-08-31",
-    filename: "Pathfinder 2e - Pólvora e Engrenagens.pdf",
-    downloadUrl: `${GITHUB_RAW_BASE_URL}/Pathfinder%202e%20-%20P%C3%B3lvora%20e%20Engrenagens.pdf`,
-    viewUrl: `${GITHUB_BLOB_BASE_URL}/Pathfinder%202e%20-%20P%C3%B3lvora%20e%20Engrenagens.pdf`,
-    driveUrl: GOOGLE_DRIVE_FOLDER_URL
+    filename: "(2021-10) Pathfinder 2e - Pólvora e Engrenagens.pdf",
+    downloadUrl: "https://drive.google.com/file/d/1Xtg4QhG2G_0kZZpMP9mZL7CID3O2BI0Y/view?usp=drive_link",
+    viewUrl: "https://drive.google.com/file/d/1Xtg4QhG2G_0kZZpMP9mZL7CID3O2BI0Y/view?usp=drive_link",
+    driveUrl: "https://drive.google.com/file/d/1Xtg4QhG2G_0kZZpMP9mZL7CID3O2BI0Y/view?usp=drive_link"
   },
   {
     id: "book-dead-pt",
@@ -124,10 +126,10 @@ export const pathfinderSources: PathfinderSource[] = [
     catalogStatus: "partial",
     linkedRecords: 44,
     verifiedAt: "2026-08-31",
-    filename: "Pathfinder 2e - Livro dos Mortos.pdf",
-    downloadUrl: `${GITHUB_RAW_BASE_URL}/Pathfinder%202e%20-%20Livro%20dos%20Mortos.pdf`,
-    viewUrl: `${GITHUB_BLOB_BASE_URL}/Pathfinder%202e%20-%20Livro%20dos%20Mortos.pdf`,
-    driveUrl: GOOGLE_DRIVE_FOLDER_URL
+    filename: "(2022-04) Pathfinder 2e - Livro dos Mortos.pdf",
+    downloadUrl: "https://drive.google.com/file/d/167jp5RamEDp7VWnvwtlULHRqSQoTBSFq/view?usp=drive_link",
+    viewUrl: "https://drive.google.com/file/d/167jp5RamEDp7VWnvwtlULHRqSQoTBSFq/view?usp=drive_link",
+    driveUrl: "https://drive.google.com/file/d/167jp5RamEDp7VWnvwtlULHRqSQoTBSFq/view?usp=drive_link"
   },
   {
     id: "dark-archive",
@@ -141,10 +143,10 @@ export const pathfinderSources: PathfinderSource[] = [
     catalogStatus: "partial",
     linkedRecords: 209,
     verifiedAt: "2026-08-31",
-    filename: "Pathfinder 2e - Dark Archive.pdf",
-    downloadUrl: `${GITHUB_RAW_BASE_URL}/Pathfinder%202e%20-%20Dark%20Archive.pdf`,
-    viewUrl: `${GITHUB_BLOB_BASE_URL}/Pathfinder%202e%20-%20Dark%20Archive.pdf`,
-    driveUrl: GOOGLE_DRIVE_FOLDER_URL
+    filename: "(2022-07) Pathfinder 2e - Dark Archive.pdf",
+    downloadUrl: "https://drive.google.com/file/d/1KAuLmotqtV61BFqEioC7eJk9WlNtaegt/view?usp=drive_link",
+    viewUrl: "https://drive.google.com/file/d/1KAuLmotqtV61BFqEioC7eJk9WlNtaegt/view?usp=drive_link",
+    driveUrl: "https://drive.google.com/file/d/1KAuLmotqtV61BFqEioC7eJk9WlNtaegt/view?usp=drive_link"
   },
   {
     id: "rage-elements",
@@ -158,10 +160,10 @@ export const pathfinderSources: PathfinderSource[] = [
     catalogStatus: "partial",
     linkedRecords: 299,
     verifiedAt: "2026-08-31",
-    filename: "Pathfinder 2e - Rage of Elements.pdf",
-    downloadUrl: `${GITHUB_RAW_BASE_URL}/Pathfinder%202e%20-%20Rage%20of%20Elements.pdf`,
-    viewUrl: `${GITHUB_BLOB_BASE_URL}/Pathfinder%202e%20-%20Rage%20of%20Elements.pdf`,
-    driveUrl: GOOGLE_DRIVE_FOLDER_URL
+    filename: "(2023-08) Pathfinder 2e - Rage of Elements.pdf",
+    downloadUrl: "https://drive.google.com/file/d/1V-wLY_wSDpEEG7Hk1TTzDspXjueiXxbk/view?usp=drive_link",
+    viewUrl: "https://drive.google.com/file/d/1V-wLY_wSDpEEG7Hk1TTzDspXjueiXxbk/view?usp=drive_link",
+    driveUrl: "https://drive.google.com/file/d/1V-wLY_wSDpEEG7Hk1TTzDspXjueiXxbk/view?usp=drive_link"
   },
   {
     id: "war-immortals",
@@ -176,8 +178,8 @@ export const pathfinderSources: PathfinderSource[] = [
     linkedRecords: 181,
     verifiedAt: "2026-08-31",
     filename: "Pathfinder 2e - War of Immortals.pdf",
-    downloadUrl: `${GITHUB_RAW_BASE_URL}/Pathfinder%202e%20-%20War%20of%20Immortals.pdf`,
-    viewUrl: `${GITHUB_BLOB_BASE_URL}/Pathfinder%202e%20-%20War%20of%20Immortals.pdf`,
+    downloadUrl: GOOGLE_DRIVE_FOLDER_URL,
+    viewUrl: GOOGLE_DRIVE_FOLDER_URL,
     driveUrl: GOOGLE_DRIVE_FOLDER_URL
   },
   {
@@ -192,10 +194,10 @@ export const pathfinderSources: PathfinderSource[] = [
     catalogStatus: "partial",
     linkedRecords: 122,
     verifiedAt: "2026-08-31",
-    filename: "Pathfinder 2e - Howl of the Wild.pdf",
-    downloadUrl: `${GITHUB_RAW_BASE_URL}/Pathfinder%202e%20-%20Howl%20of%20the%20Wild.pdf`,
-    viewUrl: `${GITHUB_BLOB_BASE_URL}/Pathfinder%202e%20-%20Howl%20of%20the%20Wild.pdf`,
-    driveUrl: GOOGLE_DRIVE_FOLDER_URL
+    filename: "PF2 - Howl of the Wild (updated with errata).pdf",
+    downloadUrl: "https://drive.google.com/file/d/1D2J2lFQcYczithH91yJJnPhsYHP31HQv/view?usp=drive_link",
+    viewUrl: "https://drive.google.com/file/d/1D2J2lFQcYczithH91yJJnPhsYHP31HQv/view?usp=drive_link",
+    driveUrl: "https://drive.google.com/file/d/1D2J2lFQcYczithH91yJJnPhsYHP31HQv/view?usp=drive_link"
   },
   {
     id: "battlecry",
@@ -209,10 +211,10 @@ export const pathfinderSources: PathfinderSource[] = [
     catalogStatus: "partial",
     linkedRecords: 289,
     verifiedAt: "2026-08-31",
-    filename: "Pathfinder 2e - Battlecry!.pdf",
-    downloadUrl: `${GITHUB_RAW_BASE_URL}/Pathfinder%202e%20-%20Battlecry!.pdf`,
-    viewUrl: `${GITHUB_BLOB_BASE_URL}/Pathfinder%202e%20-%20Battlecry!.pdf`,
-    driveUrl: GOOGLE_DRIVE_FOLDER_URL
+    filename: "PF2e - [Paizo] - Battlecry!.pdf",
+    downloadUrl: "https://drive.google.com/file/d/1Xh9-Jikg0_Vt4Lmf0aLOXRPy7hOeFvy3/view?usp=drive_link",
+    viewUrl: "https://drive.google.com/file/d/1Xh9-Jikg0_Vt4Lmf0aLOXRPy7hOeFvy3/view?usp=drive_link",
+    driveUrl: "https://drive.google.com/file/d/1Xh9-Jikg0_Vt4Lmf0aLOXRPy7hOeFvy3/view?usp=drive_link"
   },
   {
     id: "core-legacy-pt",
@@ -226,15 +228,15 @@ export const pathfinderSources: PathfinderSource[] = [
     catalogStatus: "pending",
     linkedRecords: 1,
     verifiedAt: "2026-08-31",
-    filename: "Pathfinder 2e - Livro Básico.pdf",
-    downloadUrl: `${GITHUB_RAW_BASE_URL}/Pathfinder%202e%20-%20Livro%20B%C3%A1sico.pdf`,
-    viewUrl: `${GITHUB_BLOB_BASE_URL}/Pathfinder%202e%20-%20Livro%20B%C3%A1sico.pdf`,
-    driveUrl: GOOGLE_DRIVE_FOLDER_URL
+    filename: "pathfinder-rpg-livro-basico.pdf",
+    downloadUrl: "https://drive.google.com/file/d/1ydoGX2IdyufEIPTxOHueAAAvdErIoJ7l/view?usp=drive_link",
+    viewUrl: "https://drive.google.com/file/d/1ydoGX2IdyufEIPTxOHueAAAvdErIoJ7l/view?usp=drive_link",
+    driveUrl: "https://drive.google.com/file/d/1ydoGX2IdyufEIPTxOHueAAAvdErIoJ7l/view?usp=drive_link"
   },
   {
     id: "manual-jogador-compilacao-pt",
     title: "Manual do Jogador PF2e (compilação local)",
-    titles: { "pt-BR": "Manual do Jogador PF2e (compilação local)", en: "PF2e Player Guide compilation (local)", es: "Compilación de guía del jugador PF2e (local)" },
+    titles: { "pt-BR": "Manual do Jogador PF2e (compilação local)", en: "PF2e Player Guide compilation (local)", es: "Compilación de guía del jogador PF2e (local)" },
     language: "pt-BR",
     pages: 58,
     ruleset: "remaster",
@@ -243,9 +245,9 @@ export const pathfinderSources: PathfinderSource[] = [
     catalogStatus: "pending",
     linkedRecords: 0,
     verifiedAt: "2026-08-31",
-    filename: "Manual do Jogador PF2e.pdf",
-    downloadUrl: `${GITHUB_RAW_BASE_URL}/Manual%20do%20Jogador%20PF2e.pdf`,
-    viewUrl: `${GITHUB_BLOB_BASE_URL}/Manual%20do%20Jogador%20PF2e.pdf`,
-    driveUrl: GOOGLE_DRIVE_FOLDER_URL
+    filename: "Manual_do_Jogador_PF2e.pdf",
+    downloadUrl: "https://drive.google.com/file/d/1ZcGB7EZMBdq18Vuy9iZhFV4GhmKFkMHt/view?usp=drive_link",
+    viewUrl: "https://drive.google.com/file/d/1ZcGB7EZMBdq18Vuy9iZhFV4GhmKFkMHt/view?usp=drive_link",
+    driveUrl: "https://drive.google.com/file/d/1ZcGB7EZMBdq18Vuy9iZhFV4GhmKFkMHt/view?usp=drive_link"
   },
 ];

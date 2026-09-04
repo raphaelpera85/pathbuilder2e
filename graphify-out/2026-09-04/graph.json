@@ -115,10 +115,10 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "id": "src_data_actionsdata_actiondefinition",
       "community": 11,
       "community_name": "main.tsx",
-      "norm_label": "actiondefinition"
+      "norm_label": "actiondefinition",
+      "id": "src_data_actionsdata_actiondefinition"
     },
     {
       "label": "ItemDefinition",
@@ -128,10 +128,10 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "id": "src_data_equipmentdata_itemdefinition",
       "community": 11,
       "community_name": "main.tsx",
-      "norm_label": "itemdefinition"
+      "norm_label": "itemdefinition",
+      "id": "src_data_equipmentdata_itemdefinition"
     },
     {
       "label": "FeatDefinition",
@@ -154,10 +154,10 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "id": "src_data_petsdata_petcompaniondefinition",
       "community": 11,
       "community_name": "main.tsx",
-      "norm_label": "petcompaniondefinition"
+      "norm_label": "petcompaniondefinition",
+      "id": "src_data_petsdata_petcompaniondefinition"
     },
     {
       "label": "CatalogItemRecord",
@@ -297,10 +297,10 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
+      "id": "src_services_admin_accesslogentry",
       "community": 2,
       "community_name": "PortalPages.tsx",
-      "norm_label": "accesslogentry",
-      "id": "src_services_admin_accesslogentry"
+      "norm_label": "accesslogentry"
     },
     {
       "label": "AdminDashboardMetrics",
@@ -310,10 +310,10 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
+      "id": "src_services_admin_admindashboardmetrics",
       "community": 2,
       "community_name": "PortalPages.tsx",
-      "norm_label": "admindashboardmetrics",
-      "id": "src_services_admin_admindashboardmetrics"
+      "norm_label": "admindashboardmetrics"
     },
     {
       "label": "AuthSession",
@@ -3951,7 +3951,7 @@
       "label": "PortalPages()",
       "file_type": "code",
       "source_file": "src/PortalPages.tsx",
-      "source_location": "L1281",
+      "source_location": "L1302",
       "_callable": true,
       "_origin": "ast",
       "id": "src_portalpages_portalpages",
@@ -3987,37 +3987,37 @@
       "label": "getAdminDashboardMetrics()",
       "file_type": "code",
       "source_file": "src/services/admin.ts",
-      "source_location": "L125",
+      "source_location": "L128",
       "_callable": true,
       "_origin": "ast",
+      "id": "src_services_admin_getadmindashboardmetrics",
       "community": 2,
       "community_name": "PortalPages.tsx",
-      "norm_label": "getadmindashboardmetrics()",
-      "id": "src_services_admin_getadmindashboardmetrics"
+      "norm_label": "getadmindashboardmetrics()"
     },
     {
       "label": "getTodayKey()",
       "file_type": "code",
       "source_file": "src/services/admin.ts",
-      "source_location": "L43",
+      "source_location": "L46",
       "_callable": true,
       "_origin": "ast",
+      "id": "src_services_admin_gettodaykey",
       "community": 2,
       "community_name": "PortalPages.tsx",
-      "norm_label": "gettodaykey()",
-      "id": "src_services_admin_gettodaykey"
+      "norm_label": "gettodaykey()"
     },
     {
       "label": "recordAppAccess()",
       "file_type": "code",
       "source_file": "src/services/admin.ts",
-      "source_location": "L51",
+      "source_location": "L54",
       "_callable": true,
       "_origin": "ast",
+      "id": "src_services_admin_recordappaccess",
       "community": 2,
       "community_name": "PortalPages.tsx",
-      "norm_label": "recordappaccess()",
-      "id": "src_services_admin_recordappaccess"
+      "norm_label": "recordappaccess()"
     },
     {
       "label": "buildUserProfileFromAuth()",
@@ -12208,10 +12208,10 @@
       "source_file": "src/data/actionsData.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "src_data_actionsdata",
       "community": 11,
       "community_name": "main.tsx",
-      "norm_label": "actionsdata.ts"
+      "norm_label": "actionsdata.ts",
+      "id": "src_data_actionsdata"
     },
     {
       "label": "PF2E_ACTIONS_CATALOG",
@@ -12219,10 +12219,10 @@
       "source_file": "src/data/actionsData.ts",
       "source_location": "L17",
       "_origin": "ast",
-      "id": "src_data_actionsdata_pf2e_actions_catalog",
       "community": 11,
       "community_name": "main.tsx",
-      "norm_label": "pf2e_actions_catalog"
+      "norm_label": "pf2e_actions_catalog",
+      "id": "src_data_actionsdata_pf2e_actions_catalog"
     },
     {
       "label": "catalog-language-contract.test.ts",
@@ -12252,10 +12252,10 @@
       "source_file": "src/data/equipmentData.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "src_data_equipmentdata",
       "community": 11,
       "community_name": "main.tsx",
-      "norm_label": "equipmentdata.ts"
+      "norm_label": "equipmentdata.ts",
+      "id": "src_data_equipmentdata"
     },
     {
       "label": "GUNS_GEARS_EQUIPMENT",
@@ -12263,10 +12263,10 @@
       "source_file": "src/data/equipmentData.ts",
       "source_location": "L21",
       "_origin": "ast",
-      "id": "src_data_equipmentdata_guns_gears_equipment",
       "community": 11,
       "community_name": "main.tsx",
-      "norm_label": "guns_gears_equipment"
+      "norm_label": "guns_gears_equipment",
+      "id": "src_data_equipmentdata_guns_gears_equipment"
     },
     {
       "label": "PF2E_ITEMS_CATALOG",
@@ -12274,10 +12274,10 @@
       "source_file": "src/data/equipmentData.ts",
       "source_location": "L44",
       "_origin": "ast",
-      "id": "src_data_equipmentdata_pf2e_items_catalog",
       "community": 11,
       "community_name": "main.tsx",
-      "norm_label": "pf2e_items_catalog"
+      "norm_label": "pf2e_items_catalog",
+      "id": "src_data_equipmentdata_pf2e_items_catalog"
     },
     {
       "label": "featsData.ts",
@@ -12307,10 +12307,10 @@
       "source_file": "src/data/petsData.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "src_data_petsdata",
       "community": 11,
       "community_name": "main.tsx",
-      "norm_label": "petsdata.ts"
+      "norm_label": "petsdata.ts",
+      "id": "src_data_petsdata"
     },
     {
       "label": "PF2E_PETS_CATALOG",
@@ -12318,10 +12318,10 @@
       "source_file": "src/data/petsData.ts",
       "source_location": "L26",
       "_origin": "ast",
-      "id": "src_data_petsdata_pf2e_pets_catalog",
       "community": 11,
       "community_name": "main.tsx",
-      "norm_label": "pf2e_pets_catalog"
+      "norm_label": "pf2e_pets_catalog",
+      "id": "src_data_petsdata_pf2e_pets_catalog"
     },
     {
       "label": "main.tsx",
@@ -16053,10 +16053,10 @@
       "source_file": "src/services/admin.ts",
       "source_location": "L1",
       "_origin": "ast",
+      "id": "src_services_admin",
       "community": 2,
       "community_name": "PortalPages.tsx",
-      "norm_label": "admin.ts",
-      "id": "src_services_admin"
+      "norm_label": "admin.ts"
     },
     {
       "label": "admin.test.ts",
@@ -30927,13 +30927,13 @@
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
       "source_file": "src/PortalPages.tsx",
-      "source_location": "L1056",
+      "source_location": "L1063",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_portalpages_adminpage",
-      "target": "src_services_admin_getadmindashboardmetrics"
+      "target": "src_services_admin_getadmindashboardmetrics",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -31337,7 +31337,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/PortalPages.tsx",
-      "source_location": "L1282",
+      "source_location": "L1303",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_portalpages_portalpages",
@@ -31349,7 +31349,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/PortalPages.tsx",
-      "source_location": "L1283",
+      "source_location": "L1304",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_portalpages_portalpages",
@@ -31361,7 +31361,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/PortalPages.tsx",
-      "source_location": "L1289",
+      "source_location": "L1310",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_portalpages_portalpages",
@@ -31420,12 +31420,12 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/services/admin.ts",
-      "source_location": "L126",
+      "source_location": "L129",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_services_admin_getadmindashboardmetrics",
-      "target": "src_services_admin_gettodaykey"
+      "target": "src_services_admin_gettodaykey",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -31433,7 +31433,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/admin.ts",
-      "source_location": "L153",
+      "source_location": "L165",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_services_admin_getadmindashboardmetrics",
@@ -31445,7 +31445,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/admin.ts",
-      "source_location": "L104",
+      "source_location": "L107",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_services_admin_recordappaccess",
@@ -31456,12 +31456,12 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/services/admin.ts",
-      "source_location": "L56",
+      "source_location": "L59",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_services_admin_recordappaccess",
-      "target": "src_services_admin_gettodaykey"
+      "target": "src_services_admin_gettodaykey",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -31469,7 +31469,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/admin.ts",
-      "source_location": "L72",
+      "source_location": "L75",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_services_admin_recordappaccess",
@@ -35156,9 +35156,9 @@
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_services_admin",
-      "target": "src_lib_supabase_issupabaseconfigured"
+      "target": "src_lib_supabase_issupabaseconfigured",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -35168,9 +35168,9 @@
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_services_admin",
-      "target": "src_lib_supabase_supabase"
+      "target": "src_lib_supabase_supabase",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -35180,9 +35180,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_services_admin",
-      "target": "src_services_auth_getcurrentsession"
+      "target": "src_services_auth_getcurrentsession",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -35192,9 +35192,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_services_admin",
-      "target": "src_services_auth_userprofile"
+      "target": "src_services_auth_userprofile",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -35204,9 +35204,9 @@
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_services_admin",
-      "target": "src_services_requesttimeout_withrequesttimeout"
+      "target": "src_services_requesttimeout_withrequesttimeout",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -36812,9 +36812,9 @@
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_services_admin",
-      "target": "src_lib_supabase"
+      "target": "src_lib_supabase",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -36824,9 +36824,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_services_admin",
-      "target": "src_services_auth"
+      "target": "src_services_auth",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -36836,9 +36836,9 @@
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_services_admin",
-      "target": "src_services_requesttimeout"
+      "target": "src_services_requesttimeout",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -49795,9 +49795,9 @@
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_data_actionsdata",
-      "target": "src_data_actionsdata_actiondefinition",
-      "confidence_score": 1.0
+      "target": "src_data_actionsdata_actiondefinition"
     },
     {
       "relation": "contains",
@@ -49806,9 +49806,9 @@
       "source_location": "L17",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_data_actionsdata",
-      "target": "src_data_actionsdata_pf2e_actions_catalog",
-      "confidence_score": 1.0
+      "target": "src_data_actionsdata_pf2e_actions_catalog"
     },
     {
       "relation": "contains",
@@ -49916,9 +49916,9 @@
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_data_equipmentdata",
-      "target": "src_data_equipmentdata_itemdefinition",
-      "confidence_score": 1.0
+      "target": "src_data_equipmentdata_itemdefinition"
     },
     {
       "relation": "contains",
@@ -49927,9 +49927,9 @@
       "source_location": "L21",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_data_equipmentdata",
-      "target": "src_data_equipmentdata_guns_gears_equipment",
-      "confidence_score": 1.0
+      "target": "src_data_equipmentdata_guns_gears_equipment"
     },
     {
       "relation": "contains",
@@ -49938,9 +49938,9 @@
       "source_location": "L44",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_data_equipmentdata",
-      "target": "src_data_equipmentdata_pf2e_items_catalog",
-      "confidence_score": 1.0
+      "target": "src_data_equipmentdata_pf2e_items_catalog"
     },
     {
       "relation": "contains",
@@ -50015,9 +50015,9 @@
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_data_petsdata",
-      "target": "src_data_petsdata_petcompaniondefinition",
-      "confidence_score": 1.0
+      "target": "src_data_petsdata_petcompaniondefinition"
     },
     {
       "relation": "contains",
@@ -50026,9 +50026,9 @@
       "source_location": "L26",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_data_petsdata",
-      "target": "src_data_petsdata_pf2e_pets_catalog",
-      "confidence_score": 1.0
+      "target": "src_data_petsdata_pf2e_pets_catalog"
     },
     {
       "relation": "contains",
@@ -50969,7 +50969,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/PortalPages.tsx",
-      "source_location": "L1281",
+      "source_location": "L1302",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_portalpages",
@@ -51233,12 +51233,12 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/services/admin.ts",
-      "source_location": "L125",
+      "source_location": "L128",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_services_admin",
-      "target": "src_services_admin_getadmindashboardmetrics"
+      "target": "src_services_admin_getadmindashboardmetrics",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -51247,20 +51247,20 @@
       "source_location": "L15",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_services_admin",
-      "target": "src_services_admin_admindashboardmetrics"
+      "target": "src_services_admin_admindashboardmetrics",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/services/admin.ts",
-      "source_location": "L43",
+      "source_location": "L46",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_services_admin",
-      "target": "src_services_admin_gettodaykey"
+      "target": "src_services_admin_gettodaykey",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -51269,20 +51269,20 @@
       "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_services_admin",
-      "target": "src_services_admin_accesslogentry"
+      "target": "src_services_admin_accesslogentry",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/services/admin.ts",
-      "source_location": "L51",
+      "source_location": "L54",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "src_services_admin",
-      "target": "src_services_admin_recordappaccess"
+      "target": "src_services_admin_recordappaccess",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -56460,7 +56460,7 @@
       "context": "argument",
       "confidence": "INFERRED",
       "source_file": "src/PortalPages.tsx",
-      "source_location": "L1284",
+      "source_location": "L1305",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_portalpages_portalpages",
@@ -56529,5 +56529,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "037bbe41310717b1263b6f944086b1a07667767e"
+  "built_at_commit": "0f5d91101195286fc48aa893bfaee2ed26fd674f"
 }

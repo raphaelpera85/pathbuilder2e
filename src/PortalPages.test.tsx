@@ -145,13 +145,15 @@ describe("PortalPages", () => {
     render(<I18nProvider><PortalPages /></I18nProvider>, { container: document.getElementById("test-root")! });
     expect(screen.getByRole("heading", { level: 1, name: "Download dos Livros e Suplementos PF2e" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /Pasta Google Drive/ })).toHaveAttribute("href", "https://drive.google.com/drive/folders/1d15Y0hqio9BbEzY87omM3vQLSH0tLQxg");
-    expect(screen.getByRole("link", { name: /Repositório GitHub/ })).toHaveAttribute("href", "https://github.com/raphaelpera85/pathbuilder2e");
+    expect(screen.queryByRole("link", { name: /Repositório GitHub/ })).not.toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /Ficha em Branco/ })).toHaveAttribute("href", "https://drive.google.com/file/d/1dasE2CoEyoUVKNytJ0WNXdnlonZUNLGh/view?usp=drive_link");
+    expect(screen.getByRole("link", { name: /Mapa-Múndi/ })).toHaveAttribute("href", "https://drive.google.com/file/d/1pnfMKbEWKl3BfE9XwFmN-aRH6mNBpRmT/view?usp=drive_link");
 
     const playerCoreDownload = screen.getByRole("link", { name: "Baixar PDF direto: Livro do Jogador" });
-    expect(playerCoreDownload).toHaveAttribute("href", "https://drive.google.com/drive/folders/1d15Y0hqio9BbEzY87omM3vQLSH0tLQxg");
+    expect(playerCoreDownload).toHaveAttribute("href", "https://drive.google.com/file/d/16JYQNFQt96ikLtY5A0jaNN5SOIgCF4mM/view?usp=drive_link");
 
     const battlecryDownload = screen.getByRole("link", { name: /Baixar PDF direto: Grito de Batalha!/i });
-    expect(battlecryDownload).toHaveAttribute("href", "https://drive.google.com/drive/folders/1d15Y0hqio9BbEzY87omM3vQLSH0tLQxg");
+    expect(battlecryDownload).toHaveAttribute("href", "https://drive.google.com/file/d/1Xh9-Jikg0_Vt4Lmf0aLOXRPy7hOeFvy3/view?usp=drive_link");
 
     // Confirms "Ver no GitHub" button is not rendered on cards
     expect(screen.queryByRole("link", { name: /Ver no GitHub/i })).not.toBeInTheDocument();
