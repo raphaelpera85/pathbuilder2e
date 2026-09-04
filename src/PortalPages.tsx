@@ -146,7 +146,7 @@ function CatalogPage() {
   const [remoteItemsByCategory, setRemoteItemsByCategory] = useState<Partial<Record<PickerType, PickerItem[]>>>({});
   const [isSyncing, setIsSyncing] = useState(false);
 
-  // Efeito para carregar dados remotos do Supabase com fallback offline
+  // Efeito para carregar dados remotos do Supabase
   useEffect(() => {
     let isMounted = true;
     const loadCategory = async (type: PickerType) => {
@@ -162,9 +162,16 @@ function CatalogPage() {
     };
 
     if (category === "all") {
-      // Carrega primeiras categorias mais populares
-      const initialTypes: PickerType[] = ["ancestry", "class", "feat", "spell", "weapon", "armor"];
-      initialTypes.forEach((type) => loadCategory(type));
+      // Carrega todas as 18 categorias relacionais do Supabase em lotes paralelos
+      const allTypes: PickerType[] = catalogCategories.map((c) => c.type);
+      const BATCH_SIZE = 4;
+      (async () => {
+        for (let i = 0; i < allTypes.length; i += BATCH_SIZE) {
+          if (!isMounted) break;
+          const batch = allTypes.slice(i, i + BATCH_SIZE);
+          await Promise.all(batch.map((type) => loadCategory(type)));
+        }
+      })();
     } else {
       loadCategory(category);
     }
@@ -177,13 +184,19 @@ function CatalogPage() {
   const handleManualSync = async () => {
     setIsSyncing(true);
     try {
-      const typesToSync: PickerType[] = category === "all" ? ["ancestry", "class", "feat", "spell"] : [category];
-      for (const type of typesToSync) {
-        const result = await fetchCatalogCategory(type, { forceRemote: true });
-        if (result.items.length > 0) {
-          setRemoteItemsByCategory((prev) => ({ ...prev, [type]: result.items }));
-          setSyncStatus((prev) => ({ ...prev, source: result.source }));
-        }
+      const typesToSync: PickerType[] = category === "all" ? catalogCategories.map((c) => c.type) : [category];
+      const BATCH_SIZE = 4;
+      for (let i = 0; i < typesToSync.length; i += BATCH_SIZE) {
+        const batch = typesToSync.slice(i, i + BATCH_SIZE);
+        await Promise.all(
+          batch.map(async (type) => {
+            const result = await fetchCatalogCategory(type, { forceRemote: true });
+            if (result.items.length > 0) {
+              setRemoteItemsByCategory((prev) => ({ ...prev, [type]: result.items }));
+              setSyncStatus((prev) => ({ ...prev, source: result.source }));
+            }
+          })
+        );
       }
     } finally {
       setIsSyncing(false);
@@ -195,12 +208,16 @@ function CatalogPage() {
     if (remote && remote.length > 0) {
       return remote.map((item) => ({ ...item, category: type, categoryLabel: t(label) }));
     }
+    // Quando o Supabase está configurado e online, as informações devem vir exclusivamente dele
+    if (syncStatus.isConfigured && syncStatus.isOnline) {
+      return [];
+    }
     try {
       return (window as any).app?.getPickerItems(type, { includeIncompatible: true }).map((item: any) => ({ ...item, category: type, categoryLabel: t(label) })) || [];
     } catch {
       return [];
     }
-  }), [remoteItemsByCategory, t]);
+  }), [remoteItemsByCategory, syncStatus.isConfigured, syncStatus.isOnline, t]);
 
   const availableBooks = useMemo(() => {
     const books = new Set<string>();
@@ -1014,6 +1031,14 @@ function AdminPage() {
   const [feedback, setFeedback] = useState<string | null>(null);
 
   const compendiumMetrics = useMemo(() => {
+    if (dashboardMetrics?.catalogCounts && Object.keys(dashboardMetrics.catalogCounts).length > 0) {
+      const totalCatalog = Object.values(dashboardMetrics.catalogCounts).reduce((acc, count) => acc + count, 0);
+      return {
+        verified: totalCatalog,
+        review: 0,
+        sources: pathfinderSources.filter((source) => source.catalogStatus === "partial").length,
+      };
+    }
     const records = catalogCategories.flatMap(({ type }) => {
       try { return (window as any).app?.getPickerItems(type, { includeIncompatible: true }) || []; } catch { return []; }
     });
@@ -1022,7 +1047,7 @@ function AdminPage() {
       review: records.filter((record: any) => record.data.needs_review !== false).length,
       sources: pathfinderSources.filter((source) => source.catalogStatus === "partial").length,
     };
-  }, []);
+  }, [dashboardMetrics?.catalogCounts]);
 
   const loadMetrics = async () => {
     setLoading(true);

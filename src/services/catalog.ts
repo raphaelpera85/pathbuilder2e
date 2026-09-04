@@ -184,39 +184,64 @@ function getFromLocalCache(category: PickerType): PickerItem[] | null {
 }
 
 /**
- * Busca uma categoria inteira do catálogo com estratégia offline-first.
- * 1. Tenta Supabase (se online e configurado)
- * 2. Se falhar ou offline, tenta cache local (localStorage/inMemory)
- * 3. Se não houver cache, usa os dados do runtime local (PF2E_DATA / window.app)
+ * Busca uma categoria inteira do catálogo com prioridade máxima para o Supabase.
+ * 1. Sempre tenta Supabase primeiro com paginação (.range) em blocos de 1000 para tabelas grandes.
+ * 2. Se falhar ou offline, usa cache local (localStorage/inMemory).
+ * 3. Se não houver cache, usa os dados do runtime local (PF2E_DATA / window.app).
  */
 export async function fetchCatalogCategory(
   category: PickerType,
   options: { forceRemote?: boolean; limit?: number } = {}
 ): Promise<{ items: PickerItem[]; source: "supabase" | "local_cache" | "local_runtime" }> {
-  // Se não estiver forçando busca remota, checa o cache em memória primeiro
-  if (!options.forceRemote && inMemoryCache[category]) {
-    return { items: inMemoryCache[category]!, source: "local_cache" };
-  }
-
   const tableName = PICKER_TYPE_TO_TABLE[category];
 
+  // 1. Prioridade absoluta: Supabase remoto
   if (isSupabaseConfigured && supabase && tableName) {
     try {
-      let query = supabase.from(tableName).select("*");
-      if (options.limit) {
-        query = query.limit(options.limit);
+      let allRecords: CatalogItemRecord[] = [];
+      const PAGE_SIZE = 1000;
+
+      if (options.limit && options.limit <= PAGE_SIZE) {
+        const { data, error } = await supabase.from(tableName).select("*").limit(options.limit);
+        if (!error && Array.isArray(data) && data.length > 0) {
+          allRecords = data as CatalogItemRecord[];
+        }
+      } else {
+        let from = 0;
+        let fetchMore = true;
+        while (fetchMore) {
+          const to = from + PAGE_SIZE - 1;
+          const { data, error } = await supabase.from(tableName).select("*").range(from, to);
+          if (error) {
+            console.warn(`[Catalog] Aviso ao buscar registros de ${tableName} [${from}-${to}]:`, error.message);
+            break;
+          }
+          if (Array.isArray(data) && data.length > 0) {
+            allRecords.push(...(data as CatalogItemRecord[]));
+            if (data.length < PAGE_SIZE || (options.limit && allRecords.length >= options.limit)) {
+              fetchMore = false;
+            } else {
+              from += PAGE_SIZE;
+            }
+          } else {
+            fetchMore = false;
+          }
+        }
       }
 
-      const { data, error } = await query;
-
-      if (!error && Array.isArray(data) && data.length > 0) {
-        const normalized = data.map((record) => normalizeSupabaseRecordToPickerItem(record, category));
+      if (allRecords.length > 0) {
+        const normalized = allRecords.map((record) => normalizeSupabaseRecordToPickerItem(record, category));
         saveToLocalCache(category, normalized);
         return { items: normalized, source: "supabase" };
       }
     } catch (err) {
       console.warn(`[Catalog] Falha de rede/Supabase para ${category}, usando fallback local:`, err);
     }
+  }
+
+  // Se não estiver forçando busca remota e Supabase estiver indisponível/offline, usa o cache em memória
+  if (inMemoryCache[category] && inMemoryCache[category]!.length > 0) {
+    return { items: inMemoryCache[category]!, source: "local_cache" };
   }
 
   // Fallback 1: Local storage cache
@@ -233,6 +258,57 @@ export async function fetchCatalogCategory(
   }
 
   return { items: [], source: "local_runtime" };
+}
+
+/**
+ * Busca todas as 18 categorias do catálogo em paralelo/lotes no Supabase.
+ */
+export async function fetchAllCatalogCategories(): Promise<Record<PickerType, PickerItem[]>> {
+  const categories: PickerType[] = [
+    "ancestry", "heritage", "class", "subclass", "background", "archetype",
+    "spell", "ritual", "feat", "item", "weapon", "armor", "shield",
+    "formula", "pet", "action", "condition", "buff"
+  ];
+  const results: Partial<Record<PickerType, PickerItem[]>> = {};
+
+  const BATCH_SIZE = 4;
+  for (let i = 0; i < categories.length; i += BATCH_SIZE) {
+    const batch = categories.slice(i, i + BATCH_SIZE);
+    await Promise.all(
+      batch.map(async (cat) => {
+        const res = await fetchCatalogCategory(cat);
+        results[cat] = res.items;
+      })
+    );
+  }
+  return results as Record<PickerType, PickerItem[]>;
+}
+
+/**
+ * Consulta a contagem exata de linhas de todas as tabelas de catálogo no Supabase.
+ */
+export async function fetchCatalogTableCounts(): Promise<Record<CatalogTableName, number> | null> {
+  if (!isSupabaseConfigured || !supabase) return null;
+  const tables = Object.values(PICKER_TYPE_TO_TABLE);
+  const uniqueTables = [...new Set(tables)];
+  const counts: Partial<Record<CatalogTableName, number>> = {};
+
+  await Promise.all(
+    uniqueTables.map(async (tableName) => {
+      try {
+        const { count, error } = await supabase
+          .from(tableName)
+          .select("id", { count: "exact", head: true });
+        if (!error && typeof count === "number") {
+          counts[tableName] = count;
+        }
+      } catch {
+        // Ignora erro individual
+      }
+    })
+  );
+
+  return counts as Record<CatalogTableName, number>;
 }
 
 /**

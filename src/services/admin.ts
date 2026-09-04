@@ -32,6 +32,7 @@ export interface AdminDashboardMetrics {
     legacy: number;
     other: number;
   };
+  catalogCounts?: Record<string, number>;
   lastUpdated: string;
 }
 
@@ -143,6 +144,7 @@ export async function getAdminDashboardMetrics(): Promise<AdminDashboardMetrics>
   let usersList: AdminDashboardMetrics["usersList"] = [];
   let rulesetStats = { remaster: 0, legacy: 0, other: 0 };
   let remoteAccessCount: number | null = null;
+  let catalogCounts: Record<string, number> = {};
 
   // Busca dados do Supabase se configurado
   if (isSupabaseConfigured && supabase) {
@@ -220,6 +222,29 @@ export async function getAdminDashboardMetrics(): Promise<AdminDashboardMetrics>
     } catch {
       // Segue
     }
+
+    try {
+      // 5. Contagem de registros do catálogo no Supabase
+      const catalogTables = [
+        "catalog_ancestries", "catalog_heritages", "catalog_classes", "catalog_subclasses",
+        "catalog_backgrounds", "catalog_archetypes", "catalog_spells", "catalog_rituals",
+        "catalog_feats", "catalog_items", "catalog_weapons", "catalog_armors",
+        "catalog_shields", "catalog_formulas", "catalog_pets", "catalog_actions",
+        "catalog_conditions", "catalog_buffs"
+      ];
+      await Promise.all(
+        catalogTables.map(async (tbl) => {
+          try {
+            const { count } = await supabase.from(tbl).select("id", { count: "exact", head: true });
+            if (typeof count === "number") catalogCounts[tbl] = count;
+          } catch {
+            // Segue
+          }
+        })
+      );
+    } catch {
+      // Segue
+    }
   }
 
   // Fallbacks locais caso Supabase esteja offline ou zerado
@@ -273,6 +298,7 @@ export async function getAdminDashboardMetrics(): Promise<AdminDashboardMetrics>
     recentAccesses: recentLogs,
     usersList,
     characterRulesetDistribution: rulesetStats,
+    catalogCounts,
     lastUpdated: new Date().toISOString(),
   };
 }
