@@ -1,0 +1,802 @@
+/**
+ * Gerador de Seed SQL para o Banco de Dados do Catálogo no Supabase
+ * Extrai todos os dados de js/pf2e_data.js e compõe instruções relacionais com FKs,
+ * suporte trilíngue e integridade referencial.
+ */
+
+const fs = require('fs');
+const path = require('path');
+const vm = require('vm');
+
+function slugify(text) {
+  if (!text) return '';
+  return String(text)
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '_')
+    .replace(/^_+|_+$/g, '');
+}
+
+function sqlEscape(val) {
+  if (val === null || val === undefined) return 'NULL';
+  if (typeof val === 'number') return Number.isFinite(val) ? String(val) : 'NULL';
+  if (typeof val === 'boolean') return val ? 'TRUE' : 'FALSE';
+  return `'${String(val).replace(/'/g, "''")}'`;
+}
+
+function sqlTextArray(arr) {
+  if (!Array.isArray(arr) || arr.length === 0) return "'{}'::text[]";
+  const escaped = arr.map(item => {
+    const s = String(item).replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+    return `"${s}"`;
+  });
+  return `'${escaped.join(',')}'::text[]`.replace(/'([^']*)'::text\[\]/, (match, content) => {
+    return `'${content.replace(/'/g, "''")}'::text[]`;
+  });
+}
+
+function sqlJsonb(obj) {
+  if (!obj || typeof obj !== 'object') return "'{}'::jsonb";
+  const jsonStr = JSON.stringify(obj).replace(/'/g, "''");
+  return `'${jsonStr}'::jsonb`;
+}
+
+console.log('[Seed] Lendo js/pf2e_data.js...');
+const dataPath = path.resolve(__dirname, '../js/pf2e_data.js');
+const fileContent = fs.readFileSync(dataPath, 'utf8');
+
+const sandbox = {};
+vm.runInNewContext(fileContent + '\n; this.PF2E_DATA = PF2E_DATA;', sandbox);
+const d = sandbox.PF2E_DATA;
+
+if (!d) {
+  console.error('Erro: PF2E_DATA não foi encontrado.');
+  process.exit(1);
+}
+
+// Mapas de integridade para verificação de FKs
+const validAncestryIds = new Set();
+const validClassIds = new Set();
+const validArchetypeIds = new Set();
+const validItemIds = new Set();
+
+const ancestryNameToId = new Map();
+const classNameToId = new Map();
+
+// 1. Ancestries
+const ancestriesData = [];
+for (const [rawName, item] of Object.entries(d.ancestries || {})) {
+  const id = item.id || `ancestry.${slugify(item.names?.en || rawName)}`;
+  validAncestryIds.add(id);
+  ancestryNameToId.set(rawName.toLowerCase(), id);
+  if (item.names?.['pt-BR']) ancestryNameToId.set(item.names['pt-BR'].toLowerCase(), id);
+  if (item.names?.en) ancestryNameToId.set(item.names.en.toLowerCase(), id);
+
+  ancestriesData.push({
+    id,
+    name_pt: item.names?.['pt-BR'] || rawName,
+    name_en: item.names?.en || null,
+    name_es: item.names?.es || null,
+    description_pt: item.summaries?.['pt-BR'] || item.description || null,
+    description_en: item.summaries?.en || null,
+    description_es: item.summaries?.es || null,
+    hp_base: Number(item.hp) || 8,
+    size: item.size || 'Médio',
+    speed_feet: Number(item.speed) || 25,
+    attribute_boosts: Array.isArray(item.boosts) ? item.boosts : [],
+    attribute_flaw: Array.isArray(item.flaws) && item.flaws.length ? item.flaws[0] : null,
+    languages: Array.isArray(item.languages) ? item.languages : [],
+    traits: Array.isArray(item.traits) ? item.traits : [],
+    rarity: item.rarity || 'common',
+    ruleset: item.ruleset || 'remaster',
+    source_book: item.source?.book || null,
+    source_page: item.source?.page || item.page || null,
+    data: {
+      senses: item.senses || [],
+      heritagesList: item.heritages || [],
+      needs_review: item.needs_review ?? false,
+    }
+  });
+}
+
+// 2. Classes
+const classesData = [];
+for (const [rawName, item] of Object.entries(d.classes || {})) {
+  const id = item.id || `class.${slugify(item.names?.en || rawName)}`;
+  validClassIds.add(id);
+  classNameToId.set(rawName.toLowerCase(), id);
+  if (item.names?.['pt-BR']) classNameToId.set(item.names['pt-BR'].toLowerCase(), id);
+  if (item.names?.en) classNameToId.set(item.names.en.toLowerCase(), id);
+
+  classesData.push({
+    id,
+    name_pt: item.names?.['pt-BR'] || rawName,
+    name_en: item.names?.en || null,
+    name_es: item.names?.es || null,
+    description_pt: item.summaries?.['pt-BR'] || item.description || null,
+    description_en: item.summaries?.en || null,
+    description_es: item.summaries?.es || null,
+    hp_per_level: Number(item.hpPerLevel) || 8,
+    key_attributes: Array.isArray(item.keyAbility) ? item.keyAbility : [],
+    perception_rank: item.perception || 'Treinado',
+    fortitude_rank: item.savingThrows?.fortitude || 'Treinado',
+    reflex_rank: item.savingThrows?.reflex || 'Treinado',
+    will_rank: item.savingThrows?.will || 'Treinado',
+    class_dc_stat: item.classDc || null,
+    traits: Array.isArray(item.traits) ? item.traits : [],
+    rarity: item.rarity || 'common',
+    ruleset: item.ruleset || 'remaster',
+    source_book: item.source?.book || null,
+    source_page: item.source?.page || item.page || null,
+    data: {
+      trainedSkillsCount: item.trainedSkillsCount || 0,
+      fixedSkills: item.fixedSkills || [],
+      armor: item.armor || {},
+      weapons: item.weapons || {},
+      subclassesList: item.subclasses || [],
+      needs_review: item.needs_review ?? false,
+    }
+  });
+}
+
+// 3. Items (Combinação de items + itemCompendium desduplicado)
+const itemsData = [];
+const seenItemIds = new Set();
+
+function registerItem(item, defaultType = 'item') {
+  const rawName = item.name || 'Item Sem Nome';
+  const id = item.id || `item.${slugify(item.names?.en || rawName)}`;
+  if (seenItemIds.has(id)) return;
+  seenItemIds.add(id);
+  validItemIds.add(id);
+
+  itemsData.push({
+    id,
+    name_pt: item.names?.['pt-BR'] || rawName,
+    name_en: item.names?.en || null,
+    name_es: item.names?.es || null,
+    description_pt: item.summaries?.['pt-BR'] || item.description || null,
+    description_en: item.summaries?.en || null,
+    description_es: item.summaries?.es || null,
+    category: item.category || defaultType,
+    level: Number(item.level) || 0,
+    price: item.price || '0 PO',
+    bulk: typeof item.bulk === 'number' ? item.bulk : 0,
+    traits: Array.isArray(item.traits) ? item.traits : [],
+    rarity: item.rarity || 'common',
+    ruleset: item.ruleset || 'remaster',
+    source_book: item.source?.book || null,
+    source_page: item.source?.page || item.page || null,
+    data: {
+      hands: item.hands || null,
+      usage: item.usage || null,
+      effects: item.effects || [],
+      needs_review: item.needs_review ?? false,
+    }
+  });
+}
+
+(d.items || []).forEach(item => registerItem(item, 'equipamento'));
+(d.itemCompendium || []).forEach(item => registerItem(item, 'compendio'));
+
+// 4. Archetypes
+const archetypesData = [];
+(d.archetypes || []).forEach(item => {
+  const rawName = item.name || 'Arquétipo';
+  const id = item.id || `archetype.${slugify(item.names?.en || rawName)}`;
+  validArchetypeIds.add(id);
+
+  archetypesData.push({
+    id,
+    name_pt: item.names?.['pt-BR'] || rawName,
+    name_en: item.names?.en || null,
+    name_es: item.names?.es || null,
+    description_pt: item.summaries?.['pt-BR'] || item.description || null,
+    description_en: item.summaries?.en || null,
+    description_es: item.summaries?.es || null,
+    prerequisite: item.prereq || item.prerequisite || null,
+    dedication_feat_id: item.dedicationFeatId || null,
+    traits: Array.isArray(item.traits) ? item.traits : [],
+    rarity: item.rarity || 'common',
+    ruleset: item.ruleset || 'remaster',
+    source_book: item.source?.book || null,
+    source_page: item.source?.page || item.page || null,
+    data: {
+      feats: item.feats || [],
+      needs_review: item.needs_review ?? false,
+    }
+  });
+});
+
+// 5. Heritages (Regulares + Versáteis)
+const heritagesData = [];
+const allHeritages = [...(d.heritages || [])];
+if (Array.isArray(d.versatileHeritages)) {
+  d.versatileHeritages.forEach(vh => {
+    allHeritages.push({
+      ...vh,
+      isVersatile: true,
+    });
+  });
+}
+
+allHeritages.forEach(item => {
+  const rawName = item.name || 'Herança';
+  const id = item.id || `heritage.${slugify(item.names?.en || rawName)}`;
+
+  let ancestryId = item.ancestryId || null;
+  if (!validAncestryIds.has(ancestryId) && item.ancestryName) {
+    ancestryId = ancestryNameToId.get(item.ancestryName.toLowerCase()) || null;
+  }
+  if (!validAncestryIds.has(ancestryId)) {
+    ancestryId = null;
+  }
+
+  heritagesData.push({
+    id,
+    ancestry_id: ancestryId,
+    is_versatile: Boolean(item.isVersatile || !ancestryId),
+    name_pt: item.names?.['pt-BR'] || rawName,
+    name_en: item.names?.en || null,
+    name_es: item.names?.es || null,
+    description_pt: item.summaries?.['pt-BR'] || item.description || null,
+    description_en: item.summaries?.en || null,
+    description_es: item.summaries?.es || null,
+    prerequisite: item.prereq || item.prerequisite || null,
+    traits: Array.isArray(item.traits) ? item.traits : [],
+    rarity: item.rarity || 'common',
+    ruleset: item.ruleset || 'remaster',
+    source_book: item.source?.book || null,
+    source_page: item.source?.page || item.page || null,
+    data: {
+      grants: item.grants || null,
+      needs_review: item.needs_review ?? false,
+    }
+  });
+});
+
+// 6. Subclasses
+const subclassesData = [];
+(d.subclasses || []).forEach(item => {
+  const rawName = item.name || 'Subclasse';
+  const id = item.id || `subclass.${slugify(item.names?.en || rawName)}`;
+
+  let classId = item.classId || null;
+  if (!validClassIds.has(classId) && item.className) {
+    classId = classNameToId.get(item.className.toLowerCase()) || null;
+  }
+  if (!validClassIds.has(classId)) {
+    classId = null;
+  }
+
+  subclassesData.push({
+    id,
+    class_id: classId,
+    choice_field: item.choiceField || null,
+    name_pt: item.names?.['pt-BR'] || rawName,
+    name_en: item.names?.en || null,
+    name_es: item.names?.es || null,
+    description_pt: item.summaries?.['pt-BR'] || item.description || null,
+    description_en: item.summaries?.en || null,
+    description_es: item.summaries?.es || null,
+    traits: Array.isArray(item.traits) ? item.traits : [],
+    ruleset: item.ruleset || 'remaster',
+    source_book: item.source?.book || null,
+    source_page: item.source?.page || item.page || null,
+    data: {
+      trainedSkills: item.trainedSkills || [],
+      grants: item.grants || null,
+      needs_review: item.needs_review ?? false,
+    }
+  });
+});
+
+// 7. Backgrounds
+const backgroundsData = [];
+(d.backgrounds || []).forEach(item => {
+  const rawName = item.name || 'Antecedente';
+  const id = item.id || `background.${slugify(item.names?.en || rawName)}`;
+
+  backgroundsData.push({
+    id,
+    name_pt: item.names?.['pt-BR'] || rawName,
+    name_en: item.names?.en || null,
+    name_es: item.names?.es || null,
+    description_pt: item.summaries?.['pt-BR'] || item.description || null,
+    description_en: item.summaries?.en || null,
+    description_es: item.summaries?.es || null,
+    attribute_boosts: Array.isArray(item.boosts) ? item.boosts : [],
+    trained_skills: Array.isArray(item.skills) ? item.skills : (item.skill ? [item.skill] : []),
+    granted_feat: item.feat || null,
+    lore_skill: item.lore || null,
+    rarity: item.rarity || 'common',
+    ruleset: item.ruleset || 'remaster',
+    source_book: item.source?.book || null,
+    source_page: item.source?.page || item.page || null,
+    data: {
+      needs_review: item.needs_review ?? false,
+    }
+  });
+});
+
+// 8. Spells
+const spellsData = [];
+(d.spells || []).forEach(item => {
+  const rawName = item.name || 'Magia';
+  const id = item.id || `spell.${slugify(item.names?.en || rawName)}`;
+
+  spellsData.push({
+    id,
+    name_pt: item.names?.['pt-BR'] || rawName,
+    name_en: item.names?.en || null,
+    name_es: item.names?.es || null,
+    description_pt: item.summaries?.['pt-BR'] || item.description || null,
+    description_en: item.summaries?.en || null,
+    description_es: item.summaries?.es || null,
+    rank: Number(item.rank ?? item.level) || 1,
+    traditions: Array.isArray(item.traditions) ? item.traditions : [],
+    action_type: item.actionType || item.actions || 'two-actions',
+    range: item.range || null,
+    targets: item.targets || null,
+    duration: item.duration || null,
+    saving_throw: item.savingThrow || item.save || null,
+    traits: Array.isArray(item.traits) ? item.traits : [],
+    rarity: item.rarity || 'common',
+    ruleset: item.ruleset || 'remaster',
+    source_book: item.source?.book || null,
+    source_page: item.source?.page || item.page || null,
+    data: {
+      heightened: item.heightened || null,
+      needs_review: item.needs_review ?? false,
+    }
+  });
+});
+
+// 9. Rituals
+const ritualsData = [];
+(d.rituals || []).forEach(item => {
+  const rawName = item.name || 'Ritual';
+  const id = item.id || `ritual.${slugify(item.names?.en || rawName)}`;
+
+  ritualsData.push({
+    id,
+    name_pt: item.names?.['pt-BR'] || rawName,
+    name_en: item.names?.en || null,
+    name_es: item.names?.es || null,
+    description_pt: item.summaries?.['pt-BR'] || item.description || null,
+    description_en: item.summaries?.en || null,
+    description_es: item.summaries?.es || null,
+    rank: Number(item.rank ?? item.level) || 1,
+    cast_time: item.castTime || item.time || '1 dia',
+    primary_check: item.primaryCheck || null,
+    secondary_casters: Number(item.secondaryCasters) || 0,
+    secondary_checks: Array.isArray(item.secondaryChecks) ? item.secondaryChecks : [],
+    traits: Array.isArray(item.traits) ? item.traits : [],
+    rarity: item.rarity || 'uncommon',
+    ruleset: item.ruleset || 'remaster',
+    source_book: item.source?.book || null,
+    source_page: item.source?.page || item.page || null,
+    data: {
+      cost: item.cost || null,
+      needs_review: item.needs_review ?? false,
+    }
+  });
+});
+
+// 10. Feats
+const featsData = [];
+(d.feats || []).forEach(item => {
+  const rawName = item.name || 'Talento';
+  const id = item.id || `feat.${slugify(item.names?.en || rawName)}`;
+
+  let classId = item.classId || null;
+  if (!validClassIds.has(classId) && item.className) {
+    classId = classNameToId.get(item.className.toLowerCase()) || null;
+  }
+  if (!validClassIds.has(classId)) {
+    if (Array.isArray(item.traits)) {
+      for (const trait of item.traits) {
+        const found = classNameToId.get(trait.toLowerCase());
+        if (found) {
+          classId = found;
+          break;
+        }
+      }
+    }
+  }
+
+  let ancestryId = item.ancestryId || null;
+  if (!validAncestryIds.has(ancestryId) && Array.isArray(item.traits)) {
+    for (const trait of item.traits) {
+      const found = ancestryNameToId.get(trait.toLowerCase());
+      if (found) {
+        ancestryId = found;
+        break;
+      }
+    }
+  }
+
+  let archetypeId = item.archetypeId || null;
+  if (!validArchetypeIds.has(archetypeId) && item.archetype) {
+    const slug = `archetype.${slugify(item.archetype)}`;
+    if (validArchetypeIds.has(slug)) archetypeId = slug;
+  }
+
+  featsData.push({
+    id,
+    name_pt: item.names?.['pt-BR'] || rawName,
+    name_en: item.names?.en || null,
+    name_es: item.names?.es || null,
+    description_pt: item.summaries?.['pt-BR'] || item.description || null,
+    description_en: item.summaries?.en || null,
+    description_es: item.summaries?.es || null,
+    category: item.category || 'Geral',
+    level: Number(item.level) || 1,
+    prerequisite: item.prereq || item.prerequisite || null,
+    action_type: item.actionType || item.actions || null,
+    class_id: validClassIds.has(classId) ? classId : null,
+    ancestry_id: validAncestryIds.has(ancestryId) ? ancestryId : null,
+    archetype_id: validArchetypeIds.has(archetypeId) ? archetypeId : null,
+    traits: Array.isArray(item.traits) ? item.traits : [],
+    rarity: item.rarity || 'common',
+    ruleset: item.ruleset || 'remaster',
+    source_book: item.source?.book || null,
+    source_page: item.source?.page || item.page || null,
+    data: {
+      effects: item.effects || [],
+      needs_review: item.needs_review ?? false,
+    }
+  });
+});
+
+// 11. Weapons
+const weaponsData = [];
+(d.weapons || []).forEach(item => {
+  const rawName = item.name || 'Arma';
+  const id = item.id || `weapon.${slugify(item.names?.en || rawName)}`;
+  const matchedItemId = validItemIds.has(id) ? id : null;
+
+  weaponsData.push({
+    id,
+    item_id: matchedItemId,
+    name_pt: item.names?.['pt-BR'] || rawName,
+    name_en: item.names?.en || null,
+    name_es: item.names?.es || null,
+    description_pt: item.summaries?.['pt-BR'] || item.description || null,
+    description_en: item.summaries?.en || null,
+    description_es: item.summaries?.es || null,
+    category: item.category || 'Simples',
+    weapon_group: item.group || null,
+    damage_dice: item.damage || '1d6',
+    damage_type: item.damageType || 'Perfurante',
+    range_feet: Number(item.range) || null,
+    reload_actions: item.reload || null,
+    bulk: typeof item.bulk === 'number' ? item.bulk : 1,
+    price: item.price || '1 PO',
+    hands: item.hands || '1',
+    traits: Array.isArray(item.traits) ? item.traits : [],
+    ruleset: item.ruleset || 'remaster',
+    source_book: item.source?.book || null,
+    source_page: item.source?.page || item.page || null,
+    data: {
+      needs_review: item.needs_review ?? false,
+    }
+  });
+});
+
+// 12. Armors
+const armorsData = [];
+(d.armors || []).forEach(item => {
+  const rawName = item.name || 'Armadura';
+  const id = item.id || `armor.${slugify(item.names?.en || rawName)}`;
+  const matchedItemId = validItemIds.has(id) ? id : null;
+
+  armorsData.push({
+    id,
+    item_id: matchedItemId,
+    name_pt: item.names?.['pt-BR'] || rawName,
+    name_en: item.names?.en || null,
+    name_es: item.names?.es || null,
+    description_pt: item.summaries?.['pt-BR'] || item.description || null,
+    description_en: item.summaries?.en || null,
+    description_es: item.summaries?.es || null,
+    category: item.category || 'Leve',
+    ac_bonus: Number(item.acBonus || item.ac) || 1,
+    dex_cap: Number(item.dexCap) ?? null,
+    check_penalty: Number(item.checkPenalty) || 0,
+    speed_penalty: Number(item.speedPenalty) || 0,
+    strength_req: Number(item.strengthReq || item.str) || 10,
+    bulk: typeof item.bulk === 'number' ? item.bulk : 1,
+    price: item.price || '1 PO',
+    traits: Array.isArray(item.traits) ? item.traits : [],
+    ruleset: item.ruleset || 'remaster',
+    source_book: item.source?.book || null,
+    source_page: item.source?.page || item.page || null,
+    data: {
+      needs_review: item.needs_review ?? false,
+    }
+  });
+});
+
+// 13. Shields
+const shieldsData = [];
+(d.shields || []).forEach(item => {
+  const rawName = item.name || 'Escudo';
+  const id = item.id || `shield.${slugify(item.names?.en || rawName)}`;
+  const matchedItemId = validItemIds.has(id) ? id : null;
+
+  shieldsData.push({
+    id,
+    item_id: matchedItemId,
+    name_pt: item.names?.['pt-BR'] || rawName,
+    name_en: item.names?.en || null,
+    name_es: item.names?.es || null,
+    description_pt: item.summaries?.['pt-BR'] || item.description || null,
+    description_en: item.summaries?.en || null,
+    description_es: item.summaries?.es || null,
+    ac_bonus: Number(item.acBonus || item.ac) || 2,
+    hardness: Number(item.hardness) || 5,
+    max_hp: Number(item.maxHp || item.hp) || 20,
+    broken_threshold: Number(item.bt) || 10,
+    speed_penalty: Number(item.speedPenalty) || 0,
+    bulk: typeof item.bulk === 'number' ? item.bulk : 1,
+    price: item.price || '1 PO',
+    traits: Array.isArray(item.traits) ? item.traits : [],
+    ruleset: item.ruleset || 'remaster',
+    source_book: item.source?.book || null,
+    source_page: item.source?.page || item.page || null,
+    data: {
+      needs_review: item.needs_review ?? false,
+    }
+  });
+});
+
+// 14. Formulas
+const formulasData = [];
+(d.formulas || []).forEach(item => {
+  const rawName = item.name || 'Fórmula';
+  const id = item.id || `formula.${slugify(item.names?.en || rawName)}`;
+  const matchedItemId = validItemIds.has(id) ? id : null;
+
+  formulasData.push({
+    id,
+    item_id: matchedItemId,
+    name_pt: item.names?.['pt-BR'] || rawName,
+    name_en: item.names?.en || null,
+    name_es: item.names?.es || null,
+    description_pt: item.summaries?.['pt-BR'] || item.description || null,
+    description_en: item.summaries?.en || null,
+    description_es: item.summaries?.es || null,
+    level: Number(item.level) || 0,
+    price: item.price || '0 PO',
+    category: item.category || 'Alquímica',
+    traits: Array.isArray(item.traits) ? item.traits : [],
+    ruleset: item.ruleset || 'remaster',
+    source_book: item.source?.book || null,
+    source_page: item.source?.page || item.page || null,
+    data: {
+      needs_review: item.needs_review ?? false,
+    }
+  });
+});
+
+// 15. Pets
+const petsData = [];
+(d.pets || []).forEach(item => {
+  const rawName = item.name || 'Companheiro Animal';
+  const id = item.id || `pet.${slugify(item.names?.en || rawName)}`;
+
+  petsData.push({
+    id,
+    name_pt: item.names?.['pt-BR'] || rawName,
+    name_en: item.names?.en || null,
+    name_es: item.names?.es || null,
+    description_pt: item.summaries?.['pt-BR'] || item.description || null,
+    description_en: item.summaries?.en || null,
+    description_es: item.summaries?.es || null,
+    pet_type: item.type || 'animal_companion',
+    size: item.size || 'Médio',
+    speed_feet: Number(item.speed) || 30,
+    hp_base: Number(item.hp) || 8,
+    support_benefit: item.supportBenefit || null,
+    advanced_maneuver: item.advancedManeuver || null,
+    traits: Array.isArray(item.traits) ? item.traits : [],
+    ruleset: item.ruleset || 'remaster',
+    source_book: item.source?.book || null,
+    source_page: item.source?.page || item.page || null,
+    data: {
+      attacks: item.attacks || [],
+      needs_review: item.needs_review ?? false,
+    }
+  });
+});
+
+// 16. Actions
+const actionsData = [];
+(d.actions || []).forEach(item => {
+  const rawName = item.name || 'Ação';
+  const id = item.id || `action.${slugify(item.names?.en || rawName)}`;
+
+  actionsData.push({
+    id,
+    name_pt: item.names?.['pt-BR'] || rawName,
+    name_en: item.names?.en || null,
+    name_es: item.names?.es || null,
+    description_pt: item.summaries?.['pt-BR'] || item.description || null,
+    description_en: item.summaries?.en || null,
+    description_es: item.summaries?.es || null,
+    action_type: item.actionType || item.actions || '1',
+    category: item.category || 'Básica',
+    traits: Array.isArray(item.traits) ? item.traits : [],
+    ruleset: item.ruleset || 'remaster',
+    source_book: item.source?.book || null,
+    source_page: item.source?.page || item.page || null,
+    data: {
+      trigger: item.trigger || null,
+      requirements: item.requirements || null,
+      needs_review: item.needs_review ?? false,
+    }
+  });
+});
+
+// 17. Conditions
+const conditionsData = [];
+(d.conditions || []).forEach(item => {
+  const rawName = item.name || 'Condição';
+  const id = item.id || `condition.${slugify(item.names?.en || rawName)}`;
+
+  conditionsData.push({
+    id,
+    name_pt: item.names?.['pt-BR'] || rawName,
+    name_en: item.names?.en || null,
+    name_es: item.names?.es || null,
+    description_pt: item.summaries?.['pt-BR'] || item.description || null,
+    description_en: item.summaries?.en || null,
+    description_es: item.summaries?.es || null,
+    category: item.category || 'Geral',
+    has_value: Boolean(item.hasValue || item.numeric),
+    ruleset: item.ruleset || 'remaster',
+    source_book: item.source?.book || null,
+    source_page: item.source?.page || item.page || null,
+    data: {
+      needs_review: item.needs_review ?? false,
+    }
+  });
+});
+
+// 18. Buffs
+const buffsData = [];
+(d.buffs || []).forEach(item => {
+  const rawName = item.name || 'Bônus/Buff';
+  const id = item.id || `buff.${slugify(item.names?.en || rawName)}`;
+
+  buffsData.push({
+    id,
+    name_pt: item.names?.['pt-BR'] || rawName,
+    name_en: item.names?.en || null,
+    name_es: item.names?.es || null,
+    description_pt: item.summaries?.['pt-BR'] || item.description || null,
+    description_en: item.summaries?.en || null,
+    description_es: item.summaries?.es || null,
+    category: item.category || 'Geral',
+    ruleset: item.ruleset || 'remaster',
+    data: {
+      modifiers: item.modifiers || [],
+      needs_review: item.needs_review ?? false,
+    }
+  });
+});
+
+console.log(`[Seed] Contagens processadas:`);
+console.log(` - Ancestralidades: ${ancestriesData.length}`);
+console.log(` - Classes: ${classesData.length}`);
+console.log(` - Itens: ${itemsData.length}`);
+console.log(` - Arquétipos: ${archetypesData.length}`);
+console.log(` - Heranças: ${heritagesData.length}`);
+console.log(` - Subclasses: ${subclassesData.length}`);
+console.log(` - Antecedentes: ${backgroundsData.length}`);
+console.log(` - Magias: ${spellsData.length}`);
+console.log(` - Rituais: ${ritualsData.length}`);
+console.log(` - Talentos: ${featsData.length}`);
+console.log(` - Armas: ${weaponsData.length}`);
+console.log(` - Armaduras: ${armorsData.length}`);
+console.log(` - Escudos: ${shieldsData.length}`);
+console.log(` - Fórmulas: ${formulasData.length}`);
+console.log(` - Companheiros: ${petsData.length}`);
+console.log(` - Ações: ${actionsData.length}`);
+console.log(` - Condições: ${conditionsData.length}`);
+console.log(` - Buffs: ${buffsData.length}`);
+
+// Função para gerar lotes de INSERT SQL
+function generateInsertSql(tableName, rows) {
+  if (!rows.length) return '';
+  const cols = Object.keys(rows[0]);
+  const lines = [];
+  lines.push(`-- Tabela: ${tableName} (${rows.length} registros)`);
+  
+  const batchSize = 100;
+  for (let i = 0; i < rows.length; i += batchSize) {
+    const batch = rows.slice(i, i + batchSize);
+    const valueTuples = batch.map(row => {
+      const vals = cols.map(c => {
+        const val = row[c];
+        if (c.endsWith('_array') || c === 'attribute_boosts' || c === 'languages' || c === 'traits' || c === 'key_attributes' || c === 'traditions' || c === 'trained_skills' || c === 'secondary_checks') {
+          return sqlTextArray(val);
+        }
+        if (c === 'data') {
+          return sqlJsonb(val);
+        }
+        return sqlEscape(val);
+      });
+      return `(${vals.join(', ')})`;
+    });
+
+    const updateSet = cols.filter(c => c !== 'id' && c !== 'created_at').map(c => `${c} = excluded.${c}`).join(', ');
+
+    lines.push(`insert into public.${tableName} (${cols.join(', ')})`);
+    lines.push(`values\n  ${valueTuples.join(',\n  ')}`);
+    lines.push(`on conflict (id) do update set\n  ${updateSet};\n`);
+  }
+  return lines.join('\n');
+}
+
+const seedSqlParts = [
+  '-- ==============================================================================',
+  '-- SEED DO COMPÊNDIO PATHFINDER 2E REMASTER (18 TABELAS RELACIONAIS)',
+  '-- Pode ser executado com segurança no SQL Editor do Supabase.',
+  '-- Todos os comandos usam ON CONFLICT (id) DO UPDATE para idempotência.',
+  '-- ==============================================================================\n',
+  generateInsertSql('catalog_ancestries', ancestriesData),
+  generateInsertSql('catalog_classes', classesData),
+  generateInsertSql('catalog_items', itemsData),
+  generateInsertSql('catalog_archetypes', archetypesData),
+  generateInsertSql('catalog_heritages', heritagesData),
+  generateInsertSql('catalog_subclasses', subclassesData),
+  generateInsertSql('catalog_backgrounds', backgroundsData),
+  generateInsertSql('catalog_spells', spellsData),
+  generateInsertSql('catalog_rituals', ritualsData),
+  generateInsertSql('catalog_feats', featsData),
+  generateInsertSql('catalog_weapons', weaponsData),
+  generateInsertSql('catalog_armors', armorsData),
+  generateInsertSql('catalog_shields', shieldsData),
+  generateInsertSql('catalog_formulas', formulasData),
+  generateInsertSql('catalog_pets', petsData),
+  generateInsertSql('catalog_actions', actionsData),
+  generateInsertSql('catalog_conditions', conditionsData),
+  generateInsertSql('catalog_buffs', buffsData),
+];
+
+const outputPath = path.resolve(__dirname, '../supabase/seed_catalog.sql');
+fs.writeFileSync(outputPath, seedSqlParts.join('\n'), 'utf8');
+console.log(`[Seed] Arquivo SQL gerado com sucesso em: ${outputPath}`);
+
+// Salva também versão JSON por categoria em scripts/catalog_data/ para importação rápida via JS
+const jsonDir = path.resolve(__dirname, '../scripts/catalog_data');
+if (!fs.existsSync(jsonDir)) fs.mkdirSync(jsonDir, { recursive: true });
+
+const datasets = {
+  catalog_ancestries: ancestriesData,
+  catalog_classes: classesData,
+  catalog_items: itemsData,
+  catalog_archetypes: archetypesData,
+  catalog_heritages: heritagesData,
+  catalog_subclasses: subclassesData,
+  catalog_backgrounds: backgroundsData,
+  catalog_spells: spellsData,
+  catalog_rituals: ritualsData,
+  catalog_feats: featsData,
+  catalog_weapons: weaponsData,
+  catalog_armors: armorsData,
+  catalog_shields: shieldsData,
+  catalog_formulas: formulasData,
+  catalog_pets: petsData,
+  catalog_actions: actionsData,
+  catalog_conditions: conditionsData,
+  catalog_buffs: buffsData,
+};
+
+for (const [table, data] of Object.entries(datasets)) {
+  fs.writeFileSync(path.join(jsonDir, `${table}.json`), JSON.stringify(data, null, 2), 'utf8');
+}
+console.log(`[Seed] Datasets JSON salvos em: ${jsonDir}`);

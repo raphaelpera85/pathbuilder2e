@@ -1,0 +1,2189 @@
+[
+  {
+    "id": "form.alch.elixir_of_life_lesser",
+    "item_id": null,
+    "name_pt": "Elixir da Vida Menor",
+    "name_en": "Minor Elixir of Life",
+    "name_es": "Elixir de la vida menor",
+    "description_pt": "Fórmula de elixir alquímico que restaura Pontos de Vida.",
+    "description_en": "Formula for an alchemical elixir that restores Hit Points.",
+    "description_es": "Fórmula de un elixir alquímico que restaura Puntos de Golpe.",
+    "level": 1,
+    "price": {
+      "gp": 3
+    },
+    "category": "Alquímico (Elixir)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Elixir",
+      "Cura"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core)",
+    "source_page": 292,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "form.alch.alchemists_fire_lesser",
+    "item_id": null,
+    "name_pt": "Fogo Alquímico Menor",
+    "name_en": "Lesser Alchemist's Fire",
+    "name_es": "Fuego alquímico menor",
+    "description_pt": "Fórmula de bomba alquímica que causa dano de fogo e fogo persistente.",
+    "description_en": "Formula for an alchemical bomb that deals fire and persistent fire damage.",
+    "description_es": "Fórmula de una bomba alquímica que causa daño de fuego y fuego persistente.",
+    "level": 1,
+    "price": {
+      "gp": 3
+    },
+    "category": "Alquímico (Bomba)",
+    "traits": [
+      "Alquímico",
+      "Bomba",
+      "Consumível",
+      "Fogo",
+      "Espalhar"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core)",
+    "source_page": 291,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "form.alch.antidote_lesser",
+    "item_id": null,
+    "name_pt": "Antídoto Menor",
+    "name_en": "Lesser Antidote",
+    "name_es": "Antídoto menor",
+    "description_pt": "Fórmula de elixir que protege contra venenos.",
+    "description_en": "Formula for an elixir that protects against poisons.",
+    "description_es": "Fórmula de un elixir que protege contra venenos.",
+    "level": 1,
+    "price": {
+      "gp": 3
+    },
+    "category": "Alquímico (Elixir)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Elixir"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core)",
+    "source_page": 292,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "form.alch.silversheen",
+    "item_id": null,
+    "name_pt": "Verniz Prateado",
+    "name_en": "Silversheen",
+    "name_es": "Brillo plateado",
+    "description_pt": "Fórmula de revestimento alquímico que faz uma arma contar como prata.",
+    "description_en": "Formula for an alchemical coating that makes a weapon count as silver.",
+    "description_es": "Fórmula de un recubrimiento alquímico que hace que un arma cuente como plata.",
+    "level": 2,
+    "price": {
+      "gp": 6
+    },
+    "category": "Alquímico (Óleo)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Óleo"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core)",
+    "source_page": 294,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "form.alch.smokestick",
+    "item_id": null,
+    "name_pt": "Bastão de Fumaça",
+    "name_en": "Smokestick",
+    "name_es": "Vara de humo",
+    "description_pt": "Fórmula de consumível que cria uma nuvem de fumaça obscurecedora.",
+    "description_en": "Formula for a consumable that creates an obscuring cloud of smoke.",
+    "description_es": "Fórmula de un consumible que crea una nube de humo que oscurece.",
+    "level": 1,
+    "price": {
+      "gp": 3
+    },
+    "category": "Alquímico (Consumível)",
+    "traits": [
+      "Alquímico",
+      "Consumível"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core)",
+    "source_page": 294,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "form.pot.minor_healing_potion",
+    "item_id": null,
+    "name_pt": "Poção de Cura Menor",
+    "name_en": "Minor Healing Potion",
+    "name_es": "Poción de curación menor",
+    "description_pt": "Fórmula para fabricar uma Poção de Cura Menor.",
+    "description_en": "Formula for crafting a Minor Healing Potion.",
+    "description_es": "Fórmula para fabricar una Poción de curación menor.",
+    "level": 1,
+    "price": {
+      "gp": 4
+    },
+    "category": "Mágico (Poção)",
+    "traits": [
+      "Mágico",
+      "Consumível",
+      "Poção",
+      "Cura"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core)",
+    "source_page": 295,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "form.snare.spike_snare",
+    "item_id": null,
+    "name_pt": "Armadilha de Espigões",
+    "name_en": "Spike Snare",
+    "name_es": "Lazo de púas",
+    "description_pt": "Fórmula de armadilha que causa dano perfurante quando acionada.",
+    "description_en": "Formula for a snare that deals piercing damage when triggered.",
+    "description_es": "Fórmula de una trampa que causa daño perforante al activarse.",
+    "level": 1,
+    "price": {
+      "gp": 3
+    },
+    "category": "Armadilha (Snare)",
+    "traits": [
+      "Armadilha",
+      "Consumível",
+      "Mecânico"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core)",
+    "source_page": 296,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.frightful_ampoule_minor",
+    "item_id": null,
+    "name_pt": "Ampola Pavorosa Menor",
+    "name_en": "Minor Frightful Ampoule",
+    "name_es": "Ámpula pavorosa menor",
+    "description_pt": "Bomba mental que causa dano mental e dano colateral de medo.",
+    "description_en": "Minor Frightful Ampoule is a Player Core 2 alchemical bomba formula for character equipment and crafting.",
+    "description_es": "Ámpula pavorosa menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
+    "level": 1,
+    "price": {
+      "gp": 3
+    },
+    "category": "Alquímico (Bomba)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 283,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.tanglefoot_bag_minor",
+    "item_id": null,
+    "name_pt": "Bomba de Cola Menor",
+    "name_en": "Lesser Tanglefoot Bag",
+    "name_es": "Bolsa de maraña menor",
+    "description_pt": "Bomba adesiva que reduz a Velocidade do alvo e pode prendê-lo.",
+    "description_en": "Lesser Tanglefoot Bag is a Player Core 2 alchemical bomba formula for character equipment and crafting.",
+    "description_es": "Bolsa de maraña menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
+    "level": 1,
+    "price": {
+      "gp": 3
+    },
+    "category": "Alquímico (Bomba)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 283,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.weakening_bomb_minor",
+    "item_id": null,
+    "name_pt": "Bomba de Esmorecimento Menor",
+    "name_en": "Lesser Weakening Bomb",
+    "name_es": "Bomba debilitante menor",
+    "description_pt": "Bomba venenosa que causa dano persistente e enfraquece o alvo.",
+    "description_en": "Lesser Weakening Bomb is a Player Core 2 alchemical bomba formula for character equipment and crafting.",
+    "description_es": "Bomba debilitante menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
+    "level": 1,
+    "price": {
+      "gp": 3
+    },
+    "category": "Alquímico (Bomba)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 283,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.ghost_charge_minor",
+    "item_id": null,
+    "name_pt": "Carga Fantasma Menor",
+    "name_en": "Lesser Ghost Charge",
+    "name_es": "Carga fantasmal menor",
+    "description_pt": "Bomba de vitalidade que causa dano colateral a criaturas próximas.",
+    "description_en": "Lesser Ghost Charge is a Player Core 2 alchemical bomba formula for character equipment and crafting.",
+    "description_es": "Carga fantasmal menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
+    "level": 1,
+    "price": {
+      "gp": 3
+    },
+    "category": "Alquímico (Bomba)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 284,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.alchemists_fire_minor",
+    "item_id": null,
+    "name_pt": "Fogo Alquímico Menor",
+    "name_en": "Lesser Alchemist's Fire",
+    "name_es": "Fuego alquímico menor",
+    "description_pt": "Bomba de fogo que causa dano persistente e dano de espalhamento.",
+    "description_en": "Lesser Alchemist's Fire is a Player Core 2 alchemical bomba formula for character equipment and crafting.",
+    "description_es": "Fuego alquímico menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
+    "level": 1,
+    "price": {
+      "gp": 3
+    },
+    "category": "Alquímico (Bomba)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 284,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.frost_vial_minor",
+    "item_id": null,
+    "name_pt": "Frasco Congelante Menor",
+    "name_en": "Lesser Frost Vial",
+    "name_es": "Vial de escarcha menor",
+    "description_pt": "Bomba de frio que causa dano e reduz a Velocidade do alvo.",
+    "description_en": "Lesser Frost Vial is a Player Core 2 alchemical bomba formula for character equipment and crafting.",
+    "description_es": "Vial de escarcha menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
+    "level": 1,
+    "price": {
+      "gp": 3
+    },
+    "category": "Alquímico (Bomba)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 285,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.acid_flask_minor",
+    "item_id": null,
+    "name_pt": "Frasco de Ácido Menor",
+    "name_en": "Lesser Acid Flask",
+    "name_es": "Frasco de ácido menor",
+    "description_pt": "Bomba de ácido que causa dano persistente e dano de espalhamento.",
+    "description_en": "Lesser Acid Flask is a Player Core 2 alchemical bomba formula for character equipment and crafting.",
+    "description_es": "Frasco de ácido menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
+    "level": 1,
+    "price": {
+      "gp": 3
+    },
+    "category": "Alquímico (Bomba)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 285,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.detritus_stone_minor",
+    "item_id": null,
+    "name_pt": "Pedra Detonante Menor",
+    "name_en": "Lesser Detonating Stone",
+    "name_es": "Piedra detonante menor",
+    "description_pt": "Bomba sônica que causa dano colateral a criaturas na área.",
+    "description_en": "Lesser Detonating Stone is a Player Core 2 alchemical bomba formula for character equipment and crafting.",
+    "description_es": "Piedra detonante menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
+    "level": 1,
+    "price": {
+      "gp": 3
+    },
+    "category": "Alquímico (Bomba)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 285,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.bottled_lightning_minor",
+    "item_id": null,
+    "name_pt": "Relâmpago Engarrafado Menor",
+    "name_en": "Lesser Bottled Lightning",
+    "name_es": "Relámpago embotellado menor",
+    "description_pt": "Bomba elétrica que deixa o alvo desprevenido até o próximo turno.",
+    "description_en": "Lesser Bottled Lightning is a Player Core 2 alchemical bomba formula for character equipment and crafting.",
+    "description_es": "Relámpago embotellado menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
+    "level": 1,
+    "price": {
+      "gp": 3
+    },
+    "category": "Alquímico (Bomba)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 285,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.antidote_minor",
+    "item_id": null,
+    "name_pt": "Antídoto Menor",
+    "name_en": "Lesser Antidote",
+    "name_es": "Antídoto menor",
+    "description_pt": "Elixir que concede bônus de item contra venenos por 6 horas.",
+    "description_en": "Lesser Antidote is a Player Core 2 alchemical elixir formula for character equipment and crafting.",
+    "description_es": "Antídoto menor es una fórmula alquímica de elixir del Player Core 2 para equipo y fabricación del personaje.",
+    "level": 1,
+    "price": {
+      "gp": 3
+    },
+    "category": "Alquímico (Elixir)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Elixir"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 286,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.antiplague_minor",
+    "item_id": null,
+    "name_pt": "Antipeste Menor",
+    "name_en": "Lesser Antiplague",
+    "name_es": "Antiplaga menor",
+    "description_pt": "Elixir que concede bônus de item contra doenças por 24 horas.",
+    "description_en": "Lesser Antiplague is a Player Core 2 alchemical elixir formula for character equipment and crafting.",
+    "description_es": "Antiplaga menor es una fórmula alquímica de elixir del Player Core 2 para equipo y fabricación del personaje.",
+    "level": 1,
+    "price": {
+      "gp": 3
+    },
+    "category": "Alquímico (Elixir)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Elixir"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 286,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.life_elixir_minimum",
+    "item_id": null,
+    "name_pt": "Elixir da Vida Mínimo",
+    "name_en": "Minor Elixir of Life",
+    "name_es": "Elixir de la vida mínimo",
+    "description_pt": "Elixir que restaura 1d6 Pontos de Vida e protege contra doenças e venenos.",
+    "description_en": "Minor Elixir of Life is a Player Core 2 alchemical elixir formula for character equipment and crafting.",
+    "description_es": "Elixir de la vida mínimo es una fórmula alquímica de elixir del Player Core 2 para equipo y fabricación del personaje.",
+    "level": 1,
+    "price": {
+      "gp": 3
+    },
+    "category": "Alquímico (Elixir)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Elixir"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 287,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.gender_transition_minor",
+    "item_id": null,
+    "name_pt": "Elixir de Transição de Gênero Menor",
+    "name_en": "Lesser Gender Transition Elixir",
+    "name_es": "Elixir de transición de género menor",
+    "description_pt": "Elixir de transformação gradual de características secundárias de gênero.",
+    "description_en": "Lesser Gender Transition Elixir is a Player Core 2 alchemical elixir formula for character equipment and crafting.",
+    "description_es": "Elixir de transición de género menor es una fórmula alquímica de elixir del Player Core 2 para equipo y fabricación del personaje.",
+    "level": 1,
+    "price": {
+      "gp": 1
+    },
+    "category": "Alquímico (Elixir)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Elixir"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 287,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.cheetah_elixir_minor",
+    "item_id": null,
+    "name_pt": "Elixir do Guepardo Menor",
+    "name_en": "Lesser Cheetah Elixir",
+    "name_es": "Elixir del guepardo menor",
+    "description_pt": "Elixir que melhora a mobilidade e a velocidade temporariamente.",
+    "description_en": "Lesser Cheetah Elixir is a Player Core 2 alchemical elixir formula for character equipment and crafting.",
+    "description_es": "Elixir del guepardo menor es una fórmula alquímica de elixir del Player Core 2 para equipo y fabricación del personaje.",
+    "level": 1,
+    "price": {
+      "gp": 3
+    },
+    "category": "Alquímico (Elixir)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Elixir"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 288,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.eagle_eye_elixir_minor",
+    "item_id": null,
+    "name_pt": "Elixir do Olho de Águia Menor",
+    "name_en": "Lesser Eagle-Eye Elixir",
+    "name_es": "Elixir del ojo de águila menor",
+    "description_pt": "Elixir que aguça a visão e melhora a percepção de detalhes.",
+    "description_en": "Lesser Eagle-Eye Elixir is a Player Core 2 alchemical elixir formula for character equipment and crafting.",
+    "description_es": "Elixir del ojo de águila menor es una fórmula alquímica de elixir del Player Core 2 para equipo y fabricación del personaje.",
+    "level": 1,
+    "price": {
+      "gp": 4
+    },
+    "category": "Alquímico (Elixir)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Elixir"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 288,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.frightful_ampoule_moderate",
+    "item_id": null,
+    "name_pt": "Ampola Pavorosa Moderada",
+    "name_en": "Frightful Ampoule Moderate",
+    "name_es": "Ampolla pavorosa Moderada",
+    "description_pt": "Variante moderada da bomba alquímica ampola pavorosa; os efeitos completos devem ser consultados na página 283.",
+    "description_en": "Moderate version of the frightful ampoule alchemical bomb; consult page 283 for the complete effects.",
+    "description_es": "Versión moderada de la bomba alquímica ampolla pavorosa; consulta la página 283 para los efectos completos.",
+    "level": 3,
+    "price": {
+      "gp": 10
+    },
+    "category": "Alquímico (Bomba)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 283,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.frightful_ampoule_greater",
+    "item_id": null,
+    "name_pt": "Ampola Pavorosa Maior",
+    "name_en": "Frightful Ampoule Greater",
+    "name_es": "Ampolla pavorosa Mayor",
+    "description_pt": "Variante maior da bomba alquímica ampola pavorosa; os efeitos completos devem ser consultados na página 283.",
+    "description_en": "Greater version of the frightful ampoule alchemical bomb; consult page 283 for the complete effects.",
+    "description_es": "Versión mayor de la bomba alquímica ampolla pavorosa; consulta la página 283 para los efectos completos.",
+    "level": 11,
+    "price": {
+      "gp": 250
+    },
+    "category": "Alquímico (Bomba)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 283,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.frightful_ampoule_superior",
+    "item_id": null,
+    "name_pt": "Ampola Pavorosa Superior",
+    "name_en": "Frightful Ampoule Major",
+    "name_es": "Ampolla pavorosa Superior",
+    "description_pt": "Variante superior da bomba alquímica ampola pavorosa; os efeitos completos devem ser consultados na página 283.",
+    "description_en": "Major version of the frightful ampoule alchemical bomb; consult page 283 for the complete effects.",
+    "description_es": "Versión superior de la bomba alquímica ampolla pavorosa; consulta la página 283 para los efectos completos.",
+    "level": 17,
+    "price": {
+      "gp": 2500
+    },
+    "category": "Alquímico (Bomba)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 283,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.tanglefoot_bag_moderate",
+    "item_id": null,
+    "name_pt": "Bomba de Cola Moderada",
+    "name_en": "Tanglefoot Bag Moderate",
+    "name_es": "Bomba de cola Moderada",
+    "description_pt": "Variante moderada da bomba alquímica bomba de cola; os efeitos completos devem ser consultados na página 283.",
+    "description_en": "Moderate version of the tanglefoot bag alchemical bomb; consult page 283 for the complete effects.",
+    "description_es": "Versión moderada de la bomba alquímica bomba de cola; consulta la página 283 para los efectos completos.",
+    "level": 3,
+    "price": {
+      "gp": 10
+    },
+    "category": "Alquímico (Bomba)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 283,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.tanglefoot_bag_greater",
+    "item_id": null,
+    "name_pt": "Bomba de Cola Maior",
+    "name_en": "Tanglefoot Bag Greater",
+    "name_es": "Bomba de cola Mayor",
+    "description_pt": "Variante maior da bomba alquímica bomba de cola; os efeitos completos devem ser consultados na página 283.",
+    "description_en": "Greater version of the tanglefoot bag alchemical bomb; consult page 283 for the complete effects.",
+    "description_es": "Versión mayor de la bomba alquímica bomba de cola; consulta la página 283 para los efectos completos.",
+    "level": 11,
+    "price": {
+      "gp": 250
+    },
+    "category": "Alquímico (Bomba)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 283,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.tanglefoot_bag_superior",
+    "item_id": null,
+    "name_pt": "Bomba de Cola Superior",
+    "name_en": "Tanglefoot Bag Major",
+    "name_es": "Bomba de cola Superior",
+    "description_pt": "Variante superior da bomba alquímica bomba de cola; os efeitos completos devem ser consultados na página 283.",
+    "description_en": "Major version of the tanglefoot bag alchemical bomb; consult page 283 for the complete effects.",
+    "description_es": "Versión superior de la bomba alquímica bomba de cola; consulta la página 283 para los efectos completos.",
+    "level": 17,
+    "price": {
+      "gp": 2500
+    },
+    "category": "Alquímico (Bomba)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 283,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.weakening_bomb_moderate",
+    "item_id": null,
+    "name_pt": "Bomba de Esmorecimento Moderada",
+    "name_en": "Weakening Bomb Moderate",
+    "name_es": "Bomba debilitante Moderada",
+    "description_pt": "Variante moderada da bomba alquímica bomba de esmorecimento; os efeitos completos devem ser consultados na página 283.",
+    "description_en": "Moderate version of the weakening bomb alchemical bomb; consult page 283 for the complete effects.",
+    "description_es": "Versión moderada de la bomba alquímica bomba debilitante; consulta la página 283 para los efectos completos.",
+    "level": 3,
+    "price": {
+      "gp": 10
+    },
+    "category": "Alquímico (Bomba)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 283,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.weakening_bomb_greater",
+    "item_id": null,
+    "name_pt": "Bomba de Esmorecimento Maior",
+    "name_en": "Weakening Bomb Greater",
+    "name_es": "Bomba debilitante Mayor",
+    "description_pt": "Variante maior da bomba alquímica bomba de esmorecimento; os efeitos completos devem ser consultados na página 283.",
+    "description_en": "Greater version of the weakening bomb alchemical bomb; consult page 283 for the complete effects.",
+    "description_es": "Versión mayor de la bomba alquímica bomba debilitante; consulta la página 283 para los efectos completos.",
+    "level": 11,
+    "price": {
+      "gp": 250
+    },
+    "category": "Alquímico (Bomba)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 283,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.weakening_bomb_superior",
+    "item_id": null,
+    "name_pt": "Bomba de Esmorecimento Superior",
+    "name_en": "Weakening Bomb Major",
+    "name_es": "Bomba debilitante Superior",
+    "description_pt": "Variante superior da bomba alquímica bomba de esmorecimento; os efeitos completos devem ser consultados na página 283.",
+    "description_en": "Major version of the weakening bomb alchemical bomb; consult page 283 for the complete effects.",
+    "description_es": "Versión superior de la bomba alquímica bomba debilitante; consulta la página 283 para los efectos completos.",
+    "level": 17,
+    "price": {
+      "gp": 2500
+    },
+    "category": "Alquímico (Bomba)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 283,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.ghost_charge_moderate",
+    "item_id": null,
+    "name_pt": "Carga Fantasma Moderada",
+    "name_en": "Ghost Charge Moderate",
+    "name_es": "Carga fantasmal Moderada",
+    "description_pt": "Variante moderada da bomba alquímica carga fantasma; os efeitos completos devem ser consultados na página 284.",
+    "description_en": "Moderate version of the ghost charge alchemical bomb; consult page 284 for the complete effects.",
+    "description_es": "Versión moderada de la bomba alquímica carga fantasmal; consulta la página 284 para los efectos completos.",
+    "level": 3,
+    "price": {
+      "gp": 10
+    },
+    "category": "Alquímico (Bomba)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 284,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.ghost_charge_greater",
+    "item_id": null,
+    "name_pt": "Carga Fantasma Maior",
+    "name_en": "Ghost Charge Greater",
+    "name_es": "Carga fantasmal Mayor",
+    "description_pt": "Variante maior da bomba alquímica carga fantasma; os efeitos completos devem ser consultados na página 284.",
+    "description_en": "Greater version of the ghost charge alchemical bomb; consult page 284 for the complete effects.",
+    "description_es": "Versión mayor de la bomba alquímica carga fantasmal; consulta la página 284 para los efectos completos.",
+    "level": 11,
+    "price": {
+      "gp": 250
+    },
+    "category": "Alquímico (Bomba)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 284,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.ghost_charge_superior",
+    "item_id": null,
+    "name_pt": "Carga Fantasma Superior",
+    "name_en": "Ghost Charge Major",
+    "name_es": "Carga fantasmal Superior",
+    "description_pt": "Variante superior da bomba alquímica carga fantasma; os efeitos completos devem ser consultados na página 284.",
+    "description_en": "Major version of the ghost charge alchemical bomb; consult page 284 for the complete effects.",
+    "description_es": "Versión superior de la bomba alquímica carga fantasmal; consulta la página 284 para los efectos completos.",
+    "level": 17,
+    "price": {
+      "gp": 2500
+    },
+    "category": "Alquímico (Bomba)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 284,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.alchemists_fire_moderate",
+    "item_id": null,
+    "name_pt": "Fogo Alquímico Moderada",
+    "name_en": "Alchemist's Fire Moderate",
+    "name_es": "Fuego alquímico Moderada",
+    "description_pt": "Variante moderada da bomba alquímica fogo alquímico; os efeitos completos devem ser consultados na página 284.",
+    "description_en": "Moderate version of the alchemist's fire alchemical bomb; consult page 284 for the complete effects.",
+    "description_es": "Versión moderada de la bomba alquímica fuego alquímico; consulta la página 284 para los efectos completos.",
+    "level": 3,
+    "price": {
+      "gp": 10
+    },
+    "category": "Alquímico (Bomba)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 284,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.alchemists_fire_greater",
+    "item_id": null,
+    "name_pt": "Fogo Alquímico Maior",
+    "name_en": "Alchemist's Fire Greater",
+    "name_es": "Fuego alquímico Mayor",
+    "description_pt": "Variante maior da bomba alquímica fogo alquímico; os efeitos completos devem ser consultados na página 284.",
+    "description_en": "Greater version of the alchemist's fire alchemical bomb; consult page 284 for the complete effects.",
+    "description_es": "Versión mayor de la bomba alquímica fuego alquímico; consulta la página 284 para los efectos completos.",
+    "level": 11,
+    "price": {
+      "gp": 250
+    },
+    "category": "Alquímico (Bomba)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 284,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.alchemists_fire_superior",
+    "item_id": null,
+    "name_pt": "Fogo Alquímico Superior",
+    "name_en": "Alchemist's Fire Major",
+    "name_es": "Fuego alquímico Superior",
+    "description_pt": "Variante superior da bomba alquímica fogo alquímico; os efeitos completos devem ser consultados na página 284.",
+    "description_en": "Major version of the alchemist's fire alchemical bomb; consult page 284 for the complete effects.",
+    "description_es": "Versión superior de la bomba alquímica fuego alquímico; consulta la página 284 para los efectos completos.",
+    "level": 17,
+    "price": {
+      "gp": 2500
+    },
+    "category": "Alquímico (Bomba)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 284,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.frost_vial_moderate",
+    "item_id": null,
+    "name_pt": "Frasco Congelante Moderada",
+    "name_en": "Frost Vial Moderate",
+    "name_es": "Vial de escarcha Moderada",
+    "description_pt": "Variante moderada da bomba alquímica frasco congelante; os efeitos completos devem ser consultados na página 285.",
+    "description_en": "Moderate version of the frost vial alchemical bomb; consult page 285 for the complete effects.",
+    "description_es": "Versión moderada de la bomba alquímica vial de escarcha; consulta la página 285 para los efectos completos.",
+    "level": 3,
+    "price": {
+      "gp": 10
+    },
+    "category": "Alquímico (Bomba)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 285,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.frost_vial_greater",
+    "item_id": null,
+    "name_pt": "Frasco Congelante Maior",
+    "name_en": "Frost Vial Greater",
+    "name_es": "Vial de escarcha Mayor",
+    "description_pt": "Variante maior da bomba alquímica frasco congelante; os efeitos completos devem ser consultados na página 285.",
+    "description_en": "Greater version of the frost vial alchemical bomb; consult page 285 for the complete effects.",
+    "description_es": "Versión mayor de la bomba alquímica vial de escarcha; consulta la página 285 para los efectos completos.",
+    "level": 11,
+    "price": {
+      "gp": 250
+    },
+    "category": "Alquímico (Bomba)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 285,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.frost_vial_superior",
+    "item_id": null,
+    "name_pt": "Frasco Congelante Superior",
+    "name_en": "Frost Vial Major",
+    "name_es": "Vial de escarcha Superior",
+    "description_pt": "Variante superior da bomba alquímica frasco congelante; os efeitos completos devem ser consultados na página 285.",
+    "description_en": "Major version of the frost vial alchemical bomb; consult page 285 for the complete effects.",
+    "description_es": "Versión superior de la bomba alquímica vial de escarcha; consulta la página 285 para los efectos completos.",
+    "level": 17,
+    "price": {
+      "gp": 2500
+    },
+    "category": "Alquímico (Bomba)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 285,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.acid_flask_moderate",
+    "item_id": null,
+    "name_pt": "Frasco de Ácido Moderada",
+    "name_en": "Acid Flask Moderate",
+    "name_es": "Frasco de ácido Moderada",
+    "description_pt": "Variante moderada da bomba alquímica frasco de ácido; os efeitos completos devem ser consultados na página 285.",
+    "description_en": "Moderate version of the acid flask alchemical bomb; consult page 285 for the complete effects.",
+    "description_es": "Versión moderada de la bomba alquímica frasco de ácido; consulta la página 285 para los efectos completos.",
+    "level": 3,
+    "price": {
+      "gp": 10
+    },
+    "category": "Alquímico (Bomba)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 285,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.acid_flask_greater",
+    "item_id": null,
+    "name_pt": "Frasco de Ácido Maior",
+    "name_en": "Acid Flask Greater",
+    "name_es": "Frasco de ácido Mayor",
+    "description_pt": "Variante maior da bomba alquímica frasco de ácido; os efeitos completos devem ser consultados na página 285.",
+    "description_en": "Greater version of the acid flask alchemical bomb; consult page 285 for the complete effects.",
+    "description_es": "Versión mayor de la bomba alquímica frasco de ácido; consulta la página 285 para los efectos completos.",
+    "level": 11,
+    "price": {
+      "gp": 250
+    },
+    "category": "Alquímico (Bomba)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 285,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.acid_flask_superior",
+    "item_id": null,
+    "name_pt": "Frasco de Ácido Superior",
+    "name_en": "Acid Flask Major",
+    "name_es": "Frasco de ácido Superior",
+    "description_pt": "Variante superior da bomba alquímica frasco de ácido; os efeitos completos devem ser consultados na página 285.",
+    "description_en": "Major version of the acid flask alchemical bomb; consult page 285 for the complete effects.",
+    "description_es": "Versión superior de la bomba alquímica frasco de ácido; consulta la página 285 para los efectos completos.",
+    "level": 17,
+    "price": {
+      "gp": 2500
+    },
+    "category": "Alquímico (Bomba)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 285,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.detonating_stone_moderate",
+    "item_id": null,
+    "name_pt": "Pedra Detonante Moderada",
+    "name_en": "Detonating Stone Moderate",
+    "name_es": "Piedra detonante Moderada",
+    "description_pt": "Variante moderada da bomba alquímica pedra detonante; os efeitos completos devem ser consultados na página 285.",
+    "description_en": "Moderate version of the detonating stone alchemical bomb; consult page 285 for the complete effects.",
+    "description_es": "Versión moderada de la bomba alquímica piedra detonante; consulta la página 285 para los efectos completos.",
+    "level": 3,
+    "price": {
+      "gp": 10
+    },
+    "category": "Alquímico (Bomba)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 285,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.detonating_stone_greater",
+    "item_id": null,
+    "name_pt": "Pedra Detonante Maior",
+    "name_en": "Detonating Stone Greater",
+    "name_es": "Piedra detonante Mayor",
+    "description_pt": "Variante maior da bomba alquímica pedra detonante; os efeitos completos devem ser consultados na página 285.",
+    "description_en": "Greater version of the detonating stone alchemical bomb; consult page 285 for the complete effects.",
+    "description_es": "Versión mayor de la bomba alquímica piedra detonante; consulta la página 285 para los efectos completos.",
+    "level": 11,
+    "price": {
+      "gp": 250
+    },
+    "category": "Alquímico (Bomba)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 285,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.detonating_stone_superior",
+    "item_id": null,
+    "name_pt": "Pedra Detonante Superior",
+    "name_en": "Detonating Stone Major",
+    "name_es": "Piedra detonante Superior",
+    "description_pt": "Variante superior da bomba alquímica pedra detonante; os efeitos completos devem ser consultados na página 285.",
+    "description_en": "Major version of the detonating stone alchemical bomb; consult page 285 for the complete effects.",
+    "description_es": "Versión superior de la bomba alquímica piedra detonante; consulta la página 285 para los efectos completos.",
+    "level": 17,
+    "price": {
+      "gp": 2500
+    },
+    "category": "Alquímico (Bomba)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 285,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.bottled_lightning_moderate",
+    "item_id": null,
+    "name_pt": "Relâmpago Engarrafado Moderada",
+    "name_en": "Bottled Lightning Moderate",
+    "name_es": "Relámpago embotellado Moderada",
+    "description_pt": "Variante moderada da bomba alquímica relâmpago engarrafado; os efeitos completos devem ser consultados na página 285.",
+    "description_en": "Moderate version of the bottled lightning alchemical bomb; consult page 285 for the complete effects.",
+    "description_es": "Versión moderada de la bomba alquímica relámpago embotellado; consulta la página 285 para los efectos completos.",
+    "level": 3,
+    "price": {
+      "gp": 10
+    },
+    "category": "Alquímico (Bomba)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 285,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.bottled_lightning_greater",
+    "item_id": null,
+    "name_pt": "Relâmpago Engarrafado Maior",
+    "name_en": "Bottled Lightning Greater",
+    "name_es": "Relámpago embotellado Mayor",
+    "description_pt": "Variante maior da bomba alquímica relâmpago engarrafado; os efeitos completos devem ser consultados na página 285.",
+    "description_en": "Greater version of the bottled lightning alchemical bomb; consult page 285 for the complete effects.",
+    "description_es": "Versión mayor de la bomba alquímica relámpago embotellado; consulta la página 285 para los efectos completos.",
+    "level": 11,
+    "price": {
+      "gp": 250
+    },
+    "category": "Alquímico (Bomba)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 285,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.bottled_lightning_superior",
+    "item_id": null,
+    "name_pt": "Relâmpago Engarrafado Superior",
+    "name_en": "Bottled Lightning Major",
+    "name_es": "Relámpago embotellado Superior",
+    "description_pt": "Variante superior da bomba alquímica relâmpago engarrafado; os efeitos completos devem ser consultados na página 285.",
+    "description_en": "Major version of the bottled lightning alchemical bomb; consult page 285 for the complete effects.",
+    "description_es": "Versión superior de la bomba alquímica relámpago embotellado; consulta la página 285 para los efectos completos.",
+    "level": 17,
+    "price": {
+      "gp": 2500
+    },
+    "category": "Alquímico (Bomba)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 285,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.bright_stick",
+    "item_id": null,
+    "name_pt": "Bastão Brilhante",
+    "name_en": "Glow Rod",
+    "name_es": "Bastón luminoso",
+    "description_pt": "Item alquímico de categoria ferramenta listado na tabela do Player Core 2; consulte a página 295 para os efeitos completos.",
+    "description_en": "Player Core 2 alchemical ferramenta listed in the item table; consult page 295 for the complete effects.",
+    "description_es": "Objeto alquímico de categoría ferramenta listado en la tabla del Player Core 2; consulta la página 295 para los efectos completos.",
+    "level": 1,
+    "price": {
+      "gp": 3
+    },
+    "category": "Alquímico (Ferramenta)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Ferramenta"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 295,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.smoke_ball",
+    "item_id": null,
+    "name_pt": "Bola de Fumaça",
+    "name_en": "Smoke Ball",
+    "name_es": "Bola de humo",
+    "description_pt": "Item alquímico de categoria ferramenta listado na tabela do Player Core 2; consulte a página 295 para os efeitos completos.",
+    "description_en": "Player Core 2 alchemical ferramenta listed in the item table; consult page 295 for the complete effects.",
+    "description_es": "Objeto alquímico de categoría ferramenta listado en la tabla del Player Core 2; consulta la página 295 para los efectos completos.",
+    "level": 1,
+    "price": {
+      "gp": 3
+    },
+    "category": "Alquímico (Ferramenta)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Ferramenta"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 295,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.forensic_dye",
+    "item_id": null,
+    "name_pt": "Corante Forense",
+    "name_en": "Forensic Dye",
+    "name_es": "Tinte forense",
+    "description_pt": "Item alquímico de categoria ferramenta listado na tabela do Player Core 2; consulte a página 295 para os efeitos completos.",
+    "description_en": "Player Core 2 alchemical ferramenta listed in the item table; consult page 295 for the complete effects.",
+    "description_es": "Objeto alquímico de categoría ferramenta listado en la tabla del Player Core 2; consulta la página 295 para los efectos completos.",
+    "level": 1,
+    "price": {
+      "gp": 3
+    },
+    "category": "Alquímico (Ferramenta)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Ferramenta"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 295,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.phosphor",
+    "item_id": null,
+    "name_pt": "Fósforo",
+    "name_en": "Phosphor",
+    "name_es": "Fósforo",
+    "description_pt": "Item alquímico de categoria ferramenta listado na tabela do Player Core 2; consulte a página 295 para os efeitos completos.",
+    "description_en": "Player Core 2 alchemical ferramenta listed in the item table; consult page 295 for the complete effects.",
+    "description_es": "Objeto alquímico de categoría ferramenta listado en la tabla del Player Core 2; consulta la página 295 para los efectos completos.",
+    "level": 1,
+    "price": {
+      "pp": 2
+    },
+    "category": "Alquímico (Ferramenta)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Ferramenta"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 295,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.snake_oil",
+    "item_id": null,
+    "name_pt": "Óleo de Cobra",
+    "name_en": "Snake Oil",
+    "name_es": "Aceite de serpiente",
+    "description_pt": "Item alquímico de categoria ferramenta listado na tabela do Player Core 2; consulte a página 295 para os efeitos completos.",
+    "description_en": "Player Core 2 alchemical ferramenta listed in the item table; consult page 295 for the complete effects.",
+    "description_es": "Objeto alquímico de categoría ferramenta listado en la tabla del Player Core 2; consulta la página 295 para los efectos completos.",
+    "level": 1,
+    "price": {
+      "gp": 2
+    },
+    "category": "Alquímico (Ferramenta)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Ferramenta"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 295,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.ghost_ink",
+    "item_id": null,
+    "name_pt": "Tinta Fantasma",
+    "name_en": "Ghost Ink",
+    "name_es": "Tinta fantasmal",
+    "description_pt": "Item alquímico de categoria ferramenta listado na tabela do Player Core 2; consulte a página 296 para os efeitos completos.",
+    "description_en": "Player Core 2 alchemical ferramenta listed in the item table; consult page 296 for the complete effects.",
+    "description_es": "Objeto alquímico de categoría ferramenta listado en la tabla del Player Core 2; consulta la página 296 para los efectos completos.",
+    "level": 1,
+    "price": {
+      "gp": 3
+    },
+    "category": "Alquímico (Ferramenta)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Ferramenta"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 296,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.belladonna",
+    "item_id": null,
+    "name_pt": "Beladona",
+    "name_en": "Belladonna",
+    "name_es": "Belladona",
+    "description_pt": "Item alquímico de categoria veneno listado na tabela do Player Core 2; consulte a página 291 para os efeitos completos.",
+    "description_en": "Player Core 2 alchemical veneno listed in the item table; consult page 291 for the complete effects.",
+    "description_es": "Objeto alquímico de categoría veneno listado en la tabla del Player Core 2; consulta la página 291 para los efectos completos.",
+    "level": 2,
+    "price": {
+      "gp": 5
+    },
+    "category": "Alquímico (Veneno)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 291,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.arsenic",
+    "item_id": null,
+    "name_pt": "Arsênico",
+    "name_en": "Arsenic",
+    "name_es": "Arsénico",
+    "description_pt": "Item alquímico de categoria veneno listado na tabela do Player Core 2; consulte a página 291 para os efeitos completos.",
+    "description_en": "Player Core 2 alchemical veneno listed in the item table; consult page 291 for the complete effects.",
+    "description_es": "Objeto alquímico de categoría veneno listado en la tabla del Player Core 2; consulta la página 291 para los efectos completos.",
+    "level": 1,
+    "price": {
+      "gp": 3
+    },
+    "category": "Alquímico (Veneno)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 291,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.giant_centipede_venom",
+    "item_id": null,
+    "name_pt": "Veneno de Centopeia Gigante",
+    "name_en": "Giant Centipede Venom",
+    "name_es": "Veneno de ciempiés gigante",
+    "description_pt": "Item alquímico de categoria veneno listado na tabela do Player Core 2; consulte a página 294 para os efeitos completos.",
+    "description_en": "Player Core 2 alchemical veneno listed in the item table; consult page 294 for the complete effects.",
+    "description_es": "Objeto alquímico de categoría veneno listado en la tabla del Player Core 2; consulta la página 294 para los efectos completos.",
+    "level": 1,
+    "price": {
+      "gp": 4
+    },
+    "category": "Alquímico (Veneno)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 294,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.lethargy_poison",
+    "item_id": null,
+    "name_pt": "Veneno de Letargia",
+    "name_en": "Lethargy Poison",
+    "name_es": "Veneno de letargo",
+    "description_pt": "Veneno de ferimento CD 16; causa condição de lento e risco de paralisia.",
+    "description_en": "Injury poison DC 16; inflicts slowed condition and paralysis.",
+    "description_es": "Veneno de herida CD 16; inflige estado ralentizado y parálisis.",
+    "level": 2,
+    "price": {
+      "gp": 7
+    },
+    "category": "Alquímico (Veneno)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 292,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.black_adder_venom",
+    "item_id": null,
+    "name_pt": "Veneno de Víbora Negra",
+    "name_en": "Black Adder Venom",
+    "name_es": "Veneno de víbora negra",
+    "description_pt": "Veneno de ferimento CD 18; causa dano contínuo de veneno e desajeitado.",
+    "description_en": "Injury poison DC 18; deals continuous poison damage and clumsy.",
+    "description_es": "Veneno de herida CD 18; inflige daño continuado de veneno y torpe.",
+    "level": 2,
+    "price": {
+      "gp": 6
+    },
+    "category": "Alquímico (Veneno)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 292,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.cytillesh_oil",
+    "item_id": null,
+    "name_pt": "Óleo de Cytillesh",
+    "name_en": "Cytillesh Oil",
+    "name_es": "Aceite de cytillesh",
+    "description_pt": "Item alquímico de categoria veneno listado na tabela do Player Core 2; consulte a página 292 para os efeitos completos.",
+    "description_en": "Player Core 2 alchemical veneno listed in the item table; consult page 292 for the complete effects.",
+    "description_es": "Objeto alquímico de categoría veneno listado en la tabla del Player Core 2; consulta la página 292 para los efectos completos.",
+    "level": 3,
+    "price": {
+      "gp": 10
+    },
+    "category": "Alquímico (Veneno)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 292,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.grave_root",
+    "item_id": null,
+    "name_pt": "Raiz do Túmulo",
+    "name_en": "Grave Root",
+    "name_es": "Raíz de tumba",
+    "description_pt": "Veneno de contato CD 19; causa dano de veneno e condição de estupefato mental.",
+    "description_en": "Contact poison DC 19; deals poison damage and stupefied mental condition.",
+    "description_es": "Veneno de contacto CD 19; causa daño de veneno y estado estupefacto.",
+    "level": 3,
+    "price": {
+      "gp": 10
+    },
+    "category": "Alquímico (Veneno)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 293,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.spider_venom",
+    "item_id": null,
+    "name_pt": "Veneno de Aranha",
+    "name_en": "Spider Venom",
+    "name_es": "Veneno de araña",
+    "description_pt": "Item alquímico de categoria veneno listado na tabela do Player Core 2; consulte a página 294 para os efeitos completos.",
+    "description_en": "Player Core 2 alchemical veneno listed in the item table; consult page 294 for the complete effects.",
+    "description_es": "Objeto alquímico de categoría veneno listado en la tabla del Player Core 2; consulta la página 294 para los efectos completos.",
+    "level": 5,
+    "price": {
+      "gp": 25
+    },
+    "category": "Alquímico (Veneno)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 294,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.giant_scorpion_venom",
+    "item_id": null,
+    "name_pt": "Veneno de Escorpião Gigante",
+    "name_en": "Giant Scorpion Venom",
+    "name_es": "Veneno de escorpión gigante",
+    "description_pt": "Item alquímico de categoria veneno listado na tabela do Player Core 2; consulte a página 292 para os efeitos completos.",
+    "description_en": "Player Core 2 alchemical veneno listed in the item table; consult page 292 for the complete effects.",
+    "description_es": "Objeto alquímico de categoría veneno listado en la tabla del Player Core 2; consulta la página 292 para los efectos completos.",
+    "level": 6,
+    "price": {
+      "gp": 40
+    },
+    "category": "Alquímico (Veneno)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 292,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.rooting_toxin",
+    "item_id": null,
+    "name_pt": "Toxina de Enraizamento",
+    "name_en": "Rooting Toxin",
+    "name_es": "Toxina de enraizamiento",
+    "description_pt": "Veneno de ferimento CD 21; reduz deslocamento e imobiliza o alvo.",
+    "description_en": "Injury poison DC 21; reduces speed and immobilizes target.",
+    "description_es": "Veneno de herida CD 21; reduce velocidad e inmoviliza al objetivo.",
+    "level": 7,
+    "price": {
+      "gp": 55
+    },
+    "category": "Alquímico (Veneno)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 293,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.nettleseed_residue",
+    "item_id": null,
+    "name_pt": "Resíduo de Urtiga",
+    "name_en": "Nettleweed Residue",
+    "name_es": "Residuo de ortiga",
+    "description_pt": "Item alquímico de categoria veneno listado na tabela do Player Core 2; consulte a página 293 para os efeitos completos.",
+    "description_en": "Player Core 2 alchemical veneno listed in the item table; consult page 293 for the complete effects.",
+    "description_es": "Objeto alquímico de categoría veneno listado en la tabla del Player Core 2; consulta la página 293 para los efectos completos.",
+    "level": 8,
+    "price": {
+      "gp": 75
+    },
+    "category": "Alquímico (Veneno)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 293,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.wyvern_poison",
+    "item_id": null,
+    "name_pt": "Veneno de Wyvern",
+    "name_en": "Wyvern Poison",
+    "name_es": "Veneno de wyvern",
+    "description_pt": "Item alquímico de categoria veneno listado na tabela do Player Core 2; consulte a página 294 para os efeitos completos.",
+    "description_en": "Player Core 2 alchemical veneno listed in the item table; consult page 294 for the complete effects.",
+    "description_es": "Objeto alquímico de categoría veneno listado en la tabla del Player Core 2; consulta la página 294 para los efectos completos.",
+    "level": 8,
+    "price": {
+      "gp": 80
+    },
+    "category": "Alquímico (Veneno)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 294,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.weakening_powder",
+    "item_id": null,
+    "name_pt": "Pó Debilitante",
+    "name_en": "Weakening Powder",
+    "name_es": "Polvo debilitante",
+    "description_pt": "Veneno inalado CD 22; inflige níveis crescentes da condição enfraquecido.",
+    "description_en": "Inhaled poison DC 22; imposes escalating levels of the enfeebled condition.",
+    "description_es": "Veneno inhalado CD 22; impone niveles crecientes de la condición debilitado.",
+    "level": 9,
+    "price": {
+      "gp": 110
+    },
+    "category": "Alquímico (Veneno)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 292,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.spider_root",
+    "item_id": null,
+    "name_pt": "Raiz de Aranha",
+    "name_en": "Spider Root",
+    "name_es": "Raíz de araña",
+    "description_pt": "Veneno ingerido CD 24; causa dano severo de veneno, desajeitado e paralisia temporária.",
+    "description_en": "Ingested poison DC 24; causes heavy poison damage, clumsy, and short paralysis.",
+    "description_es": "Veneno ingerido CD 24; inflige gran daño de veneno, torpe y parálisis corta.",
+    "level": 9,
+    "price": {
+      "gp": 110
+    },
+    "category": "Alquímico (Veneno)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 292,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.aconite",
+    "item_id": null,
+    "name_pt": "Acônito",
+    "name_en": "Aconite",
+    "name_es": "Acónito",
+    "description_pt": "Item alquímico de categoria veneno listado na tabela do Player Core 2; consulte a página 291 para os efeitos completos.",
+    "description_en": "Player Core 2 alchemical veneno listed in the item table; consult page 291 for the complete effects.",
+    "description_es": "Objeto alquímico de categoría veneno listado en la tabla del Player Core 2; consulta la página 291 para los efectos completos.",
+    "level": 10,
+    "price": {
+      "gp": 155
+    },
+    "category": "Alquímico (Veneno)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 291,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.draining_shadow",
+    "item_id": null,
+    "name_pt": "Sombra Desgastante",
+    "name_en": "Draining Shadow",
+    "name_es": "Sombra agotadora",
+    "description_pt": "Veneno de ferimento CD 26; inflige dano de veneno e drena a vitalidade máxima.",
+    "description_en": "Injury poison DC 26; inflicts poison damage and drains maximum vitality.",
+    "description_es": "Veneno de herida CD 26; causa daño de veneno y drena la vitalidad máxima.",
+    "level": 10,
+    "price": {
+      "gp": 160
+    },
+    "category": "Alquímico (Veneno)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 293,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.black_lotus_extract",
+    "item_id": null,
+    "name_pt": "Extrato de Lótus Negra",
+    "name_en": "Black Lotus Extract",
+    "name_es": "Extracto de loto negro",
+    "description_pt": "Item alquímico de categoria veneno listado na tabela do Player Core 2; consulte a página 292 para os efeitos completos.",
+    "description_en": "Player Core 2 alchemical veneno listed in the item table; consult page 292 for the complete effects.",
+    "description_es": "Objeto alquímico de categoría veneno listado en la tabla del Player Core 2; consulta la página 292 para los efectos completos.",
+    "level": 19,
+    "price": {
+      "gp": 6500
+    },
+    "category": "Alquímico (Veneno)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 292,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.death_takings",
+    "item_id": null,
+    "name_pt": "Lágrimas da Morte",
+    "name_en": "Tears of Death",
+    "name_es": "Lágrimas de la muerte",
+    "description_pt": "Item alquímico de categoria veneno listado na tabela do Player Core 2; consulte a página 292 para os efeitos completos.",
+    "description_en": "Player Core 2 alchemical veneno listed in the item table; consult page 292 for the complete effects.",
+    "description_es": "Objeto alquímico de categoría veneno listado en la tabla del Player Core 2; consulta la página 292 para los efectos completos.",
+    "level": 20,
+    "price": {
+      "gp": 12000
+    },
+    "category": "Alquímico (Veneno)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 292,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.cave_worm_venom",
+    "item_id": null,
+    "name_pt": "Veneno de Vorme da Caverna",
+    "name_en": "Cave Worm Venom",
+    "name_es": "Veneno de gusano de caverna",
+    "description_pt": "Veneno de ferimento CD 29; causa dano de veneno, desajeitado e drenado.",
+    "description_en": "Injury poison DC 29; inflicts poison damage, clumsy, and drained.",
+    "description_es": "Veneno de herida CD 29; causa daño de veneno, torpe y drenado.",
+    "level": 12,
+    "price": {
+      "gp": 500
+    },
+    "category": "Alquímico (Veneno)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 294,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.torpor_wine",
+    "item_id": null,
+    "name_pt": "Vinho de Torpor",
+    "name_en": "Torpor Wine",
+    "name_es": "Vino de sopor",
+    "description_pt": "Veneno ingerido com efeito de sono; CD, dano e progressão devem ser conferidos no livro.",
+    "description_en": "Ingested poison with a sleep effect; check the book for DC, damage, and progression.",
+    "description_es": "Veneno ingerido con efecto de sueño; verifica el libro para CD, daño y progresión.",
+    "level": 12,
+    "price": {
+      "gp": 325
+    },
+    "category": "Alquímico (Veneno)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 294,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.hemlock",
+    "item_id": null,
+    "name_pt": "Cicuta",
+    "name_en": "Hemlock",
+    "name_es": "Cicuta",
+    "description_pt": "Veneno ingerido de alta letalidade; CD, dano e progressão devem ser conferidos na entrada do livro.",
+    "description_en": "Highly lethal ingested poison; check the book entry for DC, damage, and progression.",
+    "description_es": "Veneno ingerido de alta letalidad; verifica la entrada para CD, daño y progresión.",
+    "level": 17,
+    "price": {
+      "gp": 2250
+    },
+    "category": "Alquímico (Veneno)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 292,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.death_cap_powder",
+    "item_id": null,
+    "name_pt": "Pó de Chapéu-da-Morte",
+    "name_en": "Death Cap Powder",
+    "name_es": "Polvo de sombrerillo de la muerte",
+    "description_pt": "Veneno ingerido CD 25; causa dano de veneno e enjoado.",
+    "description_en": "Ingested poison DC 25; deals poison damage and sickened condition.",
+    "description_es": "Veneno ingerido CD 25; inflige daño de veneno y estado indispuesto.",
+    "level": 13,
+    "price": {
+      "gp": 450
+    },
+    "category": "Alquímico (Veneno)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 292,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.kings_sleep",
+    "item_id": null,
+    "name_pt": "Sono do Rei",
+    "name_en": "King's Sleep",
+    "name_es": "Sueño del rey",
+    "description_pt": "Veneno ingerido virulento de longa duração; CD, dano e progressão devem ser conferidos no livro.",
+    "description_en": "Long-duration virulent ingested poison; check the book for DC, damage, and progression.",
+    "description_es": "Veneno ingerido virulento de larga duración; verifica el libro para CD, daño y progresión.",
+    "level": 18,
+    "price": {
+      "gp": 4000
+    },
+    "category": "Alquímico (Veneno)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 293,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.cerulean_scourge",
+    "item_id": null,
+    "name_pt": "Flagelo Cerúleo",
+    "name_en": "Cerulean Scourge",
+    "name_es": "Flagelo cerúleo",
+    "description_pt": "Veneno de contato CD 22; causa dano de veneno, desajeitado e estupefato.",
+    "description_en": "Contact poison DC 22; deals poison damage, clumsy, and stupefied.",
+    "description_es": "Veneno de contacto CD 22; inflige daño de veneno, torpe y estupefacto.",
+    "level": 16,
+    "price": {
+      "gp": 1450
+    },
+    "category": "Alquímico (Veneno)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 292,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.sulfur_vapors",
+    "item_id": null,
+    "name_pt": "Vapores de Enxofre",
+    "name_en": "Sulfur Vapors",
+    "name_es": "Vapores de azufre",
+    "description_pt": "Veneno inalado CD 19; causa dano de veneno, ofuscamento e cegueira.",
+    "description_en": "Inhaled poison DC 19; inflicts poison damage, dazzled, and blindness.",
+    "description_es": "Veneno inhalado CD 19; causa daño de veneno, deslumbrado y ceguera.",
+    "level": 16,
+    "price": {
+      "gp": 1500
+    },
+    "category": "Alquímico (Veneno)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 294,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.fogged_mind_mist",
+    "item_id": null,
+    "name_pt": "Bruma de Mente Enevoada",
+    "name_en": "Fogged Mind Mist",
+    "name_es": "Bruma de mente nublada",
+    "description_pt": "Veneno inalado que prejudica faculdades mentais; CD, dano e progressão devem ser conferidos no livro.",
+    "description_en": "Inhaled poison that impairs mental faculties; check the book for DC, damage, and progression.",
+    "description_es": "Veneno inhalado que perjudica las facultades mentales; verifica el libro para CD, daño y progresión.",
+    "level": 15,
+    "price": {
+      "gp": 1000
+    },
+    "category": "Alquímico (Veneno)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 291,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.fear_flower_nectar",
+    "item_id": null,
+    "name_pt": "Néctar de Flor do Medo",
+    "name_en": "Fearflower Nectar",
+    "name_es": "Néctar de flor del miedo",
+    "description_pt": "Veneno ingerido CD 20; causa amedrontado progressivo, fuga e confusão.",
+    "description_en": "Ingested poison DC 20; causes escalating fear, fleeing, and confusion.",
+    "description_es": "Veneno ingerido CD 20; causa miedo progresivo, huida y confusión.",
+    "level": 4,
+    "price": {
+      "gp": 16
+    },
+    "category": "Alquímico (Veneno)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 292,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.inert_leg",
+    "item_id": null,
+    "name_pt": "Perna Inerte",
+    "name_en": "Inert Leg",
+    "name_es": "Pierna inerte",
+    "description_pt": "Prótese básica que restaura a mobilidade funcional do usuário.",
+    "description_en": "Basic prosthetic restoring functional mobility to the wearer.",
+    "description_es": "Prótesis básica que restaura la movilidad funcional del usuario.",
+    "level": 4,
+    "price": {
+      "gp": 15
+    },
+    "category": "Alquímico (Veneno)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 292,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "formula.pc2.pragardent_resin",
+    "item_id": null,
+    "name_pt": "Resina de Pragardente",
+    "name_en": "Pragardent Resin",
+    "name_es": "Resina de pragardente",
+    "description_pt": "Veneno de contato que causa dano persistente; CD e progressão devem ser conferidos na entrada do livro.",
+    "description_en": "Contact poison that deals persistent damage; check the book entry for DC and progression.",
+    "description_es": "Veneno de contacto que causa daño persistente; verifica la entrada para CD y progresión.",
+    "level": 11,
+    "price": {
+      "gp": 225
+    },
+    "category": "Alquímico (Veneno)",
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Veneno"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 293,
+    "data": {
+      "needs_review": false
+    }
+  }
+]

@@ -30,6 +30,11 @@ import {
   recordAppAccess,
   type AdminDashboardMetrics,
 } from "./services/admin";
+import {
+  fetchCatalogCategory,
+  getCatalogSyncStatus,
+  type CatalogSyncStatus,
+} from "./services/catalog";
 import { CampaignsPage } from "./CampaignsPage";
 import "./portal.css";
 
@@ -137,14 +142,65 @@ function CatalogPage() {
   const [rarityFilter, setRarityFilter] = useState<string>("all");
   const [bookFilter, setBookFilter] = useState<string>("all");
   const [inspectedEntry, setInspectedEntry] = useState<(PickerItem & { category: PickerType; categoryLabel: string }) | null>(null);
+  const [syncStatus, setSyncStatus] = useState<CatalogSyncStatus>(getCatalogSyncStatus());
+  const [remoteItemsByCategory, setRemoteItemsByCategory] = useState<Partial<Record<PickerType, PickerItem[]>>>({});
+  const [isSyncing, setIsSyncing] = useState(false);
+
+  // Efeito para carregar dados remotos do Supabase com fallback offline
+  useEffect(() => {
+    let isMounted = true;
+    const loadCategory = async (type: PickerType) => {
+      try {
+        const result = await fetchCatalogCategory(type);
+        if (isMounted && result.items.length > 0) {
+          setRemoteItemsByCategory((prev) => ({ ...prev, [type]: result.items }));
+          setSyncStatus((prev) => ({ ...prev, source: result.source }));
+        }
+      } catch (err) {
+        console.warn(`[Catalog] Não foi possível carregar ${type}:`, err);
+      }
+    };
+
+    if (category === "all") {
+      // Carrega primeiras categorias mais populares
+      const initialTypes: PickerType[] = ["ancestry", "class", "feat", "spell", "weapon", "armor"];
+      initialTypes.forEach((type) => loadCategory(type));
+    } else {
+      loadCategory(category);
+    }
+
+    return () => {
+      isMounted = false;
+    };
+  }, [category]);
+
+  const handleManualSync = async () => {
+    setIsSyncing(true);
+    try {
+      const typesToSync: PickerType[] = category === "all" ? ["ancestry", "class", "feat", "spell"] : [category];
+      for (const type of typesToSync) {
+        const result = await fetchCatalogCategory(type, { forceRemote: true });
+        if (result.items.length > 0) {
+          setRemoteItemsByCategory((prev) => ({ ...prev, [type]: result.items }));
+          setSyncStatus((prev) => ({ ...prev, source: result.source }));
+        }
+      }
+    } finally {
+      setIsSyncing(false);
+    }
+  };
 
   const entries = useMemo(() => catalogCategories.flatMap(({ type, label }) => {
+    const remote = remoteItemsByCategory[type];
+    if (remote && remote.length > 0) {
+      return remote.map((item) => ({ ...item, category: type, categoryLabel: t(label) }));
+    }
     try {
       return (window as any).app?.getPickerItems(type, { includeIncompatible: true }).map((item: any) => ({ ...item, category: type, categoryLabel: t(label) })) || [];
     } catch {
       return [];
     }
-  }), [t]);
+  }), [remoteItemsByCategory, t]);
 
   const availableBooks = useMemo(() => {
     const books = new Set<string>();
@@ -165,7 +221,7 @@ function CatalogPage() {
       const bookMatches = bookFilter === "all" || entry.data?.source?.book === bookFilter;
 
       const localizedName = getItemDisplayName(entry, locale);
-      const localizedSummary = entry.data.summaries?.[locale] ?? entry.data.description ?? "";
+      const localizedSummary = entry.data?.summaries?.[locale] ?? entry.data?.description ?? "";
       const haystack = `${localizedName} ${entry.name} ${localizedSummary} ${entry.data?.traits?.join(" ") || ""}`.toLocaleLowerCase(locale);
       const queryMatches = haystack.includes(query.trim().toLocaleLowerCase(locale));
       return categoryMatches && rulesetMatches && rarityMatches && bookMatches && queryMatches;
@@ -179,13 +235,38 @@ function CatalogPage() {
   }, [bookFilter, category, entries, locale, query, rarityFilter, rulesetFilter]);
 
   return <main className="portal-page portal-catalog-page" id="portal-content" tabIndex={-1}>
-    <header className="portal-hero"><span>{t("compendiumKicker")}</span><h1>{t("compendiumTitle")}</h1><p>{t("compendiumIntro")}</p></header>
+    <header className="portal-hero">
+      <span>{t("compendiumKicker")}</span>
+      <h1>{t("compendiumTitle")}</h1>
+      <p>{t("compendiumIntro")}</p>
+    </header>
     <section className="catalog-toolbar" aria-label={t("searchOptions")}>
       <label className="catalog-search-label"><span>{t("catalogSearch")}</span><input value={query} onChange={(event) => setQuery(event.target.value)} type="search" placeholder={t("search")} /></label>
       <label><span>{t("filterCategory")}</span><select value={category} onChange={(event) => setCategory(event.target.value as PickerType | "all")}><option value="all">{t("allCategories")}</option>{catalogCategories.map((item) => <option key={item.type} value={item.type}>{t(item.label)}</option>)}</select></label>
       <label><span>{t("filterRuleset")}</span><select value={rulesetFilter} onChange={(event) => setRulesetFilter(event.target.value)}><option value="all">{t("allRulesets")}</option><option value="remaster">{t("rulesetRemaster")}</option><option value="legacy">{t("rulesetLegacy")}</option><option value="needs_review">{t("rulesetReview")}</option></select></label>
       <label><span>{t("filterRarity")}</span><select value={rarityFilter} onChange={(event) => setRarityFilter(event.target.value)}><option value="all">{t("allRarities")}</option><option value="common">{t("rarityCommon")}</option><option value="uncommon">{t("rarityUncommon")}</option><option value="rare">{t("rarityRare")}</option></select></label>
       {availableBooks.length > 0 && <label><span>{t("filterBook")}</span><select value={bookFilter} onChange={(event) => setBookFilter(event.target.value)}><option value="all">{t("allBooks")}</option>{availableBooks.map((b) => <option key={b} value={b}>{localizeSourceBook(b, locale)}</option>)}</select></label>}
+      <div className="catalog-source-badge" title={syncStatus.isConfigured ? "Conectado ao Supabase com 18 tabelas relacionais" : "Modo offline local"}>
+        <span className="source-indicator-dot" style={{ backgroundColor: syncStatus.source === "supabase" ? "#10b981" : syncStatus.source === "local_cache" ? "#3b82f6" : "#f59e0b" }} />
+        <span className="source-indicator-text">
+          {syncStatus.source === "supabase"
+            ? (locale === "en" ? "☁️ Supabase Cloud" : locale === "es" ? "☁️ Nube Supabase" : "☁️ Supabase Conectado")
+            : syncStatus.source === "local_cache"
+              ? (locale === "en" ? "⚡ Local Cache" : locale === "es" ? "⚡ Caché Local" : "⚡ Cache Offline")
+              : (locale === "en" ? "💾 Local Catalog" : locale === "es" ? "💾 Catálogo Local" : "💾 Catálogo Integrado")}
+        </span>
+        {syncStatus.isConfigured && (
+          <button
+            type="button"
+            className="catalog-sync-btn"
+            onClick={handleManualSync}
+            disabled={isSyncing}
+            title={locale === "en" ? "Sync with Supabase" : locale === "es" ? "Sincronizar con Supabase" : "Sincronizar com Supabase"}
+          >
+            {isSyncing ? "⏳" : "🔄"}
+          </button>
+        )}
+      </div>
       <strong className="catalog-count" aria-live="polite">{filtered.length} {t("results")}</strong>
     </section>
     {filtered.length === 0 ? <div className="portal-empty">{t("noCatalogResults")}</div> : <section className="catalog-grid" aria-label={t("compendiumTitle")}>

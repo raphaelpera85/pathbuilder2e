@@ -1,0 +1,2492 @@
+[
+  {
+    "id": "archetype.acrobat",
+    "name_pt": "Acrobata",
+    "name_en": "Acrobat",
+    "name_es": "Acróbata",
+    "description_pt": "Mestre da agilidade, saltos acrobáticos e esquivas acrobáticas automáticas.",
+    "description_en": "Player Core 2 archetype: Acrobat.",
+    "description_es": "Arquetipo de Player Core 2: Acróbata.",
+    "prerequisite": "Treinado em Acrobacia",
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 184,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.archer",
+    "name_pt": "Arqueiro",
+    "name_en": "Archer",
+    "name_es": "Arquero",
+    "description_pt": "Especialista supremo no uso de arcos, tiros rápidos e disparos críticos penetrantes.",
+    "description_en": "Player Core 2 archetype: Archer.",
+    "description_es": "Arquetipo de Player Core 2: Arquero.",
+    "prerequisite": "Treinado em Armas Marciais",
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 186,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.duelist",
+    "name_pt": "Duelista",
+    "name_en": "Duelist",
+    "name_es": "Duelista",
+    "description_pt": "Combatente gracioso com arma de uma mão, aparadas rápidas e réplicas letais.",
+    "description_en": "Player Core 2 archetype: Duelist.",
+    "description_es": "Arquetipo de Player Core 2: Duelista.",
+    "prerequisite": "Treinado em Armas Simples ou Marciais",
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 201,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.marshal",
+    "name_pt": "Marechal",
+    "name_en": "Marshal",
+    "name_es": "Mariscal",
+    "description_pt": "Líder inspirador com auras de comando tático que fortalecem o ataque e moral dos aliados.",
+    "description_en": "Player Core 2 archetype: Marshal.",
+    "description_es": "Arquetipo de Player Core 2: Mariscal.",
+    "prerequisite": "Treinado em Diplomacia ou Intimidação e Armas Marciais",
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 210,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.medic",
+    "name_pt": "Médico",
+    "name_en": "Medic",
+    "name_es": "Médico",
+    "description_pt": "Socorrista lendário capaz de tratar ferimentos sob fogo e restaurar HP em combate intenso.",
+    "description_en": "Player Core 2 archetype: Medic.",
+    "description_es": "Arquetipo de Player Core 2: Médico.",
+    "prerequisite": "Especialista em Medicina e talento Medicina de Batalha",
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 212,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.cavalier",
+    "name_pt": "Cavaleiro",
+    "name_en": "Cavalier",
+    "name_es": "Caballero",
+    "description_pt": "Mestre do combate montado, lealdade a juramentos e cargas devastadoras com lança.",
+    "description_en": "Player Core 2 archetype: Cavalier.",
+    "description_es": "Arquetipo de Player Core 2: Caballero.",
+    "prerequisite": "Treinado em Natureza ou Cavalgar",
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 195,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.sentinel",
+    "name_pt": "Sentinela",
+    "name_en": "Sentinel",
+    "name_es": "Centinela",
+    "description_pt": "Especialista em blindagem pesada e técnicas avançadas de armadura.",
+    "description_en": "Player Core 2 archetype: Sentinel.",
+    "description_es": "Arquetipo de Player Core 2: Centinela.",
+    "prerequisite": "Treinado em Armaduras Leves ou Médias",
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 218,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.wrestler",
+    "name_pt": "Lutador de luta livre",
+    "name_en": "Wrestler",
+    "name_es": "Luchador",
+    "description_pt": "Mestre de agarrões, chaves de braço e arremessos corporais brutais.",
+    "description_en": "Player Core 2 archetype: Wrestler.",
+    "description_es": "Arquetipo de Player Core 2: Luchador.",
+    "prerequisite": "Treinado em Atletismo e Ataques Desarmados",
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 207,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.ritualist",
+    "name_pt": "Ritualista",
+    "name_en": "Ritualist",
+    "name_es": "Ritualista",
+    "description_pt": "Conjurador de rituais ocultos e cerimoniais de alto nível sem gastar espaços de magia diários.",
+    "description_en": "Player Core 2 archetype: Ritualist.",
+    "description_es": "Arquetipo de Player Core 2: Ritualista.",
+    "prerequisite": "Especialista em Arcanismo, Natureza, Ocultismo ou Religião",
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 217,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.shadowdancer",
+    "name_pt": "Espião Noturno",
+    "name_en": "Shadowdancer",
+    "name_es": "Danzarín de sombras",
+    "description_pt": "Arquétipo de furtividade que domina teleporte, escuridão e ilusões.",
+    "description_en": "A stealth archetype mastering teleportation, darkness, and illusion.",
+    "description_es": "Un arquetipo de sigilo que domina el teletransporte, la oscuridad y la ilusión.",
+    "prerequisite": "Mestre em Furtividade e Especialista em Acrobacia",
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pathfinder RPG Livro Básico (edição legada)",
+    "source_page": 382,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.alchemist_multiclass",
+    "name_pt": "Dedicação: Alquimista",
+    "name_en": "Alchemist Dedication",
+    "name_es": "Dedicación de alquimista",
+    "description_pt": "Acesso a infusões alquímicas, fórmulas e bombas mágicas diárias.",
+    "description_en": "Player Core 2 archetype: Alchemist Dedication.",
+    "description_es": "Arquetipo de Player Core 2: Dedicación de alquimista.",
+    "prerequisite": "Inteligência +2",
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 175,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.barbarian_multiclass",
+    "name_pt": "Dedicação: Bárbaro",
+    "name_en": "Barbarian Dedication",
+    "name_es": "Dedicación de bárbaro",
+    "description_pt": "Acesso à Fúria bárbara e talentos de instinto violento.",
+    "description_en": "Player Core 2 archetype: Barbarian Dedication.",
+    "description_es": "Arquetipo de Player Core 2: Dedicación de bárbaro.",
+    "prerequisite": "Força +2, Constituição +2",
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 176,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.bard_dedication",
+    "name_pt": "Dedicação: Bardo",
+    "name_en": "Bard Dedication",
+    "name_es": "Dedicación de bardo",
+    "description_pt": "Dedicação multiclasse que concede acesso a composição e magia oculta.",
+    "description_en": "A multiclass dedication granting access to compositions and occult magic.",
+    "description_es": "Una dedicación multiclase que concede acceso a composiciones y magia oculta.",
+    "prerequisite": "Carisma +2",
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 94,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.champion_multiclass",
+    "name_pt": "Dedicação: Campeão",
+    "name_en": "Champion Dedication",
+    "name_es": "Dedicación de campeón",
+    "description_pt": "Acesso a armaduras pesadas e reações defensivas sagradas/profanas.",
+    "description_en": "Player Core 2 archetype: Champion Dedication.",
+    "description_es": "Arquetipo de Player Core 2: Dedicación de campeón.",
+    "prerequisite": "Força +2, Carisma +2",
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 177,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.cleric_dedication",
+    "name_pt": "Dedicação: Clérigo",
+    "name_en": "Cleric Dedication",
+    "name_es": "Dedicación de clérigo",
+    "description_pt": "Dedicação multiclasse que concede magia divina e vínculo com uma divindade.",
+    "description_en": "A multiclass dedication granting divine magic and a deity connection.",
+    "description_es": "Una dedicación multiclase que concede magia divina y vínculo con una deidad.",
+    "prerequisite": "Sabedoria +2",
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 108,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.druid_dedication",
+    "name_pt": "Dedicação: Druida",
+    "name_en": "Druid Dedication",
+    "name_es": "Dedicación de druida",
+    "description_pt": "Dedicação multiclasse que concede magia primal e poderes da natureza.",
+    "description_en": "A multiclass dedication granting primal magic and nature powers.",
+    "description_es": "Una dedicación multiclase que concede magia primordial y poderes de la naturaleza.",
+    "prerequisite": "Sabedoria +2",
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 122,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.fighter_dedication",
+    "name_pt": "Dedicação: Guerreiro",
+    "name_en": "Fighter Dedication",
+    "name_es": "Dedicación de guerrero",
+    "description_pt": "Dedicação multiclasse que amplia treinamento marcial e opções de combate.",
+    "description_en": "A multiclass dedication expanding martial training and combat options.",
+    "description_es": "Una dedicación multiclase que amplía el entrenamiento marcial y las opciones de combate.",
+    "prerequisite": "Força +2 ou Destreza +2",
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 136,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.rogue_dedication",
+    "name_pt": "Dedicação: Ladino",
+    "name_en": "Rogue Dedication",
+    "name_es": "Dedicación de pícaro",
+    "description_pt": "Dedicação multiclasse que concede técnicas furtivas e perícias adicionais.",
+    "description_en": "A multiclass dedication granting rogue techniques and additional skills.",
+    "description_es": "Una dedicación multiclase que concede técnicas de pícaro y habilidades adicionales.",
+    "prerequisite": "Destreza +2",
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 164,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.wizard_dedication",
+    "name_pt": "Dedicação: Mago",
+    "name_en": "Wizard Dedication",
+    "name_es": "Dedicación de mago",
+    "description_pt": "Dedicação multiclasse que concede grimório e conjuração arcana preparada.",
+    "description_en": "A multiclass dedication granting a spellbook and prepared arcane casting.",
+    "description_es": "Una dedicación multiclase que concede grimorio y lanzamiento arcano preparado.",
+    "prerequisite": "Inteligência +2",
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 192,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.magus_dedication",
+    "name_pt": "Dedicação: Magus",
+    "name_en": "Magus Dedication",
+    "name_es": "Dedicación de magus",
+    "description_pt": "Dedicação multiclasse que combina ataques marciais e conjuração arcana.",
+    "description_en": "A multiclass dedication combining martial attacks and arcane casting.",
+    "description_es": "Una dedicación multiclase que combina ataques marciales y lanzamiento arcano.",
+    "prerequisite": "Força +2 ou Destreza +2, Inteligência +2",
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 58,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.monk_multiclass",
+    "name_pt": "Dedicação: Monge",
+    "name_en": "Monk Dedication",
+    "name_es": "Dedicación de monje",
+    "description_pt": "Acesso a ataques desarmados aprimorados e posturas marciais.",
+    "description_en": "Player Core 2 archetype: Monk Dedication.",
+    "description_es": "Arquetipo de Player Core 2: Dedicación de monje.",
+    "prerequisite": "Força +2, Destreza +2",
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 179,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.oracle_multiclass",
+    "name_pt": "Dedicação: Oráculo",
+    "name_en": "Oracle Dedication",
+    "name_es": "Dedicación de oráculo",
+    "description_pt": "Acesso a mistérios cósmicos e feitiços de revelação.",
+    "description_en": "Player Core 2 archetype: Oracle Dedication.",
+    "description_es": "Arquetipo de Player Core 2: Dedicación de oráculo.",
+    "prerequisite": "Carisma +2",
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 180,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.ranger_dedication",
+    "name_pt": "Dedicação: Patrulheiro",
+    "name_en": "Ranger Dedication",
+    "name_es": "Dedicación de explorador",
+    "description_pt": "Dedicação multiclasse focada em Caçar Presa, exploração e combate à distância.",
+    "description_en": "A multiclass dedication focused on Hunt Prey, exploration, and ranged combat.",
+    "description_es": "Una dedicación multiclase centrada en Cazar presa, exploración y combate a distancia.",
+    "prerequisite": "Destreza +2 ou Sabedoria +2",
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 152,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.sorcerer_multiclass",
+    "name_pt": "Dedicação: Feiticeiro",
+    "name_en": "Sorcerer Dedication",
+    "name_es": "Dedicación de hechicero",
+    "description_pt": "Acesso a magias espontâneas da sua linhagem de sangue.",
+    "description_en": "Player Core 2 archetype: Sorcerer Dedication.",
+    "description_es": "Arquetipo de Player Core 2: Dedicación de hechicero.",
+    "prerequisite": "Carisma +2",
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 181,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.summoner_dedication",
+    "name_pt": "Dedicação: Convocador",
+    "name_en": "Summoner Dedication",
+    "name_es": "Dedicación de convocador",
+    "description_pt": "Dedicação multiclasse que vincula um eidolon ao personagem.",
+    "description_en": "A multiclass dedication that binds an eidolon to the character.",
+    "description_es": "Una dedicación multiclase que vincula un eidolon al personaje.",
+    "prerequisite": "Carisma +2",
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 34,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.swashbuckler_multiclass",
+    "name_pt": "Dedicação: Espadachim",
+    "name_en": "Swashbuckler Dedication",
+    "name_es": "Dedicación de espadachín",
+    "description_pt": "Acesso a Panache e finalizadores estilosos acrobáticos.",
+    "description_en": "Player Core 2 archetype: Swashbuckler Dedication.",
+    "description_es": "Arquetipo de Player Core 2: Dedicación de espadachín.",
+    "prerequisite": "Destreza +2, Carisma +2",
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 182,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.witch_dedication",
+    "name_pt": "Dedicação: Bruxo",
+    "name_en": "Witch Dedication",
+    "name_es": "Dedicación de bruja",
+    "description_pt": "Dedicação multiclasse que concede familiar patrono e magia de patronagem.",
+    "description_en": "A multiclass dedication granting a patron familiar and patron magic.",
+    "description_es": "Una dedicación multiclase que concede un familiar patrón y magia de patrón.",
+    "prerequisite": "Inteligência +2",
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 178,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.kineticist_dedication",
+    "name_pt": "Dedicação: Cineticista",
+    "name_en": "Kineticist Dedication",
+    "name_es": "Dedicación de cinético",
+    "description_pt": "Dedicação multiclasse que abre portais elementais e impulsos cinéticos.",
+    "description_en": "A multiclass dedication opening elemental gates and kinetic impulses.",
+    "description_es": "Una dedicación multiclase que abre portales elementales e impulsos cinéticos.",
+    "prerequisite": "Constituição +2",
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Rage of Elements (Remaster)",
+    "source_page": 12,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.psychic_dedication",
+    "name_pt": "Dedicação: Psíquico",
+    "name_en": "Psychic Dedication",
+    "name_es": "Dedicación de psíquico",
+    "description_pt": "Dedicação multiclasse que fortalece truques e poderes psiônicos.",
+    "description_en": "A multiclass dedication enhancing cantrips and psychic powers.",
+    "description_es": "Una dedicación multiclase que potencia trucos y poderes psíquicos.",
+    "prerequisite": "Inteligência +2 ou Carisma +2",
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 8,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.thaumaturge_dedication",
+    "name_pt": "Dedicação: Taumaturgo",
+    "name_en": "Thaumaturge Dedication",
+    "name_es": "Dedicación de taumaturgo",
+    "description_pt": "Dedicação multiclasse que concede implementos e Explorar Fraquezas.",
+    "description_en": "A multiclass dedication granting implements and Exploit Vulnerability.",
+    "description_es": "Una dedicación multiclase que concede implementos y Explotar vulnerabilidad.",
+    "prerequisite": "Carisma +2",
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 30,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.exemplar_dedication",
+    "name_pt": "Dedicação: Exemplar",
+    "name_en": "Exemplar Dedication",
+    "name_es": "Dedicación de ejemplar",
+    "description_pt": "Dedicação multiclasse que concede centelha divina e ícones sagrados.",
+    "description_en": "A multiclass dedication granting a divine spark and sacred ikons.",
+    "description_es": "Una dedicación multiclase que concede una chispa divina e iconos sagrados.",
+    "prerequisite": "Força +2 ou Destreza +2",
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Guerra dos Imortais (Remaster)",
+    "source_page": 28,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.animist_dedication",
+    "name_pt": "Dedicação: Animista",
+    "name_en": "Animist Dedication",
+    "name_es": "Dedicación de animista",
+    "description_pt": "Dedicação multiclasse que concede aparições e um receptáculo espiritual.",
+    "description_en": "A multiclass dedication granting apparitions and a spiritual vessel.",
+    "description_es": "Una dedicación multiclase que concede apariciones y un receptáculo espiritual.",
+    "prerequisite": "Sabedoria +2",
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Guerra dos Imortais (Remaster)",
+    "source_page": 10,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.inventor_multiclass",
+    "name_pt": "Inventor Multiclasse",
+    "name_en": "Inventor",
+    "name_es": "Inventor",
+    "description_pt": "Dedicação multiclasse que concede uma inovação e treinamento em Manufatura para resolver problemas com engenhosidade.",
+    "description_en": "A multiclass dedication that grants an innovation and Crafting training to solve problems with ingenuity.",
+    "description_es": "Una dedicación multiclase que concede una innovación y entrenamiento en Artesanía para resolver problemas con ingenio.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 49,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.overwatch",
+    "name_pt": "Vigilância",
+    "name_en": "Overwatch",
+    "name_es": "Vigilancia",
+    "description_pt": "Arquétipo de observação que transforma percepção do campo de batalha em coordenação e apoio aos aliados.",
+    "description_en": "An observation archetype that turns battlefield awareness into coordination and support for allies.",
+    "description_es": "Un arquetipo de observación que convierte la percepción del campo de batalla en coordinación y apoyo a los aliados.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 50,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.sterling_dynamo",
+    "name_pt": "Dínamo Esterlino",
+    "name_en": "Sterling Dynamo",
+    "name_es": "Dínamo esterlino",
+    "description_pt": "Arquétipo de prótese mecânica de combate, com um dínamo personalizável que amplia as opções de combate corpo a corpo.",
+    "description_en": "A combat prosthesis archetype with a customizable dynamo that expands melee options.",
+    "description_es": "Un arquetipo de prótesis de combate con un dínamo personalizable que amplía las opciones cuerpo a cuerpo.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 52,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.trapsmith",
+    "name_pt": "Armadilheiro",
+    "name_en": "Trapsmith",
+    "name_es": "Armero de trampas",
+    "description_pt": "Arquétipo que incorpora engrenagens e vapor à fabricação de arapucas especializadas.",
+    "description_en": "An archetype that incorporates gears and steam into the creation of specialized snares.",
+    "description_es": "Un arquetipo que incorpora engranajes y vapor a la fabricación de trampas especializadas.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 54,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.trick_driver",
+    "name_pt": "Condutor Audaz",
+    "name_en": "Trick Driver",
+    "name_es": "Conductor temerario",
+    "description_pt": "Arquétipo de condução que transforma veículos em ferramentas agressivas de mobilidade e combate.",
+    "description_en": "A driving archetype that turns vehicles into aggressive tools for mobility and combat.",
+    "description_es": "Un arquetipo de conducción que convierte los vehículos en herramientas agresivas de movilidad y combate.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 55,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.vehicle_mechanic",
+    "name_pt": "Mecânico de Veículos",
+    "name_en": "Vehicle Mechanic",
+    "name_es": "Mecánico de vehículos",
+    "description_pt": "Arquétipo de manutenção e aprimoramento de veículos, com foco em construção, pilotagem e reparos.",
+    "description_en": "An archetype focused on maintaining and improving vehicles through construction, piloting, and repairs.",
+    "description_es": "Un arquetipo centrado en mantener y mejorar vehículos mediante construcción, pilotaje y reparaciones.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 56,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.gunslinger_multiclass",
+    "name_pt": "Pistoleiro Multiclasse",
+    "name_en": "Gunslinger Multiclass",
+    "name_es": "Pistolero multiclase",
+    "description_pt": "Dedicação que concede treinamento em bestas e armas de fogo e acesso a talentos de pistoleiro.",
+    "description_en": "A dedication that grants training with crossbows and firearms and access to gunslinger feats.",
+    "description_es": "Una dedicación que concede competencia con ballestas y armas de fuego y acceso a dotes de pistolero.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 127,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.artillerist",
+    "name_pt": "Artilheiro",
+    "name_en": "Artillerist",
+    "name_es": "Artillero",
+    "description_pt": "Arquetipo de artilharia para ataques poderosos com armas de cerco e pólvora.",
+    "description_en": "An artillery archetype for powerful attacks with siege weapons and gunpowder.",
+    "description_es": "Un arquetipo de artillería para ataques potentes con armas de asedio y pólvora.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 128,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.beast_gunner",
+    "name_pt": "Atirador Bestial",
+    "name_en": "Beast Gunner",
+    "name_es": "Artillero bestial",
+    "description_pt": "Arquetipo mágico que combina armas bestiais, magia e treinamento em armas de fogo.",
+    "description_en": "A magical archetype combining beast guns, magic, and firearm training.",
+    "description_es": "Un arquetipo mágico que combina armas bestiales, magia y entrenamiento con armas de fuego.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 130,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.bullet_dancer",
+    "name_pt": "Dançarino da Bala",
+    "name_en": "Bullet Dancer",
+    "name_es": "Bailarín de la bala",
+    "description_pt": "Arquetipo marcial que usa armas de fogo com movimentos e posturas de artes marciais.",
+    "description_en": "A martial archetype that uses firearms through martial-arts movement and stances.",
+    "description_es": "Un arquetipo marcial que usa armas de fuego mediante movimientos y posturas de artes marciales.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 132,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.demolitionist",
+    "name_pt": "Demolidor",
+    "name_en": "Demolitionist",
+    "name_es": "Demoledor",
+    "description_pt": "Especialista em explosivos que prepara e posiciona bombas para romper estruturas.",
+    "description_en": "An explosives specialist who prepares and places bombs to breach structures.",
+    "description_es": "Un especialista en explosivos que prepara y coloca bombas para derribar estructuras.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 133,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.fireworks_technician",
+    "name_pt": "Técnico de Fogos de Artifício",
+    "name_en": "Firework Technician",
+    "name_es": "Técnico de fuegos artificiales",
+    "description_pt": "Arquetipo de manufatura que transforma pólvora, metais e papel em espetáculos e efeitos táticos.",
+    "description_en": "A Crafting archetype that turns powder, metal, and paper into spectacles and tactical effects.",
+    "description_es": "Un arquetipo de Artesanía que convierte pólvora, metal y papel en espectáculos y efectos tácticos.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 134,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.pistol_phenom",
+    "name_pt": "Fenômeno da Pistola",
+    "name_en": "Pistol Phenom",
+    "name_es": "Fenómeno de la pistola",
+    "description_pt": "Arquetipo de pistoleiro performático que combina fintas, estilo e armas de fogo de uma mão.",
+    "description_en": "A performative gunslinger archetype combining feints, style, and one-handed firearms.",
+    "description_es": "Un arquetipo de pistolero performático que combina fintas, estilo y armas de fuego de una mano.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 136,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.dueling_pair",
+    "name_pt": "Dupla de Precisão",
+    "name_en": "Sniping Duo",
+    "name_es": "Dúo de francotiradores",
+    "description_pt": "Arquetipo de cooperação entre atirador e observador para coordenar tiros e abrir brechas.",
+    "description_en": "A cooperative archetype for a shooter and spotter who coordinate attacks and openings.",
+    "description_es": "Un arquetipo cooperativo para un tirador y un observador que coordinan ataques y oportunidades.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 138,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.animist_multiclass",
+    "name_pt": "Animista Multiclasse",
+    "name_en": "Animist Multiclass",
+    "name_es": "Animista multiclase",
+    "description_pt": "Dedicação para personagens que começam a se sintonizar com aparições e a magia espiritual do animista.",
+    "description_en": "A dedication for characters beginning to attune to apparitions and the animist's spiritual magic.",
+    "description_es": "Una dedicación para personajes que comienzan a vincularse con apariciones y la magia espiritual del animista.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Guerra dos Imortais (Remaster)",
+    "source_page": 56,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.exemplar_multiclass",
+    "name_pt": "Exemplar Multiclasse",
+    "name_en": "Exemplar Multiclass",
+    "name_es": "Ejemplar multiclase",
+    "description_pt": "Dedicação rara para um herói que manifesta uma centelha divina e passa a vinculá-la a um ícone.",
+    "description_en": "A rare dedication for a hero who manifests a divine spark and begins binding it to an ikon.",
+    "description_es": "Una dedicación rara para un héroe que manifiesta una chispa divina y comienza a vincularla a un icono.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "remaster",
+    "source_book": "Guerra dos Imortais (Remaster)",
+    "source_page": 57,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.avenger",
+    "name_pt": "Vingador",
+    "name_en": "Avenger",
+    "name_es": "Vengador",
+    "description_pt": "Arquétipo de classe de ladino que caça inimigos de sua divindade e combate com a arma favorita dela.",
+    "description_en": "A rogue class archetype that hunts the enemies of a deity and fights with that deity's favored weapon.",
+    "description_es": "Un arquetipo de clase de pícaro que caza a los enemigos de una deidad y combate con su arma predilecta.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Guerra dos Imortais (Remaster)",
+    "source_page": 58,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.bloodrager",
+    "name_pt": "Furioso de Sangue",
+    "name_en": "Bloodrager",
+    "name_es": "Furioso de sangre",
+    "description_pt": "Arquétipo de classe de bárbaro que mistura fúria e magia extraída do sangue de criaturas mágicas.",
+    "description_en": "A barbarian class archetype that combines rage with magic drawn from the blood of magical creatures.",
+    "description_es": "Un arquetipo de clase de bárbaro que combina furia con magia extraída de la sangre de criaturas mágicas.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Guerra dos Imortais (Remaster)",
+    "source_page": 60,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.seneschal",
+    "name_pt": "Senescal",
+    "name_en": "Seneschal",
+    "name_es": "Senescal",
+    "description_pt": "Arquétipo raro de classe para uma bruxa sem patrono que assume a custódia de poder oculto remanescente.",
+    "description_en": "A rare witch class archetype for a witch without a patron who becomes the steward of lingering occult power.",
+    "description_es": "Un arquetipo raro de clase de bruja sin patrón que se convierte en custodio de un poder oculto remanente.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "remaster",
+    "source_book": "Guerra dos Imortais (Remaster)",
+    "source_page": 62,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.vindicator",
+    "name_pt": "Vindicador",
+    "name_en": "Vindicator",
+    "name_es": "Vindicador",
+    "description_pt": "Arquétipo de classe de patrulheiro que persegue alvos em nome de uma divindade e desenvolve magia divina.",
+    "description_en": "A ranger class archetype that pursues targets in a deity's name and develops divine magic.",
+    "description_es": "Un arquetipo de clase de explorador que persigue objetivos en nombre de una deidad y desarrolla magia divina.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Guerra dos Imortais (Remaster)",
+    "source_page": 64,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.warrior_of_legend",
+    "name_pt": "Guerreiro da Lenda",
+    "name_en": "Warrior of Legend",
+    "name_es": "Guerrero de leyenda",
+    "description_pt": "Arquétipo incomum de classe de guerreiro marcado por uma bênção heroica acompanhada de uma fraqueza física.",
+    "description_en": "An uncommon fighter class archetype marked by a heroic blessing accompanied by a physical weakness.",
+    "description_es": "Un arquetipo poco común de clase de guerrero marcado por una bendición heroica acompañada de una debilidad física.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Guerra dos Imortais (Remaster)",
+    "source_page": 66,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.commander_multiclass",
+    "name_pt": "Comandante Multiclasse",
+    "name_en": "Commander Multiclass",
+    "name_es": "Comandante multiclase",
+    "description_pt": "Dedicação para um estrategista que organiza táticas em um fólio e coordena aliados por meio de seu estandarte.",
+    "description_en": "A dedication for a strategist who organizes tactics in a folio and coordinates allies through a banner.",
+    "description_es": "Una dedicación para un estratega que organiza tácticas en un folio y coordina aliados mediante su estandarte.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 52,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.guardian_multiclass",
+    "name_pt": "Guardião Multiclasse",
+    "name_en": "Guardian Multiclass",
+    "name_es": "Guardián multiclase",
+    "description_pt": "Dedicação para um defensor resistente que amplia seu treinamento em armaduras e aprende a provocar adversários.",
+    "description_en": "A dedication for a resilient defender who expands armor training and learns to taunt enemies.",
+    "description_es": "Una dedicación para un defensor resistente que amplía su entrenamiento con armaduras y aprende a provocar adversarios.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 53,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.aldori_duelist",
+    "name_pt": "Duelista Aldori",
+    "name_en": "Aldori Duelist",
+    "name_es": "Duelista Aldori",
+    "description_pt": "Tradição incomum de esgrima que desenvolve domínio técnico da espada de duelo Aldori.",
+    "description_en": "An uncommon sword-fighting tradition centered on technical mastery of the Aldori dueling sword.",
+    "description_es": "Una tradición de esgrima poco común centrada en el dominio técnico de la espada de duelo Aldori.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 54,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.crossbow_infiltrator",
+    "name_pt": "Infiltrador de Besta",
+    "name_en": "Crossbow Infiltrator",
+    "name_es": "Infiltrador de ballesta",
+    "description_pt": "Especialista furtivo que oculta bestas adaptadas e ataca com precisão durante infiltrações.",
+    "description_en": "A stealth specialist who conceals adapted crossbows and strikes precisely during infiltrations.",
+    "description_es": "Un especialista furtivo que oculta ballestas adaptadas y ataca con precisión durante infiltraciones.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 56,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.field_propagandist",
+    "name_pt": "Propagandista de Campo",
+    "name_en": "Field Propagandist",
+    "name_es": "Propagandista de campo",
+    "description_pt": "Orador incomum que molda moral, influência e percepção pública em meio a conflitos.",
+    "description_en": "An uncommon orator who shapes morale, influence, and public perception amid conflict.",
+    "description_es": "Un orador poco común que moldea la moral, la influencia y la percepción pública durante los conflictos.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 58,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.guerrilla",
+    "name_pt": "Guerrilheiro",
+    "name_en": "Guerrilla",
+    "name_es": "Guerrillero",
+    "description_pt": "Combatente irregular que usa terreno, mobilidade e ataques oportunos contra forças superiores.",
+    "description_en": "An irregular combatant who uses terrain, mobility, and opportunistic attacks against superior forces.",
+    "description_es": "Un combatiente irregular que usa el terreno, la movilidad y ataques oportunistas contra fuerzas superiores.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 60,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.iridian_choirmaster",
+    "name_pt": "Mestre de Coro Iridiano",
+    "name_en": "Iridian Choirmaster",
+    "name_es": "Maestro de coro iridiano",
+    "description_pt": "Líder musical que sincroniza vozes para sustentar aliados e transformar uma unidade em um coro disciplinado.",
+    "description_en": "A musical leader who synchronizes voices to support allies and turn a unit into a disciplined choir.",
+    "description_es": "Un líder musical que sincroniza voces para apoyar aliados y convertir una unidad en un coro disciplinado.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 62,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.munitions_master",
+    "name_pt": "Mestre de Munições",
+    "name_en": "Munitions Master",
+    "name_es": "Maestro de municiones",
+    "description_pt": "Especialista de campo que prepara, adapta e distribui munições para responder às necessidades do combate.",
+    "description_en": "A field specialist who prepares, adapts, and distributes ammunition to meet combat needs.",
+    "description_es": "Un especialista de campo que prepara, adapta y distribuye municiones para responder a las necesidades del combate.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 64,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.necrologist",
+    "name_pt": "Necrologista",
+    "name_en": "Necrologist",
+    "name_es": "Necrologista",
+    "description_pt": "Estudioso militar da morte que interpreta baixas, restos e fenômenos necromânticos em zonas de guerra.",
+    "description_en": "A military scholar of death who interprets casualties, remains, and necromantic phenomena in war zones.",
+    "description_es": "Un estudioso militar de la muerte que interpreta bajas, restos y fenómenos necrománticos en zonas de guerra.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 66,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.war_mage",
+    "name_pt": "Mago de Guerra",
+    "name_en": "War Mage",
+    "name_es": "Mago de guerra",
+    "description_pt": "Conjurador treinado para aplicar magia sob pressão e cooperar com formações militares.",
+    "description_en": "A spellcaster trained to apply magic under pressure and operate with military formations.",
+    "description_es": "Un lanzador entrenado para aplicar magia bajo presión y colaborar con formaciones militares.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 68,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.blessed",
+    "name_pt": "Abençoado",
+    "name_en": "Blessed One",
+    "name_es": "Bendecido",
+    "description_pt": "Carrega uma bênção divina capaz de curar ferimentos e remover condições nocivas.",
+    "description_en": "Player Core 2 archetype: Blessed One.",
+    "description_es": "Arquetipo de Player Core 2: Bendecido.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 183,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.snarecrafter",
+    "name_pt": "Arapuqueiro",
+    "name_en": "Snarecrafter",
+    "name_es": "Fabricante de trampas",
+    "description_pt": "Transforma materiais comuns em arapucas letais preparadas com rapidez.",
+    "description_en": "Player Core 2 archetype: Snarecrafter.",
+    "description_es": "Arquetipo de Player Core 2: Fabricante de trampas.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 185,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.eldritch_archer",
+    "name_pt": "Arqueiro Místico",
+    "name_en": "Eldritch Archer",
+    "name_es": "Arquero arcano",
+    "description_pt": "Combina magia e disparos para lançar feitiços por meio de ataques à distância.",
+    "description_en": "Player Core 2 archetype: Eldritch Archer.",
+    "description_es": "Arquetipo de Player Core 2: Arquero arcano.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 187,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.archaeologist",
+    "name_pt": "Arqueólogo",
+    "name_en": "Archaeologist",
+    "name_es": "Arqueólogo",
+    "description_pt": "Explora ruínas, identifica relíquias e sobrevive a tumbas perigosas em busca de conhecimento.",
+    "description_en": "Player Core 2 archetype: Archaeologist.",
+    "description_es": "Arquetipo de Player Core 2: Arqueólogo.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 189,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.assassin",
+    "name_pt": "Assassino",
+    "name_en": "Assassin",
+    "name_es": "Asesino",
+    "description_pt": "Planeja ataques precisos e usa venenos, disfarces e preparação para eliminar alvos.",
+    "description_en": "Player Core 2 archetype: Assassin.",
+    "description_es": "Arquetipo de Player Core 2: Asesino.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 190,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.martial_artist",
+    "name_pt": "Artista Marcial",
+    "name_en": "Martial Artist",
+    "name_es": "Artista marcial",
+    "description_pt": "Aperfeiçoa golpes desarmados letais por meio de treinamento físico disciplinado.",
+    "description_en": "Player Core 2 archetype: Martial Artist.",
+    "description_es": "Arquetipo de Player Core 2: Artista marcial.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 191,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.bastion",
+    "name_pt": "Bastião",
+    "name_en": "Bastion",
+    "name_es": "Bastión",
+    "description_pt": "Especializa-se em escudos e reações defensivas para proteger a si e seus aliados.",
+    "description_en": "Player Core 2 archetype: Bastion.",
+    "description_es": "Arquetipo de Player Core 2: Bastión.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 192,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.scout",
+    "name_pt": "Batedor",
+    "name_en": "Scout",
+    "name_es": "Explorador",
+    "description_pt": "Reconhece o terreno, reúne informações e retorna sem ser percebido pelas linhas inimigas.",
+    "description_en": "Player Core 2 archetype: Scout.",
+    "description_es": "Arquetipo de Player Core 2: Explorador.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 193,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.bounty_hunter",
+    "name_pt": "Caçador de Recompensas",
+    "name_en": "Bounty Hunter",
+    "name_es": "Cazarrecompensas",
+    "description_pt": "Rastreia alvos, pesquisa suas fraquezas e os captura por recompensa.",
+    "description_en": "Player Core 2 archetype: Bounty Hunter.",
+    "description_es": "Arquetipo de Player Core 2: Cazarrecompensas.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 194,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.celebrity",
+    "name_pt": "Celebridade",
+    "name_en": "Celebrity",
+    "name_es": "Celebridad",
+    "description_pt": "Usa fama, presença e atuação para conquistar atenção e influenciar multidões.",
+    "description_en": "Player Core 2 archetype: Celebrity.",
+    "description_es": "Arquetipo de Player Core 2: Celebridad.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 197,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.dual_weapon_warrior",
+    "name_pt": "Combatente de Duas Armas",
+    "name_en": "Dual-Weapon Warrior",
+    "name_es": "Combatiente de dos armas",
+    "description_pt": "Treina para lutar com duas armas e atacar com coordenação e velocidade.",
+    "description_en": "Player Core 2 archetype: Dual-Weapon Warrior.",
+    "description_es": "Arquetipo de Player Core 2: Combatiente de dos armas.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 198,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.dandy",
+    "name_pt": "Dândi",
+    "name_en": "Dandy",
+    "name_es": "Dandi",
+    "description_pt": "Domina etiqueta, cultura e estilo refinado para navegar pela alta sociedade.",
+    "description_en": "Player Core 2 archetype: Dandy.",
+    "description_es": "Arquetipo de Player Core 2: Dandi.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 199,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.talisman_dabbler",
+    "name_pt": "Diletante Talismânico",
+    "name_en": "Talisman Dabbler",
+    "name_es": "Aficionado de talismanes",
+    "description_pt": "Prepara talismãs temporários e aprende a extrair poder de pequenos artefatos mágicos.",
+    "description_en": "Player Core 2 archetype: Talisman Dabbler.",
+    "description_es": "Arquetipo de Player Core 2: Aficionado de talismanes.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 200,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.scrounger",
+    "name_pt": "Escarafunchador",
+    "name_en": "Scrounger",
+    "name_es": "Recolector",
+    "description_pt": "Improvisa armas, armaduras e equipamentos temporários com materiais encontrados.",
+    "description_en": "Player Core 2 archetype: Scrounger.",
+    "description_es": "Arquetipo de Player Core 2: Recolector.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 202,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.gladiator",
+    "name_pt": "Gladiador",
+    "name_en": "Gladiator",
+    "name_es": "Gladiador",
+    "description_pt": "Transforma combate competitivo e aplausos da multidão em força e confiança.",
+    "description_en": "Player Core 2 archetype: Gladiator.",
+    "description_es": "Arquetipo de Player Core 2: Gladiador.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 203,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.herbalist",
+    "name_pt": "Herbalista",
+    "name_en": "Herbalist",
+    "name_es": "Herbolario",
+    "description_pt": "Cultiva e prepara remédios e consumíveis alquímicos naturais para tratar aliados.",
+    "description_en": "Player Core 2 archetype: Herbalist.",
+    "description_es": "Arquetipo de Player Core 2: Herbolario.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 204,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.weapon_improviser",
+    "name_pt": "Improvisador de Armas",
+    "name_en": "Weapon Improviser",
+    "name_es": "Improvisador de armas",
+    "description_pt": "Luta eficazmente com qualquer objeto ao alcance, surpreendendo adversários.",
+    "description_en": "Player Core 2 archetype: Weapon Improviser.",
+    "description_es": "Arquetipo de Player Core 2: Improvisador de armas.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 205,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.linguist",
+    "name_pt": "Linguista",
+    "name_en": "Linguist",
+    "name_es": "Lingüista",
+    "description_pt": "Estuda idiomas, códigos e padrões de fala para compreender e manipular comunicação.",
+    "description_en": "Player Core 2 archetype: Linguist.",
+    "description_es": "Arquetipo de Player Core 2: Lingüista.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 206,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.mauler",
+    "name_pt": "Malhador",
+    "name_en": "Mauler",
+    "name_es": "Manejador de armas pesadas",
+    "description_pt": "Usa armas de duas mãos e golpes devastadores para controlar o campo de batalha.",
+    "description_en": "Player Core 2 archetype: Mauler.",
+    "description_es": "Arquetipo de Player Core 2: Manejador de armas pesadas.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 209,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.beastmaster",
+    "name_pt": "Mestre das Feras",
+    "name_en": "Beastmaster",
+    "name_es": "Maestro de bestias",
+    "description_pt": "Forma um vínculo com vários companheiros animais e aprende a comandá-los.",
+    "description_en": "Player Core 2 archetype: Beastmaster.",
+    "description_es": "Arquetipo de Player Core 2: Maestro de bestias.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 213,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.familiar_master",
+    "name_pt": "Mestre em Familiar",
+    "name_en": "Familiar Master",
+    "name_es": "Maestro de familiares",
+    "description_pt": "Aprimora um familiar para que ele ofereça mais habilidades e auxílio mágico.",
+    "description_en": "Player Core 2 archetype: Familiar Master.",
+    "description_es": "Arquetipo de Player Core 2: Maestro de familiares.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 215,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.pirate",
+    "name_pt": "Pirata",
+    "name_en": "Pirate",
+    "name_es": "Pirata",
+    "description_pt": "Domina combate naval, cordames e a vida perigosa entre navios e portos.",
+    "description_en": "Player Core 2 archetype: Pirate.",
+    "description_es": "Arquetipo de Player Core 2: Pirata.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 216,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.scroll_trickster",
+    "name_pt": "Trapaceiro de Pergaminhos",
+    "name_en": "Scroll Trickster",
+    "name_es": "Tramposo de pergaminos",
+    "description_pt": "Manipula pergaminhos temporários para ampliar suas opções mágicas.",
+    "description_en": "Player Core 2 archetype: Scroll Trickster.",
+    "description_es": "Arquetipo de Player Core 2: Tramposo de pergaminos.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 219,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.poisoner",
+    "name_pt": "Veneficista",
+    "name_en": "Poisoner",
+    "name_es": "Envenenador",
+    "description_pt": "Prepara e aplica venenos com precisão para explorar vulnerabilidades.",
+    "description_en": "Player Core 2 archetype: Poisoner.",
+    "description_es": "Arquetipo de Player Core 2: Envenenador.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 220,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.vigilante",
+    "name_pt": "Vigilante",
+    "name_en": "Vigilante",
+    "name_es": "Vigilante",
+    "description_pt": "Mantém uma identidade dupla para investigar ameaças e agir longe dos olhos públicos.",
+    "description_en": "Player Core 2 archetype: Vigilante.",
+    "description_es": "Arquetipo de Player Core 2: Vigilante.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 221,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.viking",
+    "name_pt": "Viking",
+    "name_en": "Viking",
+    "name_es": "Vikingo",
+    "description_pt": "Combina resistência, navegação e ferocidade marcial herdadas de uma cultura guerreira.",
+    "description_en": "Player Core 2 archetype: Viking.",
+    "description_es": "Arquetipo de Player Core 2: Vikingo.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 223,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.exorcist",
+    "name_pt": "Exorcista",
+    "name_en": "Exorcist",
+    "name_es": "Exorcista",
+    "description_pt": "Pacifica espíritos e transforma fragmentos de assombrações em poder purificador.",
+    "description_en": "Book of the Dead playable archetype: Exorcist.",
+    "description_es": "Arquetipo jugable de Libro de los muertos: Exorcista.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "uncommon",
+    "ruleset": "legacy",
+    "source_book": "Livro dos Mortos (pré-Remaster)",
+    "source_page": 22,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.soul_warden",
+    "name_pt": "Guardião das Almas",
+    "name_en": "Soul Warden",
+    "name_es": "Guardián de almas",
+    "description_pt": "Protege almas e usa um símbolo sagrado para resistir às ameaças da desmorte.",
+    "description_en": "Book of the Dead playable archetype: Soul Warden.",
+    "description_es": "Arquetipo jugable de Libro de los muertos: Guardián de almas.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "uncommon",
+    "ruleset": "legacy",
+    "source_book": "Livro dos Mortos (pré-Remaster)",
+    "source_page": 24,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.undead_slayer",
+    "name_pt": "Matador de Mortos-Vivos",
+    "name_en": "Undead Slayer",
+    "name_es": "Cazador de no muertos",
+    "description_pt": "Estuda mortos-vivos e domina ferramentas para explorar suas fraquezas.",
+    "description_en": "Book of the Dead playable archetype: Undead Slayer.",
+    "description_es": "Arquetipo jugable de Libro de los muertos: Cazador de no muertos.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "uncommon",
+    "ruleset": "legacy",
+    "source_book": "Livro dos Mortos (pré-Remaster)",
+    "source_page": 26,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.consecrated_necromancer",
+    "name_pt": "Necromante Consagrado",
+    "name_en": "Consecrated Necromancer",
+    "name_es": "Nigromante consagrado",
+    "description_pt": "Canaliza necromancia por uma tradição divina, ocultista ou outra tradição compatível.",
+    "description_en": "Book of the Dead playable archetype: Consecrated Necromancer.",
+    "description_es": "Arquetipo jugable de Libro de los muertos: Nigromante consagrado.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Livro dos Mortos (pré-Remaster)",
+    "source_page": 28,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.reanimator",
+    "name_pt": "Reanimador",
+    "name_en": "Reanimator",
+    "name_es": "Reanimador",
+    "description_pt": "Cria e comanda servos mortos-vivos como extensão de sua prática necromântica.",
+    "description_en": "Book of the Dead playable archetype: Reanimator.",
+    "description_es": "Arquetipo jugable de Libro de los muertos: Reanimador.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "uncommon",
+    "ruleset": "legacy",
+    "source_book": "Livro dos Mortos (pré-Remaster)",
+    "source_page": 34,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.ghoul",
+    "name_pt": "Carniçal",
+    "name_en": "Ghoul",
+    "name_es": "Necrófago",
+    "description_pt": "A fome da desmorte concede garras, mordida e capacidades de um carniçal.",
+    "description_en": "Book of the Dead playable archetype: Ghoul.",
+    "description_es": "Arquetipo jugable de Libro de los muertos: Necrófago.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Livro dos Mortos (pré-Remaster)",
+    "source_page": 46,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.ghost",
+    "name_pt": "Fantasma",
+    "name_en": "Ghost",
+    "name_es": "Fantasma",
+    "description_pt": "Permanece ligado ao mundo dos vivos por negócios inacabados e laços poderosos.",
+    "description_en": "Book of the Dead playable archetype: Ghost.",
+    "description_es": "Arquetipo jugable de Libro de los muertos: Fantasma.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Livro dos Mortos (pré-Remaster)",
+    "source_page": 52,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.lich",
+    "name_pt": "Lich",
+    "name_en": "Lich",
+    "name_es": "Liche",
+    "description_pt": "Prende sua alma a uma filactéria e busca a imortalidade por meio de necromancia.",
+    "description_en": "Book of the Dead playable archetype: Lich.",
+    "description_es": "Arquetipo jugable de Libro de los muertos: Liche.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Livro dos Mortos (pré-Remaster)",
+    "source_page": 54,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.mummy",
+    "name_pt": "Múmia",
+    "name_en": "Mummy",
+    "name_es": "Momia",
+    "description_pt": "Retorna como morto-vivo preservado, envolto em maldições e ritos funerários.",
+    "description_en": "Book of the Dead playable archetype: Mummy.",
+    "description_es": "Arquetipo jugable de Libro de los muertos: Momia.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Livro dos Mortos (pré-Remaster)",
+    "source_page": 56,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.vampire",
+    "name_pt": "Vampiro",
+    "name_en": "Vampire",
+    "name_es": "Vampiro",
+    "description_pt": "Sobrevive como criatura da noite, vulnerável à luz do dia e sedenta por sangue.",
+    "description_en": "Book of the Dead playable archetype: Vampire.",
+    "description_es": "Arquetipo jugable de Libro de los muertos: Vampiro.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Livro dos Mortos (pré-Remaster)",
+    "source_page": 58,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.zombie",
+    "name_pt": "Zumbi",
+    "name_en": "Zombie",
+    "name_es": "Zombi",
+    "description_pt": "Um corpo reanimado que preserva parte da identidade enquanto luta contra a decomposição.",
+    "description_en": "Book of the Dead playable archetype: Zombie.",
+    "description_es": "Arquetipo jugable de Libro de los muertos: Zombi.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Livro dos Mortos (pré-Remaster)",
+    "source_page": 60,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.beastmaster_howl_expansion",
+    "name_pt": "Expansão do Mestre das Feras",
+    "name_en": "Beastmaster Expansion",
+    "name_es": "Expansión del Maestro de bestias",
+    "description_pt": "Expande as opções de companheiros e a progressão do arquétipo Mestre das Feras.",
+    "description_en": "Expands companion options and the Beastmaster archetype progression.",
+    "description_es": "Amplía las opciones de compañeros y la progresión del arquetipo Maestro de bestias.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Howl of the Wild (Remaster, atualização de errata)",
+    "source_page": 66,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.clawdancer",
+    "name_pt": "Dançarino das Garras",
+    "name_en": "Clawdancer",
+    "name_es": "Danzagarras",
+    "description_pt": "Arquétipo marcial que transforma movimento e ataques naturais em uma dança predatória.",
+    "description_en": "A martial archetype that turns movement and natural attacks into a predatory dance.",
+    "description_es": "Un arquetipo marcial que convierte el movimiento y los ataques naturales en una danza depredadora.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Howl of the Wild (Remaster, atualização de errata)",
+    "source_page": 68,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.ostilli_host",
+    "name_pt": "Hospedeiro de Ostilli",
+    "name_en": "Ostilli Host",
+    "name_es": "Anfitrión ostilli",
+    "description_pt": "Arquétipo que abriga uma criatura ostilli simbiótica e desenvolve seus poderes.",
+    "description_en": "An archetype that houses a symbiotic ostilli creature and develops its powers.",
+    "description_es": "Un arquetipo que alberga una criatura ostilli simbiótica y desarrolla sus poderes.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Howl of the Wild (Remaster, atualização de errata)",
+    "source_page": 70,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.swarmkeeper",
+    "name_pt": "Guardião do Enxame",
+    "name_en": "Swarmkeeper",
+    "name_es": "Guardián del enjambre",
+    "description_pt": "Arquétipo que conduz e combate ao lado de um enxame de pequenas criaturas.",
+    "description_en": "An archetype that commands and fights alongside a swarm of tiny creatures.",
+    "description_es": "Un arquetipo que dirige y combate junto a un enjambre de criaturas diminutas.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Howl of the Wild (Remaster, atualização de errata)",
+    "source_page": 72,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.thlipit_contestant",
+    "name_pt": "Competidor Thlipit",
+    "name_en": "Thlipit Contestant",
+    "name_es": "Competidor thlipit",
+    "description_pt": "Arquétipo inspirado no esporte thlipit, com técnicas de arremesso, deslocamento e competição.",
+    "description_en": "An archetype inspired by the thlipit sport, with throwing, movement, and competition techniques.",
+    "description_es": "Un arquetipo inspirado en el deporte thlipit, con técnicas de lanzamiento, movimiento y competición.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Howl of the Wild (Remaster, atualização de errata)",
+    "source_page": 74,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.werecreature",
+    "name_pt": "Licantropo",
+    "name_en": "Werecreature",
+    "name_es": "Licántropo",
+    "description_pt": "Arquétipo que manifesta uma forma híbrida bestial e poderes de uma criatura metamórfica.",
+    "description_en": "An archetype that manifests a bestial hybrid form and shapeshifter powers.",
+    "description_es": "Un arquetipo que manifiesta una forma híbrida bestial y poderes de cambiaformas.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Howl of the Wild (Remaster, atualização de errata)",
+    "source_page": 76,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.wild_mimic",
+    "name_pt": "Mímico Selvagem",
+    "name_en": "Wild Mimic",
+    "name_es": "Mímico salvaje",
+    "description_pt": "Arquétipo que imita formas, movimentos e características de animais selvagens.",
+    "description_en": "An archetype that mimics the forms, movements, and features of wild animals.",
+    "description_es": "Un arquetipo que imita las formas, movimientos y rasgos de animales salvajes.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Howl of the Wild (Remaster, atualização de errata)",
+    "source_page": 80,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.winged_warrior",
+    "name_pt": "Guerreiro Alado",
+    "name_en": "Winged Warrior",
+    "name_es": "Guerrero alado",
+    "description_pt": "Arquétipo aéreo que combina voo, mobilidade e combate marcial.",
+    "description_en": "An aerial archetype combining flight, mobility, and martial combat.",
+    "description_es": "Un arquetipo aéreo que combina vuelo, movilidad y combate marcial.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Howl of the Wild (Remaster, atualização de errata)",
+    "source_page": 82,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.dark_archive.alter_ego",
+    "name_pt": "Alter Ego",
+    "name_en": "Alter Ego",
+    "name_es": "Alter ego",
+    "description_pt": "Arquétipo de Dark Archive; requisitos e talentos individuais oficial de oficial.",
+    "description_en": "Dark Archive archetype; individual prerequisites and feats pending review.",
+    "description_es": "Arquetipo de Dark Archive; requisitos y dotes individuales pendientes de revisión.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 126,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.dark_archive.living_vessel",
+    "name_pt": "Vaso Vivo",
+    "name_en": "Living Vessel",
+    "name_es": "Vasija viviente",
+    "description_pt": "Arquétipo de Dark Archive; requisitos e talentos individuais oficial de oficial.",
+    "description_en": "Dark Archive archetype; individual prerequisites and feats pending review.",
+    "description_es": "Arquetipo de Dark Archive; requisitos y dotes individuales pendientes de revisión.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 140,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.dark_archive.pactbinder",
+    "name_pt": "Vinculador de Pactos",
+    "name_en": "Pactbinder",
+    "name_es": "Vinculador de pactos",
+    "description_pt": "Arquétipo de Dark Archive; requisitos e talentos individuais oficial de oficial.",
+    "description_en": "Dark Archive archetype; individual prerequisites and feats pending review.",
+    "description_es": "Arquetipo de Dark Archive; requisitos y dotes individuales pendientes de revisión.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 166,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.dark_archive.curse_maelstrom",
+    "name_pt": "Maremoto de Maldições",
+    "name_en": "Curse Maelstrom",
+    "name_es": "Maremoto de maldiciones",
+    "description_pt": "Arquétipo de Dark Archive; requisitos e talentos individuais oficial de oficial.",
+    "description_en": "Dark Archive archetype; individual prerequisites and feats pending review.",
+    "description_es": "Arquetipo de Dark Archive; requisitos y dotes individuales pendientes de revisión.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 168,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.dark_archive.time_mage",
+    "name_pt": "Mago do Tempo",
+    "name_en": "Time Mage",
+    "name_es": "Mago del tiempo",
+    "description_pt": "Arquétipo de Dark Archive; requisitos e talentos individuais oficial de oficial.",
+    "description_en": "Dark Archive archetype; individual prerequisites and feats pending review.",
+    "description_es": "Arquetipo de Dark Archive; requisitos y dotes individuales pendientes de revisión.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 184,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.dark_archive.chronoskimmer",
+    "name_pt": "Crononavegador",
+    "name_en": "Chronoskimmer",
+    "name_es": "Crononavegante",
+    "description_pt": "Arquétipo de Dark Archive; requisitos e talentos individuais oficial de oficial.",
+    "description_en": "Dark Archive archetype; individual prerequisites and feats pending review.",
+    "description_es": "Arquetipo de Dark Archive; requisitos y dotes individuales pendientes de revisión.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 186,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.dark_archive.psychic_duelist",
+    "name_pt": "Duelista Psíquico",
+    "name_en": "Psychic Duelist",
+    "name_es": "Duelista psíquico",
+    "description_pt": "Arquétipo de Dark Archive; requisitos e talentos individuais oficial de oficial.",
+    "description_en": "Dark Archive archetype; individual prerequisites and feats pending review.",
+    "description_es": "Arquetipo de Dark Archive; requisitos y dotes individuales pendientes de revisión.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 203,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.dark_archive.mind_smith",
+    "name_pt": "Ferreiro da Mente",
+    "name_en": "Mind Smith",
+    "name_es": "Forjador mental",
+    "description_pt": "Arquétipo de Dark Archive; requisitos e talentos individuais oficial de oficial.",
+    "description_en": "Dark Archive archetype; individual prerequisites and feats pending review.",
+    "description_es": "Arquetipo de Dark Archive; requisitos y dotes individuales pendientes de revisión.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 204,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.dark_archive.sleepwalker",
+    "name_pt": "Sonâmbulo",
+    "name_en": "Sleepwalker",
+    "name_es": "Sonámbulo",
+    "description_pt": "Arquétipo de Dark Archive; requisitos e talentos individuais oficial de oficial.",
+    "description_en": "Dark Archive archetype; individual prerequisites and feats pending review.",
+    "description_es": "Arquetipo de Dark Archive; requisitos y dotes individuales pendientes de revisión.",
+    "prerequisite": null,
+    "dedication_feat_id": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 206,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.book_of_dead.exorcist",
+    "name_pt": "Exorcista",
+    "name_en": "Exorcist",
+    "name_es": "Exorcista",
+    "description_pt": "Arquétipo de dedicação do Livro dos Mortos; requisitos e talentos individuais em oficial.",
+    "description_en": "Book of the Dead dedication archetype; individual prerequisites and feats under review.",
+    "description_es": "Arquetipo de dedicación del Libro de los Muertos; requisitos y dotes individuales en revisión.",
+    "prerequisite": [
+      "Treinado em Religião"
+    ],
+    "dedication_feat_id": null,
+    "traits": [
+      "Arquétipo",
+      "Morto-Vivo"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Livro dos Mortos (pré-Remaster)",
+    "source_page": 22,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.book_of_dead.soul_warden",
+    "name_pt": "Guardião das Almas",
+    "name_en": "Soul Warden",
+    "name_es": "Guardián de almas",
+    "description_pt": "Arquétipo de dedicação do Livro dos Mortos; requisitos e talentos individuais em oficial.",
+    "description_en": "Book of the Dead dedication archetype; individual prerequisites and feats under review.",
+    "description_es": "Arquetipo de dedicación del Libro de los Muertos; requisitos y dotes individuales en revisión.",
+    "prerequisite": [
+      "Treinado em Religião"
+    ],
+    "dedication_feat_id": null,
+    "traits": [
+      "Arquétipo",
+      "Morto-Vivo"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Livro dos Mortos (pré-Remaster)",
+    "source_page": 24,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.book_of_dead.consecrated_necromancer",
+    "name_pt": "Necromante Consagrado",
+    "name_en": "Consecrated Necromancer",
+    "name_es": "Nigromante consagrado",
+    "description_pt": "Arquétipo de dedicação do Livro dos Mortos; requisitos e talentos individuais em oficial.",
+    "description_en": "Book of the Dead dedication archetype; individual prerequisites and feats under review.",
+    "description_es": "Arquetipo de dedicación del Libro de los Muertos; requisitos y dotes individuales en revisión.",
+    "prerequisite": [
+      "Treinado em Religião ou Ocultismo"
+    ],
+    "dedication_feat_id": null,
+    "traits": [
+      "Arquétipo",
+      "Morto-Vivo"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Livro dos Mortos (pré-Remaster)",
+    "source_page": 28,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.book_of_dead.reanimator",
+    "name_pt": "Reanimador",
+    "name_en": "Reanimator",
+    "name_es": "Reanimador",
+    "description_pt": "Arquétipo de dedicação do Livro dos Mortos; requisitos e talentos individuais em oficial.",
+    "description_en": "Book of the Dead dedication archetype; individual prerequisites and feats under review.",
+    "description_es": "Arquetipo de dedicación del Libro de los Muertos; requisitos y dotes individuales en revisión.",
+    "prerequisite": [
+      "Treinado em Medicina ou Ocultismo"
+    ],
+    "dedication_feat_id": null,
+    "traits": [
+      "Arquétipo",
+      "Morto-Vivo"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Livro dos Mortos (pré-Remaster)",
+    "source_page": 34,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.book_of_dead.undead_master",
+    "name_pt": "Mestre de Mortos-Vivos",
+    "name_en": "Undead Master",
+    "name_es": "Maestro de muertos vivientes",
+    "description_pt": "Arquétipo de dedicação do Livro dos Mortos; requisitos e talentos individuais em oficial.",
+    "description_en": "Book of the Dead dedication archetype; individual prerequisites and feats under review.",
+    "description_es": "Arquetipo de dedicación del Libro de los Muertos; requisitos y dotes individuales en revisión.",
+    "prerequisite": [
+      "Treinado em Natureza, Ocultismo ou Religião"
+    ],
+    "dedication_feat_id": null,
+    "traits": [
+      "Arquétipo",
+      "Morto-Vivo"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Livro dos Mortos (pré-Remaster)",
+    "source_page": 41,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "archetype.book_of_dead.lich",
+    "name_pt": "Lich",
+    "name_en": "Lich",
+    "name_es": "Liche",
+    "description_pt": "Arquétipo de dedicação do Livro dos Mortos; requisitos e talentos individuais em oficial.",
+    "description_en": "Book of the Dead dedication archetype; individual prerequisites and feats under review.",
+    "description_es": "Arquetipo de dedicación del Libro de los Muertos; requisitos y dotes individuales en revisión.",
+    "prerequisite": [
+      "Você é um conjurador e cumpre os requisitos de iniciação do arquétipo"
+    ],
+    "dedication_feat_id": null,
+    "traits": [
+      "Arquétipo",
+      "Morto-Vivo"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Livro dos Mortos (pré-Remaster)",
+    "source_page": 54,
+    "data": {
+      "feats": [],
+      "needs_review": false
+    }
+  }
+]

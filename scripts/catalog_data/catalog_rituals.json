@@ -1,0 +1,715 @@
+[
+  {
+    "id": "ritual.animate_object",
+    "name_pt": "Animar Objeto",
+    "name_en": "Animate Object",
+    "name_es": "Animar objeto",
+    "description_pt": "Transforma um objeto em uma criatura animada; um resultado superior pode permitir controlá-la como lacaio.",
+    "description_en": "Transforms an object into an animated creature; a superior result can allow it to be controlled as a minion.",
+    "description_es": "Transforma un objeto en una criatura animada; un resultado superior puede permitir controlarla como esbirro.",
+    "rank": 2,
+    "cast_time": "1 dia",
+    "primary_check": null,
+    "secondary_casters": 0,
+    "secondary_checks": [],
+    "traits": [],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 390,
+    "data": {
+      "cost": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ritual.rune_trap",
+    "name_pt": "Armadilha Rúnica",
+    "name_en": "Rune Trap",
+    "name_es": "Trampa rúnica",
+    "description_pt": "Vincula uma magia hostil a uma runa ativada por senha, acionamento ou aproximação.",
+    "description_en": "Binds a hostile spell to a rune activated by a password, trigger, or approach.",
+    "description_es": "Vincula un conjuro hostil a una runa activada por contraseña, desencadenante o aproximación.",
+    "rank": 3,
+    "cast_time": "1 dia",
+    "primary_check": null,
+    "secondary_casters": 0,
+    "secondary_checks": [],
+    "traits": [],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 390,
+    "data": {
+      "cost": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ritual.call_spirit",
+    "name_pt": "Chamar Espírito",
+    "name_en": "Call Spirit",
+    "name_es": "Llamar espíritu",
+    "description_pt": "Chama pelo nome um espírito do além para uma conversa breve, usando uma conexão pessoal com ele.",
+    "description_en": "Calls a named spirit from the afterlife for a brief conversation using a personal connection to it.",
+    "description_es": "Llama por su nombre a un espíritu del más allá para una conversación breve usando una conexión personal.",
+    "rank": 5,
+    "cast_time": "1 dia",
+    "primary_check": null,
+    "secondary_casters": 0,
+    "secondary_checks": [],
+    "traits": [],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 391,
+    "data": {
+      "cost": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ritual.consecrate",
+    "name_pt": "Consagrar",
+    "name_en": "Consecrate",
+    "name_es": "Consagrar",
+    "description_pt": "Dedica um local a uma divindade, favorecendo seus adoradores e dificultando a ação de criaturas anátema.",
+    "description_en": "Dedicates a site to a deity, favoring worshippers and hindering creatures that are anathema to that deity.",
+    "description_es": "Dedica un lugar a una deidad, favorece a sus fieles y dificulta la acción de criaturas anatema.",
+    "rank": 2,
+    "cast_time": "1 dia",
+    "primary_check": null,
+    "secondary_casters": 0,
+    "secondary_checks": [],
+    "traits": [],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 392,
+    "data": {
+      "cost": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ritual.rage_elements.bountiful_oasis",
+    "name_pt": "Oásis Abundante",
+    "name_en": "Bountiful Oasis",
+    "name_es": "Oasis abundante",
+    "description_pt": "Redireciona água subterrânea para criar uma fonte ou oásis que sustenta uma pequena comunidade.",
+    "description_en": "Redirects underground water to create a spring or oasis capable of supporting a small community.",
+    "description_es": "Redirige agua subterránea para crear un manantial u oasis capaz de sostener una pequeña comunidad.",
+    "rank": 5,
+    "cast_time": "1 dia",
+    "primary_check": null,
+    "secondary_casters": 0,
+    "secondary_checks": [],
+    "traits": [],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Rage of Elements (Remaster)",
+    "source_page": 175,
+    "data": {
+      "cost": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ritual.rage_elements.sky_signs",
+    "name_pt": "Sinais no Céu",
+    "name_en": "Sky Signs",
+    "name_es": "Señales en el cielo",
+    "description_pt": "Exibe uma mensagem simples no céu usando nuvens, auroras ou outro fenômeno atmosférico.",
+    "description_en": "Displays a simple message across the sky using clouds, auroras, or another atmospheric phenomenon.",
+    "description_es": "Muestra un mensaje sencillo en el cielo usando nubes, auroras u otro fenómeno atmosférico.",
+    "rank": 6,
+    "cast_time": "1 dia",
+    "primary_check": null,
+    "secondary_casters": 0,
+    "secondary_checks": [],
+    "traits": [],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Rage of Elements (Remaster)",
+    "source_page": 73,
+    "data": {
+      "cost": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ritual.war_immortals.mythic.band_of_heroes",
+    "name_pt": "Bando de Heróis",
+    "name_en": "Band of Heroes",
+    "name_es": "Banda de héroes",
+    "description_pt": "Ritual mítico de War of Immortals, ranque 3; requer Ponto Mítico.",
+    "description_en": "War of Immortals mythic ritual, rank 3; requires a Mythic Point.",
+    "description_es": "Ritual mítico de War of Immortals, rango 3; requiere un Punto Mítico.",
+    "rank": 3,
+    "cast_time": "1 dia",
+    "primary_check": null,
+    "secondary_casters": 0,
+    "secondary_checks": [],
+    "traits": [
+      "Mítico"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Guerra dos Imortais (Remaster)",
+    "source_page": 159,
+    "data": {
+      "cost": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ritual.war_immortals.mythic.wild_feast",
+    "name_pt": "Banquete Selvagem",
+    "name_en": "Wild Feast",
+    "name_es": "Festín salvaje",
+    "description_pt": "Ritual mítico de War of Immortals, ranque 4; requer Ponto Mítico.",
+    "description_en": "War of Immortals mythic ritual, rank 4; requires a Mythic Point.",
+    "description_es": "Ritual mítico de War of Immortals, rango 4; requiere un Punto Mítico.",
+    "rank": 4,
+    "cast_time": "1 dia",
+    "primary_check": null,
+    "secondary_casters": 0,
+    "secondary_checks": [],
+    "traits": [
+      "Mítico"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Guerra dos Imortais (Remaster)",
+    "source_page": 159,
+    "data": {
+      "cost": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ritual.war_immortals.mythic.world_in_shadow",
+    "name_pt": "Mundo nas Sombras",
+    "name_en": "World in Shadow",
+    "name_es": "Mundo en sombras",
+    "description_pt": "Ritual mítico de War of Immortals, ranque 5; requer Ponto Mítico.",
+    "description_en": "War of Immortals mythic ritual, rank 5; requires a Mythic Point.",
+    "description_es": "Ritual mítico de War of Immortals, rango 5; requiere un Punto Mítico.",
+    "rank": 5,
+    "cast_time": "1 dia",
+    "primary_check": null,
+    "secondary_casters": 0,
+    "secondary_checks": [],
+    "traits": [
+      "Mítico"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Guerra dos Imortais (Remaster)",
+    "source_page": 160,
+    "data": {
+      "cost": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ritual.war_immortals.mythic.kaiju_ward",
+    "name_pt": "Proteção contra Kaiju",
+    "name_en": "Kaiju Ward",
+    "name_es": "Salvaguarda contra kaiju",
+    "description_pt": "Ritual mítico de War of Immortals, ranque 6; requer Ponto Mítico.",
+    "description_en": "War of Immortals mythic ritual, rank 6; requires a Mythic Point.",
+    "description_es": "Ritual mítico de War of Immortals, rango 6; requiere un Punto Mítico.",
+    "rank": 6,
+    "cast_time": "1 dia",
+    "primary_check": null,
+    "secondary_casters": 0,
+    "secondary_checks": [],
+    "traits": [
+      "Mítico"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Guerra dos Imortais (Remaster)",
+    "source_page": 160,
+    "data": {
+      "cost": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ritual.war_immortals.mythic.city_of_sin",
+    "name_pt": "Cidade do Pecado",
+    "name_en": "City of Sin",
+    "name_es": "Ciudad del pecado",
+    "description_pt": "Ritual mítico de War of Immortals, ranque 7; requer Ponto Mítico.",
+    "description_en": "War of Immortals mythic ritual, rank 7; requires a Mythic Point.",
+    "description_es": "Ritual mítico de War of Immortals, rango 7; requiere un Punto Mítico.",
+    "rank": 7,
+    "cast_time": "1 dia",
+    "primary_check": null,
+    "secondary_casters": 0,
+    "secondary_checks": [],
+    "traits": [
+      "Mítico"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Guerra dos Imortais (Remaster)",
+    "source_page": 159,
+    "data": {
+      "cost": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ritual.war_immortals.mythic.unbearable_cacophony",
+    "name_pt": "Cacofonia Insuportável",
+    "name_en": "Unbearable Cacophony",
+    "name_es": "Cacofonía insoportable",
+    "description_pt": "Ritual mítico de War of Immortals, ranque 7; requer Ponto Mítico.",
+    "description_en": "War of Immortals mythic ritual, rank 7; requires a Mythic Point.",
+    "description_es": "Ritual mítico de War of Immortals, rango 7; requiere un Punto Mítico.",
+    "rank": 7,
+    "cast_time": "1 dia",
+    "primary_check": null,
+    "secondary_casters": 0,
+    "secondary_checks": [],
+    "traits": [
+      "Mítico"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Guerra dos Imortais (Remaster)",
+    "source_page": 160,
+    "data": {
+      "cost": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ritual.war_immortals.mythic.awaken_curse",
+    "name_pt": "Despertar Maldição",
+    "name_en": "Awaken Curse",
+    "name_es": "Despertar maldición",
+    "description_pt": "Ritual mítico de War of Immortals, ranque 8; requer Ponto Mítico.",
+    "description_en": "War of Immortals mythic ritual, rank 8; requires a Mythic Point.",
+    "description_es": "Ritual mítico de War of Immortals, rango 8; requiere un Punto Mítico.",
+    "rank": 8,
+    "cast_time": "1 dia",
+    "primary_check": null,
+    "secondary_casters": 0,
+    "secondary_checks": [],
+    "traits": [
+      "Mítico"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Guerra dos Imortais (Remaster)",
+    "source_page": 158,
+    "data": {
+      "cost": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ritual.war_immortals.mythic.create_demiplane",
+    "name_pt": "Criar Semiplano",
+    "name_en": "Create Demiplane",
+    "name_es": "Crear semiplano",
+    "description_pt": "Ritual mítico de War of Immortals, ranque 8; requer Ponto Mítico.",
+    "description_en": "War of Immortals mythic ritual, rank 8; requires a Mythic Point.",
+    "description_es": "Ritual mítico de War of Immortals, rango 8; requiere un Punto Mítico.",
+    "rank": 8,
+    "cast_time": "1 dia",
+    "primary_check": null,
+    "secondary_casters": 0,
+    "secondary_checks": [],
+    "traits": [
+      "Mítico"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Guerra dos Imortais (Remaster)",
+    "source_page": 159,
+    "data": {
+      "cost": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ritual.war_immortals.mythic.freedom",
+    "name_pt": "Liberdade",
+    "name_en": "Freedom",
+    "name_es": "Libertad",
+    "description_pt": "Ritual mítico de War of Immortals, ranque 8; requer Ponto Mítico.",
+    "description_en": "War of Immortals mythic ritual, rank 8; requires a Mythic Point.",
+    "description_es": "Ritual mítico de War of Immortals, rango 8; requiere un Punto Mítico.",
+    "rank": 8,
+    "cast_time": "1 dia",
+    "primary_check": null,
+    "secondary_casters": 0,
+    "secondary_checks": [],
+    "traits": [
+      "Mítico"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Guerra dos Imortais (Remaster)",
+    "source_page": 159,
+    "data": {
+      "cost": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ritual.war_immortals.mythic.imprisonment",
+    "name_pt": "Aprisionamento",
+    "name_en": "Imprisonment",
+    "name_es": "Aprisionamiento",
+    "description_pt": "Ritual mítico de War of Immortals, ranque 8; requer Ponto Mítico.",
+    "description_en": "War of Immortals mythic ritual, rank 8; requires a Mythic Point.",
+    "description_es": "Ritual mítico de War of Immortals, rango 8; requiere un Punto Mítico.",
+    "rank": 8,
+    "cast_time": "1 dia",
+    "primary_check": null,
+    "secondary_casters": 0,
+    "secondary_checks": [],
+    "traits": [
+      "Mítico"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Guerra dos Imortais (Remaster)",
+    "source_page": 160,
+    "data": {
+      "cost": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ritual.war_immortals.mythic.curse_of_calamity",
+    "name_pt": "Maldição da Calamidade",
+    "name_en": "Curse of Calamity",
+    "name_es": "Maldición de calamidad",
+    "description_pt": "Ritual mítico de War of Immortals, ranque 9; requer Ponto Mítico.",
+    "description_en": "War of Immortals mythic ritual, rank 9; requires a Mythic Point.",
+    "description_es": "Ritual mítico de War of Immortals, rango 9; requiere un Punto Mítico.",
+    "rank": 9,
+    "cast_time": "1 dia",
+    "primary_check": null,
+    "secondary_casters": 0,
+    "secondary_checks": [],
+    "traits": [
+      "Mítico"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Guerra dos Imortais (Remaster)",
+    "source_page": 160,
+    "data": {
+      "cost": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ritual.war_immortals.mythic.oceans_roar",
+    "name_pt": "Rugido do Oceano",
+    "name_en": "Ocean's Roar",
+    "name_es": "Rugido del océano",
+    "description_pt": "Ritual mítico de War of Immortals, ranque 9; requer Ponto Mítico.",
+    "description_en": "War of Immortals mythic ritual, rank 9; requires a Mythic Point.",
+    "description_es": "Ritual mítico de War of Immortals, rango 9; requiere un Punto Mítico.",
+    "rank": 9,
+    "cast_time": "1 dia",
+    "primary_check": null,
+    "secondary_casters": 0,
+    "secondary_checks": [],
+    "traits": [
+      "Mítico"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Guerra dos Imortais (Remaster)",
+    "source_page": 161,
+    "data": {
+      "cost": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ritual.war_immortals.mythic.void_harvest",
+    "name_pt": "Colheita do Vazio",
+    "name_en": "Void Harvest",
+    "name_es": "Cosecha del vacío",
+    "description_pt": "Ritual mítico de War of Immortals, ranque 9; requer Ponto Mítico.",
+    "description_en": "War of Immortals mythic ritual, rank 9; requires a Mythic Point.",
+    "description_es": "Ritual mítico de War of Immortals, rango 9; requiere un Punto Mítico.",
+    "rank": 9,
+    "cast_time": "1 dia",
+    "primary_check": null,
+    "secondary_casters": 0,
+    "secondary_checks": [],
+    "traits": [
+      "Mítico"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Guerra dos Imortais (Remaster)",
+    "source_page": 161,
+    "data": {
+      "cost": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ritual.battlecry.siege.army_of_shadows",
+    "name_pt": "Exército de Sombras",
+    "name_en": "Army of Shadows",
+    "name_es": "Ejército de sombras",
+    "description_pt": "Ritual de cerco de Battlecry!, ranque 2.",
+    "description_en": "Battlecry! siege ritual, rank 2.",
+    "description_es": "Ritual de asedio de Battlecry!, rango 2.",
+    "rank": 2,
+    "cast_time": "1 dia",
+    "primary_check": null,
+    "secondary_casters": 0,
+    "secondary_checks": [],
+    "traits": [
+      "Cerco"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 92,
+    "data": {
+      "cost": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ritual.battlecry.siege.oil_slicked_walls",
+    "name_pt": "Muralhas Escorregadias de Óleo",
+    "name_en": "Oil-Slicked Walls",
+    "name_es": "Muros aceitosos",
+    "description_pt": "Ritual de cerco de Battlecry!, ranque 2.",
+    "description_en": "Battlecry! siege ritual, rank 2.",
+    "description_es": "Ritual de asedio de Battlecry!, rango 2.",
+    "rank": 2,
+    "cast_time": "1 dia",
+    "primary_check": null,
+    "secondary_casters": 0,
+    "secondary_checks": [],
+    "traits": [
+      "Cerco"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 93,
+    "data": {
+      "cost": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ritual.battlecry.siege.secure_siege_weapons",
+    "name_pt": "Proteger Armas de Cerco",
+    "name_en": "Secure Siege Weapons",
+    "name_es": "Asegurar armas de asedio",
+    "description_pt": "Ritual de cerco de Battlecry!, ranque 3.",
+    "description_en": "Battlecry! siege ritual, rank 3.",
+    "description_es": "Ritual de asedio de Battlecry!, rango 3.",
+    "rank": 3,
+    "cast_time": "1 dia",
+    "primary_check": null,
+    "secondary_casters": 0,
+    "secondary_checks": [],
+    "traits": [
+      "Cerco"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 94,
+    "data": {
+      "cost": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ritual.battlecry.siege.reinforced_rations",
+    "name_pt": "Rações Reforçadas",
+    "name_en": "Reinforced Rations",
+    "name_es": "Raciones reforzadas",
+    "description_pt": "Ritual de cerco de Battlecry!, ranque 4.",
+    "description_en": "Battlecry! siege ritual, rank 4.",
+    "description_es": "Ritual de asedio de Battlecry!, rango 4.",
+    "rank": 4,
+    "cast_time": "1 dia",
+    "primary_check": null,
+    "secondary_casters": 0,
+    "secondary_checks": [],
+    "traits": [
+      "Cerco"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 93,
+    "data": {
+      "cost": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ritual.battlecry.siege.plague_shot",
+    "name_pt": "Projétil Pestilento",
+    "name_en": "Plague Shot",
+    "name_es": "Proyectil pestilente",
+    "description_pt": "Ritual de cerco de Battlecry!, ranque 5.",
+    "description_en": "Battlecry! siege ritual, rank 5.",
+    "description_es": "Ritual de asedio de Battlecry!, rango 5.",
+    "rank": 5,
+    "cast_time": "1 dia",
+    "primary_check": null,
+    "secondary_casters": 0,
+    "secondary_checks": [],
+    "traits": [
+      "Cerco"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 93,
+    "data": {
+      "cost": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ritual.battlecry.siege.sleepless_season",
+    "name_pt": "Estação sem Sono",
+    "name_en": "Sleepless Season",
+    "name_es": "Estación sin sueño",
+    "description_pt": "Ritual de cerco de Battlecry!, ranque 6.",
+    "description_en": "Battlecry! siege ritual, rank 6.",
+    "description_es": "Ritual de asedio de Battlecry!, rango 6.",
+    "rank": 6,
+    "cast_time": "1 dia",
+    "primary_check": null,
+    "secondary_casters": 0,
+    "secondary_checks": [],
+    "traits": [
+      "Cerco"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 94,
+    "data": {
+      "cost": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ritual.battlecry.siege.sprawling_tunnels",
+    "name_pt": "Túneis Extensos",
+    "name_en": "Sprawling Tunnels",
+    "name_es": "Túneles extensos",
+    "description_pt": "Ritual de cerco de Battlecry!, ranque 7.",
+    "description_en": "Battlecry! siege ritual, rank 7.",
+    "description_es": "Ritual de asedio de Battlecry!, rango 7.",
+    "rank": 7,
+    "cast_time": "1 dia",
+    "primary_check": null,
+    "secondary_casters": 0,
+    "secondary_checks": [],
+    "traits": [
+      "Cerco"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 94,
+    "data": {
+      "cost": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ritual.battlecry.siege.encroaching_woods",
+    "name_pt": "Floresta Invasora",
+    "name_en": "Encroaching Woods",
+    "name_es": "Bosques invasores",
+    "description_pt": "Ritual de cerco de Battlecry!, ranque 8.",
+    "description_en": "Battlecry! siege ritual, rank 8.",
+    "description_es": "Ritual de asedio de Battlecry!, rango 8.",
+    "rank": 8,
+    "cast_time": "1 dia",
+    "primary_check": null,
+    "secondary_casters": 0,
+    "secondary_checks": [],
+    "traits": [
+      "Cerco"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 92,
+    "data": {
+      "cost": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ritual.battlecry.siege.antimagic_artifice",
+    "name_pt": "Artifício Antimagia",
+    "name_en": "Antimagic Artifice",
+    "name_es": "Artificio antimagia",
+    "description_pt": "Ritual de cerco de Battlecry!, ranque 9.",
+    "description_en": "Battlecry! siege ritual, rank 9.",
+    "description_es": "Ritual de asedio de Battlecry!, rango 9.",
+    "rank": 9,
+    "cast_time": "1 dia",
+    "primary_check": null,
+    "secondary_casters": 0,
+    "secondary_checks": [],
+    "traits": [
+      "Cerco"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 92,
+    "data": {
+      "cost": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ritual.battlecry.siege.halt_death",
+    "name_pt": "Deter a Morte",
+    "name_en": "Halt Death",
+    "name_es": "Detener la muerte",
+    "description_pt": "Ritual de cerco de Battlecry!, ranque 10.",
+    "description_en": "Battlecry! siege ritual, rank 10.",
+    "description_es": "Ritual de asedio de Battlecry!, rango 10.",
+    "rank": 10,
+    "cast_time": "1 dia",
+    "primary_check": null,
+    "secondary_casters": 0,
+    "secondary_checks": [],
+    "traits": [
+      "Cerco"
+    ],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 93,
+    "data": {
+      "cost": null,
+      "needs_review": false
+    }
+  }
+]

@@ -1,0 +1,666 @@
+[
+  {
+    "id": "shield.buckler",
+    "item_id": null,
+    "name_pt": "Broquel",
+    "name_en": "Buckler",
+    "name_es": "Broquel",
+    "description_pt": "Broquel leve preso ao antebraço que deixa a mão livre para manusear itens ou magias.",
+    "description_en": "Buckler equipment entry from the Player Core table.",
+    "description_es": "Entrada de equipo Buckler de la tabla de Player Core.",
+    "ac_bonus": 1,
+    "hardness": 3,
+    "max_hp": 6,
+    "broken_threshold": 3,
+    "speed_penalty": 0,
+    "bulk": 1,
+    "price": "1 GP",
+    "traits": [
+      "Livre-Mão"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 275,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "shield.caster_s_targe",
+    "item_id": null,
+    "name_pt": "Targa do Conjurador",
+    "name_en": "Caster's Targe",
+    "name_es": "Tarja del lanzador",
+    "description_pt": "Targa talhada para conjuradores canalizarem símbolos divinos ou focos arcanos.",
+    "description_en": "Targe crafted for spellcasters to channel divine symbols or arcane foci.",
+    "description_es": "Tarja tallada para conjuradores canalizar símbolos o focos.",
+    "ac_bonus": 1,
+    "hardness": 3,
+    "max_hp": 8,
+    "broken_threshold": 4,
+    "speed_penalty": 0,
+    "bulk": 1,
+    "price": "3 GP",
+    "traits": [],
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 248,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "shield.dart_shield",
+    "item_id": null,
+    "name_pt": "Escudo de Dardos",
+    "name_en": "Dart Shield",
+    "name_es": "Escudo de dardos",
+    "description_pt": "Escudo equipado com compartimento interno para sacar dardos rapidamente.",
+    "description_en": "Shield equipped with an internal dart compartment.",
+    "description_es": "Escudo equipado con compartimento interno para dardos.",
+    "ac_bonus": 1,
+    "hardness": 3,
+    "max_hp": 8,
+    "broken_threshold": 4,
+    "speed_penalty": 0,
+    "bulk": 1,
+    "price": "2 GP",
+    "traits": [],
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 178,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "shield.gauntlet_buckler",
+    "item_id": null,
+    "name_pt": "Broquel de Manopla",
+    "name_en": "Gauntlet Buckler",
+    "name_es": "Broquel de guantelete",
+    "description_pt": "Broquel integrado diretamente na manopla do combatente.",
+    "description_en": "Buckler integrated directly into the combatant's gauntlet.",
+    "description_es": "Broquel integrado directamente en el guantelete del combatiente.",
+    "ac_bonus": 1,
+    "hardness": 3,
+    "max_hp": 6,
+    "broken_threshold": 3,
+    "speed_penalty": 0,
+    "bulk": 1,
+    "price": "2 GP",
+    "traits": [],
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 178,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "shield.harnessed_shield",
+    "item_id": null,
+    "name_pt": "Escudo Arreado",
+    "name_en": "Harnessed Shield",
+    "name_es": "Escudo con arnés",
+    "description_pt": "Escudo com arreios reforçados de combate para absorver colisões brutas.",
+    "description_en": "Shield with reinforced harness for absorbing heavy impacts.",
+    "description_es": "Escudo con arnés reforzado para absorber colisiones.",
+    "ac_bonus": 2,
+    "hardness": 5,
+    "max_hp": 20,
+    "broken_threshold": 10,
+    "speed_penalty": 0,
+    "bulk": 2,
+    "price": "5 GP",
+    "traits": [],
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 178,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "shield.heavy_rondache",
+    "item_id": null,
+    "name_pt": "Rondache Pesado",
+    "name_en": "Heavy Rondache",
+    "name_es": "Rodela pesada",
+    "description_pt": "Rondache espesso de aço com bordas recurvadas para desviar lâminas.",
+    "description_en": "Thick steel rondache with curved edges to deflect blades.",
+    "description_es": "Rodela gruesa de acero con bordes curvados.",
+    "ac_bonus": 2,
+    "hardness": 5,
+    "max_hp": 16,
+    "broken_threshold": 8,
+    "speed_penalty": 0,
+    "bulk": 1,
+    "price": "4 GP",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core)",
+    "source_page": 274,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "shield.hide_shield",
+    "item_id": null,
+    "name_pt": "Escudo de Couro",
+    "name_en": "Hide Shield",
+    "name_es": "Escudo de piel",
+    "description_pt": "Escudo de couro endurecido esticado sobre armação de madeira.",
+    "description_en": "Hardened hide shield stretched over a wooden frame.",
+    "description_es": "Escudo de piel endurecida sobre armazón de madera.",
+    "ac_bonus": 2,
+    "hardness": 3,
+    "max_hp": 12,
+    "broken_threshold": 6,
+    "speed_penalty": 0,
+    "bulk": 1,
+    "price": "2 GP",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core)",
+    "source_page": 274,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "shield.klar",
+    "item_id": null,
+    "name_pt": "Klar",
+    "name_en": "Klar",
+    "name_es": "Klar",
+    "description_pt": "Escudo tradicional Shoanti com lâmina ou crânio fóssil para aparar e contra-atacar.",
+    "description_en": "Traditional Shoanti shield with blade or skull for parrying and counterattacking.",
+    "description_es": "Escudo tradicional Shoanti con hoja o cráneo fósil.",
+    "ac_bonus": 1,
+    "hardness": 3,
+    "max_hp": 8,
+    "broken_threshold": 4,
+    "speed_penalty": 0,
+    "bulk": 1,
+    "price": "2 GP",
+    "traits": [
+      "Arma Integrada"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core)",
+    "source_page": 274,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "shield.meteor_shield",
+    "item_id": null,
+    "name_pt": "Escudo Meteórico",
+    "name_en": "Meteor Shield",
+    "name_es": "Escudo meteórico",
+    "description_pt": "Escudo forjado em minério de ferro estelar com alta resistência ao impacto.",
+    "description_en": "Shield forged from star-metal ore with high impact resistance.",
+    "description_es": "Escudo forjado en mineral de hierro estelar.",
+    "ac_bonus": 2,
+    "hardness": 5,
+    "max_hp": 20,
+    "broken_threshold": 10,
+    "speed_penalty": 0,
+    "bulk": 2,
+    "price": "6 GP",
+    "traits": [],
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 178,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "shield.razor_disc",
+    "item_id": null,
+    "name_pt": "Disco Cortante",
+    "name_en": "Razor Disc",
+    "name_es": "Disco navaja",
+    "description_pt": "Disco circular leve de lâminas polidas nas bordas.",
+    "description_en": "Light circular disc with sharpened perimeter blades.",
+    "description_es": "Disco circular ligero con hojas afiladas en los bordes.",
+    "ac_bonus": 1,
+    "hardness": 3,
+    "max_hp": 8,
+    "broken_threshold": 4,
+    "speed_penalty": 0,
+    "bulk": 1,
+    "price": "3 GP",
+    "traits": [
+      "Cortante"
+    ],
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 178,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "shield.salvo_shield",
+    "item_id": null,
+    "name_pt": "Escudo de Salva",
+    "name_en": "Salvo Shield",
+    "name_es": "Escudo de descarga",
+    "description_pt": "Escudo balístico com fresta de observação e suporte para armas de disparo.",
+    "description_en": "Ballistic shield with observation slit and firearm mount.",
+    "description_es": "Escudo balístico con mirilla y soporte para armas de disparo.",
+    "ac_bonus": 2,
+    "hardness": 5,
+    "max_hp": 20,
+    "broken_threshold": 10,
+    "speed_penalty": 0,
+    "bulk": 2,
+    "price": "5 GP",
+    "traits": [],
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 178,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "shield.steel_shield",
+    "item_id": null,
+    "name_pt": "Escudo de Aço",
+    "name_en": "Steel Shield",
+    "name_es": "Escudo de acero",
+    "description_pt": "Escudo clássico de aço forjado com alta capacidade de bloqueio.",
+    "description_en": "Steel Shield equipment entry from the Player Core table.",
+    "description_es": "Entrada de equipo Steel Shield de la tabla de Player Core.",
+    "ac_bonus": 2,
+    "hardness": 5,
+    "max_hp": 20,
+    "broken_threshold": 10,
+    "speed_penalty": 0,
+    "bulk": 1,
+    "price": "2 GP",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 275,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "shield.swordstealer_shield",
+    "item_id": null,
+    "name_pt": "Escudo Rouba-Espadas",
+    "name_en": "Swordstealer Shield",
+    "name_es": "Escudo robaspadas",
+    "description_pt": "Escudo com ranhuras anguladas para travar e quebrar lâminas inimigas.",
+    "description_en": "Shield with angled notches designed to catch and trap enemy blades.",
+    "description_es": "Escudo con ranuras anguladas para atrapar hojas enemigas.",
+    "ac_bonus": 1,
+    "hardness": 4,
+    "max_hp": 12,
+    "broken_threshold": 6,
+    "speed_penalty": 0,
+    "bulk": 1,
+    "price": "4 GP",
+    "traits": [
+      "Desarmar"
+    ],
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 178,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "shield.tower_shield",
+    "item_id": null,
+    "name_pt": "Escudo Torre",
+    "name_en": "Tower Shield",
+    "name_es": "Escudo torre",
+    "description_pt": "Escudo maciço que permite a ação Pegar Cobertura para conceder +4 na CA contra ataques à distância.",
+    "description_en": "Tower Shield equipment entry from the Player Core table.",
+    "description_es": "Entrada de equipo Tower Shield de la tabla de Player Core.",
+    "ac_bonus": 2,
+    "hardness": 5,
+    "max_hp": 20,
+    "broken_threshold": 10,
+    "speed_penalty": -5,
+    "bulk": 4,
+    "price": "10 GP",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 275,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "shield.wooden_shield",
+    "item_id": null,
+    "name_pt": "Escudo de Madeira",
+    "name_en": "Wooden Shield",
+    "name_es": "Escudo de madera",
+    "description_pt": "Escudo acessível e leve de tábuas de carvalho reforçadas com aros de ferro.",
+    "description_en": "Wooden Shield equipment entry from the Player Core table.",
+    "description_es": "Entrada de equipo Wooden Shield de la tabla de Player Core.",
+    "ac_bonus": 2,
+    "hardness": 3,
+    "max_hp": 12,
+    "broken_threshold": 6,
+    "speed_penalty": 0,
+    "bulk": 1,
+    "price": "1 GP",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 275,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "shield.sturdy_shield_minor",
+    "item_id": null,
+    "name_pt": "Escudo Robusto Menor",
+    "name_en": "Sturdy Shield (Minor)",
+    "name_es": "Escudo robusto menor",
+    "description_pt": "Escudo de aço encantado com resistência extraordinária ao dano.",
+    "description_en": "Steel shield enchanted with extraordinary resilience to damage.",
+    "description_es": "Escudo de acero encantado con extraordinaria resistencia al daño.",
+    "ac_bonus": 2,
+    "hardness": 8,
+    "max_hp": 64,
+    "broken_threshold": 32,
+    "speed_penalty": 0,
+    "bulk": 1,
+    "price": "100 GP",
+    "traits": [
+      "Mágico"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core)",
+    "source_page": 300,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "shield.battlecry.bivouac_targe",
+    "item_id": null,
+    "name_pt": "Broquel de Bivaque",
+    "name_en": "Bivouac Targe",
+    "name_es": "Rodela de vivac",
+    "description_pt": "Escudo mágico de Battlecry!, nível 2.",
+    "description_en": "Battlecry! magic shield, level 2.",
+    "description_es": "Escudo mágico de Battlecry!, nivel 2.",
+    "ac_bonus": 1,
+    "hardness": 4,
+    "max_hp": 16,
+    "broken_threshold": 8,
+    "speed_penalty": 0,
+    "bulk": 1,
+    "price": "15 PO",
+    "traits": [
+      "Incomum",
+      "Mágico"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 130,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "shield.battlecry.dragon_shield",
+    "item_id": null,
+    "name_pt": "Escudo de Dragão",
+    "name_en": "Dragon Shield",
+    "name_es": "Escudo de dragón",
+    "description_pt": "Escudo mágico de Battlecry!, nível 13.",
+    "description_en": "Battlecry! magic shield, level 13.",
+    "description_es": "Escudo mágico de Battlecry!, nivel 13.",
+    "ac_bonus": 2,
+    "hardness": 6,
+    "max_hp": 24,
+    "broken_threshold": 12,
+    "speed_penalty": 0,
+    "bulk": 2,
+    "price": "40 PO",
+    "traits": [
+      "Incomum",
+      "Mágico"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 130,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "shield.battlecry.energized_shield",
+    "item_id": null,
+    "name_pt": "Escudo Energizado",
+    "name_en": "Energized Shield",
+    "name_es": "Escudo energizado",
+    "description_pt": "Escudo mágico de Battlecry!, nível 7.",
+    "description_en": "Battlecry! magic shield, level 7.",
+    "description_es": "Escudo mágico de Battlecry!, nivel 7.",
+    "ac_bonus": 2,
+    "hardness": 5,
+    "max_hp": 20,
+    "broken_threshold": 10,
+    "speed_penalty": 0,
+    "bulk": 1,
+    "price": "35 PO",
+    "traits": [
+      "Incomum",
+      "Mágico"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 130,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "shield.battlecry.medics_shield",
+    "item_id": null,
+    "name_pt": "Escudo do Médico",
+    "name_en": "Medic's Shield",
+    "name_es": "Escudo del médico",
+    "description_pt": "Escudo mágico de Battlecry!, nível 14.",
+    "description_en": "Battlecry! magic shield, level 14.",
+    "description_es": "Escudo mágico de Battlecry!, nivel 14.",
+    "ac_bonus": 1,
+    "hardness": 4,
+    "max_hp": 16,
+    "broken_threshold": 8,
+    "speed_penalty": 0,
+    "bulk": 1,
+    "price": "25 PO",
+    "traits": [
+      "Incomum",
+      "Mágico"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 130,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "shield.battlecry.siege_shield",
+    "item_id": null,
+    "name_pt": "Escudo de Cerco",
+    "name_en": "Siege Shield",
+    "name_es": "Escudo de asedio",
+    "description_pt": "Escudo mágico de Battlecry!, nível 3.",
+    "description_en": "Battlecry! magic shield, level 3.",
+    "description_es": "Escudo mágico de Battlecry!, nivel 3.",
+    "ac_bonus": 2,
+    "hardness": 8,
+    "max_hp": 32,
+    "broken_threshold": 16,
+    "speed_penalty": -5,
+    "bulk": 3,
+    "price": "50 PO",
+    "traits": [
+      "Incomum",
+      "Mágico"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 130,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "shield.battlecry.sun_slayer",
+    "item_id": null,
+    "name_pt": "Matador do Sol",
+    "name_en": "Sun Slayer",
+    "name_es": "Asolador del sol",
+    "description_pt": "Escudo mágico de Battlecry!, nível 10.",
+    "description_en": "Battlecry! magic shield, level 10.",
+    "description_es": "Escudo mágico de Battlecry!, nivel 10.",
+    "ac_bonus": 2,
+    "hardness": 7,
+    "max_hp": 28,
+    "broken_threshold": 14,
+    "speed_penalty": 0,
+    "bulk": 2,
+    "price": "60 PO",
+    "traits": [
+      "Incomum",
+      "Mágico"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 130,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "shield.battlecry.testudo_shield",
+    "item_id": null,
+    "name_pt": "Escudo Testudo",
+    "name_en": "Testudo Shield",
+    "name_es": "Escudo testudo",
+    "description_pt": "Escudo mágico de Battlecry!, nível 5.",
+    "description_en": "Battlecry! magic shield, level 5.",
+    "description_es": "Escudo mágico de Battlecry!, nivel 5.",
+    "ac_bonus": 2,
+    "hardness": 5,
+    "max_hp": 20,
+    "broken_threshold": 10,
+    "speed_penalty": 0,
+    "bulk": 2,
+    "price": "30 PO",
+    "traits": [
+      "Incomum",
+      "Mágico"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 130,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "shield.battlecry.tiger_shield",
+    "item_id": null,
+    "name_pt": "Escudo do Tigre",
+    "name_en": "Tiger Shield",
+    "name_es": "Escudo del tigre",
+    "description_pt": "Escudo mágico de Battlecry!, nível 5.",
+    "description_en": "Battlecry! magic shield, level 5.",
+    "description_es": "Escudo mágico de Battlecry!, nivel 5.",
+    "ac_bonus": 1,
+    "hardness": 4,
+    "max_hp": 16,
+    "broken_threshold": 8,
+    "speed_penalty": 0,
+    "bulk": 1,
+    "price": "32 PO",
+    "traits": [
+      "Incomum",
+      "Mágico"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 130,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "shield.battlecry.vambrace_of_gorum",
+    "item_id": null,
+    "name_pt": "Vambrace de Gorum",
+    "name_en": "Vambrace of Gorum",
+    "name_es": "Brazal de Gorum",
+    "description_pt": "Escudo mágico de Battlecry!, nível 20.",
+    "description_en": "Battlecry! magic shield, level 20.",
+    "description_es": "Escudo mágico de Battlecry!, nivel 20.",
+    "ac_bonus": 1,
+    "hardness": 6,
+    "max_hp": 24,
+    "broken_threshold": 12,
+    "speed_penalty": 0,
+    "bulk": 1,
+    "price": "45 PO",
+    "traits": [
+      "Incomum",
+      "Mágico"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 130,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "shield.battlecry.vanguards_shield",
+    "item_id": null,
+    "name_pt": "Escudo da Vanguarda",
+    "name_en": "Vanguard's Shield",
+    "name_es": "Escudo de la vanguardia",
+    "description_pt": "Escudo mágico de Battlecry!, nível 13.",
+    "description_en": "Battlecry! magic shield, level 13.",
+    "description_es": "Escudo mágico de Battlecry!, nivel 13.",
+    "ac_bonus": 2,
+    "hardness": 7,
+    "max_hp": 28,
+    "broken_threshold": 14,
+    "speed_penalty": 0,
+    "bulk": 2,
+    "price": "55 PO",
+    "traits": [
+      "Incomum",
+      "Mágico"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 130,
+    "data": {
+      "needs_review": false
+    }
+  }
+]

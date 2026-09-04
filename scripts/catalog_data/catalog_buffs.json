@@ -1,0 +1,182 @@
+[
+  {
+    "id": "buff.blessed",
+    "name_pt": "Abençoado",
+    "name_en": "Blessed",
+    "name_es": "Bendecido",
+    "description_pt": "Bônus +1 de estado em jogadas de ataque e salvamentos contra medo.",
+    "description_en": "Benefit: Blessed.",
+    "description_es": "Beneficio: Bendecido.",
+    "category": "Benefícios",
+    "ruleset": "remaster",
+    "data": {
+      "modifiers": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "buff.quickened",
+    "name_pt": "Aceleração",
+    "name_en": "Quickened",
+    "name_es": "Acelerado",
+    "description_pt": "Você recebe uma ação adicional no início de cada um dos seus turnos para Golpear ou Andar.",
+    "description_en": "Benefit: Quickened.",
+    "description_es": "Beneficio: Acelerado.",
+    "category": "Benefícios",
+    "ruleset": "remaster",
+    "data": {
+      "modifiers": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "buff.concealed",
+    "name_pt": "Ocultado",
+    "name_en": "Concealed",
+    "name_es": "Ocultado",
+    "description_pt": "Ataques e efeitos direcionados a você exigem um teste simples CD 5 do atacante.",
+    "description_en": "Benefit: Concealed.",
+    "description_es": "Beneficio: Ocultado.",
+    "category": "Benefícios",
+    "ruleset": "remaster",
+    "data": {
+      "modifiers": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "buff.invisible",
+    "name_pt": "Invisível",
+    "name_en": "Invisible",
+    "name_es": "Invisible",
+    "description_pt": "Você não pode ser visto diretamente e é Indetectado para criaturas que apenas dependem da visão.",
+    "description_en": "Benefit: Invisible.",
+    "description_es": "Beneficio: Invisible.",
+    "category": "Benefícios",
+    "ruleset": "remaster",
+    "data": {
+      "modifiers": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "buff.shield_raised",
+    "name_pt": "Escudo Erguido",
+    "name_en": "Shield Raised",
+    "name_es": "Escudo levantado",
+    "description_pt": "Bônus de circunstância na CA concedido pelo escudo até o início do seu próximo turno.",
+    "description_en": "Benefit: Shield Raised.",
+    "description_es": "Beneficio: Escudo levantado.",
+    "category": "Benefícios",
+    "ruleset": "remaster",
+    "data": {
+      "modifiers": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "buff.courageous_anthem",
+    "name_pt": "Coragem Inspiradora",
+    "name_en": "Courageous Anthem",
+    "name_es": "Anthem valiente",
+    "description_pt": "Composição de bardo que concede +1 de estado em jogadas de ataque, dano e salvamentos contra medo a todos os aliados.",
+    "description_en": "Benefit: Courageous Anthem.",
+    "description_es": "Beneficio: Anthem valiente.",
+    "category": "Benefícios",
+    "ruleset": "remaster",
+    "data": {
+      "modifiers": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "buff.rallying_anthem",
+    "name_pt": "Defesa Inspiradora",
+    "name_en": "Rallying Anthem",
+    "name_es": "Anthem de ánimo",
+    "description_pt": "Composição de bardo que concede +1 de estado na CA e em salvamentos a todos os aliados em alcance.",
+    "description_en": "Benefit: Rallying Anthem.",
+    "description_es": "Beneficio: Anthem de ánimo.",
+    "category": "Benefícios",
+    "ruleset": "remaster",
+    "data": {
+      "modifiers": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "buff.guidance",
+    "name_pt": "Orientação",
+    "name_en": "Guidance",
+    "name_es": "Guía",
+    "description_pt": "Bênção rápida que concede +1 de bônus de estado em uma jogada de ataque, teste de perícia ou salvamento antes do início do seu próximo turno.",
+    "description_en": "Benefit: Guidance.",
+    "description_es": "Beneficio: Guía.",
+    "category": "Benefícios",
+    "ruleset": "remaster",
+    "data": {
+      "modifiers": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "buff.dragon_stance",
+    "name_pt": "Postura do Dragão",
+    "name_en": "Dragon Stance",
+    "name_es": "Postura del dragón",
+    "description_pt": "Postura marcial de monge que concede ataques desarmados de Cauda de Dragão (1d10 impacto, Traseiro).",
+    "description_en": "Benefit: Dragon Stance.",
+    "description_es": "Beneficio: Postura del dragón.",
+    "category": "Benefícios",
+    "ruleset": "remaster",
+    "data": {
+      "modifiers": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "buff.tiger_stance",
+    "name_pt": "Postura do Tigre",
+    "name_en": "Tiger Stance",
+    "name_es": "Postura del tigre",
+    "description_pt": "Postura marcial de monge que concede Garras de Tigre (1d8 cortante, Ágil, Acurada, Sangramento 1d4 no crítico).",
+    "description_en": "Benefit: Tiger Stance.",
+    "description_es": "Beneficio: Postura del tigre.",
+    "category": "Benefícios",
+    "ruleset": "remaster",
+    "data": {
+      "modifiers": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "buff.mountain_stance",
+    "name_pt": "Postura da Montanha",
+    "name_en": "Mountain Stance",
+    "name_es": "Postura de la montaña",
+    "description_pt": "Postura marcial firme de monge que concede +4 de bônus de item na CA (+0 Dex cap) e Golpes de Queda de Montanha.",
+    "description_en": "Benefit: Mountain Stance.",
+    "description_es": "Beneficio: Postura de la montaña.",
+    "category": "Benefícios",
+    "ruleset": "remaster",
+    "data": {
+      "modifiers": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "buff.crane_stance",
+    "name_pt": "Postura da Garça",
+    "name_en": "Crane Stance",
+    "name_es": "Postura de la grulla",
+    "description_pt": "Postura de monge que concede +1 de circunstância na CA, reduz penalidade de salto e concede Asas de Garça (1d6 impacto, Ágil, Acurada).",
+    "description_en": "Benefit: Crane Stance.",
+    "description_es": "Beneficio: Postura de la grulla.",
+    "category": "Benefícios",
+    "ruleset": "remaster",
+    "data": {
+      "modifiers": [],
+      "needs_review": false
+    }
+  }
+]

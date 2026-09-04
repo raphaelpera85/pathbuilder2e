@@ -1,0 +1,1331 @@
+[
+  {
+    "id": "class.alchemist",
+    "name_pt": "Alquimista",
+    "name_en": "Alchemist",
+    "name_es": "Alquimista",
+    "description_pt": "Especialista em criar e usar itens alquímicos adaptados a cada desafio.",
+    "description_en": "An expert at creating and using alchemical items tailored to each challenge.",
+    "description_es": "Un experto en crear y usar objetos alquímicos adaptados a cada desafío.",
+    "hp_per_level": 8,
+    "key_attributes": [
+      "Inteligência"
+    ],
+    "perception_rank": "Treinado",
+    "fortitude_rank": "Especialista",
+    "reflex_rank": "Especialista",
+    "will_rank": "Treinado",
+    "class_dc_stat": "Treinado",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 56,
+    "data": {
+      "trainedSkillsCount": 2,
+      "fixedSkills": [
+        "crafting"
+      ],
+      "armor": {
+        "Sem Armadura": "Treinado",
+        "Leve": "Treinado",
+        "Média": "Destreinado",
+        "Pesada": "Destreinado"
+      },
+      "weapons": {
+        "Simples": "Treinado",
+        "Marcial": "Destreinado",
+        "Desarmado": "Treinado",
+        "Bombas": "Treinado"
+      },
+      "subclassesList": [
+        "Bombardeiro (Bomber)",
+        "Cirurgião (Chirurgeon)",
+        "Mutacionista (Mutagenist)",
+        "Toxicologista (Toxicologist)"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "class.barbarian",
+    "name_pt": "Bárbaro",
+    "name_en": "Barbarian",
+    "name_es": "Bárbaro",
+    "description_pt": "Combatente resistente que transforma a fúria em poder marcial.",
+    "description_en": "A resilient combatant who turns rage into martial power.",
+    "description_es": "Un combatiente resistente que convierte la furia en poder marcial.",
+    "hp_per_level": 12,
+    "key_attributes": [
+      "Força"
+    ],
+    "perception_rank": "Especialista",
+    "fortitude_rank": "Especialista",
+    "reflex_rank": "Treinado",
+    "will_rank": "Especialista",
+    "class_dc_stat": "Treinado",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 70,
+    "data": {
+      "trainedSkillsCount": 3,
+      "fixedSkills": [
+        "athletics"
+      ],
+      "armor": {
+        "Sem Armadura": "Treinado",
+        "Leve": "Treinado",
+        "Média": "Treinado",
+        "Pesada": "Destreinado"
+      },
+      "weapons": {
+        "Simples": "Treinado",
+        "Marcial": "Treinado",
+        "Desarmado": "Treinado"
+      },
+      "subclassesList": [
+        "Instinto Animal",
+        "Instinto Dracônico",
+        "Instinto dos Gigantes",
+        "Instinto Espiritual",
+        "Instinto da Fúria Elemental"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "class.bard",
+    "name_pt": "Bardo",
+    "name_en": "Bard",
+    "name_es": "Bardo",
+    "description_pt": "Conjurador carismático que inspira aliados por meio de composições.",
+    "description_en": "A charismatic spellcaster who inspires allies through compositions.",
+    "description_es": "Un lanzador carismático que inspira a sus aliados mediante composiciones.",
+    "hp_per_level": 8,
+    "key_attributes": [
+      "Carisma"
+    ],
+    "perception_rank": "Especialista",
+    "fortitude_rank": "Treinado",
+    "reflex_rank": "Treinado",
+    "will_rank": "Especialista",
+    "class_dc_stat": "Treinado",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 94,
+    "data": {
+      "trainedSkillsCount": 4,
+      "fixedSkills": [
+        "occultism",
+        "performance"
+      ],
+      "armor": {
+        "Sem Armadura": "Treinado",
+        "Leve": "Treinado",
+        "Média": "Destreinado",
+        "Pesada": "Destreinado"
+      },
+      "weapons": {
+        "Simples": "Treinado",
+        "Marcial": "Destreinado",
+        "Desarmado": "Treinado"
+      },
+      "subclassesList": [
+        "Musa da Erudição (Enigma)",
+        "Musa da Coragem (Maestro)",
+        "Musa da Lâmina (Warrior)",
+        "Musa da Polifonia (Polymath)"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "class.witch",
+    "name_pt": "Bruxa",
+    "name_en": "Witch",
+    "name_es": "Bruja",
+    "description_pt": "Conjuradora ligada a um patrono misterioso e acompanhada por um familiar.",
+    "description_en": "A spellcaster bound to a mysterious patron and accompanied by a familiar.",
+    "description_es": "Una lanzadora ligada a un patrón misterioso y acompañada por un familiar.",
+    "hp_per_level": 6,
+    "key_attributes": [
+      "Inteligência"
+    ],
+    "perception_rank": "Treinado",
+    "fortitude_rank": "Treinado",
+    "reflex_rank": "Treinado",
+    "will_rank": "Especialista",
+    "class_dc_stat": "Treinado",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 178,
+    "data": {
+      "trainedSkillsCount": 3,
+      "fixedSkills": [],
+      "armor": {
+        "Sem Armadura": "Treinado",
+        "Leve": "Destreinado",
+        "Média": "Destreinado",
+        "Pesada": "Destreinado"
+      },
+      "weapons": {
+        "Simples": "Treinado",
+        "Marcial": "Destreinado",
+        "Desarmado": "Treinado"
+      },
+      "subclassesList": [
+        "Guardião da Fé Irrefreável (Faith's Flamekeeper / Guardián de la Fe Inquebrantable)",
+        "Sentinela dos Ermos (Wilding Steward / Guardián de las Tierras Salvajes)",
+        "O Inscrito (The Inscribed One / El Inscrito)",
+        "O Ressentimento (The Resentment / El Resentimiento)",
+        "O Tecelão de Destinos (Spinner of Threads / Tejedor de Destinos)",
+        "O Silêncio Invernal (Silence in Snow / Silencio Invernal)",
+        "A Sombra Inconstelada (Starless Shadow / Sombra sin Estrellas)"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "class.champion",
+    "name_pt": "Campeão",
+    "name_en": "Champion",
+    "name_es": "Campeón",
+    "description_pt": "Guerreiro devoto cuja causa divina orienta defesa, reação e conduta.",
+    "description_en": "A devoted warrior whose divine cause guides defense, reaction, and conduct.",
+    "description_es": "Un guerrero devoto cuya causa divina guía su defensa, reacción y conducta.",
+    "hp_per_level": 10,
+    "key_attributes": [
+      "Força",
+      "Destreza"
+    ],
+    "perception_rank": "Treinado",
+    "fortitude_rank": "Especialista",
+    "reflex_rank": "Treinado",
+    "will_rank": "Especialista",
+    "class_dc_stat": "Treinado",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 86,
+    "data": {
+      "trainedSkillsCount": 2,
+      "fixedSkills": [
+        "religion"
+      ],
+      "armor": {
+        "Sem Armadura": "Treinado",
+        "Leve": "Treinado",
+        "Média": "Treinado",
+        "Pesada": "Treinado"
+      },
+      "weapons": {
+        "Simples": "Treinado",
+        "Marcial": "Treinado",
+        "Desarmado": "Treinado"
+      },
+      "subclassesList": [
+        "Paladino (Retribuição)",
+        "Redentor (Misericórdia)",
+        "Libertador (Liberdade)",
+        "Profano (Tiranos/Desesperadores)"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "class.kineticist",
+    "name_pt": "Cineticista",
+    "name_en": "Kineticist",
+    "name_es": "Cinético",
+    "description_pt": "Canalizador de um portal cinético que molda impulsos dos seis elementos.",
+    "description_en": "A channeler of a kinetic gate who shapes impulses from the six elements.",
+    "description_es": "Un canalizador de un portal cinético que moldea impulsos de los seis elementos.",
+    "hp_per_level": 8,
+    "key_attributes": [
+      "Constituição"
+    ],
+    "perception_rank": "Treinado",
+    "fortitude_rank": "Especialista",
+    "reflex_rank": "Especialista",
+    "will_rank": "Treinado",
+    "class_dc_stat": "Treinado",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Rage of Elements (Remaster)",
+    "source_page": 12,
+    "data": {
+      "trainedSkillsCount": 3,
+      "fixedSkills": [
+        "nature"
+      ],
+      "armor": {
+        "Sem Armadura": "Treinado",
+        "Leve": "Treinado",
+        "Média": "Destreinado",
+        "Pesada": "Destreinado"
+      },
+      "weapons": {
+        "Simples": "Treinado",
+        "Marcial": "Destreinado",
+        "Desarmado": "Treinado"
+      },
+      "subclassesList": [
+        "Elemento do Fogo",
+        "Elemento da Água",
+        "Elemento da Terra",
+        "Elemento do Ar",
+        "Elemento da Madeira",
+        "Elemento do Metal",
+        "Portão Duplo"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "class.cleric",
+    "name_pt": "Clérigo",
+    "name_en": "Cleric",
+    "name_es": "Clérigo",
+    "description_pt": "Conjurador divino cuja doutrina e divindade definem capacidades centrais.",
+    "description_en": "A divine spellcaster whose doctrine and deity define core capabilities.",
+    "description_es": "Un lanzador divino cuya doctrina y deidad definen capacidades centrales.",
+    "hp_per_level": 8,
+    "key_attributes": [
+      "Sabedoria"
+    ],
+    "perception_rank": "Treinado",
+    "fortitude_rank": "Especialista",
+    "reflex_rank": "Treinado",
+    "will_rank": "Especialista",
+    "class_dc_stat": "Treinado",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 108,
+    "data": {
+      "trainedSkillsCount": 2,
+      "fixedSkills": [
+        "religion"
+      ],
+      "armor": {
+        "Sem Armadura": "Treinado",
+        "Leve": "Destreinado",
+        "Média": "Destreinado",
+        "Pesada": "Destreinado"
+      },
+      "weapons": {
+        "Simples": "Treinado",
+        "Arma da Divindade": "Treinado",
+        "Desarmado": "Treinado"
+      },
+      "subclassesList": [
+        "Doutrina de Conjurador Enclausurado (Cloistered)",
+        "Doutrina de Clérigo de Guerra (Warpriest)"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "class.summoner",
+    "name_pt": "Convocador",
+    "name_en": "Summoner",
+    "name_es": "Convocador",
+    "description_pt": "Conjurador ligado a um eidolon com o qual compartilha ações e força vital.",
+    "description_en": "A spellcaster bound to an eidolon with whom they share actions and life force.",
+    "description_es": "Un lanzador ligado a un eidolon con el que comparte acciones y fuerza vital.",
+    "hp_per_level": 10,
+    "key_attributes": [
+      "Carisma"
+    ],
+    "perception_rank": "Treinado",
+    "fortitude_rank": "Especialista",
+    "reflex_rank": "Treinado",
+    "will_rank": "Especialista",
+    "class_dc_stat": "Treinado",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 34,
+    "data": {
+      "trainedSkillsCount": 3,
+      "fixedSkills": [],
+      "armor": {
+        "Sem Armadura": "Treinado",
+        "Leve": "Treinado",
+        "Média": "Destreinado",
+        "Pesada": "Destreinado"
+      },
+      "weapons": {
+        "Simples": "Treinado",
+        "Marcial": "Destreinado",
+        "Desarmado": "Treinado"
+      },
+      "subclassesList": [
+        "Eidolon Dragão",
+        "Eidolon Fera",
+        "Eidolon Anjo",
+        "Eidolon Demônio",
+        "Eidolon Fantasma",
+        "Eidolon Elemental"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "class.druid",
+    "name_pt": "Druida",
+    "name_en": "Druid",
+    "name_es": "Druida",
+    "description_pt": "Conjurador primal vinculado à natureza e a uma ordem druídica.",
+    "description_en": "A primal spellcaster tied to nature and a druidic order.",
+    "description_es": "Un lanzador primal vinculado a la naturaleza y a una orden druídica.",
+    "hp_per_level": 8,
+    "key_attributes": [
+      "Sabedoria"
+    ],
+    "perception_rank": "Treinado",
+    "fortitude_rank": "Especialista",
+    "reflex_rank": "Treinado",
+    "will_rank": "Especialista",
+    "class_dc_stat": "Treinado",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 122,
+    "data": {
+      "trainedSkillsCount": 2,
+      "fixedSkills": [
+        "nature"
+      ],
+      "armor": {
+        "Sem Armadura": "Treinado",
+        "Leve": "Treinado",
+        "Média": "Treinado",
+        "Pesada": "Destreinado"
+      },
+      "weapons": {
+        "Simples": "Treinado",
+        "Marcial": "Destreinado",
+        "Desarmado": "Treinado"
+      },
+      "subclassesList": [
+        "Ordem dos Animais",
+        "Ordem das Folhas",
+        "Ordem das Tempestades",
+        "Ordem dos Metamorfos (Wild)",
+        "Ordem das Ondas"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "class.swashbuckler",
+    "name_pt": "Espadachim",
+    "name_en": "Swashbuckler",
+    "name_es": "Espadachín",
+    "description_pt": "Combatente móvel que conquista garbo com ações ousadas e finalizadores.",
+    "description_en": "A mobile combatant who gains panache through daring actions and finishers.",
+    "description_es": "Un combatiente móvil que gana garbo con acciones audaces y remates.",
+    "hp_per_level": 10,
+    "key_attributes": [
+      "Destreza"
+    ],
+    "perception_rank": "Especialista",
+    "fortitude_rank": "Treinado",
+    "reflex_rank": "Especialista",
+    "will_rank": "Especialista",
+    "class_dc_stat": "Treinado",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 100,
+    "data": {
+      "trainedSkillsCount": 4,
+      "fixedSkills": [
+        "acrobatics"
+      ],
+      "armor": {
+        "Sem Armadura": "Treinado",
+        "Leve": "Treinado",
+        "Média": "Destreinado",
+        "Pesada": "Destreinado"
+      },
+      "weapons": {
+        "Simples": "Treinado",
+        "Marcial": "Treinado",
+        "Desarmado": "Treinado"
+      },
+      "subclassesList": [
+        "Esgrimista (Fencer)",
+        "Mordaz (Wit)",
+        "Fanfarrão (Braggart)",
+        "Audaz (Battledancer)",
+        "Ginasta (Gymnast)"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "class.sorcerer",
+    "name_pt": "Feiticeiro",
+    "name_en": "Sorcerer",
+    "name_es": "Hechicero",
+    "description_pt": "Conjurador espontâneo cuja linhagem determina sua tradição e poderes.",
+    "description_en": "A spontaneous spellcaster whose bloodline determines tradition and powers.",
+    "description_es": "Un lanzador espontáneo cuyo linaje determina su tradición y poderes.",
+    "hp_per_level": 6,
+    "key_attributes": [
+      "Carisma"
+    ],
+    "perception_rank": "Treinado",
+    "fortitude_rank": "Treinado",
+    "reflex_rank": "Treinado",
+    "will_rank": "Especialista",
+    "class_dc_stat": "Treinado",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 112,
+    "data": {
+      "trainedSkillsCount": 2,
+      "fixedSkills": [],
+      "armor": {
+        "Sem Armadura": "Treinado",
+        "Leve": "Destreinado",
+        "Média": "Destreinado",
+        "Pesada": "Destreinado"
+      },
+      "weapons": {
+        "Simples": "Treinado",
+        "Marcial": "Destreinado",
+        "Desarmado": "Treinado"
+      },
+      "subclassesList": [
+        "Linhagem Dracônica",
+        "Linhagem Feérica",
+        "Linhagem Angélica",
+        "Linhagem Demoníaca",
+        "Linhagem Aberrante",
+        "Linhagem Elemental",
+        "Linhagem Imperial"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "class.fighter",
+    "name_pt": "Guerreiro",
+    "name_en": "Fighter",
+    "name_es": "Guerrero",
+    "description_pt": "Combatente especializado em armas, precisão e domínio tático.",
+    "description_en": "A combatant specialized in weapons, accuracy, and tactical mastery.",
+    "description_es": "Un combatiente especializado en armas, precisión y dominio táctico.",
+    "hp_per_level": 10,
+    "key_attributes": [
+      "Força",
+      "Destreza"
+    ],
+    "perception_rank": "Especialista",
+    "fortitude_rank": "Especialista",
+    "reflex_rank": "Especialista",
+    "will_rank": "Treinado",
+    "class_dc_stat": "Treinado",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 136,
+    "data": {
+      "trainedSkillsCount": 3,
+      "fixedSkills": [
+        "acrobatics"
+      ],
+      "armor": {
+        "Sem Armadura": "Treinado",
+        "Leve": "Treinado",
+        "Média": "Treinado",
+        "Pesada": "Treinado"
+      },
+      "weapons": {
+        "Simples": "Especialista",
+        "Marcial": "Especialista",
+        "Avançada": "Treinado",
+        "Desarmado": "Especialista"
+      },
+      "subclassesList": [
+        "Estilo de Arma Dupla",
+        "Estilo de Escudo e Lâmina",
+        "Estilo de Arma de Duas Mãos",
+        "Estilo Arqueiro",
+        "Estilo Mão Livre"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "class.investigator",
+    "name_pt": "Investigador",
+    "name_en": "Investigator",
+    "name_es": "Investigador",
+    "description_pt": "Especialista analítico que transforma pistas e planejamento em vantagem.",
+    "description_en": "An analytical expert who turns clues and planning into an advantage.",
+    "description_es": "Un experto analítico que convierte pistas y planificación en ventaja.",
+    "hp_per_level": 8,
+    "key_attributes": [
+      "Inteligência"
+    ],
+    "perception_rank": "Especialista",
+    "fortitude_rank": "Treinado",
+    "reflex_rank": "Especialista",
+    "will_rank": "Especialista",
+    "class_dc_stat": "Treinado",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 126,
+    "data": {
+      "trainedSkillsCount": 4,
+      "fixedSkills": [
+        "society"
+      ],
+      "armor": {
+        "Sem Armadura": "Treinado",
+        "Leve": "Treinado",
+        "Média": "Destreinado",
+        "Pesada": "Destreinado"
+      },
+      "weapons": {
+        "Simples": "Treinado",
+        "Marcial": "Treinado",
+        "Desarmado": "Treinado"
+      },
+      "subclassesList": [
+        "Metodologia Alquímica",
+        "Metodologia Forense",
+        "Metodologia Interrogatória",
+        "Metodologia Empírica"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "class.inventor",
+    "name_pt": "Inventor",
+    "name_en": "Inventor",
+    "name_es": "Inventor",
+    "description_pt": "Especialista em Manufatura que combate usando uma inovação única e continuamente aprimorada.",
+    "description_en": "A Crafting expert who fights with a unique innovation that is continually improved.",
+    "description_es": "Un experto en Artesanía que combate con una innovación única y mejorada continuamente.",
+    "hp_per_level": 8,
+    "key_attributes": [
+      "Inteligência"
+    ],
+    "perception_rank": "Treinado",
+    "fortitude_rank": "Especialista",
+    "reflex_rank": "Treinado",
+    "will_rank": "Especialista",
+    "class_dc_stat": "Treinado",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 14,
+    "data": {
+      "trainedSkillsCount": 3,
+      "fixedSkills": [
+        "crafting"
+      ],
+      "armor": {
+        "Sem Armadura": "Treinado",
+        "Leve": "Treinado",
+        "Média": "Treinado",
+        "Pesada": "Destreinado"
+      },
+      "weapons": {
+        "Simples": "Treinado",
+        "Marcial": "Treinado",
+        "Desarmado": "Treinado"
+      },
+      "subclassesList": [
+        "Inovação de Armadura",
+        "Inovação de Arma",
+        "Inovação de Companheiro Constructo"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "class.rogue",
+    "name_pt": "Ladino",
+    "name_en": "Rogue",
+    "name_es": "Pícaro",
+    "description_pt": "Especialista versátil que combina perícias, mobilidade e ataques oportunos.",
+    "description_en": "A versatile expert combining skills, mobility, and opportunistic attacks.",
+    "description_es": "Un experto versátil que combina habilidades, movilidad y ataques oportunos.",
+    "hp_per_level": 8,
+    "key_attributes": [
+      "Destreza",
+      "Força",
+      "Carisma",
+      "Inteligência",
+      "Sabedoria"
+    ],
+    "perception_rank": "Especialista",
+    "fortitude_rank": "Treinado",
+    "reflex_rank": "Especialista",
+    "will_rank": "Especialista",
+    "class_dc_stat": "Treinado",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 164,
+    "data": {
+      "trainedSkillsCount": 7,
+      "fixedSkills": [
+        "stealth"
+      ],
+      "armor": {
+        "Sem Armadura": "Treinado",
+        "Leve": "Treinado",
+        "Média": "Destreinado",
+        "Pesada": "Destreinado"
+      },
+      "weapons": {
+        "Simples": "Treinado",
+        "Marcial": "Treinado",
+        "Desarmado": "Treinado"
+      },
+      "subclassesList": [
+        "Trapaceiro (Scoundrel)",
+        "Ladrão Furtivo (Thief)",
+        "Bruto (Ruffian)",
+        "Mestre da Mente (Mastermind)",
+        "Eldritch Trickster"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "class.wizard",
+    "name_pt": "Mago",
+    "name_en": "Wizard",
+    "name_es": "Mago",
+    "description_pt": "Conjurador arcano estudioso que prepara magias em seu grimório.",
+    "description_en": "A scholarly arcane spellcaster who prepares spells from a spellbook.",
+    "description_es": "Un lanzador arcano estudioso que prepara conjuros desde su grimorio.",
+    "hp_per_level": 6,
+    "key_attributes": [
+      "Inteligência"
+    ],
+    "perception_rank": "Treinado",
+    "fortitude_rank": "Treinado",
+    "reflex_rank": "Treinado",
+    "will_rank": "Especialista",
+    "class_dc_stat": "Treinado",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 192,
+    "data": {
+      "trainedSkillsCount": 2,
+      "fixedSkills": [
+        "arcana"
+      ],
+      "armor": {
+        "Sem Armadura": "Treinado",
+        "Leve": "Destreinado",
+        "Média": "Destreinado",
+        "Pesada": "Destreinado"
+      },
+      "weapons": {
+        "Simples": "Treinado",
+        "Marcial": "Destreinado",
+        "Desarmado": "Treinado"
+      },
+      "subclassesList": [
+        "Escola da Ars Grammatica (School of Ars Grammatica / Escuela de Ars Grammatica)",
+        "Escola da Forma Proteana (School of the Protean Form / Escuela de la Forma Proteica)",
+        "Escola dos Limiares (School of the Boundary / Escuela de los Límites)",
+        "Escola da Magia Bélica (School of Battle Magic / Escuela de Magia Bélica)",
+        "Escola da Magia Cívica (School of Civic Magic / Escuela de Magia Cívica)",
+        "Escola do Mentalismo (School of Mentalism / Escuela del Mentalismo)",
+        "Escola da Teoria Mágica Unificada (School of Unified Magical Theory / Escuela de Teoría Mágica Unificada)"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "class.magus",
+    "name_pt": "Magus",
+    "name_en": "Magus",
+    "name_es": "Magus",
+    "description_pt": "Combatente arcano que combina golpes físicos e magias por meio do Golpe de Magia.",
+    "description_en": "An arcane combatant who combines physical strikes and spells through Spellstrike.",
+    "description_es": "Un combatiente arcano que combina ataques físicos y conjuros mediante Golpe de conjuro.",
+    "hp_per_level": 8,
+    "key_attributes": [
+      "Força",
+      "Destreza"
+    ],
+    "perception_rank": "Treinado",
+    "fortitude_rank": "Especialista",
+    "reflex_rank": "Treinado",
+    "will_rank": "Especialista",
+    "class_dc_stat": "Treinado",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 58,
+    "data": {
+      "trainedSkillsCount": 2,
+      "fixedSkills": [
+        "arcana"
+      ],
+      "armor": {
+        "Sem Armadura": "Treinado",
+        "Leve": "Treinado",
+        "Média": "Treinado",
+        "Pesada": "Destreinado"
+      },
+      "weapons": {
+        "Simples": "Treinado",
+        "Marcial": "Treinado",
+        "Desarmado": "Treinado"
+      },
+      "subclassesList": [
+        "Árvore Retorcida (Twisting Tree / Árbol retorcido)",
+        "Ferro Inexorável (Inexorable Iron / Hierro inexorable)",
+        "Sombra Jocosa (Laughing Shadow / Sombra jocosa)",
+        "Targe Cintilante (Sparkling Targe / Broquel centelleante)",
+        "Vão Estrelado (Starlit Span / Vano estelar)"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "class.monk",
+    "name_pt": "Monge",
+    "name_en": "Monk",
+    "name_es": "Monje",
+    "description_pt": "Combatente ágil que domina posturas, golpes desarmados e disciplina corporal.",
+    "description_en": "An agile combatant mastering stances, unarmed strikes, and bodily discipline.",
+    "description_es": "Un combatiente ágil que domina posturas, golpes desarmados y disciplina corporal.",
+    "hp_per_level": 10,
+    "key_attributes": [
+      "Força",
+      "Destreza"
+    ],
+    "perception_rank": "Treinado",
+    "fortitude_rank": "Especialista",
+    "reflex_rank": "Especialista",
+    "will_rank": "Especialista",
+    "class_dc_stat": "Treinado",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 140,
+    "data": {
+      "trainedSkillsCount": 4,
+      "fixedSkills": [],
+      "armor": {
+        "Sem Armadura": "Especialista",
+        "Leve": "Destreinado",
+        "Média": "Destreinado",
+        "Pesada": "Destreinado"
+      },
+      "weapons": {
+        "Simples": "Treinado",
+        "Desarmado": "Treinado"
+      },
+      "subclassesList": [
+        "Postura do Dragão",
+        "Postura do Tigre",
+        "Postura do Grou",
+        "Postura da Montanha",
+        "Postura do Lobo",
+        "Postura dos Ventos"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "class.oracle",
+    "name_pt": "Oráculo",
+    "name_en": "Oracle",
+    "name_es": "Oráculo",
+    "description_pt": "Conjurador divino que equilibra revelações poderosas e uma maldição crescente.",
+    "description_en": "A divine spellcaster balancing powerful revelations with a growing curse.",
+    "description_es": "Un lanzador divino que equilibra revelaciones poderosas y una maldición creciente.",
+    "hp_per_level": 8,
+    "key_attributes": [
+      "Carisma"
+    ],
+    "perception_rank": "Treinado",
+    "fortitude_rank": "Treinado",
+    "reflex_rank": "Treinado",
+    "will_rank": "Especialista",
+    "class_dc_stat": "Treinado",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 154,
+    "data": {
+      "trainedSkillsCount": 3,
+      "fixedSkills": [
+        "religion"
+      ],
+      "armor": {
+        "Sem Armadura": "Treinado",
+        "Leve": "Treinado",
+        "Média": "Destreinado",
+        "Pesada": "Destreinado"
+      },
+      "weapons": {
+        "Simples": "Treinado",
+        "Marcial": "Destreinado",
+        "Desarmado": "Treinado"
+      },
+      "subclassesList": [
+        "Mistério dos Ancestrais (Ancestors / Antepasados)",
+        "Mistério da Batalha (Battle / Batalla)",
+        "Mistério dos Ossos (Bones / Huesos)",
+        "Mistério das Chamas (Flames / Llamas)",
+        "Mistério dos Cosmos (Cosmos / Cosmos)",
+        "Mistério do Saber (Lore / Saber)",
+        "Mistério das Tempestades (Tempest / Tempestad)",
+        "Mistério da Vida (Life / Vida)"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "class.ranger",
+    "name_pt": "Patrulheiro",
+    "name_en": "Ranger",
+    "name_es": "Explorador",
+    "description_pt": "Caçador marcial que persegue uma presa e domina ambientes selvagens.",
+    "description_en": "A martial hunter who pursues chosen prey and masters the wilds.",
+    "description_es": "Un cazador marcial que persigue a su presa y domina los entornos salvajes.",
+    "hp_per_level": 10,
+    "key_attributes": [
+      "Destreza",
+      "Força"
+    ],
+    "perception_rank": "Especialista",
+    "fortitude_rank": "Especialista",
+    "reflex_rank": "Especialista",
+    "will_rank": "Treinado",
+    "class_dc_stat": "Treinado",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 152,
+    "data": {
+      "trainedSkillsCount": 4,
+      "fixedSkills": [
+        "nature",
+        "survival"
+      ],
+      "armor": {
+        "Sem Armadura": "Treinado",
+        "Leve": "Treinado",
+        "Média": "Treinado",
+        "Pesada": "Destreinado"
+      },
+      "weapons": {
+        "Simples": "Treinado",
+        "Marcial": "Treinado",
+        "Desarmado": "Treinado"
+      },
+      "subclassesList": [
+        "Vantagem: Precisão (Precision)",
+        "Vantagem: Rajada (Flurry)",
+        "Vantagem: Desencorajar (Outwit)"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "class.gunslinger",
+    "name_pt": "Pistoleiro",
+    "name_en": "Gunslinger",
+    "name_es": "Pistolero",
+    "description_pt": "Combatente de precisão especializado em armas de fogo, bestas, recarga e posicionamento.",
+    "description_en": "A precision combatant specializing in firearms, crossbows, reloading, and positioning.",
+    "description_es": "Un combatiente de precisión especializado en armas de fuego, ballestas, recarga y posicionamiento.",
+    "hp_per_level": 8,
+    "key_attributes": [
+      "Destreza"
+    ],
+    "perception_rank": "Especialista",
+    "fortitude_rank": "Especialista",
+    "reflex_rank": "Especialista",
+    "will_rank": "Treinado",
+    "class_dc_stat": "Treinado",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 104,
+    "data": {
+      "trainedSkillsCount": 3,
+      "fixedSkills": [
+        "crafting"
+      ],
+      "armor": {
+        "Sem Armadura": "Treinado",
+        "Leve": "Treinado",
+        "Média": "Treinado",
+        "Pesada": "Destreinado"
+      },
+      "weapons": {
+        "Simples": "Treinado",
+        "Armas de Fogo e Bestas": "Especialista",
+        "Marcial": "Treinado",
+        "Desarmado": "Treinado"
+      },
+      "subclassesList": [
+        "Caminho do Pistoleiro (Pistolero)",
+        "Caminho do Franco-Atirador (Sniper)",
+        "Caminho da Vanguarda (Vanguard)",
+        "Caminho do Andarilho (Drifter)"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "class.psychic",
+    "name_pt": "Psíquico",
+    "name_en": "Psychic",
+    "name_es": "Psíquico",
+    "description_pt": "Conjurador ocultista que manifesta magia mental por meio de psi cantrips e amplificações.",
+    "description_en": "An occult spellcaster who manifests mental magic through psi cantrips and amps.",
+    "description_es": "Un lanzador ocultista que manifiesta magia mental mediante trucos psi y amplificaciones.",
+    "hp_per_level": 6,
+    "key_attributes": [
+      "Inteligência",
+      "Carisma"
+    ],
+    "perception_rank": "Treinado",
+    "fortitude_rank": "Treinado",
+    "reflex_rank": "Treinado",
+    "will_rank": "Especialista",
+    "class_dc_stat": "Treinado",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 8,
+    "data": {
+      "trainedSkillsCount": 3,
+      "fixedSkills": [
+        "occultism"
+      ],
+      "armor": {
+        "Sem Armadura": "Treinado",
+        "Leve": "Destreinado",
+        "Média": "Destreinado",
+        "Pesada": "Destreinado"
+      },
+      "weapons": {
+        "Simples": "Treinado",
+        "Marcial": "Destreinado",
+        "Desarmado": "Treinado"
+      },
+      "subclassesList": [
+        "Mente Distante (Telecinese)",
+        "Mente Infinita",
+        "Mente Calosa",
+        "Mente Tangível"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "class.thaumaturge",
+    "name_pt": "Taumaturgo",
+    "name_en": "Thaumaturge",
+    "name_es": "Taumaturgo",
+    "description_pt": "Especialista carismático que explora fraquezas usando esoterismo e implementos místicos.",
+    "description_en": "A charismatic expert who exploits weaknesses using esoterica and mystic implements.",
+    "description_es": "Un experto carismático que explota debilidades mediante esoterismo e implementos místicos.",
+    "hp_per_level": 8,
+    "key_attributes": [
+      "Carisma"
+    ],
+    "perception_rank": "Especialista",
+    "fortitude_rank": "Especialista",
+    "reflex_rank": "Treinado",
+    "will_rank": "Especialista",
+    "class_dc_stat": "Treinado",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Dark Archive (pré-Remaster)",
+    "source_page": 30,
+    "data": {
+      "trainedSkillsCount": 3,
+      "fixedSkills": [
+        "arcana",
+        "nature",
+        "occultism",
+        "religion"
+      ],
+      "armor": {
+        "Sem Armadura": "Treinado",
+        "Leve": "Treinado",
+        "Média": "Treinado",
+        "Pesada": "Destreinado"
+      },
+      "weapons": {
+        "Simples": "Treinado",
+        "Marcial": "Treinado",
+        "Desarmado": "Treinado"
+      },
+      "subclassesList": [
+        "Implemento: Amuleto",
+        "Implemento: Cálice",
+        "Implemento: Lanterna",
+        "Implemento: Espelho",
+        "Implemento: Arma",
+        "Implemento: Livro"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "class.exemplar.legacy_alias.exemplar_exemplar",
+    "name_pt": "Exemplar",
+    "name_en": "Exemplar",
+    "name_es": "Ejemplar",
+    "description_pt": "Combatente raro que desloca uma centelha divina entre ícones para alternar efeitos de imanência e transcendência.",
+    "description_en": "A rare martial hero who shifts a divine spark among ikons to alternate immanence and transcendence effects.",
+    "description_es": "Un héroe marcial raro que desplaza una chispa divina entre iconos para alternar efectos de inmanencia y trascendencia.",
+    "hp_per_level": 10,
+    "key_attributes": [
+      "Força",
+      "Destreza"
+    ],
+    "perception_rank": "Treinado",
+    "fortitude_rank": "Especialista",
+    "reflex_rank": "Treinado",
+    "will_rank": "Especialista",
+    "class_dc_stat": "Treinado",
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "remaster",
+    "source_book": "Guerra dos Imortais (Remaster)",
+    "source_page": 28,
+    "data": {
+      "trainedSkillsCount": 4,
+      "fixedSkills": [
+        "religion"
+      ],
+      "armor": {
+        "Sem Armadura": "Treinado",
+        "Leve": "Treinado",
+        "Média": "Treinado",
+        "Pesada": "Destreinado"
+      },
+      "weapons": {
+        "Simples": "Treinado",
+        "Marcial": "Treinado",
+        "Desarmado": "Treinado"
+      },
+      "subclassesList": [
+        "Centelha da Lâmina Radiante (Gleaming Blade)",
+        "Centelha da Cicatriz da Montanha (Mountain's Scar)",
+        "Centelha da Coroa Solar (Radiant Halo)",
+        "Centelha da Fera Celestial (Celestial Beast)"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "class.animist",
+    "name_pt": "Animista",
+    "name_en": "Animist",
+    "name_es": "Animista",
+    "description_pt": "Conjurador de Sabedoria que se sintoniza com aparições e combina magia divina preparada com repertórios espirituais.",
+    "description_en": "A Wisdom spellcaster who attunes to apparitions and combines prepared divine magic with spiritual repertoires.",
+    "description_es": "Un lanzador de Sabiduría que se vincula con apariciones y combina magia divina preparada con repertorios espirituales.",
+    "hp_per_level": 8,
+    "key_attributes": [
+      "Sabedoria"
+    ],
+    "perception_rank": "Treinado",
+    "fortitude_rank": "Treinado",
+    "reflex_rank": "Treinado",
+    "will_rank": "Especialista",
+    "class_dc_stat": "Treinado",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Guerra dos Imortais (Remaster)",
+    "source_page": 10,
+    "data": {
+      "trainedSkillsCount": 0,
+      "fixedSkills": [],
+      "armor": {
+        "Sem Armadura": "Treinado",
+        "Leve": "Treinado",
+        "Média": "Treinado",
+        "Pesada": "Destreinado"
+      },
+      "weapons": {
+        "Simples": "Treinado",
+        "Marcial": "Destreinado",
+        "Desarmado": "Treinado"
+      },
+      "subclassesList": [
+        "Liturgista",
+        "Médium",
+        "Xamã"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "class.commander",
+    "name_pt": "Comandante",
+    "name_en": "Commander",
+    "name_es": "Comandante",
+    "description_pt": "Especialista de Inteligência que lê o campo de batalha e amplia o potencial do grupo com táticas coordenadas.",
+    "description_en": "An Intelligence expert who reads the battlefield and raises the party's potential through coordinated tactics.",
+    "description_es": "Un experto de Inteligencia que lee el campo de batalla y potencia al grupo mediante tácticas coordinadas.",
+    "hp_per_level": 8,
+    "key_attributes": [
+      "Inteligência"
+    ],
+    "perception_rank": "Especialista",
+    "fortitude_rank": "Treinado",
+    "reflex_rank": "Especialista",
+    "will_rank": "Especialista",
+    "class_dc_stat": "Treinado",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 20,
+    "data": {
+      "trainedSkillsCount": 0,
+      "fixedSkills": [],
+      "armor": {
+        "Sem Armadura": "Treinado",
+        "Leve": "Treinado",
+        "Média": "Treinado",
+        "Pesada": "Treinado"
+      },
+      "weapons": {
+        "Simples": "Treinado",
+        "Marcial": "Treinado",
+        "Desarmado": "Treinado"
+      },
+      "subclassesList": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "class.guardian",
+    "name_pt": "Guardião",
+    "name_en": "Guardian",
+    "name_es": "Guardián",
+    "description_pt": "Defensor de Força com 12 PV por nível, domínio de todas as armaduras e recursos para manter ataques longe dos aliados.",
+    "description_en": "A Strength defender with 12 HP per level, training in all armor, and tools that keep attacks away from allies.",
+    "description_es": "Un defensor de Fuerza con 12 PG por nivel, dominio de todas las armaduras y recursos para alejar ataques de sus aliados.",
+    "hp_per_level": 12,
+    "key_attributes": [
+      "Força"
+    ],
+    "perception_rank": "Treinado",
+    "fortitude_rank": "Especialista",
+    "reflex_rank": "Treinado",
+    "will_rank": "Especialista",
+    "class_dc_stat": "Treinado",
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 36,
+    "data": {
+      "trainedSkillsCount": 0,
+      "fixedSkills": [],
+      "armor": {
+        "Sem Armadura": "Treinado",
+        "Leve": "Treinado",
+        "Média": "Treinado",
+        "Pesada": "Treinado"
+      },
+      "weapons": {
+        "Simples": "Treinado",
+        "Marcial": "Treinado",
+        "Desarmado": "Treinado"
+      },
+      "subclassesList": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "class.exemplar",
+    "name_pt": "Exemplar",
+    "name_en": "Exemplar",
+    "name_es": "Ejemplar",
+    "description_pt": "Combatente raro que desloca uma centelha divina entre ícones para alternar efeitos de imanência e transcendência.",
+    "description_en": "A rare martial hero who shifts a divine spark among ikons to alternate immanence and transcendence effects.",
+    "description_es": "Un héroe marcial raro que desplaza una chispa divina entre iconos para alternar efectos de inmanencia y trascendencia.",
+    "hp_per_level": 10,
+    "key_attributes": [
+      "Força",
+      "Destreza"
+    ],
+    "perception_rank": "Treinado",
+    "fortitude_rank": "Especialista",
+    "reflex_rank": "Treinado",
+    "will_rank": "Especialista",
+    "class_dc_stat": "Treinado",
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "remaster",
+    "source_book": "Guerra dos Imortais (Remaster)",
+    "source_page": 28,
+    "data": {
+      "trainedSkillsCount": 0,
+      "fixedSkills": [],
+      "armor": {
+        "Sem Armadura": "Treinado",
+        "Leve": "Treinado",
+        "Média": "Treinado",
+        "Pesada": "Destreinado"
+      },
+      "weapons": {
+        "Simples": "Treinado",
+        "Marcial": "Treinado",
+        "Desarmado": "Treinado"
+      },
+      "subclassesList": [
+        "Ícones e epítetos"
+      ],
+      "needs_review": false
+    }
+  }
+]

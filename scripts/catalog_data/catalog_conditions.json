@@ -1,0 +1,376 @@
+[
+  {
+    "id": "condition.frightened",
+    "name_pt": "Amedrontado",
+    "name_en": "Frightened",
+    "name_es": "Asustado",
+    "description_pt": "Penalidade de estado em todos os testes e CDs baseados em perícias, ataques e salvamentos.",
+    "description_en": "Condition: Frightened.",
+    "description_es": "Condición: Asustado.",
+    "category": "Condições",
+    "has_value": false,
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 442,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "condition.off_guard",
+    "name_pt": "Desprevenido",
+    "name_en": "Off-Guard",
+    "name_es": "Desprevenido",
+    "description_pt": "Você sofre uma penalidade de circunstância de -2 na sua Classe de Armadura.",
+    "description_en": "Condition: Off-Guard.",
+    "description_es": "Condición: Desprevenido.",
+    "category": "Condições",
+    "has_value": false,
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 443,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "condition.enfeebled",
+    "name_pt": "Enfraquecido",
+    "name_en": "Enfeebled",
+    "name_es": "Debilitado",
+    "description_pt": "Penalidade de estado em testes baseados em Força, jogadas de ataque corpo a corpo e dano corpo a corpo.",
+    "description_en": "Condition: Enfeebled.",
+    "description_es": "Condición: Debilitado.",
+    "category": "Condições",
+    "has_value": false,
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 442,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "condition.clumsy",
+    "name_pt": "Desajeitado",
+    "name_en": "Clumsy",
+    "name_es": "Torpe",
+    "description_pt": "Penalidade de estado em testes baseados em Destreza, salvamentos de Reflexos, CA e ataques à distância.",
+    "description_en": "Condition: Clumsy.",
+    "description_es": "Condición: Torpe.",
+    "category": "Condições",
+    "has_value": false,
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 441,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "condition.drained",
+    "name_pt": "Drenado",
+    "name_en": "Drained",
+    "name_es": "Drenado",
+    "description_pt": "Penalidade de estado em testes baseados em Constituição e perde PV máximos iguais ao seu nível vezes o valor de drenado.",
+    "description_en": "Condition: Drained.",
+    "description_es": "Condición: Drenado.",
+    "category": "Condições",
+    "has_value": false,
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 441,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "condition.stupefied",
+    "name_pt": "Estupefato",
+    "name_en": "Stupefied",
+    "name_es": "Atontado",
+    "description_pt": "Penalidade de estado em testes baseados em atributos mentais e teste simples CD 5 + valor para conjurar magias.",
+    "description_en": "Condition: Stupefied.",
+    "description_es": "Condición: Atontado.",
+    "category": "Condições",
+    "has_value": false,
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 445,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "condition.grabbed",
+    "name_pt": "Agarrado",
+    "name_en": "Grabbed",
+    "name_es": "Agarrado",
+    "description_pt": "Você está Imobilizado e Desprevenido. Ao tentar uma ação de Manipular, deve passar em um teste simples CD 5.",
+    "description_en": "Condition: Grabbed.",
+    "description_es": "Condición: Agarrado.",
+    "category": "Condições",
+    "has_value": false,
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 442,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "condition.prone",
+    "name_pt": "Caído",
+    "name_en": "Prone",
+    "name_es": "Caído",
+    "description_pt": "Você está deitado no chão, Desprevenido e sofre -2 de penalidade de circunstância em jogadas de ataque.",
+    "description_en": "Condition: Prone.",
+    "description_es": "Condición: Caído.",
+    "category": "Condições",
+    "has_value": false,
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 444,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "condition.blinded",
+    "name_pt": "Cego",
+    "name_en": "Blinded",
+    "name_es": "Cegado",
+    "description_pt": "Você não enxerga. Fica Desprevenido, sofre penalidade de -4 em Percepção e todas as outras criaturas são Indetectadas para você.",
+    "description_en": "Condition: Blinded.",
+    "description_es": "Condición: Cegado.",
+    "category": "Condições",
+    "has_value": false,
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 441,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "condition.confused",
+    "name_pt": "Confuso",
+    "name_en": "Confused",
+    "name_es": "Confundido",
+    "description_pt": "Você não consegue distinguir aliados de inimigos. Em seu turno, ataca a criatura mais próxima ou ataca a si mesmo.",
+    "description_en": "Condition: Confused.",
+    "description_es": "Condición: Confundido.",
+    "category": "Condições",
+    "has_value": false,
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 441,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "condition.doomed",
+    "name_pt": "Condenado",
+    "name_en": "Doomed",
+    "name_es": "Condenado",
+    "description_pt": "O limiar de morrer do seu personagem é reduzido pelo valor de condenado (ex: Condenado 1 faz morrer com 3 pontos).",
+    "description_en": "Condition: Doomed.",
+    "description_es": "Condición: Condenado.",
+    "category": "Condições",
+    "has_value": false,
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 441,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "condition.fatigued",
+    "name_pt": "Fatigado",
+    "name_en": "Fatigued",
+    "name_es": "Fatigado",
+    "description_pt": "Você sofre penalidade de estado de -1 na CA e salvamentos, e não pode usar atividades de exploração exigentes.",
+    "description_en": "Condition: Fatigued.",
+    "description_es": "Condición: Fatigado.",
+    "category": "Condições",
+    "has_value": false,
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 442,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "condition.immobilized",
+    "name_pt": "Imobilizado",
+    "name_en": "Immobilized",
+    "name_es": "Inmovilizado",
+    "description_pt": "Você não pode usar nenhuma ação com o traço Movimento.",
+    "description_en": "Condition: Immobilized.",
+    "description_es": "Condición: Inmovilizado.",
+    "category": "Condições",
+    "has_value": false,
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 443,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "condition.unconscious",
+    "name_pt": "Inconsciente",
+    "name_en": "Unconscious",
+    "name_es": "Inconsciente",
+    "description_pt": "Você está dormindo ou à beira da morte. Fica Desprevenido, Caído, Cego e sofre -4 de penalidade na CA.",
+    "description_en": "Condition: Unconscious.",
+    "description_es": "Condición: Inconsciente.",
+    "category": "Condições",
+    "has_value": false,
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 443,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "condition.slowed",
+    "name_pt": "Lento / Desacelerado",
+    "name_en": "Slowed",
+    "name_es": "Lento",
+    "description_pt": "Você recupera menos ações no início do seu turno (3 - valor de desacelerado).",
+    "description_en": "Condition: Slowed.",
+    "description_es": "Condición: Lento.",
+    "category": "Condições",
+    "has_value": false,
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 444,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "condition.dying",
+    "name_pt": "Morrendo",
+    "name_en": "Dying",
+    "name_es": "Moribundo",
+    "description_pt": "Você está Inconsciente e à beira da morte. Faça testes de recuperação a cada rodada.",
+    "description_en": "Condition: Dying.",
+    "description_es": "Condición: Moribundo.",
+    "category": "Condições",
+    "has_value": false,
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 443,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "condition.dazzled",
+    "name_pt": "Ofuscado",
+    "name_en": "Dazzled",
+    "name_es": "Deslumbrado",
+    "description_pt": "Sua visão está prejudicada. Todas as outras criaturas e objetos ficam Ocultos para você.",
+    "description_en": "Condition: Dazzled.",
+    "description_es": "Condición: Deslumbrado.",
+    "category": "Condições",
+    "has_value": false,
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 441,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "condition.paralyzed",
+    "name_pt": "Paralisado",
+    "name_en": "Paralyzed",
+    "name_es": "Paralizado",
+    "description_pt": "Você está congelado no lugar. Fica Desprevenido e não pode agir, exceto ações puramente mentais.",
+    "description_en": "Condition: Paralyzed.",
+    "description_es": "Condición: Paralizado.",
+    "category": "Condições",
+    "has_value": false,
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 444,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "condition.petrified",
+    "name_pt": "Petrificado",
+    "name_en": "Petrified",
+    "name_es": "Petrificado",
+    "description_pt": "Seu corpo foi transformado em pedra sólida. Você é inconsciente e imune a muitos efeitos.",
+    "description_en": "Condition: Petrified.",
+    "description_es": "Condición: Petrificado.",
+    "category": "Condições",
+    "has_value": false,
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 444,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "condition.broken",
+    "name_pt": "Quebrado",
+    "name_en": "Broken",
+    "name_es": "Roto",
+    "description_pt": "O item sofreu dano além do seu Limiar de Quebra (BT) e não pode conceder bônus nem ser usado normalmente.",
+    "description_en": "Condition: Broken.",
+    "description_es": "Condición: Roto.",
+    "category": "Condições",
+    "has_value": false,
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 441,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "condition.restrained",
+    "name_pt": "Restringido",
+    "name_en": "Restrained",
+    "name_es": "Restringido",
+    "description_pt": "Você está amarrado ou preso firmemente. Fica Imobilizado e Desprevenido, e não pode usar ações com o traço Ataque ou Manipular exceto Escapar.",
+    "description_en": "Condition: Restrained.",
+    "description_es": "Condición: Restringido.",
+    "category": "Condições",
+    "has_value": false,
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 444,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "condition.persistent_damage",
+    "name_pt": "Dano Contínuo",
+    "name_en": "Persistent Damage",
+    "name_es": "Daño persistente",
+    "description_pt": "Você sofre dano automático no final de cada um dos seus turnos até passar em um teste simples CD 15 de recuperação.",
+    "description_en": "Condition: Persistent Damage.",
+    "description_es": "Condición: Daño persistente.",
+    "category": "Condições",
+    "has_value": false,
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 444,
+    "data": {
+      "needs_review": false
+    }
+  }
+]

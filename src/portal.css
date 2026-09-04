@@ -1621,6 +1621,67 @@ body.theme-light .access-card p {
   color: #5e4d3a !important;
 }
 
+/* Catalog Source Badge & Supabase Connection */
+.catalog-source-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(249, 115, 22, 0.35);
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #e2e8f0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  user-select: none;
+}
+
+.source-indicator-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px currentColor;
+  flex-shrink: 0;
+}
+
+.source-indicator-text {
+  letter-spacing: 0.02em;
+}
+
+.catalog-sync-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0 2px;
+  font-size: 13px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  opacity: 0.85;
+}
+
+.catalog-sync-btn:hover:not(:disabled) {
+  transform: rotate(180deg) scale(1.15);
+  opacity: 1;
+}
+
+.catalog-sync-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+[data-theme="light"] .catalog-source-badge,
+body.theme-light .catalog-source-badge {
+  background: #fdfaf2 !important;
+  border: 1px solid #ccbe9f !important;
+  color: #451a03 !important;
+}
+
 @media print {
   #react-portal-root, .skip-link { display: none !important; }
 }
+

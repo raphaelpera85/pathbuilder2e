@@ -1,0 +1,2532 @@
+[
+  {
+    "id": "background.acrobat",
+    "name_pt": "Acróbata",
+    "name_en": "Acrobat",
+    "name_es": "Acróbata",
+    "description_pt": "Você treinou acrobacias, equilíbrio e saltos espetaculares para encantar multidões ou superar obstáculos perigosos.",
+    "description_en": "You practiced acrobatics, balance, and spectacular jumps to delight crowds or overcome dangerous obstacles.",
+    "description_es": "Entrenaste acrobacias, equilibrio y saltos espectaculares para deleitar a las multitudes o superar obstáculos peligrosos.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "acrobatics"
+    ],
+    "granted_feat": "Acrobata Felino",
+    "lore_skill": null,
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 88,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.artisan",
+    "name_pt": "Artesão",
+    "name_en": "Artisan",
+    "name_es": "Artesano",
+    "description_pt": "Como aprendiz de uma oficina ou guilda, você aprendeu a forjar, talhar ou tecer artigos úteis e obras de qualidade com ferramentas manuais.",
+    "description_en": "As an apprentice in a workshop or guild, you learned to forge, carve, or weave useful goods and quality craftwork with hand tools.",
+    "description_es": "Como aprendiz en un taller o gremio, aprendiste a forjar, tallar o tejer bienes útiles y obras de calidad con herramientas manuales.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "crafting"
+    ],
+    "granted_feat": "Manufatura Especializada",
+    "lore_skill": null,
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 88,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.artist",
+    "name_pt": "Artista",
+    "name_en": "Artist",
+    "name_es": "Artista",
+    "description_pt": "Você expressa sua visão criativa por meio de pintura, escultura, poesia ou música, criando obras que movem corações e mentes.",
+    "description_en": "You express your creative vision through painting, sculpture, poetry, or music, making works that move hearts and minds.",
+    "description_es": "Expresas tu visión creativa a través de la pintura, escultura, poesía o música, creando obras que conmueven corazones y mentes.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "crafting"
+    ],
+    "granted_feat": "Manufatura Especializada",
+    "lore_skill": null,
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 88,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.wilderness_scout",
+    "name_pt": "Batedor Selvagem",
+    "name_en": "Wilderness Scout",
+    "name_es": "Explorador de avanzada",
+    "description_pt": "Você guiou caravanas e exércitos por terras inexploradas, reconhecendo perigos naturais e emboscadas antes de todos.",
+    "description_en": "You guided caravans and armies through uncharted lands, spotting natural hazards and ambushes before anyone else.",
+    "description_es": "Guiaste caravanas y ejércitos por tierras inexploradas, detectando peligros naturales y emboscadas antes que nadie.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "survival"
+    ],
+    "granted_feat": "Rastreio Experiente",
+    "lore_skill": null,
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 90,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.hunter",
+    "name_pt": "Caçador",
+    "name_en": "Hunter",
+    "name_es": "Cazador",
+    "description_pt": "Você perseguiu presas em florestas e montanhas, aprendendo o comportamento da fauna e as técnicas de emboscada e abate.",
+    "description_en": "You tracked prey through forests and mountains, learning animal behavior and ambush and harvesting techniques.",
+    "description_es": "Rastreaste presas por bosques y montañas, aprendiendo el comportamiento animal y las técnicas de emboscada y aprovechamiento.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "survival"
+    ],
+    "granted_feat": "Olhos de Águia",
+    "lore_skill": null,
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 89,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.charlatan",
+    "name_pt": "Charlatão",
+    "name_en": "Charlatan",
+    "name_es": "Charlatán",
+    "description_pt": "Você viajou vendendo elixires falsos, falsas promessas e esquemas astutos, escapando sempre antes que a farsa fosse descoberta.",
+    "description_en": "You learned to charm, tell convincing falsehoods, and sell dubious wonders while staying one step ahead of the law.",
+    "description_es": "Viajaste vendiendo elixires falsos, promesas vanas y astutas estafas, escapando siempre antes de que se descubriera la farsa.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "deception"
+    ],
+    "granted_feat": "Mentiroso Charmoso",
+    "lore_skill": null,
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 88,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.cook",
+    "name_pt": "Cozinheiro",
+    "name_en": "Cook",
+    "name_es": "Cocinero",
+    "description_pt": "Em tavernas barulhentas, navios ou acampamentos de campanha, você alimentou bocas famintas e aprendeu a identificar ingredientes raros e especiarias.",
+    "description_en": "In bustling taverns, ships, or military camps, you fed hungry mouths and learned to identify rare ingredients and spices.",
+    "description_es": "En tabernas concurridas, barcos o campamentos militares, alimentaste a bocas hambrientas y aprendiste a identificar ingredientes y especias raros.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "survival"
+    ],
+    "granted_feat": "Forrageador",
+    "lore_skill": null,
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 88,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.criminal",
+    "name_pt": "Criminoso",
+    "name_en": "Criminal",
+    "name_es": "Criminal",
+    "description_pt": "Você sobreviveu nos becos escuros praticando arrombamento, furto ou contrabando, sempre atento à ronda da guarda urbana.",
+    "description_en": "You survived in dark alleys practicing burglary, theft, or smuggling, always wary of the city guard patrols.",
+    "description_es": "Sobreviviste en callejones oscuros practicando robos, hurtos o contrabando, siempre atento a las patrullas de la guardia urbana.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "thievery"
+    ],
+    "granted_feat": "Pernas Rápidas",
+    "lore_skill": null,
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 88,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.field_medic",
+    "name_pt": "Curandeiro de Campo",
+    "name_en": "Field Medic",
+    "name_es": "Médico de campo",
+    "description_pt": "Em meio ao caos do combate, você estancou sangramentos, estabilizou soldados caídos e tratou ferimentos graves sob fogo cerrado.",
+    "description_en": "Amid the chaos of battle, you stopped bleeding, stabilized fallen soldiers, and treated severe wounds under heavy fire.",
+    "description_es": "En medio del caos del combate, detuviste hemorragias, estabilizaste soldados caídos y trataste heridas graves bajo fuego intenso.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "medicine"
+    ],
+    "granted_feat": "Medicina de Batalha",
+    "lore_skill": null,
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 89,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.detective",
+    "name_pt": "Detetive",
+    "name_en": "Detective",
+    "name_es": "Detective",
+    "description_pt": "Você investigou mistérios urbanos, interrogou suspeitos e desvendou tramas criminosas conectando pequenas pistas esquecidas.",
+    "description_en": "You investigated urban mysteries, interrogated suspects, and uncovered criminal plots by linking subtle forgotten clues.",
+    "description_es": "Investigaste misterios urbanos, interrogaste sospechosos y desentrañaste tramas criminales uniendo pequeñas pistas olvidadas.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "society"
+    ],
+    "granted_feat": "Leitura de Pista",
+    "lore_skill": null,
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 89,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.dueling_noble",
+    "name_pt": "Duelista de Oppara",
+    "name_en": "Dueling Noble",
+    "name_es": "Noble duelista",
+    "description_pt": "Treinado nos salões e academias de duelo de Taldor, você combina esgrima refinada e insultos afiados para desestabilizar rivais.",
+    "description_en": "Trained in the dueling salons and academies of Taldor, you combine refined swordplay with sharp wit to unbalance rivals.",
+    "description_es": "Entrenado en los salones y academias de duelo de Taldor, combinas esgrima refinada y agudos insultos para desestabilizar rivales.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "deception"
+    ],
+    "granted_feat": "Palavra Mordaz (Bon Mot)",
+    "lore_skill": null,
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 89,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.emissary",
+    "name_pt": "Emissário",
+    "name_en": "Emissary",
+    "name_es": "Emisario",
+    "description_pt": "Você atuou como porta-voz, diplomata ou mensageiro entre governantes e facções, negociando tratados e acordos delicados.",
+    "description_en": "You served as a spokesperson, diplomat, or messenger between rulers and factions, brokering delicate treaties and pacts.",
+    "description_es": "Actuaste como portavoz, diplomático o mensajero entre gobernantes y facciones, negociando tratados y acuerdos delicados.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "diplomacy"
+    ],
+    "granted_feat": "Etiqueta da Corte",
+    "lore_skill": null,
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 89,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.hermit",
+    "name_pt": "Eremita",
+    "name_en": "Hermit",
+    "name_es": "Eremita",
+    "description_pt": "Isolado em cavernas, picos ou ermos distantes, você dedicou anos à contemplação e à comunhão com segredos esquecidos do mundo.",
+    "description_en": "Isolated in caves, peaks, or remote wilderness, you spent years in contemplation and communion with forgotten secrets of the world.",
+    "description_es": "Aislado en cuevas, cumbres o páramos remotos, dedicaste años a la contemplación y a la comunión con secretos olvidados del mundo.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "nature"
+    ],
+    "granted_feat": "Solidão Focada",
+    "lore_skill": null,
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 89,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.squire",
+    "name_pt": "Escudeiro",
+    "name_en": "Squire",
+    "name_es": "Escudero",
+    "description_pt": "A serviço de um cavaleiro ou campeão, você cuidou de armas, armaduras pesadas e montarias, aprendendo o código marcial e a disciplina das armas.",
+    "description_en": "Serving a knight or champion, you tended to weapons, heavy armor, and steeds, learning the martial code and weapons discipline.",
+    "description_es": "Al servicio de un caballero o campeón, cuidaste armas, armaduras pesadas y monturas, aprendiendo el código marcial y la disciplina bélica.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "athletics"
+    ],
+    "granted_feat": "Mover Armadura",
+    "lore_skill": null,
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 91,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.scholar",
+    "name_pt": "Estudante da Academia",
+    "name_en": "Scholar",
+    "name_es": "Erudito",
+    "description_pt": "Você passou noites imerso em arquivos e bibliotecas, dominando teorias arcanas, históricas ou naturais com rigor acadêmico.",
+    "description_en": "You spent countless nights in archives and libraries, mastering arcane, historical, or natural theories with academic rigor.",
+    "description_es": "Pasaste noches inmerso en archivos y bibliotecas, dominando teorías arcanas, históricas o naturales con rigor académico.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "arcana"
+    ],
+    "granted_feat": "Identificação Rápida",
+    "lore_skill": null,
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 90,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.gladiator",
+    "name_pt": "Gladiador",
+    "name_en": "Gladiator",
+    "name_es": "Gladiador",
+    "description_pt": "Nas arenas e fossos de combate, você lutou pela sobrevivência e pela aclamação do público, aprendendo a transformar a violência em espetáculo.",
+    "description_en": "In arenas and fighting pits, you fought for survival and the crowd's cheers, turning martial combat into grand theatrical showmanship.",
+    "description_es": "En arenas y fosos de combate, luchaste por la supervivencia y el aplauso del público, convirtiendo el combate en un gran espectáculo.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "performance"
+    ],
+    "granted_feat": "Espetáculo Sangrento",
+    "lore_skill": null,
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 89,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.guard",
+    "name_pt": "Guarda da Cidade",
+    "name_en": "Guard",
+    "name_es": "Guardia",
+    "description_pt": "Você patrulhou portões, muralhas e ruas, fazendo cumprir as leis locais, dispersando tumultos e intimidando malfeitores.",
+    "description_en": "You patrolled gates, walls, and streets, enforcing local laws, dispersing brawls, and staring down wrongdoers.",
+    "description_es": "Patrullaste puertas, murallas y calles, haciendo cumplir las leyes locales, disolviendo tumultos e intimidando a maleantes.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "intimidation"
+    ],
+    "granted_feat": "Olhar Rápido",
+    "lore_skill": null,
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 89,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.noble",
+    "name_pt": "Herdeiro Nobre",
+    "name_en": "Noble",
+    "name_es": "Noble",
+    "description_pt": "Criado no privilégio de uma linhagem nobre, você aprendeu política palaciana, genealogia aristocrática e as expectativas do poder.",
+    "description_en": "Raised in the privilege of a noble lineage, you learned courtly politics, aristocratic heraldry, and the obligations of power.",
+    "description_es": "Criado en el privilegio de un linaje noble, aprendiste política cortesana, heráldica aristocrática y las obligaciones del poder.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "society"
+    ],
+    "granted_feat": "Etiqueta Nobre",
+    "lore_skill": null,
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 90,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.sailor",
+    "name_pt": "Marinheiro",
+    "name_en": "Sailor",
+    "name_es": "Marinero",
+    "description_pt": "Você içou velas em mares tempestuosos, manejou cordames e ancoradouros e conhece o ritmo imprevisível das marés.",
+    "description_en": "You hoisted sails in stormy seas, handled rigging and anchorages, and know the unpredictable rhythm of the open waters.",
+    "description_es": "Izaste velas en mares tempestuosos, manejaste cabos y anclas, y conoces el ritmo impredecible de las aguas abiertas.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "athletics"
+    ],
+    "granted_feat": "Equilíbrio no Convés",
+    "lore_skill": null,
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 90,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.merchant",
+    "name_pt": "Mercador",
+    "name_en": "Merchant",
+    "name_es": "Mercader",
+    "description_pt": "Você comprou e vendeu mercadorias em feiras e bazares, avaliando preços justos, lucros e rotas comerciais lucrativas.",
+    "description_en": "You bought and sold goods at fairs and bazaars, evaluating fair prices, margins, and profitable trade routes.",
+    "description_es": "Compraste y vendiste mercancías en ferias y bazares, evaluando precios justos, márgenes y rutas comerciales rentables.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "diplomacy"
+    ],
+    "granted_feat": "Negociador de Barganhas",
+    "lore_skill": null,
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 90,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.miner",
+    "name_pt": "Mineiro",
+    "name_en": "Miner",
+    "name_es": "Minero",
+    "description_pt": "Você escavou túneis profundos com picareta em busca de minérios preciosos, acostumando-se ao confinamento e aos perigos da rocha.",
+    "description_en": "You excavated deep tunnels with pickaxe seeking precious ores, getting accustomed to close quarters and underground cave-in hazards.",
+    "description_es": "Excavaste túneles profundos con pico en busca de minerales preciosos, acostumbrándote al confinamiento y a los peligros de la roca.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "athletics"
+    ],
+    "granted_feat": "Resistência a Desabamento",
+    "lore_skill": null,
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 90,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.nomad",
+    "name_pt": "Nômade",
+    "name_en": "Nomad",
+    "name_es": "Nómada",
+    "description_pt": "Sua tribo ou família viajou constantemente por estepes e desertos, ensinando a você como se orientar pelo sol e pelas estrelas.",
+    "description_en": "Your tribe or clan traveled constantly across steppes and deserts, teaching you how to navigate by sun, stars, and weather.",
+    "description_es": "Tu tribu o clan viajó constantemente por estepas y desiertos, enseñándote a orientarte por el sol, las estrellas y el clima.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "survival"
+    ],
+    "granted_feat": "Sentido Climático",
+    "lore_skill": null,
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 90,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.prisoner",
+    "name_pt": "Prisioneiro",
+    "name_en": "Prisoner",
+    "name_es": "Prisionero",
+    "description_pt": "Trancafiado em masmorras ou colônias penais, você desenvolveu rijeza física e astúcia para resistir ao cárcere e reconquistar a liberdade.",
+    "description_en": "Locked in dungeons or penal colonies, you built physical toughness and cunning to survive imprisonment and reclaim freedom.",
+    "description_es": "Encerrado en mazmorras o colonias penales, desarrollaste dureza física y astucia para sobrevivir al encierro y recuperar la libertad.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "athletics"
+    ],
+    "granted_feat": "Escapar com Vigor",
+    "lore_skill": null,
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 90,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.laborer",
+    "name_pt": "Trabalhador Braçal",
+    "name_en": "Laborer",
+    "name_es": "Trabajador manual",
+    "description_pt": "Você realizou trabalhos pesados na construção de muralhas, estivagem de cais ou corte de lenha, forjando uma constituição musculosa e incansável.",
+    "description_en": "You performed hard physical labor building walls, loading docks, or felling timber, forging a muscular and tireless constitution.",
+    "description_es": "Realizaste trabajo físico pesado construyendo murallas, cargando muelles o talando árboles, forjando una constitución musculosa e incansable.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "athletics"
+    ],
+    "granted_feat": "Músculo Rústico",
+    "lore_skill": null,
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 89,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.barkeeper",
+    "name_pt": "Taverneiro",
+    "name_en": "Barkeeper",
+    "name_es": "Tabernero",
+    "description_pt": "Servindo canecas atrás do balcão, você ouviu fofocas de viajantes, acalmou brigas bêbadas e desenvolveu um excelente senso de diplomacia prática.",
+    "description_en": "Pouring ales behind the bar, you listened to traveler gossip, calmed drunken brawls, and honed practical diplomacy.",
+    "description_es": "Sirviendo jarras tras la barra, escuchaste cotilleos de viajeros, calmaste peleas de borrachos y afilaste una diplomacia práctica.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "diplomacy"
+    ],
+    "granted_feat": "Ouvido Atento",
+    "lore_skill": null,
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 88,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.player_core_2.rare.blessed",
+    "name_pt": "Abençoado",
+    "name_en": "Blessed",
+    "name_es": "Bendecido",
+    "description_pt": "Sua bênção divina oferece intuição e proteção em situações difíceis.",
+    "description_en": "A divine blessing gives you intuition and protection in difficult situations.",
+    "description_es": "Una bendición divina te da intuición y protección en situaciones difíciles.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "religion"
+    ],
+    "granted_feat": "Orientação",
+    "lore_skill": "Saber da Divindade",
+    "rarity": "rare",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 52,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.player_core_2.rare.cursed",
+    "name_pt": "Amaldiçoado",
+    "name_en": "Cursed",
+    "name_es": "Maldito",
+    "description_pt": "Uma maldição pessoal ou hereditária ensinou você a resistir a efeitos mágicos nocivos.",
+    "description_en": "A personal or inherited curse taught you to resist harmful magical effects.",
+    "description_es": "Una maldición personal o hereditaria te enseñó a resistir efectos mágicos dañinos.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "occultism"
+    ],
+    "granted_feat": "Sinal de Proteção",
+    "lore_skill": "Saber de Maldições",
+    "rarity": "rare",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 52,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.player_core_2.rare.amnesiac",
+    "name_pt": "Amnésico",
+    "name_en": "Amnesiac",
+    "name_es": "Amnésico",
+    "description_pt": "Seu passado é um mistério, e pistas inesperadas guiam sua descoberta.",
+    "description_en": "Your past is a mystery, and unexpected clues guide your discovery.",
+    "description_es": "Tu pasado es un misterio, y pistas inesperadas guían tu descubrimiento.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "—"
+    ],
+    "granted_feat": "—",
+    "lore_skill": "—",
+    "rarity": "rare",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 52,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.player_core_2.rare.haunted",
+    "name_pt": "Assombrado",
+    "name_en": "Haunted",
+    "name_es": "Embrujado",
+    "description_pt": "Uma entidade acompanha você desde a infância e influencia sua vida de formas sutis.",
+    "description_en": "An entity has followed you since childhood and subtly influences your life.",
+    "description_es": "Una entidad te acompaña desde la infancia e influye sutilmente en tu vida.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "occultism"
+    ],
+    "granted_feat": "—",
+    "lore_skill": "Saber da Entidade",
+    "rarity": "rare",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 52,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.player_core_2.rare.wild_child",
+    "name_pt": "Criança Selvagem",
+    "name_en": "Wild Child",
+    "name_es": "Niño salvaje",
+    "description_pt": "Você cresceu na natureza entre animais, desenvolvendo instintos e uma conexão mística com eles.",
+    "description_en": "You grew up in the wild among animals, developing instincts and a mystical connection to them.",
+    "description_es": "Creciste en la naturaleza entre animales, desarrollando instintos y una conexión mística con ellos.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "nature"
+    ],
+    "granted_feat": "Forrageador",
+    "lore_skill": "Saber de Animais",
+    "rarity": "rare",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 52,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.player_core_2.rare.fae_bound",
+    "name_pt": "Ligado às Fadas",
+    "name_en": "Feybound",
+    "name_es": "Vinculado a las hadas",
+    "description_pt": "Um pacto com as fadas concedeu poderes e um anátema que ainda orienta sua vida.",
+    "description_en": "A pact with the fey granted powers and an anathema that still shapes your life.",
+    "description_es": "Un pacto con las hadas te concedió poderes y un anatema que aún moldea tu vida.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "nature"
+    ],
+    "granted_feat": "Fortúnio das Fadas",
+    "lore_skill": "Saber de Fadas",
+    "rarity": "rare",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 53,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.player_core_2.rare.royalty",
+    "name_pt": "Realeza",
+    "name_en": "Royalty",
+    "name_es": "Realeza",
+    "description_pt": "Você pertence a uma família real e conhece as responsabilidades e privilégios do poder.",
+    "description_en": "You belong to a royal family and know the responsibilities and privileges of power.",
+    "description_es": "Perteneces a una familia real y conoces las responsabilidades y privilegios del poder.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "society"
+    ],
+    "granted_feat": "Gracejos da Corte",
+    "lore_skill": "Saber da Corte",
+    "rarity": "rare",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 53,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.player_core_2.rare.returned",
+    "name_pt": "Retornado",
+    "name_en": "Returned",
+    "name_es": "Retornado",
+    "description_pt": "Você morreu e voltou com uma ligação incomum com a vida e a morte.",
+    "description_en": "You died and returned with an unusual connection to life and death.",
+    "description_es": "Moriste y regresaste con una conexión inusual con la vida y la muerte.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "religion"
+    ],
+    "granted_feat": "Duro de Matar",
+    "lore_skill": "Saber do Ossário",
+    "rarity": "rare",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 53,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.player_core_2.common.ward",
+    "name_pt": "Tutelado",
+    "name_en": "Ward",
+    "name_es": "Protegido",
+    "description_pt": "Biografia comum do Player Core 2 (p. 50); efeito mecânico completo oficial de oficial.",
+    "description_en": "Common Player Core 2 background (p. 50); full mechanical text pending review.",
+    "description_es": "Trasfondo común de Player Core 2 (p. 50); texto mecánico completo pendiente de revisión.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "performance"
+    ],
+    "granted_feat": "Performance Fascinante",
+    "lore_skill": "Saber de Genealogia",
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 50,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.player_core_2.common.driver",
+    "name_pt": "Condutor",
+    "name_en": "Driver",
+    "name_es": "Conductor",
+    "description_pt": "Biografia comum do Player Core 2 (p. 50); efeito mecânico completo oficial de oficial.",
+    "description_en": "Common Player Core 2 background (p. 50); full mechanical text pending review.",
+    "description_es": "Trasfondo común de Player Core 2 (p. 50); texto mecánico completo pendiente de revisión.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "acrobatics"
+    ],
+    "granted_feat": "Certeza",
+    "lore_skill": "Saber de Pilotagem",
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 50,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.player_core_2.common.barber",
+    "name_pt": "Barbeiro",
+    "name_en": "Barber",
+    "name_es": "Barbero",
+    "description_pt": "Biografia comum do Player Core 2 (p. 50); efeito mecânico completo oficial de oficial.",
+    "description_en": "Common Player Core 2 background (p. 50); full mechanical text pending review.",
+    "description_es": "Trasfondo común de Player Core 2 (p. 50); texto mecánico completo pendiente de revisión.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "medicine"
+    ],
+    "granted_feat": "Cirurgia Arriscada",
+    "lore_skill": "Saber de Cirurgia",
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 50,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.player_core_2.common.accountant",
+    "name_pt": "Contador",
+    "name_en": "Accountant",
+    "name_es": "Contable",
+    "description_pt": "Biografia comum do Player Core 2 (p. 50); efeito mecânico completo oficial de oficial.",
+    "description_en": "Common Player Core 2 background (p. 50); full mechanical text pending review.",
+    "description_es": "Trasfondo común de Player Core 2 (p. 50); texto mecánico completo pendiente de revisión.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "society"
+    ],
+    "granted_feat": "Subitizar",
+    "lore_skill": "Saber de Contabilidade",
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 50,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.player_core_2.common.scavenger",
+    "name_pt": "Catador",
+    "name_en": "Scavenger",
+    "name_es": "Recogedor",
+    "description_pt": "Biografia comum do Player Core 2 (p. 50); efeito mecânico completo oficial de oficial.",
+    "description_en": "Common Player Core 2 background (p. 50); full mechanical text pending review.",
+    "description_es": "Trasfondo común de Player Core 2 (p. 50); texto mecánico completo pendiente de revisión.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "society"
+    ],
+    "granted_feat": "Forrageador",
+    "lore_skill": "Saber do Assentamento",
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 50,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.player_core_2.common.servant",
+    "name_pt": "Criado",
+    "name_en": "Servant",
+    "name_es": "Sirviente",
+    "description_pt": "Biografia comum do Player Core 2 (p. 50); efeito mecânico completo oficial de oficial.",
+    "description_en": "Common Player Core 2 background (p. 50); full mechanical text pending review.",
+    "description_es": "Trasfondo común de Player Core 2 (p. 50); texto mecánico completo pendiente de revisión.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "society"
+    ],
+    "granted_feat": "Leitura Labial",
+    "lore_skill": "Saber de Trabalho",
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 50,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.player_core_2.common.tax_collector",
+    "name_pt": "Coletor de Impostos",
+    "name_en": "Tax Collector",
+    "name_es": "Recaudador de impuestos",
+    "description_pt": "Biografia comum do Player Core 2 (p. 50); efeito mecânico completo oficial de oficial.",
+    "description_en": "Common Player Core 2 background (p. 50); full mechanical text pending review.",
+    "description_es": "Trasfondo común de Player Core 2 (p. 50); texto mecánico completo pendiente de revisión.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "intimidation"
+    ],
+    "granted_feat": "Coerção Rápida",
+    "lore_skill": "Saber do Assentamento",
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 50,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.player_core_2.common.squire",
+    "name_pt": "Escudeiro",
+    "name_en": "Squire",
+    "name_es": "Escudero",
+    "description_pt": "Biografia comum do Player Core 2 (p. 51); efeito mecânico completo oficial de oficial.",
+    "description_en": "Common Player Core 2 background (p. 51); full mechanical text pending review.",
+    "description_es": "Trasfondo común de Player Core 2 (p. 51); texto mecánico completo pendiente de revisión.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "society"
+    ],
+    "granted_feat": "Assistente de Armadura",
+    "lore_skill": "Saber de Heráldica ou Guerra",
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 51,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.player_core_2.common.forerunner",
+    "name_pt": "Precursor",
+    "name_en": "Forerunner",
+    "name_es": "Precursor",
+    "description_pt": "Biografia comum do Player Core 2 (p. 51); efeito mecânico completo oficial de oficial.",
+    "description_en": "Common Player Core 2 background (p. 51); full mechanical text pending review.",
+    "description_es": "Trasfondo común de Player Core 2 (p. 51); texto mecánico completo pendiente de revisión.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "nature"
+    ],
+    "granted_feat": "Cavaleiro Expresso",
+    "lore_skill": "Saber de Planícies",
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 51,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.player_core_2.common.refugee",
+    "name_pt": "Refugiado",
+    "name_en": "Refugee",
+    "name_es": "Refugiado",
+    "description_pt": "Biografia comum do Player Core 2 (p. 51); efeito mecânico completo oficial de oficial.",
+    "description_en": "Common Player Core 2 background (p. 51); full mechanical text pending review.",
+    "description_es": "Trasfondo común de Player Core 2 (p. 51); texto mecánico completo pendiente de revisión.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "society"
+    ],
+    "granted_feat": "Manha das Ruas",
+    "lore_skill": "Saber do Assentamento de Origem",
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 51,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.player_core_2.common.insurgent",
+    "name_pt": "Insurgente",
+    "name_en": "Insurgent",
+    "name_es": "Insurgente",
+    "description_pt": "Biografia comum do Player Core 2 (p. 51); efeito mecânico completo oficial de oficial.",
+    "description_en": "Common Player Core 2 background (p. 51); full mechanical text pending review.",
+    "description_es": "Trasfondo común de Player Core 2 (p. 51); texto mecánico completo pendiente de revisión.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "deception"
+    ],
+    "granted_feat": "Distração Prolongada",
+    "lore_skill": "Saber de Guerra",
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 51,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.player_core_2.common.hedge_wizard",
+    "name_pt": "Mandingueiro",
+    "name_en": "Hedge Wizard",
+    "name_es": "Mago de seto",
+    "description_pt": "Biografia comum do Player Core 2 (p. 51); efeito mecânico completo oficial de oficial.",
+    "description_en": "Common Player Core 2 background (p. 51); full mechanical text pending review.",
+    "description_es": "Trasfondo común de Player Core 2 (p. 51); texto mecánico completo pendiente de revisión.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "occultism"
+    ],
+    "granted_feat": "Magia das Raízes",
+    "lore_skill": "Saber de Herbalismo",
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 51,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.player_core_2.common.messenger",
+    "name_pt": "Mensageiro",
+    "name_en": "Messenger",
+    "name_es": "Mensajero",
+    "description_pt": "Biografia comum do Player Core 2 (p. 51); efeito mecânico completo oficial de oficial.",
+    "description_en": "Common Player Core 2 background (p. 51); full mechanical text pending review.",
+    "description_es": "Trasfondo común de Player Core 2 (p. 51); texto mecánico completo pendiente de revisión.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "society"
+    ],
+    "granted_feat": "Olhar Conteúdo",
+    "lore_skill": "Saber da Cidade de Origem",
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 51,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.player_core_2.common.pilgrim",
+    "name_pt": "Peregrino",
+    "name_en": "Pilgrim",
+    "name_es": "Peregrino",
+    "description_pt": "Biografia comum do Player Core 2 (p. 51); efeito mecânico completo oficial de oficial.",
+    "description_en": "Common Player Core 2 background (p. 51); full mechanical text pending review.",
+    "description_es": "Trasfondo común de Player Core 2 (p. 51); texto mecánico completo pendiente de revisión.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "religion"
+    ],
+    "granted_feat": "Amuleto do Peregrino",
+    "lore_skill": "Saber da Divindade Patrona",
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 51,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.astrologer",
+    "name_pt": "Astrólogo",
+    "name_en": "Astrologer",
+    "name_es": "Astrólogo",
+    "description_pt": "Você estudou os movimentos celestes para interpretar sinais e orientar caminhos.",
+    "description_en": "You studied celestial movements to interpret signs and guide your path.",
+    "description_es": "Estudiaste los movimientos celestes para interpretar señales y orientar tu camino.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "occultism"
+    ],
+    "granted_feat": "Identificar Estranhezas",
+    "lore_skill": "Saber de Astrologia",
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 28,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.occult_librarian",
+    "name_pt": "Bibliotecário Ocultista",
+    "name_en": "Occult Librarian",
+    "name_es": "Bibliotecario ocultista",
+    "description_pt": "O estudo de compêndios raros treinou você nos mistérios do ocultismo.",
+    "description_en": "Studying rare compendiums trained you in the mysteries of occultism.",
+    "description_es": "El estudio de compendios raros te formó en los misterios del ocultismo.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "occultism"
+    ],
+    "granted_feat": "Instruído em Segredos",
+    "lore_skill": "Saber Acadêmico",
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 28,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.eidolon_contact",
+    "name_pt": "Contato de Eidolon",
+    "name_en": "Eidolon Contact",
+    "name_es": "Contacto de eidolon",
+    "description_pt": "Um encontro com um eidolon deixou lembranças e conhecimentos mágicos duradouros.",
+    "description_en": "An encounter with an eidolon left lasting memories and magical knowledge.",
+    "description_es": "Un encuentro con un eidolon dejó recuerdos y conocimientos mágicos duraderos.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "magical tradition"
+    ],
+    "granted_feat": "Conhecimento Duvidoso",
+    "lore_skill": "Saber da criatura do eidolon",
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 28,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.magical_misfit",
+    "name_pt": "Desajustado Mágico",
+    "name_en": "Magical Misfit",
+    "name_es": "Inadaptado mágico",
+    "description_pt": "Você aprendeu a usar magia para provocar confusão e escapar das consequências.",
+    "description_en": "You learned to use magic to cause trouble and escape the consequences.",
+    "description_es": "Aprendiste a usar la magia para causar problemas y escapar de las consecuencias.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "arcana"
+    ],
+    "granted_feat": "Enganar Item Mágico",
+    "lore_skill": "Saber de Submundo",
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 28,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.academy_dropout",
+    "name_pt": "Desistente da Academia",
+    "name_en": "Academy Dropout",
+    "name_es": "Desertor de la academia",
+    "description_pt": "Sua passagem interrompida por uma academia mágica ainda molda sua vida.",
+    "description_en": "Your interrupted time at a magical academy still shapes your life.",
+    "description_es": "Tu paso interrumpido por una academia mágica aún moldea tu vida.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "arcana"
+    ],
+    "granted_feat": "Conhecimento Duvidoso",
+    "lore_skill": "Saber Acadêmico",
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 29,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.plant_whisperer",
+    "name_pt": "Encantador de Plantas",
+    "name_en": "Plant Whisperer",
+    "name_es": "Encantador de plantas",
+    "description_pt": "Sua afinidade excepcional com plantas beira o sobrenatural.",
+    "description_en": "Your exceptional affinity with plants borders on the supernatural.",
+    "description_es": "Tu afinidad excepcional con las plantas roza lo sobrenatural.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "nature"
+    ],
+    "granted_feat": "Medicina Natural",
+    "lore_skill": "Saber de Plantas",
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 29,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.magic_student",
+    "name_pt": "Estudante de Magia",
+    "name_en": "Magic Student",
+    "name_es": "Estudiante de magia",
+    "description_pt": "Você concilia aventuras com os estudos formais de uma tradição mágica.",
+    "description_en": "You balance adventuring with formal study of a magical tradition.",
+    "description_es": "Compaginas las aventuras con el estudio formal de una tradición mágica.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "magical tradition"
+    ],
+    "granted_feat": "Reconhecer Magia",
+    "lore_skill": "Saber Acadêmico",
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 29,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.false_medium",
+    "name_pt": "Falso Médium",
+    "name_en": "False Medium",
+    "name_es": "Falso médium",
+    "description_pt": "Técnicas de leitura fria e ocultismo sustentaram suas sessões fraudulentas.",
+    "description_en": "Cold-reading techniques and occult lore supported your fraudulent séances.",
+    "description_es": "Técnicas de lectura en frío y ocultismo sostuvieron tus sesiones fraudulentas.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "occultism"
+    ],
+    "granted_feat": "Adoração Enganosa",
+    "lore_skill": "Saber de Vidência",
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 29,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.magical_merchant",
+    "name_pt": "Mercador Mágico",
+    "name_en": "Magical Merchant",
+    "name_es": "Mercader mágico",
+    "description_pt": "O comércio de itens mágicos ensinou você a avaliar mercadorias raras.",
+    "description_en": "Trading magic items taught you how to appraise rare merchandise.",
+    "description_es": "El comercio de objetos mágicos te enseñó a valorar mercancías raras.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "crafting"
+    ],
+    "granted_feat": "Avaliação do Artesão",
+    "lore_skill": "Saber de Mercadores",
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 29,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.street_preacher",
+    "name_pt": "Pregador das Ruas",
+    "name_en": "Street Preacher",
+    "name_es": "Predicador callejero",
+    "description_pt": "Você levou a palavra de sua divindade diretamente às ruas e estradas.",
+    "description_en": "You carried your deity's word directly to streets and roads.",
+    "description_es": "Llevaste la palabra de tu deidad directamente a calles y caminos.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "religion"
+    ],
+    "granted_feat": "Conhecimento Duvidoso",
+    "lore_skill": "Saber da Divindade",
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 29,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.musical_prodigy",
+    "name_pt": "Prodígio Musical",
+    "name_en": "Musical Prodigy",
+    "name_es": "Prodigio musical",
+    "description_pt": "Seu talento musical extraordinário surgiu muito antes da vida de aventureiro.",
+    "description_en": "Your extraordinary musical talent appeared long before your adventuring life.",
+    "description_es": "Tu extraordinario talento musical apareció mucho antes de tu vida aventurera.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "performance"
+    ],
+    "granted_feat": "Artista Virtuoso",
+    "lore_skill": "Saber de Música",
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 29,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.genie_blessed",
+    "name_pt": "Abençoado por Gênio",
+    "name_en": "Genie-Blessed",
+    "name_es": "Bendecido por un genio",
+    "description_pt": "A bênção de um gênio poderoso concedeu a você uma sorte mágica incomum.",
+    "description_en": "A powerful genie's blessing granted you unusual magical luck.",
+    "description_es": "La bendición de un genio poderoso te concedió una suerte mágica inusual.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "diplomacy"
+    ],
+    "granted_feat": "Desejo de Sorte",
+    "lore_skill": "Saber de Gênios",
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 30,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.anti_magical",
+    "name_pt": "Anti-Mágico",
+    "name_en": "Anti-Magical",
+    "name_es": "Antimágico",
+    "description_pt": "A magia se comporta de forma instável ao seu redor, inclusive quando deveria ajudar.",
+    "description_en": "Magic behaves unpredictably around you, even when it should help.",
+    "description_es": "La magia se comporta de forma inestable a tu alrededor, incluso cuando debería ayudarte.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "nonmagical lore"
+    ],
+    "granted_feat": "Interferência Antimágica",
+    "lore_skill": "Saber não mágico",
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 30,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.song_of_the_deep",
+    "name_pt": "Canção das Profundezas",
+    "name_en": "Song of the Deep",
+    "name_es": "Canción de las profundidades",
+    "description_pt": "Um resgate sobrenatural no mar deixou você capaz de respirar sob a água.",
+    "description_en": "A supernatural rescue at sea left you able to breathe underwater.",
+    "description_es": "Un rescate sobrenatural en el mar te dejó capaz de respirar bajo el agua.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "athletics"
+    ],
+    "granted_feat": "Respirar na Água",
+    "lore_skill": "Saber de Oceanos",
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 30,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.chosen_one",
+    "name_pt": "Escolhido",
+    "name_en": "Chosen One",
+    "name_es": "Elegido",
+    "description_pt": "Seu nascimento cumpriu uma profecia que ainda pressiona suas decisões.",
+    "description_en": "Your birth fulfilled a prophecy that still weighs on your decisions.",
+    "description_es": "Tu nacimiento cumplió una profecía que aún pesa sobre tus decisiones.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "prophecy-related"
+    ],
+    "granted_feat": "Peão da Profecia",
+    "lore_skill": "Saber de Vidência",
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 30,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.magical_experiment",
+    "name_pt": "Experimento Mágico",
+    "name_en": "Magical Experiment",
+    "name_es": "Experimento mágico",
+    "description_pt": "Experimentos alteraram permanentemente seu corpo e deixaram uma habilidade incomum.",
+    "description_en": "Experiments permanently altered your body and left an unusual ability.",
+    "description_es": "Experimentos alteraron tu cuerpo para siempre y dejaron una capacidad inusual.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "occultism"
+    ],
+    "granted_feat": "Alteração Experimental",
+    "lore_skill": "Saber Acadêmico",
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 31,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.time_traveler",
+    "name_pt": "Viajante do Tempo",
+    "name_en": "Time Traveler",
+    "name_es": "Viajero del tiempo",
+    "description_pt": "Você chegou de outra época e carrega conhecimentos que não pertencem ao presente.",
+    "description_en": "You arrived from another era and carry knowledge that does not belong to the present.",
+    "description_es": "Llegaste de otra época y llevas conocimientos que no pertenecen al presente.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "three lore skills"
+    ],
+    "granted_feat": "Dobrar o Tempo",
+    "lore_skill": "Três Saberes do seu tempo",
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 31,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.seer_of_the_dead",
+    "name_pt": "Vidente dos Mortos",
+    "name_en": "Seer of the Dead",
+    "name_es": "Vidente de los muertos",
+    "description_pt": "Você percebe e conversa com espíritos que já partiram do mundo dos vivos.",
+    "description_en": "You perceive and speak with spirits that have left the world of the living.",
+    "description_es": "Percibes y hablas con espíritus que abandonaron el mundo de los vivos.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "religion"
+    ],
+    "granted_feat": "Sentir Espíritos",
+    "lore_skill": "Saber de Mortos-Vivos",
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 31,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.guns_gears.rare.technology_dependent",
+    "name_pt": "Dependente de Tecnologia",
+    "name_en": "Technology Dependent",
+    "name_es": "Dependiente de la tecnología",
+    "description_pt": "Seu corpo não tolera mais magia de cura e você depende de dispositivos e engenhosidade.",
+    "description_en": "Your body no longer tolerates magical healing, so you rely on devices and ingenuity.",
+    "description_es": "Tu cuerpo ya no tolera la curación mágica, así que dependes de dispositivos e ingenio.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "crafting"
+    ],
+    "granted_feat": "Medicina de Batalha",
+    "lore_skill": "medicine",
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 47,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.guns_gears.rare.discarded_duplicate",
+    "name_pt": "Duplicata Descartada",
+    "name_en": "Discarded Duplicate",
+    "name_es": "Duplicado descartado",
+    "description_pt": "Você foi criado para substituir alguém importante e agora explora um mundo que o deixou para trás.",
+    "description_en": "You were created to replace someone important and now explore a world that left you behind.",
+    "description_es": "Fuiste creado para reemplazar a alguien importante y ahora exploras un mundo que te dejó atrás.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "society"
+    ],
+    "granted_feat": "—",
+    "lore_skill": "identity lore",
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 47,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.guns_gears.rare.saved_by_gears",
+    "name_pt": "Salvo pelas Engrenagens",
+    "name_en": "Saved by Gears",
+    "name_es": "Salvado por los engranajes",
+    "description_pt": "Uma prótese mecânica substitui parte do seu corpo e exige manutenção regular.",
+    "description_en": "A mechanical prosthesis replaces part of your body and requires regular maintenance.",
+    "description_es": "Una prótesis mecánica reemplaza parte de tu cuerpo y requiere mantenimiento regular.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "crafting"
+    ],
+    "granted_feat": "—",
+    "lore_skill": "—",
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 48,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.guns_gears.rare.mechanical_symbiosis",
+    "name_pt": "Simbiose Mecânica",
+    "name_en": "Mechanical Symbiosis",
+    "name_es": "Simbiosis mecánica",
+    "description_pt": "Uma entidade vive em um objeto maquinal preso ao seu corpo e às suas decisões.",
+    "description_en": "An entity lives within a mechanical object attached to your body and choices.",
+    "description_es": "Una entidad vive en un objeto mecánico unido a tu cuerpo y tus decisiones.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "arcana"
+    ],
+    "granted_feat": "—",
+    "lore_skill": "entity lore",
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 48,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.guns_gears.rare.desired_life",
+    "name_pt": "Vida Desejada",
+    "name_en": "Desired Life",
+    "name_es": "Vida deseada",
+    "description_pt": "Você foi um constructo ou boneco inanimado que ganhou vida por causa de um desejo profundo.",
+    "description_en": "You were once an inanimate construct or doll who gained life through a profound wish.",
+    "description_es": "Antes eras un constructo o muñeco inanimado que cobró vida por un deseo profundo.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "diplomacy"
+    ],
+    "granted_feat": "—",
+    "lore_skill": "—",
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 48,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.guns_gears.anti_technology_activist",
+    "name_pt": "Ativista Anti-Tecnologia",
+    "name_en": "Anti-Technology Activist",
+    "name_es": "Activista antitecnología",
+    "description_pt": "Antecedente de Pólvora e Engrenagens ligado a Saber de Guildas; o texto mecânico detalhado deve ser conferido na fonte.",
+    "description_en": "Guns & Gears background trained in intimidation and a related lore; confirm the full mechanical text in the source.",
+    "description_es": "Trasfondo de Guns & Gears entrenado en intimidation y un saber relacionado; confirma el texto mecánico completo en la fuente.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "intimidation"
+    ],
+    "granted_feat": "Coagir Grupo",
+    "lore_skill": "Saber (Guildas)",
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 45,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.guns_gears.decoder",
+    "name_pt": "Decodificador",
+    "name_en": "Decoder",
+    "name_es": "Descifrador",
+    "description_pt": "Antecedente de Pólvora e Engrenagens ligado a Saber de Criptografia; o texto mecânico detalhado deve ser conferido na fonte.",
+    "description_en": "Guns & Gears background trained in society and a related lore; confirm the full mechanical text in the source.",
+    "description_es": "Trasfondo de Guns & Gears entrenado en society y un saber relacionado; confirma el texto mecánico completo en la fuente.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "society"
+    ],
+    "granted_feat": "Olhar Atento",
+    "lore_skill": "Saber (Criptografia)",
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 45,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.guns_gears.gear_disciple",
+    "name_pt": "Discípulo da Engrenagem",
+    "name_en": "Gear Disciple",
+    "name_es": "Discípulo de los engranajes",
+    "description_pt": "Antecedente de Pólvora e Engrenagens ligado a Saber de Divindade; o texto mecânico detalhado deve ser conferido na fonte.",
+    "description_en": "Guns & Gears background trained in crafting and a related lore; confirm the full mechanical text in the source.",
+    "description_es": "Trasfondo de Guns & Gears entrenado en crafting y un saber relacionado; confirma el texto mecánico completo en la fuente.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "crafting"
+    ],
+    "granted_feat": "Reparo Rápido",
+    "lore_skill": "Saber (Divindade)",
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 45,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.guns_gears.medicinal_engineer",
+    "name_pt": "Engenheiro Medicinal",
+    "name_en": "Medicinal Engineer",
+    "name_es": "Ingeniero medicinal",
+    "description_pt": "Antecedente de Pólvora e Engrenagens ligado a Saber de Engenharia; o texto mecânico detalhado deve ser conferido na fonte.",
+    "description_en": "Guns & Gears background trained in medicine and a related lore; confirm the full mechanical text in the source.",
+    "description_es": "Trasfondo de Guns & Gears entrenado en medicine y un saber relacionado; confirma el texto mecánico completo en la fuente.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "medicine"
+    ],
+    "granted_feat": "Cirurgia Arriscada",
+    "lore_skill": "Saber (Engenharia)",
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 45,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.guns_gears.toy_maker",
+    "name_pt": "Fabricante de Brinquedos",
+    "name_en": "Toy Maker",
+    "name_es": "Fabricante de juguetes",
+    "description_pt": "Antecedente de Pólvora e Engrenagens ligado a Saber de Mercantilismo; o texto mecânico detalhado deve ser conferido na fonte.",
+    "description_en": "Guns & Gears background trained in crafting and a related lore; confirm the full mechanical text in the source.",
+    "description_es": "Trasfondo de Guns & Gears entrenado en crafting y un saber relacionado; confirma el texto mecánico completo en la fuente.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "crafting"
+    ],
+    "granted_feat": "Especialidade de Manufatura",
+    "lore_skill": "Saber (Mercantilismo)",
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 46,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.guns_gears.gear_warrior",
+    "name_pt": "Guerreiro Engrenário",
+    "name_en": "Gear Warrior",
+    "name_es": "Guerrero de engranajes",
+    "description_pt": "Antecedente de Pólvora e Engrenagens ligado a Saber de Gladiatorial; o texto mecânico detalhado deve ser conferido na fonte.",
+    "description_en": "Guns & Gears background trained in crafting and a related lore; confirm the full mechanical text in the source.",
+    "description_es": "Trasfondo de Guns & Gears entrenado en crafting y un saber relacionado; confirma el texto mecánico completo en la fuente.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "crafting"
+    ],
+    "granted_feat": "Profissional Experiente",
+    "lore_skill": "Saber (Gladiatorial)",
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 46,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.guns_gears.printer",
+    "name_pt": "Impressor",
+    "name_en": "Printer",
+    "name_es": "Impresor",
+    "description_pt": "Antecedente de Pólvora e Engrenagens ligado a Saber de Quirografia; o texto mecânico detalhado deve ser conferido na fonte.",
+    "description_en": "Guns & Gears background trained in society and a related lore; confirm the full mechanical text in the source.",
+    "description_es": "Trasfondo de Guns & Gears entrenado en society y un saber relacionado; confirma el texto mecánico completo en la fuente.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "society"
+    ],
+    "granted_feat": "Poliglota",
+    "lore_skill": "Saber (Quirografia)",
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 46,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.guns_gears.watched_thief",
+    "name_pt": "Ladrão Vigiado",
+    "name_en": "Watched Thief",
+    "name_es": "Ladrón vigilado",
+    "description_pt": "Antecedente de Pólvora e Engrenagens ligado a Saber de Submundo; o texto mecânico detalhado deve ser conferido na fonte.",
+    "description_en": "Guns & Gears background trained in thievery and a related lore; confirm the full mechanical text in the source.",
+    "description_es": "Trasfondo de Guns & Gears entrenado en thievery y un saber relacionado; confirma el texto mecánico completo en la fuente.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "thievery"
+    ],
+    "granted_feat": "Punga",
+    "lore_skill": "Saber (Submundo)",
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 46,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.guns_gears.mechanic",
+    "name_pt": "Mecânico",
+    "name_en": "Mechanic",
+    "name_es": "Mecánico",
+    "description_pt": "Antecedente de Pólvora e Engrenagens ligado a Saber de Engenharia; o texto mecânico detalhado deve ser conferido na fonte.",
+    "description_en": "Guns & Gears background trained in crafting and a related lore; confirm the full mechanical text in the source.",
+    "description_es": "Trasfondo de Guns & Gears entrenado en crafting y un saber relacionado; confirma el texto mecánico completo en la fuente.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "crafting"
+    ],
+    "granted_feat": "Reparo Rápido",
+    "lore_skill": "Saber (Engenharia)",
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 46,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.guns_gears.driver",
+    "name_pt": "Motorista",
+    "name_en": "Driver",
+    "name_es": "Conductor",
+    "description_pt": "Antecedente de Pólvora e Engrenagens ligado a Saber de Pilotagem; o texto mecânico detalhado deve ser conferido na fonte.",
+    "description_en": "Guns & Gears background trained in acrobatics and a related lore; confirm the full mechanical text in the source.",
+    "description_es": "Trasfondo de Guns & Gears entrenado en acrobatics y un saber relacionado; confirma el texto mecánico completo en la fuente.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "acrobatics"
+    ],
+    "granted_feat": "Certeza para Saber (Pilotagem)",
+    "lore_skill": "Saber (Pilotagem)",
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 46,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.guns_gears.gear_researcher",
+    "name_pt": "Pesquisador das Engrenagens",
+    "name_en": "Gear Researcher",
+    "name_es": "Investigador de engranajes",
+    "description_pt": "Antecedente de Pólvora e Engrenagens ligado a Saber de Engenharia; o texto mecânico detalhado deve ser conferido na fonte.",
+    "description_en": "Guns & Gears background trained in society and a related lore; confirm the full mechanical text in the source.",
+    "description_es": "Trasfondo de Guns & Gears entrenado en society y un saber relacionado; confirma el texto mecánico completo en la fuente.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "society"
+    ],
+    "granted_feat": "Subitizar",
+    "lore_skill": "Saber (Engenharia)",
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 46,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.guns_gears.saboteur",
+    "name_pt": "Sabotador",
+    "name_en": "Saboteur",
+    "name_es": "Saboteador",
+    "description_pt": "Antecedente de Pólvora e Engrenagens ligado a Saber de Engenharia; o texto mecânico detalhado deve ser conferido na fonte.",
+    "description_en": "Guns & Gears background trained in thievery and a related lore; confirm the full mechanical text in the source.",
+    "description_es": "Trasfondo de Guns & Gears entrenado en thievery y un saber relacionado; confirma el texto mecánico completo en la fuente.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "thievery"
+    ],
+    "granted_feat": "Malabarismo Dissimulado",
+    "lore_skill": "Saber (Engenharia)",
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 46,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.guns_gears.scrapper",
+    "name_pt": "Sucateiro",
+    "name_en": "Scrapper",
+    "name_es": "Chatarrero",
+    "description_pt": "Antecedente de Pólvora e Engrenagens ligado a Saber de Terreno; o texto mecânico detalhado deve ser conferido na fonte.",
+    "description_en": "Guns & Gears background trained in athletics and a related lore; confirm the full mechanical text in the source.",
+    "description_es": "Trasfondo de Guns & Gears entrenado en athletics y un saber relacionado; confirma el texto mecánico completo en la fuente.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "athletics"
+    ],
+    "granted_feat": "Carregador Robusto",
+    "lore_skill": "Saber (Terreno)",
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 46,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.alloysmith",
+    "name_pt": "Ferreiro de Ligas",
+    "name_en": "Alloysmith",
+    "name_es": "Forjador de aleaciones",
+    "description_pt": "Você estudou metais, ligas e processos para trabalhar na fronteira da ferraria.",
+    "description_en": "You studied metals, alloys, and processes to work at the cutting edge of smithing.",
+    "description_es": "Estudiaste metales, aleaciones y procesos para trabajar en la vanguardia de la forja.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "crafting"
+    ],
+    "granted_feat": "Manufatura Especializada (Ferraria)",
+    "lore_skill": "Saber do Plano do Metal",
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Rage of Elements (Remaster)",
+    "source_page": 44,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.crystal_healer",
+    "name_pt": "Curandeiro de Cristais",
+    "name_en": "Crystal Healer",
+    "name_es": "Sanador de cristales",
+    "description_pt": "Você emprega formações minerais como instrumentos naturais de cuidado e cura.",
+    "description_en": "You use mineral formations as natural tools for care and healing.",
+    "description_es": "Empleas formaciones minerales como herramientas naturales de cuidado y curación.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "nature"
+    ],
+    "granted_feat": "Medicina Natural",
+    "lore_skill": "Saber do Plano da Terra",
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Rage of Elements (Remaster)",
+    "source_page": 44,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.deep_sea_diver",
+    "name_pt": "Mergulhador de Águas Profundas",
+    "name_en": "Deep-Sea Diver",
+    "name_es": "Buceador de aguas profundas",
+    "description_pt": "Seu fascínio pelos oceanos levou você a explorar profundezas e seus segredos.",
+    "description_en": "Your fascination with oceans led you to explore the depths and their secrets.",
+    "description_es": "Tu fascinación por los océanos te llevó a explorar las profundidades y sus secretos.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "athletics"
+    ],
+    "granted_feat": "Saqueador Subaquático",
+    "lore_skill": "Saber do Plano da Água",
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Rage of Elements (Remaster)",
+    "source_page": 44,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.dendrologist",
+    "name_pt": "Dendrologista",
+    "name_en": "Dendrologist",
+    "name_es": "Dendrólogo",
+    "description_pt": "O estudo de árvores e florestas conduz suas viagens por novos ambientes.",
+    "description_en": "The study of trees and forests guides your travels through new environments.",
+    "description_es": "El estudio de árboles y bosques guía tus viajes por nuevos entornos.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "survival"
+    ],
+    "granted_feat": "Especialidade de Terreno (Florestas)",
+    "lore_skill": "Saber do Plano da Madeira",
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Rage of Elements (Remaster)",
+    "source_page": 44,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.fire_warden",
+    "name_pt": "Guardião Contra Incêndios",
+    "name_en": "Fire Warden",
+    "name_es": "Guardián contra incendios",
+    "description_pt": "Você combateu incêndios e aprendeu a atravessar fumaça para salvar vidas.",
+    "description_en": "You fought fires and learned to move through smoke to save lives.",
+    "description_es": "Combatiste incendios y aprendiste a atravesar el humo para salvar vidas.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "athletics"
+    ],
+    "granted_feat": "Controle de Respiração",
+    "lore_skill": "Saber do Plano do Fogo",
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Rage of Elements (Remaster)",
+    "source_page": 44,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.sky_rider",
+    "name_pt": "Cavaleiro dos Céus",
+    "name_en": "Sky Rider",
+    "name_es": "Jinete de los cielos",
+    "description_pt": "Planadores e voo assistido alimentaram sua busca pela liberdade dos céus.",
+    "description_en": "Gliders and assisted flight fueled your pursuit of freedom in the skies.",
+    "description_es": "Los planeadores y el vuelo asistido alimentaron tu búsqueda de libertad en los cielos.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "acrobatics"
+    ],
+    "granted_feat": "Queda Felina",
+    "lore_skill": "Saber do Plano do Ar",
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Rage of Elements (Remaster)",
+    "source_page": 44,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.concordance_researcher",
+    "name_pt": "Pesquisador da Concordância",
+    "name_en": "Concordance Researcher",
+    "name_es": "Investigador de la Concordancia",
+    "description_pt": "A Concordância treinou você para pesquisar fenômenos e desequilíbrios planares.",
+    "description_en": "The Concordance trained you to research planar phenomena and imbalances.",
+    "description_es": "La Concordancia te formó para investigar fenómenos y desequilibrios planares.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "elemental plane lore"
+    ],
+    "granted_feat": "Pesquisa Planar",
+    "lore_skill": "Quatro Saberes de Planos Elementais",
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Rage of Elements (Remaster)",
+    "source_page": 44,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.concordance_scout",
+    "name_pt": "Batedor da Concordância",
+    "name_en": "Concordance Scout",
+    "name_es": "Explorador de la Concordancia",
+    "description_pt": "Você localiza rumores de rupturas planares e retorna antes que o perigo aumente.",
+    "description_en": "You track rumors of planar breaches and return before the danger escalates.",
+    "description_es": "Rastreas rumores de brechas planares y regresas antes de que aumente el peligro.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "diplomacy"
+    ],
+    "granted_feat": "Camarada",
+    "lore_skill": "Saber de um Plano Elemental",
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Rage of Elements (Remaster)",
+    "source_page": 44,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.elementally_infused",
+    "name_pt": "Infundido Elementalmente",
+    "name_en": "Elementally Infused",
+    "name_es": "Imbuido elementalmente",
+    "description_pt": "Uma descarga planar deixou essência elemental concentrada dentro de você.",
+    "description_en": "A planar surge left concentrated elemental essence within you.",
+    "description_es": "Una descarga planar dejó esencia elemental concentrada en tu interior.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "elemental plane lore"
+    ],
+    "granted_feat": "Truque Elemental Inato",
+    "lore_skill": "Saber do Plano Elemental escolhido",
+    "rarity": "rare",
+    "ruleset": "remaster",
+    "source_book": "Rage of Elements (Remaster)",
+    "source_page": 45,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.planar_migrant",
+    "name_pt": "Migrante Planar",
+    "name_en": "Planar Migrant",
+    "name_es": "Migrante planar",
+    "description_pt": "Você nasceu em um plano elemental e busca um lugar no Universo ou um caminho de volta.",
+    "description_en": "You were born on an elemental plane and seek a place in the Universe or a way back.",
+    "description_es": "Naciste en un plano elemental y buscas un lugar en el Universo o un camino de regreso.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "athletics"
+    ],
+    "granted_feat": "Carregador Robusto e Planejador Precavido",
+    "lore_skill": "Saber de um Plano Elemental",
+    "rarity": "rare",
+    "ruleset": "remaster",
+    "source_book": "Rage of Elements (Remaster)",
+    "source_page": 45,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.necromancer_apprentice",
+    "name_pt": "Aprendiz de Necromante",
+    "name_en": "Necromancer Apprentice",
+    "name_es": "Aprendiz de nigromante",
+    "description_pt": "Um aprendizado perigoso ensinou você a reconhecer rapidamente ameaças mágicas.",
+    "description_en": "A dangerous apprenticeship taught you to identify magical threats quickly.",
+    "description_es": "Un aprendizaje peligroso te enseñó a identificar rápidamente amenazas mágicas.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "arcana"
+    ],
+    "granted_feat": "Identificação Rápida",
+    "lore_skill": "Saber de Necromancia",
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Livro dos Mortos (pré-Remaster)",
+    "source_page": 16,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.haunted_citizen",
+    "name_pt": "Cidadão Assombrado",
+    "name_en": "Haunted Citizen",
+    "name_es": "Ciudadano atormentado",
+    "description_pt": "Crescer cercado por mortos-vivos transformou cautela e negociação em habilidades diárias.",
+    "description_en": "Growing up around undead made caution and negotiation everyday skills.",
+    "description_es": "Crecer rodeado de no muertos convirtió la cautela y la negociación en habilidades cotidianas.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "diplomacy"
+    ],
+    "granted_feat": "Sem Motivo para Alarde",
+    "lore_skill": "Saber da Cidade Natal",
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Livro dos Mortos (pré-Remaster)",
+    "source_page": 16,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.pyre_tender",
+    "name_pt": "Cuidador de Piras",
+    "name_en": "Pyre Tender",
+    "name_es": "Cuidador de piras",
+    "description_pt": "Você domina piras funerárias, combustíveis e técnicas para impedir o retorno dos mortos.",
+    "description_en": "You master funeral pyres, fuels, and techniques that keep the dead from returning.",
+    "description_es": "Dominas las piras funerarias, combustibles y técnicas que impiden el regreso de los muertos.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "crafting"
+    ],
+    "granted_feat": "Manufatura Alquímica",
+    "lore_skill": "Saber de Funerais",
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Livro dos Mortos (pré-Remaster)",
+    "source_page": 16,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.healer_undead",
+    "name_pt": "Curandeiro",
+    "name_en": "Healer",
+    "name_es": "Sanador",
+    "description_pt": "Sua prática comunitária de cura também preparou você para assombrações e possessões.",
+    "description_en": "Your community healing practice also prepared you for hauntings and possessions.",
+    "description_es": "Tu práctica comunitaria de sanación también te preparó para apariciones y posesiones.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "medicine"
+    ],
+    "granted_feat": "Inoculação",
+    "lore_skill": "Saber de Herbalismo",
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Livro dos Mortos (pré-Remaster)",
+    "source_page": 16,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.grave_robber",
+    "name_pt": "Ladrão de Tumbas",
+    "name_en": "Grave Robber",
+    "name_es": "Ladrón de tumbas",
+    "description_pt": "Você conhece tumbas, cadáveres valiosos e maneiras discretas de retirar o saque.",
+    "description_en": "You know tombs, valuable corpses, and discreet ways to remove the spoils.",
+    "description_es": "Conoces tumbas, cadáveres valiosos y formas discretas de retirar el botín.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "stealth"
+    ],
+    "granted_feat": "Contrabandista Experiente",
+    "lore_skill": "Saber de Submundo",
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Livro dos Mortos (pré-Remaster)",
+    "source_page": 16,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.night_watch",
+    "name_pt": "Patrulha Noturna",
+    "name_en": "Night Watch",
+    "name_es": "Guardia nocturna",
+    "description_pt": "Anos de vigília ensinaram você a encarar ameaças que surgem depois do anoitecer.",
+    "description_en": "Years on watch taught you to face threats that emerge after nightfall.",
+    "description_es": "Años de vigilancia te enseñaron a afrontar amenazas que surgen después del anochecer.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "intimidation"
+    ],
+    "granted_feat": "Coerção Rápida",
+    "lore_skill": "Saber de Leis ou da Cidade Natal",
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Livro dos Mortos (pré-Remaster)",
+    "source_page": 16,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.undead_hunter_heir",
+    "name_pt": "Herdeiro de Caçadores de Mortos",
+    "name_en": "Undead Hunter Heir",
+    "name_es": "Heredero de cazadores de muertos",
+    "description_pt": "Uma linhagem de caçadores transmitiu a você responsabilidade e poder contra mortos-vivos.",
+    "description_en": "A lineage of hunters passed responsibility and power against undead to you.",
+    "description_es": "Un linaje de cazadores te transmitió responsabilidad y poder contra los no muertos.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "athletics"
+    ],
+    "granted_feat": "Disrupção de Morto-Vivo Inata",
+    "lore_skill": "Saber de Mortos-Vivos",
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Livro dos Mortos (pré-Remaster)",
+    "source_page": 16,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.willing_host",
+    "name_pt": "Hospedeiro Voluntário",
+    "name_en": "Willing Host",
+    "name_es": "Anfitrión voluntario",
+    "description_pt": "Você negocia com espíritos e permite que compartilhem seu corpo em troca de auxílio.",
+    "description_en": "You bargain with spirits and let them share your body in exchange for aid.",
+    "description_es": "Negocias con espíritus y permites que compartan tu cuerpo a cambio de ayuda.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "spirit lore"
+    ],
+    "granted_feat": "Hospedar Espírito",
+    "lore_skill": "Saber de Espíritos",
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Livro dos Mortos (pré-Remaster)",
+    "source_page": 17,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.tombborn",
+    "name_pt": "Nascido da Tumba",
+    "name_en": "Tombborn",
+    "name_es": "Nacido de la tumba",
+    "description_pt": "Concebido em um lugar marcado pela morte, você se torna perigoso ao cair.",
+    "description_en": "Conceived in a death-stained place, you become dangerous when brought down.",
+    "description_es": "Concebido en un lugar marcado por la muerte, te vuelves peligroso al caer.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "undead lore"
+    ],
+    "granted_feat": "Rancor Final",
+    "lore_skill": "Saber de Mortos-Vivos",
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Livro dos Mortos (pré-Remaster)",
+    "source_page": 17,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.battle_mechanic",
+    "name_pt": "Mecânico de Batalha",
+    "name_en": "Battle Mechanic",
+    "name_es": "Mecánico de batalla",
+    "description_pt": "Você mantém veículos terrestres, aéreos e marítimos operando sob pressão.",
+    "description_en": "You keep land, air, and sea vehicles operating under pressure.",
+    "description_es": "Mantienes vehículos terrestres, aéreos y marítimos funcionando bajo presión.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "crafting"
+    ],
+    "granted_feat": "Reparo Rápido",
+    "lore_skill": "Saber de Veículos",
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 16,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.combat_carpenter",
+    "name_pt": "Carpinteiro de Combate",
+    "name_en": "Combat Carpenter",
+    "name_es": "Carpintero de combate",
+    "description_pt": "Experiência com madeira permite reforçar construções e localizar seus pontos fracos.",
+    "description_en": "Your experience with wood lets you reinforce structures and find their weak points.",
+    "description_es": "Tu experiencia con madera te permite reforzar estructuras y localizar sus puntos débiles.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "crafting"
+    ],
+    "granted_feat": "Manufatura Especializada",
+    "lore_skill": "Saber de Engenharia",
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 16,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.combat_chaplain",
+    "name_pt": "Capelão de Combate",
+    "name_en": "Combat Chaplain",
+    "name_es": "Capellán de combate",
+    "description_pt": "Você oferece apoio espiritual, mediação e ritos às tropas e suas famílias.",
+    "description_en": "You provide troops and their families with spiritual support, mediation, and rites.",
+    "description_es": "Ofreces apoyo espiritual, mediación y ritos a las tropas y sus familias.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "religion"
+    ],
+    "granted_feat": "Reconhecer Magia",
+    "lore_skill": "Saber da Divindade",
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 16,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.conscript",
+    "name_pt": "Conscrito",
+    "name_en": "Conscript",
+    "name_es": "Recluta",
+    "description_pt": "O serviço obrigatório ensinou a você estratégia suficiente para sobreviver ao campo de batalha.",
+    "description_en": "Mandatory service taught you enough strategy to survive the battlefield.",
+    "description_es": "El servicio obligatorio te enseñó suficiente estrategia para sobrevivir al campo de batalla.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "society"
+    ],
+    "granted_feat": "Conhecimento Duvidoso",
+    "lore_skill": "Saber de Guerra",
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 16,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.plague_doctor",
+    "name_pt": "Médico da Peste",
+    "name_en": "Plague Doctor",
+    "name_es": "Médico de la peste",
+    "description_pt": "Você combate doenças que se espalham entre cercos, fome e mortes em massa.",
+    "description_en": "You fight diseases that spread through sieges, famine, and mass casualties.",
+    "description_es": "Combates enfermedades que se propagan entre asedios, hambre y muertes masivas.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "medicine"
+    ],
+    "granted_feat": "Inoculação",
+    "lore_skill": "Saber de Herbalismo",
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 17,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.quartermaster",
+    "name_pt": "Intendente",
+    "name_en": "Quartermaster",
+    "name_es": "Intendente",
+    "description_pt": "Logística e disciplina permitem manter tropas abastecidas e controlar recursos escassos.",
+    "description_en": "Logistics and discipline let you keep troops supplied and control scarce resources.",
+    "description_es": "La logística y la disciplina te permiten abastecer tropas y controlar recursos escasos.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "intimidation"
+    ],
+    "granted_feat": "Olhar Intimidante",
+    "lore_skill": "Saber Jurídico",
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 17,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.report_runner",
+    "name_pt": "Estafeta de Guerra",
+    "name_en": "Report Runner",
+    "name_es": "Correo de guerra",
+    "description_pt": "Você transporta relatórios urgentes por longas distâncias e conhece bem montarias.",
+    "description_en": "You carry urgent reports across long distances and know mounts well.",
+    "description_es": "Transportas informes urgentes a largas distancias y conoces bien las monturas.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "nature"
+    ],
+    "granted_feat": "Cavaleiro Expresso",
+    "lore_skill": "Saber de Estábulos",
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 17,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.veteran",
+    "name_pt": "Veterano",
+    "name_en": "Veteran",
+    "name_es": "Veterano",
+    "description_pt": "Muitas batalhas deram a você resistência, experiência e poucas ilusões sobre a guerra.",
+    "description_en": "Many battles left you resilient, experienced, and under no illusions about war.",
+    "description_es": "Muchas batallas te dejaron resistente, experimentado y sin ilusiones sobre la guerra.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "athletics"
+    ],
+    "granted_feat": "Auxiliar com Armadura",
+    "lore_skill": "Saber de Guerra",
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 17,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.war_orphan",
+    "name_pt": "Órfão de Guerra",
+    "name_en": "War Orphan",
+    "name_es": "Huérfano de guerra",
+    "description_pt": "Sobreviver fora da lei após perder sua família deixou habilidades que você nunca esqueceu.",
+    "description_en": "Surviving outside the law after losing your family left skills you never forgot.",
+    "description_es": "Sobrevivir fuera de la ley tras perder a tu familia te dejó habilidades que nunca olvidaste.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "thievery"
+    ],
+    "granted_feat": "Truque Sujo",
+    "lore_skill": "Saber do Submundo",
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 17,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.aeronaut",
+    "name_pt": "Aeronauta",
+    "name_en": "Aeronaut",
+    "name_es": "Aeronauta",
+    "description_pt": "Você domina balões, dirigíveis e outras máquinas voadoras de exploração e guerra.",
+    "description_en": "You master balloons, dirigibles, and other flying machines used in exploration and war.",
+    "description_es": "Dominas globos, dirigibles y otras máquinas voladoras de exploración y guerra.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "athletics"
+    ],
+    "granted_feat": "Garantia (Pilotagem)",
+    "lore_skill": "Saber de Pilotagem",
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 17,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.arcane_revolutionary",
+    "name_pt": "Revolucionário Arcano",
+    "name_en": "Arcane Revolutionary",
+    "name_es": "Revolucionario arcano",
+    "description_pt": "Magia e sabotagem ajudaram sua comunidade a enfrentar governantes opressores.",
+    "description_en": "Magic and sabotage helped your community resist oppressive rulers.",
+    "description_es": "La magia y el sabotaje ayudaron a tu comunidad a resistir gobernantes opresores.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "arcana"
+    ],
+    "granted_feat": "Identificação Rápida",
+    "lore_skill": "Saber do Assentamento Libertado",
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 17,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.battlefield_scrounger",
+    "name_pt": "Catador do Campo de Batalha",
+    "name_en": "Battlefield Scrounger",
+    "name_es": "Rebuscador del campo de batalla",
+    "description_pt": "Você transforma restos de exércitos derrotados em ferramentas e itens aproveitáveis.",
+    "description_en": "You turn the remains of defeated armies into useful tools and items.",
+    "description_es": "Transformas los restos de ejércitos derrotados en herramientas y objetos útiles.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "crafting"
+    ],
+    "granted_feat": "Improvisar Ferramenta",
+    "lore_skill": "Saber de Guerra",
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 17,
+    "data": {
+      "needs_review": false
+    }
+  },
+  {
+    "id": "background.martial_musician",
+    "name_pt": "Músico Marcial",
+    "name_en": "Martial Musician",
+    "name_es": "Músico marcial",
+    "description_pt": "Ritmos e sinais musicais permitem orientar tropas e sustentar seu avanço.",
+    "description_en": "Rhythm and musical signals let you direct troops and sustain their advance.",
+    "description_es": "El ritmo y las señales musicales te permiten dirigir tropas y sostener su avance.",
+    "attribute_boosts": [],
+    "trained_skills": [
+      "performance"
+    ],
+    "granted_feat": "Performance Impressionante",
+    "lore_skill": "Saber de Guerra",
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 17,
+    "data": {
+      "needs_review": false
+    }
+  }
+]

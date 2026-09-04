@@ -1,0 +1,2937 @@
+[
+  {
+    "id": "subclass.class_alchemist_bomber",
+    "class_id": "class.alchemist",
+    "choice_field": "researchField",
+    "name_pt": "Bombardeiro",
+    "name_en": "Bomber",
+    "name_es": "Bombardero",
+    "description_pt": "Especialista em bombas químicas e explosões direcionadas. Você é treinado em Manufatura. Concede fórmulas adicionais de bombas e permite escolher alvos imunes ao dano de espirro de suas bombas.",
+    "description_en": "Specialist in chemical bombs and controlled explosions. Trained in Crafting. Grants bonus bomb formulas and lets you choose targets to exclude from splash damage.",
+    "description_es": "Especialista en bombas químicas y explosiones dirigidas. Entrenado en Artesanía. Concede fórmulas de bombas y permite evitar el daño por salpicadura a aliados.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 32,
+    "data": {
+      "trainedSkills": [
+        "crafting"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_alchemist_chirurgeon",
+    "class_id": "class.alchemist",
+    "choice_field": "researchField",
+    "name_pt": "Cirurgião",
+    "name_en": "Chirurgeon",
+    "name_es": "Cirujano",
+    "description_pt": "Mestre da anatomia médica, tratamentos cirúrgicos e elixires curativos. Você é treinado em Medicina e Manufatura. Permite usar Manufatura no lugar de Medicina para Primeiros Socorros, Tratar Ferimentos, Tratar Doença e Tratar Veneno.",
+    "description_en": "Master of anatomy, surgical procedures, and restorative elixirs. Trained in Medicine and Crafting. Lets you use Crafting in place of Medicine for First Aid, Treat Wounds, Treat Disease, and Treat Poison.",
+    "description_es": "Maestro de anatomía y elixires curativos. Entrenado en Medicina y Artesanía. Permite usar Artesanía en lugar de Medicina para Primeros Auxilios, Tratar Heridas, Tratar Enfermedad y Tratar Veneno.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 33,
+    "data": {
+      "trainedSkills": [
+        "medicine",
+        "crafting"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_alchemist_mutagenist",
+    "class_id": "class.alchemist",
+    "choice_field": "researchField",
+    "name_pt": "Mutacionista",
+    "name_en": "Mutagenist",
+    "name_es": "Mutacionista",
+    "description_pt": "Especialista em mutagênicos que alteram a fisiologia corporal e mental. Você é treinado em Manufatura. Concede fórmulas de mutagênicos e a capacidade de suprimir penalidades com Surto Mutagênico.",
+    "description_en": "Specialist in transmutative mutagens that warp body and mind. Trained in Crafting. Grants mutagen formulas and the ability to mitigate drawbacks with Mutagenic Flash.",
+    "description_es": "Especialista en mutágenos que alteran cuerpo y mente. Entrenado en Artesanía. Concede fórmulas de mutágenos y mitiga sus desventajas temporales.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 33,
+    "data": {
+      "trainedSkills": [
+        "crafting"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_alchemist_toxicologist",
+    "class_id": "class.alchemist",
+    "choice_field": "researchField",
+    "name_pt": "Toxicologista",
+    "name_en": "Toxicologist",
+    "name_es": "Toxicólogo",
+    "description_pt": "Mestre de toxinas, venenos e agentes químicos letais. Você é treinado em Manufatura. Concede fórmulas de venenos e permite que seus venenos usem sua CD de classe se for superior à CD base do veneno.",
+    "description_en": "Master of toxins, venoms, and lethal biological agents. Trained in Crafting. Grants poison formulas and lets poisons use your class DC if higher than their base DC.",
+    "description_es": "Maestro de toxinas y venenos letales. Entrenado en Artesanía. Concede fórmulas de venenos y permite que usen tu CD de clase si es más alta que la CD base.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 34,
+    "data": {
+      "trainedSkills": [
+        "crafting"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_barbarian_instinto_animal",
+    "class_id": "class.barbarian",
+    "choice_field": "instinct",
+    "name_pt": "Instinto Animal",
+    "name_en": "Animal Instinct",
+    "name_es": "Instinto Animal",
+    "description_pt": "Você canaliza o predador interior e a fúria primal de uma besta totêmica. Treinado em Atletismo. Concede ataque desarmado animal exclusivo e bônus de dano de fúria +2 (+5 com Especialização de Arma, +12 Maior).",
+    "description_en": "You channel the raw predator spirit and primal fury of a totemic beast. Trained in Athletics. Grants a unique animal unarmed strike and +2 rage damage (+5 with weapon specialization, +12 greater).",
+    "description_es": "Canalizas el espíritu depredador y la furia salvaje de una bestia totémica. Entrenado en Atletismo. Concede un ataque desarmado animal exclusivo y +2 al daño de furia (+5 con especialización, +12 mayor).",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 48,
+    "data": {
+      "trainedSkills": [
+        "athletics"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_barbarian_instinto_draconico",
+    "class_id": "class.barbarian",
+    "choice_field": "instinct",
+    "name_pt": "Instinto Dracônico",
+    "name_en": "Dragon Instinct",
+    "name_es": "Instinto Dracónico",
+    "description_pt": "Você canaliza o poder primordial e a respiração ardente dos dragões. Treinado em Intimidação. Concede dano de fúria aumentado (+4 dano, +8 esp., +16 maior) correspondente ao tipo de dragão escolhido e resistência a esse elemento durante a fúria.",
+    "description_en": "You channel the primordial might and fiery breath of dragons. Trained in Intimidação. Grants increased rage damage (+4 damage, +8 spec., +16 greater) matching your dragon type and resistance to that element during rage.",
+    "description_es": "Canalizas el poder primordial y el aliento abrasador de los dragones. Entrenado en Intimidación. Concede daño de furia aumentado (+4 daño, +8 esp., +16 mayor) del tipo dracónico y resistencia elemental durante la furia.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 49,
+    "data": {
+      "trainedSkills": [
+        "intimidation"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_barbarian_instinto_dos_gigantes",
+    "class_id": "class.barbarian",
+    "choice_field": "instinct",
+    "name_pt": "Instinto dos Gigantes",
+    "name_en": "Giant Instinct",
+    "name_es": "Instinto de los Gigantes",
+    "description_pt": "Você canaliza o poder titânico de gigantes lendários, permitindo empunhar armas de tamanho Grande. Treinado em Atletismo. Concede bônus massivo de dano de fúria (+6 dano, +10 esp., +18 maior), sofrendo a condição Desajeitado 1 durante a fúria.",
+    "description_en": "You channel titanic giant strength, enabling you to wield Large weapons. Trained in Athletics. Grants massive rage damage (+6 damage, +10 spec., +18 greater) while suffering Clumsy 1 during rage.",
+    "description_es": "Canalizas la fuerza titánica de los gigantes para empuñar armas Grandes. Entrenado en Atletismo. Concede daño masivo de furia (+6 daño, +10 esp., +18 mayor), sufriendo Torpe 1 durante la furia.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 50,
+    "data": {
+      "trainedSkills": [
+        "athletics"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_barbarian_instinto_espiritual",
+    "class_id": "class.barbarian",
+    "choice_field": "instinct",
+    "name_pt": "Instinto Espiritual",
+    "name_en": "Spirit Instinct",
+    "name_es": "Instinto Espiritual",
+    "description_pt": "Guiado por espíritos ancestrais que cercam sua arma de ectoplasma e energia mística. Treinado em Ocultismo ou Religião. Seus golpes durante a fúria causam dano espiritual e afetam criaturas incorpóreas normalmente (+3 dano, +7 esp., +13 maior).",
+    "description_en": "Guided by ancestral spirits wreathing your strikes in ethereal force. Trained in Occultism or Religion. Your strikes deal spirit damage during rage and affect incorporeal creatures normally (+3 damage, +7 spec., +13 greater).",
+    "description_es": "Guiado por espíritus ancestrales que envuelven tus golpes en fuerza mística. Entrenado en Ocultismo o Religión. Tus golpes infligen daño espiritual durante la furia y afectan a incorpóreos (+3 daño, +7 esp., +13 mayor).",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 50,
+    "data": {
+      "trainedSkills": [
+        "occultism"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_barbarian_instinto_da_furia_elemental",
+    "class_id": "class.barbarian",
+    "choice_field": "instinct",
+    "name_pt": "Instinto da Fúria Elemental",
+    "name_en": "Elemental Fury Instinct",
+    "name_es": "Instinto de Furia Elemental",
+    "description_pt": "Você canaliza o vórtice dos elementos primordiais. Treinado em Natureza. Infunde seus ataques com dano elemental e concede defesas e resistências adaptáveis durante a fúria (+2 dano, +5 esp., +12 maior).",
+    "description_en": "You channel the raw storm of primordial elemental planes. Trained in Nature. Infuses your strikes with elemental fury and grants defensive elemental resistances during rage (+2 damage, +5 spec., +12 greater).",
+    "description_es": "Canalizas el torbellino de los elementos primordiales. Entrenado en Naturaleza. Infunde tus ataques con daño elemental y otorga resistencias defensivas durante la furia (+2 daño, +5 esp., +12 mayor).",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 51,
+    "data": {
+      "trainedSkills": [
+        "nature"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_bard_enigma",
+    "class_id": "class.bard",
+    "choice_field": "muse",
+    "name_pt": "Musa da Erudição",
+    "name_en": "Enigma",
+    "name_es": "Enigma",
+    "description_pt": "Inspirado por segredos arcanos, textos esquecidos e enigmas do universo. Você é treinado em Ocultismo e ganha o talento Conhecimento do Bardo (Bardic Lore).",
+    "description_en": "Inspired by esoteric mysteries, forgotten texts, and cosmic riddles. Trained in Occultism and gains the Bardic Lore feat.",
+    "description_es": "Inspirado por secretos arcanos, textos olvidados y enigmas cósmicos. Entrenado en Ocultismo y obtiene la dote Saber Bárdico.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 96,
+    "data": {
+      "trainedSkills": [
+        "occultism"
+      ],
+      "grants": [
+        "feat.general.bardic_lore"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_bard_maestro",
+    "class_id": "class.bard",
+    "choice_field": "muse",
+    "name_pt": "Musa da Coragem",
+    "name_en": "Maestro",
+    "name_es": "Maestro",
+    "description_pt": "Virtuoso da oratória e composições heroicas que inflamam o espírito de batalha. Você é treinado em Atuação e ganha o talento Canção Persistente (Lingering Composition).",
+    "description_en": "Virtuoso of rousing oratory and heroic compositions that ignite warriors' spirits. Trained in Performance and gains the Lingering Composition feat.",
+    "description_es": "Virtuoso de la oratoria y composiciones heroicas que encienden el espíritu de combate. Entrenado en Interpretación y obtiene la dote Composición Persistente.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 97,
+    "data": {
+      "trainedSkills": [
+        "performance"
+      ],
+      "grants": [
+        "feat.general.lingering_composition"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_bard_warrior",
+    "class_id": "class.bard",
+    "choice_field": "muse",
+    "name_pt": "Musa da Lâmina",
+    "name_en": "Warrior",
+    "name_es": "Guerrero",
+    "description_pt": "Skald de guerra que luta nas primeiras fileiras entoando cantos marciais. Você é treinado em Atletismo, em armas marciais e ganha o talento Balada Marcial.",
+    "description_en": "Frontline battle-skald chanting war songs in close combat. Trained in Athletics, martial weapons, and gains the Martial Performance feat.",
+    "description_es": "Skald de batalla que lucha en primera línea entonando cantos bélicos. Entrenado en Atletismo, armas marciales y obtiene la dote Interpretación Marcial.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 97,
+    "data": {
+      "trainedSkills": [
+        "athletics"
+      ],
+      "grants": [
+        "feat.general.martial_performance"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_bard_polymath",
+    "class_id": "class.bard",
+    "choice_field": "muse",
+    "name_pt": "Musa da Polifonia",
+    "name_en": "Polymath",
+    "name_es": "Polifacético",
+    "description_pt": "Artista eclético que domina múltiplos estilos, disfarces e instrumentos. Você é treinado em Enganação e ganha o talento Atuação Versátil (Versatile Performance) para usar Atuação em testes de diplomacia e intimidação.",
+    "description_en": "Eclectic performer mastering varied genres, disguise, and versatility. Trained in Deception and gains the Versatile Performance feat to use Performance for social checks.",
+    "description_es": "Artista ecléctico que domina múltiples disciplinas e instrumentos. Entrenado en Engaño y obtiene la dote Interpretación Versátil para usar Interpretación en pruebas sociales.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 98,
+    "data": {
+      "trainedSkills": [
+        "deception"
+      ],
+      "grants": [
+        "feat.general.versatile_performance"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.witch.patron_faiths_flamekeeper",
+    "class_id": "class.witch",
+    "choice_field": "patron",
+    "name_pt": "Guardião da Fé Irrefreável",
+    "name_en": "Faith's Flamekeeper",
+    "name_es": "Guardián de la Fe Inquebrantable",
+    "description_pt": "Patrono de Bruxa da tradição divine; concede Avivar o Coração e Familiar do Espírito Restaurado.",
+    "description_en": "Witch patron of the divine tradition; grants Stoke the Heart and Familiar of Restored Spirit.",
+    "description_es": "Patrón de Bruja de tradición divine; concede Avivar el Corazón y Familiar del Espíritu Restaurado.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 114,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.witch.patron_wilding_steward",
+    "class_id": "class.witch",
+    "choice_field": "patron",
+    "name_pt": "Sentinela dos Ermos",
+    "name_en": "Wilding Steward",
+    "name_es": "Guardián de las Tierras Salvajes",
+    "description_pt": "Patrono de Bruxa da tradição primal; concede Palavra dos Ermos e Familiar dos Sentidos Aguçados.",
+    "description_en": "Witch patron of the primal tradition; grants Wilding Word and Familiar of Keen Senses.",
+    "description_es": "Patrón de Bruja de tradición primal; concede Palabra Salvaje y Familiar de Sentidos Agudos.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 114,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.witch.patron_the_inscribed_one",
+    "class_id": "class.witch",
+    "choice_field": "patron",
+    "name_pt": "O Inscrito",
+    "name_en": "The Inscribed One",
+    "name_es": "El Inscrito",
+    "description_pt": "Patrono de Bruxa da tradição arcane; concede Discernir Segredos e Familiar da Escrita Fluida.",
+    "description_en": "Witch patron of the arcane tradition; grants Discern Secrets and Familiar of Flowing Script.",
+    "description_es": "Patrón de Bruja de tradición arcane; concede Discernir Secretos y Familiar de Escritura Fluida.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 114,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.witch.patron_the_resentment",
+    "class_id": "class.witch",
+    "choice_field": "patron",
+    "name_pt": "O Ressentimento",
+    "name_en": "The Resentment",
+    "name_es": "El Resentimiento",
+    "description_pt": "Patrono de Bruxa da tradição occult; concede Mau-Olhado e Familiar da Miséria Persistente.",
+    "description_en": "Witch patron of the occult tradition; grants Evil Eye and Familiar of Ongoing Misery.",
+    "description_es": "Patrón de Bruja de tradición occult; concede Mal de Ojo y Familiar de la Miseria Persistente.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 115,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.witch.patron_spinner_of_threads",
+    "class_id": "class.witch",
+    "choice_field": "patron",
+    "name_pt": "O Tecelão de Destinos",
+    "name_en": "Spinner of Threads",
+    "name_es": "Tejedor de Destinos",
+    "description_pt": "Patrono de Bruxa da tradição occult; concede Tocar o Destino e Familiar da Sorte Equilibrada.",
+    "description_en": "Witch patron of the occult tradition; grants Nudge Fate and Familiar of Balanced Luck.",
+    "description_es": "Patrón de Bruja de tradición occult; concede Tocar el Destino y Familiar de la Suerte Equilibrada.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 115,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.witch.patron_silence_in_snow",
+    "class_id": "class.witch",
+    "choice_field": "patron",
+    "name_pt": "O Silêncio Invernal",
+    "name_en": "Silence in Snow",
+    "name_es": "Silencio Invernal",
+    "description_pt": "Patrono de Bruxa da tradição primal; concede Gelo Duradouro e Familiar da Geada Congelante.",
+    "description_en": "Witch patron of the primal tradition; grants Clinging Ice and Familiar of Freezing Rime.",
+    "description_es": "Patrón de Bruja de tradición primal; concede Hielo Persistente y Familiar de Escarcha Helada.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 115,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.witch.patron_starless_shadow",
+    "class_id": "class.witch",
+    "choice_field": "patron",
+    "name_pt": "A Sombra Inconstelada",
+    "name_en": "Starless Shadow",
+    "name_es": "Sombra sin Estrellas",
+    "description_pt": "Patrono de Bruxa da tradição occult; concede Mortalha da Noite e Familiar da Noite que Espreita.",
+    "description_en": "Witch patron of the occult tradition; grants Shroud of Night and Familiar of Stalking Night.",
+    "description_es": "Patrón de Bruja de tradición occult; concede Sudario de la Noche y Familiar de la Noche Acechante.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 115,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_champion_retribuicao",
+    "class_id": "class.champion",
+    "choice_field": "cause",
+    "name_pt": "Paladino (Retribuição)",
+    "name_en": "Paladin (Retributive Strike)",
+    "name_es": "Paladín (Golpe Retributivo)",
+    "description_pt": "Campeão da justiça inflexível e virtude sacra. Concede a reação Golpe Retributivo (Retributive Strike) para proteger aliados e golpear imediatamente o agressor.",
+    "description_en": "Champion of righteous justice. Grants the Retributive Strike reaction to protect allies and punish aggressors immediately.",
+    "description_es": "Campeón de la justicia implacable. Concede la reacción Golpe Retributivo para proteger aliados y contraatacar agresores.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 58,
+    "data": {
+      "trainedSkills": [
+        "religion"
+      ],
+      "grants": [
+        "action.retributive_strike"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_champion_misericordia",
+    "class_id": "class.champion",
+    "choice_field": "cause",
+    "name_pt": "Redentor (Misericórdia)",
+    "name_en": "Redeemer (Glimpse of Redemption)",
+    "name_es": "Redentor (Atisbo de Redención)",
+    "description_pt": "Campeão da compaixão e redenção. Concede a reação Vislumbre da Redenção para oferecer ao agressor a escolha de poupar o dano ou sofrer penalidades paralisantes.",
+    "description_en": "Champion of mercy and forgiveness. Grants Glimpse of Redemption reaction offering foes a choice between mercy or debilitating penalties.",
+    "description_es": "Campeón de la compasión y el perdón. Concede la reacción Atisbo de Redención ofreciendo piedad o penalizaciones graves.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 59,
+    "data": {
+      "trainedSkills": [
+        "religion"
+      ],
+      "grants": [
+        "action.glimpse_of_redemption"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_champion_liberdade",
+    "class_id": "class.champion",
+    "choice_field": "cause",
+    "name_pt": "Libertador (Liberdade)",
+    "name_en": "Liberator (Liberating Step)",
+    "name_es": "Libertador (Paso Liberador)",
+    "description_pt": "Campeão da autonomia e liberdade contra grilhões. Concede a reação Passo Libertador para reduzir dano a aliados e permitir fuga de agarramentos e efeitos restritivos.",
+    "description_en": "Champion of freedom and liberation. Grants Liberating Step reaction to mitigate ally damage and grant immediate escape from grabs and restraints.",
+    "description_es": "Campeón de la libertad y autonomía. Concede la reacción Paso Liberador para reducir daño a aliados y permitir escape inmediato de agarres.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 59,
+    "data": {
+      "trainedSkills": [
+        "religion"
+      ],
+      "grants": [
+        "action.liberating_step"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_champion_tiranos_desesperadores",
+    "class_id": "class.champion",
+    "choice_field": "cause",
+    "name_pt": "Profano (Tiranos/Desesperadores)",
+    "name_en": "Unholy Champion (Tyrant / Desecrator)",
+    "name_es": "Profano (Tirano / Profanador)",
+    "description_pt": "Campeão profano que subjuga oponentes com opressão de ferro, dor implacável e destruição dos inocentes.",
+    "description_en": "Unholy champion subjugating foes through iron oppression, agonizing retribution, and destructive fury.",
+    "description_es": "Campeón profano que subyuga enemigos mediante opresión despiadada y dolor retributivo.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 60,
+    "data": {
+      "trainedSkills": [
+        "intimidation"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_kineticist_elemento_do_fogo",
+    "class_id": "class.kineticist",
+    "choice_field": "elementalGate",
+    "name_pt": "Elemento do Fogo",
+    "name_en": "Fire Element",
+    "name_es": "Elemento del Fuego",
+    "description_pt": "Canalização de calor escaldante, labaredas destruidoras e auras de combustão incandescente.",
+    "description_en": "Channeling intense scouring heat, blazing explosions, and searing combustion auras.",
+    "description_es": "Canalización de calor abrasador, llamas devastadoras y auras de combustión incandescente.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Fúria dos Elementos (Rage of Elements)",
+    "source_page": 14,
+    "data": {
+      "trainedSkills": [
+        "nature"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_kineticist_elemento_da_agua",
+    "class_id": "class.kineticist",
+    "choice_field": "elementalGate",
+    "name_pt": "Elemento da Água",
+    "name_en": "Water Element",
+    "name_es": "Elemento del Agua",
+    "description_pt": "Canalização de marés purificadoras, jatos de alta pressão e restauração vital fluida.",
+    "description_en": "Channeling surging tides, pressurized currents, and revitalizing waves.",
+    "description_es": "Canalización de mareas purificadoras, torrentes a presión y restauración vital.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Fúria dos Elementos (Rage of Elements)",
+    "source_page": 15,
+    "data": {
+      "trainedSkills": [
+        "nature"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_kineticist_elemento_da_terra",
+    "class_id": "class.kineticist",
+    "choice_field": "elementalGate",
+    "name_pt": "Elemento da Terra",
+    "name_en": "Earth Element",
+    "name_es": "Elemento de la Tierra",
+    "description_pt": "Canalização de rochas maciças, armaduras geológicas e muralhas de pedra protetoras.",
+    "description_en": "Channeling dense stone, geologic armor, and earthen bulwarks.",
+    "description_es": "Canalización de rocas macizas, armaduras geológicas y murallas de piedra.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Fúria dos Elementos (Rage of Elements)",
+    "source_page": 16,
+    "data": {
+      "trainedSkills": [
+        "nature"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_kineticist_elemento_do_ar",
+    "class_id": "class.kineticist",
+    "choice_field": "elementalGate",
+    "name_pt": "Elemento do Ar",
+    "name_en": "Air Element",
+    "name_es": "Elemento del Aire",
+    "description_pt": "Canalização de brisas velozes, lufadas ciclônicas, voo e mobilidade aérea superior.",
+    "description_en": "Channeling swift gales, cyclonic gusts, flight, and unmatched mobility.",
+    "description_es": "Canalización de vendavales veloces, ráfagas ciclónicas, vuelo y movilidad aérea.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Fúria dos Elementos (Rage of Elements)",
+    "source_page": 17,
+    "data": {
+      "trainedSkills": [
+        "nature"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_kineticist_elemento_da_madeira",
+    "class_id": "class.kineticist",
+    "choice_field": "elementalGate",
+    "name_pt": "Elemento da Madeira",
+    "name_en": "Wood Element",
+    "name_es": "Elemento de la Madera",
+    "description_pt": "Canalização de crescimento vegetal acelerado, barreiras de espinhos e vitalidade florescente.",
+    "description_en": "Channeling rapid plant growth, thorny barriers, and flourishing vitality.",
+    "description_es": "Canalización de crecimiento vegetal acelerado, barreras de espinas y vitalidad floreciente.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Fúria dos Elementos (Rage of Elements)",
+    "source_page": 18,
+    "data": {
+      "trainedSkills": [
+        "nature"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_kineticist_elemento_do_metal",
+    "class_id": "class.kineticist",
+    "choice_field": "elementalGate",
+    "name_pt": "Elemento do Metal",
+    "name_en": "Metal Element",
+    "name_es": "Elemento del Metal",
+    "description_pt": "Canalização de ligas metálicas afiadas, condutividade magnética e lâminas forjadas de ferro.",
+    "description_en": "Channeling razor metal alloys, magnetic conductivity, and forged iron blades.",
+    "description_es": "Canalización de aleaciones metálicas afiladas, magnetismo y armas forjadas.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Fúria dos Elementos (Rage of Elements)",
+    "source_page": 19,
+    "data": {
+      "trainedSkills": [
+        "nature"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_kineticist_portao_duplo",
+    "class_id": "class.kineticist",
+    "choice_field": "elementalGate",
+    "name_pt": "Portão Duplo",
+    "name_en": "Dual Gate",
+    "name_es": "Puerta Doble",
+    "description_pt": "Abertura sinérgica para dois elementos combinados em harmonia elemental simultânea.",
+    "description_en": "Synergistic channel opening two distinct elements in blended harmony.",
+    "description_es": "Apertura sinérgica a dos elementos combinados en armonía simultánea.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Fúria dos Elementos (Rage of Elements)",
+    "source_page": 20,
+    "data": {
+      "trainedSkills": [
+        "nature"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_cleric_cloistered",
+    "class_id": "class.cleric",
+    "choice_field": "doctrine",
+    "name_pt": "Doutrina de Conjurador Enclausurado",
+    "name_en": "Cloistered Cleric",
+    "name_es": "Clérigo Claustrado",
+    "description_pt": "Foco devoto na oração, liturgia e conjuração divina. Você é treinado em Religião e na perícia da divindade. Concede o talento Iniciado do Domínio (Domain Initiate), salvaguardas de Vontade Especialistas no 1º nível e progressão acelerada de CD de magia divina.",
+    "description_en": "Devoted focus on sacred liturgy and divine spellcasting. Trained in Religion and deity skill. Grants the Domain Initiate feat, Expert Will saves at 1st level, and accelerated spell DC progression.",
+    "description_es": "Enfoque devoto en la liturgia sagrada y la magia divina. Entrenado en Religión y la habilidad de la deidad. Concede la dote Iniciado del Dominio, salvaciones de Voluntad Experto a nivel 1 y progresión acelerada de CD divina.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 110,
+    "data": {
+      "trainedSkills": [
+        "religion"
+      ],
+      "grants": [
+        "feat.general.domain_initiate"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_cleric_warpriest",
+    "class_id": "class.cleric",
+    "choice_field": "doctrine",
+    "name_pt": "Doutrina de Clérigo de Guerra",
+    "name_en": "Warpriest",
+    "name_es": "Clérigo de Guerra",
+    "description_pt": "Combatente sagrado blindado que empunha a arma favorita da divindade em batalha. Treinado em armaduras leves e médias, na arma da divindade, ganha o talento Bloqueio com Escudo (Shield Block) e salvaguardas de Fortitude Especialistas no 1º nível.",
+    "description_en": "Armored holy combatant wielding the deity's favored weapon in battle. Trained in light and medium armor, deity's weapon, gains Shield Block feat and Expert Fortitude saves at 1st level.",
+    "description_es": "Combatiente sagrado acorazado con el arma predilecta de la deidad. Entrenado en armaduras ligeras e intermedias, arma de la deidad, obtiene Bloqueo con Escudo y salvaciones de Fortaleza Experto a nivel 1.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 111,
+    "data": {
+      "trainedSkills": [
+        "religion"
+      ],
+      "grants": [
+        "feat.general.shield_block"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_summoner_eidolon_dragao",
+    "class_id": "class.summoner",
+    "choice_field": "eidolon",
+    "name_pt": "Eidolon Dragão",
+    "name_en": "Dragon Eidolon",
+    "name_es": "Eidolon Dragón",
+    "description_pt": "Eidolon reptiliano dracônico ligado à tradição arcana com garras afiadas, escamas duras e sopro elemental.",
+    "description_en": "Reptilian draconic eidolon bound to the arcane tradition with breath weapon and hardened scales.",
+    "description_es": "Eidolon reptiliano vinculado a la tradición arcana con arma de aliento y escamas protectoras.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Segredos da Magia (Secrets of Magic)",
+    "source_page": 54,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_summoner_eidolon_fera",
+    "class_id": "class.summoner",
+    "choice_field": "eidolon",
+    "name_pt": "Eidolon Fera",
+    "name_en": "Beast Eidolon",
+    "name_es": "Eidolon Bestia",
+    "description_pt": "Eidolon predatório selvagem ligado à tradição primal com sentidos aguçados e fúria bestial.",
+    "description_en": "Primal predator eidolon bound to nature with acute senses and ferocious attacks.",
+    "description_es": "Eidolon depredador vinculado a la tradición primigenia con sentidos agudos y furia salvaje.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Segredos da Magia (Secrets of Magic)",
+    "source_page": 55,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_summoner_eidolon_anjo",
+    "class_id": "class.summoner",
+    "choice_field": "eidolon",
+    "name_pt": "Eidolon Anjo",
+    "name_en": "Angel Eidolon",
+    "name_es": "Eidolon Ángel",
+    "description_pt": "Eidolon celestial radiante ligado à tradição divina com bênçãos luminosas e cura sagrada.",
+    "description_en": "Celestial angel eidolon bound to the divine tradition with radiant aura and holy blessings.",
+    "description_es": "Eidolon celestial vinculado a la tradición divina con aura radiante y bendiciones sagradas.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Segredos da Magia (Secrets of Magic)",
+    "source_page": 56,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_summoner_eidolon_demonio",
+    "class_id": "class.summoner",
+    "choice_field": "eidolon",
+    "name_pt": "Eidolon Demônio",
+    "name_en": "Demon Eidolon",
+    "name_es": "Eidolon Demonio",
+    "description_pt": "Eidolon abissal corruptor ligado à tradição divina com pecados contagiosos e ataques profanos.",
+    "description_en": "Abyssal demon eidolon bound to divine tradition with corrosive sin and unholy fury.",
+    "description_es": "Eidolon demoníaco vinculado a la tradición divina con pecados y ataques profanos.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Segredos da Magia (Secrets of Magic)",
+    "source_page": 57,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_summoner_eidolon_fantasma",
+    "class_id": "class.summoner",
+    "choice_field": "eidolon",
+    "name_pt": "Eidolon Fantasma",
+    "name_en": "Phantom Eidolon",
+    "name_es": "Eidolon Fantasma",
+    "description_pt": "Eidolon espectral ligado à tradição oculta que transita entre o plano material e o plano etéreo.",
+    "description_en": "Spectral spirit eidolon bound to the occult tradition phasing across ethereal space.",
+    "description_es": "Eidolon espiritual vinculado a la tradición oculta que transita por el plano etéreo.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Segredos da Magia (Secrets of Magic)",
+    "source_page": 58,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_summoner_eidolon_elemental",
+    "class_id": "class.summoner",
+    "choice_field": "eidolon",
+    "name_pt": "Eidolon Elemental",
+    "name_en": "Elemental Eidolon",
+    "name_es": "Eidolon Elemental",
+    "description_pt": "Eidolon primordial de terra, fogo, água ou ar canalizado diretamente dos planos elementais.",
+    "description_en": "Primordial elemental eidolon of earth, fire, water, or air from the inner planes.",
+    "description_es": "Eidolon primordial de tierra, fuego, agua o aire canalizado de los planos elementales.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Segredos da Magia (Secrets of Magic)",
+    "source_page": 59,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_druid_ordem_dos_animais",
+    "class_id": "class.druid",
+    "choice_field": "order",
+    "name_pt": "Ordem dos Animais",
+    "name_en": "Animal Order",
+    "name_es": "Orden Animal",
+    "description_pt": "Ligado intimamente aos animais da natureza. Você é treinado em Atletismo. Concede o talento Companheiro Animal (Animal Companion) e a magia de ordem Curar Animal (Heal Animal).",
+    "description_en": "Deeply bonded with the beasts of nature. Trained in Athletics. Grants the Animal Companion feat and the Heal Animal order focus spell.",
+    "description_es": "Profundamente vinculado con las bestias de la naturaleza. Entrenado en Atletismo. Concede la dote Compañero Animal y el conjuro de orden Sanar Animal.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 128,
+    "data": {
+      "trainedSkills": [
+        "athletics"
+      ],
+      "grants": [
+        "feat.general.animal_companion"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_druid_ordem_das_folhas",
+    "class_id": "class.druid",
+    "choice_field": "order",
+    "name_pt": "Ordem das Folhas",
+    "name_en": "Leaf Order",
+    "name_es": "Orden de las Hojas",
+    "description_pt": "Protetor das florestas, plantas e espíritos vegetais. Você é treinado em Diplomacia. Concede um Familiar Lésico e a magia de ordem Bagas Boas (Goodberry / Cornucopia).",
+    "description_en": "Protector of ancient forests and plant spirits. Trained in Diplomacy. Grants a Leshy Familiar and the Goodberry/Cornucopia order focus spell.",
+    "description_es": "Protector de bosques y espíritus vegetales. Entrenado en Diplomacia. Concede un Familiar Leshy y el conjuro de orden Bayas Buenas.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 129,
+    "data": {
+      "trainedSkills": [
+        "diplomacy"
+      ],
+      "grants": [
+        "feat.general.leshy_familiar"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_druid_ordem_das_tempestades",
+    "class_id": "class.druid",
+    "choice_field": "order",
+    "name_pt": "Ordem das Tempestades",
+    "name_en": "Storm Order",
+    "name_es": "Orden de la Tormenta",
+    "description_pt": "Canaliza a fúria dos ventos tempestuosos e relâmpagos primais. Você é treinado em Acrobacia. Concede o talento Nascido da Tempestade e a magia de foco Raio da Tempestade (Tempest Surge).",
+    "description_en": "Channels howling gale winds and lightning storms. Trained in Acrobatics. Grants the Storm Born feat and the Tempest Surge focus spell.",
+    "description_es": "Canaliza la furia de los vientos y relámpagos primordiales. Entrenado en Acrobacias. Concede Nacido de la Tormenta y el conjuro Oleada Tempestuosa.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 129,
+    "data": {
+      "trainedSkills": [
+        "acrobatics"
+      ],
+      "grants": [
+        "feat.general.storm_born"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_druid_wild",
+    "class_id": "class.druid",
+    "choice_field": "order",
+    "name_pt": "Ordem dos Metamorfos",
+    "name_en": "Wild Order (Untamed)",
+    "name_es": "Orden Salvaje",
+    "description_pt": "Mestre da transmutação física primal em predadores e monstros. Você é treinado em Intimidação. Concede o talento Forma Indomada (Untamed Form / Wild Shape) e magias de foco de metamorfose.",
+    "description_en": "Master of shapeshifting into primal predators and beasts. Trained in Intimidation. Grants the Untamed Form feat and focus shapeshifting spells.",
+    "description_es": "Maestro del cambio de forma en depredadores y bestias primigenias. Entrenado en Intimidación. Concede la dote Forma Salvaje y conjuros de metamorfosis.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 130,
+    "data": {
+      "trainedSkills": [
+        "intimidation"
+      ],
+      "grants": [
+        "feat.general.wild_shape"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_druid_ordem_das_ondas",
+    "class_id": "class.druid",
+    "choice_field": "order",
+    "name_pt": "Ordem das Ondas",
+    "name_en": "Wave Order",
+    "name_es": "Orden de las Olas",
+    "description_pt": "Domina a fluidez de rios, oceanos e marés turbulentas. Você é treinado em Natureza e Atletismo. Concede magias aquáticas e deslocamento na água.",
+    "description_en": "Masters fluid tides, surging rivers, and deep seas. Trained in Nature and Athletics. Grants aquatic spells and fluid water movement.",
+    "description_es": "Domina mareas, ríos y océanos profundos. Entrenado en Naturaleza y Atletismo. Concede conjuros acuáticos y desplazamiento fluido.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 130,
+    "data": {
+      "trainedSkills": [
+        "nature",
+        "athletics"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_swashbuckler_fencer",
+    "class_id": "class.swashbuckler",
+    "choice_field": "style",
+    "name_pt": "Esgrimista",
+    "name_en": "Fencer",
+    "name_es": "Esgrimista",
+    "description_pt": "Você confia em fintas, truques e distrações rápidas para abrir brechas na guarda do inimigo. Você é treinado em Enganação. Você ganha Panache sempre que Fintar (Feint) ou Criar uma Distração (Create a Diversion) com sucesso contra um oponente em combate.",
+    "description_en": "You rely on feints, tricks, and quick misdirection to bypass enemy guard. You are trained in Deception. You gain panache whenever you successfully Feint or Create a Diversion against a foe in combat.",
+    "description_es": "Confías en fintas, trucos y distracciones rápidas para superar la guardia enemiga. Estás entrenado en Engaño. Obtienes garbo siempre que fintar o crear una distracción con éxito contra un oponente en combate.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 100,
+    "data": {
+      "trainedSkills": [
+        "deception"
+      ],
+      "grants": [
+        "action.feint",
+        "action.create_a_diversion"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_swashbuckler_wit",
+    "class_id": "class.swashbuckler",
+    "choice_field": "style",
+    "name_pt": "Mordaz",
+    "name_en": "Wit",
+    "name_es": "Mordaz",
+    "description_pt": "Você desarma seus oponentes com tiradas afiadas, provocações perspicazes e piadas mordazes. Você é treinado em Diplomacia e ganha o talento Farpas (Bon Mot). Você ganha Panache sempre que usar Farpas com sucesso contra um adversário.",
+    "description_en": "You disarm foes with sharp quips, clever banter, and biting wit. You are trained in Diplomacy and gain the Bon Mot feat. You gain panache whenever you successfully use Bon Mot against a foe.",
+    "description_es": "Desarmas a tus oponentes con réplicas agudas, provocaciones ingeniosas y comentarios mordaces. Estás entrenado en Diplomacia y obtienes la dote Bon Mot. Obtienes garbo siempre que uses Bon Mot con éxito contra un adversario.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 101,
+    "data": {
+      "trainedSkills": [
+        "diplomacy"
+      ],
+      "grants": [
+        "feat.general.bon_mot"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_swashbuckler_braggart",
+    "class_id": "class.swashbuckler",
+    "choice_field": "style",
+    "name_pt": "Fanfarrão",
+    "name_en": "Braggart",
+    "name_es": "Fanfarrón",
+    "description_pt": "Você domina o campo de batalha gabando-se abertamente e aterrorizando inimigos com bravatas e presença imponente. Você é treinado em Intimidação. Você ganha Panache sempre que Desmoralizar (Demoralize) com sucesso contra um oponente.",
+    "description_en": "You command the battlefield with boastful swagger and overwhelming bravado. You are trained in Intimidation. You gain panache whenever you successfully Demoralize a foe.",
+    "description_es": "Dominas el campo de batalla con fanfarronería y presencia imponente. Estás entrenado en Intimidación. Obtienes garbo siempre que desmoralices con éxito a un enemigo.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 100,
+    "data": {
+      "trainedSkills": [
+        "intimidation"
+      ],
+      "grants": [
+        "action.demoralize"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_swashbuckler_battledancer",
+    "class_id": "class.swashbuckler",
+    "choice_field": "style",
+    "name_pt": "Audaz",
+    "name_en": "Battledancer",
+    "name_es": "Bailarín de Batalla",
+    "description_pt": "Você transforma a luta em uma coreografia deslumbrante e hipnotizante. Você é treinado em Atuação e ganha o talento Dança Fascinante (Fascinating Performance). Você ganha Panache ao Atuar em combate com sucesso para fascinar ou desorientar adversários.",
+    "description_en": "You turn melee combat into a mesmerizing, acrobatic choreography. You are trained in Performance and gain the Fascinating Performance feat. You gain panache whenever you successfully Perform in combat to mesmerize foes.",
+    "description_es": "Conviertes la lucha en una coreografía deslumbrante e hipnótica. Estás entrenado en Interpretación y obtienes la dote Interpretación Fascinante. Obtienes garbo cuando actúas con éxito en combate para fascinar adversarios.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 100,
+    "data": {
+      "trainedSkills": [
+        "performance"
+      ],
+      "grants": [
+        "feat.general.fascinating_performance"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_swashbuckler_gymnast",
+    "class_id": "class.swashbuckler",
+    "choice_field": "style",
+    "name_pt": "Ginasta",
+    "name_en": "Gymnast",
+    "name_es": "Gimnasta",
+    "description_pt": "Você domina o combate através de força muscular explosiva, alavancagens e agilidade física. Você é treinado em Atletismo. Você ganha Panache sempre que Agarrar (Grapple), Derrubar (Trip) ou Empurrar (Shove) com sucesso contra um oponente.",
+    "description_en": "You dominate combat with explosive athleticism, physical leverage, and acrobatics. You are trained in Athletics. You gain panache whenever you successfully Grapple, Trip, or Shove a foe.",
+    "description_es": "Dominas el combate con fuerza atlética explosiva, palanca y agilidad física. Estás entrenado en Atletismo. Obtienes garbo siempre que agarras, derribas o empujas con éxito a un enemigo.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 101,
+    "data": {
+      "trainedSkills": [
+        "athletics"
+      ],
+      "grants": [
+        "action.grapple",
+        "action.trip",
+        "action.shove"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_sorcerer_linhagem_draconica",
+    "class_id": "class.sorcerer",
+    "choice_field": "bloodline",
+    "name_pt": "Linhagem Dracônica",
+    "name_en": "Draconic Bloodline",
+    "name_es": "Linaje Dracónico",
+    "description_pt": "O sangue ardente dos dragões corre em suas veias. Tradição Arcana. Treinado em Arcanismo. Concede garras de dragão e magias de sopro destrutivo.",
+    "description_en": "Draconic fire surges through your veins. Arcane tradition. Trained in Arcana. Grants dragon claws and destructive breath spells.",
+    "description_es": "La sangre ardiente de los dragones corre por tus venas. Tradición Arcana. Entrenado en Arcanos. Concede garras y aliento de dragón.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 132,
+    "data": {
+      "trainedSkills": [
+        "arcana"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_sorcerer_linhagem_feerica",
+    "class_id": "class.sorcerer",
+    "choice_field": "bloodline",
+    "name_pt": "Linhagem Feérica",
+    "name_en": "Fey Bloodline",
+    "name_es": "Linaje Feérico",
+    "description_pt": "O capricho e o glamour do Primeiro Mundo moldam suas magias. Tradição Primal. Treinado em Natureza. Concede magias de glamour, ilusão e encantamento.",
+    "description_en": "Whimsical glamour of the First World shapes your magic. Primal tradition. Trained in Nature. Grants glamour, illusion, and enchantment spells.",
+    "description_es": "El capricho del Primer Mundo moldea tus conjuros. Tradición Primigenia. Entrenado en Naturaleza. Concede conjuros de ilusión y encantamiento.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 133,
+    "data": {
+      "trainedSkills": [
+        "nature"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_sorcerer_linhagem_angelica",
+    "class_id": "class.sorcerer",
+    "choice_field": "bloodline",
+    "name_pt": "Linhagem Angélica",
+    "name_en": "Angelic Bloodline",
+    "name_es": "Linaje Angélico",
+    "description_pt": "A graça celestial dos reinos sagrados abençoa suas palavras. Tradição Divina. Treinado em Religião. Concede magias de cura angelical e halo radiante protetor.",
+    "description_en": "Celestial grace and holy radiance bless your spellcasting. Divine tradition. Trained in Religion. Grants angelic healing and protective radiant halos.",
+    "description_es": "La gracia celestial bendice tus conjuros. Tradición Divina. Entrenado en Religión. Concede conjuros de curación celestial y halo radiante.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 132,
+    "data": {
+      "trainedSkills": [
+        "religion"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_sorcerer_linhagem_demoniaca",
+    "class_id": "class.sorcerer",
+    "choice_field": "bloodline",
+    "name_pt": "Linhagem Demoníaca",
+    "name_en": "Demonic Bloodline",
+    "name_es": "Linaje Demoníaco",
+    "description_pt": "O caos corruptor do Abismo ferve em sua alma. Tradição Divina. Treinado em Intimidação. Concede magias de destruição, fúria e punição profana.",
+    "description_en": "Corruptive Abyssal chaos boils within your blood. Divine tradition. Trained in Intimidation. Grants spells of unholy fury and destruction.",
+    "description_es": "El caos corruptor del Abismo bulle en tu sangre. Tradición Divina. Entrenado en Intimidación. Concede conjuros de destrucción y furia profana.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 133,
+    "data": {
+      "trainedSkills": [
+        "intimidation"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_sorcerer_linhagem_aberrante",
+    "class_id": "class.sorcerer",
+    "choice_field": "bloodline",
+    "name_pt": "Linhagem Aberrante",
+    "name_en": "Aberrant Bloodline",
+    "name_es": "Linaje Aberrante",
+    "description_pt": "Horrores alienígenas da Tapeçaria Escura ecoam em sua mente. Tradição Oculta. Treinado em Ocultismo. Concede tentáculos psíquicos e magias de loucura cósmica.",
+    "description_en": "Alien cosmic horrors and the Dark Tapestry whisper to you. Occult tradition. Trained in Occultism. Grants tentacle strikes and maddening spells.",
+    "description_es": "Horrores cósmicos alienígenas susurran en tu mente. Tradición Oculta. Entrenado en Ocultismo. Concede tentáculos psíquicos y conjuros de locura.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 132,
+    "data": {
+      "trainedSkills": [
+        "occultism"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_sorcerer_linhagem_elemental",
+    "class_id": "class.sorcerer",
+    "choice_field": "bloodline",
+    "name_pt": "Linhagem Elemental",
+    "name_en": "Elemental Bloodline",
+    "name_es": "Linaje Elemental",
+    "description_pt": "A força primordial dos planos elementais pulsa em seu corpo. Tradição Primal. Treinado em Natureza. Concede explosões elementais e resistências.",
+    "description_en": "Raw primordial force of the elemental planes. Primal tradition. Trained in Nature. Grants elemental blasts and elemental resistances.",
+    "description_es": "Fuerza primordial de los planos elementales. Tradición Primigenia. Entrenado en Naturaleza. Concede ráfagas elementales y resistencias.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 133,
+    "data": {
+      "trainedSkills": [
+        "nature"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_sorcerer_linhagem_imperial",
+    "class_id": "class.sorcerer",
+    "choice_field": "bloodline",
+    "name_pt": "Linhagem Imperial",
+    "name_en": "Imperial Bloodline",
+    "name_es": "Linaje Imperial",
+    "description_pt": "Descendente de uma linhagem de antigos arquimagos e dinastias lendárias. Tradição Arcana. Treinado em Sociedade. Concede magias de autoridade e recuperação mágica.",
+    "description_en": "Descendant of ancient mortal archmages and dynastic rulers. Arcane tradition. Trained in Society. Grants spells of magical authority and recovery.",
+    "description_es": "Descendiente de antiguos archimagos legendarios. Tradición Arcana. Entrenado en Sociedad. Concede conjuros de autoridad mágica.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 134,
+    "data": {
+      "trainedSkills": [
+        "society"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_fighter_estilo_de_arma_dupla",
+    "class_id": "class.fighter",
+    "choice_field": null,
+    "name_pt": "Estilo de Arma Dupla",
+    "name_en": "Dual-Weapon Style",
+    "name_es": "Estilo de Arma Doble",
+    "description_pt": "Especialista em empunhar duas armas simultaneamente para desferir ataques coordenados, fintas rápidas e defesas cruzadas.",
+    "description_en": "Master of wielding twin weapons simultaneously for coordinated strikes, quick feints, and cross-parries.",
+    "description_es": "Maestro en empuñar dos armas simultáneamente para ataques coordinados y bloqueos defensivos.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 138,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_fighter_estilo_de_escudo_e_lamina",
+    "class_id": "class.fighter",
+    "choice_field": null,
+    "name_pt": "Estilo de Escudo e Lâmina",
+    "name_en": "Shield and Blade Style",
+    "name_es": "Estilo de Escudo y Hoja",
+    "description_pt": "Guerreiro clássico equilibrando proteção de escudo pesado e golpes precisos de arma de uma mão.",
+    "description_en": "Classic warrior balancing heavy shield protection with precise one-handed weapon strikes.",
+    "description_es": "Guerrero clásico que equilibra la protección del escudo con golpes precisos de arma a una mano.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 139,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_fighter_estilo_de_arma_de_duas_maos",
+    "class_id": "class.fighter",
+    "choice_field": null,
+    "name_pt": "Estilo de Arma de Duas Mãos",
+    "name_en": "Two-Handed Weapon Style",
+    "name_es": "Estilo de Arma a Dos Manos",
+    "description_pt": "Guerreiro que utiliza alavancagem máxima e armas pesadas de duas mãos para desferir golpes devastadores.",
+    "description_en": "Warrior utilizing maximum leverage and heavy two-handed weapons for devastating blows.",
+    "description_es": "Guerrero que utiliza el máximo apalancamiento y armas a dos manos para golpes demoledores.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 139,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_fighter_estilo_arqueiro",
+    "class_id": "class.fighter",
+    "choice_field": null,
+    "name_pt": "Estilo Arqueiro",
+    "name_en": "Archer Style",
+    "name_es": "Estilo Arquero",
+    "description_pt": "Mestre de pontaria à distância com arcos e bestas, disparando múltiplos projéteis com extrema precisão.",
+    "description_en": "Master marksman with bows and crossbows, delivering rapid volleys with extreme precision.",
+    "description_es": "Maestro tirador con arcos y ballestas, disparando salvas con extrema precisión.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 139,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_fighter_estilo_mao_livre",
+    "class_id": "class.fighter",
+    "choice_field": null,
+    "name_pt": "Estilo Mão Livre",
+    "name_en": "Free-Hand Style",
+    "name_es": "Estilo Mano Libre",
+    "description_pt": "Lutador ágil com uma mão livre para agarrar, desarmar, usar itens e executar manobras atléticas de duelo.",
+    "description_en": "Agile duelist keeping one hand free to grapple, trip, use items, and perform athletic maneuvers.",
+    "description_es": "Duelista ágil con una mano libre para agarrar, desarmar, usar objetos y ejecutar maniobras.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 140,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_investigator_metodologia_alquimica",
+    "class_id": "class.investigator",
+    "choice_field": "methodology",
+    "name_pt": "Metodologia Alquímica",
+    "name_en": "Alchemical Sciences",
+    "name_es": "Ciencias Alquímicas",
+    "description_pt": "Aplica reagentes e química investigativa no trabalho de campo. Treinado em Manufatura. Concede o talento Manufatura Alquímica e tinturas rápidas diárias de elixires e ferramentas.",
+    "description_en": "Applies chemical science and forensics to investigative cases. Trained in Crafting. Grants Alchemical Crafting and daily versatile alchemical tinctures.",
+    "description_es": "Aplica química y ciencias forenses a la investigación. Entrenado en Artesanía. Concede Artesanía Alquímica y tinturas versátiles diarias.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 84,
+    "data": {
+      "trainedSkills": [
+        "crafting"
+      ],
+      "grants": [
+        "feat.general.alchemical_crafting"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_investigator_metodologia_forense",
+    "class_id": "class.investigator",
+    "choice_field": "methodology",
+    "name_pt": "Metodologia Forense",
+    "name_en": "Forensic Medicine",
+    "name_es": "Medicina Forense",
+    "description_pt": "Especialista em autópsias, análise corporal e cirurgia de campo. Treinado em Medicina. Concede o talento Medicina de Batalha (Battle Medicine), restaura pontos de vida adicionais e reduz a imunidade do alvo para 1 hora.",
+    "description_en": "Specialist in anatomy, autopsy, and surgical first response. Trained in Medicine. Grants Battle Medicine, restores additional HP, and reduces target immunity to 1 hour.",
+    "description_es": "Especialista en autopsias, anatomía y medicina de emergencia. Entrenado en Medicina. Concede Medicina de Batalla, restaura PG adicionales y reduce la inmunidad a 1 hora.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 85,
+    "data": {
+      "trainedSkills": [
+        "medicine"
+      ],
+      "grants": [
+        "feat.general.battle_medicine"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_investigator_metodologia_interrogatoria",
+    "class_id": "class.investigator",
+    "choice_field": "methodology",
+    "name_pt": "Metodologia Interrogatória",
+    "name_en": "Interrogation",
+    "name_es": "Interrogatorio",
+    "description_pt": "Mestre em interrogatórios psicológicos e leitura de testemunhas. Treinado em Diplomacia. Concede a ação Pergunta Direta (Pointed Question) para desestabilizar suspeitos em diálogo ou combate.",
+    "description_en": "Master of psychological questioning and witness assessment. Trained in Diplomacy. Grants Pointed Question to rattle suspects in dialogue or combat.",
+    "description_es": "Maestro del interrogatorio y lectura de testigos. Entrenado en Diplomacia. Concede Pregunta Incisiva para desestabilizar sospechosos en diálogo o combate.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 85,
+    "data": {
+      "trainedSkills": [
+        "diplomacy"
+      ],
+      "grants": [
+        "action.pointed_question"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_investigator_metodologia_empirica",
+    "class_id": "class.investigator",
+    "choice_field": "methodology",
+    "name_pt": "Metodologia Empírica",
+    "name_en": "Empiricism",
+    "name_es": "Empirismo",
+    "description_pt": "Observador minucioso de evidências físicas e detalhes ocultos. Treinado em Sociedade. Concede a habilidade Isso é Estranho (That's Odd) para notar pistas e discrepâncias instantaneamente.",
+    "description_en": "Meticulous observer of physical clues and logical deduction. Trained in Society. Grants That's Odd to spot hidden inconsistencies in any scene instantly.",
+    "description_es": "Observador minucioso de pistas físicas y lógica. Entrenado en Sociedad. Concede ¡Qué Raro! para detectar inconsistencias ocultas al instante.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 86,
+    "data": {
+      "trainedSkills": [
+        "society"
+      ],
+      "grants": [
+        "action.thats_odd"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_inventor_inovacao_de_armadura",
+    "class_id": "class.inventor",
+    "choice_field": "innovation",
+    "name_pt": "Inovação de Armadura",
+    "name_en": "Armor Innovation",
+    "name_es": "Innovación de Armadura",
+    "description_pt": "Traje mecânico customizado com blindagem reforçada, impulsores de velocidade, camuflagem ou módulos defensivos avançados.",
+    "description_en": "Customized suit of powered or mechanical armor modified with reinforced plating, speed thrusters, or stealth camouflage.",
+    "description_es": "Armadura mecánica personalizada con placas reforzadas, propulsores de velocidad o camuflaje sigiloso.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Armas & Engenhocas (Guns & Gears)",
+    "source_page": 16,
+    "data": {
+      "trainedSkills": [
+        "crafting"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_inventor_inovacao_de_arma",
+    "class_id": "class.inventor",
+    "choice_field": "innovation",
+    "name_pt": "Inovação de Arma",
+    "name_en": "Weapon Innovation",
+    "name_es": "Innovación de Arma",
+    "description_pt": "Arma única modificada com engrenagens modulares, alcance estendido, segmentos afiados ou condutores de energia elemental.",
+    "description_en": "Unique engineered weapon modified with modular damage mechanisms, extended reach, or elemental energy conductors.",
+    "description_es": "Arma ingeniosa personalizada con mecanismos modulares, alcance extendido o conductores elementales.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Armas & Engenhocas (Guns & Gears)",
+    "source_page": 18,
+    "data": {
+      "trainedSkills": [
+        "crafting"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_inventor_inovacao_de_companheiro_constructo",
+    "class_id": "class.inventor",
+    "choice_field": "innovation",
+    "name_pt": "Inovação de Companheiro Constructo",
+    "name_en": "Construct Innovation",
+    "name_es": "Innovación de Constructo",
+    "description_pt": "Autômato protótipo leal que luta ao seu lado e recebe melhorias mecânicas avançadas conforme você sobe de nível.",
+    "description_en": "Loyal prototype mechanical construct fighting beside you and evolving with your custom inventions.",
+    "description_es": "Autómata prototipo leal que lucha a tu lado y evoluciona con tus inventos mecánicos.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Armas & Engenhocas (Guns & Gears)",
+    "source_page": 20,
+    "data": {
+      "trainedSkills": [
+        "crafting"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_rogue_scoundrel",
+    "class_id": "class.rogue",
+    "choice_field": "racket",
+    "name_pt": "Trapaceiro",
+    "name_en": "Scoundrel",
+    "name_es": "Granuja",
+    "description_pt": "Especialista em lábia, distrações e fintas desconcertantes. Você é treinado em Enganação e Diplomacia e ganha o talento Finta Ágil. Ao Fintar com sucesso, o alvo fica desprevenido contra seus ataques corpo a corpo até o final do seu próximo turno.",
+    "description_en": "Master of silver-tongued bluffs and feints. Trained in Deception and Diplomacy and gains the Feint feat. When you successfully Feint, the target is off-guard against your melee attacks until the end of your next turn.",
+    "description_es": "Maestro del engaño y las fintas desconcertantes. Entrenado en Engaño y Diplomacia y obtiene la dote Finta. Al fintar con éxito, el objetivo queda desprevenido ante tus ataques cuerpo a cuerpo hasta el final de tu próximo turno.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 168,
+    "data": {
+      "trainedSkills": [
+        "deception",
+        "diplomacy"
+      ],
+      "grants": [
+        "feat.general.feint"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_rogue_thief",
+    "class_id": "class.rogue",
+    "choice_field": "racket",
+    "name_pt": "Ladrão Furtivo",
+    "name_en": "Thief",
+    "name_es": "Ladrón",
+    "description_pt": "Mestre de mãos leves, arrombamentos e precisão letal. Você é treinado em Ladinagem. Adiciona seu modificador de Destreza em vez de Força às jogadas de dano com armas de acuidade (finesse) ou ataques desarmados de acuidade.",
+    "description_en": "Master of quick hands, lockpicking, and lethal precision. Trained in Thievery. Adds your Dexterity modifier instead of Strength to damage rolls with finesse weapons or finesse unarmed attacks.",
+    "description_es": "Maestro de manos rápidas y precisión letal. Entrenado en Latrocinio. Suma tu modificador de Destreza en vez de Fuerza al daño con armas sutiles (finesse) o ataques desarmados sutiles.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 169,
+    "data": {
+      "trainedSkills": [
+        "thievery"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_rogue_ruffian",
+    "class_id": "class.rogue",
+    "choice_field": "racket",
+    "name_pt": "Bruto",
+    "name_en": "Ruffian",
+    "name_es": "Rufián",
+    "description_pt": "Ladino intimidador que usa força física bruta, clavas e armadura média. Você é treinado em Intimidação e armaduras médias. Pode aplicar Ataque Furtivo com qualquer arma simples corpo a corpo com dado de dano até d8.",
+    "description_en": "Intimidating rogue who relies on brute force, clubs, and medium armor. Trained in Intimidation and medium armor. Can apply Sneak Attack with any simple melee weapon up to a d8 damage die.",
+    "description_es": "Pícaro intimidador que confía en la fuerza física y armaduras intermedias. Entrenado en Intimidación y armaduras intermedias. Puede aplicar Ataque Furtivo con cualquier arma simple cuerpo a cuerpo de hasta d8.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 169,
+    "data": {
+      "trainedSkills": [
+        "intimidation"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_rogue_mastermind",
+    "class_id": "class.rogue",
+    "choice_field": "racket",
+    "name_pt": "Mestre da Mente",
+    "name_en": "Mastermind",
+    "name_es": "Mente Maestra",
+    "description_pt": "Estrategista genial que decifra padrões táticos e pontos fracos dos oponentes. Você é treinado em Sociedade. Ao usar Lembrança Útil (Recall Knowledge) com sucesso contra uma criatura, ela fica desprevenida contra seus ataques até o final do seu próximo turno.",
+    "description_en": "Genius tactician deducing enemy flaws and patterns. Trained in Society. When you successfully Recall Knowledge against a creature, that creature is off-guard against your attacks until the end of your next turn.",
+    "description_es": "Estratega genial que deduce patrones y puntos débiles enemigos. Entrenado en Sociedad. Al usar Recordar Conocimiento con éxito contra una criatura, queda desprevenida ante tus ataques hasta el final de tu próximo turno.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 169,
+    "data": {
+      "trainedSkills": [
+        "society"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_rogue_eldritch_trickster",
+    "class_id": "class.rogue",
+    "choice_field": "racket",
+    "name_pt": "Trapaceiro Sobrenatural",
+    "name_en": "Eldritch Trickster",
+    "name_es": "Pícaro Sobrenatural",
+    "description_pt": "Ladino versado nas artes místicas que mescla feitiçaria e furtividade. Você é treinado em uma perícia mágica e ganha uma dedicação de arquétipo multiclasse de conjurador no 1º nível.",
+    "description_en": "Rogue blending spellcasting tricks with stealth. Trained in a magical skill and gains a spellcasting multiclass archetype dedication feat at 1st level.",
+    "description_es": "Pícaro que combina artes mágicas con sigilo. Entrenado en una habilidad mágica y obtiene una dote de dedicación de clase de lanzador de conjuros a nivel 1.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 169,
+    "data": {
+      "trainedSkills": [
+        "arcana"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.wizard.school_ars_grammatica",
+    "class_id": "class.wizard",
+    "choice_field": "arcaneSchool",
+    "name_pt": "Escola da Ars Grammatica",
+    "name_en": "School of Ars Grammatica",
+    "name_es": "Escuela de Ars Grammatica",
+    "description_pt": "Currículo arcano de Mago; concede a magia de escola inicial Guarita de Proteção.",
+    "description_en": "Wizard arcane curriculum; grants the initial school spell Protective Wards.",
+    "description_es": "Plan de estudios arcano de Mago; concede el conjuro inicial de escuela Guardas protectoras.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 186,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.wizard.school_protean_form",
+    "class_id": "class.wizard",
+    "choice_field": "arcaneSchool",
+    "name_pt": "Escola da Forma Proteana",
+    "name_en": "School of the Protean Form",
+    "name_es": "Escuela de la Forma Proteica",
+    "description_pt": "Currículo arcano de Mago; concede a magia de escola inicial Embaralhar Corpo.",
+    "description_en": "Wizard arcane curriculum; grants the initial school spell Scramble Body.",
+    "description_es": "Plan de estudios arcano de Mago; concede el conjuro inicial de escuela Desordenar cuerpo.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 187,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.wizard.school_boundary",
+    "class_id": "class.wizard",
+    "choice_field": "arcaneSchool",
+    "name_pt": "Escola dos Limiares",
+    "name_en": "School of the Boundary",
+    "name_es": "Escuela de los Límites",
+    "description_pt": "Currículo arcano de Mago; concede a magia de escola inicial Fortificar Convocação.",
+    "description_en": "Wizard arcane curriculum; grants the initial school spell Fortify Summoning.",
+    "description_es": "Plan de estudios arcano de Mago; concede el conjuro inicial de escuela Fortalecer invocación.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 187,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.wizard.school_battle_magic",
+    "class_id": "class.wizard",
+    "choice_field": "arcaneSchool",
+    "name_pt": "Escola da Magia Bélica",
+    "name_en": "School of Battle Magic",
+    "name_es": "Escuela de Magia Bélica",
+    "description_pt": "Currículo arcano de Mago; concede a magia de escola inicial Raio de Força.",
+    "description_en": "Wizard arcane curriculum; grants the initial school spell Force Bolt.",
+    "description_es": "Plan de estudios arcano de Mago; concede el conjuro inicial de escuela Rayo de fuerza.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 188,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.wizard.school_civic_magic",
+    "class_id": "class.wizard",
+    "choice_field": "arcaneSchool",
+    "name_pt": "Escola da Magia Cívica",
+    "name_en": "School of Civic Magic",
+    "name_es": "Escuela de Magia Cívica",
+    "description_pt": "Currículo arcano de Mago; concede a magia de escola inicial Terraplenagem.",
+    "description_en": "Wizard arcane curriculum; grants the initial school spell Earthworks.",
+    "description_es": "Plan de estudios arcano de Mago; concede el conjuro inicial de escuela Movimiento de tierras.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 188,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.wizard.school_mentalism",
+    "class_id": "class.wizard",
+    "choice_field": "arcaneSchool",
+    "name_pt": "Escola do Mentalismo",
+    "name_en": "School of Mentalism",
+    "name_es": "Escuela del Mentalismo",
+    "description_pt": "Currículo arcano de Mago; concede a magia de escola inicial Ímpeto Cativante.",
+    "description_en": "Wizard arcane curriculum; grants the initial school spell Charming Push.",
+    "description_es": "Plan de estudios arcano de Mago; concede el conjuro inicial de escuela Impulso encantador.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 188,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.wizard.school_unified_magical_theory",
+    "class_id": "class.wizard",
+    "choice_field": "arcaneSchool",
+    "name_pt": "Escola da Teoria Mágica Unificada",
+    "name_en": "School of Unified Magical Theory",
+    "name_es": "Escuela de Teoría Mágica Unificada",
+    "description_pt": "Currículo arcano de Mago; concede a magia de escola inicial Mão do Aprendiz.",
+    "description_en": "Wizard arcane curriculum; grants the initial school spell Hand of the Apprentice.",
+    "description_es": "Plan de estudios arcano de Mago; concede el conjuro inicial de escuela Mano del aprendiz.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 188,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.magus.hybrid_study_twisting_tree",
+    "class_id": "class.magus",
+    "choice_field": "hybridStudy",
+    "name_pt": "Árvore Retorcida",
+    "name_en": "Twisting Tree",
+    "name_es": "Árbol retorcido",
+    "description_pt": "Transforma o cajado em arma marcial versátil e concede a magia de confluência Cajado Giratório.",
+    "description_en": "Makes a staff a versatile martial weapon and grants the Spinning Staff conflux spell.",
+    "description_es": "Convierte un bastón en un arma marcial versátil y concede el conjuro de confluencia Bastón giratorio.",
+    "traits": [],
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 62,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.magus.hybrid_study_inexorable_iron",
+    "class_id": "class.magus",
+    "choice_field": "hybridStudy",
+    "name_pt": "Ferro Inexorável",
+    "name_en": "Inexorable Iron",
+    "name_es": "Hierro inexorable",
+    "description_pt": "Canaliza armas pesadas para resistir ao combate e concede Golpe Estrondoso como magia de confluência.",
+    "description_en": "Channels heavy weapons to endure combat and grants Thunderous Strike as its conflux spell.",
+    "description_es": "Canaliza armas pesadas para resistir el combate y concede Golpe atronador como conjuro de confluencia.",
+    "traits": [],
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 62,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.magus.hybrid_study_laughing_shadow",
+    "class_id": "class.magus",
+    "choice_field": "hybridStudy",
+    "name_pt": "Sombra Jocosa",
+    "name_en": "Laughing Shadow",
+    "name_es": "Sombra jocosa",
+    "description_pt": "Aumenta mobilidade e dano contra alvos desprevenidos em Cascata Arcana; concede Agressão Dimensional.",
+    "description_en": "Improves mobility and damage against off-guard targets in Arcane Cascade; grants Dimensional Assault.",
+    "description_es": "Mejora movilidad y daño contra objetivos desprevenidos en Cascada arcana; concede Asalto dimensional.",
+    "traits": [],
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 62,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.magus.hybrid_study_sparkling_targe",
+    "class_id": "class.magus",
+    "choice_field": "hybridStudy",
+    "name_pt": "Targe Cintilante",
+    "name_en": "Sparkling Targe",
+    "name_es": "Broquel centelleante",
+    "description_pt": "Aprimora o escudo contra efeitos mágicos em Cascata Arcana e concede Golpe e Escudo.",
+    "description_en": "Improves a shield against magical effects in Arcane Cascade and grants Shielding Strike.",
+    "description_es": "Mejora el escudo contra efectos mágicos en Cascada arcana y concede Golpe y escudo.",
+    "traits": [],
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 63,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.magus.hybrid_study_starlit_span",
+    "class_id": "class.magus",
+    "choice_field": "hybridStudy",
+    "name_pt": "Vão Estrelado",
+    "name_en": "Starlit Span",
+    "name_es": "Vano estelar",
+    "description_pt": "Permite Golpe de Magia à distância no primeiro incremento e concede Estrela Cadente.",
+    "description_en": "Allows ranged Spellstrike within the first range increment and grants Shooting Star.",
+    "description_es": "Permite Golpe de conjuro a distancia dentro del primer incremento y concede Estrella fugaz.",
+    "traits": [],
+    "ruleset": "legacy",
+    "source_book": "Segredos da Magia (pré-Remaster)",
+    "source_page": 63,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_monk_postura_do_dragao",
+    "class_id": "class.monk",
+    "choice_field": "style",
+    "name_pt": "Postura do Dragão",
+    "name_en": "Dragon Stance",
+    "name_es": "Postura del Dragón",
+    "description_pt": "Postura poderosa que concede Golpes de Cauda de Dragão (1d10 C, retrógrado) e permite ignorar terreno difícil em avanços rápidos.",
+    "description_en": "Mighty stance granting Dragon Tail unarmed strikes (1d10 B, backswing) and ignoring difficult terrain on strides.",
+    "description_es": "Postura poderosa que concede Golpes de Cola de Dragón (1d10 C, contragolpe) e ignora terreno difícil al avanzar.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 92,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_monk_postura_do_tigre",
+    "class_id": "class.monk",
+    "choice_field": "style",
+    "name_pt": "Postura do Tigre",
+    "name_en": "Tiger Stance",
+    "name_es": "Postura del Tigre",
+    "description_pt": "Postura feroz que concede Golpes de Garra de Tigre (1d8 C/P, ágil, finesse) e dano por sangramento persistente em acertos críticos.",
+    "description_en": "Ferocious stance granting Tiger Claw strikes (1d8 S/P, agile, finesse) and persistent bleed damage on critical hits.",
+    "description_es": "Postura feroz que concede Golpes de Garra de Tigre (1d8 C/P, ágil, finesse) y sangrado persistente en críticos.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 93,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_monk_postura_do_grou",
+    "class_id": "class.monk",
+    "choice_field": "style",
+    "name_pt": "Postura do Grou",
+    "name_en": "Crane Stance",
+    "name_es": "Postura de la Grulla",
+    "description_pt": "Postura defensiva e acrobática que concede +1 de bônus de circunstância na CA e Golpes de Asa de Grou (1d6 C, ágil, finesse).",
+    "description_en": "Acrobatic defensive stance granting a +1 circumstance bonus to AC and Crane Wing strikes (1d6 B, agile, finesse).",
+    "description_es": "Postura acrobática que concede +1 circunstancial a la CA y Golpes de Ala de Grulla (1d6 C, ágil, finesse).",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 93,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_monk_postura_da_montanha",
+    "class_id": "class.monk",
+    "choice_field": "style",
+    "name_pt": "Postura da Montanha",
+    "name_en": "Mountain Stance",
+    "name_es": "Postura de la Montaña",
+    "description_pt": "Postura enraizada que concede +4 de bônus de estado na CA (limite Des +0), Golpes de Rocha que Cai (1d8 C) e resistência contra derrubadas.",
+    "description_en": "Rooted stance granting +4 item bonus to AC (Dex cap +0), Falling Stone strikes (1d8 B), and bonuses against trip/shove.",
+    "description_es": "Postura enraizada que concede +4 a la CA (límite Des +0), Golpes de Roca que Cae (1d8 C) y resistencia al derribo.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 94,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_monk_postura_do_lobo",
+    "class_id": "class.monk",
+    "choice_field": "style",
+    "name_pt": "Postura do Lobo",
+    "name_en": "Wolf Stance",
+    "name_es": "Postura del Lobo",
+    "description_pt": "Postura predatória que concede Golpes de Mandíbula de Lobo (1d8 P, finesse, ágil contra flanqueados) e sinergia letal de derrubada.",
+    "description_en": "Predatory stance granting Wolf Jaw strikes (1d8 P, finesse, agile vs flat-footed) and trip synergy.",
+    "description_es": "Postura depredadora que concede Golpes de Mandíbula de Lobo (1d8 P, finesse) y sinergia para derribar.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 94,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_monk_postura_dos_ventos",
+    "class_id": "class.monk",
+    "choice_field": "style",
+    "name_pt": "Postura dos Ventos",
+    "name_en": "Monastic Wind Stance",
+    "name_es": "Postura de los Vientos",
+    "description_pt": "Postura veloz com disparos de projéteis de vento e rajadas acrobáticas fluidas.",
+    "description_en": "Swift gale stance unleashing ranged wind blasts and fluid dashes.",
+    "description_es": "Postura veloz que desata ráfagas de viento y desplazamientos fluidos.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 95,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.oracle.mystery_ancestors",
+    "class_id": "class.oracle",
+    "choice_field": "mystery",
+    "name_pt": "Mistério dos Ancestrais",
+    "name_en": "Ancestors",
+    "name_es": "Antepasados",
+    "description_pt": "Vozes das gerações passadas guiam e atrapalham suas ações.",
+    "description_en": "Voices of past generations guide and hinder your actions.",
+    "description_es": "Las voces de generaciones pasadas guían y dificultan tus acciones.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 161,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.oracle.mystery_battle",
+    "class_id": "class.oracle",
+    "choice_field": "mystery",
+    "name_pt": "Mistério da Batalha",
+    "name_en": "Battle",
+    "name_es": "Batalla",
+    "description_pt": "Forças bélicas concedem poder físico e conhecimento tático.",
+    "description_en": "Warlike forces grant physical power and tactical knowledge.",
+    "description_es": "Fuerzas bélicas conceden poder físico y conocimiento táctico.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 161,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.oracle.mystery_bones",
+    "class_id": "class.oracle",
+    "choice_field": "mystery",
+    "name_pt": "Mistério dos Ossos",
+    "name_en": "Bones",
+    "name_es": "Huesos",
+    "description_pt": "A morte está próxima e os mortos conversam com você.",
+    "description_en": "Death is close, and the dead speak with you.",
+    "description_es": "La muerte está cerca y los muertos hablan contigo.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 162,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.oracle.mystery_flames",
+    "class_id": "class.oracle",
+    "choice_field": "mystery",
+    "name_pt": "Mistério das Chamas",
+    "name_en": "Flames",
+    "name_es": "Llamas",
+    "description_pt": "O fogo alimenta seu poder e exige que você permaneça em movimento.",
+    "description_en": "Fire fuels your power and demands that you keep moving.",
+    "description_es": "El fuego alimenta tu poder y exige que sigas moviéndote.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 161,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.oracle.mystery_cosmos",
+    "class_id": "class.oracle",
+    "choice_field": "mystery",
+    "name_pt": "Mistério dos Cosmos",
+    "name_en": "Cosmos",
+    "name_es": "Cosmos",
+    "description_pt": "As estrelas e o espaço entre elas concedem seu poder.",
+    "description_en": "The stars and the space between them grant your power.",
+    "description_es": "Las estrellas y el espacio entre ellas conceden tu poder.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 162,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.oracle.mystery_lore",
+    "class_id": "class.oracle",
+    "choice_field": "mystery",
+    "name_pt": "Mistério do Saber",
+    "name_en": "Lore",
+    "name_es": "Saber",
+    "description_pt": "Conhecimento vasto e avassalador transborda para sua mente.",
+    "description_en": "Vast and overwhelming knowledge pours into your mind.",
+    "description_es": "Un conocimiento vasto y abrumador inunda tu mente.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 163,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.oracle.mystery_tempest",
+    "class_id": "class.oracle",
+    "choice_field": "mystery",
+    "name_pt": "Mistério das Tempestades",
+    "name_en": "Tempest",
+    "name_es": "Tempestad",
+    "description_pt": "Ventos, ondas e tempestades respondem ao seu chamado.",
+    "description_en": "Winds, waves, and storms answer your call.",
+    "description_es": "Vientos, olas y tormentas responden a tu llamado.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 163,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.oracle.mystery_life",
+    "class_id": "class.oracle",
+    "choice_field": "mystery",
+    "name_pt": "Mistério da Vida",
+    "name_en": "Life",
+    "name_es": "Vida",
+    "description_pt": "As energias vibrantes da vida fluem através de você e pelo mundo.",
+    "description_en": "The vibrant energies of life flow through you and the world.",
+    "description_es": "Las energías vibrantes de la vida fluyen por ti y por el mundo.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 163,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_ranger_precision",
+    "class_id": "class.ranger",
+    "choice_field": "hunterEdge",
+    "name_pt": "Vantagem: Precisão",
+    "name_en": "Precision",
+    "name_es": "Precisión",
+    "description_pt": "O primeiro Golpe bem-sucedido a cada rodada contra a presa caçada causa 1d8 de dano de precisão adicional (aumenta para 2d8 no 11º nível e 3d8 no 19º nível).",
+    "description_en": "Your first successful Strike each round against your hunted prey deals an additional 1d8 precision damage (2d8 at 11th level, 3d8 at 19th level).",
+    "description_es": "Tu primer Golpe con éxito en cada asalto contra la presa inflige 1d8 de daño de precisión adicional (2d8 a nivel 11, 3d8 a nivel 19).",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 154,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_ranger_flurry",
+    "class_id": "class.ranger",
+    "choice_field": "hunterEdge",
+    "name_pt": "Vantagem: Rajada",
+    "name_en": "Flurry",
+    "name_es": "Ráfaga",
+    "description_pt": "Reduz a penalidade por ataques múltiplos contra a presa caçada para -3 no segundo ataque e -6 no terceiro (ou -2 / -4 com armas que possuem o traço ágil).",
+    "description_en": "Reduces multiple attack penalties against hunted prey to -3 on the second attack and -6 on subsequent attacks (-2 / -4 with agile weapons).",
+    "description_es": "Reduce la penalización por ataques múltiples contra la presa a -3 en el segundo ataque y -6 en los siguientes (-2 / -4 con armas ágiles).",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 154,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_ranger_outwit",
+    "class_id": "class.ranger",
+    "choice_field": "hunterEdge",
+    "name_pt": "Vantagem: Desencorajar",
+    "name_en": "Outwit",
+    "name_es": "Burlar",
+    "description_pt": "Concede +2 de bônus de circunstância na CA contra ataques da presa, +2 em testes de Enganação, Intimidação e Furtividade contra ela, e +2 em Lembrança Útil sobre ela.",
+    "description_en": "Grants a +2 circumstance bonus to AC against prey's attacks, +2 to Deception, Intimidation, and Stealth against prey, and +2 to Recall Knowledge.",
+    "description_es": "Concede un bonificador circunstancial de +2 a la CA contra ataques de la presa, y +2 a Engaño, Intimidación, Sigilo y Recordar Conocimiento.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 155,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_gunslinger_pistolero",
+    "class_id": "class.gunslinger",
+    "choice_field": "way",
+    "name_pt": "Caminho do Pistoleiro",
+    "name_en": "Way of the Pistolero",
+    "name_es": "Camino del Pistolero",
+    "description_pt": "Mestre em duelos rápidos com arma de fogo em uma mão, lábia e presença de palco. Treinado em Enganação ou Intimidação. Concede a ação Recarga Rápida (Raconteur's Reload) e a habilidade Dez Passos (+2 na iniciativa e saca arma como reação livre).",
+    "description_en": "Quick-draw duelist specializing in one-handed firearms and bravado. Trained in Deception or Intimidation. Grants Raconteur's Reload and Ten Paces (+2 initiative, free weapon draw).",
+    "description_es": "Duelista veloz con armas de fuego a una mano y presencia escénica. Entrenado en Engaño o Intimidación. Concede Recarga Rápida y Diez Pasos (+2 iniciativa, desenfunde libre).",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Armas & Engenhocas (Guns & Gears)",
+    "source_page": 108,
+    "data": {
+      "trainedSkills": [
+        "deception"
+      ],
+      "grants": [
+        "action.raconteurs_reload",
+        "feat.general.ten_paces"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_gunslinger_sniper",
+    "class_id": "class.gunslinger",
+    "choice_field": "way",
+    "name_pt": "Caminho do Franco-Atirador",
+    "name_en": "Way of the Sniper",
+    "name_es": "Camino del Francotirador",
+    "description_pt": "Atirador de precisão letal oculto à distância. Treinado em Furtividade. Concede a ação Recarga Oculta (Covered Reload) e Um Tiro, Um Abate (+1d6 de dano de precisão no primeiro disparo).",
+    "description_en": "Lethal sharpshooter striking from long range and concealment. Trained in Stealth. Grants Covered Reload and One Shot, One Kill (+1d6 precision damage on first Strike).",
+    "description_es": "Tirador de precisión letal oculto a larga distancia. Entrenado en Sigilo. Concede Recarga a Cubierto y Un Tiro, Una Baja (+1d6 de daño de precisión en el primer disparo).",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Armas & Engenhocas (Guns & Gears)",
+    "source_page": 109,
+    "data": {
+      "trainedSkills": [
+        "stealth"
+      ],
+      "grants": [
+        "action.covered_reload",
+        "feat.general.one_shot_one_kill"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_gunslinger_vanguard",
+    "class_id": "class.gunslinger",
+    "choice_field": "way",
+    "name_pt": "Caminho da Vanguarda",
+    "name_en": "Way of the Vanguard",
+    "name_es": "Camino de la Vanguardia",
+    "description_pt": "Lutador de infantaria pesada armado com bacamartes e armas de dispersão. Treinado em Atletismo. Concede a ação Limpar Caminho (Clear a Path) e Armadura Viva (+1 na CA ao sacar arma).",
+    "description_en": "Heavy frontline combatant with scatterguns and wide blasts. Trained in Athletics. Grants Clear a Path (Shove with firearm) and Living Fortification (+1 AC upon weapon draw).",
+    "description_es": "Combatiente de primera línea armado con trabucos y dispersión. Entrenado en Atletismo. Concede Despejar el Camino y Fortificación Viviente (+1 a la CA al desenfundar).",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Armas & Engenhocas (Guns & Gears)",
+    "source_page": 110,
+    "data": {
+      "trainedSkills": [
+        "athletics"
+      ],
+      "grants": [
+        "action.clear_a_path",
+        "feat.general.living_fortification"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_gunslinger_drifter",
+    "class_id": "class.gunslinger",
+    "choice_field": "way",
+    "name_pt": "Caminho do Andarilho",
+    "name_en": "Way of the Drifter",
+    "name_es": "Camino del Vagabundo",
+    "description_pt": "Guerreiro fluído que empunha uma arma de fogo em uma mão e uma espada na outra. Treinado em Acrobacia. Concede a ação Golpe de Recarga (Reloading Strike) para golpear corpo a corpo e recarregar na mesma ação.",
+    "description_en": "Fluid skirmisher wielding a firearm in one hand and a blade in the other. Trained in Acrobatics. Grants Reloading Strike to strike in melee and reload in the same action.",
+    "description_es": "Guerrero fluido con arma de fuego a una mano y espada en la otra. Entrenado en Acrobacias. Concede Golpe de Recarga para golpear cuerpo a cuerpo y recargar a la vez.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Armas & Engenhocas (Guns & Gears)",
+    "source_page": 111,
+    "data": {
+      "trainedSkills": [
+        "acrobatics"
+      ],
+      "grants": [
+        "action.reloading_strike"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_psychic_telecinese",
+    "class_id": "class.psychic",
+    "choice_field": "consciousMind",
+    "name_pt": "Mente Distante (Telecinese)",
+    "name_en": "The Distant Grasp",
+    "name_es": "La Mente Distante",
+    "description_pt": "Manipulação de forças cinéticas à distância. Treinado em Atletismo. Concede Projétil Telecinético e Mão Mágica amplificados.",
+    "description_en": "Kinetic manipulation from afar. Trained in Athletics. Grants amplified Telekinetic Projectile and Mage Hand.",
+    "description_es": "Manipulación cinética a distancia. Entrenado en Atletismo. Concede Proyectil Telecinético y Mano de Mago amplificados.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Arquivo Sombrio (Dark Archive)",
+    "source_page": 16,
+    "data": {
+      "trainedSkills": [
+        "athletics"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_psychic_mente_infinita",
+    "class_id": "class.psychic",
+    "choice_field": "consciousMind",
+    "name_pt": "Mente Infinita",
+    "name_en": "The Infinite Eye",
+    "name_es": "El Ojo Infinito",
+    "description_pt": "Percepção onisciente e clarividência mental. Treinado em Sociedade. Concede Orientação (Guidance) e Detectar Magia amplificados.",
+    "description_en": "Omniscient perception and psychic foresight. Trained in Society. Grants amplified Guidance and Detect Magic.",
+    "description_es": "Percepción omnisciente y clarividencia. Entrenado en Sociedad. Concede Guía y Detectar Magia amplificados.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Arquivo Sombrio (Dark Archive)",
+    "source_page": 17,
+    "data": {
+      "trainedSkills": [
+        "society"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_psychic_mente_calosa",
+    "class_id": "class.psychic",
+    "choice_field": "consciousMind",
+    "name_pt": "Mente Calosa / Onda Oscilante",
+    "name_en": "The Oscillating Wave",
+    "name_es": "La Onda Oscilante",
+    "description_pt": "Transferência termodinâmica de frio e calor extremos. Treinado em Natureza. Concede Produzir Chama e Raio de Gelo amplificados.",
+    "description_en": "Thermodynamic extremes of searing heat and freezing cold. Trained in Nature. Grants amplified Produce Flame and Ray of Frost.",
+    "description_es": "Transferencia termodinámica de frío y calor extremos. Entrenado en Naturaleza. Concede Producir Llama y Rayo de Escarcha amplificados.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Arquivo Sombrio (Dark Archive)",
+    "source_page": 18,
+    "data": {
+      "trainedSkills": [
+        "nature"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_psychic_mente_tangivel",
+    "class_id": "class.psychic",
+    "choice_field": "consciousMind",
+    "name_pt": "Mente Tangível",
+    "name_en": "The Tangible Dream",
+    "name_es": "El Sueño Tangible",
+    "description_pt": "Projeção de matéria astral sólida e geometrias tangíveis. Treinado em Manufatura. Concede Escudo e Luzes Dançantes amplificados.",
+    "description_en": "Solid astral constructs and tangible force shields. Trained in Crafting. Grants amplified Shield and Dancing Lights.",
+    "description_es": "Construcciones de materia astral sólida. Entrenado en Artesanía. Concede Escudo y Luces Danzantes amplificados.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Arquivo Sombrio (Dark Archive)",
+    "source_page": 20,
+    "data": {
+      "trainedSkills": [
+        "crafting"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_thaumaturge_implemento_amuleto",
+    "class_id": "class.thaumaturge",
+    "choice_field": "implement",
+    "name_pt": "Implemento: Amuleto",
+    "name_en": "Amulet Implement",
+    "name_es": "Implemento de Amuleto",
+    "description_pt": "Símbolo protetor consagrado. Concede a reação Interposição do Amuleto para conceder resistência a dano a você ou a um aliado próximo.",
+    "description_en": "Consecrated protective ward. Grants the Amulet's Abeyance reaction to grant damage resistance to you or a nearby ally.",
+    "description_es": "Símbolo protector consagrado. Concede la reacción Amparo del Amuleto para otorgar resistencia a daño a ti o a un aliado.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Arquivo Sombrio (Dark Archive)",
+    "source_page": 40,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_thaumaturge_implemento_calice",
+    "class_id": "class.thaumaturge",
+    "choice_field": "implement",
+    "name_pt": "Implemento: Cálice",
+    "name_en": "Chalice Implement",
+    "name_es": "Implemento de Cáliz",
+    "description_pt": "Recipiente de comunhão mística. Concede a ação Beber do Cálice para restaurar pontos de vida temporários ou curar ferimentos em combate.",
+    "description_en": "Mystic communion vessel. Grants Drink from the Chalice to gain temporary HP or heal wounds in combat.",
+    "description_es": "Recipiente místico. Concede Beber del Cáliz para ganar PG temporales o sanar heridas en combate.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Arquivo Sombrio (Dark Archive)",
+    "source_page": 40,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_thaumaturge_implemento_lanterna",
+    "class_id": "class.thaumaturge",
+    "choice_field": "implement",
+    "name_pt": "Implemento: Lanterna",
+    "name_en": "Lantern Implement",
+    "name_es": "Implemento de Linterna",
+    "description_pt": "Farol que revela verdades ocultas. Emite uma aura brilhante que revela criaturas invisíveis, ilusões e perigos ocultos a até 6m.",
+    "description_en": "Beacon of hidden truths. Emits a bright aura revealing invisible foes, illusions, and hidden hazards within 20 ft.",
+    "description_es": "Faro de verdades ocultas. Emite un aura que revela criaturas invisibles, ilusiones y secretos ocultos a 6m.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Arquivo Sombrio (Dark Archive)",
+    "source_page": 41,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_thaumaturge_implemento_espelho",
+    "class_id": "class.thaumaturge",
+    "choice_field": "implement",
+    "name_pt": "Implemento: Espelho",
+    "name_en": "Mirror Implement",
+    "name_es": "Implemento de Espejo",
+    "description_pt": "Superfície reflexiva extradimensional. Concede a ação Reflexo do Espelho para projetar um duplo ilusório e se teletransportar entre posições.",
+    "description_en": "Extradimensional reflective glass. Grants Mirror's Reflection to project an illusory double and teleport across space.",
+    "description_es": "Superficie reflectante extradimensional. Concede Reflejo del Espejo para proyectar un doble ilusorio y teletransportarse.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Arquivo Sombrio (Dark Archive)",
+    "source_page": 41,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_thaumaturge_implemento_arma",
+    "class_id": "class.thaumaturge",
+    "choice_field": "implement",
+    "name_pt": "Implemento: Arma",
+    "name_en": "Weapon Implement",
+    "name_es": "Implemento de Arma",
+    "description_pt": "Instrumento marcial imbuído de retaliação sobrenatural. Concede a reação Interrupção do Implemento para realizar Golpes Reativos punitivos.",
+    "description_en": "Martial conduit infused with supernatural retribution. Grants Implement's Interruption reaction to strike provoking foes.",
+    "description_es": "Instrumento marcial imbuido de represalia. Concede la reacción Interrupción del Implemento para contraatacar enemigos.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Arquivo Sombrio (Dark Archive)",
+    "source_page": 42,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_thaumaturge_implemento_livro",
+    "class_id": "class.thaumaturge",
+    "choice_field": "implement",
+    "name_pt": "Implemento: Livro",
+    "name_en": "Tome Implement",
+    "name_es": "Implemento de Libro",
+    "description_pt": "Grimório de conhecimento infinito. Concede proficiência temporária treinada em duas perícias à sua escolha a cada preparação diária.",
+    "description_en": "Grimoire of endless occult lore. Grants temporary trained proficiency in two chosen skills each daily preparation.",
+    "description_es": "Grimorio de conocimiento infinito. Concede competencia entrenada temporal en dos habilidades a tu elección cada día.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Arquivo Sombrio (Dark Archive)",
+    "source_page": 42,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_exemplar_legacy_alias_exemplar_exemplar_gleaming_blade",
+    "class_id": "class.exemplar.legacy_alias.exemplar_exemplar",
+    "choice_field": null,
+    "name_pt": "Centelha da Lâmina Radiante",
+    "name_en": "Gleaming Blade",
+    "name_es": "Hoja Radiante",
+    "description_pt": "Centelha divina de pura glória marcial que faz sua arma emitir luz sagrada e desferir golpes fulminantes.",
+    "description_en": "Divine spark of martial glory causing your weapon to flare with holy radiance and cleaving strikes.",
+    "description_es": "Chispa divina de gloria marcial que hace brillar tu arma con fulgor sagrado.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Guerra dos Imortais (War of Immortals)",
+    "source_page": 18,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_exemplar_legacy_alias_exemplar_exemplar_mountain_s_scar",
+    "class_id": "class.exemplar.legacy_alias.exemplar_exemplar",
+    "choice_field": null,
+    "name_pt": "Centelha da Cicatriz da Montanha",
+    "name_en": "Mountain's Scar",
+    "name_es": "Cicatriz de la Montaña",
+    "description_pt": "Centelha divina de resistência telúrica inabalável que endurece sua pele como granito contra dano.",
+    "description_en": "Divine spark of unyielding telluric resilience hardening your skin into impenetrable granite.",
+    "description_es": "Chispa divina de resistencia telúrica que endurece tu piel como granito.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Guerra dos Imortais (War of Immortals)",
+    "source_page": 19,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_exemplar_legacy_alias_exemplar_exemplar_radiant_halo",
+    "class_id": "class.exemplar.legacy_alias.exemplar_exemplar",
+    "choice_field": null,
+    "name_pt": "Centelha da Coroa Solar",
+    "name_en": "Radiant Halo",
+    "name_es": "Halo Radiante",
+    "description_pt": "Centelha divina de majestade solar que emite um halo de autoridade e energia curativa protetora.",
+    "description_en": "Divine spark of solar majesty emitting a glowing crown of authority and protective healing.",
+    "description_es": "Chispa divina de majestad solar que emite una corona radiante de autoridad y sanación.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Guerra dos Imortais (War of Immortals)",
+    "source_page": 20,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_exemplar_legacy_alias_exemplar_exemplar_celestial_beast",
+    "class_id": "class.exemplar.legacy_alias.exemplar_exemplar",
+    "choice_field": null,
+    "name_pt": "Centelha da Fera Celestial",
+    "name_en": "Celestial Beast",
+    "name_es": "Bestia Celestial",
+    "description_pt": "Centelha divina de ferocidade cósmica que aprimora seus instintos predatórios e velocidade de caça.",
+    "description_en": "Divine spark of cosmic ferocity enhancing your predatory instincts and boundless hunting speed.",
+    "description_es": "Chispa divina de ferocidad cósmica que potencia tus instintos depredadores y velocidad de caza.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Guerra dos Imortais (War of Immortals)",
+    "source_page": 21,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_animist_liturgista",
+    "class_id": "class.animist",
+    "choice_field": "apparition",
+    "name_pt": "Liturgista",
+    "name_en": "Liturgist",
+    "name_es": "Liturgista",
+    "description_pt": "Animista litúrgico que organiza rituais sagrados e canaliza espíritos divinos com orações estruturadas e bônus de sustentação.",
+    "description_en": "Liturgical animist structuring sacred rites and channeling divine apparitions through communal ceremonies.",
+    "description_es": "Animista litúrgico que organiza ritos sagrados y canaliza apariciones divinas a través de ceremonias.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Guerra dos Imortais (War of Immortals)",
+    "source_page": 34,
+    "data": {
+      "trainedSkills": [
+        "religion"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_animist_medium",
+    "class_id": "class.animist",
+    "choice_field": "apparition",
+    "name_pt": "Médium",
+    "name_en": "Medium",
+    "name_es": "Médium",
+    "description_pt": "Canalizador psíquico que permite a espíritos inquietos habitarem temporariamente seu corpo para desferir ataques espirituais.",
+    "description_en": "Psychic conduit allowing restless spirits to temporarily possess their body to unleash spiritual attacks.",
+    "description_es": "Conducto psíquico que permite a espíritus inquietos habitar temporalmente su cuerpo para ataques espirituales.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Guerra dos Imortais (War of Immortals)",
+    "source_page": 35,
+    "data": {
+      "trainedSkills": [
+        "occultism"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_animist_xama",
+    "class_id": "class.animist",
+    "choice_field": "apparition",
+    "name_pt": "Xamã",
+    "name_en": "Shaman",
+    "name_es": "Chamán",
+    "description_pt": "Guardião espiritual primal que se comunica com espíritos de rios, montanhas e florestas antigas.",
+    "description_en": "Primal spirit guardian communicating directly with ancient forest and mountain spirits.",
+    "description_es": "Guardián espiritual primigenio que se comunica con espíritus de la naturaleza y bosques antiguos.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Guerra dos Imortais (War of Immortals)",
+    "source_page": 36,
+    "data": {
+      "trainedSkills": [
+        "nature"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class_exemplar_icones_e_epitetos",
+    "class_id": "class.exemplar",
+    "choice_field": "icon",
+    "name_pt": "Ícones e Epítetos Divinos",
+    "name_en": "Icons and Epithets",
+    "name_es": "Iconos y Epítetos",
+    "description_pt": "Manifestações da centelha divina que personificam feitos lendários e poderes de divindades em ascensão.",
+    "description_en": "Manifestations of the divine spark embodying legendary deeds and rising deific powers.",
+    "description_es": "Manifestaciones de la chispa divina que personifican hazañas legendarias y poderes en ascenso.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Guerra dos Imortais (War of Immortals)",
+    "source_page": 16,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.wizard.thesis_spell_blending",
+    "class_id": "class.wizard",
+    "choice_field": "wizardThesis",
+    "name_pt": "Mescla de Magia",
+    "name_en": "Spell Blending",
+    "name_es": "Mezcla de conjuros",
+    "description_pt": "Troca dois espaços de mesmo ranque por um espaço até dois ranques maior durante as preparações.",
+    "description_en": "Trades two same-rank slots for one slot up to two ranks higher during daily preparations.",
+    "description_es": "Cambia dos espacios del mismo rango por uno de hasta dos rangos mayor durante las preparaciones.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 183,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.wizard.thesis_experimental_spellshape",
+    "class_id": "class.wizard",
+    "choice_field": "wizardThesis",
+    "name_pt": "Moldamagia Experimental",
+    "name_en": "Experimental Spellshape",
+    "name_es": "Moldeado de conjuros experimental",
+    "description_pt": "Concede um talento de moldamagia de Mago de 1º nível e permite trocar a escolha nas preparações a partir do 4º nível.",
+    "description_en": "Grants a 1st-level Wizard spellshape feat and allows changing it during preparations from 4th level.",
+    "description_es": "Otorga una dote de moldeado de conjuros de Mago de nivel 1 y permite cambiarla durante las preparaciones desde nivel 4.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 183,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.wizard.thesis_staff_nexus",
+    "class_id": "class.wizard",
+    "choice_field": "wizardThesis",
+    "name_pt": "Nexo de Cajado",
+    "name_en": "Staff Nexus",
+    "name_es": "Nexo de bastón",
+    "description_pt": "Concede um cajado improvisado e permite carregar o cajado durante as preparações diárias.",
+    "description_en": "Grants an improvised staff and lets you charge the staff during daily preparations.",
+    "description_es": "Otorga un bastón improvisado y permite cargarlo durante las preparaciones diarias.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 183,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.wizard.thesis_improved_familiar_attunement",
+    "class_id": "class.wizard",
+    "choice_field": "wizardThesis",
+    "name_pt": "Sintonização com Familiar Aprimorada",
+    "name_en": "Improved Familiar Attunement",
+    "name_es": "Sintonización mejorada con familiar",
+    "description_pt": "Concede Familiar, uma habilidade adicional e Drenar Familiar em vez de Drenar Item Vinculado.",
+    "description_en": "Grants Familiar, one extra familiar ability, and Drain Familiar instead of Drain Bonded Item.",
+    "description_es": "Otorga Familiar, una habilidad adicional y Drenar Familiar en vez de Drenar objeto vinculado.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 183,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.wizard.thesis_spell_substitution",
+    "class_id": "class.wizard",
+    "choice_field": "wizardThesis",
+    "name_pt": "Substituição de Magia",
+    "name_en": "Spell Substitution",
+    "name_es": "Sustitución de conjuros",
+    "description_pt": "Permite gastar 10 minutos para trocar uma magia preparada por outra do grimório em um espaço vazio.",
+    "description_en": "Lets you spend 10 minutes to replace a prepared spell with another spell from your spellbook in an empty slot.",
+    "description_es": "Permite gastar 10 minutos para sustituir un conjuro preparado por otro del libro de conjuros en un espacio vacío.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 183,
+    "data": {
+      "trainedSkills": [],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.champion.cause_esplendor",
+    "class_id": "class.champion",
+    "choice_field": null,
+    "name_pt": "Causa do Esplendor",
+    "name_en": "Cause of Splendor",
+    "name_es": "Causa del Esplendor",
+    "description_pt": "Você personifica a luz solar magnífica, a beleza inspiradora e a glória divina em batalha, cegando aqueles que ousam desafiar sua virtude. Treinado em Diplomacia.",
+    "description_en": "You embody magnificent solar light, inspiring beauty, and divine glory in battle, dazzling those who dare challenge your virtue. Trained in Diplomacy.",
+    "description_es": "Personificas la luz solar magnífica, la belleza inspiradora y la gloria divina en combate, cegando a quienes desafían tu virtud. Entrenado en Diplomacia.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 90,
+    "data": {
+      "trainedSkills": [
+        "diplomacy"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.champion.cause_iniquidade",
+    "class_id": "class.champion",
+    "choice_field": null,
+    "name_pt": "Causa da Iniquidade",
+    "name_en": "Cause of Iniquity",
+    "name_es": "Causa de la Iniquidad",
+    "description_pt": "Você explora impiedosamente fraquezas morais, enganações e vícios mortais para quebrar a honra de seus adversários. Treinado em Enganação.",
+    "description_en": "You ruthlessly exploit moral vulnerabilities, deceit, and vices to erode your foes' integrity and resolve. Trained in Deception.",
+    "description_es": "Explotas despiadadamente debilidades morales, engaños y vicios mortales para quebrar la integridad enemiga. Entrenado en Engaño.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 90,
+    "data": {
+      "trainedSkills": [
+        "deception"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.champion.cause_libertacao",
+    "class_id": "class.champion",
+    "choice_field": null,
+    "name_pt": "Causa da Libertação",
+    "name_en": "Cause of Liberation",
+    "name_es": "Causa de la Liberación",
+    "description_pt": "Você quebra correntes de tirania e defende a autonomia absoluta. Concede a reação Passo Libertador (Liberating Step) para reduzir o dano sofrido por aliados e permitir fuga imediata de agarrões ou restrições.",
+    "description_en": "You shatter chains of tyranny and champion absolute freedom. Grants the Liberating Step reaction to reduce ally damage and allow immediate escape from grabs and restraints.",
+    "description_es": "Rompes cadenas de tiranía y defiendes la libertad absoluta. Concede la reacción Paso Liberador para reducir el daño a aliados y permitir escape inmediato de agarres.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 91,
+    "data": {
+      "trainedSkills": [
+        "religion"
+      ],
+      "grants": [
+        "action.liberating_step"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.champion.cause_justica",
+    "class_id": "class.champion",
+    "choice_field": null,
+    "name_pt": "Causa da Justiça",
+    "name_en": "Cause of Justice",
+    "name_es": "Causa de la Justicia",
+    "description_pt": "Você defende a lei suprema e pune aqueles que ferem os inocentes. Concede a reação Golpe Retributivo (Retributive Strike) para proteger um aliado próximo e desferir um contra-ataque imediato contra o agressor.",
+    "description_en": "You uphold righteous law and punish those who harm the innocent. Grants the Retributive Strike reaction to shield a nearby ally and immediately strike back at the attacker.",
+    "description_es": "Defiendes la ley sagrada y castigas a quienes dañan a los inocentes. Concede la reacción Golpe Retributivo para proteger a un aliado y contraatacar de inmediato.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 91,
+    "data": {
+      "trainedSkills": [
+        "religion"
+      ],
+      "grants": [
+        "action.retributive_strike"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.champion.cause_obediencia",
+    "class_id": "class.champion",
+    "choice_field": null,
+    "name_pt": "Causa da Obediência",
+    "name_en": "Cause of Obedience",
+    "name_es": "Causa de la Obediencia",
+    "description_pt": "Você impõe ordem rígida, hierarquia divina e disciplina militar implacável sobre seus inimigos. Treinado em Intimidação.",
+    "description_en": "You enforce rigid hierarchy, divine law, and relentless military discipline upon your foes. Trained in Intimidation.",
+    "description_es": "Impones jerarquía estricta, ley divina y disciplina implacable sobre tus enemigos. Entrenado en Intimidación.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 92,
+    "data": {
+      "trainedSkills": [
+        "intimidation"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.champion.cause_profanacao",
+    "class_id": "class.champion",
+    "choice_field": null,
+    "name_pt": "Causa da Profanação",
+    "name_en": "Cause of Desecration",
+    "name_es": "Causa de la Profanación",
+    "description_pt": "Você espalha blasfêmia, conspurcação e ruína abissal, infligindo dor atroz sobre quem ousa atacá-lo. Treinado em Religião.",
+    "description_en": "You spread defilement, blasphemy, and ruin, inflicting agonizing damage upon any foolish enough to strike you. Trained in Religion.",
+    "description_es": "Siembras blasfemia, profanación y ruina, infligiendo dolor atroz a cualquiera que ose atacarte. Entrenado en Religión.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 92,
+    "data": {
+      "trainedSkills": [
+        "religion"
+      ],
+      "grants": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "subclass.class.champion.cause_redencao",
+    "class_id": "class.champion",
+    "choice_field": null,
+    "name_pt": "Causa da Redenção",
+    "name_en": "Cause of Redemption",
+    "name_es": "Causa de la Redención",
+    "description_pt": "Você oferece misericórdia e restauração pacificadora aos corações violentos. Concede a reação Vislumbre da Redenção (Glimpse of Redemption) para forçar agressores a escolher entre não causar dano ou sofrer penalidades paralisantes.",
+    "description_en": "You offer mercy, forgiveness, and pacifying restoration to violent souls. Grants the Glimpse of Redemption reaction forcing foes to choose between sparing their target or suffering debilitating penalties.",
+    "description_es": "Ofreces piedad y redención pacificadora a las almas violentas. Concede la reacción Atisbo de Redención para forzar a los agresores a no causar daño o sufrir penalizaciones.",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 93,
+    "data": {
+      "trainedSkills": [
+        "religion"
+      ],
+      "grants": [
+        "action.glimpse_of_redemption"
+      ],
+      "needs_review": false
+    }
+  }
+]

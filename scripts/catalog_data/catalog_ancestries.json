@@ -1,0 +1,1240 @@
+[
+  {
+    "id": "ancestry.human",
+    "name_pt": "Humano",
+    "name_en": "Human",
+    "name_es": "Humano",
+    "description_pt": "Ancestralidade versátil, com escolhas flexíveis de atributos e talentos.",
+    "description_en": "A versatile ancestry with flexible attribute and feat choices.",
+    "description_es": "Una ascendencia versátil, con elecciones flexibles de atributos y dotes.",
+    "hp_base": 8,
+    "size": "Médio",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "Livre",
+      "Livre"
+    ],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "1 idioma adicional"
+    ],
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 62,
+    "data": {
+      "senses": [],
+      "heritagesList": [
+        "Humano Versátil (Talento Geral extra)",
+        "Humano Habilidoso (Perícia extra)",
+        "Meio-Elfo (Aelfin)",
+        "Meio-Orc (Dromaar)",
+        "Humano Herdeiro do Inverno"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ancestry.dwarf",
+    "name_pt": "Anão",
+    "name_en": "Dwarf",
+    "name_es": "Enano",
+    "description_pt": "Ancestralidade resistente, com 10 PV e forte tradição comunitária.",
+    "description_en": "A resilient ancestry with 10 HP and strong community traditions.",
+    "description_es": "Una ascendencia resistente, con 10 PG y fuertes tradiciones comunitarias.",
+    "hp_base": 10,
+    "size": "Médio",
+    "speed_feet": 20,
+    "attribute_boosts": [
+      "Constituição",
+      "Sabedoria",
+      "Livre"
+    ],
+    "attribute_flaw": "Carisma",
+    "languages": [
+      "Comum",
+      "Anão"
+    ],
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 42,
+    "data": {
+      "senses": [
+        "Visão no Escuro"
+      ],
+      "heritagesList": [
+        "Anão Forjado em Rocha",
+        "Anão Couro-de-Pedra",
+        "Anão Mente Forte",
+        "Anão da Forja",
+        "Anão da Tumba"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ancestry.elf",
+    "name_pt": "Elfo",
+    "name_en": "Elf",
+    "name_es": "Elfo",
+    "description_pt": "Ancestralidade ágil e longeva, adaptável a muitos estudos e ambientes.",
+    "description_en": "An agile, long-lived ancestry adaptable to many studies and environments.",
+    "description_es": "Una ascendencia ágil y longeva, adaptable a muchos estudios y ambientes.",
+    "hp_base": 6,
+    "size": "Médio",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "Destreza",
+      "Inteligência",
+      "Livre"
+    ],
+    "attribute_flaw": "Constituição",
+    "languages": [
+      "Comum",
+      "Élfico"
+    ],
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 46,
+    "data": {
+      "senses": [
+        "Visão na Penumbra"
+      ],
+      "heritagesList": [
+        "Elfo da Floresta Antiga",
+        "Elfo do Ártico",
+        "Elfo da Caverna",
+        "Elfo Vidente",
+        "Elfo Nômade dos Sussurros"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ancestry.gnome",
+    "name_pt": "Gnomo",
+    "name_en": "Gnome",
+    "name_es": "Gnomo",
+    "description_pt": "Ancestralidade pequena ligada à curiosidade, magia e experiências intensas.",
+    "description_en": "A Small ancestry tied to curiosity, magic, and vivid experiences.",
+    "description_es": "Una ascendencia Pequeña vinculada a la curiosidad, la magia y experiencias intensas.",
+    "hp_base": 8,
+    "size": "Pequeno",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "Constituição",
+      "Carisma",
+      "Livre"
+    ],
+    "attribute_flaw": "Força",
+    "languages": [
+      "Comum",
+      "Gnomo",
+      "Silvestre"
+    ],
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 50,
+    "data": {
+      "senses": [
+        "Visão na Penumbra"
+      ],
+      "heritagesList": [
+        "Gnomo Camaleão",
+        "Gnomo Feérico",
+        "Gnomo Sensitivo",
+        "Gnomo do Umbral",
+        "Gnomo Poço de Vigor"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ancestry.goblin",
+    "name_pt": "Goblin",
+    "name_en": "Goblin",
+    "name_es": "Goblin",
+    "description_pt": "Ancestralidade pequena, inventiva e enérgica, com grande variedade cultural.",
+    "description_en": "A Small, inventive, energetic ancestry with broad cultural variety.",
+    "description_es": "Una ascendencia Pequeña, inventiva y enérgica, con gran variedad cultural.",
+    "hp_base": 6,
+    "size": "Pequeno",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "Destreza",
+      "Carisma",
+      "Livre"
+    ],
+    "attribute_flaw": "Sabedoria",
+    "languages": [
+      "Comum",
+      "Goblin"
+    ],
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 54,
+    "data": {
+      "senses": [
+        "Visão no Escuro"
+      ],
+      "heritagesList": [
+        "Goblin Cabeça-Dura",
+        "Goblin Carbonizado (Resistência a Fogo)",
+        "Goblin Irritadiço",
+        "Goblin Dente-de-Navalha",
+        "Goblin Macaco"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ancestry.halfling",
+    "name_pt": "Halfling",
+    "name_en": "Halfling",
+    "name_es": "Mediano",
+    "description_pt": "Ancestralidade pequena, observadora e corajosa, conhecida por sua sorte.",
+    "description_en": "A Small, observant, courageous ancestry known for good fortune.",
+    "description_es": "Una ascendencia Pequeña, observadora y valiente, conocida por su fortuna.",
+    "hp_base": 6,
+    "size": "Pequeno",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "Destreza",
+      "Sabedoria",
+      "Livre"
+    ],
+    "attribute_flaw": "Força",
+    "languages": [
+      "Comum",
+      "Halfling"
+    ],
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 58,
+    "data": {
+      "senses": [
+        "Visão na Penumbra"
+      ],
+      "heritagesList": [
+        "Halfling Pés-Leves",
+        "Halfling Destemido",
+        "Halfling Esguio",
+        "Halfling Nômade da Colina",
+        "Halfling Abençoado pela Sorte"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ancestry.leshy",
+    "name_pt": "Leshy",
+    "name_en": "Leshy",
+    "name_es": "Leshy",
+    "description_pt": "Espírito da natureza em um corpo vegetal, com formas e heranças variadas.",
+    "description_en": "A nature spirit inhabiting a plant body, with varied forms and heritages.",
+    "description_es": "Un espíritu de la naturaleza en un cuerpo vegetal, con formas y herencias variadas.",
+    "hp_base": 8,
+    "size": "Pequeno",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "Constituição",
+      "Sabedoria",
+      "Livre"
+    ],
+    "attribute_flaw": "Inteligência",
+    "languages": [
+      "Comum",
+      "Silvestre"
+    ],
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 66,
+    "data": {
+      "senses": [
+        "Visão na Penumbra"
+      ],
+      "heritagesList": [
+        "Leshy Folhoso",
+        "Leshy Frutífero",
+        "Leshy Espinhoso",
+        "Leshy Fúngico",
+        "Leshy da Flor de Lótus"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ancestry.orc",
+    "name_pt": "Orc",
+    "name_en": "Orc",
+    "name_es": "Orco",
+    "description_pt": "Ancestralidade vigorosa e tenaz, moldada por sobrevivência e comunidade.",
+    "description_en": "A vigorous, tenacious ancestry shaped by survival and community.",
+    "description_es": "Una ascendencia vigorosa y tenaz, moldeada por la supervivencia y la comunidad.",
+    "hp_base": 10,
+    "size": "Médio",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "Força",
+      "Livre"
+    ],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Orc"
+    ],
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 70,
+    "data": {
+      "senses": [
+        "Visão no Escuro"
+      ],
+      "heritagesList": [
+        "Orc dos Ermos",
+        "Orc Couro-de-Batalha",
+        "Orc da Chuva Profunda",
+        "Orc Cicatrizado",
+        "Orc Presa-de-Ferro"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ancestry.catfolk",
+    "name_pt": "Amurrun",
+    "name_en": "Catfolk",
+    "name_es": "Pueblo felino",
+    "description_pt": "Ancestralidade felina, curiosa e ágil, com forte vínculo comunitário.",
+    "description_en": "A curious, agile feline ancestry with strong community bonds.",
+    "description_es": "Una ascendencia felina, curiosa y ágil, con fuertes lazos comunitarios.",
+    "hp_base": 8,
+    "size": "Médio",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "Destreza",
+      "Carisma",
+      "Livre"
+    ],
+    "attribute_flaw": "Sabedoria",
+    "languages": [
+      "Comum",
+      "Amurrun"
+    ],
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 8,
+    "data": {
+      "senses": [
+        "Visão na Penumbra"
+      ],
+      "heritagesList": [
+        "Povo-Gato Caçador",
+        "Povo-Gato Garra-Flexível",
+        "Povo-Gato Nove-Vidas",
+        "Povo-Gato da Selva"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ancestry.ratfolk",
+    "name_pt": "Ysoki",
+    "name_en": "Ratfolk",
+    "name_es": "Pueblo rata",
+    "description_pt": "Ancestralidade ratoide pequena, diligente, adaptável e voltada à vida comunitária.",
+    "description_en": "A Small, diligent, adaptable rat-like ancestry centered on community life.",
+    "description_es": "Una ascendencia Pequeña de aspecto rata, diligente, adaptable y comunitaria.",
+    "hp_base": 6,
+    "size": "Pequeno",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "Destreza",
+      "Inteligência",
+      "Livre"
+    ],
+    "attribute_flaw": "Força",
+    "languages": [
+      "Comum",
+      "Ysoki"
+    ],
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 36,
+    "data": {
+      "senses": [
+        "Visão na Penumbra"
+      ],
+      "heritagesList": [
+        "Povo-Rato das Profundezas",
+        "Povo-Rato da Tempestade",
+        "Povo-Rato Bochecha Longa",
+        "Povo-Rato dos Túneis"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ancestry.kobold",
+    "name_pt": "Kobold",
+    "name_en": "Kobold",
+    "name_es": "Kobold",
+    "description_pt": "Ancestralidade reptiliana pequena, engenhosa e influenciada por fontes poderosas de magia.",
+    "description_en": "A Small, ingenious reptilian ancestry influenced by powerful sources of magic.",
+    "description_es": "Una ascendencia reptiliana Pequeña e ingeniosa, influida por poderosas fuentes de magia.",
+    "hp_base": 6,
+    "size": "Pequeno",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "Destreza",
+      "Carisma",
+      "Livre"
+    ],
+    "attribute_flaw": "Constituição",
+    "languages": [
+      "Comum",
+      "Dracônico"
+    ],
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 24,
+    "data": {
+      "senses": [
+        "Visão no Escuro"
+      ],
+      "heritagesList": [
+        "Kobold Escama-Dracônica",
+        "Kobold Venenoso",
+        "Kobold Cavernoso",
+        "Kobold Tece-Feitiço"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ancestry.lizardfolk",
+    "name_pt": "Iruxi",
+    "name_en": "Lizardfolk",
+    "name_es": "Pueblo lagarto",
+    "description_pt": "Ancestralidade reptiliana de tradições antigas e grande capacidade de sobrevivência.",
+    "description_en": "A reptilian ancestry with ancient traditions and strong survival instincts.",
+    "description_es": "Una ascendencia reptiliana de tradiciones antiguas y gran capacidad de supervivencia.",
+    "hp_base": 8,
+    "size": "Médio",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "Força",
+      "Sabedoria",
+      "Livre"
+    ],
+    "attribute_flaw": "Inteligência",
+    "languages": [
+      "Comum",
+      "Iruxi"
+    ],
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 16,
+    "data": {
+      "senses": [],
+      "heritagesList": [
+        "Iruxi dos Penhascos",
+        "Iruxi Aquático",
+        "Iruxi Couro-de-Placas",
+        "Iruxi Caçador Noturno"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ancestry.kitsune",
+    "name_pt": "Kitsune",
+    "name_en": "Kitsune",
+    "name_es": "Kitsune",
+    "description_pt": "Humanoides raposinos metamorfos ligados ao mundo espiritual.",
+    "description_en": "Foxlike shapeshifters tied to the spirit world.",
+    "description_es": "Cambiaformas con rasgos de zorro vinculados al mundo espiritual.",
+    "hp_base": 8,
+    "size": "Médio",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "Carisma",
+      "Livre"
+    ],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Silvestre"
+    ],
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Ancestry Guide (pré-Remaster)",
+    "source_page": 120,
+    "data": {
+      "senses": [],
+      "heritagesList": [
+        "Kitsune Celestial",
+        "Kitsune da Terra",
+        "Kitsune Espiritual",
+        "Kitsune Fogo-Fátuo"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ancestry.tengu",
+    "name_pt": "Tengu",
+    "name_en": "Tengu",
+    "name_es": "Tengu",
+    "description_pt": "Ancestralidade aviária sociável, inventiva e conhecida por sua afinidade com lâminas.",
+    "description_en": "A sociable, inventive avian ancestry known for an affinity with blades.",
+    "description_es": "Una ascendencia aviar sociable e inventiva, conocida por su afinidad con las hojas.",
+    "hp_base": 6,
+    "size": "Médio",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "Destreza",
+      "Livre"
+    ],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Tengu"
+    ],
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 28,
+    "data": {
+      "senses": [],
+      "heritagesList": [
+        "Tengu Bico-de-Navalha",
+        "Tengu Olho-da-Tempestade",
+        "Tengu Asa-Céu",
+        "Tengu da Montanha"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ancestry.tripkee",
+    "name_pt": "Tripkee",
+    "name_en": "Tripkee",
+    "name_es": "Tripkee",
+    "description_pt": "Ancestralidade anfíbia pequena, paciente e naturalmente apta a escalar.",
+    "description_en": "A Small, patient amphibian ancestry naturally suited to climbing.",
+    "description_es": "Una ascendencia anfibia Pequeña, paciente y naturalmente hábil para trepar.",
+    "hp_base": 6,
+    "size": "Pequeno",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "Destreza",
+      "Sabedoria",
+      "Livre"
+    ],
+    "attribute_flaw": "Força",
+    "languages": [
+      "Comum",
+      "Tripkee"
+    ],
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 32,
+    "data": {
+      "senses": [],
+      "heritagesList": [
+        "Tripkee Peletóxica",
+        "Tripkee Ribeirinho",
+        "Tripkee Línguaveloz",
+        "Tripkee Dedoaderente",
+        "Tripkee Peledura",
+        "Tripkee Flutuante"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ancestry.azarketi",
+    "name_pt": "Azarketi",
+    "name_en": "Azarketi",
+    "name_es": "Azarketi",
+    "description_pt": "Povo anfíbio adaptado à vida terrestre e aquática.",
+    "description_en": "An amphibious people adapted to life on land and underwater.",
+    "description_es": "Un pueblo anfibio adaptado a la vida terrestre y submarina.",
+    "hp_base": 8,
+    "size": "Médio",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "Constituição",
+      "Carisma",
+      "Livre"
+    ],
+    "attribute_flaw": "Sabedoria",
+    "languages": [
+      "Comum",
+      "Aquano"
+    ],
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Ancestry Guide (pré-Remaster)",
+    "source_page": 16,
+    "data": {
+      "senses": [],
+      "heritagesList": [
+        "Azarketi dos Mares Profundos",
+        "Azarketi Fluvial",
+        "Azarketi Escamado",
+        "Azarketi Névoa"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ancestry.automaton",
+    "name_pt": "Autômato",
+    "name_en": "Automaton",
+    "name_es": "Autómata",
+    "description_pt": "Constructo consciente criado no antigo Império Jistka e sustentado por uma alma viva.",
+    "description_en": "A sentient construct created in the ancient Jistka Imperium and sustained by a living soul.",
+    "description_es": "Un constructo consciente creado en el antiguo Imperio Jistka y sostenido por un alma viva.",
+    "hp_base": 10,
+    "size": "Médio",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "Força",
+      "Livre"
+    ],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Utopiano"
+    ],
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 36,
+    "data": {
+      "senses": [],
+      "heritagesList": [
+        "Autômato Blindado",
+        "Autômato de Caça Veloz",
+        "Autômato do Núcleo Brilhante",
+        "Autômato Guerreiro"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ancestry.android",
+    "name_pt": "Androide",
+    "name_en": "Android",
+    "name_es": "Androide",
+    "description_pt": "Seres biotecnológicos com corpos artificiais e mentes conscientes.",
+    "description_en": "Biotechnological people with artificial bodies and conscious minds.",
+    "description_es": "Seres biotecnológicos con cuerpos artificiales y mentes conscientes.",
+    "hp_base": 8,
+    "size": "Médio",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "Destreza",
+      "Inteligência",
+      "Livre"
+    ],
+    "attribute_flaw": "Carisma",
+    "languages": [
+      "Comum",
+      "Androide"
+    ],
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Ancestry Guide (pré-Remaster)",
+    "source_page": 22,
+    "data": {
+      "senses": [
+        "Visão na Penumbra"
+      ],
+      "heritagesList": [
+        "Andróide Artesão",
+        "Andróide Caçador",
+        "Andróide Sombra",
+        "Andróide Guerreiro"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ancestry.kholo",
+    "name_pt": "Kholo",
+    "name_en": "Kholo",
+    "name_es": "Kholo",
+    "description_pt": "Ancestralidade de aspecto hienídeo, pragmática e dedicada à comunidade e aos ancestrais.",
+    "description_en": "A hyena-like, pragmatic ancestry devoted to community and ancestors.",
+    "description_es": "Una ascendencia de aspecto hiena, pragmática y dedicada a la comunidad y los ancestros.",
+    "hp_base": 8,
+    "size": "Médio",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "Força",
+      "Inteligência",
+      "Livre"
+    ],
+    "attribute_flaw": "Sabedoria",
+    "languages": [
+      "Comum",
+      "Gnoll"
+    ],
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 20,
+    "data": {
+      "senses": [],
+      "heritagesList": [
+        "Kholo Mandíbula de Ferro",
+        "Kholo dos Desfiladeiros",
+        "Kholo Fantasma"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ancestry.fetchling",
+    "name_pt": "Kayal",
+    "name_en": "Fetchling",
+    "name_es": "Hijo de las sombras",
+    "description_pt": "Descendentes de habitantes do Plano das Sombras, adaptados à penumbra.",
+    "description_en": "Descendants of the Shadow Plane, adapted to dimness and darkness.",
+    "description_es": "Descendientes del Plano de las Sombras, adaptados a la penumbra.",
+    "hp_base": 8,
+    "size": "Médio",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "Destreza",
+      "Livre"
+    ],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Sombrio"
+    ],
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Ancestry Guide (pré-Remaster)",
+    "source_page": 30,
+    "data": {
+      "senses": [
+        "Visão no Escuro"
+      ],
+      "heritagesList": [
+        "Kayal das Sombras Profundas",
+        "Kayal Furtivo",
+        "Kayal Sem Rosto"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ancestry.hobgoblin",
+    "name_pt": "Hobgoblin",
+    "name_en": "Hobgoblin",
+    "name_es": "Hobgoblin",
+    "description_pt": "Ancestralidade disciplinada e resistente, marcada por organização e pragmatismo.",
+    "description_en": "A disciplined, resilient ancestry shaped by organization and pragmatism.",
+    "description_es": "Una ascendencia disciplinada y resistente, marcada por la organización y el pragmatismo.",
+    "hp_base": 8,
+    "size": "Médio",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "Constituição",
+      "Inteligência",
+      "Livre"
+    ],
+    "attribute_flaw": "Sabedoria",
+    "languages": [
+      "Comum",
+      "Goblin"
+    ],
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 12,
+    "data": {
+      "senses": [
+        "Visão no Escuro"
+      ],
+      "heritagesList": [
+        "Hobgoblin Couro de Ferro",
+        "Hobgoblin Fumegante",
+        "Hobgoblin Vanguarda"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ancestry.skeleton",
+    "name_pt": "Esqueleto",
+    "name_en": "Skeleton",
+    "name_es": "Esqueleto",
+    "description_pt": "Ancestralidade rara morta-viva com 6 PV, visão no escuro e necessidade de coletar ossos.",
+    "description_en": "A rare undead ancestry with 6 HP, darkvision, and a need to collect bones.",
+    "description_es": "Una ascendencia rara no muerta con 6 PG, visión en la oscuridad y necesidad de recoger huesos.",
+    "hp_base": 6,
+    "size": "Médio",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "Destreza",
+      "Carisma",
+      "Livre"
+    ],
+    "attribute_flaw": "Inteligência",
+    "languages": [
+      "Comum",
+      "Necril"
+    ],
+    "traits": [
+      "Morto-vivo"
+    ],
+    "rarity": "rare",
+    "ruleset": "legacy",
+    "source_book": "Livro dos Mortos (pré-Remaster)",
+    "source_page": 48,
+    "data": {
+      "senses": [
+        "Visão no Escuro"
+      ],
+      "heritagesList": [
+        "Esqueleto-Bucha",
+        "Esqueleto Compacto",
+        "Esqueleto Monstruoso",
+        "Esqueleto Robusto"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ancestry.centaur",
+    "name_pt": "Centauro",
+    "name_en": "Centaur",
+    "name_es": "Centauro",
+    "description_pt": "Nômade Grande, veloz e robusto, ligado à proteção da comunidade e da natureza.",
+    "description_en": "A Large, swift, and sturdy nomad devoted to community and the natural world.",
+    "description_es": "Un nómada Grande, veloz y robusto dedicado a su comunidad y al mundo natural.",
+    "hp_base": 8,
+    "size": "Grande",
+    "speed_feet": 30,
+    "attribute_boosts": [
+      "Força",
+      "Sabedoria",
+      "Livre"
+    ],
+    "attribute_flaw": "Carisma",
+    "languages": [
+      "Comum",
+      "Feérico"
+    ],
+    "traits": [],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Howl of the Wild (Remaster, atualização de errata)",
+    "source_page": 28,
+    "data": {
+      "senses": [
+        "Visão na Penumbra"
+      ],
+      "heritagesList": [
+        "Centauro Orador Nascente",
+        "Centauro Vento-Veloz",
+        "Centauro Casco de Ferro",
+        "Centauro Malhado",
+        "Centauro Passo de Pônei",
+        "Centauro Coração Robusto"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ancestry.minotaur",
+    "name_pt": "Minotauro",
+    "name_en": "Minotaur",
+    "name_es": "Minotauro",
+    "description_pt": "Construtor e explorador Grande, resistente e dotado de chifres naturais.",
+    "description_en": "A Large, resilient builder and explorer armed with natural horns.",
+    "description_es": "Un constructor y explorador Grande y resistente, armado con cuernos naturales.",
+    "hp_base": 10,
+    "size": "Grande",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "Força",
+      "Constituição",
+      "Livre"
+    ],
+    "attribute_flaw": "Carisma",
+    "languages": [
+      "Comum",
+      "Jotun"
+    ],
+    "traits": [],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Howl of the Wild (Remaster, atualização de errata)",
+    "source_page": 40,
+    "data": {
+      "senses": [
+        "Visão no Escuro"
+      ],
+      "heritagesList": [
+        "Minotauro Touro Fantasma",
+        "Minotauro da Caverna Glacial",
+        "Minotauro Chifre Pequeno",
+        "Minotauro Errante",
+        "Minotauro Alma de Laje",
+        "Minotauro Espreitador"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ancestry.awakened_animal",
+    "name_pt": "Animal Desperto",
+    "name_en": "Awakened Animal",
+    "name_es": "Animal despierto",
+    "description_pt": "Animal raro que recebeu consciência plena; tamanho, PV e deslocamentos dependem de sua forma escolhida.",
+    "description_en": "A rare animal granted full sapience; its size, HP, and Speeds depend on its chosen form.",
+    "description_es": "Un animal raro que recibió plena conciencia; su tamaño, PG y velocidades dependen de la forma elegida.",
+    "hp_base": 8,
+    "size": "Médio",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "Constituição",
+      "Sabedoria",
+      "Livre"
+    ],
+    "attribute_flaw": "Inteligência",
+    "languages": [
+      "Comum"
+    ],
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "remaster",
+    "source_book": "Howl of the Wild (Remaster, atualização de errata)",
+    "source_page": 22,
+    "data": {
+      "senses": [
+        "Visão na Penumbra"
+      ],
+      "heritagesList": [
+        "Animal Escalador",
+        "Animal Voador",
+        "Animal Corredor",
+        "Animal Nadador"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ancestry.merfolk.legacy_alias.trit_o_sereia_merfolk",
+    "name_pt": "Povo-Sereia",
+    "name_en": "Merfolk",
+    "name_es": "Sirénido",
+    "description_pt": "Povo anfíbio dos oceanos que combina graça aquática, canto e magia das águas.",
+    "description_en": "An amphibious ocean people combining aquatic grace, song, and water magic.",
+    "description_es": "Un pueblo oceánico anfibio que combina gracia acuática, canto y magia del agua.",
+    "hp_base": 8,
+    "size": "Médio",
+    "speed_feet": 5,
+    "attribute_boosts": [
+      "Destreza",
+      "Carisma",
+      "Livre"
+    ],
+    "attribute_flaw": "Constituição",
+    "languages": [
+      "Comum",
+      "Talássico"
+    ],
+    "traits": [],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Howl of the Wild (Remaster, atualização de errata)",
+    "source_page": 34,
+    "data": {
+      "senses": [
+        "Visão na Penumbra"
+      ],
+      "heritagesList": [
+        "Povo-Sereia Abissal",
+        "Povo-Sereia Carcharodonte",
+        "Povo-Sereia Pelágico",
+        "Povo-Sereia de Recife",
+        "Povo-Sereia Agulhão"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ancestry.athamaru.legacy_alias.athamaru_povo_peixe",
+    "name_pt": "Athamaru",
+    "name_en": "Athamaru",
+    "name_es": "Athamaru",
+    "description_pt": "Povo anfíbio comunitário, adaptado aos recifes e à vida subaquática.",
+    "description_en": "A communal amphibious people adapted to reefs and undersea life.",
+    "description_es": "Un pueblo anfibio comunitario adaptado a los arrecifes y la vida submarina.",
+    "hp_base": 8,
+    "size": "Médio",
+    "speed_feet": 20,
+    "attribute_boosts": [
+      "Força",
+      "Sabedoria",
+      "Livre"
+    ],
+    "attribute_flaw": "Inteligência",
+    "languages": [
+      "Comum",
+      "Talássico"
+    ],
+    "traits": [],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Howl of the Wild (Remaster, atualização de errata)",
+    "source_page": 16,
+    "data": {
+      "senses": [
+        "Visão na Penumbra"
+      ],
+      "heritagesList": [
+        "Athamaru Coralino",
+        "Athamaru Esperançoso",
+        "Athamaru Caleidoscópico",
+        "Athamaru Espinhoso"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ancestry.surki.legacy_alias.surki_povo_inseto",
+    "name_pt": "Surki",
+    "name_en": "Surki",
+    "name_es": "Surki",
+    "description_pt": "Povo insetoide raro que absorve magia ambiental e desenvolve adaptações metamórficas.",
+    "description_en": "A rare insectile people who absorb ambient magic and develop metamorphic adaptations.",
+    "description_es": "Un pueblo insectoide raro que absorbe magia ambiental y desarrolla adaptaciones metamórficas.",
+    "hp_base": 8,
+    "size": "Médio",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "Constituição",
+      "Livre"
+    ],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Surki"
+    ],
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "remaster",
+    "source_book": "Howl of the Wild (Remaster, atualização de errata)",
+    "source_page": 46,
+    "data": {
+      "senses": [
+        "Visão no Escuro"
+      ],
+      "heritagesList": [
+        "Surki Rompedor",
+        "Surki Élitro",
+        "Surki Carapaça Dura",
+        "Surki Lanterna"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ancestry.athamaru",
+    "name_pt": "Athamaru",
+    "name_en": "Athamaru",
+    "name_es": "Athamaru",
+    "description_pt": "Povo anfíbio comunitário, adaptado aos recifes e à vida subaquática.",
+    "description_en": "A communal amphibious people adapted to reefs and undersea life.",
+    "description_es": "Un pueblo anfibio comunitario adaptado a los arrecifes y la vida submarina.",
+    "hp_base": 8,
+    "size": "Médio",
+    "speed_feet": 20,
+    "attribute_boosts": [
+      "Força",
+      "Sabedoria",
+      "Livre"
+    ],
+    "attribute_flaw": "Inteligência",
+    "languages": [
+      "Comum",
+      "Talássico"
+    ],
+    "traits": [],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Howl of the Wild (Remaster, atualização de errata)",
+    "source_page": 16,
+    "data": {
+      "senses": [
+        "Visão na Penumbra"
+      ],
+      "heritagesList": [
+        "Athamaru Coralino",
+        "Athamaru Esperançoso",
+        "Athamaru Caleidoscópico",
+        "Athamaru Espinhoso"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ancestry.merfolk",
+    "name_pt": "Povo-Sereia",
+    "name_en": "Merfolk",
+    "name_es": "Sirénido",
+    "description_pt": "Povo anfíbio dos oceanos que combina graça aquática, canto e magia das águas.",
+    "description_en": "An amphibious ocean people combining aquatic grace, song, and water magic.",
+    "description_es": "Un pueblo oceánico anfibio que combina gracia acuática, canto y magia del agua.",
+    "hp_base": 8,
+    "size": "Médio",
+    "speed_feet": 5,
+    "attribute_boosts": [
+      "Destreza",
+      "Carisma",
+      "Livre"
+    ],
+    "attribute_flaw": "Constituição",
+    "languages": [
+      "Comum",
+      "Talássico"
+    ],
+    "traits": [],
+    "rarity": "uncommon",
+    "ruleset": "remaster",
+    "source_book": "Howl of the Wild (Remaster, atualização de errata)",
+    "source_page": 34,
+    "data": {
+      "senses": [
+        "Visão na Penumbra"
+      ],
+      "heritagesList": [
+        "Povo-Sereia Abissal",
+        "Povo-Sereia Carcharodonte",
+        "Povo-Sereia Pelágico",
+        "Povo-Sereia de Recife",
+        "Povo-Sereia Agulhão"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ancestry.surki",
+    "name_pt": "Surki",
+    "name_en": "Surki",
+    "name_es": "Surki",
+    "description_pt": "Povo insetoide raro que absorve magia ambiental e desenvolve adaptações metamórficas.",
+    "description_en": "A rare insectile people who absorb ambient magic and develop metamorphic adaptations.",
+    "description_es": "Un pueblo insectoide raro que absorbe magia ambiental y desarrolla adaptaciones metamórficas.",
+    "hp_base": 8,
+    "size": "Médio",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "Constituição",
+      "Livre"
+    ],
+    "attribute_flaw": null,
+    "languages": [
+      "Comum",
+      "Surki"
+    ],
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "remaster",
+    "source_book": "Howl of the Wild (Remaster, atualização de errata)",
+    "source_page": 46,
+    "data": {
+      "senses": [
+        "Visão no Escuro"
+      ],
+      "heritagesList": [
+        "Surki Rompedor",
+        "Surki Élitro",
+        "Surki Carapaça Dura",
+        "Surki Lanterna"
+      ],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "ancestry.jotunborn",
+    "name_pt": "Jotunnato",
+    "name_en": "Jotunborn",
+    "name_es": "Nacido jotun",
+    "description_pt": "Ancestralidade rara Grande com vigor de titã, tecelagem iivlar e conexão com fronteiras planares.",
+    "description_en": "A rare Large ancestry with titan strength, iivlar weaving, and a connection to planar boundaries.",
+    "description_es": "Una ascendencia rara Grande con fuerza de titán, tejido iivlar y conexión con fronteras planares.",
+    "hp_base": 10,
+    "size": "Grande",
+    "speed_feet": 25,
+    "attribute_boosts": [
+      "Força",
+      "Sabedoria",
+      "Livre"
+    ],
+    "attribute_flaw": "Carisma",
+    "languages": [
+      "Comum",
+      "Jotun"
+    ],
+    "traits": [],
+    "rarity": "rare",
+    "ruleset": "remaster",
+    "source_book": "Battlecry! (Remaster)",
+    "source_page": 10,
+    "data": {
+      "senses": [],
+      "heritagesList": [
+        "Jotunnato Guardião",
+        "Jotunnato Salta-Planos",
+        "Jotunnato Sábio",
+        "Jotunnato Guerreiro",
+        "Jotunnato Tecelão"
+      ],
+      "needs_review": false
+    }
+  }
+]

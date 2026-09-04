@@ -1,0 +1,528 @@
+[
+  {
+    "id": "action.strike",
+    "name_pt": "Golpear",
+    "name_en": "Strike",
+    "name_es": "Golpear",
+    "description_pt": "Você ataca com uma arma que está empunhando ou com um ataque desarmado.",
+    "description_en": "Core action: Strike.",
+    "description_es": "Acción básica: Golpear.",
+    "action_type": "one-action",
+    "category": "Ações Básicas",
+    "traits": [
+      "Ataque"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 419,
+    "data": {
+      "trigger": null,
+      "requirements": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "action.stride",
+    "name_pt": "Andar",
+    "name_en": "Stride",
+    "name_es": "Avanzar",
+    "description_pt": "Você se move a uma distância de até o seu deslocamento terrestre.",
+    "description_en": "Core action: Stride.",
+    "description_es": "Acción básica: Avanzar.",
+    "action_type": "one-action",
+    "category": "Ações Básicas",
+    "traits": [
+      "Movimento"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 419,
+    "data": {
+      "trigger": null,
+      "requirements": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "action.step",
+    "name_pt": "Dar um Passo",
+    "name_en": "Step",
+    "name_es": "Paso",
+    "description_pt": "Você se move cuidadosamente 1,5 metro sem acionar reações baseadas em movimento (como Ataque de Oportunidade).",
+    "description_en": "Core action: Step.",
+    "description_es": "Acción básica: Paso.",
+    "action_type": "one-action",
+    "category": "Ações Básicas",
+    "traits": [
+      "Movimento"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 419,
+    "data": {
+      "trigger": null,
+      "requirements": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "action.raise_shield",
+    "name_pt": "Erguer Escudo",
+    "name_en": "Raise a Shield",
+    "name_es": "Levantar un escudo",
+    "description_pt": "Você posiciona seu escudo para se proteger, recebendo o bônus de circunstância na CA até o início do seu próximo turno.",
+    "description_en": "Core action: Raise a Shield.",
+    "description_es": "Acción básica: Levantar un escudo.",
+    "action_type": "one-action",
+    "category": "Ações Básicas",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 419,
+    "data": {
+      "trigger": null,
+      "requirements": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "action.take_cover",
+    "name_pt": "Pegar Cobertura",
+    "name_en": "Take Cover",
+    "name_es": "Buscar cobertura",
+    "description_pt": "Você se abaixa ou se esconde atrás de um obstáculo, melhorando sua cobertura para padrão (+2 CA) ou maior (+4 CA).",
+    "description_en": "Core action: Take Cover.",
+    "description_es": "Acción básica: Buscar cobertura.",
+    "action_type": "one-action",
+    "category": "Ações Básicas",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 419,
+    "data": {
+      "trigger": null,
+      "requirements": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "action.interact",
+    "name_pt": "Interagir",
+    "name_en": "Interact",
+    "name_es": "Interactuar",
+    "description_pt": "Você saca uma arma, guarda um item, abre uma porta ou pega um objeto do chão.",
+    "description_en": "Core action: Interact.",
+    "description_es": "Acción básica: Interactuar.",
+    "action_type": "one-action",
+    "category": "Ações Básicas",
+    "traits": [
+      "Manipular"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 419,
+    "data": {
+      "trigger": null,
+      "requirements": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "action.escape",
+    "name_pt": "Escapar",
+    "name_en": "Escape",
+    "name_es": "Escapar",
+    "description_pt": "Você tenta se libertar de um efeito que o imobilizou, agarrou ou restringiu com Atletismo, Acrobacia ou Ataque Desarmado.",
+    "description_en": "Core action: Escape.",
+    "description_es": "Acción básica: Escapar.",
+    "action_type": "one-action",
+    "category": "Ações Básicas",
+    "traits": [
+      "Ataque"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 418,
+    "data": {
+      "trigger": null,
+      "requirements": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "action.leap",
+    "name_pt": "Saltar",
+    "name_en": "Leap",
+    "name_es": "Saltar",
+    "description_pt": "Você dá um salto curto horizontal de até 3m ou vertical de até 0,9m.",
+    "description_en": "Core action: Leap.",
+    "description_es": "Acción básica: Saltar.",
+    "action_type": "one-action",
+    "category": "Ações Básicas",
+    "traits": [
+      "Movimento"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 418,
+    "data": {
+      "trigger": null,
+      "requirements": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "action.trip",
+    "name_pt": "Derrubar",
+    "name_en": "Trip",
+    "name_es": "Derribo",
+    "description_pt": "Faça um teste de Atletismo contra a CD de Reflexos do alvo para deixá-lo Caído.",
+    "description_en": "Core action: Trip.",
+    "description_es": "Acción básica: Derribo.",
+    "action_type": "one-action",
+    "category": "Manobras de Combate",
+    "traits": [
+      "Ataque"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 236,
+    "data": {
+      "trigger": null,
+      "requirements": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "action.grapple",
+    "name_pt": "Agarrar",
+    "name_en": "Grapple",
+    "name_es": "Agarrar",
+    "description_pt": "Faça um teste de Atletismo contra a CD de Fortitude do alvo para deixá-lo Agarrado ou Restringido.",
+    "description_en": "Core action: Grapple.",
+    "description_es": "Acción básica: Agarrar.",
+    "action_type": "one-action",
+    "category": "Manobras de Combate",
+    "traits": [
+      "Ataque"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 235,
+    "data": {
+      "trigger": null,
+      "requirements": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "action.shove",
+    "name_pt": "Empurrar",
+    "name_en": "Shove",
+    "name_es": "Empujar",
+    "description_pt": "Faça um teste de Atletismo contra a CD de Fortitude do alvo para empurrá-lo 1,5m ou mais para longe.",
+    "description_en": "Core action: Shove.",
+    "description_es": "Acción básica: Empujar.",
+    "action_type": "one-action",
+    "category": "Manobras de Combate",
+    "traits": [
+      "Ataque"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 236,
+    "data": {
+      "trigger": null,
+      "requirements": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "action.disarm",
+    "name_pt": "Desarmar",
+    "name_en": "Disarm",
+    "name_es": "Desarmar",
+    "description_pt": "Faça um teste de Atletismo contra a CD de Reflexos do alvo para afrouxar a empunhadura dele ou derrubar a arma.",
+    "description_en": "Core action: Disarm.",
+    "description_es": "Acción básica: Desarmar.",
+    "action_type": "one-action",
+    "category": "Manobras de Combate",
+    "traits": [
+      "Ataque"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 235,
+    "data": {
+      "trigger": null,
+      "requirements": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "action.feint",
+    "name_pt": "Fintar",
+    "name_en": "Feint",
+    "name_es": "Fintar",
+    "description_pt": "Faça um teste de Enganação contra a CD de Percepção do alvo para deixá-lo Desprevenido contra seu próximo ataque.",
+    "description_en": "Core action: Feint.",
+    "description_es": "Acción básica: Fintar.",
+    "action_type": "one-action",
+    "category": "Perícias em Combate",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 239,
+    "data": {
+      "trigger": null,
+      "requirements": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "action.demoralize",
+    "name_pt": "Desmoralizar",
+    "name_en": "Demoralize",
+    "name_es": "Desmoralizar",
+    "description_pt": "Faça um teste de Intimidação contra a CD de Vontade do alvo para deixá-lo Amedrontado 1 (ou 2 no crítico).",
+    "description_en": "Core action: Demoralize.",
+    "description_es": "Acción básica: Desmoralizar.",
+    "action_type": "one-action",
+    "category": "Perícias em Combate",
+    "traits": [
+      "Auditivo",
+      "Concentração",
+      "Emoção",
+      "Mental"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 241,
+    "data": {
+      "trigger": null,
+      "requirements": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "action.treat_wounds",
+    "name_pt": "Tratar Ferimentos",
+    "name_en": "Treat Wounds",
+    "name_es": "Tratar heridas",
+    "description_pt": "Gaste 10 minutos tratando uma criatura ferida. No sucesso, restaura 2d8 PV (CD 15) ou mais em CDs superiores.",
+    "description_en": "Core action: Treat Wounds.",
+    "description_es": "Acción básica: Tratar heridas.",
+    "action_type": "activity",
+    "category": "Medicina",
+    "traits": [],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 242,
+    "data": {
+      "trigger": null,
+      "requirements": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "action.battle_medicine",
+    "name_pt": "Medicina de Batalha",
+    "name_en": "Battle Medicine",
+    "name_es": "Medicina de batalla",
+    "description_pt": "Em combate, use Tratar Ferimentos instantaneamente em 1 ação para restaurar PV de um aliado adjacente.",
+    "description_en": "Core action: Battle Medicine.",
+    "description_es": "Acción básica: Medicina de batalla.",
+    "action_type": "one-action",
+    "category": "Medicina",
+    "traits": [
+      "Cura",
+      "Manipular"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 254,
+    "data": {
+      "trigger": null,
+      "requirements": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "action.recall_knowledge",
+    "name_pt": "Recordar Conhecimento",
+    "name_en": "Recall Knowledge",
+    "name_es": "Recordar conocimiento",
+    "description_pt": "Faça um teste de perícia correspondente (Arcanismo, Natureza, Ocultismo, Religião, Sociedade ou Saber) para identificar fraquezas ou segredos.",
+    "description_en": "Core action: Recall Knowledge.",
+    "description_es": "Acción básica: Recordar conocimiento.",
+    "action_type": "one-action",
+    "category": "Conhecimento",
+    "traits": [
+      "Concentração"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 231,
+    "data": {
+      "trigger": null,
+      "requirements": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "action.seek",
+    "name_pt": "Procurar",
+    "name_en": "Seek",
+    "name_es": "Buscar",
+    "description_pt": "Faça um teste de Percepção contra a CD de Furtividade de criaturas ou para localizar armadilhas e portas ocultas.",
+    "description_en": "Core action: Seek.",
+    "description_es": "Acción básica: Buscar.",
+    "action_type": "one-action",
+    "category": "Percepção",
+    "traits": [
+      "Concentração",
+      "Segredo"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 420,
+    "data": {
+      "trigger": null,
+      "requirements": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "action.hide",
+    "name_pt": "Esconder-se",
+    "name_en": "Hide",
+    "name_es": "Esconderse",
+    "description_pt": "Faça um teste de Furtividade contra a CD de Percepção dos observadores para se tornar Oculto.",
+    "description_en": "Core action: Hide.",
+    "description_es": "Acción básica: Esconderse.",
+    "action_type": "one-action",
+    "category": "Furtividade",
+    "traits": [
+      "Segredo"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 244,
+    "data": {
+      "trigger": null,
+      "requirements": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "action.sneak",
+    "name_pt": "Esgueirar-se",
+    "name_en": "Sneak",
+    "name_es": "Escabullirse",
+    "description_pt": "Mova-se a até metade do seu deslocamento permanecendo Indetectado.",
+    "description_en": "Core action: Sneak.",
+    "description_es": "Acción básica: Escabullirse.",
+    "action_type": "one-action",
+    "category": "Furtividade",
+    "traits": [
+      "Movimento",
+      "Segredo"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 245,
+    "data": {
+      "trigger": null,
+      "requirements": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "action.avoid_notice",
+    "name_pt": "Evitar Atenção",
+    "name_en": "Avoid Notice",
+    "name_es": "Evitar ser detectado",
+    "description_pt": "Atividade de exploração onde você se move com cautela furtiva e rola Furtividade para iniciativa.",
+    "description_en": "Core action: Avoid Notice.",
+    "description_es": "Acción básica: Evitar ser detectado.",
+    "action_type": "activity",
+    "category": "Exploração",
+    "traits": [
+      "Exploração"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 438,
+    "data": {
+      "trigger": null,
+      "requirements": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "action.defend",
+    "name_pt": "Defender",
+    "name_en": "Defend",
+    "name_es": "Defender",
+    "description_pt": "Atividade de exploração onde você caminha com escudo erguido, iniciando o combate com bônus de CA.",
+    "description_en": "Core action: Defend.",
+    "description_es": "Acción básica: Defender.",
+    "action_type": "activity",
+    "category": "Exploração",
+    "traits": [
+      "Exploração"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 438,
+    "data": {
+      "trigger": null,
+      "requirements": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "action.detect_magic",
+    "name_pt": "Detectar Magia",
+    "name_en": "Detect Magic",
+    "name_es": "Detectar magia",
+    "description_pt": "Atividade de exploração onde você conjura continuamente Detectar Magia ao avançar pela masmorra.",
+    "description_en": "Core action: Detect Magic.",
+    "description_es": "Acción básica: Detectar magia.",
+    "action_type": "activity",
+    "category": "Exploração",
+    "traits": [
+      "Exploração"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 438,
+    "data": {
+      "trigger": null,
+      "requirements": null,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "action.scout",
+    "name_pt": "Batedor",
+    "name_en": "Scout",
+    "name_es": "Explorar",
+    "description_pt": "Atividade de exploração onde você antecipa perigos, concedendo +1 de bônus na iniciativa de todos os aliados.",
+    "description_en": "Core action: Scout.",
+    "description_es": "Acción básica: Explorar.",
+    "action_type": "activity",
+    "category": "Exploração",
+    "traits": [
+      "Exploração"
+    ],
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 438,
+    "data": {
+      "trigger": null,
+      "requirements": null,
+      "needs_review": false
+    }
+  }
+]
