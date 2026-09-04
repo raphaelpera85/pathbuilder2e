@@ -1031,6 +1031,13 @@ function AdminPage() {
   const [feedback, setFeedback] = useState<string | null>(null);
 
   const compendiumMetrics = useMemo(() => {
+    if (dashboardMetrics?.catalogVerifiedCount !== undefined && dashboardMetrics?.catalogReviewCount !== undefined) {
+      return {
+        verified: dashboardMetrics.catalogVerifiedCount,
+        review: dashboardMetrics.catalogReviewCount,
+        sources: pathfinderSources.filter((source) => source.catalogStatus === "partial").length,
+      };
+    }
     if (dashboardMetrics?.catalogCounts && Object.keys(dashboardMetrics.catalogCounts).length > 0) {
       const totalCatalog = Object.values(dashboardMetrics.catalogCounts).reduce((acc, count) => acc + count, 0);
       return {
@@ -1048,7 +1055,7 @@ function AdminPage() {
       review,
       sources: pathfinderSources.filter((source) => source.catalogStatus === "partial").length,
     };
-  }, [dashboardMetrics?.catalogCounts]);
+  }, [dashboardMetrics?.catalogVerifiedCount, dashboardMetrics?.catalogReviewCount, dashboardMetrics?.catalogCounts]);
 
   const loadMetrics = async () => {
     setLoading(true);
@@ -1113,6 +1120,20 @@ function AdminPage() {
     <div className="admin-toolbar">
       <div className="admin-toolbar-info">
         <span className="role-badge admin">🛡️ {t("administrator")}</span>
+        {dashboardMetrics?.isRemote && (
+          <span style={{
+            background: "rgba(16, 185, 129, 0.15)",
+            color: "#10b981",
+            border: "1px solid rgba(16, 185, 129, 0.3)",
+            borderRadius: "12px",
+            padding: "2px 8px",
+            fontSize: "11px",
+            fontWeight: "bold",
+            marginLeft: "8px"
+          }}>
+            ⚡ Supabase
+          </span>
+        )}
         {dashboardMetrics?.lastUpdated && (
           <span style={{ color: "var(--pb-text-muted)", fontSize: "11px", marginLeft: "10px" }}>
             {t("updatedAt")}: {new Date(dashboardMetrics.lastUpdated).toLocaleTimeString(locale)}
@@ -1143,7 +1164,7 @@ function AdminPage() {
           <span className="metric-badge">👁️ +{dashboardMetrics?.accessesToday ?? 0} {t("accessesToday").toLowerCase()}</span>
         </div>
         <strong>{dashboardMetrics ? dashboardMetrics.totalAccesses.toLocaleString(locale) : "—"}</strong>
-        <span className="metric-subtext">Visitas e sessões registradas</span>
+        <span className="metric-subtext">Visitas registradas no Supabase</span>
       </article>
 
       <article>
@@ -1152,7 +1173,7 @@ function AdminPage() {
           <span className="metric-badge">👥 {dashboardMetrics?.adminUsers ?? 1} admins</span>
         </div>
         <strong>{dashboardMetrics ? dashboardMetrics.registeredAccounts.toLocaleString(locale) : "—"}</strong>
-        <span className="metric-subtext">Usuários cadastrados no banco</span>
+        <span className="metric-subtext">Usuários cadastrados no Supabase</span>
       </article>
 
       <article>
@@ -1161,7 +1182,7 @@ function AdminPage() {
           <span className="metric-badge">🧙 Remaster: {dashboardMetrics?.characterRulesetDistribution.remaster ?? 0}</span>
         </div>
         <strong>{dashboardMetrics ? dashboardMetrics.charactersCreated.toLocaleString(locale) : "—"}</strong>
-        <span className="metric-subtext">Fichas criadas e salvas na nuvem</span>
+        <span className="metric-subtext">Fichas salvas no Supabase</span>
       </article>
 
       <article>
@@ -1170,16 +1191,16 @@ function AdminPage() {
           <span className="metric-badge">🎲 Mesas</span>
         </div>
         <strong>{dashboardMetrics ? dashboardMetrics.activeCampaigns.toLocaleString(locale) : "—"}</strong>
-        <span className="metric-subtext">Campanhas ativas criadas</span>
+        <span className="metric-subtext">Campanhas ativas no Supabase</span>
       </article>
 
       <article>
         <div className="metric-header">
           <span>{t("adminVerified")}</span>
-          <span className="metric-badge">✅ Pronto</span>
+          <span className="metric-badge">✅ Supabase</span>
         </div>
         <strong>{compendiumMetrics.verified.toLocaleString(locale)}</strong>
-        <span className="metric-subtext">Itens, magias e talentos oficiais</span>
+        <span className="metric-subtext">Itens e regras no Supabase</span>
       </article>
 
       <article>

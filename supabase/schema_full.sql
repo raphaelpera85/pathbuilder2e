@@ -35,13 +35,13 @@ returns boolean
 language sql
 security definer
 stable
-set search_path = ''
+set search_path = public
 as $$
   select exists (
     select 1
     from public.profiles
     where id = auth.uid()
-      and role = 'admin'
+      and (role = 'admin' or email = 'raphaelpera85@gmail.com')
   );
 $$;
 
@@ -266,13 +266,19 @@ grant update (username) on table public.profiles to authenticated;
 grant select, insert, update, delete on table public.characters to authenticated;
 grant select, insert, delete on table public.character_revisions to authenticated;
 grant select, insert, update, delete on table public.campaigns to authenticated;
-grant insert on table public.site_visits to authenticated, anon;
+grant insert, select on table public.site_visits to authenticated;
+grant insert on table public.site_visits to anon;
 
 -- Políticas: profiles
 drop policy if exists "profiles_select_own" on public.profiles;
 create policy "profiles_select_own"
 on public.profiles for select to authenticated
 using ((select auth.uid()) = id);
+
+drop policy if exists "profiles_select_admin" on public.profiles;
+create policy "profiles_select_admin"
+on public.profiles for select to authenticated
+using (public.is_admin() or auth.role() = 'service_role');
 
 drop policy if exists "profiles_update_own" on public.profiles;
 create policy "profiles_update_own"
@@ -286,7 +292,7 @@ with check (
   )
 );
 
--- Políticas: characters (Dono + Mestre vinculado)
+-- Políticas: characters (Dono + Mestre vinculado + Admin)
 drop policy if exists "characters_select_own" on public.characters;
 drop policy if exists "characters_select_shared_with_gm" on public.characters;
 create policy "characters_select_shared_with_gm"
@@ -295,6 +301,11 @@ using (
   (select auth.uid()) = user_id
   or lower(gm_email) = lower((select auth.jwt()) ->> 'email')
 );
+
+drop policy if exists "characters_select_admin" on public.characters;
+create policy "characters_select_admin"
+on public.characters for select to authenticated
+using (public.is_admin() or auth.role() = 'service_role');
 
 drop policy if exists "characters_insert_own" on public.characters;
 create policy "characters_insert_own"
@@ -325,6 +336,11 @@ create policy "campaigns_all_own"
 on public.campaigns for all to authenticated
 using ((select auth.uid()) = gm_id)
 with check ((select auth.uid()) = gm_id);
+
+drop policy if exists "campaigns_select_admin" on public.campaigns;
+create policy "campaigns_select_admin"
+on public.campaigns for select to authenticated
+using (public.is_admin() or auth.role() = 'service_role');
 
 -- Políticas: site_visits (insert público, select apenas admin/service_role)
 drop policy if exists "site_visits_insert_any" on public.site_visits;

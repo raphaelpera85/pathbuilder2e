@@ -33,6 +33,9 @@ export interface AdminDashboardMetrics {
     other: number;
   };
   catalogCounts?: Record<string, number>;
+  catalogVerifiedCount?: number;
+  catalogReviewCount?: number;
+  isRemote?: boolean;
   lastUpdated: string;
 }
 
@@ -120,52 +123,113 @@ export async function recordAppAccess(
 }
 
 /**
- * Consulta todas as métricas consolidadas do painel de administração
+ * Consulta todas as métricas consolidadas do painel de administração diretamente do Supabase
  */
 export async function getAdminDashboardMetrics(): Promise<AdminDashboardMetrics> {
   const todayKey = getTodayKey();
   let localTotalAccess = 0;
   let localTodayAccess = 0;
-  let recentLogs: AccessLogEntry[] = [];
+  let localRecentLogs: AccessLogEntry[] = [];
 
   try {
     localTotalAccess = parseInt(localStorage.getItem(LOCAL_ACCESS_COUNT_KEY) || "0", 10);
     localTodayAccess = parseInt(localStorage.getItem(todayKey) || "0", 10);
     const rawLogs = localStorage.getItem(LOCAL_ACCESS_LOGS_KEY);
-    recentLogs = rawLogs ? JSON.parse(rawLogs) : [];
+    localRecentLogs = rawLogs ? JSON.parse(rawLogs) : [];
   } catch {
     // Fallback padrão
   }
 
+  let totalAccesses = localTotalAccess;
+  let accessesToday = localTodayAccess;
+  let recentAccesses = localRecentLogs;
   let totalAccounts = 0;
   let totalCharacters = 0;
   let totalCampaigns = 0;
   let adminCount = 0;
   let usersList: AdminDashboardMetrics["usersList"] = [];
   let rulesetStats = { remaster: 0, legacy: 0, other: 0 };
-  let remoteAccessCount: number | null = null;
   let catalogCounts: Record<string, number> = {};
+  let catalogVerifiedCount: number | undefined;
+  let catalogReviewCount: number | undefined;
+  let isRemote = false;
 
   // Busca dados do Supabase se configurado
   if (isSupabaseConfigured && supabase) {
     try {
-      // 1. Contagem e listagem de perfis cadastrados
+      // 1. Contagem e listagem de acessos remotos (site_visits)
+      const todayStart = new Date();
+      todayStart.setHours(0, 0, 0, 0);
+
+      const [totalVisitsRes, todayVisitsRes, recentVisitsRes] = await Promise.all([
+        withRequestTimeout(
+          supabase.from("site_visits").select("id", { count: "exact", head: true }),
+          5_000,
+          "Consulta total visitas demorou"
+        ),
+        withRequestTimeout(
+          supabase
+            .from("site_visits")
+            .select("id", { count: "exact", head: true })
+            .gte("created_at", todayStart.toISOString()),
+          5_000,
+          "Consulta visitas hoje demorou"
+        ),
+        withRequestTimeout(
+          supabase
+            .from("site_visits")
+            .select("id, route, user_type, username, user_id, user_agent, created_at")
+            .order("created_at", { ascending: false })
+            .limit(50),
+          6_000,
+          "Consulta logs recentes demorou"
+        ),
+      ]);
+
+      if (typeof totalVisitsRes.count === "number") {
+        totalAccesses = totalVisitsRes.count;
+        isRemote = true;
+      }
+      if (typeof todayVisitsRes.count === "number") {
+        accessesToday = todayVisitsRes.count;
+      }
+      if (recentVisitsRes.data && Array.isArray(recentVisitsRes.data)) {
+        recentAccesses = recentVisitsRes.data.map((v: any) => ({
+          id: v.id,
+          timestamp: v.created_at,
+          route: v.route || "builder",
+          userType: (v.user_type as any) || "guest",
+          username: v.username || undefined,
+          userId: v.user_id || undefined,
+          userAgent: v.user_agent || undefined,
+        }));
+      }
+    } catch (e) {
+      console.warn("Aviso ao carregar site_visits do Supabase:", e);
+    }
+
+    try {
+      // 2. Contagem e listagem de perfis cadastrados (profiles)
       const { data: profiles, count: pCount } = await withRequestTimeout(
-        supabase.from("profiles").select("id,username,email,role,created_at", { count: "exact" }),
+        supabase
+          .from("profiles")
+          .select("id, username, email, role, created_at", { count: "exact" })
+          .order("created_at", { ascending: false }),
         6_000,
         "Consulta de perfis demorou."
       );
 
-      if (profiles && Array.isArray(profiles)) {
+      if (profiles && Array.isArray(profiles) && profiles.length > 0) {
         totalAccounts = profiles.length;
         adminCount = profiles.filter((p: any) => p.role === "admin" || p.email === "raphaelpera85@gmail.com").length;
         usersList = profiles.map((p: any) => ({
           id: p.id,
           username: p.username || "Usuário",
           email: p.email ? p.email.replace(/(?<=^.{3}).+(?=@)/, "***") : undefined, // Email protegido
-          role: p.role === "admin" || p.email === "raphaelpera85@gmail.com" ? "admin" : "user",
+          role: (p.role === "admin" || p.email === "raphaelpera85@gmail.com" ? "admin" : "user") as "admin" | "user",
           createdAt: p.created_at,
         }));
+        isRemote = true;
       } else if (typeof pCount === "number") {
         totalAccounts = pCount;
       }
@@ -174,20 +238,22 @@ export async function getAdminDashboardMetrics(): Promise<AdminDashboardMetrics>
     }
 
     try {
-      // 2. Contagem e estatísticas de personagens criados
+      // 3. Contagem e estatísticas de personagens criados (characters)
       const { data: characters, count: cCount } = await withRequestTimeout(
-        supabase.from("characters").select("id,ruleset,level", { count: "exact" }),
+        supabase.from("characters").select("id, ruleset, level", { count: "exact" }),
         6_000,
         "Consulta de personagens demorou."
       );
 
       if (characters && Array.isArray(characters)) {
         totalCharacters = characters.length;
+        rulesetStats = { remaster: 0, legacy: 0, other: 0 };
         for (const char of characters) {
           if (char.ruleset === "remaster") rulesetStats.remaster++;
           else if (char.ruleset === "legacy") rulesetStats.legacy++;
           else rulesetStats.other++;
         }
+        isRemote = true;
       } else if (typeof cCount === "number") {
         totalCharacters = cCount;
       }
@@ -196,7 +262,7 @@ export async function getAdminDashboardMetrics(): Promise<AdminDashboardMetrics>
     }
 
     try {
-      // 3. Contagem de campanhas
+      // 4. Contagem de campanhas (campaigns)
       const { count: campCount } = await withRequestTimeout(
         supabase.from("campaigns").select("id", { count: "exact", head: true }),
         6_000,
@@ -204,27 +270,14 @@ export async function getAdminDashboardMetrics(): Promise<AdminDashboardMetrics>
       );
       if (typeof campCount === "number") {
         totalCampaigns = campCount;
+        isRemote = true;
       }
     } catch {
       // Segue
     }
 
     try {
-      // 4. Acessos remotos
-      const { count: visitsCount } = await withRequestTimeout(
-        supabase.from("site_visits").select("id", { count: "exact", head: true }),
-        5_000,
-        "Consulta de visitas demorou."
-      );
-      if (typeof visitsCount === "number" && visitsCount > 0) {
-        remoteAccessCount = visitsCount;
-      }
-    } catch {
-      // Segue
-    }
-
-    try {
-      // 5. Contagem de registros do catálogo no Supabase
+      // 5. Contagem de registros e status de revisão do catálogo no Supabase (18 tabelas)
       const catalogTables = [
         "catalog_ancestries", "catalog_heritages", "catalog_classes", "catalog_subclasses",
         "catalog_backgrounds", "catalog_archetypes", "catalog_spells", "catalog_rituals",
@@ -232,22 +285,38 @@ export async function getAdminDashboardMetrics(): Promise<AdminDashboardMetrics>
         "catalog_shields", "catalog_formulas", "catalog_pets", "catalog_actions",
         "catalog_conditions", "catalog_buffs"
       ];
+      let totalCat = 0;
+      let totalRev = 0;
       await Promise.all(
         catalogTables.map(async (tbl) => {
           try {
-            const { count } = await supabase.from(tbl).select("id", { count: "exact", head: true });
-            if (typeof count === "number") catalogCounts[tbl] = count;
+            const [{ count: total }, { count: reviewCount }] = await Promise.all([
+              supabase.from(tbl).select("id", { count: "exact", head: true }),
+              supabase.from(tbl).select("id", { count: "exact", head: true }).eq("ruleset", "needs_review"),
+            ]);
+            if (typeof total === "number") {
+              catalogCounts[tbl] = total;
+              totalCat += total;
+            }
+            if (typeof reviewCount === "number") {
+              totalRev += reviewCount;
+            }
           } catch {
             // Segue
           }
         })
       );
+      if (totalCat > 0) {
+        catalogVerifiedCount = Math.max(0, totalCat - totalRev);
+        catalogReviewCount = totalRev;
+        isRemote = true;
+      }
     } catch {
       // Segue
     }
   }
 
-  // Fallbacks locais caso Supabase esteja offline ou zerado
+  // Fallbacks locais caso Supabase esteja offline ou não configurado
   if (totalAccounts === 0) {
     try {
       const localUsersRaw = localStorage.getItem("pb2e_local_users_db");
@@ -286,19 +355,20 @@ export async function getAdminDashboardMetrics(): Promise<AdminDashboardMetrics>
     }
   }
 
-  const finalTotalAccess = Math.max(localTotalAccess, remoteAccessCount ?? 0);
-
   return {
-    totalAccesses: finalTotalAccess,
-    accessesToday: localTodayAccess,
+    totalAccesses,
+    accessesToday,
     registeredAccounts: Math.max(totalAccounts, usersList.length),
     charactersCreated: totalCharacters,
     activeCampaigns: totalCampaigns,
     adminUsers: Math.max(adminCount, 1),
-    recentAccesses: recentLogs,
+    recentAccesses,
     usersList,
     characterRulesetDistribution: rulesetStats,
     catalogCounts,
+    catalogVerifiedCount,
+    catalogReviewCount,
+    isRemote,
     lastUpdated: new Date().toISOString(),
   };
 }
