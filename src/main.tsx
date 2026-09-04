@@ -24,12 +24,15 @@ function ViewportSignals() {
       document.documentElement.dataset.motionPreference = reducedMotion.matches ? "reduced" : "full";
       document.documentElement.style.setProperty("--pb-viewport-height", `${window.visualViewport?.height || window.innerHeight}px`);
       const topbarHeight = document.querySelector<HTMLElement>(".pb-topbar")?.getBoundingClientRect().height || 0;
-      const mobileNavHeight = document.querySelector<HTMLElement>(".pb-mobile-view-nav")?.getBoundingClientRect().height || 0;
-      document.documentElement.style.setProperty("--pb-mobile-chrome-height", `${topbarHeight + mobileNavHeight}px`);
+      const portalNavEl = document.querySelector<HTMLElement>(".portal-nav");
+      const portalNavHeight = (portalNavEl && portalNavEl.offsetParent !== null) ? portalNavEl.getBoundingClientRect().height : 0;
+      const mobileNavEl = document.querySelector<HTMLElement>(".pb-mobile-view-nav");
+      const mobileNavHeight = (mobileNavEl && mobileNavEl.offsetParent !== null) ? mobileNavEl.getBoundingClientRect().height : 0;
+      document.documentElement.style.setProperty("--pb-mobile-chrome-height", `${topbarHeight + portalNavHeight + mobileNavHeight}px`);
     };
     updateSignals();
     const resizeObserver = typeof ResizeObserver !== "undefined" ? new ResizeObserver(updateSignals) : null;
-    document.querySelectorAll<HTMLElement>(".pb-topbar, .pb-mobile-view-nav").forEach((element) => resizeObserver?.observe(element));
+    document.querySelectorAll<HTMLElement>(".pb-topbar, .portal-nav, .pb-mobile-view-nav").forEach((element) => resizeObserver?.observe(element));
     window.addEventListener("resize", updateSignals, { passive: true });
     window.visualViewport?.addEventListener("resize", updateSignals, { passive: true });
     coarsePointer.addEventListener?.("change", updateSignals);
