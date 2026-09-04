@@ -1,7 +1,7 @@
 {
   "0": "pf2e_data.js",
   "1": "PathbuilderApp",
-  "2": "PortalPages.tsx",
+  "2": "characters.ts",
   "3": ".renderAll",
   "4": "js/pdf-lib.min.js",
   "5": "public/js/pdf-lib.min.js",
@@ -20,7 +20,7 @@
   "18": "escapeHtml",
   "19": ".renderModalLeftList",
   "20": "merge-and-sync-all.cjs",
-  "21": "sources.ts",
+  "21": "PortalPages.tsx",
   "22": "audit-catalog.cjs",
   "23": "2. Regras que Faltavam e Foram Implementadas",
   "24": ".loadInitialCharacter",
@@ -126,8 +126,5 @@
   "124": "generate-catalog-seed.cjs",
   "125": "catalog.ts",
   "126": ".openSetAbilitiesModal",
-  "127": "migrate-catalog-to-supabase.cjs",
-  "128": "PortalPages.test.tsx",
-  "129": "IPickerBridge",
-  "130": "PickerItem"
+  "127": "migrate-catalog-to-supabase.cjs"
 }
