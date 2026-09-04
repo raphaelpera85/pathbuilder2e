@@ -1183,7 +1183,7 @@ class PathbuilderApp {
       return `
         <div class="strike-card" style="border-left-color: var(--pb-orange); background: var(--pb-bg-panel);">
           <div class="strike-header">
-             <div style="font-weight:bold; font-size:14px; color:#fff;">🗡️ ${escapeHtml(locName)} <span style="font-size:11px; color:var(--pb-text-muted);">(${escapeHtml(locCategory)})</span></div>
+             <div class="strike-title" style="font-weight:bold; font-size:14px; color:var(--pb-text);">🗡️ <span class="strike-item-name">${escapeHtml(locName)}</span> <span style="font-size:11px; color:var(--pb-text-muted); font-weight:normal;">(${escapeHtml(locCategory)})</span></div>
             <div style="display:flex; gap:4px;">
               ${Array.isArray(s.runes) && s.runes.length ? `<button onclick="app.manageWeaponRunes(${idx})" title="${isEn ? "Manage runes" : isEs ? "Gestionar runas" : "Gerenciar runas"}" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer;">🔹</button>` : ""}
               <button onclick="app.editCharacterCollectionItem('weapons', ${idx})" title="${isEn ? "Edit weapon" : isEs ? "Editar arma" : "Editar arma"}" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer;">✎</button>
@@ -1191,17 +1191,17 @@ class PathbuilderApp {
             </div>
           </div>
           
-          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin: 6px 0;">
-            <div class="map-buttons-row">
+          <div class="strike-actions-row" style="display:flex; justify-content:flex-start; align-items:center; flex-wrap:wrap; gap:12px; margin: 6px 0;">
+            <div class="map-buttons-row" style="display:inline-flex; align-items:center; gap:6px;">
               <span style="font-size:11px; color:var(--pb-text-muted);">${atkLabel}</span>
                <button class="btn-strike-roll" onclick="app.rollStrike(${escapeInlineArgument(`${locName} [${firstAtk}]`)}, ${s.map[0]})">${PF2E_ENGINE.formatMod(s.map[0])}</button>
                <button class="btn-strike-roll" onclick="app.rollStrike(${escapeInlineArgument(`${locName} [${secondAtk}]`)}, ${s.map[1]})">${PF2E_ENGINE.formatMod(s.map[1])}</button>
                <button class="btn-strike-roll" onclick="app.rollStrike(${escapeInlineArgument(`${locName} [${thirdAtk}]`)}, ${s.map[2]})">${PF2E_ENGINE.formatMod(s.map[2])}</button>
             </div>
 
-          <button class="strike-damage-box" onclick="app.rollDamage(${escapeInlineArgument(locName)}, ${escapeInlineArgument(s.damageFormatted)})">
+            <button class="strike-damage-box" onclick="app.rollDamage(${escapeInlineArgument(locName)}, ${escapeInlineArgument(s.damageFormatted)})">
                ${dmgLabel} ${escapeHtml(s.damageFormatted)}
-             </button>
+            </button>
           </div>
 
           ${s.ammunition?.requiresAmmunition ? `<div style="font-size:11px; color:${s.ammunition.available ? "var(--pb-text-muted)" : "#f87171"};">${isEn ? "Ammunition" : isEs ? "Munición" : "Munição"}: ${s.ammunition.quantity} · ${s.ammunition.available ? (isEn ? "available" : isEs ? "disponible" : "disponível") : (isEn ? "missing" : isEs ? "falta" : "em falta")}${s.ammunition.reload ? ` · ${isEn ? "Reload" : isEs ? "Recarga" : "Recarga"} ${escapeHtml(s.ammunition.reload)}` : ""}</div>` : ""}
@@ -1264,7 +1264,7 @@ class PathbuilderApp {
         <div class="pb-defense-slot-content">
           <div style="display:flex; align-items:center; gap:8px;">
             <span class="picker-prof-badge t">T</span>
-            <span style="font-size:15px; color:#ffffff; font-weight:800;">${escapeHtml(locArmorName)}</span>
+            <span style="font-size:15px; color:var(--pb-text); font-weight:800;">${escapeHtml(locArmorName)}</span>
           </div>
           <div style="color: #94a3b8; font-size:13px;">
               👕 ${isEn ? "Item Bonus" : isEs ? "Bonificador de Objeto" : "Bônus de Item"} +${(Number(arm.acBonus) || 0) + armorRunes.potency}
@@ -1287,7 +1287,7 @@ class PathbuilderApp {
           ${shield ? `
             <div style="display:flex; align-items:center; gap:8px;">
               <span class="picker-prof-badge t">T</span>
-              <span style="font-size:15px; color:#ffffff; font-weight:800;">${escapeHtml(locShieldName)}</span>
+              <span style="font-size:15px; color:var(--pb-text); font-weight:800;">${escapeHtml(locShieldName)}</span>
             </div>
             <div style="color: #94a3b8; font-size:13px;">
               🛡️ ${isEn ? "Hardness" : isEs ? "Dureza" : "Dureza"} ${shield.hardness || 3}
@@ -2351,7 +2351,7 @@ class PathbuilderApp {
       slotsTrackerHtml = `
         <div style="margin-bottom:16px; display:flex; flex-direction:column; gap:8px;">
           <div style="display:flex; justify-content:space-between; align-items:center;">
-            <strong style="font-size:12px; color:#fff;">${copy.spellSlots} (${slotsInfo && slotsInfo.isBounded ? copy.bounded : copy.caster})</strong>
+            <strong style="font-size:12px; color:var(--pb-text);">${copy.spellSlots} (${slotsInfo && slotsInfo.isBounded ? copy.bounded : copy.caster})</strong>
             <button type="button" onclick="app.restoreAllSpellSlots()" style="background:none; border:1px solid var(--pb-border); color:var(--pb-orange); padding:2px 8px; border-radius:4px; font-size:11px; cursor:pointer;">⚡ ${copy.restoreAll}</button>
           </div>
           <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:8px;">
@@ -6837,7 +6837,7 @@ class PathbuilderApp {
         <div class="pb-boost-row">
           <div class="pb-boost-select-wrap">
             <span class="pb-boost-plus-icon">+</span>
-            <span style="font-size:12px; font-weight:700; color:#fff; padding:2px 6px;">${defaultClassAbilityName}</span>
+            <span style="font-size:12px; font-weight:700; color:var(--pb-text); padding:2px 6px;">${defaultClassAbilityName}</span>
           </div>
         </div>
       </div>

@@ -2550,7 +2550,83 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, [tabindex]:fo
 .spell-actions .btn-pb-action.secondary { color: var(--pb-text); background: var(--pb-bg-panel); border-color: var(--pb-border-light); }
 .spell-library { display: grid; gap: 9px; }
 .spell-library + .spell-library { margin-top: 24px; }
-.spell-library h3 { margin: 0; color: var(--pb-orange-light); font-size: 15px; }
+.strike-card {
+  background: var(--pb-bg-panel);
+  border: 1px solid var(--pb-border);
+  border-left: 3px solid var(--pb-orange);
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.strike-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  color: var(--pb-text);
+}
+
+.strike-title,
+.strike-item-name {
+  color: var(--pb-text);
+  font-weight: 700;
+}
+
+.strike-actions-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 6px 0;
+}
+
+.map-buttons-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-strike-roll {
+  background: var(--pb-bg-card);
+  border: 1px solid var(--pb-border-light);
+  color: var(--pb-text);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.btn-strike-roll:hover {
+  background: var(--pb-orange);
+  color: #fff;
+  border-color: var(--pb-orange);
+}
+
+.strike-damage-box {
+  background: rgba(249, 115, 22, 0.12);
+  border: 1px solid var(--pb-border-orange);
+  color: var(--pb-orange-light);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.strike-damage-box:hover {
+  background: var(--pb-orange);
+  color: #fff;
+}
+
 .spell-card, .ritual-card { border-left-color: #a855f7; }
 .ritual-card { border-left-color: #38bdf8; }
 .spell-card .strike-header, .ritual-card .strike-header { align-items: flex-start; gap: 12px; color: #e9d5ff; }
@@ -3139,8 +3215,16 @@ body.theme-light .spell-tab-header .spell-stat-line {
   box-shadow: 0 1px 3px rgba(40, 29, 19, 0.05);
 }
 
-[data-theme="light"] .strike-header {
+[data-theme="light"] .strike-header,
+[data-theme="light"] .strike-title,
+[data-theme="light"] .strike-item-name,
+[data-theme="light"] .spell-card .strike-header,
+[data-theme="light"] .ritual-card .strike-header {
   color: #281d13 !important;
+}
+
+[data-theme="light"] .strike-actions-row {
+  color: #281d13;
 }
 
 [data-theme="light"] .btn-strike-roll {
@@ -3149,10 +3233,22 @@ body.theme-light .spell-tab-header .spell-stat-line {
   color: #281d13;
 }
 
+[data-theme="light"] .btn-strike-roll:hover {
+  background: #9c4210;
+  color: #fff;
+  border-color: #9c4210;
+}
+
 [data-theme="light"] .strike-damage-box {
   background: #fbf1d8;
   border: 1px solid #e0cca3;
   color: #782b08;
+}
+
+[data-theme="light"] .strike-damage-box:hover {
+  background: #9c4210;
+  color: #fff;
+  border-color: #9c4210;
 }
 
 [data-theme="light"] .trait-tag {
