@@ -74,22 +74,6 @@
     </div>
   </div>
 
-  <!-- SELETOR RESPONSIVO DE SEÇÕES (MOBILE & TABLET: SEM SCROLL HORIZONTAL) -->
-  <nav class="pb-mobile-view-nav" id="mobileViewNav" aria-label="Navegação de seções da ficha">
-    <button type="button" class="pb-mobile-view-btn" id="btnViewPlan" onclick="app.switchMobileView('plan')">
-      <span>📜</span>
-      <span>Plano (Níveis)</span>
-    </button>
-    <button type="button" class="pb-mobile-view-btn active" id="btnViewStats" onclick="app.switchMobileView('stats')">
-      <span>🛡️</span>
-      <span>Ficha & Perícias</span>
-    </button>
-    <button type="button" class="pb-mobile-view-btn" id="btnViewContent" onclick="app.switchMobileView('content')">
-      <span>⚔️</span>
-      <span>Ações & Abas</span>
-    </button>
-  </nav>
-
   <!-- WORKSPACE PRINCIPAL (3 COLUNAS) -->
   <div class="pb-workspace" id="legacy-builder-root">
 
@@ -236,6 +220,70 @@
         <button class="btn-pb-action" onclick="window.dispatchEvent(new Event('pathbuilder:save-account-character'))">☁️ Salvar na Conta</button>
       </div>
       <div id="activeConditions" class="traits-row" style="min-height:24px; margin:4px 0 8px; display: flex; flex-wrap: wrap; gap: 6px;"></div>
+
+      <!-- SELETOR DE SEÇÕES EM MENU PARA MOBILE -->
+      <div class="pb-mobile-tabs-menu" id="pbMobileTabsMenu">
+        <div class="pb-mobile-tabs-bar">
+          <button type="button" class="pb-mobile-tabs-nav-btn" id="pbMobileTabPrev" onclick="app.prevMobileTab()" aria-label="Seção anterior" title="Seção anterior">◀</button>
+          <button type="button" class="pb-mobile-tab-trigger" id="pbMobileTabTrigger" aria-haspopup="true" aria-expanded="false" onclick="app.toggleMobileTabsMenu(event)">
+            <span class="pb-mobile-tab-current">
+              <span class="pb-mobile-tab-icon" id="pbMobileTabIcon">⚔️</span>
+              <span class="pb-mobile-tab-title" id="pbMobileTabTitle">Armas</span>
+            </span>
+            <span class="pb-mobile-tab-indicator">
+              <span class="pb-mobile-tab-hint" id="pbMobileTabHint">Seção</span>
+              <span class="pb-mobile-tab-chevron">▼</span>
+            </span>
+          </button>
+          <button type="button" class="pb-mobile-tabs-nav-btn" id="pbMobileTabNext" onclick="app.nextMobileTab()" aria-label="Próxima seção" title="Próxima seção">▶</button>
+        </div>
+
+        <div class="pb-mobile-tabs-dropdown" id="pbMobileTabsDropdown" role="menu" aria-hidden="true">
+          <div class="pb-mobile-tabs-dropdown-header">
+            <span class="pb-mobile-tabs-dropdown-title" id="pbMobileTabsDropdownTitle">Seções da Ficha</span>
+            <button type="button" class="pb-mobile-tabs-dropdown-close" onclick="app.closeMobileTabsMenu()" aria-label="Fechar menu">✕</button>
+          </div>
+          <div class="pb-mobile-tabs-grid">
+            <button type="button" class="pb-mobile-tab-item active" data-tab="tab-weapons" onclick="app.selectMobileTab('tab-weapons')">
+              <span class="pb-mobile-tab-item-icon">⚔️</span>
+              <span class="pb-mobile-tab-item-text" id="mobile-tab-label-weapons">Armas</span>
+            </button>
+            <button type="button" class="pb-mobile-tab-item" data-tab="tab-defense" onclick="app.selectMobileTab('tab-defense')">
+              <span class="pb-mobile-tab-item-icon">🛡️</span>
+              <span class="pb-mobile-tab-item-text" id="mobile-tab-label-defense">Defesa</span>
+            </button>
+            <button type="button" class="pb-mobile-tab-item" data-tab="tab-gear" onclick="app.selectMobileTab('tab-gear')">
+              <span class="pb-mobile-tab-item-icon">🎒</span>
+              <span class="pb-mobile-tab-item-text" id="mobile-tab-label-gear">Equipamentos</span>
+            </button>
+            <button type="button" class="pb-mobile-tab-item" data-tab="tab-spells" onclick="app.selectMobileTab('tab-spells')">
+              <span class="pb-mobile-tab-item-icon">✨</span>
+              <span class="pb-mobile-tab-item-text" id="mobile-tab-label-spells">Magias</span>
+            </button>
+            <button type="button" class="pb-mobile-tab-item" data-tab="tab-pets" onclick="app.selectMobileTab('tab-pets')">
+              <span class="pb-mobile-tab-item-icon">🐾</span>
+              <span class="pb-mobile-tab-item-text" id="mobile-tab-label-pets">Mascotes</span>
+            </button>
+            <button type="button" class="pb-mobile-tab-item" data-tab="tab-details" onclick="app.selectMobileTab('tab-details')">
+              <span class="pb-mobile-tab-item-icon">📋</span>
+              <span class="pb-mobile-tab-item-text" id="mobile-tab-label-details">Detalhes</span>
+            </button>
+            <button type="button" class="pb-mobile-tab-item" data-tab="tab-feats" onclick="app.selectMobileTab('tab-feats')">
+              <span class="pb-mobile-tab-item-icon">⭐</span>
+              <span class="pb-mobile-tab-item-text" id="mobile-tab-label-feats">Talentos</span>
+            </button>
+            <button type="button" class="pb-mobile-tab-item" data-tab="tab-actions" onclick="app.selectMobileTab('tab-actions')">
+              <span class="pb-mobile-tab-item-icon">⚡</span>
+              <span class="pb-mobile-tab-item-text" id="mobile-tab-label-actions">Ações</span>
+            </button>
+            <button type="button" class="pb-mobile-tab-item" data-tab="tab-formulas" onclick="app.selectMobileTab('tab-formulas')">
+              <span class="pb-mobile-tab-item-icon">🧪</span>
+              <span class="pb-mobile-tab-item-text" id="mobile-tab-label-formulas">Fórmulas & Alquimia</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="pb-mobile-tabs-backdrop" id="pbMobileTabsBackdrop" onclick="app.closeMobileTabsMenu()"></div>
 
       <!-- ABAS PATHBUILDER (LARANJA) -->
       <nav class="pb-nav-tabs" role="tablist" aria-label="Seções da ficha">

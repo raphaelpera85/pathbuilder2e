@@ -79,7 +79,6 @@
   "77": "apply_subclasses_enrichment.cjs",
   "78": "enrich_all_catalog_feats.cjs",
   "79": "extract-all-core-class-feats.cjs",
-  "80": ".renderDetailsTab",
   "81": "extract-core-ancestry-feats.cjs",
   "82": "inspect-flagged-details.cjs",
   "83": "theme.tsx",
@@ -164,6 +163,5 @@
   "162": "security-rls-basics.md",
   "163": "security-rls-performance.md",
   "164": "_template.md",
-  "165": "PortalPages.test.tsx",
-  "166": "IPickerController"
+  "165": "PortalPages.test.tsx"
 }

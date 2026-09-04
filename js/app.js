@@ -356,7 +356,6 @@ class PathbuilderApp {
     this.selectedPickerItem = null;
     this.catalogNameIndex = null;
     this.activeModalTab = "All";
-    this.mobileActiveView = "stats";
     if (typeof window !== "undefined") {
       window.addEventListener("pathbuilder:locale-change", () => {
         this.renderAll();
@@ -719,6 +718,32 @@ class PathbuilderApp {
       if (tabEl) tabEl.innerText = label;
     }
 
+    const mobileTabMap = {
+      "mobile-tab-label-weapons": isEn ? "Weapons" : isEs ? "Armas" : "Armas",
+      "mobile-tab-label-defense": isEn ? "Defense" : isEs ? "Defensa" : "Defesa",
+      "mobile-tab-label-gear": isEn ? "Gear" : isEs ? "Equipo" : "Equipamentos",
+      "mobile-tab-label-spells": isEn ? "Spells" : isEs ? "Conjuros" : "Magias",
+      "mobile-tab-label-pets": isEn ? "Pets" : isEs ? "Mascotas" : "Mascotes",
+      "mobile-tab-label-details": isEn ? "Details" : isEs ? "Detalles" : "Detalhes",
+      "mobile-tab-label-feats": isEn ? "Feats" : isEs ? "Dotes" : "Talentos",
+      "mobile-tab-label-actions": isEn ? "Actions" : isEs ? "Acciones" : "Ações",
+      "mobile-tab-label-formulas": isEn ? "Formulas & Alchemy" : isEs ? "Fórmulas y Alquimia" : "Fórmulas & Alquimia"
+    };
+    for (const [id, label] of Object.entries(mobileTabMap)) {
+      const el = document.getElementById(id);
+      if (el) el.innerText = label;
+    }
+    const mobileHint = document.getElementById("pbMobileTabHint");
+    if (mobileHint) {
+      mobileHint.innerText = isEn ? "Section" : isEs ? "Sección" : "Seção";
+    }
+    const mobileDropdownTitle = document.getElementById("pbMobileTabsDropdownTitle");
+    if (mobileDropdownTitle) {
+      mobileDropdownTitle.innerText = isEn ? "Sheet Sections" : isEs ? "Secciones de la Ficha" : "Seções da Ficha";
+    }
+    const activeTab = document.querySelector(".tab-panel.active")?.id || "tab-weapons";
+    this.syncMobileTabsMenu(activeTab);
+
     // 9. Weapons Tab Static Elements
     const weaponProfs = document.querySelectorAll(".weapon-prof-group-item .weapon-prof-label");
     if (weaponProfs && weaponProfs.length >= 4) {
@@ -861,6 +886,7 @@ class PathbuilderApp {
   }
 
   async init() {
+    this.syncMobileTabsMenu("tab-weapons");
     await this.loadInitialCharacter();
   }
 
@@ -5234,37 +5260,6 @@ class PathbuilderApp {
     }
   }
 
-  // SELETOR RESPONSIVO DE SEÇÕES (SEM SCROLL HORIZONTAL)
-  switchMobileView(view) {
-    this.mobileActiveView = view || "stats";
-    const btnPlan = document.getElementById("btnViewPlan");
-    const btnStats = document.getElementById("btnViewStats");
-    const btnContent = document.getElementById("btnViewContent");
-
-    const colPlan = document.getElementById("planTreeCol");
-    const colStats = document.getElementById("statsCol");
-    const colContent = document.getElementById("contentCol");
-
-    [btnPlan, btnStats, btnContent].forEach(b => b?.classList.remove("active"));
-
-    if (view === "plan") {
-      btnPlan?.classList.add("active");
-      if (colPlan) { colPlan.classList.remove("mobile-hidden"); colPlan.classList.add("mobile-visible"); }
-      if (colStats) { colStats.classList.add("mobile-hidden"); colStats.classList.remove("mobile-visible"); }
-      if (colContent) { colContent.classList.add("mobile-hidden"); colContent.classList.remove("mobile-visible"); }
-    } else if (view === "content") {
-      btnContent?.classList.add("active");
-      if (colPlan) { colPlan.classList.add("mobile-hidden"); colPlan.classList.remove("mobile-visible"); }
-      if (colStats) { colStats.classList.add("mobile-hidden"); colStats.classList.remove("mobile-visible"); }
-      if (colContent) { colContent.classList.remove("mobile-hidden"); colContent.classList.add("mobile-visible"); }
-    } else {
-      // stats (padrão)
-      btnStats?.classList.add("active");
-      if (colPlan) { colPlan.classList.add("mobile-hidden"); colPlan.classList.remove("mobile-visible"); }
-      if (colStats) { colStats.classList.remove("mobile-hidden"); colStats.classList.add("mobile-visible"); }
-      if (colContent) { colContent.classList.add("mobile-hidden"); colContent.classList.remove("mobile-visible"); }
-    }
-  }
 
   // TABS NAVIGATION
   switchTab(tabId, clickEvent) {
@@ -5287,6 +5282,94 @@ class PathbuilderApp {
       target.classList.add("active");
       target.hidden = false;
     }
+
+    this.syncMobileTabsMenu(tabId);
+  }
+
+  syncMobileTabsMenu(tabId = "tab-weapons") {
+    if (typeof document === "undefined" || typeof document.querySelector !== "function") return;
+    const tabMeta = {
+      "tab-weapons": { icon: "⚔️", defaultTitle: "Armas" },
+      "tab-defense": { icon: "🛡️", defaultTitle: "Defesa" },
+      "tab-gear": { icon: "🎒", defaultTitle: "Equipamentos" },
+      "tab-spells": { icon: "✨", defaultTitle: "Magias" },
+      "tab-pets": { icon: "🐾", defaultTitle: "Mascotes" },
+      "tab-details": { icon: "📋", defaultTitle: "Detalhes" },
+      "tab-feats": { icon: "⭐", defaultTitle: "Talentos" },
+      "tab-actions": { icon: "⚡", defaultTitle: "Ações" },
+      "tab-formulas": { icon: "🧪", defaultTitle: "Fórmulas & Alquimia" }
+    };
+    const meta = tabMeta[tabId];
+    if (meta) {
+      const iconEl = document.getElementById("pbMobileTabIcon");
+      const titleEl = document.getElementById("pbMobileTabTitle");
+      const desktopTabBtn = document.querySelector(`[aria-controls="${tabId}"]`);
+      if (iconEl) iconEl.textContent = meta.icon;
+      if (titleEl) {
+        titleEl.textContent = desktopTabBtn?.textContent?.trim() || meta.defaultTitle;
+      }
+    }
+    if (typeof document.querySelectorAll === "function") {
+      document.querySelectorAll(".pb-mobile-tab-item").forEach(item => {
+        const isActive = item.getAttribute("data-tab") === tabId;
+        item.classList.toggle("active", isActive);
+        item.setAttribute("aria-selected", isActive ? "true" : "false");
+      });
+    }
+  }
+
+  toggleMobileTabsMenu(event) {
+    if (typeof document === "undefined" || typeof document.getElementById !== "function") return;
+    if (event && typeof event.stopPropagation === "function") event.stopPropagation();
+    const dropdown = document.getElementById("pbMobileTabsDropdown");
+    const backdrop = document.getElementById("pbMobileTabsBackdrop");
+    const trigger = document.getElementById("pbMobileTabTrigger");
+    if (!dropdown) return;
+    const isOpen = dropdown.classList.contains("open");
+    if (isOpen) {
+      this.closeMobileTabsMenu();
+    } else {
+      dropdown.classList.add("open");
+      dropdown.setAttribute("aria-hidden", "false");
+      if (backdrop) backdrop.classList.add("active");
+      if (trigger) trigger.setAttribute("aria-expanded", "true");
+    }
+  }
+
+  closeMobileTabsMenu() {
+    if (typeof document === "undefined" || typeof document.getElementById !== "function") return;
+    const dropdown = document.getElementById("pbMobileTabsDropdown");
+    const backdrop = document.getElementById("pbMobileTabsBackdrop");
+    const trigger = document.getElementById("pbMobileTabTrigger");
+    if (dropdown) {
+      dropdown.classList.remove("open");
+      dropdown.setAttribute("aria-hidden", "true");
+    }
+    if (backdrop) backdrop.classList.remove("active");
+    if (trigger) trigger.setAttribute("aria-expanded", "false");
+  }
+
+  selectMobileTab(tabId) {
+    this.switchTab(tabId);
+    this.closeMobileTabsMenu();
+  }
+
+  prevMobileTab() {
+    if (typeof document === "undefined" || typeof document.querySelector !== "function") return;
+    const tabs = ["tab-weapons", "tab-defense", "tab-gear", "tab-spells", "tab-pets", "tab-details", "tab-feats", "tab-actions", "tab-formulas"];
+    const currentActive = document.querySelector(".tab-panel.active")?.id || "tab-weapons";
+    const currentIndex = tabs.indexOf(currentActive);
+    const prevIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+    this.switchTab(tabs[prevIndex]);
+  }
+
+  nextMobileTab() {
+    if (typeof document === "undefined" || typeof document.querySelector !== "function") return;
+    const tabs = ["tab-weapons", "tab-defense", "tab-gear", "tab-spells", "tab-pets", "tab-details", "tab-feats", "tab-actions", "tab-formulas"];
+    const currentActive = document.querySelector(".tab-panel.active")?.id || "tab-weapons";
+    const currentIndex = tabs.indexOf(currentActive);
+    const nextIndex = (currentIndex + 1) % tabs.length;
+    this.switchTab(tabs[nextIndex]);
   }
 
   // ROLADOR DE DADOS ANIMADO (PATHBUILDER 2E STYLE)
