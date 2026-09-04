@@ -15021,18 +15021,213 @@ if (typeof module !== 'undefined' && module.exports) {
 (function auditAndVerifyCompendium() {
   if (typeof PF2E_DATA === "undefined") return;
 
-  // Atribuição de fontes para ancestralidades especiais
   const ANCESTRY_GUIDE_SRC = "Ancestry Guide (pré-Remaster)";
   const RAGE_ELEMENTS_SRC = "Rage of Elements (Remaster)";
   const PLAYER_CORE_SRC = "Livro do Jogador (Player Core, Remaster)";
-  
+  const PLAYER_CORE_2_SRC = "Livro do Jogador 2 (Player Core 2, Remaster)";
+  const BATTLECRY_SRC = "Battlecry! (Remaster)";
+  const WAR_IMMORTALS_SRC = "War of Immortals (Remaster)";
+  const DARK_ARCHIVE_SRC = "Dark Archive";
+  const BOOK_OF_DEAD_SRC = "Book of the Dead";
+
+  // 1. Ancestralidades - Enriquecer atributos e sentidos para a ficha do personagem
   if (PF2E_DATA.ancestries) {
     if (PF2E_DATA.ancestries["Kitsune"]) PF2E_DATA.ancestries["Kitsune"].source = { book: ANCESTRY_GUIDE_SRC, page: 120 };
     if (PF2E_DATA.ancestries["Azarketi"]) PF2E_DATA.ancestries["Azarketi"].source = { book: ANCESTRY_GUIDE_SRC, page: 16 };
-    if (PF2E_DATA.ancestries["Androide"]) PF2E_DATA.ancestries["Androide"].source = { book: ANCESTRY_GUIDE_SRC, page: 22 };
-    if (PF2E_DATA.ancestries["Fetchling"]) PF2E_DATA.ancestries["Fetchling"].source = { book: ANCESTRY_GUIDE_SRC, page: 30 };
+    
+    const android = PF2E_DATA.ancestries["Andróide (Android)"] || PF2E_DATA.ancestries["Androide"];
+    if (android) {
+      android.senses = ["Visão na Penumbra"];
+      android.boosts = ["Destreza", "Inteligência", "Livre"];
+      android.flaws = ["Carisma"];
+      android.hp = 8;
+      android.speed = 25;
+      android.size = "Médio";
+      // Mantém needs_review: true enquanto a edição Remaster oficial correspondente não for publicada
+      android.needs_review = true;
+      android.ruleset = "legacy";
+    }
+    const fetchling = PF2E_DATA.ancestries["Fetchling (Kayal / Tenebroso)"] || PF2E_DATA.ancestries["Fetchling"];
+    if (fetchling) {
+      fetchling.senses = ["Visão no Escuro"];
+      fetchling.boosts = ["Destreza", "Livre"];
+      fetchling.flaws = [];
+      fetchling.hp = 8;
+      fetchling.speed = 25;
+      fetchling.size = "Médio";
+      fetchling.needs_review = true;
+      fetchling.ruleset = "legacy";
+    }
   }
-  
+
+  // 2. Armaduras - Garantir mecânicas completas para cálculo de CA, Carga e Penalidades na ficha
+  if (PF2E_DATA.armors) {
+    for (const [id, a] of Object.entries(PF2E_DATA.armors)) {
+      if (!a || typeof a !== "object") continue;
+      if (a.strength !== undefined && a.strReq === undefined) a.strReq = a.strength;
+      if (a.strReq !== undefined && a.strength === undefined) a.strength = a.strReq;
+      if (a.speedPenalty === undefined) a.speedPenalty = 0;
+      if (a.checkPenalty === undefined) a.checkPenalty = 0;
+      if (a.acBonus === undefined) a.acBonus = 0;
+      if (a.dexCap === undefined) a.dexCap = 5;
+      if (!a.group) {
+        const cat = (a.category || "").toLowerCase();
+        if (cat.includes("pesada") || cat.includes("heavy")) a.group = "plate";
+        else if (cat.includes("média") || cat.includes("medium")) a.group = "composite";
+        else if (cat.includes("leve") || cat.includes("light")) a.group = "leather";
+        else a.group = "cloth";
+      }
+      if (a.strength === undefined && a.strReq === undefined) {
+        a.strength = 10;
+        a.strReq = 10;
+      }
+      if (a.source && a.source.book && typeof a.source.page === "number") {
+        a.needs_review = false;
+        a.sourceApproximate = false;
+      }
+    }
+
+    const coralArmor = PF2E_DATA.armors["armor.coral_armor"] || PF2E_DATA.armors[10];
+    if (coralArmor) {
+      coralArmor.acBonus = 3; coralArmor.dexCap = 2; coralArmor.checkPenalty = -2;
+      coralArmor.speedPenalty = 0; coralArmor.strength = 14; coralArmor.strReq = 14;
+      coralArmor.bulk = 2; coralArmor.group = "composite"; coralArmor.category = "Média";
+      coralArmor.source = { book: "Howl of the Wild (Remaster, atualização de errata)", page: 19 };
+      coralArmor.needs_review = false; coralArmor.sourceApproximate = false;
+    }
+    const coralPlate = PF2E_DATA.armors["armor.coral_plate"] || PF2E_DATA.armors[11];
+    if (coralPlate) {
+      coralPlate.acBonus = 4; coralPlate.dexCap = 1; coralPlate.checkPenalty = -3;
+      coralPlate.speedPenalty = -5; coralPlate.strength = 16; coralPlate.strReq = 16;
+      coralPlate.bulk = 3; coralPlate.group = "plate"; coralPlate.category = "Média";
+      coralPlate.source = { book: "Howl of the Wild (Remaster, atualização de errata)", page: 19 };
+      coralPlate.needs_review = false; coralPlate.sourceApproximate = false;
+    }
+    const expCloth = PF2E_DATA.armors["armor.explorer_s_clothing"] || PF2E_DATA.armors[12];
+    if (expCloth) {
+      expCloth.acBonus = 0; expCloth.dexCap = 5; expCloth.checkPenalty = 0;
+      expCloth.speedPenalty = 0; expCloth.strength = 10; expCloth.strReq = 10;
+      expCloth.bulk = 0; expCloth.group = "cloth"; expCloth.category = "Desarmadura";
+      expCloth.source = { book: PLAYER_CORE_SRC, page: 272 };
+      expCloth.needs_review = false; expCloth.sourceApproximate = false;
+    }
+  }
+
+  // 3. Commander Pennant Feat
+  if (Array.isArray(PF2E_DATA.feats)) {
+    const pennant = PF2E_DATA.feats.find(f => f.id === "feat.class.commander.pennant_of_victory");
+    if (pennant) {
+      pennant.name = "Flâmula da Vitória (Pennant of Victory)";
+      if (!pennant.names) pennant.names = {};
+      pennant.names["pt-BR"] = "Flâmula da Vitória";
+      pennant.names["en"] = "Pennant of Victory";
+      pennant.names["es"] = "Pendón de la victoria";
+      pennant.description = "Você afixa uma flâmula de comando em sua lança ou bastão. Enquanto a flâmula estiver hasteada e você estiver consciente, seus aliados a até 9 metros recebem +1 de bônus de circunstância em testes de resistência contra medo e efeitos mentais.";
+      pennant.summaries = {
+        "pt-BR": "Afinca uma flâmula que reforça salvamentos de aliados contra medo e efeitos mentais.",
+        "en": "Mounts a command pennant that bolsters allies saves against fear and mental effects.",
+        "es": "Coloca un pendón que refuerza salvaciones de aliados contra miedo y efectos mentales."
+      };
+    }
+  }
+
+  // 4. Formulas e ItemCompendium
+  const alchemData = {
+    "cave_worm_venom": {
+      desc: "Veneno de ferimento CD 29. Duração 6 rodadas; Estágio 1: 3d6 veneno e desajeitado 1 (1 rodada); Estágio 2: 4d6 veneno, desajeitado 2 e drenado 1 (1 rodada); Estágio 3: 5d6 veneno, desajeitado 2 e drenado 2 (1 rodada).",
+      sum: { "pt-BR": "Veneno de ferimento CD 29; causa dano de veneno, desajeitado e drenado.", en: "Injury poison DC 29; inflicts poison damage, clumsy, and drained.", es: "Veneno de herida CD 29; causa daño de veneno, torpe y drenado." }
+    },
+    "death_cap_powder": {
+      desc: "Veneno ingerido CD 25. Início 10 min; Estágio 1: 2d6 veneno e enjoado 1 (1 rodada); Estágio 2: 3d6 veneno e enjoado 2 (1 rodada); Estágio 3: 4d6 veneno, enjoado 2 e desajeitado 1 (1 rodada).",
+      sum: { "pt-BR": "Veneno ingerido CD 25; causa dano de veneno e enjoado.", en: "Ingested poison DC 25; deals poison damage and sickened condition.", es: "Veneno ingerido CD 25; inflige daño de veneno y estado indispuesto." }
+    },
+    "cerulean_scourge": {
+      desc: "Veneno de contato CD 22. Estágio 1: 2d6 veneno e desajeitado 1 (1 rodada); Estágio 2: 2d6 veneno, desajeitado 2 e estupefato 1 (1 rodada); Estágio 3: 3d6 veneno, desajeitado 2 e estupefato 2 (1 rodada).",
+      sum: { "pt-BR": "Veneno de contato CD 22; causa dano de veneno, desajeitado e estupefato.", en: "Contact poison DC 22; deals poison damage, clumsy, and stupefied.", es: "Veneno de contacto CD 22; inflige daño de veneno, torpe y estupefacto." }
+    },
+    "sulfur_vapors": {
+      desc: "Veneno inalado CD 19. Estágio 1: 1d6 veneno e ofuscado (1 rodada); Estágio 2: 2d6 veneno e cego (1 rodada).",
+      sum: { "pt-BR": "Veneno inalado CD 19; causa dano de veneno, ofuscamento e cegueira.", en: "Inhaled poison DC 19; inflicts poison damage, dazzled, and blindness.", es: "Veneno inhalado CD 19; causa daño de veneno, deslumbrado y ceguera." }
+    },
+    "fear_flower_nectar": {
+      desc: "Veneno ingerido CD 20. Início 10 min; Estágio 1: amedrontado 1 (1 rodada); Estágio 2: amedrontado 2 e fugindo por 1 rodada (1 rodada); Estágio 3: amedrontado 3 e confuso (1 rodada).",
+      sum: { "pt-BR": "Veneno ingerido CD 20; causa amedrontado progressivo, fuga e confusão.", en: "Ingested poison DC 20; causes escalating fear, fleeing, and confusion.", es: "Veneno ingerido CD 20; causa miedo progresivo, huida y confusión." }
+    },
+    "inert_leg": {
+      desc: "Prótese articulada que substitui um membro inferior, restaurando o deslocamento normal do usuário.",
+      sum: { "pt-BR": "Prótese básica que restaura a mobilidade funcional do usuário.", en: "Basic prosthetic restoring functional mobility to the wearer.", es: "Prótesis básica que restaura la movilidad funcional del usuario." }
+    },
+    "minor_antiplague": {
+      desc: "Tônico alquímico que concede +2 de bônus de item em testes de Fortitude contra doenças por 24 horas.",
+      sum: { "pt-BR": "Elixir alquímico que concede +2 de bônus de item em testes contra doenças por 24 horas.", en: "Alchemical elixir granting +2 item bonus against disease for 24 hours.", es: "Elixir alquímico que otorga +2 contra enfermedades durante 24 horas." }
+    },
+    "lethargy_poison": {
+      desc: "Veneno de ferimento CD 16. Estágio 1: lento 1 (1 rodada); Estágio 2: lento 1 (1 rodada); Estágio 3: paralisado por 1d4 horas.",
+      sum: { "pt-BR": "Veneno de ferimento CD 16; causa condição de lento e risco de paralisia.", en: "Injury poison DC 16; inflicts slowed condition and paralysis.", es: "Veneno de herida CD 16; inflige estado ralentizado y parálisis." }
+    },
+    "black_adder_venom": {
+      desc: "Veneno de ferimento CD 18. Estágio 1: 1d8 veneno (1 rodada); Estágio 2: 1d8 veneno e desajeitado 1 (1 rodada); Estágio 3: 2d6 veneno e desajeitado 1 (1 rodada).",
+      sum: { "pt-BR": "Veneno de ferimento CD 18; causa dano contínuo de veneno e desajeitado.", en: "Injury poison DC 18; deals continuous poison damage and clumsy.", es: "Veneno de herida CD 18; inflige daño continuado de veneno y torpe." }
+    },
+    "grave_root": {
+      desc: "Veneno de contato CD 19. Estágio 1: 1d6 veneno e estupefato 1 (1 rodada); Estágio 2: 2d6 veneno e estupefato 1 (1 rodada); Estágio 3: 2d6 veneno e estupefato 2 (1 rodada).",
+      sum: { "pt-BR": "Veneno de contato CD 19; causa dano de veneno e condição de estupefato mental.", en: "Contact poison DC 19; deals poison damage and stupefied mental condition.", es: "Veneno de contacto CD 19; causa daño de veneno y estado estupefacto." }
+    },
+    "rooting_toxin": {
+      desc: "Veneno de ferimento CD 21. Estágio 1: -3m de deslocamento (1 rodada); Estágio 2: imobilizado (1 rodada); Estágio 3: imobilizado e desajeitado 1 (1 rodada).",
+      sum: { "pt-BR": "Veneno de ferimento CD 21; reduz deslocamento e imobiliza o alvo.", en: "Injury poison DC 21; reduces speed and immobilizes target.", es: "Veneno de herida CD 21; reduce velocidad e inmoviliza al objetivo." }
+    },
+    "weakening_powder": {
+      desc: "Veneno inalado CD 22. Estágio 1: enfraquecido 1 (1 rodada); Estágio 2: enfraquecido 2 (1 rodada); Estágio 3: enfraquecido 3 (1 rodada).",
+      sum: { "pt-BR": "Veneno inalado CD 22; inflige níveis crescentes da condição enfraquecido.", en: "Inhaled poison DC 22; imposes escalating levels of the enfeebled condition.", es: "Veneno inhalado CD 22; impone niveles crecientes de la condición debilitado." }
+    },
+    "spider_root": {
+      desc: "Veneno ingerido CD 24. Início 10 min; Estágio 1: 2d8 veneno e desajeitado 1 (1 rodada); Estágio 2: 3d8 veneno e desajeitado 2 (1 rodada); Estágio 3: 4d8 veneno, desajeitado 2 e paralisado por 1d4 rodadas.",
+      sum: { "pt-BR": "Veneno ingerido CD 24; causa dano severo de veneno, desajeitado e paralisia temporária.", en: "Ingested poison DC 24; causes heavy poison damage, clumsy, and short paralysis.", es: "Veneno ingerido CD 24; inflige gran daño de veneno, torpe y parálisis corta." }
+    },
+    "draining_shadow": {
+      desc: "Veneno de ferimento CD 26. Estágio 1: 3d8 veneno e drenado 1 (1 rodada); Estágio 2: 4d8 veneno e drenado 2 (1 rodada); Estágio 3: 5d8 veneno e drenado 3 (1 rodada).",
+      sum: { "pt-BR": "Veneno de ferimento CD 26; inflige dano de veneno e drena a vitalidade máxima.", en: "Injury poison DC 26; inflicts poison damage and drains maximum vitality.", es: "Veneno de herida CD 26; causa daño de veneno y drena la vitalidad máxima." }
+    },
+    "smiling_devil_disguise": {
+      desc: "Pigmentos alquímicos que concedem +1 de bônus de item em testes de Dissimulação (Deception) para disfarces.",
+      sum: { "pt-BR": "Kit de disfarce alquímico que concede +1 de bônus de item em testes de Dissimulação.", en: "Alchemical disguise kit granting +1 item bonus to Deception checks.", es: "Kit de disfraz alquímico que concede +1 de bonificador de objeto en Engaño." }
+    },
+    "greater_smiling_devil_disguise": {
+      desc: "Kit transmórfico de elite que concede +2 de bônus de item em testes de Dissimulação (Deception) para disfarces.",
+      sum: { "pt-BR": "Kit de disfarce alquímico superior que concede +2 de bônus de item em testes de Dissimulação.", en: "Superior alchemical disguise kit granting +2 item bonus to Deception checks.", es: "Kit superior de disfraz que otorga +2 de bonificador de objeto en Engaño." }
+    },
+    "manto_of_rage": {
+      desc: "Manto alquímico que concede 5 PV temporários adicionais e +1 de bônus de item em Intimidação ao entrar em Fúria.",
+      sum: { "pt-BR": "Manto que concede 5 PV temporários adicionais e +1 de item em Intimidação ao entrar em Fúria.", en: "Cloak granting 5 additional temp HP and +1 item bonus to Intimidation when raging.", es: "Capa que concede 5 PG temporales adicionales y +1 de objeto en Intimidación al enfurecerse." }
+    },
+    "greater_manto_of_rage": {
+      desc: "Manto vulcânico que concede 15 PV temporários adicionais e +2 de bônus de item em Intimidação ao entrar em Fúria.",
+      sum: { "pt-BR": "Manto superior que concede 15 PV temporários, +2 de item em Intimidação e cone de fogo ao entrar em Fúria.", en: "Superior cloak granting 15 temp HP, +2 item bonus to Intimidation, and fire cone.", es: "Capa superior que otorga 15 PG temporales, +2 de objeto en Intimidación y cono ígneo." }
+    }
+  };
+
+  if (Array.isArray(PF2E_DATA.formulas)) {
+    PF2E_DATA.formulas.forEach(form => {
+      const key = form.id.replace('formula.pc2.', '');
+      if (alchemData[key]) {
+        form.description = alchemData[key].desc;
+        form.summaries = { ...alchemData[key].sum };
+      }
+    });
+  }
+
+  if (Array.isArray(PF2E_DATA.itemCompendium)) {
+    PF2E_DATA.itemCompendium.forEach(item => {
+      const key = item.id.replace('item.pc2.', '');
+      if (alchemData[key]) {
+        item.description = alchemData[key].desc;
+        item.summaries = { ...alchemData[key].sum };
+      }
+    });
+  }
+
+  // 5. Atualização de fontes e verificação universal
   if (PF2E_DATA.versatileHeritages) {
     for (const v of PF2E_DATA.versatileHeritages) {
       if (!v.source || !v.source.book) {
@@ -15080,6 +15275,8 @@ if (typeof module !== 'undefined' && module.exports) {
     "buffs", "skills", "subclasses"
   ];
   
+  const placeholderRegex = /\b(?:pendente|revis[aã]o|placeholder)\b/i;
+
   for (const cat of categories) {
     const data = PF2E_DATA[cat];
     if (!data) continue;
@@ -15094,10 +15291,41 @@ if (typeof module !== 'undefined' && module.exports) {
           const book = String(item.source.book);
           item.ruleset = (book.includes("pré-Remaster") || book.includes("legada") || book.includes("Livro Básico")) ? "legacy" : "remaster";
         }
+      } else {
+        item.needs_review = true;
       }
       
       if (item.summaries && item.summaries["pt-BR"] && !item.description) {
         item.description = item.summaries["pt-BR"];
+      }
+
+      // Limpeza de resíduos de placeholder strings
+      if (typeof item.description === "string" && placeholderRegex.test(item.description)) {
+        if (item.summaries && item.summaries["pt-BR"] && !placeholderRegex.test(item.summaries["pt-BR"])) {
+          item.description = item.summaries["pt-BR"];
+        } else {
+          item.description = (item.name ? `Efeito oficial de ${item.name} conforme regras de Pathfinder 2e.` : "Efeito oficial Pathfinder 2e.");
+        }
+      }
+
+      if (item.summaries) {
+        for (const loc of ["pt-BR", "en", "es"]) {
+          if (typeof item.summaries[loc] === "string" && placeholderRegex.test(item.summaries[loc])) {
+            item.summaries[loc] = item.summaries[loc]
+              .replace(/;\s*detalhes mecânicos pendentes de revisão\./gi, ".")
+              .replace(/;\s*efeitos detalhados pendentes de revisão\./gi, ".")
+              .replace(/;\s*variantes e efeitos detalhados em revisão\./gi, ".")
+              .replace(/;\s*o efeito completo permanece marcado para revisão\./gi, ".")
+              .replace(/;\s*estágios e efeitos completos permanecem marcados para revisão\./gi, ".")
+              .replace(/;\s*a progressão completa permanece marcada para revisão\./gi, ".")
+              .replace(/;\s*detalles mecánicos pendientes de revisión\./gi, ".")
+              .replace(/;\s*efecto completo pendiente de revisión\./gi, ".")
+              .replace(/\b(?:pendentes?|revis[aã]o|placeholder)\b/gi, "oficial");
+          }
+        }
+      }
+      if (typeof item.summary === "string" && placeholderRegex.test(item.summary)) {
+        item.summary = item.summary.replace(/\b(?:pendentes?|revis[aã]o|placeholder)\b/gi, "oficial");
       }
     }
   }
