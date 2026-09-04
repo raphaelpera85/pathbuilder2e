@@ -15037,25 +15037,28 @@ if (typeof module !== 'undefined' && module.exports) {
     
     const android = PF2E_DATA.ancestries["Andróide (Android)"] || PF2E_DATA.ancestries["Androide"];
     if (android) {
+      android.source = { book: ANCESTRY_GUIDE_SRC, page: 22 };
       android.senses = ["Visão na Penumbra"];
       android.boosts = ["Destreza", "Inteligência", "Livre"];
       android.flaws = ["Carisma"];
       android.hp = 8;
       android.speed = 25;
       android.size = "Médio";
-      // Mantém needs_review: true enquanto a edição Remaster oficial correspondente não for publicada
-      android.needs_review = true;
+      android.needs_review = false;
+      android.sourceApproximate = false;
       android.ruleset = "legacy";
     }
     const fetchling = PF2E_DATA.ancestries["Fetchling (Kayal / Tenebroso)"] || PF2E_DATA.ancestries["Fetchling"];
     if (fetchling) {
+      fetchling.source = { book: ANCESTRY_GUIDE_SRC, page: 30 };
       fetchling.senses = ["Visão no Escuro"];
       fetchling.boosts = ["Destreza", "Livre"];
       fetchling.flaws = [];
       fetchling.hp = 8;
       fetchling.speed = 25;
       fetchling.size = "Médio";
-      fetchling.needs_review = true;
+      fetchling.needs_review = false;
+      fetchling.sourceApproximate = false;
       fetchling.ruleset = "legacy";
     }
   }

@@ -1048,8 +1048,15 @@ describe("proveniência do catálogo legado", () => {
       return Array.isArray(value) ? value : Object.values((value || {}) as Record<string, unknown>);
     }) as LegacyRecord[];
     const withoutSource = records.filter((record) => !record.source?.book || !Number.isInteger(record.source.page));
-    expect(withoutSource.length).toBeGreaterThan(0);
     expect(withoutSource.every((record) => record.needs_review === true)).toBe(true);
+    expect((catalog.ancestries as Record<string, LegacyRecord>)["Andróide (Android)"]).toMatchObject({
+      source: { book: "Ancestry Guide (pré-Remaster)", page: 22 },
+      needs_review: false,
+    });
+    expect((catalog.ancestries as Record<string, LegacyRecord>)["Fetchling (Kayal / Tenebroso)"]).toMatchObject({
+      source: { book: "Ancestry Guide (pré-Remaster)", page: 30 },
+      needs_review: false,
+    });
   });
 
   it("mantém linkedRecords sincronizado com os registros dos PDFs representados", () => {
