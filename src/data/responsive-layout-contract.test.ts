@@ -1299,6 +1299,13 @@ describe("responsive layout contract", () => {
     expect(portalCss).toContain(".portal-hero { margin-bottom: 12px; }");
     expect(portalCss).toContain(".downloads-header-card { padding: 12px 14px; margin-bottom: 12px; }");
     expect(accountCss).toContain(".theme-switcher, .locale-switcher { min-height: 28px; padding: 2px 4px; }");
+
+    // Barra de ações rápidas em linha única sem quebrar a tela
+    expect(css).toContain(".quick-action-bar {\n    display: flex !important;\n    flex-wrap: nowrap !important;");
+
+    // Abas de ações sem scrollbar feio sobreposto e listas sem armadilhas de scroll aninhado
+    expect(css).toContain(".pb-nav-tabs {\n    padding: 0 6px;\n    gap: 4px;\n    overflow-x: auto !important;\n    -webkit-overflow-scrolling: touch;\n    scrollbar-width: none !important;");
+    expect(css).toContain("#weaponsList,\n  #spellsList,\n  #ritualsList {\n    min-height: 0;\n    max-height: none !important;\n    overflow-y: visible !important;");
   });
 });
 

@@ -751,6 +751,14 @@ body {
   position: relative;
 }
 
+#gearList,
+#featsFullList,
+#formulasFullList,
+#spellsList,
+#ritualsList {
+  scrollbar-gutter: stable;
+}
+
 /* FLOATING ORANGE D20 LAUNCHER (BOTTOM RIGHT) */
 .pb-floating-d20 {
   position: fixed;
@@ -2456,70 +2464,89 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, [tabindex]:fo
   .skill-name-text, .tree-node-value { overflow-wrap: anywhere; }
 
   .quick-action-bar {
-    justify-content: stretch;
-    padding: 6px 8px;
-    flex-wrap: wrap;
-    gap: 4px;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none !important;
+    padding: 4px 6px !important;
+    gap: 5px !important;
+    justify-content: flex-start !important;
+    flex: 0 0 auto !important;
+    border-bottom: 1px solid var(--pb-border);
+  }
+  .quick-action-bar::-webkit-scrollbar {
+    display: none !important;
   }
   .quick-action-bar .btn-pb-action {
-    flex: 1 1 calc(50% - 4px);
-    min-height: 34px;
-    font-size: 11px;
-    padding: 4px 6px;
+    flex: 0 0 auto !important;
+    min-height: 28px !important;
+    font-size: 10.5px !important;
+    padding: 3px 8px !important;
+    white-space: nowrap !important;
+    border-radius: 6px !important;
     text-align: center;
     justify-content: center;
   }
 
+  #activeConditions {
+    min-height: 0 !important;
+    margin: 2px 6px !important;
+    padding: 0 !important;
+    font-size: 11px !important;
+  }
+  #activeConditions:empty {
+    display: none !important;
+  }
+
   .pb-nav-tabs {
     padding: 0 6px;
-    gap: 6px;
-    overflow-x: auto;
-    scrollbar-width: thin;
+    gap: 4px;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none !important;
     position: sticky;
-    top: 96px;
+    top: 0;
     z-index: 20;
     background: var(--pb-bg-panel);
+    border-bottom: 1px solid var(--pb-border);
+  }
+  .pb-nav-tabs::-webkit-scrollbar {
+    display: none !important;
   }
   .pb-tab-btn {
-    min-height: 34px;
-    padding: 4px 10px;
+    min-height: 28px;
+    padding: 3px 8px;
     font-size: 11px;
     white-space: nowrap;
+    border-radius: 6px 6px 0 0;
   }
   .pb-tab-body {
-    padding: 8px 8px 30px;
+    padding: 6px 8px 100px;
     min-height: 0;
-    overflow-y: auto;
-    overscroll-behavior: contain;
+    overflow-y: visible !important;
+    overscroll-behavior: auto;
     flex: 1 1 auto;
   }
 
-  /* Mantém a viewport estável: listas extensas rolam dentro do próprio
-     painel, sem transformar a página inteira em uma área de rolagem. */
+  /* Na visualização móvel/tablet, as listas fluem naturalmente com a coluna
+     sem criar armadilhas de scroll aninhado e telas minúsculas. */
   #gearList,
   #featsFullList,
-  #formulasFullList {
+  #formulasFullList,
+  #weaponsList,
+  #spellsList,
+  #ritualsList {
     min-height: 0;
-    max-height: calc(100dvh - 220px);
-    overflow-y: auto;
-    overscroll-behavior: contain;
+    max-height: none !important;
+    overflow-y: visible !important;
     scrollbar-gutter: stable;
   }
 
-  /* Na ficha móvel, a lista de perícias flui com a coluna sem criar armadilha interna de scroll */
   #skillsColList {
     min-height: 0;
     max-height: none !important;
     overflow: visible !important;
-  }
-
-  #spellsList,
-  #ritualsList {
-    min-height: 0;
-    max-height: calc(100dvh - 300px);
-    overflow-y: auto;
-    overscroll-behavior: contain;
-    scrollbar-gutter: stable;
   }
 
   .abilities-summary-bar {
