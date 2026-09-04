@@ -251,3 +251,49 @@ export const pathfinderSources: PathfinderSource[] = [
     driveUrl: "https://drive.google.com/file/d/1ZcGB7EZMBdq18Vuy9iZhFV4GhmKFkMHt/view?usp=drive_link"
   },
 ];
+
+export const additionalDownloadResources: PathfinderSource[] = [
+  {
+    id: "official-blank-sheet",
+    title: "Ficha Oficial de Personagem (em branco)",
+    titles: {
+      "pt-BR": "Ficha Oficial de Personagem (em branco)",
+      en: "Official Blank Character Sheet",
+      es: "Ficha Oficial de Personaje (en blanco)"
+    },
+    language: "pt-BR",
+    pages: 4,
+    ruleset: "remaster",
+    pageCountStatus: "verified_with_pdfinfo",
+    languageEvidence: "inferred_from_filename",
+    catalogStatus: "partial",
+    linkedRecords: 0,
+    verifiedAt: "2026-09-04",
+    filename: "ficha.pdf",
+    downloadUrl: BLANK_SHEET_DRIVE_URL,
+    viewUrl: BLANK_SHEET_DRIVE_URL,
+    driveUrl: BLANK_SHEET_DRIVE_URL
+  },
+  {
+    id: "poster-map-folio",
+    title: "Mapa-Múndi (Poster Map Folio - Inner Sea)",
+    titles: {
+      "pt-BR": "Mapa-Múndi (Poster Map Folio - Inner Sea)",
+      en: "World Map (Poster Map Folio - Inner Sea)",
+      es: "Mapa del Mundo (Poster Map Folio - Inner Sea)"
+    },
+    language: "en",
+    pages: 1,
+    ruleset: "remaster",
+    pageCountStatus: "verified_with_pdfinfo",
+    languageEvidence: "inferred_from_filename",
+    catalogStatus: "partial",
+    linkedRecords: 0,
+    verifiedAt: "2026-09-04",
+    filename: "pathfinder-rpg-poster-map-folio-inner-sea.pdf",
+    downloadUrl: POSTER_MAP_FOLIO_DRIVE_URL,
+    viewUrl: POSTER_MAP_FOLIO_DRIVE_URL,
+    driveUrl: POSTER_MAP_FOLIO_DRIVE_URL
+  }
+];
+

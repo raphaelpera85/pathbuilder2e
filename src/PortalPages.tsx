@@ -1,10 +1,9 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import {
   pathfinderSources,
+  additionalDownloadResources,
   type PathfinderSource,
   GOOGLE_DRIVE_FOLDER_URL,
-  BLANK_SHEET_DRIVE_URL,
-  POSTER_MAP_FOLIO_DRIVE_URL,
 } from "./data/sources";
 import { useI18n, getItemDisplayName, type MessageKey } from "./i18n";
 import type { PickerItem, PickerType } from "./types";
@@ -441,8 +440,10 @@ function BookDownloadsSection() {
   const rulesetLabel = (ruleset: "remaster" | "legacy" | "needs_review") =>
     ruleset === "remaster" ? t("rulesetRemaster") : ruleset === "legacy" ? t("rulesetLegacy") : t("rulesetReview");
 
+  const allDownloadItems = useMemo(() => [...pathfinderSources, ...additionalDownloadResources], []);
+
   const filteredSources = useMemo(() => {
-    return pathfinderSources.filter((source) => {
+    return allDownloadItems.filter((source) => {
       const title = localizeSourceTitle(source, locale).toLowerCase();
       const filename = (source.filename || "").toLowerCase();
       const matchesQuery = !query || title.includes(query.toLowerCase()) || filename.includes(query.toLowerCase());
@@ -450,7 +451,7 @@ function BookDownloadsSection() {
       const matchesLang = langFilter === "all" || source.language === langFilter;
       return matchesQuery && matchesRuleset && matchesLang;
     });
-  }, [query, rulesetFilter, langFilter, locale]);
+  }, [allDownloadItems, query, rulesetFilter, langFilter, locale]);
 
   return (
     <section className="downloads-section" aria-label={t("downloadsTitle")}>
@@ -460,32 +461,6 @@ function BookDownloadsSection() {
           <h2>{t("downloadsTitle")}</h2>
           <p>{t("downloadsIntro")}</p>
           <small className="downloads-note">ℹ️ {t("downloadDirectNote")}</small>
-        </div>
-        <div className="downloads-repo-actions">
-          <a
-            href={GOOGLE_DRIVE_FOLDER_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-repo-link gdrive"
-          >
-            <span aria-hidden="true">☁️</span> {t("openGoogleDriveFolder")}
-          </a>
-          <a
-            href={BLANK_SHEET_DRIVE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-repo-link secondary"
-          >
-            <span aria-hidden="true">📄</span> {t("downloadBlankSheet")}
-          </a>
-          <a
-            href={POSTER_MAP_FOLIO_DRIVE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-repo-link secondary"
-          >
-            <span aria-hidden="true">🗺️</span> {t("downloadMapFolio")}
-          </a>
         </div>
       </div>
 
