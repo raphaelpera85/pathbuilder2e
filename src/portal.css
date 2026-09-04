@@ -209,20 +209,65 @@ body.portal-page-active .dice-roller-drawer { display: none !important; }
   scrollbar-color: rgba(249, 115, 22, 0.3) transparent;
 }
 
-.portal-page::-webkit-scrollbar {
+.portal-page::-webkit-scrollbar,
+.catalog-grid::-webkit-scrollbar,
+.rules-layout::-webkit-scrollbar,
+.privacy-grid::-webkit-scrollbar,
+.metric-grid::-webkit-scrollbar,
+.access-card::-webkit-scrollbar,
+.portal-panel::-webkit-scrollbar,
+.privacy-card::-webkit-scrollbar,
+.downloads-section::-webkit-scrollbar,
+.library-characters-section::-webkit-scrollbar,
+.auth-main-container::-webkit-scrollbar,
+.campaigns-layout::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
 
-.portal-page::-webkit-scrollbar-track {
+.portal-page::-webkit-scrollbar-track,
+.catalog-grid::-webkit-scrollbar-track,
+.rules-layout::-webkit-scrollbar-track,
+.privacy-grid::-webkit-scrollbar-track,
+.metric-grid::-webkit-scrollbar-track,
+.access-card::-webkit-scrollbar-track,
+.portal-panel::-webkit-scrollbar-track,
+.privacy-card::-webkit-scrollbar-track,
+.downloads-section::-webkit-scrollbar-track,
+.library-characters-section::-webkit-scrollbar-track,
+.auth-main-container::-webkit-scrollbar-track,
+.campaigns-layout::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.portal-page::-webkit-scrollbar-thumb {
+.portal-page::-webkit-scrollbar-thumb,
+.catalog-grid::-webkit-scrollbar-thumb,
+.rules-layout::-webkit-scrollbar-thumb,
+.privacy-grid::-webkit-scrollbar-thumb,
+.metric-grid::-webkit-scrollbar-thumb,
+.access-card::-webkit-scrollbar-thumb,
+.portal-panel::-webkit-scrollbar-thumb,
+.privacy-card::-webkit-scrollbar-thumb,
+.downloads-section::-webkit-scrollbar-thumb,
+.library-characters-section::-webkit-scrollbar-thumb,
+.auth-main-container::-webkit-scrollbar-thumb,
+.campaigns-layout::-webkit-scrollbar-thumb {
   background: rgba(249, 115, 22, 0.28);
   border-radius: 999px;
 }
 
-.portal-page::-webkit-scrollbar-thumb:hover {
+.portal-page::-webkit-scrollbar-thumb:hover,
+.catalog-grid::-webkit-scrollbar-thumb:hover,
+.rules-layout::-webkit-scrollbar-thumb:hover,
+.privacy-grid::-webkit-scrollbar-thumb:hover,
+.metric-grid::-webkit-scrollbar-thumb:hover,
+.access-card::-webkit-scrollbar-thumb:hover,
+.portal-panel::-webkit-scrollbar-thumb:hover,
+.privacy-card::-webkit-scrollbar-thumb:hover,
+.downloads-section::-webkit-scrollbar-thumb:hover,
+.library-characters-section::-webkit-scrollbar-thumb:hover,
+.auth-main-container::-webkit-scrollbar-thumb:hover,
+.campaigns-layout::-webkit-scrollbar-thumb:hover {
   background: var(--pb-orange);
 }
 .portal-page[tabindex]:focus-visible { outline: none; }
@@ -639,7 +684,7 @@ body.portal-page-active .dice-roller-drawer { display: none !important; }
     overflow-y: auto;
     overscroll-behavior: contain;
     scrollbar-gutter: stable;
-    padding-right: 6px;
+    padding-right: 12px;
   }
   .portal-page-active #react-portal-root > .portal-catalog-page {
     overflow: hidden;
@@ -650,7 +695,8 @@ body.portal-page-active .dice-roller-drawer { display: none !important; }
     min-height: 0;
     overflow-y: auto;
     overscroll-behavior: contain;
-    padding-right: 3px;
+    scrollbar-gutter: stable;
+    padding-right: 12px;
   }
 }
 
@@ -677,10 +723,10 @@ body.portal-page-active .dice-roller-drawer { display: none !important; }
     overflow-y: auto;
     overscroll-behavior: contain;
     scrollbar-gutter: stable;
-    padding-right: 6px;
+    padding-right: 12px;
   }
   .portal-page-active #react-portal-root > .portal-catalog-page { overflow: hidden; padding-bottom: 12px; }
-  .portal-page-active .portal-catalog-page .catalog-grid { flex: 1 1 auto; overflow-y: auto; overscroll-behavior: contain; padding-right: 3px; }
+  .portal-page-active .portal-catalog-page .catalog-grid { flex: 1 1 auto; overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; padding-right: 12px; }
   .catalog-toolbar, .rules-layout { grid-template-columns: 1fr; }
   .library-auth-page, .auth-card-hero, .auth-main-container { width: 100%; min-width: 0; max-width: 100%; box-sizing: border-box; }
   .auth-main-container { grid-template-columns: minmax(0, 1fr); }
@@ -1084,17 +1130,83 @@ body.portal-page-active .dice-roller-drawer { display: none !important; }
 }
 
 [data-theme="light"] .portal-page-active #react-portal-root > .portal-page,
-body.theme-light .portal-page-active #react-portal-root > .portal-page {
+body.theme-light .portal-page-active #react-portal-root > .portal-page,
+[data-theme="light"] .catalog-grid,
+body.theme-light .catalog-grid,
+[data-theme="light"] .rules-layout,
+body.theme-light .rules-layout,
+[data-theme="light"] .privacy-grid,
+body.theme-light .privacy-grid,
+[data-theme="light"] .metric-grid,
+body.theme-light .metric-grid,
+[data-theme="light"] .access-card,
+body.theme-light .access-card,
+[data-theme="light"] .portal-panel,
+body.theme-light .portal-panel,
+[data-theme="light"] .privacy-card,
+body.theme-light .privacy-card,
+[data-theme="light"] .downloads-section,
+body.theme-light .downloads-section,
+[data-theme="light"] .library-characters-section,
+body.theme-light .library-characters-section,
+[data-theme="light"] .auth-main-container,
+body.theme-light .auth-main-container,
+[data-theme="light"] .campaigns-layout,
+body.theme-light .campaigns-layout {
   scrollbar-color: #c2b294 transparent;
 }
 
 [data-theme="light"] .portal-page::-webkit-scrollbar-thumb,
-body.theme-light .portal-page::-webkit-scrollbar-thumb {
+body.theme-light .portal-page::-webkit-scrollbar-thumb,
+[data-theme="light"] .catalog-grid::-webkit-scrollbar-thumb,
+body.theme-light .catalog-grid::-webkit-scrollbar-thumb,
+[data-theme="light"] .rules-layout::-webkit-scrollbar-thumb,
+body.theme-light .rules-layout::-webkit-scrollbar-thumb,
+[data-theme="light"] .privacy-grid::-webkit-scrollbar-thumb,
+body.theme-light .privacy-grid::-webkit-scrollbar-thumb,
+[data-theme="light"] .metric-grid::-webkit-scrollbar-thumb,
+body.theme-light .metric-grid::-webkit-scrollbar-thumb,
+[data-theme="light"] .access-card::-webkit-scrollbar-thumb,
+body.theme-light .access-card::-webkit-scrollbar-thumb,
+[data-theme="light"] .portal-panel::-webkit-scrollbar-thumb,
+body.theme-light .portal-panel::-webkit-scrollbar-thumb,
+[data-theme="light"] .privacy-card::-webkit-scrollbar-thumb,
+body.theme-light .privacy-card::-webkit-scrollbar-thumb,
+[data-theme="light"] .downloads-section::-webkit-scrollbar-thumb,
+body.theme-light .downloads-section::-webkit-scrollbar-thumb,
+[data-theme="light"] .library-characters-section::-webkit-scrollbar-thumb,
+body.theme-light .library-characters-section::-webkit-scrollbar-thumb,
+[data-theme="light"] .auth-main-container::-webkit-scrollbar-thumb,
+body.theme-light .auth-main-container::-webkit-scrollbar-thumb,
+[data-theme="light"] .campaigns-layout::-webkit-scrollbar-thumb,
+body.theme-light .campaigns-layout::-webkit-scrollbar-thumb {
   background: #c2b294;
 }
 
 [data-theme="light"] .portal-page::-webkit-scrollbar-thumb:hover,
-body.theme-light .portal-page::-webkit-scrollbar-thumb:hover {
+body.theme-light .portal-page::-webkit-scrollbar-thumb:hover,
+[data-theme="light"] .catalog-grid::-webkit-scrollbar-thumb:hover,
+body.theme-light .catalog-grid::-webkit-scrollbar-thumb:hover,
+[data-theme="light"] .rules-layout::-webkit-scrollbar-thumb:hover,
+body.theme-light .rules-layout::-webkit-scrollbar-thumb:hover,
+[data-theme="light"] .privacy-grid::-webkit-scrollbar-thumb:hover,
+body.theme-light .privacy-grid::-webkit-scrollbar-thumb:hover,
+[data-theme="light"] .metric-grid::-webkit-scrollbar-thumb:hover,
+body.theme-light .metric-grid::-webkit-scrollbar-thumb:hover,
+[data-theme="light"] .access-card::-webkit-scrollbar-thumb:hover,
+body.theme-light .access-card::-webkit-scrollbar-thumb:hover,
+[data-theme="light"] .portal-panel::-webkit-scrollbar-thumb:hover,
+body.theme-light .portal-panel::-webkit-scrollbar-thumb:hover,
+[data-theme="light"] .privacy-card::-webkit-scrollbar-thumb:hover,
+body.theme-light .privacy-card::-webkit-scrollbar-thumb:hover,
+[data-theme="light"] .downloads-section::-webkit-scrollbar-thumb:hover,
+body.theme-light .downloads-section::-webkit-scrollbar-thumb:hover,
+[data-theme="light"] .library-characters-section::-webkit-scrollbar-thumb:hover,
+body.theme-light .library-characters-section::-webkit-scrollbar-thumb:hover,
+[data-theme="light"] .auth-main-container::-webkit-scrollbar-thumb:hover,
+body.theme-light .auth-main-container::-webkit-scrollbar-thumb:hover,
+[data-theme="light"] .campaigns-layout::-webkit-scrollbar-thumb:hover,
+body.theme-light .campaigns-layout::-webkit-scrollbar-thumb:hover {
   background: var(--pb-orange);
 }
 

@@ -206,7 +206,8 @@
     flex: 1 1 auto;
     overflow-y: auto;
     overscroll-behavior: contain;
-    padding-right: 3px;
+    scrollbar-gutter: stable;
+    padding-right: 12px;
   }
   .campaigns-sidebar,
   .campaign-main-content {
