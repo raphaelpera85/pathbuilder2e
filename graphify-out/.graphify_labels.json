@@ -20,7 +20,7 @@
   "18": "escapeHtml",
   "19": ".renderModalLeftList",
   "20": "merge-and-sync-all.cjs",
-  "21": "sources.ts",
+  "21": "PortalPages.test.tsx",
   "22": "audit-catalog.cjs",
   "23": "2. Regras que Faltavam e Foram Implementadas",
   "24": ".loadInitialCharacter",
@@ -125,7 +125,7 @@
   "123": "vite-plugin-static-copy",
   "124": "generate-catalog-seed.cjs",
   "125": "catalog.ts",
-  "126": ".openSetAbilitiesModal",
+  "126": "useI18n",
   "127": "migrate-catalog-to-supabase.cjs",
   "128": "Changelog",
   "129": "Changelog",
@@ -164,7 +164,5 @@
   "162": "security-rls-basics.md",
   "163": "security-rls-performance.md",
   "164": "_template.md",
-  "165": "PortalPages.test.tsx",
-  "166": "IPickerController",
-  "167": "IPickerBridge"
+  "166": "IPickerController"
 }

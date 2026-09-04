@@ -595,4 +595,7 @@ export const PF2E_ITEMS_CATALOG: ItemDefinition[] = [
     rarity: "common"
   },
   ...GUNS_GEARS_EQUIPMENT
-];
+].map(item => ({
+  ...item,
+  needs_review: item.needs_review ?? false,
+}));

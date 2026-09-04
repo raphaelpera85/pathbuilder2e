@@ -1,7 +1,7 @@
 {
   "0": "pf2e_data.js",
   "1": "PathbuilderApp",
-  "2": "characters.ts",
+  "2": "PortalPages.tsx",
   "3": ".renderAll",
   "4": "js/pdf-lib.min.js",
   "5": "public/js/pdf-lib.min.js",
@@ -20,7 +20,7 @@
   "18": "escapeHtml",
   "19": ".renderModalLeftList",
   "20": "merge-and-sync-all.cjs",
-  "21": "PortalPages.tsx",
+  "21": "sources.ts",
   "22": "audit-catalog.cjs",
   "23": "2. Regras que Faltavam e Foram Implementadas",
   "24": ".loadInitialCharacter",
@@ -163,5 +163,8 @@
   "161": "security-privileges.md",
   "162": "security-rls-basics.md",
   "163": "security-rls-performance.md",
-  "164": "_template.md"
+  "164": "_template.md",
+  "165": "PortalPages.test.tsx",
+  "166": "IPickerController",
+  "167": "IPickerBridge"
 }

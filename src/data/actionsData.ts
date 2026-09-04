@@ -9,6 +9,9 @@ export interface ActionDefinition {
   description: string;
   summaries?: { "pt-BR": string; en: string; es: string };
   source?: { book: string; page?: number };
+  sourceApproximate?: boolean;
+  ruleset?: "remaster" | "legacy" | "needs_review";
+  needs_review?: boolean;
 }
 
 export const PF2E_ACTIONS_CATALOG: ActionDefinition[] = [
@@ -169,4 +172,8 @@ export const PF2E_ACTIONS_CATALOG: ActionDefinition[] = [
     },
     source: { book: "Livro do Jogador (Player Core)", page: 238 }
   }
-];
+].map(action => ({
+  ...action,
+  ruleset: action.ruleset ?? "remaster",
+  needs_review: action.needs_review ?? false,
+}));

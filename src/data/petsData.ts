@@ -240,4 +240,8 @@ export const PF2E_PETS_CATALOG: PetCompanionDefinition[] = [
     summaries: { "pt-BR": "Raposa mágica erudita com fala e perícia ampliadas.", en: "A scholarly magical fox with speech and expanded expertise.", es: "Zorra mágica erudita con habla y pericia ampliadas." },
     source: { book: "Livro do Jogador 2 (Player Core 2)", page: 172 }, sourceApproximate: false, ruleset: "remaster", needs_review: false
   }
-];
+].map(pet => ({
+  ...pet,
+  ruleset: pet.ruleset ?? "remaster",
+  needs_review: pet.needs_review ?? false,
+}));

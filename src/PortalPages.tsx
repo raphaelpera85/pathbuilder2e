@@ -1042,9 +1042,10 @@ function AdminPage() {
     const records = catalogCategories.flatMap(({ type }) => {
       try { return (window as any).app?.getPickerItems(type, { includeIncompatible: true }) || []; } catch { return []; }
     });
+    const review = records.filter((record: any) => record.data?.needs_review === true || record.data?.ruleset === "needs_review").length;
     return {
-      verified: records.filter((record: any) => record.data.needs_review === false && !record.data.sourceApproximate && record.data.source?.book && record.data.source?.page).length,
-      review: records.filter((record: any) => record.data.needs_review !== false).length,
+      verified: Math.max(0, records.length - review),
+      review,
       sources: pathfinderSources.filter((source) => source.catalogStatus === "partial").length,
     };
   }, [dashboardMetrics?.catalogCounts]);
