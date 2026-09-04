@@ -66,4 +66,17 @@ describe("Theme System", () => {
     expect(document.documentElement.getAttribute("data-theme")).toBe("dark");
     expect(localStorage.getItem("pathbuilder_theme")).toBe("dark");
   });
+
+  it("garante regras de tema claro para o popup da conta em account.css", async () => {
+    const fs = await import("fs");
+    const path = await import("path");
+    const accountCss = fs.readFileSync(path.resolve(__dirname, "account.css"), "utf-8");
+
+    expect(accountCss).toContain('[data-theme="light"] .account-panel');
+    expect(accountCss).toContain('[data-theme="light"] .account-header');
+    expect(accountCss).toContain('[data-theme="light"] .cloud-character');
+    expect(accountCss).toContain('[data-theme="light"] .character-load');
+    expect(accountCss).toContain('[data-theme="light"] .account-trigger');
+  });
 });
+
