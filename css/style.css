@@ -607,6 +607,10 @@ body {
   border: 1px solid var(--pb-border);
   border-radius: 4px;
   padding: 6px;
+  flex-shrink: 0 !important;
+  box-sizing: border-box !important;
+  height: auto !important;
+  min-height: max-content;
 }
 
 .skill-item-row {
@@ -2155,6 +2159,12 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, [tabindex]:fo
 ::-webkit-scrollbar-track { background: var(--pb-bg-darkest); }
 ::-webkit-scrollbar-thumb { background: #3a4558; border: 2px solid var(--pb-border); border-radius: 999px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--pb-orange-dark); }
+[data-theme="light"] ::-webkit-scrollbar-track,
+body.theme-light ::-webkit-scrollbar-track { background: var(--pb-bg-darkest); }
+[data-theme="light"] ::-webkit-scrollbar-thumb,
+body.theme-light ::-webkit-scrollbar-thumb { background: #c2b294; border: 2px solid var(--pb-bg-darkest); }
+[data-theme="light"] ::-webkit-scrollbar-thumb:hover,
+body.theme-light ::-webkit-scrollbar-thumb:hover { background: var(--pb-orange); }
 
 .pb-topbar {
   height: 52px;
@@ -2541,6 +2551,12 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, [tabindex]:fo
     max-height: none !important;
     overflow-y: visible !important;
     scrollbar-gutter: stable;
+  }
+
+  .skills-column-list {
+    flex-shrink: 0 !important;
+    height: auto !important;
+    min-height: max-content !important;
   }
 
   #skillsColList {

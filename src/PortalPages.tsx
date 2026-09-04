@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useMemo, useRef, useState, type FormEvent } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import {
   pathfinderSources,
   additionalDownloadResources,
@@ -40,13 +40,13 @@ import "./portal.css";
 type PortalRoute = "builder" | "compendium" | "rules" | "downloads" | "library" | "campaigns" | "privacy" | "admin";
 
 const routes: PortalRoute[] = ["builder", "compendium", "rules", "downloads", "library", "campaigns", "privacy", "admin"];
-const navItems: Array<{ route: PortalRoute; label: MessageKey; icon: string }> = [
-  { route: "library", label: "navLibrary", icon: "🛡" },
-  { route: "campaigns", label: "navCampaigns", icon: "🏰" },
+const navItems: Array<{ route: PortalRoute; label: MessageKey; shortLabel?: MessageKey; icon: string }> = [
+  { route: "library", label: "navLibrary", shortLabel: "navLibraryShort", icon: "🛡" },
+  { route: "campaigns", label: "navCampaigns", shortLabel: "navCampaignsShort", icon: "🏰" },
   { route: "builder", label: "navBuilder", icon: "⚔" },
   { route: "compendium", label: "navCompendium", icon: "📖" },
-  { route: "rules", label: "navRules", icon: "📜" },
-  { route: "downloads", label: "navDownloads", icon: "📚" },
+  { route: "rules", label: "navRules", shortLabel: "navRulesShort", icon: "📜" },
+  { route: "downloads", label: "navDownloads", shortLabel: "navDownloadsShort", icon: "📚" },
   { route: "privacy", label: "navPrivacy", icon: "🔒" },
   { route: "admin", label: "navAdmin", icon: "⚙" },
 ];
@@ -1305,10 +1305,84 @@ export function PortalPages() {
     return () => window.removeEventListener("pathbuilder:character-render", updateTitle);
   }, [route, t]);
 
+  const navRef = useRef<HTMLElement>(null);
+  const [scrollState, setScrollState] = useState({ canLeft: false, canRight: false });
+
+  const updateScrollState = useCallback(() => {
+    const el = navRef.current;
+    if (!el) return;
+    const canLeft = el.scrollLeft > 4;
+    const canRight = el.scrollLeft + el.clientWidth < el.scrollWidth - 4;
+    setScrollState((prev) => (prev.canLeft !== canLeft || prev.canRight !== canRight ? { canLeft, canRight } : prev));
+  }, []);
+
+  useEffect(() => {
+    const el = navRef.current;
+    if (!el) return;
+    updateScrollState();
+    el.addEventListener("scroll", updateScrollState, { passive: true });
+    window.addEventListener("resize", updateScrollState, { passive: true });
+    return () => {
+      el.removeEventListener("scroll", updateScrollState);
+      window.removeEventListener("resize", updateScrollState);
+    };
+  }, [updateScrollState]);
+
+  useEffect(() => {
+    const el = navRef.current;
+    if (!el) return;
+    const activeEl = el.querySelector<HTMLElement>('[aria-current="page"]');
+    if (activeEl && typeof activeEl.scrollIntoView === "function") {
+      activeEl.scrollIntoView({ inline: "center", block: "nearest", behavior: "smooth" });
+    }
+  }, [route]);
+
+  const scrollNav = (direction: "left" | "right") => {
+    const el = navRef.current;
+    if (!el) return;
+    const delta = direction === "left" ? -180 : 180;
+    if (typeof el.scrollBy === "function") {
+      el.scrollBy({ left: delta, behavior: "smooth" });
+    } else {
+      el.scrollLeft += delta;
+    }
+    setTimeout(updateScrollState, 150);
+  };
+
   return <>
-    <nav className="portal-nav" aria-label={t("navLabel")}>
-      {navItems.filter((item) => item.route !== "admin" || account.isAdmin).map((item) => <a key={item.route} href={`#/${item.route}`} aria-current={route === item.route ? "page" : undefined}><span aria-hidden="true">{item.icon}</span>{t(item.label)}</a>)}
-    </nav>
+    <div className={`portal-nav-wrapper ${scrollState.canLeft ? "has-scroll-left" : ""} ${scrollState.canRight ? "has-scroll-right" : ""}`}>
+      {scrollState.canLeft && (
+        <button
+          type="button"
+          className="portal-nav-scroll-btn portal-nav-scroll-btn-left"
+          onClick={() => scrollNav("left")}
+          aria-label="Rolar menu para a esquerda"
+          tabIndex={-1}
+        >
+          ‹
+        </button>
+      )}
+      <nav ref={navRef} className="portal-nav" aria-label={t("navLabel")}>
+        {navItems.filter((item) => item.route !== "admin" || account.isAdmin).map((item) => (
+          <a key={item.route} href={`#/${item.route}`} aria-current={route === item.route ? "page" : undefined}>
+            <span aria-hidden="true">{item.icon}</span>
+            <span className="nav-label-full">{t(item.label)}</span>
+            <span className="nav-label-short">{t(item.shortLabel || item.label)}</span>
+          </a>
+        ))}
+      </nav>
+      {scrollState.canRight && (
+        <button
+          type="button"
+          className="portal-nav-scroll-btn portal-nav-scroll-btn-right"
+          onClick={() => scrollNav("right")}
+          aria-label="Rolar menu para a direita"
+          tabIndex={-1}
+        >
+          ›
+        </button>
+      )}
+    </div>
     {route === "library" && <LibraryPage />}
     {route === "campaigns" && <CampaignsPage />}
     {route === "compendium" && <CatalogPage />}

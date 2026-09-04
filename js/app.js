@@ -1018,14 +1018,53 @@ class PathbuilderApp {
     
     const shieldStatus = document.getElementById("shieldStatusText");
     const shieldBonus = document.getElementById("shieldBonusText");
-    if (this.character.shieldRaised) {
-      shieldStatus.innerText = isEn ? "Shield Raised (+2 AC)" : isEs ? "Escudo Alzado (+2 CA)" : "Escudo Erguido (+2 CA)";
-      shieldBonus.innerText = isEn ? "Lower" : isEs ? "Bajar" : "Abaixar";
-      shieldStatus.style.color = "var(--pb-orange)";
+    const shieldContainer = document.getElementById("shieldBarContainer") || shieldStatus?.parentElement;
+    const hasShield = !!(this.character.equippedShield && (this.character.equippedShield.name || this.character.equippedShield.acBonus))
+      || !!(this.character.shieldBonus || this.character.shieldHardness || this.character.shieldMaxHp);
+
+    if (!hasShield) {
+      this.character.shieldRaised = false;
+      if (shieldStatus) {
+        shieldStatus.innerText = isEn ? "No Shield (+0)" : isEs ? "Sin Escudo (+0)" : "Sem Escudo (+0)";
+        shieldStatus.style.color = "var(--pb-text-muted)";
+      }
+      if (shieldBonus) {
+        shieldBonus.innerText = "";
+        shieldBonus.style.display = "none";
+      }
+      if (shieldContainer) {
+        shieldContainer.style.cursor = "default";
+        shieldContainer.title = isEn ? "No shield equipped" : isEs ? "Sin escudo equipado" : "Nenhum escudo equipado";
+      }
     } else {
-      shieldStatus.innerText = isEn ? "No Shield (+0)" : isEs ? "Sin Escudo (+0)" : "Sem Escudo (+0)";
-      shieldBonus.innerText = isEn ? "Raise" : isEs ? "Alzar" : "Erguer";
-      shieldStatus.style.color = "var(--pb-text-muted)";
+      const shieldName = this.character.equippedShield?.name
+        ? this.localizeItemName(this.character.equippedShield.name, locale)
+        : (isEn ? "Shield" : isEs ? "Escudo" : "Escudo");
+      const bonusVal = Number(this.character.equippedShield?.acBonus || this.character.shieldBonus) || 2;
+      if (shieldContainer) {
+        shieldContainer.style.cursor = "pointer";
+        shieldContainer.title = isEn ? "Click to raise/lower shield" : isEs ? "Clic para alzar/bajar escudo" : "Clique para erguer/abaixar o escudo";
+      }
+      if (shieldBonus) {
+        shieldBonus.style.display = "";
+      }
+      if (this.character.shieldRaised) {
+        if (shieldStatus) {
+          shieldStatus.innerText = `${shieldName} (+${bonusVal} CA)`;
+          shieldStatus.style.color = "var(--pb-orange)";
+        }
+        if (shieldBonus) {
+          shieldBonus.innerText = isEn ? "Lower" : isEs ? "Bajar" : "Abaixar";
+        }
+      } else {
+        if (shieldStatus) {
+          shieldStatus.innerText = `${shieldName} (+0)`;
+          shieldStatus.style.color = "var(--pb-text-muted)";
+        }
+        if (shieldBonus) {
+          shieldBonus.innerText = isEn ? "Raise" : isEs ? "Alzar" : "Erguer";
+        }
+      }
     }
 
     // Salvaguardas
@@ -1423,6 +1462,11 @@ class PathbuilderApp {
   stowShield() {
     this.storeInventoryEntry(this.character.equippedShield);
     this.character.equippedShield = null;
+    this.character.shieldRaised = false;
+    delete this.character.shieldBonus;
+    delete this.character.shieldHardness;
+    delete this.character.shieldBt;
+    delete this.character.shieldMaxHp;
     this.saveCharacterLocal(false);
     this.renderAll();
   }
@@ -5754,6 +5798,12 @@ class PathbuilderApp {
   }
 
   toggleShield() {
+    const hasShield = !!(this.character.equippedShield && (this.character.equippedShield.name || this.character.equippedShield.acBonus))
+      || !!(this.character.shieldBonus || this.character.shieldHardness || this.character.shieldMaxHp);
+    if (!hasShield) {
+      this.character.shieldRaised = false;
+      return;
+    }
     this.character.shieldRaised = !this.character.shieldRaised;
     this.saveCharacterLocal(false);
     this.renderAll();
