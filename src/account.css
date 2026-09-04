@@ -433,11 +433,22 @@ button:disabled { opacity: .56; cursor: not-allowed; }
 .profile-settings .danger-button { margin-top: 8px; color: #fecaca; background: rgba(127,29,29,.24); border-color: rgba(239,68,68,.45); }
 .signout-button { align-self: flex-start; }
 
+@media (max-width: 768px) {
+  .portal-controls { min-width: 0; gap: 4px; }
+  .theme-switcher, .locale-switcher { min-height: 28px; padding: 2px 4px; }
+  .theme-toggle-btn { min-height: 24px; padding: 2px 5px; font-size: 10px; gap: 3px; }
+  .theme-toggle-text { font-size: 10px; }
+  .flag-btn { padding: 2px 3px; font-size: 13px; }
+  .account-trigger { min-height: 28px; padding: 3px 6px; font-size: 11px; }
+}
+
 @media (max-width: 620px) {
-  .portal-controls { min-width: 0; gap: 5px; }
-  .locale-switcher { padding-inline: 6px; }
+  .portal-controls { min-width: 0; gap: 4px; }
+  .theme-toggle-text { display: none; }
+  .locale-switcher { padding-inline: 4px; }
   .locale-switcher > span[aria-hidden] { display: none; }
-  .account-trigger { padding-inline: 9px; }
+  .account-trigger { padding-inline: 6px; }
+  .account-trigger span:not(:first-child) { max-width: 72px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .account-trigger .admin-badge { display: none; }
   .account-header, .auth-form, .account-content { padding: 16px; }
   .cloud-actions { grid-template-columns: 1fr; }

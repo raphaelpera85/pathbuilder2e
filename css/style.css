@@ -2339,11 +2339,23 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, [tabindex]:fo
   }
   #topCharTitle { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
-  /* Exibe a barra de navegação responsiva */
+  /* Oculta o botão redundante de alternar plano em mobile/tablet */
+  #btnTogglePlan {
+    display: none !important;
+  }
+
   .pb-mobile-view-nav {
     display: flex !important;
     position: sticky;
     top: 52px;
+    padding: 3px 6px;
+    gap: 4px;
+  }
+  .pb-mobile-view-btn {
+    padding: 5px 4px;
+    font-size: 11px;
+    gap: 4px;
+    min-height: 32px;
   }
 
   .pb-workspace {
@@ -2376,7 +2388,7 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, [tabindex]:fo
   .pb-plan-tree.mobile-visible {
     display: flex !important;
     flex-direction: column;
-    padding: 12px 10px 80px;
+    padding: 8px 8px 80px;
     height: 100%;
     min-height: 0;
     overflow-y: auto;
@@ -2386,7 +2398,7 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, [tabindex]:fo
   .pb-stats-col.mobile-visible {
     display: flex !important;
     flex-direction: column;
-    padding: 12px 10px 80px;
+    padding: 6px 8px 90px;
     height: 100%;
     min-height: 0;
     overflow-y: auto;
@@ -2407,38 +2419,60 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, [tabindex]:fo
   .pb-stats-col:not(.mobile-hidden):not(.mobile-visible) {
     display: flex !important;
     flex-direction: column;
-    padding: 12px 10px 80px;
+    padding: 6px 8px 90px;
     height: 100%;
     min-height: 0;
     overflow-y: auto;
     overscroll-behavior: contain;
   }
 
-  /* Ajustes finos dos componentes para caber na tela sem scroll */
+  /* Ajustes finos dos componentes para caber na tela sem scroll excessivo */
   .pb-stats-col *, .pb-content-col * { min-width: 0; box-sizing: border-box; }
-  .pb-header-row { flex-wrap: wrap; gap: 6px; }
+  .pb-header-row {
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 4px;
+  }
+  .pb-header-row .stat-input-box {
+    padding: 2px 4px;
+  }
+  .pb-header-row .stat-input-box label {
+    font-size: 8px;
+    margin-bottom: 1px;
+  }
+  .pb-header-row .stat-input-box input,
+  .pb-header-row .stat-input-box select {
+    font-size: 11px;
+    height: 22px;
+  }
+  #readinessBadgeBtn,
+  #variantRulesBtn {
+    padding: 2px 6px !important;
+    font-size: 10px !important;
+    gap: 3px !important;
+  }
   .stat-input-box input, .stat-input-box select { width: 100%; min-width: 0; }
   .stat-input-box { overflow: hidden; }
   .skill-name-text, .tree-node-value { overflow-wrap: anywhere; }
 
   .quick-action-bar {
     justify-content: stretch;
-    padding: 9px 10px;
+    padding: 6px 8px;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 4px;
   }
   .quick-action-bar .btn-pb-action {
-    flex: 1 1 calc(50% - 6px);
-    min-height: 38px;
+    flex: 1 1 calc(50% - 4px);
+    min-height: 34px;
     font-size: 11px;
-    padding: 6px 8px;
+    padding: 4px 6px;
     text-align: center;
     justify-content: center;
   }
 
   .pb-nav-tabs {
-    padding: 0 8px;
-    gap: 8px;
+    padding: 0 6px;
+    gap: 6px;
     overflow-x: auto;
     scrollbar-width: thin;
     position: sticky;
@@ -2447,13 +2481,13 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, [tabindex]:fo
     background: var(--pb-bg-panel);
   }
   .pb-tab-btn {
-    min-height: 40px;
-    padding: 6px 12px;
+    min-height: 34px;
+    padding: 4px 10px;
     font-size: 11px;
     white-space: nowrap;
   }
   .pb-tab-body {
-    padding: 12px 10px 30px;
+    padding: 8px 8px 30px;
     min-height: 0;
     overflow-y: auto;
     overscroll-behavior: contain;
@@ -2464,13 +2498,19 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, [tabindex]:fo
      painel, sem transformar a página inteira em uma área de rolagem. */
   #gearList,
   #featsFullList,
-  #formulasFullList,
-  #skillsColList {
+  #formulasFullList {
     min-height: 0;
     max-height: calc(100dvh - 220px);
     overflow-y: auto;
     overscroll-behavior: contain;
     scrollbar-gutter: stable;
+  }
+
+  /* Na ficha móvel, a lista de perícias flui com a coluna sem criar armadilha interna de scroll */
+  #skillsColList {
+    min-height: 0;
+    max-height: none !important;
+    overflow: visible !important;
   }
 
   #spellsList,
@@ -2484,19 +2524,87 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, [tabindex]:fo
 
   .abilities-summary-bar {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 6px;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 3px;
+    margin-bottom: 4px;
+  }
+  .abilities-summary-bar .ability-mini-box {
+    padding: 2px 1px;
+    border-radius: 4px;
+  }
+  .abilities-summary-bar .ability-mini-label {
+    font-size: 8px;
+  }
+  .abilities-summary-bar .ability-mini-mod {
+    font-size: 12px;
   }
 
   .vitals-combat-row {
-    flex-wrap: wrap;
-    gap: 8px;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 5px;
+    align-items: stretch;
+    margin-bottom: 4px;
   }
   .vitals-combat-row > * {
-    flex: 1 1 calc(50% - 4px);
+    flex: 1 1 auto;
+  }
+  .ac-shield-badge {
+    flex: 0 0 48px !important;
+    width: 48px !important;
+    min-width: 48px !important;
+    min-height: 48px !important;
+    padding: 2px !important;
+    border-radius: 4px 4px 20px 20px !important;
+  }
+  .ac-shield-title {
+    font-size: 9px !important;
+  }
+  .ac-shield-value {
+    font-size: 16px !important;
+  }
+  .hp-column {
+    flex: 1 1 35% !important;
+    min-width: 0 !important;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .hp-bar-container {
+    padding: 2px 6px !important;
+    font-size: 10px !important;
+  }
+  .hp-bar-container #hpVal {
+    font-size: 12px !important;
+  }
+  .shield-bar-container {
+    padding: 2px 6px !important;
+    font-size: 10px !important;
   }
   .saves-col-box {
-    min-width: 140px;
+    flex: 1 1 42% !important;
+    min-width: 0 !important;
+    gap: 2px !important;
+  }
+  .saves-col-box .save-badge-row {
+    padding: 2px 4px !important;
+    font-size: 10px !important;
+    gap: 3px !important;
+  }
+  .saves-col-box .save-badge-row span:last-child {
+    font-size: 9px !important;
+  }
+  .saves-col-box .teml-circle {
+    width: 14px !important;
+    height: 14px !important;
+    font-size: 8px !important;
+    line-height: 14px !important;
+  }
+
+  .sub-stats-row {
+    padding: 3px 6px;
+    margin-bottom: 4px;
+    font-size: 11px;
   }
 
   .pb-floating-d20 {
@@ -2524,11 +2632,12 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, [tabindex]:fo
 @media (max-width: 480px) {
   .pb-mobile-view-btn {
     font-size: 10px;
-    padding: 6px 3px;
-    gap: 4px;
+    padding: 5px 2px;
+    gap: 3px;
   }
   .abilities-summary-bar {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(6, 1fr);
+    gap: 2px;
   }
   .quick-action-bar .btn-pb-action {
     flex-basis: 100%;

@@ -44,13 +44,15 @@ body.portal-page-active .dice-roller-drawer { display: none !important; }
 @media (max-width: 768px) {
   .portal-nav {
     justify-content: flex-start;
-    padding: 5px 8px;
+    padding: 3px 6px;
     gap: 4px;
+    min-height: 36px;
   }
   .portal-nav a {
-    padding: 5px 9px;
+    min-height: 28px;
+    padding: 3px 8px;
     font-size: 11px;
-    gap: 5px;
+    gap: 4px;
   }
 }
 
@@ -557,6 +559,13 @@ body.portal-page-active .dice-roller-drawer { display: none !important; }
   .library-callout { grid-template-columns: 1fr; }
   .privacy-grid, .metric-grid { grid-template-columns: 1fr; }
   .characters-library-grid { grid-template-columns: minmax(0, 1fr); }
+  .portal-hero { margin-bottom: 12px; }
+  .portal-hero > span, .library-callout > div > span { font-size: 9px; }
+  .portal-hero h1, .library-callout h1 { font-size: clamp(18px, 4vw, 24px); margin: 3px 0 6px; }
+  .portal-hero p, .library-callout p, .portal-panel > p, .privacy-card p { font-size: 12px; line-height: 1.45; }
+  .library-dash-header { padding: 10px 12px; margin-bottom: 10px; }
+  .downloads-header-card { padding: 12px 14px; margin-bottom: 12px; }
+  .catalog-toolbar { padding: 8px 10px; gap: 8px; margin-bottom: 10px; }
 }
 
 /* Book Downloads Section */

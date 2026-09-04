@@ -1277,4 +1277,28 @@ describe("responsive layout contract", () => {
     expect(audit).toContain('"heritages"');
     expect(audit).toContain("process.argv.includes(\"--strict\")");
   });
+
+  it("garante compacidade do cabeçalho, atributos, vitais e ausência de scroll trap em telas móveis e tablets", () => {
+    const css = read("css/style.css");
+    const portalCss = read("src/portal.css");
+    const accountCss = read("src/account.css");
+
+    // Oculta o botão 'Ocultar Plano' redundante no mobile
+    expect(css).toContain("#btnTogglePlan {\n    display: none !important;\n  }");
+
+    // Atributos cabem em linha única de 6 colunas
+    expect(css).toContain("grid-template-columns: repeat(6, 1fr);");
+
+    // Vitals em linha única não-envelopada
+    expect(css).toContain("display: flex;\n    flex-wrap: nowrap;\n    gap: 5px;\n    align-items: stretch;");
+
+    // Perícias não geram armadilha de scroll interna
+    expect(css).toContain("#skillsColList {\n    min-height: 0;\n    max-height: none !important;\n    overflow: visible !important;\n  }");
+
+    // Portal e banners compactos em telas pequenas
+    expect(portalCss).toContain(".portal-hero { margin-bottom: 12px; }");
+    expect(portalCss).toContain(".downloads-header-card { padding: 12px 14px; margin-bottom: 12px; }");
+    expect(accountCss).toContain(".theme-switcher, .locale-switcher { min-height: 28px; padding: 2px 4px; }");
+  });
 });
+
