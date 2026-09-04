@@ -17,6 +17,19 @@
       "id": "js_app_pathbuilderapp"
     },
     {
+      "label": "MessageKey",
+      "file_type": "code",
+      "source_file": "src/i18n.tsx",
+      "source_location": "L236",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "PickerModal.tsx",
+      "norm_label": "messagekey",
+      "id": "src_i18n_messagekey"
+    },
+    {
       "label": "PickerModalProps",
       "file_type": "code",
       "source_file": "src/PickerModal.tsx",
@@ -102,10 +115,10 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "id": "src_services_catalog_catalogitemrecord",
       "community": 125,
       "community_name": "catalog.ts",
-      "norm_label": "catalogitemrecord"
+      "norm_label": "catalogitemrecord",
+      "id": "src_services_catalog_catalogitemrecord"
     },
     {
       "label": "CatalogSyncStatus",
@@ -115,10 +128,10 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "id": "src_services_catalog_catalogsyncstatus",
       "community": 125,
       "community_name": "catalog.ts",
-      "norm_label": "catalogsyncstatus"
+      "norm_label": "catalogsyncstatus",
+      "id": "src_services_catalog_catalogsyncstatus"
     },
     {
       "label": "CatalogTableName",
@@ -128,10 +141,10 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "id": "src_services_catalog_catalogtablename",
       "community": 125,
       "community_name": "catalog.ts",
-      "norm_label": "catalogtablename"
+      "norm_label": "catalogtablename",
+      "id": "src_services_catalog_catalogtablename"
     },
     {
       "label": "PickerType",
@@ -212,19 +225,6 @@
       "id": "src_i18n_i18nvalue"
     },
     {
-      "label": "MessageKey",
-      "file_type": "code",
-      "source_file": "src/i18n.tsx",
-      "source_location": "L236",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "i18n.tsx",
-      "norm_label": "messagekey",
-      "id": "src_i18n_messagekey"
-    },
-    {
       "label": "AuthMode",
       "file_type": "code",
       "source_file": "src/AccountPortal.tsx",
@@ -258,10 +258,10 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "id": "src_portalpages_portalroute",
       "community": 2,
       "community_name": "PortalPages.tsx",
-      "norm_label": "portalroute"
+      "norm_label": "portalroute",
+      "id": "src_portalpages_portalroute"
     },
     {
       "label": "AccessLogEntry",
@@ -597,7 +597,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 83,
-      "community_name": "useI18n",
+      "community_name": "theme.tsx",
       "norm_label": "theme",
       "id": "src_theme_theme"
     },
@@ -610,7 +610,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 83,
-      "community_name": "useI18n",
+      "community_name": "theme.tsx",
       "norm_label": "themecontexttype",
       "id": "src_theme_themecontexttype"
     },
@@ -1722,10 +1722,10 @@
       "source_location": "L387",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_portalpages_catalogcard",
       "community": 10,
       "community_name": "PickerModal.tsx",
-      "norm_label": "catalogcard()"
+      "norm_label": "catalogcard()",
+      "id": "src_portalpages_catalogcard"
     },
     {
       "label": "loadEngine()",
@@ -2136,10 +2136,22 @@
       "id": "js_pdf_lib_min_t"
     },
     {
+      "label": "formatPrice()",
+      "file_type": "code",
+      "source_file": "scripts/generate-catalog-seed.cjs",
+      "source_location": "L34",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "scripts_generate_catalog_seed_formatprice",
+      "community": 124,
+      "community_name": "generate-catalog-seed.cjs",
+      "norm_label": "formatprice()"
+    },
+    {
       "label": "generateInsertSql()",
       "file_type": "code",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L712",
+      "source_location": "L747",
       "_callable": true,
       "_origin": "ast",
       "id": "scripts_generate_catalog_seed_generateinsertsql",
@@ -2148,10 +2160,22 @@
       "norm_label": "generateinsertsql()"
     },
     {
+      "label": "priceToGpNumber()",
+      "file_type": "code",
+      "source_file": "scripts/generate-catalog-seed.cjs",
+      "source_location": "L49",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "scripts_generate_catalog_seed_pricetogpnumber",
+      "community": 124,
+      "community_name": "generate-catalog-seed.cjs",
+      "norm_label": "pricetogpnumber()"
+    },
+    {
       "label": "registerItem()",
       "file_type": "code",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L147",
+      "source_location": "L182",
       "_callable": true,
       "_origin": "ast",
       "id": "scripts_generate_catalog_seed_registeritem",
@@ -2187,7 +2211,7 @@
       "label": "sqlJsonb()",
       "file_type": "code",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L39",
+      "source_location": "L74",
       "_callable": true,
       "_origin": "ast",
       "id": "scripts_generate_catalog_seed_sqljsonb",
@@ -2214,10 +2238,10 @@
       "source_location": "L192",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_services_catalog_fetchcatalogcategory",
       "community": 125,
       "community_name": "catalog.ts",
-      "norm_label": "fetchcatalogcategory()"
+      "norm_label": "fetchcatalogcategory()",
+      "id": "src_services_catalog_fetchcatalogcategory"
     },
     {
       "label": "fetchCatalogItemById()",
@@ -2226,10 +2250,10 @@
       "source_location": "L241",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_services_catalog_fetchcatalogitembyid",
       "community": 125,
       "community_name": "catalog.ts",
-      "norm_label": "fetchcatalogitembyid()"
+      "norm_label": "fetchcatalogitembyid()",
+      "id": "src_services_catalog_fetchcatalogitembyid"
     },
     {
       "label": "getCatalogSyncStatus()",
@@ -2238,10 +2262,10 @@
       "source_location": "L270",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_services_catalog_getcatalogsyncstatus",
       "community": 125,
       "community_name": "catalog.ts",
-      "norm_label": "getcatalogsyncstatus()"
+      "norm_label": "getcatalogsyncstatus()",
+      "id": "src_services_catalog_getcatalogsyncstatus"
     },
     {
       "label": "getFromLocalCache()",
@@ -2250,10 +2274,10 @@
       "source_location": "L168",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_services_catalog_getfromlocalcache",
       "community": 125,
       "community_name": "catalog.ts",
-      "norm_label": "getfromlocalcache()"
+      "norm_label": "getfromlocalcache()",
+      "id": "src_services_catalog_getfromlocalcache"
     },
     {
       "label": "getLocalRuntimeItems()",
@@ -2262,10 +2286,10 @@
       "source_location": "L134",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_services_catalog_getlocalruntimeitems",
       "community": 125,
       "community_name": "catalog.ts",
-      "norm_label": "getlocalruntimeitems()"
+      "norm_label": "getlocalruntimeitems()",
+      "id": "src_services_catalog_getlocalruntimeitems"
     },
     {
       "label": "normalizeSupabaseRecordToPickerItem()",
@@ -2274,10 +2298,10 @@
       "source_location": "L77",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_services_catalog_normalizesupabaserecordtopickeritem",
       "community": 125,
       "community_name": "catalog.ts",
-      "norm_label": "normalizesupabaserecordtopickeritem()"
+      "norm_label": "normalizesupabaserecordtopickeritem()",
+      "id": "src_services_catalog_normalizesupabaserecordtopickeritem"
     },
     {
       "label": "saveToLocalCache()",
@@ -2286,10 +2310,10 @@
       "source_location": "L150",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_services_catalog_savetolocalcache",
       "community": 125,
       "community_name": "catalog.ts",
-      "norm_label": "savetolocalcache()"
+      "norm_label": "savetolocalcache()",
+      "id": "src_services_catalog_savetolocalcache"
     },
     {
       "label": ".filterDeityList()",
@@ -2406,10 +2430,10 @@
       "source_location": "L49",
       "_callable": true,
       "_origin": "ast",
-      "id": "scripts_migrate_catalog_to_supabase_run",
       "community": 127,
       "community_name": "migrate-catalog-to-supabase.cjs",
-      "norm_label": "run()"
+      "norm_label": "run()",
+      "id": "scripts_migrate_catalog_to_supabase_run"
     },
     {
       "label": "controller()",
@@ -2746,6 +2770,18 @@
       "community_name": "i18n.tsx",
       "norm_label": "i18nprovider()",
       "id": "src_i18n_i18nprovider"
+    },
+    {
+      "label": "LocaleSwitcher()",
+      "file_type": "code",
+      "source_file": "src/i18n.tsx",
+      "source_location": "L529",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "i18n.tsx",
+      "norm_label": "localeswitcher()",
+      "id": "src_i18n_localeswitcher"
     },
     {
       "label": "SpainFlag()",
@@ -3708,16 +3744,28 @@
       "id": "src_campaignspage_campaignspage"
     },
     {
+      "label": "useI18n()",
+      "file_type": "code",
+      "source_file": "src/i18n.tsx",
+      "source_location": "L303",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "PortalPages.tsx",
+      "norm_label": "usei18n()",
+      "id": "src_i18n_usei18n"
+    },
+    {
       "label": "AdminPage()",
       "file_type": "code",
       "source_file": "src/PortalPages.tsx",
       "source_location": "L1009",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_portalpages_adminpage",
       "community": 2,
       "community_name": "PortalPages.tsx",
-      "norm_label": "adminpage()"
+      "norm_label": "adminpage()",
+      "id": "src_portalpages_adminpage"
     },
     {
       "label": "BookDownloadsSection()",
@@ -3726,10 +3774,10 @@
       "source_location": "L418",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_portalpages_bookdownloadssection",
       "community": 2,
       "community_name": "PortalPages.tsx",
-      "norm_label": "bookdownloadssection()"
+      "norm_label": "bookdownloadssection()",
+      "id": "src_portalpages_bookdownloadssection"
     },
     {
       "label": "CatalogPage()",
@@ -3738,10 +3786,22 @@
       "source_location": "L137",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_portalpages_catalogpage",
       "community": 2,
       "community_name": "PortalPages.tsx",
-      "norm_label": "catalogpage()"
+      "norm_label": "catalogpage()",
+      "id": "src_portalpages_catalogpage"
+    },
+    {
+      "label": "DownloadsPage()",
+      "file_type": "code",
+      "source_file": "src/PortalPages.tsx",
+      "source_location": "L560",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "PortalPages.tsx",
+      "norm_label": "downloadspage()",
+      "id": "src_portalpages_downloadspage"
     },
     {
       "label": "formatCatalogValue()",
@@ -3750,10 +3810,10 @@
       "source_location": "L339",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_portalpages_formatcatalogvalue",
       "community": 2,
       "community_name": "PortalPages.tsx",
-      "norm_label": "formatcatalogvalue()"
+      "norm_label": "formatcatalogvalue()",
+      "id": "src_portalpages_formatcatalogvalue"
     },
     {
       "label": "getLocalizedTrait()",
@@ -3762,10 +3822,22 @@
       "source_location": "L382",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_portalpages_getlocalizedtrait",
       "community": 2,
       "community_name": "PortalPages.tsx",
-      "norm_label": "getlocalizedtrait()"
+      "norm_label": "getlocalizedtrait()",
+      "id": "src_portalpages_getlocalizedtrait"
+    },
+    {
+      "label": "getRoute()",
+      "file_type": "code",
+      "source_file": "src/PortalPages.tsx",
+      "source_location": "L128",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "PortalPages.tsx",
+      "norm_label": "getroute()",
+      "id": "src_portalpages_getroute"
     },
     {
       "label": "hasFallbackTranslation()",
@@ -3774,10 +3846,10 @@
       "source_location": "L328",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_portalpages_hasfallbacktranslation",
       "community": 2,
       "community_name": "PortalPages.tsx",
-      "norm_label": "hasfallbacktranslation()"
+      "norm_label": "hasfallbacktranslation()",
+      "id": "src_portalpages_hasfallbacktranslation"
     },
     {
       "label": "LibraryPage()",
@@ -3786,10 +3858,10 @@
       "source_location": "L589",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_portalpages_librarypage",
       "community": 2,
       "community_name": "PortalPages.tsx",
-      "norm_label": "librarypage()"
+      "norm_label": "librarypage()",
+      "id": "src_portalpages_librarypage"
     },
     {
       "label": "localizeCatalogKey()",
@@ -3798,10 +3870,10 @@
       "source_location": "L362",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_portalpages_localizecatalogkey",
       "community": 2,
       "community_name": "PortalPages.tsx",
-      "norm_label": "localizecatalogkey()"
+      "norm_label": "localizecatalogkey()",
+      "id": "src_portalpages_localizecatalogkey"
     },
     {
       "label": "localizeCatalogValue()",
@@ -3810,10 +3882,10 @@
       "source_location": "L349",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_portalpages_localizecatalogvalue",
       "community": 2,
       "community_name": "PortalPages.tsx",
-      "norm_label": "localizecatalogvalue()"
+      "norm_label": "localizecatalogvalue()",
+      "id": "src_portalpages_localizecatalogvalue"
     },
     {
       "label": "localizeSourceBook()",
@@ -3822,10 +3894,10 @@
       "source_location": "L76",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_portalpages_localizesourcebook",
       "community": 2,
       "community_name": "PortalPages.tsx",
-      "norm_label": "localizesourcebook()"
+      "norm_label": "localizesourcebook()",
+      "id": "src_portalpages_localizesourcebook"
     },
     {
       "label": "localizeSourceLanguage()",
@@ -3834,10 +3906,10 @@
       "source_location": "L102",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_portalpages_localizesourcelanguage",
       "community": 2,
       "community_name": "PortalPages.tsx",
-      "norm_label": "localizesourcelanguage()"
+      "norm_label": "localizesourcelanguage()",
+      "id": "src_portalpages_localizesourcelanguage"
     },
     {
       "label": "localizeSourceTitle()",
@@ -3846,10 +3918,34 @@
       "source_location": "L96",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_portalpages_localizesourcetitle",
       "community": 2,
       "community_name": "PortalPages.tsx",
-      "norm_label": "localizesourcetitle()"
+      "norm_label": "localizesourcetitle()",
+      "id": "src_portalpages_localizesourcetitle"
+    },
+    {
+      "label": "PortalPages()",
+      "file_type": "code",
+      "source_file": "src/PortalPages.tsx",
+      "source_location": "L1255",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "PortalPages.tsx",
+      "norm_label": "portalpages()",
+      "id": "src_portalpages_portalpages"
+    },
+    {
+      "label": "PrivacyPage()",
+      "file_type": "code",
+      "source_file": "src/PortalPages.tsx",
+      "source_location": "L997",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "PortalPages.tsx",
+      "norm_label": "privacypage()",
+      "id": "src_portalpages_privacypage"
     },
     {
       "label": "RulesPage()",
@@ -3858,10 +3954,10 @@
       "source_location": "L574",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_portalpages_rulespage",
       "community": 2,
       "community_name": "PortalPages.tsx",
-      "norm_label": "rulespage()"
+      "norm_label": "rulespage()",
+      "id": "src_portalpages_rulespage"
     },
     {
       "label": "getAdminDashboardMetrics()",
@@ -9060,78 +9156,6 @@
       "id": "scripts_extract_core_ancestry_feats_titlecase"
     },
     {
-      "label": "LocaleSwitcher()",
-      "file_type": "code",
-      "source_file": "src/i18n.tsx",
-      "source_location": "L529",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 83,
-      "community_name": "useI18n",
-      "norm_label": "localeswitcher()",
-      "id": "src_i18n_localeswitcher"
-    },
-    {
-      "label": "useI18n()",
-      "file_type": "code",
-      "source_file": "src/i18n.tsx",
-      "source_location": "L303",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 83,
-      "community_name": "useI18n",
-      "norm_label": "usei18n()",
-      "id": "src_i18n_usei18n"
-    },
-    {
-      "label": "DownloadsPage()",
-      "file_type": "code",
-      "source_file": "src/PortalPages.tsx",
-      "source_location": "L560",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_portalpages_downloadspage",
-      "community": 83,
-      "community_name": "useI18n",
-      "norm_label": "downloadspage()"
-    },
-    {
-      "label": "getRoute()",
-      "file_type": "code",
-      "source_file": "src/PortalPages.tsx",
-      "source_location": "L128",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_portalpages_getroute",
-      "community": 83,
-      "community_name": "useI18n",
-      "norm_label": "getroute()"
-    },
-    {
-      "label": "PortalPages()",
-      "file_type": "code",
-      "source_file": "src/PortalPages.tsx",
-      "source_location": "L1255",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_portalpages_portalpages",
-      "community": 83,
-      "community_name": "useI18n",
-      "norm_label": "portalpages()"
-    },
-    {
-      "label": "PrivacyPage()",
-      "file_type": "code",
-      "source_file": "src/PortalPages.tsx",
-      "source_location": "L997",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_portalpages_privacypage",
-      "community": 83,
-      "community_name": "useI18n",
-      "norm_label": "privacypage()"
-    },
-    {
       "label": "applyThemeToDOM()",
       "file_type": "code",
       "source_file": "src/theme.tsx",
@@ -9139,7 +9163,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 83,
-      "community_name": "useI18n",
+      "community_name": "theme.tsx",
       "norm_label": "applythemetodom()",
       "id": "src_theme_applythemetodom"
     },
@@ -9151,7 +9175,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 83,
-      "community_name": "useI18n",
+      "community_name": "theme.tsx",
       "norm_label": "getinitialtheme()",
       "id": "src_theme_getinitialtheme"
     },
@@ -9163,7 +9187,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 83,
-      "community_name": "useI18n",
+      "community_name": "theme.tsx",
       "norm_label": "themeprovider()",
       "id": "src_theme_themeprovider"
     },
@@ -9175,7 +9199,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 83,
-      "community_name": "useI18n",
+      "community_name": "theme.tsx",
       "norm_label": "themeswitcher()",
       "id": "src_theme_themeswitcher"
     },
@@ -9187,7 +9211,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 83,
-      "community_name": "useI18n",
+      "community_name": "theme.tsx",
       "norm_label": "usetheme()",
       "id": "src_theme_usetheme"
     },
@@ -12986,7 +13010,7 @@
       "label": "actionsData",
       "file_type": "code",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L616",
+      "source_location": "L651",
       "_origin": "ast",
       "id": "scripts_generate_catalog_seed_actionsdata",
       "community": 124,
@@ -12997,7 +13021,7 @@
       "label": "allHeritages",
       "file_type": "code",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L214",
+      "source_location": "L249",
       "_origin": "ast",
       "id": "scripts_generate_catalog_seed_allheritages",
       "community": 124,
@@ -13008,7 +13032,7 @@
       "label": "ancestriesData",
       "file_type": "code",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L68",
+      "source_location": "L103",
       "_origin": "ast",
       "id": "scripts_generate_catalog_seed_ancestriesdata",
       "community": 124,
@@ -13019,7 +13043,7 @@
       "label": "ancestryNameToId",
       "file_type": "code",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L64",
+      "source_location": "L99",
       "_origin": "ast",
       "id": "scripts_generate_catalog_seed_ancestrynametoid",
       "community": 124,
@@ -13030,7 +13054,7 @@
       "label": "archetypesData",
       "file_type": "code",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L184",
+      "source_location": "L219",
       "_origin": "ast",
       "id": "scripts_generate_catalog_seed_archetypesdata",
       "community": 124,
@@ -13041,7 +13065,7 @@
       "label": "armorsData",
       "file_type": "code",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L489",
+      "source_location": "L524",
       "_origin": "ast",
       "id": "scripts_generate_catalog_seed_armorsdata",
       "community": 124,
@@ -13052,7 +13076,7 @@
       "label": "backgroundsData",
       "file_type": "code",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L296",
+      "source_location": "L331",
       "_origin": "ast",
       "id": "scripts_generate_catalog_seed_backgroundsdata",
       "community": 124,
@@ -13063,7 +13087,7 @@
       "label": "buffsData",
       "file_type": "code",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L669",
+      "source_location": "L704",
       "_origin": "ast",
       "id": "scripts_generate_catalog_seed_buffsdata",
       "community": 124,
@@ -13074,7 +13098,7 @@
       "label": "classesData",
       "file_type": "code",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L104",
+      "source_location": "L139",
       "_origin": "ast",
       "id": "scripts_generate_catalog_seed_classesdata",
       "community": 124,
@@ -13085,7 +13109,7 @@
       "label": "classNameToId",
       "file_type": "code",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L65",
+      "source_location": "L100",
       "_origin": "ast",
       "id": "scripts_generate_catalog_seed_classnametoid",
       "community": 124,
@@ -13096,7 +13120,7 @@
       "label": "conditionsData",
       "file_type": "code",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L644",
+      "source_location": "L679",
       "_origin": "ast",
       "id": "scripts_generate_catalog_seed_conditionsdata",
       "community": 124,
@@ -13107,7 +13131,7 @@
       "label": "dataPath",
       "file_type": "code",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L46",
+      "source_location": "L81",
       "_origin": "ast",
       "id": "scripts_generate_catalog_seed_datapath",
       "community": 124,
@@ -13118,7 +13142,7 @@
       "label": "datasets",
       "file_type": "code",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L778",
+      "source_location": "L813",
       "_origin": "ast",
       "id": "scripts_generate_catalog_seed_datasets",
       "community": 124,
@@ -13129,7 +13153,7 @@
       "label": "featsData",
       "file_type": "code",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L388",
+      "source_location": "L423",
       "_origin": "ast",
       "id": "scripts_generate_catalog_seed_featsdata",
       "community": 124,
@@ -13137,10 +13161,21 @@
       "norm_label": "featsdata"
     },
     {
+      "label": "featsHalf",
+      "file_type": "code",
+      "source_file": "scripts/generate-catalog-seed.cjs",
+      "source_location": "L892",
+      "_origin": "ast",
+      "id": "scripts_generate_catalog_seed_featshalf",
+      "community": 124,
+      "community_name": "generate-catalog-seed.cjs",
+      "norm_label": "featshalf"
+    },
+    {
       "label": "fileContent",
       "file_type": "code",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L47",
+      "source_location": "L82",
       "_origin": "ast",
       "id": "scripts_generate_catalog_seed_filecontent",
       "community": 124,
@@ -13151,7 +13186,7 @@
       "label": "formulasData",
       "file_type": "code",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L556",
+      "source_location": "L591",
       "_origin": "ast",
       "id": "scripts_generate_catalog_seed_formulasdata",
       "community": 124,
@@ -13173,7 +13208,7 @@
       "label": "heritagesData",
       "file_type": "code",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L213",
+      "source_location": "L248",
       "_origin": "ast",
       "id": "scripts_generate_catalog_seed_heritagesdata",
       "community": 124,
@@ -13184,7 +13219,7 @@
       "label": "itemsData",
       "file_type": "code",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L144",
+      "source_location": "L179",
       "_origin": "ast",
       "id": "scripts_generate_catalog_seed_itemsdata",
       "community": 124,
@@ -13195,7 +13230,7 @@
       "label": "jsonDir",
       "file_type": "code",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L775",
+      "source_location": "L810",
       "_origin": "ast",
       "id": "scripts_generate_catalog_seed_jsondir",
       "community": 124,
@@ -13206,7 +13241,7 @@
       "label": "outputPath",
       "file_type": "code",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L770",
+      "source_location": "L805",
       "_origin": "ast",
       "id": "scripts_generate_catalog_seed_outputpath",
       "community": 124,
@@ -13228,7 +13263,7 @@
       "label": "petsData",
       "file_type": "code",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L585",
+      "source_location": "L620",
       "_origin": "ast",
       "id": "scripts_generate_catalog_seed_petsdata",
       "community": 124,
@@ -13239,7 +13274,7 @@
       "label": "ritualsData",
       "file_type": "code",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L357",
+      "source_location": "L392",
       "_origin": "ast",
       "id": "scripts_generate_catalog_seed_ritualsdata",
       "community": 124,
@@ -13250,7 +13285,7 @@
       "label": "sandbox",
       "file_type": "code",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L49",
+      "source_location": "L84",
       "_origin": "ast",
       "id": "scripts_generate_catalog_seed_sandbox",
       "community": 124,
@@ -13258,10 +13293,21 @@
       "norm_label": "sandbox"
     },
     {
+      "label": "seedsDir",
+      "file_type": "code",
+      "source_file": "scripts/generate-catalog-seed.cjs",
+      "source_location": "L840",
+      "_origin": "ast",
+      "id": "scripts_generate_catalog_seed_seedsdir",
+      "community": 124,
+      "community_name": "generate-catalog-seed.cjs",
+      "norm_label": "seedsdir"
+    },
+    {
       "label": "seedSqlParts",
       "file_type": "code",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L744",
+      "source_location": "L779",
       "_origin": "ast",
       "id": "scripts_generate_catalog_seed_seedsqlparts",
       "community": 124,
@@ -13272,7 +13318,7 @@
       "label": "seenItemIds",
       "file_type": "code",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L145",
+      "source_location": "L180",
       "_origin": "ast",
       "id": "scripts_generate_catalog_seed_seenitemids",
       "community": 124,
@@ -13283,7 +13329,7 @@
       "label": "shieldsData",
       "file_type": "code",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L523",
+      "source_location": "L558",
       "_origin": "ast",
       "id": "scripts_generate_catalog_seed_shieldsdata",
       "community": 124,
@@ -13294,7 +13340,7 @@
       "label": "spellsData",
       "file_type": "code",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L324",
+      "source_location": "L359",
       "_origin": "ast",
       "id": "scripts_generate_catalog_seed_spellsdata",
       "community": 124,
@@ -13305,7 +13351,7 @@
       "label": "subclassesData",
       "file_type": "code",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L260",
+      "source_location": "L295",
       "_origin": "ast",
       "id": "scripts_generate_catalog_seed_subclassesdata",
       "community": 124,
@@ -13316,7 +13362,7 @@
       "label": "validAncestryIds",
       "file_type": "code",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L59",
+      "source_location": "L94",
       "_origin": "ast",
       "id": "scripts_generate_catalog_seed_validancestryids",
       "community": 124,
@@ -13327,7 +13373,7 @@
       "label": "validArchetypeIds",
       "file_type": "code",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L61",
+      "source_location": "L96",
       "_origin": "ast",
       "id": "scripts_generate_catalog_seed_validarchetypeids",
       "community": 124,
@@ -13338,7 +13384,7 @@
       "label": "validClassIds",
       "file_type": "code",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L60",
+      "source_location": "L95",
       "_origin": "ast",
       "id": "scripts_generate_catalog_seed_validclassids",
       "community": 124,
@@ -13349,7 +13395,7 @@
       "label": "validItemIds",
       "file_type": "code",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L62",
+      "source_location": "L97",
       "_origin": "ast",
       "id": "scripts_generate_catalog_seed_validitemids",
       "community": 124,
@@ -13371,7 +13417,7 @@
       "label": "weaponsData",
       "file_type": "code",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L454",
+      "source_location": "L489",
       "_origin": "ast",
       "id": "scripts_generate_catalog_seed_weaponsdata",
       "community": 124,
@@ -13384,10 +13430,10 @@
       "source_file": "src/services/catalog.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "src_services_catalog",
       "community": 125,
       "community_name": "catalog.ts",
-      "norm_label": "catalog.ts"
+      "norm_label": "catalog.ts",
+      "id": "src_services_catalog"
     },
     {
       "label": "inMemoryCache",
@@ -13395,10 +13441,10 @@
       "source_file": "src/services/catalog.ts",
       "source_location": "L72",
       "_origin": "ast",
-      "id": "src_services_catalog_inmemorycache",
       "community": 125,
       "community_name": "catalog.ts",
-      "norm_label": "inmemorycache"
+      "norm_label": "inmemorycache",
+      "id": "src_services_catalog_inmemorycache"
     },
     {
       "label": "PICKER_TYPE_TO_TABLE",
@@ -13406,10 +13452,10 @@
       "source_file": "src/services/catalog.ts",
       "source_location": "L24",
       "_origin": "ast",
-      "id": "src_services_catalog_picker_type_to_table",
       "community": 125,
       "community_name": "catalog.ts",
-      "norm_label": "picker_type_to_table"
+      "norm_label": "picker_type_to_table",
+      "id": "src_services_catalog_picker_type_to_table"
     },
     {
       "label": "catalog.test.ts",
@@ -13417,10 +13463,10 @@
       "source_file": "src/services/catalog.test.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "src_services_catalog_test",
       "community": 125,
       "community_name": "catalog.ts",
-      "norm_label": "catalog.test.ts"
+      "norm_label": "catalog.test.ts",
+      "id": "src_services_catalog_test"
     },
     {
       "label": "migrate-catalog-to-supabase.cjs",
@@ -13428,10 +13474,10 @@
       "source_file": "scripts/migrate-catalog-to-supabase.cjs",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "scripts_migrate_catalog_to_supabase",
       "community": 127,
       "community_name": "migrate-catalog-to-supabase.cjs",
-      "norm_label": "migrate-catalog-to-supabase.cjs"
+      "norm_label": "migrate-catalog-to-supabase.cjs",
+      "id": "scripts_migrate_catalog_to_supabase"
     },
     {
       "label": "{ createClient }",
@@ -13439,10 +13485,10 @@
       "source_file": "scripts/migrate-catalog-to-supabase.cjs",
       "source_location": "L9",
       "_origin": "ast",
-      "id": "scripts_migrate_catalog_to_supabase_createclient",
       "community": 127,
       "community_name": "migrate-catalog-to-supabase.cjs",
-      "norm_label": "{ createclient }"
+      "norm_label": "{ createclient }",
+      "id": "scripts_migrate_catalog_to_supabase_createclient"
     },
     {
       "label": "dataDir",
@@ -13450,10 +13496,10 @@
       "source_file": "scripts/migrate-catalog-to-supabase.cjs",
       "source_location": "L21",
       "_origin": "ast",
-      "id": "scripts_migrate_catalog_to_supabase_datadir",
       "community": 127,
       "community_name": "migrate-catalog-to-supabase.cjs",
-      "norm_label": "datadir"
+      "norm_label": "datadir",
+      "id": "scripts_migrate_catalog_to_supabase_datadir"
     },
     {
       "label": "fs",
@@ -13461,10 +13507,10 @@
       "source_file": "scripts/migrate-catalog-to-supabase.cjs",
       "source_location": "L7",
       "_origin": "ast",
-      "id": "scripts_migrate_catalog_to_supabase_fs",
       "community": 127,
       "community_name": "migrate-catalog-to-supabase.cjs",
-      "norm_label": "fs"
+      "norm_label": "fs",
+      "id": "scripts_migrate_catalog_to_supabase_fs"
     },
     {
       "label": "path",
@@ -13472,10 +13518,10 @@
       "source_file": "scripts/migrate-catalog-to-supabase.cjs",
       "source_location": "L8",
       "_origin": "ast",
-      "id": "scripts_migrate_catalog_to_supabase_path",
       "community": 127,
       "community_name": "migrate-catalog-to-supabase.cjs",
-      "norm_label": "path"
+      "norm_label": "path",
+      "id": "scripts_migrate_catalog_to_supabase_path"
     },
     {
       "label": "supabase",
@@ -13483,10 +13529,10 @@
       "source_file": "scripts/migrate-catalog-to-supabase.cjs",
       "source_location": "L19",
       "_origin": "ast",
-      "id": "scripts_migrate_catalog_to_supabase_supabase",
       "community": 127,
       "community_name": "migrate-catalog-to-supabase.cjs",
-      "norm_label": "supabase"
+      "norm_label": "supabase",
+      "id": "scripts_migrate_catalog_to_supabase_supabase"
     },
     {
       "label": "tableOrder",
@@ -13494,10 +13540,10 @@
       "source_file": "scripts/migrate-catalog-to-supabase.cjs",
       "source_location": "L28",
       "_origin": "ast",
-      "id": "scripts_migrate_catalog_to_supabase_tableorder",
       "community": 127,
       "community_name": "migrate-catalog-to-supabase.cjs",
-      "norm_label": "tableorder"
+      "norm_label": "tableorder",
+      "id": "scripts_migrate_catalog_to_supabase_tableorder"
     },
     {
       "label": "PortalPages.test.tsx",
@@ -14242,10 +14288,10 @@
       "source_file": "src/PortalPages.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "src_portalpages",
       "community": 2,
       "community_name": "PortalPages.tsx",
-      "norm_label": "portalpages.tsx"
+      "norm_label": "portalpages.tsx",
+      "id": "src_portalpages"
     },
     {
       "label": "catalogCategories",
@@ -14253,10 +14299,10 @@
       "source_file": "src/PortalPages.tsx",
       "source_location": "L55",
       "_origin": "ast",
-      "id": "src_portalpages_catalogcategories",
       "community": 2,
       "community_name": "PortalPages.tsx",
-      "norm_label": "catalogcategories"
+      "norm_label": "catalogcategories",
+      "id": "src_portalpages_catalogcategories"
     },
     {
       "label": "navItems",
@@ -14264,10 +14310,10 @@
       "source_file": "src/PortalPages.tsx",
       "source_location": "L44",
       "_origin": "ast",
-      "id": "src_portalpages_navitems",
       "community": 2,
       "community_name": "PortalPages.tsx",
-      "norm_label": "navitems"
+      "norm_label": "navitems",
+      "id": "src_portalpages_navitems"
     },
     {
       "label": "routes",
@@ -14275,10 +14321,10 @@
       "source_file": "src/PortalPages.tsx",
       "source_location": "L43",
       "_origin": "ast",
-      "id": "src_portalpages_routes",
       "community": 2,
       "community_name": "PortalPages.tsx",
-      "norm_label": "routes"
+      "norm_label": "routes",
+      "id": "src_portalpages_routes"
     },
     {
       "label": "validationCopy",
@@ -14286,10 +14332,10 @@
       "source_file": "src/PortalPages.tsx",
       "source_location": "L107",
       "_origin": "ast",
-      "id": "src_portalpages_validationcopy",
       "community": 2,
       "community_name": "PortalPages.tsx",
-      "norm_label": "validationcopy"
+      "norm_label": "validationcopy",
+      "id": "src_portalpages_validationcopy"
     },
     {
       "label": "admin.ts",
@@ -19054,7 +19100,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 83,
-      "community_name": "useI18n",
+      "community_name": "theme.tsx",
       "norm_label": "theme.tsx",
       "id": "src_theme"
     },
@@ -19065,7 +19111,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 83,
-      "community_name": "useI18n",
+      "community_name": "theme.tsx",
       "norm_label": "theme.test.tsx",
       "id": "src_theme_test"
     },
@@ -19076,7 +19122,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "community": 83,
-      "community_name": "useI18n",
+      "community_name": "theme.tsx",
       "norm_label": "themecontext",
       "id": "src_theme_themecontext"
     },
@@ -27934,7 +27980,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L725",
+      "source_location": "L760",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_generate_catalog_seed_generateinsertsql",
@@ -27946,7 +27992,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L728",
+      "source_location": "L763",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_generate_catalog_seed_generateinsertsql",
@@ -27958,7 +28004,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L730",
+      "source_location": "L765",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_generate_catalog_seed_generateinsertsql",
@@ -27970,11 +28016,23 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L149",
+      "source_location": "L184",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_generate_catalog_seed_registeritem",
       "target": "scripts_generate_catalog_seed_slugify",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/generate-catalog-seed.cjs",
+      "source_location": "L199",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_generate_catalog_seed_registeritem",
+      "target": "scripts_generate_catalog_seed_formatprice",
       "confidence_score": 1.0
     },
     {
@@ -28897,9 +28955,9 @@
       "source_location": "L429",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages_bookdownloadssection",
-      "target": "src_portalpages_localizesourcetitle",
-      "confidence_score": 1.0
+      "target": "src_portalpages_localizesourcetitle"
     },
     {
       "relation": "calls",
@@ -28909,9 +28967,9 @@
       "source_location": "L528",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages_bookdownloadssection",
-      "target": "src_portalpages_localizesourcelanguage",
-      "confidence_score": 1.0
+      "target": "src_portalpages_localizesourcelanguage"
     },
     {
       "relation": "calls",
@@ -28933,9 +28991,9 @@
       "source_location": "L393",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages_catalogcard",
-      "target": "src_portalpages_hasfallbacktranslation",
-      "confidence_score": 1.0
+      "target": "src_portalpages_hasfallbacktranslation"
     },
     {
       "relation": "calls",
@@ -28993,9 +29051,9 @@
       "source_location": "L414",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages_catalogcard",
-      "target": "src_portalpages_localizesourcebook",
-      "confidence_score": 1.0
+      "target": "src_portalpages_localizesourcebook"
     },
     {
       "relation": "calls",
@@ -29017,9 +29075,9 @@
       "source_location": "L145",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages_catalogpage",
-      "target": "src_services_catalog_getcatalogsyncstatus",
-      "confidence_score": 1.0
+      "target": "src_services_catalog_getcatalogsyncstatus"
     },
     {
       "relation": "calls",
@@ -29029,9 +29087,9 @@
       "source_location": "L154",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages_catalogpage",
-      "target": "src_services_catalog_fetchcatalogcategory",
-      "confidence_score": 1.0
+      "target": "src_services_catalog_fetchcatalogcategory"
     },
     {
       "relation": "calls",
@@ -29053,9 +29111,9 @@
       "source_location": "L248",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages_catalogpage",
-      "target": "src_portalpages_localizesourcebook",
-      "confidence_score": 1.0
+      "target": "src_portalpages_localizesourcebook"
     },
     {
       "relation": "calls",
@@ -29065,9 +29123,9 @@
       "source_location": "L295",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages_catalogpage",
-      "target": "src_portalpages_hasfallbacktranslation",
-      "confidence_score": 1.0
+      "target": "src_portalpages_hasfallbacktranslation"
     },
     {
       "relation": "calls",
@@ -29077,9 +29135,9 @@
       "source_location": "L296",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages_catalogpage",
-      "target": "src_portalpages_getlocalizedtrait",
-      "confidence_score": 1.0
+      "target": "src_portalpages_getlocalizedtrait"
     },
     {
       "relation": "calls",
@@ -29101,9 +29159,9 @@
       "source_location": "L308",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages_catalogpage",
-      "target": "src_portalpages_formatcatalogvalue",
-      "confidence_score": 1.0
+      "target": "src_portalpages_formatcatalogvalue"
     },
     {
       "relation": "calls",
@@ -29125,9 +29183,9 @@
       "source_location": "L343",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages_formatcatalogvalue",
-      "target": "src_portalpages_localizecatalogkey",
-      "confidence_score": 1.0
+      "target": "src_portalpages_localizecatalogkey"
     },
     {
       "relation": "calls",
@@ -29137,9 +29195,9 @@
       "source_location": "L346",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages_formatcatalogvalue",
-      "target": "src_portalpages_localizecatalogvalue",
-      "confidence_score": 1.0
+      "target": "src_portalpages_localizecatalogvalue"
     },
     {
       "relation": "calls",
@@ -29269,9 +29327,9 @@
       "source_location": "L99",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages_localizesourcetitle",
-      "target": "src_portalpages_localizesourcebook",
-      "confidence_score": 1.0
+      "target": "src_portalpages_localizesourcebook"
     },
     {
       "relation": "calls",
@@ -29341,9 +29399,9 @@
       "source_location": "L581",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages_rulespage",
-      "target": "src_portalpages_localizesourcelanguage",
-      "confidence_score": 1.0
+      "target": "src_portalpages_localizesourcelanguage"
     },
     {
       "relation": "calls",
@@ -29353,9 +29411,9 @@
       "source_location": "L581",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages_rulespage",
-      "target": "src_portalpages_localizesourcetitle",
-      "confidence_score": 1.0
+      "target": "src_portalpages_localizesourcetitle"
     },
     {
       "relation": "calls",
@@ -30205,9 +30263,9 @@
       "source_location": "L213",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_services_catalog_fetchcatalogcategory",
-      "target": "src_services_catalog_normalizesupabaserecordtopickeritem",
-      "confidence_score": 1.0
+      "target": "src_services_catalog_normalizesupabaserecordtopickeritem"
     },
     {
       "relation": "calls",
@@ -30217,9 +30275,9 @@
       "source_location": "L214",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_services_catalog_fetchcatalogcategory",
-      "target": "src_services_catalog_savetolocalcache",
-      "confidence_score": 1.0
+      "target": "src_services_catalog_savetolocalcache"
     },
     {
       "relation": "calls",
@@ -30229,9 +30287,9 @@
       "source_location": "L223",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_services_catalog_fetchcatalogcategory",
-      "target": "src_services_catalog_getfromlocalcache",
-      "confidence_score": 1.0
+      "target": "src_services_catalog_getfromlocalcache"
     },
     {
       "relation": "calls",
@@ -30241,9 +30299,9 @@
       "source_location": "L229",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_services_catalog_fetchcatalogcategory",
-      "target": "src_services_catalog_getlocalruntimeitems",
-      "confidence_score": 1.0
+      "target": "src_services_catalog_getlocalruntimeitems"
     },
     {
       "relation": "calls",
@@ -30253,9 +30311,9 @@
       "source_location": "L255",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_services_catalog_fetchcatalogitembyid",
-      "target": "src_services_catalog_normalizesupabaserecordtopickeritem",
-      "confidence_score": 1.0
+      "target": "src_services_catalog_normalizesupabaserecordtopickeritem"
     },
     {
       "relation": "calls",
@@ -30265,9 +30323,9 @@
       "source_location": "L263",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_services_catalog_fetchcatalogitembyid",
-      "target": "src_services_catalog_fetchcatalogcategory",
-      "confidence_score": 1.0
+      "target": "src_services_catalog_fetchcatalogcategory"
     },
     {
       "relation": "calls",
@@ -32606,9 +32664,9 @@
       "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_types_pickeritem",
-      "confidence_score": 1.0
+      "target": "src_types_pickeritem"
     },
     {
       "relation": "imports",
@@ -32618,9 +32676,9 @@
       "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_types_pickertype",
-      "confidence_score": 1.0
+      "target": "src_types_pickertype"
     },
     {
       "relation": "imports",
@@ -32630,9 +32688,9 @@
       "source_location": "L11",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_accountstate_useaccountviewstate",
-      "confidence_score": 1.0
+      "target": "src_accountstate_useaccountviewstate"
     },
     {
       "relation": "imports",
@@ -32642,9 +32700,9 @@
       "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_utils_economy_formatpricetolocale",
-      "confidence_score": 1.0
+      "target": "src_utils_economy_formatpricetolocale"
     },
     {
       "relation": "imports",
@@ -32654,9 +32712,9 @@
       "source_location": "L13",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_pickermodal_getlocalizedskillname",
-      "confidence_score": 1.0
+      "target": "src_pickermodal_getlocalizedskillname"
     },
     {
       "relation": "imports",
@@ -32666,9 +32724,9 @@
       "source_location": "L13",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_pickermodal_gettraditiondisplaynames",
-      "confidence_score": 1.0
+      "target": "src_pickermodal_gettraditiondisplaynames"
     },
     {
       "relation": "imports",
@@ -32678,9 +32736,9 @@
       "source_location": "L13",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_pickermodal_localizeprerequisitetext",
-      "confidence_score": 1.0
+      "target": "src_pickermodal_localizeprerequisitetext"
     },
     {
       "relation": "imports",
@@ -32690,9 +32748,9 @@
       "source_location": "L14",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_services_auth_authsession",
-      "confidence_score": 1.0
+      "target": "src_services_auth_authsession"
     },
     {
       "relation": "imports",
@@ -32702,9 +32760,9 @@
       "source_location": "L14",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_services_auth_getcurrentsession",
-      "confidence_score": 1.0
+      "target": "src_services_auth_getcurrentsession"
     },
     {
       "relation": "imports",
@@ -32714,9 +32772,9 @@
       "source_location": "L14",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_services_auth_signin",
-      "confidence_score": 1.0
+      "target": "src_services_auth_signin"
     },
     {
       "relation": "imports",
@@ -32726,9 +32784,9 @@
       "source_location": "L14",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_services_auth_signout",
-      "confidence_score": 1.0
+      "target": "src_services_auth_signout"
     },
     {
       "relation": "imports",
@@ -32738,9 +32796,9 @@
       "source_location": "L14",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_services_auth_signup",
-      "confidence_score": 1.0
+      "target": "src_services_auth_signup"
     },
     {
       "relation": "imports",
@@ -32750,9 +32808,9 @@
       "source_location": "L14",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_services_auth_subscribetoauth",
-      "confidence_score": 1.0
+      "target": "src_services_auth_subscribetoauth"
     },
     {
       "relation": "imports",
@@ -32762,9 +32820,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_data_sources_github_livros_folder_url",
-      "confidence_score": 1.0
+      "target": "src_data_sources_github_livros_folder_url"
     },
     {
       "relation": "imports",
@@ -32774,9 +32832,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_data_sources_github_repo_url",
-      "confidence_score": 1.0
+      "target": "src_data_sources_github_repo_url"
     },
     {
       "relation": "imports",
@@ -32786,9 +32844,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_data_sources_google_drive_folder_url",
-      "confidence_score": 1.0
+      "target": "src_data_sources_google_drive_folder_url"
     },
     {
       "relation": "imports",
@@ -32798,9 +32856,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_data_sources_pathfindersource",
-      "confidence_score": 1.0
+      "target": "src_data_sources_pathfindersource"
     },
     {
       "relation": "imports",
@@ -32810,9 +32868,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_data_sources_pathfindersources",
-      "confidence_score": 1.0
+      "target": "src_data_sources_pathfindersources"
     },
     {
       "relation": "imports",
@@ -32822,9 +32880,9 @@
       "source_location": "L22",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_services_characters_cloudcharacter",
-      "confidence_score": 1.0
+      "target": "src_services_characters_cloudcharacter"
     },
     {
       "relation": "imports",
@@ -32834,9 +32892,9 @@
       "source_location": "L22",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_services_characters_deletecharacter",
-      "confidence_score": 1.0
+      "target": "src_services_characters_deletecharacter"
     },
     {
       "relation": "imports",
@@ -32846,9 +32904,9 @@
       "source_location": "L22",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_services_characters_listcharacters",
-      "confidence_score": 1.0
+      "target": "src_services_characters_listcharacters"
     },
     {
       "relation": "imports",
@@ -32858,9 +32916,9 @@
       "source_location": "L22",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_services_characters_renamecharacter",
-      "confidence_score": 1.0
+      "target": "src_services_characters_renamecharacter"
     },
     {
       "relation": "imports",
@@ -32870,9 +32928,9 @@
       "source_location": "L28",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_services_admin_admindashboardmetrics",
-      "confidence_score": 1.0
+      "target": "src_services_admin_admindashboardmetrics"
     },
     {
       "relation": "imports",
@@ -32882,9 +32940,9 @@
       "source_location": "L28",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_services_admin_getadmindashboardmetrics",
-      "confidence_score": 1.0
+      "target": "src_services_admin_getadmindashboardmetrics"
     },
     {
       "relation": "imports",
@@ -32894,9 +32952,9 @@
       "source_location": "L28",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_services_admin_recordappaccess",
-      "confidence_score": 1.0
+      "target": "src_services_admin_recordappaccess"
     },
     {
       "relation": "imports",
@@ -32906,9 +32964,9 @@
       "source_location": "L33",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_services_catalog_catalogsyncstatus",
-      "confidence_score": 1.0
+      "target": "src_services_catalog_catalogsyncstatus"
     },
     {
       "relation": "imports",
@@ -32918,9 +32976,9 @@
       "source_location": "L33",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_services_catalog_fetchcatalogcategory",
-      "confidence_score": 1.0
+      "target": "src_services_catalog_fetchcatalogcategory"
     },
     {
       "relation": "imports",
@@ -32930,9 +32988,9 @@
       "source_location": "L33",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_services_catalog_getcatalogsyncstatus",
-      "confidence_score": 1.0
+      "target": "src_services_catalog_getcatalogsyncstatus"
     },
     {
       "relation": "imports",
@@ -32942,9 +33000,9 @@
       "source_location": "L38",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_campaignspage_campaignspage",
-      "confidence_score": 1.0
+      "target": "src_campaignspage_campaignspage"
     },
     {
       "relation": "imports",
@@ -32954,9 +33012,9 @@
       "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_i18n_getitemdisplayname",
-      "confidence_score": 1.0
+      "target": "src_i18n_getitemdisplayname"
     },
     {
       "relation": "imports",
@@ -32966,9 +33024,9 @@
       "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_i18n_messagekey",
-      "confidence_score": 1.0
+      "target": "src_i18n_messagekey"
     },
     {
       "relation": "imports",
@@ -32978,9 +33036,9 @@
       "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_i18n_usei18n",
-      "confidence_score": 1.0
+      "target": "src_i18n_usei18n"
     },
     {
       "relation": "imports",
@@ -33530,9 +33588,9 @@
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_services_catalog",
-      "target": "src_lib_supabase_issupabaseconfigured",
-      "confidence_score": 1.0
+      "target": "src_lib_supabase_issupabaseconfigured"
     },
     {
       "relation": "imports",
@@ -33542,9 +33600,9 @@
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_services_catalog",
-      "target": "src_lib_supabase_supabase",
-      "confidence_score": 1.0
+      "target": "src_lib_supabase_supabase"
     },
     {
       "relation": "imports",
@@ -33554,9 +33612,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_services_catalog",
-      "target": "src_types_pickeritem",
-      "confidence_score": 1.0
+      "target": "src_types_pickeritem"
     },
     {
       "relation": "imports",
@@ -33566,9 +33624,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_services_catalog",
-      "target": "src_types_pickertype",
-      "confidence_score": 1.0
+      "target": "src_types_pickertype"
     },
     {
       "relation": "imports",
@@ -33578,9 +33636,9 @@
       "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_services_catalog_test",
-      "target": "src_types_pickertype",
-      "confidence_score": 1.0
+      "target": "src_types_pickertype"
     },
     {
       "relation": "imports",
@@ -33590,9 +33648,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_services_catalog_test",
-      "target": "src_services_catalog_catalogitemrecord",
-      "confidence_score": 1.0
+      "target": "src_services_catalog_catalogitemrecord"
     },
     {
       "relation": "imports",
@@ -33602,9 +33660,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_services_catalog_test",
-      "target": "src_services_catalog_fetchcatalogcategory",
-      "confidence_score": 1.0
+      "target": "src_services_catalog_fetchcatalogcategory"
     },
     {
       "relation": "imports",
@@ -33614,9 +33672,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_services_catalog_test",
-      "target": "src_services_catalog_fetchcatalogitembyid",
-      "confidence_score": 1.0
+      "target": "src_services_catalog_fetchcatalogitembyid"
     },
     {
       "relation": "imports",
@@ -33626,9 +33684,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_services_catalog_test",
-      "target": "src_services_catalog_getcatalogsyncstatus",
-      "confidence_score": 1.0
+      "target": "src_services_catalog_getcatalogsyncstatus"
     },
     {
       "relation": "imports",
@@ -33638,9 +33696,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_services_catalog_test",
-      "target": "src_services_catalog_normalizesupabaserecordtopickeritem",
-      "confidence_score": 1.0
+      "target": "src_services_catalog_normalizesupabaserecordtopickeritem"
     },
     {
       "relation": "imports",
@@ -33650,9 +33708,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_services_catalog_test",
-      "target": "src_services_catalog_picker_type_to_table",
-      "confidence_score": 1.0
+      "target": "src_services_catalog_picker_type_to_table"
     },
     {
       "relation": "imports",
@@ -34538,9 +34596,9 @@
       "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_types",
-      "confidence_score": 1.0
+      "target": "src_types"
     },
     {
       "relation": "imports_from",
@@ -34550,9 +34608,9 @@
       "source_location": "L11",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_accountstate",
-      "confidence_score": 1.0
+      "target": "src_accountstate"
     },
     {
       "relation": "imports_from",
@@ -34562,9 +34620,9 @@
       "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_utils_economy",
-      "confidence_score": 1.0
+      "target": "src_utils_economy"
     },
     {
       "relation": "imports_from",
@@ -34574,9 +34632,9 @@
       "source_location": "L13",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_pickermodal",
-      "confidence_score": 1.0
+      "target": "src_pickermodal"
     },
     {
       "relation": "imports_from",
@@ -34586,9 +34644,9 @@
       "source_location": "L14",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_services_auth",
-      "confidence_score": 1.0
+      "target": "src_services_auth"
     },
     {
       "relation": "imports_from",
@@ -34598,9 +34656,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_data_sources",
-      "confidence_score": 1.0
+      "target": "src_data_sources"
     },
     {
       "relation": "imports_from",
@@ -34610,9 +34668,9 @@
       "source_location": "L22",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_services_characters",
-      "confidence_score": 1.0
+      "target": "src_services_characters"
     },
     {
       "relation": "imports_from",
@@ -34622,9 +34680,9 @@
       "source_location": "L28",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_services_admin",
-      "confidence_score": 1.0
+      "target": "src_services_admin"
     },
     {
       "relation": "imports_from",
@@ -34634,9 +34692,9 @@
       "source_location": "L33",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_services_catalog",
-      "confidence_score": 1.0
+      "target": "src_services_catalog"
     },
     {
       "relation": "imports_from",
@@ -34646,9 +34704,9 @@
       "source_location": "L38",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_campaignspage",
-      "confidence_score": 1.0
+      "target": "src_campaignspage"
     },
     {
       "relation": "imports_from",
@@ -34658,9 +34716,9 @@
       "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_i18n",
-      "confidence_score": 1.0
+      "target": "src_i18n"
     },
     {
       "relation": "imports_from",
@@ -34886,9 +34944,9 @@
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_services_catalog",
-      "target": "src_lib_supabase",
-      "confidence_score": 1.0
+      "target": "src_lib_supabase"
     },
     {
       "relation": "imports_from",
@@ -34898,9 +34956,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_services_catalog",
-      "target": "src_types",
-      "confidence_score": 1.0
+      "target": "src_types"
     },
     {
       "relation": "imports_from",
@@ -34910,9 +34968,9 @@
       "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_services_catalog_test",
-      "target": "src_types",
-      "confidence_score": 1.0
+      "target": "src_types"
     },
     {
       "relation": "imports_from",
@@ -34922,9 +34980,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_services_catalog_test",
-      "target": "src_services_catalog",
-      "confidence_score": 1.0
+      "target": "src_services_catalog"
     },
     {
       "relation": "imports_from",
@@ -44465,11 +44523,22 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L104",
+      "source_location": "L100",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_generate_catalog_seed",
-      "target": "scripts_generate_catalog_seed_classesdata",
+      "target": "scripts_generate_catalog_seed_classnametoid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/generate-catalog-seed.cjs",
+      "source_location": "L103",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_generate_catalog_seed",
+      "target": "scripts_generate_catalog_seed_ancestriesdata",
       "confidence_score": 1.0
     },
     {
@@ -44487,7 +44556,18 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L144",
+      "source_location": "L139",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_generate_catalog_seed",
+      "target": "scripts_generate_catalog_seed_classesdata",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/generate-catalog-seed.cjs",
+      "source_location": "L179",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_generate_catalog_seed",
@@ -44498,7 +44578,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L145",
+      "source_location": "L180",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_generate_catalog_seed",
@@ -44509,22 +44589,11 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L147",
+      "source_location": "L182",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_generate_catalog_seed",
       "target": "scripts_generate_catalog_seed_registeritem",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L184",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_generate_catalog_seed",
-      "target": "scripts_generate_catalog_seed_archetypesdata",
       "confidence_score": 1.0
     },
     {
@@ -44542,7 +44611,18 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L213",
+      "source_location": "L219",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_generate_catalog_seed",
+      "target": "scripts_generate_catalog_seed_archetypesdata",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/generate-catalog-seed.cjs",
+      "source_location": "L248",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_generate_catalog_seed",
@@ -44553,22 +44633,11 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L214",
+      "source_location": "L249",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_generate_catalog_seed",
       "target": "scripts_generate_catalog_seed_allheritages",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L260",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_generate_catalog_seed",
-      "target": "scripts_generate_catalog_seed_subclassesdata",
       "confidence_score": 1.0
     },
     {
@@ -44586,7 +44655,18 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L296",
+      "source_location": "L295",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_generate_catalog_seed",
+      "target": "scripts_generate_catalog_seed_subclassesdata",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/generate-catalog-seed.cjs",
+      "source_location": "L331",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_generate_catalog_seed",
@@ -44597,7 +44677,18 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L324",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_generate_catalog_seed",
+      "target": "scripts_generate_catalog_seed_formatprice",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/generate-catalog-seed.cjs",
+      "source_location": "L359",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_generate_catalog_seed",
@@ -44608,7 +44699,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L357",
+      "source_location": "L392",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_generate_catalog_seed",
@@ -44619,7 +44710,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L388",
+      "source_location": "L423",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_generate_catalog_seed",
@@ -44630,18 +44721,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L39",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_generate_catalog_seed",
-      "target": "scripts_generate_catalog_seed_sqljsonb",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L454",
+      "source_location": "L489",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_generate_catalog_seed",
@@ -44652,29 +44732,18 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L46",
+      "source_location": "L49",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_generate_catalog_seed",
-      "target": "scripts_generate_catalog_seed_datapath",
+      "target": "scripts_generate_catalog_seed_pricetogpnumber",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L47",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_generate_catalog_seed",
-      "target": "scripts_generate_catalog_seed_filecontent",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L489",
+      "source_location": "L524",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_generate_catalog_seed",
@@ -44685,18 +44754,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L49",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_generate_catalog_seed",
-      "target": "scripts_generate_catalog_seed_sandbox",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L523",
+      "source_location": "L558",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_generate_catalog_seed",
@@ -44707,7 +44765,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L556",
+      "source_location": "L591",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_generate_catalog_seed",
@@ -44718,7 +44776,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L585",
+      "source_location": "L620",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_generate_catalog_seed",
@@ -44729,40 +44787,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L59",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_generate_catalog_seed",
-      "target": "scripts_generate_catalog_seed_validancestryids",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L60",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_generate_catalog_seed",
-      "target": "scripts_generate_catalog_seed_validclassids",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L61",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_generate_catalog_seed",
-      "target": "scripts_generate_catalog_seed_validarchetypeids",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L616",
+      "source_location": "L651",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_generate_catalog_seed",
@@ -44773,66 +44798,11 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L62",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_generate_catalog_seed",
-      "target": "scripts_generate_catalog_seed_validitemids",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L64",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_generate_catalog_seed",
-      "target": "scripts_generate_catalog_seed_ancestrynametoid",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L644",
+      "source_location": "L679",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_generate_catalog_seed",
       "target": "scripts_generate_catalog_seed_conditionsdata",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L65",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_generate_catalog_seed",
-      "target": "scripts_generate_catalog_seed_classnametoid",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L669",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_generate_catalog_seed",
-      "target": "scripts_generate_catalog_seed_buffsdata",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L68",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_generate_catalog_seed",
-      "target": "scripts_generate_catalog_seed_ancestriesdata",
       "confidence_score": 1.0
     },
     {
@@ -44850,7 +44820,29 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L712",
+      "source_location": "L704",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_generate_catalog_seed",
+      "target": "scripts_generate_catalog_seed_buffsdata",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/generate-catalog-seed.cjs",
+      "source_location": "L74",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_generate_catalog_seed",
+      "target": "scripts_generate_catalog_seed_sqljsonb",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/generate-catalog-seed.cjs",
+      "source_location": "L747",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_generate_catalog_seed",
@@ -44861,44 +44853,11 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L744",
+      "source_location": "L779",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_generate_catalog_seed",
       "target": "scripts_generate_catalog_seed_seedsqlparts",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L770",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_generate_catalog_seed",
-      "target": "scripts_generate_catalog_seed_outputpath",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L775",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_generate_catalog_seed",
-      "target": "scripts_generate_catalog_seed_jsondir",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/generate-catalog-seed.cjs",
-      "source_location": "L778",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_generate_catalog_seed",
-      "target": "scripts_generate_catalog_seed_datasets",
       "confidence_score": 1.0
     },
     {
@@ -44916,11 +44875,154 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "scripts/generate-catalog-seed.cjs",
+      "source_location": "L805",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_generate_catalog_seed",
+      "target": "scripts_generate_catalog_seed_outputpath",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/generate-catalog-seed.cjs",
+      "source_location": "L81",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_generate_catalog_seed",
+      "target": "scripts_generate_catalog_seed_datapath",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/generate-catalog-seed.cjs",
+      "source_location": "L810",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_generate_catalog_seed",
+      "target": "scripts_generate_catalog_seed_jsondir",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/generate-catalog-seed.cjs",
+      "source_location": "L813",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_generate_catalog_seed",
+      "target": "scripts_generate_catalog_seed_datasets",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/generate-catalog-seed.cjs",
+      "source_location": "L82",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_generate_catalog_seed",
+      "target": "scripts_generate_catalog_seed_filecontent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/generate-catalog-seed.cjs",
+      "source_location": "L84",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_generate_catalog_seed",
+      "target": "scripts_generate_catalog_seed_sandbox",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/generate-catalog-seed.cjs",
+      "source_location": "L840",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_generate_catalog_seed",
+      "target": "scripts_generate_catalog_seed_seedsdir",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/generate-catalog-seed.cjs",
+      "source_location": "L892",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_generate_catalog_seed",
+      "target": "scripts_generate_catalog_seed_featshalf",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/generate-catalog-seed.cjs",
       "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_generate_catalog_seed",
       "target": "scripts_generate_catalog_seed_vm",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/generate-catalog-seed.cjs",
+      "source_location": "L94",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_generate_catalog_seed",
+      "target": "scripts_generate_catalog_seed_validancestryids",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/generate-catalog-seed.cjs",
+      "source_location": "L95",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_generate_catalog_seed",
+      "target": "scripts_generate_catalog_seed_validclassids",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/generate-catalog-seed.cjs",
+      "source_location": "L96",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_generate_catalog_seed",
+      "target": "scripts_generate_catalog_seed_validarchetypeids",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/generate-catalog-seed.cjs",
+      "source_location": "L97",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_generate_catalog_seed",
+      "target": "scripts_generate_catalog_seed_validitemids",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/generate-catalog-seed.cjs",
+      "source_location": "L99",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_generate_catalog_seed",
+      "target": "scripts_generate_catalog_seed_ancestrynametoid",
       "confidence_score": 1.0
     },
     {
@@ -45832,9 +45934,9 @@
       "source_location": "L19",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "scripts_migrate_catalog_to_supabase",
-      "target": "scripts_migrate_catalog_to_supabase_supabase",
-      "confidence_score": 1.0
+      "target": "scripts_migrate_catalog_to_supabase_supabase"
     },
     {
       "relation": "contains",
@@ -45843,9 +45945,9 @@
       "source_location": "L21",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "scripts_migrate_catalog_to_supabase",
-      "target": "scripts_migrate_catalog_to_supabase_datadir",
-      "confidence_score": 1.0
+      "target": "scripts_migrate_catalog_to_supabase_datadir"
     },
     {
       "relation": "contains",
@@ -45854,9 +45956,9 @@
       "source_location": "L28",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "scripts_migrate_catalog_to_supabase",
-      "target": "scripts_migrate_catalog_to_supabase_tableorder",
-      "confidence_score": 1.0
+      "target": "scripts_migrate_catalog_to_supabase_tableorder"
     },
     {
       "relation": "contains",
@@ -45865,9 +45967,9 @@
       "source_location": "L49",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "scripts_migrate_catalog_to_supabase",
-      "target": "scripts_migrate_catalog_to_supabase_run",
-      "confidence_score": 1.0
+      "target": "scripts_migrate_catalog_to_supabase_run"
     },
     {
       "relation": "contains",
@@ -45876,9 +45978,9 @@
       "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "scripts_migrate_catalog_to_supabase",
-      "target": "scripts_migrate_catalog_to_supabase_fs",
-      "confidence_score": 1.0
+      "target": "scripts_migrate_catalog_to_supabase_fs"
     },
     {
       "relation": "contains",
@@ -45887,9 +45989,9 @@
       "source_location": "L8",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "scripts_migrate_catalog_to_supabase",
-      "target": "scripts_migrate_catalog_to_supabase_path",
-      "confidence_score": 1.0
+      "target": "scripts_migrate_catalog_to_supabase_path"
     },
     {
       "relation": "contains",
@@ -45898,9 +46000,9 @@
       "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "scripts_migrate_catalog_to_supabase",
-      "target": "scripts_migrate_catalog_to_supabase_createclient",
-      "confidence_score": 1.0
+      "target": "scripts_migrate_catalog_to_supabase_createclient"
     },
     {
       "relation": "contains",
@@ -47614,9 +47716,9 @@
       "source_location": "L1009",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_portalpages_adminpage",
-      "confidence_score": 1.0
+      "target": "src_portalpages_adminpage"
     },
     {
       "relation": "contains",
@@ -47625,9 +47727,9 @@
       "source_location": "L102",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_portalpages_localizesourcelanguage",
-      "confidence_score": 1.0
+      "target": "src_portalpages_localizesourcelanguage"
     },
     {
       "relation": "contains",
@@ -47636,9 +47738,9 @@
       "source_location": "L107",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_portalpages_validationcopy",
-      "confidence_score": 1.0
+      "target": "src_portalpages_validationcopy"
     },
     {
       "relation": "contains",
@@ -47647,9 +47749,9 @@
       "source_location": "L1255",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_portalpages_portalpages",
-      "confidence_score": 1.0
+      "target": "src_portalpages_portalpages"
     },
     {
       "relation": "contains",
@@ -47658,9 +47760,9 @@
       "source_location": "L128",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_portalpages_getroute",
-      "confidence_score": 1.0
+      "target": "src_portalpages_getroute"
     },
     {
       "relation": "contains",
@@ -47669,9 +47771,9 @@
       "source_location": "L137",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_portalpages_catalogpage",
-      "confidence_score": 1.0
+      "target": "src_portalpages_catalogpage"
     },
     {
       "relation": "contains",
@@ -47680,9 +47782,9 @@
       "source_location": "L328",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_portalpages_hasfallbacktranslation",
-      "confidence_score": 1.0
+      "target": "src_portalpages_hasfallbacktranslation"
     },
     {
       "relation": "contains",
@@ -47691,9 +47793,9 @@
       "source_location": "L339",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_portalpages_formatcatalogvalue",
-      "confidence_score": 1.0
+      "target": "src_portalpages_formatcatalogvalue"
     },
     {
       "relation": "contains",
@@ -47702,9 +47804,9 @@
       "source_location": "L349",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_portalpages_localizecatalogvalue",
-      "confidence_score": 1.0
+      "target": "src_portalpages_localizecatalogvalue"
     },
     {
       "relation": "contains",
@@ -47713,9 +47815,9 @@
       "source_location": "L362",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_portalpages_localizecatalogkey",
-      "confidence_score": 1.0
+      "target": "src_portalpages_localizecatalogkey"
     },
     {
       "relation": "contains",
@@ -47724,9 +47826,9 @@
       "source_location": "L382",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_portalpages_getlocalizedtrait",
-      "confidence_score": 1.0
+      "target": "src_portalpages_getlocalizedtrait"
     },
     {
       "relation": "contains",
@@ -47735,9 +47837,9 @@
       "source_location": "L387",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_portalpages_catalogcard",
-      "confidence_score": 1.0
+      "target": "src_portalpages_catalogcard"
     },
     {
       "relation": "contains",
@@ -47746,9 +47848,9 @@
       "source_location": "L41",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_portalpages_portalroute",
-      "confidence_score": 1.0
+      "target": "src_portalpages_portalroute"
     },
     {
       "relation": "contains",
@@ -47757,9 +47859,9 @@
       "source_location": "L418",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_portalpages_bookdownloadssection",
-      "confidence_score": 1.0
+      "target": "src_portalpages_bookdownloadssection"
     },
     {
       "relation": "contains",
@@ -47768,9 +47870,9 @@
       "source_location": "L43",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_portalpages_routes",
-      "confidence_score": 1.0
+      "target": "src_portalpages_routes"
     },
     {
       "relation": "contains",
@@ -47779,9 +47881,9 @@
       "source_location": "L44",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_portalpages_navitems",
-      "confidence_score": 1.0
+      "target": "src_portalpages_navitems"
     },
     {
       "relation": "contains",
@@ -47790,9 +47892,9 @@
       "source_location": "L55",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_portalpages_catalogcategories",
-      "confidence_score": 1.0
+      "target": "src_portalpages_catalogcategories"
     },
     {
       "relation": "contains",
@@ -47801,9 +47903,9 @@
       "source_location": "L560",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_portalpages_downloadspage",
-      "confidence_score": 1.0
+      "target": "src_portalpages_downloadspage"
     },
     {
       "relation": "contains",
@@ -47812,9 +47914,9 @@
       "source_location": "L574",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_portalpages_rulespage",
-      "confidence_score": 1.0
+      "target": "src_portalpages_rulespage"
     },
     {
       "relation": "contains",
@@ -47823,9 +47925,9 @@
       "source_location": "L589",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_portalpages_librarypage",
-      "confidence_score": 1.0
+      "target": "src_portalpages_librarypage"
     },
     {
       "relation": "contains",
@@ -47834,9 +47936,9 @@
       "source_location": "L76",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_portalpages_localizesourcebook",
-      "confidence_score": 1.0
+      "target": "src_portalpages_localizesourcebook"
     },
     {
       "relation": "contains",
@@ -47845,9 +47947,9 @@
       "source_location": "L96",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_portalpages_localizesourcetitle",
-      "confidence_score": 1.0
+      "target": "src_portalpages_localizesourcetitle"
     },
     {
       "relation": "contains",
@@ -47856,9 +47958,9 @@
       "source_location": "L997",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_portalpages",
-      "target": "src_portalpages_privacypage",
-      "confidence_score": 1.0
+      "target": "src_portalpages_privacypage"
     },
     {
       "relation": "contains",
@@ -48406,9 +48508,9 @@
       "source_location": "L134",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_services_catalog",
-      "target": "src_services_catalog_getlocalruntimeitems",
-      "confidence_score": 1.0
+      "target": "src_services_catalog_getlocalruntimeitems"
     },
     {
       "relation": "contains",
@@ -48417,9 +48519,9 @@
       "source_location": "L150",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_services_catalog",
-      "target": "src_services_catalog_savetolocalcache",
-      "confidence_score": 1.0
+      "target": "src_services_catalog_savetolocalcache"
     },
     {
       "relation": "contains",
@@ -48428,9 +48530,9 @@
       "source_location": "L168",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_services_catalog",
-      "target": "src_services_catalog_getfromlocalcache",
-      "confidence_score": 1.0
+      "target": "src_services_catalog_getfromlocalcache"
     },
     {
       "relation": "contains",
@@ -48439,9 +48541,9 @@
       "source_location": "L192",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_services_catalog",
-      "target": "src_services_catalog_fetchcatalogcategory",
-      "confidence_score": 1.0
+      "target": "src_services_catalog_fetchcatalogcategory"
     },
     {
       "relation": "contains",
@@ -48450,9 +48552,9 @@
       "source_location": "L24",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_services_catalog",
-      "target": "src_services_catalog_picker_type_to_table",
-      "confidence_score": 1.0
+      "target": "src_services_catalog_picker_type_to_table"
     },
     {
       "relation": "contains",
@@ -48461,9 +48563,9 @@
       "source_location": "L241",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_services_catalog",
-      "target": "src_services_catalog_fetchcatalogitembyid",
-      "confidence_score": 1.0
+      "target": "src_services_catalog_fetchcatalogitembyid"
     },
     {
       "relation": "contains",
@@ -48472,9 +48574,9 @@
       "source_location": "L270",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_services_catalog",
-      "target": "src_services_catalog_getcatalogsyncstatus",
-      "confidence_score": 1.0
+      "target": "src_services_catalog_getcatalogsyncstatus"
     },
     {
       "relation": "contains",
@@ -48483,9 +48585,9 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_services_catalog",
-      "target": "src_services_catalog_catalogtablename",
-      "confidence_score": 1.0
+      "target": "src_services_catalog_catalogtablename"
     },
     {
       "relation": "contains",
@@ -48494,9 +48596,9 @@
       "source_location": "L46",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_services_catalog",
-      "target": "src_services_catalog_catalogitemrecord",
-      "confidence_score": 1.0
+      "target": "src_services_catalog_catalogitemrecord"
     },
     {
       "relation": "contains",
@@ -48505,9 +48607,9 @@
       "source_location": "L63",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_services_catalog",
-      "target": "src_services_catalog_catalogsyncstatus",
-      "confidence_score": 1.0
+      "target": "src_services_catalog_catalogsyncstatus"
     },
     {
       "relation": "contains",
@@ -48516,9 +48618,9 @@
       "source_location": "L72",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_services_catalog",
-      "target": "src_services_catalog_inmemorycache",
-      "confidence_score": 1.0
+      "target": "src_services_catalog_inmemorycache"
     },
     {
       "relation": "contains",
@@ -48527,9 +48629,9 @@
       "source_location": "L77",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "src_services_catalog",
-      "target": "src_services_catalog_normalizesupabaserecordtopickeritem",
-      "confidence_score": 1.0
+      "target": "src_services_catalog_normalizesupabaserecordtopickeritem"
     },
     {
       "relation": "contains",
@@ -53116,9 +53218,9 @@
       "source_location": "L1258",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 0.5,
       "source": "src_portalpages_portalpages",
-      "target": "src_portalpages_getroute",
-      "confidence_score": 0.5
+      "target": "src_portalpages_getroute"
     },
     {
       "relation": "indirect_call",
@@ -53182,5 +53284,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "17fc1daa13a5299c4ed8d26f8f278a7282b1245e"
+  "built_at_commit": "fac3a4d2b44a96e398d135be89b421e91c68a303"
 }
