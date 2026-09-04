@@ -936,7 +936,7 @@
     "description_en": "A rare animal granted full sapience; its size, HP, and Speeds depend on its chosen form.",
     "description_es": "Un animal raro que recibió plena conciencia; su tamaño, PG y velocidades dependen de la forma elegida.",
     "hp_base": 8,
-    "size": "Médio",
+    "size": "Medium",
     "speed_feet": 25,
     "attribute_boosts": [
       "Constituição",

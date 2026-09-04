@@ -7,9 +7,16 @@
     "description_pt": "Bônus +1 de estado em jogadas de ataque e salvamentos contra medo.",
     "description_en": "Benefit: Blessed.",
     "description_es": "Beneficio: Bendecido.",
-    "category": "Benefícios",
+    "duration_rounds": null,
+    "bonus_type": "status",
+    "target_stat": null,
+    "traits": [],
+    "rarity": "common",
     "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 318,
     "data": {
+      "category": "Benefícios",
       "modifiers": [],
       "needs_review": false
     }
@@ -22,9 +29,16 @@
     "description_pt": "Você recebe uma ação adicional no início de cada um dos seus turnos para Golpear ou Andar.",
     "description_en": "Benefit: Quickened.",
     "description_es": "Beneficio: Acelerado.",
-    "category": "Benefícios",
+    "duration_rounds": null,
+    "bonus_type": "status",
+    "target_stat": null,
+    "traits": [],
+    "rarity": "common",
     "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 444,
     "data": {
+      "category": "Benefícios",
       "modifiers": [],
       "needs_review": false
     }
@@ -37,9 +51,16 @@
     "description_pt": "Ataques e efeitos direcionados a você exigem um teste simples CD 5 do atacante.",
     "description_en": "Benefit: Concealed.",
     "description_es": "Beneficio: Ocultado.",
-    "category": "Benefícios",
+    "duration_rounds": null,
+    "bonus_type": "status",
+    "target_stat": null,
+    "traits": [],
+    "rarity": "common",
     "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 441,
     "data": {
+      "category": "Benefícios",
       "modifiers": [],
       "needs_review": false
     }
@@ -52,9 +73,16 @@
     "description_pt": "Você não pode ser visto diretamente e é Indetectado para criaturas que apenas dependem da visão.",
     "description_en": "Benefit: Invisible.",
     "description_es": "Beneficio: Invisible.",
-    "category": "Benefícios",
+    "duration_rounds": null,
+    "bonus_type": "status",
+    "target_stat": null,
+    "traits": [],
+    "rarity": "common",
     "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 443,
     "data": {
+      "category": "Benefícios",
       "modifiers": [],
       "needs_review": false
     }
@@ -67,9 +95,16 @@
     "description_pt": "Bônus de circunstância na CA concedido pelo escudo até o início do seu próximo turno.",
     "description_en": "Benefit: Shield Raised.",
     "description_es": "Beneficio: Escudo levantado.",
-    "category": "Benefícios",
+    "duration_rounds": null,
+    "bonus_type": "status",
+    "target_stat": null,
+    "traits": [],
+    "rarity": "common",
     "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 274,
     "data": {
+      "category": "Benefícios",
       "modifiers": [],
       "needs_review": false
     }
@@ -82,9 +117,16 @@
     "description_pt": "Composição de bardo que concede +1 de estado em jogadas de ataque, dano e salvamentos contra medo a todos os aliados.",
     "description_en": "Benefit: Courageous Anthem.",
     "description_es": "Beneficio: Anthem valiente.",
-    "category": "Benefícios",
+    "duration_rounds": null,
+    "bonus_type": "status",
+    "target_stat": null,
+    "traits": [],
+    "rarity": "common",
     "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 98,
     "data": {
+      "category": "Benefícios",
       "modifiers": [],
       "needs_review": false
     }
@@ -97,9 +139,16 @@
     "description_pt": "Composição de bardo que concede +1 de estado na CA e em salvamentos a todos os aliados em alcance.",
     "description_en": "Benefit: Rallying Anthem.",
     "description_es": "Beneficio: Anthem de ánimo.",
-    "category": "Benefícios",
+    "duration_rounds": null,
+    "bonus_type": "status",
+    "target_stat": null,
+    "traits": [],
+    "rarity": "common",
     "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 99,
     "data": {
+      "category": "Benefícios",
       "modifiers": [],
       "needs_review": false
     }
@@ -112,9 +161,16 @@
     "description_pt": "Bênção rápida que concede +1 de bônus de estado em uma jogada de ataque, teste de perícia ou salvamento antes do início do seu próximo turno.",
     "description_en": "Benefit: Guidance.",
     "description_es": "Beneficio: Guía.",
-    "category": "Benefícios",
+    "duration_rounds": null,
+    "bonus_type": "status",
+    "target_stat": null,
+    "traits": [],
+    "rarity": "common",
     "ruleset": "remaster",
+    "source_book": "Livro do Jogador (Player Core, Remaster)",
+    "source_page": 334,
     "data": {
+      "category": "Benefícios",
       "modifiers": [],
       "needs_review": false
     }
@@ -127,9 +183,16 @@
     "description_pt": "Postura marcial de monge que concede ataques desarmados de Cauda de Dragão (1d10 impacto, Traseiro).",
     "description_en": "Benefit: Dragon Stance.",
     "description_es": "Beneficio: Postura del dragón.",
-    "category": "Benefícios",
+    "duration_rounds": null,
+    "bonus_type": "status",
+    "target_stat": null,
+    "traits": [],
+    "rarity": "common",
     "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 144,
     "data": {
+      "category": "Benefícios",
       "modifiers": [],
       "needs_review": false
     }
@@ -142,9 +205,16 @@
     "description_pt": "Postura marcial de monge que concede Garras de Tigre (1d8 cortante, Ágil, Acurada, Sangramento 1d4 no crítico).",
     "description_en": "Benefit: Tiger Stance.",
     "description_es": "Beneficio: Postura del tigre.",
-    "category": "Benefícios",
+    "duration_rounds": null,
+    "bonus_type": "status",
+    "target_stat": null,
+    "traits": [],
+    "rarity": "common",
     "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 145,
     "data": {
+      "category": "Benefícios",
       "modifiers": [],
       "needs_review": false
     }
@@ -157,9 +227,16 @@
     "description_pt": "Postura marcial firme de monge que concede +4 de bônus de item na CA (+0 Dex cap) e Golpes de Queda de Montanha.",
     "description_en": "Benefit: Mountain Stance.",
     "description_es": "Beneficio: Postura de la montaña.",
-    "category": "Benefícios",
+    "duration_rounds": null,
+    "bonus_type": "status",
+    "target_stat": null,
+    "traits": [],
+    "rarity": "common",
     "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 145,
     "data": {
+      "category": "Benefícios",
       "modifiers": [],
       "needs_review": false
     }
@@ -172,9 +249,16 @@
     "description_pt": "Postura de monge que concede +1 de circunstância na CA, reduz penalidade de salto e concede Asas de Garça (1d6 impacto, Ágil, Acurada).",
     "description_en": "Benefit: Crane Stance.",
     "description_es": "Beneficio: Postura de la grulla.",
-    "category": "Benefícios",
+    "duration_rounds": null,
+    "bonus_type": "status",
+    "target_stat": null,
+    "traits": [],
+    "rarity": "common",
     "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 144,
     "data": {
+      "category": "Benefícios",
       "modifiers": [],
       "needs_review": false
     }

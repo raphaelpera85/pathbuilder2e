@@ -1,7 +1,7 @@
 # Graph Report - pathbuilder2e_local  (2026-09-04)
 
 ## Corpus Check
-- 180 files · ~3,156,384 words
+- 180 files · ~3,156,586 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `fac3a4d2`
+- Built from commit: `843530e2`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -525,7 +525,7 @@ Nodes (6): verifiedAncestry, verifiedArchetype, verifiedHeritage, verifiedRitual
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `PathbuilderApp` connect `PathbuilderApp` to `.renderAll`, `.applyPickerSelection`, `.renderDetailsTab`, `escapeHtml`, `.renderModalLeftList`, `.loadInitialCharacter`, `.openSetAbilitiesModal`?**
-  _High betweenness centrality (0.020) - this node is a cross-community bridge._
+  _High betweenness centrality (0.018) - this node is a cross-community bridge._
 - **Why does `useI18n()` connect `PortalPages.tsx` to `theme.tsx`, `ItemPickerModal.tsx`, `PickerModal.tsx`, `i18n.tsx`?**
   _High betweenness centrality (0.002) - this node is a cross-community bridge._
 - **Why does `Communities (112 total, 15 thin omitted)` connect `Communities (112 total, 15 thin omitted)` to `Graph Report - pathbuilder2e_local  (2026-09-03)`?**

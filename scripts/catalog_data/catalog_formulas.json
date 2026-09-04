@@ -8,19 +8,22 @@
     "description_pt": "Fórmula de elixir alquímico que restaura Pontos de Vida.",
     "description_en": "Formula for an alchemical elixir that restores Hit Points.",
     "description_es": "Fórmula de un elixir alquímico que restaura Puntos de Golpe.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 1,
-    "price": "3 PO",
-    "category": "Alquímico (Elixir)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Elixir",
       "Cura"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core)",
     "source_page": 292,
     "data": {
+      "category": "Alquímico (Elixir)",
+      "price": "3 PO",
       "needs_review": false
     }
   },
@@ -33,9 +36,9 @@
     "description_pt": "Fórmula de bomba alquímica que causa dano de fogo e fogo persistente.",
     "description_en": "Formula for an alchemical bomb that deals fire and persistent fire damage.",
     "description_es": "Fórmula de una bomba alquímica que causa daño de fuego y fuego persistente.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 1,
-    "price": "3 PO",
-    "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
       "Bomba",
@@ -43,10 +46,13 @@
       "Fogo",
       "Espalhar"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core)",
     "source_page": 291,
     "data": {
+      "category": "Alquímico (Bomba)",
+      "price": "3 PO",
       "needs_review": false
     }
   },
@@ -59,18 +65,21 @@
     "description_pt": "Fórmula de elixir que protege contra venenos.",
     "description_en": "Formula for an elixir that protects against poisons.",
     "description_es": "Fórmula de un elixir que protege contra venenos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 1,
-    "price": "3 PO",
-    "category": "Alquímico (Elixir)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Elixir"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core)",
     "source_page": 292,
     "data": {
+      "category": "Alquímico (Elixir)",
+      "price": "3 PO",
       "needs_review": false
     }
   },
@@ -83,18 +92,21 @@
     "description_pt": "Fórmula de revestimento alquímico que faz uma arma contar como prata.",
     "description_en": "Formula for an alchemical coating that makes a weapon count as silver.",
     "description_es": "Fórmula de un recubrimiento alquímico que hace que un arma cuente como plata.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 2,
-    "price": "6 PO",
-    "category": "Alquímico (Óleo)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Óleo"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core)",
     "source_page": 294,
     "data": {
+      "category": "Alquímico (Óleo)",
+      "price": "6 PO",
       "needs_review": false
     }
   },
@@ -107,17 +119,20 @@
     "description_pt": "Fórmula de consumível que cria uma nuvem de fumaça obscurecedora.",
     "description_en": "Formula for a consumable that creates an obscuring cloud of smoke.",
     "description_es": "Fórmula de un consumible que crea una nube de humo que oscurece.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 1,
-    "price": "3 PO",
-    "category": "Alquímico (Consumível)",
     "traits": [
       "Alquímico",
       "Consumível"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core)",
     "source_page": 294,
     "data": {
+      "category": "Alquímico (Consumível)",
+      "price": "3 PO",
       "needs_review": false
     }
   },
@@ -130,19 +145,22 @@
     "description_pt": "Fórmula para fabricar uma Poção de Cura Menor.",
     "description_en": "Formula for crafting a Minor Healing Potion.",
     "description_es": "Fórmula para fabricar una Poción de curación menor.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 1,
-    "price": "4 PO",
-    "category": "Mágico (Poção)",
     "traits": [
       "Mágico",
       "Consumível",
       "Poção",
       "Cura"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core)",
     "source_page": 295,
     "data": {
+      "category": "Mágico (Poção)",
+      "price": "4 PO",
       "needs_review": false
     }
   },
@@ -155,18 +173,21 @@
     "description_pt": "Fórmula de armadilha que causa dano perfurante quando acionada.",
     "description_en": "Formula for a snare that deals piercing damage when triggered.",
     "description_es": "Fórmula de una trampa que causa daño perforante al activarse.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 1,
-    "price": "3 PO",
-    "category": "Armadilha (Snare)",
     "traits": [
       "Armadilha",
       "Consumível",
       "Mecânico"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core)",
     "source_page": 296,
     "data": {
+      "category": "Armadilha (Snare)",
+      "price": "3 PO",
       "needs_review": false
     }
   },
@@ -179,18 +200,21 @@
     "description_pt": "Bomba mental que causa dano mental e dano colateral de medo.",
     "description_en": "Minor Frightful Ampoule is a Player Core 2 alchemical bomba formula for character equipment and crafting.",
     "description_es": "Ámpula pavorosa menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 1,
-    "price": "3 PO",
-    "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Bomba"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 283,
     "data": {
+      "category": "Alquímico (Bomba)",
+      "price": "3 PO",
       "needs_review": false
     }
   },
@@ -203,18 +227,21 @@
     "description_pt": "Bomba adesiva que reduz a Velocidade do alvo e pode prendê-lo.",
     "description_en": "Lesser Tanglefoot Bag is a Player Core 2 alchemical bomba formula for character equipment and crafting.",
     "description_es": "Bolsa de maraña menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 1,
-    "price": "3 PO",
-    "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Bomba"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 283,
     "data": {
+      "category": "Alquímico (Bomba)",
+      "price": "3 PO",
       "needs_review": false
     }
   },
@@ -227,18 +254,21 @@
     "description_pt": "Bomba venenosa que causa dano persistente e enfraquece o alvo.",
     "description_en": "Lesser Weakening Bomb is a Player Core 2 alchemical bomba formula for character equipment and crafting.",
     "description_es": "Bomba debilitante menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 1,
-    "price": "3 PO",
-    "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Bomba"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 283,
     "data": {
+      "category": "Alquímico (Bomba)",
+      "price": "3 PO",
       "needs_review": false
     }
   },
@@ -251,18 +281,21 @@
     "description_pt": "Bomba de vitalidade que causa dano colateral a criaturas próximas.",
     "description_en": "Lesser Ghost Charge is a Player Core 2 alchemical bomba formula for character equipment and crafting.",
     "description_es": "Carga fantasmal menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 1,
-    "price": "3 PO",
-    "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Bomba"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 284,
     "data": {
+      "category": "Alquímico (Bomba)",
+      "price": "3 PO",
       "needs_review": false
     }
   },
@@ -275,18 +308,21 @@
     "description_pt": "Bomba de fogo que causa dano persistente e dano de espalhamento.",
     "description_en": "Lesser Alchemist's Fire is a Player Core 2 alchemical bomba formula for character equipment and crafting.",
     "description_es": "Fuego alquímico menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 1,
-    "price": "3 PO",
-    "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Bomba"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 284,
     "data": {
+      "category": "Alquímico (Bomba)",
+      "price": "3 PO",
       "needs_review": false
     }
   },
@@ -299,18 +335,21 @@
     "description_pt": "Bomba de frio que causa dano e reduz a Velocidade do alvo.",
     "description_en": "Lesser Frost Vial is a Player Core 2 alchemical bomba formula for character equipment and crafting.",
     "description_es": "Vial de escarcha menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 1,
-    "price": "3 PO",
-    "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Bomba"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 285,
     "data": {
+      "category": "Alquímico (Bomba)",
+      "price": "3 PO",
       "needs_review": false
     }
   },
@@ -323,18 +362,21 @@
     "description_pt": "Bomba de ácido que causa dano persistente e dano de espalhamento.",
     "description_en": "Lesser Acid Flask is a Player Core 2 alchemical bomba formula for character equipment and crafting.",
     "description_es": "Frasco de ácido menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 1,
-    "price": "3 PO",
-    "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Bomba"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 285,
     "data": {
+      "category": "Alquímico (Bomba)",
+      "price": "3 PO",
       "needs_review": false
     }
   },
@@ -347,18 +389,21 @@
     "description_pt": "Bomba sônica que causa dano colateral a criaturas na área.",
     "description_en": "Lesser Detonating Stone is a Player Core 2 alchemical bomba formula for character equipment and crafting.",
     "description_es": "Piedra detonante menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 1,
-    "price": "3 PO",
-    "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Bomba"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 285,
     "data": {
+      "category": "Alquímico (Bomba)",
+      "price": "3 PO",
       "needs_review": false
     }
   },
@@ -371,18 +416,21 @@
     "description_pt": "Bomba elétrica que deixa o alvo desprevenido até o próximo turno.",
     "description_en": "Lesser Bottled Lightning is a Player Core 2 alchemical bomba formula for character equipment and crafting.",
     "description_es": "Relámpago embotellado menor es una fórmula alquímica de bomba del Player Core 2 para equipo y fabricación del personaje.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 1,
-    "price": "3 PO",
-    "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Bomba"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 285,
     "data": {
+      "category": "Alquímico (Bomba)",
+      "price": "3 PO",
       "needs_review": false
     }
   },
@@ -395,18 +443,21 @@
     "description_pt": "Elixir que concede bônus de item contra venenos por 6 horas.",
     "description_en": "Lesser Antidote is a Player Core 2 alchemical elixir formula for character equipment and crafting.",
     "description_es": "Antídoto menor es una fórmula alquímica de elixir del Player Core 2 para equipo y fabricación del personaje.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 1,
-    "price": "3 PO",
-    "category": "Alquímico (Elixir)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Elixir"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 286,
     "data": {
+      "category": "Alquímico (Elixir)",
+      "price": "3 PO",
       "needs_review": false
     }
   },
@@ -419,18 +470,21 @@
     "description_pt": "Elixir que concede bônus de item contra doenças por 24 horas.",
     "description_en": "Lesser Antiplague is a Player Core 2 alchemical elixir formula for character equipment and crafting.",
     "description_es": "Antiplaga menor es una fórmula alquímica de elixir del Player Core 2 para equipo y fabricación del personaje.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 1,
-    "price": "3 PO",
-    "category": "Alquímico (Elixir)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Elixir"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 286,
     "data": {
+      "category": "Alquímico (Elixir)",
+      "price": "3 PO",
       "needs_review": false
     }
   },
@@ -443,18 +497,21 @@
     "description_pt": "Elixir que restaura 1d6 Pontos de Vida e protege contra doenças e venenos.",
     "description_en": "Minor Elixir of Life is a Player Core 2 alchemical elixir formula for character equipment and crafting.",
     "description_es": "Elixir de la vida mínimo es una fórmula alquímica de elixir del Player Core 2 para equipo y fabricación del personaje.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 1,
-    "price": "3 PO",
-    "category": "Alquímico (Elixir)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Elixir"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 287,
     "data": {
+      "category": "Alquímico (Elixir)",
+      "price": "3 PO",
       "needs_review": false
     }
   },
@@ -467,18 +524,21 @@
     "description_pt": "Elixir de transformação gradual de características secundárias de gênero.",
     "description_en": "Lesser Gender Transition Elixir is a Player Core 2 alchemical elixir formula for character equipment and crafting.",
     "description_es": "Elixir de transición de género menor es una fórmula alquímica de elixir del Player Core 2 para equipo y fabricación del personaje.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 1,
-    "price": "1 PO",
-    "category": "Alquímico (Elixir)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Elixir"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 287,
     "data": {
+      "category": "Alquímico (Elixir)",
+      "price": "1 PO",
       "needs_review": false
     }
   },
@@ -491,18 +551,21 @@
     "description_pt": "Elixir que melhora a mobilidade e a velocidade temporariamente.",
     "description_en": "Lesser Cheetah Elixir is a Player Core 2 alchemical elixir formula for character equipment and crafting.",
     "description_es": "Elixir del guepardo menor es una fórmula alquímica de elixir del Player Core 2 para equipo y fabricación del personaje.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 1,
-    "price": "3 PO",
-    "category": "Alquímico (Elixir)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Elixir"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 288,
     "data": {
+      "category": "Alquímico (Elixir)",
+      "price": "3 PO",
       "needs_review": false
     }
   },
@@ -515,18 +578,21 @@
     "description_pt": "Elixir que aguça a visão e melhora a percepção de detalhes.",
     "description_en": "Lesser Eagle-Eye Elixir is a Player Core 2 alchemical elixir formula for character equipment and crafting.",
     "description_es": "Elixir del ojo de águila menor es una fórmula alquímica de elixir del Player Core 2 para equipo y fabricación del personaje.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 1,
-    "price": "4 PO",
-    "category": "Alquímico (Elixir)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Elixir"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 288,
     "data": {
+      "category": "Alquímico (Elixir)",
+      "price": "4 PO",
       "needs_review": false
     }
   },
@@ -539,18 +605,21 @@
     "description_pt": "Variante moderada da bomba alquímica ampola pavorosa; os efeitos completos devem ser consultados na página 283.",
     "description_en": "Moderate version of the frightful ampoule alchemical bomb; consult page 283 for the complete effects.",
     "description_es": "Versión moderada de la bomba alquímica ampolla pavorosa; consulta la página 283 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 3,
-    "price": "10 PO",
-    "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Bomba"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 283,
     "data": {
+      "category": "Alquímico (Bomba)",
+      "price": "10 PO",
       "needs_review": false
     }
   },
@@ -563,18 +632,21 @@
     "description_pt": "Variante maior da bomba alquímica ampola pavorosa; os efeitos completos devem ser consultados na página 283.",
     "description_en": "Greater version of the frightful ampoule alchemical bomb; consult page 283 for the complete effects.",
     "description_es": "Versión mayor de la bomba alquímica ampolla pavorosa; consulta la página 283 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 11,
-    "price": "250 PO",
-    "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Bomba"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 283,
     "data": {
+      "category": "Alquímico (Bomba)",
+      "price": "250 PO",
       "needs_review": false
     }
   },
@@ -587,18 +659,21 @@
     "description_pt": "Variante superior da bomba alquímica ampola pavorosa; os efeitos completos devem ser consultados na página 283.",
     "description_en": "Major version of the frightful ampoule alchemical bomb; consult page 283 for the complete effects.",
     "description_es": "Versión superior de la bomba alquímica ampolla pavorosa; consulta la página 283 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 17,
-    "price": "2500 PO",
-    "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Bomba"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 283,
     "data": {
+      "category": "Alquímico (Bomba)",
+      "price": "2500 PO",
       "needs_review": false
     }
   },
@@ -611,18 +686,21 @@
     "description_pt": "Variante moderada da bomba alquímica bomba de cola; os efeitos completos devem ser consultados na página 283.",
     "description_en": "Moderate version of the tanglefoot bag alchemical bomb; consult page 283 for the complete effects.",
     "description_es": "Versión moderada de la bomba alquímica bomba de cola; consulta la página 283 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 3,
-    "price": "10 PO",
-    "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Bomba"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 283,
     "data": {
+      "category": "Alquímico (Bomba)",
+      "price": "10 PO",
       "needs_review": false
     }
   },
@@ -635,18 +713,21 @@
     "description_pt": "Variante maior da bomba alquímica bomba de cola; os efeitos completos devem ser consultados na página 283.",
     "description_en": "Greater version of the tanglefoot bag alchemical bomb; consult page 283 for the complete effects.",
     "description_es": "Versión mayor de la bomba alquímica bomba de cola; consulta la página 283 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 11,
-    "price": "250 PO",
-    "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Bomba"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 283,
     "data": {
+      "category": "Alquímico (Bomba)",
+      "price": "250 PO",
       "needs_review": false
     }
   },
@@ -659,18 +740,21 @@
     "description_pt": "Variante superior da bomba alquímica bomba de cola; os efeitos completos devem ser consultados na página 283.",
     "description_en": "Major version of the tanglefoot bag alchemical bomb; consult page 283 for the complete effects.",
     "description_es": "Versión superior de la bomba alquímica bomba de cola; consulta la página 283 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 17,
-    "price": "2500 PO",
-    "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Bomba"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 283,
     "data": {
+      "category": "Alquímico (Bomba)",
+      "price": "2500 PO",
       "needs_review": false
     }
   },
@@ -683,18 +767,21 @@
     "description_pt": "Variante moderada da bomba alquímica bomba de esmorecimento; os efeitos completos devem ser consultados na página 283.",
     "description_en": "Moderate version of the weakening bomb alchemical bomb; consult page 283 for the complete effects.",
     "description_es": "Versión moderada de la bomba alquímica bomba debilitante; consulta la página 283 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 3,
-    "price": "10 PO",
-    "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Bomba"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 283,
     "data": {
+      "category": "Alquímico (Bomba)",
+      "price": "10 PO",
       "needs_review": false
     }
   },
@@ -707,18 +794,21 @@
     "description_pt": "Variante maior da bomba alquímica bomba de esmorecimento; os efeitos completos devem ser consultados na página 283.",
     "description_en": "Greater version of the weakening bomb alchemical bomb; consult page 283 for the complete effects.",
     "description_es": "Versión mayor de la bomba alquímica bomba debilitante; consulta la página 283 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 11,
-    "price": "250 PO",
-    "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Bomba"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 283,
     "data": {
+      "category": "Alquímico (Bomba)",
+      "price": "250 PO",
       "needs_review": false
     }
   },
@@ -731,18 +821,21 @@
     "description_pt": "Variante superior da bomba alquímica bomba de esmorecimento; os efeitos completos devem ser consultados na página 283.",
     "description_en": "Major version of the weakening bomb alchemical bomb; consult page 283 for the complete effects.",
     "description_es": "Versión superior de la bomba alquímica bomba debilitante; consulta la página 283 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 17,
-    "price": "2500 PO",
-    "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Bomba"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 283,
     "data": {
+      "category": "Alquímico (Bomba)",
+      "price": "2500 PO",
       "needs_review": false
     }
   },
@@ -755,18 +848,21 @@
     "description_pt": "Variante moderada da bomba alquímica carga fantasma; os efeitos completos devem ser consultados na página 284.",
     "description_en": "Moderate version of the ghost charge alchemical bomb; consult page 284 for the complete effects.",
     "description_es": "Versión moderada de la bomba alquímica carga fantasmal; consulta la página 284 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 3,
-    "price": "10 PO",
-    "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Bomba"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 284,
     "data": {
+      "category": "Alquímico (Bomba)",
+      "price": "10 PO",
       "needs_review": false
     }
   },
@@ -779,18 +875,21 @@
     "description_pt": "Variante maior da bomba alquímica carga fantasma; os efeitos completos devem ser consultados na página 284.",
     "description_en": "Greater version of the ghost charge alchemical bomb; consult page 284 for the complete effects.",
     "description_es": "Versión mayor de la bomba alquímica carga fantasmal; consulta la página 284 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 11,
-    "price": "250 PO",
-    "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Bomba"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 284,
     "data": {
+      "category": "Alquímico (Bomba)",
+      "price": "250 PO",
       "needs_review": false
     }
   },
@@ -803,18 +902,21 @@
     "description_pt": "Variante superior da bomba alquímica carga fantasma; os efeitos completos devem ser consultados na página 284.",
     "description_en": "Major version of the ghost charge alchemical bomb; consult page 284 for the complete effects.",
     "description_es": "Versión superior de la bomba alquímica carga fantasmal; consulta la página 284 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 17,
-    "price": "2500 PO",
-    "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Bomba"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 284,
     "data": {
+      "category": "Alquímico (Bomba)",
+      "price": "2500 PO",
       "needs_review": false
     }
   },
@@ -827,18 +929,21 @@
     "description_pt": "Variante moderada da bomba alquímica fogo alquímico; os efeitos completos devem ser consultados na página 284.",
     "description_en": "Moderate version of the alchemist's fire alchemical bomb; consult page 284 for the complete effects.",
     "description_es": "Versión moderada de la bomba alquímica fuego alquímico; consulta la página 284 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 3,
-    "price": "10 PO",
-    "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Bomba"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 284,
     "data": {
+      "category": "Alquímico (Bomba)",
+      "price": "10 PO",
       "needs_review": false
     }
   },
@@ -851,18 +956,21 @@
     "description_pt": "Variante maior da bomba alquímica fogo alquímico; os efeitos completos devem ser consultados na página 284.",
     "description_en": "Greater version of the alchemist's fire alchemical bomb; consult page 284 for the complete effects.",
     "description_es": "Versión mayor de la bomba alquímica fuego alquímico; consulta la página 284 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 11,
-    "price": "250 PO",
-    "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Bomba"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 284,
     "data": {
+      "category": "Alquímico (Bomba)",
+      "price": "250 PO",
       "needs_review": false
     }
   },
@@ -875,18 +983,21 @@
     "description_pt": "Variante superior da bomba alquímica fogo alquímico; os efeitos completos devem ser consultados na página 284.",
     "description_en": "Major version of the alchemist's fire alchemical bomb; consult page 284 for the complete effects.",
     "description_es": "Versión superior de la bomba alquímica fuego alquímico; consulta la página 284 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 17,
-    "price": "2500 PO",
-    "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Bomba"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 284,
     "data": {
+      "category": "Alquímico (Bomba)",
+      "price": "2500 PO",
       "needs_review": false
     }
   },
@@ -899,18 +1010,21 @@
     "description_pt": "Variante moderada da bomba alquímica frasco congelante; os efeitos completos devem ser consultados na página 285.",
     "description_en": "Moderate version of the frost vial alchemical bomb; consult page 285 for the complete effects.",
     "description_es": "Versión moderada de la bomba alquímica vial de escarcha; consulta la página 285 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 3,
-    "price": "10 PO",
-    "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Bomba"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 285,
     "data": {
+      "category": "Alquímico (Bomba)",
+      "price": "10 PO",
       "needs_review": false
     }
   },
@@ -923,18 +1037,21 @@
     "description_pt": "Variante maior da bomba alquímica frasco congelante; os efeitos completos devem ser consultados na página 285.",
     "description_en": "Greater version of the frost vial alchemical bomb; consult page 285 for the complete effects.",
     "description_es": "Versión mayor de la bomba alquímica vial de escarcha; consulta la página 285 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 11,
-    "price": "250 PO",
-    "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Bomba"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 285,
     "data": {
+      "category": "Alquímico (Bomba)",
+      "price": "250 PO",
       "needs_review": false
     }
   },
@@ -947,18 +1064,21 @@
     "description_pt": "Variante superior da bomba alquímica frasco congelante; os efeitos completos devem ser consultados na página 285.",
     "description_en": "Major version of the frost vial alchemical bomb; consult page 285 for the complete effects.",
     "description_es": "Versión superior de la bomba alquímica vial de escarcha; consulta la página 285 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 17,
-    "price": "2500 PO",
-    "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Bomba"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 285,
     "data": {
+      "category": "Alquímico (Bomba)",
+      "price": "2500 PO",
       "needs_review": false
     }
   },
@@ -971,18 +1091,21 @@
     "description_pt": "Variante moderada da bomba alquímica frasco de ácido; os efeitos completos devem ser consultados na página 285.",
     "description_en": "Moderate version of the acid flask alchemical bomb; consult page 285 for the complete effects.",
     "description_es": "Versión moderada de la bomba alquímica frasco de ácido; consulta la página 285 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 3,
-    "price": "10 PO",
-    "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Bomba"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 285,
     "data": {
+      "category": "Alquímico (Bomba)",
+      "price": "10 PO",
       "needs_review": false
     }
   },
@@ -995,18 +1118,21 @@
     "description_pt": "Variante maior da bomba alquímica frasco de ácido; os efeitos completos devem ser consultados na página 285.",
     "description_en": "Greater version of the acid flask alchemical bomb; consult page 285 for the complete effects.",
     "description_es": "Versión mayor de la bomba alquímica frasco de ácido; consulta la página 285 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 11,
-    "price": "250 PO",
-    "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Bomba"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 285,
     "data": {
+      "category": "Alquímico (Bomba)",
+      "price": "250 PO",
       "needs_review": false
     }
   },
@@ -1019,18 +1145,21 @@
     "description_pt": "Variante superior da bomba alquímica frasco de ácido; os efeitos completos devem ser consultados na página 285.",
     "description_en": "Major version of the acid flask alchemical bomb; consult page 285 for the complete effects.",
     "description_es": "Versión superior de la bomba alquímica frasco de ácido; consulta la página 285 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 17,
-    "price": "2500 PO",
-    "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Bomba"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 285,
     "data": {
+      "category": "Alquímico (Bomba)",
+      "price": "2500 PO",
       "needs_review": false
     }
   },
@@ -1043,18 +1172,21 @@
     "description_pt": "Variante moderada da bomba alquímica pedra detonante; os efeitos completos devem ser consultados na página 285.",
     "description_en": "Moderate version of the detonating stone alchemical bomb; consult page 285 for the complete effects.",
     "description_es": "Versión moderada de la bomba alquímica piedra detonante; consulta la página 285 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 3,
-    "price": "10 PO",
-    "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Bomba"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 285,
     "data": {
+      "category": "Alquímico (Bomba)",
+      "price": "10 PO",
       "needs_review": false
     }
   },
@@ -1067,18 +1199,21 @@
     "description_pt": "Variante maior da bomba alquímica pedra detonante; os efeitos completos devem ser consultados na página 285.",
     "description_en": "Greater version of the detonating stone alchemical bomb; consult page 285 for the complete effects.",
     "description_es": "Versión mayor de la bomba alquímica piedra detonante; consulta la página 285 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 11,
-    "price": "250 PO",
-    "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Bomba"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 285,
     "data": {
+      "category": "Alquímico (Bomba)",
+      "price": "250 PO",
       "needs_review": false
     }
   },
@@ -1091,18 +1226,21 @@
     "description_pt": "Variante superior da bomba alquímica pedra detonante; os efeitos completos devem ser consultados na página 285.",
     "description_en": "Major version of the detonating stone alchemical bomb; consult page 285 for the complete effects.",
     "description_es": "Versión superior de la bomba alquímica piedra detonante; consulta la página 285 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 17,
-    "price": "2500 PO",
-    "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Bomba"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 285,
     "data": {
+      "category": "Alquímico (Bomba)",
+      "price": "2500 PO",
       "needs_review": false
     }
   },
@@ -1115,18 +1253,21 @@
     "description_pt": "Variante moderada da bomba alquímica relâmpago engarrafado; os efeitos completos devem ser consultados na página 285.",
     "description_en": "Moderate version of the bottled lightning alchemical bomb; consult page 285 for the complete effects.",
     "description_es": "Versión moderada de la bomba alquímica relámpago embotellado; consulta la página 285 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 3,
-    "price": "10 PO",
-    "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Bomba"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 285,
     "data": {
+      "category": "Alquímico (Bomba)",
+      "price": "10 PO",
       "needs_review": false
     }
   },
@@ -1139,18 +1280,21 @@
     "description_pt": "Variante maior da bomba alquímica relâmpago engarrafado; os efeitos completos devem ser consultados na página 285.",
     "description_en": "Greater version of the bottled lightning alchemical bomb; consult page 285 for the complete effects.",
     "description_es": "Versión mayor de la bomba alquímica relámpago embotellado; consulta la página 285 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 11,
-    "price": "250 PO",
-    "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Bomba"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 285,
     "data": {
+      "category": "Alquímico (Bomba)",
+      "price": "250 PO",
       "needs_review": false
     }
   },
@@ -1163,18 +1307,21 @@
     "description_pt": "Variante superior da bomba alquímica relâmpago engarrafado; os efeitos completos devem ser consultados na página 285.",
     "description_en": "Major version of the bottled lightning alchemical bomb; consult page 285 for the complete effects.",
     "description_es": "Versión superior de la bomba alquímica relámpago embotellado; consulta la página 285 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 17,
-    "price": "2500 PO",
-    "category": "Alquímico (Bomba)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Bomba"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 285,
     "data": {
+      "category": "Alquímico (Bomba)",
+      "price": "2500 PO",
       "needs_review": false
     }
   },
@@ -1187,18 +1334,21 @@
     "description_pt": "Item alquímico de categoria ferramenta listado na tabela do Player Core 2; consulte a página 295 para os efeitos completos.",
     "description_en": "Player Core 2 alchemical ferramenta listed in the item table; consult page 295 for the complete effects.",
     "description_es": "Objeto alquímico de categoría ferramenta listado en la tabla del Player Core 2; consulta la página 295 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 1,
-    "price": "3 PO",
-    "category": "Alquímico (Ferramenta)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Ferramenta"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 295,
     "data": {
+      "category": "Alquímico (Ferramenta)",
+      "price": "3 PO",
       "needs_review": false
     }
   },
@@ -1211,18 +1361,21 @@
     "description_pt": "Item alquímico de categoria ferramenta listado na tabela do Player Core 2; consulte a página 295 para os efeitos completos.",
     "description_en": "Player Core 2 alchemical ferramenta listed in the item table; consult page 295 for the complete effects.",
     "description_es": "Objeto alquímico de categoría ferramenta listado en la tabla del Player Core 2; consulta la página 295 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 1,
-    "price": "3 PO",
-    "category": "Alquímico (Ferramenta)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Ferramenta"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 295,
     "data": {
+      "category": "Alquímico (Ferramenta)",
+      "price": "3 PO",
       "needs_review": false
     }
   },
@@ -1235,18 +1388,21 @@
     "description_pt": "Item alquímico de categoria ferramenta listado na tabela do Player Core 2; consulte a página 295 para os efeitos completos.",
     "description_en": "Player Core 2 alchemical ferramenta listed in the item table; consult page 295 for the complete effects.",
     "description_es": "Objeto alquímico de categoría ferramenta listado en la tabla del Player Core 2; consulta la página 295 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 1,
-    "price": "3 PO",
-    "category": "Alquímico (Ferramenta)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Ferramenta"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 295,
     "data": {
+      "category": "Alquímico (Ferramenta)",
+      "price": "3 PO",
       "needs_review": false
     }
   },
@@ -1259,18 +1415,21 @@
     "description_pt": "Item alquímico de categoria ferramenta listado na tabela do Player Core 2; consulte a página 295 para os efeitos completos.",
     "description_en": "Player Core 2 alchemical ferramenta listed in the item table; consult page 295 for the complete effects.",
     "description_es": "Objeto alquímico de categoría ferramenta listado en la tabla del Player Core 2; consulta la página 295 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 1,
-    "price": "2 PL",
-    "category": "Alquímico (Ferramenta)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Ferramenta"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 295,
     "data": {
+      "category": "Alquímico (Ferramenta)",
+      "price": "2 PL",
       "needs_review": false
     }
   },
@@ -1283,18 +1442,21 @@
     "description_pt": "Item alquímico de categoria ferramenta listado na tabela do Player Core 2; consulte a página 295 para os efeitos completos.",
     "description_en": "Player Core 2 alchemical ferramenta listed in the item table; consult page 295 for the complete effects.",
     "description_es": "Objeto alquímico de categoría ferramenta listado en la tabla del Player Core 2; consulta la página 295 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 1,
-    "price": "2 PO",
-    "category": "Alquímico (Ferramenta)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Ferramenta"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 295,
     "data": {
+      "category": "Alquímico (Ferramenta)",
+      "price": "2 PO",
       "needs_review": false
     }
   },
@@ -1307,18 +1469,21 @@
     "description_pt": "Item alquímico de categoria ferramenta listado na tabela do Player Core 2; consulte a página 296 para os efeitos completos.",
     "description_en": "Player Core 2 alchemical ferramenta listed in the item table; consult page 296 for the complete effects.",
     "description_es": "Objeto alquímico de categoría ferramenta listado en la tabla del Player Core 2; consulta la página 296 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 1,
-    "price": "3 PO",
-    "category": "Alquímico (Ferramenta)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Ferramenta"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 296,
     "data": {
+      "category": "Alquímico (Ferramenta)",
+      "price": "3 PO",
       "needs_review": false
     }
   },
@@ -1331,18 +1496,21 @@
     "description_pt": "Item alquímico de categoria veneno listado na tabela do Player Core 2; consulte a página 291 para os efeitos completos.",
     "description_en": "Player Core 2 alchemical veneno listed in the item table; consult page 291 for the complete effects.",
     "description_es": "Objeto alquímico de categoría veneno listado en la tabla del Player Core 2; consulta la página 291 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 2,
-    "price": "5 PO",
-    "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Veneno"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 291,
     "data": {
+      "category": "Alquímico (Veneno)",
+      "price": "5 PO",
       "needs_review": false
     }
   },
@@ -1355,18 +1523,21 @@
     "description_pt": "Item alquímico de categoria veneno listado na tabela do Player Core 2; consulte a página 291 para os efeitos completos.",
     "description_en": "Player Core 2 alchemical veneno listed in the item table; consult page 291 for the complete effects.",
     "description_es": "Objeto alquímico de categoría veneno listado en la tabla del Player Core 2; consulta la página 291 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 1,
-    "price": "3 PO",
-    "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Veneno"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 291,
     "data": {
+      "category": "Alquímico (Veneno)",
+      "price": "3 PO",
       "needs_review": false
     }
   },
@@ -1379,18 +1550,21 @@
     "description_pt": "Item alquímico de categoria veneno listado na tabela do Player Core 2; consulte a página 294 para os efeitos completos.",
     "description_en": "Player Core 2 alchemical veneno listed in the item table; consult page 294 for the complete effects.",
     "description_es": "Objeto alquímico de categoría veneno listado en la tabla del Player Core 2; consulta la página 294 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 1,
-    "price": "4 PO",
-    "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Veneno"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 294,
     "data": {
+      "category": "Alquímico (Veneno)",
+      "price": "4 PO",
       "needs_review": false
     }
   },
@@ -1403,18 +1577,21 @@
     "description_pt": "Veneno de ferimento CD 16; causa condição de lento e risco de paralisia.",
     "description_en": "Injury poison DC 16; inflicts slowed condition and paralysis.",
     "description_es": "Veneno de herida CD 16; inflige estado ralentizado y parálisis.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 2,
-    "price": "7 PO",
-    "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Veneno"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 292,
     "data": {
+      "category": "Alquímico (Veneno)",
+      "price": "7 PO",
       "needs_review": false
     }
   },
@@ -1427,18 +1604,21 @@
     "description_pt": "Veneno de ferimento CD 18; causa dano contínuo de veneno e desajeitado.",
     "description_en": "Injury poison DC 18; deals continuous poison damage and clumsy.",
     "description_es": "Veneno de herida CD 18; inflige daño continuado de veneno y torpe.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 2,
-    "price": "6 PO",
-    "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Veneno"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 292,
     "data": {
+      "category": "Alquímico (Veneno)",
+      "price": "6 PO",
       "needs_review": false
     }
   },
@@ -1451,18 +1631,21 @@
     "description_pt": "Item alquímico de categoria veneno listado na tabela do Player Core 2; consulte a página 292 para os efeitos completos.",
     "description_en": "Player Core 2 alchemical veneno listed in the item table; consult page 292 for the complete effects.",
     "description_es": "Objeto alquímico de categoría veneno listado en la tabla del Player Core 2; consulta la página 292 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 3,
-    "price": "10 PO",
-    "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Veneno"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 292,
     "data": {
+      "category": "Alquímico (Veneno)",
+      "price": "10 PO",
       "needs_review": false
     }
   },
@@ -1475,18 +1658,21 @@
     "description_pt": "Veneno de contato CD 19; causa dano de veneno e condição de estupefato mental.",
     "description_en": "Contact poison DC 19; deals poison damage and stupefied mental condition.",
     "description_es": "Veneno de contacto CD 19; causa daño de veneno y estado estupefacto.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 3,
-    "price": "10 PO",
-    "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Veneno"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 293,
     "data": {
+      "category": "Alquímico (Veneno)",
+      "price": "10 PO",
       "needs_review": false
     }
   },
@@ -1499,18 +1685,21 @@
     "description_pt": "Item alquímico de categoria veneno listado na tabela do Player Core 2; consulte a página 294 para os efeitos completos.",
     "description_en": "Player Core 2 alchemical veneno listed in the item table; consult page 294 for the complete effects.",
     "description_es": "Objeto alquímico de categoría veneno listado en la tabla del Player Core 2; consulta la página 294 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 5,
-    "price": "25 PO",
-    "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Veneno"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 294,
     "data": {
+      "category": "Alquímico (Veneno)",
+      "price": "25 PO",
       "needs_review": false
     }
   },
@@ -1523,18 +1712,21 @@
     "description_pt": "Item alquímico de categoria veneno listado na tabela do Player Core 2; consulte a página 292 para os efeitos completos.",
     "description_en": "Player Core 2 alchemical veneno listed in the item table; consult page 292 for the complete effects.",
     "description_es": "Objeto alquímico de categoría veneno listado en la tabla del Player Core 2; consulta la página 292 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 6,
-    "price": "40 PO",
-    "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Veneno"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 292,
     "data": {
+      "category": "Alquímico (Veneno)",
+      "price": "40 PO",
       "needs_review": false
     }
   },
@@ -1547,18 +1739,21 @@
     "description_pt": "Veneno de ferimento CD 21; reduz deslocamento e imobiliza o alvo.",
     "description_en": "Injury poison DC 21; reduces speed and immobilizes target.",
     "description_es": "Veneno de herida CD 21; reduce velocidad e inmoviliza al objetivo.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 7,
-    "price": "55 PO",
-    "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Veneno"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 293,
     "data": {
+      "category": "Alquímico (Veneno)",
+      "price": "55 PO",
       "needs_review": false
     }
   },
@@ -1571,18 +1766,21 @@
     "description_pt": "Item alquímico de categoria veneno listado na tabela do Player Core 2; consulte a página 293 para os efeitos completos.",
     "description_en": "Player Core 2 alchemical veneno listed in the item table; consult page 293 for the complete effects.",
     "description_es": "Objeto alquímico de categoría veneno listado en la tabla del Player Core 2; consulta la página 293 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 8,
-    "price": "75 PO",
-    "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Veneno"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 293,
     "data": {
+      "category": "Alquímico (Veneno)",
+      "price": "75 PO",
       "needs_review": false
     }
   },
@@ -1595,18 +1793,21 @@
     "description_pt": "Item alquímico de categoria veneno listado na tabela do Player Core 2; consulte a página 294 para os efeitos completos.",
     "description_en": "Player Core 2 alchemical veneno listed in the item table; consult page 294 for the complete effects.",
     "description_es": "Objeto alquímico de categoría veneno listado en la tabla del Player Core 2; consulta la página 294 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 8,
-    "price": "80 PO",
-    "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Veneno"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 294,
     "data": {
+      "category": "Alquímico (Veneno)",
+      "price": "80 PO",
       "needs_review": false
     }
   },
@@ -1619,18 +1820,21 @@
     "description_pt": "Veneno inalado CD 22; inflige níveis crescentes da condição enfraquecido.",
     "description_en": "Inhaled poison DC 22; imposes escalating levels of the enfeebled condition.",
     "description_es": "Veneno inhalado CD 22; impone niveles crecientes de la condición debilitado.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 9,
-    "price": "110 PO",
-    "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Veneno"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 292,
     "data": {
+      "category": "Alquímico (Veneno)",
+      "price": "110 PO",
       "needs_review": false
     }
   },
@@ -1643,18 +1847,21 @@
     "description_pt": "Veneno ingerido CD 24; causa dano severo de veneno, desajeitado e paralisia temporária.",
     "description_en": "Ingested poison DC 24; causes heavy poison damage, clumsy, and short paralysis.",
     "description_es": "Veneno ingerido CD 24; inflige gran daño de veneno, torpe y parálisis corta.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 9,
-    "price": "110 PO",
-    "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Veneno"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 292,
     "data": {
+      "category": "Alquímico (Veneno)",
+      "price": "110 PO",
       "needs_review": false
     }
   },
@@ -1667,18 +1874,21 @@
     "description_pt": "Item alquímico de categoria veneno listado na tabela do Player Core 2; consulte a página 291 para os efeitos completos.",
     "description_en": "Player Core 2 alchemical veneno listed in the item table; consult page 291 for the complete effects.",
     "description_es": "Objeto alquímico de categoría veneno listado en la tabla del Player Core 2; consulta la página 291 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 10,
-    "price": "155 PO",
-    "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Veneno"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 291,
     "data": {
+      "category": "Alquímico (Veneno)",
+      "price": "155 PO",
       "needs_review": false
     }
   },
@@ -1691,18 +1901,21 @@
     "description_pt": "Veneno de ferimento CD 26; inflige dano de veneno e drena a vitalidade máxima.",
     "description_en": "Injury poison DC 26; inflicts poison damage and drains maximum vitality.",
     "description_es": "Veneno de herida CD 26; causa daño de veneno y drena la vitalidad máxima.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 10,
-    "price": "160 PO",
-    "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Veneno"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 293,
     "data": {
+      "category": "Alquímico (Veneno)",
+      "price": "160 PO",
       "needs_review": false
     }
   },
@@ -1715,18 +1928,21 @@
     "description_pt": "Item alquímico de categoria veneno listado na tabela do Player Core 2; consulte a página 292 para os efeitos completos.",
     "description_en": "Player Core 2 alchemical veneno listed in the item table; consult page 292 for the complete effects.",
     "description_es": "Objeto alquímico de categoría veneno listado en la tabla del Player Core 2; consulta la página 292 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 19,
-    "price": "6500 PO",
-    "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Veneno"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 292,
     "data": {
+      "category": "Alquímico (Veneno)",
+      "price": "6500 PO",
       "needs_review": false
     }
   },
@@ -1739,18 +1955,21 @@
     "description_pt": "Item alquímico de categoria veneno listado na tabela do Player Core 2; consulte a página 292 para os efeitos completos.",
     "description_en": "Player Core 2 alchemical veneno listed in the item table; consult page 292 for the complete effects.",
     "description_es": "Objeto alquímico de categoría veneno listado en la tabla del Player Core 2; consulta la página 292 para los efectos completos.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 20,
-    "price": "12000 PO",
-    "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Veneno"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 292,
     "data": {
+      "category": "Alquímico (Veneno)",
+      "price": "12000 PO",
       "needs_review": false
     }
   },
@@ -1763,18 +1982,21 @@
     "description_pt": "Veneno de ferimento CD 29; causa dano de veneno, desajeitado e drenado.",
     "description_en": "Injury poison DC 29; inflicts poison damage, clumsy, and drained.",
     "description_es": "Veneno de herida CD 29; causa daño de veneno, torpe y drenado.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 12,
-    "price": "500 PO",
-    "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Veneno"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 294,
     "data": {
+      "category": "Alquímico (Veneno)",
+      "price": "500 PO",
       "needs_review": false
     }
   },
@@ -1787,18 +2009,21 @@
     "description_pt": "Veneno ingerido com efeito de sono; CD, dano e progressão devem ser conferidos no livro.",
     "description_en": "Ingested poison with a sleep effect; check the book for DC, damage, and progression.",
     "description_es": "Veneno ingerido con efecto de sueño; verifica el libro para CD, daño y progresión.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 12,
-    "price": "325 PO",
-    "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Veneno"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 294,
     "data": {
+      "category": "Alquímico (Veneno)",
+      "price": "325 PO",
       "needs_review": false
     }
   },
@@ -1811,18 +2036,21 @@
     "description_pt": "Veneno ingerido de alta letalidade; CD, dano e progressão devem ser conferidos na entrada do livro.",
     "description_en": "Highly lethal ingested poison; check the book entry for DC, damage, and progression.",
     "description_es": "Veneno ingerido de alta letalidad; verifica la entrada para CD, daño y progresión.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 17,
-    "price": "2250 PO",
-    "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Veneno"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 292,
     "data": {
+      "category": "Alquímico (Veneno)",
+      "price": "2250 PO",
       "needs_review": false
     }
   },
@@ -1835,18 +2063,21 @@
     "description_pt": "Veneno ingerido CD 25; causa dano de veneno e enjoado.",
     "description_en": "Ingested poison DC 25; deals poison damage and sickened condition.",
     "description_es": "Veneno ingerido CD 25; inflige daño de veneno y estado indispuesto.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 13,
-    "price": "450 PO",
-    "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Veneno"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 292,
     "data": {
+      "category": "Alquímico (Veneno)",
+      "price": "450 PO",
       "needs_review": false
     }
   },
@@ -1859,18 +2090,21 @@
     "description_pt": "Veneno ingerido virulento de longa duração; CD, dano e progressão devem ser conferidos no livro.",
     "description_en": "Long-duration virulent ingested poison; check the book for DC, damage, and progression.",
     "description_es": "Veneno ingerido virulento de larga duración; verifica el libro para CD, daño y progresión.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 18,
-    "price": "4000 PO",
-    "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Veneno"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 293,
     "data": {
+      "category": "Alquímico (Veneno)",
+      "price": "4000 PO",
       "needs_review": false
     }
   },
@@ -1883,18 +2117,21 @@
     "description_pt": "Veneno de contato CD 22; causa dano de veneno, desajeitado e estupefato.",
     "description_en": "Contact poison DC 22; deals poison damage, clumsy, and stupefied.",
     "description_es": "Veneno de contacto CD 22; inflige daño de veneno, torpe y estupefacto.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 16,
-    "price": "1450 PO",
-    "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Veneno"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 292,
     "data": {
+      "category": "Alquímico (Veneno)",
+      "price": "1450 PO",
       "needs_review": false
     }
   },
@@ -1907,18 +2144,21 @@
     "description_pt": "Veneno inalado CD 19; causa dano de veneno, ofuscamento e cegueira.",
     "description_en": "Inhaled poison DC 19; inflicts poison damage, dazzled, and blindness.",
     "description_es": "Veneno inhalado CD 19; causa daño de veneno, deslumbrado y ceguera.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 16,
-    "price": "1500 PO",
-    "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Veneno"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 294,
     "data": {
+      "category": "Alquímico (Veneno)",
+      "price": "1500 PO",
       "needs_review": false
     }
   },
@@ -1931,18 +2171,21 @@
     "description_pt": "Veneno inalado que prejudica faculdades mentais; CD, dano e progressão devem ser conferidos no livro.",
     "description_en": "Inhaled poison that impairs mental faculties; check the book for DC, damage, and progression.",
     "description_es": "Veneno inhalado que perjudica las facultades mentales; verifica el libro para CD, daño y progresión.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 15,
-    "price": "1000 PO",
-    "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Veneno"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 291,
     "data": {
+      "category": "Alquímico (Veneno)",
+      "price": "1000 PO",
       "needs_review": false
     }
   },
@@ -1955,18 +2198,21 @@
     "description_pt": "Veneno ingerido CD 20; causa amedrontado progressivo, fuga e confusão.",
     "description_en": "Ingested poison DC 20; causes escalating fear, fleeing, and confusion.",
     "description_es": "Veneno ingerido CD 20; causa miedo progresivo, huida y confusión.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 4,
-    "price": "16 PO",
-    "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Veneno"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 292,
     "data": {
+      "category": "Alquímico (Veneno)",
+      "price": "16 PO",
       "needs_review": false
     }
   },
@@ -1979,18 +2225,21 @@
     "description_pt": "Prótese básica que restaura a mobilidade funcional do usuário.",
     "description_en": "Basic prosthetic restoring functional mobility to the wearer.",
     "description_es": "Prótesis básica que restaura la movilidad funcional del usuario.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 4,
-    "price": "15 PO",
-    "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Veneno"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 292,
     "data": {
+      "category": "Alquímico (Veneno)",
+      "price": "15 PO",
       "needs_review": false
     }
   },
@@ -2003,18 +2252,21 @@
     "description_pt": "Veneno de contato que causa dano persistente; CD e progressão devem ser conferidos na entrada do livro.",
     "description_en": "Contact poison that deals persistent damage; check the book entry for DC and progression.",
     "description_es": "Veneno de contacto que causa daño persistente; verifica la entrada para CD y progresión.",
+    "craft_dc": 15,
+    "batch_size": 4,
     "level": 11,
-    "price": "225 PO",
-    "category": "Alquímico (Veneno)",
     "traits": [
       "Alquímico",
       "Consumível",
       "Veneno"
     ],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 293,
     "data": {
+      "category": "Alquímico (Veneno)",
+      "price": "225 PO",
       "needs_review": false
     }
   }

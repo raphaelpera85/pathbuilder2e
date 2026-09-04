@@ -12,12 +12,13 @@
       "acrobatics"
     ],
     "granted_feat": "Acrobata Felino",
-    "lore_skill": null,
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 88,
     "data": {
+      "lore": null,
       "needs_review": false
     }
   },
@@ -34,12 +35,13 @@
       "crafting"
     ],
     "granted_feat": "Manufatura Especializada",
-    "lore_skill": null,
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 88,
     "data": {
+      "lore": null,
       "needs_review": false
     }
   },
@@ -56,12 +58,13 @@
       "crafting"
     ],
     "granted_feat": "Manufatura Especializada",
-    "lore_skill": null,
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 88,
     "data": {
+      "lore": null,
       "needs_review": false
     }
   },
@@ -78,12 +81,13 @@
       "survival"
     ],
     "granted_feat": "Rastreio Experiente",
-    "lore_skill": null,
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 90,
     "data": {
+      "lore": null,
       "needs_review": false
     }
   },
@@ -100,12 +104,13 @@
       "survival"
     ],
     "granted_feat": "Olhos de Águia",
-    "lore_skill": null,
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 89,
     "data": {
+      "lore": null,
       "needs_review": false
     }
   },
@@ -122,12 +127,13 @@
       "deception"
     ],
     "granted_feat": "Mentiroso Charmoso",
-    "lore_skill": null,
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 88,
     "data": {
+      "lore": null,
       "needs_review": false
     }
   },
@@ -144,12 +150,13 @@
       "survival"
     ],
     "granted_feat": "Forrageador",
-    "lore_skill": null,
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 88,
     "data": {
+      "lore": null,
       "needs_review": false
     }
   },
@@ -166,12 +173,13 @@
       "thievery"
     ],
     "granted_feat": "Pernas Rápidas",
-    "lore_skill": null,
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 88,
     "data": {
+      "lore": null,
       "needs_review": false
     }
   },
@@ -188,12 +196,13 @@
       "medicine"
     ],
     "granted_feat": "Medicina de Batalha",
-    "lore_skill": null,
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 89,
     "data": {
+      "lore": null,
       "needs_review": false
     }
   },
@@ -210,12 +219,13 @@
       "society"
     ],
     "granted_feat": "Leitura de Pista",
-    "lore_skill": null,
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 89,
     "data": {
+      "lore": null,
       "needs_review": false
     }
   },
@@ -232,12 +242,13 @@
       "deception"
     ],
     "granted_feat": "Palavra Mordaz (Bon Mot)",
-    "lore_skill": null,
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 89,
     "data": {
+      "lore": null,
       "needs_review": false
     }
   },
@@ -254,12 +265,13 @@
       "diplomacy"
     ],
     "granted_feat": "Etiqueta da Corte",
-    "lore_skill": null,
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 89,
     "data": {
+      "lore": null,
       "needs_review": false
     }
   },
@@ -276,12 +288,13 @@
       "nature"
     ],
     "granted_feat": "Solidão Focada",
-    "lore_skill": null,
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 89,
     "data": {
+      "lore": null,
       "needs_review": false
     }
   },
@@ -298,12 +311,13 @@
       "athletics"
     ],
     "granted_feat": "Mover Armadura",
-    "lore_skill": null,
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 91,
     "data": {
+      "lore": null,
       "needs_review": false
     }
   },
@@ -320,12 +334,13 @@
       "arcana"
     ],
     "granted_feat": "Identificação Rápida",
-    "lore_skill": null,
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 90,
     "data": {
+      "lore": null,
       "needs_review": false
     }
   },
@@ -342,12 +357,13 @@
       "performance"
     ],
     "granted_feat": "Espetáculo Sangrento",
-    "lore_skill": null,
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 89,
     "data": {
+      "lore": null,
       "needs_review": false
     }
   },
@@ -364,12 +380,13 @@
       "intimidation"
     ],
     "granted_feat": "Olhar Rápido",
-    "lore_skill": null,
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 89,
     "data": {
+      "lore": null,
       "needs_review": false
     }
   },
@@ -386,12 +403,13 @@
       "society"
     ],
     "granted_feat": "Etiqueta Nobre",
-    "lore_skill": null,
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 90,
     "data": {
+      "lore": null,
       "needs_review": false
     }
   },
@@ -408,12 +426,13 @@
       "athletics"
     ],
     "granted_feat": "Equilíbrio no Convés",
-    "lore_skill": null,
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 90,
     "data": {
+      "lore": null,
       "needs_review": false
     }
   },
@@ -430,12 +449,13 @@
       "diplomacy"
     ],
     "granted_feat": "Negociador de Barganhas",
-    "lore_skill": null,
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 90,
     "data": {
+      "lore": null,
       "needs_review": false
     }
   },
@@ -452,12 +472,13 @@
       "athletics"
     ],
     "granted_feat": "Resistência a Desabamento",
-    "lore_skill": null,
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 90,
     "data": {
+      "lore": null,
       "needs_review": false
     }
   },
@@ -474,12 +495,13 @@
       "survival"
     ],
     "granted_feat": "Sentido Climático",
-    "lore_skill": null,
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 90,
     "data": {
+      "lore": null,
       "needs_review": false
     }
   },
@@ -496,12 +518,13 @@
       "athletics"
     ],
     "granted_feat": "Escapar com Vigor",
-    "lore_skill": null,
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 90,
     "data": {
+      "lore": null,
       "needs_review": false
     }
   },
@@ -518,12 +541,13 @@
       "athletics"
     ],
     "granted_feat": "Músculo Rústico",
-    "lore_skill": null,
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 89,
     "data": {
+      "lore": null,
       "needs_review": false
     }
   },
@@ -540,12 +564,13 @@
       "diplomacy"
     ],
     "granted_feat": "Ouvido Atento",
-    "lore_skill": null,
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 88,
     "data": {
+      "lore": null,
       "needs_review": false
     }
   },
@@ -562,12 +587,13 @@
       "religion"
     ],
     "granted_feat": "Orientação",
-    "lore_skill": "Saber da Divindade",
+    "traits": [],
     "rarity": "rare",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 52,
     "data": {
+      "lore": "Saber da Divindade",
       "needs_review": false
     }
   },
@@ -584,12 +610,13 @@
       "occultism"
     ],
     "granted_feat": "Sinal de Proteção",
-    "lore_skill": "Saber de Maldições",
+    "traits": [],
     "rarity": "rare",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 52,
     "data": {
+      "lore": "Saber de Maldições",
       "needs_review": false
     }
   },
@@ -606,12 +633,13 @@
       "—"
     ],
     "granted_feat": "—",
-    "lore_skill": "—",
+    "traits": [],
     "rarity": "rare",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 52,
     "data": {
+      "lore": "—",
       "needs_review": false
     }
   },
@@ -628,12 +656,13 @@
       "occultism"
     ],
     "granted_feat": "—",
-    "lore_skill": "Saber da Entidade",
+    "traits": [],
     "rarity": "rare",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 52,
     "data": {
+      "lore": "Saber da Entidade",
       "needs_review": false
     }
   },
@@ -650,12 +679,13 @@
       "nature"
     ],
     "granted_feat": "Forrageador",
-    "lore_skill": "Saber de Animais",
+    "traits": [],
     "rarity": "rare",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 52,
     "data": {
+      "lore": "Saber de Animais",
       "needs_review": false
     }
   },
@@ -672,12 +702,13 @@
       "nature"
     ],
     "granted_feat": "Fortúnio das Fadas",
-    "lore_skill": "Saber de Fadas",
+    "traits": [],
     "rarity": "rare",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 53,
     "data": {
+      "lore": "Saber de Fadas",
       "needs_review": false
     }
   },
@@ -694,12 +725,13 @@
       "society"
     ],
     "granted_feat": "Gracejos da Corte",
-    "lore_skill": "Saber da Corte",
+    "traits": [],
     "rarity": "rare",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 53,
     "data": {
+      "lore": "Saber da Corte",
       "needs_review": false
     }
   },
@@ -716,12 +748,13 @@
       "religion"
     ],
     "granted_feat": "Duro de Matar",
-    "lore_skill": "Saber do Ossário",
+    "traits": [],
     "rarity": "rare",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 53,
     "data": {
+      "lore": "Saber do Ossário",
       "needs_review": false
     }
   },
@@ -738,12 +771,13 @@
       "performance"
     ],
     "granted_feat": "Performance Fascinante",
-    "lore_skill": "Saber de Genealogia",
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 50,
     "data": {
+      "lore": "Saber de Genealogia",
       "needs_review": false
     }
   },
@@ -760,12 +794,13 @@
       "acrobatics"
     ],
     "granted_feat": "Certeza",
-    "lore_skill": "Saber de Pilotagem",
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 50,
     "data": {
+      "lore": "Saber de Pilotagem",
       "needs_review": false
     }
   },
@@ -782,12 +817,13 @@
       "medicine"
     ],
     "granted_feat": "Cirurgia Arriscada",
-    "lore_skill": "Saber de Cirurgia",
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 50,
     "data": {
+      "lore": "Saber de Cirurgia",
       "needs_review": false
     }
   },
@@ -804,12 +840,13 @@
       "society"
     ],
     "granted_feat": "Subitizar",
-    "lore_skill": "Saber de Contabilidade",
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 50,
     "data": {
+      "lore": "Saber de Contabilidade",
       "needs_review": false
     }
   },
@@ -826,12 +863,13 @@
       "society"
     ],
     "granted_feat": "Forrageador",
-    "lore_skill": "Saber do Assentamento",
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 50,
     "data": {
+      "lore": "Saber do Assentamento",
       "needs_review": false
     }
   },
@@ -848,12 +886,13 @@
       "society"
     ],
     "granted_feat": "Leitura Labial",
-    "lore_skill": "Saber de Trabalho",
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 50,
     "data": {
+      "lore": "Saber de Trabalho",
       "needs_review": false
     }
   },
@@ -870,12 +909,13 @@
       "intimidation"
     ],
     "granted_feat": "Coerção Rápida",
-    "lore_skill": "Saber do Assentamento",
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 50,
     "data": {
+      "lore": "Saber do Assentamento",
       "needs_review": false
     }
   },
@@ -892,12 +932,13 @@
       "society"
     ],
     "granted_feat": "Assistente de Armadura",
-    "lore_skill": "Saber de Heráldica ou Guerra",
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 51,
     "data": {
+      "lore": "Saber de Heráldica ou Guerra",
       "needs_review": false
     }
   },
@@ -914,12 +955,13 @@
       "nature"
     ],
     "granted_feat": "Cavaleiro Expresso",
-    "lore_skill": "Saber de Planícies",
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 51,
     "data": {
+      "lore": "Saber de Planícies",
       "needs_review": false
     }
   },
@@ -936,12 +978,13 @@
       "society"
     ],
     "granted_feat": "Manha das Ruas",
-    "lore_skill": "Saber do Assentamento de Origem",
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 51,
     "data": {
+      "lore": "Saber do Assentamento de Origem",
       "needs_review": false
     }
   },
@@ -958,12 +1001,13 @@
       "deception"
     ],
     "granted_feat": "Distração Prolongada",
-    "lore_skill": "Saber de Guerra",
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 51,
     "data": {
+      "lore": "Saber de Guerra",
       "needs_review": false
     }
   },
@@ -980,12 +1024,13 @@
       "occultism"
     ],
     "granted_feat": "Magia das Raízes",
-    "lore_skill": "Saber de Herbalismo",
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 51,
     "data": {
+      "lore": "Saber de Herbalismo",
       "needs_review": false
     }
   },
@@ -1002,12 +1047,13 @@
       "society"
     ],
     "granted_feat": "Olhar Conteúdo",
-    "lore_skill": "Saber da Cidade de Origem",
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 51,
     "data": {
+      "lore": "Saber da Cidade de Origem",
       "needs_review": false
     }
   },
@@ -1024,12 +1070,13 @@
       "religion"
     ],
     "granted_feat": "Amuleto do Peregrino",
-    "lore_skill": "Saber da Divindade Patrona",
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 51,
     "data": {
+      "lore": "Saber da Divindade Patrona",
       "needs_review": false
     }
   },
@@ -1046,12 +1093,13 @@
       "occultism"
     ],
     "granted_feat": "Identificar Estranhezas",
-    "lore_skill": "Saber de Astrologia",
+    "traits": [],
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Segredos da Magia (pré-Remaster)",
     "source_page": 28,
     "data": {
+      "lore": "Saber de Astrologia",
       "needs_review": false
     }
   },
@@ -1068,12 +1116,13 @@
       "occultism"
     ],
     "granted_feat": "Instruído em Segredos",
-    "lore_skill": "Saber Acadêmico",
+    "traits": [],
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Segredos da Magia (pré-Remaster)",
     "source_page": 28,
     "data": {
+      "lore": "Saber Acadêmico",
       "needs_review": false
     }
   },
@@ -1090,12 +1139,13 @@
       "magical tradition"
     ],
     "granted_feat": "Conhecimento Duvidoso",
-    "lore_skill": "Saber da criatura do eidolon",
+    "traits": [],
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Segredos da Magia (pré-Remaster)",
     "source_page": 28,
     "data": {
+      "lore": "Saber da criatura do eidolon",
       "needs_review": false
     }
   },
@@ -1112,12 +1162,13 @@
       "arcana"
     ],
     "granted_feat": "Enganar Item Mágico",
-    "lore_skill": "Saber de Submundo",
+    "traits": [],
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Segredos da Magia (pré-Remaster)",
     "source_page": 28,
     "data": {
+      "lore": "Saber de Submundo",
       "needs_review": false
     }
   },
@@ -1134,12 +1185,13 @@
       "arcana"
     ],
     "granted_feat": "Conhecimento Duvidoso",
-    "lore_skill": "Saber Acadêmico",
+    "traits": [],
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Segredos da Magia (pré-Remaster)",
     "source_page": 29,
     "data": {
+      "lore": "Saber Acadêmico",
       "needs_review": false
     }
   },
@@ -1156,12 +1208,13 @@
       "nature"
     ],
     "granted_feat": "Medicina Natural",
-    "lore_skill": "Saber de Plantas",
+    "traits": [],
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Segredos da Magia (pré-Remaster)",
     "source_page": 29,
     "data": {
+      "lore": "Saber de Plantas",
       "needs_review": false
     }
   },
@@ -1178,12 +1231,13 @@
       "magical tradition"
     ],
     "granted_feat": "Reconhecer Magia",
-    "lore_skill": "Saber Acadêmico",
+    "traits": [],
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Segredos da Magia (pré-Remaster)",
     "source_page": 29,
     "data": {
+      "lore": "Saber Acadêmico",
       "needs_review": false
     }
   },
@@ -1200,12 +1254,13 @@
       "occultism"
     ],
     "granted_feat": "Adoração Enganosa",
-    "lore_skill": "Saber de Vidência",
+    "traits": [],
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Segredos da Magia (pré-Remaster)",
     "source_page": 29,
     "data": {
+      "lore": "Saber de Vidência",
       "needs_review": false
     }
   },
@@ -1222,12 +1277,13 @@
       "crafting"
     ],
     "granted_feat": "Avaliação do Artesão",
-    "lore_skill": "Saber de Mercadores",
+    "traits": [],
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Segredos da Magia (pré-Remaster)",
     "source_page": 29,
     "data": {
+      "lore": "Saber de Mercadores",
       "needs_review": false
     }
   },
@@ -1244,12 +1300,13 @@
       "religion"
     ],
     "granted_feat": "Conhecimento Duvidoso",
-    "lore_skill": "Saber da Divindade",
+    "traits": [],
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Segredos da Magia (pré-Remaster)",
     "source_page": 29,
     "data": {
+      "lore": "Saber da Divindade",
       "needs_review": false
     }
   },
@@ -1266,12 +1323,13 @@
       "performance"
     ],
     "granted_feat": "Artista Virtuoso",
-    "lore_skill": "Saber de Música",
+    "traits": [],
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Segredos da Magia (pré-Remaster)",
     "source_page": 29,
     "data": {
+      "lore": "Saber de Música",
       "needs_review": false
     }
   },
@@ -1288,12 +1346,13 @@
       "diplomacy"
     ],
     "granted_feat": "Desejo de Sorte",
-    "lore_skill": "Saber de Gênios",
+    "traits": [],
     "rarity": "rare",
     "ruleset": "legacy",
     "source_book": "Segredos da Magia (pré-Remaster)",
     "source_page": 30,
     "data": {
+      "lore": "Saber de Gênios",
       "needs_review": false
     }
   },
@@ -1310,12 +1369,13 @@
       "nonmagical lore"
     ],
     "granted_feat": "Interferência Antimágica",
-    "lore_skill": "Saber não mágico",
+    "traits": [],
     "rarity": "rare",
     "ruleset": "legacy",
     "source_book": "Segredos da Magia (pré-Remaster)",
     "source_page": 30,
     "data": {
+      "lore": "Saber não mágico",
       "needs_review": false
     }
   },
@@ -1332,12 +1392,13 @@
       "athletics"
     ],
     "granted_feat": "Respirar na Água",
-    "lore_skill": "Saber de Oceanos",
+    "traits": [],
     "rarity": "rare",
     "ruleset": "legacy",
     "source_book": "Segredos da Magia (pré-Remaster)",
     "source_page": 30,
     "data": {
+      "lore": "Saber de Oceanos",
       "needs_review": false
     }
   },
@@ -1354,12 +1415,13 @@
       "prophecy-related"
     ],
     "granted_feat": "Peão da Profecia",
-    "lore_skill": "Saber de Vidência",
+    "traits": [],
     "rarity": "rare",
     "ruleset": "legacy",
     "source_book": "Segredos da Magia (pré-Remaster)",
     "source_page": 30,
     "data": {
+      "lore": "Saber de Vidência",
       "needs_review": false
     }
   },
@@ -1376,12 +1438,13 @@
       "occultism"
     ],
     "granted_feat": "Alteração Experimental",
-    "lore_skill": "Saber Acadêmico",
+    "traits": [],
     "rarity": "rare",
     "ruleset": "legacy",
     "source_book": "Segredos da Magia (pré-Remaster)",
     "source_page": 31,
     "data": {
+      "lore": "Saber Acadêmico",
       "needs_review": false
     }
   },
@@ -1398,12 +1461,13 @@
       "three lore skills"
     ],
     "granted_feat": "Dobrar o Tempo",
-    "lore_skill": "Três Saberes do seu tempo",
+    "traits": [],
     "rarity": "rare",
     "ruleset": "legacy",
     "source_book": "Segredos da Magia (pré-Remaster)",
     "source_page": 31,
     "data": {
+      "lore": "Três Saberes do seu tempo",
       "needs_review": false
     }
   },
@@ -1420,12 +1484,13 @@
       "religion"
     ],
     "granted_feat": "Sentir Espíritos",
-    "lore_skill": "Saber de Mortos-Vivos",
+    "traits": [],
     "rarity": "rare",
     "ruleset": "legacy",
     "source_book": "Segredos da Magia (pré-Remaster)",
     "source_page": 31,
     "data": {
+      "lore": "Saber de Mortos-Vivos",
       "needs_review": false
     }
   },
@@ -1442,12 +1507,13 @@
       "crafting"
     ],
     "granted_feat": "Medicina de Batalha",
-    "lore_skill": "medicine",
+    "traits": [],
     "rarity": "rare",
     "ruleset": "legacy",
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 47,
     "data": {
+      "lore": "medicine",
       "needs_review": false
     }
   },
@@ -1464,12 +1530,13 @@
       "society"
     ],
     "granted_feat": "—",
-    "lore_skill": "identity lore",
+    "traits": [],
     "rarity": "rare",
     "ruleset": "legacy",
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 47,
     "data": {
+      "lore": "identity lore",
       "needs_review": false
     }
   },
@@ -1486,12 +1553,13 @@
       "crafting"
     ],
     "granted_feat": "—",
-    "lore_skill": "—",
+    "traits": [],
     "rarity": "rare",
     "ruleset": "legacy",
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 48,
     "data": {
+      "lore": "—",
       "needs_review": false
     }
   },
@@ -1508,12 +1576,13 @@
       "arcana"
     ],
     "granted_feat": "—",
-    "lore_skill": "entity lore",
+    "traits": [],
     "rarity": "rare",
     "ruleset": "legacy",
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 48,
     "data": {
+      "lore": "entity lore",
       "needs_review": false
     }
   },
@@ -1530,12 +1599,13 @@
       "diplomacy"
     ],
     "granted_feat": "—",
-    "lore_skill": "—",
+    "traits": [],
     "rarity": "rare",
     "ruleset": "legacy",
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 48,
     "data": {
+      "lore": "—",
       "needs_review": false
     }
   },
@@ -1552,12 +1622,13 @@
       "intimidation"
     ],
     "granted_feat": "Coagir Grupo",
-    "lore_skill": "Saber (Guildas)",
+    "traits": [],
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 45,
     "data": {
+      "lore": "Saber (Guildas)",
       "needs_review": false
     }
   },
@@ -1574,12 +1645,13 @@
       "society"
     ],
     "granted_feat": "Olhar Atento",
-    "lore_skill": "Saber (Criptografia)",
+    "traits": [],
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 45,
     "data": {
+      "lore": "Saber (Criptografia)",
       "needs_review": false
     }
   },
@@ -1596,12 +1668,13 @@
       "crafting"
     ],
     "granted_feat": "Reparo Rápido",
-    "lore_skill": "Saber (Divindade)",
+    "traits": [],
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 45,
     "data": {
+      "lore": "Saber (Divindade)",
       "needs_review": false
     }
   },
@@ -1618,12 +1691,13 @@
       "medicine"
     ],
     "granted_feat": "Cirurgia Arriscada",
-    "lore_skill": "Saber (Engenharia)",
+    "traits": [],
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 45,
     "data": {
+      "lore": "Saber (Engenharia)",
       "needs_review": false
     }
   },
@@ -1640,12 +1714,13 @@
       "crafting"
     ],
     "granted_feat": "Especialidade de Manufatura",
-    "lore_skill": "Saber (Mercantilismo)",
+    "traits": [],
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 46,
     "data": {
+      "lore": "Saber (Mercantilismo)",
       "needs_review": false
     }
   },
@@ -1662,12 +1737,13 @@
       "crafting"
     ],
     "granted_feat": "Profissional Experiente",
-    "lore_skill": "Saber (Gladiatorial)",
+    "traits": [],
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 46,
     "data": {
+      "lore": "Saber (Gladiatorial)",
       "needs_review": false
     }
   },
@@ -1684,12 +1760,13 @@
       "society"
     ],
     "granted_feat": "Poliglota",
-    "lore_skill": "Saber (Quirografia)",
+    "traits": [],
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 46,
     "data": {
+      "lore": "Saber (Quirografia)",
       "needs_review": false
     }
   },
@@ -1706,12 +1783,13 @@
       "thievery"
     ],
     "granted_feat": "Punga",
-    "lore_skill": "Saber (Submundo)",
+    "traits": [],
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 46,
     "data": {
+      "lore": "Saber (Submundo)",
       "needs_review": false
     }
   },
@@ -1728,12 +1806,13 @@
       "crafting"
     ],
     "granted_feat": "Reparo Rápido",
-    "lore_skill": "Saber (Engenharia)",
+    "traits": [],
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 46,
     "data": {
+      "lore": "Saber (Engenharia)",
       "needs_review": false
     }
   },
@@ -1750,12 +1829,13 @@
       "acrobatics"
     ],
     "granted_feat": "Certeza para Saber (Pilotagem)",
-    "lore_skill": "Saber (Pilotagem)",
+    "traits": [],
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 46,
     "data": {
+      "lore": "Saber (Pilotagem)",
       "needs_review": false
     }
   },
@@ -1772,12 +1852,13 @@
       "society"
     ],
     "granted_feat": "Subitizar",
-    "lore_skill": "Saber (Engenharia)",
+    "traits": [],
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 46,
     "data": {
+      "lore": "Saber (Engenharia)",
       "needs_review": false
     }
   },
@@ -1794,12 +1875,13 @@
       "thievery"
     ],
     "granted_feat": "Malabarismo Dissimulado",
-    "lore_skill": "Saber (Engenharia)",
+    "traits": [],
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 46,
     "data": {
+      "lore": "Saber (Engenharia)",
       "needs_review": false
     }
   },
@@ -1816,12 +1898,13 @@
       "athletics"
     ],
     "granted_feat": "Carregador Robusto",
-    "lore_skill": "Saber (Terreno)",
+    "traits": [],
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 46,
     "data": {
+      "lore": "Saber (Terreno)",
       "needs_review": false
     }
   },
@@ -1838,12 +1921,13 @@
       "crafting"
     ],
     "granted_feat": "Manufatura Especializada (Ferraria)",
-    "lore_skill": "Saber do Plano do Metal",
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 44,
     "data": {
+      "lore": "Saber do Plano do Metal",
       "needs_review": false
     }
   },
@@ -1860,12 +1944,13 @@
       "nature"
     ],
     "granted_feat": "Medicina Natural",
-    "lore_skill": "Saber do Plano da Terra",
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 44,
     "data": {
+      "lore": "Saber do Plano da Terra",
       "needs_review": false
     }
   },
@@ -1882,12 +1967,13 @@
       "athletics"
     ],
     "granted_feat": "Saqueador Subaquático",
-    "lore_skill": "Saber do Plano da Água",
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 44,
     "data": {
+      "lore": "Saber do Plano da Água",
       "needs_review": false
     }
   },
@@ -1904,12 +1990,13 @@
       "survival"
     ],
     "granted_feat": "Especialidade de Terreno (Florestas)",
-    "lore_skill": "Saber do Plano da Madeira",
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 44,
     "data": {
+      "lore": "Saber do Plano da Madeira",
       "needs_review": false
     }
   },
@@ -1926,12 +2013,13 @@
       "athletics"
     ],
     "granted_feat": "Controle de Respiração",
-    "lore_skill": "Saber do Plano do Fogo",
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 44,
     "data": {
+      "lore": "Saber do Plano do Fogo",
       "needs_review": false
     }
   },
@@ -1948,12 +2036,13 @@
       "acrobatics"
     ],
     "granted_feat": "Queda Felina",
-    "lore_skill": "Saber do Plano do Ar",
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 44,
     "data": {
+      "lore": "Saber do Plano do Ar",
       "needs_review": false
     }
   },
@@ -1970,12 +2059,13 @@
       "elemental plane lore"
     ],
     "granted_feat": "Pesquisa Planar",
-    "lore_skill": "Quatro Saberes de Planos Elementais",
+    "traits": [],
     "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 44,
     "data": {
+      "lore": "Quatro Saberes de Planos Elementais",
       "needs_review": false
     }
   },
@@ -1992,12 +2082,13 @@
       "diplomacy"
     ],
     "granted_feat": "Camarada",
-    "lore_skill": "Saber de um Plano Elemental",
+    "traits": [],
     "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 44,
     "data": {
+      "lore": "Saber de um Plano Elemental",
       "needs_review": false
     }
   },
@@ -2014,12 +2105,13 @@
       "elemental plane lore"
     ],
     "granted_feat": "Truque Elemental Inato",
-    "lore_skill": "Saber do Plano Elemental escolhido",
+    "traits": [],
     "rarity": "rare",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 45,
     "data": {
+      "lore": "Saber do Plano Elemental escolhido",
       "needs_review": false
     }
   },
@@ -2036,12 +2128,13 @@
       "athletics"
     ],
     "granted_feat": "Carregador Robusto e Planejador Precavido",
-    "lore_skill": "Saber de um Plano Elemental",
+    "traits": [],
     "rarity": "rare",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 45,
     "data": {
+      "lore": "Saber de um Plano Elemental",
       "needs_review": false
     }
   },
@@ -2058,12 +2151,13 @@
       "arcana"
     ],
     "granted_feat": "Identificação Rápida",
-    "lore_skill": "Saber de Necromancia",
+    "traits": [],
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Livro dos Mortos (pré-Remaster)",
     "source_page": 16,
     "data": {
+      "lore": "Saber de Necromancia",
       "needs_review": false
     }
   },
@@ -2080,12 +2174,13 @@
       "diplomacy"
     ],
     "granted_feat": "Sem Motivo para Alarde",
-    "lore_skill": "Saber da Cidade Natal",
+    "traits": [],
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Livro dos Mortos (pré-Remaster)",
     "source_page": 16,
     "data": {
+      "lore": "Saber da Cidade Natal",
       "needs_review": false
     }
   },
@@ -2102,12 +2197,13 @@
       "crafting"
     ],
     "granted_feat": "Manufatura Alquímica",
-    "lore_skill": "Saber de Funerais",
+    "traits": [],
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Livro dos Mortos (pré-Remaster)",
     "source_page": 16,
     "data": {
+      "lore": "Saber de Funerais",
       "needs_review": false
     }
   },
@@ -2124,12 +2220,13 @@
       "medicine"
     ],
     "granted_feat": "Inoculação",
-    "lore_skill": "Saber de Herbalismo",
+    "traits": [],
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Livro dos Mortos (pré-Remaster)",
     "source_page": 16,
     "data": {
+      "lore": "Saber de Herbalismo",
       "needs_review": false
     }
   },
@@ -2146,12 +2243,13 @@
       "stealth"
     ],
     "granted_feat": "Contrabandista Experiente",
-    "lore_skill": "Saber de Submundo",
+    "traits": [],
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Livro dos Mortos (pré-Remaster)",
     "source_page": 16,
     "data": {
+      "lore": "Saber de Submundo",
       "needs_review": false
     }
   },
@@ -2168,12 +2266,13 @@
       "intimidation"
     ],
     "granted_feat": "Coerção Rápida",
-    "lore_skill": "Saber de Leis ou da Cidade Natal",
+    "traits": [],
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Livro dos Mortos (pré-Remaster)",
     "source_page": 16,
     "data": {
+      "lore": "Saber de Leis ou da Cidade Natal",
       "needs_review": false
     }
   },
@@ -2190,12 +2289,13 @@
       "athletics"
     ],
     "granted_feat": "Disrupção de Morto-Vivo Inata",
-    "lore_skill": "Saber de Mortos-Vivos",
+    "traits": [],
     "rarity": "rare",
     "ruleset": "legacy",
     "source_book": "Livro dos Mortos (pré-Remaster)",
     "source_page": 16,
     "data": {
+      "lore": "Saber de Mortos-Vivos",
       "needs_review": false
     }
   },
@@ -2212,12 +2312,13 @@
       "spirit lore"
     ],
     "granted_feat": "Hospedar Espírito",
-    "lore_skill": "Saber de Espíritos",
+    "traits": [],
     "rarity": "rare",
     "ruleset": "legacy",
     "source_book": "Livro dos Mortos (pré-Remaster)",
     "source_page": 17,
     "data": {
+      "lore": "Saber de Espíritos",
       "needs_review": false
     }
   },
@@ -2234,12 +2335,13 @@
       "undead lore"
     ],
     "granted_feat": "Rancor Final",
-    "lore_skill": "Saber de Mortos-Vivos",
+    "traits": [],
     "rarity": "rare",
     "ruleset": "legacy",
     "source_book": "Livro dos Mortos (pré-Remaster)",
     "source_page": 17,
     "data": {
+      "lore": "Saber de Mortos-Vivos",
       "needs_review": false
     }
   },
@@ -2256,12 +2358,13 @@
       "crafting"
     ],
     "granted_feat": "Reparo Rápido",
-    "lore_skill": "Saber de Veículos",
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
     "source_page": 16,
     "data": {
+      "lore": "Saber de Veículos",
       "needs_review": false
     }
   },
@@ -2278,12 +2381,13 @@
       "crafting"
     ],
     "granted_feat": "Manufatura Especializada",
-    "lore_skill": "Saber de Engenharia",
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
     "source_page": 16,
     "data": {
+      "lore": "Saber de Engenharia",
       "needs_review": false
     }
   },
@@ -2300,12 +2404,13 @@
       "religion"
     ],
     "granted_feat": "Reconhecer Magia",
-    "lore_skill": "Saber da Divindade",
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
     "source_page": 16,
     "data": {
+      "lore": "Saber da Divindade",
       "needs_review": false
     }
   },
@@ -2322,12 +2427,13 @@
       "society"
     ],
     "granted_feat": "Conhecimento Duvidoso",
-    "lore_skill": "Saber de Guerra",
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
     "source_page": 16,
     "data": {
+      "lore": "Saber de Guerra",
       "needs_review": false
     }
   },
@@ -2344,12 +2450,13 @@
       "medicine"
     ],
     "granted_feat": "Inoculação",
-    "lore_skill": "Saber de Herbalismo",
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
     "source_page": 17,
     "data": {
+      "lore": "Saber de Herbalismo",
       "needs_review": false
     }
   },
@@ -2366,12 +2473,13 @@
       "intimidation"
     ],
     "granted_feat": "Olhar Intimidante",
-    "lore_skill": "Saber Jurídico",
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
     "source_page": 17,
     "data": {
+      "lore": "Saber Jurídico",
       "needs_review": false
     }
   },
@@ -2388,12 +2496,13 @@
       "nature"
     ],
     "granted_feat": "Cavaleiro Expresso",
-    "lore_skill": "Saber de Estábulos",
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
     "source_page": 17,
     "data": {
+      "lore": "Saber de Estábulos",
       "needs_review": false
     }
   },
@@ -2410,12 +2519,13 @@
       "athletics"
     ],
     "granted_feat": "Auxiliar com Armadura",
-    "lore_skill": "Saber de Guerra",
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
     "source_page": 17,
     "data": {
+      "lore": "Saber de Guerra",
       "needs_review": false
     }
   },
@@ -2432,12 +2542,13 @@
       "thievery"
     ],
     "granted_feat": "Truque Sujo",
-    "lore_skill": "Saber do Submundo",
+    "traits": [],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
     "source_page": 17,
     "data": {
+      "lore": "Saber do Submundo",
       "needs_review": false
     }
   },
@@ -2454,12 +2565,13 @@
       "athletics"
     ],
     "granted_feat": "Garantia (Pilotagem)",
-    "lore_skill": "Saber de Pilotagem",
+    "traits": [],
     "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
     "source_page": 17,
     "data": {
+      "lore": "Saber de Pilotagem",
       "needs_review": false
     }
   },
@@ -2476,12 +2588,13 @@
       "arcana"
     ],
     "granted_feat": "Identificação Rápida",
-    "lore_skill": "Saber do Assentamento Libertado",
+    "traits": [],
     "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
     "source_page": 17,
     "data": {
+      "lore": "Saber do Assentamento Libertado",
       "needs_review": false
     }
   },
@@ -2498,12 +2611,13 @@
       "crafting"
     ],
     "granted_feat": "Improvisar Ferramenta",
-    "lore_skill": "Saber de Guerra",
+    "traits": [],
     "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
     "source_page": 17,
     "data": {
+      "lore": "Saber de Guerra",
       "needs_review": false
     }
   },
@@ -2520,12 +2634,13 @@
       "performance"
     ],
     "granted_feat": "Performance Impressionante",
-    "lore_skill": "Saber de Guerra",
+    "traits": [],
     "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Battlecry! (Remaster)",
     "source_page": 17,
     "data": {
+      "lore": "Saber de Guerra",
       "needs_review": false
     }
   }

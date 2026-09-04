@@ -9,16 +9,16 @@
     "description_es": "Transforma un objeto en una criatura animada; un resultado superior puede permitir controlarla como esbirro.",
     "rank": 2,
     "cast_time": "1 dia",
+    "cost": null,
     "primary_check": null,
-    "secondary_casters": 0,
     "secondary_checks": [],
+    "secondary_casters": 0,
     "traits": [],
     "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 390,
     "data": {
-      "cost": null,
       "needs_review": false
     }
   },
@@ -32,16 +32,16 @@
     "description_es": "Vincula un conjuro hostil a una runa activada por contraseña, desencadenante o aproximación.",
     "rank": 3,
     "cast_time": "1 dia",
+    "cost": null,
     "primary_check": null,
-    "secondary_casters": 0,
     "secondary_checks": [],
+    "secondary_casters": 0,
     "traits": [],
     "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 390,
     "data": {
-      "cost": null,
       "needs_review": false
     }
   },
@@ -55,16 +55,16 @@
     "description_es": "Llama por su nombre a un espíritu del más allá para una conversación breve usando una conexión personal.",
     "rank": 5,
     "cast_time": "1 dia",
+    "cost": null,
     "primary_check": null,
-    "secondary_casters": 0,
     "secondary_checks": [],
+    "secondary_casters": 0,
     "traits": [],
     "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 391,
     "data": {
-      "cost": null,
       "needs_review": false
     }
   },
@@ -78,16 +78,16 @@
     "description_es": "Dedica un lugar a una deidad, favorece a sus fieles y dificulta la acción de criaturas anatema.",
     "rank": 2,
     "cast_time": "1 dia",
+    "cost": null,
     "primary_check": null,
-    "secondary_casters": 0,
     "secondary_checks": [],
+    "secondary_casters": 0,
     "traits": [],
     "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 392,
     "data": {
-      "cost": null,
       "needs_review": false
     }
   },
@@ -101,16 +101,16 @@
     "description_es": "Redirige agua subterránea para crear un manantial u oasis capaz de sostener una pequeña comunidad.",
     "rank": 5,
     "cast_time": "1 dia",
+    "cost": null,
     "primary_check": null,
-    "secondary_casters": 0,
     "secondary_checks": [],
+    "secondary_casters": 0,
     "traits": [],
     "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 175,
     "data": {
-      "cost": null,
       "needs_review": false
     }
   },
@@ -124,16 +124,16 @@
     "description_es": "Muestra un mensaje sencillo en el cielo usando nubes, auroras u otro fenómeno atmosférico.",
     "rank": 6,
     "cast_time": "1 dia",
+    "cost": null,
     "primary_check": null,
-    "secondary_casters": 0,
     "secondary_checks": [],
+    "secondary_casters": 0,
     "traits": [],
     "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 73,
     "data": {
-      "cost": null,
       "needs_review": false
     }
   },
@@ -147,9 +147,10 @@
     "description_es": "Ritual mítico de War of Immortals, rango 3; requiere un Punto Mítico.",
     "rank": 3,
     "cast_time": "1 dia",
+    "cost": null,
     "primary_check": null,
-    "secondary_casters": 0,
     "secondary_checks": [],
+    "secondary_casters": 0,
     "traits": [
       "Mítico"
     ],
@@ -158,7 +159,6 @@
     "source_book": "Guerra dos Imortais (Remaster)",
     "source_page": 159,
     "data": {
-      "cost": null,
       "needs_review": false
     }
   },
@@ -172,9 +172,10 @@
     "description_es": "Ritual mítico de War of Immortals, rango 4; requiere un Punto Mítico.",
     "rank": 4,
     "cast_time": "1 dia",
+    "cost": null,
     "primary_check": null,
-    "secondary_casters": 0,
     "secondary_checks": [],
+    "secondary_casters": 0,
     "traits": [
       "Mítico"
     ],
@@ -183,7 +184,6 @@
     "source_book": "Guerra dos Imortais (Remaster)",
     "source_page": 159,
     "data": {
-      "cost": null,
       "needs_review": false
     }
   },
@@ -197,9 +197,10 @@
     "description_es": "Ritual mítico de War of Immortals, rango 5; requiere un Punto Mítico.",
     "rank": 5,
     "cast_time": "1 dia",
+    "cost": null,
     "primary_check": null,
-    "secondary_casters": 0,
     "secondary_checks": [],
+    "secondary_casters": 0,
     "traits": [
       "Mítico"
     ],
@@ -208,7 +209,6 @@
     "source_book": "Guerra dos Imortais (Remaster)",
     "source_page": 160,
     "data": {
-      "cost": null,
       "needs_review": false
     }
   },
@@ -222,9 +222,10 @@
     "description_es": "Ritual mítico de War of Immortals, rango 6; requiere un Punto Mítico.",
     "rank": 6,
     "cast_time": "1 dia",
+    "cost": null,
     "primary_check": null,
-    "secondary_casters": 0,
     "secondary_checks": [],
+    "secondary_casters": 0,
     "traits": [
       "Mítico"
     ],
@@ -233,7 +234,6 @@
     "source_book": "Guerra dos Imortais (Remaster)",
     "source_page": 160,
     "data": {
-      "cost": null,
       "needs_review": false
     }
   },
@@ -247,9 +247,10 @@
     "description_es": "Ritual mítico de War of Immortals, rango 7; requiere un Punto Mítico.",
     "rank": 7,
     "cast_time": "1 dia",
+    "cost": null,
     "primary_check": null,
-    "secondary_casters": 0,
     "secondary_checks": [],
+    "secondary_casters": 0,
     "traits": [
       "Mítico"
     ],
@@ -258,7 +259,6 @@
     "source_book": "Guerra dos Imortais (Remaster)",
     "source_page": 159,
     "data": {
-      "cost": null,
       "needs_review": false
     }
   },
@@ -272,9 +272,10 @@
     "description_es": "Ritual mítico de War of Immortals, rango 7; requiere un Punto Mítico.",
     "rank": 7,
     "cast_time": "1 dia",
+    "cost": null,
     "primary_check": null,
-    "secondary_casters": 0,
     "secondary_checks": [],
+    "secondary_casters": 0,
     "traits": [
       "Mítico"
     ],
@@ -283,7 +284,6 @@
     "source_book": "Guerra dos Imortais (Remaster)",
     "source_page": 160,
     "data": {
-      "cost": null,
       "needs_review": false
     }
   },
@@ -297,9 +297,10 @@
     "description_es": "Ritual mítico de War of Immortals, rango 8; requiere un Punto Mítico.",
     "rank": 8,
     "cast_time": "1 dia",
+    "cost": null,
     "primary_check": null,
-    "secondary_casters": 0,
     "secondary_checks": [],
+    "secondary_casters": 0,
     "traits": [
       "Mítico"
     ],
@@ -308,7 +309,6 @@
     "source_book": "Guerra dos Imortais (Remaster)",
     "source_page": 158,
     "data": {
-      "cost": null,
       "needs_review": false
     }
   },
@@ -322,9 +322,10 @@
     "description_es": "Ritual mítico de War of Immortals, rango 8; requiere un Punto Mítico.",
     "rank": 8,
     "cast_time": "1 dia",
+    "cost": null,
     "primary_check": null,
-    "secondary_casters": 0,
     "secondary_checks": [],
+    "secondary_casters": 0,
     "traits": [
       "Mítico"
     ],
@@ -333,7 +334,6 @@
     "source_book": "Guerra dos Imortais (Remaster)",
     "source_page": 159,
     "data": {
-      "cost": null,
       "needs_review": false
     }
   },
@@ -347,9 +347,10 @@
     "description_es": "Ritual mítico de War of Immortals, rango 8; requiere un Punto Mítico.",
     "rank": 8,
     "cast_time": "1 dia",
+    "cost": null,
     "primary_check": null,
-    "secondary_casters": 0,
     "secondary_checks": [],
+    "secondary_casters": 0,
     "traits": [
       "Mítico"
     ],
@@ -358,7 +359,6 @@
     "source_book": "Guerra dos Imortais (Remaster)",
     "source_page": 159,
     "data": {
-      "cost": null,
       "needs_review": false
     }
   },
@@ -372,9 +372,10 @@
     "description_es": "Ritual mítico de War of Immortals, rango 8; requiere un Punto Mítico.",
     "rank": 8,
     "cast_time": "1 dia",
+    "cost": null,
     "primary_check": null,
-    "secondary_casters": 0,
     "secondary_checks": [],
+    "secondary_casters": 0,
     "traits": [
       "Mítico"
     ],
@@ -383,7 +384,6 @@
     "source_book": "Guerra dos Imortais (Remaster)",
     "source_page": 160,
     "data": {
-      "cost": null,
       "needs_review": false
     }
   },
@@ -397,9 +397,10 @@
     "description_es": "Ritual mítico de War of Immortals, rango 9; requiere un Punto Mítico.",
     "rank": 9,
     "cast_time": "1 dia",
+    "cost": null,
     "primary_check": null,
-    "secondary_casters": 0,
     "secondary_checks": [],
+    "secondary_casters": 0,
     "traits": [
       "Mítico"
     ],
@@ -408,7 +409,6 @@
     "source_book": "Guerra dos Imortais (Remaster)",
     "source_page": 160,
     "data": {
-      "cost": null,
       "needs_review": false
     }
   },
@@ -422,9 +422,10 @@
     "description_es": "Ritual mítico de War of Immortals, rango 9; requiere un Punto Mítico.",
     "rank": 9,
     "cast_time": "1 dia",
+    "cost": null,
     "primary_check": null,
-    "secondary_casters": 0,
     "secondary_checks": [],
+    "secondary_casters": 0,
     "traits": [
       "Mítico"
     ],
@@ -433,7 +434,6 @@
     "source_book": "Guerra dos Imortais (Remaster)",
     "source_page": 161,
     "data": {
-      "cost": null,
       "needs_review": false
     }
   },
@@ -447,9 +447,10 @@
     "description_es": "Ritual mítico de War of Immortals, rango 9; requiere un Punto Mítico.",
     "rank": 9,
     "cast_time": "1 dia",
+    "cost": null,
     "primary_check": null,
-    "secondary_casters": 0,
     "secondary_checks": [],
+    "secondary_casters": 0,
     "traits": [
       "Mítico"
     ],
@@ -458,7 +459,6 @@
     "source_book": "Guerra dos Imortais (Remaster)",
     "source_page": 161,
     "data": {
-      "cost": null,
       "needs_review": false
     }
   },
@@ -472,9 +472,10 @@
     "description_es": "Ritual de asedio de Battlecry!, rango 2.",
     "rank": 2,
     "cast_time": "1 dia",
+    "cost": null,
     "primary_check": null,
-    "secondary_casters": 0,
     "secondary_checks": [],
+    "secondary_casters": 0,
     "traits": [
       "Cerco"
     ],
@@ -483,7 +484,6 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 92,
     "data": {
-      "cost": null,
       "needs_review": false
     }
   },
@@ -497,9 +497,10 @@
     "description_es": "Ritual de asedio de Battlecry!, rango 2.",
     "rank": 2,
     "cast_time": "1 dia",
+    "cost": null,
     "primary_check": null,
-    "secondary_casters": 0,
     "secondary_checks": [],
+    "secondary_casters": 0,
     "traits": [
       "Cerco"
     ],
@@ -508,7 +509,6 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 93,
     "data": {
-      "cost": null,
       "needs_review": false
     }
   },
@@ -522,9 +522,10 @@
     "description_es": "Ritual de asedio de Battlecry!, rango 3.",
     "rank": 3,
     "cast_time": "1 dia",
+    "cost": null,
     "primary_check": null,
-    "secondary_casters": 0,
     "secondary_checks": [],
+    "secondary_casters": 0,
     "traits": [
       "Cerco"
     ],
@@ -533,7 +534,6 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 94,
     "data": {
-      "cost": null,
       "needs_review": false
     }
   },
@@ -547,9 +547,10 @@
     "description_es": "Ritual de asedio de Battlecry!, rango 4.",
     "rank": 4,
     "cast_time": "1 dia",
+    "cost": null,
     "primary_check": null,
-    "secondary_casters": 0,
     "secondary_checks": [],
+    "secondary_casters": 0,
     "traits": [
       "Cerco"
     ],
@@ -558,7 +559,6 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 93,
     "data": {
-      "cost": null,
       "needs_review": false
     }
   },
@@ -572,9 +572,10 @@
     "description_es": "Ritual de asedio de Battlecry!, rango 5.",
     "rank": 5,
     "cast_time": "1 dia",
+    "cost": null,
     "primary_check": null,
-    "secondary_casters": 0,
     "secondary_checks": [],
+    "secondary_casters": 0,
     "traits": [
       "Cerco"
     ],
@@ -583,7 +584,6 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 93,
     "data": {
-      "cost": null,
       "needs_review": false
     }
   },
@@ -597,9 +597,10 @@
     "description_es": "Ritual de asedio de Battlecry!, rango 6.",
     "rank": 6,
     "cast_time": "1 dia",
+    "cost": null,
     "primary_check": null,
-    "secondary_casters": 0,
     "secondary_checks": [],
+    "secondary_casters": 0,
     "traits": [
       "Cerco"
     ],
@@ -608,7 +609,6 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 94,
     "data": {
-      "cost": null,
       "needs_review": false
     }
   },
@@ -622,9 +622,10 @@
     "description_es": "Ritual de asedio de Battlecry!, rango 7.",
     "rank": 7,
     "cast_time": "1 dia",
+    "cost": null,
     "primary_check": null,
-    "secondary_casters": 0,
     "secondary_checks": [],
+    "secondary_casters": 0,
     "traits": [
       "Cerco"
     ],
@@ -633,7 +634,6 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 94,
     "data": {
-      "cost": null,
       "needs_review": false
     }
   },
@@ -647,9 +647,10 @@
     "description_es": "Ritual de asedio de Battlecry!, rango 8.",
     "rank": 8,
     "cast_time": "1 dia",
+    "cost": null,
     "primary_check": null,
-    "secondary_casters": 0,
     "secondary_checks": [],
+    "secondary_casters": 0,
     "traits": [
       "Cerco"
     ],
@@ -658,7 +659,6 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 92,
     "data": {
-      "cost": null,
       "needs_review": false
     }
   },
@@ -672,9 +672,10 @@
     "description_es": "Ritual de asedio de Battlecry!, rango 9.",
     "rank": 9,
     "cast_time": "1 dia",
+    "cost": null,
     "primary_check": null,
-    "secondary_casters": 0,
     "secondary_checks": [],
+    "secondary_casters": 0,
     "traits": [
       "Cerco"
     ],
@@ -683,7 +684,6 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 92,
     "data": {
-      "cost": null,
       "needs_review": false
     }
   },
@@ -697,9 +697,10 @@
     "description_es": "Ritual de asedio de Battlecry!, rango 10.",
     "rank": 10,
     "cast_time": "1 dia",
+    "cost": null,
     "primary_check": null,
-    "secondary_casters": 0,
     "secondary_checks": [],
+    "secondary_casters": 0,
     "traits": [
       "Cerco"
     ],
@@ -708,7 +709,6 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 93,
     "data": {
-      "cost": null,
       "needs_review": false
     }
   }

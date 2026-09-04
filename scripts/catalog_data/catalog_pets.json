@@ -9,16 +9,17 @@
     "description_es": "Compañero veloz que ayuda a flanquear y derribar enemigos.",
     "pet_type": "animal_companion",
     "size": "Pequeno ou Médio",
-    "speed_feet": 30,
-    "hp_base": 6,
-    "support_benefit": null,
-    "advanced_maneuver": null,
+    "speed": "40 pés",
+    "attacks": [],
     "traits": [],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 206,
     "data": {
-      "attacks": "Mandíbulas: 1d8 perfuração (Ágil, Derrubar)",
+      "hp_base": 6,
+      "support_benefit": null,
+      "advanced_maneuver": null,
       "needs_review": false
     }
   },
@@ -32,16 +33,17 @@
     "description_es": "Compañero resistente con poderosas mordidas y garras.",
     "pet_type": "animal_companion",
     "size": "Pequeno ou Médio",
-    "speed_feet": 30,
-    "hp_base": 8,
-    "support_benefit": null,
-    "advanced_maneuver": null,
+    "speed": "35 pés",
+    "attacks": [],
     "traits": [],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 206,
     "data": {
-      "attacks": "Garras: 1d8 cortante (Ágil), Mandíbulas: 1d8 perfuração",
+      "hp_base": 8,
+      "support_benefit": null,
+      "advanced_maneuver": null,
       "needs_review": false
     }
   },
@@ -55,16 +57,17 @@
     "description_es": "Montura veloz para cargas y combate montado.",
     "pet_type": "animal_companion",
     "size": "Grande",
-    "speed_feet": 30,
-    "hp_base": 8,
-    "support_benefit": null,
-    "advanced_maneuver": null,
+    "speed": "40 pés",
+    "attacks": [],
     "traits": [],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 206,
     "data": {
-      "attacks": "Cascos: 1d6 impacto (Ágil)",
+      "hp_base": 8,
+      "support_benefit": null,
+      "advanced_maneuver": null,
       "needs_review": false
     }
   },
@@ -78,16 +81,17 @@
     "description_es": "Compañero volador ágil para explorar y atacar con precisión.",
     "pet_type": "animal_companion",
     "size": "Pequeno",
-    "speed_feet": 30,
-    "hp_base": 4,
-    "support_benefit": null,
-    "advanced_maneuver": null,
+    "speed": "10 pés, Voo 60 pés",
+    "attacks": [],
     "traits": [],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 206,
     "data": {
-      "attacks": "Garras: 1d6 cortante (Ágil, Acabamento)",
+      "hp_base": 4,
+      "support_benefit": null,
+      "advanced_maneuver": null,
       "needs_review": false
     }
   },
@@ -101,16 +105,17 @@
     "description_es": "Compañero sigiloso que ayuda a dejar desprevenidos a los enemigos.",
     "pet_type": "animal_companion",
     "size": "Pequeno ou Médio",
-    "speed_feet": 30,
-    "hp_base": 6,
-    "support_benefit": null,
-    "advanced_maneuver": null,
+    "speed": "35 pés",
+    "attacks": [],
     "traits": [],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 206,
     "data": {
-      "attacks": "Garras: 1d6 cortante (Ágil), Mordida: 1d8 perfuração",
+      "hp_base": 6,
+      "support_benefit": null,
+      "advanced_maneuver": null,
       "needs_review": false
     }
   },
@@ -124,16 +129,17 @@
     "description_es": "Compañero veloz especializado en rodear y flanquear enemigos.",
     "pet_type": "animal_companion",
     "size": "Pequeno",
-    "speed_feet": 30,
-    "hp_base": 6,
-    "support_benefit": null,
-    "advanced_maneuver": null,
+    "speed": "50 pés",
+    "attacks": [],
     "traits": [],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 207,
     "data": {
-      "attacks": "Garras: 1d8 cortante (Ágil, Flanquear)",
+      "hp_base": 6,
+      "support_benefit": null,
+      "advanced_maneuver": null,
       "needs_review": false
     }
   },
@@ -147,16 +153,17 @@
     "description_es": "Compañero resistente que excava y causa daño persistente.",
     "pet_type": "animal_companion",
     "size": "Pequeno",
-    "speed_feet": 30,
-    "hp_base": 8,
-    "support_benefit": null,
-    "advanced_maneuver": null,
+    "speed": "25 pés, Escavação 10 pés",
+    "attacks": [],
     "traits": [],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 206,
     "data": {
-      "attacks": "Garras: 1d8 cortante (Ágil)",
+      "hp_base": 8,
+      "support_benefit": null,
+      "advanced_maneuver": null,
       "needs_review": false
     }
   },
@@ -170,16 +177,17 @@
     "description_es": "Familiar que concede habilidades elegidas a su amo.",
     "pet_type": "animal_companion",
     "size": "Minúsculo",
-    "speed_feet": 30,
-    "hp_base": 5,
-    "support_benefit": null,
-    "advanced_maneuver": null,
+    "speed": "25 pés",
+    "attacks": [],
     "traits": [],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 212,
     "data": {
-      "attacks": "Sem ataque próprio",
+      "hp_base": 5,
+      "support_benefit": null,
+      "advanced_maneuver": null,
       "needs_review": false
     }
   },
@@ -193,34 +201,35 @@
     "description_es": "Compañero veloz y montable que puede causar daño persistente por sangrado.",
     "pet_type": "animal_companion",
     "size": "Médio ou Grande",
-    "speed_feet": 30,
-    "hp_base": 6,
-    "support_benefit": "Enquanto montado, Golpes que causam dano no alcance do antílope também causam 1d6 de sangramento persistente até o início do seu próximo turno.",
-    "advanced_maneuver": null,
+    "speed": "40 pés",
+    "attacks": [
+      {
+        "name": "Chifres",
+        "bonus": "—",
+        "damage": "1d6 perfurante",
+        "traits": [
+          "Acurada"
+        ]
+      },
+      {
+        "name": "Casco",
+        "bonus": "—",
+        "damage": "1d4 impacto",
+        "traits": [
+          "Ágil",
+          "Acurada"
+        ]
+      }
+    ],
     "traits": [],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Howl of the Wild (Remaster, atualização de errata)",
     "source_page": 91,
     "data": {
-      "attacks": [
-        {
-          "name": "Chifres",
-          "bonus": "—",
-          "damage": "1d6 perfurante",
-          "traits": [
-            "Acurada"
-          ]
-        },
-        {
-          "name": "Casco",
-          "bonus": "—",
-          "damage": "1d4 impacto",
-          "traits": [
-            "Ágil",
-            "Acurada"
-          ]
-        }
-      ],
+      "hp_base": 6,
+      "support_benefit": "Enquanto montado, Golpes que causam dano no alcance do antílope também causam 1d6 de sangramento persistente até o início do seu próximo turno.",
+      "advanced_maneuver": null,
       "needs_review": false
     }
   },
@@ -234,31 +243,32 @@
     "description_es": "Compañero montable que asusta a los enemigos con sus astas.",
     "pet_type": "animal_companion",
     "size": "Médio ou Grande",
-    "speed_feet": 30,
-    "hp_base": 8,
-    "support_benefit": "Até o início do seu próximo turno, se você atingir e causar dano a uma criatura no alcance do alce, ela fica Amedrontada 1.",
-    "advanced_maneuver": null,
+    "speed": "30 pés",
+    "attacks": [
+      {
+        "name": "Chifres",
+        "bonus": "—",
+        "damage": "1d8 perfurante",
+        "traits": []
+      },
+      {
+        "name": "Casco",
+        "bonus": "—",
+        "damage": "1d6 impacto",
+        "traits": [
+          "Ágil"
+        ]
+      }
+    ],
     "traits": [],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Howl of the Wild (Remaster, atualização de errata)",
     "source_page": 91,
     "data": {
-      "attacks": [
-        {
-          "name": "Chifres",
-          "bonus": "—",
-          "damage": "1d8 perfurante",
-          "traits": []
-        },
-        {
-          "name": "Casco",
-          "bonus": "—",
-          "damage": "1d6 impacto",
-          "traits": [
-            "Ágil"
-          ]
-        }
-      ],
+      "hp_base": 8,
+      "support_benefit": "Até o início do seu próximo turno, se você atingir e causar dano a uma criatura no alcance do alce, ela fica Amedrontada 1.",
+      "advanced_maneuver": null,
       "needs_review": false
     }
   },
@@ -272,34 +282,35 @@
     "description_es": "Compañero que planea y dificulta el movimiento enemigo.",
     "pet_type": "animal_companion",
     "size": "Pequeno",
-    "speed_feet": 30,
-    "hp_base": 6,
-    "support_benefit": "Até o fim do seu próximo turno, um alvo atingido por seu Golpe no alcance do esquilo sofre –10 pés de penalidade de circunstância em seus Deslocamentos por 1 rodada.",
-    "advanced_maneuver": null,
+    "speed": "25 pés, escalada 25 pés",
+    "attacks": [
+      {
+        "name": "Mandíbulas",
+        "bonus": "—",
+        "damage": "1d6 perfurante",
+        "traits": [
+          "Acurada"
+        ]
+      },
+      {
+        "name": "Garra",
+        "bonus": "—",
+        "damage": "1d4 cortante",
+        "traits": [
+          "Ágil",
+          "Acurada"
+        ]
+      }
+    ],
     "traits": [],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Howl of the Wild (Remaster, atualização de errata)",
     "source_page": 92,
     "data": {
-      "attacks": [
-        {
-          "name": "Mandíbulas",
-          "bonus": "—",
-          "damage": "1d6 perfurante",
-          "traits": [
-            "Acurada"
-          ]
-        },
-        {
-          "name": "Garra",
-          "bonus": "—",
-          "damage": "1d4 cortante",
-          "traits": [
-            "Ágil",
-            "Acurada"
-          ]
-        }
-      ],
+      "hp_base": 6,
+      "support_benefit": "Até o fim do seu próximo turno, um alvo atingido por seu Golpe no alcance do esquilo sofre –10 pés de penalidade de circunstância em seus Deslocamentos por 1 rodada.",
+      "advanced_maneuver": null,
       "needs_review": false
     }
   },
@@ -313,34 +324,35 @@
     "description_es": "Montura de cuello largo que mejora las maniobras de Empujar.",
     "pet_type": "animal_companion",
     "size": "Grande",
-    "speed_feet": 30,
-    "hp_base": 8,
-    "support_benefit": "Enquanto montado na girafa, você não precisa de uma mão livre para Empurrar e um inimigo Empurrado move 10 pés (15 pés em sucesso crítico).",
-    "advanced_maneuver": null,
+    "speed": "35 pés",
+    "attacks": [
+      {
+        "name": "Casco",
+        "bonus": "—",
+        "damage": "1d6 impacto",
+        "traits": [
+          "Ágil"
+        ]
+      },
+      {
+        "name": "Pescoço",
+        "bonus": "—",
+        "damage": "1d4 impacto",
+        "traits": [
+          "Não-Letal",
+          "Alcance 10 pés"
+        ]
+      }
+    ],
     "traits": [],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Howl of the Wild (Remaster, atualização de errata)",
     "source_page": 92,
     "data": {
-      "attacks": [
-        {
-          "name": "Casco",
-          "bonus": "—",
-          "damage": "1d6 impacto",
-          "traits": [
-            "Ágil"
-          ]
-        },
-        {
-          "name": "Pescoço",
-          "bonus": "—",
-          "damage": "1d4 impacto",
-          "traits": [
-            "Não-Letal",
-            "Alcance 10 pés"
-          ]
-        }
-      ],
+      "hp_base": 8,
+      "support_benefit": "Enquanto montado na girafa, você não precisa de uma mão livre para Empurrar e um inimigo Empurrado move 10 pés (15 pés em sucesso crítico).",
+      "advanced_maneuver": null,
       "needs_review": false
     }
   },
@@ -354,25 +366,26 @@
     "description_es": "Compañero saltador que combina movilidad y ataques naturales.",
     "pet_type": "animal_companion",
     "size": "Pequeno",
-    "speed_feet": 30,
-    "hp_base": 6,
-    "support_benefit": "Até o início do seu próximo turno, o canguru conta como estando em seu espaço ou em um espaço vazio a até 5 pés para determinar flanqueamento.",
-    "advanced_maneuver": null,
+    "speed": "30 pés",
+    "attacks": [
+      {
+        "name": "Pé",
+        "bonus": "—",
+        "damage": "1d6 impacto",
+        "traits": [
+          "Ágil"
+        ]
+      }
+    ],
     "traits": [],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Howl of the Wild (Remaster, atualização de errata)",
     "source_page": 92,
     "data": {
-      "attacks": [
-        {
-          "name": "Pé",
-          "bonus": "—",
-          "damage": "1d6 impacto",
-          "traits": [
-            "Ágil"
-          ]
-        }
-      ],
+      "hp_base": 6,
+      "support_benefit": "Até o início do seu próximo turno, o canguru conta como estando em seu espaço ou em um espaço vazio a até 5 pés para determinar flanqueamento.",
+      "advanced_maneuver": null,
       "needs_review": false
     }
   },
@@ -386,34 +399,35 @@
     "description_es": "Compañero ágil que protege a criaturas cercanas contra el flanqueo.",
     "pet_type": "animal_companion",
     "size": "Pequeno",
-    "speed_feet": 30,
-    "hp_base": 4,
-    "support_benefit": "Até o fim do seu próximo turno, criaturas adjacentes ao mangusto não podem flanquear você.",
-    "advanced_maneuver": null,
+    "speed": "25 pés, escavação 10 pés",
+    "attacks": [
+      {
+        "name": "Mandíbulas",
+        "bonus": "—",
+        "damage": "1d6 perfurante",
+        "traits": [
+          "Acurada"
+        ]
+      },
+      {
+        "name": "Garra",
+        "bonus": "—",
+        "damage": "1d4 cortante",
+        "traits": [
+          "Ágil",
+          "Acurada"
+        ]
+      }
+    ],
     "traits": [],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Howl of the Wild (Remaster, atualização de errata)",
     "source_page": 93,
     "data": {
-      "attacks": [
-        {
-          "name": "Mandíbulas",
-          "bonus": "—",
-          "damage": "1d6 perfurante",
-          "traits": [
-            "Acurada"
-          ]
-        },
-        {
-          "name": "Garra",
-          "bonus": "—",
-          "damage": "1d4 cortante",
-          "traits": [
-            "Ágil",
-            "Acurada"
-          ]
-        }
-      ],
+      "hp_base": 4,
+      "support_benefit": "Até o fim do seu próximo turno, criaturas adjacentes ao mangusto não podem flanquear você.",
+      "advanced_maneuver": null,
       "needs_review": false
     }
   },
@@ -427,29 +441,30 @@
     "description_es": "Compañero anfibio que secreta veneno y nada en aguas poco profundas.",
     "pet_type": "animal_companion",
     "size": "Pequeno",
-    "speed_feet": 30,
-    "hp_base": 6,
-    "support_benefit": "Até o início do seu próximo turno, uma criatura adjacente que atingir você ou a salamandra sofre 1d6 de dano de veneno.",
-    "advanced_maneuver": null,
+    "speed": "20 pés, natação 10 pés",
+    "attacks": [
+      {
+        "name": "Cauda",
+        "bonus": "—",
+        "damage": "1d6 impacto",
+        "traits": []
+      },
+      {
+        "name": "Mandíbulas",
+        "bonus": "—",
+        "damage": "1d4 perfurante",
+        "traits": []
+      }
+    ],
     "traits": [],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Howl of the Wild (Remaster, atualização de errata)",
     "source_page": 93,
     "data": {
-      "attacks": [
-        {
-          "name": "Cauda",
-          "bonus": "—",
-          "damage": "1d6 impacto",
-          "traits": []
-        },
-        {
-          "name": "Mandíbulas",
-          "bonus": "—",
-          "damage": "1d4 perfurante",
-          "traits": []
-        }
-      ],
+      "hp_base": 6,
+      "support_benefit": "Até o início do seu próximo turno, uma criatura adjacente que atingir você ou a salamandra sofre 1d6 de dano de veneno.",
+      "advanced_maneuver": null,
       "needs_review": false
     }
   },
@@ -463,23 +478,24 @@
     "description_es": "Compañero acuático avanzado que crea posiciones inesperadas de flanqueo.",
     "pet_type": "animal_companion",
     "size": "Grande",
-    "speed_feet": 30,
-    "hp_base": 4,
-    "support_benefit": "Até o início do seu próximo turno, para determinar flanqueamento a enguia pode contar como estando em seu espaço ou em um espaço vazio a até 10 pés, escolhendo um espaço diferente a cada ataque.",
-    "advanced_maneuver": null,
+    "speed": "10 pés, natação 40 pés",
+    "attacks": [
+      {
+        "name": "Mandíbulas",
+        "bonus": "—",
+        "damage": "1d8 perfurante",
+        "traits": []
+      }
+    ],
     "traits": [],
+    "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Howl of the Wild (Remaster, atualização de errata)",
     "source_page": 94,
     "data": {
-      "attacks": [
-        {
-          "name": "Mandíbulas",
-          "bonus": "—",
-          "damage": "1d8 perfurante",
-          "traits": []
-        }
-      ],
+      "hp_base": 4,
+      "support_benefit": "Até o início do seu próximo turno, para determinar flanqueamento a enguia pode contar como estando em seu espaço ou em um espaço vazio a até 10 pés, escolhendo um espaço diferente a cada ataque.",
+      "advanced_maneuver": null,
       "needs_review": false
     }
   },
@@ -493,31 +509,32 @@
     "description_es": "Compañero anfibio avanzado con lengua de largo alcance y control de reacciones.",
     "pet_type": "animal_companion",
     "size": "Grande",
-    "speed_feet": 30,
-    "hp_base": 6,
-    "support_benefit": "Até o início do seu próximo turno, quando você atingir com sucesso uma criatura ameaçada pelo sapo, ela não pode usar reações acionadas por suas ações, a menos que seu nível seja maior que o seu.",
-    "advanced_maneuver": null,
+    "speed": "20 pés, escalada 20 pés, natação 25 pés",
+    "attacks": [
+      {
+        "name": "Mandíbulas",
+        "bonus": "—",
+        "damage": "1d8 perfurante",
+        "traits": []
+      },
+      {
+        "name": "Língua",
+        "bonus": "—",
+        "damage": "1d4 impacto",
+        "traits": [
+          "Alcance 15 pés"
+        ]
+      }
+    ],
     "traits": [],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Howl of the Wild (Remaster, atualização de errata)",
     "source_page": 94,
     "data": {
-      "attacks": [
-        {
-          "name": "Mandíbulas",
-          "bonus": "—",
-          "damage": "1d8 perfurante",
-          "traits": []
-        },
-        {
-          "name": "Língua",
-          "bonus": "—",
-          "damage": "1d4 impacto",
-          "traits": [
-            "Alcance 15 pés"
-          ]
-        }
-      ],
+      "hp_base": 6,
+      "support_benefit": "Até o início do seu próximo turno, quando você atingir com sucesso uma criatura ameaçada pelo sapo, ela não pode usar reações acionadas por suas ações, a menos que seu nível seja maior que o seu.",
+      "advanced_maneuver": null,
       "needs_review": false
     }
   },
@@ -531,31 +548,32 @@
     "description_es": "Compañero volador avanzado para ataques montados y aéreos.",
     "pet_type": "animal_companion",
     "size": "Grande",
-    "speed_feet": 30,
-    "hp_base": 8,
-    "support_benefit": "Enquanto montado e após mover-se 10 pés ou mais antes de um Golpe corpo a corpo, adicione ao dano um bônus de circunstância igual ao dobro dos dados de dano da arma.",
-    "advanced_maneuver": null,
+    "speed": "30 pés, voo 60 pés",
+    "attacks": [
+      {
+        "name": "Bico",
+        "bonus": "—",
+        "damage": "1d6 perfurante",
+        "traits": []
+      },
+      {
+        "name": "Garra",
+        "bonus": "—",
+        "damage": "1d4 cortante",
+        "traits": [
+          "Ágil"
+        ]
+      }
+    ],
     "traits": [],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Howl of the Wild (Remaster, atualização de errata)",
     "source_page": 95,
     "data": {
-      "attacks": [
-        {
-          "name": "Bico",
-          "bonus": "—",
-          "damage": "1d6 perfurante",
-          "traits": []
-        },
-        {
-          "name": "Garra",
-          "bonus": "—",
-          "damage": "1d4 cortante",
-          "traits": [
-            "Ágil"
-          ]
-        }
-      ],
+      "hp_base": 8,
+      "support_benefit": "Enquanto montado e após mover-se 10 pés ou mais antes de um Golpe corpo a corpo, adicione ao dano um bônus de circunstância igual ao dobro dos dados de dano da arma.",
+      "advanced_maneuver": null,
       "needs_review": false
     }
   },
@@ -569,34 +587,35 @@
     "description_es": "Compañero arácnido avanzado que trepa y perturba acciones de concentración.",
     "pet_type": "animal_companion",
     "size": "Grande",
-    "speed_feet": 30,
-    "hp_base": 4,
-    "support_benefit": "Até o início do seu próximo turno, uma criatura atingida por seu Golpe que esteja no alcance da tarântula deve passar em um teste simples CD 5 ao usar uma ação de concentração ou perde a ação.",
-    "advanced_maneuver": null,
+    "speed": "30 pés, escalada 30 pés",
+    "attacks": [
+      {
+        "name": "Presas",
+        "bonus": "—",
+        "damage": "1d6 perfurante mais veneno",
+        "traits": [
+          "Acurada"
+        ]
+      },
+      {
+        "name": "Perna",
+        "bonus": "—",
+        "damage": "1d4 perfurante",
+        "traits": [
+          "Ágil",
+          "Acurada"
+        ]
+      }
+    ],
     "traits": [],
+    "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Howl of the Wild (Remaster, atualização de errata)",
     "source_page": 96,
     "data": {
-      "attacks": [
-        {
-          "name": "Presas",
-          "bonus": "—",
-          "damage": "1d6 perfurante mais veneno",
-          "traits": [
-            "Acurada"
-          ]
-        },
-        {
-          "name": "Perna",
-          "bonus": "—",
-          "damage": "1d4 perfurante",
-          "traits": [
-            "Ágil",
-            "Acurada"
-          ]
-        }
-      ],
+      "hp_base": 4,
+      "support_benefit": "Até o início do seu próximo turno, uma criatura atingida por seu Golpe que esteja no alcance da tarântula deve passar em um teste simples CD 5 ao usar uma ação de concentração ou perde a ação.",
+      "advanced_maneuver": null,
       "needs_review": false
     }
   },
@@ -610,31 +629,32 @@
     "description_es": "Compañero volador colosal avanzado capaz de transportar y empujar criaturas.",
     "pet_type": "animal_companion",
     "size": "Enorme",
-    "speed_feet": 30,
-    "hp_base": 8,
-    "support_benefit": "Até o início do seu próximo turno, seus Golpes que causam dano a uma criatura ameaçada pelo roc empurram o alvo 5 pés para longe do roc.",
-    "advanced_maneuver": null,
+    "speed": "15 pés, voo 60 pés",
+    "attacks": [
+      {
+        "name": "Bico",
+        "bonus": "—",
+        "damage": "1d10 perfurante",
+        "traits": []
+      },
+      {
+        "name": "Garra",
+        "bonus": "—",
+        "damage": "1d8 cortante mais Agarrar",
+        "traits": [
+          "Ágil"
+        ]
+      }
+    ],
     "traits": [],
+    "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Howl of the Wild (Remaster, atualização de errata)",
     "source_page": 96,
     "data": {
-      "attacks": [
-        {
-          "name": "Bico",
-          "bonus": "—",
-          "damage": "1d10 perfurante",
-          "traits": []
-        },
-        {
-          "name": "Garra",
-          "bonus": "—",
-          "damage": "1d8 cortante mais Agarrar",
-          "traits": [
-            "Ágil"
-          ]
-        }
-      ],
+      "hp_base": 8,
+      "support_benefit": "Até o início do seu próximo turno, seus Golpes que causam dano a uma criatura ameaçada pelo roc empurram o alvo 5 pés para longe do roc.",
+      "advanced_maneuver": null,
       "needs_review": false
     }
   },
@@ -648,23 +668,24 @@
     "description_es": "Compañero fúngico avanzado que flota y deja a los enemigos estupefactos.",
     "pet_type": "animal_companion",
     "size": "Grande",
-    "speed_feet": 30,
-    "hp_base": 6,
-    "support_benefit": "Até o início do seu próximo turno, seus Golpes que causam dano a uma criatura no alcance do cogumelo deixam o alvo Estupefato 1 por 1 rodada; o efeito tem o traço veneno.",
-    "advanced_maneuver": null,
+    "speed": "15 pés, voo 30 pés",
+    "attacks": [
+      {
+        "name": "Haste",
+        "bonus": "—",
+        "damage": "1d8 impacto",
+        "traits": []
+      }
+    ],
     "traits": [],
+    "rarity": "uncommon",
     "ruleset": "remaster",
     "source_book": "Howl of the Wild (Remaster, atualização de errata)",
     "source_page": 96,
     "data": {
-      "attacks": [
-        {
-          "name": "Haste",
-          "bonus": "—",
-          "damage": "1d8 impacto",
-          "traits": []
-        }
-      ],
+      "hp_base": 6,
+      "support_benefit": "Até o início do seu próximo turno, seus Golpes que causam dano a uma criatura no alcance do cogumelo deixam o alvo Estupefato 1 por 1 rodada; o efeito tem o traço veneno.",
+      "advanced_maneuver": null,
       "needs_review": false
     }
   },
@@ -681,20 +702,21 @@
       "Médio",
       "Pequeno"
     ],
-    "speed_feet": 7.5,
-    "hp_base": 8,
-    "support_benefit": null,
-    "advanced_maneuver": null,
+    "speed": "7.5 feet",
+    "attacks": [],
     "traits": [
       "abantesma",
       "eidolon",
       "etéreo"
     ],
+    "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Segredos da Magia (pré-Remaster)",
     "source_page": 43,
     "data": {
-      "attacks": [],
+      "hp_base": 8,
+      "support_benefit": null,
+      "advanced_maneuver": null,
       "needs_review": false
     }
   },
@@ -711,20 +733,21 @@
       "Médio",
       "Pequeno"
     ],
-    "speed_feet": 7.5,
-    "hp_base": 8,
-    "support_benefit": null,
-    "advanced_maneuver": null,
+    "speed": "7.5 feet",
+    "attacks": [],
     "traits": [
       "abantesma",
       "eidolon",
       "etéreo"
     ],
+    "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Segredos da Magia (pré-Remaster)",
     "source_page": 43,
     "data": {
-      "attacks": [],
+      "hp_base": 8,
+      "support_benefit": null,
+      "advanced_maneuver": null,
       "needs_review": false
     }
   },
@@ -741,20 +764,21 @@
       "Médio",
       "Pequeno"
     ],
-    "speed_feet": 7.5,
-    "hp_base": 8,
-    "support_benefit": null,
-    "advanced_maneuver": null,
+    "speed": "7.5 feet",
+    "attacks": [],
     "traits": [
       "anjo",
       "celestial",
       "eidolon"
     ],
+    "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Segredos da Magia (pré-Remaster)",
     "source_page": 43,
     "data": {
-      "attacks": [],
+      "hp_base": 8,
+      "support_benefit": null,
+      "advanced_maneuver": null,
       "needs_review": false
     }
   },
@@ -770,19 +794,20 @@
     "size": [
       "Médio"
     ],
-    "speed_feet": 7.5,
-    "hp_base": 8,
-    "support_benefit": null,
-    "advanced_maneuver": null,
+    "speed": "7.5 feet",
+    "attacks": [],
     "traits": [
       "besta",
       "eidolon"
     ],
+    "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Segredos da Magia (pré-Remaster)",
     "source_page": 43,
     "data": {
-      "attacks": [],
+      "hp_base": 8,
+      "support_benefit": null,
+      "advanced_maneuver": null,
       "needs_review": false
     }
   },
@@ -798,20 +823,21 @@
     "size": [
       "Médio"
     ],
-    "speed_feet": 7.5,
-    "hp_base": 8,
-    "support_benefit": null,
-    "advanced_maneuver": null,
+    "speed": "7.5 feet",
+    "attacks": [],
     "traits": [
       "astral",
       "construct",
       "eidolon"
     ],
+    "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Segredos da Magia (pré-Remaster)",
     "source_page": 43,
     "data": {
-      "attacks": [],
+      "hp_base": 8,
+      "support_benefit": null,
+      "advanced_maneuver": null,
       "needs_review": false
     }
   },
@@ -828,20 +854,21 @@
       "Médio",
       "Pequeno"
     ],
-    "speed_feet": 7.5,
-    "hp_base": 8,
-    "support_benefit": null,
-    "advanced_maneuver": null,
+    "speed": "7.5 feet",
+    "attacks": [],
     "traits": [
       "demônio",
       "eidolon",
       "ínfero"
     ],
+    "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Segredos da Magia (pré-Remaster)",
     "source_page": 43,
     "data": {
-      "attacks": [],
+      "hp_base": 8,
+      "support_benefit": null,
+      "advanced_maneuver": null,
       "needs_review": false
     }
   },
@@ -857,20 +884,21 @@
     "size": [
       "Médio"
     ],
-    "speed_feet": 7.5,
-    "hp_base": 8,
-    "support_benefit": null,
-    "advanced_maneuver": null,
+    "speed": "7.5 feet",
+    "attacks": [],
     "traits": [
       "astral",
       "dragão",
       "eidolon"
     ],
+    "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Segredos da Magia (pré-Remaster)",
     "source_page": 43,
     "data": {
-      "attacks": [],
+      "hp_base": 8,
+      "support_benefit": null,
+      "advanced_maneuver": null,
       "needs_review": false
     }
   },
@@ -887,19 +915,20 @@
       "Pequeno",
       "Médio"
     ],
-    "speed_feet": 7.5,
-    "hp_base": 8,
-    "support_benefit": null,
-    "advanced_maneuver": null,
+    "speed": "7.5 feet",
+    "attacks": [],
     "traits": [
       "eidolon",
       "fada"
     ],
+    "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Segredos da Magia (pré-Remaster)",
     "source_page": 43,
     "data": {
-      "attacks": [],
+      "hp_base": 8,
+      "support_benefit": null,
+      "advanced_maneuver": null,
       "needs_review": false
     }
   },
@@ -915,19 +944,20 @@
     "size": [
       "Médio"
     ],
-    "speed_feet": 7.5,
-    "hp_base": 8,
-    "support_benefit": null,
-    "advanced_maneuver": null,
+    "speed": "7.5 feet",
+    "attacks": [],
     "traits": [
       "eidolon",
       "planta"
     ],
+    "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Segredos da Magia (pré-Remaster)",
     "source_page": 43,
     "data": {
-      "attacks": [],
+      "hp_base": 8,
+      "support_benefit": null,
+      "advanced_maneuver": null,
       "needs_review": false
     }
   },
@@ -943,20 +973,21 @@
     "size": [
       "Médio"
     ],
-    "speed_feet": 7.5,
-    "hp_base": 8,
-    "support_benefit": null,
-    "advanced_maneuver": null,
+    "speed": "7.5 feet",
+    "attacks": [],
     "traits": [
       "eidolon",
       "monitor",
       "psicopompo"
     ],
+    "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Segredos da Magia (pré-Remaster)",
     "source_page": 43,
     "data": {
-      "attacks": [],
+      "hp_base": 8,
+      "support_benefit": null,
+      "advanced_maneuver": null,
       "needs_review": false
     }
   }
