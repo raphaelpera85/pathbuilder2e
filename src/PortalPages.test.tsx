@@ -144,10 +144,14 @@ describe("PortalPages", () => {
     window.location.hash = "#/downloads";
     render(<I18nProvider><PortalPages /></I18nProvider>, { container: document.getElementById("test-root")! });
     expect(screen.getByRole("heading", { level: 1, name: "Download dos Livros e Suplementos PF2e" })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /Pasta Google Drive/ })).toHaveAttribute("href", "https://drive.google.com/drive/folders/1d15Y0hqio9BbEzY87omM3vQLSH0tLQxg");
     expect(screen.queryByRole("link", { name: /Repositório GitHub/ })).not.toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /Ficha em Branco/ })).toHaveAttribute("href", "https://drive.google.com/file/d/1dasE2CoEyoUVKNytJ0WNXdnlonZUNLGh/view?usp=drive_link");
-    expect(screen.getByRole("link", { name: /Mapa-Múndi/ })).toHaveAttribute("href", "https://drive.google.com/file/d/1pnfMKbEWKl3BfE9XwFmN-aRH6mNBpRmT/view?usp=drive_link");
+    expect(screen.queryByRole("link", { name: /Pasta \/livros/i })).not.toBeInTheDocument();
+
+    const blankSheetDownload = screen.getByRole("link", { name: /Baixar PDF direto: Ficha Oficial de Personagem/i });
+    expect(blankSheetDownload).toHaveAttribute("href", "https://drive.google.com/file/d/1dasE2CoEyoUVKNytJ0WNXdnlonZUNLGh/view?usp=drive_link");
+
+    const mapFolioDownload = screen.getByRole("link", { name: /Baixar PDF direto: Mapa-Múndi/i });
+    expect(mapFolioDownload).toHaveAttribute("href", "https://drive.google.com/file/d/1pnfMKbEWKl3BfE9XwFmN-aRH6mNBpRmT/view?usp=drive_link");
 
     const playerCoreDownload = screen.getByRole("link", { name: "Baixar PDF direto: Livro do Jogador" });
     expect(playerCoreDownload).toHaveAttribute("href", "https://drive.google.com/file/d/16JYQNFQt96ikLtY5A0jaNN5SOIgCF4mM/view?usp=drive_link");
