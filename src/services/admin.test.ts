@@ -1,10 +1,21 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import { recordAppAccess, getAdminDashboardMetrics } from "./admin";
+import { recordAppAccess, getAdminDashboardMetrics, maskEmail } from "./admin";
 
 describe("Admin & Access Analytics Service", () => {
   beforeEach(() => {
     localStorage.clear();
     vi.restoreAllMocks();
+  });
+
+  it("mascara e-mails de forma segura para qualquer tamanho de usuário", () => {
+    expect(maskEmail(undefined)).toBeUndefined();
+    expect(maskEmail("")).toBeUndefined();
+    expect(maskEmail("invalid-email")).toBe("***");
+    expect(maskEmail("a@domain.com")).toBe("a***@domain.com");
+    expect(maskEmail("ab@domain.com")).toBe("a***@domain.com");
+    expect(maskEmail("ana@domain.com")).toBe("a***@domain.com");
+    expect(maskEmail("admin@domain.com")).toBe("ad***@domain.com");
+    expect(maskEmail("raphaelpera85@gmail.com")).toBe("rap***@gmail.com");
   });
 
   it("registra acessos e incrementa o contador local e diário", async () => {
@@ -46,6 +57,8 @@ describe("Admin & Access Analytics Service", () => {
     expect(metrics.characterRulesetDistribution.legacy).toBe(1);
     expect(metrics.adminUsers).toBe(1);
     expect(metrics.usersList.length).toBe(2);
+    expect(metrics.usersList[0].email).toBe("ad***@rpg.com");
+    expect(metrics.usersList[1].email).toBe("p***@rpg.com");
   });
 
   it("mantém no máximo 150 registros de logs recentes para não estourar storage", async () => {

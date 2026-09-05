@@ -397,4 +397,27 @@ describe("Exportação para Ficha Oficial PDF Editável (AcroForm)", () => {
     expect(formWiz.getTextField("CANTRIP NAME 1").getText()).toBe("Raio de Gelo");
     expect(formWiz.getTextField("SPELL 1").getText()).toBe("Mísseis Mágicos");
   }, 30000);
+
+  it("formata objetos de condição sem renderizar [object Object]", async () => {
+    const charWithObjectConditions: CharacterDocument = {
+      name: "Kyra",
+      level: 2,
+      class: "Clérigo",
+      conditions: [
+        { name: "Fatigado" } as any,
+        { name: "Amedrontado", value: 2 } as any,
+        { id: "clumsy", name: "Desajeitado", value: 1 } as any
+      ]
+    };
+
+    const filledPdf = await fillCharacterPdfForm(charWithObjectConditions, templateBytes);
+    const doc = await PDFDocument.load(filledPdf);
+    const form = doc.getForm();
+    const condText = form.getTextField("CONDITIONS").getText();
+
+    expect(condText).not.toContain("[object Object]");
+    expect(condText).toContain("Fatigado");
+    expect(condText).toContain("Amedrontado 2");
+    expect(condText).toContain("Desajeitado 1");
+  }, 30000);
 });

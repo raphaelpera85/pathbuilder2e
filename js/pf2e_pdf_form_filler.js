@@ -675,7 +675,18 @@
       setTxt("Current HP", character.currentHp !== undefined ? character.currentHp : calc.maxHp);
       setTxt("Temporary HP", character.tempHp || 0);
       setTxt("WOUNDED", character.wounded || 0);
-      setTxt("CONDITIONS", Array.isArray(character.conditions) ? character.conditions.join(", ") : "");
+      const formatPdfCondition = (c) => {
+        if (!c) return "";
+        if (typeof c === "string") return localizeCatalogItem(c, locale);
+        const name = c.name || c.id || c.condition || "";
+        const localized = localizeCatalogItem(name, locale);
+        const val = (c.value !== undefined && c.value !== null && Number(c.value) > 0) ? ` ${c.value}` : "";
+        return `${localized || name}${val}`.trim();
+      };
+      const formattedConditions = Array.isArray(character.conditions)
+        ? character.conditions.map(formatPdfCondition).filter(Boolean).join(", ")
+        : "";
+      setTxt("CONDITIONS", formattedConditions);
       const charResistances = (Array.isArray(character.resistances) && character.resistances.length > 0)
         ? character.resistances
         : (Array.isArray(calc.resistances) ? calc.resistances : []);

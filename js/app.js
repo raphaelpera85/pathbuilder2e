@@ -5991,18 +5991,79 @@ class PathbuilderApp {
     const recoveredHp = Math.min(this.calc.maxHp, Math.max(0, currentHp) + naturalRecovery);
     this.character.currentHp = recoveredHp;
     this.character.shieldRaised = false;
+    this.character.tempHp = 0;
+    if (recoveredHp >= this.calc.maxHp) {
+      this.character.wounded = 0;
+    }
+
+    if (Array.isArray(this.character.conditions)) {
+      const isFatigued = (c) => {
+        const id = (c.id || c.key || c.name || "").toLowerCase();
+        return id.includes("fatig");
+      };
+      const isDoomed = (c) => {
+        const id = (c.id || c.key || c.name || "").toLowerCase();
+        return id.includes("doom") || id.includes("condenad");
+      };
+      const isDrained = (c) => {
+        const id = (c.id || c.key || c.name || "").toLowerCase();
+        return id.includes("drain") || id.includes("drenad");
+      };
+      const isWounded = (c) => {
+        const id = (c.id || c.key || c.name || "").toLowerCase();
+        return id.includes("wound") || id.includes("ferid");
+      };
+
+      const updatedConditions = [];
+      for (const cond of this.character.conditions) {
+        if (!cond) continue;
+        if (isFatigued(cond)) {
+          continue;
+        }
+        if (recoveredHp >= this.calc.maxHp && isWounded(cond)) {
+          continue;
+        }
+        if (isDoomed(cond)) {
+          const currentVal = typeof cond === "object" ? Number(cond.value || 1) : 1;
+          const newVal = currentVal - 1;
+          if (newVal > 0) {
+            updatedConditions.push(typeof cond === "object" ? { ...cond, value: newVal } : { name: "Condenado", value: newVal });
+          }
+          continue;
+        }
+        if (isDrained(cond)) {
+          const currentVal = typeof cond === "object" ? Number(cond.value || 1) : 1;
+          const newVal = currentVal - 1;
+          if (newVal > 0) {
+            updatedConditions.push(typeof cond === "object" ? { ...cond, value: newVal } : { name: "Drenado", value: newVal });
+          }
+          continue;
+        }
+        updatedConditions.push(cond);
+      }
+      this.character.conditions = updatedConditions;
+    }
+
     this.character.spellSlotsUsed = {};
     const slotsInfo = PF2E_ENGINE.getSpellSlots(this.character);
-    this.character.focusPointsCurrent = slotsInfo.focusPoints;
+    if (slotsInfo && slotsInfo.focusPoints !== undefined) {
+      this.character.focusPointsCurrent = slotsInfo.focusPoints;
+    }
     this.saveCharacterLocal(false);
     this.renderAll();
     const locale = this.getLocale();
     const recoveryText = locale === "en"
-      ? `8-hour rest complete! You recovered ${Math.max(0, recoveredHp - Math.max(0, currentHp))} HP; spell slots and Focus Points were restored.`
+      ? `8-hour rest complete! You recovered ${Math.max(0, recoveredHp - Math.max(0, currentHp))} HP; spell slots, Focus Points, and conditions were updated.`
       : locale === "es"
-        ? `¡Descanso de 8 horas completado! Recuperaste ${Math.max(0, recoveredHp - Math.max(0, currentHp))} PG; se restauraron los espacios de conjuro y los Puntos de Foco.`
-        : `Descanso de 8 horas concluído! Você recuperou ${Math.max(0, recoveredHp - Math.max(0, currentHp))} PV; os espaços de magia e pontos de foco foram restaurados.`;
-    alert(recoveryText);
+        ? `¡Descanso de 8 horas completado! Recuperaste ${Math.max(0, recoveredHp - Math.max(0, currentHp))} PG; se actualizaron los espacios de conjuro, Puntos de Foco y condiciones.`
+        : `Descanso de 8 horas concluído! Você recuperou ${Math.max(0, recoveredHp - Math.max(0, currentHp))} PV; os espaços de magia, pontos de foco e condições foram atualizados.`;
+    if (typeof alert === "function") {
+      try {
+        alert(recoveryText);
+      } catch {
+        // Ignora em ambientes headless/teste onde alert() não é suportado
+      }
+    }
   }
 
   updateCoins(type, value) {

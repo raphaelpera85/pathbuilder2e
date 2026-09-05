@@ -14,3 +14,7 @@ Rules:
 - **i18n Trilíngue**: sincronização em `updateStaticLabels()` e `src/i18n.tsx` para `pt-BR`, `en` e `es`.
 - **Testes & Headless VM**: guarda defensiva `if (typeof document === "undefined" || typeof document.querySelector !== "function") return;` em métodos com acesso a DOM.
 - **Contratos de CSS**: preservação dos seletores validados em `src/data/responsive-layout-contract.test.ts`.
+- **Mecânicas de Descanso PF2e**: descanso de 8 horas segue o Player Core p. 444 (zera `tempHp`, remove `Fatigado`, decrementa `Condenado` e `Drenado`, limpa `Ferido` se curado ao máximo e consulta `slotsInfo` defensivamente).
+- **Normalização de VTTs**: slugs de talentos normalizados (`class`, `ancestry`, `general`, `skill`, `archetype`) e inclusão de armas, armaduras, escudos e equipamentos na matriz de itens exportada.
+- **Privacidade de Dados**: qualquer e-mail exibido no painel administrativo deve ser mascarado com `maskEmail()`, suportando prefixos de qualquer comprimento.
+

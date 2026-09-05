@@ -2723,13 +2723,66 @@ const PF2E_ENGINE = {
       });
     });
 
+    (char.armors || []).forEach((a, i) => {
+      actor.items.push({
+        _id: `armor_${i}`,
+        name: a.name || "Armadura",
+        type: "armor",
+        system: {
+          category: String(a.category || "unarmored").toLowerCase(),
+          acBonus: Number(a.acBonus || a.bonus) || 0,
+          dexCap: Number(a.dexCap) || 0,
+          checkPenalty: Number(a.checkPenalty) || 0,
+          speedPenalty: Number(a.speedPenalty) || 0,
+          strength: Number(a.strength || a.str) || 0,
+          equipped: { value: a.equipped !== false }
+        }
+      });
+    });
+
+    (char.shields || []).forEach((s, i) => {
+      actor.items.push({
+        _id: `shield_${i}`,
+        name: s.name || "Escudo",
+        type: "shield",
+        system: {
+          acBonus: Number(s.acBonus || s.bonus) || 0,
+          hardness: Number(s.hardness) || 0,
+          hp: { value: Number(s.currentHp ?? s.hp) || 0, max: Number(s.maxHp ?? s.hp) || 0 },
+          equipped: { value: s.equipped !== false }
+        }
+      });
+    });
+
+    (char.gear || char.equipment || []).forEach((g, i) => {
+      actor.items.push({
+        _id: `equipment_${i}`,
+        name: g.name || "Equipamento",
+        type: "equipment",
+        system: {
+          quantity: Number(g.quantity || g.qty) || 1,
+          bulk: { value: Number(g.bulk) || 0 },
+          equipped: { value: g.equipped !== false }
+        }
+      });
+    });
+
     (char.feats || []).forEach((f, i) => {
+      const rawType = String(f.type || f.category || "general").toLowerCase();
+      let featType = "general";
+      if (rawType.includes("ancestr")) featType = "ancestry";
+      else if (rawType.includes("class")) featType = "class";
+      else if (rawType.includes("perícia") || rawType.includes("pericia") || rawType.includes("skill")) featType = "skill";
+      else if (rawType.includes("arquét") || rawType.includes("arquet") || rawType.includes("archetype")) featType = "archetype";
+      else if (rawType.includes("geral") || rawType.includes("general")) featType = "general";
+      else featType = rawType;
+
       actor.items.push({
         _id: `feat_${i}`,
         name: f.name || "Talento",
         type: "feat",
         system: {
-          featType: { value: String(f.type || f.category || "general").toLowerCase() },
+          featType: { value: featType },
           level: { value: Number(f.level) || 1 },
           description: { value: f.description || f.summaries?.[locale] || "" }
         }

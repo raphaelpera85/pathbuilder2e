@@ -43,6 +43,19 @@ const LOCAL_ACCESS_COUNT_KEY = "pb2e_total_access_count";
 const LOCAL_ACCESS_LOGS_KEY = "pb2e_access_logs_history";
 const LOCAL_DAILY_PREFIX = "pb2e_daily_access_";
 
+export function maskEmail(email?: string): string | undefined {
+  if (!email || typeof email !== "string") return undefined;
+  const parts = email.split("@");
+  if (parts.length !== 2) return "***";
+  const [name, domain] = parts;
+  if (!name) return `***@${domain}`;
+  if (name.length <= 2) {
+    return `${name[0]}***@${domain}`;
+  }
+  const visiblePrefix = name.slice(0, Math.min(3, Math.floor(name.length / 2)));
+  return `${visiblePrefix}***@${domain}`;
+}
+
 function getTodayKey(): string {
   const now = new Date();
   return `${LOCAL_DAILY_PREFIX}${now.toISOString().slice(0, 10)}`;
@@ -220,12 +233,12 @@ export async function getAdminDashboardMetrics(): Promise<AdminDashboardMetrics>
       );
 
       if (profiles && Array.isArray(profiles) && profiles.length > 0) {
-        totalAccounts = profiles.length;
+        totalAccounts = typeof pCount === "number" ? pCount : profiles.length;
         adminCount = profiles.filter((p: any) => p.role === "admin" || p.email === "raphaelpera85@gmail.com").length;
         usersList = profiles.map((p: any) => ({
           id: p.id,
           username: p.username || "Usuário",
-          email: p.email ? p.email.replace(/(?<=^.{3}).+(?=@)/, "***") : undefined, // Email protegido
+          email: maskEmail(p.email), // Email protegido
           role: (p.role === "admin" || p.email === "raphaelpera85@gmail.com" ? "admin" : "user") as "admin" | "user",
           createdAt: p.created_at,
         }));
@@ -246,7 +259,7 @@ export async function getAdminDashboardMetrics(): Promise<AdminDashboardMetrics>
       );
 
       if (characters && Array.isArray(characters)) {
-        totalCharacters = characters.length;
+        totalCharacters = typeof cCount === "number" ? cCount : characters.length;
         rulesetStats = { remaster: 0, legacy: 0, other: 0 };
         for (const char of characters) {
           if (char.ruleset === "remaster") rulesetStats.remaster++;
@@ -326,7 +339,7 @@ export async function getAdminDashboardMetrics(): Promise<AdminDashboardMetrics>
         usersList = Object.entries(localUsers).map(([id, u]: [string, any]) => ({
           id,
           username: u.username || id,
-          email: u.email,
+          email: maskEmail(u.email),
           role: u.role || "user",
         }));
         adminCount = usersList.filter((u) => u.role === "admin").length;

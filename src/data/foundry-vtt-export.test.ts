@@ -66,5 +66,47 @@ describe("Foundry VTT Actor PF2e Export", () => {
     expect(actor.items[0].name).toBe("Espada Longa");
     expect(actor.items[1].type).toBe("feat");
     expect(actor.items[1].name).toBe("Golpe Poderoso");
+    expect(actor.items[1].system.featType.value).toBe("class");
+  });
+
+  it("exports armors, shields, and adventuring gear into actor items", () => {
+    const character = {
+      name: "Seelah",
+      level: 3,
+      ancestry: "Humano",
+      class: "Campeão",
+      armors: [
+        { name: "Cota de Malha", category: "heavy", acBonus: 5, dexCap: 1, checkPenalty: -2, speedPenalty: -5, strength: 16, equipped: true }
+      ],
+      shields: [
+        { name: "Escudo de Aço", acBonus: 2, hardness: 5, hp: 20, maxHp: 20, equipped: true }
+      ],
+      gear: [
+        { name: "Mochila de Aventureiro", quantity: 1, bulk: 1 }
+      ],
+      feats: [
+        { name: "Visão no Escuro", type: "Talento Ancestral", level: 1 }
+      ]
+    };
+
+    const actor = engine.exportFoundryVttActor(character);
+    const armorItem = actor.items.find((i: any) => i.type === "armor");
+    const shieldItem = actor.items.find((i: any) => i.type === "shield");
+    const gearItem = actor.items.find((i: any) => i.type === "equipment");
+    const featItem = actor.items.find((i: any) => i.type === "feat");
+
+    expect(armorItem).toBeDefined();
+    expect(armorItem.name).toBe("Cota de Malha");
+    expect(armorItem.system.acBonus).toBe(5);
+
+    expect(shieldItem).toBeDefined();
+    expect(shieldItem.name).toBe("Escudo de Aço");
+    expect(shieldItem.system.hardness).toBe(5);
+
+    expect(gearItem).toBeDefined();
+    expect(gearItem.name).toBe("Mochila de Aventureiro");
+
+    expect(featItem).toBeDefined();
+    expect(featItem.system.featType.value).toBe("ancestry");
   });
 });
