@@ -82,6 +82,7 @@
   "80": "IPickerController",
   "81": "extract-core-ancestry-feats.cjs",
   "82": "inspect-flagged-details.cjs",
+  "83": "theme.tsx",
   "84": "extract-gng-class-feats.cjs",
   "85": "extract-pc2-class-feats.cjs",
   "86": "extract-som-class-feats.cjs",
@@ -163,5 +164,9 @@
   "162": "security-rls-basics.md",
   "163": "security-rls-performance.md",
   "164": "_template.md",
-  "165": "PortalPages.test.tsx"
+  "165": "sources.ts",
+  "166": "PortalPages.test.tsx",
+  "167": "rest-character.test.ts",
+  "168": "IPickerBridge",
+  "169": "PickerItem"
 }
