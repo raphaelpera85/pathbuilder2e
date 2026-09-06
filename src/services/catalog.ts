@@ -289,6 +289,7 @@ export async function fetchAllCatalogCategories(): Promise<Record<PickerType, Pi
  */
 export async function fetchCatalogTableCounts(): Promise<Record<CatalogTableName, number> | null> {
   if (!isSupabaseConfigured || !supabase) return null;
+  const client = supabase;
   const tables = Object.values(PICKER_TYPE_TO_TABLE);
   const uniqueTables = [...new Set(tables)];
   const counts: Partial<Record<CatalogTableName, number>> = {};
@@ -296,7 +297,7 @@ export async function fetchCatalogTableCounts(): Promise<Record<CatalogTableName
   await Promise.all(
     uniqueTables.map(async (tableName) => {
       try {
-        const { count, error } = await supabase
+        const { count, error } = await client
           .from(tableName)
           .select("id", { count: "exact", head: true });
         if (!error && typeof count === "number") {

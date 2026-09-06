@@ -300,12 +300,13 @@ export async function getAdminDashboardMetrics(): Promise<AdminDashboardMetrics>
       ];
       let totalCat = 0;
       let totalRev = 0;
+      const sb = supabase;
       await Promise.all(
         catalogTables.map(async (tbl) => {
           try {
             const [{ count: total }, { count: reviewCount }] = await Promise.all([
-              supabase.from(tbl).select("id", { count: "exact", head: true }),
-              supabase.from(tbl).select("id", { count: "exact", head: true }).eq("ruleset", "needs_review"),
+              sb.from(tbl).select("id", { count: "exact", head: true }),
+              sb.from(tbl).select("id", { count: "exact", head: true }).eq("ruleset", "needs_review"),
             ]);
             if (typeof total === "number") {
               catalogCounts[tbl] = total;

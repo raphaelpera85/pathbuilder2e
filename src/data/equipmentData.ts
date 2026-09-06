@@ -41,7 +41,7 @@ const GUNS_GEARS_EQUIPMENT: ItemDefinition[] = ([
   source: { book: "Pólvora e Engrenagens (pré-Remaster)", page }, sourceApproximate: false, ruleset: "legacy", needs_review: false
 }));
 
-export const PF2E_ITEMS_CATALOG: ItemDefinition[] = [
+const RAW_ITEMS: ItemDefinition[] = [
   // ==========================================
   // 1. GEAR (EQUIPAMENTOS DE AVENTURA & FERRAMENTAS)
   // ==========================================
@@ -595,7 +595,9 @@ export const PF2E_ITEMS_CATALOG: ItemDefinition[] = [
     rarity: "common"
   },
   ...GUNS_GEARS_EQUIPMENT
-].map(item => ({
+];
+
+export const PF2E_ITEMS_CATALOG: ItemDefinition[] = RAW_ITEMS.map(item => ({
   ...item,
   needs_review: item.needs_review ?? false,
 }));

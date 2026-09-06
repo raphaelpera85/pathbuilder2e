@@ -14,7 +14,7 @@ export interface ActionDefinition {
   needs_review?: boolean;
 }
 
-export const PF2E_ACTIONS_CATALOG: ActionDefinition[] = [
+const RAW_ACTIONS: ActionDefinition[] = [
   // AÇÕES BÁSICAS DE COMBATE
   {
     id: "action.strike",
@@ -53,46 +53,91 @@ export const PF2E_ACTIONS_CATALOG: ActionDefinition[] = [
     category: "Básica",
     actions: 1,
     traits: ["Movimento"],
-    description: "Você se move cuidadosamente 5 pés sem provocar reações como Golpe Reativo / Ataque de Oportunidade.",
+    description: "Você se move cuidadosamente 5 pés. Este movimento não desencadeia reações (como Ataque de Oportunidade).",
     summaries: {
-      "pt-BR": "[1 Ação] Move-se 5 pés sem provocar reações de inimigos.",
+      "pt-BR": "[1 Ação] Move 5 pés sem desencadear reações.",
       en: "[1 Action] Move 5 feet without triggering reactions.",
-      es: "[1 Acción] Te mueves 5 pies sin provocar reacciones."
+      es: "[1 Acción] Mueve 5 pies sin provocar reacciones."
     },
     source: { book: "Livro do Jogador (Player Core)", page: 417 }
   },
   {
     id: "action.raise_shield",
     name: "Erguer Escudo (Raise a Shield)",
-    names: { "pt-BR": "Erguer Escudo", en: "Raise a Shield", es: "Alzar escudo" },
+    names: { "pt-BR": "Erguer Escudo", en: "Raise a Shield", es: "Alzar un escudo" },
     category: "Básica",
     actions: 1,
     traits: [],
-    description: "Você posiciona seu escudo defensivamente, ganhando seu bônus de circunstância na CA (+2 para a maioria dos escudos) até o início do seu próximo turno.",
+    description: "Você posiciona seu escudo para se defender. Você ganha o bônus de circunstância na CA concedido pelo escudo até o início do seu próximo turno.",
     summaries: {
-      "pt-BR": "[1 Ação] Concede +2 de circunstância na CA e ativa a reação Bloqueio com Escudo.",
-      en: "[1 Action] Grants shield's circumstance bonus to AC (+2) and enables Shield Block.",
-      es: "[1 Acción] Otorga +2 de circunstancia a la CA y habilita Bloqueo con escudo."
+      "pt-BR": "[1 Ação] Concede o bônus de CA do escudo até seu próximo turno.",
+      en: "[1 Action] Grants your shield's circumstance bonus to AC until next turn.",
+      es: "[1 Acción] Otorga el bonificador de circunstancia a CA del escudo."
     },
     source: { book: "Livro do Jogador (Player Core)", page: 417 }
   },
   {
     id: "action.take_cover",
     name: "Buscar Cobertura (Take Cover)",
-    names: { "pt-BR": "Buscar Cobertura", en: "Take Cover", es: "Ponerse a cubierto" },
+    names: { "pt-BR": "Buscar Cobertura", en: "Take Cover", es: "Buscar cobertura" },
     category: "Básica",
     actions: 1,
     traits: [],
-    description: "Você se agacha atrás de um obstáculo, aumentando Cobertura Menor para Cobertura Padrão (+2 CA/Reflexos) ou Padrão para Superior (+4 CA/Reflexos).",
+    description: "Você se abaixa atrás de um obstáculo. Se tiver cobertura menor, ganha cobertura padrão (+2 CA). Se tiver cobertura padrão, ganha cobertura maior (+4 CA).",
     summaries: {
-      "pt-BR": "[1 Ação] Melhora sua cobertura para +2 ou +4 na CA e Reflexos.",
-      en: "[1 Action] Improve cover to standard (+2) or greater (+4) bonus.",
-      es: "[1 Acción] Mejora tu cobertura a estándar (+2) o mayor (+4)."
+      "pt-BR": "[1 Ação] Aumenta o benefício da cobertura para +2 ou +4 na CA.",
+      en: "[1 Action] Improves cover benefit to standard (+2) or greater (+4).",
+      es: "[1 Acción] Mejora la cobertura a estándar (+2) o mayor (+4)."
     },
     source: { book: "Livro do Jogador (Player Core)", page: 417 }
   },
+  {
+    id: "action.escape",
+    name: "Escapar (Escape)",
+    names: { "pt-BR": "Escapar", en: "Escape", es: "Escapar" },
+    category: "Básica",
+    actions: 1,
+    traits: ["Ataque"],
+    description: "Você tenta se livrar de um agarrão, imobilização ou restrição. Teste de Desarmado, Atletismo ou Acrobacia vs CD do efeito que o prende.",
+    summaries: {
+      "pt-BR": "[1 Ação] Teste de Atletismo/Acrobacia/Desarmado para se libertar.",
+      en: "[1 Action] Unarmed, Athletics, or Acrobatics check to escape restraint.",
+      es: "[1 Acción] Prueba de Desarmado, Atletismo o Acrobacias para liberarte."
+    },
+    source: { book: "Livro do Jogador (Player Core)", page: 418 }
+  },
+  {
+    id: "action.aid",
+    name: "Prestar Auxílio (Aid)",
+    names: { "pt-BR": "Prestar Auxílio", en: "Aid", es: "Ayudar" },
+    category: "Básica",
+    actions: "reaction",
+    traits: [],
+    description: "Reação desencadeada quando um aliado tenta um teste. Requer que você tenha preparado o auxílio com 1 ação no seu turno anterior.",
+    summaries: {
+      "pt-BR": "[Reação] Prepara auxílio para conceder bônus de circunstância a um aliado.",
+      en: "[Reaction] Aid an ally's check to grant a circumstance bonus.",
+      es: "[Reacción] Ayuda a una prueba de un aliado para darle bonificador."
+    },
+    source: { book: "Livro do Jogador (Player Core)", page: 418 }
+  },
+  {
+    id: "action.delay",
+    name: "Atrasar (Delay)",
+    names: { "pt-BR": "Atrasar", en: "Delay", es: "Demorar" },
+    category: "Básica",
+    actions: "free",
+    traits: [],
+    description: "No início do seu turno, você decide atrasar sua iniciativa para um ponto posterior da rodada antes de qualquer criatura agir.",
+    summaries: {
+      "pt-BR": "[Ação Livre] Atrasa sua iniciativa para agir mais tarde na rodada.",
+      en: "[Free Action] Delay your initiative order to act later in the round.",
+      es: "[Acción Gratuita] Retrasa tu turno de iniciativa para actuar después."
+    },
+    source: { book: "Livro do Jogador (Player Core)", page: 418 }
+  },
 
-  // AÇÕES DE PERÍCIA DE COMBATE
+  // AÇÕES DE PERÍCIA RELEVANTES NO COMBATE
   {
     id: "action.demoralize",
     name: "Desmoralizar (Demoralize)",
@@ -100,12 +145,12 @@ export const PF2E_ACTIONS_CATALOG: ActionDefinition[] = [
     category: "Perícia",
     actions: 1,
     skill: "intimidation",
-    traits: ["Auditivo", "Concentração", "Emocional", "Linguístico", "Mental"],
-    description: "Teste de Intimidação vs CD de Vontade do alvo. Sucesso: o alvo fica Aterrorizado 1 (-1 em todas as rolagens e CDs). Sucesso Crítico: fica Aterrorizado 2.",
+    traits: ["Auditivo", "Emoção", "Mental"],
+    description: "Teste de Intimidação vs CD de Vontade do alvo a até 30 pés. Sucesso: alvo fica Amedrontado 1 (Amedrontado 2 em Sucesso Crítico). Alvo fica imune por 10 minutos.",
     summaries: {
-      "pt-BR": "[1 Ação] Intimidação vs Vontade para impor condição Aterrorizado (-1 ou -2).",
-      en: "[1 Action] Intimidation vs Will DC to inflict Frightened condition.",
-      es: "[1 Acción] Intimidación vs CD de Voluntad para infligir Asustado."
+      "pt-BR": "[1 Ação] Intimidação vs Vontade para aplicar Amedrontado 1 ou 2.",
+      en: "[1 Action] Intimidation vs Will DC to inflict Frightened 1 or 2.",
+      es: "[1 Acción] Intimidación vs CD de Voluntad para aplicar Asustado 1 o 2."
     },
     source: { book: "Livro do Jogador (Player Core)", page: 236 }
   },
@@ -117,10 +162,10 @@ export const PF2E_ACTIONS_CATALOG: ActionDefinition[] = [
     actions: 1,
     skill: "athletics",
     traits: ["Ataque"],
-    description: "Teste de Atletismo vs CD de Reflexos. Sucesso: a criatura cai Caída (Prone) no chão, ficando Desprevenida (-2 CA) e precisando gastar 1 ação para Levantar.",
+    description: "Teste de Atletismo vs CD de Reflexos. Sucesso: o alvo cai Prostrado (Prone). Sucesso Crítico: o alvo cai Prostrado e sofre 1d6 de dano de concussão.",
     summaries: {
-      "pt-BR": "[1 Ação] Atletismo vs Reflexos para derrubar o oponente no chão.",
-      en: "[1 Action] Athletics vs Reflex DC to knock target Prone.",
+      "pt-BR": "[1 Ação] Atletismo vs Reflexos para derrubar o adversário (Prostrado).",
+      en: "[1 Action] Athletics vs Reflex DC to knock the target Prone.",
       es: "[1 Acción] Atletismo vs CD de Reflejos para derribar al objetivo."
     },
     source: { book: "Livro do Jogador (Player Core)", page: 232 }
@@ -133,10 +178,10 @@ export const PF2E_ACTIONS_CATALOG: ActionDefinition[] = [
     actions: 1,
     skill: "athletics",
     traits: ["Ataque"],
-    description: "Teste de Atletismo vs CD de Fortitude. Sucesso: o alvo fica Agarrado (Grabbed) e Imóvel até o fim do seu próximo turno.",
+    description: "Teste de Atletismo vs CD de Fortitude. Sucesso: alvo fica Agarrado (Grabbed) até o final do seu próximo turno. Sucesso Crítico: alvo fica Contido (Restrained).",
     summaries: {
-      "pt-BR": "[1 Ação] Atletismo vs Fortitude para segurar e imobilizar o oponente.",
-      en: "[1 Action] Athletics vs Fortitude DC to grab and immobilize target.",
+      "pt-BR": "[1 Ação] Atletismo vs CD de Fortitude para agarrar e imobilizar.",
+      en: "[1 Action] Athletics vs Fortitude DC to Grab or Restrain target.",
       es: "[1 Acción] Atletismo vs CD de Fortaleza para agarrar e inmovilizar."
     },
     source: { book: "Livro do Jogador (Player Core)", page: 231 }
@@ -172,7 +217,9 @@ export const PF2E_ACTIONS_CATALOG: ActionDefinition[] = [
     },
     source: { book: "Livro do Jogador (Player Core)", page: 238 }
   }
-].map(action => ({
+];
+
+export const PF2E_ACTIONS_CATALOG: ActionDefinition[] = RAW_ACTIONS.map(action => ({
   ...action,
   ruleset: action.ruleset ?? "remaster",
   needs_review: action.needs_review ?? false,

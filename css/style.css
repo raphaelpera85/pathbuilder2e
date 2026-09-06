@@ -713,8 +713,12 @@ body {
   background: var(--pb-bg-panel);
   border-bottom: 2px solid var(--pb-orange-dark);
   display: flex;
+  flex-wrap: nowrap;
   padding: 0 16px;
   gap: 18px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 .pb-tab-btn {
@@ -727,8 +731,9 @@ body {
   cursor: pointer;
   position: relative;
   transition: color 0.15s;
-  flex-shrink: 0;
-  white-space: nowrap;
+  flex-shrink: 0 !important;
+  min-width: max-content !important;
+  white-space: nowrap !important;
 }
 
 .pb-tab-btn:hover {
@@ -2735,6 +2740,7 @@ body.theme-light *::-webkit-scrollbar-thumb:hover { background: var(--pb-orange)
   }
   .pb-tab-btn {
     min-height: 28px;
+    min-width: max-content !important;
     padding: 3px 8px;
     font-size: 11px;
     white-space: nowrap !important;
