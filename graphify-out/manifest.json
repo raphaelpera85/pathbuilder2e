@@ -78,9 +78,9 @@
     "semantic_hash": ""
   },
   "src/CampaignsPage.tsx": {
-    "mtime": 1788267073.3195992,
-    "seen": 1788731579.1135435,
-    "ast_hash": "2ca09f4a5729b35c9e9f18ad5bb15d77",
+    "mtime": 1788732157.847488,
+    "seen": 1788732479.0994675,
+    "ast_hash": "f718513bb6651f34546af9456b7cdcc3",
     "semantic_hash": ""
   },
   "src/ItemPickerModal.test.tsx": {
@@ -1184,13 +1184,13 @@
   ".planning/graphs/.last-build-snapshot.json": {
     "mtime": 1788464729.817343,
     "seen": 1788731579.1134615,
-    "ast_hash": "ef6f491da32feae134bc9124de1b4498",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   ".planning/graphs/graph.json": {
     "mtime": 1788464729.0434592,
     "seen": 1788731579.1134634,
-    "ast_hash": "37a1fed08f1fe23f931b8bd3d5872d76",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "audit_snapshots/playwright_multicharacter_audit.json": {
@@ -1208,31 +1208,31 @@
   "scripts/extracted_all_feats_master.json": {
     "mtime": 1788294828.5723233,
     "seen": 1788731579.1135223,
-    "ast_hash": "aedbe0f84121ca440a858833364009bd",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202608270001_accounts_and_characters.sql": {
     "mtime": 1787872547.9143429,
     "seen": 1788731579.1135905,
-    "ast_hash": "09a6ff5aff005f10a0232164c4c35dd1",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202608270002_character_limits.sql": {
     "mtime": 1788260933.2179694,
     "seen": 1788731579.1135912,
-    "ast_hash": "5cc6b53f0539ca88e270cdff61adab59",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202608300001_campaigns_and_gm_sharing.sql": {
     "mtime": 1788112602.974485,
     "seen": 1788731579.1135921,
-    "ast_hash": "f0229cd87b5d237fb5a4da2307c36612",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/schema_full.sql": {
     "mtime": 1788502759.6775527,
     "seen": 1788731579.1135948,
-    "ast_hash": "611d7059cdc97be54535242524fd6070",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "scripts/generate-catalog-seed.cjs": {
@@ -1310,7 +1310,7 @@
   "scripts/catalog_data/catalog_feats.json": {
     "mtime": 1788496541.7729967,
     "seen": 1788731579.1135044,
-    "ast_hash": "d55596849c66c0d51ecee7b145b30ed2",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "scripts/catalog_data/catalog_heritages.json": {
@@ -1352,7 +1352,7 @@
   "supabase/migrations/202609040001_catalog_tables.sql": {
     "mtime": 1788493864.528052,
     "seen": 1788731579.1135929,
-    "ast_hash": "e1efbbfe525c348eaf4b443d6754e7c6",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "scripts/catalog_data/catalog_armors.json": {
@@ -1382,43 +1382,43 @@
   "supabase/seed_catalog.sql": {
     "mtime": 1788496541.74921,
     "seen": 1788731579.1135957,
-    "ast_hash": "f9a721cfddebd12db28b010b8dac939c",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/seeds/01_ancestries_classes_items.sql": {
     "mtime": 1788496541.7886183,
     "seen": 1788731579.1135964,
-    "ast_hash": "9db1c53e0ad4143ac16a56c0cdda21f0",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/seeds/02_heritages_subclasses_backgrounds_archetypes.sql": {
     "mtime": 1788496541.7946246,
     "seen": 1788731579.1135974,
-    "ast_hash": "1d56b17003177dbb49e6c1ccaf466eeb",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/seeds/03_spells_rituals_actions_conditions_pets.sql": {
     "mtime": 1788496541.8016407,
     "seen": 1788731579.113598,
-    "ast_hash": "ba3ec55f0ce654de5cde7b24bf4ff041",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/seeds/04_weapons_armors_shields_formulas.sql": {
     "mtime": 1788496541.8056467,
     "seen": 1788731579.113599,
-    "ast_hash": "0f4fb19ddbe7c2fc9809dfebd436a172",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/seeds/05_feats_part1.sql": {
     "mtime": 1788496541.81876,
     "seen": 1788731579.1136,
-    "ast_hash": "71fd058c2e61199f84e76c0fdc218460",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/seeds/06_feats_part2.sql": {
     "mtime": 1788496541.8836982,
     "seen": 1788731579.1136007,
-    "ast_hash": "54b3e6f879933d9a44c21995dc7824dc",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/CHANGELOG.md": {
@@ -1676,7 +1676,7 @@
   "supabase/migrations/202609040002_site_visits_and_profile_email.sql": {
     "mtime": 1788500807.9926589,
     "seen": 1788731579.113594,
-    "ast_hash": "3fc20cc60001637244ece8d5c2c06fdb",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   ".agents/rules/pathbuilder-conventions.md": {

@@ -667,7 +667,8 @@ body.portal-page-active .dice-roller-drawer { display: none !important; }
   }
   .portal-page-active #react-portal-root > .portal-page > .portal-hero,
   .portal-page-active #react-portal-root > .portal-page > .auth-card-hero,
-  .portal-page-active #react-portal-root > .portal-page > .library-dash-header {
+  .portal-page-active #react-portal-root > .portal-page > .library-dash-header,
+  .portal-page-active #react-portal-root > .portal-page > .campaign-stats-banner {
     flex: 0 0 auto;
   }
   .portal-page-active #react-portal-root > .portal-page > .rules-layout,
@@ -677,6 +678,7 @@ body.portal-page-active .dice-roller-drawer { display: none !important; }
   .portal-page-active #react-portal-root > .portal-page > .portal-panel,
   .portal-page-active #react-portal-root > .portal-page > .privacy-card,
   .portal-page-active #react-portal-root > .portal-page > .downloads-section,
+  .portal-page-active #react-portal-root > .portal-page > .campaigns-layout,
   .portal-page-active #react-portal-root > .library-auth-page > .auth-main-container,
   .portal-page-active #react-portal-root > .library-dashboard-page > .library-characters-section {
     flex: 1 1 auto;
@@ -706,9 +708,12 @@ body.portal-page-active .dice-roller-drawer { display: none !important; }
   .portal-page { width: min(calc(100vw - 24px), 1280px); max-width: calc(100vw - 24px); padding-top: 28px; box-sizing: border-box; }
   .portal-page.access-page { width: calc(100vw - 24px); max-width: calc(100vw - 24px); }
   .portal-page-active #react-portal-root > .portal-page { padding-bottom: 40px; overflow: hidden; display: flex; flex-direction: column; }
+  .portal-page.campaigns-page { padding-top: 12px; }
+  .portal-page-active #react-portal-root > .portal-page.campaigns-page { padding-bottom: 12px; }
   .portal-page-active #react-portal-root > .portal-page > .portal-hero,
   .portal-page-active #react-portal-root > .portal-page > .auth-card-hero,
-  .portal-page-active #react-portal-root > .portal-page > .library-dash-header { flex: 0 0 auto; }
+  .portal-page-active #react-portal-root > .portal-page > .library-dash-header,
+  .portal-page-active #react-portal-root > .portal-page > .campaign-stats-banner { flex: 0 0 auto; }
   .portal-page-active #react-portal-root > .portal-page > .rules-layout,
   .portal-page-active #react-portal-root > .portal-page > .privacy-grid,
   .portal-page-active #react-portal-root > .portal-page > .metric-grid,
@@ -716,6 +721,7 @@ body.portal-page-active .dice-roller-drawer { display: none !important; }
   .portal-page-active #react-portal-root > .portal-page > .portal-panel,
   .portal-page-active #react-portal-root > .portal-page > .privacy-card,
   .portal-page-active #react-portal-root > .portal-page > .downloads-section,
+  .portal-page-active #react-portal-root > .portal-page > .campaigns-layout,
   .portal-page-active #react-portal-root > .library-auth-page > .auth-main-container,
   .portal-page-active #react-portal-root > .library-dashboard-page > .library-characters-section {
     flex: 1 1 auto;

@@ -332,7 +332,7 @@ export function CampaignsPage() {
   }
 
   return (
-    <main className="portal-page" id="portal-content" tabIndex={-1}>
+    <main className="portal-page campaigns-page" id="portal-content" tabIndex={-1}>
       <header className="portal-hero">
         <span>{t("gmPanelKicker")} · {session.user.username || session.user.email}</span>
         <h1>{t("campaignsTitle")}</h1>
@@ -349,8 +349,8 @@ export function CampaignsPage() {
           <span className="stat-num">{sharedCharacters.length}</span>
           <span className="stat-label">{t("connectedPlayerSheets")}</span>
         </div>
-        <div className="camp-stat-box">
-          <span className="stat-num">{session.user.email}</span>
+        <div className="camp-stat-box camp-stat-box-email">
+          <span className="stat-num" title={session.user.email}>{session.user.email}</span>
           <span className="stat-label">{t("gmEmailLabel")}</span>
         </div>
       </section>
