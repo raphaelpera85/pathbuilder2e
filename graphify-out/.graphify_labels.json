@@ -115,7 +115,7 @@
   "113": "Graph Report - pathbuilder2e_local  (2026-09-03)",
   "114": "scripts",
   "115": "audit-playwright-multicharacter.cjs",
-  "116": "useI18n",
+  "116": ".openSetAbilitiesModal",
   "117": "package.json",
   "118": "IPickerBridge",
   "119": "rules/graphify.md",
@@ -165,7 +165,7 @@
   "163": "security-rls-performance.md",
   "164": "_template.md",
   "165": "sources.ts",
-  "166": ".animateDiceRoll",
+  "166": "CatalogPage",
   "167": "rest-character.test.ts",
   "168": "PickerItem"
 }
