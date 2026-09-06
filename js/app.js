@@ -795,6 +795,7 @@ class PathbuilderApp {
       drawerExportJson: isEn ? "📤 Export JSON" : isEs ? "📤 Exportar JSON" : "📤 Exportar JSON",
       drawerImportJson: isEn ? "📥 Import JSON" : isEs ? "📥 Importar JSON" : "📥 Importar JSON",
       drawerExportMarkdown: isEn ? "📜 Export Markdown" : isEs ? "📜 Exportar Markdown" : "📜 Exportar Markdown",
+      drawerExportFoundry: isEn ? "🎲 Export to Foundry VTT (.json)" : isEs ? "🎲 Exportar a Foundry VTT (.json)" : "🎲 Exportar para Foundry VTT (.json)",
       drawerCompendium: isEn ? "📚 Character Creation Compendium" : isEs ? "📚 Compendio de creación" : "📚 Compêndio de criação",
       drawerRules: isEn ? "📖 Rules & Sources Guide" : isEs ? "📖 Guía de reglas y fuentes" : "📖 Guia de regras e fontes",
       drawerProfile: isEn ? "🛡️ Library & Profile" : isEs ? "🛡️ Biblioteca y perfil" : "🛡️ Biblioteca e perfil"

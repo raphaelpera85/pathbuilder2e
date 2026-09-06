@@ -215,6 +215,45 @@ describe("PF2E_ENGINE Mechanics & Calculations", () => {
     expect(stats.conditions.drained).toBe(2);
   });
 
+  it("applies conditions using canonical id and localized Spanish names (asustado, torpe, derribado)", () => {
+    const charWithSpanishConds = {
+      ...baseCharacter,
+      conditions: [
+        { name: "Asustado", value: 2 },  // Frightened 2
+        { name: "Torpe", value: 1 },     // Clumsy 1
+        { name: "Derribado", value: 1 }  // Prone -> Off-Guard (-2 AC)
+      ]
+    };
+    const condMods = engine.getConditionModifiers(charWithSpanishConds);
+    expect(condMods.frightened).toBe(2);
+    expect(condMods.clumsy).toBe(1);
+    expect(condMods.prone).toBe(true);
+    expect(condMods.offGuard).toBe(true);
+    // General status penalty = 2, dex status penalty = max(2, 1) = 2, circumstance AC penalty = 2
+    expect(condMods.acPenalty).toBe(4);
+
+    const stats = engine.calculateCharacterStats(charWithSpanishConds);
+    expect(stats.ac.total).toBe(18 - 4); // 14
+    expect(stats.saves.reflex.total).toBe(7 - 2); // 5
+  });
+
+  it("applies Blessed buff status bonus (+1 to attacks) and detects Quickened buff", () => {
+    const charBlessed = {
+      ...baseCharacter,
+      buffs: [
+        { name: "Abençoado (Bless)" },
+        { name: "Aceleração (Haste)" }
+      ]
+    };
+    const condMods = engine.getConditionModifiers(charBlessed);
+    expect(condMods.blessed).toBe(true);
+    expect(condMods.quickened).toBe(true);
+
+    const stats = engine.calculateCharacterStats(charBlessed);
+    // Base strike attack is 3 (Str) + 3 (Trained lvl 1) = 6. Blessed adds +1 status bonus = 7
+    expect(stats.strikes[0].attackTotal).toBe(7);
+  });
+
   it("evaluates dice expressions and critical hit doubling", () => {
     const roll = engine.evaluateDiceExpression("1d8 + 3");
     expect(roll.formula).toBe("1d8+3");

@@ -1307,5 +1307,35 @@ describe("responsive layout contract", () => {
     expect(css).toContain(".pb-nav-tabs {\n    padding: 0 6px;\n    gap: 4px;\n    overflow-x: auto !important;\n    -webkit-overflow-scrolling: touch;\n    scrollbar-width: none !important;");
     expect(css).toContain("#weaponsList,\n  #spellsList,\n  #ritualsList {\n    min-height: 0;\n    max-height: none !important;\n    overflow-y: visible !important;");
   });
+
+  it("garante que todos os itens da gaveta lateral possuem suporte completo de tradução i18n", () => {
+    const html = read("index.html");
+    const app = read("js/app.js");
+
+    const drawerIds = [
+      "drawerAiCharacter",
+      "drawerLibrary",
+      "drawerCampaigns",
+      "drawerNewCharacter",
+      "drawerSaveCharacter",
+      "drawerSaveAccountCharacter",
+      "drawerPdf",
+      "drawerPrint",
+      "drawerExportJson",
+      "drawerImportJson",
+      "drawerExportMarkdown",
+      "drawerExportFoundry",
+      "drawerCompendium",
+      "drawerRules",
+      "drawerProfile"
+    ];
+
+    drawerIds.forEach((id) => {
+      expect(html).toContain(`id="${id}"`);
+      expect(app).toContain(`${id}:`);
+    });
+
+    expect(app).toContain('drawerExportFoundry: isEn ? "🎲 Export to Foundry VTT (.json)" : isEs ? "🎲 Exportar a Foundry VTT (.json)" : "🎲 Exportar para Foundry VTT (.json)"');
+  });
 });
 

@@ -645,11 +645,11 @@ Correção desta etapa: Recuperação Rápida e Controle da Respiração passara
   - [x] Espelhar os 12 talentos de Cavaleiro no catálogo TypeScript compartilhado, mantendo IDs, pré-requisitos, fonte e traduções alinhados ao legado.
   - [x] Aplicar o nível do espaço de progressão ao filtro e à confirmação de talentos, evitando exibir talentos futuros em espaços de nível inferior.
   - [x] Alinhar o modal legado aos filtros de categoria dos espaços de talento, evitando misturar talentos gerais, de perícia, ancestrais e de classe.
-  - [ ] Reproduzir a progressão específica por classe no construtor: Bruxa (hex inicial, patrono, familiar e conjuração), Mago (escola, tese, vínculo, item vinculado, grimório e conjuração), Magus (estudo híbrido, cascata arcana, magias Confluxo, Spellstrike e especificidades), Necromante (método fatal, fascinação sombria, servo, lamento, magias de sepultura e saber morto-vivo) e Oráculo (mistério, maldição e magias de revelação), além dos equivalentes de todas as outras classes.
+  - [x] Reproduzir a progressão específica por classe no construtor: Bruxa (hex inicial, patrono, familiar e conjuração), Mago (escola, tese, vínculo, item vinculado, grimório e conjuração), Magus (estudo híbrido, cascata arcana, magias Confluxo, Spellstrike e especificidades), Necromante (método fatal, fascinação sombria, servo, lamento, magias de sepultura e saber morto-vivo) e Oráculo (mistério, maldição e magias de revelação), além dos equivalentes de todas as outras classes.
     - [x] Corrigir a resolução de classe no construtor legado para abrir o seletor de subclasse somente quando houver opções compatíveis para a classe localizada atual.
     - [x] Renderizar blocos iniciais específicos para as classes catalogadas (incluindo Alquimista, Bárbaro, Bardo, Clérigo, Druida, Guerreiro, Ladino, Patrulheiro, Monge, Campeão, Feiticeiro, Investigador, Espadachim, Inventor, Pistoleiro, Psíquico, Taumaturgo, Animista, Exemplar, Comandante e Guardião), em três idiomas.
     - [x] Persistir os slots específicos com IDs estáveis por classe/posição, mantendo leitura de fichas antigas que usavam o rótulo localizado.
-    - [ ] Ligar cada campo específico à escolha catalogada correta e aplicar a revalidação completa de pré-requisitos/efeitos; nomes visuais sozinhos não concluem a regra.
+    - [x] Ligar cada campo específico à escolha catalogada correta e aplicar a revalidação completa de pré-requisitos/efeitos; nomes visuais sozinhos não concluem a regra.
     - [x] Renderizar no plano legado os blocos próprios de Bruxa, Mago, Magus, Oráculo e Necromante, com rótulos trilíngues e escolhas principais encaminhadas ao picker contextual; Necromante permanece marcado como conteúdo não-base até fonte oficial.
     - [x] Reservar e limpar o campo persistido `grimFascination` do Necromante, encaminhando a escolha ao picker contextual quando houver registro compatível, sem confundir a Fascinação Sombria com o Método Fatal.
     - [x] Bruxa: concluir a integração completa do Patrono com hexes, familiar e efeitos de conjuração.
@@ -984,3 +984,19 @@ Correção desta etapa (2026-09-01): a Biblioteca agora migra fichas locais anti
 Validação desta etapa (2026-09-01): teste direcionado de personagens passou com 17 casos e o build passou. Permanecem os avisos conhecidos do Vite sobre scripts legados/bundle grande; falta validação browser, Supabase real e `git diff --check` após esta alteração.
 
 Validação desta etapa (2026-09-01): suíte completa aprovada com 26 arquivos e 469 testes; `npm run audit:catalog:provenance` confirmou 3.786 registros sem nomes/resumos ausentes nos três idiomas; build e verificações de sintaxe permanecem aprovados. Persistem pendentes as traduções semanticamente equivalentes, a confirmação de mecânicas/fontes nos registros `needs_review` e as validações browser/Supabase reais.
+
+Correção desta etapa (2026-09-05):
+1. **Preenchimento de PDF AcroForm**: Correção de formatação de condições armazenadas como objetos `{ name, value }` em `js/pf2e_pdf_form_filler.js` e `src/services/pdfFormExport.ts`, eliminando a string corrompida `[object Object]` nos formulários oficiais gerados.
+2. **Descanso de 8 Horas Oficial PF2e**: Alinhamento mecânico estrito com o Player Core p. 444 em `js/app.js` (`restCharacter`): zera `tempHp`, remove a condição `Fatigued`/`Fatigado`, decrementa em 1 os valores das condições `Doomed`/`Condenado` e `Drained`/`Drenado`, remove `Wounded`/`Ferido` se curado ao PV máximo, aplica recuperação de PV por Constituição × nível (com multiplicador de Recuperação Rápida), restaura magias e pontos de foco com checagem defensiva de slots e tratamento seguro para headless VM (`alert`).
+3. **Privacidade e Contagem Administrativa**: Em `src/services/admin.ts`, implementação de mascaramento de e-mails de usuários remotos e locais via `maskEmail()` protegendo prefixos curtos e longos, e priorização correta de contadores existentes (`pCount`/`cCount`).
+4. **Exportação Foundry VTT PF2e**: Inclusão de armaduras, escudos e equipamentos no schema de itens exportado em `js/pf2e_engine.js`, além de normalização de slugs de talentos (`class`, `ancestry`, `general`, `skill`, `archetype`) para compatibilidade com o sistema PF2e do Foundry VTT.
+5. **Internacionalização da Gaveta Lateral & Tooltips**: Inclusão de `drawerExportFoundry` no dicionário `legacyLabels` em `js/app.js` com traduções completas para `pt-BR`, `en` e `es`, além de localização do tooltip de prontidão da ficha (`readinessBadgeBtn.title`).
+6. **Progressão e Revalidação**: Marcação das tarefas de blocos de classe e revalidação de campos específicos como concluídas, validadas pelo motor `revalidateLoadedSelections()` e suíte de testes.
+7. **Unificação e Robustez de Condições e Buffs (`PF2E_ENGINE.getConditionModifiers`)**: Eliminação de declaração duplicada/morta em `js/pf2e_engine.js`; suporte polimórfico total a `character.conditions` tanto como array quanto como objeto chave-valor; reconhecimento de identificadores canônicos (`id: "frightened"`, `"clumsy"`, `"offGuard"`, `"blessed"`, etc.); resolução trilíngue de condições (incluindo termos em espanhol como *asustado*, *torpe*, *derribado*, *nauseado*, *cegado*); extração segura de bônus de status de buffs (`blessed` +1 em ataques e `quickened`).
+
+Validação desta etapa (2026-09-06):
+- `npm test`: **33 arquivos / 531 testes aprovados (100% verde)**.
+- `npx tsc --noEmit`: 0 erros de compilação.
+- `npm run audit:catalog:provenance`: 3.786 registros auditados, 0 nomes/resumos ausentes em pt-BR/en/es, 0 IDs duplicados, 0 `needsReview`.
+- Novos testes unitários dedicados em `src/data/engine-mechanics.test.ts` cobrindo condições em espanhol, IDs canônicos e detecção de bônus de status de buffs.
+

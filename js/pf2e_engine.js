@@ -260,47 +260,82 @@ const PF2E_ENGINE = {
   },
 
   // Analisa condições e benefícios ativos para calcular modificadores mecânicos de regras
-  getConditionModifiers(character) {
-    const conditions = Array.isArray(character?.conditions) ? character.conditions : [];
-    const buffs = Array.isArray(character?.buffs) ? character.buffs : [];
+  getConditionModifiers(characterOrConditions) {
+    const rawConditions = characterOrConditions?.conditions !== undefined
+      ? characterOrConditions.conditions
+      : characterOrConditions;
 
-    const getVal = (nameRegex) => {
-      const match = conditions.find(c => nameRegex.test(c.name || ""));
-      return match ? Math.max(1, Number(match.value) || 1) : 0;
-    };
+    const conds = {};
+    const conditionsList = [];
 
-    const hasCondition = (nameRegex) => conditions.some(c => nameRegex.test(c.name || ""));
-    const hasBuff = (nameRegex) => buffs.some(b => nameRegex.test(b.name || ""));
+    if (Array.isArray(rawConditions)) {
+      conditionsList.push(...rawConditions);
+    } else if (rawConditions && typeof rawConditions === "object") {
+      for (const [key, val] of Object.entries(rawConditions)) {
+        if (typeof val === "object" && val !== null) {
+          conditionsList.push({ id: key, ...val });
+        } else {
+          conditionsList.push({ id: key, name: key, value: val });
+        }
+      }
+    }
 
-    const offGuard = hasCondition(/desprevenido|off-guard|flat-footed/i);
-    const frightened = getVal(/amedrontado|frightened/i);
-    const sickened = getVal(/enjoado|nauseado|sickened/i);
-    const clumsy = getVal(/debilitado|desajeitado|clumsy/i);
-    const enfeebled = getVal(/enfraquecido|enfeebled/i);
-    const drained = getVal(/drenado|drained/i);
-    const stupefied = getVal(/estupefato|estupefacto|stupefied/i);
-    const blessed = hasBuff(/abençoado|bless/i);
-    const quickened = hasBuff(/acelera[çc][ãa]o|quickened|haste/i);
+    const buffs = Array.isArray(characterOrConditions?.buffs) ? characterOrConditions.buffs : [];
+    const normStr = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
-    // Stacking de Penalidades de Estado (Status Penalties não acumulam entre si: prevalece a maior)
+    conditionsList.forEach(c => {
+      if (!c) return;
+      const id = normStr(c.id);
+      const name = normStr(c.name);
+      const val = Number(c.value !== undefined ? c.value : 1);
+
+      if (id === "frightened" || /amedrontado|frightened|asustado|amedrentado/.test(name)) conds.frightened = Math.max(conds.frightened || 0, val);
+      else if (id === "sickened" || /enjoado|sickened|nauseado|enfermo/.test(name)) conds.sickened = Math.max(conds.sickened || 0, val);
+      else if (id === "clumsy" || /desajeitado|clumsy|torpe/.test(name)) conds.clumsy = Math.max(conds.clumsy || 0, val);
+      else if (id === "enfeebled" || /debilitado|enfeebled|enfraquecido/.test(name)) conds.enfeebled = Math.max(conds.enfeebled || 0, val);
+      else if (id === "drained" || /drenado|drained/.test(name)) conds.drained = Math.max(conds.drained || 0, val);
+      else if (id === "stupefied" || /estupefato|stupefied|estupefacto/.test(name)) conds.stupefied = Math.max(conds.stupefied || 0, val);
+      else if (id === "offguard" || id === "off-guard" || /desprevenido|off-guard|offguard|flat-footed/.test(name)) conds.offGuard = true;
+      else if (id === "prone" || /caido|prone|derribado/.test(name)) conds.prone = true;
+      else if (id === "blinded" || /cego|blinded|cegado/.test(name)) conds.blinded = true;
+      else if (id === "deafened" || /surdo|deafened|ensordecido/.test(name)) conds.deafened = true;
+      else if (id === "immobilized" || /imobilizado|immobilized|inmovilizado/.test(name)) conds.immobilized = true;
+      else if (id === "blessed" || /abencoado|bless|bendecido|heroismo|heroism/.test(name)) conds.blessed = true;
+    });
+
+    const hasBuff = (regex) => buffs.some(b => regex.test(normStr(b.id || b.name || "")));
+    const blessed = Boolean(conds.blessed || hasBuff(/abencoado|bless|bendecido|heroismo|heroism/));
+    const quickened = Boolean(conds.quickened || hasBuff(/acelera|quickened|haste/));
+
+    const frightened = Number(conds.frightened || 0);
+    const sickened = Number(conds.sickened || 0);
+    const clumsy = Number(conds.clumsy || 0);
+    const enfeebled = Number(conds.enfeebled || 0);
+    const drained = Number(conds.drained || 0);
+    const stupefied = Number(conds.stupefied || 0);
+    const offGuard = Boolean(conds.offGuard || conds.prone || conds.blinded);
+
     const generalStatusPenalty = Math.max(frightened, sickened);
-    const strStatusPenalty = Math.max(generalStatusPenalty, enfeebled);
+    const statusPenalty = Math.max(generalStatusPenalty, clumsy, enfeebled, drained, stupefied);
     const dexStatusPenalty = Math.max(generalStatusPenalty, clumsy);
+    const strStatusPenalty = Math.max(generalStatusPenalty, enfeebled);
     const conStatusPenalty = Math.max(generalStatusPenalty, drained);
     const mentalStatusPenalty = Math.max(generalStatusPenalty, stupefied);
-
-    // Penalidade circunstancial na CA
     const circumstanceAcPenalty = offGuard ? 2 : 0;
-    const acPenalty = circumstanceAcPenalty + dexStatusPenalty;
+    const acPenalty = dexStatusPenalty + circumstanceAcPenalty;
 
     return {
-      offGuard,
       frightened,
       sickened,
       clumsy,
       enfeebled,
       drained,
       stupefied,
+      offGuard,
+      prone: Boolean(conds.prone),
+      blinded: Boolean(conds.blinded),
+      deafened: Boolean(conds.deafened),
+      immobilized: Boolean(conds.immobilized),
       blessed,
       quickened,
       generalStatusPenalty,
@@ -1651,64 +1686,6 @@ const PF2E_ENGINE = {
     };
   },
 
-  // Retorna os modificadores e penalidades ativas de condições vivas
-  getConditionModifiers(characterOrConditions) {
-    let raw = characterOrConditions?.conditions ? characterOrConditions.conditions : (characterOrConditions || {});
-    const conds = {};
-    if (Array.isArray(raw)) {
-      raw.forEach(c => {
-        if (!c) return;
-        const name = (c.name || "").toLowerCase();
-        const val = Number(c.value !== undefined ? c.value : 1);
-        if (name.includes("amedrontado") || name.includes("frightened")) conds.frightened = val;
-        else if (name.includes("enjoado") || name.includes("sickened")) conds.sickened = val;
-        else if (name.includes("desajeitado") || name.includes("clumsy")) conds.clumsy = val;
-        else if (name.includes("debilitado") || name.includes("enfeebled")) conds.enfeebled = val;
-        else if (name.includes("drenado") || name.includes("drained")) conds.drained = val;
-        else if (name.includes("estupefato") || name.includes("stupefied")) conds.stupefied = val;
-        else if (name.includes("desprevenido") || name.includes("off-guard") || name.includes("offguard")) conds.offGuard = true;
-        else if (name.includes("caído") || name.includes("prone")) conds.prone = true;
-        else if (name.includes("cego") || name.includes("blinded")) conds.blinded = true;
-      });
-    } else if (typeof raw === "object") {
-      Object.assign(conds, raw);
-    }
-
-    const frightened = Number(conds.frightened || 0);
-    const sickened = Number(conds.sickened || 0);
-    const clumsy = Number(conds.clumsy || 0);
-    const enfeebled = Number(conds.enfeebled || 0);
-    const drained = Number(conds.drained || 0);
-    const stupefied = Number(conds.stupefied || 0);
-    const offGuard = Boolean(conds.offGuard || conds.prone || conds.blinded);
-
-    const generalStatusPenalty = Math.max(frightened, sickened);
-    const statusPenalty = Math.max(generalStatusPenalty, clumsy, enfeebled, drained, stupefied);
-    const dexStatusPenalty = Math.max(generalStatusPenalty, clumsy);
-    const strStatusPenalty = Math.max(generalStatusPenalty, enfeebled);
-    const conStatusPenalty = Math.max(generalStatusPenalty, drained);
-    const mentalStatusPenalty = Math.max(generalStatusPenalty, stupefied);
-    const circumstanceAcPenalty = offGuard ? 2 : 0;
-    const acPenalty = dexStatusPenalty + circumstanceAcPenalty;
-
-    return {
-      frightened,
-      sickened,
-      clumsy,
-      enfeebled,
-      drained,
-      stupefied,
-      offGuard,
-      statusPenalty: generalStatusPenalty,
-      generalStatusPenalty,
-      dexStatusPenalty,
-      strStatusPenalty,
-      conStatusPenalty,
-      mentalStatusPenalty,
-      circumstanceAcPenalty,
-      acPenalty
-    };
-  },
   // Extrai e agrega bônus de equipamentos, itens vestidos e investidos no inventário
   getEquipmentBonuses(character) {
     const bonuses = {

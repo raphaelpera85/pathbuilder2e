@@ -1,7 +1,7 @@
 {
   "0": "pf2e_data.js",
   "1": "PathbuilderApp",
-  "2": "PortalPages.tsx",
+  "2": "characters.ts",
   "3": ".renderAll",
   "4": "js/pdf-lib.min.js",
   "5": "public/js/pdf-lib.min.js",
@@ -164,9 +164,7 @@
   "162": "security-rls-basics.md",
   "163": "security-rls-performance.md",
   "164": "_template.md",
-  "165": "sources.ts",
-  "166": "PortalPages.test.tsx",
-  "167": "rest-character.test.ts",
-  "168": "IPickerBridge",
-  "169": "PickerItem"
+  "165": "PortalPages.test.tsx",
+  "166": "PortalPages.tsx",
+  "167": "rest-character.test.ts"
 }
