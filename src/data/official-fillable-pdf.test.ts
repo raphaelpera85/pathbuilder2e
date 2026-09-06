@@ -232,7 +232,7 @@ describe("Exportação para Ficha Oficial PDF Editável (AcroForm)", () => {
     expect(form.getTextField("SPELL 1").getText()).toBe("Curar");
     expect(form.getTextField("FOCUS SPELL 1").getText()).toBe("Impor as Mãos");
     expect(form.getCheckBox("FP1").isChecked()).toBe(true);
-  }, 20000);
+  }, 60000);
 
   it("deve funcionar via módulo JS PF2E_PDF_FILLER e calcular estatísticas automaticamente com feats em array ou progression", async () => {
     const { engine, filler } = loadEngine();

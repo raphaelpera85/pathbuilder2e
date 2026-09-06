@@ -165,6 +165,10 @@ describe("PortalPages", () => {
     // Test search filter
     fireEvent.change(screen.getByRole("searchbox", { name: "Buscar livro por título ou idioma..." }), { target: { value: "Battlecry" } });
     expect(screen.getByRole("heading", { level: 3, name: "Grito de Batalha!" })).toBeInTheDocument();
+
+    // Confirms blank sheet featured card and print link are rendered
+    const printLinks = screen.getAllByRole("link", { name: /Imprimir/i });
+    expect(printLinks.some((link) => link.getAttribute("href") === "./ficha.pdf")).toBe(true);
   });
 
   it("não troca uma sessão persistida pelo evento inicial nulo do Supabase", () => {

@@ -4,6 +4,7 @@ import {
   additionalDownloadResources,
   type PathfinderSource,
   GOOGLE_DRIVE_FOLDER_URL,
+  BLANK_SHEET_DRIVE_URL,
 } from "./data/sources";
 import { useI18n, getItemDisplayName, type MessageKey } from "./i18n";
 import type { PickerItem, PickerType } from "./types";
@@ -250,40 +251,62 @@ function CatalogPage() {
     });
   }, [bookFilter, category, entries, locale, query, rarityFilter, rulesetFilter]);
 
+  const [showMobileFilters, setShowMobileFilters] = useState(false);
+  const activeFiltersCount = (category !== "all" ? 1 : 0) +
+    (rulesetFilter !== "all" ? 1 : 0) +
+    (rarityFilter !== "all" ? 1 : 0) +
+    (bookFilter !== "all" ? 1 : 0);
+
   return <main className="portal-page portal-catalog-page" id="portal-content" tabIndex={-1}>
     <header className="portal-hero">
       <span>{t("compendiumKicker")}</span>
       <h1>{t("compendiumTitle")}</h1>
       <p>{t("compendiumIntro")}</p>
     </header>
-    <section className="catalog-toolbar" aria-label={t("searchOptions")}>
-      <label className="catalog-search-label"><span>{t("catalogSearch")}</span><input value={query} onChange={(event) => setQuery(event.target.value)} type="search" placeholder={t("search")} /></label>
-      <label><span>{t("filterCategory")}</span><select value={category} onChange={(event) => setCategory(event.target.value as PickerType | "all")}><option value="all">{t("allCategories")}</option>{catalogCategories.map((item) => <option key={item.type} value={item.type}>{t(item.label)}</option>)}</select></label>
-      <label><span>{t("filterRuleset")}</span><select value={rulesetFilter} onChange={(event) => setRulesetFilter(event.target.value)}><option value="all">{t("allRulesets")}</option><option value="remaster">{t("rulesetRemaster")}</option><option value="legacy">{t("rulesetLegacy")}</option><option value="needs_review">{t("rulesetReview")}</option></select></label>
-      <label><span>{t("filterRarity")}</span><select value={rarityFilter} onChange={(event) => setRarityFilter(event.target.value)}><option value="all">{t("allRarities")}</option><option value="common">{t("rarityCommon")}</option><option value="uncommon">{t("rarityUncommon")}</option><option value="rare">{t("rarityRare")}</option></select></label>
-      {availableBooks.length > 0 && <label><span>{t("filterBook")}</span><select value={bookFilter} onChange={(event) => setBookFilter(event.target.value)}><option value="all">{t("allBooks")}</option>{availableBooks.map((b) => <option key={b} value={b}>{localizeSourceBook(b, locale)}</option>)}</select></label>}
-      <div className="catalog-source-badge" title={syncStatus.isConfigured ? "Conectado ao Supabase com 18 tabelas relacionais" : "Modo offline local"}>
-        <span className="source-indicator-dot" style={{ backgroundColor: syncStatus.source === "supabase" ? "#10b981" : syncStatus.source === "local_cache" ? "#3b82f6" : "#f59e0b" }} />
-        <span className="source-indicator-text">
-          {syncStatus.source === "supabase"
-            ? (locale === "en" ? "☁️ Supabase Cloud" : locale === "es" ? "☁️ Nube Supabase" : "☁️ Supabase Conectado")
-            : syncStatus.source === "local_cache"
-              ? (locale === "en" ? "⚡ Local Cache" : locale === "es" ? "⚡ Caché Local" : "⚡ Cache Offline")
-              : (locale === "en" ? "💾 Local Catalog" : locale === "es" ? "💾 Catálogo Local" : "💾 Catálogo Integrado")}
-        </span>
-        {syncStatus.isConfigured && (
-          <button
-            type="button"
-            className="catalog-sync-btn"
-            onClick={handleManualSync}
-            disabled={isSyncing}
-            title={locale === "en" ? "Sync with Supabase" : locale === "es" ? "Sincronizar con Supabase" : "Sincronizar com Supabase"}
-          >
-            {isSyncing ? "⏳" : "🔄"}
-          </button>
-        )}
+    <section className={`catalog-toolbar ${showMobileFilters ? "filters-expanded" : "filters-collapsed"}`} aria-label={t("searchOptions")}>
+      <div className="catalog-toolbar-top-row">
+        <label className="catalog-search-label"><span>{t("catalogSearch")}</span><input value={query} onChange={(event) => setQuery(event.target.value)} type="search" placeholder={t("search")} /></label>
+        <button
+          type="button"
+          className={`catalog-mobile-filter-btn ${activeFiltersCount > 0 ? "has-active" : ""}`}
+          onClick={() => setShowMobileFilters((prev) => !prev)}
+          aria-expanded={showMobileFilters}
+        >
+          {showMobileFilters ? "✕ " : "⚙️ "}
+          {showMobileFilters ? t("hideFilters") : t("toggleFilters")}
+          {activeFiltersCount > 0 ? ` (${activeFiltersCount})` : ""}
+        </button>
       </div>
-      <strong className="catalog-count" aria-live="polite">{filtered.length} {t("results")}</strong>
+      <div className="catalog-filters-collapsible">
+        <label><span>{t("filterCategory")}</span><select value={category} onChange={(event) => setCategory(event.target.value as PickerType | "all")}><option value="all">{t("allCategories")}</option>{catalogCategories.map((item) => <option key={item.type} value={item.type}>{t(item.label)}</option>)}</select></label>
+        <label><span>{t("filterRuleset")}</span><select value={rulesetFilter} onChange={(event) => setRulesetFilter(event.target.value)}><option value="all">{t("allRulesets")}</option><option value="remaster">{t("rulesetRemaster")}</option><option value="legacy">{t("rulesetLegacy")}</option><option value="needs_review">{t("rulesetReview")}</option></select></label>
+        <label><span>{t("filterRarity")}</span><select value={rarityFilter} onChange={(event) => setRarityFilter(event.target.value)}><option value="all">{t("allRarities")}</option><option value="common">{t("rarityCommon")}</option><option value="uncommon">{t("rarityUncommon")}</option><option value="rare">{t("rarityRare")}</option></select></label>
+        {availableBooks.length > 0 && <label><span>{t("filterBook")}</span><select value={bookFilter} onChange={(event) => setBookFilter(event.target.value)}><option value="all">{t("allBooks")}</option>{availableBooks.map((b) => <option key={b} value={b}>{localizeSourceBook(b, locale)}</option>)}</select></label>}
+      </div>
+      <div className="catalog-toolbar-bottom-row">
+        <div className="catalog-source-badge" title={syncStatus.isConfigured ? "Conectado ao Supabase com 18 tabelas relacionais" : "Modo offline local"}>
+          <span className="source-indicator-dot" style={{ backgroundColor: syncStatus.source === "supabase" ? "#10b981" : syncStatus.source === "local_cache" ? "#3b82f6" : "#f59e0b" }} />
+          <span className="source-indicator-text">
+            {syncStatus.source === "supabase"
+              ? (locale === "en" ? "☁️ Supabase Cloud" : locale === "es" ? "☁️ Nube Supabase" : "☁️ Supabase Conectado")
+              : syncStatus.source === "local_cache"
+                ? (locale === "en" ? "⚡ Local Cache" : locale === "es" ? "⚡ Caché Local" : "⚡ Cache Offline")
+                : (locale === "en" ? "💾 Local Catalog" : locale === "es" ? "💾 Catálogo Local" : "💾 Catálogo Integrado")}
+          </span>
+          {syncStatus.isConfigured && (
+            <button
+              type="button"
+              className="catalog-sync-btn"
+              onClick={handleManualSync}
+              disabled={isSyncing}
+              title={locale === "en" ? "Sync with Supabase" : locale === "es" ? "Sincronizar con Supabase" : "Sincronizar com Supabase"}
+            >
+              {isSyncing ? "⏳" : "🔄"}
+            </button>
+          )}
+        </div>
+        <strong className="catalog-count" aria-live="polite">{filtered.length} {t("results")}</strong>
+      </div>
     </section>
     {filtered.length === 0 ? <div className="portal-empty">{t("noCatalogResults")}</div> : <section className="catalog-grid" aria-label={t("compendiumTitle")}>
       {filtered.map((entry, index) => <CatalogCard key={`${entry.category}-${entry.name}-${index}`} entry={entry} onInspect={() => setInspectedEntry(entry)} />)}
@@ -440,7 +463,7 @@ function BookDownloadsSection() {
   const rulesetLabel = (ruleset: "remaster" | "legacy" | "needs_review") =>
     ruleset === "remaster" ? t("rulesetRemaster") : ruleset === "legacy" ? t("rulesetLegacy") : t("rulesetReview");
 
-  const allDownloadItems = useMemo(() => [...pathfinderSources, ...additionalDownloadResources], []);
+  const allDownloadItems = useMemo(() => [...additionalDownloadResources, ...pathfinderSources], []);
 
   const filteredSources = useMemo(() => {
     return allDownloadItems.filter((source) => {
@@ -461,6 +484,52 @@ function BookDownloadsSection() {
           <h2>{t("downloadsTitle")}</h2>
           <p>{t("downloadsIntro")}</p>
           <small className="downloads-note">ℹ️ {t("downloadDirectNote")}</small>
+        </div>
+      </div>
+
+      {/* CARD DE DESTAQUE: FICHA EM BRANCO PARA IMPRESSÃO */}
+      <div className="blank-sheet-featured-card" role="region" aria-label={t("downloadBlankSheet")}>
+        <div className="blank-sheet-featured-info">
+          <div className="blank-sheet-featured-badge-row">
+            <span className="blank-sheet-featured-kicker">
+              🖨️ {locale === "en" ? "Printable Template" : locale === "es" ? "Plantilla para Imprimir" : "Ficha Oficial para Impressão"}
+            </span>
+            <span className="ruleset-badge remaster">{t("rulesetRemaster")}</span>
+          </div>
+          <h3>📄 {t("downloadBlankSheet")}</h3>
+          <p>
+            {locale === "en"
+              ? "Official 4-page character sheet template in PDF format. Ready to print directly in high resolution or fill out manually for in-person tabletop sessions."
+              : locale === "es"
+                ? "Plantilla de ficha de personaje oficial de 4 páginas en PDF. Lista para imprimir en alta resolución o rellenar a mano para partidas presenciales."
+                : "Modelo oficial de ficha de personagem de 4 páginas em PDF. Pronta para imprimir em alta resolução ou preencher à mão para mesas de RPG presenciais."}
+          </p>
+          <div className="blank-sheet-meta">
+            <span className="book-meta-item">📄 4 {t("pages")}</span>
+            <span className="book-meta-item">🌐 {locale === "en" ? "Portuguese (Brazil)" : locale === "es" ? "Portugués (Brasil)" : "Português (Brasil)"}</span>
+            <span className="book-meta-item">📦 ficha.pdf</span>
+          </div>
+        </div>
+        <div className="blank-sheet-featured-actions">
+          <a
+            href="./ficha.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-print-direct"
+            title={locale === "en" ? "Open PDF directly for printing" : locale === "es" ? "Abrir PDF directamente para imprimir" : "Abrir PDF diretamente para imprimir"}
+          >
+            🖨️ {locale === "en" ? "Print / Open PDF" : locale === "es" ? "Imprimir / Abrir PDF" : "Imprimir / Abrir PDF"}
+          </a>
+          <a
+            href={BLANK_SHEET_DRIVE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-download-primary"
+            aria-label={locale === "en" ? "Download Blank Sheet from Google Drive" : locale === "es" ? "Descargar Ficha en Blanco de Google Drive" : "Baixar Ficha em Branco no Google Drive"}
+            title={locale === "en" ? "Download Blank Sheet from Google Drive" : locale === "es" ? "Descargar Ficha en Blanco de Google Drive" : "Baixar Ficha em Branco no Google Drive"}
+          >
+            <span aria-hidden="true">📥</span> {t("downloadPdfDirect")}
+          </a>
         </div>
       </div>
 
@@ -531,6 +600,17 @@ function BookDownloadsSection() {
             )}
 
             <div className="book-card-actions">
+              {source.id === "official-blank-sheet" && (
+                <a
+                  href="./ficha.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-print-direct"
+                  title={locale === "en" ? "Print / Open PDF" : locale === "es" ? "Imprimir / Abrir PDF" : "Imprimir / Abrir PDF"}
+                >
+                  🖨️ {locale === "en" ? "Print PDF" : locale === "es" ? "Imprimir PDF" : "Imprimir PDF"}
+                </a>
+              )}
               <a
                 href={source.driveUrl || GOOGLE_DRIVE_FOLDER_URL}
                 target="_blank"

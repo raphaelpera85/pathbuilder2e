@@ -791,6 +791,7 @@ class PathbuilderApp {
       drawerSaveCharacter: isEn ? "💾 Save Character (Local)" : isEs ? "💾 Guardar personaje (local)" : "💾 Salvar Personagem (Local)",
       drawerSaveAccountCharacter: isEn ? "☁️ Save Character to Account" : isEs ? "☁️ Guardar personaje en la cuenta" : "☁️ Salvar Personagem na Conta",
       drawerPdf: isEn ? "📥 Download Editable PDF (Official Sheet)" : isEs ? "📥 Descargar PDF editable (hoja oficial)" : "📥 Baixar PDF Editável (Ficha Oficial)",
+      drawerBlankPdf: isEn ? "📄 Official Blank Sheet (Print/PDF)" : isEs ? "📄 Ficha oficial en blanco (imprimir/PDF)" : "📄 Ficha Oficial em Branco (Imprimir/PDF)",
       drawerPrint: isEn ? "📄 Print Custom Sheet" : isEs ? "📄 Imprimir hoja personalizada" : "📄 Imprimir ficha personalizada",
       drawerExportJson: isEn ? "📤 Export JSON" : isEs ? "📤 Exportar JSON" : "📤 Exportar JSON",
       drawerImportJson: isEn ? "📥 Import JSON" : isEs ? "📥 Importar JSON" : "📥 Importar JSON",
@@ -7643,6 +7644,12 @@ class PathbuilderApp {
   }
 
   // GERAÇÃO E IMPRESSÃO DA FICHA PERSONALIZADA
+  downloadBlankSheet() {
+    if (typeof window !== "undefined") {
+      window.open("ficha.pdf", "_blank");
+    }
+  }
+
   printOfficialPdf() {
     return this.printReferenceSheet();
   }

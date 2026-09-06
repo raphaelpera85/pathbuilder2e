@@ -1320,6 +1320,7 @@ describe("responsive layout contract", () => {
       "drawerSaveCharacter",
       "drawerSaveAccountCharacter",
       "drawerPdf",
+      "drawerBlankPdf",
       "drawerPrint",
       "drawerExportJson",
       "drawerImportJson",
