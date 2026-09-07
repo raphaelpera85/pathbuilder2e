@@ -16276,6 +16276,415 @@ if (typeof module !== 'undefined' && module.exports) {
       es: "Conjuro primigenio de rango 10: transforma hasta seis objetivos en mamuts Enormes durante 1 minuto, otorgando PG temporales, ataques de mamut y Arrollar."
     }
   });
+  confirmPlayerCore2Spell("salvaguarda_cintilante", {
+    traits: ["Manuseio"],
+    actions: 0,
+    trigger: "um efeito causaria dano físico ou de energia a você ou a uma criatura na distância",
+    range: "9 metros",
+    targets: "até 5 criaturas voluntárias que sofreriam o dano",
+    mechanics: {
+      resistance: "cada alvo recebe resistência 10 contra um tipo de dano físico ou de energia escolhido para o efeito acionador",
+      limitation: "a resistência vale apenas para o dano inicial, não para dano persistente ou outros efeitos contínuos",
+      heightened: { perRank: "resistência aumenta em 1" }
+    },
+    summaries: {
+      "pt-BR": "Magia de 6º ranque: como reação, envolve até cinco criaturas voluntárias em uma barreira que concede resistência 10 contra um tipo de dano do efeito acionador.",
+      en: "6th-rank spell: as a reaction, shields up to five willing creatures with resistance 10 against one physical or energy damage type from the triggering effect.",
+      es: "Conjuro de rango 6: como reacción, protege hasta cinco criaturas voluntarias con resistencia 10 contra un tipo de daño físico o de energía del efecto desencadenante."
+    }
+  });
+  confirmPlayerCore2Spell("schadenfreude", {
+    traits: ["Concentração", "Emoção", "Mental"],
+    actions: 0,
+    trigger: "você falha criticamente em um salvamento contra o efeito de um adversário",
+    range: "9 metros",
+    targets: "o adversário acionador",
+    defense: "Vontade",
+    mechanics: {
+      success: "sofre –1 de penalidade de estado em Percepção e Vontade por 1 rodada",
+      failure: "fica estupefato 1 por 1 rodada",
+      criticalFailure: "fica estupefato 2 por 1 rodada"
+    },
+    summaries: {
+      "pt-BR": "Magia de 1º ranque: quando você falha criticamente em um salvamento, distrai o adversário com a própria falha e pode deixá-lo estupefato.",
+      en: "1st-rank spell: when you critically fail a save, distracts the adversary with its own failure and can make it stupefied.",
+      es: "Conjuro de rango 1: cuando fallas críticamente una salvación, distrae al adversario con su propio fracaso y puede dejarlo atontado."
+    }
+  });
+  confirmPlayerCore2Spell("selar_destino", {
+    traits: ["Concentração", "Maldição", "Manuseio", "Morte"],
+    actions: 2,
+    range: "toque",
+    targets: "1 criatura viva",
+    defense: "Fortitude",
+    mechanics: {
+      damageChoice: "escolha ácido, contundente, cortante, eletricidade, eversivo, fogo, frio, perfurante ou sônico",
+      success: "fraqueza 2 ao tipo escolhido até o fim do próximo turno",
+      failure: "como sucesso por 1 minuto; se criatura de 7º nível ou menor for reduzida a 0 PV pelo tipo escolhido, morre",
+      criticalFailure: "como falha, com duração ilimitada"
+    },
+    summaries: {
+      "pt-BR": "Magia de 4º ranque: amaldiçoa uma criatura viva com fraqueza 2 a um tipo de dano; falhas prolongam o efeito e podem matar um alvo de 7º nível ou menor reduzido a 0 PV.",
+      en: "4th-rank spell: curses a living creature with weakness 2 to a chosen damage type; failures extend the effect and can kill a level 7 or lower target reduced to 0 HP by that damage.",
+      es: "Conjuro de rango 4: maldice a una criatura viva con debilidad 2 a un tipo de daño; los fallos prolongan el efecto y pueden matar a un objetivo de nivel 7 o menor reducido a 0 PG por ese daño."
+    }
+  });
+  confirmPlayerCore2Spell("sentir_espiritos", {
+    traits: ["Concentração", "Detecção", "Manuseio", "Mental"],
+    actions: 2,
+    area: "emanação de 9 metros",
+    duration: "10 minutos",
+    mechanics: {
+      detection: "permite detectar assombrações e espíritos na área mesmo sem Procurar",
+      bonus: "+1 de bônus de estado em Percepção para Buscar, Recordar Conhecimento e perícias para determinar a razão da existência ou desabilitar assombrações",
+      invisible: "permite Ver o Invisível enquanto ativa",
+      communication: "pode falar através do alvo e usar Comandar um Animal como parte de Sustentar",
+      targeting: "não exige linha de visão ou linha de efeito ao conjurar"
+    },
+    summaries: {
+      "pt-BR": "Magia divina ou ocultista de 2º ranque: detecta espíritos e assombrações em uma emanação de 9 metros, concede +1 em testes relacionados e permite comunicação através do alvo.",
+      en: "2nd-rank divine or occult spell: detects spirits and haunts in a 9-meter emanation, grants +1 to related checks, and allows communication through the target.",
+      es: "Conjuro divino u ocultista de rango 2: detecta espíritus y apariciones en una emanación de 9 metros, concede +1 a pruebas relacionadas y permite comunicarse a través del objetivo."
+    }
+  });
+  confirmPlayerCore2Spell("solo_consagrado", {
+    traits: ["Concentração", "Consagração", "Manuseio"],
+    actions: 3,
+    execution: "1 minuto",
+    cost: "óleos no valor de 3 po",
+    area: "explosão de 3 metros centrada em você",
+    duration: "até a próxima preparação diária",
+    mechanics: {
+      choice: "escolha aberrações, celestiais, dragões, ínferos, monitores ou mortos-vivos",
+      benefit: "+1 de bônus de estado em ataques, dano e salvamentos contra as criaturas escolhidas"
+    },
+    summaries: {
+      "pt-BR": "Magia divina de 3º ranque: consagra uma área de 3 metros e concede +1 em ataques, dano e salvamentos contra um tipo de criatura escolhido.",
+      en: "3rd-rank divine spell: consecrates a 3-meter area and grants +1 to attacks, damage, and saves against a chosen creature type.",
+      es: "Conjuro divino de rango 3: consagra un área de 3 metros y concede +1 a ataques, daño y salvaciones contra un tipo de criatura elegido."
+    }
+  });
+  confirmPlayerCore2Spell("sussurros_eversivos", {
+    traits: ["Auditivo", "Concentração", "Eversão", "Manuseio"],
+    actions: 2,
+    range: "18 metros",
+    area: "explosão de 3 metros",
+    defense: "Fortitude",
+    mechanics: {
+      success: "2d8 de dano persistente eversivo",
+      failure: "4d8 de dano persistente eversivo e drenado 1",
+      criticalFailure: "4d8 de dano persistente eversivo, drenado 2 e condenado 1",
+      heightened: { rank6: "dano persistente aumenta em 1d8 no sucesso ou 2d8 na falha/falha crítica" }
+    },
+    summaries: {
+      "pt-BR": "Magia divina ou ocultista de 4º ranque: sussurra palavras que causam dano persistente eversivo e podem deixar o alvo drenado e condenado conforme o salvamento de Fortitude.",
+      en: "4th-rank divine or occult spell: whispers words that deal persistent void damage and can make the target drained and doomed based on its Fortitude save.",
+      es: "Conjuro divino u ocultista de rango 4: susurra palabras que causan daño persistente de vacío y pueden dejar al objetivo drenado y condenado según su salvación de Fortaleza."
+    }
+  });
+  confirmPlayerCore2Spell("teia", {
+    traits: ["Concentração", "Manuseio"],
+    actions: 3,
+    range: "9 metros",
+    area: "explosão de 3 metros",
+    duration: "1 minuto",
+    mechanics: {
+      terrain: "quadrados tornam-se terreno difícil",
+      movement: "criatura que inicia movimento na teia ou entra nela faz Atletismo ou Reflexos contra CD de magia para evitar penalidade de Velocidade ou ficar imobilizada",
+      removal: "cada quadrado é removido por ataque/efeito com pelo menos 5 dano cortante ou 1 dano de fogo",
+      square: "quadrado tem CA 5 e falha automaticamente nos salvamentos"
+    },
+    summaries: {
+      "pt-BR": "Magia arcana ou primal de 2º ranque: cria teia por 1 minuto, tornando a área terreno difícil e podendo impor penalidade de Velocidade ou imobilizar criaturas.",
+      en: "2nd-rank arcane or primal spell: creates webbing for 1 minute, making the area difficult terrain and potentially penalizing Speed or immobilizing creatures.",
+      es: "Conjuro arcano o primigenio de rango 2: crea telarañas durante 1 minuto, convirtiendo el área en terreno difícil y pudiendo penalizar Velocidades o inmovilizar criaturas."
+    }
+  });
+  confirmPlayerCore2Spell("tempestade_de_gelo", {
+    traits: ["Concentração", "Frio", "Manuseio"],
+    actions: 3,
+    range: "36 metros",
+    area: "explosão de 6 metros",
+    defense: "Reflexos básico",
+    duration: "sustentada até 1 minuto",
+    mechanics: {
+      initialDamage: "2d8 contundente e 2d8 frio na conjuração",
+      ongoing: "neve e granizo tornam a área terreno difícil; criatura que termina o turno sofre 2 dano de frio",
+      outdoors: "ao ar livre, pode criar duas nuvens não sobrepostas; criatura Grande ou maior em ambas sofre cada dano apenas uma vez",
+      heightened: { rank6: "dano inicial contundente e frio aumenta em 1d8 cada e dano no fim do turno aumenta em 1" }
+    },
+    summaries: {
+      "pt-BR": "Magia arcana ou primal de 4º ranque: cria uma tempestade sustentada que causa dano contundente e de frio, torna a área terreno difícil e causa dano contínuo.",
+      en: "4th-rank arcane or primal spell: creates a sustained storm that deals bludgeoning and cold damage, makes the area difficult terrain, and deals ongoing damage.",
+      es: "Conjuro arcano o primigenio de rango 4: crea una tormenta sostenida que causa daño contundente y de frío, convierte el área en terreno difícil y causa daño continuo."
+    }
+  });
+  confirmPlayerCore2Spell("tempestade_de_relampagos", {
+    traits: ["Concentração", "Eletricidade", "Manuseio"],
+    actions: 3,
+    range: "36 metros",
+    area: "explosão de 6 metros",
+    defense: "Reflexos básico",
+    duration: "sustentada até 1 minuto",
+    mechanics: {
+      damage: "raio vertical causa 4d12 de dano de eletricidade em uma linha",
+      sustain: "na primeira Sustentação de cada rodada, pode convocar outro raio na área",
+      outdoors: "ao ar livre, pode criar duas nuvens não sobrepostas, mas ainda convoca apenas um raio por turno",
+      heightened: { rank7: "dano de cada raio aumenta em 1d12" }
+    },
+    summaries: {
+      "pt-BR": "Magia primal de 5º ranque: cria uma nuvem de tempestade e convoca um raio de 4d12, podendo repetir o raio ao Sustentar a magia.",
+      en: "5th-rank primal spell: creates a storm cloud and calls down a 4d12 lightning bolt, with another bolt available when you Sustain the Spell each round.",
+      es: "Conjuro primigenio de rango 5: crea una nube de tormenta y convoca un rayo de 4d12, con otro rayo disponible al mantener el conjuro cada ronda."
+    }
+  });
+  confirmPlayerCore2Spell("tragedia_fantasmagorica", {
+    traits: ["Incomum", "Concentração", "Espírito", "Manuseio"],
+    actions: 3,
+    execution: "1 minuto",
+    area: "emanação de 18 metros",
+    duration: "10 minutos",
+    mechanics: {
+      reenactment: "espíritos locais reencenam evento violento recente nomeado pelo conjurador, cobrindo os 9 minutos antes da morte ou ferimento e o minuto seguinte",
+      role: "conjurador assume o papel da vítima principal",
+      manifestations: "espíritos de criaturas ausentes e contornos de objetos necessários aparecem conforme a cena",
+      backlash: "ao fim, conjurador sofre 2d6 de dano eversivo por aparição fantasmagórica participante",
+      investigation: "testemunhas podem fazer testes para investigar o evento e descobrir pistas"
+    },
+    summaries: {
+      "pt-BR": "Magia incomum de 4º ranque: reencena um evento violento recente com espíritos locais, permitindo investigação, mas causando dano eversivo ao final.",
+      en: "Uncommon 4th-rank spell: reenacts a recent violent event with local spirits, allowing investigation but dealing void damage to the caster afterward.",
+      es: "Conjuro poco común de rango 4: recrea un evento violento reciente con espíritus locales, permite investigar y causa daño de vacío al lanzador al final."
+    }
+  });
+  confirmPlayerCore2Spell("transporte_mistico", {
+    traits: ["Concentração", "Força", "Manuseio"],
+    actions: 2,
+    duration: "8 horas",
+    mechanics: {
+      platform: "plataforma invisível ou fantasmagórica de 60 cm que segue a 1,5 metro",
+      capacity: "carrega até 5 Volumes de objetos que caibam nela",
+      sustain: "Sustentar move até 9 metros pelo chão, mantém parada ou retorna para seguir",
+      ending: "termina se alguém tentar subir, sobrecarregar, levantar, elevar muito ou se o conjurador ficar a mais de 18 metros",
+      droppedItems: "objetos caem no chão quando a magia termina"
+    },
+    summaries: {
+      "pt-BR": "Magia arcana ou ocultista de 1º ranque: cria uma plataforma de força que segue você por 8 horas e carrega até 5 Volumes.",
+      en: "1st-rank arcane or occult spell: creates a force platform that follows you for 8 hours and carries up to 5 Bulk.",
+      es: "Conjuro arcano u ocultista de rango 1: crea una plataforma de fuerza que te sigue durante 8 horas y transporta hasta 5 Volúmenes."
+    }
+  });
+  confirmPlayerCore2Spell("transposicao_coletiva", {
+    traits: ["Concentração", "Manuseio", "Teletransportação"],
+    actions: 2,
+    area: "emanação de 9 metros",
+    targets: "até 2 criaturas",
+    defense: "Vontade",
+    mechanics: {
+      destination: "novas posições devem estar desocupadas, totalmente na área e na linha de visão",
+      criticalSuccess: "alvo pode se teleportar e escolhe o destino",
+      success: "alvo não é afetado",
+      failure: "conjurador teleporta o alvo e escolhe o destino",
+      heightened: { perRank: "quantidade de alvos aumenta em 1" }
+    },
+    summaries: {
+      "pt-BR": "Magia arcana ou ocultista de 6º ranque: teleporta até duas criaturas para espaços desocupados na emanação, conforme o salvamento de Vontade.",
+      en: "6th-rank arcane or occult spell: teleports up to two creatures to unoccupied spaces in the emanation based on their Will saves.",
+      es: "Conjuro arcano u ocultista de rango 6: teletransporta hasta dos criaturas a espacios desocupados de la emanación según sus salvaciones de Voluntad."
+    }
+  });
+  confirmPlayerCore2Spell("vapores_nocivos", {
+    traits: ["Concentração", "Manuseio", "Veneno"],
+    actions: 2,
+    area: "emanação de 3 metros",
+    defense: "Fortitude básico",
+    duration: "1 rodada",
+    mechanics: {
+      damage: "1d6 de dano de veneno na conjuração para cada criatura na área, exceto o conjurador",
+      criticalFailure: "também enjoado 1",
+      concealment: "criaturas na área ficam ocultadas e as de fora ficam ocultadas para quem está dentro",
+      dissipation: "vento forte pode dissipar a fumaça",
+      heightened: { perRank: "dano aumenta em 1d6" }
+    },
+    summaries: {
+      "pt-BR": "Magia arcana ou primal de 1º ranque: cria fumaça tóxica por 1 rodada, causando veneno e ocultando criaturas dentro e fora da nuvem.",
+      en: "1st-rank arcane or primal spell: creates toxic smoke for 1 round, dealing poison damage and concealing creatures inside and outside the cloud.",
+      es: "Conjuro arcano o primigenio de rango 1: crea humo tóxico durante 1 ronda, causa daño de veneno y oculta a las criaturas dentro y fuera de la nube."
+    }
+  });
+  confirmPlayerCore2Spell("visao_animal", {
+    traits: ["Concentração", "Manuseio", "Mental"],
+    actions: 1,
+    execution: "1 minuto",
+    range: "36 metros",
+    targets: "1 animal",
+    duration: "1 hora",
+    defense: "Vontade (se o animal desejar impedir)",
+    mechanics: {
+      senses: "conjurador sente tudo que o animal percebe",
+      limitation: "enquanto acessa os sentidos do animal, não usa os próprios",
+      sustain: "pode alternar entre sentidos próprios e do alvo usando Sustentar"
+    },
+    summaries: {
+      "pt-BR": "Magia primal de 3º ranque: acessa os sentidos de um animal por 1 hora, alternando entre eles e os próprios ao Sustentar.",
+      en: "3rd-rank primal spell: accesses an animal's senses for 1 hour, switching between them and your own when you Sustain the Spell.",
+      es: "Conjuro primigenio de rango 3: accede a los sentidos de un animal durante 1 hora y alterna entre ellos y los propios al mantenerlo."
+    }
+  });
+  confirmPlayerCore2Spell("visoes_de_perigo", {
+    traits: ["Auditivo", "Concentração", "Ilusão", "Manuseio", "Visual"],
+    actions: 3,
+    range: "150 metros",
+    area: "explosão de 9 metros",
+    defense: "Vontade básico",
+    duration: "1 minuto",
+    mechanics: {
+      damage: "8d8 de dano mental quando criada, quando criatura entra ou começa turno na explosão",
+      disbelief: "sucesso crítico permite tentar desacreditar; Interagir ou Buscar uma criatura também permite tentar",
+      immunityAfterDisbelief: "criaturas que desacreditam não sofrem mais dano",
+      heightened: { perRank: "dano mental aumenta em 1d8" }
+    },
+    summaries: {
+      "pt-BR": "Magia ocultista de 7º ranque: cria uma ilusão de monstros em uma explosão de 9 metros, causando dano mental até que a criatura desacredite.",
+      en: "7th-rank occult spell: creates an illusion of monsters in a 9-meter burst, dealing mental damage until a creature disbelieves it.",
+      es: "Conjuro ocultista de rango 7: crea una ilusión de monstruos en una explosión de 9 metros, causando daño mental hasta que una criatura la desacredite."
+    }
+  });
+  confirmPlayerCore2Spell("vomitar_enxame", {
+    traits: ["Concentração", "Manuseio"],
+    actions: 2,
+    area: "cone de 9 metros",
+    defense: "Reflexos básico",
+    mechanics: {
+      damage: "2d8 de dano perfurante",
+      failure: "fica enjoado 1",
+      duration: "enxame desaparece quando a magia termina",
+      heightened: { perRank: "dano aumenta em 1d8" }
+    },
+    summaries: {
+      "pt-BR": "Magia arcana, ocultista ou primal de 2º ranque: vomita um enxame mágico em cone, causando dano perfurante e enjoo em uma falha.",
+      en: "2nd-rank arcane, occult, or primal spell: vomits a magical swarm in a cone, dealing piercing damage and sickening creatures on a failure.",
+      es: "Conjuro arcano, ocultista o primigenio de rango 2: vomita un enjambre mágico en un cono, causando daño perforante y náuseas al fallar."
+    }
+  });
+  confirmPlayerCore2Spell("tesouro_fantasmagorico", {
+    traits: ["Concentração", "Emoção", "Ilusão", "Manuseio", "Mental"],
+    actions: 2,
+    range: "18 metros",
+    targets: "1 criatura viva",
+    defense: "Vontade",
+    mechanics: {
+      success: "fica fascinado pelo tesouro até o fim do turno e pode tentar desacreditar ao tocar, Buscar ou falar com a ilusão",
+      failure: "como sucesso, mas duração de 1 minuto",
+      criticalFailure: "como falha; até o fim da magia deve gastar cada ação focando no tesouro, movendo-se e Interagindo se necessário",
+      visibility: "somente o alvo vê o tesouro; o conjurador percebe uma forma vaga"
+    },
+    summaries: {
+      "pt-BR": "Magia arcana ou ocultista de 2º ranque: cria para uma criatura viva a ilusão do que ela mais valoriza, fascinando-a ou obrigando-a a focar nela conforme o salvamento de Vontade.",
+      en: "2nd-rank arcane or occult spell: creates an illusion of what a living creature values most, fascinating it or forcing it to focus on the illusion based on its Will save.",
+      es: "Conjuro arcano u ocultista de rango 2: crea para una criatura viva la ilusión de lo que más valora, fascinándola u obligándola a centrarse en ella según su salvación de Voluntad."
+    }
+  });
+  const confirmFeatMechanics = (slug, mechanics, summaries) => {
+    const feat = (PF2E_DATA.feats || []).find((record) => record.id === `feat.class.gunslinger.${slug}`);
+    if (!feat) return;
+    feat.mechanics = mechanics;
+    if (summaries) feat.summaries = summaries;
+    feat.needs_review = false;
+    feat.sourceApproximate = false;
+  };
+  confirmFeatMechanics("as_da_besta", {
+    reloadBonus: "+2 de bônus de circunstância na jogada de dano do próximo Golpe com a besta após Interagir para recarregá-la",
+    simpleCrossbow: "se for besta simples, aumenta o dado de dano em um passo",
+    expiry: "o Golpe precisa ocorrer antes do fim do turno e o benefício não é cumulativo com especialização singular"
+  }, { "pt-BR": "Talento de nível 1: recarregar uma besta concede bônus de dano no próximo Golpe, com aumento do dado para bestas simples.", en: "1st-level feat: reloading a crossbow grants a damage bonus to the next Strike, increasing the die for simple crossbows.", es: "Dote de nivel 1: recargar una ballesta concede un bonificador al daño del siguiente Golpe y aumenta el dado para ballestas simples." });
+  confirmFeatMechanics("disparo_de_cobertura", {
+    frequency: "uma vez por rodada",
+    requirement: "arma de fogo ou besta carregada",
+    crouch: "+2 de CA contra o ataque, ou +4 se o alvo tiver cobertura",
+    penalty: "alvo sofre –2 em jogadas de ataque à distância até o fim do próximo turno",
+    noCrouch: "se não se abaixar, o conjurador recebe +1 na jogada de ataque"
+  }, { "pt-BR": "Talento de nível 1: fogo de supressão força o alvo a escolher entre se abaixar para ganhar CA e sofrer penalidade ou conceder bônus ao ataque.", en: "1st-level feat: covering fire forces the target to choose between gaining AC and a penalty or granting you an attack bonus.", es: "Dote de nivel 1: el fuego de cobertura obliga al objetivo a elegir entre ganar CA y sufrir una penalización o concederte un bonificador al ataque." });
+  confirmFeatMechanics("espada_e_pistola", {
+    rangedToMelee: "Golpe à distância bem-sucedido com arma de fogo ou besta de uma mão deixa o alvo desprevenido contra seu próximo Golpe corpo a corpo de uma mão",
+    meleeToRanged: "Golpe corpo a corpo bem-sucedido faz o próximo Golpe à distância de uma mão contra o alvo não acionar reações de ataques à distância",
+    expiry: "cada benefício termina no fim do próximo turno se não for usado"
+  }, { "pt-BR": "Talento de nível 1: alternar entre arma de fogo ou besta e arma branca cria benefícios para o próximo ataque de cada tipo.", en: "1st-level feat: alternating between a one-handed firearm or crossbow and melee weapon enables benefits for the next attack of each type.", es: "Dote de nivel 1: alternar entre un arma de fuego o ballesta de una mano y un arma cuerpo a cuerpo habilita beneficios para el siguiente ataque de cada tipo." });
+  confirmFeatMechanics("estourar_fechadura", {
+    requirement: "arma de fogo carregada",
+    range: "fechadura a até 3 metros",
+    criticalSuccess: "abre a fechadura ou obtém dois sucessos em fechadura complexa",
+    success: "abre a fechadura ou obtém um sucesso em fechadura complexa",
+    failure: "não abre e tentativas futuras sofrem –2 de circunstância",
+    criticalFailure: "não abre e tentativas futuras sofrem –4 de circunstância"
+  }, { "pt-BR": "Talento de nível 1: ataca uma fechadura a até 3 metros, com resultados graduados e penalidades para novas tentativas.", en: "1st-level feat: attacks a lock within 10 feet, with graduated results and penalties on future attempts.", es: "Dote de nivel 1: ataca una cerradura a 3 metros, con resultados graduados y penalizaciones a futuros intentos." });
+  confirmFeatMechanics("para_o_chao", {
+    trigger: "criatura visível tenta um Golpe à distância contra você",
+    reaction: "Salta e recebe +2 de bônus de circunstância na CA contra o ataque acionador",
+    ending: "fica prostrado após completar o Salto, independentemente de o ataque acertar"
+  }, { "pt-BR": "Talento de nível 1: reage a um ataque à distância saltando para ganhar CA e termina prostrado.", en: "1st-level feat: reacts to a ranged attack by jumping for an AC bonus and ends prone.", es: "Dote de nivel 1: reacciona a un ataque a distancia saltando para obtener un bonificador a la CA y termina tumbado." });
+  confirmFeatMechanics("manufatura_de_municao", {
+    training: "torna-se treinado em Manufatura",
+    reagents: "adquire reagentes infundidos em quantidade igual ao nível por dia",
+    formulas: "adquire Manufatura Alquímica e quatro fórmulas adicionais de itens alquímicos de 1º nível",
+    restriction: "reagentes só criam bombas e munição alquímica; nível de alquimia avançada 1",
+    basicAmmo: "um lote cria 10 cartuchos de munição básica de nível 0"
+  }, { "pt-BR": "Talento de nível 1: concede Manufatura treinada, reagentes infundidos, Manufatura Alquímica e fórmulas para fabricar bombas e munição.", en: "1st-level feat: grants trained Crafting, infused reagents, Alchemical Crafting, and formulas for bombs and ammunition.", es: "Dote de nivel 1: concede Manufactura entrenada, reactivos infundidos, Manufactura alquímica y fórmulas para bombas y munición." });
+  confirmFeatMechanics("armamentos_defensivos", {
+    weaponTypes: "armas de fogo de duas mãos e bestas de duas mãos empunhadas",
+    parry: "adquirem o traço Aparar",
+    existingParry: "se já possuírem Aparar, o bônus de circunstância na CA aumenta de +1 para +2"
+  }, { "pt-BR": "Talento de nível 2: armas de fogo e bestas de duas mãos recebem Aparar, melhorando o bônus se já possuírem o traço.", en: "2nd-level feat: two-handed firearms and crossbows gain Parry, improving its bonus if they already have the trait.", es: "Dote de nivel 2: las armas de fuego y ballestas de dos manos obtienen Parada y mejoran su bonificador si ya tienen el rasgo." });
+  confirmFeatMechanics("girar_a_pistola", {
+    prerequisite: "treinado em Dissimulação",
+    requirement: "arma à distância de uma mão carregada",
+    success: "Finta um oponente no primeiro incremento de distância; em sucesso, ele fica desprevenido contra ataques corpo a corpo e à distância",
+    criticalFailure: "em falha crítica, fica desprevenido contra ataques corpo a corpo e à distância do alvo"
+  }, { "pt-BR": "Talento de nível 2: permite Fintar à distância com uma arma de uma mão e amplia o efeito de desprevenido.", en: "2nd-level feat: lets you Feint at range with a one-handed weapon and broadens the off-guard effect.", es: "Dote de nivel 2: permite fintar a distancia con un arma de una mano y amplía el efecto de desprevenido." });
+  confirmFeatMechanics("recarga_arriscada", {
+    requirement: "arma de fogo empunhada",
+    sequence: "Interage para recarregar e então Golpeia com a arma",
+    failure: "se o Golpe falhar, a arma provoca um tiro falho"
+  }, { "pt-BR": "Talento de nível 2: recarrega e Golpeia em sequência, mas uma falha causa tiro falho.", en: "2nd-level feat: reloads and Strikes in sequence, but a failed Strike causes a misfire.", es: "Dote de nivel 2: recarga y Golpea en secuencia, pero un Golpe fallido causa un disparo fallido." });
+  confirmFeatMechanics("tiro_de_aviso", {
+    prerequisite: "treinado em Intimidação",
+    requirement: "arma de fogo carregada",
+    demoralize: "tenta Desmoralizar disparando para cima usando a distância máxima da arma",
+    languagePenalty: "não sofre a penalidade de circunstância de –4 se o alvo não compartilhar idioma"
+  }, { "pt-BR": "Talento de nível 2: Desmoraliza usando a distância máxima da arma e ignora a penalidade por idioma diferente.", en: "2nd-level feat: Demoralizes using the firearm's maximum range and ignores the penalty for a language barrier.", es: "Dote de nivel 2: Desmoraliza usando el alcance máximo del arma e ignora la penalización por barrera de idioma." });
+  confirmFeatMechanics("tiro_fingido", {
+    trigger: "aliado está prestes a usar ação com jogada de ataque contra criatura no primeiro incremento",
+    requirement: "arma de fogo ou besta carregada",
+    aid: "faz jogada de ataque para Auxiliar o ataque acionador",
+    bonus: "+1 de bônus de circunstância no teste de Auxiliar se tiver causado dano ao inimigo com a mesma arma desde o início do turno anterior"
+  }, { "pt-BR": "Talento visual de nível 2: faz uma jogada de ataque para Auxiliar o ataque de um aliado e recebe +1 após causar dano prévio com a mesma arma.", en: "2nd-level visual feat: makes an attack roll to Aid an ally's attack and gains +1 after previously damaging the enemy with the same weapon.", es: "Dote visual de nivel 2: hace una tirada de ataque para Ayudar al ataque de un aliado y obtiene +1 tras dañar antes al enemigo con la misma arma." });
+  confirmFeatMechanics("cauterizar", {
+    requirement: "arma de fogo carregada e você ou aliado adjacente sofre dano de sangramento persistente",
+    sequence: "faz um Golpe com a arma e pressiona o cano aquecido contra o ferimento",
+    outcome: "faz teste simples para encerrar o sangramento usando a CD mais baixa para auxílio particularmente eficaz"
+  }, { "pt-BR": "Talento de nível 6: usa uma arma de fogo para tentar encerrar sangramento persistente após um Golpe.", en: "6th-level feat: uses a firearm to attempt to end persistent bleed after a Strike.", es: "Dote de nivel 6: usa un arma de fuego para intentar terminar un sangrado persistente después de un Golpe." });
+  confirmFeatMechanics("cortina_de_fumaca", {
+    requirement: "arma de fogo carregada e uma dose de pólvora vestida ou na mão",
+    smoke: "Golpe cria fumaça em emanação de 6 metros; criaturas dentro ficam ocultadas e as de fora ficam ocultadas para as de dentro",
+    duration: "fumaça dissipa no início do próximo turno",
+    criticalFailure: "falha crítica do Golpe causa tiro falho"
+  }, { "pt-BR": "Talento de nível 8: adiciona pólvora ao disparo para criar fumaça de 6 metros e ocultação temporária.", en: "8th-level feat: adds powder to a shot to create a 6-meter smoke cloud and temporary concealment.", es: "Dote de nivel 8: añade pólvora a un disparo para crear una nube de humo de 6 metros y ocultación temporal." });
+  confirmFeatMechanics("dividir_bala", {
+    requirement: "arma de fogo ou besta em uma mão e arma corpo a corpo cortante ou versátil na outra",
+    attacks: "faz dois Golpes contra alvos diferentes adjacentes e dentro da distância máxima",
+    penalty: "cada ataque sofre –2, mas conta como apenas um ataque para penalidade por ataques múltiplos"
+  }, { "pt-BR": "Talento de nível 8: divide o projétil para fazer dois ataques contra alvos adjacentes, com penalidade reduzida na contagem de ataques.", en: "8th-level feat: splits a projectile for two attacks against adjacent targets, with reduced multiple-attack counting.", es: "Dote de nivel 8: divide un proyectil para realizar dos ataques contra objetivos adyacentes, contando como un ataque múltiple." });
+  confirmFeatMechanics("perfurar_e_disparar", {
+    requirement: "arma de fogo com baioneta/cabo reforçado, lança de fogo ou arma combinada",
+    sequence: "faz Golpe corpo a corpo e, se acertar, Golpeia à distância imediatamente o mesmo alvo",
+    rangedBonus: "+2 de bônus de circunstância na jogada de ataque à distância",
+    multipleAttack: "conta como dois ataques e aplica a penalidade por ataques múltiplos apenas depois dos dois"
+  }, { "pt-BR": "Talento de nível 8: combina Golpe corpo a corpo e disparo imediato contra o mesmo alvo com +2 no disparo.", en: "8th-level feat: combines a melee Strike and immediate shot against the same target with +2 on the shot.", es: "Dote de nivel 8: combina un Golpe cuerpo a cuerpo y un disparo inmediato contra el mismo objetivo con +2 al disparo." });
+  confirmFeatMechanics("saltar_e_disparar", {
+    prerequisite: "Para o Chão!",
+    reaction: "ao usar Para o Chão!, durante o Salto pode fazer Golpe à distância com arma de fogo ou besta carregada",
+    target: "mira na criatura cujo ataque acionou a reação"
+  }, { "pt-BR": "Talento de nível 8: permite fazer um disparo durante o Salto de Para o Chão! contra o atacante.", en: "8th-level feat: lets you make a shot during the Leap from Get Down! against the triggering attacker.", es: "Dote de nivel 8: permite disparar durante el Salto de ¡Al suelo! contra el atacante que activó la reacción." });
   confirmPlayerCore2Spell("rosto_do_familiar", {
     traits: ["Concentração", "Manuseio", "Vidência"],
     actions: 2,

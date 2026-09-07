@@ -1280,6 +1280,108 @@ describe("proveniência do catálogo legado", () => {
       needs_review: false,
       mechanics: { attacks: expect.stringContaining("4d8+19") },
     });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.salvaguarda_cintilante")).toMatchObject({
+      rank: 6,
+      source: { page: 252 },
+      needs_review: false,
+      mechanics: { resistance: expect.stringContaining("resistência 10") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.schadenfreude")).toMatchObject({
+      rank: 1,
+      source: { page: 252 },
+      needs_review: false,
+      mechanics: { criticalFailure: expect.stringContaining("estupefato 2") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.selar_destino")).toMatchObject({
+      rank: 4,
+      source: { page: 252 },
+      needs_review: false,
+      mechanics: { damageChoice: expect.stringContaining("ácido") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.sentir_espiritos")).toMatchObject({
+      rank: 2,
+      source: { page: 252 },
+      needs_review: false,
+      mechanics: { detection: expect.stringContaining("espíritos") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.solo_consagrado")).toMatchObject({
+      rank: 3,
+      source: { page: 253 },
+      needs_review: false,
+      mechanics: { benefit: expect.stringContaining("+1") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.sussurros_eversivos")).toMatchObject({
+      rank: 4,
+      source: { page: 253 },
+      needs_review: false,
+      mechanics: { criticalFailure: expect.stringContaining("drenado 2") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.teia")).toMatchObject({
+      rank: 2,
+      source: { page: 253 },
+      needs_review: false,
+      mechanics: { terrain: expect.stringContaining("terreno difícil") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.tempestade_de_gelo")).toMatchObject({
+      rank: 4,
+      source: { page: 254 },
+      needs_review: false,
+      mechanics: { initialDamage: expect.stringContaining("2d8") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.tempestade_de_relampagos")).toMatchObject({
+      rank: 5,
+      source: { page: 254 },
+      needs_review: false,
+      mechanics: { damage: expect.stringContaining("4d12") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.tragedia_fantasmagorica")).toMatchObject({
+      rank: 4,
+      source: { page: 254 },
+      needs_review: false,
+      mechanics: { backlash: expect.stringContaining("2d6") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.transporte_mistico")).toMatchObject({
+      rank: 1,
+      source: { page: 254 },
+      needs_review: false,
+      mechanics: { capacity: expect.stringContaining("5 Volumes") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.transposicao_coletiva")).toMatchObject({
+      rank: 6,
+      source: { page: 255 },
+      needs_review: false,
+      mechanics: { failure: expect.stringContaining("teleporta") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.vapores_nocivos")).toMatchObject({
+      rank: 1,
+      source: { page: 255 },
+      needs_review: false,
+      mechanics: { damage: expect.stringContaining("1d6") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.visao_animal")).toMatchObject({
+      rank: 3,
+      source: { page: 255 },
+      needs_review: false,
+      mechanics: { senses: expect.stringContaining("animal") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.visoes_de_perigo")).toMatchObject({
+      rank: 7,
+      source: { page: 255 },
+      needs_review: false,
+      mechanics: { damage: expect.stringContaining("8d8") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.vomitar_enxame")).toMatchObject({
+      rank: 2,
+      source: { page: 255 },
+      needs_review: false,
+      mechanics: { damage: expect.stringContaining("2d8") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.tesouro_fantasmagorico")).toMatchObject({
+      rank: 2,
+      source: { page: 254 },
+      needs_review: false,
+      mechanics: { criticalFailure: expect.stringContaining("cada ação") },
+    });
     expect(catalog.spells.find((item) => item.id === "spell.player_core_2.rosto_do_familiar")).toMatchObject({
       rank: 3,
       source: { page: 251 },
@@ -1298,6 +1400,26 @@ describe("proveniência do catálogo legado", () => {
       needs_review: false,
       mechanics: { effect: expect.stringContaining("6d6") },
     });
+  });
+
+  it("confirma mecânicas dos talentos iniciais de Pistoleiro em Pólvora e Engrenagens", () => {
+    const catalog = loadCatalog() as { feats: LegacyRecord[] };
+    const ids = ["as_da_besta", "disparo_de_cobertura", "espada_e_pistola", "estourar_fechadura", "para_o_chao", "manufatura_de_municao", "armamentos_defensivos", "girar_a_pistola", "recarga_arriscada", "tiro_de_aviso", "tiro_fingido", "cauterizar", "cortina_de_fumaca", "dividir_bala", "perfurar_e_disparar", "saltar_e_disparar"];
+    const feats = ids.map((slug) => catalog.feats.find((item) => item.id === `feat.class.gunslinger.${slug}`));
+    expect(feats.every((item) => item && item.needs_review === false && item.source?.book === "Pólvora e Engrenagens (pré-Remaster)" && item.mechanics && item.summaries?.["pt-BR"] && item.summaries?.en && item.summaries?.es)).toBe(true);
+    expect(feats.find((item) => item?.id.endsWith("as_da_besta"))).toMatchObject({ mechanics: { reloadBonus: expect.stringContaining("+2") } });
+    expect(feats.find((item) => item?.id.endsWith("disparo_de_cobertura"))).toMatchObject({ mechanics: { frequency: "uma vez por rodada" } });
+    expect(feats.find((item) => item?.id.endsWith("estourar_fechadura"))).toMatchObject({ mechanics: { criticalFailure: expect.stringContaining("–4") } });
+    expect(feats.find((item) => item?.id.endsWith("armamentos_defensivos"))).toMatchObject({ mechanics: { parry: expect.stringContaining("Aparar") } });
+    expect(feats.find((item) => item?.id.endsWith("girar_a_pistola"))).toMatchObject({ mechanics: { success: expect.stringContaining("desprevenido") } });
+    expect(feats.find((item) => item?.id.endsWith("recarga_arriscada"))).toMatchObject({ mechanics: { failure: expect.stringContaining("tiro falho") } });
+    expect(feats.find((item) => item?.id.endsWith("tiro_de_aviso"))).toMatchObject({ mechanics: { demoralize: expect.stringContaining("distância máxima") } });
+    expect(feats.find((item) => item?.id.endsWith("tiro_fingido"))).toMatchObject({ mechanics: { bonus: expect.stringContaining("+1") } });
+    expect(feats.find((item) => item?.id.endsWith("cauterizar"))).toMatchObject({ mechanics: { outcome: expect.stringContaining("teste simples") } });
+    expect(feats.find((item) => item?.id.endsWith("cortina_de_fumaca"))).toMatchObject({ mechanics: { smoke: expect.stringContaining("6 metros") } });
+    expect(feats.find((item) => item?.id.endsWith("dividir_bala"))).toMatchObject({ mechanics: { penalty: expect.stringContaining("–2") } });
+    expect(feats.find((item) => item?.id.endsWith("perfurar_e_disparar"))).toMatchObject({ mechanics: { rangedBonus: expect.stringContaining("+2") } });
+    expect(feats.find((item) => item?.id.endsWith("saltar_e_disparar"))).toMatchObject({ mechanics: { prerequisite: "Para o Chão!" } });
   });
 
   it("indexa os itens amaldiçoados e contratos de Dark Archive", () => {
