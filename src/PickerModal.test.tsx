@@ -549,4 +549,23 @@ describe("PickerModal", () => {
     fireEvent.click(screen.getByRole("button", { name: "Aceitar" }));
     expect(applyPickerSelection).toHaveBeenCalledWith("feat", expect.objectContaining({ name: "Medicina de Batalha (Battle Medicine)" }), { filterType: "Geral" });
   });
+
+  it("trata o filtro contextual 'Ancestral' em português como aba de talentos ancestrais", () => {
+    window.app = {
+      ...controllerDefaults,
+      character: { id: "test", name: "Anão", class: "Mago (Wizard)", level: 1 },
+      getPickerItems: () => [
+        { name: "Robustez (Toughness)", type: "Talento Geral", data: { name: "Robustez (Toughness)", category: "Geral", level: 1, traits: ["Geral"] } },
+        { name: "Anão Resoluto (Resolute Dwarf)", type: "Talento Ancestral", data: { name: "Anão Resoluto (Resolute Dwarf)", category: "Ancestralidade", level: 1, traits: ["Ancestralidade"] } },
+      ],
+    };
+
+    let bridge: PickerBridge | undefined;
+    renderPicker((value) => { bridge = value; });
+    act(() => bridge?.open("feat", { filterType: "Ancestral" }));
+
+    expect(screen.getByRole("button", { name: "Talentos Ancestrais" })).toBeInTheDocument();
+    expect(screen.getByRole("option", { name: /Anão/ })).toBeInTheDocument();
+    expect(screen.queryByRole("option", { name: /Robustez/ })).not.toBeInTheDocument();
+  });
 });

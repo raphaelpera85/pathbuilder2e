@@ -1,11 +1,17 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import {
   saveCampaign,
+  saveCampaignWithStatus,
   listCampaigns,
+  listCampaignsWithStatus,
   deleteCampaign,
+  deleteCampaignWithStatus,
   addCharacterToCampaign,
+  addCharacterToCampaignWithStatus,
   removeCharacterFromCampaign,
+  removeCharacterFromCampaignWithStatus,
   addSessionLog,
+  addSessionLogWithStatus,
   updateCombatant,
   sortInitiative,
   subscribeToCampaign,
@@ -43,6 +49,17 @@ describe("Campaigns & GM Service", () => {
     const list = await listCampaigns(gmUser);
     expect(list.length).toBe(1);
     expect(list[0].title).toBe("A Maldição da Coroa Carmesim");
+  });
+
+  it("expõe a origem do dado para a UI diferenciar nuvem de fallback local", async () => {
+    const saved = await saveCampaignWithStatus({ title: "Mesa offline" }, gmUser);
+    const listed = await listCampaignsWithStatus(gmUser);
+
+    expect(saved.data.title).toBe("Mesa offline");
+    expect(["local", "supabase"]).toContain(saved.source);
+    expect(listed.data.some((campaign) => campaign.id === saved.data.id)).toBe(true);
+    expect(["local", "supabase"]).toContain(listed.source);
+    if (saved.source === "local") expect(saved.error).toBeUndefined();
   });
 
   it("normaliza edições antigas para valores internos estáveis", async () => {
@@ -166,5 +183,21 @@ describe("Campaigns & GM Service", () => {
     expect(sorted.combatants[1].name).toBe("Goblin Arqueiro");
     expect(sorted.combatants[1].initiative).toBe(14);
   });
-});
 
+  it("propaga a origem e o fallback nas mutações indiretas da campanha", async () => {
+    const campaign = await saveCampaign({ title: "Mesa com status" }, gmUser);
+    const linked = await addCharacterToCampaignWithStatus(campaign.id, "char_status", gmUser);
+    expect(linked.data.character_keys).toContain("char_status");
+    expect(["local", "supabase"]).toContain(linked.source);
+
+    const session = await addSessionLogWithStatus(campaign.id, { title: "Sessão status", date: "2026-09-07", summary: "Teste", xp: 10 }, gmUser);
+    expect(session.data.sessions[0].title).toBe("Sessão status");
+
+    const removed = await removeCharacterFromCampaignWithStatus(campaign.id, "char_status", gmUser);
+    expect(removed.data.character_keys).not.toContain("char_status");
+
+    const deleted = await deleteCampaignWithStatus(campaign.id, gmUser);
+    expect(deleted.data).toBeNull();
+    expect(["local", "supabase"]).toContain(deleted.source);
+  });
+});

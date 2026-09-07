@@ -1,5 +1,31 @@
 /* campaigns.css - Estilos do Painel do Mestre (GM Campaigns Hub) */
 
+.campaigns-page .portal-warning,
+.campaigns-page .portal-error {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 0 18px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(245, 158, 11, 0.45);
+  background: rgba(245, 158, 11, 0.12);
+  color: var(--pb-text, #f8fafc);
+  font-size: 13px;
+}
+
+.campaigns-page .portal-warning button,
+.campaigns-page .portal-error button {
+  flex: 0 0 auto;
+  border: 1px solid currentColor;
+  border-radius: 5px;
+  padding: 4px 9px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
 .campaign-stats-banner {
   display: flex;
   gap: 16px;
@@ -1114,5 +1140,4 @@ body.theme-light .inspect-header h3 {
 body.theme-light .camp-empty-state p {
   color: #5e4d3a !important;
 }
-
 

@@ -42,6 +42,14 @@ export interface Campaign {
   updated_at: string;
 }
 
+export type CampaignSyncSource = "supabase" | "local" | "none";
+
+export interface CampaignSyncResult<T> {
+  data: T;
+  source: CampaignSyncSource;
+  error?: string;
+}
+
 function getLocalCampaignsKey(gmId: string): string {
   return `pf2e_gm_${gmId}_campaigns_v1`;
 }
@@ -70,6 +78,16 @@ function normalizeCampaignSystem(value: string | undefined): string {
   return "remaster";
 }
 
+function createCampaignId(): string {
+  if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID();
+  const bytes = new Uint8Array(16);
+  if (globalThis.crypto?.getRandomValues) globalThis.crypto.getRandomValues(bytes);
+  bytes[6] = (bytes[6] & 0x0f) | 0x40;
+  bytes[8] = (bytes[8] & 0x3f) | 0x80;
+  const hex = Array.from(bytes, (byte) => byte.toString(16).padStart(2, "0")).join("");
+  return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
+}
+
 function mergeCampaignLists(remote: Campaign[], local: Campaign[]): Campaign[] {
   const merged = new Map<string, Campaign>();
   for (const campaign of remote) merged.set(campaign.id, campaign);
@@ -79,10 +97,10 @@ function mergeCampaignLists(remote: Campaign[], local: Campaign[]): Campaign[] {
   );
 }
 
-export async function listCampaigns(currentUser?: UserProfile): Promise<Campaign[]> {
+export async function listCampaignsWithStatus(currentUser?: UserProfile): Promise<CampaignSyncResult<Campaign[]>> {
   const activeUser = currentUser || (await getCurrentSession())?.user;
   if (!activeUser) {
-    return [];
+    return { data: [], source: "none" };
   }
 
   if (isSupabaseConfigured && supabase) {
@@ -92,13 +110,21 @@ export async function listCampaigns(currentUser?: UserProfile): Promise<Campaign
         .select("*")
         .eq("gm_id", activeUser.id)
         .order("updated_at", { ascending: false }), 8_000, "As campanhas demoraram para responder. Exibindo os dados disponíveis neste dispositivo.");
-      if (!error && data) return mergeCampaignLists(data as Campaign[], getLocalCampaigns(activeUser.id));
+      if (!error && data) return { data: mergeCampaignLists(data as Campaign[], getLocalCampaigns(activeUser.id)), source: "supabase" };
+      if (error) {
+        return { data: mergeCampaignLists([], getLocalCampaigns(activeUser.id)), source: "local", error: "Não foi possível sincronizar as campanhas com a nuvem." };
+      }
     } catch (err) {
       console.warn("Falha ao buscar campanhas no Supabase, usando armazenamento local:", err);
+      return { data: mergeCampaignLists([], getLocalCampaigns(activeUser.id)), source: "local", error: "Não foi possível sincronizar as campanhas com a nuvem." };
     }
   }
 
-  return mergeCampaignLists([], getLocalCampaigns(activeUser.id));
+  return { data: mergeCampaignLists([], getLocalCampaigns(activeUser.id)), source: "local" };
+}
+
+export async function listCampaigns(currentUser?: UserProfile): Promise<Campaign[]> {
+  return (await listCampaignsWithStatus(currentUser)).data;
 }
 
 export async function getCampaign(campaignId: string, currentUser?: UserProfile): Promise<Campaign | null> {
@@ -110,13 +136,20 @@ export async function saveCampaign(
   data: Partial<Campaign>,
   currentUser?: UserProfile
 ): Promise<Campaign> {
+  return (await saveCampaignWithStatus(data, currentUser)).data;
+}
+
+export async function saveCampaignWithStatus(
+  data: Partial<Campaign>,
+  currentUser?: UserProfile
+): Promise<CampaignSyncResult<Campaign>> {
   const activeUser = currentUser || (await getCurrentSession())?.user;
   if (!activeUser) {
     throw new Error("Você precisa estar conectado como Mestre para gerenciar campanhas.");
   }
 
   const now = new Date().toISOString();
-  const id = data.id || `camp_${globalThis.crypto?.randomUUID ? globalThis.crypto.randomUUID().slice(0, 8) : Date.now()}`;
+  const id = data.id || createCampaignId();
   const campaignRecord: Campaign = {
     id,
     gm_id: activeUser.id,
@@ -140,7 +173,7 @@ export async function saveCampaign(
         .upsert(campaignRecord, { onConflict: "id" })
         .select()
         .single(), 8_000, "O salvamento da campanha demorou para responder. A campanha será mantida neste dispositivo.");
-      if (!error && result) return result as Campaign;
+      if (!error && result) return { data: result as Campaign, source: "supabase" };
     } catch (err) {
       console.warn("Falha ao salvar no Supabase, usando armazenamento local:", err);
     }
@@ -155,30 +188,58 @@ export async function saveCampaign(
   }
   saveLocalCampaigns(activeUser.id, existing);
 
-  return campaignRecord;
+  return {
+    data: campaignRecord,
+    source: "local",
+    error: isSupabaseConfigured && supabase
+      ? "A campanha foi salva neste dispositivo, mas não foi sincronizada com a nuvem."
+      : undefined,
+  };
 }
 
-export async function deleteCampaign(campaignId: string, currentUser?: UserProfile): Promise<void> {
+export async function deleteCampaignWithStatus(campaignId: string, currentUser?: UserProfile): Promise<CampaignSyncResult<null>> {
   const activeUser = currentUser || (await getCurrentSession())?.user;
   if (!activeUser) {
     throw new Error("Usuário não autenticado.");
   }
 
+  let cloudError = false;
   if (isSupabaseConfigured && supabase) {
     try {
-      await withRequestTimeout(
+      const { error } = await withRequestTimeout(
         supabase.from("campaigns").delete().eq("id", campaignId).eq("gm_id", activeUser.id),
         8_000,
         "A exclusão da campanha demorou para responder. A campanha será removida deste dispositivo.",
       );
+      cloudError = Boolean(error);
     } catch (err) {
       console.warn("Erro ao deletar no Supabase:", err);
+      cloudError = true;
     }
   }
 
   const existing = getLocalCampaigns(activeUser.id);
   const filtered = existing.filter((c) => c.id !== campaignId);
   saveLocalCampaigns(activeUser.id, filtered);
+  return { data: null, source: "local", error: cloudError ? "A campanha foi excluída neste dispositivo, mas a nuvem não foi atualizada." : undefined };
+}
+
+export async function deleteCampaign(campaignId: string, currentUser?: UserProfile): Promise<void> {
+  await deleteCampaignWithStatus(campaignId, currentUser);
+}
+
+export async function addCharacterToCampaignWithStatus(
+  campaignId: string,
+  characterKey: string,
+  currentUser?: UserProfile
+): Promise<CampaignSyncResult<Campaign>> {
+  const campaign = await getCampaign(campaignId, currentUser);
+  if (!campaign) throw new Error("Campanha não encontrada.");
+
+  if (!campaign.character_keys.includes(characterKey)) {
+    campaign.character_keys.push(characterKey);
+  }
+  return await saveCampaignWithStatus(campaign, currentUser);
 }
 
 export async function addCharacterToCampaign(
@@ -186,13 +247,19 @@ export async function addCharacterToCampaign(
   characterKey: string,
   currentUser?: UserProfile
 ): Promise<Campaign> {
+  return (await addCharacterToCampaignWithStatus(campaignId, characterKey, currentUser)).data;
+}
+
+export async function removeCharacterFromCampaignWithStatus(
+  campaignId: string,
+  characterKey: string,
+  currentUser?: UserProfile
+): Promise<CampaignSyncResult<Campaign>> {
   const campaign = await getCampaign(campaignId, currentUser);
   if (!campaign) throw new Error("Campanha não encontrada.");
 
-  if (!campaign.character_keys.includes(characterKey)) {
-    campaign.character_keys.push(characterKey);
-  }
-  return await saveCampaign(campaign, currentUser);
+  campaign.character_keys = campaign.character_keys.filter((k) => k !== characterKey);
+  return await saveCampaignWithStatus(campaign, currentUser);
 }
 
 export async function removeCharacterFromCampaign(
@@ -200,18 +267,14 @@ export async function removeCharacterFromCampaign(
   characterKey: string,
   currentUser?: UserProfile
 ): Promise<Campaign> {
-  const campaign = await getCampaign(campaignId, currentUser);
-  if (!campaign) throw new Error("Campanha não encontrada.");
-
-  campaign.character_keys = campaign.character_keys.filter((k) => k !== characterKey);
-  return await saveCampaign(campaign, currentUser);
+  return (await removeCharacterFromCampaignWithStatus(campaignId, characterKey, currentUser)).data;
 }
 
-export async function addSessionLog(
+export async function addSessionLogWithStatus(
   campaignId: string,
   sessionLog: Omit<CampaignSession, "id">,
   currentUser?: UserProfile
-): Promise<Campaign> {
+): Promise<CampaignSyncResult<Campaign>> {
   const campaign = await getCampaign(campaignId, currentUser);
   if (!campaign) throw new Error("Campanha não encontrada.");
 
@@ -221,7 +284,15 @@ export async function addSessionLog(
   };
 
   campaign.sessions = [newSession, ...(campaign.sessions || [])];
-  return await saveCampaign(campaign, currentUser);
+  return await saveCampaignWithStatus(campaign, currentUser);
+}
+
+export async function addSessionLog(
+  campaignId: string,
+  sessionLog: Omit<CampaignSession, "id">,
+  currentUser?: UserProfile
+): Promise<Campaign> {
+  return (await addSessionLogWithStatus(campaignId, sessionLog, currentUser)).data;
 }
 
 // SINCRONIZAÇÃO EM TEMPO REAL VIA SUPABASE REALTIME
@@ -258,11 +329,11 @@ export function subscribeToCampaign(
 }
 
 // RASTREADOR TÁTICO: ATUALIZAR COMBATENTE E INICIATIVA
-export async function updateCombatant(
+export async function updateCombatantWithStatus(
   campaignId: string,
   combatantUpdate: Partial<Combatant> & { id: string },
   currentUser?: UserProfile
-): Promise<Campaign> {
+): Promise<CampaignSyncResult<Campaign>> {
   const campaign = await getCampaign(campaignId, currentUser);
   if (!campaign) throw new Error("Campanha não encontrada.");
 
@@ -274,16 +345,31 @@ export async function updateCombatant(
     combatants.push(combatantUpdate as Combatant);
   }
   campaign.combatants = combatants;
-  return await saveCampaign(campaign, currentUser);
+  return await saveCampaignWithStatus(campaign, currentUser);
+}
+
+export async function updateCombatant(
+  campaignId: string,
+  combatantUpdate: Partial<Combatant> & { id: string },
+  currentUser?: UserProfile
+): Promise<Campaign> {
+  return (await updateCombatantWithStatus(campaignId, combatantUpdate, currentUser)).data;
+}
+
+export async function sortInitiativeWithStatus(
+  campaignId: string,
+  currentUser?: UserProfile
+): Promise<CampaignSyncResult<Campaign>> {
+  const campaign = await getCampaign(campaignId, currentUser);
+  if (!campaign) throw new Error("Campanha não encontrada.");
+
+  campaign.combatants = (campaign.combatants || []).sort((a, b) => (b.initiative || 0) - (a.initiative || 0));
+  return await saveCampaignWithStatus(campaign, currentUser);
 }
 
 export async function sortInitiative(
   campaignId: string,
   currentUser?: UserProfile
 ): Promise<Campaign> {
-  const campaign = await getCampaign(campaignId, currentUser);
-  if (!campaign) throw new Error("Campanha não encontrada.");
-
-  campaign.combatants = (campaign.combatants || []).sort((a, b) => (b.initiative || 0) - (a.initiative || 0));
-  return await saveCampaign(campaign, currentUser);
+  return (await sortInitiativeWithStatus(campaignId, currentUser)).data;
 }

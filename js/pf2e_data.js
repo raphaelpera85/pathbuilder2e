@@ -1696,12 +1696,17 @@ const PLAYER_CORE_2_COMMON_BACKGROUNDS = [
   lore,
   feat,
   names: { "pt-BR": pt, en, es },
-  summaries: {
-    "pt-BR": `Biografia comum do Player Core 2 (p. ${page}); efeito mecânico completo pendente de revisão.`,
-    en: `Common Player Core 2 background (p. ${page}); full mechanical text pending review.`,
-    es: `Trasfondo común de Player Core 2 (p. ${page}); texto mecánico completo pendiente de revisión.`
+  mechanics: {
+    abilityBoostRules: [ability.join(" ou "), "Livre"],
+    trainedSkills: [skill, lore],
+    grants: [feat]
   },
-  description: `Biografia comum do Player Core 2: ${pt}.`,
+  summaries: {
+    "pt-BR": `Aumentos: ${ability.join(" ou ")} e um aumento livre; treinado em ${skill} e ${lore}; talento de perícia: ${feat}.`,
+    en: `Boosts: ${ability.join(" or ")} and one free boost; trained in ${skill} and ${lore}; skill feat: ${feat}.`,
+    es: `Mejoras: ${ability.join(" o ")} y una mejora libre; entrenado en ${skill} y ${lore}; dote de habilidad: ${feat}.`
+  },
+  description: `Biografia comum do Player Core 2: ${pt}. Aumentos, perícias, Saber e talento de perícia estruturados conforme a página ${page}.`,
   rarity: "common",
   source: { book: PLAYER_CORE_2_SOURCE, page },
     sourceApproximate: false, ruleset: "remaster", needs_review: false
@@ -5482,6 +5487,53 @@ for (const formula of playerCore2Formulas) {
 // (PC2 pp. 283–285). O nível, preço e página são confirmados; o texto
 // completo de cada variante ainda não foi transcrito para o motor, portanto
 // estas entradas permanecem revisáveis até que seus efeitos sejam modelados.
+const PLAYER_CORE_2_BOMB_MECHANICS = {
+  frightful_ampoule: {
+    moderate: { summaries: { "pt-BR": "Dano mental 2d6 e dano colateral mental 2; concede +1 no ataque e deixa o alvo assustado 1 (ou assustado 2 em acerto crítico).", en: "Deals 2d6 mental damage and 2 mental splash damage; grants +1 item bonus to the attack and makes the target frightened 1 (frightened 2 on a critical hit).", es: "Inflige 2d6 de daño mental y 2 de daño colateral mental; concede +1 al ataque y deja al objetivo asustado 1 (asustado 2 con crítico)." }, mechanics: { damage: "2d6 mental", splashDamage: "2 mental", attackItemBonus: 1, onHit: ["frightened 1"], onCriticalHit: ["frightened 2"] } },
+    greater: { summaries: { "pt-BR": "Dano mental 3d6 e dano colateral mental 3; concede +2 no ataque e deixa o alvo assustado 1 (ou assustado 2 em acerto crítico).", en: "Deals 3d6 mental damage and 3 mental splash damage; grants +2 item bonus to the attack and makes the target frightened 1 (frightened 2 on a critical hit).", es: "Inflige 3d6 de daño mental y 3 de daño colateral mental; concede +2 al ataque y deja al objetivo asustado 1 (asustado 2 con crítico)." }, mechanics: { damage: "3d6 mental", splashDamage: "3 mental", attackItemBonus: 2, onHit: ["frightened 1"], onCriticalHit: ["frightened 2"] } },
+    superior: { summaries: { "pt-BR": "Dano mental 4d6 e dano colateral mental 4; concede +3 no ataque e deixa o alvo assustado 1 (ou assustado 2 em acerto crítico).", en: "Deals 4d6 mental damage and 4 mental splash damage; grants +3 item bonus to the attack and makes the target frightened 1 (frightened 2 on a critical hit).", es: "Inflige 4d6 de daño mental y 4 de daño colateral mental; concede +3 al ataque y deja al objetivo asustado 1 (asustado 2 con crítico)." }, mechanics: { damage: "4d6 mental", splashDamage: "4 mental", attackItemBonus: 3, onHit: ["frightened 1"], onCriticalHit: ["frightened 2"] } },
+  },
+  tanglefoot_bag: {
+    moderate: { summaries: { "pt-BR": "Aplica –4,5 metros às Velocidades, CD de Escapar 19 e concede +1 no ataque; em acerto crítico, prende ou emaranha conforme a regra da bomba.", en: "Applies a –15-foot penalty to Speeds, Escape DC 19, and grants a +1 item attack bonus; critical hits apply the bomb's immobilizing restraint effect.", es: "Aplica –4,5 metros a las Velocidades, CD de Escape 19 y concede +1 al ataque; los críticos aplican el efecto de inmovilización de la bomba." }, mechanics: { speedPenalty: "-4.5m", escapeDC: 19, attackItemBonus: 1, onCriticalHit: ["immobilized or stuck to a solid surface" ] } },
+    greater: { summaries: { "pt-BR": "Aplica –4,5 metros às Velocidades, CD de Escapar 28 e concede +2 no ataque; em acerto crítico, prende ou emaranha conforme a regra da bomba.", en: "Applies a –15-foot penalty to Speeds, Escape DC 28, and grants a +2 item attack bonus; critical hits apply the bomb's immobilizing restraint effect.", es: "Aplica –4,5 metros a las Velocidades, CD de Escape 28 y concede +2 al ataque; los críticos aplican el efecto de inmovilización de la bomba." }, mechanics: { speedPenalty: "-4.5m", escapeDC: 28, attackItemBonus: 2, onCriticalHit: ["immobilized or stuck to a solid surface" ] } },
+    superior: { summaries: { "pt-BR": "Aplica –4,5 metros às Velocidades, CD de Escapar 37 e concede +3 no ataque; em acerto crítico, prende ou emaranha conforme a regra da bomba.", en: "Applies a –15-foot penalty to Speeds, Escape DC 37, and grants a +3 item attack bonus; critical hits apply the bomb's immobilizing restraint effect.", es: "Aplica –4,5 metros a las Velocidades, CD de Escape 37 y concede +3 al ataque; los críticos aplican el efecto de inmovilización de la bomba." }, mechanics: { speedPenalty: "-4.5m", escapeDC: 37, attackItemBonus: 3, onCriticalHit: ["immobilized or stuck to a solid surface" ] } },
+  },
+  weakening_bomb: {
+    moderate: { summaries: { "pt-BR": "Causa 2d4 de veneno, 2d4 de veneno persistente e 2 de dano colateral; concede +1 no ataque.", en: "Deals 2d4 poison damage, 2d4 persistent poison damage, and 2 poison splash damage; grants a +1 item attack bonus.", es: "Inflige 2d4 de daño de veneno, 2d4 de veneno persistente y 2 de daño colateral; concede +1 al ataque." }, mechanics: { damage: "2d4 poison", persistentDamage: "2d4 poison", splashDamage: "2 poison", attackItemBonus: 1 } },
+    greater: { summaries: { "pt-BR": "Causa 3d4 de veneno, 3d4 de veneno persistente e 3 de dano colateral; concede +2 no ataque.", en: "Deals 3d4 poison damage, 3d4 persistent poison damage, and 3 poison splash damage; grants a +2 item attack bonus.", es: "Inflige 3d4 de daño de veneno, 3d4 de veneno persistente y 3 de daño colateral; concede +2 al ataque." }, mechanics: { damage: "3d4 poison", persistentDamage: "3d4 poison", splashDamage: "3 poison", attackItemBonus: 2 } },
+    superior: { summaries: { "pt-BR": "Causa 4d4 de veneno, 4d4 de veneno persistente e 4 de dano colateral; concede +3 no ataque.", en: "Deals 4d4 poison damage, 4d4 persistent poison damage, and 4 poison splash damage; grants a +3 item attack bonus.", es: "Inflige 4d4 de daño de veneno, 4d4 de veneno persistente y 4 de daño colateral; concede +3 al ataque." }, mechanics: { damage: "4d4 poison", persistentDamage: "4d4 poison", splashDamage: "4 poison", attackItemBonus: 3 } },
+  },
+  ghost_charge: {
+    moderate: { summaries: { "pt-BR": "Causa 2d8 de vitalidade e 2 de dano colateral de vitalidade, deixa o alvo enfraquecido 1 e concede +1 no ataque.", en: "Deals 2d8 vitality damage and 2 vitality splash damage, makes the target enfeebled 1, and grants a +1 item attack bonus.", es: "Inflige 2d8 de daño de vitalidad y 2 de daño colateral de vitalidad, deja al objetivo debilitado 1 y concede +1 al ataque." }, mechanics: { damage: "2d8 vitality", splashDamage: "2 vitality", attackItemBonus: 1, onHit: ["enfeebled 1"] } },
+    greater: { summaries: { "pt-BR": "Causa 3d8 de vitalidade e 3 de dano colateral de vitalidade, deixa o alvo enfraquecido 2 e concede +2 no ataque.", en: "Deals 3d8 vitality damage and 3 vitality splash damage, makes the target enfeebled 2, and grants a +2 item attack bonus.", es: "Inflige 3d8 de daño de vitalidad y 3 de daño colateral de vitalidad, deja al objetivo debilitado 2 y concede +2 al ataque." }, mechanics: { damage: "3d8 vitality", splashDamage: "3 vitality", attackItemBonus: 2, onHit: ["enfeebled 2"] } },
+    superior: { summaries: { "pt-BR": "Causa 4d8 de vitalidade e 4 de dano colateral de vitalidade, deixa o alvo enfraquecido 2 e concede +3 no ataque.", en: "Deals 4d8 vitality damage and 4 vitality splash damage, makes the target enfeebled 2, and grants a +3 item attack bonus.", es: "Inflige 4d8 de daño de vitalidad y 4 de daño colateral de vitalidad, deja al objetivo debilitado 2 y concede +3 al ataque." }, mechanics: { damage: "4d8 vitality", splashDamage: "4 vitality", attackItemBonus: 3, onHit: ["enfeebled 2"] } },
+  },
+  alchemists_fire: {
+    moderate: { summaries: { "pt-BR": "Causa 2d8 de fogo, 2 de fogo persistente e 2 de dano colateral; concede +1 no ataque.", en: "Deals 2d8 fire damage, 2 persistent fire damage, and 2 fire splash damage; grants a +1 item attack bonus.", es: "Inflige 2d8 de daño de fuego, 2 de fuego persistente y 2 de daño colateral; concede +1 al ataque." }, mechanics: { damage: "2d8 fire", persistentDamage: "2 fire", splashDamage: "2 fire", attackItemBonus: 1 } },
+    greater: { summaries: { "pt-BR": "Causa 3d8 de fogo, 3 de fogo persistente e 3 de dano colateral; concede +2 no ataque.", en: "Deals 3d8 fire damage, 3 persistent fire damage, and 3 fire splash damage; grants a +2 item attack bonus.", es: "Inflige 3d8 de daño de fuego, 3 de fuego persistente y 3 de daño colateral; concede +2 al ataque." }, mechanics: { damage: "3d8 fire", persistentDamage: "3 fire", splashDamage: "3 fire", attackItemBonus: 2 } },
+    superior: { summaries: { "pt-BR": "Causa 4d8 de fogo, 4 de fogo persistente e 4 de dano colateral; concede +3 no ataque.", en: "Deals 4d8 fire damage, 4 persistent fire damage, and 4 fire splash damage; grants a +3 item attack bonus.", es: "Inflige 4d8 de daño de fuego, 4 de fuego persistente y 4 de daño colateral; concede +3 al ataque." }, mechanics: { damage: "4d8 fire", persistentDamage: "4 fire", splashDamage: "4 fire", attackItemBonus: 3 } },
+  },
+  frost_vial: {
+    moderate: { summaries: { "pt-BR": "Causa 2d6 de frio e 2 de dano colateral; concede +1 no ataque e impõe –3 metros às Velocidades até o início do próximo turno.", en: "Deals 2d6 cold damage and 2 cold splash damage; grants a +1 item attack bonus and imposes a –10-foot Speed penalty until the start of the next turn.", es: "Inflige 2d6 de frío y 2 de daño colateral; concede +1 al ataque e impone –3 metros a las Velocidades hasta el inicio del próximo turno." }, mechanics: { damage: "2d6 cold", splashDamage: "2 cold", attackItemBonus: 1, speedPenalty: "-3m", duration: "until the start of the target's next turn" } },
+    greater: { summaries: { "pt-BR": "Causa 3d6 de frio e 3 de dano colateral; concede +2 no ataque e impõe –3 metros às Velocidades até o início do próximo turno.", en: "Deals 3d6 cold damage and 3 cold splash damage; grants a +2 item attack bonus and imposes a –10-foot Speed penalty until the start of the next turn.", es: "Inflige 3d6 de frío y 3 de daño colateral; concede +2 al ataque e impone –3 metros a las Velocidades hasta el inicio del próximo turno." }, mechanics: { damage: "3d6 cold", splashDamage: "3 cold", attackItemBonus: 2, speedPenalty: "-3m", duration: "until the start of the target's next turn" } },
+    superior: { summaries: { "pt-BR": "Causa 4d6 de frio e 4 de dano colateral; concede +3 no ataque e impõe –4,5 metros às Velocidades até o início do próximo turno.", en: "Deals 4d6 cold damage and 4 cold splash damage; grants a +3 item attack bonus and imposes a –15-foot Speed penalty until the start of the next turn.", es: "Inflige 4d6 de frío y 4 de daño colateral; concede +3 al ataque e impone –4,5 metros a las Velocidades hasta el inicio del próximo turno." }, mechanics: { damage: "4d6 cold", splashDamage: "4 cold", attackItemBonus: 3, speedPenalty: "-4.5m", duration: "until the start of the target's next turn" } },
+  },
+  acid_flask: {
+    moderate: { summaries: { "pt-BR": "Causa 2d6 de ácido persistente e 2 de dano colateral; concede +1 no ataque.", en: "Deals 2d6 persistent acid damage and 2 acid splash damage; grants a +1 item attack bonus.", es: "Inflige 2d6 de daño de ácido persistente y 2 de daño colateral; concede +1 al ataque." }, mechanics: { persistentDamage: "2d6 acid", splashDamage: "2 acid", attackItemBonus: 1 } },
+    greater: { summaries: { "pt-BR": "Causa 3d6 de ácido persistente e 3 de dano colateral; concede +2 no ataque.", en: "Deals 3d6 persistent acid damage and 3 acid splash damage; grants a +2 item attack bonus.", es: "Inflige 3d6 de daño de ácido persistente y 3 de daño colateral; concede +2 al ataque." }, mechanics: { persistentDamage: "3d6 acid", splashDamage: "3 acid", attackItemBonus: 2 } },
+    superior: { summaries: { "pt-BR": "Causa 4d6 de ácido persistente e 4 de dano colateral; concede +3 no ataque.", en: "Deals 4d6 persistent acid damage and 4 acid splash damage; grants a +3 item attack bonus.", es: "Inflige 4d6 de daño de ácido persistente y 4 de daño colateral; concede +3 al ataque." }, mechanics: { persistentDamage: "4d6 acid", splashDamage: "4 acid", attackItemBonus: 3 } },
+  },
+  detonating_stone: {
+    moderate: { summaries: { "pt-BR": "Causa 2d4 de sônico e 2 de dano colateral; concede +1 no ataque, CD 20, e pode ensurdecer criaturas próximas.", en: "Deals 2d4 sonic damage and 2 sonic splash damage; grants a +1 item attack bonus, DC 20, and can deafen nearby creatures.", es: "Inflige 2d4 de daño sónico y 2 de daño colateral; concede +1 al ataque, CD 20, y puede ensordecer a criaturas cercanas." }, mechanics: { damage: "2d4 sonic", splashDamage: "2 sonic", attackItemBonus: 1, fortitudeDC: 20, areaEffect: "deafened until the end of the next turn" } },
+    greater: { summaries: { "pt-BR": "Causa 3d4 de sônico e 3 de dano colateral; concede +2 no ataque, CD 28, e pode ensurdecer criaturas próximas.", en: "Deals 3d4 sonic damage and 3 sonic splash damage; grants a +2 item attack bonus, DC 28, and can deafen nearby creatures.", es: "Inflige 3d4 de daño sónico y 3 de daño colateral; concede +2 al ataque, CD 28, y puede ensordecer a criaturas cercanas." }, mechanics: { damage: "3d4 sonic", splashDamage: "3 sonic", attackItemBonus: 2, fortitudeDC: 28, areaEffect: "deafened until the end of the next turn" } },
+    superior: { summaries: { "pt-BR": "Causa 4d4 de sônico e 4 de dano colateral; concede +3 no ataque, CD 36, e pode ensurdecer criaturas próximas.", en: "Deals 4d4 sonic damage and 4 sonic splash damage; grants a +3 item attack bonus, DC 36, and can deafen nearby creatures.", es: "Inflige 4d4 de daño sónico y 4 de daño colateral; concede +3 al ataque, CD 36, y puede ensordecer a criaturas cercanas." }, mechanics: { damage: "4d4 sonic", splashDamage: "4 sonic", attackItemBonus: 3, fortitudeDC: 36, areaEffect: "deafened until the end of the next turn" } },
+  },
+  bottled_lightning: {
+    moderate: { summaries: { "pt-BR": "Causa 2d6 de eletricidade e 2 de dano colateral; concede +1 no ataque e deixa o alvo desprevenido até o início do próximo turno.", en: "Deals 2d6 electricity damage and 2 electricity splash damage; grants a +1 item attack bonus and makes the target off-guard until the start of the next turn.", es: "Inflige 2d6 de electricidad y 2 de daño colateral; concede +1 al ataque y deja al objetivo desprevenido hasta el inicio del próximo turno." }, mechanics: { damage: "2d6 electricity", splashDamage: "2 electricity", attackItemBonus: 1, onHit: ["off-guard until the start of the target's next turn"] } },
+    greater: { summaries: { "pt-BR": "Causa 3d6 de eletricidade e 3 de dano colateral; concede +2 no ataque e deixa o alvo desprevenido até o início do próximo turno.", en: "Deals 3d6 electricity damage and 3 electricity splash damage; grants a +2 item attack bonus and makes the target off-guard until the start of the next turn.", es: "Inflige 3d6 de electricidad y 3 de daño colateral; concede +2 al ataque y deja al objetivo desprevenido hasta el inicio del próximo turno." }, mechanics: { damage: "3d6 electricity", splashDamage: "3 electricity", attackItemBonus: 2, onHit: ["off-guard until the start of the target's next turn"] } },
+    superior: { summaries: { "pt-BR": "Causa 4d6 de eletricidade e 4 de dano colateral; concede +3 no ataque e deixa o alvo desprevenido até o início do próximo turno.", en: "Deals 4d6 electricity damage and 4 electricity splash damage; grants a +3 item attack bonus and makes the target off-guard until the start of the next turn.", es: "Inflige 4d6 de electricidad y 4 de daño colateral; concede +3 al ataque y deja al objetivo desprevenido hasta el inicio del próximo turno." }, mechanics: { damage: "4d6 electricity", splashDamage: "4 electricity", attackItemBonus: 3, onHit: ["off-guard until the start of the target's next turn"] } },
+  },
+};
 const playerCore2BombVariants = [
   ["frightful_ampoule", "Ampola Pavorosa", "Frightful Ampoule", "Ampolla pavorosa", 283],
   ["tanglefoot_bag", "Bomba de Cola", "Tanglefoot Bag", "Bomba de cola", 283],
@@ -5496,15 +5548,18 @@ const playerCore2BombVariants = [
   ["moderate", "Moderada", "Moderate", "Moderada", 3, 10],
   ["greater", "Maior", "Greater", "Mayor", 11, 250],
   ["superior", "Superior", "Major", "Superior", 17, 2500],
-].map(([tier, ptTier, enTier, esTier, level, gp]) => ({
+].map(([tier, ptTier, enTier, esTier, level, gp]) => {
+  const confirmedMechanics = PLAYER_CORE_2_BOMB_MECHANICS?.[slug]?.[tier];
+  return {
   id: `formula.pc2.${slug}_${tier}`,
   name: `${ptBase} ${ptTier} (${enBase} ${enTier})`,
   names: { "pt-BR": `${ptBase} ${ptTier}`, en: `${enBase} ${enTier}`, es: `${esBase} ${esTier}` },
   summaries: {
-    "pt-BR": `Variante ${ptTier.toLowerCase()} da bomba alquímica ${ptBase.toLowerCase()}; os efeitos completos devem ser consultados na página ${page}.`,
-    en: `${enTier} version of the ${enBase.toLowerCase()} alchemical bomb; consult page ${page} for the complete effects.`,
-    es: `Versión ${esTier.toLowerCase()} de la bomba alquímica ${esBase.toLowerCase()}; consulta la página ${page} para los efectos completos.`
+    "pt-BR": confirmedMechanics?.summaries?.["pt-BR"] || `Variante ${ptTier.toLowerCase()} da bomba alquímica ${ptBase.toLowerCase()}; os efeitos completos devem ser consultados na página ${page}.`,
+    en: confirmedMechanics?.summaries?.en || `${enTier} version of the ${enBase.toLowerCase()} alchemical bomb; consult page ${page} for the complete effects.`,
+    es: confirmedMechanics?.summaries?.es || `Versión ${esTier.toLowerCase()} de la bomba alquímica ${esBase.toLowerCase()}; consulta la página ${page} para los efectos completos.`
   },
+  mechanics: confirmedMechanics?.mechanics,
   level,
   price: { gp },
   category: "Alquímico (Bomba)",
@@ -5514,15 +5569,112 @@ const playerCore2BombVariants = [
   source: { book: PLAYER_CORE_2_SOURCE, page },
   ruleset: "remaster",
   rarity: "common",
-  needs_review: true
-})));
+  needs_review: !confirmedMechanics
+  };
+}));
 for (const formula of playerCore2BombVariants) {
   if (!(PF2E_DATA.formulas || []).some((candidate) => candidate.id === formula.id)) PF2E_DATA.formulas.push(formula);
 }
 
+// Player Core 2, pp. 295–296: efeitos objetivos das ferramentas alquímicas
+// cujo texto local permite modelagem sem inferência adicional.
+const PLAYER_CORE_2_ALCHEMICAL_TOOL_MECHANICS = {
+  bright_stick: {
+    summaries: {
+      "pt-BR": "Ao ser batido contra uma superfície dura, emite luz forte em 6 metros e luz fraca nos 12 metros seguintes por 6 horas.",
+      en: "When struck against a hard surface, it emits bright light in a 6-meter radius and dim light in the next 12 meters for 6 hours.",
+      es: "Al golpearlo contra una superficie dura, emite luz brillante en un radio de 6 metros y luz tenue en los 12 metros siguientes durante 6 horas."
+    },
+    mechanics: { activation: "Interact", brightLightRadius: "6 m", dimLightRadius: "12 m", duration: "6 hours" }
+  },
+  phosphor: {
+    summaries: {
+      "pt-BR": "Ao ser esfregado contra uma superfície áspera, acende. Pode ser aceso e tocado em um objeto inflamável como parte da mesma ação de Interagir; permanece aceso por 1 rodada e então é consumido.",
+      en: "When rubbed against a rough surface, it ignites. It can be lit and touched to a flammable object as part of the same Interact action; it burns for 1 round and is then consumed.",
+      es: "Al frotarlo contra una superficie áspera, se enciende. Puede encenderse y tocar un objeto inflamable como parte de la misma acción de Interactuar; permanece encendido durante 1 asalto y luego se consume."
+    },
+    mechanics: { activation: "Interact", ignition: "rub against a rough surface", duration: "1 round", canIgniteFlammableObject: true, consumedAfterUse: true }
+  },
+  smoke_ball: {
+    summaries: {
+      "pt-BR": "Cria uma explosão de fumaça densa: criaturas na área ficam ocultadas, e a fumaça dura 1 minuto ou até ser dispersada por ventos fortes. Raio de 1,5 m; a versão maior tem raio de 3 m.",
+      en: "Creates a burst of dense smoke: creatures in the area are concealed, and the smoke lasts 1 minute or until dispersed by strong winds. The radius is 1.5 meters; the greater version has a 3-meter radius.",
+      es: "Crea una explosión de humo denso: las criaturas en el área quedan ocultas, y el humo dura 1 minuto o hasta que lo dispersen vientos fuertes. El radio es de 1,5 metros; la versión mayor tiene un radio de 3 metros."
+    },
+    mechanics: { activation: "Interact", area: "burst", radius: "1.5 m", greaterRadius: "3 m", duration: "1 minute or until strong winds disperse it", conditions: ["concealed"] }
+  },
+  forensic_dye: {
+    summaries: {
+      "pt-BR": "Ao receber uma pequena quantidade de outro composto ou material, como sangue ou lama, transforma-se rapidamente em substância marrom-avermelhada e depois volta a ficar transparente.",
+      en: "When given a small amount of another compound or material, such as blood or mud, it quickly turns brown-red and then becomes clear again.",
+      es: "Al añadir una pequeña cantidad de otro compuesto o material, como sangre o barro, se vuelve rápidamente marrón rojizo y luego vuelve a ser transparente."
+    },
+    mechanics: { activation: "Interact", triggerMaterialExamples: ["blood", "mud"], result: "brief brown-red coloration, then clear" }
+  },
+  snake_oil: {
+    summaries: {
+      "pt-BR": "Aplicado a um ferimento ou sintoma visível, faz o sintoma desaparecer por 1 hora e impede que a criatura sinta os efeitos da condição, embora eles permaneçam. Percepção CD 17 com Buscar detecta a farsa.",
+      en: "Applied to a wound or visible symptom, it makes the symptom disappear for 1 hour and prevents the creature from feeling the condition's effects, although they remain. Perception DC 17 with Seek detects the deception.",
+      es: "Aplicado a una herida o síntoma visible, hace desaparecer el síntoma durante 1 hora y evita que la criatura sienta los efectos de la condición, aunque permanecen. Percepción CD 17 con Buscar detecta el engaño."
+    },
+    mechanics: { activation: "Interact", duration: "1 hour", perceptionDC: 17, detectionAction: "Seek", effect: "visible symptom disappears and condition effects are not felt; condition remains" }
+  },
+  ghost_ink: {
+    summaries: {
+      "pt-BR": "Fica transparente por 1 minuto após aplicada e brilha em vermelho quando exposta ao calor. O criador pode escolher luz solar, luz estelar, luz mágica ou luz alquímica sem calor como método de revelação.",
+      en: "It becomes transparent for 1 minute after application and glows red when exposed to heat. The creator can choose sunlight, starlight, magical light, or heatless alchemical light as the revealing method.",
+      es: "Se vuelve transparente durante 1 minuto tras aplicarla y brilla en rojo al exponerse al calor. El creador puede elegir luz solar, luz estelar, luz mágica o luz alquímica sin calor como método de revelación."
+    },
+    mechanics: { activation: "Interact", duration: "1 minute", writingCapacity: "1 page per bottle", detectionPerceptionDC: 25, revealMethods: ["sunlight", "starlight", "magic light", "heatless alchemical light"] }
+  }
+};
+
+// Player Core 2, pp. 291–292: estágios completos confirmados no texto local.
+Object.assign(PLAYER_CORE_2_ALCHEMICAL_TOOL_MECHANICS, {
+  arsenic: {
+    summaries: {
+      "pt-BR": "Veneno ingerido com Fortitude CD 18, latência de 10 minutos e duração máxima de 5 minutos. Estágios: 1d4 de veneno e enjoado 1; 1d6 de veneno e enjoado 2; 1d8 de veneno e enjoado 3.",
+      en: "Ingested poison with Fortitude DC 18, a 10-minute onset, and a 5-minute maximum duration. Stages: 1d4 poison and sickened 1; 1d6 poison and sickened 2; 1d8 poison and sickened 3.",
+      es: "Veneno ingerido con Fortaleza CD 18, latencia de 10 minutos y duración máxima de 5 minutos. Etapas: 1d4 de veneno y enfermo 1; 1d6 de veneno y enfermo 2; 1d8 de veneno y enfermo 3."
+    },
+    mechanics: { save: "Fortitude", saveDC: 18, onset: "10 minutes", maximumDuration: "5 minutes", stages: ["1d4 poison + sickened 1", "1d6 poison + sickened 2", "1d8 poison + sickened 3"] }
+  },
+  belladonna: {
+    summaries: {
+      "pt-BR": "Veneno ingerido com Fortitude CD 19, latência de 10 minutos e duração máxima de 30 minutos. Estágios: ofuscado por 10 minutos; 1d6 de veneno e enjoado 1 por 10 minutos; 1d6 de veneno, confuso e enjoado 1 por 1 minuto.",
+      en: "Ingested poison with Fortitude DC 19, a 10-minute onset, and a 30-minute maximum duration. Stages: dazzled for 10 minutes; 1d6 poison and sickened 1 for 10 minutes; 1d6 poison, confused, and sickened 1 for 1 minute.",
+      es: "Veneno ingerido con Fortaleza CD 19, latencia de 10 minutos y duración máxima de 30 minutos. Etapas: deslumbrado durante 10 minutos; 1d6 de veneno y enfermo 1 durante 10 minutos; 1d6 de veneno, confundido y enfermo 1 durante 1 minuto."
+    },
+    mechanics: { save: "Fortitude", saveDC: 19, onset: "10 minutes", maximumDuration: "30 minutes", stages: ["dazzled 10 minutes", "1d6 poison + sickened 1 for 10 minutes", "1d6 poison + confused + sickened 1 for 1 minute"] }
+  },
+  cytillesh_oil: {
+    summaries: {
+      "pt-BR": "Veneno com Fortitude CD 19 e duração máxima de 4 rodadas. Cada estágio dura 1 rodada e causa 1d8, 1d10 ou 2d8 de dano de veneno.",
+      en: "Poison with Fortitude DC 19 and a 4-round maximum duration. Each stage lasts 1 round and deals 1d8, 1d10, or 2d8 poison damage.",
+      es: "Veneno con Fortaleza CD 19 y duración máxima de 4 asaltos. Cada etapa dura 1 asalto e inflige 1d8, 1d10 o 2d8 de daño de veneno."
+    },
+    mechanics: { save: "Fortitude", saveDC: 19, maximumDuration: "4 rounds", stageDuration: "1 round", stages: ["1d8 poison", "1d10 poison", "2d8 poison"] }
+  },
+  black_lotus_extract: {
+    summaries: {
+      "pt-BR": "Veneno ingerido com Fortitude CD 42, latência de 1 minuto e duração máxima de 6 rodadas. Estágios: 13d6, 15d6 ou 17d6 de dano de veneno, com drenado 1, drenado 1 ou drenado 2, respectivamente, por 1 rodada.",
+      en: "Ingested poison with Fortitude DC 42, a 1-minute onset, and a 6-round maximum duration. Stages deal 13d6, 15d6, or 17d6 poison damage with drained 1, drained 1, or drained 2 respectively, for 1 round.",
+      es: "Veneno ingerido con Fortaleza CD 42, latencia de 1 minuto y duración máxima de 6 asaltos. Las etapas infligen 13d6, 15d6 o 17d6 de daño de veneno con drenado 1, drenado 1 o drenado 2 respectivamente, durante 1 asalto."
+    },
+    mechanics: { save: "Fortitude", saveDC: 42, onset: "1 minute", maximumDuration: "6 rounds", stageDuration: "1 round", stages: ["13d6 poison + drained 1", "15d6 poison + drained 1", "17d6 poison + drained 2"] }
+  },
+  death_takings: {
+    summaries: {
+      "pt-BR": "Veneno ingerido com Fortitude CD 44, latência de 1 minuto e duração máxima de 10 minutos. Estágios: 20d6, 22d6 ou 24d6 de dano de veneno e paralisado por 1 rodada.",
+      en: "Ingested poison with Fortitude DC 44, a 1-minute onset, and a 10-minute maximum duration. Stages deal 20d6, 22d6, or 24d6 poison damage and paralyze for 1 round.",
+      es: "Veneno ingerido con Fortaleza CD 44, latencia de 1 minuto y duración máxima de 10 minutos. Las etapas infligen 20d6, 22d6 o 24d6 de daño de veneno y paralizan durante 1 asalto."
+    },
+    mechanics: { save: "Fortitude", saveDC: 44, onset: "1 minute", maximumDuration: "10 minutes", stageDuration: "1 round", stages: ["20d6 poison + paralyzed", "22d6 poison + paralyzed", "24d6 poison + paralyzed"] }
+  }
+});
+
 // Outras entradas da tabela de itens alquímicos do Player Core 2 (pp. 291–296).
-// São utilizáveis pelo personagem e têm metadados editoriais confirmados, mas
-// continuam em revisão enquanto seus estágios/efeitos não estiverem no motor.
+// As entradas sem mecânica confirmada continuam marcadas para revisão.
 const playerCore2AlchemicalTableEntries = [
   ["bright_stick", "Bastão Brilhante", "Glow Rod", "Bastón luminoso", 1, { gp: 3 }, 295, "Ferramenta"],
   ["smoke_ball", "Bola de Fumaça", "Smoke Ball", "Bola de humo", 1, { gp: 3 }, 295, "Ferramenta"],
@@ -5548,27 +5700,44 @@ const playerCore2AlchemicalTableEntries = [
   ["draining_shadow", "Sombra Desgastante", "Draining Shadow", "Sombra agotadora", 10, { gp: 160 }, 293, "Veneno"],
   ["black_lotus_extract", "Extrato de Lótus Negra", "Black Lotus Extract", "Extracto de loto negro", 19, { gp: 6500 }, 292, "Veneno"],
   ["death_takings", "Lágrimas da Morte", "Tears of Death", "Lágrimas de la muerte", 20, { gp: 12000 }, 292, "Veneno"],
-].map(([slug, pt, en, es, level, price, page, category]) => ({
+].map(([slug, pt, en, es, level, price, page, category]) => {
+  const confirmedMechanics = PLAYER_CORE_2_ALCHEMICAL_TOOL_MECHANICS[slug];
+  return {
   id: `formula.pc2.${slug}`,
   name: `${pt} (${en})`,
   names: { "pt-BR": pt, en, es },
-  summaries: {
+  summaries: confirmedMechanics?.summaries || {
     "pt-BR": `Item alquímico de categoria ${category.toLowerCase()} listado na tabela do Player Core 2; consulte a página ${page} para os efeitos completos.`,
     en: `Player Core 2 alchemical ${category.toLowerCase()} listed in the item table; consult page ${page} for the complete effects.`,
     es: `Objeto alquímico de categoría ${category.toLowerCase()} listado en la tabla del Player Core 2; consulta la página ${page} para los efectos completos.`
   },
+  mechanics: confirmedMechanics?.mechanics,
   level,
   price,
   category: `Alquímico (${category})`,
   traits: ["Alquímico", "Consumível", category],
-  description: `Entrada de tabela confirmada na página ${page}; efeito completo pendente de modelagem.`,
+  description: confirmedMechanics?.summaries?.["pt-BR"] || `Entrada de tabela confirmada na página ${page}; efeito completo pendente de modelagem.`,
   source: { book: PLAYER_CORE_2_SOURCE, page },
   ruleset: "remaster",
   rarity: "common",
-  needs_review: true
-}));
+  needs_review: !confirmedMechanics
+  };
+});
 for (const formula of playerCore2AlchemicalTableEntries) {
   if (!(PF2E_DATA.formulas || []).some((candidate) => candidate.id === formula.id)) PF2E_DATA.formulas.push(formula);
+}
+
+// Também atualiza fórmulas já criadas por entradas anteriores, mantendo item e
+// fórmula com o mesmo efeito confirmado.
+for (const [slug, confirmedMechanics] of Object.entries(PLAYER_CORE_2_ALCHEMICAL_TOOL_MECHANICS)) {
+  for (const collection of [PF2E_DATA.formulas || [], PF2E_DATA.itemCompendium || []]) {
+    const record = collection.find((candidate) => candidate.id === `formula.pc2.${slug}` || candidate.id === `item.pc2.${slug}`);
+    if (!record) continue;
+    record.summaries = confirmedMechanics.summaries;
+    record.description = confirmedMechanics.summaries["pt-BR"];
+    record.mechanics = confirmedMechanics.mechanics;
+    record.needs_review = false;
+  }
 }
 
 // Cada veneno indexado como item utilizável também precisa aparecer na lista

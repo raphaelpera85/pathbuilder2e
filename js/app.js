@@ -391,12 +391,18 @@ class PathbuilderApp {
         }
       }
     };
-    const addCollection = (collection) => {
+    const addCollection = (collection, collectionKey = "") => {
+      if (collectionKey === "classStarterKits") return;
       if (Array.isArray(collection)) collection.forEach((record) => addRecord(record));
-      else if (collection && typeof collection === "object") Object.entries(collection).forEach(([key, record]) => addRecord(record, key));
+      else if (collection && typeof collection === "object") Object.entries(collection).forEach(([key, record]) => {
+        // Starter kits are inventory presets; their display names must not
+        // overwrite the canonical class names in the localization index.
+        if (key === "classStarterKits") return;
+        addRecord(record, key);
+      });
     };
     if (typeof PF2E_DATA !== "undefined" && PF2E_DATA) {
-      Object.values(PF2E_DATA).forEach(addCollection);
+      Object.entries(PF2E_DATA).forEach(([collectionKey, collection]) => addCollection(collection, collectionKey));
       if (PF2E_DATA.COMPENDIUM_TRANSLATIONS) {
         for (const [id, trans] of Object.entries(PF2E_DATA.COMPENDIUM_TRANSLATIONS)) {
           if (!Array.isArray(trans)) continue;
@@ -480,6 +486,28 @@ class PathbuilderApp {
       ? [["Treinado em", "Trained in"], ["Treinado com", "Trained with"], ["Especialista em", "Expert in"], ["Mestre em", "Master in"], ["Lendário em", "Legendary in"], ["Acrobacia", "Acrobatics"], ["Atletismo", "Athletics"], ["Arcanismo", "Arcana"], ["Manufatura", "Crafting"], ["Enganação", "Deception"], ["Diplomacia", "Diplomacy"], ["Intimidação", "Intimidation"], ["Medicina", "Medicine"], ["Natureza", "Nature"], ["Ocultismo", "Occultism"], ["Religião", "Religion"], ["Sociedade", "Society"], ["Furtividade", "Stealth"], ["Sobrevivência", "Survival"], ["Ladinagem", "Thievery"], ["Força", "Strength"], ["Destreza", "Dexterity"], ["Constituição", "Constitution"], ["Inteligência", "Intelligence"], ["Sabedoria", "Wisdom"], ["Carisma", "Charisma"], [" e ", " and "]]
       : [["Treinado em", "Entrenado en"], ["Treinado com", "Entrenado con"], ["Especialista em", "Experto en"], ["Mestre em", "Maestro en"], ["Lendário em", "Legendario en"], ["Acrobacia", "Acrobacias"], ["Atletismo", "Atletismo"], ["Arcanismo", "Arcana"], ["Manufatura", "Artesanía"], ["Enganação", "Engaño"], ["Diplomacia", "Diplomacia"], ["Intimidação", "Intimidación"], ["Medicina", "Medicina"], ["Natureza", "Naturaleza"], ["Ocultismo", "Ocultismo"], ["Religião", "Religión"], ["Sociedade", "Sociedad"], ["Furtividade", "Sigilo"], ["Sobrevivência", "Supervivencia"], ["Ladinagem", "Latrocinio"], ["Força", "Fuerza"], ["Destreza", "Destreza"], ["Constituição", "Constitución"], ["Inteligência", "Inteligencia"], ["Sabedoria", "Sabiduría"], ["Carisma", "Carisma"], [" e ", " y "]];
     return dictionary.reduce((result, [from, to]) => result.replace(new RegExp(from.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi"), to), text);
+  }
+
+  normalizeClassIdentity(rawValue) {
+    if (!rawValue || typeof rawValue !== "string" || typeof PF2E_DATA === "undefined") return rawValue;
+    const raw = rawValue.trim();
+    const classes = PF2E_DATA.classes && typeof PF2E_DATA.classes === "object" ? PF2E_DATA.classes : {};
+    const direct = Object.keys(classes).find((key) => key === raw || classes[key]?.id === raw);
+    if (direct) return direct;
+
+    const kits = PF2E_DATA.classStarterKits && typeof PF2E_DATA.classStarterKits === "object"
+      ? PF2E_DATA.classStarterKits
+      : {};
+    const normalized = raw.toLocaleLowerCase().replace(/\s+\d+$/, "").trim();
+    const kitEntry = Object.entries(kits).find(([classKey, kit]) => {
+      const aliases = [
+        classKey,
+        kit?.name,
+        String(classKey).replace(/^.*?\(([^)]+)\).*$/, "$1") + " Starter Kit",
+      ].filter(Boolean).map((value) => String(value).toLocaleLowerCase());
+      return aliases.some((alias) => normalized === alias || normalized.includes(alias) || alias.includes(normalized));
+    });
+    return kitEntry?.[0] || raw;
   }
 
   localizeTrait(trait, locale = this.getLocale()) {
@@ -898,6 +926,7 @@ class PathbuilderApp {
       if (savedLocal) {
         try {
           this.character = assertSafeCharacterDocument(JSON.parse(savedLocal));
+          this.character.class = this.normalizeClassIdentity(this.character.class);
           this.diceHistory = Array.isArray(this.character.diceHistory) ? this.character.diceHistory.slice(0, 100) : [];
           this.normalizeCharacterCoins();
           this.revalidateLoadedSelections();
@@ -919,6 +948,7 @@ class PathbuilderApp {
       const resp = await fetch(`characters/${charId}.json`);
       if (resp.ok) {
         this.character = assertSafeCharacterDocument(await resp.json());
+        this.character.class = this.normalizeClassIdentity(this.character.class);
         this.diceHistory = Array.isArray(this.character.diceHistory) ? this.character.diceHistory.slice(0, 100) : [];
       } else {
         this.character = this.getDefaultCharacter(charId);
@@ -7425,6 +7455,7 @@ class PathbuilderApp {
   loadCharacter(character) {
     if (!character) return;
     this.character = assertSafeCharacterDocument(character);
+    this.character.class = this.normalizeClassIdentity(this.character.class);
     this.revalidateLoadedSelections();
     this.diceHistory = Array.isArray(this.character.diceHistory) ? this.character.diceHistory.slice(0, 100) : [];
     this.reconcileSpellcastingProfile();
@@ -7519,6 +7550,7 @@ class PathbuilderApp {
     try {
       this.character = assertSafeCharacterDocument(JSON.parse(document.getElementById("jsonArea").value));
       this.revalidateLoadedSelections();
+      this.character.class = this.normalizeClassIdentity(this.character.class);
       this.diceHistory = Array.isArray(this.character.diceHistory) ? this.character.diceHistory.slice(0, 100) : [];
       document.getElementById("modalJsonOverlay").classList.remove("active");
       this.saveCharacterLocal(false);
@@ -8077,7 +8109,10 @@ class PathbuilderApp {
         </footer>
       </div>
     `;
-    window.print();
+    // Deixa o navegador concluir o layout da ficha antes de abrir o diálogo
+    // nativo; isso evita bloquear a renderização em telas menores e no browser.
+    const schedulePrint = typeof setTimeout === "function" ? setTimeout : (callback) => callback();
+    schedulePrint(() => window.print(), 250);
   }
 
   printLegacySheet() {
@@ -8147,7 +8182,8 @@ class PathbuilderApp {
         </div>
       </div>
     `;
-    window.print();
+    const schedulePrint = typeof setTimeout === "function" ? setTimeout : (callback) => callback();
+    schedulePrint(() => window.print(), 250);
   }
 
   // =========================================================================
@@ -8265,6 +8301,7 @@ class PathbuilderApp {
     try {
       this.character = assertSafeCharacterDocument(this.lastAIGeneratedChar);
       this.revalidateLoadedSelections();
+      this.character.class = this.normalizeClassIdentity(this.character.class);
       this.diceHistory = Array.isArray(this.character.diceHistory) ? this.character.diceHistory.slice(0, 100) : [];
       this.saveCharacterLocal();
       this.renderAll();

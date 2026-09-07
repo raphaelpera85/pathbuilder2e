@@ -4,7 +4,16 @@ const { spawnSync } = require("node:child_process");
 const { PDFDocument } = require("pdf-lib");
 
 const positionalArgs = process.argv.slice(2).filter((argument) => !argument.startsWith("--"));
-const booksDir = path.resolve(positionalArgs[0] || process.env.LIVROS_PATH || "D:\\Users\\rapha\\Documents\\Projetos\\RPG\\livros");
+const configuredBooksDir = positionalArgs[0] || process.env.LIVROS_PATH;
+const defaultBooksDirs = [
+  "D:\\Users\\rapha\\Documents\\Projetos\\RPG\\livros",
+  "D:\\Users\\rapha\\Documents\\Projetos\\RPG\\Livros RPG",
+];
+const booksDir = path.resolve(
+  configuredBooksDir
+    || defaultBooksDirs.find((candidate) => fs.existsSync(candidate))
+    || defaultBooksDirs[0]
+);
 if (!fs.existsSync(booksDir)) {
   console.warn(`[AVISO] Pasta de livros não encontrada em: ${booksDir}. Verifique a variável LIVROS_PATH.`);
   console.log(JSON.stringify({

@@ -11,6 +11,7 @@ import webbrowser
 import threading
 import sys
 import re
+import tempfile
 
 PORT = 8080
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -18,17 +19,57 @@ STATIC_DIR = os.path.join(BASE_DIR, "dist")
 CHARACTERS_DIR = os.path.join(BASE_DIR, "characters")
 MAX_BODY_BYTES = 1_000_000
 SAFE_CHARACTER_ID = re.compile(r"^[A-Za-z0-9_-]{1,160}$")
+ALLOWED_ORIGINS = {
+    "http://127.0.0.1:5173",
+    "http://localhost:5173",
+    "http://127.0.0.1:8080",
+    "http://localhost:8080",
+}
 
 os.makedirs(CHARACTERS_DIR, exist_ok=True)
+
+
+class ClientInputError(ValueError):
+    status = 400
+
+
+class PayloadTooLargeError(ClientInputError):
+    status = 413
 
 class PathbuilderHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=STATIC_DIR, **kwargs)
 
     def _send_cors_headers(self):
-        self.send_header("Access-Control-Allow-Origin", "*")
+        origin = self.headers.get("Origin")
+        if origin in ALLOWED_ORIGINS:
+            self.send_header("Access-Control-Allow-Origin", origin)
+            self.send_header("Vary", "Origin")
         self.send_header("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS")
         self.send_header("Access-Control-Allow-Headers", "Content-Type, Authorization")
+
+    def _read_json_body(self):
+        try:
+            content_length = int(self.headers.get("Content-Length", 0))
+        except (TypeError, ValueError):
+            raise ClientInputError("Invalid request body")
+        if content_length <= 0:
+            raise ClientInputError("Request body is required")
+        if content_length > MAX_BODY_BYTES:
+            raise PayloadTooLargeError("Request body exceeds the character limit")
+        body = self.rfile.read(content_length)
+        if len(body) != content_length:
+            raise ClientInputError("Incomplete request body")
+        try:
+            value = json.loads(body.decode("utf-8"))
+        except (UnicodeDecodeError, json.JSONDecodeError):
+            raise ClientInputError("Invalid JSON body")
+        if not isinstance(value, dict):
+            raise ClientInputError("Character document must be a JSON object")
+        return value
+
+    def _send_client_error(self, error):
+        self.send_error(getattr(error, "status", 400), str(error))
 
     def do_OPTIONS(self):
         self.send_response(204)
@@ -44,8 +85,10 @@ class PathbuilderHandler(http.server.SimpleHTTPRequestHandler):
                 self.send_header("Content-Type", "application/json; charset=utf-8")
                 self.end_headers()
                 self.wfile.write(json.dumps({"characters": files}).encode("utf-8"))
-            except Exception as e:
-                self.send_error(500, str(e))
+            except ClientInputError as e:
+                self._send_client_error(e)
+            except Exception:
+                self.send_error(500, "Internal server error")
             return
 
         if self.path.startswith("/api/characters/"):
@@ -66,8 +109,10 @@ class PathbuilderHandler(http.server.SimpleHTTPRequestHandler):
                 self.send_header("Content-Type", "application/json; charset=utf-8")
                 self.end_headers()
                 self.wfile.write(json.dumps(data, ensure_ascii=False).encode("utf-8"))
-            except Exception as e:
-                self.send_error(500, str(e))
+            except ClientInputError as e:
+                self._send_client_error(e)
+            except Exception:
+                self.send_error(500, "Internal server error")
             return
 
         return super().do_GET()
@@ -75,12 +120,7 @@ class PathbuilderHandler(http.server.SimpleHTTPRequestHandler):
     def do_POST(self):
         if self.path == "/api/save_character":
             try:
-                content_length = int(self.headers.get('Content-Length', 0))
-                if content_length <= 0 or content_length > MAX_BODY_BYTES:
-                    self.send_error(413, "Character document must be between 1 byte and 1 MB")
-                    return
-                body = self.rfile.read(content_length)
-                char_data = json.loads(body.decode("utf-8"))
+                char_data = self._read_json_body()
                 
                 char_id = str(char_data.get("id") or char_data.get("name", "character").replace(" ", "_"))
                 if not SAFE_CHARACTER_ID.fullmatch(char_id):
@@ -93,23 +133,30 @@ class PathbuilderHandler(http.server.SimpleHTTPRequestHandler):
                     self.send_error(400, "Invalid character path")
                     return
 
-                with open(filepath, "w", encoding="utf-8") as f:
-                    json.dump(char_data, f, indent=2, ensure_ascii=False)
+                # Replace atomically so an interrupted save cannot leave a
+                # truncated character document behind.
+                with tempfile.NamedTemporaryFile(
+                    mode="w", encoding="utf-8", dir=CHARACTERS_DIR,
+                    prefix=f".{char_id}.", suffix=".tmp", delete=False,
+                ) as temp_file:
+                    json.dump(char_data, temp_file, indent=2, ensure_ascii=False)
+                    temp_path = temp_file.name
+                os.replace(temp_path, filepath)
 
                 self.send_response(200)
                 self._send_cors_headers()
                 self.send_header("Content-Type", "application/json; charset=utf-8")
                 self.end_headers()
                 self.wfile.write(json.dumps({"status": "saved", "file": filename, "id": char_id}).encode("utf-8"))
-            except Exception as e:
-                self.send_error(500, str(e))
+            except ClientInputError as e:
+                self._send_client_error(e)
+            except Exception:
+                self.send_error(500, "Internal server error")
             return
 
         if self.path == "/api/delete_character":
             try:
-                content_length = int(self.headers.get('Content-Length', 0))
-                body = self.rfile.read(content_length)
-                req_data = json.loads(body.decode("utf-8"))
+                req_data = self._read_json_body()
                 char_id = str(req_data.get("id", ""))
                 if not SAFE_CHARACTER_ID.fullmatch(char_id):
                     self.send_error(400, "Invalid character id")
@@ -126,8 +173,10 @@ class PathbuilderHandler(http.server.SimpleHTTPRequestHandler):
                 self.send_header("Content-Type", "application/json; charset=utf-8")
                 self.end_headers()
                 self.wfile.write(json.dumps({"status": "deleted", "id": char_id}).encode("utf-8"))
-            except Exception as e:
-                self.send_error(500, str(e))
+            except ClientInputError as e:
+                self._send_client_error(e)
+            except Exception:
+                self.send_error(500, "Internal server error")
             return
 
         return super().do_POST()
@@ -153,7 +202,7 @@ class PathbuilderHandler(http.server.SimpleHTTPRequestHandler):
             except Exception as e:
                 self.send_error(500, str(e))
             return
-        return super().do_GET()
+        self.send_error(404, "Not found")
 
 def open_browser():
     webbrowser.open(f"http://localhost:{PORT}")

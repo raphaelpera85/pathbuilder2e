@@ -121,6 +121,9 @@ describe("responsive layout contract", () => {
     expect(app).toContain("return finalize(PF2E_DATA.backgrounds.map(b => ({ name: b.name, type: \"Antecedente\", data: b })));");
     expect(html).toContain("onclick=\"app.navigatePortal('campaigns');\"");
     expect(html).toContain("onclick=\"app.navigatePortal('library');\"");
+    expect(html).toContain("document.documentElement.dataset.initialRoute = route;");
+    expect(html).toContain("document.body.classList.add(\"portal-page-active\");");
+    expect(html).toContain("toggleAttribute(\"hidden\", onBuilder === false)");
   });
 
   it("mantém a descrição acessível do dado na língua ativa", () => {
@@ -1339,4 +1342,3 @@ describe("responsive layout contract", () => {
     expect(app).toContain('drawerExportFoundry: isEn ? "🎲 Export to Foundry VTT (.json)" : isEs ? "🎲 Exportar a Foundry VTT (.json)" : "🎲 Exportar para Foundry VTT (.json)"');
   });
 });
-

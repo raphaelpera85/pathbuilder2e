@@ -33,6 +33,9 @@ create table if not exists public.campaigns (
   updated_at timestamptz not null default now()
 );
 
+alter table public.campaigns
+  add column if not exists notes text not null default '';
+
 create index if not exists campaigns_gm_updated_idx
   on public.campaigns (gm_id, updated_at desc);
 

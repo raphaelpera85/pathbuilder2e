@@ -10,7 +10,6 @@ export default defineConfig({
       targets: [
         { src: "css", dest: "." },
         { src: "js", dest: "." },
-        { src: "characters", dest: "." },
         { src: "ficha.pdf", dest: "." },
       ],
     }),
@@ -26,6 +25,11 @@ export default defineConfig({
     proxy: {
       "/api": "http://127.0.0.1:8080",
     },
+  },
+  optimizeDeps: {
+    // Limita a varredura às entradas reais; scratch contém bundles de browser
+    // que não fazem parte do app e podem contaminar a otimização.
+    entries: ["index.html"],
   },
   build: {
     chunkSizeWarningLimit: 750,

@@ -477,7 +477,7 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
     }
     if (pickerType === "feat") {
       const fType = pickerOptions?.filterType?.toLowerCase() || "";
-      if (fType.includes("ancestry")) {
+      if (fType.includes("ancestry") || fType.includes("ancestr")) {
         return ["Ancestry Feats", "All Feats"];
       } else if (fType.includes("class")) {
         return ["Class Feats", "Impulse Feats", "Dedication Feats", "Archetype Class Feats", "All Feats"];

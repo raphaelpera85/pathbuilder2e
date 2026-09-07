@@ -1,15 +1,18 @@
 import { useEffect, useState, useMemo, useRef } from "react";
 import { useI18n, type MessageKey } from "./i18n";
 import {
-  listCampaigns,
-  saveCampaign,
-  deleteCampaign,
-  addCharacterToCampaign,
-  removeCharacterFromCampaign,
-  addSessionLog,
+  listCampaignsWithStatus,
+  saveCampaignWithStatus,
+  deleteCampaignWithStatus,
+  addCharacterToCampaignWithStatus,
+  removeCharacterFromCampaignWithStatus,
+  addSessionLogWithStatus,
+  subscribeToCampaign,
   type Campaign,
   type Combatant,
   type CampaignSession,
+  type CampaignSyncSource,
+  type CampaignSyncResult,
 } from "./services/campaigns";
 import {
   listCharactersSharedWithGM,
@@ -30,6 +33,8 @@ export function CampaignsPage() {
   const [selectedCampaignId, setSelectedCampaignId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState(false);
+  const [campaignSyncSource, setCampaignSyncSource] = useState<CampaignSyncSource>("local");
+  const [campaignSyncWarning, setCampaignSyncWarning] = useState(false);
   const [sessionReady, setSessionReady] = useState(false);
   const authEpochRef = useRef(0);
   const [inspectedChar, setInspectedChar] = useState<CloudCharacter | null>(null);
@@ -72,6 +77,19 @@ export function CampaignsPage() {
     return t("remasterEdition");
   };
 
+  const persistCampaign = async (data: Partial<Campaign>): Promise<Campaign> => {
+    if (!session?.user) throw new Error("Usuário não autenticado.");
+    const result = await saveCampaignWithStatus(data, session.user);
+    setCampaignSyncSource(result.source);
+    setCampaignSyncWarning(Boolean(result.error));
+    return result.data;
+  };
+
+  const applyCampaignSyncResult = <T,>(result: CampaignSyncResult<T>): void => {
+    setCampaignSyncSource(result.source);
+    setCampaignSyncWarning(Boolean(result.error));
+  };
+
   const refreshData = async (knownSession?: AuthSession | null) => {
     const loadEpoch = authEpochRef.current;
     setLoading(true);
@@ -81,24 +99,28 @@ export function CampaignsPage() {
       setSession(cur);
       setSessionReady(true);
       if (cur?.user) {
-        const [camps, shared, own] = await Promise.all([
-          listCampaigns(cur.user),
+        const [campaignResult, shared, own] = await Promise.all([
+          listCampaignsWithStatus(cur.user),
           cur.user.email ? listCharactersSharedWithGM(cur.user.email) : Promise.resolve([]),
           listCharacters(cur.user),
         ]);
         if (loadEpoch !== authEpochRef.current) return;
-        setCampaigns(camps);
+        setCampaigns(campaignResult.data);
+        setCampaignSyncSource(campaignResult.source);
+        setCampaignSyncWarning(Boolean(campaignResult.error));
         setSharedCharacters(shared);
         setMyCharacters(own);
         setLoadError(false);
-        if (camps.length > 0 && !selectedCampaignId) {
-          setSelectedCampaignId(camps[0].id);
+        if (campaignResult.data.length > 0 && !selectedCampaignId) {
+          setSelectedCampaignId(campaignResult.data[0].id);
         }
       } else {
         setCampaigns([]);
         setSharedCharacters([]);
         setMyCharacters([]);
         setSelectedCampaignId(null);
+        setCampaignSyncSource("none");
+        setCampaignSyncWarning(false);
       }
     } catch (err) {
       console.error("Erro ao carregar campanhas:", err);
@@ -120,23 +142,39 @@ export function CampaignsPage() {
         setCampaigns([]);
         setSharedCharacters([]);
         setMyCharacters([]);
+        setCampaignSyncSource("none");
+        setCampaignSyncWarning(false);
       }
     });
     return unsubscribe;
   }, []);
 
+  useEffect(() => {
+    if (!activeCampaign || !session?.user) return;
+    return subscribeToCampaign(activeCampaign.id, ({ eventType, newRecord }) => {
+      setCampaigns((current) => {
+        if (eventType === "DELETE") return current.filter((campaign) => campaign.id !== activeCampaign.id);
+        if (!newRecord || newRecord.gm_id !== session.user.id) return current;
+        const next = newRecord as Campaign;
+        const exists = current.some((campaign) => campaign.id === next.id);
+        return exists
+          ? current.map((campaign) => (campaign.id === next.id ? next : campaign))
+          : [next, ...current];
+      });
+    });
+  }, [activeCampaign, session?.user]);
+
   const handleCreateCampaign = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newTitle.trim() || !session?.user) return;
     try {
-      const created = await saveCampaign(
+      const created = await persistCampaign(
         {
           title: newTitle.trim(),
           description: newDesc.trim(),
           schedule: newSchedule.trim(),
           system: newSystem,
-        },
-        session.user
+        }
       );
       setNewTitle("");
       setNewDesc("");
@@ -152,7 +190,8 @@ export function CampaignsPage() {
 
   const handleDeleteCampaign = async (id: string) => {
     if (!confirm(t("deleteCampaignConfirm")) || !session?.user) return;
-    await deleteCampaign(id, session.user);
+    const deleteResult = await deleteCampaignWithStatus(id, session.user);
+    applyCampaignSyncResult(deleteResult);
     if (selectedCampaignId === id) setSelectedCampaignId(null);
     await refreshData();
   };
@@ -161,9 +200,9 @@ export function CampaignsPage() {
     if (!activeCampaign || !session?.user) return;
     const isInside = activeCampaign.character_keys.includes(charKey);
     if (isInside) {
-      await removeCharacterFromCampaign(activeCampaign.id, charKey, session.user);
+      applyCampaignSyncResult(await removeCharacterFromCampaignWithStatus(activeCampaign.id, charKey, session.user));
     } else {
-      await addCharacterToCampaign(activeCampaign.id, charKey, session.user);
+      applyCampaignSyncResult(await addCharacterToCampaignWithStatus(activeCampaign.id, charKey, session.user));
     }
     await refreshData();
   };
@@ -171,7 +210,7 @@ export function CampaignsPage() {
   const handleAddSession = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!activeCampaign || !sessionTitle.trim() || !session?.user) return;
-    await addSessionLog(
+    const sessionResult = await addSessionLogWithStatus(
       activeCampaign.id,
       {
         title: sessionTitle.trim(),
@@ -182,6 +221,7 @@ export function CampaignsPage() {
       },
       session.user
     );
+    applyCampaignSyncResult(sessionResult);
     setSessionTitle("");
     setSessionSummary("");
     setSessionLoot("");
@@ -206,7 +246,7 @@ export function CampaignsPage() {
         (a, b) => b.initiative - a.initiative
       ),
     };
-    await saveCampaign(updated, session.user);
+    await persistCampaign(updated);
     setNpcName("");
     await refreshData();
   };
@@ -234,7 +274,7 @@ export function CampaignsPage() {
       (a, b) => b.initiative - a.initiative
     );
 
-    await saveCampaign({ ...activeCampaign, combatants: updatedCombatants }, session.user);
+    await persistCampaign({ ...activeCampaign, combatants: updatedCombatants });
     await refreshData();
   };
 
@@ -247,14 +287,14 @@ export function CampaignsPage() {
       }
       return c;
     });
-    await saveCampaign({ ...activeCampaign, combatants: updated }, session.user);
+    await persistCampaign({ ...activeCampaign, combatants: updated });
     await refreshData();
   };
 
   const handleRemoveCombatant = async (combatantId: string) => {
     if (!activeCampaign || !session?.user) return;
     const updated = (activeCampaign.combatants || []).filter((c) => c.id !== combatantId);
-    await saveCampaign({ ...activeCampaign, combatants: updated }, session.user);
+    await persistCampaign({ ...activeCampaign, combatants: updated });
     await refreshData();
   };
 
@@ -358,6 +398,12 @@ export function CampaignsPage() {
       {loadError && (
         <div className="portal-error" role="alert">
           {t("loadAccountFailed")} <button type="button" onClick={() => void refreshData(session)}>{t("retry")}</button>
+        </div>
+      )}
+
+      {campaignSyncWarning && campaignSyncSource === "local" && (
+        <div className="portal-warning" role="status">
+          {t("campaignsSyncLocal")} <button type="button" onClick={() => void refreshData(session)}>{t("retry")}</button>
         </div>
       )}
 

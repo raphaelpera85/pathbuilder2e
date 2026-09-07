@@ -156,8 +156,59 @@ describe("proveniência do catálogo legado", () => {
     const backgrounds = catalog.backgrounds.filter((record) => record.id?.startsWith("background.player_core_2.common."));
     expect(backgrounds).toHaveLength(14);
     expect(backgrounds.every((record) => record.ability?.length && record.skill && record.lore && record.feat)).toBe(true);
+    expect(backgrounds.every((record) => record.mechanics?.abilityBoostRules?.length && record.mechanics.trainedSkills?.length && record.mechanics.grants?.length)).toBe(true);
+    expect(backgrounds.every((record) => !Object.values(record.summaries || {}).some((summary) => /pending review|pendente de revisão|pendiente de revisión/i.test(summary)))).toBe(true);
     expect(backgrounds.every((record) => ["pt-BR", "en", "es"].every((locale) => record.names?.[locale] && record.summaries?.[locale]))).toBe(true);
     expect(backgrounds.every((record) => record.source?.book === "Livro do Jogador 2 (Player Core 2, Remaster)" && [50, 51].includes(record.source.page || 0))).toBe(true);
+  });
+
+  it("preserva os efeitos confirmados das variantes de cinco bombas alquímicas do Player Core 2", () => {
+    const catalog = loadCatalog() as { formulas: (LegacyRecord & { mechanics?: Record<string, unknown>; level?: number })[] };
+    const families = ["frightful_ampoule", "tanglefoot_bag", "weakening_bomb", "ghost_charge", "alchemists_fire", "frost_vial", "acid_flask", "detonating_stone", "bottled_lightning"];
+    const variants = catalog.formulas.filter((item) => families.some((family) => ["moderate", "greater", "superior"].some((tier) => item.id === `formula.pc2.${family}_${tier}`)));
+    expect(variants).toHaveLength(27);
+    expect(variants.every((item) => {
+      if (!item.mechanics || item.needs_review !== false || !item.source?.page) return false;
+      return ["pt-BR", "en", "es"].every((locale) => {
+        const summary = item.summaries?.[locale] || "";
+        return summary && !/pending review|pendente de revisão|pendiente de revisión|complete effects|efeitos completos|efectos completos/i.test(summary);
+      });
+    })).toBe(true);
+    expect(catalog.formulas.find((item) => item.id === "formula.pc2.ghost_charge_greater")).toMatchObject({ mechanics: { damage: "3d8 vitality", attackItemBonus: 2 } });
+    expect(catalog.formulas.find((item) => item.id === "formula.pc2.alchemists_fire_superior")).toMatchObject({ mechanics: { damage: "4d8 fire", persistentDamage: "4 fire", splashDamage: "4 fire" } });
+    expect(catalog.formulas.find((item) => item.id === "formula.pc2.detonating_stone_superior")).toMatchObject({ mechanics: { damage: "4d4 sonic", fortitudeDC: 36 } });
+    expect(catalog.formulas.find((item) => item.id === "formula.pc2.bottled_lightning_moderate")).toMatchObject({ mechanics: { damage: "2d6 electricity", attackItemBonus: 1 } });
+  });
+
+  it("mantém fórmulas e itens das ferramentas alquímicas sincronizados", () => {
+    const catalog = loadCatalog() as { formulas: (LegacyRecord & { mechanics?: Record<string, unknown> })[]; itemCompendium: (LegacyRecord & { mechanics?: Record<string, unknown> })[] };
+    const ids = ["bright_stick", "phosphor", "smoke_ball", "forensic_dye", "snake_oil", "ghost_ink"];
+    for (const slug of ids) {
+      const formula = catalog.formulas.find((item) => item.id === `formula.pc2.${slug}`);
+      expect(formula).toBeDefined();
+      expect(formula).toMatchObject({ needs_review: false, mechanics: expect.any(Object) });
+      expect(formula?.summaries?.["pt-BR"]).not.toMatch(/efeito completo pendente|consulte a página .* efeitos completos/i);
+    }
+    const smokeItem = catalog.itemCompendium.find((item) => item.id === "item.pc2.smoke_ball");
+    expect(smokeItem).toMatchObject({ needs_review: false, mechanics: { radius: "1.5 m", duration: "1 minute or until strong winds disperse it" } });
+    expect(smokeItem?.summaries?.["pt-BR"]).toMatch(/ocultadas/);
+  });
+
+  it("preserva estágios confirmados de venenos do Player Core 2", () => {
+    const catalog = loadCatalog() as { formulas: (LegacyRecord & { mechanics?: Record<string, unknown> })[] };
+    const expected = [
+      ["arsenic", 18, "1d4 poison + sickened 1"],
+      ["belladonna", 19, "dazzled 10 minutes"],
+      ["cytillesh_oil", 19, "1d8 poison"],
+      ["black_lotus_extract", 42, "13d6 poison + drained 1"],
+      ["death_takings", 44, "20d6 poison + paralyzed"],
+    ];
+    for (const [slug, saveDC, firstStage] of expected) {
+      expect(catalog.formulas.find((item) => item.id === `formula.pc2.${slug}`)).toMatchObject({
+        needs_review: false,
+        mechanics: { saveDC, stages: expect.arrayContaining([firstStage]) },
+      });
+    }
   });
 
   it("indexa os 25 talentos de ancestralidade de Amurrun do Player Core 2", () => {

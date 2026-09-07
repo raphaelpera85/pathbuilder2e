@@ -12,7 +12,7 @@ import { PF2E_ITEMS_CATALOG } from "./data/equipmentData";
 import { PF2E_FEATS_CATALOG } from "./data/featsData";
 import { PF2E_PETS_CATALOG } from "./data/petsData";
 import { PortalPages } from "./PortalPages";
-import "../css/style.css";
+import "./legacy-style.css";
 import "./picker.css";
 
 function ViewportSignals() {
@@ -112,4 +112,3 @@ if (typeof window !== "undefined" && "serviceWorker" in navigator && import.meta
     });
   });
 }
-

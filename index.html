@@ -11,6 +11,20 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <script>
+    // Define a rota antes do carregamento dos módulos para evitar que o
+    // construtor legado apareça durante o primeiro paint das páginas React.
+    (() => {
+      const route = (window.location.hash.match(/^#\/([^/?#]+)/) || [])[1] || "builder";
+      const onBuilder = route === "builder";
+      document.documentElement.dataset.initialRoute = route;
+      if (!onBuilder) document.body.classList.add("portal-page-active");
+      window.addEventListener("DOMContentLoaded", () => {
+        document.getElementById("legacy-builder-root")?.toggleAttribute("hidden", onBuilder === false);
+        document.getElementById("topCharTab")?.toggleAttribute("hidden", onBuilder === false);
+      }, { once: true });
+    })();
+  </script>
   <a class="skip-link" id="skipToContent" href="#react-portal-root">Pular para o conteúdo</a>
 
   <!-- BARRA SUPERIOR (TOPBAR) -->

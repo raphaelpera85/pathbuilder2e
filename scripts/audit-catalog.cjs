@@ -175,6 +175,7 @@ const strictProvenanceFailure = (
   report.totals.missingNames > 0 || report.totals.missingSummaries > 0 ||
   report.totals.placeholderTranslations > 0 || report.totals.invalidSource > 0 ||
   report.totals.missingSourceNotMarkedReview > 0 || report.totals.invalidRuleset > 0 ||
-  report.totals.verifiedWithoutSource > 0 || report.totals.duplicateIds.length > 0
+  report.totals.verifiedWithoutSource > 0 || report.totals.duplicateIds.length > 0 ||
+  report.totals.mechanicsReview > 0
 );
 if ((process.argv.includes("--strict") && strictIntegrityFailure) || (process.argv.includes("--strict-provenance") && strictProvenanceFailure)) process.exitCode = 1;
