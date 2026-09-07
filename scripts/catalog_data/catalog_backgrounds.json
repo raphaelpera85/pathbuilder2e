@@ -763,9 +763,9 @@
     "name_pt": "Tutelado",
     "name_en": "Ward",
     "name_es": "Protegido",
-    "description_pt": "Biografia comum do Player Core 2 (p. 50); efeito mecânico completo oficial de oficial.",
-    "description_en": "Common Player Core 2 background (p. 50); full mechanical text pending review.",
-    "description_es": "Trasfondo común de Player Core 2 (p. 50); texto mecánico completo pendiente de revisión.",
+    "description_pt": "Aumentos: Constituição ou Carisma e um aumento livre; treinado em performance e Saber de Genealogia; talento de perícia: Performance Fascinante.",
+    "description_en": "Boosts: Constituição or Carisma and one free boost; trained in performance and Saber de Genealogia; skill feat: Performance Fascinante.",
+    "description_es": "Mejoras: Constituição o Carisma y una mejora libre; entrenado en performance y Saber de Genealogia; dote de habilidad: Performance Fascinante.",
     "attribute_boosts": [],
     "trained_skills": [
       "performance"
@@ -786,9 +786,9 @@
     "name_pt": "Condutor",
     "name_en": "Driver",
     "name_es": "Conductor",
-    "description_pt": "Biografia comum do Player Core 2 (p. 50); efeito mecânico completo oficial de oficial.",
-    "description_en": "Common Player Core 2 background (p. 50); full mechanical text pending review.",
-    "description_es": "Trasfondo común de Player Core 2 (p. 50); texto mecánico completo pendiente de revisión.",
+    "description_pt": "Aumentos: Força ou Destreza e um aumento livre; treinado em acrobatics e Saber de Pilotagem; talento de perícia: Certeza.",
+    "description_en": "Boosts: Força or Destreza and one free boost; trained in acrobatics and Saber de Pilotagem; skill feat: Certeza.",
+    "description_es": "Mejoras: Força o Destreza y una mejora libre; entrenado en acrobatics y Saber de Pilotagem; dote de habilidad: Certeza.",
     "attribute_boosts": [],
     "trained_skills": [
       "acrobatics"
@@ -809,9 +809,9 @@
     "name_pt": "Barbeiro",
     "name_en": "Barber",
     "name_es": "Barbero",
-    "description_pt": "Biografia comum do Player Core 2 (p. 50); efeito mecânico completo oficial de oficial.",
-    "description_en": "Common Player Core 2 background (p. 50); full mechanical text pending review.",
-    "description_es": "Trasfondo común de Player Core 2 (p. 50); texto mecánico completo pendiente de revisión.",
+    "description_pt": "Aumentos: Destreza ou Sabedoria e um aumento livre; treinado em medicine e Saber de Cirurgia; talento de perícia: Cirurgia Arriscada.",
+    "description_en": "Boosts: Destreza or Sabedoria and one free boost; trained in medicine and Saber de Cirurgia; skill feat: Cirurgia Arriscada.",
+    "description_es": "Mejoras: Destreza o Sabedoria y una mejora libre; entrenado en medicine y Saber de Cirurgia; dote de habilidad: Cirurgia Arriscada.",
     "attribute_boosts": [],
     "trained_skills": [
       "medicine"
@@ -832,9 +832,9 @@
     "name_pt": "Contador",
     "name_en": "Accountant",
     "name_es": "Contable",
-    "description_pt": "Biografia comum do Player Core 2 (p. 50); efeito mecânico completo oficial de oficial.",
-    "description_en": "Common Player Core 2 background (p. 50); full mechanical text pending review.",
-    "description_es": "Trasfondo común de Player Core 2 (p. 50); texto mecánico completo pendiente de revisión.",
+    "description_pt": "Aumentos: Inteligência ou Sabedoria e um aumento livre; treinado em society e Saber de Contabilidade; talento de perícia: Subitizar.",
+    "description_en": "Boosts: Inteligência or Sabedoria and one free boost; trained in society and Saber de Contabilidade; skill feat: Subitizar.",
+    "description_es": "Mejoras: Inteligência o Sabedoria y una mejora libre; entrenado en society y Saber de Contabilidade; dote de habilidad: Subitizar.",
     "attribute_boosts": [],
     "trained_skills": [
       "society"
@@ -855,9 +855,9 @@
     "name_pt": "Catador",
     "name_en": "Scavenger",
     "name_es": "Recogedor",
-    "description_pt": "Biografia comum do Player Core 2 (p. 50); efeito mecânico completo oficial de oficial.",
-    "description_en": "Common Player Core 2 background (p. 50); full mechanical text pending review.",
-    "description_es": "Trasfondo común de Player Core 2 (p. 50); texto mecánico completo pendiente de revisión.",
+    "description_pt": "Aumentos: Inteligência ou Sabedoria e um aumento livre; treinado em society e Saber do Assentamento; talento de perícia: Forrageador.",
+    "description_en": "Boosts: Inteligência or Sabedoria and one free boost; trained in society and Saber do Assentamento; skill feat: Forrageador.",
+    "description_es": "Mejoras: Inteligência o Sabedoria y una mejora libre; entrenado en society y Saber do Assentamento; dote de habilidad: Forrageador.",
     "attribute_boosts": [],
     "trained_skills": [
       "society"
@@ -878,9 +878,9 @@
     "name_pt": "Criado",
     "name_en": "Servant",
     "name_es": "Sirviente",
-    "description_pt": "Biografia comum do Player Core 2 (p. 50); efeito mecânico completo oficial de oficial.",
-    "description_en": "Common Player Core 2 background (p. 50); full mechanical text pending review.",
-    "description_es": "Trasfondo común de Player Core 2 (p. 50); texto mecánico completo pendiente de revisión.",
+    "description_pt": "Aumentos: Destreza ou Carisma e um aumento livre; treinado em society e Saber de Trabalho; talento de perícia: Leitura Labial.",
+    "description_en": "Boosts: Destreza or Carisma and one free boost; trained in society and Saber de Trabalho; skill feat: Leitura Labial.",
+    "description_es": "Mejoras: Destreza o Carisma y una mejora libre; entrenado en society y Saber de Trabalho; dote de habilidad: Leitura Labial.",
     "attribute_boosts": [],
     "trained_skills": [
       "society"
@@ -901,9 +901,9 @@
     "name_pt": "Coletor de Impostos",
     "name_en": "Tax Collector",
     "name_es": "Recaudador de impuestos",
-    "description_pt": "Biografia comum do Player Core 2 (p. 50); efeito mecânico completo oficial de oficial.",
-    "description_en": "Common Player Core 2 background (p. 50); full mechanical text pending review.",
-    "description_es": "Trasfondo común de Player Core 2 (p. 50); texto mecánico completo pendiente de revisión.",
+    "description_pt": "Aumentos: Força ou Carisma e um aumento livre; treinado em intimidation e Saber do Assentamento; talento de perícia: Coerção Rápida.",
+    "description_en": "Boosts: Força or Carisma and one free boost; trained in intimidation and Saber do Assentamento; skill feat: Coerção Rápida.",
+    "description_es": "Mejoras: Força o Carisma y una mejora libre; entrenado en intimidation y Saber do Assentamento; dote de habilidad: Coerção Rápida.",
     "attribute_boosts": [],
     "trained_skills": [
       "intimidation"
@@ -924,9 +924,9 @@
     "name_pt": "Escudeiro",
     "name_en": "Squire",
     "name_es": "Escudero",
-    "description_pt": "Biografia comum do Player Core 2 (p. 51); efeito mecânico completo oficial de oficial.",
-    "description_en": "Common Player Core 2 background (p. 51); full mechanical text pending review.",
-    "description_es": "Trasfondo común de Player Core 2 (p. 51); texto mecánico completo pendiente de revisión.",
+    "description_pt": "Aumentos: Força ou Constituição e um aumento livre; treinado em society e Saber de Heráldica ou Guerra; talento de perícia: Assistente de Armadura.",
+    "description_en": "Boosts: Força or Constituição and one free boost; trained in society and Saber de Heráldica ou Guerra; skill feat: Assistente de Armadura.",
+    "description_es": "Mejoras: Força o Constituição y una mejora libre; entrenado en society y Saber de Heráldica ou Guerra; dote de habilidad: Assistente de Armadura.",
     "attribute_boosts": [],
     "trained_skills": [
       "society"
@@ -947,9 +947,9 @@
     "name_pt": "Precursor",
     "name_en": "Forerunner",
     "name_es": "Precursor",
-    "description_pt": "Biografia comum do Player Core 2 (p. 51); efeito mecânico completo oficial de oficial.",
-    "description_en": "Common Player Core 2 background (p. 51); full mechanical text pending review.",
-    "description_es": "Trasfondo común de Player Core 2 (p. 51); texto mecánico completo pendiente de revisión.",
+    "description_pt": "Aumentos: Constituição ou Sabedoria e um aumento livre; treinado em nature e Saber de Planícies; talento de perícia: Cavaleiro Expresso.",
+    "description_en": "Boosts: Constituição or Sabedoria and one free boost; trained in nature and Saber de Planícies; skill feat: Cavaleiro Expresso.",
+    "description_es": "Mejoras: Constituição o Sabedoria y una mejora libre; entrenado en nature y Saber de Planícies; dote de habilidad: Cavaleiro Expresso.",
     "attribute_boosts": [],
     "trained_skills": [
       "nature"
@@ -970,9 +970,9 @@
     "name_pt": "Refugiado",
     "name_en": "Refugee",
     "name_es": "Refugiado",
-    "description_pt": "Biografia comum do Player Core 2 (p. 51); efeito mecânico completo oficial de oficial.",
-    "description_en": "Common Player Core 2 background (p. 51); full mechanical text pending review.",
-    "description_es": "Trasfondo común de Player Core 2 (p. 51); texto mecánico completo pendiente de revisión.",
+    "description_pt": "Aumentos: Constituição ou Sabedoria e um aumento livre; treinado em society e Saber do Assentamento de Origem; talento de perícia: Manha das Ruas.",
+    "description_en": "Boosts: Constituição or Sabedoria and one free boost; trained in society and Saber do Assentamento de Origem; skill feat: Manha das Ruas.",
+    "description_es": "Mejoras: Constituição o Sabedoria y una mejora libre; entrenado en society y Saber do Assentamento de Origem; dote de habilidad: Manha das Ruas.",
     "attribute_boosts": [],
     "trained_skills": [
       "society"
@@ -993,9 +993,9 @@
     "name_pt": "Insurgente",
     "name_en": "Insurgent",
     "name_es": "Insurgente",
-    "description_pt": "Biografia comum do Player Core 2 (p. 51); efeito mecânico completo oficial de oficial.",
-    "description_en": "Common Player Core 2 background (p. 51); full mechanical text pending review.",
-    "description_es": "Trasfondo común de Player Core 2 (p. 51); texto mecánico completo pendiente de revisión.",
+    "description_pt": "Aumentos: Força ou Sabedoria e um aumento livre; treinado em deception e Saber de Guerra; talento de perícia: Distração Prolongada.",
+    "description_en": "Boosts: Força or Sabedoria and one free boost; trained in deception and Saber de Guerra; skill feat: Distração Prolongada.",
+    "description_es": "Mejoras: Força o Sabedoria y una mejora libre; entrenado en deception y Saber de Guerra; dote de habilidad: Distração Prolongada.",
     "attribute_boosts": [],
     "trained_skills": [
       "deception"
@@ -1016,9 +1016,9 @@
     "name_pt": "Mandingueiro",
     "name_en": "Hedge Wizard",
     "name_es": "Mago de seto",
-    "description_pt": "Biografia comum do Player Core 2 (p. 51); efeito mecânico completo oficial de oficial.",
-    "description_en": "Common Player Core 2 background (p. 51); full mechanical text pending review.",
-    "description_es": "Trasfondo común de Player Core 2 (p. 51); texto mecánico completo pendiente de revisión.",
+    "description_pt": "Aumentos: Inteligência ou Sabedoria e um aumento livre; treinado em occultism e Saber de Herbalismo; talento de perícia: Magia das Raízes.",
+    "description_en": "Boosts: Inteligência or Sabedoria and one free boost; trained in occultism and Saber de Herbalismo; skill feat: Magia das Raízes.",
+    "description_es": "Mejoras: Inteligência o Sabedoria y una mejora libre; entrenado en occultism y Saber de Herbalismo; dote de habilidad: Magia das Raízes.",
     "attribute_boosts": [],
     "trained_skills": [
       "occultism"
@@ -1039,9 +1039,9 @@
     "name_pt": "Mensageiro",
     "name_en": "Messenger",
     "name_es": "Mensajero",
-    "description_pt": "Biografia comum do Player Core 2 (p. 51); efeito mecânico completo oficial de oficial.",
-    "description_en": "Common Player Core 2 background (p. 51); full mechanical text pending review.",
-    "description_es": "Trasfondo común de Player Core 2 (p. 51); texto mecánico completo pendiente de revisión.",
+    "description_pt": "Aumentos: Destreza ou Inteligência e um aumento livre; treinado em society e Saber da Cidade de Origem; talento de perícia: Olhar Conteúdo.",
+    "description_en": "Boosts: Destreza or Inteligência and one free boost; trained in society and Saber da Cidade de Origem; skill feat: Olhar Conteúdo.",
+    "description_es": "Mejoras: Destreza o Inteligência y una mejora libre; entrenado en society y Saber da Cidade de Origem; dote de habilidad: Olhar Conteúdo.",
     "attribute_boosts": [],
     "trained_skills": [
       "society"
@@ -1062,9 +1062,9 @@
     "name_pt": "Peregrino",
     "name_en": "Pilgrim",
     "name_es": "Peregrino",
-    "description_pt": "Biografia comum do Player Core 2 (p. 51); efeito mecânico completo oficial de oficial.",
-    "description_en": "Common Player Core 2 background (p. 51); full mechanical text pending review.",
-    "description_es": "Trasfondo común de Player Core 2 (p. 51); texto mecánico completo pendiente de revisión.",
+    "description_pt": "Aumentos: Sabedoria ou Carisma e um aumento livre; treinado em religion e Saber da Divindade Patrona; talento de perícia: Amuleto do Peregrino.",
+    "description_en": "Boosts: Sabedoria or Carisma and one free boost; trained in religion and Saber da Divindade Patrona; skill feat: Amuleto do Peregrino.",
+    "description_es": "Mejoras: Sabedoria o Carisma y una mejora libre; entrenado en religion y Saber da Divindade Patrona; dote de habilidad: Amuleto do Peregrino.",
     "attribute_boosts": [],
     "trained_skills": [
       "religion"

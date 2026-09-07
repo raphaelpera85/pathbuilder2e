@@ -286,7 +286,7 @@ body {
 }
 
 .pb-tree-card-value.unselected {
-  color: var(--pb-text-dim);
+  color: #a9b4c7;
   font-weight: 500;
   font-style: italic;
 }
@@ -479,7 +479,7 @@ body {
 .ac-shield-title {
   font-size: 9px;
   font-weight: 800;
-  color: var(--pb-text-muted);
+  color: #a9b4c7;
 }
 
 .ac-shield-value {
@@ -1505,7 +1505,7 @@ body {
 .dice-clear-btn {
   background: none;
   border: none;
-  color: var(--pb-text-dim);
+  color: var(--pb-text-muted);
   font-size: 10px;
   font-weight: 700;
   cursor: pointer;
@@ -2947,6 +2947,12 @@ body.theme-light *::-webkit-scrollbar-thumb:hover { background: var(--pb-orange)
   margin: 6px 0;
 }
 
+.weapon-detail-line {
+  margin: 2px 0;
+  color: var(--pb-text-muted);
+  font-size: 11px;
+}
+
 .map-buttons-row {
   display: inline-flex;
   align-items: center;
@@ -3247,7 +3253,7 @@ body.theme-light *::-webkit-scrollbar-thumb:hover { background: var(--pb-orange)
 }
 .pb-container-items { display: grid; gap: 6px; margin-top: 10px; }
 .pb-container-item-box { background: rgba(15, 23, 42, .34); }
-.pb-container-empty { color: var(--pb-text-dim); font-size: 12px; font-style: italic; padding: 8px 0; }
+.pb-container-empty { color: var(--pb-text-muted); font-size: 12px; font-style: italic; padding: 8px 0; }
 
 /* ==========================================================================
    LIGHT THEME EXPLICIT COMPONENT OVERRIDES (FULL PORTAL & BUILDER COVERAGE)
@@ -3330,7 +3336,7 @@ body.theme-light,
 }
 
 [data-theme="light"] .pb-tree-card-value.unselected {
-  color: #8c7b67;
+  color: #6b4a30;
 }
 
 [data-theme="light"] .pb-tree-quick-btn {
@@ -3374,7 +3380,7 @@ body.theme-light,
 }
 
 [data-theme="light"] .stat-input-box label {
-  color: #887560;
+  color: #6b4a30;
 }
 
 [data-theme="light"] .stat-input-box input,
@@ -3393,7 +3399,7 @@ body.theme-light,
 }
 
 [data-theme="light"] .ability-mini-label {
-  color: #887560;
+  color: #6b4a30;
 }
 
 [data-theme="light"] .ability-mini-mod {
@@ -3407,7 +3413,35 @@ body.theme-light,
 }
 
 [data-theme="light"] .ac-shield-title {
-  color: #887560;
+  color: #6b4a30;
+}
+
+#shieldStatusText {
+  color: #a9b4c7 !important;
+}
+
+[data-theme="light"] #shieldStatusText {
+  color: #6b4a30 !important;
+}
+
+[data-theme="light"] .dice-clear-btn {
+  color: #6b4a30;
+}
+
+[data-theme="light"] .dice-roller-reset-btn {
+  background: #fee2e2;
+  border-color: #b91c1c;
+  color: #991b1b;
+}
+
+[data-theme="light"] #readinessBadgeBtn {
+  background: #dcfce7 !important;
+  border-color: #16a34a !important;
+  color: #166534 !important;
+}
+
+[data-theme="light"] #readinessModalScore {
+  color: #15803d !important;
 }
 
 [data-theme="light"] .ac-shield-value {
@@ -3562,7 +3596,7 @@ body.theme-light .spell-tab-header .spell-stat-line {
 }
 
 [data-theme="light"] .pb-tab-btn {
-  color: #887560;
+  color: #6b4a30;
 }
 
 [data-theme="light"] .pb-tab-btn:hover {
@@ -3809,7 +3843,7 @@ body.theme-light .spell-tab-header .spell-stat-line {
 
 [data-theme="light"] .dice-roller-history-header {
   border-top: 1px solid #ccbe9f;
-  color: #887560;
+  color: #6b4a30;
 }
 
 [data-theme="light"] .dice-history-item {
@@ -4242,4 +4276,20 @@ body.theme-light .pb-tree-feature-desc {
 [data-theme="light"] .pb-tree-feature-desc strong,
 body.theme-light .pb-tree-feature-desc strong {
   color: #78350f !important;
+}
+.weapon-visual-strike {
+  width: 42px;
+  height: 28px;
+  flex: 0 0 42px;
+  object-fit: cover;
+  border: 1px solid rgba(245, 158, 11, .35);
+  border-radius: 5px;
+  vertical-align: middle;
+}
+
+.strike-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
 }

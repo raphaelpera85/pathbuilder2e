@@ -5670,7 +5670,66 @@ Object.assign(PLAYER_CORE_2_ALCHEMICAL_TOOL_MECHANICS, {
       es: "Veneno ingerido con Fortaleza CD 44, latencia de 1 minuto y duración máxima de 10 minutos. Las etapas infligen 20d6, 22d6 o 24d6 de daño de veneno y paralizan durante 1 asalto."
     },
     mechanics: { save: "Fortitude", saveDC: 44, onset: "1 minute", maximumDuration: "10 minutes", stageDuration: "1 round", stages: ["20d6 poison + paralyzed", "22d6 poison + paralyzed", "24d6 poison + paralyzed"] }
-  }
+  },
+  aconite: {
+    summaries: {
+      "pt-BR": "Veneno ingerido com Fortitude CD 30, latência de 10 minutos e duração máxima de 6 minutos. Estágios: 3d10, 4d10 ou 5d10 de dano de veneno por 1 minuto; sobreviver ao estágio 3 cura imediatamente a maldição de um teriantropo.",
+      en: "Ingested poison with Fortitude DC 30, a 10-minute onset, and a 6-minute maximum duration. Stages deal 3d10, 4d10, or 5d10 poison damage for 1 minute; surviving stage 3 immediately cures a lycanthrope curse.",
+      es: "Veneno ingerido con Fortaleza CD 30, latencia de 10 minutos y duración máxima de 6 minutos. Las etapas infligen 3d10, 4d10 o 5d10 de daño de veneno durante 1 minuto; sobrevivir a la etapa 3 cura inmediatamente la maldición de un licántropo."
+    },
+    mechanics: { save: "Fortitude", saveDC: 30, onset: "10 minutes", maximumDuration: "6 minutes", stageDuration: "1 minute", stages: ["3d10 poison", "4d10 poison", "5d10 poison"], special: "surviving stage 3 cures a lycanthrope curse" }
+  },
+  giant_centipede_venom: {
+    summaries: {
+      "pt-BR": "Veneno de ferimento com Fortitude CD 17 e duração máxima de 6 rodadas. Cada estágio dura 1 rodada: 1d4 de veneno; 1d4 de veneno e fatigado; 1d4 de veneno, desajeitado 1 e fatigado.",
+      en: "Injury poison with Fortitude DC 17 and a 6-round maximum duration. Each stage lasts 1 round: 1d4 poison; 1d4 poison and fatigued; 1d4 poison, clumsy 1, and fatigued.",
+      es: "Veneno de herida con Fortaleza CD 17 y duración máxima de 6 asaltos. Cada etapa dura 1 asalto: 1d4 de veneno; 1d4 de veneno y fatigado; 1d4 de veneno, torpe 1 y fatigado."
+    },
+    mechanics: { save: "Fortitude", saveDC: 17, maximumDuration: "6 rounds", stageDuration: "1 round", stages: ["1d4 poison", "1d4 poison + fatigued", "1d4 poison + clumsy 1 + fatigued"] }
+  },
+  spider_venom: {
+    summaries: {
+      "pt-BR": "Veneno de ferimento com Fortitude CD 22 e duração máxima de 6 rodadas. Cada estágio dura 1 rodada: 1d10 de veneno e enjoado 1; 1d12 de veneno, desajeitado 1 e enjoado 2; 2d6 de veneno, desajeitado 2 e enjoado 3.",
+      en: "Injury poison with Fortitude DC 22 and a 6-round maximum duration. Each stage lasts 1 round: 1d10 poison and sickened 1; 1d12 poison, clumsy 1, and sickened 2; 2d6 poison, clumsy 2, and sickened 3.",
+      es: "Veneno de herida con Fortaleza CD 22 y duración máxima de 6 asaltos. Cada etapa dura 1 asalto: 1d10 de veneno y enfermo 1; 1d12 de veneno, torpe 1 y enfermo 2; 2d6 de veneno, torpe 2 y enfermo 3."
+    },
+    mechanics: { save: "Fortitude", saveDC: 22, maximumDuration: "6 rounds", stageDuration: "1 round", stages: ["1d10 poison + sickened 1", "1d12 poison + clumsy 1 + sickened 2", "2d6 poison + clumsy 2 + sickened 3"] }
+  },
+  giant_scorpion_venom: {
+    summaries: {
+      "pt-BR": "Veneno de ferimento com Fortitude CD 22 e duração máxima de 6 rodadas. Cada estágio dura 1 rodada: 2d6 de veneno e enfraquecido 1; 2d8 de veneno e enfraquecido 1; 2d10 de veneno e enfraquecido 2.",
+      en: "Injury poison with Fortitude DC 22 and a 6-round maximum duration. Each stage lasts 1 round: 2d6 poison and enfeebled 1; 2d8 poison and enfeebled 1; 2d10 poison and enfeebled 2.",
+      es: "Veneno de herida con Fortaleza CD 22 y duración máxima de 6 asaltos. Cada etapa dura 1 asalto: 2d6 de veneno y debilitado 1; 2d8 de veneno y debilitado 1; 2d10 de veneno y debilitado 2."
+    },
+    mechanics: { save: "Fortitude", saveDC: 22, maximumDuration: "6 rounds", stageDuration: "1 round", stages: ["2d6 poison + enfeebled 1", "2d8 poison + enfeebled 1", "2d10 poison + enfeebled 2"] }
+  },
+  nettleseed_residue: {
+    summaries: {
+      "pt-BR": "Veneno de contato com Fortitude CD 27, latência de 1 minuto e duração máxima de 6 minutos. Cada estágio dura 1 minuto e causa 3d6, 4d6 ou 6d6 de dano de veneno.",
+      en: "Contact poison with Fortitude DC 27, a 1-minute onset, and a 6-minute maximum duration. Each stage lasts 1 minute and deals 3d6, 4d6, or 6d6 poison damage.",
+      es: "Veneno de contacto con Fortaleza CD 27, latencia de 1 minuto y duración máxima de 6 minutos. Cada etapa dura 1 minuto e inflige 3d6, 4d6 o 6d6 de daño de veneno."
+    },
+    mechanics: { save: "Fortitude", saveDC: 27, onset: "1 minute", maximumDuration: "6 minutes", stageDuration: "1 minute", stages: ["3d6 poison", "4d6 poison", "6d6 poison"] }
+  },
+  wyvern_poison: {
+    summaries: {
+      "pt-BR": "Veneno de ferimento com Fortitude CD 26 e duração máxima de 6 rodadas. Cada estágio dura 1 rodada e causa 3d6, 3d8 ou 3d10 de dano de veneno.",
+      en: "Injury poison with Fortitude DC 26 and a 6-round maximum duration. Each stage lasts 1 round and deals 3d6, 3d8, or 3d10 poison damage.",
+      es: "Veneno de herida con Fortaleza CD 26 y duración máxima de 6 asaltos. Cada etapa dura 1 asalto e inflige 3d6, 3d8 o 3d10 de daño de veneno."
+    },
+    mechanics: { save: "Fortitude", saveDC: 26, maximumDuration: "6 rounds", stageDuration: "1 round", stages: ["3d6 poison", "3d8 poison", "3d10 poison"] }
+  },
+  lethargy_poison: { summaries: { "pt-BR": "Veneno de ferimento com Fortitude CD 18 e duração máxima de 4 horas. Os estágios causam desacelerado 1, desacelerado 1, inconsciente e, no estágio 4, inconsciente por 1d4 horas.", en: "Injury poison with Fortitude DC 18 and a 4-hour maximum duration. Stages cause slowed 1, slowed 1, unconscious, and at stage 4 unconscious for 1d4 hours.", es: "Veneno de herida con Fortaleza CD 18 y duración máxima de 4 horas. Las etapas causan ralentizado 1, ralentizado 1, inconsciente y, en la etapa 4, inconsciente durante 1d4 horas." }, mechanics: { save: "Fortitude", saveDC: 18, maximumDuration: "4 hours", stages: ["slowed 1 for 1 round", "slowed 1 for 1 round", "unconscious for 1 round", "unconscious for 1d4 hours"] } },
+  black_adder_venom: { summaries: { "pt-BR": "Veneno de ferimento com Fortitude CD 18 e duração máxima de 3 rodadas. Cada estágio dura 1 rodada e causa 1d4, 1d6 ou 1d8 de dano de veneno.", en: "Injury poison with Fortitude DC 18 and a 3-round maximum duration. Each stage lasts 1 round and deals 1d4, 1d6, or 1d8 poison damage.", es: "Veneno de herida con Fortaleza CD 18 y duración máxima de 3 asaltos. Cada etapa dura 1 asalto e inflige 1d4, 1d6 o 1d8 de daño de veneno." }, mechanics: { save: "Fortitude", saveDC: 18, maximumDuration: "3 rounds", stageDuration: "1 round", stages: ["1d4 poison", "1d6 poison", "1d8 poison"] } },
+  grave_root: { summaries: { "pt-BR": "Veneno de ferimento com Fortitude CD 19 e duração máxima de 4 rodadas. Cada estágio dura 1 rodada: 1d8 de veneno; 1d10 de veneno e estupefato 1; 2d6 de veneno e estupefato 2.", en: "Injury poison with Fortitude DC 19 and a 4-round maximum duration. Each stage lasts 1 round: 1d8 poison; 1d10 poison and stupefied 1; 2d6 poison and stupefied 2.", es: "Veneno de herida con Fortaleza CD 19 y duración máxima de 4 asaltos. Cada etapa dura 1 asalto: 1d8 de veneno; 1d10 de veneno y estupefacto 1; 2d6 de veneno y estupefacto 2." }, mechanics: { save: "Fortitude", saveDC: 19, maximumDuration: "4 rounds", stageDuration: "1 round", stages: ["1d8 poison", "1d10 poison + stupefied 1", "2d6 poison + stupefied 2"] } },
+  rooting_toxin: { summaries: { "pt-BR": "Veneno de contato com Fortitude CD 26, latência de 1 minuto e duração máxima de 6 minutos. Os estágios causam desajeitado 1/2/3 e penalidade de 3/6/9 metros em todas as Velocidades por 1 minuto.", en: "Contact poison with Fortitude DC 26, a 1-minute onset, and a 6-minute maximum duration. Stages cause clumsy 1/2/3 and a 10/20/30-foot penalty to all Speeds for 1 minute.", es: "Veneno de contacto con Fortaleza CD 26, latencia de 1 minuto y duración máxima de 6 minutos. Las etapas causan torpe 1/2/3 y una penalización de 3/6/9 metros a todas las Velocidades durante 1 minuto." }, mechanics: { save: "Fortitude", saveDC: 26, onset: "1 minute", maximumDuration: "6 minutes", stageDuration: "1 minute", stages: ["clumsy 1 + -3 m all Speeds", "clumsy 2 + -6 m all Speeds", "clumsy 3 + -9 m all Speeds"] } },
+  weakening_powder: { summaries: { "pt-BR": "Veneno ingerido com Fortitude CD 28, latência de 10 minutos e duração máxima de 6 minutos. Os estágios causam fatigado; depois 5d6 de veneno e fatigado; por fim 6d6 de veneno, fatigado e paralisado.", en: "Ingested poison with Fortitude DC 28, a 10-minute onset, and a 6-minute maximum duration. Stages cause fatigued; then 5d6 poison and fatigued; finally 6d6 poison, fatigued, and paralyzed.", es: "Veneno ingerido con Fortaleza CD 28, latencia de 10 minutos y duración máxima de 6 minutos. Las etapas causan fatigado; luego 5d6 de veneno y fatigado; finalmente 6d6 de veneno, fatigado y paralizado." }, mechanics: { save: "Fortitude", saveDC: 28, onset: "10 minutes", maximumDuration: "6 minutes", stageDuration: "1 minute", stages: ["fatigued", "5d6 poison + fatigued", "6d6 poison + fatigued + paralyzed"] } },
+  spider_root: { summaries: { "pt-BR": "Veneno de contato com Fortitude CD 28, latência de 1 minuto e duração máxima de 6 minutos. Cada estágio dura 1 minuto e causa 3d6/4d6/6d6 de veneno e desajeitado 1/2/3.", en: "Contact poison with Fortitude DC 28, a 1-minute onset, and a 6-minute maximum duration. Each stage lasts 1 minute and deals 3d6/4d6/6d6 poison damage with clumsy 1/2/3.", es: "Veneno de contacto con Fortaleza CD 28, latencia de 1 minuto y duración máxima de 6 minutos. Cada etapa dura 1 minuto e inflige 3d6/4d6/6d6 de veneno con torpe 1/2/3." }, mechanics: { save: "Fortitude", saveDC: 28, onset: "1 minute", maximumDuration: "6 minutes", stageDuration: "1 minute", stages: ["3d6 poison + clumsy 1", "4d6 poison + clumsy 2", "6d6 poison + clumsy 3"] } },
+  cave_worm_venom: { summaries: { "pt-BR": "Veneno de ferimento com Fortitude CD 32 e duração máxima de 6 rodadas. Cada estágio dura 1 rodada e causa 5d6, 6d6 ou 8d6 de veneno, sempre com enfraquecido 2.", en: "Injury poison with Fortitude DC 32 and a 6-round maximum duration. Each stage lasts 1 round and deals 5d6, 6d6, or 8d6 poison damage, always with enfeebled 2.", es: "Veneno de herida con Fortaleza CD 32 y duración máxima de 6 asaltos. Cada etapa dura 1 asalto e inflige 5d6, 6d6 u 8d6 de veneno, siempre con debilitado 2." }, mechanics: { save: "Fortitude", saveDC: 32, maximumDuration: "6 rounds", stageDuration: "1 round", stages: ["5d6 poison + enfeebled 2", "6d6 poison + enfeebled 2", "8d6 poison + enfeebled 2"] } },
+  torpor_wine: { summaries: { "pt-BR": "Veneno ingerido com Fortitude CD 32, latência de 1 hora e duração máxima de 7 dias. Os estágios deixam a criatura inconsciente por 1, 2 ou 3 dias; enquanto durar, ela não pode acordar por nenhum meio.", en: "Ingested poison with Fortitude DC 32, a 1-hour onset, and a 7-day maximum duration. Stages leave the creature unconscious for 1, 2, or 3 days; while it lasts, the creature cannot awaken by any means.", es: "Veneno ingerido con Fortaleza CD 32, latencia de 1 hora y duración máxima de 7 días. Las etapas dejan a la criatura inconsciente durante 1, 2 o 3 días; mientras dure, no puede despertarse por ningún medio." }, mechanics: { save: "Fortitude", saveDC: 32, onset: "1 hour", maximumDuration: "7 days", stages: ["unconscious 1 day", "unconscious 2 days", "unconscious 3 days"], special: "cannot awaken while the poison lasts" } },
+  hemlock: { summaries: { "pt-BR": "Veneno ingerido com Fortitude CD 38, latência de 30 minutos e duração máxima de 60 minutos. Cada estágio dura 10 minutos e causa 16d6/17d6/18d6 de veneno e enfraquecido 2/3/4.", en: "Ingested poison with Fortitude DC 38, a 30-minute onset, and a 60-minute maximum duration. Each stage lasts 10 minutes and deals 16d6/17d6/18d6 poison damage with enfeebled 2/3/4.", es: "Veneno ingerido con Fortaleza CD 38, latencia de 30 minutos y duración máxima de 60 minutos. Cada etapa dura 10 minutos e inflige 16d6/17d6/18d6 de veneno con debilitado 2/3/4." }, mechanics: { save: "Fortitude", saveDC: 38, onset: "30 minutes", maximumDuration: "60 minutes", stageDuration: "10 minutes", stages: ["16d6 poison + enfeebled 2", "17d6 poison + enfeebled 3", "18d6 poison + enfeebled 4"] } },
+  death_cap_powder: { summaries: { "pt-BR": "Veneno ingerido com Fortitude CD 33, latência de 10 minutos e duração máxima de 6 minutos. Os estágios causam 7d8 de veneno; 9d6 de veneno e enjoado 2; 8d10 de veneno e enjoado 3.", en: "Ingested poison with Fortitude DC 33, a 10-minute onset, and a 6-minute maximum duration. Stages deal 7d8 poison; 9d6 poison and sickened 2; 8d10 poison and sickened 3.", es: "Veneno ingerido con Fortaleza CD 33, latencia de 10 minutos y duración máxima de 6 minutos. Las etapas infligen 7d8 de veneno; 9d6 de veneno y enfermo 2; 8d10 de veneno y enfermo 3." }, mechanics: { save: "Fortitude", saveDC: 33, onset: "10 minutes", maximumDuration: "6 minutes", stageDuration: "1 minute", stages: ["7d8 poison", "9d6 poison + sickened 2", "8d10 poison + sickened 3"] } },
+  kings_sleep: { summaries: { "pt-BR": "Veneno ingerido virulento com Fortitude CD 41 e latência de 1 dia. Cada estágio dura 1 dia e causa drenado 1, drenado 1 ou drenado 2; a condição drenado é cumulativa e não pode ser removida enquanto o veneno durar.", en: "Virulent ingested poison with Fortitude DC 41 and a 1-day onset. Each stage lasts 1 day and causes drained 1, drained 1, or drained 2; drained is cumulative and cannot be removed while the poison lasts.", es: "Veneno ingerido virulento con Fortaleza CD 41 y latencia de 1 día. Cada etapa dura 1 día y causa drenado 1, drenado 1 o drenado 2; drenado es acumulativo y no puede eliminarse mientras dure el veneno." }, mechanics: { save: "Fortitude", saveDC: 41, onset: "1 day", stageDuration: "1 day", stages: ["drained 1", "drained 1", "drained 2"], virulent: true, special: "drained is cumulative and cannot be removed while the poison lasts" } }
 });
 
 // Outras entradas da tabela de itens alquímicos do Player Core 2 (pp. 291–296).
@@ -6398,6 +6457,7 @@ const verifiedFirearms = {
   "weapon.axe_musket_melee": {
     name: "Machado-Mosquete (Axe Musket, melee)", category: "Marcial", damage: "1d8", damageType: "Cortante (Ct)",
     level: 1, price: "10 PO", bulk: 2, traits: ["Combinação", "Fusão crítica", "Amplitude"],
+    variantFamily: "weapon.axe_musket", variantRole: "melee", variantOf: "weapon.axe_musket_ranged",
     names: { "pt-BR": "Machado-Mosquete (corpo a corpo)", en: "Axe Musket (Melee)", es: "Mosquete-hacha (cuerpo a cuerpo)" },
     summaries: { "pt-BR": "Forma corpo a corpo de uma arma combinada que une um machado a um mosquete.", en: "The melee form of a combination weapon joining an axe and a musket.", es: "La forma cuerpo a cuerpo de un arma combinada que une un hacha y un mosquete." },
     source: { book: GUNS_GEARS_SOURCE, page: 158 }
@@ -6405,6 +6465,7 @@ const verifiedFirearms = {
   "weapon.axe_musket_ranged": {
     name: "Machado-Mosquete (Axe Musket, ranged)", category: "Marcial", damage: "1d6", damageType: "Perfuração (Pf)",
     level: 1, price: "10 PO", bulk: 2, traits: ["Combinação", "Concussiva", "Fatal d10", "Recarga 1", "Alcance 40 pés"],
+    variantFamily: "weapon.axe_musket", variantRole: "ranged", variantOf: "weapon.axe_musket_melee",
     names: { "pt-BR": "Machado-Mosquete (à distância)", en: "Axe Musket (Ranged)", es: "Mosquete-hacha (a distancia)" },
     summaries: { "pt-BR": "Forma de disparo de uma arma combinada que une um machado a um mosquete.", en: "The firearm form of a combination weapon joining an axe and a musket.", es: "La forma de arma de fuego de un arma combinada que une un hacha y un mosquete." },
     source: { book: GUNS_GEARS_SOURCE, page: 158 }
@@ -13733,6 +13794,33 @@ for (const [slug, pt, en, es, damage, damageType, bulk, price, category] of BATT
     needs_review: true,
   });
 }
+// Battlecry!, p. 118: os campos abaixo vêm da tabela de armas, não de
+// inferência por nome. Mantemos os 12 registros selecionáveis com grupo,
+// mãos, alcance/recarga e traços estruturados.
+const BATTLECRY_WEAPON_METADATA = {
+  battle_lute: { weaponGroup: "Club", hands: "1", traits: ["Empurrão", "Duas Mãos d8"] },
+  fauchard: { weaponGroup: "Polearm", hands: "2", traits: ["Mortal d8", "Alcance", "Varredura", "Derrubar"] },
+  gaff: { weaponGroup: "Club", hands: "1", traits: ["Derrubar", "Versátil P"] },
+  scourge: { weaponGroup: "Flail", hands: "1", traits: ["Ágil", "Desarmar", "Acurada", "Não-Letal", "Varredura"] },
+  bladed_gauntlet: { weaponGroup: "Brawling", hands: "1", traits: ["Ágil", "Acurada", "Livre-Mão", "Modular B, P ou S"] },
+  lion_scythe: { weaponGroup: "Knife", hands: "1", traits: ["Ágil", "Acurada", "Derrubar"] },
+  war_lance: { weaponGroup: "Spear", hands: "2", traits: ["Mortal d8", "Investida de Justa d6", "Aparar", "Empurrão"] },
+  aldori_dueling_sword: { weaponGroup: "Sword", hands: "1", traits: ["Acurada", "Versátil P"] },
+  bladesweeper: { weaponGroup: "Sword", hands: "2", traits: ["Desarmar", "Jotunnato", "Varredura", "Versátil P"] },
+  maul_spade: { weaponGroup: "Club", hands: "2", traits: ["Mortal d10", "Jotunnato", "Empurrão"] },
+  gauntlet_bow: { weaponGroup: "Crossbow", hands: "1", range: 60, rangeFeet: 60, reload: 1, traits: ["Capacidade 4", "Livre-Mão", "Aparar"] },
+  repeating_hand_crossbow: { weaponGroup: "Crossbow", hands: "1", range: 60, rangeFeet: 60, reload: 0, traits: ["Repetição"] },
+};
+for (const [slug, metadata] of Object.entries(BATTLECRY_WEAPON_METADATA)) {
+  const weapon = (PF2E_DATA.weapons || []).find((record) => record.id === `weapon.battlecry.${slug}`);
+  if (!weapon) continue;
+  Object.assign(weapon, metadata, {
+    source: { book: BATTLECRY_SOURCE, page: 118 },
+    sourceApproximate: false,
+    ruleset: "remaster",
+    needs_review: false,
+  });
+}
 const BATTLECRY_GEAR = [
   ["repeater_bandolier", "Bandoleira de Repetidor", "Repeater Bandolier", "Bandolera de repetidor", "1 PO", "L"],
   ["war_saddle", "Sela de Guerra", "War Saddle", "Silla de guerra", "50 PO", 1],
@@ -15199,6 +15287,958 @@ if (typeof module !== 'undefined' && module.exports) {
   const DARK_ARCHIVE_SRC = "Dark Archive";
   const BOOK_OF_DEAD_SRC = "Book of the Dead";
 
+  const confirmPlayerCore2Spell = (slug, patch) => {
+    const spell = (PF2E_DATA.spells || []).find((record) => record.id === `spell.player_core_2.${slug}`);
+    if (!spell) return;
+    Object.assign(spell, patch, {
+      needs_review: false,
+      sourceApproximate: false,
+      ruleset: "remaster"
+    });
+  };
+  confirmPlayerCore2Spell("ansias_de_carnical", {
+    traits: ["Concentração", "Maldição", "Manuseio", "Mental"],
+    actions: 2,
+    range: "toque",
+    targets: "1 criatura",
+    defense: "Vontade",
+    duration: "varia",
+    mechanics: {
+      criticalSuccess: "não afetado",
+      success: "enjoado 1",
+      failure: "enjoado 2; não pode reduzir abaixo de enjoado 1 até consumir carne crua",
+      criticalFailure: "como falha, mas não pode reduzir abaixo de enjoado 2 até consumir carne crua"
+    },
+    summaries: {
+      "pt-BR": "Magia de 2º ranque, divina ou ocultista: aflige uma criatura tocada com fome de carne crua e aplica enjoado conforme o salvamento de Vontade.",
+      en: "2nd-rank divine or occult spell: afflicts a touched creature with a craving for raw meat and applies sickened based on its Will save.",
+      es: "Conjuro divino u ocultista de rango 2: aflige a una criatura tocada con hambre de carne cruda y aplica nauseado según su salvación de Voluntad."
+    }
+  });
+  confirmPlayerCore2Spell("arma_do_julgamento", {
+    traits: ["Concentração", "Espírito", "Manuseio", "Santificado"],
+    actions: 2,
+    range: "30 metros",
+    targets: "1 criatura",
+    duration: "1 minuto",
+    requirements: "você tem uma divindade",
+    mechanics: {
+      attack: "arma flutuante faz Golpes reativos conforme guerra ou paz",
+      attackModifier: "modificador de ataque com magia",
+      damage: "4d10; tipo igual ao da arma escolhida, ou espiritual se for mais prejudicial",
+      multipleAttackPenalty: "separada da sua e aumenta durante o turno do alvo",
+      heightened: "+1d10 no 10º ranque"
+    },
+    summaries: {
+      "pt-BR": "Magia divina santificada de 9º ranque: invoca uma arma espiritual que ataca conforme a escolha guerra ou paz, causando 4d10 de dano com ataque mágico.",
+      en: "9th-rank sanctified divine spell: summons a spiritual weapon that attacks according to a war or peace choice, dealing 4d10 damage with a spell attack.",
+      es: "Conjuro divino santificado de rango 9: invoca un arma espiritual que ataca según la elección de guerra o paz y causa 4d10 de daño con un ataque mágico."
+    }
+  });
+  confirmPlayerCore2Spell("arvore_protetora", {
+    traits: ["Concentração", "Madeira", "Manuseio", "Planta"],
+    actions: 2,
+    range: "9 metros",
+    duration: "1 minuto",
+    mechanics: {
+      tree: { size: "Médio", ac: 10, hp: 10 },
+      interception: "quando aliado adjacente é atingido por Golpe, a árvore recebe o dano primeiro; excesso passa ao alvo",
+      persistence: "se sobreviver em terra até o fim, permanece como árvore mundana",
+      heightened: "+10 PV por ranque acima do 1º"
+    },
+    summaries: {
+      "pt-BR": "Magia primal de 1º ranque: faz uma árvore Média proteger aliados adjacentes, absorvendo primeiro o dano de Golpes.",
+      en: "1st-rank primal spell: creates a Medium tree that protects adjacent allies by taking Strike damage first.",
+      es: "Conjuro primigenio de rango 1: crea un árbol Mediano que protege a aliados adyacentes recibiendo primero el daño de los Golpes."
+    }
+  });
+  confirmPlayerCore2Spell("aspecto_triplo", {
+    traits: ["Concentração", "Manuseio", "Morfia"],
+    actions: 1,
+    castingTime: "1 minuto",
+    duration: "até a próxima preparação diária",
+    mechanics: {
+      forms: ["donzela", "mãe", "matriarca", "idade natural"],
+      switching: "pode mudar de idade ao Sustentar a magia",
+      disguiseBonus: "+4 status em Dissimulação para passar pela idade escolhida",
+      proficiency: "pode adicionar o nível como bônus de proficiência nesses testes, mesmo destreinado",
+      dismissal: true
+    },
+    summaries: {
+      "pt-BR": "Magia de 3º ranque, ocultista ou primal: permite alternar entre três idades autênticas, concedendo +4 de estado em Dissimulação para parecer ter a idade escolhida.",
+      en: "3rd-rank occult or primal spell: lets you shift between three authentic ages, granting a +4 status bonus to Deception checks to pass as the chosen age.",
+      es: "Conjuro ocultista o primigenio de rango 3: permite alternar entre tres edades auténticas y concede +4 de estado a Dissimulación para aparentar la edad elegida."
+    }
+  });
+  confirmPlayerCore2Spell("ataque_animado", {
+    traits: ["Concentração", "Manuseio"],
+    actions: 2,
+    range: "36 metros",
+    area: "explosão de 3 metros",
+    defense: "Reflexos básico",
+    duration: "sustentada até 1 minuto",
+    mechanics: {
+      initialDamage: "2d10 contundente",
+      sustainedDamage: "1d10 contundente na primeira vez que Sustentar a cada rodada",
+      heightened: "+2d10 no dano inicial e +1d10 no dano subsequente por +2 ranques"
+    },
+    summaries: {
+      "pt-BR": "Magia de 2º ranque, arcana ou ocultista: anima objetos desapossados em uma explosão de 3 metros, causando 2d10 de dano contundente e dano menor ao Sustentar.",
+      en: "2nd-rank arcane or occult spell: animates unattended objects in a 3-meter burst, dealing 2d10 bludgeoning damage and lower damage when Sustained.",
+      es: "Conjuro arcano u ocultista de rango 2: anima objetos desatendidos en una explosión de 3 metros, causa 2d10 de daño contundente y daño menor al Mantenerlo."
+    }
+  });
+  confirmPlayerCore2Spell("bolha_na_pele", {
+    traits: ["Concentração", "Manuseio"],
+    actions: 2,
+    range: "18 metros",
+    targets: "1 criatura",
+    defense: "Fortitude",
+    duration: "1 minuto",
+    mechanics: {
+      criticalSuccess: "não afetado",
+      success: "1 bolha; pode gastar 1 ação de concentração para estourá-la",
+      failure: "2 bolhas",
+      criticalFailure: "4 bolhas",
+      burst: "alvo e criaturas em cone de 4,5 metros sofrem 7d6 de ácido, Fortitude básico",
+      heightened: "+1d6 no dano por bolha por ranque"
+    },
+    summaries: {
+      "pt-BR": "Magia de 5º ranque, arcana, ocultista ou primal: cria bolhas ácidas na pele de uma criatura e permite estourá-las em um cone de 4,5 metros.",
+      en: "5th-rank arcane, occult, or primal spell: creates acidic skin bubbles on a creature and lets you burst them in a 4.5-meter cone.",
+      es: "Conjuro arcano, ocultista o primigenio de rango 5: crea burbujas ácidas en la piel de una criatura y permite reventarlas en un cono de 4,5 metros."
+    }
+  });
+
+  confirmPlayerCore2Spell("cancao_espiritual", {
+    traits: ["Concentração", "Espírito", "Manuseio"],
+    actions: 2,
+    area: "cone de 18 metros",
+    defense: "Fortitude",
+    mechanics: {
+      damage: "14d6 espiritual",
+      criticalSuccess: "sem dano",
+      success: "metade do dano e não pode usar reações até o início do turno",
+      failure: "dano total, sem reações até o início do turno e atordoado 1",
+      criticalFailure: "dano dobrado, sem reações até o início do turno e atordoado 2",
+      incorporeal: "atinge criaturas incorpóreas escondidas em objetos sólidos sem atravessar barreiras",
+      heightened: "+2d6 por ranque"
+    },
+    summaries: {
+      "pt-BR": "Magia de 8º ranque, divina ou ocultista: emite um cone de energia espiritual, causando 14d6 e aplicando efeitos de Fortitude, reações e atordoamento.",
+      en: "8th-rank divine or occult spell: emits a cone of spiritual energy, dealing 14d6 and applying Fortitude, reaction, and stunned effects.",
+      es: "Conjuro divino u ocultista de rango 8: emite un cono de energía espiritual, causa 14d6 y aplica efectos de Fortaleza, reacciones y aturdido."
+    }
+  });
+  confirmPlayerCore2Spell("confinamento", {
+    traits: ["Concentração", "Força", "Manuseio"],
+    actions: 2,
+    range: "9 metros",
+    targets: "1 criatura",
+    defense: "Reflexos",
+    duration: "1 minuto",
+    mechanics: {
+      field: { hardness: 10, hp: 40, immunities: ["acertos críticos", "dano de precisão"], blocks: "ataques, efeitos e criaturas que tentem atravessar" },
+      criticalSuccess: "alvo escapa antes da formação",
+      success: "campo se forma parcialmente com 10 PV",
+      failure: "campo funciona normalmente",
+      heightened: "+5 PV no sucesso e +15 PV na falha por ranque"
+    },
+    summaries: {
+      "pt-BR": "Magia de 4º ranque, arcana ou ocultista: envolve uma criatura em um campo de força imóvel com Dureza 10 e 40 PV, bloqueando ataques e passagem.",
+      en: "4th-rank arcane or occult spell: encloses a creature in an immobile force field with Hardness 10 and 40 HP that blocks attacks and passage.",
+      es: "Conjuro arcano u ocultista de rango 4: encierra a una criatura en un campo de fuerza inmóvil con Dureza 10 y 40 PG que bloquea ataques y paso."
+    }
+  });
+  confirmPlayerCore2Spell("conselho_onirico", {
+    traits: ["Concentração", "Ilusão", "Manuseio", "Mental", "Sono"],
+    castingTime: "10 minutos",
+    range: "planetário",
+    targets: "até 12 criaturas conhecidas pelo nome e encontradas pessoalmente",
+    duration: "1 hora",
+    mechanics: {
+      sharedDream: "alvos que escolhem dormir entram em um sonho compartilhado e se comunicam como se estivessem na mesma sala",
+      awake: "cada alvo sai ao despertar; a magia termina quando todos acordam",
+      refusal: "a magia termina para qualquer alvo que escolha não dormir"
+    },
+    summaries: {
+      "pt-BR": "Magia de 8º ranque, arcana ou ocultista: reúne até 12 criaturas em um sonho compartilhado por 1 hora, desde que escolham dormir.",
+      en: "8th-rank arcane or occult spell: brings up to 12 creatures into a shared dream for 1 hour if they choose to sleep.",
+      es: "Conjuro arcano u ocultista de rango 8: reúne hasta 12 criaturas en un sueño compartido durante 1 hora si eligen dormir."
+    }
+  });
+  confirmPlayerCore2Spell("convocar_servo_menor", {
+    traits: ["Concentração", "Conjuração", "Manuseio"],
+    actions: 3,
+    range: "9 metros",
+    duration: "sustentada até 1 minuto",
+    mechanics: {
+      creature: "celestial, ínfero ou monitor de nível -1; também pode ser animal da Esfera Externa de nível -1",
+      sanctification: "o servidor sagrado ou profano precisa ser permitido pela santificação da divindade",
+      anathema: "convocar traço sagrado ou profano proibido pela divindade",
+      choices: ["celeste e sagrado", "ínfero e profano", "monitor"]
+    },
+    summaries: {
+      "pt-BR": "Magia divina de 1º ranque: convoca por até 1 minuto um habitante de nível -1 da Esfera Externa, respeitando a santificação da sua divindade.",
+      en: "1st-rank divine spell: summons a level -1 inhabitant of the Outer Sphere for up to 1 minute, respecting your deity's sanctification.",
+      es: "Conjuro divino de rango 1: convoca durante hasta 1 minuto a un habitante de nivel -1 de la Esfera Exterior, respetando la santificación de tu divinidad."
+    }
+  });
+  confirmPlayerCore2Spell("cone_gelido", {
+    traits: ["Concentração", "Frio", "Manuseio"],
+    actions: 2,
+    area: "cone de 4,5 metros",
+    defense: "Reflexos",
+    mechanics: {
+      damage: "2d4 frio",
+      criticalSuccess: "não afetado",
+      success: "metade do dano",
+      failure: "dano total e -1,5 metro nas Velocidades por 2 rodadas"
+    },
+    summaries: {
+      "pt-BR": "Magia de 1º ranque, arcana ou primal: lança fragmentos de gelo em um cone de 4,5 metros, causando 2d4 de frio e reduzindo Velocidades na falha.",
+      en: "1st-rank arcane or primal spell: blasts a 4.5-meter cone of ice for 2d4 cold damage and reduces Speed on a failure.",
+      es: "Conjuro arcano o primigenio de rango 1: lanza hielo en un cono de 4,5 metros, causa 2d4 de frío y reduce Velocidades si se falla."
+    }
+  });
+  confirmPlayerCore2Spell("crescimentos_macabros", {
+    traits: ["Concentração", "Manuseio"],
+    actions: 2,
+    range: "18 metros",
+    targets: "1 criatura corpórea",
+    defense: "Fortitude básico e Vontade",
+    mechanics: {
+      primaryDamage: "10d6 perfurante; partes extras apodrecem após 1 rodada",
+      immunity: "não afeta anatomia mutável ou criaturas sem membros",
+      secondaryArea: "criaturas a até 9 metros fazem salvamento de Vontade, efeito mental e visual; imunidade por 1 hora",
+      success: "não afetado",
+      failure: "enjoado 1",
+      criticalFailure: "enjoado 2",
+      heightened: "+2d6 no dano por ranque"
+    },
+    summaries: {
+      "pt-BR": "Magia de 5º ranque, arcana ou primal: faz uma criatura corpórea desenvolver crescimentos, causando 10d6 perfurante e podendo deixar criaturas próximas enjoada.",
+      en: "5th-rank arcane or primal spell: causes a corporeal creature to develop grotesque growths, dealing 10d6 piercing damage and potentially sickening nearby creatures.",
+      es: "Conjuro arcano o primigenio de rango 5: hace que una criatura corpórea desarrolle crecimientos grotescos, causa 10d6 perforante y puede provocar nauseado a criaturas cercanas."
+    }
+  });
+  confirmPlayerCore2Spell("cores_desconcertantes", {
+    traits: ["Ilusão", "Incapacitação", "Manuseio", "Sutil", "Visual"],
+    actions: 2,
+    range: "36 metros",
+    area: "explosão de 6 metros",
+    defense: "Vontade",
+    duration: "sustentada até 1 minuto",
+    mechanics: {
+      obscured: "criaturas na nuvem e a até 6 metros ficam ofuscadas",
+      trigger: "salvamento ao conjurar dentro da nuvem, entrar, terminar turno nela ou Buscar/Interagir na nuvem",
+      success: "não afetado",
+      failure: "confuso por 1d4 rodadas",
+      criticalFailure: "atordoado por 1d4 rodadas e depois confuso pelo restante da duração"
+    },
+    summaries: {
+      "pt-BR": "Magia de 8º ranque, arcana ou ocultista: cria uma nuvem de cores que ofusca e força salvamentos de Vontade, podendo deixar criaturas confusas ou atordoadas.",
+      en: "8th-rank arcane or occult spell: creates a cloud of colors that dazzles and forces Will saves, potentially confusing or stunning creatures.",
+      es: "Conjuro arcano u ocultista de rango 8: crea una nube de colores que deslumbra y exige salvaciones de Voluntad, pudiendo confundir o aturdir criaturas."
+    }
+  });
+  confirmPlayerCore2Spell("dama_vampirica", {
+    traits: ["Concentração", "Eversão", "Manuseio"],
+    actions: 2,
+    range: "9 metros",
+    targets: "1 criatura",
+    defense: "Fortitude",
+    mechanics: {
+      damage: "4d4 perfurante + 4d4 eversivo",
+      temporaryHp: "ganha PV temporários iguais ao dano eversivo sofrido pelo alvo; duram 1 minuto",
+      criticalSuccess: "não afetado",
+      success: "metade do dano",
+      failure: "dano total e imobilizado por 1 rodada ou até Interagir para se libertar",
+      criticalFailure: "dano dobrado e imobilizado por 1 rodada ou até Escapar contra sua CD de magia",
+      heightened: "+1d4 em cada tipo de dano por ranque"
+    },
+    summaries: {
+      "pt-BR": "Magia de 4º ranque, arcana, divina ou ocultista: uma dama de ferro drena 4d4 perfurante e 4d4 eversivo, concedendo PV temporários ao conjurador.",
+      en: "4th-rank arcane, divine, or occult spell: a vampiric iron maiden deals 4d4 piercing and 4d4 void damage and grants the caster temporary HP.",
+      es: "Conjuro arcano, divino u ocultista de rango 4: una dama de hierro vampírica causa 4d4 perforante y 4d4 de vacío y concede PG temporales al lanzador."
+    }
+  });
+  confirmPlayerCore2Spell("desmontar", {
+    traits: ["Concentração", "Manuseio"],
+    actions: 2,
+    range: "toque",
+    targets: "1 objeto mundano de Volume leve ou menos em sua posse",
+    duration: "1 minuto",
+    mechanics: {
+      effect: "objeto se desmonta em peças, recebe quebrado e suas peças ficam pequenas para esconder",
+      limitation: "falha sem peças; usar em objeto perigoso normalmente o aciona",
+      restore: "ao terminar, recompõe-se, perde quebrado e recupera os PV anteriores",
+      heightened: { rank4: "10 minutos", rank6: "até as próximas preparações diárias" }
+    },
+    summaries: {
+      "pt-BR": "Magia de 2º ranque, arcana ou primal: desmonta um objeto mundano leve em peças escondíveis e o recompõe ao fim da duração.",
+      en: "2nd-rank arcane or primal spell: disassembles a light mundane object into concealable pieces and reassembles it when the duration ends.",
+      es: "Conjuro arcano o primigenio de rango 2: desmonta un objeto mundano ligero en piezas ocultables y lo recompone al terminar la duración."
+    }
+  });
+  confirmPlayerCore2Spell("despertar_esqueletos", {
+    traits: ["Concentração", "Manuseio"],
+    actions: 2,
+    range: "18 metros",
+    area: "explosão de 3 metros",
+    defense: "Reflexos básico",
+    duration: "sustentada até 1 minuto",
+    mechanics: {
+      terrain: "a área ocupada pelos esqueletos é terreno difícil",
+      damage: "2d6 cortante ao surgir e ao mover a área",
+      sustain: "move a área até 6 metros na distância da magia uma vez por rodada",
+      replacement: "ossos se recompõem e substituem os destruídos",
+      heightened: "+1d6 por +2 ranques"
+    },
+    summaries: {
+      "pt-BR": "Magia de 3º ranque, arcana, divina ou ocultista: cria uma área de esqueletos em terreno difícil que causa 2d6 cortante ao surgir e ao ser movida.",
+      en: "3rd-rank arcane, divine, or occult spell: creates a difficult-terrain skeleton area that deals 2d6 slashing damage when it appears and moves.",
+      es: "Conjuro arcano, divino u ocultista de rango 3: crea un área de esqueletos con terreno difícil que causa 2d6 cortante al aparecer y moverse."
+    }
+  });
+  confirmPlayerCore2Spell("embotar_ambicao", {
+    traits: ["Concentração", "Infortúnio", "Maldição", "Manuseio", "Mental"],
+    actions: 2,
+    range: "36 metros",
+    targets: "1 criatura",
+    defense: "Vontade",
+    duration: "varia",
+    mechanics: {
+      criticalSuccess: "não afetado",
+      success: "por 1 hora, rola duas vezes iniciativa e usa o pior resultado",
+      failure: "por 1 dia, rola duas vezes iniciativa e testes de recesso e usa o pior resultado",
+      criticalFailure: "como falha, com duração ilimitada"
+    },
+    summaries: {
+      "pt-BR": "Magia de 4º ranque, arcana, divina ou ocultista: amaldiçoa a ambição do alvo, impondo infortúnio em iniciativa e atividades de recesso.",
+      en: "4th-rank arcane, divine, or occult spell: curses a target's ambition, imposing misfortune on initiative and downtime activity checks.",
+      es: "Conjuro arcano, divino u ocultista de rango 4: maldice la ambición del objetivo e impone infortunio en iniciativa y actividades de descanso."
+    }
+  });
+  confirmPlayerCore2Spell("esmorecimento_subito", {
+    traits: ["Concentração", "Eversão", "Manuseio"],
+    actions: 2,
+    range: "36 metros",
+    area: "explosão de 6 metros",
+    defense: "Fortitude básico",
+    mechanics: {
+      damage: "2d10 eversivo a cada criatura viva",
+      diseasePenalty: "criaturas afetadas por doença sofrem -2 circunstancial no salvamento",
+      plants: "apodrece plantas Pequenas e Minúsculas não criaturas, removendo vegetação, terreno difícil, cobertura e ocultamento mundanos",
+      dispel: "tenta neutralizar efeitos mágicos nas plantas",
+      heightened: "+1d10 por ranque"
+    },
+    summaries: {
+      "pt-BR": "Magia de 2º ranque, divina ou primal: acelera a decomposição em uma explosão de 6 metros, causando 2d10 eversivo e apodrecendo plantas mundanas.",
+      en: "2nd-rank divine or primal spell: accelerates decay in a 6-meter burst, dealing 2d10 void damage and rotting mundane plants.",
+      es: "Conjuro divino o primigenio de rango 2: acelera la descomposición en una explosión de 6 metros, causa 2d10 de vacío y pudre plantas mundanas."
+    }
+  });
+  confirmPlayerCore2Spell("encolher_item", {
+    traits: ["Concentração", "Manuseio", "Morfia"],
+    castingTime: "10 minutos",
+    range: "toque",
+    targets: "1 objeto mundano de até 0,6 metros cúbicos e até 80 Volumes",
+    duration: "até as próximas preparações diárias",
+    mechanics: {
+      size: "tamanho aproximado de uma moeda, Volume insignificante",
+      termination: "termina ao Dispensar ou lançar o objeto em superfície sólida",
+      limitation: "objeto não pode atacar ou causar dano enquanto retorna ao tamanho normal",
+      space: "se não houver espaço, duração continua até existir espaço suficiente"
+    },
+    summaries: {
+      "pt-BR": "Magia arcana de 3º ranque: reduz um objeto mundano grande a quase o tamanho de uma moeda até as próximas preparações diárias.",
+      en: "3rd-rank arcane spell: shrinks a mundane object to about coin size until your next daily preparations.",
+      es: "Conjuro arcano de rango 3: reduce un objeto mundano a aproximadamente el tamaño de una moneda hasta tus próximas preparaciones diarias."
+    }
+  });
+  confirmPlayerCore2Spell("epidemia_espiritual", {
+    traits: ["Concentração", "Espírito", "Maldição", "Manuseio"],
+    actions: 2,
+    range: "36 metros",
+    targets: "1 criatura",
+    defense: "Vontade",
+    duration: "varia",
+    mechanics: {
+      contagion: "criaturas que conjuram magia divina ou ocultista no alvo também fazem salvamento de Vontade",
+      failureEffect: "ações do próximo turno devem ser repetidas no turno seguinte na mesma ordem; ação impossível permite agir livremente, mas deixa atordoado 1 até o fim do turno",
+      criticalSuccess: "não afetado",
+      success: "enfraquecido 2 e estupefato 2 por 1 rodada",
+      failure: "enfraquecido 2 e estupefato 2 por 1 minuto, depois enfraquecido 1 e estupefato 1 permanentemente",
+      criticalFailure: "enfraquecido 3 e estupefato 3 por 1 minuto, depois enfraquecido 2 e estupefato 2 permanentemente"
+    },
+    summaries: {
+      "pt-BR": "Magia de 8º ranque, divina ou ocultista: espalha uma maldição espiritual contagiosa que repete ações e aplica enfraquecido e estupefato conforme o salvamento de Vontade.",
+      en: "8th-rank divine or occult spell: spreads a contagious spiritual curse that repeats actions and applies enfeebled and stupefied based on the Will save.",
+      es: "Conjuro divino u ocultista de rango 8: propaga una maldición espiritual contagiosa que repite acciones y aplica debilitado y atontado según la salvación de Voluntad."
+    }
+  });
+  confirmPlayerCore2Spell("exigencia_telepatica", {
+    traits: ["Concentração", "Incapacitação", "Linguístico", "Manuseio", "Mental"],
+    actions: 3,
+    range: "planetário",
+    targets: "1 criatura com a qual você já teve contato telepático",
+    defense: "Vontade",
+    duration: "varia",
+    mechanics: {
+      message: "envia até 25 palavras; alvo pode responder imediatamente com até 25 palavras",
+      effect: "mensagem ardilosa produz efeito de sugestão",
+      successImmunity: "imunidade temporária por 1 dia",
+      criticalSuccessImmunity: "imunidade temporária por 1 mês",
+      requirement: "contato telepático anterior"
+    },
+    summaries: {
+      "pt-BR": "Magia de 9º ranque, arcana, divina ou ocultista: envia uma exigência telepática planetária com efeito de sugestão a uma criatura já contatada.",
+      en: "9th-rank arcane, divine, or occult spell: sends a planetary telepathic demand with the effect of suggestion to a creature previously contacted.",
+      es: "Conjuro arcano, divino u ocultista de rango 9: envía una exigencia telepática planetaria con efecto de sugerencia a una criatura contactada antes."
+    }
+  });
+  confirmPlayerCore2Spell("fingir_de_morto", {
+    traits: ["Incomum", "Ilusão", "Manuseio", "Sutil", "Visual"],
+    actions: 0,
+    trigger: "uma criatura na distância é atingida pelo ataque de um inimigo",
+    range: "36 metros",
+    targets: "1 criatura",
+    duration: "sustentada até 1 minuto",
+    mechanics: {
+      effect: "alvo parece morto e fica invisível; cadáver ilusório permanece no local",
+      hostileActions: "magia termina se alvo realizar ações hostis e o cadáver desaparece",
+      disbelief: "Mestre pode permitir Percepção para desacreditar uma morte absurda",
+      heightened: "no 7º ranque não termina quando o alvo realiza ações hostis"
+    },
+    summaries: {
+      "pt-BR": "Magia incomum de 5º ranque: como reação, faz uma criatura parecer morta e ficar invisível enquanto deixa um cadáver ilusório no local.",
+      en: "Uncommon 5th-rank spell: as a reaction, makes a creature appear dead and become invisible while leaving an illusory corpse behind.",
+      es: "Conjuro poco común de rango 5: como reacción, hace que una criatura parezca muerta y quede invisible mientras deja un cadáver ilusorio."
+    }
+  });
+  confirmPlayerCore2Spell("forma_sagrada", {
+    traits: ["Concentração", "Manuseio", "Morfia"],
+    actions: 2,
+    duration: "1 minuto",
+    mechanics: {
+      ac: "20 + nível",
+      temporaryHp: 10,
+      speed: "12 metros",
+      physicalResistance: 3,
+      senses: ["visão no escuro"],
+      weapon: { attack: "+21", damageBonus: "+8 ou +6 à distância", damage: "3d6 contundente + 1d6 espiritual", favoredDeityWeapon: true },
+      athletics: "+23",
+      restrictions: "apenas o armamento sagrado pode ser usado; forma mantém tamanho e aparência semelhante"
+    },
+    summaries: {
+      "pt-BR": "Magia divina de 6º ranque: transforma o conjurador em uma forma de batalha com CA 20 + nível, 10 PV temporários, resistência física e armamento sagrado.",
+      en: "6th-rank divine spell: transforms the caster into a battle form with AC 20 + level, 10 temporary HP, physical resistance, and a sacred armament.",
+      es: "Conjuro divino de rango 6: transforma al lanzador en una forma de batalla con CA 20 + nivel, 10 PG temporales, resistencia física y armamento sagrado."
+    }
+  });
+  confirmPlayerCore2Spell("fosso_de_lama", {
+    traits: ["Água", "Concentração", "Manuseio", "Terra"],
+    actions: 3,
+    range: "18 metros",
+    area: "quadrados no chão em explosão de 4,5 metros",
+    duration: "1 minuto",
+    mechanics: { terrain: "lama com 30 centímetros de profundidade torna a área terreno difícil" },
+    summaries: {
+      "pt-BR": "Magia de 1º ranque, arcana ou primal: cobre o chão em uma explosão de 4,5 metros com lama pegajosa que é terreno difícil.",
+      en: "1st-rank arcane or primal spell: covers a 4.5-meter burst of ground with sticky mud that is difficult terrain.",
+      es: "Conjuro arcano o primigenio de rango 1: cubre una explosión de 4,5 metros del suelo con barro pegajoso que es terreno difícil."
+    }
+  });
+  confirmPlayerCore2Spell("furor_cegante", {
+    traits: ["Concentração", "Emoção", "Incapacitação", "Maldição", "Mental"],
+    actions: 0,
+    trigger: "uma criatura causa dano a você",
+    range: "18 metros",
+    targets: "a criatura acionadora",
+    defense: "Vontade",
+    duration: "varia",
+    mechanics: {
+      trigger: "uma criatura causa dano a você",
+      criticalSuccess: "não afetado",
+      success: "alvo não pode observar você até o fim do turno; se observava, você fica escondido",
+      failure: "como sucesso; por 1 minuto, quando alvo causar dano a você, não pode observá-lo até o fim do turno",
+      criticalFailure: "como sucesso; duração ilimitada e, na primeira vez por rodada que causar dano, não pode observar a criatura atingida"
+    },
+    summaries: {
+      "pt-BR": "Magia de 6º ranque, divina, ocultista ou primal: como reação ao sofrer dano, amaldiçoa o agressor para que não consiga observar você.",
+      en: "6th-rank divine, occult, or primal spell: as a reaction when damaged, curses the attacker so it cannot observe you.",
+      es: "Conjuro divino, ocultista o primigenio de rango 6: como reacción al recibir daño, maldice al atacante para que no pueda observarte."
+    }
+  });
+  confirmPlayerCore2Spell("geometria_estranha", {
+    traits: ["Concentração", "Ilusão", "Manuseio"],
+    actions: 3,
+    range: "9 metros",
+    area: "4 cubos não adjacentes, cada um com 3 metros de lado",
+    defense: "Vontade",
+    duration: "1 minuto",
+    mechanics: {
+      success: "desacredita a ilusão",
+      failure: "cubos são terreno difícil, inclusive ar e paredes; ao sair, teleporta para cubo aleatório compatível",
+      interaction: "interagir com a ilusão permite novo salvamento para desacreditá-la",
+      teleportation: "criatura escolhe a extremidade do cubo de saída; Mestre exclui cubos sem terreno compatível"
+    },
+    summaries: {
+      "pt-BR": "Magia ocultista de 5º ranque: distorce quatro cubos separados em geometria ilusória, tornando o terreno difícil e teleportando criaturas para saídas aleatórias.",
+      en: "5th-rank occult spell: distorts four separated cubes into illusory geometry, making terrain difficult and teleporting creatures to random exits.",
+      es: "Conjuro ocultista de rango 5: distorsiona cuatro cubos separados en geometría ilusoria, vuelve difícil el terreno y teletransporta criaturas a salidas aleatorias."
+    }
+  });
+  confirmPlayerCore2Spell("gravar_mensagem", {
+    traits: ["Concentração", "Manuseio"],
+    actions: 2,
+    range: "toque",
+    targets: "1 objeto",
+    mechanics: {
+      recording: "grava mensagem curta ou tema emocional escolhido",
+      readObject: "é revelada por Ler Objeto e substitui eventos emotivos anteriores",
+      retrocognition: "aparece como evento importante na linha do tempo sem interferir em outras visões",
+      detectMagic: "Ler Aura de ranque superior percebe a alteração mágica",
+      overwrite: "conjurar novamente remove vibração anterior"
+    },
+    summaries: {
+      "pt-BR": "Magia ocultista de 1º ranque: grava uma mensagem ou emoção em um objeto, revelada por Ler Objeto e detectável por Ler Aura superior.",
+      en: "1st-rank occult spell: records a message or emotion in an object, revealed by Read Object and detectable by a higher-rank Read Aura.",
+      es: "Conjuro ocultista de rango 1: graba un mensaje o emoción en un objeto, revelado por Leer objeto y detectable por Leer aura de rango superior."
+    }
+  });
+  confirmPlayerCore2Spell("impulso_caridoso", {
+    traits: ["Concentração", "Incapacitação", "Manuseio", "Mental"],
+    actions: 2,
+    range: "9 metros",
+    targets: "1 criatura",
+    mechanics: {
+      battleForm: true,
+      ac: "20 + nível",
+      temporaryHp: 10,
+      speed: "12 metros",
+      physicalResistance: 3,
+      senses: ["visão no escuro"],
+      weapon: { attack: "+21", damageBonus: "+8 ou +6 à distância", damage: "3d6 contundente + 1d6 espiritual", onlyAttack: true },
+      athletics: "+23",
+      heightened: "8º ranque: CA 21 + nível, 15 PV temporários, resistência 4, ataque +28, dano +15 ou +12 à distância, Atletismo +29 e tamanho Grande"
+    },
+    summaries: {
+      "pt-BR": "Magia de 2º ranque, arcana, divina ou ocultista: concede uma forma de batalha com armamento sagrado, CA 20 + nível, 10 PV temporários e resistência física.",
+      en: "2nd-rank arcane, divine, or occult spell: grants a battle form with a sacred armament, AC 20 + level, 10 temporary HP, and physical resistance.",
+      es: "Conjuro arcano, divino u ocultista de rango 2: concede una forma de batalla con armamento sagrado, CA 20 + nivel, 10 PG temporales y resistencia física."
+    }
+  });
+  confirmPlayerCore2Spell("insultos_abrasadores", {
+    traits: ["Auditivo", "Concentração", "Emoção", "Manuseio", "Medo", "Mental"],
+    actions: 2,
+    range: "9 metros",
+    targets: "1 criatura",
+    defense: "Vontade",
+    mechanics: {
+      damage: "2d6 fogo persistente",
+      languageBonus: "alvo que não entende o idioma ou não ouve recebe +4 circunstancial no salvamento",
+      criticalSuccess: "não afetado",
+      success: "metade do dano persistente",
+      failure: "assustado 1 e dano persistente total",
+      criticalFailure: "assustado 2 e dobro do dano persistente",
+      heightened: "+2 ranques: até duas criaturas adicionais e +2d6 de dano"
+    },
+    summaries: {
+      "pt-BR": "Magia ocultista de 2º ranque: insultos ardentes causam 2d6 de fogo persistente e deixam o alvo assustado conforme o salvamento de Vontade.",
+      en: "2nd-rank occult spell: burning insults deal 2d6 persistent fire damage and frighten the target based on its Will save.",
+      es: "Conjuro ocultista de rango 2: insultos abrasadores causan 2d6 de fuego persistente y asustan al objetivo según su salvación de Voluntad."
+    }
+  });
+  confirmPlayerCore2Spell("invisibilidade_compartilhada", {
+    traits: ["Aura", "Ilusão", "Manuseio", "Sutil"],
+    actions: 2,
+    area: "emanação de 9 metros",
+    targets: "você e até 5 criaturas voluntárias",
+    duration: "10 minutos",
+    mechanics: {
+      effect: "alvos ficam invisíveis entre si enquanto permanecem na emanação",
+      leaving: "criatura que sai fica visível e não recupera invisibilidade ao voltar",
+      hostileAction: "magia termina após ação hostil de criatura tornada invisível",
+      heightened: "5º ranque: até 10 criaturas voluntárias e duração de 1 hora"
+    },
+    summaries: {
+      "pt-BR": "Magia de 3º ranque, arcana ou ocultista: torna você e até cinco criaturas voluntárias invisíveis dentro de uma emanação de 9 metros.",
+      en: "3rd-rank arcane or occult spell: makes you and up to five willing creatures invisible within a 9-meter emanation.",
+      es: "Conjuro arcano u ocultista de rango 3: vuelve invisibles a ti y hasta cinco criaturas voluntarias dentro de una emanación de 9 metros."
+    }
+  });
+  confirmPlayerCore2Spell("item_invisivel", {
+    traits: ["Concentração", "Ilusão", "Manuseio"],
+    actions: 2,
+    range: "toque",
+    targets: "1 objeto",
+    duration: "1 hora",
+    mechanics: {
+      effect: "objeto fica invisível e indetectado, mas pode ser encontrado e fica escondido após sucesso",
+      hostileUse: "termina depois da ação hostil que usa o objeto",
+      weapon: "arma invisível normalmente não concede vantagem; arma arremessada ou munição pode ocultar a posição do atacante até retornar"
+    },
+    summaries: {
+      "pt-BR": "Magia de 1º ranque, arcana ou ocultista: torna um objeto invisível e indetectado por 1 hora, com regras específicas para armas e munições.",
+      en: "1st-rank arcane or occult spell: makes an object invisible and undetected for 1 hour, with special rules for weapons and ammunition.",
+      es: "Conjuro arcano u ocultista de rango 1: vuelve invisible e indetectable un objeto durante 1 hora, con reglas especiales para armas y munición."
+    }
+  });
+  confirmPlayerCore2Spell("jaula_verdejante", {
+    traits: ["Concentração", "Madeira", "Manuseio", "Vitalidade"],
+    actions: 3,
+    range: "9 metros",
+    area: "1 cubo de 6 metros de lado",
+    defense: "Reflexos",
+    duration: "sustentada até 1 minuto",
+    mechanics: {
+      cage: { ac: 10, hardness: 20, hp: 40, immunity: ["acertos críticos", "dano de precisão"], weakness: { void: 5 }, cover: "cobertura padrão" },
+      criticalSize: "falha se criatura for grande demais para caber",
+      success: "criatura é empurrada para fora em espaço escolhido",
+      failure: "criatura fica presa dentro",
+      escape: "criaturas capazes de passar entre as barras podem sair; mortos-vivos incorpóreos não atravessam",
+      effects: "magias e a maioria dos efeitos de área atravessam sem impedimentos"
+    },
+    summaries: {
+      "pt-BR": "Magia arcana ou primal de 7º ranque: cria uma jaula invisível de madeira vitalizada com CA 10, Dureza 20 e 40 PV, prendendo criaturas conforme Reflexos.",
+      en: "7th-rank arcane or primal spell: creates an invisible vitalized-wood cage with AC 10, Hardness 20, and 40 HP that traps creatures based on Reflex saves.",
+      es: "Conjuro arcano o primigenio de rango 7: crea una jaula invisible de madera vitalizada con CA 10, Dureza 20 y 40 PG que atrapa criaturas según sus salvaciones de Reflejos."
+    }
+  });
+  confirmPlayerCore2Spell("lanterna_do_ceifador", {
+    traits: ["Aura", "Concentração", "Luz", "Manuseio", "Morte"],
+    actions: 2,
+    area: "emanação de 1,5 metro",
+    defense: "Fortitude",
+    duration: "1 minuto",
+    mechanics: {
+      light: "luz forte na área e luz fraca no dobro da área",
+      livingFailure: "criaturas vivas recebem apenas metade do benefício normal de cura na área",
+      undeadFailure: "mortos-vivos ficam enfraquecido 1 na área",
+      repeatedSave: "criatura usa o mesmo resultado ao sair e retornar",
+      sustain: "uma vez por turno a partir da rodada seguinte, aumenta a emanação em 1,5 metro e força novos salvamentos"
+    },
+    summaries: {
+      "pt-BR": "Magia de 2º ranque, divina, ocultista ou primal: invoca uma lanterna espectral que enfraquece mortos-vivos e reduz cura de vivos após falha de Fortitude.",
+      en: "2nd-rank divine, occult, or primal spell: summons a spectral lantern that weakens undead and reduces living creatures' healing after a failed Fortitude save.",
+      es: "Conjuro divino, ocultista o primigenio de rango 2: invoca una linterna espectral que debilita no muertos y reduce la curación de vivos tras fallar Fortaleza."
+    }
+  });
+  confirmPlayerCore2Spell("maldicao_bestial", {
+    traits: ["Concentração", "Maldição", "Manuseio", "Morfia"],
+    actions: 2,
+    range: "toque",
+    targets: "1 humanoide vivo",
+    defense: "Fortitude",
+    duration: "varia",
+    mechanics: {
+      criticalSuccess: "não afetado",
+      success: "características bestiais menores e desajejado 1 por 1 rodada",
+      failure: "forma bestial por 1 hora, desajejado 1, fraqueza 1 a prata, ataque de garra/casco/chifre/mandíbula e teste simples CD 5 para ações de manuseio",
+      criticalFailure: "como falha, mas duração ilimitada",
+      heightened: { rank3: "até as próximas preparações diárias", rank7: "duração ilimitada" }
+    },
+    summaries: {
+      "pt-BR": "Magia de 4º ranque, arcana, ocultista ou primal: amaldiçoa um humanoide vivo com uma forma bestial e penalidades conforme o salvamento de Fortitude.",
+      en: "4th-rank arcane, occult, or primal spell: curses a living humanoid with a bestial form and penalties based on its Fortitude save.",
+      es: "Conjuro arcano, ocultista o primigenio de rango 4: maldice a un humanoide vivo con una forma bestial y penalizaciones según su salvación de Fortaleza."
+    }
+  });
+  confirmPlayerCore2Spell("mansao_resplandecente", {
+    traits: ["Concentração", "Estrutura", "Manuseio"],
+    castingTime: "1 minuto",
+    range: "150 metros",
+    duration: "até as próximas preparações diárias",
+    mechanics: {
+      structure: "mansão de até quatro andares e 90 metros de lado, com cômodos e decoração escolhidos pelo conjurador",
+      mundaneObjects: "mobília e estruturas mundanas funcionam, mas deixam de existir ao sair",
+      magic: "estruturas criadas não produzem efeitos mágicos; dispositivos mágicos levados funcionam normalmente",
+      supplies: "contém os mesmos tipos e quantidades de alimentos e servos de Palácio Planar",
+      alarms: "portas e janelas externas têm Alarme audível ou mental, com identificação individual"
+    },
+    summaries: {
+      "pt-BR": "Magia arcana ou ocultista de 9º ranque: cria uma mansão de até quatro andares com cômodos, suprimentos, servos e alarmes protegendo as entradas.",
+      en: "9th-rank arcane or occult spell: creates a mansion up to four stories with rooms, supplies, servants, and alarms protecting its entrances.",
+      es: "Conjuro arcano u ocultista de rango 9: crea una mansión de hasta cuatro plantas con habitaciones, suministros, sirvientes y alarmas en sus entradas."
+    }
+  });
+  confirmPlayerCore2Spell("manto_de_cores", {
+    traits: ["Concentração", "Manuseio", "Visual"],
+    actions: 2,
+    range: "9 metros",
+    targets: "1 criatura",
+    duration: "1 minuto",
+    mechanics: {
+      adjacent: "criaturas adjacentes ao alvo ficam ofuscadas",
+      trigger: "criatura atinge o alvo com ataque corpo a corpo",
+      immunity: "atacante fica temporariamente imune até o fim do turno",
+      success: "não afetado",
+      failure: "cego por 1 rodada",
+      criticalFailure: "atordoado por 1 rodada"
+    },
+    summaries: {
+      "pt-BR": "Magia de 5º ranque, arcana ou ocultista: envolve uma criatura em cores vibrantes, ofusca adjacentes e pode cegar ou atordoar atacantes corpo a corpo.",
+      en: "5th-rank arcane or occult spell: surrounds a creature in vibrant colors, dazzles adjacent creatures, and can blind or stun melee attackers.",
+      es: "Conjuro arcano u ocultista de rango 5: envuelve a una criatura en colores vibrantes, deslumbra a adyacentes y puede cegar o aturdir a atacantes cuerpo a cuerpo."
+    }
+  });
+  confirmPlayerCore2Spell("muralha_de_carne", {
+    traits: ["Concentração", "Manuseio"],
+    actions: 2,
+    range: "18 metros",
+    duration: "1 minuto",
+    mechanics: {
+      wall: { height: "6 metros", maxLength: "9 metros", thickness: "90 centímetros", section: { length: "1,5 metros", ac: 10, hp: 75 } },
+      placement: "linha contínua sem atravessar criaturas ou objetos; não pode ser Reparada, mas pode ser curada por vitalidade e cura",
+      mouths: "Golpeiam criaturas que terminam o turno a até 1,5 metro, usando ataque mágico e causando 2d6 perfurante; podem consumir poções",
+      eyes: "+2 circunstancial em Percepção visual na linha de visão da muralha e permite usar os olhos como linha de visão",
+      arms: "criaturas que terminam o turno a até 1,5 metro fazem Reflexos; falha agarrada e falha crítica restringida por 1 rodada ou até Escapar",
+      heightened: "+2 ranques: +10 PV por seção e +1d6 no dano das bocas"
+    },
+    summaries: {
+      "pt-BR": "Magia de 5º ranque, divina, ocultista ou primal: cria uma muralha viva de 6 metros com seções resistentes e permite escolher bocas, olhos ou braços como característica.",
+      en: "5th-rank divine, occult, or primal spell: creates a living 6-meter wall with durable sections and lets you choose mouths, eyes, or arms as its feature.",
+      es: "Conjuro divino, ocultista o primigenio de rango 5: crea una muralla viva de 6 metros con secciones resistentes y permite elegir bocas, ojos o brazos como característica."
+    }
+  });
+  confirmPlayerCore2Spell("olhos_incontaveis", {
+    traits: ["Concentração", "Manuseio"],
+    actions: 2,
+    range: "toque",
+    targets: "1 criatura",
+    duration: "1 minuto",
+    mechanics: {
+      senses: "enxerga em todas as direções ao mesmo tempo",
+      defense: "não pode ser flanqueado",
+      search: "sucesso em Buscar é tratado como sucesso crítico"
+    },
+    summaries: {
+      "pt-BR": "Magia de 4º ranque, arcana, ocultista ou primal: cobre uma criatura com olhos, impede que seja flanqueada e melhora sucessos em Buscar.",
+      en: "4th-rank arcane, occult, or primal spell: covers a creature in eyes, prevents it from being flanked, and improves successes at Seek.",
+      es: "Conjuro arcano, ocultista o primigenio de rango 4: cubre a una criatura de ojos, impide que sea flanqueada y mejora sus éxitos al Buscar."
+    }
+  });
+  confirmPlayerCore2Spell("onda_destruidora", {
+    traits: ["Água", "Concentração", "Manuseio"],
+    actions: 2,
+    area: "cone de 9 metros",
+    defense: "Reflexos básico",
+    mechanics: {
+      damage: "6d6 contundente",
+      environmental: "apaga chamas não mágicas na área",
+      heightened: "+2d6 por ranque"
+    },
+    summaries: {
+      "pt-BR": "Magia de 3º ranque, arcana ou primal: lança uma onda em cone de 9 metros, causando 6d6 contundente e apagando chamas não mágicas.",
+      en: "3rd-rank arcane or primal spell: sends a 9-meter cone of water dealing 6d6 bludgeoning damage and extinguishing non-magical flames.",
+      es: "Conjuro arcano o primigenio de rango 3: lanza una ola en cono de 9 metros, causa 6d6 contundente y apaga llamas no mágicas."
+    }
+  });
+  confirmPlayerCore2Spell("orientacao_do_andarilho", {
+    traits: ["Concentração", "Manuseio"],
+    castingTime: "1 minuto",
+    duration: "até as próximas preparações diárias",
+    mechanics: {
+      destination: "escolhe um destino e recebe uma trajetória inspirada",
+      travel: "você e aliados terrestres reduzem pela metade a penalidade de movimento de terreno difícil enquanto seguirem a trajetória",
+      encounter: "não afeta movimento durante encontros",
+      replacement: "conjurar novamente encerra e substitui a trajetória anterior"
+    },
+    summaries: {
+      "pt-BR": "Magia divina ou ocultista de 3º ranque: guia uma viagem terrestre até um destino escolhido, reduzindo pela metade a penalidade de terreno difícil.",
+      en: "3rd-rank divine or occult spell: guides overland travel to a chosen destination, halving difficult-terrain movement penalties.",
+      es: "Conjuro divino u ocultista de rango 3: guía un viaje terrestre hasta un destino elegido y reduce a la mitad las penalizaciones de terreno difícil."
+    }
+  });
+  confirmPlayerCore2Spell("passos_plumbeos", {
+    traits: ["Concentração", "Manuseio", "Mental", "Morfia"],
+    actions: 2,
+    range: "9 metros",
+    targets: "1 criatura",
+    defense: "Fortitude",
+    duration: "sustentada até 1 minuto",
+    mechanics: {
+      criticalSuccess: "não afetado",
+      success: "sobrecarregado e fraqueza 2 a eletricidade até o fim do próximo turno; não pode ser sustentada",
+      failure: "sobrecarregado e fraqueza 2 a eletricidade",
+      criticalFailure: "sobrecarregado e fraqueza 3 a eletricidade",
+      heightened: "+1 na fraqueza por ranque"
+    },
+    summaries: {
+      "pt-BR": "Magia de 1º ranque, arcana ou primal: transforma os pés do alvo em metal pesado, deixando-o sobrecarregado e vulnerável a eletricidade.",
+      en: "1st-rank arcane or primal spell: turns a target's feet into heavy metal, making it encumbered and vulnerable to electricity.",
+      es: "Conjuro arcano o primigenio de rango 1: convierte los pies del objetivo en metal pesado, dejándolo sobrecargado y vulnerable a electricidad."
+    }
+  });
+  confirmPlayerCore2Spell("pele_de_camaleao", {
+    traits: ["Concentração", "Ilusão", "Manuseio"],
+    actions: 3,
+    range: "4,5 metros",
+    targets: "até 8 criaturas",
+    duration: "10 minutos",
+    mechanics: {
+      effect: "vestimentas e equipamento externo ajustam cores ao ambiente enquanto alvo permanece parado",
+      stealthBonus: "+3 status em Furtividade para Esconder",
+      removal: "remover parte do equipamento ou vestimenta encerra a magia para a criatura",
+      heightened: { rank6: "falha crítica ao Esgueirar a até 9 metros vira falha", rank8: "como 6º ranque e bônus +4" }
+    },
+    summaries: {
+      "pt-BR": "Magia primal de 5º ranque: camufla até oito criaturas paradas, concedendo +3 de estado em Furtividade para Esconder.",
+      en: "5th-rank primal spell: camouflages up to eight stationary creatures, granting a +3 status bonus to Stealth to Hide.",
+      es: "Conjuro primigenio de rango 5: camufla hasta ocho criaturas inmóviles y concede +3 de estado a Sigilo para Esconderse."
+    }
+  });
+  confirmPlayerCore2Spell("poco_gravitacional", {
+    traits: ["Concentração", "Manuseio"],
+    actions: 2,
+    range: "36 metros",
+    area: "explosão de 9 metros",
+    defense: "Reflexos",
+    mechanics: {
+      effect: "criaturas e objetos soltos são puxados ao centro por movimento forçado",
+      criticalSuccess: "não afetado",
+      success: "move 1,5 metro ao centro",
+      failure: "move 4,5 metros ao centro",
+      criticalFailure: "move 9 metros ao centro",
+      spacing: "se não houver espaço no centro, mais próximos movem primeiro e os demais até onde puderem"
+    },
+    summaries: {
+      "pt-BR": "Magia de 3º ranque, arcana ou ocultista: cria uma esfera gravitacional que puxa criaturas e objetos para o centro conforme o salvamento de Reflexos.",
+      en: "3rd-rank arcane or occult spell: creates a gravitational sphere that pulls creatures and loose objects toward its center based on Reflex saves.",
+      es: "Conjuro arcano u ocultista de rango 3: crea una esfera gravitacional que atrae criaturas y objetos sueltos al centro según sus salvaciones de Reflejos."
+    }
+  });
+  confirmPlayerCore2Spell("presente_prestativo", {
+    traits: ["Manuseio", "Teletransportação"],
+    actions: 1,
+    range: "36 metros",
+    targets: "1 criatura voluntária",
+    mechanics: {
+      object: "teleporta objeto de Volume leve ou insignificante da mão do conjurador para a mão do alvo ou chão",
+      failure: "falha se alvo estiver inconsciente, recusar ou se tentar teleportar criatura",
+      awareness: "alvo sabe qual objeto está sendo enviado",
+      heightened: { rank3: "150 metros", rank5: "Volume 1; 3 ações alcançam 1,5 quilômetro sem linha de visão com familiaridade extrema" }
+    },
+    summaries: {
+      "pt-BR": "Magia de 1º ranque, arcana, divina ou ocultista: teleporta um pequeno objeto para uma criatura voluntária a até 36 metros.",
+      en: "1st-rank arcane, divine, or occult spell: teleports a small object to a willing creature within 36 meters.",
+      es: "Conjuro arcano, divino u ocultista de rango 1: teletransporta un objeto pequeño a una criatura voluntaria a hasta 36 metros."
+    }
+  });
+  confirmPlayerCore2Spell("rebater_magia", {
+    traits: ["Incomum", "Manuseio"],
+    actions: 0,
+    trigger: "você é alvo de uma magia da qual está ciente",
+    mechanics: {
+      counteract: "tenta neutralizar a magia acionadora",
+      redirect: "se neutralizar, a magia continua com o conjurador como alvo",
+      limitation: "não afeta magias sem alvo específico, como magias de área"
+    },
+    summaries: {
+      "pt-BR": "Magia incomum de 7º ranque: como reação, tenta neutralizar uma magia que tem você como alvo e redirecioná-la ao conjurador.",
+      en: "Uncommon 7th-rank spell: as a reaction, attempts to counteract a spell targeting you and redirects it to the caster if successful.",
+      es: "Conjuro poco común de rango 7: como reacción, intenta contrarrestar un conjuro que te tiene como objetivo y lo redirige al lanzador si tiene éxito."
+    }
+  });
+  confirmPlayerCore2Spell("cobertor_de_estrelas", {
+    traits: ["Concentração", "Ilusão", "Manuseio"],
+    actions: 2,
+    defense: "Vontade",
+    duration: "10 minutos",
+    mechanics: {
+      stealth: "+2 de bônus de estado em testes de Furtividade para Esconder e Esgueirar",
+      starlitSky: "ao ar livre sob céu estrelado, fica invisível enquanto imóvel e ocultado enquanto se move",
+      adjacentTrigger: "criatura que termina o turno adjacente faz salvamento de Vontade; efeito mental e visual",
+      success: "não afetada",
+      failure: "ofuscada até o fim do próximo turno",
+      criticalFailure: "confusa e ofuscada até o fim do próximo turno"
+    },
+    summaries: {
+      "pt-BR": "Magia de 6º ranque: envolve você em escuridão estrelada, concede +2 em Furtividade e, sob céu estrelado, oferece invisibilidade imóvel ou ocultação em movimento.",
+      en: "6th-rank spell: surrounds you with starry darkness, grants +2 to Stealth, and under a starry sky provides invisibility while still or concealment while moving.",
+      es: "Conjuro de rango 6: te envuelve en oscuridad estrellada, concede +2 a Sigilo y bajo un cielo estrellado da invisibilidad al estar quieto u ocultación al moverte."
+    }
+  });
+  confirmPlayerCore2Spell("cofre_imaginario", {
+    traits: ["Concentração", "Manuseio", "Mental"],
+    actions: 1,
+    execution: "1 minuto",
+    range: "toque",
+    targets: "1 recipiente e seu conteúdo, com até Volume 10 no total",
+    duration: "até a próxima preparação diária",
+    mechanics: {
+      storage: "transforma recipiente e conteúdo em forma imaginária armazenada na mente do conjurador",
+      restriction: "não pode conter criaturas",
+      retrieval: "retirar um item exige atividade de 3 ações com traços concentração e manuseio",
+      noReturn: "itens retirados não podem ser colocados de volta",
+      ending: "pode ser dispensada; ao terminar, o recipiente reaparece nas mãos ou no chão próximo"
+    },
+    summaries: {
+      "pt-BR": "Magia de 5º ranque: armazena mentalmente um recipiente e seu conteúdo de até Volume 10 até a próxima preparação diária, permitindo retirar itens com uma atividade de 3 ações.",
+      en: "5th-rank spell: stores a container and up to Bulk 10 of contents in your mind until your next daily preparations, allowing items to be retrieved with a 3-action activity.",
+      es: "Conjuro de rango 5: almacena en tu mente un recipiente y hasta Volumen 10 de contenido hasta tus próximas preparaciones diarias, permitiendo retirar objetos con una actividad de 3 acciones."
+    }
+  });
+  confirmPlayerCore2Spell("rosto_do_familiar", {
+    traits: ["Concentração", "Manuseio", "Vidência"],
+    actions: 2,
+    range: "1,5 quilômetro",
+    targets: "1 criatura voluntária que seja seu companheiro animal ou familiar",
+    duration: "sustentada",
+    mechanics: {
+      senses: "enxerga pelos olhos do alvo, sente os cheiros dele e percebe o mundo pelos outros sentidos",
+      revelation: "magias de revelação que afetam os sentidos do conjurador também podem afetar o sensor",
+      limitation: "o alvo precisa ser seu companheiro animal ou familiar e a conexão exige sustentação"
+    },
+    summaries: {
+      "pt-BR": "Magia de 3º ranque: transforma seu companheiro animal ou familiar em um sensor de vidência a até 1,5 quilômetro, permitindo perceber o mundo pelos sentidos dele enquanto sustenta a magia.",
+      en: "3rd-rank spell: turns your animal companion or familiar within 1.5 kilometers into a scrying sensor whose senses you can perceive while you Sustain the Spell.",
+      es: "Conjuro de rango 3: convierte a tu compañero animal o familiar a 1,5 kilómetros en un sensor de videncia cuyos sentidos puedes percibir mientras mantienes el conjuro."
+    }
+  });
+  confirmPlayerCore2Spell("sinestesia", {
+    traits: ["Concentração", "Manuseio", "Mental"],
+    actions: 2,
+    range: "9 metros",
+    targets: "1 criatura",
+    defense: "Vontade",
+    duration: "varia conforme o salvamento",
+    mechanics: {
+      success: "afetado por 1 rodada",
+      failure: "afetado por 1 minuto",
+      criticalFailure: "como falha e atordoado 2",
+      concentration: "deve obter sucesso em teste simples CD 5 ao usar ação de concentração ou perde a ação",
+      concealment: "todas as criaturas e objetos ficam ocultados para o alvo",
+      movement: "desajeitado 3 e –3 metros nas Velocidades",
+      heightened: { rank9: "até cinco criaturas como alvo" }
+    },
+    summaries: {
+      "pt-BR": "Magia ocultista de 5º ranque: reconfigura os sentidos do alvo; conforme o salvamento de Vontade, impõe distração, ocultação, desajeitado 3 e penalidade de movimento.",
+      en: "5th-rank occult spell: reconfigures the target's senses, imposing distraction, concealment, clumsy 3, and a Speed penalty based on its Will save.",
+      es: "Conjuro ocultista de rango 5: reconfigura los sentidos del objetivo e impone distracción, ocultación, torpe 3 y una penalización de Velocidades según su salvación de Voluntad."
+    }
+  });
+  confirmPlayerCore2Spell("sacrificio_final", {
+    traits: ["Concentração", "Fogo", "Manuseio"],
+    actions: 2,
+    range: "36 metros",
+    targets: "1 criatura com o traço lacaio que você convocou ou controla permanentemente",
+    defense: "Reflexos básico",
+    mechanics: {
+      effect: "o lacaio alvo morre imediatamente e a explosão causa 6d6 de dano de fogo em criaturas a até 6 metros",
+      alternateDamage: "se o alvo tiver traço água ou frio, causa dano de frio e troca o traço fogo por frio",
+      temporaryControl: "falha ao mirar criatura controlada temporariamente e rompe o efeito de controle",
+      heightened: { perRank: "+1 aumenta o dano em 2d6" }
+    },
+    summaries: {
+      "pt-BR": "Magia de 2º ranque: sacrifica um lacaio convocado ou controlado permanentemente para causar 6d6 de dano em uma explosão de 6 metros, com salvamento básico de Reflexos.",
+      en: "2nd-rank spell: sacrifices a summoned or permanently controlled minion to deal 6d6 damage in a 6-meter burst with a basic Reflex save.",
+      es: "Conjuro de rango 2: sacrifica un lacayo convocado o controlado permanentemente para causar 6d6 de daño en una explosión de 6 metros con salvación básica de Reflejos."
+    }
+  });
+
   // 1. Ancestralidades - Enriquecer atributos e sentidos para a ficha do personagem
   if (PF2E_DATA.ancestries) {
     if (PF2E_DATA.ancestries["Kitsune"]) PF2E_DATA.ancestries["Kitsune"].source = { book: ANCESTRY_GUIDE_SRC, page: 120 };
@@ -15399,6 +16439,19 @@ if (typeof module !== 'undefined' && module.exports) {
     });
   }
 
+  // Reaplica as transcrições mecânicas confirmadas depois da tabela editorial
+  // legada, que pode substituir apenas os resumos durante a auditoria.
+  for (const [slug, confirmed] of Object.entries(PLAYER_CORE_2_ALCHEMICAL_TOOL_MECHANICS)) {
+    for (const collection of [PF2E_DATA.formulas || [], PF2E_DATA.itemCompendium || []]) {
+      const record = collection.find((candidate) => candidate.id === `formula.pc2.${slug}` || candidate.id === `item.pc2.${slug}`);
+      if (!record || !confirmed?.mechanics) continue;
+      record.summaries = { ...confirmed.summaries };
+      record.description = confirmed.summaries["pt-BR"];
+      record.mechanics = { ...confirmed.mechanics };
+      record.needs_review = false;
+    }
+  }
+
   // 5. Atualização de fontes e verificação universal
   if (PF2E_DATA.versatileHeritages) {
     for (const v of PF2E_DATA.versatileHeritages) {
@@ -15498,6 +16551,263 @@ if (typeof module !== 'undefined' && module.exports) {
       }
       if (typeof item.summary === "string" && placeholderRegex.test(item.summary)) {
         item.summary = item.summary.replace(/\b(?:pendentes?|revis[aã]o|placeholder)\b/gi, "oficial");
+      }
+    }
+  }
+
+  // Última sincronização após todas as normalizações editoriais: mantém item,
+  // fórmula e resumo trilíngue alinhados com o texto confirmado do PDF.
+  const alterEgo = Object.values(PF2E_DATA.archetypes || {}).find((record) => record.id === "archetype.dark_archive.alter_ego");
+  if (alterEgo) {
+    alterEgo.level = 2;
+    alterEgo.traits = ["Incomum", "Arquétipo", "Dedicação"];
+    alterEgo.prerequisites = ["Treinado em Dissimulação", "Treinado em Furtividade"];
+    alterEgo.mechanics = {
+      dedication: true,
+      training: { skill: "Deception", proficiency: "expert" },
+      grantedActivity: "Assume a Role",
+      assumeRole: {
+        studyDuration: "1 hour",
+        studyWindow: "within the last 3 days",
+        requiresVisualSource: true,
+        impersonationBonus: "+1 circumstance to Deception",
+        loreBonus: "+1 circumstance to one relevant Lore; use level if untrained",
+        duration: "24 hours",
+        endsWhen: ["studying for a new role", "choosing to stop"]
+      },
+      dedicationRestriction: "cannot select another dedication until gaining two other Alter Ego feats"
+    };
+    alterEgo.summaries = {
+      "pt-BR": "Dedicação de Alter Ego: exige Dissimulação e Furtividade treinadas, torna Dissimulação especialista e concede Assume a Role, que dá +1 em Dissimulação e em um Saber relevante após estudar uma função.",
+      en: "Alter Ego dedication: requires trained Deception and Stealth, makes you an expert in Deception, and grants Assume a Role, giving +1 to Deception and a relevant Lore after studying a role.",
+      es: "Dedicación de Alter Ego: requiere Engaño y Sigilo entrenados, te hace experto en Engaño y concede Assume a Role, que da +1 a Engaño y a un Saber relevante tras estudiar un rol."
+    };
+    alterEgo.description = alterEgo.summaries["pt-BR"];
+    alterEgo.needs_review = false;
+    alterEgo.sourceApproximate = false;
+    alterEgo.ruleset = "legacy";
+  }
+  const livingVessel = Object.values(PF2E_DATA.archetypes || {}).find((record) => record.id === "archetype.dark_archive.living_vessel");
+  if (livingVessel) {
+    livingVessel.level = 2;
+    livingVessel.traits = ["Raro", "Arquétipo", "Dedicação"];
+    livingVessel.prerequisites = [];
+    livingVessel.mechanics = {
+      dedication: true,
+      dailyAssuagement: "1 hour each day",
+      failedAssuagementPenalty: "-1 status to Will saves for 24 hours",
+      prolongedFailure: "after a full week, doomed 1 until the entity possesses the body for 24 hours",
+      reaction: "Entity's Resurgence",
+      resurgence: {
+        trigger: "would be reduced to 0 Hit Points but not immediately killed",
+        hp: 1,
+        temporaryHitPoints: "level + key ability modifier",
+        duration: "1 minute or until unconscious",
+        bonuses: "+1 status to attack and damage rolls",
+        entityControl: true
+      },
+      dedicationRestriction: "cannot select another dedication until gaining two other Living Vessel feats"
+    };
+    livingVessel.summaries = {
+      "pt-BR": "Dedicação rara de Vaso Vivo: exige apaziguar diariamente a entidade interior e concede a reação Ressurgência da Entidade, que mantém 1 PV, concede PV temporários e permite que a entidade assuma o controle.",
+      en: "Rare Living Vessel dedication: requires daily assuagement of the entity within you and grants Entity’s Resurgence, keeping you at 1 HP, granting temporary HP, and allowing the entity to take control.",
+      es: "Dedicación rara de Vaso Vivo: exige apaciguar a la entidad a diario y concede Resurgimiento de la Entidad, que te mantiene con 1 PG, otorga PG temporales y permite que la entidad tome el control."
+    };
+    livingVessel.description = livingVessel.summaries["pt-BR"];
+    livingVessel.needs_review = false;
+    livingVessel.sourceApproximate = false;
+    livingVessel.ruleset = "legacy";
+  }
+  const pactbinder = Object.values(PF2E_DATA.archetypes || {}).find((record) => record.id === "archetype.dark_archive.pactbinder");
+  if (pactbinder) {
+    pactbinder.level = 2;
+    pactbinder.traits = ["Incomum", "Arquétipo", "Dedicação"];
+    pactbinder.prerequisites = ["Treinado em Diplomacia", "Treinado em Arcanismo, Natureza, Ocultismo ou Religião"];
+    pactbinder.mechanics = {
+      dedication: true,
+      training: ["Diplomacy expert", "one of Arcana, Nature, Occultism, or Religion expert"],
+      action: "Binding Vow",
+      frequency: "once per day",
+      actionTraits: ["auditory", "concentrate", "enchantment", "occult"],
+      vow: { breakAnathema: true, fulfillmentBonus: "+1 circumstance to Request or Coerce directly serving the vow" },
+      dedicationRestriction: "cannot select another dedication until gaining two other Pactbinder feats"
+    };
+    pactbinder.summaries = {
+      "pt-BR": "Dedicação incomum de Pactbinder: exige Diplomacia e uma tradição mágica treinadas, torna ambas especialistas e concede Binding Vow, com +1 em Request ou Coerce diretamente ligados ao voto.",
+      en: "Uncommon Pactbinder dedication: requires trained Diplomacy and one trained magical skill, makes both expert, and grants Binding Vow with +1 to Request or Coerce directly serving the vow.",
+      es: "Dedicación poco común de Pactbinder: requiere Diplomacia entrenada y una habilidad mágica entrenada, vuelve ambas expertas y concede Binding Vow con +1 a Request o Coerce directamente ligados al voto."
+    };
+    pactbinder.description = pactbinder.summaries["pt-BR"];
+    pactbinder.needs_review = false;
+    pactbinder.sourceApproximate = false;
+    pactbinder.ruleset = "legacy";
+  }
+  const curseMaelstrom = Object.values(PF2E_DATA.archetypes || {}).find((record) => record.id === "archetype.dark_archive.curse_maelstrom");
+  if (curseMaelstrom) {
+    curseMaelstrom.level = 2;
+    curseMaelstrom.traits = ["Raro", "Arquétipo", "Dedicação"];
+    curseMaelstrom.prerequisites = ["Você está amaldiçoado ou já foi amaldiçoado"];
+    curseMaelstrom.mechanics = {
+      dedication: true,
+      triggerState: ["succeed at a check and accept a GM reroll", "foe misfortune applies to your roll", "fail a save against a foe curse and are affected"],
+      stateDuration: "until encounter ends or voluntarily ended; once ended, cannot re-enter for 1 minute",
+      stateRestrictions: "fortune effects have no effect",
+      aura: "other creatures within 10 feet take -1 status to all saves and skill checks",
+      action: "Expel Maelstrom",
+      actionTraits: ["curse", "necromancy", "occult"],
+      range: "60 feet",
+      outcomes: {
+        criticalSuccess: "unaffected",
+        success: "-1 status to all saves and skill checks for 1 minute",
+        failure: "-2 status to all saves and skill checks for 10 minutes",
+        criticalFailure: "as failure and roll twice, taking the lower result, on next save or skill check"
+      },
+      dedicationRestriction: "cannot select another dedication until gaining two other Curse Maelstrom feats"
+    };
+    curseMaelstrom.summaries = {
+      "pt-BR": "Dedicação rara de Maremoto de Maldições: exige estar ou já ter sido amaldiçoado e concede um estado de maremoto com aura de –1, imunidade prática a fortuna e a ação Expel Maelstrom, resolvida por salvamento de Vontade.",
+      en: "Rare Curse Maelstrom dedication: requires being or having been cursed and grants a maelstrom state with a -1 aura, practical immunity to fortune, and Expel Maelstrom resolved by a Will save.",
+      es: "Dedicación rara de Curse Maelstrom: requiere estar o haber estado maldito y concede un estado de maremoto con aura de -1, inmunidad práctica a fortuna y Expel Maelstrom resuelto con una salvación de Voluntad."
+    };
+    curseMaelstrom.description = curseMaelstrom.summaries["pt-BR"];
+    curseMaelstrom.needs_review = false;
+    curseMaelstrom.sourceApproximate = false;
+    curseMaelstrom.ruleset = "legacy";
+  }
+  const timeMage = Object.values(PF2E_DATA.archetypes || {}).find((record) => record.id === "archetype.dark_archive.time_mage");
+  if (timeMage) {
+    timeMage.level = 6;
+    timeMage.traits = ["Incomum", "Arquétipo"];
+    timeMage.prerequisites = ["Possui uma característica de classe de conjuração"];
+    timeMage.mechanics = {
+      dedication: true,
+      focusSpell: "delay consequence domain spell",
+      focusPointCost: 1,
+      focusPoolGranted: 1,
+      refocusMethod: "revisit moments from the past and contemplate futures",
+      innateCantrip: "time sense",
+      tradition: "same tradition as the spellcasting prerequisite",
+      dedicationRestriction: "cannot select another dedication until gaining two other Time Mage feats"
+    };
+    timeMage.summaries = {
+      "pt-BR": "Dedicação incomum de Mago do Tempo, nível 6: exige uma característica de conjuração, concede a magia de domínio delay consequence, um Ponto de Foco e o truque inato time sense.",
+      en: "Uncommon 6th-level Time Mage dedication: requires a spellcasting class feature and grants delay consequence, a 1-point focus pool, and the innate time sense cantrip.",
+      es: "Dedicación poco común de Mago del Tiempo de nivel 6: requiere una característica de lanzamiento de conjuros y concede delay consequence, un pool de 1 Punto de Foco y el truco innato time sense."
+    };
+    timeMage.description = timeMage.summaries["pt-BR"];
+    timeMage.needs_review = false;
+    timeMage.sourceApproximate = false;
+    timeMage.ruleset = "legacy";
+  }
+  const chronoskimmer = Object.values(PF2E_DATA.archetypes || {}).find((record) => record.id === "archetype.dark_archive.chronoskimmer");
+  if (chronoskimmer) {
+    chronoskimmer.level = 2;
+    chronoskimmer.traits = ["Raro", "Arquétipo"];
+    chronoskimmer.prerequisites = [];
+    chronoskimmer.mechanics = {
+      dedication: true,
+      initiativeChoices: ["normal", "stabilize timestream", "destabilize timestream"],
+      stabilize: "initiative equals 10 + initiative modifier",
+      destabilize: { flatCheckDC: 11, success: "19 + initiative modifier", failure: "1 + initiative modifier" },
+      fortuneEffects: ["stabilize timestream", "destabilize timestream"],
+      tieBreaker: "go first when tied with an opponent",
+      abilityDC: "higher of class DC or spell DC",
+      dedicationRestriction: "cannot select another dedication until gaining two other Chronoskimmer feats"
+    };
+    chronoskimmer.summaries = {
+      "pt-BR": "Dedicação rara de Crononavegador: permite escolher entre iniciativa normal, estabilizar o fluxo temporal ou desestabilizá-lo com CD 11, vence empates e usa a maior CD de classe ou magia para suas habilidades temporais.",
+      en: "Rare Chronoskimmer dedication: lets you roll normally, stabilize your timestream, or destabilize it with a DC 11 flat check, wins initiative ties, and uses the higher of class or spell DC for temporal abilities.",
+      es: "Dedicación rara de Cronoskimmer: permite tirar iniciativa normalmente, estabilizar el flujo temporal o desestabilizarlo con una prueba plana CD 11, gana empates y usa la mayor CD de clase o de conjuro para sus habilidades temporales."
+    };
+    chronoskimmer.description = chronoskimmer.summaries["pt-BR"];
+    chronoskimmer.needs_review = false;
+    chronoskimmer.sourceApproximate = false;
+    chronoskimmer.ruleset = "legacy";
+  }
+  const psychicDuelist = Object.values(PF2E_DATA.archetypes || {}).find((record) => record.id === "archetype.dark_archive.psychic_duelist");
+  if (psychicDuelist) {
+    psychicDuelist.level = 4;
+    psychicDuelist.dedicationLevel = 4;
+    psychicDuelist.traits = ["Raro", "Arquétipo", "Dedicação"];
+    psychicDuelist.prerequisites = ["Treinado em Ocultismo", "Você já participou de um duelo psíquico"];
+    psychicDuelist.mechanics = {
+      dedication: true,
+      psychicDuelInitiativeBonus: "+2 circumstance",
+      psychicDuelChoices: {
+        mindMace: "status bonus to mental spell damage equal to spell rank",
+        psychicFist: "use standard ability modifier for Strike damage and full AC instead of Will DC as AC"
+      },
+      dedicationRestriction: "cannot select another dedication until gaining two other Psychic Duelist feats"
+    };
+    psychicDuelist.summaries = {
+      "pt-BR": "Dedicação rara de Duelista Psíquico, nível 4: exige treinamento em Ocultismo e participação em um duelo psíquico, concede +2 circunstancial na iniciativa desses duelos e uma escolha entre Mind Mace e Psychic Fist.",
+      en: "Rare 4th-level Psychic Duelist dedication: requires Occultism training and a psychic duel, grants +2 circumstance to psychic-duel initiative, and offers Mind Mace or Psychic Fist.",
+      es: "Dedicación rara de Duelista psíquico de nivel 4: requiere entrenamiento en Ocultismo y haber participado en un duelo psíquico, concede +2 circunstancial a la iniciativa de esos duelos y ofrece Mind Mace o Psychic Fist."
+    };
+    psychicDuelist.description = psychicDuelist.summaries["pt-BR"];
+    psychicDuelist.needs_review = false;
+    psychicDuelist.sourceApproximate = false;
+    psychicDuelist.ruleset = "legacy";
+  }
+  const mindSmith = Object.values(PF2E_DATA.archetypes || {}).find((record) => record.id === "archetype.dark_archive.mind_smith");
+  if (mindSmith) {
+    mindSmith.level = 2;
+    mindSmith.dedicationLevel = 2;
+    mindSmith.traits = ["Arquétipo", "Dedicação"];
+    mindSmith.prerequisites = [];
+    mindSmith.mechanics = {
+      dedication: true,
+      mindWeaponProfiles: ["one-handed 1d4 agile finesse", "one-handed 1d6 finesse", "one-handed 1d8", "two-handed 1d10 reach"],
+      dailyDamageChoice: ["bludgeoning/club", "piercing/spear", "slashing/sword"],
+      noHardness: true,
+      projection: "Interact to project or draw; only the wearer can use it; if disarmed it dematerializes and can be redrawn at the start of the next turn",
+      keepsake: "light Bulk, nonmagical and without significant monetary value; can hold weapon runes, which apply to the mind weapon; replacement after one week of downtime without prior runes",
+      damageToWielder: "mental damage equal to damage dealt to the mind weapon",
+      dedicationRestriction: "cannot select another dedication until gaining two other Mind Smith feats"
+    };
+    mindSmith.summaries = {
+      "pt-BR": "Dedicação de Ferreiro da Mente, nível 2: cria uma arma mental escolhida entre quatro perfis, permite escolher diariamente seu tipo de dano, projeta a arma quando necessário e permite aplicar runas da arma-lembrança.",
+      en: "2nd-level Mind Smith dedication: creates a chosen mind weapon from four profiles, lets you choose its damage type daily, projects it when needed, and lets its keepsake carry weapon runes.",
+      es: "Dedicación de Forjador mental de nivel 2: crea un arma mental elegida entre cuatro perfiles, permite elegir su tipo de daño cada día, proyectarla cuando sea necesario y aplicar runas de arma a su recuerdo."
+    };
+    mindSmith.description = mindSmith.summaries["pt-BR"];
+    mindSmith.needs_review = false;
+    mindSmith.sourceApproximate = false;
+    mindSmith.ruleset = "legacy";
+  }
+  const sleepwalker = Object.values(PF2E_DATA.archetypes || {}).find((record) => record.id === "archetype.dark_archive.sleepwalker");
+  if (sleepwalker) {
+    sleepwalker.level = 4;
+    sleepwalker.dedicationLevel = 4;
+    sleepwalker.traits = ["Arquétipo", "Dedicação"];
+    sleepwalker.prerequisites = ["Especialista em Ocultismo"];
+    sleepwalker.mechanics = {
+      dedication: true,
+      daydreamTrance: { action: 1, traits: ["Enchantment", "Mental", "Occult"], duration: "1 minute or until unconscious", voluntaryEnd: "single concentrate action and Will save against higher class or spell DC", reentryCooldown: "1 minute" },
+      tranceBonuses: { will: "+1 status", mental: "+2 circumstance, or +3 with legendary Occultism" },
+      trancePenalties: { perception: "-1", initiative: "-1" },
+      dedicationRestriction: "cannot select another dedication until gaining two other Sleepwalker feats"
+    };
+    sleepwalker.summaries = {
+      "pt-BR": "Dedicação de Sonâmbulo, nível 4: exige especialização em Ocultismo e concede Daydream Trance, aumentando a defesa contra efeitos mentais e a Vontade, com penalidade em Percepção e iniciativa durante o transe.",
+      en: "4th-level Sleepwalker dedication: requires expert Occultism and grants Daydream Trance, improving Will and mental defenses while penalizing Perception and initiative during the trance.",
+      es: "Dedicación de Sonámbulo de nivel 4: requiere experto en Ocultismo y concede Daydream Trance, mejorando Voluntad y defensas mentales mientras penaliza Percepción e iniciativa durante el trance."
+    };
+    sleepwalker.description = sleepwalker.summaries["pt-BR"];
+    sleepwalker.needs_review = false;
+    sleepwalker.sourceApproximate = false;
+    sleepwalker.ruleset = "legacy";
+  }
+
+  for (const [slug, confirmed] of Object.entries(PLAYER_CORE_2_ALCHEMICAL_TOOL_MECHANICS)) {
+    if (!confirmed?.mechanics) continue;
+    for (const collection of [PF2E_DATA.formulas || [], PF2E_DATA.itemCompendium || []]) {
+      const records = collection.filter((candidate) => candidate.id === `formula.pc2.${slug}` || candidate.id === `item.pc2.${slug}`);
+      for (const record of records) {
+        record.summaries = { ...confirmed.summaries };
+        record.description = confirmed.summaries["pt-BR"];
+        record.mechanics = { ...confirmed.mechanics };
+        record.needs_review = false;
       }
     }
   }

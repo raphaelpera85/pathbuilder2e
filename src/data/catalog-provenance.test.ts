@@ -100,12 +100,68 @@ describe("proveniência do catálogo legado", () => {
     expect(catalog.archetypes.find((item) => item.id === "archetype.trapsmith")).toMatchObject({ source: { page: 54 }, needs_review: false });
     expect(catalog.archetypes.find((item) => item.id === "archetype.trick_driver")).toMatchObject({ source: { page: 55 }, needs_review: false });
     expect(catalog.archetypes.find((item) => item.id === "archetype.vehicle_mechanic")).toMatchObject({ prerequisites: ["Inteligência +2", "Treinado em Manufatura"], source: { page: 56 }, needs_review: false });
+    expect(catalog.archetypes.find((item) => item.id === "archetype.dark_archive.alter_ego")).toMatchObject({
+      level: 2,
+      prerequisites: ["Treinado em Dissimulação", "Treinado em Furtividade"],
+      mechanics: expect.objectContaining({ grantedActivity: "Assume a Role" }),
+      source: { book: "Dark Archive (pré-Remaster)", page: 126 },
+      needs_review: false,
+    });
+    expect(catalog.archetypes.find((item) => item.id === "archetype.dark_archive.living_vessel")).toMatchObject({
+      level: 2,
+      prerequisites: [],
+      mechanics: expect.objectContaining({ reaction: "Entity's Resurgence" }),
+      source: { book: "Dark Archive (pré-Remaster)", page: 140 },
+      needs_review: false,
+    });
+    expect(catalog.archetypes.find((item) => item.id === "archetype.dark_archive.pactbinder")).toMatchObject({
+      level: 2,
+      prerequisites: ["Treinado em Diplomacia", "Treinado em Arcanismo, Natureza, Ocultismo ou Religião"],
+      mechanics: expect.objectContaining({ action: "Binding Vow" }),
+      source: { book: "Dark Archive (pré-Remaster)", page: 166 },
+      needs_review: false,
+    });
+    expect(catalog.archetypes.find((item) => item.id === "archetype.dark_archive.curse_maelstrom")).toMatchObject({
+      level: 2,
+      prerequisites: ["Você está amaldiçoado ou já foi amaldiçoado"],
+      mechanics: expect.objectContaining({ action: "Expel Maelstrom" }),
+      source: { book: "Dark Archive (pré-Remaster)", page: 168 },
+      needs_review: false,
+    });
+    expect(catalog.archetypes.find((item) => item.id === "archetype.dark_archive.time_mage")).toMatchObject({
+      level: 6,
+      prerequisites: ["Possui uma característica de classe de conjuração"],
+      mechanics: expect.objectContaining({ focusPoolGranted: 1, innateCantrip: "time sense" }),
+      source: { book: "Dark Archive (pré-Remaster)", page: 184 },
+      needs_review: false,
+    });
+    expect(catalog.archetypes.find((item) => item.id === "archetype.dark_archive.chronoskimmer")).toMatchObject({
+      level: 2,
+      prerequisites: [],
+      mechanics: expect.objectContaining({ destabilize: expect.objectContaining({ flatCheckDC: 11 }) }),
+      source: { book: "Dark Archive (pré-Remaster)", page: 186 },
+      needs_review: false,
+    });
     expect(catalog.feats.find((item) => item.id === "feat.archetype.inventor_dedication")).toMatchObject({ level: 2, source: { page: 49 }, needs_review: false });
     expect(catalog.feats.find((item) => item.id === "feat.archetype.trapsmith_dedication")).toMatchObject({ level: 4, source: { page: 54 }, needs_review: false });
     expect(catalog.formulas.find((item) => item.id === "formula.pc2.alchemists_fire_minor")).toMatchObject({ names: { "pt-BR": "Fogo Alquímico Menor", en: "Lesser Alchemist's Fire", es: "Fuego alquímico menor" }, source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 284 }, needs_review: false });
     expect(catalog.formulas.find((item) => item.id === "formula.pc2.life_elixir_minimum")).toMatchObject({ level: 1, source: { page: 287 }, needs_review: false });
     expect(catalog.formulas.find((item) => item.id === "formula.pc2.frightful_ampoule_superior")).toMatchObject({ level: 17, price: { gp: 2500 }, source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 283 }, needs_review: false });
     expect(catalog.formulas.find((item) => item.id === "formula.pc2.ghost_ink")).toMatchObject({ names: { "pt-BR": "Tinta Fantasma", en: "Ghost Ink", es: "Tinta fantasmal" }, level: 1, source: { page: 296 }, needs_review: false });
+    for (const [id, expected] of [
+      ["formula.pc2.aconite", { saveDC: 30, sourcePage: 291 }],
+      ["formula.pc2.giant_centipede_venom", { saveDC: 17, sourcePage: 294 }],
+      ["formula.pc2.spider_venom", { saveDC: 22, sourcePage: 294 }],
+      ["formula.pc2.giant_scorpion_venom", { saveDC: 22, sourcePage: 292 }],
+      ["formula.pc2.nettleseed_residue", { saveDC: 27, sourcePage: 293 }],
+      ["formula.pc2.wyvern_poison", { saveDC: 26, sourcePage: 294 }],
+    ] as const) {
+      const formula = catalog.formulas.find((item) => item.id === id) as LegacyRecord & { mechanics?: { saveDC?: number; stages?: string[] } };
+      expect(formula).toMatchObject({ source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: expected.sourcePage }, needs_review: false });
+      expect(formula.mechanics).toMatchObject({ save: "Fortitude", saveDC: expected.saveDC });
+      expect(formula.mechanics?.stages?.length).toBe(3);
+      expect(Object.values(formula.summaries || {}).every((summary) => !/consulte|consult|verifica|check the book|complete effects|efeitos completos/i.test(String(summary)))).toBe(true);
+    }
     expect(catalog.items.find((item) => item.id === "item.pc2.spirit_sensing_crossbow")).toMatchObject({ names: { "pt-BR": "Besta de Ver-Espírito", en: "Spirit-Seeking Crossbow", es: "Ballesta buscadora de espíritus" }, source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 282 }, needs_review: false });
     expect(catalog.items.find((item) => item.id === "item.pc2.sailors_cota")).toMatchObject({ names: { "pt-BR": "Cota do Marinheiro", en: "Sailor's Cota", es: "Cota del marinero" }, source: { page: 280 }, needs_review: false });
     expect(catalog.items.find((item) => item.id === "item.pc2.explosive_shield")).toMatchObject({ source: { page: 281 }, subCategory: "shield", needs_review: false });
@@ -870,6 +926,27 @@ describe("proveniência do catálogo legado", () => {
       needs_review: false,
       names: { "pt-BR": "Crononavegador", en: "Chronoskimmer", es: "Crononavegante" },
     });
+    expect(archetypes.find((item) => item.id === "archetype.dark_archive.psychic_duelist")).toMatchObject({
+      dedicationLevel: 4,
+      prerequisites: ["Treinado em Ocultismo", "Você já participou de um duelo psíquico"],
+      source: { page: 203 },
+      sourceApproximate: false,
+      needs_review: false,
+    });
+    expect(archetypes.find((item) => item.id === "archetype.dark_archive.mind_smith")).toMatchObject({
+      dedicationLevel: 2,
+      prerequisites: [],
+      source: { page: 204 },
+      sourceApproximate: false,
+      needs_review: false,
+    });
+    expect(archetypes.find((item) => item.id === "archetype.dark_archive.sleepwalker")).toMatchObject({
+      dedicationLevel: 4,
+      prerequisites: ["Especialista em Ocultismo"],
+      source: { page: 206 },
+      sourceApproximate: false,
+      needs_review: false,
+    });
     expect(archetypes.every((item) => item.names?.["pt-BR"] && item.names?.en && item.names?.es && item.summaries?.["pt-BR"] && item.summaries?.en && item.summaries?.es)).toBe(true);
   });
 
@@ -887,6 +964,310 @@ describe("proveniência do catálogo legado", () => {
       needs_review: false,
     });
     expect(spells.every((item) => item.names?.["pt-BR"] && item.names?.en && item.names?.es && item.summaries?.["pt-BR"] && item.summaries?.en && item.summaries?.es)).toBe(true);
+  });
+
+  it("confirma as primeiras magias do Player Core 2 com efeitos estruturados", () => {
+    const catalog = loadCatalog() as { spells: LegacyRecord[] };
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.ansias_de_carnical")).toMatchObject({
+      rank: 2,
+      source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 240 },
+      needs_review: false,
+      mechanics: { failure: expect.stringContaining("enjoado 2") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.arma_do_julgamento")).toMatchObject({
+      rank: 9,
+      source: { page: 240 },
+      needs_review: false,
+      mechanics: { damage: expect.stringContaining("4d10") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.arvore_protetora")).toMatchObject({
+      rank: 1,
+      source: { page: 241 },
+      needs_review: false,
+      mechanics: { tree: { ac: 10, hp: 10 } },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.aspecto_triplo")).toMatchObject({
+      rank: 3,
+      source: { page: 241 },
+      needs_review: false,
+      mechanics: { forms: expect.arrayContaining(["donzela", "matriarca"]) },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.ataque_animado")).toMatchObject({
+      rank: 2,
+      source: { page: 241 },
+      needs_review: false,
+      mechanics: { initialDamage: expect.stringContaining("2d10") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.bolha_na_pele")).toMatchObject({
+      rank: 5,
+      source: { page: 241 },
+      needs_review: false,
+      mechanics: { burst: expect.stringContaining("7d6") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.cancao_espiritual")).toMatchObject({
+      rank: 8,
+      source: { page: 241 },
+      needs_review: false,
+      mechanics: { damage: expect.stringContaining("14d6") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.confinamento")).toMatchObject({
+      rank: 4,
+      source: { page: 242 },
+      needs_review: false,
+      mechanics: { field: { hardness: 10, hp: 40 } },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.conselho_onirico")).toMatchObject({
+      rank: 8,
+      source: { page: 242 },
+      needs_review: false,
+      mechanics: { sharedDream: expect.stringContaining("sonho compartilhado") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.convocar_servo_menor")).toMatchObject({
+      rank: 1,
+      source: { page: 242 },
+      needs_review: false,
+      mechanics: { creature: expect.stringContaining("nível -1") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.cone_gelido")).toMatchObject({
+      rank: 1,
+      source: { page: 242 },
+      needs_review: false,
+      mechanics: { damage: expect.stringContaining("2d4") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.crescimentos_macabros")).toMatchObject({
+      rank: 5,
+      source: { page: 243 },
+      needs_review: false,
+      mechanics: { primaryDamage: expect.stringContaining("10d6") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.cores_desconcertantes")).toMatchObject({
+      rank: 8,
+      source: { page: 243 },
+      needs_review: false,
+      mechanics: { failure: expect.stringContaining("confuso") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.dama_vampirica")).toMatchObject({
+      rank: 4,
+      source: { page: 243 },
+      needs_review: false,
+      mechanics: { damage: expect.stringContaining("4d4") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.desmontar")).toMatchObject({
+      rank: 2,
+      source: { page: 244 },
+      needs_review: false,
+      mechanics: { restore: expect.stringContaining("recompõe") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.despertar_esqueletos")).toMatchObject({
+      rank: 3,
+      source: { page: 244 },
+      needs_review: false,
+      mechanics: { damage: expect.stringContaining("2d6") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.embotar_ambicao")).toMatchObject({
+      rank: 4,
+      source: { page: 244 },
+      needs_review: false,
+      mechanics: { failure: expect.stringContaining("1 dia") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.esmorecimento_subito")).toMatchObject({
+      rank: 2,
+      source: { page: 245 },
+      needs_review: false,
+      mechanics: { damage: expect.stringContaining("2d10") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.encolher_item")).toMatchObject({
+      rank: 3,
+      source: { page: 244 },
+      needs_review: false,
+      mechanics: { size: expect.stringContaining("moeda") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.epidemia_espiritual")).toMatchObject({
+      rank: 8,
+      source: { page: 244 },
+      needs_review: false,
+      mechanics: { contagion: expect.stringContaining("salvamento de Vontade") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.exigencia_telepatica")).toMatchObject({
+      rank: 9,
+      source: { page: 245 },
+      needs_review: false,
+      mechanics: { message: expect.stringContaining("25 palavras") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.fingir_de_morto")).toMatchObject({
+      rank: 5,
+      source: { page: 245 },
+      needs_review: false,
+      mechanics: { effect: expect.stringContaining("invisível") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.forma_sagrada")).toMatchObject({
+      rank: 6,
+      source: { page: 245 },
+      needs_review: false,
+      mechanics: { temporaryHp: 10, physicalResistance: 3 },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.fosso_de_lama")).toMatchObject({
+      rank: 1,
+      source: { page: 246 },
+      needs_review: false,
+      mechanics: { terrain: expect.stringContaining("terreno difícil") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.furor_cegante")).toMatchObject({
+      rank: 6,
+      source: { page: 246 },
+      needs_review: false,
+      mechanics: { trigger: expect.stringContaining("causa dano") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.geometria_estranha")).toMatchObject({
+      rank: 5,
+      source: { page: 246 },
+      needs_review: false,
+      mechanics: { failure: expect.stringContaining("teleporta") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.gravar_mensagem")).toMatchObject({
+      rank: 1,
+      source: { page: 246 },
+      needs_review: false,
+      mechanics: { recording: expect.stringContaining("mensagem") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.impulso_caridoso")).toMatchObject({
+      rank: 2,
+      source: { page: 246 },
+      needs_review: false,
+      mechanics: { battleForm: true, temporaryHp: 10 },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.insultos_abrasadores")).toMatchObject({
+      rank: 2,
+      source: { page: 247 },
+      needs_review: false,
+      mechanics: { damage: expect.stringContaining("2d6") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.invisibilidade_compartilhada")).toMatchObject({
+      rank: 3,
+      source: { page: 247 },
+      needs_review: false,
+      mechanics: { hostileAction: expect.stringContaining("ação hostil") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.item_invisivel")).toMatchObject({
+      rank: 1,
+      source: { page: 247 },
+      needs_review: false,
+      mechanics: { weapon: expect.stringContaining("arma") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.jaula_verdejante")).toMatchObject({
+      rank: 7,
+      source: { page: 248 },
+      needs_review: false,
+      mechanics: { cage: { ac: 10, hardness: 20, hp: 40 } },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.lanterna_do_ceifador")).toMatchObject({
+      rank: 2,
+      source: { page: 248 },
+      needs_review: false,
+      mechanics: { undeadFailure: expect.stringContaining("enfraquecido 1") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.maldicao_bestial")).toMatchObject({
+      rank: 4,
+      source: { page: 248 },
+      needs_review: false,
+      mechanics: { failure: expect.stringContaining("fraqueza 1 a prata") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.mansao_resplandecente")).toMatchObject({
+      rank: 9,
+      source: { page: 249 },
+      needs_review: false,
+      mechanics: { structure: expect.stringContaining("quatro andares") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.manto_de_cores")).toMatchObject({
+      rank: 5,
+      source: { page: 249 },
+      needs_review: false,
+      mechanics: { failure: expect.stringContaining("cego") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.muralha_de_carne")).toMatchObject({
+      rank: 5,
+      source: { page: 249 },
+      needs_review: false,
+      mechanics: { wall: { section: { ac: 10, hp: 75 } } },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.olhos_incontaveis")).toMatchObject({
+      rank: 4,
+      source: { page: 250 },
+      needs_review: false,
+      mechanics: { defense: expect.stringContaining("flanqueado") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.onda_destruidora")).toMatchObject({
+      rank: 3,
+      source: { page: 251 },
+      needs_review: false,
+      mechanics: { damage: expect.stringContaining("6d6") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.orientacao_do_andarilho")).toMatchObject({
+      rank: 3,
+      source: { page: 251 },
+      needs_review: false,
+      mechanics: { travel: expect.stringContaining("metade") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.passos_plumbeos")).toMatchObject({
+      rank: 1,
+      source: { page: 251 },
+      needs_review: false,
+      mechanics: { failure: expect.stringContaining("fraqueza 2") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.pele_de_camaleao")).toMatchObject({
+      rank: 5,
+      source: { page: 251 },
+      needs_review: false,
+      mechanics: { stealthBonus: expect.stringContaining("+3") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.poco_gravitacional")).toMatchObject({
+      rank: 3,
+      source: { page: 251 },
+      needs_review: false,
+      mechanics: { failure: expect.stringContaining("4,5 metros") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.presente_prestativo")).toMatchObject({
+      rank: 1,
+      source: { page: 251 },
+      needs_review: false,
+      mechanics: { object: expect.stringContaining("teleporta") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.rebater_magia")).toMatchObject({
+      rank: 7,
+      source: { page: 251 },
+      needs_review: false,
+      mechanics: { redirect: expect.stringContaining("conjurador") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.cobertor_de_estrelas")).toMatchObject({
+      rank: 6,
+      source: { page: 242 },
+      needs_review: false,
+      mechanics: { stealth: expect.stringContaining("+2") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.cofre_imaginario")).toMatchObject({
+      rank: 5,
+      source: { page: 242 },
+      needs_review: false,
+      mechanics: { retrieval: expect.stringContaining("3 ações") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.rosto_do_familiar")).toMatchObject({
+      rank: 3,
+      source: { page: 251 },
+      needs_review: false,
+      mechanics: { senses: expect.stringContaining("olhos") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.sinestesia")).toMatchObject({
+      rank: 5,
+      source: { page: 252 },
+      needs_review: false,
+      mechanics: { concentration: expect.stringContaining("CD 5") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.sacrificio_final")).toMatchObject({
+      rank: 2,
+      source: { page: 252 },
+      needs_review: false,
+      mechanics: { effect: expect.stringContaining("6d6") },
+    });
   });
 
   it("indexa os itens amaldiçoados e contratos de Dark Archive", () => {

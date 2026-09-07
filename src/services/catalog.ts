@@ -99,6 +99,13 @@ export function normalizeSupabaseRecordToPickerItem(record: CatalogItemRecord, c
   if (record.bulk !== undefined) extraData.bulk = record.bulk;
   if (record.damage_dice !== undefined) extraData.damage = record.damage_dice;
   if (record.damage_type !== undefined) extraData.damageType = record.damage_type;
+  if (record.range_feet !== undefined) {
+    extraData.range = record.range_feet;
+    extraData.rangeFeet = record.range_feet;
+  }
+  if (record.reload !== undefined) extraData.reload = record.reload;
+  if (record.hands !== undefined) extraData.hands = record.hands;
+  if (record.weapon_group !== undefined) extraData.weaponGroup = record.weapon_group;
   if (record.ac_bonus !== undefined) extraData.acBonus = record.ac_bonus;
   if (record.prerequisite !== undefined) extraData.prerequisites = record.prerequisite;
   if (record.category !== undefined) extraData.category = record.category;

@@ -65,6 +65,16 @@ describe("PortalPages", () => {
     expect(screen.getAllByText("Fonte Remaster").length).toBeGreaterThan(0);
   });
 
+  it("restaura o título do construtor ao voltar do portal", async () => {
+    render(<I18nProvider><PortalPages /></I18nProvider>, { container: document.getElementById("test-root")! });
+    window.location.hash = "#/compendium";
+    window.dispatchEvent(new HashChangeEvent("hashchange"));
+    await waitFor(() => expect(document.title).toBe("Compêndio | Pathbuilder 2e Local"));
+    window.location.hash = "#/builder";
+    window.dispatchEvent(new HashChangeEvent("hashchange"));
+    await waitFor(() => expect(document.title).toBe("Pathbuilder 2e Local — Construtor de Personagens PF2e"));
+  });
+
   it("localiza chaves de pré-requisitos estruturados no pt-BR", () => {
     expect(formatCatalogValue({ type: "ability", minimum: 2, skill: "Acrobatics" }, "pt-BR"))
       .toBe("Tipo: atributo, Mínimo: 2, Perícia: Acrobacia");

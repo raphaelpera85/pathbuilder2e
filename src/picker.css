@@ -1016,3 +1016,8 @@
 [data-theme="light"] .pb-gear-name-text {
   color: #281d13;
 }
+.weapon-visual-picker {
+  width: min(100%, 360px);
+  height: 132px;
+  margin: 0 auto 14px;
+}

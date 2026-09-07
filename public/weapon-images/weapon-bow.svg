@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" role="img" aria-labelledby="title desc">
+  <title id="title">Bow silhouette</title><desc id="desc">A stylized bow and arrow silhouette.</desc>
+  <rect width="320" height="180" rx="18" fill="#111827"/><path d="M76 25Q190 90 76 155" fill="none" stroke="#f59e0b" stroke-width="10"/><path d="M76 25v130M73 90h170" fill="none" stroke="#e5e7eb" stroke-width="3"/><path d="m270 90-32-12v24z" fill="#fbbf24"/><path d="M100 85h140" stroke="#fbbf24" stroke-width="5"/>
+</svg>

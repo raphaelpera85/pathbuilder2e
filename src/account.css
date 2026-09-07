@@ -69,6 +69,13 @@
   color: #281d13;
 }
 
+[data-theme="light"] #btnAIAssistantTopbar,
+body.theme-light #btnAIAssistantTopbar {
+  background: #5b21b6 !important;
+  border-color: #4c1d95 !important;
+  color: #fff !important;
+}
+
 [data-theme="light"] .theme-toggle-btn:hover,
 [data-theme="light"] .account-trigger:hover {
   background: rgba(0, 0, 0, 0.06);
@@ -728,4 +735,3 @@ button:disabled { opacity: .56; cursor: not-allowed; }
   border-color: #86efac;
   background: #dcfce7;
 }
-

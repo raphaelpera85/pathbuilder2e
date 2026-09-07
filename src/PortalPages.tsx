@@ -6,7 +6,7 @@ import {
   GOOGLE_DRIVE_FOLDER_URL,
   BLANK_SHEET_DRIVE_URL,
 } from "./data/sources";
-import { useI18n, getItemDisplayName, type MessageKey } from "./i18n";
+import { useI18n, applyLegacyTranslations, getItemDisplayName, type MessageKey } from "./i18n";
 import type { PickerItem, PickerType } from "./types";
 import { useAccountViewState } from "./accountState";
 import { formatPriceToLocale } from "./utils/economy";
@@ -36,6 +36,7 @@ import {
   type CatalogSyncStatus,
 } from "./services/catalog";
 import { CampaignsPage } from "./CampaignsPage";
+import { getWeaponImageAlt, getWeaponImageUrl } from "./weaponVisuals";
 import "./portal.css";
 
 type PortalRoute = "builder" | "compendium" | "rules" | "downloads" | "library" | "campaigns" | "privacy" | "admin";
@@ -142,6 +143,7 @@ function CatalogPage() {
   const [rarityFilter, setRarityFilter] = useState<string>("all");
   const [bookFilter, setBookFilter] = useState<string>("all");
   const [inspectedEntry, setInspectedEntry] = useState<(PickerItem & { category: PickerType; categoryLabel: string }) | null>(null);
+  const inspectedCloseRef = useRef<HTMLButtonElement>(null);
   const [syncStatus, setSyncStatus] = useState<CatalogSyncStatus>(getCatalogSyncStatus());
   const [remoteItemsByCategory, setRemoteItemsByCategory] = useState<Partial<Record<PickerType, PickerItem[]>>>({});
   const [isSyncing, setIsSyncing] = useState(false);
@@ -257,6 +259,41 @@ function CatalogPage() {
     (rarityFilter !== "all" ? 1 : 0) +
     (bookFilter !== "all" ? 1 : 0);
 
+  useEffect(() => {
+    if (!inspectedEntry) return;
+    const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const focusCloseButton = window.requestAnimationFrame(() => inspectedCloseRef.current?.focus());
+    const handleDialogKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setInspectedEntry(null);
+        return;
+      }
+      if (event.key !== "Tab" || !inspectedCloseRef.current) return;
+      const dialog = inspectedCloseRef.current.closest("[role=dialog]");
+      if (!dialog) return;
+      const focusable = Array.from(dialog.querySelectorAll<HTMLElement>(
+        'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      ));
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener("keydown", handleDialogKeyDown);
+    return () => {
+      window.cancelAnimationFrame(focusCloseButton);
+      document.removeEventListener("keydown", handleDialogKeyDown);
+      previousFocus?.focus();
+    };
+  }, [inspectedEntry]);
+
   return <main className="portal-page portal-catalog-page" id="portal-content" tabIndex={-1}>
     <header className="portal-hero">
       <span>{t("compendiumKicker")}</span>
@@ -313,17 +350,18 @@ function CatalogPage() {
     </section>}
 
     {/* MODAL DE INSPEÇÃO DETALHADA */}
-    {inspectedEntry && <div className="compendium-modal-overlay" onClick={() => setInspectedEntry(null)} role="dialog" aria-modal="true">
+    {inspectedEntry && <div className="compendium-modal-overlay" onClick={() => setInspectedEntry(null)} role="dialog" aria-modal="true" aria-labelledby="compendium-modal-title">
       <div className="compendium-modal" onClick={(e) => e.stopPropagation()}>
         <header className="compendium-modal-header">
           <div className="compendium-modal-title">
             <span className="category-tag">{inspectedEntry.categoryLabel}</span>
-            <h2>{getItemDisplayName(inspectedEntry, locale)}</h2>
+            <h2 id="compendium-modal-title">{getItemDisplayName(inspectedEntry, locale)}</h2>
           </div>
-          <button className="compendium-modal-close" onClick={() => setInspectedEntry(null)} aria-label={t("close")}>✕</button>
+          <button ref={inspectedCloseRef} type="button" className="compendium-modal-close" onClick={() => setInspectedEntry(null)} aria-label={t("close")}>✕</button>
         </header>
 
         <div className="compendium-modal-body">
+          {inspectedEntry.category === "weapon" && <img className="weapon-visual weapon-visual-modal" src={getWeaponImageUrl(inspectedEntry.data)} alt={getWeaponImageAlt(getItemDisplayName(inspectedEntry, locale), inspectedEntry.data, locale)} />}
           {/* TRAITS & BADGES */}
           <div className="compendium-modal-badges">
             {inspectedEntry.data.rarity && <span className={`rarity-badge ${String(inspectedEntry.data.rarity)}`}>{inspectedEntry.data.rarity}</span>}
@@ -344,6 +382,7 @@ function CatalogPage() {
             {inspectedEntry.data.damage ? <div className="stat-box"><strong>{t("damage")}</strong><span>{String(inspectedEntry.data.damage)}</span></div> : null}
             {inspectedEntry.data.price ? <div className="stat-box"><strong>{t("price")}</strong><span>{formatPriceToLocale(inspectedEntry.data.price, locale)}</span></div> : null}
             {inspectedEntry.data.bulk !== undefined ? <div className="stat-box"><strong>{t("bulk")}</strong><span>{String(inspectedEntry.data.bulk)}</span></div> : null}
+            {inspectedEntry.data.variantFamily ? <div className="stat-box"><strong>{locale === "en" ? "Variant" : locale === "es" ? "Variante" : "Variante"}</strong><span>{inspectedEntry.data.variantRole === "ranged" ? (locale === "en" ? "Ranged" : locale === "es" ? "A distancia" : "À distância") : inspectedEntry.data.variantRole === "melee" ? (locale === "en" ? "Melee" : locale === "es" ? "Cuerpo a cuerpo" : "Corpo a corpo") : inspectedEntry.data.variantFamily}</span></div> : null}
             {inspectedEntry.data.prerequisites ? <div className="stat-box"><strong>{t("prerequisites")}</strong><span>{formatCatalogValue(inspectedEntry.data.prerequisites, locale)}</span></div> : null}
           </div>
 
@@ -443,11 +482,15 @@ function CatalogCard({ entry, onInspect }: { entry: PickerItem & { category: Pic
     (primaryChecks?.[locale] || primaryChecks?.["pt-BR"] || primaryChecks?.en)
       ? `${t("primaryCheck")}: ${getLocalizedSkillName(primaryChecks?.[locale] || primaryChecks?.["pt-BR"] || primaryChecks?.en, locale)}` : null,
     entry.data.price ? `${t("price")}: ${formatPriceToLocale(entry.data.price, locale)}` : null,
+    entry.data.variantFamily ? `${locale === "en" ? "Variant" : locale === "es" ? "Variante" : "Variante"}: ${entry.data.variantRole === "ranged" ? (locale === "en" ? "Ranged" : locale === "es" ? "A distancia" : "À distância") : entry.data.variantRole === "melee" ? (locale === "en" ? "Melee" : locale === "es" ? "Cuerpo a cuerpo" : "Corpo a corpo") : entry.data.variantFamily}` : null,
   ].filter((fact): fact is string => Boolean(fact));
+  const isWeapon = entry.category === "weapon";
+  const displayName = getItemDisplayName(entry, locale);
 
-  return <article className="catalog-card interactive" onClick={onInspect} tabIndex={0} onKeyDown={(e) => e.key === "Enter" && onInspect?.()} role="button" aria-label={getItemDisplayName(entry, locale)}>
+  return <article className="catalog-card interactive" onClick={onInspect} tabIndex={0} onKeyDown={(e) => e.key === "Enter" && onInspect?.()} role="button" aria-label={displayName}>
     <div className="catalog-card-top"><div className="catalog-card-meta"><span>{entry.categoryLabel}</span>{rarity && <span className={`rarity-badge ${String(entry.data.rarity)}`}>{rarity}</span>}</div><div className="catalog-card-status"><span className={legacy ? "source-badge legacy" : verified ? "source-badge verified" : "source-badge review"}>{legacy ? t("catalogLegacy") : verified ? t("catalogVerified") : t("catalogReview")}</span>{approximateSource && <span className="source-badge review">{t("sourceSectionReference")}</span>}{translationPending && <span className="source-badge translation-pending">{t("translationPending")}</span>}</div></div>
-    <h2>{getItemDisplayName(entry, locale)}</h2>
+    {isWeapon && <img className="weapon-visual weapon-visual-card" src={getWeaponImageUrl(entry.data)} alt={getWeaponImageAlt(displayName, entry.data, locale)} loading="lazy" />}
+    <h2>{displayName}</h2>
     {facts.length > 0 && <div className="catalog-facts">{facts.map((fact) => <span key={fact}>{fact}</span>)}</div>}
     {(entry.data.summaries?.[locale] ?? entry.data.description) && <p>{entry.data.summaries?.[locale] ?? entry.data.description}</p>}
     <footer>{source?.book ? `${approximateSource ? `${t("sourceSectionReference")}: ` : ""}${localizeSourceBook(source.book, locale)}${source.page ? ` · p. ${source.page}` : ""}` : entry.data.needs_review ? t("sourcePending") : t("uncatalogued")}</footer>
@@ -1376,13 +1419,25 @@ export function PortalPages() {
     if (characterTab) characterTab.hidden = !onBuilder;
     document.body.classList.toggle("portal-page-active", !onBuilder);
     if (!onBuilder) requestAnimationFrame(() => document.getElementById("portal-content")?.focus({ preventScroll: true }));
+  }, [route]);
+
+  useEffect(() => {
+    const onBuilder = route === "builder";
     const pageLabel = navItems.find((item) => item.route === route)?.label;
     const updateTitle = () => {
-      if (!onBuilder && pageLabel) document.title = `${t(pageLabel)} | Pathbuilder 2e Local`;
+      if (onBuilder) {
+        applyLegacyTranslations(localStorage.getItem("pathbuilder.locale") === "en" ? "en" : localStorage.getItem("pathbuilder.locale") === "es" ? "es" : "pt-BR");
+      } else if (pageLabel) {
+        document.title = `${t(pageLabel)} | Pathbuilder 2e Local`;
+      }
     };
     updateTitle();
+    const titleFrame = window.requestAnimationFrame(updateTitle);
     window.addEventListener("pathbuilder:character-render", updateTitle);
-    return () => window.removeEventListener("pathbuilder:character-render", updateTitle);
+    return () => {
+      window.cancelAnimationFrame(titleFrame);
+      window.removeEventListener("pathbuilder:character-render", updateTitle);
+    };
   }, [route, t]);
 
   const navRef = useRef<HTMLElement>(null);
@@ -1437,7 +1492,7 @@ export function PortalPages() {
           className="portal-nav-scroll-btn portal-nav-scroll-btn-left"
           onClick={() => scrollNav("left")}
           aria-label="Rolar menu para a esquerda"
-          tabIndex={-1}
+          tabIndex={0}
         >
           ‹
         </button>
@@ -1457,7 +1512,7 @@ export function PortalPages() {
           className="portal-nav-scroll-btn portal-nav-scroll-btn-right"
           onClick={() => scrollNav("right")}
           aria-label="Rolar menu para a direita"
-          tabIndex={-1}
+          tabIndex={0}
         >
           ›
         </button>

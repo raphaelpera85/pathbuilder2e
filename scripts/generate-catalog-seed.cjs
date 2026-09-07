@@ -80,6 +80,23 @@ function priceToGpNumber(price) {
   return Math.round((totalCp / 100) * 100) / 100;
 }
 
+function getWeaponStructuredFields(item) {
+  const traits = Array.isArray(item?.traits) ? item.traits.map(String) : [];
+  const explicitRange = Number(item?.range ?? item?.rangeFeet);
+  const rangeTrait = traits.find((trait) => /(?:alcance|arremesso)\s+\d+\s*p(?:é|e)s?/i.test(trait));
+  const rangeMatch = rangeTrait?.match(/(\d+)\s*p(?:é|e)s?/i);
+  const explicitReload = item?.reload === undefined || item?.reload === null || item?.reload === "" ? NaN : Number(item.reload);
+  const reloadTrait = traits.find((trait) => /(?:recarga|reload)\s*\d+/i.test(trait));
+  const reloadMatch = reloadTrait?.match(/(\d+)/);
+  const range = Number.isFinite(explicitRange) && explicitRange > 0
+    ? explicitRange
+    : rangeMatch ? Number(rangeMatch[1]) : null;
+  const reload = Number.isFinite(explicitReload) && explicitReload >= 0
+    ? String(explicitReload)
+    : reloadMatch ? reloadMatch[1] : null;
+  return { range_feet: range, reload };
+}
+
 function sqlJsonb(obj) {
   if (!obj || typeof obj !== 'object') return "'{}'::jsonb";
   const jsonStr = JSON.stringify(obj).replace(/'/g, "''");
@@ -517,11 +534,10 @@ const weaponsData = [];
     description_en: item.summaries?.en || null,
     description_es: item.summaries?.es || null,
     weapon_category: item.category || 'simple',
-    weapon_group: item.group || null,
+    weapon_group: item.group || item.weaponGroup || null,
     damage_dice: item.damage || '1d6',
     damage_type: item.damageType || 'slashing',
-    range_feet: Number(item.range) || null,
-    reload: item.reload ? String(item.reload) : null,
+    ...getWeaponStructuredFields(item),
     hands: item.hands ? String(item.hands) : '1',
     bulk: item.bulk !== undefined && item.bulk !== null ? String(item.bulk) : '1',
     price_gp: priceToGpNumber(item.price),
@@ -532,6 +548,9 @@ const weaponsData = [];
     source_page: item.source?.page || item.page || null,
     data: {
       needs_review: item.needs_review ?? false,
+      ...(item.variantFamily ? { variantFamily: item.variantFamily } : {}),
+      ...(item.variantRole ? { variantRole: item.variantRole } : {}),
+      ...(item.variantOf ? { variantOf: item.variantOf } : {}),
     }
   });
 });

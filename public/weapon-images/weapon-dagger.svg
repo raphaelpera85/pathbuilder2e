@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" role="img" aria-labelledby="title desc">
+  <title id="title">Dagger silhouette</title><desc id="desc">A stylized dagger silhouette.</desc>
+  <rect width="320" height="180" rx="18" fill="#111827"/><path d="m160 25 18 92-18 30-18-30z" fill="#e5e7eb"/><path d="m160 25 18 92-18 30z" fill="#94a3b8"/><path d="M125 117h70v10h-70z" fill="#f59e0b"/><path d="M150 127h20v30h-20z" fill="#b45309"/>
+</svg>

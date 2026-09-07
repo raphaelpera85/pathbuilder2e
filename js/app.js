@@ -8,6 +8,29 @@ function escapeInlineArgument(value) {
   return escapeHtml(JSON.stringify(String(value ?? "")));
 }
 
+function getWeaponVisualKey(data = {}) {
+  const group = String(data.weaponGroup || data.group || "").toLowerCase();
+  const category = String(data.category || "").toLowerCase();
+  if (/crossbow|besta/.test(group)) return "crossbow";
+  if (/bow|arco/.test(group)) return "bow";
+  if (/knife|dagger|adaga/.test(group)) return "dagger";
+  if (/sword|espada|polearm|fauchard|flail/.test(group)) return "sword";
+  if (/axe|machado|pick|picareta/.test(group)) return "axe";
+  if (/spear|lança/.test(group)) return "spear";
+  if (/club|hammer|brawling|maul|clava|martelo|manopla/.test(group)) return "club";
+  if (/desarmado|unarmed/.test(category)) return "dagger";
+  return "generic";
+}
+
+function getWeaponVisualUrl(data = {}) {
+  return data.image?.url || data.imageUrl || `/weapon-images/weapon-${getWeaponVisualKey(data)}.svg`;
+}
+
+function getWeaponVisualAlt(name, locale = "pt-BR") {
+  const prefix = locale === "en" ? "Illustration of" : locale === "es" ? "Ilustración de" : "Ilustração de";
+  return `${prefix} ${name}`;
+}
+
 function mergeCatalogRecords(primary = [], secondary = []) {
   const merged = [];
   const seen = new Map();
@@ -356,6 +379,7 @@ class PathbuilderApp {
     this.selectedPickerItem = null;
     this.catalogNameIndex = null;
     this.activeModalTab = "All";
+    this.legacyModalFocus = new WeakMap();
     if (typeof window !== "undefined") {
       window.addEventListener("pathbuilder:locale-change", () => {
         this.renderAll();
@@ -365,7 +389,67 @@ class PathbuilderApp {
         if (this.character) this.renderAll();
       });
     }
+    this.initLegacyModalAccessibility();
     this.init();
+  }
+
+  initLegacyModalAccessibility() {
+    if (typeof document === "undefined" || typeof MutationObserver === "undefined") return;
+    const overlays = Array.from(document.querySelectorAll(".pb-drawer-overlay"))
+      .filter((overlay) => overlay.id !== "drawerOverlay");
+    const focusableSelector = 'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    const openState = new WeakMap();
+
+    overlays.forEach((overlay) => {
+      const heading = overlay.querySelector("h1, h2, h3, [id$='Title']");
+      if (heading && !heading.id) heading.id = `legacy-${overlay.id}-title`;
+      overlay.setAttribute("role", "dialog");
+      overlay.setAttribute("aria-modal", "true");
+      if (heading?.id) overlay.setAttribute("aria-labelledby", heading.id);
+      openState.set(overlay, overlay.classList.contains("active"));
+      overlay.setAttribute("aria-hidden", overlay.classList.contains("active") ? "false" : "true");
+    });
+
+    const syncOverlay = (overlay) => {
+      const isOpen = overlay.classList.contains("active");
+      const wasOpen = openState.get(overlay) === true;
+      if (isOpen === wasOpen) return;
+      openState.set(overlay, isOpen);
+      overlay.setAttribute("aria-hidden", isOpen ? "false" : "true");
+      if (isOpen) {
+        const current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+        this.legacyModalFocus.set(overlay, current);
+        setTimeout(() => overlay.querySelector(focusableSelector)?.focus(), 0);
+      } else {
+        this.legacyModalFocus.get(overlay)?.focus?.();
+        this.legacyModalFocus.delete(overlay);
+      }
+    };
+
+    const observer = new MutationObserver(() => overlays.forEach(syncOverlay));
+    overlays.forEach((overlay) => observer.observe(overlay, { attributes: true, attributeFilter: ["class"] }));
+
+    document.addEventListener("keydown", (event) => {
+      const activeOverlay = overlays.filter((overlay) => overlay.classList.contains("active")).at(-1);
+      if (!activeOverlay) return;
+      if (event.key === "Escape") {
+        event.preventDefault();
+        activeOverlay.classList.remove("active");
+        return;
+      }
+      if (event.key !== "Tab") return;
+      const focusable = Array.from(activeOverlay.querySelectorAll(focusableSelector));
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    });
   }
 
   getLocale() {
@@ -1155,7 +1239,7 @@ class PathbuilderApp {
         }).join("");
       } else {
         const normVision = isEn ? "Normal Vision" : isEs ? "Visión Normal" : "Visão Normal";
-        sensesContainer.innerHTML = `<span style="color:var(--pb-text-dim);">${normVision}</span>`;
+        sensesContainer.innerHTML = `<span style="color:var(--pb-text-muted);">${normVision}</span>`;
       }
     }
 
@@ -1268,6 +1352,17 @@ class PathbuilderApp {
       const locName = this.localizeItemName(s.name, locale);
       const locCategory = catMap[s.category] || s.category;
       const traitsHtml = (s.traits || []).map(t => `<span class="trait-tag">${escapeHtml(this.localizeTrait(t, locale))}</span>`).join('');
+      const rangeValue = Number(s.rangeFeet ?? s.range ?? s.range_feet);
+      const rangeHtml = Number.isFinite(rangeValue) && rangeValue > 0
+        ? `<div class="weapon-detail-line">${isEn ? "Range" : isEs ? "Alcance" : "Alcance"}: ${rangeValue} ${isEn ? "ft." : isEs ? "pies" : "pés"}</div>`
+        : "";
+      const reloadValue = s.reload ?? s.ammunition?.reload;
+      const reloadHtml = reloadValue !== undefined && reloadValue !== null && String(reloadValue).trim() !== ""
+        ? `<div class="weapon-detail-line">${isEn ? "Reload" : isEs ? "Recarga" : "Recarga"}: ${escapeHtml(reloadValue)}</div>`
+        : "";
+      const variantHtml = s.variantFamily
+        ? `<div class="weapon-detail-line">${isEn ? "Variant" : isEs ? "Variante" : "Variante"}: ${escapeHtml(s.variantRole === "ranged" ? (isEn ? "Ranged" : isEs ? "A distancia" : "À distância") : s.variantRole === "melee" ? (isEn ? "Melee" : isEs ? "Cuerpo a cuerpo" : "Corpo a corpo") : s.variantFamily)}</div>`
+        : "";
       const runesHtml = Array.isArray(s.runes) && s.runes.length
         ? `<div style="font-size:11px; color:#cbd5e1;">🔹 ${escapeHtml(s.runes.map(rune => this.localizeItemName(rune.name || rune.id || "Runa", locale)).join(", "))}</div>`
         : "";
@@ -1280,7 +1375,7 @@ class PathbuilderApp {
       return `
         <div class="strike-card" style="border-left-color: var(--pb-orange); background: var(--pb-bg-panel);">
           <div class="strike-header">
-             <div class="strike-title" style="font-weight:bold; font-size:14px; color:var(--pb-text);">🗡️ <span class="strike-item-name">${escapeHtml(locName)}</span> <span style="font-size:11px; color:var(--pb-text-muted); font-weight:normal;">(${escapeHtml(locCategory)})</span></div>
+             <div class="strike-title" style="font-weight:bold; font-size:14px; color:var(--pb-text);"><img class="weapon-visual weapon-visual-strike" src="${escapeHtml(getWeaponVisualUrl(s))}" alt="${escapeHtml(getWeaponVisualAlt(locName, locale))}" loading="lazy"> <span class="strike-item-name">${escapeHtml(locName)}</span> <span style="font-size:11px; color:var(--pb-text-muted); font-weight:normal;">(${escapeHtml(locCategory)})</span></div>
             <div style="display:flex; gap:4px;">
               ${Array.isArray(s.runes) && s.runes.length ? `<button onclick="app.manageWeaponRunes(${idx})" title="${isEn ? "Manage runes" : isEs ? "Gestionar runas" : "Gerenciar runas"}" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer;">🔹</button>` : ""}
               <button onclick="app.editCharacterCollectionItem('weapons', ${idx})" title="${isEn ? "Edit weapon" : isEs ? "Editar arma" : "Editar arma"}" style="background:none; border:none; color:var(--pb-text-muted); cursor:pointer;">✎</button>
@@ -1301,6 +1396,7 @@ class PathbuilderApp {
             </button>
           </div>
 
+          ${rangeHtml}${reloadHtml}${variantHtml}
           ${s.ammunition?.requiresAmmunition ? `<div style="font-size:11px; color:${s.ammunition.available ? "var(--pb-text-muted)" : "#f87171"};">${isEn ? "Ammunition" : isEs ? "Munición" : "Munição"}: ${s.ammunition.quantity} · ${s.ammunition.available ? (isEn ? "available" : isEs ? "disponible" : "disponível") : (isEn ? "missing" : isEs ? "falta" : "em falta")}${s.ammunition.reload ? ` · ${isEn ? "Reload" : isEs ? "Recarga" : "Recarga"} ${escapeHtml(s.ammunition.reload)}` : ""}</div>` : ""}
 
           ${runesHtml}
@@ -2164,7 +2260,7 @@ class PathbuilderApp {
         });
       }
       if (Array.isArray(this.character.spells)) {
-        this.character.spells = this.character.spells.filter(spell => PF2E_ENGINE.getSpellCompatibility(this.character, spell).state !== "incompatible");
+        this.character.spells = this.character.spells.filter(spell => spell?.manual === true || !spell?.id || PF2E_ENGINE.getSpellCompatibility(this.character, spell)?.state !== "incompatible");
       }
       if (Array.isArray(this.character.pets)) {
         this.character.pets = this.character.pets.filter(pet => PF2E_ENGINE.getPrerequisiteCompatibility(this.character, pet).state !== "incompatible");
@@ -2212,7 +2308,7 @@ class PathbuilderApp {
     this.clearProgressionSlots("class_feature");
     this.reconcileSpellcastingProfile();
     if (Array.isArray(this.character.spells)) {
-      this.character.spells = this.character.spells.filter((spell) => PF2E_ENGINE.getSpellCompatibility(this.character, spell).state !== "incompatible");
+      this.character.spells = this.character.spells.filter((spell) => spell?.manual === true || !spell?.id || PF2E_ENGINE.getSpellCompatibility(this.character, spell)?.state !== "incompatible");
     }
   }
 
@@ -2231,7 +2327,9 @@ class PathbuilderApp {
     this.character.feats = filterCompatible(this.character.feats, (record) => PF2E_ENGINE.getPrerequisiteCompatibility(this.character, record));
     this.character.archetypes = filterCompatible(this.character.archetypes, (record) => PF2E_ENGINE.getPrerequisiteCompatibility(this.character, record));
     this.character.pets = filterCompatible(this.character.pets, (record) => PF2E_ENGINE.getPrerequisiteCompatibility(this.character, record));
-    this.character.spells = filterCompatible(this.character.spells, (record) => PF2E_ENGINE.getSpellCompatibility(this.character, record));
+    this.character.spells = Array.isArray(this.character.spells)
+      ? this.character.spells.filter((record) => record?.manual === true || !record?.id || PF2E_ENGINE.getSpellCompatibility(this.character, record)?.state !== "incompatible")
+      : this.character.spells;
     const classValue = this.character.class && typeof this.character.class === "object"
       ? this.character.class.id || this.character.class.name || this.character.class["pt-BR"] || this.character.class.en || this.character.class.es
       : this.character.class;
@@ -3387,7 +3485,27 @@ class PathbuilderApp {
       return finalize(PF2E_DATA.backgrounds.map(b => ({ name: b.name, type: "Antecedente", data: b })));
     }
     if (type === "weapon") {
-      return finalize(mergeCatalogRecords([], PF2E_DATA.weapons || []).map(w => ({ name: w.name, type: "Arma", data: w })));
+      const weapons = mergeCatalogRecords([], PF2E_DATA.weapons || []).map(w => {
+        const traits = Array.isArray(w.traits) ? w.traits.map(String) : [];
+        const explicitRange = Number(w.range ?? w.rangeFeet);
+        const rangeTrait = traits.find(trait => /(?:alcance|arremesso)\s+\d+\s*p(?:é|e)s?/i.test(trait));
+        const rangeMatch = rangeTrait?.match(/(\d+)\s*p(?:é|e)s?/i);
+        const explicitReload = Number(w.reload);
+        const reloadTrait = traits.find(trait => /(?:recarga|reload)\s*\d+/i.test(trait));
+        const reloadMatch = reloadTrait?.match(/(\d+)/);
+        const range = Number.isFinite(explicitRange) && explicitRange > 0
+          ? explicitRange
+          : rangeMatch ? Number(rangeMatch[1]) : undefined;
+        const reload = Number.isFinite(explicitReload) && explicitReload >= 0
+          ? explicitReload
+          : reloadMatch ? Number(reloadMatch[1]) : undefined;
+        return {
+          ...w,
+          ...(range !== undefined ? { range, rangeFeet: range } : {}),
+          ...(reload !== undefined ? { reload } : {}),
+        };
+      });
+      return finalize(weapons.map(w => ({ name: w.name, type: "Arma", data: w })));
     }
     if (type === "armor") {
       return finalize(mergeCatalogRecords([], PF2E_DATA.armors || []).map(a => ({ name: a.name, type: "Armadura", data: a })));
@@ -3771,7 +3889,7 @@ class PathbuilderApp {
         });
       }
       if (Array.isArray(this.character.spells)) {
-        this.character.spells = this.character.spells.filter(spell => PF2E_ENGINE.getSpellCompatibility(this.character, spell).state !== "incompatible");
+        this.character.spells = this.character.spells.filter(spell => spell?.manual === true || !spell?.id || PF2E_ENGINE.getSpellCompatibility(this.character, spell)?.state !== "incompatible");
       }
       if (Array.isArray(this.character.pets)) {
         this.character.pets = this.character.pets.filter(pet => PF2E_ENGINE.getPrerequisiteCompatibility(this.character, pet).state !== "incompatible");
@@ -3886,7 +4004,7 @@ class PathbuilderApp {
         });
       }
       if (Array.isArray(this.character.spells)) {
-        this.character.spells = this.character.spells.filter(spell => PF2E_ENGINE.getSpellCompatibility(this.character, spell).state !== "incompatible");
+        this.character.spells = this.character.spells.filter(spell => spell?.manual === true || !spell?.id || PF2E_ENGINE.getSpellCompatibility(this.character, spell)?.state !== "incompatible");
       }
       if (Array.isArray(this.character.pets)) {
         this.character.pets = this.character.pets.filter(pet => PF2E_ENGINE.getPrerequisiteCompatibility(this.character, pet).state !== "incompatible");
@@ -8602,7 +8720,7 @@ class PathbuilderApp {
     const catalog = typeof PF2E_DATA !== "undefined" && PF2E_DATA.conditionsCatalog ? PF2E_DATA.conditionsCatalog : {};
 
     if (entries.length === 0) {
-      container.innerHTML = `<span style="font-size: 11px; color: var(--pb-text-dim);">${isEn ? "No active conditions." : isEs ? "Ninguna condición activa." : "Nenhuma condição ativa."}</span>`;
+      container.innerHTML = `<span style="font-size: 11px; color: var(--pb-text-muted);">${isEn ? "No active conditions." : isEs ? "Ninguna condición activa." : "Nenhuma condição ativa."}</span>`;
       return;
     }
 

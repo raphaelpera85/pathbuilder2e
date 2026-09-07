@@ -77,6 +77,34 @@ describe("Catalog Service & Supabase Mapping", () => {
     expect(item.data.traits).toEqual(["Geral"]);
   });
 
+  it("preserva os campos estruturados de armas ao normalizar o catálogo remoto", () => {
+    const weapon = normalizeSupabaseRecordToPickerItem({
+      id: "weapon.longbow",
+      name_pt: "Arco Longo",
+      name_en: "Longbow",
+      name_es: "Arco largo",
+      damage_dice: "1d8",
+      damage_type: "Perfuração (P)",
+      range_feet: 100,
+      reload: 0,
+      hands: "2",
+      weapon_group: "Arco",
+      traits: ["Mortal d10", "Voleio 30 pés"],
+      source_book: "Livro do Jogador",
+      source_page: 280,
+    }, "weapon");
+
+    expect(weapon.data).toMatchObject({
+      damage: "1d8",
+      damageType: "Perfuração (P)",
+      range: 100,
+      rangeFeet: 100,
+      reload: 0,
+      hands: "2",
+      weaponGroup: "Arco",
+    });
+  });
+
   it("retorna o status do catálogo indicando se o Supabase está configurado", () => {
     const status = getCatalogSyncStatus();
     expect(status).toHaveProperty("isConfigured");

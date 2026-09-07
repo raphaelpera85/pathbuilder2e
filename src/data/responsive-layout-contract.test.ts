@@ -70,6 +70,9 @@ describe("responsive layout contract", () => {
     expect(css).toContain("body.portal-page-active .dice-roller-drawer { display: none !important; }");
     expect(read("src/PortalPages.tsx")).toContain("useLayoutEffect");
     expect(read("src/PortalPages.tsx")).toContain("useLayoutEffect(() => {");
+    expect(read("src/PortalPages.tsx")).toContain('className="portal-nav-scroll-btn portal-nav-scroll-btn-left"');
+    expect(read("src/PortalPages.tsx")).toContain('className="portal-nav-scroll-btn portal-nav-scroll-btn-right"');
+    expect(read("src/PortalPages.tsx")).not.toContain('portal-nav-scroll-btn-left"\n          onClick={() => scrollNav("left")}\n          aria-label="Rolar menu para a esquerda"\n          tabIndex={-1}');
     expect(css).toContain("#react-portal-root { flex: 0 0 auto; width: 100%; max-width: 100%; min-width: 0; }");
     expect(css).toContain(".portal-page-active #react-portal-root { min-height: 0; flex: 1 1 0%; width: 100%; max-width: 100%; overflow: hidden; }");
     expect(css).toContain(".portal-page-active #react-portal-root > * { min-width: 0; max-width: 100%; }");
@@ -681,7 +684,7 @@ describe("responsive layout contract", () => {
     expect(app).toContain("pet?.grantedByClass || pet?.grantedByPatron || pet?.grantedByHybridStudy");
     expect(app).toContain('getObjectCatalogRecords(PF2E_DATA.classes).filter(({ record }) => !record?.legacyAlias)');
     expect(app).toContain('["Hex Inicial", "Initial Hex", "Maleficio inicial", "spell", "patronHex"]');
-    expect(app).toContain("this.character.spells = this.character.spells.filter((spell) => PF2E_ENGINE.getSpellCompatibility(this.character, spell).state !== \"incompatible\")");
+    expect(app).toContain("this.character.spells = this.character.spells.filter((spell) => spell?.manual === true || !spell?.id || PF2E_ENGINE.getSpellCompatibility(this.character, spell)?.state !== \"incompatible\")");
     expect(app).toContain("function findCatalogRecord(collection, value)");
     expect(app).toContain("const heritages = (PF2E_DATA.heritages || []).filter(h => !h?.legacyAlias).map(h => ({ name: h.name, type: \"Herança\", data: h }));");
     expect(app).toContain("const maximumRank = Number(level) >= 15 ? 4 : Number(level) >= 7 ? 3 : Number(level) >= 3 ? 2 : 1;");
@@ -691,7 +694,7 @@ describe("responsive layout contract", () => {
     expect(app).toContain("const classBound = feat?.classId || (Array.isArray(feat?.classIds)");
     expect(app).toContain("const ancestryBound = feat?.ancestryId || (Array.isArray(feat?.ancestryIds)");
     expect(app).toContain("this.character.archetypes = this.character.archetypes.filter");
-    expect(app).toContain("this.character.spells = this.character.spells.filter(spell => PF2E_ENGINE.getSpellCompatibility");
+    expect(app).toContain("this.character.spells = this.character.spells.filter(spell => spell?.manual === true || !spell?.id || PF2E_ENGINE.getSpellCompatibility");
     expect(app).toContain("this.character.pets = this.character.pets.filter(pet => PF2E_ENGINE.getPrerequisiteCompatibility(this.character, pet).state !== \"incompatible\")");
     expect(app).toContain('"researchField", "instinct", "muse", "doctrine", "order", "racket", "hunterEdge"');
     expect(app).toContain('this.character.actions = this.character.actions.filter((action) => !action?.grantedByClass);');
@@ -705,7 +708,7 @@ describe("responsive layout contract", () => {
     expect(app).toContain("const classHasSubclassOptions = Boolean(selectedClassRecord?.id)");
     expect(app).toContain('picker === "subclass" && classHasSubclassOptions');
     expect(app).toContain("this.character.archetypes = this.character.archetypes.filter(archetype => {");
-    expect(app).toContain("this.character.spells = this.character.spells.filter(spell => PF2E_ENGINE.getSpellCompatibility(this.character, spell).state !== \"incompatible\")");
+    expect(app).toContain("this.character.spells = this.character.spells.filter(spell => spell?.manual === true || !spell?.id || PF2E_ENGINE.getSpellCompatibility(this.character, spell)?.state !== \"incompatible\")");
     expect(app).toContain("this.character.spells.push({ ...item.data, name: item.name, level: item.data.rank ?? item.data.level })");
     expect(app).toContain("this.character.rituals.push({ ...item.data, name: item.name })");
     expect(app).toContain('else if (type === "archetype")');

@@ -199,8 +199,8 @@ class PathbuilderHandler(http.server.SimpleHTTPRequestHandler):
                 self.send_header("Content-Type", "application/json; charset=utf-8")
                 self.end_headers()
                 self.wfile.write(json.dumps({"status": "deleted", "id": char_id}).encode("utf-8"))
-            except Exception as e:
-                self.send_error(500, str(e))
+            except Exception:
+                self.send_error(500, "Internal server error")
             return
         self.send_error(404, "Not found")
 

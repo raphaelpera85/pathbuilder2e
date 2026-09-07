@@ -876,7 +876,7 @@ body.portal-page-active .dice-roller-drawer { display: none !important; }
     padding: 12px 14px;
     border-radius: 8px;
   }
-  .catalog-card h2 {
+.catalog-card h2 {
     font-size: 15px;
     margin: 8px 0 6px;
   }
@@ -1539,7 +1539,7 @@ body.theme-light .campaigns-layout::-webkit-scrollbar-thumb:hover {
 body.theme-light .catalog-mobile-filter-btn {
   background: rgba(156, 66, 16, 0.08) !important;
   border-color: #9c4210 !important;
-  color: #9c4210 !important;
+  color: #7a3008 !important;
 }
 
 [data-theme="light"] .catalog-mobile-filter-btn.has-active,
@@ -2315,4 +2315,22 @@ body.theme-light .catalog-source-badge {
 @media print {
   #react-portal-root, .skip-link { display: none !important; }
 }
+.weapon-visual {
+  display: block;
+  object-fit: cover;
+  background: #111827;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-radius: 10px;
+}
 
+.weapon-visual-card {
+  width: 100%;
+  height: 96px;
+  margin: 10px 0 12px;
+}
+
+.weapon-visual-modal {
+  width: min(100%, 420px);
+  height: 150px;
+  margin: 0 auto 16px;
+}

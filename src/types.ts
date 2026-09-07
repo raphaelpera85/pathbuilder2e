@@ -30,6 +30,13 @@ export interface IPickerItemData {
   keyAbility?: string[];
   damage?: string;
   damageType?: string;
+  weaponGroup?: string;
+  group?: string;
+  imageUrl?: string;
+  image?: { url?: string; alt?: string };
+  variantFamily?: string;
+  variantRole?: string;
+  variantOf?: string;
   traits?: string[];
   source?: { book?: string; page?: number };
   sourceApproximate?: boolean;

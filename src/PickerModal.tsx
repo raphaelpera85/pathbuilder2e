@@ -3,6 +3,7 @@ import type { PickerBridge, PickerItem, PickerSelectionOption, PickerType } from
 import { useI18n, getItemDisplayName, type MessageKey } from "./i18n";
 import { coinsToCopper, parsePriceToCopper, formatCopperToString, formatPriceToLocale } from "./utils/economy";
 import { localizeSourceBookName } from "./data/sources";
+import { getWeaponImageAlt, getWeaponImageUrl } from "./weaponVisuals";
 
 const pickerLabelKeys: Record<PickerType, MessageKey> = {
   ancestry: "ancestries", class: "classes", subclass: "subclasses", background: "backgrounds", weapon: "weapons", armor: "armors", shield: "shields",
@@ -1260,6 +1261,7 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
               <article className="picker-detail">
                 {selectedItem ? (
                   <>
+                    {pickerType === "weapon" && <img className="weapon-visual weapon-visual-picker" src={getWeaponImageUrl(selectedItem.data)} alt={getWeaponImageAlt(getItemDisplayName(selectedItem, locale), selectedItem.data, locale)} />}
                     <header className="picker-detail-header">
                       <div>
                         <h3>{selectedItem.displayName || getItemDisplayName(selectedItem, locale)}</h3>
@@ -1300,6 +1302,24 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
                           <span className="pws-label">{locale === "en" ? "Hands" : locale === "es" ? "Manos" : "Mãos"}</span>
                           <strong className="pws-value">{String(selectedItem.data?.hands || "1")}</strong>
                         </div>
+                        {(selectedItem.data?.range ?? selectedItem.data?.rangeFeet) !== undefined && (
+                          <div className="pws-stat">
+                            <span className="pws-label">{locale === "en" ? "Range" : locale === "es" ? "Alcance" : "Alcance"}</span>
+                            <strong className="pws-value">{String(selectedItem.data?.range ?? selectedItem.data?.rangeFeet)} {locale === "en" ? "ft" : "pés"}</strong>
+                          </div>
+                        )}
+                        {selectedItem.data?.reload !== undefined && (
+                          <div className="pws-stat">
+                            <span className="pws-label">{locale === "en" ? "Reload" : locale === "es" ? "Recarga" : "Recarga"}</span>
+                            <strong className="pws-value">{String(selectedItem.data.reload)}</strong>
+                          </div>
+                        )}
+                        {selectedItem.data?.variantFamily && (
+                          <div className="pws-stat pws-stat-variant">
+                            <span className="pws-label">{locale === "en" ? "Variant" : locale === "es" ? "Variante" : "Variante"}</span>
+                            <strong className="pws-value">{selectedItem.data.variantRole === "ranged" ? (locale === "en" ? "Ranged" : locale === "es" ? "A distancia" : "À distância") : selectedItem.data.variantRole === "melee" ? (locale === "en" ? "Melee" : locale === "es" ? "Cuerpo a cuerpo" : "Corpo a corpo") : String(selectedItem.data.variantFamily)}</strong>
+                          </div>
+                        )}
                       </div>
                     )}
 
