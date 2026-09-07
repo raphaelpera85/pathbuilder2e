@@ -106,6 +106,7 @@ export function normalizeSupabaseRecordToPickerItem(record: CatalogItemRecord, c
   if (record.reload !== undefined) extraData.reload = record.reload;
   if (record.hands !== undefined) extraData.hands = record.hands;
   if (record.weapon_group !== undefined) extraData.weaponGroup = record.weapon_group;
+  if (record.weapon_category !== undefined) extraData.weaponCategory = record.weapon_category;
   if (record.ac_bonus !== undefined) extraData.acBonus = record.ac_bonus;
   if (record.prerequisite !== undefined) extraData.prerequisites = record.prerequisite;
   if (record.category !== undefined) extraData.category = record.category;
@@ -121,6 +122,7 @@ export function normalizeSupabaseRecordToPickerItem(record: CatalogItemRecord, c
     page: record.source_page || undefined,
   };
   extraData.names = names;
+  extraData.name = names["pt-BR"];
   extraData.summaries = summaries;
   extraData.id = record.id;
 

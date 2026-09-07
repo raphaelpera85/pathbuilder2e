@@ -1404,7 +1404,7 @@ describe("proveniência do catálogo legado", () => {
 
   it("confirma mecânicas dos talentos iniciais de Pistoleiro em Pólvora e Engrenagens", () => {
     const catalog = loadCatalog() as { feats: LegacyRecord[] };
-    const ids = ["as_da_besta", "disparo_de_cobertura", "espada_e_pistola", "estourar_fechadura", "para_o_chao", "manufatura_de_municao", "armamentos_defensivos", "girar_a_pistola", "recarga_arriscada", "tiro_de_aviso", "tiro_fingido", "cauterizar", "cortina_de_fumaca", "dividir_bala", "perfurar_e_disparar", "saltar_e_disparar"];
+    const ids = ["as_da_besta", "disparo_de_cobertura", "espada_e_pistola", "estourar_fechadura", "para_o_chao", "manufatura_de_municao", "armamentos_defensivos", "girar_a_pistola", "recarga_arriscada", "tiro_de_aviso", "tiro_fingido", "cauterizar", "cortina_de_fumaca", "dividir_bala", "perfurar_e_disparar", "saltar_e_disparar", "ataque_ressaltante", "disparo_penetrante", "municoes_preciosas", "tiro_ardiloso", "tiro_declarado", "tiro_de_deflexao", "tiro_de_redirecionamento", "ferimento_superficial", "brio_inabalavel", "camuflagem_do_atirador", "sangue_no_ar", "olhos_de_matador", "tiro_de_ricochete"];
     const feats = ids.map((slug) => catalog.feats.find((item) => item.id === `feat.class.gunslinger.${slug}`));
     expect(feats.every((item) => item && item.needs_review === false && item.source?.book === "Pólvora e Engrenagens (pré-Remaster)" && item.mechanics && item.summaries?.["pt-BR"] && item.summaries?.en && item.summaries?.es)).toBe(true);
     expect(feats.find((item) => item?.id.endsWith("as_da_besta"))).toMatchObject({ mechanics: { reloadBonus: expect.stringContaining("+2") } });
@@ -1420,6 +1420,19 @@ describe("proveniência do catálogo legado", () => {
     expect(feats.find((item) => item?.id.endsWith("dividir_bala"))).toMatchObject({ mechanics: { penalty: expect.stringContaining("–2") } });
     expect(feats.find((item) => item?.id.endsWith("perfurar_e_disparar"))).toMatchObject({ mechanics: { rangedBonus: expect.stringContaining("+2") } });
     expect(feats.find((item) => item?.id.endsWith("saltar_e_disparar"))).toMatchObject({ mechanics: { prerequisite: "Para o Chão!" } });
+    expect(feats.find((item) => item?.id.endsWith("ataque_ressaltante"))).toMatchObject({ mechanics: { combinedDamage: expect.stringContaining("1d6") } });
+    expect(feats.find((item) => item?.id.endsWith("disparo_penetrante"))).toMatchObject({ mechanics: { multipleAttack: expect.stringContaining("dois ataques") } });
+    expect(feats.find((item) => item?.id.endsWith("municoes_preciosas"))).toMatchObject({ mechanics: { highGrade: expect.stringContaining("15") } });
+    expect(feats.find((item) => item?.id.endsWith("tiro_ardiloso"))).toMatchObject({ mechanics: { explosiveBarrel: expect.stringContaining("6 metros") } });
+    expect(feats.find((item) => item?.id.endsWith("tiro_declarado"))).toMatchObject({ mechanics: { head: expect.stringContaining("estupefato 2") } });
+    expect(feats.find((item) => item?.id.endsWith("tiro_de_deflexao"))).toMatchObject({ mechanics: { reaction: expect.stringContaining("+2") } });
+    expect(feats.find((item) => item?.id.endsWith("tiro_de_redirecionamento"))).toMatchObject({ mechanics: { cover: expect.stringContaining("cobertura") } });
+    expect(feats.find((item) => item?.id.endsWith("ferimento_superficial"))).toMatchObject({ mechanics: { failure: expect.stringContaining("um dado de dano") } });
+    expect(feats.find((item) => item?.id.endsWith("brio_inabalavel"))).toMatchObject({ mechanics: { prerequisite: "Brio e Tenacidade" } });
+    expect(feats.find((item) => item?.id.endsWith("camuflagem_do_atirador"))).toMatchObject({ mechanics: { actions: expect.stringContaining("Esconder-se") } });
+    expect(feats.find((item) => item?.id.endsWith("sangue_no_ar"))).toMatchObject({ mechanics: { concealment: expect.stringContaining("CD 5") } });
+    expect(feats.find((item) => item?.id.endsWith("olhos_de_matador"))).toMatchObject({ mechanics: { duration: expect.stringContaining("início do próximo turno") } });
+    expect(feats.find((item) => item?.id.endsWith("tiro_de_ricochete"))).toMatchObject({ mechanics: { cover: expect.stringContaining("ricocheteou") } });
   });
 
   it("indexa os itens amaldiçoados e contratos de Dark Archive", () => {
@@ -1707,7 +1720,7 @@ describe("proveniência do catálogo legado", () => {
     const inventor = catalog.feats.filter((item) => item.classId === "class.inventor");
     const gunslinger = catalog.feats.filter((item) => item.classId === "class.gunslinger");
     expect(inventor).toHaveLength(23);
-    expect(gunslinger).toHaveLength(25);
+    expect(gunslinger).toHaveLength(34);
     for (const feats of [inventor, gunslinger]) {
       expect(feats.every((item) => item.source?.book === "Pólvora e Engrenagens (pré-Remaster)" && item.needs_review === false && !item.sourceApproximate && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
       expect(feats.some((item) => item.level === 1)).toBe(true);

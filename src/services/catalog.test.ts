@@ -89,6 +89,7 @@ describe("Catalog Service & Supabase Mapping", () => {
       reload: 0,
       hands: "2",
       weapon_group: "Arco",
+      weapon_category: "Marcial",
       traits: ["Mortal d10", "Voleio 30 pés"],
       source_book: "Livro do Jogador",
       source_page: 280,
@@ -102,6 +103,7 @@ describe("Catalog Service & Supabase Mapping", () => {
       reload: 0,
       hands: "2",
       weaponGroup: "Arco",
+      weaponCategory: "Marcial",
     });
   });
 

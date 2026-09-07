@@ -9,21 +9,34 @@ function escapeInlineArgument(value) {
 }
 
 function getWeaponVisualKey(data = {}) {
+  const localizedName = data.name || data.names?.["pt-BR"] || data.names?.en || data.names?.es || "";
   const group = String(data.weaponGroup || data.group || "").toLowerCase();
-  const category = String(data.category || "").toLowerCase();
-  if (/crossbow|besta/.test(group)) return "crossbow";
-  if (/bow|arco/.test(group)) return "bow";
-  if (/knife|dagger|adaga/.test(group)) return "dagger";
-  if (/sword|espada|polearm|fauchard|flail/.test(group)) return "sword";
-  if (/axe|machado|pick|picareta/.test(group)) return "axe";
-  if (/spear|lança/.test(group)) return "spear";
-  if (/club|hammer|brawling|maul|clava|martelo|manopla/.test(group)) return "club";
-  if (/desarmado|unarmed/.test(category)) return "dagger";
+  const category = String(data.weaponCategory || data.category || "").toLowerCase();
+  const name = String(localizedName).toLowerCase();
+  const traits = Array.isArray(data.traits) ? data.traits.join(" ").toLowerCase() : String(data.traits || "").toLowerCase();
+  const identity = `${group} ${category} ${name} ${traits}`;
+  if (/firearm|arma de fogo|pistola|mosquete|rifle|repetidor|arcabuz|pederneira/.test(identity)) return "firearm";
+  if (/bomb|bomba|alchemical|alquímic|granada|fogo alquímico/.test(identity)) return "bomb";
+  if (/crossbow|besta|ballesta|atlatl|zarabatana/.test(identity)) return "crossbow";
+  if (/bow|arco|catapulta de mochila/.test(identity)) return "bow";
+  if (/whip|chicote|flail|mangual|fio de draddeth|espiral de áspide/.test(identity)) return "whip";
+  if (/sling|funda/.test(identity)) return "sling";
+  if (/shield|escudo|buckler|broquel/.test(identity)) return "shield";
+  if (/gauntlet|manopla|fist|punho|unarmed|desarmado|brawling|aklys|nunchaku/.test(identity)) return "gauntlet";
+  if (/staff|cajado|lance|bastão/.test(identity)) return "staff";
+  if (/mace|maça|hammer|martelo|morningstar|estrela da manhã|tritura-espírito|quebra-correntes/.test(identity)) return "mace";
+  if (/knife|dagger|adaga|faca|mambele/.test(identity)) return "dagger";
+  if (/sword|espada|polearm|fauchard|montante|segadeira|varredor do destino|battlecry/.test(identity)) return "sword";
+  if (/axe|machado|picareta|pick|machadinha/.test(identity)) return "axe";
+  if (/spear|lança|pike|alabarda/.test(identity)) return "spear";
+  if (/club|clava|porrete|lute|alaúde/.test(identity)) return "club";
   return "generic";
 }
 
 function getWeaponVisualUrl(data = {}) {
-  return data.image?.url || data.imageUrl || `/weapon-images/weapon-${getWeaponVisualKey(data)}.svg`;
+  const key = getWeaponVisualKey(data);
+  const extension = key === "generic" ? "svg" : "png";
+  return data.image?.url || data.imageUrl || `/weapon-images/weapon-${key}.${extension}`;
 }
 
 function getWeaponVisualAlt(name, locale = "pt-BR") {

@@ -14858,6 +14858,15 @@ const GUNS_GEARS_CLASS_FEATS = [
   ["gunslinger", "disparo_penetrante", "Disparo Penetrante", "Penetrating Fire", "Disparo penetrante", 10, ""],
   ["gunslinger", "municoes_preciosas", "Munições Preciosas", "Precious Munitions", "Municiones preciosas", 10, "Maquinista de Munições"],
   ["gunslinger", "tiro_ardiloso", "Tiro Ardiloso", "Trick Shot", "Disparo engañoso", 10, ""],
+  ["gunslinger", "tiro_declarado", "Tiro Declarado", "Called Shot", "Disparo declarado", 10, ""],
+  ["gunslinger", "tiro_de_deflexao", "Tiro de Deflexão", "Deflecting Shot", "Disparo de desvío", 10, ""],
+  ["gunslinger", "tiro_de_redirecionamento", "Tiro de Redirecionamento", "Redirecting Shot", "Disparo de redirección", 10, ""],
+  ["gunslinger", "ferimento_superficial", "Ferimento Superficial", "Lying Low", "Herida superficial", 12, ""],
+  ["gunslinger", "brio_inabalavel", "Brio Inabalável", "Unshakeable Grit", "Brío inquebrantable", 12, "Brio e Tenacidade"],
+  ["gunslinger", "camuflagem_do_atirador", "Camuflagem do Atirador", "Sniper's Camouflage", "Camuflaje del tirador", 12, "Mestre em Furtividade"],
+  ["gunslinger", "sangue_no_ar", "Sangue no Ar", "Blood in the Air", "Sangre en el aire", 12, ""],
+  ["gunslinger", "olhos_de_matador", "Olhos de Matador", "Eyes of the Dead", "Ojos del cazador", 12, ""],
+  ["gunslinger", "tiro_de_ricochete", "Tiro de Ricochete", "Ricochet Shot", "Disparo de rebote", 12, ""],
 ];
 for (const [classKey, slug, pt, en, es, level, prereq] of GUNS_GEARS_CLASS_FEATS) {
   const classId = classKey === "inventor" ? "class.inventor" : "class.gunslinger";
@@ -16585,13 +16594,14 @@ if (typeof module !== 'undefined' && module.exports) {
       es: "Conjuro arcano u ocultista de rango 2: crea para una criatura viva la ilusión de lo que más valora, fascinándola u obligándola a centrarse en ella según su salvación de Voluntad."
     }
   });
-  const confirmFeatMechanics = (slug, mechanics, summaries) => {
+  const confirmFeatMechanics = (slug, mechanics, summaries, sourcePage) => {
     const feat = (PF2E_DATA.feats || []).find((record) => record.id === `feat.class.gunslinger.${slug}`);
     if (!feat) return;
     feat.mechanics = mechanics;
     if (summaries) feat.summaries = summaries;
     feat.needs_review = false;
     feat.sourceApproximate = false;
+    if (sourcePage) feat.source = { ...feat.source, page: sourcePage };
   };
   confirmFeatMechanics("as_da_besta", {
     reloadBonus: "+2 de bônus de circunstância na jogada de dano do próximo Golpe com a besta após Interagir para recarregá-la",
@@ -16685,6 +16695,87 @@ if (typeof module !== 'undefined' && module.exports) {
     reaction: "ao usar Para o Chão!, durante o Salto pode fazer Golpe à distância com arma de fogo ou besta carregada",
     target: "mira na criatura cujo ataque acionou a reação"
   }, { "pt-BR": "Talento de nível 8: permite fazer um disparo durante o Salto de Para o Chão! contra o atacante.", en: "8th-level feat: lets you make a shot during the Leap from Get Down! against the triggering attacker.", es: "Dote de nivel 8: permite disparar durante el Salto de ¡Al suelo! contra el atacante que activó la reacción." });
+  confirmFeatMechanics("ataque_ressaltante", {
+    requirement: "arma de fogo ou besta carregada em uma mão e arma corpo a corpo cortante ou contundente na outra",
+    sequence: "faz um Golpe à distância com a arma corpo a corpo arremessada e depois um Golpe à distância com a arma de fogo; ambos usam a mesma penalidade por ataques múltiplos",
+    thrown: "se a arma corpo a corpo não tiver arremesso, recebe arremesso 3 metros durante o talento",
+    combinedDamage: "se ambos os ataques acertarem, a bala atinge a arma arremessada; combina os danos usando o tipo da arma arremessada e adiciona 1d6 de precisão",
+    ricochet: "a arma ricocheteia de volta para sua mão quando os dois ataques acertam",
+    fallback: "se um dos ataques falhar, resolve os ataques separadamente e a arma permanece no espaço do alvo"
+  }, { "pt-BR": "Talento de nível 10: arremessa uma arma corpo a corpo e dispara contra ela para combinar os danos quando os dois Golpes acertam.", en: "10th-level feat: throws a melee weapon and shoots it to combine the damage when both Strikes succeed.", es: "Dote de nivel 10: arroja un arma cuerpo a cuerpo y le dispara para combinar el daño cuando ambos Golpes tienen éxito." });
+  confirmFeatMechanics("disparo_penetrante", {
+    requirement: "arma de fogo ou besta carregada",
+    targets: "escolhe dois alvos, sendo que um fornece cobertura menor ao outro",
+    cover: "faz um único Golpe à distância contra os dois ignorando a cobertura menor fornecida pelo alvo escolhido",
+    damage: "rola o dano uma vez e aplica o resultado a cada alvo",
+    multipleAttack: "conta como dois ataques para a penalidade por ataques múltiplos"
+  }, { "pt-BR": "Talento de nível 10: um disparo atravessa a cobertura menor e pode atingir dois alvos, aplicando o mesmo dano a ambos.", en: "10th-level feat: one shot ignores lesser cover and can hit two targets, applying the same damage to both.", es: "Dote de nivel 10: un disparo ignora la cobertura menor y puede alcanzar a dos objetivos, aplicando el mismo daño a ambos." });
+  confirmFeatMechanics("municoes_preciosas", {
+    prerequisite: "Maquinista de Munições",
+    creation: "cria munição preciosa padrão por meio da alquimia avançada",
+    materials: "adamantina, ferro frio e prata",
+    reagentCost: "gasta 1 lote de reagentes infundidos por peça de munição",
+    highGrade: "no nível 15, pode criar versões de alta qualidade"
+  }, { "pt-BR": "Talento de nível 10: cria munição preciosa padrão de adamantina, ferro frio ou prata, e versões de alta qualidade a partir do nível 15.", en: "10th-level feat: creates standard adamantine, cold iron, or silver ammunition, and high-grade versions from 15th level.", es: "Dote de nivel 10: crea munición preciosa estándar de adamantino, hierro frío o plata, y versiones de alta calidad desde el nivel 15." });
+  confirmFeatMechanics("tiro_ardiloso", {
+    requirement: "arma de fogo ou besta carregada",
+    check: "faz um Golpe contra um objeto próximo com CA igual à CD fácil para seu nível",
+    viability: "o Mestre informa antes do gasto das ações se o Tiro Ardiloso é viável",
+    dislodge: "Desalojar objeto: derruba objeto desapossado de no máximo Volume 2 e move-o até 3 metros na direção escolhida",
+    explosiveBarrel: "Barril explosivo: explosão de 6 metros, 6d6 de dano, salvamento básico de Reflexos contra sua CD de classe e tipo de dano definido pelo Mestre",
+    scaling: "aumenta o dano em 1d6 para cada 2 níveis acima do 10º"
+  }, { "pt-BR": "Talento de nível 10: dispara em objetos próximos para desalojá-los ou provocar uma explosão de 6 metros com dano escalável.", en: "10th-level feat: shoots nearby objects to dislodge them or trigger a 6-meter explosion with scaling damage.", es: "Dote de nivel 10: dispara a objetos cercanos para desplazarlos o provocar una explosión de 6 metros con daño escalable." });
+  confirmFeatMechanics("tiro_declarado", {
+    action: "faz um Golpe à distância e, se acertar e causar dano, escolhe uma parte da anatomia do alvo",
+    arms: "Braços: enfraquecido 2 até o fim do próximo turno; em acerto crítico, também enfraquecido 1 por 1 minuto",
+    head: "Cabeça: estupefato 2 até o fim do próximo turno; em acerto crítico, também estupefato 1 por 1 minuto",
+    legs: "Pernas: –3 metros de penalidade de estado nas Velocidades até o fim do próximo turno; em acerto crítico, também –1,5 metro por 1 minuto",
+    wings: "Asas: criatura voando com asas cai 6 metros, ou 12 metros em acerto crítico, sem sofrer dano de queda"
+  }, { "pt-BR": "Talento de nível 10: escolhe uma parte da anatomia atingida para aplicar enfraquecido, estupefato, penalidade de Velocidade ou queda.", en: "10th-level feat: targets a body part to apply enfeebled, stupefied, a Speed penalty, or a fall.", es: "Dote de nivel 10: elige una parte del cuerpo para aplicar debilitado, atontado, una penalización a la Velocidad o una caída." }, 116);
+  confirmFeatMechanics("tiro_de_deflexao", {
+    trigger: "aliado dentro do primeiro incremento de distância da sua arma de fogo ou besta é atingido e você vê o atacante",
+    requirement: "arma de fogo ou besta carregada empunhada",
+    reaction: "aliado recebe +2 de bônus de circunstância na CA contra o ataque acionador",
+    timing: "usa a reação depois de revelar o resultado da jogada de ataque"
+  }, { "pt-BR": "Reação de nível 10: concede +2 de CA a um aliado contra um ataque visível depois que o resultado é revelado.", en: "10th-level reaction: grants an ally +2 AC against a visible attack after its result is revealed.", es: "Reacción de nivel 10: concede +2 a la CA de un aliado contra un ataque visible después de revelar su resultado." }, 116);
+  confirmFeatMechanics("tiro_de_redirecionamento", {
+    trigger: "aliado voluntário erra um ataque à distância com arma de arremesso ou munição contra alvo dentro do primeiro incremento de distância",
+    requirement: "arma de fogo ou besta carregada empunhada e visão do alvo",
+    reaction: "descarrega a arma, rola 1d20 e o aliado usa esse resultado no lugar da jogada original",
+    cover: "o ataque ignora bônus do alvo por cobertura padrão ou menor"
+  }, { "pt-BR": "Reação de nível 10: substitui o ataque à distância falho de um aliado por uma nova jogada e ignora cobertura padrão ou menor.", en: "10th-level reaction: replaces an ally's failed ranged attack roll with a new roll and ignores standard or lesser cover.", es: "Reacción de nivel 10: reemplaza la tirada fallida de un ataque a distancia de un aliado e ignora cobertura estándar o menor." }, 116);
+  confirmFeatMechanics("ferimento_superficial", {
+    action: "faz um Golpe à distância",
+    failure: "em uma falha que não seja crítica, o ataque ainda causa um dado de dano",
+    specialization: "adiciona qualquer dano da especialização em armas",
+    limitation: "usa o dado e o tipo de dano normais da arma e não adiciona dano de outras fontes ou habilidades"
+  }, { "pt-BR": "Talento de nível 12: mesmo quando o Golpe à distância falha, causa um dado de dano, mais a especialização em armas.", en: "12th-level feat: even when the ranged Strike fails, it deals one weapon damage die plus weapon specialization.", es: "Dote de nivel 12: incluso cuando el Golpe a distancia falla, causa un dado de daño del arma más la especialización." }, 118);
+  confirmFeatMechanics("brio_inabalavel", {
+    prerequisite: "Brio e Tenacidade",
+    reroll: "se a jogada novamente concedida por Brio e Tenacidade for um sucesso, trate-a como sucesso crítico; se for falha crítica, trate-a como falha"
+  }, { "pt-BR": "Talento de nível 12: melhora os resultados extremos da nova jogada concedida por Brio e Tenacidade.", en: "12th-level feat: improves the extreme results of the reroll granted by Unshakable Grit.", es: "Dote de nivel 12: mejora los resultados extremos de la nueva tirada concedida por Brío inquebrantable." }, 118);
+  confirmFeatMechanics("camuflagem_do_atirador", {
+    prerequisite: "mestre em Furtividade",
+    terrain: "escolhe terreno natural ou urbano",
+    actions: "no terreno escolhido, pode Esgueirar-se e Esconder-se sem cobertura ou ocultação"
+  }, { "pt-BR": "Talento de nível 12: escolhe um tipo de ambiente e pode Esgueirar-se ou Esconder-se nele sem cobertura ou ocultação.", en: "12th-level feat: chooses a type of environment and can Sneak or Hide there without cover or concealment.", es: "Dote de nivel 12: elige un tipo de entorno y puede Escabullirse u Ocultarse allí sin cobertura ni ocultación." }, 118);
+  confirmFeatMechanics("sangue_no_ar", {
+    requirement: "inimigo ferido por sua arma à distância está ocultado ou escondido de você",
+    attack: "faz um Golpe com uma arma à distância contra o inimigo requerido",
+    concealment: "ignora a condição ocultado e reduz o teste simples de escondido de CD 11 para CD 5"
+  }, { "pt-BR": "Talento de nível 12: ataca um inimigo que você já feriu mesmo sob ocultação, reduzindo o teste simples de escondido para CD 5.", en: "12th-level feat: attacks an enemy you already damaged through concealment, reducing the hidden flat check to DC 5.", es: "Dote de nivel 12: ataca a un enemigo que ya dañaste a través de ocultación y reduce la prueba simple de oculto a CD 5." }, 118);
+  confirmFeatMechanics("olhos_de_matador", {
+    traits: ["Concentração"],
+    duration: "até o início do próximo turno",
+    perception: "vê criaturas e objetos invisíveis como silhuetas definidas pelo movimento e outras pistas",
+    defense: "criaturas e objetos invisíveis ficam apenas ocultados para você"
+  }, { "pt-BR": "Talento de concentração de nível 12: percebe criaturas e objetos invisíveis como silhuetas, tratando-os como ocultados.", en: "12th-level concentrate feat: perceives invisible creatures and objects as silhouettes, treating them as concealed.", es: "Dote de concentración de nivel 12: percibe criaturas y objetos invisibles como siluetas, tratándolos como ocultos." }, 118);
+  confirmFeatMechanics("tiro_de_ricochete", {
+    traits: ["Concentração"],
+    requirement: "arma de fogo ou besta",
+    surface: "escolhe uma superfície sólida dentro do primeiro incremento de distância do alvo para ricochetear o tiro",
+    cover: "determina a cobertura do alvo a partir do ponto onde o tiro ricocheteou, em vez de a partir de você"
+  }, { "pt-BR": "Talento de concentração de nível 12: usa uma superfície sólida próxima para determinar a cobertura do alvo a partir do ponto do ricochete.", en: "12th-level concentrate feat: uses a nearby solid surface to determine the target's cover from the ricochet point.", es: "Dote de concentración de nivel 12: usa una superficie sólida cercana para determinar la cobertura del objetivo desde el punto del rebote." }, 118);
   confirmPlayerCore2Spell("rosto_do_familiar", {
     traits: ["Concentração", "Manuseio", "Vidência"],
     actions: 2,

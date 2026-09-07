@@ -40072,9 +40072,9 @@
     "name_pt": "Ataque Ressaltante",
     "name_en": "Ricochet Shot",
     "name_es": "Disparo rebotado",
-    "description_pt": "Talento de classe de Pistoleiro com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Gunslinger Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de pistolero; efecto completo pendiente de revisión.",
+    "description_pt": "Talento de nível 10: arremessa uma arma corpo a corpo e dispara contra ela para combinar os danos quando os dois Golpes acertam.",
+    "description_en": "10th-level feat: throws a melee weapon and shoots it to combine the damage when both Strikes succeed.",
+    "description_es": "Dote de nivel 10: arroja un arma cuerpo a cuerpo y le dispara para combinar el daño cuando ambos Golpes tienen éxito.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -40128,9 +40128,9 @@
     "name_pt": "Disparo Penetrante",
     "name_en": "Penetrating Fire",
     "name_es": "Disparo penetrante",
-    "description_pt": "Talento de classe de Pistoleiro com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Gunslinger Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de pistolero; efecto completo pendiente de revisión.",
+    "description_pt": "Talento de nível 10: um disparo atravessa a cobertura menor e pode atingir dois alvos, aplicando o mesmo dano a ambos.",
+    "description_en": "10th-level feat: one shot ignores lesser cover and can hit two targets, applying the same damage to both.",
+    "description_es": "Dote de nivel 10: un disparo ignora la cobertura menor y puede alcanzar a dos objetivos, aplicando el mismo daño a ambos.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -40156,9 +40156,9 @@
     "name_pt": "Munições Preciosas",
     "name_en": "Precious Munitions",
     "name_es": "Municiones preciosas",
-    "description_pt": "Talento de classe de Pistoleiro com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Gunslinger Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de pistolero; efecto completo pendiente de revisión.",
+    "description_pt": "Talento de nível 10: cria munição preciosa padrão de adamantina, ferro frio ou prata, e versões de alta qualidade a partir do nível 15.",
+    "description_en": "10th-level feat: creates standard adamantine, cold iron, or silver ammunition, and high-grade versions from 15th level.",
+    "description_es": "Dote de nivel 10: crea munición preciosa estándar de adamantino, hierro frío o plata, y versiones de alta calidad desde el nivel 15.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -40184,9 +40184,9 @@
     "name_pt": "Tiro Ardiloso",
     "name_en": "Trick Shot",
     "name_es": "Disparo engañoso",
-    "description_pt": "Talento de classe de Pistoleiro com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Gunslinger Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de pistolero; efecto completo pendiente de revisión.",
+    "description_pt": "Talento de nível 10: dispara em objetos próximos para desalojá-los ou provocar uma explosão de 6 metros com dano escalável.",
+    "description_en": "10th-level feat: shoots nearby objects to dislodge them or trigger a 6-meter explosion with scaling damage.",
+    "description_es": "Dote de nivel 10: dispara a objetos cercanos para desplazarlos o provocar una explosión de 6 metros con daño escalable.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -40197,6 +40197,258 @@
     "ruleset": "legacy",
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 114,
+    "data": {
+      "effects": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "feat.class.gunslinger.tiro_declarado",
+    "class_id": "class.gunslinger",
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "Classe",
+    "level": 10,
+    "name_pt": "Tiro Declarado",
+    "name_en": "Called Shot",
+    "name_es": "Disparo declarado",
+    "description_pt": "Talento de nível 10: escolhe uma parte da anatomia atingida para aplicar enfraquecido, estupefato, penalidade de Velocidade ou queda.",
+    "description_en": "10th-level feat: targets a body part to apply enfeebled, stupefied, a Speed penalty, or a fall.",
+    "description_es": "Dote de nivel 10: elige una parte del cuerpo para aplicar debilitado, atontado, una penalización a la Velocidad o una caída.",
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 116,
+    "data": {
+      "effects": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "feat.class.gunslinger.tiro_de_deflexao",
+    "class_id": "class.gunslinger",
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "Classe",
+    "level": 10,
+    "name_pt": "Tiro de Deflexão",
+    "name_en": "Deflecting Shot",
+    "name_es": "Disparo de desvío",
+    "description_pt": "Reação de nível 10: concede +2 de CA a um aliado contra um ataque visível depois que o resultado é revelado.",
+    "description_en": "10th-level reaction: grants an ally +2 AC against a visible attack after its result is revealed.",
+    "description_es": "Reacción de nivel 10: concede +2 a la CA de un aliado contra un ataque visible después de revelar su resultado.",
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 116,
+    "data": {
+      "effects": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "feat.class.gunslinger.tiro_de_redirecionamento",
+    "class_id": "class.gunslinger",
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "Classe",
+    "level": 10,
+    "name_pt": "Tiro de Redirecionamento",
+    "name_en": "Redirecting Shot",
+    "name_es": "Disparo de redirección",
+    "description_pt": "Reação de nível 10: substitui o ataque à distância falho de um aliado por uma nova jogada e ignora cobertura padrão ou menor.",
+    "description_en": "10th-level reaction: replaces an ally's failed ranged attack roll with a new roll and ignores standard or lesser cover.",
+    "description_es": "Reacción de nivel 10: reemplaza la tirada fallida de un ataque a distancia de un aliado e ignora cobertura estándar o menor.",
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 116,
+    "data": {
+      "effects": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "feat.class.gunslinger.ferimento_superficial",
+    "class_id": "class.gunslinger",
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "Classe",
+    "level": 12,
+    "name_pt": "Ferimento Superficial",
+    "name_en": "Lying Low",
+    "name_es": "Herida superficial",
+    "description_pt": "Talento de nível 12: mesmo quando o Golpe à distância falha, causa um dado de dano, mais a especialização em armas.",
+    "description_en": "12th-level feat: even when the ranged Strike fails, it deals one weapon damage die plus weapon specialization.",
+    "description_es": "Dote de nivel 12: incluso cuando el Golpe a distancia falla, causa un dado de daño del arma más la especialización.",
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 118,
+    "data": {
+      "effects": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "feat.class.gunslinger.brio_inabalavel",
+    "class_id": "class.gunslinger",
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "Classe",
+    "level": 12,
+    "name_pt": "Brio Inabalável",
+    "name_en": "Unshakeable Grit",
+    "name_es": "Brío inquebrantable",
+    "description_pt": "Talento de nível 12: melhora os resultados extremos da nova jogada concedida por Brio e Tenacidade.",
+    "description_en": "12th-level feat: improves the extreme results of the reroll granted by Unshakable Grit.",
+    "description_es": "Dote de nivel 12: mejora los resultados extremos de la nueva tirada concedida por Brío inquebrantable.",
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 118,
+    "data": {
+      "effects": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "feat.class.gunslinger.camuflagem_do_atirador",
+    "class_id": "class.gunslinger",
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "Classe",
+    "level": 12,
+    "name_pt": "Camuflagem do Atirador",
+    "name_en": "Sniper's Camouflage",
+    "name_es": "Camuflaje del tirador",
+    "description_pt": "Talento de nível 12: escolhe um tipo de ambiente e pode Esgueirar-se ou Esconder-se nele sem cobertura ou ocultação.",
+    "description_en": "12th-level feat: chooses a type of environment and can Sneak or Hide there without cover or concealment.",
+    "description_es": "Dote de nivel 12: elige un tipo de entorno y puede Escabullirse u Ocultarse allí sin cobertura ni ocultación.",
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 118,
+    "data": {
+      "effects": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "feat.class.gunslinger.sangue_no_ar",
+    "class_id": "class.gunslinger",
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "Classe",
+    "level": 12,
+    "name_pt": "Sangue no Ar",
+    "name_en": "Blood in the Air",
+    "name_es": "Sangre en el aire",
+    "description_pt": "Talento de nível 12: ataca um inimigo que você já feriu mesmo sob ocultação, reduzindo o teste simples de escondido para CD 5.",
+    "description_en": "12th-level feat: attacks an enemy you already damaged through concealment, reducing the hidden flat check to DC 5.",
+    "description_es": "Dote de nivel 12: ataca a un enemigo que ya dañaste a través de ocultación y reduce la prueba simple de oculto a CD 5.",
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 118,
+    "data": {
+      "effects": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "feat.class.gunslinger.olhos_de_matador",
+    "class_id": "class.gunslinger",
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "Classe",
+    "level": 12,
+    "name_pt": "Olhos de Matador",
+    "name_en": "Eyes of the Dead",
+    "name_es": "Ojos del cazador",
+    "description_pt": "Talento de concentração de nível 12: percebe criaturas e objetos invisíveis como silhuetas, tratando-os como ocultados.",
+    "description_en": "12th-level concentrate feat: perceives invisible creatures and objects as silhouettes, treating them as concealed.",
+    "description_es": "Dote de concentración de nivel 12: percibe criaturas y objetos invisibles como siluetas, tratándolos como ocultos.",
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 118,
+    "data": {
+      "effects": [],
+      "needs_review": false
+    }
+  },
+  {
+    "id": "feat.class.gunslinger.tiro_de_ricochete",
+    "class_id": "class.gunslinger",
+    "ancestry_id": null,
+    "archetype_id": null,
+    "feat_type": "Classe",
+    "level": 12,
+    "name_pt": "Tiro de Ricochete",
+    "name_en": "Ricochet Shot",
+    "name_es": "Disparo de rebote",
+    "description_pt": "Talento de concentração de nível 12: usa uma superfície sólida próxima para determinar a cobertura do alvo a partir do ponto do ricochete.",
+    "description_en": "12th-level concentrate feat: uses a nearby solid surface to determine the target's cover from the ricochet point.",
+    "description_es": "Dote de concentración de nivel 12: usa una superficie sólida cercana para determinar la cobertura del objetivo desde el punto del rebote.",
+    "prerequisites": null,
+    "action_cost": null,
+    "traits": [
+      "Classe",
+      "Pistoleiro"
+    ],
+    "rarity": "common",
+    "ruleset": "legacy",
+    "source_book": "Pólvora e Engrenagens (pré-Remaster)",
+    "source_page": 118,
     "data": {
       "effects": [],
       "needs_review": false
