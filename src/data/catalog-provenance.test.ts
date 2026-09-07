@@ -2002,4 +2002,22 @@ describe("proveniência do catálogo legado", () => {
     expect(spells.find((spell) => spell?.id.endsWith("beheading_buzz_saw"))).toMatchObject({ mechanics: { damage: "5d10 cortante + 4d6 sangramento persistente" } });
     expect(spells.find((spell) => spell?.id.endsWith("needle_darts"))).toMatchObject({ mechanics: { damage: "3d4 perfurante" } });
   });
+
+  it("preserva as magias de Metal confirmadas nas páginas 146 de Rage of Elements", () => {
+    const catalog = loadCatalog() as { spells: Array<LegacyRecord & { mechanics?: Record<string, unknown>; rank?: number }> };
+    const ids = ["noxious_metals", "rust_cloud", "shielded_arm", "wall_of_metal", "serrate", "repel_metal"].map((slug) => `spell.rage_elements.metal.${slug}`);
+    const spells = ids.map((id) => catalog.spells.find((item) => item.id === id));
+    expect(spells.every((spell) => spell && spell.source?.book?.includes("Rage of Elements") && spell.source?.page && spell.needs_review === false && spell.mechanics && ["pt-BR", "en", "es"].every((locale) => spell.names?.[locale] && spell.summaries?.[locale]))).toBe(true);
+    expect(spells.find((spell) => spell?.id.endsWith("noxious_metals"))).toMatchObject({ mechanics: { damage: "4d6 veneno" } });
+    expect(spells.find((spell) => spell?.id.endsWith("shielded_arm"))).toMatchObject({ mechanics: { block: "Dureza 4, 15 PV, sem Limiar de Quebra" } });
+  });
+
+  it("preserva as magias de Água confirmadas nas páginas 173–174 de Rage of Elements", () => {
+    const catalog = loadCatalog() as { spells: Array<LegacyRecord & { mechanics?: Record<string, unknown>; rank?: number }> };
+    const ids = ["brine_dragon_bile", "buoyant_bubbles", "coral_scourge", "dancing_fountain", "dive_and_breach", "draw_moisture"].map((slug) => `spell.rage_elements.water.${slug}`);
+    const spells = ids.map((id) => catalog.spells.find((item) => item.id === id));
+    expect(spells.every((spell) => spell && spell.source?.book?.includes("Rage of Elements") && spell.source?.page && spell.needs_review === false && spell.mechanics && ["pt-BR", "en", "es"].every((locale) => spell.names?.[locale] && spell.summaries?.[locale]))).toBe(true);
+    expect(spells.find((spell) => spell?.id.endsWith("brine_dragon_bile"))).toMatchObject({ mechanics: { damage: "2d6 ácido persistente" } });
+    expect(spells.find((spell) => spell?.id.endsWith("dancing_fountain"))).toMatchObject({ mechanics: { area: "explosão de 9 metros centrada em você" } });
+  });
 });

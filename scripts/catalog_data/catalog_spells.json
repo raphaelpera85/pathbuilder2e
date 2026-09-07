@@ -6682,9 +6682,9 @@
     "name_pt": "Metais Nocivos",
     "name_en": "Noxious Metals",
     "name_es": "Metales nocivos",
-    "description_pt": "Libera vapores metálicos tóxicos que deixam criaturas doentes e causam dano de veneno.",
-    "description_en": "Rage of Elements metal spell: Noxious Metals. Full mechanical text pending review.",
-    "description_es": "Conjuro de metal de Rage of Elements: Metales nocivos. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Uma explosão de 6 metros força metal tóxico sobre criaturas vivas e causa 4d6 veneno; plantas, madeira e anátemas contra metal sofrem veneno persistente e Enjoado.",
+    "description_en": "A 20-foot burst forces toxic metal onto living creatures and deals 4d6 poison; plants, wood, and creatures anathema to metal suffer persistent poison and sickened.",
+    "description_es": "Una explosión de 6 metros fuerza metal tóxico sobre criaturas vivas y causa 4d6 veneno; plantas, madera y criaturas con anatema al metal sufren veneno persistente y enfermas.",
     "rank": 3,
     "is_cantrip": false,
     "is_focus": false,
@@ -6693,17 +6693,33 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
+    "range": "18 metros",
     "targets": null,
     "duration": null,
-    "defense": null,
-    "traits": [],
+    "defense": "Fortitude básico",
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Metal",
+      "Veneno"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 145,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "18 metros",
+        "area": "explosão de 6 metros",
+        "damage": "4d6 veneno",
+        "save": "Fortitude básico",
+        "affected": "Planta, Madeira ou anátema contra metal",
+        "success": "1 veneno persistente e Enjoado 1 enquanto persistir",
+        "failure": "1d4 veneno persistente e Enjoado 2",
+        "criticalFailure": "1d8 veneno persistente e Enjoado 3",
+        "heightened": "+1: dano inicial +2d6"
+      },
       "needs_review": false
     }
   },
@@ -6712,9 +6728,9 @@
     "name_pt": "Nuvem de Ferrugem",
     "name_en": "Rust Cloud",
     "name_es": "Nube de óxido",
-    "description_pt": "Uma nuvem corrosiva enferruja metal e ameaça criaturas e objetos na área.",
-    "description_en": "Rage of Elements metal spell: Rust Cloud. Full mechanical text pending review.",
-    "description_es": "Conjuro de metal de Rage of Elements: Nube de óxido. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Uma explosão de 6 metros cria uma nuvem de ferrugem que oculta em ambas as direções e causa 5d10 cortante às criaturas que começam o turno dentro dela.",
+    "description_en": "A 20-foot burst creates a rust cloud that conceals in both directions and deals 5d10 slashing to creatures starting their turn inside.",
+    "description_es": "Una explosión de 6 metros crea una nube de óxido que oculta en ambas direcciones y causa 5d10 cortante a criaturas que comienzan su turno dentro.",
     "rank": 4,
     "is_cantrip": false,
     "is_focus": false,
@@ -6723,17 +6739,32 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
+    "range": "36 metros",
     "targets": null,
-    "duration": null,
-    "defense": null,
-    "traits": [],
+    "duration": "1 minuto",
+    "defense": "Fortitude básico",
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Metal"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 145,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "36 metros",
+        "area": "explosão de 6 metros",
+        "duration": "1 minuto",
+        "concealment": "criaturas dentro e fora ficam ocultadas entre si",
+        "damage": "5d10 cortante no início do turno",
+        "save": "Fortitude básico",
+        "metalCreature": "expande 1,5 metro até máximo 12 metros e causa 1d4 cortante persistente",
+        "dismissal": true,
+        "heightened": "+2: dano +1d10 e persistente +1d4"
+      },
       "needs_review": false
     }
   },
@@ -6742,9 +6773,9 @@
     "name_pt": "Braço Protegido",
     "name_en": "Shielded Arm",
     "name_es": "Brazo protegido",
-    "description_pt": "Cria um escudo metálico no braço para bloquear um ataque ou efeito iminente.",
-    "description_en": "Rage of Elements metal spell: Shielded Arm. Full mechanical text pending review.",
-    "description_es": "Conjuro de metal de Rage of Elements: Brazo protegido. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Veios de minério reforçam o braço: ao Erguer um Escudo, o alvo ganha +2 na CA e pode Bloquear com Dureza 4 e 15 PV, sem Limiar de Quebra.",
+    "description_en": "Ore veins reinforce the arm: when Raising a Shield, the target gains +2 AC and can Shield Block with Hardness 4 and 15 Hit Points, with no Broken Threshold.",
+    "description_es": "Vetas de mineral refuerzan el brazo: al Levantar un Escudo, el objetivo obtiene +2 CA y puede Bloquear con Dureza 4 y 15 PG, sin Umbral de Rotura.",
     "rank": 1,
     "is_cantrip": false,
     "is_focus": false,
@@ -6754,17 +6785,30 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
-    "duration": null,
+    "range": "toque",
+    "targets": "1 criatura disposta",
+    "duration": "1 minuto ou até gastar",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Metal"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 145,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "target": "1 criatura disposta",
+        "duration": "1 minuto ou até PV do escudo acabarem",
+        "raise": "+2 circunstancial na CA",
+        "block": "Dureza 4, 15 PV, sem Limiar de Quebra",
+        "end": "termina quando PV do escudo são gastos",
+        "anathema": "conta como usar item metálico",
+        "heightened": "+2: Dureza +4 e PV +15"
+      },
       "needs_review": false
     }
   },
@@ -6773,9 +6817,9 @@
     "name_pt": "Muralha de Metal",
     "name_en": "Wall of Metal",
     "name_es": "Muro de metal",
-    "description_pt": "Ergue uma muralha metálica resistente que permanece até ser destruída ou a magia terminar.",
-    "description_en": "Rage of Elements metal spell: Wall of Metal. Full mechanical text pending review.",
-    "description_es": "Conjuro de metal de Rage of Elements: Muro de metal. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Cria uma muralha reta de ferro, ferro frio ou prata de até 18 metros de comprimento, 9 de altura e 1/4 de polegada de espessura, com estatísticas do material.",
+    "description_en": "Creates a straight wall of iron, cold iron, or silver up to 60 feet long, 30 feet high, and 1/4 inch thick, using the material's structure statistics.",
+    "description_es": "Crea un muro recto de hierro, hierro frío o plata de hasta 18 metros de largo, 9 de alto y 1/4 de pulgada de grosor, con las estadísticas del material.",
     "rank": 6,
     "is_cantrip": false,
     "is_focus": false,
@@ -6784,17 +6828,30 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
+    "range": "36 metros",
     "targets": null,
-    "duration": null,
+    "duration": "1 minuto",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Metal"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 146,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "36 metros",
+        "size": "18m comprimento x 9m altura x 1/4 polegada",
+        "duration": "1 minuto",
+        "sections": "seções de 3m x 3m, CA 10, imunes a críticos e precisão",
+        "materials": "ferro, ferro frio baixa qualidade ou prata padrão",
+        "movement": "criaturas atravessam seção quebrada",
+        "heightened": "7º prata alta/dawnsilver padrão; 8º ferro frio padrão; 9º dawnsilver alto; 10º ferro frio alto ou adamantina padrão"
+      },
       "needs_review": false
     }
   },
@@ -6803,9 +6860,9 @@
     "name_pt": "Bile de Dragão de Salmoura",
     "name_en": "Brine Dragon Bile",
     "name_es": "Bilis de dragón de salmuera",
-    "description_pt": "Fere uma criatura que acabou de sofrer um ataque cortante ou perfurante, causando dano persistente de ácido.",
-    "description_en": "Rage of Elements water spell: Brine Dragon Bile. Full mechanical text pending review.",
-    "description_es": "Conjuro de agua de Rage of Elements: Bilis de dragón de salmuera. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Quando uma criatura sofre dano cortante, perfurante ou sangramento persistente, um jato de salmoura exige ataque de magia e causa 2d6 ácido persistente em um acerto.",
+    "description_en": "When a creature takes slashing, piercing, or persistent bleed damage, a glob of brine requires a spell attack and deals 2d6 persistent acid on a hit.",
+    "description_es": "Cuando una criatura sufre daño cortante, perforante o sangrado persistente, un glóbulo de salmuera requiere ataque de conjuro y causa 2d6 ácido persistente al impactar.",
     "rank": 2,
     "is_cantrip": false,
     "is_focus": false,
@@ -6814,17 +6871,28 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
+    "range": "9 metros",
+    "targets": "a criatura que sofreu dano",
     "duration": null,
-    "defense": null,
-    "traits": [],
+    "defense": "CA",
+    "traits": [
+      "Ácido",
+      "Concentração",
+      "Água"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 172,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "trigger": "criatura ao alcance sofre dano cortante/perfurante ou sangramento persistente",
+        "range": "9 metros",
+        "attack": "ataque de magia contra CA",
+        "damage": "2d6 ácido persistente",
+        "heightened": "+2: dano persistente +2d6"
+      },
       "needs_review": false
     }
   },
@@ -6833,9 +6901,9 @@
     "name_pt": "Bolhas Flutuantes",
     "name_en": "Buoyant Bubbles",
     "name_es": "Burbujas flotantes",
-    "description_pt": "Reveste uma criatura com bolhas que a fazem flutuar e impedem que afunde.",
-    "description_en": "Rage of Elements water spell: Buoyant Bubbles. Full mechanical text pending review.",
-    "description_es": "Conjuro de agua de Rage of Elements: Burbujas flotantes. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Bolhas fazem o alvo flutuar na água ou líquidos, impedem afundar e fazem um alvo submerso retornar à superfície em 1 rodada.",
+    "description_en": "Bubbles make the target float in water or similar liquids, prevent sinking, and bring a sinking target to the surface over 1 round.",
+    "description_es": "Burbujas hacen que el objetivo flote en agua o líquidos similares, impiden que se hunda y llevan a un objetivo hundido a la superficie en 1 asalto.",
     "rank": 1,
     "is_cantrip": false,
     "is_focus": false,
@@ -6844,17 +6912,28 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
-    "duration": null,
-    "defense": null,
-    "traits": [],
+    "range": "9 metros",
+    "targets": "1 criatura",
+    "duration": "1 minuto",
+    "defense": "Fortitude contra mergulhar",
+    "traits": [
+      "Concentração",
+      "Água"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 172,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "9 metros",
+        "target": "1 criatura",
+        "duration": "1 minuto",
+        "effect": "não afunda nem exige Swim; alvo afundando ressurge em 1 rodada",
+        "save": "Fortitude contra mergulhar sob superfície",
+        "heightened": "4º: até 5 criaturas"
+      },
       "needs_review": false
     }
   },
@@ -6863,9 +6942,9 @@
     "name_pt": "Flagelo de Coral",
     "name_en": "Coral Scourge",
     "name_es": "Azote de coral",
-    "description_pt": "Faz coral crescer sobre uma criatura, deixando-a desajeitada e restringindo seu movimento.",
-    "description_en": "Rage of Elements water spell: Coral Scourge. Full mechanical text pending review.",
-    "description_es": "Conjuro de agua de Rage of Elements: Azote de coral. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Corais crescem no corpo do alvo, impondo Desajeitado 1 ou 2 e aumentando até 4; em falha crítica, remover o coral não encerra a magia e o alvo pode ficar paralisado.",
+    "description_en": "Coral grows over the target, imposing clumsy 1 or 2 and increasing up to 4; on a critical failure, scraping it does not end the spell and the target can become paralyzed.",
+    "description_es": "Corales crecen sobre el objetivo, imponiendo torpe 1 o 2 y aumentando hasta 4; con un fallo crítico, rasparlo no termina el conjuro y puede quedar paralizado.",
     "rank": 3,
     "is_cantrip": false,
     "is_focus": false,
@@ -6874,17 +6953,31 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
-    "duration": null,
-    "defense": null,
-    "traits": [],
+    "range": "9 metros",
+    "targets": "1 criatura",
+    "duration": "1 minuto",
+    "defense": "Reflexos",
+    "traits": [
+      "Concentração",
+      "Incapacitação",
+      "Manuseio",
+      "Água"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 172,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "9 metros",
+        "target": "1 criatura",
+        "save": "Reflexos",
+        "success": "Desajeitado 1; Interagir remove e encerra",
+        "failure": "Desajeitado 2; aumenta 1 por rodada até 4; em 4 fica paralisado",
+        "criticalFailure": "como falha; Interagir reduz apenas 1 e zerar não encerra",
+        "duration": "1 minuto"
+      },
       "needs_review": false
     }
   },
@@ -6893,9 +6986,9 @@
     "name_pt": "Fonte Dançante",
     "name_en": "Dancing Fountain",
     "name_es": "Fuente danzante",
-    "description_pt": "Cria uma fonte que pode mover criaturas, obscurecer a área ou causar dano em uma explosão.",
-    "description_en": "Rage of Elements water spell: Dancing Fountain. Full mechanical text pending review.",
-    "description_es": "Conjuro de agua de Rage of Elements: Fuente danzante. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Uma explosão de 9 metros vira uma fonte dançante com três exibições: jatos empurram, névoa oculta ou anéis causam 10d6 contundente.",
+    "description_en": "A 30-foot burst becomes a dancing fountain with three displays: jets push, mist conceals, or rings deal 10d6 bludgeoning.",
+    "description_es": "Una explosión de 9 metros se vuelve una fuente danzante con tres exhibiciones: chorros empujan, niebla oculta o anillos causan 10d6 contundente.",
     "rank": 7,
     "is_cantrip": false,
     "is_focus": false,
@@ -6906,15 +6999,29 @@
     "cast_actions": "varies",
     "range": null,
     "targets": null,
-    "duration": null,
-    "defense": null,
-    "traits": [],
+    "duration": "sustentada até 1 minuto",
+    "defense": "Reflexos",
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Água"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 172,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "area": "explosão de 9 metros centrada em você",
+        "duration": "sustentada até 1 minuto",
+        "displays": [
+          "Chasing Jets: uma criatura move 4,5 metros em Reflexos",
+          "Flashing Spray: criaturas dentro e fora ficam ocultadas até início do próximo turno",
+          "Power Rings: explosão de 3 metros causa 10d6 contundente, Reflexos básico"
+        ],
+        "restriction": "não repete a mesma exibição em turnos consecutivos"
+      },
       "needs_review": false
     }
   },
@@ -6923,9 +7030,9 @@
     "name_pt": "Mergulho e Emergência",
     "name_en": "Dive and Breach",
     "name_es": "Inmersión y salida",
-    "description_pt": "Teletransporta você entre superfícies como um mergulho, causando dano nas áreas de entrada e saída.",
-    "description_en": "Rage of Elements water spell: Dive and Breach. Full mechanical text pending review.",
-    "description_es": "Conjuro de agua de Rage of Elements: Inmersión y salida. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Você Salta 3 metros, mergulha pelo Plano da Água e emerge até 12 metros depois, causando 3d10 contundente em explosões de 1,5 metro nos pontos de entrada e saída.",
+    "description_en": "You Leap 10 feet, dive through the Plane of Water, and emerge within 40 feet, dealing 3d10 bludgeoning in 5-foot bursts at entry and exit.",
+    "description_es": "Saltas 3 metros, buceas por el Plano del Agua y emerges a 12 metros, causando 3d10 contundente en explosiones de 1,5 metros en entrada y salida.",
     "rank": 3,
     "is_cantrip": false,
     "is_focus": false,
@@ -6937,14 +7044,28 @@
     "range": null,
     "targets": null,
     "duration": null,
-    "defense": null,
-    "traits": [],
+    "defense": "Reflexos básico",
+    "traits": [
+      "Ataque",
+      "Concentração",
+      "Manuseio",
+      "Teletransporte",
+      "Água"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 172,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "movement": "Salta 3 metros, entra em superfície e emerge em superfície desocupada até 12 metros",
+        "damage": "3d10 contundente por explosão",
+        "area": "explosão de 1,5 metro em cada splash",
+        "save": "Reflexos básico",
+        "overlap": "criatura em duas áreas sofre dano apenas uma vez",
+        "heightened": "+1: dano de cada splash +1d10"
+      },
       "needs_review": false
     }
   },
@@ -6953,11 +7074,11 @@
     "name_pt": "Extrair Umidade",
     "name_en": "Draw Moisture",
     "name_es": "Extraer humedad",
-    "description_pt": "Extrai água de um objeto para secá-lo ou obter uma pequena quantidade de água potável.",
-    "description_en": "Rage of Elements water spell: Draw Moisture. Full mechanical text pending review.",
-    "description_es": "Conjuro de agua de Rage of Elements: Extraer humedad. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Remove até meio litro de água de um objeto, secando objetos menores que Volume 1; pode condensar algumas xícaras de água potável em ambiente úmido.",
+    "description_en": "Draws up to a pint of water from an object, drying objects of less than 1 Bulk; in humid places it can condense a few cups of drinkable water.",
+    "description_es": "Extrae hasta medio litro de agua de un objeto, secando objetos de menos de Volumen 1; en lugares húmedos puede condensar unas tazas de agua potable.",
     "rank": 1,
-    "is_cantrip": false,
+    "is_cantrip": true,
     "is_focus": false,
     "traditions": [
       "arcane",
@@ -6965,17 +7086,29 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
+    "range": "3 metros",
+    "targets": "1 objeto",
     "duration": null,
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Cantrip",
+      "Concentração",
+      "Manuseio",
+      "Água"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 173,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "3 metros",
+        "target": "1 objeto",
+        "amount": "até meio litro de água",
+        "effect": "seca objetos menores que Volume 1; repetição seca objetos maiores",
+        "humid": "pode condensar algumas xícaras de água potável antes de esgotar umidade"
+      },
       "needs_review": false
     }
   },
@@ -8004,9 +8137,9 @@
     "name_pt": "Serrar",
     "name_en": "Serrate",
     "name_es": "Serrar",
-    "description_pt": "Adiciona lâminas a uma arma metálica, causando dano cortante adicional até seu próximo turno.",
-    "description_en": "Rage of Elements metal domain focus spell: Serrate. Full mechanical text pending review.",
-    "description_es": "Conjuro de foco del dominio metal de Rage of Elements: Serrar. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Distorce o metal da arma em lâminas irregulares; Golpes com ela causam 1d4 cortante adicional até o início do próximo turno.",
+    "description_en": "Twists a metal weapon into jagged blades; Strikes with it deal an additional 1d4 slashing until the start of your next turn.",
+    "description_es": "Retuerce un arma metálica en hojas dentadas; sus Golpes causan 1d4 cortante adicional hasta el inicio de tu próximo turno.",
     "rank": 1,
     "is_cantrip": false,
     "is_focus": false,
@@ -8014,17 +8147,27 @@
       "divine"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
-    "duration": null,
+    "range": "toque",
+    "targets": "1 arma de metal",
+    "duration": "até início do próximo turno",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Incomum",
+      "Manuseio",
+      "Metal"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 145,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "target": "1 arma de metal",
+        "duration": "até início do próximo turno",
+        "damage": "+1d4 cortante",
+        "heightened": "+2: dano adicional +1d4"
+      },
       "needs_review": false
     }
   },
@@ -8033,9 +8176,9 @@
     "name_pt": "Repelir Metal",
     "name_en": "Repel Metal",
     "name_es": "Repeler metal",
-    "description_pt": "Protege contra um Golpe metálico e pode devolvê-lo ao atacante se errar.",
-    "description_en": "Rage of Elements metal domain focus spell: Repel Metal. Full mechanical text pending review.",
-    "description_es": "Conjuro de foco del dominio metal de Rage of Elements: Repeler metal. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Quando uma arma ou projétil metálico acertaria você ou aliado, concede +2 na CA; se errar, o ataque é redirecionado contra o atacante.",
+    "description_en": "When a metallic weapon or projectile would hit you or an ally, grant +2 AC; if it misses, redirect the attack back at the attacker.",
+    "description_es": "Cuando un arma o proyectil metálico fuera a impactarte a ti o un aliado, otorga +2 CA; si falla, redirige el ataque contra el atacante.",
     "rank": 4,
     "is_cantrip": false,
     "is_focus": false,
@@ -8043,17 +8186,28 @@
       "divine"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
-    "duration": null,
+    "range": "18 metros",
+    "targets": "a criatura alvo do Golpe",
+    "duration": "imune por 10 minutos",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Incomum",
+      "Manuseio",
+      "Metal"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 145,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "trigger": "Golpe com arma ou projétil metálico acertaria você ou aliado ao alcance",
+        "range": "18 metros",
+        "bonus": "+2 circunstancial na CA",
+        "redirect": "se errar, atacante compara jogada com própria CA",
+        "immunity": "alvo fica imune por 10 minutos"
+      },
       "needs_review": false
     }
   },

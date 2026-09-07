@@ -2303,6 +2303,114 @@ const RAGE_ELEMENTS_CONFIRMED_SPELLS = {
       es: "Moldea tres agujas de metal contra una criatura, causando 3d4 perforante y pudiendo causar sangrado persistente; el metal regresa después."
     },
     mechanics: { range: "18 metros", targets: "1 criatura", attack: "ataque de magia contra CA", damage: "3d4 perfurante", metalProperties: "aplica propriedades especiais do metal", criticalSuccess: "dano dobrado e 1 sangramento persistente", success: "dano completo", heightened: "+1: uma agulha adicional, dano +1d4 e sangramento crítico +1" }
+  },
+  "metal.noxious_metals": {
+    traits: ["Concentração", "Manuseio", "Metal", "Veneno"], range: "18 metros", targets: null, duration: null, defense: "Fortitude básico",
+    summaries: {
+      "pt-BR": "Uma explosão de 6 metros força metal tóxico sobre criaturas vivas e causa 4d6 veneno; plantas, madeira e anátemas contra metal sofrem veneno persistente e Enjoado.",
+      en: "A 20-foot burst forces toxic metal onto living creatures and deals 4d6 poison; plants, wood, and creatures anathema to metal suffer persistent poison and sickened.",
+      es: "Una explosión de 6 metros fuerza metal tóxico sobre criaturas vivas y causa 4d6 veneno; plantas, madera y criaturas con anatema al metal sufren veneno persistente y enfermas."
+    },
+    mechanics: { range: "18 metros", area: "explosão de 6 metros", damage: "4d6 veneno", save: "Fortitude básico", affected: "Planta, Madeira ou anátema contra metal", success: "1 veneno persistente e Enjoado 1 enquanto persistir", failure: "1d4 veneno persistente e Enjoado 2", criticalFailure: "1d8 veneno persistente e Enjoado 3", heightened: "+1: dano inicial +2d6" }
+  },
+  "metal.rust_cloud": {
+    traits: ["Concentração", "Manuseio", "Metal"], range: "36 metros", targets: null, duration: "1 minuto", defense: "Fortitude básico",
+    summaries: {
+      "pt-BR": "Uma explosão de 6 metros cria uma nuvem de ferrugem que oculta em ambas as direções e causa 5d10 cortante às criaturas que começam o turno dentro dela.",
+      en: "A 20-foot burst creates a rust cloud that conceals in both directions and deals 5d10 slashing to creatures starting their turn inside.",
+      es: "Una explosión de 6 metros crea una nube de óxido que oculta en ambas direcciones y causa 5d10 cortante a criaturas que comienzan su turno dentro."
+    },
+    mechanics: { range: "36 metros", area: "explosão de 6 metros", duration: "1 minuto", concealment: "criaturas dentro e fora ficam ocultadas entre si", damage: "5d10 cortante no início do turno", save: "Fortitude básico", metalCreature: "expande 1,5 metro até máximo 12 metros e causa 1d4 cortante persistente", dismissal: true, heightened: "+2: dano +1d10 e persistente +1d4" }
+  },
+  "metal.shielded_arm": {
+    traits: ["Concentração", "Manuseio", "Metal"], range: "toque", targets: "1 criatura disposta", duration: "1 minuto ou até gastar", defense: null,
+    summaries: {
+      "pt-BR": "Veios de minério reforçam o braço: ao Erguer um Escudo, o alvo ganha +2 na CA e pode Bloquear com Dureza 4 e 15 PV, sem Limiar de Quebra.",
+      en: "Ore veins reinforce the arm: when Raising a Shield, the target gains +2 AC and can Shield Block with Hardness 4 and 15 Hit Points, with no Broken Threshold.",
+      es: "Vetas de mineral refuerzan el brazo: al Levantar un Escudo, el objetivo obtiene +2 CA y puede Bloquear con Dureza 4 y 15 PG, sin Umbral de Rotura."
+    },
+    mechanics: { target: "1 criatura disposta", duration: "1 minuto ou até PV do escudo acabarem", raise: "+2 circunstancial na CA", block: "Dureza 4, 15 PV, sem Limiar de Quebra", end: "termina quando PV do escudo são gastos", anathema: "conta como usar item metálico", heightened: "+2: Dureza +4 e PV +15" }
+  },
+  "metal.wall_of_metal": {
+    traits: ["Concentração", "Manuseio", "Metal"], range: "36 metros", targets: null, duration: "1 minuto", defense: null,
+    summaries: {
+      "pt-BR": "Cria uma muralha reta de ferro, ferro frio ou prata de até 18 metros de comprimento, 9 de altura e 1/4 de polegada de espessura, com estatísticas do material.",
+      en: "Creates a straight wall of iron, cold iron, or silver up to 60 feet long, 30 feet high, and 1/4 inch thick, using the material's structure statistics.",
+      es: "Crea un muro recto de hierro, hierro frío o plata de hasta 18 metros de largo, 9 de alto y 1/4 de pulgada de grosor, con las estadísticas del material."
+    },
+    mechanics: { range: "36 metros", size: "18m comprimento x 9m altura x 1/4 polegada", duration: "1 minuto", sections: "seções de 3m x 3m, CA 10, imunes a críticos e precisão", materials: "ferro, ferro frio baixa qualidade ou prata padrão", movement: "criaturas atravessam seção quebrada", heightened: "7º prata alta/dawnsilver padrão; 8º ferro frio padrão; 9º dawnsilver alto; 10º ferro frio alto ou adamantina padrão" }
+  },
+  "metal.serrate": {
+    traits: ["Incomum", "Manuseio", "Metal"], range: "toque", targets: "1 arma de metal", duration: "até início do próximo turno", defense: null,
+    summaries: {
+      "pt-BR": "Distorce o metal da arma em lâminas irregulares; Golpes com ela causam 1d4 cortante adicional até o início do próximo turno.",
+      en: "Twists a metal weapon into jagged blades; Strikes with it deal an additional 1d4 slashing until the start of your next turn.",
+      es: "Retuerce un arma metálica en hojas dentadas; sus Golpes causan 1d4 cortante adicional hasta el inicio de tu próximo turno."
+    },
+    mechanics: { target: "1 arma de metal", duration: "até início do próximo turno", damage: "+1d4 cortante", heightened: "+2: dano adicional +1d4" }
+  },
+  "metal.repel_metal": {
+    traits: ["Incomum", "Manuseio", "Metal"], range: "18 metros", targets: "a criatura alvo do Golpe", duration: "imune por 10 minutos", defense: null,
+    summaries: {
+      "pt-BR": "Quando uma arma ou projétil metálico acertaria você ou aliado, concede +2 na CA; se errar, o ataque é redirecionado contra o atacante.",
+      en: "When a metallic weapon or projectile would hit you or an ally, grant +2 AC; if it misses, redirect the attack back at the attacker.",
+      es: "Cuando un arma o proyectil metálico fuera a impactarte a ti o un aliado, otorga +2 CA; si falla, redirige el ataque contra el atacante."
+    },
+    mechanics: { trigger: "Golpe com arma ou projétil metálico acertaria você ou aliado ao alcance", range: "18 metros", bonus: "+2 circunstancial na CA", redirect: "se errar, atacante compara jogada com própria CA", immunity: "alvo fica imune por 10 minutos" }
+  },
+  "water.brine_dragon_bile": {
+    traits: ["Ácido", "Concentração", "Água"], range: "9 metros", targets: "a criatura que sofreu dano", duration: null, defense: "CA",
+    summaries: {
+      "pt-BR": "Quando uma criatura sofre dano cortante, perfurante ou sangramento persistente, um jato de salmoura exige ataque de magia e causa 2d6 ácido persistente em um acerto.",
+      en: "When a creature takes slashing, piercing, or persistent bleed damage, a glob of brine requires a spell attack and deals 2d6 persistent acid on a hit.",
+      es: "Cuando una criatura sufre daño cortante, perforante o sangrado persistente, un glóbulo de salmuera requiere ataque de conjuro y causa 2d6 ácido persistente al impactar."
+    },
+    mechanics: { trigger: "criatura ao alcance sofre dano cortante/perfurante ou sangramento persistente", range: "9 metros", attack: "ataque de magia contra CA", damage: "2d6 ácido persistente", heightened: "+2: dano persistente +2d6" }
+  },
+  "water.buoyant_bubbles": {
+    traits: ["Concentração", "Água"], range: "9 metros", targets: "1 criatura", duration: "1 minuto", defense: "Fortitude contra mergulhar",
+    summaries: {
+      "pt-BR": "Bolhas fazem o alvo flutuar na água ou líquidos, impedem afundar e fazem um alvo submerso retornar à superfície em 1 rodada.",
+      en: "Bubbles make the target float in water or similar liquids, prevent sinking, and bring a sinking target to the surface over 1 round.",
+      es: "Burbujas hacen que el objetivo flote en agua o líquidos similares, impiden que se hunda y llevan a un objetivo hundido a la superficie en 1 asalto."
+    },
+    mechanics: { range: "9 metros", target: "1 criatura", duration: "1 minuto", effect: "não afunda nem exige Swim; alvo afundando ressurge em 1 rodada", save: "Fortitude contra mergulhar sob superfície", heightened: "4º: até 5 criaturas" }
+  },
+  "water.coral_scourge": {
+    traits: ["Concentração", "Incapacitação", "Manuseio", "Água"], range: "9 metros", targets: "1 criatura", duration: "1 minuto", defense: "Reflexos",
+    summaries: {
+      "pt-BR": "Corais crescem no corpo do alvo, impondo Desajeitado 1 ou 2 e aumentando até 4; em falha crítica, remover o coral não encerra a magia e o alvo pode ficar paralisado.",
+      en: "Coral grows over the target, imposing clumsy 1 or 2 and increasing up to 4; on a critical failure, scraping it does not end the spell and the target can become paralyzed.",
+      es: "Corales crecen sobre el objetivo, imponiendo torpe 1 o 2 y aumentando hasta 4; con un fallo crítico, rasparlo no termina el conjuro y puede quedar paralizado."
+    },
+    mechanics: { range: "9 metros", target: "1 criatura", save: "Reflexos", success: "Desajeitado 1; Interagir remove e encerra", failure: "Desajeitado 2; aumenta 1 por rodada até 4; em 4 fica paralisado", criticalFailure: "como falha; Interagir reduz apenas 1 e zerar não encerra", duration: "1 minuto" }
+  },
+  "water.dancing_fountain": {
+    traits: ["Concentração", "Manuseio", "Água"], range: null, targets: null, duration: "sustentada até 1 minuto", defense: "Reflexos",
+    summaries: {
+      "pt-BR": "Uma explosão de 9 metros vira uma fonte dançante com três exibições: jatos empurram, névoa oculta ou anéis causam 10d6 contundente.",
+      en: "A 30-foot burst becomes a dancing fountain with three displays: jets push, mist conceals, or rings deal 10d6 bludgeoning.",
+      es: "Una explosión de 9 metros se vuelve una fuente danzante con tres exhibiciones: chorros empujan, niebla oculta o anillos causan 10d6 contundente."
+    },
+    mechanics: { area: "explosão de 9 metros centrada em você", duration: "sustentada até 1 minuto", displays: ["Chasing Jets: uma criatura move 4,5 metros em Reflexos", "Flashing Spray: criaturas dentro e fora ficam ocultadas até início do próximo turno", "Power Rings: explosão de 3 metros causa 10d6 contundente, Reflexos básico"], restriction: "não repete a mesma exibição em turnos consecutivos" }
+  },
+  "water.dive_and_breach": {
+    traits: ["Ataque", "Concentração", "Manuseio", "Teletransporte", "Água"], range: null, targets: null, duration: null, defense: "Reflexos básico",
+    summaries: {
+      "pt-BR": "Você Salta 3 metros, mergulha pelo Plano da Água e emerge até 12 metros depois, causando 3d10 contundente em explosões de 1,5 metro nos pontos de entrada e saída.",
+      en: "You Leap 10 feet, dive through the Plane of Water, and emerge within 40 feet, dealing 3d10 bludgeoning in 5-foot bursts at entry and exit.",
+      es: "Saltas 3 metros, buceas por el Plano del Agua y emerges a 12 metros, causando 3d10 contundente en explosiones de 1,5 metros en entrada y salida."
+    },
+    mechanics: { movement: "Salta 3 metros, entra em superfície e emerge em superfície desocupada até 12 metros", damage: "3d10 contundente por explosão", area: "explosão de 1,5 metro em cada splash", save: "Reflexos básico", overlap: "criatura em duas áreas sofre dano apenas uma vez", heightened: "+1: dano de cada splash +1d10" }
+  },
+  "water.draw_moisture": {
+    traits: ["Cantrip", "Concentração", "Manuseio", "Água"], range: "3 metros", targets: "1 objeto", duration: null, defense: null,
+    summaries: {
+      "pt-BR": "Remove até meio litro de água de um objeto, secando objetos menores que Volume 1; pode condensar algumas xícaras de água potável em ambiente úmido.",
+      en: "Draws up to a pint of water from an object, drying objects of less than 1 Bulk; in humid places it can condense a few cups of drinkable water.",
+      es: "Extrae hasta medio litro de agua de un objeto, secando objetos de menos de Volumen 1; en lugares húmedos puede condensar unas tazas de agua potable."
+    },
+    mechanics: { range: "3 metros", target: "1 objeto", amount: "até meio litro de água", effect: "seca objetos menores que Volume 1; repetição seca objetos maiores", humid: "pode condensar algumas xícaras de água potável antes de esgotar umidade" }
   }
 };
 // Segredos da Magia é uma fonte oficial pré-Remaster. Registros vinculados a ela
@@ -2875,6 +2983,23 @@ for (const [id, pt, en, es, rank, page, domain, summary] of RAGE_ELEMENTS_DOMAIN
   PF2E_DATA.spells.push({ id: `spell.rage_elements.${id}`, name: `${pt} (${en})`, rank, focus: true, domain, traditions: ["divine"], actionType: "varies", names: { "pt-BR": pt, en, es }, summaries: {
     "pt-BR": summary, en: `Rage of Elements ${domain} domain focus spell: ${en}. Full mechanical text pending review.`, es: `Conjuro de foco del dominio ${domain} de Rage of Elements: ${es}. El texto mecánico completo queda pendiente de revisión.`
   }, description: summary, source: { book: RAGE_ELEMENTS_SOURCE, page }, ruleset: "remaster", needs_review: true });
+}
+
+// As magias de foco são adicionadas depois do bloco principal de Rage of Elements;
+// reaplique as confirmações para manter Serrar e Repelir Metal com a mesma proveniência.
+for (const [slug, mechanics] of Object.entries(RAGE_ELEMENTS_CONFIRMED_SPELLS)) {
+  const spell = (PF2E_DATA.spells || []).find((record) => record.id === `spell.rage_elements.${slug}`);
+  if (!spell) continue;
+  spell.traits = mechanics.traits;
+  spell.range = mechanics.range;
+  spell.targets = mechanics.targets;
+  spell.duration = mechanics.duration;
+  spell.defense = mechanics.defense;
+  spell.summaries = mechanics.summaries;
+  spell.description = mechanics.summaries["pt-BR"];
+  spell.mechanics = mechanics.mechanics;
+  spell.needs_review = false;
+  spell.sourceApproximate = false;
 }
 
 const BOOK_DEAD_SOURCE = "Livro dos Mortos (pré-Remaster)";
