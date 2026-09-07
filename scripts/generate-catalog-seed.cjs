@@ -415,6 +415,7 @@ const spellsData = [];
     source_page: item.source?.page || item.page || null,
     data: {
       heightened: item.heightened || null,
+      ...(item.mechanics ? { mechanics: item.mechanics } : {}),
       needs_review: item.needs_review ?? false,
     }
   });

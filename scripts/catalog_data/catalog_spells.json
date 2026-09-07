@@ -1240,6 +1240,12 @@
     "source_page": 240,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "criticalSuccess": "não afetado",
+        "success": "enjoado 1",
+        "failure": "enjoado 2; não pode reduzir abaixo de enjoado 1 até consumir carne crua",
+        "criticalFailure": "como falha, mas não pode reduzir abaixo de enjoado 2 até consumir carne crua"
+      },
       "needs_review": false
     }
   },
@@ -1274,6 +1280,13 @@
     "source_page": 240,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "attack": "arma flutuante faz Golpes reativos conforme guerra ou paz",
+        "attackModifier": "modificador de ataque com magia",
+        "damage": "4d10; tipo igual ao da arma escolhida, ou espiritual se for mais prejudicial",
+        "multipleAttackPenalty": "separada da sua e aumenta durante o turno do alvo",
+        "heightened": "+1d10 no 10º ranque"
+      },
       "needs_review": false
     }
   },
@@ -1308,6 +1321,16 @@
     "source_page": 241,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "tree": {
+          "size": "Médio",
+          "ac": 10,
+          "hp": 10
+        },
+        "interception": "quando aliado adjacente é atingido por Golpe, a árvore recebe o dano primeiro; excesso passa ao alvo",
+        "persistence": "se sobreviver em terra até o fim, permanece como árvore mundana",
+        "heightened": "+10 PV por ranque acima do 1º"
+      },
       "needs_review": false
     }
   },
@@ -1342,6 +1365,14 @@
     "source_page": 241,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "criticalSuccess": "não afetado",
+        "success": "1 bolha; pode gastar 1 ação de concentração para estourá-la",
+        "failure": "2 bolhas",
+        "criticalFailure": "4 bolhas",
+        "burst": "alvo e criaturas em cone de 4,5 metros sofrem 7d6 de ácido, Fortitude básico",
+        "heightened": "+1d6 no dano por bolha por ranque"
+      },
       "needs_review": false
     }
   },
@@ -1376,6 +1407,18 @@
     "source_page": 241,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "forms": [
+          "donzela",
+          "mãe",
+          "matriarca",
+          "idade natural"
+        ],
+        "switching": "pode mudar de idade ao Sustentar a magia",
+        "disguiseBonus": "+4 status em Dissimulação para passar pela idade escolhida",
+        "proficiency": "pode adicionar o nível como bônus de proficiência nesses testes, mesmo destreinado",
+        "dismissal": true
+      },
       "needs_review": false
     }
   },
@@ -1410,6 +1453,15 @@
     "source_page": 241,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "damage": "14d6 espiritual",
+        "criticalSuccess": "sem dano",
+        "success": "metade do dano e não pode usar reações até o início do turno",
+        "failure": "dano total, sem reações até o início do turno e atordoado 1",
+        "criticalFailure": "dano dobrado, sem reações até o início do turno e atordoado 2",
+        "incorporeal": "atinge criaturas incorpóreas escondidas em objetos sólidos sem atravessar barreiras",
+        "heightened": "+2d6 por ranque"
+      },
       "needs_review": false
     }
   },
@@ -1443,6 +1495,11 @@
     "source_page": 241,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "initialDamage": "2d10 contundente",
+        "sustainedDamage": "1d10 contundente na primeira vez que Sustentar a cada rodada",
+        "heightened": "+2d10 no dano inicial e +1d10 no dano subsequente por +2 ranques"
+      },
       "needs_review": false
     }
   },
@@ -1451,9 +1508,9 @@
     "name_pt": "Cascata Sagrada",
     "name_en": "Sacred Cascade",
     "name_es": "Cascada sagrada",
-    "description_pt": "Magia do Player Core 2 (p. 241); efeito mecânico completo oficial de oficial.",
-    "description_en": "Player Core 2 spell (p. 241); full mechanical text pending review.",
-    "description_es": "Conjuro del Player Core 2 (p. 241); texto mecánico completo pendiente de revisión.",
+    "description_pt": "Explode um frasco de água benta em uma explosão de 6 metros, causando 3d6 contundente e 6d6 espiritual adicional a criaturas profanas.",
+    "description_en": "Amplifies holy water into a 6-meter burst for 3d6 bludgeoning damage plus 6d6 spirit damage to creatures with the unholy trait.",
+    "description_es": "Amplifica agua bendita en una explosión de 6 metros que causa 3d6 contundente y 6d6 espiritual adicional a criaturas profanas.",
     "rank": 4,
     "is_cantrip": false,
     "is_focus": false,
@@ -1461,17 +1518,30 @@
       "divine"
     ],
     "cast_actions": "two-actions",
-    "range": null,
+    "range": "150 metros",
     "targets": null,
     "duration": null,
-    "defense": null,
-    "traits": [],
+    "defense": "Reflexos básico",
+    "traits": [
+      "Água",
+      "Concentração",
+      "Manuseio",
+      "Sagrado"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 241,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "cost": "um frasco de água benta",
+        "area": "explosão de 6 metros",
+        "damage": "3d6 contundente",
+        "profaneDamage": "6d6 espiritual",
+        "heightened": "+1: contundente +1d6 e espiritual +2d6",
+        "save": "Reflexos básico"
+      },
       "needs_review": false
     }
   },
@@ -1507,6 +1577,21 @@
     "source_page": 242,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "field": {
+          "hardness": 10,
+          "hp": 40,
+          "immunities": [
+            "acertos críticos",
+            "dano de precisão"
+          ],
+          "blocks": "ataques, efeitos e criaturas que tentem atravessar"
+        },
+        "criticalSuccess": "alvo escapa antes da formação",
+        "success": "campo se forma parcialmente com 10 PV",
+        "failure": "campo funciona normalmente",
+        "heightened": "+5 PV no sucesso e +15 PV na falha por ranque"
+      },
       "needs_review": false
     }
   },
@@ -1541,6 +1626,14 @@
     "source_page": 242,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "stealth": "+2 de bônus de estado em testes de Furtividade para Esconder e Esgueirar",
+        "starlitSky": "ao ar livre sob céu estrelado, fica invisível enquanto imóvel e ocultado enquanto se move",
+        "adjacentTrigger": "criatura que termina o turno adjacente faz salvamento de Vontade; efeito mental e visual",
+        "success": "não afetada",
+        "failure": "ofuscada até o fim do próximo turno",
+        "criticalFailure": "confusa e ofuscada até o fim do próximo turno"
+      },
       "needs_review": false
     }
   },
@@ -1577,6 +1670,11 @@
     "source_page": 242,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "sharedDream": "alvos que escolhem dormir entram em um sonho compartilhado e se comunicam como se estivessem na mesma sala",
+        "awake": "cada alvo sai ao despertar; a magia termina quando todos acordam",
+        "refusal": "a magia termina para qualquer alvo que escolha não dormir"
+      },
       "needs_review": false
     }
   },
@@ -1611,6 +1709,13 @@
     "source_page": 242,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "storage": "transforma recipiente e conteúdo em forma imaginária armazenada na mente do conjurador",
+        "restriction": "não pode conter criaturas",
+        "retrieval": "retirar um item exige atividade de 3 ações com traços concentração e manuseio",
+        "noReturn": "itens retirados não podem ser colocados de volta",
+        "ending": "pode ser dispensada; ao terminar, o recipiente reaparece nas mãos ou no chão próximo"
+      },
       "needs_review": false
     }
   },
@@ -1644,6 +1749,16 @@
     "source_page": 242,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "creature": "celestial, ínfero ou monitor de nível -1; também pode ser animal da Esfera Externa de nível -1",
+        "sanctification": "o servidor sagrado ou profano precisa ser permitido pela santificação da divindade",
+        "anathema": "convocar traço sagrado ou profano proibido pela divindade",
+        "choices": [
+          "celeste e sagrado",
+          "ínfero e profano",
+          "monitor"
+        ]
+      },
       "needs_review": false
     }
   },
@@ -1678,6 +1793,12 @@
     "source_page": 242,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "damage": "2d4 frio",
+        "criticalSuccess": "não afetado",
+        "success": "metade do dano",
+        "failure": "dano total e -1,5 metro nas Velocidades por 2 rodadas"
+      },
       "needs_review": false
     }
   },
@@ -1711,6 +1832,15 @@
     "source_page": 243,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "primaryDamage": "10d6 perfurante; partes extras apodrecem após 1 rodada",
+        "immunity": "não afeta anatomia mutável ou criaturas sem membros",
+        "secondaryArea": "criaturas a até 9 metros fazem salvamento de Vontade, efeito mental e visual; imunidade por 1 hora",
+        "success": "não afetado",
+        "failure": "enjoado 1",
+        "criticalFailure": "enjoado 2",
+        "heightened": "+2d6 no dano por ranque"
+      },
       "needs_review": false
     }
   },
@@ -1747,6 +1877,13 @@
     "source_page": 243,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "obscured": "criaturas na nuvem e a até 6 metros ficam ofuscadas",
+        "trigger": "salvamento ao conjurar dentro da nuvem, entrar, terminar turno nela ou Buscar/Interagir na nuvem",
+        "success": "não afetado",
+        "failure": "confuso por 1d4 rodadas",
+        "criticalFailure": "atordoado por 1d4 rodadas e depois confuso pelo restante da duração"
+      },
       "needs_review": false
     }
   },
@@ -1782,6 +1919,15 @@
     "source_page": 243,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "damage": "4d4 perfurante + 4d4 eversivo",
+        "temporaryHp": "ganha PV temporários iguais ao dano eversivo sofrido pelo alvo; duram 1 minuto",
+        "criticalSuccess": "não afetado",
+        "success": "metade do dano",
+        "failure": "dano total e imobilizado por 1 rodada ou até Interagir para se libertar",
+        "criticalFailure": "dano dobrado e imobilizado por 1 rodada ou até Escapar contra sua CD de magia",
+        "heightened": "+1d4 em cada tipo de dano por ranque"
+      },
       "needs_review": false
     }
   },
@@ -1790,9 +1936,9 @@
     "name_pt": "Déjà Vu",
     "name_en": "Déjà Vu",
     "name_es": "Déjà vu",
-    "description_pt": "Magia do Player Core 2 (p. 243); efeito mecânico completo oficial de oficial.",
-    "description_en": "Player Core 2 spell (p. 243); full mechanical text pending review.",
-    "description_es": "Conjuro del Player Core 2 (p. 243); texto mecánico completo pendiente de revisión.",
+    "description_pt": "Força uma criatura a repetir, na mesma ordem, as ações do próximo turno; ações impossíveis podem ser escolhidas livremente, mas deixam o alvo atordoado 1.",
+    "description_en": "Forces a creature to repeat the next turn's actions in the same order; impossible actions can be chosen freely but leave the target stunned 1.",
+    "description_es": "Obliga a una criatura a repetir en el mismo orden las acciones de su próximo turno; las imposibles pueden elegirse libremente, pero dejan al objetivo aturdido 1.",
     "rank": 1,
     "is_cantrip": false,
     "is_focus": false,
@@ -1801,17 +1947,28 @@
       "occult"
     ],
     "cast_actions": "two-actions",
-    "range": null,
-    "targets": null,
-    "duration": null,
-    "defense": null,
-    "traits": [],
+    "range": "30 metros",
+    "targets": "1 criatura",
+    "duration": "2 rodadas",
+    "defense": "Vontade",
+    "traits": [
+      "Concentração",
+      "Incapacitação",
+      "Manuseio",
+      "Mental"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 243,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "duration": "2 rodadas",
+        "save": "Vontade",
+        "failure": "repete as ações do próximo turno",
+        "impossibleAction": "pode agir livremente e fica atordoado 1"
+      },
       "needs_review": false
     }
   },
@@ -1845,6 +2002,15 @@
     "source_page": 244,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "effect": "objeto se desmonta em peças, recebe quebrado e suas peças ficam pequenas para esconder",
+        "limitation": "falha sem peças; usar em objeto perigoso normalmente o aciona",
+        "restore": "ao terminar, recompõe-se, perde quebrado e recupera os PV anteriores",
+        "heightened": {
+          "rank4": "10 minutos",
+          "rank6": "até as próximas preparações diárias"
+        }
+      },
       "needs_review": false
     }
   },
@@ -1879,6 +2045,13 @@
     "source_page": 244,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "terrain": "a área ocupada pelos esqueletos é terreno difícil",
+        "damage": "2d6 cortante ao surgir e ao mover a área",
+        "sustain": "move a área até 6 metros na distância da magia uma vez por rodada",
+        "replacement": "ossos se recompõem e substituem os destruídos",
+        "heightened": "+1d6 por +2 ranques"
+      },
       "needs_review": false
     }
   },
@@ -1911,6 +2084,12 @@
     "source_page": 244,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "gnomePenalty": "criaturas com o traço gnomo sofrem –2 de penalidade de circunstância no salvamento",
+        "success": "enfraquecido 2 por 1 rodada",
+        "failure": "enfraquecido 2 por 1 minuto, drenado 1 e apatia; por 1 rodada, ação de movimento exige salvamento de Vontade ou é perdida",
+        "criticalFailure": "enfraquecido 2 e drenado 2 permanentemente, removíveis por efeitos apropriados"
+      },
       "needs_review": false
     }
   },
@@ -1948,6 +2127,12 @@
     "source_page": 244,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "criticalSuccess": "não afetado",
+        "success": "por 1 hora, rola duas vezes iniciativa e usa o pior resultado",
+        "failure": "por 1 dia, rola duas vezes iniciativa e testes de recesso e usa o pior resultado",
+        "criticalFailure": "como falha, com duração ilimitada"
+      },
       "needs_review": false
     }
   },
@@ -1981,6 +2166,12 @@
     "source_page": 244,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "size": "tamanho aproximado de uma moeda, Volume insignificante",
+        "termination": "termina ao Dispensar ou lançar o objeto em superfície sólida",
+        "limitation": "objeto não pode atacar ou causar dano enquanto retorna ao tamanho normal",
+        "space": "se não houver espaço, duração continua até existir espaço suficiente"
+      },
       "needs_review": false
     }
   },
@@ -2016,6 +2207,14 @@
     "source_page": 244,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "contagion": "criaturas que conjuram magia divina ou ocultista no alvo também fazem salvamento de Vontade",
+        "failureEffect": "ações do próximo turno devem ser repetidas no turno seguinte na mesma ordem; ação impossível permite agir livremente, mas deixa atordoado 1 até o fim do turno",
+        "criticalSuccess": "não afetado",
+        "success": "enfraquecido 2 e estupefato 2 por 1 rodada",
+        "failure": "enfraquecido 2 e estupefato 2 por 1 minuto, depois enfraquecido 1 e estupefato 1 permanentemente",
+        "criticalFailure": "enfraquecido 3 e estupefato 3 por 1 minuto, depois enfraquecido 2 e estupefato 2 permanentemente"
+      },
       "needs_review": false
     }
   },
@@ -2050,6 +2249,13 @@
     "source_page": 245,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "damage": "2d10 eversivo a cada criatura viva",
+        "diseasePenalty": "criaturas afetadas por doença sofrem -2 circunstancial no salvamento",
+        "plants": "apodrece plantas Pequenas e Minúsculas não criaturas, removendo vegetação, terreno difícil, cobertura e ocultamento mundanos",
+        "dispel": "tenta neutralizar efeitos mágicos nas plantas",
+        "heightened": "+1d10 por ranque"
+      },
       "needs_review": false
     }
   },
@@ -2086,6 +2292,13 @@
     "source_page": 245,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "message": "envia até 25 palavras; alvo pode responder imediatamente com até 25 palavras",
+        "effect": "mensagem ardilosa produz efeito de sugestão",
+        "successImmunity": "imunidade temporária por 1 dia",
+        "criticalSuccessImmunity": "imunidade temporária por 1 mês",
+        "requirement": "contato telepático anterior"
+      },
       "needs_review": false
     }
   },
@@ -2123,6 +2336,12 @@
     "source_page": 245,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "effect": "alvo parece morto e fica invisível; cadáver ilusório permanece no local",
+        "hostileActions": "magia termina se alvo realizar ações hostis e o cadáver desaparece",
+        "disbelief": "Mestre pode permitir Percepção para desacreditar uma morte absurda",
+        "heightened": "no 7º ranque não termina quando o alvo realiza ações hostis"
+      },
       "needs_review": false
     }
   },
@@ -2156,6 +2375,23 @@
     "source_page": 245,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "ac": "20 + nível",
+        "temporaryHp": 10,
+        "speed": "12 metros",
+        "physicalResistance": 3,
+        "senses": [
+          "visão no escuro"
+        ],
+        "weapon": {
+          "attack": "+21",
+          "damageBonus": "+8 ou +6 à distância",
+          "damage": "3d6 contundente + 1d6 espiritual",
+          "favoredDeityWeapon": true
+        },
+        "athletics": "+23",
+        "restrictions": "apenas o armamento sagrado pode ser usado; forma mantém tamanho e aparência semelhante"
+      },
       "needs_review": false
     }
   },
@@ -2191,6 +2427,9 @@
     "source_page": 246,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "terrain": "lama com 30 centímetros de profundidade torna a área terreno difícil"
+      },
       "needs_review": false
     }
   },
@@ -2228,6 +2467,13 @@
     "source_page": 246,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "trigger": "uma criatura causa dano a você",
+        "criticalSuccess": "não afetado",
+        "success": "alvo não pode observar você até o fim do turno; se observava, você fica escondido",
+        "failure": "como sucesso; por 1 minuto, quando alvo causar dano a você, não pode observá-lo até o fim do turno",
+        "criticalFailure": "como sucesso; duração ilimitada e, na primeira vez por rodada que causar dano, não pode observar a criatura atingida"
+      },
       "needs_review": false
     }
   },
@@ -2261,6 +2507,12 @@
     "source_page": 246,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "success": "desacredita a ilusão",
+        "failure": "cubos são terreno difícil, inclusive ar e paredes; ao sair, teleporta para cubo aleatório compatível",
+        "interaction": "interagir com a ilusão permite novo salvamento para desacreditá-la",
+        "teleportation": "criatura escolhe a extremidade do cubo de saída; Mestre exclui cubos sem terreno compatível"
+      },
       "needs_review": false
     }
   },
@@ -2293,6 +2545,13 @@
     "source_page": 246,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "recording": "grava mensagem curta ou tema emocional escolhido",
+        "readObject": "é revelada por Ler Objeto e substitui eventos emotivos anteriores",
+        "retrocognition": "aparece como evento importante na linha do tempo sem interferir em outras visões",
+        "detectMagic": "Ler Aura de ranque superior percebe a alteração mágica",
+        "overwrite": "conjurar novamente remove vibração anterior"
+      },
       "needs_review": false
     }
   },
@@ -2329,6 +2588,24 @@
     "source_page": 246,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "battleForm": true,
+        "ac": "20 + nível",
+        "temporaryHp": 10,
+        "speed": "12 metros",
+        "physicalResistance": 3,
+        "senses": [
+          "visão no escuro"
+        ],
+        "weapon": {
+          "attack": "+21",
+          "damageBonus": "+8 ou +6 à distância",
+          "damage": "3d6 contundente + 1d6 espiritual",
+          "onlyAttack": true
+        },
+        "athletics": "+23",
+        "heightened": "8º ranque: CA 21 + nível, 15 PV temporários, resistência 4, ataque +28, dano +15 ou +12 à distância, Atletismo +29 e tamanho Grande"
+      },
       "needs_review": false
     }
   },
@@ -2365,6 +2642,15 @@
     "source_page": 247,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "damage": "2d6 fogo persistente",
+        "languageBonus": "alvo que não entende o idioma ou não ouve recebe +4 circunstancial no salvamento",
+        "criticalSuccess": "não afetado",
+        "success": "metade do dano persistente",
+        "failure": "assustado 1 e dano persistente total",
+        "criticalFailure": "assustado 2 e dobro do dano persistente",
+        "heightened": "+2 ranques: até duas criaturas adicionais e +2d6 de dano"
+      },
       "needs_review": false
     }
   },
@@ -2399,6 +2685,15 @@
     "source_page": 247,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "damage": "2d6 de dano persistente de veneno",
+        "success": "metade do dano persistente de veneno",
+        "failure": "dano persistente total e fraqueza 1 a fogo e cortante enquanto sofrer o dano",
+        "criticalFailure": "dobro do dano persistente e fraqueza 2 a fogo e cortante enquanto sofrer o dano",
+        "heightened": {
+          "rank4": "dano persistente aumenta em 2d6 e fraquezas em 1, ou em 2 na falha crítica"
+        }
+      },
       "needs_review": false
     }
   },
@@ -2433,6 +2728,13 @@
     "source_page": 247,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "movement": "vegetação impõe –3 metros de penalidade de circunstância na Velocidade quando adjacente a plantas e fungos",
+        "animalAttack": "no início do turno, teste simples CD 8; falha provoca 2d10 cortante, salvamento básico de Reflexos e desprevenido por 1 rodada salvo sucesso crítico",
+        "primalMagic": "teste simples CD 5 ao conjurar magia primal; falha faz a magia falhar",
+        "hostility": "animais, fungos e plantas ficam hostis ao alvo",
+        "exception": "o Mestre pode excluir criaturas que não possam ser afetadas pela ira da natureza"
+      },
       "needs_review": false
     }
   },
@@ -2468,6 +2770,12 @@
     "source_page": 247,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "effect": "alvos ficam invisíveis entre si enquanto permanecem na emanação",
+        "leaving": "criatura que sai fica visível e não recupera invisibilidade ao voltar",
+        "hostileAction": "magia termina após ação hostil de criatura tornada invisível",
+        "heightened": "5º ranque: até 10 criaturas voluntárias e duração de 1 hora"
+      },
       "needs_review": false
     }
   },
@@ -2502,6 +2810,11 @@
     "source_page": 247,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "effect": "objeto fica invisível e indetectado, mas pode ser encontrado e fica escondido após sucesso",
+        "hostileUse": "termina depois da ação hostil que usa o objeto",
+        "weapon": "arma invisível normalmente não concede vantagem; arma arremessada ou munição pode ocultar a posição do atacante até retornar"
+      },
       "needs_review": false
     }
   },
@@ -2537,6 +2850,26 @@
     "source_page": 248,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "cage": {
+          "ac": 10,
+          "hardness": 20,
+          "hp": 40,
+          "immunity": [
+            "acertos críticos",
+            "dano de precisão"
+          ],
+          "weakness": {
+            "void": 5
+          },
+          "cover": "cobertura padrão"
+        },
+        "criticalSize": "falha se criatura for grande demais para caber",
+        "success": "criatura é empurrada para fora em espaço escolhido",
+        "failure": "criatura fica presa dentro",
+        "escape": "criaturas capazes de passar entre as barras podem sair; mortos-vivos incorpóreos não atravessam",
+        "effects": "magias e a maioria dos efeitos de área atravessam sem impedimentos"
+      },
       "needs_review": false
     }
   },
@@ -2545,9 +2878,9 @@
     "name_pt": "Lodo Corrosivo",
     "name_en": "Corrosive Mud",
     "name_es": "Lodo corrosivo",
-    "description_pt": "Magia do Player Core 2 (p. 248); efeito mecânico completo oficial de oficial.",
-    "description_en": "Player Core 2 spell (p. 248); full mechanical text pending review.",
-    "description_es": "Conjuro del Player Core 2 (p. 248); texto mecánico completo pendiente de revisión.",
+    "description_pt": "Cria duas poças de lodo que são terreno difícil maior; criaturas que começam ou entram nelas sofrem 8d6 de ácido, com 1d6 persistente adicional em falha crítica.",
+    "description_en": "Creates two pools of corrosive mud that are greater difficult terrain; creatures starting or entering them take 8d6 acid damage, plus 1d6 persistent acid on a critical failure.",
+    "description_es": "Crea dos charcos de barro corrosivo que son terreno difícil mayor; las criaturas que empiezan o entran sufren 8d6 de ácido y 1d6 persistente adicional con fallo crítico.",
     "rank": 5,
     "is_cantrip": false,
     "is_focus": false,
@@ -2556,17 +2889,28 @@
       "primal"
     ],
     "cast_actions": "two-actions",
-    "range": null,
-    "targets": null,
-    "duration": null,
-    "defense": null,
-    "traits": [],
+    "range": "36 metros",
+    "targets": "todos os quadrados em duas explosões de 3 metros",
+    "duration": "1 minuto",
+    "defense": "Reflexos básico",
+    "traits": [
+      "Ácido",
+      "Concentração",
+      "Manuseio"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 248,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "area": "duas explosões de 3 metros",
+        "damage": "8d6 ácido",
+        "criticalFailure": "1d6 dano persistente de ácido",
+        "terrain": "terreno difícil maior",
+        "heightened": "+2: uma explosão adicional"
+      },
       "needs_review": false
     }
   },
@@ -2604,6 +2948,13 @@
     "source_page": 248,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "light": "luz forte na área e luz fraca no dobro da área",
+        "livingFailure": "criaturas vivas recebem apenas metade do benefício normal de cura na área",
+        "undeadFailure": "mortos-vivos ficam enfraquecido 1 na área",
+        "repeatedSave": "criatura usa o mesmo resultado ao sair e retornar",
+        "sustain": "uma vez por turno a partir da rodada seguinte, aumenta a emanação em 1,5 metro e força novos salvamentos"
+      },
       "needs_review": false
     }
   },
@@ -2612,9 +2963,9 @@
     "name_pt": "Ler Objeto",
     "name_en": "Read Object",
     "name_es": "Leer objeto",
-    "description_pt": "Magia do Player Core 2 (p. 248); efeito mecânico completo oficial de oficial.",
-    "description_en": "Player Core 2 spell (p. 248); full mechanical text pending review.",
-    "description_es": "Conjuro del Player Core 2 (p. 248); texto mecánico completo pendiente de revisión.",
+    "description_pt": "Obtém uma impressão psíquica sobre um evento emocional que envolveu o objeto na última semana, conforme determinado pelo Mestre.",
+    "description_en": "Learns a psychic impression about an emotional event involving the object during the last week, as determined by the GM.",
+    "description_es": "Obtiene una impresión psíquica sobre un evento emocional relacionado con el objeto durante la última semana, según determine el DJ.",
     "rank": 1,
     "is_cantrip": false,
     "is_focus": false,
@@ -2622,17 +2973,32 @@
       "occult"
     ],
     "cast_actions": "two-actions",
-    "range": null,
-    "targets": null,
+    "range": "toque",
+    "targets": "1 objeto",
     "duration": null,
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Concentração",
+      "Manuseio"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 248,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "toque",
+        "target": "1 objeto",
+        "lookback": "última semana",
+        "heightened": {
+          "2": "último mês",
+          "4": "último ano",
+          "6": "última década",
+          "8": "último século",
+          "9": "toda a história do objeto"
+        }
+      },
       "needs_review": false
     }
   },
@@ -2669,6 +3035,16 @@
     "source_page": 248,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "criticalSuccess": "não afetado",
+        "success": "características bestiais menores e desajejado 1 por 1 rodada",
+        "failure": "forma bestial por 1 hora, desajejado 1, fraqueza 1 a prata, ataque de garra/casco/chifre/mandíbula e teste simples CD 5 para ações de manuseio",
+        "criticalFailure": "como falha, mas duração ilimitada",
+        "heightened": {
+          "rank3": "até as próximas preparações diárias",
+          "rank7": "duração ilimitada"
+        }
+      },
       "needs_review": false
     }
   },
@@ -2705,6 +3081,15 @@
     "source_page": 249,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "object": "objeto sofre 4d6 após aplicar Dureza, fica de qualidade baixa, não pode ser Reparado e a maldição tenta neutralizar cura de PV; duração ilimitada se desapossado ou após falha do portador",
+        "construct": "sofre 4d6 com Fortitude básico; falha deixa desajeitado 1, enfraquecido 1 e sem poder ser Reparado por 1 hora; falha crítica torna a duração ilimitada",
+        "living": "criatura que não envelhece é imune; sucesso deixa desajeitado 1 e enfraquecido 1 por 1 rodada, falha por 1 hora e falha crítica por duração ilimitada",
+        "immunity": "artefatos, materiais preciosos e criaturas que não envelhecem são imunes",
+        "heightened": {
+          "perRank": "dano aumenta em 1d6"
+        }
+      },
       "needs_review": false
     }
   },
@@ -2739,6 +3124,13 @@
     "source_page": 249,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "structure": "mansão de até quatro andares e 90 metros de lado, com cômodos e decoração escolhidos pelo conjurador",
+        "mundaneObjects": "mobília e estruturas mundanas funcionam, mas deixam de existir ao sair",
+        "magic": "estruturas criadas não produzem efeitos mágicos; dispositivos mágicos levados funcionam normalmente",
+        "supplies": "contém os mesmos tipos e quantidades de alimentos e servos de Palácio Planar",
+        "alarms": "portas e janelas externas têm Alarme audível ou mental, com identificação individual"
+      },
       "needs_review": false
     }
   },
@@ -2772,6 +3164,13 @@
     "source_page": 249,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "form": "cada alvo assume forma de combate Enorme de mamute e recebe o traço animal",
+        "defenses": "CA 22 + nível, 20 PV temporários, Velocidade 12 metros e visão na penumbra",
+        "attacks": "presa comprida alcance 4,5 metros 4d8+19 perfurante; tromba ágil alcance 4,5 metros 4d6+16 contundente; pata ágil alcance 4,5 metros 4d6+13 contundente",
+        "athletics": "Atletismo +30, salvo se o modificador do alvo for maior",
+        "trample": "Atropelar exige 3 ações, move até o dobro da Velocidade e usa salvamento básico de Reflexos CD 19 + nível"
+      },
       "needs_review": false
     }
   },
@@ -2806,6 +3205,14 @@
     "source_page": 249,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "adjacent": "criaturas adjacentes ao alvo ficam ofuscadas",
+        "trigger": "criatura atinge o alvo com ataque corpo a corpo",
+        "immunity": "atacante fica temporariamente imune até o fim do turno",
+        "success": "não afetado",
+        "failure": "cego por 1 rodada",
+        "criticalFailure": "atordoado por 1 rodada"
+      },
       "needs_review": false
     }
   },
@@ -2840,6 +3247,23 @@
     "source_page": 249,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "wall": {
+          "height": "6 metros",
+          "maxLength": "9 metros",
+          "thickness": "90 centímetros",
+          "section": {
+            "length": "1,5 metros",
+            "ac": 10,
+            "hp": 75
+          }
+        },
+        "placement": "linha contínua sem atravessar criaturas ou objetos; não pode ser Reparada, mas pode ser curada por vitalidade e cura",
+        "mouths": "Golpeiam criaturas que terminam o turno a até 1,5 metro, usando ataque mágico e causando 2d6 perfurante; podem consumir poções",
+        "eyes": "+2 circunstancial em Percepção visual na linha de visão da muralha e permite usar os olhos como linha de visão",
+        "arms": "criaturas que terminam o turno a até 1,5 metro fazem Reflexos; falha agarrada e falha crítica restringida por 1 rodada ou até Escapar",
+        "heightened": "+2 ranques: +10 PV por seção e +1d6 no dano das bocas"
+      },
       "needs_review": false
     }
   },
@@ -2874,6 +3298,11 @@
     "source_page": 250,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "senses": "enxerga em todas as direções ao mesmo tempo",
+        "defense": "não pode ser flanqueado",
+        "search": "sucesso em Buscar é tratado como sucesso crítico"
+      },
       "needs_review": false
     }
   },
@@ -2908,6 +3337,11 @@
     "source_page": 251,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "damage": "6d6 contundente",
+        "environmental": "apaga chamas não mágicas na área",
+        "heightened": "+2d6 por ranque"
+      },
       "needs_review": false
     }
   },
@@ -2941,6 +3375,12 @@
     "source_page": 251,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "destination": "escolhe um destino e recebe uma trajetória inspirada",
+        "travel": "você e aliados terrestres reduzem pela metade a penalidade de movimento de terreno difícil enquanto seguirem a trajetória",
+        "encounter": "não afeta movimento durante encontros",
+        "replacement": "conjurar novamente encerra e substitui a trajetória anterior"
+      },
       "needs_review": false
     }
   },
@@ -2974,6 +3414,14 @@
     "source_page": 251,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "effect": "criaturas e objetos soltos são puxados ao centro por movimento forçado",
+        "criticalSuccess": "não afetado",
+        "success": "move 1,5 metro ao centro",
+        "failure": "move 4,5 metros ao centro",
+        "criticalFailure": "move 9 metros ao centro",
+        "spacing": "se não houver espaço no centro, mais próximos movem primeiro e os demais até onde puderem"
+      },
       "needs_review": false
     }
   },
@@ -3009,6 +3457,13 @@
     "source_page": 251,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "criticalSuccess": "não afetado",
+        "success": "sobrecarregado e fraqueza 2 a eletricidade até o fim do próximo turno; não pode ser sustentada",
+        "failure": "sobrecarregado e fraqueza 2 a eletricidade",
+        "criticalFailure": "sobrecarregado e fraqueza 3 a eletricidade",
+        "heightened": "+1 na fraqueza por ranque"
+      },
       "needs_review": false
     }
   },
@@ -3043,6 +3498,15 @@
     "source_page": 251,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "object": "teleporta objeto de Volume leve ou insignificante da mão do conjurador para a mão do alvo ou chão",
+        "failure": "falha se alvo estiver inconsciente, recusar ou se tentar teleportar criatura",
+        "awareness": "alvo sabe qual objeto está sendo enviado",
+        "heightened": {
+          "rank3": "150 metros",
+          "rank5": "Volume 1; 3 ações alcançam 1,5 quilômetro sem linha de visão com familiaridade extrema"
+        }
+      },
       "needs_review": false
     }
   },
@@ -3077,6 +3541,11 @@
     "source_page": 251,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "counteract": "tenta neutralizar a magia acionadora",
+        "redirect": "se neutralizar, a magia continua com o conjurador como alvo",
+        "limitation": "não afeta magias sem alvo específico, como magias de área"
+      },
       "needs_review": false
     }
   },
@@ -3110,6 +3579,15 @@
     "source_page": 251,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "effect": "vestimentas e equipamento externo ajustam cores ao ambiente enquanto alvo permanece parado",
+        "stealthBonus": "+3 status em Furtividade para Esconder",
+        "removal": "remover parte do equipamento ou vestimenta encerra a magia para a criatura",
+        "heightened": {
+          "rank6": "falha crítica ao Esgueirar a até 9 metros vira falha",
+          "rank8": "como 6º ranque e bônus +4"
+        }
+      },
       "needs_review": false
     }
   },
@@ -3146,6 +3624,11 @@
     "source_page": 251,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "senses": "enxerga pelos olhos do alvo, sente os cheiros dele e percebe o mundo pelos outros sentidos",
+        "revelation": "magias de revelação que afetam os sentidos do conjurador também podem afetar o sensor",
+        "limitation": "o alvo precisa ser seu companheiro animal ou familiar e a conexão exige sustentação"
+      },
       "needs_review": false
     }
   },
@@ -3179,6 +3662,17 @@
     "source_page": 252,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "success": "afetado por 1 rodada",
+        "failure": "afetado por 1 minuto",
+        "criticalFailure": "como falha e atordoado 2",
+        "concentration": "deve obter sucesso em teste simples CD 5 ao usar ação de concentração ou perde a ação",
+        "concealment": "todas as criaturas e objetos ficam ocultados para o alvo",
+        "movement": "desajeitado 3 e –3 metros nas Velocidades",
+        "heightened": {
+          "rank9": "até cinco criaturas como alvo"
+        }
+      },
       "needs_review": false
     }
   },
@@ -3215,6 +3709,14 @@
     "source_page": 252,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "effect": "o lacaio alvo morre imediatamente e a explosão causa 6d6 de dano de fogo em criaturas a até 6 metros",
+        "alternateDamage": "se o alvo tiver traço água ou frio, causa dano de frio e troca o traço fogo por frio",
+        "temporaryControl": "falha ao mirar criatura controlada temporariamente e rompe o efeito de controle",
+        "heightened": {
+          "perRank": "+1 aumenta o dano em 2d6"
+        }
+      },
       "needs_review": false
     }
   },
@@ -3248,6 +3750,13 @@
     "source_page": 252,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "resistance": "cada alvo recebe resistência 10 contra um tipo de dano físico ou de energia escolhido para o efeito acionador",
+        "limitation": "a resistência vale apenas para o dano inicial, não para dano persistente ou outros efeitos contínuos",
+        "heightened": {
+          "perRank": "resistência aumenta em 1"
+        }
+      },
       "needs_review": false
     }
   },
@@ -3282,6 +3791,11 @@
     "source_page": 252,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "success": "sofre –1 de penalidade de estado em Percepção e Vontade por 1 rodada",
+        "failure": "fica estupefato 1 por 1 rodada",
+        "criticalFailure": "fica estupefato 2 por 1 rodada"
+      },
       "needs_review": false
     }
   },
@@ -3318,6 +3832,12 @@
     "source_page": 252,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "damageChoice": "escolha ácido, contundente, cortante, eletricidade, eversivo, fogo, frio, perfurante ou sônico",
+        "success": "fraqueza 2 ao tipo escolhido até o fim do próximo turno",
+        "failure": "como sucesso por 1 minuto; se criatura de 7º nível ou menor for reduzida a 0 PV pelo tipo escolhido, morre",
+        "criticalFailure": "como falha, com duração ilimitada"
+      },
       "needs_review": false
     }
   },
@@ -3353,6 +3873,13 @@
     "source_page": 252,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "detection": "permite detectar assombrações e espíritos na área mesmo sem Procurar",
+        "bonus": "+1 de bônus de estado em Percepção para Buscar, Recordar Conhecimento e perícias para determinar a razão da existência ou desabilitar assombrações",
+        "invisible": "permite Ver o Invisível enquanto ativa",
+        "communication": "pode falar através do alvo e usar Comandar um Animal como parte de Sustentar",
+        "targeting": "não exige linha de visão ou linha de efeito ao conjurar"
+      },
       "needs_review": false
     }
   },
@@ -3386,6 +3913,10 @@
     "source_page": 253,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "choice": "escolha aberrações, celestiais, dragões, ínferos, monitores ou mortos-vivos",
+        "benefit": "+1 de bônus de estado em ataques, dano e salvamentos contra as criaturas escolhidas"
+      },
       "needs_review": false
     }
   },
@@ -3421,6 +3952,14 @@
     "source_page": 253,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "success": "2d8 de dano persistente eversivo",
+        "failure": "4d8 de dano persistente eversivo e drenado 1",
+        "criticalFailure": "4d8 de dano persistente eversivo, drenado 2 e condenado 1",
+        "heightened": {
+          "rank6": "dano persistente aumenta em 1d8 no sucesso ou 2d8 na falha/falha crítica"
+        }
+      },
       "needs_review": false
     }
   },
@@ -3454,6 +3993,12 @@
     "source_page": 253,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "terrain": "quadrados tornam-se terreno difícil",
+        "movement": "criatura que inicia movimento na teia ou entra nela faz Atletismo ou Reflexos contra CD de magia para evitar penalidade de Velocidade ou ficar imobilizada",
+        "removal": "cada quadrado é removido por ataque/efeito com pelo menos 5 dano cortante ou 1 dano de fogo",
+        "square": "quadrado tem CA 5 e falha automaticamente nos salvamentos"
+      },
       "needs_review": false
     }
   },
@@ -3488,6 +4033,14 @@
     "source_page": 254,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "initialDamage": "2d8 contundente e 2d8 frio na conjuração",
+        "ongoing": "neve e granizo tornam a área terreno difícil; criatura que termina o turno sofre 2 dano de frio",
+        "outdoors": "ao ar livre, pode criar duas nuvens não sobrepostas; criatura Grande ou maior em ambas sofre cada dano apenas uma vez",
+        "heightened": {
+          "rank6": "dano inicial contundente e frio aumenta em 1d8 cada e dano no fim do turno aumenta em 1"
+        }
+      },
       "needs_review": false
     }
   },
@@ -3521,6 +4074,14 @@
     "source_page": 254,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "damage": "raio vertical causa 4d12 de dano de eletricidade em uma linha",
+        "sustain": "na primeira Sustentação de cada rodada, pode convocar outro raio na área",
+        "outdoors": "ao ar livre, pode criar duas nuvens não sobrepostas, mas ainda convoca apenas um raio por turno",
+        "heightened": {
+          "rank7": "dano de cada raio aumenta em 1d12"
+        }
+      },
       "needs_review": false
     }
   },
@@ -3557,6 +4118,12 @@
     "source_page": 254,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "success": "fica fascinado pelo tesouro até o fim do turno e pode tentar desacreditar ao tocar, Buscar ou falar com a ilusão",
+        "failure": "como sucesso, mas duração de 1 minuto",
+        "criticalFailure": "como falha; até o fim da magia deve gastar cada ação focando no tesouro, movendo-se e Interagindo se necessário",
+        "visibility": "somente o alvo vê o tesouro; o conjurador percebe uma forma vaga"
+      },
       "needs_review": false
     }
   },
@@ -3592,6 +4159,13 @@
     "source_page": 254,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "reenactment": "espíritos locais reencenam evento violento recente nomeado pelo conjurador, cobrindo os 9 minutos antes da morte ou ferimento e o minuto seguinte",
+        "role": "conjurador assume o papel da vítima principal",
+        "manifestations": "espíritos de criaturas ausentes e contornos de objetos necessários aparecem conforme a cena",
+        "backlash": "ao fim, conjurador sofre 2d6 de dano eversivo por aparição fantasmagórica participante",
+        "investigation": "testemunhas podem fazer testes para investigar o evento e descobrir pistas"
+      },
       "needs_review": false
     }
   },
@@ -3626,6 +4200,13 @@
     "source_page": 254,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "platform": "plataforma invisível ou fantasmagórica de 60 cm que segue a 1,5 metro",
+        "capacity": "carrega até 5 Volumes de objetos que caibam nela",
+        "sustain": "Sustentar move até 9 metros pelo chão, mantém parada ou retorna para seguir",
+        "ending": "termina se alguém tentar subir, sobrecarregar, levantar, elevar muito ou se o conjurador ficar a mais de 18 metros",
+        "droppedItems": "objetos caem no chão quando a magia termina"
+      },
       "needs_review": false
     }
   },
@@ -3660,6 +4241,15 @@
     "source_page": 255,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "destination": "novas posições devem estar desocupadas, totalmente na área e na linha de visão",
+        "criticalSuccess": "alvo pode se teleportar e escolhe o destino",
+        "success": "alvo não é afetado",
+        "failure": "conjurador teleporta o alvo e escolhe o destino",
+        "heightened": {
+          "perRank": "quantidade de alvos aumenta em 1"
+        }
+      },
       "needs_review": false
     }
   },
@@ -3693,6 +4283,11 @@
     "source_page": 255,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "senses": "conjurador sente tudo que o animal percebe",
+        "limitation": "enquanto acessa os sentidos do animal, não usa os próprios",
+        "sustain": "pode alternar entre sentidos próprios e do alvo usando Sustentar"
+      },
       "needs_review": false
     }
   },
@@ -3727,6 +4322,15 @@
     "source_page": 255,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "damage": "1d6 de dano de veneno na conjuração para cada criatura na área, exceto o conjurador",
+        "criticalFailure": "também enjoado 1",
+        "concealment": "criaturas na área ficam ocultadas e as de fora ficam ocultadas para quem está dentro",
+        "dissipation": "vento forte pode dissipar a fumaça",
+        "heightened": {
+          "perRank": "dano aumenta em 1d6"
+        }
+      },
       "needs_review": false
     }
   },
@@ -3762,6 +4366,14 @@
     "source_page": 255,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "damage": "8d8 de dano mental quando criada, quando criatura entra ou começa turno na explosão",
+        "disbelief": "sucesso crítico permite tentar desacreditar; Interagir ou Buscar uma criatura também permite tentar",
+        "immunityAfterDisbelief": "criaturas que desacreditam não sofrem mais dano",
+        "heightened": {
+          "perRank": "dano mental aumenta em 1d8"
+        }
+      },
       "needs_review": false
     }
   },
@@ -3796,6 +4408,14 @@
     "source_page": 255,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "damage": "2d8 de dano perfurante",
+        "failure": "fica enjoado 1",
+        "duration": "enxame desaparece quando a magia termina",
+        "heightened": {
+          "perRank": "dano aumenta em 1d8"
+        }
+      },
       "needs_review": false
     }
   },
@@ -3804,9 +4424,9 @@
     "name_pt": "Transporte Aéreo",
     "name_en": "Airlift",
     "name_es": "Transporte aéreo",
-    "description_pt": "Uma rajada de vento ergue criaturas e objetos e os conduz até um destino próximo.",
-    "description_en": "Rage of Elements air spell: Airlift. Full mechanical text pending review.",
-    "description_es": "Conjuro de aire de Rage of Elements: Transporte aéreo. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Levanta você, criaturas e itens de até Volume 10 em uma emanação de 3 metros, fazendo-os Voar até 18 metros e pousar juntos.",
+    "description_en": "Lifts you, creatures, and items of up to Bulk 10 in a 10-foot emanation, Flying them up to 60 feet to land together.",
+    "description_es": "Eleva a ti, criaturas y objetos de hasta Volumen 10 en una emanación de 3 metros, haciéndolos Volar hasta 18 metros para aterrizar juntos.",
     "rank": 4,
     "is_cantrip": false,
     "is_focus": false,
@@ -3818,14 +4438,25 @@
     "range": null,
     "targets": null,
     "duration": null,
-    "defense": null,
-    "traits": [],
+    "defense": "Reflexos",
+    "traits": [
+      "Ar",
+      "Concentração",
+      "Manuseio"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 70,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "area": "emanação de 3 metros",
+        "movement": "Voa até 18 metros",
+        "bulkLimit": "Volume 10",
+        "save": "Reflexos",
+        "heightened": "6º: 36 metros e Volume 20"
+      },
       "needs_review": false
     }
   },
@@ -3834,9 +4465,9 @@
     "name_pt": "Rebote Explosivo",
     "name_en": "Blastback",
     "name_es": "Rebote explosivo",
-    "description_pt": "Uma onda de choque amortece sua queda e repele criaturas próximas.",
-    "description_en": "Rage of Elements air spell: Blastback. Full mechanical text pending review.",
-    "description_es": "Conjuro de aire de Rage of Elements: Rebote explosivo. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Ao cair mais de 3 metros, impede seu dano de queda e libera uma onda que causa 6d4 contundente às outras criaturas na emanação de 6 metros, empurrando-as em uma falha.",
+    "description_en": "When you fall more than 10 feet, you take no fall damage and release a wave dealing 6d4 bludgeoning damage to other creatures in a 20-foot emanation, pushing them on a failure.",
+    "description_es": "Al caer más de 3 metros, no sufres daño de caída y liberas una onda que causa 6d4 contundente a otras criaturas en una emanación de 6 metros y las empuja si fallan.",
     "rank": 3,
     "is_cantrip": false,
     "is_focus": false,
@@ -3847,14 +4478,25 @@
     "range": null,
     "targets": null,
     "duration": null,
-    "defense": null,
-    "traits": [],
+    "defense": "Reflexos básico",
+    "traits": [
+      "Ar",
+      "Concentração"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 70,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "trigger": "cair mais de 3 metros",
+        "area": "emanação de 6 metros",
+        "damage": "6d4 contundente",
+        "failure": "empurra 1,5 metro",
+        "save": "Reflexos básico",
+        "heightened": "+2: área +3 metros e dano +1d4"
+      },
       "needs_review": false
     }
   },
@@ -3863,9 +4505,9 @@
     "name_pt": "Purificar Ar",
     "name_en": "Cleanse Air",
     "name_es": "Purificar aire",
-    "description_pt": "Purifica o ar de venenos inalados, poluição e contaminantes semelhantes.",
-    "description_en": "Rage of Elements air spell: Cleanse Air. Full mechanical text pending review.",
-    "description_es": "Conjuro de aire de Rage of Elements: Purificar aire. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Purifica o ar em uma explosão de 9 metros, removendo venenos inalados, poluição e contaminantes e impedindo nova contaminação durante a duração.",
+    "description_en": "Purifies air in a 30-foot burst, removing inhaled poisons, pollution, and contaminants and preventing new contamination for the duration.",
+    "description_es": "Purifica el aire en una explosión de 9 metros, elimina venenos inhalados y contaminantes e impide nueva contaminación durante la duración.",
     "rank": 2,
     "is_cantrip": false,
     "is_focus": false,
@@ -3875,17 +4517,27 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
+    "range": "36 metros",
     "targets": null,
-    "duration": null,
+    "duration": "1 minuto",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Ar",
+      "Concentração",
+      "Manuseio"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 70,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "area": "explosão de 9 metros",
+        "duration": "1 minuto",
+        "removes": "venenos inalados, poluição e contaminantes",
+        "heightened": "3º/4º/6º/9º: área 18/36/150 metros/1,5 quilômetro"
+      },
       "needs_review": false
     }
   },
@@ -3894,9 +4546,9 @@
     "name_pt": "Manto do Dragão das Nuvens",
     "name_en": "Cloud Dragon's Cloak",
     "name_es": "Manto del dragón de nubes",
-    "description_pt": "Uma névoa envolve um alvo e o torna oculto contra ataques à distância.",
-    "description_en": "Rage of Elements air spell: Cloud Dragon's Cloak. Full mechanical text pending review.",
-    "description_es": "Conjuro de aire de Rage of Elements: Manto del dragón de nubes. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Quando você ou um aliado é alvo de um ataque à distância, uma névoa torna o alvo ocultado para resolver o ataque e os demais ataques à distância da rodada.",
+    "description_en": "When you or an ally is targeted by a ranged attack, mist makes the target hidden for that attack and other ranged attacks for the duration.",
+    "description_es": "Cuando tú o un aliado es objetivo de un ataque a distancia, la niebla vuelve al objetivo oculto para ese ataque y los demás ataques a distancia durante la duración.",
     "rank": 3,
     "is_cantrip": false,
     "is_focus": false,
@@ -3905,17 +4557,26 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
-    "duration": null,
+    "range": "18 metros",
+    "targets": "a criatura alvo do ataque",
+    "duration": "1 rodada",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Ar",
+      "Manuseio"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 70,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "trigger": "você ou aliado ao alcance é alvo de ataque à distância",
+        "concealed": "ocultado",
+        "duration": "1 rodada",
+        "flatCheck": "CD 11 normalmente"
+      },
       "needs_review": false
     }
   },
@@ -3924,11 +4585,11 @@
     "name_pt": "Respiração Profunda",
     "name_en": "Deep Breath",
     "name_es": "Respiración profunda",
-    "description_pt": "Permite prender a respiração por mais tempo, sem criar ar respirável.",
-    "description_en": "Rage of Elements air spell: Deep Breath. Full mechanical text pending review.",
-    "description_es": "Conjuro de aire de Rage of Elements: Respiración profunda. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Permite prender a respiração pela duração sem perder ar ao ser atingido; falar, inclusive conjurar magia, faz você perder o ar inalado.",
+    "description_en": "Lets you hold your breath for the duration without losing breath when hit; speaking, including Cast a Spell, loses the inhaled air.",
+    "description_es": "Permite contener la respiración durante la duración sin perder aire al ser golpeado; hablar, incluso lanzar un conjuro, hace perder el aire inhalado.",
     "rank": 1,
-    "is_cantrip": false,
+    "is_cantrip": true,
     "is_focus": false,
     "traditions": [
       "arcane",
@@ -3937,15 +4598,24 @@
     "cast_actions": "varies",
     "range": null,
     "targets": null,
-    "duration": null,
+    "duration": "10 minutos",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Ar",
+      "Cantrip",
+      "Manuseio"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 70,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "duration": "10 minutos",
+        "limitation": "falar perde o ar inalado",
+        "heightened": "2º: 1 hora e perde apenas 10 minutos; 4º: 8 horas e perde apenas 10 minutos"
+      },
       "needs_review": false
     }
   },
@@ -3954,9 +4624,9 @@
     "name_pt": "Brisa Suave",
     "name_en": "Gentle Breeze",
     "name_es": "Brisa suave",
-    "description_pt": "Uma brisa restauradora ajuda criaturas vivas a descansar e resistir a aflições.",
-    "description_en": "Rage of Elements air spell: Gentle Breeze. Full mechanical text pending review.",
-    "description_es": "Conjuro de aire de Rage of Elements: Brisa suave. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Uma brisa em uma explosão de 12 metros concede +2 em Medicina, +2 em salvamentos contra aflições, reduz calor em um passo e cura 10 PV após a duração completa.",
+    "description_en": "A breeze in a 40-foot burst grants +2 to Medicine and affliction saves, reduces heat effects by one step, and restores 10 HP after the full duration.",
+    "description_es": "Una brisa en una explosión de 12 metros concede +2 a Medicina y salvaciones contra aflicciones, reduce el calor un paso y recupera 10 PG tras toda la duración.",
     "rank": 2,
     "is_cantrip": false,
     "is_focus": false,
@@ -3966,17 +4636,30 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
+    "range": "18 metros",
     "targets": null,
-    "duration": null,
+    "duration": "10 minutos",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Ar",
+      "Concentração",
+      "Cura",
+      "Manuseio",
+      "Vitalidade"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 70,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "area": "explosão de 12 metros",
+        "medicineBonus": "+2 de estado",
+        "afflictionSaveBonus": "+2 de estado",
+        "healing": "10 PV",
+        "heightened": "+2: cura +10 PV"
+      },
       "needs_review": false
     }
   },
@@ -3985,9 +4668,9 @@
     "name_pt": "Orquestra Fantasma",
     "name_en": "Phantom Orchestra",
     "name_es": "Orquesta fantasmal",
-    "description_pt": "Uma orquestra invisível de sons capturados cria explosões sucessivas de dano sônico.",
-    "description_en": "Rage of Elements air spell: Phantom Orchestra. Full mechanical text pending review.",
-    "description_es": "Conjuro de aire de Rage of Elements: Orquesta fantasmal. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Uma orquestra invisível cria uma explosão de música de 3 metros que causa 8d6 sônico; ao sustentar, você pode mover a melodia e repetir a explosão.",
+    "description_en": "An invisible orchestra creates a 10-foot burst dealing 8d6 sonic damage; when sustained, you can move the melody and repeat the explosion.",
+    "description_es": "Una orquesta invisible crea una explosión de 3 metros que causa 8d6 sónico; al sostenerla, puedes mover la melodía y repetir la explosión.",
     "rank": 6,
     "is_cantrip": false,
     "is_focus": false,
@@ -3997,17 +4680,30 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
+    "range": "36 metros",
     "targets": null,
-    "duration": null,
-    "defense": null,
-    "traits": [],
+    "duration": "sustentada até 1 minuto",
+    "defense": "Fortitude básico",
+    "traits": [
+      "Ar",
+      "Concentração",
+      "Manuseio",
+      "Sônico"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 71,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "36 metros",
+        "area": "explosão de 3 metros",
+        "damage": "8d6 sônico",
+        "save": "Fortitude básico",
+        "duration": "sustentada até 1 minuto",
+        "heightened": "+1: dano +1d6"
+      },
       "needs_review": false
     }
   },
@@ -4016,9 +4712,9 @@
     "name_pt": "Zona de Pressão",
     "name_en": "Pressure Zone",
     "name_es": "Zona de presión",
-    "description_pt": "Uma queda de pressão torna a área difícil e dificulta a respiração.",
-    "description_en": "Rage of Elements air spell: Pressure Zone. Full mechanical text pending review.",
-    "description_es": "Conjuro de aire de Rage of Elements: Zona de presión. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Uma explosão de 6 metros reduz a pressão do ar; criaturas vivas ficam ensurdecidas e desajeitadas conforme o resultado de Fortitude.",
+    "description_en": "A 20-foot burst drops air pressure; living creatures become deafened and clumsy based on their Fortitude save.",
+    "description_es": "Una explosión de 6 metros reduce la presión del aire; las criaturas vivas quedan ensordecidas y torpes según su salvación de Fortaleza.",
     "rank": 5,
     "is_cantrip": false,
     "is_focus": false,
@@ -4027,17 +4723,31 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
+    "range": "150 metros",
     "targets": null,
-    "duration": null,
-    "defense": null,
-    "traits": [],
+    "duration": "1 minuto",
+    "defense": "Fortitude",
+    "traits": [
+      "Ar",
+      "Concentração",
+      "Manuseio"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 71,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "150 metros",
+        "area": "explosão de 6 metros",
+        "duration": "1 minuto",
+        "save": "Fortitude",
+        "success": "ensurdecida e desajeitada 1 até o fim do próximo turno",
+        "failure": "ensurdecida e desajeitada 2",
+        "criticalFailure": "ensurdecida e desajeitada 2 pela duração",
+        "immunity": "1 hora após sair e obter sucesso"
+      },
       "needs_review": false
     }
   },
@@ -4046,9 +4756,9 @@
     "name_pt": "Brisa Propulsora",
     "name_en": "Propulsive Breeze",
     "name_es": "Brisa propulsora",
-    "description_pt": "Um vento nas costas impulsiona um aliado ao final de seu movimento.",
-    "description_en": "Rage of Elements air spell: Propulsive Breeze. Full mechanical text pending review.",
-    "description_es": "Conjuro de aire de Rage of Elements: Brisa propulsora. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Quando um aliado ao alcance Anda ou Salta, uma corrente de vento o impulsiona 4,5 metros adicionais na mesma direção.",
+    "description_en": "When an ally in range Strides or Leaps, a current of wind propels them an additional 15 feet in the same direction.",
+    "description_es": "Cuando un aliado a alcance Da un paso o Salta, una corriente de viento lo impulsa 4,5 metros adicionales en la misma dirección.",
     "rank": 2,
     "is_cantrip": false,
     "is_focus": false,
@@ -4057,17 +4767,26 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
+    "range": "18 metros",
+    "targets": "a criatura aliada que desencadeou a reação",
     "duration": null,
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Ar",
+      "Manuseio",
+      "Movimento"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 71,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "trigger": "aliado ao alcance Anda ou Salta",
+        "movement": "4,5 metros adicionais",
+        "direction": "mesma direção dos últimos 1,5 metro"
+      },
       "needs_review": false
     }
   },
@@ -4076,9 +4795,9 @@
     "name_pt": "Choque no Sistema",
     "name_en": "Shock to the System",
     "name_es": "Choque al sistema",
-    "description_pt": "Relâmpagos revitalizam ou reanimam um alvo e o deixam supercarregado.",
-    "description_en": "Rage of Elements air spell: Shock to the System. Full mechanical text pending review.",
-    "description_es": "Conjuro de aire de Rage of Elements: Choque al sistema. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Relâmpagos revivem um cadáver recente com 0 PV ou curam 8d8 PV, deixando o alvo acelerado e capaz de conjurar relâmpago estrondoso como magia inata.",
+    "description_en": "Lightning revives a recent corpse at 0 Hit Points or restores 8d8 Hit Points, making the target quickened and granting innate thunderstrike.",
+    "description_es": "Los rayos reviven un cadáver reciente con 0 PG o restauran 8d8 PG, dejando al objetivo acelerado y otorgando trueno como conjuro innato.",
     "rank": 7,
     "is_cantrip": false,
     "is_focus": false,
@@ -4088,17 +4807,34 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
-    "duration": null,
+    "range": "9 metros",
+    "targets": "1 criatura viva ou 1 cadáver morto na última rodada",
+    "duration": "1 minuto",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Ar",
+      "Concentração",
+      "Eletricidade",
+      "Cura",
+      "Manuseio",
+      "Vitalidade"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 71,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "targets": "1 criatura viva ou cadáver morto na última rodada",
+        "healing": "8d8 PV",
+        "revive": "retorna com 0 PV e wounded +1",
+        "quickened": "Stand, Stride, Strike ou Fly",
+        "innateSpell": "relâmpago estrondoso de 5º círculo à vontade",
+        "duration": "1 minuto",
+        "hiddenCloud": "nuvem torna criaturas dentro e fora ocultadas entre si",
+        "heightened": "+1: cura +2d8 e círculo de relâmpago +1"
+      },
       "needs_review": false
     }
   },
@@ -4107,28 +4843,41 @@
     "name_pt": "Rajada Cortante",
     "name_en": "Slashing Gust",
     "name_es": "Ráfaga cortante",
-    "description_pt": "Lâminas de ar atingem uma ou duas criaturas com dano cortante.",
-    "description_en": "Rage of Elements air spell: Slashing Gust. Full mechanical text pending review.",
-    "description_es": "Conjuro de aire de Rage of Elements: Ráfaga cortante. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Com ao menos uma mão livre, ataques de magia cortam uma ou duas criaturas, causando 2d4 cortante e sangramento persistente em um acerto crítico.",
+    "description_en": "With at least one free hand, spell attacks slash one or two creatures for 2d4 slashing damage and persistent bleed on a critical success.",
+    "description_es": "Con al menos una mano libre, ataques de conjuro cortan a una o dos criaturas por 2d4 cortante y causan sangrado persistente en un crítico.",
     "rank": 1,
-    "is_cantrip": false,
+    "is_cantrip": true,
     "is_focus": false,
     "traditions": [
       "arcane",
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
+    "range": "18 metros",
+    "targets": "1 ou 2 criaturas",
     "duration": null,
-    "defense": null,
-    "traits": [],
+    "defense": "CA",
+    "traits": [
+      "Ar",
+      "Ataque",
+      "Cantrip",
+      "Concentração",
+      "Manuseio"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 71,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "requirement": "ao menos uma mão livre",
+        "damage": "2d4 cortante",
+        "criticalSuccess": "dano dobrado e 1d4 sangramento persistente",
+        "multipleAttackPenalty": "dois ataques contam, mas a penalidade não aumenta até ambos serem feitos",
+        "heightened": "+1: dano e sangramento crítico +1d4"
+      },
       "needs_review": false
     }
   },
@@ -4137,9 +4886,9 @@
     "name_pt": "Imobilidade Sufocante",
     "name_en": "Stifling Stillness",
     "name_es": "Quietud sofocante",
-    "description_pt": "O ar imóvel torna a área difícil e força criaturas a lutar para respirar.",
-    "description_en": "Rage of Elements air spell: Stifling Stillness. Full mechanical text pending review.",
-    "description_es": "Conjuro de aire de Rage of Elements: Quietud sofocante. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Uma explosão de 6 metros vira terreno difícil; criaturas que respiram ar gastam uma ação para respirar e sofrem 3d6 veneno e fadiga.",
+    "description_en": "A 20-foot burst becomes difficult terrain; creatures that breathe air spend an action to breathe and take 3d6 poison damage and become fatigued.",
+    "description_es": "Una explosión de 6 metros se vuelve terreno difícil; las criaturas que respiran aire gastan una acción para respirar, sufren 3d6 veneno y quedan fatigadas.",
     "rank": 4,
     "is_cantrip": false,
     "is_focus": false,
@@ -4148,17 +4897,31 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
+    "range": "36 metros",
     "targets": null,
-    "duration": null,
-    "defense": null,
-    "traits": [],
+    "duration": "1 minuto",
+    "defense": "Fortitude básico",
+    "traits": [
+      "Ar",
+      "Concentração",
+      "Manuseio",
+      "Veneno"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 71,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "area": "explosão de 6 metros",
+        "difficultTerrain": true,
+        "action": "gastar 1 ação para respirar",
+        "damage": "3d6 veneno",
+        "save": "Fortitude básico",
+        "condition": "fatigada",
+        "heightened": "+2: dano +3d6"
+      },
       "needs_review": false
     }
   },
@@ -4167,9 +4930,9 @@
     "name_pt": "Manto da Tempestade",
     "name_en": "Tempest Cloak",
     "name_es": "Manto de tormenta",
-    "description_pt": "Ventos ferozes protegem uma criatura contra ataques físicos à distância e efeitos auditivos.",
-    "description_en": "Rage of Elements air spell: Tempest Cloak. Full mechanical text pending review.",
-    "description_es": "Conjuro de aire de Rage of Elements: Manto de tormenta. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Ventos criam terreno difícil em uma explosão de 1,5 metro ao redor do alvo, dão +2 na CA contra ataques físicos à distância e nas defesas contra efeitos auditivos.",
+    "description_en": "Winds create difficult terrain in a 5-foot burst around the target, granting +2 AC against physical ranged attacks and +2 defenses against auditory effects.",
+    "description_es": "Los vientos crean terreno difícil en una explosión de 1,5 metros alrededor del objetivo, otorgando +2 a la CA contra ataques físicos a distancia y defensas contra efectos auditivos.",
     "rank": 3,
     "is_cantrip": false,
     "is_focus": false,
@@ -4178,17 +4941,28 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
-    "duration": null,
+    "range": "9 metros",
+    "targets": "1 criatura disposta",
+    "duration": "1 minuto",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Ar",
+      "Concentração",
+      "Manuseio"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 72,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "area": "explosão de 1,5 metro",
+        "difficultTerrain": true,
+        "rangedACBonus": "+2 circunstancial",
+        "auditoryDefenseBonus": "+2 circunstancial",
+        "duration": "1 minuto"
+      },
       "needs_review": false
     }
   },
@@ -4197,9 +4971,9 @@
     "name_pt": "Vácuo",
     "name_en": "Vacuum",
     "name_es": "Vacío",
-    "description_pt": "Você suga o ar da área, forçando criaturas a prender a respiração.",
-    "description_en": "Rage of Elements air spell: Vacuum. Full mechanical text pending review.",
-    "description_es": "Conjuro de aire de Rage of Elements: Vacío. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Uma emanação de 4,5 metros suga o ar; criaturas que respiram fazem Fortitude, prendem a respiração em sucesso, ficam atordoadas em falha ou começam a sufocar em falha crítica.",
+    "description_en": "A 15-foot emanation steals the air; creatures that breathe attempt Fortitude, hold their breath on a success, become stunned on a failure, or suffocate on a critical failure.",
+    "description_es": "Una emanación de 4,5 metros roba el aire; las criaturas que respiran hacen Fortaleza, contienen el aliento con éxito, quedan aturdidas con un fallo o empiezan a asfixiarse con un fallo crítico.",
     "rank": 7,
     "is_cantrip": false,
     "is_focus": false,
@@ -4210,15 +4984,29 @@
     "cast_actions": "varies",
     "range": null,
     "targets": null,
-    "duration": null,
-    "defense": null,
-    "traits": [],
+    "duration": "sustentada até 1 minuto",
+    "defense": "Fortitude",
+    "traits": [
+      "Ar",
+      "Concentração",
+      "Incapacitação",
+      "Manuseio"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 72,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "area": "emanação de 4,5 metros",
+        "duration": "sustentada até 1 minuto",
+        "save": "Fortitude",
+        "success": "começa a prender a respiração",
+        "failure": "Atordoada 1 e metade do ar normal",
+        "criticalFailure": "começa imediatamente a sufocar",
+        "immunity": "criaturas que não precisam respirar ar"
+      },
       "needs_review": false
     }
   },
@@ -4227,9 +5015,9 @@
     "name_pt": "Voz na Brisa",
     "name_en": "Voice on the Breeze",
     "name_es": "Voz en la brisa",
-    "description_pt": "Uma mensagem sussurrada viaja pelo vento até um ponto familiar.",
-    "description_en": "Rage of Elements air spell: Voice on the Breeze. Full mechanical text pending review.",
-    "description_es": "Conjuro de aire de Rage of Elements: Voz en la brisa. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Sussurra uma mensagem de até 25 palavras ou uma rodada de sons para uma explosão de 3 metros familiar, seguindo um caminho de vento.",
+    "description_en": "Whispers up to 25 words or 1 round of sounds to a familiar 10-foot burst, following a path for the wind.",
+    "description_es": "Susurra hasta 25 palabras o 1 asalto de sonidos a una explosión familiar de 3 metros, siguiendo un camino para el viento.",
     "rank": 2,
     "is_cantrip": false,
     "is_focus": false,
@@ -4239,17 +5027,28 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
+    "range": "16 quilômetros",
     "targets": null,
     "duration": null,
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Ar",
+      "Concentração",
+      "Manuseio"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 73,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "16 quilômetros",
+        "area": "explosão de 3 metros",
+        "limit": "25 palavras, 1 rodada de sons ou um ruído simples",
+        "speed": "1 milha por hora a 1 milha por 10 minutos",
+        "heightened": "4º: alcance 1.000 milhas e até 100 palavras"
+      },
       "needs_review": false
     }
   },
@@ -4258,9 +5057,9 @@
     "name_pt": "Sabedoria dos Ventos",
     "name_en": "Wisdom of the Winds",
     "name_es": "Sabiduría de los vientos",
-    "description_pt": "Espíritos do ar oferecem orientação por meio de ventos, sinais ou conselhos.",
-    "description_en": "Rage of Elements air spell: Wisdom of the Winds. Full mechanical text pending review.",
-    "description_es": "Conjuro de aire de Rage of Elements: Sabiduría de los vientos. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Pede aos espíritos do ar uma orientação útil, seja uma rajada que guia a um destino valioso por até 8 horas ou um conselho breve.",
+    "description_en": "You ask air spirits for useful guidance, either a gale guiding you to a valuable destination for up to 8 hours or brief advice.",
+    "description_es": "Pides a los espíritus del aire una guía útil, ya sea una ráfaga que te conduce a un destino valioso hasta 8 horas o un consejo breve.",
     "rank": 5,
     "is_cantrip": false,
     "is_focus": false,
@@ -4273,15 +5072,29 @@
     "cast_actions": "varies",
     "range": null,
     "targets": null,
-    "duration": null,
+    "duration": "varia",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Incomum",
+      "Ar",
+      "Concentração",
+      "Manuseio"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 73,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "cast": "1 minuto",
+        "options": [
+          "Guiding Gale: detecção, 8 horas ou até chegar",
+          "Voice of the Sky: conselho instantâneo"
+        ],
+        "duration": "varia",
+        "limitation": "não oferece orientação que você não possa seguir"
+      },
       "needs_review": false
     }
   },
@@ -4290,9 +5103,9 @@
     "name_pt": "Deslize do Zéfiro",
     "name_en": "Zephyr Slip",
     "name_es": "Desliz del céfiro",
-    "description_pt": "Uma corrente de ar afasta você de uma criatura que se aproxima.",
-    "description_en": "Rage of Elements air spell: Zephyr Slip. Full mechanical text pending review.",
-    "description_es": "Conjuro de aire de Rage of Elements: Desliz del céfiro. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Quando uma criatura entra em um espaço adjacente, você Voa 4,5 metros diretamente para longe dela.",
+    "description_en": "When a creature enters a space within 5 feet, you Fly 15 feet directly away from it.",
+    "description_es": "Cuando una criatura entra en un espacio adyacente, Vuelas 4,5 metros directamente alejándote de ella.",
     "rank": 4,
     "is_cantrip": false,
     "is_focus": false,
@@ -4305,13 +5118,22 @@
     "targets": null,
     "duration": null,
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Ar",
+      "Manuseio",
+      "Movimento"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 73,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "trigger": "criatura entra em espaço a 1,5 metro",
+        "movement": "Voa 4,5 metros diretamente para longe",
+        "heightened": "6º: você e 1 aliado 7,5 metros; 8º: você e até 5 aliados 7,5 metros"
+      },
       "needs_review": false
     }
   },

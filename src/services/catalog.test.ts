@@ -60,6 +60,7 @@ describe("Catalog Service & Supabase Mapping", () => {
       source_page: 256,
       data: {
         effects: [{ type: "max_hp_per_level", value: 1 }],
+        mechanics: { failure: "fica atordoado 1", heightened: "+1d6" },
       },
     };
 
@@ -75,6 +76,7 @@ describe("Catalog Service & Supabase Mapping", () => {
     expect(item.data.source.book).toBe("Livro do Jogador");
     expect(item.data.source.page).toBe(256);
     expect(item.data.traits).toEqual(["Geral"]);
+    expect(item.data.mechanics).toEqual({ failure: "fica atordoado 1", heightened: "+1d6" });
   });
 
   it("preserva os campos estruturados de armas ao normalizar o catálogo remoto", () => {

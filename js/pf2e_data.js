@@ -1820,6 +1820,221 @@ for (const [slug, pt, en, es, rank, page, traditions] of PLAYER_CORE_2_SPELL_IND
   });
 }
 
+// Player Core 2, pp. 241, 243 e 248: efeitos confirmados no PDF local.
+// A estrutura mantém os resultados graduados e os dados necessários para a
+// ficha, sem reduzir a magia a um resumo genérico.
+const PLAYER_CORE_2_CONFIRMED_SPELLS = {
+  "cascata_sagrada": {
+    traits: ["Água", "Concentração", "Manuseio", "Sagrado"],
+    range: "150 metros", targets: null, duration: null, defense: "Reflexos básico",
+    summaries: {
+      "pt-BR": "Explode um frasco de água benta em uma explosão de 6 metros, causando 3d6 contundente e 6d6 espiritual adicional a criaturas profanas.",
+      en: "Amplifies holy water into a 6-meter burst for 3d6 bludgeoning damage plus 6d6 spirit damage to creatures with the unholy trait.",
+      es: "Amplifica agua bendita en una explosión de 6 metros que causa 3d6 contundente y 6d6 espiritual adicional a criaturas profanas."
+    },
+    mechanics: { cost: "um frasco de água benta", area: "explosão de 6 metros", damage: "3d6 contundente", profaneDamage: "6d6 espiritual", heightened: "+1: contundente +1d6 e espiritual +2d6", save: "Reflexos básico" }
+  },
+  "deja_vu": {
+    traits: ["Concentração", "Incapacitação", "Manuseio", "Mental"],
+    range: "30 metros", targets: "1 criatura", duration: "2 rodadas", defense: "Vontade",
+    summaries: {
+      "pt-BR": "Força uma criatura a repetir, na mesma ordem, as ações do próximo turno; ações impossíveis podem ser escolhidas livremente, mas deixam o alvo atordoado 1.",
+      en: "Forces a creature to repeat the next turn's actions in the same order; impossible actions can be chosen freely but leave the target stunned 1.",
+      es: "Obliga a una criatura a repetir en el mismo orden las acciones de su próximo turno; las imposibles pueden elegirse libremente, pero dejan al objetivo aturdido 1."
+    },
+    mechanics: { duration: "2 rodadas", save: "Vontade", failure: "repete as ações do próximo turno", impossibleAction: "pode agir livremente e fica atordoado 1" }
+  },
+  "lodo_corrosivo": {
+    traits: ["Ácido", "Concentração", "Manuseio"],
+    range: "36 metros", targets: "todos os quadrados em duas explosões de 3 metros", duration: "1 minuto", defense: "Reflexos básico",
+    summaries: {
+      "pt-BR": "Cria duas poças de lodo que são terreno difícil maior; criaturas que começam ou entram nelas sofrem 8d6 de ácido, com 1d6 persistente adicional em falha crítica.",
+      en: "Creates two pools of corrosive mud that are greater difficult terrain; creatures starting or entering them take 8d6 acid damage, plus 1d6 persistent acid on a critical failure.",
+      es: "Crea dos charcos de barro corrosivo que son terreno difícil mayor; las criaturas que empiezan o entran sufren 8d6 de ácido y 1d6 persistente adicional con fallo crítico."
+    },
+    mechanics: { area: "duas explosões de 3 metros", damage: "8d6 ácido", criticalFailure: "1d6 dano persistente de ácido", terrain: "terreno difícil maior", heightened: "+2: uma explosão adicional" }
+  },
+  "ler_objeto": {
+    traits: ["Concentração", "Manuseio"],
+    range: "toque", targets: "1 objeto", duration: null, defense: null,
+    summaries: {
+      "pt-BR": "Obtém uma impressão psíquica sobre um evento emocional que envolveu o objeto na última semana, conforme determinado pelo Mestre.",
+      en: "Learns a psychic impression about an emotional event involving the object during the last week, as determined by the GM.",
+      es: "Obtiene una impresión psíquica sobre un evento emocional relacionado con el objeto durante la última semana, según determine el DJ."
+    },
+    mechanics: { range: "toque", target: "1 objeto", lookback: "última semana", heightened: { "2": "último mês", "4": "último ano", "6": "última década", "8": "último século", "9": "toda a história do objeto" } }
+  }
+};
+for (const [slug, mechanics] of Object.entries(PLAYER_CORE_2_CONFIRMED_SPELLS)) {
+  const spell = (PF2E_DATA.spells || []).find((record) => record.id === `spell.player_core_2.${slug}`);
+  if (!spell) continue;
+  spell.traits = mechanics.traits;
+  spell.range = mechanics.range;
+  spell.targets = mechanics.targets;
+  spell.duration = mechanics.duration;
+  spell.defense = mechanics.defense;
+  spell.summaries = mechanics.summaries;
+  spell.description = mechanics.summaries["pt-BR"];
+  spell.mechanics = mechanics.mechanics;
+  spell.needs_review = false;
+  spell.sourceApproximate = false;
+}
+
+const RAGE_ELEMENTS_CONFIRMED_SPELLS = {
+  "air.airlift": {
+    traits: ["Ar", "Concentração", "Manuseio"], range: null, targets: null, duration: null, defense: "Reflexos",
+    summaries: {
+      "pt-BR": "Levanta você, criaturas e itens de até Volume 10 em uma emanação de 3 metros, fazendo-os Voar até 18 metros e pousar juntos.",
+      en: "Lifts you, creatures, and items of up to Bulk 10 in a 10-foot emanation, Flying them up to 60 feet to land together.",
+      es: "Eleva a ti, criaturas y objetos de hasta Volumen 10 en una emanación de 3 metros, haciéndolos Volar hasta 18 metros para aterrizar juntos."
+    },
+    mechanics: { area: "emanação de 3 metros", movement: "Voa até 18 metros", bulkLimit: "Volume 10", save: "Reflexos", heightened: "6º: 36 metros e Volume 20" }
+  },
+  "air.blastback": {
+    traits: ["Ar", "Concentração"], range: null, targets: null, duration: null, defense: "Reflexos básico",
+    summaries: {
+      "pt-BR": "Ao cair mais de 3 metros, impede seu dano de queda e libera uma onda que causa 6d4 contundente às outras criaturas na emanação de 6 metros, empurrando-as em uma falha.",
+      en: "When you fall more than 10 feet, you take no fall damage and release a wave dealing 6d4 bludgeoning damage to other creatures in a 20-foot emanation, pushing them on a failure.",
+      es: "Al caer más de 3 metros, no sufres daño de caída y liberas una onda que causa 6d4 contundente a otras criaturas en una emanación de 6 metros y las empuja si fallan."
+    },
+    mechanics: { trigger: "cair mais de 3 metros", area: "emanação de 6 metros", damage: "6d4 contundente", failure: "empurra 1,5 metro", save: "Reflexos básico", heightened: "+2: área +3 metros e dano +1d4" }
+  },
+  "air.cleanse_air": {
+    traits: ["Ar", "Concentração", "Manuseio"], range: "36 metros", targets: null, duration: "1 minuto", defense: null,
+    summaries: {
+      "pt-BR": "Purifica o ar em uma explosão de 9 metros, removendo venenos inalados, poluição e contaminantes e impedindo nova contaminação durante a duração.",
+      en: "Purifies air in a 30-foot burst, removing inhaled poisons, pollution, and contaminants and preventing new contamination for the duration.",
+      es: "Purifica el aire en una explosión de 9 metros, elimina venenos inhalados y contaminantes e impide nueva contaminación durante la duración."
+    },
+    mechanics: { area: "explosão de 9 metros", duration: "1 minuto", removes: "venenos inalados, poluição e contaminantes", heightened: "3º/4º/6º/9º: área 18/36/150 metros/1,5 quilômetro" }
+  },
+  "air.cloud_dragons_cloak": {
+    traits: ["Ar", "Manuseio"], range: "18 metros", targets: "a criatura alvo do ataque", duration: "1 rodada", defense: null,
+    summaries: {
+      "pt-BR": "Quando você ou um aliado é alvo de um ataque à distância, uma névoa torna o alvo ocultado para resolver o ataque e os demais ataques à distância da rodada.",
+      en: "When you or an ally is targeted by a ranged attack, mist makes the target hidden for that attack and other ranged attacks for the duration.",
+      es: "Cuando tú o un aliado es objetivo de un ataque a distancia, la niebla vuelve al objetivo oculto para ese ataque y los demás ataques a distancia durante la duración."
+    },
+    mechanics: { trigger: "você ou aliado ao alcance é alvo de ataque à distância", concealed: "ocultado", duration: "1 rodada", flatCheck: "CD 11 normalmente" }
+  },
+  "air.deep_breath": {
+    traits: ["Ar", "Cantrip", "Manuseio"], range: null, targets: null, duration: "10 minutos", defense: null,
+    summaries: {
+      "pt-BR": "Permite prender a respiração pela duração sem perder ar ao ser atingido; falar, inclusive conjurar magia, faz você perder o ar inalado.",
+      en: "Lets you hold your breath for the duration without losing breath when hit; speaking, including Cast a Spell, loses the inhaled air.",
+      es: "Permite contener la respiración durante la duración sin perder aire al ser golpeado; hablar, incluso lanzar un conjuro, hace perder el aire inhalado."
+    },
+    mechanics: { duration: "10 minutos", limitation: "falar perde o ar inalado", heightened: "2º: 1 hora e perde apenas 10 minutos; 4º: 8 horas e perde apenas 10 minutos" }
+  },
+  "air.gentle_breeze": {
+    traits: ["Ar", "Concentração", "Cura", "Manuseio", "Vitalidade"], range: "18 metros", targets: null, duration: "10 minutos", defense: null,
+    summaries: {
+      "pt-BR": "Uma brisa em uma explosão de 12 metros concede +2 em Medicina, +2 em salvamentos contra aflições, reduz calor em um passo e cura 10 PV após a duração completa.",
+      en: "A breeze in a 40-foot burst grants +2 to Medicine and affliction saves, reduces heat effects by one step, and restores 10 HP after the full duration.",
+      es: "Una brisa en una explosión de 12 metros concede +2 a Medicina y salvaciones contra aflicciones, reduce el calor un paso y recupera 10 PG tras toda la duración."
+    },
+    mechanics: { area: "explosão de 12 metros", medicineBonus: "+2 de estado", afflictionSaveBonus: "+2 de estado", healing: "10 PV", heightened: "+2: cura +10 PV" }
+  },
+  "air.phantom_orchestra": {
+    traits: ["Ar", "Concentração", "Manuseio", "Sônico"], range: "36 metros", targets: null, duration: "sustentada até 1 minuto", defense: "Fortitude básico",
+    summaries: {
+      "pt-BR": "Uma orquestra invisível cria uma explosão de música de 3 metros que causa 8d6 sônico; ao sustentar, você pode mover a melodia e repetir a explosão.",
+      en: "An invisible orchestra creates a 10-foot burst dealing 8d6 sonic damage; when sustained, you can move the melody and repeat the explosion.",
+      es: "Una orquesta invisible crea una explosión de 3 metros que causa 8d6 sónico; al sostenerla, puedes mover la melodía y repetir la explosión."
+    },
+    mechanics: { range: "36 metros", area: "explosão de 3 metros", damage: "8d6 sônico", save: "Fortitude básico", duration: "sustentada até 1 minuto", heightened: "+1: dano +1d6" }
+  },
+  "air.pressure_zone": {
+    traits: ["Ar", "Concentração", "Manuseio"], range: "150 metros", targets: null, duration: "1 minuto", defense: "Fortitude",
+    summaries: {
+      "pt-BR": "Uma explosão de 6 metros reduz a pressão do ar; criaturas vivas ficam ensurdecidas e desajeitadas conforme o resultado de Fortitude.",
+      en: "A 20-foot burst drops air pressure; living creatures become deafened and clumsy based on their Fortitude save.",
+      es: "Una explosión de 6 metros reduce la presión del aire; las criaturas vivas quedan ensordecidas y torpes según su salvación de Fortaleza."
+    },
+    mechanics: { range: "150 metros", area: "explosão de 6 metros", duration: "1 minuto", save: "Fortitude", success: "ensurdecida e desajeitada 1 até o fim do próximo turno", failure: "ensurdecida e desajeitada 2", criticalFailure: "ensurdecida e desajeitada 2 pela duração", immunity: "1 hora após sair e obter sucesso" }
+  },
+  "air.propulsive_breeze": {
+    traits: ["Ar", "Manuseio", "Movimento"], range: "18 metros", targets: "a criatura aliada que desencadeou a reação", duration: null, defense: null,
+    summaries: {
+      "pt-BR": "Quando um aliado ao alcance Anda ou Salta, uma corrente de vento o impulsiona 4,5 metros adicionais na mesma direção.",
+      en: "When an ally in range Strides or Leaps, a current of wind propels them an additional 15 feet in the same direction.",
+      es: "Cuando un aliado a alcance Da un paso o Salta, una corriente de viento lo impulsa 4,5 metros adicionales en la misma dirección."
+    },
+    mechanics: { trigger: "aliado ao alcance Anda ou Salta", movement: "4,5 metros adicionais", direction: "mesma direção dos últimos 1,5 metro" }
+  },
+  "air.shock_to_the_system": {
+    traits: ["Ar", "Concentração", "Eletricidade", "Cura", "Manuseio", "Vitalidade"], range: "9 metros", targets: "1 criatura viva ou 1 cadáver morto na última rodada", duration: "1 minuto", defense: null,
+    summaries: {
+      "pt-BR": "Relâmpagos revivem um cadáver recente com 0 PV ou curam 8d8 PV, deixando o alvo acelerado e capaz de conjurar relâmpago estrondoso como magia inata.",
+      en: "Lightning revives a recent corpse at 0 Hit Points or restores 8d8 Hit Points, making the target quickened and granting innate thunderstrike.",
+      es: "Los rayos reviven un cadáver reciente con 0 PG o restauran 8d8 PG, dejando al objetivo acelerado y otorgando trueno como conjuro innato."
+    },
+    mechanics: { targets: "1 criatura viva ou cadáver morto na última rodada", healing: "8d8 PV", revive: "retorna com 0 PV e wounded +1", quickened: "Stand, Stride, Strike ou Fly", innateSpell: "relâmpago estrondoso de 5º círculo à vontade", duration: "1 minuto", hiddenCloud: "nuvem torna criaturas dentro e fora ocultadas entre si", heightened: "+1: cura +2d8 e círculo de relâmpago +1" }
+  },
+  "air.slashing_gust": {
+    traits: ["Ar", "Ataque", "Cantrip", "Concentração", "Manuseio"], range: "18 metros", targets: "1 ou 2 criaturas", duration: null, defense: "CA",
+    summaries: {
+      "pt-BR": "Com ao menos uma mão livre, ataques de magia cortam uma ou duas criaturas, causando 2d4 cortante e sangramento persistente em um acerto crítico.",
+      en: "With at least one free hand, spell attacks slash one or two creatures for 2d4 slashing damage and persistent bleed on a critical success.",
+      es: "Con al menos una mano libre, ataques de conjuro cortan a una o dos criaturas por 2d4 cortante y causan sangrado persistente en un crítico."
+    },
+    mechanics: { requirement: "ao menos uma mão livre", damage: "2d4 cortante", criticalSuccess: "dano dobrado e 1d4 sangramento persistente", multipleAttackPenalty: "dois ataques contam, mas a penalidade não aumenta até ambos serem feitos", heightened: "+1: dano e sangramento crítico +1d4" }
+  },
+  "air.stifling_stillness": {
+    traits: ["Ar", "Concentração", "Manuseio", "Veneno"], range: "36 metros", targets: null, duration: "1 minuto", defense: "Fortitude básico",
+    summaries: {
+      "pt-BR": "Uma explosão de 6 metros vira terreno difícil; criaturas que respiram ar gastam uma ação para respirar e sofrem 3d6 veneno e fadiga.",
+      en: "A 20-foot burst becomes difficult terrain; creatures that breathe air spend an action to breathe and take 3d6 poison damage and become fatigued.",
+      es: "Una explosión de 6 metros se vuelve terreno difícil; las criaturas que respiran aire gastan una acción para respirar, sufren 3d6 veneno y quedan fatigadas."
+    },
+    mechanics: { area: "explosão de 6 metros", difficultTerrain: true, action: "gastar 1 ação para respirar", damage: "3d6 veneno", save: "Fortitude básico", condition: "fatigada", heightened: "+2: dano +3d6" }
+  },
+  "air.tempest_cloak": {
+    traits: ["Ar", "Concentração", "Manuseio"], range: "9 metros", targets: "1 criatura disposta", duration: "1 minuto", defense: null,
+    summaries: {
+      "pt-BR": "Ventos criam terreno difícil em uma explosão de 1,5 metro ao redor do alvo, dão +2 na CA contra ataques físicos à distância e nas defesas contra efeitos auditivos.",
+      en: "Winds create difficult terrain in a 5-foot burst around the target, granting +2 AC against physical ranged attacks and +2 defenses against auditory effects.",
+      es: "Los vientos crean terreno difícil en una explosión de 1,5 metros alrededor del objetivo, otorgando +2 a la CA contra ataques físicos a distancia y defensas contra efectos auditivos."
+    },
+    mechanics: { area: "explosão de 1,5 metro", difficultTerrain: true, rangedACBonus: "+2 circunstancial", auditoryDefenseBonus: "+2 circunstancial", duration: "1 minuto" }
+  },
+  "air.vacuum": {
+    traits: ["Ar", "Concentração", "Incapacitação", "Manuseio"], range: null, targets: null, duration: "sustentada até 1 minuto", defense: "Fortitude",
+    summaries: {
+      "pt-BR": "Uma emanação de 4,5 metros suga o ar; criaturas que respiram fazem Fortitude, prendem a respiração em sucesso, ficam atordoadas em falha ou começam a sufocar em falha crítica.",
+      en: "A 15-foot emanation steals the air; creatures that breathe attempt Fortitude, hold their breath on a success, become stunned on a failure, or suffocate on a critical failure.",
+      es: "Una emanación de 4,5 metros roba el aire; las criaturas que respiran hacen Fortaleza, contienen el aliento con éxito, quedan aturdidas con un fallo o empiezan a asfixiarse con un fallo crítico."
+    },
+    mechanics: { area: "emanação de 4,5 metros", duration: "sustentada até 1 minuto", save: "Fortitude", success: "começa a prender a respiração", failure: "Atordoada 1 e metade do ar normal", criticalFailure: "começa imediatamente a sufocar", immunity: "criaturas que não precisam respirar ar" }
+  },
+  "air.voice_on_the_breeze": {
+    traits: ["Ar", "Concentração", "Manuseio"], range: "16 quilômetros", targets: null, duration: null, defense: null,
+    summaries: {
+      "pt-BR": "Sussurra uma mensagem de até 25 palavras ou uma rodada de sons para uma explosão de 3 metros familiar, seguindo um caminho de vento.",
+      en: "Whispers up to 25 words or 1 round of sounds to a familiar 10-foot burst, following a path for the wind.",
+      es: "Susurra hasta 25 palabras o 1 asalto de sonidos a una explosión familiar de 3 metros, siguiendo un camino para el viento."
+    },
+    mechanics: { range: "16 quilômetros", area: "explosão de 3 metros", limit: "25 palavras, 1 rodada de sons ou um ruído simples", speed: "1 milha por hora a 1 milha por 10 minutos", heightened: "4º: alcance 1.000 milhas e até 100 palavras" }
+  },
+  "air.wisdom_of_the_winds": {
+    traits: ["Incomum", "Ar", "Concentração", "Manuseio"], range: null, targets: null, duration: "varia", defense: null,
+    summaries: {
+      "pt-BR": "Pede aos espíritos do ar uma orientação útil, seja uma rajada que guia a um destino valioso por até 8 horas ou um conselho breve.",
+      en: "You ask air spirits for useful guidance, either a gale guiding you to a valuable destination for up to 8 hours or brief advice.",
+      es: "Pides a los espíritus del aire una guía útil, ya sea una ráfaga que te conduce a un destino valioso hasta 8 horas o un consejo breve."
+    },
+    mechanics: { cast: "1 minuto", options: ["Guiding Gale: detecção, 8 horas ou até chegar", "Voice of the Sky: conselho instantâneo"], duration: "varia", limitation: "não oferece orientação que você não possa seguir" }
+  },
+  "air.zephyr_slip": {
+    traits: ["Ar", "Manuseio", "Movimento"], range: null, targets: null, duration: null, defense: null,
+    summaries: {
+      "pt-BR": "Quando uma criatura entra em um espaço adjacente, você Voa 4,5 metros diretamente para longe dela.",
+      en: "When a creature enters a space within 5 feet, you Fly 15 feet directly away from it.",
+      es: "Cuando una criatura entra en un espacio adyacente, Vuelas 4,5 metros directamente alejándote de ella."
+    },
+    mechanics: { trigger: "criatura entra em espaço a 1,5 metro", movement: "Voa 4,5 metros diretamente para longe", heightened: "6º: você e 1 aliado 7,5 metros; 8º: você e até 5 aliados 7,5 metros" }
+  }
+};
 // Segredos da Magia é uma fonte oficial pré-Remaster. Registros vinculados a ela
 // são confirmados como legacy, e não confundidos com opções ainda não revisadas.
 const SECRETS_OF_MAGIC_SOURCE = "Segredos da Magia (pré-Remaster)";
@@ -2203,6 +2418,23 @@ for (const [slug, pt, en, es, rank, page, traditions, summary] of RAGE_ELEMENTS_
     description: summary, source: { book: RAGE_ELEMENTS_SOURCE, page },
     ruleset: "remaster", needs_review: true
   });
+}
+
+// Os registros de Rage of Elements são adicionados após o índice geral acima;
+// aplique as confirmações depois que as seis entradas de Ar existirem.
+for (const [slug, mechanics] of Object.entries(RAGE_ELEMENTS_CONFIRMED_SPELLS)) {
+  const spell = (PF2E_DATA.spells || []).find((record) => record.id === `spell.rage_elements.${slug}`);
+  if (!spell) continue;
+  spell.traits = mechanics.traits;
+  spell.range = mechanics.range;
+  spell.targets = mechanics.targets;
+  spell.duration = mechanics.duration;
+  spell.defense = mechanics.defense;
+  spell.summaries = mechanics.summaries;
+  spell.description = mechanics.summaries["pt-BR"];
+  spell.mechanics = mechanics.mechanics;
+  spell.needs_review = false;
+  spell.sourceApproximate = false;
 }
 
 PF2E_DATA.spells.push(

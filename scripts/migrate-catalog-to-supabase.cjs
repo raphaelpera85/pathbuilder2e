@@ -8,6 +8,18 @@ const fs = require('fs');
 const path = require('path');
 const { createClient } = require('@supabase/supabase-js');
 
+// Permite executar a sincronização diretamente no checkout sem exigir que o
+// operador exporte a chave de serviço manualmente. Variáveis já exportadas
+// continuam tendo precedência, e nenhum segredo é impresso nos logs.
+const envPath = path.resolve(__dirname, '..', '.env');
+if (fs.existsSync(envPath)) {
+  for (const line of fs.readFileSync(envPath, 'utf8').split(/\r?\n/)) {
+    const match = line.match(/^([A-Z][A-Z0-9_]*)=(.*)$/);
+    if (!match || process.env[match[1]]) continue;
+    process.env[match[1]] = match[2].trim().replace(/^['"]|['"]$/g, '');
+  }
+}
+
 const SUPABASE_URL = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL || 'https://wjmrrqrretculeyxpngc.supabase.co';
 const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.VITE_SUPABASE_PUBLISHABLE_KEY || 'sb_publishable_eB9E_zqLfcMkF6N69qX9OA_fuNRfawT';
 

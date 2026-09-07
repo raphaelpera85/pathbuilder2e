@@ -1402,6 +1402,40 @@ describe("proveniência do catálogo legado", () => {
     });
   });
 
+  it("confirma efeitos graduados das magias do Player Core 2 revisadas no lote atual", () => {
+    const catalog = loadCatalog() as { spells: LegacyRecord[] };
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.cascata_sagrada")).toMatchObject({
+      source: { book: "Livro do Jogador 2 (Player Core 2, Remaster)", page: 241 },
+      range: "150 metros", defense: "Reflexos básico", traits: ["Água", "Concentração", "Manuseio", "Sagrado"],
+      mechanics: { damage: "3d6 contundente", profaneDamage: "6d6 espiritual" }, needs_review: false,
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.deja_vu")).toMatchObject({
+      source: { page: 243 }, range: "30 metros", targets: "1 criatura", duration: "2 rodadas", defense: "Vontade",
+      mechanics: { failure: "repete as ações do próximo turno" }, needs_review: false,
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.lodo_corrosivo")).toMatchObject({
+      source: { page: 248 }, range: "36 metros", duration: "1 minuto", defense: "Reflexos básico",
+      mechanics: { damage: "8d6 ácido", criticalFailure: "1d6 dano persistente de ácido" }, needs_review: false,
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.ler_objeto")).toMatchObject({
+      source: { page: 248 }, range: "toque", targets: "1 objeto",
+      mechanics: { lookback: "última semana" }, needs_review: false,
+    });
+  });
+
+  it("confirma o lote de seis magias de Ar de Rage of Elements", () => {
+    const catalog = loadCatalog() as { spells: LegacyRecord[] };
+    const spells = catalog.spells.filter((item) => [
+      "spell.rage_elements.air.airlift", "spell.rage_elements.air.blastback", "spell.rage_elements.air.cleanse_air",
+      "spell.rage_elements.air.cloud_dragons_cloak", "spell.rage_elements.air.deep_breath", "spell.rage_elements.air.gentle_breeze",
+    ].includes(item.id || ""));
+    expect(spells).toHaveLength(6);
+    expect(spells.every((item) => item.source?.book === "Rage of Elements (Remaster)" && item.source?.page === 70 && item.needs_review === false && item.mechanics && item.names?.["pt-BR"] && item.names?.en && item.names?.es)).toBe(true);
+    expect(catalog.spells.find((item) => item.id === "spell.rage_elements.air.airlift")).toMatchObject({ range: null, defense: "Reflexos", mechanics: { movement: "Voa até 18 metros" } });
+    expect(catalog.spells.find((item) => item.id === "spell.rage_elements.air.blastback")).toMatchObject({ defense: "Reflexos básico", mechanics: { damage: "6d4 contundente" } });
+    expect(catalog.spells.find((item) => item.id === "spell.rage_elements.air.gentle_breeze")).toMatchObject({ duration: "10 minutos", mechanics: { healing: "10 PV" } });
+  });
+
   it("confirma mecânicas dos talentos iniciais de Pistoleiro em Pólvora e Engrenagens", () => {
     const catalog = loadCatalog() as { feats: LegacyRecord[] };
     const ids = ["as_da_besta", "disparo_de_cobertura", "espada_e_pistola", "estourar_fechadura", "para_o_chao", "manufatura_de_municao", "armamentos_defensivos", "girar_a_pistola", "recarga_arriscada", "tiro_de_aviso", "tiro_fingido", "cauterizar", "cortina_de_fumaca", "dividir_bala", "perfurar_e_disparar", "saltar_e_disparar", "ataque_ressaltante", "disparo_penetrante", "municoes_preciosas", "tiro_ardiloso", "tiro_declarado", "tiro_de_deflexao", "tiro_de_redirecionamento", "ferimento_superficial", "brio_inabalavel", "camuflagem_do_atirador", "sangue_no_ar", "olhos_de_matador", "tiro_de_ricochete"];
@@ -1913,5 +1947,21 @@ describe("proveniência do catálogo legado", () => {
     const data = readFileSync(resolve(process.cwd(), "js", "pf2e_data.js"), "utf8");
     expect(data).toContain('"class.witch": "patron"');
     expect(data).toContain('"class.oracle": "mystery"');
+  });
+
+  it("preserva as magias de Ar confirmadas nas páginas 71–74 de Rage of Elements", () => {
+    const catalog = loadCatalog() as { spells: Array<LegacyRecord & { mechanics?: Record<string, unknown>; rank?: number }> };
+    const ids = [
+      "spell.rage_elements.air.phantom_orchestra", "spell.rage_elements.air.pressure_zone",
+      "spell.rage_elements.air.propulsive_breeze", "spell.rage_elements.air.shock_to_the_system",
+      "spell.rage_elements.air.slashing_gust", "spell.rage_elements.air.stifling_stillness",
+      "spell.rage_elements.air.tempest_cloak", "spell.rage_elements.air.vacuum",
+      "spell.rage_elements.air.voice_on_the_breeze", "spell.rage_elements.air.wisdom_of_the_winds",
+      "spell.rage_elements.air.zephyr_slip",
+    ];
+    const spells = ids.map((id) => catalog.spells.find((item) => item.id === id));
+    expect(spells.every((spell) => spell && spell.source?.book?.includes("Rage of Elements") && spell.source?.page && spell.needs_review === false && spell.mechanics && ["pt-BR", "en", "es"].every((locale) => spell.names?.[locale] && spell.summaries?.[locale]))).toBe(true);
+    expect(spells.find((spell) => spell?.id.endsWith("phantom_orchestra"))).toMatchObject({ mechanics: { damage: "8d6 sônico", save: "Fortitude básico" } });
+    expect(spells.find((spell) => spell?.id.endsWith("shock_to_the_system"))).toMatchObject({ mechanics: { healing: "8d8 PV", quickened: "Stand, Stride, Strike ou Fly" } });
   });
 });
