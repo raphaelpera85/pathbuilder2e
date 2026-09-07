@@ -1964,4 +1964,42 @@ describe("proveniência do catálogo legado", () => {
     expect(spells.find((spell) => spell?.id.endsWith("phantom_orchestra"))).toMatchObject({ mechanics: { damage: "8d6 sônico", save: "Fortitude básico" } });
     expect(spells.find((spell) => spell?.id.endsWith("shock_to_the_system"))).toMatchObject({ mechanics: { healing: "8d8 PV", quickened: "Stand, Stride, Strike ou Fly" } });
   });
+
+  it("preserva as magias de Terra confirmadas na página 95 de Rage of Elements", () => {
+    const catalog = loadCatalog() as { spells: Array<LegacyRecord & { mechanics?: Record<string, unknown>; rank?: number }> };
+    const ids = [
+      "spell.rage_elements.earth.burrow_ward", "spell.rage_elements.earth.exploding_earth",
+      "spell.rage_elements.earth.cave_fangs", "spell.rage_elements.earth.glass_form",
+      "spell.rage_elements.earth.engrave_memory", "spell.rage_elements.earth.glass_shield",
+    ];
+    const spells = ids.map((id) => catalog.spells.find((item) => item.id === id));
+    expect(spells.every((spell) => spell && spell.source?.book?.includes("Rage of Elements") && spell.source?.page === 94 && spell.needs_review === false && spell.mechanics && ["pt-BR", "en", "es"].every((locale) => spell.names?.[locale] && spell.summaries?.[locale]))).toBe(true);
+    expect(spells.find((spell) => spell?.id.endsWith("exploding_earth"))).toMatchObject({ mechanics: { damage: "4d6 contundente", splash: "1d6 contundente" } });
+    expect(spells.find((spell) => spell?.id.endsWith("glass_shield"))).toMatchObject({ mechanics: { shield: "Dureza 2, 4 PV" } });
+  });
+
+  it("preserva as magias de Fogo confirmadas nas páginas 119–121 de Rage of Elements", () => {
+    const catalog = loadCatalog() as { spells: Array<LegacyRecord & { mechanics?: Record<string, unknown>; rank?: number }> };
+    const ids = [
+      "blazing_armory", "cauterize_wounds", "cinder_swarm", "dehydrate", "eat_fire", "falsify_heat",
+      "fires_pathway", "fireproof", "flame_dancer", "flames_of_ego", "heatvision", "illuminate", "phoenix_ward",
+    ].map((slug) => `spell.rage_elements.fire.${slug}`);
+    const spells = ids.map((id) => catalog.spells.find((item) => item.id === id));
+    expect(spells.every((spell) => spell && spell.source?.book?.includes("Rage of Elements") && spell.source?.page && spell.needs_review === false && spell.mechanics && ["pt-BR", "en", "es"].every((locale) => spell.names?.[locale] && spell.summaries?.[locale]))).toBe(true);
+    expect(spells.find((spell) => spell?.id.endsWith("blazing_armory"))).toMatchObject({ mechanics: { weapon: "+1 striking, dano fogo" } });
+    expect(spells.find((spell) => spell?.id.endsWith("dehydrate"))).toMatchObject({ mechanics: { damage: "1d6 fogo persistente" } });
+    expect(spells.find((spell) => spell?.id.endsWith("phoenix_ward"))).toMatchObject({ mechanics: { healing: "4d8 + dano absorvido, efeito de vitalidade" } });
+  });
+
+  it("preserva as magias de Metal confirmadas nas páginas 143–145 de Rage of Elements", () => {
+    const catalog = loadCatalog() as { spells: Array<LegacyRecord & { mechanics?: Record<string, unknown>; rank?: number }> };
+    const ids = [
+      "beheading_buzz_saw", "clad_in_metal", "conductive_weapon", "detect_metal", "ferrous_form",
+      "field_of_razors", "fold_metal", "magnetic_dominion", "mantle_of_the_melting_heart", "mercurial_stride", "needle_darts",
+    ].map((slug) => `spell.rage_elements.metal.${slug}`);
+    const spells = ids.map((id) => catalog.spells.find((item) => item.id === id));
+    expect(spells.every((spell) => spell && spell.source?.book?.includes("Rage of Elements") && spell.source?.page && spell.needs_review === false && spell.mechanics && ["pt-BR", "en", "es"].every((locale) => spell.names?.[locale] && spell.summaries?.[locale]))).toBe(true);
+    expect(spells.find((spell) => spell?.id.endsWith("beheading_buzz_saw"))).toMatchObject({ mechanics: { damage: "5d10 cortante + 4d6 sangramento persistente" } });
+    expect(spells.find((spell) => spell?.id.endsWith("needle_darts"))).toMatchObject({ mechanics: { damage: "3d4 perfurante" } });
+  });
 });

@@ -5142,9 +5142,9 @@
     "name_pt": "Proteção contra Escavação",
     "name_en": "Burrow Ward",
     "name_es": "Salvaguarda excavadora",
-    "description_pt": "Solidifica a terra ao redor de você e dificulta a passagem de criaturas escavadoras.",
-    "description_en": "Rage of Elements earth spell: Burrow Ward. Full mechanical text pending review.",
-    "description_es": "Conjuro de tierra de Rage of Elements: Salvaguarda excavadora. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Uma emanação de 4,5 metros solidifica a terra: criaturas que não escavam pedra não podem atravessá-la, e criaturas subterrâneas podem ser expelidas.",
+    "description_en": "A 15-foot emanation solidifies earth: creatures that cannot burrow through stone cannot cross it, and underground creatures can be ejected.",
+    "description_es": "Una emanación de 4,5 metros solidifica la tierra: las criaturas que no pueden excavar piedra no pueden cruzarla y las subterráneas pueden ser expulsadas.",
     "rank": 2,
     "is_cantrip": false,
     "is_focus": false,
@@ -5155,15 +5155,27 @@
     "cast_actions": "varies",
     "range": null,
     "targets": null,
-    "duration": null,
-    "defense": null,
-    "traits": [],
+    "duration": "sustentada até 1 minuto",
+    "defense": "Fortitude",
+    "traits": [
+      "Concentração",
+      "Terra",
+      "Manuseio"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 94,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "area": "emanação de 4,5 metros",
+        "duration": "sustentada até 1 minuto",
+        "save": "Fortitude para criatura subterrânea",
+        "effect": "expulsa criatura para a superfície em falha; sucesso força saída mas permite permanecer subterrânea",
+        "difficultTerrain": "criaturas que escavam pedra tratam como terreno difícil",
+        "heightened": "5º: emanação de 9 metros"
+      },
       "needs_review": false
     }
   },
@@ -5172,9 +5184,9 @@
     "name_pt": "Terra Explosiva",
     "name_en": "Exploding Earth",
     "name_es": "Tierra explosiva",
-    "description_pt": "Arremessa uma esfera compacta de terra e pedra que explode ao atingir o alvo.",
-    "description_en": "Rage of Elements earth spell: Exploding Earth. Full mechanical text pending review.",
-    "description_es": "Conjuro de tierra de Rage of Elements: Tierra explosiva. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Uma esfera de terra explode no impacto, causando 4d6 contundente mais 1d6 de respingo; um acerto crítico pode derrubar o alvo.",
+    "description_en": "A packed sphere of earth explodes on impact, dealing 4d6 bludgeoning plus 1d6 splash; a critical hit can knock the target prone.",
+    "description_es": "Una esfera compacta de tierra explota al impactar, causando 4d6 contundente más 1d6 de salpicadura; un crítico puede derribar al objetivo.",
     "rank": 2,
     "is_cantrip": false,
     "is_focus": false,
@@ -5183,17 +5195,30 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
+    "range": "36 metros",
+    "targets": "1 criatura",
     "duration": null,
-    "defense": null,
-    "traits": [],
+    "defense": "CA; Fortitude na falha crítica",
+    "traits": [
+      "Concentração",
+      "Terra",
+      "Manuseio"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 94,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "36 metros",
+        "targets": "1 criatura",
+        "attack": "ataque de magia contra CA",
+        "damage": "4d6 contundente",
+        "splash": "1d6 contundente",
+        "critical": "dobra dano inicial, não o respingo; Fortitude ou caído",
+        "heightened": "+2: dano +2d6 e respingo +1d6"
+      },
       "needs_review": false
     }
   },
@@ -5202,9 +5227,9 @@
     "name_pt": "Presas da Caverna",
     "name_en": "Cave Fangs",
     "name_es": "Colmillos de caverna",
-    "description_pt": "Formações afiadas de pedra surgem do chão e do teto, ferindo criaturas na área.",
-    "description_en": "Rage of Elements earth spell: Cave Fangs. Full mechanical text pending review.",
-    "description_es": "Conjuro de tierra de Rage of Elements: Colmillos de caverna. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Formações de pedra surgem no chão e no teto em uma explosão de 6 metros, causando 6d6 perfurante e criando terreno difícil.",
+    "description_en": "Stone formations protrude from the ground and ceiling in a 20-foot burst, dealing 6d6 piercing damage and creating difficult terrain.",
+    "description_es": "Formaciones de piedra brotan del suelo y el techo en una explosión de 6 metros, causando 6d6 perforante y creando terreno difícil.",
     "rank": 3,
     "is_cantrip": false,
     "is_focus": false,
@@ -5213,17 +5238,30 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
+    "range": "18 metros",
     "targets": null,
-    "duration": null,
-    "defense": null,
-    "traits": [],
+    "duration": "1 minuto",
+    "defense": "Reflexos básico",
+    "traits": [
+      "Concentração",
+      "Terra",
+      "Manuseio"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 94,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "18 metros",
+        "area": "explosão de 6 metros",
+        "damage": "6d6 perfurante",
+        "save": "Reflexos básico",
+        "difficultTerrain": true,
+        "duration": "1 minuto; pode Desfazer",
+        "heightened": "+1: dano +2d6"
+      },
       "needs_review": false
     }
   },
@@ -5232,9 +5270,9 @@
     "name_pt": "Forma de Vidro",
     "name_en": "Glass Form",
     "name_es": "Forma de vidrio",
-    "description_pt": "Concede ao alvo propriedades de vidro transparente, resistência e proteção contra sangramento.",
-    "description_en": "Rage of Elements earth spell: Glass Form. Full mechanical text pending review.",
-    "description_es": "Conjuro de tierra de Rage of Elements: Forma de vidrio. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "O alvo fica como vidro transparente: ocultado, sem cheiro, incapaz de sangrar, com resistência 5 a ácido, frio, eletricidade e perfurante e fraqueza 5 a sônico e contundente.",
+    "description_en": "The target becomes transparent glass: hidden, scentless, unable to bleed, with resistance 5 to acid, cold, electricity, and piercing and weakness 5 to sonic and bludgeoning.",
+    "description_es": "El objetivo se vuelve vidrio transparente: oculto, sin olor, incapaz de sangrar, con resistencia 5 a ácido, frío, electricidad y perforante y debilidad 5 a sónico y contundente.",
     "rank": 4,
     "is_cantrip": false,
     "is_focus": false,
@@ -5243,17 +5281,34 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
-    "duration": null,
+    "range": "toque",
+    "targets": "1 criatura disposta",
+    "duration": "10 minutos",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Concentração",
+      "Terra",
+      "Manuseio"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 94,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "target": "1 criatura disposta",
+        "concealed": "ocultado",
+        "immunities": [
+          "sem cheiro",
+          "não pode sangrar"
+        ],
+        "resistances": "5 a ácido, frio, eletricidade e perfurante",
+        "weaknesses": "5 a sônico e contundente",
+        "interaction": "afetado por shatter como objeto desacompanhado",
+        "durationReduction": "1 minuto ao sofrer dano afetado",
+        "heightened": "+2: resistências e fraquezas +5"
+      },
       "needs_review": false
     }
   },
@@ -5262,9 +5317,9 @@
     "name_pt": "Gravar Memória",
     "name_en": "Engrave Memory",
     "name_es": "Grabar memoria",
-    "description_pt": "Armazena até dez minutos de lembranças em uma pedra, que pode ser acessada por uma palavra-chave.",
-    "description_en": "Rage of Elements earth spell: Engrave Memory. Full mechanical text pending review.",
-    "description_es": "Conjuro de tierra de Rage of Elements: Grabar memoria. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Armazena até 10 minutos de memória em uma pedra com palavra de comando; ao ser acessada, a pedra vira pó e a lembrança fica infalível por 24 horas.",
+    "description_en": "Stores up to 10 minutes of memories in a stone with a command word; when accessed, the stone crumbles and the memory is infallible for 24 hours.",
+    "description_es": "Almacena hasta 10 minutos de recuerdos en una piedra con palabra de comando; al acceder, la piedra se deshace y el recuerdo es infalible durante 24 horas.",
     "rank": 5,
     "is_cantrip": false,
     "is_focus": false,
@@ -5273,17 +5328,31 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
-    "duration": null,
+    "range": "toque",
+    "targets": "1 pedra de pelo menos Volume 1",
+    "duration": "ilimitada",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Incomum",
+      "Concentração",
+      "Terra",
+      "Manuseio"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 94,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "cast": "1 minuto",
+        "range": "toque",
+        "target": "1 pedra de pelo menos Volume 1",
+        "capacity": "até 10 minutos de material",
+        "access": "1 ação e palavra de comando",
+        "duration": "ilimitada; memória infalível por 24 horas após acesso",
+        "expiry": "pedra vira pó ao transmitir"
+      },
       "needs_review": false
     }
   },
@@ -5292,11 +5361,11 @@
     "name_pt": "Escudo de Vidro",
     "name_en": "Glass Shield",
     "name_es": "Escudo de vidrio",
-    "description_pt": "Cria uma camada de vidro que protege você e fere quem a quebra de perto.",
-    "description_en": "Rage of Elements earth spell: Glass Shield. Full mechanical text pending review.",
-    "description_es": "Conjuro de tierra de Rage of Elements: Escudo de vidrio. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Cria um escudo de vidro com Dureza 2 e 4 PV; quando quebra, fragmentos causam 1d4 perfurante a quem estiver a 1,5 metro e falhar em Reflexos.",
+    "description_en": "Creates a glass shield with Hardness 2 and 4 Hit Points; when it breaks, shards deal 1d4 piercing damage to a creature within 5 feet that fails Reflex.",
+    "description_es": "Crea un escudo de vidrio con Dureza 2 y 4 PG; al romperse, los fragmentos causan 1d4 perforante a una criatura a 1,5 metros que falle Reflejos.",
     "rank": 1,
-    "is_cantrip": false,
+    "is_cantrip": true,
     "is_focus": false,
     "traditions": [
       "arcane",
@@ -5305,15 +5374,25 @@
     "cast_actions": "varies",
     "range": null,
     "targets": null,
-    "duration": null,
-    "defense": null,
-    "traits": [],
+    "duration": "até o início do seu próximo turno",
+    "defense": "Reflexos básico",
+    "traits": [
+      "Cantrip",
+      "Concentração",
+      "Terra"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 94,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "duration": "até o início do próximo turno",
+        "shield": "Dureza 2, 4 PV",
+        "breakEffect": "Reflexos básico, 1d4 perfurante a até 1,5 metro",
+        "heightened": "3º: Dureza 4/8 PV e 1d4 + modificador; 5º: 7/16 PV e 2d4 + modificador; 7º: 10/24 PV e 3d4 + modificador; 9º: 12/32 PV e 4d4 + modificador"
+      },
       "needs_review": false
     }
   },
@@ -5562,9 +5641,9 @@
     "name_pt": "Arsenal Flamejante",
     "name_en": "Blazing Armory",
     "name_es": "Arsenal llameante",
-    "description_pt": "Materializa uma arma flamejante simples ou marcial nas mãos de uma criatura disposta.",
-    "description_en": "Rage of Elements fire spell: Blazing Armory. Full mechanical text pending review.",
-    "description_es": "Conjuro de fuego de Rage of Elements: Arsenal llameante. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Materializa uma arma simples ou marcial comum flamejante +1 striking, cujo tipo de dano muda para fogo; ela gera munição e queima quem tentar tocá-la sem ser conjurador ou alvo.",
+    "description_en": "Materializes a common simple or martial flaming +1 striking weapon whose damage becomes fire; it generates ammunition and burns creatures that touch it without being the caster or target.",
+    "description_es": "Materializa un arma simple o marcial común flameante +1 striking cuyo daño se vuelve fuego; genera munición y quema a quien la toque sin ser lanzador u objetivo.",
     "rank": 2,
     "is_cantrip": false,
     "is_focus": false,
@@ -5574,17 +5653,29 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
-    "duration": null,
+    "range": "9 metros",
+    "targets": "1 criatura disposta",
+    "duration": "5 minutos",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Concentração",
+      "Fogo",
+      "Manuseio"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 118,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "9 metros",
+        "target": "1 criatura disposta com mão livre",
+        "weapon": "+1 striking, dano fogo",
+        "touchDamage": "1d6 fogo para terceiros",
+        "thrown": "rematerializa na mão após Strike",
+        "heightened": "4º: até 5 alvos, flaming; 6º: +2 greater striking flaming; 8º: +3 greater striking greater flaming; 10º: +3 superior striking greater flaming"
+      },
       "needs_review": false
     }
   },
@@ -5593,9 +5684,9 @@
     "name_pt": "Cauterizar Ferimentos",
     "name_en": "Cauterize Wounds",
     "name_es": "Cauterizar heridas",
-    "description_pt": "Sela ferimentos sangrando com fogo e ajuda o alvo a se recuperar do sangramento persistente.",
-    "description_en": "Rage of Elements fire spell: Cauterize Wounds. Full mechanical text pending review.",
-    "description_es": "Conjuro de fuego de Rage of Elements: Cauterizar heridas. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Cada alvo com sangramento persistente pode sofrer 1 fogo para tentar se recuperar do sangramento com a CD menor de assistência eficaz; você pode repetir em um alvo com 1 ação.",
+    "description_en": "Each target with persistent bleed can take 1 fire damage to attempt recovery with the lower DC for effective assistance; you can repeat it on one target with 1 action.",
+    "description_es": "Cada objetivo con sangrado persistente puede sufrir 1 daño de fuego para intentar recuperarse con la CD menor de asistencia eficaz; puedes repetirlo en un objetivo con 1 acción.",
     "rank": 2,
     "is_cantrip": false,
     "is_focus": false,
@@ -5605,17 +5696,30 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
-    "duration": null,
+    "range": "18 metros",
+    "targets": "até 5 criaturas dispostas",
+    "duration": "1 minuto",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Concentração",
+      "Fogo",
+      "Cura",
+      "Manuseio"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 118,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "18 metros",
+        "targets": "até 5 criaturas dispostas",
+        "cost": "1 dano de fogo",
+        "effect": "tenta recuperar sangramento persistente com CD menor",
+        "sustain": "1 ação com Concentração para repetir em um alvo",
+        "duration": "1 minuto"
+      },
       "needs_review": false
     }
   },
@@ -5624,9 +5728,9 @@
     "name_pt": "Enxame de Brasas",
     "name_en": "Cinder Swarm",
     "name_es": "Enjambre de brasas",
-    "description_pt": "Um enxame de criaturas flamejantes envolve o alvo e seus inimigos, causando dano e desorientação.",
-    "description_en": "Rage of Elements fire spell: Cinder Swarm. Full mechanical text pending review.",
-    "description_es": "Conjuro de fuego de Rage of Elements: Enjambre de brasas. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Um enxame de criaturas flamejantes cria uma emanação de 1,5 metro ao redor do alvo; formigas causam perfurante e fogo persistente, enquanto vaga-lumes podem ofuscar ou cegar.",
+    "description_en": "A swarm of fiery creatures creates a 5-foot emanation around the target; ants deal piercing and persistent fire, while fireflies can dazzle or blind.",
+    "description_es": "Un enjambre de criaturas ardientes crea una emanación de 1,5 metros alrededor del objetivo; las hormigas causan perforante y fuego persistente, mientras las luciérnagas pueden deslumbrar o cegar.",
     "rank": 4,
     "is_cantrip": false,
     "is_focus": false,
@@ -5635,17 +5739,30 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
-    "duration": null,
-    "defense": null,
-    "traits": [],
+    "range": "18 metros",
+    "targets": "1 criatura",
+    "duration": "sustentada até 1 minuto",
+    "defense": "Fortitude ou Reflexos básico",
+    "traits": [
+      "Concentração",
+      "Fogo",
+      "Manuseio"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 118,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "18 metros",
+        "aura": "emanação de 1,5 metro",
+        "duration": "sustentada até 1 minuto",
+        "ants": "3d6 perfurante + 2d6 fogo persistente, Reflexos básico; falha empurra 1,5 metro",
+        "fireflies": "3d6 fogo, Fortitude; sucesso metade e ofuscada, falha cega 1 rodada, falha crítica cega 1 minuto",
+        "sustain": "repete efeito uma vez por rodada",
+        "heightened": "+1: dano das formigas e vaga-lumes +2d6"
+      },
       "needs_review": false
     }
   },
@@ -5654,9 +5771,9 @@
     "name_pt": "Desidratar",
     "name_en": "Dehydrate",
     "name_es": "Deshidratar",
-    "description_pt": "Extrai umidade de criaturas na área, causando dano de fogo persistente e enfraquecendo-as.",
-    "description_en": "Rage of Elements fire spell: Dehydrate. Full mechanical text pending review.",
-    "description_es": "Conjuro de fuego de Rage of Elements: Deshidratar. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Uma explosão de 1,5 metro causa 1d6 fogo persistente; criaturas com traço Água ou Planta pioram o resultado em um grau e fazem novos testes para ficar enfraquecidas.",
+    "description_en": "A 5-foot burst deals 1d6 persistent fire; creatures with the water or plant trait worsen their result by one degree and attempt further saves to become enfeebled.",
+    "description_es": "Una explosión de 1,5 metros causa 1d6 fuego persistente; las criaturas con rasgo agua o planta empeoran un grado y hacen nuevas salvaciones para quedar debilitadas.",
     "rank": 1,
     "is_cantrip": false,
     "is_focus": false,
@@ -5665,17 +5782,32 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
+    "range": "9 metros",
     "targets": null,
-    "duration": null,
-    "defense": null,
-    "traits": [],
+    "duration": "1 minuto",
+    "defense": "Fortitude básico",
+    "traits": [
+      "Concentração",
+      "Fogo",
+      "Manuseio"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 119,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "area": "explosão de 1,5 metro",
+        "damage": "1d6 fogo persistente",
+        "save": "Fortitude básico",
+        "special": "Água ou Planta piora resultado em um grau",
+        "repeat": "Fortitude no fim do turno antes do teste de recuperação; pode abrir mão se bebeu água",
+        "failure": "Enfraquecido 1 até fim do próximo turno",
+        "criticalFailure": "Enfraquecido 2 até fim do próximo turno",
+        "durationEnd": "quando o dano persistente termina",
+        "heightened": "+2: alcance +3 metros, área +1,5 metro e fogo persistente +3d6"
+      },
       "needs_review": false
     }
   },
@@ -5684,11 +5816,11 @@
     "name_pt": "Comer Fogo",
     "name_en": "Eat Fire",
     "name_es": "Comer fuego",
-    "description_pt": "Consome fogo para ganhar resistência temporária e poder expelir fumaça.",
-    "description_en": "Rage of Elements fire spell: Eat Fire. Full mechanical text pending review.",
-    "description_es": "Conjuro de fuego de Rage of Elements: Comer fuego. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Quando sofreria dano de fogo, você o consome e ganha resistência 5 ao fogo até o fim do turno; depois pode expelir uma nuvem de fumaça em uma explosão de 1,5 metro.",
+    "description_en": "When you would take fire damage, you consume it and gain fire resistance 5 until the end of the turn; you can later exhale a 5-foot smoke cloud.",
+    "description_es": "Cuando fueras a sufrir daño de fuego, lo consumes y obtienes resistencia 5 al fuego hasta el final del turno; luego puedes exhalar una nube de humo de 1,5 metros.",
     "rank": 1,
-    "is_cantrip": false,
+    "is_cantrip": true,
     "is_focus": false,
     "traditions": [
       "arcane",
@@ -5698,15 +5830,26 @@
     "cast_actions": "varies",
     "range": null,
     "targets": null,
-    "duration": null,
+    "duration": "até o fim do seu próximo turno",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Cantrip",
+      "Fogo",
+      "Manuseio"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 119,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "trigger": "você sofreria dano de fogo",
+        "resistance": "5 ao fogo até fim do turno",
+        "belchSmoke": "1 ação; explosão de 1,5 metro em até 6 metros, criaturas ficam ocultadas, 1 minuto",
+        "ending": "termina se ficar inconsciente, inalar ou exalar, inclusive falando",
+        "heightened": "+3: resistência +5"
+      },
       "needs_review": false
     }
   },
@@ -5715,9 +5858,9 @@
     "name_pt": "Falsificar Calor",
     "name_en": "Falsify Heat",
     "name_es": "Falsificar calor",
-    "description_pt": "Altera a temperatura aparente de criaturas ou objetos para enganar sentidos e ilusões térmicas.",
-    "description_en": "Rage of Elements fire spell: Falsify Heat. Full mechanical text pending review.",
-    "description_es": "Conjuro de fuego de Rage of Elements: Falsificar calor. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Altera a temperatura aparente do alvo para moderada ou quente, enganando sentidos, concedendo +2 em Enganação para personificar criaturas e podendo ocultá-lo de visão térmica.",
+    "description_en": "Alters the target's apparent temperature to moderate or warm, fooling all senses, granting +2 Deception to Impersonate, and potentially hiding it from heatvision.",
+    "description_es": "Altera la temperatura aparente del objetivo a moderada o cálida, engañando todos los sentidos, otorgando +2 a Engaño para Impersonar y pudiendo ocultarlo de visión térmica.",
     "rank": 2,
     "is_cantrip": false,
     "is_focus": false,
@@ -5726,17 +5869,30 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
-    "duration": null,
+    "range": "18 metros",
+    "targets": "1 criatura disposta ou objeto",
+    "duration": "8 horas",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Concentração",
+      "Fogo",
+      "Ilusão",
+      "Manuseio"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 119,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "18 metros",
+        "target": "1 criatura disposta ou objeto",
+        "moderate": "+2 circunstancial para personificar morto-vivo, sangue-frio ou objeto; invisível a heatvision",
+        "warm": "+2 circunstancial para personificar criatura de sangue quente",
+        "duration": "8 horas; pode Desfazer",
+        "heightened": "4º: até 10 criaturas, temperaturas diferentes"
+      },
       "needs_review": false
     }
   },
@@ -5745,9 +5901,9 @@
     "name_pt": "Caminho do Fogo",
     "name_en": "Fire's Pathway",
     "name_es": "Camino del fuego",
-    "description_pt": "Permite entrar em um fogo grande e sair instantaneamente por outro fogo dentro do alcance.",
-    "description_en": "Rage of Elements fire spell: Fire's Pathway. Full mechanical text pending review.",
-    "description_es": "Conjuro de fuego de Rage of Elements: Camino del fuego. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Após 1 minuto, entra em um fogo grande o bastante para você e teletransporta-se para outro fogo suficientemente grande em até 8 quilômetros.",
+    "description_en": "After 1 minute, you enter a fire large enough for you and teleport to another sufficiently large fire within 5 miles.",
+    "description_es": "Tras 1 minuto, entras en un fuego lo bastante grande y te teletransportas a otro fuego suficientemente grande a 8 kilómetros.",
     "rank": 5,
     "is_cantrip": false,
     "is_focus": false,
@@ -5760,13 +5916,26 @@
     "targets": null,
     "duration": null,
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Incomum",
+      "Concentração",
+      "Fogo",
+      "Manuseio",
+      "Teletransporte"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 119,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "cast": "1 minuto",
+        "range": "8 quilômetros",
+        "condition": "fogo de entrada e saída grande o bastante",
+        "limitation": "não leva espaços extradimensionais",
+        "heightened": "6º: 80 quilômetros; 8º: 800 quilômetros; 9º: qualquer ponto no mesmo planeta"
+      },
       "needs_review": false
     }
   },
@@ -5775,9 +5944,9 @@
     "name_pt": "À Prova de Fogo",
     "name_en": "Fireproof",
     "name_es": "Resistente al fuego",
-    "description_pt": "Protege um objeto contra calor, fogo e efeitos que tenham o traço fogo.",
-    "description_en": "Rage of Elements fire spell: Fireproof. Full mechanical text pending review.",
-    "description_es": "Conjuro de fuego de Rage of Elements: Resistente al fuego. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Impede o objeto de conduzir calor ou pegar fogo, concede resistência 10 a fogo e exige contramágica contra efeitos de Fogo que o tenham como alvo.",
+    "description_en": "Prevents an object from conducting heat or catching fire, grants fire resistance 10, and requires counteract checks against fire effects targeting it.",
+    "description_es": "Impide que un objeto conduzca calor o arda, otorga resistencia 10 al fuego y exige pruebas de contrarrestar contra efectos de fuego que lo tengan como objetivo.",
     "rank": 2,
     "is_cantrip": false,
     "is_focus": false,
@@ -5787,17 +5956,29 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
-    "duration": null,
+    "range": "toque",
+    "targets": "1 objeto de até Volume 10",
+    "duration": "1 hora",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Concentração",
+      "Fogo",
+      "Manuseio"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 119,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "cast": "1 minuto",
+        "target": "1 objeto de até Volume 10",
+        "duration": "1 hora",
+        "resistance": "10 ao fogo",
+        "counteract": "efeitos com traço Fogo contra o objeto",
+        "heightened": "4º: 24 horas; 6º: ilimitada"
+      },
       "needs_review": false
     }
   },
@@ -5806,9 +5987,9 @@
     "name_pt": "Dançarino das Chamas",
     "name_en": "Flame Dancer",
     "name_es": "Danzante de llamas",
-    "description_pt": "Envolve uma criatura em chamas e fortalece seus ataques desarmados e sua presença intimidante.",
-    "description_en": "Rage of Elements fire spell: Flame Dancer. Full mechanical text pending review.",
-    "description_es": "Conjuro de fuego de Rage of Elements: Danzante de llamas. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Fogo envolve mãos, pés, olhos e cabelo; Golpes desarmados causam +2d6 fogo e acertos críticos causam +2d4 fogo persistente, além de permitir Desmoralizar com Atuação.",
+    "description_en": "Fire surrounds the target; unarmed Strikes deal +2d6 fire and critical hits deal +2d4 persistent fire, and the target can Demoralize with Performance.",
+    "description_es": "El fuego rodea al objetivo; los Golpes sin armas causan +2d6 fuego y los críticos +2d4 fuego persistente, y puede Desmoralizar con Interpretación.",
     "rank": 5,
     "is_cantrip": false,
     "is_focus": false,
@@ -5818,17 +5999,29 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
-    "duration": null,
+    "range": "18 metros",
+    "targets": "1 criatura disposta",
+    "duration": "1 minuto",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Concentração",
+      "Fogo",
+      "Manuseio"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 120,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "18 metros",
+        "unarmedDamage": "+2d6 fogo",
+        "criticalPersistent": "+2d4 fogo persistente",
+        "demoralize": "pode usar Atuação em vez de Intimidação; perde auditivo e ganha visual",
+        "duration": "1 minuto",
+        "heightened": "7º: dano +3d6, persistente +3d4; crítico de Atuação deixa alvo fleeing 1 rodada"
+      },
       "needs_review": false
     }
   },
@@ -5837,9 +6030,9 @@
     "name_pt": "Chamas do Ego",
     "name_en": "Flames of Ego",
     "name_es": "Llamas del ego",
-    "description_pt": "Chamas fascinantes tornam o alvo arrogante e descuidado diante de sua própria imagem.",
-    "description_en": "Rage of Elements fire spell: Flames of Ego. Full mechanical text pending review.",
-    "description_es": "Conjuro de fuego de Rage of Elements: Llamas del ego. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Chamas elegantes tornam o alvo fascinado por si mesmo e exigem uma exibição de arrogância; uma falha também impede hostilidade até ser atacado.",
+    "description_en": "Elegant flames make the target fascinated with itself and require an arrogant display; on a failure it cannot act hostile until attacked.",
+    "description_es": "Llamas elegantes hacen que el objetivo se fascine consigo mismo y exigen una exhibición arrogante; con un fallo no puede actuar hostilmente hasta ser atacado.",
     "rank": 5,
     "is_cantrip": false,
     "is_focus": false,
@@ -5849,17 +6042,32 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
-    "duration": null,
-    "defense": null,
-    "traits": [],
+    "range": "36 metros",
+    "targets": "1 criatura",
+    "duration": "varia",
+    "defense": "Vontade",
+    "traits": [
+      "Concentração",
+      "Fogo",
+      "Incapacitação",
+      "Luz",
+      "Manuseio",
+      "Mental"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 120,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "36 metros",
+        "save": "Vontade",
+        "success": "luz brilhante em emanação de 6 metros, fascinado 1 rodada e gasta 1 ação em exibição",
+        "failure": "como sucesso por 1 minuto; não age hostil até sofrer hostilidade",
+        "criticalFailure": "como falha, gasta pelo menos 2 ações",
+        "duration": "varia"
+      },
       "needs_review": false
     }
   },
@@ -5868,9 +6076,9 @@
     "name_pt": "Visão Térmica",
     "name_en": "Heatvision",
     "name_es": "Visión térmica",
-    "description_pt": "Permite perceber energia térmica e detectar criaturas quentes através de fumaça ou escuridão.",
-    "description_en": "Rage of Elements fire spell: Heatvision. Full mechanical text pending review.",
-    "description_es": "Conjuro de fuego de Rage of Elements: Visión térmica. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Concede visão infravermelha precisa a 18 metros, detectando calor, frio, criaturas de sangue quente e quase todas com traço Frio ou Fogo através de fumaça e escuridão.",
+    "description_en": "Grants precise infrared vision to 60 feet, detecting heat, cold, warm-blooded creatures, and nearly all creatures with cold or fire traits through smoke and darkness.",
+    "description_es": "Otorga visión infrarroja precisa a 18 metros, detectando calor, frío, criaturas de sangre caliente y casi todas con rasgo frío o fuego a través de humo y oscuridad.",
     "rank": 3,
     "is_cantrip": false,
     "is_focus": false,
@@ -5881,17 +6089,30 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
-    "duration": null,
+    "range": "toque",
+    "targets": "1 criatura disposta",
+    "duration": "1 hora",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Incomum",
+      "Concentração",
+      "Fogo",
+      "Manuseio"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 120,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "toque",
+        "target": "1 criatura disposta",
+        "duration": "1 hora",
+        "sense": "visão infravermelha precisa a 18 metros",
+        "limitation": "mortos-vivos e constructos normalmente não são detectados",
+        "heightened": "6º: até próximas preparações diárias e alcance 36 metros"
+      },
       "needs_review": false
     }
   },
@@ -5900,11 +6121,11 @@
     "name_pt": "Iluminar",
     "name_en": "Illuminate",
     "name_es": "Iluminar",
-    "description_pt": "Acende fontes de luz não mágicas que usam fogo na área.",
-    "description_en": "Rage of Elements fire spell: Illuminate. Full mechanical text pending review.",
-    "description_es": "Conjuro de fuego de Rage of Elements: Iluminar. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Acende fontes não mágicas de luz que usam fogo em uma emanação de até 9 metros; criatura que atende a fonte pode tentar Reflexos para apagá-la.",
+    "description_en": "Lights nonmagical fire-based light sources in a 30-foot emanation; a creature attending a source can attempt Reflex to snuff it before it is noticeable.",
+    "description_es": "Enciende fuentes de luz no mágicas que usan fuego en una emanación de 9 metros; una criatura que atienda la fuente puede intentar Reflejos para apagarla.",
     "rank": 1,
-    "is_cantrip": false,
+    "is_cantrip": true,
     "is_focus": false,
     "traditions": [
       "arcane",
@@ -5916,14 +6137,24 @@
     "range": null,
     "targets": null,
     "duration": null,
-    "defense": null,
-    "traits": [],
+    "defense": "Reflexos",
+    "traits": [
+      "Cantrip",
+      "Fogo",
+      "Manuseio"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 120,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "area": "emanação de até 9 metros, ajustável menor",
+        "effect": "acende velas, lâmpadas e fontes não mágicas de luz a fogo",
+        "save": "Reflexos para criatura disposta a apagar a fonte",
+        "heightened": "+1: área máxima +3 metros"
+      },
       "needs_review": false
     }
   },
@@ -5932,9 +6163,9 @@
     "name_pt": "Proteção da Fênix",
     "name_en": "Phoenix Ward",
     "name_es": "Protección del fénix",
-    "description_pt": "Um escudo de fogo absorve dano letal, cura você e então desaparece em uma explosão de luz.",
-    "description_en": "Rage of Elements fire spell: Phoenix Ward. Full mechanical text pending review.",
-    "description_es": "Conjuro de fuego de Rage of Elements: Protección del fénix. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Concede resistência 10 a fogo; se dano de fogo o reduzir a 0 PV, absorve o excesso, cura 4d8 mais o dano absorvido e termina, sem poder ser lançado novamente por 24 horas.",
+    "description_en": "Grants fire resistance 10; if fire damage would reduce you to 0 Hit Points, it absorbs excess damage, heals 4d8 plus the absorbed damage, and ends for 24 hours.",
+    "description_es": "Otorga resistencia 10 al fuego; si el daño de fuego te redujera a 0 PG, absorbe el exceso, cura 4d8 más el daño absorbido y termina durante 24 horas.",
     "rank": 4,
     "is_cantrip": false,
     "is_focus": false,
@@ -5945,15 +6176,27 @@
     "cast_actions": "varies",
     "range": null,
     "targets": null,
-    "duration": null,
+    "duration": "1 minuto",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Concentração",
+      "Fogo",
+      "Manuseio"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 120,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "duration": "1 minuto",
+        "resistance": "10 ao fogo",
+        "trigger": "dano de fogo reduzir a 0 PV",
+        "healing": "4d8 + dano absorvido, efeito de vitalidade",
+        "cooldown": "não pode lançar novamente por 24 horas",
+        "heightened": "+1: cura +1d8"
+      },
       "needs_review": false
     }
   },
@@ -5962,9 +6205,9 @@
     "name_pt": "Serra Zumbidora Decapitante",
     "name_en": "Beheading Buzz Saw",
     "name_es": "Sierra decapitadora",
-    "description_pt": "Uma serra de metal fundido atravessa uma linha, causando dano cortante e sangramento.",
-    "description_en": "Rage of Elements metal spell: Beheading Buzz Saw. Full mechanical text pending review.",
-    "description_es": "Conjuro de metal de Rage of Elements: Sierra decapitadora. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Uma serra de sucata derretida percorre uma linha de 18 metros, causando 5d10 cortante e 4d6 sangramento persistente; uma falha crítica pode decapitar.",
+    "description_en": "A saw of molten scrap travels in an 60-foot line, dealing 5d10 slashing and 4d6 persistent bleed; a critical failure can decapitate.",
+    "description_es": "Una sierra de chatarra fundida recorre una línea de 18 metros, causando 5d10 cortante y 4d6 sangrado persistente; un fallo crítico puede decapitar.",
     "rank": 7,
     "is_cantrip": false,
     "is_focus": false,
@@ -5975,14 +6218,25 @@
     "range": null,
     "targets": null,
     "duration": null,
-    "defense": null,
-    "traits": [],
+    "defense": "Reflexos; Fortitude na falha crítica",
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Metal"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 142,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "area": "linha de 18 metros",
+        "damage": "5d10 cortante + 4d6 sangramento persistente",
+        "save": "Reflexos",
+        "criticalFailure": "dano dobrado; Fortitude ou decapitado, com morte e incapacitação",
+        "heightened": "+1: cortante +1d10 e sangramento +1d6"
+      },
       "needs_review": false
     }
   },
@@ -5991,9 +6245,9 @@
     "name_pt": "Arma Condutiva",
     "name_en": "Conductive Weapon",
     "name_es": "Arma conductora",
-    "description_pt": "Carrega uma arma de metal com eletricidade, transformando-a em uma arma chocante.",
-    "description_en": "Rage of Elements metal spell: Conductive Weapon. Full mechanical text pending review.",
-    "description_es": "Conjuro de metal de Rage of Elements: Arma conductora. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "A arma de metal torna-se uma arma shock +1; contra alvo com armadura de metal ou feito principalmente de metal, o dado elétrico da runa é d12.",
+    "description_en": "The metal weapon becomes a +1 shock weapon; against a target in metal armor or primarily made of metal, its shock rune electricity die is d12.",
+    "description_es": "El arma metálica se vuelve un arma shock +1; contra un objetivo con armadura metálica o hecho principalmente de metal, el dado eléctrico de la runa es d12.",
     "rank": 1,
     "is_cantrip": false,
     "is_focus": false,
@@ -6002,17 +6256,28 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
-    "duration": null,
+    "range": "toque",
+    "targets": "1 arma de metal",
+    "duration": "1 minuto",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Concentração",
+      "Eletricidade",
+      "Manuseio",
+      "Metal"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 142,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "target": "arma de metal desacompanhada ou empunhada por você/aliado disposto",
+        "duration": "1 minuto",
+        "weapon": "+1 shock",
+        "special": "dado elétrico d12 contra armadura de metal ou criatura principalmente metálica"
+      },
       "needs_review": false
     }
   },
@@ -6021,11 +6286,11 @@
     "name_pt": "Detectar Metal",
     "name_en": "Detect Metal",
     "name_es": "Detectar metal",
-    "description_pt": "Sintoniza você a campos magnéticos e revela a presença de objetos e depósitos metálicos.",
-    "description_en": "Rage of Elements metal spell: Detect Metal. Full mechanical text pending review.",
-    "description_es": "Conjuro de metal de Rage of Elements: Detectar metal. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Uma emanação de 9 metros revela presença ou ausência de objetos, veios e depósitos metálicos, podendo ignorar o metal conhecido do seu equipamento.",
+    "description_en": "A 30-foot emanation reveals the presence or absence of metallic objects, veins, and deposits, and can ignore metal you already know about.",
+    "description_es": "Una emanación de 9 metros revela presencia o ausencia de objetos, vetas y depósitos metálicos, pudiendo ignorar el metal que ya conoces.",
     "rank": 1,
-    "is_cantrip": false,
+    "is_cantrip": true,
     "is_focus": false,
     "traditions": [
       "arcane",
@@ -6038,13 +6303,26 @@
     "targets": null,
     "duration": null,
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Cantrip",
+      "Concentração",
+      "Detecção",
+      "Manuseio",
+      "Metal"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 142,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "area": "emanação de 9 metros",
+        "detects": "presença/ausência de objetos, veios e depósitos metálicos",
+        "illusion": "detecta metal oculto por ilusão de ranque inferior; nota ausência em objeto não metálico disfarçado",
+        "limitation": "não identifica tipo quando um metal é disfarçado como outro",
+        "heightened": "3º: identifica todos os tipos e supera ilusão enganosa de ranque inferior"
+      },
       "needs_review": false
     }
   },
@@ -6053,9 +6331,9 @@
     "name_pt": "Revestir com Metal",
     "name_en": "Clad in Metal",
     "name_es": "Revestir de metal",
-    "description_pt": "Troca temporariamente a superfície de um objeto metálico por um metal precioso adequado.",
-    "description_en": "Rage of Elements metal spell: Clad in Metal. Full mechanical text pending review.",
-    "description_es": "Conjuro de metal de Rage of Elements: Revestir de metal. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Troca temporariamente a superfície de um objeto de metal por metal precioso comum, fazendo-o funcionar como item desse metal até nível 2.",
+    "description_en": "Temporarily swaps an object's metal surface for common precious metal, making it function as an item of that metal up to 2nd level.",
+    "description_es": "Cambia temporalmente la superficie metálica de un objeto por metal precioso común, haciéndolo funcionar como objeto de ese metal hasta nivel 2.",
     "rank": 2,
     "is_cantrip": false,
     "is_focus": false,
@@ -6065,17 +6343,29 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
-    "duration": null,
+    "range": "toque",
+    "targets": "1 objeto de metal de até Volume 5",
+    "duration": "1 minuto",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Metal"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 142,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "target": "objeto de metal de até Volume 5, desacompanhado ou com criatura disposta",
+        "duration": "1 minuto",
+        "effect": "funciona como metal precioso de item até nível 2",
+        "examples": "adaga pode virar ferro frio ou prata; armadura completa não",
+        "properties": "ativa fraquezas do metal e suprime propriedades do metal original",
+        "heightened": "+1: nível máximo do metal +2"
+      },
       "needs_review": false
     }
   },
@@ -6084,9 +6374,9 @@
     "name_pt": "Forma Ferrosa",
     "name_en": "Ferrous Form",
     "name_es": "Forma ferrosa",
-    "description_pt": "Transforma seu corpo em ferro flexível, concedendo resistência física e imunidades.",
-    "description_en": "Rage of Elements metal spell: Ferrous Form. Full mechanical text pending review.",
-    "description_es": "Conjuro de metal de Rage of Elements: Forma ferrosa. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Transforma o corpo em ferro flexível, concedendo resistência 10 a dano físico salvo adamantina, várias imunidades, golpes de punho d10 e grande densidade.",
+    "description_en": "Transforms the body into flexible iron, granting resistance 10 to physical damage except adamantine, many immunities, d10 fists, and great density.",
+    "description_es": "Transforma el cuerpo en hierro flexible, otorgando resistencia 10 al daño físico salvo adamantina, varias inmunidades, puños d10 y gran densidad.",
     "rank": 8,
     "is_cantrip": false,
     "is_focus": false,
@@ -6097,15 +6387,29 @@
     "cast_actions": "varies",
     "range": null,
     "targets": null,
-    "duration": null,
+    "duration": "1 hora",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Concentração",
+      "Metal",
+      "Manuseio",
+      "Polimorfia"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 142,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "duration": "1 hora",
+        "resistance": "10 a físico exceto adamantina",
+        "immunities": "morte, doença, drenado, fatigado, cura, não letal, paralisado, veneno, doente, vitalidade e vazio",
+        "fists": "d10",
+        "bulk": "dobra, 6 se Pequeno ou 12 se Médio",
+        "movement": "não precisa respirar; afunda na água; sujeita a rust cloud",
+        "heightened": "9º: resistência 15"
+      },
       "needs_review": false
     }
   },
@@ -6114,9 +6418,9 @@
     "name_pt": "Campo de Lâminas",
     "name_en": "Field of Razors",
     "name_es": "Campo de navajas",
-    "description_pt": "Transforma metal em uma área de fios e lâminas que pune o movimento.",
-    "description_en": "Rage of Elements metal spell: Field of Razors. Full mechanical text pending review.",
-    "description_es": "Conjuro de metal de Rage of Elements: Campo de navajas. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Cria uma explosão de 6 metros de fios metálicos cortantes que é terreno difícil e causa 5 cortante por quadrado atravessado; sangue pode expandi-la.",
+    "description_en": "Creates a 20-foot burst of razor wires that is difficult terrain and deals 5 slashing per square traversed; blood can expand it.",
+    "description_es": "Crea una explosión de 6 metros de alambres cortantes que es terreno difícil y causa 5 cortante por casilla atravesada; la sangre puede expandirla.",
     "rank": 6,
     "is_cantrip": false,
     "is_focus": false,
@@ -6125,17 +6429,31 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
+    "range": "18 metros",
     "targets": null,
-    "duration": null,
-    "defense": null,
-    "traits": [],
+    "duration": "1 minuto",
+    "defense": "Reflexos básico",
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Metal"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 143,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "18 metros",
+        "area": "explosão de 6 metros",
+        "damage": "5 cortante por quadrado",
+        "difficultTerrain": true,
+        "duration": "1 minuto",
+        "reaction": "ao sofrer cortante, perfurante ou sangramento dentro, expande 1,5 metro; até 4 vezes, máximo 12 metros",
+        "material": "metal escolhido retorna ao fim",
+        "heightened": "+1: dano por quadrado +2"
+      },
       "needs_review": false
     }
   },
@@ -6144,9 +6462,9 @@
     "name_pt": "Dobrando Metal",
     "name_en": "Fold Metal",
     "name_es": "Doblar metal",
-    "description_pt": "Dobra um objeto metálico em uma esfera lisa até que a magia termine ou seja desfeita.",
-    "description_en": "Rage of Elements metal spell: Fold Metal. Full mechanical text pending review.",
-    "description_es": "Conjuro de metal de Rage of Elements: Doblar metal. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Dobra um objeto metálico para formar uma esfera lisa do tamanho de um ovo; água, fogo, Desfazer ou o fim da duração restauram sua forma.",
+    "description_en": "Folds an unattended metal object into a smooth egg-sized ball; water, fire, Dismiss, or the duration restores its shape.",
+    "description_es": "Dobla un objeto metálico desatendido en una esfera lisa del tamaño de un huevo; agua, fuego, Descartar o la duración restauran su forma.",
     "rank": 1,
     "is_cantrip": false,
     "is_focus": false,
@@ -6154,17 +6472,30 @@
       "arcane"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
-    "duration": null,
+    "range": "toque",
+    "targets": "1 objeto metálico desacompanhado de até Volume 5",
+    "duration": "10 minutos",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Metal"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 143,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "target": "objeto metálico de até Volume 5",
+        "duration": "10 minutos",
+        "shape": "esfera lisa não maior que ovo",
+        "ending": "Desfazer, fim da duração, tocar água ou fogo",
+        "notice": "Percepção contra CD da magia para notar disfarce",
+        "magical": "mantém auras, mas não pode ser vestido, afixado ou ativado",
+        "heightened": "3º: duração 1 hora"
+      },
       "needs_review": false
     }
   },
@@ -6173,9 +6504,9 @@
     "name_pt": "Domínio Magnético",
     "name_en": "Magnetic Dominion",
     "name_es": "Dominio magnético",
-    "description_pt": "Controla criaturas e objetos metálicos na área por meio dos campos magnéticos.",
-    "description_en": "Rage of Elements metal spell: Magnetic Dominion. Full mechanical text pending review.",
-    "description_es": "Conjuro de metal de Rage of Elements: Dominio magnético. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Uma emanação de 30 metros reposiciona criaturas com armadura metálica, feitas de metal ou com traço Metal, e objetos metálicos; você pode mover um alvo ao sustentar.",
+    "description_en": "A 100-foot emanation relocates creatures in metal armor, made of metal, or with the metal trait, and unattended metal objects; you can move one target when sustained.",
+    "description_es": "Una emanación de 30 metros reposiciona criaturas con armadura metálica, hechas de metal o con rasgo Metal, y objetos metálicos; puedes mover un objetivo al sostener.",
     "rank": 9,
     "is_cantrip": false,
     "is_focus": false,
@@ -6185,16 +6516,29 @@
     ],
     "cast_actions": "varies",
     "range": null,
-    "targets": null,
-    "duration": null,
-    "defense": null,
-    "traits": [],
+    "targets": "qualquer número de alvos metálicos",
+    "duration": "sustentada até 1 minuto",
+    "defense": "Reflexos",
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Metal"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 143,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "area": "emanação de 30 metros",
+        "targets": "qualquer número de criaturas/objetos metálicos",
+        "save": "Reflexos para alvo unwilling",
+        "effect": "reloca cada alvo a espaço desocupado na emanação; alvos movem juntos",
+        "sustain": "move 1 criatura",
+        "selfEffect": "pode receber magnetic repulsion de 8º círculo",
+        "duration": "sustentada até 1 minuto"
+      },
       "needs_review": false
     }
   },
@@ -6203,9 +6547,9 @@
     "name_pt": "Manto do Coração Derretido",
     "name_en": "Mantle of the Melting Heart",
     "name_es": "Manto del corazón fundido",
-    "description_pt": "Reveste seu corpo em metal líquido e escolhe poderes defensivos ou ofensivos.",
-    "description_en": "Rage of Elements metal spell: Mantle of the Melting Heart. Full mechanical text pending review.",
-    "description_es": "Conjuro de metal de Rage of Elements: Manto del corazón fundido. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Um manto de metal líquido permite escolher duas propriedades: resistência a eletricidade e contramágica, imunidade a veneno/doença ou toque corrosivo, ou punhos com alcance e agarrar.",
+    "description_en": "A liquid metal mantle lets you choose two properties: electricity resistance and counteract protection, poison and disease immunity, corrosive touch, or reach-and-grab fists.",
+    "description_es": "Un manto de metal líquido permite elegir dos propiedades: resistencia a electricidad y protección de contrarrestar, inmunidad a veneno/enfermedad, toque corrosivo o puños con alcance y agarrar.",
     "rank": 5,
     "is_cantrip": false,
     "is_focus": false,
@@ -6216,15 +6560,28 @@
     "cast_actions": "varies",
     "range": null,
     "targets": null,
-    "duration": null,
+    "duration": "1 minuto",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Metal",
+      "Morfia"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 143,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "duration": "1 minuto",
+        "choices": "escolhe 2 opções; 1 ação Concentration troca uma",
+        "copperCore": "resistência 10 eletricidade; efeitos elétricos em 9 metros fazem contramágica para afetar só você",
+        "goldenFlesh": "imune a veneno/doença e +2 circunstancial contra efeitos atuais",
+        "reactiveTouch": "metal tocado causa 2d6 ácido que ignora Dureza",
+        "weightedGrasp": "punho cablado 1d4 contundente +1d6 veneno, desarmar/finesse/alcance/agarrar/derrubar"
+      },
       "needs_review": false
     }
   },
@@ -6233,9 +6590,9 @@
     "name_pt": "Passo Mercurial",
     "name_en": "Mercurial Stride",
     "name_es": "Paso mercurial",
-    "description_pt": "Assume uma forma de mercúrio e atravessa espaços de criaturas durante seu movimento.",
-    "description_en": "Rage of Elements metal spell: Mercurial Stride. Full mechanical text pending review.",
-    "description_es": "Conjuro de metal de Rage of Elements: Paso mercurial. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Assume forma líquida de mercúrio, Anda até o dobro da velocidade e atravessa um espaço de criatura, expondo-a a veneno de mercúrio com Fortitude.",
+    "description_en": "Takes a liquid mercury form, Strides up to twice your Speed, and passes through one creature's space, exposing it to mercury poison with Fortitude.",
+    "description_es": "Adopta forma líquida de mercurio, Avanza hasta el doble de tu Velocidad y atraviesa el espacio de una criatura, exponiéndola a veneno de mercurio con Fortaleza.",
     "rank": 4,
     "is_cantrip": false,
     "is_focus": false,
@@ -6247,14 +6604,28 @@
     "range": null,
     "targets": null,
     "duration": null,
-    "defense": null,
-    "traits": [],
+    "defense": "Fortitude",
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Metal",
+      "Veneno"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 144,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "movement": "Anda até o dobro da velocidade",
+        "passage": "atravessa um espaço sem teste de Acrobacia, não termina nele",
+        "save": "Fortitude",
+        "success": "Enjoado 1",
+        "failure": "Enjoado 2 e 6d6 veneno",
+        "criticalFailure": "Enjoado 2 e 12d6 veneno",
+        "heightened": "+1: dano de falha +1d6 e falha crítica +2d6"
+      },
       "needs_review": false
     }
   },
@@ -6263,11 +6634,11 @@
     "name_pt": "Dardos de Agulha",
     "name_en": "Needle Darts",
     "name_es": "Dardos de aguja",
-    "description_pt": "Molda agulhas de metal e as lança contra um alvo, podendo causar sangramento.",
-    "description_en": "Rage of Elements metal spell: Needle Darts. Full mechanical text pending review.",
-    "description_es": "Conjuro de metal de Rage of Elements: Dardos de aguja. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Molda três agulhas de metal contra uma criatura, causando 3d4 perfurante e podendo causar sangramento persistente; o metal retorna depois.",
+    "description_en": "Shapes three metal needles at one creature, dealing 3d4 piercing and potentially persistent bleed; the metal returns afterward.",
+    "description_es": "Moldea tres agujas de metal contra una criatura, causando 3d4 perforante y pudiendo causar sangrado persistente; el metal regresa después.",
     "rank": 1,
-    "is_cantrip": false,
+    "is_cantrip": true,
     "is_focus": false,
     "traditions": [
       "arcane",
@@ -6276,17 +6647,33 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
+    "range": "18 metros",
+    "targets": "1 criatura",
     "duration": null,
-    "defense": null,
-    "traits": [],
+    "defense": "CA",
+    "traits": [
+      "Ataque",
+      "Cantrip",
+      "Concentração",
+      "Manuseio",
+      "Metal"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 144,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "18 metros",
+        "targets": "1 criatura",
+        "attack": "ataque de magia contra CA",
+        "damage": "3d4 perfurante",
+        "metalProperties": "aplica propriedades especiais do metal",
+        "criticalSuccess": "dano dobrado e 1 sangramento persistente",
+        "success": "dano completo",
+        "heightened": "+1: uma agulha adicional, dano +1d4 e sangramento crítico +1"
+      },
       "needs_review": false
     }
   },
