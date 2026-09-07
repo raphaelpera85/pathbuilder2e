@@ -16181,6 +16181,101 @@ if (typeof module !== 'undefined' && module.exports) {
       es: "Conjuro de rango 5: almacena en tu mente un recipiente y hasta Volumen 10 de contenido hasta tus próximas preparaciones diarias, permitiendo retirar objetos con una actividad de 3 acciones."
     }
   });
+  confirmPlayerCore2Spell("drenar_cores", {
+    traits: ["Concentração", "Manuseio"],
+    actions: 2,
+    range: "toque",
+    targets: "1 criatura viva",
+    defense: "Fortitude",
+    mechanics: {
+      gnomePenalty: "criaturas com o traço gnomo sofrem –2 de penalidade de circunstância no salvamento",
+      success: "enfraquecido 2 por 1 rodada",
+      failure: "enfraquecido 2 por 1 minuto, drenado 1 e apatia; por 1 rodada, ação de movimento exige salvamento de Vontade ou é perdida",
+      criticalFailure: "enfraquecido 2 e drenado 2 permanentemente, removíveis por efeitos apropriados"
+    },
+    summaries: {
+      "pt-BR": "Magia ocultista de 4º ranque: drena cor e vitalidade de uma criatura viva; o salvamento de Fortitude determina enfraquecido e drenado, com penalidade adicional contra gnomos.",
+      en: "4th-rank occult spell: drains color and vitality from a living creature; its Fortitude save determines clumsy and drained conditions, with an additional penalty for gnomes.",
+      es: "Conjuro ocultista de rango 4: drena el color y la vitalidad de una criatura viva; su salvación de Fortaleza determina las condiciones debilitado y drenado, con una penalización adicional contra gnomos."
+    }
+  });
+  confirmPlayerCore2Spell("infestacao_fungica", {
+    traits: ["Concentração", "Fungo", "Manuseio", "Veneno"],
+    actions: 2,
+    range: "toque",
+    area: "cone de 4,5 metros",
+    defense: "Fortitude",
+    mechanics: {
+      damage: "2d6 de dano persistente de veneno",
+      success: "metade do dano persistente de veneno",
+      failure: "dano persistente total e fraqueza 1 a fogo e cortante enquanto sofrer o dano",
+      criticalFailure: "dobro do dano persistente e fraqueza 2 a fogo e cortante enquanto sofrer o dano",
+      heightened: { rank4: "dano persistente aumenta em 2d6 e fraquezas em 1, ou em 2 na falha crítica" }
+    },
+    summaries: {
+      "pt-BR": "Magia primal de 2º ranque: espalha esporos em um cone, causando dano persistente de veneno e fraquezas a fogo e cortante conforme o salvamento de Fortitude.",
+      en: "2nd-rank primal spell: spreads spores in a cone, dealing persistent poison damage and imposing fire and slashing weaknesses based on the Fortitude save.",
+      es: "Conjuro primigenio de rango 2: esparce esporas en un cono, causando daño persistente de veneno e imponiendo debilidades a fuego y cortante según la salvación de Fortaleza."
+    }
+  });
+  confirmPlayerCore2Spell("inimizade_da_natureza", {
+    traits: ["Concentração", "Madeira", "Manuseio", "Planta"],
+    actions: 2,
+    range: "36 metros",
+    area: "explosão de 150 metros",
+    targets: "até 5 criaturas",
+    duration: "10 minutos",
+    mechanics: {
+      movement: "vegetação impõe –3 metros de penalidade de circunstância na Velocidade quando adjacente a plantas e fungos",
+      animalAttack: "no início do turno, teste simples CD 8; falha provoca 2d10 cortante, salvamento básico de Reflexos e desprevenido por 1 rodada salvo sucesso crítico",
+      primalMagic: "teste simples CD 5 ao conjurar magia primal; falha faz a magia falhar",
+      hostility: "animais, fungos e plantas ficam hostis ao alvo",
+      exception: "o Mestre pode excluir criaturas que não possam ser afetadas pela ira da natureza"
+    },
+    summaries: {
+      "pt-BR": "Magia primal de 9º ranque: volta animais, plantas e fungos contra até cinco criaturas em uma área de 150 metros, com penalidade de movimento, ataques aleatórios e bloqueio de magias primais.",
+      en: "9th-rank primal spell: turns animals, plants, and fungi against up to five creatures in a 150-meter burst, imposing movement penalties, random attacks, and primal spell disruption.",
+      es: "Conjuro primigenio de rango 9: vuelve animales, plantas y hongos contra hasta cinco criaturas en una explosión de 150 metros, con penalizaciones de movimiento, ataques aleatorios e interrupción de conjuros primigenios."
+    }
+  });
+  confirmPlayerCore2Spell("maldicao_do_tempo_perdido", {
+    traits: ["Concentração", "Eversão", "Maldição", "Manuseio"],
+    actions: 2,
+    range: "toque",
+    targets: "1 objeto, constructo ou criatura viva Grande ou menor",
+    defense: "Fortitude",
+    mechanics: {
+      object: "objeto sofre 4d6 após aplicar Dureza, fica de qualidade baixa, não pode ser Reparado e a maldição tenta neutralizar cura de PV; duração ilimitada se desapossado ou após falha do portador",
+      construct: "sofre 4d6 com Fortitude básico; falha deixa desajeitado 1, enfraquecido 1 e sem poder ser Reparado por 1 hora; falha crítica torna a duração ilimitada",
+      living: "criatura que não envelhece é imune; sucesso deixa desajeitado 1 e enfraquecido 1 por 1 rodada, falha por 1 hora e falha crítica por duração ilimitada",
+      immunity: "artefatos, materiais preciosos e criaturas que não envelhecem são imunes",
+      heightened: { perRank: "dano aumenta em 1d6" }
+    },
+    summaries: {
+      "pt-BR": "Magia de 3º ranque: acelera envelhecimento ou desgaste de objetos, constructos e criaturas vivas, causando dano e condições conforme o alvo e o salvamento de Fortitude.",
+      en: "3rd-rank spell: accelerates aging or wear on objects, constructs, and living creatures, dealing damage and imposing conditions based on the target and Fortitude save.",
+      es: "Conjuro de rango 3: acelera el envejecimiento o desgaste de objetos, constructos y criaturas vivas, causando daño y condiciones según el objetivo y la salvación de Fortaleza."
+    }
+  });
+  confirmPlayerCore2Spell("manada_primal", {
+    traits: ["Concentração", "Manuseio", "Polimorfia"],
+    actions: 2,
+    range: "9 metros",
+    targets: "você e até 5 alvos voluntários",
+    duration: "1 minuto",
+    mechanics: {
+      form: "cada alvo assume forma de combate Enorme de mamute e recebe o traço animal",
+      defenses: "CA 22 + nível, 20 PV temporários, Velocidade 12 metros e visão na penumbra",
+      attacks: "presa comprida alcance 4,5 metros 4d8+19 perfurante; tromba ágil alcance 4,5 metros 4d6+16 contundente; pata ágil alcance 4,5 metros 4d6+13 contundente",
+      athletics: "Atletismo +30, salvo se o modificador do alvo for maior",
+      trample: "Atropelar exige 3 ações, move até o dobro da Velocidade e usa salvamento básico de Reflexos CD 19 + nível"
+    },
+    summaries: {
+      "pt-BR": "Magia primal de 10º ranque: transforma até seis alvos em mamutes Enormes por 1 minuto, concedendo PV temporários, ataques de mamute e Atropelar.",
+      en: "10th-rank primal spell: transforms up to six targets into Huge mammoths for 1 minute, granting temporary HP, mammoth attacks, and Trample.",
+      es: "Conjuro primigenio de rango 10: transforma hasta seis objetivos en mamuts Enormes durante 1 minuto, otorgando PG temporales, ataques de mamut y Arrollar."
+    }
+  });
   confirmPlayerCore2Spell("rosto_do_familiar", {
     traits: ["Concentração", "Manuseio", "Vidência"],
     actions: 2,

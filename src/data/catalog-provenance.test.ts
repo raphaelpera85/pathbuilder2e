@@ -1250,6 +1250,36 @@ describe("proveniência do catálogo legado", () => {
       needs_review: false,
       mechanics: { retrieval: expect.stringContaining("3 ações") },
     });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.drenar_cores")).toMatchObject({
+      rank: 4,
+      source: { page: 244 },
+      needs_review: false,
+      mechanics: { criticalFailure: expect.stringContaining("drenado 2") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.infestacao_fungica")).toMatchObject({
+      rank: 2,
+      source: { page: 247 },
+      needs_review: false,
+      mechanics: { damage: expect.stringContaining("2d6") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.inimizade_da_natureza")).toMatchObject({
+      rank: 9,
+      source: { page: 247 },
+      needs_review: false,
+      mechanics: { animalAttack: expect.stringContaining("CD 8") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.maldicao_do_tempo_perdido")).toMatchObject({
+      rank: 3,
+      source: { page: 249 },
+      needs_review: false,
+      mechanics: { construct: expect.stringContaining("4d6") },
+    });
+    expect(catalog.spells.find((item) => item.id === "spell.player_core_2.manada_primal")).toMatchObject({
+      rank: 10,
+      source: { page: 249 },
+      needs_review: false,
+      mechanics: { attacks: expect.stringContaining("4d8+19") },
+    });
     expect(catalog.spells.find((item) => item.id === "spell.player_core_2.rosto_do_familiar")).toMatchObject({
       rank: 3,
       source: { page: 251 },
