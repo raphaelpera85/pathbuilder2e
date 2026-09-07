@@ -2020,4 +2020,59 @@ describe("proveniência do catálogo legado", () => {
     expect(spells.find((spell) => spell?.id.endsWith("brine_dragon_bile"))).toMatchObject({ mechanics: { damage: "2d6 ácido persistente" } });
     expect(spells.find((spell) => spell?.id.endsWith("dancing_fountain"))).toMatchObject({ mechanics: { area: "explosão de 9 metros centrada em você" } });
   });
+
+  it("preserva as magias de Água confirmadas nas páginas 174–175 de Rage of Elements", () => {
+    const catalog = loadCatalog() as { spells: Array<LegacyRecord & { mechanics?: Record<string, unknown>; rank?: number }> };
+    const ids = ["freezing_rain", "frost_pillar", "grasp_of_the_deep", "hungry_depths", "misty_memory", "personal_ocean", "pillar_of_water", "rousing_splash", "scrying_ripples", "waterproof", "whirlpool"].map((slug) => `spell.rage_elements.water.${slug}`);
+    const spells = ids.map((id) => catalog.spells.find((item) => item.id === id));
+    expect(spells.every((spell) => spell && spell.source?.book?.includes("Rage of Elements") && spell.source?.page && spell.needs_review === false && spell.mechanics && ["pt-BR", "en", "es"].every((locale) => spell.names?.[locale] && spell.summaries?.[locale]))).toBe(true);
+    expect(spells.find((spell) => spell?.id.endsWith("freezing_rain"))).toMatchObject({ mechanics: { damage: "4d6 frio" } });
+    expect(spells.find((spell) => spell?.id.endsWith("whirlpool"))).toMatchObject({ mechanics: { damage: "6d10 contundente" } });
+  });
+
+  it("preserva as magias de Terra confirmadas nas páginas 95–97 de Rage of Elements", () => {
+    const catalog = loadCatalog() as { spells: Array<LegacyRecord & { mechanics?: Record<string, unknown>; rank?: number }> };
+    const ids = ["grasping_earth", "heaving_earth", "instant_pottery", "interposing_earth", "pave_ground", "rubble_step", "sand_form", "sliding_blocks", "practice_makes_perfect", "tireless_worker"].map((slug) => `spell.rage_elements.earth.${slug}`);
+    const spells = ids.map((id) => catalog.spells.find((item) => item.id === id));
+    expect(spells.every((spell) => spell && spell.source?.book?.includes("Rage of Elements") && spell.source?.page && spell.needs_review === false && spell.mechanics && ["pt-BR", "en", "es"].every((locale) => spell.names?.[locale] && spell.summaries?.[locale]))).toBe(true);
+    expect(spells.find((spell) => spell?.id.endsWith("heaving_earth"))).toMatchObject({ mechanics: { damage: "12d10 contundente" } });
+    expect(spells.find((spell) => spell?.id.endsWith("interposing_earth"))).toMatchObject({ mechanics: { damageReduction: "2; se ainda sofrer dano, a barreira é destruída" } });
+    expect(spells.find((spell) => spell?.id.endsWith("practice_makes_perfect"))).toMatchObject({ mechanics: { bonus: "+2 de estado; +3 se a proficiência na perícia for mestre ou melhor" } });
+  });
+
+  it("preserva as magias de Madeira confirmadas nas páginas 197–198 de Rage of Elements", () => {
+    const catalog = loadCatalog() as { spells: Array<LegacyRecord & { mechanics?: Record<string, unknown>; rank?: number }> };
+    const ids = ["arrow_salvo", "entwined_roots", "flourishing_flora", "helpful_wood_spirits", "life_draining_roots", "lignify", "lotus_walk", "mantle_of_the_unwavering_heart", "pollen_pods", "rigid_form"].map((slug) => `spell.rage_elements.wood.${slug}`);
+    const spells = ids.map((id) => catalog.spells.find((item) => item.id === id));
+    expect(spells.every((spell) => spell && spell.source?.book?.includes("Rage of Elements") && spell.source?.page && spell.needs_review === false && spell.mechanics && ["pt-BR", "en", "es"].every((locale) => spell.names?.[locale] && spell.summaries?.[locale]))).toBe(true);
+    expect(spells.find((spell) => spell?.id.endsWith("arrow_salvo"))).toMatchObject({ mechanics: { damage: "8d10 perfurante" } });
+    expect(spells.find((spell) => spell?.id.endsWith("pollen_pods"))).toMatchObject({ mechanics: { damage: "8d8 veneno" } });
+  });
+
+  it("preserva as magias de Madeira confirmadas nas páginas 198–200 de Rage of Elements", () => {
+    const catalog = loadCatalog() as { spells: Array<LegacyRecord & { mechanics?: Record<string, unknown>; rank?: number }> };
+    const ids = ["root_reading", "splinter_volley", "take_root", "timber", "verdant_sprout", "wall_of_shrubs", "weave_wood", "wooden_double", "wooden_fists", "arms_of_nature", "wood_walk"].map((slug) => `spell.rage_elements.wood.${slug}`);
+    const spells = ids.map((id) => catalog.spells.find((item) => item.id === id));
+    expect(spells.every((spell) => spell && spell.source?.book?.includes("Rage of Elements") && spell.source?.page && spell.needs_review === false && spell.mechanics && ["pt-BR", "en", "es"].every((locale) => spell.names?.[locale] && spell.summaries?.[locale]))).toBe(true);
+    expect(spells.find((spell) => spell?.id.endsWith("root_reading"))).toMatchObject({ mechanics: { area: "emanação de 9 metros" } });
+    expect(spells.find((spell) => spell?.id.endsWith("wooden_fists"))).toMatchObject({ mechanics: { damage: "1d6 contundente" } });
+  });
+
+  it("preserva as sete magias de escola do Mago do Livro do Jogador", () => {
+    const catalog = loadCatalog() as { spells: Array<LegacyRecord & { mechanics?: Record<string, unknown>; rank?: number }> };
+    const slugs = ["ars_grammatica", "protean_form", "boundary", "battle_magic", "civic_magic", "mentalism", "unified_magical_theory"];
+    const spells = slugs.map((slug) => catalog.spells.find((item) => item.id === `spell.player_core.wizard.school_${slug}`));
+    expect(spells.every((spell) => spell && spell.source?.book?.includes("Livro do Jogador") && spell.source?.page && spell.needs_review === false && spell.mechanics && ["pt-BR", "en", "es"].every((locale) => spell.names?.[locale] && spell.summaries?.[locale]))).toBe(true);
+    expect(spells.find((spell) => spell?.id.endsWith("ars_grammatica"))).toMatchObject({ mechanics: { area: "emanação de 1,5 metro centrada em você" } });
+    expect(spells.find((spell) => spell?.id.endsWith("battle_magic"))).toMatchObject({ mechanics: { damage: "1d4+1 força" } });
+  });
+
+  it("preserva os itens de Madeira confirmados nas páginas 200–203 de Rage of Elements", () => {
+    const catalog = loadCatalog() as { itemCompendium: Array<LegacyRecord & { mechanics?: Record<string, unknown> }> };
+    const slugs = ["animal_nip", "blooming_lotus_seed_pod", "broadleaf_shield", "captivating_rosebud", "carver_cutter", "glowing_lantern_fruit", "kizidhars_shield", "purifying_spoon", "rooting", "sandalwood_fan", "splintering_spear", "tailors_boll", "tales_in_timber", "therapeutic_snap_peas", "thorn_triad"];
+    const items = slugs.map((slug) => catalog.itemCompendium.find((item) => item.id === `item.rage_elements.wood.${slug}`));
+    expect(items.every((item) => item && item.source?.book?.includes("Rage of Elements") && item.source?.page && item.needs_review === false && item.mechanics && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
+    expect(items.find((item) => item?.id.endsWith("splintering_spear"))).toMatchObject({ mechanics: { hit: "1d6 sangramento persistente" } });
+    expect(items.find((item) => item?.id.endsWith("broadleaf_shield"))).toMatchObject({ mechanics: { base: "Dureza 4, 16 PV, BT 8" } });
+  });
 });

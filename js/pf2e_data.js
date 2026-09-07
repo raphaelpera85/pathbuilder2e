@@ -2061,6 +2061,56 @@ const RAGE_ELEMENTS_CONFIRMED_SPELLS = {
     },
     mechanics: { range: "18 metros", area: "explosão de 6 metros", damage: "6d6 perfurante", save: "Reflexos básico", difficultTerrain: true, duration: "1 minuto; pode Desfazer", heightened: "+1: dano +2d6" }
   },
+  "earth.grasping_earth": {
+    traits: ["Concentração", "Manuseio", "Terra"], range: "18 metros", targets: null, duration: "sustentada até 1 minuto", defense: "Fortitude",
+    summaries: { "pt-BR": "Projeções de rocha e solo agarram e enterram criaturas em uma explosão de 3 metros no chão; Sustentar causa dano às criaturas agarradas ou restringidas.", en: "Rock and soil protrusions grab and bury creatures in a 10-foot burst on the ground; Sustaining deals damage to creatures grabbed or restrained by the earth.", es: "Protuberancias de roca y tierra agarran y entierran criaturas en una explosión de 3 metros en el suelo; al Mantenerla causa daño a criaturas agarradas o restringidas." },
+    mechanics: { range: "18 metros", area: "explosão de 3 metros no chão", save: "Fortitude", success: "sem efeito", failure: "agarrada pela terra", criticalFailure: "restrita pela terra", sustainDamage: "1d6 contundente se agarrada; 2d6 se restringida", escape: "contra CD de magia", heightened: "+2: dano ao Sustentar +1d6/+2d6" }
+  },
+  "earth.heaving_earth": {
+    traits: ["Concentração", "Manuseio", "Terra"], range: "36 metros", targets: "1 criatura ou objeto no chão", duration: null, defense: "Reflexos",
+    summaries: { "pt-BR": "Uma onda atravessa o solo, empurra criaturas na linha e explode no alvo, causando 12d10 contundente e podendo empurrá-lo e derrubá-lo.", en: "A wave travels through the ground, pushes creatures in the line, then explodes at the target for 12d10 bludgeoning and can push it and knock it prone.", es: "Una onda atraviesa el suelo, empuja criaturas en la línea y explota en el objetivo, causando 12d10 contundente y pudiendo empujarlo y derribarlo." },
+    mechanics: { range: "36 metros", target: "1 criatura ou objeto no chão", lineEffect: "criaturas entre você e o alvo fazem Reflexos; falha empurra 3 metros", damage: "12d10 contundente", save: "Reflexos básico", failure: "alvo é empurrado 3 metros e fica caído", blockedBy: "efeito termina se não puder atravessar superfície sólida", heightened: "9º: explode em 1 alvo adicional na linha" }
+  },
+  "earth.instant_pottery": {
+    traits: ["Concentração", "Manuseio", "Terra"], range: "3 metros", targets: null, duration: "1 hora", defense: null,
+    summaries: { "pt-BR": "Molda material terroso do ambiente em um ou mais objetos de cerâmica com Volume leve; não cria arte complexa nem valor comercial.", en: "Shapes earthen material from the environment into one or more light-Bulk earthenware objects; it cannot create complex art or value.", es: "Moldea material terroso del entorno en uno o más objetos de loza de Volumen ligero; no puede crear arte compleja ni valor comercial." },
+    mechanics: { cast: "1 minuto", range: "3 metros", duration: "1 hora", bulk: "até Volume leve", material: "argila ou terra", limitation: "sem arte intrincada, partes móveis complexas ou valor; não pode ser vendido como valioso", heightened: "2º: Volume 1 e 8 horas; 3º: Volume 2 e 24 horas" }
+  },
+  "earth.interposing_earth": {
+    traits: ["Manuseio", "Terra"], range: null, targets: null, duration: "3 rodadas", defense: null,
+    summaries: { "pt-BR": "Uma reação ergue uma barreira de terra entre você e um Golpe ou efeito de área que exigiria Reflexos, concedendo cobertura padrão e reduzindo dano.", en: "A reaction raises an earthen barrier between you and a Strike or area effect requiring Reflex, granting standard cover and reducing damage.", es: "Una reacción levanta una barrera de tierra entre tú y un Golpe o efecto de área que requiera Reflejos, otorgando cobertura estándar y reduciendo daño." },
+    mechanics: { trigger: "você é alvo de Golpe ou faria Reflexos contra efeito de área danoso", barrier: "1 polegada de espessura, 1,5m de comprimento e 1,5m de altura", cover: "cobertura padrão contra o gatilho", damageReduction: "2; se ainda sofrer dano, a barreira é destruída", stats: "CA 5, Dureza 2, 5 PV", duration: "3 rodadas ou até ser destruída", heightened: "4º: reduz 8, Dureza 8 e 20 PV" }
+  },
+  "earth.pave_ground": {
+    traits: ["Concentração", "Manuseio", "Terra"], range: null, targets: null, duration: "sustentada até 1 minuto", defense: null,
+    summaries: { "pt-BR": "Nivela o solo em uma linha de 18 metros, transformando terreno difícil não mágico de terra, entulho ou areia em terreno normal e podendo neutralizar o efeito mágico.", en: "Levels the ground in an 60-foot line, turning nonmagical difficult terrain of earth, rubble, or sand into normal terrain and potentially counteracting magical terrain.", es: "Nivela el suelo en una línea de 18 metros, convirtiendo terreno difícil no mágico de tierra, escombros o arena en terreno normal y pudiendo contrarrestar el terreno mágico." },
+    mechanics: { area: "linha de 18 metros ao longo do chão", duration: "sustentada até 1 minuto", effect: "terreno difícil ou maior não mágico de materiais terrosos vira normal", counteract: "pode tentar neutralizar terreno difícil mágico", limitation: "não remove ocultação nem causa perda de equilíbrio", heightened: "4º: linha 36 metros; 6º: linha 150 metros" }
+  },
+  "earth.rubble_step": {
+    traits: ["Concentração", "Manuseio", "Terra"], range: "toque", targets: "1 criatura disposta", duration: "1 minuto", defense: null,
+    summaries: { "pt-BR": "O alvo deixa uma trilha de entulho que transforma os espaços de onde sai em terreno difícil por 2 rodadas, desde que esteja em contato com o chão.", en: "The target leaves a trail of rubble that turns spaces it leaves into difficult terrain for 2 rounds while it remains in contact with the ground.", es: "El objetivo deja un rastro de escombros que convierte los espacios que abandona en terreno difícil durante 2 asaltos mientras esté en contacto con el suelo." },
+    mechanics: { range: "toque", target: "1 criatura disposta", duration: "1 minuto", trail: "cada espaço abandonado voluntariamente vira terreno difícil por 2 rodadas", requirement: "alvo precisa estar em contato com o chão", heightened: "4º: trilha dura 1 minuto e duração da magia 10 minutos" }
+  },
+  "earth.sand_form": {
+    traits: ["Concentração", "Manuseio", "Terra"], range: "toque", targets: "1 criatura disposta", duration: "10 minutos", defense: null,
+    summaries: { "pt-BR": "O alvo assume aspectos de areia, recebe resistência 5 a perfurante e cortante, não tem cheiro nem pode sangrar e fica ocultado em terreno arenoso.", en: "The target gains aspects of sand, resistance 5 to piercing and slashing, no scent, no bleeding, and concealment in sandy terrain.", es: "El objetivo adquiere aspectos de arena, resistencia 5 a perforante y cortante, ningún olor, no puede sangrar y obtiene ocultación en terreno arenoso." },
+    mechanics: { range: "toque", target: "1 criatura disposta", duration: "10 minutos", resistances: "5 a perfurante e cortante", immunities: ["sem cheiro", "não pode sangrar"], concealment: "ocultada em terreno arenoso, inclusive a céu aberto", durationReduction: "reduz 1 minuto ao sofrer dano resistido", heightened: "5º: resistência 10; 7º: resistência 15" }
+  },
+  "earth.sliding_blocks": {
+    traits: ["Concentração", "Manuseio", "Terra"], range: "36 metros", targets: null, duration: "sustentada até 10 minutos", defense: null,
+    summaries: { "pt-BR": "Conjura até seis cubos de pedra de 1,5 metro que podem levitar e ser movidos em até 3 metros ao Sustentar; cada cubo tem Dureza 10 e 40 PV.", en: "Conjures up to six 5-foot stone cubes that can levitate and move up to 10 feet when Sustained; each has Hardness 10 and 40 HP.", es: "Conjura hasta seis cubos de piedra de 1,5 metros que pueden levitar y moverse 3 metros al Mantener; cada uno tiene Dureza 10 y 40 PG." },
+    mechanics: { range: "36 metros", cubes: "até 6 cubos de 1,5 metro", duration: "sustentada até 10 minutos", stats: "CA 10, Dureza 10, 40 PV", movement: "ao Sustentar, move até 2 cubos até 3 metros em qualquer direção", climb: "Atletismo CD 10", expiration: "desfaz se ficar além do alcance", heightened: "+2: cubos +10 PV e movimento +1,5 metro" }
+  },
+  "earth.practice_makes_perfect": {
+    traits: ["Incomum", "Foco", "Manuseio"], range: "9 metros", targets: "a criatura que desencadeou o efeito", duration: null, defense: null,
+    summaries: { "pt-BR": "Quando você ou um aliado treinado falha em um teste de perícia, uma reação concede +2 de estado ao teste, ou +3 se a proficiência for mestre ou melhor.", en: "When you or a trained ally fails a skill check, a reaction grants a +2 status bonus to the check, or +3 with master proficiency or better.", es: "Cuando tú o un aliado entrenado falla una prueba de habilidad, una reacción concede un bonificador de estado +2, o +3 con competencia maestra o superior." },
+    mechanics: { trigger: "você ou aliado no alcance falha em teste de perícia em que é treinado", range: "9 metros", target: "criatura que fez o teste", bonus: "+2 de estado; +3 se a proficiência na perícia for mestre ou melhor", outcome: "pode mudar o resultado do teste" }
+  },
+  "earth.tireless_worker": {
+    traits: ["Concentração", "Cura", "Foco", "Manuseio"], range: "9 metros", targets: "1 criatura", duration: "sustentada até 1 minuto", defense: null,
+    summaries: { "pt-BR": "Suprime à escolha uma condição desajeitado, sobrecarregado, enfraquecido ou fatigado do alvo enquanto a magia for sustentada.", en: "Suppresses one chosen clumsy, encumbered, enfeebled, or fatigued condition affecting the target while the spell is sustained.", es: "Suprime una condición elegida de torpe, sobrecargado, debilitado o fatigado que afecte al objetivo mientras se mantiene el conjuro." },
+    mechanics: { range: "9 metros", target: "1 criatura", duration: "sustentada até 1 minuto", suppresses: ["desajeitado", "sobrecarregado", "enfraquecido", "fatigado"], return: "a condição retorna ao fim se a causa não for removida" }
+  },
   "earth.glass_form": {
     traits: ["Concentração", "Terra", "Manuseio"], range: "toque", targets: "1 criatura disposta", duration: "10 minutos", defense: null,
     summaries: {
@@ -2411,6 +2461,210 @@ const RAGE_ELEMENTS_CONFIRMED_SPELLS = {
       es: "Extrae hasta medio litro de agua de un objeto, secando objetos de menos de Volumen 1; en lugares húmedos puede condensar unas tazas de agua potable."
     },
     mechanics: { range: "3 metros", target: "1 objeto", amount: "até meio litro de água", effect: "seca objetos menores que Volume 1; repetição seca objetos maiores", humid: "pode condensar algumas xícaras de água potável antes de esgotar umidade" }
+  },
+  "water.freezing_rain": {
+    traits: ["Frio", "Concentração", "Manuseio", "Água"], range: "36 metros", targets: null, duration: "sustentada até 10 minutos", defense: "Reflexos",
+    summaries: {
+      "pt-BR": "Uma explosão de 6 metros vira terreno difícil e apaga fogos; ao congelar a chuva, causa 4d6 frio e pode deixar criaturas Lentas.",
+      en: "A 20-foot burst becomes difficult terrain and extinguishes fires; when frozen, it deals 4d6 cold and can make creatures slowed.",
+      es: "Una explosión de 6 metros se vuelve terreno difícil y extingue fuegos; al congelarse, causa 4d6 frío y puede ralentizar criaturas."
+    },
+    mechanics: { range: "36 metros", area: "explosão de 6 metros", duration: "sustentada até 10 minutos", terrain: "terreno difícil e apaga fogos não mágicos", sustain: "move área até 6 metros e pode congelar", damage: "4d6 frio", success: "metade", failure: "dano total e Lento 1 por 1 rodada", criticalFailure: "dano dobrado e Lento 2 por 1 rodada", heightened: "+1: dano +1d6" }
+  },
+  "water.frost_pillar": {
+    traits: ["Frio", "Concentração", "Manuseio", "Água"], range: "9 metros", targets: "1 criatura", duration: "sustentada até 1 minuto", defense: "Reflexos",
+    summaries: {
+      "pt-BR": "Gelo cristaliza ao redor do alvo; em falha, ele fica contido em um pilar com CA 10, Dureza 10, 60 PV e fraqueza 15 a fogo.",
+      en: "Ice crystallizes around the target; on a failure it is restrained in a pillar with AC 10, Hardness 10, 60 HP, and weakness 15 to fire.",
+      es: "El hielo cristaliza alrededor del objetivo; con un fallo queda restringido en un pilar con CA 10, Dureza 10, 60 PG y debilidad 15 al fuego."
+    },
+    mechanics: { range: "9 metros", target: "1 criatura", save: "Reflexos", success: "empurra para espaço adjacente à escolha", failure: "fica contida no pilar", pillar: "CA 10, Dureza 10, 60 PV, imune a críticos/frio/precisão, fraqueza 15 fogo", ending: "destruir gelo liberta e encerra", duration: "sustentada até 1 minuto" }
+  },
+  "water.grasp_of_the_deep": {
+    traits: ["Concentração", "Manuseio", "Mental", "Água"], range: "18 metros", targets: "1 criatura", duration: "1 minuto", defense: "Vontade",
+    summaries: {
+      "pt-BR": "Uma pressão fantasmagórica causa 6d6 contundente; em falha, o alvo fica agarrado e sofre 6d6 adicionais, podendo Escapar contra a CD da magia.",
+      en: "Phantasmal deep-sea pressure deals 6d6 bludgeoning; on a failure, the target becomes grabbed and takes 6d6 additional damage, escaping against the spell DC.",
+      es: "La presión fantasmal del mar profundo causa 6d6 contundente; con un fallo, el objetivo queda agarrado y sufre 6d6 adicional, pudiendo Escapar contra la CD."
+    },
+    mechanics: { range: "18 metros", target: "1 criatura", save: "Vontade", damage: "6d6 contundente", success: "metade", failure: "metade, agarrado e 6d6 adicional; Escapar contra CD da magia", criticalFailure: "como falha, dano inicial dobrado", heightened: "6º: até 5 alvos" }
+  },
+  "water.hungry_depths": {
+    traits: ["Concentração", "Manuseio", "Vazio", "Água"], range: "36 metros", targets: null, duration: "sustentada até 1 minuto", defense: "Reflexos básico",
+    summaries: {
+      "pt-BR": "Um vórtice em uma explosão de 1,5 metro causa 4d8 perfurante + 4d4 vazio; ao sustentar, cresce até 4,5 metros ou move 3 metros.",
+      en: "A vortex in a 5-foot burst deals 4d8 piercing plus 4d4 void; when sustained, it grows to 15 feet or moves 10 feet.",
+      es: "Un vórtice en una explosión de 1,5 metros causa 4d8 perforante + 4d4 vacío; al sostenerlo, crece hasta 4,5 metros o se mueve 3 metros."
+    },
+    mechanics: { range: "36 metros", area: "explosão de 1,5 metro, máximo 4,5 metros", damage: "4d8 perfurante + 4d4 vazio", save: "Reflexos básico", sustain: "cresce 1,5 metro ou move 3 metros", frequency: "uma vez por rodada por criatura", underwater: "cilindro de 12 metros de altura e raio 1,5 metro", heightened: "9º: 5d8 perfurante + 5d4 vazio" }
+  },
+  "water.misty_memory": {
+    traits: ["Incomum", "Concentração", "Manuseio", "Água"], range: null, targets: "1 corpo de água de pelo menos 0,5 metro quadrado", duration: "sustentada até 10 minutos", defense: null,
+    summaries: {
+      "pt-BR": "Após 1 minuto, uma névoa mostra em silêncio uma cena ocorrida até 24 horas antes em uma explosão de 9 metros próxima à água.",
+      en: "After 1 minute, mist silently shows a scene from up to 24 hours ago in a 30-foot burst near the water.",
+      es: "Tras 1 minuto, la niebla muestra en silencio una escena de hasta 24 horas antes en una explosión de 9 metros cerca del agua."
+    },
+    mechanics: { cast: "1 minuto", target: "corpo de água de pelo menos 0,5 metro quadrado", past: "até 24 horas", scene: "explosão de 9 metros, eventos até 18 metros da água, silhuetas sem detalhes finos ou som", sustain: "reproduz para frente ou trás, 1 minuto por minuto", counteract: "vento mágico pode interromper com contramágica", duration: "sustentada até 10 minutos" }
+  },
+  "water.personal_ocean": {
+    traits: ["Concentração", "Manuseio", "Água"], range: null, targets: null, duration: "1 minuto", defense: null,
+    summaries: {
+      "pt-BR": "Uma bolha de água do mar permite respirar, falar e perceber normalmente, concede Velocidade de Natação igual à terrestre e aplica regras de combate aquático.",
+      en: "A bubble of seawater lets you breathe, speak, and perceive normally, grants a swim Speed equal to land Speed, and applies aquatic combat rules.",
+      es: "Una burbuja de agua de mar permite respirar, hablar y percibir normalmente, otorga Velocidad de Nadar igual a la terrestre y aplica combate acuático."
+    },
+    mechanics: { duration: "1 minuto", movement: "Velocidade de Natação igual à terrestre se não possuir", aquatic: "ataques corpo a corpo contundentes/cortantes contra você sofrem -2; não lança magias/ações de Fogo", fire: "apaga fogos não mágicos ao passar e pode tentar contramágica em fogos mágicos", dismissal: true }
+  },
+  "water.pillar_of_water": {
+    traits: ["Concentração", "Manuseio", "Água"], range: "36 metros", targets: null, duration: "1 minuto", defense: null,
+    summaries: {
+      "pt-BR": "Cria um cilindro de água fresca de raio até 4,5 metros e altura até 18 metros; criaturas nadam nele ou caminham no fundo difícil.",
+      en: "Creates a cylinder of fresh water up to 15 feet in radius and 60 feet high; creatures Swim inside or walk along a difficult bottom.",
+      es: "Crea un cilindro de agua dulce de hasta 4,5 metros de radio y 18 metros de alto; las criaturas Nadan dentro o caminan por el fondo difícil."
+    },
+    mechanics: { range: "36 metros", shape: "cilindro, raio máximo 4,5 metros e altura máxima 18 metros", duration: "1 minuto", movement: "Swim Athletics CD 10; no chão sólido, caminhar no fundo é terreno difícil", exit: "criatura que sai cai ou pousa conforme posição" }
+  },
+  "water.rousing_splash": {
+    traits: ["Cantrip", "Concentração", "Manuseio", "Água"], range: "18 metros", targets: "1 criatura", duration: null, defense: null,
+    summaries: {
+      "pt-BR": "Um respingo frio concede 1d4 PV temporários por 1 minuto e permite uma tentativa imediata de recuperação de um dano persistente de ácido ou fogo.",
+      en: "A cold splash grants 1d4 temporary Hit Points for 1 minute and allows an immediate flat check to recover from persistent acid or fire damage.",
+      es: "Una salpicadura fría otorga 1d4 PG temporales durante 1 minuto y permite una prueba plana inmediata para recuperarse de daño persistente de ácido o fuego."
+    },
+    mechanics: { range: "18 metros", target: "1 criatura", tempHP: "1d4 por 1 minuto", persistent: "teste plano imediato para recuperar ácido ou fogo persistente com CD reduzida por assistência", immunity: "10 minutos para PV temporários desta magia", heightened: "+1: PV temporários +1d4" }
+  },
+  "water.scrying_ripples": {
+    traits: ["Concentração", "Manuseio", "Vidência", "Água"], range: "toque", targets: "pelo menos 3,8 litros de água", duration: "sustentada até 10 minutos", defense: null,
+    summaries: {
+      "pt-BR": "Ao tocar a água, você localiza água corrente desocupada a até 150 metros e pode ver e ouvir por uma fonte durante a duração.",
+      en: "By touching water, you locate unoccupied flowing water within 500 feet and can see and hear through one source for the duration.",
+      es: "Al tocar el agua, localizas agua corriente desocupada a 150 metros y puedes ver y oír a través de una fuente durante la duración."
+    },
+    mechanics: { cast: "1 minuto", range: "toque", target: "pelo menos 3,8 litros de água", detection: "localiza água corrente com superfície de pelo menos 0,1m² a até 150 metros", sense: "vê e ouve por uma fonte; campo perpendicular à superfície", sustain: "troca fonte ou posição na mesma fonte", ending: "termina se água parar de fluir; criatura Percebe contra CD da magia", heightened: "5º: alcance 1,6 quilômetro" }
+  },
+  "water.waterproof": {
+    traits: ["Concentração", "Manuseio", "Água"], range: "toque", targets: "1 objeto de até Volume 10", duration: "1 hora", defense: null,
+    summaries: {
+      "pt-BR": "Impede que um objeto absorva água, concede resistência 10 a ácido e +2 nos salvamentos e CDs contra efeitos de Água ou Ácido que causem dano.",
+      en: "Prevents an object from taking on water, grants resistance 10 to acid, and +2 to saves and DCs against damaging water or acid effects.",
+      es: "Impide que un objeto absorba agua, otorga resistencia 10 al ácido y +2 a salvaciones y CD contra efectos dañinos de agua o ácido."
+    },
+    mechanics: { target: "1 objeto de até Volume 10", duration: "1 hora", resistance: "10 ao ácido", bonus: "+2 em salvamentos e CDs contra efeitos danosos de Água ou Ácido", heightened: "4º: 1 dia; 8º: ilimitada" }
+  },
+  "water.whirlpool": {
+    traits: ["Concentração", "Manuseio", "Água"], range: "150 metros", targets: null, duration: "sustentada até 1 minuto", defense: "Reflexos",
+    summaries: {
+      "pt-BR": "Um cilindro de 7,5 metros de raio e 6 metros de altura vira terreno difícil, permite respirar em ar ou água e causa 6d10 contundente a cada rodada.",
+      en: "A cylinder 25 feet in radius and 20 feet high becomes difficult terrain, lets air- and water-breathers breathe, and deals 6d10 bludgeoning each round.",
+      es: "Un cilindro de 7,5 metros de radio y 6 metros de alto se vuelve terreno difícil, permite respirar en aire o agua y causa 6d10 contundente cada asalto."
+    },
+    mechanics: { range: "150 metros", area: "cilindro de raio 7,5 metros e altura 6 metros", duration: "sustentada até 1 minuto", terrain: "terreno difícil; Swim em vez de Stride, CD igual à magia", damage: "6d10 contundente", save: "Reflexos", success: "metade", failure: "dano total e puxa 3 metros ao centro", criticalFailure: "dano dobrado e puxa ao centro", sustain: "repete dano uma vez por rodada", heightened: "+1: dano +1d10" }
+  },
+  "wood.arrow_salvo": {
+    traits: ["Concentração", "Manuseio", "Madeira"], range: "30 metros", targets: null, duration: null, defense: "Reflexos básico",
+    summaries: { "pt-BR": "Um arco de madeira dispara flechas enormes em uma explosão de 9 metros, causando 8d10 perfurante e derrubando em falha crítica.", en: "A wooden bow launches massive arrows in a 30-foot burst, dealing 8d10 piercing and knocking creatures prone on a critical failure.", es: "Un arco de madera dispara flechas enormes en una explosión de 9 metros, causando 8d10 perforante y derribando con un fallo crítico." },
+    mechanics: { range: "30 metros", area: "explosão de 9 metros", damage: "8d10 perfurante", save: "Reflexos básico", criticalFailure: "caído", heightened: "+1: dano +1d10" }
+  },
+  "wood.entwined_roots": {
+    traits: ["Concentração", "Manuseio", "Madeira"], range: null, targets: "até 5 criaturas vivas dispostas", duration: "10 minutos", defense: null,
+    summaries: { "pt-BR": "Raízes protegem até cinco criaturas em uma explosão de 6 metros, concedendo resistência 5 a contundente e perfurante e capturando munição que não cause dano.", en: "Roots protect up to five willing living creatures in a 20-foot burst, granting resistance 5 to bludgeoning and piercing and catching ammunition that deals no damage.", es: "Raíces protegen hasta cinco criaturas vivas dispuestas en una explosión de 6 metros, otorgando resistencia 5 a contundente y perforante y atrapando munición que no cause daño." },
+    mechanics: { cast: "1 minuto", area: "explosão de 6 metros", targets: "até 5 criaturas vivas dispostas", resistance: "5 a contundente e perfurante", ammunition: "captura arma arremessada ou munição de ataque à distância que não causar dano", duration: "10 minutos", heightened: "7º: resistência 10; 9º: 15" }
+  },
+  "wood.flourishing_flora": {
+    traits: ["Concentração", "Manuseio", "Planta", "Madeira"], range: "9 metros", targets: "explosão de 1,5 metro", duration: null, defense: "Reflexos básico",
+    summaries: { "pt-BR": "Plantas crescem rapidamente em uma explosão de 1,5 metro e causam 2d4; cactos, flores, frutos ou raízes definem o dano e o efeito crítico.", en: "Plants rapidly grow in a 5-foot burst dealing 2d4; cacti, flowers, fruits, or roots determine damage and the critical effect.", es: "Plantas crecen rápidamente en una explosión de 1,5 metros y causan 2d4; cactus, flores, frutos o raíces determinan el daño y el efecto crítico." },
+    mechanics: { range: "9 metros", area: "explosão de 1,5 metro", damage: "2d4", save: "Reflexos básico", options: "cactos: perfurante e 1 sangramento persistente; flores: veneno e ofuscado 2 rodadas; frutos: contundente e desajeitado 1 por 2 rodadas; raízes: contundente e caído", heightened: "+1: dano +1d4 e sangramento dos cactos +1" }
+  },
+  "wood.helpful_wood_spirits": {
+    traits: ["Concentração", "Manuseio", "Madeira"], range: "9 metros", targets: null, duration: "sustentada até 1 minuto", defense: "Reflexos",
+    summaries: { "pt-BR": "Espíritos de madeira ocupam uma explosão de 1,5 metro e podem executar tarefas, distrair, criar terreno difícil ou Procurar.", en: "Wood spirits occupy a 5-foot burst and can perform tasks, distract, create difficult terrain, or Seek.", es: "Espíritus de madera ocupan una explosión de 1,5 metros y pueden realizar tareas, distraer, crear terreno difícil o Buscar." },
+    mechanics: { range: "9 metros", area: "explosão de 1,5 metro", duration: "sustentada até 1 minuto", sustain: "move a área até 3 metros e escolhe ajuda", chorus: "tarefa manual simples, até Volume 2", distract: "criaturas ficam desprevenidas em Reflexos", obstacle: "área vira terreno difícil", search: "Procuram usando sua Percepção" }
+  },
+  "wood.life_draining_roots": {
+    traits: ["Concentração", "Manuseio", "Planta", "Madeira"], range: null, targets: null, duration: null, defense: "Reflexos básico",
+    summaries: { "pt-BR": "Raízes espinhosas atravessam uma linha de 9 metros, causando 8d6 perfurante e concedendo 1d4 PV temporários por criatura viva atingida.", en: "Thorny roots cross a 30-foot line, dealing 8d6 piercing and granting 1d4 temporary Hit Points per living creature hit.", es: "Raíces espinosas cruzan una línea de 9 metros, causando 8d6 perforante y otorgando 1d4 PG temporales por criatura viva alcanzada." },
+    mechanics: { area: "linha de 9 metros", damage: "8d6 perfurante", save: "Reflexos básico", tempHP: "1d4 por criatura viva na linha", duration: "1 minuto", heightened: "+1: dano +2d6" }
+  },
+  "wood.lignify": {
+    traits: ["Concentração", "Manuseio", "Planta", "Madeira"], range: "36 metros", targets: "1 criatura de carne", duration: "varia", defense: "Fortitude",
+    summaries: { "pt-BR": "Transforma lentamente a carne em madeira: sucesso deixa Lento 1, falha inicia testes recorrentes e pode petrificar permanentemente em madeira.", en: "Slowly turns flesh into wood: success makes the target slowed 1, while failure causes recurring saves and can permanently petrify it as wood.", es: "Convierte lentamente la carne en madera: éxito deja ralentizado 1, mientras fallo causa salvaciones recurrentes y puede petrificarlo como madera." },
+    mechanics: { range: "36 metros", target: "1 criatura de carne; Planta recebe +2 circunstancial", save: "Fortitude", success: "Lento 1 por 1 rodada", failure: "Lento 1 e teste Fortitude no fim de cada turno; falha aumenta 1 ou 2 em crítica, sucesso reduz 1", criticalFailure: "inicia Lento 2", ending: "quando incapaz de agir, petrifica permanentemente sem magia em madeira; encerra se removido Lento ou petrificado magicamente", duration: "varia; incapacitação nos testes recorrentes" }
+  },
+  "wood.lotus_walk": {
+    traits: ["Concentração", "Manuseio", "Planta", "Madeira"], range: null, targets: null, duration: "1 minuto", defense: null,
+    summaries: { "pt-BR": "Flores aquáticas permitem caminhar sobre água e líquidos, deixando uma trilha de folhas que sustenta uma criatura Média até o próximo turno.", en: "Water plants let you walk on water and other liquids, leaving a trail of leaves that supports one Medium creature until your next turn.", es: "Plantas acuáticas te permiten caminar sobre agua y otros líquidos, dejando un rastro de hojas que soporta una criatura Mediana hasta tu próximo turno." },
+    mechanics: { duration: "1 minuto", movement: "Anda ou Dá Passos sobre água; pode submergir e então usa Swim", trail: "cada espaço sustenta 1 criatura Média até fim do próximo turno", dismissal: true, heightened: "4º: 10 minutos e trilha até fim; 6º: 1 hora e trilha permanente, removível por dispel magic" }
+  },
+  "wood.mantle_of_the_unwavering_heart": {
+    traits: ["Concentração", "Manuseio", "Morfia", "Planta", "Madeira"], range: null, targets: null, duration: "1 minuto", defense: null,
+    summaries: { "pt-BR": "Escolhe duas propriedades de um manto vegetal: cura rápida, perfume debilitante, tronco Grande com golpe de agarrar ou vontade imune a fascinação.", en: "Choose two plant-mantle properties: fast healing, debilitating perfume, a Large trunk with a grabbing attack, or an unwavering mind immune to fascination.", es: "Elige dos propiedades del manto vegetal: curación rápida, perfume debilitante, tronco Grande con ataque de agarrar o mente inmune a fascinación." },
+    mechanics: { duration: "1 minuto", choices: "escolhe 2; 1 ação Concentration troca uma", evergreen: "cura rápida 3 e +2 contra veneno/doença", perfume: "aura olfativa 4,5m; impede scent e Enjoado 1", trunk: "tamanho Grande, Desajeitado 1, alcance +1,5m e ramo 2d8 contundente + Agarrar", will: "imune fascinado e +1 em salvamentos/CDs contra mental" }
+  },
+  "wood.pollen_pods": {
+    traits: ["Concentração", "Manuseio", "Planta", "Madeira"], range: "30 metros", targets: "quatro espaços desocupados separados por pelo menos 6 metros", duration: "12 horas", defense: "Fortitude",
+    summaries: { "pt-BR": "Quatro bulbos liberam pólen ao serem tocados, danificados ou quando uma criatura se aproxima; uma explosão de 4,5 metros causa 8d8 veneno e condições.", en: "Four bulbs release pollen when touched, damaged, or approached; a 15-foot emanation deals 8d8 poison and conditions.", es: "Cuatro bulbos liberan polen al tocarlos, dañarlos o acercarse; una emanación de 4,5 metros causa 8d8 veneno y condiciones." },
+    mechanics: { range: "30 metros", placement: "4 espaços, separados por 6 metros", trigger: "criatura entra adjacente, toca ou danifica; CA 5", area: "emanação de 4,5 metros", damage: "8d8 veneno", save: "Fortitude", success: "metade e ofuscado 1 rodada", failure: "dano total, ofuscado 1 rodada, estupefato 1 por 1 minuto", criticalFailure: "dano dobrado, ofuscado 1 rodada, estupefato 2 por 1 minuto", duration: "12 horas", heightened: "+1: dano +2d8" }
+  },
+  "wood.rigid_form": {
+    traits: ["Concentração", "Manuseio", "Madeira"], range: null, targets: null, duration: "1 minuto", defense: null,
+    summaries: { "pt-BR": "A rigidez da madeira protege contra metamorfoses nocivas: quando alvo de um efeito de polimorfia, você pode reagir e tentar neutralizá-lo.", en: "Wood's rigidity protects against harmful shapechanging: when targeted by a polymorph effect, you can react and attempt to counteract it.", es: "La rigidez de la madera protege contra transformaciones dañinas: al ser objetivo de polimorfia, puedes reaccionar e intentar contrarrestarla." },
+    mechanics: { duration: "1 minuto", trigger: "efeito de polimorfia nocivo o tem como alvo", reaction: "tenta contramágica", heightened: "6º: duração 10 minutos" }
+  },
+  "wood.root_reading": {
+    traits: ["Cantrip", "Concentração", "Manuseio", "Madeira"], range: null, targets: null, duration: null, defense: null,
+    summaries: { "pt-BR": "Você sente pelas raízes em uma emanação de 9 metros, percebe criaturas Médias ou maiores despercebidas e ganha bônus para Procurar e Rastrear.", en: "You sense through roots in a 30-foot emanation, learn of unnoticed Medium or larger creatures, and gain bonuses to Seek and Track.", es: "Sientes a través de raíces en una emanación de 9 metros, detectas criaturas Medianas o mayores inadvertidas y obtienes bonificaciones para Buscar y Rastrear." },
+    mechanics: { area: "emanação de 9 metros", detects: "criaturas Médias ou maiores despercebidas; aprende se passaram pela área na última hora", seek: "+1 de estado para Seek até fim do próximo turno", track: "+1 de estado no teste inicial para Rastrear criatura detectada" }
+  },
+  "wood.splinter_volley": {
+    traits: ["Concentração", "Manuseio", "Madeira"], range: "18 metros", targets: "1 ou 2 criaturas", duration: null, defense: "CA",
+    summaries: { "pt-BR": "Uma rajada de estilhaços causa 4d6 perfurante em um alvo; com três ações, ataca dois alvos e um crítico causa 1 sangramento persistente.", en: "A splinter volley deals 4d6 piercing to one target; with three actions, it attacks two targets and a critical hit causes 1 persistent bleed.", es: "Una salva de astillas causa 4d6 perforante a un objetivo; con tres acciones, ataca dos objetivos y un crítico causa 1 sangrado persistente." },
+    mechanics: { range: "18 metros", targets: "1; com 3 ações, 2", attack: "ataque de magia contra CA", damage: "4d6 perfurante", criticalSuccess: "dano dobrado e 1 sangramento persistente", multipleAttackPenalty: "dois ataques contam, penalidade aumenta apenas após ambos", heightened: "+2: dano +4d6 por alvo e sangramento +1" }
+  },
+  "wood.take_root": {
+    traits: ["Cantrip", "Manuseio", "Planta", "Madeira"], range: "9 metros", targets: "1 criatura disposta", duration: "1 rodada", defense: null,
+    summaries: { "pt-BR": "Raízes reforçam a postura ou pegada do alvo, concedendo +1 nas CDs de Fortitude contra Empurrar, Reflexos contra Desarmar/Atropelar e salvamentos para manter itens.", en: "Roots reinforce the target's stance or grip, granting +1 to Fortitude DC against Shove, Reflex DC against Disarm/Trip, and saves to keep held items.", es: "Raíces refuerzan la postura o agarre del objetivo, otorgando +1 a las CD de Fortaleza contra Empujar, Reflejos contra Desarmar/Trabar y salvaciones para mantener objetos." },
+    mechanics: { range: "9 metros", target: "1 criatura disposta", duration: "1 rodada", bonuses: "+1 circunstancial na CD de Fortitude contra Shove; CD de Reflexos contra Disarm/Trip; salvamentos contra remover item segurado" }
+  },
+  "wood.timber": {
+    traits: ["Cantrip", "Concentração", "Manuseio", "Madeira"], range: null, targets: null, duration: null, defense: "Reflexos básico",
+    summaries: { "pt-BR": "Uma pequena árvore cai em uma linha de 4,5 metros e causa 2d4 contundente; falha crítica deixa o alvo ofuscado.", en: "A small tree falls in a 15-foot line for 2d4 bludgeoning; a critical failure dazzles the target.", es: "Un árbol pequeño cae en una línea de 4,5 metros por 2d4 contundente; un fallo crítico deja al objetivo deslumbrado." },
+    mechanics: { area: "linha de 4,5 metros", damage: "2d4 contundente", save: "Reflexos básico", criticalFailure: "ofuscado até fim do próximo turno", heightened: "+1: dano inicial +1d4" }
+  },
+  "wood.verdant_sprout": {
+    traits: ["Concentração", "Manuseio", "Planta", "Madeira"], range: "9 metros", targets: null, duration: null, defense: null,
+    summaries: { "pt-BR": "Cria uma semente que cresce em 10 minutos em uma planta Média, fornecendo cobertura, terreno difícil e alimento para uma criatura por um dia.", en: "Creates a seed that grows in 10 minutes into a Medium plant providing cover, difficult terrain, and a day's food for one creature.", es: "Crea una semilla que crece en 10 minutos en una planta Mediana que proporciona cobertura, terreno difícil y comida de un día." },
+    mechanics: { range: "9 metros", growth: "10 minutos", plant: "Médio, CA 10, Dureza 5, 20 PV", effect: "cobertura padrão, espaço terreno difícil, nozes/frutos para 1 criatura Média por dia", heightened: "+1: uma semente adicional" }
+  },
+  "wood.wall_of_shrubs": {
+    traits: ["Concentração", "Manuseio", "Planta", "Madeira"], range: "36 metros", targets: null, duration: "1 minuto", defense: null,
+    summaries: { "pt-BR": "Cria uma linha de arbustos nativos de 18 metros, menos de 1,5 metro de altura e espessura, concedendo cobertura menor.", en: "Creates a line of native shrubs 60 feet long and under 5 feet high and thick, providing lesser cover.", es: "Crea una línea de arbustos nativos de 18 metros de largo y menos de 1,5 metros de alto y grosor, proporcionando cobertura menor." },
+    mechanics: { range: "36 metros", wall: "linha de 18 metros, menos de 1,5m de altura/espessura", cover: "cobertura menor", duration: "1 minuto", heightened: "3º: 3m altura/1,5m espessura, cobertura padrão e 10 minutos; 5º: anel diâmetro 9m, cobertura maior e 1 hora" }
+  },
+  "wood.weave_wood": {
+    traits: ["Concentração", "Manuseio", "Madeira"], range: "toque", targets: "1 madeira não processada, junco ou fibra de até Volume 1", duration: null, defense: null,
+    summaries: { "pt-BR": "Após 1 minuto, transforma madeira ou fibra em até quatro objetos mundanos trançados, com Volume total igual ou menor ao material.", en: "After 1 minute, turns wood or fiber into up to four mundane woven objects with total Bulk no greater than the material.", es: "Tras 1 minuto, convierte madera o fibra en hasta cuatro objetos mundanos tejidos con Volumen total no mayor que el material." },
+    mechanics: { cast: "1 minuto", target: "madeira/junco/fibra não processada de até Volume 1", objects: "até 4, mesmo Volume total ou menor", examples: "cesta, chapéu, escudo ou esteira", hardness: "2", hp: "8", heightened: "+1: Volume máximo +1 e objetos máximos +2" }
+  },
+  "wood.wooden_double": {
+    traits: ["Manuseio", "Madeira"], range: null, targets: null, duration: null, defense: null,
+    summaries: { "pt-BR": "Ao sofrer um acerto crítico, um boneco de madeira recebe o golpe, você Dá um Passo e o bloco absorve dano com Dureza 5 e 20 PV.", en: "When critically hit, a wooden double takes the blow, you Step, and the block absorbs damage with Hardness 5 and 20 HP.", es: "Al recibir un crítico, un doble de madera recibe el golpe, das un Paso y el bloque absorbe daño con Dureza 5 y 20 PG." },
+    mechanics: { trigger: "você sofre crítico de efeito danoso ou Strike", reaction: "Dá um Passo; bloco aparece no espaço deixado", block: "Dureza 5, 20 PV", excess: "dano excedente passa; depois bloco vira lascas", heightened: "+1: PV do bloco +10" }
+  },
+  "wood.wooden_fists": {
+    traits: ["Concentração", "Manuseio", "Morfia", "Madeira"], range: null, targets: null, duration: "1 minuto", defense: null,
+    summaries: { "pt-BR": "Transforma os punhos em troncos, causando 1d6 contundente, removendo não letal e concedendo alcance; elevações tornam-nos armas striking.", en: "Transforms fists into tree trunks dealing 1d6 bludgeoning, removing nonlethal and granting reach; heightened ranks make them striking weapons.", es: "Transforma los puños en troncos que causan 1d6 contundente, eliminan no letal y obtienen alcance; rangos elevados los vuelven armas striking." },
+    mechanics: { duration: "1 minuto", damage: "1d6 contundente", traits: "perde não letal e ganha alcance", heightened: "3º: mágico e striking, 2d6; 7º: greater striking, 3d6 e duração 10 minutos; 9º: major striking, 4d6 e duração 1 hora" }
+  },
+  "wood.arms_of_nature": {
+    traits: ["Incomum", "Concentração", "Foco", "Manuseio", "Madeira"], range: "toque", targets: "1 objeto de madeira ou planta de pelo menos Volume 4", duration: "1 minuto", defense: null,
+    summaries: { "pt-BR": "Extrai do alvo uma arma +1 de até Volume 2 e do mesmo material; em círculos maiores, torna-se striking ou greater striking.", en: "Draws a +1 weapon of up to Bulk 2 from the target, made of the same material; higher ranks make it striking or greater striking.", es: "Extrae del objetivo un arma +1 de hasta Volumen 2 del mismo material; rangos superiores la vuelven striking o greater striking." },
+    mechanics: { target: "madeira/planta de pelo menos Volume 4", weapon: "+1, até Volume 2, mesmo material", duration: "1 minuto", heightened: "3º: +1 striking; 5º: +2 striking; 7º: +3 greater striking" }
+  },
+  "wood.wood_walk": {
+    traits: ["Incomum", "Concentração", "Foco", "Manuseio", "Madeira"], range: null, targets: null, duration: "sustentada até 1 minuto", defense: null,
+    summaries: { "pt-BR": "Move você até sua Velocidade em qualquer direção ou superfície com plantas vivas Grandes ou maiores a até 4,5 metros, criando escadas, cipós e galhos.", en: "Moves you up to your Speed in any direction or surface with Large or larger living plants within 15 feet, shaping stairs, vines, and branches.", es: "Te mueve hasta tu Velocidad en cualquier dirección o superficie con plantas vivas Grandes o mayores a 4,5 metros, formando escaleras, enredaderas y ramas." },
+    mechanics: { movement: "até sua Velocidade em qualquer direção/superfície", condition: "planta viva ou árvore Grande+ a até 4,5 metros", duration: "sustentada até 1 minuto", hazard: "não protege de terreno perigoso ou outros perigos", sustain: "repete movimento", heightened: "8º: duração 10 minutos sem precisar Sustentar para manter, ainda pode Sustentar para mover" }
   }
 };
 // Segredos da Magia é uma fonte oficial pré-Remaster. Registros vinculados a ela
@@ -2820,15 +3074,32 @@ PF2E_DATA.spells.push(
     id: "spell.rage_elements.wood.arms_of_nature", name: "Braços da Natureza (Arms of Nature)", rank: 1, focus: true,
     traditions: ["divine"], actionType: "two-actions", names: { "pt-BR": "Braços da Natureza", en: "Arms of Nature", es: "Brazos de la naturaleza" },
     summaries: { "pt-BR": "Extrai uma arma de madeira de um objeto ou planta, com aprimoramentos conforme o nível.", en: "Draws a wooden weapon from an object or plant, with upgrades at higher ranks.", es: "Extrae un arma de madera de un objeto o planta, con mejoras en rangos superiores." },
-    description: "Cria uma arma de foco de madeira; texto mecânico completo pendente de revisão.", source: { book: RAGE_ELEMENTS_SOURCE, page: 199 }, ruleset: "remaster", needs_review: true
+    description: "Cria uma arma de foco de madeira; o enriquecimento mecânico estruturado é aplicado no bloco de confirmação da fonte.", source: { book: RAGE_ELEMENTS_SOURCE, page: 199 }, ruleset: "remaster", needs_review: true
   },
   {
     id: "spell.rage_elements.wood.wood_walk", name: "Caminhar pela Madeira (Wood Walk)", rank: 4, focus: true,
     traditions: ["divine"], actionType: "two-actions", names: { "pt-BR": "Caminhar pela Madeira", en: "Wood Walk", es: "Caminar por la madera" },
     summaries: { "pt-BR": "Permite mover-se por plantas vivas e árvores próximas, inclusive em diferentes direções.", en: "Lets you move along living plants and nearby trees, including in different directions.", es: "Te permite moverte por plantas vivas y árboles cercanos, incluso en distintas direcciones." },
-    description: "Movimento de foco pelo domínio da Madeira; texto mecânico completo pendente de revisão.", source: { book: RAGE_ELEMENTS_SOURCE, page: 199 }, ruleset: "remaster", needs_review: true
+    description: "Movimento de foco pelo domínio da Madeira; o enriquecimento mecânico estruturado é aplicado no bloco de confirmação da fonte.", source: { book: RAGE_ELEMENTS_SOURCE, page: 199 }, ruleset: "remaster", needs_review: true
   }
 );
+
+// As magias de foco de Madeira entram depois do lote principal; reaplique as
+// confirmações para que também recebam proveniência e mecânicas estruturadas.
+for (const [slug, mechanics] of Object.entries(RAGE_ELEMENTS_CONFIRMED_SPELLS)) {
+  const spell = (PF2E_DATA.spells || []).find((record) => record.id === `spell.rage_elements.${slug}`);
+  if (!spell) continue;
+  spell.traits = mechanics.traits;
+  spell.range = mechanics.range;
+  spell.targets = mechanics.targets;
+  spell.duration = mechanics.duration;
+  spell.defense = mechanics.defense;
+  spell.summaries = mechanics.summaries;
+  spell.description = mechanics.summaries["pt-BR"];
+  spell.mechanics = mechanics.mechanics;
+  spell.needs_review = false;
+  spell.sourceApproximate = false;
+}
 PF2E_DATA.rituals.push({
   id: "ritual.rage_elements.bountiful_oasis", name: "Oásis Abundante (Bountiful Oasis)", rank: 5, rarity: "uncommon", traditions: ["primal"],
   castingTimes: { "pt-BR": "1 dia", en: "1 day", es: "1 día" },
@@ -2863,6 +3134,78 @@ for (const [slug, pt, en, es, level, page, summary] of RAGE_ELEMENTS_WOOD_ITEMS)
       es: `Objeto de madera de Rage of Elements: ${es}. El texto mecánico completo queda pendiente de revisión.`
     }, description: summary, source: { book: RAGE_ELEMENTS_SOURCE, page }, ruleset: "remaster", needs_review: true
   });
+}
+
+const RAGE_ELEMENTS_WOOD_ITEM_MECHANICS = {
+  animal_nip: {
+    summaries: { "pt-BR": "Pó aromático que atrai animais: criaturas em uma emanação de 9 metros fazem Vontade ou ficam fascinadas por 1 rodada; falha crítica também as deixa caídas.", en: "A fragrant powder attracts animals: creatures in a 30-foot emanation attempt Will or become fascinated for 1 round; a critical failure also knocks them prone.", es: "Un polvo fragante atrae animales: las criaturas en una emanación de 9 metros hacen Voluntad o quedan fascinadas 1 asalto; un fallo crítico también las derriba." },
+    mechanics: { usage: "segurado em 1 mão", bulk: "negligível", activate: "1 ação, Manuseio", area: "emanação de 9 metros", save: "Vontade", duration: "1 rodada", effect: "Fascinado", criticalFailure: "também fica caído", immunity: "1 hora; Fascinação termina após ato hostil", dc: "18 menor; 24 moderada; 30 maior" }
+  },
+  blooming_lotus_seed_pod: {
+    summaries: { "pt-BR": "Vagem que cria cinco plataformas de lótus sobre líquidos por 1 minuto ou uma flor que concede descanso prolongado e imunidade a efeitos que afetam apenas criaturas dormindo.", en: "A pod creates five lotus pads on liquid for 1 minute or a flower that grants long-term rest and immunity to effects affecting only sleeping creatures.", es: "Una vaina crea cinco plataformas de loto sobre líquidos durante 1 minuto o una flor que concede descanso prolongado e inmunidad a efectos que solo afectan a criaturas dormidas." },
+    mechanics: { usage: "segurado em 1 mão", bulk: "L", floatingPads: "1 ação; cinco plataformas em líquido não danoso a até 12 metros; cada uma raio 3 metros e dura 1 minuto", capacity: "1 criatura Grande, 2 Médias ou 4 Pequenas por plataforma", bloomingFlower: "10 minutos; plantada no solo", rest: "por 8 horas; dormir 6 horas a até 9 metros conta como um dia/noite de descanso", immunity: "pesadelo e efeitos mágicos que afetam apenas criaturas dormindo" }
+  },
+  broadleaf_shield: {
+    summaries: { "pt-BR": "Escudo de folha que regenera ao ficar 10 minutos sob luz solar e concede resistência sazonal, dobrada quando erguido.", en: "A leaf shield regrows after 10 minutes in sunlight and grants seasonal resistance, doubled while Raised.", es: "Un escudo de hoja se regenera tras 10 minutos al sol y concede resistencia estacional, duplicada mientras está Alzado." },
+    mechanics: { usage: "segurado em 1 mão", bulk: "L", seasons: "rosa: void; verde: fogo; laranja: veneno; marrom: frio", resistance: "3 (6 quando Erguido) no tipo da estação", changeSeason: "1 ação, Concentração; 1/dia; escolhe cor por 5 minutos", base: "Dureza 4, 16 PV, BT 8", variants: "maior: Dureza 6/24 PV/BT 12/resistência 4; maior superior: 8/32/16/5; verdadeiro: 10/40/20/6" }
+  },
+  captivating_rosebud: {
+    summaries: { "pt-BR": "Broto que cresce em roseira perfumada: criaturas que passam a até 4,5 metros fazem Vontade e podem sofrer penalidade de Percepção ou ficar fascinadas; também pode criar uma roseira-escada.", en: "A bud grows into a fragrant rosebush: creatures passing within 15 feet attempt Will and can take a Perception penalty or become fascinated; it can also grow a climbable rosebush.", es: "Un capullo crece en un rosal fragante: las criaturas que pasan a 4,5 metros hacen Voluntad y pueden sufrir penalización a Percepción o quedar fascinadas; también puede crear un rosal escalable." },
+    mechanics: { throw: "1 ação; espaço adjacente; dura 1 hora", scent: "criatura a até 4,5 metros faz Vontade CD 18", criticalSuccess: "sem efeito", success: "–1 de estado em Percepção por 10 minutos", failure: "–2 de estado em Percepção por 10 minutos", criticalFailure: "–2 de estado e Fascinado", roseVines: "10 minutos; cresce até 9 metros junto a estrutura; você/aliados Escalam facilmente; outros fazem Vontade CD 17 para notar" }
+  },
+  carver_cutter: {
+    summaries: { "pt-BR": "Machado de batalha +2 striking com cinzel removível que funciona como main-gauche, concede bônus de Manufatura em madeira e causa dano extra a criaturas de planta ou madeira.", en: "A +2 striking battle axe has a removable chisel that functions as a main-gauche, grants a Crafting bonus for woodworking, and deals extra damage to plant or wooden creatures.", es: "Un hacha de batalla +2 striking tiene un cincel extraíble que funciona como main-gauche, concede bonificación de Artesanía para madera y causa daño adicional a criaturas vegetales o de madera." },
+    mechanics: { weapon: "+2 striking machado de batalha", usage: "segurado em 1 mão", bulk: "1", chisel: "1 ação; +2 item em Manufatura para madeira; funciona como main-gauche; runas copiadas enquanto juntos", chopDown: "2 ações, 1/hora; Golpe contra planta ou criatura de madeira, +2d6 precisão e Desajeitado 1 por 1 minuto", variants: "maior: +2 greater striking/+3d6; maior superior: +2 keen greater striking/+3d6; verdadeiro: +3 keen greater striking/+3d6 e +3 Manufatura/+4d6" }
+  },
+  glowing_lantern_fruit: {
+    summaries: { "pt-BR": "Fruto que ilumina como lanterna por 8 horas e pode ser plantado para emitir luz e calor de fogueira, protegendo do frio próximo.", en: "A fruit sheds lantern-like light for 8 hours or can be planted to emit bonfire light and heat, protecting nearby creatures from cold.", es: "Una fruta emite luz como linterna durante 8 horas o puede plantarse para emitir luz y calor de hoguera, protegiendo del frío a criaturas cercanas." },
+    mechanics: { usage: "segurado em 1 mão", bulk: "L", lanternLight: "1 ação; luz plena 18 metros e luz fraca mais 18 metros por 8 horas; folhas direcionam a luz", fireFruit: "10 minutos; plantado de cabeça para baixo; luz e calor de fogueira por 8 horas", coldProtection: "imunidade aos efeitos de frio moderado e severo a até 4,5 metros" }
+  },
+  kizidhars_shield: {
+    summaries: { "pt-BR": "Escudo de duskwood que se repara por 1 minuto e pode proteger um acampamento com espinhos por 8 horas e curar seus ocupantes.", en: "A duskwood shield repairs itself for 1 minute and can protect a campsite with thorns for 8 hours while healing its occupants.", es: "Un escudo de madera crepuscular se repara durante 1 minuto y puede proteger un campamento con espinas durante 8 horas mientras cura a sus ocupantes." },
+    mechanics: { shield: "escudo de duskwood padrão; segurado em 1 mão; Volume L", repair: "1 ação, 1/dia; por 1 minuto cura 3 PV no início do seu turno", secureSite: "10 minutos, 1/dia; acampamento de até 9 metros de lado; efeito como muralha de espinhos por 8 horas", healing: "criaturas no acampamento recebem Cura de 4º círculo" }
+  },
+  purifying_spoon: {
+    summaries: { "pt-BR": "Colher de madeira que purifica comida ou bebida uma vez por dia ao ser mexida, com variantes para diferentes volumes.", en: "A wooden spoon purifies food or drink once per day when stirred, with variants for different volumes.", es: "Una cuchara de madera purifica comida o bebida una vez al día al removerla, con variantes para distintos volúmenes." },
+    mechanics: { activate: "2 ações, 1/dia; lança cleanse cuisine", teaspoon: "Nível 1, 10 po, até 1 galão", tablespoon: "Nível 1, 20 po, até 8 galões", ladle: "Nível 2, 32 po, até 16 galões" }
+  },
+  rooting: {
+    summaries: { "pt-BR": "Runa para arma corpo a corpo: em um acerto crítico, raízes imobilizam o alvo por 1 rodada e o deixam desajeitado enquanto permanecer imobilizado.", en: "A melee weapon rune grows roots on a critical hit, immobilizing the target for 1 round and making it clumsy while immobilized.", es: "Una runa para arma cuerpo a cuerpo hace crecer raíces con un crítico, inmovilizando al objetivo 1 asalto y dejándolo torpe mientras esté inmovilizado." },
+    mechanics: { usage: "gravada em arma corpo a corpo", trigger: "acerto crítico", effect: "Imobilizado por 1 rodada e Desajeitado 1 enquanto imobilizado", escape: "CD 23; maior CD 28; maior superior CD 34; verdadeiro CD 41" }
+  },
+  sandalwood_fan: {
+    summaries: { "pt-BR": "Leque que reduz o erro de teleporte planar, fala com plantas e cria folhas que dão cobertura a aliados e luz reveladora a inimigos.", en: "A fan reduces planar teleportation error, speaks with plants, and creates leaves that grant allies cover and reveal enemies.", es: "Un abanico reduce el error del teletransporte planar, habla con plantas y crea hojas que dan cobertura a aliados y revelan enemigos." },
+    mechanics: { usage: "segurado em 1 mão", bulk: "L", planarKey: "erro de interplanar reduzido para 1d6×25 milhas; 1d4×25 milhas quando destino é a paisagem do leque", plantSpeech: "1 minuto, 1/dia; speak with plants e translate para Fey e Muan", cloudOfLeaves: "2 ações, 1/dia; aliados e indiferentes a até 9 metros recebem cobertura menor por 1 rodada; inimigos recebem revealing light por 1 minuto" }
+  },
+  splintering_spear: {
+    summaries: { "pt-BR": "Lança +2 de duskwood greater striking que causa 1d6 de sangramento persistente e pode explodir em estilhaços, regenerando-se ao fim do turno.", en: "A +2 duskwood greater striking spear deals 1d6 persistent bleed and can shatter into splinters, regrowing at the end of the turn.", es: "Una lanza +2 de madera crepuscular greater striking causa 1d6 de sangrado persistente y puede romperse en astillas, regenerándose al final del turno." },
+    mechanics: { weapon: "+2 duskwood greater striking lança", usage: "segurada em 1 mão", bulk: "L", hit: "1d6 sangramento persistente", shatter: "2 ações, 1/dia; cone de 9 metros ou emanação de 3 metros; 12d6 perfurante, Reflexos básico CD 30; falha também aplica o sangramento da arma", regrowth: "retorna à forma completa no fim do turno", variants: "maior: +3 high-grade duskwood greater striking, 16d6/CD 37; maior superior: +3 high-grade duskwood superior striking, 18d6/CD 43" }
+  },
+  tailors_boll: {
+    summaries: { "pt-BR": "Bola de algodão mágico que tece uma roupa não mágica de explorador ou fina sob medida até o início do próximo turno, sem mudar o tipo da roupa existente.", en: "A magical cotton boll weaves nonmagical explorer's or fine clothing to order by the start of your next turn and cannot change an existing clothing type.", es: "Una bola de algodón mágica teje ropa no mágica de explorador o fina a medida para el inicio de tu próximo turno y no puede cambiar el tipo de ropa existente." },
+    mechanics: { activate: "2 ações, Concentração/Manuseio", result: "roupa pronta no início do próximo turno em local conveniente", types: "roupa de explorador ou fina", reweave: "se segurar roupa na outra mão, retecela no estilo pedido", limitation: "não muda o tipo do item; não transforma roupa fina em explorador ou inverno" }
+  },
+  tales_in_timber: {
+    summaries: { "pt-BR": "Armadura de peito de madeira resiliente com histórias entalhadas: concede bônus de Natureza e pode assumir disfarce de estátua, além de afetar você com resiliência de carvalho e falar com plantas.", en: "A resilient wooden breastplate grants a Nature bonus and can disguise you as a wooden statue, also affecting you with oaken resilience and speak with plants.", es: "Una coraza de madera resistente concede bonificación de Naturaleza y puede disfrazarte como estatua de madera, además de afectarte con resistencia de roble y hablar con plantas." },
+    mechanics: { armor: "+1 resilient breastplate de madeira; uso armadura vestida; Volume 2", nature: "+2 item em Natureza para Recordar Conhecimento; ritual collective memories permite usar Natureza", statueDisguise: "2 ações, 1/dia; por 1 hora, disfarce ilusório de 3º círculo com criatura retratada; concede oaken resilience e speak with plants", still: "+2 item em Dissimulação para parecer estátua quando imóvel", variants: "maior: +2 resilient e resiliência de carvalho 4º; maior superior: +2 greater resilient, +3 Natureza e resiliência 6º" }
+  },
+  therapeutic_snap_peas: {
+    summaries: { "pt-BR": "Vagem que cura até cinco criaturas e melhora salvamentos contra venenos ou doenças; plantada, cresce em uma trepadeira com alimento e cura adicional.", en: "A pod heals up to five creatures and improves saves against poisons or diseases; planted, it grows into a beanstalk with food and additional healing.", es: "Una vaina cura hasta cinco criaturas y mejora salvaciones contra venenos o enfermedades; plantada, crece en una enredadera con comida y curación adicional." },
+    mechanics: { healingPod: "2 ações, até 5 criaturas escolhidas a até 9 metros; recuperam 4d8+10 PV e recebem +2 item em salvamentos contra venenos/doenças por 1 minuto", beanstalk: "10 minutos; cresce 3 metros e dura 8 horas", food: "vagens alimentam até 8 criaturas vivas Grandes ou menores por um dia", extraHealing: "quem comer recupera 30 PV e pode tentar novo salvamento contra um veneno ou doença" }
+  },
+  thorn_triad: {
+    summaries: { "pt-BR": "Spellheart que conjura Tronco e, após uma magia de planta, concede resistência contra contundente/perfurante ou dano de sangramento adicional às armas.", en: "A wooden spellheart casts Timber and, after a plant spell, grants bludgeoning/piercing resistance on armor or additional bleed damage to weapon Strikes.", es: "Un spellheart de madera lanza Tronco y, tras un conjuro de planta, concede resistencia a contundente/perforante en armadura o daño de sangrado adicional a Golpes con armas." },
+    mechanics: { usage: "afixado a armadura não metálica ou arma", spellDC: "18; maior 24; maior superior 29", armor: "após magia de planta: resistência 2 a contundente/perfurante e fraqueza 3 a fogo até fim do próximo turno; resistência dobra para magia não truque", weapon: "após magia de planta: Golpes causam +1d4 sangramento persistente até fim do próximo turno; variantes +1d6/+1d8", activate: "Conjurar uma Magia: Tronco; maior 1/dia muralha de espinhos; maior superior 1/dia muralha de espinhos de 4º e tempestade de pétalas" }
+  }
+};
+for (const [slug, mechanics] of Object.entries(RAGE_ELEMENTS_WOOD_ITEM_MECHANICS)) {
+  const item = PF2E_DATA.items.find((record) => record.id === `item.rage_elements.wood.${slug}`);
+  if (!item) continue;
+  item.summaries = mechanics.summaries;
+  item.description = mechanics.summaries["pt-BR"];
+  item.mechanics = mechanics.mechanics;
+  item.needs_review = false;
+  item.sourceApproximate = false;
 }
 const RAGE_ELEMENTS_WATER_ITEMS = [
   ["aboutface_figurehead", "Figura de Proa Meia-Volta", "Aboutface Figurehead", "Mascarón de proa media vuelta", 10, 176, "Figura de proa mágica que permite virar um navio em seu próprio eixo."],
@@ -10289,11 +10632,11 @@ for (const [slug, pt, en, es, page, spellPt, spellEn, spellEs] of PLAYER_CORE_WI
       name: `${spellPt} (${spellEn} / ${spellEs})`,
       names: { "pt-BR": spellPt, en: spellEn, es: spellEs },
       summaries: {
-        "pt-BR": `Magia inicial do currículo ${pt}; efeito integral pendente de revisão mecânica.`,
-        en: `Initial spell of the ${en}; full mechanical effect pending review.`,
-        es: `Conjuro inicial del plan ${es}; efecto mecánico completo pendiente de revisión.`
+        "pt-BR": `Magia inicial do currículo ${pt}; o enriquecimento mecânico estruturado é aplicado após a criação do registro.`,
+        en: `Initial spell of the ${en}; structured mechanics are applied after the record is created.`,
+        es: `Conjuro inicial del plan ${es}; las mecánicas estructuradas se aplican después de crear el registro.`
       },
-      description: `Magia inicial do currículo ${pt}; efeito integral pendente de revisão mecânica.`,
+      description: `Magia inicial do currículo ${pt}; o enriquecimento mecânico estruturado é aplicado após a criação do registro.`,
       rank: 1, level: 1, cantrip: true, focus: true, type: "Focus Cantrip",
       category: "Magia de Escola", classId: "class.wizard", classIds: ["class.wizard"],
       requiredSubclass: [`subclass.class.wizard.school_${slug}`],
@@ -10323,6 +10666,62 @@ for (const [slug, pt, en, es, summaryPt, summaryEn, summaryEs] of PLAYER_CORE_WI
     name: `${pt} (${en} / ${es})`, names: { "pt-BR": pt, en, es }, summaries: { "pt-BR": summaryPt, en: summaryEn, es: summaryEs },
     source: { book: PLAYER_CORE_SOURCE, page: 183 }, sourceApproximate: false, ruleset: "remaster", needs_review: false
   });
+}
+
+// Livro do Jogador Remaster, pp. 386–387: efeitos completos das magias de
+// escola iniciais do Mago. Os registros são criados acima junto das escolas,
+// por isso a confirmação é aplicada depois daquele bloco.
+const PLAYER_CORE_WIZARD_SCHOOL_MECHANICS = {
+  ars_grammatica: {
+    page: 386, traits: ["Aura", "Foco", "Incomum", "Manuseio", "Mago"], range: null, targets: null, duration: "sustentada até 1 minuto", defense: null,
+    summaries: { "pt-BR": "Uma aura de glifos protege você e aliados, concedendo +1 de estado na CA; Sustentar amplia o raio em 1,5 metro até 9 metros.", en: "A glyph aura protects you and allies, granting a +1 status bonus to AC; Sustaining expands its radius by 5 feet up to 30 feet.", es: "Una aura de glifos protege a ti y tus aliados, otorgando +1 de estado a la CA; Mantenerla amplía el radio 1,5 metros hasta 9 metros." },
+    mechanics: { area: "emanação de 1,5 metro centrada em você", effect: "+1 de estado na CA para você e aliados na área", sustain: "aumenta o raio em 1,5 metro", maximum: "9 metros", duration: "sustentada até 1 minuto" }
+  },
+  protean_form: {
+    page: 386, traits: ["Concentração", "Foco", "Incomum", "Manuseio", "Mago"], range: "9 metros", targets: "1 criatura viva", duration: null, defense: "Fortitude",
+    summaries: { "pt-BR": "Desorganiza a biologia de uma criatura viva: em falha ela fica enjoada 1; em falha crítica, enjoada 2 e desacelerada 1 enquanto estiver enjoada.", en: "Disrupts a living creature's biology: on a failure it becomes sickened 1; on a critical failure, sickened 2 and slowed 1 while sickened.", es: "Desorganiza la biología de una criatura viva: con un fallo queda nauseada 1; con un fallo crítico, nauseada 2 y ralentizada 1 mientras esté nauseada." },
+    mechanics: { range: "9 metros", target: "1 criatura viva", save: "Fortitude", success: "sem efeito", failure: "Enjoado 1", criticalFailure: "Enjoado 2 e Desacelerado 1 enquanto Enjoado" }
+  },
+  boundary: {
+    page: 387, traits: ["Concentração", "Foco", "Incomum", "Mago"], range: "9 metros", targets: "1 criatura convocada por você", duration: "até 1 minuto", defense: null,
+    summaries: { "pt-BR": "Fortalece uma criatura convocada, concedendo +1 de estado em todos os testes e CDs, incluindo CA, enquanto a convocação durar até 1 minuto.", en: "Strengthens a creature you summoned, granting a +1 status bonus to all checks and DCs, including AC, for up to 1 minute.", es: "Fortalece una criatura convocada por ti, otorgando +1 de estado a todas las pruebas y CD, incluida la CA, hasta 1 minuto." },
+    mechanics: { range: "9 metros", target: "1 criatura convocada por você", bonus: "+1 de estado em todos os testes e CDs, incluindo CA", duration: "até 1 minuto; enquanto a convocação durar" }
+  },
+  battle_magic: {
+    page: 386, traits: ["Foco", "Força", "Incomum", "Manuseio", "Mago"], range: "9 metros", targets: "1 criatura", duration: null, defense: null,
+    summaries: { "pt-BR": "Dispara um dardo de força que acerta automaticamente e causa 1d4+1 de dano de força; elevações aumentam o dano.", en: "Fires a force bolt that automatically hits and deals 1d4+1 force damage; heightened ranks increase the damage.", es: "Dispara un dardo de fuerza que impacta automáticamente y causa 1d4+1 de daño de fuerza; los rangos elevados aumentan el daño." },
+    mechanics: { range: "9 metros", target: "1 criatura", automaticHit: true, damage: "1d4+1 força", heightened: "+2: dano +1d4+1" }
+  },
+  civic_magic: {
+    page: 387, traits: ["Concentração", "Foco", "Incomum", "Manuseio", "Mago", "Terra"], range: "18 metros", targets: null, duration: "1 minuto", defense: null,
+    summaries: { "pt-BR": "Ergue barreiras de solo e transforma a área em terreno difícil; o tamanho da explosão depende de uma, duas ou três ações.", en: "Raises small earthen barriers and makes the area difficult terrain; the burst size depends on spending one, two, or three actions.", es: "Levanta barreras pequeñas de tierra y convierte el área en terreno difícil; el tamaño de la explosión depende de gastar una, dos o tres acciones." },
+    mechanics: { range: "18 metros", area: "explosão de 1,5m com 1 ação; 3m com 2; 4,5m com 3", duration: "1 minuto", effect: "chão da área vira terreno difícil; criaturas podem Interagir para remover barreira adjacente de 1,5m", heightened: "4º: barreiras flutuam e afetam criaturas voadoras como terreno difícil" }
+  },
+  mentalism: {
+    page: 387, traits: ["Concentração", "Foco", "Incapacitação", "Incomum", "Mago", "Mental"], range: "9 metros", targets: "1 criatura", duration: "até o início do seu próximo turno", defense: "Vontade",
+    summaries: { "pt-BR": "Desvia a ira de uma criatura: sucesso impõe –1 em ataques e dano contra você, falha impede ações hostis e falha crítica também deixa Atordoado 1.", en: "Diverts a creature's anger: a success imposes –1 to attacks and damage against you, a failure prevents hostile actions, and a critical failure also stuns 1.", es: "Desvía la ira de una criatura: un éxito impone –1 a ataques y daño contra ti, un fallo impide acciones hostiles y un fallo crítico también deja Aturdida 1." },
+    mechanics: { range: "9 metros", target: "1 criatura", save: "Vontade", duration: "até o início do seu próximo turno", criticalSuccess: "sem efeito", success: "–1 de penalidade circunstancial em ataques e dano contra você", failure: "não pode usar ações hostis contra você", criticalFailure: "Atordoado 1 e não pode usar ações hostis contra você" }
+  },
+  unified_magical_theory: {
+    page: 387, traits: ["Concentração", "Foco", "Incomum", "Mago"], range: "9 metros", targets: null, duration: "até o fim do seu próximo turno", defense: null,
+    summaries: { "pt-BR": "Ao testemunhar uma magia arcana conjurada por uma criatura próxima, você pode copiá-la temporariamente usando um espaço de Mago do mesmo ranque.", en: "When a nearby creature casts an arcane spell, you can temporarily copy it using a Wizard spell slot of the same rank.", es: "Cuando una criatura cercana lanza un conjuro arcano, puedes copiarlo temporalmente usando un espacio de Mago del mismo rango." },
+    mechanics: { trigger: "criatura a até 9 metros conjura magia arcana", effect: "até o fim do seu próximo turno, pode Conjurar a magia acionadora", cost: "espaço de magia de Mago do mesmo ranque", restriction: "magias do conjurador acionador não podem acionar novamente por 24 horas" }
+  }
+};
+for (const [slug, mechanics] of Object.entries(PLAYER_CORE_WIZARD_SCHOOL_MECHANICS)) {
+  const spell = PF2E_DATA.spells.find((record) => record.id === `spell.player_core.wizard.school_${slug}`);
+  if (!spell) continue;
+  spell.traits = mechanics.traits;
+  spell.range = mechanics.range;
+  spell.targets = mechanics.targets;
+  spell.duration = mechanics.duration;
+  spell.defense = mechanics.defense;
+  spell.summaries = mechanics.summaries;
+  spell.description = mechanics.summaries["pt-BR"];
+  spell.mechanics = mechanics.mechanics;
+  spell.source = { book: PLAYER_CORE_SOURCE, page: mechanics.page };
+  spell.needs_review = false;
+  spell.sourceApproximate = false;
 }
 
 // Segredos da Magia, pp. 62–64: os cinco estudos híbridos são a escolha de

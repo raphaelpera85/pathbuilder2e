@@ -5401,9 +5401,9 @@
     "name_pt": "Terra Agarradora",
     "name_en": "Grasping Earth",
     "name_es": "Tierra apresadora",
-    "description_pt": "Protrusões de rocha e solo agarram e enterram criaturas na área.",
-    "description_en": "Rage of Elements earth spell: Grasping Earth. Full mechanical text pending review.",
-    "description_es": "Conjuro de tierra de Rage of Elements: Tierra apresadora. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Projeções de rocha e solo agarram e enterram criaturas em uma explosão de 3 metros no chão; Sustentar causa dano às criaturas agarradas ou restringidas.",
+    "description_en": "Rock and soil protrusions grab and bury creatures in a 10-foot burst on the ground; Sustaining deals damage to creatures grabbed or restrained by the earth.",
+    "description_es": "Protuberancias de roca y tierra agarran y entierran criaturas en una explosión de 3 metros en el suelo; al Mantenerla causa daño a criaturas agarradas o restringidas.",
     "rank": 4,
     "is_cantrip": false,
     "is_focus": false,
@@ -5412,17 +5412,32 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
+    "range": "18 metros",
     "targets": null,
-    "duration": null,
-    "defense": null,
-    "traits": [],
+    "duration": "sustentada até 1 minuto",
+    "defense": "Fortitude",
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Terra"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 95,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "18 metros",
+        "area": "explosão de 3 metros no chão",
+        "save": "Fortitude",
+        "success": "sem efeito",
+        "failure": "agarrada pela terra",
+        "criticalFailure": "restrita pela terra",
+        "sustainDamage": "1d6 contundente se agarrada; 2d6 se restringida",
+        "escape": "contra CD de magia",
+        "heightened": "+2: dano ao Sustentar +1d6/+2d6"
+      },
       "needs_review": false
     }
   },
@@ -5431,9 +5446,9 @@
     "name_pt": "Terra Ondulante",
     "name_en": "Heaving Earth",
     "name_es": "Tierra ondulante",
-    "description_pt": "Uma onda atravessa o solo, sacode criaturas e explode em terra e pedras no alvo.",
-    "description_en": "Rage of Elements earth spell: Heaving Earth. Full mechanical text pending review.",
-    "description_es": "Conjuro de tierra de Rage of Elements: Tierra ondulante. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Uma onda atravessa o solo, empurra criaturas na linha e explode no alvo, causando 12d10 contundente e podendo empurrá-lo e derrubá-lo.",
+    "description_en": "A wave travels through the ground, pushes creatures in the line, then explodes at the target for 12d10 bludgeoning and can push it and knock it prone.",
+    "description_es": "Una onda atraviesa el suelo, empuja criaturas en la línea y explota en el objetivo, causando 12d10 contundente y pudiendo empujarlo y derribarlo.",
     "rank": 7,
     "is_cantrip": false,
     "is_focus": false,
@@ -5442,17 +5457,31 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
+    "range": "36 metros",
+    "targets": "1 criatura ou objeto no chão",
     "duration": null,
-    "defense": null,
-    "traits": [],
+    "defense": "Reflexos",
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Terra"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 95,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "36 metros",
+        "target": "1 criatura ou objeto no chão",
+        "lineEffect": "criaturas entre você e o alvo fazem Reflexos; falha empurra 3 metros",
+        "damage": "12d10 contundente",
+        "save": "Reflexos básico",
+        "failure": "alvo é empurrado 3 metros e fica caído",
+        "blockedBy": "efeito termina se não puder atravessar superfície sólida",
+        "heightened": "9º: explode em 1 alvo adicional na linha"
+      },
       "needs_review": false
     }
   },
@@ -5461,9 +5490,9 @@
     "name_pt": "Cerâmica Instantânea",
     "name_en": "Instant Pottery",
     "name_es": "Cerámica instantánea",
-    "description_pt": "Molda material da terra em objetos simples de cerâmica temporária.",
-    "description_en": "Rage of Elements earth spell: Instant Pottery. Full mechanical text pending review.",
-    "description_es": "Conjuro de tierra de Rage of Elements: Cerámica instantánea. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Molda material terroso do ambiente em um ou mais objetos de cerâmica com Volume leve; não cria arte complexa nem valor comercial.",
+    "description_en": "Shapes earthen material from the environment into one or more light-Bulk earthenware objects; it cannot create complex art or value.",
+    "description_es": "Moldea material terroso del entorno en uno o más objetos de loza de Volumen ligero; no puede crear arte compleja ni valor comercial.",
     "rank": 1,
     "is_cantrip": false,
     "is_focus": false,
@@ -5472,17 +5501,30 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
+    "range": "3 metros",
     "targets": null,
-    "duration": null,
+    "duration": "1 hora",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Terra"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 95,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "cast": "1 minuto",
+        "range": "3 metros",
+        "duration": "1 hora",
+        "bulk": "até Volume leve",
+        "material": "argila ou terra",
+        "limitation": "sem arte intrincada, partes móveis complexas ou valor; não pode ser vendido como valioso",
+        "heightened": "2º: Volume 1 e 8 horas; 3º: Volume 2 e 24 horas"
+      },
       "needs_review": false
     }
   },
@@ -5491,9 +5533,9 @@
     "name_pt": "Terra Interposta",
     "name_en": "Interposing Earth",
     "name_es": "Tierra interpuesta",
-    "description_pt": "Ergue uma barreira de terra para oferecer cobertura contra um ataque ou efeito de área.",
-    "description_en": "Rage of Elements earth spell: Interposing Earth. Full mechanical text pending review.",
-    "description_es": "Conjuro de tierra de Rage of Elements: Tierra interpuesta. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Uma reação ergue uma barreira de terra entre você e um Golpe ou efeito de área que exigiria Reflexos, concedendo cobertura padrão e reduzindo dano.",
+    "description_en": "A reaction raises an earthen barrier between you and a Strike or area effect requiring Reflex, granting standard cover and reducing damage.",
+    "description_es": "Una reacción levanta una barrera de tierra entre tú y un Golpe o efecto de área que requiera Reflejos, otorgando cobertura estándar y reduciendo daño.",
     "rank": 1,
     "is_cantrip": false,
     "is_focus": false,
@@ -5504,15 +5546,27 @@
     "cast_actions": "varies",
     "range": null,
     "targets": null,
-    "duration": null,
+    "duration": "3 rodadas",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Manuseio",
+      "Terra"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 95,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "trigger": "você é alvo de Golpe ou faria Reflexos contra efeito de área danoso",
+        "barrier": "1 polegada de espessura, 1,5m de comprimento e 1,5m de altura",
+        "cover": "cobertura padrão contra o gatilho",
+        "damageReduction": "2; se ainda sofrer dano, a barreira é destruída",
+        "stats": "CA 5, Dureza 2, 5 PV",
+        "duration": "3 rodadas ou até ser destruída",
+        "heightened": "4º: reduz 8, Dureza 8 e 20 PV"
+      },
       "needs_review": false
     }
   },
@@ -5521,9 +5575,9 @@
     "name_pt": "Aplainar Solo",
     "name_en": "Pave Ground",
     "name_es": "Allanar terreno",
-    "description_pt": "Nivela o solo e remove terreno difícil não mágico feito de terra, entulho ou areia.",
-    "description_en": "Rage of Elements earth spell: Pave Ground. Full mechanical text pending review.",
-    "description_es": "Conjuro de tierra de Rage of Elements: Allanar terreno. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Nivela o solo em uma linha de 18 metros, transformando terreno difícil não mágico de terra, entulho ou areia em terreno normal e podendo neutralizar o efeito mágico.",
+    "description_en": "Levels the ground in an 60-foot line, turning nonmagical difficult terrain of earth, rubble, or sand into normal terrain and potentially counteracting magical terrain.",
+    "description_es": "Nivela el suelo en una línea de 18 metros, convirtiendo terreno difícil no mágico de tierra, escombros o arena en terreno normal y pudiendo contrarrestar el terreno mágico.",
     "rank": 2,
     "is_cantrip": false,
     "is_focus": false,
@@ -5534,15 +5588,27 @@
     "cast_actions": "varies",
     "range": null,
     "targets": null,
-    "duration": null,
+    "duration": "sustentada até 1 minuto",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Terra"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 95,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "area": "linha de 18 metros ao longo do chão",
+        "duration": "sustentada até 1 minuto",
+        "effect": "terreno difícil ou maior não mágico de materiais terrosos vira normal",
+        "counteract": "pode tentar neutralizar terreno difícil mágico",
+        "limitation": "não remove ocultação nem causa perda de equilíbrio",
+        "heightened": "4º: linha 36 metros; 6º: linha 150 metros"
+      },
       "needs_review": false
     }
   },
@@ -5551,9 +5617,9 @@
     "name_pt": "Passo de Entulho",
     "name_en": "Rubble Step",
     "name_es": "Paso de escombros",
-    "description_pt": "Deixa um rastro de entulho que transforma os espaços abandonados em terreno difícil.",
-    "description_en": "Rage of Elements earth spell: Rubble Step. Full mechanical text pending review.",
-    "description_es": "Conjuro de tierra de Rage of Elements: Paso de escombros. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "O alvo deixa uma trilha de entulho que transforma os espaços de onde sai em terreno difícil por 2 rodadas, desde que esteja em contato com o chão.",
+    "description_en": "The target leaves a trail of rubble that turns spaces it leaves into difficult terrain for 2 rounds while it remains in contact with the ground.",
+    "description_es": "El objetivo deja un rastro de escombros que convierte los espacios que abandona en terreno difícil durante 2 asaltos mientras esté en contacto con el suelo.",
     "rank": 2,
     "is_cantrip": false,
     "is_focus": false,
@@ -5562,17 +5628,29 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
-    "duration": null,
+    "range": "toque",
+    "targets": "1 criatura disposta",
+    "duration": "1 minuto",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Terra"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 96,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "toque",
+        "target": "1 criatura disposta",
+        "duration": "1 minuto",
+        "trail": "cada espaço abandonado voluntariamente vira terreno difícil por 2 rodadas",
+        "requirement": "alvo precisa estar em contato com o chão",
+        "heightened": "4º: trilha dura 1 minuto e duração da magia 10 minutos"
+      },
       "needs_review": false
     }
   },
@@ -5581,9 +5659,9 @@
     "name_pt": "Forma de Areia",
     "name_en": "Sand Form",
     "name_es": "Forma de arena",
-    "description_pt": "Concede ao alvo aspectos de areia, resistência a certos danos e proteção contra sangramento.",
-    "description_en": "Rage of Elements earth spell: Sand Form. Full mechanical text pending review.",
-    "description_es": "Conjuro de tierra de Rage of Elements: Forma de arena. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "O alvo assume aspectos de areia, recebe resistência 5 a perfurante e cortante, não tem cheiro nem pode sangrar e fica ocultado em terreno arenoso.",
+    "description_en": "The target gains aspects of sand, resistance 5 to piercing and slashing, no scent, no bleeding, and concealment in sandy terrain.",
+    "description_es": "El objetivo adquiere aspectos de arena, resistencia 5 a perforante y cortante, ningún olor, no puede sangrar y obtiene ocultación en terreno arenoso.",
     "rank": 3,
     "is_cantrip": false,
     "is_focus": false,
@@ -5592,17 +5670,34 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
-    "duration": null,
+    "range": "toque",
+    "targets": "1 criatura disposta",
+    "duration": "10 minutos",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Terra"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 96,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "toque",
+        "target": "1 criatura disposta",
+        "duration": "10 minutos",
+        "resistances": "5 a perfurante e cortante",
+        "immunities": [
+          "sem cheiro",
+          "não pode sangrar"
+        ],
+        "concealment": "ocultada em terreno arenoso, inclusive a céu aberto",
+        "durationReduction": "reduz 1 minuto ao sofrer dano resistido",
+        "heightened": "5º: resistência 10; 7º: resistência 15"
+      },
       "needs_review": false
     }
   },
@@ -5611,9 +5706,9 @@
     "name_pt": "Blocos Deslizantes",
     "name_en": "Sliding Blocks",
     "name_es": "Bloques deslizantes",
-    "description_pt": "Conjura cubos de pedra que podem levitar e ser movidos para criar cobertura e obstáculos.",
-    "description_en": "Rage of Elements earth spell: Sliding Blocks. Full mechanical text pending review.",
-    "description_es": "Conjuro de tierra de Rage of Elements: Bloques deslizantes. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Conjura até seis cubos de pedra de 1,5 metro que podem levitar e ser movidos em até 3 metros ao Sustentar; cada cubo tem Dureza 10 e 40 PV.",
+    "description_en": "Conjures up to six 5-foot stone cubes that can levitate and move up to 10 feet when Sustained; each has Hardness 10 and 40 HP.",
+    "description_es": "Conjura hasta seis cubos de piedra de 1,5 metros que pueden levitar y moverse 3 metros al Mantener; cada uno tiene Dureza 10 y 40 PG.",
     "rank": 4,
     "is_cantrip": false,
     "is_focus": false,
@@ -5622,17 +5717,31 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
+    "range": "36 metros",
     "targets": null,
-    "duration": null,
+    "duration": "sustentada até 10 minutos",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Terra"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 96,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "36 metros",
+        "cubes": "até 6 cubos de 1,5 metro",
+        "duration": "sustentada até 10 minutos",
+        "stats": "CA 10, Dureza 10, 40 PV",
+        "movement": "ao Sustentar, move até 2 cubos até 3 metros em qualquer direção",
+        "climb": "Atletismo CD 10",
+        "expiration": "desfaz se ficar além do alcance",
+        "heightened": "+2: cubos +10 PV e movimento +1,5 metro"
+      },
       "needs_review": false
     }
   },
@@ -7117,9 +7226,9 @@
     "name_pt": "Chuva Congelante",
     "name_en": "Freezing Rain",
     "name_es": "Lluvia congelante",
-    "description_pt": "Cria chuva que torna a área difícil e pode congelar para causar dano de frio e lentidão.",
-    "description_en": "Rage of Elements water spell: Freezing Rain. Full mechanical text pending review.",
-    "description_es": "Conjuro de agua de Rage of Elements: Lluvia congelante. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Uma explosão de 6 metros vira terreno difícil e apaga fogos; ao congelar a chuva, causa 4d6 frio e pode deixar criaturas Lentas.",
+    "description_en": "A 20-foot burst becomes difficult terrain and extinguishes fires; when frozen, it deals 4d6 cold and can make creatures slowed.",
+    "description_es": "Una explosión de 6 metros se vuelve terreno difícil y extingue fuegos; al congelarse, causa 4d6 frío y puede ralentizar criaturas.",
     "rank": 5,
     "is_cantrip": false,
     "is_focus": false,
@@ -7128,17 +7237,34 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
+    "range": "36 metros",
     "targets": null,
-    "duration": null,
-    "defense": null,
-    "traits": [],
+    "duration": "sustentada até 10 minutos",
+    "defense": "Reflexos",
+    "traits": [
+      "Frio",
+      "Concentração",
+      "Manuseio",
+      "Água"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 173,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "36 metros",
+        "area": "explosão de 6 metros",
+        "duration": "sustentada até 10 minutos",
+        "terrain": "terreno difícil e apaga fogos não mágicos",
+        "sustain": "move área até 6 metros e pode congelar",
+        "damage": "4d6 frio",
+        "success": "metade",
+        "failure": "dano total e Lento 1 por 1 rodada",
+        "criticalFailure": "dano dobrado e Lento 2 por 1 rodada",
+        "heightened": "+1: dano +1d6"
+      },
       "needs_review": false
     }
   },
@@ -7147,9 +7273,9 @@
     "name_pt": "Pilar de Gelo",
     "name_en": "Frost Pillar",
     "name_es": "Pilar de escarcha",
-    "description_pt": "Aprisiona uma criatura em um pilar de gelo resistente até que ele seja destruído ou a magia termine.",
-    "description_en": "Rage of Elements water spell: Frost Pillar. Full mechanical text pending review.",
-    "description_es": "Conjuro de agua de Rage of Elements: Pilar de escarcha. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Gelo cristaliza ao redor do alvo; em falha, ele fica contido em um pilar com CA 10, Dureza 10, 60 PV e fraqueza 15 a fogo.",
+    "description_en": "Ice crystallizes around the target; on a failure it is restrained in a pillar with AC 10, Hardness 10, 60 HP, and weakness 15 to fire.",
+    "description_es": "El hielo cristaliza alrededor del objetivo; con un fallo queda restringido en un pilar con CA 10, Dureza 10, 60 PG y debilidad 15 al fuego.",
     "rank": 6,
     "is_cantrip": false,
     "is_focus": false,
@@ -7158,17 +7284,32 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
-    "duration": null,
-    "defense": null,
-    "traits": [],
+    "range": "9 metros",
+    "targets": "1 criatura",
+    "duration": "sustentada até 1 minuto",
+    "defense": "Reflexos",
+    "traits": [
+      "Frio",
+      "Concentração",
+      "Manuseio",
+      "Água"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 173,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "9 metros",
+        "target": "1 criatura",
+        "save": "Reflexos",
+        "success": "empurra para espaço adjacente à escolha",
+        "failure": "fica contida no pilar",
+        "pillar": "CA 10, Dureza 10, 60 PV, imune a críticos/frio/precisão, fraqueza 15 fogo",
+        "ending": "destruir gelo liberta e encerra",
+        "duration": "sustentada até 1 minuto"
+      },
       "needs_review": false
     }
   },
@@ -7177,9 +7318,9 @@
     "name_pt": "Aperto das Profundezas",
     "name_en": "Grasp of the Deep",
     "name_es": "Agarre de las profundidades",
-    "description_pt": "Esmaga e desorienta uma criatura com a pressão fantasmagórica do mar profundo, podendo agarrá-la.",
-    "description_en": "Rage of Elements water spell: Grasp of the Deep. Full mechanical text pending review.",
-    "description_es": "Conjuro de agua de Rage of Elements: Agarre de las profundidades. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Uma pressão fantasmagórica causa 6d6 contundente; em falha, o alvo fica agarrado e sofre 6d6 adicionais, podendo Escapar contra a CD da magia.",
+    "description_en": "Phantasmal deep-sea pressure deals 6d6 bludgeoning; on a failure, the target becomes grabbed and takes 6d6 additional damage, escaping against the spell DC.",
+    "description_es": "La presión fantasmal del mar profundo causa 6d6 contundente; con un fallo, el objetivo queda agarrado y sufre 6d6 adicional, pudiendo Escapar contra la CD.",
     "rank": 4,
     "is_cantrip": false,
     "is_focus": false,
@@ -7188,17 +7329,32 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
-    "duration": null,
-    "defense": null,
-    "traits": [],
+    "range": "18 metros",
+    "targets": "1 criatura",
+    "duration": "1 minuto",
+    "defense": "Vontade",
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Mental",
+      "Água"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 173,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "18 metros",
+        "target": "1 criatura",
+        "save": "Vontade",
+        "damage": "6d6 contundente",
+        "success": "metade",
+        "failure": "metade, agarrado e 6d6 adicional; Escapar contra CD da magia",
+        "criticalFailure": "como falha, dano inicial dobrado",
+        "heightened": "6º: até 5 alvos"
+      },
       "needs_review": false
     }
   },
@@ -7207,9 +7363,9 @@
     "name_pt": "Profundezas Famintas",
     "name_en": "Hungry Depths",
     "name_es": "Profundidades hambrientas",
-    "description_pt": "Abre um vórtice de água corrompida que causa dano e se move pela área enquanto é sustentado.",
-    "description_en": "Rage of Elements water spell: Hungry Depths. Full mechanical text pending review.",
-    "description_es": "Conjuro de agua de Rage of Elements: Profundidades hambrientas. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Um vórtice em uma explosão de 1,5 metro causa 4d8 perfurante + 4d4 vazio; ao sustentar, cresce até 4,5 metros ou move 3 metros.",
+    "description_en": "A vortex in a 5-foot burst deals 4d8 piercing plus 4d4 void; when sustained, it grows to 15 feet or moves 10 feet.",
+    "description_es": "Un vórtice en una explosión de 1,5 metros causa 4d8 perforante + 4d4 vacío; al sostenerlo, crece hasta 4,5 metros o se mueve 3 metros.",
     "rank": 7,
     "is_cantrip": false,
     "is_focus": false,
@@ -7218,17 +7374,32 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
+    "range": "36 metros",
     "targets": null,
-    "duration": null,
-    "defense": null,
-    "traits": [],
+    "duration": "sustentada até 1 minuto",
+    "defense": "Reflexos básico",
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Vazio",
+      "Água"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 173,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "36 metros",
+        "area": "explosão de 1,5 metro, máximo 4,5 metros",
+        "damage": "4d8 perfurante + 4d4 vazio",
+        "save": "Reflexos básico",
+        "sustain": "cresce 1,5 metro ou move 3 metros",
+        "frequency": "uma vez por rodada por criatura",
+        "underwater": "cilindro de 12 metros de altura e raio 1,5 metro",
+        "heightened": "9º: 5d8 perfurante + 5d4 vazio"
+      },
       "needs_review": false
     }
   },
@@ -7237,9 +7408,9 @@
     "name_pt": "Memória Nebulosa",
     "name_en": "Misty Memory",
     "name_es": "Memoria brumosa",
-    "description_pt": "Revela em uma névoa cenas silenciosas que aconteceram perto de uma massa de água nas últimas 24 horas.",
-    "description_en": "Rage of Elements water spell: Misty Memory. Full mechanical text pending review.",
-    "description_es": "Conjuro de agua de Rage of Elements: Memoria brumosa. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Após 1 minuto, uma névoa mostra em silêncio uma cena ocorrida até 24 horas antes em uma explosão de 9 metros próxima à água.",
+    "description_en": "After 1 minute, mist silently shows a scene from up to 24 hours ago in a 30-foot burst near the water.",
+    "description_es": "Tras 1 minuto, la niebla muestra en silencio una escena de hasta 24 horas antes en una explosión de 9 metros cerca del agua.",
     "rank": 4,
     "is_cantrip": false,
     "is_focus": false,
@@ -7250,16 +7421,30 @@
     ],
     "cast_actions": "varies",
     "range": null,
-    "targets": null,
-    "duration": null,
+    "targets": "1 corpo de água de pelo menos 0,5 metro quadrado",
+    "duration": "sustentada até 10 minutos",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Incomum",
+      "Concentração",
+      "Manuseio",
+      "Água"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 173,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "cast": "1 minuto",
+        "target": "corpo de água de pelo menos 0,5 metro quadrado",
+        "past": "até 24 horas",
+        "scene": "explosão de 9 metros, eventos até 18 metros da água, silhuetas sem detalhes finos ou som",
+        "sustain": "reproduz para frente ou trás, 1 minuto por minuto",
+        "counteract": "vento mágico pode interromper com contramágica",
+        "duration": "sustentada até 10 minutos"
+      },
       "needs_review": false
     }
   },
@@ -7268,9 +7453,9 @@
     "name_pt": "Oceano Pessoal",
     "name_en": "Personal Ocean",
     "name_es": "Océano personal",
-    "description_pt": "Envolve você em uma bolha de água que permite respirar e nadar, mas limita ataques e magias de fogo.",
-    "description_en": "Rage of Elements water spell: Personal Ocean. Full mechanical text pending review.",
-    "description_es": "Conjuro de agua de Rage of Elements: Océano personal. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Uma bolha de água do mar permite respirar, falar e perceber normalmente, concede Velocidade de Natação igual à terrestre e aplica regras de combate aquático.",
+    "description_en": "A bubble of seawater lets you breathe, speak, and perceive normally, grants a swim Speed equal to land Speed, and applies aquatic combat rules.",
+    "description_es": "Una burbuja de agua de mar permite respirar, hablar y percibir normalmente, otorga Velocidad de Nadar igual a la terrestre y aplica combate acuático.",
     "rank": 6,
     "is_cantrip": false,
     "is_focus": false,
@@ -7281,15 +7466,26 @@
     "cast_actions": "varies",
     "range": null,
     "targets": null,
-    "duration": null,
+    "duration": "1 minuto",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Água"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 174,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "duration": "1 minuto",
+        "movement": "Velocidade de Natação igual à terrestre se não possuir",
+        "aquatic": "ataques corpo a corpo contundentes/cortantes contra você sofrem -2; não lança magias/ações de Fogo",
+        "fire": "apaga fogos não mágicos ao passar e pode tentar contramágica em fogos mágicos",
+        "dismissal": true
+      },
       "needs_review": false
     }
   },
@@ -7298,9 +7494,9 @@
     "name_pt": "Pilar de Água",
     "name_en": "Pillar of Water",
     "name_es": "Pilar de agua",
-    "description_pt": "Cria um cilindro de água no qual criaturas podem nadar ou caminhar com dificuldade.",
-    "description_en": "Rage of Elements water spell: Pillar of Water. Full mechanical text pending review.",
-    "description_es": "Conjuro de agua de Rage of Elements: Pilar de agua. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Cria um cilindro de água fresca de raio até 4,5 metros e altura até 18 metros; criaturas nadam nele ou caminham no fundo difícil.",
+    "description_en": "Creates a cylinder of fresh water up to 15 feet in radius and 60 feet high; creatures Swim inside or walk along a difficult bottom.",
+    "description_es": "Crea un cilindro de agua dulce de hasta 4,5 metros de radio y 18 metros de alto; las criaturas Nadan dentro o caminan por el fondo difícil.",
     "rank": 3,
     "is_cantrip": false,
     "is_focus": false,
@@ -7309,17 +7505,28 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
+    "range": "36 metros",
     "targets": null,
-    "duration": null,
+    "duration": "1 minuto",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Água"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 174,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "36 metros",
+        "shape": "cilindro, raio máximo 4,5 metros e altura máxima 18 metros",
+        "duration": "1 minuto",
+        "movement": "Swim Athletics CD 10; no chão sólido, caminhar no fundo é terreno difícil",
+        "exit": "criatura que sai cai ou pousa conforme posição"
+      },
       "needs_review": false
     }
   },
@@ -7328,28 +7535,41 @@
     "name_pt": "Respingar Revigorante",
     "name_en": "Rousing Splash",
     "name_es": "Salpicadura estimulante",
-    "description_pt": "Concede pontos de vida temporários e ajuda uma criatura a se recuperar de dano persistente de ácido ou fogo.",
-    "description_en": "Rage of Elements water spell: Rousing Splash. Full mechanical text pending review.",
-    "description_es": "Conjuro de agua de Rage of Elements: Salpicadura estimulante. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Um respingo frio concede 1d4 PV temporários por 1 minuto e permite uma tentativa imediata de recuperação de um dano persistente de ácido ou fogo.",
+    "description_en": "A cold splash grants 1d4 temporary Hit Points for 1 minute and allows an immediate flat check to recover from persistent acid or fire damage.",
+    "description_es": "Una salpicadura fría otorga 1d4 PG temporales durante 1 minuto y permite una prueba plana inmediata para recuperarse de daño persistente de ácido o fuego.",
     "rank": 1,
-    "is_cantrip": false,
+    "is_cantrip": true,
     "is_focus": false,
     "traditions": [
       "divine",
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
+    "range": "18 metros",
+    "targets": "1 criatura",
     "duration": null,
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Cantrip",
+      "Concentração",
+      "Manuseio",
+      "Água"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 174,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "18 metros",
+        "target": "1 criatura",
+        "tempHP": "1d4 por 1 minuto",
+        "persistent": "teste plano imediato para recuperar ácido ou fogo persistente com CD reduzida por assistência",
+        "immunity": "10 minutos para PV temporários desta magia",
+        "heightened": "+1: PV temporários +1d4"
+      },
       "needs_review": false
     }
   },
@@ -7358,9 +7578,9 @@
     "name_pt": "Ondulações de Vidência",
     "name_en": "Scrying Ripples",
     "name_es": "Ondulaciones adivinatorias",
-    "description_pt": "Permite observar e ouvir através de águas correntes próximas, mudando o ponto observado enquanto sustenta.",
-    "description_en": "Rage of Elements water spell: Scrying Ripples. Full mechanical text pending review.",
-    "description_es": "Conjuro de agua de Rage of Elements: Ondulaciones adivinatorias. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Ao tocar a água, você localiza água corrente desocupada a até 150 metros e pode ver e ouvir por uma fonte durante a duração.",
+    "description_en": "By touching water, you locate unoccupied flowing water within 500 feet and can see and hear through one source for the duration.",
+    "description_es": "Al tocar el agua, localizas agua corriente desocupada a 150 metros y puedes ver y oír a través de una fuente durante la duración.",
     "rank": 3,
     "is_cantrip": false,
     "is_focus": false,
@@ -7371,17 +7591,32 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
-    "duration": null,
+    "range": "toque",
+    "targets": "pelo menos 3,8 litros de água",
+    "duration": "sustentada até 10 minutos",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Vidência",
+      "Água"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 175,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "cast": "1 minuto",
+        "range": "toque",
+        "target": "pelo menos 3,8 litros de água",
+        "detection": "localiza água corrente com superfície de pelo menos 0,1m² a até 150 metros",
+        "sense": "vê e ouve por uma fonte; campo perpendicular à superfície",
+        "sustain": "troca fonte ou posição na mesma fonte",
+        "ending": "termina se água parar de fluir; criatura Percebe contra CD da magia",
+        "heightened": "5º: alcance 1,6 quilômetro"
+      },
       "needs_review": false
     }
   },
@@ -7390,9 +7625,9 @@
     "name_pt": "Impermeabilizar",
     "name_en": "Waterproof",
     "name_es": "Impermeabilizar",
-    "description_pt": "Impede que um objeto absorva água e concede proteção contra efeitos de água e ácido.",
-    "description_en": "Rage of Elements water spell: Waterproof. Full mechanical text pending review.",
-    "description_es": "Conjuro de agua de Rage of Elements: Impermeabilizar. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Impede que um objeto absorva água, concede resistência 10 a ácido e +2 nos salvamentos e CDs contra efeitos de Água ou Ácido que causem dano.",
+    "description_en": "Prevents an object from taking on water, grants resistance 10 to acid, and +2 to saves and DCs against damaging water or acid effects.",
+    "description_es": "Impide que un objeto absorba agua, otorga resistencia 10 al ácido y +2 a salvaciones y CD contra efectos dañinos de agua o ácido.",
     "rank": 2,
     "is_cantrip": false,
     "is_focus": false,
@@ -7401,17 +7636,28 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
-    "duration": null,
+    "range": "toque",
+    "targets": "1 objeto de até Volume 10",
+    "duration": "1 hora",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Água"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 175,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "target": "1 objeto de até Volume 10",
+        "duration": "1 hora",
+        "resistance": "10 ao ácido",
+        "bonus": "+2 em salvamentos e CDs contra efeitos danosos de Água ou Ácido",
+        "heightened": "4º: 1 dia; 8º: ilimitada"
+      },
       "needs_review": false
     }
   },
@@ -7420,9 +7666,9 @@
     "name_pt": "Redemoinho",
     "name_en": "Whirlpool",
     "name_es": "Remolino",
-    "description_pt": "Cria um grande vórtice que causa dano, torna a área difícil e puxa criaturas para o centro.",
-    "description_en": "Rage of Elements water spell: Whirlpool. Full mechanical text pending review.",
-    "description_es": "Conjuro de agua de Rage of Elements: Remolino. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Um cilindro de 7,5 metros de raio e 6 metros de altura vira terreno difícil, permite respirar em ar ou água e causa 6d10 contundente a cada rodada.",
+    "description_en": "A cylinder 25 feet in radius and 20 feet high becomes difficult terrain, lets air- and water-breathers breathe, and deals 6d10 bludgeoning each round.",
+    "description_es": "Un cilindro de 7,5 metros de radio y 6 metros de alto se vuelve terreno difícil, permite respirar en aire o agua y causa 6d10 contundente cada asalto.",
     "rank": 8,
     "is_cantrip": false,
     "is_focus": false,
@@ -7431,17 +7677,34 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
+    "range": "150 metros",
     "targets": null,
-    "duration": null,
-    "defense": null,
-    "traits": [],
+    "duration": "sustentada até 1 minuto",
+    "defense": "Reflexos",
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Água"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 175,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "150 metros",
+        "area": "cilindro de raio 7,5 metros e altura 6 metros",
+        "duration": "sustentada até 1 minuto",
+        "terrain": "terreno difícil; Swim em vez de Stride, CD igual à magia",
+        "damage": "6d10 contundente",
+        "save": "Reflexos",
+        "success": "metade",
+        "failure": "dano total e puxa 3 metros ao centro",
+        "criticalFailure": "dano dobrado e puxa ao centro",
+        "sustain": "repete dano uma vez por rodada",
+        "heightened": "+1: dano +1d10"
+      },
       "needs_review": false
     }
   },
@@ -7450,9 +7713,9 @@
     "name_pt": "Salva de Flechas",
     "name_en": "Arrow Salvo",
     "name_es": "Salva de flechas",
-    "description_pt": "Conjura um arco de madeira imenso que dispara uma salva de flechas contra inimigos próximos.",
-    "description_en": "Rage of Elements wood spell: Arrow Salvo. Full mechanical text pending review.",
-    "description_es": "Conjuro de madera de Rage of Elements: Salva de flechas. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Um arco de madeira dispara flechas enormes em uma explosão de 9 metros, causando 8d10 perfurante e derrubando em falha crítica.",
+    "description_en": "A wooden bow launches massive arrows in a 30-foot burst, dealing 8d10 piercing and knocking creatures prone on a critical failure.",
+    "description_es": "Un arco de madera dispara flechas enormes en una explosión de 9 metros, causando 8d10 perforante y derribando con un fallo crítico.",
     "rank": 6,
     "is_cantrip": false,
     "is_focus": false,
@@ -7461,17 +7724,29 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
+    "range": "30 metros",
     "targets": null,
     "duration": null,
-    "defense": null,
-    "traits": [],
+    "defense": "Reflexos básico",
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Madeira"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 196,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "30 metros",
+        "area": "explosão de 9 metros",
+        "damage": "8d10 perfurante",
+        "save": "Reflexos básico",
+        "criticalFailure": "caído",
+        "heightened": "+1: dano +1d10"
+      },
       "needs_review": false
     }
   },
@@ -7480,9 +7755,9 @@
     "name_pt": "Raízes Entrelaçadas",
     "name_en": "Entwined Roots",
     "name_es": "Raíces entrelazadas",
-    "description_pt": "Protege criaturas vivas com raízes flexíveis que concedem resistência e capturam munição que falha.",
-    "description_en": "Rage of Elements wood spell: Entwined Roots. Full mechanical text pending review.",
-    "description_es": "Conjuro de madera de Rage of Elements: Raíces entrelazadas. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Raízes protegem até cinco criaturas em uma explosão de 6 metros, concedendo resistência 5 a contundente e perfurante e capturando munição que não cause dano.",
+    "description_en": "Roots protect up to five willing living creatures in a 20-foot burst, granting resistance 5 to bludgeoning and piercing and catching ammunition that deals no damage.",
+    "description_es": "Raíces protegen hasta cinco criaturas vivas dispuestas en una explosión de 6 metros, otorgando resistencia 5 a contundente y perforante y atrapando munición que no cause daño.",
     "rank": 5,
     "is_cantrip": false,
     "is_focus": false,
@@ -7492,16 +7767,29 @@
     ],
     "cast_actions": "varies",
     "range": null,
-    "targets": null,
-    "duration": null,
+    "targets": "até 5 criaturas vivas dispostas",
+    "duration": "10 minutos",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Madeira"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 196,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "cast": "1 minuto",
+        "area": "explosão de 6 metros",
+        "targets": "até 5 criaturas vivas dispostas",
+        "resistance": "5 a contundente e perfurante",
+        "ammunition": "captura arma arremessada ou munição de ataque à distância que não causar dano",
+        "duration": "10 minutos",
+        "heightened": "7º: resistência 10; 9º: 15"
+      },
       "needs_review": false
     }
   },
@@ -7510,9 +7798,9 @@
     "name_pt": "Flora Florescente",
     "name_en": "Flourishing Flora",
     "name_es": "Flora floreciente",
-    "description_pt": "Faz plantas crescerem rapidamente em uma área, causando dano e efeitos variados conforme a planta escolhida.",
-    "description_en": "Rage of Elements wood spell: Flourishing Flora. Full mechanical text pending review.",
-    "description_es": "Conjuro de madera de Rage of Elements: Flora floreciente. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Plantas crescem rapidamente em uma explosão de 1,5 metro e causam 2d4; cactos, flores, frutos ou raízes definem o dano e o efeito crítico.",
+    "description_en": "Plants rapidly grow in a 5-foot burst dealing 2d4; cacti, flowers, fruits, or roots determine damage and the critical effect.",
+    "description_es": "Plantas crecen rápidamente en una explosión de 1,5 metros y causan 2d4; cactus, flores, frutos o raíces determinan el daño y el efecto crítico.",
     "rank": 1,
     "is_cantrip": false,
     "is_focus": false,
@@ -7521,17 +7809,30 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
+    "range": "9 metros",
+    "targets": "explosão de 1,5 metro",
     "duration": null,
-    "defense": null,
-    "traits": [],
+    "defense": "Reflexos básico",
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Planta",
+      "Madeira"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 196,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "9 metros",
+        "area": "explosão de 1,5 metro",
+        "damage": "2d4",
+        "save": "Reflexos básico",
+        "options": "cactos: perfurante e 1 sangramento persistente; flores: veneno e ofuscado 2 rodadas; frutos: contundente e desajeitado 1 por 2 rodadas; raízes: contundente e caído",
+        "heightened": "+1: dano +1d4 e sangramento dos cactos +1"
+      },
       "needs_review": false
     }
   },
@@ -7540,9 +7841,9 @@
     "name_pt": "Espíritos de Madeira Prestativos",
     "name_en": "Helpful Wood Spirits",
     "name_es": "Espíritus de madera serviciales",
-    "description_pt": "Invoca espíritos de madeira que realizam tarefas, distraem inimigos, criam terreno difícil ou procuram na área.",
-    "description_en": "Rage of Elements wood spell: Helpful Wood Spirits. Full mechanical text pending review.",
-    "description_es": "Conjuro de madera de Rage of Elements: Espíritus de madera serviciales. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Espíritos de madeira ocupam uma explosão de 1,5 metro e podem executar tarefas, distrair, criar terreno difícil ou Procurar.",
+    "description_en": "Wood spirits occupy a 5-foot burst and can perform tasks, distract, create difficult terrain, or Seek.",
+    "description_es": "Espíritus de madera ocupan una explosión de 1,5 metros y pueden realizar tareas, distraer, crear terreno difícil o Buscar.",
     "rank": 2,
     "is_cantrip": false,
     "is_focus": false,
@@ -7551,17 +7852,31 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
+    "range": "9 metros",
     "targets": null,
-    "duration": null,
-    "defense": null,
-    "traits": [],
+    "duration": "sustentada até 1 minuto",
+    "defense": "Reflexos",
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Madeira"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 196,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "9 metros",
+        "area": "explosão de 1,5 metro",
+        "duration": "sustentada até 1 minuto",
+        "sustain": "move a área até 3 metros e escolhe ajuda",
+        "chorus": "tarefa manual simples, até Volume 2",
+        "distract": "criaturas ficam desprevenidas em Reflexos",
+        "obstacle": "área vira terreno difícil",
+        "search": "Procuram usando sua Percepção"
+      },
       "needs_review": false
     }
   },
@@ -7570,9 +7885,9 @@
     "name_pt": "Raízes Drenadoras de Vida",
     "name_en": "Life-Draining Roots",
     "name_es": "Raíces drenadoras de vida",
-    "description_pt": "Lança raízes perfurantes em uma linha, causando dano e concedendo vida temporária por criaturas vivas atingidas.",
-    "description_en": "Rage of Elements wood spell: Life-Draining Roots. Full mechanical text pending review.",
-    "description_es": "Conjuro de madera de Rage of Elements: Raíces drenadoras de vida. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Raízes espinhosas atravessam uma linha de 9 metros, causando 8d6 perfurante e concedendo 1d4 PV temporários por criatura viva atingida.",
+    "description_en": "Thorny roots cross a 30-foot line, dealing 8d6 piercing and granting 1d4 temporary Hit Points per living creature hit.",
+    "description_es": "Raíces espinosas cruzan una línea de 9 metros, causando 8d6 perforante y otorgando 1d4 PG temporales por criatura viva alcanzada.",
     "rank": 4,
     "is_cantrip": false,
     "is_focus": false,
@@ -7584,14 +7899,27 @@
     "range": null,
     "targets": null,
     "duration": null,
-    "defense": null,
-    "traits": [],
+    "defense": "Reflexos básico",
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Planta",
+      "Madeira"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 196,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "area": "linha de 9 metros",
+        "damage": "8d6 perfurante",
+        "save": "Reflexos básico",
+        "tempHP": "1d4 por criatura viva na linha",
+        "duration": "1 minuto",
+        "heightened": "+1: dano +2d6"
+      },
       "needs_review": false
     }
   },
@@ -7600,9 +7928,9 @@
     "name_pt": "Lignificar",
     "name_en": "Lignify",
     "name_es": "Lignificar",
-    "description_pt": "Transforma lentamente a carne de uma criatura em madeira, aplicando lentidão até uma petrificação de madeira.",
-    "description_en": "Rage of Elements wood spell: Lignify. Full mechanical text pending review.",
-    "description_es": "Conjuro de madera de Rage of Elements: Lignificar. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Transforma lentamente a carne em madeira: sucesso deixa Lento 1, falha inicia testes recorrentes e pode petrificar permanentemente em madeira.",
+    "description_en": "Slowly turns flesh into wood: success makes the target slowed 1, while failure causes recurring saves and can permanently petrify it as wood.",
+    "description_es": "Convierte lentamente la carne en madera: éxito deja ralentizado 1, mientras fallo causa salvaciones recurrentes y puede petrificarlo como madera.",
     "rank": 6,
     "is_cantrip": false,
     "is_focus": false,
@@ -7611,17 +7939,32 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
-    "duration": null,
-    "defense": null,
-    "traits": [],
+    "range": "36 metros",
+    "targets": "1 criatura de carne",
+    "duration": "varia",
+    "defense": "Fortitude",
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Planta",
+      "Madeira"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 197,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "36 metros",
+        "target": "1 criatura de carne; Planta recebe +2 circunstancial",
+        "save": "Fortitude",
+        "success": "Lento 1 por 1 rodada",
+        "failure": "Lento 1 e teste Fortitude no fim de cada turno; falha aumenta 1 ou 2 em crítica, sucesso reduz 1",
+        "criticalFailure": "inicia Lento 2",
+        "ending": "quando incapaz de agir, petrifica permanentemente sem magia em madeira; encerra se removido Lento ou petrificado magicamente",
+        "duration": "varia; incapacitação nos testes recorrentes"
+      },
       "needs_review": false
     }
   },
@@ -7630,9 +7973,9 @@
     "name_pt": "Caminho de Lótus",
     "name_en": "Lotus Walk",
     "name_es": "Paso de loto",
-    "description_pt": "Faz flores aquáticas surgirem sob seus pés para caminhar sobre água e outros líquidos.",
-    "description_en": "Rage of Elements wood spell: Lotus Walk. Full mechanical text pending review.",
-    "description_es": "Conjuro de madera de Rage of Elements: Paso de loto. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Flores aquáticas permitem caminhar sobre água e líquidos, deixando uma trilha de folhas que sustenta uma criatura Média até o próximo turno.",
+    "description_en": "Water plants let you walk on water and other liquids, leaving a trail of leaves that supports one Medium creature until your next turn.",
+    "description_es": "Plantas acuáticas te permiten caminar sobre agua y otros líquidos, dejando un rastro de hojas que soporta una criatura Mediana hasta tu próximo turno.",
     "rank": 3,
     "is_cantrip": false,
     "is_focus": false,
@@ -7644,15 +7987,27 @@
     "cast_actions": "varies",
     "range": null,
     "targets": null,
-    "duration": null,
+    "duration": "1 minuto",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Planta",
+      "Madeira"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 197,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "duration": "1 minuto",
+        "movement": "Anda ou Dá Passos sobre água; pode submergir e então usa Swim",
+        "trail": "cada espaço sustenta 1 criatura Média até fim do próximo turno",
+        "dismissal": true,
+        "heightened": "4º: 10 minutos e trilha até fim; 6º: 1 hora e trilha permanente, removível por dispel magic"
+      },
       "needs_review": false
     }
   },
@@ -7661,9 +8016,9 @@
     "name_pt": "Manto do Coração Inabalável",
     "name_en": "Mantle of the Unwavering Heart",
     "name_es": "Manto del corazón inquebrantable",
-    "description_pt": "Envolve você em madeira viva e permite escolher entre vitalidade, perfume debilitante, grande estatura ou vontade resistente.",
-    "description_en": "Rage of Elements wood spell: Mantle of the Unwavering Heart. Full mechanical text pending review.",
-    "description_es": "Conjuro de madera de Rage of Elements: Manto del corazón inquebrantable. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Escolhe duas propriedades de um manto vegetal: cura rápida, perfume debilitante, tronco Grande com golpe de agarrar ou vontade imune a fascinação.",
+    "description_en": "Choose two plant-mantle properties: fast healing, debilitating perfume, a Large trunk with a grabbing attack, or an unwavering mind immune to fascination.",
+    "description_es": "Elige dos propiedades del manto vegetal: curación rápida, perfume debilitante, tronco Grande con ataque de agarrar o mente inmune a fascinación.",
     "rank": 5,
     "is_cantrip": false,
     "is_focus": false,
@@ -7674,15 +8029,29 @@
     "cast_actions": "varies",
     "range": null,
     "targets": null,
-    "duration": null,
+    "duration": "1 minuto",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Morfia",
+      "Planta",
+      "Madeira"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 197,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "duration": "1 minuto",
+        "choices": "escolhe 2; 1 ação Concentration troca uma",
+        "evergreen": "cura rápida 3 e +2 contra veneno/doença",
+        "perfume": "aura olfativa 4,5m; impede scent e Enjoado 1",
+        "trunk": "tamanho Grande, Desajeitado 1, alcance +1,5m e ramo 2d8 contundente + Agarrar",
+        "will": "imune fascinado e +1 em salvamentos/CDs contra mental"
+      },
       "needs_review": false
     }
   },
@@ -7691,9 +8060,9 @@
     "name_pt": "Vagens de Pólen",
     "name_en": "Pollen Pods",
     "name_es": "Vainas de polen",
-    "description_pt": "Cultiva bulbos de madeira sensíveis ao movimento que liberam pólen venenoso quando ativados.",
-    "description_en": "Rage of Elements wood spell: Pollen Pods. Full mechanical text pending review.",
-    "description_es": "Conjuro de madera de Rage of Elements: Vainas de polen. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Quatro bulbos liberam pólen ao serem tocados, danificados ou quando uma criatura se aproxima; uma explosão de 4,5 metros causa 8d8 veneno e condições.",
+    "description_en": "Four bulbs release pollen when touched, damaged, or approached; a 15-foot emanation deals 8d8 poison and conditions.",
+    "description_es": "Cuatro bulbos liberan polen al tocarlos, dañarlos o acercarse; una emanación de 4,5 metros causa 8d8 veneno y condiciones.",
     "rank": 7,
     "is_cantrip": false,
     "is_focus": false,
@@ -7702,17 +8071,35 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
-    "duration": null,
-    "defense": null,
-    "traits": [],
+    "range": "30 metros",
+    "targets": "quatro espaços desocupados separados por pelo menos 6 metros",
+    "duration": "12 horas",
+    "defense": "Fortitude",
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Planta",
+      "Madeira"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 197,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "30 metros",
+        "placement": "4 espaços, separados por 6 metros",
+        "trigger": "criatura entra adjacente, toca ou danifica; CA 5",
+        "area": "emanação de 4,5 metros",
+        "damage": "8d8 veneno",
+        "save": "Fortitude",
+        "success": "metade e ofuscado 1 rodada",
+        "failure": "dano total, ofuscado 1 rodada, estupefato 1 por 1 minuto",
+        "criticalFailure": "dano dobrado, ofuscado 1 rodada, estupefato 2 por 1 minuto",
+        "duration": "12 horas",
+        "heightened": "+1: dano +2d8"
+      },
       "needs_review": false
     }
   },
@@ -7721,9 +8108,9 @@
     "name_pt": "Forma Rígida",
     "name_en": "Rigid Form",
     "name_es": "Forma rígida",
-    "description_pt": "Usa a rigidez da madeira para tentar neutralizar efeitos de polimorfia nocivos que tenham você como alvo.",
-    "description_en": "Rage of Elements wood spell: Rigid Form. Full mechanical text pending review.",
-    "description_es": "Conjuro de madera de Rage of Elements: Forma rígida. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "A rigidez da madeira protege contra metamorfoses nocivas: quando alvo de um efeito de polimorfia, você pode reagir e tentar neutralizá-lo.",
+    "description_en": "Wood's rigidity protects against harmful shapechanging: when targeted by a polymorph effect, you can react and attempt to counteract it.",
+    "description_es": "La rigidez de la madera protege contra transformaciones dañinas: al ser objetivo de polimorfia, puedes reaccionar e intentar contrarrestarla.",
     "rank": 4,
     "is_cantrip": false,
     "is_focus": false,
@@ -7734,15 +8121,25 @@
     "cast_actions": "varies",
     "range": null,
     "targets": null,
-    "duration": null,
+    "duration": "1 minuto",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Madeira"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 197,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "duration": "1 minuto",
+        "trigger": "efeito de polimorfia nocivo o tem como alvo",
+        "reaction": "tenta contramágica",
+        "heightened": "6º: duração 10 minutos"
+      },
       "needs_review": false
     }
   },
@@ -7751,11 +8148,11 @@
     "name_pt": "Leitura de Raízes",
     "name_en": "Root Reading",
     "name_es": "Lectura de raíces",
-    "description_pt": "Percebe criaturas ocultas e rastros recentes ao enviar seus sentidos pelos sistemas de raízes da vegetação.",
-    "description_en": "Rage of Elements wood spell: Root Reading. Full mechanical text pending review.",
-    "description_es": "Conjuro de madera de Rage of Elements: Lectura de raíces. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Você sente pelas raízes em uma emanação de 9 metros, percebe criaturas Médias ou maiores despercebidas e ganha bônus para Procurar e Rastrear.",
+    "description_en": "You sense through roots in a 30-foot emanation, learn of unnoticed Medium or larger creatures, and gain bonuses to Seek and Track.",
+    "description_es": "Sientes a través de raíces en una emanación de 9 metros, detectas criaturas Medianas o mayores inadvertidas y obtienes bonificaciones para Buscar y Rastrear.",
     "rank": 1,
-    "is_cantrip": false,
+    "is_cantrip": true,
     "is_focus": false,
     "traditions": [
       "arcane",
@@ -7766,13 +8163,24 @@
     "targets": null,
     "duration": null,
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Cantrip",
+      "Concentração",
+      "Manuseio",
+      "Madeira"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 198,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "area": "emanação de 9 metros",
+        "detects": "criaturas Médias ou maiores despercebidas; aprende se passaram pela área na última hora",
+        "seek": "+1 de estado para Seek até fim do próximo turno",
+        "track": "+1 de estado no teste inicial para Rastrear criatura detectada"
+      },
       "needs_review": false
     }
   },
@@ -7781,9 +8189,9 @@
     "name_pt": "Rajada de Estilhaços",
     "name_en": "Splinter Volley",
     "name_es": "Descarga de astillas",
-    "description_pt": "Dispara estilhaços contra um ou dois alvos, causando dano perfurante e sangramento persistente.",
-    "description_en": "Rage of Elements wood spell: Splinter Volley. Full mechanical text pending review.",
-    "description_es": "Conjuro de madera de Rage of Elements: Descarga de astillas. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Uma rajada de estilhaços causa 4d6 perfurante em um alvo; com três ações, ataca dois alvos e um crítico causa 1 sangramento persistente.",
+    "description_en": "A splinter volley deals 4d6 piercing to one target; with three actions, it attacks two targets and a critical hit causes 1 persistent bleed.",
+    "description_es": "Una salva de astillas causa 4d6 perforante a un objetivo; con tres acciones, ataca dos objetivos y un crítico causa 1 sangrado persistente.",
     "rank": 2,
     "is_cantrip": false,
     "is_focus": false,
@@ -7792,17 +8200,30 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
+    "range": "18 metros",
+    "targets": "1 ou 2 criaturas",
     "duration": null,
-    "defense": null,
-    "traits": [],
+    "defense": "CA",
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Madeira"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 198,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "18 metros",
+        "targets": "1; com 3 ações, 2",
+        "attack": "ataque de magia contra CA",
+        "damage": "4d6 perfurante",
+        "criticalSuccess": "dano dobrado e 1 sangramento persistente",
+        "multipleAttackPenalty": "dois ataques contam, penalidade aumenta apenas após ambos",
+        "heightened": "+2: dano +4d6 por alvo e sangramento +1"
+      },
       "needs_review": false
     }
   },
@@ -7811,28 +8232,39 @@
     "name_pt": "Criar Raízes",
     "name_en": "Take Root",
     "name_es": "Echar raíces",
-    "description_pt": "Cria raízes que reforçam a postura ou a pegada de uma criatura, protegendo-a contra empurrões, desarmes e quedas.",
-    "description_en": "Rage of Elements wood spell: Take Root. Full mechanical text pending review.",
-    "description_es": "Conjuro de madera de Rage of Elements: Echar raíces. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Raízes reforçam a postura ou pegada do alvo, concedendo +1 nas CDs de Fortitude contra Empurrar, Reflexos contra Desarmar/Atropelar e salvamentos para manter itens.",
+    "description_en": "Roots reinforce the target's stance or grip, granting +1 to Fortitude DC against Shove, Reflex DC against Disarm/Trip, and saves to keep held items.",
+    "description_es": "Raíces refuerzan la postura o agarre del objetivo, otorgando +1 a las CD de Fortaleza contra Empujar, Reflejos contra Desarmar/Trabar y salvaciones para mantener objetos.",
     "rank": 1,
-    "is_cantrip": false,
+    "is_cantrip": true,
     "is_focus": false,
     "traditions": [
       "arcane",
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
-    "duration": null,
+    "range": "9 metros",
+    "targets": "1 criatura disposta",
+    "duration": "1 rodada",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Cantrip",
+      "Manuseio",
+      "Planta",
+      "Madeira"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 198,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "9 metros",
+        "target": "1 criatura disposta",
+        "duration": "1 rodada",
+        "bonuses": "+1 circunstancial na CD de Fortitude contra Shove; CD de Reflexos contra Disarm/Trip; salvamentos contra remover item segurado"
+      },
       "needs_review": false
     }
   },
@@ -7841,11 +8273,11 @@
     "name_pt": "Tronco",
     "name_en": "Timber",
     "name_es": "Tronco",
-    "description_pt": "Cria uma pequena árvore que cai em uma linha, causando dano contundente e podendo deixar criaturas ofuscadas.",
-    "description_en": "Rage of Elements wood spell: Timber. Full mechanical text pending review.",
-    "description_es": "Conjuro de madera de Rage of Elements: Tronco. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Uma pequena árvore cai em uma linha de 4,5 metros e causa 2d4 contundente; falha crítica deixa o alvo ofuscado.",
+    "description_en": "A small tree falls in a 15-foot line for 2d4 bludgeoning; a critical failure dazzles the target.",
+    "description_es": "Un árbol pequeño cae en una línea de 4,5 metros por 2d4 contundente; un fallo crítico deja al objetivo deslumbrado.",
     "rank": 1,
-    "is_cantrip": false,
+    "is_cantrip": true,
     "is_focus": false,
     "traditions": [
       "arcane",
@@ -7855,14 +8287,26 @@
     "range": null,
     "targets": null,
     "duration": null,
-    "defense": null,
-    "traits": [],
+    "defense": "Reflexos básico",
+    "traits": [
+      "Cantrip",
+      "Concentração",
+      "Manuseio",
+      "Madeira"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 198,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "area": "linha de 4,5 metros",
+        "damage": "2d4 contundente",
+        "save": "Reflexos básico",
+        "criticalFailure": "ofuscado até fim do próximo turno",
+        "heightened": "+1: dano inicial +1d4"
+      },
       "needs_review": false
     }
   },
@@ -7871,9 +8315,9 @@
     "name_pt": "Broto Verdejante",
     "name_en": "Verdant Sprout",
     "name_es": "Brote verdante",
-    "description_pt": "Planta uma semente que cresce em uma planta resistente, fornecendo cobertura, terreno difícil e alimento.",
-    "description_en": "Rage of Elements wood spell: Verdant Sprout. Full mechanical text pending review.",
-    "description_es": "Conjuro de madera de Rage of Elements: Brote verdante. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Cria uma semente que cresce em 10 minutos em uma planta Média, fornecendo cobertura, terreno difícil e alimento para uma criatura por um dia.",
+    "description_en": "Creates a seed that grows in 10 minutes into a Medium plant providing cover, difficult terrain, and a day's food for one creature.",
+    "description_es": "Crea una semilla que crece en 10 minutos en una planta Mediana que proporciona cobertura, terreno difícil y comida de un día.",
     "rank": 1,
     "is_cantrip": false,
     "is_focus": false,
@@ -7881,17 +8325,29 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
+    "range": "9 metros",
     "targets": null,
     "duration": null,
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Planta",
+      "Madeira"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 199,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "9 metros",
+        "growth": "10 minutos",
+        "plant": "Médio, CA 10, Dureza 5, 20 PV",
+        "effect": "cobertura padrão, espaço terreno difícil, nozes/frutos para 1 criatura Média por dia",
+        "heightened": "+1: uma semente adicional"
+      },
       "needs_review": false
     }
   },
@@ -7900,9 +8356,9 @@
     "name_pt": "Muralha de Arbustos",
     "name_en": "Wall of Shrubs",
     "name_es": "Muro de arbustos",
-    "description_pt": "Faz uma linha ou anel de arbustos surgir do chão para conceder cobertura na área.",
-    "description_en": "Rage of Elements wood spell: Wall of Shrubs. Full mechanical text pending review.",
-    "description_es": "Conjuro de madera de Rage of Elements: Muro de arbustos. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Cria uma linha de arbustos nativos de 18 metros, menos de 1,5 metro de altura e espessura, concedendo cobertura menor.",
+    "description_en": "Creates a line of native shrubs 60 feet long and under 5 feet high and thick, providing lesser cover.",
+    "description_es": "Crea una línea de arbustos nativos de 18 metros de largo y menos de 1,5 metros de alto y grosor, proporcionando cobertura menor.",
     "rank": 1,
     "is_cantrip": false,
     "is_focus": false,
@@ -7911,17 +8367,29 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
+    "range": "36 metros",
     "targets": null,
-    "duration": null,
+    "duration": "1 minuto",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Planta",
+      "Madeira"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 199,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "36 metros",
+        "wall": "linha de 18 metros, menos de 1,5m de altura/espessura",
+        "cover": "cobertura menor",
+        "duration": "1 minuto",
+        "heightened": "3º: 3m altura/1,5m espessura, cobertura padrão e 10 minutos; 5º: anel diâmetro 9m, cobertura maior e 1 hora"
+      },
       "needs_review": false
     }
   },
@@ -7930,9 +8398,9 @@
     "name_pt": "Trançar Madeira",
     "name_en": "Weave Wood",
     "name_es": "Tejer madera",
-    "description_pt": "Transforma madeira, juncos ou fibras vegetais em vários objetos mundanos de madeira trançada.",
-    "description_en": "Rage of Elements wood spell: Weave Wood. Full mechanical text pending review.",
-    "description_es": "Conjuro de madera de Rage of Elements: Tejer madera. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Após 1 minuto, transforma madeira ou fibra em até quatro objetos mundanos trançados, com Volume total igual ou menor ao material.",
+    "description_en": "After 1 minute, turns wood or fiber into up to four mundane woven objects with total Bulk no greater than the material.",
+    "description_es": "Tras 1 minuto, convierte madera o fibra en hasta cuatro objetos mundanos tejidos con Volumen total no mayor que el material.",
     "rank": 1,
     "is_cantrip": false,
     "is_focus": false,
@@ -7941,17 +8409,30 @@
       "primal"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
+    "range": "toque",
+    "targets": "1 madeira não processada, junco ou fibra de até Volume 1",
     "duration": null,
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Madeira"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 199,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "cast": "1 minuto",
+        "target": "madeira/junco/fibra não processada de até Volume 1",
+        "objects": "até 4, mesmo Volume total ou menor",
+        "examples": "cesta, chapéu, escudo ou esteira",
+        "hardness": "2",
+        "hp": "8",
+        "heightened": "+1: Volume máximo +1 e objetos máximos +2"
+      },
       "needs_review": false
     }
   },
@@ -7960,9 +8441,9 @@
     "name_pt": "Duplo de Madeira",
     "name_en": "Wooden Double",
     "name_es": "Doble de madera",
-    "description_pt": "Cria um duplicado de madeira que recebe um golpe crítico no seu lugar e deixa você dar um passo.",
-    "description_en": "Rage of Elements wood spell: Wooden Double. Full mechanical text pending review.",
-    "description_es": "Conjuro de madera de Rage of Elements: Doble de madera. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Ao sofrer um acerto crítico, um boneco de madeira recebe o golpe, você Dá um Passo e o bloco absorve dano com Dureza 5 e 20 PV.",
+    "description_en": "When critically hit, a wooden double takes the blow, you Step, and the block absorbs damage with Hardness 5 and 20 HP.",
+    "description_es": "Al recibir un crítico, un doble de madera recibe el golpe, das un Paso y el bloque absorbe daño con Dureza 5 y 20 PG.",
     "rank": 3,
     "is_cantrip": false,
     "is_focus": false,
@@ -7976,13 +8457,23 @@
     "targets": null,
     "duration": null,
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Manuseio",
+      "Madeira"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 199,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "trigger": "você sofre crítico de efeito danoso ou Strike",
+        "reaction": "Dá um Passo; bloco aparece no espaço deixado",
+        "block": "Dureza 5, 20 PV",
+        "excess": "dano excedente passa; depois bloco vira lascas",
+        "heightened": "+1: PV do bloco +10"
+      },
       "needs_review": false
     }
   },
@@ -7991,9 +8482,9 @@
     "name_pt": "Punhos de Madeira",
     "name_en": "Wooden Fists",
     "name_es": "Puños de madera",
-    "description_pt": "Transforma seus punhos em troncos, concedendo ataques contundentes com alcance e melhorias em níveis elevados.",
-    "description_en": "Rage of Elements wood spell: Wooden Fists. Full mechanical text pending review.",
-    "description_es": "Conjuro de madera de Rage of Elements: Puños de madera. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Transforma os punhos em troncos, causando 1d6 contundente, removendo não letal e concedendo alcance; elevações tornam-nos armas striking.",
+    "description_en": "Transforms fists into tree trunks dealing 1d6 bludgeoning, removing nonlethal and granting reach; heightened ranks make them striking weapons.",
+    "description_es": "Transforma los puños en troncos que causan 1d6 contundente, eliminan no letal y obtienen alcance; rangos elevados los vuelven armas striking.",
     "rank": 1,
     "is_cantrip": false,
     "is_focus": false,
@@ -8004,15 +8495,26 @@
     "cast_actions": "varies",
     "range": null,
     "targets": null,
-    "duration": null,
+    "duration": "1 minuto",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Concentração",
+      "Manuseio",
+      "Morfia",
+      "Madeira"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 199,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "duration": "1 minuto",
+        "damage": "1d6 contundente",
+        "traits": "perde não letal e ganha alcance",
+        "heightened": "3º: mágico e striking, 2d6; 7º: greater striking, 3d6 e duração 10 minutos; 9º: major striking, 4d6 e duração 1 hora"
+      },
       "needs_review": false
     }
   },
@@ -8021,27 +8523,39 @@
     "name_pt": "Braços da Natureza",
     "name_en": "Arms of Nature",
     "name_es": "Brazos de la naturaleza",
-    "description_pt": "Extrai uma arma de madeira de um objeto ou planta, com aprimoramentos conforme o nível.",
-    "description_en": "Draws a wooden weapon from an object or plant, with upgrades at higher ranks.",
-    "description_es": "Extrae un arma de madera de un objeto o planta, con mejoras en rangos superiores.",
+    "description_pt": "Extrai do alvo uma arma +1 de até Volume 2 e do mesmo material; em círculos maiores, torna-se striking ou greater striking.",
+    "description_en": "Draws a +1 weapon of up to Bulk 2 from the target, made of the same material; higher ranks make it striking or greater striking.",
+    "description_es": "Extrae del objetivo un arma +1 de hasta Volumen 2 del mismo material; rangos superiores la vuelven striking o greater striking.",
     "rank": 1,
     "is_cantrip": false,
-    "is_focus": false,
+    "is_focus": true,
     "traditions": [
       "divine"
     ],
     "cast_actions": "two-actions",
-    "range": null,
-    "targets": null,
-    "duration": null,
+    "range": "toque",
+    "targets": "1 objeto de madeira ou planta de pelo menos Volume 4",
+    "duration": "1 minuto",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Incomum",
+      "Concentração",
+      "Foco",
+      "Manuseio",
+      "Madeira"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 199,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "target": "madeira/planta de pelo menos Volume 4",
+        "weapon": "+1, até Volume 2, mesmo material",
+        "duration": "1 minuto",
+        "heightened": "3º: +1 striking; 5º: +2 striking; 7º: +3 greater striking"
+      },
       "needs_review": false
     }
   },
@@ -8050,27 +8564,41 @@
     "name_pt": "Caminhar pela Madeira",
     "name_en": "Wood Walk",
     "name_es": "Caminar por la madera",
-    "description_pt": "Permite mover-se por plantas vivas e árvores próximas, inclusive em diferentes direções.",
-    "description_en": "Lets you move along living plants and nearby trees, including in different directions.",
-    "description_es": "Te permite moverte por plantas vivas y árboles cercanos, incluso en distintas direcciones.",
+    "description_pt": "Move você até sua Velocidade em qualquer direção ou superfície com plantas vivas Grandes ou maiores a até 4,5 metros, criando escadas, cipós e galhos.",
+    "description_en": "Moves you up to your Speed in any direction or surface with Large or larger living plants within 15 feet, shaping stairs, vines, and branches.",
+    "description_es": "Te mueve hasta tu Velocidad en cualquier dirección o superficie con plantas vivas Grandes o mayores a 4,5 metros, formando escaleras, enredaderas y ramas.",
     "rank": 4,
     "is_cantrip": false,
-    "is_focus": false,
+    "is_focus": true,
     "traditions": [
       "divine"
     ],
     "cast_actions": "two-actions",
     "range": null,
     "targets": null,
-    "duration": null,
+    "duration": "sustentada até 1 minuto",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Incomum",
+      "Concentração",
+      "Foco",
+      "Manuseio",
+      "Madeira"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 199,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "movement": "até sua Velocidade em qualquer direção/superfície",
+        "condition": "planta viva ou árvore Grande+ a até 4,5 metros",
+        "duration": "sustentada até 1 minuto",
+        "hazard": "não protege de terreno perigoso ou outros perigos",
+        "sustain": "repete movimento",
+        "heightened": "8º: duração 10 minutos sem precisar Sustentar para manter, ainda pode Sustentar para mover"
+      },
       "needs_review": false
     }
   },
@@ -8079,27 +8607,38 @@
     "name_pt": "A Prática Leva à Perfeição",
     "name_en": "Practice Makes Perfect",
     "name_es": "La práctica hace al maestro",
-    "description_pt": "Concede um bônus a um teste de perícia treinada que falhou.",
-    "description_en": "Rage of Elements toil domain focus spell: Practice Makes Perfect. Full mechanical text pending review.",
-    "description_es": "Conjuro de foco del dominio toil de Rage of Elements: La práctica hace al maestro. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Quando você ou um aliado treinado falha em um teste de perícia, uma reação concede +2 de estado ao teste, ou +3 se a proficiência for mestre ou melhor.",
+    "description_en": "When you or a trained ally fails a skill check, a reaction grants a +2 status bonus to the check, or +3 with master proficiency or better.",
+    "description_es": "Cuando tú o un aliado entrenado falla una prueba de habilidad, una reacción concede un bonificador de estado +2, o +3 con competencia maestra o superior.",
     "rank": 1,
     "is_cantrip": false,
-    "is_focus": false,
+    "is_focus": true,
     "traditions": [
       "divine"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
+    "range": "9 metros",
+    "targets": "a criatura que desencadeou o efeito",
     "duration": null,
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Incomum",
+      "Foco",
+      "Manuseio"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 97,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "trigger": "você ou aliado no alcance falha em teste de perícia em que é treinado",
+        "range": "9 metros",
+        "target": "criatura que fez o teste",
+        "bonus": "+2 de estado; +3 se a proficiência na perícia for mestre ou melhor",
+        "outcome": "pode mudar o resultado do teste"
+      },
       "needs_review": false
     }
   },
@@ -8108,27 +8647,44 @@
     "name_pt": "Trabalhador Incansável",
     "name_en": "Tireless Worker",
     "name_es": "Trabajador incansable",
-    "description_pt": "Suprime temporariamente condições como desajeitado, sobrecarregado, enfraquecido ou fatigado.",
-    "description_en": "Rage of Elements toil domain focus spell: Tireless Worker. Full mechanical text pending review.",
-    "description_es": "Conjuro de foco del dominio toil de Rage of Elements: Trabajador incansable. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Suprime à escolha uma condição desajeitado, sobrecarregado, enfraquecido ou fatigado do alvo enquanto a magia for sustentada.",
+    "description_en": "Suppresses one chosen clumsy, encumbered, enfeebled, or fatigued condition affecting the target while the spell is sustained.",
+    "description_es": "Suprime una condición elegida de torpe, sobrecargado, debilitado o fatigado que afecte al objetivo mientras se mantiene el conjuro.",
     "rank": 4,
     "is_cantrip": false,
-    "is_focus": false,
+    "is_focus": true,
     "traditions": [
       "divine"
     ],
     "cast_actions": "varies",
-    "range": null,
-    "targets": null,
-    "duration": null,
+    "range": "9 metros",
+    "targets": "1 criatura",
+    "duration": "sustentada até 1 minuto",
     "defense": null,
-    "traits": [],
+    "traits": [
+      "Concentração",
+      "Cura",
+      "Foco",
+      "Manuseio"
+    ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Rage of Elements (Remaster)",
     "source_page": 97,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "9 metros",
+        "target": "1 criatura",
+        "duration": "sustentada até 1 minuto",
+        "suppresses": [
+          "desajeitado",
+          "sobrecarregado",
+          "enfraquecido",
+          "fatigado"
+        ],
+        "return": "a condição retorna ao fim se a causa não for removida"
+      },
       "needs_review": false
     }
   },
@@ -8689,28 +9245,38 @@
     "name_pt": "Guarita de Proteção",
     "name_en": "Protective Wards",
     "name_es": "Guardas protectoras",
-    "description_pt": "Magia inicial do currículo Escola da Ars Grammatica; efeito integral oficial de oficial mecânica.",
-    "description_en": "Initial spell of the School of Ars Grammatica; full mechanical effect pending review.",
-    "description_es": "Conjuro inicial del plan Escuela de Ars Grammatica; efecto mecánico completo pendiente de revisión.",
+    "description_pt": "Uma aura de glifos protege você e aliados, concedendo +1 de estado na CA; Sustentar amplia o raio em 1,5 metro até 9 metros.",
+    "description_en": "A glyph aura protects you and allies, granting a +1 status bonus to AC; Sustaining expands its radius by 5 feet up to 30 feet.",
+    "description_es": "Una aura de glifos protege a ti y tus aliados, otorgando +1 de estado a la CA; Mantenerla amplía el radio 1,5 metros hasta 9 metros.",
     "rank": 1,
     "is_cantrip": false,
-    "is_focus": false,
+    "is_focus": true,
     "traditions": [],
     "cast_actions": "two-actions",
     "range": null,
     "targets": null,
-    "duration": null,
+    "duration": "sustentada até 1 minuto",
     "defense": null,
     "traits": [
-      "Mago",
-      "Concentração"
+      "Aura",
+      "Foco",
+      "Incomum",
+      "Manuseio",
+      "Mago"
     ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
-    "source_page": 186,
+    "source_page": 386,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "area": "emanação de 1,5 metro centrada em você",
+        "effect": "+1 de estado na CA para você e aliados na área",
+        "sustain": "aumenta o raio em 1,5 metro",
+        "maximum": "9 metros",
+        "duration": "sustentada até 1 minuto"
+      },
       "needs_review": false
     }
   },
@@ -8719,28 +9285,39 @@
     "name_pt": "Embaralhar Corpo",
     "name_en": "Scramble Body",
     "name_es": "Desordenar cuerpo",
-    "description_pt": "Magia inicial do currículo Escola da Forma Proteana; efeito integral oficial de oficial mecânica.",
-    "description_en": "Initial spell of the School of the Protean Form; full mechanical effect pending review.",
-    "description_es": "Conjuro inicial del plan Escuela de la Forma Proteica; efecto mecánico completo pendiente de revisión.",
+    "description_pt": "Desorganiza a biologia de uma criatura viva: em falha ela fica enjoada 1; em falha crítica, enjoada 2 e desacelerada 1 enquanto estiver enjoada.",
+    "description_en": "Disrupts a living creature's biology: on a failure it becomes sickened 1; on a critical failure, sickened 2 and slowed 1 while sickened.",
+    "description_es": "Desorganiza la biología de una criatura viva: con un fallo queda nauseada 1; con un fallo crítico, nauseada 2 y ralentizada 1 mientras esté nauseada.",
     "rank": 1,
     "is_cantrip": false,
-    "is_focus": false,
+    "is_focus": true,
     "traditions": [],
     "cast_actions": "two-actions",
-    "range": null,
-    "targets": null,
+    "range": "9 metros",
+    "targets": "1 criatura viva",
     "duration": null,
-    "defense": null,
+    "defense": "Fortitude",
     "traits": [
-      "Mago",
-      "Concentração"
+      "Concentração",
+      "Foco",
+      "Incomum",
+      "Manuseio",
+      "Mago"
     ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
-    "source_page": 187,
+    "source_page": 386,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "9 metros",
+        "target": "1 criatura viva",
+        "save": "Fortitude",
+        "success": "sem efeito",
+        "failure": "Enjoado 1",
+        "criticalFailure": "Enjoado 2 e Desacelerado 1 enquanto Enjoado"
+      },
       "needs_review": false
     }
   },
@@ -8749,28 +9326,36 @@
     "name_pt": "Fortificar Convocação",
     "name_en": "Fortify Summoning",
     "name_es": "Fortalecer invocación",
-    "description_pt": "Magia inicial do currículo Escola dos Limiares; efeito integral oficial de oficial mecânica.",
-    "description_en": "Initial spell of the School of the Boundary; full mechanical effect pending review.",
-    "description_es": "Conjuro inicial del plan Escuela de los Límites; efecto mecánico completo pendiente de revisión.",
+    "description_pt": "Fortalece uma criatura convocada, concedendo +1 de estado em todos os testes e CDs, incluindo CA, enquanto a convocação durar até 1 minuto.",
+    "description_en": "Strengthens a creature you summoned, granting a +1 status bonus to all checks and DCs, including AC, for up to 1 minute.",
+    "description_es": "Fortalece una criatura convocada por ti, otorgando +1 de estado a todas las pruebas y CD, incluida la CA, hasta 1 minuto.",
     "rank": 1,
     "is_cantrip": false,
-    "is_focus": false,
+    "is_focus": true,
     "traditions": [],
     "cast_actions": "two-actions",
-    "range": null,
-    "targets": null,
-    "duration": null,
+    "range": "9 metros",
+    "targets": "1 criatura convocada por você",
+    "duration": "até 1 minuto",
     "defense": null,
     "traits": [
-      "Mago",
-      "Concentração"
+      "Concentração",
+      "Foco",
+      "Incomum",
+      "Mago"
     ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
-    "source_page": 187,
+    "source_page": 387,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "9 metros",
+        "target": "1 criatura convocada por você",
+        "bonus": "+1 de estado em todos os testes e CDs, incluindo CA",
+        "duration": "até 1 minuto; enquanto a convocação durar"
+      },
       "needs_review": false
     }
   },
@@ -8779,28 +9364,38 @@
     "name_pt": "Raio de Força",
     "name_en": "Force Bolt",
     "name_es": "Rayo de fuerza",
-    "description_pt": "Magia inicial do currículo Escola da Magia Bélica; efeito integral oficial de oficial mecânica.",
-    "description_en": "Initial spell of the School of Battle Magic; full mechanical effect pending review.",
-    "description_es": "Conjuro inicial del plan Escuela de Magia Bélica; efecto mecánico completo pendiente de revisión.",
+    "description_pt": "Dispara um dardo de força que acerta automaticamente e causa 1d4+1 de dano de força; elevações aumentam o dano.",
+    "description_en": "Fires a force bolt that automatically hits and deals 1d4+1 force damage; heightened ranks increase the damage.",
+    "description_es": "Dispara un dardo de fuerza que impacta automáticamente y causa 1d4+1 de daño de fuerza; los rangos elevados aumentan el daño.",
     "rank": 1,
     "is_cantrip": false,
-    "is_focus": false,
+    "is_focus": true,
     "traditions": [],
     "cast_actions": "two-actions",
-    "range": null,
-    "targets": null,
+    "range": "9 metros",
+    "targets": "1 criatura",
     "duration": null,
     "defense": null,
     "traits": [
-      "Mago",
-      "Concentração"
+      "Foco",
+      "Força",
+      "Incomum",
+      "Manuseio",
+      "Mago"
     ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
-    "source_page": 188,
+    "source_page": 386,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "9 metros",
+        "target": "1 criatura",
+        "automaticHit": true,
+        "damage": "1d4+1 força",
+        "heightened": "+2: dano +1d4+1"
+      },
       "needs_review": false
     }
   },
@@ -8809,28 +9404,39 @@
     "name_pt": "Terraplenagem",
     "name_en": "Earthworks",
     "name_es": "Movimiento de tierras",
-    "description_pt": "Magia inicial do currículo Escola da Magia Cívica; efeito integral oficial de oficial mecânica.",
-    "description_en": "Initial spell of the School of Civic Magic; full mechanical effect pending review.",
-    "description_es": "Conjuro inicial del plan Escuela de Magia Cívica; efecto mecánico completo pendiente de revisión.",
+    "description_pt": "Ergue barreiras de solo e transforma a área em terreno difícil; o tamanho da explosão depende de uma, duas ou três ações.",
+    "description_en": "Raises small earthen barriers and makes the area difficult terrain; the burst size depends on spending one, two, or three actions.",
+    "description_es": "Levanta barreras pequeñas de tierra y convierte el área en terreno difícil; el tamaño de la explosión depende de gastar una, dos o tres acciones.",
     "rank": 1,
     "is_cantrip": false,
-    "is_focus": false,
+    "is_focus": true,
     "traditions": [],
     "cast_actions": "two-actions",
-    "range": null,
+    "range": "18 metros",
     "targets": null,
-    "duration": null,
+    "duration": "1 minuto",
     "defense": null,
     "traits": [
+      "Concentração",
+      "Foco",
+      "Incomum",
+      "Manuseio",
       "Mago",
-      "Concentração"
+      "Terra"
     ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
-    "source_page": 188,
+    "source_page": 387,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "18 metros",
+        "area": "explosão de 1,5m com 1 ação; 3m com 2; 4,5m com 3",
+        "duration": "1 minuto",
+        "effect": "chão da área vira terreno difícil; criaturas podem Interagir para remover barreira adjacente de 1,5m",
+        "heightened": "4º: barreiras flutuam e afetam criaturas voadoras como terreno difícil"
+      },
       "needs_review": false
     }
   },
@@ -8839,28 +9445,42 @@
     "name_pt": "Ímpeto Cativante",
     "name_en": "Charming Push",
     "name_es": "Impulso encantador",
-    "description_pt": "Magia inicial do currículo Escola do Mentalismo; efeito integral oficial de oficial mecânica.",
-    "description_en": "Initial spell of the School of Mentalism; full mechanical effect pending review.",
-    "description_es": "Conjuro inicial del plan Escuela del Mentalismo; efecto mecánico completo pendiente de revisión.",
+    "description_pt": "Desvia a ira de uma criatura: sucesso impõe –1 em ataques e dano contra você, falha impede ações hostis e falha crítica também deixa Atordoado 1.",
+    "description_en": "Diverts a creature's anger: a success imposes –1 to attacks and damage against you, a failure prevents hostile actions, and a critical failure also stuns 1.",
+    "description_es": "Desvía la ira de una criatura: un éxito impone –1 a ataques y daño contra ti, un fallo impide acciones hostiles y un fallo crítico también deja Aturdida 1.",
     "rank": 1,
     "is_cantrip": false,
-    "is_focus": false,
+    "is_focus": true,
     "traditions": [],
     "cast_actions": "two-actions",
-    "range": null,
-    "targets": null,
-    "duration": null,
-    "defense": null,
+    "range": "9 metros",
+    "targets": "1 criatura",
+    "duration": "até o início do seu próximo turno",
+    "defense": "Vontade",
     "traits": [
+      "Concentração",
+      "Foco",
+      "Incapacitação",
+      "Incomum",
       "Mago",
-      "Concentração"
+      "Mental"
     ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
-    "source_page": 188,
+    "source_page": 387,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "range": "9 metros",
+        "target": "1 criatura",
+        "save": "Vontade",
+        "duration": "até o início do seu próximo turno",
+        "criticalSuccess": "sem efeito",
+        "success": "–1 de penalidade circunstancial em ataques e dano contra você",
+        "failure": "não pode usar ações hostis contra você",
+        "criticalFailure": "Atordoado 1 e não pode usar ações hostis contra você"
+      },
       "needs_review": false
     }
   },
@@ -8869,28 +9489,36 @@
     "name_pt": "Mão do Aprendiz",
     "name_en": "Hand of the Apprentice",
     "name_es": "Mano del aprendiz",
-    "description_pt": "Magia inicial do currículo Escola da Teoria Mágica Unificada; efeito integral oficial de oficial mecânica.",
-    "description_en": "Initial spell of the School of Unified Magical Theory; full mechanical effect pending review.",
-    "description_es": "Conjuro inicial del plan Escuela de Teoría Mágica Unificada; efecto mecánico completo pendiente de revisión.",
+    "description_pt": "Ao testemunhar uma magia arcana conjurada por uma criatura próxima, você pode copiá-la temporariamente usando um espaço de Mago do mesmo ranque.",
+    "description_en": "When a nearby creature casts an arcane spell, you can temporarily copy it using a Wizard spell slot of the same rank.",
+    "description_es": "Cuando una criatura cercana lanza un conjuro arcano, puedes copiarlo temporalmente usando un espacio de Mago del mismo rango.",
     "rank": 1,
     "is_cantrip": false,
-    "is_focus": false,
+    "is_focus": true,
     "traditions": [],
     "cast_actions": "two-actions",
-    "range": null,
+    "range": "9 metros",
     "targets": null,
-    "duration": null,
+    "duration": "até o fim do seu próximo turno",
     "defense": null,
     "traits": [
-      "Mago",
-      "Concentração"
+      "Concentração",
+      "Foco",
+      "Incomum",
+      "Mago"
     ],
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
-    "source_page": 188,
+    "source_page": 387,
     "data": {
       "heightened": null,
+      "mechanics": {
+        "trigger": "criatura a até 9 metros conjura magia arcana",
+        "effect": "até o fim do seu próximo turno, pode Conjurar a magia acionadora",
+        "cost": "espaço de magia de Mago do mesmo ranque",
+        "restriction": "magias do conjurador acionador não podem acionar novamente por 24 horas"
+      },
       "needs_review": false
     }
   },
