@@ -1259,3 +1259,4 @@ Persistência remota autenticada de personagens (2026-09-08): `npm run audit:cam
 - [x] Criar e sincronizar artes individuais para Mira de Amplificação, Mira de Delineamento, Mira da Verdade e Mira de Visão no Escuro, usando ID e nome completo do item.
 - [x] Criar e sincronizar artes individuais para Dallah de Faydhaan, Poção de Polvo, Sopro da Praga e Azul de Sairazul, usando ID e nome completo do item.
 - [x] Criar e sincronizar artes individuais para Sela do Atirador, Tripé Imóvel, Couro de Hodag e Escama de Mamlambo, usando ID e nome completo do item.
+- [x] Criar e sincronizar artes individuais para Placa de Louva-a-Deus, Klar de Hipopótamo, Poeira de Ankhrav e Maça-Ferrão de Escorpião Negro, usando ID e nome completo do item.
