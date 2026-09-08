@@ -31,6 +31,10 @@ export function getWeaponVisualKey(data: WeaponVisualData = {}): string {
   if (/l[aâ]mina de garras|claw blade/.test(identity)) return "claw-blade";
   if (/garra voadora|flying talon/.test(identity)) return "flying-talon";
   if (/manopla l[aâ]mina|bladed gauntlet/.test(identity)) return "bladed-gauntlet";
+  if (/chicote com garras|claw whip/.test(identity)) return "claw-whip";
+  if (/chicote de n[oó]s|scourge/.test(identity)) return "scourge";
+  if (/cadeia de comando|chain of command/.test(identity)) return "chain-of-command";
+  if (/quebra-correntes|chainbreaker/.test(identity)) return "chainbreaker";
   if (/martelo de guerra|warhammer/.test(identity)) return "warhammer";
   if (/ma[cç]a-estrela|morningstar/.test(identity)) return "morningstar";
   if (/grande porrete|greatclub/.test(identity)) return "greatclub";
