@@ -24,6 +24,10 @@ export function getItemVisualKey(data: ItemVisualData = {}): string {
   if (data.id === "item.gear.healers_toolkit" || /^kit de primeiros socorros$/.test(name)) return "healers-first-aid-kit";
   if (data.id === "item.gear.thieves_toolkit" || /^ferramentas de ladr[aã]o$/.test(name)) return "thieves-tools";
   if (data.id === "item.magic.boots_of_elvenkind" || /^botas [eé]lficas$/.test(name)) return "elven-boots";
+  if (data.id === "item.consumable.minor_healing_potion" || /^po[cç][aã]o de cura menor$/.test(name)) return "minor-healing-potion";
+  if (data.id === "item.consumable.lesser_healing_potion" || /^po[cç][aã]o de cura inferior$/.test(name)) return "lesser-healing-potion";
+  if (data.id === "item.pc2.antiplague_lesser" || /^antipeste \(inferior\)$/.test(name)) return "lesser-antiplague";
+  if (data.id === "item.pc2.minor_antidote" || /^ant[ií]doto menor$/.test(name)) return "minor-antidote";
   if (/^10 balas$|^10 bullets$/.test(name)) return "bullets";
   if (/^bandoleira do saque da sorte$|^manto a[eé]reo$|^figura de proa velada$/.test(name)) return "adventurer-pack";
   if (/^ervilhas estalantes terap[eê]uticas$|^sopro da praga$|^azul de sairazul$/.test(name)) return "potion";

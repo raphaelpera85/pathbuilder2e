@@ -5,7 +5,6 @@ import { getItemImageAlt, getItemImageUrl, getItemVisualKey } from "./itemVisual
 
 describe("item visuals", () => {
   it.each([
-    ["Poção de Cura Menor", "potion"],
     ["Bomba de Fogo Alquímico", "bomb"],
     ["Runa de Potência", "rune"],
     ["Virote", "ammunition"],
@@ -23,6 +22,10 @@ describe("item visuals", () => {
     ["Kit de Primeiros Socorros", "healers-first-aid-kit"],
     ["Ferramentas de Ladrão", "thieves-tools"],
     ["Botas Élficas", "elven-boots"],
+    ["Poção de Cura Menor", "minor-healing-potion"],
+    ["Poção de Cura Inferior", "lesser-healing-potion"],
+    ["Antipeste (Inferior)", "lesser-antiplague"],
+    ["Antídoto Menor", "minor-antidote"],
     ["10 Balas", "bullets"],
     ["Manto Aéreo", "adventurer-pack"],
     ["Lança Peixe-Leão", "spear"],

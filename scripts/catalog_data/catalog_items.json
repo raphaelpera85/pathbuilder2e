@@ -138,8 +138,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-potion.png",
-      "imageFamily": "potion",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-minor-healing-potion.png",
+      "imageFamily": "minor-healing-potion",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -171,8 +171,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-potion.png",
-      "imageFamily": "potion",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-lesser-healing-potion.png",
+      "imageFamily": "lesser-healing-potion",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -6340,8 +6340,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-potion.png",
-      "imageFamily": "potion",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-lesser-antiplague.png",
+      "imageFamily": "lesser-antiplague",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -10251,8 +10251,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-poison.png",
-      "imageFamily": "poison",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-minor-antidote.png",
+      "imageFamily": "minor-antidote",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -13288,8 +13288,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-poison.png",
-      "imageFamily": "poison",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-minor-antidote.png",
+      "imageFamily": "minor-antidote",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }

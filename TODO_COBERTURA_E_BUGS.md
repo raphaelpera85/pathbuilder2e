@@ -1249,3 +1249,4 @@ Persistência remota autenticada de personagens (2026-09-08): `npm run audit:cam
 - [x] Criar e sincronizar artes individuais para Aklys, Nunchaku, Gancho e Palavra do General, usando o nome completo de cada arma.
 - [x] Criar e sincronizar artes individuais para Bossa de Escudo, Cravos de Escudo, Quebra-Escudos Ulfen e Escudo, usando o nome completo de cada item.
 - [x] Criar e sincronizar artes individuais para Mochila de Aventureiro, Kit de Primeiros Socorros, Ferramentas de Ladrão e Botas Élficas, usando ID e nome completo do item.
+- [x] Criar e sincronizar artes individuais para Poção de Cura Menor, Poção de Cura Inferior, Antipeste Inferior e Antídoto Menor, usando ID e nome completo do item.
