@@ -1244,3 +1244,5 @@ Persistência remota autenticada de personagens (2026-09-08): `npm run audit:cam
 - [x] Criar e sincronizar artes individuais para Mangual, Pá-Malho, Esmagador de Mortos de Belkzen e Malho de Guerra, usando o nome completo de cada arma.
 - [x] Criar e sincronizar artes individuais para Fio de Presa, Lâmina de Garras, Garra Voadora e Manopla Lâmina, usando o nome completo de cada arma.
 - [x] Criar e sincronizar artes individuais para Chicote com Garras, Chicote de Nós, Cadeia de Comando e Quebra-Correntes, usando o nome completo de cada arma.
+- [x] Criar e sincronizar artes individuais para Repetidor de Pressão, Harmona, Jezail e Pistola Boca de Dragão, usando o nome completo de cada arma.
+- [x] Criar e sincronizar arte individual para Repetidor de Pressão Longo, corrigindo a variante detectada na auditoria.

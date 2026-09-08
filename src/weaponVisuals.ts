@@ -35,6 +35,11 @@ export function getWeaponVisualKey(data: WeaponVisualData = {}): string {
   if (/chicote de n[oó]s|scourge/.test(identity)) return "scourge";
   if (/cadeia de comando|chain of command/.test(identity)) return "chain-of-command";
   if (/quebra-correntes|chainbreaker/.test(identity)) return "chainbreaker";
+  if (/repetidor de press[aã]o longo|long air repeater/.test(identity)) return "long-air-repeater";
+  if (/repetidor de press[aã]o|pressure repeater/.test(identity)) return "air-repeater";
+  if (/harmona/.test(identity)) return "harmona-gun";
+  if (/jezail/.test(identity)) return "jezail";
+  if (/pistola boca de drag[aã]o|dragon mouth pistol/.test(identity)) return "dragon-mouth-pistol";
   if (/martelo de guerra|warhammer/.test(identity)) return "warhammer";
   if (/ma[cç]a-estrela|morningstar/.test(identity)) return "morningstar";
   if (/grande porrete|greatclub/.test(identity)) return "greatclub";
