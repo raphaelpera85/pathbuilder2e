@@ -28,6 +28,10 @@ export function getItemVisualKey(data: ItemVisualData = {}): string {
   if (data.id === "item.consumable.lesser_healing_potion" || /^po[cç][aã]o de cura inferior$/.test(name)) return "lesser-healing-potion";
   if (data.id === "item.pc2.antiplague_lesser" || /^antipeste \(inferior\)$/.test(name)) return "lesser-antiplague";
   if (data.id === "item.pc2.minor_antidote" || /^ant[ií]doto menor$/.test(name)) return "minor-antidote";
+  if (data.id === "item.compendium.alchemist_s_fire_lesser" || /^fogo alqu[ií]mico \(inferior\)$/.test(name)) return "lesser-alchemists-fire";
+  if (data.id === "item.compendium.acid_flask_lesser" || /^frasco de [aá]cido \(inferior\)$/.test(name)) return "lesser-acid-flask";
+  if (data.id === "item.compendium.frost_vial_lesser" || /^vial de frio \(inferior\)$/.test(name)) return "lesser-frost-vial";
+  if (data.id === "item.compendium.bottled_lightning_lesser" || /^rel[aâ]mpago engarrafado \(inferior\)$/.test(name)) return "lesser-bottled-lightning";
   if (/^10 balas$|^10 bullets$/.test(name)) return "bullets";
   if (/^bandoleira do saque da sorte$|^manto a[eé]reo$|^figura de proa velada$/.test(name)) return "adventurer-pack";
   if (/^ervilhas estalantes terap[eê]uticas$|^sopro da praga$|^azul de sairazul$/.test(name)) return "potion";

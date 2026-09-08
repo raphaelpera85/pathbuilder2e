@@ -6151,8 +6151,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-bomb.png",
-      "imageFamily": "bomb",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-lesser-alchemists-fire.png",
+      "imageFamily": "lesser-alchemists-fire",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -6183,8 +6183,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-bomb.png",
-      "imageFamily": "bomb",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-lesser-acid-flask.png",
+      "imageFamily": "lesser-acid-flask",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -6215,8 +6215,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-bomb.png",
-      "imageFamily": "bomb",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-lesser-frost-vial.png",
+      "imageFamily": "lesser-frost-vial",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -6247,8 +6247,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-bomb.png",
-      "imageFamily": "bomb",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-lesser-bottled-lightning.png",
+      "imageFamily": "lesser-bottled-lightning",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
