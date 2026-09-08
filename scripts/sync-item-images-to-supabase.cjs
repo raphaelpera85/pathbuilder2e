@@ -63,6 +63,10 @@ function visualKey(row) {
   if (row.id === "item.howl.storm_herald" || /^arauto da tempestade$/.test(name)) return "storm-herald";
   if (row.id === "item.howl.trollhound_pick" || /^picareta de c[aã]o-troll$/.test(name)) return "trollhound-pick";
   if (row.id === "item.howl.alicorn_trigger" || /^gatilho de alic[oó]rnio$/.test(name)) return "alicorn-trigger";
+  if (row.id === "item.howl.howler_pistol" || /^pistola uivante$/.test(name)) return "howler-pistol";
+  if (row.id === "item.battlecry.repeater_bandolier" || /^bandoleira de repetidor$/.test(name)) return "repeater-bandolier";
+  if (row.id === "item.battlecry.war_saddle" || /^sela de guerra$/.test(name)) return "war-saddle";
+  if (row.id === "item.war_immortals.fishing_lure" || /^isca de pesca$/.test(name)) return "fishing-lure";
   if (row.id === "item.howl.bloodgorger_scythe" || /^foice devorasangue$/.test(name)) return "bloodgorger-scythe";
   if (row.id === "item.howl.catoblepas_maul" || /^malho de catoblepas$/.test(name)) return "catoblepas-maul";
   if (row.id === "item.howl.chimera_flail" || /^mangual de quimera$/.test(name)) return "chimera-flail";

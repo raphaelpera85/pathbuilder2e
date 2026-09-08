@@ -51,6 +51,10 @@ export function getItemVisualKey(data: ItemVisualData = {}): string {
   if (data.id === "item.howl.storm_herald" || /^arauto da tempestade$/.test(name)) return "storm-herald";
   if (data.id === "item.howl.trollhound_pick" || /^picareta de c[aã]o-troll$/.test(name)) return "trollhound-pick";
   if (data.id === "item.howl.alicorn_trigger" || /^gatilho de alic[oó]rnio$/.test(name)) return "alicorn-trigger";
+  if (data.id === "item.howl.howler_pistol" || /^pistola uivante$/.test(name)) return "howler-pistol";
+  if (data.id === "item.battlecry.repeater_bandolier" || /^bandoleira de repetidor$/.test(name)) return "repeater-bandolier";
+  if (data.id === "item.battlecry.war_saddle" || /^sela de guerra$/.test(name)) return "war-saddle";
+  if (data.id === "item.war_immortals.fishing_lure" || /^isca de pesca$/.test(name)) return "fishing-lure";
   if (data.id === "item.howl.bloodgorger_scythe" || /^foice devorasangue$/.test(name)) return "bloodgorger-scythe";
   if (data.id === "item.howl.catoblepas_maul" || /^malho de catoblepas$/.test(name)) return "catoblepas-maul";
   if (data.id === "item.howl.chimera_flail" || /^mangual de quimera$/.test(name)) return "chimera-flail";

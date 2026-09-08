@@ -3333,8 +3333,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-howler-pistol.png",
+      "imageFamily": "howler-pistol",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -3361,8 +3361,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-repeater-bandolier.png",
+      "imageFamily": "repeater-bandolier",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -3389,8 +3389,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-war-saddle.png",
+      "imageFamily": "war-saddle",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -3700,8 +3700,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-fishing-lure.png",
+      "imageFamily": "fishing-lure",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
