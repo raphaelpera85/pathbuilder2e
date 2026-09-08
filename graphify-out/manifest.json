@@ -1,1369 +1,1369 @@
 {
   "js/app.js": {
     "mtime": 1788837623.9326825,
-    "seen": 1788850408.6668568,
+    "seen": 1788851334.7253103,
     "ast_hash": "557f11c31e57a2693365728f607db3b7",
     "semantic_hash": ""
   },
   "js/pdf-lib.min.js": {
     "mtime": 1788078221.891361,
-    "seen": 1788850408.6668591,
+    "seen": 1788851334.725312,
     "ast_hash": "dec481b1abd5119d3fbbd2695bdaebb1",
     "semantic_hash": ""
   },
   "js/pf2e_ai_assistant.js": {
     "mtime": 1788165776.4323578,
-    "seen": 1788850408.6668608,
+    "seen": 1788851334.7253132,
     "ast_hash": "338b1ccb71f6592e358648c08d1a2dc7",
     "semantic_hash": ""
   },
   "js/pf2e_data.js": {
     "mtime": 1788828459.3488514,
-    "seen": 1788850408.6668622,
+    "seen": 1788851334.7253146,
     "ast_hash": "dacec3036814fb83d330202167b845d1",
     "semantic_hash": ""
   },
   "js/pf2e_engine.js": {
     "mtime": 1788664356.49844,
-    "seen": 1788850408.6668642,
+    "seen": 1788851334.725316,
     "ast_hash": "557bab243fbfe553482516350603c226",
     "semantic_hash": ""
   },
   "js/pf2e_pdf_form_filler.js": {
     "mtime": 1788646185.5760503,
-    "seen": 1788850408.6668677,
+    "seen": 1788851334.725319,
     "ast_hash": "5033c21afa15d1ad3a5511db252d507d",
     "semantic_hash": ""
   },
   "package.json": {
     "mtime": 1788841675.338145,
-    "seen": 1788850408.6668718,
+    "seen": 1788851334.725322,
     "ast_hash": "c051ce141f6c367fd851ae428c0b9a4b",
     "semantic_hash": ""
   },
   "public/js/pdf-lib.min.js": {
     "mtime": 1788078221.891361,
-    "seen": 1788850408.6668737,
+    "seen": 1788851334.7253234,
     "ast_hash": "dec481b1abd5119d3fbbd2695bdaebb1",
     "semantic_hash": ""
   },
   "scripts/audit-catalog.cjs": {
     "mtime": 1788766556.6470284,
-    "seen": 1788850408.6668916,
+    "seen": 1788851334.7253377,
     "ast_hash": "ae642645ca2ab02c92d781624ca04f53",
     "semantic_hash": ""
   },
   "scripts/sync-feats.cjs": {
     "mtime": 1788133933.345424,
-    "seen": 1788850408.6670074,
+    "seen": 1788851334.7254424,
     "ast_hash": "d78d56989c9240055585a72c7404acc0",
     "semantic_hash": ""
   },
   "scripts/sync-feats.js": {
     "mtime": 1788133924.1674826,
-    "seen": 1788850408.6670094,
+    "seen": 1788851334.7254438,
     "ast_hash": "d78d56989c9240055585a72c7404acc0",
     "semantic_hash": ""
   },
   "server.py": {
     "mtime": 1788774250.405834,
-    "seen": 1788850408.6670196,
+    "seen": 1788851334.725453,
     "ast_hash": "da804a31b6eeec26dc55d6bd6e357421",
     "semantic_hash": ""
   },
   "src/AccountPortal.tsx": {
     "mtime": 1788837891.2544615,
-    "seen": 1788850408.6670232,
+    "seen": 1788851334.7254558,
     "ast_hash": "a287bac0faa25e3ec6b2d0b7b640bd56",
     "semantic_hash": ""
   },
   "src/CampaignsPage.tsx": {
     "mtime": 1788838165.0984545,
-    "seen": 1788850408.6670246,
+    "seen": 1788851334.7254572,
     "ast_hash": "90ed32b0ed8822c53357e13c19b013af",
     "semantic_hash": ""
   },
   "src/ItemPickerModal.test.tsx": {
     "mtime": 1788252637.8524225,
-    "seen": 1788850408.6670258,
+    "seen": 1788851334.7254586,
     "ast_hash": "f6394124932c7e5ecb9cd99a132a245d",
     "semantic_hash": ""
   },
   "src/ItemPickerModal.tsx": {
     "mtime": 1788465820.9063652,
-    "seen": 1788850408.6670275,
+    "seen": 1788851334.7254603,
     "ast_hash": "19a8d76265de945ba940ca1b69c626c7",
     "semantic_hash": ""
   },
   "src/PickerModal.test.tsx": {
     "mtime": 1788767971.9915438,
-    "seen": 1788850408.667029,
+    "seen": 1788851334.7254617,
     "ast_hash": "763aa13305a6ca5f899d84781109fe17",
     "semantic_hash": ""
   },
   "src/PickerModal.tsx": {
     "mtime": 1788832998.4706936,
-    "seen": 1788850408.6670308,
+    "seen": 1788851334.7254634,
     "ast_hash": "9f1783404b6dd3c9a24c211abd708282",
     "semantic_hash": ""
   },
   "src/PortalPages.test.tsx": {
     "mtime": 1788778611.307093,
-    "seen": 1788850408.6670322,
+    "seen": 1788851334.7254646,
     "ast_hash": "75120e8e591afd5ce493abdb946108ef",
     "semantic_hash": ""
   },
   "src/PortalPages.tsx": {
     "mtime": 1788839861.3047485,
-    "seen": 1788850408.667034,
+    "seen": 1788851334.7254658,
     "ast_hash": "87a72a385fce607b2ddbf7d8d7e8aecd",
     "semantic_hash": ""
   },
   "src/accountState.ts": {
     "mtime": 1787894236.2839773,
-    "seen": 1788850408.667035,
+    "seen": 1788851334.7254672,
     "ast_hash": "f862d4827240e81ae170478f23c5e9f7",
     "semantic_hash": ""
   },
   "src/data/actionsData.ts": {
     "mtime": 1788729956.4824111,
-    "seen": 1788850408.667036,
+    "seen": 1788851334.7254684,
     "ast_hash": "ce01bdbf7d6c8d9aeca99768ec5137d6",
     "semantic_hash": ""
   },
   "src/data/ai-portrait-studio.test.ts": {
     "mtime": 1788131897.2249334,
-    "seen": 1788850408.6670372,
+    "seen": 1788851334.7254703,
     "ast_hash": "ccd193d873d44bb100ebb57f1f9d90d3",
     "semantic_hash": ""
   },
   "src/data/book-expansions-and-ai.test.ts": {
     "mtime": 1788245310.1450074,
-    "seen": 1788850408.6670382,
+    "seen": 1788851334.7254715,
     "ast_hash": "8c2f8ca89102bcdd69d020aaf374eb24",
     "semantic_hash": ""
   },
   "src/data/catalog-language-contract.test.ts": {
     "mtime": 1788314453.9860122,
-    "seen": 1788850408.6670392,
+    "seen": 1788851334.725473,
     "ast_hash": "66e12c9ebd6cfcffcd9ac315b3fc652f",
     "semantic_hash": ""
   },
   "src/data/catalog-provenance.test.ts": {
     "mtime": 1788828631.758667,
-    "seen": 1788850408.6670403,
+    "seen": 1788851334.7254744,
     "ast_hash": "05f5acd503ce2079f5023ef052077045",
     "semantic_hash": ""
   },
   "src/data/character-creation-rules.test.ts": {
     "mtime": 1788075570.4148095,
-    "seen": 1788850408.6670413,
+    "seen": 1788851334.7254755,
     "ast_hash": "9029c3fc1dea9bfcd5385bc9d22cc609",
     "semantic_hash": ""
   },
   "src/data/details-tab.test.ts": {
     "mtime": 1788116542.1896615,
-    "seen": 1788850408.6670432,
+    "seen": 1788851334.7254784,
     "ast_hash": "16c2c31615868093cc095cafcd40ace4",
     "semantic_hash": ""
   },
   "src/data/dice-roller.test.ts": {
     "mtime": 1788115206.5486717,
-    "seen": 1788850408.6670444,
+    "seen": 1788851334.7254798,
     "ast_hash": "adab5218ded7f468169c9954cd66519b",
     "semantic_hash": ""
   },
   "src/data/dynamic-ancestry.test.ts": {
     "mtime": 1787929363.0029476,
-    "seen": 1788850408.6670454,
+    "seen": 1788851334.7254815,
     "ast_hash": "e855268065f75a3b0c10e4f0bf90853a",
     "semantic_hash": ""
   },
   "src/data/engine-mechanics.test.ts": {
     "mtime": 1788664411.6265323,
-    "seen": 1788850408.667046,
+    "seen": 1788851334.7254825,
     "ast_hash": "5e182f84e11c25fb1b9ae9904f38397e",
     "semantic_hash": ""
   },
   "src/data/equipmentData.ts": {
     "mtime": 1788729969.6603718,
-    "seen": 1788850408.6670475,
+    "seen": 1788851334.7254841,
     "ast_hash": "4a82b8f2aa4bc415cbf8e24ce5d6d58c",
     "semantic_hash": ""
   },
   "src/data/featsData.ts": {
     "mtime": 1788315312.9816294,
-    "seen": 1788850408.6670482,
+    "seen": 1788851334.7254856,
     "ast_hash": "a1a78c4dd7a064a147407d5decd673d0",
     "semantic_hash": ""
   },
   "src/data/official-fillable-pdf.test.ts": {
     "mtime": 1788735431.1364202,
-    "seen": 1788850408.667053,
+    "seen": 1788851334.7254894,
     "ast_hash": "367de7e589530408d5b3b5a2a6a79e29",
     "semantic_hash": ""
   },
   "src/data/official-sheet-print.test.ts": {
     "mtime": 1788265330.081057,
-    "seen": 1788850408.667055,
+    "seen": 1788851334.7254903,
     "ast_hash": "7c7f1e10bdf026e0fdff1782b6226375",
     "semantic_hash": ""
   },
   "src/data/petsData.ts": {
     "mtime": 1788729980.8874555,
-    "seen": 1788850408.6670566,
+    "seen": 1788851334.725492,
     "ast_hash": "442986ba6d68f07439ebffd22ce78b6f",
     "semantic_hash": ""
   },
   "src/data/progression-plan.test.ts": {
     "mtime": 1788115440.7988296,
-    "seen": 1788850408.6670582,
+    "seen": 1788851334.7254932,
     "ast_hash": "9003c979a127e35dfe830e6aa1b28686",
     "semantic_hash": ""
   },
   "src/data/readiness-validator.test.ts": {
     "mtime": 1788363508.965289,
-    "seen": 1788850408.6670597,
+    "seen": 1788851334.7254946,
     "ast_hash": "4b442507a05aa516846ff086e7b7286b",
     "semantic_hash": ""
   },
   "src/data/responsive-layout-contract.test.ts": {
     "mtime": 1788779548.1934369,
-    "seen": 1788850408.6670613,
+    "seen": 1788851334.7254958,
     "ast_hash": "ed7f65aa2bb72a98cf7a1bd8cb3a9346",
     "semantic_hash": ""
   },
   "src/data/responsive-view.test.ts": {
     "mtime": 1788551254.5463138,
-    "seen": 1788850408.6670625,
+    "seen": 1788851334.725497,
     "ast_hash": "484574c0ddc742bdfda696e8000e114d",
     "semantic_hash": ""
   },
   "src/data/sources.ts": {
     "mtime": 1788504255.9969587,
-    "seen": 1788850408.667066,
+    "seen": 1788851334.7254994,
     "ast_hash": "0997199674410f48739e0ab49f412613",
     "semantic_hash": ""
   },
   "src/data/spellcasting-engine.test.ts": {
     "mtime": 1788272065.914632,
-    "seen": 1788850408.6670673,
+    "seen": 1788851334.7255006,
     "ast_hash": "f0f9e6ad2a4106846efe73f194945503",
     "semantic_hash": ""
   },
   "src/data/variant-rules-and-kits.test.ts": {
     "mtime": 1788261855.486696,
-    "seen": 1788850408.6670702,
+    "seen": 1788851334.7255032,
     "ast_hash": "d83339ba3ee90b4f1d38889b688d6680",
     "semantic_hash": ""
   },
   "src/i18n.test.tsx": {
     "mtime": 1788466479.077561,
-    "seen": 1788850408.667073,
+    "seen": 1788851334.7255058,
     "ast_hash": "eb7aaa511639883f167d6b7357147592",
     "semantic_hash": ""
   },
   "src/i18n.tsx": {
     "mtime": 1788839803.496806,
-    "seen": 1788850408.6670744,
+    "seen": 1788851334.725507,
     "ast_hash": "ab208bc8af1c9b7ad9d6826e6447510f",
     "semantic_hash": ""
   },
   "src/lib/supabase.ts": {
     "mtime": 1788206633.9924693,
-    "seen": 1788850408.66708,
+    "seen": 1788851334.725511,
     "ast_hash": "e1f06630a259b6c44c026c4219640784",
     "semantic_hash": ""
   },
   "src/main.tsx": {
     "mtime": 1788771447.6538427,
-    "seen": 1788850408.667082,
+    "seen": 1788851334.7255125,
     "ast_hash": "ea8d4b0ba48f0699c7320a2c503342d0",
     "semantic_hash": ""
   },
   "src/services/auth.test.ts": {
     "mtime": 1788266880.244666,
-    "seen": 1788850408.6670854,
+    "seen": 1788851334.7255163,
     "ast_hash": "fd82a807ef34def0184ead02cee2e549",
     "semantic_hash": ""
   },
   "src/services/auth.ts": {
     "mtime": 1788280658.7483208,
-    "seen": 1788850408.6670866,
+    "seen": 1788851334.7255175,
     "ast_hash": "77b8f46310aafd2ec2242d3341e55a25",
     "semantic_hash": ""
   },
   "src/services/campaigns.test.ts": {
     "mtime": 1788769961.9149938,
-    "seen": 1788850408.6670907,
+    "seen": 1788851334.7255218,
     "ast_hash": "4ad78bc65ae251eeed698726eb93ac1c",
     "semantic_hash": ""
   },
   "src/services/campaigns.ts": {
     "mtime": 1788838165.0964377,
-    "seen": 1788850408.6670923,
+    "seen": 1788851334.7255232,
     "ast_hash": "bb3280648bbc2a72477e9e136b7ff2f3",
     "semantic_hash": ""
   },
   "src/services/characters.test.ts": {
     "mtime": 1788283300.039862,
-    "seen": 1788850408.667097,
+    "seen": 1788851334.725527,
     "ast_hash": "8cc19580c1fed8ec50201ba2e7c41651",
     "semantic_hash": ""
   },
   "src/services/characters.ts": {
     "mtime": 1788837891.2524636,
-    "seen": 1788850408.6670985,
+    "seen": 1788851334.7255285,
     "ast_hash": "83e2b5003a467153483c94ba831316b6",
     "semantic_hash": ""
   },
   "src/services/pdfFormExport.ts": {
     "mtime": 1788646194.596859,
-    "seen": 1788850408.6671004,
+    "seen": 1788851334.7255301,
     "ast_hash": "84844f3d62a720d61d44e86c74349c25",
     "semantic_hash": ""
   },
   "src/test/setup.ts": {
     "mtime": 1787872609.2700675,
-    "seen": 1788850408.667105,
+    "seen": 1788851334.7255342,
     "ast_hash": "9ba76dbe1115a41effce476edc258870",
     "semantic_hash": ""
   },
   "src/types.ts": {
     "mtime": 1788781886.5784485,
-    "seen": 1788850408.6671095,
+    "seen": 1788851334.7255378,
     "ast_hash": "5317e278edb64ace0b67a6689965dbba",
     "semantic_hash": ""
   },
   "src/utils/economy.test.ts": {
     "mtime": 1788170652.3469768,
-    "seen": 1788850408.667111,
+    "seen": 1788851334.7255394,
     "ast_hash": "a8a3211d52e13124a5aa6e06b7280d92",
     "semantic_hash": ""
   },
   "src/utils/economy.ts": {
     "mtime": 1788170652.3429763,
-    "seen": 1788850408.667112,
+    "seen": 1788851334.7255406,
     "ast_hash": "10d19cdd123259b91dc55f0eb14c1c30",
     "semantic_hash": ""
   },
   "src/vite-env.d.ts": {
     "mtime": 1787858048.331846,
-    "seen": 1788850408.6671135,
+    "seen": 1788851334.7255418,
     "ast_hash": "f7b141a75e795569736ed06fbadc743c",
     "semantic_hash": ""
   },
   "supabase/functions/delete-account/index.ts": {
     "mtime": 1787859000.506418,
-    "seen": 1788850408.66712,
+    "seen": 1788851334.7255476,
     "ast_hash": "f1838498ce19f392da792cdb5df61905",
     "semantic_hash": ""
   },
   "tsconfig.app.json": {
     "mtime": 1787893797.4381287,
-    "seen": 1788850408.6671412,
+    "seen": 1788851334.725569,
     "ast_hash": "ef4a93c00b528ab3a19bbb5b9af35315",
     "semantic_hash": ""
   },
   "tsconfig.json": {
     "mtime": 1787857757.760431,
-    "seen": 1788850408.6671426,
+    "seen": 1788851334.7255702,
     "ast_hash": "a3d39fa780ebff65444de257f291ce6c",
     "semantic_hash": ""
   },
   "tsconfig.node.json": {
     "mtime": 1787857757.760431,
-    "seen": 1788850408.6671445,
+    "seen": 1788851334.7255716,
     "ast_hash": "dfe0f259d2f0d511f1cc13a1c67d174d",
     "semantic_hash": ""
   },
   "vite.config.ts": {
     "mtime": 1788771369.5259798,
-    "seen": 1788850408.667146,
+    "seen": 1788851334.7255728,
     "ast_hash": "911cd396d21d15b5c7dcbf21258f29c3",
     "semantic_hash": ""
   },
   ".github/workflows/deploy.yml": {
     "mtime": 1788109546.7019181,
-    "seen": 1788850408.6672022,
+    "seen": 1788851334.7256284,
     "ast_hash": "1afddbadf8336c4c75ebbc687285d6f7",
     "semantic_hash": ""
   },
   "README.md": {
     "mtime": 1788260678.9159503,
-    "seen": 1788850408.6672068,
+    "seen": 1788851334.7256339,
     "ast_hash": "95d1d4fdc8b7aac2ddfde912d156ce5f",
     "semantic_hash": ""
   },
   "TODO_COBERTURA_E_BUGS.md": {
-    "mtime": 1788850239.0193417,
-    "seen": 1788850408.6672077,
-    "ast_hash": "d6adcb690528186b9f0273a77ace6074",
+    "mtime": 1788850707.655934,
+    "seen": 1788851334.7256348,
+    "ast_hash": "ad636913be54ed6f9c0bc2d5ea92d0f0",
     "semantic_hash": ""
   },
   "books_expansion_and_ai_assistant_tasks.md": {
     "mtime": 1788076608.62826,
-    "seen": 1788850408.6672087,
+    "seen": 1788851334.7256362,
     "ast_hash": "a6d9f013c0b3c552b7369749db5c2fc7",
     "semantic_hash": ""
   },
   "character_creation_rules_tasks.md": {
     "mtime": 1788075595.3446496,
-    "seen": 1788850408.66721,
+    "seen": 1788851334.7256374,
     "ast_hash": "df69145748a136a30274e2fe75e1a04a",
     "semantic_hash": ""
   },
   "index.html": {
     "mtime": 1788780395.7139602,
-    "seen": 1788850408.6672118,
+    "seen": 1788851334.7256389,
     "ast_hash": "a663edcd2b2e3686e457f7a0272e09b7",
     "semantic_hash": ""
   },
   "walkthrough.md": {
     "mtime": 1788075610.0855837,
-    "seen": 1788850408.667213,
+    "seen": 1788851334.7256403,
     "ast_hash": "7cd113ee9098cefab67c22cc59c2a3f2",
     "semantic_hash": ""
   },
   "ficha.pdf": {
     "mtime": 1787876578.7893002,
-    "seen": 1788850408.667215,
+    "seen": 1788851334.7256415,
     "ast_hash": "6e4831797026b0085ac951e04ad4d28e",
     "semantic_hash": ""
   },
   "public/ficha.pdf": {
     "mtime": 1787876578.7893002,
-    "seen": 1788850408.6672163,
+    "seen": 1788851334.7256424,
     "ast_hash": "6e4831797026b0085ac951e04ad4d28e",
     "semantic_hash": ""
   },
   "ficha-ref-1.png": {
     "mtime": 1787871686.4598768,
-    "seen": 1788850408.667297,
+    "seen": 1788851334.7257237,
     "ast_hash": "66689f82b04cbd1c2031103ff7d07e6e",
     "semantic_hash": ""
   },
   "ficha-ref-2.png": {
     "mtime": 1787871702.286067,
-    "seen": 1788850408.6672988,
+    "seen": 1788851334.725725,
     "ast_hash": "a5cce80cbd8d7995ede9acef726b7073",
     "semantic_hash": ""
   },
   "ficha-ref-3.png": {
     "mtime": 1787871702.3600712,
-    "seen": 1788850408.6673007,
+    "seen": 1788851334.7257261,
     "ast_hash": "f441b5f04ff694c7b5bef6608f98abb2",
     "semantic_hash": ""
   },
   "ficha-ref-4.png": {
     "mtime": 1787871702.43507,
-    "seen": 1788850408.6673024,
+    "seen": 1788851334.7257276,
     "ast_hash": "be58d53efa39bff8ea756e53ba7a600d",
     "semantic_hash": ""
   },
   ".planning/config.json": {
     "mtime": 1788464577.632891,
-    "seen": 1788850408.6668339,
+    "seen": 1788851334.72528,
     "ast_hash": "13a39e08ef724a0d79acc17f3c31dc61",
     "semantic_hash": ""
   },
   "audit_snapshots/01_initial_data.json": {
     "mtime": 1788323271.3854654,
-    "seen": 1788850408.6668391,
+    "seen": 1788851334.725288,
     "ast_hash": "3b22fa45c88eb67cbc8cda0e59d0ecb3",
     "semantic_hash": ""
   },
   "audit_snapshots/02_app_state.json": {
     "mtime": 1788323295.379393,
-    "seen": 1788850408.6668403,
+    "seen": 1788851334.7252898,
     "ast_hash": "7a79a05e17fd099465f38e54f43a7286",
     "semantic_hash": ""
   },
   "audit_snapshots/03_classes_comparison.json": {
     "mtime": 1788323375.0558937,
-    "seen": 1788850408.6668415,
+    "seen": 1788851334.7252915,
     "ast_hash": "f07b9312c0ecf754bcdee7f130c5a459",
     "semantic_hash": ""
   },
   "audit_snapshots/04_builder_structure.json": {
     "mtime": 1788835649.6690245,
-    "seen": 1788850408.666843,
+    "seen": 1788851334.7252934,
     "ast_hash": "38a3d16cd042a8fb263fd27d5f9e6ef0",
     "semantic_hash": ""
   },
   "audit_snapshots/05_classes_level1_cards.json": {
     "mtime": 1788323469.2593622,
-    "seen": 1788850408.6668444,
+    "seen": 1788851334.7252948,
     "ast_hash": "f495c89aae09a303f96811165fd70e10",
     "semantic_hash": ""
   },
   "audit_snapshots/05_initial_builder_cards.json": {
     "mtime": 1788835660.01222,
-    "seen": 1788850408.6668453,
+    "seen": 1788851334.7252967,
     "ast_hash": "6d0d2fa95fc84341a5d1a1e8854747d3",
     "semantic_hash": ""
   },
   "audit_snapshots/06_live_classes_data.json": {
     "mtime": 1788323677.8961182,
-    "seen": 1788850408.6668465,
+    "seen": 1788851334.7252982,
     "ast_hash": "a4969661990f6dc2e8a308a15bd02b74",
     "semantic_hash": ""
   },
   "audit_snapshots/07_detailed_classes_live_data.json": {
     "mtime": 1788835876.3066075,
-    "seen": 1788850408.6668475,
+    "seen": 1788851334.7253003,
     "ast_hash": "ba37b4bdbc5e966c602ae555d5cfde45",
     "semantic_hash": ""
   },
   "audit_snapshots/08_final_classes_audit.json": {
     "mtime": 1788323984.478156,
-    "seen": 1788850408.6668487,
+    "seen": 1788851334.7253015,
     "ast_hash": "acbb7f1552f4be4503b6a9f06ef10776",
     "semantic_hash": ""
   },
   "characters/Joao_Ranger.json": {
     "mtime": 1787807506.2352192,
-    "seen": 1788850408.666851,
+    "seen": 1788851334.725305,
     "ast_hash": "2bf380368772e5015db335f0d5143048",
     "semantic_hash": ""
   },
   "characters/Lorenzo_LaRosa.json": {
     "mtime": 1787807486.9587631,
-    "seen": 1788850408.6668527,
+    "seen": 1788851334.7253063,
     "ast_hash": "e278d13826293ae7478d195abf40375e",
     "semantic_hash": ""
   },
   "js/pf2e_feats_mechanics.js": {
     "mtime": 1788830499.261938,
-    "seen": 1788850408.6668658,
+    "seen": 1788851334.7253175,
     "ast_hash": "b9c3685c33927965d8def50d17a387ce",
     "semantic_hash": ""
   },
   "public/sw.js": {
     "mtime": 1788317205.4183884,
-    "seen": 1788850408.6668754,
+    "seen": 1788851334.725325,
     "ast_hash": "7545474208be2f27f1dd5337f972cecc",
     "semantic_hash": ""
   },
   "scratch/ficha_fields.json": {
     "mtime": 1788169787.3560686,
-    "seen": 1788850408.666877,
+    "seen": 1788851334.7253263,
     "ast_hash": "f8aaa8df4dc750f18f3fe201f1ae1440",
     "semantic_hash": ""
   },
   "scripts/apply-compendium-audit.cjs": {
     "mtime": 1788314057.1187115,
-    "seen": 1788850408.6668787,
+    "seen": 1788851334.725328,
     "ast_hash": "cbe6d244cf71853c1608bb9141cd409e",
     "semantic_hash": ""
   },
   "scripts/apply-expanded-feats.cjs": {
     "mtime": 1788286016.7983737,
-    "seen": 1788850408.6668806,
+    "seen": 1788851334.7253292,
     "ast_hash": "6a88764520b1fdc840276b7db0d1f27d",
     "semantic_hash": ""
   },
   "scripts/apply_all_heritages.cjs": {
     "mtime": 1788318750.9922824,
-    "seen": 1788850408.6668823,
+    "seen": 1788851334.7253306,
     "ast_hash": "cfe46e044fb55342ac2b92f730f5ddd4",
     "semantic_hash": ""
   },
   "scripts/apply_subclasses_enrichment.cjs": {
     "mtime": 1788289342.3601186,
-    "seen": 1788850408.6668847,
+    "seen": 1788851334.7253325,
     "ast_hash": "56e9a5c6d585acae8da7fe53717c26fb",
     "semantic_hash": ""
   },
   "scripts/audit-all-needs-review.cjs": {
     "mtime": 1788313855.7452588,
-    "seen": 1788850408.6668863,
+    "seen": 1788851334.7253337,
     "ast_hash": "2e75dd9a5bbe6a75aaa52cfe770b51aa",
     "semantic_hash": ""
   },
   "scripts/audit-books.cjs": {
     "mtime": 1788773685.9055705,
-    "seen": 1788850408.666888,
+    "seen": 1788851334.7253354,
     "ast_hash": "3ec741c88b70f1191b3a2f30c1838e28",
     "semantic_hash": ""
   },
   "scripts/audit-live-character-trees.cjs": {
     "mtime": 1788323838.1367385,
-    "seen": 1788850408.6668963,
+    "seen": 1788851334.7253423,
     "ast_hash": "6f5337a54f09827fa99e4f89fe6446e5",
     "semantic_hash": ""
   },
   "scripts/audit-original-pathbuilder.cjs": {
     "mtime": 1788323701.8555267,
-    "seen": 1788850408.6669106,
+    "seen": 1788851334.725355,
     "ast_hash": "094cf716fdb1327bd1653b11eeb9b391",
     "semantic_hash": ""
   },
   "scripts/breakdown-review.cjs": {
     "mtime": 1788313717.5953138,
-    "seen": 1788850408.6669197,
+    "seen": 1788851334.7253635,
     "ast_hash": "7df42c1ed1aea8dc9e56d7b01474f006",
     "semantic_hash": ""
   },
   "scripts/build_and_inject_heritages.cjs": {
     "mtime": 1788318849.694814,
-    "seen": 1788850408.666921,
+    "seen": 1788851334.725365,
     "ast_hash": "54894749dd6d22cc049eb5feb8613743",
     "semantic_hash": ""
   },
   "scripts/build_feats_compendium.cjs": {
     "mtime": 1788294930.925848,
-    "seen": 1788850408.6669223,
+    "seen": 1788851334.7253664,
     "ast_hash": "f481086d06ef7c906d06459eb5dbeb2a",
     "semantic_hash": ""
   },
   "scripts/build_full_heritage_catalog.cjs": {
     "mtime": 1788318840.3539503,
-    "seen": 1788850408.6669238,
+    "seen": 1788851334.7253678,
     "ast_hash": "48145cae21025f16c39e2d9aa5e53d33",
     "semantic_hash": ""
   },
   "scripts/check-compendium-review.cjs": {
     "mtime": 1788313689.181359,
-    "seen": 1788850408.6669557,
+    "seen": 1788851334.725395,
     "ast_hash": "7b91a2264df6363ebcd3c2fb091de0f4",
     "semantic_hash": ""
   },
   "scripts/clean_provenance_assertions.cjs": {
     "mtime": 1788314275.5229006,
-    "seen": 1788850408.6669576,
+    "seen": 1788851334.7253964,
     "ast_hash": "fd41e188d9a17136827d8716423b8854",
     "semantic_hash": ""
   },
   "scripts/enrich-all-compendium-items.cjs": {
     "mtime": 1788287081.4897058,
-    "seen": 1788850408.666959,
+    "seen": 1788851334.725398,
     "ast_hash": "33ebec9e71661c8b85e4a95c513d2940",
     "semantic_hash": ""
   },
   "scripts/enrich_all_catalog_feats.cjs": {
     "mtime": 1788294850.2915926,
-    "seen": 1788850408.666961,
+    "seen": 1788851334.7253997,
     "ast_hash": "021029e4ed984ca41289d8091f2096a0",
     "semantic_hash": ""
   },
   "scripts/enrich_final_compendium_sources.cjs": {
     "mtime": 1788314095.7623825,
-    "seen": 1788850408.6669626,
+    "seen": 1788851334.7254016,
     "ast_hash": "8405821d0e7ece9155d1719e75183158",
     "semantic_hash": ""
   },
   "scripts/enrich_subclasses.js": {
     "mtime": 1788289034.7922192,
-    "seen": 1788850408.6669645,
+    "seen": 1788851334.7254028,
     "ast_hash": "cb0f148b9059471ed83f10adeb7384f2",
     "semantic_hash": ""
   },
   "scripts/extract-all-core-class-feats.cjs": {
     "mtime": 1788286116.4489257,
-    "seen": 1788850408.6669662,
+    "seen": 1788851334.7254047,
     "ast_hash": "a834896ee388190ab3263b66a18f6bf4",
     "semantic_hash": ""
   },
   "scripts/extract-core-ancestry-feats.cjs": {
     "mtime": 1788285851.5769925,
-    "seen": 1788850408.6669679,
+    "seen": 1788851334.725406,
     "ast_hash": "c0513505f5668181c97db594d5f9cf15",
     "semantic_hash": ""
   },
   "scripts/extract-gng-class-feats.cjs": {
     "mtime": 1788285878.4705627,
-    "seen": 1788850408.6669695,
+    "seen": 1788851334.7254076,
     "ast_hash": "db0ac141bd10ee331be9962bd4f1caea",
     "semantic_hash": ""
   },
   "scripts/extract-pc2-class-feats.cjs": {
     "mtime": 1788285865.6147668,
-    "seen": 1788850408.6669714,
+    "seen": 1788851334.725409,
     "ast_hash": "7ccec5f86857a9d0cef2de9f4440c0ad",
     "semantic_hash": ""
   },
   "scripts/extract-som-class-feats.cjs": {
     "mtime": 1788285892.4956613,
-    "seen": 1788850408.666973,
+    "seen": 1788851334.7254102,
     "ast_hash": "ba27d8bc4c7e35a4cee2cf9803e2a5ad",
     "semantic_hash": ""
   },
   "scripts/extract_all_feats_from_books.py": {
     "mtime": 1788294642.381263,
-    "seen": 1788850408.6669748,
+    "seen": 1788851334.7254117,
     "ast_hash": "0dd1ab13dc93aac83ab7e4478bdc31d3",
     "semantic_hash": ""
   },
   "scripts/extracted_gng_class_feats.json": {
     "mtime": 1788285885.5858378,
-    "seen": 1788850408.6669788,
+    "seen": 1788851334.7254145,
     "ast_hash": "510f0602ea5285635f9f6d92d192a4f3",
     "semantic_hash": ""
   },
   "scripts/extracted_pc1_ancestry_feats.json": {
     "mtime": 1788285858.0382483,
-    "seen": 1788850408.6669805,
+    "seen": 1788851334.7254157,
     "ast_hash": "a62ce139b1716916be912063d2c5a66b",
     "semantic_hash": ""
   },
   "scripts/extracted_pc1_class_feats.json": {
     "mtime": 1788286123.1262052,
-    "seen": 1788850408.6669822,
+    "seen": 1788851334.7254171,
     "ast_hash": "0d993bc325c49feafd1063d5184cc7a0",
     "semantic_hash": ""
   },
   "scripts/extracted_pc2_class_feats.json": {
     "mtime": 1788286123.1278062,
-    "seen": 1788850408.6669836,
+    "seen": 1788851334.7254188,
     "ast_hash": "17fc6f6fb006a24c474a0fda2661db9c",
     "semantic_hash": ""
   },
   "scripts/extracted_som_class_feats.json": {
     "mtime": 1788285899.0539317,
-    "seen": 1788850408.666985,
+    "seen": 1788851334.72542,
     "ast_hash": "d751713988987e9331980363e24189ce",
     "semantic_hash": ""
   },
   "scripts/find_all_unverified_in_data.cjs": {
     "mtime": 1788313980.795055,
-    "seen": 1788850408.6669862,
+    "seen": 1788851334.7254214,
     "ast_hash": "4e9c00e9d5180ac729e0ce95e72eb477",
     "semantic_hash": ""
   },
   "scripts/fix-armors-shields.cjs": {
     "mtime": 1788287423.0317822,
-    "seen": 1788850408.6669881,
+    "seen": 1788851334.7254229,
     "ast_hash": "428930c47926f39f7171144e1403cc9f",
     "semantic_hash": ""
   },
   "scripts/fix_all_provenance_test_expectations.cjs": {
     "mtime": 1788314232.1026275,
-    "seen": 1788850408.6669898,
+    "seen": 1788851334.725424,
     "ast_hash": "34aed99c68e7bd65a365a81741dc6920",
     "semantic_hash": ""
   },
   "scripts/inject_full_feat_mechanics.cjs": {
     "mtime": 1788294897.052235,
-    "seen": 1788850408.666995,
+    "seen": 1788851334.725429,
     "ast_hash": "b379f9c0af1f57a6b89904ccc7939caa",
     "semantic_hash": ""
   },
   "scripts/inspect-flagged-details.cjs": {
     "mtime": 1788313912.7388067,
-    "seen": 1788850408.6669962,
+    "seen": 1788851334.7254305,
     "ast_hash": "b9a9d61fc24286b79cfc50cab96a816e",
     "semantic_hash": ""
   },
   "scripts/inspect-last-23.cjs": {
     "mtime": 1788314074.3402543,
-    "seen": 1788850408.6669974,
+    "seen": 1788851334.725432,
     "ast_hash": "8652ba32b1c85d59e00e119aa9bda48b",
     "semantic_hash": ""
   },
   "scripts/inspect_drive_folder.py": {
     "mtime": 1788296121.6224713,
-    "seen": 1788850408.6669984,
+    "seen": 1788851334.725433,
     "ast_hash": "65ec541ede0f5f969b6a05516291704f",
     "semantic_hash": ""
   },
   "scripts/inspect_remaining_flagged.cjs": {
     "mtime": 1788314037.8695347,
-    "seen": 1788850408.6669993,
+    "seen": 1788851334.7254345,
     "ast_hash": "dcbdba14384a9ae3e69a06bb217a367a",
     "semantic_hash": ""
   },
   "scripts/mass_compendium_revamp.cjs": {
     "mtime": 1788314013.7060325,
-    "seen": 1788850408.6670005,
+    "seen": 1788851334.725436,
     "ast_hash": "778e68793465db77330fc8c6d6d60a8b",
     "semantic_hash": ""
   },
   "scripts/merge-and-sync-all.cjs": {
     "mtime": 1788286135.4780304,
-    "seen": 1788850408.667002,
+    "seen": 1788851334.7254374,
     "ast_hash": "396f11a7505e0d9feae4ca9892cdf552",
     "semantic_hash": ""
   },
   "scripts/merge-catalog-expansions.cjs": {
     "mtime": 1788285923.7118723,
-    "seen": 1788850408.6670032,
+    "seen": 1788851334.7254388,
     "ast_hash": "24b768177b40093551173532a80e6955",
     "semantic_hash": ""
   },
   "scripts/revise_all_compendium.cjs": {
     "mtime": 1788313971.5589755,
-    "seen": 1788850408.6670058,
+    "seen": 1788851334.725441,
     "ast_hash": "5b23fcf86f6e556ef916fa7e69f45fd2",
     "semantic_hash": ""
   },
   "scripts/update_provenance_tests.cjs": {
     "mtime": 1788314178.0017686,
-    "seen": 1788850408.6670177,
+    "seen": 1788851334.725451,
     "ast_hash": "cd686bad5fc304888d46771f0fc38960",
     "semantic_hash": ""
   },
   "src/data/foundry-vtt-export.test.ts": {
     "mtime": 1788646281.5753405,
-    "seen": 1788850408.66705,
+    "seen": 1788851334.7254868,
     "ast_hash": "e779754503011ba539a14ddbd8a69b25",
     "semantic_hash": ""
   },
   "src/data/subclasses-mechanics.test.ts": {
     "mtime": 1788319469.521979,
-    "seen": 1788850408.667069,
+    "seen": 1788851334.725502,
     "ast_hash": "156b981312533525ad501deb3854ffc8",
     "semantic_hash": ""
   },
   "src/services/admin.test.ts": {
     "mtime": 1788646296.5759113,
-    "seen": 1788850408.6670835,
+    "seen": 1788851334.7255137,
     "ast_hash": "03b956c44a5d2070722eea5372be727c",
     "semantic_hash": ""
   },
   "src/services/admin.ts": {
     "mtime": 1788730003.9713216,
-    "seen": 1788850408.6670842,
+    "seen": 1788851334.7255151,
     "ast_hash": "65e32c43336399b76df71692bb214791",
     "semantic_hash": ""
   },
   "src/services/requestTimeout.test.ts": {
     "mtime": 1788216660.0006032,
-    "seen": 1788850408.6671016,
+    "seen": 1788851334.7255313,
     "ast_hash": "7c2cfaf82df216e8c5874fa43ba91972",
     "semantic_hash": ""
   },
   "src/services/requestTimeout.ts": {
     "mtime": 1788216641.6675487,
-    "seen": 1788850408.6671033,
+    "seen": 1788851334.7255328,
     "ast_hash": "a6738bf18b075a222668884e458f5534",
     "semantic_hash": ""
   },
   "src/theme.test.tsx": {
     "mtime": 1788492089.8489761,
-    "seen": 1788850408.6671066,
+    "seen": 1788851334.7255354,
     "ast_hash": "882a81c2b88e1b8ff7aba5410fb8b104",
     "semantic_hash": ""
   },
   "src/theme.tsx": {
     "mtime": 1788319867.3389592,
-    "seen": 1788850408.6671083,
+    "seen": 1788851334.7255366,
     "ast_hash": "5cdf60f6d961d3f2277bd7bc84cc78b3",
     "semantic_hash": ""
   },
   "audit_snapshots/01_initial_app.png": {
     "mtime": 1788323271.3809514,
-    "seen": 1788850408.6672177,
+    "seen": 1788851334.7256439,
     "ast_hash": "05a6ed87d4132874204ba21bfcad6c39",
     "semantic_hash": ""
   },
   "audit_snapshots/02_app_loaded.png": {
     "mtime": 1788323295.375154,
-    "seen": 1788850408.6672194,
+    "seen": 1788851334.7256448,
     "ast_hash": "f189a81bb33911ba858c68fa67f83c3f",
     "semantic_hash": ""
   },
   "audit_snapshots/03_main_builder.png": {
     "mtime": 1788835649.6637905,
-    "seen": 1788850408.6672208,
+    "seen": 1788851334.725646,
     "ast_hash": "20ec35cd4c6444b5a4bfd618854609e3",
     "semantic_hash": ""
   },
   "audit_snapshots/04_character_builder_ready.png": {
     "mtime": 1788835655.779288,
-    "seen": 1788850408.6672225,
+    "seen": 1788851334.7256472,
     "ast_hash": "e26da628ae518fa3d5aac4c52b9096ed",
     "semantic_hash": ""
   },
   "audit_snapshots/05_builder_loaded.png": {
     "mtime": 1788835659.998688,
-    "seen": 1788850408.6672244,
+    "seen": 1788851334.7256486,
     "ast_hash": "594084637370c8fd630ed6ea8d4b66e9",
     "semantic_hash": ""
   },
   "audit_snapshots/class_alchemist_live_tree.png": {
     "mtime": 1788835876.2970605,
-    "seen": 1788850408.6672256,
+    "seen": 1788851334.7256498,
     "ast_hash": "5b8682b6a0e6de7417fd725cda6995a9",
     "semantic_hash": ""
   },
   "audit_snapshots/class_barbarian_live_tree.png": {
     "mtime": 1788835869.5977585,
-    "seen": 1788850408.6672275,
+    "seen": 1788851334.725651,
     "ast_hash": "5b8682b6a0e6de7417fd725cda6995a9",
     "semantic_hash": ""
   },
   "audit_snapshots/class_champion.png": {
     "mtime": 1788323375.0528932,
-    "seen": 1788850408.6672287,
+    "seen": 1788851334.7256522,
     "ast_hash": "35e8a8bf5b43f4d4cf4225660359e558",
     "semantic_hash": ""
   },
   "audit_snapshots/class_champion_detail.png": {
     "mtime": 1788323469.257366,
-    "seen": 1788850408.66723,
+    "seen": 1788851334.7256532,
     "ast_hash": "20ec35cd4c6444b5a4bfd618854609e3",
     "semantic_hash": ""
   },
   "audit_snapshots/class_champion_live.png": {
     "mtime": 1788323677.8938782,
-    "seen": 1788850408.6672316,
+    "seen": 1788851334.7256548,
     "ast_hash": "e26da628ae518fa3d5aac4c52b9096ed",
     "semantic_hash": ""
   },
   "audit_snapshots/class_champion_live_tree.png": {
     "mtime": 1788835862.9172678,
-    "seen": 1788850408.667233,
+    "seen": 1788851334.725656,
     "ast_hash": "5b8682b6a0e6de7417fd725cda6995a9",
     "semantic_hash": ""
   },
   "audit_snapshots/class_cleric.png": {
     "mtime": 1788323346.7234116,
-    "seen": 1788850408.6672347,
+    "seen": 1788851334.7256758,
     "ast_hash": "35e8a8bf5b43f4d4cf4225660359e558",
     "semantic_hash": ""
   },
   "audit_snapshots/class_cleric_detail.png": {
     "mtime": 1788323447.9076004,
-    "seen": 1788850408.667236,
+    "seen": 1788851334.725678,
     "ast_hash": "20ec35cd4c6444b5a4bfd618854609e3",
     "semantic_hash": ""
   },
   "audit_snapshots/class_cleric_live.png": {
     "mtime": 1788323651.4990351,
-    "seen": 1788850408.667238,
+    "seen": 1788851334.7256794,
     "ast_hash": "e26da628ae518fa3d5aac4c52b9096ed",
     "semantic_hash": ""
   },
   "audit_snapshots/class_cleric_live_tree.png": {
     "mtime": 1788835836.249154,
-    "seen": 1788850408.6672397,
+    "seen": 1788851334.7256806,
     "ast_hash": "399af0a6efa009f5f835154cdccbe583",
     "semantic_hash": ""
   },
   "audit_snapshots/class_fighter.png": {
     "mtime": 1788323332.5378244,
-    "seen": 1788850408.6672413,
+    "seen": 1788851334.725682,
     "ast_hash": "35e8a8bf5b43f4d4cf4225660359e558",
     "semantic_hash": ""
   },
   "audit_snapshots/class_fighter_detail.png": {
     "mtime": 1788323433.6875272,
-    "seen": 1788850408.6672425,
+    "seen": 1788851334.7256832,
     "ast_hash": "20ec35cd4c6444b5a4bfd618854609e3",
     "semantic_hash": ""
   },
   "audit_snapshots/class_fighter_live.png": {
     "mtime": 1788323638.287289,
-    "seen": 1788850408.6672442,
+    "seen": 1788851334.7256844,
     "ast_hash": "e26da628ae518fa3d5aac4c52b9096ed",
     "semantic_hash": ""
   },
   "audit_snapshots/class_fighter_live_tree.png": {
     "mtime": 1788835673.2670689,
-    "seen": 1788850408.667246,
+    "seen": 1788851334.725686,
     "ast_hash": "bc624925d618a7570a35c1d0d459d5d4",
     "semantic_hash": ""
   },
   "audit_snapshots/class_kineticist.png": {
     "mtime": 1788323353.794254,
-    "seen": 1788850408.6672475,
+    "seen": 1788851334.7256873,
     "ast_hash": "35e8a8bf5b43f4d4cf4225660359e558",
     "semantic_hash": ""
   },
   "audit_snapshots/class_kineticist_detail.png": {
     "mtime": 1788323455.035865,
-    "seen": 1788850408.6672492,
+    "seen": 1788851334.7256885,
     "ast_hash": "20ec35cd4c6444b5a4bfd618854609e3",
     "semantic_hash": ""
   },
   "audit_snapshots/class_kineticist_live.png": {
     "mtime": 1788323658.115033,
-    "seen": 1788850408.6672509,
+    "seen": 1788851334.72569,
     "ast_hash": "e26da628ae518fa3d5aac4c52b9096ed",
     "semantic_hash": ""
   },
   "audit_snapshots/class_kineticist_live_tree.png": {
     "mtime": 1788835842.9782898,
-    "seen": 1788850408.6672525,
+    "seen": 1788851334.725691,
     "ast_hash": "5b8682b6a0e6de7417fd725cda6995a9",
     "semantic_hash": ""
   },
   "audit_snapshots/class_rogue.png": {
     "mtime": 1788323360.8816297,
-    "seen": 1788850408.6672542,
+    "seen": 1788851334.7256923,
     "ast_hash": "35e8a8bf5b43f4d4cf4225660359e558",
     "semantic_hash": ""
   },
   "audit_snapshots/class_rogue_detail.png": {
     "mtime": 1788323462.1496582,
-    "seen": 1788850408.667256,
+    "seen": 1788851334.7256935,
     "ast_hash": "20ec35cd4c6444b5a4bfd618854609e3",
     "semantic_hash": ""
   },
   "audit_snapshots/class_rogue_live.png": {
     "mtime": 1788323664.7076912,
-    "seen": 1788850408.6672575,
+    "seen": 1788851334.725695,
     "ast_hash": "e26da628ae518fa3d5aac4c52b9096ed",
     "semantic_hash": ""
   },
   "audit_snapshots/class_rogue_live_tree.png": {
     "mtime": 1788835849.6204631,
-    "seen": 1788850408.6672595,
+    "seen": 1788851334.725696,
     "ast_hash": "5b8682b6a0e6de7417fd725cda6995a9",
     "semantic_hash": ""
   },
   "audit_snapshots/class_swashbuckler.png": {
     "mtime": 1788323325.4609518,
-    "seen": 1788850408.6672611,
+    "seen": 1788851334.7256973,
     "ast_hash": "35e8a8bf5b43f4d4cf4225660359e558",
     "semantic_hash": ""
   },
   "audit_snapshots/class_swashbuckler_detail.png": {
     "mtime": 1788323426.552197,
-    "seen": 1788850408.6672628,
+    "seen": 1788851334.7256985,
     "ast_hash": "20ec35cd4c6444b5a4bfd618854609e3",
     "semantic_hash": ""
   },
   "audit_snapshots/class_swashbuckler_live.png": {
     "mtime": 1788323631.6809113,
-    "seen": 1788850408.6672645,
+    "seen": 1788851334.7257,
     "ast_hash": "e26da628ae518fa3d5aac4c52b9096ed",
     "semantic_hash": ""
   },
   "audit_snapshots/class_swashbuckler_live_tree.png": {
     "mtime": 1788835666.6440928,
-    "seen": 1788850408.6672661,
+    "seen": 1788851334.725701,
     "ast_hash": "ea68d24044df207fd0685a68e60b9432",
     "semantic_hash": ""
   },
   "audit_snapshots/class_witch.png": {
     "mtime": 1788323367.9602778,
-    "seen": 1788850408.667268,
+    "seen": 1788851334.7257023,
     "ast_hash": "35e8a8bf5b43f4d4cf4225660359e558",
     "semantic_hash": ""
   },
   "audit_snapshots/class_witch_live.png": {
     "mtime": 1788323671.287286,
-    "seen": 1788850408.66727,
+    "seen": 1788851334.7257037,
     "ast_hash": "e26da628ae518fa3d5aac4c52b9096ed",
     "semantic_hash": ""
   },
   "audit_snapshots/class_witch_live_tree.png": {
     "mtime": 1788835856.2535257,
-    "seen": 1788850408.6672719,
+    "seen": 1788851334.7257051,
     "ast_hash": "5b8682b6a0e6de7417fd725cda6995a9",
     "semantic_hash": ""
   },
   "audit_snapshots/class_wizard.png": {
     "mtime": 1788323339.6357765,
-    "seen": 1788850408.6672738,
+    "seen": 1788851334.7257066,
     "ast_hash": "35e8a8bf5b43f4d4cf4225660359e558",
     "semantic_hash": ""
   },
   "audit_snapshots/class_wizard_detail.png": {
     "mtime": 1788323440.7861373,
-    "seen": 1788850408.6672752,
+    "seen": 1788851334.7257075,
     "ast_hash": "20ec35cd4c6444b5a4bfd618854609e3",
     "semantic_hash": ""
   },
   "audit_snapshots/class_wizard_live.png": {
     "mtime": 1788323644.8889952,
-    "seen": 1788850408.6672769,
+    "seen": 1788851334.7257087,
     "ast_hash": "e26da628ae518fa3d5aac4c52b9096ed",
     "semantic_hash": ""
   },
   "audit_snapshots/class_wizard_live_tree.png": {
     "mtime": 1788835829.4002082,
-    "seen": 1788850408.6672785,
+    "seen": 1788851334.7257102,
     "ast_hash": "8d744e72a6a72199249c3e79fb51d0ab",
     "semantic_hash": ""
   },
   "audit_snapshots/tree_alchemist.png": {
     "mtime": 1788323984.4756866,
-    "seen": 1788850408.6672802,
+    "seen": 1788851334.7257113,
     "ast_hash": "20ec35cd4c6444b5a4bfd618854609e3",
     "semantic_hash": ""
   },
   "audit_snapshots/tree_barbarian.png": {
     "mtime": 1788323971.8233652,
-    "seen": 1788850408.6672819,
+    "seen": 1788851334.7257125,
     "ast_hash": "20ec35cd4c6444b5a4bfd618854609e3",
     "semantic_hash": ""
   },
   "audit_snapshots/tree_champion.png": {
     "mtime": 1788323946.537465,
-    "seen": 1788850408.6672835,
+    "seen": 1788851334.725714,
     "ast_hash": "20ec35cd4c6444b5a4bfd618854609e3",
     "semantic_hash": ""
   },
   "audit_snapshots/tree_cleric.png": {
     "mtime": 1788323908.623743,
-    "seen": 1788850408.667285,
+    "seen": 1788851334.7257152,
     "ast_hash": "20ec35cd4c6444b5a4bfd618854609e3",
     "semantic_hash": ""
   },
   "audit_snapshots/tree_fighter.png": {
     "mtime": 1788323883.3432927,
-    "seen": 1788850408.6672866,
+    "seen": 1788851334.7257166,
     "ast_hash": "20ec35cd4c6444b5a4bfd618854609e3",
     "semantic_hash": ""
   },
   "audit_snapshots/tree_kineticist.png": {
     "mtime": 1788323921.246514,
-    "seen": 1788850408.667288,
+    "seen": 1788851334.7257175,
     "ast_hash": "20ec35cd4c6444b5a4bfd618854609e3",
     "semantic_hash": ""
   },
   "audit_snapshots/tree_rogue.png": {
     "mtime": 1788323933.9076033,
-    "seen": 1788850408.6672895,
+    "seen": 1788851334.7257187,
     "ast_hash": "20ec35cd4c6444b5a4bfd618854609e3",
     "semantic_hash": ""
   },
   "audit_snapshots/tree_swashbuckler.png": {
     "mtime": 1788323876.7129717,
-    "seen": 1788850408.6672914,
+    "seen": 1788851334.7257204,
     "ast_hash": "20ec35cd4c6444b5a4bfd618854609e3",
     "semantic_hash": ""
   },
   "audit_snapshots/tree_witch.png": {
     "mtime": 1788323959.180214,
-    "seen": 1788850408.667293,
+    "seen": 1788851334.7257214,
     "ast_hash": "20ec35cd4c6444b5a4bfd618854609e3",
     "semantic_hash": ""
   },
   "audit_snapshots/tree_wizard.png": {
     "mtime": 1788323895.9889245,
-    "seen": 1788850408.667295,
+    "seen": 1788851334.7257226,
     "ast_hash": "20ec35cd4c6444b5a4bfd618854609e3",
     "semantic_hash": ""
   },
   "scripts/audit-playwright-multicharacter.cjs": {
     "mtime": 1788468675.9848611,
-    "seen": 1788850408.6669128,
+    "seen": 1788851334.7253563,
     "ast_hash": "41a1088f0965d065c7d765d85933dfc5",
     "semantic_hash": ""
   },
   "src/data/heritage-and-feat-bonuses.test.ts": {
     "mtime": 1788468264.155124,
-    "seen": 1788850408.6670518,
+    "seen": 1788851334.7254882,
     "ast_hash": "2a4ce055edfcc6e2e9d9c092968fa09a",
     "semantic_hash": ""
   },
   ".agents/rules/graphify.md": {
     "mtime": 1788493287.9132597,
-    "seen": 1788850408.6671476,
+    "seen": 1788851334.7255743,
     "ast_hash": "a0e4d192b9e2e17256124dbfc8e24e6a",
     "semantic_hash": ""
   },
   ".agents/workflows/graphify.md": {
     "mtime": 1788493287.9142597,
-    "seen": 1788850408.667201,
+    "seen": 1788851334.7256272,
     "ast_hash": "a831cf3669f1e6ab85d8a80ebe655f99",
     "semantic_hash": ""
   },
   ".planning/graphs/GRAPH_REPORT.md": {
     "mtime": 1788464729.1325996,
-    "seen": 1788850408.6672034,
+    "seen": 1788851334.7256298,
     "ast_hash": "67b3103ce55681ba29ba3cbd6a58493b",
     "semantic_hash": ""
   },
   ".planning/graphs/graph.html": {
     "mtime": 1788464729.3243155,
-    "seen": 1788850408.6672046,
+    "seen": 1788851334.725631,
     "ast_hash": "ca434ffc0d2ac6c96c31e15fe00a548e",
     "semantic_hash": ""
   },
   "GEMINI.md": {
     "mtime": 1788646522.5001068,
-    "seen": 1788850408.6672056,
+    "seen": 1788851334.7256324,
     "ast_hash": "d72d67302be220b147d365542da9ec77",
     "semantic_hash": ""
   },
   ".planning/graphs/.last-build-snapshot.json": {
     "mtime": 1788464729.817343,
-    "seen": 1788850408.6668363,
+    "seen": 1788851334.725283,
     "ast_hash": "ef6f491da32feae134bc9124de1b4498",
     "semantic_hash": ""
   },
   ".planning/graphs/graph.json": {
     "mtime": 1788464729.0434592,
-    "seen": 1788850408.6668375,
+    "seen": 1788851334.7252855,
     "ast_hash": "37a1fed08f1fe23f931b8bd3d5872d76",
     "semantic_hash": ""
   },
   "audit_snapshots/playwright_multicharacter_audit.json": {
     "mtime": 1788836835.943701,
-    "seen": 1788850408.6668499,
+    "seen": 1788851334.7253034,
     "ast_hash": "1db7465fc346c3bc262a2e1e416d5b70",
     "semantic_hash": ""
   },
   "ficha_fields.json": {
     "mtime": 1788465106.418744,
-    "seen": 1788850408.6668546,
+    "seen": 1788851334.7253084,
     "ast_hash": "4dfdf522e5c899b815996a89c68d9a8a",
     "semantic_hash": ""
   },
   "scripts/extracted_all_feats_master.json": {
     "mtime": 1788294828.5723233,
-    "seen": 1788850408.666977,
+    "seen": 1788851334.7254128,
     "ast_hash": "aedbe0f84121ca440a858833364009bd",
     "semantic_hash": ""
   },
   "supabase/migrations/202608270001_accounts_and_characters.sql": {
     "mtime": 1787872547.9143429,
-    "seen": 1788850408.6671216,
+    "seen": 1788851334.7255487,
     "ast_hash": "09a6ff5aff005f10a0232164c4c35dd1",
     "semantic_hash": ""
   },
   "supabase/migrations/202608270002_character_limits.sql": {
     "mtime": 1788260933.2179694,
-    "seen": 1788850408.6671228,
+    "seen": 1788851334.7255502,
     "ast_hash": "5cc6b53f0539ca88e270cdff61adab59",
     "semantic_hash": ""
   },
   "supabase/migrations/202608300001_campaigns_and_gm_sharing.sql": {
     "mtime": 1788766556.6440303,
-    "seen": 1788850408.6671245,
+    "seen": 1788851334.7255514,
     "ast_hash": "d3e7b43e5e991ecb34b60a65d766f341",
     "semantic_hash": ""
   },
   "supabase/schema_full.sql": {
     "mtime": 1788502759.6775527,
-    "seen": 1788850408.6671295,
+    "seen": 1788851334.725558,
     "ast_hash": "611d7059cdc97be54535242524fd6070",
     "semantic_hash": ""
   },
   "scripts/generate-catalog-seed.cjs": {
     "mtime": 1788827550.2474544,
-    "seen": 1788850408.666992,
+    "seen": 1788851334.7254255,
     "ast_hash": "eb4b02b6db6cc9420582a1af7be30a64",
     "semantic_hash": ""
   },
   "scripts/migrate-catalog-to-supabase.cjs": {
     "mtime": 1788828491.4396453,
-    "seen": 1788850408.6670043,
+    "seen": 1788851334.7254398,
     "ast_hash": "926e39f61f809ef7b8ca560cc5a6f737",
     "semantic_hash": ""
   },
   "src/services/catalog.test.ts": {
     "mtime": 1788792285.6331863,
-    "seen": 1788850408.667094,
+    "seen": 1788851334.7255244,
     "ast_hash": "6c9814a1f3ee80f890e987c38f471506",
     "semantic_hash": ""
   },
   "src/services/catalog.ts": {
     "mtime": 1788791045.373026,
-    "seen": 1788850408.6670952,
+    "seen": 1788851334.7255259,
     "ast_hash": "96f08c6e45612c728f3a6f548baf64b6",
     "semantic_hash": ""
   },
   ".gemini/settings.json": {
     "mtime": 1788493294.089686,
-    "seen": 1788850408.66683,
+    "seen": 1788851334.7252753,
     "ast_hash": "1b426b2bd9374194fc8c397eafb701f9",
     "semantic_hash": ""
   },
   "scripts/catalog_data/catalog_actions.json": {
     "mtime": 1788828468.0604217,
-    "seen": 1788850408.6669273,
+    "seen": 1788851334.7253706,
     "ast_hash": "db16acacd00f43c64d9e77ebe4d91d41",
     "semantic_hash": ""
   },
   "scripts/catalog_data/catalog_ancestries.json": {
     "mtime": 1788828468.0404792,
-    "seen": 1788850408.6669295,
+    "seen": 1788851334.7253718,
     "ast_hash": "76f438a55d8904f8cc3b5b5af47864c5",
     "semantic_hash": ""
   },
   "scripts/catalog_data/catalog_archetypes.json": {
     "mtime": 1788828468.0444796,
-    "seen": 1788850408.6669312,
+    "seen": 1788851334.7253737,
     "ast_hash": "41155d3e1f27b727bbcef3f35c6c0d5e",
     "semantic_hash": ""
   },
   "scripts/catalog_data/catalog_backgrounds.json": {
     "mtime": 1788828468.0464802,
-    "seen": 1788850408.6669352,
+    "seen": 1788851334.7253766,
     "ast_hash": "b06c3ba2d251bfe38648deafe27048a7",
     "semantic_hash": ""
   },
   "scripts/catalog_data/catalog_buffs.json": {
     "mtime": 1788828468.0604217,
-    "seen": 1788850408.666937,
+    "seen": 1788851334.7253778,
     "ast_hash": "1d270ee16a4416de7752f497f888a57a",
     "semantic_hash": ""
   },
   "scripts/catalog_data/catalog_classes.json": {
     "mtime": 1788828468.0414803,
-    "seen": 1788850408.6669385,
+    "seen": 1788851334.7253792,
     "ast_hash": "534ff0d05204a3c41d145d6860e1a646",
     "semantic_hash": ""
   },
   "scripts/catalog_data/catalog_conditions.json": {
     "mtime": 1788828468.0604217,
-    "seen": 1788850408.6669402,
+    "seen": 1788851334.7253807,
     "ast_hash": "fbc683ccb5e8a46a0327023953a781fd",
     "semantic_hash": ""
   },
   "scripts/catalog_data/catalog_feats.json": {
     "mtime": 1788828468.057013,
-    "seen": 1788850408.666942,
+    "seen": 1788851334.725382,
     "ast_hash": "f7a943f6a75d5cf717c6523d17cee5b2",
     "semantic_hash": ""
   },
   "scripts/catalog_data/catalog_heritages.json": {
     "mtime": 1788828468.0444796,
-    "seen": 1788850408.6669452,
+    "seen": 1788851334.7253854,
     "ast_hash": "66ec37c0b7a7c88cafb6cb8b6e6f17a7",
     "semantic_hash": ""
   },
   "scripts/catalog_data/catalog_pets.json": {
     "mtime": 1788828468.0594199,
-    "seen": 1788850408.666947,
+    "seen": 1788851334.725387,
     "ast_hash": "0eec58cfeab2dab708e63fb11bea1fa5",
     "semantic_hash": ""
   },
   "scripts/catalog_data/catalog_rituals.json": {
     "mtime": 1788828468.0500278,
-    "seen": 1788850408.6669486,
+    "seen": 1788851334.7253883,
     "ast_hash": "198d3d24fe3db379b6cecc2a7ac8d4f6",
     "semantic_hash": ""
   },
   "scripts/catalog_data/catalog_shields.json": {
     "mtime": 1788828468.0584216,
-    "seen": 1788850408.66695,
+    "seen": 1788851334.7253895,
     "ast_hash": "fe963f306bc7ddcbfbfa3d6428e7a564",
     "semantic_hash": ""
   },
   "scripts/catalog_data/catalog_spells.json": {
     "mtime": 1788828468.0490096,
-    "seen": 1788850408.6669514,
+    "seen": 1788851334.7253907,
     "ast_hash": "ec2fcf03f9ad79e19d123d93cf6eb646",
     "semantic_hash": ""
   },
   "scripts/catalog_data/catalog_subclasses.json": {
     "mtime": 1788828468.0454803,
-    "seen": 1788850408.6669526,
+    "seen": 1788851334.725392,
     "ast_hash": "476cea521813f09d4a23ed2d7b6a30cf",
     "semantic_hash": ""
   },
   "supabase/migrations/202609040001_catalog_tables.sql": {
     "mtime": 1788493864.528052,
-    "seen": 1788850408.6671252,
+    "seen": 1788851334.7255526,
     "ast_hash": "e1efbbfe525c348eaf4b443d6754e7c6",
     "semantic_hash": ""
   },
   "scripts/catalog_data/catalog_armors.json": {
     "mtime": 1788828468.0584216,
-    "seen": 1788850408.6669338,
+    "seen": 1788851334.7253752,
     "ast_hash": "e0504a02d78725fc5b4528afb1f2f376",
     "semantic_hash": ""
   },
   "scripts/catalog_data/catalog_formulas.json": {
     "mtime": 1788828468.0594199,
-    "seen": 1788850408.6669438,
+    "seen": 1788851334.725384,
     "ast_hash": "3da5ffa5a28eb07332f5579dcd911515",
     "semantic_hash": ""
   },
@@ -1375,1448 +1375,1496 @@
   },
   "scripts/catalog_data/catalog_weapons.json": {
     "mtime": 1788847409.2586155,
-    "seen": 1788850408.6669543,
+    "seen": 1788851334.7253938,
     "ast_hash": "fd623fc05da0a36ba7a0fd5f7e7f9c26",
     "semantic_hash": ""
   },
   "supabase/seed_catalog.sql": {
     "mtime": 1788832017.4651766,
-    "seen": 1788850408.6671307,
+    "seen": 1788851334.7255592,
     "ast_hash": "8417d28bad83f902838525286ca047ba",
     "semantic_hash": ""
   },
   "supabase/seeds/01_ancestries_classes_items.sql": {
     "mtime": 1788828468.062582,
-    "seen": 1788850408.667132,
+    "seen": 1788851334.725561,
     "ast_hash": "39954ee92adb23cebc53d97d6c9cb363",
     "semantic_hash": ""
   },
   "supabase/seeds/02_heritages_subclasses_backgrounds_archetypes.sql": {
     "mtime": 1788828468.06458,
-    "seen": 1788850408.6671338,
+    "seen": 1788851334.7255623,
     "ast_hash": "898d597f186ade370779d93e9789eb8c",
     "semantic_hash": ""
   },
   "supabase/seeds/03_spells_rituals_actions_conditions_pets.sql": {
     "mtime": 1788828468.068148,
-    "seen": 1788850408.667135,
+    "seen": 1788851334.7255638,
     "ast_hash": "0307f3e18918376ff0d284687f9edd26",
     "semantic_hash": ""
   },
   "supabase/seeds/04_weapons_armors_shields_formulas.sql": {
     "mtime": 1788832017.4789102,
-    "seen": 1788850408.6671362,
+    "seen": 1788851334.725565,
     "ast_hash": "bd878eb173110258fd034f36fdeaf852",
     "semantic_hash": ""
   },
   "supabase/seeds/05_feats_part1.sql": {
     "mtime": 1788828468.0721307,
-    "seen": 1788850408.6671379,
+    "seen": 1788851334.7255661,
     "ast_hash": "630b61e66a467f12fb3499f42604efe9",
     "semantic_hash": ""
   },
   "supabase/seeds/06_feats_part2.sql": {
     "mtime": 1788828468.0761144,
-    "seen": 1788850408.6671395,
+    "seen": 1788851334.7255676,
     "ast_hash": "25c4ed52c86cf826cb1934da133a8b2c",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/CHANGELOG.md": {
     "mtime": 1788496897.9634051,
-    "seen": 1788850408.6671517,
+    "seen": 1788851334.7255769,
     "ast_hash": "fdd0ba418e6744556f0029ffb76711b1",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/SKILL.md": {
     "mtime": 1788496897.9634051,
-    "seen": 1788850408.6671531,
+    "seen": 1788851334.725578,
     "ast_hash": "845c64575b6d28856ea6a9735a372225",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/references/_contributing.md": {
     "mtime": 1788496897.9644003,
-    "seen": 1788850408.667155,
+    "seen": 1788851334.7255795,
     "ast_hash": "32c800fa6621705288dc651da22c9366",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/references/_sections.md": {
     "mtime": 1788496897.9644003,
-    "seen": 1788850408.6671565,
+    "seen": 1788851334.7255807,
     "ast_hash": "8547fba7fd9fae3b6be916c6f55b0f62",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/references/_template.md": {
     "mtime": 1788496897.9653997,
-    "seen": 1788850408.6671574,
+    "seen": 1788851334.7255824,
     "ast_hash": "74ec7e2bdd6c8ddbb354fcceec038bc2",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/references/advanced-full-text-search.md": {
     "mtime": 1788496897.9653997,
-    "seen": 1788850408.6671586,
+    "seen": 1788851334.7255836,
     "ast_hash": "327f8367de51b0982b963f2928184c35",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/references/advanced-jsonb-indexing.md": {
     "mtime": 1788496897.9663987,
-    "seen": 1788850408.6671598,
+    "seen": 1788851334.7255852,
     "ast_hash": "413ba907ff4408d6fd3545f839101ebf",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/references/conn-idle-timeout.md": {
     "mtime": 1788496897.9663987,
-    "seen": 1788850408.667161,
+    "seen": 1788851334.7255864,
     "ast_hash": "8bbe8b609d5241351672cefc19036db6",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/references/conn-limits.md": {
     "mtime": 1788496897.9663987,
-    "seen": 1788850408.6671624,
+    "seen": 1788851334.7255876,
     "ast_hash": "661b3efcf0e35136352b3923ff265d5c",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/references/conn-pooling.md": {
     "mtime": 1788496897.9663987,
-    "seen": 1788850408.6671636,
+    "seen": 1788851334.725589,
     "ast_hash": "c90dab7d0ab47443b41f17d5bc9f04b3",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/references/conn-prepared-statements.md": {
     "mtime": 1788496897.9673977,
-    "seen": 1788850408.6671646,
+    "seen": 1788851334.7255902,
     "ast_hash": "b53eb9dea11d6da338a8b6f9e67a3622",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/references/data-batch-inserts.md": {
     "mtime": 1788496897.9673977,
-    "seen": 1788850408.6671662,
+    "seen": 1788851334.7255917,
     "ast_hash": "6801a3a2d414dfd6a4c79970a37e795d",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/references/data-n-plus-one.md": {
     "mtime": 1788496897.9673977,
-    "seen": 1788850408.667168,
+    "seen": 1788851334.7255926,
     "ast_hash": "c3ed0702a116d654602120bd5cd7713e",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/references/data-pagination.md": {
     "mtime": 1788496897.9673977,
-    "seen": 1788850408.6671696,
+    "seen": 1788851334.725594,
     "ast_hash": "59be210a420d34780949ce16d5b4a8d5",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/references/data-upsert.md": {
     "mtime": 1788496897.9673977,
-    "seen": 1788850408.667171,
+    "seen": 1788851334.7255955,
     "ast_hash": "3ae132bce8b5368e1e4a426d55ca4567",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/references/lock-advisory.md": {
     "mtime": 1788496897.9673977,
-    "seen": 1788850408.6671724,
+    "seen": 1788851334.7255967,
     "ast_hash": "ff943eb307d8b6e12cc6ab2bcb6e2d18",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/references/lock-deadlock-prevention.md": {
     "mtime": 1788496897.9683974,
-    "seen": 1788850408.6671739,
+    "seen": 1788851334.7255979,
     "ast_hash": "685b04bcae3a0720e84f1507d243e959",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/references/lock-short-transactions.md": {
     "mtime": 1788496897.9683974,
-    "seen": 1788850408.667175,
+    "seen": 1788851334.7255993,
     "ast_hash": "3c947d59e0359f3b236bf2ad1da52c61",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/references/lock-skip-locked.md": {
     "mtime": 1788496897.9683974,
-    "seen": 1788850408.667177,
+    "seen": 1788851334.7256005,
     "ast_hash": "098d38542f44b656aa55923f06db74c1",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/references/monitor-explain-analyze.md": {
     "mtime": 1788496897.9694717,
-    "seen": 1788850408.6671784,
+    "seen": 1788851334.7256017,
     "ast_hash": "1fd19c373a0ff272129edd215a96e3a1",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/references/monitor-pg-stat-statements.md": {
     "mtime": 1788496897.9694717,
-    "seen": 1788850408.6671803,
+    "seen": 1788851334.725603,
     "ast_hash": "2f0cab7f72ad9dfe2cba469aaaacc733",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/references/monitor-vacuum-analyze.md": {
     "mtime": 1788496897.9694717,
-    "seen": 1788850408.6671817,
+    "seen": 1788851334.7256043,
     "ast_hash": "25e738451079707ac54d21364b5538e1",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/references/query-composite-indexes.md": {
     "mtime": 1788496897.9694717,
-    "seen": 1788850408.6671832,
+    "seen": 1788851334.7256055,
     "ast_hash": "5017f09940ed04b5b3ad836e426d9084",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/references/query-covering-indexes.md": {
     "mtime": 1788496897.9704554,
-    "seen": 1788850408.6671844,
+    "seen": 1788851334.7256067,
     "ast_hash": "fd05c38771229d97f2d4065d0af0df70",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/references/query-index-types.md": {
     "mtime": 1788496897.9704554,
-    "seen": 1788850408.667185,
+    "seen": 1788851334.7256079,
     "ast_hash": "e2395c6ef69ea2f147c9ab1d18c7f879",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/references/query-missing-indexes.md": {
     "mtime": 1788496897.971457,
-    "seen": 1788850408.667186,
+    "seen": 1788851334.7256093,
     "ast_hash": "786767ec677862bad060fc1b4ae0a94f",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/references/query-partial-indexes.md": {
     "mtime": 1788496897.971457,
-    "seen": 1788850408.667187,
+    "seen": 1788851334.7256105,
     "ast_hash": "249d8fccca68c332e946b499531f21d8",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/references/schema-constraints.md": {
     "mtime": 1788496897.971457,
-    "seen": 1788850408.667188,
+    "seen": 1788851334.7256114,
     "ast_hash": "476ca283cfda6c5517d94c25c41de775",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/references/schema-data-types.md": {
     "mtime": 1788496897.971457,
-    "seen": 1788850408.6671886,
+    "seen": 1788851334.7256129,
     "ast_hash": "cd65e34969ebce0bce84f622f5072477",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/references/schema-foreign-key-indexes.md": {
     "mtime": 1788496897.9724572,
-    "seen": 1788850408.6671896,
+    "seen": 1788851334.7256138,
     "ast_hash": "8b99b21a07cadd2d85c6c16f416b5464",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/references/schema-lowercase-identifiers.md": {
     "mtime": 1788496897.9724572,
-    "seen": 1788850408.6671906,
+    "seen": 1788851334.725615,
     "ast_hash": "632ea53a0da6fe7651e354f3744d998e",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/references/schema-partitioning.md": {
     "mtime": 1788496897.9724572,
-    "seen": 1788850408.6671913,
+    "seen": 1788851334.7256162,
     "ast_hash": "0f2fe9016bf9aa79dd30d7d6a4a03358",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/references/schema-primary-keys.md": {
     "mtime": 1788496897.9724572,
-    "seen": 1788850408.6671922,
+    "seen": 1788851334.7256174,
     "ast_hash": "a732b1a95b6c231d47af14b715c6b9b0",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/references/security-privileges.md": {
     "mtime": 1788496897.9734552,
-    "seen": 1788850408.6671932,
+    "seen": 1788851334.7256184,
     "ast_hash": "e6fbc325f8f3af1cab3e1cb99d9f146a",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/references/security-rls-basics.md": {
     "mtime": 1788496897.9734552,
-    "seen": 1788850408.6671941,
+    "seen": 1788851334.7256198,
     "ast_hash": "82ee8b214f39f78c9e88061b6f890508",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/references/security-rls-performance.md": {
     "mtime": 1788496897.9734552,
-    "seen": 1788850408.6671948,
+    "seen": 1788851334.725621,
     "ast_hash": "ad2ccf01dfd325527b18256c3e25b842",
     "semantic_hash": ""
   },
   ".agents/skills/supabase/CHANGELOG.md": {
     "mtime": 1788496897.974456,
-    "seen": 1788850408.6671963,
+    "seen": 1788851334.7256222,
     "ast_hash": "2f4622961a8c9f3a3b2c40086309447b",
     "semantic_hash": ""
   },
   ".agents/skills/supabase/SKILL.md": {
     "mtime": 1788496897.974456,
-    "seen": 1788850408.6671972,
+    "seen": 1788851334.7256234,
     "ast_hash": "7b96fab7659e7953872489fcadff75a7",
     "semantic_hash": ""
   },
   ".agents/skills/supabase/assets/feedback-issue-template.md": {
     "mtime": 1788496897.974456,
-    "seen": 1788850408.6671982,
+    "seen": 1788851334.7256246,
     "ast_hash": "e2c8b4f1a20e46315dd7609540d9b8d4",
     "semantic_hash": ""
   },
   ".agents/skills/supabase/references/skill-feedback.md": {
     "mtime": 1788496897.975455,
-    "seen": 1788850408.6671994,
+    "seen": 1788851334.7256258,
     "ast_hash": "c9fa098e2ec8bdce9d6a0f8a64d2c6c0",
     "semantic_hash": ""
   },
   "skills-lock.json": {
     "mtime": 1788496898.6228473,
-    "seen": 1788850408.6670213,
+    "seen": 1788851334.725454,
     "ast_hash": "e91272810f292d0c9627f7d88c9a888d",
     "semantic_hash": ""
   },
   "supabase/.temp/linked-project.json": {
     "mtime": 1788500769.8747132,
-    "seen": 1788850408.667118,
+    "seen": 1788851334.7255461,
     "ast_hash": "b1cee38c4d06d7b1889306730e6dc8b9",
     "semantic_hash": ""
   },
   "supabase/migrations/202609040002_site_visits_and_profile_email.sql": {
     "mtime": 1788500807.9926589,
-    "seen": 1788850408.6671262,
+    "seen": 1788851334.7255542,
     "ast_hash": "3fc20cc60001637244ece8d5c2c06fdb",
     "semantic_hash": ""
   },
   ".agents/rules/pathbuilder-conventions.md": {
     "mtime": 1788551504.1921473,
-    "seen": 1788850408.6671498,
+    "seen": 1788851334.7255757,
     "ast_hash": "36dfb20662b2c677e3ccbe33f77ac624",
     "semantic_hash": ""
   },
   "src/data/rest-character.test.ts": {
     "mtime": 1788646313.1221635,
-    "seen": 1788850408.6670647,
+    "seen": 1788851334.7254984,
     "ast_hash": "ed95c2eef5a63f9cd7fc2100866bd74b",
     "semantic_hash": ""
   },
   ".audit-latest.json": {
     "mtime": 1788826359.5036957,
-    "seen": 1788850408.6668215,
+    "seen": 1788851334.7252645,
     "ast_hash": "1c099b6db4917e0d1bc7e55edfe6471c",
     "semantic_hash": ""
   },
   "js/pf2e_weapon_metadata.js": {
     "mtime": 1788781957.2151234,
-    "seen": 1788850408.6668694,
+    "seen": 1788851334.72532,
     "ast_hash": "1e4cab258f1061a6435e1c96633d41ac",
     "semantic_hash": ""
   },
   "scripts/audit-catalog-supabase-reconciliation.cjs": {
     "mtime": 1788837123.934652,
-    "seen": 1788850408.66689,
+    "seen": 1788851334.7253366,
     "ast_hash": "f1ba48319421cef73dfd5b9f3be37658",
     "semantic_hash": ""
   },
   "scripts/audit-image-metadata-supabase.cjs": {
     "mtime": 1788839458.298002,
-    "seen": 1788850408.6668932,
+    "seen": 1788851334.7253394,
     "ast_hash": "ee5ddc3f454afdeb61fca1d1fafd57dc",
     "semantic_hash": ""
   },
   "scripts/audit-item-images-supabase.cjs": {
     "mtime": 1788833045.8731618,
-    "seen": 1788850408.666895,
+    "seen": 1788851334.7253406,
     "ast_hash": "8156415b6ee7d4aab6fa4f9afcbca5c0",
     "semantic_hash": ""
   },
   "scripts/audit-local-character-matrix.cjs": {
     "mtime": 1788838602.0582933,
-    "seen": 1788850408.6668983,
+    "seen": 1788851334.725344,
     "ast_hash": "2be622eb71da2f769353e982f3dc6901",
     "semantic_hash": ""
   },
   "scripts/audit-local-character-usage.cjs": {
     "mtime": 1788777024.6269398,
-    "seen": 1788850408.6669,
+    "seen": 1788851334.7253456,
     "ast_hash": "7f1503cd6203e20d92e0e923df582c8e",
     "semantic_hash": ""
   },
   "scripts/audit-local-contrast.cjs": {
     "mtime": 1788776298.6892042,
-    "seen": 1788850408.6669014,
+    "seen": 1788851334.7253468,
     "ast_hash": "36cf3a04638d6f15fa6a9bb792fcd276",
     "semantic_hash": ""
   },
   "scripts/audit-local-interactions.cjs": {
     "mtime": 1788829952.8450234,
-    "seen": 1788850408.6669028,
+    "seen": 1788851334.725348,
     "ast_hash": "eca184d31df1d364535e73088f1e300f",
     "semantic_hash": ""
   },
   "scripts/audit-local-locale-usage.cjs": {
     "mtime": 1788841118.3004327,
-    "seen": 1788850408.6669042,
+    "seen": 1788851334.72535,
     "ast_hash": "d2c870e77441de0aff293f2a9d7fb67e",
     "semantic_hash": ""
   },
   "scripts/audit-local-picker-usage.cjs": {
     "mtime": 1788781654.2769158,
-    "seen": 1788850408.6669056,
+    "seen": 1788851334.725351,
     "ast_hash": "e3c37c80efb91f66f7c8c4c62182d8d3",
     "semantic_hash": ""
   },
   "scripts/audit-local-responsive.cjs": {
     "mtime": 1788775011.111299,
-    "seen": 1788850408.6669073,
+    "seen": 1788851334.7253525,
     "ast_hash": "f1fafc99bbbfa50cae6e65b40a9fbcc5",
     "semantic_hash": ""
   },
   "scripts/audit-local-weapons.cjs": {
     "mtime": 1788780174.750147,
-    "seen": 1788850408.6669092,
+    "seen": 1788851334.7253537,
     "ast_hash": "240e0443bf970847e5bf8d15239e5da3",
     "semantic_hash": ""
   },
   "scripts/audit-supabase-readonly.cjs": {
     "mtime": 1788779280.2627735,
-    "seen": 1788850408.666917,
+    "seen": 1788851334.7253602,
     "ast_hash": "cd9d370c1dce0c78cb9b32b30f8ca0d1",
     "semantic_hash": ""
   },
   "scripts/audit-weapon-images-supabase.cjs": {
     "mtime": 1788831968.6295524,
-    "seen": 1788850408.6669178,
+    "seen": 1788851334.7253618,
     "ast_hash": "6b74ace03629adbe02a9171f917eb338",
     "semantic_hash": ""
   },
   "scripts/capture-local-responsive.cjs": {
     "mtime": 1788841486.870609,
-    "seen": 1788850408.6669257,
+    "seen": 1788851334.725369,
     "ast_hash": "7083e9286e522bf27c1adf1d63a340d9",
     "semantic_hash": ""
   },
   "scripts/generate-runtime-weapon-metadata.cjs": {
     "mtime": 1788780448.5236716,
-    "seen": 1788850408.6669936,
+    "seen": 1788851334.7254272,
     "ast_hash": "2d97a39250f8192807908ab248e3e85c",
     "semantic_hash": ""
   },
   "scripts/sync-item-images-to-supabase.cjs": {
-    "mtime": 1788850239.0113428,
-    "seen": 1788850408.667011,
-    "ast_hash": "e2127818793b71961e968685c3fa8c35",
+    "mtime": 1788851093.51966,
+    "seen": 1788851334.7254457,
+    "ast_hash": "789fa9b6e7f6c05fd41b3b731ba64b35",
     "semantic_hash": ""
   },
   "scripts/sync-weapon-images-to-supabase.cjs": {
     "mtime": 1788847387.2619877,
-    "seen": 1788850408.667013,
+    "seen": 1788851334.7254472,
     "ast_hash": "323b04a6c89d56f859737c2b9bb06db2",
     "semantic_hash": ""
   },
   "scripts/test_server_api.py": {
     "mtime": 1788774062.7590525,
-    "seen": 1788850408.6670144,
+    "seen": 1788851334.7254484,
     "ast_hash": "88ecafd864c00c0183a9ec09791a7d8f",
     "semantic_hash": ""
   },
   "scripts/update-image-metadata-supabase.cjs": {
     "mtime": 1788839401.8642592,
-    "seen": 1788850408.667016,
+    "seen": 1788851334.7254498,
     "ast_hash": "b92d401b18035d23a7da994db4a3953c",
     "semantic_hash": ""
   },
   "src/data/character-usage-matrix.test.ts": {
     "mtime": 1788772979.2074,
-    "seen": 1788850408.6670423,
+    "seen": 1788851334.7254772,
     "ast_hash": "62a4134ddfd0723f5f479e0f954bcf7e",
     "semantic_hash": ""
   },
   "src/data/weapon-runtime-metadata.test.ts": {
     "mtime": 1788781971.3388162,
-    "seen": 1788850408.6670718,
+    "seen": 1788851334.7255042,
     "ast_hash": "7214ce81fb7fb0590f2d2dde0c06cbb6",
     "semantic_hash": ""
   },
   "src/itemVisuals.test.ts": {
-    "mtime": 1788850239.01334,
-    "seen": 1788850408.6670763,
-    "ast_hash": "f1120c0a54dcb414d8b831b4d9a05f61",
+    "mtime": 1788850733.8419282,
+    "seen": 1788851334.7255087,
+    "ast_hash": "d90c43abecc219e4e12cdec84413e4d9",
     "semantic_hash": ""
   },
   "src/itemVisuals.ts": {
-    "mtime": 1788850239.0103436,
-    "seen": 1788850408.6670783,
-    "ast_hash": "f89bacf2f2601435a776c1365d7c415a",
+    "mtime": 1788850707.6449313,
+    "seen": 1788851334.72551,
+    "ast_hash": "4291b3724dfdb4a458323d006dc0b3d6",
     "semantic_hash": ""
   },
   "src/services/campaigns-realtime.test.ts": {
     "mtime": 1788838675.005406,
-    "seen": 1788850408.6670876,
+    "seen": 1788851334.7255197,
     "ast_hash": "cc5092eb026524bfe665a7030f68816a",
     "semantic_hash": ""
   },
   "src/services/campaigns-sync-queue.test.ts": {
     "mtime": 1788838542.4092975,
-    "seen": 1788850408.6670895,
+    "seen": 1788851334.7255206,
     "ast_hash": "777ba8ae8fa6c7dbdb23c3e11d51eb9e",
     "semantic_hash": ""
   },
   "src/weaponVisuals.test.ts": {
     "mtime": 1788847505.0726533,
-    "seen": 1788850408.6671147,
+    "seen": 1788851334.7255433,
     "ast_hash": "7100dd67f57f218c85e65cec19f1ab50",
     "semantic_hash": ""
   },
   "src/weaponVisuals.ts": {
     "mtime": 1788847387.2579892,
-    "seen": 1788850408.6671166,
+    "seen": 1788851334.725545,
     "ast_hash": "f3e97910b4e0ccf9c647ff67e3e3727d",
     "semantic_hash": ""
   },
   "public/item-images/item-adventurer-pack.png": {
     "mtime": 1788832450.8924847,
-    "seen": 1788850408.6673043,
+    "seen": 1788851334.725729,
     "ast_hash": "71d19565eaf65d1d0e857c64529ac3d9",
     "semantic_hash": ""
   },
   "public/item-images/item-ammunition.png": {
     "mtime": 1788832552.1125546,
-    "seen": 1788850408.667308,
+    "seen": 1788851334.7257323,
     "ast_hash": "58bfa6fbaadaf18a2ffaf156c23d3f2d",
     "semantic_hash": ""
   },
   "public/item-images/item-armor.png": {
     "mtime": 1788833564.4200523,
-    "seen": 1788850408.66731,
+    "seen": 1788851334.7257357,
     "ast_hash": "f9b35b71e168cb2c868ef1ce845e8676",
     "semantic_hash": ""
   },
   "public/item-images/item-axe.png": {
     "mtime": 1788791038.7351923,
-    "seen": 1788850408.6673121,
+    "seen": 1788851334.7257366,
     "ast_hash": "f6a4bb37b64a5a274d86bfee5b887a7d",
     "semantic_hash": ""
   },
   "public/item-images/item-bomb.png": {
     "mtime": 1788832749.8908267,
-    "seen": 1788850408.6673164,
+    "seen": 1788851334.7257414,
     "ast_hash": "f0443789d2faa96a3e5fd4a11330b456",
     "semantic_hash": ""
   },
   "public/item-images/item-book.png": {
     "mtime": 1788832662.2943463,
-    "seen": 1788850408.6673186,
+    "seen": 1788851334.7257426,
     "ast_hash": "df8ebc0ea3d4897f0830487f3c84425b",
     "semantic_hash": ""
   },
   "public/item-images/item-bow.png": {
     "mtime": 1788791038.8001962,
-    "seen": 1788850408.6673203,
+    "seen": 1788851334.7257438,
     "ast_hash": "16e8ecf74a83df88bb17d621670d69bf",
     "semantic_hash": ""
   },
   "public/item-images/item-bullets.png": {
     "mtime": 1788834716.2995708,
-    "seen": 1788850408.667322,
+    "seen": 1788851334.7257452,
     "ast_hash": "19a0bcdb5c5361ed1835d7f49f86a453",
     "semantic_hash": ""
   },
   "public/item-images/item-crossbow.png": {
     "mtime": 1788791038.8327646,
-    "seen": 1788850408.6673262,
+    "seen": 1788851334.7257483,
     "ast_hash": "9d5acfadfc313220abc9685606d9b6ef",
     "semantic_hash": ""
   },
   "public/item-images/item-firearm.png": {
     "mtime": 1788791038.8638058,
-    "seen": 1788850408.6673377,
+    "seen": 1788851334.7257617,
     "ast_hash": "4b1d02800bf86dbf80c7b7d44c03fa8a",
     "semantic_hash": ""
   },
   "public/item-images/item-jewelry.png": {
     "mtime": 1788832712.7813022,
-    "seen": 1788850408.6673467,
+    "seen": 1788851334.7257676,
     "ast_hash": "9c551c561a46594460a3caf8660a327c",
     "semantic_hash": ""
   },
   "public/item-images/item-poison.png": {
     "mtime": 1788832608.1309426,
-    "seen": 1788850408.6673725,
+    "seen": 1788851334.7257879,
     "ast_hash": "b2b2d90d1d6568fc5f0366bd9ff5b91a",
     "semantic_hash": ""
   },
   "public/item-images/item-potion.png": {
     "mtime": 1788832395.6921473,
-    "seen": 1788850408.6673741,
+    "seen": 1788851334.725789,
     "ast_hash": "75febce5d57ec92726cf9d977610e1c2",
     "semantic_hash": ""
   },
   "public/item-images/item-rune.png": {
     "mtime": 1788832492.981242,
-    "seen": 1788850408.6673772,
+    "seen": 1788851334.7257915,
     "ast_hash": "64dbd61c22877bf2b98acc623f96afa8",
     "semantic_hash": ""
   },
   "public/item-images/item-shield.png": {
     "mtime": 1788833585.8715687,
-    "seen": 1788850408.6673808,
+    "seen": 1788851334.725797,
     "ast_hash": "d13dbbbf2ded1bc84f7cdb1a0b9d45c9",
     "semantic_hash": ""
   },
   "public/item-images/item-spear.png": {
     "mtime": 1788791038.7672138,
-    "seen": 1788850408.6673825,
+    "seen": 1788851334.7257981,
     "ast_hash": "40715d9e123e64c07ec922212a9b6ca1",
     "semantic_hash": ""
   },
   "public/item-images/item-staff.png": {
     "mtime": 1788833606.579095,
-    "seen": 1788850408.6673858,
+    "seen": 1788851334.7258008,
     "ast_hash": "a051cccbd52b45935da6da6668528e44",
     "semantic_hash": ""
   },
   "public/item-images/item-sword.png": {
     "mtime": 1788791038.7031958,
-    "seen": 1788850408.6673877,
+    "seen": 1788851334.725802,
     "ast_hash": "8d044cb334a5de7a0b884e66fd5bacdb",
     "semantic_hash": ""
   },
   "public/item-images/item-whip.png": {
     "mtime": 1788791039.0358071,
-    "seen": 1788850408.6673949,
+    "seen": 1788851334.7258077,
     "ast_hash": "b4e38e3e10f681e11a2c9fdd1385b65d",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-arbalest.png": {
     "mtime": 1788831595.1219573,
-    "seen": 1788850408.667403,
+    "seen": 1788851334.7258139,
     "ast_hash": "93e36c9ca7bc103db0427f06e62487ab",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-asp-coil.png": {
     "mtime": 1788831688.9586227,
-    "seen": 1788850408.667407,
+    "seen": 1788851334.7258165,
     "ast_hash": "3416c82517105b3855cf3e562faa3558",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-axe.png": {
     "mtime": 1788791038.7351923,
-    "seen": 1788850408.667411,
+    "seen": 1788851334.7258193,
     "ast_hash": "f6a4bb37b64a5a274d86bfee5b887a7d",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-axe.svg": {
     "mtime": 1788781427.2042975,
-    "seen": 1788850408.667413,
+    "seen": 1788851334.7258208,
     "ast_hash": "59b54f823a6e141f0df4cf3c558ba35d",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-backpack-ballista.png": {
     "mtime": 1788831784.6235006,
-    "seen": 1788850408.6674147,
+    "seen": 1788851334.725822,
     "ast_hash": "ed2c7822dab9da86ded80b2d39d0b49c",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-backpack-catapult.png": {
     "mtime": 1788831653.0801494,
-    "seen": 1788850408.6674166,
+    "seen": 1788851334.7258232,
     "ast_hash": "bde521928e85f6097811bf5baf1030bf",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-bomb.png": {
     "mtime": 1788791039.1458046,
-    "seen": 1788850408.6674304,
+    "seen": 1788851334.7258327,
     "ast_hash": "7cdf8f9da2409a1baa82f67ffbfafb27",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-bow.png": {
     "mtime": 1788791038.8001962,
-    "seen": 1788850408.6674323,
+    "seen": 1788851334.725834,
     "ast_hash": "16e8ecf74a83df88bb17d621670d69bf",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-bow.svg": {
     "mtime": 1788781427.203303,
-    "seen": 1788850408.667434,
+    "seen": 1788851334.7258356,
     "ast_hash": "f7bd1136c1425bd5e5a8bfacc1859fc6",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-club.png": {
     "mtime": 1788791038.8959243,
-    "seen": 1788850408.6674483,
+    "seen": 1788851334.725846,
     "ast_hash": "af5f4185a2b613bb1264253f04ffd27a",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-club.svg": {
     "mtime": 1788781427.205286,
-    "seen": 1788850408.6674497,
+    "seen": 1788851334.7258472,
     "ast_hash": "46204b1114cf3db23a9d4a5fc3b29501",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-crossbow.png": {
     "mtime": 1788791038.8327646,
-    "seen": 1788850408.6674547,
+    "seen": 1788851334.7258513,
     "ast_hash": "9d5acfadfc313220abc9685606d9b6ef",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-crossbow.svg": {
     "mtime": 1788781427.2073061,
-    "seen": 1788850408.6674562,
+    "seen": 1788851334.7258527,
     "ast_hash": "4d28b892eea66a8e493007ee5dcbb081",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-dagger.png": {
     "mtime": 1788791038.6651926,
-    "seen": 1788850408.6674578,
+    "seen": 1788851334.725854,
     "ast_hash": "0b89bfb83d8b68f873918560b50f40d9",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-dagger.svg": {
     "mtime": 1788781427.206303,
-    "seen": 1788850408.6674592,
+    "seen": 1788851334.7258554,
     "ast_hash": "3d67e9262b3cc07108eb64e1e4148986",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-doomsweeper.png": {
     "mtime": 1788831739.2759175,
-    "seen": 1788850408.667466,
+    "seen": 1788851334.72586,
     "ast_hash": "23ba26dea04056bb2317f2781eda6562",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-firearm.png": {
     "mtime": 1788791038.8638058,
-    "seen": 1788850408.6674743,
+    "seen": 1788851334.7258663,
     "ast_hash": "4b1d02800bf86dbf80c7b7d44c03fa8a",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-flail.png": {
     "mtime": 1788845924.8421865,
-    "seen": 1788850408.667476,
+    "seen": 1788851334.7258675,
     "ast_hash": "673dae9138b458785e45ee3e221b7121",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-gauntlet.png": {
     "mtime": 1788791039.108805,
-    "seen": 1788850408.6674845,
+    "seen": 1788851334.7258744,
     "ast_hash": "c675e0e7c6e0042428e48cf83a75c8f7",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-generic.svg": {
     "mtime": 1788781427.2012842,
-    "seen": 1788850408.6674874,
+    "seen": 1788851334.7258773,
     "ast_hash": "e0de3119f6a4cfabc21b55d68851cc3c",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-halberd.png": {
     "mtime": 1788834261.8156843,
-    "seen": 1788850408.6674948,
+    "seen": 1788851334.7258835,
     "ast_hash": "a43a1c0af43ebc19ecde7d462119979d",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-lute.png": {
     "mtime": 1788791039.2238135,
-    "seen": 1788850408.6675158,
+    "seen": 1788851334.725901,
     "ast_hash": "cc69785165d6eecb7e52aa0b817ce965",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-mace.png": {
     "mtime": 1788791038.9628077,
-    "seen": 1788850408.6675172,
+    "seen": 1788851334.7259018,
     "ast_hash": "c09d350d4a457a2d85ee10ecddb50a47",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-shield.png": {
     "mtime": 1788791039.186806,
-    "seen": 1788850408.6675496,
+    "seen": 1788851334.7259252,
     "ast_hash": "cc921dfcf40a4b596ced6a1ec2e0d7d7",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-shuriken.png": {
     "mtime": 1788834305.677037,
-    "seen": 1788850408.6675556,
+    "seen": 1788851334.7259293,
     "ast_hash": "8036901414d39a53b7bb6576c8a46cf1",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-sling.png": {
     "mtime": 1788791039.0728235,
-    "seen": 1788850408.6675587,
+    "seen": 1788851334.725932,
     "ast_hash": "4816be0d575f2bd203d5aa136d6fc8a5",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-spear.png": {
     "mtime": 1788791038.7672138,
-    "seen": 1788850408.6675603,
+    "seen": 1788851334.725933,
     "ast_hash": "40715d9e123e64c07ec922212a9b6ca1",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-spear.svg": {
     "mtime": 1788781427.2082994,
-    "seen": 1788850408.667562,
+    "seen": 1788851334.7259343,
     "ast_hash": "029878024884756c87495057247ceb1a",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-staff.png": {
     "mtime": 1788791038.9988067,
-    "seen": 1788850408.6675632,
+    "seen": 1788851334.725936,
     "ast_hash": "cd5aa5c5ca82a4afc3e87f8e2e8be0c0",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-sword.png": {
     "mtime": 1788791038.7031958,
-    "seen": 1788850408.6675649,
+    "seen": 1788851334.7259371,
     "ast_hash": "8d044cb334a5de7a0b884e66fd5bacdb",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-sword.svg": {
     "mtime": 1788781427.2022831,
-    "seen": 1788850408.667566,
+    "seen": 1788851334.7259383,
     "ast_hash": "9afddfe4b701e1fc97ab0fe7dd6d44a9",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-trident.png": {
     "mtime": 1788834283.3329792,
-    "seen": 1788850408.6675677,
+    "seen": 1788851334.7259398,
     "ast_hash": "7f3f61b8ece5a0ebae93db6ca8034d91",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-whip.png": {
     "mtime": 1788791039.0358071,
-    "seen": 1788850408.6675746,
+    "seen": 1788851334.7259448,
     "ast_hash": "b4e38e3e10f681e11a2c9fdd1385b65d",
     "semantic_hash": ""
   },
   "supabase/migrations/202609080001_campaigns_realtime.sql": {
     "mtime": 1788840232.582438,
-    "seen": 1788850408.6671274,
+    "seen": 1788851334.7255554,
     "ast_hash": "1cb66d8079ce07e7783d76c8a962fe42",
     "semantic_hash": ""
   },
   "scripts/audit-supabase-campaigns-authenticated.cjs": {
     "mtime": 1788841054.1552048,
-    "seen": 1788850408.6669157,
+    "seen": 1788851334.7253582,
     "ast_hash": "887f679397c73ced138179da05941607",
     "semantic_hash": ""
   },
   "supabase/migrations/202609080002_campaign_notes.sql": {
     "mtime": 1788840665.6405127,
-    "seen": 1788850408.6671286,
+    "seen": 1788851334.7255569,
     "ast_hash": "4849ef6eecae1aad994367267b4531a5",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-punch-dagger.png": {
     "mtime": 1788841901.5932398,
-    "seen": 1788850408.6675348,
+    "seen": 1788851334.7259147,
     "ast_hash": "c6998a5bc9d5d242cf2530826dd48928",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-orc-knuckle-dagger.png": {
     "mtime": 1788842278.5665019,
-    "seen": 1788850408.6675296,
+    "seen": 1788851334.725911,
     "ast_hash": "55d93ad1b539b8f8ce6641bddb7f72f1",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-punching-dagger.png": {
     "mtime": 1788842432.3108182,
-    "seen": 1788850408.667537,
+    "seen": 1788851334.7259157,
     "ast_hash": "4bfa21594f3993fdfa55e4b7eea113ad",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-blunderbuss.png": {
     "mtime": 1788842712.9795861,
-    "seen": 1788850408.6674285,
+    "seen": 1788851334.7258317,
     "ast_hash": "95533e99209351bdfe1b370667c50f73",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-flintlock-musket.png": {
     "mtime": 1788842675.2244277,
-    "seen": 1788850408.6674778,
+    "seen": 1788851334.7258687,
     "ast_hash": "e485df160ef78340a02c88f70825ab0c",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-flintlock-pistol.png": {
     "mtime": 1788842641.760434,
-    "seen": 1788850408.6674795,
+    "seen": 1788851334.7258704,
     "ast_hash": "1768eab0c085d89d077c97cd1e13250a",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-pepperbox.png": {
     "mtime": 1788842745.971484,
-    "seen": 1788850408.667531,
+    "seen": 1788851334.725912,
     "ast_hash": "84e8e335d49ea13ce36bd54e1ff9925d",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-arquebus.png": {
     "mtime": 1788844204.1069877,
-    "seen": 1788850408.667405,
+    "seen": 1788851334.725815,
     "ast_hash": "ebc25851022f1d40a7e0bdd80ccd4b88",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-bastard-sword.png": {
     "mtime": 1788843454.127799,
-    "seen": 1788850408.6674187,
+    "seen": 1788851334.7258246,
     "ast_hash": "4fe6328ee349858b3ff76c3dde566cb9",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-battle-axe.png": {
     "mtime": 1788842997.0062943,
-    "seen": 1788850408.6674204,
+    "seen": 1788851334.7258258,
     "ast_hash": "762a8fc09de9965a8c1d7cdebe944d59",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-cavalry-lance.png": {
     "mtime": 1788843033.2213047,
-    "seen": 1788850408.6674392,
+    "seen": 1788851334.7258396,
     "ast_hash": "71d1633eadc29eed7acc348d3991e388",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-coat-pistol.png": {
     "mtime": 1788844204.2003055,
-    "seen": 1788850408.6674514,
+    "seen": 1788851334.7258487,
     "ast_hash": "c781a990ac66bc63cdfb0df1ab6d9931",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-dueling-pistol.png": {
     "mtime": 1788844204.1395438,
-    "seen": 1788850408.6674695,
+    "seen": 1788851334.7258627,
     "ast_hash": "cec102862e3f7158adf7a5e99b54df9e",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-hand-cannon.png": {
     "mtime": 1788844204.169194,
-    "seen": 1788850408.6674964,
+    "seen": 1788851334.7258847,
     "ast_hash": "10793132092d0d1e24931920bbecaf81",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-kukri.png": {
     "mtime": 1788843490.4413145,
-    "seen": 1788850408.6675093,
+    "seen": 1788851334.7258956,
     "ast_hash": "0b286feabadadc5138bd67b85ae0b1b6",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-longbow.png": {
     "mtime": 1788843067.0986638,
-    "seen": 1788850408.6675124,
+    "seen": 1788851334.725898,
     "ast_hash": "ce0b9e569a958108bfa6a2edcf7f539d",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-longsword.png": {
     "mtime": 1788843375.6367722,
-    "seen": 1788850408.667514,
+    "seen": 1788851334.7258995,
     "ast_hash": "79ef5f83647ee81167dbcd1383cd9cab",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-rapier.png": {
     "mtime": 1788842961.898015,
-    "seen": 1788850408.6675382,
+    "seen": 1788851334.7259166,
     "ast_hash": "457e3c473e104e8c55918a043e18cbd0",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-shortsword.png": {
     "mtime": 1788843412.5362782,
-    "seen": 1788850408.6675532,
+    "seen": 1788851334.7259276,
     "ast_hash": "96b5cce2d491a5ded33faf6b2c208284",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-greataxe.png": {
     "mtime": 1788844581.0092874,
-    "seen": 1788850408.6674902,
+    "seen": 1788851334.72588,
     "ast_hash": "f731ceb4ae4018aa693e2f71fa87c920",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-greatclub.png": {
     "mtime": 1788844397.0115345,
-    "seen": 1788850408.667492,
+    "seen": 1788851334.725881,
     "ast_hash": "60ba4ef2e3348dc283f26e0553d2ff8c",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-maul.png": {
     "mtime": 1788844396.9164188,
-    "seen": 1788850408.6675243,
+    "seen": 1788851334.725907,
     "ast_hash": "1dc339b3d41f558c6b74b37a6a430d2a",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-morningstar.png": {
     "mtime": 1788844396.9808981,
-    "seen": 1788850408.667526,
+    "seen": 1788851334.7259085,
     "ast_hash": "017294b9a0f15ff3141599dc5d90e0dd",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-pick.png": {
     "mtime": 1788844581.039533,
-    "seen": 1788850408.6675327,
+    "seen": 1788851334.725913,
     "ast_hash": "8aa1b6a87768e29f752661b60bf9eecf",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-scythe.png": {
     "mtime": 1788844581.0703928,
-    "seen": 1788850408.667543,
+    "seen": 1788851334.7259204,
     "ast_hash": "4961f064885f9d95e4948895b3dc23e9",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-sickle.png": {
     "mtime": 1788844581.1029177,
-    "seen": 1788850408.667557,
+    "seen": 1788851334.7259302,
     "ast_hash": "bf1dc82afd4e3405293f41200d9abef6",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-warhammer.png": {
     "mtime": 1788844396.9490433,
-    "seen": 1788850408.6675727,
+    "seen": 1788851334.7259438,
     "ast_hash": "508828ecb46426393fa97efbfecabea9",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-alchemical-crossbow.png": {
     "mtime": 1788844791.3094578,
-    "seen": 1788850408.6674013,
+    "seen": 1788851334.7258122,
     "ast_hash": "18336d36171f9849379a7ed20f0f1048",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-crossbow-standard.png": {
     "mtime": 1788844791.2158644,
-    "seen": 1788850408.6674533,
+    "seen": 1788851334.7258499,
     "ast_hash": "e084506f16f03a85b099ca64976d20d4",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-hand-crossbow.png": {
     "mtime": 1788844791.2452688,
-    "seen": 1788850408.6674979,
+    "seen": 1788851334.7258859,
     "ast_hash": "43421edfdfd9b35331afca3ead6acbef",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-heavy-crossbow.png": {
     "mtime": 1788844791.2769418,
-    "seen": 1788850408.6675007,
+    "seen": 1788851334.7258885,
     "ast_hash": "a77cf6a5fba84f3e1c455647e22e4eca",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-atlatl.png": {
     "mtime": 1788844988.9529393,
-    "seen": 1788850408.6674092,
+    "seen": 1788851334.7258182,
     "ast_hash": "813955b6d329bb659b0fbf0b163de96b",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-breach-pike.png": {
     "mtime": 1788844989.0145402,
-    "seen": 1788850408.667436,
+    "seen": 1788851334.7258368,
     "ast_hash": "80d0f256cd14898d521f050dbe9f6f0b",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-glaive.png": {
     "mtime": 1788844988.92168,
-    "seen": 1788850408.667489,
+    "seen": 1788851334.7258782,
     "ast_hash": "acc1087b9fb24f5a109a4c40769b60d1",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-mambele.png": {
     "mtime": 1788844988.9850247,
-    "seen": 1788850408.6675208,
+    "seen": 1788851334.7259045,
     "ast_hash": "745ff0185ae1771b6b8e5a784936d303",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-blowgun.png": {
     "mtime": 1788845178.7435083,
-    "seen": 1788850408.6674266,
+    "seen": 1788851334.7258303,
     "ast_hash": "858677733f5d1b2435ee6e4a3a1a84de",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-daikyu.png": {
     "mtime": 1788845178.8061903,
-    "seen": 1788850408.667461,
+    "seen": 1788851334.7258563,
     "ast_hash": "927f23254a7acfcd3c0ce3e9e21e3b4f",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-dazzling-shortbow.png": {
     "mtime": 1788845316.4781668,
-    "seen": 1788850408.6674645,
+    "seen": 1788851334.725859,
     "ast_hash": "c24549d4ea2803acd08cce24e0ae2b69",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-horselords-longbow.png": {
     "mtime": 1788845178.839824,
-    "seen": 1788850408.6675026,
+    "seen": 1788851334.7258902,
     "ast_hash": "bc7a16c6e000e76b1cf04a33508b8015",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-shortbow.png": {
     "mtime": 1788845178.772627,
-    "seen": 1788850408.6675515,
+    "seen": 1788851334.7259262,
     "ast_hash": "ba2e5e19bf1482554fbe5af4ecca1b7c",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-dart.png": {
     "mtime": 1788845527.3832648,
-    "seen": 1788850408.6674626,
+    "seen": 1788851334.7258575,
     "ast_hash": "2b855f5d29a755735072957072fe1a82",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-javelin.png": {
     "mtime": 1788845527.4136653,
-    "seen": 1788850408.667504,
+    "seen": 1788851334.7258914,
     "ast_hash": "2a24b49fb3df0148d038430b615ffc09",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-kithrender.png": {
     "mtime": 1788845527.476063,
-    "seen": 1788850408.6675072,
+    "seen": 1788851334.7258942,
     "ast_hash": "2fddd2f0c83af63aa622d5648fdff9a7",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-main-gauche.png": {
     "mtime": 1788845527.4457383,
-    "seen": 1788850408.667519,
+    "seen": 1788851334.725903,
     "ast_hash": "0c306251aa0098237b873c703c64ba15",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-broadsword.png": {
     "mtime": 1788845722.8298721,
-    "seen": 1788850408.6674373,
+    "seen": 1788851334.7258384,
     "ast_hash": "fc8ab99d40825502673e46662c9fa88b",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-falchion.png": {
     "mtime": 1788845722.85986,
-    "seen": 1788850408.6674712,
+    "seen": 1788851334.725864,
     "ast_hash": "ae5bbecfa06eee72819efcc61e09a1e8",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-greatsword.png": {
     "mtime": 1788845722.8928728,
-    "seen": 1788850408.6674933,
+    "seen": 1788851334.725882,
     "ast_hash": "38257468bbff2b49bd375016add78011",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-scimitar.png": {
     "mtime": 1788845722.922858,
-    "seen": 1788850408.6675396,
+    "seen": 1788851334.725918,
     "ast_hash": "939d84bd1e6fa21a9b79088b73ec8c76",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-belkzen-deadsmasher.png": {
     "mtime": 1788845924.9034219,
-    "seen": 1788850408.6674225,
+    "seen": 1788851334.725827,
     "ast_hash": "f71e3ea4573c063cab7564d60147cf74",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-maul-spade.png": {
     "mtime": 1788845924.8714187,
-    "seen": 1788850408.6675227,
+    "seen": 1788851334.725906,
     "ast_hash": "5c44f3caf023b391d439e632d53b213b",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-war-gavel.png": {
     "mtime": 1788845924.9344194,
-    "seen": 1788850408.6675713,
+    "seen": 1788851334.7259424,
     "ast_hash": "08d8e1386762420da20cffff57a5b1fb",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-bladed-gauntlet.png": {
     "mtime": 1788846200.9688897,
-    "seen": 1788850408.6674247,
+    "seen": 1788851334.725829,
     "ast_hash": "ec728e0393072ece801c52d853674bba",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-claw-blade.png": {
     "mtime": 1788846200.9078894,
-    "seen": 1788850408.6674447,
+    "seen": 1788851334.7258434,
     "ast_hash": "299c2d70db501d03d8932ce8baa4904b",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-fangwire.png": {
     "mtime": 1788846200.8768742,
-    "seen": 1788850408.6674726,
+    "seen": 1788851334.7258651,
     "ast_hash": "72a8c5b91350f205d10e1aab7c9f1e5a",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-flying-talon.png": {
     "mtime": 1788846200.937876,
-    "seen": 1788850408.6674814,
+    "seen": 1788851334.7258718,
     "ast_hash": "d649b08a167df667d37424afa76ada64",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-chain-of-command.png": {
     "mtime": 1788846455.0955176,
-    "seen": 1788850408.667441,
+    "seen": 1788851334.7258408,
     "ast_hash": "5feb691673a293b3540c99c96d92a21c",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-chainbreaker.png": {
     "mtime": 1788846455.12653,
-    "seen": 1788850408.6674428,
+    "seen": 1788851334.7258422,
     "ast_hash": "a17b499929c62da8f784cebc9018cd4c",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-claw-whip.png": {
     "mtime": 1788846455.0305161,
-    "seen": 1788850408.6674466,
+    "seen": 1788851334.7258446,
     "ast_hash": "d222d9d616fa3faa952d7e8b340ed173",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-scourge.png": {
     "mtime": 1788846455.0635173,
-    "seen": 1788850408.6675413,
+    "seen": 1788851334.725919,
     "ast_hash": "a0932ce6710c8bca1d724011a91ed150",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-air-repeater.png": {
     "mtime": 1788846719.4755516,
-    "seen": 1788850408.6673965,
+    "seen": 1788851334.725809,
     "ast_hash": "d728a4018d50007e53e5f7cca39f0fb0",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-dragon-mouth-pistol.png": {
     "mtime": 1788846719.5735564,
-    "seen": 1788850408.6674678,
+    "seen": 1788851334.7258613,
     "ast_hash": "a94b712829160cb0b91e4e2627620f19",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-harmona-gun.png": {
     "mtime": 1788846719.5095532,
-    "seen": 1788850408.6674995,
+    "seen": 1788851334.7258875,
     "ast_hash": "fae8675ed079b35890e19b8cd7e4ef4e",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-jezail.png": {
     "mtime": 1788846719.5395527,
-    "seen": 1788850408.667506,
+    "seen": 1788851334.7258928,
     "ast_hash": "7ee11462a90f451dd331ffcd703c9abe",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-long-air-repeater.png": {
     "mtime": 1788846887.4797618,
-    "seen": 1788850408.6675105,
+    "seen": 1788851334.725897,
     "ast_hash": "5b989c8d8f47cb7146188df390195a25",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-aklys.png": {
     "mtime": 1788847110.920427,
-    "seen": 1788850408.667399,
+    "seen": 1788851334.7258108,
     "ast_hash": "c23ee70bd7646b14fd8d2169ee460639",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-gaff.png": {
     "mtime": 1788847110.9894247,
-    "seen": 1788850408.6674829,
+    "seen": 1788851334.7258732,
     "ast_hash": "0f4099bb9ab56dc907aa8334d66c88d5",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-generals-word.png": {
     "mtime": 1788847111.0294218,
-    "seen": 1788850408.667486,
+    "seen": 1788851334.7258759,
     "ast_hash": "089be78ad91d275ebf736de91e501a4b",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-nunchaku.png": {
     "mtime": 1788847110.9494224,
-    "seen": 1788850408.6675277,
+    "seen": 1788851334.7259097,
     "ast_hash": "0732dda761c0d7f27efd66663a61be47",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-shield-boss.png": {
     "mtime": 1788847344.3716917,
-    "seen": 1788850408.6675446,
+    "seen": 1788851334.7259216,
     "ast_hash": "36913336e59be80e4bfe4e64b5be4e8c",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-shield-spikes.png": {
     "mtime": 1788847344.4026895,
-    "seen": 1788850408.667546,
+    "seen": 1788851334.7259228,
     "ast_hash": "ca8752ded886363bfb338e27ab0e5475",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-shield-standard.png": {
     "mtime": 1788847344.467689,
-    "seen": 1788850408.667548,
+    "seen": 1788851334.7259238,
     "ast_hash": "4609e0f63714ce767a5ead7926a22cbd",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-ulfen-shieldbreaker.png": {
     "mtime": 1788847344.4346876,
-    "seen": 1788850408.667569,
+    "seen": 1788851334.725941,
     "ast_hash": "adcb4dfefd73167de61bd3ce95e5a3b8",
     "semantic_hash": ""
   },
   "public/item-images/item-adventurers-pack.png": {
     "mtime": 1788847766.2688038,
-    "seen": 1788850408.6673062,
+    "seen": 1788851334.725731,
     "ast_hash": "b0578309bc94040dd4f1b87501b5bc0d",
     "semantic_hash": ""
   },
   "public/item-images/item-elven-boots.png": {
     "mtime": 1788847766.3708036,
-    "seen": 1788850408.6673317,
+    "seen": 1788851334.7257555,
     "ast_hash": "8be7c3c4d4fb07515d935dcb700a412e",
     "semantic_hash": ""
   },
   "public/item-images/item-healers-first-aid-kit.png": {
     "mtime": 1788847766.3068054,
-    "seen": 1788850408.6673415,
+    "seen": 1788851334.725764,
     "ast_hash": "8126c92abe0598dd85437ed7df49e858",
     "semantic_hash": ""
   },
   "public/item-images/item-lesser-antiplague.png": {
     "mtime": 1788848167.8654256,
-    "seen": 1788850408.667352,
+    "seen": 1788851334.7257717,
     "ast_hash": "6abceb994cd7d9ecff9405141553ee90",
     "semantic_hash": ""
   },
   "public/item-images/item-lesser-healing-potion.png": {
     "mtime": 1788848167.835452,
-    "seen": 1788850408.6673586,
+    "seen": 1788851334.725777,
     "ast_hash": "29cad2510fb17afd5ff152d4761168aa",
     "semantic_hash": ""
   },
   "public/item-images/item-minor-antidote.png": {
     "mtime": 1788848167.898425,
-    "seen": 1788850408.6673605,
+    "seen": 1788851334.725778,
     "ast_hash": "429b5d96a2229233b23757698d29fe33",
     "semantic_hash": ""
   },
   "public/item-images/item-minor-healing-potion.png": {
     "mtime": 1788848167.800449,
-    "seen": 1788850408.6673691,
+    "seen": 1788851334.7257843,
     "ast_hash": "97f3466540b09ac38177dc262fd585f0",
     "semantic_hash": ""
   },
   "public/item-images/item-thieves-tools.png": {
     "mtime": 1788847766.3388035,
-    "seen": 1788850408.6673892,
+    "seen": 1788851334.7258034,
     "ast_hash": "92ade667a5000910a37a35dfd4ab6474",
     "semantic_hash": ""
   },
   "public/item-images/item-lesser-acid-flask.png": {
     "mtime": 1788848435.746345,
-    "seen": 1788850408.6673484,
+    "seen": 1788851334.7257693,
     "ast_hash": "7399f93b8a86a8f482c8ec52a4e0abb8",
     "semantic_hash": ""
   },
   "public/item-images/item-lesser-alchemists-fire.png": {
     "mtime": 1788848435.7143478,
-    "seen": 1788850408.6673503,
+    "seen": 1788851334.7257705,
     "ast_hash": "ab209af5183f29f812740f6e74d30092",
     "semantic_hash": ""
   },
   "public/item-images/item-lesser-bottled-lightning.png": {
     "mtime": 1788848435.8083465,
-    "seen": 1788850408.6673536,
+    "seen": 1788851334.725773,
     "ast_hash": "ffe7b49e040d2d67d1927a7906f65223",
     "semantic_hash": ""
   },
   "public/item-images/item-lesser-frost-vial.png": {
     "mtime": 1788848435.7773464,
-    "seen": 1788850408.667357,
+    "seen": 1788851334.725776,
     "ast_hash": "737a45a05db13eb5cc95b4d6fe29ba73",
     "semantic_hash": ""
   },
   "public/item-images/item-erosion-bullet.png": {
     "mtime": 1788848875.66676,
-    "seen": 1788850408.6673338,
+    "seen": 1788851334.7257574,
     "ast_hash": "5aa6d4b9f0e7ae4d52bfa3b9dab782c3",
     "semantic_hash": ""
   },
   "public/item-images/item-faerie-bullet.png": {
     "mtime": 1788848875.6997585,
-    "seen": 1788850408.667336,
+    "seen": 1788851334.725759,
     "ast_hash": "b076b16a58f8eb6c5cc2cea62fbed868",
     "semantic_hash": ""
   },
   "public/item-images/item-glue-bullet.png": {
     "mtime": 1788848875.63676,
-    "seen": 1788850408.6673396,
+    "seen": 1788851334.7257628,
     "ast_hash": "970d045696e0fd8053c601e95cf0d1c1",
     "semantic_hash": ""
   },
   "public/item-images/item-reliable-cartridge.png": {
     "mtime": 1788848875.7337587,
-    "seen": 1788850408.6673756,
+    "seen": 1788851334.7257905,
     "ast_hash": "025ab86ea71b37cb6a019f810bb2ccc6",
     "semantic_hash": ""
   },
   "public/item-images/item-minor-detonating-stone.png": {
     "mtime": 1788849186.6546972,
-    "seen": 1788850408.667362,
+    "seen": 1788851334.7257795,
     "ast_hash": "8bf66f1efad0e3df53c9e700e2d34840",
     "semantic_hash": ""
   },
   "public/item-images/item-minor-ghost-charge.png": {
     "mtime": 1788849186.622696,
-    "seen": 1788850408.6673653,
+    "seen": 1788851334.7257817,
     "ast_hash": "eaab17f68c2c8160d3e1955fd2bf3fb7",
     "semantic_hash": ""
   },
   "public/item-images/item-minor-glue-bomb.png": {
     "mtime": 1788849186.5566983,
-    "seen": 1788850408.6673675,
+    "seen": 1788851334.7257833,
     "ast_hash": "9b277c295a022da0bceca7a61b2c6f52",
     "semantic_hash": ""
   },
   "public/item-images/item-minor-weakening-bomb.png": {
     "mtime": 1788849186.590696,
-    "seen": 1788850408.6673708,
+    "seen": 1788851334.7257855,
     "ast_hash": "a9a1d31d2fd316f31268af593a6534e1",
     "semantic_hash": ""
   },
   "public/item-images/item-carnage-cuirass.png": {
     "mtime": 1788849483.396112,
-    "seen": 1788850408.6673243,
+    "seen": 1788851334.7257466,
     "ast_hash": "566022f03e397a284b2ceec4aae5d6f3",
     "semantic_hash": ""
   },
   "public/item-images/item-dragon-scales.png": {
     "mtime": 1788849483.463111,
-    "seen": 1788850408.6673298,
+    "seen": 1788851334.7257535,
     "ast_hash": "8df5eecee6de8b5c3bac49e91b95235c",
     "semantic_hash": ""
   },
   "public/item-images/item-sailors-cota.png": {
     "mtime": 1788849483.3641155,
-    "seen": 1788850408.667379,
+    "seen": 1788851334.7257931,
     "ast_hash": "21db6f45aa0169a25b5325fa5071fd30",
     "semantic_hash": ""
   },
   "public/item-images/item-unholy-armor.png": {
     "mtime": 1788849483.4301121,
-    "seen": 1788850408.667391,
+    "seen": 1788851334.7258048,
     "ast_hash": "afddf6bd8683d39f6419fbfe44ad073b",
     "semantic_hash": ""
   },
   "public/item-images/item-immortal-wellspring-vial.png": {
     "mtime": 1788849963.4133406,
-    "seen": 1788850408.667345,
+    "seen": 1788851334.7257664,
     "ast_hash": "7862f8a41cdb464cb808e8a91c4b8030",
     "semantic_hash": ""
   },
   "public/item-images/item-lesser-elixir-life.png": {
     "mtime": 1788849963.6473439,
-    "seen": 1788850408.667355,
+    "seen": 1788851334.7257745,
     "ast_hash": "5c224e9fe7d057ee3ea2c244aa29a927",
     "semantic_hash": ""
   },
   "public/item-images/item-minor-elixir-life.png": {
     "mtime": 1788849963.5333447,
-    "seen": 1788850408.667364,
+    "seen": 1788851334.7257805,
     "ast_hash": "0638969f54134e942e31a5243ea9752c",
     "semantic_hash": ""
   },
   "public/item-images/item-vital-salt.png": {
     "mtime": 1788849963.2963455,
-    "seen": 1788850408.667393,
+    "seen": 1788851334.725806,
     "ast_hash": "8ef27ffd040f3e98fa3c2155073457be",
     "semantic_hash": ""
   },
   "public/item-images/item-backpack.png": {
     "mtime": 1788850217.60589,
-    "seen": 1788850408.6673145,
+    "seen": 1788851334.7257383,
     "ast_hash": "d7a3e0e8ccc00b2f55793bf93ce4559a",
     "semantic_hash": ""
   },
   "public/item-images/item-dazzling-buckler.png": {
     "mtime": 1788850217.9771688,
-    "seen": 1788850408.6673276,
+    "seen": 1788851334.7257507,
     "ast_hash": "15cb6935f4f314d8764301389cd4b3d9",
     "semantic_hash": ""
   },
   "public/item-images/item-immaculate-holster.png": {
     "mtime": 1788850218.1802115,
-    "seen": 1788850408.6673434,
+    "seen": 1788851334.7257655,
     "ast_hash": "3e18306ab2373c6b950087e1122d85df",
     "semantic_hash": ""
   },
   "public/item-images/item-spellguard-blade.png": {
     "mtime": 1788850217.8261223,
-    "seen": 1788850408.6673844,
+    "seen": 1788851334.7257993,
     "ast_hash": "f1aa3d79a50db2897cac33dceab1308f",
+    "semantic_hash": ""
+  },
+  "public/item-images/item-amplifying-scope.png": {
+    "mtime": 1788850494.3427284,
+    "seen": 1788851334.725734,
+    "ast_hash": "7d54d327dbec1beb410916460ac1c5dc",
+    "semantic_hash": ""
+  },
+  "public/item-images/item-darkvision-scope.png": {
+    "mtime": 1788850494.8837302,
+    "seen": 1788851334.7257495,
+    "ast_hash": "2916a5a9f3e282a093d30a6524b3fe10",
+    "semantic_hash": ""
+  },
+  "public/item-images/item-delineating-scope.png": {
+    "mtime": 1788850494.5277317,
+    "seen": 1788851334.7257519,
+    "ast_hash": "4a512d01988ededa8b0acee944f057c1",
+    "semantic_hash": ""
+  },
+  "public/item-images/item-scope-of-truth.png": {
+    "mtime": 1788850494.7117302,
+    "seen": 1788851334.7257953,
+    "ast_hash": "73c4f655e06425dd5ad03a3f4f88b2d0",
+    "semantic_hash": ""
+  },
+  "public/item-images/item-blight-breath.png": {
+    "mtime": 1788850686.3739321,
+    "seen": 1788851334.7257397,
+    "ast_hash": "cf786f0d5218bfc9047549350cb6e772",
+    "semantic_hash": ""
+  },
+  "public/item-images/item-faydhaans-dallah.png": {
+    "mtime": 1788850686.089934,
+    "seen": 1788851334.7257602,
+    "ast_hash": "2a884446e086b5e37d812bb714dff575",
+    "semantic_hash": ""
+  },
+  "public/item-images/item-octopus-potion.png": {
+    "mtime": 1788850686.2279317,
+    "seen": 1788851334.7257867,
+    "ast_hash": "165bff0b3890b1dc8dc798db6010accd",
+    "semantic_hash": ""
+  },
+  "public/item-images/item-sairazul-blue.png": {
+    "mtime": 1788850686.505932,
+    "seen": 1788851334.725794,
+    "ast_hash": "304d68e6afa3c5d8141fd7d1e41232ac",
     "semantic_hash": ""
   }
 }

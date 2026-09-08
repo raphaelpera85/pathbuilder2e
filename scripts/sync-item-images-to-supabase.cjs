@@ -50,6 +50,10 @@ function visualKey(row) {
   if (row.id === "item.rage_elements.water.octopus_potion" || /^po[cç][aã]o de polvo$/.test(name)) return "octopus-potion";
   if (row.id === "item.rage_elements.air.blight_breath" || /^sopro da praga$/.test(name)) return "blight-breath";
   if (row.id === "item.rage_elements.earth.sairazul_blue" || /^azul de sairazul$/.test(name)) return "sairazul-blue";
+  if (row.id === "item.guns_gears.snipers_saddle" || /^sela do atirador$/.test(name)) return "snipers-saddle";
+  if (row.id === "item.guns_gears.immovable_tripod" || /^trip[eé] im[oó]vel$/.test(name)) return "immovable-tripod";
+  if (row.id === "item.howl.hodag_leather" || /^couro de hodag$/.test(name)) return "hodag-leather";
+  if (row.id === "item.howl.mamlambo_scale" || /^escama de mamlambo$/.test(name)) return "mamlambo-scale";
   if (row.id === "item.book_of_dead.vital_salt" || /^sal vital$/.test(name)) return "vital-salt";
   if (row.id === "item.dark_archive.vial_of_the_immortal_wellspring" || /^frasco da fonte imortal$/.test(name)) return "immortal-wellspring-vial";
   if (row.id === "item.compendium.elixir_of_life_minor" || /^elixir da vida \(menor\)$/.test(name)) return "minor-elixir-life";
