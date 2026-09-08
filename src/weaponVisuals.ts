@@ -36,6 +36,10 @@ export function getWeaponVisualKey(data: WeaponVisualData = {}): string {
   if (/besta pesada|heavy crossbow/.test(identity)) return "heavy-crossbow";
   if (/besta de m[aã]o|hand crossbow/.test(identity)) return "hand-crossbow";
   if (/^.*\bbesta\b|standard crossbow/.test(identity)) return "crossbow-standard";
+  if (/glaive/.test(identity)) return "glaive";
+  if (/atlatl/.test(identity)) return "atlatl";
+  if (/mambele/.test(identity)) return "mambele";
+  if (/pique de rompimento|breach pike/.test(identity)) return "breach-pike";
   if (/rapieira|rapier/.test(identity)) return "rapier";
   if (/machado de batalha|battle axe/.test(identity)) return "battle-axe";
   if (/lan[cç]a de cavalaria|cavalry lance/.test(identity)) return "cavalry-lance";

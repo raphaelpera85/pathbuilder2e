@@ -51,6 +51,10 @@ describe("weapon visual fallback", () => {
     expect(getWeaponVisualKey({ name: "Besta de Mão", weaponGroup: "Crossbow" })).toBe("hand-crossbow");
     expect(getWeaponVisualKey({ name: "Besta Pesada", weaponGroup: "Crossbow" })).toBe("heavy-crossbow");
     expect(getWeaponVisualKey({ name: "Besta Alquímica", weaponGroup: "Crossbow" })).toBe("alchemical-crossbow");
+    expect(getWeaponVisualKey({ name: "Glaive", weaponGroup: "Spear" })).toBe("glaive");
+    expect(getWeaponVisualKey({ name: "Atlatl", weaponGroup: "Spear" })).toBe("atlatl");
+    expect(getWeaponVisualKey({ name: "Mambele", weaponGroup: "Spear" })).toBe("mambele");
+    expect(getWeaponVisualKey({ name: "Pique de Rompimento", weaponGroup: "Spear" })).toBe("breach-pike");
   });
 
   it("separa armas marciais nomeadas da arte genérica da categoria", () => {
@@ -65,7 +69,7 @@ describe("weapon visual fallback", () => {
   });
 
   it("keeps every local fallback asset available to the browser", () => {
-    for (const key of ["generic", "sword", "bow", "axe", "club", "dagger", "punch-dagger", "orc-knuckle-dagger", "punching-dagger", "crossbow", "crossbow-standard", "hand-crossbow", "heavy-crossbow", "alchemical-crossbow", "spear", "firearm", "flintlock-pistol", "flintlock-musket", "blunderbuss", "pepperbox", "arquebus", "dueling-pistol", "hand-cannon", "coat-pistol", "maul", "warhammer", "morningstar", "greatclub", "greataxe", "pick", "scythe", "sickle", "rapier", "battle-axe", "cavalry-lance", "longbow", "bastard-sword", "longsword", "shortsword", "kukri", "mace", "staff", "whip", "sling", "gauntlet", "bomb", "shield", "lute", "halberd", "trident", "shuriken", "flail"]) {
+    for (const key of ["generic", "sword", "bow", "axe", "club", "dagger", "punch-dagger", "orc-knuckle-dagger", "punching-dagger", "crossbow", "crossbow-standard", "hand-crossbow", "heavy-crossbow", "alchemical-crossbow", "spear", "glaive", "atlatl", "mambele", "breach-pike", "firearm", "flintlock-pistol", "flintlock-musket", "blunderbuss", "pepperbox", "arquebus", "dueling-pistol", "hand-cannon", "coat-pistol", "maul", "warhammer", "morningstar", "greatclub", "greataxe", "pick", "scythe", "sickle", "rapier", "battle-axe", "cavalry-lance", "longbow", "bastard-sword", "longsword", "shortsword", "kukri", "mace", "staff", "whip", "sling", "gauntlet", "bomb", "shield", "lute", "halberd", "trident", "shuriken", "flail"]) {
       expect(existsSync(resolve(process.cwd(), "public", "weapon-images", `weapon-${key}.${key === "generic" ? "svg" : "png"}`))).toBe(true);
     }
   });
