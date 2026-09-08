@@ -1200,6 +1200,8 @@ Auditoria semântica de imagens (2026-09-08): `itemVisuals.test.ts` passou a per
 
 Metadados de origem visual (2026-09-08): os sincronizadores de armas e itens agora persistem `imageSource: local-project-asset` e `imageLicense: project-generated-art` junto da URL/família em cada registro do Supabase, deixando explícito que a ilustração é asset do projeto e não imagem oficial de livro.
 
+Publicação de metadados visuais concluída (2026-09-08): armas 139/139 e itens 457/457 receberam `imageSource`/`imageLicense`; auditorias remotas confirmaram metadados completos, URLs HTTP 200, zero divergências e catálogo reconciliado em 18 tabelas (3.786 registros).
+
 Teste de recuperação de campanhas (2026-09-08): criado `src/services/campaigns-sync-queue.test.ts`, simulando falha de `upsert`, persistência da campanha na fila particionada e recuperação posterior. O teste confirmou `source: local` durante a falha, segunda tentativa, publicação remota e remoção da pendência após confirmação; campanhas/personagens autenticados reais, concorrência e Realtime continuam exigindo validação externa.
 
 Matriz de progressão atualizada (2026-09-08): `audit-local-character-matrix.cjs` passou a elevar o personagem anão/mago ao nível 5, confirmar o campo de nível e o recálculo de PV, selecionar um talento de classe de nível 2 e então executar os demais cenários. Resultado: 4 personagens e 32/32 verificações aprovadas, incluindo ancestralidades, heranças, antecedentes, classes, talentos, perícias, armas, dano e round-trip JSON.
