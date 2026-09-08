@@ -505,7 +505,18 @@ function CatalogCard({ entry, onInspect }: { entry: PickerItem & { category: Pic
   const castingTimes = entry.data.castingTimes as Partial<Record<"pt-BR" | "en" | "es", string>> | undefined;
   const traditionNames = entry.data.traditionNames as Partial<Record<"pt-BR" | "en" | "es", string[]>> | undefined;
   const primaryChecks = entry.data.primaryChecks as Partial<Record<"pt-BR" | "en" | "es", string>> | undefined;
+  const isWeapon = entry.category === "weapon";
+  const isItem = entry.category === "item" || entry.category === "gear";
+  const displayName = getItemDisplayName(entry, locale);
+  const range = entry.data.rangeFeet ?? entry.data.range;
   const facts = [
+    isWeapon && entry.data.damage ? `${t("damage")}: ${String(entry.data.damage)}` : null,
+    isWeapon && entry.data.damageType ? `${t("damageType")}: ${String(entry.data.damageType)}` : null,
+    isWeapon && range != null ? `${t("range")}: ${String(range)} ${t("feet")}` : null,
+    isWeapon && entry.data.hands !== undefined ? `${t("hands")}: ${String(entry.data.hands)}` : null,
+    isWeapon && entry.data.reload != null ? `${t("reload")}: ${String(entry.data.reload)}` : null,
+    isWeapon && entry.data.weaponCategory ? `${t("weaponCategory")}: ${String(entry.data.weaponCategory)}` : null,
+    isWeapon && entry.data.weaponGroup ? `${t("weaponGroup")}: ${String(entry.data.weaponGroup)}` : null,
     typeof entry.data.rank === "number" ? `${t("rank")} ${entry.data.rank}` : null,
     typeof entry.data.level === "number" ? `${t("level")} ${entry.data.level}` : null,
     castingTimes?.[locale] ? `${t("castingTime")}: ${castingTimes[locale]}` : null,
@@ -516,10 +527,6 @@ function CatalogCard({ entry, onInspect }: { entry: PickerItem & { category: Pic
     entry.data.price ? `${t("price")}: ${formatPriceToLocale(entry.data.price, locale)}` : null,
     entry.data.variantFamily ? `${locale === "en" ? "Variant" : locale === "es" ? "Variante" : "Variante"}: ${entry.data.variantRole === "ranged" ? (locale === "en" ? "Ranged" : locale === "es" ? "A distancia" : "À distância") : entry.data.variantRole === "melee" ? (locale === "en" ? "Melee" : locale === "es" ? "Cuerpo a cuerpo" : "Corpo a corpo") : entry.data.variantFamily}` : null,
   ].filter((fact): fact is string => Boolean(fact));
-  const isWeapon = entry.category === "weapon";
-  const isItem = entry.category === "item" || entry.category === "gear";
-  const displayName = getItemDisplayName(entry, locale);
-
   return <article className="catalog-card interactive" onClick={onInspect} tabIndex={0} onKeyDown={(e) => e.key === "Enter" && onInspect?.()} role="button" aria-label={displayName}>
     <div className="catalog-card-top"><div className="catalog-card-meta"><span>{entry.categoryLabel}</span>{rarity && <span className={`rarity-badge ${String(entry.data.rarity)}`}>{rarity}</span>}</div><div className="catalog-card-status"><span className={legacy ? "source-badge legacy" : verified ? "source-badge verified" : "source-badge review"}>{legacy ? t("catalogLegacy") : verified ? t("catalogVerified") : t("catalogReview")}</span>{approximateSource && <span className="source-badge review">{t("sourceSectionReference")}</span>}{translationPending && <span className="source-badge translation-pending">{t("translationPending")}</span>}</div></div>
     {(isWeapon || isItem) && <img className="weapon-visual weapon-visual-card" src={isWeapon ? getWeaponImageUrl(entry.data) : getItemImageUrl(entry.data)} alt={isWeapon ? getWeaponImageAlt(displayName, entry.data, locale) : getItemImageAlt(displayName, entry.data, locale)} loading="lazy" />}
