@@ -4036,8 +4036,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-potion.png",
-      "imageFamily": "potion",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-vital-salt.png",
+      "imageFamily": "vital-salt",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -4470,8 +4470,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-potion.png",
-      "imageFamily": "potion",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-immortal-wellspring-vial.png",
+      "imageFamily": "immortal-wellspring-vial",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -6023,8 +6023,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-poison.png",
-      "imageFamily": "poison",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-minor-elixir-life.png",
+      "imageFamily": "minor-elixir-life",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -6055,8 +6055,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-poison.png",
-      "imageFamily": "poison",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-lesser-elixir-life.png",
+      "imageFamily": "lesser-elixir-life",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }

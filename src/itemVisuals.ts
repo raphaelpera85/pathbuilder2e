@@ -26,6 +26,10 @@ export function getItemVisualKey(data: ItemVisualData = {}): string {
   if (data.id === "item.magic.boots_of_elvenkind" || /^botas [eé]lficas$/.test(name)) return "elven-boots";
   if (data.id === "item.consumable.minor_healing_potion" || /^po[cç][aã]o de cura menor$/.test(name)) return "minor-healing-potion";
   if (data.id === "item.consumable.lesser_healing_potion" || /^po[cç][aã]o de cura inferior$/.test(name)) return "lesser-healing-potion";
+  if (data.id === "item.book_of_dead.vital_salt" || /^sal vital$/.test(name)) return "vital-salt";
+  if (data.id === "item.dark_archive.vial_of_the_immortal_wellspring" || /^frasco da fonte imortal$/.test(name)) return "immortal-wellspring-vial";
+  if (data.id === "item.compendium.elixir_of_life_minor" || /^elixir da vida \(menor\)$/.test(name)) return "minor-elixir-life";
+  if (data.id === "item.compendium.elixir_of_life_lesser" || /^elixir da vida \(inferior\)$/.test(name)) return "lesser-elixir-life";
   if (data.id === "item.pc2.antiplague_lesser" || /^antipeste \(inferior\)$/.test(name)) return "lesser-antiplague";
   if (data.id === "item.pc2.minor_antidote" || /^ant[ií]doto menor$/.test(name)) return "minor-antidote";
   if (data.id === "item.compendium.alchemist_s_fire_lesser" || /^fogo alqu[ií]mico \(inferior\)$/.test(name)) return "lesser-alchemists-fire";
