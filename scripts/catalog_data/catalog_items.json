@@ -3109,8 +3109,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-shuln-fang-katar.png",
+      "imageFamily": "shuln-fang-katar",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -3165,8 +3165,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-storm-herald.png",
+      "imageFamily": "storm-herald",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -3221,8 +3221,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-trollhound-pick.png",
+      "imageFamily": "trollhound-pick",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -3277,8 +3277,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-alicorn-trigger.png",
+      "imageFamily": "alicorn-trigger",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }

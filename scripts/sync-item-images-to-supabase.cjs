@@ -59,6 +59,10 @@ function visualKey(row) {
   if (row.id === "item.howl.ankhrav_duster" || /^poeira de ankhrav$/.test(name)) return "ankhrav-duster";
   if (row.id === "item.howl.black_scorpion_stingmace" || /^ma[cç]a-ferr[aã]o de escorpi[aã]o negro$/.test(name)) return "black-scorpion-stingmace";
   if (row.id === "item.guns_gears.lucky_draw_bandolier" || /^bandoleira do saque da sorte$/.test(name)) return "lucky-draw-bandolier";
+  if (row.id === "item.howl.shuln_fang_katar" || /^katar de presa shuln$/.test(name)) return "shuln-fang-katar";
+  if (row.id === "item.howl.storm_herald" || /^arauto da tempestade$/.test(name)) return "storm-herald";
+  if (row.id === "item.howl.trollhound_pick" || /^picareta de c[aã]o-troll$/.test(name)) return "trollhound-pick";
+  if (row.id === "item.howl.alicorn_trigger" || /^gatilho de alic[oó]rnio$/.test(name)) return "alicorn-trigger";
   if (row.id === "item.howl.bloodgorger_scythe" || /^foice devorasangue$/.test(name)) return "bloodgorger-scythe";
   if (row.id === "item.howl.catoblepas_maul" || /^malho de catoblepas$/.test(name)) return "catoblepas-maul";
   if (row.id === "item.howl.chimera_flail" || /^mangual de quimera$/.test(name)) return "chimera-flail";
