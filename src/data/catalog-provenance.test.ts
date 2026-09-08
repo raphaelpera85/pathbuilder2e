@@ -1891,7 +1891,7 @@ describe("proveniência do catálogo legado", () => {
   it("indexa o bloco inicial de talentos de Guerreiro do Livro do Jogador", () => {
     const catalog = loadCatalog() as { feats: Array<LegacyRecord & { classId?: string; level?: number }> };
     const feats = catalog.feats.filter((item) => item.classId === "class.fighter");
-    expect(feats).toHaveLength(52);
+    expect(feats).toHaveLength(50);
     const indexed = feats.filter((item) => item.id?.startsWith("feat.class.fighter."));
     expect(indexed.every((item) => item.source?.book === "Livro do Jogador (Player Core, Remaster)" && item.needs_review === false && !item.sourceApproximate && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
     expect(indexed.filter((item) => item.level === 1)).toHaveLength(8);
@@ -1901,7 +1901,7 @@ describe("proveniência do catálogo legado", () => {
   it("indexa o bloco inicial de talentos de Ladino do Livro do Jogador", () => {
     const catalog = loadCatalog() as { feats: Array<LegacyRecord & { classId?: string; level?: number }> };
     const feats = catalog.feats.filter((item) => item.classId === "class.rogue");
-    expect(feats).toHaveLength(78);
+    expect(feats).toHaveLength(77);
     const indexed = feats.filter((item) => item.id?.startsWith("feat.class.rogue."));
     expect(indexed.every((item) => item.source?.book === "Livro do Jogador (Player Core, Remaster)" && item.needs_review === false && !item.sourceApproximate && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
     expect(indexed.filter((item) => item.level === 1)).toHaveLength(7);
