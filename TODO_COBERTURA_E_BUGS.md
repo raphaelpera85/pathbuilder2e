@@ -1256,3 +1256,4 @@ Persistência remota autenticada de personagens (2026-09-08): `npm run audit:cam
 - [x] Criar e sincronizar artes individuais para Cota do Marinheiro, Couraça da Carnificina, Armadura Profana e Placas de Dragão, usando ID e nome completo do item.
 - [x] Criar e sincronizar artes individuais para Sal Vital, Frasco da Fonte Imortal, Elixir da Vida (Menor) e Elixir da Vida (Inferior), usando ID e nome completo do item.
 - [x] Criar e sincronizar artes individuais para Mochila, Lâmina Escuda-Magia, Broquel Deslumbrante e Coldre Imaculado, usando ID e nome completo do item.
+- [x] Criar e sincronizar artes individuais para Mira de Amplificação, Mira de Delineamento, Mira da Verdade e Mira de Visão no Escuro, usando ID e nome completo do item.

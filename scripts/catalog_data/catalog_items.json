@@ -894,8 +894,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-amplifying-scope.png",
+      "imageFamily": "amplifying-scope",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -924,8 +924,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-delineating-scope.png",
+      "imageFamily": "delineating-scope",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -984,8 +984,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-scope-of-truth.png",
+      "imageFamily": "scope-of-truth",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -1014,8 +1014,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-darkvision-scope.png",
+      "imageFamily": "darkvision-scope",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }

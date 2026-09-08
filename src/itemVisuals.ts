@@ -30,6 +30,10 @@ export function getItemVisualKey(data: ItemVisualData = {}): string {
   if (data.id === "item.pc2.spellguard_blade" || /^l[aâ]mina escuda-magia$/.test(name)) return "spellguard-blade";
   if (data.id === "item.pc2.dazzling_buckler" || /^broquel deslumbrante$/.test(name)) return "dazzling-buckler";
   if (data.id === "item.guns_gears.immaculate_holster" || /^coldre imaculado$/.test(name)) return "immaculate-holster";
+  if (data.id === "item.guns_gears.amplifying_scope" || /^mira de amplifica[cç][aã]o$/.test(name)) return "amplifying-scope";
+  if (data.id === "item.guns_gears.delineating_scope" || /^mira de delineamento$/.test(name)) return "delineating-scope";
+  if (data.id === "item.guns_gears.scope_of_truth" || /^mira da verdade$/.test(name)) return "scope-of-truth";
+  if (data.id === "item.guns_gears.darkvision_scope" || /^mira de vis[aã]o no escuro$/.test(name)) return "darkvision-scope";
   if (data.id === "item.book_of_dead.vital_salt" || /^sal vital$/.test(name)) return "vital-salt";
   if (data.id === "item.dark_archive.vial_of_the_immortal_wellspring" || /^frasco da fonte imortal$/.test(name)) return "immortal-wellspring-vial";
   if (data.id === "item.compendium.elixir_of_life_minor" || /^elixir da vida \(menor\)$/.test(name)) return "minor-elixir-life";
