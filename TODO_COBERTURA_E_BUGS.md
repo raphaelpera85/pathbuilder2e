@@ -1230,3 +1230,6 @@ Revalidação de uso (2026-09-08): `node scripts/audit-local-character-matrix.cj
 Gate multilíngue e responsivo (2026-09-08): `node scripts/audit-local-locale-usage.cjs` passou 78/78 verificações em pt-BR, inglês e espanhol, cobrindo Compêndio e Builder em 320×568, 375×667, 414×896 e 768×1024; todas as rotas montaram corretamente, sem overflow horizontal.
 
 Persistência remota autenticada de personagens (2026-09-08): `npm run audit:campaigns:supabase` passou criação/leitura da ficha pelo proprietário, compartilhamento com o Mestre e bloqueio de edição pelo Mestre compartilhado; usuários e registros temporários foram removidos ao final.
+# Imagens dedicadas de armas
+
+- [x] Criar e sincronizar artes individuais para Arcabuz, Pistola de Duelo, Canhão de Mão e Pistola de Casaco, usando o nome completo de cada arma.

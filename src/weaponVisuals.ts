@@ -20,6 +20,10 @@ export function getWeaponVisualKey(data: WeaponVisualData = {}): string {
   if (/mosquete de pederneira|flintlock musket/.test(identity)) return "flintlock-musket";
   if (/bacamarte|blunderbuss/.test(identity)) return "blunderbuss";
   if (/pimenteiro|pepperbox/.test(identity)) return "pepperbox";
+  if (/arcabuz|arquebus/.test(identity)) return "arquebus";
+  if (/pistola de duelo|dueling pistol/.test(identity)) return "dueling-pistol";
+  if (/canh[aã]o de m[aã]o|hand cannon/.test(identity)) return "hand-cannon";
+  if (/pistola de casaco|coat pistol/.test(identity)) return "coat-pistol";
   if (/rapieira|rapier/.test(identity)) return "rapier";
   if (/machado de batalha|battle axe/.test(identity)) return "battle-axe";
   if (/lan[cç]a de cavalaria|cavalry lance/.test(identity)) return "cavalry-lance";

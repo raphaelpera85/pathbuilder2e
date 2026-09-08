@@ -35,6 +35,10 @@ describe("weapon visual fallback", () => {
     expect(getWeaponVisualKey({ name: "Mosquete de Pederneira", weaponGroup: "Firearm" })).toBe("flintlock-musket");
     expect(getWeaponVisualKey({ name: "Bacamarte", weaponGroup: "Firearm" })).toBe("blunderbuss");
     expect(getWeaponVisualKey({ name: "Pimenteiro", weaponGroup: "Firearm" })).toBe("pepperbox");
+    expect(getWeaponVisualKey({ name: "Arcabuz", weaponGroup: "Firearm" })).toBe("arquebus");
+    expect(getWeaponVisualKey({ name: "Pistola de Duelo", weaponGroup: "Firearm" })).toBe("dueling-pistol");
+    expect(getWeaponVisualKey({ name: "Canhão de Mão", weaponGroup: "Firearm" })).toBe("hand-cannon");
+    expect(getWeaponVisualKey({ name: "Pistola de Casaco", weaponGroup: "Firearm" })).toBe("coat-pistol");
   });
 
   it("separa armas marciais nomeadas da arte genérica da categoria", () => {
@@ -49,7 +53,7 @@ describe("weapon visual fallback", () => {
   });
 
   it("keeps every local fallback asset available to the browser", () => {
-    for (const key of ["generic", "sword", "bow", "axe", "club", "dagger", "punch-dagger", "orc-knuckle-dagger", "punching-dagger", "crossbow", "spear", "firearm", "flintlock-pistol", "flintlock-musket", "blunderbuss", "pepperbox", "rapier", "battle-axe", "cavalry-lance", "longbow", "bastard-sword", "longsword", "shortsword", "kukri", "mace", "staff", "whip", "sling", "gauntlet", "bomb", "shield", "lute", "halberd", "trident", "shuriken", "flail"]) {
+    for (const key of ["generic", "sword", "bow", "axe", "club", "dagger", "punch-dagger", "orc-knuckle-dagger", "punching-dagger", "crossbow", "spear", "firearm", "flintlock-pistol", "flintlock-musket", "blunderbuss", "pepperbox", "arquebus", "dueling-pistol", "hand-cannon", "coat-pistol", "rapier", "battle-axe", "cavalry-lance", "longbow", "bastard-sword", "longsword", "shortsword", "kukri", "mace", "staff", "whip", "sling", "gauntlet", "bomb", "shield", "lute", "halberd", "trident", "shuriken", "flail"]) {
       expect(existsSync(resolve(process.cwd(), "public", "weapon-images", `weapon-${key}.${key === "generic" ? "svg" : "png"}`))).toBe(true);
     }
   });

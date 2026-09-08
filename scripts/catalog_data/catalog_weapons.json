@@ -230,7 +230,7 @@
     "source_page": 151,
     "data": {
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-firearm.png",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-arquebus.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -776,7 +776,7 @@
     "source_page": 151,
     "data": {
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-firearm.png",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-dueling-pistol.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -2106,7 +2106,7 @@
     "source_page": 151,
     "data": {
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-firearm.png",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-hand-cannon.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -2205,7 +2205,7 @@
     "source_page": 151,
     "data": {
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-firearm.png",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-coat-pistol.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
