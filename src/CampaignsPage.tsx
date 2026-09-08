@@ -132,6 +132,8 @@ export function CampaignsPage() {
 
   useEffect(() => {
     void refreshData();
+    const retryPendingCampaignsWhenOnline = () => { void refreshData(); };
+    window.addEventListener("online", retryPendingCampaignsWhenOnline);
     const unsubscribe = subscribeToAuth((next) => {
       authEpochRef.current += 1;
       setSession(next);
@@ -146,7 +148,10 @@ export function CampaignsPage() {
         setCampaignSyncWarning(false);
       }
     });
-    return unsubscribe;
+    return () => {
+      window.removeEventListener("online", retryPendingCampaignsWhenOnline);
+      unsubscribe();
+    };
   }, []);
 
   useEffect(() => {

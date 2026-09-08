@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { getItemImageAlt, getItemVisualKey } from "./itemVisuals";
+import { existsSync, readFileSync } from "node:fs";
+import { resolve } from "node:path";
+import { getItemImageAlt, getItemImageUrl, getItemVisualKey } from "./itemVisuals";
 
 describe("item visuals", () => {
   it.each([
@@ -19,9 +21,33 @@ describe("item visuals", () => {
     ["Machado Entalhador", "axe"],
     ["Mochila de Aventureiro", "adventurer-pack"],
     ["10 Balas", "bullets"],
+    ["Manto Aéreo", "adventurer-pack"],
+    ["Lança Peixe-Leão", "spear"],
+    ["Sopro da Praga", "potion"],
+    ["Bastão de Metal", "staff"],
+    ["Runa de Potência de Armadura +1", "rune"],
   ])("classifies %s as %s", (name, key) => expect(getItemVisualKey({ name })).toBe(key));
 
   it("uses the complete localized display name in alt text", () => {
     expect(getItemImageAlt("Mochila de Aventureiro", { name: "Mochila de Aventureiro" })).toBe("Ilustração de Mochila de Aventureiro");
+  });
+
+  it("associa todos os itens catalogados a uma família e asset local existente", () => {
+    const items = JSON.parse(readFileSync(resolve(process.cwd(), "scripts/catalog_data/catalog_items.json"), "utf8")) as Array<Record<string, unknown>>;
+    for (const item of items) {
+      const name = String(item.name_pt || item.name_en || "");
+      const data = {
+        name,
+        names: { "pt-BR": name, en: String(item.name_en || "") },
+        description: String(item.description_pt || ""),
+        category: String(item.category || ""),
+        traits: Array.isArray(item.traits) ? item.traits as string[] : [],
+      };
+      const key = getItemVisualKey(data);
+      const url = getItemImageUrl(data);
+      expect(key, name).not.toBe("generic");
+      expect(url, name).toMatch(new RegExp(`^/item-images/item-${key}\\.png$`));
+      expect(existsSync(resolve(process.cwd(), "public", "item-images", `item-${key}.png`)), name).toBe(true);
+    }
   });
 });

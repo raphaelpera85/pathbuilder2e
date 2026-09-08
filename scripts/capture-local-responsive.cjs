@@ -5,7 +5,18 @@ const baseUrl = process.env.PF2E_BASE_URL || "http://127.0.0.1:5173";
 const outputDir = process.env.PF2E_SCREENSHOT_DIR || "C:\\Users\\rapha\\.codex\\visualizations\\2026\\09\\07\\01a07abf-d77b-7301-be8a-0a21de325216";
 const chromePath = process.env.CHROME_PATH || "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
 const surfaces = ["compendium", "builder", "rules", "downloads", "library", "campaigns"];
-const viewports = [{ name: "mobile", width: 375, height: 667 }, { name: "desktop", width: 1440, height: 900 }];
+const viewports = [
+  { name: "mobile-320x568", width: 320, height: 568 },
+  { name: "mobile-568x320-landscape", width: 568, height: 320 },
+  { name: "mobile-375x667", width: 375, height: 667 },
+  { name: "mobile-667x375-landscape", width: 667, height: 375 },
+  { name: "mobile-414x896", width: 414, height: 896 },
+  { name: "mobile-896x414-landscape", width: 896, height: 414 },
+  { name: "tablet-768x1024", width: 768, height: 1024 },
+  { name: "tablet-1024x768-landscape", width: 1024, height: 768 },
+  { name: "laptop-1280x800", width: 1280, height: 800 },
+  { name: "desktop-1440x900", width: 1440, height: 900 },
+];
 const locales = ["pt-BR", "en", "es"];
 
 async function main() {
@@ -23,7 +34,8 @@ async function main() {
         await page.setViewportSize({ width: viewport.width, height: viewport.height });
         for (const surface of surfaces) {
           await page.goto(`${baseUrl}/#/${surface}`, { waitUntil: "domcontentloaded", timeout: 30000 });
-          await page.waitForTimeout(1200);
+          await page.waitForFunction(() => !document.body.innerText.includes("Carregando o catálogo do Supabase") && !document.body.innerText.includes("Loading catalog from Supabase"), null, { timeout: 20000 }).catch(() => {});
+          await page.waitForTimeout(250);
           const safeSurface = surface.replace(/[^a-z0-9-]/gi, "-");
           const path = `${outputDir}\\${locale}-${safeSurface}-${viewport.name}.png`;
           // The catalog can be thousands of pixels tall; viewport captures are

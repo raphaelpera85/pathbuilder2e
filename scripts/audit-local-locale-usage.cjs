@@ -4,9 +4,9 @@ const fs = require("node:fs");
 const baseUrl = process.env.PF2E_BASE_URL || "http://127.0.0.1:5173";
 const chromePath = process.env.CHROME_PATH || "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
 const locales = [
-  { id: "pt-BR", browserLocale: "pt-BR", compendiumHeading: "Compêndio de criação", compendiumTitle: "compêndio", builderTitle: "construtor de personagens", builderTab: "Armas", pickerTitle: "Selecionar Classes", legacyClass: "Classe" },
-  { id: "en", browserLocale: "en-US", compendiumHeading: "Character creation compendium", compendiumTitle: "compendium", builderTitle: "character builder", builderTab: "Weapons", pickerTitle: "Select Classes", legacyClass: "Class" },
-  { id: "es", browserLocale: "es-ES", compendiumHeading: "Compendio de creación", compendiumTitle: "compendio", builderTitle: "creador de personajes", builderTab: "Armas", pickerTitle: "Seleccionar Clases", legacyClass: "Clase" },
+  { id: "pt-BR", browserLocale: "pt-BR", compendiumHeading: "Compêndio de criação", compendiumTitle: "compêndio", builderTitle: "construtor de personagens", builderTab: "Armas", pickerTitle: "Selecionar Classes", legacyClass: "Classe", defaultName: "Novo Herói" },
+  { id: "en", browserLocale: "en-US", compendiumHeading: "Character creation compendium", compendiumTitle: "compendium", builderTitle: "character builder", builderTab: "Weapons", pickerTitle: "Select Classes", legacyClass: "Class", defaultName: "New Hero" },
+  { id: "es", browserLocale: "es-ES", compendiumHeading: "Compendio de creación", compendiumTitle: "compendio", builderTitle: "creador de personajes", builderTab: "Armas", pickerTitle: "Seleccionar Clases", legacyClass: "Clase", defaultName: "Nuevo Héroe" },
 ];
 
 async function main() {
@@ -37,6 +37,8 @@ async function main() {
       await page.goto(`${baseUrl}/#/builder`, { waitUntil: "domcontentloaded", timeout: 30000 });
       await page.waitForSelector("#legacy-builder-root:not([hidden])", { timeout: 30000 });
       await page.waitForTimeout(450);
+      await page.evaluate(() => window.app.createNewCharacter());
+      check("nome padrão localizado", await page.locator("#charName").inputValue() === locale.defaultName);
       check("título do construtor", (await page.title()).toLowerCase().includes(locale.builderTitle));
       check("aba de armas traduzida", await page.locator("#tab-button-weapons").innerText() === locale.builderTab);
       check("rótulo de classe traduzido", (await page.locator("#planTreeCol").innerText()).includes(locale.legacyClass));

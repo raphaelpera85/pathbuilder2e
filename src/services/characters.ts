@@ -335,8 +335,14 @@ export async function saveCharacter(
         return saved;
       }
       if (error) console.warn("Supabase upsert aviso:", error.message);
+      throw error || new Error("O Supabase não retornou a ficha salva.");
     } catch (err) {
-      console.warn("Supabase save fallback para local:", err);
+      // Com o backend configurado, uma falha remota precisa chegar à UI para
+      // que o autosave mantenha o snapshot pendente e tente novamente. Gravar
+      // apenas localmente aqui faria a UI remover a pendência sem garantir a
+      // fonte de verdade do catálogo de personagens.
+      console.warn("Falha ao salvar personagem no Supabase:", err);
+      throw err instanceof Error ? err : new Error("Falha ao salvar a ficha no Supabase.");
     }
   }
 

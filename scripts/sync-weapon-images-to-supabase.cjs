@@ -23,8 +23,17 @@ const url = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL;
 const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
 if (!url || !key) throw new Error("VITE_SUPABASE_URL e SUPABASE_SERVICE_ROLE_KEY são obrigatórios.");
 
-const supabase = createClient(url, key);
+const fetchWithTimeout = (input, init = {}) => {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 15000);
+  return fetch(input, { ...init, signal: controller.signal }).finally(() => clearTimeout(timer));
+};
+const supabase = createClient(url, key, { global: { fetch: fetchWithTimeout } });
 const bucket = "compendium-assets";
+const imageMetadata = {
+  imageSource: "local-project-asset",
+  imageLicense: "project-generated-art",
+};
 const imageDir = path.join(root, "public", "weapon-images");
 const catalogPath = path.join(__dirname, "catalog_data", "catalog_weapons.json");
 const specialVisualFiles = {
@@ -83,7 +92,7 @@ async function run() {
     const publicUrl = preferredFile ? publicUrls.get(`/weapon-images/${preferredFile}`) : undefined;
     if (!publicUrl) return row;
     changed += 1;
-    return { ...row, data: { ...(row.data || {}), imageUrl: publicUrl } };
+    return { ...row, data: { ...(row.data || {}), imageUrl: publicUrl, ...imageMetadata } };
   });
   fs.writeFileSync(catalogPath, `${JSON.stringify(updatedRows, null, 2)}\n`);
 

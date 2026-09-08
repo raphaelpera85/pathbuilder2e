@@ -7622,9 +7622,10 @@ class PathbuilderApp {
   }
 
   createNewCharacter() {
+    const locale = this.getLocale();
     this.character = {
       id: "char_" + Date.now(),
-      name: "Novo Herói",
+      name: locale === "en" ? "New Hero" : locale === "es" ? "Nuevo Héroe" : "Novo Herói",
       level: 1,
       ruleset: "remaster",
       ancestry: "Humano",

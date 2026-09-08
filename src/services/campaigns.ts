@@ -71,6 +71,54 @@ function saveLocalCampaigns(gmId: string, items: Campaign[]): void {
   }
 }
 
+function getPendingCampaignsKey(gmId: string): string {
+  return `pf2e_gm_${gmId}_pending_campaigns_v1`;
+}
+
+function getPendingCampaigns(gmId: string): Campaign[] {
+  try {
+    const raw = localStorage.getItem(getPendingCampaignsKey(gmId));
+    const parsed = raw ? JSON.parse(raw) : [];
+    return Array.isArray(parsed) ? parsed.filter((item): item is Campaign => Boolean(item && typeof item === "object" && typeof item.id === "string")) : [];
+  } catch {
+    return [];
+  }
+}
+
+function savePendingCampaigns(gmId: string, items: Campaign[]): void {
+  try {
+    if (items.length) localStorage.setItem(getPendingCampaignsKey(gmId), JSON.stringify(items));
+    else localStorage.removeItem(getPendingCampaignsKey(gmId));
+  } catch (err) {
+    console.warn("Não foi possível guardar a fila pendente de campanhas:", err);
+  }
+}
+
+function queuePendingCampaign(gmId: string, campaign: Campaign): void {
+  const pending = getPendingCampaigns(gmId).filter((item) => item.id !== campaign.id);
+  savePendingCampaigns(gmId, [campaign, ...pending]);
+}
+
+async function flushPendingCampaigns(activeUser: UserProfile): Promise<void> {
+  if (!isSupabaseConfigured || !supabase) return;
+  const pending = getPendingCampaigns(activeUser.id);
+  if (!pending.length) return;
+  const remaining: Campaign[] = [];
+  for (const campaign of pending) {
+    try {
+      const { data, error } = await withRequestTimeout(supabase
+        .from("campaigns")
+        .upsert({ ...campaign, gm_id: activeUser.id }, { onConflict: "id" })
+        .select()
+        .single(), 8_000, "A sincronização da campanha pendente demorou para responder.");
+      if (error || !data) remaining.push(campaign);
+    } catch {
+      remaining.push(campaign);
+    }
+  }
+  savePendingCampaigns(activeUser.id, remaining);
+}
+
 function normalizeCampaignSystem(value: string | undefined): string {
   const normalized = String(value || "").toLowerCase();
   if (normalized.includes("custom") || normalized.includes("variant") || normalized.includes("variante")) return "custom";
@@ -105,6 +153,7 @@ export async function listCampaignsWithStatus(currentUser?: UserProfile): Promis
 
   if (isSupabaseConfigured && supabase) {
     try {
+      await flushPendingCampaigns(activeUser);
       const { data, error } = await withRequestTimeout(supabase
         .from("campaigns")
         .select("*")
@@ -181,10 +230,11 @@ export async function saveCampaignWithStatus(
         const saved = result as Campaign;
         const existing = getLocalCampaigns(activeUser.id).filter((campaign) => campaign.id !== saved.id);
         saveLocalCampaigns(activeUser.id, [saved, ...existing]);
+        savePendingCampaigns(activeUser.id, getPendingCampaigns(activeUser.id).filter((campaign) => campaign.id !== saved.id));
         return { data: saved, source: "supabase" };
       }
     } catch (err) {
-      console.warn("Falha ao salvar no Supabase, usando armazenamento local:", err);
+      console.warn("Falha ao salvar no Supabase, campanha adicionada à fila de sincronização:", err);
     }
   }
 
@@ -196,6 +246,7 @@ export async function saveCampaignWithStatus(
     existing.unshift(campaignRecord);
   }
   saveLocalCampaigns(activeUser.id, existing);
+  if (isSupabaseConfigured && supabase) queuePendingCampaign(activeUser.id, campaignRecord);
 
   return {
     data: campaignRecord,

@@ -808,8 +808,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-ammunition.png",
-      "imageFamily": "ammunition"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
+      "imageFamily": "adventurer-pack"
     }
   },
   {
@@ -6200,8 +6200,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-armor.png",
-      "imageFamily": "armor"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-rune.png",
+      "imageFamily": "rune"
     }
   },
   {
@@ -7025,8 +7025,8 @@
         "extraHealing": "quem comer recupera 30 PV e pode tentar novo salvamento contra um veneno ou doença"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-poison.png",
-      "imageFamily": "poison"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-potion.png",
+      "imageFamily": "potion"
     }
   },
   {
@@ -7293,8 +7293,8 @@
         "variants": "greater: +2 greater striking, +1d6 veneno, 1/hora, CD 31"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-poison.png",
-      "imageFamily": "poison"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-spear.png",
+      "imageFamily": "spear"
     }
   },
   {
@@ -7423,8 +7423,8 @@
         "variants": "menor 1d8 veneno + 1 splash; moderada 2d8 + 2 splash e +1 ataque; maior 3d8 + 3 splash e +2; major 4d8 + 4 splash e +3"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-poison.png",
-      "imageFamily": "poison"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-bomb.png",
+      "imageFamily": "bomb"
     }
   },
   {
@@ -7487,8 +7487,8 @@
         "greater": "variante maior lança veil na tripulação, altera roupas e pode fazer todos parecerem da mesma ancestralidade escolhida"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-bow.png",
-      "imageFamily": "bow"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
+      "imageFamily": "adventurer-pack"
     }
   },
   {
@@ -7518,8 +7518,8 @@
         "effect": "queda 9 metros mais curta e plana até espaço a até 6 metros do ponto de aterrissagem"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-ammunition.png",
-      "imageFamily": "ammunition"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
+      "imageFamily": "adventurer-pack"
     }
   },
   {
@@ -7579,8 +7579,8 @@
         "exhale": "1 ação; cone de 4,5 metros; 10d6 veneno; Reflexos básico CD 29"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-poison.png",
-      "imageFamily": "poison"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-potion.png",
+      "imageFamily": "potion"
     }
   },
   {
@@ -8141,8 +8141,8 @@
         "healing": "8d8 PV; resistências terminam"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-poison.png",
-      "imageFamily": "poison"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-potion.png",
+      "imageFamily": "potion"
     }
   },
   {
@@ -8333,8 +8333,8 @@
         "immunity": "1 hora"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-poison.png",
-      "imageFamily": "poison"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
+      "imageFamily": "adventurer-pack"
     }
   },
   {
@@ -8995,8 +8995,8 @@
         "spells": "detect metal; conductive weapon; shielded arm; magnetic attraction/repulsion; variantes incluem magnetic acceleration, noxious metals, mercurial stride, rust cloud, field of razors e impaling spike"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-armor.png",
-      "imageFamily": "armor"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-staff.png",
+      "imageFamily": "staff"
     }
   },
   {

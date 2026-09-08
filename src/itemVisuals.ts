@@ -18,7 +18,15 @@ function itemIdentity(data: ItemVisualData = {}): string {
 
 export function getItemVisualKey(data: ItemVisualData = {}): string {
   const identity = itemIdentity(data);
-  if (/^10 balas$|^10 bullets$/.test((data.name || "").trim().toLocaleLowerCase("pt-BR"))) return "bullets";
+  const name = (data.name || "").trim().toLocaleLowerCase("pt-BR");
+  if (/^10 balas$|^10 bullets$/.test(name)) return "bullets";
+  if (/^bandoleira do saque da sorte$|^manto a[eé]reo$|^figura de proa velada$/.test(name)) return "adventurer-pack";
+  if (/^ervilhas estalantes terap[eê]uticas$|^sopro da praga$|^azul de sairazul$/.test(name)) return "potion";
+  if (/^lan[cç]a peixe-le[aã]o$/.test(name)) return "spear";
+  if (/^bomba de algas pegajosas$/.test(name)) return "bomb";
+  if (/^tur[ií]bulo queima-sangue$/.test(name)) return "adventurer-pack";
+  if (/^bast[aã]o de metal$|^bengala serpente de prata$/.test(name)) return "staff";
+  if (/^runa de pot[eê]ncia de armadura/.test(name)) return "rune";
   if (/flecha|virote|muni[cç][aã]o|ammunition|cartucho|proj[eé]til|bala|disparo/.test(identity)) return "ammunition";
   if (/escudo|shield|baluarte/.test(identity)) return "shield";
   if (/armadura|armor|cota|coura[cç]a|placa peitoral|vestes|roupa de explorador/.test(identity)) return "armor";

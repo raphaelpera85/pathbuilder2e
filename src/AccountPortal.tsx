@@ -321,7 +321,24 @@ export function AccountPortal() {
         scheduleAutoSave(activeSession);
       });
     };
+    const retryPendingWhenOnline = () => {
+      if (!session || autoSaveInFlightRef.current) return;
+      let queuedCharacter: Record<string, unknown> | undefined;
+      try {
+        const pending = localStorage.getItem(`pf2e_pending_cloud_save_${session.user.id}`);
+        if (pending) queuedCharacter = JSON.parse(pending);
+      } catch {
+        queuedCharacter = undefined;
+      }
+      if (!queuedCharacter) return;
+      if (autoSaveRetryTimerRef.current) {
+        window.clearTimeout(autoSaveRetryTimerRef.current);
+        autoSaveRetryTimerRef.current = null;
+      }
+      void saveCurrent(session, true, queuedCharacter);
+    };
     window.addEventListener("pathbuilder:character-changed", autoSaveFromBuilder);
+    window.addEventListener("online", retryPendingWhenOnline);
     if (session) {
       try {
         const pending = localStorage.getItem(`pf2e_pending_cloud_save_${session.user.id}`);
@@ -338,6 +355,7 @@ export function AccountPortal() {
     return () => {
       window.removeEventListener("pathbuilder:save-account-character", saveFromBuilder);
       window.removeEventListener("pathbuilder:character-changed", autoSaveFromBuilder);
+      window.removeEventListener("online", retryPendingWhenOnline);
       if (autoSaveTimerRef.current) window.clearTimeout(autoSaveTimerRef.current);
       if (autoSaveRetryTimerRef.current) window.clearTimeout(autoSaveRetryTimerRef.current);
     };

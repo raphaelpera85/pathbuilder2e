@@ -9,6 +9,7 @@
     "test": "vitest run",
     "audit:catalog": "node scripts/audit-catalog.cjs",
     "audit:catalog:provenance": "node scripts/audit-catalog.cjs --strict-provenance",
+    "audit:catalog:supabase": "node scripts/audit-catalog-supabase-reconciliation.cjs",
     "audit:books": "node scripts/audit-books.cjs"
   },
   "dependencies": {

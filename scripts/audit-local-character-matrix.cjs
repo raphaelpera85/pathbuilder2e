@@ -54,9 +54,9 @@ async function main() {
     }
   }
 
-  async function chooseFirstFeat() {
+  async function chooseFirstFeat(level = 1) {
     console.log("choose feat: primeira opção de classe");
-    const dialog = await openPicker("feat", { filterType: "Classe", slotId: "1_class_feat", level: 1 });
+    const dialog = await openPicker("feat", { filterType: "Classe", slotId: `${level}_class_feat`, level });
     const item = dialog.locator(".picker-item.available").first();
     await item.waitFor({ state: "visible", timeout: 5000 });
     const name = await item.locator(".picker-item-name").innerText();
@@ -121,6 +121,21 @@ async function main() {
     check(`${scenario.id}: talento refletido`, Boolean(state.character.feats?.length) || /talento/i.test(state.sheet));
     check(`${scenario.id}: arma e dano refletidos`, state.weapons.includes(scenario.weapon) && /d\d+/.test(state.weapons));
     check(`${scenario.id}: round-trip JSON`, exported.ancestry === scenario.ancestry && String(exported.class).includes(scenario.className) && exported.weapons?.some(item => String(item.name).includes(scenario.weapon)));
+
+    if (scenario === scenarios[0]) {
+      await page.evaluate(() => window.app.updateLevel(5));
+      await page.waitForTimeout(160);
+      const progressed = await page.evaluate(() => ({
+        level: window.app.getCurrentCharacter().level,
+        field: document.querySelector("#charLevel")?.value,
+        maxHp: window.app.calc?.maxHp,
+      }));
+      check(`${scenario.id}: nível 5 refletido após progressão`, progressed.level === 5 && String(progressed.field) === "5");
+      check(`${scenario.id}: valor derivado recalculado`, Number(progressed.maxHp) > 0);
+      await chooseFirstFeat(2);
+      const levelTwoFeat = await page.evaluate(() => window.app.getCurrentCharacter().feats?.some((feat) => Number(feat.level) === 2));
+      check(`${scenario.id}: talento de nível 2 persistido`, Boolean(levelTwoFeat));
+    }
   }
 
   console.log(JSON.stringify({ scenarios: scenarios.length, checks: checks.length, passed: checks.filter(item => item.pass).length, failures }, null, 2));
