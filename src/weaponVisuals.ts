@@ -49,6 +49,10 @@ export function getWeaponVisualKey(data: WeaponVisualData = {}): string {
   if (/azagaia|javelin/.test(identity)) return "javelin";
   if (/adaga de duelo|main gauche/.test(identity)) return "main-gauche";
   if (/rasgador de kith|kithrender/.test(identity)) return "kithrender";
+  if (/espada larga|broadsword/.test(identity)) return "broadsword";
+  if (/bracamante|falchion/.test(identity)) return "falchion";
+  if (/montante|greatsword/.test(identity)) return "greatsword";
+  if (/cimitarra|scimitar/.test(identity)) return "scimitar";
   if (/rapieira|rapier/.test(identity)) return "rapier";
   if (/machado de batalha|battle axe/.test(identity)) return "battle-axe";
   if (/lan[cç]a de cavalaria|cavalry lance/.test(identity)) return "cavalry-lance";

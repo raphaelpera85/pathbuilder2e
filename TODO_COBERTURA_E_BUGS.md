@@ -1240,3 +1240,4 @@ Persistência remota autenticada de personagens (2026-09-08): `npm run audit:cam
 - [x] Criar e sincronizar artes individuais para Zarabatana, Arco Curto, Daikyu e Arco Longo do Senhor dos Cavalos, usando o nome completo de cada arma.
 - [x] Criar e sincronizar arte individual para Arco Curto Deslumbrante, corrigindo a lacuna encontrada na auditoria.
 - [x] Criar e sincronizar artes individuais para Dardo, Azagaia, Adaga de Duelo e Rasgador de Kith, usando o nome completo de cada arma.
+- [x] Criar e sincronizar artes individuais para Espada Larga, Bracamante, Montante e Cimitarra, usando o nome completo de cada arma.

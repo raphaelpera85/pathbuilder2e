@@ -607,7 +607,7 @@
     "source_page": 279,
     "data": {
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-sword.png",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-broadsword.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -809,7 +809,7 @@
     "source_page": 279,
     "data": {
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-sword.png",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-falchion.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -1007,7 +1007,7 @@
     "source_page": 279,
     "data": {
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-sword.png",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-greatsword.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -1607,7 +1607,7 @@
     "source_page": 279,
     "data": {
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-sword.png",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-scimitar.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
