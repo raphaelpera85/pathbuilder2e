@@ -34,14 +34,28 @@ async function main() {
         await page.setViewportSize({ width: viewport.width, height: viewport.height });
         for (const surface of surfaces) {
           await page.goto(`${baseUrl}/#/${surface}`, { waitUntil: "domcontentloaded", timeout: 30000 });
-          await page.waitForFunction(() => !document.body.innerText.includes("Carregando o catálogo do Supabase") && !document.body.innerText.includes("Loading catalog from Supabase"), null, { timeout: 20000 }).catch(() => {});
+          if (surface === "compendium") {
+            // Wait for the localized catalog state instead of matching one
+            // hard-coded loading sentence. The English copy changed to
+            // "Loading the Supabase catalog…", which previously allowed a
+            // loading screenshot to be accepted as a visual result.
+            await page.waitForFunction(() => {
+              const loading = document.querySelector('[role="status"]');
+              const catalog = document.querySelector(".catalog-grid .catalog-card");
+              const empty = document.querySelector(".portal-empty");
+              const alert = document.querySelector('[role="alert"]');
+              return Boolean(catalog || alert || (empty && !loading));
+            }, null, { timeout: 30000 });
+          }
           await page.waitForTimeout(250);
           const safeSurface = surface.replace(/[^a-z0-9-]/gi, "-");
           const path = `${outputDir}\\${locale}-${safeSurface}-${viewport.name}.png`;
           // The catalog can be thousands of pixels tall; viewport captures are
           // deterministic and pair with audit-local-responsive's full-page metrics.
           await page.screenshot({ path, fullPage: false, timeout: 60000 });
-          report.push({ locale, surface, viewport: viewport.name, path, title: await page.title(), bodyText: (await page.locator("body").innerText()).slice(0, 220) });
+          const catalogReady = surface !== "compendium" || await page.locator(".catalog-grid .catalog-card").count() > 0 || await page.locator('[role="alert"]').count() > 0;
+          if (!catalogReady) throw new Error(`Compendium did not reach a terminal catalog state for ${locale} at ${viewport.name}`);
+          report.push({ locale, surface, viewport: viewport.name, path, catalogReady, title: await page.title(), bodyText: (await page.locator("body").innerText()).slice(0, 220) });
         }
       }
       await context.close();
