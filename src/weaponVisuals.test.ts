@@ -37,8 +37,15 @@ describe("weapon visual fallback", () => {
     expect(getWeaponVisualKey({ name: "Pimenteiro", weaponGroup: "Firearm" })).toBe("pepperbox");
   });
 
+  it("separa armas marciais nomeadas da arte genérica da categoria", () => {
+    expect(getWeaponVisualKey({ name: "Rapieira", weaponGroup: "Sword" })).toBe("rapier");
+    expect(getWeaponVisualKey({ name: "Machado de Batalha", weaponGroup: "Axe" })).toBe("battle-axe");
+    expect(getWeaponVisualKey({ name: "Lança de Cavalaria", weaponGroup: "Spear" })).toBe("cavalry-lance");
+    expect(getWeaponVisualKey({ name: "Arco Longo", weaponGroup: "Bow" })).toBe("longbow");
+  });
+
   it("keeps every local fallback asset available to the browser", () => {
-    for (const key of ["generic", "sword", "bow", "axe", "club", "dagger", "punch-dagger", "orc-knuckle-dagger", "punching-dagger", "crossbow", "spear", "firearm", "flintlock-pistol", "flintlock-musket", "blunderbuss", "pepperbox", "mace", "staff", "whip", "sling", "gauntlet", "bomb", "shield", "lute", "halberd", "trident", "shuriken", "flail"]) {
+    for (const key of ["generic", "sword", "bow", "axe", "club", "dagger", "punch-dagger", "orc-knuckle-dagger", "punching-dagger", "crossbow", "spear", "firearm", "flintlock-pistol", "flintlock-musket", "blunderbuss", "pepperbox", "rapier", "battle-axe", "cavalry-lance", "longbow", "mace", "staff", "whip", "sling", "gauntlet", "bomb", "shield", "lute", "halberd", "trident", "shuriken", "flail"]) {
       expect(existsSync(resolve(process.cwd(), "public", "weapon-images", `weapon-${key}.${key === "generic" ? "svg" : "png"}`))).toBe(true);
     }
   });

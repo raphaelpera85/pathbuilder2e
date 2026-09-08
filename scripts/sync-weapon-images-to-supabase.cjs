@@ -37,6 +37,10 @@ const imageMetadata = {
 const imageDir = path.join(root, "public", "weapon-images");
 const catalogPath = path.join(__dirname, "catalog_data", "catalog_weapons.json");
 const specialVisualFiles = {
+  "weapon.rapier": "weapon-rapier.png",
+  "weapon.battle_axe": "weapon-battle-axe.png",
+  "weapon.lance": "weapon-cavalry-lance.png",
+  "weapon.longbow": "weapon-longbow.png",
   "weapon.flintlock_pistol": "weapon-flintlock-pistol.png",
   "weapon.flintlock_musket": "weapon-flintlock-musket.png",
   "weapon.blunderbuss": "weapon-blunderbuss.png",
