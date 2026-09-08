@@ -1074,8 +1074,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-snipers-saddle.png",
+      "imageFamily": "snipers-saddle",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -1104,8 +1104,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-immovable-tripod.png",
+      "imageFamily": "immovable-tripod",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -2801,8 +2801,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-hodag-leather.png",
+      "imageFamily": "hodag-leather",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -2829,8 +2829,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-mamlambo-scale.png",
+      "imageFamily": "mamlambo-scale",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
