@@ -44,6 +44,10 @@ function visualKey(row) {
   if (row.id === "item.compendium.acid_flask_lesser" || /^frasco de [aá]cido \(inferior\)$/.test(name)) return "lesser-acid-flask";
   if (row.id === "item.compendium.frost_vial_lesser" || /^vial de frio \(inferior\)$/.test(name)) return "lesser-frost-vial";
   if (row.id === "item.compendium.bottled_lightning_lesser" || /^rel[aâ]mpago engarrafado \(inferior\)$/.test(name)) return "lesser-bottled-lightning";
+  if (row.id === "item.guns_gears.ammunition.glue_bullet" || /^bala de cola$/.test(name)) return "glue-bullet";
+  if (row.id === "item.guns_gears.ammunition.erosion_bullet" || /^bala da eros[aã]o$/.test(name)) return "erosion-bullet";
+  if (row.id === "item.guns_gears.ammunition.faerie_bullet" || /^bala fe[eé]rica$/.test(name)) return "faerie-bullet";
+  if (row.id === "item.guns_gears.ammunition.reliable_cartridge" || /^cartucho confi[aá]vel$/.test(name)) return "reliable-cartridge";
   if (/^10 balas$|^10 bullets$/.test(name)) return "bullets";
   if (/^bandoleira do saque da sorte$|^manto a[eé]reo$|^figura de proa velada$/.test(name)) return "adventurer-pack";
   if (/^ervilhas estalantes terap[eê]uticas$|^sopro da praga$|^azul de sairazul$/.test(name)) return "potion";

@@ -1251,3 +1251,4 @@ Persistência remota autenticada de personagens (2026-09-08): `npm run audit:cam
 - [x] Criar e sincronizar artes individuais para Mochila de Aventureiro, Kit de Primeiros Socorros, Ferramentas de Ladrão e Botas Élficas, usando ID e nome completo do item.
 - [x] Criar e sincronizar artes individuais para Poção de Cura Menor, Poção de Cura Inferior, Antipeste Inferior e Antídoto Menor, usando ID e nome completo do item.
 - [x] Criar e sincronizar artes individuais para Fogo Alquímico Inferior, Frasco de Ácido Inferior, Vial de Frio Inferior e Relâmpago Engarrafado Inferior, usando ID e nome completo do item.
+- [x] Criar e sincronizar artes individuais para Bala de Cola, Bala da Erosão, Bala Feérica e Cartucho Confiável, usando ID e nome completo do item.

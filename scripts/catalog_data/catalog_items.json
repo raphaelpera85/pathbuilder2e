@@ -2060,8 +2060,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-ammunition.png",
-      "imageFamily": "ammunition",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-glue-bullet.png",
+      "imageFamily": "glue-bullet",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -2091,8 +2091,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-ammunition.png",
-      "imageFamily": "ammunition",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-erosion-bullet.png",
+      "imageFamily": "erosion-bullet",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -2122,8 +2122,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-ammunition.png",
-      "imageFamily": "ammunition",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-faerie-bullet.png",
+      "imageFamily": "faerie-bullet",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -2153,8 +2153,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-ammunition.png",
-      "imageFamily": "ammunition",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-reliable-cartridge.png",
+      "imageFamily": "reliable-cartridge",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
