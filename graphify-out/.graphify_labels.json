@@ -1,7 +1,7 @@
 {
   "0": "pf2e_data.js",
   "1": "PathbuilderApp",
-  "2": "characters.ts",
+  "2": "PortalPages.tsx",
   "3": ".renderAll",
   "4": "js/pdf-lib.min.js",
   "5": "public/js/pdf-lib.min.js",
@@ -117,7 +117,7 @@
   "115": "audit-playwright-multicharacter.cjs",
   "116": ".openSetAbilitiesModal",
   "117": "package.json",
-  "118": "PortalPages.test.tsx",
+  "118": "sources.ts",
   "119": "rules/graphify.md",
   "120": "workflows/graphify.md",
   "121": "GEMINI.md",
@@ -165,8 +165,14 @@
   "163": "security-rls-performance.md",
   "164": "_template.md",
   "165": "weaponVisuals.ts",
+  "166": "catalog.ts",
   "167": "rest-character.test.ts",
-  "168": "PortalPages.tsx",
+  "168": "sync-item-images-to-supabase.cjs",
   "169": "capture-local-responsive.cjs",
-  "170": "audit-local-locale-usage.cjs"
+  "170": "audit-local-locale-usage.cjs",
+  "171": "IPickerController",
+  "172": "PortalPages.test.tsx",
+  "173": "itemVisuals.ts",
+  "174": "IPickerBridge",
+  "175": "PickerItem"
 }
