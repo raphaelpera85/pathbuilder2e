@@ -4,8 +4,9 @@ const fs = require("node:fs");
 const baseUrl = process.env.PF2E_BASE_URL || "http://127.0.0.1:5173";
 const chromePath = process.env.CHROME_PATH || "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
 const locales = [
-  { id: "en", compendiumHeading: "Character creation compendium", builderTab: "Weapons", pickerTitle: "Select Classes", legacyClass: "Class" },
-  { id: "es", compendiumHeading: "Compendio de creación", builderTab: "Armas", pickerTitle: "Seleccionar Clases", legacyClass: "Clase" },
+  { id: "pt-BR", browserLocale: "pt-BR", compendiumHeading: "Compêndio de criação", compendiumTitle: "compêndio", builderTitle: "construtor de personagens", builderTab: "Armas", pickerTitle: "Selecionar Classes", legacyClass: "Classe" },
+  { id: "en", browserLocale: "en-US", compendiumHeading: "Character creation compendium", compendiumTitle: "compendium", builderTitle: "character builder", builderTab: "Weapons", pickerTitle: "Select Classes", legacyClass: "Class" },
+  { id: "es", browserLocale: "es-ES", compendiumHeading: "Compendio de creación", compendiumTitle: "compendio", builderTitle: "creador de personajes", builderTab: "Armas", pickerTitle: "Seleccionar Clases", legacyClass: "Clase" },
 ];
 
 async function main() {
@@ -16,7 +17,7 @@ async function main() {
   const failures = [];
   try {
     for (const locale of locales) {
-      const context = await browser.newContext({ locale: locale.id === "en" ? "en-US" : "es-ES" });
+      const context = await browser.newContext({ locale: locale.browserLocale });
       await context.addInitScript((value) => localStorage.setItem("pathbuilder.locale", value), locale.id);
       const page = await context.newPage({ viewport: { width: 1280, height: 800 } });
       const checks = [];
@@ -28,7 +29,7 @@ async function main() {
       await page.waitForSelector(".portal-catalog-page", { timeout: 30000 });
       await page.waitForTimeout(900);
       check("idioma do documento", await page.locator("html").getAttribute("lang") === locale.id);
-      check("título do compêndio", (await page.title()).toLowerCase().includes(locale.id === "en" ? "compendium" : "compendio"));
+      check("título do compêndio", (await page.title()).toLowerCase().includes(locale.compendiumTitle));
       const headings = await page.locator("h1").allTextContents();
       check("cabeçalho do compêndio", headings.some(text => text.trim() === locale.compendiumHeading));
       check("sem kit inicial no catálogo", !(await page.locator("body").innerText()).includes(locale.id === "en" ? "Starter Kit" : "Kit Inicial"));
@@ -36,9 +37,11 @@ async function main() {
       await page.goto(`${baseUrl}/#/builder`, { waitUntil: "domcontentloaded", timeout: 30000 });
       await page.waitForSelector("#legacy-builder-root:not([hidden])", { timeout: 30000 });
       await page.waitForTimeout(450);
-      check("título do construtor", (await page.title()).toLowerCase().includes(locale.id === "en" ? "character builder" : "creador de personajes"));
+      check("título do construtor", (await page.title()).toLowerCase().includes(locale.builderTitle));
       check("aba de armas traduzida", await page.locator("#tab-button-weapons").innerText() === locale.builderTab);
       check("rótulo de classe traduzido", (await page.locator("#planTreeCol").innerText()).includes(locale.legacyClass));
+      const builderText = await page.locator("#planTreeCol").innerText();
+      check("classe sem kit inicial no Builder", !builderText.includes(locale.id === "en" ? "Starter Kit" : "Kit Inicial"));
       await page.evaluate(() => window.app.openPicker("class"));
       const picker = page.locator(".picker-dialog");
       await picker.waitFor({ state: "visible" });

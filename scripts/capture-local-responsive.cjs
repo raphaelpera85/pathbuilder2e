@@ -6,25 +6,33 @@ const outputDir = process.env.PF2E_SCREENSHOT_DIR || "C:\\Users\\rapha\\.codex\\
 const chromePath = process.env.CHROME_PATH || "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
 const surfaces = ["compendium", "builder", "rules", "downloads", "library", "campaigns"];
 const viewports = [{ name: "mobile", width: 375, height: 667 }, { name: "desktop", width: 1440, height: 900 }];
+const locales = ["pt-BR", "en", "es"];
 
 async function main() {
   fs.mkdirSync(outputDir, { recursive: true });
   const launchOptions = { headless: true };
   if (fs.existsSync(chromePath)) launchOptions.executablePath = chromePath;
   const browser = await chromium.launch(launchOptions);
-  const page = await browser.newPage();
   const report = [];
   try {
-    for (const viewport of viewports) {
-      await page.setViewportSize({ width: viewport.width, height: viewport.height });
-      for (const surface of surfaces) {
-        await page.goto(`${baseUrl}/#/${surface}`, { waitUntil: "domcontentloaded", timeout: 30000 });
-        await page.waitForTimeout(1200);
-        const safeSurface = surface.replace(/[^a-z0-9-]/gi, "-");
-        const path = `${outputDir}\\${safeSurface}-${viewport.name}.png`;
-        await page.screenshot({ path, fullPage: true });
-        report.push({ surface, viewport: viewport.name, path, title: await page.title(), bodyText: (await page.locator("body").innerText()).slice(0, 220) });
+    for (const locale of locales) {
+      const context = await browser.newContext();
+      await context.addInitScript((value) => localStorage.setItem("pathbuilder.locale", value), locale);
+      const page = await context.newPage();
+      for (const viewport of viewports) {
+        await page.setViewportSize({ width: viewport.width, height: viewport.height });
+        for (const surface of surfaces) {
+          await page.goto(`${baseUrl}/#/${surface}`, { waitUntil: "domcontentloaded", timeout: 30000 });
+          await page.waitForTimeout(1200);
+          const safeSurface = surface.replace(/[^a-z0-9-]/gi, "-");
+          const path = `${outputDir}\\${locale}-${safeSurface}-${viewport.name}.png`;
+          // The catalog can be thousands of pixels tall; viewport captures are
+          // deterministic and pair with audit-local-responsive's full-page metrics.
+          await page.screenshot({ path, fullPage: false, timeout: 60000 });
+          report.push({ locale, surface, viewport: viewport.name, path, title: await page.title(), bodyText: (await page.locator("body").innerText()).slice(0, 220) });
+        }
       }
+      await context.close();
     }
   } finally {
     await browser.close();

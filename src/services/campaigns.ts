@@ -110,7 +110,11 @@ export async function listCampaignsWithStatus(currentUser?: UserProfile): Promis
         .select("*")
         .eq("gm_id", activeUser.id)
         .order("updated_at", { ascending: false }), 8_000, "As campanhas demoraram para responder. Exibindo os dados disponíveis neste dispositivo.");
-      if (!error && data) return { data: mergeCampaignLists(data as Campaign[], getLocalCampaigns(activeUser.id)), source: "supabase" };
+      if (!error && data) {
+        const merged = mergeCampaignLists(data as Campaign[], getLocalCampaigns(activeUser.id));
+        saveLocalCampaigns(activeUser.id, merged);
+        return { data: merged, source: "supabase" };
+      }
       if (error) {
         return { data: mergeCampaignLists([], getLocalCampaigns(activeUser.id)), source: "local", error: "Não foi possível sincronizar as campanhas com a nuvem." };
       }
@@ -173,7 +177,12 @@ export async function saveCampaignWithStatus(
         .upsert(campaignRecord, { onConflict: "id" })
         .select()
         .single(), 8_000, "O salvamento da campanha demorou para responder. A campanha será mantida neste dispositivo.");
-      if (!error && result) return { data: result as Campaign, source: "supabase" };
+      if (!error && result) {
+        const saved = result as Campaign;
+        const existing = getLocalCampaigns(activeUser.id).filter((campaign) => campaign.id !== saved.id);
+        saveLocalCampaigns(activeUser.id, [saved, ...existing]);
+        return { data: saved, source: "supabase" };
+      }
     } catch (err) {
       console.warn("Falha ao salvar no Supabase, usando armazenamento local:", err);
     }
@@ -204,6 +213,7 @@ export async function deleteCampaignWithStatus(campaignId: string, currentUser?:
   }
 
   let cloudError = false;
+  let cloudDeleted = false;
   if (isSupabaseConfigured && supabase) {
     try {
       const { error } = await withRequestTimeout(
@@ -212,6 +222,7 @@ export async function deleteCampaignWithStatus(campaignId: string, currentUser?:
         "A exclusão da campanha demorou para responder. A campanha será removida deste dispositivo.",
       );
       cloudError = Boolean(error);
+      cloudDeleted = !cloudError;
     } catch (err) {
       console.warn("Erro ao deletar no Supabase:", err);
       cloudError = true;
@@ -221,7 +232,7 @@ export async function deleteCampaignWithStatus(campaignId: string, currentUser?:
   const existing = getLocalCampaigns(activeUser.id);
   const filtered = existing.filter((c) => c.id !== campaignId);
   saveLocalCampaigns(activeUser.id, filtered);
-  return { data: null, source: "local", error: cloudError ? "A campanha foi excluída neste dispositivo, mas a nuvem não foi atualizada." : undefined };
+  return { data: null, source: cloudDeleted ? "supabase" : "local", error: cloudError ? "A campanha foi excluída neste dispositivo, mas a nuvem não foi atualizada." : undefined };
 }
 
 export async function deleteCampaign(campaignId: string, currentUser?: UserProfile): Promise<void> {

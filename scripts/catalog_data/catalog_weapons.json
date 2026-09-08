@@ -28,7 +28,7 @@
     "source_page": 275,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-axe.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-axe.png"
     }
   },
   {
@@ -59,7 +59,7 @@
     "source_page": 151,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-firearm.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -91,7 +91,7 @@
     "source_page": 275,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-club.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-club.png"
     }
   },
   {
@@ -121,7 +121,7 @@
     "source_page": 281,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-bomb.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-bomb.png"
     }
   },
   {
@@ -152,7 +152,7 @@
     "source_page": 275,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-crossbow.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-crossbow.png"
     }
   },
   {
@@ -184,7 +184,7 @@
     "source_page": 275,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-generic.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-arbalest.png"
     }
   },
   {
@@ -218,7 +218,7 @@
     "source_page": 151,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-firearm.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -251,7 +251,7 @@
     "source_page": 275,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-generic.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-asp-coil.png"
     }
   },
   {
@@ -282,7 +282,7 @@
     "source_page": 275,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-spear.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-spear.png"
     }
   },
   {
@@ -314,7 +314,7 @@
     "source_page": 158,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-firearm.png",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-firearm.png",
       "variantFamily": "weapon.axe_musket",
       "variantRole": "melee",
       "variantOf": "weapon.axe_musket_ranged"
@@ -351,7 +351,7 @@
     "source_page": 158,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-firearm.png",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-firearm.png",
       "variantFamily": "weapon.axe_musket",
       "variantRole": "ranged",
       "variantOf": "weapon.axe_musket_melee"
@@ -386,7 +386,7 @@
     "source_page": 63,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-generic.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-backpack-ballista.png"
     }
   },
   {
@@ -418,7 +418,7 @@
     "source_page": 64,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-generic.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-backpack-catapult.png"
     }
   },
   {
@@ -448,7 +448,7 @@
     "source_page": 279,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-sword.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-sword.png"
     }
   },
   {
@@ -478,7 +478,7 @@
     "source_page": 279,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-axe.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-axe.png"
     }
   },
   {
@@ -510,7 +510,7 @@
     "source_page": 282,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-bow.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-bow.png"
     }
   },
   {
@@ -543,7 +543,7 @@
     "source_page": 279,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-staff.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-staff.png"
     }
   },
   {
@@ -573,7 +573,7 @@
     "source_page": 279,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-sword.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-sword.png"
     }
   },
   {
@@ -603,7 +603,7 @@
     "source_page": 278,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-club.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-club.png"
     }
   },
   {
@@ -634,7 +634,7 @@
     "source_page": 282,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-crossbow.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-crossbow.png"
     }
   },
   {
@@ -667,7 +667,7 @@
     "source_page": 278,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-dagger.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-dagger.png"
     }
   },
   {
@@ -698,7 +698,7 @@
     "source_page": 282,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-dagger.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-dagger.png"
     }
   },
   {
@@ -732,7 +732,7 @@
     "source_page": 151,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-firearm.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -763,7 +763,7 @@
     "source_page": 279,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-sword.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-sword.png"
     }
   },
   {
@@ -795,7 +795,7 @@
     "source_page": 279,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-mace.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-mace.png"
     }
   },
   {
@@ -826,7 +826,7 @@
     "source_page": 278,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-gauntlet.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-gauntlet.png"
     }
   },
   {
@@ -858,7 +858,7 @@
     "source_page": 279,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-spear.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-spear.png"
     }
   },
   {
@@ -888,7 +888,7 @@
     "source_page": 279,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-axe.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-axe.png"
     }
   },
   {
@@ -919,7 +919,7 @@
     "source_page": 279,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-club.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-club.png"
     }
   },
   {
@@ -949,7 +949,7 @@
     "source_page": 279,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-sword.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-sword.png"
     }
   },
   {
@@ -980,7 +980,7 @@
     "source_page": 279,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-spear.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-spear.png"
     }
   },
   {
@@ -1011,7 +1011,7 @@
     "source_page": 282,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-crossbow.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-crossbow.png"
     }
   },
   {
@@ -1042,7 +1042,7 @@
     "source_page": 282,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-crossbow.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-crossbow.png"
     }
   },
   {
@@ -1072,7 +1072,7 @@
     "source_page": 282,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-dagger.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-dagger.png"
     }
   },
   {
@@ -1104,7 +1104,7 @@
     "source_page": 278,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-gauntlet.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-gauntlet.png"
     }
   },
   {
@@ -1136,7 +1136,7 @@
     "source_page": 279,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-dagger.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-dagger.png"
     }
   },
   {
@@ -1167,7 +1167,7 @@
     "source_page": 279,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-spear.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-spear.png"
     }
   },
   {
@@ -1199,7 +1199,7 @@
     "source_page": 282,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-bow.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-bow.png"
     }
   },
   {
@@ -1229,7 +1229,7 @@
     "source_page": 279,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-sword.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-sword.png"
     }
   },
   {
@@ -1263,7 +1263,7 @@
     "source_page": 275,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-dagger.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-dagger.png"
     }
   },
   {
@@ -1293,7 +1293,7 @@
     "source_page": 279,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-mace.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-mace.png"
     }
   },
   {
@@ -1323,7 +1323,7 @@
     "source_page": 278,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-mace.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-mace.png"
     }
   },
   {
@@ -1356,7 +1356,7 @@
     "source_page": 279,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-club.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-club.png"
     }
   },
   {
@@ -1388,7 +1388,7 @@
     "source_page": 279,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-dagger.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-dagger.png"
     }
   },
   {
@@ -1418,7 +1418,7 @@
     "source_page": 279,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-axe.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-axe.png"
     }
   },
   {
@@ -1449,7 +1449,7 @@
     "source_page": 275,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-dagger.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-dagger.png"
     }
   },
   {
@@ -1481,7 +1481,7 @@
     "source_page": 279,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-sword.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-sword.png"
     }
   },
   {
@@ -1513,7 +1513,7 @@
     "source_page": 279,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-sword.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-sword.png"
     }
   },
   {
@@ -1544,7 +1544,7 @@
     "source_page": 279,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-axe.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-axe.png"
     }
   },
   {
@@ -1574,7 +1574,7 @@
     "source_page": 279,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-shield.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-shield.png"
     }
   },
   {
@@ -1604,7 +1604,7 @@
     "source_page": 279,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-shield.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-shield.png"
     }
   },
   {
@@ -1635,7 +1635,7 @@
     "source_page": 282,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-bow.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-bow.png"
     }
   },
   {
@@ -1667,7 +1667,7 @@
     "source_page": 279,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-sword.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-sword.png"
     }
   },
   {
@@ -1700,7 +1700,7 @@
     "source_page": 282,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-dagger.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-dagger.png"
     }
   },
   {
@@ -1732,7 +1732,7 @@
     "source_page": 278,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-axe.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-axe.png"
     }
   },
   {
@@ -1764,7 +1764,7 @@
     "source_page": 282,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-sling.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-sling.png"
     }
   },
   {
@@ -1794,7 +1794,7 @@
     "source_page": 278,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-spear.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-spear.png"
     }
   },
   {
@@ -1824,7 +1824,7 @@
     "source_page": 278,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-staff.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-staff.png"
     }
   },
   {
@@ -1854,7 +1854,7 @@
     "source_page": 279,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-spear.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-spear.png"
     }
   },
   {
@@ -1884,7 +1884,7 @@
     "source_page": 279,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-mace.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-mace.png"
     }
   },
   {
@@ -1918,7 +1918,7 @@
     "source_page": 279,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-whip.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-whip.png"
     }
   },
   {
@@ -1951,7 +1951,7 @@
     "source_page": 278,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-gauntlet.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-gauntlet.png"
     }
   },
   {
@@ -1982,7 +1982,7 @@
     "source_page": 151,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-firearm.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -2012,7 +2012,7 @@
     "source_page": 151,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-firearm.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -2044,7 +2044,7 @@
     "source_page": 151,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-firearm.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -2075,7 +2075,7 @@
     "source_page": 151,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-firearm.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -2105,7 +2105,7 @@
     "source_page": 151,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-firearm.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -2136,7 +2136,7 @@
     "source_page": 151,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-firearm.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -2168,7 +2168,7 @@
     "source_page": 151,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-firearm.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -2201,7 +2201,7 @@
     "source_page": 151,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-firearm.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -2233,7 +2233,7 @@
     "source_page": 151,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-firearm.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -2265,7 +2265,7 @@
     "source_page": 151,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-firearm.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -2297,7 +2297,7 @@
     "source_page": 151,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-firearm.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -2328,7 +2328,7 @@
     "source_page": 151,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-firearm.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -2359,7 +2359,7 @@
     "source_page": 151,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-firearm.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -2390,7 +2390,7 @@
     "source_page": 151,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-firearm.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -2422,7 +2422,7 @@
     "source_page": 151,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-firearm.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -2453,7 +2453,7 @@
     "source_page": 151,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-firearm.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -2486,7 +2486,7 @@
     "source_page": 151,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-firearm.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -2516,7 +2516,7 @@
     "source_page": 275,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-axe.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-axe.png"
     }
   },
   {
@@ -2546,7 +2546,7 @@
     "source_page": 275,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-axe.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-axe.png"
     }
   },
   {
@@ -2581,7 +2581,7 @@
     "source_page": 275,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-gauntlet.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-gauntlet.png"
     }
   },
   {
@@ -2611,7 +2611,7 @@
     "source_page": 275,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-sword.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-sword.png"
     }
   },
   {
@@ -2646,7 +2646,7 @@
     "source_page": 275,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-gauntlet.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-gauntlet.png"
     }
   },
   {
@@ -2679,7 +2679,7 @@
     "source_page": 275,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-sword.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-sword.png"
     }
   },
   {
@@ -2711,7 +2711,7 @@
     "source_page": 275,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-spear.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-spear.png"
     }
   },
   {
@@ -2743,7 +2743,7 @@
     "source_page": 275,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-spear.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-spear.png"
     }
   },
   {
@@ -2776,7 +2776,7 @@
     "source_page": 275,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-whip.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-whip.png"
     }
   },
   {
@@ -2812,7 +2812,7 @@
     "source_page": 275,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-gauntlet.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-gauntlet.png"
     }
   },
   {
@@ -2845,7 +2845,7 @@
     "source_page": 275,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-axe.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-axe.png"
     }
   },
   {
@@ -2878,7 +2878,7 @@
     "source_page": 275,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-spear.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-spear.png"
     }
   },
   {
@@ -2910,7 +2910,7 @@
     "source_page": 275,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-spear.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-spear.png"
     }
   },
   {
@@ -2942,7 +2942,7 @@
     "source_page": 275,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-sling.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-sling.png"
     }
   },
   {
@@ -2973,7 +2973,7 @@
     "source_page": 275,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-bow.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-bow.png"
     }
   },
   {
@@ -3004,7 +3004,7 @@
     "source_page": 118,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-lute.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-lute.png"
     }
   },
   {
@@ -3037,7 +3037,7 @@
     "source_page": 118,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-spear.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-spear.png"
     }
   },
   {
@@ -3068,7 +3068,7 @@
     "source_page": 118,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-club.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-club.png"
     }
   },
   {
@@ -3102,7 +3102,7 @@
     "source_page": 118,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-whip.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-whip.png"
     }
   },
   {
@@ -3135,7 +3135,7 @@
     "source_page": 118,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-gauntlet.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-gauntlet.png"
     }
   },
   {
@@ -3167,7 +3167,7 @@
     "source_page": 118,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-dagger.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-dagger.png"
     }
   },
   {
@@ -3200,7 +3200,7 @@
     "source_page": 118,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-spear.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-spear.png"
     }
   },
   {
@@ -3231,7 +3231,7 @@
     "source_page": 118,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-sword.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-sword.png"
     }
   },
   {
@@ -3264,7 +3264,7 @@
     "source_page": 118,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-sword.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-sword.png"
     }
   },
   {
@@ -3296,7 +3296,7 @@
     "source_page": 118,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-mace.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-mace.png"
     }
   },
   {
@@ -3328,7 +3328,7 @@
     "source_page": 118,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-crossbow.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-crossbow.png"
     }
   },
   {
@@ -3358,7 +3358,7 @@
     "source_page": 118,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-firearm.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -3391,7 +3391,7 @@
     "source_page": 126,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-mace.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-mace.png"
     }
   },
   {
@@ -3423,7 +3423,7 @@
     "source_page": 126,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-spear.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-spear.png"
     }
   },
   {
@@ -3456,7 +3456,7 @@
     "source_page": 126,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-whip.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-whip.png"
     }
   },
   {
@@ -3488,7 +3488,7 @@
     "source_page": 126,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-whip.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-whip.png"
     }
   },
   {
@@ -3520,7 +3520,7 @@
     "source_page": 126,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-bow.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-bow.png"
     }
   },
   {
@@ -3552,7 +3552,7 @@
     "source_page": 126,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-generic.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-doomsweeper.png"
     }
   },
   {
@@ -3583,7 +3583,7 @@
     "source_page": 126,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-whip.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-whip.png"
     }
   },
   {
@@ -3615,7 +3615,7 @@
     "source_page": 126,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-generic.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-sword.png"
     }
   },
   {
@@ -3646,7 +3646,7 @@
     "source_page": 126,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-club.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-club.png"
     }
   },
   {
@@ -3677,7 +3677,7 @@
     "source_page": 126,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-generic.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-mace.png"
     }
   },
   {
@@ -3709,7 +3709,7 @@
     "source_page": 126,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-generic.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-sword.png"
     }
   },
   {
@@ -3742,7 +3742,7 @@
     "source_page": 126,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-bow.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-bow.png"
     }
   },
   {
@@ -3774,7 +3774,7 @@
     "source_page": 126,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-mace.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-mace.png"
     }
   },
   {
@@ -3806,7 +3806,7 @@
     "source_page": 126,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-crossbow.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-crossbow.png"
     }
   },
   {
@@ -3838,7 +3838,7 @@
     "source_page": 126,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-generic.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-dagger.png"
     }
   },
   {
@@ -3870,7 +3870,7 @@
     "source_page": 126,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-generic.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-sword.png"
     }
   },
   {
@@ -3901,7 +3901,7 @@
     "source_page": 126,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-generic.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-sword.png"
     }
   },
   {
@@ -3933,7 +3933,7 @@
     "source_page": 126,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-generic.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-sword.png"
     }
   },
   {
@@ -3965,7 +3965,7 @@
     "source_page": 126,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-generic.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-sword.png"
     }
   },
   {
@@ -3997,7 +3997,7 @@
     "source_page": 126,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-generic.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-axe.png"
     }
   },
   {
@@ -4029,7 +4029,7 @@
     "source_page": 126,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-sword.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-sword.png"
     }
   },
   {
@@ -4061,7 +4061,7 @@
     "source_page": 126,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-generic.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-mace.png"
     }
   },
   {
@@ -4094,7 +4094,7 @@
     "source_page": 126,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-gauntlet.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-gauntlet.png"
     }
   },
   {
@@ -4126,7 +4126,7 @@
     "source_page": 126,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-club.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-club.png"
     }
   },
   {
@@ -4158,7 +4158,7 @@
     "source_page": 126,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-shield.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-shield.png"
     }
   },
   {
@@ -4189,7 +4189,7 @@
     "source_page": 147,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-spear.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-spear.png"
     }
   },
   {
@@ -4219,7 +4219,7 @@
     "source_page": 147,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-staff.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-staff.png"
     }
   },
   {
@@ -4249,7 +4249,7 @@
     "source_page": 147,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-mace.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-mace.png"
     }
   },
   {
@@ -4280,7 +4280,7 @@
     "source_page": 147,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-staff.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-staff.png"
     }
   },
   {
@@ -4311,7 +4311,7 @@
     "source_page": 147,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-sword.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-sword.png"
     }
   },
   {
@@ -4343,7 +4343,7 @@
     "source_page": 147,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-club.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-club.png"
     }
   },
   {
@@ -4374,7 +4374,7 @@
     "source_page": 147,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-spear.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-spear.png"
     }
   },
   {
@@ -4405,7 +4405,7 @@
     "source_page": 147,
     "data": {
       "needs_review": false,
-      "imageUrl": "/weapon-images/weapon-sling.png"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-sling.png"
     }
   }
 ]

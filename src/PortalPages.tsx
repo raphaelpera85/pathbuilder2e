@@ -147,19 +147,31 @@ function CatalogPage() {
   const [syncStatus, setSyncStatus] = useState<CatalogSyncStatus>(getCatalogSyncStatus());
   const [remoteItemsByCategory, setRemoteItemsByCategory] = useState<Partial<Record<PickerType, PickerItem[]>>>({});
   const [isSyncing, setIsSyncing] = useState(false);
+  const [isCatalogLoading, setIsCatalogLoading] = useState(true);
+  const [catalogLoadFailed, setCatalogLoadFailed] = useState(false);
 
   // Efeito para carregar dados remotos do Supabase
   useEffect(() => {
     let isMounted = true;
+    setIsCatalogLoading(true);
+    setCatalogLoadFailed(false);
     const loadCategory = async (type: PickerType) => {
       try {
         const result = await fetchCatalogCategory(type);
-        if (isMounted && result.items.length > 0) {
-          setRemoteItemsByCategory((prev) => ({ ...prev, [type]: result.items }));
-          setSyncStatus((prev) => ({ ...prev, source: result.source }));
+        if (isMounted) {
+          if (result.items.length > 0) {
+            setRemoteItemsByCategory((prev) => ({ ...prev, [type]: result.items }));
+          }
+          // Um fallback local em uma categoria não deve esconder que as demais
+          // continuam sendo servidas pelo Supabase.
+          if (result.source === "supabase") {
+            setSyncStatus((prev) => ({ ...prev, source: "supabase" }));
+          }
         }
+        return result;
       } catch (err) {
         console.warn(`[Catalog] Não foi possível carregar ${type}:`, err);
+        return null;
       }
     };
 
@@ -168,14 +180,24 @@ function CatalogPage() {
       const allTypes: PickerType[] = catalogCategories.map((c) => c.type);
       const BATCH_SIZE = 4;
       (async () => {
+        let degraded = false;
         for (let i = 0; i < allTypes.length; i += BATCH_SIZE) {
           if (!isMounted) break;
           const batch = allTypes.slice(i, i + BATCH_SIZE);
-          await Promise.all(batch.map((type) => loadCategory(type)));
+          const results = await Promise.all(batch.map((type) => loadCategory(type)));
+          degraded = degraded || results.some((result) => !result || result.source !== "supabase");
+        }
+        if (isMounted) {
+          setCatalogLoadFailed(degraded);
+          setIsCatalogLoading(false);
         }
       })();
     } else {
-      loadCategory(category);
+      void loadCategory(category).then((result) => {
+        if (!isMounted) return;
+        setCatalogLoadFailed(!result || result.source !== "supabase");
+        setIsCatalogLoading(false);
+      });
     }
 
     return () => {
@@ -185,23 +207,30 @@ function CatalogPage() {
 
   const handleManualSync = async () => {
     setIsSyncing(true);
+    setIsCatalogLoading(true);
+    setCatalogLoadFailed(false);
     try {
       const typesToSync: PickerType[] = category === "all" ? catalogCategories.map((c) => c.type) : [category];
       const BATCH_SIZE = 4;
+      let degraded = false;
       for (let i = 0; i < typesToSync.length; i += BATCH_SIZE) {
         const batch = typesToSync.slice(i, i + BATCH_SIZE);
-        await Promise.all(
+        const results = await Promise.all(
           batch.map(async (type) => {
             const result = await fetchCatalogCategory(type, { forceRemote: true });
             if (result.items.length > 0) {
               setRemoteItemsByCategory((prev) => ({ ...prev, [type]: result.items }));
-              setSyncStatus((prev) => ({ ...prev, source: result.source }));
             }
+            if (result.source === "supabase") setSyncStatus((prev) => ({ ...prev, source: "supabase" }));
+            return result;
           })
         );
+        degraded = degraded || results.some((result) => result.source !== "supabase");
       }
+      setCatalogLoadFailed(degraded);
     } finally {
       setIsSyncing(false);
+      setIsCatalogLoading(false);
     }
   };
 
@@ -345,7 +374,9 @@ function CatalogPage() {
         <strong className="catalog-count" aria-live="polite">{filtered.length} {t("results")}</strong>
       </div>
     </section>
-    {filtered.length === 0 ? <div className="portal-empty">{t("noCatalogResults")}</div> : <section className="catalog-grid" aria-label={t("compendiumTitle")}>
+    {isCatalogLoading && entries.length === 0 ? <div className="portal-empty" role="status">{t("loadingCatalog")}</div>
+      : catalogLoadFailed && entries.length === 0 ? <div className="portal-empty" role="alert"><p>{t("catalogLoadFailed")}</p><button type="button" onClick={handleManualSync} disabled={isSyncing}>{t("retry")}</button></div>
+      : filtered.length === 0 ? <div className="portal-empty">{t("noCatalogResults")}</div> : <section className="catalog-grid" aria-label={t("compendiumTitle")}>
       {filtered.map((entry, index) => <CatalogCard key={`${entry.category}-${entry.name}-${index}`} entry={entry} onInspect={() => setInspectedEntry(entry)} />)}
     </section>}
 

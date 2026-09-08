@@ -43,6 +43,7 @@ async function main() {
     await card.focus();
     checks.push(["catalog card is keyboard focusable", await card.getAttribute("tabindex") === "0"]);
     await card.press("Enter");
+    await page.waitForTimeout(200);
     const dialog = page.locator('.compendium-modal-overlay[role="dialog"][aria-modal="true"]');
     await dialog.waitFor({ state: "visible", timeout: 5000 });
     checks.push(["card opens an accessible dialog", await dialog.getAttribute("aria-labelledby") === "compendium-modal-title"]);
