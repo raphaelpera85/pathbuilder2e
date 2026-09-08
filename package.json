@@ -10,6 +10,7 @@
     "audit:catalog": "node scripts/audit-catalog.cjs",
     "audit:catalog:provenance": "node scripts/audit-catalog.cjs --strict-provenance",
     "audit:catalog:supabase": "node scripts/audit-catalog-supabase-reconciliation.cjs",
+    "audit:campaigns:supabase": "node scripts/audit-supabase-campaigns-authenticated.cjs",
     "audit:image-metadata:supabase": "node scripts/audit-image-metadata-supabase.cjs",
     "audit:books": "node scripts/audit-books.cjs"
   },
