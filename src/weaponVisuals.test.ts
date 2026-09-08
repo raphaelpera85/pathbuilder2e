@@ -24,10 +24,12 @@ describe("weapon visual fallback", () => {
   it("separa a adaga de punho da ilustração de manopla", () => {
     expect(getWeaponVisualKey({ name: "Adaga de Punho", weaponGroup: "Brawling" })).toBe("punch-dagger");
     expect(getWeaponImageUrl({ name: "Adaga de Punho", weaponGroup: "Brawling" })).toBe("/weapon-images/weapon-punch-dagger.png");
+    expect(getWeaponVisualKey({ name: "Adaga de Punho Orc", weaponGroup: "Brawling" })).toBe("orc-knuckle-dagger");
+    expect(getWeaponImageUrl({ name: "Adaga de Punho Orc", weaponGroup: "Brawling" })).toBe("/weapon-images/weapon-orc-knuckle-dagger.png");
   });
 
   it("keeps every local fallback asset available to the browser", () => {
-    for (const key of ["generic", "sword", "bow", "axe", "club", "dagger", "punch-dagger", "crossbow", "spear", "firearm", "mace", "staff", "whip", "sling", "gauntlet", "bomb", "shield", "lute", "halberd", "trident", "shuriken", "flail"]) {
+    for (const key of ["generic", "sword", "bow", "axe", "club", "dagger", "punch-dagger", "orc-knuckle-dagger", "crossbow", "spear", "firearm", "mace", "staff", "whip", "sling", "gauntlet", "bomb", "shield", "lute", "halberd", "trident", "shuriken", "flail"]) {
       expect(existsSync(resolve(process.cwd(), "public", "weapon-images", `weapon-${key}.${key === "generic" ? "svg" : "png"}`))).toBe(true);
     }
   });
