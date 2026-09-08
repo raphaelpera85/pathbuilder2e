@@ -19,7 +19,10 @@ describe("item visuals", () => {
     ["Arco Cabeça-Partida", "bow"],
     ["Chicote de Lula Gigante", "whip"],
     ["Machado Entalhador", "axe"],
-    ["Mochila de Aventureiro", "adventurer-pack"],
+    ["Mochila de Aventureiro", "adventurers-pack"],
+    ["Kit de Primeiros Socorros", "healers-first-aid-kit"],
+    ["Ferramentas de Ladrão", "thieves-tools"],
+    ["Botas Élficas", "elven-boots"],
     ["10 Balas", "bullets"],
     ["Manto Aéreo", "adventurer-pack"],
     ["Lança Peixe-Leão", "spear"],
@@ -37,6 +40,7 @@ describe("item visuals", () => {
     for (const item of items) {
       const name = String(item.name_pt || item.name_en || "");
       const data = {
+        id: String(item.id || ""),
         name,
         names: { "pt-BR": name, en: String(item.name_en || "") },
         description: String(item.description_pt || ""),

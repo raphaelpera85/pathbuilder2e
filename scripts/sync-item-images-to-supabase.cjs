@@ -13,7 +13,7 @@ const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
 if (!url || !key) throw new Error("VITE_SUPABASE_URL e SUPABASE_SERVICE_ROLE_KEY são obrigatórios.");
 const fetchWithTimeout = (input, init = {}) => {
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 15000);
+  const timer = setTimeout(() => controller.abort(), 120000);
   return fetch(input, { ...init, signal: controller.signal }).finally(() => clearTimeout(timer));
 };
 const supabase = createClient(url, key, { global: { fetch: fetchWithTimeout } });
@@ -32,6 +32,10 @@ function identity(row) {
 function visualKey(row) {
   const value = identity(row);
   const name = (row.name_pt || row.name_en || "").trim().toLocaleLowerCase("pt-BR");
+  if (row.id === "item.gear.adventurers_pack" || /^mochila de aventureiro$/.test(name)) return "adventurers-pack";
+  if (row.id === "item.gear.healers_toolkit" || /^kit de primeiros socorros$/.test(name)) return "healers-first-aid-kit";
+  if (row.id === "item.gear.thieves_toolkit" || /^ferramentas de ladr[aã]o$/.test(name)) return "thieves-tools";
+  if (row.id === "item.magic.boots_of_elvenkind" || /^botas [eé]lficas$/.test(name)) return "elven-boots";
   if (/^10 balas$|^10 bullets$/.test(name)) return "bullets";
   if (/^bandoleira do saque da sorte$|^manto a[eé]reo$|^figura de proa velada$/.test(name)) return "adventurer-pack";
   if (/^ervilhas estalantes terap[eê]uticas$|^sopro da praga$|^azul de sairazul$/.test(name)) return "potion";
