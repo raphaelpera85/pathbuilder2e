@@ -37,6 +37,7 @@ import {
 } from "./services/catalog";
 import { CampaignsPage } from "./CampaignsPage";
 import { getWeaponImageAlt, getWeaponImageUrl } from "./weaponVisuals";
+import { getItemImageAlt, getItemImageUrl } from "./itemVisuals";
 import "./portal.css";
 
 type PortalRoute = "builder" | "compendium" | "rules" | "downloads" | "library" | "campaigns" | "privacy" | "admin";
@@ -392,7 +393,7 @@ function CatalogPage() {
         </header>
 
         <div className="compendium-modal-body">
-          {inspectedEntry.category === "weapon" && <img className="weapon-visual weapon-visual-modal" src={getWeaponImageUrl(inspectedEntry.data)} alt={getWeaponImageAlt(getItemDisplayName(inspectedEntry, locale), inspectedEntry.data, locale)} />}
+          {(inspectedEntry.category === "weapon" || inspectedEntry.category === "item" || inspectedEntry.category === "gear") && <img className="weapon-visual weapon-visual-modal" src={inspectedEntry.category === "weapon" ? getWeaponImageUrl(inspectedEntry.data) : getItemImageUrl(inspectedEntry.data)} alt={inspectedEntry.category === "weapon" ? getWeaponImageAlt(getItemDisplayName(inspectedEntry, locale), inspectedEntry.data, locale) : getItemImageAlt(getItemDisplayName(inspectedEntry, locale), inspectedEntry.data, locale)} />}
           {/* TRAITS & BADGES */}
           <div className="compendium-modal-badges">
             {inspectedEntry.data.rarity && <span className={`rarity-badge ${String(inspectedEntry.data.rarity)}`}>{inspectedEntry.data.rarity}</span>}
@@ -516,11 +517,12 @@ function CatalogCard({ entry, onInspect }: { entry: PickerItem & { category: Pic
     entry.data.variantFamily ? `${locale === "en" ? "Variant" : locale === "es" ? "Variante" : "Variante"}: ${entry.data.variantRole === "ranged" ? (locale === "en" ? "Ranged" : locale === "es" ? "A distancia" : "À distância") : entry.data.variantRole === "melee" ? (locale === "en" ? "Melee" : locale === "es" ? "Cuerpo a cuerpo" : "Corpo a corpo") : entry.data.variantFamily}` : null,
   ].filter((fact): fact is string => Boolean(fact));
   const isWeapon = entry.category === "weapon";
+  const isItem = entry.category === "item" || entry.category === "gear";
   const displayName = getItemDisplayName(entry, locale);
 
   return <article className="catalog-card interactive" onClick={onInspect} tabIndex={0} onKeyDown={(e) => e.key === "Enter" && onInspect?.()} role="button" aria-label={displayName}>
     <div className="catalog-card-top"><div className="catalog-card-meta"><span>{entry.categoryLabel}</span>{rarity && <span className={`rarity-badge ${String(entry.data.rarity)}`}>{rarity}</span>}</div><div className="catalog-card-status"><span className={legacy ? "source-badge legacy" : verified ? "source-badge verified" : "source-badge review"}>{legacy ? t("catalogLegacy") : verified ? t("catalogVerified") : t("catalogReview")}</span>{approximateSource && <span className="source-badge review">{t("sourceSectionReference")}</span>}{translationPending && <span className="source-badge translation-pending">{t("translationPending")}</span>}</div></div>
-    {isWeapon && <img className="weapon-visual weapon-visual-card" src={getWeaponImageUrl(entry.data)} alt={getWeaponImageAlt(displayName, entry.data, locale)} loading="lazy" />}
+    {(isWeapon || isItem) && <img className="weapon-visual weapon-visual-card" src={isWeapon ? getWeaponImageUrl(entry.data) : getItemImageUrl(entry.data)} alt={isWeapon ? getWeaponImageAlt(displayName, entry.data, locale) : getItemImageAlt(displayName, entry.data, locale)} loading="lazy" />}
     <h2>{displayName}</h2>
     {facts.length > 0 && <div className="catalog-facts">{facts.map((fact) => <span key={fact}>{fact}</span>)}</div>}
     {(entry.data.summaries?.[locale] ?? entry.data.description) && <p>{entry.data.summaries?.[locale] ?? entry.data.description}</p>}

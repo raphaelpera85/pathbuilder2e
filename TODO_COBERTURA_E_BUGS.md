@@ -1153,3 +1153,13 @@ Validação desta etapa (2026-09-06):
 - `npx tsc --noEmit`: 0 erros de compilação.
 - `npm run audit:catalog:provenance`: 3.786 registros auditados, 0 nomes/resumos ausentes em pt-BR/en/es, 0 IDs duplicados, 0 `needsReview`.
 - Novos testes unitários dedicados em `src/data/engine-mechanics.test.ts` cobrindo condições em espanhol, IDs canônicos e detecção de bônus de status de buffs.
+
+Implementação desta etapa (2026-09-07):
+- [x] Criar e publicar biblioteca visual coerente para os 457 itens do compêndio, classificando pelo nome completo, nomes localizados, descrição, categoria e traços; famílias atuais: mochila/equipamento (155), poção (39), runa (17), espada (4), besta (4), armadura (16), escudo (9), arma de fogo (31), munição (42), bomba (50), chicote (2), arco (2), livro (15), veneno (46), joia (15), machado (2) e cajado/varinha (8).
+- [x] Exibir a imagem do item no card, no modal de detalhe e no seletor React; o texto alternativo preserva o nome localizado completo.
+- [x] Persistir `data.imageUrl` e `data.imageFamily` nos 457 registros de `catalog_items` do Supabase Storage, no bucket público `compendium-assets`, mantendo o JSON local sincronizado.
+- [x] Verificar URLs remotos com `node scripts/audit-item-images-supabase.cjs`: 457 itens, 11 URLs de família, 0 URLs ausentes, 0 URLs quebrados, 0 divergências local/Supabase; os 11 endpoints responderam HTTP 200.
+- [x] Validar as associações semânticas com `src/itemVisuals.test.ts`: 11 famílias operacionais e texto alternativo aprovados; build Vite aprovado.
+- [x] Revisar dez possíveis falsos positivos do lote inicial e redirecionar itens que descrevem armas para artes de besta, arco, arma de fogo, chicote, machado ou espada; talismãs e acessórios de transporte permanecem na família de equipamento.
+- [ ] Produzir arte exclusiva para cada um dos 457 nomes individuais quando a direção visual exigir unicidade por item; a etapa concluída entrega uma arte específica por família sem inventar atributos ausentes no texto de origem.
+- [ ] Fazer aceite visual manual completo em navegador para todos os cards, tamanhos de tela e idiomas; os testes automatizados confirmam URLs e dimensões carregáveis, mas não substituem a revisão humana de cada associação visual.

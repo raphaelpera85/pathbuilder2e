@@ -4,6 +4,7 @@ import { useI18n, getItemDisplayName, type MessageKey } from "./i18n";
 import { coinsToCopper, parsePriceToCopper, formatCopperToString, formatPriceToLocale } from "./utils/economy";
 import { localizeSourceBookName } from "./data/sources";
 import { getWeaponImageAlt, getWeaponImageUrl } from "./weaponVisuals";
+import { getItemImageAlt, getItemImageUrl } from "./itemVisuals";
 
 const pickerLabelKeys: Record<PickerType, MessageKey> = {
   ancestry: "ancestries", class: "classes", subclass: "subclasses", background: "backgrounds", weapon: "weapons", armor: "armors", shield: "shields",
@@ -1261,7 +1262,7 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
               <article className="picker-detail">
                 {selectedItem ? (
                   <>
-                    {pickerType === "weapon" && <img className="weapon-visual weapon-visual-picker" src={getWeaponImageUrl(selectedItem.data)} alt={getWeaponImageAlt(getItemDisplayName(selectedItem, locale), selectedItem.data, locale)} />}
+                    {(pickerType === "weapon" || pickerType === "item" || pickerType === "gear") && <img className="weapon-visual weapon-visual-picker" src={pickerType === "weapon" ? getWeaponImageUrl(selectedItem.data) : getItemImageUrl(selectedItem.data)} alt={pickerType === "weapon" ? getWeaponImageAlt(getItemDisplayName(selectedItem, locale), selectedItem.data, locale) : getItemImageAlt(getItemDisplayName(selectedItem, locale), selectedItem.data, locale)} />}
                     <header className="picker-detail-header">
                       <div>
                         <h3>{selectedItem.displayName || getItemDisplayName(selectedItem, locale)}</h3>
