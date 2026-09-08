@@ -34,6 +34,10 @@ export function getItemVisualKey(data: ItemVisualData = {}): string {
   if (data.id === "item.guns_gears.delineating_scope" || /^mira de delineamento$/.test(name)) return "delineating-scope";
   if (data.id === "item.guns_gears.scope_of_truth" || /^mira da verdade$/.test(name)) return "scope-of-truth";
   if (data.id === "item.guns_gears.darkvision_scope" || /^mira de vis[aã]o no escuro$/.test(name)) return "darkvision-scope";
+  if (data.id === "item.rage_elements.water.faydhaans_dallah" || /^dallah de faydhaan$/.test(name)) return "faydhaans-dallah";
+  if (data.id === "item.rage_elements.water.octopus_potion" || /^po[cç][aã]o de polvo$/.test(name)) return "octopus-potion";
+  if (data.id === "item.rage_elements.air.blight_breath" || /^sopro da praga$/.test(name)) return "blight-breath";
+  if (data.id === "item.rage_elements.earth.sairazul_blue" || /^azul de sairazul$/.test(name)) return "sairazul-blue";
   if (data.id === "item.book_of_dead.vital_salt" || /^sal vital$/.test(name)) return "vital-salt";
   if (data.id === "item.dark_archive.vial_of_the_immortal_wellspring" || /^frasco da fonte imortal$/.test(name)) return "immortal-wellspring-vial";
   if (data.id === "item.compendium.elixir_of_life_minor" || /^elixir da vida \(menor\)$/.test(name)) return "minor-elixir-life";

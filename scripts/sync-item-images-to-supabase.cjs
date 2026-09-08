@@ -13,7 +13,7 @@ const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
 if (!url || !key) throw new Error("VITE_SUPABASE_URL e SUPABASE_SERVICE_ROLE_KEY são obrigatórios.");
 const fetchWithTimeout = (input, init = {}) => {
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 120000);
+  const timer = setTimeout(() => controller.abort(), 300000);
   return fetch(input, { ...init, signal: controller.signal }).finally(() => clearTimeout(timer));
 };
 const supabase = createClient(url, key, { global: { fetch: fetchWithTimeout } });
@@ -46,6 +46,10 @@ function visualKey(row) {
   if (row.id === "item.guns_gears.delineating_scope" || /^mira de delineamento$/.test(name)) return "delineating-scope";
   if (row.id === "item.guns_gears.scope_of_truth" || /^mira da verdade$/.test(name)) return "scope-of-truth";
   if (row.id === "item.guns_gears.darkvision_scope" || /^mira de vis[aã]o no escuro$/.test(name)) return "darkvision-scope";
+  if (row.id === "item.rage_elements.water.faydhaans_dallah" || /^dallah de faydhaan$/.test(name)) return "faydhaans-dallah";
+  if (row.id === "item.rage_elements.water.octopus_potion" || /^po[cç][aã]o de polvo$/.test(name)) return "octopus-potion";
+  if (row.id === "item.rage_elements.air.blight_breath" || /^sopro da praga$/.test(name)) return "blight-breath";
+  if (row.id === "item.rage_elements.earth.sairazul_blue" || /^azul de sairazul$/.test(name)) return "sairazul-blue";
   if (row.id === "item.book_of_dead.vital_salt" || /^sal vital$/.test(name)) return "vital-salt";
   if (row.id === "item.dark_archive.vial_of_the_immortal_wellspring" || /^frasco da fonte imortal$/.test(name)) return "immortal-wellspring-vial";
   if (row.id === "item.compendium.elixir_of_life_minor" || /^elixir da vida \(menor\)$/.test(name)) return "minor-elixir-life";

@@ -7736,8 +7736,8 @@
         "examples": "poção moderada de cura, poção menor de resistência ou poção de natação"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-potion.png",
-      "imageFamily": "potion",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-faydhaans-dallah.png",
+      "imageFamily": "faydhaans-dallah",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -7845,8 +7845,8 @@
         "variants": "menor Atletismo +12/CD de Escapar 20; moderada +17/25; maior +22/30"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-potion.png",
-      "imageFamily": "potion",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-octopus-potion.png",
+      "imageFamily": "octopus-potion",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -8113,8 +8113,8 @@
         "exhale": "1 ação; cone de 4,5 metros; 10d6 veneno; Reflexos básico CD 29"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-potion.png",
-      "imageFamily": "potion",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-blight-breath.png",
+      "imageFamily": "blight-breath",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -8711,8 +8711,8 @@
         "healing": "8d8 PV; resistências terminam"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-potion.png",
-      "imageFamily": "potion",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-sairazul-blue.png",
+      "imageFamily": "sairazul-blue",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
