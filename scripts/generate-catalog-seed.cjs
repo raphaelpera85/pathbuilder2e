@@ -97,6 +97,35 @@ function getWeaponStructuredFields(item) {
   return { range_feet: range, reload };
 }
 
+function getWeaponVisualKey(item) {
+  const group = String(item?.group || item?.weaponGroup || '').toLowerCase();
+  const category = String(item?.category || item?.weaponCategory || '').toLowerCase();
+  const name = String(item?.name || item?.names?.['pt-BR'] || item?.names?.en || '').toLowerCase();
+  const traits = Array.isArray(item?.traits) ? item.traits.join(' ').toLowerCase() : '';
+  const identity = `${group} ${category} ${name} ${traits}`;
+  if (/bomba|bomb|explosiv/.test(identity)) return 'bomb';
+  if (/arma de fogo|firearm|pistola|mosquete|arcabuz|bacamarte|pimenteiro|jezail|harmona|can[oõ]n|repetidor|pressure repeater/.test(identity)) return 'firearm';
+  if (/crossbow|besta/.test(group) || /besta|crossbow|arbalesta|balista/.test(identity)) return 'crossbow';
+  if (/bow|arco|daikyu/.test(identity)) return 'bow';
+  if (/whip|chicote|chain|cadeia|correntes/.test(identity)) return 'whip';
+  if (/sling|funda/.test(identity)) return 'sling';
+  if (/shield|escudo|bossa de escudo|cravos de escudo/.test(identity)) return 'shield';
+  if (/gauntlet|manopla|punho|garras|garra/.test(identity)) return 'gauntlet';
+  if (/staff|cajado|bast[aã]o|palstave|vara/.test(identity)) return 'staff';
+  if (/mace|ma[cç]a|malho|martelo|mangual|flail|morningstar|esmagador/.test(identity)) return 'mace';
+  if (/knife|dagger|adaga|kukri|shuriken|dardo/.test(identity)) return 'dagger';
+  if (/sword|espada|rapieira|bracamante|cimitarra|montante|gl[aá]dio|khopesh|l[aâ]mina|falchion/.test(identity)) return 'sword';
+  if (/axe|machado|enx[oó]|pick|picareta|foice|segadeira|scythe/.test(identity)) return 'axe';
+  if (/spear|lan[cç]a|pique|glaive|alabarda|fauchard|spetum|tridente|azagaia|remo/.test(identity)) return 'spear';
+  if (/club|clava|porrete|brawling|lute|ala[uú]de/.test(identity)) return /lute|ala[uú]de/.test(identity) ? 'lute' : 'club';
+  if (/desarmado|unarmed|fist|punho/.test(`${category} ${identity}`)) return 'gauntlet';
+  if (/aklys|nunchaku|palavra do general|flagelo dos mortos-vivos/.test(identity)) return 'club';
+  if (/espiral de [aá]spide|fio de draddeth|fio de presa/.test(identity)) return 'whip';
+  if (/atlatl|mambele|pique de rompimento|spetum|tritura-esp[ií]rito/.test(identity)) return 'spear';
+  if (/catapulta de mochila|zarabatana/.test(identity)) return 'bow';
+  return 'generic';
+}
+
 function sqlJsonb(obj) {
   if (!obj || typeof obj !== 'object') return "'{}'::jsonb";
   const jsonStr = JSON.stringify(obj).replace(/'/g, "''");
@@ -514,6 +543,7 @@ const featsData = [];
     source_page: item.source?.page || item.page || null,
     data: {
       effects: item.effects || [],
+      ...(item.mechanics ? { mechanics: item.mechanics } : {}),
       needs_review: item.needs_review ?? false,
     }
   });
@@ -550,6 +580,7 @@ const weaponsData = [];
     source_page: item.source?.page || item.page || null,
     data: {
       needs_review: item.needs_review ?? false,
+      imageUrl: `/weapon-images/weapon-${getWeaponVisualKey(item)}.png`,
       ...(item.variantFamily ? { variantFamily: item.variantFamily } : {}),
       ...(item.variantRole ? { variantRole: item.variantRole } : {}),
       ...(item.variantOf ? { variantOf: item.variantOf } : {}),

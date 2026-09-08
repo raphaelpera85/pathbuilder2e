@@ -3408,6 +3408,30 @@ for (const [slug, pt, en, es, level, page, summary] of RAGE_ELEMENTS_FIRE_ITEMS)
     "pt-BR": summary, en: `Rage of Elements fire item: ${en}. Full mechanical text pending review.`, es: `Objeto de fuego de Rage of Elements: ${es}. El texto mecánico completo queda pendiente de revisión.`
   }, description: summary, source: { book: RAGE_ELEMENTS_SOURCE, page }, ruleset: "remaster", needs_review: true });
 }
+const RAGE_ELEMENTS_FIRE_ITEM_MECHANICS = {
+  ash_gown: { summaries: { "pt-BR": "Veste investida que concede resistência a fogo e Intimidação e incinera obstáculos e criaturas ao atravessar o campo.", en: "An invested gown grants fire resistance and Intimidation and burns obstacles and creatures as you move.", es: "Una prenda investida concede resistencia al fuego e Intimidación y quema obstáculos y criaturas al moverte." }, mechanics: { resistance: "5 fogo; +1 Intimidação", activate: "2 ações; 1/dia; Stride e Golpe", effect: "ignora e destrói terreno difícil não mágico; criaturas adjacentes durante o movimento sofrem 2d6 fogo; Reflexos básico CD 23", variant: "greater: resistência 10, +2 Intimidação, 1/10 minutos, 4d6/CD 28" } },
+  bloodburn_censer: { summaries: { "pt-BR": "Incensário que cria uma aura de fumaça de fogo ou veneno, causando dano persistente e enfraquecendo criaturas.", en: "A censer creates a fire or poison smoke aura that deals persistent damage and weakens creatures.", es: "Un incensario crea un aura de humo de fuego o veneno que causa daño persistente y debilita criaturas." }, mechanics: { activate: "2 ações; 1/dia; incenso de 5 po; emanação de 6 metros; Fortitude CD 34", criticalSuccess: "sem efeito", success: "2d6 dano persistente", failure: "4d6 dano persistente e Enfraquecido 2", criticalFailure: "6d6 dano persistente e Enfraquecido 3", immunity: "1 hora" } },
+  brazier_of_harmony: { summaries: { "pt-BR": "Incensário que concede bônus de Diplomacia e cria uma aura de paz equivalente a calm de 3º círculo.", en: "A censer grants a Diplomacy bonus and creates a peace aura equivalent to 3rd-rank calm.", es: "Un incensario concede bonificación a Diplomacia y crea un aura de paz equivalente a calm de 3er rango." }, mechanics: { diplomacy: "+1 item em Diplomacia enquanto segurado", activate: "2 ações; 1/dia; incenso de 1 pp; emanação de 6 metros", effect: "calm de 3º círculo; imunidade por 24 horas; dura até o incenso acabar" } },
+  candle_of_inflamed_passions: { summaries: { "pt-BR": "Vela consumível que eleva emoções e impõe penalidade a salvamentos contra efeitos emocionais por 10 minutos.", en: "A consumable candle heightens emotions and penalizes saves against emotion effects for 10 minutes.", es: "Una vela consumible intensifica emociones y penaliza salvaciones contra efectos emocionales durante 10 minutos." }, mechanics: { activate: "1 ação; acender", area: "3 metros", effect: "–1 de estado em salvamentos contra efeitos emocionais; queima por 10 minutos; não pode ser reacendida" } },
+  everburning_coal: { summaries: { "pt-BR": "Carvão que concede resistência a frio, protege de ambientes frios, melhora viagens ao Plano do Fogo e cria uma muralha de brasas.", en: "A coal grants cold resistance, protects from cold environments, improves travel to the Plane of Fire, and creates a wall of coals.", es: "Un carbón concede resistencia al frío, protege de entornos fríos, mejora viajes al Plano del Fuego y crea un muro de brasas." }, mechanics: { resistance: "10 a frio; proteção contra frio moderado, severo e extremo", planarKey: "chega a 1d6×25 milhas do destino em vez de 1d10×25", activate: "3 ações; 1/dia; wall of ice com traços, dano e fraquezas trocados para fogo; frio/água evaporam seções" } },
+  globe_of_shrouds: { summaries: { "pt-BR": "Incensário que oculta aliados e revela inimigos invisíveis dentro de uma aura de fumaça.", en: "A censer conceals allies and reveals invisible enemies within a smoke aura.", es: "Un incensario oculta aliados y revela enemigos invisibles dentro de un aura de humo." }, mechanics: { activate: "2 ações; 1/dia; incenso de 5 po; emanação de 6 metros", allies: "aliado fica oculto e recebe +2 de estado em Furtividade", enemies: "inimigo invisível vira forma translúcida para você e aliados; não fica oculto, mas permanece oculto por concealment" } },
+  lambent_perfume: { summaries: { "pt-BR": "Incensário que permite novas tentativas de salvamento para superar enjoo ou aflições dentro da fumaça.", en: "A censer lets creatures attempt new saves to overcome sickened or afflictions in its smoke.", es: "Un incensario permite nuevas salvaciones para superar Enfermado o aflicciones dentro de su humo." }, mechanics: { activate: "2 ações; 1/dia; incenso de 1 pp; emanação de 6 metros", effect: "ao fim do turno na fumaça, criatura enjoada ou com aflição tenta novo salvamento; escolhe uma; imunidade 24 horas para essa aflição" } },
+  obsidian_edge: { summaries: { "pt-BR": "Gun sword +1 striking que causa dano de fogo adicional e explode estilhaços de magma após um Golpe à distância bem-sucedido.", en: "A +1 striking gun sword deals extra fire damage and erupts magma shards after a successful ranged Strike.", es: "Una gun sword +1 striking causa daño de fuego adicional y libera astillas de magma tras un Golpe a distancia exitoso." }, mechanics: { weapon: "+1 striking gun sword; +1 fogo por Golpe", activate: "1 ação; 1/10 minutos; ação anterior foi Golpe à distância bem-sucedido", effect: "emanação de 4,5 metros; 2d6 fogo + 2d6 perfurante; Reflexos básico CD 20", variants: "greater 3d6 fogo + 2d6/CD 25; major 4d6 + 3d6/CD 29; true 5d6 + 4d6/CD 38" } },
+  rhyton_of_the_radiant_ifrit: { summaries: { "pt-BR": "Rhyton que se enche de bebida, concede bônus social e permite a um ifrit emitir comando de 6º círculo contra inimigos.", en: "A rhyton refills with drinks, grants a social bonus, and lets an ifrit issue 6th-rank command against enemies.", es: "Un rhyton se rellena de bebidas, concede bonificación social y permite que un ifrit use command de 6º rango contra enemigos." }, mechanics: { drink: "bottomless stein; nome sussurrado traz bebida favorita do shuyookh de qualquer plano", toast: "1 ação; +2 item em Dissimulação, Diplomacia ou Intimidação contra criaturas por 1 hora", command: "2 ações; 1/dia; command de 6º círculo contra todos os hostis no alcance; falha também causa Fatigado" } },
+  scalding_gauntlets: { summaries: { "pt-BR": "Manoplas espinhosas striking que causam fogo persistente e enjoo ao agarrar ou restringir uma criatura.", en: "Striking spiked gauntlets deal persistent fire and sickened when you Grab or restrain a creature.", es: "Unos guanteletes con púas striking causan fuego persistente y Enfermado al Agarrar o restringir." }, mechanics: { weapon: "+2 striking spiked gauntlets", trigger: "criatura agarrada ou restringida", save: "Fortitude CD 26", effect: "2d6 fogo persistente e Enjoado 1; imunidade ao Enjoado por 1 hora", variants: "greater CD 28; major CD 32 e 3d6; true CD 36 e 4d6" } },
+  smoke_veil: { summaries: { "pt-BR": "Véu investido que facilita disfarces e permite Demoralizar visualmente após causar dano de fogo.", en: "An invested veil facilitates disguises and enables visual Demoralize after dealing fire damage.", es: "Un velo investido facilita disfraces y permite Desmoralizar visualmente tras causar daño de fuego." }, mechanics: { disguise: "pode Impersonate sem kit; cria disfarce em 1 minuto; +1 item; kit e tempo completo para cosméticos ou pessoa específica", activate: "1 ação; após causar fogo a alvo visível a até 9 metros", effect: "teste de Intimidação para Demoralizar; perde traço auditivo, ganha visual e sem penalidade por idioma" } },
+  sparkshade_parasol: { summaries: { "pt-BR": "Sombrinha investida que protege contra calor e fogo e pode devolver uma linha de 9 metros com 10d6 de fogo.", en: "An invested parasol protects from heat and fire and can release a 30-foot line for 10d6 fire damage.", es: "Una sombrilla investida protege del calor y fuego y puede liberar una línea de 9 metros con 10d6 de fuego." }, mechanics: { resistance: "10 fogo; proteção contra calor ambiental moderado, severo e extremo", protection: "reação; 1/10 minutos; recebe resistência 20 contra o efeito de fogo", pyrotechnics: "2 ações; enquanto carga está ativa; linha de 9 metros; 10d6 fogo; Reflexos básico CD 28" } },
+  thawing_candle: { summaries: { "pt-BR": "Vela consumível que concede resistência a frio e permite encerrar dano persistente de frio por 10 minutos.", en: "A consumable candle grants cold resistance and lets creatures end persistent cold damage for 10 minutes.", es: "Una vela consumible concede resistencia al frío y permite terminar daño persistente de frío durante 10 minutos." }, mechanics: { activate: "1 ação; acender", area: "3 metros; queima por 10 minutos", effect: "resistência 10 a frio; quem tem dano persistente de frio tenta CD 15 para encerrá-lo ao entrar ou estar na área; uma vez por criatura" } }
+};
+for (const [slug, mechanics] of Object.entries(RAGE_ELEMENTS_FIRE_ITEM_MECHANICS)) {
+  const item = PF2E_DATA.items.find((record) => record.id === `item.rage_elements.fire.${slug}`);
+  if (!item) continue;
+  item.summaries = mechanics.summaries;
+  item.description = mechanics.summaries["pt-BR"];
+  item.mechanics = mechanics.mechanics;
+  item.needs_review = false;
+  item.sourceApproximate = false;
+}
 const RAGE_ELEMENTS_METAL_ITEMS = [
   ["curious_teardrop", "Gota Curiosa", "Curious Teardrop", "Gota curiosa", 16, 146, "Item inteligente de metal líquido que oferece magia, telepatia e proteção contra efeitos emocionais."],
   ["ferrofluid_urchin", "Ouriço Ferrofluido", "Ferrofluid Urchin", "Erizo ferrofluido", 7, 146, "Talismã consumível que se fixa a armadura metálica e concede resistência ao dano físico recebido."],
@@ -3425,6 +3449,28 @@ for (const [slug, pt, en, es, level, page, summary] of RAGE_ELEMENTS_METAL_ITEMS
   PF2E_DATA.items.push({ id: `item.rage_elements.metal.${slug}`, name: `${pt} (${en})`, level, category: "magical", names: { "pt-BR": pt, en, es }, summaries: {
     "pt-BR": summary, en: `Rage of Elements metal item: ${en}. Full mechanical text pending review.`, es: `Objeto de metal de Rage of Elements: ${es}. El texto mecánico completo queda pendiente de revisión.`
   }, description: summary, source: { book: RAGE_ELEMENTS_SOURCE, page }, ruleset: "remaster", needs_review: true });
+}
+const RAGE_ELEMENTS_METAL_ITEM_MECHANICS = {
+  curious_teardrop: { summaries: { "pt-BR": "Gota inteligente de metal líquido que se comunica por telepatia, conjura magias e reflete efeitos emocionais ou de metal.", en: "An intelligent liquid-metal teardrop communicates telepathically, casts spells, and reflects emotion or metal effects.", es: "Una gota inteligente de metal líquido se comunica telepáticamente, lanza conjuros y refleja efectos emocionales o de metal." }, mechanics: { senses: "visão precisa 18 metros e audição imprecisa 9 metros", communication: "telepatia em Comum e Talican", request: "2 ações; 1/dia; curse of lost time, ferrous form ou elemental form de 7º círculo (metal)", reflect: "reação contra efeito emocional ou de metal; +4 status no salvamento e counteract +36, refletindo cópia ao originador" } },
+  ferrofluid_urchin: { summaries: { "pt-BR": "Talismã que se fixa a armadura metálica e concede resistência ao dano físico desencadeador.", en: "A talisman attaches to metal armor and grants resistance to the triggering physical damage.", es: "Un talismán se adhiere a armadura metálica y concede resistencia al daño físico desencadenante." }, mechanics: { usage: "afixado a armadura média ou pesada de metal", trigger: "você sofre dano físico", prerequisite: "efeito de especialização da armadura", activate: "ação livre; Concentração", variants: "menor resistência 3; moderada 6; maior 10" } },
+  malleable: { summaries: { "pt-BR": "Runa de armadura que permite trocar o grupo de especialização da armadura, mantendo materiais e runas aplicáveis.", en: "An armor rune lets you change the armor's specialization group while retaining materials and applicable runes.", es: "Una runa de armadura permite cambiar el grupo de especialización manteniendo materiales y runas aplicables." }, mechanics: { usage: "gravada em armadura média ou pesada de metal", activate: "1 ação; Manuseio", effect: "troca o grupo de especialização; runas incompatíveis ficam suprimidas até nova composição" } },
+  morphing_weapon: { summaries: { "pt-BR": "Arma +1 striking shifting que assume formas metálicas e pode aumentar alcance, trocar tipo de dano, Desarmar ou causar dano extra.", en: "A +1 striking shifting weapon takes metal forms and can increase reach, change damage type, Disarm, or deal extra damage.", es: "Un arma +1 striking shifting adopta formas metálicas y puede aumentar alcance, cambiar daño, Desarmar o causar daño adicional." }, mechanics: { base: "+1 striking shifting; Volume varia; 1 ou 2 mãos", activate: "1 ação; 1/10 minutos; Concentração", benefits: "Reach: +1,5 metro de alcance; Shift: contundente, perfurante ou cortante; Take: reação após acerto para Desarmar ou Roubar; Weigh: bônus de dano igual aos dados da arma" } },
+  resonant_guitar: { summaries: { "pt-BR": "Instrumento virtuoso que melhora Performance, facilita viagens ao Plano do Metal, concede runa thundering e protege contra Golpes corpo a corpo.", en: "A virtuoso instrument improves Performance, aids travel to the Plane of Metal, grants thundering, and protects against melee Strikes.", es: "Un instrumento virtuoso mejora Interpretación, facilita viajes al Plano del Metal, concede thundering y protege contra Golpes cuerpo a cuerpo." }, mechanics: { performance: "+2 item em Performance", planarKey: "chega a 1d6×25 milhas do destino em vez de 1d10×25", thunder: "1 minuto; 1/dia; arma metálica a até 18 metros recebe thundering por 1 hora", protection: "reação; 1/dia; aliado a até 9 metros recebe +2 AC; se o ataque acertar, atacante sofre 3d10 sônico" } },
+  rustbringer: { summaries: { "pt-BR": "Mangual +1 striking corrosivo com deadly d10 contra criaturas metálicas e reação que danifica uma arma metálica desarmada.", en: "A +1 striking corrosive flail gains deadly d10 against metal creatures and damages a disarmed metal weapon.", es: "Un mangual +1 striking corrosivo obtiene deadly d10 contra criaturas metálicas y daña un arma metálica desarmada." }, mechanics: { weapon: "+1 striking corrosive flail; deadly d10 contra criatura principalmente metálica", activate: "reação após sucesso crítico em Desarmar arma metálica", effect: "arma desarmada sofre 2d6 dano, ignorando Dureza", variant: "greater: +3 greater striking greater corrosive; 4d6 ácido" } },
+  silver_snake_cane: { summaries: { "pt-BR": "Bengala que armazena elixir ou veneno e se transforma em espada-cajado de prata ou víbora gigante.", en: "A cane stores an elixir or poison and transforms into a silver sword cane or giant viper.", es: "Un bastón almacena un elixir o veneno y se transforma en espada de plata o víbora gigante." }, mechanics: { storage: "1 minuto; guarda um elixir ou veneno ingerido/de ferimento; expira em 24 horas ou ao substituir", sword: "1 ação; Concentração e Polimorfia; +1 striking silver sword cane por 10 minutos; aplica veneno de ferimento", serum: "1 ação; 1/dia; morde alvo voluntário, 1 perfurante e injeta o item", viper: "1 ação; requer zuhra; transforma-se em víbora gigante de prata obediente" } },
+  spellsap_grenade: { summaries: { "pt-BR": "Bomba alquímica que causa dano cortante e pode fazer um conjurador perder aleatoriamente uma magia ou espaço entre seus três maiores círculos.", en: "An alchemical bomb deals slashing damage and can randomly make a spellcaster lose a spell or slot among their three highest ranks.", es: "Una bomba alquímica causa daño cortante y puede hacer que un lanzador pierda un conjuro o espacio entre sus tres rangos más altos." }, mechanics: { activate: "1 ação; Golpe", moderate: "+2 item; 3d4 cortante + 3 splash; Vontade CD 30", greater: "+3 item; 4d4 cortante + 4 splash; Vontade CD 38", effect: "em acerto contra conjurador preparado ou espontâneo, falha no salvamento perde uma magia/espaço aleatório dos três maiores círculos" } },
+  spiny_lodestone: { summaries: { "pt-BR": "Spellheart que conjura needle darts e, conforme seja afixado a armadura ou arma, concede Atletismo/resistência ou dano perfurante extra.", en: "A spellheart casts needle darts and grants Athletics/resistance on armor or extra piercing damage on a weapon.", es: "Un spellheart lanza needle darts y concede Atletismo/resistencia en armadura o daño perforante adicional en arma." }, mechanics: { usage: "afixado a armadura ou arma metálica", activation: "Conjurar uma Magia; needle darts; ataque +8, CD 18", armor: "+1 item em Atletismo e resistência 2 a dano não letal", weapon: "após conjurar, Golpes causam +1d4 perfurante até fim do próximo turno", variants: "greater: resistência 5, +1d6, ataque +14/CD 24; major: +2 Atletismo, resistência 10, +1d8, ataque +19/CD 29 e magias adicionais" } },
+  staff_of_metal: { summaries: { "pt-BR": "Cajado que concede bônus para atacar criaturas ou armaduras metálicas e oferece magias de metal, magnetismo e ferrugem.", en: "A staff grants an attack bonus against metal creatures or armor and provides metal, magnetism, and rust spells.", es: "Un bastón concede bonificación para atacar criaturas o armaduras metálicas y ofrece conjuros de metal, magnetismo y óxido." }, mechanics: { usage: "segurado; cajado de metal", attack: "+1 circunstancial no ataque contra alvo de armadura metálica ou principalmente metálico", spells: "detect metal; conductive weapon; shielded arm; magnetic attraction/repulsion; variantes incluem magnetic acceleration, noxious metals, mercurial stride, rust cloud, field of razors e impaling spike" } },
+  zuhras_gloves: { summaries: { "pt-BR": "Luvas investidas que protegem itens contra Desarmar e canalizam arma storm ou muralha de metal uma vez por dia.", en: "Invested gloves protect held items from Disarm and channel weapon storm or a wall of metal once per day.", es: "Unos guantes investidos protegen objetos contra Desarmar y canalizan weapon storm o un muro de metal una vez al día." }, mechanics: { reflex: "+3 item na CD de Reflexos contra tentativas de Desarmar item segurado", activate: "2 ações; 1/dia; Concentração e Manuseio; arma principalmente metálica", offense: "weapon storm de 6º círculo replicando a arma", defense: "wall of metal; perde o bônus de Reflexos até a barreira terminar; pode Dissipar", saveDC: "30" } }
+};
+for (const [slug, mechanics] of Object.entries(RAGE_ELEMENTS_METAL_ITEM_MECHANICS)) {
+  const item = PF2E_DATA.items.find((record) => record.id === `item.rage_elements.metal.${slug}`);
+  if (!item) continue;
+  item.summaries = mechanics.summaries;
+  item.description = mechanics.summaries["pt-BR"];
+  item.mechanics = mechanics.mechanics;
+  item.needs_review = false;
+  item.sourceApproximate = false;
 }
 const RAGE_ELEMENTS_DOMAIN_FOCUS = [
   ["earth.practice_makes_perfect", "A Prática Leva à Perfeição", "Practice Makes Perfect", "La práctica hace al maestro", 1, 97, "toil", "Concede um bônus a um teste de perícia treinada que falhou."],
@@ -16022,6 +16068,80 @@ for (const [classKey, slug, pt, en, es, level, prereq] of GUNS_GEARS_CLASS_FEATS
     sourceApproximate: false, ruleset: "legacy", needs_review: false, rarity: "common",
   });
 }
+const GUNS_GEARS_INVENTOR_FEAT_MECHANICS = {
+  adulterar: { page: 26, mechanics: { action: "Ações; Manuseio", target: "arma empunhada ou armadura vestida de inimigo ao alcance", check: "Manufatura contra CD de Reflexos", criticalSuccess: "arma: –2 circunstancial em ataques e dano; armadura: desprevenido e –3 metros em Velocidades até Interagir", success: "mesmo efeito, mas termina no início do seu próximo turno", criticalFailure: "você sofre dano de fogo igual ao seu nível" } },
+  companheiro_prototipo: { page: 26, mechanics: { effect: "adquire um companheiro construto protótipo; ele é um lacaio e segue as regras de companheiro construto" } },
+  ferramentas_integradas: { page: 26, mechanics: { selection: "até dois conjuntos de ferramentas, total de até 2 Volumes", effect: "tornam-se parte da inovação sem aumentar seu Volume; acesso rápido quando empunhando, vestindo ou adjacente; não contam no limite de ferramentas vestidas" } },
+  compactar_armadura: { page: 26, mechanics: { prerequisite: "inovação de armadura", action: "Ação; Manuseio", effect: "remove ou veste instantaneamente a armadura; forma compactada é segurada com duas mãos; reduz 1 Volume, até Volume leve" } },
+  compactar_construto: { page: 26, mechanics: { prerequisite: "inovação de construto", action: "Ação; Manuseio", effect: "você ou construto adjacente transforma-o em forma compacta; não pode agir; Volume 2 Pequeno, 4 Médio ou 8 Grande; rodas permitem arrastar à metade da Velocidade" } },
+  compactar_arma: { page: 27, mechanics: { prerequisite: "inovação de arma", action: "Ação; Manuseio", effect: "a inovação de arma se dobra em forma compacta para transporte e retorna à forma normal quando usada; requer duas mãos na forma compacta" } },
+  inovacao_adaptavel: { page: 27, mechanics: { prerequisite: "inovação", effect: "escolhe uma modificação inicial, incremental ou revolucionária compatível e pode alterá-la durante preparações diárias conforme as regras de inovação" } },
+  sobrecarga_rapida: { page: 27, mechanics: { action: "Ação; Manuseio", effect: "usa Sobrecarga como ação adicional para energizar a inovação, respeitando o limite de uso da classe" } },
+  sobrecarga_instavel: { page: 27, mechanics: { action: "Ação; Instável", effect: "adiciona o benefício de Sobrecarga Instável à próxima Sobrecarga; depois realiza o teste simples da função instável" } },
+  gambiarra_util: { page: 30, mechanics: { prerequisite: "amplificador ofensivo", frequency: "1 vez a cada 10 minutos", target: "aliado ao alcance e uma arma dele", check: "Manufatura contra CD alta do nível", success: "por 1 minuto, Golpes do aliado com a arma recebem seu amplificador ofensivo", criticalFailure: "aliado sofre dano igual ao tipo e quantidade normal do amplificador" } },
+  inovacao_incremental: { page: 22, mechanics: { effect: "escolhe uma modificação incremental do tipo da inovação e a aplica à inovação" } },
+  reflexos_rapidos: { page: 23, mechanics: { effect: "proficiência em Reflexos aumenta para mestre; em sucesso no salvamento de Reflexos, trata como sucesso crítico" } },
+  sobrecarga_magistral: { page: 23, mechanics: { effect: "ao usar Sobrecarga com sucesso, dano adicional aumenta em 2, substituindo o aumento de sobrecarga especialista" } },
+  especializacao_em_armas: { page: 23, mechanics: { effect: "proficiência com armas simples, marciais e ataques desarmados aumenta para especialista; recebe dano de especialização conforme a classe" } },
+  especialidade_inventiva: { page: 23, mechanics: { effect: "proficiência na CD de classe de inventor aumenta para especialista; aplica a CD das inovações e ações de inventor" } },
+  amplificador_ofensivo: { page: 23, mechanics: { effect: "escolhe um amplificador ofensivo e aplica seu dano/efeito aos Golpes da inovação; amplificadores podem causar fogo, ácido, eletricidade ou outros efeitos conforme a escolha" } },
+  reconfiguracao_completa: { page: 23, mechanics: { effect: "ao reconfigurar a inovação em tempo de recesso e passar no teste de Manufatura, troca qualquer quantidade de modificações, o amplificador ofensivo ou talentos de modificação; mantém o tipo de cada modificação" } },
+  maestria_em_armas: { page: 23, mechanics: { effect: "proficiência com armas simples, marciais e ataques desarmados aumenta para mestre" } },
+  especializacao_maior: { page: 23, mechanics: { effect: "dano de especialização aumenta para +4 quando especialista, +6 quando mestre e +8 quando lendário" } },
+  sobrecarga_inigualavel: { page: 24, mechanics: { effect: "proficiência em Manufatura torna-se lendária; Sobrecarga bem-sucedida aumenta o dano adicional em 3, substituindo o aumento magistral" } },
+  inovacao_revolucionaria: { page: 24, mechanics: { effect: "escolhe uma modificação revolucionária do tipo da inovação ou uma modificação inicial/incremental compatível" } },
+  maestria_inventiva: { page: 24, mechanics: { effect: "proficiência na CD de classe de inventor aumenta para mestre" } },
+  invencao_infinita: { page: 24, mechanics: { effect: "nas preparações diárias, repara automaticamente a inovação destruída ou quebrada e pode mudá-la para outro tipo acessível, com novas modificações e amplificador; talentos dependentes precisam ser retreinados" } }
+};
+for (const [slug, details] of Object.entries(GUNS_GEARS_INVENTOR_FEAT_MECHANICS)) {
+  const feat = PF2E_DATA.feats.find((record) => record.id === `feat.class.inventor.${slug}`);
+  if (!feat) continue;
+  feat.mechanics = details.mechanics;
+  feat.source = { book: GUNS_GEARS_SOURCE, page: details.page };
+  feat.summaries = {
+    "pt-BR": `Talento de Inventor: ${feat.names["pt-BR"]}. ${details.mechanics.effect || details.mechanics.success || "Efeito estruturado conforme a fonte oficial."}`,
+    en: `Inventor feat: ${feat.names.en}. Structured mechanics confirmed from the official source.`,
+    es: `Dote de inventor: ${feat.names.es}. Mecánicas estructuradas confirmadas en la fuente oficial.`,
+  };
+  feat.description = feat.summaries["pt-BR"];
+}
+const GUNS_GEARS_GUNSLINGER_FEAT_MECHANICS = {
+  atirador_avancado: {
+    page: 114,
+    mechanics: { choice: "armas de fogo ou bestas", effect: "fica proficiente com todas as armas avançadas do grupo escolhido como se fossem armas marciais" },
+  },
+};
+for (const [slug, details] of Object.entries(GUNS_GEARS_GUNSLINGER_FEAT_MECHANICS)) {
+  const feat = PF2E_DATA.feats.find((record) => record.id === `feat.class.gunslinger.${slug}`);
+  if (!feat) continue;
+  feat.mechanics = details.mechanics;
+  feat.source = { book: GUNS_GEARS_SOURCE, page: details.page };
+  feat.summaries = {
+    "pt-BR": `Talento de Pistoleiro: ${feat.names["pt-BR"]}. ${details.mechanics.effect}`,
+    en: `Gunslinger feat: ${feat.names.en}. Structured mechanics confirmed from the official source.`,
+    es: `Dote de pistolero: ${feat.names.es}. Mecánicas estructuradas confirmadas en la fuente oficial.`,
+  };
+  feat.description = feat.summaries["pt-BR"];
+}
+const PLAYER_CORE_SHARED_FEAT_MECHANICS = {
+  "feat.class.fighter.lutar_as_cegas": { mechanics: { effect: "você não precisa fazer o teste simples para mirar em criaturas ocultas; não fica desprevenido contra criaturas que não pode ver; recebe +2 circunstancial em Buscar para encontrar criaturas escondidas" } },
+  "feat.class.rogue.lutar_as_cegas": { mechanics: { effect: "você não precisa fazer o teste simples para mirar em criaturas ocultas; não fica desprevenido contra criaturas que não pode ver; recebe +2 circunstancial em Buscar para encontrar criaturas escondidas" } },
+  "feat.class.ranger.lutar_as_cegas": { mechanics: { effect: "você não precisa fazer o teste simples para mirar em criaturas ocultas; não fica desprevenido contra criaturas que não pode ver; recebe +2 circunstancial em Buscar para encontrar criaturas escondidas" } },
+  "feat.ancestry.amurrun.maldicao_do_gato_preto": { mechanics: { trigger: "uma criatura a até 9 metros obtém sucesso em um salvamento", effect: "a criatura deve rolar novamente o salvamento e usar o pior resultado" } },
+};
+for (const [id, details] of Object.entries(PLAYER_CORE_SHARED_FEAT_MECHANICS)) {
+  const feat = PF2E_DATA.feats.find((record) => record.id === id);
+  if (!feat) continue;
+  feat.mechanics = details.mechanics;
+  feat.needs_review = false;
+  feat.sourceApproximate = false;
+  feat.summaries = {
+    "pt-BR": `Talento: ${feat.names["pt-BR"]}. ${details.mechanics.effect || details.mechanics.trigger}`,
+    en: `Feat: ${feat.names.en}. Structured mechanics confirmed from the official source.`,
+    es: `Dote: ${feat.names.es}. Mecánicas estructuradas confirmadas en la fuente oficial.`,
+  };
+  feat.description = feat.summaries["pt-BR"];
+}
 
 // Livro do Jogador (Remaster), pp. 107–112: índice de talentos de Bardo.
 // O efeito individual permanece em revisão, mas a opção já é selecionável
@@ -16124,8 +16244,8 @@ const PLAYER_CORE_FIGHTER_FEATS = [
   ["ataque_fisgador", "Ataque Fisgador", 1], ["afericao_de_combate", "Aferição de Combate", 1], ["corte_duplo", "Corte Duplo", 1], ["escudo_reativo", "Escudo Reativo", 1],
   ["golpe_de_exatidao", "Golpe de Exatidão", 1], ["golpe_feroz", "Golpe Feroz", 1], ["investida_subita", "Investida Súbita", 1], ["postura_de_queima_roupa", "Postura de Queima-Roupa", 1],
   ["aparagem_de_duelo", "Aparagem de Duelo", 2], ["arremesso_ressaltante", "Arremesso Ressaltante", 2], ["bloqueio_agressivo", "Bloqueio Agressivo", 2], ["estocada", "Estocada", 2],
-  ["frear_com_a_arma", "Frear com a Arma", 2], ["floreio_guerreiro", "Floreio Guerreiro", 2], ["atracar_em_combate", "Atracar em Combate", 2], ["reposicionamento_elegante", "Reposicionamento Elegante", 2],
-  ["troca_veloz", "Troca Veloz", 2], ["guerreiro_pressao", "Guerreiro Pressão", 2], ["tiro_de_assistencia", "Tiro de Assistência", 2], ["aparagem_dupla", "Aparagem Dupla", 4],
+  ["frear_com_a_arma", "Frear com a Arma", 2], ["atracar_em_combate", "Atracar em Combate", 2], ["reposicionamento_elegante", "Reposicionamento Elegante", 2],
+  ["troca_veloz", "Troca Veloz", 2], ["tiro_de_assistencia", "Tiro de Assistência", 2], ["aparagem_dupla", "Aparagem Dupla", 4],
   ["ataque_de_duas_maos", "Ataque de Duas Mãos", 4], ["deslocamento_com_escudo", "Deslocamento com Escudo", 4], ["empurrao_poderoso", "Empurrão Poderoso", 4], ["investida_abaloante", "Investida Abalroante", 4],
   ["jogar_no_chao", "Jogar no Chão", 4], ["reversao_rapida", "Reversão Rápida", 4], ["tiro_duplo", "Tiro Duplo", 4], ["tiro_em_retirada", "Tiro em Retirada", 4],
   ["varredura", "Varredura", 4], ["ataque_vantajoso", "Ataque Vantajoso", 6], ["deflexao_do_protetor", "Deflexão do Protetor", 6], ["escudo_protetor", "Escudo Protetor", 6],
@@ -16177,7 +16297,7 @@ for (const [slug, pt, level] of PLAYER_CORE_ROGUE_FEATS) {
 }
 
 const PLAYER_CORE_ROGUE_FEATS_ADDITIONAL = [
-  ["golpeador_astuto", "Golpeador Astuto", 8], ["lutar_as_cegas", "Lutar às Cegas", 8], ["passo_de_recuo", "Passo de Recuo", 8], ["passo_lateral", "Passo Lateral", 8],
+  ["golpeador_astuto", "Golpeador Astuto", 8], ["lutar_as_cegas", "Lutar às Cegas", 8], ["passo_lateral", "Passo Lateral", 8],
   ["golpe_agil", "Golpe Ágil", 10], ["adepto_da_furtividade", "Adepto da Furtividade", 10], ["debilitacoes_ferozes", "Debilitações Ferozes", 10], ["debilitacoes_metodicas", "Debilitações Metódicas", 10],
   ["debilitacoes_precisas", "Debilitações Precisas", 10], ["debilitacoes_taticas", "Debilitações Táticas", 10], ["tiro_de_derrubada", "Tiro de Derrubada", 12], ["finta_de_ricochete", "Finta de Ricochete", 12],
   ["interferencia_reativa", "Interferência Reativa", 12], ["preparacao", "Preparação", 12], ["salto_fantastico", "Salto Fantástico", 12], ["surgir_das_sombras", "Surgir das Sombras", 12],
@@ -18541,5 +18661,140 @@ if (typeof module !== 'undefined' && module.exports) {
         record.needs_review = false;
       }
     }
+  }
+
+  // Reaplica regras compartilhadas no final do catálogo: os registros de
+  // Fighter/Rogue/Ranger são declarados depois do bloco inicial acima.
+  const PLAYER_CORE_SHARED_FEAT_MECHANICS_LATE = {
+    "feat.class.fighter.lutar_as_cegas": { mechanics: { effect: "você não precisa fazer o teste simples para mirar em criaturas ocultas; não fica desprevenido contra criaturas que não pode ver; recebe +2 circunstancial em Buscar para encontrar criaturas escondidas" } },
+    "feat.class.rogue.lutar_as_cegas": { mechanics: { effect: "você não precisa fazer o teste simples para mirar em criaturas ocultas; não fica desprevenido contra criaturas que não pode ver; recebe +2 circunstancial em Buscar para encontrar criaturas escondidas" } },
+    "feat.class.ranger.lutar_as_cegas": { mechanics: { effect: "você não precisa fazer o teste simples para mirar em criaturas ocultas; não fica desprevenido contra criaturas que não pode ver; recebe +2 circunstancial em Buscar para encontrar criaturas escondidas" } },
+    "feat.ancestry.amurrun.maldicao_do_gato_preto": { mechanics: { trigger: "uma criatura a até 9 metros obtém sucesso em um salvamento", effect: "a criatura deve rolar novamente o salvamento e usar o pior resultado" } },
+  };
+  for (const [id, details] of Object.entries(PLAYER_CORE_SHARED_FEAT_MECHANICS_LATE)) {
+    const feat = PF2E_DATA.feats.find((record) => record.id === id);
+    if (!feat) continue;
+    feat.mechanics = details.mechanics;
+    feat.needs_review = false;
+    feat.sourceApproximate = false;
+    feat.summaries = {
+      "pt-BR": `Talento: ${feat.names["pt-BR"]}. ${details.mechanics.effect || details.mechanics.trigger}`,
+      en: `Feat: ${feat.names.en}. Structured mechanics confirmed from the official source.`,
+      es: `Dote: ${feat.names.es}. Mecánicas estructuradas confirmadas en la fuente oficial.`,
+    };
+    feat.description = feat.summaries["pt-BR"];
+  }
+
+  const REMAINING_CONFIRMED_FEAT_MECHANICS = {
+    "feat.ancestry.kholo.primeiro_a_atacar_primeiro_a_cair": {
+      sourcePage: 23,
+      mechanics: {
+        trigger: "você acerta uma criatura que ainda não agiu no primeiro turno de combate",
+        target: "a criatura atingida",
+        effect: "a criatura fica desprevenida até o final do seu próximo turno",
+        accelerated: "se a criatura for reduzida a 0 PV antes do fim do seu próximo turno, você e aliados a até 9 metros ficam acelerados até o fim do seu próximo turno; a ação adicional só pode ser Andar, Dar um Passo ou Golpear"
+      }
+    },
+    "feat.ancestry.tripkee.familiaridade_armas_tripkeenas": {
+      sourcePage: 36,
+      mechanics: {
+        access: "todas as armas incomuns com o traço tripkee",
+        familiarity: "armas com o traço tripkee, arco curto, dardo, machadinha, segadeira e zarabatana",
+        proficiency: "para proficiência, armas marciais da lista contam como simples e armas avançadas contam como marciais",
+        criticalSpecialization: "no 5º nível, acertos críticos com uma dessas armas aplicam o efeito de especialização crítica"
+      }
+    },
+    "feat.skill.pc2.acrobatics_teamwork": {
+      sourcePage: 229,
+      mechanics: {
+        trigger: "você obtém sucesso em Atravessar Acrobaticamente pelo espaço de um inimigo",
+        effect: "um aliado adjacente ao inimigo pode Dar um Passo como reação, mas precisa continuar adjacente ao inimigo"
+      }
+    },
+    "feat.class.ranger.tiro_a_caca": {
+      sourcePage: 201,
+      mechanics: {
+        requirement: "empunhar uma arma à distância com recarga 0",
+        activity: "faça dois Golpes rápidos contra sua presa com a arma requerida",
+        multipleAttackPenalty: "aplique a penalidade por ataques múltiplos a cada Golpe normalmente",
+        damage: "se ambos os Golpes atingirem a mesma criatura, some os danos para fins de resistências e fraquezas"
+      }
+    },
+    "feat.class.summoner.combatente_a_distancia": {
+      sourcePage: 53,
+      mechanics: {
+        effect: "o eidolon adquire um Golpe desarmado à distância com incremento de 9 metros, que causa 1d4 de dano e possui os traços mágico e propulsivo",
+        damageChoice: "ao selecionar o talento, escolha ácido, contundente, cortante, eletricidade, fogo, frio, negativo, perfurante ou positivo; um eidolon celestial, ínfero ou monitor não neutro verdadeiro pode escolher o tipo correspondente à sua tendência"
+      }
+    }
+  };
+  for (const [id, details] of Object.entries(REMAINING_CONFIRMED_FEAT_MECHANICS)) {
+    const feat = PF2E_DATA.feats.find((record) => record.id === id);
+    if (!feat) continue;
+    feat.mechanics = details.mechanics;
+    feat.source = { ...(feat.source || {}), page: details.sourcePage };
+    feat.needs_review = false;
+    feat.sourceApproximate = false;
+    feat.summaries = {
+      "pt-BR": `Talento: ${feat.names["pt-BR"]}. ${details.mechanics.effect || details.mechanics.familiarity || details.mechanics.activity}`,
+      en: `Feat: ${feat.names.en}. Structured mechanics confirmed from the official source.`,
+      es: `Dote: ${feat.names.es}. Mecánicas estructuradas confirmadas en la fuente oficial.`,
+    };
+    feat.description = feat.summaries["pt-BR"];
+  }
+
+  const ADDITIONAL_CONFIRMED_FEAT_MECHANICS = {
+    "feat.general.pc2.deathless": {
+      sourcePage: 233,
+      mechanics: {
+        prerequisites: "Duro de Matar; você morreu pelo menos uma vez",
+        effect: "na primeira vez a cada dia em que recuperar PV enquanto estiver morrendo, recebe bônus circunstancial nos PV recuperados igual ao seu nível e não recebe nem aumenta ferido"
+      }
+    },
+    "feat.class.rogue.previsivel": {
+      sourcePage: 169,
+      mechanics: {
+        action: 1,
+        check: "Percepção para Sentir Motivação contra a CD de Dissimulação do alvo ou uma CD difícil para o nível dele",
+        criticalSuccess: "+2 circunstancial na CA contra o alvo até o início do seu próximo turno e +2 circunstancial nos salvamentos contra ele",
+        success: "+1 circunstancial na CA contra o alvo até o início do seu próximo turno e escolha um benefício de resistência ou retaliação conforme a estratégia observada",
+        failure: "sem benefício"
+      }
+    },
+    "feat.class.rogue.fica_no_chao": {
+      sourcePage: 177,
+      mechanics: {
+        action: "reaction",
+        prerequisite: "mestre em Atletismo",
+        trigger: "um adversário prostrado ao seu alcance Levanta-se",
+        check: "Atletismo contra a CD de Fortitude do inimigo",
+        success: "a ação Levantar é interrompida e a criatura permanece prostrada",
+        criticalSuccess: "a ação Levantar é interrompida e a criatura permanece prostrada; o alvo fica desprevenido até o fim do seu próximo turno"
+      }
+    },
+    "feat.class.rogue.infiltracao_improvavel": {
+      sourcePage: 180,
+      mechanics: {
+        actions: 2,
+        prerequisites: "lendário em Acrobacia; Espremer-se Rápido",
+        requirement: "adjacente ao chão ou a uma parede",
+        effect: "move-se por imperfeições minúsculas, podendo atravessar parede ou chão; a tentativa falha se o material não for madeira, gesso ou pedra, se tiver mais de 3 metros de espessura ou se contiver qualquer camada de metal",
+        climbing: "com Velocidade de escalada, pode tentar atravessar um teto"
+      }
+    }
+  };
+  for (const [id, details] of Object.entries(ADDITIONAL_CONFIRMED_FEAT_MECHANICS)) {
+    const feat = PF2E_DATA.feats.find((record) => record.id === id);
+    if (!feat) continue;
+    feat.mechanics = details.mechanics;
+    feat.source = { ...(feat.source || {}), page: details.sourcePage };
+    feat.needs_review = false;
+    feat.sourceApproximate = false;
+    feat.summaries = {
+      "pt-BR": `Talento: ${feat.names["pt-BR"]}. ${details.mechanics.effect || details.mechanics.success || details.mechanics.check}`,
+      en: `Feat: ${feat.names.en}. Structured mechanics confirmed from the official source.`,
+      es: `Dote: ${feat.names.es}. Mecánicas estructuradas confirmadas en la fuente oficial.`,
+    };
+    feat.description = feat.summaries["pt-BR"];
   }
 })();

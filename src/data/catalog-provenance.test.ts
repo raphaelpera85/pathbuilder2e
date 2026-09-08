@@ -333,7 +333,7 @@ describe("proveniência do catálogo legado", () => {
     const catalog = loadCatalog() as { feats: (LegacyRecord & { ancestry?: string; level?: number; prerequisites?: string[] })[] };
     const feats = catalog.feats.filter((item) => item.id?.startsWith("feat.ancestry.tripkee."));
     expect(feats).toHaveLength(20);
-    expect(feats.every((item) => item.ancestry === "Tripkee" && item.source?.book === "Livro do Jogador 2 (Player Core 2, Remaster)" && [33, 34, 35].includes(item.source?.page || 0))).toBe(true);
+    expect(feats.every((item) => item.ancestry === "Tripkee" && item.source?.book === "Livro do Jogador 2 (Player Core 2, Remaster)" && [33, 34, 35, 36].includes(item.source?.page || 0))).toBe(true);
     expect(feats.every((item) => item.needs_review === false && !item.sourceApproximate && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
     expect(feats.filter((item) => item.level === 1)).toHaveLength(7);
     expect(feats.find((item) => item.id === "feat.ancestry.tripkee.salto_ricochete")).toMatchObject({ level: 9, prerequisites: ["Salto na Parede"] });
@@ -1477,6 +1477,63 @@ describe("proveniência do catálogo legado", () => {
     expect(items.find((item) => item?.id.endsWith("stalagmite_seed"))).toMatchObject({ mechanics: { damage: expect.stringContaining("6d6 perfurante") } });
   });
 
+  it("confirma as mecânicas dos itens de Fogo de Rage of Elements", () => {
+    const catalog = loadCatalog() as { itemCompendium: LegacyRecord[] };
+    const slugs = ["ash_gown", "bloodburn_censer", "brazier_of_harmony", "candle_of_inflamed_passions", "everburning_coal", "globe_of_shrouds", "lambent_perfume", "obsidian_edge", "rhyton_of_the_radiant_ifrit", "scalding_gauntlets", "smoke_veil", "sparkshade_parasol", "thawing_candle"];
+    const items = slugs.map((slug) => catalog.itemCompendium.find((item) => item.id === `item.rage_elements.fire.${slug}`));
+    expect(items).toHaveLength(13);
+    expect(items.every((item) => item && item.needs_review === false && item.source?.book === "Rage of Elements (Remaster)" && item.mechanics && item.summaries?.["pt-BR"] && item.summaries?.en && item.summaries?.es)).toBe(true);
+    expect(items.find((item) => item?.id.endsWith("bloodburn_censer"))).toMatchObject({ mechanics: { failure: expect.stringContaining("4d6") } });
+    expect(items.find((item) => item?.id.endsWith("obsidian_edge"))).toMatchObject({ mechanics: { effect: expect.stringContaining("2d6 fogo") } });
+    expect(items.find((item) => item?.id.endsWith("sparkshade_parasol"))).toMatchObject({ mechanics: { pyrotechnics: expect.stringContaining("10d6 fogo") } });
+  });
+
+  it("confirma as mecânicas dos itens de Metal de Rage of Elements", () => {
+    const catalog = loadCatalog() as { itemCompendium: LegacyRecord[] };
+    const slugs = ["curious_teardrop", "ferrofluid_urchin", "malleable", "morphing_weapon", "resonant_guitar", "rustbringer", "silver_snake_cane", "spellsap_grenade", "spiny_lodestone", "staff_of_metal", "zuhras_gloves"];
+    const items = slugs.map((slug) => catalog.itemCompendium.find((item) => item.id === `item.rage_elements.metal.${slug}`));
+    expect(items).toHaveLength(11);
+    expect(items.every((item) => item && item.needs_review === false && item.source?.book === "Rage of Elements (Remaster)" && item.mechanics && item.summaries?.["pt-BR"] && item.summaries?.en && item.summaries?.es)).toBe(true);
+    expect(items.find((item) => item?.id.endsWith("spellsap_grenade"))).toMatchObject({ mechanics: { effect: expect.stringContaining("perde uma magia") } });
+    expect(items.find((item) => item?.id.endsWith("morphing_weapon"))).toMatchObject({ mechanics: { benefits: expect.stringContaining("Reach") } });
+    expect(items.find((item) => item?.id.endsWith("zuhras_gloves"))).toMatchObject({ mechanics: { saveDC: "30" } });
+  });
+
+  it("confirma as mecânicas dos talentos de Inventor de Pólvora e Engrenagens", () => {
+    const catalog = loadCatalog() as { feats: LegacyRecord[] };
+    const slugs = [
+      "adulterar", "companheiro_prototipo", "ferramentas_integradas", "compactar_armadura", "compactar_construto", "compactar_arma",
+      "inovacao_adaptavel", "sobrecarga_rapida", "sobrecarga_instavel", "gambiarra_util", "inovacao_incremental", "reflexos_rapidos",
+      "sobrecarga_magistral", "especializacao_em_armas", "especialidade_inventiva", "amplificador_ofensivo", "reconfiguracao_completa",
+      "maestria_em_armas", "especializacao_maior", "sobrecarga_inigualavel", "inovacao_revolucionaria", "maestria_inventiva", "invencao_infinita",
+    ];
+    const feats = slugs.map((slug) => catalog.feats.find((item) => item.id === `feat.class.inventor.${slug}`));
+    expect(feats).toHaveLength(23);
+    expect(feats.every((item) => item && item.needs_review === false && item.source?.book === "Pólvora e Engrenagens (pré-Remaster)" && item.sourceApproximate === false && item.mechanics && item.summaries?.["pt-BR"] && item.summaries?.en && item.summaries?.es)).toBe(true);
+    expect(feats.find((item) => item?.id.endsWith("adulterar"))).toMatchObject({ mechanics: { check: expect.stringContaining("Manufatura") } });
+    expect(feats.find((item) => item?.id.endsWith("gambiarra_util"))).toMatchObject({ mechanics: { frequency: "1 vez a cada 10 minutos" } });
+    expect(feats.find((item) => item?.id.endsWith("invencao_infinita"))).toMatchObject({ mechanics: { effect: expect.stringContaining("preparações diárias") } });
+  });
+
+  it("confirma Atirador Avançado de Pólvora e Engrenagens", () => {
+    const catalog = loadCatalog() as { feats: LegacyRecord[] };
+    expect(catalog.feats.find((item) => item.id === "feat.class.gunslinger.atirador_avancado")).toMatchObject({
+      source: { book: "Pólvora e Engrenagens (pré-Remaster)", page: 114 },
+      mechanics: { choice: "armas de fogo ou bestas" },
+      needs_review: false,
+    });
+  });
+
+  it("confirma os talentos compartilhados de combate e a Maldição do Gato Preto", () => {
+    const catalog = loadCatalog() as { feats: LegacyRecord[] };
+    const ids = ["feat.class.fighter.lutar_as_cegas", "feat.class.rogue.lutar_as_cegas", "feat.class.ranger.lutar_as_cegas", "feat.ancestry.amurrun.maldicao_do_gato_preto"];
+    const feats = ids.map((id) => catalog.feats.find((item) => item.id === id));
+    expect(feats).toHaveLength(4);
+    expect(feats.every((item) => item && item.needs_review === false && item.mechanics && item.summaries?.["pt-BR"] && item.summaries?.en && item.summaries?.es)).toBe(true);
+    expect(feats.find((item) => item?.id.endsWith("lutar_as_cegas"))).toMatchObject({ mechanics: { effect: expect.stringContaining("teste simples") } });
+    expect(feats.find((item) => item?.id.endsWith("maldicao_do_gato_preto"))).toMatchObject({ mechanics: { effect: expect.stringContaining("pior resultado") } });
+  });
+
   it("confirma mecânicas dos talentos iniciais de Pistoleiro em Pólvora e Engrenagens", () => {
     const catalog = loadCatalog() as { feats: LegacyRecord[] };
     const ids = ["as_da_besta", "disparo_de_cobertura", "espada_e_pistola", "estourar_fechadura", "para_o_chao", "manufatura_de_municao", "armamentos_defensivos", "girar_a_pistola", "recarga_arriscada", "tiro_de_aviso", "tiro_fingido", "cauterizar", "cortina_de_fumaca", "dividir_bala", "perfurar_e_disparar", "saltar_e_disparar", "ataque_ressaltante", "disparo_penetrante", "municoes_preciosas", "tiro_ardiloso", "tiro_declarado", "tiro_de_deflexao", "tiro_de_redirecionamento", "ferimento_superficial", "brio_inabalavel", "camuflagem_do_atirador", "sangue_no_ar", "olhos_de_matador", "tiro_de_ricochete"];
@@ -2115,5 +2172,31 @@ describe("proveniência do catálogo legado", () => {
     expect(items.every((item) => item && item.source?.book?.includes("Rage of Elements") && item.source?.page && item.needs_review === false && item.mechanics && ["pt-BR", "en", "es"].every((locale) => item.names?.[locale] && item.summaries?.[locale]))).toBe(true);
     expect(items.find((item) => item?.id.endsWith("splintering_spear"))).toMatchObject({ mechanics: { hit: "1d6 sangramento persistente" } });
     expect(items.find((item) => item?.id.endsWith("broadleaf_shield"))).toMatchObject({ mechanics: { base: "Dureza 4, 16 PV, BT 8" } });
+  });
+
+  it("preserva as cinco mecânicas de talentos confirmadas nos textos locais", () => {
+    const catalog = loadCatalog() as { feats: Array<LegacyRecord & { mechanics?: Record<string, unknown> }> };
+    const ids = [
+      "feat.ancestry.kholo.primeiro_a_atacar_primeiro_a_cair",
+      "feat.ancestry.tripkee.familiaridade_armas_tripkeenas",
+      "feat.skill.pc2.acrobatics_teamwork",
+      "feat.class.ranger.tiro_a_caca",
+      "feat.class.summoner.combatente_a_distancia",
+      "feat.general.pc2.deathless",
+      "feat.class.rogue.previsivel",
+      "feat.class.rogue.fica_no_chao",
+      "feat.class.rogue.infiltracao_improvavel",
+    ];
+    const feats = ids.map((id) => catalog.feats.find((feat) => feat.id === id));
+    expect(feats.every((feat) => feat && feat.source?.page && feat.needs_review === false && feat.mechanics && ["pt-BR", "en", "es"].every((locale) => feat.names?.[locale] && feat.summaries?.[locale]))).toBe(true);
+    expect(feats.find((feat) => feat?.id.includes("primeiro_a_atacar"))).toMatchObject({ mechanics: { accelerated: expect.stringContaining("acelerados") } });
+    expect(feats.find((feat) => feat?.id.includes("familiaridade_armas"))).toMatchObject({ mechanics: { criticalSpecialization: expect.stringContaining("5º nível") } });
+    expect(feats.find((feat) => feat?.id.includes("acrobatics_teamwork"))).toMatchObject({ mechanics: { trigger: expect.stringContaining("Atravessar Acrobaticamente") } });
+    expect(feats.find((feat) => feat?.id.includes("tiro_a_caca"))).toMatchObject({ mechanics: { damage: expect.stringContaining("resistências") } });
+    expect(feats.find((feat) => feat?.id.includes("combatente_a_distancia"))).toMatchObject({ mechanics: { effect: expect.stringContaining("9 metros") } });
+    expect(feats.find((feat) => feat?.id.includes("deathless"))).toMatchObject({ mechanics: { effect: expect.stringContaining("ferido") } });
+    expect(feats.find((feat) => feat?.id.includes("previsivel"))).toMatchObject({ mechanics: { check: expect.stringContaining("Sentir Motivação") } });
+    expect(feats.find((feat) => feat?.id.includes("fica_no_chao"))).toMatchObject({ mechanics: { trigger: expect.stringContaining("Levanta-se") } });
+    expect(feats.find((feat) => feat?.id.includes("infiltracao_improvavel"))).toMatchObject({ mechanics: { climbing: expect.stringContaining("Velocidade de escalada") } });
   });
 });

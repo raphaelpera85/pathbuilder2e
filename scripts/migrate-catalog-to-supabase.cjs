@@ -58,6 +58,28 @@ const tableOrder = [
   'catalog_buffs',
 ];
 
+async function removeRowsAbsentFromSeed(tableName, rows) {
+  const seededIds = new Set(rows.map((row) => row.id));
+  const { data: existingRows, error: readError } = await supabase
+    .from(tableName)
+    .select('id');
+  if (readError) throw new Error(`Falha ao ler IDs atuais de ${tableName}: ${readError.message}`);
+
+  const staleIds = (existingRows || [])
+    .map((row) => row.id)
+    .filter((id) => !seededIds.has(id));
+  const batchSize = 100;
+  for (let i = 0; i < staleIds.length; i += batchSize) {
+    const batch = staleIds.slice(i, i + batchSize);
+    const { error: deleteError } = await supabase
+      .from(tableName)
+      .delete()
+      .in('id', batch);
+    if (deleteError) throw new Error(`Falha ao remover IDs obsoletos de ${tableName}: ${deleteError.message}`);
+  }
+  if (staleIds.length) console.log(`  -> Removidos ${staleIds.length} registros obsoletos de ${tableName}.`);
+}
+
 async function run() {
   console.log(`[Migrate] Conectando ao Supabase: ${SUPABASE_URL}`);
   console.log(`[Migrate] Iniciando sincronização das 18 tabelas relacionais...`);
@@ -89,6 +111,8 @@ async function run() {
         successCount += batch.length;
       }
     }
+
+    await removeRowsAbsentFromSeed(tableName, rows);
 
     console.log(`  -> Concluído ${tableName}: ${successCount}/${rows.length} registros inseridos/atualizados.`);
   }

@@ -7696,9 +7696,9 @@
     "name_pt": "Vestido de Cinzas",
     "name_en": "Ash Gown",
     "name_es": "Vestido de ceniza",
-    "description_pt": "Roupa investida que concede resistência a fogo e pode envolver você em chamas durante um movimento.",
-    "description_en": "Rage of Elements fire item: Ash Gown. Full mechanical text pending review.",
-    "description_es": "Objeto de fuego de Rage of Elements: Vestido de ceniza. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Veste investida que concede resistência a fogo e Intimidação e incinera obstáculos e criaturas ao atravessar o campo.",
+    "description_en": "An invested gown grants fire resistance and Intimidation and burns obstacles and creatures as you move.",
+    "description_es": "Una prenda investida concede resistencia al fuego e Intimidación y quema obstáculos y criaturas al moverte.",
     "item_category": "magical",
     "level": 7,
     "price_gp": 0,
@@ -7712,6 +7712,12 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "resistance": "5 fogo; +1 Intimidação",
+        "activate": "2 ações; 1/dia; Stride e Golpe",
+        "effect": "ignora e destrói terreno difícil não mágico; criaturas adjacentes durante o movimento sofrem 2d6 fogo; Reflexos básico CD 23",
+        "variant": "greater: resistência 10, +2 Intimidação, 1/10 minutos, 4d6/CD 28"
+      },
       "needs_review": false
     }
   },
@@ -7720,9 +7726,9 @@
     "name_pt": "Turíbulo Queima-Sangue",
     "name_en": "Bloodburn Censer",
     "name_es": "Incensario quema sangre",
-    "description_pt": "Turíbulo que libera fumaça capaz de causar dano de fogo ou veneno e enfraquecer criaturas.",
-    "description_en": "Rage of Elements fire item: Bloodburn Censer. Full mechanical text pending review.",
-    "description_es": "Objeto de fuego de Rage of Elements: Incensario quema sangre. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Incensário que cria uma aura de fumaça de fogo ou veneno, causando dano persistente e enfraquecendo criaturas.",
+    "description_en": "A censer creates a fire or poison smoke aura that deals persistent damage and weakens creatures.",
+    "description_es": "Un incensario crea un aura de humo de fuego o veneno que causa daño persistente y debilita criaturas.",
     "item_category": "magical",
     "level": 13,
     "price_gp": 0,
@@ -7736,6 +7742,14 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "activate": "2 ações; 1/dia; incenso de 5 po; emanação de 6 metros; Fortitude CD 34",
+        "criticalSuccess": "sem efeito",
+        "success": "2d6 dano persistente",
+        "failure": "4d6 dano persistente e Enfraquecido 2",
+        "criticalFailure": "6d6 dano persistente e Enfraquecido 3",
+        "immunity": "1 hora"
+      },
       "needs_review": false
     }
   },
@@ -7744,9 +7758,9 @@
     "name_pt": "Braseiro da Harmonia",
     "name_en": "Brazier of Harmony",
     "name_es": "Brasero de armonía",
-    "description_pt": "Turíbulo que cria uma aura de paz e acalma criaturas que respiram sua fumaça.",
-    "description_en": "Rage of Elements fire item: Brazier of Harmony. Full mechanical text pending review.",
-    "description_es": "Objeto de fuego de Rage of Elements: Brasero de armonía. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Incensário que concede bônus de Diplomacia e cria uma aura de paz equivalente a calm de 3º círculo.",
+    "description_en": "A censer grants a Diplomacy bonus and creates a peace aura equivalent to 3rd-rank calm.",
+    "description_es": "Un incensario concede bonificación a Diplomacia y crea un aura de paz equivalente a calm de 3er rango.",
     "item_category": "magical",
     "level": 5,
     "price_gp": 0,
@@ -7760,6 +7774,11 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "diplomacy": "+1 item em Diplomacia enquanto segurado",
+        "activate": "2 ações; 1/dia; incenso de 1 pp; emanação de 6 metros",
+        "effect": "calm de 3º círculo; imunidade por 24 horas; dura até o incenso acabar"
+      },
       "needs_review": false
     }
   },
@@ -7768,9 +7787,9 @@
     "name_pt": "Vela das Paixões Inflamadas",
     "name_en": "Candle of Inflamed Passions",
     "name_es": "Vela de pasiones inflamadas",
-    "description_pt": "Consumível que intensifica emoções e impõe penalidade contra efeitos emocionais.",
-    "description_en": "Rage of Elements fire item: Candle of Inflamed Passions. Full mechanical text pending review.",
-    "description_es": "Objeto de fuego de Rage of Elements: Vela de pasiones inflamadas. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Vela consumível que eleva emoções e impõe penalidade a salvamentos contra efeitos emocionais por 10 minutos.",
+    "description_en": "A consumable candle heightens emotions and penalizes saves against emotion effects for 10 minutes.",
+    "description_es": "Una vela consumible intensifica emociones y penaliza salvaciones contra efectos emocionales durante 10 minutos.",
     "item_category": "magical",
     "level": 3,
     "price_gp": 0,
@@ -7784,6 +7803,11 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "activate": "1 ação; acender",
+        "area": "3 metros",
+        "effect": "–1 de estado em salvamentos contra efeitos emocionais; queima por 10 minutos; não pode ser reacendida"
+      },
       "needs_review": false
     }
   },
@@ -7792,9 +7816,9 @@
     "name_pt": "Carvão Inextinguível",
     "name_en": "Everburning Coal",
     "name_es": "Carbón inextinguible",
-    "description_pt": "Carvão mágico que protege contra frio, serve como chave planar e cria uma muralha de brasas.",
-    "description_en": "Rage of Elements fire item: Everburning Coal. Full mechanical text pending review.",
-    "description_es": "Objeto de fuego de Rage of Elements: Carbón inextinguible. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Carvão que concede resistência a frio, protege de ambientes frios, melhora viagens ao Plano do Fogo e cria uma muralha de brasas.",
+    "description_en": "A coal grants cold resistance, protects from cold environments, improves travel to the Plane of Fire, and creates a wall of coals.",
+    "description_es": "Un carbón concede resistencia al frío, protege de entornos fríos, mejora viajes al Plano del Fuego y crea un muro de brasas.",
     "item_category": "magical",
     "level": 12,
     "price_gp": 0,
@@ -7808,6 +7832,11 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "resistance": "10 a frio; proteção contra frio moderado, severo e extremo",
+        "planarKey": "chega a 1d6×25 milhas do destino em vez de 1d10×25",
+        "activate": "3 ações; 1/dia; wall of ice com traços, dano e fraquezas trocados para fogo; frio/água evaporam seções"
+      },
       "needs_review": false
     }
   },
@@ -7816,9 +7845,9 @@
     "name_pt": "Globo de Mortalhas",
     "name_en": "Globe of Shrouds",
     "name_es": "Globo de mortajas",
-    "description_pt": "Turíbulo que oculta aliados e revela inimigos invisíveis em uma área de fumaça.",
-    "description_en": "Rage of Elements fire item: Globe of Shrouds. Full mechanical text pending review.",
-    "description_es": "Objeto de fuego de Rage of Elements: Globo de mortajas. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Incensário que oculta aliados e revela inimigos invisíveis dentro de uma aura de fumaça.",
+    "description_en": "A censer conceals allies and reveals invisible enemies within a smoke aura.",
+    "description_es": "Un incensario oculta aliados y revela enemigos invisibles dentro de un aura de humo.",
     "item_category": "magical",
     "level": 8,
     "price_gp": 0,
@@ -7832,6 +7861,11 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "activate": "2 ações; 1/dia; incenso de 5 po; emanação de 6 metros",
+        "allies": "aliado fica oculto e recebe +2 de estado em Furtividade",
+        "enemies": "inimigo invisível vira forma translúcida para você e aliados; não fica oculto, mas permanece oculto por concealment"
+      },
       "needs_review": false
     }
   },
@@ -7840,9 +7874,9 @@
     "name_pt": "Perfume Lampejante",
     "name_en": "Lambent Perfume",
     "name_es": "Perfume lambente",
-    "description_pt": "Turíbulo restaurador que ajuda criaturas a superar condições de doença e aflições.",
-    "description_en": "Rage of Elements fire item: Lambent Perfume. Full mechanical text pending review.",
-    "description_es": "Objeto de fuego de Rage of Elements: Perfume lambente. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Incensário que permite novas tentativas de salvamento para superar enjoo ou aflições dentro da fumaça.",
+    "description_en": "A censer lets creatures attempt new saves to overcome sickened or afflictions in its smoke.",
+    "description_es": "Un incensario permite nuevas salvaciones para superar Enfermado o aflicciones dentro de su humo.",
     "item_category": "magical",
     "level": 6,
     "price_gp": 0,
@@ -7856,6 +7890,10 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "activate": "2 ações; 1/dia; incenso de 1 pp; emanação de 6 metros",
+        "effect": "ao fim do turno na fumaça, criatura enjoada ou com aflição tenta novo salvamento; escolhe uma; imunidade 24 horas para essa aflição"
+      },
       "needs_review": false
     }
   },
@@ -7864,9 +7902,9 @@
     "name_pt": "Lâmina de Obsidiana",
     "name_en": "Obsidian Edge",
     "name_es": "Filo de obsidiana",
-    "description_pt": "Gun sword mágica de obsidiana que causa fogo e pode explodir em estilhaços.",
-    "description_en": "Rage of Elements fire item: Obsidian Edge. Full mechanical text pending review.",
-    "description_es": "Objeto de fuego de Rage of Elements: Filo de obsidiana. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Gun sword +1 striking que causa dano de fogo adicional e explode estilhaços de magma após um Golpe à distância bem-sucedido.",
+    "description_en": "A +1 striking gun sword deals extra fire damage and erupts magma shards after a successful ranged Strike.",
+    "description_es": "Una gun sword +1 striking causa daño de fuego adicional y libera astillas de magma tras un Golpe a distancia exitoso.",
     "item_category": "magical",
     "level": 6,
     "price_gp": 0,
@@ -7880,6 +7918,12 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "weapon": "+1 striking gun sword; +1 fogo por Golpe",
+        "activate": "1 ação; 1/10 minutos; ação anterior foi Golpe à distância bem-sucedido",
+        "effect": "emanação de 4,5 metros; 2d6 fogo + 2d6 perfurante; Reflexos básico CD 20",
+        "variants": "greater 3d6 fogo + 2d6/CD 25; major 4d6 + 3d6/CD 29; true 5d6 + 4d6/CD 38"
+      },
       "needs_review": false
     }
   },
@@ -7888,9 +7932,9 @@
     "name_pt": "Ríton do Ifrit Radiante",
     "name_en": "Rhyton of the Radiant Ifrit",
     "name_es": "Ritón del ifrit radiante",
-    "description_pt": "Recipiente mágico que fornece bebidas e pode conjurar um comando poderoso contra inimigos.",
-    "description_en": "Rage of Elements fire item: Rhyton of the Radiant Ifrit. Full mechanical text pending review.",
-    "description_es": "Objeto de fuego de Rage of Elements: Ritón del ifrit radiante. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Rhyton que se enche de bebida, concede bônus social e permite a um ifrit emitir comando de 6º círculo contra inimigos.",
+    "description_en": "A rhyton refills with drinks, grants a social bonus, and lets an ifrit issue 6th-rank command against enemies.",
+    "description_es": "Un rhyton se rellena de bebidas, concede bonificación social y permite que un ifrit use command de 6º rango contra enemigos.",
     "item_category": "magical",
     "level": 14,
     "price_gp": 0,
@@ -7904,6 +7948,11 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "drink": "bottomless stein; nome sussurrado traz bebida favorita do shuyookh de qualquer plano",
+        "toast": "1 ação; +2 item em Dissimulação, Diplomacia ou Intimidação contra criaturas por 1 hora",
+        "command": "2 ações; 1/dia; command de 6º círculo contra todos os hostis no alcance; falha também causa Fatigado"
+      },
       "needs_review": false
     }
   },
@@ -7912,9 +7961,9 @@
     "name_pt": "Manoplas Escaldantes",
     "name_en": "Scalding Gauntlets",
     "name_es": "Guanteletes hirvientes",
-    "description_pt": "Manoplas de combate que queimam e deixam doentes criaturas agarradas.",
-    "description_en": "Rage of Elements fire item: Scalding Gauntlets. Full mechanical text pending review.",
-    "description_es": "Objeto de fuego de Rage of Elements: Guanteletes hirvientes. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Manoplas espinhosas striking que causam fogo persistente e enjoo ao agarrar ou restringir uma criatura.",
+    "description_en": "Striking spiked gauntlets deal persistent fire and sickened when you Grab or restrain a creature.",
+    "description_es": "Unos guanteletes con púas striking causan fuego persistente y Enfermado al Agarrar o restringir.",
     "item_category": "magical",
     "level": 11,
     "price_gp": 0,
@@ -7928,6 +7977,13 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "weapon": "+2 striking spiked gauntlets",
+        "trigger": "criatura agarrada ou restringida",
+        "save": "Fortitude CD 26",
+        "effect": "2d6 fogo persistente e Enjoado 1; imunidade ao Enjoado por 1 hora",
+        "variants": "greater CD 28; major CD 32 e 3d6; true CD 36 e 4d6"
+      },
       "needs_review": false
     }
   },
@@ -7936,9 +7992,9 @@
     "name_pt": "Véu de Fumaça",
     "name_en": "Smoke Veil",
     "name_es": "Velo de humo",
-    "description_pt": "Adorno investido que facilita disfarces e transforma uma Demoralização em ação visual.",
-    "description_en": "Rage of Elements fire item: Smoke Veil. Full mechanical text pending review.",
-    "description_es": "Objeto de fuego de Rage of Elements: Velo de humo. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Véu investido que facilita disfarces e permite Demoralizar visualmente após causar dano de fogo.",
+    "description_en": "An invested veil facilitates disguises and enables visual Demoralize after dealing fire damage.",
+    "description_es": "Un velo investido facilita disfraces y permite Desmoralizar visualmente tras causar daño de fuego.",
     "item_category": "magical",
     "level": 3,
     "price_gp": 0,
@@ -7952,6 +8008,11 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "disguise": "pode Impersonate sem kit; cria disfarce em 1 minuto; +1 item; kit e tempo completo para cosméticos ou pessoa específica",
+        "activate": "1 ação; após causar fogo a alvo visível a até 9 metros",
+        "effect": "teste de Intimidação para Demoralizar; perde traço auditivo, ganha visual e sem penalidade por idioma"
+      },
       "needs_review": false
     }
   },
@@ -7960,9 +8021,9 @@
     "name_pt": "Sombrinha Fagulhante",
     "name_en": "Sparkshade Parasol",
     "name_es": "Parasol de chispas",
-    "description_pt": "Sombrinha que protege contra calor e fogo e pode devolver chamas em uma linha.",
-    "description_en": "Rage of Elements fire item: Sparkshade Parasol. Full mechanical text pending review.",
-    "description_es": "Objeto de fuego de Rage of Elements: Parasol de chispas. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Sombrinha investida que protege contra calor e fogo e pode devolver uma linha de 9 metros com 10d6 de fogo.",
+    "description_en": "An invested parasol protects from heat and fire and can release a 30-foot line for 10d6 fire damage.",
+    "description_es": "Una sombrilla investida protege del calor y fuego y puede liberar una línea de 9 metros con 10d6 de fuego.",
     "item_category": "magical",
     "level": 11,
     "price_gp": 0,
@@ -7976,6 +8037,11 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "resistance": "10 fogo; proteção contra calor ambiental moderado, severo e extremo",
+        "protection": "reação; 1/10 minutos; recebe resistência 20 contra o efeito de fogo",
+        "pyrotechnics": "2 ações; enquanto carga está ativa; linha de 9 metros; 10d6 fogo; Reflexos básico CD 28"
+      },
       "needs_review": false
     }
   },
@@ -7984,9 +8050,9 @@
     "name_pt": "Vela do Degelo",
     "name_en": "Thawing Candle",
     "name_es": "Vela del deshielo",
-    "description_pt": "Consumível que concede resistência a frio e ajuda a encerrar dano persistente de frio.",
-    "description_en": "Rage of Elements fire item: Thawing Candle. Full mechanical text pending review.",
-    "description_es": "Objeto de fuego de Rage of Elements: Vela del deshielo. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Vela consumível que concede resistência a frio e permite encerrar dano persistente de frio por 10 minutos.",
+    "description_en": "A consumable candle grants cold resistance and lets creatures end persistent cold damage for 10 minutes.",
+    "description_es": "Una vela consumible concede resistencia al frío y permite terminar daño persistente de frío durante 10 minutos.",
     "item_category": "magical",
     "level": 8,
     "price_gp": 0,
@@ -8000,6 +8066,11 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "activate": "1 ação; acender",
+        "area": "3 metros; queima por 10 minutos",
+        "effect": "resistência 10 a frio; quem tem dano persistente de frio tenta CD 15 para encerrá-lo ao entrar ou estar na área; uma vez por criatura"
+      },
       "needs_review": false
     }
   },
@@ -8008,9 +8079,9 @@
     "name_pt": "Gota Curiosa",
     "name_en": "Curious Teardrop",
     "name_es": "Gota curiosa",
-    "description_pt": "Item inteligente de metal líquido que oferece magia, telepatia e proteção contra efeitos emocionais.",
-    "description_en": "Rage of Elements metal item: Curious Teardrop. Full mechanical text pending review.",
-    "description_es": "Objeto de metal de Rage of Elements: Gota curiosa. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Gota inteligente de metal líquido que se comunica por telepatia, conjura magias e reflete efeitos emocionais ou de metal.",
+    "description_en": "An intelligent liquid-metal teardrop communicates telepathically, casts spells, and reflects emotion or metal effects.",
+    "description_es": "Una gota inteligente de metal líquido se comunica telepáticamente, lanza conjuros y refleja efectos emocionales o de metal.",
     "item_category": "magical",
     "level": 16,
     "price_gp": 0,
@@ -8024,6 +8095,12 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "senses": "visão precisa 18 metros e audição imprecisa 9 metros",
+        "communication": "telepatia em Comum e Talican",
+        "request": "2 ações; 1/dia; curse of lost time, ferrous form ou elemental form de 7º círculo (metal)",
+        "reflect": "reação contra efeito emocional ou de metal; +4 status no salvamento e counteract +36, refletindo cópia ao originador"
+      },
       "needs_review": false
     }
   },
@@ -8032,9 +8109,9 @@
     "name_pt": "Ouriço Ferrofluido",
     "name_en": "Ferrofluid Urchin",
     "name_es": "Erizo ferrofluido",
-    "description_pt": "Talismã consumível que se fixa a armadura metálica e concede resistência ao dano físico recebido.",
-    "description_en": "Rage of Elements metal item: Ferrofluid Urchin. Full mechanical text pending review.",
-    "description_es": "Objeto de metal de Rage of Elements: Erizo ferrofluido. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Talismã que se fixa a armadura metálica e concede resistência ao dano físico desencadeador.",
+    "description_en": "A talisman attaches to metal armor and grants resistance to the triggering physical damage.",
+    "description_es": "Un talismán se adhiere a armadura metálica y concede resistencia al daño físico desencadenante.",
     "item_category": "magical",
     "level": 7,
     "price_gp": 0,
@@ -8048,6 +8125,13 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "usage": "afixado a armadura média ou pesada de metal",
+        "trigger": "você sofre dano físico",
+        "prerequisite": "efeito de especialização da armadura",
+        "activate": "ação livre; Concentração",
+        "variants": "menor resistência 3; moderada 6; maior 10"
+      },
       "needs_review": false
     }
   },
@@ -8056,9 +8140,9 @@
     "name_pt": "Maleável",
     "name_en": "Malleable",
     "name_es": "Maleable",
-    "description_pt": "Runa de armadura que permite reconfigurar sua composição e especialização quando ativada.",
-    "description_en": "Rage of Elements metal item: Malleable. Full mechanical text pending review.",
-    "description_es": "Objeto de metal de Rage of Elements: Maleable. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Runa de armadura que permite trocar o grupo de especialização da armadura, mantendo materiais e runas aplicáveis.",
+    "description_en": "An armor rune lets you change the armor's specialization group while retaining materials and applicable runes.",
+    "description_es": "Una runa de armadura permite cambiar el grupo de especialización manteniendo materiales y runas aplicables.",
     "item_category": "magical",
     "level": 9,
     "price_gp": 0,
@@ -8072,6 +8156,11 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "usage": "gravada em armadura média ou pesada de metal",
+        "activate": "1 ação; Manuseio",
+        "effect": "troca o grupo de especialização; runas incompatíveis ficam suprimidas até nova composição"
+      },
       "needs_review": false
     }
   },
@@ -8080,9 +8169,9 @@
     "name_pt": "Arma Mutável",
     "name_en": "Morphing Weapon",
     "name_es": "Arma cambiante",
-    "description_pt": "Arma metálica mágica que muda de forma e oferece benefícios diferentes durante o ataque.",
-    "description_en": "Rage of Elements metal item: Morphing Weapon. Full mechanical text pending review.",
-    "description_es": "Objeto de metal de Rage of Elements: Arma cambiante. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Arma +1 striking shifting que assume formas metálicas e pode aumentar alcance, trocar tipo de dano, Desarmar ou causar dano extra.",
+    "description_en": "A +1 striking shifting weapon takes metal forms and can increase reach, change damage type, Disarm, or deal extra damage.",
+    "description_es": "Un arma +1 striking shifting adopta formas metálicas y puede aumentar alcance, cambiar daño, Desarmar o causar daño adicional.",
     "item_category": "magical",
     "level": 7,
     "price_gp": 0,
@@ -8096,6 +8185,11 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "base": "+1 striking shifting; Volume varia; 1 ou 2 mãos",
+        "activate": "1 ação; 1/10 minutos; Concentração",
+        "benefits": "Reach: +1,5 metro de alcance; Shift: contundente, perfurante ou cortante; Take: reação após acerto para Desarmar ou Roubar; Weigh: bônus de dano igual aos dados da arma"
+      },
       "needs_review": false
     }
   },
@@ -8104,9 +8198,9 @@
     "name_pt": "Guitarra Ressonante",
     "name_en": "Resonant Guitar",
     "name_es": "Guitarra resonante",
-    "description_pt": "Instrumento metálico virtuoso que facilita viagens planares e pode proteger aliados com som.",
-    "description_en": "Rage of Elements metal item: Resonant Guitar. Full mechanical text pending review.",
-    "description_es": "Objeto de metal de Rage of Elements: Guitarra resonante. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Instrumento virtuoso que melhora Performance, facilita viagens ao Plano do Metal, concede runa thundering e protege contra Golpes corpo a corpo.",
+    "description_en": "A virtuoso instrument improves Performance, aids travel to the Plane of Metal, grants thundering, and protects against melee Strikes.",
+    "description_es": "Un instrumento virtuoso mejora Interpretación, facilita viajes al Plano del Metal, concede thundering y protege contra Golpes cuerpo a cuerpo.",
     "item_category": "magical",
     "level": 12,
     "price_gp": 0,
@@ -8120,6 +8214,12 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "performance": "+2 item em Performance",
+        "planarKey": "chega a 1d6×25 milhas do destino em vez de 1d10×25",
+        "thunder": "1 minuto; 1/dia; arma metálica a até 18 metros recebe thundering por 1 hora",
+        "protection": "reação; 1/dia; aliado a até 9 metros recebe +2 AC; se o ataque acertar, atacante sofre 3d10 sônico"
+      },
       "needs_review": false
     }
   },
@@ -8128,9 +8228,9 @@
     "name_pt": "Portador de Ferrugem",
     "name_en": "Rustbringer",
     "name_es": "Portaóxido",
-    "description_pt": "Mangual corrosivo que é especialmente perigoso contra armas e criaturas metálicas.",
-    "description_en": "Rage of Elements metal item: Rustbringer. Full mechanical text pending review.",
-    "description_es": "Objeto de metal de Rage of Elements: Portaóxido. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Mangual +1 striking corrosivo com deadly d10 contra criaturas metálicas e reação que danifica uma arma metálica desarmada.",
+    "description_en": "A +1 striking corrosive flail gains deadly d10 against metal creatures and damages a disarmed metal weapon.",
+    "description_es": "Un mangual +1 striking corrosivo obtiene deadly d10 contra criaturas metálicas y daña un arma metálica desarmada.",
     "item_category": "magical",
     "level": 10,
     "price_gp": 0,
@@ -8144,6 +8244,12 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "weapon": "+1 striking corrosive flail; deadly d10 contra criatura principalmente metálica",
+        "activate": "reação após sucesso crítico em Desarmar arma metálica",
+        "effect": "arma desarmada sofre 2d6 dano, ignorando Dureza",
+        "variant": "greater: +3 greater striking greater corrosive; 4d6 ácido"
+      },
       "needs_review": false
     }
   },
@@ -8152,9 +8258,9 @@
     "name_pt": "Bengala Serpente de Prata",
     "name_en": "Silver Snake Cane",
     "name_es": "Bastón serpiente de plata",
-    "description_pt": "Bengala mágica que armazena veneno ou elixir e pode virar uma espada-cajado ou víbora.",
-    "description_en": "Rage of Elements metal item: Silver Snake Cane. Full mechanical text pending review.",
-    "description_es": "Objeto de metal de Rage of Elements: Bastón serpiente de plata. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Bengala que armazena elixir ou veneno e se transforma em espada-cajado de prata ou víbora gigante.",
+    "description_en": "A cane stores an elixir or poison and transforms into a silver sword cane or giant viper.",
+    "description_es": "Un bastón almacena un elixir o veneno y se transforma en espada de plata o víbora gigante.",
     "item_category": "magical",
     "level": 6,
     "price_gp": 0,
@@ -8168,6 +8274,12 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "storage": "1 minuto; guarda um elixir ou veneno ingerido/de ferimento; expira em 24 horas ou ao substituir",
+        "sword": "1 ação; Concentração e Polimorfia; +1 striking silver sword cane por 10 minutos; aplica veneno de ferimento",
+        "serum": "1 ação; 1/dia; morde alvo voluntário, 1 perfurante e injeta o item",
+        "viper": "1 ação; requer zuhra; transforma-se em víbora gigante de prata obediente"
+      },
       "needs_review": false
     }
   },
@@ -8176,9 +8288,9 @@
     "name_pt": "Granada Drena-Feitiço",
     "name_en": "Spellsap Grenade",
     "name_es": "Granada drenaconjuros",
-    "description_pt": "Bomba alquímica que causa dano e pode fazer um conjurador perder uma magia ou espaço.",
-    "description_en": "Rage of Elements metal item: Spellsap Grenade. Full mechanical text pending review.",
-    "description_es": "Objeto de metal de Rage of Elements: Granada drenaconjuros. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Bomba alquímica que causa dano cortante e pode fazer um conjurador perder aleatoriamente uma magia ou espaço entre seus três maiores círculos.",
+    "description_en": "An alchemical bomb deals slashing damage and can randomly make a spellcaster lose a spell or slot among their three highest ranks.",
+    "description_es": "Una bomba alquímica causa daño cortante y puede hacer que un lanzador pierda un conjuro o espacio entre sus tres rangos más altos.",
     "item_category": "magical",
     "level": 12,
     "price_gp": 0,
@@ -8192,6 +8304,12 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "activate": "1 ação; Golpe",
+        "moderate": "+2 item; 3d4 cortante + 3 splash; Vontade CD 30",
+        "greater": "+3 item; 4d4 cortante + 4 splash; Vontade CD 38",
+        "effect": "em acerto contra conjurador preparado ou espontâneo, falha no salvamento perde uma magia/espaço aleatório dos três maiores círculos"
+      },
       "needs_review": false
     }
   },
@@ -8200,9 +8318,9 @@
     "name_pt": "Pedra-Ímã Espinhosa",
     "name_en": "Spiny Lodestone",
     "name_es": "Piedra imán espinosa",
-    "description_pt": "Spellheart metálico que conjura magias e concede resistência ou dano adicional conforme o uso.",
-    "description_en": "Rage of Elements metal item: Spiny Lodestone. Full mechanical text pending review.",
-    "description_es": "Objeto de metal de Rage of Elements: Piedra imán espinosa. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Spellheart que conjura needle darts e, conforme seja afixado a armadura ou arma, concede Atletismo/resistência ou dano perfurante extra.",
+    "description_en": "A spellheart casts needle darts and grants Athletics/resistance on armor or extra piercing damage on a weapon.",
+    "description_es": "Un spellheart lanza needle darts y concede Atletismo/resistencia en armadura o daño perforante adicional en arma.",
     "item_category": "magical",
     "level": 4,
     "price_gp": 0,
@@ -8216,6 +8334,13 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "usage": "afixado a armadura ou arma metálica",
+        "activation": "Conjurar uma Magia; needle darts; ataque +8, CD 18",
+        "armor": "+1 item em Atletismo e resistência 2 a dano não letal",
+        "weapon": "após conjurar, Golpes causam +1d4 perfurante até fim do próximo turno",
+        "variants": "greater: resistência 5, +1d6, ataque +14/CD 24; major: +2 Atletismo, resistência 10, +1d8, ataque +19/CD 29 e magias adicionais"
+      },
       "needs_review": false
     }
   },
@@ -8224,9 +8349,9 @@
     "name_pt": "Bastão de Metal",
     "name_en": "Staff of Metal",
     "name_es": "Bastón de metal",
-    "description_pt": "Bastão mágico com magias de magnetismo, metal, ferrugem e proteção.",
-    "description_en": "Rage of Elements metal item: Staff of Metal. Full mechanical text pending review.",
-    "description_es": "Objeto de metal de Rage of Elements: Bastón de metal. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Cajado que concede bônus para atacar criaturas ou armaduras metálicas e oferece magias de metal, magnetismo e ferrugem.",
+    "description_en": "A staff grants an attack bonus against metal creatures or armor and provides metal, magnetism, and rust spells.",
+    "description_es": "Un bastón concede bonificación para atacar criaturas o armaduras metálicas y ofrece conjuros de metal, magnetismo y óxido.",
     "item_category": "magical",
     "level": 6,
     "price_gp": 0,
@@ -8240,6 +8365,11 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "usage": "segurado; cajado de metal",
+        "attack": "+1 circunstancial no ataque contra alvo de armadura metálica ou principalmente metálico",
+        "spells": "detect metal; conductive weapon; shielded arm; magnetic attraction/repulsion; variantes incluem magnetic acceleration, noxious metals, mercurial stride, rust cloud, field of razors e impaling spike"
+      },
       "needs_review": false
     }
   },
@@ -8248,9 +8378,9 @@
     "name_pt": "Luvas de Zuhra",
     "name_en": "Zuhra's Gloves",
     "name_es": "Guantes de Zuhra",
-    "description_pt": "Luvas investidas que protegem contra desarme e canalizam ataques ou muralhas de metal.",
-    "description_en": "Rage of Elements metal item: Zuhra's Gloves. Full mechanical text pending review.",
-    "description_es": "Objeto de metal de Rage of Elements: Guantes de Zuhra. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Luvas investidas que protegem itens contra Desarmar e canalizam arma storm ou muralha de metal uma vez por dia.",
+    "description_en": "Invested gloves protect held items from Disarm and channel weapon storm or a wall of metal once per day.",
+    "description_es": "Unos guantes investidos protegen objetos contra Desarmar y canalizan weapon storm o un muro de metal una vez al día.",
     "item_category": "magical",
     "level": 13,
     "price_gp": 0,
@@ -8264,6 +8394,13 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "reflex": "+3 item na CD de Reflexos contra tentativas de Desarmar item segurado",
+        "activate": "2 ações; 1/dia; Concentração e Manuseio; arma principalmente metálica",
+        "offense": "weapon storm de 6º círculo replicando a arma",
+        "defense": "wall of metal; perde o bônus de Reflexos até a barreira terminar; pode Dissipar",
+        "saveDC": "30"
+      },
       "needs_review": false
     }
   },
@@ -12494,4 +12631,138 @@
     "name_es": "Relámpago embotellado Mayor",
     "description_pt": "Causa 3d6 de eletricidade e 3 de dano colateral; concede +2 no ataque e deixa o alvo desprevenido até o início do próximo turno.",
     "description_en": "Deals 3d6 electricity damage and 3 electricity splash damage; grants a +2 item attack bonus and makes the target off-guard until the start of the next turn.",
-    "description_es": "Inflige 3d6 de electricidad y 3 d
+    "description_es": "Inflige 3d6 de electricidad y 3 de daño colateral; concede +2 al ataque y deja al objetivo desprevenido hasta el inicio del próximo turno.",
+    "item_category": "Alquímico (Bomba)",
+    "level": 11,
+    "price_gp": 250,
+    "bulk": "L",
+    "hands": null,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 285,
+    "data": {
+      "usage": null,
+      "effects": [],
+      "mechanics": {
+        "damage": "3d6 electricity",
+        "splashDamage": "3 electricity",
+        "attackItemBonus": 2,
+        "onHit": [
+          "off-guard until the start of the target's next turn"
+        ]
+      },
+      "needs_review": false
+    }
+  },
+  {
+    "id": "item.pc2.bottled_lightning_superior",
+    "name_pt": "Relâmpago Engarrafado Superior",
+    "name_en": "Bottled Lightning Major",
+    "name_es": "Relámpago embotellado Superior",
+    "description_pt": "Causa 4d6 de eletricidade e 4 de dano colateral; concede +3 no ataque e deixa o alvo desprevenido até o início do próximo turno.",
+    "description_en": "Deals 4d6 electricity damage and 4 electricity splash damage; grants a +3 item attack bonus and makes the target off-guard until the start of the next turn.",
+    "description_es": "Inflige 4d6 de electricidad y 4 de daño colateral; concede +3 al ataque y deja al objetivo desprevenido hasta el inicio del próximo turno.",
+    "item_category": "Alquímico (Bomba)",
+    "level": 17,
+    "price_gp": 2500,
+    "bulk": "L",
+    "hands": null,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Bomba"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 285,
+    "data": {
+      "usage": null,
+      "effects": [],
+      "mechanics": {
+        "damage": "4d6 electricity",
+        "splashDamage": "4 electricity",
+        "attackItemBonus": 3,
+        "onHit": [
+          "off-guard until the start of the target's next turn"
+        ]
+      },
+      "needs_review": false
+    }
+  },
+  {
+    "id": "item.pc2.bright_stick",
+    "name_pt": "Bastão Brilhante",
+    "name_en": "Glow Rod",
+    "name_es": "Bastón luminoso",
+    "description_pt": "Ao ser batido contra uma superfície dura, emite luz forte em 6 metros e luz fraca nos 12 metros seguintes por 6 horas.",
+    "description_en": "When struck against a hard surface, it emits bright light in a 6-meter radius and dim light in the next 12 meters for 6 hours.",
+    "description_es": "Al golpearlo contra una superficie dura, emite luz brillante en un radio de 6 metros y luz tenue en los 12 metros siguientes durante 6 horas.",
+    "item_category": "Alquímico (Ferramenta)",
+    "level": 1,
+    "price_gp": 3,
+    "bulk": "L",
+    "hands": null,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Ferramenta"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 295,
+    "data": {
+      "usage": null,
+      "effects": [],
+      "mechanics": {
+        "activation": "Interact",
+        "brightLightRadius": "6 m",
+        "dimLightRadius": "12 m",
+        "duration": "6 hours"
+      },
+      "needs_review": false
+    }
+  },
+  {
+    "id": "item.pc2.phosphor",
+    "name_pt": "Fósforo",
+    "name_en": "Phosphor",
+    "name_es": "Fósforo",
+    "description_pt": "Ao ser esfregado contra uma superfície áspera, acende. Pode ser aceso e tocado em um objeto inflamável como parte da mesma ação de Interagir; permanece aceso por 1 rodada e então é consumido.",
+    "description_en": "When rubbed against a rough surface, it ignites. It can be lit and touched to a flammable object as part of the same Interact action; it burns for 1 round and is then consumed.",
+    "description_es": "Al frotarlo contra una superficie áspera, se enciende. Puede encenderse y tocar un objeto inflamable como parte de la misma acción de Interactuar; permanece encendido durante 1 asalto y luego se consume.",
+    "item_category": "Alquímico (Ferramenta)",
+    "level": 1,
+    "price_gp": 20,
+    "bulk": "L",
+    "hands": null,
+    "traits": [
+      "Alquímico",
+      "Consumível",
+      "Ferramenta"
+    ],
+    "rarity": "common",
+    "ruleset": "remaster",
+    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
+    "source_page": 295,
+    "data": {
+      "usage": null,
+      "effects": [],
+      "mechanics": {
+        "activation": "Interact",
+        "ignition": "rub against a rough surface",
+        "duration": "1 round",
+        "canIgniteFlammableObject": true,
+        "consumedAfterUse": true
+      },
+      "needs_review": false
+    }
+  }
+]

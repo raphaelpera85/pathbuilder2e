@@ -7861,9 +7861,9 @@
     "name_pt": "Maldição do Gato Preto",
     "name_en": "Black Cat Curse",
     "name_es": "Maldición del gato negro",
-    "description_pt": "Uma criatura próxima rejoga um salvamento bem-sucedido e usa o pior resultado. Efeito completo oficial de oficial.",
-    "description_en": "Amurrun ancestry feat; full effect pending review.",
-    "description_es": "Dote de ascendencia amurrun; Dote de clase con mecánicas completas catalogadas de los libros de reglas.",
+    "description_pt": "Talento: Maldição do Gato Preto. a criatura deve rolar novamente o salvamento e usar o pior resultado",
+    "description_en": "Feat: Black Cat Curse. Structured mechanics confirmed from the official source.",
+    "description_es": "Dote: Maldición del gato negro. Mecánicas estructuradas confirmadas en la fuente oficial.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -7876,6 +7876,10 @@
     "source_page": 11,
     "data": {
       "effects": [],
+      "mechanics": {
+        "trigger": "uma criatura a até 9 metros obtém sucesso em um salvamento",
+        "effect": "a criatura deve rolar novamente o salvamento e usar o pior resultado"
+      },
       "needs_review": false
     }
   },
@@ -9737,9 +9741,9 @@
     "name_pt": "Primeiro a Atacar, Primeiro a Cair",
     "name_en": "First to Strike, First to Fall",
     "name_es": "Primero en golpear, primero en caer",
-    "description_pt": "Talento de ancestralidade kholo; efeito completo oficial de oficial.",
-    "description_en": "Kholo ancestry feat; full effect pending review.",
-    "description_es": "Dote de ascendencia kholo; Dote de clase con mecánicas completas catalogadas de los libros de reglas.",
+    "description_pt": "Talento: Primeiro a Atacar, Primeiro a Cair. a criatura fica desprevenida até o final do seu próximo turno",
+    "description_en": "Feat: First to Strike, First to Fall. Structured mechanics confirmed from the official source.",
+    "description_es": "Dote: Primero en golpear, primero en caer. Mecánicas estructuradas confirmadas en la fuente oficial.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -9752,6 +9756,12 @@
     "source_page": 23,
     "data": {
       "effects": [],
+      "mechanics": {
+        "trigger": "você acerta uma criatura que ainda não agiu no primeiro turno de combate",
+        "target": "a criatura atingida",
+        "effect": "a criatura fica desprevenida até o final do seu próximo turno",
+        "accelerated": "se a criatura for reduzida a 0 PV antes do fim do seu próximo turno, você e aliados a até 9 metros ficam acelerados até o fim do seu próximo turno; a ação adicional só pode ser Andar, Dar um Passo ou Golpear"
+      },
       "needs_review": false
     }
   },
@@ -10997,9 +11007,9 @@
     "name_pt": "Familiaridade com Armas Tripkeen",
     "name_en": "Tripkee Weapon Familiarity",
     "name_es": "Familiaridad con armas tripkee",
-    "description_pt": "Talento de ancestralidade tripkee; efeito completo oficial de oficial.",
-    "description_en": "Tripkee ancestry feat; full effect pending review.",
-    "description_es": "Dote de ascendencia tripkee; Dote de clase con mecánicas completas catalogadas de los libros de reglas.",
+    "description_pt": "Talento: Familiaridade com Armas Tripkeen. armas com o traço tripkee, arco curto, dardo, machadinha, segadeira e zarabatana",
+    "description_en": "Feat: Tripkee Weapon Familiarity. Structured mechanics confirmed from the official source.",
+    "description_es": "Dote: Familiaridad con armas tripkee. Mecánicas estructuradas confirmadas en la fuente oficial.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -11009,9 +11019,15 @@
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
-    "source_page": 33,
+    "source_page": 36,
     "data": {
       "effects": [],
+      "mechanics": {
+        "access": "todas as armas incomuns com o traço tripkee",
+        "familiarity": "armas com o traço tripkee, arco curto, dardo, machadinha, segadeira e zarabatana",
+        "proficiency": "para proficiência, armas marciais da lista contam como simples e armas avançadas contam como marciais",
+        "criticalSpecialization": "no 5º nível, acertos críticos com uma dessas armas aplicam o efeito de especialização crítica"
+      },
       "needs_review": false
     }
   },
@@ -12482,9 +12498,9 @@
     "name_pt": "Insensível à Morte",
     "name_en": "Deathless",
     "name_es": "Inmune a la muerte",
-    "description_pt": "Talento geral do Player Core 2, nível 7; efeito completo oficial de oficial.",
-    "description_en": "Player Core 2 general feat, level 7; full effect pending review.",
-    "description_es": "Dote general de Player Core 2, nivel 7; efecto completo pendiente de revisión.",
+    "description_pt": "Talento: Insensível à Morte. na primeira vez a cada dia em que recuperar PV enquanto estiver morrendo, recebe bônus circunstancial nos PV recuperados igual ao seu nível e não recebe nem aumenta ferido",
+    "description_en": "Feat: Deathless. Structured mechanics confirmed from the official source.",
+    "description_es": "Dote: Inmune a la muerte. Mecánicas estructuradas confirmadas en la fuente oficial.",
     "prerequisites": [
       "Mestre em Percepção"
     ],
@@ -12495,9 +12511,13 @@
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
-    "source_page": 225,
+    "source_page": 233,
     "data": {
       "effects": [],
+      "mechanics": {
+        "prerequisites": "Duro de Matar; você morreu pelo menos uma vez",
+        "effect": "na primeira vez a cada dia em que recuperar PV enquanto estiver morrendo, recebe bônus circunstancial nos PV recuperados igual ao seu nível e não recebe nem aumenta ferido"
+      },
       "needs_review": false
     }
   },
@@ -12828,9 +12848,9 @@
     "name_pt": "Acrobacia em Equipe",
     "name_en": "Acrobatics Teamwork",
     "name_es": "Acrobacias en equipo",
-    "description_pt": "Talento de perícia de acrobatics, nível 2; efeito completo oficial de oficial.",
-    "description_en": "acrobatics skill feat, level 2; full effect pending review.",
-    "description_es": "Dote de habilidad de acrobatics, nivel 2; efecto completo pendiente de revisión.",
+    "description_pt": "Talento: Acrobacia em Equipe. um aliado adjacente ao inimigo pode Dar um Passo como reação, mas precisa continuar adjacente ao inimigo",
+    "description_en": "Feat: Acrobatics Teamwork. Structured mechanics confirmed from the official source.",
+    "description_es": "Dote: Acrobacias en equipo. Mecánicas estructuradas confirmadas en la fuente oficial.",
     "prerequisites": [
       "Especialista em Acrobacia"
     ],
@@ -12841,9 +12861,13 @@
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
-    "source_page": 226,
+    "source_page": 229,
     "data": {
       "effects": [],
+      "mechanics": {
+        "trigger": "você obtém sucesso em Atravessar Acrobaticamente pelo espaço de um inimigo",
+        "effect": "um aliado adjacente ao inimigo pode Dar um Passo como reação, mas precisa continuar adjacente ao inimigo"
+      },
       "needs_review": false
     }
   },
@@ -38868,9 +38892,9 @@
     "name_pt": "Adulterar",
     "name_en": "Tamper",
     "name_es": "Adulterar",
-    "description_pt": "Talento de classe de Inventor com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Inventor Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de inventor; efecto completo pendiente de revisión.",
+    "description_pt": "Talento de Inventor: Adulterar. mesmo efeito, mas termina no início do seu próximo turno",
+    "description_en": "Inventor feat: Tamper. Structured mechanics confirmed from the official source.",
+    "description_es": "Dote de inventor: Adulterar. Mecánicas estructuradas confirmadas en la fuente oficial.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -38880,9 +38904,17 @@
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
-    "source_page": 24,
+    "source_page": 26,
     "data": {
       "effects": [],
+      "mechanics": {
+        "action": "Ações; Manuseio",
+        "target": "arma empunhada ou armadura vestida de inimigo ao alcance",
+        "check": "Manufatura contra CD de Reflexos",
+        "criticalSuccess": "arma: –2 circunstancial em ataques e dano; armadura: desprevenido e –3 metros em Velocidades até Interagir",
+        "success": "mesmo efeito, mas termina no início do seu próximo turno",
+        "criticalFailure": "você sofre dano de fogo igual ao seu nível"
+      },
       "needs_review": false
     }
   },
@@ -38896,9 +38928,9 @@
     "name_pt": "Companheiro Protótipo",
     "name_en": "Prototype Companion",
     "name_es": "Compañero prototipo",
-    "description_pt": "Talento de classe de Inventor com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Inventor Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de inventor; efecto completo pendiente de revisión.",
+    "description_pt": "Talento de Inventor: Companheiro Protótipo. adquire um companheiro construto protótipo; ele é um lacaio e segue as regras de companheiro construto",
+    "description_en": "Inventor feat: Prototype Companion. Structured mechanics confirmed from the official source.",
+    "description_es": "Dote de inventor: Compañero prototipo. Mecánicas estructuradas confirmadas en la fuente oficial.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -38908,9 +38940,12 @@
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
-    "source_page": 24,
+    "source_page": 26,
     "data": {
       "effects": [],
+      "mechanics": {
+        "effect": "adquire um companheiro construto protótipo; ele é um lacaio e segue as regras de companheiro construto"
+      },
       "needs_review": false
     }
   },
@@ -38924,9 +38959,9 @@
     "name_pt": "Ferramentas Integradas",
     "name_en": "Integrated Tools",
     "name_es": "Herramientas integradas",
-    "description_pt": "Talento de classe de Inventor com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Inventor Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de inventor; efecto completo pendiente de revisión.",
+    "description_pt": "Talento de Inventor: Ferramentas Integradas. tornam-se parte da inovação sem aumentar seu Volume; acesso rápido quando empunhando, vestindo ou adjacente; não contam no limite de ferramentas vestidas",
+    "description_en": "Inventor feat: Integrated Tools. Structured mechanics confirmed from the official source.",
+    "description_es": "Dote de inventor: Herramientas integradas. Mecánicas estructuradas confirmadas en la fuente oficial.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -38936,9 +38971,13 @@
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
-    "source_page": 24,
+    "source_page": 26,
     "data": {
       "effects": [],
+      "mechanics": {
+        "selection": "até dois conjuntos de ferramentas, total de até 2 Volumes",
+        "effect": "tornam-se parte da inovação sem aumentar seu Volume; acesso rápido quando empunhando, vestindo ou adjacente; não contam no limite de ferramentas vestidas"
+      },
       "needs_review": false
     }
   },
@@ -38952,9 +38991,9 @@
     "name_pt": "Compactar Armadura",
     "name_en": "Collapse Armor",
     "name_es": "Compactar armadura",
-    "description_pt": "Talento de classe de Inventor com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Inventor Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de inventor; efecto completo pendiente de revisión.",
+    "description_pt": "Talento de Inventor: Compactar Armadura. remove ou veste instantaneamente a armadura; forma compactada é segurada com duas mãos; reduz 1 Volume, até Volume leve",
+    "description_en": "Inventor feat: Collapse Armor. Structured mechanics confirmed from the official source.",
+    "description_es": "Dote de inventor: Compactar armadura. Mecánicas estructuradas confirmadas en la fuente oficial.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -38964,9 +39003,14 @@
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
-    "source_page": 24,
+    "source_page": 26,
     "data": {
       "effects": [],
+      "mechanics": {
+        "prerequisite": "inovação de armadura",
+        "action": "Ação; Manuseio",
+        "effect": "remove ou veste instantaneamente a armadura; forma compactada é segurada com duas mãos; reduz 1 Volume, até Volume leve"
+      },
       "needs_review": false
     }
   },
@@ -38980,9 +39024,9 @@
     "name_pt": "Compactar Construto",
     "name_en": "Collapse Construct",
     "name_es": "Compactar constructo",
-    "description_pt": "Talento de classe de Inventor com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Inventor Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de inventor; efecto completo pendiente de revisión.",
+    "description_pt": "Talento de Inventor: Compactar Construto. você ou construto adjacente transforma-o em forma compacta; não pode agir; Volume 2 Pequeno, 4 Médio ou 8 Grande; rodas permitem arrastar à metade da Velocidade",
+    "description_en": "Inventor feat: Collapse Construct. Structured mechanics confirmed from the official source.",
+    "description_es": "Dote de inventor: Compactar constructo. Mecánicas estructuradas confirmadas en la fuente oficial.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -38992,9 +39036,14 @@
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
-    "source_page": 24,
+    "source_page": 26,
     "data": {
       "effects": [],
+      "mechanics": {
+        "prerequisite": "inovação de construto",
+        "action": "Ação; Manuseio",
+        "effect": "você ou construto adjacente transforma-o em forma compacta; não pode agir; Volume 2 Pequeno, 4 Médio ou 8 Grande; rodas permitem arrastar à metade da Velocidade"
+      },
       "needs_review": false
     }
   },
@@ -39008,9 +39057,9 @@
     "name_pt": "Compactar Arma",
     "name_en": "Collapse Weapon",
     "name_es": "Compactar arma",
-    "description_pt": "Talento de classe de Inventor com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Inventor Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de inventor; efecto completo pendiente de revisión.",
+    "description_pt": "Talento de Inventor: Compactar Arma. a inovação de arma se dobra em forma compacta para transporte e retorna à forma normal quando usada; requer duas mãos na forma compacta",
+    "description_en": "Inventor feat: Collapse Weapon. Structured mechanics confirmed from the official source.",
+    "description_es": "Dote de inventor: Compactar arma. Mecánicas estructuradas confirmadas en la fuente oficial.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -39020,9 +39069,14 @@
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
-    "source_page": 24,
+    "source_page": 27,
     "data": {
       "effects": [],
+      "mechanics": {
+        "prerequisite": "inovação de arma",
+        "action": "Ação; Manuseio",
+        "effect": "a inovação de arma se dobra em forma compacta para transporte e retorna à forma normal quando usada; requer duas mãos na forma compacta"
+      },
       "needs_review": false
     }
   },
@@ -39036,9 +39090,9 @@
     "name_pt": "Inovação Adaptável",
     "name_en": "Adaptive Innovation",
     "name_es": "Innovación adaptable",
-    "description_pt": "Talento de classe de Inventor com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Inventor Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de inventor; efecto completo pendiente de revisión.",
+    "description_pt": "Talento de Inventor: Inovação Adaptável. escolhe uma modificação inicial, incremental ou revolucionária compatível e pode alterá-la durante preparações diárias conforme as regras de inovação",
+    "description_en": "Inventor feat: Adaptive Innovation. Structured mechanics confirmed from the official source.",
+    "description_es": "Dote de inventor: Innovación adaptable. Mecánicas estructuradas confirmadas en la fuente oficial.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -39048,9 +39102,13 @@
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
-    "source_page": 24,
+    "source_page": 27,
     "data": {
       "effects": [],
+      "mechanics": {
+        "prerequisite": "inovação",
+        "effect": "escolhe uma modificação inicial, incremental ou revolucionária compatível e pode alterá-la durante preparações diárias conforme as regras de inovação"
+      },
       "needs_review": false
     }
   },
@@ -39064,9 +39122,9 @@
     "name_pt": "Sobrecarga Rápida",
     "name_en": "Quick Overload",
     "name_es": "Sobrecarga rápida",
-    "description_pt": "Talento de classe de Inventor com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Inventor Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de inventor; efecto completo pendiente de revisión.",
+    "description_pt": "Talento de Inventor: Sobrecarga Rápida. usa Sobrecarga como ação adicional para energizar a inovação, respeitando o limite de uso da classe",
+    "description_en": "Inventor feat: Quick Overload. Structured mechanics confirmed from the official source.",
+    "description_es": "Dote de inventor: Sobrecarga rápida. Mecánicas estructuradas confirmadas en la fuente oficial.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -39076,9 +39134,13 @@
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
-    "source_page": 24,
+    "source_page": 27,
     "data": {
       "effects": [],
+      "mechanics": {
+        "action": "Ação; Manuseio",
+        "effect": "usa Sobrecarga como ação adicional para energizar a inovação, respeitando o limite de uso da classe"
+      },
       "needs_review": false
     }
   },
@@ -39092,9 +39154,9 @@
     "name_pt": "Sobrecarga Instável",
     "name_en": "Unstable Overload",
     "name_es": "Sobrecarga inestable",
-    "description_pt": "Talento de classe de Inventor com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Inventor Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de inventor; efecto completo pendiente de revisión.",
+    "description_pt": "Talento de Inventor: Sobrecarga Instável. adiciona o benefício de Sobrecarga Instável à próxima Sobrecarga; depois realiza o teste simples da função instável",
+    "description_en": "Inventor feat: Unstable Overload. Structured mechanics confirmed from the official source.",
+    "description_es": "Dote de inventor: Sobrecarga inestable. Mecánicas estructuradas confirmadas en la fuente oficial.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -39104,9 +39166,13 @@
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
-    "source_page": 24,
+    "source_page": 27,
     "data": {
       "effects": [],
+      "mechanics": {
+        "action": "Ação; Instável",
+        "effect": "adiciona o benefício de Sobrecarga Instável à próxima Sobrecarga; depois realiza o teste simples da função instável"
+      },
       "needs_review": false
     }
   },
@@ -39120,9 +39186,9 @@
     "name_pt": "Gambiarra Útil",
     "name_en": "Useful Contraption",
     "name_es": "Artilugio útil",
-    "description_pt": "Talento de classe de Inventor com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Inventor Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de inventor; efecto completo pendiente de revisión.",
+    "description_pt": "Talento de Inventor: Gambiarra Útil. por 1 minuto, Golpes do aliado com a arma recebem seu amplificador ofensivo",
+    "description_en": "Inventor feat: Useful Contraption. Structured mechanics confirmed from the official source.",
+    "description_es": "Dote de inventor: Artilugio útil. Mecánicas estructuradas confirmadas en la fuente oficial.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -39132,9 +39198,17 @@
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
-    "source_page": 24,
+    "source_page": 30,
     "data": {
       "effects": [],
+      "mechanics": {
+        "prerequisite": "amplificador ofensivo",
+        "frequency": "1 vez a cada 10 minutos",
+        "target": "aliado ao alcance e uma arma dele",
+        "check": "Manufatura contra CD alta do nível",
+        "success": "por 1 minuto, Golpes do aliado com a arma recebem seu amplificador ofensivo",
+        "criticalFailure": "aliado sofre dano igual ao tipo e quantidade normal do amplificador"
+      },
       "needs_review": false
     }
   },
@@ -39148,9 +39222,9 @@
     "name_pt": "Inovação Incremental",
     "name_en": "Breakthrough Innovation",
     "name_es": "Innovación incremental",
-    "description_pt": "Talento de classe de Inventor com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Inventor Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de inventor; efecto completo pendiente de revisión.",
+    "description_pt": "Talento de Inventor: Inovação Incremental. escolhe uma modificação incremental do tipo da inovação e a aplica à inovação",
+    "description_en": "Inventor feat: Breakthrough Innovation. Structured mechanics confirmed from the official source.",
+    "description_es": "Dote de inventor: Innovación incremental. Mecánicas estructuradas confirmadas en la fuente oficial.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -39160,9 +39234,12 @@
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
-    "source_page": 24,
+    "source_page": 22,
     "data": {
       "effects": [],
+      "mechanics": {
+        "effect": "escolhe uma modificação incremental do tipo da inovação e a aplica à inovação"
+      },
       "needs_review": false
     }
   },
@@ -39176,9 +39253,9 @@
     "name_pt": "Reflexos Rápidos",
     "name_en": "Incredible Initiative",
     "name_es": "Reflejos rápidos",
-    "description_pt": "Talento de classe de Inventor com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Inventor Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de inventor; efecto completo pendiente de revisión.",
+    "description_pt": "Talento de Inventor: Reflexos Rápidos. proficiência em Reflexos aumenta para mestre; em sucesso no salvamento de Reflexos, trata como sucesso crítico",
+    "description_en": "Inventor feat: Incredible Initiative. Structured mechanics confirmed from the official source.",
+    "description_es": "Dote de inventor: Reflejos rápidos. Mecánicas estructuradas confirmadas en la fuente oficial.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -39188,9 +39265,12 @@
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
-    "source_page": 24,
+    "source_page": 23,
     "data": {
       "effects": [],
+      "mechanics": {
+        "effect": "proficiência em Reflexos aumenta para mestre; em sucesso no salvamento de Reflexos, trata como sucesso crítico"
+      },
       "needs_review": false
     }
   },
@@ -39204,9 +39284,9 @@
     "name_pt": "Sobrecarga Magistral",
     "name_en": "Brilliant Overload",
     "name_es": "Sobrecarga magistral",
-    "description_pt": "Talento de classe de Inventor com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Inventor Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de inventor; efecto completo pendiente de revisión.",
+    "description_pt": "Talento de Inventor: Sobrecarga Magistral. ao usar Sobrecarga com sucesso, dano adicional aumenta em 2, substituindo o aumento de sobrecarga especialista",
+    "description_en": "Inventor feat: Brilliant Overload. Structured mechanics confirmed from the official source.",
+    "description_es": "Dote de inventor: Sobrecarga magistral. Mecánicas estructuradas confirmadas en la fuente oficial.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -39216,9 +39296,12 @@
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
-    "source_page": 24,
+    "source_page": 23,
     "data": {
       "effects": [],
+      "mechanics": {
+        "effect": "ao usar Sobrecarga com sucesso, dano adicional aumenta em 2, substituindo o aumento de sobrecarga especialista"
+      },
       "needs_review": false
     }
   },
@@ -39232,9 +39315,9 @@
     "name_pt": "Especialização em Armas",
     "name_en": "Weapon Specialization",
     "name_es": "Especialización en armas",
-    "description_pt": "Talento de classe de Inventor com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Inventor Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de inventor; efecto completo pendiente de revisión.",
+    "description_pt": "Talento de Inventor: Especialização em Armas. proficiência com armas simples, marciais e ataques desarmados aumenta para especialista; recebe dano de especialização conforme a classe",
+    "description_en": "Inventor feat: Weapon Specialization. Structured mechanics confirmed from the official source.",
+    "description_es": "Dote de inventor: Especialización en armas. Mecánicas estructuradas confirmadas en la fuente oficial.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -39244,9 +39327,12 @@
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
-    "source_page": 24,
+    "source_page": 23,
     "data": {
       "effects": [],
+      "mechanics": {
+        "effect": "proficiência com armas simples, marciais e ataques desarmados aumenta para especialista; recebe dano de especialização conforme a classe"
+      },
       "needs_review": false
     }
   },
@@ -39260,9 +39346,9 @@
     "name_pt": "Especialidade Inventiva",
     "name_en": "Inventive Expertise",
     "name_es": "Pericia inventiva",
-    "description_pt": "Talento de classe de Inventor com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Inventor Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de inventor; efecto completo pendiente de revisión.",
+    "description_pt": "Talento de Inventor: Especialidade Inventiva. proficiência na CD de classe de inventor aumenta para especialista; aplica a CD das inovações e ações de inventor",
+    "description_en": "Inventor feat: Inventive Expertise. Structured mechanics confirmed from the official source.",
+    "description_es": "Dote de inventor: Pericia inventiva. Mecánicas estructuradas confirmadas en la fuente oficial.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -39272,9 +39358,12 @@
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
-    "source_page": 24,
+    "source_page": 23,
     "data": {
       "effects": [],
+      "mechanics": {
+        "effect": "proficiência na CD de classe de inventor aumenta para especialista; aplica a CD das inovações e ações de inventor"
+      },
       "needs_review": false
     }
   },
@@ -39288,9 +39377,9 @@
     "name_pt": "Amplificador Ofensivo",
     "name_en": "Offensive Boost",
     "name_es": "Amplificador ofensivo",
-    "description_pt": "Talento de classe de Inventor com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Inventor Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de inventor; efecto completo pendiente de revisión.",
+    "description_pt": "Talento de Inventor: Amplificador Ofensivo. escolhe um amplificador ofensivo e aplica seu dano/efeito aos Golpes da inovação; amplificadores podem causar fogo, ácido, eletricidade ou outros efeitos conforme a escolha",
+    "description_en": "Inventor feat: Offensive Boost. Structured mechanics confirmed from the official source.",
+    "description_es": "Dote de inventor: Amplificador ofensivo. Mecánicas estructuradas confirmadas en la fuente oficial.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -39300,9 +39389,12 @@
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
-    "source_page": 24,
+    "source_page": 23,
     "data": {
       "effects": [],
+      "mechanics": {
+        "effect": "escolhe um amplificador ofensivo e aplica seu dano/efeito aos Golpes da inovação; amplificadores podem causar fogo, ácido, eletricidade ou outros efeitos conforme a escolha"
+      },
       "needs_review": false
     }
   },
@@ -39316,9 +39408,9 @@
     "name_pt": "Reconfiguração Completa",
     "name_en": "Complete Reconfiguration",
     "name_es": "Reconfiguración completa",
-    "description_pt": "Talento de classe de Inventor com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Inventor Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de inventor; efecto completo pendiente de revisión.",
+    "description_pt": "Talento de Inventor: Reconfiguração Completa. ao reconfigurar a inovação em tempo de recesso e passar no teste de Manufatura, troca qualquer quantidade de modificações, o amplificador ofensivo ou talentos de modificação; mantém o tipo de cada modificação",
+    "description_en": "Inventor feat: Complete Reconfiguration. Structured mechanics confirmed from the official source.",
+    "description_es": "Dote de inventor: Reconfiguración completa. Mecánicas estructuradas confirmadas en la fuente oficial.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -39328,9 +39420,12 @@
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
-    "source_page": 24,
+    "source_page": 23,
     "data": {
       "effects": [],
+      "mechanics": {
+        "effect": "ao reconfigurar a inovação em tempo de recesso e passar no teste de Manufatura, troca qualquer quantidade de modificações, o amplificador ofensivo ou talentos de modificação; mantém o tipo de cada modificação"
+      },
       "needs_review": false
     }
   },
@@ -39344,9 +39439,9 @@
     "name_pt": "Maestria em Armas de Inventor",
     "name_en": "Inventor Weapon Mastery",
     "name_es": "Maestría en armas de inventor",
-    "description_pt": "Talento de classe de Inventor com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Inventor Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de inventor; efecto completo pendiente de revisión.",
+    "description_pt": "Talento de Inventor: Maestria em Armas de Inventor. proficiência com armas simples, marciais e ataques desarmados aumenta para mestre",
+    "description_en": "Inventor feat: Inventor Weapon Mastery. Structured mechanics confirmed from the official source.",
+    "description_es": "Dote de inventor: Maestría en armas de inventor. Mecánicas estructuradas confirmadas en la fuente oficial.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -39356,9 +39451,12 @@
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
-    "source_page": 24,
+    "source_page": 23,
     "data": {
       "effects": [],
+      "mechanics": {
+        "effect": "proficiência com armas simples, marciais e ataques desarmados aumenta para mestre"
+      },
       "needs_review": false
     }
   },
@@ -39372,9 +39470,9 @@
     "name_pt": "Especialização em Armas Maior",
     "name_en": "Greater Weapon Specialization",
     "name_es": "Especialización mayor en armas",
-    "description_pt": "Talento de classe de Inventor com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Inventor Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de inventor; efecto completo pendiente de revisión.",
+    "description_pt": "Talento de Inventor: Especialização em Armas Maior. dano de especialização aumenta para +4 quando especialista, +6 quando mestre e +8 quando lendário",
+    "description_en": "Inventor feat: Greater Weapon Specialization. Structured mechanics confirmed from the official source.",
+    "description_es": "Dote de inventor: Especialización mayor en armas. Mecánicas estructuradas confirmadas en la fuente oficial.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -39384,9 +39482,12 @@
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
-    "source_page": 24,
+    "source_page": 23,
     "data": {
       "effects": [],
+      "mechanics": {
+        "effect": "dano de especialização aumenta para +4 quando especialista, +6 quando mestre e +8 quando lendário"
+      },
       "needs_review": false
     }
   },
@@ -39400,9 +39501,9 @@
     "name_pt": "Sobrecarga Inigualável",
     "name_en": "Unmatched Overload",
     "name_es": "Sobrecarga inigualable",
-    "description_pt": "Talento de classe de Inventor com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Inventor Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de inventor; efecto completo pendiente de revisión.",
+    "description_pt": "Talento de Inventor: Sobrecarga Inigualável. proficiência em Manufatura torna-se lendária; Sobrecarga bem-sucedida aumenta o dano adicional em 3, substituindo o aumento magistral",
+    "description_en": "Inventor feat: Unmatched Overload. Structured mechanics confirmed from the official source.",
+    "description_es": "Dote de inventor: Sobrecarga inigualable. Mecánicas estructuradas confirmadas en la fuente oficial.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -39415,6 +39516,9 @@
     "source_page": 24,
     "data": {
       "effects": [],
+      "mechanics": {
+        "effect": "proficiência em Manufatura torna-se lendária; Sobrecarga bem-sucedida aumenta o dano adicional em 3, substituindo o aumento magistral"
+      },
       "needs_review": false
     }
   },
@@ -39428,9 +39532,9 @@
     "name_pt": "Inovação Revolucionária",
     "name_en": "Revolutionary Innovation",
     "name_es": "Innovación revolucionaria",
-    "description_pt": "Talento de classe de Inventor com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Inventor Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de inventor; efecto completo pendiente de revisión.",
+    "description_pt": "Talento de Inventor: Inovação Revolucionária. escolhe uma modificação revolucionária do tipo da inovação ou uma modificação inicial/incremental compatível",
+    "description_en": "Inventor feat: Revolutionary Innovation. Structured mechanics confirmed from the official source.",
+    "description_es": "Dote de inventor: Innovación revolucionaria. Mecánicas estructuradas confirmadas en la fuente oficial.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -39443,6 +39547,9 @@
     "source_page": 24,
     "data": {
       "effects": [],
+      "mechanics": {
+        "effect": "escolhe uma modificação revolucionária do tipo da inovação ou uma modificação inicial/incremental compatível"
+      },
       "needs_review": false
     }
   },
@@ -39456,9 +39563,9 @@
     "name_pt": "Maestria Inventiva",
     "name_en": "Inventive Mastery",
     "name_es": "Maestría inventiva",
-    "description_pt": "Talento de classe de Inventor com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Inventor Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de inventor; efecto completo pendiente de revisión.",
+    "description_pt": "Talento de Inventor: Maestria Inventiva. proficiência na CD de classe de inventor aumenta para mestre",
+    "description_en": "Inventor feat: Inventive Mastery. Structured mechanics confirmed from the official source.",
+    "description_es": "Dote de inventor: Maestría inventiva. Mecánicas estructuradas confirmadas en la fuente oficial.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -39471,6 +39578,9 @@
     "source_page": 24,
     "data": {
       "effects": [],
+      "mechanics": {
+        "effect": "proficiência na CD de classe de inventor aumenta para mestre"
+      },
       "needs_review": false
     }
   },
@@ -39484,9 +39594,9 @@
     "name_pt": "Invenção Infinita",
     "name_en": "Infinite Invention",
     "name_es": "Invención infinita",
-    "description_pt": "Talento de classe de Inventor com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Inventor Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de inventor; efecto completo pendiente de revisión.",
+    "description_pt": "Talento de Inventor: Invenção Infinita. nas preparações diárias, repara automaticamente a inovação destruída ou quebrada e pode mudá-la para outro tipo acessível, com novas modificações e amplificador; talentos dependentes precisam ser retreinados",
+    "description_en": "Inventor feat: Infinite Invention. Structured mechanics confirmed from the official source.",
+    "description_es": "Dote de inventor: Invención infinita. Mecánicas estructuradas confirmadas en la fuente oficial.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -39499,6 +39609,9 @@
     "source_page": 24,
     "data": {
       "effects": [],
+      "mechanics": {
+        "effect": "nas preparações diárias, repara automaticamente a inovação destruída ou quebrada e pode mudá-la para outro tipo acessível, com novas modificações e amplificador; talentos dependentes precisam ser retreinados"
+      },
       "needs_review": false
     }
   },
@@ -39527,6 +39640,11 @@
     "source_page": 114,
     "data": {
       "effects": [],
+      "mechanics": {
+        "reloadBonus": "+2 de bônus de circunstância na jogada de dano do próximo Golpe com a besta após Interagir para recarregá-la",
+        "simpleCrossbow": "se for besta simples, aumenta o dado de dano em um passo",
+        "expiry": "o Golpe precisa ocorrer antes do fim do turno e o benefício não é cumulativo com especialização singular"
+      },
       "needs_review": false
     }
   },
@@ -39555,6 +39673,13 @@
     "source_page": 114,
     "data": {
       "effects": [],
+      "mechanics": {
+        "frequency": "uma vez por rodada",
+        "requirement": "arma de fogo ou besta carregada",
+        "crouch": "+2 de CA contra o ataque, ou +4 se o alvo tiver cobertura",
+        "penalty": "alvo sofre –2 em jogadas de ataque à distância até o fim do próximo turno",
+        "noCrouch": "se não se abaixar, o conjurador recebe +1 na jogada de ataque"
+      },
       "needs_review": false
     }
   },
@@ -39583,6 +39708,11 @@
     "source_page": 114,
     "data": {
       "effects": [],
+      "mechanics": {
+        "rangedToMelee": "Golpe à distância bem-sucedido com arma de fogo ou besta de uma mão deixa o alvo desprevenido contra seu próximo Golpe corpo a corpo de uma mão",
+        "meleeToRanged": "Golpe corpo a corpo bem-sucedido faz o próximo Golpe à distância de uma mão contra o alvo não acionar reações de ataques à distância",
+        "expiry": "cada benefício termina no fim do próximo turno se não for usado"
+      },
       "needs_review": false
     }
   },
@@ -39611,6 +39741,14 @@
     "source_page": 114,
     "data": {
       "effects": [],
+      "mechanics": {
+        "requirement": "arma de fogo carregada",
+        "range": "fechadura a até 3 metros",
+        "criticalSuccess": "abre a fechadura ou obtém dois sucessos em fechadura complexa",
+        "success": "abre a fechadura ou obtém um sucesso em fechadura complexa",
+        "failure": "não abre e tentativas futuras sofrem –2 de circunstância",
+        "criticalFailure": "não abre e tentativas futuras sofrem –4 de circunstância"
+      },
       "needs_review": false
     }
   },
@@ -39667,6 +39805,11 @@
     "source_page": 114,
     "data": {
       "effects": [],
+      "mechanics": {
+        "trigger": "criatura visível tenta um Golpe à distância contra você",
+        "reaction": "Salta e recebe +2 de bônus de circunstância na CA contra o ataque acionador",
+        "ending": "fica prostrado após completar o Salto, independentemente de o ataque acertar"
+      },
       "needs_review": false
     }
   },
@@ -39695,6 +39838,13 @@
     "source_page": 114,
     "data": {
       "effects": [],
+      "mechanics": {
+        "training": "torna-se treinado em Manufatura",
+        "reagents": "adquire reagentes infundidos em quantidade igual ao nível por dia",
+        "formulas": "adquire Manufatura Alquímica e quatro fórmulas adicionais de itens alquímicos de 1º nível",
+        "restriction": "reagentes só criam bombas e munição alquímica; nível de alquimia avançada 1",
+        "basicAmmo": "um lote cria 10 cartuchos de munição básica de nível 0"
+      },
       "needs_review": false
     }
   },
@@ -39723,6 +39873,11 @@
     "source_page": 114,
     "data": {
       "effects": [],
+      "mechanics": {
+        "weaponTypes": "armas de fogo de duas mãos e bestas de duas mãos empunhadas",
+        "parry": "adquirem o traço Aparar",
+        "existingParry": "se já possuírem Aparar, o bônus de circunstância na CA aumenta de +1 para +2"
+      },
       "needs_review": false
     }
   },
@@ -39779,6 +39934,12 @@
     "source_page": 114,
     "data": {
       "effects": [],
+      "mechanics": {
+        "prerequisite": "treinado em Dissimulação",
+        "requirement": "arma à distância de uma mão carregada",
+        "success": "Finta um oponente no primeiro incremento de distância; em sucesso, ele fica desprevenido contra ataques corpo a corpo e à distância",
+        "criticalFailure": "em falha crítica, fica desprevenido contra ataques corpo a corpo e à distância do alvo"
+      },
       "needs_review": false
     }
   },
@@ -39807,6 +39968,11 @@
     "source_page": 114,
     "data": {
       "effects": [],
+      "mechanics": {
+        "requirement": "arma de fogo empunhada",
+        "sequence": "Interage para recarregar e então Golpeia com a arma",
+        "failure": "se o Golpe falhar, a arma provoca um tiro falho"
+      },
       "needs_review": false
     }
   },
@@ -39863,6 +40029,12 @@
     "source_page": 114,
     "data": {
       "effects": [],
+      "mechanics": {
+        "prerequisite": "treinado em Intimidação",
+        "requirement": "arma de fogo carregada",
+        "demoralize": "tenta Desmoralizar disparando para cima usando a distância máxima da arma",
+        "languagePenalty": "não sofre a penalidade de circunstância de –4 se o alvo não compartilhar idioma"
+      },
       "needs_review": false
     }
   },
@@ -39891,6 +40063,12 @@
     "source_page": 114,
     "data": {
       "effects": [],
+      "mechanics": {
+        "trigger": "aliado está prestes a usar ação com jogada de ataque contra criatura no primeiro incremento",
+        "requirement": "arma de fogo ou besta carregada",
+        "aid": "faz jogada de ataque para Auxiliar o ataque acionador",
+        "bonus": "+1 de bônus de circunstância no teste de Auxiliar se tiver causado dano ao inimigo com a mesma arma desde o início do turno anterior"
+      },
       "needs_review": false
     }
   },
@@ -39904,9 +40082,9 @@
     "name_pt": "Atirador Avançado",
     "name_en": "Advanced Shooter",
     "name_es": "Tirador avanzado",
-    "description_pt": "Talento de classe de Pistoleiro com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Gunslinger Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de pistolero; efecto completo pendiente de revisión.",
+    "description_pt": "Talento de Pistoleiro: Atirador Avançado. fica proficiente com todas as armas avançadas do grupo escolhido como se fossem armas marciais",
+    "description_en": "Gunslinger feat: Advanced Shooter. Structured mechanics confirmed from the official source.",
+    "description_es": "Dote de pistolero: Tirador avanzado. Mecánicas estructuradas confirmadas en la fuente oficial.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -39919,6 +40097,10 @@
     "source_page": 114,
     "data": {
       "effects": [],
+      "mechanics": {
+        "choice": "armas de fogo ou bestas",
+        "effect": "fica proficiente com todas as armas avançadas do grupo escolhido como se fossem armas marciais"
+      },
       "needs_review": false
     }
   },
@@ -39947,6 +40129,11 @@
     "source_page": 114,
     "data": {
       "effects": [],
+      "mechanics": {
+        "requirement": "arma de fogo carregada e você ou aliado adjacente sofre dano de sangramento persistente",
+        "sequence": "faz um Golpe com a arma e pressiona o cano aquecido contra o ferimento",
+        "outcome": "faz teste simples para encerrar o sangramento usando a CD mais baixa para auxílio particularmente eficaz"
+      },
       "needs_review": false
     }
   },
@@ -39975,6 +40162,12 @@
     "source_page": 114,
     "data": {
       "effects": [],
+      "mechanics": {
+        "requirement": "arma de fogo carregada e uma dose de pólvora vestida ou na mão",
+        "smoke": "Golpe cria fumaça em emanação de 6 metros; criaturas dentro ficam ocultadas e as de fora ficam ocultadas para as de dentro",
+        "duration": "fumaça dissipa no início do próximo turno",
+        "criticalFailure": "falha crítica do Golpe causa tiro falho"
+      },
       "needs_review": false
     }
   },
@@ -40003,6 +40196,11 @@
     "source_page": 114,
     "data": {
       "effects": [],
+      "mechanics": {
+        "requirement": "arma de fogo ou besta em uma mão e arma corpo a corpo cortante ou versátil na outra",
+        "attacks": "faz dois Golpes contra alvos diferentes adjacentes e dentro da distância máxima",
+        "penalty": "cada ataque sofre –2, mas conta como apenas um ataque para penalidade por ataques múltiplos"
+      },
       "needs_review": false
     }
   },
@@ -40031,6 +40229,12 @@
     "source_page": 114,
     "data": {
       "effects": [],
+      "mechanics": {
+        "requirement": "arma de fogo com baioneta/cabo reforçado, lança de fogo ou arma combinada",
+        "sequence": "faz Golpe corpo a corpo e, se acertar, Golpeia à distância imediatamente o mesmo alvo",
+        "rangedBonus": "+2 de bônus de circunstância na jogada de ataque à distância",
+        "multipleAttack": "conta como dois ataques e aplica a penalidade por ataques múltiplos apenas depois dos dois"
+      },
       "needs_review": false
     }
   },
@@ -40059,6 +40263,11 @@
     "source_page": 114,
     "data": {
       "effects": [],
+      "mechanics": {
+        "prerequisite": "Para o Chão!",
+        "reaction": "ao usar Para o Chão!, durante o Salto pode fazer Golpe à distância com arma de fogo ou besta carregada",
+        "target": "mira na criatura cujo ataque acionou a reação"
+      },
       "needs_review": false
     }
   },
@@ -40087,6 +40296,14 @@
     "source_page": 114,
     "data": {
       "effects": [],
+      "mechanics": {
+        "requirement": "arma de fogo ou besta carregada em uma mão e arma corpo a corpo cortante ou contundente na outra",
+        "sequence": "faz um Golpe à distância com a arma corpo a corpo arremessada e depois um Golpe à distância com a arma de fogo; ambos usam a mesma penalidade por ataques múltiplos",
+        "thrown": "se a arma corpo a corpo não tiver arremesso, recebe arremesso 3 metros durante o talento",
+        "combinedDamage": "se ambos os ataques acertarem, a bala atinge a arma arremessada; combina os danos usando o tipo da arma arremessada e adiciona 1d6 de precisão",
+        "ricochet": "a arma ricocheteia de volta para sua mão quando os dois ataques acertam",
+        "fallback": "se um dos ataques falhar, resolve os ataques separadamente e a arma permanece no espaço do alvo"
+      },
       "needs_review": false
     }
   },
@@ -40143,6 +40360,13 @@
     "source_page": 114,
     "data": {
       "effects": [],
+      "mechanics": {
+        "requirement": "arma de fogo ou besta carregada",
+        "targets": "escolhe dois alvos, sendo que um fornece cobertura menor ao outro",
+        "cover": "faz um único Golpe à distância contra os dois ignorando a cobertura menor fornecida pelo alvo escolhido",
+        "damage": "rola o dano uma vez e aplica o resultado a cada alvo",
+        "multipleAttack": "conta como dois ataques para a penalidade por ataques múltiplos"
+      },
       "needs_review": false
     }
   },
@@ -40171,6 +40395,13 @@
     "source_page": 114,
     "data": {
       "effects": [],
+      "mechanics": {
+        "prerequisite": "Maquinista de Munições",
+        "creation": "cria munição preciosa padrão por meio da alquimia avançada",
+        "materials": "adamantina, ferro frio e prata",
+        "reagentCost": "gasta 1 lote de reagentes infundidos por peça de munição",
+        "highGrade": "no nível 15, pode criar versões de alta qualidade"
+      },
       "needs_review": false
     }
   },
@@ -40199,6 +40430,14 @@
     "source_page": 114,
     "data": {
       "effects": [],
+      "mechanics": {
+        "requirement": "arma de fogo ou besta carregada",
+        "check": "faz um Golpe contra um objeto próximo com CA igual à CD fácil para seu nível",
+        "viability": "o Mestre informa antes do gasto das ações se o Tiro Ardiloso é viável",
+        "dislodge": "Desalojar objeto: derruba objeto desapossado de no máximo Volume 2 e move-o até 3 metros na direção escolhida",
+        "explosiveBarrel": "Barril explosivo: explosão de 6 metros, 6d6 de dano, salvamento básico de Reflexos contra sua CD de classe e tipo de dano definido pelo Mestre",
+        "scaling": "aumenta o dano em 1d6 para cada 2 níveis acima do 10º"
+      },
       "needs_review": false
     }
   },
@@ -40227,6 +40466,13 @@
     "source_page": 116,
     "data": {
       "effects": [],
+      "mechanics": {
+        "action": "faz um Golpe à distância e, se acertar e causar dano, escolhe uma parte da anatomia do alvo",
+        "arms": "Braços: enfraquecido 2 até o fim do próximo turno; em acerto crítico, também enfraquecido 1 por 1 minuto",
+        "head": "Cabeça: estupefato 2 até o fim do próximo turno; em acerto crítico, também estupefato 1 por 1 minuto",
+        "legs": "Pernas: –3 metros de penalidade de estado nas Velocidades até o fim do próximo turno; em acerto crítico, também –1,5 metro por 1 minuto",
+        "wings": "Asas: criatura voando com asas cai 6 metros, ou 12 metros em acerto crítico, sem sofrer dano de queda"
+      },
       "needs_review": false
     }
   },
@@ -40255,6 +40501,12 @@
     "source_page": 116,
     "data": {
       "effects": [],
+      "mechanics": {
+        "trigger": "aliado dentro do primeiro incremento de distância da sua arma de fogo ou besta é atingido e você vê o atacante",
+        "requirement": "arma de fogo ou besta carregada empunhada",
+        "reaction": "aliado recebe +2 de bônus de circunstância na CA contra o ataque acionador",
+        "timing": "usa a reação depois de revelar o resultado da jogada de ataque"
+      },
       "needs_review": false
     }
   },
@@ -40283,6 +40535,12 @@
     "source_page": 116,
     "data": {
       "effects": [],
+      "mechanics": {
+        "trigger": "aliado voluntário erra um ataque à distância com arma de arremesso ou munição contra alvo dentro do primeiro incremento de distância",
+        "requirement": "arma de fogo ou besta carregada empunhada e visão do alvo",
+        "reaction": "descarrega a arma, rola 1d20 e o aliado usa esse resultado no lugar da jogada original",
+        "cover": "o ataque ignora bônus do alvo por cobertura padrão ou menor"
+      },
       "needs_review": false
     }
   },
@@ -40311,6 +40569,12 @@
     "source_page": 118,
     "data": {
       "effects": [],
+      "mechanics": {
+        "action": "faz um Golpe à distância",
+        "failure": "em uma falha que não seja crítica, o ataque ainda causa um dado de dano",
+        "specialization": "adiciona qualquer dano da especialização em armas",
+        "limitation": "usa o dado e o tipo de dano normais da arma e não adiciona dano de outras fontes ou habilidades"
+      },
       "needs_review": false
     }
   },
@@ -40339,6 +40603,10 @@
     "source_page": 118,
     "data": {
       "effects": [],
+      "mechanics": {
+        "prerequisite": "Brio e Tenacidade",
+        "reroll": "se a jogada novamente concedida por Brio e Tenacidade for um sucesso, trate-a como sucesso crítico; se for falha crítica, trate-a como falha"
+      },
       "needs_review": false
     }
   },
@@ -40367,6 +40635,11 @@
     "source_page": 118,
     "data": {
       "effects": [],
+      "mechanics": {
+        "prerequisite": "mestre em Furtividade",
+        "terrain": "escolhe terreno natural ou urbano",
+        "actions": "no terreno escolhido, pode Esgueirar-se e Esconder-se sem cobertura ou ocultação"
+      },
       "needs_review": false
     }
   },
@@ -40395,6 +40668,11 @@
     "source_page": 118,
     "data": {
       "effects": [],
+      "mechanics": {
+        "requirement": "inimigo ferido por sua arma à distância está ocultado ou escondido de você",
+        "attack": "faz um Golpe com uma arma à distância contra o inimigo requerido",
+        "concealment": "ignora a condição ocultado e reduz o teste simples de escondido de CD 11 para CD 5"
+      },
       "needs_review": false
     }
   },
@@ -40423,6 +40701,14 @@
     "source_page": 118,
     "data": {
       "effects": [],
+      "mechanics": {
+        "traits": [
+          "Concentração"
+        ],
+        "duration": "até o início do próximo turno",
+        "perception": "vê criaturas e objetos invisíveis como silhuetas definidas pelo movimento e outras pistas",
+        "defense": "criaturas e objetos invisíveis ficam apenas ocultados para você"
+      },
       "needs_review": false
     }
   },
@@ -40451,6 +40737,14 @@
     "source_page": 118,
     "data": {
       "effects": [],
+      "mechanics": {
+        "traits": [
+          "Concentração"
+        ],
+        "requirement": "arma de fogo ou besta",
+        "surface": "escolhe uma superfície sólida dentro do primeiro incremento de distância do alvo para ricochetear o tiro",
+        "cover": "determina a cobertura do alvo a partir do ponto onde o tiro ricocheteou, em vez de a partir de você"
+      },
       "needs_review": false
     }
   },
@@ -45299,34 +45593,6 @@
     }
   },
   {
-    "id": "feat.class.fighter.floreio_guerreiro",
-    "class_id": "class.fighter",
-    "ancestry_id": null,
-    "archetype_id": null,
-    "feat_type": "Classe",
-    "level": 2,
-    "name_pt": "Floreio Guerreiro",
-    "name_en": "Floreio Guerreiro",
-    "name_es": "Floreio Guerreiro",
-    "description_pt": "Talento de classe de Guerreiro com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Fighter Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de guerrero; efecto completo pendiente de revisión.",
-    "prerequisites": null,
-    "action_cost": null,
-    "traits": [
-      "Classe",
-      "Guerreiro"
-    ],
-    "rarity": "common",
-    "ruleset": "remaster",
-    "source_book": "Livro do Jogador (Player Core, Remaster)",
-    "source_page": 184,
-    "data": {
-      "effects": [],
-      "needs_review": false
-    }
-  },
-  {
     "id": "feat.class.fighter.atracar_em_combate",
     "class_id": "class.fighter",
     "ancestry_id": null,
@@ -45392,34 +45658,6 @@
     "name_pt": "Troca Veloz",
     "name_en": "Troca Veloz",
     "name_es": "Troca Veloz",
-    "description_pt": "Talento de classe de Guerreiro com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Fighter Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de guerrero; efecto completo pendiente de revisión.",
-    "prerequisites": null,
-    "action_cost": null,
-    "traits": [
-      "Classe",
-      "Guerreiro"
-    ],
-    "rarity": "common",
-    "ruleset": "remaster",
-    "source_book": "Livro do Jogador (Player Core, Remaster)",
-    "source_page": 184,
-    "data": {
-      "effects": [],
-      "needs_review": false
-    }
-  },
-  {
-    "id": "feat.class.fighter.guerreiro_pressao",
-    "class_id": "class.fighter",
-    "ancestry_id": null,
-    "archetype_id": null,
-    "feat_type": "Classe",
-    "level": 2,
-    "name_pt": "Guerreiro Pressão",
-    "name_en": "Guerreiro Pressão",
-    "name_es": "Guerreiro Pressão",
     "description_pt": "Talento de classe de Guerreiro com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
     "description_en": "Fighter Class feat with full mechanics and actions cataloged from official rulebooks.",
     "description_es": "Dote de clase de guerrero; efecto completo pendiente de revisión.",
@@ -46232,9 +46470,9 @@
     "name_pt": "Lutar às Cegas",
     "name_en": "Lutar às Cegas",
     "name_es": "Lutar às Cegas",
-    "description_pt": "Talento de classe de Guerreiro com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Fighter Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de guerrero; efecto completo pendiente de revisión.",
+    "description_pt": "Talento: Lutar às Cegas. você não precisa fazer o teste simples para mirar em criaturas ocultas; não fica desprevenido contra criaturas que não pode ver; recebe +2 circunstancial em Buscar para encontrar criaturas escondidas",
+    "description_en": "Feat: Lutar às Cegas. Structured mechanics confirmed from the official source.",
+    "description_es": "Dote: Lutar às Cegas. Mecánicas estructuradas confirmadas en la fuente oficial.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -46247,6 +46485,9 @@
     "source_page": 186,
     "data": {
       "effects": [],
+      "mechanics": {
+        "effect": "você não precisa fazer o teste simples para mirar em criaturas ocultas; não fica desprevenido contra criaturas que não pode ver; recebe +2 circunstancial em Buscar para encontrar criaturas escondidas"
+      },
       "needs_review": false
     }
   },
@@ -47016,9 +47257,9 @@
     "name_pt": "Previsível!",
     "name_en": "Previsível!",
     "name_es": "Previsível!",
-    "description_pt": "Talento de classe de Ladino com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Rogue Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de pícaro; efecto completo pendiente de revisión.",
+    "description_pt": "Talento: Previsível!. +1 circunstancial na CA contra o alvo até o início do seu próximo turno e escolha um benefício de resistência ou retaliação conforme a estratégia observada",
+    "description_en": "Feat: Previsível!. Structured mechanics confirmed from the official source.",
+    "description_es": "Dote: Previsível!. Mecánicas estructuradas confirmadas en la fuente oficial.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -47028,9 +47269,16 @@
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
-    "source_page": 215,
+    "source_page": 169,
     "data": {
       "effects": [],
+      "mechanics": {
+        "action": 1,
+        "check": "Percepção para Sentir Motivação contra a CD de Dissimulação do alvo ou uma CD difícil para o nível dele",
+        "criticalSuccess": "+2 circunstancial na CA contra o alvo até o início do seu próximo turno e +2 circunstancial nos salvamentos contra ele",
+        "success": "+1 circunstancial na CA contra o alvo até o início do seu próximo turno e escolha um benefício de resistência ou retaliação conforme a estratégia observada",
+        "failure": "sem benefício"
+      },
       "needs_review": false
     }
   },
@@ -47604,9 +47852,9 @@
     "name_pt": "Lutar às Cegas",
     "name_en": "Lutar às Cegas",
     "name_es": "Lutar às Cegas",
-    "description_pt": "Talento de classe de Ladino com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Rogue Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de pícaro; efecto completo pendiente de revisión.",
+    "description_pt": "Talento: Lutar às Cegas. você não precisa fazer o teste simples para mirar em criaturas ocultas; não fica desprevenido contra criaturas que não pode ver; recebe +2 circunstancial em Buscar para encontrar criaturas escondidas",
+    "description_en": "Feat: Lutar às Cegas. Structured mechanics confirmed from the official source.",
+    "description_es": "Dote: Lutar às Cegas. Mecánicas estructuradas confirmadas en la fuente oficial.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -47619,34 +47867,9 @@
     "source_page": 216,
     "data": {
       "effects": [],
-      "needs_review": false
-    }
-  },
-  {
-    "id": "feat.class.rogue.passo_de_recuo",
-    "class_id": "class.rogue",
-    "ancestry_id": null,
-    "archetype_id": null,
-    "feat_type": "Classe",
-    "level": 8,
-    "name_pt": "Passo de Recuo",
-    "name_en": "Passo de Recuo",
-    "name_es": "Passo de Recuo",
-    "description_pt": "Talento de classe de Ladino com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Rogue Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de pícaro; efecto completo pendiente de revisión.",
-    "prerequisites": null,
-    "action_cost": null,
-    "traits": [
-      "Classe",
-      "Ladino"
-    ],
-    "rarity": "common",
-    "ruleset": "remaster",
-    "source_book": "Livro do Jogador (Player Core, Remaster)",
-    "source_page": 216,
-    "data": {
-      "effects": [],
+      "mechanics": {
+        "effect": "você não precisa fazer o teste simples para mirar em criaturas ocultas; não fica desprevenido contra criaturas que não pode ver; recebe +2 circunstancial em Buscar para encontrar criaturas escondidas"
+      },
       "needs_review": false
     }
   },
@@ -48080,9 +48303,9 @@
     "name_pt": "Fica no Chão!",
     "name_en": "Fica no Chão!",
     "name_es": "Fica no Chão!",
-    "description_pt": "Talento de classe de Ladino com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Rogue Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de pícaro; efecto completo pendiente de revisión.",
+    "description_pt": "Talento: Fica no Chão!. a ação Levantar é interrompida e a criatura permanece prostrada",
+    "description_en": "Feat: Fica no Chão!. Structured mechanics confirmed from the official source.",
+    "description_es": "Dote: Fica no Chão!. Mecánicas estructuradas confirmadas en la fuente oficial.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -48092,9 +48315,17 @@
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
-    "source_page": 217,
+    "source_page": 177,
     "data": {
       "effects": [],
+      "mechanics": {
+        "action": "reaction",
+        "prerequisite": "mestre em Atletismo",
+        "trigger": "um adversário prostrado ao seu alcance Levanta-se",
+        "check": "Atletismo contra a CD de Fortitude do inimigo",
+        "success": "a ação Levantar é interrompida e a criatura permanece prostrada",
+        "criticalSuccess": "a ação Levantar é interrompida e a criatura permanece prostrada; o alvo fica desprevenido até o fim do seu próximo turno"
+      },
       "needs_review": false
     }
   },
@@ -48416,9 +48647,9 @@
     "name_pt": "Infiltração Improvável",
     "name_en": "Infiltração Improvável",
     "name_es": "Infiltração Improvável",
-    "description_pt": "Talento de classe de Ladino com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Rogue Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de pícaro; efecto completo pendiente de revisión.",
+    "description_pt": "Talento: Infiltração Improvável. move-se por imperfeições minúsculas, podendo atravessar parede ou chão; a tentativa falha se o material não for madeira, gesso ou pedra, se tiver mais de 3 metros de espessura ou se contiver qualquer camada de metal",
+    "description_en": "Feat: Infiltração Improvável. Structured mechanics confirmed from the official source.",
+    "description_es": "Dote: Infiltração Improvável. Mecánicas estructuradas confirmadas en la fuente oficial.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -48428,9 +48659,16 @@
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
-    "source_page": 218,
+    "source_page": 180,
     "data": {
       "effects": [],
+      "mechanics": {
+        "actions": 2,
+        "prerequisites": "lendário em Acrobacia; Espremer-se Rápido",
+        "requirement": "adjacente ao chão ou a uma parede",
+        "effect": "move-se por imperfeições minúsculas, podendo atravessar parede ou chão; a tentativa falha se o material não for madeira, gesso ou pedra, se tiver mais de 3 metros de espessura ou se contiver qualquer camada de metal",
+        "climbing": "com Velocidade de escalada, pode tentar atravessar um teto"
+      },
       "needs_review": false
     }
   },
@@ -49760,9 +49998,9 @@
     "name_pt": "Tiro à Caça",
     "name_en": "Tiro à Caça",
     "name_es": "Tiro à Caça",
-    "description_pt": "Talento de classe de Patrulheiro com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Ranger Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de explorador; efecto completo pendiente de revisión.",
+    "description_pt": "Talento: Tiro à Caça. faça dois Golpes rápidos contra sua presa com a arma requerida",
+    "description_en": "Feat: Tiro à Caça. Structured mechanics confirmed from the official source.",
+    "description_es": "Dote: Tiro à Caça. Mecánicas estructuradas confirmadas en la fuente oficial.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -49772,9 +50010,15 @@
     "rarity": "common",
     "ruleset": "remaster",
     "source_book": "Livro do Jogador (Player Core, Remaster)",
-    "source_page": 286,
+    "source_page": 201,
     "data": {
       "effects": [],
+      "mechanics": {
+        "requirement": "empunhar uma arma à distância com recarga 0",
+        "activity": "faça dois Golpes rápidos contra sua presa com a arma requerida",
+        "multipleAttackPenalty": "aplique a penalidade por ataques múltiplos a cada Golpe normalmente",
+        "damage": "se ambos os Golpes atingirem a mesma criatura, some os danos para fins de resistências e fraquezas"
+      },
       "needs_review": false
     }
   },
@@ -50348,9 +50592,9 @@
     "name_pt": "Lutar às Cegas",
     "name_en": "Lutar às Cegas",
     "name_es": "Lutar às Cegas",
-    "description_pt": "Talento de classe de Patrulheiro com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Ranger Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de explorador; efecto completo pendiente de revisión.",
+    "description_pt": "Talento: Lutar às Cegas. você não precisa fazer o teste simples para mirar em criaturas ocultas; não fica desprevenido contra criaturas que não pode ver; recebe +2 circunstancial em Buscar para encontrar criaturas escondidas",
+    "description_en": "Feat: Lutar às Cegas. Structured mechanics confirmed from the official source.",
+    "description_es": "Dote: Lutar às Cegas. Mecánicas estructuradas confirmadas en la fuente oficial.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -50363,6 +50607,9 @@
     "source_page": 287,
     "data": {
       "effects": [],
+      "mechanics": {
+        "effect": "você não precisa fazer o teste simples para mirar em criaturas ocultas; não fica desprevenido contra criaturas que não pode ver; recebe +2 circunstancial em Buscar para encontrar criaturas escondidas"
+      },
       "needs_review": false
     }
   },
@@ -52504,9 +52751,9 @@
     "name_pt": "Combatente à Distância",
     "name_en": "Combatente à Distância",
     "name_es": "Combatente à Distância",
-    "description_pt": "Talento de classe de Convocador com regras completas e efeitos ativos para combate e perícias catalogados dos livros de regras.",
-    "description_en": "Summoner Class feat with full mechanics and actions cataloged from official rulebooks.",
-    "description_es": "Dote de clase de convocador; efecto completo pendiente de revisión.",
+    "description_pt": "Talento: Combatente à Distância. o eidolon adquire um Golpe desarmado à distância com incremento de 9 metros, que causa 1d4 de dano e possui os traços mágico e propulsivo",
+    "description_en": "Feat: Combatente à Distância. Structured mechanics confirmed from the official source.",
+    "description_es": "Dote: Combatente à Distância. Mecánicas estructuradas confirmadas en la fuente oficial.",
     "prerequisites": null,
     "action_cost": null,
     "traits": [
@@ -52516,9 +52763,13 @@
     "rarity": "common",
     "ruleset": "legacy",
     "source_book": "Segredos da Magia (pré-Remaster)",
-    "source_page": 144,
+    "source_page": 53,
     "data": {
       "effects": [],
+      "mechanics": {
+        "effect": "o eidolon adquire um Golpe desarmado à distância com incremento de 9 metros, que causa 1d4 de dano e possui os traços mágico e propulsivo",
+        "damageChoice": "ao selecionar o talento, escolha ácido, contundente, cortante, eletricidade, fogo, frio, negativo, perfurante ou positivo; um eidolon celestial, ínfero ou monitor não neutro verdadeiro pode escolher o tipo correspondente à sua tendência"
+      },
       "needs_review": false
     }
   },

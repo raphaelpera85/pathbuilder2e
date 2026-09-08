@@ -27,7 +27,8 @@
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 275,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-axe.png"
     }
   },
   {
@@ -57,7 +58,8 @@
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 151,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -88,7 +90,8 @@
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 275,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-club.png"
     }
   },
   {
@@ -117,7 +120,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 281,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-bomb.png"
     }
   },
   {
@@ -147,7 +151,8 @@
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 275,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-crossbow.png"
     }
   },
   {
@@ -178,7 +183,8 @@
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 275,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-generic.png"
     }
   },
   {
@@ -211,7 +217,8 @@
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 151,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -243,7 +250,8 @@
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 275,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-generic.png"
     }
   },
   {
@@ -273,7 +281,8 @@
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 275,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-spear.png"
     }
   },
   {
@@ -305,6 +314,7 @@
     "source_page": 158,
     "data": {
       "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-firearm.png",
       "variantFamily": "weapon.axe_musket",
       "variantRole": "melee",
       "variantOf": "weapon.axe_musket_ranged"
@@ -341,6 +351,7 @@
     "source_page": 158,
     "data": {
       "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-firearm.png",
       "variantFamily": "weapon.axe_musket",
       "variantRole": "ranged",
       "variantOf": "weapon.axe_musket_melee"
@@ -374,7 +385,8 @@
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 63,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-generic.png"
     }
   },
   {
@@ -405,7 +417,8 @@
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 64,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-generic.png"
     }
   },
   {
@@ -434,7 +447,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 279,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-sword.png"
     }
   },
   {
@@ -463,7 +477,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 279,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-axe.png"
     }
   },
   {
@@ -494,7 +509,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 282,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-bow.png"
     }
   },
   {
@@ -526,7 +542,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 279,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-staff.png"
     }
   },
   {
@@ -555,7 +572,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 279,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-sword.png"
     }
   },
   {
@@ -584,7 +602,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 278,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-club.png"
     }
   },
   {
@@ -614,7 +633,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 282,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-crossbow.png"
     }
   },
   {
@@ -646,7 +666,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 278,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-dagger.png"
     }
   },
   {
@@ -676,7 +697,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 282,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-dagger.png"
     }
   },
   {
@@ -709,7 +731,8 @@
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 151,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -739,7 +762,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 279,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-sword.png"
     }
   },
   {
@@ -770,7 +794,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 279,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-mace.png"
     }
   },
   {
@@ -800,7 +825,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 278,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-gauntlet.png"
     }
   },
   {
@@ -831,7 +857,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 279,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-spear.png"
     }
   },
   {
@@ -860,7 +887,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 279,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-axe.png"
     }
   },
   {
@@ -890,7 +918,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 279,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-club.png"
     }
   },
   {
@@ -919,7 +948,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 279,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-sword.png"
     }
   },
   {
@@ -949,7 +979,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 279,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-spear.png"
     }
   },
   {
@@ -979,7 +1010,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 282,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-crossbow.png"
     }
   },
   {
@@ -1009,7 +1041,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 282,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-crossbow.png"
     }
   },
   {
@@ -1038,7 +1071,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 282,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-dagger.png"
     }
   },
   {
@@ -1069,7 +1103,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 278,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-gauntlet.png"
     }
   },
   {
@@ -1100,7 +1135,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 279,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-dagger.png"
     }
   },
   {
@@ -1130,7 +1166,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 279,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-spear.png"
     }
   },
   {
@@ -1161,7 +1198,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 282,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-bow.png"
     }
   },
   {
@@ -1190,7 +1228,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 279,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-sword.png"
     }
   },
   {
@@ -1223,7 +1262,8 @@
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 275,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-dagger.png"
     }
   },
   {
@@ -1252,7 +1292,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 279,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-mace.png"
     }
   },
   {
@@ -1281,7 +1322,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 278,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-mace.png"
     }
   },
   {
@@ -1313,7 +1355,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 279,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-club.png"
     }
   },
   {
@@ -1344,7 +1387,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 279,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-dagger.png"
     }
   },
   {
@@ -1373,7 +1417,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 279,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-axe.png"
     }
   },
   {
@@ -1403,7 +1448,8 @@
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 275,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-dagger.png"
     }
   },
   {
@@ -1434,7 +1480,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 279,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-sword.png"
     }
   },
   {
@@ -1465,7 +1512,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 279,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-sword.png"
     }
   },
   {
@@ -1495,7 +1543,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 279,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-axe.png"
     }
   },
   {
@@ -1524,7 +1573,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 279,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-shield.png"
     }
   },
   {
@@ -1553,7 +1603,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 279,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-shield.png"
     }
   },
   {
@@ -1583,7 +1634,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 282,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-bow.png"
     }
   },
   {
@@ -1614,7 +1666,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 279,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-sword.png"
     }
   },
   {
@@ -1646,7 +1699,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 282,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-dagger.png"
     }
   },
   {
@@ -1677,7 +1731,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 278,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-axe.png"
     }
   },
   {
@@ -1708,7 +1763,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 282,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-sling.png"
     }
   },
   {
@@ -1737,7 +1793,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 278,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-spear.png"
     }
   },
   {
@@ -1766,7 +1823,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 278,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-staff.png"
     }
   },
   {
@@ -1795,7 +1853,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 279,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-spear.png"
     }
   },
   {
@@ -1824,7 +1883,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 279,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-mace.png"
     }
   },
   {
@@ -1857,7 +1917,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 279,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-whip.png"
     }
   },
   {
@@ -1889,7 +1950,8 @@
     "source_book": "Livro do Jogador (Player Core, Remaster)",
     "source_page": 278,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-gauntlet.png"
     }
   },
   {
@@ -1919,7 +1981,8 @@
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 151,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -1948,7 +2011,8 @@
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 151,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -1979,7 +2043,8 @@
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 151,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -2009,7 +2074,8 @@
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 151,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -2038,7 +2104,8 @@
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 151,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -2068,7 +2135,8 @@
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 151,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -2099,7 +2167,8 @@
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 151,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -2131,7 +2200,8 @@
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 151,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -2162,7 +2232,8 @@
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 151,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -2193,7 +2264,8 @@
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 151,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -2224,7 +2296,8 @@
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 151,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -2254,7 +2327,8 @@
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 151,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -2284,7 +2358,8 @@
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 151,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -2314,7 +2389,8 @@
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 151,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -2345,7 +2421,8 @@
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 151,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -2375,7 +2452,8 @@
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 151,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -2407,7 +2485,8 @@
     "source_book": "Pólvora e Engrenagens (pré-Remaster)",
     "source_page": 151,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -2436,7 +2515,8 @@
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 275,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-axe.png"
     }
   },
   {
@@ -2465,7 +2545,8 @@
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 275,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-axe.png"
     }
   },
   {
@@ -2499,7 +2580,8 @@
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 275,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-gauntlet.png"
     }
   },
   {
@@ -2528,7 +2610,8 @@
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 275,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-sword.png"
     }
   },
   {
@@ -2562,7 +2645,8 @@
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 275,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-gauntlet.png"
     }
   },
   {
@@ -2594,7 +2678,8 @@
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 275,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-sword.png"
     }
   },
   {
@@ -2625,7 +2710,8 @@
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 275,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-spear.png"
     }
   },
   {
@@ -2656,7 +2742,8 @@
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 275,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-spear.png"
     }
   },
   {
@@ -2688,7 +2775,8 @@
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 275,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-whip.png"
     }
   },
   {
@@ -2723,7 +2811,8 @@
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 275,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-gauntlet.png"
     }
   },
   {
@@ -2755,7 +2844,8 @@
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 275,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-axe.png"
     }
   },
   {
@@ -2787,7 +2877,8 @@
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 275,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-spear.png"
     }
   },
   {
@@ -2818,7 +2909,8 @@
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 275,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-spear.png"
     }
   },
   {
@@ -2849,7 +2941,8 @@
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 275,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-sling.png"
     }
   },
   {
@@ -2879,7 +2972,8 @@
     "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
     "source_page": 275,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-bow.png"
     }
   },
   {
@@ -2909,7 +3003,8 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 118,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-lute.png"
     }
   },
   {
@@ -2941,7 +3036,8 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 118,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-spear.png"
     }
   },
   {
@@ -2971,7 +3067,8 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 118,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-club.png"
     }
   },
   {
@@ -3004,7 +3101,8 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 118,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-whip.png"
     }
   },
   {
@@ -3036,7 +3134,8 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 118,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-gauntlet.png"
     }
   },
   {
@@ -3067,7 +3166,8 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 118,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-dagger.png"
     }
   },
   {
@@ -3099,7 +3199,8 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 118,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-spear.png"
     }
   },
   {
@@ -3129,7 +3230,8 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 118,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-sword.png"
     }
   },
   {
@@ -3161,7 +3263,8 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 118,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-sword.png"
     }
   },
   {
@@ -3192,7 +3295,8 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 118,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-mace.png"
     }
   },
   {
@@ -3223,7 +3327,8 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 118,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-crossbow.png"
     }
   },
   {
@@ -3252,7 +3357,8 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 118,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-firearm.png"
     }
   },
   {
@@ -3284,7 +3390,8 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 126,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-mace.png"
     }
   },
   {
@@ -3315,7 +3422,8 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 126,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-spear.png"
     }
   },
   {
@@ -3347,7 +3455,8 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 126,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-whip.png"
     }
   },
   {
@@ -3378,7 +3487,8 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 126,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-whip.png"
     }
   },
   {
@@ -3409,7 +3519,8 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 126,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-bow.png"
     }
   },
   {
@@ -3440,7 +3551,8 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 126,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-generic.png"
     }
   },
   {
@@ -3470,7 +3582,8 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 126,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-whip.png"
     }
   },
   {
@@ -3501,7 +3614,8 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 126,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-generic.png"
     }
   },
   {
@@ -3531,7 +3645,8 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 126,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-club.png"
     }
   },
   {
@@ -3561,7 +3676,8 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 126,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-generic.png"
     }
   },
   {
@@ -3592,7 +3708,8 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 126,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-generic.png"
     }
   },
   {
@@ -3624,7 +3741,8 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 126,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-bow.png"
     }
   },
   {
@@ -3655,7 +3773,8 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 126,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-mace.png"
     }
   },
   {
@@ -3686,7 +3805,8 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 126,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-crossbow.png"
     }
   },
   {
@@ -3717,7 +3837,8 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 126,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-generic.png"
     }
   },
   {
@@ -3748,7 +3869,8 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 126,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-generic.png"
     }
   },
   {
@@ -3778,7 +3900,8 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 126,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-generic.png"
     }
   },
   {
@@ -3809,7 +3932,8 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 126,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-generic.png"
     }
   },
   {
@@ -3840,7 +3964,8 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 126,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-generic.png"
     }
   },
   {
@@ -3871,7 +3996,8 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 126,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-generic.png"
     }
   },
   {
@@ -3902,7 +4028,8 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 126,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-sword.png"
     }
   },
   {
@@ -3933,7 +4060,8 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 126,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-generic.png"
     }
   },
   {
@@ -3965,7 +4093,8 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 126,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-gauntlet.png"
     }
   },
   {
@@ -3996,7 +4125,8 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 126,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-club.png"
     }
   },
   {
@@ -4027,7 +4157,8 @@
     "source_book": "Battlecry! (Remaster)",
     "source_page": 126,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-shield.png"
     }
   },
   {
@@ -4057,7 +4188,8 @@
     "source_book": "Guerra dos Imortais (Remaster)",
     "source_page": 147,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-spear.png"
     }
   },
   {
@@ -4086,7 +4218,8 @@
     "source_book": "Guerra dos Imortais (Remaster)",
     "source_page": 147,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-staff.png"
     }
   },
   {
@@ -4115,7 +4248,8 @@
     "source_book": "Guerra dos Imortais (Remaster)",
     "source_page": 147,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-mace.png"
     }
   },
   {
@@ -4145,7 +4279,8 @@
     "source_book": "Guerra dos Imortais (Remaster)",
     "source_page": 147,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-staff.png"
     }
   },
   {
@@ -4175,7 +4310,8 @@
     "source_book": "Guerra dos Imortais (Remaster)",
     "source_page": 147,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-sword.png"
     }
   },
   {
@@ -4206,7 +4342,8 @@
     "source_book": "Guerra dos Imortais (Remaster)",
     "source_page": 147,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-club.png"
     }
   },
   {
@@ -4236,7 +4373,8 @@
     "source_book": "Guerra dos Imortais (Remaster)",
     "source_page": 147,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-spear.png"
     }
   },
   {
@@ -4266,7 +4404,8 @@
     "source_book": "Guerra dos Imortais (Remaster)",
     "source_page": 147,
     "data": {
-      "needs_review": false
+      "needs_review": false,
+      "imageUrl": "/weapon-images/weapon-sling.png"
     }
   }
 ]
