@@ -68,6 +68,10 @@ describe("weapon visual fallback", () => {
     expect(getWeaponVisualKey({ name: "Bracamante", weaponGroup: "Sword" })).toBe("falchion");
     expect(getWeaponVisualKey({ name: "Montante", weaponGroup: "Sword" })).toBe("greatsword");
     expect(getWeaponVisualKey({ name: "Cimitarra", weaponGroup: "Sword" })).toBe("scimitar");
+    expect(getWeaponVisualKey({ name: "Mangual", weaponGroup: "Mace" })).toBe("flail");
+    expect(getWeaponVisualKey({ name: "Pá-Malho", weaponGroup: "Mace" })).toBe("maul-spade");
+    expect(getWeaponVisualKey({ name: "Esmagador de Mortos de Belkzen", weaponGroup: "Mace" })).toBe("belkzen-deadsmasher");
+    expect(getWeaponVisualKey({ name: "Malho de Guerra", weaponGroup: "Mace" })).toBe("war-gavel");
   });
 
   it("separa armas marciais nomeadas da arte genérica da categoria", () => {
@@ -82,7 +86,7 @@ describe("weapon visual fallback", () => {
   });
 
   it("keeps every local fallback asset available to the browser", () => {
-    for (const key of ["generic", "sword", "bow", "axe", "club", "dagger", "punch-dagger", "orc-knuckle-dagger", "punching-dagger", "crossbow", "crossbow-standard", "hand-crossbow", "heavy-crossbow", "alchemical-crossbow", "spear", "glaive", "atlatl", "mambele", "breach-pike", "firearm", "flintlock-pistol", "flintlock-musket", "blunderbuss", "pepperbox", "arquebus", "dueling-pistol", "hand-cannon", "coat-pistol", "maul", "warhammer", "morningstar", "greatclub", "greataxe", "pick", "scythe", "sickle", "blowgun", "shortbow", "dazzling-shortbow", "daikyu", "horselords-longbow", "dart", "javelin", "main-gauche", "kithrender", "broadsword", "falchion", "greatsword", "scimitar", "rapier", "battle-axe", "cavalry-lance", "longbow", "bastard-sword", "longsword", "shortsword", "kukri", "mace", "staff", "whip", "sling", "gauntlet", "bomb", "shield", "lute", "halberd", "trident", "shuriken", "flail"]) {
+    for (const key of ["generic", "sword", "bow", "axe", "club", "dagger", "punch-dagger", "orc-knuckle-dagger", "punching-dagger", "crossbow", "crossbow-standard", "hand-crossbow", "heavy-crossbow", "alchemical-crossbow", "spear", "glaive", "atlatl", "mambele", "breach-pike", "firearm", "flintlock-pistol", "flintlock-musket", "blunderbuss", "pepperbox", "arquebus", "dueling-pistol", "hand-cannon", "coat-pistol", "maul", "warhammer", "morningstar", "greatclub", "greataxe", "pick", "scythe", "sickle", "blowgun", "shortbow", "dazzling-shortbow", "daikyu", "horselords-longbow", "dart", "javelin", "main-gauche", "kithrender", "broadsword", "falchion", "greatsword", "scimitar", "rapier", "battle-axe", "cavalry-lance", "longbow", "bastard-sword", "longsword", "shortsword", "kukri", "mace", "staff", "whip", "sling", "gauntlet", "bomb", "shield", "lute", "halberd", "trident", "shuriken", "flail", "maul-spade", "belkzen-deadsmasher", "war-gavel"]) {
       expect(existsSync(resolve(process.cwd(), "public", "weapon-images", `weapon-${key}.${key === "generic" ? "svg" : "png"}`))).toBe(true);
     }
   });

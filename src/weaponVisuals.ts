@@ -24,6 +24,8 @@ export function getWeaponVisualKey(data: WeaponVisualData = {}): string {
   if (/pistola de duelo|dueling pistol/.test(identity)) return "dueling-pistol";
   if (/canh[aã]o de m[aã]o|hand cannon/.test(identity)) return "hand-cannon";
   if (/pistola de casaco|coat pistol/.test(identity)) return "coat-pistol";
+  if (/p[aá]-malho|maul spade/.test(identity)) return "maul-spade";
+  if (/malho de guerra|war gavel/.test(identity)) return "war-gavel";
   if (/malho|maul/.test(identity)) return "maul";
   if (/martelo de guerra|warhammer/.test(identity)) return "warhammer";
   if (/ma[cç]a-estrela|morningstar/.test(identity)) return "morningstar";
@@ -53,6 +55,8 @@ export function getWeaponVisualKey(data: WeaponVisualData = {}): string {
   if (/bracamante|falchion/.test(identity)) return "falchion";
   if (/montante|greatsword/.test(identity)) return "greatsword";
   if (/cimitarra|scimitar/.test(identity)) return "scimitar";
+  if (/mangual|flail/.test(identity)) return "flail";
+  if (/esmagador de mortos de belkzen|belkzen deadsmasher/.test(identity)) return "belkzen-deadsmasher";
   if (/rapieira|rapier/.test(identity)) return "rapier";
   if (/machado de batalha|battle axe/.test(identity)) return "battle-axe";
   if (/lan[cç]a de cavalaria|cavalry lance/.test(identity)) return "cavalry-lance";
