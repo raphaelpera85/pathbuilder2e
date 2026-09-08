@@ -46,6 +46,10 @@ export function getItemVisualKey(data: ItemVisualData = {}): string {
   if (data.id === "item.howl.hippopotamus_klar" || /^klar de hipop[oó]tamo$/.test(name)) return "hippopotamus-klar";
   if (data.id === "item.howl.ankhrav_duster" || /^poeira de ankhrav$/.test(name)) return "ankhrav-duster";
   if (data.id === "item.howl.black_scorpion_stingmace" || /^ma[cç]a-ferr[aã]o de escorpi[aã]o negro$/.test(name)) return "black-scorpion-stingmace";
+  if (data.id === "item.guns_gears.lucky_draw_bandolier" || /^bandoleira do saque da sorte$/.test(name)) return "lucky-draw-bandolier";
+  if (data.id === "item.howl.bloodgorger_scythe" || /^foice devorasangue$/.test(name)) return "bloodgorger-scythe";
+  if (data.id === "item.howl.catoblepas_maul" || /^malho de catoblepas$/.test(name)) return "catoblepas-maul";
+  if (data.id === "item.howl.chimera_flail" || /^mangual de quimera$/.test(name)) return "chimera-flail";
   if (data.id === "item.book_of_dead.vital_salt" || /^sal vital$/.test(name)) return "vital-salt";
   if (data.id === "item.dark_archive.vial_of_the_immortal_wellspring" || /^frasco da fonte imortal$/.test(name)) return "immortal-wellspring-vial";
   if (data.id === "item.compendium.elixir_of_life_minor" || /^elixir da vida \(menor\)$/.test(name)) return "minor-elixir-life";

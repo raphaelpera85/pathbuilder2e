@@ -864,8 +864,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-lucky-draw-bandolier.png",
+      "imageFamily": "lucky-draw-bandolier",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -2997,8 +2997,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-bloodgorger-scythe.png",
+      "imageFamily": "bloodgorger-scythe",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -3025,8 +3025,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-catoblepas-maul.png",
+      "imageFamily": "catoblepas-maul",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -3053,8 +3053,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-chimera-flail.png",
+      "imageFamily": "chimera-flail",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
