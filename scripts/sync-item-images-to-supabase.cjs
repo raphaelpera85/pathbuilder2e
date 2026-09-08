@@ -52,6 +52,10 @@ function visualKey(row) {
   if (row.id === "item.pc2.minor_weakening_bomb" || /^bomba de esmorecimento menor$/.test(name)) return "minor-weakening-bomb";
   if (row.id === "item.pc2.minor_ghost_charge" || /^carga fantasma menor$/.test(name)) return "minor-ghost-charge";
   if (row.id === "item.pc2.minor_detonating_stone" || /^pedra detonante menor$/.test(name)) return "minor-detonating-stone";
+  if (row.id === "item.pc2.sailors_cota" || /^cota do marinheiro$/.test(name)) return "sailors-cota";
+  if (row.id === "item.pc2.carnage_cuirass" || /^coura[cç]a da carnificina$/.test(name)) return "carnage-cuirass";
+  if (row.id === "item.pc2.unholy_armor" || /^armadura profana$/.test(name)) return "unholy-armor";
+  if (row.id === "item.pc2.dragon_scales" || /^placas de drag[aã]o$/.test(name)) return "dragon-scales";
   if (/^10 balas$|^10 bullets$/.test(name)) return "bullets";
   if (/^bandoleira do saque da sorte$|^manto a[eé]reo$|^figura de proa velada$/.test(name)) return "adventurer-pack";
   if (/^ervilhas estalantes terap[eê]uticas$|^sopro da praga$|^azul de sairazul$/.test(name)) return "potion";

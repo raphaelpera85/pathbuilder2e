@@ -1253,3 +1253,4 @@ Persistência remota autenticada de personagens (2026-09-08): `npm run audit:cam
 - [x] Criar e sincronizar artes individuais para Fogo Alquímico Inferior, Frasco de Ácido Inferior, Vial de Frio Inferior e Relâmpago Engarrafado Inferior, usando ID e nome completo do item.
 - [x] Criar e sincronizar artes individuais para Bala de Cola, Bala da Erosão, Bala Feérica e Cartucho Confiável, usando ID e nome completo do item.
 - [x] Criar e sincronizar artes individuais para Bomba de Cola Menor, Bomba de Esmorecimento Menor, Carga Fantasma Menor e Pedra Detonante Menor, usando ID e nome completo do item.
+- [x] Criar e sincronizar artes individuais para Cota do Marinheiro, Couraça da Carnificina, Armadura Profana e Placas de Dragão, usando ID e nome completo do item.

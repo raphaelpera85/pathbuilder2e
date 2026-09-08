@@ -414,8 +414,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-armor.png",
-      "imageFamily": "armor",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-sailors-cota.png",
+      "imageFamily": "sailors-cota",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -474,8 +474,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-armor.png",
-      "imageFamily": "armor",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-carnage-cuirass.png",
+      "imageFamily": "carnage-cuirass",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -534,8 +534,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-armor.png",
-      "imageFamily": "armor",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-unholy-armor.png",
+      "imageFamily": "unholy-armor",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -564,8 +564,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-armor.png",
-      "imageFamily": "armor",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-dragon-scales.png",
+      "imageFamily": "dragon-scales",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
