@@ -1237,3 +1237,5 @@ Persistência remota autenticada de personagens (2026-09-08): `npm run audit:cam
 - [x] Criar e sincronizar artes individuais para Machado Longo, Picareta, Segadeira e Foice, usando o nome completo de cada arma.
 - [x] Criar e sincronizar artes individuais para Besta, Besta de Mão, Besta Pesada e Besta Alquímica, usando o nome completo de cada arma.
 - [x] Criar e sincronizar artes individuais para Glaive, Atlatl, Mambele e Pique de Rompimento, usando o nome completo de cada arma.
+- [x] Criar e sincronizar artes individuais para Zarabatana, Arco Curto, Daikyu e Arco Longo do Senhor dos Cavalos, usando o nome completo de cada arma.
+- [x] Criar e sincronizar arte individual para Arco Curto Deslumbrante, corrigindo a lacuna encontrada na auditoria.
