@@ -39,6 +39,10 @@ describe("weapon visual fallback", () => {
     expect(getWeaponVisualKey({ name: "Pistola de Duelo", weaponGroup: "Firearm" })).toBe("dueling-pistol");
     expect(getWeaponVisualKey({ name: "Canhão de Mão", weaponGroup: "Firearm" })).toBe("hand-cannon");
     expect(getWeaponVisualKey({ name: "Pistola de Casaco", weaponGroup: "Firearm" })).toBe("coat-pistol");
+    expect(getWeaponVisualKey({ name: "Malho", weaponGroup: "Mace" })).toBe("maul");
+    expect(getWeaponVisualKey({ name: "Martelo de Guerra", weaponGroup: "Mace" })).toBe("warhammer");
+    expect(getWeaponVisualKey({ name: "Maça-Estrela", weaponGroup: "Mace" })).toBe("morningstar");
+    expect(getWeaponVisualKey({ name: "Grande Porrete", weaponGroup: "Club" })).toBe("greatclub");
   });
 
   it("separa armas marciais nomeadas da arte genérica da categoria", () => {
@@ -53,7 +57,7 @@ describe("weapon visual fallback", () => {
   });
 
   it("keeps every local fallback asset available to the browser", () => {
-    for (const key of ["generic", "sword", "bow", "axe", "club", "dagger", "punch-dagger", "orc-knuckle-dagger", "punching-dagger", "crossbow", "spear", "firearm", "flintlock-pistol", "flintlock-musket", "blunderbuss", "pepperbox", "arquebus", "dueling-pistol", "hand-cannon", "coat-pistol", "rapier", "battle-axe", "cavalry-lance", "longbow", "bastard-sword", "longsword", "shortsword", "kukri", "mace", "staff", "whip", "sling", "gauntlet", "bomb", "shield", "lute", "halberd", "trident", "shuriken", "flail"]) {
+    for (const key of ["generic", "sword", "bow", "axe", "club", "dagger", "punch-dagger", "orc-knuckle-dagger", "punching-dagger", "crossbow", "spear", "firearm", "flintlock-pistol", "flintlock-musket", "blunderbuss", "pepperbox", "arquebus", "dueling-pistol", "hand-cannon", "coat-pistol", "maul", "warhammer", "morningstar", "greatclub", "rapier", "battle-axe", "cavalry-lance", "longbow", "bastard-sword", "longsword", "shortsword", "kukri", "mace", "staff", "whip", "sling", "gauntlet", "bomb", "shield", "lute", "halberd", "trident", "shuriken", "flail"]) {
       expect(existsSync(resolve(process.cwd(), "public", "weapon-images", `weapon-${key}.${key === "generic" ? "svg" : "png"}`))).toBe(true);
     }
   });

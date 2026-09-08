@@ -975,7 +975,7 @@
     "source_page": 279,
     "data": {
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-club.png",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-greatclub.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -1373,7 +1373,7 @@
     "source_page": 279,
     "data": {
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-mace.png",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-maul.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -1405,7 +1405,7 @@
     "source_page": 278,
     "data": {
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-mace.png",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-morningstar.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -2002,7 +2002,7 @@
     "source_page": 279,
     "data": {
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-mace.png",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-warhammer.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
