@@ -24,6 +24,10 @@ export function getWeaponVisualKey(data: WeaponVisualData = {}): string {
   if (/machado de batalha|battle axe/.test(identity)) return "battle-axe";
   if (/lan[cç]a de cavalaria|cavalry lance/.test(identity)) return "cavalry-lance";
   if (/arco longo|longbow/.test(identity)) return "longbow";
+  if (/espada bastarda|bastard sword/.test(identity)) return "bastard-sword";
+  if (/espada longa|longsword/.test(identity)) return "longsword";
+  if (/espada curta|shortsword/.test(identity)) return "shortsword";
+  if (/kukri/.test(identity)) return "kukri";
   if (/adaga de punho orc|orc knuckle dagger/.test(identity)) return "orc-knuckle-dagger";
   if (/adaga de soco|punching dagger/.test(identity)) return "punching-dagger";
   if (/adaga de punho|punch dagger|katar/.test(identity)) return "punch-dagger";

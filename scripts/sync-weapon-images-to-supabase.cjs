@@ -25,7 +25,7 @@ if (!url || !key) throw new Error("VITE_SUPABASE_URL e SUPABASE_SERVICE_ROLE_KEY
 
 const fetchWithTimeout = (input, init = {}) => {
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 15000);
+  const timer = setTimeout(() => controller.abort(), 120000);
   return fetch(input, { ...init, signal: controller.signal }).finally(() => clearTimeout(timer));
 };
 const supabase = createClient(url, key, { global: { fetch: fetchWithTimeout } });
@@ -37,6 +37,10 @@ const imageMetadata = {
 const imageDir = path.join(root, "public", "weapon-images");
 const catalogPath = path.join(__dirname, "catalog_data", "catalog_weapons.json");
 const specialVisualFiles = {
+  "weapon.bastard_sword": "weapon-bastard-sword.png",
+  "weapon.longsword": "weapon-longsword.png",
+  "weapon.shortsword": "weapon-shortsword.png",
+  "weapon.kukri": "weapon-kukri.png",
   "weapon.rapier": "weapon-rapier.png",
   "weapon.battle_axe": "weapon-battle-axe.png",
   "weapon.lance": "weapon-cavalry-lance.png",
@@ -81,9 +85,14 @@ async function run() {
   await ensureBucket();
   const files = fs.readdirSync(imageDir).filter((file) => file.endsWith(".png") || file === "weapon-generic.svg").sort();
   if (files.length === 0) throw new Error("Nenhuma imagem PNG encontrada.");
+  const requestedFiles = process.env.PF2E_WEAPON_IMAGE_FILES
+    ? process.env.PF2E_WEAPON_IMAGE_FILES.split(",").map((file) => file.trim()).filter(Boolean)
+    : files;
+  const unknownFile = requestedFiles.find((file) => !files.includes(file));
+  if (unknownFile) throw new Error(`Imagem solicitada não encontrada: ${unknownFile}`);
 
   const publicUrls = new Map();
-  for (const file of files) {
+  for (const file of requestedFiles) {
     const objectPath = `weapon-images/${file}`;
     const { error } = await supabase.storage.from(bucket).upload(objectPath, fs.readFileSync(path.join(imageDir, file)), {
       contentType: file.endsWith(".svg") ? "image/svg+xml" : "image/png",
@@ -113,7 +122,7 @@ async function run() {
     if (error) throw new Error(`Falha ao atualizar ${row.id}: ${error.message}`);
   }
 
-  console.log(JSON.stringify({ bucket, uploaded: files.length, updatedWeapons: changed, publicPrefix: `${url}/storage/v1/object/public/${bucket}/weapon-images/` }));
+  console.log(JSON.stringify({ bucket, uploaded: requestedFiles.length, availableFiles: files.length, updatedWeapons: changed, publicPrefix: `${url}/storage/v1/object/public/${bucket}/weapon-images/` }));
 }
 
 run().catch((error) => {

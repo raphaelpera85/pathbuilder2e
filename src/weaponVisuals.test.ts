@@ -42,10 +42,14 @@ describe("weapon visual fallback", () => {
     expect(getWeaponVisualKey({ name: "Machado de Batalha", weaponGroup: "Axe" })).toBe("battle-axe");
     expect(getWeaponVisualKey({ name: "Lança de Cavalaria", weaponGroup: "Spear" })).toBe("cavalry-lance");
     expect(getWeaponVisualKey({ name: "Arco Longo", weaponGroup: "Bow" })).toBe("longbow");
+    expect(getWeaponVisualKey({ name: "Espada Bastarda", weaponGroup: "Sword" })).toBe("bastard-sword");
+    expect(getWeaponVisualKey({ name: "Espada Longa", weaponGroup: "Sword" })).toBe("longsword");
+    expect(getWeaponVisualKey({ name: "Espada Curta", weaponGroup: "Sword" })).toBe("shortsword");
+    expect(getWeaponVisualKey({ name: "Kukri", weaponGroup: "Knife" })).toBe("kukri");
   });
 
   it("keeps every local fallback asset available to the browser", () => {
-    for (const key of ["generic", "sword", "bow", "axe", "club", "dagger", "punch-dagger", "orc-knuckle-dagger", "punching-dagger", "crossbow", "spear", "firearm", "flintlock-pistol", "flintlock-musket", "blunderbuss", "pepperbox", "rapier", "battle-axe", "cavalry-lance", "longbow", "mace", "staff", "whip", "sling", "gauntlet", "bomb", "shield", "lute", "halberd", "trident", "shuriken", "flail"]) {
+    for (const key of ["generic", "sword", "bow", "axe", "club", "dagger", "punch-dagger", "orc-knuckle-dagger", "punching-dagger", "crossbow", "spear", "firearm", "flintlock-pistol", "flintlock-musket", "blunderbuss", "pepperbox", "rapier", "battle-axe", "cavalry-lance", "longbow", "bastard-sword", "longsword", "shortsword", "kukri", "mace", "staff", "whip", "sling", "gauntlet", "bomb", "shield", "lute", "halberd", "trident", "shuriken", "flail"]) {
       expect(existsSync(resolve(process.cwd(), "public", "weapon-images", `weapon-${key}.${key === "generic" ? "svg" : "png"}`))).toBe(true);
     }
   });
