@@ -37,6 +37,7 @@ async function main() {
   const createdUserIds = [];
   const results = [];
   let campaignId = null;
+  let characterId = null;
   let realtimeChannel = null;
   const check = (name, pass, detail = undefined) => results.push({ name, pass: Boolean(pass), ...(detail ? { detail } : {}) });
 
@@ -103,10 +104,32 @@ async function main() {
     if (updated.error) throw updated.error;
     const payload = await timeout(realtimePromise, 10000, "Realtime event");
     check("entrega Realtime ao usuário autorizado", payload?.new?.id === campaignId && payload?.new?.title === updated.data.title);
+
+    const character = await clientA.from("characters").insert({
+      user_id: created[0].id,
+      character_key: `codex-character-${suffix}`,
+      name: `Codex Ficha ${suffix}`,
+      level: 3,
+      ruleset: "remaster",
+      gm_email: users[1].email,
+      player_email: users[0].email,
+      player_name: "Codex Test Player",
+      data: { ancestry: "Anão", heritage: "Anão Forjado em Rocha", class: "Mago", level: 3, weapons: [{ name: "Arco Longo", damage: "1d8" }] },
+    }).select("id,user_id,name,level").single();
+    if (character.error || !character.data) throw character.error || new Error("character insert failed");
+    characterId = character.data.id;
+    check("persistência autenticada da ficha", character.data.user_id === created[0].id && character.data.level === 3);
+    const ownCharacter = await clientA.from("characters").select("id,name,level,data").eq("id", characterId).single();
+    check("leitura autenticada da própria ficha", !ownCharacter.error && ownCharacter.data?.data?.weapons?.[0]?.damage === "1d8");
+    const sharedCharacter = await clientB.from("characters").select("id,name,level").eq("id", characterId).single();
+    check("compartilhamento da ficha com o Mestre", !sharedCharacter.error && sharedCharacter.data?.id === characterId);
+    const forbiddenCharacterUpdate = await clientB.from("characters").update({ name: "unauthorized" }).eq("id", characterId).select("id").maybeSingle();
+    check("RLS impede edição da ficha pelo Mestre compartilhado", !forbiddenCharacterUpdate.error && forbiddenCharacterUpdate.data === null);
   } catch (error) {
     check("fluxo autenticado sem erro inesperado", false, error.message || String(error));
   } finally {
     if (realtimeChannel) await realtimeChannel.unsubscribe().catch(() => {});
+    if (characterId) await admin.from("characters").delete().eq("id", characterId);
     if (campaignId) await admin.from("campaigns").delete().eq("id", campaignId);
     for (const userId of createdUserIds) await admin.auth.admin.deleteUser(userId);
   }

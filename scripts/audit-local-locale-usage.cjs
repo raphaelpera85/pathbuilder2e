@@ -8,6 +8,7 @@ const locales = [
   { id: "en", browserLocale: "en-US", compendiumHeading: "Character creation compendium", compendiumTitle: "compendium", builderTitle: "character builder", builderTab: "Weapons", pickerTitle: "Select Classes", legacyClass: "Class", defaultName: "New Hero" },
   { id: "es", browserLocale: "es-ES", compendiumHeading: "Compendio de creación", compendiumTitle: "compendio", builderTitle: "creador de personajes", builderTab: "Armas", pickerTitle: "Seleccionar Clases", legacyClass: "Clase", defaultName: "Nuevo Héroe" },
 ];
+const viewports = [[320, 568], [375, 667], [414, 896], [768, 1024]];
 
 async function main() {
   const launchOptions = { headless: true };
@@ -49,6 +50,20 @@ async function main() {
       await picker.waitFor({ state: "visible" });
       check("título do picker traduzido", await picker.locator("#picker-title").innerText() === locale.pickerTitle);
       await page.keyboard.press("Escape");
+      for (const [width, height] of viewports) {
+        await page.setViewportSize({ width, height });
+        for (const route of ["compendium", "builder"]) {
+          await page.goto(`${baseUrl}/#/${route}`, { waitUntil: "domcontentloaded", timeout: 30000 });
+          await page.waitForTimeout(300);
+          const layout = await page.evaluate(() => ({
+            noHorizontalOverflow: document.body.scrollWidth <= document.documentElement.clientWidth,
+            portalMounted: Boolean(document.getElementById("react-portal-root")),
+            legacyVisible: !(document.getElementById("legacy-builder-root")?.hidden ?? true),
+          }));
+          check(`${route} ${width}x${height} sem overflow`, layout.noHorizontalOverflow);
+          check(`${route} ${width}x${height} montagem correta`, route === "compendium" ? layout.portalMounted : layout.legacyVisible);
+        }
+      }
       report.push({ locale: locale.id, checks, passed: checks.filter(item => item.pass).length, total: checks.length });
       await context.close();
     }
