@@ -44,6 +44,10 @@ export function getWeaponVisualKey(data: WeaponVisualData = {}): string {
   if (/nunchaku/.test(identity)) return "nunchaku";
   if (/gancho|gaff/.test(identity)) return "gaff";
   if (/palavra do general|general.?s word/.test(identity)) return "generals-word";
+  if (/bossa de escudo|shield boss/.test(identity)) return "shield-boss";
+  if (/cravos de escudo|shield spikes/.test(identity)) return "shield-spikes";
+  if (/quebra-escudos ulfen|ulfen shieldbreaker/.test(identity)) return "ulfen-shieldbreaker";
+  if (/^.*\bescudo\b|standard shield/.test(identity)) return "shield-standard";
   if (/martelo de guerra|warhammer/.test(identity)) return "warhammer";
   if (/ma[cç]a-estrela|morningstar/.test(identity)) return "morningstar";
   if (/grande porrete|greatclub/.test(identity)) return "greatclub";
