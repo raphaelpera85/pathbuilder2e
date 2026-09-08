@@ -30,14 +30,21 @@ describe("weapon visual fallback", () => {
     expect(getWeaponImageUrl({ name: "Adaga de Soco", weaponGroup: "Brawling" })).toBe("/weapon-images/weapon-punching-dagger.png");
   });
 
+  it("separa as principais armas de fogo por identidade", () => {
+    expect(getWeaponVisualKey({ name: "Pistola de Pederneira", weaponGroup: "Firearm" })).toBe("flintlock-pistol");
+    expect(getWeaponVisualKey({ name: "Mosquete de Pederneira", weaponGroup: "Firearm" })).toBe("flintlock-musket");
+    expect(getWeaponVisualKey({ name: "Bacamarte", weaponGroup: "Firearm" })).toBe("blunderbuss");
+    expect(getWeaponVisualKey({ name: "Pimenteiro", weaponGroup: "Firearm" })).toBe("pepperbox");
+  });
+
   it("keeps every local fallback asset available to the browser", () => {
-    for (const key of ["generic", "sword", "bow", "axe", "club", "dagger", "punch-dagger", "orc-knuckle-dagger", "punching-dagger", "crossbow", "spear", "firearm", "mace", "staff", "whip", "sling", "gauntlet", "bomb", "shield", "lute", "halberd", "trident", "shuriken", "flail"]) {
+    for (const key of ["generic", "sword", "bow", "axe", "club", "dagger", "punch-dagger", "orc-knuckle-dagger", "punching-dagger", "crossbow", "spear", "firearm", "flintlock-pistol", "flintlock-musket", "blunderbuss", "pepperbox", "mace", "staff", "whip", "sling", "gauntlet", "bomb", "shield", "lute", "halberd", "trident", "shuriken", "flail"]) {
       expect(existsSync(resolve(process.cwd(), "public", "weapon-images", `weapon-${key}.${key === "generic" ? "svg" : "png"}`))).toBe(true);
     }
   });
 
   it("classifica armas remotas sem grupo usando nome e traços", () => {
-    expect(getWeaponVisualKey({ names: { "pt-BR": "Pistola de Pederneira" }, traits: ["Arma de fogo"] })).toBe("firearm");
+    expect(getWeaponVisualKey({ names: { "pt-BR": "Pistola de Pederneira" }, traits: ["Arma de fogo"] })).toBe("flintlock-pistol");
     expect(getWeaponVisualKey({ names: { "pt-BR": "Bomba Alquímica" }, traits: ["Bomba"] })).toBe("bomb");
     expect(getWeaponVisualKey({ names: { "pt-BR": "Chicote" }, traits: ["Alcance"] })).toBe("whip");
     expect(getWeaponVisualKey({ names: { "pt-BR": "Cajado" }, traits: ["Duas Mãos"] })).toBe("staff");

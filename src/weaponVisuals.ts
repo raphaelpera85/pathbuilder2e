@@ -16,6 +16,10 @@ export function getWeaponVisualKey(data: WeaponVisualData = {}): string {
   const name = String(data.name || data.names?.["pt-BR"] || data.names?.en || "").toLowerCase();
   const traits = Array.isArray(data.traits) ? data.traits.join(" ").toLowerCase() : "";
   const identity = `${group} ${category} ${name} ${traits}`;
+  if (/pistola de pederneira|flintlock pistol/.test(identity)) return "flintlock-pistol";
+  if (/mosquete de pederneira|flintlock musket/.test(identity)) return "flintlock-musket";
+  if (/bacamarte|blunderbuss/.test(identity)) return "blunderbuss";
+  if (/pimenteiro|pepperbox/.test(identity)) return "pepperbox";
   if (/adaga de punho orc|orc knuckle dagger/.test(identity)) return "orc-knuckle-dagger";
   if (/adaga de soco|punching dagger/.test(identity)) return "punching-dagger";
   if (/adaga de punho|punch dagger|katar/.test(identity)) return "punch-dagger";

@@ -2172,7 +2172,7 @@
     "source_page": 151,
     "data": {
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-firearm.png",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-flintlock-musket.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -2237,7 +2237,7 @@
     "source_page": 151,
     "data": {
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-firearm.png",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-flintlock-pistol.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -2304,7 +2304,7 @@
     "source_page": 151,
     "data": {
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-firearm.png",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-blunderbuss.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -2474,7 +2474,7 @@
     "source_page": 151,
     "data": {
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-firearm.png",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-pepperbox.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
