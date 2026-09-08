@@ -160,7 +160,7 @@
     "source_page": 275,
     "data": {
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-crossbow.png",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-alchemical-crossbow.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -672,7 +672,7 @@
     "source_page": 282,
     "data": {
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-crossbow.png",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-crossbow-standard.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -1073,7 +1073,7 @@
     "source_page": 282,
     "data": {
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-crossbow.png",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-hand-crossbow.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -1106,7 +1106,7 @@
     "source_page": 282,
     "data": {
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-crossbow.png",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-heavy-crossbow.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
