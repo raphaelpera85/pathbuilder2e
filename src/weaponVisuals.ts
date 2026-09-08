@@ -17,6 +17,7 @@ export function getWeaponVisualKey(data: WeaponVisualData = {}): string {
   const traits = Array.isArray(data.traits) ? data.traits.join(" ").toLowerCase() : "";
   const identity = `${group} ${category} ${name} ${traits}`;
   if (/adaga de punho orc|orc knuckle dagger/.test(identity)) return "orc-knuckle-dagger";
+  if (/adaga de soco|punching dagger/.test(identity)) return "punching-dagger";
   if (/adaga de punho|punch dagger|katar/.test(identity)) return "punch-dagger";
   if (/alabarda|halberd/.test(identity)) return "halberd";
   if (/tridente|trident/.test(identity)) return "trident";
