@@ -1234,3 +1234,4 @@ Persistência remota autenticada de personagens (2026-09-08): `npm run audit:cam
 
 - [x] Criar e sincronizar artes individuais para Arcabuz, Pistola de Duelo, Canhão de Mão e Pistola de Casaco, usando o nome completo de cada arma.
 - [x] Criar e sincronizar artes individuais para Malho, Martelo de Guerra, Maça-Estrela e Grande Porrete, usando o nome completo de cada arma.
+- [x] Criar e sincronizar artes individuais para Machado Longo, Picareta, Segadeira e Foice, usando o nome completo de cada arma.

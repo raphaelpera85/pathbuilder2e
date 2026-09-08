@@ -942,7 +942,7 @@
     "source_page": 279,
     "data": {
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-axe.png",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-greataxe.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -1506,7 +1506,7 @@
     "source_page": 279,
     "data": {
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-axe.png",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-pick.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -1640,7 +1640,7 @@
     "source_page": 279,
     "data": {
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-axe.png",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-scythe.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -1840,7 +1840,7 @@
     "source_page": 278,
     "data": {
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-axe.png",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-sickle.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }

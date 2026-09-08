@@ -43,6 +43,10 @@ describe("weapon visual fallback", () => {
     expect(getWeaponVisualKey({ name: "Martelo de Guerra", weaponGroup: "Mace" })).toBe("warhammer");
     expect(getWeaponVisualKey({ name: "Maça-Estrela", weaponGroup: "Mace" })).toBe("morningstar");
     expect(getWeaponVisualKey({ name: "Grande Porrete", weaponGroup: "Club" })).toBe("greatclub");
+    expect(getWeaponVisualKey({ name: "Machado Longo", weaponGroup: "Axe" })).toBe("greataxe");
+    expect(getWeaponVisualKey({ name: "Picareta", weaponGroup: "Axe" })).toBe("pick");
+    expect(getWeaponVisualKey({ name: "Segadeira", weaponGroup: "Axe" })).toBe("scythe");
+    expect(getWeaponVisualKey({ name: "Foice", weaponGroup: "Axe" })).toBe("sickle");
   });
 
   it("separa armas marciais nomeadas da arte genérica da categoria", () => {
@@ -57,7 +61,7 @@ describe("weapon visual fallback", () => {
   });
 
   it("keeps every local fallback asset available to the browser", () => {
-    for (const key of ["generic", "sword", "bow", "axe", "club", "dagger", "punch-dagger", "orc-knuckle-dagger", "punching-dagger", "crossbow", "spear", "firearm", "flintlock-pistol", "flintlock-musket", "blunderbuss", "pepperbox", "arquebus", "dueling-pistol", "hand-cannon", "coat-pistol", "maul", "warhammer", "morningstar", "greatclub", "rapier", "battle-axe", "cavalry-lance", "longbow", "bastard-sword", "longsword", "shortsword", "kukri", "mace", "staff", "whip", "sling", "gauntlet", "bomb", "shield", "lute", "halberd", "trident", "shuriken", "flail"]) {
+    for (const key of ["generic", "sword", "bow", "axe", "club", "dagger", "punch-dagger", "orc-knuckle-dagger", "punching-dagger", "crossbow", "spear", "firearm", "flintlock-pistol", "flintlock-musket", "blunderbuss", "pepperbox", "arquebus", "dueling-pistol", "hand-cannon", "coat-pistol", "maul", "warhammer", "morningstar", "greatclub", "greataxe", "pick", "scythe", "sickle", "rapier", "battle-axe", "cavalry-lance", "longbow", "bastard-sword", "longsword", "shortsword", "kukri", "mace", "staff", "whip", "sling", "gauntlet", "bomb", "shield", "lute", "halberd", "trident", "shuriken", "flail"]) {
       expect(existsSync(resolve(process.cwd(), "public", "weapon-images", `weapon-${key}.${key === "generic" ? "svg" : "png"}`))).toBe(true);
     }
   });

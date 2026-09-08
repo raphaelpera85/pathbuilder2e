@@ -28,6 +28,10 @@ export function getWeaponVisualKey(data: WeaponVisualData = {}): string {
   if (/martelo de guerra|warhammer/.test(identity)) return "warhammer";
   if (/ma[cç]a-estrela|morningstar/.test(identity)) return "morningstar";
   if (/grande porrete|greatclub/.test(identity)) return "greatclub";
+  if (/machado longo|greataxe/.test(identity)) return "greataxe";
+  if (/picareta|pick/.test(identity)) return "pick";
+  if (/segadeira|scythe/.test(identity)) return "scythe";
+  if (/foice|sickle/.test(identity)) return "sickle";
   if (/rapieira|rapier/.test(identity)) return "rapier";
   if (/machado de batalha|battle axe/.test(identity)) return "battle-axe";
   if (/lan[cç]a de cavalaria|cavalry lance/.test(identity)) return "cavalry-lance";
