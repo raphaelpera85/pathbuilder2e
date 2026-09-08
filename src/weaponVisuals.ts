@@ -45,6 +45,10 @@ export function getWeaponVisualKey(data: WeaponVisualData = {}): string {
   if (/arco curto|shortbow/.test(identity)) return "shortbow";
   if (/daikyu/.test(identity)) return "daikyu";
   if (/arco longo do senhor dos cavalos|horselord.*longbow|horselords longbow/.test(identity)) return "horselords-longbow";
+  if (/dardo|dart/.test(identity)) return "dart";
+  if (/azagaia|javelin/.test(identity)) return "javelin";
+  if (/adaga de duelo|main gauche/.test(identity)) return "main-gauche";
+  if (/rasgador de kith|kithrender/.test(identity)) return "kithrender";
   if (/rapieira|rapier/.test(identity)) return "rapier";
   if (/machado de batalha|battle axe/.test(identity)) return "battle-axe";
   if (/lan[cç]a de cavalaria|cavalry lance/.test(identity)) return "cavalry-lance";
