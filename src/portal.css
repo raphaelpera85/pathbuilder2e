@@ -2317,7 +2317,7 @@ body.theme-light .catalog-source-badge {
 }
 .weapon-visual {
   display: block;
-  object-fit: cover;
+  object-fit: contain;
   background: #111827;
   border: 1px solid rgba(245, 158, 11, 0.35);
   border-radius: 10px;

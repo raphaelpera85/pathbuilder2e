@@ -16,6 +16,7 @@ export function getWeaponVisualKey(data: WeaponVisualData = {}): string {
   const name = String(data.name || data.names?.["pt-BR"] || data.names?.en || "").toLowerCase();
   const traits = Array.isArray(data.traits) ? data.traits.join(" ").toLowerCase() : "";
   const identity = `${group} ${category} ${name} ${traits}`;
+  if (/adaga de punho|punch dagger|katar/.test(identity)) return "punch-dagger";
   if (/alabarda|halberd/.test(identity)) return "halberd";
   if (/tridente|trident/.test(identity)) return "trident";
   if (/shuriken/.test(identity)) return "shuriken";
