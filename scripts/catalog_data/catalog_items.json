@@ -10573,8 +10573,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-bomb.png",
-      "imageFamily": "bomb",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-minor-glue-bomb.png",
+      "imageFamily": "minor-glue-bomb",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -10603,8 +10603,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-bomb.png",
-      "imageFamily": "bomb",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-minor-weakening-bomb.png",
+      "imageFamily": "minor-weakening-bomb",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -10633,8 +10633,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-bomb.png",
-      "imageFamily": "bomb",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-minor-ghost-charge.png",
+      "imageFamily": "minor-ghost-charge",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -11061,8 +11061,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-bomb.png",
-      "imageFamily": "bomb",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-minor-detonating-stone.png",
+      "imageFamily": "minor-detonating-stone",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -13032,8 +13032,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-bomb.png",
-      "imageFamily": "bomb",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-minor-glue-bomb.png",
+      "imageFamily": "minor-glue-bomb",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -13064,8 +13064,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-poison.png",
-      "imageFamily": "poison",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-minor-weakening-bomb.png",
+      "imageFamily": "minor-weakening-bomb",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -13096,8 +13096,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-bomb.png",
-      "imageFamily": "bomb",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-minor-ghost-charge.png",
+      "imageFamily": "minor-ghost-charge",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -13224,8 +13224,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-bomb.png",
-      "imageFamily": "bomb",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-minor-detonating-stone.png",
+      "imageFamily": "minor-detonating-stone",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }

@@ -48,6 +48,10 @@ function visualKey(row) {
   if (row.id === "item.guns_gears.ammunition.erosion_bullet" || /^bala da eros[aã]o$/.test(name)) return "erosion-bullet";
   if (row.id === "item.guns_gears.ammunition.faerie_bullet" || /^bala fe[eé]rica$/.test(name)) return "faerie-bullet";
   if (row.id === "item.guns_gears.ammunition.reliable_cartridge" || /^cartucho confi[aá]vel$/.test(name)) return "reliable-cartridge";
+  if (row.id === "item.pc2.minor_glue_bomb" || /^bomba de cola menor$/.test(name)) return "minor-glue-bomb";
+  if (row.id === "item.pc2.minor_weakening_bomb" || /^bomba de esmorecimento menor$/.test(name)) return "minor-weakening-bomb";
+  if (row.id === "item.pc2.minor_ghost_charge" || /^carga fantasma menor$/.test(name)) return "minor-ghost-charge";
+  if (row.id === "item.pc2.minor_detonating_stone" || /^pedra detonante menor$/.test(name)) return "minor-detonating-stone";
   if (/^10 balas$|^10 bullets$/.test(name)) return "bullets";
   if (/^bandoleira do saque da sorte$|^manto a[eé]reo$|^figura de proa velada$/.test(name)) return "adventurer-pack";
   if (/^ervilhas estalantes terap[eê]uticas$|^sopro da praga$|^azul de sairazul$/.test(name)) return "potion";
