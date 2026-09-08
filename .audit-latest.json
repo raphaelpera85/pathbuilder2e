@@ -1,0 +1,3469 @@
+{
+  "generatedAt": "2026-09-08T00:04:00.708Z",
+  "categories": {
+    "ancestries": {
+      "total": 29,
+      "missingNames": [],
+      "missingSummaries": [],
+      "missingNamesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "missingSummariesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "placeholderTranslations": [],
+      "missingSource": [],
+      "missingSourceNotMarkedReview": [],
+      "invalidSource": [],
+      "invalidRuleset": [],
+      "verifiedWithoutSource": [],
+      "needsReview": [],
+      "mechanicsReview": [],
+      "duplicateNames": [],
+      "duplicateLocalizedNames": []
+    },
+    "heritages": {
+      "total": 129,
+      "missingNames": [],
+      "missingSummaries": [],
+      "missingNamesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "missingSummariesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "placeholderTranslations": [],
+      "missingSource": [],
+      "missingSourceNotMarkedReview": [],
+      "invalidSource": [],
+      "invalidRuleset": [],
+      "verifiedWithoutSource": [],
+      "needsReview": [],
+      "mechanicsReview": [],
+      "duplicateNames": [],
+      "duplicateLocalizedNames": []
+    },
+    "versatileHeritages": {
+      "total": 14,
+      "missingNames": [],
+      "missingSummaries": [],
+      "missingNamesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "missingSummariesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "placeholderTranslations": [],
+      "missingSource": [],
+      "missingSourceNotMarkedReview": [],
+      "invalidSource": [],
+      "invalidRuleset": [],
+      "verifiedWithoutSource": [],
+      "needsReview": [],
+      "mechanicsReview": [],
+      "duplicateNames": [],
+      "duplicateLocalizedNames": []
+    },
+    "classes": {
+      "total": 27,
+      "missingNames": [],
+      "missingSummaries": [],
+      "missingNamesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "missingSummariesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "placeholderTranslations": [],
+      "missingSource": [],
+      "missingSourceNotMarkedReview": [],
+      "invalidSource": [],
+      "invalidRuleset": [],
+      "verifiedWithoutSource": [],
+      "needsReview": [],
+      "mechanicsReview": [],
+      "duplicateNames": [],
+      "duplicateLocalizedNames": []
+    },
+    "backgrounds": {
+      "total": 115,
+      "missingNames": [],
+      "missingSummaries": [],
+      "missingNamesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "missingSummariesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "placeholderTranslations": [],
+      "missingSource": [],
+      "missingSourceNotMarkedReview": [],
+      "invalidSource": [],
+      "invalidRuleset": [],
+      "verifiedWithoutSource": [],
+      "needsReview": [],
+      "mechanicsReview": [],
+      "duplicateNames": [
+        {
+          "name": "escudeiro (squire)",
+          "locations": [
+            "background.squire",
+            "background.player_core_2.common.squire"
+          ]
+        }
+      ],
+      "duplicateLocalizedNames": [
+        {
+          "locale": "pt-BR",
+          "name": "escudeiro",
+          "locations": [
+            "background.squire",
+            "background.player_core_2.common.squire"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "squire",
+          "locations": [
+            "background.squire",
+            "background.player_core_2.common.squire"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "escudero",
+          "locations": [
+            "background.squire",
+            "background.player_core_2.common.squire"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "driver",
+          "locations": [
+            "background.player_core_2.common.driver",
+            "background.guns_gears.driver"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "conductor",
+          "locations": [
+            "background.player_core_2.common.driver",
+            "background.guns_gears.driver"
+          ]
+        }
+      ]
+    },
+    "archetypes": {
+      "total": 123,
+      "missingNames": [],
+      "missingSummaries": [],
+      "missingNamesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "missingSummariesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "placeholderTranslations": [],
+      "missingSource": [],
+      "missingSourceNotMarkedReview": [],
+      "invalidSource": [],
+      "invalidRuleset": [],
+      "verifiedWithoutSource": [],
+      "needsReview": [],
+      "mechanicsReview": [],
+      "duplicateNames": [
+        {
+          "name": "exorcista (exorcist)",
+          "locations": [
+            "archetype.exorcist",
+            "archetype.book_of_dead.exorcist"
+          ]
+        },
+        {
+          "name": "guardiao das almas (soul warden)",
+          "locations": [
+            "archetype.soul_warden",
+            "archetype.book_of_dead.soul_warden"
+          ]
+        },
+        {
+          "name": "necromante consagrado (consecrated necromancer)",
+          "locations": [
+            "archetype.consecrated_necromancer",
+            "archetype.book_of_dead.consecrated_necromancer"
+          ]
+        },
+        {
+          "name": "reanimador (reanimator)",
+          "locations": [
+            "archetype.reanimator",
+            "archetype.book_of_dead.reanimator"
+          ]
+        },
+        {
+          "name": "lich (lich)",
+          "locations": [
+            "archetype.lich",
+            "archetype.book_of_dead.lich"
+          ]
+        }
+      ],
+      "duplicateLocalizedNames": [
+        {
+          "locale": "pt-BR",
+          "name": "exorcista",
+          "locations": [
+            "archetype.exorcist",
+            "archetype.book_of_dead.exorcist"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "exorcist",
+          "locations": [
+            "archetype.exorcist",
+            "archetype.book_of_dead.exorcist"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "exorcista",
+          "locations": [
+            "archetype.exorcist",
+            "archetype.book_of_dead.exorcist"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "guardiao das almas",
+          "locations": [
+            "archetype.soul_warden",
+            "archetype.book_of_dead.soul_warden"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "soul warden",
+          "locations": [
+            "archetype.soul_warden",
+            "archetype.book_of_dead.soul_warden"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "guardian de almas",
+          "locations": [
+            "archetype.soul_warden",
+            "archetype.book_of_dead.soul_warden"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "necromante consagrado",
+          "locations": [
+            "archetype.consecrated_necromancer",
+            "archetype.book_of_dead.consecrated_necromancer"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "consecrated necromancer",
+          "locations": [
+            "archetype.consecrated_necromancer",
+            "archetype.book_of_dead.consecrated_necromancer"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "nigromante consagrado",
+          "locations": [
+            "archetype.consecrated_necromancer",
+            "archetype.book_of_dead.consecrated_necromancer"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "reanimador",
+          "locations": [
+            "archetype.reanimator",
+            "archetype.book_of_dead.reanimator"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "reanimator",
+          "locations": [
+            "archetype.reanimator",
+            "archetype.book_of_dead.reanimator"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "reanimador",
+          "locations": [
+            "archetype.reanimator",
+            "archetype.book_of_dead.reanimator"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "lich",
+          "locations": [
+            "archetype.lich",
+            "archetype.book_of_dead.lich"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "lich",
+          "locations": [
+            "archetype.lich",
+            "archetype.book_of_dead.lich"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "liche",
+          "locations": [
+            "archetype.lich",
+            "archetype.book_of_dead.lich"
+          ]
+        }
+      ]
+    },
+    "spells": {
+      "total": 415,
+      "missingNames": [],
+      "missingSummaries": [],
+      "missingNamesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "missingSummariesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "placeholderTranslations": [],
+      "missingSource": [],
+      "missingSourceNotMarkedReview": [],
+      "invalidSource": [],
+      "invalidRuleset": [],
+      "verifiedWithoutSource": [],
+      "needsReview": [],
+      "mechanicsReview": [],
+      "duplicateNames": [
+        {
+          "name": "solo consagrado (consecrated ground)",
+          "locations": [
+            "spell.player_core_2.solo_consagrado",
+            "spell.book_of_dead.consecrated_ground"
+          ]
+        }
+      ],
+      "duplicateLocalizedNames": [
+        {
+          "locale": "pt-BR",
+          "name": "solo consagrado",
+          "locations": [
+            "spell.player_core_2.solo_consagrado",
+            "spell.book_of_dead.consecrated_ground"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "consecrated ground",
+          "locations": [
+            "spell.player_core_2.solo_consagrado",
+            "spell.book_of_dead.consecrated_ground"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "suelo consagrado",
+          "locations": [
+            "spell.player_core_2.solo_consagrado",
+            "spell.book_of_dead.consecrated_ground"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "arsenal llameante",
+          "locations": [
+            "spell.rage_elements.fire.blazing_armory",
+            "spell.player_core_2.oracle.revelation_flames_saraivada_flamejante"
+          ]
+        }
+      ]
+    },
+    "rituals": {
+      "total": 29,
+      "missingNames": [],
+      "missingSummaries": [],
+      "missingNamesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "missingSummariesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "placeholderTranslations": [],
+      "missingSource": [],
+      "missingSourceNotMarkedReview": [],
+      "invalidSource": [],
+      "invalidRuleset": [],
+      "verifiedWithoutSource": [],
+      "needsReview": [],
+      "mechanicsReview": [],
+      "duplicateNames": [],
+      "duplicateLocalizedNames": []
+    },
+    "feats": {
+      "total": 1922,
+      "missingNames": [],
+      "missingSummaries": [],
+      "missingNamesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "missingSummariesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "placeholderTranslations": [],
+      "missingSource": [],
+      "missingSourceNotMarkedReview": [],
+      "invalidSource": [],
+      "invalidRuleset": [],
+      "verifiedWithoutSource": [],
+      "needsReview": [],
+      "mechanicsReview": [
+        "feat.ancestry.amurrun.maldicao_do_gato_preto",
+        "feat.ancestry.kholo.primeiro_a_atacar_primeiro_a_cair",
+        "feat.ancestry.tripkee.familiaridade_armas_tripkeenas",
+        "feat.general.pc2.deathless",
+        "feat.skill.pc2.acrobatics_teamwork",
+        "feat.class.inventor.adulterar",
+        "feat.class.inventor.companheiro_prototipo",
+        "feat.class.inventor.ferramentas_integradas",
+        "feat.class.inventor.compactar_armadura",
+        "feat.class.inventor.compactar_construto",
+        "feat.class.inventor.compactar_arma",
+        "feat.class.inventor.inovacao_adaptavel",
+        "feat.class.inventor.sobrecarga_rapida",
+        "feat.class.inventor.sobrecarga_instavel",
+        "feat.class.inventor.gambiarra_util",
+        "feat.class.inventor.inovacao_incremental",
+        "feat.class.inventor.reflexos_rapidos",
+        "feat.class.inventor.sobrecarga_magistral",
+        "feat.class.inventor.especializacao_em_armas",
+        "feat.class.inventor.especialidade_inventiva",
+        "feat.class.inventor.amplificador_ofensivo",
+        "feat.class.inventor.reconfiguracao_completa",
+        "feat.class.inventor.maestria_em_armas",
+        "feat.class.inventor.especializacao_maior",
+        "feat.class.inventor.sobrecarga_inigualavel",
+        "feat.class.inventor.inovacao_revolucionaria",
+        "feat.class.inventor.maestria_inventiva",
+        "feat.class.inventor.invencao_infinita",
+        "feat.class.gunslinger.atirador_avancado",
+        "feat.class.fighter.floreio_guerreiro",
+        "feat.class.fighter.guerreiro_pressao",
+        "feat.class.fighter.lutar_as_cegas",
+        "feat.class.rogue.previsivel",
+        "feat.class.rogue.lutar_as_cegas",
+        "feat.class.rogue.passo_de_recuo",
+        "feat.class.rogue.fica_no_chao",
+        "feat.class.rogue.infiltracao_improvavel",
+        "feat.class.ranger.tiro_a_caca",
+        "feat.class.ranger.lutar_as_cegas",
+        "feat.class.summoner.combatente_a_distancia"
+      ],
+      "duplicateNames": [
+        {
+          "name": "escalador de combate (combat climber)",
+          "locations": [
+            "feat.skill.combat_climber",
+            "feat.skill.athletics.combat_climber"
+          ]
+        },
+        {
+          "name": "carregador robusto (hefty hauler)",
+          "locations": [
+            "feat.skill.hefty_hauler",
+            "feat.skill.athletics.hefty_hauler"
+          ]
+        },
+        {
+          "name": "salto poderoso (powerful leap)",
+          "locations": [
+            "feat.skill.powerful_leap",
+            "feat.skill.athletics.powerful_leap"
+          ]
+        },
+        {
+          "name": "salto rapido (quick jump)",
+          "locations": [
+            "feat.skill.quick_jump",
+            "feat.skill.athletics.quick_jump"
+          ]
+        },
+        {
+          "name": "salto nas nuvens (cloud jump)",
+          "locations": [
+            "feat.skill.cloud_jump",
+            "feat.skill.athletics.cloud_jump"
+          ]
+        },
+        {
+          "name": "manufatura alquimica (alchemical crafting)",
+          "locations": [
+            "feat.skill.alchemical_crafting",
+            "feat.skill.crafting.alchemical_crafting"
+          ]
+        },
+        {
+          "name": "reparo rapido (quick repair)",
+          "locations": [
+            "feat.skill.quick_repair",
+            "feat.skill.crafting.quick_repair"
+          ]
+        },
+        {
+          "name": "manufatura magica (magical crafting)",
+          "locations": [
+            "feat.skill.magical_crafting",
+            "feat.skill.crafting.magical_crafting"
+          ]
+        },
+        {
+          "name": "inventor (inventor)",
+          "locations": [
+            "feat.skill.inventor",
+            "feat.skill.crafting.inventor"
+          ]
+        },
+        {
+          "name": "recuperacao continua (continual recovery)",
+          "locations": [
+            "feat.skill.continual_recovery",
+            "feat.skill.medicine.continual_recovery"
+          ]
+        },
+        {
+          "name": "cirurgia arriscada (risky surgery)",
+          "locations": [
+            "feat.skill.risky_surgery",
+            "feat.skill.pc2.risky_surgery"
+          ]
+        },
+        {
+          "name": "coercao rapida (quick coercion)",
+          "locations": [
+            "feat.skill.quick_coercion",
+            "feat.skill.intimidation.quick_coercion"
+          ]
+        },
+        {
+          "name": "pedido descarado (shameless request)",
+          "locations": [
+            "feat.skill.shameless_request",
+            "feat.skill.diplomacy.shameless_request"
+          ]
+        },
+        {
+          "name": "destrancar rapido (quick unlock)",
+          "locations": [
+            "feat.skill.quick_unlock",
+            "feat.skill.thievery.quick_unlock"
+          ]
+        },
+        {
+          "name": "golpe reativo (reactive strike)",
+          "locations": [
+            "feat.class.reactive_strike",
+            "feat.class.champion.golpe_reativo",
+            "feat.class.swashbuckler.golpe_reativo",
+            "feat.exemplar.reactive_strike",
+            "feat.class.commander.reactive_strike",
+            "feat.class.guardian.reactive_strike"
+          ]
+        },
+        {
+          "name": "estender magia (reach spell)",
+          "locations": [
+            "feat.class.reach_spell",
+            "feat.class.sorcerer.estender_magia",
+            "feat.class.oracle.estender_magia",
+            "feat.class.wizard.estender_magia",
+            "feat.class.witch.estender_magia"
+          ]
+        },
+        {
+          "name": "ampliar magia (widen spell)",
+          "locations": [
+            "feat.class.widen_spell",
+            "feat.class.sorcerer.ampliar_magia",
+            "feat.class.oracle.ampliar_magia",
+            "feat.class.wizard.ampliar_magia",
+            "feat.class.witch.ampliar_magia"
+          ]
+        },
+        {
+          "name": "dedicacao de guerreiro (fighter dedication)",
+          "locations": [
+            "feat.archetype.fighter_dedication",
+            "feat.archetype.fighter_multiclass.dedication"
+          ]
+        },
+        {
+          "name": "dedicacao de mago (wizard dedication)",
+          "locations": [
+            "feat.archetype.wizard_dedication",
+            "feat.archetype.wizard_multiclass.dedication"
+          ]
+        },
+        {
+          "name": "saude vigorosa (vigorous health)",
+          "locations": [
+            "feat.ancestry.hobgoblin.saude_vigorosa",
+            "feat.general.pc2.vigorous_health"
+          ]
+        },
+        {
+          "name": "avanco defensivo (defensive advance)",
+          "locations": [
+            "feat.class.champion.avanco_defensivo",
+            "feat.class.guardian.defensive_advance"
+          ]
+        },
+        {
+          "name": "concentracao sem esforco (effortless concentration)",
+          "locations": [
+            "feat.class.sorcerer.concentracao_sem_esforco",
+            "feat.class.wizard.concentracao_sem_esforco",
+            "feat.class.witch.concentracao_sem_esforco"
+          ]
+        },
+        {
+          "name": "conjuracao acelerada (quickened casting)",
+          "locations": [
+            "feat.class.sorcerer.conjuracao_acelerada",
+            "feat.class.oracle.conjuracao_acelerada",
+            "feat.class.wizard.conjuracao_acelerada",
+            "feat.class.witch.conjuracao_acelerada"
+          ]
+        },
+        {
+          "name": "conjuracao consistente (steady spellcasting)",
+          "locations": [
+            "feat.class.sorcerer.conjuracao_consistente",
+            "feat.class.oracle.conjuracao_consistente",
+            "feat.class.wizard.conjuracao_consistente",
+            "feat.class.witch.conjuracao_consistente"
+          ]
+        },
+        {
+          "name": "energia avassaladora (overwhelming energy)",
+          "locations": [
+            "feat.class.sorcerer.energia_avassaladora",
+            "feat.class.wizard.energia_avassaladora"
+          ]
+        },
+        {
+          "name": "expansao de truque magico (cantrip expansion)",
+          "locations": [
+            "feat.class.sorcerer.expansao_de_truque_magico",
+            "feat.class.oracle.expansao_de_truque_magico",
+            "feat.class.magus.cantrip_expansion",
+            "feat.class.wizard.expansao_de_truque_magico",
+            "feat.class.witch.expansao_de_truque_magico"
+          ]
+        },
+        {
+          "name": "familiar (familiar)",
+          "locations": [
+            "feat.class.sorcerer.familiar",
+            "feat.class.magus.familiar",
+            "feat.class.thaumaturge.familiar",
+            "feat.class.wizard.familiar"
+          ]
+        },
+        {
+          "name": "golpes encantados (enchanted strikes)",
+          "locations": [
+            "feat.class.sorcerer.golpes_encantados",
+            "feat.class.oracle.golpes_encantados"
+          ]
+        },
+        {
+          "name": "sentido magico (magical sense)",
+          "locations": [
+            "feat.class.sorcerer.sentido_magico",
+            "feat.class.oracle.sentido_magico"
+          ]
+        },
+        {
+          "name": "ocultar magia (conceal spell)",
+          "locations": [
+            "feat.animist.conceal_spell",
+            "feat.class.wizard.ocultar_magia",
+            "feat.class.witch.ocultar_magia"
+          ]
+        },
+        {
+          "name": "familiar aprimorado (enhanced familiar)",
+          "locations": [
+            "feat.animist.enhanced_familiar",
+            "feat.class.thaumaturge.enhanced_familiar"
+          ]
+        },
+        {
+          "name": "familiar incrivel (incredible familiar)",
+          "locations": [
+            "feat.animist.incredible_familiar",
+            "feat.class.thaumaturge.incredible_familiar",
+            "feat.class.witch.familiar_incrivel"
+          ]
+        },
+        {
+          "name": "dedicacao (dedication)",
+          "locations": [
+            "feat.archetype.commander_multiclass.dedication",
+            "feat.archetype.guardian_multiclass.dedication"
+          ]
+        },
+        {
+          "name": "familiar melhorado (enhanced familiar)",
+          "locations": [
+            "feat.class.magus.enhanced_familiar",
+            "feat.class.wizard.familiar_melhorado",
+            "feat.class.witch.familiar_melhorado"
+          ]
+        },
+        {
+          "name": "conhecimento e poder (knowledge is power)",
+          "locations": [
+            "feat.class.magus.knowledge_is_power",
+            "feat.class.wizard.conhecimento_e_poder"
+          ]
+        },
+        {
+          "name": "sentido magico (magic sense)",
+          "locations": [
+            "feat.class.magus.magic_sense",
+            "feat.class.wizard.sentido_magico"
+          ]
+        },
+        {
+          "name": "contramagica (counterspell)",
+          "locations": [
+            "feat.class.wizard.contramagica",
+            "feat.class.witch.contramagica"
+          ]
+        },
+        {
+          "name": "refletir magia (reflect spell)",
+          "locations": [
+            "feat.class.wizard.refletir_magia",
+            "feat.class.witch.refletir_magia"
+          ]
+        }
+      ],
+      "duplicateLocalizedNames": [
+        {
+          "locale": "en",
+          "name": "incredible initiative",
+          "locations": [
+            "feat.general.incredible_initiative",
+            "feat.class.inventor.reflexos_rapidos"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "cat fall",
+          "locations": [
+            "feat.skill.cat_fall",
+            "feat.skill.acrobatics.cat_fall"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "caida de gato",
+          "locations": [
+            "feat.skill.cat_fall",
+            "feat.skill.acrobatics.cat_fall"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "steady balance",
+          "locations": [
+            "feat.skill.steady_balance",
+            "feat.skill.acrobatics.stable_balance"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "kip up",
+          "locations": [
+            "feat.skill.kip_up",
+            "feat.skill.acrobatics.kip_up",
+            "feat.skill.athletics.kip_up_athletics"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "escalador de combate",
+          "locations": [
+            "feat.skill.combat_climber",
+            "feat.skill.athletics.combat_climber"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "combat climber",
+          "locations": [
+            "feat.skill.combat_climber",
+            "feat.skill.athletics.combat_climber"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "escalador de combate",
+          "locations": [
+            "feat.skill.combat_climber",
+            "feat.skill.athletics.combat_climber"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "carregador robusto",
+          "locations": [
+            "feat.skill.hefty_hauler",
+            "feat.skill.athletics.hefty_hauler"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "hefty hauler",
+          "locations": [
+            "feat.skill.hefty_hauler",
+            "feat.skill.athletics.hefty_hauler"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "salto poderoso",
+          "locations": [
+            "feat.skill.powerful_leap",
+            "feat.skill.athletics.powerful_leap",
+            "feat.ancestry.jotunborn.pounding_leap"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "powerful leap",
+          "locations": [
+            "feat.skill.powerful_leap",
+            "feat.skill.athletics.powerful_leap"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "salto poderoso",
+          "locations": [
+            "feat.skill.powerful_leap",
+            "feat.skill.athletics.powerful_leap"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "salto rapido",
+          "locations": [
+            "feat.skill.quick_jump",
+            "feat.skill.athletics.quick_jump"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "quick jump",
+          "locations": [
+            "feat.skill.quick_jump",
+            "feat.skill.athletics.quick_jump"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "salto rapido",
+          "locations": [
+            "feat.skill.quick_jump",
+            "feat.skill.athletics.quick_jump"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "titan wrestler",
+          "locations": [
+            "feat.skill.titan_wrestler",
+            "feat.skill.athletics.titan_wrestler"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "underwater marauder",
+          "locations": [
+            "feat.skill.underwater_marauder",
+            "feat.skill.athletics.underwater_marauder"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "salto nas nuvens",
+          "locations": [
+            "feat.skill.cloud_jump",
+            "feat.skill.athletics.cloud_jump"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "cloud jump",
+          "locations": [
+            "feat.skill.cloud_jump",
+            "feat.skill.athletics.cloud_jump"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "salto en las nubes",
+          "locations": [
+            "feat.skill.cloud_jump",
+            "feat.skill.athletics.cloud_jump"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "manufatura alquimica",
+          "locations": [
+            "feat.skill.alchemical_crafting",
+            "feat.skill.crafting.alchemical_crafting"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "alchemical crafting",
+          "locations": [
+            "feat.skill.alchemical_crafting",
+            "feat.skill.crafting.alchemical_crafting"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "artesania alquimica",
+          "locations": [
+            "feat.skill.alchemical_crafting",
+            "feat.skill.crafting.alchemical_crafting"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "reparo rapido",
+          "locations": [
+            "feat.skill.quick_repair",
+            "feat.skill.crafting.quick_repair"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "quick repair",
+          "locations": [
+            "feat.skill.quick_repair",
+            "feat.skill.crafting.quick_repair"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "reparacion rapida",
+          "locations": [
+            "feat.skill.quick_repair",
+            "feat.skill.crafting.quick_repair"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "manufatura magica",
+          "locations": [
+            "feat.skill.magical_crafting",
+            "feat.skill.crafting.magical_crafting"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "magical crafting",
+          "locations": [
+            "feat.skill.magical_crafting",
+            "feat.skill.crafting.magical_crafting"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "artesania magica",
+          "locations": [
+            "feat.skill.magical_crafting",
+            "feat.skill.crafting.magical_crafting"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "inventor",
+          "locations": [
+            "feat.skill.inventor",
+            "feat.skill.crafting.inventor"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "inventor",
+          "locations": [
+            "feat.skill.inventor",
+            "feat.skill.crafting.inventor"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "inventor",
+          "locations": [
+            "feat.skill.inventor",
+            "feat.skill.crafting.inventor"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "battle medicine",
+          "locations": [
+            "feat.skill.battle_medicine",
+            "feat.skill.medicine.battle_medicine"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "recuperacao continua",
+          "locations": [
+            "feat.skill.continual_recovery",
+            "feat.skill.medicine.continual_recovery"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "continual recovery",
+          "locations": [
+            "feat.skill.continual_recovery",
+            "feat.skill.medicine.continual_recovery"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "recuperacion continua",
+          "locations": [
+            "feat.skill.continual_recovery",
+            "feat.skill.medicine.continual_recovery"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "ward medic",
+          "locations": [
+            "feat.skill.ward_medic",
+            "feat.skill.medicine.ward_medic"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "cirurgia arriscada",
+          "locations": [
+            "feat.skill.risky_surgery",
+            "feat.skill.pc2.risky_surgery"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "risky surgery",
+          "locations": [
+            "feat.skill.risky_surgery",
+            "feat.skill.pc2.risky_surgery"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "cirugia arriesgada",
+          "locations": [
+            "feat.skill.risky_surgery",
+            "feat.skill.pc2.risky_surgery"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "intimidating glare",
+          "locations": [
+            "feat.skill.intimidating_glare",
+            "feat.skill.intimidation.intimidating_glare"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "coercao rapida",
+          "locations": [
+            "feat.skill.quick_coercion",
+            "feat.skill.intimidation.quick_coercion"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "quick coercion",
+          "locations": [
+            "feat.skill.quick_coercion",
+            "feat.skill.intimidation.quick_coercion"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "battle cry",
+          "locations": [
+            "feat.skill.battle_cry",
+            "feat.skill.intimidation.battle_cry"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "scare to death",
+          "locations": [
+            "feat.skill.scare_to_death",
+            "feat.skill.intimidation.scare_to_death"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "group impression",
+          "locations": [
+            "feat.skill.group_impression",
+            "feat.skill.diplomacy.group_impression"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "pedido descarado",
+          "locations": [
+            "feat.skill.shameless_request",
+            "feat.skill.diplomacy.shameless_request"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "shameless request",
+          "locations": [
+            "feat.skill.shameless_request",
+            "feat.skill.diplomacy.shameless_request"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "peticion descarada",
+          "locations": [
+            "feat.skill.shameless_request",
+            "feat.skill.diplomacy.shameless_request"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "terrain stalker",
+          "locations": [
+            "feat.skill.terrain_stalker",
+            "feat.skill.stealth.terrain_stalker"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "acechador del terreno",
+          "locations": [
+            "feat.skill.terrain_stalker",
+            "feat.skill.stealth.terrain_stalker"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "swift sneak",
+          "locations": [
+            "feat.skill.swift_sneak",
+            "feat.skill.stealth.swift_sneak"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "legendary sneak",
+          "locations": [
+            "feat.skill.legendary_sneak",
+            "feat.skill.stealth.legendary_sneak"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "sigilo legendario",
+          "locations": [
+            "feat.skill.legendary_sneak",
+            "feat.skill.stealth.legendary_sneak"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "pickpocket",
+          "locations": [
+            "feat.skill.pickpocket",
+            "feat.skill.thievery.pickpocket"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "carterista",
+          "locations": [
+            "feat.skill.pickpocket",
+            "feat.skill.thievery.pickpocket"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "destrancar rapido",
+          "locations": [
+            "feat.skill.quick_unlock",
+            "feat.skill.thievery.quick_unlock"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "quick unlock",
+          "locations": [
+            "feat.skill.quick_unlock",
+            "feat.skill.thievery.quick_unlock"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "additional lore",
+          "locations": [
+            "feat.skill.additional_lore",
+            "feat.skill.lore.additional_lore"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "saber adicional",
+          "locations": [
+            "feat.skill.additional_lore",
+            "feat.skill.lore.additional_lore"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "golpe feroz",
+          "locations": [
+            "feat.class.power_attack",
+            "feat.class.fighter.golpe_feroz"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "sudden charge",
+          "locations": [
+            "feat.class.sudden_charge",
+            "feat.class.barbarian.investida_subita"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "golpe reativo",
+          "locations": [
+            "feat.class.reactive_strike",
+            "feat.class.champion.golpe_reativo",
+            "feat.class.swashbuckler.golpe_reativo",
+            "feat.exemplar.reactive_strike",
+            "feat.class.commander.reactive_strike",
+            "feat.class.guardian.reactive_strike"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "reactive strike",
+          "locations": [
+            "feat.class.reactive_strike",
+            "feat.class.champion.golpe_reativo",
+            "feat.class.swashbuckler.golpe_reativo",
+            "feat.exemplar.reactive_strike",
+            "feat.class.commander.reactive_strike",
+            "feat.class.guardian.reactive_strike"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "golpe reactivo",
+          "locations": [
+            "feat.class.reactive_strike",
+            "feat.class.champion.golpe_reativo",
+            "feat.class.swashbuckler.golpe_reativo",
+            "feat.exemplar.reactive_strike",
+            "feat.class.commander.reactive_strike",
+            "feat.class.guardian.reactive_strike"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "corte duplo",
+          "locations": [
+            "feat.class.double_slice",
+            "feat.class.fighter.corte_duplo"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "esquiva agil",
+          "locations": [
+            "feat.class.nimble_dodge",
+            "feat.class.rogue.esquiva_agil"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "nimble dodge",
+          "locations": [
+            "feat.class.nimble_dodge",
+            "feat.class.swashbuckler.esquiva_vistosa"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "esquiva agil",
+          "locations": [
+            "feat.class.nimble_dodge",
+            "feat.class.rogue.esquiva_agil"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "trap finder",
+          "locations": [
+            "feat.class.trap_finder",
+            "feat.class.investigator.descobridor_de_armadilhas"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "you're next",
+          "locations": [
+            "feat.class.youre_next",
+            "feat.class.swashbuckler.voce_e_o_proximo"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "estender magia",
+          "locations": [
+            "feat.class.reach_spell",
+            "feat.class.sorcerer.estender_magia",
+            "feat.class.oracle.estender_magia",
+            "feat.class.bard.estender_magia",
+            "feat.class.wizard.estender_magia",
+            "feat.class.witch.estender_magia"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "reach spell",
+          "locations": [
+            "feat.class.reach_spell",
+            "feat.class.sorcerer.estender_magia",
+            "feat.class.oracle.estender_magia",
+            "feat.class.wizard.estender_magia",
+            "feat.class.witch.estender_magia"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "ampliar magia",
+          "locations": [
+            "feat.class.widen_spell",
+            "feat.class.sorcerer.ampliar_magia",
+            "feat.class.oracle.ampliar_magia",
+            "feat.class.wizard.ampliar_magia",
+            "feat.class.witch.ampliar_magia"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "widen spell",
+          "locations": [
+            "feat.class.widen_spell",
+            "feat.class.sorcerer.ampliar_magia",
+            "feat.class.oracle.ampliar_magia",
+            "feat.class.wizard.ampliar_magia",
+            "feat.class.witch.ampliar_magia"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "ensanchar conjuro",
+          "locations": [
+            "feat.class.widen_spell",
+            "feat.class.wizard.ampliar_magia",
+            "feat.class.witch.ampliar_magia"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "counterspell",
+          "locations": [
+            "feat.class.counterspell",
+            "feat.class.wizard.contramagica",
+            "feat.class.witch.contramagica"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "contraconjuro",
+          "locations": [
+            "feat.class.counterspell",
+            "feat.class.wizard.contramagica",
+            "feat.class.witch.contramagica"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "bleeding finisher",
+          "locations": [
+            "feat.class.bleeding_finisher",
+            "feat.class.swashbuckler.finalizacao_sangrenta"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "remate sangriento",
+          "locations": [
+            "feat.class.bleeding_finisher",
+            "feat.class.swashbuckler.finalizacao_sangrenta"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "dedicacao de guerreiro",
+          "locations": [
+            "feat.archetype.fighter_dedication",
+            "feat.archetype.fighter_multiclass.dedication"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "fighter dedication",
+          "locations": [
+            "feat.archetype.fighter_dedication",
+            "feat.archetype.fighter_multiclass.dedication"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "dedicacion de guerrero",
+          "locations": [
+            "feat.archetype.fighter_dedication",
+            "feat.archetype.fighter_multiclass.dedication"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "dedicacao de mago",
+          "locations": [
+            "feat.archetype.wizard_dedication",
+            "feat.archetype.wizard_multiclass.dedication"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "wizard dedication",
+          "locations": [
+            "feat.archetype.wizard_dedication",
+            "feat.archetype.wizard_multiclass.dedication"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "dedicacion de mago",
+          "locations": [
+            "feat.archetype.wizard_dedication",
+            "feat.archetype.wizard_multiclass.dedication"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "magia de ordem",
+          "locations": [
+            "feat.archetype.druid_multiclass.order_magic",
+            "feat.class.druid.magia_de_ordem"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "levantarse rapido",
+          "locations": [
+            "feat.skill.acrobatics.kip_up",
+            "feat.skill.athletics.kip_up_athletics"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "intimidating strike",
+          "locations": [
+            "feat.skill.intimidation.intimidating_strike",
+            "feat.class.barbarian.golpe_intimidador"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "golpe intimidante",
+          "locations": [
+            "feat.skill.intimidation.intimidating_strike",
+            "feat.class.barbarian.golpe_intimidador"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "saude vigorosa",
+          "locations": [
+            "feat.ancestry.hobgoblin.saude_vigorosa",
+            "feat.general.pc2.vigorous_health"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "vigorous health",
+          "locations": [
+            "feat.ancestry.hobgoblin.saude_vigorosa",
+            "feat.general.pc2.vigorous_health"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "salud vigorosa",
+          "locations": [
+            "feat.ancestry.hobgoblin.saude_vigorosa",
+            "feat.general.pc2.vigorous_health"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "rolling landing",
+          "locations": [
+            "feat.skill.pc2.rolling_fall",
+            "feat.class.swashbuckler.queda_com_rolamento"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "investida subita",
+          "locations": [
+            "feat.class.barbarian.investida_subita",
+            "feat.class.fighter.investida_subita"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "avanco defensivo",
+          "locations": [
+            "feat.class.champion.avanco_defensivo",
+            "feat.class.guardian.defensive_advance"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "defensive advance",
+          "locations": [
+            "feat.class.champion.avanco_defensivo",
+            "feat.class.guardian.defensive_advance"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "avance defensivo",
+          "locations": [
+            "feat.class.champion.avanco_defensivo",
+            "feat.class.guardian.defensive_advance"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "agile retribution",
+          "locations": [
+            "feat.class.champion.represalia_agil",
+            "feat.class.champion.retribuicao_agil"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "escudo protetor",
+          "locations": [
+            "feat.class.champion.escudo_protetor",
+            "feat.class.fighter.escudo_protetor"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "bloqueio rapido com escudo",
+          "locations": [
+            "feat.class.champion.bloqueio_rapido_com_escudo",
+            "feat.class.fighter.bloqueio_rapido_com_escudo"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "deflexao do protetor",
+          "locations": [
+            "feat.class.swashbuckler.deflexao_do_protetor",
+            "feat.class.fighter.deflexao_do_protetor"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "finta provocante",
+          "locations": [
+            "feat.class.swashbuckler.finta_provocante",
+            "feat.class.rogue.finta_provocante"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "voce e o proximo",
+          "locations": [
+            "feat.class.swashbuckler.voce_e_o_proximo",
+            "feat.class.rogue.voce_e_o_proximo"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "ampliar conjuro",
+          "locations": [
+            "feat.class.sorcerer.ampliar_magia",
+            "feat.class.oracle.ampliar_magia"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "concentracao sem esforco",
+          "locations": [
+            "feat.class.sorcerer.concentracao_sem_esforco",
+            "feat.class.bard.concentracao_sem_esforco",
+            "feat.class.wizard.concentracao_sem_esforco",
+            "feat.class.witch.concentracao_sem_esforco",
+            "feat.class.summoner.concentracao_sem_esforco"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "effortless concentration",
+          "locations": [
+            "feat.class.sorcerer.concentracao_sem_esforco",
+            "feat.class.wizard.concentracao_sem_esforco",
+            "feat.class.witch.concentracao_sem_esforco"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "concentracion sin esfuerzo",
+          "locations": [
+            "feat.class.sorcerer.concentracao_sem_esforco",
+            "feat.class.wizard.concentracao_sem_esforco",
+            "feat.class.witch.concentracao_sem_esforco"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "conjuracao acelerada",
+          "locations": [
+            "feat.class.sorcerer.conjuracao_acelerada",
+            "feat.class.oracle.conjuracao_acelerada",
+            "feat.class.bard.conjuracao_acelerada",
+            "feat.class.wizard.conjuracao_acelerada",
+            "feat.class.witch.conjuracao_acelerada"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "quickened casting",
+          "locations": [
+            "feat.class.sorcerer.conjuracao_acelerada",
+            "feat.class.oracle.conjuracao_acelerada",
+            "feat.class.magus.quickened_casting",
+            "feat.class.wizard.conjuracao_acelerada",
+            "feat.class.witch.conjuracao_acelerada"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "lanzamiento acelerado",
+          "locations": [
+            "feat.class.sorcerer.conjuracao_acelerada",
+            "feat.class.oracle.conjuracao_acelerada",
+            "feat.class.magus.quickened_casting",
+            "feat.class.wizard.conjuracao_acelerada",
+            "feat.class.witch.conjuracao_acelerada"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "conjuracao consistente",
+          "locations": [
+            "feat.class.sorcerer.conjuracao_consistente",
+            "feat.class.oracle.conjuracao_consistente",
+            "feat.class.magus.consistent_spellcasting",
+            "feat.class.bard.conjuracao_consistente",
+            "feat.class.cleric.conjuracao_consistente",
+            "feat.class.druid.conjuracao_consistente",
+            "feat.class.wizard.conjuracao_consistente",
+            "feat.class.witch.conjuracao_consistente"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "steady spellcasting",
+          "locations": [
+            "feat.class.sorcerer.conjuracao_consistente",
+            "feat.class.oracle.conjuracao_consistente",
+            "feat.class.psychic.steady_spellcasting",
+            "feat.class.wizard.conjuracao_consistente",
+            "feat.class.witch.conjuracao_consistente"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "lanzamiento constante",
+          "locations": [
+            "feat.class.sorcerer.conjuracao_consistente",
+            "feat.class.oracle.conjuracao_consistente",
+            "feat.class.wizard.conjuracao_consistente",
+            "feat.class.witch.conjuracao_consistente"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "energia avassaladora",
+          "locations": [
+            "feat.class.sorcerer.energia_avassaladora",
+            "feat.class.wizard.energia_avassaladora"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "overwhelming energy",
+          "locations": [
+            "feat.class.sorcerer.energia_avassaladora",
+            "feat.class.wizard.energia_avassaladora"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "energia abrumadora",
+          "locations": [
+            "feat.class.sorcerer.energia_avassaladora",
+            "feat.class.wizard.energia_avassaladora"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "alcance del conjuro",
+          "locations": [
+            "feat.class.sorcerer.estender_magia",
+            "feat.class.oracle.estender_magia",
+            "feat.class.wizard.estender_magia",
+            "feat.class.witch.estender_magia"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "signature spell expansion",
+          "locations": [
+            "feat.class.sorcerer.expansao_de_magia_emblematica",
+            "feat.class.psychic.signature_spell_expansion"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "expansao de truque magico",
+          "locations": [
+            "feat.class.sorcerer.expansao_de_truque_magico",
+            "feat.class.oracle.expansao_de_truque_magico",
+            "feat.class.magus.cantrip_expansion",
+            "feat.class.bard.expansao_de_truque_magico",
+            "feat.class.cleric.expansao_de_truque_magico",
+            "feat.class.wizard.expansao_de_truque_magico",
+            "feat.class.witch.expansao_de_truque_magico"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "cantrip expansion",
+          "locations": [
+            "feat.class.sorcerer.expansao_de_truque_magico",
+            "feat.class.oracle.expansao_de_truque_magico",
+            "feat.class.magus.cantrip_expansion",
+            "feat.class.wizard.expansao_de_truque_magico",
+            "feat.class.witch.expansao_de_truque_magico"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "expansion de truco magico",
+          "locations": [
+            "feat.class.sorcerer.expansao_de_truque_magico",
+            "feat.class.oracle.expansao_de_truque_magico"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "familiar",
+          "locations": [
+            "feat.class.sorcerer.familiar",
+            "feat.class.magus.familiar",
+            "feat.class.thaumaturge.familiar",
+            "feat.class.wizard.familiar"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "familiar",
+          "locations": [
+            "feat.class.sorcerer.familiar",
+            "feat.class.magus.familiar",
+            "feat.class.thaumaturge.familiar",
+            "feat.class.wizard.familiar"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "familiar",
+          "locations": [
+            "feat.class.sorcerer.familiar",
+            "feat.class.magus.familiar",
+            "feat.class.thaumaturge.familiar",
+            "feat.class.wizard.familiar"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "familiar melhorado",
+          "locations": [
+            "feat.class.sorcerer.familiar_melhorado",
+            "feat.class.magus.enhanced_familiar",
+            "feat.class.druid.familiar_melhorado",
+            "feat.class.wizard.familiar_melhorado",
+            "feat.class.witch.familiar_melhorado"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "familiar mejorado",
+          "locations": [
+            "feat.class.sorcerer.familiar_melhorado",
+            "feat.animist.enhanced_familiar",
+            "feat.class.magus.enhanced_familiar",
+            "feat.class.thaumaturge.enhanced_familiar",
+            "feat.class.wizard.familiar_melhorado",
+            "feat.class.witch.familiar_melhorado"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "golpes encantados",
+          "locations": [
+            "feat.class.sorcerer.golpes_encantados",
+            "feat.class.oracle.golpes_encantados",
+            "feat.class.wizard.golpes_encantados"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "enchanted strikes",
+          "locations": [
+            "feat.class.sorcerer.golpes_encantados",
+            "feat.class.oracle.golpes_encantados"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "golpes encantados",
+          "locations": [
+            "feat.class.sorcerer.golpes_encantados",
+            "feat.class.oracle.golpes_encantados",
+            "feat.class.wizard.golpes_encantados"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "maestria em moldamagia",
+          "locations": [
+            "feat.class.sorcerer.maestria_em_moldamagia",
+            "feat.class.wizard.maestria_em_moldamagia"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "maestria en metamagica",
+          "locations": [
+            "feat.class.sorcerer.maestria_em_moldamagia",
+            "feat.class.wizard.maestria_em_moldamagia"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "magia cintilante",
+          "locations": [
+            "feat.class.sorcerer.magia_cintilante",
+            "feat.class.wizard.magia_cintilante"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "sentido magico",
+          "locations": [
+            "feat.class.sorcerer.sentido_magico",
+            "feat.class.oracle.sentido_magico",
+            "feat.class.magus.magic_sense",
+            "feat.class.wizard.sentido_magico"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "magical sense",
+          "locations": [
+            "feat.class.sorcerer.sentido_magico",
+            "feat.class.oracle.sentido_magico"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "sentido magico",
+          "locations": [
+            "feat.class.sorcerer.sentido_magico",
+            "feat.class.oracle.sentido_magico",
+            "feat.class.magus.magic_sense",
+            "feat.class.wizard.sentido_magico"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "compra preditiva",
+          "locations": [
+            "feat.class.investigator.compra_preditiva",
+            "feat.class.rogue.compra_preditiva"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "descobridor de armadilhas",
+          "locations": [
+            "feat.class.investigator.descobridor_de_armadilhas",
+            "feat.class.rogue.descobridor_de_armadilhas"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "lutar as cegas",
+          "locations": [
+            "feat.class.investigator.lutar_as_cegas",
+            "feat.class.fighter.lutar_as_cegas",
+            "feat.class.rogue.lutar_as_cegas",
+            "feat.class.ranger.lutar_as_cegas"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "predict the future",
+          "locations": [
+            "feat.class.investigator.prever_o_perigo",
+            "feat.class.investigator.tracar_o_futuro"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "reconstruir a cena",
+          "locations": [
+            "feat.class.investigator.reconstruir_a_cena",
+            "feat.class.rogue.reconstruir_a_cena"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "golpe atordoante",
+          "locations": [
+            "feat.class.monk.golpe_atordoante",
+            "feat.class.fighter.golpe_atordoante"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "ocultar magia",
+          "locations": [
+            "feat.animist.conceal_spell",
+            "feat.class.wizard.ocultar_magia",
+            "feat.class.witch.ocultar_magia"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "conceal spell",
+          "locations": [
+            "feat.animist.conceal_spell",
+            "feat.class.wizard.ocultar_magia",
+            "feat.class.witch.ocultar_magia"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "ocultar conjuro",
+          "locations": [
+            "feat.animist.conceal_spell",
+            "feat.class.wizard.ocultar_magia",
+            "feat.class.witch.ocultar_magia"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "familiar aprimorado",
+          "locations": [
+            "feat.animist.enhanced_familiar",
+            "feat.class.thaumaturge.enhanced_familiar"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "enhanced familiar",
+          "locations": [
+            "feat.animist.enhanced_familiar",
+            "feat.class.magus.enhanced_familiar",
+            "feat.class.thaumaturge.enhanced_familiar",
+            "feat.class.wizard.familiar_melhorado",
+            "feat.class.witch.familiar_melhorado"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "familiar incrivel",
+          "locations": [
+            "feat.animist.incredible_familiar",
+            "feat.class.thaumaturge.incredible_familiar",
+            "feat.class.witch.familiar_incrivel"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "incredible familiar",
+          "locations": [
+            "feat.animist.incredible_familiar",
+            "feat.class.thaumaturge.incredible_familiar",
+            "feat.class.witch.familiar_incrivel"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "familiar increible",
+          "locations": [
+            "feat.animist.incredible_familiar",
+            "feat.class.thaumaturge.incredible_familiar",
+            "feat.class.witch.familiar_incrivel"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "spirit familiar",
+          "locations": [
+            "feat.animist.spirit_familiar",
+            "feat.class.witch.familiar_espirito"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "familiar espiritual",
+          "locations": [
+            "feat.animist.spirit_familiar",
+            "feat.class.witch.familiar_espirito"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "dedicacao",
+          "locations": [
+            "feat.archetype.commander_multiclass.dedication",
+            "feat.archetype.guardian_multiclass.dedication"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "dedication",
+          "locations": [
+            "feat.archetype.commander_multiclass.dedication",
+            "feat.archetype.guardian_multiclass.dedication"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "dedicacion",
+          "locations": [
+            "feat.archetype.commander_multiclass.dedication",
+            "feat.archetype.guardian_multiclass.dedication"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "golpe desequilibrante",
+          "locations": [
+            "feat.class.commander.unsteadying_strike",
+            "feat.class.rogue.golpe_desequilibrante"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "golpe desequilibrante",
+          "locations": [
+            "feat.class.commander.unsteadying_strike",
+            "feat.class.rogue.golpe_desequilibrante"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "interferencia reativa",
+          "locations": [
+            "feat.class.commander.reactive_interference",
+            "feat.class.rogue.interferencia_reativa"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "escudo reativo",
+          "locations": [
+            "feat.class.guardian.reactive_shield",
+            "feat.class.fighter.escudo_reativo"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "bloqueio agressivo",
+          "locations": [
+            "feat.class.guardian.aggressive_block",
+            "feat.class.fighter.bloqueio_agressivo"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "escudo reflexivo",
+          "locations": [
+            "feat.class.guardian.reflexive_shield",
+            "feat.class.fighter.escudo_reflexivo"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "escudo reflexivo",
+          "locations": [
+            "feat.class.guardian.reflexive_shield",
+            "feat.class.fighter.escudo_reflexivo"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "conhecimento e poder",
+          "locations": [
+            "feat.class.magus.knowledge_is_power",
+            "feat.class.wizard.conhecimento_e_poder"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "knowledge is power",
+          "locations": [
+            "feat.class.magus.knowledge_is_power",
+            "feat.class.wizard.conhecimento_e_poder"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "el conocimiento es poder",
+          "locations": [
+            "feat.class.magus.knowledge_is_power",
+            "feat.class.wizard.conhecimento_e_poder"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "magic sense",
+          "locations": [
+            "feat.class.magus.magic_sense",
+            "feat.class.wizard.sentido_magico"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "psychic rapport",
+          "locations": [
+            "feat.class.psychic.psychic_rapport",
+            "feat.class.psychic.psychic_rapport_advanced"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "afinidad psiquica",
+          "locations": [
+            "feat.class.psychic.psychic_rapport",
+            "feat.class.psychic.psychic_rapport_advanced"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "sabe-tudo",
+          "locations": [
+            "feat.class.thaumaturge.know_it_all",
+            "feat.class.bard.sabe_tudo"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "saque rapido",
+          "locations": [
+            "feat.class.gunslinger.saque_rapido",
+            "feat.class.rogue.saque_rapido",
+            "feat.class.ranger.saque_rapido"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "penetrating fire",
+          "locations": [
+            "feat.class.gunslinger.perfurar_e_disparar",
+            "feat.class.gunslinger.disparo_penetrante"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "ricochet shot",
+          "locations": [
+            "feat.class.gunslinger.ataque_ressaltante",
+            "feat.class.gunslinger.tiro_de_ricochete"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "expansao de truque magico",
+          "locations": [
+            "feat.class.bard.expansao_de_truque_magico",
+            "feat.class.cleric.expansao_de_truque_magico"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "expansao de truque magico",
+          "locations": [
+            "feat.class.bard.expansao_de_truque_magico",
+            "feat.class.cleric.expansao_de_truque_magico"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "conjuracao consistente",
+          "locations": [
+            "feat.class.bard.conjuracao_consistente",
+            "feat.class.cleric.conjuracao_consistente",
+            "feat.class.druid.conjuracao_consistente"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "conjuracao consistente",
+          "locations": [
+            "feat.class.bard.conjuracao_consistente",
+            "feat.class.cleric.conjuracao_consistente",
+            "feat.class.druid.conjuracao_consistente"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "concentracao sem esforco",
+          "locations": [
+            "feat.class.bard.concentracao_sem_esforco",
+            "feat.class.summoner.concentracao_sem_esforco"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "concentracao sem esforco",
+          "locations": [
+            "feat.class.bard.concentracao_sem_esforco",
+            "feat.class.summoner.concentracao_sem_esforco"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "companheiro animal",
+          "locations": [
+            "feat.class.druid.companheiro_animal",
+            "feat.class.ranger.companheiro_animal"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "companheiro animal",
+          "locations": [
+            "feat.class.druid.companheiro_animal",
+            "feat.class.ranger.companheiro_animal"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "companheiro animal",
+          "locations": [
+            "feat.class.druid.companheiro_animal",
+            "feat.class.ranger.companheiro_animal"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "empatia com animais",
+          "locations": [
+            "feat.class.druid.empatia_com_animais",
+            "feat.class.ranger.empatia_com_animais"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "empatia com animais",
+          "locations": [
+            "feat.class.druid.empatia_com_animais",
+            "feat.class.ranger.empatia_com_animais"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "empatia com animais",
+          "locations": [
+            "feat.class.druid.empatia_com_animais",
+            "feat.class.ranger.empatia_com_animais"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "companheiro animal maduro",
+          "locations": [
+            "feat.class.druid.companheiro_animal_maduro",
+            "feat.class.ranger.companheiro_animal_maduro"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "companheiro animal maduro",
+          "locations": [
+            "feat.class.druid.companheiro_animal_maduro",
+            "feat.class.ranger.companheiro_animal_maduro"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "companheiro animal maduro",
+          "locations": [
+            "feat.class.druid.companheiro_animal_maduro",
+            "feat.class.ranger.companheiro_animal_maduro"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "companheiro incrivel",
+          "locations": [
+            "feat.class.druid.companheiro_incrivel",
+            "feat.class.ranger.companheiro_incrivel"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "companheiro incrivel",
+          "locations": [
+            "feat.class.druid.companheiro_incrivel",
+            "feat.class.ranger.companheiro_incrivel"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "companheiro incrivel",
+          "locations": [
+            "feat.class.druid.companheiro_incrivel",
+            "feat.class.ranger.companheiro_incrivel"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "lado a lado",
+          "locations": [
+            "feat.class.druid.lado_a_lado",
+            "feat.class.ranger.lado_a_lado"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "lado a lado",
+          "locations": [
+            "feat.class.druid.lado_a_lado",
+            "feat.class.ranger.lado_a_lado"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "lado a lado",
+          "locations": [
+            "feat.class.druid.lado_a_lado",
+            "feat.class.ranger.lado_a_lado"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "companheiro especializado",
+          "locations": [
+            "feat.class.druid.companheiro_especializado",
+            "feat.class.ranger.companheiro_especializado"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "companheiro especializado",
+          "locations": [
+            "feat.class.druid.companheiro_especializado",
+            "feat.class.ranger.companheiro_especializado"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "companheiro especializado",
+          "locations": [
+            "feat.class.druid.companheiro_especializado",
+            "feat.class.ranger.companheiro_especializado"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "aparagem dupla",
+          "locations": [
+            "feat.class.fighter.aparagem_dupla",
+            "feat.class.ranger.aparagem_dupla"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "aparagem dupla",
+          "locations": [
+            "feat.class.fighter.aparagem_dupla",
+            "feat.class.ranger.aparagem_dupla"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "aparagem dupla",
+          "locations": [
+            "feat.class.fighter.aparagem_dupla",
+            "feat.class.ranger.aparagem_dupla"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "lutar as cegas",
+          "locations": [
+            "feat.class.fighter.lutar_as_cegas",
+            "feat.class.rogue.lutar_as_cegas",
+            "feat.class.ranger.lutar_as_cegas"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "lutar as cegas",
+          "locations": [
+            "feat.class.fighter.lutar_as_cegas",
+            "feat.class.rogue.lutar_as_cegas",
+            "feat.class.ranger.lutar_as_cegas"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "saque rapido",
+          "locations": [
+            "feat.class.rogue.saque_rapido",
+            "feat.class.ranger.saque_rapido"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "saque rapido",
+          "locations": [
+            "feat.class.rogue.saque_rapido",
+            "feat.class.ranger.saque_rapido"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "aviso do batedor",
+          "locations": [
+            "feat.class.rogue.aviso_do_batedor",
+            "feat.class.ranger.aviso_do_batedor"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "aviso do batedor",
+          "locations": [
+            "feat.class.rogue.aviso_do_batedor",
+            "feat.class.ranger.aviso_do_batedor"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "aviso do batedor",
+          "locations": [
+            "feat.class.rogue.aviso_do_batedor",
+            "feat.class.ranger.aviso_do_batedor"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "sentir o que nao e visto",
+          "locations": [
+            "feat.class.rogue.sentir_o_que_nao_e_visto",
+            "feat.class.ranger.sentir_o_que_nao_e_visto"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "sentir o que nao e visto",
+          "locations": [
+            "feat.class.rogue.sentir_o_que_nao_e_visto",
+            "feat.class.ranger.sentir_o_que_nao_e_visto"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "sentir o que nao e visto",
+          "locations": [
+            "feat.class.rogue.sentir_o_que_nao_e_visto",
+            "feat.class.ranger.sentir_o_que_nao_e_visto"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "contramagica",
+          "locations": [
+            "feat.class.wizard.contramagica",
+            "feat.class.witch.contramagica"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "expansion de truco",
+          "locations": [
+            "feat.class.wizard.expansao_de_truque_magico",
+            "feat.class.witch.expansao_de_truque_magico"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "foco de vinculo",
+          "locations": [
+            "feat.class.wizard.foco_de_vinculo",
+            "feat.class.summoner.foco_de_vinculo"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "refletir magia",
+          "locations": [
+            "feat.class.wizard.refletir_magia",
+            "feat.class.witch.refletir_magia"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "reflect spell",
+          "locations": [
+            "feat.class.wizard.refletir_magia",
+            "feat.class.witch.refletir_magia"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "reflejar conjuro",
+          "locations": [
+            "feat.class.wizard.refletir_magia",
+            "feat.class.witch.refletir_magia"
+          ]
+        }
+      ]
+    },
+    "items": {
+      "total": 457,
+      "missingNames": [],
+      "missingSummaries": [],
+      "missingNamesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "missingSummariesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "placeholderTranslations": [],
+      "missingSource": [],
+      "missingSourceNotMarkedReview": [],
+      "invalidSource": [],
+      "invalidRuleset": [],
+      "verifiedWithoutSource": [],
+      "needsReview": [],
+      "mechanicsReview": [
+        "item.rage_elements.earth.aeon_stone",
+        "item.rage_elements.earth.drought_powder",
+        "item.rage_elements.earth.exuviae_powder",
+        "item.rage_elements.earth.fossil_fragment",
+        "item.rage_elements.earth.jabalis_dice",
+        "item.rage_elements.earth.limestone_shield",
+        "item.rage_elements.earth.robe_of_stone",
+        "item.rage_elements.earth.sairazul_blue",
+        "item.rage_elements.earth.sandcastle",
+        "item.rage_elements.earth.singing_stone",
+        "item.rage_elements.earth.stalagmite_seed",
+        "item.rage_elements.earth.vital_earth",
+        "item.rage_elements.fire.ash_gown",
+        "item.rage_elements.fire.bloodburn_censer",
+        "item.rage_elements.fire.brazier_of_harmony",
+        "item.rage_elements.fire.candle_of_inflamed_passions",
+        "item.rage_elements.fire.everburning_coal",
+        "item.rage_elements.fire.globe_of_shrouds",
+        "item.rage_elements.fire.lambent_perfume",
+        "item.rage_elements.fire.obsidian_edge",
+        "item.rage_elements.fire.rhyton_of_the_radiant_ifrit",
+        "item.rage_elements.fire.scalding_gauntlets",
+        "item.rage_elements.fire.smoke_veil",
+        "item.rage_elements.fire.sparkshade_parasol",
+        "item.rage_elements.fire.thawing_candle",
+        "item.rage_elements.metal.curious_teardrop",
+        "item.rage_elements.metal.ferrofluid_urchin",
+        "item.rage_elements.metal.malleable",
+        "item.rage_elements.metal.morphing_weapon",
+        "item.rage_elements.metal.resonant_guitar",
+        "item.rage_elements.metal.rustbringer",
+        "item.rage_elements.metal.silver_snake_cane",
+        "item.rage_elements.metal.spellsap_grenade",
+        "item.rage_elements.metal.spiny_lodestone",
+        "item.rage_elements.metal.staff_of_metal",
+        "item.rage_elements.metal.zuhras_gloves"
+      ],
+      "duplicateNames": [
+        {
+          "name": "antidoto menor (lesser antidote)",
+          "locations": [
+            "item.pc2.minor_antidote",
+            "item.pc2.antidote_minor"
+          ]
+        },
+        {
+          "name": "antipeste menor (lesser antiplague)",
+          "locations": [
+            "item.pc2.minor_antiplague",
+            "item.pc2.antiplague_minor"
+          ]
+        },
+        {
+          "name": "carga fantasma menor (lesser ghost charge)",
+          "locations": [
+            "item.pc2.minor_ghost_charge",
+            "item.pc2.ghost_charge_minor"
+          ]
+        },
+        {
+          "name": "elixir da vida minimo (minor elixir of life)",
+          "locations": [
+            "item.pc2.minor_life_elixir",
+            "item.pc2.life_elixir_minimum"
+          ]
+        },
+        {
+          "name": "elixir do olho de aguia menor (lesser eagle-eye elixir)",
+          "locations": [
+            "item.pc2.minor_eagle_eye_elixir",
+            "item.pc2.eagle_eye_elixir_minor"
+          ]
+        },
+        {
+          "name": "fogo alquimico menor (lesser alchemist's fire)",
+          "locations": [
+            "item.pc2.minor_alchemical_fire",
+            "item.pc2.alchemists_fire_minor"
+          ]
+        },
+        {
+          "name": "frasco congelante menor (lesser frost vial)",
+          "locations": [
+            "item.pc2.minor_frost_vial",
+            "item.pc2.frost_vial_minor"
+          ]
+        },
+        {
+          "name": "frasco de acido menor (lesser acid flask)",
+          "locations": [
+            "item.pc2.minor_acid_flask",
+            "item.pc2.acid_flask_minor"
+          ]
+        },
+        {
+          "name": "pedra detonante menor (lesser detonating stone)",
+          "locations": [
+            "item.pc2.minor_detonating_stone",
+            "item.pc2.detritus_stone_minor"
+          ]
+        },
+        {
+          "name": "relampago engarrafado menor (lesser bottled lightning)",
+          "locations": [
+            "item.pc2.minor_bottled_lightning",
+            "item.pc2.bottled_lightning_minor"
+          ]
+        }
+      ],
+      "duplicateLocalizedNames": [
+        {
+          "locale": "pt-BR",
+          "name": "mochila de aventureiro",
+          "locations": [
+            "item.gear.adventurers_pack",
+            "item.compendium.adventurer_s_pack"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "adventurer's pack",
+          "locations": [
+            "item.gear.adventurers_pack",
+            "item.compendium.adventurer_s_pack"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "mochila de aventurero",
+          "locations": [
+            "item.gear.adventurers_pack",
+            "item.compendium.adventurer_s_pack"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "mochila",
+          "locations": [
+            "item.gear.backpack",
+            "item.compendium.backpack"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "backpack",
+          "locations": [
+            "item.gear.backpack",
+            "item.compendium.backpack"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "mochila",
+          "locations": [
+            "item.gear.backpack",
+            "item.compendium.backpack"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "healer's toolkit",
+          "locations": [
+            "item.gear.healers_toolkit",
+            "item.compendium.healer_s_toolkit"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "ferramentas de ladrao",
+          "locations": [
+            "item.gear.thieves_toolkit",
+            "item.compendium.thieves_tools"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "herramientas de ladron",
+          "locations": [
+            "item.gear.thieves_toolkit",
+            "item.compendium.thieves_tools"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "botas elficas",
+          "locations": [
+            "item.magic.boots_of_elvenkind",
+            "item.compendium.boots_of_elvenkind"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "boots of elvenkind",
+          "locations": [
+            "item.magic.boots_of_elvenkind",
+            "item.compendium.boots_of_elvenkind"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "runa de potencia de arma +1",
+          "locations": [
+            "item.magic.weapon_potency_1",
+            "item.compendium.1_weapon_potency_rune"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "antidoto menor",
+          "locations": [
+            "item.pc2.minor_antidote",
+            "item.pc2.antidote_minor"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "lesser antidote",
+          "locations": [
+            "item.pc2.minor_antidote",
+            "item.pc2.antidote_minor"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "antidoto menor",
+          "locations": [
+            "item.pc2.minor_antidote",
+            "item.pc2.antidote_minor"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "antipeste menor",
+          "locations": [
+            "item.pc2.minor_antiplague",
+            "item.pc2.antiplague_minor"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "lesser antiplague",
+          "locations": [
+            "item.pc2.minor_antiplague",
+            "item.pc2.antiplague_minor"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "bastao brilhante",
+          "locations": [
+            "item.pc2.bright_rod",
+            "item.pc2.bright_stick"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "bomba de cola menor",
+          "locations": [
+            "item.pc2.minor_glue_bomb",
+            "item.pc2.tanglefoot_bag_minor"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "bomba de esmorecimento menor",
+          "locations": [
+            "item.pc2.minor_weakening_bomb",
+            "item.pc2.weakening_bomb_minor"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "carga fantasma menor",
+          "locations": [
+            "item.pc2.minor_ghost_charge",
+            "item.pc2.ghost_charge_minor"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "lesser ghost charge",
+          "locations": [
+            "item.pc2.minor_ghost_charge",
+            "item.pc2.ghost_charge_minor"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "carga fantasmal menor",
+          "locations": [
+            "item.pc2.minor_ghost_charge",
+            "item.pc2.ghost_charge_minor"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "elixir da vida minimo",
+          "locations": [
+            "item.pc2.minor_life_elixir",
+            "item.pc2.life_elixir_minimum"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "minor elixir of life",
+          "locations": [
+            "item.pc2.minor_life_elixir",
+            "item.pc2.life_elixir_minimum"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "elixir de transicao de genero menor",
+          "locations": [
+            "item.pc2.minor_gender_transition_elixir",
+            "item.pc2.gender_transition_minor"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "elixir do guepardo menor",
+          "locations": [
+            "item.pc2.minor_cheetah_elixir",
+            "item.pc2.cheetah_elixir_minor"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "elixir do olho de aguia menor",
+          "locations": [
+            "item.pc2.minor_eagle_eye_elixir",
+            "item.pc2.eagle_eye_elixir_minor"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "lesser eagle-eye elixir",
+          "locations": [
+            "item.pc2.minor_eagle_eye_elixir",
+            "item.pc2.eagle_eye_elixir_minor"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "fogo alquimico menor",
+          "locations": [
+            "item.pc2.minor_alchemical_fire",
+            "item.pc2.alchemists_fire_minor"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "lesser alchemist's fire",
+          "locations": [
+            "item.pc2.minor_alchemical_fire",
+            "item.pc2.alchemists_fire_minor"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "fuego alquimico menor",
+          "locations": [
+            "item.pc2.minor_alchemical_fire",
+            "item.pc2.alchemists_fire_minor"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "frasco congelante menor",
+          "locations": [
+            "item.pc2.minor_frost_vial",
+            "item.pc2.frost_vial_minor"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "lesser frost vial",
+          "locations": [
+            "item.pc2.minor_frost_vial",
+            "item.pc2.frost_vial_minor"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "vial de escarcha menor",
+          "locations": [
+            "item.pc2.minor_frost_vial",
+            "item.pc2.frost_vial_minor"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "frasco de acido menor",
+          "locations": [
+            "item.pc2.minor_acid_flask",
+            "item.pc2.acid_flask_minor"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "lesser acid flask",
+          "locations": [
+            "item.pc2.minor_acid_flask",
+            "item.pc2.acid_flask_minor"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "frasco de acido menor",
+          "locations": [
+            "item.pc2.minor_acid_flask",
+            "item.pc2.acid_flask_minor"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "pedra detonante menor",
+          "locations": [
+            "item.pc2.minor_detonating_stone",
+            "item.pc2.detritus_stone_minor"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "lesser detonating stone",
+          "locations": [
+            "item.pc2.minor_detonating_stone",
+            "item.pc2.detritus_stone_minor"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "piedra detonante menor",
+          "locations": [
+            "item.pc2.minor_detonating_stone",
+            "item.pc2.detritus_stone_minor"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "relampago engarrafado menor",
+          "locations": [
+            "item.pc2.minor_bottled_lightning",
+            "item.pc2.bottled_lightning_minor"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "lesser bottled lightning",
+          "locations": [
+            "item.pc2.minor_bottled_lightning",
+            "item.pc2.bottled_lightning_minor"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "relampago embotellado menor",
+          "locations": [
+            "item.pc2.minor_bottled_lightning",
+            "item.pc2.bottled_lightning_minor"
+          ]
+        }
+      ]
+    },
+    "formulas": {
+      "total": 84,
+      "missingNames": [],
+      "missingSummaries": [],
+      "missingNamesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "missingSummariesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "placeholderTranslations": [],
+      "missingSource": [],
+      "missingSourceNotMarkedReview": [],
+      "invalidSource": [],
+      "invalidRuleset": [],
+      "verifiedWithoutSource": [],
+      "needsReview": [],
+      "mechanicsReview": [],
+      "duplicateNames": [
+        {
+          "name": "fogo alquimico menor (lesser alchemist's fire)",
+          "locations": [
+            "form.alch.alchemists_fire_lesser",
+            "formula.pc2.alchemists_fire_minor"
+          ]
+        },
+        {
+          "name": "antidoto menor (lesser antidote)",
+          "locations": [
+            "form.alch.antidote_lesser",
+            "formula.pc2.antidote_minor"
+          ]
+        }
+      ],
+      "duplicateLocalizedNames": [
+        {
+          "locale": "en",
+          "name": "minor elixir of life",
+          "locations": [
+            "form.alch.elixir_of_life_lesser",
+            "formula.pc2.life_elixir_minimum"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "fogo alquimico menor",
+          "locations": [
+            "form.alch.alchemists_fire_lesser",
+            "formula.pc2.alchemists_fire_minor"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "lesser alchemist's fire",
+          "locations": [
+            "form.alch.alchemists_fire_lesser",
+            "formula.pc2.alchemists_fire_minor"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "fuego alquimico menor",
+          "locations": [
+            "form.alch.alchemists_fire_lesser",
+            "formula.pc2.alchemists_fire_minor"
+          ]
+        },
+        {
+          "locale": "pt-BR",
+          "name": "antidoto menor",
+          "locations": [
+            "form.alch.antidote_lesser",
+            "formula.pc2.antidote_minor"
+          ]
+        },
+        {
+          "locale": "en",
+          "name": "lesser antidote",
+          "locations": [
+            "form.alch.antidote_lesser",
+            "formula.pc2.antidote_minor"
+          ]
+        },
+        {
+          "locale": "es",
+          "name": "antidoto menor",
+          "locations": [
+            "form.alch.antidote_lesser",
+            "formula.pc2.antidote_minor"
+          ]
+        }
+      ]
+    },
+    "pets": {
+      "total": 31,
+      "missingNames": [],
+      "missingSummaries": [],
+      "missingNamesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "missingSummariesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "placeholderTranslations": [],
+      "missingSource": [],
+      "missingSourceNotMarkedReview": [],
+      "invalidSource": [],
+      "invalidRuleset": [],
+      "verifiedWithoutSource": [],
+      "needsReview": [],
+      "mechanicsReview": [],
+      "duplicateNames": [],
+      "duplicateLocalizedNames": []
+    },
+    "actions": {
+      "total": 24,
+      "missingNames": [],
+      "missingSummaries": [],
+      "missingNamesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "missingSummariesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "placeholderTranslations": [],
+      "missingSource": [],
+      "missingSourceNotMarkedReview": [],
+      "invalidSource": [],
+      "invalidRuleset": [],
+      "verifiedWithoutSource": [],
+      "needsReview": [],
+      "mechanicsReview": [],
+      "duplicateNames": [],
+      "duplicateLocalizedNames": []
+    },
+    "subclasses": {
+      "total": 132,
+      "missingNames": [],
+      "missingSummaries": [],
+      "missingNamesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "missingSummariesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "placeholderTranslations": [],
+      "missingSource": [],
+      "missingSourceNotMarkedReview": [],
+      "invalidSource": [],
+      "invalidRuleset": [],
+      "verifiedWithoutSource": [],
+      "needsReview": [],
+      "mechanicsReview": [],
+      "duplicateNames": [],
+      "duplicateLocalizedNames": []
+    },
+    "weapons": {
+      "total": 139,
+      "missingNames": [],
+      "missingSummaries": [],
+      "missingNamesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "missingSummariesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "placeholderTranslations": [],
+      "missingSource": [],
+      "missingSourceNotMarkedReview": [],
+      "invalidSource": [],
+      "invalidRuleset": [],
+      "verifiedWithoutSource": [],
+      "needsReview": [],
+      "mechanicsReview": [],
+      "duplicateNames": [],
+      "duplicateLocalizedNames": []
+    },
+    "armors": {
+      "total": 49,
+      "missingNames": [],
+      "missingSummaries": [],
+      "missingNamesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "missingSummariesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "placeholderTranslations": [],
+      "missingSource": [],
+      "missingSourceNotMarkedReview": [],
+      "invalidSource": [],
+      "invalidRuleset": [],
+      "verifiedWithoutSource": [],
+      "needsReview": [],
+      "mechanicsReview": [],
+      "duplicateNames": [],
+      "duplicateLocalizedNames": []
+    },
+    "shields": {
+      "total": 26,
+      "missingNames": [],
+      "missingSummaries": [],
+      "missingNamesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "missingSummariesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "placeholderTranslations": [],
+      "missingSource": [],
+      "missingSourceNotMarkedReview": [],
+      "invalidSource": [],
+      "invalidRuleset": [],
+      "verifiedWithoutSource": [],
+      "needsReview": [],
+      "mechanicsReview": [],
+      "duplicateNames": [],
+      "duplicateLocalizedNames": []
+    },
+    "conditions": {
+      "total": 22,
+      "missingNames": [],
+      "missingSummaries": [],
+      "missingNamesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "missingSummariesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "placeholderTranslations": [],
+      "missingSource": [],
+      "missingSourceNotMarkedReview": [],
+      "invalidSource": [],
+      "invalidRuleset": [],
+      "verifiedWithoutSource": [],
+      "needsReview": [],
+      "mechanicsReview": [],
+      "duplicateNames": [],
+      "duplicateLocalizedNames": []
+    },
+    "buffs": {
+      "total": 12,
+      "missingNames": [],
+      "missingSummaries": [],
+      "missingNamesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "missingSummariesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "placeholderTranslations": [],
+      "missingSource": [],
+      "missingSourceNotMarkedReview": [],
+      "invalidSource": [],
+      "invalidRuleset": [],
+      "verifiedWithoutSource": [],
+      "needsReview": [],
+      "mechanicsReview": [],
+      "duplicateNames": [],
+      "duplicateLocalizedNames": []
+    },
+    "skills": {
+      "total": 16,
+      "missingNames": [],
+      "missingSummaries": [],
+      "missingNamesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "missingSummariesByLocale": {
+        "pt-BR": [],
+        "en": [],
+        "es": []
+      },
+      "placeholderTranslations": [],
+      "missingSource": [],
+      "missingSourceNotMarkedReview": [],
+      "invalidSource": [],
+      "invalidRuleset": [],
+      "verifiedWithoutSource": [],
+      "needsReview": [],
+      "mechanicsReview": [],
+      "duplicateNames": [],
+      "duplicateLocalizedNames": []
+    }
+  },
+  "totals": {
+    "records": 3795,
+    "missingNames": 0,
+    "missingSummaries": 0,
+    "missingNamesByLocale": {
+      "pt-BR": 0,
+      "en": 0,
+      "es": 0
+    },
+    "missingSummariesByLocale": {
+      "pt-BR": 0,
+      "en": 0,
+      "es": 0
+    },
+    "placeholderTranslations": 0,
+    "missingSource": 0,
+    "missingSourceNotMarkedReview": 0,
+    "invalidSource": 0,
+    "invalidRuleset": 0,
+    "verifiedWithoutSource": 0,
+    "needsReview": 0,
+    "mechanicsReview": 76,
+    "duplicateIds": []
+  }
+}

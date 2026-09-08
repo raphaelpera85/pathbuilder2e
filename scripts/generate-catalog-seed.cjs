@@ -233,6 +233,7 @@ function registerItem(item, defaultCategory = 'gear') {
     data: {
       usage: item.usage || null,
       effects: item.effects || [],
+      ...(item.mechanics ? { mechanics: item.mechanics } : {}),
       needs_review: item.needs_review ?? false,
     }
   });

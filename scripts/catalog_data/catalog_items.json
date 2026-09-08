@@ -6104,6 +6104,18 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "usage": "segurado em 1 mão",
+        "bulk": "negligível",
+        "activate": "1 ação, Manuseio",
+        "area": "emanação de 9 metros",
+        "save": "Vontade",
+        "duration": "1 rodada",
+        "effect": "Fascinado",
+        "criticalFailure": "também fica caído",
+        "immunity": "1 hora; Fascinação termina após ato hostil",
+        "dc": "18 menor; 24 moderada; 30 maior"
+      },
       "needs_review": false
     }
   },
@@ -6128,6 +6140,15 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "usage": "segurado em 1 mão",
+        "bulk": "L",
+        "floatingPads": "1 ação; cinco plataformas em líquido não danoso a até 12 metros; cada uma raio 3 metros e dura 1 minuto",
+        "capacity": "1 criatura Grande, 2 Médias ou 4 Pequenas por plataforma",
+        "bloomingFlower": "10 minutos; plantada no solo",
+        "rest": "por 8 horas; dormir 6 horas a até 9 metros conta como um dia/noite de descanso",
+        "immunity": "pesadelo e efeitos mágicos que afetam apenas criaturas dormindo"
+      },
       "needs_review": false
     }
   },
@@ -6152,6 +6173,15 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "usage": "segurado em 1 mão",
+        "bulk": "L",
+        "seasons": "rosa: void; verde: fogo; laranja: veneno; marrom: frio",
+        "resistance": "3 (6 quando Erguido) no tipo da estação",
+        "changeSeason": "1 ação, Concentração; 1/dia; escolhe cor por 5 minutos",
+        "base": "Dureza 4, 16 PV, BT 8",
+        "variants": "maior: Dureza 6/24 PV/BT 12/resistência 4; maior superior: 8/32/16/5; verdadeiro: 10/40/20/6"
+      },
       "needs_review": false
     }
   },
@@ -6176,6 +6206,15 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "throw": "1 ação; espaço adjacente; dura 1 hora",
+        "scent": "criatura a até 4,5 metros faz Vontade CD 18",
+        "criticalSuccess": "sem efeito",
+        "success": "–1 de estado em Percepção por 10 minutos",
+        "failure": "–2 de estado em Percepção por 10 minutos",
+        "criticalFailure": "–2 de estado e Fascinado",
+        "roseVines": "10 minutos; cresce até 9 metros junto a estrutura; você/aliados Escalam facilmente; outros fazem Vontade CD 17 para notar"
+      },
       "needs_review": false
     }
   },
@@ -6200,6 +6239,14 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "weapon": "+2 striking machado de batalha",
+        "usage": "segurado em 1 mão",
+        "bulk": "1",
+        "chisel": "1 ação; +2 item em Manufatura para madeira; funciona como main-gauche; runas copiadas enquanto juntos",
+        "chopDown": "2 ações, 1/hora; Golpe contra planta ou criatura de madeira, +2d6 precisão e Desajeitado 1 por 1 minuto",
+        "variants": "maior: +2 greater striking/+3d6; maior superior: +2 keen greater striking/+3d6; verdadeiro: +3 keen greater striking/+3d6 e +3 Manufatura/+4d6"
+      },
       "needs_review": false
     }
   },
@@ -6224,6 +6271,13 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "usage": "segurado em 1 mão",
+        "bulk": "L",
+        "lanternLight": "1 ação; luz plena 18 metros e luz fraca mais 18 metros por 8 horas; folhas direcionam a luz",
+        "fireFruit": "10 minutos; plantado de cabeça para baixo; luz e calor de fogueira por 8 horas",
+        "coldProtection": "imunidade aos efeitos de frio moderado e severo a até 4,5 metros"
+      },
       "needs_review": false
     }
   },
@@ -6248,6 +6302,12 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "shield": "escudo de duskwood padrão; segurado em 1 mão; Volume L",
+        "repair": "1 ação, 1/dia; por 1 minuto cura 3 PV no início do seu turno",
+        "secureSite": "10 minutos, 1/dia; acampamento de até 9 metros de lado; efeito como muralha de espinhos por 8 horas",
+        "healing": "criaturas no acampamento recebem Cura de 4º círculo"
+      },
       "needs_review": false
     }
   },
@@ -6272,6 +6332,12 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "activate": "2 ações, 1/dia; lança cleanse cuisine",
+        "teaspoon": "Nível 1, 10 po, até 1 galão",
+        "tablespoon": "Nível 1, 20 po, até 8 galões",
+        "ladle": "Nível 2, 32 po, até 16 galões"
+      },
       "needs_review": false
     }
   },
@@ -6296,6 +6362,12 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "usage": "gravada em arma corpo a corpo",
+        "trigger": "acerto crítico",
+        "effect": "Imobilizado por 1 rodada e Desajeitado 1 enquanto imobilizado",
+        "escape": "CD 23; maior CD 28; maior superior CD 34; verdadeiro CD 41"
+      },
       "needs_review": false
     }
   },
@@ -6320,6 +6392,13 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "usage": "segurado em 1 mão",
+        "bulk": "L",
+        "planarKey": "erro de interplanar reduzido para 1d6×25 milhas; 1d4×25 milhas quando destino é a paisagem do leque",
+        "plantSpeech": "1 minuto, 1/dia; speak with plants e translate para Fey e Muan",
+        "cloudOfLeaves": "2 ações, 1/dia; aliados e indiferentes a até 9 metros recebem cobertura menor por 1 rodada; inimigos recebem revealing light por 1 minuto"
+      },
       "needs_review": false
     }
   },
@@ -6344,6 +6423,15 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "weapon": "+2 duskwood greater striking lança",
+        "usage": "segurada em 1 mão",
+        "bulk": "L",
+        "hit": "1d6 sangramento persistente",
+        "shatter": "2 ações, 1/dia; cone de 9 metros ou emanação de 3 metros; 12d6 perfurante, Reflexos básico CD 30; falha também aplica o sangramento da arma",
+        "regrowth": "retorna à forma completa no fim do turno",
+        "variants": "maior: +3 high-grade duskwood greater striking, 16d6/CD 37; maior superior: +3 high-grade duskwood superior striking, 18d6/CD 43"
+      },
       "needs_review": false
     }
   },
@@ -6368,6 +6456,13 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "activate": "2 ações, Concentração/Manuseio",
+        "result": "roupa pronta no início do próximo turno em local conveniente",
+        "types": "roupa de explorador ou fina",
+        "reweave": "se segurar roupa na outra mão, retecela no estilo pedido",
+        "limitation": "não muda o tipo do item; não transforma roupa fina em explorador ou inverno"
+      },
       "needs_review": false
     }
   },
@@ -6392,6 +6487,13 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "armor": "+1 resilient breastplate de madeira; uso armadura vestida; Volume 2",
+        "nature": "+2 item em Natureza para Recordar Conhecimento; ritual collective memories permite usar Natureza",
+        "statueDisguise": "2 ações, 1/dia; por 1 hora, disfarce ilusório de 3º círculo com criatura retratada; concede oaken resilience e speak with plants",
+        "still": "+2 item em Dissimulação para parecer estátua quando imóvel",
+        "variants": "maior: +2 resilient e resiliência de carvalho 4º; maior superior: +2 greater resilient, +3 Natureza e resiliência 6º"
+      },
       "needs_review": false
     }
   },
@@ -6416,6 +6518,12 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "healingPod": "2 ações, até 5 criaturas escolhidas a até 9 metros; recuperam 4d8+10 PV e recebem +2 item em salvamentos contra venenos/doenças por 1 minuto",
+        "beanstalk": "10 minutos; cresce 3 metros e dura 8 horas",
+        "food": "vagens alimentam até 8 criaturas vivas Grandes ou menores por um dia",
+        "extraHealing": "quem comer recupera 30 PV e pode tentar novo salvamento contra um veneno ou doença"
+      },
       "needs_review": false
     }
   },
@@ -6440,6 +6548,13 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "usage": "afixado a armadura não metálica ou arma",
+        "spellDC": "18; maior 24; maior superior 29",
+        "armor": "após magia de planta: resistência 2 a contundente/perfurante e fraqueza 3 a fogo até fim do próximo turno; resistência dobra para magia não truque",
+        "weapon": "após magia de planta: Golpes causam +1d4 sangramento persistente até fim do próximo turno; variantes +1d6/+1d8",
+        "activate": "Conjurar uma Magia: Tronco; maior 1/dia muralha de espinhos; maior superior 1/dia muralha de espinhos de 4º e tempestade de pétalas"
+      },
       "needs_review": false
     }
   },
@@ -6448,9 +6563,9 @@
     "name_pt": "Figura de Proa Meia-Volta",
     "name_en": "Aboutface Figurehead",
     "name_es": "Mascarón de proa media vuelta",
-    "description_pt": "Figura de proa mágica que permite virar um navio em seu próprio eixo.",
-    "description_en": "Rage of Elements water item: Aboutface Figurehead. Full mechanical text pending review.",
-    "description_es": "Objeto de agua de Rage of Elements: Mascarón de proa media vuelta. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Figura de proa que suprime a condição sluggish do navio e pode fazê-lo virar 180 graus em seu próprio eixo uma vez por dia.",
+    "description_en": "A figurehead suppresses a ship's sluggish vehicle ability and can turn it 180 degrees in place once per day.",
+    "description_es": "Un mascarón suprime la capacidad sluggish del vehículo y puede girarlo 180 grados en su sitio una vez al día.",
     "item_category": "magical",
     "level": 10,
     "price_gp": 0,
@@ -6464,6 +6579,12 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "usage": "anexada à proa de um navio",
+        "suppresses": "habilidade sluggish do veículo",
+        "activate": "1 ação; 1/dia; concentrar e movimento",
+        "effect": "o navio faz uma curva de 180 graus no próprio eixo e segue na nova direção no próximo turno"
+      },
       "needs_review": false
     }
   },
@@ -6472,9 +6593,9 @@
     "name_pt": "Lanterna Peixe-Pescador",
     "name_en": "Anglerfish Lantern",
     "name_es": "Linterna de rape",
-    "description_pt": "Lanterna que brilha debaixo d'água e pode fascinar criaturas ou virar uma esfera submersível.",
-    "description_en": "Rage of Elements water item: Anglerfish Lantern. Full mechanical text pending review.",
-    "description_es": "Objeto de agua de Rage of Elements: Linterna de rape. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Lanterna que brilha automaticamente submersa e pode fascinar criaturas; a variante submersível transforma-se em batiesfera.",
+    "description_en": "A lantern shines automatically underwater and can fascinate creatures; its submersible variant transforms into a bathysphere.",
+    "description_es": "Una linterna brilla automáticamente bajo el agua y puede fascinar criaturas; su variante sumergible se transforma en batiesfera.",
     "item_category": "magical",
     "level": 5,
     "price_gp": 0,
@@ -6488,6 +6609,13 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "usage": "segurada em 1 mão; Volume 1",
+        "activate": "2 ações; concentração e manuseio; 1/hora",
+        "save": "Vontade CD 19; criaturas aquáticas ou com traço Água sofrem –2 circunstancial",
+        "effect": "Fascinado por 1 rodada; falha crítica por 1 minuto; imunidade por 24 horas",
+        "variants": "submersível nível 8, CD 24; 1 minuto, 1/dia, transforma-se em batiesfera por 1 hora em água com pelo menos 4,5 metros"
+      },
       "needs_review": false
     }
   },
@@ -6496,9 +6624,9 @@
     "name_pt": "Escama de Dragão de Salmoura",
     "name_en": "Brine Dragon Scale",
     "name_es": "Escama de dragón de salmuera",
-    "description_pt": "Talismã que libera água salgada cáustica contra uma criatura atingida por ação de concentração.",
-    "description_en": "Rage of Elements water item: Brine Dragon Scale. Full mechanical text pending review.",
-    "description_es": "Objeto de agua de Rage of Elements: Escama de dragón de salmuera. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Talismã afixado a uma arma que causa 2d8 de ácido a uma criatura que usa uma ação de concentração e pode interromper a ação em falha crítica.",
+    "description_en": "A weapon talisman deals 2d8 acid damage to a creature using a concentrate action and can disrupt it on a critical failure.",
+    "description_es": "Un talismán de arma causa 2d8 de ácido a una criatura que usa una acción de concentración y puede interrumpirla con un fallo crítico.",
     "item_category": "magical",
     "level": 8,
     "price_gp": 0,
@@ -6512,6 +6640,15 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "usage": "afixada a uma arma corpo a corpo",
+        "trigger": "criatura ao alcance usa ação com traço Concentração",
+        "prerequisite": "especialista na arma",
+        "activate": "reação; Concentração",
+        "damage": "2d8 ácido",
+        "save": "Reflexos básico CD 24",
+        "criticalFailure": "ação de concentração desencadeadora é interrompida"
+      },
       "needs_review": false
     }
   },
@@ -6520,9 +6657,9 @@
     "name_pt": "Concha dos Mares de Outro Mundo",
     "name_en": "Conch of Otherworldly Seas",
     "name_es": "Caracola de mares sobrenaturales",
-    "description_pt": "Concha musical que facilita viagens ao Plano da Água e permite falar com Thalassic.",
-    "description_en": "Rage of Elements water item: Conch of Otherworldly Seas. Full mechanical text pending review.",
-    "description_es": "Objeto de agua de Rage of Elements: Caracola de mares sobrenaturales. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Instrumento musical virtuoso que concede bônus de Performance, facilita viagens ao Plano da Água e permite falar Thalassic ou conjurar clairaudience subaquática.",
+    "description_en": "A virtuoso instrument grants a Performance bonus, improves travel to the Plane of Water, and enables Thalassic speech or underwater clairaudience.",
+    "description_es": "Un instrumento virtuoso concede bonificación a Interpretación, mejora los viajes al Plano del Agua y permite hablar Thalassic o usar clairaudience bajo el agua.",
     "item_category": "magical",
     "level": 12,
     "price_gp": 0,
@@ -6536,6 +6673,13 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "usage": "segurada em 2 mãos; Volume L",
+        "performance": "+2 item em Performance",
+        "planarKey": "viagem ao Plano da Água chega a 1d6×25 milhas do destino, em vez de 1d10×25; 1d6×25 quando sintonizada às águas do destino",
+        "voiceOfOceans": "1 ação; entende e fala Thalassic enquanto segurada ao ouvido",
+        "soundsOfTheDeep": "10 minutos; clairaudience de 5º círculo; alcance 1 milha e clareza perfeita em local subaquático"
+      },
       "needs_review": false
     }
   },
@@ -6544,9 +6688,9 @@
     "name_pt": "Dallah de Faydhaan",
     "name_en": "Faydhaan's Dallah",
     "name_es": "Dallah de Faydhaan",
-    "description_pt": "Jarra mágica que prepara café e concede respiração aquática ou transforma a bebida em poção comum.",
-    "description_en": "Rage of Elements water item: Faydhaan's Dallah. Full mechanical text pending review.",
-    "description_es": "Objeto de agua de Rage of Elements: Dallah de Faydhaan. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Jarra que prepara seis xícaras de café; quem bebe respira debaixo d'água e fica protegido de temperaturas subaquáticas, e a ativação diária pode transformar a bebida em uma poção.",
+    "description_en": "A dallah brews six cups of coffee; drinkers breathe underwater and withstand underwater temperatures, and a daily activation can transmute the batch into a potion.",
+    "description_es": "Una dallah prepara seis tazas de café; quienes beben respiran bajo el agua y resisten temperaturas subacuáticas, y una activación diaria puede transformar el lote en una poción.",
     "item_category": "magical",
     "level": 14,
     "price_gp": 0,
@@ -6560,6 +6704,13 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "usage": "segurada em 1 mão; Volume 1",
+        "brew": "3 ações; mói grãos, enche-se de água e prepara seis xícaras",
+        "coffee": "respiração aquática e proteção contra temperaturas subaquáticas moderadas ou severas por 8 horas",
+        "hospitality": "2 ações; 1/dia; transforma o café do lote em uma poção comum de 6º nível ou inferior para todos que beberam",
+        "examples": "poção moderada de cura, poção menor de resistência ou poção de natação"
+      },
       "needs_review": false
     }
   },
@@ -6568,9 +6719,9 @@
     "name_pt": "Figura de Proa Kraken",
     "name_en": "Kraken Figurehead",
     "name_es": "Mascarón de proa kraken",
-    "description_pt": "Figura de proa que invoca tentáculos espectrais para atrapalhar e prender navios inimigos.",
-    "description_en": "Rage of Elements water item: Kraken Figurehead. Full mechanical text pending review.",
-    "description_es": "Objeto de agua de Rage of Elements: Mascarón de proa kraken. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Figura de proa que cria tentáculos espectrais para atrapalhar natação e prender ou puxar embarcações inimigas.",
+    "description_en": "A figurehead creates spectral tentacles that hinder swimming and tether or pull enemy vessels.",
+    "description_es": "Un mascarón crea tentáculos espectrales que dificultan nadar y atan o atraen embarcaciones enemigas.",
     "item_category": "magical",
     "level": 10,
     "price_gp": 0,
@@ -6584,6 +6735,14 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "usage": "anexada à proa de um navio",
+        "lashOut": "2 ações; aura por 10 minutos; –2 circunstancial em Atletismo para Nadar",
+        "grabThem": "1 ação; ataque; teste de pilotagem contra CA do navio",
+        "success": "prende os navios; –2 em pilotagem inimiga; +2 para Abordar",
+        "pull": "puxa até metade da Velocidade de natação do navio, ou a Velocidade inteira em sucesso crítico",
+        "variants": "wracking nível 14; CD para libertar 31; causa 7d10 contundente ao casco em falha/sucesso apropriado"
+      },
       "needs_review": false
     }
   },
@@ -6592,9 +6751,9 @@
     "name_pt": "Lança Peixe-Leão",
     "name_en": "Lionfish Spear",
     "name_es": "Lanza pez león",
-    "description_pt": "Lança mágica de combate aquático que aplica veneno de peixe-leão uma vez por dia.",
-    "description_en": "Rage of Elements water item: Lionfish Spear. Full mechanical text pending review.",
-    "description_es": "Objeto de agua de Rage of Elements: Lanza pez león. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Lança +2 striking underwater wounding que concede bônus para Nadar e injeta veneno de peixe-leão uma vez por dia; possui variantes maiores.",
+    "description_en": "A +2 striking underwater wounding spear grants a bonus to Swim and injects lionfish poison once per day, with greater variants.",
+    "description_es": "Una lanza +2 striking underwater wounding concede una bonificación para Nadar e inyecta veneno de pez león una vez al día, con variantes mayores.",
     "item_category": "magical",
     "level": 11,
     "price_gp": 0,
@@ -6608,6 +6767,15 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "weapon": "+2 striking underwater wounding lança",
+        "usage": "segurada em 1 mão; Volume 1",
+        "swim": "+2 item em Atletismo para Nadar",
+        "activate": "reação; 1/dia; após Acerto com a lança",
+        "save": "Fortitude CD 28",
+        "poison": "duração máxima 6 rodadas; estágio 1: 3d6 veneno e enjoado 1; estágio 2: 5d6 veneno e enjoado 2; estágio 3: paralisado por 2d4 horas",
+        "variants": "greater: +2 greater striking, +1d6 veneno, 1/hora, CD 31"
+      },
       "needs_review": false
     }
   },
@@ -6616,9 +6784,9 @@
     "name_pt": "Poção de Polvo",
     "name_en": "Octopus Potion",
     "name_es": "Poción de pulpo",
-    "description_pt": "Poção que faz braços de polvo surgirem do corpo para agarrar inimigos.",
-    "description_en": "Rage of Elements water item: Octopus Potion. Full mechanical text pending review.",
-    "description_es": "Objeto de agua de Rage of Elements: Poción de pulpo. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Poção de metamorfose que cria braços de polvo, tentando agarrar um inimigo aleatório e impondo cegueira, silêncio, dificuldade de Manuseio ou dano contundente.",
+    "description_en": "A morph potion creates octopus arms that Grapple a random enemy and can blind, silence, hamper manipulate actions, or deal bludgeoning damage.",
+    "description_es": "Una poción de metamorfosis crea brazos de pulpo que Agarran a un enemigo aleatorio y pueden cegar, silenciar, dificultar acciones de Manipular o causar daño contundente.",
     "item_category": "magical",
     "level": 6,
     "price_gp": 0,
@@ -6632,6 +6800,14 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "activate": "1 ação; Manuseio",
+        "range": "15 pés",
+        "duration": "1 minuto",
+        "initial": "braços compartilham penalidade de múltiplos ataques e tentam Agarrar",
+        "effects": "1: cego; 2: não pode falar; 3: CD da prova simples para Manusear enquanto agarrado vira 7; 4: dano contundente igual ao nível ao agarrar e no fim de cada turno",
+        "variants": "menor Atletismo +12/CD de Escapar 20; moderada +17/25; maior +22/30"
+      },
       "needs_review": false
     }
   },
@@ -6640,9 +6816,9 @@
     "name_pt": "Robe de Pele de Tubarão",
     "name_en": "Sharkskin Robe",
     "name_es": "Túnica de piel de tiburón",
-    "description_pt": "Roupa investida que concede deslocamento de natação e adapta ataques ao combate subaquático.",
-    "description_en": "Rage of Elements water item: Sharkskin Robe. Full mechanical text pending review.",
-    "description_es": "Objeto de agua de Rage of Elements: Túnica de piel de tiburón. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Robe investido que concede deslocamento de natação igual ao terrestre, bônus de Atletismo e faz ataques funcionarem como armas subaquáticas por 1 minuto.",
+    "description_en": "An invested robe grants a swim Speed equal to land Speed, an Athletics bonus, and underwater weapon benefits for 1 minute.",
+    "description_es": "Una túnica investida concede una Velocidad de nado igual a la terrestre, bonificación a Atletismo y beneficios de arma subacuática durante 1 minuto.",
     "item_category": "magical",
     "level": 12,
     "price_gp": 0,
@@ -6656,6 +6832,12 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "usage": "vestida; Volume 1",
+        "swim": "Velocidade de natação igual à Velocidade terrestre",
+        "athletics": "+2 item em Atletismo",
+        "activate": "2 ações; 1/hora; por 1 minuto, cada Golpe recebe benefício da runa de arma subaquática"
+      },
       "needs_review": false
     }
   },
@@ -6664,9 +6846,9 @@
     "name_pt": "Concha da Respiração Fácil",
     "name_en": "Shell of Easy Breathing",
     "name_es": "Concha de respiración fácil",
-    "description_pt": "Concha mágica que permite respirar debaixo d'água após mergulhar o rosto em sua água.",
-    "description_en": "Rage of Elements water item: Shell of Easy Breathing. Full mechanical text pending review.",
-    "description_es": "Objeto de agua de Rage of Elements: Concha de respiración fácil. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Concha que se enche de água salgada e permite a uma criatura respirar debaixo d'água por 1 hora; a variante maior dura 8 horas.",
+    "description_en": "A shell fills with saltwater and lets a creature breathe underwater for 1 hour; the greater version lasts 8 hours.",
+    "description_es": "Una concha se llena de agua salada y permite respirar bajo el agua durante 1 hora; la versión mayor dura 8 horas.",
     "item_category": "magical",
     "level": 5,
     "price_gp": 0,
@@ -6680,6 +6862,12 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "fill": "1 ação; 1 minuto; coloca em superfície e adiciona gotas de água",
+        "breathe": "atividade de 3 ações; submerge a cabeça na concha; respira debaixo d'água por 1 hora",
+        "immunity": "imune a esta concha até as próximas preparações diárias",
+        "variant": "greater nível 9; duração 8 horas"
+      },
       "needs_review": false
     }
   },
@@ -6688,9 +6876,9 @@
     "name_pt": "Bomba de Algas Pegajosas",
     "name_en": "Sticky Algae Bomb",
     "name_es": "Bomba de algas pegajosas",
-    "description_pt": "Bomba alquímica de água que funciona normalmente debaixo d'água e deixa um rastro visível.",
-    "description_en": "Rage of Elements water item: Sticky Algae Bomb. Full mechanical text pending review.",
-    "description_es": "Objeto de agua de Rage of Elements: Bomba de algas pegajosas. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Bomba alquímica de água que não sofre penalidades subaquáticas, causa dano de veneno e deixa o alvo com um rastro bioluminescente rastreável.",
+    "description_en": "A water bomb ignores underwater penalties, deals poison damage, and leaves its target with a trackable bioluminescent trail.",
+    "description_es": "Una bomba de agua ignora penalizaciones subacuáticas, causa daño de veneno y deja un rastro bioluminiscente rastreable.",
     "item_category": "magical",
     "level": 1,
     "price_gp": 0,
@@ -6704,6 +6892,12 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "activate": "1 ação; Golpe",
+        "underwater": "ignora penalidades e restrições normais de ataques na água ou debaixo d'água",
+        "trail": "rastro visível por 1 hora apenas na água; CD 19 para Rastrear",
+        "variants": "menor 1d8 veneno + 1 splash; moderada 2d8 + 2 splash e +1 ataque; maior 3d8 + 3 splash e +2; major 4d8 + 4 splash e +3"
+      },
       "needs_review": false
     }
   },
@@ -6712,9 +6906,9 @@
     "name_pt": "Subaquática",
     "name_en": "Underwater",
     "name_es": "Subacuática",
-    "description_pt": "Runa de arma que remove penalidades e restrições de ataques realizados na água.",
-    "description_en": "Rage of Elements water item: Underwater. Full mechanical text pending review.",
-    "description_es": "Objeto de agua de Rage of Elements: Subacuática. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Runa de arma que remove as penalidades e restrições normais de ataques realizados na água ou debaixo d'água e mantém dano de fogo funcionando.",
+    "description_en": "A weapon rune removes normal underwater attack penalties and restrictions and lets fire damage function underwater.",
+    "description_es": "Una runa de arma elimina las penalizaciones y restricciones normales de ataques bajo el agua y permite que el daño de fuego funcione.",
     "item_category": "magical",
     "level": 3,
     "price_gp": 0,
@@ -6728,6 +6922,10 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "usage": "gravada em uma arma",
+        "effect": "a arma funciona na água como em terra; ataques não sofrem penalidades ou restrições normais da água; fogo da arma funciona debaixo d'água"
+      },
       "needs_review": false
     }
   },
@@ -6736,9 +6934,9 @@
     "name_pt": "Figura de Proa Velada",
     "name_en": "Veiled Figurehead",
     "name_es": "Mascarón de proa velado",
-    "description_pt": "Figura de proa ilusória que altera a aparência do navio e de sua tripulação.",
-    "description_en": "Rage of Elements water item: Veiled Figurehead. Full mechanical text pending review.",
-    "description_es": "Objeto de agua de Rage of Elements: Mascarón de proa velado. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Figura de proa que disfarça a aparência do navio por 6 horas; a variante maior também disfarça a tripulação e pode alterar sua ancestralidade aparente.",
+    "description_en": "A figurehead disguises a ship for 6 hours; the greater version also disguises its crew and can alter their apparent ancestry.",
+    "description_es": "Un mascarón disfraza un barco durante 6 horas; la versión mayor también disfraza a su tripulación y puede cambiar su ascendencia aparente.",
     "item_category": "magical",
     "level": 7,
     "price_gp": 0,
@@ -6752,6 +6950,14 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "usage": "anexada à proa de um navio",
+        "activate": "1 minuto; 1/dia; Concentração, Ilusão e Visual",
+        "effect": "altera cor, marcas, velas, material e danos superficiais sem mudar tamanho ou forma geral",
+        "duration": "6 horas ou até Dissipar",
+        "disbelief": "Percepção CD 25 ao embarcar ou Buscar; maior CD 33 e duração 24 horas",
+        "greater": "variante maior lança veil na tripulação, altera roupas e pode fazer todos parecerem da mesma ancestralidade escolhida"
+      },
       "needs_review": false
     }
   },
@@ -6760,9 +6966,9 @@
     "name_pt": "Manto Aéreo",
     "name_en": "Aerial Cloak",
     "name_es": "Capa aérea",
-    "description_pt": "Manto leve que ajuda em saltos, equilíbrio, voo e quedas.",
-    "description_en": "Rage of Elements air item: Aerial Cloak. Full mechanical text pending review.",
-    "description_es": "Objeto de aire de Rage of Elements: Capa aérea. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Manto leve que concede bônus para Saltar, Equilibrar e Manobrar em Voo e reduz uma queda uma vez por dia.",
+    "description_en": "A light cloak grants bonuses to Leap, Balance, and Maneuver in Flight and shortens a fall once per day.",
+    "description_es": "Una capa ligera concede bonificaciones para Saltar, Equilibrio y Maniobrar en Vuelo y acorta una caída una vez al día.",
     "item_category": "magical",
     "level": 3,
     "price_gp": 0,
@@ -6776,6 +6982,11 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "bonuses": "+1 em Atletismo para Saltar e +1 em Acrobacia para Equilibrar ou Manobrar em Voo",
+        "activate": "reação; 1/dia; quando cai",
+        "effect": "queda 9 metros mais curta e plana até espaço a até 6 metros do ponto de aterrissagem"
+      },
       "needs_review": false
     }
   },
@@ -6784,9 +6995,9 @@
     "name_pt": "Bastão Atmosférico",
     "name_en": "Atmospheric Staff",
     "name_es": "Bastón atmosférico",
-    "description_pt": "Bastão mágico com magias de ar, gravidade, voo e clima.",
-    "description_en": "Rage of Elements air item: Atmospheric Staff. Full mechanical text pending review.",
-    "description_es": "Objeto de aire de Rage of Elements: Bastón atmosférico. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Cajado mágico que protege contra movimento forçado e conjura magias de ar, gravidade e voo conforme a variante.",
+    "description_en": "A magical staff protects against forced movement and casts air, gravity, and flight spells by variant.",
+    "description_es": "Un bastón mágico protege contra movimiento forzado y lanza conjuros de aire, gravedad y vuelo según la variante.",
     "item_category": "magical",
     "level": 4,
     "price_gp": 0,
@@ -6800,6 +7011,11 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "saves": "+1 item em salvamentos contra movimento forçado",
+        "activate": "Conjurar uma Magia; gasta cargas",
+        "variants": "menor: gale blast, air bubble, gravitational pull; padrão: gentle breeze, gravity well, tempest cloak; maior: fly, variable gravity, elemental form (ar), telekinetic haul; major: zero gravity, elemental form (ar), vacuum"
+      },
       "needs_review": false
     }
   },
@@ -6808,9 +7024,9 @@
     "name_pt": "Sopro da Praga",
     "name_en": "Blight Breath",
     "name_es": "Aliento de plaga",
-    "description_pt": "Sopro engarrafado que protege contra veneno e libera uma nuvem nociva.",
-    "description_en": "Rage of Elements air item: Blight Breath. Full mechanical text pending review.",
-    "description_es": "Objeto de aire de Rage of Elements: Aliento de plaga. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Respiração engarrafada que concede resistência a veneno enquanto prende a respiração e libera 10d6 de veneno em cone.",
+    "description_en": "Bottled breath grants poison resistance while held and releases 10d6 poison damage in a cone.",
+    "description_es": "Un aliento embotellado concede resistencia al veneno mientras se contiene y libera 10d6 de veneno en un cono.",
     "item_category": "magical",
     "level": 12,
     "price_gp": 0,
@@ -6824,6 +7040,10 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "resistance": "10 a veneno enquanto prende a respiração",
+        "exhale": "1 ação; cone de 4,5 metros; 10d6 veneno; Reflexos básico CD 29"
+      },
       "needs_review": false
     }
   },
@@ -6832,9 +7052,9 @@
     "name_pt": "Pulmão Extra",
     "name_en": "Extra Lung",
     "name_es": "Pulmón adicional",
-    "description_pt": "Bexiga de ar que permite respirar por várias rodadas e expelir venenos inalados.",
-    "description_en": "Rage of Elements air item: Extra Lung. Full mechanical text pending review.",
-    "description_es": "Objeto de aire de Rage of Elements: Pulmón adicional. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Pulmão extra com cinco rodadas de ar, recarregável, que captura uma aflição inalada e permite novo salvamento.",
+    "description_en": "An extra lung holds five rounds of air, can be refilled, and captures an inhaled affliction for a new save.",
+    "description_es": "Un pulmón extra contiene cinco asaltos de aire, puede rellenarse y captura una aflicción inhalada para otra salvación.",
     "item_category": "magical",
     "level": 8,
     "price_gp": 0,
@@ -6848,6 +7068,12 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "capacity": "5 rodadas; recarrega aberto por 10 minutos em ar adequado",
+        "switching": "troca sem ação; falar não consome seu ar",
+        "activate": "reação ao inalar veneno ou aflição",
+        "effect": "tosse o veneno para o pulmão e tenta novo salvamento; limpa-se ao amanhecer"
+      },
       "needs_review": false
     }
   },
@@ -6856,9 +7082,9 @@
     "name_pt": "Leque dos Ventos Calmantes",
     "name_en": "Fan of Soothing Winds",
     "name_es": "Abanico de vientos calmantes",
-    "description_pt": "Leque que conjura curas em cones por meio de contas que se renovam diariamente.",
-    "description_en": "Rage of Elements air item: Fan of Soothing Winds. Full mechanical text pending review.",
-    "description_es": "Objeto de aire de Rage of Elements: Abanico de vientos calmantes. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Leque com seis contas que conjura curar em cone uma vez por dia por conta; a variante maior usa círculos mais altos.",
+    "description_en": "A six-bead fan casts heal in a cone once per day per bead; the greater version uses higher ranks.",
+    "description_es": "Un abanico de seis cuentas lanza curar en un cono una vez al día por cuenta; la variante mayor usa rangos superiores.",
     "item_category": "magical",
     "level": 11,
     "price_gp": 0,
@@ -6872,6 +7098,11 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "activate": "2 ações; 1/dia por conta",
+        "effect": "curar de 3 ações em cone de 9 metros; CD 28 contra mortos-vivos; contas 4º, 3º e 2º círculo; traço Ar",
+        "variant": "greater: CD 34; círculos 6º, 5º e 4º"
+      },
       "needs_review": false
     }
   },
@@ -6880,9 +7111,9 @@
     "name_pt": "Tenda Flutuante",
     "name_en": "Floating Tent",
     "name_es": "Tienda flotante",
-    "description_pt": "Tenda equilibrada para dormir em ambientes planares sem gravidade.",
-    "description_en": "Rage of Elements air item: Floating Tent. Full mechanical text pending review.",
-    "description_es": "Objeto de aire de Rage of Elements: Tienda flotante. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Tenda flutuante ancorável para ambientes sem gravidade, com versões para uma ou quatro criaturas.",
+    "description_en": "An anchorable floating tent for gravityless environments, with one-person and four-person versions.",
+    "description_es": "Una tienda flotante anclable para entornos sin gravedad, con versiones para una o cuatro criaturas.",
     "item_category": "magical",
     "level": 1,
     "price_gp": 0,
@@ -6896,6 +7127,10 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "anchor": "impede que flutue",
+        "variants": "pup nível 1: uma criatura Média ou menor; four-person nível 2: quatro criaturas"
+      },
       "needs_review": false
     }
   },
@@ -6904,9 +7139,9 @@
     "name_pt": "Sopro Gélido",
     "name_en": "Frost Breath",
     "name_es": "Aliento de escarcha",
-    "description_pt": "Sopro engarrafado que concede resistência a frio e cobre uma área com gelo.",
-    "description_en": "Rage of Elements air item: Frost Breath. Full mechanical text pending review.",
-    "description_es": "Objeto de aire de Rage of Elements: Aliento de escarcha. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Respiração engarrafada que concede resistência a frio e libera 4d6 de frio em cone, congelando o terreno.",
+    "description_en": "Bottled breath grants cold resistance and releases 4d6 cold damage in a cone, icing the terrain.",
+    "description_es": "Un aliento embotellado concede resistencia al frío y libera 4d6 de frío en un cono, congelando el terreno.",
     "item_category": "magical",
     "level": 7,
     "price_gp": 0,
@@ -6920,6 +7155,11 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "resistance": "5 a frio enquanto prende a respiração",
+        "exhale": "1 ação; cone de 4,5 metros; 4d6 frio; Reflexos básico CD 20",
+        "terrain": "10 minutos; terreno difícil e irregular; Acrobacia CD 20"
+      },
       "needs_review": false
     }
   },
@@ -6928,9 +7168,9 @@
     "name_pt": "Cachecol de Jaathoom",
     "name_en": "Jaathoom's Scarf",
     "name_es": "Bufanda de Jaathoom",
-    "description_pt": "Cachecol investido que concede bônus de Performance e pode causar invisibilidade ou empurrar inimigos.",
-    "description_en": "Rage of Elements air item: Jaathoom's Scarf. Full mechanical text pending review.",
-    "description_es": "Objeto de aire de Rage of Elements: Bufanda de Jaathoom. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Cachecol investido que melhora Performance de dança e Escapar, pode deixar você invisível e empurrar inimigos.",
+    "description_en": "An invested scarf improves dance Performance and Escape, can turn you invisible, and push enemies.",
+    "description_es": "Una bufanda investida mejora Interpretación de danza y Escapar, puede volverte invisible y empujar enemigos.",
     "item_category": "magical",
     "level": 10,
     "price_gp": 0,
@@ -6944,6 +7184,11 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "bonuses": "+2 item em Performance para dançar e Acrobacia para Escapar",
+        "vanish": "2 ações; 1/dia; invisibilidade de 4º círculo",
+        "rebuke": "1 ação; 1/hora; emanação de 3 metros; Fortitude CD 18; empurra 3 metros; falha crítica também derruba"
+      },
       "needs_review": false
     }
   },
@@ -6952,9 +7197,9 @@
     "name_pt": "Sopro de Nimbo",
     "name_en": "Nimbus Breath",
     "name_es": "Aliento de nimbo",
-    "description_pt": "Sopro engarrafado que concede resistência elétrica, voo e um jato de vento.",
-    "description_en": "Rage of Elements air item: Nimbus Breath. Full mechanical text pending review.",
-    "description_es": "Objeto de aire de Rage of Elements: Aliento de nimbo. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Respiração engarrafada que concede resistência a eletricidade e voo enquanto prende a respiração, além de criar uma rajada de vento.",
+    "description_en": "Bottled breath grants electricity resistance and fly while held, then creates a gust of wind.",
+    "description_es": "Un aliento embotellado concede resistencia a electricidad y volar mientras se contiene, y crea una ráfaga de viento.",
     "item_category": "magical",
     "level": 8,
     "price_gp": 0,
@@ -6968,6 +7213,11 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "effect": "resistência 5 a eletricidade e fly enquanto prende a respiração",
+        "exhale": "1 ação; gust of wind CD 24",
+        "landing": "desce suavemente a 18 metros por rodada sem dano se estiver no ar"
+      },
       "needs_review": false
     }
   },
@@ -6976,9 +7226,9 @@
     "name_pt": "Sinos Espirais",
     "name_en": "Spiral Chimes",
     "name_es": "Campanas espirales",
-    "description_pt": "Sinos mágicos que auxiliam viagens planares, preveem o clima e revelam invisibilidade.",
-    "description_en": "Rage of Elements air item: Spiral Chimes. Full mechanical text pending review.",
-    "description_es": "Objeto de aire de Rage of Elements: Campanas espirales. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Sinos que melhoram viagens planares, preveem o clima e revelam criaturas invisíveis com som visível.",
+    "description_en": "Chimes improve planar travel, forecast weather, and reveal invisible creatures with visible sound.",
+    "description_es": "Unos carillones mejoran viajes planares, predicen el clima y revelan criaturas invisibles.",
     "item_category": "magical",
     "level": 13,
     "price_gp": 0,
@@ -6992,6 +7242,11 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "planarKey": "chega a 1d6×25 milhas do destino em vez de 1d10×25",
+        "forecast": "10 minutos; clima das próximas 24 horas",
+        "revealing": "1 ação; 1/dia; explosão de 9 metros a até 36; Reflexos CD 30; negação da invisibilidade e, em falha, ensurdece"
+      },
       "needs_review": false
     }
   },
@@ -7000,9 +7255,9 @@
     "name_pt": "Nuvem Fiada",
     "name_en": "Spun Cloud",
     "name_es": "Nube hilada",
-    "description_pt": "Nuvem engarrafada que se expande e cria efeitos variados conforme sua cor.",
-    "description_en": "Rage of Elements air item: Spun Cloud. Full mechanical text pending review.",
-    "description_es": "Objeto de aire de Rage of Elements: Nube hilada. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Nuvem engarrafada que se expande em explosão e pode ocultar, proteger contra eletricidade, causar enjoo, amedrontar ou acelerar deslocamento.",
+    "description_en": "Bottled cloud expands into a burst that can conceal, protect from electricity, sicken, frighten, or speed movement.",
+    "description_es": "Una nube embotellada se expande en una explosión que puede ocultar, proteger, enfermar, asustar o acelerar.",
     "item_category": "magical",
     "level": 2,
     "price_gp": 0,
@@ -7016,6 +7271,10 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "area": "explosão de 6 metros a até 18 metros; dura 1 minuto",
+        "variants": "preta: ocultação; azul: resistência 5 eletricidade; verde: Fortitude CD 25 ou enjoado; vermelha: Vontade CD 24 ou assustado; branca: +3 metros em Velocidade"
+      },
       "needs_review": false
     }
   },
@@ -7024,9 +7283,9 @@
     "name_pt": "Sopro de Tempestade",
     "name_en": "Storm Breath",
     "name_es": "Aliento de tormenta",
-    "description_pt": "Sopro engarrafado que concede resistências e libera um raio elétrico.",
-    "description_en": "Rage of Elements air item: Storm Breath. Full mechanical text pending review.",
-    "description_es": "Objeto de aire de Rage of Elements: Aliento de tormenta. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Respiração engarrafada que concede resistências a eletricidade e sônico e libera um raio de 4d12.",
+    "description_en": "Bottled breath grants electricity and sonic resistance and releases a 4d12 lightning bolt.",
+    "description_es": "Un aliento embotellado concede resistencias a electricidad y sónico y libera un rayo de 4d12.",
     "item_category": "magical",
     "level": 9,
     "price_gp": 0,
@@ -7040,6 +7299,10 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "resistance": "5 a eletricidade e sônico enquanto prende a respiração",
+        "exhale": "1 ação; linha de 9 metros; 4d12 eletricidade; Reflexos básico CD 25"
+      },
       "needs_review": false
     }
   },
@@ -7048,9 +7311,9 @@
     "name_pt": "Cota de Fios de Ar",
     "name_en": "Wisp Chain",
     "name_es": "Cota de hilos de aire",
-    "description_pt": "Armadura de correntes de vento que pode ensurdecer criaturas próximas e lançar lâminas de ar.",
-    "description_en": "Rage of Elements air item: Wisp Chain. Full mechanical text pending review.",
-    "description_es": "Objeto de aire de Rage of Elements: Cota de hilos de aire. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Cota de malha resiliente de vento que ensurdece criaturas adjacentes e libera lâminas de ar em cone, recompondo-se no fim do turno.",
+    "description_en": "A resilient wind chain shirt deafens adjacent creatures and releases slicing air in a cone, reforming at turn's end.",
+    "description_es": "Una camisa de malla de viento resistente ensordece criaturas adyacentes y libera aire cortante en un cono.",
     "item_category": "magical",
     "level": 9,
     "price_gp": 0,
@@ -7064,6 +7327,14 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "armor": "+1 resilient chain shirt",
+        "aura": "Fortitude CD 23; falha ensurdece até afastar-se",
+        "activate": "2 ações; cone de 18 metros; Fortitude básico CD 25",
+        "damage": "6d6 cortante; falha empurra 3 metros; falha crítica 6 metros",
+        "recovery": "perde o bônus de CA até o fim do turno",
+        "variants": "greater +2/CD 27 e 29; major +2 greater/CD 32 e 34; true +3 greater/CD 39 e 41"
+      },
       "needs_review": false
     }
   },
@@ -7072,9 +7343,9 @@
     "name_pt": "Pedra Aeon",
     "name_en": "Aeon Stone",
     "name_es": "Piedra aeon",
-    "description_pt": "Pedra investida que orbita a cabeça e oferece poderes de percepção, mente ou resistência.",
-    "description_en": "Rage of Elements earth item: Aeon Stone. Full mechanical text pending review.",
-    "description_es": "Objeto de tierra de Rage of Elements: Piedra aeon. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Pedra aeon com variantes de percepção, resistência mental ou salvamentos e poderes ressonantes diferentes.",
+    "description_en": "An aeon stone with perception, mental resistance, or saving throw variants and distinct resonant powers.",
+    "description_es": "Una piedra aeon con variantes de percepción, resistencia mental o salvaciones y poderes resonantes.",
     "item_category": "magical",
     "level": 3,
     "price_gp": 0,
@@ -7088,6 +7359,10 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "usage": "vestida; orbita a cabeça",
+        "variants": "cymophane: +2 Percepção e CDs contra Esconder-se, Furtividade e Roubar; see the unseen 1/dia; olivina: +2 salvamentos contra confuso, assustado e estupefato, reação suprime efeito por 1 minuto com –1 ataques; seixo: +1 Fortitude e CDs contra Agarrar/Engolir, grease primal 1/dia"
+      },
       "needs_review": false
     }
   },
@@ -7096,9 +7371,9 @@
     "name_pt": "Pó da Seca",
     "name_en": "Drought Powder",
     "name_es": "Polvo de sequía",
-    "description_pt": "Pó consumível que mantém você seco, reduz água e afeta criaturas aquáticas.",
-    "description_en": "Rage of Elements earth item: Drought Powder. Full mechanical text pending review.",
-    "description_es": "Objeto de tierra de Rage of Elements: Polvo de sequía. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Pó que mantém criatura e equipamentos secos, reduz um corpo d'água ou desacelera criaturas com traço Água.",
+    "description_en": "Powder keeps a creature and gear dry, lowers a body of water, or slows creatures with the water trait.",
+    "description_es": "El polvo mantiene seca a una criatura y su equipo, baja un cuerpo de agua o ralentiza criaturas con el rasgo Agua.",
     "item_category": "magical",
     "level": 11,
     "price_gp": 0,
@@ -7112,6 +7387,12 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "activate": "1 ação; Manuseio",
+        "dry": "você e itens carregados permanecem secos por 24 horas",
+        "water": "reduz água em área de 15 por 15 por 3 metros",
+        "creatures": "explosão de 3 metros a até 1,5 metro; criaturas Água sofrem slow; Fortitude CD 28"
+      },
       "needs_review": false
     }
   },
@@ -7120,9 +7401,9 @@
     "name_pt": "Pó de Exúvia",
     "name_en": "Exuviae Powder",
     "name_es": "Polvo de exuvias",
-    "description_pt": "Pó alquímico que prolonga a retenção de ar e cria uma carapaça protetora contra petrificação.",
-    "description_en": "Rage of Elements earth item: Exuviae Powder. Full mechanical text pending review.",
-    "description_es": "Objeto de tierra de Rage of Elements: Polvo de exuvias. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Pó de exúvia que duplica o tempo prendendo a respiração e forma uma carapaça quando você seria petrificado.",
+    "description_en": "Exuviae powder doubles breath-holding time and forms a shell when you would be petrified.",
+    "description_es": "El polvo de exuvias duplica el tiempo conteniendo la respiración y forma una caparazón si fueras petrificado.",
     "item_category": "magical",
     "level": 14,
     "price_gp": 0,
@@ -7136,6 +7417,10 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "duration": "8 horas; duplica o tempo prendendo a respiração",
+        "shedChitin": "reação ao ser petrificado; efeito original termina; fica acelerado por 1 minuto, condenado 1 e restringido; Escapar CD 25"
+      },
       "needs_review": false
     }
   },
@@ -7144,9 +7429,9 @@
     "name_pt": "Fragmento Fóssil",
     "name_en": "Fossil Fragment",
     "name_es": "Fragmento fósil",
-    "description_pt": "Fragmento mágico que se transforma temporariamente em um esqueleto fóssil obediente.",
-    "description_en": "Rage of Elements earth item: Fossil Fragment. Full mechanical text pending review.",
-    "description_es": "Objeto de tierra de Rage of Elements: Fragmento fósil. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Fragmento fóssil que se transforma em esqueleto de uma criatura, com variantes de mosquito, dinossauros, euriptérida ou árvore desperta.",
+    "description_en": "A fossil fragment becomes a creature skeleton, with mosquito, dinosaur, eurypterid, or awakened tree variants.",
+    "description_es": "Un fragmento fósil se convierte en el esqueleto de una criatura, con variantes de mosquito, dinosaurios, euriptérido o árbol despertado.",
     "item_category": "magical",
     "level": 7,
     "price_gp": 0,
@@ -7160,6 +7445,11 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "activate": "2 ações; Concentração e Manuseio; coloca em solo e fala o nome",
+        "creature": "minion, construct e earth; obedece quando comandado; imunidades de construct",
+        "variants": "mosquito 1/dia por 10 minutos; brontossauro 4/mês, 24 horas fora de combate; deinonico 1/dia por 10 minutos; euriptérida 1/semana por 24 horas; madeira petrificada 1/dia por 1 minuto; tricerátopo/tyrannosaurus 1/dia por 10 minutos"
+      },
       "needs_review": false
     }
   },
@@ -7168,9 +7458,9 @@
     "name_pt": "Dados de Jabali",
     "name_en": "Jabali's Dice",
     "name_es": "Dados de Jabali",
-    "description_pt": "Dados de pedra que concedem sorte e invocam efeitos de um shuyookh quando lançados.",
-    "description_en": "Rage of Elements earth item: Jabali's Dice. Full mechanical text pending review.",
-    "description_es": "Objeto de tierra de Rage of Elements: Dados de Jabali. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Dados de pedra que concedem bônus em Saber de Jogos e invocam um shuyookh com um efeito aleatório de proteção ou magia.",
+    "description_en": "Stone dice grant a Games Lore bonus and summon a shuyookh for a random protective or magical effect.",
+    "description_es": "Dados de piedra conceden una bonificación a Saber de Juegos y convocan a un shuyookh para un efecto mágico aleatorio.",
     "item_category": "magical",
     "level": 12,
     "price_gp": 0,
@@ -7184,6 +7474,11 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "lore": "+2 item em Saber de Jogos; também ao Obter Renda; um usuário por vez",
+        "activate": "2 ações; 1/dia; rola 2d6",
+        "results": "2–5 mountain resilience; 6–9 grasping earth; 10–11 wall of stone; 12 petrify CD 31 em inimigo próximo"
+      },
       "needs_review": false
     }
   },
@@ -7192,9 +7487,9 @@
     "name_pt": "Escudo de Calcário",
     "name_en": "Limestone Shield",
     "name_es": "Escudo de piedra caliza",
-    "description_pt": "Escudo torre que se expande em uma muralha e bloqueia efeitos elementais.",
-    "description_en": "Rage of Elements earth item: Limestone Shield. Full mechanical text pending review.",
-    "description_es": "Objeto de tierra de Rage of Elements: Escudo de piedra caliza. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Escudo torre de calcário que se expande em muralha por 1 minuto e oferece cobertura contra efeitos de Ar, Fogo ou Água.",
+    "description_en": "A limestone tower shield expands into a wall for 1 minute and grants cover against air, fire, or water effects.",
+    "description_es": "Un escudo torre de piedra caliza se expande en un muro durante 1 minuto y da cobertura contra efectos de Aire, Fuego o Agua.",
     "item_category": "magical",
     "level": 7,
     "price_gp": 0,
@@ -7208,6 +7503,11 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "shield": "Dureza 7, 28 PV, Volume 4",
+        "wall": "2 ações; 1/dia; muralha de até 18 metros por 3 metros; CA 10, Dureza 7, 28 PV por quadrado",
+        "block": "reação; 1/dia; contra efeito Ar, Fogo ou Água; cobertura padrão"
+      },
       "needs_review": false
     }
   },
@@ -7216,9 +7516,9 @@
     "name_pt": "Robe de Pedra",
     "name_en": "Robe of Stone",
     "name_es": "Túnica de piedra",
-    "description_pt": "Veste investida que concede sentido sísmico, língua Petran e transformação elemental de terra.",
-    "description_en": "Rage of Elements earth item: Robe of Stone. Full mechanical text pending review.",
-    "description_es": "Objeto de tierra de Rage of Elements: Túnica de piedra. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Robe investido que concede sentido sísmico, Petran, nutrição por pedra e transformação em elemental da terra.",
+    "description_en": "An invested robe grants tremorsense, Petran, nutrition from earth, and transformation into an earth elemental.",
+    "description_es": "Una túnica investida concede sentido sísmico, Petran, nutrición de tierra y transformación en elemental de tierra.",
     "item_category": "magical",
     "level": 11,
     "price_gp": 0,
@@ -7232,6 +7532,13 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "usage": "vestido; Volume L",
+        "senses": "tremorsense impreciso 3 metros",
+        "languages": "fala e lê Petran",
+        "nutrition": "pode comer terra, gemas e metal",
+        "activate": "2 ações; 1/dia; elemental form de terra; pode Escavar sem túneis; tremorsense aumenta para 9 metros"
+      },
       "needs_review": false
     }
   },
@@ -7240,9 +7547,9 @@
     "name_pt": "Azul de Sairazul",
     "name_en": "Sairazul Blue",
     "name_es": "Azul de Sairazul",
-    "description_pt": "Poção rara que protege contra veneno e energia void e cura quando você cai a zero PV.",
-    "description_en": "Rage of Elements earth item: Sairazul Blue. Full mechanical text pending review.",
-    "description_es": "Objeto de tierra de Rage of Elements: Azul de Sairazul. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Poção que concede resistência a veneno e void por 8 horas e cura 8d8 quando dano desses tipos reduz você a 0 PV.",
+    "description_en": "A potion grants poison and void resistance for 8 hours and heals 8d8 when damage of either type reduces you to 0 HP.",
+    "description_es": "Una poción concede resistencia a veneno y void durante 8 horas y cura 8d8 cuando ese daño te reduce a 0 PV.",
     "item_category": "magical",
     "level": 10,
     "price_gp": 0,
@@ -7256,6 +7563,13 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "activate": "1 ação; Manuseio",
+        "duration": "8 horas",
+        "resistance": "5 a veneno e void",
+        "trigger": "cair a 0 PV por veneno ou void",
+        "healing": "8d8 PV; resistências terminam"
+      },
       "needs_review": false
     }
   },
@@ -7264,9 +7578,9 @@
     "name_pt": "Castelo de Areia",
     "name_en": "Sandcastle",
     "name_es": "Castillo de arena",
-    "description_pt": "Estrutura mágica que se transforma em um castelo de areia construído sob comando.",
-    "description_en": "Rage of Elements earth item: Sandcastle. Full mechanical text pending review.",
-    "description_es": "Objeto de tierra de Rage of Elements: Castillo de arena. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Estrutura de areia que vira um castelo de até 36 metros por dimensão, com paredes resistentes e fraqueza a Água.",
+    "description_en": "A sand structure becomes a castle up to 120 feet per dimension, with sturdy walls and weakness to water.",
+    "description_es": "Una estructura de arena se convierte en un castillo de hasta 36 metros por dimensión, con muros resistentes y debilidad al agua.",
     "item_category": "magical",
     "level": 11,
     "price_gp": 0,
@@ -7280,6 +7594,12 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "activate": "1 minuto; 1/dia; Concentração e Manuseio; pronuncia build em Petran",
+        "size": "até 36 metros por dimensão; paredes de 3 metros; andares de 3 metros",
+        "walls": "CA 10, Dureza 10, 40 PV por seção; imune a críticos e precisão; fraqueza 15 Água",
+        "return": "1 ação Interagir para devolver ao saco; água ou chuva forte desmorona"
+      },
       "needs_review": false
     }
   },
@@ -7288,9 +7608,9 @@
     "name_pt": "Pedra Cantante",
     "name_en": "Singing Stone",
     "name_es": "Piedra cantante",
-    "description_pt": "Pedra musical que facilita viagens planares e permite falar ou enxergar através de pedra.",
-    "description_en": "Rage of Elements earth item: Singing Stone. Full mechanical text pending review.",
-    "description_es": "Objeto de tierra de Rage of Elements: Piedra cantante. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Pedra musical que melhora viagens planares, fala e escuta através de pedras e revela o interior de uma superfície rochosa.",
+    "description_en": "A singing stone improves planar travel, speaks and listens through stone, and reveals the interior of rocky surfaces.",
+    "description_es": "Una piedra cantante mejora viajes planares, habla y escucha a través de piedra y revela el interior de superficies rocosas.",
     "item_category": "magical",
     "level": 13,
     "price_gp": 0,
@@ -7304,6 +7624,11 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "planarKey": "chega a 1d6×25 milhas do destino em vez de 1d10×25",
+        "speech": "1 minuto; 1/dia; speak with stones; pode escolher uma pedra identificada no mesmo plano ou Plano da Terra",
+        "sight": "1 ação; 1/dia; imagem mental de 4,5 metros de profundidade por 1,5 metro de diâmetro; mostra o que se move"
+      },
       "needs_review": false
     }
   },
@@ -7312,9 +7637,9 @@
     "name_pt": "Semente de Estalagmite",
     "name_en": "Stalagmite Seed",
     "name_es": "Semilla de estalagmita",
-    "description_pt": "Semente consumível que ergue estalagmites danosas e cria terreno difícil.",
-    "description_en": "Rage of Elements earth item: Stalagmite Seed. Full mechanical text pending review.",
-    "description_es": "Objeto de tierra de Rage of Elements: Semilla de estalagmita. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Semente que faz estalagmites irromperem em um quadrado, causando 6d6 perfurante e criando terreno difícil por 1 minuto.",
+    "description_en": "A seed erupts into stalagmites in a square, dealing 6d6 piercing damage and creating difficult terrain for 1 minute.",
+    "description_es": "Una semilla hace brotar estalagmitas en un cuadrado, causando 6d6 perforante y creando terreno difícil durante 1 minuto.",
     "item_category": "magical",
     "level": 7,
     "price_gp": 0,
@@ -7328,6 +7653,12 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "activate": "1 ação; Manuseio; lança, usa como pedra de funda ou munição",
+        "area": "quadrado de 1,5 metro escolhido, não alvo específico",
+        "damage": "6d6 perfurante; Reflexos básico CD 23",
+        "duration": "estalagmites por 1 minuto; depois viram pó e o terreno deixa de ser difícil"
+      },
       "needs_review": false
     }
   },
@@ -7336,9 +7667,9 @@
     "name_pt": "Terra Vital",
     "name_en": "Vital Earth",
     "name_es": "Tierra vital",
-    "description_pt": "Pó consumível que dispensa ar e água por um dia e facilita cuidados médicos.",
-    "description_en": "Rage of Elements earth item: Vital Earth. Full mechanical text pending review.",
-    "description_es": "Objeto de tierra de Rage of Elements: Tierra vital. El texto mecánico completo queda pendiente de revisión.",
+    "description_pt": "Pó de terra vital inalado que dispensa ar e água por 24 horas e melhora Medicina para tratar seus ferimentos.",
+    "description_en": "Inhaled vital earth removes the need for air and water for 24 hours and improves Medicine checks to treat your wounds.",
+    "description_es": "La tierra vital inhalada elimina la necesidad de aire y agua durante 24 horas y mejora Medicina para tratar tus heridas.",
     "item_category": "magical",
     "level": 9,
     "price_gp": 0,
@@ -7352,6 +7683,11 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "activate": "1 ação; Manuseio; inalar",
+        "duration": "24 horas sem precisar de ar ou água",
+        "medicine": "Administer First Aid e Treat Wounds não exigem kit de curandeiro e recebem +1 item em Medicina"
+      },
       "needs_review": false
     }
   },
@@ -7955,6 +8291,16 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "activation": "Interact",
+        "area": "burst",
+        "radius": "1.5 m",
+        "greaterRadius": "3 m",
+        "duration": "1 minute or until strong winds disperse it",
+        "conditions": [
+          "concealed"
+        ]
+      },
       "needs_review": false
     }
   },
@@ -8290,6 +8636,13 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "activation": "Interact",
+        "duration": "1 hour",
+        "perceptionDC": 17,
+        "detectionAction": "Seek",
+        "effect": "visible symptom disappears and condition effects are not felt; condition remains"
+      },
       "needs_review": false
     }
   },
@@ -8317,6 +8670,18 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "activation": "Interact",
+        "duration": "1 minute",
+        "writingCapacity": "1 page per bottle",
+        "detectionPerceptionDC": 25,
+        "revealMethods": [
+          "sunlight",
+          "starlight",
+          "magic light",
+          "heatless alchemical light"
+        ]
+      },
       "needs_review": false
     }
   },
@@ -8554,6 +8919,17 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "save": "Fortitude",
+        "saveDC": 18,
+        "onset": "10 minutes",
+        "maximumDuration": "5 minutes",
+        "stages": [
+          "1d4 poison + sickened 1",
+          "1d6 poison + sickened 2",
+          "1d8 poison + sickened 3"
+        ]
+      },
       "needs_review": false
     }
   },
@@ -8632,6 +9008,17 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "save": "Fortitude",
+        "saveDC": 19,
+        "onset": "10 minutes",
+        "maximumDuration": "30 minutes",
+        "stages": [
+          "dazzled 10 minutes",
+          "1d6 poison + sickened 1 for 10 minutes",
+          "1d6 poison + confused + sickened 1 for 1 minute"
+        ]
+      },
       "needs_review": false
     }
   },
@@ -8762,6 +9149,14 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "activation": "Interact",
+        "triggerMaterialExamples": [
+          "blood",
+          "mud"
+        ],
+        "result": "brief brown-red coloration, then clear"
+      },
       "needs_review": false
     }
   },
@@ -9152,6 +9547,17 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "save": "Fortitude",
+        "saveDC": 17,
+        "maximumDuration": "6 rounds",
+        "stageDuration": "1 round",
+        "stages": [
+          "1d4 poison",
+          "1d4 poison + fatigued",
+          "1d4 poison + clumsy 1 + fatigued"
+        ]
+      },
       "needs_review": false
     }
   },
@@ -9282,6 +9688,17 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "save": "Fortitude",
+        "saveDC": 18,
+        "maximumDuration": "4 hours",
+        "stages": [
+          "slowed 1 for 1 round",
+          "slowed 1 for 1 round",
+          "unconscious for 1 round",
+          "unconscious for 1d4 hours"
+        ]
+      },
       "needs_review": false
     }
   },
@@ -9308,6 +9725,17 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "save": "Fortitude",
+        "saveDC": 18,
+        "maximumDuration": "3 rounds",
+        "stageDuration": "1 round",
+        "stages": [
+          "1d4 poison",
+          "1d6 poison",
+          "1d8 poison"
+        ]
+      },
       "needs_review": false
     }
   },
@@ -9334,6 +9762,17 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "save": "Fortitude",
+        "saveDC": 19,
+        "maximumDuration": "4 rounds",
+        "stageDuration": "1 round",
+        "stages": [
+          "1d8 poison",
+          "1d10 poison",
+          "2d8 poison"
+        ]
+      },
       "needs_review": false
     }
   },
@@ -9360,6 +9799,17 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "save": "Fortitude",
+        "saveDC": 19,
+        "maximumDuration": "4 rounds",
+        "stageDuration": "1 round",
+        "stages": [
+          "1d8 poison",
+          "1d10 poison + stupefied 1",
+          "2d6 poison + stupefied 2"
+        ]
+      },
       "needs_review": false
     }
   },
@@ -9386,6 +9836,17 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "save": "Fortitude",
+        "saveDC": 22,
+        "maximumDuration": "6 rounds",
+        "stageDuration": "1 round",
+        "stages": [
+          "1d10 poison + sickened 1",
+          "1d12 poison + clumsy 1 + sickened 2",
+          "2d6 poison + clumsy 2 + sickened 3"
+        ]
+      },
       "needs_review": false
     }
   },
@@ -9412,6 +9873,17 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "save": "Fortitude",
+        "saveDC": 22,
+        "maximumDuration": "6 rounds",
+        "stageDuration": "1 round",
+        "stages": [
+          "2d6 poison + enfeebled 1",
+          "2d8 poison + enfeebled 1",
+          "2d10 poison + enfeebled 2"
+        ]
+      },
       "needs_review": false
     }
   },
@@ -9438,6 +9910,18 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "save": "Fortitude",
+        "saveDC": 26,
+        "onset": "1 minute",
+        "maximumDuration": "6 minutes",
+        "stageDuration": "1 minute",
+        "stages": [
+          "clumsy 1 + -3 m all Speeds",
+          "clumsy 2 + -6 m all Speeds",
+          "clumsy 3 + -9 m all Speeds"
+        ]
+      },
       "needs_review": false
     }
   },
@@ -9464,6 +9948,18 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "save": "Fortitude",
+        "saveDC": 27,
+        "onset": "1 minute",
+        "maximumDuration": "6 minutes",
+        "stageDuration": "1 minute",
+        "stages": [
+          "3d6 poison",
+          "4d6 poison",
+          "6d6 poison"
+        ]
+      },
       "needs_review": false
     }
   },
@@ -9490,6 +9986,17 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "save": "Fortitude",
+        "saveDC": 26,
+        "maximumDuration": "6 rounds",
+        "stageDuration": "1 round",
+        "stages": [
+          "3d6 poison",
+          "3d8 poison",
+          "3d10 poison"
+        ]
+      },
       "needs_review": false
     }
   },
@@ -9516,6 +10023,18 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "save": "Fortitude",
+        "saveDC": 28,
+        "onset": "10 minutes",
+        "maximumDuration": "6 minutes",
+        "stageDuration": "1 minute",
+        "stages": [
+          "fatigued",
+          "5d6 poison + fatigued",
+          "6d6 poison + fatigued + paralyzed"
+        ]
+      },
       "needs_review": false
     }
   },
@@ -9542,6 +10061,18 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "save": "Fortitude",
+        "saveDC": 28,
+        "onset": "1 minute",
+        "maximumDuration": "6 minutes",
+        "stageDuration": "1 minute",
+        "stages": [
+          "3d6 poison + clumsy 1",
+          "4d6 poison + clumsy 2",
+          "6d6 poison + clumsy 3"
+        ]
+      },
       "needs_review": false
     }
   },
@@ -9568,6 +10099,19 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "save": "Fortitude",
+        "saveDC": 30,
+        "onset": "10 minutes",
+        "maximumDuration": "6 minutes",
+        "stageDuration": "1 minute",
+        "stages": [
+          "3d10 poison",
+          "4d10 poison",
+          "5d10 poison"
+        ],
+        "special": "surviving stage 3 cures a lycanthrope curse"
+      },
       "needs_review": false
     }
   },
@@ -9620,6 +10164,18 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "save": "Fortitude",
+        "saveDC": 42,
+        "onset": "1 minute",
+        "maximumDuration": "6 rounds",
+        "stageDuration": "1 round",
+        "stages": [
+          "13d6 poison + drained 1",
+          "15d6 poison + drained 1",
+          "17d6 poison + drained 2"
+        ]
+      },
       "needs_review": false
     }
   },
@@ -9646,6 +10202,18 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "save": "Fortitude",
+        "saveDC": 44,
+        "onset": "1 minute",
+        "maximumDuration": "10 minutes",
+        "stageDuration": "1 round",
+        "stages": [
+          "20d6 poison + paralyzed",
+          "22d6 poison + paralyzed",
+          "24d6 poison + paralyzed"
+        ]
+      },
       "needs_review": false
     }
   },
@@ -9672,6 +10240,17 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "save": "Fortitude",
+        "saveDC": 32,
+        "maximumDuration": "6 rounds",
+        "stageDuration": "1 round",
+        "stages": [
+          "5d6 poison + enfeebled 2",
+          "6d6 poison + enfeebled 2",
+          "8d6 poison + enfeebled 2"
+        ]
+      },
       "needs_review": false
     }
   },
@@ -9698,6 +10277,18 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "save": "Fortitude",
+        "saveDC": 32,
+        "onset": "1 hour",
+        "maximumDuration": "7 days",
+        "stages": [
+          "unconscious 1 day",
+          "unconscious 2 days",
+          "unconscious 3 days"
+        ],
+        "special": "cannot awaken while the poison lasts"
+      },
       "needs_review": false
     }
   },
@@ -9724,6 +10315,18 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "save": "Fortitude",
+        "saveDC": 38,
+        "onset": "30 minutes",
+        "maximumDuration": "60 minutes",
+        "stageDuration": "10 minutes",
+        "stages": [
+          "16d6 poison + enfeebled 2",
+          "17d6 poison + enfeebled 3",
+          "18d6 poison + enfeebled 4"
+        ]
+      },
       "needs_review": false
     }
   },
@@ -9750,6 +10353,18 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "save": "Fortitude",
+        "saveDC": 33,
+        "onset": "10 minutes",
+        "maximumDuration": "6 minutes",
+        "stageDuration": "1 minute",
+        "stages": [
+          "7d8 poison",
+          "9d6 poison + sickened 2",
+          "8d10 poison + sickened 3"
+        ]
+      },
       "needs_review": false
     }
   },
@@ -9776,6 +10391,19 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "save": "Fortitude",
+        "saveDC": 41,
+        "onset": "1 day",
+        "stageDuration": "1 day",
+        "stages": [
+          "drained 1",
+          "drained 1",
+          "drained 2"
+        ],
+        "virulent": true,
+        "special": "drained is cumulative and cannot be removed while the poison lasts"
+      },
       "needs_review": false
     }
   },
@@ -11002,6 +11630,17 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "damage": "2d6 mental",
+        "splashDamage": "2 mental",
+        "attackItemBonus": 1,
+        "onHit": [
+          "frightened 1"
+        ],
+        "onCriticalHit": [
+          "frightened 2"
+        ]
+      },
       "needs_review": false
     }
   },
@@ -11030,6 +11669,17 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "damage": "3d6 mental",
+        "splashDamage": "3 mental",
+        "attackItemBonus": 2,
+        "onHit": [
+          "frightened 1"
+        ],
+        "onCriticalHit": [
+          "frightened 2"
+        ]
+      },
       "needs_review": false
     }
   },
@@ -11058,6 +11708,17 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "damage": "4d6 mental",
+        "splashDamage": "4 mental",
+        "attackItemBonus": 3,
+        "onHit": [
+          "frightened 1"
+        ],
+        "onCriticalHit": [
+          "frightened 2"
+        ]
+      },
       "needs_review": false
     }
   },
@@ -11086,6 +11747,14 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "speedPenalty": "-4.5m",
+        "escapeDC": 19,
+        "attackItemBonus": 1,
+        "onCriticalHit": [
+          "immobilized or stuck to a solid surface"
+        ]
+      },
       "needs_review": false
     }
   },
@@ -11114,6 +11783,14 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "speedPenalty": "-4.5m",
+        "escapeDC": 28,
+        "attackItemBonus": 2,
+        "onCriticalHit": [
+          "immobilized or stuck to a solid surface"
+        ]
+      },
       "needs_review": false
     }
   },
@@ -11142,6 +11819,14 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "speedPenalty": "-4.5m",
+        "escapeDC": 37,
+        "attackItemBonus": 3,
+        "onCriticalHit": [
+          "immobilized or stuck to a solid surface"
+        ]
+      },
       "needs_review": false
     }
   },
@@ -11170,6 +11855,12 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "damage": "2d4 poison",
+        "persistentDamage": "2d4 poison",
+        "splashDamage": "2 poison",
+        "attackItemBonus": 1
+      },
       "needs_review": false
     }
   },
@@ -11198,6 +11889,12 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "damage": "3d4 poison",
+        "persistentDamage": "3d4 poison",
+        "splashDamage": "3 poison",
+        "attackItemBonus": 2
+      },
       "needs_review": false
     }
   },
@@ -11226,6 +11923,12 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "damage": "4d4 poison",
+        "persistentDamage": "4d4 poison",
+        "splashDamage": "4 poison",
+        "attackItemBonus": 3
+      },
       "needs_review": false
     }
   },
@@ -11254,6 +11957,14 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "damage": "2d8 vitality",
+        "splashDamage": "2 vitality",
+        "attackItemBonus": 1,
+        "onHit": [
+          "enfeebled 1"
+        ]
+      },
       "needs_review": false
     }
   },
@@ -11282,6 +11993,14 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "damage": "3d8 vitality",
+        "splashDamage": "3 vitality",
+        "attackItemBonus": 2,
+        "onHit": [
+          "enfeebled 2"
+        ]
+      },
       "needs_review": false
     }
   },
@@ -11310,6 +12029,14 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "damage": "4d8 vitality",
+        "splashDamage": "4 vitality",
+        "attackItemBonus": 3,
+        "onHit": [
+          "enfeebled 2"
+        ]
+      },
       "needs_review": false
     }
   },
@@ -11338,6 +12065,12 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "damage": "2d8 fire",
+        "persistentDamage": "2 fire",
+        "splashDamage": "2 fire",
+        "attackItemBonus": 1
+      },
       "needs_review": false
     }
   },
@@ -11366,6 +12099,12 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "damage": "3d8 fire",
+        "persistentDamage": "3 fire",
+        "splashDamage": "3 fire",
+        "attackItemBonus": 2
+      },
       "needs_review": false
     }
   },
@@ -11394,6 +12133,12 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "damage": "4d8 fire",
+        "persistentDamage": "4 fire",
+        "splashDamage": "4 fire",
+        "attackItemBonus": 3
+      },
       "needs_review": false
     }
   },
@@ -11422,6 +12167,13 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "damage": "2d6 cold",
+        "splashDamage": "2 cold",
+        "attackItemBonus": 1,
+        "speedPenalty": "-3m",
+        "duration": "until the start of the target's next turn"
+      },
       "needs_review": false
     }
   },
@@ -11450,6 +12202,13 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "damage": "3d6 cold",
+        "splashDamage": "3 cold",
+        "attackItemBonus": 2,
+        "speedPenalty": "-3m",
+        "duration": "until the start of the target's next turn"
+      },
       "needs_review": false
     }
   },
@@ -11478,6 +12237,13 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "damage": "4d6 cold",
+        "splashDamage": "4 cold",
+        "attackItemBonus": 3,
+        "speedPenalty": "-4.5m",
+        "duration": "until the start of the target's next turn"
+      },
       "needs_review": false
     }
   },
@@ -11506,6 +12272,11 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "persistentDamage": "2d6 acid",
+        "splashDamage": "2 acid",
+        "attackItemBonus": 1
+      },
       "needs_review": false
     }
   },
@@ -11534,6 +12305,11 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "persistentDamage": "3d6 acid",
+        "splashDamage": "3 acid",
+        "attackItemBonus": 2
+      },
       "needs_review": false
     }
   },
@@ -11562,6 +12338,11 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "persistentDamage": "4d6 acid",
+        "splashDamage": "4 acid",
+        "attackItemBonus": 3
+      },
       "needs_review": false
     }
   },
@@ -11590,6 +12371,13 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "damage": "2d4 sonic",
+        "splashDamage": "2 sonic",
+        "attackItemBonus": 1,
+        "fortitudeDC": 20,
+        "areaEffect": "deafened until the end of the next turn"
+      },
       "needs_review": false
     }
   },
@@ -11618,6 +12406,13 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "damage": "3d4 sonic",
+        "splashDamage": "3 sonic",
+        "attackItemBonus": 2,
+        "fortitudeDC": 28,
+        "areaEffect": "deafened until the end of the next turn"
+      },
       "needs_review": false
     }
   },
@@ -11646,6 +12441,13 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "damage": "4d4 sonic",
+        "splashDamage": "4 sonic",
+        "attackItemBonus": 3,
+        "fortitudeDC": 36,
+        "areaEffect": "deafened until the end of the next turn"
+      },
       "needs_review": false
     }
   },
@@ -11674,6 +12476,14 @@
     "data": {
       "usage": null,
       "effects": [],
+      "mechanics": {
+        "damage": "2d6 electricity",
+        "splashDamage": "2 electricity",
+        "attackItemBonus": 1,
+        "onHit": [
+          "off-guard until the start of the target's next turn"
+        ]
+      },
       "needs_review": false
     }
   },
@@ -11684,109 +12494,4 @@
     "name_es": "Relámpago embotellado Mayor",
     "description_pt": "Causa 3d6 de eletricidade e 3 de dano colateral; concede +2 no ataque e deixa o alvo desprevenido até o início do próximo turno.",
     "description_en": "Deals 3d6 electricity damage and 3 electricity splash damage; grants a +2 item attack bonus and makes the target off-guard until the start of the next turn.",
-    "description_es": "Inflige 3d6 de electricidad y 3 de daño colateral; concede +2 al ataque y deja al objetivo desprevenido hasta el inicio del próximo turno.",
-    "item_category": "Alquímico (Bomba)",
-    "level": 11,
-    "price_gp": 250,
-    "bulk": "L",
-    "hands": null,
-    "traits": [
-      "Alquímico",
-      "Consumível",
-      "Bomba"
-    ],
-    "rarity": "common",
-    "ruleset": "remaster",
-    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
-    "source_page": 285,
-    "data": {
-      "usage": null,
-      "effects": [],
-      "needs_review": false
-    }
-  },
-  {
-    "id": "item.pc2.bottled_lightning_superior",
-    "name_pt": "Relâmpago Engarrafado Superior",
-    "name_en": "Bottled Lightning Major",
-    "name_es": "Relámpago embotellado Superior",
-    "description_pt": "Causa 4d6 de eletricidade e 4 de dano colateral; concede +3 no ataque e deixa o alvo desprevenido até o início do próximo turno.",
-    "description_en": "Deals 4d6 electricity damage and 4 electricity splash damage; grants a +3 item attack bonus and makes the target off-guard until the start of the next turn.",
-    "description_es": "Inflige 4d6 de electricidad y 4 de daño colateral; concede +3 al ataque y deja al objetivo desprevenido hasta el inicio del próximo turno.",
-    "item_category": "Alquímico (Bomba)",
-    "level": 17,
-    "price_gp": 2500,
-    "bulk": "L",
-    "hands": null,
-    "traits": [
-      "Alquímico",
-      "Consumível",
-      "Bomba"
-    ],
-    "rarity": "common",
-    "ruleset": "remaster",
-    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
-    "source_page": 285,
-    "data": {
-      "usage": null,
-      "effects": [],
-      "needs_review": false
-    }
-  },
-  {
-    "id": "item.pc2.bright_stick",
-    "name_pt": "Bastão Brilhante",
-    "name_en": "Glow Rod",
-    "name_es": "Bastón luminoso",
-    "description_pt": "Ao ser batido contra uma superfície dura, emite luz forte em 6 metros e luz fraca nos 12 metros seguintes por 6 horas.",
-    "description_en": "When struck against a hard surface, it emits bright light in a 6-meter radius and dim light in the next 12 meters for 6 hours.",
-    "description_es": "Al golpearlo contra una superficie dura, emite luz brillante en un radio de 6 metros y luz tenue en los 12 metros siguientes durante 6 horas.",
-    "item_category": "Alquímico (Ferramenta)",
-    "level": 1,
-    "price_gp": 3,
-    "bulk": "L",
-    "hands": null,
-    "traits": [
-      "Alquímico",
-      "Consumível",
-      "Ferramenta"
-    ],
-    "rarity": "common",
-    "ruleset": "remaster",
-    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
-    "source_page": 295,
-    "data": {
-      "usage": null,
-      "effects": [],
-      "needs_review": false
-    }
-  },
-  {
-    "id": "item.pc2.phosphor",
-    "name_pt": "Fósforo",
-    "name_en": "Phosphor",
-    "name_es": "Fósforo",
-    "description_pt": "Ao ser esfregado contra uma superfície áspera, acende. Pode ser aceso e tocado em um objeto inflamável como parte da mesma ação de Interagir; permanece aceso por 1 rodada e então é consumido.",
-    "description_en": "When rubbed against a rough surface, it ignites. It can be lit and touched to a flammable object as part of the same Interact action; it burns for 1 round and is then consumed.",
-    "description_es": "Al frotarlo contra una superficie áspera, se enciende. Puede encenderse y tocar un objeto inflamable como parte de la misma acción de Interactuar; permanece encendido durante 1 asalto y luego se consume.",
-    "item_category": "Alquímico (Ferramenta)",
-    "level": 1,
-    "price_gp": 20,
-    "bulk": "L",
-    "hands": null,
-    "traits": [
-      "Alquímico",
-      "Consumível",
-      "Ferramenta"
-    ],
-    "rarity": "common",
-    "ruleset": "remaster",
-    "source_book": "Livro do Jogador 2 (Player Core 2, Remaster)",
-    "source_page": 295,
-    "data": {
-      "usage": null,
-      "effects": [],
-      "needs_review": false
-    }
-  }
-]
+    "description_es": "Inflige 3d6 de electricidad y 3 d

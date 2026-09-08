@@ -1436,6 +1436,47 @@ describe("proveniência do catálogo legado", () => {
     expect(catalog.spells.find((item) => item.id === "spell.rage_elements.air.gentle_breeze")).toMatchObject({ duration: "10 minutos", mechanics: { healing: "10 PV" } });
   });
 
+  it("confirma as mecânicas dos itens de Água de Rage of Elements", () => {
+    const catalog = loadCatalog() as { itemCompendium: LegacyRecord[] };
+    const slugs = [
+      "aboutface_figurehead", "anglerfish_lantern", "brine_dragon_scale", "conch_of_otherworldly_seas",
+      "faydhaans_dallah", "kraken_figurehead", "lionfish_spear", "octopus_potion", "sharkskin_robe",
+      "shell_of_easy_breathing", "sticky_algae_bomb", "underwater", "veiled_figurehead",
+    ];
+    const items = slugs.map((slug) => catalog.itemCompendium.find((item) => item.id === `item.rage_elements.water.${slug}`));
+    expect(items).toHaveLength(13);
+    expect(items.every((item) => item && item.needs_review === false && item.source?.book === "Rage of Elements (Remaster)" && item.mechanics && item.summaries?.["pt-BR"] && item.summaries?.en && item.summaries?.es)).toBe(true);
+    expect(items.find((item) => item?.id.endsWith("brine_dragon_scale"))).toMatchObject({ mechanics: { damage: "2d8 ácido", save: "Reflexos básico CD 24" } });
+    expect(items.find((item) => item?.id.endsWith("lionfish_spear"))).toMatchObject({ mechanics: { poison: expect.stringContaining("3d6 veneno") } });
+    expect(items.find((item) => item?.id.endsWith("sticky_algae_bomb"))).toMatchObject({ mechanics: { trail: expect.stringContaining("CD 19") } });
+    expect(items.find((item) => item?.id.endsWith("veiled_figurehead"))).toMatchObject({ mechanics: { greater: expect.stringContaining("ancestralidade") } });
+  });
+
+  it("confirma as mecânicas dos itens de Ar de Rage of Elements", () => {
+    const catalog = loadCatalog() as { itemCompendium: LegacyRecord[] };
+    const slugs = [
+      "aerial_cloak", "atmospheric_staff", "blight_breath", "extra_lung", "fan_of_soothing_winds", "floating_tent",
+      "frost_breath", "jaathooms_scarf", "nimbus_breath", "spiral_chimes", "spun_cloud", "storm_breath", "wisp_chain",
+    ];
+    const items = slugs.map((slug) => catalog.itemCompendium.find((item) => item.id === `item.rage_elements.air.${slug}`));
+    expect(items).toHaveLength(13);
+    expect(items.every((item) => item && item.needs_review === false && item.source?.book === "Rage of Elements (Remaster)" && item.mechanics && item.summaries?.["pt-BR"] && item.summaries?.en && item.summaries?.es)).toBe(true);
+    expect(items.find((item) => item?.id.endsWith("blight_breath"))).toMatchObject({ mechanics: { exhale: expect.stringContaining("10d6 veneno") } });
+    expect(items.find((item) => item?.id.endsWith("storm_breath"))).toMatchObject({ mechanics: { exhale: expect.stringContaining("4d12 eletricidade") } });
+    expect(items.find((item) => item?.id.endsWith("wisp_chain"))).toMatchObject({ mechanics: { damage: expect.stringContaining("6d6 cortante") } });
+  });
+
+  it("confirma as mecânicas dos itens de Terra de Rage of Elements", () => {
+    const catalog = loadCatalog() as { itemCompendium: LegacyRecord[] };
+    const slugs = ["aeon_stone", "drought_powder", "exuviae_powder", "fossil_fragment", "jabalis_dice", "limestone_shield", "robe_of_stone", "sairazul_blue", "sandcastle", "singing_stone", "stalagmite_seed", "vital_earth"];
+    const items = slugs.map((slug) => catalog.itemCompendium.find((item) => item.id === `item.rage_elements.earth.${slug}`));
+    expect(items).toHaveLength(12);
+    expect(items.every((item) => item && item.needs_review === false && item.source?.book === "Rage of Elements (Remaster)" && item.mechanics && item.summaries?.["pt-BR"] && item.summaries?.en && item.summaries?.es)).toBe(true);
+    expect(items.find((item) => item?.id.endsWith("drought_powder"))).toMatchObject({ mechanics: { water: expect.stringContaining("15 por 15") } });
+    expect(items.find((item) => item?.id.endsWith("limestone_shield"))).toMatchObject({ mechanics: { wall: expect.stringContaining("18 metros") } });
+    expect(items.find((item) => item?.id.endsWith("stalagmite_seed"))).toMatchObject({ mechanics: { damage: expect.stringContaining("6d6 perfurante") } });
+  });
+
   it("confirma mecânicas dos talentos iniciais de Pistoleiro em Pólvora e Engrenagens", () => {
     const catalog = loadCatalog() as { feats: LegacyRecord[] };
     const ids = ["as_da_besta", "disparo_de_cobertura", "espada_e_pistola", "estourar_fechadura", "para_o_chao", "manufatura_de_municao", "armamentos_defensivos", "girar_a_pistola", "recarga_arriscada", "tiro_de_aviso", "tiro_fingido", "cauterizar", "cortina_de_fumaca", "dividir_bala", "perfurar_e_disparar", "saltar_e_disparar", "ataque_ressaltante", "disparo_penetrante", "municoes_preciosas", "tiro_ardiloso", "tiro_declarado", "tiro_de_deflexao", "tiro_de_redirecionamento", "ferimento_superficial", "brio_inabalavel", "camuflagem_do_atirador", "sangue_no_ar", "olhos_de_matador", "tiro_de_ricochete"];
