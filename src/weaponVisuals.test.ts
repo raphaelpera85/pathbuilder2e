@@ -85,6 +85,10 @@ describe("weapon visual fallback", () => {
     expect(getWeaponVisualKey({ name: "Harmona", weaponGroup: "Firearm" })).toBe("harmona-gun");
     expect(getWeaponVisualKey({ name: "Jezail", weaponGroup: "Firearm" })).toBe("jezail");
     expect(getWeaponVisualKey({ name: "Pistola Boca de Dragão", weaponGroup: "Firearm" })).toBe("dragon-mouth-pistol");
+    expect(getWeaponVisualKey({ name: "Aklys", weaponGroup: "Club" })).toBe("aklys");
+    expect(getWeaponVisualKey({ name: "Nunchaku", weaponGroup: "Club" })).toBe("nunchaku");
+    expect(getWeaponVisualKey({ name: "Gancho", weaponGroup: "Club" })).toBe("gaff");
+    expect(getWeaponVisualKey({ name: "Palavra do General", weaponGroup: "Club" })).toBe("generals-word");
   });
 
   it("separa armas marciais nomeadas da arte genérica da categoria", () => {
@@ -99,7 +103,7 @@ describe("weapon visual fallback", () => {
   });
 
   it("keeps every local fallback asset available to the browser", () => {
-    for (const key of ["generic", "sword", "bow", "axe", "club", "dagger", "punch-dagger", "orc-knuckle-dagger", "punching-dagger", "crossbow", "crossbow-standard", "hand-crossbow", "heavy-crossbow", "alchemical-crossbow", "spear", "glaive", "atlatl", "mambele", "breach-pike", "firearm", "flintlock-pistol", "flintlock-musket", "blunderbuss", "pepperbox", "arquebus", "dueling-pistol", "hand-cannon", "coat-pistol", "air-repeater", "long-air-repeater", "harmona-gun", "jezail", "dragon-mouth-pistol", "maul", "warhammer", "morningstar", "greatclub", "greataxe", "pick", "scythe", "sickle", "blowgun", "shortbow", "dazzling-shortbow", "daikyu", "horselords-longbow", "dart", "javelin", "main-gauche", "kithrender", "broadsword", "falchion", "greatsword", "scimitar", "rapier", "battle-axe", "cavalry-lance", "longbow", "bastard-sword", "longsword", "shortsword", "kukri", "mace", "staff", "whip", "claw-whip", "scourge", "chain-of-command", "chainbreaker", "sling", "gauntlet", "bomb", "shield", "lute", "halberd", "trident", "shuriken", "flail", "maul-spade", "belkzen-deadsmasher", "war-gavel", "fangwire", "claw-blade", "flying-talon", "bladed-gauntlet"]) {
+    for (const key of ["generic", "sword", "bow", "axe", "club", "dagger", "punch-dagger", "orc-knuckle-dagger", "punching-dagger", "crossbow", "crossbow-standard", "hand-crossbow", "heavy-crossbow", "alchemical-crossbow", "spear", "glaive", "atlatl", "mambele", "breach-pike", "firearm", "flintlock-pistol", "flintlock-musket", "blunderbuss", "pepperbox", "arquebus", "dueling-pistol", "hand-cannon", "coat-pistol", "air-repeater", "long-air-repeater", "harmona-gun", "jezail", "dragon-mouth-pistol", "aklys", "nunchaku", "gaff", "generals-word", "maul", "warhammer", "morningstar", "greatclub", "greataxe", "pick", "scythe", "sickle", "blowgun", "shortbow", "dazzling-shortbow", "daikyu", "horselords-longbow", "dart", "javelin", "main-gauche", "kithrender", "broadsword", "falchion", "greatsword", "scimitar", "rapier", "battle-axe", "cavalry-lance", "longbow", "bastard-sword", "longsword", "shortsword", "kukri", "mace", "staff", "whip", "claw-whip", "scourge", "chain-of-command", "chainbreaker", "sling", "gauntlet", "bomb", "shield", "lute", "halberd", "trident", "shuriken", "flail", "maul-spade", "belkzen-deadsmasher", "war-gavel", "fangwire", "claw-blade", "flying-talon", "bladed-gauntlet"]) {
       expect(existsSync(resolve(process.cwd(), "public", "weapon-images", `weapon-${key}.${key === "generic" ? "svg" : "png"}`))).toBe(true);
     }
   });

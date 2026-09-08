@@ -1246,3 +1246,4 @@ Persistência remota autenticada de personagens (2026-09-08): `npm run audit:cam
 - [x] Criar e sincronizar artes individuais para Chicote com Garras, Chicote de Nós, Cadeia de Comando e Quebra-Correntes, usando o nome completo de cada arma.
 - [x] Criar e sincronizar artes individuais para Repetidor de Pressão, Harmona, Jezail e Pistola Boca de Dragão, usando o nome completo de cada arma.
 - [x] Criar e sincronizar arte individual para Repetidor de Pressão Longo, corrigindo a variante detectada na auditoria.
+- [x] Criar e sincronizar artes individuais para Aklys, Nunchaku, Gancho e Palavra do General, usando o nome completo de cada arma.
