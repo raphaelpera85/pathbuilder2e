@@ -49,8 +49,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-backpack.png",
+      "imageFamily": "backpack",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -384,8 +384,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-spellguard-blade.png",
+      "imageFamily": "spellguard-blade",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -594,8 +594,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-dazzling-buckler.png",
+      "imageFamily": "dazzling-buckler",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -834,8 +834,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-immaculate-holster.png",
+      "imageFamily": "immaculate-holster",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -4899,8 +4899,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-jewelry.png",
-      "imageFamily": "jewelry",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-backpack.png",
+      "imageFamily": "backpack",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }

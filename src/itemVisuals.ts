@@ -26,6 +26,10 @@ export function getItemVisualKey(data: ItemVisualData = {}): string {
   if (data.id === "item.magic.boots_of_elvenkind" || /^botas [eé]lficas$/.test(name)) return "elven-boots";
   if (data.id === "item.consumable.minor_healing_potion" || /^po[cç][aã]o de cura menor$/.test(name)) return "minor-healing-potion";
   if (data.id === "item.consumable.lesser_healing_potion" || /^po[cç][aã]o de cura inferior$/.test(name)) return "lesser-healing-potion";
+  if (data.id === "item.gear.backpack" || /^mochila$/.test(name)) return "backpack";
+  if (data.id === "item.pc2.spellguard_blade" || /^l[aâ]mina escuda-magia$/.test(name)) return "spellguard-blade";
+  if (data.id === "item.pc2.dazzling_buckler" || /^broquel deslumbrante$/.test(name)) return "dazzling-buckler";
+  if (data.id === "item.guns_gears.immaculate_holster" || /^coldre imaculado$/.test(name)) return "immaculate-holster";
   if (data.id === "item.book_of_dead.vital_salt" || /^sal vital$/.test(name)) return "vital-salt";
   if (data.id === "item.dark_archive.vial_of_the_immortal_wellspring" || /^frasco da fonte imortal$/.test(name)) return "immortal-wellspring-vial";
   if (data.id === "item.compendium.elixir_of_life_minor" || /^elixir da vida \(menor\)$/.test(name)) return "minor-elixir-life";
