@@ -28,6 +28,10 @@ const bucket = "compendium-assets";
 const imageDir = path.join(root, "public", "weapon-images");
 const catalogPath = path.join(__dirname, "catalog_data", "catalog_weapons.json");
 const specialVisualFiles = {
+  "weapon.halberd": "weapon-halberd.png",
+  "weapon.trident": "weapon-trident.png",
+  "weapon.shuriken": "weapon-shuriken.png",
+  "weapon.spirit_thresher": "weapon-flail.png",
   "weapon.arbalest": "weapon-arbalest.png",
   "weapon.asp_coil": "weapon-asp-coil.png",
   "weapon.backpack_ballista": "weapon-backpack-ballista.png",

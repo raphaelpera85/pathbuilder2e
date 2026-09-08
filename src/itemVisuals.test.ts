@@ -18,6 +18,7 @@ describe("item visuals", () => {
     ["Chicote de Lula Gigante", "whip"],
     ["Machado Entalhador", "axe"],
     ["Mochila de Aventureiro", "adventurer-pack"],
+    ["10 Balas", "bullets"],
   ])("classifies %s as %s", (name, key) => expect(getItemVisualKey({ name })).toBe(key));
 
   it("uses the complete localized display name in alt text", () => {

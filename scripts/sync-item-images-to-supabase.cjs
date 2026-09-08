@@ -22,6 +22,8 @@ function identity(row) {
 }
 function visualKey(row) {
   const value = identity(row);
+  if (/^10 balas$|^10 bullets$/.test((row.name_pt || row.name_en || "").trim().toLocaleLowerCase("pt-BR"))) return "bullets";
+  if (/flecha|virote|muni[cç][aã]o|ammunition|cartucho|proj[eé]til|bala|disparo/.test(value)) return "ammunition";
   if (/escudo|shield|baluarte/.test(value)) return "shield";
   if (/armadura|armor|cota|coura[cç]a|placa peitoral|vestes|roupa de explorador/.test(value)) return "armor";
   if (/cajado|bast[aã]o|staff|wand|varinha|vara m[aá]gica/.test(value)) return "staff";
@@ -35,7 +37,6 @@ function visualKey(row) {
   if (/bomba|bomb|fogo alqu[ií]mico|carga fantasma|pedra detonante|ampola pavorosa|frasco congelante|frasco de [aá]cido|rel[aâ]mpago engarrafado/.test(value)) return "bomb";
   if (/po[cç][aã]o|potion|elixir|soro|vial|frasco|ampola|t[oô]nico|lo[cç][aã]o|unguento|sal vital|[oó]leo/.test(value)) return "potion";
   if (/runa|rune/.test(value)) return "rune";
-  if (/flecha|virote|muni[cç][aã]o|ammunition|cartucho|proj[eé]til|bala|disparo/.test(value)) return "ammunition";
   if (/livro|book|t[aá]bua|grim[oó]rio|rascunho|tinta/.test(value)) return "book";
   if (/anel|ring|pingente|colar|joia|jewel|c[aá]lice|broche|moeda|s[ií]mbolo religioso/.test(value)) return "jewelry";
   return "adventurer-pack";

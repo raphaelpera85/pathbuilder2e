@@ -16,6 +16,10 @@ export function getWeaponVisualKey(data: WeaponVisualData = {}): string {
   const name = String(data.name || data.names?.["pt-BR"] || data.names?.en || "").toLowerCase();
   const traits = Array.isArray(data.traits) ? data.traits.join(" ").toLowerCase() : "";
   const identity = `${group} ${category} ${name} ${traits}`;
+  if (/alabarda|halberd/.test(identity)) return "halberd";
+  if (/tridente|trident/.test(identity)) return "trident";
+  if (/shuriken/.test(identity)) return "shuriken";
+  if (/tritura-esp[ií]rito|spirit thresher/.test(identity)) return "flail";
   if (/bomba|bomb|explosiv/.test(identity)) return "bomb";
   if (/arma de fogo|firearm|pistola|mosquete|arcabuz|bacamarte|pimenteiro|jezail|harmona|can[oõ]n|repetidor|pressure repeater/.test(identity)) return "firearm";
   if (/crossbow|besta/.test(group)) return "crossbow";
@@ -30,7 +34,7 @@ export function getWeaponVisualKey(data: WeaponVisualData = {}): string {
   if (/knife|dagger|adaga|kukri|shuriken|dardo/.test(identity)) return "dagger";
   if (/sword|espada|rapieira|bracamante|cimitarra|montante|gl[aá]dio|khopesh|l[aâ]mina|falchion/.test(identity)) return "sword";
   if (/axe|machado|enx[oó]|pick|picareta|foice|segadeira|scythe/.test(identity)) return "axe";
-  if (/spear|lan[cç]a|pique|glaive|alabarda|fauchard|spetum|tridente|azagaia|remo/.test(identity)) return "spear";
+  if (/spear|lan[cç]a|pique|glaive|fauchard|spetum|azagaia|remo/.test(identity)) return "spear";
   if (/club|clava|porrete|brawling|lute|ala[uú]de/.test(identity)) return /lute|ala[uú]de/.test(identity) ? "lute" : "club";
   if (/desarmado|unarmed|fist|punho/.test(`${category} ${identity}`)) return "gauntlet";
   if (/aklys|nunchaku|palavra do general|flagelo dos mortos-vivos/.test(identity)) return "club";

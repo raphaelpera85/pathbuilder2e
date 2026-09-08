@@ -9,6 +9,10 @@ describe("weapon visual fallback", () => {
     expect(getWeaponVisualKey({ weaponGroup: "Crossbow" })).toBe("crossbow");
     expect(getWeaponVisualKey({ weaponGroup: "Knife" })).toBe("dagger");
     expect(getWeaponImageUrl({ weaponGroup: "Club" })).toBe("/weapon-images/weapon-club.png");
+    expect(getWeaponVisualKey({ names: { "pt-BR": "Alabarda" } })).toBe("halberd");
+    expect(getWeaponVisualKey({ names: { "pt-BR": "Tridente" } })).toBe("trident");
+    expect(getWeaponVisualKey({ names: { "pt-BR": "Shuriken" } })).toBe("shuriken");
+    expect(getWeaponVisualKey({ names: { "pt-BR": "Tritura-Espírito" } })).toBe("flail");
   });
 
   it("preserves explicit artwork and returns localized accessible alt text", () => {
@@ -18,7 +22,7 @@ describe("weapon visual fallback", () => {
   });
 
   it("keeps every local fallback asset available to the browser", () => {
-    for (const key of ["generic", "sword", "bow", "axe", "club", "dagger", "crossbow", "spear", "firearm", "mace", "staff", "whip", "sling", "gauntlet", "bomb", "shield", "lute"]) {
+    for (const key of ["generic", "sword", "bow", "axe", "club", "dagger", "crossbow", "spear", "firearm", "mace", "staff", "whip", "sling", "gauntlet", "bomb", "shield", "lute", "halberd", "trident", "shuriken", "flail"]) {
       expect(existsSync(resolve(process.cwd(), "public", "weapon-images", `weapon-${key}.${key === "generic" ? "svg" : "png"}`))).toBe(true);
     }
   });

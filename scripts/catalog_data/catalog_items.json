@@ -668,8 +668,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-firearm.png",
-      "imageFamily": "firearm"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-bullets.png",
+      "imageFamily": "bullets"
     }
   },
   {
@@ -696,8 +696,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-firearm.png",
-      "imageFamily": "firearm"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-ammunition.png",
+      "imageFamily": "ammunition"
     }
   },
   {
@@ -724,8 +724,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-firearm.png",
-      "imageFamily": "firearm"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-ammunition.png",
+      "imageFamily": "ammunition"
     }
   },
   {
@@ -2274,8 +2274,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-bomb.png",
-      "imageFamily": "bomb"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-ammunition.png",
+      "imageFamily": "ammunition"
     }
   },
   {
@@ -2303,8 +2303,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-bomb.png",
-      "imageFamily": "bomb"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-ammunition.png",
+      "imageFamily": "ammunition"
     }
   },
   {
@@ -9157,8 +9157,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-poison.png",
-      "imageFamily": "poison"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-ammunition.png",
+      "imageFamily": "ammunition"
     }
   },
   {
@@ -9277,8 +9277,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-armor.png",
-      "imageFamily": "armor"
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-ammunition.png",
+      "imageFamily": "ammunition"
     }
   },
   {
