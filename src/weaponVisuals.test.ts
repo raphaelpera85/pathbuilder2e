@@ -170,6 +170,8 @@ describe("weapon visual fallback", () => {
     expect(getWeaponVisualKey({ name: "Manopla", weaponGroup: "Gauntlet" })).toBe("gauntlet-standard");
     expect(getWeaponVisualKey({ name: "Punho", weaponGroup: "Gauntlet" })).toBe("fist");
     expect(getWeaponVisualKey({ name: "Chicote", weaponGroup: "Whip" })).toBe("whip-standard");
+    expect(getWeaponVisualKey({ names: { "pt-BR": "Arremessador" } })).toBe("throwing-weapon");
+    expect(getWeaponVisualKey({ names: { "pt-BR": "Besta de Mão Repetidora" } })).toBe("repeating-hand-crossbow");
   });
 
   it("atribui uma ilustração específica a todas as armas catalogadas", () => {

@@ -16,6 +16,8 @@ export function getWeaponVisualKey(data: WeaponVisualData = {}): string {
   const name = String(data.name || data.names?.["pt-BR"] || data.names?.en || "").toLowerCase();
   const traits = Array.isArray(data.traits) ? data.traits.join(" ").toLowerCase() : "";
   const identity = `${group} ${category} ${name} ${traits}`;
+  if (/arremessador|throwing weapon/.test(identity)) return "throwing-weapon";
+  if (/besta de m[aã]o repetidora|repeating hand crossbow/.test(identity)) return "repeating-hand-crossbow";
   if (group === "gauntlet" && /^manopla$/.test(name.trim())) return "gauntlet-standard";
   if (group === "gauntlet" && /^punho$|^fist$/.test(name.trim())) return "fist";
   if (group === "whip" && /^chicote$|^whip$/.test(name.trim())) return "whip-standard";

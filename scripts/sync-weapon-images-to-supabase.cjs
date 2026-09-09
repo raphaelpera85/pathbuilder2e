@@ -89,6 +89,8 @@ const specialVisualFiles = {
   "weapon.fist": "weapon-fist.png",
   "weapon.whip": "weapon-whip-standard.png",
   "weapon.battlecry.draddeths_edge": "weapon-draddeths-edge.png",
+  "weapon.throwing_weapon": "weapon-throwing-weapon.png",
+  "weapon.battlecry.repeating_hand_crossbow": "weapon-repeating-hand-crossbow.png",
   "weapon.broadsword": "weapon-broadsword.png",
   "weapon.falchion": "weapon-falchion.png",
   "weapon.greatsword": "weapon-greatsword.png",
