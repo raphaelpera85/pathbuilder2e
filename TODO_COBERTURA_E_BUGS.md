@@ -979,7 +979,8 @@ Correção desta etapa: Recuperação Rápida e Controle da Respiração passara
 
 Só marcar uma tarefa como concluída quando houver registro de fonte, testes correspondentes e evidência de execução no builder. `npm test` isolado não prova build, browser, persistência, Supabase ou cobertura integral dos livros.
 
-- [ ] Gate final autorizado: após concluir e validar todas as tarefas, revisar diff, criar commit e executar push para o repositório remoto.
+- [x] Gate final autorizado: após concluir e validar todas as tarefas, revisar diff, criar commit e executar push para o repositório remoto.
+  - Evidência final (2026-09-09): as três últimas tarefas foram revisadas e publicadas em commits separados (`0f8006e` e `16c7298`), com `git diff --check` aprovado; a suíte passou em 39 arquivos/790 testes, o build passou, as 18 tabelas do Supabase ficaram exatas (3.786 registros), imagens passaram em 457 itens e 139 armas com HTTP 200, e as auditorias de personagens, responsividade, idiomas, interação, contraste, variantes e aceite visual passaram. O estado publicado estava alinhado com `origin/main` antes deste fechamento.
 
 ### Auditoria incremental — Campeão (Player Core 2)
 
