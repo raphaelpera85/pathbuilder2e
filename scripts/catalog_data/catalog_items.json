@@ -5207,8 +5207,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-dueling-cape.png",
+      "imageFamily": "dueling-cape",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -5235,8 +5235,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-fishing-tackle.png",
+      "imageFamily": "fishing-tackle",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -5263,8 +5263,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-flint-and-steel.png",
+      "imageFamily": "flint-and-steel",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -5291,8 +5291,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-grappling-hook.png",
+      "imageFamily": "grappling-hook",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }

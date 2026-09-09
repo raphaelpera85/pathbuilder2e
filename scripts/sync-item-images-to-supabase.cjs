@@ -95,6 +95,10 @@ function visualKey(row) {
   if (row.id === "item.compendium.compass" || /^b[uú]ssola$/.test(name)) return "compass";
   if (row.id === "item.compendium.crowbar" || /^p[eé] de cabra$/.test(name)) return "crowbar";
   if (row.id === "item.compendium.lantern_bullseye" || /^lanterna de foco$/.test(name)) return "bullseye-lantern";
+  if (row.id === "item.compendium.dueling_cape" || /^capa de duelo$/.test(name)) return "dueling-cape";
+  if (row.id === "item.compendium.fishing_tackle" || /^equipamento de pesca$/.test(name)) return "fishing-tackle";
+  if (row.id === "item.compendium.flint_and_steel" || /^pederneira e isqueiro$/.test(name)) return "flint-and-steel";
+  if (row.id === "item.compendium.grappling_hook" || /^gancho de escalada$/.test(name)) return "grappling-hook";
   if (row.id === "item.howl.bloodgorger_scythe" || /^foice devorasangue$/.test(name)) return "bloodgorger-scythe";
   if (row.id === "item.howl.catoblepas_maul" || /^malho de catoblepas$/.test(name)) return "catoblepas-maul";
   if (row.id === "item.howl.chimera_flail" || /^mangual de quimera$/.test(name)) return "chimera-flail";
