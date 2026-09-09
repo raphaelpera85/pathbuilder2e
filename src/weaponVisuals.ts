@@ -108,6 +108,9 @@ export function getWeaponVisualKey(data: WeaponVisualData = {}): string {
   if (/fauchard/.test(identity)) return "fauchard";
   if (/lan[cç]a de guerra|war lance/.test(identity)) return "war-lance";
   if (/rasgador de kith|kithrender/.test(identity)) return "kithrender";
+  if (group && /^adaga$|^dagger$/.test(name.trim())) return "dagger-standard";
+  if (/foice do le[aã]o|lion scythe/.test(identity)) return "lion-scythe";
+  if (/l[aâ]mina golpe-garra|talonstrike blade/.test(identity)) return "talonstrike-blade";
   if (/espada larga|broadsword/.test(identity)) return "broadsword";
   if (/bracamante|falchion/.test(identity)) return "falchion";
   if (/montante|greatsword/.test(identity)) return "greatsword";
