@@ -639,7 +639,7 @@
     "source_page": 278,
     "data": {
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-club.png",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-club-standard.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -843,7 +843,7 @@
     "source_page": 279,
     "data": {
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-flail.png",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-flail-standard.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -4384,7 +4384,7 @@
     "source_page": 126,
     "data": {
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-club.png",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-undead-scourge.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -4615,7 +4615,7 @@
     "source_page": 147,
     "data": {
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-club.png",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-macuahuitl.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }

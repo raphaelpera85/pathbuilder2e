@@ -124,6 +124,10 @@ describe("weapon visual fallback", () => {
     expect(getWeaponVisualKey({ name: "Vitória Radiante", weaponGroup: "Sword" })).toBe("radiant-victory");
     expect(getWeaponVisualKey({ name: "Lâmina Revenante", weaponGroup: "Sword" })).toBe("revenant-blade");
     expect(getWeaponVisualKey({ name: "Gládio", weaponGroup: "Sword" })).toBe("gladius");
+    expect(getWeaponVisualKey({ name: "Clava", weaponGroup: "Club" })).toBe("club-standard");
+    expect(getWeaponVisualKey({ name: "Flagelo dos Mortos-Vivos", weaponGroup: "Flail" })).toBe("undead-scourge");
+    expect(getWeaponVisualKey({ name: "Macuahuitl", weaponGroup: "Club" })).toBe("macuahuitl");
+    expect(getWeaponVisualKey({ name: "Mangual", weaponGroup: "Flail" })).toBe("flail-standard");
     expect(getWeaponVisualKey({ name: "Enxó", weaponGroup: "Axe" })).toBe("adze");
     expect(getWeaponVisualKey({ name: "Cruuk", weaponGroup: "Axe" })).toBe("cruuk");
     expect(getWeaponVisualKey({ name: "Enxó de Mão", weaponGroup: "Axe" })).toBe("hand-adze");
