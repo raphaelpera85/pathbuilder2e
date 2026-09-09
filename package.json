@@ -14,7 +14,8 @@
     "audit:character:usage": "node scripts/audit-local-character-usage.cjs",
     "audit:character:matrix": "node scripts/audit-local-character-matrix.cjs",
     "audit:image-metadata:supabase": "node scripts/audit-image-metadata-supabase.cjs",
-    "audit:books": "node scripts/audit-books.cjs"
+    "audit:books": "node scripts/audit-books.cjs",
+    "audit:local:weapon-variants": "node scripts/audit-local-weapon-variants.cjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "latest",
