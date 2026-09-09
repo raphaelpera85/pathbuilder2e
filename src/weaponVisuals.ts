@@ -52,6 +52,7 @@ export function getWeaponVisualKey(data: WeaponVisualData = {}): string {
   if (/ma[cç]a-estrela|morningstar/.test(identity)) return "morningstar";
   if (/grande porrete|greatclub/.test(identity)) return "greatclub";
   if (/machado longo|greataxe/.test(identity)) return "greataxe";
+  if (/picareta engenhosa|ingenious pick/.test(identity)) return "ingenious-pick";
   if (/picareta|pick/.test(identity)) return "pick";
   if (/segadeira|scythe/.test(identity)) return "scythe";
   if (/foice|sickle/.test(identity)) return "sickle";
@@ -94,7 +95,6 @@ export function getWeaponVisualKey(data: WeaponVisualData = {}): string {
   if (/^enx[oó]$|^adze$/.test(name.trim())) return "adze";
   if (/cruuk/.test(identity)) return "cruuk";
   if (/enx[oó] de m[aã]o|hand adze/.test(identity)) return "hand-adze";
-  if (/picareta engenhosa|ingenious pick/.test(identity)) return "ingenious-pick";
   if (/^lan[cç]a$|^spear$/.test(name.trim())) return "spear-standard";
   if (/spetum de captura|capture spetum/.test(identity)) return "capture-spetum";
   if (/fauchard/.test(identity)) return "fauchard";
