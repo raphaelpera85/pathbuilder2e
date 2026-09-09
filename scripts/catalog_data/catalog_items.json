@@ -10371,8 +10371,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-caltrop-snare.png",
+      "imageFamily": "caltrop-snare",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -12374,8 +12374,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-predictive-veil.png",
+      "imageFamily": "predictive-veil",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -12404,8 +12404,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-greater-predictive-veil.png",
+      "imageFamily": "greater-predictive-veil",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -12494,8 +12494,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-smiling-devil-disguise.png",
+      "imageFamily": "smiling-devil-disguise",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }

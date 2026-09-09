@@ -171,6 +171,10 @@ export function getItemVisualKey(data: ItemVisualData = {}): string {
   if (data.id === "item.pc2.marking_snare" || /^arapuca de marcar$/.test(name)) return "marking-snare";
   if (data.id === "item.pc2.lesser_articulated_wire" || /^fio articulado menor$/.test(name)) return "lesser-articulated-wire";
   if (data.id === "item.pc2.alchemists_goggles" || /^[oó]culos de alquimista$/.test(name)) return "alchemists-goggles";
+  if (data.id === "item.pc2.caltrop_snare" || /^arapuca de estrepes$/.test(name)) return "caltrop-snare";
+  if (data.id === "item.pc2.predictive_veil" || /^v[eé]u progn[oó]stico$/.test(name)) return "predictive-veil";
+  if (data.id === "item.pc2.greater_predictive_veil" || /^v[eé]u progn[oó]stico maior$/.test(name)) return "greater-predictive-veil";
+  if (data.id === "item.pc2.smiling_devil_disguise" || /^disfarce do diabo sorridente$/.test(name)) return "smiling-devil-disguise";
   if (data.id === "item.howl.bloodgorger_scythe" || /^foice devorasangue$/.test(name)) return "bloodgorger-scythe";
   if (data.id === "item.howl.catoblepas_maul" || /^malho de catoblepas$/.test(name)) return "catoblepas-maul";
   if (data.id === "item.howl.chimera_flail" || /^mangual de quimera$/.test(name)) return "chimera-flail";
