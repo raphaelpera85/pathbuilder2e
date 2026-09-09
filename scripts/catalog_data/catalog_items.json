@@ -10971,8 +10971,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-minor-mercury-mutagen.png",
+      "imageFamily": "minor-mercury-mutagen",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -11001,8 +11001,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-minor-unstoppable-mutagen.png",
+      "imageFamily": "minor-unstoppable-mutagen",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -11031,8 +11031,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-minor-serene-mutagen.png",
+      "imageFamily": "minor-serene-mutagen",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -11162,8 +11162,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-dead-weight-snare.png",
+      "imageFamily": "dead-weight-snare",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }

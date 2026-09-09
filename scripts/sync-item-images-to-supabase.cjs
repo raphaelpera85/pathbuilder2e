@@ -175,6 +175,10 @@ function visualKey(row) {
   if (row.id === "item.pc2.forensic_dye" || /^corante forense$/.test(name)) return "forensic-dye";
   if (row.id === "item.pc2.minor_bestial_mutagen" || /^mutag[eê]nico bestial menor$/.test(name)) return "minor-bestial-mutagen";
   if (row.id === "item.pc2.minor_silver_lingua_mutagen" || /^mutag[eê]nico de l[ií]ngua de prata menor$/.test(name)) return "minor-silver-lingua-mutagen";
+  if (row.id === "item.pc2.minor_mercury_mutagen" || /^mutag[eê]nico de merc[uú]rio menor$/.test(name)) return "minor-mercury-mutagen";
+  if (row.id === "item.pc2.minor_unstoppable_mutagen" || /^mutag[eê]nico do irrefre[aá]vel menor$/.test(name)) return "minor-unstoppable-mutagen";
+  if (row.id === "item.pc2.minor_serene_mutagen" || /^mutag[eê]nico sereno menor$/.test(name)) return "minor-serene-mutagen";
+  if (row.id === "item.pc2.dead_weight_snare" || /^arapuca de peso morto$/.test(name)) return "dead-weight-snare";
   if (row.id === "item.howl.bloodgorger_scythe" || /^foice devorasangue$/.test(name)) return "bloodgorger-scythe";
   if (row.id === "item.howl.catoblepas_maul" || /^malho de catoblepas$/.test(name)) return "catoblepas-maul";
   if (row.id === "item.howl.chimera_flail" || /^mangual de quimera$/.test(name)) return "chimera-flail";
