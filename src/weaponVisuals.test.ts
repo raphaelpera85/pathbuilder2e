@@ -128,6 +128,10 @@ describe("weapon visual fallback", () => {
     expect(getWeaponVisualKey({ name: "Cruuk", weaponGroup: "Axe" })).toBe("cruuk");
     expect(getWeaponVisualKey({ name: "Enxó de Mão", weaponGroup: "Axe" })).toBe("hand-adze");
     expect(getWeaponVisualKey({ name: "Picareta Engenhosa", weaponGroup: "Axe" })).toBe("ingenious-pick");
+    expect(getWeaponVisualKey({ name: "Bastão Bo", weaponGroup: "Staff" })).toBe("bo-staff");
+    expect(getWeaponVisualKey({ name: "Cajado", weaponGroup: "Staff" })).toBe("staff-standard");
+    expect(getWeaponVisualKey({ name: "Palstave", weaponGroup: "Staff" })).toBe("palstave");
+    expect(getWeaponVisualKey({ name: "Vara de Pesca de Combate", weaponGroup: "Staff" })).toBe("combat-fishing-pole");
     expect(getWeaponVisualKey({ name: "Lança", weaponGroup: "Spear" })).toBe("spear-standard");
     expect(getWeaponVisualKey({ name: "Spetum de Captura", weaponGroup: "Spear" })).toBe("capture-spetum");
     expect(getWeaponVisualKey({ name: "Fauchard", weaponGroup: "Spear" })).toBe("fauchard");

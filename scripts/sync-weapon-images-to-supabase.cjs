@@ -152,6 +152,10 @@ const specialVisualFiles = {
   "weapon.cruuk": "weapon-cruuk.png",
   "weapon.hand_adze": "weapon-hand-adze.png",
   "weapon.ingenious_pick": "weapon-ingenious-pick.png",
+  "weapon.bo_staff": "weapon-bo-staff.png",
+  "weapon.staff": "weapon-staff-standard.png",
+  "weapon.war_immortals.palstave": "weapon-palstave.png",
+  "weapon.war_immortals.combat_fishing_pole": "weapon-combat-fishing-pole.png",
   "weapon.battlecry.reapers_toll": "weapon-axe.png",
   "weapon.battlecry.righteous_fury": "weapon-mace.png",
 };
