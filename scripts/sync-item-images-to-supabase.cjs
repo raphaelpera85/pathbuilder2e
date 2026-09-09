@@ -107,6 +107,10 @@ function visualKey(row) {
   if (row.id === "item.compendium.manacles_simple" || /^algemas simples$/.test(name)) return "manacles-simple";
   if (row.id === "item.compendium.mirror" || /^espelho$/.test(name)) return "mirror";
   if (row.id === "item.compendium.spyglass" || /^luneta$/.test(name)) return "spyglass";
+  if (row.id === "item.compendium.rations_1_week" || /^ra[cç][oõ]es \(1 semana\)$/.test(name)) return "rations-week";
+  if (row.id === "item.compendium.rope_50_ft" || /^corda \(15 metros\)$/.test(name)) return "rope-15m";
+  if (row.id === "item.compendium.sack" || /^saco$/.test(name)) return "sack";
+  if (row.id === "item.compendium.signal_whistle" || /^apito de sinal$/.test(name)) return "signal-whistle";
   if (row.id === "item.howl.bloodgorger_scythe" || /^foice devorasangue$/.test(name)) return "bloodgorger-scythe";
   if (row.id === "item.howl.catoblepas_maul" || /^malho de catoblepas$/.test(name)) return "catoblepas-maul";
   if (row.id === "item.howl.chimera_flail" || /^mangual de quimera$/.test(name)) return "chimera-flail";
