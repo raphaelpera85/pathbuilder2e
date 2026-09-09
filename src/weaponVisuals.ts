@@ -99,7 +99,7 @@ export function getWeaponVisualKey(data: WeaponVisualData = {}): string {
   if (group && /^clava$|^club$/.test(name.trim())) return "club-standard";
   if (/flagelo dos mortos-vivos|undead scourge/.test(identity)) return "undead-scourge";
   if (/macuahuitl/.test(identity)) return "macuahuitl";
-  if (group && /^mangual$|^flail$/.test(name.trim())) return "flail-standard";
+  if (group === "flail" && /^mangual$|^flail$/.test(name.trim())) return "flail-standard";
   if (/^enx[oó]$|^adze$/.test(name.trim())) return "adze";
   if (/cruuk/.test(identity)) return "cruuk";
   if (/enx[oó] de m[aã]o|hand adze/.test(identity)) return "hand-adze";
