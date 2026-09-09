@@ -8408,8 +8408,8 @@
         "exhale": "1 ação; linha de 9 metros; 4d12 eletricidade; Reflexos básico CD 25"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-storm-breath.png",
+      "imageFamily": "storm-breath",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -8915,8 +8915,8 @@
         "immunity": "1 hora"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-bloodburn-censer.png",
+      "imageFamily": "bloodburn-censer",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -9314,8 +9314,8 @@
         "reflect": "reação contra efeito emocional ou de metal; +4 status no salvamento e counteract +36, refletindo cópia ao originador"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-curious-teardrop.png",
+      "imageFamily": "curious-teardrop",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -9415,8 +9415,8 @@
         "benefits": "Reach: +1,5 metro de alcance; Shift: contundente, perfurante ou cortante; Take: reação após acerto para Desarmar ou Roubar; Weigh: bônus de dano igual aos dados da arma"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-morphing-weapon.png",
+      "imageFamily": "morphing-weapon",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }

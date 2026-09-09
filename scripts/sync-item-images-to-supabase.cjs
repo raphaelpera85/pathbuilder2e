@@ -163,6 +163,10 @@ function visualKey(row) {
   if (row.id === "item.rage_elements.wood.sandalwood_fan" || /^leque de s[aâ]ndalo$/.test(name)) return "sandalwood-fan";
   if (row.id === "item.rage_elements.wood.tailors_boll" || /^bola do alfaiate$/.test(name)) return "tailors-boll";
   if (row.id === "item.rage_elements.air.spun_cloud" || /^nuvem fiada$/.test(name)) return "spun-cloud";
+  if (row.id === "item.rage_elements.air.storm_breath" || /^sopro de tempestade$/.test(name)) return "storm-breath";
+  if (row.id === "item.rage_elements.fire.bloodburn_censer" || /^tur[ií]bulo queima-sangue$/.test(name)) return "bloodburn-censer";
+  if (row.id === "item.rage_elements.metal.curious_teardrop" || /^gota curiosa$/.test(name)) return "curious-teardrop";
+  if (row.id === "item.rage_elements.metal.morphing_weapon" || /^arma mut[aá]vel$/.test(name)) return "morphing-weapon";
   if (row.id === "item.howl.bloodgorger_scythe" || /^foice devorasangue$/.test(name)) return "bloodgorger-scythe";
   if (row.id === "item.howl.catoblepas_maul" || /^malho de catoblepas$/.test(name)) return "catoblepas-maul";
   if (row.id === "item.howl.chimera_flail" || /^mangual de quimera$/.test(name)) return "chimera-flail";

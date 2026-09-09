@@ -151,6 +151,10 @@ export function getItemVisualKey(data: ItemVisualData = {}): string {
   if (data.id === "item.rage_elements.wood.sandalwood_fan" || /^leque de s[aâ]ndalo$/.test(name)) return "sandalwood-fan";
   if (data.id === "item.rage_elements.wood.tailors_boll" || /^bola do alfaiate$/.test(name)) return "tailors-boll";
   if (data.id === "item.rage_elements.air.spun_cloud" || /^nuvem fiada$/.test(name)) return "spun-cloud";
+  if (data.id === "item.rage_elements.air.storm_breath" || /^sopro de tempestade$/.test(name)) return "storm-breath";
+  if (data.id === "item.rage_elements.fire.bloodburn_censer" || /^tur[ií]bulo queima-sangue$/.test(name)) return "bloodburn-censer";
+  if (data.id === "item.rage_elements.metal.curious_teardrop" || /^gota curiosa$/.test(name)) return "curious-teardrop";
+  if (data.id === "item.rage_elements.metal.morphing_weapon" || /^arma mut[aá]vel$/.test(name)) return "morphing-weapon";
   if (data.id === "item.howl.bloodgorger_scythe" || /^foice devorasangue$/.test(name)) return "bloodgorger-scythe";
   if (data.id === "item.howl.catoblepas_maul" || /^malho de catoblepas$/.test(name)) return "catoblepas-maul";
   if (data.id === "item.howl.chimera_flail" || /^mangual de quimera$/.test(name)) return "chimera-flail";
