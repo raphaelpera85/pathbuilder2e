@@ -71,6 +71,10 @@ function visualKey(row) {
   if (row.id === "item.dark_archive.golden_goose" || /^ganso dourado$/.test(name)) return "golden-goose";
   if (row.id === "item.dark_archive.rose_of_loves_lost" || /^rosa dos amores perdidos$/.test(name)) return "rose-lost-loves";
   if (row.id === "item.dark_archive.cryolite_eye" || /^olho de criolita$/.test(name)) return "cryolite-eye";
+  if (row.id === "item.dark_archive.hand_hewed_face" || /^rosto esculpido [aà] m[aã]o$/.test(name)) return "hand-hewed-face";
+  if (row.id === "item.dark_archive.bottomless_purse" || /^bolsa inesgot[aá]vel$/.test(name)) return "bottomless-purse";
+  if (row.id === "item.dark_archive.key_to_the_stomach" || /^chave do est[oô]mago$/.test(name)) return "key-to-stomach";
+  if (row.id === "item.dark_archive.lost_ember" || /^brasa perdida$/.test(name)) return "lost-ember";
   if (row.id === "item.howl.bloodgorger_scythe" || /^foice devorasangue$/.test(name)) return "bloodgorger-scythe";
   if (row.id === "item.howl.catoblepas_maul" || /^malho de catoblepas$/.test(name)) return "catoblepas-maul";
   if (row.id === "item.howl.chimera_flail" || /^mangual de quimera$/.test(name)) return "chimera-flail";

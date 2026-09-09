@@ -4377,8 +4377,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-hand-hewed-face.png",
+      "imageFamily": "hand-hewed-face",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -4408,8 +4408,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-bottomless-purse.png",
+      "imageFamily": "bottomless-purse",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -4439,8 +4439,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-key-to-stomach.png",
+      "imageFamily": "key-to-stomach",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -4501,8 +4501,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-lost-ember.png",
+      "imageFamily": "lost-ember",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
