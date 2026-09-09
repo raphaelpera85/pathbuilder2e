@@ -8245,8 +8245,8 @@
         "terrain": "10 minutos; terreno difícil e irregular; Acrobacia CD 20"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-frost-breath.png",
+      "imageFamily": "frost-breath",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -8278,8 +8278,8 @@
         "rebuke": "1 ação; 1/hora; emanação de 3 metros; Fortitude CD 18; empurra 3 metros; falha crítica também derruba"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-jaathoom-scarf.png",
+      "imageFamily": "jaathoom-scarf",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -8311,8 +8311,8 @@
         "landing": "desce suavemente a 18 metros por rodada sem dano se estiver no ar"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-nimbus-breath.png",
+      "imageFamily": "nimbus-breath",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -8344,8 +8344,8 @@
         "revealing": "1 ação; 1/dia; explosão de 9 metros a até 36; Reflexos CD 30; negação da invisibilidade e, em falha, ensurdece"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-spiral-chimes.png",
+      "imageFamily": "spiral-chimes",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
