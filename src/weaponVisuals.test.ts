@@ -116,6 +116,10 @@ describe("weapon visual fallback", () => {
     expect(getWeaponVisualKey({ name: "Árvore de Mithral", weaponGroup: "Firearm" })).toBe("mithral-tree");
     expect(getWeaponVisualKey({ name: "Mosquete de Cano Duplo", weaponGroup: "Firearm" })).toBe("double-barrel-musket");
     expect(getWeaponVisualKey({ name: "Pistola de Cano Duplo", weaponGroup: "Firearm" })).toBe("double-barrel-pistol");
+    expect(getWeaponVisualKey({ name: "Lança", weaponGroup: "Spear" })).toBe("spear-standard");
+    expect(getWeaponVisualKey({ name: "Spetum de Captura", weaponGroup: "Spear" })).toBe("capture-spetum");
+    expect(getWeaponVisualKey({ name: "Fauchard", weaponGroup: "Spear" })).toBe("fauchard");
+    expect(getWeaponVisualKey({ name: "Lança de Guerra", weaponGroup: "Spear" })).toBe("war-lance");
   });
 
   it("keeps every local fallback asset available to the browser", () => {
