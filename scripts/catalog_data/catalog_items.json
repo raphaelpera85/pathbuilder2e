@@ -7594,8 +7594,8 @@
         "effect": "o navio faz uma curva de 180 graus no próprio eixo e segue na nova direção no próximo turno"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-aboutface-figurehead.png",
+      "imageFamily": "aboutface-figurehead",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -7629,8 +7629,8 @@
         "variants": "submersível nível 8, CD 24; 1 minuto, 1/dia, transforma-se em batiesfera por 1 hora em água com pelo menos 4,5 metros"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-anglerfish-lantern.png",
+      "imageFamily": "anglerfish-lantern",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -7666,8 +7666,8 @@
         "criticalFailure": "ação de concentração desencadeadora é interrompida"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-brine-dragon-scale.png",
+      "imageFamily": "brine-dragon-scale",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -7701,8 +7701,8 @@
         "soundsOfTheDeep": "10 minutos; clairaudience de 5º círculo; alcance 1 milha e clareza perfeita em local subaquático"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-conch-otherworldly-seas.png",
+      "imageFamily": "conch-otherworldly-seas",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }

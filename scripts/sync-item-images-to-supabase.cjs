@@ -123,6 +123,10 @@ function visualKey(row) {
   if (row.id === "item.rage_elements.wood.blooming_lotus_seed_pod" || /^vagem de sementes de l[oó]tus florescente$/.test(name)) return "lotus-seed-pod";
   if (row.id === "item.rage_elements.wood.captivating_rosebud" || /^bot[aã]o de rosa cativante$/.test(name)) return "captivating-rosebud";
   if (row.id === "item.rage_elements.wood.glowing_lantern_fruit" || /^fruto lanterna brilhante$/.test(name)) return "glowing-lantern-fruit";
+  if (row.id === "item.rage_elements.water.aboutface_figurehead" || /^figura de proa meia-volta$/.test(name)) return "aboutface-figurehead";
+  if (row.id === "item.rage_elements.water.anglerfish_lantern" || /^lanterna peixe-pescador$/.test(name)) return "anglerfish-lantern";
+  if (row.id === "item.rage_elements.water.brine_dragon_scale" || /^escama de drag[aã]o de salmoura$/.test(name)) return "brine-dragon-scale";
+  if (row.id === "item.rage_elements.water.conch_of_otherworldly_seas" || /^concha dos mares de outro mundo$/.test(name)) return "conch-otherworldly-seas";
   if (row.id === "item.howl.bloodgorger_scythe" || /^foice devorasangue$/.test(name)) return "bloodgorger-scythe";
   if (row.id === "item.howl.catoblepas_maul" || /^malho de catoblepas$/.test(name)) return "catoblepas-maul";
   if (row.id === "item.howl.chimera_flail" || /^mangual de quimera$/.test(name)) return "chimera-flail";
