@@ -79,6 +79,10 @@ export function getWeaponVisualKey(data: WeaponVisualData = {}): string {
   if (/julgamento do inferno|hell.?s judgment/.test(identity)) return "hells-judgment";
   if (/lamento dos sem-f[eé]|lamentation of the faithless/.test(identity)) return "lamentation-of-the-faithless";
   if (/última esperan[cç]a|last hope/.test(identity)) return "last-hope";
+  if (/lan[cç]a de fogo|fire lance/.test(identity)) return "fire-lance";
+  if (/árvore de mithral|mithral tree/.test(identity)) return "mithral-tree";
+  if (/mosquete de cano duplo|double.?barrel musket/.test(identity)) return "double-barrel-musket";
+  if (/pistola de cano duplo|double.?barrel pistol/.test(identity)) return "double-barrel-pistol";
   if (/rasgador de kith|kithrender/.test(identity)) return "kithrender";
   if (/espada larga|broadsword/.test(identity)) return "broadsword";
   if (/bracamante|falchion/.test(identity)) return "falchion";

@@ -112,6 +112,10 @@ describe("weapon visual fallback", () => {
     expect(getWeaponVisualKey({ name: "Julgamento do Inferno", weaponGroup: "Sword" })).toBe("hells-judgment");
     expect(getWeaponVisualKey({ name: "Lamento dos Sem-Fé", weaponGroup: "Sword" })).toBe("lamentation-of-the-faithless");
     expect(getWeaponVisualKey({ name: "Última Esperança", weaponGroup: "Sword" })).toBe("last-hope");
+    expect(getWeaponVisualKey({ name: "Lança de Fogo", weaponGroup: "Firearm" })).toBe("fire-lance");
+    expect(getWeaponVisualKey({ name: "Árvore de Mithral", weaponGroup: "Firearm" })).toBe("mithral-tree");
+    expect(getWeaponVisualKey({ name: "Mosquete de Cano Duplo", weaponGroup: "Firearm" })).toBe("double-barrel-musket");
+    expect(getWeaponVisualKey({ name: "Pistola de Cano Duplo", weaponGroup: "Firearm" })).toBe("double-barrel-pistol");
   });
 
   it("keeps every local fallback asset available to the browser", () => {
