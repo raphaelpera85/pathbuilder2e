@@ -166,6 +166,10 @@ describe("weapon visual fallback", () => {
     expect(getWeaponVisualKey({ names: { "pt-BR": "Remo de Combate" } })).toBe("fighting-oar");
     expect(getWeaponVisualKey({ names: { "pt-BR": "Azagaia de Guerra" } })).toBe("war-javelin");
     expect(getWeaponVisualKey({ names: { "pt-BR": "Chamado do Coveiro" } })).toBe("gravediggers-call");
+    expect(getWeaponVisualKey({ names: { "pt-BR": "Fio de Draddeth" } })).toBe("draddeths-edge");
+    expect(getWeaponVisualKey({ name: "Manopla", weaponGroup: "Gauntlet" })).toBe("gauntlet-standard");
+    expect(getWeaponVisualKey({ name: "Punho", weaponGroup: "Gauntlet" })).toBe("fist");
+    expect(getWeaponVisualKey({ name: "Chicote", weaponGroup: "Whip" })).toBe("whip-standard");
   });
 
   it("atribui uma ilustração específica a todas as armas catalogadas", () => {

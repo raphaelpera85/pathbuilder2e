@@ -16,6 +16,10 @@ export function getWeaponVisualKey(data: WeaponVisualData = {}): string {
   const name = String(data.name || data.names?.["pt-BR"] || data.names?.en || "").toLowerCase();
   const traits = Array.isArray(data.traits) ? data.traits.join(" ").toLowerCase() : "";
   const identity = `${group} ${category} ${name} ${traits}`;
+  if (group === "gauntlet" && /^manopla$/.test(name.trim())) return "gauntlet-standard";
+  if (group === "gauntlet" && /^punho$|^fist$/.test(name.trim())) return "fist";
+  if (group === "whip" && /^chicote$|^whip$/.test(name.trim())) return "whip-standard";
+  if (/fio de draddeth|draddeth.?s edge/.test(identity)) return "draddeths-edge";
   if (/lan[cç]a do comandante de cavalaria|cavalry commander.?s lance/.test(identity)) return "cavalry-commanders-lance";
   if (/remo de combate|fighting oar/.test(identity)) return "fighting-oar";
   if (/azagaia de guerra|war javelin/.test(identity)) return "war-javelin";
