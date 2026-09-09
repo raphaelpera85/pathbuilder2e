@@ -91,6 +91,10 @@ export function getItemVisualKey(data: ItemVisualData = {}): string {
   if (data.id === "item.compendium.lock_simple" || /^cadeado simples$/.test(name)) return "simple-padlock";
   if (data.id === "item.compendium.lock_average" || /^fechadura m[eé]dia$/.test(name)) return "average-lock";
   if (data.id === "item.compendium.magnifying_glass" || /^lupa$/.test(name)) return "magnifying-glass";
+  if (data.id === "item.compendium.disguise_kit" || /^kit de disfarce$/.test(name)) return "disguise-kit";
+  if (data.id === "item.compendium.manacles_simple" || /^algemas simples$/.test(name)) return "manacles-simple";
+  if (data.id === "item.compendium.mirror" || /^espelho$/.test(name)) return "mirror";
+  if (data.id === "item.compendium.spyglass" || /^luneta$/.test(name)) return "spyglass";
   if (data.id === "item.howl.bloodgorger_scythe" || /^foice devorasangue$/.test(name)) return "bloodgorger-scythe";
   if (data.id === "item.howl.catoblepas_maul" || /^malho de catoblepas$/.test(name)) return "catoblepas-maul";
   if (data.id === "item.howl.chimera_flail" || /^mangual de quimera$/.test(name)) return "chimera-flail";

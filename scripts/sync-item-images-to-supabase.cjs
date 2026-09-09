@@ -103,6 +103,10 @@ function visualKey(row) {
   if (row.id === "item.compendium.lock_simple" || /^cadeado simples$/.test(name)) return "simple-padlock";
   if (row.id === "item.compendium.lock_average" || /^fechadura m[eé]dia$/.test(name)) return "average-lock";
   if (row.id === "item.compendium.magnifying_glass" || /^lupa$/.test(name)) return "magnifying-glass";
+  if (row.id === "item.compendium.disguise_kit" || /^kit de disfarce$/.test(name)) return "disguise-kit";
+  if (row.id === "item.compendium.manacles_simple" || /^algemas simples$/.test(name)) return "manacles-simple";
+  if (row.id === "item.compendium.mirror" || /^espelho$/.test(name)) return "mirror";
+  if (row.id === "item.compendium.spyglass" || /^luneta$/.test(name)) return "spyglass";
   if (row.id === "item.howl.bloodgorger_scythe" || /^foice devorasangue$/.test(name)) return "bloodgorger-scythe";
   if (row.id === "item.howl.catoblepas_maul" || /^malho de catoblepas$/.test(name)) return "catoblepas-maul";
   if (row.id === "item.howl.chimera_flail" || /^mangual de quimera$/.test(name)) return "chimera-flail";
