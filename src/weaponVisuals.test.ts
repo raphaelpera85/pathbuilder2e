@@ -132,6 +132,10 @@ describe("weapon visual fallback", () => {
     expect(getWeaponVisualKey({ name: "Foice do Leão", weaponGroup: "Knife" })).toBe("lion-scythe");
     expect(getWeaponVisualKey({ name: "Rasgador de Kith", weaponGroup: "Knife" })).toBe("kithrender");
     expect(getWeaponVisualKey({ name: "Lâmina Golpe-Garra", weaponGroup: "Gauntlet" })).toBe("talonstrike-blade");
+    expect(getWeaponVisualKey({ name: "Funda", weaponGroup: "Sling" })).toBe("sling-standard");
+    expect(getWeaponVisualKey({ name: "Funda-Trovão", weaponGroup: "Sling" })).toBe("thunder-sling");
+    expect(getWeaponVisualKey({ name: "Kestros", weaponGroup: "Sling" })).toBe("kestros");
+    expect(getWeaponVisualKey({ name: "Arco de Manopla", weaponGroup: "Bow" })).toBe("gauntlet-bow");
     expect(getWeaponVisualKey({ name: "Enxó", weaponGroup: "Axe" })).toBe("adze");
     expect(getWeaponVisualKey({ name: "Cruuk", weaponGroup: "Axe" })).toBe("cruuk");
     expect(getWeaponVisualKey({ name: "Enxó de Mão", weaponGroup: "Axe" })).toBe("hand-adze");
