@@ -7772,8 +7772,8 @@
         "variants": "wracking nível 14; CD para libertar 31; causa 7d10 contundente ao casco em falha/sucesso apropriado"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-kraken-figurehead.png",
+      "imageFamily": "kraken-figurehead",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -7879,8 +7879,8 @@
         "activate": "2 ações; 1/hora; por 1 minuto, cada Golpe recebe benefício da runa de arma subaquática"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-sharkskin-robe.png",
+      "imageFamily": "sharkskin-robe",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -7913,8 +7913,8 @@
         "variant": "greater nível 9; duração 8 horas"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-easy-breathing-shell.png",
+      "imageFamily": "easy-breathing-shell",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -8015,8 +8015,8 @@
         "greater": "variante maior lança veil na tripulação, altera roupas e pode fazer todos parecerem da mesma ancestralidade escolhida"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-veiled-figurehead.png",
+      "imageFamily": "veiled-figurehead",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }

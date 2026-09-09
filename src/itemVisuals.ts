@@ -115,6 +115,10 @@ export function getItemVisualKey(data: ItemVisualData = {}): string {
   if (data.id === "item.rage_elements.water.anglerfish_lantern" || /^lanterna peixe-pescador$/.test(name)) return "anglerfish-lantern";
   if (data.id === "item.rage_elements.water.brine_dragon_scale" || /^escama de drag[aã]o de salmoura$/.test(name)) return "brine-dragon-scale";
   if (data.id === "item.rage_elements.water.conch_of_otherworldly_seas" || /^concha dos mares de outro mundo$/.test(name)) return "conch-otherworldly-seas";
+  if (data.id === "item.rage_elements.water.kraken_figurehead" || /^figura de proa kraken$/.test(name)) return "kraken-figurehead";
+  if (data.id === "item.rage_elements.water.sharkskin_robe" || /^robe de pele de tubar[aã]o$/.test(name)) return "sharkskin-robe";
+  if (data.id === "item.rage_elements.water.shell_of_easy_breathing" || /^concha da respira[cç][aã]o f[aá]cil$/.test(name)) return "easy-breathing-shell";
+  if (data.id === "item.rage_elements.water.veiled_figurehead" || /^figura de proa velada$/.test(name)) return "veiled-figurehead";
   if (data.id === "item.howl.bloodgorger_scythe" || /^foice devorasangue$/.test(name)) return "bloodgorger-scythe";
   if (data.id === "item.howl.catoblepas_maul" || /^malho de catoblepas$/.test(name)) return "catoblepas-maul";
   if (data.id === "item.howl.chimera_flail" || /^mangual de quimera$/.test(name)) return "chimera-flail";
