@@ -108,6 +108,10 @@ describe("weapon visual fallback", () => {
     expect(getWeaponVisualKey({ name: "Lâmina Grimpa Tengu", weaponGroup: "Sword" })).toBe("tengu-gale-blade");
     expect(getWeaponVisualKey({ name: "Espada de Duelo Aldori", weaponGroup: "Sword" })).toBe("aldori-dueling-sword");
     expect(getWeaponVisualKey({ name: "Varredor de Lâminas", weaponGroup: "Sword" })).toBe("bladesweeper");
+    expect(getWeaponVisualKey({ name: "Última Resistência", weaponGroup: "Sword" })).toBe("final-stand");
+    expect(getWeaponVisualKey({ name: "Julgamento do Inferno", weaponGroup: "Sword" })).toBe("hells-judgment");
+    expect(getWeaponVisualKey({ name: "Lamento dos Sem-Fé", weaponGroup: "Sword" })).toBe("lamentation-of-the-faithless");
+    expect(getWeaponVisualKey({ name: "Última Esperança", weaponGroup: "Sword" })).toBe("last-hope");
   });
 
   it("keeps every local fallback asset available to the browser", () => {

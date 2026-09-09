@@ -75,6 +75,10 @@ export function getWeaponVisualKey(data: WeaponVisualData = {}): string {
   if (/l[aâ]mina grimpa tengu|tengu gale blade/.test(identity)) return "tengu-gale-blade";
   if (/espada de duelo aldori|aldori dueling sword/.test(identity)) return "aldori-dueling-sword";
   if (/varredor de l[aâ]minas|bladesweeper/.test(identity)) return "bladesweeper";
+  if (/última resist[eê]ncia|last stand|final stand/.test(identity)) return "final-stand";
+  if (/julgamento do inferno|hell.?s judgment/.test(identity)) return "hells-judgment";
+  if (/lamento dos sem-f[eé]|lamentation of the faithless/.test(identity)) return "lamentation-of-the-faithless";
+  if (/última esperan[cç]a|last hope/.test(identity)) return "last-hope";
   if (/rasgador de kith|kithrender/.test(identity)) return "kithrender";
   if (/espada larga|broadsword/.test(identity)) return "broadsword";
   if (/bracamante|falchion/.test(identity)) return "falchion";
