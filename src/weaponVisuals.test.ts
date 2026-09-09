@@ -120,6 +120,10 @@ describe("weapon visual fallback", () => {
     expect(getWeaponVisualKey({ name: "Machado-Mosquete (à distância)", weaponGroup: "Firearm" })).toBe("axe-musket-ranged");
     expect(getWeaponVisualKey({ name: "Pistola de Clã", weaponGroup: "Firearm" })).toBe("clan-pistol");
     expect(getWeaponVisualKey({ name: "Espingarda Enânica", weaponGroup: "Firearm" })).toBe("dwarven-scattergun");
+    expect(getWeaponVisualKey({ name: "Matamagos", weaponGroup: "Sword" })).toBe("mageslayer");
+    expect(getWeaponVisualKey({ name: "Vitória Radiante", weaponGroup: "Sword" })).toBe("radiant-victory");
+    expect(getWeaponVisualKey({ name: "Lâmina Revenante", weaponGroup: "Sword" })).toBe("revenant-blade");
+    expect(getWeaponVisualKey({ name: "Gládio", weaponGroup: "Sword" })).toBe("gladius");
     expect(getWeaponVisualKey({ name: "Lança", weaponGroup: "Spear" })).toBe("spear-standard");
     expect(getWeaponVisualKey({ name: "Spetum de Captura", weaponGroup: "Spear" })).toBe("capture-spetum");
     expect(getWeaponVisualKey({ name: "Fauchard", weaponGroup: "Spear" })).toBe("fauchard");

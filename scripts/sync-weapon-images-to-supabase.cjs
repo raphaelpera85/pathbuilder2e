@@ -144,8 +144,10 @@ const specialVisualFiles = {
   "weapon.battlecry.kithrender": "weapon-dagger.png",
   "weapon.battlecry.lamentation_of_the_faithless": "weapon-lamentation-of-the-faithless.png",
   "weapon.battlecry.last_hope": "weapon-last-hope.png",
-  "weapon.battlecry.mageslayer": "weapon-sword.png",
-  "weapon.battlecry.radiant_victory": "weapon-sword.png",
+  "weapon.battlecry.mageslayer": "weapon-mageslayer.png",
+  "weapon.battlecry.radiant_victory": "weapon-radiant-victory.png",
+  "weapon.battlecry.revenant_blade": "weapon-revenant-blade.png",
+  "weapon.war_immortals.gladius": "weapon-gladius.png",
   "weapon.battlecry.reapers_toll": "weapon-axe.png",
   "weapon.battlecry.righteous_fury": "weapon-mace.png",
 };
