@@ -9,7 +9,19 @@ export default defineConfig({
     viteStaticCopy({
       targets: [
         { src: "css", dest: "." },
-        { src: "js", dest: "." },
+        {
+          src: [
+            "js/pdf-lib.min.js",
+            "js/pf2e_data.js",
+            "js/pf2e_weapon_metadata.js",
+            "js/pf2e_engine.js",
+            "js/pf2e_pdf_form_filler.js",
+            "js/pf2e_ai_assistant.js",
+            "js/app.js",
+            "js/pf2e_feats_mechanics_loader.js",
+          ],
+          dest: ".",
+        },
         { src: "ficha.pdf", dest: "." },
       ],
     }),
