@@ -8048,8 +8048,8 @@
         "effect": "queda 9 metros mais curta e plana até espaço a até 6 metros do ponto de aterrissagem"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-aerial-cloak.png",
+      "imageFamily": "aerial-cloak",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -8147,8 +8147,8 @@
         "effect": "tosse o veneno para o pulmão e tenta novo salvamento; limpa-se ao amanhecer"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-extra-lung.png",
+      "imageFamily": "extra-lung",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -8180,8 +8180,8 @@
         "variant": "greater: CD 34; círculos 6º, 5º e 4º"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-soothing-winds-fan.png",
+      "imageFamily": "soothing-winds-fan",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -8212,8 +8212,8 @@
         "variants": "pup nível 1: uma criatura Média ou menor; four-person nível 2: quatro criaturas"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-floating-tent.png",
+      "imageFamily": "floating-tent",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }

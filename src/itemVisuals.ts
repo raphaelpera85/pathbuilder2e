@@ -119,6 +119,10 @@ export function getItemVisualKey(data: ItemVisualData = {}): string {
   if (data.id === "item.rage_elements.water.sharkskin_robe" || /^robe de pele de tubar[aã]o$/.test(name)) return "sharkskin-robe";
   if (data.id === "item.rage_elements.water.shell_of_easy_breathing" || /^concha da respira[cç][aã]o f[aá]cil$/.test(name)) return "easy-breathing-shell";
   if (data.id === "item.rage_elements.water.veiled_figurehead" || /^figura de proa velada$/.test(name)) return "veiled-figurehead";
+  if (data.id === "item.rage_elements.air.aerial_cloak" || /^manto a[eé]reo$/.test(name)) return "aerial-cloak";
+  if (data.id === "item.rage_elements.air.extra_lung" || /^pulm[aã]o extra$/.test(name)) return "extra-lung";
+  if (data.id === "item.rage_elements.air.fan_of_soothing_winds" || /^leque dos ventos calmantes$/.test(name)) return "soothing-winds-fan";
+  if (data.id === "item.rage_elements.air.floating_tent" || /^tenda flutuante$/.test(name)) return "floating-tent";
   if (data.id === "item.howl.bloodgorger_scythe" || /^foice devorasangue$/.test(name)) return "bloodgorger-scythe";
   if (data.id === "item.howl.catoblepas_maul" || /^malho de catoblepas$/.test(name)) return "catoblepas-maul";
   if (data.id === "item.howl.chimera_flail" || /^mangual de quimera$/.test(name)) return "chimera-flail";

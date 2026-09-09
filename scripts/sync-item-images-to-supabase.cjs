@@ -131,6 +131,10 @@ function visualKey(row) {
   if (row.id === "item.rage_elements.water.sharkskin_robe" || /^robe de pele de tubar[aã]o$/.test(name)) return "sharkskin-robe";
   if (row.id === "item.rage_elements.water.shell_of_easy_breathing" || /^concha da respira[cç][aã]o f[aá]cil$/.test(name)) return "easy-breathing-shell";
   if (row.id === "item.rage_elements.water.veiled_figurehead" || /^figura de proa velada$/.test(name)) return "veiled-figurehead";
+  if (row.id === "item.rage_elements.air.aerial_cloak" || /^manto a[eé]reo$/.test(name)) return "aerial-cloak";
+  if (row.id === "item.rage_elements.air.extra_lung" || /^pulm[aã]o extra$/.test(name)) return "extra-lung";
+  if (row.id === "item.rage_elements.air.fan_of_soothing_winds" || /^leque dos ventos calmantes$/.test(name)) return "soothing-winds-fan";
+  if (row.id === "item.rage_elements.air.floating_tent" || /^tenda flutuante$/.test(name)) return "floating-tent";
   if (row.id === "item.howl.bloodgorger_scythe" || /^foice devorasangue$/.test(name)) return "bloodgorger-scythe";
   if (row.id === "item.howl.catoblepas_maul" || /^malho de catoblepas$/.test(name)) return "catoblepas-maul";
   if (row.id === "item.howl.chimera_flail" || /^mangual de quimera$/.test(name)) return "chimera-flail";

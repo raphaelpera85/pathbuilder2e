@@ -1279,3 +1279,4 @@ Persistência remota autenticada de personagens (2026-09-08): `npm run audit:cam
 - [x] Criar e sincronizar artes individuais para Mordida Animal, Vagem de Sementes de Lótus Florescente, Botão de Rosa Cativante e Fruto Lanterna Brilhante, usando ID e nome completo do item.
 - [x] Criar e sincronizar artes individuais para Figura de Proa Meia-Volta, Lanterna Peixe-Pescador, Escama de Dragão de Salmoura e Concha dos Mares de Outro Mundo, usando ID e nome completo do item.
 - [x] Criar e sincronizar artes individuais para Figura de Proa Kraken, Robe de Pele de Tubarão, Concha da Respiração Fácil e Figura de Proa Velada, usando ID e nome completo do item.
+- [x] Criar e sincronizar artes individuais para Manto Aéreo, Pulmão Extra, Leque dos Ventos Calmantes e Tenda Flutuante, usando ID e nome completo do item.
