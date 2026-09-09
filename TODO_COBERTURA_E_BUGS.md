@@ -1269,3 +1269,4 @@ Persistência remota autenticada de personagens (2026-09-08): `npm run audit:cam
 - [x] Criar e sincronizar artes individuais para Laboratório de Alquimista, Laboratório de Alquimista (Expandido), Abrigo de Observação Animal e Chamado de Animal, usando ID e nome completo do item.
 - [x] Criar e sincronizar artes individuais para Kit de Artesão, Kit de Artesão Esterlino, Traje de Respiração Atmosférica e Cartucheira, usando ID e nome completo do item.
 - [x] Criar e sincronizar artes individuais para Saco de Dormir, Estrepes, Vela e Giz (10 pedaços), usando ID e nome completo do item.
+- [x] Criar e sincronizar artes individuais para Kit de Escalada, Bússola, Pé de Cabra e Lanterna de Foco, usando ID e nome completo do item.

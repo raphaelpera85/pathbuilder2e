@@ -5095,8 +5095,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-climbing-kit.png",
+      "imageFamily": "climbing-kit",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -5123,8 +5123,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-compass.png",
+      "imageFamily": "compass",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -5151,8 +5151,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-crowbar.png",
+      "imageFamily": "crowbar",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -5347,8 +5347,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-bullseye-lantern.png",
+      "imageFamily": "bullseye-lantern",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
