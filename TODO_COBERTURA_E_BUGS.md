@@ -1281,3 +1281,4 @@ Persistência remota autenticada de personagens (2026-09-08): `npm run audit:cam
 - [x] Criar e sincronizar artes individuais para Figura de Proa Kraken, Robe de Pele de Tubarão, Concha da Respiração Fácil e Figura de Proa Velada, usando ID e nome completo do item.
 - [x] Criar e sincronizar artes individuais para Manto Aéreo, Pulmão Extra, Leque dos Ventos Calmantes e Tenda Flutuante, usando ID e nome completo do item.
 - [x] Criar e sincronizar artes individuais para Sopro Gélido, Cachecol de Jaathoom, Sopro de Nimbo e Sinos Espirais, usando ID e nome completo do item.
+- [x] Criar e sincronizar artes individuais para Pedra Aeon, Pó da Seca, Pó de Exúvia e Fragmento Fóssil, usando ID e nome completo do item.

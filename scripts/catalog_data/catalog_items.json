@@ -8476,8 +8476,8 @@
         "variants": "cymophane: +2 Percepção e CDs contra Esconder-se, Furtividade e Roubar; see the unseen 1/dia; olivina: +2 salvamentos contra confuso, assustado e estupefato, reação suprime efeito por 1 minuto com –1 ataques; seixo: +1 Fortitude e CDs contra Agarrar/Engolir, grease primal 1/dia"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-aeon-stone.png",
+      "imageFamily": "aeon-stone",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -8510,8 +8510,8 @@
         "creatures": "explosão de 3 metros a até 1,5 metro; criaturas Água sofrem slow; Fortitude CD 28"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-drought-powder.png",
+      "imageFamily": "drought-powder",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -8542,8 +8542,8 @@
         "shedChitin": "reação ao ser petrificado; efeito original termina; fica acelerado por 1 minuto, condenado 1 e restringido; Escapar CD 25"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-exuviae-powder.png",
+      "imageFamily": "exuviae-powder",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -8575,8 +8575,8 @@
         "variants": "mosquito 1/dia por 10 minutos; brontossauro 4/mês, 24 horas fora de combate; deinonico 1/dia por 10 minutos; euriptérida 1/semana por 24 horas; madeira petrificada 1/dia por 1 minuto; tricerátopo/tyrannosaurus 1/dia por 10 minutos"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-fossil-fragment.png",
+      "imageFamily": "fossil-fragment",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
