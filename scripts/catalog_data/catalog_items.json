@@ -5375,8 +5375,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-hooded-lantern.png",
+      "imageFamily": "hooded-lantern",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -5403,8 +5403,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-simple-padlock.png",
+      "imageFamily": "simple-padlock",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -5431,8 +5431,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-average-lock.png",
+      "imageFamily": "average-lock",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -5459,8 +5459,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-magnifying-glass.png",
+      "imageFamily": "magnifying-glass",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }

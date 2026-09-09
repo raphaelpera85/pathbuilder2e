@@ -1271,3 +1271,4 @@ Persistência remota autenticada de personagens (2026-09-08): `npm run audit:cam
 - [x] Criar e sincronizar artes individuais para Saco de Dormir, Estrepes, Vela e Giz (10 pedaços), usando ID e nome completo do item.
 - [x] Criar e sincronizar artes individuais para Kit de Escalada, Bússola, Pé de Cabra e Lanterna de Foco, usando ID e nome completo do item.
 - [x] Criar e sincronizar artes individuais para Capa de Duelo, Equipamento de Pesca, Pederneira e Isqueiro e Gancho de Escalada, usando ID e nome completo do item.
+- [x] Criar e sincronizar artes individuais para Lanterna Furta-Fogo, Cadeado Simples, Fechadura Média e Lupa, usando ID e nome completo do item.

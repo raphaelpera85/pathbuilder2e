@@ -87,6 +87,10 @@ export function getItemVisualKey(data: ItemVisualData = {}): string {
   if (data.id === "item.compendium.fishing_tackle" || /^equipamento de pesca$/.test(name)) return "fishing-tackle";
   if (data.id === "item.compendium.flint_and_steel" || /^pederneira e isqueiro$/.test(name)) return "flint-and-steel";
   if (data.id === "item.compendium.grappling_hook" || /^gancho de escalada$/.test(name)) return "grappling-hook";
+  if (data.id === "item.compendium.lantern_hooded" || /^lanterna furta-fogo$/.test(name)) return "hooded-lantern";
+  if (data.id === "item.compendium.lock_simple" || /^cadeado simples$/.test(name)) return "simple-padlock";
+  if (data.id === "item.compendium.lock_average" || /^fechadura m[eé]dia$/.test(name)) return "average-lock";
+  if (data.id === "item.compendium.magnifying_glass" || /^lupa$/.test(name)) return "magnifying-glass";
   if (data.id === "item.howl.bloodgorger_scythe" || /^foice devorasangue$/.test(name)) return "bloodgorger-scythe";
   if (data.id === "item.howl.catoblepas_maul" || /^malho de catoblepas$/.test(name)) return "catoblepas-maul";
   if (data.id === "item.howl.chimera_flail" || /^mangual de quimera$/.test(name)) return "chimera-flail";
