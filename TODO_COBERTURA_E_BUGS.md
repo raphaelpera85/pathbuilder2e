@@ -1263,3 +1263,4 @@ Persistência remota autenticada de personagens (2026-09-08): `npm run audit:cam
 - [x] Criar e sincronizar artes individuais para Bandoleira do Saque da Sorte, Foice Devorasangue, Malho de Catoblepas e Mangual de Quimera, usando ID e nome completo do item.
 - [x] Criar e sincronizar artes individuais para Katar de Presa Shuln, Arauto da Tempestade, Picareta de Cão-Troll e Gatilho de Alicórnio, usando ID e nome completo do item.
 - [x] Criar e sincronizar artes individuais para Pistola Uivante, Bandoleira de Repetidor, Sela de Guerra e Isca de Pesca, usando ID e nome completo do item.
+- [x] Criar e sincronizar artes individuais para Vidro da Calamidade, Ganso Dourado, Rosa dos Amores Perdidos e Olho de Criolita, usando ID e nome completo do item.

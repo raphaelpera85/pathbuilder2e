@@ -67,6 +67,10 @@ function visualKey(row) {
   if (row.id === "item.battlecry.repeater_bandolier" || /^bandoleira de repetidor$/.test(name)) return "repeater-bandolier";
   if (row.id === "item.battlecry.war_saddle" || /^sela de guerra$/.test(name)) return "war-saddle";
   if (row.id === "item.war_immortals.fishing_lure" || /^isca de pesca$/.test(name)) return "fishing-lure";
+  if (row.id === "item.dark_archive.calamity_glass" || /^vidro da calamidade$/.test(name)) return "calamity-glass";
+  if (row.id === "item.dark_archive.golden_goose" || /^ganso dourado$/.test(name)) return "golden-goose";
+  if (row.id === "item.dark_archive.rose_of_loves_lost" || /^rosa dos amores perdidos$/.test(name)) return "rose-lost-loves";
+  if (row.id === "item.dark_archive.cryolite_eye" || /^olho de criolita$/.test(name)) return "cryolite-eye";
   if (row.id === "item.howl.bloodgorger_scythe" || /^foice devorasangue$/.test(name)) return "bloodgorger-scythe";
   if (row.id === "item.howl.catoblepas_maul" || /^malho de catoblepas$/.test(name)) return "catoblepas-maul";
   if (row.id === "item.howl.chimera_flail" || /^mangual de quimera$/.test(name)) return "chimera-flail";

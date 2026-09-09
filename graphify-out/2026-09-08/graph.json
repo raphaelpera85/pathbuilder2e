@@ -3305,7 +3305,7 @@
       "label": "run()",
       "file_type": "code",
       "source_file": "scripts/sync-item-images-to-supabase.cjs",
-      "source_location": "L98",
+      "source_location": "L118",
       "_callable": true,
       "_origin": "ast",
       "id": "scripts_sync_item_images_to_supabase_run",
@@ -3437,7 +3437,7 @@
       "label": "getItemImageAlt()",
       "file_type": "code",
       "source_file": "src/itemVisuals.ts",
-      "source_location": "L90",
+      "source_location": "L110",
       "_callable": true,
       "_origin": "ast",
       "id": "src_itemvisuals_getitemimagealt",
@@ -3449,7 +3449,7 @@
       "label": "getItemImageUrl()",
       "file_type": "code",
       "source_file": "src/itemVisuals.ts",
-      "source_location": "L86",
+      "source_location": "L106",
       "_callable": true,
       "_origin": "ast",
       "id": "src_itemvisuals_getitemimageurl",
@@ -31683,7 +31683,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "scripts/sync-item-images-to-supabase.cjs",
-      "source_location": "L112",
+      "source_location": "L132",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_sync_item_images_to_supabase_run",
@@ -32427,7 +32427,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/itemVisuals.ts",
-      "source_location": "L87",
+      "source_location": "L107",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_itemvisuals_getitemimageurl",
@@ -51970,6 +51970,17 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "scripts/sync-item-images-to-supabase.cjs",
+      "source_location": "L118",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_sync_item_images_to_supabase",
+      "target": "scripts_sync_item_images_to_supabase_run",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/sync-item-images-to-supabase.cjs",
       "source_location": "L19",
       "weight": 1.0,
       "_origin": "ast",
@@ -52074,17 +52085,6 @@
       "_origin": "ast",
       "source": "scripts_sync_item_images_to_supabase",
       "target": "scripts_sync_item_images_to_supabase_root",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/sync-item-images-to-supabase.cjs",
-      "source_location": "L98",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_sync_item_images_to_supabase",
-      "target": "scripts_sync_item_images_to_supabase_run",
       "confidence_score": 1.0
     },
     {
@@ -53455,6 +53455,28 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/itemVisuals.ts",
+      "source_location": "L106",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_itemvisuals",
+      "target": "src_itemvisuals_getitemimageurl",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/itemVisuals.ts",
+      "source_location": "L110",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_itemvisuals",
+      "target": "src_itemvisuals_getitemimagealt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/itemVisuals.ts",
       "source_location": "L14",
       "weight": 1.0,
       "_origin": "ast",
@@ -53471,28 +53493,6 @@
       "_origin": "ast",
       "source": "src_itemvisuals",
       "target": "src_itemvisuals_getitemvisualkey",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/itemVisuals.ts",
-      "source_location": "L86",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_itemvisuals",
-      "target": "src_itemvisuals_getitemimageurl",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/itemVisuals.ts",
-      "source_location": "L90",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_itemvisuals",
-      "target": "src_itemvisuals_getitemimagealt",
       "confidence_score": 1.0
     },
     {
@@ -59601,5 +59601,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "f41468ac3d719bcbb4954576b8df94d9f543af1d"
+  "built_at_commit": "041bfd98262c69266a25e9e05dfea24870caf900"
 }

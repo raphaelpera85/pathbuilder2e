@@ -3305,7 +3305,7 @@
       "label": "run()",
       "file_type": "code",
       "source_file": "scripts/sync-item-images-to-supabase.cjs",
-      "source_location": "L102",
+      "source_location": "L122",
       "_callable": true,
       "_origin": "ast",
       "id": "scripts_sync_item_images_to_supabase_run",
@@ -3437,7 +3437,7 @@
       "label": "getItemImageAlt()",
       "file_type": "code",
       "source_file": "src/itemVisuals.ts",
-      "source_location": "L94",
+      "source_location": "L114",
       "_callable": true,
       "_origin": "ast",
       "id": "src_itemvisuals_getitemimagealt",
@@ -3449,7 +3449,7 @@
       "label": "getItemImageUrl()",
       "file_type": "code",
       "source_file": "src/itemVisuals.ts",
-      "source_location": "L90",
+      "source_location": "L110",
       "_callable": true,
       "_origin": "ast",
       "id": "src_itemvisuals_getitemimageurl",
@@ -31683,7 +31683,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "scripts/sync-item-images-to-supabase.cjs",
-      "source_location": "L116",
+      "source_location": "L136",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_sync_item_images_to_supabase_run",
@@ -32427,7 +32427,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/itemVisuals.ts",
-      "source_location": "L91",
+      "source_location": "L111",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_itemvisuals_getitemimageurl",
@@ -51970,7 +51970,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "scripts/sync-item-images-to-supabase.cjs",
-      "source_location": "L102",
+      "source_location": "L122",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_sync_item_images_to_supabase",
@@ -53455,6 +53455,28 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/itemVisuals.ts",
+      "source_location": "L110",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_itemvisuals",
+      "target": "src_itemvisuals_getitemimageurl",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/itemVisuals.ts",
+      "source_location": "L114",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_itemvisuals",
+      "target": "src_itemvisuals_getitemimagealt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/itemVisuals.ts",
       "source_location": "L14",
       "weight": 1.0,
       "_origin": "ast",
@@ -53471,28 +53493,6 @@
       "_origin": "ast",
       "source": "src_itemvisuals",
       "target": "src_itemvisuals_getitemvisualkey",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/itemVisuals.ts",
-      "source_location": "L90",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_itemvisuals",
-      "target": "src_itemvisuals_getitemimageurl",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/itemVisuals.ts",
-      "source_location": "L94",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_itemvisuals",
-      "target": "src_itemvisuals_getitemimagealt",
       "confidence_score": 1.0
     },
     {
@@ -59601,5 +59601,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "3aa5dc7dc341c66dc3b9ee9e1ee4eb8187727c27"
+  "built_at_commit": "0aef50148a03bb548f2e0b0f636c59909a8107fb"
 }

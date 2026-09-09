@@ -55,6 +55,10 @@ export function getItemVisualKey(data: ItemVisualData = {}): string {
   if (data.id === "item.battlecry.repeater_bandolier" || /^bandoleira de repetidor$/.test(name)) return "repeater-bandolier";
   if (data.id === "item.battlecry.war_saddle" || /^sela de guerra$/.test(name)) return "war-saddle";
   if (data.id === "item.war_immortals.fishing_lure" || /^isca de pesca$/.test(name)) return "fishing-lure";
+  if (data.id === "item.dark_archive.calamity_glass" || /^vidro da calamidade$/.test(name)) return "calamity-glass";
+  if (data.id === "item.dark_archive.golden_goose" || /^ganso dourado$/.test(name)) return "golden-goose";
+  if (data.id === "item.dark_archive.rose_of_loves_lost" || /^rosa dos amores perdidos$/.test(name)) return "rose-lost-loves";
+  if (data.id === "item.dark_archive.cryolite_eye" || /^olho de criolita$/.test(name)) return "cryolite-eye";
   if (data.id === "item.howl.bloodgorger_scythe" || /^foice devorasangue$/.test(name)) return "bloodgorger-scythe";
   if (data.id === "item.howl.catoblepas_maul" || /^malho de catoblepas$/.test(name)) return "catoblepas-maul";
   if (data.id === "item.howl.chimera_flail" || /^mangual de quimera$/.test(name)) return "chimera-flail";
