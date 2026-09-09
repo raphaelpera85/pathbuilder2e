@@ -17,7 +17,8 @@
     "audit:books": "node scripts/audit-books.cjs",
     "audit:weapons:source": "node scripts/audit-weapon-source-coverage.cjs",
     "sync:weapons:supabase": "node scripts/sync-weapon-catalog-to-supabase.cjs",
-    "audit:local:weapon-variants": "node scripts/audit-local-weapon-variants.cjs"
+    "audit:local:weapon-variants": "node scripts/audit-local-weapon-variants.cjs",
+    "audit:local:weapons": "node scripts/audit-local-weapons.cjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "latest",
