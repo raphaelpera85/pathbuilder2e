@@ -143,6 +143,10 @@ export function getItemVisualKey(data: ItemVisualData = {}): string {
   if (data.id === "item.rage_elements.fire.everburning_coal" || /^carv[aã]o inextingu[ií]vel$/.test(name)) return "everburning-coal";
   if (data.id === "item.rage_elements.fire.globe_of_shrouds" || /^globo de mortalhas$/.test(name)) return "globe-shrouds";
   if (data.id === "item.rage_elements.fire.lambent_perfume" || /^perfume lampejante$/.test(name)) return "lambent-perfume";
+  if (data.id === "item.rage_elements.fire.rhyton_of_the_radiant_ifrit" || /^r[ií]ton do ifrit radiante$/.test(name)) return "radiant-ifrit-rhyton";
+  if (data.id === "item.rage_elements.fire.smoke_veil" || /^v[eé]u de fuma[cç]a$/.test(name)) return "smoke-veil";
+  if (data.id === "item.rage_elements.fire.sparkshade_parasol" || /^sombrinha fagulhante$/.test(name)) return "sparkshade-parasol";
+  if (data.id === "item.rage_elements.fire.thawing_candle" || /^vela do degelo$/.test(name)) return "thawing-candle";
   if (data.id === "item.howl.bloodgorger_scythe" || /^foice devorasangue$/.test(name)) return "bloodgorger-scythe";
   if (data.id === "item.howl.catoblepas_maul" || /^malho de catoblepas$/.test(name)) return "catoblepas-maul";
   if (data.id === "item.howl.chimera_flail" || /^mangual de quimera$/.test(name)) return "chimera-flail";

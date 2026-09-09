@@ -9146,8 +9146,8 @@
         "command": "2 ações; 1/dia; command de 6º círculo contra todos os hostis no alcance; falha também causa Fatigado"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-radiant-ifrit-rhyton.png",
+      "imageFamily": "radiant-ifrit-rhyton",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -9214,8 +9214,8 @@
         "effect": "teste de Intimidação para Demoralizar; perde traço auditivo, ganha visual e sem penalidade por idioma"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-smoke-veil.png",
+      "imageFamily": "smoke-veil",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -9247,8 +9247,8 @@
         "pyrotechnics": "2 ações; enquanto carga está ativa; linha de 9 metros; 10d6 fogo; Reflexos básico CD 28"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-sparkshade-parasol.png",
+      "imageFamily": "sparkshade-parasol",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -9280,8 +9280,8 @@
         "effect": "resistência 10 a frio; quem tem dano persistente de frio tenta CD 15 para encerrá-lo ao entrar ou estar na área; uma vez por criatura"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-thawing-candle.png",
+      "imageFamily": "thawing-candle",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
