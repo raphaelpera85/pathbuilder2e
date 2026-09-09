@@ -115,6 +115,10 @@ function visualKey(row) {
   if (row.id === "item.compendium.waterskin" || /^odre$/.test(name)) return "waterskin";
   if (row.id === "item.compendium.tindertwig" || /^graveto de igni[cç][aã]o$/.test(name)) return "tinder-twig";
   if (row.id === "item.compendium.soap" || /^sab[aã]o$/.test(name)) return "soap";
+  if (row.id === "item.compendium.thieves_tools_infiltrator" || /^ferramentas de ladr[aã]o \(infiltrador\)$/.test(name)) return "infiltrator-thieves-tools";
+  if (row.id === "item.compendium.spacious_pouch_bag_of_holding" || /^bolsa espa[cç]osa \(bolsa de carga\)$/.test(name)) return "spacious-pouch";
+  if (row.id === "item.compendium.cloak_of_elvenkind" || /^manto [eé]lfico$/.test(name)) return "elven-cloak";
+  if (row.id === "item.compendium.goggles_of_night" || /^[oó]culos da noite$/.test(name)) return "night-goggles";
   if (row.id === "item.howl.bloodgorger_scythe" || /^foice devorasangue$/.test(name)) return "bloodgorger-scythe";
   if (row.id === "item.howl.catoblepas_maul" || /^malho de catoblepas$/.test(name)) return "catoblepas-maul";
   if (row.id === "item.howl.chimera_flail" || /^mangual de quimera$/.test(name)) return "chimera-flail";

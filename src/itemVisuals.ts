@@ -103,6 +103,10 @@ export function getItemVisualKey(data: ItemVisualData = {}): string {
   if (data.id === "item.compendium.waterskin" || /^odre$/.test(name)) return "waterskin";
   if (data.id === "item.compendium.tindertwig" || /^graveto de igni[cç][aã]o$/.test(name)) return "tinder-twig";
   if (data.id === "item.compendium.soap" || /^sab[aã]o$/.test(name)) return "soap";
+  if (data.id === "item.compendium.thieves_tools_infiltrator" || /^ferramentas de ladr[aã]o \(infiltrador\)$/.test(name)) return "infiltrator-thieves-tools";
+  if (data.id === "item.compendium.spacious_pouch_bag_of_holding" || /^bolsa espa[cç]osa \(bolsa de carga\)$/.test(name)) return "spacious-pouch";
+  if (data.id === "item.compendium.cloak_of_elvenkind" || /^manto [eé]lfico$/.test(name)) return "elven-cloak";
+  if (data.id === "item.compendium.goggles_of_night" || /^[oó]culos da noite$/.test(name)) return "night-goggles";
   if (data.id === "item.howl.bloodgorger_scythe" || /^foice devorasangue$/.test(name)) return "bloodgorger-scythe";
   if (data.id === "item.howl.catoblepas_maul" || /^malho de catoblepas$/.test(name)) return "catoblepas-maul";
   if (data.id === "item.howl.chimera_flail" || /^mangual de quimera$/.test(name)) return "chimera-flail";
