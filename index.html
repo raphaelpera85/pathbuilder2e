@@ -1044,13 +1044,13 @@
 
   <!-- SCRIPTS -->
   <script defer src="js/pdf-lib.min.js"></script>
-  <script defer src="js/pf2e_feats_mechanics.js"></script>
   <script defer src="js/pf2e_data.js"></script>
   <script defer src="js/pf2e_weapon_metadata.js"></script>
   <script defer src="js/pf2e_engine.js"></script>
   <script defer src="js/pf2e_pdf_form_filler.js"></script>
   <script defer src="js/pf2e_ai_assistant.js"></script>
   <script defer src="js/app.js"></script>
+  <script async src="js/pf2e_feats_mechanics.js" onload="window.PF2E_ENRICH_FEATS?.()"></script>
   <script type="module" src="/src/main.tsx"></script>
 </body>
 </html>

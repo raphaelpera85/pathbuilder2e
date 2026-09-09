@@ -16479,7 +16479,7 @@ if (typeof module !== 'undefined' && module.exports) {
 // ==========================================
 // AUTO-ENRICHMENT OF ALL FEATS WITH MECHANICS
 // ==========================================
-(function enrichAllFeatsWithFullMechanics() {
+function enrichAllFeatsWithFullMechanics() {
   const mechanics = (typeof PF2E_FEATS_MECHANICS_MAP !== "undefined")
     ? PF2E_FEATS_MECHANICS_MAP
     : (typeof window !== "undefined" && window.PF2E_FEATS_MECHANICS_MAP)
@@ -16533,7 +16533,9 @@ if (typeof module !== 'undefined' && module.exports) {
       feat.needs_review = false;
     }
   }
-})();
+}
+if (typeof window !== "undefined") window.PF2E_ENRICH_FEATS = enrichAllFeatsWithFullMechanics;
+enrichAllFeatsWithFullMechanics();
 
 
 // ============================================================================
