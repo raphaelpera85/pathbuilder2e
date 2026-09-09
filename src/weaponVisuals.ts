@@ -83,6 +83,10 @@ export function getWeaponVisualKey(data: WeaponVisualData = {}): string {
   if (/árvore de mithral|mithral tree/.test(identity)) return "mithral-tree";
   if (/mosquete de cano duplo|double.?barrel musket/.test(identity)) return "double-barrel-musket";
   if (/pistola de cano duplo|double.?barrel pistol/.test(identity)) return "double-barrel-pistol";
+  if (/machado-mosquete.*corpo a corpo|melee axe musket/.test(identity)) return "axe-musket-melee";
+  if (/machado-mosquete.*[àa] dist[âa]ncia|ranged axe musket/.test(identity)) return "axe-musket-ranged";
+  if (/pistola de cl[aã]o|clan pistol/.test(identity)) return "clan-pistol";
+  if (/espingarda en[aâ]nica|dwarven scattergun/.test(identity)) return "dwarven-scattergun";
   if (/^lan[cç]a$|^spear$/.test(name.trim())) return "spear-standard";
   if (/spetum de captura|capture spetum/.test(identity)) return "capture-spetum";
   if (/fauchard/.test(identity)) return "fauchard";

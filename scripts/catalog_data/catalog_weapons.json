@@ -332,7 +332,7 @@
     "source_page": 158,
     "data": {
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-firearm.png",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-axe-musket-melee.png",
       "variantFamily": "weapon.axe_musket",
       "variantRole": "melee",
       "variantOf": "weapon.axe_musket_ranged",
@@ -371,7 +371,7 @@
     "source_page": 158,
     "data": {
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-firearm.png",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-axe-musket-ranged.png",
       "variantFamily": "weapon.axe_musket",
       "variantRole": "ranged",
       "variantOf": "weapon.axe_musket_melee",
@@ -2574,7 +2574,7 @@
     "source_page": 151,
     "data": {
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-firearm.png",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-clan-pistol.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -2642,7 +2642,7 @@
     "source_page": 151,
     "data": {
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-firearm.png",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-dwarven-scattergun.png",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
