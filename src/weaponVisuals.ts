@@ -16,6 +16,10 @@ export function getWeaponVisualKey(data: WeaponVisualData = {}): string {
   const name = String(data.name || data.names?.["pt-BR"] || data.names?.en || "").toLowerCase();
   const traits = Array.isArray(data.traits) ? data.traits.join(" ").toLowerCase() : "";
   const identity = `${group} ${category} ${name} ${traits}`;
+  if (/lan[cç]a do comandante de cavalaria|cavalry commander.?s lance/.test(identity)) return "cavalry-commanders-lance";
+  if (/remo de combate|fighting oar/.test(identity)) return "fighting-oar";
+  if (/azagaia de guerra|war javelin/.test(identity)) return "war-javelin";
+  if (/chamado do coveiro|gravedigger.?s call/.test(identity)) return "gravediggers-call";
   if (/pistola de pederneira|flintlock pistol/.test(identity)) return "flintlock-pistol";
   if (/mosquete de pederneira|flintlock musket/.test(identity)) return "flintlock-musket";
   if (/bacamarte|blunderbuss/.test(identity)) return "blunderbuss";

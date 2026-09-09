@@ -162,6 +162,10 @@ describe("weapon visual fallback", () => {
     expect(getWeaponVisualKey({ names: { "pt-BR": "Chicote" }, traits: ["Alcance"] })).toBe("whip");
     expect(getWeaponVisualKey({ names: { "pt-BR": "Cajado" }, traits: ["Duas Mãos"] })).toBe("staff");
     expect(getWeaponVisualKey({ names: { "pt-BR": "Bossa de Escudo" }, traits: ["Anexada ao escudo"] })).toBe("shield-boss");
+    expect(getWeaponVisualKey({ names: { "pt-BR": "Lança do Comandante de Cavalaria" } })).toBe("cavalry-commanders-lance");
+    expect(getWeaponVisualKey({ names: { "pt-BR": "Remo de Combate" } })).toBe("fighting-oar");
+    expect(getWeaponVisualKey({ names: { "pt-BR": "Azagaia de Guerra" } })).toBe("war-javelin");
+    expect(getWeaponVisualKey({ names: { "pt-BR": "Chamado do Coveiro" } })).toBe("gravediggers-call");
   });
 
   it("atribui uma ilustração específica a todas as armas catalogadas", () => {
