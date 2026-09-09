@@ -151,6 +151,10 @@ function visualKey(row) {
   if (row.id === "item.rage_elements.earth.vital_earth" || /^terra vital$/.test(name)) return "vital-earth";
   if (row.id === "item.rage_elements.fire.ash_gown" || /^vestido de cinzas$/.test(name)) return "ash-gown";
   if (row.id === "item.rage_elements.fire.brazier_of_harmony" || /^braseiro da harmonia$/.test(name)) return "brazier-harmony";
+  if (row.id === "item.rage_elements.fire.candle_of_inflamed_passions" || /^vela das paix[oõ]es inflamadas$/.test(name)) return "inflamed-passions-candle";
+  if (row.id === "item.rage_elements.fire.everburning_coal" || /^carv[aã]o inextingu[ií]vel$/.test(name)) return "everburning-coal";
+  if (row.id === "item.rage_elements.fire.globe_of_shrouds" || /^globo de mortalhas$/.test(name)) return "globe-shrouds";
+  if (row.id === "item.rage_elements.fire.lambent_perfume" || /^perfume lampejante$/.test(name)) return "lambent-perfume";
   if (row.id === "item.howl.bloodgorger_scythe" || /^foice devorasangue$/.test(name)) return "bloodgorger-scythe";
   if (row.id === "item.howl.catoblepas_maul" || /^malho de catoblepas$/.test(name)) return "catoblepas-maul";
   if (row.id === "item.howl.chimera_flail" || /^mangual de quimera$/.test(name)) return "chimera-flail";

@@ -8981,8 +8981,8 @@
         "effect": "–1 de estado em salvamentos contra efeitos emocionais; queima por 10 minutos; não pode ser reacendida"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-inflamed-passions-candle.png",
+      "imageFamily": "inflamed-passions-candle",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -9014,8 +9014,8 @@
         "activate": "3 ações; 1/dia; wall of ice com traços, dano e fraquezas trocados para fogo; frio/água evaporam seções"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-everburning-coal.png",
+      "imageFamily": "everburning-coal",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -9047,8 +9047,8 @@
         "enemies": "inimigo invisível vira forma translúcida para você e aliados; não fica oculto, mas permanece oculto por concealment"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-globe-shrouds.png",
+      "imageFamily": "globe-shrouds",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -9079,8 +9079,8 @@
         "effect": "ao fim do turno na fumaça, criatura enjoada ou com aflição tenta novo salvamento; escolhe uma; imunidade 24 horas para essa aflição"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-lambent-perfume.png",
+      "imageFamily": "lambent-perfume",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }

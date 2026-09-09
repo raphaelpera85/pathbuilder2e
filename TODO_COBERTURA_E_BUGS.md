@@ -1284,3 +1284,4 @@ Persistência remota autenticada de personagens (2026-09-08): `npm run audit:cam
 - [x] Criar e sincronizar artes individuais para Pedra Aeon, Pó da Seca, Pó de Exúvia e Fragmento Fóssil, usando ID e nome completo do item.
 - [x] Criar e sincronizar artes individuais para Dados de Jabali, Robe de Pedra, Castelo de Areia e Pedra Cantante, usando ID e nome completo do item.
 - [x] Criar e sincronizar artes individuais para Semente de Estalagmite, Terra Vital, Vestido de Cinzas e Braseiro da Harmonia, usando ID e nome completo do item.
+- [x] Criar e sincronizar artes individuais para Vela das Paixões Inflamadas, Carvão Inextinguível, Globo de Mortalhas e Perfume Lampejante, usando ID e nome completo do item.
