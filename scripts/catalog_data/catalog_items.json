@@ -7315,8 +7315,8 @@
         "ladle": "Nível 2, 32 po, até 16 galões"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-purifying-spoon.png",
+      "imageFamily": "purifying-spoon",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -7384,8 +7384,8 @@
         "cloudOfLeaves": "2 ações, 1/dia; aliados e indiferentes a até 9 metros recebem cobertura menor por 1 rodada; inimigos recebem revealing light por 1 minuto"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-sandalwood-fan.png",
+      "imageFamily": "sandalwood-fan",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -7456,8 +7456,8 @@
         "limitation": "não muda o tipo do item; não transforma roupa fina em explorador ou inverno"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-tailors-boll.png",
+      "imageFamily": "tailors-boll",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -8376,8 +8376,8 @@
         "variants": "preta: ocultação; azul: resistência 5 eletricidade; verde: Fortitude CD 25 ou enjoado; vermelha: Vontade CD 24 ou assustado; branca: +3 metros em Velocidade"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-spun-cloud.png",
+      "imageFamily": "spun-cloud",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }

@@ -159,6 +159,10 @@ function visualKey(row) {
   if (row.id === "item.rage_elements.fire.smoke_veil" || /^v[eé]u de fuma[cç]a$/.test(name)) return "smoke-veil";
   if (row.id === "item.rage_elements.fire.sparkshade_parasol" || /^sombrinha fagulhante$/.test(name)) return "sparkshade-parasol";
   if (row.id === "item.rage_elements.fire.thawing_candle" || /^vela do degelo$/.test(name)) return "thawing-candle";
+  if (row.id === "item.rage_elements.wood.purifying_spoon" || /^colher purificadora$/.test(name)) return "purifying-spoon";
+  if (row.id === "item.rage_elements.wood.sandalwood_fan" || /^leque de s[aâ]ndalo$/.test(name)) return "sandalwood-fan";
+  if (row.id === "item.rage_elements.wood.tailors_boll" || /^bola do alfaiate$/.test(name)) return "tailors-boll";
+  if (row.id === "item.rage_elements.air.spun_cloud" || /^nuvem fiada$/.test(name)) return "spun-cloud";
   if (row.id === "item.howl.bloodgorger_scythe" || /^foice devorasangue$/.test(name)) return "bloodgorger-scythe";
   if (row.id === "item.howl.catoblepas_maul" || /^malho de catoblepas$/.test(name)) return "catoblepas-maul";
   if (row.id === "item.howl.chimera_flail" || /^mangual de quimera$/.test(name)) return "chimera-flail";
