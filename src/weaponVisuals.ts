@@ -136,12 +136,12 @@ export function getWeaponVisualKey(data: WeaponVisualData = {}): string {
   if (/arma de fogo|firearm|pistola|mosquete|arcabuz|bacamarte|pimenteiro|jezail|harmona|can[oõ]n|repetidor|pressure repeater/.test(identity)) return "firearm";
   if (/crossbow|besta/.test(group)) return "crossbow";
   if (/besta|crossbow|arbalesta|balista/.test(identity)) return "crossbow";
+  if (/arco de manopla|gauntlet bow/.test(identity)) return "gauntlet-bow";
   if (/bow|arco|daikyu/.test(identity)) return "bow";
   if (/whip|chicote|chain|cadeia|correntes/.test(identity)) return "whip";
   if (group && /^funda$|^sling$/.test(name.trim())) return "sling-standard";
   if (/funda-trov[aã]o|thunder sling/.test(identity)) return "thunder-sling";
   if (/kestros/.test(identity)) return "kestros";
-  if (/arco de manopla|gauntlet bow/.test(identity)) return "gauntlet-bow";
   if (/sling|funda/.test(identity)) return "sling";
   if (/shield|escudo|bossa de escudo|cravos de escudo/.test(identity)) return "shield";
   if (/gauntlet|manopla|punho|garras|garra/.test(identity)) return "gauntlet";
