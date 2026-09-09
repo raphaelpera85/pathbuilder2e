@@ -71,6 +71,10 @@ export function getWeaponVisualKey(data: WeaponVisualData = {}): string {
   if (/dardo|dart/.test(identity)) return "dart";
   if (/azagaia|javelin/.test(identity)) return "javelin";
   if (/adaga de duelo|main gauche/.test(identity)) return "main-gauche";
+  if (/khopesh/.test(identity)) return "khopesh";
+  if (/l[aâ]mina grimpa tengu|tengu gale blade/.test(identity)) return "tengu-gale-blade";
+  if (/espada de duelo aldori|aldori dueling sword/.test(identity)) return "aldori-dueling-sword";
+  if (/varredor de l[aâ]minas|bladesweeper/.test(identity)) return "bladesweeper";
   if (/rasgador de kith|kithrender/.test(identity)) return "kithrender";
   if (/espada larga|broadsword/.test(identity)) return "broadsword";
   if (/bracamante|falchion/.test(identity)) return "falchion";

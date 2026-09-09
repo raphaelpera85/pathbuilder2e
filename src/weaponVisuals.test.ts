@@ -104,6 +104,10 @@ describe("weapon visual fallback", () => {
     expect(getWeaponVisualKey({ name: "Espada Longa", weaponGroup: "Sword" })).toBe("longsword");
     expect(getWeaponVisualKey({ name: "Espada Curta", weaponGroup: "Sword" })).toBe("shortsword");
     expect(getWeaponVisualKey({ name: "Kukri", weaponGroup: "Knife" })).toBe("kukri");
+    expect(getWeaponVisualKey({ name: "Khopesh", weaponGroup: "Sword" })).toBe("khopesh");
+    expect(getWeaponVisualKey({ name: "Lâmina Grimpa Tengu", weaponGroup: "Sword" })).toBe("tengu-gale-blade");
+    expect(getWeaponVisualKey({ name: "Espada de Duelo Aldori", weaponGroup: "Sword" })).toBe("aldori-dueling-sword");
+    expect(getWeaponVisualKey({ name: "Varredor de Lâminas", weaponGroup: "Sword" })).toBe("bladesweeper");
   });
 
   it("keeps every local fallback asset available to the browser", () => {
