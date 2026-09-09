@@ -179,6 +179,10 @@ function visualKey(row) {
   if (row.id === "item.pc2.minor_unstoppable_mutagen" || /^mutag[eê]nico do irrefre[aá]vel menor$/.test(name)) return "minor-unstoppable-mutagen";
   if (row.id === "item.pc2.minor_serene_mutagen" || /^mutag[eê]nico sereno menor$/.test(name)) return "minor-serene-mutagen";
   if (row.id === "item.pc2.dead_weight_snare" || /^arapuca de peso morto$/.test(name)) return "dead-weight-snare";
+  if (row.id === "item.pc2.signaling_snare" || /^arapuca sinalizadora$/.test(name)) return "signaling-snare";
+  if (row.id === "item.pc2.marking_snare" || /^arapuca de marcar$/.test(name)) return "marking-snare";
+  if (row.id === "item.pc2.lesser_articulated_wire" || /^fio articulado menor$/.test(name)) return "lesser-articulated-wire";
+  if (row.id === "item.pc2.alchemists_goggles" || /^[oó]culos de alquimista$/.test(name)) return "alchemists-goggles";
   if (row.id === "item.howl.bloodgorger_scythe" || /^foice devorasangue$/.test(name)) return "bloodgorger-scythe";
   if (row.id === "item.howl.catoblepas_maul" || /^malho de catoblepas$/.test(name)) return "catoblepas-maul";
   if (row.id === "item.howl.chimera_flail" || /^mangual de quimera$/.test(name)) return "chimera-flail";

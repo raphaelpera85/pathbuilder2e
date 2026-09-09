@@ -1298,3 +1298,5 @@ Persistência remota autenticada de personagens (2026-09-08): `npm run audit:cam
   - Evidência (2026-09-09): quatro artes foram geradas e vinculadas por ID; `itemVisuals.test.ts` passou 189/189; os quatro PNGs foram publicados no bucket `compendium-assets` e os registros correspondentes foram atualizados no Supabase.
 - [x] Criar e sincronizar artes individuais para Mutagênico de Mercúrio Menor, Mutagênico do Irrefreável Menor, Mutagênico Sereno Menor e Arapuca de Peso Morto, usando ID e nome completo do item.
   - Evidência (2026-09-09): quatro artes foram geradas e vinculadas por ID; `itemVisuals.test.ts` passou 193/193; os quatro PNGs foram publicados no bucket `compendium-assets` e os registros correspondentes foram atualizados no Supabase.
+- [x] Criar e sincronizar artes individuais para Arapuca Sinalizadora, Arapuca de Marcar, Fio Articulado Menor e Óculos de Alquimista, usando ID e nome completo do item.
+  - Evidência (2026-09-09): quatro artes foram geradas e vinculadas por ID; `itemVisuals.test.ts` passou 197/197; os quatro PNGs foram publicados no bucket `compendium-assets` e os registros correspondentes foram atualizados no Supabase.

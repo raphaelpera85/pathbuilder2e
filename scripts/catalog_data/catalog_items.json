@@ -11192,8 +11192,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-signaling-snare.png",
+      "imageFamily": "signaling-snare",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -11222,8 +11222,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-marking-snare.png",
+      "imageFamily": "marking-snare",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -12314,8 +12314,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-lesser-articulated-wire.png",
+      "imageFamily": "lesser-articulated-wire",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -12344,8 +12344,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-alchemists-goggles.png",
+      "imageFamily": "alchemists-goggles",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
