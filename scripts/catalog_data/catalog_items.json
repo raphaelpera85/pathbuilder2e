@@ -4647,8 +4647,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-alchemists-lab.png",
+      "imageFamily": "alchemists-lab",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -4675,8 +4675,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-alchemists-lab-expanded.png",
+      "imageFamily": "alchemists-lab-expanded",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -4731,8 +4731,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-animal-blind.png",
+      "imageFamily": "animal-blind",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -4759,8 +4759,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-animal-call.png",
+      "imageFamily": "animal-call",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }

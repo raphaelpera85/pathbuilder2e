@@ -67,6 +67,10 @@ export function getItemVisualKey(data: ItemVisualData = {}): string {
   if (data.id === "item.dark_archive.self_emptying_pocket" || /^bolso que se esvazia sozinho$/.test(name)) return "self-emptying-pocket";
   if (data.id === "item.dark_archive.stone_of_unrivaled_skill" || /^pedra da habilidade inigual[aá]vel$/.test(name)) return "stone-unrivaled-skill";
   if (data.id === "item.compendium.air_bladder" || /^bexiga de ar$/.test(name)) return "air-bladder";
+  if (data.id === "item.compendium.alchemist_s_lab" || /^laborat[oó]rio de alquimista$/.test(name)) return "alchemists-lab";
+  if (data.id === "item.compendium.alchemist_s_lab_expanded" || /^laborat[oó]rio de alquimista \(expandido\)$/.test(name)) return "alchemists-lab-expanded";
+  if (data.id === "item.compendium.animal_blind" || /^abrigo de observa[cç][aã]o animal$/.test(name)) return "animal-blind";
+  if (data.id === "item.compendium.animal_call" || /^chamado de animal$/.test(name)) return "animal-call";
   if (data.id === "item.howl.bloodgorger_scythe" || /^foice devorasangue$/.test(name)) return "bloodgorger-scythe";
   if (data.id === "item.howl.catoblepas_maul" || /^malho de catoblepas$/.test(name)) return "catoblepas-maul";
   if (data.id === "item.howl.chimera_flail" || /^mangual de quimera$/.test(name)) return "chimera-flail";
