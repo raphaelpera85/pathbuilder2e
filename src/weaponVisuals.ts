@@ -16,6 +16,8 @@ export function getWeaponVisualKey(data: WeaponVisualData = {}): string {
   const name = String(data.name || data.names?.["pt-BR"] || data.names?.en || "").toLowerCase();
   const traits = Array.isArray(data.traits) ? data.traits.join(" ").toLowerCase() : "";
   const identity = `${group} ${category} ${name} ${traits}`;
+  if (/esmagador de colossos jistkan|jistkan colossus crusher/.test(identity)) return "jistkan-colossus-crusher";
+  if (/f[uú]ria justa|righteous fury/.test(identity)) return "righteous-fury";
   if (/arremessador|throwing weapon/.test(identity)) return "throwing-weapon";
   if (/besta de m[aã]o repetidora|repeating hand crossbow/.test(identity)) return "repeating-hand-crossbow";
   if (group === "gauntlet" && /^manopla$/.test(name.trim())) return "gauntlet-standard";

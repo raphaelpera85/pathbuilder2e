@@ -91,6 +91,8 @@ const specialVisualFiles = {
   "weapon.battlecry.draddeths_edge": "weapon-draddeths-edge.png",
   "weapon.throwing_weapon": "weapon-throwing-weapon.png",
   "weapon.battlecry.repeating_hand_crossbow": "weapon-repeating-hand-crossbow.png",
+  "weapon.battlecry.jistkan_colossus_crusher": "weapon-jistkan-colossus-crusher.png",
+  "weapon.battlecry.righteous_fury": "weapon-righteous-fury.png",
   "weapon.broadsword": "weapon-broadsword.png",
   "weapon.falchion": "weapon-falchion.png",
   "weapon.greatsword": "weapon-greatsword.png",

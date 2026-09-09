@@ -172,6 +172,8 @@ describe("weapon visual fallback", () => {
     expect(getWeaponVisualKey({ name: "Chicote", weaponGroup: "Whip" })).toBe("whip-standard");
     expect(getWeaponVisualKey({ names: { "pt-BR": "Arremessador" } })).toBe("throwing-weapon");
     expect(getWeaponVisualKey({ names: { "pt-BR": "Besta de Mão Repetidora" } })).toBe("repeating-hand-crossbow");
+    expect(getWeaponVisualKey({ names: { "pt-BR": "Esmagador de Colossos Jistkan" } })).toBe("jistkan-colossus-crusher");
+    expect(getWeaponVisualKey({ names: { "pt-BR": "Fúria Justa" } })).toBe("righteous-fury");
   });
 
   it("atribui uma ilustração específica a todas as armas catalogadas", () => {
