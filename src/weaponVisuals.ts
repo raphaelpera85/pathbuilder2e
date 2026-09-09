@@ -89,7 +89,7 @@ export function getWeaponVisualKey(data: WeaponVisualData = {}): string {
   if (/pistola de cl[aã]$|clan pistol/.test(name.trim()) || /clan pistol/.test(identity)) return "clan-pistol";
   if (/espingarda en[aâ]nica|dwarven scattergun/.test(identity)) return "dwarven-scattergun";
   if (/bast[aã]o bo|bo staff/.test(identity)) return "bo-staff";
-  if (/^cajado$|^staff$/.test(name.trim())) return "staff-standard";
+  if (group && /^cajado$|^staff$/.test(name.trim())) return "staff-standard";
   if (/palstave/.test(identity)) return "palstave";
   if (/vara de pesca de combate|combat fishing pole/.test(identity)) return "combat-fishing-pole";
   if (/matamagos|mageslayer/.test(identity)) return "mageslayer";
