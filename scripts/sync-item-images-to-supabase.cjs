@@ -167,6 +167,10 @@ function visualKey(row) {
   if (row.id === "item.rage_elements.fire.bloodburn_censer" || /^tur[ií]bulo queima-sangue$/.test(name)) return "bloodburn-censer";
   if (row.id === "item.rage_elements.metal.curious_teardrop" || /^gota curiosa$/.test(name)) return "curious-teardrop";
   if (row.id === "item.rage_elements.metal.morphing_weapon" || /^arma mut[aá]vel$/.test(name)) return "morphing-weapon";
+  if (row.id === "item.rage_elements.metal.zuhras_gloves" || /^luvas de zuhra$/.test(name)) return "zuhras-gloves";
+  if (row.id === "item.pc2.smoke_ball" || /^bola de fuma[cç]a$/.test(name)) return "smoke-ball";
+  if (row.id === "item.pc2.alarm_snare" || /^arapuca de alarme$/.test(name)) return "alarm-snare";
+  if (row.id === "item.pc2.spike_snare" || /^arapuca de espinho$/.test(name)) return "spike-snare";
   if (row.id === "item.howl.bloodgorger_scythe" || /^foice devorasangue$/.test(name)) return "bloodgorger-scythe";
   if (row.id === "item.howl.catoblepas_maul" || /^malho de catoblepas$/.test(name)) return "catoblepas-maul";
   if (row.id === "item.howl.chimera_flail" || /^mangual de quimera$/.test(name)) return "chimera-flail";

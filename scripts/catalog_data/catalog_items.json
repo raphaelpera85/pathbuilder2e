@@ -9654,8 +9654,8 @@
         "saveDC": "30"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-zuhras-gloves.png",
+      "imageFamily": "zuhras-gloves",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -9695,8 +9695,8 @@
         ]
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-smoke-ball.png",
+      "imageFamily": "smoke-ball",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -10311,8 +10311,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-alarm-snare.png",
+      "imageFamily": "alarm-snare",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -10341,8 +10341,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-spike-snare.png",
+      "imageFamily": "spike-snare",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
