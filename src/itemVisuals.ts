@@ -107,6 +107,10 @@ export function getItemVisualKey(data: ItemVisualData = {}): string {
   if (data.id === "item.compendium.spacious_pouch_bag_of_holding" || /^bolsa espa[cç]osa \(bolsa de carga\)$/.test(name)) return "spacious-pouch";
   if (data.id === "item.compendium.cloak_of_elvenkind" || /^manto [eé]lfico$/.test(name)) return "elven-cloak";
   if (data.id === "item.compendium.goggles_of_night" || /^[oó]culos da noite$/.test(name)) return "night-goggles";
+  if (data.id === "item.rage_elements.wood.animal_nip" || /^mordida animal$/.test(name)) return "animal-nip";
+  if (data.id === "item.rage_elements.wood.blooming_lotus_seed_pod" || /^vagem de sementes de l[oó]tus florescente$/.test(name)) return "lotus-seed-pod";
+  if (data.id === "item.rage_elements.wood.captivating_rosebud" || /^bot[aã]o de rosa cativante$/.test(name)) return "captivating-rosebud";
+  if (data.id === "item.rage_elements.wood.glowing_lantern_fruit" || /^fruto lanterna brilhante$/.test(name)) return "glowing-lantern-fruit";
   if (data.id === "item.howl.bloodgorger_scythe" || /^foice devorasangue$/.test(name)) return "bloodgorger-scythe";
   if (data.id === "item.howl.catoblepas_maul" || /^malho de catoblepas$/.test(name)) return "catoblepas-maul";
   if (data.id === "item.howl.chimera_flail" || /^mangual de quimera$/.test(name)) return "chimera-flail";

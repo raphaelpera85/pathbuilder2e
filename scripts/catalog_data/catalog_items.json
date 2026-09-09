@@ -7065,8 +7065,8 @@
         "dc": "18 menor; 24 moderada; 30 maior"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-animal-nip.png",
+      "imageFamily": "animal-nip",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -7102,8 +7102,8 @@
         "immunity": "pesadelo e efeitos mágicos que afetam apenas criaturas dormindo"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-lotus-seed-pod.png",
+      "imageFamily": "lotus-seed-pod",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -7176,8 +7176,8 @@
         "roseVines": "10 minutos; cresce até 9 metros junto a estrutura; você/aliados Escalam facilmente; outros fazem Vontade CD 17 para notar"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-captivating-rosebud.png",
+      "imageFamily": "captivating-rosebud",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -7247,8 +7247,8 @@
         "coldProtection": "imunidade aos efeitos de frio moderado e severo a até 4,5 metros"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-glowing-lantern-fruit.png",
+      "imageFamily": "glowing-lantern-fruit",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }

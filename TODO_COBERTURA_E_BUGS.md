@@ -1276,3 +1276,4 @@ Persistência remota autenticada de personagens (2026-09-08): `npm run audit:cam
 - [x] Criar e sincronizar artes individuais para Rações (1 semana), Corda (15 metros), Saco e Apito de Sinal, usando ID e nome completo do item.
 - [x] Criar e sincronizar artes individuais para Tocha, Odre, Graveto de Ignição e Sabão, usando ID e nome completo do item.
 - [x] Criar e sincronizar artes individuais para Ferramentas de Ladrão (Infiltrador), Bolsa Espaçosa (Bolsa de Carga), Manto Élfico e Óculos da Noite, usando ID e nome completo do item.
+- [x] Criar e sincronizar artes individuais para Mordida Animal, Vagem de Sementes de Lótus Florescente, Botão de Rosa Cativante e Fruto Lanterna Brilhante, usando ID e nome completo do item.
