@@ -1388,7 +1388,7 @@
     ],
     "rangeFeet": null,
     "reload": null,
-    "weaponGroup": null,
+    "weaponGroup": "Clava",
     "source": {
       "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
       "page": 275
@@ -1404,7 +1404,7 @@
     ],
     "rangeFeet": null,
     "reload": null,
-    "weaponGroup": null,
+    "weaponGroup": "Machado",
     "source": {
       "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
       "page": 275
@@ -1425,7 +1425,7 @@
     ],
     "rangeFeet": null,
     "reload": null,
-    "weaponGroup": null,
+    "weaponGroup": "Pugilato",
     "source": {
       "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
       "page": 275
@@ -1441,7 +1441,7 @@
     ],
     "rangeFeet": null,
     "reload": null,
-    "weaponGroup": null,
+    "weaponGroup": "Espada",
     "source": {
       "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
       "page": 275
@@ -1462,7 +1462,7 @@
     ],
     "rangeFeet": null,
     "reload": null,
-    "weaponGroup": null,
+    "weaponGroup": "Faca",
     "source": {
       "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
       "page": 275
@@ -1481,7 +1481,7 @@
     ],
     "rangeFeet": null,
     "reload": null,
-    "weaponGroup": null,
+    "weaponGroup": "Espada",
     "source": {
       "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
       "page": 275
@@ -1497,9 +1497,9 @@
       "Desarmar",
       "Mortal d8"
     ],
-    "rangeFeet": null,
+    "rangeFeet": 20,
     "reload": null,
-    "weaponGroup": null,
+    "weaponGroup": "Machado",
     "source": {
       "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
       "page": 275
@@ -1517,7 +1517,7 @@
     ],
     "rangeFeet": null,
     "reload": null,
-    "weaponGroup": null,
+    "weaponGroup": "Lança",
     "source": {
       "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
       "page": 275
@@ -1526,7 +1526,7 @@
   },
   {
     "id": "weapon.claw_whip",
-    "hands": "1",
+    "hands": "2",
     "priceGp": 5,
     "traits": [
       "Acuidade",
@@ -1536,7 +1536,7 @@
     ],
     "rangeFeet": null,
     "reload": null,
-    "weaponGroup": null,
+    "weaponGroup": "Mangual",
     "source": {
       "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
       "page": 275
@@ -1556,9 +1556,9 @@
       "Derrubar à distância",
       "Kobold"
     ],
-    "rangeFeet": null,
+    "rangeFeet": 10,
     "reload": null,
-    "weaponGroup": null,
+    "weaponGroup": "Mangual",
     "source": {
       "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
       "page": 275
@@ -1577,7 +1577,7 @@
     ],
     "rangeFeet": null,
     "reload": null,
-    "weaponGroup": null,
+    "weaponGroup": "Picareta",
     "source": {
       "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
       "page": 275
@@ -1586,7 +1586,7 @@
   },
   {
     "id": "weapon.capture_spetum",
-    "hands": "1",
+    "hands": "2",
     "priceGp": 9,
     "traits": [
       "Alcance",
@@ -1596,7 +1596,7 @@
     ],
     "rangeFeet": null,
     "reload": null,
-    "weaponGroup": null,
+    "weaponGroup": "Haste",
     "source": {
       "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
       "page": 275
@@ -1605,7 +1605,7 @@
   },
   {
     "id": "weapon.spirit_thresher",
-    "hands": "1",
+    "hands": "2",
     "priceGp": 2,
     "traits": [
       "Amplitude",
@@ -1614,7 +1614,7 @@
     ],
     "rangeFeet": null,
     "reload": null,
-    "weaponGroup": null,
+    "weaponGroup": "Mangual",
     "source": {
       "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
       "page": 275
@@ -1630,9 +1630,9 @@
       "Propulsiva",
       "Tengu"
     ],
-    "rangeFeet": null,
-    "reload": null,
-    "weaponGroup": null,
+    "rangeFeet": 50,
+    "reload": 1,
+    "weaponGroup": "Funda",
     "source": {
       "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
       "page": 275
@@ -1641,15 +1641,15 @@
   },
   {
     "id": "weapon.daikyu",
-    "hands": "1",
+    "hands": "1+",
     "priceGp": 8,
     "traits": [
       "Enérgica",
       "Propulsiva"
     ],
-    "rangeFeet": null,
-    "reload": null,
-    "weaponGroup": null,
+    "rangeFeet": 80,
+    "reload": 0,
+    "weaponGroup": "Arco",
     "source": {
       "book": "Livro do Jogador 2 (Player Core 2, Remaster)",
       "page": 275
