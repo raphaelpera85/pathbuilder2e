@@ -99,6 +99,10 @@ export function getItemVisualKey(data: ItemVisualData = {}): string {
   if (data.id === "item.compendium.rope_50_ft" || /^corda \(15 metros\)$/.test(name)) return "rope-15m";
   if (data.id === "item.compendium.sack" || /^saco$/.test(name)) return "sack";
   if (data.id === "item.compendium.signal_whistle" || /^apito de sinal$/.test(name)) return "signal-whistle";
+  if (data.id === "item.compendium.torch" || /^tocha$/.test(name)) return "torch";
+  if (data.id === "item.compendium.waterskin" || /^odre$/.test(name)) return "waterskin";
+  if (data.id === "item.compendium.tindertwig" || /^graveto de igni[cç][aã]o$/.test(name)) return "tinder-twig";
+  if (data.id === "item.compendium.soap" || /^sab[aã]o$/.test(name)) return "soap";
   if (data.id === "item.howl.bloodgorger_scythe" || /^foice devorasangue$/.test(name)) return "bloodgorger-scythe";
   if (data.id === "item.howl.catoblepas_maul" || /^malho de catoblepas$/.test(name)) return "catoblepas-maul";
   if (data.id === "item.howl.chimera_flail" || /^mangual de quimera$/.test(name)) return "chimera-flail";

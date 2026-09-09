@@ -111,6 +111,10 @@ function visualKey(row) {
   if (row.id === "item.compendium.rope_50_ft" || /^corda \(15 metros\)$/.test(name)) return "rope-15m";
   if (row.id === "item.compendium.sack" || /^saco$/.test(name)) return "sack";
   if (row.id === "item.compendium.signal_whistle" || /^apito de sinal$/.test(name)) return "signal-whistle";
+  if (row.id === "item.compendium.torch" || /^tocha$/.test(name)) return "torch";
+  if (row.id === "item.compendium.waterskin" || /^odre$/.test(name)) return "waterskin";
+  if (row.id === "item.compendium.tindertwig" || /^graveto de igni[cç][aã]o$/.test(name)) return "tinder-twig";
+  if (row.id === "item.compendium.soap" || /^sab[aã]o$/.test(name)) return "soap";
   if (row.id === "item.howl.bloodgorger_scythe" || /^foice devorasangue$/.test(name)) return "bloodgorger-scythe";
   if (row.id === "item.howl.catoblepas_maul" || /^malho de catoblepas$/.test(name)) return "catoblepas-maul";
   if (row.id === "item.howl.chimera_flail" || /^mangual de quimera$/.test(name)) return "chimera-flail";
