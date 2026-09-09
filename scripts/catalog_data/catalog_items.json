@@ -10542,11 +10542,11 @@
     "data": {
       "usage": null,
       "effects": [],
-      "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-hunters-bane.png",
+      "imageFamily": "hunters-bane",
       "imageSource": "local-project-asset",
-      "imageLicense": "project-generated-art"
+      "imageLicense": "project-generated-art",
+      "needs_review": false
     }
   },
   {
@@ -10662,19 +10662,19 @@
     "data": {
       "usage": null,
       "effects": [],
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-forensic-dye.png",
       "mechanics": {
+        "result": "brief brown-red coloration, then clear",
         "activation": "Interact",
         "triggerMaterialExamples": [
           "blood",
           "mud"
-        ],
-        "result": "brief brown-red coloration, then clear"
+        ]
       },
-      "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageFamily": "forensic-dye",
       "imageSource": "local-project-asset",
-      "imageLicense": "project-generated-art"
+      "imageLicense": "project-generated-art",
+      "needs_review": false
     }
   },
   {
@@ -10910,11 +10910,11 @@
     "data": {
       "usage": null,
       "effects": [],
-      "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-minor-bestial-mutagen.png",
+      "imageFamily": "minor-bestial-mutagen",
       "imageSource": "local-project-asset",
-      "imageLicense": "project-generated-art"
+      "imageLicense": "project-generated-art",
+      "needs_review": false
     }
   },
   {
@@ -10940,11 +10940,11 @@
     "data": {
       "usage": null,
       "effects": [],
-      "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-minor-silver-lingua-mutagen.png",
+      "imageFamily": "minor-silver-lingua-mutagen",
       "imageSource": "local-project-asset",
-      "imageLicense": "project-generated-art"
+      "imageLicense": "project-generated-art",
+      "needs_review": false
     }
   },
   {
