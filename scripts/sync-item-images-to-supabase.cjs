@@ -87,6 +87,10 @@ function visualKey(row) {
   if (row.id === "item.compendium.artisan_s_toolkit_sterling" || /^kit de artes[aã]o esterlino$/.test(name)) return "sterling-artisans-toolkit";
   if (row.id === "item.compendium.atmospheric_breathing_suit" || /^traje de respira[cç][aã]o atmosf[eé]rica$/.test(name)) return "atmospheric-breathing-suit";
   if (row.id === "item.compendium.bandolier" || /^cartucheira$/.test(name)) return "bandolier";
+  if (row.id === "item.compendium.bedroll" || /^saco de dormir$/.test(name)) return "bedroll";
+  if (row.id === "item.compendium.caltrops" || /^estrepes$/.test(name)) return "caltrops";
+  if (row.id === "item.compendium.candle" || /^vela$/.test(name)) return "candle";
+  if (row.id === "item.compendium.chalk_10_pieces" || /^giz \(10 peda[cç]os\)$/.test(name)) return "chalk";
   if (row.id === "item.howl.bloodgorger_scythe" || /^foice devorasangue$/.test(name)) return "bloodgorger-scythe";
   if (row.id === "item.howl.catoblepas_maul" || /^malho de catoblepas$/.test(name)) return "catoblepas-maul";
   if (row.id === "item.howl.chimera_flail" || /^mangual de quimera$/.test(name)) return "chimera-flail";
