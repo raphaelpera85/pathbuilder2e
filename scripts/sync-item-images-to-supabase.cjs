@@ -75,6 +75,10 @@ function visualKey(row) {
   if (row.id === "item.dark_archive.bottomless_purse" || /^bolsa inesgot[aá]vel$/.test(name)) return "bottomless-purse";
   if (row.id === "item.dark_archive.key_to_the_stomach" || /^chave do est[oô]mago$/.test(name)) return "key-to-stomach";
   if (row.id === "item.dark_archive.lost_ember" || /^brasa perdida$/.test(name)) return "lost-ember";
+  if (row.id === "item.howl.fulmination_fang" || /^presa de fulmina[cç][aã]o$/.test(name)) return "fulmination-fang";
+  if (row.id === "item.dark_archive.self_emptying_pocket" || /^bolso que se esvazia sozinho$/.test(name)) return "self-emptying-pocket";
+  if (row.id === "item.dark_archive.stone_of_unrivaled_skill" || /^pedra da habilidade inigual[aá]vel$/.test(name)) return "stone-unrivaled-skill";
+  if (row.id === "item.compendium.air_bladder" || /^bexiga de ar$/.test(name)) return "air-bladder";
   if (row.id === "item.howl.bloodgorger_scythe" || /^foice devorasangue$/.test(name)) return "bloodgorger-scythe";
   if (row.id === "item.howl.catoblepas_maul" || /^malho de catoblepas$/.test(name)) return "catoblepas-maul";
   if (row.id === "item.howl.chimera_flail" || /^mangual de quimera$/.test(name)) return "chimera-flail";

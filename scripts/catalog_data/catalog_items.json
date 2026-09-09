@@ -3305,8 +3305,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-fulmination-fang.png",
+      "imageFamily": "fulmination-fang",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -4532,8 +4532,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-self-emptying-pocket.png",
+      "imageFamily": "self-emptying-pocket",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -4563,8 +4563,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-stone-unrivaled-skill.png",
+      "imageFamily": "stone-unrivaled-skill",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -4619,8 +4619,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-air-bladder.png",
+      "imageFamily": "air-bladder",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
