@@ -12524,8 +12524,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-greater-smiling-devil-disguise.png",
+      "imageFamily": "greater-smiling-devil-disguise",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -12554,8 +12554,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-cloak-of-rage.png",
+      "imageFamily": "cloak-of-rage",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -12584,8 +12584,8 @@
       "usage": null,
       "effects": [],
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-greater-cloak-of-rage.png",
+      "imageFamily": "greater-cloak-of-rage",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -14587,8 +14587,8 @@
         "consumedAfterUse": true
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-phosphor.png",
+      "imageFamily": "phosphor",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }

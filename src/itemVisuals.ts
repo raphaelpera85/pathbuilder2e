@@ -175,6 +175,10 @@ export function getItemVisualKey(data: ItemVisualData = {}): string {
   if (data.id === "item.pc2.predictive_veil" || /^v[eé]u progn[oó]stico$/.test(name)) return "predictive-veil";
   if (data.id === "item.pc2.greater_predictive_veil" || /^v[eé]u progn[oó]stico maior$/.test(name)) return "greater-predictive-veil";
   if (data.id === "item.pc2.smiling_devil_disguise" || /^disfarce do diabo sorridente$/.test(name)) return "smiling-devil-disguise";
+  if (data.id === "item.pc2.greater_smiling_devil_disguise" || /^disfarce do diabo sorridente maior$/.test(name)) return "greater-smiling-devil-disguise";
+  if (data.id === "item.pc2.manto_of_rage" || /^manto do amoque$/.test(name)) return "cloak-of-rage";
+  if (data.id === "item.pc2.greater_manto_of_rage" || /^manto do amoque maior$/.test(name)) return "greater-cloak-of-rage";
+  if (data.id === "item.pc2.phosphor" || /^f[oó]sforo$/.test(name)) return "phosphor";
   if (data.id === "item.howl.bloodgorger_scythe" || /^foice devorasangue$/.test(name)) return "bloodgorger-scythe";
   if (data.id === "item.howl.catoblepas_maul" || /^malho de catoblepas$/.test(name)) return "catoblepas-maul";
   if (data.id === "item.howl.chimera_flail" || /^mangual de quimera$/.test(name)) return "chimera-flail";
