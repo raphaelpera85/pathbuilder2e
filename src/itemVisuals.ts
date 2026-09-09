@@ -131,6 +131,10 @@ export function getItemVisualKey(data: ItemVisualData = {}): string {
   if (data.id === "item.rage_elements.earth.drought_powder" || /^p[oó] da seca$/.test(name)) return "drought-powder";
   if (data.id === "item.rage_elements.earth.exuviae_powder" || /^p[oó] de ex[uú]via$/.test(name)) return "exuviae-powder";
   if (data.id === "item.rage_elements.earth.fossil_fragment" || /^fragmento f[oó]ssil$/.test(name)) return "fossil-fragment";
+  if (data.id === "item.rage_elements.earth.jabalis_dice" || /^dados de jabali$/.test(name)) return "jabalis-dice";
+  if (data.id === "item.rage_elements.earth.robe_of_stone" || /^robe de pedra$/.test(name)) return "stone-robe";
+  if (data.id === "item.rage_elements.earth.sandcastle" || /^castelo de areia$/.test(name)) return "sandcastle";
+  if (data.id === "item.rage_elements.earth.singing_stone" || /^pedra cantante$/.test(name)) return "singing-stone";
   if (data.id === "item.howl.bloodgorger_scythe" || /^foice devorasangue$/.test(name)) return "bloodgorger-scythe";
   if (data.id === "item.howl.catoblepas_maul" || /^malho de catoblepas$/.test(name)) return "catoblepas-maul";
   if (data.id === "item.howl.chimera_flail" || /^mangual de quimera$/.test(name)) return "chimera-flail";
