@@ -148,6 +148,10 @@ const specialVisualFiles = {
   "weapon.battlecry.radiant_victory": "weapon-radiant-victory.png",
   "weapon.battlecry.revenant_blade": "weapon-revenant-blade.png",
   "weapon.war_immortals.gladius": "weapon-gladius.png",
+  "weapon.adze": "weapon-adze.png",
+  "weapon.cruuk": "weapon-cruuk.png",
+  "weapon.hand_adze": "weapon-hand-adze.png",
+  "weapon.ingenious_pick": "weapon-ingenious-pick.png",
   "weapon.battlecry.reapers_toll": "weapon-axe.png",
   "weapon.battlecry.righteous_fury": "weapon-mace.png",
 };

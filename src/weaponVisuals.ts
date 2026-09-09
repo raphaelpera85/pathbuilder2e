@@ -91,6 +91,10 @@ export function getWeaponVisualKey(data: WeaponVisualData = {}): string {
   if (/vit[oó]ria radiante|radiant victory/.test(identity)) return "radiant-victory";
   if (/l[aâ]mina revenante|revenant blade/.test(identity)) return "revenant-blade";
   if (/gl[aá]dio|gladius/.test(identity)) return "gladius";
+  if (/^enx[oó]$|^adze$/.test(name.trim())) return "adze";
+  if (/cruuk/.test(identity)) return "cruuk";
+  if (/enx[oó] de m[aã]o|hand adze/.test(identity)) return "hand-adze";
+  if (/picareta engenhosa|ingenious pick/.test(identity)) return "ingenious-pick";
   if (/^lan[cç]a$|^spear$/.test(name.trim())) return "spear-standard";
   if (/spetum de captura|capture spetum/.test(identity)) return "capture-spetum";
   if (/fauchard/.test(identity)) return "fauchard";

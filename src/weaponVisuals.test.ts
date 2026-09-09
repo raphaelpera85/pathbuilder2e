@@ -124,6 +124,10 @@ describe("weapon visual fallback", () => {
     expect(getWeaponVisualKey({ name: "Vitória Radiante", weaponGroup: "Sword" })).toBe("radiant-victory");
     expect(getWeaponVisualKey({ name: "Lâmina Revenante", weaponGroup: "Sword" })).toBe("revenant-blade");
     expect(getWeaponVisualKey({ name: "Gládio", weaponGroup: "Sword" })).toBe("gladius");
+    expect(getWeaponVisualKey({ name: "Enxó", weaponGroup: "Axe" })).toBe("adze");
+    expect(getWeaponVisualKey({ name: "Cruuk", weaponGroup: "Axe" })).toBe("cruuk");
+    expect(getWeaponVisualKey({ name: "Enxó de Mão", weaponGroup: "Axe" })).toBe("hand-adze");
+    expect(getWeaponVisualKey({ name: "Picareta Engenhosa", weaponGroup: "Axe" })).toBe("ingenious-pick");
     expect(getWeaponVisualKey({ name: "Lança", weaponGroup: "Spear" })).toBe("spear-standard");
     expect(getWeaponVisualKey({ name: "Spetum de Captura", weaponGroup: "Spear" })).toBe("capture-spetum");
     expect(getWeaponVisualKey({ name: "Fauchard", weaponGroup: "Spear" })).toBe("fauchard");
