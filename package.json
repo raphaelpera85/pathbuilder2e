@@ -19,6 +19,7 @@
     "sync:weapons:supabase": "node scripts/sync-weapon-catalog-to-supabase.cjs",
     "audit:local:weapon-variants": "node scripts/audit-local-weapon-variants.cjs",
     "sync:items:specific-images": "node scripts/sync-item-specific-images-to-supabase.cjs",
+    "audit:visual:acceptance": "node scripts/audit-local-visual-acceptance.cjs",
     "audit:local:weapons": "node scripts/audit-local-weapons.cjs"
   },
   "dependencies": {
