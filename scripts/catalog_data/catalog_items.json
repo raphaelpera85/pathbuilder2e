@@ -8812,8 +8812,8 @@
         "duration": "estalagmites por 1 minuto; depois viram pó e o terreno deixa de ser difícil"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-stalagmite-seed.png",
+      "imageFamily": "stalagmite-seed",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -8845,8 +8845,8 @@
         "medicine": "Administer First Aid e Treat Wounds não exigem kit de curandeiro e recebem +1 item em Medicina"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-vital-earth.png",
+      "imageFamily": "vital-earth",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -8879,8 +8879,8 @@
         "variant": "greater: resistência 10, +2 Intimidação, 1/10 minutos, 4d6/CD 28"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-ash-gown.png",
+      "imageFamily": "ash-gown",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }
@@ -8948,8 +8948,8 @@
         "effect": "calm de 3º círculo; imunidade por 24 horas; dura até o incenso acabar"
       },
       "needs_review": false,
-      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-adventurer-pack.png",
-      "imageFamily": "adventurer-pack",
+      "imageUrl": "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/item-brazier-harmony.png",
+      "imageFamily": "brazier-harmony",
       "imageSource": "local-project-asset",
       "imageLicense": "project-generated-art"
     }

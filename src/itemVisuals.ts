@@ -135,6 +135,10 @@ export function getItemVisualKey(data: ItemVisualData = {}): string {
   if (data.id === "item.rage_elements.earth.robe_of_stone" || /^robe de pedra$/.test(name)) return "stone-robe";
   if (data.id === "item.rage_elements.earth.sandcastle" || /^castelo de areia$/.test(name)) return "sandcastle";
   if (data.id === "item.rage_elements.earth.singing_stone" || /^pedra cantante$/.test(name)) return "singing-stone";
+  if (data.id === "item.rage_elements.earth.stalagmite_seed" || /^semente de estalagmite$/.test(name)) return "stalagmite-seed";
+  if (data.id === "item.rage_elements.earth.vital_earth" || /^terra vital$/.test(name)) return "vital-earth";
+  if (data.id === "item.rage_elements.fire.ash_gown" || /^vestido de cinzas$/.test(name)) return "ash-gown";
+  if (data.id === "item.rage_elements.fire.brazier_of_harmony" || /^braseiro da harmonia$/.test(name)) return "brazier-harmony";
   if (data.id === "item.howl.bloodgorger_scythe" || /^foice devorasangue$/.test(name)) return "bloodgorger-scythe";
   if (data.id === "item.howl.catoblepas_maul" || /^malho de catoblepas$/.test(name)) return "catoblepas-maul";
   if (data.id === "item.howl.chimera_flail" || /^mangual de quimera$/.test(name)) return "chimera-flail";
