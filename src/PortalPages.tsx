@@ -766,7 +766,7 @@ function GoogleDrivePdfDownloadsSection({ locale }: { locale: "pt-BR" | "en" | "
       {visible.map((pdf) => <article className="book-download-card google-drive-pdf-card" key={pdf.fileId}>
         <div className="book-card-top"><div className="book-card-title-group"><h3>{pdf.name}</h3><span className="book-alt-title">Google Drive · PDF</span></div><span className="ruleset-badge legacy">PDF</span></div>
         <div className="book-card-meta"><span className="book-meta-item">📄 PDF</span><span className="book-meta-item">🌐 Google Drive</span></div>
-        <div className="book-card-actions"><a href={pdf.url} target="_blank" rel="noopener noreferrer" className="btn-download-primary" aria-label={`Download PDF: ${pdf.name}`}>📥 {locale === "en" ? "Open PDF" : locale === "es" ? "Abrir PDF" : "Abrir PDF"}</a></div>
+        <div className="book-card-actions"><a href={`https://drive.google.com/uc?export=download&id=${pdf.fileId}`} target="_blank" rel="noopener noreferrer" className="btn-download-primary" aria-label={`Download PDF: ${pdf.name}`}>📥 {locale === "en" ? "Download PDF" : locale === "es" ? "Descargar PDF" : "Baixar PDF"}</a></div>
       </article>)}
     </div> : <p className="library-empty-state">{labels.empty}</p>}
     <div className="library-pagination" aria-label={`${labels.page} ${page + 1} de ${pageCount}`}>
