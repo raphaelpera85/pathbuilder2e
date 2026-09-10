@@ -18,3 +18,5 @@ livros/
 *.pdf
 !public/ficha.pdf
 !ficha.pdf
+
+.vercel
