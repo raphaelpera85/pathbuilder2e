@@ -96,7 +96,7 @@ export function ThemeSwitcher() {
         <span className="theme-icon" aria-hidden="true">
           {isDark ? "🌙" : "☀️"}
         </span>
-        <span className="theme-toggle-text">{isDark ? "Escuro" : "Claro"}</span>
+        <span className="theme-toggle-text">{isDark ? t("themeDark") : t("themeLight")}</span>
       </button>
     </div>
   );

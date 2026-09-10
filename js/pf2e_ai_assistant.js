@@ -53,6 +53,37 @@
       }
     ],
 
+    quickPresetsByLocale: {
+      en: [
+        { title: "🛡️ Dwarven Guardian Bastion", prompt: "I want a very resilient dwarf fighter tank with a battleaxe and heavy steel shield, focused on high defense and protecting allies." },
+        { title: "⚡ Centaur Spirit Animist", prompt: "Create a wise centaur animist healer who channels ancestral storm apparitions and restorative magic." },
+        { title: "🗡️ Shadow Skeleton Rogue", prompt: "Make a stealthy and agile skeleton assassin rogue with two poisoned daggers and sneak attacks from the shadows." },
+        { title: "✨ Radiant Mythic Exemplar", prompt: "I want a demigod exemplar with a radiant blade spark, focused on glorious combat and transcendent heroic feats." },
+        { title: "📯 Tactical Vanguard Commander", prompt: "Create a brilliant human commander with a military banner and longsword, specialized in leading coordinated squad attacks." },
+        { title: "🐂 Furious Minotaur Barbarian", prompt: "I want a giant minotaur animal-instinct barbarian with a two-handed heavy club and brutal impact horns." },
+        { title: "🔥 Draconic Fire Sorcerer", prompt: "Make a charismatic gnome sorcerer with a red draconic bloodline, focused on fireballs, fiery breath, and spontaneous magic." },
+        { title: "🥋 Awakened Animal Monk", prompt: "Create an agile awakened animal monk with tiger stance and a flurry of blows in unarmed combat." },
+        { title: "🧪 Pyromaniac Goblin Alchemist", prompt: "I want a chaotic goblin bomber alchemist with alchemical fire bombs and fast-acting poisons." },
+        { title: "🌿 Elemental Kineticist", prompt: "Create a human kineticist who controls water and wood to heal and unleash jets of pure elemental energy." }
+      ],
+      es: [
+        { title: "🛡️ Enano Guardián Bastión", prompt: "Quiero un guerrero enano tanque muy resistente con hacha de batalla y escudo pesado de acero, centrado en defensa y protección de aliados." },
+        { title: "⚡ Animista Centauro de los Espíritus", prompt: "Crea un animista centauro sabio y sanador que canalice apariciones ancestrales de tormenta y magia curativa." },
+        { title: "🗡️ Pícaro Esqueleto Sombrío", prompt: "Haz un pícaro asesino esqueleto muy sigiloso y ágil, con dos dagas envenenadas y ataques furtivos desde las sombras." },
+        { title: "✨ Exemplar Radiante Mítico", prompt: "Quiero un exemplar semidivino con la chispa de una hoja radiante, centrado en combate glorioso y hazañas heroicas trascendentes." },
+        { title: "📯 Comandante Táctico de Vanguardia", prompt: "Crea un comandante humano genial con estandarte militar y espada larga, experto en liderar ataques coordinados." },
+        { title: "🐂 Bárbaro Minotauro Furioso", prompt: "Quiero un bárbaro minotauro gigante del instinto animal con un garrote pesado a dos manos y cuernos brutales." },
+        { title: "🔥 Hechicero Dracónico de Fuego", prompt: "Haz un hechicero gnomo carismático con linaje dracónico rojo, centrado en bolas de fuego, aliento ardiente y magia espontánea." },
+        { title: "🥋 Monje Animal Despierto", prompt: "Crea un monje animal despierto ágil con postura del tigre y ráfaga de golpes en combate sin armas." },
+        { title: "🧪 Alquimista Goblin Pirómano", prompt: "Quiero un alquimista goblin bombardero caótico con bombas de fuego alquímico y venenos rápidos." },
+        { title: "🌿 Cinético de los Elementos", prompt: "Crea un cinético humano que controle agua y madera para curar y lanzar chorros de energía elemental pura." }
+      ]
+    },
+
+    getQuickPresets(locale) {
+      return this.quickPresetsByLocale[locale] || this.quickPresets;
+    },
+
     // Mapeamento semântico de palavras-chave para Classes do PF2E
     classKeywords: {
       "Exemplar (Exemplar)": ["exemplar", "semidivino", "divino", "ikon", "transcendencia", "centelha", "mítico", "herói divino"],

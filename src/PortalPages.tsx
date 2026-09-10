@@ -780,6 +780,11 @@ function GoogleDrivePdfDownloadsSection({ locale }: { locale: "pt-BR" | "en" | "
 function MapDownloadsSection({ locale }: { locale: "pt-BR" | "en" | "es" }) {
   const { t } = useI18n();
   const driveUrl = (fileId: string) => `https://drive.google.com/file/d/${fileId}/view?usp=drive_link`;
+  const localizeMapName = (name: string) => {
+    if (locale === "en") return name;
+    const prefix = locale === "es" ? "Mapa póster de Pathfinder" : "Mapa de Pôster Pathfinder";
+    return name.replace(/^Pathfinder (Poster )?Map Folio/, prefix);
+  };
   return <section className="downloads-section maps-download-section" aria-label={t("mapsTitle")}>
     <div className="downloads-header-card maps-header-card">
       <div className="downloads-header-info">
@@ -792,9 +797,9 @@ function MapDownloadsSection({ locale }: { locale: "pt-BR" | "en" | "es" }) {
     </div>
     <div className="downloads-grid maps-grid">
       {googleDriveMapFiles.map((map) => <article className="book-download-card map-download-card" key={map.fileId}>
-        <div className="book-card-top"><div className="book-card-title-group"><h3>{map.name}</h3><span className="book-alt-title">Google Drive · {map.sizeLabel}</span></div><span className="ruleset-badge legacy">PDF</span></div>
+        <div className="book-card-top"><div className="book-card-title-group"><h3>{localizeMapName(map.name)}</h3><span className="book-alt-title">Google Drive · {map.sizeLabel}</span></div><span className="ruleset-badge legacy">PDF</span></div>
         <div className="book-card-meta"><span className="book-meta-item">📄 {map.sizeLabel}</span><span className="book-meta-item">🌐 Google Drive</span></div>
-        <div className="book-card-actions"><a href={driveUrl(map.fileId)} target="_blank" rel="noopener noreferrer" className="btn-download-primary" aria-label={`${t("downloadMap")}: ${map.name}`}><span aria-hidden="true">📥</span> {t("downloadMap")}</a></div>
+        <div className="book-card-actions"><a href={driveUrl(map.fileId)} target="_blank" rel="noopener noreferrer" className="btn-download-primary" aria-label={`${t("downloadMap")}: ${localizeMapName(map.name)}`}><span aria-hidden="true">📥</span> {t("downloadMap")}</a></div>
       </article>)}
     </div>
     <div className="downloads-repo-actions"><a href={GOOGLE_DRIVE_FOLDER_URL} target="_blank" rel="noopener noreferrer" className="btn-repo-link secondary">📁 Abrir pasta completa no Google Drive</a></div>
@@ -834,10 +839,10 @@ function LibraryAssetsSection({ locale }: { locale: "pt-BR" | "en" | "es" }) {
   }, []);
 
   const labels = locale === "en"
-    ? { title: "Library media", intro: "Illustrations, creatures, items, scenes, maps and files from your RPG library.", arte: "Illustrations", mapas: "Maps & tiles", arquivos: "Books & files", outros: "Other", search: "Search the library...", open: "Open", download: "Download", previous: "Previous", next: "Next", local: "Local library", unavailable: "Start the local server to load the library." }
+    ? { title: "Library media", intro: "Illustrations, creatures, items, scenes, maps and files from your RPG library.", arte: "Illustrations", mapas: "Maps & tiles", arquivos: "Books & files", outros: "Other", search: "Search the library...", open: "Open", download: "Download", previous: "Previous", next: "Next", local: "Local library", unavailable: "Start the local server to load the library.", noLibraryFiles: "No files found.", assetsCatalogued: "assets catalogued" }
     : locale === "es"
-      ? { title: "Medios de la biblioteca", intro: "Ilustraciones, criaturas, objetos, escenas, mapas y archivos de tu biblioteca RPG.", arte: "Ilustraciones", mapas: "Mapas y tiles", arquivos: "Libros y archivos", outros: "Otros", search: "Buscar en la biblioteca...", open: "Abrir", download: "Descargar", previous: "Anterior", next: "Siguiente", local: "Biblioteca local", unavailable: "Inicia el servidor local para cargar la biblioteca." }
-      : { title: "Mídias da biblioteca", intro: "Ilustrações, criaturas, itens, cenas, mapas e arquivos da sua biblioteca de RPG.", arte: "Ilustrações", mapas: "Mapas e tiles", arquivos: "Livros e arquivos", outros: "Outros", search: "Buscar na biblioteca...", open: "Abrir", download: "Baixar", previous: "Anterior", next: "Próxima", local: "Biblioteca local", unavailable: "Inicie o servidor local para carregar a biblioteca." };
+      ? { title: "Medios de la biblioteca", intro: "Ilustraciones, criaturas, objetos, escenas, mapas y archivos de tu biblioteca RPG.", arte: "Ilustraciones", mapas: "Mapas y tiles", arquivos: "Libros y archivos", outros: "Otros", search: "Buscar en la biblioteca...", open: "Abrir", download: "Descargar", previous: "Anterior", next: "Siguiente", local: "Biblioteca local", unavailable: "Inicia el servidor local para cargar la biblioteca.", noLibraryFiles: "No se encontraron archivos.", assetsCatalogued: "recursos catalogados" }
+      : { title: "Mídias da biblioteca", intro: "Ilustrações, criaturas, itens, cenas, mapas e arquivos da sua biblioteca de RPG.", arte: "Ilustrações", mapas: "Mapas e tiles", arquivos: "Livros e arquivos", outros: "Outros", search: "Buscar na biblioteca...", open: "Abrir", download: "Baixar", previous: "Anterior", next: "Próxima", local: "Biblioteca local", unavailable: "Inicie o servidor local para carregar a biblioteca.", noLibraryFiles: "Nenhum arquivo encontrado.", assetsCatalogued: "assets catalogados" };
 
   const filtered = useMemo(() => assets.filter((asset) => asset.group === activeGroup && (!query || `${asset.name} ${asset.path}`.toLowerCase().includes(query.toLowerCase()))), [assets, activeGroup, query]);
   const pageCount = Math.max(1, Math.ceil(filtered.length / pageSize));
@@ -850,7 +855,7 @@ function LibraryAssetsSection({ locale }: { locale: "pt-BR" | "en" | "es" }) {
 
   return <section className="downloads-section library-assets-section" aria-label={labels.title}>
     <div className="downloads-header-card library-assets-header-card">
-      <div className="downloads-header-info"><span className="downloads-kicker">🖼️ {labels.local}</span><h2>{labels.title}</h2><p>{labels.intro}</p><small className="downloads-note">ℹ️ {available === false ? labels.unavailable : `${assets.length} assets catalogados`}</small></div>
+      <div className="downloads-header-info"><span className="downloads-kicker">🖼️ {labels.local}</span><h2>{labels.title}</h2><p>{labels.intro}</p><small className="downloads-note">ℹ️ {available === false ? labels.unavailable : `${assets.length} ${labels.assetsCatalogued}`}</small></div>
     </div>
     {available === true && <>
       <div className="library-asset-tabs" role="tablist" aria-label={labels.title}>
@@ -862,7 +867,7 @@ function LibraryAssetsSection({ locale }: { locale: "pt-BR" | "en" | "es" }) {
           {asset.kind === "image" ? <a href={asset.url} target="_blank" rel="noopener noreferrer" className="library-asset-preview"><img src={asset.url} alt={asset.name} loading="lazy" /></a> : <div className="library-file-preview" aria-hidden="true">📄</div>}
           <div className="library-asset-body"><h3 title={asset.name}>{asset.name}</h3><small title={asset.path}>{asset.section} · {formatSize(asset.size)}</small><div className="book-card-actions"><a href={asset.url} target="_blank" rel="noopener noreferrer" className="btn-repo-link secondary">{asset.kind === "image" ? labels.open : labels.download}</a>{asset.kind === "image" && <a href={asset.url} download={asset.name} className="btn-download-primary">📥 {labels.download}</a>}</div></div>
         </article>)}
-      </div> : <div className="portal-empty">Nenhum arquivo encontrado.</div>}
+      </div> : <div className="portal-empty">{labels.noLibraryFiles}</div>}
       {pageCount > 1 && <div className="library-pagination"><button type="button" disabled={page === 0} onClick={() => setPage((current) => Math.max(0, current - 1))}>{labels.previous}</button><span>{page + 1} / {pageCount}</span><button type="button" disabled={page >= pageCount - 1} onClick={() => setPage((current) => Math.min(pageCount - 1, current + 1))}>{labels.next}</button></div>}
     </>}
   </section>;
@@ -1444,16 +1449,16 @@ function AdminPage() {
           <span className="metric-badge">👁️ +{dashboardMetrics?.accessesToday ?? 0} {t("accessesToday").toLowerCase()}</span>
         </div>
         <strong>{dashboardMetrics ? dashboardMetrics.totalAccesses.toLocaleString(locale) : "—"}</strong>
-        <span className="metric-subtext">Visitas registradas no Supabase</span>
+        <span className="metric-subtext">{t("adminVisitsRegistered")}</span>
       </article>
 
       <article>
         <div className="metric-header">
           <span>{t("registeredAccounts")}</span>
-          <span className="metric-badge">👥 {dashboardMetrics?.adminUsers ?? 1} admins</span>
+          <span className="metric-badge">👥 {dashboardMetrics?.adminUsers ?? 1} {t("adminAdmins")}</span>
         </div>
         <strong>{dashboardMetrics ? dashboardMetrics.registeredAccounts.toLocaleString(locale) : "—"}</strong>
-        <span className="metric-subtext">Usuários cadastrados no Supabase</span>
+        <span className="metric-subtext">{t("adminUsersRegistered")}</span>
       </article>
 
       <article>
@@ -1462,34 +1467,34 @@ function AdminPage() {
           <span className="metric-badge">🧙 Remaster: {dashboardMetrics?.characterRulesetDistribution.remaster ?? 0}</span>
         </div>
         <strong>{dashboardMetrics ? dashboardMetrics.charactersCreated.toLocaleString(locale) : "—"}</strong>
-        <span className="metric-subtext">Fichas salvas no Supabase</span>
+        <span className="metric-subtext">{t("adminSheetsSaved")}</span>
       </article>
 
       <article>
         <div className="metric-header">
           <span>{t("activeCampaigns")}</span>
-          <span className="metric-badge">🎲 Mesas</span>
+          <span className="metric-badge">🎲 {t("adminTables")}</span>
         </div>
         <strong>{dashboardMetrics ? dashboardMetrics.activeCampaigns.toLocaleString(locale) : "—"}</strong>
-        <span className="metric-subtext">Campanhas ativas no Supabase</span>
+        <span className="metric-subtext">{t("adminCampaignsActive")}</span>
       </article>
 
       <article>
         <div className="metric-header">
           <span>{t("adminVerified")}</span>
-          <span className="metric-badge">✅ Supabase</span>
+          <span className="metric-badge">✅ {t("adminSupabase")}</span>
         </div>
         <strong>{compendiumMetrics.verified.toLocaleString(locale)}</strong>
-        <span className="metric-subtext">Itens e regras no Supabase</span>
+        <span className="metric-subtext">{t("adminItemsRules")}</span>
       </article>
 
       <article>
         <div className="metric-header">
           <span>{t("adminReview")}</span>
-          <span className="metric-badge">⏳ Fila</span>
+          <span className="metric-badge">⏳ {t("adminQueue")}</span>
         </div>
         <strong>{compendiumMetrics.review.toLocaleString(locale)}</strong>
-        <span className="metric-subtext">Registros aguardando revisão</span>
+        <span className="metric-subtext">{t("adminRecordsReview")}</span>
       </article>
     </section>
 
@@ -1504,7 +1509,7 @@ function AdminPage() {
                 <th>{t("timestampColumn")}</th>
                 <th>{t("routeColumn")}</th>
                 <th>{t("userTypeColumn")}</th>
-                <th>Usuário</th>
+                <th>{t("tableUser")}</th>
               </tr>
             </thead>
             <tbody>
@@ -1522,7 +1527,7 @@ function AdminPage() {
               ) : (
                 <tr>
                   <td colSpan={4} style={{ textAlign: "center", color: "var(--pb-text-muted)", padding: "16px" }}>
-                    Nenhum acesso recente registrado nesta sessão.
+                    {t("noRecentAccesses")}
                   </td>
                 </tr>
               )}
@@ -1537,8 +1542,8 @@ function AdminPage() {
           <table className="admin-table">
             <thead>
               <tr>
-                <th>Usuário</th>
-                <th>E-mail</th>
+                <th>{t("tableUser")}</th>
+                <th>{t("tableEmail")}</th>
                 <th>{t("roleColumn")}</th>
                 <th>{t("registeredDate")}</th>
               </tr>

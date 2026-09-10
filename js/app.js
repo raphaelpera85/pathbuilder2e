@@ -988,12 +988,67 @@ class PathbuilderApp {
       btnImportAction: isEn ? "Import" : isEs ? "Importar" : "Importar",
       aiAssistantModalTitle: isEn ? "PF2e Expert AI Assistant (100% Free)" : isEs ? "Asistente de IA experto en PF2e (100% gratis)" : "Assistente de IA Especialista PF2e (100% Gratuito)",
       btnGenerateAICharacter: isEn ? "✨ Generate Character with AI" : isEs ? "✨ Generar personaje con IA" : "✨ Gerar Ficha com IA",
-      btnRandomAIPreset: isEn ? "🎲 Random Concept" : isEs ? "🎲 Sortear concepto" : "🎲 Sortear Conceito"
+      btnRandomAIPreset: isEn ? "🎲 Random Concept" : isEs ? "🎲 Sortear concepto" : "🎲 Sortear Conceito",
+      btnGenerateAIPortraitText: isEn ? "Generate Portrait with AI" : isEs ? "Generar retrato con IA" : "Gerar Retrato com IA",
+      avatarGeneratingLabel: isEn ? "Painting portrait with AI..." : isEs ? "Pintando el retrato con IA..." : "Pintando o retrato com IA...",
+      btnApplyAICharacter: isEn ? "⚡ Apply Character to Builder" : isEs ? "⚡ Aplicar personaje al constructor" : "⚡ Aplicar Ficha ao Construtor"
     };
     for (const [id, label] of Object.entries(modalLabels)) {
       const element = document.getElementById(id);
       if (element) element.innerText = label;
     }
+    const setStaticText = (id, label) => {
+      const element = document.getElementById(id);
+      if (element) element.textContent = label;
+    };
+    const modalStaticLabels = {
+      modalSetAbilitiesTitle: isEn ? "Set Initial Ability Boosts" : isEs ? "Definir aumentos de características iniciales" : "Definir Aprimoramentos de Atributos Iniciais",
+      modalSetAbilitiesDone: isEn ? "Done" : isEs ? "Listo" : "Concluído",
+      modalSkillLegendTitle: isEn ? "Proficiency Legend:" : isEs ? "Leyenda de competencia:" : "Legenda de Proficiência:",
+      modalSkillColumnName: isEn ? "Skill & Modifier" : isEs ? "Habilidad y modificador" : "Perícia & Modificador",
+      modalSkillColumnRank: isEn ? "TEML Rank" : isEs ? "Grado TEML" : "Grau TEML",
+      modalSkillColumnBonuses: isEn ? "Ability / Prof / Item" : isEs ? "Atrib. / Comp. / Objeto" : "Atrib / Prof / Item",
+      modalSkillDone: isEn ? "Done" : isEs ? "Listo" : "Concluído",
+      modalSkillLore: isEn ? "Lore" : isEs ? "Saber" : "Saberes",
+      modalDeityTitle: isEn ? "Select Deity" : isEs ? "Seleccionar deidad" : "Selecionar Divindade",
+      modalDeitySet: isEn ? "Set" : isEs ? "Definir" : "Definir",
+      modalDeityDone: isEn ? "Done" : isEs ? "Listo" : "Concluído",
+      modalLanguagesTitle: isEn ? "Select Languages" : isEs ? "Seleccionar idiomas" : "Selecionar Idiomas",
+      modalLanguagesAdd: isEn ? "Add" : isEs ? "Añadir" : "Adicionar",
+      modalLanguagesDone: isEn ? "Done" : isEs ? "Listo" : "Concluído",
+      avatarStyleLabel: isEn ? "RPG Art Style" : isEs ? "Estilo artístico de RPG" : "Estilo Artístico de RPG",
+      avatarPromptLabel: isEn ? "Portrait Description / Prompt" : isEs ? "Descripción / prompt del retrato" : "Descrição / Prompt do Retrato",
+      aiPresetLabel: isEn ? "Quick Concept Suggestions:" : isEs ? "Sugerencias rápidas de conceptos:" : "Sugestões Rápidas de Conceitos:",
+      aiPromptLabel: isEn ? "Describe Your Hero:" : isEs ? "Describe a tu héroe:" : "Descreva seu Herói:",
+      btnCancelAICharacter: isEn ? "Cancel" : isEs ? "Cancelar" : "Cancelar",
+      readinessModalTitle: isEn ? "Character Readiness Audit" : isEs ? "Auditoría de preparación del personaje" : "Auditoria de Prontidão da Ficha",
+      readinessStatusLabel: isEn ? "Creation Status:" : isEs ? "Estado de creación:" : "Status de Criação:",
+      readinessModalClose: isEn ? "Close" : isEs ? "Cerrar" : "Fechar"
+    };
+    for (const [id, label] of Object.entries(modalStaticLabels)) setStaticText(id, label);
+    const styleOptions = {
+      avatarStyleOfficial: isEn ? "🎨 Official PF2e Illustration (Wayne Reynolds Style)" : isEs ? "🎨 Ilustración oficial PF2e (estilo Wayne Reynolds)" : "🎨 Ilustração Oficial PF2e (Wayne Reynolds Style)",
+      avatarStyleOil: isEn ? "🖼️ Epic Oil Painting (Masterwork Fantasy)" : isEs ? "🖼️ Pintura al óleo épica (fantasía magistral)" : "🖼️ Pintura a Óleo Épica (Masterwork Fantasy)",
+      avatarStyleDark: isEn ? "🌑 Dark Fantasy (Grimdark & Elden Ring Style)" : isEs ? "🌑 Fantasía oscura (estilo grimdark y Elden Ring)" : "🌑 Fantasia Sombria (Grimdark & Elden Ring Style)",
+      avatarStyleAnime: isEn ? "⚔️ Heroic Anime & Manga (Castlevania Style)" : isEs ? "⚔️ Anime y manga heroico (estilo Castlevania)" : "⚔️ Anime & Mangá Heroico (Castlevania Style)",
+      avatarStylePixel: isEn ? "👾 Retro RPG Pixel Art (HD-2D Style)" : isEs ? "👾 Pixel art RPG retro (estilo HD-2D)" : "👾 Pixel Art RPG Retrô (HD-2D Style)",
+      avatarStyle3d: isEn ? "🗿 3D Render & Tabletop Miniature (Unreal Engine 5)" : isEs ? "🗿 Render 3D y miniatura de mesa (Unreal Engine 5)" : "🗿 Render 3D & Miniatura de Mesa (Unreal Engine 5)",
+      avatarStyleVintage: isEn ? "📜 Vintage Scroll & Ink (Vintage Grimoire)" : isEs ? "📜 Pergamino y tinta antiguos (grimorio vintage)" : "📜 Pergaminho & Tinta Antiga (Vintage Grimoire)"
+    };
+    for (const [id, label] of Object.entries(styleOptions)) setStaticText(id, label);
+    const aiDescription = isEn
+      ? 'Describe the character concept in English (e.g. "Dwarven fighter tank with battleaxe and shield" or "Wise centaur animist healer"). The AI will build a complete Remaster character sheet.'
+      : isEs
+        ? 'Describe el concepto del personaje en español (por ejemplo, "guerrero enano tanque con hacha y escudo" o "animista centauro sanador"). La IA creará una ficha Remaster completa.'
+        : 'Descreva o conceito do personagem em português (ex.: "Guerreiro anão tanque com machado e escudo" ou "Animista centauro sábio"). A IA construirá uma ficha Remaster completa.';
+    setStaticText("aiAssistantDescription", aiDescription);
+    const aiPromptPlaceholders = {
+      en: "E.g. I want a demigod exemplar with a radiant spear focused on mobile combat...",
+      es: "Ej.: Quiero un ejemplar semidivino con una lanza radiante centrado en combate móvil...",
+      pt: "Ex: Quero um exemplar semidivino com lança radiante focado em combate de alta mobilidade..."
+    };
+    const aiPromptInput = document.getElementById("aiPromptInput");
+    if (aiPromptInput) aiPromptInput.setAttribute("placeholder", isEn ? aiPromptPlaceholders.en : isEs ? aiPromptPlaceholders.es : aiPromptPlaceholders.pt);
 
     const diceDrawer = document.getElementById("btnToggleDiceDrawer");
     if (diceDrawer) {
@@ -8344,7 +8399,7 @@ class PathbuilderApp {
   renderAIPresetChips() {
     const container = document.getElementById("aiPresetChips");
     if (!container || !window.PF2E_AI_ASSISTANT) return;
-    const presets = window.PF2E_AI_ASSISTANT.quickPresets || [];
+    const presets = window.PF2E_AI_ASSISTANT.getQuickPresets?.(this.getLocale()) || window.PF2E_AI_ASSISTANT.quickPresets || [];
     container.innerHTML = presets.map((p, idx) => `
       <button onclick="app.selectAIPreset(${idx})" style="background: #1e293b; color: #cbd5e1; border: 1px solid #475569; font-size: 11px; padding: 3px 8px; border-radius: 12px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.borderColor='#8b5cf6'; this.style.color='#fff'" onmouseout="this.style.borderColor='#475569'; this.style.color='#cbd5e1'">
         ${p.title}
@@ -8354,7 +8409,7 @@ class PathbuilderApp {
 
   selectAIPreset(idx) {
     if (!window.PF2E_AI_ASSISTANT) return;
-    const preset = window.PF2E_AI_ASSISTANT.quickPresets[idx];
+    const preset = (window.PF2E_AI_ASSISTANT.getQuickPresets?.(this.getLocale()) || window.PF2E_AI_ASSISTANT.quickPresets)[idx];
     if (preset) {
       const promptInput = document.getElementById("aiPromptInput");
       if (promptInput) promptInput.value = preset.prompt;
@@ -8364,7 +8419,7 @@ class PathbuilderApp {
 
   pickRandomAIPreset() {
     if (!window.PF2E_AI_ASSISTANT) return;
-    const presets = window.PF2E_AI_ASSISTANT.quickPresets;
+    const presets = window.PF2E_AI_ASSISTANT.getQuickPresets?.(this.getLocale()) || window.PF2E_AI_ASSISTANT.quickPresets;
     const randomIdx = Math.floor(Math.random() * presets.length);
     this.selectAIPreset(randomIdx);
   }

@@ -49,7 +49,7 @@ export function localizeSourceBookName(book: string, locale: "pt-BR" | "en" | "e
   const normalized = String(book || "").trim().toLocaleLowerCase("pt-BR");
   const labels: Record<string, { "pt-BR": string; en: string; es: string }> = {
     "livro do jogador": { "pt-BR": "Livro do Jogador", en: "Player Core", es: "Núcleo del jugador" },
-    "livro do jogador 2": { "pt-BR": "Livro do Jogador 2", en: "Player Core 2", es: "Núcleo del jogador 2" },
+    "livro do jogador 2": { "pt-BR": "Livro do Jogador 2", en: "Player Core 2", es: "Núcleo del jugador 2" },
     "segredos da magia": { "pt-BR": "Segredos da Magia", en: "Secrets of Magic", es: "Secretos de la magia" },
     "pólvora e engrenagens": { "pt-BR": "Pólvora e Engrenagens", en: "Guns & Gears", es: "Pólvora y engranajes" },
     "livro dos mortos": { "pt-BR": "Livro dos Mortos", en: "Book of the Dead", es: "Libro de los muertos" },
@@ -59,7 +59,7 @@ export function localizeSourceBookName(book: string, locale: "pt-BR" | "en" | "e
     "howl of the wild": { "pt-BR": "Uivo da Natureza", en: "Howl of the Wild", es: "Aullido de lo salvaje" },
     "battlecry!": { "pt-BR": "Grito de Batalha!", en: "Battlecry!", es: "¡Grito de batalla!" },
     "pathfinder rpg livro básico": { "pt-BR": "Livro Básico (edição legada)", en: "Core Rulebook (legacy edition)", es: "Reglamento básico (edición legada)" },
-    "manual do jogador pf2e": { "pt-BR": "Manual do Jogador PF2e (compilação local)", en: "PF2e Player Guide compilation (local)", es: "Compilación de guía del jogador PF2e (local)" },
+    "manual do jogador pf2e": { "pt-BR": "Manual do Jogador PF2e (compilação local)", en: "PF2e Player Guide compilation (local)", es: "Compilación de guía del jugador PF2e (local)" },
   };
   const match = Object.entries(labels).sort(([a], [b]) => b.length - a.length).find(([key]) => normalized.includes(key));
   return match ? match[1][locale] : book;
@@ -87,7 +87,7 @@ export const pathfinderSources: PathfinderSource[] = [
   {
     id: "player-core-2-pt",
     title: "Livro do Jogador 2 (Player Core 2)",
-    titles: { "pt-BR": "Livro do Jogador 2", en: "Player Core 2", es: "Núcleo del jogador 2" },
+    titles: { "pt-BR": "Livro do Jogador 2", en: "Player Core 2", es: "Núcleo del jugador 2" },
     language: "pt-BR",
     pages: 324,
     ruleset: "remaster",
@@ -257,7 +257,7 @@ export const pathfinderSources: PathfinderSource[] = [
   {
     id: "manual-jogador-compilacao-pt",
     title: "Manual do Jogador PF2e (compilação local)",
-    titles: { "pt-BR": "Manual do Jogador PF2e (compilação local)", en: "PF2e Player Guide compilation (local)", es: "Compilación de guía del jogador PF2e (local)" },
+    titles: { "pt-BR": "Manual do Jogador PF2e (compilação local)", en: "PF2e Player Guide compilation (local)", es: "Compilación de guía del jugador PF2e (local)" },
     language: "pt-BR",
     pages: 58,
     ruleset: "remaster",
