@@ -8,6 +8,7 @@ import {
   googleDriveMapFiles,
   GOOGLE_DRIVE_LIBRARY_FOLDERS,
 } from "./data/sources";
+import { googleDrivePdfs } from "./data/googleDrivePdfs";
 import { useI18n, applyLegacyTranslations, getItemDisplayName, type MessageKey } from "./i18n";
 import type { PickerItem, PickerType } from "./types";
 import { useAccountViewState } from "./accountState";
@@ -725,9 +726,55 @@ function DownloadsPage() {
       </header>
       <BookDownloadsSection />
       <MapDownloadsSection locale={locale} />
+      <GoogleDrivePdfDownloadsSection locale={locale} />
       <GoogleDriveLibrarySection locale={locale} />
     </main>
   );
+}
+
+function GoogleDrivePdfDownloadsSection({ locale }: { locale: "pt-BR" | "en" | "es" }) {
+  const [query, setQuery] = useState("");
+  const [page, setPage] = useState(0);
+  const pageSize = 20;
+  const labels = locale === "en"
+    ? { kicker: "COMPLETE PDF INDEX · GOOGLE DRIVE", title: "All library PDFs", intro: "Direct links to every active PDF in the synchronized RPG library. Exact duplicates were removed from the active collection.", search: "Search PDFs...", previous: "Previous", next: "Next", empty: "No PDF matches this search", showing: "PDFs", page: "Page" }
+    : locale === "es"
+      ? { kicker: "ÍNDICE COMPLETO DE PDF · GOOGLE DRIVE", title: "Todos los PDFs de la biblioteca", intro: "Enlaces directos a cada PDF activo de la biblioteca RPG sincronizada. Los duplicados exactos fueron retirados de la colección activa.", search: "Buscar PDFs...", previous: "Anterior", next: "Siguiente", empty: "Ningún PDF coincide con la búsqueda", showing: "PDFs", page: "Página" }
+      : { kicker: "ÍNDICE COMPLETO DE PDFs · GOOGLE DRIVE", title: "Todos os PDFs da biblioteca", intro: "Links diretos para cada PDF ativo da biblioteca RPG sincronizada. Os duplicados exatos foram retirados da coleção ativa.", search: "Buscar PDFs...", previous: "Anterior", next: "Próxima", empty: "Nenhum PDF corresponde à busca", showing: "PDFs", page: "Página" };
+  const filtered = useMemo(() => {
+    const normalizedQuery = query.trim().toLowerCase();
+    return googleDrivePdfs.filter((pdf) => !normalizedQuery || pdf.name.toLowerCase().includes(normalizedQuery));
+  }, [query]);
+  const pageCount = Math.max(1, Math.ceil(filtered.length / pageSize));
+  const visible = filtered.slice(page * pageSize, (page + 1) * pageSize);
+  useEffect(() => setPage(0), [query]);
+  useEffect(() => { if (page >= pageCount) setPage(pageCount - 1); }, [page, pageCount]);
+
+  return <section className="downloads-section google-drive-pdfs-section" aria-label={labels.title}>
+    <div className="downloads-header-card google-drive-pdfs-header-card">
+      <div className="downloads-header-info">
+        <span className="downloads-kicker">{labels.kicker}</span>
+        <h2>📚 {labels.title}</h2>
+        <p>{labels.intro}</p>
+        <small className="downloads-note">ℹ️ {filtered.length} {labels.showing} · links open directly in Google Drive.</small>
+      </div>
+    </div>
+    <div className="downloads-filter-bar">
+      <input type="search" placeholder={labels.search} value={query} onChange={(event) => setQuery(event.target.value)} className="downloads-search-input" aria-label={labels.search} />
+    </div>
+    {visible.length > 0 ? <div className="downloads-grid google-drive-pdfs-grid">
+      {visible.map((pdf) => <article className="book-download-card google-drive-pdf-card" key={pdf.fileId}>
+        <div className="book-card-top"><div className="book-card-title-group"><h3>{pdf.name}</h3><span className="book-alt-title">Google Drive · PDF</span></div><span className="ruleset-badge legacy">PDF</span></div>
+        <div className="book-card-meta"><span className="book-meta-item">📄 PDF</span><span className="book-meta-item">🌐 Google Drive</span></div>
+        <div className="book-card-actions"><a href={pdf.url} target="_blank" rel="noopener noreferrer" className="btn-download-primary" aria-label={`Download PDF: ${pdf.name}`}>📥 {locale === "en" ? "Open PDF" : locale === "es" ? "Abrir PDF" : "Abrir PDF"}</a></div>
+      </article>)}
+    </div> : <p className="library-empty-state">{labels.empty}</p>}
+    <div className="library-pagination" aria-label={`${labels.page} ${page + 1} de ${pageCount}`}>
+      <button type="button" disabled={page === 0} onClick={() => setPage((current) => current - 1)}>← {labels.previous}</button>
+      <span>{labels.page} {page + 1} / {pageCount}</span>
+      <button type="button" disabled={page >= pageCount - 1} onClick={() => setPage((current) => current + 1)}>{labels.next} →</button>
+    </div>
+  </section>;
 }
 
 function MapDownloadsSection({ locale }: { locale: "pt-BR" | "en" | "es" }) {
