@@ -12,13 +12,19 @@ import threading
 import sys
 import re
 import tempfile
+from urllib.parse import unquote, urlparse
 
 PORT = 8080
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_DIR = os.path.join(BASE_DIR, "dist")
 CHARACTERS_DIR = os.path.join(BASE_DIR, "characters")
+MAPS_DIR = r"Z:\Meu Drive\Livros\Livros RPG"
+LIBRARY_DIR = r"D:\Users\rapha\Documents\Projetos\RPG\Livros RPG"
 MAX_BODY_BYTES = 1_000_000
 SAFE_CHARACTER_ID = re.compile(r"^[A-Za-z0-9_-]{1,160}$")
+MAP_FILENAME = re.compile(r"(?i)(map|folio)")
+LIBRARY_IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".webp"}
+LIBRARY_FILE_EXTENSIONS = LIBRARY_IMAGE_EXTENSIONS | {".pdf"}
 ALLOWED_ORIGINS = {
     "http://127.0.0.1:5173",
     "http://localhost:5173",
@@ -77,6 +83,115 @@ class PathbuilderHandler(http.server.SimpleHTTPRequestHandler):
         self.end_headers()
 
     def do_GET(self):
+        parsed_path = urlparse(self.path)
+        request_path = parsed_path.path
+        if request_path == "/api/library":
+            try:
+                assets = []
+                library_root = os.path.realpath(LIBRARY_DIR)
+                if os.path.isdir(library_root):
+                    for current_root, _, filenames in os.walk(library_root):
+                        for filename in filenames:
+                            extension = os.path.splitext(filename)[1].lower()
+                            if extension not in LIBRARY_FILE_EXTENSIONS:
+                                continue
+                            filepath = os.path.realpath(os.path.join(current_root, filename))
+                            if os.path.commonpath((library_root, filepath)) != library_root:
+                                continue
+                            relative_path = os.path.relpath(filepath, library_root).replace(os.sep, "/")
+                            parts = relative_path.split("/")
+                            section = parts[0] if parts else "Outros"
+                            if section == "Arte":
+                                group = "arte"
+                            elif section == "Mapas":
+                                group = "mapas"
+                            elif section in {"Livros", "Aventuras", "Fichas e Modelos"}:
+                                group = "arquivos"
+                            else:
+                                group = "outros"
+                            assets.append({
+                                "path": relative_path,
+                                "name": filename,
+                                "group": group,
+                                "section": section,
+                                "kind": "image" if extension in LIBRARY_IMAGE_EXTENSIONS else "file",
+                                "size": os.path.getsize(filepath),
+                                "url": "/api/library/asset/" + relative_path,
+                            })
+                assets.sort(key=lambda asset: (asset["group"], asset["path"].casefold()))
+                self.send_response(200)
+                self._send_cors_headers()
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.end_headers()
+                self.wfile.write(json.dumps({"directory": LIBRARY_DIR, "assets": assets}, ensure_ascii=False).encode("utf-8"))
+            except Exception:
+                self.send_error(500, "Could not list library assets")
+            return
+
+        if request_path.startswith("/api/library/asset/"):
+            relative_path = unquote(request_path[len("/api/library/asset/"):]).strip().replace("/", os.sep)
+            library_root = os.path.realpath(LIBRARY_DIR)
+            filepath = os.path.realpath(os.path.join(library_root, relative_path))
+            extension = os.path.splitext(filepath)[1].lower()
+            if (not relative_path or extension not in LIBRARY_FILE_EXTENSIONS
+                    or os.path.commonpath((library_root, filepath)) != library_root
+                    or not os.path.isfile(filepath)):
+                self.send_error(404, "Library asset not found")
+                return
+            try:
+                content_types = {".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".webp": "image/webp", ".pdf": "application/pdf"}
+                self.send_response(200)
+                self._send_cors_headers()
+                self.send_header("Content-Type", content_types[extension])
+                self.send_header("Content-Length", str(os.path.getsize(filepath)))
+                self.send_header("Cache-Control", "public, max-age=300")
+                self.end_headers()
+                with open(filepath, "rb") as asset_file:
+                    while chunk := asset_file.read(1024 * 1024):
+                        self.wfile.write(chunk)
+            except Exception:
+                self.send_error(500, "Could not serve library asset")
+            return
+
+        if request_path == "/api/maps":
+            try:
+                maps = []
+                if os.path.isdir(MAPS_DIR):
+                    for entry in sorted(os.scandir(MAPS_DIR), key=lambda item: item.name.casefold()):
+                        if entry.is_file() and entry.name.lower().endswith(".pdf") and MAP_FILENAME.search(entry.name):
+                            maps.append({"name": entry.name, "size": entry.stat().st_size})
+                self.send_response(200)
+                self._send_cors_headers()
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.end_headers()
+                self.wfile.write(json.dumps({"directory": MAPS_DIR, "maps": maps}, ensure_ascii=False).encode("utf-8"))
+            except Exception:
+                self.send_error(500, "Could not list map files")
+            return
+
+        if request_path.startswith("/api/maps/"):
+            filename = unquote(request_path[len("/api/maps/"):]).strip()
+            filepath = os.path.realpath(os.path.join(MAPS_DIR, filename))
+            maps_root = os.path.realpath(MAPS_DIR)
+            if (not filename or os.path.basename(filename) != filename or not filename.lower().endswith(".pdf")
+                    or not MAP_FILENAME.search(filename)
+                    or os.path.commonpath((maps_root, filepath)) != maps_root
+                    or not os.path.isfile(filepath)):
+                self.send_error(404, "Map not found")
+                return
+            try:
+                self.send_response(200)
+                self._send_cors_headers()
+                self.send_header("Content-Type", "application/pdf")
+                self.send_header("Content-Disposition", f'attachment; filename="{filename.replace(chr(34), "")}"')
+                self.send_header("Content-Length", str(os.path.getsize(filepath)))
+                self.end_headers()
+                with open(filepath, "rb") as map_file:
+                    self.wfile.write(map_file.read())
+            except Exception:
+                self.send_error(500, "Could not download map")
+            return
+
         if self.path == "/api/characters":
             try:
                 files = [f.replace(".json", "") for f in os.listdir(CHARACTERS_DIR) if f.endswith(".json")]

@@ -21,8 +21,29 @@ export const GITHUB_LIVROS_FOLDER_URL = "https://github.com/raphaelpera85/pathbu
 export const GITHUB_RAW_BASE_URL = "https://raw.githubusercontent.com/raphaelpera85/pathbuilder2e/main/livros";
 export const GITHUB_BLOB_BASE_URL = "https://github.com/raphaelpera85/pathbuilder2e/blob/main/livros";
 export const GOOGLE_DRIVE_FOLDER_URL = "https://drive.google.com/drive/folders/1d15Y0hqio9BbEzY87omM3vQLSH0tLQxg";
+export const GOOGLE_DRIVE_LIBRARY_FOLDERS = [
+  { name: "Arte", fileId: "1tnR5V1yEyrTPl_nrs6JBcFr8aXY1tPiq", countLabel: "2.530 imagens" },
+  { name: "Mapas", fileId: "1wk0L_OuQptqujYRAceQD0Y_oEZ5aeUTu", countLabel: "2.020 imagens + PDFs" },
+  { name: "Livros", fileId: "1szz_kwUf9UkAU1WNhBxKEJwxZfaJzNKE", countLabel: "17 PDFs" },
+  { name: "Aventuras", fileId: "1757i9iTOpF47Xa1swyj5bQ-7o5RxGOzk", countLabel: "8 PDFs" },
+  { name: "Fichas e Modelos", fileId: "1qRJWJ9v60aaByJadlHfPY0Bg88Ewbz62", countLabel: "1 PDF" },
+] as const;
 export const BLANK_SHEET_DRIVE_URL = "https://drive.google.com/file/d/1dasE2CoEyoUVKNytJ0WNXdnlonZUNLGh/view?usp=drive_link";
 export const POSTER_MAP_FOLIO_DRIVE_URL = "https://drive.google.com/file/d/1pnfMKbEWKl3BfE9XwFmN-aRH6mNBpRmT/view?usp=drive_link";
+
+export type GoogleDriveMapFile = { name: string; fileId: string; sizeLabel: string };
+export const googleDriveMapFiles: GoogleDriveMapFile[] = [
+  { name: "Pathfinder Poster Map Folio - Skull and Shackles", fileId: "1AV3wSOjDLy5odt3DyOb4zMZJa8yc1xNA", sizeLabel: "7,8 MB" },
+  { name: "Pathfinder Poster Map Folio - Shattered Star", fileId: "1Et0yD5Mr5D2D3NWFEnIrxlQpy3GPmKZ6", sizeLabel: "12,4 MB" },
+  { name: "Pathfinder Poster Map Folio - Serpent's Skull", fileId: "1Rgg8l0QAz-ebm7YxreQcnljeQjTc5HXs", sizeLabel: "8,6 MB" },
+  { name: "Pathfinder Poster Map Folio - Reign of Winter", fileId: "1cTd_HH1fSBQT0PE0L2d50RZEsBsZ_nRT", sizeLabel: "2,3 MB" },
+  { name: "Pathfinder Poster Map Folio - Iron Gods", fileId: "1aI-DxozrKpTiRNoBqyP2665JNaQzHVH_", sizeLabel: "5,2 MB" },
+  { name: "Pathfinder Poster Map Folio - Inner Sea", fileId: "1AQfLnA0ji_LE7usjmEH8hu--KaRbc675", sizeLabel: "24,5 MB" },
+  { name: "Pathfinder Map Folio - Second Darkness", fileId: "1Qrgpkuh4ktbkdro1F3yGfFq0F-EqDF1y", sizeLabel: "7,9 MB" },
+  { name: "Pathfinder Map Folio - Rise of the Runelords", fileId: "1b3U5xwfEfalzpjIJ3GFm-rWEhpGBOm8p", sizeLabel: "14,6 MB" },
+  { name: "Pathfinder Map Folio - City", fileId: "1gNeADG33xqgcmiGRSlEFehTt4LiWS98I", sizeLabel: "8,1 MB" },
+  { name: "Pathfinder Map Folio - Carrion Crown", fileId: "1DPYYKnXr9gD09TOfMqwlaNInyMDzAqXp", sizeLabel: "10,1 MB" },
+];
 
 export function localizeSourceBookName(book: string, locale: "pt-BR" | "en" | "es"): string {
   const normalized = String(book || "").trim().toLocaleLowerCase("pt-BR");
@@ -58,7 +79,7 @@ export const pathfinderSources: PathfinderSource[] = [
     catalogStatus: "partial",
     linkedRecords: 972,
     verifiedAt: "2026-08-31",
-    filename: "[ REMASTER ] (2023-12) PF2e – Livro do Jogador.pdf",
+    filename: "LIVRO - Pathfinder 2e - Livro do Jogador (Remaster, 2023).pdf",
     downloadUrl: "https://drive.google.com/file/d/16JYQNFQt96ikLtY5A0jaNN5SOIgCF4mM/view?usp=drive_link",
     viewUrl: "https://drive.google.com/file/d/16JYQNFQt96ikLtY5A0jaNN5SOIgCF4mM/view?usp=drive_link",
     driveUrl: "https://drive.google.com/file/d/16JYQNFQt96ikLtY5A0jaNN5SOIgCF4mM/view?usp=drive_link"
@@ -75,7 +96,7 @@ export const pathfinderSources: PathfinderSource[] = [
     catalogStatus: "partial",
     linkedRecords: 1126,
     verifiedAt: "2026-08-31",
-    filename: "[ REMASTER ] (2024-07) PF2e – Livro do Jogador 2.pdf",
+    filename: "LIVRO - Pathfinder 2e - Livro do Jogador 2 (Remaster, 2024).pdf",
     downloadUrl: "https://drive.google.com/file/d/1gqarSAhXDVfVFuIp6e6XJYT_9m6Ik6Rs/view?usp=drive_link",
     viewUrl: "https://drive.google.com/file/d/1gqarSAhXDVfVFuIp6e6XJYT_9m6Ik6Rs/view?usp=drive_link",
     driveUrl: "https://drive.google.com/file/d/1gqarSAhXDVfVFuIp6e6XJYT_9m6Ik6Rs/view?usp=drive_link"
@@ -92,7 +113,7 @@ export const pathfinderSources: PathfinderSource[] = [
     catalogStatus: "partial",
     linkedRecords: 168,
     verifiedAt: "2026-08-31",
-    filename: "(2021-09) Pathfinder 2e - Segredos da Magia.pdf",
+    filename: "LIVRO - Pathfinder 2e - Segredos da Magia (2021).pdf",
     downloadUrl: "https://drive.google.com/file/d/1HbxDYyIHRAr0_pCVXVPhcYFLeWIBD-ns/view?usp=drive_link",
     viewUrl: "https://drive.google.com/file/d/1HbxDYyIHRAr0_pCVXVPhcYFLeWIBD-ns/view?usp=drive_link",
     driveUrl: "https://drive.google.com/file/d/1HbxDYyIHRAr0_pCVXVPhcYFLeWIBD-ns/view?usp=drive_link"
@@ -109,7 +130,7 @@ export const pathfinderSources: PathfinderSource[] = [
     catalogStatus: "partial",
     linkedRecords: 195,
     verifiedAt: "2026-08-31",
-    filename: "(2021-10) Pathfinder 2e - Pólvora e Engrenagens.pdf",
+    filename: "LIVRO - Pathfinder 2e - Pólvora e Engrenagens (2021).pdf",
     downloadUrl: "https://drive.google.com/file/d/1Xtg4QhG2G_0kZZpMP9mZL7CID3O2BI0Y/view?usp=drive_link",
     viewUrl: "https://drive.google.com/file/d/1Xtg4QhG2G_0kZZpMP9mZL7CID3O2BI0Y/view?usp=drive_link",
     driveUrl: "https://drive.google.com/file/d/1Xtg4QhG2G_0kZZpMP9mZL7CID3O2BI0Y/view?usp=drive_link"
@@ -126,7 +147,7 @@ export const pathfinderSources: PathfinderSource[] = [
     catalogStatus: "partial",
     linkedRecords: 44,
     verifiedAt: "2026-08-31",
-    filename: "(2022-04) Pathfinder 2e - Livro dos Mortos.pdf",
+    filename: "LIVRO - Pathfinder 2e - Livro dos Mortos (2022).pdf",
     downloadUrl: "https://drive.google.com/file/d/167jp5RamEDp7VWnvwtlULHRqSQoTBSFq/view?usp=drive_link",
     viewUrl: "https://drive.google.com/file/d/167jp5RamEDp7VWnvwtlULHRqSQoTBSFq/view?usp=drive_link",
     driveUrl: "https://drive.google.com/file/d/167jp5RamEDp7VWnvwtlULHRqSQoTBSFq/view?usp=drive_link"
@@ -143,7 +164,7 @@ export const pathfinderSources: PathfinderSource[] = [
     catalogStatus: "partial",
     linkedRecords: 209,
     verifiedAt: "2026-08-31",
-    filename: "(2022-07) Pathfinder 2e - Dark Archive.pdf",
+    filename: "LIVRO - Pathfinder 2e - Dark Archive (2022).pdf",
     downloadUrl: "https://drive.google.com/file/d/1KAuLmotqtV61BFqEioC7eJk9WlNtaegt/view?usp=drive_link",
     viewUrl: "https://drive.google.com/file/d/1KAuLmotqtV61BFqEioC7eJk9WlNtaegt/view?usp=drive_link",
     driveUrl: "https://drive.google.com/file/d/1KAuLmotqtV61BFqEioC7eJk9WlNtaegt/view?usp=drive_link"
@@ -160,7 +181,7 @@ export const pathfinderSources: PathfinderSource[] = [
     catalogStatus: "partial",
     linkedRecords: 299,
     verifiedAt: "2026-08-31",
-    filename: "(2023-08) Pathfinder 2e - Rage of Elements.pdf",
+    filename: "LIVRO - Pathfinder 2e - Rage of Elements (2023).pdf",
     downloadUrl: "https://drive.google.com/file/d/1V-wLY_wSDpEEG7Hk1TTzDspXjueiXxbk/view?usp=drive_link",
     viewUrl: "https://drive.google.com/file/d/1V-wLY_wSDpEEG7Hk1TTzDspXjueiXxbk/view?usp=drive_link",
     driveUrl: "https://drive.google.com/file/d/1V-wLY_wSDpEEG7Hk1TTzDspXjueiXxbk/view?usp=drive_link"
@@ -194,7 +215,7 @@ export const pathfinderSources: PathfinderSource[] = [
     catalogStatus: "partial",
     linkedRecords: 122,
     verifiedAt: "2026-08-31",
-    filename: "PF2 - Howl of the Wild (updated with errata).pdf",
+    filename: "LIVRO - Pathfinder 2e - Howl of the Wild (errata).pdf",
     downloadUrl: "https://drive.google.com/file/d/1D2J2lFQcYczithH91yJJnPhsYHP31HQv/view?usp=drive_link",
     viewUrl: "https://drive.google.com/file/d/1D2J2lFQcYczithH91yJJnPhsYHP31HQv/view?usp=drive_link",
     driveUrl: "https://drive.google.com/file/d/1D2J2lFQcYczithH91yJJnPhsYHP31HQv/view?usp=drive_link"
@@ -211,7 +232,7 @@ export const pathfinderSources: PathfinderSource[] = [
     catalogStatus: "partial",
     linkedRecords: 289,
     verifiedAt: "2026-08-31",
-    filename: "PF2e - [Paizo] - Battlecry!.pdf",
+    filename: "LIVRO - Pathfinder 2e - Battlecry! (edição anterior).pdf",
     downloadUrl: "https://drive.google.com/file/d/1Xh9-Jikg0_Vt4Lmf0aLOXRPy7hOeFvy3/view?usp=drive_link",
     viewUrl: "https://drive.google.com/file/d/1Xh9-Jikg0_Vt4Lmf0aLOXRPy7hOeFvy3/view?usp=drive_link",
     driveUrl: "https://drive.google.com/file/d/1Xh9-Jikg0_Vt4Lmf0aLOXRPy7hOeFvy3/view?usp=drive_link"
@@ -228,7 +249,7 @@ export const pathfinderSources: PathfinderSource[] = [
     catalogStatus: "pending",
     linkedRecords: 1,
     verifiedAt: "2026-08-31",
-    filename: "pathfinder-rpg-livro-basico.pdf",
+    filename: "LIVRO - Pathfinder RPG - Livro Básico.pdf",
     downloadUrl: "https://drive.google.com/file/d/1ydoGX2IdyufEIPTxOHueAAAvdErIoJ7l/view?usp=drive_link",
     viewUrl: "https://drive.google.com/file/d/1ydoGX2IdyufEIPTxOHueAAAvdErIoJ7l/view?usp=drive_link",
     driveUrl: "https://drive.google.com/file/d/1ydoGX2IdyufEIPTxOHueAAAvdErIoJ7l/view?usp=drive_link"
@@ -245,7 +266,7 @@ export const pathfinderSources: PathfinderSource[] = [
     catalogStatus: "pending",
     linkedRecords: 0,
     verifiedAt: "2026-08-31",
-    filename: "Manual_do_Jogador_PF2e.pdf",
+    filename: "LIVRO - Pathfinder 2e - Manual do Jogador (compilação).pdf",
     downloadUrl: "https://drive.google.com/file/d/1ZcGB7EZMBdq18Vuy9iZhFV4GhmKFkMHt/view?usp=drive_link",
     viewUrl: "https://drive.google.com/file/d/1ZcGB7EZMBdq18Vuy9iZhFV4GhmKFkMHt/view?usp=drive_link",
     driveUrl: "https://drive.google.com/file/d/1ZcGB7EZMBdq18Vuy9iZhFV4GhmKFkMHt/view?usp=drive_link"
@@ -269,7 +290,7 @@ export const additionalDownloadResources: PathfinderSource[] = [
     catalogStatus: "partial",
     linkedRecords: 0,
     verifiedAt: "2026-09-04",
-    filename: "ficha.pdf",
+    filename: "FICHA - Pathfinder 2e - Ficha Oficial de Personagem.pdf",
     downloadUrl: BLANK_SHEET_DRIVE_URL,
     viewUrl: BLANK_SHEET_DRIVE_URL,
     driveUrl: BLANK_SHEET_DRIVE_URL
@@ -290,7 +311,7 @@ export const additionalDownloadResources: PathfinderSource[] = [
     catalogStatus: "partial",
     linkedRecords: 0,
     verifiedAt: "2026-09-04",
-    filename: "pathfinder-rpg-poster-map-folio-inner-sea.pdf",
+    filename: "MAPA - Pathfinder Poster Map Folio - Inner Sea.pdf",
     downloadUrl: POSTER_MAP_FOLIO_DRIVE_URL,
     viewUrl: POSTER_MAP_FOLIO_DRIVE_URL,
     driveUrl: POSTER_MAP_FOLIO_DRIVE_URL

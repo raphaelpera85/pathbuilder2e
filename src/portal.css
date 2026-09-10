@@ -910,6 +910,37 @@ body.portal-page-active .dice-roller-drawer { display: none !important; }
   width: 100%;
 }
 
+.maps-download-section { margin-top: 28px; }
+.maps-header-card { border-color: rgba(56, 189, 248, 0.4); background: linear-gradient(135deg, rgba(10, 38, 58, 0.95), rgba(11, 15, 23, 0.98)); }
+.map-count-badge { display: inline-flex; align-items: center; padding: 9px 13px; border-radius: 999px; color: #bae6fd; background: rgba(14, 116, 144, 0.28); border: 1px solid rgba(56, 189, 248, 0.4); font-size: 12px; font-weight: 800; white-space: nowrap; }
+.map-download-card { border-color: rgba(56, 189, 248, 0.22); }
+.map-download-card:hover { border-color: rgba(56, 189, 248, 0.65); }
+.map-download-card .book-alt-title { overflow-wrap: anywhere; }
+
+.library-assets-section { margin-top: 28px; }
+.library-assets-header-card { border-color: rgba(168, 85, 247, 0.42); background: linear-gradient(135deg, rgba(55, 27, 78, 0.92), rgba(11, 15, 23, 0.98)); }
+.library-folder-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+.library-folder-card { min-height: 170px; }
+.library-folder-icon { font-size: 32px; }
+.library-asset-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+.library-asset-tabs button, .library-pagination button { min-height: 38px; padding: 8px 13px; color: var(--pb-text-muted); background: var(--pb-bg-card); border: 1px solid var(--pb-border-light); border-radius: 9px; font-size: 12px; font-weight: 800; cursor: pointer; }
+.library-asset-tabs button:hover, .library-asset-tabs button.active, .library-pagination button:hover:not(:disabled) { color: #fff; border-color: #a855f7; background: rgba(126, 34, 206, 0.28); }
+.library-asset-tabs button span { margin-left: 4px; color: var(--pb-text-dim); }
+.library-assets-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 14px; }
+.library-asset-card { min-width: 0; overflow: hidden; background: rgba(17, 23, 34, 0.9); border: 1px solid var(--pb-border); border-radius: 12px; transition: transform .2s ease, border-color .2s ease; }
+.library-asset-card:hover { transform: translateY(-2px); border-color: rgba(168, 85, 247, .7); }
+.library-asset-preview { display: block; height: 170px; background: #0b0f17; }
+.library-asset-preview img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.library-file-preview { display: grid; place-items: center; height: 170px; background: linear-gradient(135deg, #182235, #0b0f17); font-size: 58px; }
+.library-asset-body { padding: 12px; }
+.library-asset-body h3 { margin: 0 0 5px; overflow: hidden; color: var(--pb-text); font-size: 13px; text-overflow: ellipsis; white-space: nowrap; }
+.library-asset-body small { display: block; overflow: hidden; color: var(--pb-text-dim); font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
+.library-asset-body .book-card-actions { margin-top: 10px; gap: 6px; }
+.library-asset-body .book-card-actions a { padding: 7px 9px; font-size: 11px; }
+.library-pagination { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 4px; }
+.library-pagination span { color: var(--pb-text-muted); font-size: 12px; font-weight: 800; }
+.library-pagination button:disabled { cursor: not-allowed; opacity: .4; }
+
 .downloads-header-card {
   display: flex;
   justify-content: space-between;

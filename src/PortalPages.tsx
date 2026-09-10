@@ -5,6 +5,8 @@ import {
   type PathfinderSource,
   GOOGLE_DRIVE_FOLDER_URL,
   BLANK_SHEET_DRIVE_URL,
+  googleDriveMapFiles,
+  GOOGLE_DRIVE_LIBRARY_FOLDERS,
 } from "./data/sources";
 import { useI18n, applyLegacyTranslations, getItemDisplayName, type MessageKey } from "./i18n";
 import type { PickerItem, PickerType } from "./types";
@@ -713,7 +715,7 @@ function BookDownloadsSection() {
 }
 
 function DownloadsPage() {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
   return (
     <main className="portal-page" id="portal-content" tabIndex={-1}>
       <header className="portal-hero">
@@ -722,8 +724,101 @@ function DownloadsPage() {
         <p>{t("downloadsIntro")}</p>
       </header>
       <BookDownloadsSection />
+      <MapDownloadsSection locale={locale} />
+      <GoogleDriveLibrarySection locale={locale} />
     </main>
   );
+}
+
+function MapDownloadsSection({ locale }: { locale: "pt-BR" | "en" | "es" }) {
+  const { t } = useI18n();
+  const driveUrl = (fileId: string) => `https://drive.google.com/file/d/${fileId}/view?usp=drive_link`;
+  return <section className="downloads-section maps-download-section" aria-label={t("mapsTitle")}>
+    <div className="downloads-header-card maps-header-card">
+      <div className="downloads-header-info">
+        <span className="downloads-kicker">{t("mapsKicker")}</span>
+        <h2>🗺️ {t("mapsTitle")}</h2>
+        <p>{t("mapsIntro")}</p>
+        <small className="downloads-note">ℹ️ Links diretos para arquivos compartilhados no Google Drive.</small>
+      </div>
+      <span className="map-count-badge">{googleDriveMapFiles.length} {t("mapsCount")}</span>
+    </div>
+    <div className="downloads-grid maps-grid">
+      {googleDriveMapFiles.map((map) => <article className="book-download-card map-download-card" key={map.fileId}>
+        <div className="book-card-top"><div className="book-card-title-group"><h3>{map.name}</h3><span className="book-alt-title">Google Drive · {map.sizeLabel}</span></div><span className="ruleset-badge legacy">PDF</span></div>
+        <div className="book-card-meta"><span className="book-meta-item">📄 {map.sizeLabel}</span><span className="book-meta-item">🌐 Google Drive</span></div>
+        <div className="book-card-actions"><a href={driveUrl(map.fileId)} target="_blank" rel="noopener noreferrer" className="btn-download-primary" aria-label={`${t("downloadMap")}: ${map.name}`}><span aria-hidden="true">📥</span> {t("downloadMap")}</a></div>
+      </article>)}
+    </div>
+    <div className="downloads-repo-actions"><a href={GOOGLE_DRIVE_FOLDER_URL} target="_blank" rel="noopener noreferrer" className="btn-repo-link secondary">📁 Abrir pasta completa no Google Drive</a></div>
+  </section>;
+}
+
+function GoogleDriveLibrarySection({ locale }: { locale: "pt-BR" | "en" | "es" }) {
+  const labels = locale === "en"
+    ? { kicker: "FULL LIBRARY · GOOGLE DRIVE", title: "Images and files", intro: "Open each organized folder to browse and download the complete synchronized library.", open: "Open folder", note: "The folders open directly in Google Drive." }
+    : locale === "es"
+      ? { kicker: "BIBLIOTECA COMPLETA · GOOGLE DRIVE", title: "Imágenes y archivos", intro: "Abre cada carpeta organizada para explorar y descargar la biblioteca sincronizada completa.", open: "Abrir carpeta", note: "Las carpetas se abren directamente en Google Drive." }
+      : { kicker: "BIBLIOTECA COMPLETA · GOOGLE DRIVE", title: "Imagens e arquivos", intro: "Abra cada pasta organizada para navegar e baixar toda a biblioteca sincronizada.", open: "Abrir pasta", note: "As pastas abrem diretamente no Google Drive." };
+  const folderUrl = (fileId: string) => `https://drive.google.com/drive/folders/${fileId}`;
+  return <section className="downloads-section library-assets-section" aria-label={labels.title}>
+    <div className="downloads-header-card library-assets-header-card"><div className="downloads-header-info"><span className="downloads-kicker">{labels.kicker}</span><h2>🗂️ {labels.title}</h2><p>{labels.intro}</p><small className="downloads-note">ℹ️ {labels.note}</small></div></div>
+    <div className="library-folder-grid">{GOOGLE_DRIVE_LIBRARY_FOLDERS.map((folder) => <article className="book-download-card library-folder-card" key={folder.fileId}><div className="library-folder-icon" aria-hidden="true">{folder.name === "Arte" ? "🖼️" : folder.name === "Mapas" ? "🗺️" : folder.name === "Aventuras" ? "🏰" : folder.name === "Livros" ? "📚" : "📄"}</div><div className="book-card-top"><div className="book-card-title-group"><h3>{folder.name}</h3><span className="book-alt-title">{folder.countLabel}</span></div></div><div className="book-card-actions"><a href={folderUrl(folder.fileId)} target="_blank" rel="noopener noreferrer" className="btn-download-primary">📁 {labels.open}</a></div></article>)}</div>
+  </section>;
+}
+
+type LibraryAsset = { path: string; name: string; group: "arte" | "mapas" | "arquivos" | "outros"; section: string; kind: "image" | "file"; size: number; url: string };
+
+function LibraryAssetsSection({ locale }: { locale: "pt-BR" | "en" | "es" }) {
+  const [assets, setAssets] = useState<LibraryAsset[]>([]);
+  const [activeGroup, setActiveGroup] = useState<LibraryAsset["group"]>("arte");
+  const [query, setQuery] = useState("");
+  const [page, setPage] = useState(0);
+  const [available, setAvailable] = useState<boolean | null>(null);
+  const pageSize = 60;
+
+  useEffect(() => {
+    let active = true;
+    fetch("/api/library")
+      .then((response) => response.ok ? response.json() as Promise<{ assets?: LibraryAsset[] }> : Promise.reject(new Error("library unavailable")))
+      .then((payload) => { if (active) { setAssets(payload.assets || []); setAvailable(true); } })
+      .catch(() => { if (active) setAvailable(false); });
+    return () => { active = false; };
+  }, []);
+
+  const labels = locale === "en"
+    ? { title: "Library media", intro: "Illustrations, creatures, items, scenes, maps and files from your RPG library.", arte: "Illustrations", mapas: "Maps & tiles", arquivos: "Books & files", outros: "Other", search: "Search the library...", open: "Open", download: "Download", previous: "Previous", next: "Next", local: "Local library", unavailable: "Start the local server to load the library." }
+    : locale === "es"
+      ? { title: "Medios de la biblioteca", intro: "Ilustraciones, criaturas, objetos, escenas, mapas y archivos de tu biblioteca RPG.", arte: "Ilustraciones", mapas: "Mapas y tiles", arquivos: "Libros y archivos", outros: "Otros", search: "Buscar en la biblioteca...", open: "Abrir", download: "Descargar", previous: "Anterior", next: "Siguiente", local: "Biblioteca local", unavailable: "Inicia el servidor local para cargar la biblioteca." }
+      : { title: "Mídias da biblioteca", intro: "Ilustrações, criaturas, itens, cenas, mapas e arquivos da sua biblioteca de RPG.", arte: "Ilustrações", mapas: "Mapas e tiles", arquivos: "Livros e arquivos", outros: "Outros", search: "Buscar na biblioteca...", open: "Abrir", download: "Baixar", previous: "Anterior", next: "Próxima", local: "Biblioteca local", unavailable: "Inicie o servidor local para carregar a biblioteca." };
+
+  const filtered = useMemo(() => assets.filter((asset) => asset.group === activeGroup && (!query || `${asset.name} ${asset.path}`.toLowerCase().includes(query.toLowerCase()))), [assets, activeGroup, query]);
+  const pageCount = Math.max(1, Math.ceil(filtered.length / pageSize));
+  const visible = filtered.slice(page * pageSize, (page + 1) * pageSize);
+  useEffect(() => { setPage(0); }, [activeGroup, query]);
+
+  const countFor = (group: LibraryAsset["group"]) => assets.filter((asset) => asset.group === group).length;
+  const groupLabels: Array<[LibraryAsset["group"], string]> = [["arte", labels.arte], ["mapas", labels.mapas], ["arquivos", labels.arquivos], ["outros", labels.outros]];
+  const formatSize = (bytes: number) => bytes > 1024 * 1024 ? `${(bytes / 1024 / 1024).toFixed(1)} MB` : `${Math.max(1, Math.round(bytes / 1024))} KB`;
+
+  return <section className="downloads-section library-assets-section" aria-label={labels.title}>
+    <div className="downloads-header-card library-assets-header-card">
+      <div className="downloads-header-info"><span className="downloads-kicker">🖼️ {labels.local}</span><h2>{labels.title}</h2><p>{labels.intro}</p><small className="downloads-note">ℹ️ {available === false ? labels.unavailable : `${assets.length} assets catalogados`}</small></div>
+    </div>
+    {available === true && <>
+      <div className="library-asset-tabs" role="tablist" aria-label={labels.title}>
+        {groupLabels.map(([group, label]) => <button key={group} type="button" className={activeGroup === group ? "active" : ""} onClick={() => setActiveGroup(group)} role="tab" aria-selected={activeGroup === group}>{label} <span>{countFor(group)}</span></button>)}
+      </div>
+      <div className="downloads-filter-bar"><input type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder={labels.search} className="downloads-search-input" aria-label={labels.search} /></div>
+      {visible.length > 0 ? <div className="library-assets-grid">
+        {visible.map((asset) => <article className="library-asset-card" key={asset.path}>
+          {asset.kind === "image" ? <a href={asset.url} target="_blank" rel="noopener noreferrer" className="library-asset-preview"><img src={asset.url} alt={asset.name} loading="lazy" /></a> : <div className="library-file-preview" aria-hidden="true">📄</div>}
+          <div className="library-asset-body"><h3 title={asset.name}>{asset.name}</h3><small title={asset.path}>{asset.section} · {formatSize(asset.size)}</small><div className="book-card-actions"><a href={asset.url} target="_blank" rel="noopener noreferrer" className="btn-repo-link secondary">{asset.kind === "image" ? labels.open : labels.download}</a>{asset.kind === "image" && <a href={asset.url} download={asset.name} className="btn-download-primary">📥 {labels.download}</a>}</div></div>
+        </article>)}
+      </div> : <div className="portal-empty">Nenhum arquivo encontrado.</div>}
+      {pageCount > 1 && <div className="library-pagination"><button type="button" disabled={page === 0} onClick={() => setPage((current) => Math.max(0, current - 1))}>{labels.previous}</button><span>{page + 1} / {pageCount}</span><button type="button" disabled={page >= pageCount - 1} onClick={() => setPage((current) => Math.min(pageCount - 1, current + 1))}>{labels.next}</button></div>}
+    </>}
+  </section>;
 }
 
 function RulesPage() {
