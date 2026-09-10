@@ -196,6 +196,7 @@ describe("weapon visual fallback", () => {
     expect(legacyApp).toContain("data.weaponCategory || data.category");
     expect(legacyApp).toContain("data.names?.[\"pt-BR\"]");
     expect(legacyApp).toContain('key === "generic" ? "svg" : "png"');
-    expect(legacyApp).toContain("weapon-visual-strike");
+  expect(legacyApp).toContain("weapon-visual-strike");
+  expect(legacyApp).toMatch(/if \(\/rapieira\|rapier\/\.test\(identity\)\) return "rapier"/);
   });
 });

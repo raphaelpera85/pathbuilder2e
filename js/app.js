@@ -26,6 +26,7 @@ function getWeaponVisualKey(data = {}) {
   if (/staff|cajado|lance|bastão/.test(identity)) return "staff";
   if (/mace|maça|hammer|martelo|morningstar|estrela da manhã|tritura-espírito|quebra-correntes/.test(identity)) return "mace";
   if (/knife|dagger|adaga|faca|mambele/.test(identity)) return "dagger";
+  if (/rapieira|rapier/.test(identity)) return "rapier";
   if (/sword|espada|polearm|fauchard|montante|segadeira|varredor do destino|battlecry/.test(identity)) return "sword";
   if (/axe|machado|picareta|pick|machadinha/.test(identity)) return "axe";
   if (/spear|lança|pike|alabarda/.test(identity)) return "spear";
