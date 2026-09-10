@@ -17,6 +17,7 @@ describe("weapon visual fallback", () => {
 
   it("preserves explicit artwork and returns localized accessible alt text", () => {
     expect(getWeaponImageUrl({ imageUrl: "/custom/lute.webp", weaponGroup: "Club" })).toBe("/custom/lute.webp");
+    expect(getWeaponImageUrl({ imageUrl: "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/weapon-images/weapon-club.png" })).toBe("/weapon-images/weapon-club.png");
     expect(getWeaponImageAlt("Arco Longo", { weaponGroup: "Bow" }, "pt-BR")).toBe("Ilustração de Arco Longo");
     expect(getWeaponImageAlt("Longbow", { weaponGroup: "Bow" }, "en")).toBe("Illustration of Longbow");
   });

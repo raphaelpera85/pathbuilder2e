@@ -22,11 +22,11 @@ export const GITHUB_RAW_BASE_URL = "https://raw.githubusercontent.com/raphaelper
 export const GITHUB_BLOB_BASE_URL = "https://github.com/raphaelpera85/pathbuilder2e/blob/main/livros";
 export const GOOGLE_DRIVE_FOLDER_URL = "https://drive.google.com/drive/folders/1d15Y0hqio9BbEzY87omM3vQLSH0tLQxg";
 export const GOOGLE_DRIVE_LIBRARY_FOLDERS = [
-  { name: "Arte", fileId: "1tnR5V1yEyrTPl_nrs6JBcFr8aXY1tPiq", countLabel: "2.530 imagens" },
-  { name: "Mapas", fileId: "1wk0L_OuQptqujYRAceQD0Y_oEZ5aeUTu", countLabel: "2.020 imagens + PDFs" },
-  { name: "Livros", fileId: "1szz_kwUf9UkAU1WNhBxKEJwxZfaJzNKE", countLabel: "17 PDFs" },
-  { name: "Aventuras", fileId: "1757i9iTOpF47Xa1swyj5bQ-7o5RxGOzk", countLabel: "8 PDFs" },
-  { name: "Fichas e Modelos", fileId: "1qRJWJ9v60aaByJadlHfPY0Bg88Ewbz62", countLabel: "1 PDF" },
+  { id: "art", fileId: "1tnR5V1yEyrTPl_nrs6JBcFr8aXY1tPiq", titles: { "pt-BR": "Arte", en: "Art", es: "Arte" }, countLabels: { "pt-BR": "2.530 imagens", en: "2,530 images", es: "2.530 imágenes" } },
+  { id: "maps", fileId: "1wk0L_OuQptqujYRAceQD0Y_oEZ5aeUTu", titles: { "pt-BR": "Mapas", en: "Maps", es: "Mapas" }, countLabels: { "pt-BR": "2.020 imagens + PDFs", en: "2,020 images + PDFs", es: "2.020 imágenes + PDF" } },
+  { id: "books", fileId: "1szz_kwUf9UkAU1WNhBxKEJwxZfaJzNKE", titles: { "pt-BR": "Livros", en: "Books", es: "Libros" }, countLabels: { "pt-BR": "17 PDFs", en: "17 PDFs", es: "17 PDF" } },
+  { id: "adventures", fileId: "1757i9iTOpF47Xa1swyj5bQ-7o5RxGOzk", titles: { "pt-BR": "Aventuras", en: "Adventures", es: "Aventuras" }, countLabels: { "pt-BR": "8 PDFs", en: "8 PDFs", es: "8 PDF" } },
+  { id: "sheets", fileId: "1qRJWJ9v60aaByJadlHfPY0Bg88Ewbz62", titles: { "pt-BR": "Fichas e Modelos", en: "Sheets & Templates", es: "Fichas y plantillas" }, countLabels: { "pt-BR": "1 PDF", en: "1 PDF", es: "1 PDF" } },
 ] as const;
 export const BLANK_SHEET_DRIVE_URL = "https://drive.google.com/file/d/1dasE2CoEyoUVKNytJ0WNXdnlonZUNLGh/view?usp=drive_link";
 export const POSTER_MAP_FOLIO_DRIVE_URL = "https://drive.google.com/file/d/1pnfMKbEWKl3BfE9XwFmN-aRH6mNBpRmT/view?usp=drive_link";

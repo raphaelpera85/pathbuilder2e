@@ -11,6 +11,13 @@ export type ItemVisualData = {
   image?: { url?: string; alt?: string };
 };
 
+function localProjectAssetUrl(url: string | undefined): string | undefined {
+  if (!url) return undefined;
+  const marker = "/storage/v1/object/public/compendium-assets/";
+  const markerIndex = url.indexOf(marker);
+  return markerIndex >= 0 ? `/${url.slice(markerIndex + marker.length)}` : url;
+}
+
 function itemIdentity(data: ItemVisualData = {}): string {
   const names = data.names || {};
   return [data.name, names["pt-BR"], names.en, names.es, data.description, ...(data.traits || []), data.itemCategory, data.category]
@@ -232,7 +239,7 @@ export function getItemVisualKey(data: ItemVisualData = {}): string {
 }
 
 export function getItemImageUrl(data: ItemVisualData = {}): string {
-  return data.image?.url || data.imageUrl || `/item-images/item-${getItemVisualKey(data)}.png`;
+  return localProjectAssetUrl(data.image?.url) || localProjectAssetUrl(data.imageUrl) || `/item-images/item-${getItemVisualKey(data)}.png`;
 }
 
 export function getItemImageAlt(name: string, data: ItemVisualData = {}, locale: "pt-BR" | "en" | "es" = "pt-BR"): string {

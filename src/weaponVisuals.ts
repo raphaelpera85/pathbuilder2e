@@ -10,6 +10,13 @@ export type WeaponVisualData = {
   image?: { url?: string; alt?: string };
 };
 
+function localProjectAssetUrl(url: string | undefined): string | undefined {
+  if (!url) return undefined;
+  const marker = "/storage/v1/object/public/compendium-assets/";
+  const markerIndex = url.indexOf(marker);
+  return markerIndex >= 0 ? `/${url.slice(markerIndex + marker.length)}` : url;
+}
+
 export function getWeaponVisualKey(data: WeaponVisualData = {}): string {
   const group = String(data.weaponGroup || data.group || "").toLowerCase();
   const category = String(data.category || data.weaponCategory || "").toLowerCase();
@@ -174,7 +181,7 @@ export function getWeaponVisualKey(data: WeaponVisualData = {}): string {
 }
 
 export function getWeaponImageUrl(data: WeaponVisualData = {}): string {
-  return data.image?.url || data.imageUrl || `/weapon-images/weapon-${getWeaponVisualKey(data)}.png`;
+  return localProjectAssetUrl(data.image?.url) || localProjectAssetUrl(data.imageUrl) || `/weapon-images/weapon-${getWeaponVisualKey(data)}.png`;
 }
 
 export function getWeaponImageAlt(name: string, data: WeaponVisualData = {}, locale: "pt-BR" | "en" | "es" = "pt-BR"): string {

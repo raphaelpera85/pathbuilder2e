@@ -214,6 +214,10 @@ describe("item visuals", () => {
     expect(getItemImageAlt("Mochila de Aventureiro", { name: "Mochila de Aventureiro" })).toBe("Ilustração de Mochila de Aventureiro");
   });
 
+  it("uses versioned Git assets when catalog metadata still has a Supabase Storage URL", () => {
+    expect(getItemImageUrl({ imageUrl: "https://wjmrrqrretculeyxpngc.supabase.co/storage/v1/object/public/compendium-assets/item-images/specific/item-gear-backpack.svg" })).toBe("/item-images/specific/item-gear-backpack.svg");
+  });
+
   it("associa todos os itens catalogados a uma família e asset local existente", () => {
     const items = JSON.parse(readFileSync(resolve(process.cwd(), "scripts/catalog_data/catalog_items.json"), "utf8")) as Array<Record<string, unknown>>;
     for (const item of items) {
