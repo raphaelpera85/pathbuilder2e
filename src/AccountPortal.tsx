@@ -97,6 +97,12 @@ export function AccountPortal() {
       window.dispatchEvent(new CustomEvent("pathbuilder:open-ose-wizard"));
       return;
     }
+    if (systemId === "t20" || systemId === "dnd5e") {
+      setOpen(false);
+      window.dispatchEvent(new CustomEvent("pathbuilder:open-core-wizard", { detail: { system: systemId } }));
+      window.location.hash = "#/library";
+      return;
+    }
     (window as any).app?.createNewCharacter?.(systemId);
     setOpen(false);
     if (window.location.hash === "#/builder") {

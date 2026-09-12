@@ -45,6 +45,9 @@ import { getItemImageAlt, getItemImageUrl } from "./itemVisuals";
 import { SystemSelectorModal } from "./SystemSelectorModal";
 import { OseCharacterCreatorModal, type OseCharacterCreatedData } from "./ose/OseCharacterCreatorModal";
 import { OseCharacterSheet } from "./ose/OseCharacterSheet";
+import { CoreCharacterCreatorModal } from "./core/CoreCharacterCreatorModal";
+import { CoreCharacterSheet } from "./core/CoreCharacterSheet";
+import type { MultiSystemCharacter, SupportedCoreSystem } from "./data/multiSystemCharacter";
 import type { RPGSystemId } from "./types";
 import "./portal.css";
 
@@ -920,9 +923,14 @@ function LibraryPage() {
   const [selectedSystemFilter, setSelectedSystemFilter] = useState<string>("all");
   const [isOseWizardOpen, setIsOseWizardOpen] = useState(false);
   const [activeOseCharacter, setActiveOseCharacter] = useState<OseCharacterCreatedData | null>(null);
+  const [coreWizardSystem, setCoreWizardSystem] = useState<SupportedCoreSystem | null>(null);
+  const [activeCoreCharacter, setActiveCoreCharacter] = useState<MultiSystemCharacter | null>(null);
 
   useEffect(() => {
     const handleOpenWizard = () => setIsOseWizardOpen(true);
+    const handleOpenCoreWizard = (event: CustomEvent<{ system: SupportedCoreSystem }>) => {
+      if (event.detail?.system === "t20" || event.detail?.system === "dnd5e") setCoreWizardSystem(event.detail.system);
+    };
     const handleLoadOse = (e: CustomEvent<OseCharacterCreatedData>) => {
       if (e.detail) setActiveOseCharacter(e.detail);
     };
@@ -935,9 +943,11 @@ function LibraryPage() {
       // noop
     }
     window.addEventListener("pathbuilder:open-ose-wizard", handleOpenWizard);
+    window.addEventListener("pathbuilder:open-core-wizard", handleOpenCoreWizard as EventListener);
     window.addEventListener("pathbuilder:load-ose-character", handleLoadOse as EventListener);
     return () => {
       window.removeEventListener("pathbuilder:open-ose-wizard", handleOpenWizard);
+      window.removeEventListener("pathbuilder:open-core-wizard", handleOpenCoreWizard as EventListener);
       window.removeEventListener("pathbuilder:load-ose-character", handleLoadOse as EventListener);
     };
   }, []);
@@ -1073,6 +1083,10 @@ function LibraryPage() {
       setIsOseWizardOpen(true);
       return;
     }
+    if (systemId === "t20" || systemId === "dnd5e") {
+      setCoreWizardSystem(systemId as SupportedCoreSystem);
+      return;
+    }
     (window as any).app?.createNewCharacter?.(systemId);
     if (window.location.hash === "#/builder") {
       window.dispatchEvent(new HashChangeEvent("hashchange"));
@@ -1087,6 +1101,10 @@ function LibraryPage() {
     const sysId = char.system_id || charData.system_id || charData.systemId;
     if (sysId === "ose") {
       setActiveOseCharacter(charData);
+      return;
+    }
+    if (sysId === "t20" || sysId === "dnd5e") {
+      setActiveCoreCharacter(charData as MultiSystemCharacter);
       return;
     }
     (window as any).app?.loadCharacter(char.data);
@@ -1120,6 +1138,37 @@ function LibraryPage() {
     } finally {
       setWorking(null);
     }
+  };
+
+  const handleSaveCoreCharacter = async (character: MultiSystemCharacter) => {
+    try {
+      if (session) {
+        setWorking(character.id);
+        const saved = await saveCharacter(character, session.user);
+        setCharacters((previous) => {
+          const index = previous.findIndex((entry) => (entry.character_key || entry.id) === character.id);
+          if (index < 0) return [saved, ...previous];
+          const next = [...previous];
+          next[index] = saved;
+          return next;
+        });
+        window.dispatchEvent(new Event("pathbuilder:characters-changed"));
+        setNotice(t("saveCurrent"));
+      } else {
+        localStorage.setItem(`${character.system_id}_guest_${character.id}`, JSON.stringify(character));
+        setNotice("Ficha salva localmente no navegador!");
+      }
+      setActiveCoreCharacter(character);
+      setCoreWizardSystem(null);
+    } catch (err: any) {
+      setError(err?.message || t("saveCharacterFailed"));
+    } finally {
+      setWorking(null);
+    }
+  };
+
+  const handleUpdateCoreCharacter = async (character: MultiSystemCharacter) => {
+    await handleSaveCoreCharacter(character);
   };
 
   const handleDeleteCharacter = async (char: CloudCharacter) => {
@@ -1287,6 +1336,14 @@ function LibraryPage() {
             handleSaveOseCharacter(newChar);
           }}
         />
+        {coreWizardSystem && (
+          <CoreCharacterCreatorModal
+            isOpen={true}
+            system={coreWizardSystem}
+            onClose={() => setCoreWizardSystem(null)}
+            onCharacterCreated={handleSaveCoreCharacter}
+          />
+        )}
         {activeOseCharacter && (
           <OseCharacterSheet
             character={activeOseCharacter}
@@ -1294,6 +1351,13 @@ function LibraryPage() {
             onUpdateCharacter={(updated: OseCharacterCreatedData) => {
               handleSaveOseCharacter(updated);
             }}
+          />
+        )}
+        {activeCoreCharacter && (
+          <CoreCharacterSheet
+            character={activeCoreCharacter}
+            onClose={() => setActiveCoreCharacter(null)}
+            onUpdate={handleUpdateCoreCharacter}
           />
         )}
       </main>
@@ -1498,6 +1562,15 @@ function LibraryPage() {
         }}
       />
 
+      {coreWizardSystem && (
+        <CoreCharacterCreatorModal
+          isOpen={true}
+          system={coreWizardSystem}
+          onClose={() => setCoreWizardSystem(null)}
+          onCharacterCreated={handleSaveCoreCharacter}
+        />
+      )}
+
       {activeOseCharacter && (
         <OseCharacterSheet
           character={activeOseCharacter}
@@ -1505,6 +1578,13 @@ function LibraryPage() {
           onUpdateCharacter={(updated: OseCharacterCreatedData) => {
             handleSaveOseCharacter(updated);
           }}
+        />
+      )}
+      {activeCoreCharacter && (
+        <CoreCharacterSheet
+          character={activeCoreCharacter}
+          onClose={() => setActiveCoreCharacter(null)}
+          onUpdate={handleUpdateCoreCharacter}
         />
       )}
     </main>
