@@ -3,6 +3,7 @@ import {
   DND5E_STANDARD_ARRAY,
   generateAbilityScores,
   resolveD20Roll,
+  validateAbilityGeneration,
   validatePointBuy,
 } from "./coreCharacterRules";
 
@@ -13,6 +14,10 @@ describe("core character creation rules", () => {
     expect(validatePointBuy("dnd5e", [15, 15, 15, 9, 8, 8]).valid).toBe(false);
     expect(validatePointBuy("dnd5e", [15, 14, 13, 12, 10, 8]).valid).toBe(true);
     expect(DND5E_STANDARD_ARRAY).toEqual([15, 14, 13, 12, 10, 8]);
+    expect(validateAbilityGeneration("dnd5e", "standard_array", [15, 14, 13, 12, 10, 8])).toBeUndefined();
+    expect(validateAbilityGeneration("dnd5e", "standard_array", [15, 15, 13, 12, 10, 8])).toContain("array padrão");
+    expect(validateAbilityGeneration("t20", "roll_4d6_drop_lowest", [3, 4, 18, 10, 11, 12])).toBeUndefined();
+    expect(validateAbilityGeneration("t20", "roll_4d6_drop_lowest", [2, 4, 18, 10, 11, 12])).toContain("4d6");
   });
 
   it("supports deterministic 4d6 and advantage/disadvantage tests", () => {

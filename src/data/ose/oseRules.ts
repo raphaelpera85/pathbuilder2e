@@ -137,6 +137,11 @@ export function getOseMovementByLoad(coinsWeight: number): OseMovementRate {
  */
 export type OseAlignment = "ordeiro" | "neutro" | "caotico";
 
+/** Classes disponíveis em cada apresentação do núcleo OSE. */
+export function isOseClassAvailableForMode(isRaceClass: boolean | undefined, mode: "advanced" | "classic"): boolean {
+  return mode === "classic" ? Boolean(isRaceClass) : !Boolean(isRaceClass);
+}
+
 export const OSE_ALIGNMENTS: Record<OseAlignment, { name: string; nameEn: string; desc: string }> = {
   ordeiro: {
     name: "Ordeiro",

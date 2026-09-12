@@ -20,7 +20,9 @@
     "audit:local:weapon-variants": "node scripts/audit-local-weapon-variants.cjs",
     "sync:items:specific-images": "node scripts/sync-item-specific-images-to-supabase.cjs",
     "audit:visual:acceptance": "node scripts/audit-local-visual-acceptance.cjs",
-    "audit:local:weapons": "node scripts/audit-local-weapons.cjs"
+    "audit:local:weapons": "node scripts/audit-local-weapons.cjs",
+    "generate:core-compendium-migration": "node scripts/generate-core-system-compendium-migration.cjs",
+    "generate:ose-catalog-migration": "node scripts/generate-ose-catalog-migration.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "latest",

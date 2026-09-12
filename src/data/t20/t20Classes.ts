@@ -9,6 +9,7 @@ export interface T20ClassRules {
   choiceSkillCount: number;
   choiceSkills: string[];
   proficiencies: string;
+  startingEquipment?: string[];
 }
 
 const c = (id: string, name: string, sourcePage: number, startingHp: number, hpPerLevel: number, manaPerLevel: number, fixedSkills: string[], choiceSkillCount: number, choiceSkills: string[], proficiencies: string): T20ClassRules => ({
@@ -31,5 +32,23 @@ export const T20_CLASS_RULES: T20ClassRules[] = [
   c("nobre", "Nobre", 78, 16, 4, 4, ["vontade"], 4, ["adestramento", "atuacao", "cavalgar", "conhecimento", "diplomacia", "enganacao", "fortitude", "guerra", "iniciativa", "intimidacao", "intuicao", "investigacao", "jogatina", "luta", "nobreza", "oficio", "percepcao", "pontaria"], "Armas marciais, armaduras pesadas e escudos"),
   c("paladino", "Paladino", 81, 20, 5, 3, ["luta", "vontade"], 2, ["adestramento", "atletismo", "cavalgar", "cura", "diplomacia", "fortitude", "guerra", "iniciativa", "intuicao", "nobreza", "percepcao", "religiao"], "Armas marciais, armaduras pesadas e escudos"),
 ];
+
+const T20_STARTING_EQUIPMENT: Record<string, string[]> = {
+  arcanista: ["Mochila de aventureiro", "Foco arcano", "Arma simples"],
+  barbaro: ["Arma marcial", "Armadura leve ou média", "Mochila de aventureiro"],
+  bardo: ["Arma marcial", "Instrumento musical", "Armadura leve", "Mochila de aventureiro"],
+  bucaneiro: ["Arma marcial", "Arma de fogo ou arma leve", "Mochila de aventureiro"],
+  cacador: ["Arma marcial à distância ou corpo a corpo", "Armadura leve ou média", "Escudo opcional", "Mochila de aventureiro"],
+  cavaleiro: ["Arma marcial", "Armadura pesada", "Escudo", "Mochila de aventureiro"],
+  clerigo: ["Arma simples", "Armadura pesada", "Escudo", "Símbolo sagrado"],
+  druida: ["Arma simples", "Armadura leve", "Escudo", "Foco druídico"],
+  guerreiro: ["Arma marcial", "Armadura pesada", "Escudo", "Mochila de aventureiro"],
+  inventor: ["Arma simples", "Ferramentas de ofício", "Armadura leve", "Mochila de aventureiro"],
+  ladino: ["Arma leve ou à distância", "Armadura leve", "Kit de ladrão", "Mochila de aventureiro"],
+  lutador: ["Arma simples ou marcial", "Armadura leve", "Mochila de aventureiro"],
+  nobre: ["Arma marcial", "Armadura pesada", "Escudo", "Símbolo de nobreza"],
+  paladino: ["Arma marcial", "Armadura pesada", "Escudo", "Símbolo sagrado"],
+};
+T20_CLASS_RULES.forEach((classRule) => { classRule.startingEquipment = T20_STARTING_EQUIPMENT[classRule.id] || []; });
 
 export const getT20ClassRules = (id: string) => T20_CLASS_RULES.find((item) => item.id === id);

@@ -28,14 +28,14 @@ export const DEFAULT_RPG_SYSTEMS: IRPGSystem[] = [
       es: "D&D 5e",
     },
     description: {
-      "pt-BR": "Dungeons & Dragons 5ª Edição clássica e regras 2024.",
-      en: "Dungeons & Dragons 5th Edition classic and 2024 rules.",
-      es: "Dungeons & Dragons 5ª Edición clásica y reglas 2024.",
+      "pt-BR": "Dungeons & Dragons 5ª Edição clássica (Livro do Jogador 2014).",
+      en: "Dungeons & Dragons 5th Edition classic (2014 Player's Handbook).",
+      es: "Dungeons & Dragons 5ª Edición clásica (Manual del Jugador 2014).",
     },
     icon: "🐉",
     badgeColor: "#ef4444",
     defaultRuleset: "standard",
-    supportedRulesets: ["standard", "2024"],
+    supportedRulesets: ["standard"],
     active: true,
   },
   {
@@ -53,7 +53,7 @@ export const DEFAULT_RPG_SYSTEMS: IRPGSystem[] = [
     icon: "🛡️",
     badgeColor: "#3b82f6",
     defaultRuleset: "padrao",
-    supportedRulesets: ["padrao", "jogo_do_ano"],
+    supportedRulesets: ["padrao"],
     active: true,
   },
   {
@@ -64,8 +64,8 @@ export const DEFAULT_RPG_SYSTEMS: IRPGSystem[] = [
       es: "Old-School Essentials",
     },
     description: {
-      "pt-BR": "RPG clássico e retroclone B/X com opções de Fantasia Avançada (13 classes, 10 raças e regras completas).",
-      en: "Classic adventure RPG and B/X retroclone with Advanced Fantasy options (13 classes, 10 races and complete rules).",
+      "pt-BR": "RPG clássico e retroclone B/X com opções de Fantasia Avançada (16 classes, 10 raças e regras do núcleo).",
+      en: "Classic adventure RPG and B/X retroclone with Advanced Fantasy options (16 classes, 10 races, and core rules).",
       es: "Juego de rol de aventuras clásico y retroclon B/X con reglas de Fantasía Avanzada.",
     },
     icon: "🎲",

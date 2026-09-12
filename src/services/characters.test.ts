@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildCharacterRevisionHistory, deleteCharacter, listCharacters, mergeCharacterLists, normalizeCharacterRuleset, renameCharacter, saveCharacter, toCharacterPayload, validateCharacter } from "./characters";
+import { buildCharacterRevisionHistory, deleteCharacter, duplicateCharacter, listCharacters, mergeCharacterLists, normalizeCharacterRuleset, renameCharacter, saveCharacter, toCharacterPayload, validateCharacter } from "./characters";
 
 describe("character cloud contract", () => {
   it.each([
@@ -125,6 +125,15 @@ describe("character cloud contract", () => {
     const renamed = await renameCharacter("char-rename", "  Renomeado  ", user);
     expect(renamed.name).toBe("Renomeado");
     expect(renamed.data.variantRules).toEqual({ freeArchetype: true });
+  });
+
+  it("duplica uma ficha mantendo sistema, ruleset e dados sem compartilhar o id", async () => {
+    const user = { id: "user-duplicate" } as never;
+    await saveCharacter({ id: "char-original", name: "Original", level: 3, system_id: "dnd5e", systemId: "dnd5e", ruleset: "standard", equipmentIds: ["dnd5e.arma.adaga"] }, user);
+    const copy = await duplicateCharacter("char-original", user);
+    expect(copy.name).toBe("Original (cópia)");
+    expect(copy.character_key).not.toBe("char-original");
+    expect(copy.data).toMatchObject({ system_id: "dnd5e", ruleset: "standard", equipmentIds: ["dnd5e.arma.adaga"] });
   });
 
   it("acumula versões quando a mesma ficha é salva novamente", async () => {

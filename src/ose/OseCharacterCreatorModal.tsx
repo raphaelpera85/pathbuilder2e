@@ -11,6 +11,7 @@ import {
   OSE_ALIGNMENTS,
   type OseAlignment,
   OSE_ADDITIONAL_LANGUAGES,
+  isOseClassAvailableForMode,
 } from "../data/ose/oseRules";
 import { OSE_RACES, type OseRace } from "../data/ose/oseRaces";
 import { OSE_CLASSES, type OseClass } from "../data/ose/oseClasses";
@@ -61,6 +62,7 @@ export function OseCharacterCreatorModal({
   onCharacterCreated,
 }: OseCharacterCreatorModalProps) {
   const [step, setStep] = useState<number>(1);
+  const [validationMessage, setValidationMessage] = useState<string>("");
   const [charName, setCharName] = useState("Aventureiro de Karameikos");
   const [creationMode, setCreationMode] = useState<"advanced" | "classic">("advanced");
 
@@ -127,6 +129,14 @@ export function OseCharacterCreatorModal({
     ? classicRaceByClass[selectedClass.id] || "humano"
     : selectedRaceId;
   const selectedRace: OseRace = OSE_RACES[effectiveRaceId] || OSE_RACES.humano;
+
+  useEffect(() => {
+    if (!isOseClassAvailableForMode(selectedClass.isRaceClass, creationMode)) {
+      const firstValidClass = Object.values(OSE_CLASSES).find((cls) => isOseClassAvailableForMode(cls.isRaceClass, creationMode));
+      if (firstValidClass) setSelectedClassId(firstValidClass.id);
+    }
+    setValidationMessage("");
+  }, [creationMode]);
 
   // Calcula habilidades finais com modificadores raciais
   const finalAbilities = useMemo(() => {
@@ -249,6 +259,17 @@ export function OseCharacterCreatorModal({
 
   // Finalizar
   const handleFinish = () => {
+    if (!isOseClassAvailableForMode(selectedClass.isRaceClass, creationMode)) {
+      setValidationMessage("A classe selecionada não pertence à edição OSE escolhida.");
+      setStep(2);
+      return;
+    }
+    if (!meetsClassRequirements(selectedClass)) {
+      setValidationMessage("Os atributos finais não atendem aos requisitos mínimos desta classe.");
+      setStep(2);
+      return;
+    }
+    setValidationMessage("");
     const charData: OseCharacterCreatedData = {
       id: `ose_char_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
       name: charName.trim() || "Aventureiro de Karameikos",
@@ -445,7 +466,7 @@ export function OseCharacterCreatorModal({
                 </h4>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 8 }}>
                   {Object.values(OSE_CLASSES)
-                    .filter((c) => (creationMode === "classic" ? c.isRaceClass || !["acrobata", "assassino", "barbaro", "bardo", "druida", "ilusionista", "cavaleiro", "paladino", "ranger"].includes(c.id) : !c.isRaceClass))
+                    .filter((c) => isOseClassAvailableForMode(c.isRaceClass, creationMode))
                     .map((c) => {
                       const qualified = meetsClassRequirements(c);
                       return (
@@ -478,6 +499,7 @@ export function OseCharacterCreatorModal({
                     <span>⚔️ Armas: {selectedClass.allowedWeaponsDesc}</span>
                     <span>⭐ Requisito Principal: {selectedClass.primeRequisites.map((r) => r.toUpperCase()).join(", ")}</span>
                   </div>
+                  {validationMessage && <p role="alert" style={{ color: "#fca5a5", margin: "10px 0 0", fontWeight: 700 }}>{validationMessage}</p>}
                 </div>
               </div>
             </div>

@@ -8,6 +8,7 @@ export interface Dnd5eClassRules {
   skillChoiceCount: number;
   skillChoices: string[];
   proficiencies: string;
+  startingEquipment?: string[];
 }
 
 const c = (id: string, name: string, sourcePage: number, hitDie: string, primaryAbility: string, savingThrows: string[], skillChoiceCount: number, skillChoices: string[], proficiencies: string): Dnd5eClassRules => ({
@@ -28,5 +29,21 @@ export const DND5E_CLASS_RULES: Dnd5eClassRules[] = [
   c("paladino", "Paladino", 108, "d10", "Força e Carisma", ["Sabedoria", "Carisma"], 2, ["atletismo", "intuicao", "intimidacao", "medicina", "persuasao", "religiao"], "Todas as armaduras; escudos; armas simples e marciais"),
   c("patrulheiro", "Patrulheiro", 115, "d10", "Destreza e Sabedoria", ["Força", "Destreza"], 3, ["adestramento", "atletismo", "furtividade", "investigacao", "natureza", "percepcao", "sobrevivencia"], "Armaduras leves e médias; escudos; armas simples e marciais"),
 ];
+
+const DND5E_STARTING_EQUIPMENT: Record<string, string[]> = {
+  barbaro: ["Machado grande ou arma marcial corpo a corpo", "Duas machadinhas", "Pacote de explorador", "Quatro azagaias"],
+  bardo: ["Rapieira, espada longa ou arma simples", "Instrumento musical", "Armadura de couro", "Pacote de diplomata"],
+  bruxo: ["Besta leve e 20 virotes ou arma simples", "Bolsa de componentes ou foco arcano", "Pacote de estudioso", "Armadura de couro"],
+  clerigo: ["Maça ou martelo de guerra", "Cota de escamas, couro ou peitoral", "Escudo", "Símbolo sagrado", "Pacote de sacerdote"],
+  druida: ["Escudo de madeira", "Cimitarra ou arma simples", "Armadura de couro", "Pacote de explorador"],
+  feiticeiro: ["Besta leve e 20 virotes ou arma simples", "Bolsa de componentes ou foco arcano", "Pacote de explorador"],
+  guerreiro: ["Cota de malha ou armadura de couro + arco longo", "Arma marcial + escudo ou duas armas marciais", "Besta leve e 20 virotes ou duas machadinhas", "Pacote de aventureiro"],
+  ladino: ["Rapieira ou espada curta", "Arco curto e 20 flechas ou espada curta", "Ferramentas de ladrão", "Armadura de couro", "Pacote de ladrão"],
+  mago: ["Bastão ou adaga", "Bolsa de componentes ou foco arcano", "Livro de magias", "Pacote de estudioso"],
+  monge: ["Espada curta ou arma simples", "Pacote de explorador", "Dez dardos"],
+  paladino: ["Arma marcial + escudo ou duas armas marciais", "Cinco azagaias ou arma corpo a corpo simples", "Cota de malha", "Símbolo sagrado", "Pacote de sacerdote"],
+  patrulheiro: ["Cota de escamas ou armadura de couro", "Duas espadas curtas ou duas armas simples", "Pacote de explorador", "Arco longo e 20 flechas ou duas machadinhas"],
+};
+DND5E_CLASS_RULES.forEach((classRule) => { classRule.startingEquipment = DND5E_STARTING_EQUIPMENT[classRule.id] || []; });
 
 export const getDnd5eClassRules = (id: string) => DND5E_CLASS_RULES.find((item) => item.id === id);

@@ -6,6 +6,7 @@ const { PDFDocument } = require("pdf-lib");
 const positionalArgs = process.argv.slice(2).filter((argument) => !argument.startsWith("--"));
 const configuredBooksDir = positionalArgs[0] || process.env.LIVROS_PATH;
 const defaultBooksDirs = [
+  "I:\\Meu Drive\\Livros\\Livros RPG",
   "D:\\Users\\rapha\\Documents\\Projetos\\RPG\\livros",
   "D:\\Users\\rapha\\Documents\\Projetos\\RPG\\Livros RPG",
 ];
@@ -32,18 +33,26 @@ const excluded = /ficha|poster|map|folio|raw|test/i;
     const pages = Number(result.stdout.match(/^Pages:\s+(\d+)/m)?.[1]);
     return Number.isInteger(pages) && pages > 0 ? { pages, pdfReadable: true } : null;
   }
-  const files = fs.readdirSync(booksDir, { withFileTypes: true }).filter((entry) => entry.isFile());
+  function collectFiles(directory) {
+    return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+      const fullPath = path.join(directory, entry.name);
+      if (entry.isDirectory()) return collectFiles(fullPath);
+      return [{ ...entry, fullPath, relativePath: path.relative(booksDir, fullPath) }];
+    });
+  }
+  const files = collectFiles(booksDir);
   const pdfs = files.filter((entry) => entry.name.toLowerCase().endsWith(".pdf") && !excluded.test(entry.name));
   const reports = pdfs.map((entry) => {
     const base = entry.name.replace(/\.pdf$/i, "");
-    const textEntry = files.find((candidate) => candidate.name.toLowerCase() === `${base.toLowerCase()}.txt`);
-    const textPath = textEntry ? path.join(booksDir, textEntry.name) : null;
+    const directory = path.dirname(entry.relativePath);
+    const textEntry = files.find((candidate) => candidate.name.toLowerCase() === `${base.toLowerCase()}.txt` && path.dirname(candidate.relativePath) === directory);
+    const textPath = textEntry?.fullPath || null;
     const characters = textPath ? fs.readFileSync(textPath, "utf8").length : 0;
-    return { pdf: entry.name, text: textEntry?.name || null, textCharacters: characters, scannedText: characters > 1000 };
+    return { pdf: entry.relativePath, pdfPath: entry.fullPath, text: textEntry?.relativePath || null, textCharacters: characters, scannedText: characters > 1000 };
   });
   Promise.all(reports.map(async (report) => {
     try {
-      const pdfPath = path.join(booksDir, report.pdf);
+      const pdfPath = report.pdfPath;
       const fileSize = fs.statSync(pdfPath).size;
       report.bytes = fileSize;
       // pdf-lib limita a leitura a 2 GiB; arquivos maiores continuam sendo

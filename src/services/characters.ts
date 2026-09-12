@@ -539,6 +539,23 @@ export async function renameCharacter(
   return saveCharacter({ ...target.data, name: nextName }, activeUser);
 }
 
+/** Cria uma nova ficha preservando sistema, ruleset e todas as escolhas. */
+export async function duplicateCharacter(
+  characterKeyOrId: string,
+  userOrSession?: { id: string; email?: string; username?: string },
+): Promise<CloudCharacter> {
+  const activeUser = userOrSession || (await getCurrentSession())?.user;
+  if (!activeUser) throw new Error("Você precisa estar conectado.");
+  const existingList = await listCharacters(activeUser as any);
+  const target = existingList.find((c) => c.character_key === characterKeyOrId || c.id === characterKeyOrId);
+  if (!target) throw new Error("Personagem não encontrado.");
+  const source = structuredClone(target.data) as CharacterData;
+  source.id = `copy_${globalThis.crypto?.randomUUID ? globalThis.crypto.randomUUID().slice(0, 12) : `${Date.now()}_${Math.random().toString(36).slice(2, 8)}`}`;
+  source.name = `${target.name} (cópia)`;
+  delete source.history;
+  return saveCharacter(source, activeUser);
+}
+
 /**
  * Retorna todas as fichas de personagens de jogadores que indicaram o GM através do seu e-mail.
  */

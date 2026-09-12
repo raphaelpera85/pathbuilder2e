@@ -24,6 +24,7 @@ import {
 } from "./services/auth";
 import {
   deleteCharacter,
+  duplicateCharacter,
   listCharacters,
   renameCharacter,
   saveCharacter,
@@ -49,6 +50,18 @@ import { CoreCharacterCreatorModal } from "./core/CoreCharacterCreatorModal";
 import { CoreCharacterSheet } from "./core/CoreCharacterSheet";
 import type { MultiSystemCharacter, SupportedCoreSystem } from "./data/multiSystemCharacter";
 import type { RPGSystemId } from "./types";
+import { T20_CLASSES, T20_RACES } from "./data/t20/t20Catalog";
+import { T20_ORIGINS } from "./data/t20/t20Origins";
+import { T20_EQUIPMENT, T20_POWERS, T20_SPELLS } from "./data/t20/t20Compendium";
+import { DND5E_CLASSES, DND5E_RACES } from "./data/dnd5e/dnd5eCatalog";
+import { DND5E_BACKGROUNDS } from "./data/dnd5e/dnd5eBackgrounds";
+import { DND5E_EQUIPMENT, DND5E_FEATS, DND5E_SPELLS } from "./data/dnd5e/dnd5eCompendium";
+import { DND5E_SUBRACES, DND5E_SUBCLASSES } from "./data/dnd5e/dnd5eOptions";
+import { OSE_CLASSES } from "./data/ose/oseClasses";
+import { OSE_RACES } from "./data/ose/oseRaces";
+import { OSE_SPELLS } from "./data/ose/oseSpells";
+import { OSE_WEAPONS, OSE_ARMORS, OSE_GEAR } from "./data/ose/oseEquipment";
+import { getCoreCompendiumEntries, type CoreCatalogEntry } from "./data/coreCompendium";
 import "./portal.css";
 
 type PortalRoute = "builder" | "compendium" | "rules" | "downloads" | "library" | "campaigns" | "privacy" | "admin";
@@ -151,6 +164,7 @@ function CatalogPage() {
   const { locale, t } = useI18n();
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<PickerType | "all">("all");
+  const [systemFilter, setSystemFilter] = useState<string>("all");
   const [rulesetFilter, setRulesetFilter] = useState<string>("all");
   const [rarityFilter, setRarityFilter] = useState<string>("all");
   const [bookFilter, setBookFilter] = useState<string>("all");
@@ -161,6 +175,7 @@ function CatalogPage() {
   const [isSyncing, setIsSyncing] = useState(false);
   const [isCatalogLoading, setIsCatalogLoading] = useState(true);
   const [catalogLoadFailed, setCatalogLoadFailed] = useState(false);
+  const localCoreEntries = useMemo(() => getCoreCompendiumEntries(), []);
 
   // Efeito para carregar dados remotos do Supabase
   useEffect(() => {
@@ -246,7 +261,8 @@ function CatalogPage() {
     }
   };
 
-  const entries = useMemo(() => catalogCategories.flatMap(({ type, label }) => {
+  const entries = useMemo<CoreCatalogEntry[]>(() => {
+    const remoteAndLegacy = catalogCategories.flatMap(({ type, label }) => {
     const remote = remoteItemsByCategory[type];
     if (remote && remote.length > 0) {
       return remote.map((item) => ({ ...item, category: type, categoryLabel: t(label) }));
@@ -260,7 +276,13 @@ function CatalogPage() {
     } catch {
       return [];
     }
-  }), [remoteItemsByCategory, syncStatus.isConfigured, syncStatus.isOnline, t]);
+    });
+    // O catálogo local é fallback completo para modo offline. Quando já há
+    // dados remotos carregados, não mesclamos uma segunda cópia do mesmo
+    // sistema/registro (isso também evita duplicações durante a sincronização).
+    const useLocalCore = remoteAndLegacy.length === 0 && (!syncStatus.isConfigured || !syncStatus.isOnline);
+    return useLocalCore ? localCoreEntries : remoteAndLegacy;
+  }, [localCoreEntries, remoteItemsByCategory, syncStatus.isConfigured, syncStatus.isOnline, t]);
 
   const availableBooks = useMemo(() => {
     const books = new Set<string>();
@@ -273,7 +295,10 @@ function CatalogPage() {
   const filtered = useMemo(() => {
     const list = entries.filter((entry) => {
       const categoryMatches = category === "all" || entry.category === category;
+      const entrySystem = String(entry.data?.system_id ?? entry.data?.systemId ?? "pf2e");
+      const systemMatches = systemFilter === "all" || entrySystem === systemFilter;
       const rulesetMatches = rulesetFilter === "all" ||
+        entry.data?.ruleset === rulesetFilter ||
         (rulesetFilter === "remaster" && entry.data?.ruleset === "remaster") ||
         (rulesetFilter === "legacy" && entry.data?.ruleset === "legacy") ||
         (rulesetFilter === "needs_review" && (entry.data?.ruleset === "needs_review" || entry.data?.needs_review === true));
@@ -284,7 +309,7 @@ function CatalogPage() {
       const localizedSummary = entry.data?.summaries?.[locale] ?? entry.data?.description ?? "";
       const haystack = `${localizedName} ${entry.name} ${localizedSummary} ${entry.data?.traits?.join(" ") || ""}`.toLocaleLowerCase(locale);
       const queryMatches = haystack.includes(query.trim().toLocaleLowerCase(locale));
-      return categoryMatches && rulesetMatches && rarityMatches && bookMatches && queryMatches;
+      return systemMatches && categoryMatches && rulesetMatches && rarityMatches && bookMatches && queryMatches;
     });
 
     return list.slice().sort((a, b) => {
@@ -292,10 +317,10 @@ function CatalogPage() {
       const nameB = getItemDisplayName(b, locale);
       return nameA.localeCompare(nameB, locale, { sensitivity: "base", numeric: true });
     });
-  }, [bookFilter, category, entries, locale, query, rarityFilter, rulesetFilter]);
+  }, [bookFilter, category, entries, locale, query, rarityFilter, rulesetFilter, systemFilter]);
 
   const [showMobileFilters, setShowMobileFilters] = useState(false);
-  const activeFiltersCount = (category !== "all" ? 1 : 0) +
+  const activeFiltersCount = (systemFilter !== "all" ? 1 : 0) + (category !== "all" ? 1 : 0) +
     (rulesetFilter !== "all" ? 1 : 0) +
     (rarityFilter !== "all" ? 1 : 0) +
     (bookFilter !== "all" ? 1 : 0);
@@ -356,8 +381,9 @@ function CatalogPage() {
         </button>
       </div>
       <div className="catalog-filters-collapsible">
+        <label><span>Sistema</span><select value={systemFilter} onChange={(event) => setSystemFilter(event.target.value)}><option value="all">Todos os sistemas</option><option value="pf2e">Pathfinder 2e</option><option value="t20">Tormenta 20</option><option value="dnd5e">D&amp;D 5e (2014)</option><option value="ose">Old-School Essentials</option></select></label>
         <label><span>{t("filterCategory")}</span><select value={category} onChange={(event) => setCategory(event.target.value as PickerType | "all")}><option value="all">{t("allCategories")}</option>{catalogCategories.map((item) => <option key={item.type} value={item.type}>{t(item.label)}</option>)}</select></label>
-        <label><span>{t("filterRuleset")}</span><select value={rulesetFilter} onChange={(event) => setRulesetFilter(event.target.value)}><option value="all">{t("allRulesets")}</option><option value="remaster">{t("rulesetRemaster")}</option><option value="legacy">{t("rulesetLegacy")}</option><option value="needs_review">{t("rulesetReview")}</option></select></label>
+        <label><span>{t("filterRuleset")}</span><select value={rulesetFilter} onChange={(event) => setRulesetFilter(event.target.value)}><option value="all">{t("allRulesets")}</option><option value="standard">D&amp;D 5e 2014</option><option value="padrao">Tormenta 20 padrão</option><option value="advanced">OSE Advanced Fantasy</option><option value="classic">OSE Classic Fantasy</option><option value="remaster">{t("rulesetRemaster")}</option><option value="legacy">{t("rulesetLegacy")}</option><option value="needs_review">{t("rulesetReview")}</option></select></label>
         <label><span>{t("filterRarity")}</span><select value={rarityFilter} onChange={(event) => setRarityFilter(event.target.value)}><option value="all">{t("allRarities")}</option><option value="common">{t("rarityCommon")}</option><option value="uncommon">{t("rarityUncommon")}</option><option value="rare">{t("rarityRare")}</option></select></label>
         {availableBooks.length > 0 && <label><span>{t("filterBook")}</span><select value={bookFilter} onChange={(event) => setBookFilter(event.target.value)}><option value="all">{t("allBooks")}</option>{availableBooks.map((b) => <option key={b} value={b}>{localizeSourceBook(b, locale)}</option>)}</select></label>}
       </div>
@@ -1099,12 +1125,20 @@ function LibraryPage() {
   const handleLoadCharacter = (char: CloudCharacter) => {
     const charData = (char.data || {}) as any;
     const sysId = char.system_id || charData.system_id || charData.systemId;
+    // O registro da ficha é a fonte de verdade para o sistema/ruleset; versões
+    // antigas podem ter gravado esses campos apenas na linha do Supabase.
+    const hydratedData = {
+      ...charData,
+      system_id: sysId,
+      systemId: charData.systemId || sysId,
+      ruleset: charData.ruleset || char.ruleset,
+    };
     if (sysId === "ose") {
-      setActiveOseCharacter(charData);
+      setActiveOseCharacter(hydratedData);
       return;
     }
     if (sysId === "t20" || sysId === "dnd5e") {
-      setActiveCoreCharacter(charData as MultiSystemCharacter);
+      setActiveCoreCharacter(hydratedData as MultiSystemCharacter);
       return;
     }
     (window as any).app?.loadCharacter(char.data);
@@ -1199,6 +1233,22 @@ function LibraryPage() {
       window.dispatchEvent(new Event("pathbuilder:characters-changed"));
       setNotice(t("saveCurrent"));
     } catch (err) {
+      setError(t("saveCharacterFailed"));
+    } finally {
+      setWorking(null);
+    }
+  };
+
+  const handleDuplicateCharacter = async (char: CloudCharacter) => {
+    if (!session) return;
+    setWorking(char.id);
+    setError(null);
+    try {
+      const duplicated = await duplicateCharacter(char.character_key || char.id, session.user);
+      setCharacters((prev) => [duplicated, ...prev]);
+      window.dispatchEvent(new Event("pathbuilder:characters-changed"));
+      setNotice(t("duplicateCharacterNotice"));
+    } catch {
       setError(t("saveCharacterFailed"));
     } finally {
       setWorking(null);
@@ -1530,6 +1580,16 @@ function LibraryPage() {
                       title={t("renameCharacter")}
                     >
                       ✏️
+                    </button>
+                    <button
+                      className="btn-card-rename"
+                      type="button"
+                      onClick={() => handleDuplicateCharacter(char)}
+                      disabled={working === char.id}
+                      aria-label={`${t("duplicateCharacter")} ${char.name}`}
+                      title={t("duplicateCharacter")}
+                    >
+                      ⧉
                     </button>
                     <button
                       className="btn-card-delete"

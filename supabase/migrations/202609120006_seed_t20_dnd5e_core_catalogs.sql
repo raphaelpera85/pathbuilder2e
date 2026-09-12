@@ -1,0 +1,61 @@
+-- Núcleo inicial separado por sistema. IDs possuem prefixo para impedir colisões
+-- com PF2e/OSE e data guarda os campos específicos de cada sistema.
+insert into public.catalog_ancestries (id, name_pt, size, speed_feet, attribute_boosts, traits, ruleset, source_book, source_page, data, system_id)
+values
+('t20.humano','Humano','Medium',30,'{}','{"Versátil"}','padrao','Tormenta20 — Livro Básico',19,'{"abilityBonuses":"+2 em três atributos diferentes"}'::jsonb,'t20'),
+('t20.anao','Anão','Medium',20,'{con,wis}','{"Visão no escuro","Devagar e Sempre","Duro como Pedra"}','padrao','Tormenta20 — Livro Básico',20,'{"attributeAdjustments":{"con":4,"wis":2,"dex":-2}}'::jsonb,'t20'),
+('t20.dahllan','Dahllan','Medium',30,'{wis,dex}','{"Amiga das Plantas","Empatia Selvagem"}','padrao','Tormenta20 — Livro Básico',21,'{"attributeAdjustments":{"wis":4,"dex":2,"int":-2}}'::jsonb,'t20'),
+('t20.elfo','Elfo','Medium',40,'{int,dex}','{"Graça de Glórienn","Herança Feérica"}','padrao','Tormenta20 — Livro Básico',22,'{"attributeAdjustments":{"int":4,"dex":2,"con":-2}}'::jsonb,'t20'),
+('t20.goblin','Goblin','Small',30,'{dex,int}','{"Visão no escuro","Peste Esguia"}','padrao','Tormenta20 — Livro Básico',23,'{"attributeAdjustments":{"dex":4,"int":2,"cha":-2}}'::jsonb,'t20'),
+('t20.lefou','Lefou','Medium',30,'{}','{"Criatura da Tormenta","Deformidade"}','padrao','Tormenta20 — Livro Básico',24,'{"abilityBonuses":"+2 em três atributos exceto Carisma; Carisma -2"}'::jsonb,'t20'),
+('t20.minotauro','Minotauro','Medium',30,'{str,con}','{"Chifres","Couro Rígido","Faro"}','padrao','Tormenta20 — Livro Básico',25,'{"attributeAdjustments":{"str":4,"con":2,"wis":-2}}'::jsonb,'t20'),
+('t20.qareen','Qareen','Medium',30,'{cha,int}','{"Desejos","Resistência Elemental","Tatuagem Mística"}','padrao','Tormenta20 — Livro Básico',26,'{"attributeAdjustments":{"cha":4,"int":2,"wis":-2}}'::jsonb,'t20'),
+('t20.golem','Golem','Medium',20,'{str,con}','{"Canalizar Reparos","Chassi","Criatura Artificial"}','padrao','Tormenta20 — Livro Básico',27,'{"attributeAdjustments":{"str":4,"con":2,"cha":-2}}'::jsonb,'t20'),
+('t20.hynne','Hynne','Small',20,'{dex,cha}','{"Arremessador","Pequeno e Rechonchudo","Sorte Salvadora"}','padrao','Tormenta20 — Livro Básico',27,'{"attributeAdjustments":{"dex":4,"cha":2,"str":-2}}'::jsonb,'t20'),
+('t20.kliren','Kliren','Medium',30,'{int,cha}','{"Híbrido","Lógica Gnômica","Engenhoqueiro"}','padrao','Tormenta20 — Livro Básico',28,'{"attributeAdjustments":{"int":4,"cha":2,"str":-2}}'::jsonb,'t20'),
+('t20.medusa','Medusa','Medium',30,'{dex,wis}','{"Cria de Megalokk","Natureza Venenosa","Olhar Atordoante"}','padrao','Tormenta20 — Livro Básico',28,'{"attributeAdjustments":{"dex":4,"wis":2,"cha":-2}}'::jsonb,'t20'),
+('t20.osteon','Osteon','Medium',30,'{}','{"Armadura Óssea","Memória Póstuma"}','padrao','Tormenta20 — Livro Básico',29,'{"abilityBonuses":"+2 em três atributos exceto Constituição; Constituição -2"}'::jsonb,'t20'),
+('t20.sereia_tritao','Sereia/Tritão','Medium',30,'{}','{"Canção dos Mares","Mestre do Tridente","Transformação Anfíbia"}','padrao','Tormenta20 — Livro Básico',29,'{}'::jsonb,'t20'),
+('t20.siflide','Sílfide','Tiny',30,'{cha,dex}','{"Asas de Borboleta","Resistência Feérica"}','padrao','Tormenta20 — Livro Básico',30,'{"attributeAdjustments":{"cha":4,"dex":2,"str":-4}}'::jsonb,'t20'),
+('t20.suraggel','Suraggel','Medium',30,'{}','{"Herança Divina"}','padrao','Tormenta20 — Livro Básico',30,'{}'::jsonb,'t20'),
+('t20.trog','Trog','Medium',30,'{con,str}','{"Mau Cheiro","Mordida","Resistência a veneno"}','padrao','Tormenta20 — Livro Básico',31,'{"attributeAdjustments":{"con":4,"str":2,"int":-2}}'::jsonb,'t20'),
+('dnd5e.anao','Anão','Medium',25,'{con}','{"Visão no escuro","Resiliência anã"}','standard','D&D 5e — Livro do Jogador (2014)',18,'{"attributeAdjustments":{"con":2}}'::jsonb,'dnd5e'),
+('dnd5e.elfo','Elfo','Medium',30,'{dex}','{"Visão no escuro","Sentidos aguçados","Ancestralidade feérica","Transe"}','standard','D&D 5e — Livro do Jogador (2014)',21,'{"attributeAdjustments":{"dex":2}}'::jsonb,'dnd5e'),
+('dnd5e.halfling','Halfling','Small',25,'{dex}','{"Sortudo","Bravura","Furtividade natural"}','standard','D&D 5e — Livro do Jogador (2014)',26,'{"attributeAdjustments":{"dex":2}}'::jsonb,'dnd5e'),
+('dnd5e.humano','Humano','Medium',30,'{str,dex,con,int,wis,cha}','{"Versátil","Idioma adicional"}','standard','D&D 5e — Livro do Jogador (2014)',29,'{"attributeAdjustments":{"str":1,"dex":1,"con":1,"int":1,"wis":1,"cha":1}}'::jsonb,'dnd5e'),
+('dnd5e.draconato','Draconato','Medium',30,'{str,cha}','{"Ancestral dracônico","Arma de sopro","Resistência a dano"}','standard','D&D 5e — Livro do Jogador (2014)',32,'{"attributeAdjustments":{"str":2,"cha":1}}'::jsonb,'dnd5e'),
+('dnd5e.gnomo','Gnomo','Small',25,'{int}','{"Visão no escuro","Astúcia gnômica"}','standard','D&D 5e — Livro do Jogador (2014)',35,'{"attributeAdjustments":{"int":2}}'::jsonb,'dnd5e'),
+('dnd5e.meio_elfo','Meio-Elfo','Medium',30,'{cha}','{"Visão no escuro","Ancestralidade feérica","Versatilidade em perícias"}','standard','D&D 5e — Livro do Jogador (2014)',38,'{"attributeAdjustments":{"cha":2}}'::jsonb,'dnd5e'),
+('dnd5e.meio_orc','Meio-Orc','Medium',30,'{str,con}','{"Visão no escuro","Ameaçador","Resistência implacável"}','standard','D&D 5e — Livro do Jogador (2014)',40,'{"attributeAdjustments":{"str":2,"con":1}}'::jsonb,'dnd5e'),
+('dnd5e.tiefling','Tiefling','Medium',30,'{cha,int}','{"Visão no escuro","Resistência infernal","Legado infernal"}','standard','D&D 5e — Livro do Jogador (2014)',42,'{"attributeAdjustments":{"cha":2,"int":1}}'::jsonb,'dnd5e')
+on conflict (id) do update set name_pt=excluded.name_pt, size=excluded.size, speed_feet=excluded.speed_feet, attribute_boosts=excluded.attribute_boosts, traits=excluded.traits, ruleset=excluded.ruleset, source_book=excluded.source_book, source_page=excluded.source_page, data=excluded.data, system_id=excluded.system_id, updated_at=now();
+
+insert into public.catalog_classes (id, name_pt, hp_per_level, key_attributes, traits, ruleset, source_book, source_page, data, system_id)
+values
+('t20.arcanista','Arcanista',2,'{int}','{"Misticismo","Vontade"}','padrao','Tormenta20 — Livro Básico',36,'{"startingHp":8,"manaPerLevel":6,"choiceSkillCount":1,"proficiencies":"Nenhuma"}'::jsonb,'t20'),
+('t20.barbaro','Bárbaro',6,'{str}','{"Fortitude","Luta"}','padrao','Tormenta20 — Livro Básico',40,'{"startingHp":24,"manaPerLevel":3,"choiceSkillCount":4,"proficiencies":"Armas marciais e escudos"}'::jsonb,'t20'),
+('t20.bardo','Bardo',3,'{cha}','{"Atuação","Reflexos"}','padrao','Tormenta20 — Livro Básico',43,'{"startingHp":12,"manaPerLevel":4,"choiceSkillCount":6,"proficiencies":"Armas marciais"}'::jsonb,'t20'),
+('t20.bucaneiro','Bucaneiro',4,'{dex}','{"Reflexos"}','padrao','Tormenta20 — Livro Básico',46,'{"startingHp":16,"manaPerLevel":3,"choiceSkillCount":4,"proficiencies":"Armas marciais"}'::jsonb,'t20'),
+('t20.cacador','Caçador',4,'{dex}','{"Sobrevivência"}','padrao','Tormenta20 — Livro Básico',49,'{"startingHp":16,"manaPerLevel":4,"choiceSkillCount":6,"proficiencies":"Armas marciais e escudos"}'::jsonb,'t20'),
+('t20.cavaleiro','Cavaleiro',5,'{str}','{"Fortitude","Luta"}','padrao','Tormenta20 — Livro Básico',52,'{"startingHp":20,"manaPerLevel":3,"choiceSkillCount":2,"proficiencies":"Armas marciais, armaduras pesadas e escudos"}'::jsonb,'t20'),
+('t20.clerigo','Clérigo',4,'{wis}','{"Religião","Vontade"}','padrao','Tormenta20 — Livro Básico',56,'{"startingHp":16,"manaPerLevel":5,"choiceSkillCount":2,"proficiencies":"Armaduras pesadas e escudos"}'::jsonb,'t20'),
+('t20.druida','Druida',4,'{wis}','{"Sobrevivência","Vontade"}','padrao','Tormenta20 — Livro Básico',60,'{"startingHp":16,"manaPerLevel":4,"choiceSkillCount":4,"proficiencies":"Escudos"}'::jsonb,'t20'),
+('t20.guerreiro','Guerreiro',5,'{str,dex}','{"Fortitude"}','padrao','Tormenta20 — Livro Básico',64,'{"startingHp":20,"manaPerLevel":3,"choiceSkillCount":2,"proficiencies":"Armas marciais, armaduras pesadas e escudos"}'::jsonb,'t20'),
+('t20.inventor','Inventor',3,'{int}','{"Ofício","Vontade"}','padrao','Tormenta20 — Livro Básico',67,'{"startingHp":12,"manaPerLevel":4,"choiceSkillCount":4,"proficiencies":"Nenhuma"}'::jsonb,'t20'),
+('t20.ladino','Ladino',3,'{dex}','{"Ladinagem","Reflexos"}','padrao','Tormenta20 — Livro Básico',72,'{"startingHp":12,"manaPerLevel":4,"choiceSkillCount":8,"proficiencies":"Nenhuma"}'::jsonb,'t20'),
+('t20.lutador','Lutador',5,'{str}','{"Fortitude","Luta"}','padrao','Tormenta20 — Livro Básico',75,'{"startingHp":20,"manaPerLevel":3,"choiceSkillCount":4,"proficiencies":"Nenhuma"}'::jsonb,'t20'),
+('t20.nobre','Nobre',4,'{cha}','{"Vontade"}','padrao','Tormenta20 — Livro Básico',78,'{"startingHp":16,"manaPerLevel":4,"choiceSkillCount":4,"proficiencies":"Armas marciais, armaduras pesadas e escudos"}'::jsonb,'t20'),
+('t20.paladino','Paladino',5,'{str,cha}','{"Luta","Vontade"}','padrao','Tormenta20 — Livro Básico',81,'{"startingHp":20,"manaPerLevel":3,"choiceSkillCount":2,"proficiencies":"Armas marciais, armaduras pesadas e escudos"}'::jsonb,'t20'),
+('dnd5e.barbaro','Bárbaro',6,'{str}','{"Força","Constituição"}','standard','D&D 5e — Livro do Jogador (2014)',46,'{"hitDie":"d12","skillChoiceCount":2,"proficiencies":"Armas simples e marciais; armaduras leves e médias; escudos"}'::jsonb,'dnd5e'),
+('dnd5e.bardo','Bardo',4,'{cha}','{"dex","cha"}','standard','D&D 5e — Livro do Jogador (2014)',51,'{"hitDie":"d8","skillChoiceCount":3,"proficiencies":"Armas simples e armaduras leves"}'::jsonb,'dnd5e'),
+('dnd5e.bruxo','Bruxo',4,'{cha}','{"wis","cha"}','standard','D&D 5e — Livro do Jogador (2014)',56,'{"hitDie":"d8","skillChoiceCount":2,"proficiencies":"Armas simples e armaduras leves"}'::jsonb,'dnd5e'),
+('dnd5e.clerigo','Clérigo',4,'{wis}','{"wis","cha"}','standard','D&D 5e — Livro do Jogador (2014)',63,'{"hitDie":"d8","skillChoiceCount":2,"proficiencies":"Armas simples, armaduras leves e médias, escudos"}'::jsonb,'dnd5e'),
+('dnd5e.druida','Druida',4,'{wis}','{"int","wis"}','standard','D&D 5e — Livro do Jogador (2014)',71,'{"hitDie":"d8","skillChoiceCount":2,"proficiencies":"Escudos e armaduras leves/médias não metálicas"}'::jsonb,'dnd5e'),
+('dnd5e.feiticeiro','Feiticeiro',3,'{cha}','{"con","cha"}','standard','D&D 5e — Livro do Jogador (2014)',77,'{"hitDie":"d6","skillChoiceCount":2,"proficiencies":"Armas simples"}'::jsonb,'dnd5e'),
+('dnd5e.guerreiro','Guerreiro',5,'{str,dex}','{"str","con"}','standard','D&D 5e — Livro do Jogador (2014)',83,'{"hitDie":"d10","skillChoiceCount":2,"proficiencies":"Todas as armaduras, escudos, armas simples e marciais"}'::jsonb,'dnd5e'),
+('dnd5e.ladino','Ladino',4,'{dex}','{"dex","int"}','standard','D&D 5e — Livro do Jogador (2014)',89,'{"hitDie":"d8","skillChoiceCount":4,"proficiencies":"Armaduras leves; armas simples e algumas marciais"}'::jsonb,'dnd5e'),
+('dnd5e.mago','Mago',3,'{int}','{"int","wis"}','standard','D&D 5e — Livro do Jogador (2014)',94,'{"hitDie":"d6","skillChoiceCount":2,"proficiencies":"Armas simples"}'::jsonb,'dnd5e'),
+('dnd5e.monge','Monge',4,'{dex,wis}','{"str","dex"}','standard','D&D 5e — Livro do Jogador (2014)',102,'{"hitDie":"d8","skillChoiceCount":2,"proficiencies":"Armas simples e espadas curtas"}'::jsonb,'dnd5e'),
+('dnd5e.paladino','Paladino',5,'{str,cha}','{"wis","cha"}','standard','D&D 5e — Livro do Jogador (2014)',108,'{"hitDie":"d10","skillChoiceCount":2,"proficiencies":"Todas as armaduras, escudos, armas simples e marciais"}'::jsonb,'dnd5e'),
+('dnd5e.patrulheiro','Patrulheiro',5,'{dex,wis}','{"str","dex"}','standard','D&D 5e — Livro do Jogador (2014)',115,'{"hitDie":"d10","skillChoiceCount":3,"proficiencies":"Armaduras leves e médias, escudos, armas simples e marciais"}'::jsonb,'dnd5e')
+on conflict (id) do update set name_pt=excluded.name_pt, hp_per_level=excluded.hp_per_level, key_attributes=excluded.key_attributes, traits=excluded.traits, ruleset=excluded.ruleset, source_book=excluded.source_book, source_page=excluded.source_page, data=excluded.data, system_id=excluded.system_id, updated_at=now();

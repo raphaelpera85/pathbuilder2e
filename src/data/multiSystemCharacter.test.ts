@@ -4,6 +4,7 @@ import {
   createInitialCoreCharacter,
   getCoreCatalog,
   proficiencyBonus,
+  resolveD20Roll,
 } from "./multiSystemCharacter";
 
 describe("core system character models", () => {
@@ -24,5 +25,11 @@ describe("core system character models", () => {
     expect(abilityModifier(18, "t20")).toBe(4);
     expect(proficiencyBonus("t20", 1)).toBe(3);
     expect(proficiencyBonus("dnd5e", 5)).toBe(3);
+  });
+
+  it("resolves advantage and disadvantage with the D&D 5e d20 rule", () => {
+    expect(resolveD20Roll(7, 18, "normal")).toBe(7);
+    expect(resolveD20Roll(7, 18, "advantage")).toBe(18);
+    expect(resolveD20Roll(7, 18, "disadvantage")).toBe(7);
   });
 });

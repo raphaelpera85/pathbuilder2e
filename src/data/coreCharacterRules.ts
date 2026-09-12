@@ -26,6 +26,21 @@ export function validatePointBuy(system: SupportedCoreSystem, scores: number[]):
   return spent <= budget ? { valid: true, spent } : { valid: false, spent, message: `A compra por pontos excede o limite de ${budget}.` };
 }
 
+export function validateAbilityGeneration(system: SupportedCoreSystem, method: AbilityGenerationMethod | undefined, scores: number[]): string | undefined {
+  if (!method) return undefined;
+  if (method === "point_buy") return validatePointBuy(system, scores).message;
+  if (method === "standard_array") {
+    const expected = [...DND5E_STANDARD_ARRAY].sort((a, b) => a - b).join(",");
+    const received = [...scores].sort((a, b) => a - b).join(",");
+    if (system !== "dnd5e" || received !== expected) return "O array padrão de D&D 5e deve conter exatamente 15, 14, 13, 12, 10 e 8.";
+    return undefined;
+  }
+  if (scores.length !== 6 || scores.some((score) => !Number.isInteger(score) || score < 3 || score > 18)) {
+    return "A rolagem 4d6 descartando o menor deve gerar seis valores entre 3 e 18.";
+  }
+  return undefined;
+}
+
 export function roll4d6DropLowest(randomInt: (sides: number) => number = (sides) => Math.floor(Math.random() * sides) + 1): number {
   const dice = [randomInt(6), randomInt(6), randomInt(6), randomInt(6)].sort((a, b) => a - b);
   return dice.slice(1).reduce((total, value) => total + value, 0);
@@ -48,4 +63,3 @@ export function resolveD20Roll(mode: "normal" | "advantage" | "disadvantage", ra
   if (mode === "disadvantage") return rollWithDisadvantage(randomInt);
   return (randomInt || ((sides: number) => Math.floor(Math.random() * sides) + 1))(20);
 }
-

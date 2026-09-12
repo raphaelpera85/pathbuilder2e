@@ -5,6 +5,7 @@ import {
   fetchCatalogCategory,
   fetchCatalogItemById,
   getCatalogSyncStatus,
+  DEFAULT_RPG_SYSTEMS,
   type CatalogItemRecord,
 } from "./catalog";
 import type { PickerType } from "../types";
@@ -12,6 +13,11 @@ import type { PickerType } from "../types";
 describe("Catalog Service & Supabase Mapping", () => {
   beforeEach(() => {
     vi.clearAllMocks();
+  });
+
+  it("não anuncia rulesets ainda não implementados no núcleo", () => {
+    expect(DEFAULT_RPG_SYSTEMS.find((system) => system.id === "dnd5e")?.supportedRulesets).toEqual(["standard"]);
+    expect(DEFAULT_RPG_SYSTEMS.find((system) => system.id === "t20")?.supportedRulesets).toEqual(["padrao"]);
   });
 
   it("mapeia todas as categorias para suas respectivas tabelas relacionais do Supabase", () => {
