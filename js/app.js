@@ -2762,6 +2762,11 @@ class PathbuilderApp {
             ? { str: "FUE", dex: "DES", con: "CON", int: "INT", wis: "SAB", cha: "CAR" }
             : { str: "FOR", dex: "DES", con: "CON", int: "INT", wis: "SAB", cha: "CAR" };
         const abilityModifiers = Object.entries(companion.abilityModifiers || {}).map(([key, value]) => `${abilityNames[key] || key.toUpperCase()} ${Number(value) >= 0 ? "+" : ""}${value}`).join(" · ");
+        const companionAttacks = Array.isArray(companion.attacks)
+          ? companion.attacks
+          : (typeof companion.attacks === "string" && companion.attacks.trim())
+            ? [{ name: companion.attacks, bonus: "—", damage: "", traits: [] }]
+            : [];
         return `
         <div class="strike-card" style="border-left-color: var(--pb-orange); background: var(--pb-bg-panel); margin-bottom:12px;">
           <div class="strike-header">
@@ -2782,7 +2787,7 @@ class PathbuilderApp {
           </div>
            <div style="font-size:12px; line-height:1.6;">
              ${(pet.summaries?.[locale] || pet.description) ? `<div class="companion-description" style="margin-bottom:6px; color:#e2e8f0;">${escapeHtml(pet.summaries?.[locale] || pet.description)}</div>` : ''}
-             ${(companion.attacks || []).map(atk => `• <strong>${isEn ? "Attack" : isEs ? "Ataque" : "Ataque"} ${escapeHtml(this.localizeItemName(atk.name || "", locale))}:</strong> ${escapeHtml(atk.bonus ?? "—")} | <strong>${escapeHtml(this.localizeCompanionAttackText(atk.damage ?? "—", locale))}</strong>${Array.isArray(atk.traits) && atk.traits.length ? ` · ${escapeHtml(atk.traits.map(trait => this.localizeTrait(trait, locale)).join(", "))}` : ""}.<br>`).join('')}
+             ${companionAttacks.map(atk => `• <strong>${isEn ? "Attack" : isEs ? "Ataque" : "Ataque"} ${escapeHtml(this.localizeItemName(atk.name || "", locale))}:</strong> ${escapeHtml(atk.bonus ?? "—")}${atk.damage ? ` | <strong>${escapeHtml(this.localizeCompanionAttackText(atk.damage, locale))}</strong>` : ""}${Array.isArray(atk.traits) && atk.traits.length ? ` · ${escapeHtml(atk.traits.map(trait => this.localizeTrait(trait, locale)).join(", "))}` : ""}.<br>`).join('')}
             ${Array.isArray(pet.grantedAbilities) && pet.grantedAbilities.length ? `• <strong>${isEn ? "Granted familiar abilities:" : isEs ? "Habilidades concedidas:" : "Habilidades concedidas:"}</strong> ${escapeHtml(pet.grantedAbilities.join(", "))}<br>` : ''}
             ${pet.requiredFamiliarAbilities ? `• <strong>${isEn ? "Required familiar abilities:" : isEs ? "Habilidades de familiar requeridas:" : "Habilidades de familiar necessárias:"}</strong> ${escapeHtml(pet.requiredFamiliarAbilities)}${pet.requiresSpellcasting ? ` (${isEn ? "spellcasting required" : isEs ? "requiere lanzamiento de conjuros" : "requer conjuração"})` : ''}<br>` : ''}
             ${companion.supportBenefit ? `• <strong>${isEn ? "Support Benefit:" : isEs ? "Beneficio de Soporte:" : "Benefício de Suporte:"}</strong> ${escapeHtml(companion.supportBenefit)}<br>` : ''}

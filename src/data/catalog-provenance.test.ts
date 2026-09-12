@@ -12,6 +12,7 @@ interface LegacyRecord {
   needs_review?: boolean;
   rarity?: string;
   rareSelection?: boolean;
+  category?: string;
   names?: Record<string, string>;
   summaries?: Record<string, string>;
   mechanics?: Record<string, { abilityBoostRules?: string[]; trainedSkills?: string[]; specialActions?: string[]; specialRules?: string[]; senses?: string[]; grants?: string[] }>;
@@ -69,6 +70,7 @@ describe("proveniência do catálogo legado", () => {
     expect(catalog.pets.find((item) => item.id === "pet.howl.giant_frog")).toMatchObject({ requiredLevel: 6, hp: 6, source: { page: 94 }, needs_review: false });
     expect(catalog.pets.find((item) => item.id === "pet.howl.riding_tarantula")).toMatchObject({ requiredLevel: 6, source: { page: 96 }, needs_review: false });
     expect(catalog.pets.find((item) => item.id === "pet.howl.umbrella_mushroom")).toMatchObject({ requiredLevel: 14, source: { page: 96 }, needs_review: false });
+    expect(catalog.pets.every((item) => typeof item.category === "string" && item.category.length > 0)).toBe(true);
     expect(catalog.items.find((item) => item.id === "item.gear.adventurers_pack")).toMatchObject({ source: { page: 287 } });
     expect(catalog.formulas.find((item) => item.id === "form.snare.spike_snare")).toMatchObject({ source: { page: 296 } });
     const eidolons = catalog.pets.filter((item) => item.type === "eidolon");

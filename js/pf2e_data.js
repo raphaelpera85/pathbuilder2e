@@ -9486,7 +9486,7 @@ const HOWL_WILD_COMPANIONS = [
 for (const [id, pt, en, es, page, ptSummary, enSummary, esSummary] of HOWL_WILD_COMPANIONS) {
   if ((PF2E_DATA.pets || []).some((record) => record.id === id)) continue;
   PF2E_DATA.pets.push({
-    id, name: `${pt} (${en})`, type: "animal_companion", size: "Variável", speed: "Ver descrição",
+    id, name: `${pt} (${en})`, type: "animal_companion", category: "Companheiro Animal", size: "Variável", speed: "Ver descrição",
     attacks: [], supportBenefit: ptSummary, description: ptSummary,
     names: { "pt-BR": pt, en, es }, summaries: { "pt-BR": ptSummary, en: enSummary, es: esSummary },
     source: { book: HOWL_WILD_SOURCE, page }, ruleset: "remaster", needs_review: true

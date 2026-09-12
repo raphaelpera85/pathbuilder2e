@@ -1183,14 +1183,14 @@
   },
   ".planning/graphs/.last-build-snapshot.json": {
     "mtime": 1788464729.817343,
-    "seen": 1789200385.4404879,
-    "ast_hash": "",
+    "seen": 1789200628.040409,
+    "ast_hash": "ef6f491da32feae134bc9124de1b4498",
     "semantic_hash": ""
   },
   ".planning/graphs/graph.json": {
     "mtime": 1788464729.0434592,
-    "seen": 1789200385.4404905,
-    "ast_hash": "",
+    "seen": 1789200628.0404115,
+    "ast_hash": "37a1fed08f1fe23f931b8bd3d5872d76",
     "semantic_hash": ""
   },
   "audit_snapshots/playwright_multicharacter_audit.json": {
@@ -1207,32 +1207,32 @@
   },
   "scripts/extracted_all_feats_master.json": {
     "mtime": 1788294828.5723233,
-    "seen": 1789200385.4406748,
-    "ast_hash": "",
+    "seen": 1789200628.0405853,
+    "ast_hash": "aedbe0f84121ca440a858833364009bd",
     "semantic_hash": ""
   },
   "supabase/migrations/202608270001_accounts_and_characters.sql": {
     "mtime": 1787872547.9143429,
-    "seen": 1789200385.4409082,
-    "ast_hash": "",
+    "seen": 1789200628.0407913,
+    "ast_hash": "09a6ff5aff005f10a0232164c4c35dd1",
     "semantic_hash": ""
   },
   "supabase/migrations/202608270002_character_limits.sql": {
     "mtime": 1788260933.2179694,
-    "seen": 1789200385.44091,
-    "ast_hash": "",
+    "seen": 1789200628.0407932,
+    "ast_hash": "5cc6b53f0539ca88e270cdff61adab59",
     "semantic_hash": ""
   },
   "supabase/migrations/202608300001_campaigns_and_gm_sharing.sql": {
     "mtime": 1788766556.6440303,
-    "seen": 1789200385.4409122,
-    "ast_hash": "",
+    "seen": 1789200628.0407948,
+    "ast_hash": "d3e7b43e5e991ecb34b60a65d766f341",
     "semantic_hash": ""
   },
   "supabase/schema_full.sql": {
     "mtime": 1789191316.5193534,
-    "seen": 1789200385.4409256,
-    "ast_hash": "",
+    "seen": 1789200628.0408075,
+    "ast_hash": "29d60d0d6d1ae1ea5cb8863d4cd496c2",
     "semantic_hash": ""
   },
   "scripts/generate-catalog-seed.cjs": {
@@ -1309,8 +1309,8 @@
   },
   "scripts/catalog_data/catalog_feats.json": {
     "mtime": 1788828468.057013,
-    "seen": 1789200385.4406323,
-    "ast_hash": "",
+    "seen": 1789200628.040545,
+    "ast_hash": "f7a943f6a75d5cf717c6523d17cee5b2",
     "semantic_hash": ""
   },
   "scripts/catalog_data/catalog_heritages.json": {
@@ -1351,8 +1351,8 @@
   },
   "supabase/migrations/202609040001_catalog_tables.sql": {
     "mtime": 1788493864.528052,
-    "seen": 1789200385.440914,
-    "ast_hash": "",
+    "seen": 1789200628.0407968,
+    "ast_hash": "e1efbbfe525c348eaf4b443d6754e7c6",
     "semantic_hash": ""
   },
   "scripts/catalog_data/catalog_armors.json": {
@@ -1381,44 +1381,44 @@
   },
   "supabase/seed_catalog.sql": {
     "mtime": 1788832017.4651766,
-    "seen": 1789200385.4409275,
-    "ast_hash": "",
+    "seen": 1789200628.0408092,
+    "ast_hash": "8417d28bad83f902838525286ca047ba",
     "semantic_hash": ""
   },
   "supabase/seeds/01_ancestries_classes_items.sql": {
     "mtime": 1788828468.062582,
-    "seen": 1789200385.4409297,
-    "ast_hash": "",
+    "seen": 1789200628.040811,
+    "ast_hash": "39954ee92adb23cebc53d97d6c9cb363",
     "semantic_hash": ""
   },
   "supabase/seeds/02_heritages_subclasses_backgrounds_archetypes.sql": {
     "mtime": 1788828468.06458,
-    "seen": 1789200385.4409313,
-    "ast_hash": "",
+    "seen": 1789200628.0408125,
+    "ast_hash": "898d597f186ade370779d93e9789eb8c",
     "semantic_hash": ""
   },
   "supabase/seeds/03_spells_rituals_actions_conditions_pets.sql": {
     "mtime": 1788828468.068148,
-    "seen": 1789200385.4409332,
-    "ast_hash": "",
+    "seen": 1789200628.0408142,
+    "ast_hash": "0307f3e18918376ff0d284687f9edd26",
     "semantic_hash": ""
   },
   "supabase/seeds/04_weapons_armors_shields_formulas.sql": {
     "mtime": 1788832017.4789102,
-    "seen": 1789200385.4409347,
-    "ast_hash": "",
+    "seen": 1789200628.0408158,
+    "ast_hash": "bd878eb173110258fd034f36fdeaf852",
     "semantic_hash": ""
   },
   "supabase/seeds/05_feats_part1.sql": {
     "mtime": 1788828468.0721307,
-    "seen": 1789200385.4409368,
-    "ast_hash": "",
+    "seen": 1789200628.0408175,
+    "ast_hash": "630b61e66a467f12fb3499f42604efe9",
     "semantic_hash": ""
   },
   "supabase/seeds/06_feats_part2.sql": {
     "mtime": 1788828468.0761144,
-    "seen": 1789200385.4409385,
-    "ast_hash": "",
+    "seen": 1789200628.0408192,
+    "ast_hash": "25c4ed52c86cf826cb1934da133a8b2c",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/CHANGELOG.md": {
@@ -1675,8 +1675,8 @@
   },
   "supabase/migrations/202609040002_site_visits_and_profile_email.sql": {
     "mtime": 1788500807.9926589,
-    "seen": 1789200385.4409158,
-    "ast_hash": "",
+    "seen": 1789200628.0407984,
+    "ast_hash": "3fc20cc60001637244ece8d5c2c06fdb",
     "semantic_hash": ""
   },
   ".agents/rules/pathbuilder-conventions.md": {
@@ -2179,8 +2179,8 @@
   },
   "supabase/migrations/202609080001_campaigns_realtime.sql": {
     "mtime": 1788840232.582438,
-    "seen": 1789200385.4409177,
-    "ast_hash": "",
+    "seen": 1789200628.0408006,
+    "ast_hash": "1cb66d8079ce07e7783d76c8a962fe42",
     "semantic_hash": ""
   },
   "scripts/audit-supabase-campaigns-authenticated.cjs": {
@@ -2191,8 +2191,8 @@
   },
   "supabase/migrations/202609080002_campaign_notes.sql": {
     "mtime": 1788840665.6405127,
-    "seen": 1789200385.4409194,
-    "ast_hash": "",
+    "seen": 1789200628.040802,
+    "ast_hash": "4849ef6eecae1aad994367267b4531a5",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-punch-dagger.png": {
@@ -4087,8 +4087,8 @@
   },
   "public/data/pf2e_feats_mechanics.json": {
     "mtime": 1788936439.4327824,
-    "seen": 1789200385.4405422,
-    "ast_hash": "",
+    "seen": 1789200628.0404618,
+    "ast_hash": "1d9a58355cf83c874ada4225692f0a3b",
     "semantic_hash": ""
   },
   "scripts/sync-item-specific-images-to-supabase.cjs": {
@@ -11881,8 +11881,8 @@
   },
   ".agents/skills/operator-approval-loop/references/approval-ledger.sql": {
     "mtime": 1789189211.5286157,
-    "seen": 1789200385.4402332,
-    "ast_hash": "",
+    "seen": 1789200628.0401828,
+    "ast_hash": "ad09f77702a902993dcce9662f1db5a0",
     "semantic_hash": ""
   },
   "src/data/ose/ose-engine.test.ts": {
@@ -11935,14 +11935,14 @@
   },
   "supabase/migrations/202609120001_multi_system_support.sql": {
     "mtime": 1789191242.459483,
-    "seen": 1789200385.440921,
-    "ast_hash": "",
+    "seen": 1789200628.040804,
+    "ast_hash": "67f1b23548cdd081278cc7b397293501",
     "semantic_hash": ""
   },
   "supabase/migrations/202609120002_add_ose_system.sql": {
     "mtime": 1789192576.2493021,
-    "seen": 1789200385.4409235,
-    "ast_hash": "",
+    "seen": 1789200628.0408056,
+    "ast_hash": "a92593cdc3826371c739872f18d86b18",
     "semantic_hash": ""
   },
   ".agents/skills/godot-genre-action-rpg/SKILL.md": {

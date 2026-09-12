@@ -12,7 +12,7 @@ import {
 } from "./oseRules";
 import { OSE_RACES } from "./oseRaces";
 import { OSE_CLASSES } from "./oseClasses";
-import { OSE_WEAPONS, OSE_ARMORS, calculateOseArmorClass } from "./oseEquipment";
+import { OSE_WEAPONS, OSE_ARMORS, OSE_GEAR, OSE_BEASTS, OSE_SPECIALISTS_RETAINERS, calculateOseArmorClass } from "./oseEquipment";
 import { OSE_SPELLS } from "./oseSpells";
 
 describe("Old-School Essentials (OSE) - Engine de Regras", () => {
@@ -153,10 +153,25 @@ describe("Old-School Essentials (OSE) - Engine de Regras", () => {
       expect(acrobatSkillsL1?.ccb).toBe(60);
     });
 
-    it("cataloga armas, armaduras e magias", () => {
+    it("cataloga armas, armaduras, equipamentos, feras e especialistas", () => {
       expect(OSE_WEAPONS.length).toBeGreaterThan(15);
       expect(OSE_ARMORS.length).toBe(5);
+      expect(OSE_GEAR.length).toBeGreaterThanOrEqual(30);
+      expect(OSE_BEASTS.length).toBe(9);
+      expect(OSE_SPECIALISTS_RETAINERS.length).toBe(10);
       expect(OSE_SPELLS.length).toBeGreaterThan(20);
+
+      const warhorse = OSE_BEASTS.find((b) => b.id === "cavalo_guerra");
+      expect(warhorse).toMatchObject({ costGp: 250, ac: 7, hd: "3", attacks: "2x Cascos (1d6)" });
+
+      const mule = OSE_BEASTS.find((b) => b.id === "mula");
+      expect(mule).toMatchObject({ costGp: 30, maxLoadCoins: 2000 });
+
+      const barding = OSE_GEAR.find((g) => g.id === "barda_cavalo");
+      expect(barding).toMatchObject({ costGp: 150, weightCoins: 600 });
+
+      const heavyFoot = OSE_SPECIALISTS_RETAINERS.find((r) => r.id === "mercenario_infantaria_pesada");
+      expect(heavyFoot).toMatchObject({ wageGpPerMonth: 6 });
 
       const magicMissile = OSE_SPELLS.find((s) => s.id === "mago_missil_magico");
       expect(magicMissile?.className).toBe("mago");

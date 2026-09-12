@@ -193,6 +193,36 @@ export function OseCharacterCreatorModal({
     setBoughtGear((prev) => [...prev, item]);
   };
 
+  const removeWeapon = (index: number) => {
+    const w = boughtWeapons[index];
+    if (!w) return;
+    setGold((prev) => prev + w.costGp);
+    setBoughtWeapons((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  const removeArmor = (index: number) => {
+    const a = boughtArmors[index];
+    if (!a) return;
+    setGold((prev) => prev + a.costGp);
+    setBoughtArmors((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  const removeGear = (index: number) => {
+    const g = boughtGear[index];
+    if (!g) return;
+    setGold((prev) => prev + g.costGp);
+    setBoughtGear((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  const buyAdventurerKit = () => {
+    const kitIds = ["mochila", "racoes_conservadas", "corda_15m", "tochas_6", "pederneira", "odre"];
+    const kitItems = OSE_GEAR.filter((g) => kitIds.includes(g.id));
+    const totalCost = kitItems.reduce((acc, item) => acc + item.costGp, 0);
+    if (gold < totalCost) return;
+    setGold((prev) => prev - totalCost);
+    setBoughtGear((prev) => [...prev, ...kitItems]);
+  };
+
   // Step 5: Magias
   const [selectedSpells, setSelectedSpells] = useState<string[]>([]);
 
@@ -550,22 +580,33 @@ export function OseCharacterCreatorModal({
           {/* STEP 4: OURO & EQUIPAMENTO */}
           {step === 4 && (
             <div>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16, flexWrap: "wrap", gap: 10 }}>
                 <div>
-                  <h3 style={{ margin: 0, color: "var(--ose-gold)" }}>Loja de Equipamentos</h3>
+                  <h3 style={{ margin: 0, color: "var(--ose-gold)" }}>Loja de Equipamentos & Montarias</h3>
                   <p style={{ margin: "4px 0 0", fontSize: "0.85rem", color: "var(--ose-text-muted)" }}>
                     Ouro Disponível: <strong style={{ color: "var(--ose-gold)", fontSize: "1.1rem" }}>{gold} PO</strong>
                   </p>
                 </div>
-                <button type="button" className="ose-btn" onClick={rollGold}>
-                  🎲 Rolar 3d6 × 10 PO
-                </button>
+                <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                  <button type="button" className="ose-btn" onClick={rollGold}>
+                    🎲 Rolar 3d6 × 10 PO
+                  </button>
+                  <button
+                    type="button"
+                    className="ose-btn"
+                    disabled={gold < 26}
+                    onClick={buyAdventurerKit}
+                    title="Mochila, Rações (7d), Corda 15m, 6 Tochas, Pederneira e Odre de Água"
+                  >
+                    🎒 Kit do Aventureiro (26 PO)
+                  </button>
+                </div>
               </div>
 
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-                {/* Armas & Armaduras */}
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: 14 }}>
+                {/* Armas */}
                 <div className="ose-card">
-                  <div className="ose-card-title">Armas Disponíveis</div>
+                  <div className="ose-card-title">⚔️ Armas Disponíveis</div>
                   <div style={{ maxHeight: 220, overflowY: "auto" }}>
                     {OSE_WEAPONS.map((w) => (
                       <div
@@ -589,15 +630,16 @@ export function OseCharacterCreatorModal({
                           disabled={gold < w.costGp}
                           onClick={() => buyWeapon(w)}
                         >
-                          Comprar {w.costGp} po
+                          {w.costGp} po
                         </button>
                       </div>
                     ))}
                   </div>
                 </div>
 
+                {/* Armaduras & Escudos */}
                 <div className="ose-card">
-                  <div className="ose-card-title">Armaduras & Escudos</div>
+                  <div className="ose-card-title">🛡️ Armaduras & Escudos</div>
                   <div style={{ maxHeight: 220, overflowY: "auto" }}>
                     {OSE_ARMORS.filter((a) => a.costGp > 0).map((a) => (
                       <div
@@ -612,7 +654,7 @@ export function OseCharacterCreatorModal({
                         }}
                       >
                         <div>
-                          <strong>{a.name}</strong> (DAC {a.dac} / AAC +{a.aacBonus})
+                          <strong>{a.name}</strong> (DAC {a.dac})
                         </div>
                         <button
                           type="button"
@@ -621,7 +663,40 @@ export function OseCharacterCreatorModal({
                           disabled={gold < a.costGp}
                           onClick={() => buyArmor(a)}
                         >
-                          Comprar {a.costGp} po
+                          {a.costGp} po
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Equipamentos Gerais, Selaria & Animais */}
+                <div className="ose-card">
+                  <div className="ose-card-title">🎒 Equipamento Geral & Selaria</div>
+                  <div style={{ maxHeight: 220, overflowY: "auto" }}>
+                    {OSE_GEAR.map((g) => (
+                      <div
+                        key={g.id}
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                          padding: "4px 8px",
+                          borderBottom: "1px solid var(--ose-border)",
+                          fontSize: "0.82rem",
+                        }}
+                      >
+                        <div title={g.description}>
+                          <strong>{g.name}</strong>
+                        </div>
+                        <button
+                          type="button"
+                          className="ose-btn"
+                          style={{ padding: "2px 8px", fontSize: "0.75rem" }}
+                          disabled={gold < g.costGp}
+                          onClick={() => buyGear(g)}
+                        >
+                          {g.costGp} po
                         </button>
                       </div>
                     ))}
@@ -629,13 +704,68 @@ export function OseCharacterCreatorModal({
                 </div>
               </div>
 
-              {/* Itens Comprados */}
+              {/* Itens Comprados Interativos */}
               <div style={{ marginTop: 12, padding: 12, background: "rgba(0,0,0,0.2)", borderRadius: 6, fontSize: "0.85rem" }}>
-                <strong>Inventário Selecionado:</strong>
-                <div style={{ marginTop: 4, color: "var(--ose-text-muted)" }}>
-                  {boughtWeapons.length === 0 && boughtArmors.length === 0 && "Nenhum equipamento comprado ainda."}
-                  {boughtArmors.map((a, i) => <span key={i}>🛡️ {a.name} </span>)}
-                  {boughtWeapons.map((w, i) => <span key={i}>⚔️ {w.name} </span>)}
+                <strong>Inventário Selecionado (clique no ✕ para devolver):</strong>
+                <div style={{ marginTop: 6, display: "flex", flexWrap: "wrap", gap: 6, color: "var(--ose-text-muted)" }}>
+                  {boughtWeapons.length === 0 && boughtArmors.length === 0 && boughtGear.length === 0 && "Nenhum equipamento comprado ainda."}
+                  {boughtArmors.map((a, i) => (
+                    <button
+                      key={`arm_${i}`}
+                      type="button"
+                      onClick={() => removeArmor(i)}
+                      style={{
+                        background: "rgba(96, 165, 250, 0.15)",
+                        border: "1px solid #60a5fa",
+                        color: "#93c5fd",
+                        borderRadius: 4,
+                        padding: "2px 6px",
+                        fontSize: "0.78rem",
+                        cursor: "pointer",
+                      }}
+                      title="Clique para devolver e recuperar o ouro"
+                    >
+                      🛡️ {a.name} ({a.costGp} po) ✕
+                    </button>
+                  ))}
+                  {boughtWeapons.map((w, i) => (
+                    <button
+                      key={`wpn_${i}`}
+                      type="button"
+                      onClick={() => removeWeapon(i)}
+                      style={{
+                        background: "rgba(239, 68, 68, 0.15)",
+                        border: "1px solid #ef4444",
+                        color: "#fca5a5",
+                        borderRadius: 4,
+                        padding: "2px 6px",
+                        fontSize: "0.78rem",
+                        cursor: "pointer",
+                      }}
+                      title="Clique para devolver e recuperar o ouro"
+                    >
+                      ⚔️ {w.name} ({w.costGp} po) ✕
+                    </button>
+                  ))}
+                  {boughtGear.map((g, i) => (
+                    <button
+                      key={`gear_${i}`}
+                      type="button"
+                      onClick={() => removeGear(i)}
+                      style={{
+                        background: "rgba(234, 179, 8, 0.15)",
+                        border: "1px solid #eab308",
+                        color: "#fde047",
+                        borderRadius: 4,
+                        padding: "2px 6px",
+                        fontSize: "0.78rem",
+                        cursor: "pointer",
+                      }}
+                      title="Clique para devolver e recuperar o ouro"
+                    >
+                      🎒 {g.name} ({g.costGp} po) ✕
+                    </button>
+                  ))}
                 </div>
               </div>
             </div>

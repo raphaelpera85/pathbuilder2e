@@ -93,6 +93,59 @@ export const OSE_GEAR: OseGearItem[] = [
   { id: "flechas_20", name: "Aljava com 20 Flechas", nameEn: "Arrows (20)", costGp: 5, weightCoins: 20, description: "Munição para arco curto ou arco longo." },
   { id: "virotes_30", name: "Estojo com 30 Virotes", nameEn: "Crossbow Bolts (30)", costGp: 10, weightCoins: 30, description: "Munição de besta pesada." },
   { id: "erva_de_lobo", name: "Erva de Lobo (Acônito)", nameEn: "Wolfsbane", costGp: 10, weightCoins: 1, description: "Repele lobisomens e licantropos." },
+  { id: "sela_arreios", name: "Sela e Arreios", nameEn: "Saddle and Tack", costGp: 25, weightCoins: 200, description: "Conjunto completo de sela, estribos e arreios para cavalos, mulas ou camelos." },
+  { id: "alforjes", name: "Alforjes de Montaria", nameEn: "Saddlebags", costGp: 5, weightCoins: 20, description: "Bolsas duplas fixadas na sela, comportam até 800 moedas de carga sem atrapalhar o cavaleiro." },
+  { id: "barda_cavalo", name: "Barda para Cavalo de Guerra", nameEn: "Horse Barding", costGp: 150, weightCoins: 600, description: "Armadura protetora para cavalos de guerra (DAC 5 / AAC 14)." },
+  { id: "carroca_duas_rodas", name: "Carroça de Duas Rodas", nameEn: "Cart", costGp: 100, weightCoins: 0, description: "Puxada por 1 ou 2 cavalos/mulas; suporta até 4.000 moedas de carga." },
+  { id: "carruagem_quatro_rodas", name: "Carruagem de Quatro Rodas", nameEn: "Wagon", costGp: 200, weightCoins: 0, description: "Puxada por 2 a 4 cavalos de tração; suporta até 15.000 moedas de carga." },
+  { id: "barco_pequeno", name: "Barco a Remo", nameEn: "Rowboat", costGp: 50, weightCoins: 0, description: "Comporta até 4 pessoas ou 2.000 moedas de carga em rios e lagos." },
+];
+
+export interface OseBeastItem {
+  id: string;
+  name: string;
+  nameEn: string;
+  costGp: number;
+  weightCoins: number;
+  maxLoadCoins: number;
+  movementSpeed: number; // metros por turno
+  ac: number;
+  hd: string;
+  attacks: string;
+  description: string;
+}
+
+export const OSE_BEASTS: OseBeastItem[] = [
+  { id: "cao_guerra", name: "Cão de Guerra", nameEn: "War Dog", costGp: 25, weightCoins: 0, maxLoadCoins: 0, movementSpeed: 36, ac: 6, hd: "2+2", attacks: "1x Mordida (2d4)", description: "Cão mastim grande treinado para guerrear, morder e proteger seu dono ferozmente." },
+  { id: "cao_caca", name: "Cão de Caça", nameEn: "Hunting Dog", costGp: 17, weightCoins: 0, maxLoadCoins: 0, movementSpeed: 48, ac: 7, hd: "1+1", attacks: "1x Mordida (1d6)", description: "Cão ágil treinado para rastrear presas no ermo e vigiar acampamentos." },
+  { id: "cavalo_guerra", name: "Cavalo de Guerra", nameEn: "Warhorse", costGp: 250, weightCoins: 0, maxLoadCoins: 4000, movementSpeed: 36, ac: 7, hd: "3", attacks: "2x Cascos (1d6)", description: "Poderoso corcel de batalha treinado para lutar corpo a corpo e carregar cavaleiros em armadura completa." },
+  { id: "cavalo_montaria", name: "Cavalo de Montaria", nameEn: "Riding Horse", costGp: 75, weightCoins: 0, maxLoadCoins: 3000, movementSpeed: 72, ac: 7, hd: "2", attacks: "2x Cascos (1d4)", description: "Cavalo veloz adequado para viagens rápidas e exploração em campo aberto." },
+  { id: "cavalo_tracao", name: "Cavalo de Tração", nameEn: "Draft Horse", costGp: 40, weightCoins: 0, maxLoadCoins: 4500, movementSpeed: 27, ac: 7, hd: "3", attacks: "Sem ataque em combate", description: "Cavalo pesado e dócil para puxar carroças ou transportar grandes cargas de suprimentos." },
+  { id: "mula", name: "Mula", nameEn: "Mule", costGp: 30, weightCoins: 0, maxLoadCoins: 2000, movementSpeed: 36, ac: 7, hd: "2", attacks: "1x Coice (1d4)", description: "Animal teimoso e resistente, o único quadrúpede de carga disposto a entrar em masmorras subterrâneas." },
+  { id: "ponei", name: "Pônei", nameEn: "Pony", costGp: 30, weightCoins: 0, maxLoadCoins: 2000, movementSpeed: 36, ac: 7, hd: "1+1", attacks: "1x Casco (1d4)", description: "Montaria e animal de carga ideal para aventureiros anões, halflings e gnomos." },
+  { id: "falcao_cacador", name: "Falcão Treinado", nameEn: "Trained Falcon", costGp: 18, weightCoins: 0, maxLoadCoins: 0, movementSpeed: 144, ac: 6, hd: "1d4 pv", attacks: "1x Bico (1d2)", description: "Ave de rapina veloz treinada para caçar pequenas presas e carregar mensagens de emergência." },
+  { id: "camelo", name: "Camelo", nameEn: "Camel", costGp: 100, weightCoins: 0, maxLoadCoins: 3000, movementSpeed: 45, ac: 7, hd: "2", attacks: "1x Mordida (1d4) / Cuspe", description: "Animal do deserto capaz de viajar semanas sem beber água fresca e carregar viajantes pelo calor escaldante." },
+];
+
+export interface OseSpecialistRetainer {
+  id: string;
+  name: string;
+  nameEn: string;
+  wageGpPerMonth: number;
+  description: string;
+}
+
+export const OSE_SPECIALISTS_RETAINERS: OseSpecialistRetainer[] = [
+  { id: "alquimista", name: "Alquimista", nameEn: "Alchemist", wageGpPerMonth: 1000, description: "Especialista capaz de produzir poções mágicas e identificar substâncias misteriosas." },
+  { id: "armeiro", name: "Armeiro / Ferreiro", nameEn: "Armorer / Smith", wageGpPerMonth: 100, description: "Fabrica e conserta armas e armaduras de metal para a comitiva." },
+  { id: "guia_rastreador", name: "Guia / Rastreador", nameEn: "Guide / Tracker", wageGpPerMonth: 25, description: "Conhece regiões ermas específicas, reduzindo chances de o grupo se perder." },
+  { id: "mercenario_infantaria_leve", name: "Mercenário (Infantaria Leve)", nameEn: "Mercenary (Light Foot)", wageGpPerMonth: 3, description: "Combatente contratado armado com espada curta, armadura de couro e escudo." },
+  { id: "mercenario_arqueiro", name: "Mercenário (Arqueiro)", nameEn: "Mercenary (Archer)", wageGpPerMonth: 5, description: "Combatente à distância com arco curto ou longo e armadura de couro." },
+  { id: "mercenario_besteiro", name: "Mercenário (Besteiro)", nameEn: "Mercenary (Crossbowman)", wageGpPerMonth: 4, description: "Combatente à distância equipado com besta e cota de malha." },
+  { id: "mercenario_infantaria_pesada", name: "Mercenário (Infantaria Pesada)", nameEn: "Mercenary (Heavy Foot)", wageGpPerMonth: 6, description: "Combatente veterano com cota de malha, espada longa e escudo." },
+  { id: "mercenario_cavalaria_pesada", name: "Mercenário (Cavalaria Pesada)", nameEn: "Mercenary (Heavy Cavalry)", wageGpPerMonth: 20, description: "Cavaleiro com armadura de placas, cavalo de guerra, lança montada e espada." },
+  { id: "marinheiro", name: "Marinheiro", nameEn: "Sailor", wageGpPerMonth: 10, description: "Tripulante habilidoso para navegação em rios, lagos e alto-mar." },
+  { id: "navegador", name: "Navegador / Capitão", nameEn: "Navigator / Captain", wageGpPerMonth: 150, description: "Navegador experiente em cartas náuticas, estrelas e correntes marítimas." },
 ];
 
 /**
