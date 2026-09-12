@@ -14,6 +14,7 @@ import { OSE_RACES } from "../data/ose/oseRaces";
 import { OSE_CLASSES } from "../data/ose/oseClasses";
 import { calculateOseArmorClass } from "../data/ose/oseEquipment";
 import { OSE_SPELLS } from "../data/ose/oseSpells";
+import { createOseEditablePdf, downloadOseEditablePdf } from "../services/osePdfExport";
 import "./oseTheme.css";
 
 interface OseCharacterSheetProps {
@@ -101,6 +102,11 @@ export function OseCharacterSheet({
     URL.revokeObjectURL(url);
   };
 
+  const handleExportPdf = async () => {
+    const bytes = await createOseEditablePdf(char);
+    downloadOseEditablePdf(bytes, char.name);
+  };
+
   return (
     <div className="ose-sheet-container">
       {/* Top Bar Actions */}
@@ -128,6 +134,9 @@ export function OseCharacterSheet({
           </button>
           <button type="button" className="ose-btn" onClick={handleExportJson}>
             📤 Exportar JSON
+          </button>
+          <button type="button" className="ose-btn ose-btn-primary" onClick={handleExportPdf}>
+            📄 Exportar PDF editável
           </button>
           <button type="button" className="ose-btn" onClick={() => window.print()}>
             🖨️ Imprimir Ficha
