@@ -56,6 +56,24 @@ export const DEFAULT_RPG_SYSTEMS: IRPGSystem[] = [
     supportedRulesets: ["padrao", "jogo_do_ano"],
     active: true,
   },
+  {
+    id: "ose",
+    name: {
+      "pt-BR": "Old-School Essentials",
+      en: "Old-School Essentials",
+      es: "Old-School Essentials",
+    },
+    description: {
+      "pt-BR": "RPG clássico e retroclone B/X com opções de Fantasia Avançada (13 classes, 10 raças e regras completas).",
+      en: "Classic adventure RPG and B/X retroclone with Advanced Fantasy options (13 classes, 10 races and complete rules).",
+      es: "Juego de rol de aventuras clásico y retroclon B/X con reglas de Fantasía Avanzada.",
+    },
+    icon: "🎲",
+    badgeColor: "#d97706",
+    defaultRuleset: "advanced",
+    supportedRulesets: ["advanced", "classic"],
+    active: true,
+  },
 ];
 
 export async function fetchCatalogSystems(): Promise<IRPGSystem[]> {

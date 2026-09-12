@@ -84,7 +84,7 @@ export const SystemSelectorModal: React.FC<SystemSelectorModalProps> = ({
         </div>
 
         {/* Lista de Sistemas */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {systems.map((system) => {
             const systemName =
               system.name[locale] ||

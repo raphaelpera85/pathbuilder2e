@@ -72,9 +72,9 @@
     "semantic_hash": ""
   },
   "src/AccountPortal.tsx": {
-    "mtime": 1789192213.273535,
-    "seen": 1789192331.8191714,
-    "ast_hash": "16717f510a39111206972a74387dd423",
+    "mtime": 1789193112.8233798,
+    "seen": 1789193389.4219606,
+    "ast_hash": "076b75489223ff7e622c25ffe5619829",
     "semantic_hash": ""
   },
   "src/CampaignsPage.tsx": {
@@ -114,9 +114,9 @@
     "semantic_hash": ""
   },
   "src/PortalPages.tsx": {
-    "mtime": 1789192069.5564065,
-    "seen": 1789192331.8203235,
-    "ast_hash": "eb68aa8eb248ede536fc016a88896158",
+    "mtime": 1789193249.3014941,
+    "seen": 1789193389.4227304,
+    "ast_hash": "92a85a846bd5a836c0de86fb93239521",
     "semantic_hash": ""
   },
   "src/accountState.ts": {
@@ -264,9 +264,9 @@
     "semantic_hash": ""
   },
   "src/i18n.tsx": {
-    "mtime": 1789191914.9676976,
-    "seen": 1789192331.8259194,
-    "ast_hash": "144ca0a6f86bb2e572b8c4caf49441f9",
+    "mtime": 1789192888.2271502,
+    "seen": 1789193389.425839,
+    "ast_hash": "40a50b97244d6a1a88ddc0d89f4b9fd2",
     "semantic_hash": ""
   },
   "src/lib/supabase.ts": {
@@ -1183,13 +1183,13 @@
   },
   ".planning/graphs/.last-build-snapshot.json": {
     "mtime": 1788464729.817343,
-    "seen": 1789024800.5111532,
+    "seen": 1789192504.3309858,
     "ast_hash": "",
     "semantic_hash": ""
   },
   ".planning/graphs/graph.json": {
     "mtime": 1788464729.0434592,
-    "seen": 1789024800.5111554,
+    "seen": 1789192504.3309872,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -1207,25 +1207,25 @@
   },
   "scripts/extracted_all_feats_master.json": {
     "mtime": 1788294828.5723233,
-    "seen": 1789024800.5112681,
+    "seen": 1789192504.339325,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202608270001_accounts_and_characters.sql": {
     "mtime": 1787872547.9143429,
-    "seen": 1789024800.5113852,
+    "seen": 1789192504.3489354,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202608270002_character_limits.sql": {
     "mtime": 1788260933.2179694,
-    "seen": 1789024800.5113864,
+    "seen": 1789192504.3489373,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202608300001_campaigns_and_gm_sharing.sql": {
     "mtime": 1788766556.6440303,
-    "seen": 1789024800.5113873,
+    "seen": 1789192504.3489385,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -1254,9 +1254,9 @@
     "semantic_hash": ""
   },
   "src/services/catalog.ts": {
-    "mtime": 1789191517.887253,
-    "seen": 1789192331.827834,
-    "ast_hash": "49e828122f301f37579405dd84b56c0b",
+    "mtime": 1789192838.2109795,
+    "seen": 1789193389.4270704,
+    "ast_hash": "80c983520e38fabfc49ccdfaf524c322",
     "semantic_hash": ""
   },
   ".gemini/settings.json": {
@@ -1309,7 +1309,7 @@
   },
   "scripts/catalog_data/catalog_feats.json": {
     "mtime": 1788828468.057013,
-    "seen": 1789024800.511243,
+    "seen": 1789192504.3373578,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -1351,7 +1351,7 @@
   },
   "supabase/migrations/202609040001_catalog_tables.sql": {
     "mtime": 1788493864.528052,
-    "seen": 1789024800.5113883,
+    "seen": 1789192504.3489401,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -1381,43 +1381,43 @@
   },
   "supabase/seed_catalog.sql": {
     "mtime": 1788832017.4651766,
-    "seen": 1789024800.5113945,
+    "seen": 1789192504.3489454,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/seeds/01_ancestries_classes_items.sql": {
     "mtime": 1788828468.062582,
-    "seen": 1789024800.5113957,
+    "seen": 1789192504.3489466,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/seeds/02_heritages_subclasses_backgrounds_archetypes.sql": {
     "mtime": 1788828468.06458,
-    "seen": 1789024800.5113966,
+    "seen": 1789192504.3489478,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/seeds/03_spells_rituals_actions_conditions_pets.sql": {
     "mtime": 1788828468.068148,
-    "seen": 1789024800.5113978,
+    "seen": 1789192504.3489487,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/seeds/04_weapons_armors_shields_formulas.sql": {
     "mtime": 1788832017.4789102,
-    "seen": 1789024800.511399,
+    "seen": 1789192504.3489497,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/seeds/05_feats_part1.sql": {
     "mtime": 1788828468.0721307,
-    "seen": 1789024800.5114,
+    "seen": 1789192504.3489509,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/seeds/06_feats_part2.sql": {
     "mtime": 1788828468.0761144,
-    "seen": 1789024800.5114012,
+    "seen": 1789192504.3489518,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -1675,7 +1675,7 @@
   },
   "supabase/migrations/202609040002_site_visits_and_profile_email.sql": {
     "mtime": 1788500807.9926589,
-    "seen": 1789024800.51139,
+    "seen": 1789192504.3489413,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -2179,7 +2179,7 @@
   },
   "supabase/migrations/202609080001_campaigns_realtime.sql": {
     "mtime": 1788840232.582438,
-    "seen": 1789024800.511391,
+    "seen": 1789192504.3489428,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -2191,7 +2191,7 @@
   },
   "supabase/migrations/202609080002_campaign_notes.sql": {
     "mtime": 1788840665.6405127,
-    "seen": 1789024800.5113926,
+    "seen": 1789192504.3489442,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -4087,7 +4087,7 @@
   },
   "public/data/pf2e_feats_mechanics.json": {
     "mtime": 1788936439.4327824,
-    "seen": 1789024800.511189,
+    "seen": 1789192504.3331964,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -11874,9 +11874,63 @@
     "semantic_hash": ""
   },
   "src/SystemSelectorModal.tsx": {
-    "mtime": 1789191527.3257139,
-    "seen": 1789192331.8203278,
-    "ast_hash": "185d25d8f756f8d9b83c94671cc6931f",
+    "mtime": 1789192854.0986571,
+    "seen": 1789193389.4227328,
+    "ast_hash": "e05c03170e28c3480567a1c212c4a2d8",
+    "semantic_hash": ""
+  },
+  ".agents/skills/operator-approval-loop/references/approval-ledger.sql": {
+    "mtime": 1789189211.5286157,
+    "seen": 1789192504.3195136,
+    "ast_hash": "",
+    "semantic_hash": ""
+  },
+  "src/data/ose/ose-engine.test.ts": {
+    "mtime": 1789192720.1816742,
+    "seen": 1789193389.424677,
+    "ast_hash": "dd945d40d82a9802712eaa470c30d569",
+    "semantic_hash": ""
+  },
+  "src/data/ose/oseClasses.ts": {
+    "mtime": 1789192671.5590532,
+    "seen": 1789193389.4246788,
+    "ast_hash": "82714d8caacb3f1773fdee0ef6a030b7",
+    "semantic_hash": ""
+  },
+  "src/data/ose/oseEquipment.ts": {
+    "mtime": 1789192688.0303714,
+    "seen": 1789193389.4246807,
+    "ast_hash": "20d687285cd5ec220b83cb944a909f54",
+    "semantic_hash": ""
+  },
+  "src/data/ose/oseRaces.ts": {
+    "mtime": 1789192610.2596292,
+    "seen": 1789193389.4246817,
+    "ast_hash": "817dd0c8571b1573be14a9d7967cb36d",
+    "semantic_hash": ""
+  },
+  "src/data/ose/oseRules.ts": {
+    "mtime": 1789192592.0959537,
+    "seen": 1789193389.4246836,
+    "ast_hash": "8bd817d628d801c24b949a053a578553",
+    "semantic_hash": ""
+  },
+  "src/data/ose/oseSpells.ts": {
+    "mtime": 1789192706.2146406,
+    "seen": 1789193389.4246843,
+    "ast_hash": "b966a12eaafe17c2e607e777793bdf18",
+    "semantic_hash": ""
+  },
+  "src/ose/OseCharacterCreatorModal.tsx": {
+    "mtime": 1789192794.0133643,
+    "seen": 1789193389.4262197,
+    "ast_hash": "e2e7839082a84f219e62e664027661db",
+    "semantic_hash": ""
+  },
+  "src/ose/OseCharacterSheet.tsx": {
+    "mtime": 1789192819.4829898,
+    "seen": 1789193389.4262211,
+    "ast_hash": "9d1ab5a69d87bcb3e38bc420e5d8f715",
     "semantic_hash": ""
   }
 }

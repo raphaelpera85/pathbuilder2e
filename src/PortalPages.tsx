@@ -26,6 +26,7 @@ import {
   deleteCharacter,
   listCharacters,
   renameCharacter,
+  saveCharacter,
   type CloudCharacter,
 } from "./services/characters";
 import {
@@ -42,6 +43,8 @@ import { CampaignsPage } from "./CampaignsPage";
 import { getWeaponImageAlt, getWeaponImageUrl } from "./weaponVisuals";
 import { getItemImageAlt, getItemImageUrl } from "./itemVisuals";
 import { SystemSelectorModal } from "./SystemSelectorModal";
+import { OseCharacterCreatorModal, type OseCharacterCreatedData } from "./ose/OseCharacterCreatorModal";
+import { OseCharacterSheet } from "./ose/OseCharacterSheet";
 import type { RPGSystemId } from "./types";
 import "./portal.css";
 
@@ -1032,6 +1035,21 @@ function LibraryPage() {
 
   const [isSystemModalOpen, setIsSystemModalOpen] = useState(false);
   const [selectedSystemFilter, setSelectedSystemFilter] = useState<string>("all");
+  const [isOseWizardOpen, setIsOseWizardOpen] = useState(false);
+  const [activeOseCharacter, setActiveOseCharacter] = useState<OseCharacterCreatedData | null>(null);
+
+  useEffect(() => {
+    const handleOpenWizard = () => setIsOseWizardOpen(true);
+    const handleLoadOse = (e: CustomEvent<OseCharacterCreatedData>) => {
+      if (e.detail) setActiveOseCharacter(e.detail);
+    };
+    window.addEventListener("pathbuilder:open-ose-wizard", handleOpenWizard);
+    window.addEventListener("pathbuilder:load-ose-character", handleLoadOse as EventListener);
+    return () => {
+      window.removeEventListener("pathbuilder:open-ose-wizard", handleOpenWizard);
+      window.removeEventListener("pathbuilder:load-ose-character", handleLoadOse as EventListener);
+    };
+  }, []);
 
   const handleCreateNew = () => {
     setIsSystemModalOpen(true);
@@ -1039,13 +1057,52 @@ function LibraryPage() {
 
   const handleSelectSystem = (systemId: RPGSystemId) => {
     setIsSystemModalOpen(false);
+    if (systemId === "ose") {
+      setIsOseWizardOpen(true);
+      return;
+    }
     (window as any).app?.createNewCharacter(systemId);
     window.location.hash = "#/builder";
   };
 
   const handleLoadCharacter = (char: CloudCharacter) => {
+    const charData = (char.data || {}) as any;
+    const sysId = char.system_id || charData.system_id || charData.systemId;
+    if (sysId === "ose") {
+      setActiveOseCharacter(charData);
+      return;
+    }
     (window as any).app?.loadCharacter(char.data);
     window.location.hash = "#/builder";
+  };
+
+  const handleSaveOseCharacter = async (char: OseCharacterCreatedData) => {
+    try {
+      if (session) {
+        setWorking(char.id);
+        const saved = await saveCharacter(char, session.user);
+        setCharacters((prev) => {
+          const idx = prev.findIndex((c) => (c.character_key || c.id) === char.id);
+          if (idx >= 0) {
+            const next = [...prev];
+            next[idx] = saved;
+            return next;
+          }
+          return [saved, ...prev];
+        });
+        window.dispatchEvent(new Event("pathbuilder:characters-changed"));
+        setNotice(t("saveCurrent"));
+      } else {
+        localStorage.setItem(`ose_guest_${char.id}`, JSON.stringify(char));
+        setNotice("Ficha salva localmente no navegador!");
+      }
+      setActiveOseCharacter(char);
+      setIsOseWizardOpen(false);
+    } catch (err: any) {
+      setError(err?.message || t("saveCharacterFailed"));
+    } finally {
+      setWorking(null);
+    }
   };
 
   const handleDeleteCharacter = async (char: CloudCharacter) => {
@@ -1206,6 +1263,22 @@ function LibraryPage() {
           onClose={() => setIsSystemModalOpen(false)}
           onSelectSystem={handleSelectSystem}
         />
+        <OseCharacterCreatorModal
+          isOpen={isOseWizardOpen}
+          onClose={() => setIsOseWizardOpen(false)}
+          onCharacterCreated={(newChar) => {
+            handleSaveOseCharacter(newChar);
+          }}
+        />
+        {activeOseCharacter && (
+          <OseCharacterSheet
+            character={activeOseCharacter}
+            onCloseSheet={() => setActiveOseCharacter(null)}
+            onUpdateCharacter={(updated: OseCharacterCreatedData) => {
+              handleSaveOseCharacter(updated);
+            }}
+          />
+        )}
       </main>
     );
   }
@@ -1319,6 +1392,26 @@ function LibraryPage() {
             }
             )
           </button>
+          <button
+            type="button"
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+              selectedSystemFilter === "ose" ? "active" : ""
+            }`}
+            style={{
+              backgroundColor: selectedSystemFilter === "ose" ? "#d97706" : "rgba(255, 255, 255, 0.06)",
+              color: selectedSystemFilter === "ose" ? "#ffffff" : "var(--text-color, #f8fafc)",
+              border: "1px solid var(--border-color, #334155)",
+            }}
+            onClick={() => setSelectedSystemFilter("ose")}
+          >
+            🎲 Old-School Essentials (
+            {
+              characters.filter(
+                (c) => (c.system_id || (c.data as any)?.system_id || (c.data as any)?.systemId || "pf2e") === "ose"
+              ).length
+            }
+            )
+          </button>
         </div>
 
         {loading ? (
@@ -1337,8 +1430,8 @@ function LibraryPage() {
             {filteredCharacters.map((char) => {
               const charData = (char.data || {}) as any;
               const systemId = char.system_id || charData.system_id || charData.systemId || "pf2e";
-              const systemBadge = systemId === "dnd5e" ? "🐉 D&D 5e" : systemId === "t20" ? "🛡️ Tormenta 20" : "⚔️ Pathfinder 2e";
-              const badgeColor = systemId === "dnd5e" ? "#ef4444" : systemId === "t20" ? "#3b82f6" : "#f97316";
+              const systemBadge = systemId === "ose" ? "🎲 OSE" : systemId === "dnd5e" ? "🐉 D&D 5e" : systemId === "t20" ? "🛡️ Tormenta 20" : "⚔️ Pathfinder 2e";
+              const badgeColor = systemId === "ose" ? "#d97706" : systemId === "dnd5e" ? "#ef4444" : systemId === "t20" ? "#3b82f6" : "#f97316";
 
               return (
                 <article className="char-library-card" key={char.id}>
@@ -1410,6 +1503,24 @@ function LibraryPage() {
         onClose={() => setIsSystemModalOpen(false)}
         onSelectSystem={handleSelectSystem}
       />
+
+      <OseCharacterCreatorModal
+        isOpen={isOseWizardOpen}
+        onClose={() => setIsOseWizardOpen(false)}
+        onCharacterCreated={(newChar) => {
+          handleSaveOseCharacter(newChar);
+        }}
+      />
+
+      {activeOseCharacter && (
+        <OseCharacterSheet
+          character={activeOseCharacter}
+          onCloseSheet={() => setActiveOseCharacter(null)}
+          onUpdateCharacter={(updated: OseCharacterCreatedData) => {
+            handleSaveOseCharacter(updated);
+          }}
+        />
+      )}
     </main>
   );
 }

@@ -85,6 +85,7 @@ const messages = {
     systemPf2e: "Pathfinder 2e", systemPf2eDesc: "Regras Remaster e Legado completas, 28 classes, talentos e magias.",
     systemDnd5e: "D&D 5e", systemDnd5eDesc: "Dungeons & Dragons 5ª Edição clássica e regras 2024.",
     systemT20: "Tormenta 20", systemT20Desc: "O maior RPG brasileiro no universo de Arton (Edição Jogo do Ano).",
+    systemOse: "Old-School Essentials", systemOseDesc: "RPG clássico e retroclone B/X com opções de Fantasia Avançada.",
     filterAllSystems: "Todos os Sistemas", systemLabel: "Sistema", createSheetForSystem: "Criar Ficha",
   },
   en: {
@@ -166,6 +167,7 @@ const messages = {
     systemPf2e: "Pathfinder 2e", systemPf2eDesc: "Full Remaster and Legacy rules, 28 classes, feats, and spells.",
     systemDnd5e: "D&D 5e", systemDnd5eDesc: "Dungeons & Dragons 5th Edition classic and 2024 rules.",
     systemT20: "Tormenta 20", systemT20Desc: "The premier Brazilian RPG in the world of Arton (Game of the Year Edition).",
+    systemOse: "Old-School Essentials", systemOseDesc: "Classic adventure RPG and B/X retroclone with Advanced Fantasy options.",
     filterAllSystems: "All Systems", systemLabel: "System", createSheetForSystem: "Create Sheet",
   },
   es: {
@@ -247,6 +249,7 @@ const messages = {
     systemPf2e: "Pathfinder 2e", systemPf2eDesc: "Reglas Remaster y Legado completas, 28 clases, dotes y conjuros.",
     systemDnd5e: "D&D 5e", systemDnd5eDesc: "Dungeons & Dragons 5ª Edición clásica y reglas 2024.",
     systemT20: "Tormenta 20", systemT20Desc: "El principal juego de rol brasileño en Arton (Edición Juego del Año).",
+    systemOse: "Old-School Essentials", systemOseDesc: "Juego de rol clásico y retroclon B/X con opciones de Fantasía Avanzada.",
     filterAllSystems: "Todos los Sistemas", systemLabel: "Sistema", createSheetForSystem: "Crear Ficha",
   },
 } as const;

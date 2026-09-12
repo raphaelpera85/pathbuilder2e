@@ -86,6 +86,12 @@ export function AccountPortal() {
 
   const handleSelectSystem = (systemId: RPGSystemId) => {
     setIsSystemModalOpen(false);
+    if (systemId === "ose") {
+      setOpen(false);
+      window.location.hash = "#/library";
+      window.dispatchEvent(new CustomEvent("pathbuilder:open-ose-wizard"));
+      return;
+    }
     (window as any).app?.createNewCharacter(systemId);
     setOpen(false);
     window.location.hash = "#/builder";
@@ -758,6 +764,7 @@ export function AccountPortal() {
                           { id: "pf2e", label: `🛡️ ${t("systemPf2e")}` },
                           { id: "dnd5e", label: `🐉 ${t("systemDnd5e")}` },
                           { id: "t20", label: `⚔️ ${t("systemT20")}` },
+                          { id: "ose", label: `🎲 ${t("systemOse")}` },
                         ].map((sys) => (
                           <button
                             key={sys.id}
@@ -796,6 +803,14 @@ export function AccountPortal() {
                                 <button
                                   className="character-load"
                                   onClick={() => {
+                                    const charData = (character.data || {}) as any;
+                                    const sysId = character.system_id || charData.system_id || charData.systemId;
+                                    if (sysId === "ose") {
+                                      setOpen(false);
+                                      window.location.hash = "#/library";
+                                      window.dispatchEvent(new CustomEvent("pathbuilder:load-ose-character", { detail: charData }));
+                                      return;
+                                    }
                                     (window as any).app?.loadCharacter(character.data);
                                     setOpen(false);
                                     window.location.hash = "#/builder";
@@ -813,7 +828,7 @@ export function AccountPortal() {
                                         padding: "1px 6px",
                                         borderRadius: "4px",
                                         marginRight: "6px",
-                                        background: character.system_id === "dnd5e" ? "#c53030" : character.system_id === "t20" ? "#b7791f" : "#4a5568",
+                                        background: character.system_id === "ose" ? "#d97706" : character.system_id === "dnd5e" ? "#c53030" : character.system_id === "t20" ? "#b7791f" : "#4a5568",
                                         color: "#fff",
                                         verticalAlign: "middle",
                                       }}

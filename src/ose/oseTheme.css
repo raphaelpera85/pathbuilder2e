@@ -1,0 +1,367 @@
+/* ============================================================================
+   Old-School Essentials (OSE) - Tema e Estilos OSR
+   Visual clássico, estética de pergaminho limpo e cartões retrô elegantes
+   ============================================================================ */
+
+:root {
+  --ose-bg: #1c1917;
+  --ose-card-bg: #292524;
+  --ose-border: #44403c;
+  --ose-accent: #d97706;
+  --ose-accent-hover: #b45309;
+  --ose-gold: #f59e0b;
+  --ose-text: #f5f5f4;
+  --ose-text-muted: #a8a29e;
+  --ose-parchment: #fef3c7;
+  --ose-parchment-border: #d97706;
+  --ose-dice-bg: #451a03;
+  --ose-save-bg: rgba(217, 119, 6, 0.12);
+}
+
+[data-theme="light"] {
+  --ose-bg: #f5efe6;
+  --ose-card-bg: #fffdf9;
+  --ose-border: #d6c7b2;
+  --ose-accent: #92400e;
+  --ose-accent-hover: #78350f;
+  --ose-gold: #b45309;
+  --ose-text: #292524;
+  --ose-text-muted: #78716c;
+  --ose-parchment: #fefce8;
+  --ose-parchment-border: #b45309;
+  --ose-dice-bg: #fef3c7;
+  --ose-save-bg: rgba(146, 64, 14, 0.08);
+}
+
+.ose-wizard-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 16px;
+  overflow-y: auto;
+  backdrop-filter: blur(4px);
+}
+
+.ose-wizard-modal {
+  background: var(--ose-bg);
+  border: 2px solid var(--ose-border);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 920px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  color: var(--ose-text);
+  overflow: hidden;
+}
+
+.ose-wizard-header {
+  padding: 18px 24px;
+  border-bottom: 2px solid var(--ose-border);
+  background: var(--ose-card-bg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ose-wizard-header h2 {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ose-gold);
+}
+
+.ose-step-tabs {
+  display: flex;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid var(--ose-border);
+  overflow-x: auto;
+}
+
+.ose-step-tab {
+  padding: 10px 16px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ose-text-muted);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s;
+}
+
+.ose-step-tab.active {
+  color: var(--ose-gold);
+  border-bottom-color: var(--ose-gold);
+  background: rgba(245, 158, 11, 0.08);
+}
+
+.ose-wizard-body {
+  padding: 24px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.ose-wizard-footer {
+  padding: 16px 24px;
+  border-top: 1px solid var(--ose-border);
+  background: var(--ose-card-bg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ose-btn {
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid var(--ose-border);
+  background: var(--ose-card-bg);
+  color: var(--ose-text);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ose-btn:hover:not(:disabled) {
+  border-color: var(--ose-gold);
+  background: rgba(245, 158, 11, 0.12);
+}
+
+.ose-btn-primary {
+  background: var(--ose-accent);
+  color: #ffffff;
+  border-color: var(--ose-accent-hover);
+}
+
+.ose-btn-primary:hover:not(:disabled) {
+  background: var(--ose-accent-hover);
+  border-color: var(--ose-gold);
+}
+
+.ose-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Ficha OSE */
+.ose-sheet-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+  background: var(--ose-bg);
+  color: var(--ose-text);
+  font-family: inherit;
+}
+
+.ose-sheet-header {
+  border: 2px solid var(--ose-border);
+  border-radius: 8px;
+  background: var(--ose-card-bg);
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.ose-header-field label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--ose-gold);
+  margin-bottom: 4px;
+}
+
+.ose-header-field input,
+.ose-header-field select {
+  width: 100%;
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--ose-border);
+  background: var(--ose-bg);
+  color: var(--ose-text);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.ose-sheet-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr 320px;
+  gap: 18px;
+}
+
+@media (max-width: 1080px) {
+  .ose-sheet-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ose-card {
+  border: 1px solid var(--ose-border);
+  border-radius: 8px;
+  background: var(--ose-card-bg);
+  padding: 14px 16px;
+  margin-bottom: 16px;
+}
+
+.ose-card-title {
+  margin: 0 0 12px 0;
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--ose-gold);
+  letter-spacing: 0.5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--ose-border);
+  padding-bottom: 6px;
+}
+
+/* Atributos 3d6 */
+.ose-stat-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.15);
+  margin-bottom: 8px;
+  border: 1px solid var(--ose-border);
+}
+
+.ose-stat-name {
+  font-weight: 800;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+
+.ose-stat-val {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: var(--ose-gold);
+  width: 38px;
+  text-align: center;
+}
+
+.ose-stat-mod {
+  font-size: 0.85rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: var(--ose-dice-bg);
+  color: var(--ose-gold);
+  min-width: 40px;
+  text-align: center;
+}
+
+/* Saves D W P B S */
+.ose-saves-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  text-align: center;
+}
+
+.ose-save-item {
+  padding: 8px 4px;
+  border-radius: 6px;
+  background: var(--ose-save-bg);
+  border: 1px solid var(--ose-border);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.ose-save-item:hover {
+  border-color: var(--ose-gold);
+  transform: translateY(-2px);
+}
+
+.ose-save-letter {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--ose-gold);
+  text-transform: uppercase;
+}
+
+.ose-save-num {
+  font-size: 1.25rem;
+  font-weight: 900;
+  margin: 4px 0;
+}
+
+.ose-save-name {
+  font-size: 0.65rem;
+  color: var(--ose-text-muted);
+  line-height: 1.1;
+}
+
+/* Matriz de Ataque */
+.ose-attack-matrix-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+  text-align: center;
+}
+
+.ose-attack-matrix-table th,
+.ose-attack-matrix-table td {
+  border: 1px solid var(--ose-border);
+  padding: 4px 2px;
+}
+
+.ose-attack-matrix-table th {
+  background: rgba(0, 0, 0, 0.25);
+  color: var(--ose-gold);
+}
+
+/* Perícias de Ladrão */
+.ose-thief-skills-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ose-skill-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--ose-border);
+}
+
+.ose-skill-row button {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border: 1px solid var(--ose-border);
+  background: var(--ose-bg);
+  color: var(--ose-gold);
+  cursor: pointer;
+}
+
+.ose-skill-row button:hover {
+  background: var(--ose-gold);
+  color: #000;
+}
