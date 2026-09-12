@@ -21,7 +21,22 @@ export type PickerType =
 
 export type LocalizedString = Partial<Record<"pt-BR" | "en" | "es", string>>;
 
+export type RPGSystemId = "pf2e" | "dnd5e" | "t20" | (string & {});
+
+export interface IRPGSystem {
+  id: RPGSystemId;
+  name: LocalizedString;
+  description: LocalizedString;
+  icon: string;
+  badgeColor: string;
+  defaultRuleset: string;
+  supportedRulesets: string[];
+  active: boolean;
+}
+
 export interface IPickerItemData {
+  systemId?: RPGSystemId;
+  system_id?: RPGSystemId;
   name?: string;
   description?: string;
   hp?: number;
@@ -172,6 +187,8 @@ export interface ICharacterDocument {
   id: string;
   name: string;
   level: number;
+  system_id?: string;
+  systemId?: string;
   ancestry: string;
   heritage: string;
   background: string;
@@ -310,7 +327,7 @@ export interface IPickerController {
   consumePendingPicker?(): { type: PickerType; options?: IPickerOpenOptions } | null;
   getCurrentCharacter(): Record<string, unknown>;
   loadCharacter(character: Record<string, unknown>): void;
-  createNewCharacter(): void;
+  createNewCharacter(systemId?: string): void;
   [key: string]: any;
 }
 

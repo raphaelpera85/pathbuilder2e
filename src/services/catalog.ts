@@ -1,5 +1,97 @@
 import { supabase, isSupabaseConfigured } from "../lib/supabase";
-import type { PickerItem, PickerType } from "../types";
+import type { PickerItem, PickerType, IRPGSystem, RPGSystemId } from "../types";
+
+export const DEFAULT_RPG_SYSTEMS: IRPGSystem[] = [
+  {
+    id: "pf2e",
+    name: {
+      "pt-BR": "Pathfinder 2e",
+      en: "Pathfinder 2e",
+      es: "Pathfinder 2e",
+    },
+    description: {
+      "pt-BR": "Sistema oficial Remaster e Legado, com 28 classes, talentos, magias e regras completas.",
+      en: "Official Remaster and Legacy rules, 28 classes, feats, spells, and full mechanics.",
+      es: "Sistema oficial Remaster y Legacy, 28 clases, dotes, conjuros y mecánicas completas.",
+    },
+    icon: "⚔️",
+    badgeColor: "#f97316",
+    defaultRuleset: "remaster",
+    supportedRulesets: ["remaster", "legacy"],
+    active: true,
+  },
+  {
+    id: "dnd5e",
+    name: {
+      "pt-BR": "D&D 5e",
+      en: "D&D 5e",
+      es: "D&D 5e",
+    },
+    description: {
+      "pt-BR": "Dungeons & Dragons 5ª Edição clássica e regras 2024.",
+      en: "Dungeons & Dragons 5th Edition classic and 2024 rules.",
+      es: "Dungeons & Dragons 5ª Edición clásica y reglas 2024.",
+    },
+    icon: "🐉",
+    badgeColor: "#ef4444",
+    defaultRuleset: "standard",
+    supportedRulesets: ["standard", "2024"],
+    active: true,
+  },
+  {
+    id: "t20",
+    name: {
+      "pt-BR": "Tormenta 20",
+      en: "Tormenta 20",
+      es: "Tormenta 20",
+    },
+    description: {
+      "pt-BR": "O maior RPG brasileiro no mundo de Arton, Edição Jogo do Ano.",
+      en: "The premier Brazilian RPG set in the world of Arton, Game of the Year Edition.",
+      es: "El principal juego de rol brasileño en Arton, Edición Juego del Año.",
+    },
+    icon: "🛡️",
+    badgeColor: "#3b82f6",
+    defaultRuleset: "padrao",
+    supportedRulesets: ["padrao", "jogo_do_ano"],
+    active: true,
+  },
+];
+
+export async function fetchCatalogSystems(): Promise<IRPGSystem[]> {
+  if (isSupabaseConfigured && supabase) {
+    try {
+      const { data, error } = await supabase
+        .from("catalog_systems")
+        .select("*")
+        .eq("active", true)
+        .order("id");
+      if (!error && Array.isArray(data) && data.length > 0) {
+        return data.map((row: any) => ({
+          id: row.id as RPGSystemId,
+          name: {
+            "pt-BR": row.name_pt,
+            en: row.name_en || row.name_pt,
+            es: row.name_es || row.name_pt,
+          },
+          description: {
+            "pt-BR": row.description_pt,
+            en: row.description_en || row.description_pt,
+            es: row.description_es || row.description_pt,
+          },
+          icon: row.icon || "⚔️",
+          badgeColor: row.badge_color || "#f97316",
+          defaultRuleset: row.default_ruleset || "remaster",
+          supportedRulesets: row.supported_rulesets || ["remaster"],
+          active: row.active ?? true,
+        }));
+      }
+    } catch (err) {
+      console.warn("[Catalog] Falha ao consultar catalog_systems, usando lista padrão:", err);
+    }
+  }
+  return DEFAULT_RPG_SYSTEMS;
+}
 
 export type CatalogTableName =
   | "catalog_ancestries"
@@ -45,6 +137,7 @@ export const PICKER_TYPE_TO_TABLE: Record<PickerType, CatalogTableName> = {
 
 export interface CatalogItemRecord {
   id: string;
+  system_id?: string;
   name_pt: string;
   name_en?: string | null;
   name_es?: string | null;
@@ -68,8 +161,11 @@ export interface CatalogSyncStatus {
   tableCounts?: Partial<Record<PickerType, number>>;
 }
 
-const CACHE_PREFIX = "pb2e_catalog_cache_";
-const inMemoryCache: Partial<Record<PickerType, PickerItem[]>> = {};
+const inMemoryCache: Record<string, Partial<Record<PickerType, PickerItem[]>>> = {};
+
+function getLocalCacheKey(category: PickerType, systemId = "pf2e"): string {
+  return `pb2e_catalog_cache_${systemId}_${category}`;
+}
 
 /**
  * Converte um registro do Supabase para o formato compatível com PickerItem da aplicação.
@@ -88,6 +184,9 @@ export function normalizeSupabaseRecordToPickerItem(record: CatalogItemRecord, c
   };
 
   const extraData = { ...(record.data || {}) };
+  const systemId = record.system_id || "pf2e";
+  extraData.systemId = systemId;
+  extraData.system_id = systemId;
 
   // Normalização de atributos numéricos / campos específicos
   if (record.level !== undefined) extraData.level = record.level;
@@ -134,6 +233,7 @@ export function normalizeSupabaseRecordToPickerItem(record: CatalogItemRecord, c
     summary: summaries["pt-BR"] || summaries.en || "",
     category: record.category || category,
     rarity: record.rarity || "common",
+    system_id: systemId,
   };
 }
 
@@ -156,33 +256,36 @@ export function getLocalRuntimeItems(category: PickerType): PickerItem[] {
 /**
  * Salva itens no cache local (localStorage).
  */
-function saveToLocalCache(category: PickerType, items: PickerItem[]): void {
-  inMemoryCache[category] = items;
+function saveToLocalCache(category: PickerType, items: PickerItem[], systemId = "pf2e"): void {
+  if (!inMemoryCache[systemId]) inMemoryCache[systemId] = {};
+  inMemoryCache[systemId][category] = items;
   if (typeof window === "undefined" || !window.localStorage) return;
   try {
     const cachePayload = {
       timestamp: new Date().toISOString(),
+      systemId,
       items,
     };
-    window.localStorage.setItem(CACHE_PREFIX + category, JSON.stringify(cachePayload));
+    window.localStorage.setItem(getLocalCacheKey(category, systemId), JSON.stringify(cachePayload));
   } catch (err) {
     // Pode falhar se quota excedida (ex: 5MB no localStorage)
-    console.warn(`[Catalog] Não foi possível gravar cache no localStorage para ${category}:`, err);
+    console.warn(`[Catalog] Não foi possível gravar cache no localStorage para ${category} (${systemId}):`, err);
   }
 }
 
 /**
  * Lê itens do cache local (localStorage ou memória).
  */
-function getFromLocalCache(category: PickerType): PickerItem[] | null {
-  if (inMemoryCache[category]) return inMemoryCache[category]!;
+function getFromLocalCache(category: PickerType, systemId = "pf2e"): PickerItem[] | null {
+  if (inMemoryCache[systemId]?.[category]) return inMemoryCache[systemId]![category]!;
   if (typeof window === "undefined" || !window.localStorage) return null;
   try {
-    const cached = window.localStorage.getItem(CACHE_PREFIX + category);
+    const cached = window.localStorage.getItem(getLocalCacheKey(category, systemId));
     if (cached) {
       const parsed = JSON.parse(cached);
       if (Array.isArray(parsed?.items) && parsed.items.length > 0) {
-        inMemoryCache[category] = parsed.items;
+        if (!inMemoryCache[systemId]) inMemoryCache[systemId] = {};
+        inMemoryCache[systemId][category] = parsed.items;
         return parsed.items;
       }
     }
@@ -194,14 +297,15 @@ function getFromLocalCache(category: PickerType): PickerItem[] | null {
 
 /**
  * Busca uma categoria inteira do catálogo com prioridade máxima para o Supabase.
- * 1. Sempre tenta Supabase primeiro com paginação (.range) em blocos de 1000 para tabelas grandes.
+ * 1. Sempre tenta Supabase primeiro com paginação (.range) em blocos de 1000 para tabelas grandes filtrando por system_id.
  * 2. Se falhar ou offline, usa cache local (localStorage/inMemory).
- * 3. Se não houver cache, usa os dados do runtime local (PF2E_DATA / window.app).
+ * 3. Se não houver cache e for pf2e, usa os dados do runtime local (PF2E_DATA / window.app).
  */
 export async function fetchCatalogCategory(
   category: PickerType,
-  options: { forceRemote?: boolean; limit?: number } = {}
+  options: { forceRemote?: boolean; limit?: number; systemId?: string } = {}
 ): Promise<{ items: PickerItem[]; source: "supabase" | "local_cache" | "local_runtime" }> {
+  const systemId = options.systemId || "pf2e";
   const tableName = PICKER_TYPE_TO_TABLE[category];
 
   // 1. Prioridade absoluta: Supabase remoto
@@ -211,7 +315,11 @@ export async function fetchCatalogCategory(
       const PAGE_SIZE = 1000;
 
       if (options.limit && options.limit <= PAGE_SIZE) {
-        const { data, error } = await supabase.from(tableName).select("*").limit(options.limit);
+        const { data, error } = await supabase
+          .from(tableName)
+          .select("*")
+          .eq("system_id", systemId)
+          .limit(options.limit);
         if (!error && Array.isArray(data) && data.length > 0) {
           allRecords = data as CatalogItemRecord[];
         }
@@ -220,9 +328,13 @@ export async function fetchCatalogCategory(
         let fetchMore = true;
         while (fetchMore) {
           const to = from + PAGE_SIZE - 1;
-          const { data, error } = await supabase.from(tableName).select("*").range(from, to);
+          const { data, error } = await supabase
+            .from(tableName)
+            .select("*")
+            .eq("system_id", systemId)
+            .range(from, to);
           if (error) {
-            console.warn(`[Catalog] Aviso ao buscar registros de ${tableName} [${from}-${to}]:`, error.message);
+            console.warn(`[Catalog] Aviso ao buscar registros de ${tableName} [${from}-${to}] (${systemId}):`, error.message);
             break;
           }
           if (Array.isArray(data) && data.length > 0) {
@@ -240,30 +352,33 @@ export async function fetchCatalogCategory(
 
       if (allRecords.length > 0) {
         const normalized = allRecords.map((record) => normalizeSupabaseRecordToPickerItem(record, category));
-        saveToLocalCache(category, normalized);
+        saveToLocalCache(category, normalized, systemId);
         return { items: normalized, source: "supabase" };
       }
     } catch (err) {
-      console.warn(`[Catalog] Falha de rede/Supabase para ${category}, usando fallback local:`, err);
+      console.warn(`[Catalog] Falha de rede/Supabase para ${category} (${systemId}), usando fallback local:`, err);
     }
   }
 
   // Se não estiver forçando busca remota e Supabase estiver indisponível/offline, usa o cache em memória
-  if (inMemoryCache[category] && inMemoryCache[category]!.length > 0) {
-    return { items: inMemoryCache[category]!, source: "local_cache" };
+  if (inMemoryCache[systemId]?.[category] && inMemoryCache[systemId]![category]!.length > 0) {
+    return { items: inMemoryCache[systemId]![category]!, source: "local_cache" };
   }
 
   // Fallback 1: Local storage cache
-  const cached = getFromLocalCache(category);
+  const cached = getFromLocalCache(category, systemId);
   if (cached && cached.length > 0) {
     return { items: cached, source: "local_cache" };
   }
 
-  // Fallback 2: Runtime local data (window.app / PF2E_DATA)
-  const runtimeItems = getLocalRuntimeItems(category);
-  if (runtimeItems.length > 0) {
-    inMemoryCache[category] = runtimeItems;
-    return { items: runtimeItems, source: "local_runtime" };
+  // Fallback 2: Runtime local data (window.app / PF2E_DATA) - apenas para pf2e
+  if (systemId === "pf2e") {
+    const runtimeItems = getLocalRuntimeItems(category);
+    if (runtimeItems.length > 0) {
+      if (!inMemoryCache[systemId]) inMemoryCache[systemId] = {};
+      inMemoryCache[systemId][category] = runtimeItems;
+      return { items: runtimeItems, source: "local_runtime" };
+    }
   }
 
   return { items: [], source: "local_runtime" };
@@ -272,7 +387,7 @@ export async function fetchCatalogCategory(
 /**
  * Busca todas as 18 categorias do catálogo em paralelo/lotes no Supabase.
  */
-export async function fetchAllCatalogCategories(): Promise<Record<PickerType, PickerItem[]>> {
+export async function fetchAllCatalogCategories(systemId = "pf2e"): Promise<Record<PickerType, PickerItem[]>> {
   const categories: PickerType[] = [
     "ancestry", "heritage", "class", "subclass", "background", "archetype",
     "spell", "ritual", "feat", "item", "weapon", "armor", "shield",
@@ -285,7 +400,7 @@ export async function fetchAllCatalogCategories(): Promise<Record<PickerType, Pi
     const batch = categories.slice(i, i + BATCH_SIZE);
     await Promise.all(
       batch.map(async (cat) => {
-        const res = await fetchCatalogCategory(cat);
+        const res = await fetchCatalogCategory(cat, { systemId });
         results[cat] = res.items;
       })
     );
@@ -326,7 +441,8 @@ export async function fetchCatalogTableCounts(): Promise<Record<CatalogTableName
  */
 export async function fetchCatalogItemById(
   category: PickerType,
-  id: string
+  id: string,
+  systemId = "pf2e"
 ): Promise<PickerItem | null> {
   const tableName = PICKER_TYPE_TO_TABLE[category];
   if (isSupabaseConfigured && supabase && tableName) {
@@ -335,6 +451,7 @@ export async function fetchCatalogItemById(
         .from(tableName)
         .select("*")
         .eq("id", id)
+        .eq("system_id", systemId)
         .maybeSingle();
 
       if (!error && data) {
@@ -346,7 +463,7 @@ export async function fetchCatalogItemById(
   }
 
   // Busca no cache ou no runtime
-  const categoryResult = await fetchCatalogCategory(category);
+  const categoryResult = await fetchCatalogCategory(category, { systemId });
   return categoryResult.items.find((item) => item.id === id) || null;
 }
 

@@ -23,6 +23,8 @@ import { isSupabaseConfigured } from "./lib/supabase";
 import "./account.css";
 import { useI18n } from "./i18n";
 import { updateAccountViewState } from "./accountState";
+import { SystemSelectorModal } from "./SystemSelectorModal";
+import type { RPGSystemId } from "./types";
 
 type AuthMode = "signin" | "signup";
 
@@ -34,6 +36,8 @@ export function AccountPortal() {
       ? t("rulesetLegacy")
       : t("rulesetReview");
   const [open, setOpen] = useState(false);
+  const [isSystemModalOpen, setIsSystemModalOpen] = useState(false);
+  const [selectedSystemFilter, setSelectedSystemFilter] = useState<string>("all");
   const [session, setSession] = useState<AuthSession | null>(null);
   const [characters, setCharacters] = useState<CloudCharacter[]>([]);
   const [loading, setLoading] = useState(false);
@@ -69,13 +73,24 @@ export function AccountPortal() {
   useEffect(() => {
     const openAccount = () => setOpen(true);
     const closeAccountOnNavigation = () => setOpen(false);
+    const openSystemSelector = () => setIsSystemModalOpen(true);
     window.addEventListener("pathbuilder:open-account", openAccount);
     window.addEventListener("hashchange", closeAccountOnNavigation);
+    window.addEventListener("pathbuilder:open-system-selector", openSystemSelector);
     return () => {
       window.removeEventListener("pathbuilder:open-account", openAccount);
       window.removeEventListener("hashchange", closeAccountOnNavigation);
+      window.removeEventListener("pathbuilder:open-system-selector", openSystemSelector);
     };
   }, []);
+
+  const handleSelectSystem = (systemId: RPGSystemId) => {
+    setIsSystemModalOpen(false);
+    (window as any).app?.createNewCharacter(systemId);
+    setOpen(false);
+    window.location.hash = "#/builder";
+  };
+
 
   const refreshCharacters = useCallback(async (user?: UserProfile) => {
     const requestId = ++charactersLoadIdRef.current;
@@ -443,6 +458,12 @@ export function AccountPortal() {
     } finally { setWorking(null); }
   };
 
+  const filteredCharacters = selectedSystemFilter === "all"
+    ? characters
+    : characters.filter(
+        (c) => (c.system_id || (c.data as any)?.system_id || (c.data as any)?.systemId || "pf2e") === selectedSystemFilter
+      );
+
   return (
     <>
       <button
@@ -689,9 +710,7 @@ export function AccountPortal() {
                       </button>
                       <button
                         onClick={() => {
-                          (window as any).app?.createNewCharacter();
-                          setOpen(false);
-                          window.location.hash = "#/builder";
+                          setIsSystemModalOpen(true);
                         }}
                         type="button"
                       >
@@ -732,18 +751,46 @@ export function AccountPortal() {
                         <h3 id="library-title">{t("myCharacters")}</h3>
                         <span>{characters.length}</span>
                       </div>
+
+                      <div className="system-filter-tabs" style={{ display: "flex", gap: "6px", marginBottom: "12px", flexWrap: "wrap" }}>
+                        {[
+                          { id: "all", label: `🎲 ${t("filterAllSystems")}` },
+                          { id: "pf2e", label: `🛡️ ${t("systemPf2e")}` },
+                          { id: "dnd5e", label: `🐉 ${t("systemDnd5e")}` },
+                          { id: "t20", label: `⚔️ ${t("systemT20")}` },
+                        ].map((sys) => (
+                          <button
+                            key={sys.id}
+                            type="button"
+                            className={`system-filter-btn ${selectedSystemFilter === sys.id ? "active" : ""}`}
+                            onClick={() => setSelectedSystemFilter(sys.id)}
+                            style={{
+                              padding: "4px 10px",
+                              fontSize: "0.8rem",
+                              borderRadius: "14px",
+                              border: "1px solid var(--border-color, #444)",
+                              background: selectedSystemFilter === sys.id ? "var(--primary-color, #bf263c)" : "transparent",
+                              color: selectedSystemFilter === sys.id ? "#fff" : "inherit",
+                              cursor: "pointer",
+                            }}
+                          >
+                            {sys.label}
+                          </button>
+                        ))}
+                      </div>
+
                       {loading && characters.length === 0 ? (
                         <div className="account-state" role="status">
                           {t("loadingSheets")}
                         </div>
-                      ) : characters.length === 0 ? (
+                      ) : filteredCharacters.length === 0 ? (
                         <div className="account-state">
                           <strong>{t("noSheets")}</strong>
                           <p>{t("noSheetsDescription")}</p>
                         </div>
                       ) : (
                         <div className="character-list">
-                          {characters.map((character) => (
+                          {filteredCharacters.map((character) => (
                             <article className="cloud-character" key={character.id}>
                               <div className="character-card-main">
                                 <button
@@ -755,7 +802,26 @@ export function AccountPortal() {
                                   }}
                                   type="button"
                                 >
-                                  <strong>{character.name}</strong>
+                                  <div>
+                                    <span
+                                      className={`system-badge system-badge-${character.system_id || "pf2e"}`}
+                                      style={{
+                                        display: "inline-block",
+                                        fontSize: "0.68rem",
+                                        fontWeight: "bold",
+                                        textTransform: "uppercase",
+                                        padding: "1px 6px",
+                                        borderRadius: "4px",
+                                        marginRight: "6px",
+                                        background: character.system_id === "dnd5e" ? "#c53030" : character.system_id === "t20" ? "#b7791f" : "#4a5568",
+                                        color: "#fff",
+                                        verticalAlign: "middle",
+                                      }}
+                                    >
+                                      {(character.system_id || (character.data as any)?.system_id || "pf2e").toUpperCase()}
+                                    </span>
+                                    <strong>{character.name}</strong>
+                                  </div>
                                   <span>
                                     {t("level")} {character.level} · {localizedRuleset(character.ruleset)}
                                     {character.data?.class ? ` · ${String(character.data.class).replace(/^class\./, "")}` : ""}
@@ -856,6 +922,11 @@ export function AccountPortal() {
             document.getElementById("react-modal-root") || document.body,
           )
         : null}
+      <SystemSelectorModal
+        isOpen={isSystemModalOpen}
+        onClose={() => setIsSystemModalOpen(false)}
+        onSelectSystem={handleSelectSystem}
+      />
     </>
   );
 }

@@ -81,6 +81,11 @@ const messages = {
     navDownloads: "Downloads de Livros", downloadsKicker: "DOWNLOADS & RECURSOS GOOGLE DRIVE", downloadsTitle: "Download dos Livros e Suplementos PF2e", downloadsIntro: "Baixe diretamente os livros de regras oficiais, suplementos e fichas em PDF hospedados no Google Drive.", downloadPdfDirect: "Baixar PDF direto", viewOnGithub: "Ver no GitHub", openGithubRepo: "Repositório GitHub", openLivrosFolder: "Pasta /livros no GitHub", searchBooks: "Buscar livro por título ou idioma...", allLanguages: "Todos os Idiomas", downloadDirectNote: "Links diretos para download e visualização dos arquivos PDF armazenados no Google Drive.", downloadFromGithub: "Download GitHub", verifiedPdfsCount: "PDFs Oficiais Catalogados", downloadAllNotice: "Os arquivos PDF podem ser baixados individualmente abaixo ou acessados na pasta do Google Drive.",
     openGoogleDriveFolder: "Pasta Google Drive", openInGoogleDrive: "Ver no Google Drive", downloadBlankSheet: "Ficha em Branco (PDF)", downloadMapFolio: "Mapa-Múndi (Poster Map Folio)", mapsKicker: "MAPAS DO CENÁRIO · GOOGLE DRIVE", mapsTitle: "Mapas para download", mapsIntro: "Arquivos PDF de mapas compartilhados diretamente no Google Drive.", mapsLocalNote: "Disponíveis no Google Drive.", mapsServerUnavailable: "Não foi possível carregar os mapas do Google Drive.", mapsCount: "mapas", downloadMap: "Baixar mapa", mapsEmpty: "Nenhum mapa encontrado na pasta configurada.",
     theme: "Tema", themeLight: "Tema Claro", themeDark: "Tema Escuro", adminVisitsRegistered: "Visitas registradas no Supabase", adminUsersRegistered: "Usuários cadastrados no Supabase", adminSheetsSaved: "Fichas salvas no Supabase", adminCampaignsActive: "Campanhas ativas no Supabase", adminItemsRules: "Itens e regras no Supabase", adminRecordsReview: "Registros aguardando revisão", adminAdmins: "administradores", adminTables: "Mesas", adminSupabase: "Supabase", adminQueue: "Fila", tableUser: "Usuário", tableEmail: "E-mail", noRecentAccesses: "Nenhum acesso recente registrado nesta sessão.", noLibraryFiles: "Nenhum arquivo encontrado.", assetsCatalogued: "assets catalogados",
+    selectRpgSystem: "Selecionar Sistema de RPG", selectRpgSystemSubtitle: "Escolha o sistema para criar sua nova ficha de personagem",
+    systemPf2e: "Pathfinder 2e", systemPf2eDesc: "Regras Remaster e Legado completas, 28 classes, talentos e magias.",
+    systemDnd5e: "D&D 5e", systemDnd5eDesc: "Dungeons & Dragons 5ª Edição clássica e regras 2024.",
+    systemT20: "Tormenta 20", systemT20Desc: "O maior RPG brasileiro no universo de Arton (Edição Jogo do Ano).",
+    filterAllSystems: "Todos os Sistemas", systemLabel: "Sistema", createSheetForSystem: "Criar Ficha",
   },
   en: {
     language: "Language", portuguese: "Português", english: "English", spanish: "Español", menu: "Menu",
@@ -157,6 +162,11 @@ const messages = {
     navDownloads: "Book Downloads", downloadsKicker: "GOOGLE DRIVE DOWNLOADS & RESOURCES", downloadsTitle: "PF2e Books & Reference Downloads", downloadsIntro: "Directly download official rulebooks, supplements, and character sheets in PDF format hosted on Google Drive.", downloadPdfDirect: "Direct PDF Download", viewOnGithub: "View on GitHub", openGithubRepo: "GitHub Repository", openLivrosFolder: "GitHub /livros Folder", searchBooks: "Search book by title or language...", allLanguages: "All Languages", downloadDirectNote: "Direct download and viewing links for PDF files stored on Google Drive.", downloadFromGithub: "GitHub Download", verifiedPdfsCount: "Catalogued Official PDFs", downloadAllNotice: "PDF files can be downloaded individually below or accessed in the Google Drive folder.",
     openGoogleDriveFolder: "Google Drive Folder", openInGoogleDrive: "View on Google Drive", downloadBlankSheet: "Blank Character Sheet (PDF)", downloadMapFolio: "World Map (Inner Sea Folio)", mapsKicker: "SETTING MAPS · GOOGLE DRIVE", mapsTitle: "Maps for download", mapsIntro: "Map PDFs shared directly from Google Drive.", mapsLocalNote: "Available on Google Drive.", mapsServerUnavailable: "Could not load maps from Google Drive.", mapsCount: "maps", downloadMap: "Download map", mapsEmpty: "No maps found in the configured folder.",
     theme: "Theme", themeLight: "Light Theme", themeDark: "Dark Theme", adminVisitsRegistered: "Visits recorded in Supabase", adminUsersRegistered: "Users registered in Supabase", adminSheetsSaved: "Sheets saved in Supabase", adminCampaignsActive: "Active campaigns in Supabase", adminItemsRules: "Items and rules in Supabase", adminRecordsReview: "Records awaiting review", adminAdmins: "admins", adminTables: "Tables", adminSupabase: "Supabase", adminQueue: "Queue", tableUser: "User", tableEmail: "Email", noRecentAccesses: "No recent access recorded in this session.", noLibraryFiles: "No files found.", assetsCatalogued: "assets catalogued",
+    selectRpgSystem: "Select RPG System", selectRpgSystemSubtitle: "Choose the system to create your new character sheet",
+    systemPf2e: "Pathfinder 2e", systemPf2eDesc: "Full Remaster and Legacy rules, 28 classes, feats, and spells.",
+    systemDnd5e: "D&D 5e", systemDnd5eDesc: "Dungeons & Dragons 5th Edition classic and 2024 rules.",
+    systemT20: "Tormenta 20", systemT20Desc: "The premier Brazilian RPG in the world of Arton (Game of the Year Edition).",
+    filterAllSystems: "All Systems", systemLabel: "System", createSheetForSystem: "Create Sheet",
   },
   es: {
     language: "Idioma", portuguese: "Português", english: "English", spanish: "Español", menu: "Menú",
@@ -233,6 +243,11 @@ const messages = {
     navDownloads: "Descargas de Libros", downloadsKicker: "DESCARGAS Y RECURSOS GOOGLE DRIVE", downloadsTitle: "Descarga de Libros y Suplementos PF2e", downloadsIntro: "Descarga directamente los libros de reglas oficiales, suplementos y fichas en PDF alojados en Google Drive.", downloadPdfDirect: "Descargar PDF directo", viewOnGithub: "Ver en GitHub", openGithubRepo: "Repositorio GitHub", openLivrosFolder: "Carpeta /livros en GitHub", searchBooks: "Buscar libro por título o idioma...", allLanguages: "Todos os Idiomas", downloadDirectNote: "Enlaces directos para descarga y visualización de los archivos PDF almacenados en Google Drive.", downloadFromGithub: "Descargar GitHub", verifiedPdfsCount: "PDFs Oficiales Catalogados", downloadAllNotice: "Los archivos PDF se pueden descargar individualmente abajo o acceder en la carpeta de Google Drive.",
     openGoogleDriveFolder: "Carpeta de Google Drive", openInGoogleDrive: "Ver en Google Drive", downloadBlankSheet: "Ficha en Blanco (PDF)", downloadMapFolio: "Mapa del Mundo (Inner Sea Folio)", mapsKicker: "MAPAS DEL ESCENARIO · GOOGLE DRIVE", mapsTitle: "Mapas para descargar", mapsIntro: "Archivos PDF de mapas compartidos directamente desde Google Drive.", mapsLocalNote: "Disponibles en Google Drive.", mapsServerUnavailable: "No se pudieron cargar los mapas de Google Drive.", mapsCount: "mapas", downloadMap: "Descargar mapa", mapsEmpty: "No se encontraron mapas en la carpeta configurada.",
     theme: "Tema", themeLight: "Tema Claro", themeDark: "Tema Oscuro", adminVisitsRegistered: "Visitas registradas en Supabase", adminUsersRegistered: "Usuarios registrados en Supabase", adminSheetsSaved: "Fichas guardadas en Supabase", adminCampaignsActive: "Campañas activas en Supabase", adminItemsRules: "Objetos y reglas en Supabase", adminRecordsReview: "Registros pendientes de revisión", adminAdmins: "administradores", adminTables: "Mesas", adminSupabase: "Supabase", adminQueue: "Cola", tableUser: "Usuario", tableEmail: "Correo electrónico", noRecentAccesses: "No hay accesos recientes registrados en esta sesión.", noLibraryFiles: "No se encontraron archivos.", assetsCatalogued: "recursos catalogados",
+    selectRpgSystem: "Seleccionar Sistema de Rol", selectRpgSystemSubtitle: "Elige el sistema para crear tu nueva ficha de personaje",
+    systemPf2e: "Pathfinder 2e", systemPf2eDesc: "Reglas Remaster y Legado completas, 28 clases, dotes y conjuros.",
+    systemDnd5e: "D&D 5e", systemDnd5eDesc: "Dungeons & Dragons 5ª Edición clásica y reglas 2024.",
+    systemT20: "Tormenta 20", systemT20Desc: "El principal juego de rol brasileño en Arton (Edición Juego del Año).",
+    filterAllSystems: "Todos los Sistemas", systemLabel: "Sistema", createSheetForSystem: "Crear Ficha",
   },
 } as const;
 
@@ -308,6 +323,8 @@ export function useI18n() {
   if (!value) throw new Error("useI18n must be used inside I18nProvider");
   return value;
 }
+
+export const useTranslation = useI18n;
 
 export const CLASS_TRANSLATIONS: Record<string, Record<Locale, string>> = {
   "Alquimista": { "pt-BR": "Alquimista", en: "Alchemist", es: "Alquimista" },

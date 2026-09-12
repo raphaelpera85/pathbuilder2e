@@ -41,6 +41,8 @@ import {
 import { CampaignsPage } from "./CampaignsPage";
 import { getWeaponImageAlt, getWeaponImageUrl } from "./weaponVisuals";
 import { getItemImageAlt, getItemImageUrl } from "./itemVisuals";
+import { SystemSelectorModal } from "./SystemSelectorModal";
+import type { RPGSystemId } from "./types";
 import "./portal.css";
 
 type PortalRoute = "builder" | "compendium" | "rules" | "downloads" | "library" | "campaigns" | "privacy" | "admin";
@@ -1028,8 +1030,16 @@ function LibraryPage() {
     }
   };
 
+  const [isSystemModalOpen, setIsSystemModalOpen] = useState(false);
+  const [selectedSystemFilter, setSelectedSystemFilter] = useState<string>("all");
+
   const handleCreateNew = () => {
-    (window as any).app?.createNewCharacter();
+    setIsSystemModalOpen(true);
+  };
+
+  const handleSelectSystem = (systemId: RPGSystemId) => {
+    setIsSystemModalOpen(false);
+    (window as any).app?.createNewCharacter(systemId);
     window.location.hash = "#/builder";
   };
 
@@ -1185,18 +1195,26 @@ function LibraryPage() {
             <button
               type="button"
               className="guest-btn"
-              onClick={() => {
-                (window as any).app?.createNewCharacter();
-                window.location.hash = "#/builder";
-              }}
+              onClick={() => setIsSystemModalOpen(true)}
             >
               {t("createGuestSheet")}
             </button>
           </div>
         </div>
+        <SystemSelectorModal
+          isOpen={isSystemModalOpen}
+          onClose={() => setIsSystemModalOpen(false)}
+          onSelectSystem={handleSelectSystem}
+        />
       </main>
     );
   }
+
+  const filteredCharacters = selectedSystemFilter === "all"
+    ? characters
+    : characters.filter(
+        (c) => (c.system_id || (c.data as any)?.system_id || (c.data as any)?.systemId || "pf2e") === selectedSystemFilter
+      );
 
   return (
     <main className="portal-page library-dashboard-page" id="portal-content" tabIndex={-1}>
@@ -1225,9 +1243,87 @@ function LibraryPage() {
           <span className="char-count-badge">{characters.length}</span>
         </div>
 
+        {/* Filtro por Sistema de RPG */}
+        <div className="system-filter-tabs flex flex-wrap gap-2 my-4" role="tablist" aria-label={t("systemLabel")}>
+          <button
+            type="button"
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+              selectedSystemFilter === "all" ? "active" : ""
+            }`}
+            style={{
+              backgroundColor: selectedSystemFilter === "all" ? "var(--primary-color, #f97316)" : "rgba(255, 255, 255, 0.06)",
+              color: selectedSystemFilter === "all" ? "#ffffff" : "var(--text-color, #f8fafc)",
+              border: "1px solid var(--border-color, #334155)",
+            }}
+            onClick={() => setSelectedSystemFilter("all")}
+          >
+            🎲 {t("filterAllSystems")} ({characters.length})
+          </button>
+          <button
+            type="button"
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+              selectedSystemFilter === "pf2e" ? "active" : ""
+            }`}
+            style={{
+              backgroundColor: selectedSystemFilter === "pf2e" ? "#f97316" : "rgba(255, 255, 255, 0.06)",
+              color: selectedSystemFilter === "pf2e" ? "#ffffff" : "var(--text-color, #f8fafc)",
+              border: "1px solid var(--border-color, #334155)",
+            }}
+            onClick={() => setSelectedSystemFilter("pf2e")}
+          >
+            ⚔️ Pathfinder 2e (
+            {
+              characters.filter(
+                (c) => (c.system_id || (c.data as any)?.system_id || (c.data as any)?.systemId || "pf2e") === "pf2e"
+              ).length
+            }
+            )
+          </button>
+          <button
+            type="button"
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+              selectedSystemFilter === "dnd5e" ? "active" : ""
+            }`}
+            style={{
+              backgroundColor: selectedSystemFilter === "dnd5e" ? "#ef4444" : "rgba(255, 255, 255, 0.06)",
+              color: selectedSystemFilter === "dnd5e" ? "#ffffff" : "var(--text-color, #f8fafc)",
+              border: "1px solid var(--border-color, #334155)",
+            }}
+            onClick={() => setSelectedSystemFilter("dnd5e")}
+          >
+            🐉 D&D 5e (
+            {
+              characters.filter(
+                (c) => (c.system_id || (c.data as any)?.system_id || (c.data as any)?.systemId || "pf2e") === "dnd5e"
+              ).length
+            }
+            )
+          </button>
+          <button
+            type="button"
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+              selectedSystemFilter === "t20" ? "active" : ""
+            }`}
+            style={{
+              backgroundColor: selectedSystemFilter === "t20" ? "#3b82f6" : "rgba(255, 255, 255, 0.06)",
+              color: selectedSystemFilter === "t20" ? "#ffffff" : "var(--text-color, #f8fafc)",
+              border: "1px solid var(--border-color, #334155)",
+            }}
+            onClick={() => setSelectedSystemFilter("t20")}
+          >
+            🛡️ Tormenta 20 (
+            {
+              characters.filter(
+                (c) => (c.system_id || (c.data as any)?.system_id || (c.data as any)?.systemId || "pf2e") === "t20"
+              ).length
+            }
+            )
+          </button>
+        </div>
+
         {loading ? (
           <div className="portal-empty">{t("loadingCharacters")}</div>
-        ) : characters.length === 0 ? (
+        ) : filteredCharacters.length === 0 ? (
           <div className="portal-empty-card">
             <span className="empty-icon">📜</span>
             <h3>{t("noCharactersTitle")}</h3>
@@ -1238,12 +1334,28 @@ function LibraryPage() {
           </div>
         ) : (
           <div className="characters-library-grid">
-            {characters.map((char) => {
+            {filteredCharacters.map((char) => {
               const charData = (char.data || {}) as any;
+              const systemId = char.system_id || charData.system_id || charData.systemId || "pf2e";
+              const systemBadge = systemId === "dnd5e" ? "🐉 D&D 5e" : systemId === "t20" ? "🛡️ Tormenta 20" : "⚔️ Pathfinder 2e";
+              const badgeColor = systemId === "dnd5e" ? "#ef4444" : systemId === "t20" ? "#3b82f6" : "#f97316";
+
               return (
                 <article className="char-library-card" key={char.id}>
                   <div className="char-card-header">
                     <div>
+                      <div className="flex items-center gap-2 mb-1">
+                        <span
+                          className="text-xs px-2 py-0.5 rounded-full font-semibold"
+                          style={{
+                            backgroundColor: `${badgeColor}22`,
+                            color: badgeColor,
+                            border: `1px solid ${badgeColor}44`,
+                          }}
+                        >
+                          {systemBadge}
+                        </span>
+                      </div>
                       <h3>{char.name}</h3>
                       <span className="char-class-ancestry">
                         {charData.ancestry || t("human")} · {charData.class || t("warrior")}
@@ -1292,6 +1404,12 @@ function LibraryPage() {
           </div>
         )}
       </section>
+
+      <SystemSelectorModal
+        isOpen={isSystemModalOpen}
+        onClose={() => setIsSystemModalOpen(false)}
+        onSelectSystem={handleSelectSystem}
+      />
     </main>
   );
 }

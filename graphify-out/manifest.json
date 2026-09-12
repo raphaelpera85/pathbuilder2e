@@ -1,8 +1,8 @@
 {
   "js/app.js": {
-    "mtime": 1789023149.2648137,
-    "seen": 1789024800.5111756,
-    "ast_hash": "241f41b152895d7a11ee4faa77b4ec2c",
+    "mtime": 1789191955.782562,
+    "seen": 1789192331.8039727,
+    "ast_hash": "f23a5d1cc3a380fe104518f769f1d588",
     "semantic_hash": ""
   },
   "js/pdf-lib.min.js": {
@@ -72,9 +72,9 @@
     "semantic_hash": ""
   },
   "src/AccountPortal.tsx": {
-    "mtime": 1788837891.2544615,
-    "seen": 1789024800.511307,
-    "ast_hash": "a287bac0faa25e3ec6b2d0b7b640bd56",
+    "mtime": 1789192213.273535,
+    "seen": 1789192331.8191714,
+    "ast_hash": "16717f510a39111206972a74387dd423",
     "semantic_hash": ""
   },
   "src/CampaignsPage.tsx": {
@@ -114,9 +114,9 @@
     "semantic_hash": ""
   },
   "src/PortalPages.tsx": {
-    "mtime": 1789024766.7044683,
-    "seen": 1789024800.5113146,
-    "ast_hash": "f1b16c64ced1e01e8d738a8a78b5d429",
+    "mtime": 1789192069.5564065,
+    "seen": 1789192331.8203235,
+    "ast_hash": "eb68aa8eb248ede536fc016a88896158",
     "semantic_hash": ""
   },
   "src/accountState.ts": {
@@ -264,9 +264,9 @@
     "semantic_hash": ""
   },
   "src/i18n.tsx": {
-    "mtime": 1789022859.506327,
-    "seen": 1789024800.5113509,
-    "ast_hash": "f5d13c206122d1593c0faffd31b23437",
+    "mtime": 1789191914.9676976,
+    "seen": 1789192331.8259194,
+    "ast_hash": "144ca0a6f86bb2e572b8c4caf49441f9",
     "semantic_hash": ""
   },
   "src/lib/supabase.ts": {
@@ -312,9 +312,9 @@
     "semantic_hash": ""
   },
   "src/services/characters.ts": {
-    "mtime": 1788837891.2524636,
-    "seen": 1789024800.5113688,
-    "ast_hash": "83e2b5003a467153483c94ba831316b6",
+    "mtime": 1789191466.153463,
+    "seen": 1789192331.8279324,
+    "ast_hash": "e69a5fe2cf74a77c20b52582a6207c92",
     "semantic_hash": ""
   },
   "src/services/pdfFormExport.ts": {
@@ -330,9 +330,9 @@
     "semantic_hash": ""
   },
   "src/types.ts": {
-    "mtime": 1788781886.5784485,
-    "seen": 1789024800.5113766,
-    "ast_hash": "5317e278edb64ace0b67a6689965dbba",
+    "mtime": 1789191388.7510176,
+    "seen": 1789192331.8285363,
+    "ast_hash": "72b3d97db4e026fdb75583e3bfcff887",
     "semantic_hash": ""
   },
   "src/utils/economy.test.ts": {
@@ -414,9 +414,9 @@
     "semantic_hash": ""
   },
   "index.html": {
-    "mtime": 1789023110.4970574,
-    "seen": 1789024800.5114725,
-    "ast_hash": "9021e99b329ab071a7a11a093a3d9494",
+    "mtime": 1789192221.6949713,
+    "seen": 1789192331.8995824,
+    "ast_hash": "941d7dbedbe06b0d1ccf3ae40beee116",
     "semantic_hash": ""
   },
   "walkthrough.md": {
@@ -1184,13 +1184,13 @@
   ".planning/graphs/.last-build-snapshot.json": {
     "mtime": 1788464729.817343,
     "seen": 1789024800.5111532,
-    "ast_hash": "ef6f491da32feae134bc9124de1b4498",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   ".planning/graphs/graph.json": {
     "mtime": 1788464729.0434592,
     "seen": 1789024800.5111554,
-    "ast_hash": "37a1fed08f1fe23f931b8bd3d5872d76",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "audit_snapshots/playwright_multicharacter_audit.json": {
@@ -1208,31 +1208,31 @@
   "scripts/extracted_all_feats_master.json": {
     "mtime": 1788294828.5723233,
     "seen": 1789024800.5112681,
-    "ast_hash": "aedbe0f84121ca440a858833364009bd",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202608270001_accounts_and_characters.sql": {
     "mtime": 1787872547.9143429,
     "seen": 1789024800.5113852,
-    "ast_hash": "09a6ff5aff005f10a0232164c4c35dd1",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202608270002_character_limits.sql": {
     "mtime": 1788260933.2179694,
     "seen": 1789024800.5113864,
-    "ast_hash": "5cc6b53f0539ca88e270cdff61adab59",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202608300001_campaigns_and_gm_sharing.sql": {
     "mtime": 1788766556.6440303,
     "seen": 1789024800.5113873,
-    "ast_hash": "d3e7b43e5e991ecb34b60a65d766f341",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/schema_full.sql": {
     "mtime": 1788502759.6775527,
     "seen": 1789024800.5113933,
-    "ast_hash": "611d7059cdc97be54535242524fd6070",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "scripts/generate-catalog-seed.cjs": {
@@ -1254,9 +1254,9 @@
     "semantic_hash": ""
   },
   "src/services/catalog.ts": {
-    "mtime": 1788791045.373026,
-    "seen": 1789024800.5113666,
-    "ast_hash": "96f08c6e45612c728f3a6f548baf64b6",
+    "mtime": 1789191517.887253,
+    "seen": 1789192331.827834,
+    "ast_hash": "49e828122f301f37579405dd84b56c0b",
     "semantic_hash": ""
   },
   ".gemini/settings.json": {
@@ -1310,7 +1310,7 @@
   "scripts/catalog_data/catalog_feats.json": {
     "mtime": 1788828468.057013,
     "seen": 1789024800.511243,
-    "ast_hash": "f7a943f6a75d5cf717c6523d17cee5b2",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "scripts/catalog_data/catalog_heritages.json": {
@@ -1352,7 +1352,7 @@
   "supabase/migrations/202609040001_catalog_tables.sql": {
     "mtime": 1788493864.528052,
     "seen": 1789024800.5113883,
-    "ast_hash": "e1efbbfe525c348eaf4b443d6754e7c6",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "scripts/catalog_data/catalog_armors.json": {
@@ -1382,43 +1382,43 @@
   "supabase/seed_catalog.sql": {
     "mtime": 1788832017.4651766,
     "seen": 1789024800.5113945,
-    "ast_hash": "8417d28bad83f902838525286ca047ba",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/seeds/01_ancestries_classes_items.sql": {
     "mtime": 1788828468.062582,
     "seen": 1789024800.5113957,
-    "ast_hash": "39954ee92adb23cebc53d97d6c9cb363",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/seeds/02_heritages_subclasses_backgrounds_archetypes.sql": {
     "mtime": 1788828468.06458,
     "seen": 1789024800.5113966,
-    "ast_hash": "898d597f186ade370779d93e9789eb8c",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/seeds/03_spells_rituals_actions_conditions_pets.sql": {
     "mtime": 1788828468.068148,
     "seen": 1789024800.5113978,
-    "ast_hash": "0307f3e18918376ff0d284687f9edd26",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/seeds/04_weapons_armors_shields_formulas.sql": {
     "mtime": 1788832017.4789102,
     "seen": 1789024800.511399,
-    "ast_hash": "bd878eb173110258fd034f36fdeaf852",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/seeds/05_feats_part1.sql": {
     "mtime": 1788828468.0721307,
     "seen": 1789024800.5114,
-    "ast_hash": "630b61e66a467f12fb3499f42604efe9",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/seeds/06_feats_part2.sql": {
     "mtime": 1788828468.0761144,
     "seen": 1789024800.5114012,
-    "ast_hash": "25c4ed52c86cf826cb1934da133a8b2c",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   ".agents/skills/supabase-postgres-best-practices/CHANGELOG.md": {
@@ -1676,7 +1676,7 @@
   "supabase/migrations/202609040002_site_visits_and_profile_email.sql": {
     "mtime": 1788500807.9926589,
     "seen": 1789024800.51139,
-    "ast_hash": "3fc20cc60001637244ece8d5c2c06fdb",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   ".agents/rules/pathbuilder-conventions.md": {
@@ -2180,7 +2180,7 @@
   "supabase/migrations/202609080001_campaigns_realtime.sql": {
     "mtime": 1788840232.582438,
     "seen": 1789024800.511391,
-    "ast_hash": "1cb66d8079ce07e7783d76c8a962fe42",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "scripts/audit-supabase-campaigns-authenticated.cjs": {
@@ -2192,7 +2192,7 @@
   "supabase/migrations/202609080002_campaign_notes.sql": {
     "mtime": 1788840665.6405127,
     "seen": 1789024800.5113926,
-    "ast_hash": "4849ef6eecae1aad994367267b4531a5",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "public/weapon-images/weapon-punch-dagger.png": {
@@ -4088,7 +4088,7 @@
   "public/data/pf2e_feats_mechanics.json": {
     "mtime": 1788936439.4327824,
     "seen": 1789024800.511189,
-    "ast_hash": "1d9a58355cf83c874ada4225692f0a3b",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "scripts/sync-item-specific-images-to-supabase.cjs": {
@@ -11871,6 +11871,12 @@
     "mtime": 1789189211.5816944,
     "seen": 1789190931.1843452,
     "ast_hash": "c7b21b01899caa0c81bfe497e656a5ba",
+    "semantic_hash": ""
+  },
+  "src/SystemSelectorModal.tsx": {
+    "mtime": 1789191527.3257139,
+    "seen": 1789192331.8203278,
+    "ast_hash": "185d25d8f756f8d9b83c94671cc6931f",
     "semantic_hash": ""
   }
 }

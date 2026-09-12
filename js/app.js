@@ -7677,18 +7677,21 @@ class PathbuilderApp {
     }
   }
 
-  createNewCharacter() {
+  createNewCharacter(systemId = "pf2e") {
     const locale = this.getLocale();
+    const cleanSystemId = typeof systemId === "string" && systemId.trim() ? systemId.trim() : "pf2e";
     this.character = {
       id: "char_" + Date.now(),
+      system_id: cleanSystemId,
+      systemId: cleanSystemId,
       name: locale === "en" ? "New Hero" : locale === "es" ? "Nuevo Héroe" : "Novo Herói",
       level: 1,
-      ruleset: "remaster",
+      ruleset: cleanSystemId === "dnd5e" ? "standard" : cleanSystemId === "t20" ? "padrao" : "remaster",
       ancestry: "Humano",
-      heritage: "Humano Versátil",
-      class: "Guerreiro (Fighter)",
+      heritage: cleanSystemId === "pf2e" ? "Humano Versátil" : "",
+      class: cleanSystemId === "t20" ? "Guerreiro" : "Guerreiro (Fighter)",
       background: "Guarda da Cidade",
-      subclass: "Escudo e Lâmina",
+      subclass: cleanSystemId === "pf2e" ? "Escudo e Lâmina" : "",
       patron: "",
       wizardThesis: "",
       mystery: "",

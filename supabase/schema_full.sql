@@ -68,10 +68,61 @@ create unique index if not exists profiles_username_lower_unique
 create index if not exists profiles_email_idx
   on public.profiles (lower(email));
 
--- 2.2. PERSONAGENS E FICHAS
+-- 2.2. SISTEMAS DE RPG (CATALOG_SYSTEMS)
+create table if not exists public.catalog_systems (
+  id                  text primary key check (char_length(id) between 2 and 32),
+  name_pt             text not null,
+  name_en             text not null,
+  name_es             text not null,
+  description_pt      text,
+  description_en      text,
+  description_es      text,
+  icon                text not null default '⚔️',
+  badge_color         text not null default '#f97316',
+  default_ruleset     text not null default 'remaster',
+  supported_rulesets  text[] not null default '{remaster,legacy}',
+  active              boolean not null default true,
+  created_at          timestamptz not null default now(),
+  updated_at          timestamptz not null default now()
+);
+
+-- Inserções padrão idempotentes dos sistemas suportados
+insert into public.catalog_systems (
+  id, name_pt, name_en, name_es,
+  description_pt, description_en, description_es,
+  icon, badge_color, default_ruleset, supported_rulesets, active
+) values
+  ('pf2e', 'Pathfinder 2e', 'Pathfinder 2e', 'Pathfinder 2e',
+   'Sistema oficial Remaster e Legado, com 28 classes, talentos, magias e regras completas.',
+   'Official Remaster and Legacy rules, 28 classes, feats, spells, and full mechanics.',
+   'Sistema oficial Remaster y Legacy, 28 clases, dotes, conjuros y mecánicas completas.',
+   '⚔️', '#f97316', 'remaster', array['remaster', 'legacy'], true),
+  ('dnd5e', 'D&D 5e', 'D&D 5e', 'D&D 5e',
+   'Dungeons & Dragons 5ª Edição clássica e regras 2024.',
+   'Dungeons & Dragons 5th Edition classic and 2024 rules.',
+   'Dungeons & Dragons 5ª Edición clásica y reglas 2024.',
+   '🐉', '#ef4444', 'standard', array['standard', '2024'], true),
+  ('t20', 'Tormenta 20', 'Tormenta 20', 'Tormenta 20',
+   'O maior RPG brasileiro no mundo de Arton, Edição Jogo do Ano.',
+   'The premier Brazilian RPG set in the world of Arton, Game of the Year Edition.',
+   'El principal juego de rol brasileño en Arton, Edición Juego del Año.',
+   '🛡️', '#3b82f6', 'padrao', array['padrao', 'jogo_do_ano'], true)
+on conflict (id) do update set
+  name_pt = excluded.name_pt,
+  name_en = excluded.name_en,
+  name_es = excluded.name_es,
+  description_pt = excluded.description_pt,
+  description_en = excluded.description_en,
+  description_es = excluded.description_es,
+  icon = excluded.icon,
+  badge_color = excluded.badge_color,
+  active = excluded.active;
+
+-- 2.3. PERSONAGENS E FICHAS
 create table if not exists public.characters (
   id            uuid primary key default gen_random_uuid(),
   user_id       uuid not null references auth.users(id) on delete cascade,
+  system_id     text not null default 'pf2e' references public.catalog_systems(id),
   character_key text not null check (char_length(character_key) between 1 and 160),
   name          text not null check (char_length(trim(name)) between 1 and 120),
   level         smallint not null default 1 check (level between 1 and 20),
@@ -87,13 +138,22 @@ create table if not exists public.characters (
   unique (user_id, character_key)
 );
 
+-- Garante coluna system_id se a tabela já existia
+alter table public.characters add column if not exists system_id text not null default 'pf2e' references public.catalog_systems(id);
+
 create index if not exists characters_user_updated_idx
   on public.characters (user_id, updated_at desc);
 
 create index if not exists characters_gm_email_lower_idx
   on public.characters (lower(gm_email));
 
--- 2.3. HISTÓRICO DE REVISÕES DAS FICHAS
+create index if not exists idx_characters_system_id
+  on public.characters (system_id);
+
+create index if not exists idx_characters_user_system
+  on public.characters (user_id, system_id);
+
+-- 2.4. HISTÓRICO DE REVISÕES DAS FICHAS
 create table if not exists public.character_revisions (
   id           uuid primary key default gen_random_uuid(),
   character_id uuid not null references public.characters(id) on delete cascade,
@@ -108,10 +168,11 @@ create table if not exists public.character_revisions (
 create index if not exists character_revisions_owner_saved_idx
   on public.character_revisions (user_id, character_id, saved_at desc);
 
--- 2.4. CAMPANHAS / MESAS DO MESTRE
+-- 2.5. CAMPANHAS / MESAS DO MESTRE
 create table if not exists public.campaigns (
   id             uuid primary key default gen_random_uuid(),
   gm_id          uuid not null references auth.users(id) on delete cascade,
+  system_id      text not null default 'pf2e' references public.catalog_systems(id),
   gm_email       text not null,
   title          text not null check (char_length(trim(title)) between 1 and 160),
   description    text,
@@ -124,10 +185,16 @@ create table if not exists public.campaigns (
   updated_at     timestamptz not null default now()
 );
 
+-- Garante coluna system_id se a tabela já existia
+alter table public.campaigns add column if not exists system_id text not null default 'pf2e' references public.catalog_systems(id);
+
 create index if not exists campaigns_gm_updated_idx
   on public.campaigns (gm_id, updated_at desc);
 
--- 2.5. REGISTRO DE ACESSOS / VISITAS AO SITE
+create index if not exists idx_campaigns_system_id
+  on public.campaigns (system_id);
+
+-- 2.6. REGISTRO DE ACESSOS / VISITAS AO SITE
 create table if not exists public.site_visits (
   id         uuid primary key default gen_random_uuid(),
   route      text,
@@ -162,6 +229,11 @@ for each row execute function public.set_updated_at();
 drop trigger if exists campaigns_set_updated_at on public.campaigns;
 create trigger campaigns_set_updated_at
 before update on public.campaigns
+for each row execute function public.set_updated_at();
+
+drop trigger if exists trg_catalog_systems_updated_at on public.catalog_systems;
+create trigger trg_catalog_systems_updated_at
+before update on public.catalog_systems
 for each row execute function public.set_updated_at();
 
 -- ==============================================================================
@@ -352,6 +424,20 @@ drop policy if exists "site_visits_select_admin" on public.site_visits;
 create policy "site_visits_select_admin"
 on public.site_visits for select
 using (public.is_admin() or auth.role() = 'service_role');
+
+-- Políticas: catalog_systems (leitura pública, escrita admin)
+alter table public.catalog_systems enable row level security;
+
+drop policy if exists "catalog_systems_read_public" on public.catalog_systems;
+create policy "catalog_systems_read_public"
+on public.catalog_systems for select
+using (true);
+
+drop policy if exists "catalog_systems_admin_write" on public.catalog_systems;
+create policy "catalog_systems_admin_write"
+on public.catalog_systems for all
+using (public.is_admin() or auth.role() = 'service_role')
+with check (public.is_admin() or auth.role() = 'service_role');
 
 -- ==============================================================================
 -- 6. TABELAS DE CATÁLOGO DO PATHFINDER 2E REMASTER (18 tabelas)
@@ -843,6 +929,11 @@ begin
       using (public.is_admin() or auth.role() = ''service_role'')
       with check (public.is_admin() or auth.role() = ''service_role'');
     ', tbl || '_admin_write', tbl, tbl || '_admin_write', tbl);
+
+    -- Garante coluna system_id e índices para suporte multi-sistema
+    execute format('alter table public.%I add column if not exists system_id text not null default %L references public.catalog_systems(id);', tbl, 'pf2e');
+    execute format('create index if not exists %I on public.%I (system_id);', 'idx_' || tbl || '_system', tbl);
+    execute format('create index if not exists %I on public.%I (system_id, ruleset);', 'idx_' || tbl || '_system_ruleset', tbl);
 
     -- Trigger de updated_at
     execute format('

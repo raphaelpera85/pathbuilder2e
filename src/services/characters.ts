@@ -6,6 +6,8 @@ export interface CharacterData extends Record<string, unknown> {
   id: string;
   name: string;
   level: number;
+  system_id?: string;
+  systemId?: string;
   ruleset?: "remaster" | "legacy" | "both" | "needs_review";
   gmEmail?: string;
   gm_email?: string;
@@ -113,6 +115,7 @@ export function normalizeCharacterRuleset(value: unknown): CharacterRuleset {
 export interface CloudCharacter {
   id: string;
   user_id: string;
+  system_id: string;
   character_key: string;
   name: string;
   level: number;
@@ -152,6 +155,9 @@ export function validateCharacter(value: unknown): CharacterData {
   if (serialized.length > 1_000_000) {
     throw new Error("A ficha excede o limite de 1 MB.");
   }
+  const rawSystem = (typeof candidate.system_id === "string" && candidate.system_id.trim()) ||
+                    (typeof candidate.systemId === "string" && candidate.systemId.trim()) ||
+                    "pf2e";
   return {
     ...structuredClone(candidate),
     id: typeof candidate.id === "string" && candidate.id.trim()
@@ -159,6 +165,8 @@ export function validateCharacter(value: unknown): CharacterData {
       : `personagem_${globalThis.crypto?.randomUUID ? globalThis.crypto.randomUUID().slice(0, 8) : Date.now()}`,
     name: candidate.name.trim(),
     level,
+    system_id: rawSystem,
+    systemId: rawSystem,
     ruleset: normalizeCharacterRuleset(candidate.ruleset),
     gmEmail: typeof candidate.gmEmail === "string" ? candidate.gmEmail.trim() : (typeof candidate.gm_email === "string" ? candidate.gm_email.trim() : undefined),
   } as CharacterData;
@@ -168,11 +176,15 @@ export const assertSafeCharacterDocument = validateCharacter;
 
 export function toCharacterPayload(character: CharacterData, user: { id: string; email?: string; username?: string }) {
   const ruleset = normalizeCharacterRuleset(character.ruleset);
+  const systemId = (typeof character.system_id === "string" && character.system_id.trim()) ||
+                   (typeof character.systemId === "string" && character.systemId.trim()) ||
+                   "pf2e";
   const gmEmail = (typeof character.gmEmail === "string" && character.gmEmail.trim()) ||
                   (typeof character.gm_email === "string" && character.gm_email.trim()) ||
                   null;
   return {
     user_id: user.id,
+    system_id: systemId,
     character_key: character.id,
     name: character.name,
     level: character.level,
@@ -180,7 +192,11 @@ export function toCharacterPayload(character: CharacterData, user: { id: string;
     gm_email: gmEmail,
     player_email: user.email ?? null,
     player_name: user.username ?? null,
-    data: character,
+    data: {
+      ...character,
+      system_id: systemId,
+      systemId,
+    },
   };
 }
 
@@ -226,7 +242,8 @@ function getLocalCharacters(userId: string): CloudCharacter[] {
       // complete legacy record; a record explicitly belonging to another
       // account is never accepted or rewritten.
       if (item.user_id !== undefined && item.user_id !== userId) return [];
-      return [{ ...item, user_id: userId } as CloudCharacter];
+      const sysId = item.system_id || item.data?.system_id || item.data?.systemId || "pf2e";
+      return [{ ...item, user_id: userId, system_id: sysId } as CloudCharacter];
     });
   } catch {
     return [];
@@ -271,33 +288,61 @@ export function mergeCharacterLists(remote: CloudCharacter[], local: CloudCharac
   );
 }
 
-export async function listCharacters(currentUser?: UserProfile): Promise<CloudCharacter[]> {
+export async function listCharacters(
+  currentUser?: UserProfile,
+  options?: { systemId?: string }
+): Promise<CloudCharacter[]> {
   const activeUser = currentUser || (await getCurrentSession())?.user;
   if (!activeUser) {
     return [];
   }
 
+  let result: CloudCharacter[] = [];
+
   if (isSupabaseConfigured && supabase) {
     try {
-      const { data, error } = await withRequestTimeout(supabase
+      let query = supabase
         .from("characters")
-        .select("id,user_id,character_key,name,level,ruleset,gm_email,player_email,player_name,data,created_at,updated_at")
-        .eq("user_id", activeUser.id)
-        .order("updated_at", { ascending: false }), 8_000, "A biblioteca demorou para responder. Usando as fichas salvas neste dispositivo.");
-      if (!error && data) {
-        const remote = (data ?? []) as CloudCharacter[];
-        const hydratedRemote = await hydrateRemoteHistory(remote, activeUser.id);
-        return mergeCharacterLists(hydratedRemote, getLocalCharacters(activeUser.id));
+        .select("id,user_id,system_id,character_key,name,level,ruleset,gm_email,player_email,player_name,data,created_at,updated_at")
+        .eq("user_id", activeUser.id);
+
+      if (options?.systemId) {
+        query = query.eq("system_id", options.systemId);
       }
-      if (error) console.warn("Supabase characters query aviso:", error.message);
+
+      const { data, error } = await withRequestTimeout(
+        query.order("updated_at", { ascending: false }),
+        8_000,
+        "A biblioteca demorou para responder. Usando as fichas salvas neste dispositivo."
+      );
+      if (!error && data) {
+        const remote = (data ?? []).map((row) => ({
+          ...row,
+          system_id: row.system_id || (row.data as any)?.system_id || "pf2e",
+        })) as CloudCharacter[];
+        const hydratedRemote = await hydrateRemoteHistory(remote, activeUser.id);
+        result = mergeCharacterLists(hydratedRemote, getLocalCharacters(activeUser.id));
+      } else if (error) {
+        console.warn("Supabase characters query aviso:", error.message);
+      }
     } catch (err) {
       console.warn("Supabase characters fallback para local:", err);
     }
   }
 
-  // Armazenamento local particionado por dono (user_id)
-  const items = getLocalCharacters(activeUser.id);
-  return items.sort((a, b) => characterTimestamp(b.updated_at) - characterTimestamp(a.updated_at));
+  if (result.length === 0) {
+    // Armazenamento local particionado por dono (user_id)
+    const items = getLocalCharacters(activeUser.id);
+    result = items.sort((a, b) => characterTimestamp(b.updated_at) - characterTimestamp(a.updated_at));
+  }
+
+  if (options?.systemId) {
+    result = result.filter(
+      (item) => (item.system_id || item.data?.system_id || item.data?.systemId || "pf2e") === options.systemId
+    );
+  }
+
+  return result;
 }
 
 export async function saveCharacter(
@@ -323,13 +368,16 @@ export async function saveCharacter(
       const { data, error } = await withRequestTimeout(supabase
         .from("characters")
         .upsert(payload, { onConflict: "user_id,character_key" })
-        .select("id,user_id,character_key,name,level,ruleset,gm_email,player_email,player_name,data,created_at,updated_at")
+        .select("id,user_id,system_id,character_key,name,level,ruleset,gm_email,player_email,player_name,data,created_at,updated_at")
         .single(), 8_000, "O salvamento remoto demorou para responder. A ficha será mantida neste dispositivo.");
       if (!error && data) {
         // Mantém uma cópia local mesmo após sucesso remoto. Assim uma falha
         // transitória na próxima leitura não transforma uma biblioteca válida
         // em uma tela vazia ou presa em carregamento.
-        const saved = data as CloudCharacter;
+        const saved = {
+          ...(data as CloudCharacter),
+          system_id: (data as any).system_id || payload.system_id,
+        };
         cacheLocalCharacter(activeUser.id, saved);
         await persistRemoteRevision(saved, savedCharacter.history?.[0]);
         return saved;
@@ -354,6 +402,7 @@ export async function saveCharacter(
   const cloudRecord: CloudCharacter = {
     id: index >= 0 ? existing[index].id : `chr_${globalThis.crypto?.randomUUID ? globalThis.crypto.randomUUID().slice(0, 8) : Date.now()}`,
     user_id: activeUser.id,
+    system_id: payload.system_id,
     character_key: character.id,
     name: character.name,
     level: character.level,
@@ -443,10 +492,15 @@ export async function listCharactersSharedWithGM(gmEmail: string): Promise<Cloud
     try {
       const { data, error } = await withRequestTimeout(supabase
         .from("characters")
-        .select("id,user_id,character_key,name,level,ruleset,gm_email,player_name,player_email,data,created_at,updated_at")
+        .select("id,user_id,system_id,character_key,name,level,ruleset,gm_email,player_name,player_email,data,created_at,updated_at")
         .ilike("gm_email", normalizedEmail)
         .order("updated_at", { ascending: false }), 8_000, "A busca das fichas compartilhadas demorou para responder. Exibindo os dados disponíveis neste dispositivo.");
-      if (!error && data) return data as CloudCharacter[];
+      if (!error && data) {
+        return (data as any[]).map((row) => ({
+          ...row,
+          system_id: row.system_id || row.data?.system_id || "pf2e",
+        })) as CloudCharacter[];
+      }
     } catch (err) {
       console.warn("Falha ao buscar personagens vinculados via Supabase, usando armazenamento local:", err);
     }
@@ -464,7 +518,10 @@ export async function listCharactersSharedWithGM(gmEmail: string): Promise<Cloud
           for (const char of list) {
             const charGMEmail = (char.gm_email || char.data?.gmEmail || char.data?.gm_email || "") as string;
             if (charGMEmail && charGMEmail.trim().toLowerCase() === normalizedEmail) {
-              shared.push(char);
+              shared.push({
+                ...char,
+                system_id: char.system_id || char.data?.system_id || "pf2e",
+              });
             }
           }
         }

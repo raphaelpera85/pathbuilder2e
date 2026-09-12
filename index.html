@@ -64,7 +64,7 @@
         <div class="drawer-group-title" data-i18n-key="drawerCharacterTitle">Personagem & Biblioteca</div>
         <div class="drawer-item" id="drawerLibrary" style="color: #fb923c; font-weight: bold;" onclick="app.navigatePortal('library');">🛡️ Meus Personagens (Biblioteca)</div>
         <div class="drawer-item" id="drawerCampaigns" style="color: #c084fc; font-weight: bold;" onclick="app.navigatePortal('campaigns');">🏰 Campanhas do Mestre (Mesas de RPG)</div>
-        <div class="drawer-item" id="drawerNewCharacter" onclick="app.createNewCharacter(); app.toggleDrawer(); window.location.hash='#/builder';">➕ Novo Personagem em Branco</div>
+        <div class="drawer-item" id="drawerNewCharacter" onclick="window.dispatchEvent(new Event('pathbuilder:open-system-selector')); app.toggleDrawer();">➕ Novo Personagem em Branco</div>
         <div class="drawer-item" id="drawerSaveCharacter" onclick="app.saveCharacterLocal(true); app.toggleDrawer();">💾 Salvar Personagem (Local)</div>
         <div class="drawer-item" id="drawerSaveAccountCharacter" onclick="window.dispatchEvent(new Event('pathbuilder:save-account-character')); app.toggleDrawer();">☁️ Salvar Personagem na Conta</div>
       </div>
