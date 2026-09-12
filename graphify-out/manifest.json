@@ -1183,13 +1183,13 @@
   },
   ".planning/graphs/.last-build-snapshot.json": {
     "mtime": 1788464729.817343,
-    "seen": 1789199325.9959924,
+    "seen": 1789200385.4404879,
     "ast_hash": "",
     "semantic_hash": ""
   },
   ".planning/graphs/graph.json": {
     "mtime": 1788464729.0434592,
-    "seen": 1789199325.9959934,
+    "seen": 1789200385.4404905,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -1207,31 +1207,31 @@
   },
   "scripts/extracted_all_feats_master.json": {
     "mtime": 1788294828.5723233,
-    "seen": 1789199325.996168,
+    "seen": 1789200385.4406748,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202608270001_accounts_and_characters.sql": {
     "mtime": 1787872547.9143429,
-    "seen": 1789199325.996326,
+    "seen": 1789200385.4409082,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202608270002_character_limits.sql": {
     "mtime": 1788260933.2179694,
-    "seen": 1789199325.9963276,
+    "seen": 1789200385.44091,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202608300001_campaigns_and_gm_sharing.sql": {
     "mtime": 1788766556.6440303,
-    "seen": 1789199325.9963298,
+    "seen": 1789200385.4409122,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/schema_full.sql": {
     "mtime": 1789191316.5193534,
-    "seen": 1789199325.9963422,
+    "seen": 1789200385.4409256,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -1309,7 +1309,7 @@
   },
   "scripts/catalog_data/catalog_feats.json": {
     "mtime": 1788828468.057013,
-    "seen": 1789199325.996147,
+    "seen": 1789200385.4406323,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -1351,7 +1351,7 @@
   },
   "supabase/migrations/202609040001_catalog_tables.sql": {
     "mtime": 1788493864.528052,
-    "seen": 1789199325.9963312,
+    "seen": 1789200385.440914,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -1381,43 +1381,43 @@
   },
   "supabase/seed_catalog.sql": {
     "mtime": 1788832017.4651766,
-    "seen": 1789199325.9963439,
+    "seen": 1789200385.4409275,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/seeds/01_ancestries_classes_items.sql": {
     "mtime": 1788828468.062582,
-    "seen": 1789199325.9963455,
+    "seen": 1789200385.4409297,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/seeds/02_heritages_subclasses_backgrounds_archetypes.sql": {
     "mtime": 1788828468.06458,
-    "seen": 1789199325.9963474,
+    "seen": 1789200385.4409313,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/seeds/03_spells_rituals_actions_conditions_pets.sql": {
     "mtime": 1788828468.068148,
-    "seen": 1789199325.996349,
+    "seen": 1789200385.4409332,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/seeds/04_weapons_armors_shields_formulas.sql": {
     "mtime": 1788832017.4789102,
-    "seen": 1789199325.9963508,
+    "seen": 1789200385.4409347,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/seeds/05_feats_part1.sql": {
     "mtime": 1788828468.0721307,
-    "seen": 1789199325.9963522,
+    "seen": 1789200385.4409368,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/seeds/06_feats_part2.sql": {
     "mtime": 1788828468.0761144,
-    "seen": 1789199325.9963543,
+    "seen": 1789200385.4409385,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -1662,9 +1662,9 @@
     "semantic_hash": ""
   },
   "skills-lock.json": {
-    "mtime": 1788496898.6228473,
-    "seen": 1789024800.5113056,
-    "ast_hash": "e91272810f292d0c9627f7d88c9a888d",
+    "mtime": 1789200466.8484528,
+    "seen": 1789200520.4322274,
+    "ast_hash": "21b8abc5b0801aaf46f468fae3de1d17",
     "semantic_hash": ""
   },
   "supabase/.temp/linked-project.json": {
@@ -1675,7 +1675,7 @@
   },
   "supabase/migrations/202609040002_site_visits_and_profile_email.sql": {
     "mtime": 1788500807.9926589,
-    "seen": 1789199325.9963326,
+    "seen": 1789200385.4409158,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -2179,7 +2179,7 @@
   },
   "supabase/migrations/202609080001_campaigns_realtime.sql": {
     "mtime": 1788840232.582438,
-    "seen": 1789199325.996335,
+    "seen": 1789200385.4409177,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -2191,7 +2191,7 @@
   },
   "supabase/migrations/202609080002_campaign_notes.sql": {
     "mtime": 1788840665.6405127,
-    "seen": 1789199325.9963367,
+    "seen": 1789200385.4409194,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -4087,7 +4087,7 @@
   },
   "public/data/pf2e_feats_mechanics.json": {
     "mtime": 1788936439.4327824,
-    "seen": 1789199325.9960182,
+    "seen": 1789200385.4405422,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -11881,7 +11881,7 @@
   },
   ".agents/skills/operator-approval-loop/references/approval-ledger.sql": {
     "mtime": 1789189211.5286157,
-    "seen": 1789199325.9958653,
+    "seen": 1789200385.4402332,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -11935,14 +11935,116 @@
   },
   "supabase/migrations/202609120001_multi_system_support.sql": {
     "mtime": 1789191242.459483,
-    "seen": 1789199325.9963381,
+    "seen": 1789200385.440921,
     "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/202609120002_add_ose_system.sql": {
     "mtime": 1789192576.2493021,
-    "seen": 1789199325.9963403,
+    "seen": 1789200385.4409235,
     "ast_hash": "",
+    "semantic_hash": ""
+  },
+  ".agents/skills/godot-genre-action-rpg/SKILL.md": {
+    "mtime": 1789200430.9285107,
+    "seen": 1789200520.487892,
+    "ast_hash": "519706d442390e238c83ddd256470380",
+    "semantic_hash": ""
+  },
+  ".agents/skills/godot-genre-action-rpg/references/arpg-subsystems-deep.md": {
+    "mtime": 1789200430.9295285,
+    "seen": 1789200520.4878945,
+    "ast_hash": "1e5782e81298d52630d439bb251c075e",
+    "semantic_hash": ""
+  },
+  ".agents/skills/godot-genre-action-rpg/references/migration-notes.md": {
+    "mtime": 1789200430.9295285,
+    "seen": 1789200520.4878962,
+    "ast_hash": "5280906971eae0ba37ac394493fbd63a",
+    "semantic_hash": ""
+  },
+  ".agents/skills/godot-rpg-stats/SKILL.md": {
+    "mtime": 1789200419.8503687,
+    "seen": 1789200520.4878979,
+    "ast_hash": "e60e8ac349e1ab98b7d93a7eb92fd302",
+    "semantic_hash": ""
+  },
+  ".agents/skills/godot-rpg-stats/references/elite-stat-patterns.md": {
+    "mtime": 1789200419.8503687,
+    "seen": 1789200520.4878993,
+    "ast_hash": "eff92b077c80509713459634512b46e9",
+    "semantic_hash": ""
+  },
+  ".agents/skills/godot-rpg-stats/references/migration-notes.md": {
+    "mtime": 1789200419.8503687,
+    "seen": 1789200520.487901,
+    "ast_hash": "f1500d3c858bab1bfbd9dda212b0a382",
+    "semantic_hash": ""
+  },
+  ".agents/skills/rpg/SKILL.md": {
+    "mtime": 1789200466.1948671,
+    "seen": 1789200520.5693035,
+    "ast_hash": "97fd3fd93fee97d63db52ab2886ab837",
+    "semantic_hash": ""
+  },
+  ".agents/skills/rpg/references/stats-combat-quests.md": {
+    "mtime": 1789200466.196435,
+    "seen": 1789200520.5693073,
+    "ast_hash": "0fd783ecd132913fb2a9786d506207d0",
+    "semantic_hash": ""
+  },
+  ".agents/skills/rpgjs/SKILL.md": {
+    "mtime": 1789200456.1602573,
+    "seen": 1789200520.5693097,
+    "ast_hash": "90c27d85b309d26bcf864006af249db9",
+    "semantic_hash": ""
+  },
+  ".agents/skills/rpgjs/agents/openai.yaml": {
+    "mtime": 1789200456.1602573,
+    "seen": 1789200520.5693126,
+    "ast_hash": "6295ba14d34252b110e8d709942b0003",
+    "semantic_hash": ""
+  },
+  ".agents/skills/rpgjs/references/architecture-notes.md": {
+    "mtime": 1789200456.1612935,
+    "seen": 1789200520.5693157,
+    "ast_hash": "01c7cd1ac121abf1b57109ca026dd45e",
+    "semantic_hash": ""
+  },
+  ".agents/skills/rpgjs/references/source-map.md": {
+    "mtime": 1789200456.1612935,
+    "seen": 1789200520.5693176,
+    "ast_hash": "ee8de25e7259ed93709cbc933025775d",
+    "semantic_hash": ""
+  },
+  ".agents/skills/tabletop-rpg-design/SKILL.md": {
+    "mtime": 1789200443.439581,
+    "seen": 1789200520.5842817,
+    "ast_hash": "6f89368ea2db53ce559d003bb1b43a56",
+    "semantic_hash": ""
+  },
+  ".agents/skills/tabletop-rpg-design/references/patterns.md": {
+    "mtime": 1789200443.4403481,
+    "seen": 1789200520.584284,
+    "ast_hash": "86650ff912fe3dd80db6d9e1bed9cc55",
+    "semantic_hash": ""
+  },
+  ".agents/skills/tabletop-rpg-design/references/sharp_edges.md": {
+    "mtime": 1789200443.4408984,
+    "seen": 1789200520.5842857,
+    "ast_hash": "9b9c96db90819a0206fd8b5cfff533ad",
+    "semantic_hash": ""
+  },
+  ".agents/skills/tabletop-rpg-design/references/validations.md": {
+    "mtime": 1789200443.4408984,
+    "seen": 1789200520.5842874,
+    "ast_hash": "acb3078079e16fb9c2b2fe1be460c405",
+    "semantic_hash": ""
+  },
+  ".agents/skills/web-design-guidelines/SKILL.md": {
+    "mtime": 1789200403.722349,
+    "seen": 1789200520.5940185,
+    "ast_hash": "8d96a7f6f0c5e1908bab8faf8cd2f9b4",
     "semantic_hash": ""
   }
 }

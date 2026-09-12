@@ -1,6 +1,30 @@
 {
   "version": 1,
   "skills": {
+    "godot-genre-action-rpg": {
+      "source": "thedivergentai/gd-agentic-skills",
+      "sourceType": "github",
+      "skillPath": "skills/godot-genre-action-rpg/SKILL.md",
+      "computedHash": "a0be241e9ad8f2d28a0c63f54c71fe42de087c913c045c4727f2dab2689d55b7"
+    },
+    "godot-rpg-stats": {
+      "source": "thedivergentai/gd-agentic-skills",
+      "sourceType": "github",
+      "skillPath": "skills/godot-rpg-stats/SKILL.md",
+      "computedHash": "00b21adb610d08a80e38b8f0527bd0399f70a730722a4bd0e5efded6b05b4af4"
+    },
+    "rpg": {
+      "source": "gamedev-skills/awesome-gamedev-agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/genres/rpg/SKILL.md",
+      "computedHash": "e64190acc60600842a292d186abb9496b04f8f4cf6412e6f399f355556b05960"
+    },
+    "rpgjs": {
+      "source": "rsamaium/rpg-js",
+      "sourceType": "github",
+      "skillPath": "skills/rpgjs/SKILL.md",
+      "computedHash": "59e579cec682f6b4eb1149109b9dd6c4865c3eadda27708bcda696594580f008"
+    },
     "supabase": {
       "source": "supabase/agent-skills",
       "sourceType": "github",
@@ -12,6 +36,18 @@
       "sourceType": "github",
       "skillPath": "skills/supabase-postgres-best-practices/SKILL.md",
       "computedHash": "128fac78002d916c8ca908245d398e634f540d8bcf20915b2b2359aeb18eba59"
+    },
+    "tabletop-rpg-design": {
+      "source": "omer-metin/skills-for-antigravity",
+      "sourceType": "github",
+      "skillPath": "skills/tabletop-rpg-design/SKILL.md",
+      "computedHash": "cbce185d031036713a6d5a5c84d6b666cdf4e2ba12afe51109310f844025538e"
+    },
+    "web-design-guidelines": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/web-design-guidelines/SKILL.md",
+      "computedHash": "d8e7d3afe37dcc8a97b99ffb5afdb4d0919ae0092ea8b68f44eb201f035e33ac"
     }
   }
 }
