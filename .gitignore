@@ -18,5 +18,7 @@ livros/
 *.pdf
 !public/ficha.pdf
 !ficha.pdf
+!public/ose-character-sheet-template.pdf
+.tmp-ose-reference/
 
 .vercel

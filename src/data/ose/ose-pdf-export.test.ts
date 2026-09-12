@@ -1,4 +1,6 @@
 import { describe, expect, it } from "vitest";
+import fs from "node:fs";
+import path from "node:path";
 import { PDFDocument } from "pdf-lib";
 import { createOseEditablePdf } from "../../services/osePdfExport";
 import type { OseCharacterCreatedData } from "../../ose/OseCharacterCreatorModal";
@@ -26,17 +28,18 @@ const fixture: OseCharacterCreatedData = {
 };
 
 describe("Exportação OSE para PDF editável", () => {
-  it("gera duas páginas com campos AcroForm e valores da ficha", async () => {
-    const bytes = await createOseEditablePdf(fixture);
+  it("gera uma página com os campos AcroForm do template OSE e valores da ficha", async () => {
+    const template = fs.readFileSync(path.resolve(process.cwd(), "public/ose-character-sheet-template.pdf"));
+    const bytes = await createOseEditablePdf(fixture, new Uint8Array(template));
     const pdf = await PDFDocument.load(bytes);
     const fields = pdf.getForm().getFields();
     const names = fields.map((field) => field.getName());
 
-    expect(pdf.getPageCount()).toBe(2);
-    expect(names).toContain("ose.name");
-    expect(names).toContain("ose_ability_int");
-    expect(names).toContain("ose.spells_known");
-    expect(pdf.getForm().getTextField("ose.name").getText()).toBe("Alda da Floresta");
-    expect(pdf.getForm().getTextField("ose.spells_known").getText()).toContain("Míssil Mágico");
+    expect(pdf.getPageCount()).toBe(1);
+    expect(names).toContain("Name");
+    expect(names).toContain("INT");
+    expect(names).toContain("Notes");
+    expect(pdf.getForm().getTextField("Name").getText()).toBe("Alda da Floresta");
+    expect(pdf.getForm().getTextField("Notes").getText()).toContain("Míssil Mágico");
   });
 });
