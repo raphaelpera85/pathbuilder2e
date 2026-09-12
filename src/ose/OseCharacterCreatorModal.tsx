@@ -1,4 +1,5 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
+import { createPortal } from "react-dom";
 import {
   type OseAbilityName,
   getOseStandardModifier,
@@ -62,6 +63,23 @@ export function OseCharacterCreatorModal({
   const [step, setStep] = useState<number>(1);
   const [charName, setCharName] = useState("Aventureiro de Karameikos");
   const [creationMode, setCreationMode] = useState<"advanced" | "classic">("advanced");
+
+  // Fechar com Escape e travar overflow do body
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen, onClose]);
 
   // Step 1: Atributos
   const roll3d6 = () => {
@@ -221,8 +239,11 @@ export function OseCharacterCreatorModal({
   };
 
   if (!isOpen) return null;
+  if (typeof document === "undefined" || typeof document.querySelector !== "function") return null;
 
-  return (
+  const modalRoot = document.getElementById("react-modal-root") || document.body;
+
+  return createPortal(
     <div className="ose-wizard-overlay" role="dialog" aria-modal="true">
       <div className="ose-wizard-modal">
         {/* Header */}
@@ -688,6 +709,7 @@ export function OseCharacterCreatorModal({
           </div>
         </footer>
       </div>
-    </div>
+    </div>,
+    modalRoot
   );
 }

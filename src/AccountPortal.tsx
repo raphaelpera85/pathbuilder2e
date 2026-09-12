@@ -88,13 +88,23 @@ export function AccountPortal() {
     setIsSystemModalOpen(false);
     if (systemId === "ose") {
       setOpen(false);
+      try {
+        sessionStorage.setItem("pathbuilder:auto-open-ose-wizard", "true");
+      } catch {
+        // noop
+      }
       window.location.hash = "#/library";
       window.dispatchEvent(new CustomEvent("pathbuilder:open-ose-wizard"));
       return;
     }
-    (window as any).app?.createNewCharacter(systemId);
+    (window as any).app?.createNewCharacter?.(systemId);
     setOpen(false);
-    window.location.hash = "#/builder";
+    if (window.location.hash === "#/builder") {
+      window.dispatchEvent(new HashChangeEvent("hashchange"));
+    } else {
+      window.location.hash = "#/builder";
+    }
+    window.dispatchEvent(new CustomEvent("pathbuilder:character-render"));
   };
 
 

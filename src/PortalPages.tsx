@@ -926,6 +926,14 @@ function LibraryPage() {
     const handleLoadOse = (e: CustomEvent<OseCharacterCreatedData>) => {
       if (e.detail) setActiveOseCharacter(e.detail);
     };
+    try {
+      if (sessionStorage.getItem("pathbuilder:auto-open-ose-wizard") === "true") {
+        sessionStorage.removeItem("pathbuilder:auto-open-ose-wizard");
+        setIsOseWizardOpen(true);
+      }
+    } catch {
+      // noop
+    }
     window.addEventListener("pathbuilder:open-ose-wizard", handleOpenWizard);
     window.addEventListener("pathbuilder:load-ose-character", handleLoadOse as EventListener);
     return () => {
@@ -1052,6 +1060,10 @@ function LibraryPage() {
 
 
   const handleCreateNew = () => {
+    if (selectedSystemFilter && selectedSystemFilter !== "all") {
+      handleSelectSystem(selectedSystemFilter as RPGSystemId);
+      return;
+    }
     setIsSystemModalOpen(true);
   };
 
@@ -1061,8 +1073,13 @@ function LibraryPage() {
       setIsOseWizardOpen(true);
       return;
     }
-    (window as any).app?.createNewCharacter(systemId);
-    window.location.hash = "#/builder";
+    (window as any).app?.createNewCharacter?.(systemId);
+    if (window.location.hash === "#/builder") {
+      window.dispatchEvent(new HashChangeEvent("hashchange"));
+    } else {
+      window.location.hash = "#/builder";
+    }
+    window.dispatchEvent(new CustomEvent("pathbuilder:character-render"));
   };
 
   const handleLoadCharacter = (char: CloudCharacter) => {
