@@ -3,6 +3,23 @@
 Construtor de personagens PF2e local-first com React, TypeScript e suporte
 opcional a contas e fichas privadas no Supabase.
 
+## Construtores por sistema
+
+O seletor de ficha mantém regras, catálogos, IDs e exportadores separados por
+sistema. A cobertura verificada atualmente é:
+
+| Sistema | Edição/ruleset | Construtor e conteúdo | Limites conhecidos |
+| --- | --- | --- | --- |
+| Pathfinder 2e | Remaster, Legado e revisão pendente | Construtor legado, compêndio amplo, ancestrais, heranças, classes, arquétipos, magias, talentos e itens | Algumas opções de suplementos permanecem marcadas para revisão mecânica |
+| Tormenta20 | Padrão / Livro Básico | 17 raças, 14 classes, 35 origens, 29 perícias, poderes, magias, equipamentos, progressões e escolhas raciais condicionais | Suplementos além do núcleo e efeitos de alguns poderes ainda têm cobertura parcial |
+| D&D 5e | Livro do Jogador 2014 / `standard` | 9 raças, sub-raças, 12 classes, subclasses, antecedentes, 18 perícias, talentos, magias, ferramentas e equipamentos | O construtor não mistura conteúdo de 2024; opções de livros externos não são habilitadas por padrão |
+| Old-School Essentials | Advanced Fantasy e Classic Fantasy | 16 classes, 10 raças, progressões, atributos 3d6, salvamentos, THAC0/CA, itens, magias e PDF editável | OSE não possui catálogo nativo de talentos nem vantagem/desvantagem; suplementos, monstros, especialistas e retentores ficam fora do núcleo |
+
+Vantagem/desvantagem só é aplicada quando existe como regra nativa ou derivada
+verificada: modos de d20 e interação com armadura em D&D 5e, penalidades de
+armadura em T20 e nenhuma regra automática no núcleo OSE. Isso evita importar
+uma mecânica de um sistema para outro.
+
 ## Desenvolvimento local
 
 ```powershell

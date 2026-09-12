@@ -40,8 +40,13 @@ export const DND5E_SUBRACES: Dnd5eSubrace[] = [
   subrace("gnomo_pedra", "gnomo", "Gnomo das Rochas", 37, "Constituição +1", { con: 1 }, ["Conhecimento de artífice", "Engenho"]),
 ];
 
+const DND5E_SUBCLASS_LEVELS: Record<string, number> = {
+  barbaro: 3, bardo: 3, bruxo: 1, clerigo: 1, druida: 2, feiticeiro: 1,
+  guerreiro: 3, ladino: 3, mago: 2, monge: 3, paladino: 3, patrulheiro: 3,
+};
+
 const subclass = (id: string, classId: string, name: string, sourcePage: number, summary: string): Dnd5eSubclass => ({
-  id, classId, name, sourcePage, featureLevel: 3, summary,
+  id, classId, name, sourcePage, featureLevel: DND5E_SUBCLASS_LEVELS[classId] || 3, summary,
 });
 
 /** Arquétipos/subclasses escolhidos no Livro do Jogador 2014. */

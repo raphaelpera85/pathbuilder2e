@@ -58,16 +58,32 @@ const tableOrder = [
   'catalog_buffs',
 ];
 
+function catalogScopeKey(row) {
+  return `${String(row.system_id || "")}::${String(row.ruleset || "")}`;
+}
+
+/**
+ * Retorna apenas IDs obsoletos dentro dos mesmos escopos do seed.
+ * Um seed T20 jamais pode remover registros D&D/OSE/PF2e.
+ */
+function findStaleRows(existingRows, seededRows) {
+  const scopedSeededRows = seededRows.filter((row) => row.system_id && row.ruleset);
+  const seededKeys = new Set(scopedSeededRows.map((row) => `${catalogScopeKey(row)}::${row.id}`));
+  const seededScopes = new Set(scopedSeededRows.map(catalogScopeKey));
+  if (seededScopes.size === 0) return [];
+  return existingRows
+    .filter((row) => seededScopes.has(catalogScopeKey(row)))
+    .filter((row) => !seededKeys.has(`${catalogScopeKey(row)}::${row.id}`))
+    .map((row) => row.id);
+}
+
 async function removeRowsAbsentFromSeed(tableName, rows) {
-  const seededIds = new Set(rows.map((row) => row.id));
   const { data: existingRows, error: readError } = await supabase
     .from(tableName)
-    .select('id');
+    .select('id,system_id,ruleset');
   if (readError) throw new Error(`Falha ao ler IDs atuais de ${tableName}: ${readError.message}`);
 
-  const staleIds = (existingRows || [])
-    .map((row) => row.id)
-    .filter((id) => !seededIds.has(id));
+  const staleIds = findStaleRows(existingRows || [], rows);
   const batchSize = 100;
   for (let i = 0; i < staleIds.length; i += batchSize) {
     const batch = staleIds.slice(i, i + batchSize);
@@ -120,7 +136,11 @@ async function run() {
   console.log('[Migrate] Processo de migração concluído!');
 }
 
-run().catch(err => {
-  console.error('[Migrate] Erro fatal:', err);
-  process.exit(1);
-});
+if (require.main === module) {
+  run().catch(err => {
+    console.error('[Migrate] Erro fatal:', err);
+    process.exit(1);
+  });
+}
+
+module.exports = { catalogScopeKey, findStaleRows };

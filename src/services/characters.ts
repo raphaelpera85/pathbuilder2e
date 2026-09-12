@@ -105,6 +105,13 @@ export type CharacterRuleset =
   | "remaster" | "legacy" | "both" | "needs_review"
   | "standard" | "2024" | "padrao" | "jogo_do_ano" | "advanced" | "classic";
 
+const CHARACTER_RULESETS_BY_SYSTEM: Record<string, readonly CharacterRuleset[]> = {
+  pf2e: ["remaster", "legacy", "both", "needs_review"],
+  dnd5e: ["standard", "2024", "needs_review"],
+  t20: ["padrao", "jogo_do_ano", "needs_review"],
+  ose: ["advanced", "classic", "needs_review"],
+};
+
 /** Normaliza valores antigos/localizados antes de enviá-los ao check do banco. */
 export function normalizeCharacterRuleset(value: unknown): CharacterRuleset {
   const raw = String(value ?? "").trim().toLocaleLowerCase();
@@ -166,6 +173,11 @@ export function validateCharacter(value: unknown): CharacterData {
   const rawSystem = (typeof candidate.system_id === "string" && candidate.system_id.trim()) ||
                     (typeof candidate.systemId === "string" && candidate.systemId.trim()) ||
                     "pf2e";
+  const ruleset = normalizeCharacterRuleset(candidate.ruleset);
+  const supportedRulesets = CHARACTER_RULESETS_BY_SYSTEM[rawSystem];
+  if (supportedRulesets && !supportedRulesets.includes(ruleset)) {
+    throw new Error(`O ruleset "${ruleset}" não pertence ao sistema ${rawSystem}.`);
+  }
   return {
     ...structuredClone(candidate),
     id: typeof candidate.id === "string" && candidate.id.trim()
@@ -175,7 +187,7 @@ export function validateCharacter(value: unknown): CharacterData {
     level,
     system_id: rawSystem,
     systemId: rawSystem,
-    ruleset: normalizeCharacterRuleset(candidate.ruleset),
+    ruleset,
     gmEmail: typeof candidate.gmEmail === "string" ? candidate.gmEmail.trim() : (typeof candidate.gm_email === "string" ? candidate.gm_email.trim() : undefined),
   } as CharacterData;
 }

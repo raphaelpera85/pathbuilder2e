@@ -25,4 +25,17 @@ describe("core compendium systems", () => {
     expect(ose?.data?.ruleset).toBe("advanced");
     expect(ose?.data?.source?.book).toContain("Old-School Essentials");
   });
+
+  it("mantém IDs únicos e proveniência mínima em todos os sistemas", () => {
+    const entries = getCoreCompendiumEntries();
+    expect(new Set(entries.map((entry) => entry.data?.id)).size).toBe(entries.length);
+    expect(entries.every((entry) => {
+      const data = entry.data || {};
+      return ["t20", "dnd5e", "ose"].includes(String(data.system_id))
+        && Boolean(data.ruleset)
+        && Boolean(data.source?.book)
+        && Number.isInteger(data.source?.page)
+        && Number(data.source?.page) > 0;
+    })).toBe(true);
+  });
 });

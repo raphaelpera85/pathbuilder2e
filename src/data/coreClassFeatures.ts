@@ -132,21 +132,26 @@ export function getCoreClassFeatures(system: SupportedCoreSystem, classId: strin
 
 export function getCoreClassResources(system: SupportedCoreSystem, classId: string, level: number, modifiers: Record<string, number>): CoreClassResource[] {
   if (system === "t20") return [];
-  const proficiency = 2 + Math.floor((Math.max(1, Math.min(20, level)) - 1) / 4);
+  const safeLevel = Math.max(1, Math.min(20, Math.trunc(level)));
   const resources: CoreClassResource[] = [];
   const add = (name: string, value: string, description: string) => resources.push({ name, value, description });
-  if (classId === "barbaro") add("Fúrias", String(level >= 20 ? 999 : level >= 17 ? 6 : level >= 12 ? 5 : level >= 6 ? 4 : level >= 3 ? 3 : 2), "Usos por descanso longo; a quantidade exata depende do nível.");
-  if (classId === "bardo") add("Inspiração de Bardo", `${Math.max(1, modifiers.cha || 0)}d${level >= 15 ? 12 : level >= 10 ? 10 : level >= 5 ? 8 : 6}`, `Usos por descanso longo: ${Math.max(1, modifiers.cha || 0)}.`);
-  if (classId === "guerreiro") { add("Retomar o Fôlego", "1d10 + nível", "Recupera PV como ação bônus uma vez por descanso curto ou longo."); add("Surto de Ação", level >= 17 ? "2 usos" : "1 uso", "Concede uma ação adicional; recupera em descanso curto ou longo."); }
-  if (classId === "ladino") add("Ataque Furtivo", `${Math.ceil(Math.max(1, level) / 2)}d6`, "Dano adicional uma vez por turno quando cumpre os requisitos.");
-  if (classId === "monge") add("Pontos de Ki", String(level), "Recupera todos os pontos após descanso curto ou longo.");
-  if (classId === "paladino") add("Imposição das Mãos", `${level * 5} PV`, "Reserva total de cura que se recupera após descanso longo.");
-  if (classId === "feiticeiro") add("Pontos de Feitiçaria", String(level), "Usados para Metamagia e conversão em espaços de magia.");
-  if (classId === "clerigo") add("Canalizar Divindade", level >= 18 ? "3 usos" : level >= 6 ? "2 usos" : "1 uso", "Recupera usos após descanso curto ou longo.");
-  if (classId === "mago") add("Recuperação Arcana", `até ${Math.min(5, Math.ceil(level / 2))}º nível de espaços`, "Recupera espaços após um descanso curto uma vez por dia.");
-  if (classId === "bruxo") add("Invocações Místicas", level >= 18 ? "8" : level >= 15 ? "7" : level >= 12 ? "6" : level >= 9 ? "5" : level >= 7 ? "4" : level >= 5 ? "3" : level >= 2 ? "2" : "0", "Escolhas personalizáveis do patrono sobrenatural.");
-  if (classId === "druida") add("Forma Selvagem", level >= 18 ? "sem limite de forma" : "2 usos", "Usos recuperados após descanso curto ou longo; o círculo define opções adicionais.");
-  if (classId === "patrulheiro") add("Inimigo Favorito", `${Math.max(1, Math.ceil(level / 5))} escolha(s)`, "Escolhas e benefícios são definidos pela campanha e pelo Livro do Jogador.");
-  void proficiency;
+  if (classId === "barbaro") {
+    const rages = safeLevel >= 20 ? 999 : safeLevel >= 17 ? 6 : safeLevel >= 12 ? 5 : safeLevel >= 6 ? 4 : safeLevel >= 3 ? 3 : 2;
+    add("Fúrias", String(rages), safeLevel >= 20 ? "Usos ilimitados; recupera os benefícios conforme as regras de Fúria." : "Usos por descanso longo.");
+  }
+  if (classId === "bardo") add("Inspiração de Bardo", `${Math.max(1, modifiers.cha || 0)}d${safeLevel >= 15 ? 12 : safeLevel >= 10 ? 10 : safeLevel >= 5 ? 8 : 6}`, `Usos por descanso longo: ${Math.max(1, modifiers.cha || 0)}.`);
+  if (classId === "guerreiro") {
+    add("Retomar o Fôlego", "1d10 + nível", "Recupera PV como ação bônus uma vez por descanso curto ou longo.");
+    if (safeLevel >= 2) add("Surto de Ação", safeLevel >= 17 ? "2 usos" : "1 uso", "Concede uma ação adicional; recupera em descanso curto ou longo.");
+  }
+  if (classId === "ladino") add("Ataque Furtivo", `${Math.ceil(safeLevel / 2)}d6`, "Dano adicional uma vez por turno quando cumpre os requisitos.");
+  if (classId === "monge" && safeLevel >= 2) add("Pontos de Ki", String(safeLevel), "Recupera todos os pontos após descanso curto ou longo.");
+  if (classId === "paladino") add("Imposição das Mãos", `${safeLevel * 5} PV`, "Reserva total de cura que se recupera após descanso longo.");
+  if (classId === "feiticeiro" && safeLevel >= 2) add("Pontos de Feitiçaria", String(safeLevel), "Usados para Metamagia e conversão em espaços de magia.");
+  if (classId === "clerigo" && safeLevel >= 2) add("Canalizar Divindade", safeLevel >= 18 ? "3 usos" : safeLevel >= 6 ? "2 usos" : "1 uso", "Recupera usos após descanso curto ou longo.");
+  if (classId === "mago") add("Recuperação Arcana", `até ${Math.min(5, Math.ceil(safeLevel / 2))}º nível de espaços`, "Recupera espaços após um descanso curto uma vez por dia.");
+  if (classId === "bruxo" && safeLevel >= 2) add("Invocações Místicas", safeLevel >= 18 ? "8" : safeLevel >= 15 ? "7" : safeLevel >= 12 ? "6" : safeLevel >= 9 ? "5" : safeLevel >= 7 ? "4" : safeLevel >= 5 ? "3" : "2", "Escolhas personalizáveis do patrono sobrenatural.");
+  if (classId === "druida" && safeLevel >= 2) add("Forma Selvagem", safeLevel >= 18 ? "sem limite de forma" : "2 usos", "Usos recuperados após descanso curto ou longo; o círculo define opções adicionais.");
+  if (classId === "patrulheiro") add("Inimigo Favorito", `${Math.max(1, Math.ceil(safeLevel / 5))} escolha(s)`, "Escolhas e benefícios são definidos pela campanha e pelo Livro do Jogador.");
   return resources;
 }

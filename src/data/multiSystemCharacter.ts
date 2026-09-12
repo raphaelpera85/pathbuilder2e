@@ -36,9 +36,17 @@ export const DND5E_ALIGNMENTS = [
   "Leal e Mau", "Neutro e Mau", "Caótico e Mau",
 ] as const;
 
-export const T20_DEITIES = [
+export interface T20Deity {
+  id: string;
+  name: string;
+  ruleSummary?: string;
+  forbidsMetalArmor?: boolean;
+  allowsLightArmorOnly?: boolean;
+}
+
+export const T20_DEITIES: readonly T20Deity[] = [
   { id: "aharadak", name: "Aharadak" },
-  { id: "allihanna", name: "Allihanna" },
+  { id: "allihanna", name: "Allihanna", ruleSummary: "Não pode usar armaduras ou escudos feitos de metal.", forbidsMetalArmor: true },
   { id: "arsenal", name: "Arsenal" },
   { id: "azgher", name: "Azgher" },
   { id: "hyninn", name: "Hyninn" },
@@ -49,7 +57,7 @@ export const T20_DEITIES = [
   { id: "marah", name: "Marah" },
   { id: "megalokk", name: "Megalokk" },
   { id: "nimb", name: "Nimb" },
-  { id: "oceano", name: "Oceano" },
+  { id: "oceano", name: "Oceano", ruleSummary: "Pode usar apenas armaduras leves.", allowsLightArmorOnly: true },
   { id: "sszzaas", name: "Sszzaas" },
   { id: "tanna_toh", name: "Tanna-Toh" },
   { id: "tenebra", name: "Tenebra" },
@@ -71,6 +79,15 @@ export interface MultiSystemCharacter {
   raceId: string;
   classId: string;
   subraceId?: string;
+  /** Escolhas flexíveis de bônus raciais (ex.: Humano T20 ou Meio-Elfo D&D). */
+  raceAbilityChoices?: CoreAbility[];
+  /** Idiomas adicionais concedidos pela raça, separados dos idiomas do antecedente. */
+  raceLanguages?: string[];
+  /** Perícias adicionais escolhidas pela raça, como a Versatilidade do Meio-Elfo. */
+  raceSkillChoices?: string[];
+  /** Alternativa racial T20: duas perícias ou uma perícia e um poder permitido. */
+  raceChoiceMode?: "skills" | "skill_and_feat";
+  raceFeatChoice?: string;
   subclassId?: string;
   backgroundId?: string;
   toolProficiencies?: string[];
@@ -175,7 +192,7 @@ export function getAvailableCoreSpells(system: SupportedCoreSystem, classId: str
   const catalog = getCoreCatalog(system);
   const progression = catalog.progressions.find((entry) => entry.classId === classId);
   const spellcaster = system === "t20"
-    ? true
+    ? ["arcanista", "bardo", "clerigo", "druida", "paladino"].includes(classId)
     : progression && "spellcaster" in progression ? progression.spellcaster : false;
   const spellcastingLevel = progression && "spellcastingLevel" in progression ? progression.spellcastingLevel || 1 : 1;
   if (!spellcaster || level < spellcastingLevel) return [];
@@ -206,6 +223,7 @@ export function isT20PowerPrerequisiteSatisfied(character: MultiSystemCharacter,
   const abilities = { ...character.abilities };
   for (const [key, value] of Object.entries(raceRules?.attributeAdjustments || {})) abilities[key as CoreAbility] += value || 0;
   for (const [key, value] of Object.entries(subraceRules?.attributeAdjustments || {})) abilities[key as CoreAbility] += value || 0;
+  for (const ability of character.raceAbilityChoices || []) abilities[ability] += raceRules?.abilityChoices?.amount || 0;
   const classRules = catalog.classRules.find((entry) => entry.id === character.classId);
   const spellcastingClasses = new Set(["arcanista", "bardo", "clerigo", "druida", "paladino"]);
   const skillAliases: Record<string, string> = { "oficio (alquimia)": "oficio", "oficio (escriba)": "oficio" };
@@ -253,6 +271,7 @@ export function getAvailableCoreFeats(system: SupportedCoreSystem, level: number
     const subraceRules = catalog.subraces.find((entry) => entry.id === character.subraceId);
     for (const [key, value] of Object.entries(raceRules?.attributeAdjustments || {})) effectiveAbilities[key as CoreAbility] += value || 0;
     for (const [key, value] of Object.entries(subraceRules?.attributeAdjustments || {})) effectiveAbilities[key as CoreAbility] += value || 0;
+    for (const ability of character.raceAbilityChoices || []) effectiveAbilities[ability] += raceRules?.abilityChoices?.amount || 0;
   }
   return catalog.feats.filter((feat) => {
     if (feat.minimumLevel && level < feat.minimumLevel) return false;
@@ -287,6 +306,13 @@ export function createInitialCoreCharacter(system: SupportedCoreSystem): MultiSy
   const classRules = catalog.classRules.find((item) => item.id === firstClass.id);
   const backgroundSkills = "skillProficiencies" in firstBackground ? firstBackground.skillProficiencies : firstBackground.trainedSkills;
   const fixedSkills = classRules && "fixedSkills" in classRules ? classRules.fixedSkills : [];
+  const abilityChoices = (catalog.raceRules[0] as { abilityChoices?: { count: number; exclude?: string[] } }).abilityChoices;
+  const defaultRaceAbilityChoices = abilityChoices
+    ? (["str", "dex", "con", "int", "wis", "cha"] as CoreAbility[]).filter((ability) => !abilityChoices.exclude?.includes(ability)).slice(0, abilityChoices.count)
+    : [];
+  const skillChoices = (catalog.raceRules[0] as { skillChoices?: number }).skillChoices || 0;
+  const existingSkills = new Set([...backgroundSkills, ...fixedSkills]);
+  const defaultRaceSkillChoices = skillChoices ? catalog.skills.filter((skill) => !existingSkills.has(skill.id)).slice(0, skillChoices).map((skill) => skill.id) : [];
   return {
     id: `char_${system}_${Date.now()}`,
     name: system === "t20" ? "Novo herói de Arton" : "Novo aventureiro",
@@ -297,6 +323,11 @@ export function createInitialCoreCharacter(system: SupportedCoreSystem): MultiSy
     experiencePoints: 0,
     generationMethod: "point_buy",
     raceId: firstRace.id,
+    raceAbilityChoices: defaultRaceAbilityChoices,
+    raceLanguages: [],
+    raceSkillChoices: defaultRaceSkillChoices,
+    raceChoiceMode: "skills",
+    raceFeatChoice: undefined,
     classId: firstClass.id,
     subraceId: catalog.subraces[0]?.id,
     backgroundId: catalog.backgrounds[0].id,

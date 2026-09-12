@@ -319,6 +319,23 @@ function CatalogPage() {
     });
   }, [bookFilter, category, entries, locale, query, rarityFilter, rulesetFilter, systemFilter]);
 
+  const hasHiddenCatalogMatches = useMemo(() => {
+    const normalizedQuery = query.trim().toLocaleLowerCase(locale);
+    if (!normalizedQuery) return false;
+    return entries.some((entry) => {
+      const entrySystem = String(entry.data?.system_id ?? entry.data?.systemId ?? "pf2e");
+      const localizedName = getItemDisplayName(entry, locale);
+      const localizedSummary = entry.data?.summaries?.[locale] ?? entry.data?.description ?? "";
+      const haystack = `${localizedName} ${entry.name} ${localizedSummary} ${entry.data?.traits?.join(" ") || ""}`.toLocaleLowerCase(locale);
+      const categoryMatches = category === "all" || entry.category === category;
+      const rarityMatches = rarityFilter === "all" || (entry.data?.rarity || "common") === rarityFilter;
+      const bookMatches = bookFilter === "all" || entry.data?.source?.book === bookFilter;
+      const systemMatches = systemFilter === "all" || entrySystem === systemFilter;
+      const rulesetMatches = rulesetFilter === "all" || entry.data?.ruleset === rulesetFilter || (rulesetFilter === "needs_review" && (entry.data?.ruleset === "needs_review" || entry.data?.needs_review === true));
+      return categoryMatches && rarityMatches && bookMatches && haystack.includes(normalizedQuery) && (!systemMatches || !rulesetMatches);
+    });
+  }, [bookFilter, category, entries, locale, query, rarityFilter, rulesetFilter, systemFilter]);
+
   const [showMobileFilters, setShowMobileFilters] = useState(false);
   const activeFiltersCount = (systemFilter !== "all" ? 1 : 0) + (category !== "all" ? 1 : 0) +
     (rulesetFilter !== "all" ? 1 : 0) +
@@ -414,7 +431,7 @@ function CatalogPage() {
     </section>
     {isCatalogLoading && entries.length === 0 ? <div className="portal-empty" role="status">{t("loadingCatalog")}</div>
       : catalogLoadFailed && entries.length === 0 ? <div className="portal-empty" role="alert"><p>{t("catalogLoadFailed")}</p><button type="button" onClick={handleManualSync} disabled={isSyncing}>{t("retry")}</button></div>
-      : filtered.length === 0 ? <div className="portal-empty">{t("noCatalogResults")}</div> : <section className="catalog-grid" aria-label={t("compendiumTitle")}>
+      : filtered.length === 0 ? <div className="portal-empty">{hasHiddenCatalogMatches && <p className="portal-warning" role="status">{t("catalogHiddenByFilters")}</p>}<p>{t("noCatalogResults")}</p></div> : <section className="catalog-grid" aria-label={t("compendiumTitle")}>
       {filtered.map((entry, index) => <CatalogCard key={`${entry.category}-${entry.name}-${index}`} entry={entry} onInspect={() => setInspectedEntry(entry)} />)}
     </section>}
 

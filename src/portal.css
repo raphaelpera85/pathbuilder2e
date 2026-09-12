@@ -2983,6 +2983,9 @@ body.theme-light .pb-system-cancel-btn:hover {
 .pb-core-generation-row > span { padding-bottom: 10px; color: #94a3b8; font-size: .75rem; }
 .pb-core-class-summary { display: flex; gap: .45rem; flex-wrap: wrap; margin: -0.35rem 0 .9rem; padding: .65rem .8rem; border: 1px solid #334155; border-radius: .65rem; color: #94a3b8; font-size: .82rem; line-height: 1.35; }
 .pb-core-class-summary strong { color: #e2e8f0; }
+.pb-core-deity-summary { display: flex; gap: .45rem; flex-wrap: wrap; margin: -0.35rem 0 .9rem; padding: .6rem .8rem; border: 1px solid #7c5a2b; border-radius: .65rem; color: #f1d7a2; font-size: .78rem; line-height: 1.35; background: rgba(92, 63, 24, .2); }
+.pb-core-deity-summary strong { color: #fbbf24; }
+.pb-core-deity-summary small { flex-basis: 100%; color: #e5c78f; }
 .pb-core-subclass-summary { display: flex; gap: .45rem; flex-wrap: wrap; margin: -0.35rem 0 .9rem; padding: .6rem .8rem; border: 1px solid #43516a; border-radius: .65rem; color: #a9b7ce; font-size: .78rem; line-height: 1.35; background: rgba(37, 55, 82, .22); }
 .pb-core-subclass-summary strong { color: #c4b5fd; }
 .pb-core-subclass-summary small { flex-basis: 100%; color: #94a3b8; }

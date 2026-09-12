@@ -21,7 +21,8 @@ export type PickerType =
 
 export type LocalizedString = Partial<Record<"pt-BR" | "en" | "es", string>>;
 
-export type RPGSystemId = "pf2e" | "dnd5e" | "t20" | (string & {});
+/** Sistemas suportados pelo núcleo e IDs de extensões futuras. */
+export type RPGSystemId = "pf2e" | "dnd5e" | "t20" | "ose" | (string & {});
 
 export interface IRPGSystem {
   id: RPGSystemId;

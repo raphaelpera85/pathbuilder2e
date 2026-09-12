@@ -80,8 +80,11 @@ export async function createCoreEditablePdf(character: MultiSystemCharacter): Pr
   label(page, bold, system === "t20" ? "ORIGEM" : "ANTECEDENTE", 36, 520); textField(form, page, "character.background", background, 36, 496, 145, 18, 7.5);
   label(page, bold, "MOEDAS", 190, 520); textField(form, page, "character.coins", formatCoreCoins(character), 190, 496, 120, 18, 6.5);
   const expertiseNames = system === "dnd5e" ? listNames(catalog.skills, character.skillExpertise || []).replace(/^/, "Especialização: ") : "";
-  const skillsText = [listNames(catalog.skills, character.skillProficiencies), expertiseNames].filter(Boolean).join(" · ");
-  label(page, bold, "PERÍCIAS", 320, 520); textField(form, page, "character.skills", skillsText, 320, 496, 238, 18, 6.5);
+  const raceFeatName = character.raceFeatChoice ? catalog.feats.find((entry) => entry.id === character.raceFeatChoice)?.name : "";
+  const raceSkillNames = listNames(catalog.skills, character.raceSkillChoices || []);
+  const skillsText = [listNames(catalog.skills, character.skillProficiencies), expertiseNames, raceSkillNames && `Perícias raciais: ${raceSkillNames}`, raceFeatName && `Poder racial: ${raceFeatName}`].filter(Boolean).join(" · ");
+  const languagesText = system === "dnd5e" ? [...(character.languages || []), ...(character.raceLanguages || [])].join(", ") : "";
+  label(page, bold, "PERÍCIAS / IDIOMAS", 320, 520); textField(form, page, "character.skills", [skillsText, languagesText && `Idiomas: ${languagesText}`].filter(Boolean).join(" · "), 320, 496, 238, 18, 6.5);
 
   label(page, bold, "EQUIPAMENTO", 36, 515); textField(form, page, "character.equipment", listNames(catalog.equipment, character.equipmentIds || [], character.equipmentQuantities), 36, 463, 522, 42, 8);
   label(page, bold, "MAGIAS", 36, 438); textField(form, page, "character.spells", listNames(catalog.spells, character.spellIds || []), 36, 386, 522, 42, 8);

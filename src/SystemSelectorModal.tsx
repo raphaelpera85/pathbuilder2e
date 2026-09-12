@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { useTranslation } from "./i18n";
 import { DEFAULT_RPG_SYSTEMS } from "./services/catalog";
@@ -18,21 +18,43 @@ export const SystemSelectorModal: React.FC<SystemSelectorModalProps> = ({
   systems = DEFAULT_RPG_SYSTEMS,
 }) => {
   const { t, locale } = useTranslation();
+  const modalContentRef = useRef<HTMLDivElement>(null);
 
   // Fechar com Escape e bloquear scroll do body
   useEffect(() => {
     if (!isOpen) return;
+    const previouslyFocused = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         onClose();
+        return;
+      }
+      if (e.key !== "Tab") return;
+      const focusable = Array.from(modalContentRef.current?.querySelectorAll<HTMLElement>(
+        'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      ) || []);
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
       }
     };
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     window.addEventListener("keydown", handleKeyDown);
+    const firstFocusable = modalContentRef.current?.querySelector<HTMLElement>(
+      'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    );
+    firstFocusable?.focus();
     return () => {
       document.body.style.overflow = prevOverflow;
       window.removeEventListener("keydown", handleKeyDown);
+      if (previouslyFocused?.isConnected) previouslyFocused.focus();
     };
   }, [isOpen, onClose]);
 
@@ -53,7 +75,7 @@ export const SystemSelectorModal: React.FC<SystemSelectorModalProps> = ({
       aria-modal="true"
       aria-labelledby="pb-system-modal-title"
     >
-      <div className="pb-system-modal-content">
+      <div ref={modalContentRef} className="pb-system-modal-content">
         {/* Botão de Fechar */}
         <button
           type="button"

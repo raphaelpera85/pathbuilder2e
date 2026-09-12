@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { abilityModifier, proficiencyBonus } from "./multiSystemCharacter";
 import { DND5E_RULES_ENGINE, T20_RULES_ENGINE, getSystemRulesEngine } from "./systemRulesEngine";
 
 describe("system rules engines", () => {
@@ -7,6 +8,30 @@ describe("system rules engines", () => {
     expect(DND5E_RULES_ENGINE.getCreationSteps()).toContain("antecedente");
     expect(T20_RULES_ENGINE.ruleset).toBe("padrao");
     expect(DND5E_RULES_ENGINE.ruleset).toBe("standard");
+  });
+
+  it("mantém invariantes monotônicas de modificadores, proficiência e PV", () => {
+    for (const system of ["t20", "dnd5e"] as const) {
+      const modifiers = Array.from({ length: 30 }, (_, index) => abilityModifier(index + 1, system));
+      expect(modifiers).toEqual([...modifiers].sort((a, b) => a - b));
+      expect(modifiers[0]).toBeLessThan(modifiers.at(-1)!);
+
+      const proficiency = Array.from({ length: 20 }, (_, index) => proficiencyBonus(system, index + 1));
+      expect(proficiency).toEqual([...proficiency].sort((a, b) => a - b));
+      expect(proficiency[0]).toBe(system === "t20" ? 3 : 2);
+      expect(proficiency.at(-1)).toBeGreaterThanOrEqual(proficiency[0]);
+    }
+
+    for (const level of Array.from({ length: 20 }, (_, index) => index + 1)) {
+      const fighter = DND5E_RULES_ENGINE.createDefaultCharacter();
+      fighter.classId = "guerreiro";
+      fighter.level = level;
+      fighter.abilities = { str: 16, dex: 14, con: 14, int: 10, wis: 10, cha: 10 };
+      const stats = DND5E_RULES_ENGINE.deriveStats(fighter);
+      expect(stats.hpMax).toBeGreaterThan(0);
+      expect(stats.carryingCapacity).toBe(240);
+      expect(stats.defense).toBeGreaterThan(0);
+    }
   });
 
   it("keeps alignment and deity fields specific to each system", () => {
@@ -34,6 +59,7 @@ describe("system rules engines", () => {
   it("derives combat values with the selected system rules", () => {
     const t20 = T20_RULES_ENGINE.createDefaultCharacter();
     t20.abilities = { str: 10, dex: 14, con: 14, int: 10, wis: 10, cha: 10 };
+    t20.raceAbilityChoices = [];
     const t20Stats = T20_RULES_ENGINE.deriveStats(t20);
     expect(t20Stats.hpMax).toBeGreaterThan(0);
     expect(t20Stats.manaMax).toBe(6);
@@ -66,11 +92,16 @@ describe("system rules engines", () => {
     expect(wizardStats.savingThrowBonuses.int).toBe(5);
     expect(wizardStats.speed).toBe(9);
     expect(wizardStats.experienceForLevel).toBe(0);
+    const emptyWizard = DND5E_RULES_ENGINE.createDefaultCharacter();
+    emptyWizard.classId = "mago";
+    expect(DND5E_RULES_ENGINE.deriveStats(emptyWizard).spellSlots).toEqual({ 1: 2 });
+    expect(DND5E_RULES_ENGINE.deriveStats(emptyWizard).preparedSpellLimit).toBe(1);
   });
 
   it("applies T20 armor penalties to Strength/Dexterity skills without penalizing other abilities", () => {
     const character = T20_RULES_ENGINE.createDefaultCharacter();
     character.abilities = { str: 12, dex: 12, con: 10, int: 10, wis: 12, cha: 10 };
+    character.raceAbilityChoices = [];
     character.skillProficiencies = ["atletismo", "acrobacia", "percepcao"];
     character.equipmentIds = ["t20.armadura.media", "t20.escudo.pesado"];
 
@@ -79,6 +110,83 @@ describe("system rules engines", () => {
     expect(stats.skillBonuses.atletismo).toBe(2);
     expect(stats.skillBonuses.acrobacia).toBe(2);
     expect(stats.skillBonuses.percepcao).toBe(4);
+  });
+
+  it("valida e aplica escolhas flexíveis de atributos raciais", () => {
+    const t20 = T20_RULES_ENGINE.createDefaultCharacter();
+    t20.abilities = { str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10 };
+    t20.raceAbilityChoices = ["str", "dex", "wis"];
+    expect(T20_RULES_ENGINE.validateCharacter(t20)).toEqual([]);
+    expect(T20_RULES_ENGINE.deriveStats(t20).modifiers).toMatchObject({ str: 1, dex: 1, wis: 1 });
+
+    t20.raceAbilityChoices = ["str", "str", "dex"];
+    expect(T20_RULES_ENGINE.validateCharacter(t20)).toContain("os bônus raciais flexíveis devem escolher atributos diferentes");
+
+    t20.raceId = "lefou";
+    t20.raceAbilityChoices = ["cha", "str", "dex"];
+    expect(T20_RULES_ENGINE.validateCharacter(t20)).toContain("o bônus racial flexível foi aplicado a um atributo proibido");
+
+    const halfElf = DND5E_RULES_ENGINE.createDefaultCharacter();
+    halfElf.raceId = "meio_elfo";
+    halfElf.subraceId = undefined;
+    halfElf.raceAbilityChoices = ["str", "wis"];
+    halfElf.raceLanguages = ["Anão"];
+    halfElf.raceSkillChoices = ["furtividade", "percepcao"];
+    expect(DND5E_RULES_ENGINE.validateCharacter(halfElf)).toEqual([]);
+    halfElf.raceAbilityChoices = ["cha", "str"];
+    expect(DND5E_RULES_ENGINE.validateCharacter(halfElf)).toContain("o bônus racial flexível foi aplicado a um atributo proibido");
+  });
+
+  it("valida idiomas adicionais concedidos pela raça em D&D 5e", () => {
+    const human = DND5E_RULES_ENGINE.createDefaultCharacter();
+    human.raceId = "humano";
+    human.subraceId = undefined;
+    human.raceLanguages = ["Élfico"];
+    expect(DND5E_RULES_ENGINE.validateCharacter(human)).toEqual([]);
+
+    human.raceLanguages = [];
+    expect(DND5E_RULES_ENGINE.validateCharacter(human)).toContain("a raça exige 1 idioma(s) adicional(is)");
+    human.raceLanguages = ["Idioma inventado"];
+    expect(DND5E_RULES_ENGINE.validateCharacter(human)).toContain("idioma racial não pertence ao catálogo de D&D 5e");
+  });
+
+  it("valida e aplica perícias raciais adicionais do Meio-Elfo", () => {
+    const halfElf = DND5E_RULES_ENGINE.createDefaultCharacter();
+    halfElf.raceId = "meio_elfo";
+    halfElf.subraceId = undefined;
+    halfElf.raceAbilityChoices = ["str", "wis"];
+    halfElf.raceLanguages = ["Anão"];
+    halfElf.raceSkillChoices = ["furtividade", "percepcao"];
+    expect(DND5E_RULES_ENGINE.validateCharacter(halfElf)).toEqual([]);
+    expect(DND5E_RULES_ENGINE.deriveStats(halfElf).skillBonuses.furtividade).toBeGreaterThan(0);
+    halfElf.raceSkillChoices = ["furtividade"];
+    expect(DND5E_RULES_ENGINE.validateCharacter(halfElf)).toContain("a raça exige 2 perícia(s) adicional(is)");
+    const existingSkill = halfElf.skillProficiencies.find((skill) => !halfElf.raceSkillChoices.includes(skill))!;
+    halfElf.raceSkillChoices = [existingSkill, "percepcao"];
+    expect(DND5E_RULES_ENGINE.validateCharacter(halfElf).some((error) => error.includes("a perícia racial adicional não pode repetir"))).toBe(true);
+  });
+
+  it("valida o caminho de duas perícias raciais de Humano T20", () => {
+    const human = T20_RULES_ENGINE.createDefaultCharacter();
+    human.raceSkillChoices = ["furtividade", "atletismo"];
+    expect(T20_RULES_ENGINE.validateCharacter(human)).toEqual([]);
+    expect(T20_RULES_ENGINE.deriveStats(human).skillBonuses.furtividade).toBeGreaterThan(0);
+  });
+
+  it("valida a alternativa racial de uma perícia e um poder T20", () => {
+    const human = T20_RULES_ENGINE.createDefaultCharacter();
+    human.raceChoiceMode = "skill_and_feat";
+    human.raceSkillChoices = ["furtividade"];
+    human.raceFeatChoice = "t20.poder.iniciativa_aprimorada";
+    expect(T20_RULES_ENGINE.validateCharacter(human)).toEqual([]);
+
+    const lefou = { ...human, raceId: "lefou", raceFeatChoice: "t20.poder.anatomia_insana" };
+    expect(T20_RULES_ENGINE.validateCharacter(lefou)).toEqual([]);
+    lefou.raceFeatChoice = "t20.poder.ataque_poderoso";
+    expect(T20_RULES_ENGINE.validateCharacter(lefou)).toContain("o Lefou só pode escolher um poder da Tormenta");
+
+    human.raceFeatChoice = "t20.poder.ataque_poderoso";
+    expect(T20_RULES_ENGINE.validateCharacter(human)).toEqual(["o poder racial Ataque Poderoso não atende aos pré-requisitos: For 13"]);
   });
 
   it("derives the system-specific XP tables and racial speed", () => {
@@ -105,6 +213,15 @@ describe("system rules engines", () => {
     expect(barbarianStats.classFeatures).toEqual(expect.arrayContaining([
       expect.objectContaining({ level: 5, name: "Ataque Extra" }),
     ]));
+    const levelOneFighter = DND5E_RULES_ENGINE.createDefaultCharacter();
+    levelOneFighter.classId = "guerreiro";
+    expect(DND5E_RULES_ENGINE.deriveStats(levelOneFighter).classResources.map((resource) => resource.name)).not.toContain("Surto de Ação");
+    const levelTwentyBarbarian = DND5E_RULES_ENGINE.createDefaultCharacter();
+    levelTwentyBarbarian.classId = "barbaro";
+    levelTwentyBarbarian.level = 20;
+    expect(DND5E_RULES_ENGINE.deriveStats(levelTwentyBarbarian).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Fúrias", value: "999" }),
+    ]));
 
     const t20 = T20_RULES_ENGINE.createDefaultCharacter();
     t20.classId = "paladino";
@@ -119,6 +236,13 @@ describe("system rules engines", () => {
     const character = T20_RULES_ENGINE.createDefaultCharacter();
     character.skillProficiencies = [];
     expect(T20_RULES_ENGINE.validateCharacter(character)).toContain("a perícia obrigatória da classe deve permanecer treinada");
+  });
+
+  it("limits D&D 5e feats to available ASI slots", () => {
+    const character = DND5E_RULES_ENGINE.createDefaultCharacter();
+    character.level = 4;
+    character.featIds = ["dnd5e.talento.alerta", "dnd5e.talento.resiliente", "dnd5e.talento.atleta"];
+    expect(DND5E_RULES_ENGINE.validateCharacter(character)).toContain("a quantidade de talentos excede os aumentos de atributo disponíveis para este nível");
   });
 
   it("enforces the selected ability-generation method", () => {
@@ -142,6 +266,17 @@ describe("system rules engines", () => {
     wizard.classId = "mago";
     wizard.equipmentIds = ["dnd5e.armadura.cota_de_malha"];
     expect(DND5E_RULES_ENGINE.validateCharacter(wizard).some((error) => error.includes("exige proficiência"))).toBe(true);
+  });
+
+  it("applies D&D saving throw proficiency to the class abilities", () => {
+    const fighter = DND5E_RULES_ENGINE.createDefaultCharacter();
+    fighter.classId = "guerreiro";
+    fighter.abilities = { str: 16, dex: 10, con: 14, int: 8, wis: 10, cha: 10 };
+    const derived = DND5E_RULES_ENGINE.deriveStats(fighter);
+    expect(derived.savingThrowBonuses.str).toBe(derived.modifiers.str + derived.proficiencyBonus);
+    expect(derived.savingThrowBonuses.con).toBe(derived.modifiers.con + derived.proficiencyBonus);
+    expect(derived.savingThrowBonuses.dex).toBe(derived.modifiers.dex);
+    expect(derived.savingThrowBonuses.wis).toBe(derived.modifiers.wis);
   });
 
   it("applies equipment quantities to encumbrance and validates them", () => {
@@ -189,6 +324,21 @@ describe("system rules engines", () => {
     expect(T20_RULES_ENGINE.validateCharacter(t20)).not.toContain("a moeda tibar não pertence ao sistema selecionado");
   });
 
+  it("enforces T20 deity equipment restrictions with structured material metadata", () => {
+    const character = T20_RULES_ENGINE.createDefaultCharacter();
+    character.deity = "allihanna";
+    character.equipmentIds = ["t20.armadura.media"];
+    expect(T20_RULES_ENGINE.validateCharacter(character)).toContain("Allihanna não permite o uso de armaduras ou escudos metálicos");
+    character.equipmentIds = ["t20.armadura.couro"];
+    expect(T20_RULES_ENGINE.validateCharacter(character)).not.toContain("Allihanna não permite o uso de armaduras ou escudos metálicos");
+
+    character.deity = "oceano";
+    character.equipmentIds = ["t20.armadura.media"];
+    expect(T20_RULES_ENGINE.validateCharacter(character)).toContain("Oceano permite apenas armaduras leves");
+    character.equipmentIds = ["t20.armadura.couraca"];
+    expect(T20_RULES_ENGINE.validateCharacter(character)).not.toContain("Oceano permite apenas armaduras leves");
+  });
+
   it("does not allow spells on a non-spellcasting D&D class", () => {
     const character = DND5E_RULES_ENGINE.createDefaultCharacter();
     character.classId = "guerreiro";
@@ -219,13 +369,29 @@ describe("system rules engines", () => {
     expect(DND5E_RULES_ENGINE.validateCharacter(character)).toContain("sub-raça não pertence à raça selecionada");
   });
 
+  it("uses the class-specific D&D subclass level and requires the choice when reached", () => {
+    const cleric = DND5E_RULES_ENGINE.createDefaultCharacter();
+    cleric.classId = "clerigo";
+    cleric.level = 1;
+    expect(DND5E_RULES_ENGINE.validateCharacter(cleric)).toContain("selecione uma subclasse a partir do nível 1");
+    cleric.level = 2;
+    expect(DND5E_RULES_ENGINE.validateCharacter(cleric)).toContain("selecione uma subclasse a partir do nível 1");
+
+    const wizard = DND5E_RULES_ENGINE.createDefaultCharacter();
+    wizard.classId = "mago";
+    wizard.level = 1;
+    expect(DND5E_RULES_ENGINE.validateCharacter(wizard)).not.toContain("selecione uma subclasse a partir do nível 2");
+    wizard.level = 2;
+    expect(DND5E_RULES_ENGINE.validateCharacter(wizard)).toContain("selecione uma subclasse a partir do nível 2");
+  });
+
   it("requires a selected D&D subclass to respect its feature level", () => {
     const character = DND5E_RULES_ENGINE.createDefaultCharacter();
     character.subclassId = "dnd5e.mago_evocacao";
     expect(DND5E_RULES_ENGINE.validateCharacter(character)).toContain("subclasse não pertence ao catálogo do sistema");
     character.classId = "mago";
     character.subclassId = "mago_evocacao";
-    expect(DND5E_RULES_ENGINE.validateCharacter(character)).toContain("a subclasse só pode ser escolhida a partir do nível 3");
+    expect(DND5E_RULES_ENGINE.validateCharacter(character)).toContain("a subclasse só pode ser escolhida a partir do nível 2");
   });
 
   it("limits D&D feats to their minimum level while keeping T20 powers available", () => {

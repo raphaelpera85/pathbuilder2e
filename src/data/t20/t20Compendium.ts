@@ -1,4 +1,4 @@
-export interface T20CompendiumEntry { id: string; name: string; sourcePage: number; category: "arma" | "armadura" | "equipamento" | "magia" | "poder"; summary: string; spellLevel?: number; classIds?: string[]; proficiency?: "simple_weapon" | "martial_weapon" | "light_armor" | "medium_armor" | "heavy_armor" | "shield"; armorClass?: number; armorBonus?: number; armorPenalty?: number; dexterityCap?: number; requiresStrength?: number; shieldBonus?: number; attackAbility?: "str" | "dex"; damage?: string; weight?: number; cost?: string; minimumLevel?: number; powerGroup?: "combate" | "destino" | "magia" | "concedido" | "tormenta"; prerequisite?: string; deityIds?: string[]; }
+export interface T20CompendiumEntry { id: string; name: string; sourcePage: number; category: "arma" | "armadura" | "equipamento" | "magia" | "poder"; summary: string; spellLevel?: number; classIds?: string[]; proficiency?: "simple_weapon" | "martial_weapon" | "light_armor" | "medium_armor" | "heavy_armor" | "shield"; armorClass?: number; armorBonus?: number; armorPenalty?: number; dexterityCap?: number; requiresStrength?: number; shieldBonus?: number; attackAbility?: "str" | "dex"; damage?: string; weight?: number; cost?: string; armorMaterial?: "metal" | "non_metal"; armorWeightClass?: "light" | "heavy"; minimumLevel?: number; powerGroup?: "combate" | "destino" | "magia" | "concedido" | "tormenta"; prerequisite?: string; deityIds?: string[]; }
 
 export const T20_EQUIPMENT: T20CompendiumEntry[] = [
   { id: "t20.arma.adaga", name: "Adaga", sourcePage: 142, category: "arma", summary: "1d4, perfuração, leve", attackAbility: "dex", damage: "1d4 perfuração" },
@@ -6,9 +6,9 @@ export const T20_EQUIPMENT: T20CompendiumEntry[] = [
   { id: "t20.arma.espada_longa", name: "Espada longa", sourcePage: 143, category: "arma", summary: "1d8, corte", attackAbility: "str", damage: "1d8 corte" },
   { id: "t20.arma.machado_guerra", name: "Machado de guerra", sourcePage: 143, category: "arma", summary: "1d12, corte", attackAbility: "str", damage: "1d12 corte" },
   { id: "t20.arma.montante", name: "Montante", sourcePage: 143, category: "arma", summary: "2d6, corte, pesada", attackAbility: "str", damage: "2d6 corte" },
-  { id: "t20.armadura.leve", name: "Couro batido", sourcePage: 144, category: "armadura", summary: "Defesa +3, penalidade -1", armorBonus: 3, armorPenalty: -1 },
-  { id: "t20.armadura.media", name: "Cota de malha", sourcePage: 145, category: "armadura", summary: "Defesa +6, penalidade -2", armorBonus: 6, armorPenalty: -2 },
-  { id: "t20.armadura.pesada", name: "Armadura completa", sourcePage: 145, category: "armadura", summary: "Defesa +10, penalidade -5", armorBonus: 10, armorPenalty: -5 },
+  { id: "t20.armadura.leve", name: "Couro batido", sourcePage: 144, category: "armadura", summary: "Defesa +3, penalidade -1", armorBonus: 3, armorPenalty: -1, armorMaterial: "non_metal", armorWeightClass: "light" },
+  { id: "t20.armadura.media", name: "Cota de malha", sourcePage: 145, category: "armadura", summary: "Defesa +6, penalidade -2", armorBonus: 6, armorPenalty: -2, armorMaterial: "metal", armorWeightClass: "heavy" },
+  { id: "t20.armadura.pesada", name: "Armadura completa", sourcePage: 145, category: "armadura", summary: "Defesa +10, penalidade -5", armorBonus: 10, armorPenalty: -5, armorMaterial: "metal", armorWeightClass: "heavy" },
   { id: "t20.equipamento.mochila", name: "Mochila de aventureiro", sourcePage: 148, category: "equipamento", summary: "Kit básico de exploração" },
   { id: "t20.equipamento.corda", name: "Corda (15m)", sourcePage: 149, category: "equipamento", summary: "Corda de cânhamo" },
   { id: "t20.arma.ataque_desarmado", name: "Ataque desarmado", sourcePage: 140, category: "arma", summary: "1d3 impacto", attackAbility: "str", damage: "1d3 impacto", weight: 0 },
@@ -44,15 +44,15 @@ export const T20_EQUIPMENT: T20CompendiumEntry[] = [
   { id: "t20.arma.machado_taurico", name: "Machado táurico", sourcePage: 141, category: "arma", summary: "2d8 corte · crítico x3", attackAbility: "str", damage: "2d8 corte", weight: 12 },
   { id: "t20.arma.pistola", name: "Pistola", sourcePage: 141, category: "arma", summary: "2d6 perfuração · alcance curto", attackAbility: "dex", damage: "2d6 perfuração", weight: 1 },
   { id: "t20.arma.mosquete", name: "Mosquete", sourcePage: 141, category: "arma", summary: "2d8 perfuração · alcance médio", attackAbility: "dex", damage: "2d8 perfuração", weight: 4 },
-  { id: "t20.armadura.acolchoada", name: "Armadura acolchoada", sourcePage: 149, category: "armadura", summary: "Defesa +1 · penalidade 0", armorBonus: 1, armorPenalty: 0, weight: 5 },
-  { id: "t20.armadura.couro", name: "Armadura de couro", sourcePage: 149, category: "armadura", summary: "Defesa +2 · penalidade 0", armorBonus: 2, armorPenalty: 0, weight: 7 },
-  { id: "t20.armadura.gibao_peles", name: "Gibão de peles", sourcePage: 149, category: "armadura", summary: "Defesa +4 · penalidade -3", armorBonus: 4, armorPenalty: -3, weight: 12 },
-  { id: "t20.armadura.couraca", name: "Couraça", sourcePage: 149, category: "armadura", summary: "Defesa +5 · penalidade -4", armorBonus: 5, armorPenalty: -4, weight: 15 },
-  { id: "t20.armadura.brunea", name: "Brunea", sourcePage: 149, category: "armadura", summary: "Defesa +5 · penalidade -2", armorBonus: 5, armorPenalty: -2, weight: 15 },
-  { id: "t20.armadura.loriga_segmentada", name: "Loriga segmentada", sourcePage: 149, category: "armadura", summary: "Defesa +7 · penalidade -3", armorBonus: 7, armorPenalty: -3, weight: 17 },
-  { id: "t20.armadura.meia_armadura", name: "Meia armadura", sourcePage: 149, category: "armadura", summary: "Defesa +8 · penalidade -4", armorBonus: 8, armorPenalty: -4, weight: 22 },
-  { id: "t20.escudo.leve", name: "Escudo leve", sourcePage: 149, category: "armadura", summary: "Defesa +1 · penalidade -1", armorBonus: 1, armorPenalty: -1, weight: 3, shieldBonus: 1 },
-  { id: "t20.escudo.pesado", name: "Escudo pesado", sourcePage: 149, category: "armadura", summary: "Defesa +2 · penalidade -2", armorBonus: 2, armorPenalty: -2, weight: 7, shieldBonus: 2 },
+  { id: "t20.armadura.acolchoada", name: "Armadura acolchoada", sourcePage: 149, category: "armadura", summary: "Defesa +1 · penalidade 0", armorBonus: 1, armorPenalty: 0, weight: 5, armorMaterial: "non_metal", armorWeightClass: "light" },
+  { id: "t20.armadura.couro", name: "Armadura de couro", sourcePage: 149, category: "armadura", summary: "Defesa +2 · penalidade 0", armorBonus: 2, armorPenalty: 0, weight: 7, armorMaterial: "non_metal", armorWeightClass: "light" },
+  { id: "t20.armadura.gibao_peles", name: "Gibão de peles", sourcePage: 149, category: "armadura", summary: "Defesa +4 · penalidade -3", armorBonus: 4, armorPenalty: -3, weight: 12, armorMaterial: "non_metal", armorWeightClass: "light" },
+  { id: "t20.armadura.couraca", name: "Couraça", sourcePage: 149, category: "armadura", summary: "Defesa +5 · penalidade -4", armorBonus: 5, armorPenalty: -4, weight: 15, armorMaterial: "metal", armorWeightClass: "light" },
+  { id: "t20.armadura.brunea", name: "Brunea", sourcePage: 149, category: "armadura", summary: "Defesa +5 · penalidade -2", armorBonus: 5, armorPenalty: -2, weight: 15, armorMaterial: "metal", armorWeightClass: "heavy" },
+  { id: "t20.armadura.loriga_segmentada", name: "Loriga segmentada", sourcePage: 149, category: "armadura", summary: "Defesa +7 · penalidade -3", armorBonus: 7, armorPenalty: -3, weight: 17, armorMaterial: "metal", armorWeightClass: "heavy" },
+  { id: "t20.armadura.meia_armadura", name: "Meia armadura", sourcePage: 149, category: "armadura", summary: "Defesa +8 · penalidade -4", armorBonus: 8, armorPenalty: -4, weight: 22, armorMaterial: "metal", armorWeightClass: "heavy" },
+  { id: "t20.escudo.leve", name: "Escudo leve", sourcePage: 149, category: "armadura", summary: "Defesa +1 · penalidade -1", armorBonus: 1, armorPenalty: -1, weight: 3, shieldBonus: 1, armorMaterial: "non_metal" },
+  { id: "t20.escudo.pesado", name: "Escudo pesado", sourcePage: 149, category: "armadura", summary: "Defesa +2 · penalidade -2", armorBonus: 2, armorPenalty: -2, weight: 7, shieldBonus: 2, armorMaterial: "metal" },
   { id: "t20.equipamento.algemas", name: "Algemas", sourcePage: 151, category: "equipamento", summary: "Para criaturas Médias", weight: 1 },
   { id: "t20.equipamento.barraca", name: "Barraca", sourcePage: 151, category: "equipamento", summary: "Abrigo para aventureiros", weight: 10 },
   { id: "t20.equipamento.espelho", name: "Espelho de metal", sourcePage: 151, category: "equipamento", summary: "Espelho polido", weight: 0.25 },
@@ -63,7 +63,40 @@ export const T20_EQUIPMENT: T20CompendiumEntry[] = [
   { id: "t20.equipamento.pederneira", name: "Pederneira", sourcePage: 151, category: "equipamento", summary: "Acender fogo", weight: 0 },
   { id: "t20.equipamento.racao", name: "Ração de viagem", sourcePage: 151, category: "equipamento", summary: "Alimentação por um dia", weight: 0.5 },
   { id: "t20.equipamento.saco_dormir", name: "Saco de dormir", sourcePage: 151, category: "equipamento", summary: "Para descanso", weight: 2.5 },
+  { id: "t20.municao.balas", name: "Balas (20)", sourcePage: 151, category: "equipamento", summary: "Munição para pistolas e mosquetes · pacote com 20", cost: "T$ 20" },
+  { id: "t20.municao.flechas", name: "Flechas (20)", sourcePage: 151, category: "equipamento", summary: "Munição para arcos · pacote com 20", cost: "T$ 1" },
+  { id: "t20.municao.pedras", name: "Pedras (20)", sourcePage: 151, category: "equipamento", summary: "Munição para fundas · pacote com 20", cost: "T$ 0,5" },
+  { id: "t20.municao.virotes", name: "Virotes (20)", sourcePage: 151, category: "equipamento", summary: "Munição para bestas · pacote com 20", cost: "T$ 2" },
 ];
+
+// Preços da Tabela 3-3 (armas), 3-5 (armaduras e escudos) e 3-6 (itens gerais)
+// do Tormenta20 — Livro Básico. Ataque desarmado, pederneira e odre não são
+// vendidos como itens independentes nessas tabelas e, por isso, permanecem sem preço.
+const T20_COSTS: Record<string, string> = {
+  "t20.arma.adaga": "T$ 2", "t20.arma.arco_curto": "T$ 30", "t20.arma.espada_longa": "T$ 15",
+  "t20.arma.machado_guerra": "T$ 20", "t20.arma.montante": "T$ 50", "t20.armadura.leve": "T$ 35",
+  "t20.armadura.media": "T$ 150", "t20.armadura.pesada": "T$ 3.000", "t20.equipamento.mochila": "T$ 50",
+  "t20.equipamento.corda": "T$ 1", "t20.arma.espada_curta": "T$ 10", "t20.arma.foice": "T$ 4",
+  "t20.arma.manopla": "T$ 5", "t20.arma.clava": "T$ 0", "t20.arma.lanca": "T$ 2",
+  "t20.arma.maca": "T$ 12", "t20.arma.bordao": "T$ 0", "t20.arma.pique": "T$ 2",
+  "t20.arma.tacape": "T$ 0", "t20.arma.besta_leve": "T$ 35", "t20.arma.azagaia": "T$ 1",
+  "t20.arma.funda": "T$ 0", "t20.arma.escudo_leve": "T$ 5", "t20.arma.machadinha": "T$ 6",
+  "t20.arma.cimitarra": "T$ 15", "t20.arma.escudo_pesado": "T$ 15", "t20.arma.florete": "T$ 20",
+  "t20.arma.mangual": "T$ 8", "t20.arma.martelo_guerra": "T$ 12", "t20.arma.picareta": "T$ 8",
+  "t20.arma.tridente": "T$ 15", "t20.arma.alabarda": "T$ 10", "t20.arma.alfange": "T$ 75",
+  "t20.arma.gadanho": "T$ 18", "t20.arma.lanca_montada": "T$ 10", "t20.arma.espada_bastarda": "T$ 35",
+  "t20.arma.katana": "T$ 100", "t20.arma.machado_anão": "T$ 30", "t20.arma.corrente_espinhos": "T$ 25",
+  "t20.arma.machado_taurico": "T$ 50", "t20.arma.pistola": "T$ 250", "t20.arma.mosquete": "T$ 500",
+  "t20.armadura.acolchoada": "T$ 5", "t20.armadura.couro": "T$ 20", "t20.armadura.gibao_peles": "T$ 25",
+  "t20.armadura.couraca": "T$ 500", "t20.armadura.brunea": "T$ 50", "t20.armadura.loriga_segmentada": "T$ 250",
+  "t20.armadura.meia_armadura": "T$ 600", "t20.escudo.leve": "T$ 5", "t20.escudo.pesado": "T$ 15",
+  "t20.equipamento.algemas": "T$ 15", "t20.equipamento.barraca": "T$ 10", "t20.equipamento.espelho": "T$ 10",
+  "t20.equipamento.kit_ladrao": "T$ 5", "t20.equipamento.kit_medicamentos": "T$ 50", "t20.equipamento.lampiao": "T$ 7",
+  "t20.equipamento.racao": "T$ 0,5", "t20.equipamento.saco_dormir": "T$ 1",
+  "t20.municao.balas": "T$ 20", "t20.municao.flechas": "T$ 1", "t20.municao.pedras": "T$ 0,5", "t20.municao.virotes": "T$ 2",
+};
+
+T20_EQUIPMENT.forEach((entry) => { entry.cost = T20_COSTS[entry.id]; });
 
 const T20_EXPANDED_SPELLS: T20CompendiumEntry[] = [
   ["anular_a_luz", "Anular a Luz", 178, 3, "divina", "Necromancia"],

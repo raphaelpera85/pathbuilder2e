@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import {
   type OseAbilityName,
@@ -62,6 +62,7 @@ export function OseCharacterCreatorModal({
   onCharacterCreated,
 }: OseCharacterCreatorModalProps) {
   const [step, setStep] = useState<number>(1);
+  const modalRef = useRef<HTMLDivElement>(null);
   const [validationMessage, setValidationMessage] = useState<string>("");
   const [charName, setCharName] = useState("Aventureiro de Karameikos");
   const [creationMode, setCreationMode] = useState<"advanced" | "classic">("advanced");
@@ -69,17 +70,40 @@ export function OseCharacterCreatorModal({
   // Fechar com Escape e travar overflow do body
   useEffect(() => {
     if (!isOpen) return;
+    const previousFocus = document.activeElement as HTMLElement | null;
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         onClose();
+        return;
+      }
+      if (e.key !== "Tab" || !modalRef.current) return;
+      const focusable = Array.from(modalRef.current.querySelectorAll<HTMLElement>(
+        'button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      ));
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
       }
     };
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     window.addEventListener("keydown", handleKeyDown);
+    window.setTimeout(() => {
+      const first = modalRef.current?.querySelector<HTMLElement>(
+        'button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      );
+      first?.focus();
+    }, 0);
     return () => {
       document.body.style.overflow = prevOverflow;
       window.removeEventListener("keydown", handleKeyDown);
+      previousFocus?.focus();
     };
   }, [isOpen, onClose]);
 
@@ -303,11 +327,11 @@ export function OseCharacterCreatorModal({
   const modalRoot = document.getElementById("react-modal-root") || document.body;
 
   return createPortal(
-    <div className="ose-wizard-overlay" role="dialog" aria-modal="true">
-      <div className="ose-wizard-modal">
+    <div className="ose-wizard-overlay" role="dialog" aria-modal="true" aria-labelledby="ose-wizard-title">
+      <div ref={modalRef} className="ose-wizard-modal">
         {/* Header */}
         <header className="ose-wizard-header">
-          <h2>🎲 Criador de Personagem Old-School Essentials</h2>
+          <h2 id="ose-wizard-title">🎲 Criador de Personagem Old-School Essentials</h2>
           <button className="ose-btn" type="button" onClick={onClose} aria-label="Fechar">
             ✕
           </button>

@@ -118,6 +118,10 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       for (const [ability, adjustment] of Object.entries(subraceRules?.attributeAdjustments || {})) {
         effectiveAbilities[ability as keyof typeof effectiveAbilities] += adjustment || 0;
       }
+      const raceChoiceAmount = raceRules?.abilityChoices?.amount || 0;
+      for (const ability of character.raceAbilityChoices || []) {
+        if (ability in effectiveAbilities) effectiveAbilities[ability as keyof typeof effectiveAbilities] += raceChoiceAmount;
+      }
       const modifiers = Object.fromEntries(
         Object.entries(effectiveAbilities).map(([ability, score]) => [ability, abilityModifier(score, systemId)]),
       );
@@ -150,7 +154,7 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         : equippedArmor
           ? equippedArmor.armorClass! + Math.min(dex, equippedArmor.dexterityCap || 0) + (equippedShield?.shieldBonus || 0)
           : 10 + dex + (equippedShield?.shieldBonus || 0);
-      const trained = new Set(character.skillProficiencies || []);
+      const trained = new Set([...(character.skillProficiencies || []), ...(character.raceSkillChoices || [])]);
       const expertise = new Set(character.skillExpertise || []);
       const armorDisadvantagesStealth = systemId === "dnd5e" && selectedEquipment.some((entry) => entry.category === "armadura" && entry.summary.toLowerCase().includes("desvantagem furtividade"));
       const skillRollModes = Object.fromEntries(catalog.skills.map((skill) => {
@@ -177,7 +181,7 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         : undefined;
       const spellcastingAbility = systemId === "t20" ? t20SpellAbilities[character.classId] : dndSpellAbility;
       const isSpellcaster = systemId === "t20"
-        ? Boolean(spellcastingAbility && (character.spellIds || []).length)
+        ? Boolean(spellcastingAbility)
         : Boolean(progression && "spellcaster" in progression && progression.spellcaster && spellcastingAbility && (!progression.spellcastingLevel || character.level >= progression.spellcastingLevel));
       const spellSaveDC = isSpellcaster && spellcastingAbility ? 8 + proficiencyBonus(systemId, character.level) + (modifiers[spellcastingAbility] || 0) : undefined;
       const spellAttackBonus = isSpellcaster && spellcastingAbility ? proficiencyBonus(systemId, character.level) + (modifiers[spellcastingAbility] || 0) : undefined;
@@ -233,10 +237,15 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       if (selectedSubrace && selectedSubrace.raceId !== character.raceId) errors.push("sub-raça não pertence à raça selecionada");
       if (systemId === "dnd5e" && catalog.subraces.some((entry) => entry.raceId === character.raceId) && !selectedSubrace) errors.push("selecione uma sub-raça para a raça escolhida");
       if (!catalog.classes.some((entry) => entry.id === character.classId)) errors.push("classe não pertence ao catálogo do sistema");
+      const progression = catalog.progressions.find((entry) => entry.classId === character.classId);
       const selectedSubclass = character.subclassId ? catalog.subclasses.find((entry) => entry.id === character.subclassId) : undefined;
       if (character.subclassId && !selectedSubclass) errors.push("subclasse não pertence ao catálogo do sistema");
       if (selectedSubclass && selectedSubclass.classId !== character.classId) errors.push("subclasse não pertence à classe selecionada");
       if (selectedSubclass && character.level < selectedSubclass.featureLevel) errors.push(`a subclasse só pode ser escolhida a partir do nível ${selectedSubclass.featureLevel}`);
+      if (systemId === "dnd5e" && progression && "subclassLevel" in progression && character.level >= progression.subclassLevel) {
+        const classHasSubclasses = catalog.subclasses.some((entry) => entry.classId === character.classId);
+        if (classHasSubclasses && !selectedSubclass) errors.push(`selecione uma subclasse a partir do nível ${progression.subclassLevel}`);
+      }
       if (!catalog.backgrounds.some((entry) => entry.id === character.backgroundId)) errors.push("origem/antecedente não pertence ao catálogo do sistema");
       if (systemId === "dnd5e" && character.alignment && !DND5E_ALIGNMENTS.includes(character.alignment as typeof DND5E_ALIGNMENTS[number])) errors.push("alinhamento não pertence ao catálogo de D&D 5e");
       if (systemId === "t20" && character.deity && !T20_DEITIES.some((deity) => deity.id === character.deity || deity.name === character.deity)) errors.push("divindade não pertence ao Panteão de T20");
@@ -256,10 +265,66 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       const selectedBackground = catalog.backgrounds.find((entry) => entry.id === character.backgroundId);
       const featRace = catalog.raceRules.find((entry) => entry.id === character.raceId);
       const featSubrace = catalog.subraces.find((entry) => entry.id === character.subraceId);
+      const raceLanguages = character.raceLanguages || [];
+      const raceLanguageChoices = systemId === "dnd5e" && featRace && "languageChoices" in featRace ? Number((featRace as { languageChoices?: number }).languageChoices || 0) : 0;
+      if (raceLanguageChoices > 0) {
+        if (raceLanguages.length !== raceLanguageChoices) errors.push(`a raça exige ${raceLanguageChoices} idioma(s) adicional(is)`);
+        if (new Set(raceLanguages).size !== raceLanguages.length) errors.push("os idiomas raciais adicionais devem ser diferentes");
+      } else if (raceLanguages.length > 0) {
+        errors.push("a raça selecionada não concede idiomas adicionais");
+      }
+      for (const language of raceLanguages) if (!DND5E_LANGUAGES.includes(language as typeof DND5E_LANGUAGES[number])) errors.push("idioma racial não pertence ao catálogo de D&D 5e");
+      const raceSkillChoices = character.raceSkillChoices || [];
+      const raceSkillChoiceCount = featRace && "skillChoices" in featRace ? Number((featRace as { skillChoices?: number }).skillChoices || 0) : 0;
+      const raceChoiceMode = character.raceChoiceMode || "skills";
+      const raceFeatChoice = character.raceFeatChoice;
+      const raceChoiceGroup = featRace && "skillOrFeatChoice" in featRace ? (featRace as { skillOrFeatChoice?: "general" | "tormenta" }).skillOrFeatChoice : undefined;
+      const expectedRaceSkillCount = raceChoiceGroup && raceChoiceMode === "skill_and_feat" ? 1 : raceSkillChoiceCount;
+      if (raceSkillChoiceCount > 0) {
+        if (!["skills", "skill_and_feat"].includes(raceChoiceMode) || (!raceChoiceGroup && raceChoiceMode !== "skills")) errors.push("modo de escolha racial inválido");
+        if (raceSkillChoices.length !== expectedRaceSkillCount) errors.push(`a raça exige ${expectedRaceSkillCount} perícia(s) adicional(is)`);
+        if (new Set(raceSkillChoices).size !== raceSkillChoices.length) errors.push("as perícias raciais adicionais devem ser diferentes");
+        if (raceChoiceMode === "skills" && raceFeatChoice) errors.push("a escolha racial de poder exige o modo uma perícia e um poder");
+        if (raceChoiceMode === "skill_and_feat") {
+          const selectedFeat = raceFeatChoice ? catalog.feats.find((feat) => feat.id === raceFeatChoice) : undefined;
+          if (!selectedFeat) errors.push("selecione o poder racial permitido");
+          else {
+            const selectedPowerGroup = (selectedFeat as { powerGroup?: string }).powerGroup;
+            if (raceChoiceGroup === "tormenta" && selectedPowerGroup !== "tormenta") errors.push("o Lefou só pode escolher um poder da Tormenta");
+            if (raceChoiceGroup === "general" && ["tormenta", "concedido"].includes(selectedPowerGroup || "")) errors.push("o Humano só pode escolher um poder geral");
+            if (selectedFeat.minimumLevel && character.level < selectedFeat.minimumLevel) errors.push(`o poder racial ${selectedFeat.name} exige nível ${selectedFeat.minimumLevel}`);
+            const prerequisiteValue = "prerequisite" in selectedFeat ? selectedFeat.prerequisite : undefined;
+            if (systemId === "t20" && typeof prerequisiteValue === "string" && !isT20PowerPrerequisiteSatisfied(character, prerequisiteValue)) errors.push(`o poder racial ${selectedFeat.name} não atende aos pré-requisitos: ${prerequisiteValue}`);
+          }
+        }
+      } else if (raceFeatChoice || raceChoiceMode !== "skills") {
+        errors.push("a raça selecionada não concede uma escolha racial de perícia ou poder");
+      } else if (raceSkillChoices.length > 0) {
+        errors.push("a raça selecionada não concede perícias adicionais");
+      }
+      for (const skill of raceSkillChoices) if (!catalog.skills.some((entry) => entry.id === skill)) errors.push("perícia racial não pertence ao catálogo do sistema");
+      for (const skill of raceSkillChoices) if ((character.skillProficiencies || []).includes(skill)) errors.push("a perícia racial adicional não pode repetir uma perícia já treinada");
+      const raceChoiceRules = featRace?.abilityChoices;
+      const raceChoices = character.raceAbilityChoices || [];
+      const coreAbilities = new Set(["str", "dex", "con", "int", "wis", "cha"]);
+      if (raceChoiceRules) {
+        if (raceChoices.length !== raceChoiceRules.count) errors.push(`a raça exige ${raceChoiceRules.count} escolha(s) de atributo`);
+        if (new Set(raceChoices).size !== raceChoices.length) errors.push("os bônus raciais flexíveis devem escolher atributos diferentes");
+        for (const ability of raceChoices) {
+          if (!coreAbilities.has(ability)) errors.push("o bônus racial flexível aponta para um atributo inválido");
+          if (raceChoiceRules.exclude?.includes(ability)) errors.push("o bônus racial flexível foi aplicado a um atributo proibido");
+        }
+      } else if (raceChoices.length > 0) {
+        errors.push("a raça selecionada não possui bônus racial flexível");
+      }
       const effectiveAbilities = { ...character.abilities };
       for (const [ability, adjustment] of Object.entries(featRace?.attributeAdjustments || {})) effectiveAbilities[ability as keyof typeof effectiveAbilities] += adjustment || 0;
       for (const [ability, adjustment] of Object.entries(featSubrace?.attributeAdjustments || {})) effectiveAbilities[ability as keyof typeof effectiveAbilities] += adjustment || 0;
-      const trained = new Set(character.skillProficiencies || []);
+      for (const ability of raceChoices) {
+        if (ability in effectiveAbilities) effectiveAbilities[ability as keyof typeof effectiveAbilities] += raceChoiceRules?.amount || 0;
+      }
+      const trained = new Set([...(character.skillProficiencies || []), ...raceSkillChoices]);
+      const classCountedSkills = new Set([...trained].filter((skill) => !raceSkillChoices.includes(skill)));
       const expertise = new Set(character.skillExpertise || []);
       const requiredBackgroundSkills = selectedBackground && ("skillProficiencies" in selectedBackground ? selectedBackground.skillProficiencies : selectedBackground.trainedSkills);
       if (systemId === "dnd5e" && selectedBackground && "toolProficiencies" in selectedBackground && (character.toolProficiencies !== undefined || character.languages !== undefined)) {
@@ -292,18 +357,17 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         for (const skill of selectedClass.fixedSkills) if (!trained.has(skill)) errors.push("a perícia obrigatória da classe deve permanecer treinada");
         for (const skill of trained) {
           const isRequired = selectedClass.fixedSkills.includes(skill) || Boolean(requiredBackgroundSkills?.includes(skill));
-          if (!isRequired && !selectedClass.choiceSkills.includes(skill)) errors.push("a perícia escolhida não está disponível para a classe");
+          if (!isRequired && !selectedClass.choiceSkills.includes(skill) && !raceSkillChoices.includes(skill)) errors.push("a perícia escolhida não está disponível para a classe");
         }
         const max = new Set([...selectedClass.fixedSkills, ...(requiredBackgroundSkills || [])]).size + selectedClass.choiceSkillCount;
-        if (trained.size > max) errors.push(`a classe permite no máximo ${max} perícias treinadas nesta etapa`);
+        if (classCountedSkills.size > max) errors.push(`a classe permite no máximo ${max} perícias treinadas nesta etapa`);
       } else if (selectedClass && "skillChoiceCount" in selectedClass) {
         const minimum = new Set(requiredBackgroundSkills || []).size;
         if (!selectedClass.skillChoices.includes("qualquer")) {
-          for (const skill of trained) if (!requiredBackgroundSkills?.includes(skill) && !selectedClass.skillChoices.includes(skill)) errors.push("a perícia escolhida não está disponível para a classe");
+          for (const skill of trained) if (!requiredBackgroundSkills?.includes(skill) && !selectedClass.skillChoices.includes(skill) && !raceSkillChoices.includes(skill)) errors.push("a perícia escolhida não está disponível para a classe");
         }
-        if (trained.size > minimum + selectedClass.skillChoiceCount) errors.push(`a classe permite no máximo ${minimum + selectedClass.skillChoiceCount} perícias de classe além do antecedente`);
+        if (classCountedSkills.size > minimum + selectedClass.skillChoiceCount) errors.push(`a classe permite no máximo ${minimum + selectedClass.skillChoiceCount} perícias de classe além do antecedente`);
       }
-      const progression = catalog.progressions.find((entry) => entry.classId === character.classId);
       if (systemId === "dnd5e" && (character.spellIds || []).length > 0 && progression && "spellcaster" in progression) {
         if (!progression.spellcaster) errors.push("esta classe de D&D 5e não possui conjuração no Livro do Jogador");
         else if (progression.spellcastingLevel && character.level < progression.spellcastingLevel) errors.push(`esta classe só começa a conjurar no nível ${progression.spellcastingLevel}`);
@@ -330,6 +394,7 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         if (preparedSpellIds.length > preparedLimit) errors.push(`a classe permite preparar no máximo ${preparedLimit} magias neste nível`);
       }
       const selectedEquipment = (character.equipmentIds || []).map((id) => catalog.equipment.find((entry) => entry.id === id));
+      const selectedDeity = systemId === "t20" ? T20_DEITIES.find((deity) => deity.id === character.deity || deity.name === character.deity) : undefined;
       for (const [equipmentId, quantity] of Object.entries(character.equipmentQuantities || {})) {
         if (!Number.isInteger(quantity) || quantity < 1) errors.push("a quantidade de equipamento deve ser um número inteiro maior que zero");
         if (!character.equipmentIds.includes(equipmentId)) errors.push("a quantidade só pode ser informada para equipamento selecionado");
@@ -358,6 +423,8 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
           if (!allowed) errors.push(`o equipamento ${equipment.name} exige proficiência que a classe não possui`);
         }
         if (equipment.requiresStrength && character.abilities.str < equipment.requiresStrength) errors.push(`o equipamento ${equipment.name} exige Força ${equipment.requiresStrength}`);
+        if (selectedDeity?.forbidsMetalArmor && equipment.armorMaterial === "metal") errors.push(`${selectedDeity.name} não permite o uso de armaduras ou escudos metálicos`);
+        if (selectedDeity?.allowsLightArmorOnly && equipment.armorWeightClass === "heavy") errors.push(`${selectedDeity.name} permite apenas armaduras leves`);
         if (index !== wornArmorIndex && equipment.shieldBonus === undefined && (equipment.armorClass !== undefined || equipment.armorBonus !== undefined)) errors.push("selecione apenas uma armadura vestida");
       }
       for (const featId of character.featIds || []) {
@@ -384,6 +451,9 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
             if (!allowed) errors.push(`o talento ${feat.name} exige proficiência em armadura`);
           }
         }
+      }
+      if (systemId === "dnd5e" && progression && "abilityScoreIncreaseLevels" in progression && (character.featIds || []).length > progression.abilityScoreIncreaseLevels.filter((level) => level <= character.level).length) {
+        errors.push("a quantidade de talentos excede os aumentos de atributo disponíveis para este nível");
       }
       return errors;
     },

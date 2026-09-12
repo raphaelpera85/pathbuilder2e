@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
-import { DND5E_ALIGNMENTS, DND5E_LANGUAGES, T20_DEITIES, getAvailableCoreFeats, getAvailableCoreSpells, getCoreCatalog, getCoreStartingEquipment, type MultiSystemCharacter, type SupportedCoreSystem } from "../data/multiSystemCharacter";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { DND5E_ALIGNMENTS, DND5E_LANGUAGES, T20_DEITIES, getAvailableCoreFeats, getAvailableCoreSpells, getCoreCatalog, getCoreStartingEquipment, type CoreAbility, type MultiSystemCharacter, type SupportedCoreSystem } from "../data/multiSystemCharacter";
 import { getSystemRulesEngine } from "../data/systemRulesEngine";
 import { DND5E_STANDARD_ARRAY, generateAbilityScores, type AbilityGenerationMethod } from "../data/coreCharacterRules";
 import { DND5E_TOOLS } from "../data/dnd5e/dnd5eCatalog";
@@ -20,6 +20,7 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
   const engine = useMemo(() => getSystemRulesEngine(system), [system]);
   const catalog = useMemo(() => getCoreCatalog(system), [system]);
   const [character, setCharacter] = useState<MultiSystemCharacter>(() => engine.createDefaultCharacter());
+  const modalContentRef = useRef<HTMLElement>(null);
   const [error, setError] = useState<string | null>(null);
   const [generationMethod, setGenerationMethod] = useState<AbilityGenerationMethod>("point_buy");
 
@@ -33,13 +34,28 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
 
   useEffect(() => {
     if (!isOpen) return;
-    const onKeyDown = (event: KeyboardEvent) => event.key === "Escape" && onClose();
+    const previousFocus = document.activeElement as HTMLElement | null;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        onClose();
+        return;
+      }
+      if (event.key !== "Tab" || !modalContentRef.current) return;
+      const focusable = Array.from(modalContentRef.current.querySelectorAll<HTMLElement>('button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'));
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+    };
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     window.addEventListener("keydown", onKeyDown);
+    window.setTimeout(() => modalContentRef.current?.querySelector<HTMLElement>('button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])')?.focus(), 0);
     return () => {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", onKeyDown);
+      previousFocus?.focus();
     };
   }, [isOpen, onClose]);
 
@@ -51,13 +67,23 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
       if (key === "raceId") {
         const nextSubrace = catalog.subraces.find((entry) => entry.raceId === next.raceId);
         next.subraceId = nextSubrace?.id;
+        next.raceAbilityChoices = [];
+        next.raceLanguages = [];
+        next.raceSkillChoices = [];
+        next.raceChoiceMode = "skills";
+        next.raceFeatChoice = undefined;
+      }
+      if (key === "raceChoiceMode") {
+        if (value === "skills") {
+          next.raceFeatChoice = undefined;
+        } else if (value === "skill_and_feat") {
+          next.raceSkillChoices = (current.raceSkillChoices || []).slice(0, 1);
+        }
       }
       if (key === "classId") {
         next.subclassId = undefined;
-        next.spellIds = next.spellIds.filter((spellId) => {
-          const spell = catalog.spells.find((entry) => entry.id === spellId);
-          return !spell?.classIds || spell.classIds.includes(next.classId);
-        });
+        const allowedSpellIds = new Set(getAvailableCoreSpells(system, next.classId, next.level).map((spell) => spell.id));
+        next.spellIds = next.spellIds.filter((spellId) => allowedSpellIds.has(spellId));
         next.preparedSpellIds = next.preparedSpellIds?.filter((spellId) => next.spellIds.includes(spellId));
       }
       if (key === "spellIds") next.preparedSpellIds = next.preparedSpellIds?.filter((spellId) => (value as string[]).includes(spellId));
@@ -70,6 +96,9 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
           const feat = catalog.feats.find((entry) => entry.id === featId);
           return !feat?.minimumLevel || next.level >= feat.minimumLevel;
         });
+        const allowedSpellIds = new Set(getAvailableCoreSpells(system, next.classId, next.level).map((spell) => spell.id));
+        next.spellIds = next.spellIds.filter((spellId) => allowedSpellIds.has(spellId));
+        next.preparedSpellIds = next.preparedSpellIds?.filter((spellId) => next.spellIds.includes(spellId));
       }
       if (key === "classId" || key === "backgroundId") {
         const classRules = catalog.classRules.find((entry) => entry.id === next.classId);
@@ -115,13 +144,29 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
   const backgroundLabel = system === "t20" ? "Origem" : "Antecedente";
   const selectedClassRules = catalog.classRules.find((entry) => entry.id === character.classId);
   const selectedRaceRules = catalog.raceRules.find((entry) => entry.id === character.raceId);
+  const raceAbilityChoices = selectedRaceRules?.abilityChoices;
+  const selectedRaceAbilityChoices = character.raceAbilityChoices || [];
+  const raceLanguageChoices = system === "dnd5e" && selectedRaceRules && "languageChoices" in selectedRaceRules ? Number((selectedRaceRules as { languageChoices?: number }).languageChoices || 0) : 0;
+  const raceSkillChoiceCount = selectedRaceRules && "skillChoices" in selectedRaceRules ? Number((selectedRaceRules as { skillChoices?: number }).skillChoices || 0) : 0;
+  const raceChoiceGroup = system === "t20" && selectedRaceRules && "skillOrFeatChoice" in selectedRaceRules ? (selectedRaceRules as { skillOrFeatChoice?: "general" | "tormenta" }).skillOrFeatChoice : undefined;
+  const raceChoiceMode = character.raceChoiceMode || "skills";
+  const effectiveRaceSkillCount = raceChoiceGroup && raceChoiceMode === "skill_and_feat" ? 1 : raceSkillChoiceCount;
   const availableSubraces = catalog.subraces.filter((entry) => entry.raceId === character.raceId);
   const availableSubclasses = catalog.subclasses.filter((entry) => entry.classId === character.classId);
   const selectedSubclass = availableSubclasses.find((entry) => entry.id === character.subclassId);
   const availableSpells = getAvailableCoreSpells(system, character.classId, character.level);
   const availableFeats = getAvailableCoreFeats(system, character.level, character);
+  const availableRaceFeats = raceChoiceGroup ? availableFeats.filter((feat) => {
+    const powerGroup = "powerGroup" in feat ? feat.powerGroup : undefined;
+    return raceChoiceGroup === "tormenta" ? powerGroup === "tormenta" : powerGroup !== "tormenta" && powerGroup !== "concedido";
+  }) : [];
   const selectedProgression = catalog.progressions.find((entry) => entry.classId === character.classId);
+  const availableFeatSlots = system === "dnd5e" && selectedProgression && "abilityScoreIncreaseLevels" in selectedProgression
+    ? selectedProgression.abilityScoreIncreaseLevels.filter((level) => level <= character.level).length
+    : undefined;
+  const selectedDeity = system === "t20" ? T20_DEITIES.find((entry) => entry.id === character.deity) : undefined;
   const derivedPreview = engine.deriveStats(character);
+  const selectedKnownSpellCount = character.spellIds.filter((spellId) => catalog.spells.find((entry) => entry.id === spellId)?.spellLevel !== 0).length;
   const selectedBackground = catalog.backgrounds.find((entry) => entry.id === character.backgroundId);
   const requiredSkillIds = new Set([
     ...(selectedBackground && "skillProficiencies" in selectedBackground ? selectedBackground.skillProficiencies : selectedBackground?.trainedSkills || []),
@@ -144,7 +189,7 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
     <div className="pb-core-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="pb-core-modal-title" onClick={(event) => {
       if (event.target === event.currentTarget) onClose();
     }}>
-      <section className="pb-core-modal" role="document">
+      <section ref={modalContentRef} className="pb-core-modal" role="document">
         <header className="pb-core-modal-header">
           <div>
             <span className="pb-core-kicker">{system === "t20" ? "Tormenta20 · Livro Básico" : "D&D 5e · Livro do Jogador 2014"}</span>
@@ -184,7 +229,7 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
               {catalog.classes.map((entry) => <option key={entry.id} value={entry.id}>{entry.name}</option>)}
             </select>
           </label>
-          {availableSubclasses.length > 0 && <label>Subclasse (a partir do nível 3)
+          {availableSubclasses.length > 0 && <label>Subclasse (a partir do nível {selectedProgression && "subclassLevel" in selectedProgression ? selectedProgression.subclassLevel : 3})
             <select value={character.subclassId || ""} onChange={(event) => update("subclassId", event.target.value || undefined)}>
               <option value="">Ainda não escolher</option>
               {availableSubclasses.map((entry) => <option key={entry.id} value={entry.id}>{entry.name}</option>)}
@@ -224,12 +269,67 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
           {character.subraceId && <small>{catalog.subraces.find((entry) => entry.id === character.subraceId)?.name}</small>}
         </aside>}
 
+        {raceAbilityChoices && <fieldset className="pb-core-background-options" aria-label="Bônus raciais flexíveis">
+          <legend>Bônus de atributos da raça</legend>
+          <p>Escolha {raceAbilityChoices.count} atributos diferentes para receber +{raceAbilityChoices.amount}.{raceAbilityChoices.exclude?.length ? ` Não pode escolher: ${raceAbilityChoices.exclude.map((key) => ABILITIES.find(([id]) => id === key)?.[1]).filter(Boolean).join(", ")}.` : ""}</p>
+          <div className="pb-core-grid">
+            {Array.from({ length: raceAbilityChoices.count }, (_, index) => <label key={`race-choice-${index}`}>Atributo {index + 1}
+              <select value={selectedRaceAbilityChoices[index] || ""} onChange={(event) => {
+                const next = [...selectedRaceAbilityChoices];
+                next[index] = event.target.value as CoreAbility;
+                update("raceAbilityChoices", next);
+              }}>
+                <option value="">Selecione…</option>
+                {ABILITIES.filter(([key]) => !raceAbilityChoices.exclude?.includes(key)).map(([key, label]) => <option key={key} value={key} disabled={selectedRaceAbilityChoices.some((chosen, chosenIndex) => chosen === key && chosenIndex !== index)}>{label} (+{raceAbilityChoices.amount})</option>)}
+              </select>
+            </label>)}
+          </div>
+        </fieldset>}
+
+        {raceLanguageChoices > 0 && <fieldset className="pb-core-background-options" aria-label="Idiomas raciais adicionais">
+          <legend>Idiomas adicionais da raça ({raceLanguageChoices})</legend>
+          <p>Escolha {raceLanguageChoices} idioma(s) adicional(is) concedido(s) pela raça.</p>
+          <div className="pb-core-language-grid">
+            {DND5E_LANGUAGES.map((language) => <label key={`race-language-${language}`}>
+              <input type="checkbox" checked={(character.raceLanguages || []).includes(language)} disabled={!(character.raceLanguages || []).includes(language) && (character.raceLanguages || []).length >= raceLanguageChoices} onChange={(event) => update("raceLanguages", event.target.checked ? [...(character.raceLanguages || []), language] : (character.raceLanguages || []).filter((item) => item !== language))} />
+              {language}
+            </label>)}
+          </div>
+        </fieldset>}
+
+        {raceSkillChoiceCount > 0 && <fieldset className="pb-core-skills" aria-label="Perícias raciais adicionais">
+          <legend>Escolhas adicionais da raça</legend>
+          {raceChoiceGroup && <label>Alternativa racial
+            <select value={raceChoiceMode} onChange={(event) => update("raceChoiceMode", event.target.value as MultiSystemCharacter["raceChoiceMode"])}>
+              <option value="skills">Duas perícias</option>
+              <option value="skill_and_feat">Uma perícia + um poder {raceChoiceGroup === "tormenta" ? "da Tormenta" : "geral"}</option>
+            </select>
+          </label>}
+          <p>Escolha {effectiveRaceSkillCount} perícia(s) diferente(s) concedida(s) pela raça.</p>
+          <div className="pb-core-skill-grid">
+            {catalog.skills.map((skill) => <label key={`race-skill-${skill.id}`} title={skill.ruleSummary}>
+              <input type="checkbox" checked={(character.raceSkillChoices || []).includes(skill.id)} disabled={((!(character.raceSkillChoices || []).includes(skill.id) && (character.skillProficiencies || []).includes(skill.id)) || (!(character.raceSkillChoices || []).includes(skill.id) && (character.raceSkillChoices || []).length >= effectiveRaceSkillCount))} onChange={(event) => update("raceSkillChoices", event.target.checked ? [...(character.raceSkillChoices || []), skill.id] : (character.raceSkillChoices || []).filter((id) => id !== skill.id))} />
+              {skill.name}
+            </label>)}
+          </div>
+          {raceChoiceMode === "skill_and_feat" && <label>Poder racial
+            <select value={character.raceFeatChoice || ""} onChange={(event) => update("raceFeatChoice", event.target.value || undefined)}>
+              <option value="">Selecione…</option>
+              {availableRaceFeats.map((feat) => <option key={feat.id} value={feat.id}>{feat.name}</option>)}
+            </select>
+          </label>}
+        </fieldset>}
+
         {selectedClassRules && <aside className="pb-core-class-summary" aria-label="Resumo da classe">
           <strong>{selectedClassRules.name}</strong>
           {"startingHp" in selectedClassRules
             ? <span>PV inicial {selectedClassRules.startingHp} · +{selectedClassRules.hpPerLevel} PV/nível · {selectedClassRules.manaPerLevel} PM/nível · {selectedClassRules.proficiencies}</span>
             : <span>{selectedClassRules.hitDie} · atributo-chave {selectedClassRules.primaryAbility} · salvamentos: {selectedClassRules.savingThrows.join(" e ")}</span>}
           {selectedClassRules.startingEquipment?.length ? <small><strong>Equipamento inicial:</strong> {selectedClassRules.startingEquipment.join(" · ")}</small> : null}
+        </aside>}
+        {selectedDeity?.ruleSummary && <aside className="pb-core-deity-summary" aria-label="Restrição da divindade">
+          <strong>{selectedDeity.name}</strong>
+          <small>{selectedDeity.ruleSummary}</small>
         </aside>}
         {selectedSubclass && <aside className="pb-core-subclass-summary" aria-label="Resumo da subclasse">
           <strong>{selectedSubclass.name}</strong>
@@ -345,22 +445,23 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
             </label>
             <label>Magias
               <select multiple value={character.spellIds} onChange={(event) => update("spellIds", Array.from(event.target.selectedOptions, (option) => option.value))}>
-                {availableSpells.map((item) => <option key={item.id} value={item.id}>{item.name} · {item.summary}</option>)}
+                {availableSpells.map((item) => <option key={item.id} value={item.id} disabled={system === "dnd5e" && !character.spellIds.includes(item.id) && item.spellLevel !== 0 && derivedPreview.knownSpellLimit !== undefined && selectedKnownSpellCount >= derivedPreview.knownSpellLimit}>{item.name} · {item.summary}</option>)}
               </select>
-              {system === "dnd5e" && derivedPreview.knownSpellLimit !== undefined && <small>Magias conhecidas: {character.spellIds.filter((spellId) => catalog.spells.find((entry) => entry.id === spellId)?.spellLevel !== 0).length}/{derivedPreview.knownSpellLimit} (truques não contam)</small>}
+              {system === "dnd5e" && derivedPreview.knownSpellLimit !== undefined && <small>Magias conhecidas: {selectedKnownSpellCount}/{derivedPreview.knownSpellLimit} (truques não contam)</small>}
             </label>
             {system === "dnd5e" && derivedPreview.preparedSpellLimit !== undefined && <label>Magias preparadas ({derivedPreview.preparedSpellLimit})
               <select multiple value={character.preparedSpellIds || []} onChange={(event) => update("preparedSpellIds", Array.from(event.target.selectedOptions, (option) => option.value))}>
                 {character.spellIds.map((spellId) => {
                   const spell = catalog.spells.find((entry) => entry.id === spellId);
-                  return spell ? <option key={spell.id} value={spell.id}>{spell.name} · {spell.summary}</option> : null;
+                  return spell ? <option key={spell.id} value={spell.id} disabled={!character.preparedSpellIds?.includes(spell.id) && (character.preparedSpellIds || []).length >= (derivedPreview.preparedSpellLimit ?? 0)}>{spell.name} · {spell.summary}</option> : null;
                 })}
               </select>
             </label>}
             <label>{system === "t20" ? "Poderes" : "Talentos"}
               <select multiple value={character.featIds} onChange={(event) => update("featIds", Array.from(event.target.selectedOptions, (option) => option.value))}>
-                {availableFeats.map((item) => <option key={item.id} value={item.id}>{item.name} · {item.summary}</option>)}
+                {availableFeats.map((item) => <option key={item.id} value={item.id} disabled={system === "dnd5e" && !character.featIds.includes(item.id) && availableFeatSlots !== undefined && character.featIds.length >= availableFeatSlots}>{item.name} · {item.summary}</option>)}
               </select>
+              {availableFeatSlots !== undefined && <small>Talentos disponíveis por Aumento de Atributo: {character.featIds.length}/{availableFeatSlots}.</small>}
             </label>
           </div>
           {recommendedEquipmentNames.length > 0 && <small>Sugestão canônica: {recommendedEquipmentNames.join(" · ")}. Alternativas do livro permanecem disponíveis no catálogo.</small>}

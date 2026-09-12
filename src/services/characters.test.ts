@@ -73,6 +73,11 @@ describe("character cloud contract", () => {
     expect(() => validateCharacter({ id: "x", name: "Herói", level: 21 })).toThrow(/1 e 20/);
   });
 
+  it("rejeita ruleset de outro sistema antes da persistência", () => {
+    expect(() => validateCharacter({ id: "misturada", name: "Ficha misturada", level: 1, system_id: "t20", ruleset: "standard" })).toThrow(/não pertence ao sistema t20/);
+    expect(() => validateCharacter({ id: "misturada-ose", name: "Ficha misturada", level: 1, system_id: "ose", ruleset: "padrao" })).toThrow(/não pertence ao sistema ose/);
+  });
+
   it("rejeita chaves perigosas e profundidade excessiva antes de persistir", () => {
     const polluted = JSON.parse('{"id":"x","name":"Herói","level":1,"__proto__":{"polluted":true}}');
     expect(() => validateCharacter(polluted)).toThrow(/chave não permitida/);
@@ -144,5 +149,47 @@ describe("character cloud contract", () => {
     expect(history.length).toBe(2);
     expect(history[0]).toMatchObject({ name: "Atualizada", level: 2 });
     expect(history[1]).toMatchObject({ name: "Inicial", level: 1 });
+  });
+
+  it.each([
+    ["t20", "padrao", "jovem-aventureira-t20", "Tormenta", "t20.raca.humana", "t20.classe.lutador", "t20.origem.artista", ["t20.arma.adaga"], ["t20.magia.curar-ferimentos"]],
+    ["dnd5e", "standard", "jovem-aventureira-dnd", "Faerûn", "dnd5e.raca.humana", "dnd5e.classe.guerreiro", "dnd5e.antecedente.heroi-do-povo", ["dnd5e.arma.adaga"], ["dnd5e.magia.curar-ferimentos"]],
+    ["ose", "advanced", "aventureiro-ose", "Masmorra", "ose.raca.humano", "ose.classe.guerreiro", "ose.background.explorador", ["ose.weapon.adaga", "ose.armor.couro"], ["ose.spell.mago_luz"]],
+  ])("faz round-trip de criação, salvamento e recarregamento preservando o sistema %s", async (systemId, ruleset, id, name, raceId, classId, backgroundId, equipmentIds, spellIds) => {
+    const user = { id: `user-roundtrip-${systemId}` } as never;
+    const character = {
+      id,
+      name,
+      level: 3,
+      system_id: systemId,
+      systemId,
+      ruleset,
+      raceId,
+      classId,
+      backgroundId,
+      equipmentIds,
+      spellIds,
+      attributes: { str: 16, dex: 14, con: 14, int: 10, wis: 12, cha: 8 },
+      notes: "snapshot de integração",
+    };
+
+    const saved = await saveCharacter(character, user);
+    const reloaded = (await listCharacters(user, { systemId }))[0];
+
+    expect(saved.system_id).toBe(systemId);
+    expect(reloaded).toBeDefined();
+    expect(reloaded.data).toMatchObject({
+      id,
+      name,
+      level: 3,
+      system_id: systemId,
+      ruleset,
+      raceId,
+      classId,
+      backgroundId,
+      equipmentIds,
+      spellIds,
+      notes: "snapshot de integração",
+    });
   });
 });

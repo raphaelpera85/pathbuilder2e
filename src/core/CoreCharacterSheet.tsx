@@ -1,7 +1,11 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { DND5E_ALIGNMENTS, DND5E_LANGUAGES, T20_DEITIES, getCoreCatalog, getCoreEquipmentQuantity, type MultiSystemCharacter, type SupportedCoreSystem } from "../data/multiSystemCharacter";
 import { getSystemRulesEngine } from "../data/systemRulesEngine";
 import { createCoreEditablePdf, downloadCoreEditablePdf } from "../services/corePdfExport";
+
+const CORE_ABILITY_LABELS: Record<string, string> = {
+  str: "Força", dex: "Destreza", con: "Constituição", int: "Inteligência", wis: "Sabedoria", cha: "Carisma",
+};
 
 interface CoreCharacterSheetProps {
   character: MultiSystemCharacter;
@@ -13,6 +17,7 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
   const [draft, setDraft] = useState(character);
   const [exportingPdf, setExportingPdf] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
+  const modalContentRef = useRef<HTMLElement>(null);
   const system = draft.system_id as SupportedCoreSystem;
   const catalog = useMemo(() => getCoreCatalog(system), [system]);
   const derived = getSystemRulesEngine(system).deriveStats(draft);
@@ -24,12 +29,33 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
   const deity = T20_DEITIES.find((entry) => entry.id === draft.deity || entry.name === draft.deity)?.name;
   const classRules = catalog.classRules.find((entry) => entry.id === draft.classId);
   const raceRules = catalog.raceRules.find((entry) => entry.id === draft.raceId);
+  const raceLanguageChoices = system === "dnd5e" && raceRules && "languageChoices" in raceRules ? Number((raceRules as { languageChoices?: number }).languageChoices || 0) : 0;
+  const raceSkillChoiceCount = raceRules && "skillChoices" in raceRules ? Number((raceRules as { skillChoices?: number }).skillChoices || 0) : 0;
+  const raceChoiceMode = draft.raceChoiceMode || "skills";
+  const raceFeatChoiceName = draft.raceFeatChoice ? catalog.feats.find((entry) => entry.id === draft.raceFeatChoice)?.name : undefined;
   const progression = catalog.progressions.find((entry) => entry.classId === draft.classId);
   const currentProgressionFeatures = progression?.featuresByLevel[draft.level] || progression?.levelOneFeatures || [];
   const selectedEquipment = catalog.equipment.filter((entry) => (draft.equipmentIds || []).includes(entry.id));
   const selectedSpells = catalog.spells.filter((entry) => (draft.spellIds || []).includes(entry.id));
   const selectedFeats = catalog.feats.filter((entry) => (draft.featIds || []).includes(entry.id));
   const selectedBackground = catalog.backgrounds.find((entry) => entry.id === draft.backgroundId);
+
+  useEffect(() => {
+    const previousFocus = document.activeElement as HTMLElement | null;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") { onClose(); return; }
+      if (event.key !== "Tab" || !modalContentRef.current) return;
+      const focusable = Array.from(modalContentRef.current.querySelectorAll<HTMLElement>('button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'));
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    window.setTimeout(() => modalContentRef.current?.querySelector<HTMLElement>('button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])')?.focus(), 0);
+    return () => { window.removeEventListener("keydown", onKeyDown); previousFocus?.focus(); };
+  }, [onClose]);
 
   const updateBackground = (backgroundId: string) => {
     const background = catalog.backgrounds.find((entry) => entry.id === backgroundId);
@@ -52,7 +78,7 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
 
   return (
     <div className="pb-core-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="pb-core-sheet-title">
-      <section className="pb-core-modal pb-core-sheet">
+      <section ref={modalContentRef} className="pb-core-modal pb-core-sheet">
         <header className="pb-core-modal-header">
           <div>
             <span className="pb-core-kicker">{system === "t20" ? "Tormenta20 · Ficha" : "D&D 5e · Ficha"}</span>
@@ -115,7 +141,18 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
         </details>}
         {raceRules && <p className="pb-core-race-summary">
           <strong>{raceRules.name}</strong>{subrace ? ` · ${subrace}` : ""}{" · "}{raceRules.abilityBonuses}{" · "}{raceRules.size}{" · deslocamento "}{raceRules.speed}m{" · "}{raceRules.traits.join(" · ")}
+          {raceRules.abilityChoices && <><br /><small>Bônus escolhidos: {(draft.raceAbilityChoices || []).map((ability) => CORE_ABILITY_LABELS[ability] || ability).join(", ") || "não preenchidos"} (+{raceRules.abilityChoices.amount} cada)</small></>}
         </p>}
+        {raceLanguageChoices > 0 && <fieldset className="pb-core-background-options" aria-label="Idiomas raciais adicionais">
+          <legend>Idiomas adicionais da raça ({raceLanguageChoices})</legend>
+          <div className="pb-core-language-grid">
+            {DND5E_LANGUAGES.map((language) => <label key={`sheet-race-language-${language}`}>
+              <input type="checkbox" checked={(draft.raceLanguages || []).includes(language)} disabled={!(draft.raceLanguages || []).includes(language) && (draft.raceLanguages || []).length >= raceLanguageChoices} onChange={(event) => { setDraft({ ...draft, raceLanguages: event.target.checked ? [...(draft.raceLanguages || []), language] : (draft.raceLanguages || []).filter((item) => item !== language) }); setSaveError(null); }} />
+              {language}
+            </label>)}
+          </div>
+        </fieldset>}
+        {raceSkillChoiceCount > 0 && <p className="pb-core-race-summary"><strong>Escolha racial:</strong> {raceChoiceMode === "skill_and_feat" ? `${(draft.raceSkillChoices || []).map((skillId) => catalog.skills.find((entry) => entry.id === skillId)?.name || skillId).join(", ") || "perícia não preenchida"} + ${raceFeatChoiceName || "poder não escolhido"}` : (draft.raceSkillChoices || []).map((skillId) => catalog.skills.find((entry) => entry.id === skillId)?.name || skillId).join(", ") || "não preenchidas"}</p>}
         {progression && <p className="pb-core-progression-summary">
           Nível {draft.level}: {currentProgressionFeatures.join(" · ")}{" · "}
           {"powerLevels" in progression ? `poder de classe ${progression.powerLevels.includes(draft.level) ? "disponível" : "não disponível"}` : `subclasse no nível ${progression.subclassLevel}`}
@@ -136,7 +173,7 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
           <div><span>Bônus de proficiência</span><strong>+{derived.proficiencyBonus}</strong></div>
           <div><span>Deslocamento</span><strong>{derived.speed}m</strong></div>
           <div><span>XP para o nível</span><strong>{derived.experienceForLevel.toLocaleString("pt-BR")}{derived.experienceToNextLevel !== undefined ? ` → ${derived.experienceToNextLevel.toLocaleString("pt-BR")}` : " · máximo"}</strong></div>
-          {Object.entries(derived.savingThrowBonuses).map(([save, bonus]) => <div key={save}><span>{save.toUpperCase()}</span><strong>{bonus >= 0 ? `+${bonus}` : bonus}</strong></div>)}
+          {Object.entries(derived.savingThrowBonuses).map(([save, bonus]) => <div key={save} title={`Salvamento de ${CORE_ABILITY_LABELS[save] || save}`}><span>{system === "dnd5e" ? CORE_ABILITY_LABELS[save] || save : save.toUpperCase()}</span><strong>{bonus >= 0 ? `+${bonus}` : bonus}</strong></div>)}
           {derived.spellSaveDC !== undefined && <div><span>CD de magia</span><strong>{derived.spellSaveDC}</strong></div>}
           {derived.spellAttackBonus !== undefined && <div><span>Ataque mágico</span><strong>+{derived.spellAttackBonus}</strong></div>}
           {Object.keys(derived.spellSlots).length > 0 && <div><span>Espaços</span><strong>{Object.entries(derived.spellSlots).map(([rank, amount]) => `${rank}º:${amount}`).join(" · ")}</strong></div>}

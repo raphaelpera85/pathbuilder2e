@@ -1,0 +1,10 @@
+-- Munições do Livro do Jogador D&D 5e 2014, p. 150.
+-- Idempotente e isolada do sistema/ruleset.
+insert into public.catalog_items (id, name_pt, item_category, ruleset, source_book, source_page, data, system_id)
+values
+  ('dnd5e.arma.zarabatana', 'Zarabatana', 'weapon', 'standard', 'D&D 5e — Livro do Jogador (2014)', 149, '{"id":"dnd5e.arma.zarabatana","name":"Zarabatana","sourcePage":149,"category":"arma","summary":"1 perfurante · munição · recarga","proficiency":"martial_weapon","attackAbility":"dex","damage":"1 perfurante","weight":1,"cost":"10 po"}'::jsonb, 'dnd5e'),
+  ('dnd5e.municao.flechas', 'Flechas (20)', 'gear', 'standard', 'D&D 5e — Livro do Jogador (2014)', 150, '{"id":"dnd5e.municao.flechas","name":"Flechas (20)","sourcePage":150,"category":"equipamento","summary":"Munição para arcos · pacote com 20","weight":1,"cost":"1 po"}'::jsonb, 'dnd5e'),
+  ('dnd5e.municao.virotes', 'Virotes (20)', 'gear', 'standard', 'D&D 5e — Livro do Jogador (2014)', 150, '{"id":"dnd5e.municao.virotes","name":"Virotes (20)","sourcePage":150,"category":"equipamento","summary":"Munição para bestas · pacote com 20","weight":1.5,"cost":"1 po"}'::jsonb, 'dnd5e'),
+  ('dnd5e.municao.balas_funda', 'Balas de funda (20)', 'gear', 'standard', 'D&D 5e — Livro do Jogador (2014)', 150, '{"id":"dnd5e.municao.balas_funda","name":"Balas de funda (20)","sourcePage":150,"category":"equipamento","summary":"Munição para fundas · pacote com 20","weight":1.5,"cost":"4 pc"}'::jsonb, 'dnd5e'),
+  ('dnd5e.municao.agulhas_zarabatana', 'Agulhas de zarabatana (50)', 'gear', 'standard', 'D&D 5e — Livro do Jogador (2014)', 150, '{"id":"dnd5e.municao.agulhas_zarabatana","name":"Agulhas de zarabatana (50)","sourcePage":150,"category":"equipamento","summary":"Munição para zarabatanas · pacote com 50","weight":1,"cost":"1 po"}'::jsonb, 'dnd5e')
+on conflict (id) do update set name_pt = excluded.name_pt, item_category = excluded.item_category, ruleset = excluded.ruleset, source_book = excluded.source_book, source_page = excluded.source_page, data = excluded.data, system_id = excluded.system_id, updated_at = now();
