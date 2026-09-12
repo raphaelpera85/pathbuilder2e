@@ -117,8 +117,16 @@ export function OseCharacterCreatorModal({
   const [selectedRaceId, setSelectedRaceId] = useState<string>("humano");
   const [selectedClassId, setSelectedClassId] = useState<string>("guerreiro");
 
-  const selectedRace: OseRace = OSE_RACES[selectedRaceId] || OSE_RACES.humano;
   const selectedClass: OseClass = OSE_CLASSES[selectedClassId] || OSE_CLASSES.guerreiro;
+  const classicRaceByClass: Record<string, string> = {
+    anao_bx: "anao",
+    elfo_bx: "elfo",
+    halfling_bx: "halfling",
+  };
+  const effectiveRaceId = creationMode === "classic"
+    ? classicRaceByClass[selectedClass.id] || "humano"
+    : selectedRaceId;
+  const selectedRace: OseRace = OSE_RACES[effectiveRaceId] || OSE_RACES.humano;
 
   // Calcula habilidades finais com modificadores raciais
   const finalAbilities = useMemo(() => {
@@ -246,7 +254,7 @@ export function OseCharacterCreatorModal({
       name: charName.trim() || "Aventureiro de Karameikos",
       system_id: "ose",
       ruleset: creationMode,
-      raceId: selectedRaceId,
+      raceId: effectiveRaceId,
       classId: selectedClassId,
       level: 1,
       xp: 0,
@@ -260,8 +268,8 @@ export function OseCharacterCreatorModal({
       weapons: boughtWeapons,
       armors: boughtArmors,
       gear: boughtGear,
-      spellsKnown: selectedSpells.length > 0 ? selectedSpells : ["mago_ler_magia", "mago_missil_magico"],
-      preparedSpells: selectedSpells.slice(0, 1),
+      spellsKnown: selectedClass.spellCasting ? selectedSpells : [],
+      preparedSpells: selectedClass.spellCasting ? selectedSpells.slice(0, 1) : [],
     };
 
     onCharacterCreated(charData);

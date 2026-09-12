@@ -1,5 +1,5 @@
-import { StrictMode, useEffect } from "react";
-import { createRoot } from "react-dom/client";
+import { StrictMode, useEffect, type ReactNode } from "react";
+import { createRoot, type Root } from "react-dom/client";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Analytics } from "@vercel/analytics/react";
 import { PickerModal } from "./PickerModal";
@@ -56,6 +56,12 @@ if (!modalRoot || !accountRoot || !portalRoot) {
   throw new Error("Raízes React do portal não foram encontradas.");
 }
 
+const reactRoots = ((window as any).__pathbuilderReactRoots ||= {}) as Record<string, Root>;
+const renderPortalRoot = (key: string, element: HTMLElement, node: ReactNode) => {
+  const root = reactRoots[key] || (reactRoots[key] = createRoot(element));
+  root.render(node);
+};
+
 // O legado continua sendo carregado primeiro, mas passa a consumir os mesmos
 // catálogos ricos usados pelos componentes React quando o bridge estiver pronto.
 (window as any).pathbuilderCatalogs = {
@@ -67,7 +73,7 @@ if (!modalRoot || !accountRoot || !portalRoot) {
 };
 window.dispatchEvent(new Event("pathbuilder:catalogs-ready"));
 
-createRoot(modalRoot).render(
+renderPortalRoot("modal", modalRoot,
   <StrictMode>
     <ThemeProvider>
       <I18nProvider>
@@ -79,7 +85,7 @@ createRoot(modalRoot).render(
   </StrictMode>,
 );
 
-createRoot(accountRoot).render(
+renderPortalRoot("account", accountRoot,
   <StrictMode>
     <ThemeProvider>
       <I18nProvider>
@@ -93,7 +99,7 @@ createRoot(accountRoot).render(
   </StrictMode>,
 );
 
-createRoot(portalRoot).render(
+renderPortalRoot("portal", portalRoot,
   <StrictMode>
     <ThemeProvider>
       <I18nProvider>

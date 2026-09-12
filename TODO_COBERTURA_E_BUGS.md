@@ -6,6 +6,9 @@ Este documento é a fonte de verdade para continuar o trabalho quando esta sess�
 
 ### TODO EXECUTÁVEL — ordem atual
 
+- [x] P1. Integrar seleção de sistema e criação inicial de personagens OSE com base nos livros locais Básico e Tomo do Jogador Avançado.
+  - Evidência (2026-09-12): os PDFs locais foram identificados (60 e 256 páginas); o seletor exibe Pathfinder 2e, D&D 5e, Tormenta 20 e Old-School Essentials; o cartão OSE abre o wizard com atributos 3d6, criação básica/avançada, raça, classe, PV, alinhamento, perícias, ouro, equipamentos e magia quando aplicável. Classes-raça clássicas agora persistem a raça correspondente e não conjuradores não recebem magias padrão.
+
 - [x] P0. Retirar `characters/` do artefato Vite publicado; fichas locais continuam sendo servidas somente pela API local.
 - [x] P0. Alinhar campanhas ao schema Supabase: IDs UUID e coluna `notes`.
 - [x] P1. Consumir `subscribeToCampaign` na página de campanhas e atualizar a mesa aberta após eventos Realtime.

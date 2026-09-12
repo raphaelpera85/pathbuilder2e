@@ -313,6 +313,32 @@ function getFromLocalCache(category: PickerType, systemId = "pf2e"): PickerItem[
   return null;
 }
 
+async function fetchRemoteCatalogPage(
+  tableName: CatalogTableName,
+  systemId: string,
+  from: number,
+  to: number,
+  limit?: number,
+): Promise<{ data: CatalogItemRecord[] | null; error: any }> {
+  const baseQuery = supabase!.from(tableName).select("*");
+  const filteredQuery = systemId ? baseQuery.eq("system_id", systemId) : baseQuery;
+  const result = limit !== undefined
+    ? await filteredQuery.limit(limit)
+    : await filteredQuery.range(from, to);
+
+  // Older deployments predate the multi-system migration. Keep PF2e usable
+  // while those deployments are being migrated, without hiding other errors.
+  if (result.error && systemId === "pf2e" && /system_id.*does not exist/i.test(result.error.message || "")) {
+    const legacyQuery = supabase!.from(tableName).select("*");
+    const legacyResult = limit !== undefined
+      ? await legacyQuery.limit(limit)
+      : await legacyQuery.range(from, to);
+    return legacyResult as { data: CatalogItemRecord[] | null; error: any };
+  }
+
+  return result as { data: CatalogItemRecord[] | null; error: any };
+}
+
 /**
  * Busca uma categoria inteira do catálogo com prioridade máxima para o Supabase.
  * 1. Sempre tenta Supabase primeiro com paginação (.range) em blocos de 1000 para tabelas grandes filtrando por system_id.
@@ -333,11 +359,7 @@ export async function fetchCatalogCategory(
       const PAGE_SIZE = 1000;
 
       if (options.limit && options.limit <= PAGE_SIZE) {
-        const { data, error } = await supabase
-          .from(tableName)
-          .select("*")
-          .eq("system_id", systemId)
-          .limit(options.limit);
+        const { data, error } = await fetchRemoteCatalogPage(tableName, systemId, 0, options.limit - 1, options.limit);
         if (!error && Array.isArray(data) && data.length > 0) {
           allRecords = data as CatalogItemRecord[];
         }
@@ -346,11 +368,7 @@ export async function fetchCatalogCategory(
         let fetchMore = true;
         while (fetchMore) {
           const to = from + PAGE_SIZE - 1;
-          const { data, error } = await supabase
-            .from(tableName)
-            .select("*")
-            .eq("system_id", systemId)
-            .range(from, to);
+          const { data, error } = await fetchRemoteCatalogPage(tableName, systemId, from, to);
           if (error) {
             console.warn(`[Catalog] Aviso ao buscar registros de ${tableName} [${from}-${to}] (${systemId}):`, error.message);
             break;
@@ -465,12 +483,11 @@ export async function fetchCatalogItemById(
   const tableName = PICKER_TYPE_TO_TABLE[category];
   if (isSupabaseConfigured && supabase && tableName) {
     try {
-      const { data, error } = await supabase
-        .from(tableName)
-        .select("*")
-        .eq("id", id)
-        .eq("system_id", systemId)
-        .maybeSingle();
+      let query = supabase.from(tableName).select("*").eq("id", id);
+      let { data, error } = await query.eq("system_id", systemId).maybeSingle();
+      if (error && systemId === "pf2e" && /system_id.*does not exist/i.test(error.message || "")) {
+        ({ data, error } = await supabase.from(tableName).select("*").eq("id", id).maybeSingle());
+      }
 
       if (!error && data) {
         return normalizeSupabaseRecordToPickerItem(data, category);

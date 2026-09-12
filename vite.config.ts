@@ -73,6 +73,6 @@ export default defineConfig({
   test: {
     environment: "jsdom",
     setupFiles: "./src/test/setup.ts",
-    exclude: ["**/node_modules/**", "**/dist/**", "**/scratch/**"],
+    exclude: ["**/node_modules/**", "**/dist/**", "**/scratch/**", "**/temp_repos/**"],
   },
 });
