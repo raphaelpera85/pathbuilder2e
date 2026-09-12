@@ -13,10 +13,13 @@ import { OSE_SPELLS } from "../data/ose/oseSpells";
 
 const PAGE_WIDTH = 612;
 const PAGE_HEIGHT = 792;
-const GOLD = rgb(0.47, 0.25, 0.05);
-const INK = rgb(0.12, 0.1, 0.08);
-const MUTED = rgb(0.35, 0.32, 0.27);
-const FIELD_BORDER = rgb(0.55, 0.45, 0.3);
+const PARCHMENT = rgb(0.93, 0.86, 0.69);
+const PARCHMENT_LIGHT = rgb(0.98, 0.94, 0.81);
+const BROWN = rgb(0.25, 0.12, 0.045);
+const GOLD = rgb(0.58, 0.36, 0.12);
+const INK = rgb(0.16, 0.11, 0.065);
+const MUTED = rgb(0.38, 0.3, 0.2);
+const FIELD_BORDER = rgb(0.48, 0.34, 0.18);
 
 type PdfField = ReturnType<ReturnType<PDFDocument["getForm"]>["createTextField"]>;
 
@@ -24,15 +27,22 @@ function safeFileName(name: string): string {
   return (name.trim() || "personagem").toLowerCase().replace(/[^a-z0-9à-ÿ]+/gi, "_").replace(/^_|_$/g, "");
 }
 
+function drawPageSurface(page: PDFPage) {
+  page.drawRectangle({ x: 0, y: 0, width: PAGE_WIDTH, height: PAGE_HEIGHT, color: PARCHMENT });
+  page.drawRectangle({ x: 18, y: 18, width: PAGE_WIDTH - 36, height: PAGE_HEIGHT - 36, borderColor: BROWN, borderWidth: 1.3 });
+  page.drawRectangle({ x: 25, y: 25, width: PAGE_WIDTH - 50, height: PAGE_HEIGHT - 50, borderColor: GOLD, borderWidth: 0.45 });
+}
+
 function drawHeader(page: PDFPage, title: string, subtitle: string, font: any, bold: any) {
-  page.drawRectangle({ x: 0, y: PAGE_HEIGHT - 72, width: PAGE_WIDTH, height: 72, color: GOLD });
-  page.drawText(title, { x: 34, y: PAGE_HEIGHT - 39, size: 20, font: bold, color: rgb(1, 0.96, 0.82) });
-  page.drawText(subtitle, { x: 36, y: PAGE_HEIGHT - 58, size: 9, font, color: rgb(1, 0.9, 0.7) });
+  page.drawRectangle({ x: 26, y: PAGE_HEIGHT - 80, width: PAGE_WIDTH - 52, height: 54, color: BROWN });
+  page.drawLine({ start: { x: 40, y: PAGE_HEIGHT - 72 }, end: { x: PAGE_WIDTH - 40, y: PAGE_HEIGHT - 72 }, thickness: 0.7, color: rgb(0.86, 0.68, 0.35) });
+  page.drawText(title, { x: 40, y: PAGE_HEIGHT - 52, size: 16, font: bold, color: rgb(0.98, 0.9, 0.67) });
+  page.drawText(subtitle, { x: 41, y: PAGE_HEIGHT - 68, size: 7.5, font, color: rgb(0.91, 0.8, 0.58) });
 }
 
 function drawSection(page: PDFPage, title: string, x: number, y: number, width: number, font: any, bold: any) {
-  page.drawRectangle({ x, y: y - 4, width, height: 18, color: rgb(0.9, 0.82, 0.63) });
-  page.drawText(title, { x: x + 6, y: y + 1, size: 9, font: bold, color: INK });
+  page.drawLine({ start: { x, y: y + 4 }, end: { x: x + width, y: y + 4 }, thickness: 1.1, color: GOLD });
+  page.drawText(title, { x: x + 3, y: y - 1, size: 8, font: bold, color: BROWN });
 }
 
 function addTextField(
@@ -53,9 +63,10 @@ function addTextField(
     x, y, width, height,
     borderColor: FIELD_BORDER,
     borderWidth: 0.8,
-    backgroundColor: rgb(1, 0.99, 0.94),
+    backgroundColor: PARCHMENT_LIGHT,
     textColor: INK,
   });
+  field.setFontSize(multiline ? 8 : 8.5);
   return field;
 }
 
@@ -70,10 +81,12 @@ function listValue<T>(items: T[], getName: (item: T) => string): string {
 export async function createOseEditablePdf(character: OseCharacterCreatedData): Promise<Uint8Array> {
   const pdf = await PDFDocument.create();
   const form = pdf.getForm();
-  const font = await pdf.embedFont(StandardFonts.Helvetica);
-  const bold = await pdf.embedFont(StandardFonts.HelveticaBold);
+  const font = await pdf.embedFont(StandardFonts.TimesRoman);
+  const bold = await pdf.embedFont(StandardFonts.TimesRomanBold);
   const page = pdf.addPage([PAGE_WIDTH, PAGE_HEIGHT]);
   const page2 = pdf.addPage([PAGE_WIDTH, PAGE_HEIGHT]);
+  drawPageSurface(page);
+  drawPageSurface(page2);
   const cls = OSE_CLASSES[character.classId] || OSE_CLASSES.guerreiro;
   const race = OSE_RACES[character.raceId] || OSE_RACES.humano;
   const str = getOseStrModifiers(character.abilities.str);
