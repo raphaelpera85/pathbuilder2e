@@ -1317,100 +1317,69 @@ function LibraryPage() {
         </div>
 
         {/* Filtro por Sistema de RPG */}
-        <div className="system-filter-tabs flex flex-wrap gap-2 my-4" role="tablist" aria-label={t("systemLabel")}>
+        <div className="system-filter-bar system-filter-tabs" role="tablist" aria-label={t("systemLabel")}>
           <button
             type="button"
-            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-              selectedSystemFilter === "all" ? "active" : ""
-            }`}
-            style={{
-              backgroundColor: selectedSystemFilter === "all" ? "var(--primary-color, #f97316)" : "rgba(255, 255, 255, 0.06)",
-              color: selectedSystemFilter === "all" ? "#ffffff" : "var(--text-color, #f8fafc)",
-              border: "1px solid var(--border-color, #334155)",
-            }}
+            className={`system-filter-pill pill-all ${selectedSystemFilter === "all" ? "active" : ""}`}
             onClick={() => setSelectedSystemFilter("all")}
+            role="tab"
+            aria-selected={selectedSystemFilter === "all"}
           >
-            🎲 {t("filterAllSystems")} ({characters.length})
+            <span className="pill-icon">🎲</span>
+            <span className="pill-label">{t("filterAllSystems")}</span>
+            <span className="pill-count">{characters.length}</span>
           </button>
           <button
             type="button"
-            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-              selectedSystemFilter === "pf2e" ? "active" : ""
-            }`}
-            style={{
-              backgroundColor: selectedSystemFilter === "pf2e" ? "#f97316" : "rgba(255, 255, 255, 0.06)",
-              color: selectedSystemFilter === "pf2e" ? "#ffffff" : "var(--text-color, #f8fafc)",
-              border: "1px solid var(--border-color, #334155)",
-            }}
+            className={`system-filter-pill pill-pf2e ${selectedSystemFilter === "pf2e" ? "active" : ""}`}
             onClick={() => setSelectedSystemFilter("pf2e")}
+            role="tab"
+            aria-selected={selectedSystemFilter === "pf2e"}
           >
-            ⚔️ Pathfinder 2e (
-            {
-              characters.filter(
-                (c) => (c.system_id || (c.data as any)?.system_id || (c.data as any)?.systemId || "pf2e") === "pf2e"
-              ).length
-            }
-            )
+            <span className="pill-icon">⚔️</span>
+            <span className="pill-label">Pathfinder 2e</span>
+            <span className="pill-count">
+              {characters.filter((c) => (c.system_id || (c.data as any)?.system_id || (c.data as any)?.systemId || "pf2e") === "pf2e").length}
+            </span>
           </button>
           <button
             type="button"
-            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-              selectedSystemFilter === "dnd5e" ? "active" : ""
-            }`}
-            style={{
-              backgroundColor: selectedSystemFilter === "dnd5e" ? "#ef4444" : "rgba(255, 255, 255, 0.06)",
-              color: selectedSystemFilter === "dnd5e" ? "#ffffff" : "var(--text-color, #f8fafc)",
-              border: "1px solid var(--border-color, #334155)",
-            }}
+            className={`system-filter-pill pill-dnd5e ${selectedSystemFilter === "dnd5e" ? "active" : ""}`}
             onClick={() => setSelectedSystemFilter("dnd5e")}
+            role="tab"
+            aria-selected={selectedSystemFilter === "dnd5e"}
           >
-            🐉 D&D 5e (
-            {
-              characters.filter(
-                (c) => (c.system_id || (c.data as any)?.system_id || (c.data as any)?.systemId || "pf2e") === "dnd5e"
-              ).length
-            }
-            )
+            <span className="pill-icon">🐉</span>
+            <span className="pill-label">D&D 5e</span>
+            <span className="pill-count">
+              {characters.filter((c) => (c.system_id || (c.data as any)?.system_id || (c.data as any)?.systemId || "pf2e") === "dnd5e").length}
+            </span>
           </button>
           <button
             type="button"
-            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-              selectedSystemFilter === "t20" ? "active" : ""
-            }`}
-            style={{
-              backgroundColor: selectedSystemFilter === "t20" ? "#3b82f6" : "rgba(255, 255, 255, 0.06)",
-              color: selectedSystemFilter === "t20" ? "#ffffff" : "var(--text-color, #f8fafc)",
-              border: "1px solid var(--border-color, #334155)",
-            }}
+            className={`system-filter-pill pill-t20 ${selectedSystemFilter === "t20" ? "active" : ""}`}
             onClick={() => setSelectedSystemFilter("t20")}
+            role="tab"
+            aria-selected={selectedSystemFilter === "t20"}
           >
-            🛡️ Tormenta 20 (
-            {
-              characters.filter(
-                (c) => (c.system_id || (c.data as any)?.system_id || (c.data as any)?.systemId || "pf2e") === "t20"
-              ).length
-            }
-            )
+            <span className="pill-icon">🛡️</span>
+            <span className="pill-label">Tormenta 20</span>
+            <span className="pill-count">
+              {characters.filter((c) => (c.system_id || (c.data as any)?.system_id || (c.data as any)?.systemId || "pf2e") === "t20").length}
+            </span>
           </button>
           <button
             type="button"
-            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-              selectedSystemFilter === "ose" ? "active" : ""
-            }`}
-            style={{
-              backgroundColor: selectedSystemFilter === "ose" ? "#d97706" : "rgba(255, 255, 255, 0.06)",
-              color: selectedSystemFilter === "ose" ? "#ffffff" : "var(--text-color, #f8fafc)",
-              border: "1px solid var(--border-color, #334155)",
-            }}
+            className={`system-filter-pill pill-ose ${selectedSystemFilter === "ose" ? "active" : ""}`}
             onClick={() => setSelectedSystemFilter("ose")}
+            role="tab"
+            aria-selected={selectedSystemFilter === "ose"}
           >
-            🎲 Old-School Essentials (
-            {
-              characters.filter(
-                (c) => (c.system_id || (c.data as any)?.system_id || (c.data as any)?.systemId || "pf2e") === "ose"
-              ).length
-            }
-            )
+            <span className="pill-icon">📜</span>
+            <span className="pill-label">Old-School Essentials</span>
+            <span className="pill-count">
+              {characters.filter((c) => (c.system_id || (c.data as any)?.system_id || (c.data as any)?.systemId || "pf2e") === "ose").length}
+            </span>
           </button>
         </div>
 
@@ -1421,7 +1390,7 @@ function LibraryPage() {
             <span className="empty-icon">📜</span>
             <h3>{t("noCharactersTitle")}</h3>
             <p>{t("noCharactersDescription")}</p>
-            <button type="button" className="create-char-hero-btn" onClick={handleCreateNew}>
+            <button type="button" className="create-char-hero-btn create-char-hero-btn-lg" onClick={handleCreateNew}>
               ➕ {t("startFirstCharacter")}
             </button>
           </div>

@@ -758,32 +758,32 @@ export function AccountPortal() {
                         <span>{characters.length}</span>
                       </div>
 
-                      <div className="system-filter-tabs" style={{ display: "flex", gap: "6px", marginBottom: "12px", flexWrap: "wrap" }}>
+                      <div className="system-filter-bar system-filter-tabs" role="tablist" aria-label={t("systemLabel")}>
                         {[
-                          { id: "all", label: `🎲 ${t("filterAllSystems")}` },
-                          { id: "pf2e", label: `🛡️ ${t("systemPf2e")}` },
-                          { id: "dnd5e", label: `🐉 ${t("systemDnd5e")}` },
-                          { id: "t20", label: `⚔️ ${t("systemT20")}` },
-                          { id: "ose", label: `🎲 ${t("systemOse")}` },
-                        ].map((sys) => (
-                          <button
-                            key={sys.id}
-                            type="button"
-                            className={`system-filter-btn ${selectedSystemFilter === sys.id ? "active" : ""}`}
-                            onClick={() => setSelectedSystemFilter(sys.id)}
-                            style={{
-                              padding: "4px 10px",
-                              fontSize: "0.8rem",
-                              borderRadius: "14px",
-                              border: "1px solid var(--border-color, #444)",
-                              background: selectedSystemFilter === sys.id ? "var(--primary-color, #bf263c)" : "transparent",
-                              color: selectedSystemFilter === sys.id ? "#fff" : "inherit",
-                              cursor: "pointer",
-                            }}
-                          >
-                            {sys.label}
-                          </button>
-                        ))}
+                          { id: "all", icon: "🎲", label: t("filterAllSystems") },
+                          { id: "pf2e", icon: "⚔️", label: t("systemPf2e") },
+                          { id: "dnd5e", icon: "🐉", label: t("systemDnd5e") },
+                          { id: "t20", icon: "🛡️", label: t("systemT20") },
+                          { id: "ose", icon: "📜", label: t("systemOse") },
+                        ].map((sys) => {
+                          const count = sys.id === "all"
+                            ? characters.length
+                            : characters.filter((c) => (c.system_id || (c.data as any)?.system_id || (c.data as any)?.systemId || "pf2e") === sys.id).length;
+                          return (
+                            <button
+                              key={sys.id}
+                              type="button"
+                              className={`system-filter-pill pill-${sys.id} ${selectedSystemFilter === sys.id ? "active" : ""}`}
+                              onClick={() => setSelectedSystemFilter(sys.id)}
+                              role="tab"
+                              aria-selected={selectedSystemFilter === sys.id}
+                            >
+                              <span className="pill-icon">{sys.icon}</span>
+                              <span className="pill-label">{sys.label}</span>
+                              <span className="pill-count">{count}</span>
+                            </button>
+                          );
+                        })}
                       </div>
 
                       {loading && characters.length === 0 ? (

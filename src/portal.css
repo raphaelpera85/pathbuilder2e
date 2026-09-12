@@ -504,44 +504,202 @@ body.portal-page-active .dice-roller-drawer { display: none !important; }
 .library-header-actions { display: flex; align-items: center; gap: 10px; }
 
 .create-char-hero-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   min-height: 44px;
-  padding: 10px 20px;
-  color: #fff;
-  background: linear-gradient(135deg, #ea580c, #c2410c);
-  border: 1px solid #fb923c;
-  border-radius: 9px;
-  font-weight: 900;
+  padding: 10px 22px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 50%, #c2410c 100%);
+  border: 1px solid rgba(251, 146, 60, 0.5);
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0.01em;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.35);
-  transition: all 0.2s ease;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 4px 14px rgba(234, 88, 12, 0.35);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
 }
-.create-char-hero-btn:hover { transform: translateY(-1px); background: linear-gradient(135deg, #f97316, #ea580c); }
+.create-char-hero-btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #fb923c 0%, #ea580c 50%, #c2410c 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 8px 22px rgba(234, 88, 12, 0.45);
+  border-color: #fdba74;
+}
+.create-char-hero-btn:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2), 0 2px 6px rgba(234, 88, 12, 0.25);
+}
+
+.create-char-hero-btn-lg {
+  min-height: 48px;
+  padding: 12px 30px;
+  font-size: 15px;
+  border-radius: 14px;
+}
 
 .signout-alt-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   min-height: 44px;
-  padding: 10px 16px;
-  color: var(--pb-text-muted);
-  background: var(--pb-bg-card);
-  border: 1px solid var(--pb-border-light);
-  border-radius: 9px;
+  padding: 10px 18px;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
   font-weight: 700;
+  font-size: 13.5px;
   cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
 }
-.signout-alt-btn:hover { color: #fca5a5; border-color: rgba(239, 68, 68, 0.4); }
+.signout-alt-btn:hover {
+  color: #f87171;
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.4);
+  transform: translateY(-1px);
+}
+.signout-alt-btn:active {
+  transform: translateY(0) scale(0.98);
+}
 
 .library-characters-section { display: flex; flex-direction: column; gap: 16px; }
-.char-count-badge { padding: 3px 10px; background: rgba(249, 115, 22, 0.15); color: var(--pb-orange-light); border-radius: 999px; font-weight: 900; font-size: 13px; }
+.char-count-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 10px;
+  background: rgba(249, 115, 22, 0.15);
+  color: #fb923c;
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 13px;
+}
+
+/* ==========================================================================
+   SISTEMA DE FILTROS POR RPG (MODERNO & RESPONSIVO)
+   ========================================================================== */
+.system-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 14px 0 20px;
+  padding: 8px;
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+.system-filter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  color: #cbd5e1;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+  text-decoration: none;
+}
+
+.system-filter-pill:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.24);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.system-filter-pill:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.system-filter-pill .pill-icon {
+  font-size: 15px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+}
+
+.system-filter-pill .pill-label {
+  letter-spacing: 0.01em;
+}
+
+.system-filter-pill .pill-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 20px;
+  padding: 0 6px;
+  font-size: 11px;
+  font-weight: 800;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #94a3b8;
+  transition: all 0.2s ease;
+}
+
+/* Estados Ativos em Tema Escuro */
+.system-filter-pill.active {
+  color: #ffffff;
+  font-weight: 800;
+  border-color: transparent;
+  transform: translateY(-1px);
+}
+
+.system-filter-pill.active .pill-count {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+.system-filter-pill.active.pill-all {
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.4);
+}
+
+.system-filter-pill.active.pill-pf2e {
+  background: linear-gradient(135deg, #ea580c, #c2410c);
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.4);
+}
+
+.system-filter-pill.active.pill-dnd5e {
+  background: linear-gradient(135deg, #ef4444, #b91c1c);
+  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.4);
+}
+
+.system-filter-pill.active.pill-t20 {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+}
+
+.system-filter-pill.active.pill-ose {
+  background: linear-gradient(135deg, #d97706, #b45309);
+  box-shadow: 0 4px 14px rgba(217, 119, 6, 0.4);
+}
 
 .portal-empty-card {
   padding: 60px 24px;
   text-align: center;
-  background: rgba(17, 23, 34, 0.6);
-  border: 1px dashed var(--pb-border-light);
-  border-radius: 16px;
+  background: rgba(17, 23, 34, 0.55);
+  border: 2px dashed rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 .empty-icon { font-size: 48px; }
 .portal-empty-card h3 { margin: 0; font-size: 18px; color: #fff; }
@@ -2232,7 +2390,8 @@ body.theme-light .btn-card-delete:hover {
 [data-theme="light"] .portal-empty-card,
 body.theme-light .portal-empty-card {
   background: #faf5e8 !important;
-  border: 1px dashed #ccbe9f !important;
+  border: 2px dashed #dcd1be !important;
+  border-radius: 18px !important;
 }
 
 [data-theme="light"] .portal-empty-card h3,
@@ -2247,28 +2406,106 @@ body.theme-light .portal-empty-card p {
 
 [data-theme="light"] .create-char-hero-btn,
 body.theme-light .create-char-hero-btn {
-  background: #9c4210 !important;
+  background: linear-gradient(135deg, #c2410c 0%, #9a3412 100%) !important;
   color: #ffffff !important;
-  border: 1px solid #782b08 !important;
+  border: 1px solid #7c2d12 !important;
+  border-radius: 12px !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 4px 14px rgba(154, 52, 18, 0.28) !important;
 }
 
 [data-theme="light"] .create-char-hero-btn:hover,
 body.theme-light .create-char-hero-btn:hover {
-  background: #782b08 !important;
+  background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 6px 20px rgba(154, 52, 18, 0.38) !important;
+  border-color: #9a3412 !important;
 }
 
 [data-theme="light"] .signout-alt-btn,
 body.theme-light .signout-alt-btn {
-  background: #fdfaf2 !important;
+  background: #fdfaf4 !important;
   border: 1px solid #ccbe9f !important;
-  color: #5e4d3a !important;
+  color: #5c4b37 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 1px 3px rgba(60, 40, 20, 0.05) !important;
 }
 
 [data-theme="light"] .signout-alt-btn:hover,
 body.theme-light .signout-alt-btn:hover {
   color: #b91c1c !important;
-  border-color: #b91c1c !important;
+  border-color: #f87171 !important;
   background: #fef2f2 !important;
+  box-shadow: 0 3px 8px rgba(185, 28, 28, 0.12) !important;
+}
+
+[data-theme="light"] .system-filter-bar,
+body.theme-light .system-filter-bar {
+  background: #f4ede0 !important;
+  border: 1px solid #dcd1be !important;
+  box-shadow: inset 0 1px 3px rgba(60, 40, 20, 0.06) !important;
+}
+
+[data-theme="light"] .system-filter-pill,
+body.theme-light .system-filter-pill {
+  background: #fdfaf4 !important;
+  border: 1px solid #ccbe9f !important;
+  color: #4a3b2c !important;
+  box-shadow: 0 1px 3px rgba(60, 40, 20, 0.04) !important;
+}
+
+[data-theme="light"] .system-filter-pill:hover,
+body.theme-light .system-filter-pill:hover {
+  background: #ffffff !important;
+  border-color: #bfae8b !important;
+  color: #1f140a !important;
+  box-shadow: 0 3px 8px rgba(60, 40, 20, 0.08) !important;
+}
+
+[data-theme="light"] .system-filter-pill .pill-count,
+body.theme-light .system-filter-pill .pill-count {
+  background: #e8dcbf !important;
+  color: #5c4b37 !important;
+}
+
+[data-theme="light"] .system-filter-pill.active,
+body.theme-light .system-filter-pill.active {
+  color: #ffffff !important;
+  border-color: transparent !important;
+}
+
+[data-theme="light"] .system-filter-pill.active .pill-count,
+body.theme-light .system-filter-pill.active .pill-count {
+  background: rgba(255, 255, 255, 0.28) !important;
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .system-filter-pill.active.pill-all,
+body.theme-light .system-filter-pill.active.pill-all {
+  background: linear-gradient(135deg, #c2410c, #9a3412) !important;
+  box-shadow: 0 4px 12px rgba(154, 52, 18, 0.28) !important;
+}
+
+[data-theme="light"] .system-filter-pill.active.pill-pf2e,
+body.theme-light .system-filter-pill.active.pill-pf2e {
+  background: linear-gradient(135deg, #ea580c, #c2410c) !important;
+  box-shadow: 0 4px 12px rgba(194, 65, 12, 0.28) !important;
+}
+
+[data-theme="light"] .system-filter-pill.active.pill-dnd5e,
+body.theme-light .system-filter-pill.active.pill-dnd5e {
+  background: linear-gradient(135deg, #dc2626, #b91c1c) !important;
+  box-shadow: 0 4px 12px rgba(185, 28, 28, 0.28) !important;
+}
+
+[data-theme="light"] .system-filter-pill.active.pill-t20,
+body.theme-light .system-filter-pill.active.pill-t20 {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8) !important;
+  box-shadow: 0 4px 12px rgba(29, 78, 216, 0.28) !important;
+}
+
+[data-theme="light"] .system-filter-pill.active.pill-ose,
+body.theme-light .system-filter-pill.active.pill-ose {
+  background: linear-gradient(135deg, #b45309, #92400e) !important;
+  box-shadow: 0 4px 12px rgba(146, 64, 14, 0.28) !important;
 }
 
 [data-theme="light"] .access-card,
