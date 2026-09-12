@@ -30,15 +30,34 @@ create trigger trg_catalog_systems_updated_at
 -- RLS para catalog_systems
 alter table public.catalog_systems enable row level security;
 
-create policy "Permitir leitura pública de catalog_systems"
-  on public.catalog_systems for select
-  using (true);
+do $$
+begin
+  if not exists (
+    select 1
+      from pg_policies
+     where schemaname = 'public'
+       and tablename = 'catalog_systems'
+       and policyname = 'Permitir leitura pública de catalog_systems'
+  ) then
+    create policy "Permitir leitura pública de catalog_systems"
+      on public.catalog_systems for select
+      using (true);
+  end if;
 
-create policy "Admins podem gerenciar catalog_systems"
-  on public.catalog_systems for all
-  to authenticated
-  using (public.is_admin())
-  with check (public.is_admin());
+  if not exists (
+    select 1
+      from pg_policies
+     where schemaname = 'public'
+       and tablename = 'catalog_systems'
+       and policyname = 'Admins podem gerenciar catalog_systems'
+  ) then
+    create policy "Admins podem gerenciar catalog_systems"
+      on public.catalog_systems for all
+      to authenticated
+      using (public.is_admin())
+      with check (public.is_admin());
+  end if;
+end $$;
 
 -- Inserções iniciais dos sistemas suportados
 insert into public.catalog_systems (
