@@ -288,6 +288,19 @@ export function mergeCharacterLists(remote: CloudCharacter[], local: CloudCharac
   );
 }
 
+function isMissingSystemIdColumnError(error: any): boolean {
+  if (!error) return false;
+  const msg = String(error.message || "");
+  const details = String(error.details || "");
+  const code = String(error.code || "");
+  return (
+    msg.includes("system_id") ||
+    details.includes("system_id") ||
+    code === "PGRST204" ||
+    code === "42703"
+  );
+}
+
 export async function listCharacters(
   currentUser?: UserProfile,
   options?: { systemId?: string }
@@ -310,15 +323,33 @@ export async function listCharacters(
         query = query.eq("system_id", options.systemId);
       }
 
-      const { data, error } = await withRequestTimeout(
+      let { data, error } = await withRequestTimeout(
         query.order("updated_at", { ascending: false }),
         8_000,
         "A biblioteca demorou para responder. Usando as fichas salvas neste dispositivo."
       );
+
+      // Se a coluna system_id ainda não existe no Supabase (migração pendente),
+      // faz fallback transparente sem a coluna no select/filter
+      if (error && isMissingSystemIdColumnError(error)) {
+        const fallbackQuery = supabase
+          .from("characters")
+          .select("id,user_id,character_key,name,level,ruleset,gm_email,player_email,player_name,data,created_at,updated_at")
+          .eq("user_id", activeUser.id);
+
+        const fallbackRes = await withRequestTimeout(
+          fallbackQuery.order("updated_at", { ascending: false }),
+          8_000,
+          "A biblioteca demorou para responder. Usando as fichas salvas neste dispositivo."
+        );
+        data = fallbackRes.data as any;
+        error = fallbackRes.error;
+      }
+
       if (!error && data) {
-        const remote = (data ?? []).map((row) => ({
+        const remote = (data ?? []).map((row: any) => ({
           ...row,
-          system_id: row.system_id || (row.data as any)?.system_id || "pf2e",
+          system_id: row.system_id || (row.data as any)?.system_id || (row.data as any)?.systemId || "pf2e",
         })) as CloudCharacter[];
         const hydratedRemote = await hydrateRemoteHistory(remote, activeUser.id);
         result = mergeCharacterLists(hydratedRemote, getLocalCharacters(activeUser.id));
@@ -365,11 +396,30 @@ export async function saveCharacter(
 
   if (isSupabaseConfigured && supabase) {
     try {
-      const { data, error } = await withRequestTimeout(supabase
+      let { data, error } = await withRequestTimeout(supabase
         .from("characters")
         .upsert(payload, { onConflict: "user_id,character_key" })
         .select("id,user_id,system_id,character_key,name,level,ruleset,gm_email,player_email,player_name,data,created_at,updated_at")
         .single(), 8_000, "O salvamento remoto demorou para responder. A ficha será mantida neste dispositivo.");
+
+      // Se a coluna system_id ainda não existe no Supabase (migração pendente),
+      // faz fallback tirando system_id da raiz do payload e do select
+      if (error && isMissingSystemIdColumnError(error)) {
+        const legacyPayload = { ...payload };
+        delete (legacyPayload as any).system_id;
+
+        const fallbackRes = await withRequestTimeout(supabase
+          .from("characters")
+          .upsert(legacyPayload, { onConflict: "user_id,character_key" })
+          .select("id,user_id,character_key,name,level,ruleset,gm_email,player_email,player_name,data,created_at,updated_at")
+          .single(), 8_000, "O salvamento remoto demorou para responder. A ficha será mantida neste dispositivo.");
+
+        if (fallbackRes.data) {
+          data = { ...(fallbackRes.data as any), system_id: payload.system_id };
+        }
+        error = fallbackRes.error;
+      }
+
       if (!error && data) {
         // Mantém uma cópia local mesmo após sucesso remoto. Assim uma falha
         // transitória na próxima leitura não transforma uma biblioteca válida
@@ -490,11 +540,22 @@ export async function listCharactersSharedWithGM(gmEmail: string): Promise<Cloud
 
   if (isSupabaseConfigured && supabase) {
     try {
-      const { data, error } = await withRequestTimeout(supabase
+      let { data, error } = await withRequestTimeout(supabase
         .from("characters")
         .select("id,user_id,system_id,character_key,name,level,ruleset,gm_email,player_name,player_email,data,created_at,updated_at")
         .ilike("gm_email", normalizedEmail)
         .order("updated_at", { ascending: false }), 8_000, "A busca das fichas compartilhadas demorou para responder. Exibindo os dados disponíveis neste dispositivo.");
+
+      if (error && isMissingSystemIdColumnError(error)) {
+        const fallbackRes = await withRequestTimeout(supabase
+          .from("characters")
+          .select("id,user_id,character_key,name,level,ruleset,gm_email,player_name,player_email,data,created_at,updated_at")
+          .ilike("gm_email", normalizedEmail)
+          .order("updated_at", { ascending: false }), 8_000, "A busca das fichas compartilhadas demorou para responder. Exibindo os dados disponíveis neste dispositivo.");
+        data = fallbackRes.data as any;
+        error = fallbackRes.error;
+      }
+
       if (!error && data) {
         return (data as any[]).map((row) => ({
           ...row,

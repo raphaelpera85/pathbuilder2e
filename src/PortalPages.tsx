@@ -916,6 +916,23 @@ function LibraryPage() {
   const [notice, setNotice] = useState<string | null>(null);
   const charactersLoadIdRef = useRef(0);
   const sessionRef = useRef<AuthSession | null>(null);
+  const [isSystemModalOpen, setIsSystemModalOpen] = useState(false);
+  const [selectedSystemFilter, setSelectedSystemFilter] = useState<string>("all");
+  const [isOseWizardOpen, setIsOseWizardOpen] = useState(false);
+  const [activeOseCharacter, setActiveOseCharacter] = useState<OseCharacterCreatedData | null>(null);
+
+  useEffect(() => {
+    const handleOpenWizard = () => setIsOseWizardOpen(true);
+    const handleLoadOse = (e: CustomEvent<OseCharacterCreatedData>) => {
+      if (e.detail) setActiveOseCharacter(e.detail);
+    };
+    window.addEventListener("pathbuilder:open-ose-wizard", handleOpenWizard);
+    window.addEventListener("pathbuilder:load-ose-character", handleLoadOse as EventListener);
+    return () => {
+      window.removeEventListener("pathbuilder:open-ose-wizard", handleOpenWizard);
+      window.removeEventListener("pathbuilder:load-ose-character", handleLoadOse as EventListener);
+    };
+  }, []);
 
   const loadUserCharacters = async (activeSession: AuthSession) => {
     const requestId = ++charactersLoadIdRef.current;
@@ -1033,23 +1050,6 @@ function LibraryPage() {
     }
   };
 
-  const [isSystemModalOpen, setIsSystemModalOpen] = useState(false);
-  const [selectedSystemFilter, setSelectedSystemFilter] = useState<string>("all");
-  const [isOseWizardOpen, setIsOseWizardOpen] = useState(false);
-  const [activeOseCharacter, setActiveOseCharacter] = useState<OseCharacterCreatedData | null>(null);
-
-  useEffect(() => {
-    const handleOpenWizard = () => setIsOseWizardOpen(true);
-    const handleLoadOse = (e: CustomEvent<OseCharacterCreatedData>) => {
-      if (e.detail) setActiveOseCharacter(e.detail);
-    };
-    window.addEventListener("pathbuilder:open-ose-wizard", handleOpenWizard);
-    window.addEventListener("pathbuilder:load-ose-character", handleLoadOse as EventListener);
-    return () => {
-      window.removeEventListener("pathbuilder:open-ose-wizard", handleOpenWizard);
-      window.removeEventListener("pathbuilder:load-ose-character", handleLoadOse as EventListener);
-    };
-  }, []);
 
   const handleCreateNew = () => {
     setIsSystemModalOpen(true);
