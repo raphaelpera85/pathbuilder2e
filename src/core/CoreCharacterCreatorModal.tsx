@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { getCoreCatalog, type MultiSystemCharacter, type SupportedCoreSystem } from "../data/multiSystemCharacter";
 import { getSystemRulesEngine } from "../data/systemRulesEngine";
+import { DND5E_STANDARD_ARRAY, generateAbilityScores, type AbilityGenerationMethod } from "../data/coreCharacterRules";
 
 interface CoreCharacterCreatorModalProps {
   isOpen: boolean;
@@ -19,11 +20,13 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
   const catalog = useMemo(() => getCoreCatalog(system), [system]);
   const [character, setCharacter] = useState<MultiSystemCharacter>(() => engine.createDefaultCharacter());
   const [error, setError] = useState<string | null>(null);
+  const [generationMethod, setGenerationMethod] = useState<AbilityGenerationMethod>("point_buy");
 
   useEffect(() => {
     if (isOpen) {
       setCharacter(engine.createDefaultCharacter());
       setError(null);
+      setGenerationMethod("point_buy");
     }
   }, [engine, isOpen]);
 
@@ -42,7 +45,17 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
   if (!isOpen) return null;
 
   const update = <K extends keyof MultiSystemCharacter>(key: K, value: MultiSystemCharacter[K]) => {
-    setCharacter((current) => ({ ...current, [key]: value }));
+    setCharacter((current) => {
+      const next = { ...current, [key]: value } as MultiSystemCharacter;
+      if (key === "classId" || key === "backgroundId") {
+        const classRules = catalog.classRules.find((entry) => entry.id === next.classId);
+        const background = catalog.backgrounds.find((entry) => entry.id === next.backgroundId);
+        const backgroundSkills = background && ("skillProficiencies" in background ? background.skillProficiencies : background.trainedSkills);
+        const fixedSkills = classRules && "fixedSkills" in classRules ? classRules.fixedSkills : [];
+        next.skillProficiencies = Array.from(new Set([...(current.skillProficiencies || []), ...(backgroundSkills || []), ...fixedSkills]));
+      }
+      return next;
+    });
   };
 
   const submit = () => {
@@ -55,8 +68,20 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
     onCharacterCreated(character);
   };
 
+  const applyGenerationMethod = (method: AbilityGenerationMethod) => {
+    setGenerationMethod(method);
+    const scores = method === "standard_array"
+      ? [...DND5E_STANDARD_ARRAY]
+      : method === "point_buy"
+        ? Array(6).fill(system === "t20" ? 10 : 8)
+        : generateAbilityScores();
+    setCharacter((current) => ({ ...current, abilities: Object.fromEntries(ABILITIES.map(([key], index) => [key, scores[index]])) as MultiSystemCharacter["abilities"] }));
+  };
+
   const title = system === "t20" ? "Novo personagem de Tormenta20" : "Novo personagem de D&D 5e";
   const backgroundLabel = system === "t20" ? "Origem" : "Antecedente";
+  const selectedClassRules = catalog.classRules.find((entry) => entry.id === character.classId);
+  const selectedRaceRules = catalog.raceRules.find((entry) => entry.id === character.raceId);
 
   return (
     <div className="pb-core-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="pb-core-modal-title" onClick={(event) => {
@@ -90,15 +115,40 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
             </select>
           </label>
           <label>{backgroundLabel}
-            <input value={character.backgroundId || ""} onChange={(event) => update("backgroundId", event.target.value)} placeholder={system === "t20" ? "Ex.: Guarda" : "Ex.: Soldado"} />
+            <select value={character.backgroundId || ""} onChange={(event) => update("backgroundId", event.target.value)}>
+              {catalog.backgrounds.map((entry) => <option key={entry.id} value={entry.id}>{entry.name}</option>)}
+            </select>
           </label>
           <label>Regraset
             <input value={character.ruleset} readOnly aria-readonly="true" />
           </label>
         </div>
 
+        {selectedRaceRules && <aside className="pb-core-race-summary" aria-label="Resumo da raça">
+          <strong>{selectedRaceRules.name}</strong>
+          <span>{selectedRaceRules.abilityBonuses} · {selectedRaceRules.size} · deslocamento {selectedRaceRules.speed}m</span>
+          <small>{selectedRaceRules.traits.join(" · ")}</small>
+        </aside>}
+
+        {selectedClassRules && <aside className="pb-core-class-summary" aria-label="Resumo da classe">
+          <strong>{selectedClassRules.name}</strong>
+          {"startingHp" in selectedClassRules
+            ? <span>PV inicial {selectedClassRules.startingHp} · +{selectedClassRules.hpPerLevel} PV/nível · {selectedClassRules.manaPerLevel} PM/nível · {selectedClassRules.proficiencies}</span>
+            : <span>{selectedClassRules.hitDie} · atributo-chave {selectedClassRules.primaryAbility} · salvamentos: {selectedClassRules.savingThrows.join(" e ")}</span>}
+        </aside>}
+
         <fieldset className="pb-core-abilities">
           <legend>Atributos</legend>
+          <div className="pb-core-generation-row">
+            <label>Método
+              <select value={generationMethod} onChange={(event) => applyGenerationMethod(event.target.value as AbilityGenerationMethod)}>
+                <option value="point_buy">Compra por pontos</option>
+                <option value="roll_4d6_drop_lowest">Rolar 4d6, descartar menor</option>
+                {system === "dnd5e" && <option value="standard_array">Array padrão</option>}
+              </select>
+            </label>
+            <span>{system === "t20" ? "T20: 20 pontos; valores de 8 a 18." : "D&D 5e: 27 pontos; valores de 8 a 15."}</span>
+          </div>
           <div className="pb-core-ability-grid">
             {ABILITIES.map(([key, label]) => (
               <label key={key}>{label}
@@ -125,6 +175,28 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
           </div>
         </fieldset>
 
+        <fieldset className="pb-core-compendium">
+          <legend>Equipamento, magias e {system === "t20" ? "poderes" : "talentos"}</legend>
+          <div className="pb-core-compendium-columns">
+            <label>Equipamento
+              <select multiple value={character.equipmentIds} onChange={(event) => update("equipmentIds", Array.from(event.target.selectedOptions, (option) => option.value))}>
+                {catalog.equipment.map((item) => <option key={item.id} value={item.id}>{item.name} · {item.summary}</option>)}
+              </select>
+            </label>
+            <label>Magias
+              <select multiple value={character.spellIds} onChange={(event) => update("spellIds", Array.from(event.target.selectedOptions, (option) => option.value))}>
+                {catalog.spells.map((item) => <option key={item.id} value={item.id}>{item.name} · {item.summary}</option>)}
+              </select>
+            </label>
+            <label>{system === "t20" ? "Poderes" : "Talentos"}
+              <select multiple value={character.featIds} onChange={(event) => update("featIds", Array.from(event.target.selectedOptions, (option) => option.value))}>
+                {catalog.feats.map((item) => <option key={item.id} value={item.id}>{item.name} · {item.summary}</option>)}
+              </select>
+            </label>
+          </div>
+          <small>Seleções do núcleo local; cada entrada mantém sua página de origem.</small>
+        </fieldset>
+
         {error && <p className="pb-core-error" role="alert">{error}</p>}
         <footer className="pb-core-modal-footer">
           <button type="button" className="pb-core-secondary" onClick={onClose}>Cancelar</button>
@@ -134,4 +206,3 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
     </div>
   );
 }
-

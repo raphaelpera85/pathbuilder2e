@@ -33,20 +33,25 @@ Este é o backlog executável para transformar o construtor atual em uma platafo
 ### Criação
 
 - [ ] Atributos: Força, Destreza, Constituição, Inteligência, Sabedoria e Carisma.
-- [ ] Métodos de geração: 4d6 descartando o menor, geração por pontos e valor padrão configurável.
+- [x] Métodos de geração: T20 com 4d6 descartando o menor e compra por pontos; D&D 5e com 4d6, compra por pontos e array padrão.
+  - Evidência: `src/data/coreCharacterRules.ts`, com orçamentos T20 20 pontos e D&D 5e 27 pontos, e testes determinísticos.
+- [x] Metadados de classe verificados no livro-base: PV/PM, perícias fixas e escolhas e proficiências de T20; dado de vida, atributo-chave, salvamentos, perícias e proficiências de D&D 5e.
+  - Evidência: `src/data/t20/t20Classes.ts` e `src/data/dnd5e/dnd5eClasses.ts`, com páginas de classe rastreáveis.
+- [x] Origem T20 e antecedente D&D 5e registrados como escolhas estruturadas com perícias, benefícios, equipamentos e fonte.
+  - Evidência: `src/data/t20/t20Origins.ts` (35 origens do livro-base) e `src/data/dnd5e/dnd5eBackgrounds.ts` (13 antecedentes do Livro do Jogador).
 - [ ] Raça, classe, origem, divindade opcional, perícias e equipamento.
 - [ ] Nível, XP, Pontos de Vida, Pontos de Mana, Defesa, deslocamento e modificadores.
 - [ ] Validação de pré-requisitos e escolhas obrigatórias antes de concluir.
 
 ### Raças e opções raciais
 
-- [ ] Importar as 17 raças do livro básico, com modificadores, habilidades, tamanho, deslocamento, idiomas e poderes.
-- [ ] Preservar fonte e página de cada raça.
-- [ ] Modelar escolhas raciais como opções estruturadas, não como texto solto.
+- [x] Importar as 17 raças do livro básico com modificadores, habilidades, tamanho, deslocamento e fonte/página.
+- [ ] Completar idiomas e todas as escolhas condicionais raciais.
+- [x] Modelar os traços raciais como opções estruturadas, não como texto solto.
 
 ### Classes
 
-- [ ] Importar as 14 classes do livro básico.
+- [x] Importar as 14 classes do livro básico e seus metadados de criação.
 - [ ] Progressão de níveis 1–20.
 - [ ] Pontos de Vida, Pontos de Mana, perícias treinadas, proficiências e habilidades de classe.
 - [ ] Poderes e escolhas de classe por nível.
@@ -55,15 +60,18 @@ Este é o backlog executável para transformar o construtor atual em uma platafo
 ### Perícias, poderes e vantagens
 
 - [ ] Catálogo de perícias T20 com atributo-chave, treinamento, penalidade de armadura e usos.
-- [ ] Poderes gerais, poderes de classe, poderes de destino e poderes concedidos.
+- [x] Primeiro conjunto selecionável de poderes gerais/destino e talentos opcionais, separado por sistema.
+- [ ] Importar poderes gerais, poderes de classe, poderes de destino e poderes concedidos completos.
 - [ ] Vantagens/desvantagens: mapear somente se a edição possuir regra explícita; não importar terminologia de D&D ou OSE.
 - [ ] Implementar escolhas de perícia treinada e poderes com validação.
 
 ### Equipamento e magia
 
-- [ ] Armas, armaduras, escudos, itens gerais, kits e tesouro.
+- [x] Primeiro compêndio funcional de armas, armaduras, escudos e itens gerais, separado por sistema.
+- [ ] Importar a totalidade de armas, armaduras, escudos, itens gerais, kits e tesouro.
 - [ ] Preço, peso, dano, crítico, alcance, tipo, categoria e proficiências.
-- [ ] Magias com círculo, escola, execução, alcance, alvo, duração, resistência, descrição e aprimoramentos.
+- [x] Primeiro conjunto selecionável de magias do núcleo com nível/círculo, escola/resumo e página.
+- [ ] Importar magias completas com execução, alcance, alvo, duração, resistência, descrição e aprimoramentos.
 - [ ] Divindades, símbolos, obrigações e restrições quando afetarem a ficha.
 
 ### Ficha e exportação
@@ -86,13 +94,14 @@ Este é o backlog executável para transformar o construtor atual em uma platafo
 
 ### Raças e sub-raças
 
-- [ ] Importar raças e sub-raças do Livro do Jogador.
-- [ ] Aumentos de atributos, idade, tamanho, deslocamento, idiomas, proficiências e traços raciais.
+- [x] Importar as 9 raças do Livro do Jogador.
+- [ ] Importar sub-raças e completar escolhas raciais dependentes.
+- [x] Registrar aumentos de atributos, tamanho, deslocamento, idiomas e traços raciais-base.
 - [ ] Manter sub-raças como escolhas dependentes da raça, sem duplicar registros.
 
 ### Classes e subclasses
 
-- [ ] Importar as classes do Livro do Jogador.
+- [x] Importar as 12 classes do Livro do Jogador e seus metadados básicos de criação.
 - [ ] Progressão de níveis 1–20, dado de vida, proficiências, salvaguardas e equipamentos iniciais.
 - [ ] Habilidades de classe, características por nível e subclasses/arquetipos.
 - [ ] Espaços de magia, nível de conjuração, preparação/conhecidas e foco de conjuração.
@@ -102,14 +111,17 @@ Este é o backlog executável para transformar o construtor atual em uma platafo
 - [ ] Perícias com atributo associado e proficiência.
 - [ ] Salvaguardas e bônus de proficiência.
 - [ ] Antecedentes com perícias, ferramentas, idiomas, equipamento e característica.
-- [ ] Talentos opcionais, marcados como regra variante.
+- [x] Talentos opcionais iniciais registrados e apresentados como opções do núcleo.
+- [ ] Importar catálogo completo de talentos e marcar cada um como regra variante quando aplicável.
 - [ ] Vantagem/desvantagem como mecânica compartilhada e testada.
 
 ### Equipamento e magia
 
-- [ ] Armas, armaduras, escudos, ferramentas, kits, equipamentos de aventureiro e moedas.
+- [x] Primeiro compêndio funcional de armas, armaduras, escudos e equipamentos de aventureiro, separado por sistema.
+- [ ] Importar a totalidade de armas, armaduras, escudos, ferramentas, kits, equipamentos e moedas.
 - [ ] Propriedades de armas, dano, alcance, munição e proficiência.
-- [ ] Magias com nível, escola, tempo de conjuração, alcance, componentes, duração, concentração, alvo e salvamento.
+- [x] Primeiro conjunto selecionável de magias do núcleo com nível/escola/resumo e página.
+- [ ] Importar magias completas com tempo de conjuração, alcance, componentes, duração, concentração, alvo e salvamento.
 - [ ] Listas de magia por classe e preparação.
 
 ### Ficha e exportação
@@ -134,6 +146,7 @@ Este é o backlog executável para transformar o construtor atual em uma platafo
 
 - [ ] Popular `catalog_systems` com `t20` e `dnd5e` já separados por ruleset.
 - [ ] Criar seeds versionados para raças, classes, subclasses, origens/antecedentes, perícias, poderes/talentos, itens e magias.
+  - Catálogos locais iniciais de equipamento, magia, poderes e talentos já estão separados em `src/data/t20/t20Compendium.ts` e `src/data/dnd5e/dnd5eCompendium.ts`.
 - [ ] Sincronizar por lotes idempotentes e remover somente registros obsoletos do mesmo sistema/ruleset.
 - [ ] Auditar contagens local × Supabase por tabela e por sistema.
 - [ ] Validar RLS com usuário autenticado e isolamento entre fichas.

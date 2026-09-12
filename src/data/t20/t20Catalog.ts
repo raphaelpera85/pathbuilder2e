@@ -4,9 +4,17 @@ export interface T20CatalogEntry {
   id: string;
   name: string;
   sourcePage: number;
+  keyAbility?: "str" | "dex" | "con" | "int" | "wis" | "cha";
 }
 
 const entry = (id: string, name: string, sourcePage: number): T20CatalogEntry => ({ id, name, sourcePage });
+const T20_SKILL_ABILITIES: Record<string, T20CatalogEntry["keyAbility"]> = {
+  acrobacia: "dex", adestramento: "cha", atletismo: "str", atuacao: "cha", cavalgar: "dex", conhecimento: "int",
+  cura: "wis", diplomacia: "cha", enganacao: "cha", fortitude: "con", furtividade: "dex", guerra: "int",
+  iniciativa: "dex", intimidacao: "cha", intuicao: "wis", investigacao: "int", jogatina: "cha", ladinagem: "dex",
+  luta: "str", misticismo: "int", nobreza: "int", oficio: "int", percepcao: "wis", pilotagem: "dex",
+  pontaria: "dex", reflexos: "dex", religiao: "wis", sobrevivencia: "wis", vontade: "wis",
+};
 
 export const T20_RACES: T20CatalogEntry[] = ([
   ["humano", "Humano", 19], ["anao", "Anão", 20], ["dahllan", "Dahllan", 21], ["elfo", "Elfo", 22],
@@ -32,7 +40,7 @@ export const T20_SKILLS: T20CatalogEntry[] = ([
   ["nobreza", "Nobreza", 121], ["oficio", "Ofício", 121], ["percepcao", "Percepção", 122], ["pilotagem", "Pilotagem", 122],
   ["pontaria", "Pontaria", 123], ["reflexos", "Reflexos", 123], ["religiao", "Religião", 123], ["sobrevivencia", "Sobrevivência", 123],
   ["vontade", "Vontade", 123],
-] as const).map(([id, name, sourcePage]) => entry(id, name, sourcePage));
+] as const).map(([id, name, sourcePage]) => ({ ...entry(id, name, sourcePage), keyAbility: T20_SKILL_ABILITIES[id] }));
 
 export const T20_CREATION_STEPS = [
   "conceito", "atributos", "raca", "classe", "origem", "divindade", "pericias", "equipamento", "toques_finais",

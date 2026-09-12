@@ -4,9 +4,15 @@ export interface Dnd5eCatalogEntry {
   id: string;
   name: string;
   sourcePage: number;
+  keyAbility?: "str" | "dex" | "con" | "int" | "wis" | "cha";
 }
 
 const entry = (id: string, name: string, sourcePage: number): Dnd5eCatalogEntry => ({ id, name, sourcePage });
+const DND5E_SKILL_ABILITIES: Record<string, Dnd5eCatalogEntry["keyAbility"]> = {
+  acrobacia: "dex", adestramento: "wis", arcanismo: "int", atletismo: "str", atuacao: "cha", enganacao: "cha",
+  furtividade: "dex", historia: "int", intuicao: "wis", intimidacao: "cha", investigacao: "int", medicina: "wis",
+  natureza: "int", percepcao: "wis", persuasao: "cha", prestidigitacao: "dex", religiao: "int", sobrevivencia: "wis",
+};
 
 export const DND5E_RACES: Dnd5eCatalogEntry[] = ([
   ["anao", "Anão", 18], ["elfo", "Elfo", 21], ["halfling", "Halfling", 26], ["humano", "Humano", 29],
@@ -26,7 +32,7 @@ export const DND5E_SKILLS: Dnd5eCatalogEntry[] = ([
   ["intuicao", "Intuição", 177], ["intimidacao", "Intimidação", 177], ["investigacao", "Investigação", 177], ["medicina", "Medicina", 177],
   ["natureza", "Natureza", 177], ["percepcao", "Percepção", 177], ["persuasao", "Persuasão", 177], ["prestidigitacao", "Prestidigitação", 177],
   ["religiao", "Religião", 177], ["sobrevivencia", "Sobrevivência", 177],
-] as const).map(([id, name, sourcePage]) => entry(id, name, sourcePage));
+] as const).map(([id, name, sourcePage]) => ({ ...entry(id, name, sourcePage), keyAbility: DND5E_SKILL_ABILITIES[id] }));
 
 export const DND5E_CREATION_STEPS = [
   "conceito", "raca", "classe", "atributos", "antecedente", "equipamento", "detalhes", "magia",
