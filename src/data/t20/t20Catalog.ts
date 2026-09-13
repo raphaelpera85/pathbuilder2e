@@ -49,6 +49,18 @@ export const T20_CLASSES: T20CatalogEntry[] = ([
   ["nobre", "Nobre", 78], ["paladino", "Paladino", 81],
 ] as const).map(([id, name, sourcePage]) => entry(id, name, sourcePage));
 
+export const T20_ARCANIST_PATHS = [
+  { id: "bruxo", name: "Bruxo", sourcePage: 37, ruleSummary: "Canaliza magias através de um foco; atributo-chave Inteligência." },
+  { id: "feiticeiro", name: "Feiticeiro", sourcePage: 37, ruleSummary: "Canaliza magia inata; aprende uma magia nova a cada nível ímpar e usa Carisma." },
+  { id: "mago", name: "Mago", sourcePage: 37, ruleSummary: "Estuda e memoriza fórmulas arcanas através de um grimório; usa Inteligência." },
+] as const;
+
+export const T20_SORCERER_LINEAGES = [
+  { id: "draconica", name: "Dracônica", sourcePage: 39, ruleSummary: "Escolhe ácido, eletricidade, fogo ou frio como tipo de dano da linhagem." },
+  { id: "feerica", name: "Feérica", sourcePage: 39, ruleSummary: "Concede treinamento em Enganação e uma magia de encantamento ou ilusão." },
+  { id: "rubra", name: "Rubra", sourcePage: 39, ruleSummary: "Linhagem corrompida pela Tormenta, com poderes ligados à corrupção aberrante." },
+] as const;
+
 export const T20_SKILLS: T20CatalogEntry[] = ([
   ["acrobacia", "Acrobacia", 115], ["adestramento", "Adestramento", 115], ["atletismo", "Atletismo", 115], ["atuacao", "Atuação", 116],
   ["cavalgar", "Cavalgar", 116], ["conhecimento", "Conhecimento", 116], ["cura", "Cura", 117], ["diplomacia", "Diplomacia", 117],

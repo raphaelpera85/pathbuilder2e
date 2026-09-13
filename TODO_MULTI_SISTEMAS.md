@@ -16,7 +16,7 @@ Este é o backlog executável para transformar o construtor atual em uma platafo
 
 - [x] Criar um `SystemRulesEngine` por sistema, com `createDefaultCharacter`, `deriveStats`, `validateCharacter` e `getCreationSteps`.
   - Evidência: `src/data/systemRulesEngine.ts`; T20 e D&D 5e têm engines separados e teste de rejeição de catálogo cruzado.
-- [x] Definir versões explícitas para o núcleo implementado: `t20: padrao`, `dnd5e: standard/2014`, `ose: advanced/classic`, `pf2e: remaster/legacy`.
+- [x] Definir versões explícitas para o núcleo implementado: `t20: padrao`, `dnd5e: standard` (Livro do Jogador 2014), `ose: advanced/classic`, `pf2e: remaster/legacy`.
   - D&D 2024 e o alias Jogo do Ano T20 não são anunciados pelo seletor até receberem motores e catálogos próprios; migration `202609120017_align_core_rulesets.sql` alinhou o Supabase.
 - [x] Acrescentar `system_id` e `ruleset` aos payloads locais e remotos; JSON/PDF/Foundry seguem em validação por formato.
   - Evidência: `src/services/characters.ts` e migration `202609120003_expand_character_rulesets.sql`.
@@ -54,7 +54,7 @@ Este é o backlog executável para transformar o construtor atual em uma platafo
   - Cobertura atual: tabela T20 da p. 41, tabela D&D 5e 2014, velocidade racial e campos editáveis na ficha/PDF.
 - [ ] Completar pré-requisitos de poderes/magias e todas as escolhas obrigatórias.
   - Progresso: poderes/talentos D&D 5e com requisito de nível e pré-requisitos estruturados de atributo, proficiência em armadura e conjuração; o filtro do wizard e a validação final já aplicam essas regras.
-  - Progresso T20: poderes do núcleo agora carregam grupo, página, nível mínimo e pré-requisitos de atributo, nível, perícia, proficiência e poderes dependentes; os 58 poderes concedidos do Panteão também carregam `deityIds`, são filtrados pela divindade no construtor e validados no fechamento da ficha; poderes escolhidos pela alternativa racial também passam por grupo, nível e pré-requisito. Migration `202609120016_seed_core_compendium_granted_powers.sql` aplicada no Supabase.
+  - Progresso T20: poderes do núcleo agora carregam grupo, página, nível mínimo e pré-requisitos de atributo, nível, perícia, proficiência e poderes dependentes; os 60 poderes gerais das páginas 130–137 e os 73 poderes concedidos/da Tormenta das páginas 133 e 138–140 agora exibem efeitos resumidos do Livro Básico no wizard, ficha e catálogo remoto (`202609130006_refresh_t20_general_power_summaries.sql` e `202609130007_refresh_t20_granted_tormenta_summaries.sql`); resíduos de uma versão diferente foram removidos e Ataque Poderoso foi reinserido na seção oficial da p. 130; os poderes concedidos carregam `deityIds`, são filtrados pela divindade no construtor e validados no fechamento da ficha; poderes escolhidos pela alternativa racial também passam por grupo, nível e pré-requisito. Migration `202609120016_seed_core_compendium_granted_powers.sql` aplicada no Supabase.
 
 ### Raças e opções raciais
 
@@ -65,6 +65,26 @@ Este é o backlog executável para transformar o construtor atual em uma platafo
 
 ### Classes
 
+#### Matriz de cobertura T20 — Livro Básico
+
+| Classe | Poderes no construtor | Recursos/calculadoras | Próximo trabalho |
+| --- | --- | --- | --- |
+| Arcanista | 20 poderes do Livro Básico | Magias, círculos-base, PM e caminho/linhagem selecionáveis | Efeitos completos das linhagens e escolhas de familiar |
+| Bárbaro | 17 | Fúria, instinto, RD | Efeitos situacionais dos poderes |
+| Bardo | 19 | Inspiração, PM e repertório | Escolha das três escolas de magia |
+| Bucaneiro | 18 | Audácia, Insolência e evasões | Bravatas persistidas |
+| Caçador | 21 | Marca, exploração e mestre caçador | Terrenos/inimigos escolhidos |
+| Cavaleiro | 19 | Baluarte, duelo e bravura | Caminho e postura ativos |
+| Clérigo | 17 | PM, círculos e mão divina | Energia positiva/negativa e missas ativas |
+| Druida | 20 | PM, círculos e força da natureza | Formas e aspectos escolhidos |
+| Guerreiro | 18 | Ataque especial, durão e ataque extra | Configuração de Golpe Pessoal |
+| Inventor | 29 poderes do Livro Básico | Engenharia, protótipo, fabricação e engenhocas | Fórmulas escolhidas, modificações e validação detalhada de Ofícios |
+| Ladino | 19 | Ataque furtivo e especialista | Perícias de Especialista selecionadas |
+| Lutador | 22 | Briga e golpes desarmados | Efeitos de manobras e trocação |
+| Nobre | 19 | Defesa, orgulho e ordens | Opções sociais e título |
+| Paladino | 22 | PM, golpe, cura, aura e Orar | Escolhas de julgamento/virtude |
+
+
 - [x] Importar as 14 classes do livro básico e seus metadados de criação.
 - [x] Estrutura de progressão 1–20 registrada para as 14 classes, com níveis de poder e características iniciais.
 - [x] Exibir características estruturais disponíveis no nível atual e pontos de poder da classe.
@@ -72,8 +92,10 @@ Este é o backlog executável para transformar o construtor atual em uma platafo
 - [ ] Importar descrições completas e efeitos de cada habilidade por nível.
   - Progresso: progressões D&D 5e e T20 agora exibem características até o nível atual com descrições resumidas; recursos calculáveis de D&D (Fúria, Inspiração, Surto de Ação, Ki, Imposição das Mãos, Pontos de Feitiçaria, Canalizar Divindade, Ataque Furtivo e outros) aparecem na ficha e no wizard; a disponibilidade por nível e os limites de Fúria do Bárbaro foram corrigidos e cobertos por testes de fronteira.
 - [ ] Pontos de Vida, Pontos de Mana, perícias treinadas, proficiências e habilidades de classe.
+  - Progresso adicional: Abençoado do Paladino T20 agora soma o modificador de Carisma ao total de PM, como previsto na habilidade de 1º nível; Golpe Divino, Cura pelas Mãos e Aura Sagrada também exibem na ficha seus valores escalonados de dano/cura/custo. Ataque Especial/Durão/Ataque Extra do Guerreiro e Briga/Golpe Relâmpago/Casca Grossa do Lutador também são calculados e exibidos. Autoconfiança, Orgulho, Riqueza e Gritar Ordens do Nobre agora têm Defesa/limites e usos calculados na ficha. Baluarte, Duelo, Caminho do Cavaleiro, Resoluto e Bravura Final do Cavaleiro também aparecem com custos, escalonamento e marcos corretos. O Inventor agora exibe Engenhosidade, Protótipo, fabricação de itens superiores/mágicos, Comerciante, Encontrar Fraqueza, Olho do Dragão e Obra-Prima. Demais habilidades com efeitos contínuos ainda precisam de modelagem.
 - [ ] Poderes e escolhas de classe por nível.
 - [ ] Caminhos/subclasses quando a fonte-base os possuir.
+  - Progresso adicional: Arcanista T20 agora possui caminhos Bruxo/Feiticeiro/Mago e linhagens Dracônica/Feérica/Rubra no construtor, validação de escolhas, atributo-chave/PM por caminho, limites de magias conhecidos por caminho e limite de duas escolhas para Poder Mágico.
 
 ### Perícias, poderes e vantagens
 
@@ -82,13 +104,13 @@ Este é o backlog executável para transformar o construtor atual em uma platafo
   - Progresso: T20 e D&D 5e agora carregam resumos de uso por perícia, exibidos no construtor/ficha; penalidades e modos de rolagem de equipamento já são derivados, mas modificadores situacionais específicos ainda pendentes.
 - [x] Primeiro conjunto selecionável de poderes gerais/destino e talentos opcionais, separado por sistema.
 - [ ] Importar poderes gerais, poderes de classe, poderes de destino e poderes concedidos completos.
-  - Progresso: catálogo T20 local agora possui 138 poderes, incluindo 58 poderes concedidos com divindades compatíveis; efeitos detalhados e poderes de classe ainda pendentes.
+  - Progresso: catálogo T20 local agora possui os 20 poderes de Arcanista das pp. 38–39, os 29 poderes de Inventor das pp. 68–70, os 22 poderes exclusivos de Paladino das pp. 82–84, os 22 poderes exclusivos de Lutador das pp. 76–77, os 19 poderes exclusivos de Nobre das pp. 79–80, os 18 poderes de Guerreiro das pp. 65–66, os 19 poderes exclusivos de Cavaleiro das pp. 53–55, os 17 poderes exclusivos de Bárbaro das pp. 41–42 (os poderes gerais homônimos continuam no catálogo geral), os 18 poderes de Bucaneiro das pp. 47–48, os 21 poderes de Caçador das pp. 50–51, os 19 poderes de Bardo das pp. 44–45, os 17 poderes de Clérigo das pp. 57–58, os 20 poderes de Druida das pp. 61–63 e os 19 poderes de Ladino das pp. 73–74, além do Aumento de Atributo repetível e de 58 poderes concedidos com divindades compatíveis; escolhas de poder exclusivas agora consomem os slots da progressão da classe (2º nível e cada nível posterior). Efeitos detalhados, caminhos/linhagens e escolhas específicas ainda pendentes.
 - [x] Vantagens/desvantagens: mapear somente se a edição possuir regra explícita; não importar terminologia de D&D ou OSE.
   - Evidência: D&D 5e usa o modo de d20 e desvantagem de Furtividade de armaduras; T20 usa penalidade própria de armadura; OSE não expõe vantagem/desvantagem nativa no núcleo importado.
 - [x] Implementar validação inicial de poderes T20 e talentos D&D 5e por catálogo e nível.
   - Evidência: `minimumLevel`, `getAvailableCoreFeats` e validação no `SystemRulesEngine`.
 - [ ] Completar escolhas de perícia treinada, pré-requisitos de atributo/perícia e poderes de classe/concedidos.
-  - Progresso adicional: benefício da origem T20 e característica/idiomas/ferramentas do antecedente D&D agora são escolhas persistidas na ficha; ainda faltam efeitos mecânicos completos de cada benefício.
+  - Progresso adicional: benefício da origem T20 e característica/idiomas/ferramentas do antecedente D&D agora são escolhas persistidas na ficha; para D&D, ofícios, instrumentos e conjuntos de jogo concedidos como categoria agora aparecem como escolhas específicas e a variante selecionada é preservada na ficha; ainda faltam efeitos mecânicos completos de cada benefício.
 - [x] Restringir perícias treinadas às escolhas da classe e preservar perícias obrigatórias de origem/classe.
   - Evidência: `systemRulesEngine.ts` e checkboxes condicionais no `CoreCharacterCreatorModal.tsx`.
 
@@ -105,9 +127,9 @@ Este é o backlog executável para transformar o construtor atual em uma platafo
   - Progresso T20: preços de armas, armaduras, escudos e equipamentos já catalogados agora aparecem no construtor/inventário e são sincronizados no Supabase; os quatro pacotes de munição do Livro Básico também foram adicionados; outros itens gerais ainda não catalogados continuam pendentes.
 - [x] Primeiro conjunto selecionável de magias do núcleo com nível/círculo, escola/resumo e página.
 - [ ] Importar magias completas com execução, alcance, alvo, duração, resistência, descrição e aprimoramentos.
-  - Progresso T20: lote ampliado de 60 magias com círculo, tradição, escola e página; texto integral e aprimoramentos ainda pendentes.
+  - Progresso T20: lote ampliado de 60 magias com círculo, tradição, escola e página; a disponibilidade agora segue as tabelas do Livro Básico: Arcanista/Clérigo nos níveis 1/5/9/13/17 e Bardo/Druida nos níveis 1/6/10/14. O Paladino não integra listas gerais: Orar (nível 2, p. 83) libera uma magia divina de 1º círculo por escolha e usa Sabedoria; a ficha registra escolhas repetidas, ajusta o limite de magias, mostra a quantidade no construtor/PDF e a valida. Limites de magias conhecidas também são aplicados, e o Arcanista inicial recebe três magias de 1º círculo. Outros poderes específicos de magia, texto integral e aprimoramentos ainda pendentes.
 - [ ] Divindades, símbolos, obrigações e restrições quando afetarem a ficha.
-  - Progresso: as 20 divindades do Panteão estão catalogadas e selecionáveis; as restrições de Allihanna (metal) e Oceano (apenas armaduras leves) agora têm classificação estruturada, validação no motor, aviso no wizard e sincronização na migration `202609120023_add_t20_armor_material_metadata.sql`. Símbolos e demais obrigações ainda precisam virar efeitos estruturados. Poderes concedidos já têm vínculo com divindade e validação de seleção.
+  - Progresso: as 20 divindades do Panteão estão catalogadas e selecionáveis; Paladino é restrito no wizard e no motor às oito divindades permitidas pelo Livro Básico, ou pode ficar sem divindade específica como Paladino do Bem. As restrições de Allihanna (metal) e Oceano (apenas armaduras leves) agora têm classificação estruturada, validação no motor, aviso no wizard e sincronização na migration `202609120023_add_t20_armor_material_metadata.sql`. Símbolos e demais obrigações ainda precisam virar efeitos estruturados. Poderes concedidos já têm vínculo com divindade e validação de seleção.
 
 ### Ficha e exportação
 
@@ -166,14 +188,14 @@ Este é o backlog executável para transformar o construtor atual em uma platafo
 
 - [x] Perícias com atributo associado, proficiência e bônus calculado exibidos na ficha.
 - [ ] Completar regras de ferramentas e perícias de classe por nível.
-  - Progresso D&D 5e: catálogo de ferramentas/veículos do Livro do Jogador, resumos de uso e validação de proficiências persistidas foram adicionados; especialização de Bardo/Ladino tem limite por nível, bônus dobrado e seleção no wizard/ficha/PDF.
+  - Progresso D&D 5e: catálogo de ferramentas/veículos do Livro do Jogador, resumos de uso e validação de proficiências persistidas foram adicionados; antecedentes com escolha de ofício, instrumento ou jogo agora exibem um seletor de variante específica, preservam a escolha na ficha e validam a proficiência individual; especialização de Bardo/Ladino tem limite por nível, bônus dobrado e seleção no wizard/ficha/PDF.
 - [x] Salvaguardas e bônus de proficiência.
   - Evidência: `savingThrowBonuses` deriva as proficiências das salvaguardas da classe D&D 5e, é exibido na ficha e agora possui teste direto para Guerreiro.
 - [x] Antecedentes com perícias, ferramentas, idiomas, equipamento e característica.
-  - Ferramentas, idiomas adicionais e característica agora são armazenados na ficha, editáveis no wizard e validados pelo motor D&D 5e.
+  - Ferramentas, idiomas adicionais e característica agora são armazenados na ficha, editáveis no wizard e validados pelo motor D&D 5e; os sete antecedentes com ferramenta/instrumento/jogo à escolha também persistem seus grupos e variantes no payload `data` do `catalog_backgrounds` remoto pela migration `202609130004_enrich_dnd5e_background_choices.sql`.
 - [x] Talentos opcionais iniciais registrados e apresentados como opções do núcleo.
 - [ ] Importar catálogo completo de talentos e marcar cada um como regra variante quando aplicável.
-  - Progresso D&D 5e: catálogo do Livro do Jogador ampliado para os talentos-base com nível mínimo, página e parte dos pré-requisitos estruturados; efeitos detalhados e pré-requisitos restantes ainda pendentes.
+  - Progresso D&D 5e: catálogo do Livro do Jogador ampliado para 40 talentos-base com nível mínimo, página e pré-requisitos estruturados; todos agora exibem resumo do efeito mecânico no wizard/ficha e foram sincronizados pela migration `202609130005_refresh_core_feat_summaries.sql`; efeitos completos, escolhas de atributo e pré-requisitos restantes ainda pendentes.
   - Cobertura atual: catálogo inicial filtrado por nível e pré-requisito de atributo/proficiência/conjuração, separado por sistema; o construtor e o motor agora limitam talentos D&D 5e aos espaços de Aumento de Atributo disponíveis no nível; efeitos detalhados ainda pendentes.
 - [x] Vantagem/desvantagem como mecânica compartilhada e testada.
   - Evidência: regra persistida no personagem e função determinística coberta por teste unitário.
@@ -182,14 +204,14 @@ Este é o backlog executável para transformar o construtor atual em uma platafo
 
 - [x] Primeiro compêndio funcional de armas, armaduras, escudos e equipamentos de aventureiro, separado por sistema.
 - [ ] Importar a totalidade de armas, armaduras, escudos, ferramentas, kits, equipamentos e moedas.
-  - Progresso D&D 5e: armas/armaduras, zarabatana, 26 equipamentos de aventura/ferramentas e quatro pacotes de munição do Livro do Jogador foram incorporados em `dnd5eCompendium.ts` e nas migrations `202609120020`/`202609120022`; moedas e o restante dos kits ainda pendentes.
+  - Progresso D&D 5e: armas/armaduras, zarabatana, equipamentos de aventura, quatro pacotes de munição e mais 34 itens utilitários das pp. 153–157 (poção, kits, iluminação, recipientes, cordas e ferramentas) foram incorporados em `dnd5eCompendium.ts`; variantes individuais de ferramentas de artesão, instrumentos e conjuntos de jogo agora estão catalogadas em `dnd5eCatalog.ts` e são selecionáveis nos antecedentes; restam veículos/variantes de montaria e a conversão de cada opção em item selecionável.
 - [x] Propriedades iniciais de armas, armaduras, escudo e proficiência validadas no motor.
   - Evidência: `systemRulesEngine.ts` e seeds `202609120010`/`202609120011`.
 - [ ] Completar propriedades, dano, alcance, munição e o catálogo integral.
-  - Progresso adicional D&D 5e: custos em moedas foram estruturados para armas, armaduras, equipamentos e munições catalogadas; custo/peso agora aparecem nas opções do wizard e no inventário da ficha.
+  - Progresso adicional D&D 5e: custos em moedas foram estruturados para armas, armaduras, equipamentos e munições catalogadas; custo/peso agora aparecem nas opções do wizard e no inventário da ficha; a CA de armadura pesada ignora corretamente modificadores negativos de Destreza.
 - [x] Primeiro conjunto selecionável de magias do núcleo com nível/escola/resumo e página.
 - [ ] Importar magias completas com tempo de conjuração, alcance, componentes, duração, concentração, alvo e salvamento.
-  - Progresso D&D 5e: lote ampliado de magias do Livro do Jogador com nível, escola, listas de classe e página; dados completos de execução ainda pendentes.
+  - Progresso D&D 5e: as 58 magias atualmente catalogadas do Livro do Jogador agora têm tempo de conjuração, alcance, componentes, duração e, quando aplicável, concentração, ritual e teste de resistência; a lista do Bruxo agora inclui Magia de Pacto e magias próprias como Armadura de Agathys, Repreensão Infernal, Escuridão e Fome de Hadar, com limite de círculo próprio; esses dados são exibidos no wizard/ficha e sincronizados na migration `202609130003_refresh_core_spell_metadata.sql`. Ainda faltam texto integral, alvo detalhado e aprimoramentos.
 - [x] Listas iniciais de magia filtradas por classe e nível de conjuração.
   - Progresso adicional: o wizard bloqueia seleção acima do limite de magias conhecidas e de magias preparadas; truques continuam sem consumir o limite de conhecidas.
   - Progresso adicional: trocar classe ou nível remove automaticamente magias e preparações que deixaram de pertencer à lista disponível.
@@ -258,11 +280,12 @@ Este é o backlog executável para transformar o construtor atual em uma platafo
 - [x] Completar seeds versionados para perícias, poderes/talentos, itens e magias.
   - Origens/antecedentes completos do núcleo e compêndio inicial de itens, magias e poderes/talentos já persistidos em `202609120007_seed_t20_dnd5e_backgrounds.sql` e `202609120008_seed_t20_dnd5e_compendium.sql`.
   - Catálogos ampliados agora são gerados por `scripts/generate-core-system-compendium-migration.cjs` e persistidos em `202609120013_seed_core_compendium_expanded.sql`/`202609120014_seed_core_compendium_latest.sql`.
-  - Verificação remota pós-migrations 202609120016, 202609120018 e 202609120020: T20 = 62 itens, 66 magias e 138 poderes; D&D 5e = 72 itens (incluindo 26 equipamentos de aventura), 48 magias e 40 talentos; OSE = 53 itens, 34 magias, 16 classes e 10 ancestralidades, separados por sistema/ruleset.
+  - Progresso adicional: `202609130001_seed_core_compendium_current.sql` foi gerada a partir dos catálogos atuais, com 176 itens, 114 magias e 456 poderes/talentos, incluindo os novos poderes de Inventor e Arcanista; a carga foi aplicada e verificada no projeto remoto `wjmrrqrretculeyxpngc`.
+  - Verificação remota atual: T20 (`padrao`) = 66 itens, 66 magias e 416 poderes; D&D 5e (`standard`) = 111 itens, 48 magias e 40 talentos; OSE (`advanced`) = 53 itens e 34 magias; PF2e permanece separado por ruleset.
 - [x] Sincronizar por lotes idempotentes e remover somente registros obsoletos do mesmo sistema/ruleset.
   - Evidência: `scripts/migrate-catalog-to-supabase.cjs` usa lotes de 100, `upsert` por ID e agora limita a remoção ao escopo `system_id + ruleset`; `scripts/migrate-catalog-to-supabase.test.ts` cobre isolamento entre T20, D&D 5e e OSE.
 - [x] Auditar contagens local × Supabase por tabela e por sistema.
-  - Evidência: consulta remota pós-migration confirmou as contagens de compêndio por `system_id` e `ruleset`.
+  - Evidência: `npm run audit:core:supabase` confirmou por `system_id + ruleset` D&D 5e (9 raças, 12 classes, 13 antecedentes, 40 subclasses, 111 itens, 58 magias e 40 talentos), T20 (17 raças, 14 classes, 35 origens, 66 itens, 66 magias e 416 poderes) e OSE (10 ancestralidades, 16 classes, 53 itens e 34 magias); a auditoria também detectou e a migration `202609130002_reconcile_pf2e_subclass_orphans.sql` removeu 23 subclasses PF2e Remaster órfãs, deixando `orphanSubclasses = []`.
 - [ ] Validar RLS com usuário autenticado e isolamento entre fichas.
   - Evidência local: `npm run audit:rls:local` valida 9 invariantes nas migrations, incluindo RLS, grants, `auth.uid() = user_id` e leitura pública limitada aos sistemas; falta executar o cenário remoto com dois usuários autenticados.
 - [x] Registrar proveniência e página de cada regra importada.

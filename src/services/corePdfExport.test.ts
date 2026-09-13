@@ -19,4 +19,14 @@ describe("core editable PDF export", () => {
     ]));
     expect(pdf.getForm().getTextField("character.equipment").getText()).toContain("×2");
   });
+
+  it("exports quantities for repeated T20 powers", async () => {
+    const character = createInitialCoreCharacter("t20");
+    character.classId = "paladino";
+    character.level = 2;
+    character.featIds = ["t20.poder.orar"];
+    character.featQuantities = { "t20.poder.orar": 2 };
+    const pdf = await PDFDocument.load(await createCoreEditablePdf(character));
+    expect(pdf.getForm().getTextField("character.feats").getText()).toContain("Orar ×2");
+  });
 });

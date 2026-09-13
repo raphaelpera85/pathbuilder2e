@@ -88,7 +88,7 @@ export async function createCoreEditablePdf(character: MultiSystemCharacter): Pr
 
   label(page, bold, "EQUIPAMENTO", 36, 515); textField(form, page, "character.equipment", listNames(catalog.equipment, character.equipmentIds || [], character.equipmentQuantities), 36, 463, 522, 42, 8);
   label(page, bold, "MAGIAS", 36, 438); textField(form, page, "character.spells", listNames(catalog.spells, character.spellIds || []), 36, 386, 522, 42, 8);
-  label(page, bold, system === "t20" ? "PODERES" : "TALENTOS", 36, 361); textField(form, page, "character.feats", listNames(catalog.feats, character.featIds || []), 36, 309, 522, 42, 8);
+  label(page, bold, system === "t20" ? "PODERES" : "TALENTOS", 36, 361); textField(form, page, "character.feats", listNames(catalog.feats, character.featIds || [], character.featQuantities), 36, 309, 522, 42, 8);
   label(page, bold, "NOTAS", 36, 284); textField(form, page, "character.notes", character.notes, 36, 60, 522, 214, 8);
 
   form.updateFieldAppearances(font);

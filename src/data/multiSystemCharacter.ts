@@ -1,6 +1,6 @@
 import { DND5E_CLASSES, DND5E_RACES, DND5E_SKILLS } from "./dnd5e/dnd5eCatalog";
-import { DND5E_BACKGROUNDS } from "./dnd5e/dnd5eBackgrounds";
-import { T20_CLASSES, T20_RACES, T20_SKILLS } from "./t20/t20Catalog";
+import { DND5E_BACKGROUNDS, getDnd5eBackgroundToolProficiencies } from "./dnd5e/dnd5eBackgrounds";
+import { T20_ARCANIST_PATHS, T20_CLASSES, T20_RACES, T20_SKILLS, T20_SORCERER_LINEAGES } from "./t20/t20Catalog";
 import { T20_ORIGINS } from "./t20/t20Origins";
 import { T20_CLASS_RULES } from "./t20/t20Classes";
 import { DND5E_CLASS_RULES } from "./dnd5e/dnd5eClasses";
@@ -67,6 +67,11 @@ export const T20_DEITIES: readonly T20Deity[] = [
   { id: "thwor", name: "Thwor" },
 ] as const;
 
+/** Divindades às quais um Paladino pode ser devoto no Livro Básico T20, p. 82. */
+export const T20_PALADIN_DEITY_IDS = ["azgher", "khalmyr", "lena", "lin_wu", "marah", "tanna_toh", "thyatis", "valkaria"] as const;
+/** Divindades permitidas ao Druida no Livro Básico T20, p. 61. */
+export const T20_DRUID_DEITY_IDS = ["allihanna", "megalokk", "oceano"] as const;
+
 export interface MultiSystemCharacter {
   id: string;
   name: string;
@@ -78,6 +83,10 @@ export interface MultiSystemCharacter {
   generationMethod?: AbilityGenerationMethod;
   raceId: string;
   classId: string;
+  /** Caminho do Arcanista T20; usado para validar poderes que exigem Bruxo, Feiticeiro ou Mago. */
+  t20ArcanistPath?: (typeof T20_ARCANIST_PATHS)[number]["id"];
+  /** Linhagem escolhida pelo caminho Feiticeiro T20. */
+  t20SorcererLineage?: (typeof T20_SORCERER_LINEAGES)[number]["id"];
   subraceId?: string;
   /** Escolhas flexíveis de bônus raciais (ex.: Humano T20 ou Meio-Elfo D&D). */
   raceAbilityChoices?: CoreAbility[];
@@ -105,6 +114,8 @@ export interface MultiSystemCharacter {
   spellIds: string[];
   preparedSpellIds?: string[];
   featIds: string[];
+  /** Quantidade de escolhas de poderes repetíveis; ausente equivale a uma escolha. */
+  featQuantities?: Record<string, number>;
   coins?: CoreCoins;
   notes: string;
   /** Regra nativa de D&D 5e; T20 mantém o valor para compatibilidade, mas não o aplica. */
@@ -116,6 +127,11 @@ const DEFAULT_ABILITIES: CoreAbilities = { str: 10, dex: 10, con: 10, int: 10, w
 export function getCoreEquipmentQuantity(character: Pick<MultiSystemCharacter, "equipmentQuantities">, equipmentId: string): number {
   const quantity = character.equipmentQuantities?.[equipmentId];
   return quantity === undefined ? 1 : Math.max(1, Math.trunc(quantity));
+}
+
+export function getCoreFeatQuantity(character: Pick<MultiSystemCharacter, "featIds" | "featQuantities">, featId: string): number {
+  if (!character.featIds.includes(featId)) return 0;
+  return Math.max(1, Math.trunc(character.featQuantities?.[featId] || 1));
 }
 
 export function abilityModifier(score: number, system: SupportedCoreSystem = "dnd5e"): number {
@@ -188,26 +204,38 @@ export function getCoreStartingEquipment(system: SupportedCoreSystem, classId: s
 }
 
 /** Filtra magias sem misturar listas de classes ou ultrapassar o círculo disponível. */
-export function getAvailableCoreSpells(system: SupportedCoreSystem, classId: string, level: number) {
+export function getAvailableCoreSpells(system: SupportedCoreSystem, classId: string, level: number, character?: MultiSystemCharacter) {
   const catalog = getCoreCatalog(system);
   const progression = catalog.progressions.find((entry) => entry.classId === classId);
+  const paladinPrayerCount = system === "t20" && classId === "paladino" && character ? getCoreFeatQuantity(character, "t20.poder.orar") : 0;
+  const hasPaladinPrayer = paladinPrayerCount > 0;
   const spellcaster = system === "t20"
-    ? ["arcanista", "bardo", "clerigo", "druida", "paladino"].includes(classId)
+    ? ["arcanista", "bardo", "clerigo", "druida"].includes(classId) || hasPaladinPrayer
     : progression && "spellcaster" in progression ? progression.spellcaster : false;
   const spellcastingLevel = progression && "spellcastingLevel" in progression ? progression.spellcastingLevel || 1 : 1;
   if (!spellcaster || level < spellcastingLevel) return [];
   const safeLevel = Math.max(1, Math.trunc(level));
-  const maximumSpellLevel = system === "dnd5e"
-    ? classId === "bruxo"
+  const maximumSpellLevel = system === "t20"
+    ? getT20MaximumSpellLevel(classId, safeLevel, hasPaladinPrayer)
+    : classId === "bruxo"
       ? Math.min(5, Math.floor((safeLevel + 1) / 2))
-      : Math.min(9, Math.max(0, Math.ceil(([
-        "paladino", "patrulheiro",
-      ].includes(classId) ? Math.floor(safeLevel / 2) : safeLevel) / 2)))
-    : Math.min(5, Math.max(1, Math.ceil(safeLevel / 4)));
+      : Math.min(9, Math.max(0, Math.ceil((["paladino", "patrulheiro"].includes(classId) ? Math.floor(safeLevel / 2) : safeLevel) / 2)));
   return catalog.spells.filter((spell) => {
+    if (hasPaladinPrayer) return "tradition" in spell && spell.tradition === "divina" && spell.spellLevel === 1;
     if (spell.classIds && !spell.classIds.includes(classId)) return false;
     return spell.spellLevel === undefined || spell.spellLevel <= maximumSpellLevel;
   });
+}
+
+export function getT20MaximumSpellLevel(classId: string, level: number, hasPaladinPrayer = false): number {
+  if (classId === "paladino" && hasPaladinPrayer) return 1;
+  const thresholds: Record<string, Array<[number, number]>> = {
+    arcanista: [[1, 1], [5, 2], [9, 3], [13, 4], [17, 5]],
+    clerigo: [[1, 1], [5, 2], [9, 3], [13, 4], [17, 5]],
+    bardo: [[1, 1], [6, 2], [10, 3], [14, 4]],
+    druida: [[1, 1], [6, 2], [10, 3], [14, 4]],
+  };
+  return [...(thresholds[classId] || [])].reverse().find(([minimumLevel]) => level >= minimumLevel)?.[1] || 0;
 }
 
 function normalizeRuleText(value: string): string {
@@ -226,14 +254,25 @@ export function isT20PowerPrerequisiteSatisfied(character: MultiSystemCharacter,
   for (const ability of character.raceAbilityChoices || []) abilities[ability] += raceRules?.abilityChoices?.amount || 0;
   const classRules = catalog.classRules.find((entry) => entry.id === character.classId);
   const spellcastingClasses = new Set(["arcanista", "bardo", "clerigo", "druida", "paladino"]);
-  const skillAliases: Record<string, string> = { "oficio (alquimia)": "oficio", "oficio (escriba)": "oficio" };
+  const skillAliases: Record<string, string> = {
+    "oficio (alquimia)": "oficio",
+    "oficio (armeiro)": "oficio",
+    "oficio (culinaria)": "oficio",
+    "oficio (engenhoqueiro)": "oficio",
+    "oficio (escriba)": "oficio",
+  };
   const abilityAliases: Record<string, CoreAbility> = { for: "str", des: "dex", con: "con", int: "int", sab: "wis", car: "cha" };
   const normalize = normalizeRuleText;
   const hasPower = (name: string) => {
     const normalizedName = normalize(name);
-    const entry = catalog.feats.find((feat) => normalize(feat.name) === normalizedName);
-    return Boolean(entry && character.featIds.includes(entry.id));
+    return catalog.feats.some((feat) => normalize(feat.name) === normalizedName
+      && character.featIds.includes(feat.id)
+      && (!("classIds" in feat) || !feat.classIds?.length || feat.classIds.includes(character.classId)));
   };
+  const powerQuantity = (name: string) => catalog.feats
+    .filter((feat) => normalize(feat.name) === normalize(name)
+      && (!("classIds" in feat) || !feat.classIds?.length || feat.classIds.includes(character.classId)))
+    .reduce((total, feat) => total + getCoreFeatQuantity(character, feat.id), 0);
   const clauses = prerequisite.split(";").map((clause) => clause.trim()).filter(Boolean);
   return clauses.every((clause) => clause.split(/\s+ou\s+/i).some((alternative) => {
     const normalized = normalize(alternative);
@@ -241,12 +280,14 @@ export function isT20PowerPrerequisiteSatisfied(character: MultiSystemCharacter,
     if (level && character.level < Number(level[1])) return false;
     const ability = normalized.match(/^(for|des|con|int|sab|car)\s+(\d+)/);
     if (ability && (abilities[abilityAliases[ability[1]]] || 0) < Number(ability[2])) return false;
+    if (["bruxo", "feiticeiro", "mago"].includes(normalized)) return character.t20ArcanistPath === normalized;
     const tormenta = normalized.match(/(um|quatro) poderes? da tormenta/);
     if (tormenta && character.featIds.filter((id) => {
       const selected = catalog.feats.find((feat) => feat.id === id);
       return Boolean(selected && "powerGroup" in selected && selected.powerGroup === "tormenta");
     }).length < (tormenta[1] === "quatro" ? 4 : 1)) return false;
     if (normalized.includes("habilidade magias") || normalized.includes("lancar magias")) return spellcastingClasses.has(character.classId);
+    if (normalized.includes("devoto de um deus maior")) return Boolean(character.deity);
     if (normalized.includes("proficiencia com armaduras pesadas")) return Boolean(classRules && "proficiencies" in classRules && classRules.proficiencies.toLowerCase().includes("armaduras pesadas"));
     if (normalized.includes("proficiencia com escudos")) return Boolean(classRules && "proficiencies" in classRules && classRules.proficiencies.toLowerCase().includes("escudos"));
     const trained = normalized.match(/treinado em (.+)/);
@@ -256,6 +297,8 @@ export function isT20PowerPrerequisiteSatisfied(character: MultiSystemCharacter,
       return Boolean(skill && character.skillProficiencies.includes(skill.id));
     }
     if (normalized.includes("proficiência com a arma")) return true;
+    const repeatedPower = normalized.match(/^(.+) duas vezes$/);
+    if (repeatedPower) return powerQuantity(repeatedPower[1]) >= 2;
     if (catalog.feats.some((feat) => normalize(feat.name) === normalized)) return hasPower(alternative);
     return true;
   }));
@@ -275,6 +318,7 @@ export function getAvailableCoreFeats(system: SupportedCoreSystem, level: number
   }
   return catalog.feats.filter((feat) => {
     if (feat.minimumLevel && level < feat.minimumLevel) return false;
+    if (system === "t20" && character && "classIds" in feat && feat.classIds?.length && !feat.classIds.includes(character.classId)) return false;
     const prerequisiteValue = "prerequisite" in feat ? feat.prerequisite : undefined;
     const prerequisite = prerequisiteValue && typeof prerequisiteValue === "object" ? prerequisiteValue : undefined;
     if (system === "t20" && character && "deityIds" in feat && feat.deityIds?.length) {
@@ -313,6 +357,7 @@ export function createInitialCoreCharacter(system: SupportedCoreSystem): MultiSy
   const skillChoices = (catalog.raceRules[0] as { skillChoices?: number }).skillChoices || 0;
   const existingSkills = new Set([...backgroundSkills, ...fixedSkills]);
   const defaultRaceSkillChoices = skillChoices ? catalog.skills.filter((skill) => !existingSkills.has(skill.id)).slice(0, skillChoices).map((skill) => skill.id) : [];
+  const defaultSpellIds = system === "t20" ? getAvailableCoreSpells(system, firstClass.id, 1).slice(0, 3).map((spell) => spell.id) : [];
   return {
     id: `char_${system}_${Date.now()}`,
     name: system === "t20" ? "Novo herói de Arton" : "Novo aventureiro",
@@ -329,6 +374,8 @@ export function createInitialCoreCharacter(system: SupportedCoreSystem): MultiSy
     raceChoiceMode: "skills",
     raceFeatChoice: undefined,
     classId: firstClass.id,
+    t20ArcanistPath: system === "t20" && firstClass.id === "arcanista" ? "bruxo" : undefined,
+    t20SorcererLineage: undefined,
     subraceId: catalog.subraces[0]?.id,
     backgroundId: catalog.backgrounds[0].id,
     alignment: system === "dnd5e" ? "Neutro" : undefined,
@@ -336,12 +383,12 @@ export function createInitialCoreCharacter(system: SupportedCoreSystem): MultiSy
     abilities: { ...DEFAULT_ABILITIES },
     skillProficiencies: Array.from(new Set([...backgroundSkills, ...fixedSkills])),
     skillExpertise: [],
-    toolProficiencies: "toolProficiencies" in firstBackground ? [...firstBackground.toolProficiencies] : [],
+    toolProficiencies: "toolProficiencies" in firstBackground ? getDnd5eBackgroundToolProficiencies(firstBackground) : [],
     languages: "languageChoices" in firstBackground ? DND5E_LANGUAGES.slice(0, firstBackground.languageChoices) as unknown as string[] : [],
     backgroundBenefit: "feature" in firstBackground ? firstBackground.feature : firstBackground.benefitOptions?.[0],
     equipmentIds: [],
     equipmentQuantities: {},
-    spellIds: [],
+    spellIds: defaultSpellIds,
     preparedSpellIds: [],
     featIds: [],
     coins: system === "t20" ? { tibar: 0 } : { cp: 0, sp: 0, gp: 0, pp: 0 },

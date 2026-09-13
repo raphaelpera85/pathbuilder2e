@@ -3,7 +3,13 @@ const path = require("node:path");
 const vm = require("node:vm");
 
 const root = path.resolve(__dirname, "..");
-const output = path.join(root, "supabase/migrations/202609120016_seed_core_compendium_granted_powers.sql");
+const output = path.join(root, "supabase/migrations/202609130001_seed_core_compendium_current.sql");
+const spellMetadataOutput = path.join(root, "supabase/migrations/202609130003_refresh_core_spell_metadata.sql");
+const featMetadataOutput = path.join(root, "supabase/migrations/202609130005_refresh_core_feat_summaries.sql");
+const t20PowerMetadataOutput = path.join(root, "supabase/migrations/202609130006_refresh_t20_general_power_summaries.sql");
+const t20GrantedMetadataOutput = path.join(root, "supabase/migrations/202609130007_refresh_t20_granted_tormenta_summaries.sql");
+const t20CatalogCleanupOutput = path.join(root, "supabase/migrations/202609130008_reconcile_t20_core_power_catalog.sql");
+const t20SpellMetadataOutput = path.join(root, "supabase/migrations/202609130009_refresh_t20_spell_effect_summaries.sql");
 
 function loadExports(relativePath) {
   let source = fs.readFileSync(path.join(root, relativePath), "utf8");
@@ -11,6 +17,9 @@ function loadExports(relativePath) {
     .replace(/^export interface[^\n]*\n/gm, "")
     .replace(/export const /g, "const ")
     .replace(/: (?:T20CompendiumEntry|Dnd5eCompendiumEntry)\[\]/g, "")
+    .replace(/ as Dnd5eCompendiumEntry/g, "")
+    .replace(/ as Record<string, Pick<Dnd5eCompendiumEntry, [^;]+>>/g, "")
+    .replace(/export function formatDnd5eSpellDetails[\s\S]*?^\}/m, "")
     .replace(/: Record<string, string>/g, "")
     .replace(/: Record<string, Dnd5eFeatPrerequisite \| undefined>/g, "")
     .replace(/ as (?:T20CompendiumEntry\[\]|const)/g, "");
@@ -79,4 +88,46 @@ ${onConflict(["feat_type","level","name_pt","ruleset","source_book","source_page
 `;
 
 fs.writeFileSync(output, sqlText, "utf8");
-console.log(JSON.stringify({ output, items: allItems.length, spells: allSpells.length, feats: allFeats.length }, null, 2));
+const spellMetadataSql = `-- Refresh idempotente dos metadados de execução das magias do compêndio core.
+insert into public.catalog_spells (id,name_pt,rank,is_cantrip,is_focus,ruleset,source_book,source_page,data,system_id) values
+${allSpells.join(",\n")}
+${onConflict(["name_pt","rank","is_cantrip","is_focus","ruleset","source_book","source_page","data","system_id"])}
+`;
+fs.writeFileSync(spellMetadataOutput, spellMetadataSql, "utf8");
+const featMetadataSql = `-- Refresh idempotente dos resumos de efeito dos talentos/poderes do compêndio core.
+insert into public.catalog_feats (id,feat_type,level,name_pt,ruleset,source_book,source_page,data,system_id) values
+${allFeats.join(",\n")}
+${onConflict(["feat_type","level","name_pt","ruleset","source_book","source_page","data","system_id"])}
+`;
+fs.writeFileSync(featMetadataOutput, featMetadataSql, "utf8");
+const t20GeneralPowers = t20.T20_POWERS.filter((entry) => ["combate", "destino", "magia"].includes(entry.powerGroup) && entry.sourcePage >= 130 && entry.sourcePage <= 137);
+const t20PowerMetadataSql = `-- Refresh dos efeitos resumidos dos poderes gerais de Tormenta20 (Livro Básico, pp. 130–137).
+insert into public.catalog_feats (id,feat_type,level,name_pt,ruleset,source_book,source_page,data,system_id) values
+${featRows("t20", "padrao", "Tormenta20 — Livro Básico", t20GeneralPowers).join(",\n")}
+${onConflict(["feat_type","level","name_pt","ruleset","source_book","source_page","data","system_id"])}
+`;
+fs.writeFileSync(t20PowerMetadataOutput, t20PowerMetadataSql, "utf8");
+const t20GrantedAndTormentaPowers = t20.T20_POWERS.filter((entry) => ["concedido", "tormenta"].includes(entry.powerGroup));
+const t20GrantedMetadataSql = `-- Refresh dos efeitos resumidos dos poderes concedidos e da Tormenta de Tormenta20 (Livro Básico, pp. 133 e 138–140).
+insert into public.catalog_feats (id,feat_type,level,name_pt,ruleset,source_book,source_page,data,system_id) values
+${featRows("t20", "padrao", "Tormenta20 — Livro Básico", t20GrantedAndTormentaPowers).join(",\n")}
+${onConflict(["feat_type","level","name_pt","ruleset","source_book","source_page","data","system_id"])}
+`;
+fs.writeFileSync(t20GrantedMetadataOutput, t20GrantedMetadataSql, "utf8");
+const t20CatalogCleanupSql = `-- Reconcilia o catálogo de poderes T20 com o Livro Básico atual.
+delete from public.catalog_feats
+where system_id = 't20' and ruleset = 'padrao'
+  and id in ('t20.poder.companheiro_animal', 't20.poder.especializacao_em_pericia', 't20.poder.foco_em_pericia', 't20.poder.iniciativa_aprimorada');
+insert into public.catalog_feats (id,feat_type,level,name_pt,ruleset,source_book,source_page,data,system_id) values
+${featRows("t20", "padrao", "Tormenta20 — Livro Básico", t20.T20_POWERS.filter((entry) => entry.id === "t20.poder.ataque_poderoso")).join(",\n")}
+${onConflict(["feat_type","level","name_pt","ruleset","source_book","source_page","data","system_id"])}
+`;
+fs.writeFileSync(t20CatalogCleanupOutput, t20CatalogCleanupSql, "utf8");
+const t20SpellSummaryEntries = t20.T20_SPELLS.filter((entry) => !String(entry.summary || "").match(/^(arcana|divina|universal|essencia) \d+º círculo ·/));
+const t20SpellMetadataSql = `-- Refresh dos efeitos resumidos das magias T20 com texto conferido no Livro Básico.
+insert into public.catalog_spells (id,name_pt,rank,is_cantrip,is_focus,ruleset,source_book,source_page,data,system_id) values
+${spellRows("t20", "padrao", "Tormenta20 — Livro Básico", t20SpellSummaryEntries).join(",\n")}
+${onConflict(["name_pt","rank","is_cantrip","is_focus","ruleset","source_book","source_page","data","system_id"])}
+`;
+fs.writeFileSync(t20SpellMetadataOutput, t20SpellMetadataSql, "utf8");
+console.log(JSON.stringify({ output, spellMetadataOutput, featMetadataOutput, t20PowerMetadataOutput, t20GrantedMetadataOutput, t20CatalogCleanupOutput, t20SpellMetadataOutput, items: allItems.length, spells: allSpells.length, feats: allFeats.length, t20GeneralPowers: t20GeneralPowers.length, t20GrantedAndTormentaPowers: t20GrantedAndTormentaPowers.length, t20SpellSummaryEntries: t20SpellSummaryEntries.length }, null, 2));

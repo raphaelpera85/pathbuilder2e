@@ -131,10 +131,120 @@ export function getCoreClassFeatures(system: SupportedCoreSystem, classId: strin
 }
 
 export function getCoreClassResources(system: SupportedCoreSystem, classId: string, level: number, modifiers: Record<string, number>): CoreClassResource[] {
-  if (system === "t20") return [];
   const safeLevel = Math.max(1, Math.min(20, Math.trunc(level)));
   const resources: CoreClassResource[] = [];
   const add = (name: string, value: string, description: string) => resources.push({ name, value, description });
+  if (system === "t20") {
+    if (classId === "barbaro") {
+      const furyBonus = 2 + Math.floor((safeLevel - 1) / 5);
+      const furyCost = (furyBonus - 1) * 2;
+      add("Fúria", `+${furyBonus}${safeLevel >= 20 ? ` (titânica: +${furyBonus * 2})` : ""} · ${furyCost} PM`, "Recebe bônus em ataques e dano corpo a corpo; termina se não atacar nem sofrer efeito hostil na rodada.");
+      if (safeLevel >= 3) add("Instinto Selvagem", `+${1 + Math.floor((safeLevel - 3) / 6)}`, "Bônus em Percepção e Reflexos.");
+      if (safeLevel >= 5) add("Resistência a Dano", `RD ${Math.min(10, 2 + 2 * Math.floor((safeLevel - 5) / 3))}`, "Reduz todo dano sofrido pelo valor indicado.");
+      if (safeLevel >= 20) add("Fúria Titânica", `+${furyBonus * 2}`, "Dobra o bônus de ataque e dano concedido pela Fúria.");
+    }
+    if (classId === "cacador") {
+      const mark = safeLevel >= 17 ? "2d10" : safeLevel >= 13 ? "2d8" : safeLevel >= 9 ? "1d12" : safeLevel >= 5 ? "1d8" : "1d4";
+      const markCost = 1 + Math.floor((safeLevel - 1) / 4);
+      add("Marca da Presa", `+${mark} · ${markCost} PM`, "Analisa uma criatura em alcance curto; recebe os dados indicados nas rolagens de dano contra ela até o fim da cena.");
+      add("Rastreador", "+2 Sobrevivência", "Move-se com deslocamento normal enquanto rastreia, sem penalidade no teste de Sobrevivência.");
+      if (safeLevel >= 3) add("Explorador", "Terreno escolhido", "Em terreno escolhido, soma Sabedoria na Defesa e em perícias; amplia terreno ou bônus a cada quatro níveis.");
+      if (safeLevel >= 5) add("Caminho do Explorador", "Terreno escolhido", "Ignora terreno difícil e aumenta a CD para rastrear você nos terrenos favorecidos.");
+      if (safeLevel >= 20) add("Mestre Caçador", "Marca como ação livre", "Pode gastar +5 PM para aumentar margem de ameaça e recupera 5 PM ao derrotar presa marcada.");
+    }
+    if (classId === "bardo") {
+      const inspirationBonus = 1 + Math.floor((safeLevel - 1) / 4);
+      add("Inspiração", `+${inspirationBonus} · ${inspirationBonus * 2} PM`, "Você e aliados em alcance curto recebem o bônus em testes de perícia até o fim da cena.");
+      add("Magias", `${safeLevel >= 14 ? "4º" : safeLevel >= 10 ? "3º" : safeLevel >= 6 ? "2º" : "1º"} círculo`, "Usa Carisma; o modificador de Carisma já está incluído no total de PM da ficha.");
+      if (safeLevel >= 2) add("Eclético", "1 PM", "Recebe todos os benefícios de ser treinado em uma perícia por um teste.");
+      if (safeLevel >= 20) add("Artista Completo", "Inspiração livre", "Pode usar Inspiração como ação livre e reduz pela metade os custos de PM das habilidades de bardo enquanto inspirado.");
+    }
+    if (classId === "clerigo") {
+      const spellCircle = 1 + Math.floor((safeLevel - 1) / 4);
+      add("Devoto", "Divindade ou Panteão", "Escolhe uma divindade para receber seus poderes concedidos e obrigações, ou cultua o Panteão sem poderes concedidos.");
+      add("Magias Divinas", `${spellCircle}º círculo`, "Usa Sabedoria; o modificador de Sabedoria já está incluído no total de PM da ficha.");
+      if (safeLevel >= 20) add("Mão da Divindade", "15 PM", "Lança três magias divinas como ação livre, sem gastar seus PM, e fica atordoado por 1d4 rodadas.");
+    }
+    if (classId === "druida") {
+      add("Devoto", "Allihanna, Megalokk ou Oceano", "Escolhe uma das divindades disponíveis ao Druida e recebe seus poderes concedidos e obrigações.");
+      add("Empatia Selvagem", "Animais", "Comunica-se com animais e usa Adestramento para mudar atitude e pedir favores.");
+      add("Magias", `${safeLevel >= 14 ? "4º" : safeLevel >= 10 ? "3º" : safeLevel >= 6 ? "2º" : "1º"} círculo`, "Usa Sabedoria; o modificador de Sabedoria já está incluído no total de PM da ficha.");
+      if (safeLevel >= 2) add("Caminho dos Ermos", "Terrenos naturais", "Ignora terreno difícil e aumenta em +10 a CD para rastreá-lo em terrenos naturais.");
+      if (safeLevel >= 20) add("Força da Natureza", "-2 PM · +2 CD", "Reduz custo de magias e aumenta CD; os bônus dobram em terrenos naturais.");
+    }
+    if (classId === "bucaneiro") {
+      add("Audácia", "2 PM", "Ao fazer teste de perícia, recebe bônus igual ao modificador de Carisma; não se aplica a testes de ataque.");
+      add("Insolência", `Carisma na Defesa · até +${safeLevel}`, "Soma Carisma à Defesa, limitado pelo nível; não funciona com armadura pesada ou imobilizado.");
+      if (safeLevel >= 2) add("Evasão", "Reflexos", "Em efeito que permita Reflexos para reduzir dano à metade, não sofre dano se passar.");
+      if (safeLevel >= 3) add("Esquiva Sagaz", `+${1 + Math.floor((safeLevel - 3) / 4)} Defesa`, "Bônus de Defesa que escala a cada quatro níveis; não funciona com armadura pesada ou imobilizado.");
+      if (safeLevel >= 5) add("Panache", "1 PM", "Ao obter crítico em combate ou reduzir inimigo a 0 PV, recupera 1 PM.");
+      if (safeLevel >= 10) add("Evasão Aprimorada", "Reflexos", "Em efeitos que permitam Reflexos para reduzir dano, sofre metade mesmo ao falhar.");
+      if (safeLevel >= 20) add("Sorte de Nimb", "5 PM", "Refaz um teste; resultado 11 ou mais na segunda rolagem conta como 20 natural.");
+    }
+    if (classId === "ladino") {
+      add("Ataque Furtivo", `+${Math.ceil(safeLevel / 2)}d6`, "Uma vez por rodada contra alvo desprevenido, flanqueado ou em alcance curto; criaturas imunes a críticos também são imunes.");
+      add("Especialista", `1 PM · até ${Math.max(1, modifiers.int || 0)} perícia(s)`, "Escolhe perícias treinadas iguais ao modificador de Inteligência; pode dobrar bônus de treinamento em um teste.");
+      if (safeLevel >= 2) add("Evasão", "Reflexos", "Em efeito que permita Reflexos para reduzir dano à metade, não sofre dano se passar.");
+      if (safeLevel >= 4) add("Esquiva Sobrenatural", "Nunca surpreendido", "Não fica surpreendido.");
+      if (safeLevel >= 8) add("Olhos nas Costas", "Não flanqueável", "Não pode ser flanqueado.");
+      if (safeLevel >= 10) add("Evasão Aprimorada", "Reflexos", "Em efeitos que permitam Reflexos para reduzir dano, sofre metade mesmo ao falhar.");
+      if (safeLevel >= 20) add("A Pessoa Certa para o Trabalho", "5 PM · +10", "Ao fazer Ataque Furtivo ou usar perícia da lista de Ladino, recebe +10 no teste.");
+    }
+    if (classId === "inventor") {
+      const superiorModifications = safeLevel >= 12 ? 6 : safeLevel >= 10 ? 5 : safeLevel >= 8 ? 4 : safeLevel >= 6 ? 3 : safeLevel >= 4 ? 2 : safeLevel >= 2 ? 1 : 0;
+      add("Engenhosidade", "2 PM", "Ao fazer teste de perícia, recebe bônus igual ao modificador de Inteligência; não se aplica a testes de ataque.");
+      add("Protótipo", "Item superior ou alquímicos", "Começa com item superior de uma modificação ou itens alquímicos até T$ 500.");
+      if (safeLevel >= 2) add("Fabricar Item Superior", `${superiorModifications} modificação(ões)`, "Recebe e pode fabricar item superior com o limite de modificações indicado.");
+      if (safeLevel >= 3) add("Comerciante", "+10% na venda", "Vende itens por 10% a mais; não cumulativo com Barganha.");
+      if (safeLevel >= 7) add("Encontrar Fraqueza", "2 PM", "Analisa objeto ou inimigo; ignora RD de objeto e obtém +2 em ataques contra alvo de armadura ou construto.");
+      if (safeLevel >= 9) add("Fabricar Item Mágico", safeLevel >= 17 ? "maior" : safeLevel >= 13 ? "médio" : "menor", "Recebe e pode fabricar item mágico da categoria indicada.");
+      if (safeLevel >= 11) add("Olho do Dragão", "Análise automática", "Descobre se item é mágico, suas propriedades e como utilizá-las.");
+      if (safeLevel >= 20) add("Obra-Prima", "Item único", "Cria obra-prima aprovada pelo mestre, combinando benefícios de item superior e mágico maior.");
+    }
+    if (classId === "paladino") {
+      const divineDice = 1 + Math.floor((safeLevel - 1) / 4);
+      add("Golpe Divino", `${divineDice}d8 · ${divineDice + 1} PM`, "Ao acertar ataque corpo a corpo, pode gastar PM para somar Carisma no ataque e dano de luz.");
+      const charismaMana = modifiers.cha || 0;
+      add("Abençoado", `${charismaMana >= 0 ? "+" : ""}${charismaMana} PM`, "O modificador de Carisma já está incluído no total de PM da ficha.");
+      if (safeLevel >= 2) {
+        const healingDice = 1 + Math.floor((safeLevel - 2) / 4);
+        add("Cura pelas Mãos", `${healingDice}d8+${healingDice} · ${healingDice} PM`, safeLevel >= 6 ? "Também pode gastar +1 PM para anular uma condição elegível." : "Cura um alvo em alcance corpo a corpo, incluindo você.");
+      }
+      if (safeLevel >= 3) add("Aura Sagrada", "1 PM + 1 PM/turno", "Você e aliados na aura recebem o bônus de Carisma em testes de resistência.");
+    }
+    if (classId === "guerreiro") {
+      const specialRank = 1 + Math.floor((safeLevel - 1) / 4);
+      add("Ataque Especial", `+${specialRank * 4} · até ${specialRank} PM`, "Gasta PM para distribuir o bônus entre teste de ataque e rolagem de dano.");
+      if (safeLevel >= 3) add("Durão", "2 PM", "Quando sofre dano, pode gastar PM para reduzi-lo à metade.");
+      if (safeLevel >= 6) add("Ataque Extra", "2 PM", "Ao usar a ação atacar, realiza um ataque adicional com a mesma arma.");
+      if (safeLevel >= 20) add("Campeão", "+1 passo de dano", "Todos os ataques causam mais dano e recupera parte do PM gasto em Ataque Especial ou Golpe Pessoal ao acertar.");
+    }
+    if (classId === "lutador") {
+      const brigaDamage = safeLevel >= 20 ? "2d10" : safeLevel >= 17 ? "2d8" : safeLevel >= 13 ? "2d6" : safeLevel >= 9 ? "1d10" : safeLevel >= 5 ? "1d8" : "1d6";
+      add("Briga", brigaDamage, "Dano do ataque desarmado para criatura Pequena ou Média.");
+      add("Golpe Relâmpago", "1 PM", "Ao usar a ação atacar para ataque desarmado, realiza um ataque desarmado adicional.");
+      if (safeLevel >= 3) add("Casca Grossa", `Con +${Math.floor((safeLevel - 3) / 4)}`, "Soma Constituição à Defesa sem armadura pesada; o bônus adicional de Defesa escala a cada quatro níveis.");
+      if (safeLevel >= 5) add("Golpe Cruel", "+1 margem de ameaça", "Aumenta a margem de ameaça de ataques desarmados.");
+      if (safeLevel >= 9) add("Golpe Violento", "+1 multiplicador crítico", "Aumenta o multiplicador de crítico de ataques desarmados.");
+      if (safeLevel >= 20) add("Dono da Rua", "2 ataques", "Ao usar a ação atacar desarmado, faz dois ataques em vez de um.");
+    }
+    if (classId === "nobre") {
+      const charismaLimit = Math.max(0, modifiers.cha || 0);
+      add("Orgulho", `até ${charismaLimit} PM`, "Ao fazer teste de perícia, cada PM gasto concede +2 no resultado.");
+      if (safeLevel >= 2) add("Riqueza", "1/aventura · Car + nível", "Faz teste de Carisma com bônus igual ao nível de Nobre para receber Tibares de ouro.");
+      if (safeLevel >= 3) add("Gritar Ordens", `até ${charismaLimit} PM`, "Aliados em alcance curto recebem bônus em perícias igual ao PM gasto até seu próximo turno.");
+      if (safeLevel >= 20) add("Realeza", "Presença soberana", "Aprimora Presença Aristocrática e Palavras Afiadas contra criaturas que falhem em suas resistências.");
+    }
+    if (classId === "cavaleiro") {
+      const bulwarkRank = 1 + Math.floor((safeLevel - 1) / 4);
+      add("Baluarte", `+${bulwarkRank * 2} · até ${bulwarkRank} PM`, "Gasta PM para receber bônus na Defesa e em testes de resistência até o início de seu próximo turno.");
+      if (safeLevel >= 2) add("Duelo", "2 PM · +1", "Escolhe um inimigo em alcance curto; cada 2 PM adicionais aumentam em +1 os testes de ataque e dano contra ele até o fim da cena.");
+      if (safeLevel >= 5) add("Caminho do Cavaleiro", "Bastião ou Montaria", "Escolha de caminho: Bastião concede RD com armadura pesada; Montaria fornece um cavalo de guerra aliado.");
+      if (safeLevel >= 11) add("Resoluto", "1 PM", "Refaz um teste de resistência contra condição que o afete, com +5; uma vez por efeito.");
+      if (safeLevel >= 20) add("Bravura Final", "5 PM/turno", "Ao chegar a 0 PV ou menos, permanece consciente e agindo enquanto pagar o custo no início de cada turno.");
+    }
+    return resources;
+  }
   if (classId === "barbaro") {
     const rages = safeLevel >= 20 ? 999 : safeLevel >= 17 ? 6 : safeLevel >= 12 ? 5 : safeLevel >= 6 ? 4 : safeLevel >= 3 ? 3 : 2;
     add("Fúrias", String(rages), safeLevel >= 20 ? "Usos ilimitados; recupera os benefícios conforme as regras de Fúria." : "Usos por descanso longo.");

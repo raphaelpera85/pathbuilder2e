@@ -1,5 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { DND5E_ALIGNMENTS, DND5E_LANGUAGES, T20_DEITIES, getCoreCatalog, getCoreEquipmentQuantity, type MultiSystemCharacter, type SupportedCoreSystem } from "../data/multiSystemCharacter";
+import { DND5E_ALIGNMENTS, DND5E_LANGUAGES, T20_DEITIES, getCoreCatalog, getCoreEquipmentQuantity, getCoreFeatQuantity, type MultiSystemCharacter, type SupportedCoreSystem } from "../data/multiSystemCharacter";
+import { getDnd5eBackgroundToolProficiencies } from "../data/dnd5e/dnd5eBackgrounds";
+import { getDnd5eToolChoiceEntries } from "../data/dnd5e/dnd5eCatalog";
+import { formatDnd5eSpellDetails } from "../data/dnd5e/dnd5eCompendium";
 import { getSystemRulesEngine } from "../data/systemRulesEngine";
 import { createCoreEditablePdf, downloadCoreEditablePdf } from "../services/corePdfExport";
 
@@ -39,6 +42,9 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
   const selectedSpells = catalog.spells.filter((entry) => (draft.spellIds || []).includes(entry.id));
   const selectedFeats = catalog.feats.filter((entry) => (draft.featIds || []).includes(entry.id));
   const selectedBackground = catalog.backgrounds.find((entry) => entry.id === draft.backgroundId);
+  const displayedBackgroundTools = selectedBackground && "toolProficiencies" in selectedBackground
+    ? (draft.toolProficiencies?.length ? draft.toolProficiencies : selectedBackground.toolProficiencies)
+    : [];
 
   useEffect(() => {
     const previousFocus = document.activeElement as HTMLElement | null;
@@ -61,7 +67,14 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
     const background = catalog.backgrounds.find((entry) => entry.id === backgroundId);
     const next = { ...draft, backgroundId };
     if (background && "toolProficiencies" in background) {
-      next.toolProficiencies = [...background.toolProficiencies];
+      const defaultTools = getDnd5eBackgroundToolProficiencies(background);
+      const currentTools = draft.backgroundId === backgroundId ? (draft.toolProficiencies || []) : [];
+      const choiceGroups = background.toolChoiceGroups || [];
+      const choiceNames = new Set(choiceGroups.flatMap((group) => getDnd5eToolChoiceEntries(group).map((entry) => entry.name)));
+      next.toolProficiencies = [
+        ...defaultTools.filter((tool) => !choiceNames.has(tool)),
+        ...choiceGroups.map((group) => currentTools.find((tool) => getDnd5eToolChoiceEntries(group).some((entry) => entry.name === tool)) || getDnd5eToolChoiceEntries(group)[0]?.name).filter((tool): tool is string => Boolean(tool)),
+      ];
       next.languages = DND5E_LANGUAGES.slice(0, background.languageChoices) as unknown as string[];
       next.backgroundBenefit = background.feature;
     } else if (background && "benefitOptions" in background) {
@@ -83,7 +96,7 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
           <div>
             <span className="pb-core-kicker">{system === "t20" ? "Tormenta20 · Ficha" : "D&D 5e · Ficha"}</span>
             <h2 id="pb-core-sheet-title">{draft.name}</h2>
-            <p>{race}{subrace ? ` · ${subrace}` : ""} · {className}{subclass ? ` · ${subclass}` : ""} · nível {draft.level} · ruleset {draft.ruleset}{draft.alignment ? ` · ${draft.alignment}` : deity ? ` · ${deity}` : ""}</p>
+            <p>{race}{subrace ? ` · ${subrace}` : ""} · {className}{subclass ? ` · ${subclass}` : ""}{system === "t20" && draft.t20ArcanistPath ? ` · ${draft.t20ArcanistPath}${draft.t20SorcererLineage ? ` · ${draft.t20SorcererLineage}` : ""}` : ""} · nível {draft.level} · ruleset {draft.ruleset}{draft.alignment ? ` · ${draft.alignment}` : deity ? ` · ${deity}` : ""}</p>
           </div>
           <button type="button" className="pb-core-close" onClick={onClose} aria-label="Fechar">×</button>
         </header>
@@ -118,7 +131,7 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
 
         {selectedBackground && <aside className="pb-core-background-options">
           <strong>{system === "dnd5e" ? "Característica do antecedente" : "Benefício da origem"}</strong>
-          {"feature" in selectedBackground && <><p>{selectedBackground.feature}</p><p>Ferramentas: {selectedBackground.toolProficiencies.join(" · ") || "Nenhuma"}</p><p>Equipamento inicial: {selectedBackground.startingEquipment.join(" · ")}</p><p>Idiomas: {(draft.languages || []).join(" · ") || "Nenhum selecionado"}</p></>}
+          {"feature" in selectedBackground && <><p>{selectedBackground.feature}</p><p>Ferramentas: {displayedBackgroundTools.join(" · ") || "Nenhuma"}</p><p>Equipamento inicial: {selectedBackground.startingEquipment.join(" · ")}</p><p>Idiomas: {(draft.languages || []).join(" · ") || "Nenhum selecionado"}</p></>}
           {"benefitOptions" in selectedBackground && <select value={draft.backgroundBenefit || selectedBackground.benefitOptions[0]} onChange={(event) => setDraft({ ...draft, backgroundBenefit: event.target.value })}>{selectedBackground.benefitOptions.map((benefit) => <option key={benefit} value={benefit}>{benefit}</option>)}</select>}
         </aside>}
 
@@ -160,8 +173,8 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
 
         <div className="pb-core-loadout">
           <section><h3>Equipamento</h3>{selectedEquipment.length ? <div className="pb-core-sheet-equipment-list">{selectedEquipment.map((entry) => <label key={entry.id}><span>{entry.name}<small>{entry.cost ? ` · ${entry.cost}` : entry.weight !== undefined ? ` · ${entry.weight} lb` : ""}</small></span><input type="number" min={1} step={1} value={getCoreEquipmentQuantity(draft, entry.id)} onChange={(event) => updateEquipmentQuantity(entry.id, Number(event.target.value))} aria-label={`Quantidade de ${entry.name}`} /></label>)}</div> : <p>Nenhum selecionado</p>}</section>
-          <section><h3>Magias</h3><p>{selectedSpells.length ? selectedSpells.map((entry) => entry.name).join(" · ") : "Nenhuma selecionada"}</p></section>
-          <section><h3>{system === "t20" ? "Poderes" : "Talentos"}</h3><p>{selectedFeats.length ? selectedFeats.map((entry) => entry.name).join(" · ") : "Nenhum selecionado"}</p></section>
+          <section><h3>Magias</h3><p>{selectedSpells.length ? selectedSpells.map((entry) => `${entry.name} (${formatDnd5eSpellDetails(entry)})`).join(" · ") : "Nenhuma selecionada"}</p></section>
+          <section><h3>{system === "t20" ? "Poderes" : "Talentos"}</h3><p>{selectedFeats.length ? selectedFeats.map((entry) => `${entry.name}${getCoreFeatQuantity(draft, entry.id) > 1 ? ` ×${getCoreFeatQuantity(draft, entry.id)}` : ""}`).join(" · ") : "Nenhum selecionado"}</p></section>
           <section><h3>Moedas</h3><div className="pb-core-coins pb-core-sheet-coins">{(system === "t20" ? [["tibar", "Tibar"]] : [["cp", "PC"], ["sp", "PP"], ["gp", "PO"], ["pp", "PL"]]).map(([key, label]) => <label key={key}>{label}<input type="number" min={0} step={1} value={draft.coins?.[key as keyof NonNullable<MultiSystemCharacter["coins"]>] || 0} onChange={(event) => { setDraft({ ...draft, coins: { ...draft.coins, [key]: Math.max(0, Number(event.target.value)) } }); setSaveError(null); }} /></label>)}</div></section>
         </div>
 

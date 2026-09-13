@@ -48,6 +48,40 @@ describe("system rules engines", () => {
     expect(T20_RULES_ENGINE.validateCharacter(t20)).toContain("divindade não pertence ao Panteão de T20");
   });
 
+  it("aplica caminho do Arcanista ao atributo-chave, PM e limite de magias", () => {
+    const arcanista = T20_RULES_ENGINE.createDefaultCharacter();
+    arcanista.level = 5;
+    arcanista.abilities = { str: 10, dex: 10, con: 10, int: 16, wis: 10, cha: 14 };
+    arcanista.t20ArcanistPath = "bruxo";
+    expect(T20_RULES_ENGINE.deriveStats(arcanista)).toMatchObject({ spellcastingAbility: "int", manaMax: 33, knownSpellLimit: 7 });
+    arcanista.t20ArcanistPath = "feiticeiro";
+    arcanista.t20SorcererLineage = "draconica";
+    expect(T20_RULES_ENGINE.deriveStats(arcanista)).toMatchObject({ spellcastingAbility: "cha", manaMax: 32, knownSpellLimit: 5 });
+    arcanista.t20ArcanistPath = "mago";
+    arcanista.t20SorcererLineage = undefined;
+    expect(T20_RULES_ENGINE.deriveStats(arcanista)).toMatchObject({ spellcastingAbility: "int", manaMax: 33, knownSpellLimit: 8 });
+  });
+
+  it("valida caminho e linhagem do Arcanista T20", () => {
+    const arcanista = T20_RULES_ENGINE.createDefaultCharacter();
+    expect(T20_RULES_ENGINE.validateCharacter(arcanista)).toEqual([]);
+    arcanista.t20ArcanistPath = "feiticeiro";
+    arcanista.t20SorcererLineage = undefined;
+    expect(T20_RULES_ENGINE.validateCharacter(arcanista)).toContain("selecione uma linhagem sobrenatural válida");
+    arcanista.classId = "guerreiro";
+    arcanista.t20ArcanistPath = undefined;
+    arcanista.t20SorcererLineage = undefined;
+    expect(T20_RULES_ENGINE.validateCharacter(arcanista)).not.toContain("selecione um caminho válido de Arcanista");
+  });
+
+  it("respeita o limite de duas escolhas de Poder Mágico", () => {
+    const arcanista = T20_RULES_ENGINE.createDefaultCharacter();
+    arcanista.level = 3;
+    arcanista.featIds = ["t20.poder.poder_magico"];
+    arcanista.featQuantities = { "t20.poder.poder_magico": 3 };
+    expect(T20_RULES_ENGINE.validateCharacter(arcanista)).toContain("o poder Poder Mágico pode ser escolhido no máximo 2 vezes");
+  });
+
   it("rejects a race from another system", () => {
     const character = T20_RULES_ENGINE.createDefaultCharacter();
     character.raceId = "tiefling";
@@ -177,7 +211,7 @@ describe("system rules engines", () => {
     const human = T20_RULES_ENGINE.createDefaultCharacter();
     human.raceChoiceMode = "skill_and_feat";
     human.raceSkillChoices = ["furtividade"];
-    human.raceFeatChoice = "t20.poder.iniciativa_aprimorada";
+    human.raceFeatChoice = "t20.poder.sortudo";
     expect(T20_RULES_ENGINE.validateCharacter(human)).toEqual([]);
 
     const lefou = { ...human, raceId: "lefou", raceFeatChoice: "t20.poder.anatomia_insana" };
@@ -229,7 +263,11 @@ describe("system rules engines", () => {
     expect(T20_RULES_ENGINE.deriveStats(t20).classFeatures).toEqual(expect.arrayContaining([
       expect.objectContaining({ level: 1, name: "Golpe Divino" }),
     ]));
-    expect(T20_RULES_ENGINE.deriveStats(t20).classResources).toHaveLength(0);
+    expect(T20_RULES_ENGINE.deriveStats(t20).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Golpe Divino", value: "1d8 · 2 PM" }),
+      expect.objectContaining({ name: "Cura pelas Mãos" }),
+      expect.objectContaining({ name: "Aura Sagrada" }),
+    ]));
   });
 
   it("rejects missing required trained skills", () => {
@@ -261,6 +299,8 @@ describe("system rules engines", () => {
     barbarian.equipmentIds = ["dnd5e.armadura.cota_de_malha", "dnd5e.armadura.escudo"];
     expect(DND5E_RULES_ENGINE.deriveStats(barbarian).defense).toBe(18);
     expect(DND5E_RULES_ENGINE.deriveStats(barbarian)).toMatchObject({ carryingWeight: 61, carryingCapacity: 195, encumbered: false });
+    barbarian.abilities.dex = 8;
+    expect(DND5E_RULES_ENGINE.deriveStats(barbarian).defense).toBe(18);
 
     const wizard = DND5E_RULES_ENGINE.createDefaultCharacter();
     wizard.classId = "mago";
@@ -339,6 +379,230 @@ describe("system rules engines", () => {
     expect(T20_RULES_ENGINE.validateCharacter(character)).not.toContain("Oceano permite apenas armaduras leves");
   });
 
+  it("limits Paladin devotion to the deities allowed by T20", () => {
+    const paladin = T20_RULES_ENGINE.createDefaultCharacter();
+    paladin.classId = "paladino";
+    paladin.spellIds = [];
+    paladin.deity = "khalmyr";
+    expect(T20_RULES_ENGINE.validateCharacter(paladin)).not.toContain("a divindade escolhida não é permitida para Paladino");
+    paladin.deity = "arsenal";
+    expect(T20_RULES_ENGINE.validateCharacter(paladin)).toContain("a divindade escolhida não é permitida para Paladino");
+    paladin.deity = undefined;
+    expect(T20_RULES_ENGINE.validateCharacter(paladin)).not.toContain("a divindade escolhida não é permitida para Paladino");
+  });
+
+  it("adds Charisma to a T20 Paladin's mana from Abençoado", () => {
+    const paladin = T20_RULES_ENGINE.createDefaultCharacter();
+    paladin.classId = "paladino";
+    paladin.abilities.cha = 14;
+    expect(T20_RULES_ENGINE.deriveStats(paladin).manaMax).toBe(5);
+    paladin.level = 2;
+    expect(T20_RULES_ENGINE.deriveStats(paladin).manaMax).toBe(8);
+  });
+
+  it("uses Charisma instead of Dexterity for T20 Nobre defense, except in heavy armor", () => {
+    const noble = T20_RULES_ENGINE.createDefaultCharacter();
+    noble.classId = "nobre";
+    noble.abilities.dex = 8;
+    noble.abilities.cha = 16;
+    expect(T20_RULES_ENGINE.deriveStats(noble).defense).toBe(13);
+    noble.equipmentIds = ["t20.armadura.pesada"];
+    expect(T20_RULES_ENGINE.deriveStats(noble).defense).toBe(20);
+  });
+
+  it("exposes T20 Nobre resources using the Charisma limit", () => {
+    const noble = T20_RULES_ENGINE.createDefaultCharacter();
+    noble.classId = "nobre";
+    noble.level = 3;
+    noble.abilities.cha = 16;
+    expect(T20_RULES_ENGINE.deriveStats(noble).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Orgulho", value: "até 3 PM" }),
+      expect.objectContaining({ name: "Riqueza" }),
+      expect.objectContaining({ name: "Gritar Ordens", value: "até 3 PM" }),
+    ]));
+  });
+
+  it("exposes T20 Cavaleiro resources at their progression thresholds", () => {
+    const knight = T20_RULES_ENGINE.createDefaultCharacter();
+    knight.classId = "cavaleiro";
+    knight.level = 9;
+    expect(T20_RULES_ENGINE.deriveStats(knight).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Baluarte", value: "+6 · até 3 PM" }),
+      expect.objectContaining({ name: "Duelo", value: "2 PM · +1" }),
+      expect.objectContaining({ name: "Caminho do Cavaleiro" }),
+    ]));
+    knight.level = 20;
+    expect(T20_RULES_ENGINE.deriveStats(knight).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Resoluto", value: "1 PM" }),
+      expect.objectContaining({ name: "Bravura Final", value: "5 PM/turno" }),
+    ]));
+  });
+
+  it("exposes T20 Bárbaro Fury, instinct and damage resistance progression", () => {
+    const barbarian = T20_RULES_ENGINE.createDefaultCharacter();
+    barbarian.classId = "barbaro";
+    barbarian.level = 11;
+    expect(T20_RULES_ENGINE.deriveStats(barbarian).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Fúria", value: "+4 · 6 PM" }),
+      expect.objectContaining({ name: "Instinto Selvagem", value: "+2" }),
+      expect.objectContaining({ name: "Resistência a Dano", value: "RD 6" }),
+    ]));
+    barbarian.level = 20;
+    expect(T20_RULES_ENGINE.deriveStats(barbarian).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Fúria Titânica", value: "+10" }),
+    ]));
+  });
+
+  it("exposes T20 Caçador mark and exploration progression", () => {
+    const hunter = T20_RULES_ENGINE.createDefaultCharacter();
+    hunter.classId = "cacador";
+    hunter.level = 9;
+    expect(T20_RULES_ENGINE.deriveStats(hunter).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Marca da Presa", value: "+1d12 · 3 PM" }),
+      expect.objectContaining({ name: "Explorador" }),
+      expect.objectContaining({ name: "Caminho do Explorador" }),
+    ]));
+    hunter.level = 20;
+    expect(T20_RULES_ENGINE.deriveStats(hunter).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Mestre Caçador", value: "Marca como ação livre" }),
+    ]));
+  });
+
+  it("applies T20 Bardo mana, known spell and Inspiration progression", () => {
+    const bard = T20_RULES_ENGINE.createDefaultCharacter();
+    bard.classId = "bardo";
+    bard.level = 6;
+    bard.abilities.cha = 14;
+    expect(T20_RULES_ENGINE.deriveStats(bard)).toMatchObject({ manaMax: 26, knownSpellLimit: 5 });
+    expect(T20_RULES_ENGINE.deriveStats(bard).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Inspiração", value: "+2 · 4 PM" }),
+      expect.objectContaining({ name: "Magias", value: "2º círculo" }),
+      expect.objectContaining({ name: "Eclético" }),
+    ]));
+    bard.featIds = ["t20.poder.aumentar_repertorio"];
+    bard.featQuantities = { "t20.poder.aumentar_repertorio": 2 };
+    expect(T20_RULES_ENGINE.deriveStats(bard).knownSpellLimit).toBe(9);
+  });
+
+  it("applies T20 Clérigo Wisdom mana and divine spell progression", () => {
+    const cleric = T20_RULES_ENGINE.createDefaultCharacter();
+    cleric.classId = "clerigo";
+    cleric.level = 9;
+    cleric.abilities.wis = 16;
+    expect(T20_RULES_ENGINE.deriveStats(cleric)).toMatchObject({ manaMax: 48, knownSpellLimit: 11 });
+    expect(T20_RULES_ENGINE.deriveStats(cleric).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Devoto" }),
+      expect.objectContaining({ name: "Magias Divinas", value: "3º círculo" }),
+    ]));
+    cleric.level = 20;
+    expect(T20_RULES_ENGINE.deriveStats(cleric).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Mão da Divindade", value: "15 PM" }),
+    ]));
+  });
+
+  it("applies T20 Druida rules for deity, Wisdom mana and nature secrets", () => {
+    const druid = T20_RULES_ENGINE.createDefaultCharacter();
+    druid.classId = "druida";
+    druid.level = 10;
+    druid.abilities.wis = 16;
+    druid.deity = "allihanna";
+    expect(T20_RULES_ENGINE.deriveStats(druid)).toMatchObject({ manaMax: 43, knownSpellLimit: 7 });
+    expect(T20_RULES_ENGINE.deriveStats(druid).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Magias", value: "3º círculo" }),
+      expect.objectContaining({ name: "Caminho dos Ermos" }),
+    ]));
+    druid.featIds = ["t20.poder.segredos_da_natureza"];
+    druid.featQuantities = { "t20.poder.segredos_da_natureza": 2 };
+    expect(T20_RULES_ENGINE.deriveStats(druid).knownSpellLimit).toBe(11);
+    druid.deity = "khalmyr";
+    expect(T20_RULES_ENGINE.validateCharacter(druid)).toContain("Druida deve escolher Allihanna, Megalokk ou Oceano");
+  });
+
+  it("uses T20 Bucaneiro Charisma defense and resource thresholds", () => {
+    const swashbuckler = T20_RULES_ENGINE.createDefaultCharacter();
+    swashbuckler.classId = "bucaneiro";
+    swashbuckler.level = 3;
+    swashbuckler.abilities.dex = 8;
+    swashbuckler.abilities.cha = 16;
+    expect(T20_RULES_ENGINE.deriveStats(swashbuckler).defense).toBe(13);
+    expect(T20_RULES_ENGINE.deriveStats(swashbuckler).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Audácia", value: "2 PM" }),
+      expect.objectContaining({ name: "Esquiva Sagaz", value: "+1 Defesa" }),
+    ]));
+    swashbuckler.level = 20;
+    expect(T20_RULES_ENGINE.deriveStats(swashbuckler).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Sorte de Nimb", value: "5 PM" }),
+      expect.objectContaining({ name: "Esquiva Sagaz", value: "+5 Defesa" }),
+    ]));
+  });
+
+  it("exposes T20 Ladino sneak attack and specialist progression", () => {
+    const rogue = T20_RULES_ENGINE.createDefaultCharacter();
+    rogue.classId = "ladino";
+    rogue.level = 9;
+    rogue.abilities.int = 16;
+    expect(T20_RULES_ENGINE.deriveStats(rogue).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Ataque Furtivo", value: "+5d6" }),
+      expect.objectContaining({ name: "Especialista", value: "1 PM · até 3 perícia(s)" }),
+      expect.objectContaining({ name: "Olhos nas Costas" }),
+    ]));
+    rogue.level = 20;
+    expect(T20_RULES_ENGINE.deriveStats(rogue).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "A Pessoa Certa para o Trabalho", value: "5 PM · +10" }),
+    ]));
+  });
+
+  it("exposes T20 Inventor crafting milestones and analysis resources", () => {
+    const inventor = T20_RULES_ENGINE.createDefaultCharacter();
+    inventor.classId = "inventor";
+    inventor.level = 9;
+    expect(T20_RULES_ENGINE.deriveStats(inventor).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Engenhosidade", value: "2 PM" }),
+      expect.objectContaining({ name: "Fabricar Item Superior", value: "4 modificação(ões)" }),
+      expect.objectContaining({ name: "Encontrar Fraqueza", value: "2 PM" }),
+      expect.objectContaining({ name: "Fabricar Item Mágico", value: "menor" }),
+    ]));
+    inventor.level = 20;
+    expect(T20_RULES_ENGINE.deriveStats(inventor).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Fabricar Item Mágico", value: "maior" }),
+      expect.objectContaining({ name: "Obra-Prima", value: "Item único" }),
+    ]));
+  });
+
+  it("exposes Paladin T20 resources at the correct progression levels", () => {
+    const paladin = T20_RULES_ENGINE.createDefaultCharacter();
+    paladin.classId = "paladino";
+    paladin.abilities.cha = 14;
+    expect(T20_RULES_ENGINE.deriveStats(paladin).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Golpe Divino", value: "1d8 · 2 PM" }),
+      expect.objectContaining({ name: "Abençoado", value: "+2 PM" }),
+    ]));
+    paladin.level = 6;
+    expect(T20_RULES_ENGINE.deriveStats(paladin).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Cura pelas Mãos", value: "2d8+2 · 2 PM" }),
+      expect.objectContaining({ name: "Aura Sagrada" }),
+    ]));
+  });
+
+  it("exposes T20 Guerreiro and Lutador progression resources", () => {
+    const warrior = T20_RULES_ENGINE.createDefaultCharacter();
+    warrior.classId = "guerreiro";
+    warrior.level = 9;
+    expect(T20_RULES_ENGINE.deriveStats(warrior).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Ataque Especial", value: "+12 · até 3 PM" }),
+      expect.objectContaining({ name: "Durão" }),
+      expect.objectContaining({ name: "Ataque Extra" }),
+    ]));
+    const fighter = T20_RULES_ENGINE.createDefaultCharacter();
+    fighter.classId = "lutador";
+    fighter.level = 9;
+    expect(T20_RULES_ENGINE.deriveStats(fighter).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Briga", value: "1d10" }),
+      expect.objectContaining({ name: "Golpe Cruel" }),
+      expect.objectContaining({ name: "Golpe Violento" }),
+    ]));
+  });
+
   it("does not allow spells on a non-spellcasting D&D class", () => {
     const character = DND5E_RULES_ENGINE.createDefaultCharacter();
     character.classId = "guerreiro";
@@ -356,6 +620,45 @@ describe("system rules engines", () => {
     paladin.classId = "paladino";
     paladin.spellIds = ["dnd5e.magia.curar_ferimentos"];
     expect(DND5E_RULES_ENGINE.validateCharacter(paladin)).toContain("esta classe só começa a conjurar no nível 2");
+
+    const bard = T20_RULES_ENGINE.createDefaultCharacter();
+    bard.classId = "bardo";
+    bard.level = 5;
+    bard.spellIds = ["t20.magia.aparencia_perfeita"];
+    expect(T20_RULES_ENGINE.validateCharacter(bard).some((error) => error.includes("exige um círculo de magia maior que o disponível neste nível"))).toBe(true);
+
+    const t20Paladin = T20_RULES_ENGINE.createDefaultCharacter();
+    t20Paladin.classId = "paladino";
+    t20Paladin.spellIds = [];
+    t20Paladin.spellIds = ["t20.magia.bola_de_fogo"];
+    expect(T20_RULES_ENGINE.validateCharacter(t20Paladin).some((error) => error.includes("a magia selecionada não pertence à lista da classe"))).toBe(true);
+
+    const prayingPaladin = T20_RULES_ENGINE.createDefaultCharacter();
+    prayingPaladin.classId = "paladino";
+    prayingPaladin.level = 2;
+    prayingPaladin.spellIds = ["t20.magia.curar_ferimentos"];
+    prayingPaladin.featIds = ["t20.poder.orar"];
+    expect(T20_RULES_ENGINE.validateCharacter(prayingPaladin)).not.toContain("a magia selecionada não pertence à lista da classe");
+    expect(T20_RULES_ENGINE.deriveStats(prayingPaladin).spellcastingAbility).toBe("wis");
+    expect(T20_RULES_ENGINE.deriveStats(prayingPaladin).knownSpellLimit).toBe(1);
+    prayingPaladin.spellIds = ["t20.magia.curar_ferimentos", "t20.magia.arma_espiritual"];
+    expect(T20_RULES_ENGINE.validateCharacter(prayingPaladin)).toContain("a classe permite conhecer no máximo 1 magias neste nível");
+    prayingPaladin.featQuantities = { "t20.poder.orar": 2 };
+    expect(T20_RULES_ENGINE.deriveStats(prayingPaladin).knownSpellLimit).toBe(2);
+    expect(T20_RULES_ENGINE.validateCharacter(prayingPaladin)).toContain("a classe permite no máximo 1 escolhas de poder de classe neste nível");
+    prayingPaladin.level = 3;
+    expect(T20_RULES_ENGINE.validateCharacter(prayingPaladin)).not.toContain("a classe permite no máximo 1 escolhas de poder de classe neste nível");
+    prayingPaladin.featQuantities = { "t20.poder.orar": 0 };
+    expect(T20_RULES_ENGINE.validateCharacter(prayingPaladin)).toContain("a quantidade de um poder repetível deve ser um número inteiro maior que zero");
+    prayingPaladin.featQuantities = { "t20.poder.orar": 2 };
+    prayingPaladin.classId = "guerreiro";
+    expect(T20_RULES_ENGINE.validateCharacter(prayingPaladin)).toContain("o poder Orar não pertence à classe selecionada");
+
+    const t20Arcanist = T20_RULES_ENGINE.createDefaultCharacter();
+    t20Arcanist.classId = "arcanista";
+    t20Arcanist.spellIds = ["t20.magia.luz", "t20.magia.amedrontar", "t20.magia.dissipar_magia", "t20.magia.bola_de_fogo"];
+    expect(T20_RULES_ENGINE.deriveStats(t20Arcanist).knownSpellLimit).toBe(3);
+    expect(T20_RULES_ENGINE.validateCharacter(t20Arcanist)).toContain("a classe permite conhecer no máximo 3 magias neste nível");
   });
 
   it("applies a dependent D&D sub-race and rejects a cross-race sub-race", () => {
@@ -402,6 +705,16 @@ describe("system rules engines", () => {
     t20.featIds = ["t20.poder.ataque_poderoso"];
     t20.abilities.str = 13;
     expect(T20_RULES_ENGINE.validateCharacter(t20).some((error) => error.includes("talento/poder"))).toBe(false);
+  });
+
+  it("counts Aumento de Atributo as a T20 class-power choice", () => {
+    const character = T20_RULES_ENGINE.createDefaultCharacter();
+    character.classId = "guerreiro";
+    character.level = 2;
+    character.featIds = ["t20.poder.aumento_de_atributo", "t20.poder.impeto"];
+    expect(T20_RULES_ENGINE.validateCharacter(character)).toContain("a classe permite no máximo 1 escolhas de poder de classe neste nível");
+    character.level = 3;
+    expect(T20_RULES_ENGINE.validateCharacter(character)).not.toContain("a classe permite no máximo 1 escolhas de poder de classe neste nível");
   });
 
   it("aplica pré-requisitos de poderes T20 por atributo, nível e perícia", () => {
@@ -472,6 +785,19 @@ describe("system rules engines", () => {
     expect(DND5E_RULES_ENGINE.deriveStats(warlock).knownSpellLimit).toBe(6);
   });
 
+  it("uses the D&D 5e 2014 ranger known-spell thresholds", () => {
+    const ranger = DND5E_RULES_ENGINE.createDefaultCharacter();
+    ranger.classId = "patrulheiro";
+    ranger.level = 1;
+    expect(DND5E_RULES_ENGINE.deriveStats(ranger).knownSpellLimit).toBeUndefined();
+    ranger.level = 2;
+    expect(DND5E_RULES_ENGINE.deriveStats(ranger).knownSpellLimit).toBe(2);
+    ranger.level = 3;
+    expect(DND5E_RULES_ENGINE.deriveStats(ranger).knownSpellLimit).toBe(3);
+    ranger.level = 5;
+    expect(DND5E_RULES_ENGINE.deriveStats(ranger).knownSpellLimit).toBe(4);
+  });
+
   it("limits known D&D 5e spells separately from prepared spells", () => {
     const bard = DND5E_RULES_ENGINE.createDefaultCharacter();
     bard.classId = "bardo";
@@ -489,5 +815,13 @@ describe("system rules engines", () => {
     expect(DND5E_RULES_ENGINE.validateCharacter(character)).toContain("o antecedente exige pelo menos 2 idioma(s) adicional(is)");
     character.toolProficiencies = ["ferramenta inventada"];
     expect(DND5E_RULES_ENGINE.validateCharacter(character)).toContain("a ferramenta não pertence ao catálogo de D&D 5e");
+  });
+
+  it("accepts a specific tool variant for a background category choice", () => {
+    const character = DND5E_RULES_ENGINE.createDefaultCharacter();
+    character.backgroundId = "artesao_de_guilda";
+    character.toolProficiencies = ["ferramentas de ferreiro"];
+    character.languages = ["Anão"];
+    expect(DND5E_RULES_ENGINE.validateCharacter(character)).not.toContain("as ferramentas do antecedente devem permanecer selecionadas");
   });
 });
