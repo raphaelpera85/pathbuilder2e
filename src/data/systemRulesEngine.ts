@@ -20,6 +20,9 @@ import { DND5E_CREATION_STEPS, DND5E_TOOLS, DND5E_TOOL_CHOICE_GROUPS, getDnd5eTo
 import { T20_ARCANIST_PATHS, T20_CREATION_STEPS, T20_SORCERER_LINEAGES } from "./t20/t20Catalog";
 import { validateAbilityGeneration } from "./coreCharacterRules";
 import { getCoreClassFeatures, getCoreClassResources, type CoreClassFeature, type CoreClassResource } from "./coreClassFeatures";
+import { DND5E_CLASS_CHOICES } from "./dnd5e/dnd5eOptions";
+import { DND5E_FEAT_CHOICES } from "./dnd5e/dnd5eCompendium";
+import { T20_POWER_CHOICES } from "./t20/t20Compendium";
 
 const DND_FULL_CASTER_SLOTS: Record<number, Record<number, number>> = {
   1: { 1: 2 }, 2: { 1: 3 }, 3: { 1: 4, 2: 2 }, 4: { 1: 4, 2: 3 },
@@ -283,6 +286,39 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       if (character.subclassId && !selectedSubclass) errors.push("subclasse não pertence ao catálogo do sistema");
       if (selectedSubclass && selectedSubclass.classId !== character.classId) errors.push("subclasse não pertence à classe selecionada");
       if (selectedSubclass && character.level < selectedSubclass.featureLevel) errors.push(`a subclasse só pode ser escolhida a partir do nível ${selectedSubclass.featureLevel}`);
+      if (systemId === "dnd5e") {
+        const declaredChoices = new Map((selectedSubclass?.choices || []).map((choice) => [choice.id, choice]));
+        for (const [choiceId, values] of Object.entries(character.subclassChoices || {})) {
+          const choice = declaredChoices.get(choiceId);
+          if (!choice) {
+            errors.push("a escolha da subclasse não pertence ao catálogo selecionado");
+            continue;
+          }
+          if (!Array.isArray(values) || values.length !== choice.count) errors.push(`a escolha ${choice.label} exige exatamente ${choice.count} opção(ões)`);
+          if (new Set(values).size !== values.length) errors.push(`a escolha ${choice.label} não pode conter opções repetidas`);
+          if (values.some((value) => !choice.options.includes(value))) errors.push(`a escolha ${choice.label} contém uma opção inválida`);
+        }
+        for (const choice of selectedSubclass?.choices || []) {
+          const values = character.subclassChoices?.[choice.id] || [];
+          if (values.length !== choice.count) errors.push(`selecione ${choice.count} opção(ões) para ${choice.label}`);
+        }
+        const classChoices = DND5E_CLASS_CHOICES.filter((choice) => choice.classId === character.classId && character.level >= choice.minimumLevel);
+        const declaredClassChoices = new Map(classChoices.map((choice) => [choice.id, choice]));
+        for (const [choiceId, values] of Object.entries(character.classChoices || {})) {
+          const choice = declaredClassChoices.get(choiceId);
+          if (!choice) {
+            errors.push("a escolha da classe não pertence ao nível ou classe selecionada");
+            continue;
+          }
+          if (!Array.isArray(values) || values.length !== choice.count) errors.push(`a escolha ${choice.label} exige exatamente ${choice.count} opção(ões)`);
+          if (new Set(values).size !== values.length) errors.push(`a escolha ${choice.label} não pode conter opções repetidas`);
+          if (values.some((value) => !choice.options.includes(value))) errors.push(`a escolha ${choice.label} contém uma opção inválida`);
+        }
+        for (const choice of classChoices) {
+          const values = character.classChoices?.[choice.id] || [];
+          if (values.length !== choice.count) errors.push(`selecione ${choice.count} opção(ões) para ${choice.label}`);
+        }
+      }
       if (systemId === "dnd5e" && progression && "subclassLevel" in progression && character.level >= progression.subclassLevel) {
         const classHasSubclasses = catalog.subclasses.some((entry) => entry.classId === character.classId);
         if (classHasSubclasses && !selectedSubclass) errors.push(`selecione uma subclasse a partir do nível ${progression.subclassLevel}`);
@@ -513,6 +549,22 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         else if (!("repeatable" in feat && feat.repeatable) && quantity !== 1) errors.push(`o poder ${feat.name} não pode ser escolhido mais de uma vez`);
         else if (!Number.isInteger(quantity) || quantity < 1) errors.push("a quantidade de um poder repetível deve ser um número inteiro maior que zero");
         else if (systemId === "t20" && "maxQuantity" in feat && feat.maxQuantity !== undefined && quantity > feat.maxQuantity) errors.push(`o poder ${feat.name} pode ser escolhido no máximo ${feat.maxQuantity} vezes`);
+      }
+      if (systemId === "dnd5e" || systemId === "t20") {
+        const featChoiceCatalog = systemId === "dnd5e" ? DND5E_FEAT_CHOICES : T20_POWER_CHOICES;
+        const selectedFeatIds = new Set(character.featIds || []);
+        const declaredChoices = new Map(Object.entries(featChoiceCatalog).flatMap(([featId, choices]) => selectedFeatIds.has(featId) ? choices.map((choice) => [choice.id, choice] as const) : []));
+        for (const [choiceId, values] of Object.entries(character.featChoices || {})) {
+          const choice = declaredChoices.get(choiceId);
+          if (!choice) errors.push("a escolha de talento só pode ser informada para um talento selecionado");
+          else if (new Set(values).size !== values.length) errors.push(`a escolha ${choice.label} de talento não pode conter opções repetidas`);
+          else if (values.some((value) => !choice.options.includes(value))) errors.push(`a escolha ${choice.label} de talento contém uma opção inválida`);
+          else if (values.length !== choice.count) errors.push(`a escolha ${choice.label} de talento exige exatamente ${choice.count} opção(ões)`);
+        }
+        for (const choice of declaredChoices.values()) {
+          const values = character.featChoices?.[choice.id] || [];
+          if (values.length !== choice.count) errors.push(`a escolha ${choice.label} de talento exige exatamente ${choice.count} opção(ões)`);
+        }
       }
       if (systemId === "t20" && progression && "powerLevels" in progression) {
         const selectedClassPowerCount = (character.featIds || []).reduce((total, featId) => {

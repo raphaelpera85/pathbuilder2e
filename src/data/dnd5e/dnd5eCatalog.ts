@@ -96,15 +96,15 @@ const DND5E_SKILL_ABILITIES: Record<string, Dnd5eCatalogEntry["keyAbility"]> = {
   natureza: "int", percepcao: "wis", persuasao: "cha", prestidigitacao: "dex", religiao: "int", sobrevivencia: "wis",
 };
 const DND5E_SKILL_RULES: Record<string, string> = {
-  acrobacia: "Equilíbrio, manobras e escapar de agarrões.", adestramento: "Acalmar, controlar e interpretar animais.",
-  arcanismo: "Recordar conhecimento sobre magias, planos e fenômenos arcanos.", atletismo: "Escalar, saltar, nadar e superar obstáculos físicos.",
-  atuacao: "Entreter por música, dança, atuação ou oratória.", enganacao: "Mentir, disfarçar-se e enganar por palavras ou atitudes.",
-  furtividade: "Esconder-se e mover-se sem ser percebido.", historia: "Recordar eventos, civilizações, guerras e figuras históricas.",
-  intuicao: "Identificar intenções, emoções e possíveis mentiras.", intimidacao: "Influenciar por ameaças, coerção ou demonstração de força.",
-  investigacao: "Deduzir pistas, procurar detalhes e interpretar evidências.", medicina: "Diagnosticar doenças, estabilizar feridos e tratar lesões.",
-  natureza: "Recordar informações sobre terreno, clima, fauna e flora.", percepcao: "Notar criaturas, objetos, sons e detalhes ocultos.",
-  persuasao: "Convencer, negociar, argumentar e conquistar cooperação.", prestidigitacao: "Truques manuais, esconder objetos e furtar sem ser notado.",
-  religiao: "Recordar divindades, ritos, símbolos e tradições religiosas.", sobrevivencia: "Rastrear, orientar-se, caçar e lidar com o ambiente natural.",
+  acrobacia: "Manter equilíbrio, realizar acrobacias e escapar de agarrões ou restrições.", adestramento: "Acalmar, controlar, conduzir e interpretar as intenções de animais.",
+  arcanismo: "Recordar conhecimento sobre magias, itens mágicos, planos e fenômenos arcanos.", atletismo: "Escalar, saltar, nadar e superar obstáculos físicos usando força e impulso.",
+  atuacao: "Entreter por música, dança, atuação, oratória ou outra forma de apresentação.", enganacao: "Mentir, disfarçar-se, falsificar e enganar por palavras ou atitudes.",
+  furtividade: "Esconder-se e mover-se sem ser percebido; armadura pode impor desvantagem.", historia: "Recordar eventos, civilizações, guerras, figuras históricas e legados culturais.",
+  intuicao: "Identificar intenções, emoções, sinceridade e possíveis mentiras de uma criatura.", intimidacao: "Influenciar por ameaças, coerção, hostilidade ou demonstração de força.",
+  investigacao: "Deduzir pistas, procurar detalhes, encontrar objetos ocultos e interpretar evidências.", medicina: "Diagnosticar doenças, estabilizar feridos e tratar lesões ou condições físicas.",
+  natureza: "Recordar informações sobre terreno, clima, fauna, flora e ciclos naturais.", percepcao: "Notar criaturas, objetos, sons e detalhes ocultos; usada para perceber perigos.",
+  persuasao: "Convencer, negociar, argumentar, barganhar e conquistar cooperação de forma diplomática.", prestidigitacao: "Realizar truques manuais, esconder objetos, plantar itens e furtar sem ser notado.",
+  religiao: "Recordar divindades, ritos, símbolos, cultos e tradições religiosas.", sobrevivencia: "Rastrear, orientar-se, caçar, procurar alimento e lidar com o ambiente natural.",
 };
 
 export const DND5E_RACES: Dnd5eCatalogEntry[] = ([

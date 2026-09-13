@@ -6,6 +6,9 @@ import { DND5E_STANDARD_ARRAY, generateAbilityScores, type AbilityGenerationMeth
 import { DND5E_TOOLS, DND5E_TOOL_CHOICE_GROUPS, getDnd5eToolChoiceEntries, type Dnd5eToolChoiceGroup } from "../data/dnd5e/dnd5eCatalog";
 import { getDnd5eBackgroundToolProficiencies } from "../data/dnd5e/dnd5eBackgrounds";
 import { formatDnd5eSpellDetails } from "../data/dnd5e/dnd5eCompendium";
+import { DND5E_CLASS_CHOICES } from "../data/dnd5e/dnd5eOptions";
+import { DND5E_FEAT_CHOICES } from "../data/dnd5e/dnd5eCompendium";
+import { T20_POWER_CHOICES } from "../data/t20/t20Compendium";
 
 interface CoreCharacterCreatorModalProps {
   isOpen: boolean;
@@ -26,6 +29,7 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
   const modalContentRef = useRef<HTMLElement>(null);
   const [error, setError] = useState<string | null>(null);
   const [generationMethod, setGenerationMethod] = useState<AbilityGenerationMethod>("point_buy");
+  const featChoiceCatalog = system === "dnd5e" ? DND5E_FEAT_CHOICES : T20_POWER_CHOICES;
 
   useEffect(() => {
     if (isOpen) {
@@ -85,6 +89,8 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
       }
       if (key === "classId") {
         next.subclassId = undefined;
+        next.subclassChoices = {};
+        next.classChoices = {};
         if (system === "t20") {
           next.t20ArcanistPath = next.classId === "arcanista" ? (next.t20ArcanistPath || "bruxo") : undefined;
           next.t20SorcererLineage = next.classId === "arcanista" && next.t20ArcanistPath === "feiticeiro" ? (next.t20SorcererLineage || "draconica") : undefined;
@@ -96,10 +102,12 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
           return !feat?.classIds?.length || feat.classIds.includes(next.classId);
         });
         next.featQuantities = Object.fromEntries(Object.entries(next.featQuantities || {}).filter(([featId]) => next.featIds.includes(featId)));
+        next.featChoices = Object.fromEntries(Object.entries(next.featChoices || {}).filter(([choiceId]) => Object.entries(featChoiceCatalog).some(([featId, choices]) => next.featIds.includes(featId) && choices.some((choice) => choice.id === choiceId))));
         const allowedSpellIds = new Set(getAvailableCoreSpells(system, next.classId, next.level, next).map((spell) => spell.id));
         next.spellIds = next.spellIds.filter((spellId) => allowedSpellIds.has(spellId));
         next.preparedSpellIds = next.preparedSpellIds?.filter((spellId) => next.spellIds.includes(spellId));
       }
+      if (key === "subclassId") next.subclassChoices = {};
       if (key === "t20ArcanistPath") {
         next.t20SorcererLineage = value === "feiticeiro" ? (current.t20SorcererLineage || "draconica") : undefined;
         const allowedSpellIds = new Set(getAvailableCoreSpells(system, next.classId, next.level, next).map((spell) => spell.id));
@@ -121,6 +129,7 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
           return !feat?.minimumLevel || next.level >= feat.minimumLevel;
         });
         next.featQuantities = Object.fromEntries(Object.entries(next.featQuantities || {}).filter(([featId]) => next.featIds.includes(featId)));
+        next.featChoices = Object.fromEntries(Object.entries(next.featChoices || {}).filter(([choiceId]) => Object.entries(featChoiceCatalog).some(([featId, choices]) => next.featIds.includes(featId) && choices.some((choice) => choice.id === choiceId))));
         const allowedSpellIds = new Set(getAvailableCoreSpells(system, next.classId, next.level, next).map((spell) => spell.id));
         next.spellIds = next.spellIds.filter((spellId) => allowedSpellIds.has(spellId));
         next.preparedSpellIds = next.preparedSpellIds?.filter((spellId) => next.spellIds.includes(spellId));
@@ -131,6 +140,7 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
           const feat = catalog.feats.find((entry) => entry.id === featId);
           return feat && "repeatable" in feat && feat.repeatable ? [[featId, current.featQuantities?.[featId] || 1]] : [];
         }));
+        next.featChoices = Object.fromEntries(Object.entries(next.featChoices || {}).filter(([choiceId]) => selectedIds.some((featId) => featChoiceCatalog[featId]?.some((choice) => choice.id === choiceId))));
         const allowedSpellIds = new Set(getAvailableCoreSpells(system, next.classId, next.level, next).map((spell) => spell.id));
         next.spellIds = next.spellIds.filter((spellId) => allowedSpellIds.has(spellId));
         next.preparedSpellIds = next.preparedSpellIds?.filter((spellId) => next.spellIds.includes(spellId));
@@ -198,6 +208,9 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
   const availableSubraces = catalog.subraces.filter((entry) => entry.raceId === character.raceId);
   const availableSubclasses = catalog.subclasses.filter((entry) => entry.classId === character.classId);
   const selectedSubclass = availableSubclasses.find((entry) => entry.id === character.subclassId);
+  const availableClassChoices = system === "dnd5e"
+    ? DND5E_CLASS_CHOICES.filter((choice) => choice.classId === character.classId && character.level >= choice.minimumLevel)
+    : [];
   const availableSpells = getAvailableCoreSpells(system, character.classId, character.level, character);
   const availableFeats = getAvailableCoreFeats(system, character.level, character);
   const availableRaceFeats = raceChoiceGroup ? availableFeats.filter((feat) => {
@@ -393,6 +406,23 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
             : <span>{selectedClassRules.hitDie} · atributo-chave {selectedClassRules.primaryAbility} · salvamentos: {selectedClassRules.savingThrows.join(" e ")}</span>}
           {selectedClassRules.startingEquipment?.length ? <small><strong>Equipamento inicial:</strong> {selectedClassRules.startingEquipment.join(" · ")}</small> : null}
         </aside>}
+        {availableClassChoices.map((choice) => {
+          const selected = character.classChoices?.[choice.id] || [];
+          return <fieldset key={choice.id} className="pb-core-class-choice">
+            <legend>{choice.label} ({selected.length}/{choice.count})</legend>
+            <div className="pb-core-choice-grid">
+              {choice.options.map((option) => <label key={option}>
+                <input
+                  type="checkbox"
+                  checked={selected.includes(option)}
+                  disabled={!selected.includes(option) && selected.length >= choice.count}
+                  onChange={(event) => update("classChoices", { ...character.classChoices, [choice.id]: event.target.checked ? [...selected, option] : selected.filter((value) => value !== option) })}
+                />
+                {option}
+              </label>)}
+            </div>
+          </fieldset>;
+        })}
         {selectedDeity?.ruleSummary && <aside className="pb-core-deity-summary" aria-label="Restrição da divindade">
           <strong>{selectedDeity.name}</strong>
           <small>{selectedDeity.ruleSummary}</small>
@@ -401,6 +431,26 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
           <strong>{selectedSubclass.name}</strong>
           <span>Disponível a partir do nível {selectedSubclass.featureLevel} · p. {selectedSubclass.sourcePage}</span>
           <small>{selectedSubclass.summary}</small>
+          {selectedSubclass.features.filter((feature) => feature.level <= character.level).length > 0 && <ul className="pb-core-subclass-features">
+            {selectedSubclass.features.filter((feature) => feature.level <= character.level).map((feature) => <li key={`${feature.level}-${feature.name}`}><strong>Nível {feature.level} · {feature.name}:</strong> {feature.summary}</li>)}
+          </ul>}
+          {selectedSubclass.choices.map((choice) => {
+            const selected = character.subclassChoices?.[choice.id] || [];
+            return <fieldset key={choice.id} className="pb-core-subclass-choice">
+              <legend>{choice.label} ({selected.length}/{choice.count})</legend>
+              <div className="pb-core-choice-grid">
+                {choice.options.map((option) => <label key={option}>
+                  <input
+                    type="checkbox"
+                    checked={selected.includes(option)}
+                    disabled={!selected.includes(option) && selected.length >= choice.count}
+                    onChange={(event) => update("subclassChoices", { ...character.subclassChoices, [choice.id]: event.target.checked ? [...selected, option] : selected.filter((value) => value !== option) })}
+                  />
+                  {option}
+                </label>)}
+              </div>
+            </fieldset>;
+          })}
         </aside>}
         {selectedProgression && <p className="pb-core-progression-summary">
           Nível {character.level}: {currentProgressionFeatures.join(" · ")}{" · "}
@@ -544,6 +594,11 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
                 const consumesClassPower = ("classIds" in feat && feat.classIds?.includes(character.classId)) || ("classPower" in feat && feat.classPower);
                 const maxQuantity = Math.min(feat.maxQuantity || 19, consumesClassPower ? Math.max(1, availableT20ClassPowerSlots - (selectedT20ClassPowerCount - getCoreFeatQuantity(character, feat.id))) : 19);
                 return <small key={`${feat.id}-quantity`} className="pb-core-repeatable-power">{feat.name}<input type="number" min={1} max={maxQuantity} value={character.featQuantities?.[feat.id] || 1} onChange={(event) => update("featQuantities", { ...character.featQuantities, [feat.id]: Number(event.target.value) })} aria-label={`Quantidade de escolhas de ${feat.name}`} /></small>;
+              })}
+              {character.featIds.flatMap((featId) => (featChoiceCatalog[featId] || []).map((choice) => ({ featId, choice }))).map(({ featId, choice }) => {
+                const selected = character.featChoices?.[choice.id] || [];
+                const feat = catalog.feats.find((entry) => entry.id === featId);
+                return <fieldset key={choice.id} className="pb-core-choice-group"><legend>{feat?.name}: {choice.label} ({choice.count})</legend><div className="pb-core-choice-grid">{choice.options.map((option) => <label key={option}><input type="checkbox" checked={selected.includes(option)} disabled={!selected.includes(option) && selected.length >= choice.count} onChange={(event) => update("featChoices", { ...character.featChoices, [choice.id]: event.target.checked ? [...selected, option] : selected.filter((value) => value !== option) })} />{option}</label>)}</div></fieldset>;
               })}
             </label>
           </div>

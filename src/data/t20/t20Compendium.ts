@@ -774,3 +774,25 @@ export const T20_POWERS: T20CompendiumEntry[] = [
   ...T20_EXPANDED_POWERS,
   ...T20_GRANTED_POWERS,
 ];
+
+export interface T20PowerChoice {
+  id: string;
+  label: string;
+  options: readonly string[];
+  count: number;
+}
+
+/** Escolhas explícitas dos poderes T20 com opções definidas no Livro Básico. */
+export const T20_POWER_CHOICES: Record<string, readonly T20PowerChoice[]> = {
+  "t20.poder.aumento_de_atributo": [{ id: "t20-ability-increase", label: "Atributo", options: ["Força", "Destreza", "Constituição", "Inteligência", "Sabedoria", "Carisma"], count: 1 }],
+  "t20.poder.foco_em_arma": [{ id: "t20-weapon-focus", label: "Arma", options: ["Adaga", "Espada curta", "Espada longa", "Machado de guerra", "Montante", "Arco curto", "Besta leve", "Lança", "Maça", "Bordão", "Pique", "Tacape"], count: 1 }],
+  "t20.poder.proficiencia": [{ id: "t20-proficiency", label: "Proficiência", options: ["Armas marciais", "Armas de fogo", "Armaduras pesadas", "Escudos"], count: 1 }],
+  "t20.poder.treinamento_em_pericia": [{ id: "t20-trained-skill", label: "Perícia", options: ["Acrobacia", "Adestramento", "Atletismo", "Atuação", "Cavalgar", "Conhecimento", "Cura", "Diplomacia", "Enganação", "Furtividade", "Guerra", "Iniciativa", "Intimidação", "Intuição", "Investigação", "Ladinagem", "Luta", "Misticismo", "Nobreza", "Percepção", "Pontaria", "Religião", "Sobrevivência", "Vontade", "Ofício"], count: 1 }],
+  "t20.poder.inimigo_de_criatura": [{ id: "t20-favored-enemy", label: "Inimigo favorecido", options: ["Aberração", "Animal", "Construto", "Espírito", "Fada", "Humanoide", "Monstro", "Morto-vivo", "Planta", "Linhagem ou raça humanoide"], count: 1 }],
+  "t20.poder.forma_selvagem": [{ id: "t20-wild-shape", label: "Forma animal", options: ["Arapuca", "Cão", "Cavalo", "Gato", "Lobo", "Morcego", "Rato", "Sapo", "Serpente", "Urso"], count: 1 }],
+  "t20.poder.especialista_em_escola": [{ id: "t20-magic-school", label: "Escola de magia", options: ["Abjuração", "Adivinhação", "Convocação", "Encantamento", "Evocação", "Ilusão", "Necromancia", "Transmutação"], count: 1 }],
+  "t20.poder.familiar": [{ id: "t20-familiar-benefit", label: "Benefício do familiar", options: ["Arapuca", "Coruja", "Gato", "Morcego", "Rato", "Sapo", "Serpente", "Víbora"], count: 1 }],
+  "t20.poder.orar": [{ id: "t20-prayer-spell", label: "Magia divina de 1º círculo", options: ["Abençoar Alimentos", "Arma Espiritual", "Curar Ferimentos", "Escudo da Fé", "Luz", "Orientação", "Santuário"], count: 1 }],
+  "t20.poder.conhecimento_magico": [{ id: "t20-known-spells", label: "Magias aprendidas", options: ["Amedrontar", "Arma Mágica", "Bola de Fogo", "Curar Ferimentos", "Dissipar Magia", "Escudo da Fé", "Luz", "Queda Suave"], count: 2 }],
+  "t20.poder.conhecimento_de_formulas": [{ id: "t20-formulas", label: "Fórmulas", options: ["Poção de Cura", "Poção de Força", "Bomba de Fogo", "Bomba de Gelo", "Antídoto", "Elixir de Resistência"], count: 3 }],
+};

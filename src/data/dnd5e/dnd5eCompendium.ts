@@ -4,6 +4,13 @@ export interface Dnd5eFeatPrerequisite {
   requiresProficiency?: "light_armor" | "medium_armor" | "heavy_armor";
 }
 
+export interface Dnd5eFeatChoice {
+  id: string;
+  label: string;
+  options: readonly string[];
+  count: number;
+}
+
 export interface Dnd5eCompendiumEntry { id: string; name: string; sourcePage: number; category: "arma" | "armadura" | "equipamento" | "magia" | "talento"; summary: string; spellLevel?: number; classIds?: string[]; castingTime?: string; range?: string; components?: string; duration?: string; concentration?: boolean; ritual?: boolean; savingThrow?: string; proficiency?: "simple_weapon" | "martial_weapon" | "light_armor" | "medium_armor" | "heavy_armor" | "shield"; armorClass?: number; armorBonus?: number; armorPenalty?: number; dexterityCap?: number; requiresStrength?: number; shieldBonus?: number; attackAbility?: "str" | "dex"; damage?: string; weight?: number; cost?: string; armorMaterial?: "metal" | "non_metal"; armorWeightClass?: "light" | "heavy"; minimumLevel?: number; prerequisite?: Dnd5eFeatPrerequisite; }
 
 export const DND5E_EQUIPMENT: Dnd5eCompendiumEntry[] = [
@@ -365,6 +372,39 @@ const DND5E_FEAT_EFFECT_SUMMARIES: Record<string, string> = {
   brigao_de_taverna: "+1 Força ou Constituição; proficiência com armas improvisadas; ataque desarmado d4; agarrar como ação bônus após acertar.",
   resistente: "+2 PV máximos por nível.",
   mago_de_guerra: "Vantagem em concentração; conjura componente somático com mãos ocupadas; pode conjurar magia como ataque de oportunidade.",
+};
+
+/** Escolhas explícitas dos talentos que não podem ser inferidas automaticamente. */
+export const DND5E_FEAT_CHOICES: Record<string, readonly Dnd5eFeatChoice[]> = {
+  "dnd5e.talento.atleta": [{ id: "atleta-ability", label: "Aumento de atributo", options: ["Força", "Destreza"], count: 1 }],
+  "dnd5e.talento.ator": [{ id: "ator-ability", label: "Aumento de atributo", options: ["Carisma"], count: 1 }],
+  "dnd5e.talento.brigao_de_taverna": [{ id: "briga-ability", label: "Aumento de atributo", options: ["Força", "Constituição"], count: 1 }],
+  "dnd5e.talento.duravel": [{ id: "duravel-ability", label: "Aumento de atributo", options: ["Constituição"], count: 1 }],
+  "dnd5e.talento.adepto_elemental": [{ id: "elemental-damage", label: "Tipo de dano", options: ["Ácido", "Frio", "Fogo", "Elétrico", "Trovão"], count: 1 }],
+  "dnd5e.talento.fortemente_blindado": [{ id: "heavy-armor-ability", label: "Aumento de atributo", options: ["Força"], count: 1 }],
+  "dnd5e.talento.lider_inspirador": [{ id: "inspiring-leader-ability", label: "Aumento de atributo", options: ["Carisma"], count: 1 }],
+  "dnd5e.talento.mente_aguçada": [{ id: "keen-mind-ability", label: "Aumento de atributo", options: ["Inteligência"], count: 1 }],
+  "dnd5e.talento.levemente_blindado": [{ id: "light-armor-ability", label: "Aumento de atributo", options: ["Força", "Destreza"], count: 1 }],
+  "dnd5e.talento.mestre_de_armadura_media": [{ id: "medium-armor-ability", label: "Aumento de atributo", options: ["Força", "Destreza"], count: 1 }],
+  "dnd5e.talento.moderadamente_blindado": [{ id: "moderate-armor-ability", label: "Aumento de atributo", options: ["Força", "Destreza"], count: 1 }],
+  "dnd5e.talento.observador": [{ id: "observant-ability", label: "Aumento de atributo", options: ["Inteligência", "Sabedoria"], count: 1 }],
+  "dnd5e.talento.resiliente": [{ id: "resilient-ability", label: "Atributo do salvamento", options: ["Força", "Destreza", "Constituição", "Inteligência", "Sabedoria", "Carisma"], count: 1 }],
+  "dnd5e.talento.linguista": [
+    { id: "linguist-ability", label: "Aumento de atributo", options: ["Inteligência"], count: 1 },
+    { id: "linguist-languages", label: "Idiomas adicionais", options: ["Anão", "Celestial", "Comum", "Dracônico", "Élfico", "Gigante", "Gnômico", "Goblin", "Halfling", "Infernal", "Orc", "Primordial", "Silvestre", "Subcomum"], count: 3 },
+  ],
+  "dnd5e.talento.mestre_de_armas": [{ id: "weapon-master-weapons", label: "Armas escolhidas", options: ["Adaga", "Espada curta", "Espada longa", "Rapieira", "Machado de batalha", "Machado grande", "Arco longo", "Besta leve", "Martelo de guerra", "Mangual", "Glaive", "Alabarda"], count: 4 }],
+  "dnd5e.talento.habilidoso": [{ id: "skilled-proficiencies", label: "Perícias ou ferramentas", options: ["Acrobacia", "Adestramento", "Arcanismo", "Atletismo", "Atuação", "Enganação", "Furtividade", "História", "Intuição", "Intimidação", "Investigação", "Medicina", "Natureza", "Percepção", "Persuasão", "Prestidigitação", "Religião", "Sobrevivência", "Ferramentas de ladrão", "Ferramentas de ferreiro", "Ferramentas de carpinteiro", "Ferramentas de alquimista", "Kit de disfarce", "Kit de falsificação", "Instrumento musical", "Kit de herbalismo"], count: 3 }],
+  "dnd5e.talento.adepto_marcial": [{ id: "martial-adept-maneuvers", label: "Manobras", options: ["Ataque ameaçador", "Ataque de precisão", "Ataque de provocação", "Ataque para desarmar", "Ataque rasante", "Contra-ataque", "Derrubar", "Golpe de distração", "Investida", "Liderança", "Manobra de evasão", "Parada", "Reagrupar", "Troca de posição", "Ataque de empurrão", "Aparar"], count: 2 }],
+  "dnd5e.talento.iniciado_em_magia": [
+    { id: "magic-initiate-class", label: "Classe da magia", options: ["Bardo", "Clérigo", "Druida", "Feiticeiro", "Mago", "Bruxo"], count: 1 },
+    { id: "magic-initiate-cantrips", label: "Truques", options: ["Amizade", "Ataque Certeiro", "Consertar", "Globos de Luz", "Ilusão Menor", "Mãos Mágicas", "Mensagem", "Prestidigitação", "Raio de Fogo", "Raio de Gelo", "Toque Arrepiante", "Luz"], count: 2 },
+    { id: "magic-initiate-spell", label: "Magia de 1º nível", options: ["Alarme", "Armadura de Agathys", "Compreender Idiomas", "Detectar Magia", "Enfeitiçar Pessoa", "Queda Suave", "Servo Invisível", "Vitalidade Falsa"], count: 1 },
+  ],
+  "dnd5e.talento.conjurador_de_rituais": [
+    { id: "ritual-caster-class", label: "Classe do livro ritualístico", options: ["Bardo", "Clérigo", "Druida", "Feiticeiro", "Mago", "Bruxo"], count: 1 },
+    { id: "ritual-caster-spells", label: "Rituais de 1º nível", options: ["Alarme", "Compreender Idiomas", "Detectar Magia", "Queda Suave", "Servo Invisível"], count: 2 },
+  ],
 };
 
 export const DND5E_FEATS: Dnd5eCompendiumEntry[] = [

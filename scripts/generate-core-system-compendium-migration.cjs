@@ -10,10 +10,14 @@ const t20PowerMetadataOutput = path.join(root, "supabase/migrations/202609130006
 const t20GrantedMetadataOutput = path.join(root, "supabase/migrations/202609130007_refresh_t20_granted_tormenta_summaries.sql");
 const t20CatalogCleanupOutput = path.join(root, "supabase/migrations/202609130008_reconcile_t20_core_power_catalog.sql");
 const t20SpellMetadataOutput = path.join(root, "supabase/migrations/202609130009_refresh_t20_spell_effect_summaries.sql");
+const dnd5eFeatChoicesOutput = path.join(root, "supabase/migrations/202609130010_refresh_dnd5e_feat_choices.sql");
+const t20PowerChoicesOutput = path.join(root, "supabase/migrations/202609130011_refresh_t20_power_choices.sql");
 
 function loadExports(relativePath) {
   let source = fs.readFileSync(path.join(root, relativePath), "utf8");
   source = source.replace(/export interface Dnd5eFeatPrerequisite\s*\{[\s\S]*?\n\}/m, "")
+    .replace(/export interface Dnd5eFeatChoice\s*\{[\s\S]*?\n\}/m, "")
+    .replace(/export interface T20PowerChoice\s*\{[\s\S]*?\n\}/m, "")
     .replace(/^export interface[^\n]*\n/gm, "")
     .replace(/export const /g, "const ")
     .replace(/: (?:T20CompendiumEntry|Dnd5eCompendiumEntry)\[\]/g, "")
@@ -21,11 +25,13 @@ function loadExports(relativePath) {
     .replace(/ as Record<string, Pick<Dnd5eCompendiumEntry, [^;]+>>/g, "")
     .replace(/export function formatDnd5eSpellDetails[\s\S]*?^\}/m, "")
     .replace(/: Record<string, string>/g, "")
+    .replace(/: Record<string, readonly Dnd5eFeatChoice\[\]>/g, "")
+    .replace(/: Record<string, readonly T20PowerChoice\[\]>/g, "")
     .replace(/: Record<string, Dnd5eFeatPrerequisite \| undefined>/g, "")
     .replace(/ as (?:T20CompendiumEntry\[\]|const)/g, "");
   const exportedNames = relativePath.includes("t20")
-    ? ["T20_EQUIPMENT", "T20_SPELLS", "T20_POWERS"]
-    : ["DND5E_EQUIPMENT", "DND5E_SPELLS", "DND5E_FEATS"];
+    ? ["T20_EQUIPMENT", "T20_SPELLS", "T20_POWERS", "T20_POWER_CHOICES"]
+    : ["DND5E_EQUIPMENT", "DND5E_SPELLS", "DND5E_FEATS", "DND5E_FEAT_CHOICES"];
   const javascript = `${source}\nmodule.exports = { ${exportedNames.join(", ")} };`;
   const module = { exports: {} };
   vm.runInNewContext(javascript, { module, exports: module.exports, console });
@@ -54,8 +60,11 @@ function spellRows(system, ruleset, sourceBook, entries) {
   return entries.map((entry) => `(${sql(entry.id)},${sql(entry.name)},${sql(entry.spellLevel || 0)},${entry.spellLevel === 0 ? "TRUE" : "FALSE"},FALSE,${sql(ruleset)},${sql(sourceBook)},${sql(entry.sourcePage)},${sql(entry)},${sql(system)})`);
 }
 
-function featRows(system, ruleset, sourceBook, entries) {
-  return entries.map((entry) => `(${sql(entry.id)},${sql(system === "t20" ? "general" : "general")},${sql(entry.minimumLevel || 1)},${sql(entry.name)},${sql(ruleset)},${sql(sourceBook)},${sql(entry.sourcePage)},${sql(entry)},${sql(system)})`);
+function featRows(system, ruleset, sourceBook, entries, choiceMap) {
+  return entries.map((entry) => {
+    const data = choiceMap?.[entry.id] ? { ...entry, choices: choiceMap[entry.id] } : entry;
+    return `(${sql(entry.id)},${sql(system === "t20" ? "general" : "general")},${sql(entry.minimumLevel || 1)},${sql(entry.name)},${sql(ruleset)},${sql(sourceBook)},${sql(entry.sourcePage)},${sql(data)},${sql(system)})`;
+  });
 }
 
 const allItems = [
@@ -67,8 +76,8 @@ const allSpells = [
   ...spellRows("dnd5e", "standard", "D&D 5e — Livro do Jogador (2014)", dnd5e.DND5E_SPELLS),
 ];
 const allFeats = [
-  ...featRows("t20", "padrao", "Tormenta20 — Livro Básico", t20.T20_POWERS),
-  ...featRows("dnd5e", "standard", "D&D 5e — Livro do Jogador (2014)", dnd5e.DND5E_FEATS),
+  ...featRows("t20", "padrao", "Tormenta20 — Livro Básico", t20.T20_POWERS, t20.T20_POWER_CHOICES),
+  ...featRows("dnd5e", "standard", "D&D 5e — Livro do Jogador (2014)", dnd5e.DND5E_FEATS, dnd5e.DND5E_FEAT_CHOICES),
 ];
 
 const onConflict = (columns) => `on conflict (id) do update set ${columns.map((column) => `${column}=excluded.${column}`).join(",")},updated_at=now();`;
@@ -130,4 +139,18 @@ ${spellRows("t20", "padrao", "Tormenta20 — Livro Básico", t20SpellSummaryEntr
 ${onConflict(["name_pt","rank","is_cantrip","is_focus","ruleset","source_book","source_page","data","system_id"])}
 `;
 fs.writeFileSync(t20SpellMetadataOutput, t20SpellMetadataSql, "utf8");
+const dnd5eFeatChoiceEntries = dnd5e.DND5E_FEATS.filter((entry) => dnd5e.DND5E_FEAT_CHOICES[entry.id]);
+const dnd5eFeatChoicesSql = `-- Refresh idempotente das escolhas estruturadas dos talentos D&D 5e.
+insert into public.catalog_feats (id,feat_type,level,name_pt,ruleset,source_book,source_page,data,system_id) values
+${featRows("dnd5e", "standard", "D&D 5e — Livro do Jogador (2014)", dnd5eFeatChoiceEntries, dnd5e.DND5E_FEAT_CHOICES).join(",\n")}
+${onConflict(["feat_type","level","name_pt","ruleset","source_book","source_page","data","system_id"])}
+`;
+fs.writeFileSync(dnd5eFeatChoicesOutput, dnd5eFeatChoicesSql, "utf8");
+const t20PowerChoiceEntries = t20.T20_POWERS.filter((entry) => t20.T20_POWER_CHOICES[entry.id]);
+const t20PowerChoicesSql = `-- Refresh idempotente das escolhas estruturadas dos poderes T20.
+insert into public.catalog_feats (id,feat_type,level,name_pt,ruleset,source_book,source_page,data,system_id) values
+${featRows("t20", "padrao", "Tormenta20 — Livro Básico", t20PowerChoiceEntries, t20.T20_POWER_CHOICES).join(",\n")}
+${onConflict(["feat_type","level","name_pt","ruleset","source_book","source_page","data","system_id"])}
+`;
+fs.writeFileSync(t20PowerChoicesOutput, t20PowerChoicesSql, "utf8");
 console.log(JSON.stringify({ output, spellMetadataOutput, featMetadataOutput, t20PowerMetadataOutput, t20GrantedMetadataOutput, t20CatalogCleanupOutput, t20SpellMetadataOutput, items: allItems.length, spells: allSpells.length, feats: allFeats.length, t20GeneralPowers: t20GeneralPowers.length, t20GrantedAndTormentaPowers: t20GrantedAndTormentaPowers.length, t20SpellSummaryEntries: t20SpellSummaryEntries.length }, null, 2));

@@ -192,4 +192,70 @@ describe("character cloud contract", () => {
       notes: "snapshot de integração",
     });
   });
+
+  it("preserva escolhas internas de subclasse D&D 5e no round-trip local", async () => {
+    const user = { id: "user-subclass-choice" } as never;
+    const character = {
+      id: "battle-master",
+      name: "Mestre de Batalha",
+      level: 3,
+      system_id: "dnd5e",
+      systemId: "dnd5e",
+      ruleset: "standard",
+      raceId: "humano",
+      classId: "guerreiro",
+      subclassId: "guerreiro_mestre_batalha",
+      subclassChoices: { "battle-master-maneuvers": ["Aparar", "Contra-ataque", "Ataque de Precisão"] },
+      equipmentIds: [],
+      spellIds: [],
+      notes: "escolhas da subclasse",
+    };
+    await saveCharacter(character, user);
+    const reloaded = (await listCharacters(user, { systemId: "dnd5e" }))[0];
+    expect(reloaded.data).toMatchObject({
+      subclassId: "guerreiro_mestre_batalha",
+      subclassChoices: { "battle-master-maneuvers": ["Aparar", "Contra-ataque", "Ataque de Precisão"] },
+    });
+  });
+
+  it("preserva escolhas estruturais da classe D&D 5e no round-trip local", async () => {
+    const user = { id: "user-class-choice" } as never;
+    await saveCharacter({
+      id: "sorcerer-metamagic",
+      name: "Feiticeira",
+      level: 3,
+      system_id: "dnd5e",
+      systemId: "dnd5e",
+      ruleset: "standard",
+      raceId: "humano",
+      classId: "feiticeiro",
+      classChoices: { "sorcerer-metamagic": ["Magia Sutil", "Magia Acelerada"] },
+      equipmentIds: [],
+      spellIds: [],
+      notes: "metamagia",
+    }, user);
+    const reloaded = (await listCharacters(user, { systemId: "dnd5e" }))[0];
+    expect(reloaded.data.classChoices).toEqual({ "sorcerer-metamagic": ["Magia Sutil", "Magia Acelerada"] });
+  });
+
+  it("preserva escolhas internas de talento D&D 5e no round-trip local", async () => {
+    const user = { id: "user-feat-choice" } as never;
+    await saveCharacter({
+      id: "resiliente",
+      name: "Guardião Resiliente",
+      level: 4,
+      system_id: "dnd5e",
+      systemId: "dnd5e",
+      ruleset: "standard",
+      raceId: "humano",
+      classId: "guerreiro",
+      featIds: ["dnd5e.talento.resiliente"],
+      featChoices: { "resilient-ability": ["Sabedoria"] },
+      equipmentIds: [],
+      spellIds: [],
+      notes: "escolha do talento",
+    }, user);
+    const reloaded = (await listCharacters(user, { systemId: "dnd5e" }))[0];
+    expect(reloaded.data.featChoices).toEqual({ "resilient-ability": ["Sabedoria"] });
+  });
 });

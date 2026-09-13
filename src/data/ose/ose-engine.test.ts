@@ -9,6 +9,7 @@ import {
   getOseMovementByLoad,
   getOseSecondarySkillByRoll,
   OSE_ALIGNMENTS,
+  getOseSpellSlotCount,
 } from "./oseRules";
 import { OSE_RACES } from "./oseRaces";
 import { OSE_CLASSES } from "./oseClasses";
@@ -113,6 +114,13 @@ describe("Old-School Essentials (OSE) - Engine de Regras", () => {
   });
 
   describe("Catálogo de Raças e Classes OSE", () => {
+    it("limita os espaços de magia pela progressão do círculo", () => {
+      expect(getOseSpellSlotCount(OSE_CLASSES.mago.progression, 1)).toBe(1);
+      expect(getOseSpellSlotCount(OSE_CLASSES.clerigo.progression, 3)).toBe(2);
+      expect(getOseSpellSlotCount(OSE_CLASSES.guerreiro.progression, 1)).toBe(0);
+      expect(getOseSpellSlotCount(OSE_CLASSES.mago.progression, 3, 2)).toBe(1);
+    });
+
     it("contém as 10 raças completas com requisitos e idiomas", () => {
       expect(Object.keys(OSE_RACES).length).toBe(10);
       expect(OSE_RACES.humano.nativeLanguages).toContain("Comum");

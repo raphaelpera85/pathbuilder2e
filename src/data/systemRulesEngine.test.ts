@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { abilityModifier, proficiencyBonus } from "./multiSystemCharacter";
 import { DND5E_RULES_ENGINE, T20_RULES_ENGINE, getSystemRulesEngine } from "./systemRulesEngine";
+import { DND5E_CLASS_PROGRESSIONS } from "./dnd5e/dnd5eProgressions";
 
 describe("system rules engines", () => {
   it("keeps creation steps and rulesets separate", () => {
@@ -268,6 +269,45 @@ describe("system rules engines", () => {
       expect.objectContaining({ name: "Cura pelas Mãos" }),
       expect.objectContaining({ name: "Aura Sagrada" }),
     ]));
+  });
+
+  it("não deixa características nucleares de D&D 5e com descrição genérica", () => {
+    for (const progression of DND5E_CLASS_PROGRESSIONS) {
+      const character = DND5E_RULES_ENGINE.createDefaultCharacter();
+      character.classId = progression.classId;
+      character.level = 20;
+      const features = DND5E_RULES_ENGINE.deriveStats(character).classFeatures;
+      expect(features.length, progression.classId).toBeGreaterThan(0);
+      const genericFeatures = features.filter((feature) => feature.description.startsWith("Característica de classe disponível")).map((feature) => feature.name);
+      expect(genericFeatures, progression.classId).toEqual([]);
+    }
+  });
+
+  it("valida escolhas internas de subclasses D&D 5e", () => {
+    const character = DND5E_RULES_ENGINE.createDefaultCharacter();
+    character.level = 3;
+    character.classId = "barbaro";
+    character.subclassId = "barbaro_totem";
+    expect(DND5E_RULES_ENGINE.validateCharacter(character)).toContain("selecione 1 opção(ões) para Espírito Totêmico");
+    character.subclassChoices = { "totem-spirit": ["Urso"] };
+    expect(DND5E_RULES_ENGINE.validateCharacter(character)).not.toContain("selecione 1 opção(ões) para Espírito Totêmico");
+    character.subclassChoices = { "totem-spirit": ["Opção inexistente"] };
+    expect(DND5E_RULES_ENGINE.validateCharacter(character)).toContain("a escolha Espírito Totêmico contém uma opção inválida");
+  });
+
+  it("valida escolhas de classe D&D 5e por nível", () => {
+    const fighter = DND5E_RULES_ENGINE.createDefaultCharacter();
+    fighter.classId = "guerreiro";
+    expect(DND5E_RULES_ENGINE.validateCharacter(fighter)).toContain("selecione 1 opção(ões) para Estilo de Luta");
+    fighter.classChoices = { "fighter-fighting-style": ["Defesa"] };
+    expect(DND5E_RULES_ENGINE.validateCharacter(fighter)).not.toContain("selecione 1 opção(ões) para Estilo de Luta");
+
+    const sorcerer = DND5E_RULES_ENGINE.createDefaultCharacter();
+    sorcerer.classId = "feiticeiro";
+    sorcerer.level = 3;
+    expect(DND5E_RULES_ENGINE.validateCharacter(sorcerer)).toContain("selecione 2 opção(ões) para Metamagia");
+    sorcerer.classChoices = { "sorcerer-metamagic": ["Magia Sutil", "Magia Acelerada"] };
+    expect(DND5E_RULES_ENGINE.validateCharacter(sorcerer)).not.toContain("selecione 2 opção(ões) para Metamagia");
   });
 
   it("rejects missing required trained skills", () => {
@@ -745,6 +785,27 @@ describe("system rules engines", () => {
     expect(DND5E_RULES_ENGINE.validateCharacter(character)).not.toContain("o talento Atleta exige STR 13");
     character.featIds = ["dnd5e.talento.mago_de_guerra"];
     expect(DND5E_RULES_ENGINE.validateCharacter(character)).toContain("o talento Mago de Guerra exige a característica de conjuração");
+  });
+
+  it("requires valid internal choices for D&D feats", () => {
+    const character = DND5E_RULES_ENGINE.createDefaultCharacter();
+    character.level = 4;
+    character.featIds = ["dnd5e.talento.resiliente"];
+    expect(DND5E_RULES_ENGINE.validateCharacter(character).some((error) => error.includes("escolha Atributo do salvamento"))).toBe(true);
+    character.featChoices = { "resilient-ability": ["Sabedoria"] };
+    expect(DND5E_RULES_ENGINE.validateCharacter(character).some((error) => error.includes("escolha de talento"))).toBe(false);
+    character.featChoices = { "resilient-ability": ["Arcano"] };
+    expect(DND5E_RULES_ENGINE.validateCharacter(character)).toContain("a escolha Atributo do salvamento de talento contém uma opção inválida");
+  });
+
+  it("requires valid internal choices for T20 powers", () => {
+    const character = T20_RULES_ENGINE.createDefaultCharacter();
+    character.featIds = ["t20.poder.foco_em_arma"];
+    expect(T20_RULES_ENGINE.validateCharacter(character)).toContain("a escolha Arma de talento exige exatamente 1 opção(ões)");
+    character.featChoices = { "t20-weapon-focus": ["Espada longa"] };
+    expect(T20_RULES_ENGINE.validateCharacter(character)).not.toContain("a escolha Arma de talento exige exatamente 1 opção(ões)");
+    character.featChoices = { "t20-weapon-focus": ["Arma inexistente"] };
+    expect(T20_RULES_ENGINE.validateCharacter(character)).toContain("a escolha Arma de talento contém uma opção inválida");
   });
 
   it("rejects a trained skill outside the class choices", () => {

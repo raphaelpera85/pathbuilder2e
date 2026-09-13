@@ -98,6 +98,10 @@ export interface MultiSystemCharacter {
   raceChoiceMode?: "skills" | "skill_and_feat";
   raceFeatChoice?: string;
   subclassId?: string;
+  /** Escolhas internas da subclasse D&D 5e, indexadas pelo identificador do grupo. */
+  subclassChoices?: Record<string, string[]>;
+  /** Escolhas de classe D&D 5e, como estilo de luta, metamagia e dádiva do pacto. */
+  classChoices?: Record<string, string[]>;
   backgroundId?: string;
   toolProficiencies?: string[];
   languages?: string[];
@@ -116,6 +120,8 @@ export interface MultiSystemCharacter {
   featIds: string[];
   /** Quantidade de escolhas de poderes repetíveis; ausente equivale a uma escolha. */
   featQuantities?: Record<string, number>;
+  /** Escolhas internas de talentos D&D 5e, indexadas pelo grupo do talento. */
+  featChoices?: Record<string, string[]>;
   coins?: CoreCoins;
   notes: string;
   /** Regra nativa de D&D 5e; T20 mantém o valor para compatibilidade, mas não o aplica. */

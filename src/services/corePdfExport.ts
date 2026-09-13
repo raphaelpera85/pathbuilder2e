@@ -1,6 +1,8 @@
 import { PDFDocument, StandardFonts, rgb, type PDFPage, type PDFFont } from "pdf-lib";
 import { getCoreCatalog, T20_DEITIES, type MultiSystemCharacter, type SupportedCoreSystem } from "../data/multiSystemCharacter";
 import { getSystemRulesEngine } from "../data/systemRulesEngine";
+import { DND5E_FEAT_CHOICES } from "../data/dnd5e/dnd5eCompendium";
+import { T20_POWER_CHOICES } from "../data/t20/t20Compendium";
 
 type Form = ReturnType<PDFDocument["getForm"]>;
 
@@ -27,6 +29,16 @@ function formatCoreCoins(character: MultiSystemCharacter): string {
   return character.system_id === "t20"
     ? `${coins.tibar || 0} Tibar`
     : `PC ${coins.cp || 0} · PP ${coins.sp || 0} · PO ${coins.gp || 0} · PL ${coins.pp || 0}`;
+}
+
+function listFeatNames(character: MultiSystemCharacter, catalog: ReturnType<typeof getCoreCatalog>): string {
+  const names = listNames(catalog.feats, character.featIds || [], character.featQuantities);
+  const choiceCatalog = character.system_id === "dnd5e" ? DND5E_FEAT_CHOICES : T20_POWER_CHOICES;
+  const choices = (character.featIds || []).flatMap((featId) => (choiceCatalog[featId] || []).map((choice) => {
+    const values = character.featChoices?.[choice.id] || [];
+    return values.length ? `${choice.label}: ${values.join(", ")}` : "";
+  })).filter(Boolean);
+  return [names, choices.join(" · ")].filter(Boolean).join(" · ");
 }
 
 export async function createCoreEditablePdf(character: MultiSystemCharacter): Promise<Uint8Array> {
@@ -88,7 +100,7 @@ export async function createCoreEditablePdf(character: MultiSystemCharacter): Pr
 
   label(page, bold, "EQUIPAMENTO", 36, 515); textField(form, page, "character.equipment", listNames(catalog.equipment, character.equipmentIds || [], character.equipmentQuantities), 36, 463, 522, 42, 8);
   label(page, bold, "MAGIAS", 36, 438); textField(form, page, "character.spells", listNames(catalog.spells, character.spellIds || []), 36, 386, 522, 42, 8);
-  label(page, bold, system === "t20" ? "PODERES" : "TALENTOS", 36, 361); textField(form, page, "character.feats", listNames(catalog.feats, character.featIds || [], character.featQuantities), 36, 309, 522, 42, 8);
+  label(page, bold, system === "t20" ? "PODERES" : "TALENTOS", 36, 361); textField(form, page, "character.feats", listFeatNames(character, catalog), 36, 309, 522, 42, 8);
   label(page, bold, "NOTAS", 36, 284); textField(form, page, "character.notes", character.notes, 36, 60, 522, 214, 8);
 
   form.updateFieldAppearances(font);

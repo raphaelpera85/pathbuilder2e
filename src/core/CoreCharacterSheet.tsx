@@ -3,6 +3,9 @@ import { DND5E_ALIGNMENTS, DND5E_LANGUAGES, T20_DEITIES, getCoreCatalog, getCore
 import { getDnd5eBackgroundToolProficiencies } from "../data/dnd5e/dnd5eBackgrounds";
 import { getDnd5eToolChoiceEntries } from "../data/dnd5e/dnd5eCatalog";
 import { formatDnd5eSpellDetails } from "../data/dnd5e/dnd5eCompendium";
+import { DND5E_CLASS_CHOICES } from "../data/dnd5e/dnd5eOptions";
+import { DND5E_FEAT_CHOICES } from "../data/dnd5e/dnd5eCompendium";
+import { T20_POWER_CHOICES } from "../data/t20/t20Compendium";
 import { getSystemRulesEngine } from "../data/systemRulesEngine";
 import { createCoreEditablePdf, downloadCoreEditablePdf } from "../services/corePdfExport";
 
@@ -29,6 +32,8 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
   const className = catalog.classes.find((entry) => entry.id === draft.classId)?.name || draft.classId;
   const subclass = catalog.subclasses.find((entry) => entry.id === draft.subclassId)?.name;
   const selectedSubclass = catalog.subclasses.find((entry) => entry.id === draft.subclassId);
+  const selectedClassChoices = system === "dnd5e" ? DND5E_CLASS_CHOICES.filter((choice) => choice.classId === draft.classId && draft.level >= choice.minimumLevel) : [];
+  const selectedFeatChoices = draft.featIds.flatMap((featId) => ((system === "dnd5e" ? DND5E_FEAT_CHOICES : T20_POWER_CHOICES)[featId] || []).map((choice) => ({ featId, choice })));
   const deity = T20_DEITIES.find((entry) => entry.id === draft.deity || entry.name === draft.deity)?.name;
   const classRules = catalog.classRules.find((entry) => entry.id === draft.classId);
   const raceRules = catalog.raceRules.find((entry) => entry.id === draft.raceId);
@@ -142,9 +147,17 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
             : `${classRules.hitDie} · atributo-chave ${classRules.primaryAbility} · salvamentos: ${classRules.savingThrows.join(" e ")}`}
           {classRules.startingEquipment?.length ? <><br /><small>Equipamento inicial: {classRules.startingEquipment.join(" · ")}</small></> : null}
         </p>}
-        {selectedSubclass && <p className="pb-core-subclass-summary">
+        {selectedClassChoices.map((choice) => <p key={choice.id} className="pb-core-class-summary"><strong>{choice.label}:</strong> {(draft.classChoices?.[choice.id] || []).join(" · ") || "não selecionado"}</p>)}
+        {selectedSubclass && <div className="pb-core-subclass-summary">
           <strong>{selectedSubclass.name}</strong>{" · "}nível {selectedSubclass.featureLevel}{" · "}p. {selectedSubclass.sourcePage}{" · "}{selectedSubclass.summary}
-        </p>}
+          {selectedSubclass.features.filter((feature) => feature.level <= draft.level).length > 0 && <ul className="pb-core-subclass-features">
+            {selectedSubclass.features.filter((feature) => feature.level <= draft.level).map((feature) => <li key={`${feature.level}-${feature.name}`}><strong>Nível {feature.level} · {feature.name}:</strong> {feature.summary}</li>)}
+          </ul>}
+          {selectedSubclass.choices.map((choice) => {
+            const selected = draft.subclassChoices?.[choice.id] || [];
+            return <small key={choice.id} className="pb-core-subclass-choice-readonly"><strong>{choice.label}:</strong> {selected.join(" · ") || "não selecionado"}</small>;
+          })}
+        </div>}
         {derived.classResources.length > 0 && <div className="pb-core-resource-strip" aria-label="Recursos de classe">
           {derived.classResources.map((resource) => <div key={resource.name}><strong>{resource.name}</strong><b>{resource.value}</b><small>{resource.description}</small></div>)}
         </div>}
@@ -175,6 +188,7 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
           <section><h3>Equipamento</h3>{selectedEquipment.length ? <div className="pb-core-sheet-equipment-list">{selectedEquipment.map((entry) => <label key={entry.id}><span>{entry.name}<small>{entry.cost ? ` · ${entry.cost}` : entry.weight !== undefined ? ` · ${entry.weight} lb` : ""}</small></span><input type="number" min={1} step={1} value={getCoreEquipmentQuantity(draft, entry.id)} onChange={(event) => updateEquipmentQuantity(entry.id, Number(event.target.value))} aria-label={`Quantidade de ${entry.name}`} /></label>)}</div> : <p>Nenhum selecionado</p>}</section>
           <section><h3>Magias</h3><p>{selectedSpells.length ? selectedSpells.map((entry) => `${entry.name} (${formatDnd5eSpellDetails(entry)})`).join(" · ") : "Nenhuma selecionada"}</p></section>
           <section><h3>{system === "t20" ? "Poderes" : "Talentos"}</h3><p>{selectedFeats.length ? selectedFeats.map((entry) => `${entry.name}${getCoreFeatQuantity(draft, entry.id) > 1 ? ` ×${getCoreFeatQuantity(draft, entry.id)}` : ""}`).join(" · ") : "Nenhum selecionado"}</p></section>
+          {selectedFeatChoices.length > 0 && <section><h3>Escolhas dos talentos</h3><p>{selectedFeatChoices.map(({ choice }) => `${choice.label}: ${(draft.featChoices?.[choice.id] || []).join(", ") || "não selecionado"}`).join(" · ")}</p></section>}
           <section><h3>Moedas</h3><div className="pb-core-coins pb-core-sheet-coins">{(system === "t20" ? [["tibar", "Tibar"]] : [["cp", "PC"], ["sp", "PP"], ["gp", "PO"], ["pp", "PL"]]).map(([key, label]) => <label key={key}>{label}<input type="number" min={0} step={1} value={draft.coins?.[key as keyof NonNullable<MultiSystemCharacter["coins"]>] || 0} onChange={(event) => { setDraft({ ...draft, coins: { ...draft.coins, [key]: Math.max(0, Number(event.target.value)) } }); setSaveError(null); }} /></label>)}</div></section>
         </div>
 

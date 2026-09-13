@@ -29,4 +29,21 @@ describe("core editable PDF export", () => {
     const pdf = await PDFDocument.load(await createCoreEditablePdf(character));
     expect(pdf.getForm().getTextField("character.feats").getText()).toContain("Orar ×2");
   });
+
+  it("exports D&D feat choices in the editable talent field", async () => {
+    const character = createInitialCoreCharacter("dnd5e");
+    character.level = 4;
+    character.featIds = ["dnd5e.talento.resiliente"];
+    character.featChoices = { "resilient-ability": ["Sabedoria"] };
+    const pdf = await PDFDocument.load(await createCoreEditablePdf(character));
+    expect(pdf.getForm().getTextField("character.feats").getText()).toContain("Sabedoria");
+  });
+
+  it("exports T20 power choices in the editable talent field", async () => {
+    const character = createInitialCoreCharacter("t20");
+    character.featIds = ["t20.poder.foco_em_arma"];
+    character.featChoices = { "t20-weapon-focus": ["Espada longa"] };
+    const pdf = await PDFDocument.load(await createCoreEditablePdf(character));
+    expect(pdf.getForm().getTextField("character.feats").getText()).toContain("Espada longa");
+  });
 });

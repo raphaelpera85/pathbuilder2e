@@ -12,6 +12,7 @@ import {
   type OseAlignment,
   OSE_ADDITIONAL_LANGUAGES,
   isOseClassAvailableForMode,
+  getOseSpellSlotCount,
 } from "../data/ose/oseRules";
 import { OSE_RACES, type OseRace } from "../data/ose/oseRaces";
 import { OSE_CLASSES, type OseClass } from "../data/ose/oseClasses";
@@ -193,12 +194,7 @@ export function OseCharacterCreatorModal({
 
   const rollHp = () => {
     const sides = selectedClass.hitDie === "d4" ? 4 : selectedClass.hitDie === "d6" ? 6 : 8;
-    let r = Math.floor(Math.random() * sides) + 1;
-    // Opção de rerrolar 1 e 2
-    if (r <= 2) {
-      r = Math.floor(Math.random() * sides) + 1;
-    }
-    setHpRoll(r);
+    setHpRoll(Math.floor(Math.random() * sides) + 1);
   };
 
   const rollSecondarySkill = () => {
@@ -271,14 +267,31 @@ export function OseCharacterCreatorModal({
   const availableClassSpells = useMemo(() => {
     if (!selectedClass.spellCasting) return [];
     return OSE_SPELLS.filter(
-      (s) => s.className === selectedClass.spellCasting?.spellListName && s.circle === 1
+      (s) => s.className === selectedClass.spellCasting?.spellListName
+        && s.circle === 1
+        && !(selectedClass.id === "mago" && s.id === "mago_ler_magia")
     );
   }, [selectedClass]);
 
+  const spellSlotCount = selectedClass.spellCasting
+    ? getOseSpellSlotCount(selectedClass.progression, 1)
+    : 0;
+
+  const automaticSpellIds = selectedClass.id === "mago" ? ["mago_ler_magia"] : [];
+
+  useEffect(() => {
+    setSelectedSpells((previous) => {
+      const validIds = new Set(availableClassSpells.map((spell) => spell.id));
+      return previous.filter((spellId) => validIds.has(spellId)).slice(0, spellSlotCount);
+    });
+  }, [availableClassSpells, spellSlotCount]);
+
   const toggleSpell = (spellId: string) => {
-    setSelectedSpells((prev) =>
-      prev.includes(spellId) ? prev.filter((id) => id !== spellId) : [...prev, spellId]
-    );
+    setSelectedSpells((prev) => {
+      if (prev.includes(spellId)) return prev.filter((id) => id !== spellId);
+      if (prev.length >= spellSlotCount) return prev;
+      return [...prev, spellId];
+    });
   };
 
   // Finalizar
@@ -313,8 +326,10 @@ export function OseCharacterCreatorModal({
       weapons: boughtWeapons,
       armors: boughtArmors,
       gear: boughtGear,
-      spellsKnown: selectedClass.spellCasting ? selectedSpells : [],
-      preparedSpells: selectedClass.spellCasting ? selectedSpells.slice(0, 1) : [],
+      spellsKnown: selectedClass.spellCasting
+        ? Array.from(new Set([...automaticSpellIds, ...selectedSpells]))
+        : [],
+      preparedSpells: selectedClass.spellCasting ? selectedSpells : [],
     };
 
     onCharacterCreated(charData);
@@ -832,7 +847,10 @@ export function OseCharacterCreatorModal({
                 Grimório Inicial de Magias ({selectedClass.spellCasting.type})
               </h3>
               <p style={{ margin: "0 0 16px 0", fontSize: "0.85rem", color: "var(--ose-text-muted)" }}>
-                Magos começam com Ler Magia e mais um feitiço de 1º círculo. Clérigos e Druidas conhecem todos os feitiços de sua ordem concedidos pelos deuses.
+                {selectedClass.id === "mago"
+                  ? `Ler Magia é automático. Escolha ${spellSlotCount} magia${spellSlotCount === 1 ? "" : "s"} de 1º círculo para o grimório inicial.`
+                  : `Escolha ${spellSlotCount} magia${spellSlotCount === 1 ? "" : "s"} de 1º círculo para preparar hoje.`}
+                {" "}({selectedSpells.length}/{spellSlotCount} escolhidas)
               </p>
 
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 12 }}>
@@ -847,7 +865,8 @@ export function OseCharacterCreatorModal({
                         borderRadius: 6,
                         border: isSelected ? "2px solid var(--ose-gold)" : "1px solid var(--ose-border)",
                         background: isSelected ? "rgba(245, 158, 11, 0.1)" : "var(--ose-card-bg)",
-                        cursor: "pointer",
+                        cursor: !isSelected && selectedSpells.length >= spellSlotCount ? "not-allowed" : "pointer",
+                        opacity: !isSelected && selectedSpells.length >= spellSlotCount ? 0.55 : 1,
                       }}
                     >
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>

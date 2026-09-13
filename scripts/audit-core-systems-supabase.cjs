@@ -31,6 +31,40 @@ const expectedDndBackgroundChoices = {
   "dnd5e.nobre": ["game", 4],
   "dnd5e.soldado": ["game", 4],
 };
+const expectedDndFeatChoiceGroups = {
+  "dnd5e.talento.mestre_de_armas": 1,
+  "dnd5e.talento.resiliente": 1,
+  "dnd5e.talento.atleta": 1,
+  "dnd5e.talento.ator": 1,
+  "dnd5e.talento.brigao_de_taverna": 1,
+  "dnd5e.talento.conjurador_de_rituais": 2,
+  "dnd5e.talento.duravel": 1,
+  "dnd5e.talento.fortemente_blindado": 1,
+  "dnd5e.talento.habilidoso": 1,
+  "dnd5e.talento.iniciado_em_magia": 3,
+  "dnd5e.talento.levemente_blindado": 1,
+  "dnd5e.talento.lider_inspirador": 1,
+  "dnd5e.talento.linguista": 2,
+  "dnd5e.talento.mente_aguçada": 1,
+  "dnd5e.talento.mestre_de_armadura_media": 1,
+  "dnd5e.talento.moderadamente_blindado": 1,
+  "dnd5e.talento.observador": 1,
+  "dnd5e.talento.adepto_elemental": 1,
+  "dnd5e.talento.adepto_marcial": 1,
+};
+const expectedT20PowerChoiceGroups = {
+  "t20.poder.aumento_de_atributo": 1,
+  "t20.poder.foco_em_arma": 1,
+  "t20.poder.proficiencia": 1,
+  "t20.poder.treinamento_em_pericia": 1,
+  "t20.poder.inimigo_de_criatura": 1,
+  "t20.poder.forma_selvagem": 1,
+  "t20.poder.especialista_em_escola": 1,
+  "t20.poder.familiar": 1,
+  "t20.poder.orar": 1,
+  "t20.poder.conhecimento_magico": 1,
+  "t20.poder.conhecimento_de_formulas": 1,
+};
 
 async function count(table, systemId, ruleset) {
   const { count: rowCount, error } = await supabase
@@ -80,6 +114,9 @@ async function run() {
   const featSummaryMismatches = (dndFeats || [])
     .filter((row) => row.data?.summary === "Talento opcional do Livro do Jogador" || !row.data?.summary)
     .map((row) => row.id);
+  const dndFeatChoiceMismatches = Object.entries(expectedDndFeatChoiceGroups)
+    .filter(([id, expectedGroupCount]) => Number((dndFeats || []).find((row) => row.id === id)?.data?.choices?.length || 0) !== expectedGroupCount)
+    .map(([id]) => id);
   const { data: t20Feats, error: t20FeatError } = await supabase
     .from("catalog_feats")
     .select("id,data")
@@ -92,6 +129,9 @@ async function run() {
   const t20GrantedTormentaSummaryMismatches = (t20Feats || [])
     .filter((row) => ["concedido", "tormenta"].includes(row.data?.powerGroup) && (row.data?.summary === "Poder concedido · exige devoção à divindade" || String(row.data?.summary || "").startsWith("Poder de ")))
     .map((row) => row.id);
+  const t20PowerChoiceMismatches = Object.entries(expectedT20PowerChoiceGroups)
+    .filter(([id, expectedGroupCount]) => Number((t20Feats || []).find((row) => row.id === id)?.data?.choices?.length || 0) !== expectedGroupCount)
+    .map(([id]) => id);
   const { data: t20Spells, error: t20SpellError } = await supabase
     .from("catalog_spells")
     .select("id,data")
@@ -101,8 +141,8 @@ async function run() {
   const t20SpellSummaryMismatches = (t20Spells || [])
     .filter((row) => row.data?.id && !String(row.data?.summary || "").trim() || false)
     .map((row) => row.id);
-  const ok = results.every((result) => result.ok) && orphanRows.length === 0 && backgroundChoiceMismatches.length === 0 && featSummaryMismatches.length === 0 && t20GeneralPowerSummaryMismatches.length === 0 && t20GrantedTormentaSummaryMismatches.length === 0 && t20SpellSummaryMismatches.length === 0;
-  console.log(JSON.stringify({ ok, results, orphanSubclasses: orphanRows, backgroundChoiceMismatches, featSummaryMismatches, t20GeneralPowerSummaryMismatches, t20GrantedTormentaSummaryMismatches, t20SpellSummaryMismatches }, null, 2));
+  const ok = results.every((result) => result.ok) && orphanRows.length === 0 && backgroundChoiceMismatches.length === 0 && featSummaryMismatches.length === 0 && dndFeatChoiceMismatches.length === 0 && t20PowerChoiceMismatches.length === 0 && t20GeneralPowerSummaryMismatches.length === 0 && t20GrantedTormentaSummaryMismatches.length === 0 && t20SpellSummaryMismatches.length === 0;
+  console.log(JSON.stringify({ ok, results, orphanSubclasses: orphanRows, backgroundChoiceMismatches, featSummaryMismatches, dndFeatChoiceMismatches, t20PowerChoiceMismatches, t20GeneralPowerSummaryMismatches, t20GrantedTormentaSummaryMismatches, t20SpellSummaryMismatches }, null, 2));
   if (!ok) process.exitCode = 1;
 }
 

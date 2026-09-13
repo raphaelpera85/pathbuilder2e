@@ -7,7 +7,8 @@ import { T20_ORIGINS } from "./t20/t20Origins";
 import { T20_CLASS_RULES } from "./t20/t20Classes";
 import { T20_RACE_RULES } from "./t20/t20Races";
 import { DND5E_RACE_RULES } from "./dnd5e/dnd5eRaces";
-import { DND5E_EQUIPMENT, DND5E_FEATS, DND5E_SPELLS, formatDnd5eSpellDetails } from "./dnd5e/dnd5eCompendium";
+import { DND5E_EQUIPMENT, DND5E_FEAT_CHOICES, DND5E_FEATS, DND5E_SPELLS, formatDnd5eSpellDetails } from "./dnd5e/dnd5eCompendium";
+import { T20_POWER_CHOICES } from "./t20/t20Compendium";
 import { T20_EQUIPMENT, T20_POWERS, T20_SPELLS } from "./t20/t20Compendium";
 import { T20_CLASS_PROGRESSIONS } from "./t20/t20Progressions";
 import { DND5E_CLASS_PROGRESSIONS } from "./dnd5e/dnd5eProgressions";
@@ -37,11 +38,25 @@ describe("Catálogos de criação por sistema", () => {
     expect(DND5E_FEATS.every((feat) => feat.summary !== "Talento opcional do Livro do Jogador")).toBe(true);
     expect(DND5E_FEATS.find((feat) => feat.id === "dnd5e.talento.sortudo")?.summary).toContain("Três pontos de sorte");
   });
+
+  it("expõe escolhas estruturadas para talentos D&D 5e", () => {
+    expect(DND5E_FEAT_CHOICES["dnd5e.talento.resiliente"]?.[0].count).toBe(1);
+    expect(DND5E_FEAT_CHOICES["dnd5e.talento.linguista"]?.[1].count).toBe(3);
+    expect(Object.values(DND5E_FEAT_CHOICES).flat().every((choice) => choice.options.length >= choice.count)).toBe(true);
+  });
+
+  it("expõe escolhas estruturadas para poderes T20", () => {
+    expect(T20_POWER_CHOICES["t20.poder.foco_em_arma"]?.[0].options).toContain("Espada longa");
+    expect(T20_POWER_CHOICES["t20.poder.conhecimento_de_formulas"]?.[0].count).toBe(3);
+    expect(Object.values(T20_POWER_CHOICES).flat().every((choice) => choice.options.length >= choice.count)).toBe(true);
+  });
   it("mantém o núcleo de criação T20 separado e rastreável", () => {
     expect(T20_RACES).toHaveLength(17);
     expect(T20_CLASSES).toHaveLength(14);
     expect(T20_SKILLS).toHaveLength(29);
     expect(T20_SKILLS.find((entry) => entry.id === "furtividade")?.keyAbility).toBe("dex");
+    expect(T20_SKILLS.every((entry) => (entry.ruleSummary || "").length > 40)).toBe(true);
+    expect(T20_SKILLS.find((entry) => entry.id === "ladinagem")?.ruleSummary).toContain("Abrir fechaduras");
     expect(T20_CLASSES.find((entry) => entry.id === "inventor")?.sourcePage).toBe(67);
     expect(T20_CREATION_STEPS).toContain("origem");
     expect(T20_ORIGINS).toHaveLength(35);
@@ -72,6 +87,9 @@ describe("Catálogos de criação por sistema", () => {
     expect(grantedAndTormenta.length).toBe(73);
     expect(grantedAndTormenta.every((entry) => !entry.summary.startsWith("Poder de ") && entry.summary !== "Poder concedido · exige devoção à divindade")).toBe(true);
     expect(T20_POWERS.find((entry) => entry.id === "t20.poder.carapaca")?.summary).toContain("Defesa");
+    const t20SpellsWithEffects = T20_SPELLS.filter((entry) => !/^(arcana|divina|universal|essencia) \d+º círculo ·/.test(entry.summary));
+    expect(t20SpellsWithEffects.length).toBe(53);
+    expect(T20_SPELLS.find((entry) => entry.id === "t20.magia.bola_de_fogo")?.summary).toContain("6d6");
     expect(T20_CLASS_PROGRESSIONS.find((entry) => entry.classId === "guerreiro")?.powerLevels).toHaveLength(19);
   });
 
@@ -89,6 +107,8 @@ describe("Catálogos de criação por sistema", () => {
     expect(DND5E_CLASSES).toHaveLength(12);
     expect(DND5E_SKILLS).toHaveLength(18);
     expect(DND5E_SKILLS.find((entry) => entry.id === "arcanismo")?.keyAbility).toBe("int");
+    expect(DND5E_SKILLS.every((entry) => (entry.ruleSummary || "").length > 35)).toBe(true);
+    expect(DND5E_SKILLS.find((entry) => entry.id === "percepcao")?.ruleSummary).toContain("perigos");
     expect(DND5E_TOOLS.length).toBeGreaterThan(35);
     expect(DND5E_TOOLS.find((entry) => entry.id === "ferramentas_de_ladrao")?.ruleSummary).toContain("fechaduras");
     expect(DND5E_TOOLS.find((entry) => entry.id === "ferramentas_de_ferreiro")?.sourcePage).toBe(154);
@@ -135,6 +155,10 @@ describe("Catálogos de criação por sistema", () => {
     expect(T20_CLASS_PROGRESSIONS.find((entry) => entry.classId === "guerreiro")?.featuresByLevel[4]).toContain("Poder de classe");
     expect(DND5E_SUBRACES.filter((entry) => entry.raceId === "elfo")).toHaveLength(3);
     expect(DND5E_SUBCLASSES.filter((entry) => entry.classId === "mago")).toHaveLength(8);
+    expect(DND5E_SUBCLASSES).toHaveLength(40);
+    expect(DND5E_SUBCLASSES.every((entry) => entry.features.length > 0 && entry.features.every((feature) => feature.level >= entry.featureLevel && feature.summary.length > 20))).toBe(true);
+    expect(DND5E_SUBCLASSES.find((entry) => entry.id === "guerreiro_mestre_batalha")?.choices[0].count).toBe(3);
+    expect(DND5E_SUBCLASSES.filter((entry) => entry.choices.length > 0).length).toBeGreaterThanOrEqual(7);
     expect(getAvailableCoreSpells("dnd5e", "mago", 1).map((entry) => entry.id)).toContain("dnd5e.magia.misseis_magicos");
     expect(getAvailableCoreSpells("dnd5e", "guerreiro", 1)).toHaveLength(0);
     expect(getAvailableCoreSpells("dnd5e", "mago", 1).some((entry) => entry.id === "dnd5e.magia.amizade")).toBe(true);

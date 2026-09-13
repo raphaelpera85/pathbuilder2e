@@ -142,6 +142,19 @@ export function isOseClassAvailableForMode(isRaceClass: boolean | undefined, mod
   return mode === "classic" ? Boolean(isRaceClass) : !Boolean(isRaceClass);
 }
 
+/**
+ * Retorna quantos espaços de magia a classe possui no nível informado.
+ * A progressão guarda uma entrada por círculo: [círculo 1, círculo 2, ...].
+ */
+export function getOseSpellSlotCount(
+  progression: Array<{ level: number; spells?: number[] }>,
+  level: number,
+  circle = 1,
+): number {
+  const levelEntry = progression.find((entry) => entry.level === level);
+  return Math.max(0, levelEntry?.spells?.[circle - 1] ?? 0);
+}
+
 export const OSE_ALIGNMENTS: Record<OseAlignment, { name: string; nameEn: string; desc: string }> = {
   ordeiro: {
     name: "Ordeiro",
