@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { DND5E_ALIGNMENTS, DND5E_LANGUAGES, T20_DEITIES, T20_DRUID_DEITY_IDS, T20_PALADIN_DEITY_IDS, getAvailableCoreFeats, getAvailableCoreSpells, getCoreCatalog, getCoreFeatQuantity, getCoreStartingEquipment, type CoreAbility, type MultiSystemCharacter, type SupportedCoreSystem } from "../data/multiSystemCharacter";
-import { T20_ARCANIST_PATHS, T20_SORCERER_LINEAGES } from "../data/t20/t20Catalog";
+import { T20_ARCANIST_PATHS, T20_CLASS_CHOICES, T20_SORCERER_LINEAGES } from "../data/t20/t20Catalog";
 import { getSystemRulesEngine } from "../data/systemRulesEngine";
 import { DND5E_STANDARD_ARRAY, generateAbilityScores, type AbilityGenerationMethod } from "../data/coreCharacterRules";
 import { DND5E_TOOLS, DND5E_TOOL_CHOICE_GROUPS, getDnd5eToolChoiceEntries, type Dnd5eToolChoiceGroup } from "../data/dnd5e/dnd5eCatalog";
@@ -210,7 +210,7 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
   const selectedSubclass = availableSubclasses.find((entry) => entry.id === character.subclassId);
   const availableClassChoices = system === "dnd5e"
     ? DND5E_CLASS_CHOICES.filter((choice) => choice.classId === character.classId && character.level >= choice.minimumLevel)
-    : [];
+    : T20_CLASS_CHOICES.filter((choice) => choice.classId === character.classId && character.level >= choice.minimumLevel);
   const availableSpells = getAvailableCoreSpells(system, character.classId, character.level, character);
   const availableFeats = getAvailableCoreFeats(system, character.level, character);
   const availableRaceFeats = raceChoiceGroup ? availableFeats.filter((feat) => {

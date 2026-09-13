@@ -6,6 +6,7 @@ import { formatDnd5eSpellDetails } from "../data/dnd5e/dnd5eCompendium";
 import { DND5E_CLASS_CHOICES } from "../data/dnd5e/dnd5eOptions";
 import { DND5E_FEAT_CHOICES } from "../data/dnd5e/dnd5eCompendium";
 import { T20_POWER_CHOICES } from "../data/t20/t20Compendium";
+import { T20_CLASS_CHOICES } from "../data/t20/t20Catalog";
 import { getSystemRulesEngine } from "../data/systemRulesEngine";
 import { createCoreEditablePdf, downloadCoreEditablePdf } from "../services/corePdfExport";
 
@@ -32,7 +33,7 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
   const className = catalog.classes.find((entry) => entry.id === draft.classId)?.name || draft.classId;
   const subclass = catalog.subclasses.find((entry) => entry.id === draft.subclassId)?.name;
   const selectedSubclass = catalog.subclasses.find((entry) => entry.id === draft.subclassId);
-  const selectedClassChoices = system === "dnd5e" ? DND5E_CLASS_CHOICES.filter((choice) => choice.classId === draft.classId && draft.level >= choice.minimumLevel) : [];
+  const selectedClassChoices = system === "dnd5e" ? DND5E_CLASS_CHOICES.filter((choice) => choice.classId === draft.classId && draft.level >= choice.minimumLevel) : T20_CLASS_CHOICES.filter((choice) => choice.classId === draft.classId && draft.level >= choice.minimumLevel);
   const selectedFeatChoices = draft.featIds.flatMap((featId) => ((system === "dnd5e" ? DND5E_FEAT_CHOICES : T20_POWER_CHOICES)[featId] || []).map((choice) => ({ featId, choice })));
   const deity = T20_DEITIES.find((entry) => entry.id === draft.deity || entry.name === draft.deity)?.name;
   const classRules = catalog.classRules.find((entry) => entry.id === draft.classId);

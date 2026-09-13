@@ -23,6 +23,7 @@ import { getCoreClassFeatures, getCoreClassResources, type CoreClassFeature, typ
 import { DND5E_CLASS_CHOICES } from "./dnd5e/dnd5eOptions";
 import { DND5E_FEAT_CHOICES } from "./dnd5e/dnd5eCompendium";
 import { T20_POWER_CHOICES } from "./t20/t20Compendium";
+import { T20_CLASS_CHOICES } from "./t20/t20Catalog";
 
 const DND_FULL_CASTER_SLOTS: Record<number, Record<number, number>> = {
   1: { 1: 2 }, 2: { 1: 3 }, 3: { 1: 4, 2: 2 }, 4: { 1: 4, 2: 3 },
@@ -302,7 +303,7 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
           const values = character.subclassChoices?.[choice.id] || [];
           if (values.length !== choice.count) errors.push(`selecione ${choice.count} opção(ões) para ${choice.label}`);
         }
-        const classChoices = DND5E_CLASS_CHOICES.filter((choice) => choice.classId === character.classId && character.level >= choice.minimumLevel);
+        const classChoices = (systemId === "dnd5e" ? DND5E_CLASS_CHOICES : T20_CLASS_CHOICES).filter((choice) => choice.classId === character.classId && character.level >= choice.minimumLevel);
         const declaredClassChoices = new Map(classChoices.map((choice) => [choice.id, choice]));
         for (const [choiceId, values] of Object.entries(character.classChoices || {})) {
           const choice = declaredClassChoices.get(choiceId);
@@ -322,6 +323,24 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       if (systemId === "dnd5e" && progression && "subclassLevel" in progression && character.level >= progression.subclassLevel) {
         const classHasSubclasses = catalog.subclasses.some((entry) => entry.classId === character.classId);
         if (classHasSubclasses && !selectedSubclass) errors.push(`selecione uma subclasse a partir do nível ${progression.subclassLevel}`);
+      }
+      if (systemId === "t20") {
+        const classChoices = T20_CLASS_CHOICES.filter((choice) => choice.classId === character.classId && character.level >= choice.minimumLevel);
+        const declaredClassChoices = new Map(classChoices.map((choice) => [choice.id, choice]));
+        for (const [choiceId, values] of Object.entries(character.classChoices || {})) {
+          const choice = declaredClassChoices.get(choiceId);
+          if (!choice) {
+            errors.push("a escolha da classe não pertence ao nível ou classe selecionada");
+            continue;
+          }
+          if (!Array.isArray(values) || values.length !== choice.count) errors.push(`a escolha ${choice.label} exige exatamente ${choice.count} opção(ões)`);
+          if (new Set(values).size !== values.length) errors.push(`a escolha ${choice.label} não pode conter opções repetidas`);
+          if (values.some((value) => !choice.options.includes(value))) errors.push(`a escolha ${choice.label} contém uma opção inválida`);
+        }
+        for (const choice of classChoices) {
+          const values = character.classChoices?.[choice.id] || [];
+          if (values.length !== choice.count) errors.push(`selecione ${choice.count} opção(ões) para ${choice.label}`);
+        }
       }
       if (!catalog.backgrounds.some((entry) => entry.id === character.backgroundId)) errors.push("origem/antecedente não pertence ao catálogo do sistema");
       if (systemId === "dnd5e" && character.alignment && !DND5E_ALIGNMENTS.includes(character.alignment as typeof DND5E_ALIGNMENTS[number])) errors.push("alinhamento não pertence ao catálogo de D&D 5e");

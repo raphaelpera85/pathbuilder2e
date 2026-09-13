@@ -152,6 +152,19 @@ const T20_SPELL_EFFECT_SUMMARIES: Record<string, string> = {
   amedrontar: "Assusta uma criatura, impondo condição de medo se ela falhar em Vontade.",
   escudo_da_fe: "Concede bônus de Defesa ao alvo pela cena, mantido enquanto a magia durar.",
   dissipar_magia: "Tenta encerrar uma magia ou efeito mágico ativo, com teste contra efeitos mais poderosos.",
+  caminhos_da_natureza: "Abre passagem por vegetação e terreno natural, permitindo ao grupo atravessar a área sem as penalidades normais.",
+  campo_de_forca: "Cria uma barreira invisível que fornece cobertura e bloqueia deslocamento e ataques através da área protegida.",
+  camuflagem_ilusoria: "Distorce a aparência do alvo, concedendo camuflagem e bônus para se esconder até a magia terminar.",
+  circulo_da_justica: "Marca uma área sagrada; criaturas que mentirem ou violarem a ordem estabelecida sofrem a consequência definida pela magia.",
+  comungar_com_a_natureza: "Revela características naturais, criaturas e perigos importantes de uma região ampla ao redor do conjurador.",
+  contato_extraplanar: "Permite consultar uma entidade extraplanar; um teste determina se a resposta é verdadeira, obscura ou perigosa.",
+  cupula_de_repulsao: "Cria uma cúpula que impede a passagem de criaturas e objetos, protegendo quem estiver dentro contra efeitos externos.",
+  deflagracao_de_mana: "Libera uma explosão de energia mágica que causa dano em área e pode interromper ou dispersar efeitos sustentados.",
+  desintegrar: "Um raio reduz matéria ou criatura a pó após um salvamento falho, causando grande dano e destruindo objetos atingidos.",
+  duplicata_ilusoria: "Cria uma cópia ilusória que confunde o alvo e pode receber ataques no lugar da criatura original.",
+  enxame_de_pestes: "Convoca um enxame que ocupa a área, causa dano contínuo e dificulta a movimentação das criaturas afetadas.",
+  imobilizar: "Paralisa uma criatura que falhe em Fortitude ou Vontade, impedindo deslocamento e ações físicas enquanto o efeito durar.",
+  luz_sagrada: "Emite luz sagrada que ilumina a área e causa dano adicional ou penalidade a criaturas de trevas e mortos-vivos.",
 };
 
 const T20_EXPANDED_SPELLS: T20CompendiumEntry[] = [

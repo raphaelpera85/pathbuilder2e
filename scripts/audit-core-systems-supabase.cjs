@@ -65,6 +65,12 @@ const expectedT20PowerChoiceGroups = {
   "t20.poder.conhecimento_magico": 1,
   "t20.poder.conhecimento_de_formulas": 1,
 };
+const expectedT20ClassChoiceGroups = {
+  "t20.bardo": 1,
+  "t20.cacador": 2,
+  "t20.cavaleiro": 1,
+  "t20.ladino": 1,
+};
 
 async function count(table, systemId, ruleset) {
   const { count: rowCount, error } = await supabase
@@ -86,13 +92,16 @@ async function run() {
   }
 
   const [{ data: classes, error: classError }, { data: subclasses, error: subclassError }] = await Promise.all([
-    supabase.from("catalog_classes").select("id,system_id,ruleset"),
+    supabase.from("catalog_classes").select("id,system_id,ruleset,data"),
     supabase.from("catalog_subclasses").select("id,class_id,system_id,ruleset"),
   ]);
   if (classError) throw new Error(`Falha ao ler classes: ${classError.message}`);
   if (subclassError) throw new Error(`Falha ao ler subclasses: ${subclassError.message}`);
   const classKeys = new Set((classes || []).map((row) => `${row.id}|${row.system_id}|${row.ruleset}`));
   const orphanRows = (subclasses || []).filter((row) => !classKeys.has(`${row.class_id}|${row.system_id}|${row.ruleset}`));
+  const t20ClassChoiceMismatches = Object.entries(expectedT20ClassChoiceGroups)
+    .filter(([id, expectedGroupCount]) => Number((classes || []).find((row) => row.id === id)?.data?.classChoices?.length || 0) !== expectedGroupCount)
+    .map(([id]) => id);
   const { data: dndBackgrounds, error: backgroundError } = await supabase
     .from("catalog_backgrounds")
     .select("id,data")
@@ -139,10 +148,10 @@ async function run() {
     .eq("ruleset", "padrao");
   if (t20SpellError) throw new Error(`Falha ao ler magias T20: ${t20SpellError.message}`);
   const t20SpellSummaryMismatches = (t20Spells || [])
-    .filter((row) => row.data?.id && !String(row.data?.summary || "").trim() || false)
+    .filter((row) => row.data?.id && (!String(row.data?.summary || "").trim() || /^(arcana|divina|universal|essencia) \d+º círculo ·/i.test(String(row.data?.summary || ""))))
     .map((row) => row.id);
-  const ok = results.every((result) => result.ok) && orphanRows.length === 0 && backgroundChoiceMismatches.length === 0 && featSummaryMismatches.length === 0 && dndFeatChoiceMismatches.length === 0 && t20PowerChoiceMismatches.length === 0 && t20GeneralPowerSummaryMismatches.length === 0 && t20GrantedTormentaSummaryMismatches.length === 0 && t20SpellSummaryMismatches.length === 0;
-  console.log(JSON.stringify({ ok, results, orphanSubclasses: orphanRows, backgroundChoiceMismatches, featSummaryMismatches, dndFeatChoiceMismatches, t20PowerChoiceMismatches, t20GeneralPowerSummaryMismatches, t20GrantedTormentaSummaryMismatches, t20SpellSummaryMismatches }, null, 2));
+  const ok = results.every((result) => result.ok) && orphanRows.length === 0 && t20ClassChoiceMismatches.length === 0 && backgroundChoiceMismatches.length === 0 && featSummaryMismatches.length === 0 && dndFeatChoiceMismatches.length === 0 && t20PowerChoiceMismatches.length === 0 && t20GeneralPowerSummaryMismatches.length === 0 && t20GrantedTormentaSummaryMismatches.length === 0 && t20SpellSummaryMismatches.length === 0;
+  console.log(JSON.stringify({ ok, results, orphanSubclasses: orphanRows, t20ClassChoiceMismatches, backgroundChoiceMismatches, featSummaryMismatches, dndFeatChoiceMismatches, t20PowerChoiceMismatches, t20GeneralPowerSummaryMismatches, t20GrantedTormentaSummaryMismatches, t20SpellSummaryMismatches }, null, 2));
   if (!ok) process.exitCode = 1;
 }
 

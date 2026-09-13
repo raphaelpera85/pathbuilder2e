@@ -1,4 +1,4 @@
--- Refresh dos efeitos resumidos das magias T20 com texto conferido no Livro Básico.
+-- Refresh idempotente dos efeitos resumidos de todas as magias T20 do catálogo.
 insert into public.catalog_spells (id,name_pt,rank,is_cantrip,is_focus,ruleset,source_book,source_page,data,system_id) values
 ('t20.magia.luz','Luz',1,FALSE,FALSE,'padrao','Tormenta20 — Livro Básico',194,'{"id":"t20.magia.luz","name":"Luz","sourcePage":194,"category":"magia","summary":"Cria fonte de luz que ilumina a área e pode ser fixada em objeto ou criatura.","spellLevel":1,"tradition":"essencia","classIds":["arcanista","bardo","clerigo","druida"]}'::jsonb,'t20'),
 ('t20.magia.curar_ferimentos','Curar Ferimentos',1,FALSE,FALSE,'padrao','Tormenta20 — Livro Básico',186,'{"id":"t20.magia.curar_ferimentos","name":"Curar Ferimentos","sourcePage":186,"category":"magia","summary":"Energia positiva restaura pontos de vida da criatura tocada.","spellLevel":1,"tradition":"divina","classIds":["bardo","clerigo","druida"]}'::jsonb,'t20'),

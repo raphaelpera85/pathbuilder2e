@@ -9,6 +9,7 @@ import { T20_RACE_RULES } from "./t20/t20Races";
 import { DND5E_RACE_RULES } from "./dnd5e/dnd5eRaces";
 import { DND5E_EQUIPMENT, DND5E_FEAT_CHOICES, DND5E_FEATS, DND5E_SPELLS, formatDnd5eSpellDetails } from "./dnd5e/dnd5eCompendium";
 import { T20_POWER_CHOICES } from "./t20/t20Compendium";
+import { T20_CLASS_CHOICES } from "./t20/t20Catalog";
 import { T20_EQUIPMENT, T20_POWERS, T20_SPELLS } from "./t20/t20Compendium";
 import { T20_CLASS_PROGRESSIONS } from "./t20/t20Progressions";
 import { DND5E_CLASS_PROGRESSIONS } from "./dnd5e/dnd5eProgressions";
@@ -50,6 +51,11 @@ describe("Catálogos de criação por sistema", () => {
     expect(T20_POWER_CHOICES["t20.poder.conhecimento_de_formulas"]?.[0].count).toBe(3);
     expect(Object.values(T20_POWER_CHOICES).flat().every((choice) => choice.options.length >= choice.count)).toBe(true);
   });
+
+  it("expõe escolhas estruturadas de classe T20", () => {
+    expect(T20_CLASS_CHOICES.find((choice) => choice.id === "t20-cavaleiro-path")?.options).toEqual(["Bastião", "Montaria"]);
+    expect(T20_CLASS_CHOICES.every((choice) => choice.options.length >= choice.count)).toBe(true);
+  });
   it("mantém o núcleo de criação T20 separado e rastreável", () => {
     expect(T20_RACES).toHaveLength(17);
     expect(T20_CLASSES).toHaveLength(14);
@@ -88,7 +94,7 @@ describe("Catálogos de criação por sistema", () => {
     expect(grantedAndTormenta.every((entry) => !entry.summary.startsWith("Poder de ") && entry.summary !== "Poder concedido · exige devoção à divindade")).toBe(true);
     expect(T20_POWERS.find((entry) => entry.id === "t20.poder.carapaca")?.summary).toContain("Defesa");
     const t20SpellsWithEffects = T20_SPELLS.filter((entry) => !/^(arcana|divina|universal|essencia) \d+º círculo ·/.test(entry.summary));
-    expect(t20SpellsWithEffects.length).toBe(53);
+    expect(t20SpellsWithEffects.length).toBe(66);
     expect(T20_SPELLS.find((entry) => entry.id === "t20.magia.bola_de_fogo")?.summary).toContain("6d6");
     expect(T20_CLASS_PROGRESSIONS.find((entry) => entry.classId === "guerreiro")?.powerLevels).toHaveLength(19);
   });

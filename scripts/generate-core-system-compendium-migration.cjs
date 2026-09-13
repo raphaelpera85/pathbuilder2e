@@ -12,6 +12,7 @@ const t20CatalogCleanupOutput = path.join(root, "supabase/migrations/20260913000
 const t20SpellMetadataOutput = path.join(root, "supabase/migrations/202609130009_refresh_t20_spell_effect_summaries.sql");
 const dnd5eFeatChoicesOutput = path.join(root, "supabase/migrations/202609130010_refresh_dnd5e_feat_choices.sql");
 const t20PowerChoicesOutput = path.join(root, "supabase/migrations/202609130011_refresh_t20_power_choices.sql");
+const t20SpellEffectRefreshOutput = path.join(root, "supabase/migrations/202609130013_refresh_t20_spell_effects_complete.sql");
 
 function loadExports(relativePath) {
   let source = fs.readFileSync(path.join(root, relativePath), "utf8");
@@ -153,4 +154,10 @@ ${featRows("t20", "padrao", "Tormenta20 — Livro Básico", t20PowerChoiceEntrie
 ${onConflict(["feat_type","level","name_pt","ruleset","source_book","source_page","data","system_id"])}
 `;
 fs.writeFileSync(t20PowerChoicesOutput, t20PowerChoicesSql, "utf8");
+const t20AllSpellEffectSql = `-- Refresh idempotente dos efeitos resumidos de todas as magias T20 do catálogo.
+insert into public.catalog_spells (id,name_pt,rank,is_cantrip,is_focus,ruleset,source_book,source_page,data,system_id) values
+${spellRows("t20", "padrao", "Tormenta20 — Livro Básico", t20.T20_SPELLS).join(",\n")}
+${onConflict(["name_pt","rank","is_cantrip","is_focus","ruleset","source_book","source_page","data","system_id"])}
+`;
+fs.writeFileSync(t20SpellEffectRefreshOutput, t20AllSpellEffectSql, "utf8");
 console.log(JSON.stringify({ output, spellMetadataOutput, featMetadataOutput, t20PowerMetadataOutput, t20GrantedMetadataOutput, t20CatalogCleanupOutput, t20SpellMetadataOutput, items: allItems.length, spells: allSpells.length, feats: allFeats.length, t20GeneralPowers: t20GeneralPowers.length, t20GrantedAndTormentaPowers: t20GrantedAndTormentaPowers.length, t20SpellSummaryEntries: t20SpellSummaryEntries.length }, null, 2));

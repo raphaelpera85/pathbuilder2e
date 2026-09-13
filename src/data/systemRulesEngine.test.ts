@@ -808,6 +808,17 @@ describe("system rules engines", () => {
     expect(T20_RULES_ENGINE.validateCharacter(character)).toContain("a escolha Arma de talento contém uma opção inválida");
   });
 
+  it("requires valid structural class choices for T20", () => {
+    const character = T20_RULES_ENGINE.createDefaultCharacter();
+    character.classId = "cavaleiro";
+    character.level = 5;
+    expect(T20_RULES_ENGINE.validateCharacter(character)).toContain("selecione 1 opção(ões) para Caminho do Cavaleiro");
+    character.classChoices = { "t20-cavaleiro-path": ["Montaria"] };
+    expect(T20_RULES_ENGINE.validateCharacter(character)).not.toContain("selecione 1 opção(ões) para Caminho do Cavaleiro");
+    character.classChoices = { "t20-cavaleiro-path": ["Caminho inexistente"] };
+    expect(T20_RULES_ENGINE.validateCharacter(character)).toContain("a escolha Caminho do Cavaleiro contém uma opção inválida");
+  });
+
   it("rejects a trained skill outside the class choices", () => {
     const wizard = DND5E_RULES_ENGINE.createDefaultCharacter();
     wizard.classId = "mago";
