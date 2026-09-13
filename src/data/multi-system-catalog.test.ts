@@ -8,7 +8,7 @@ import { T20_CLASS_RULES } from "./t20/t20Classes";
 import { T20_RACE_RULES } from "./t20/t20Races";
 import { DND5E_RACE_RULES } from "./dnd5e/dnd5eRaces";
 import { DND5E_EQUIPMENT, DND5E_FEAT_CHOICES, DND5E_FEATS, DND5E_SPELLS, formatDnd5eSpellDetails } from "./dnd5e/dnd5eCompendium";
-import { T20_POWER_CHOICES } from "./t20/t20Compendium";
+import { formatT20SpellDetails, T20_POWER_CHOICES } from "./t20/t20Compendium";
 import { T20_CLASS_CHOICES } from "./t20/t20Catalog";
 import { T20_EQUIPMENT, T20_POWERS, T20_SPELLS } from "./t20/t20Compendium";
 import { T20_CLASS_PROGRESSIONS } from "./t20/t20Progressions";
@@ -96,6 +96,8 @@ describe("Catálogos de criação por sistema", () => {
     const t20SpellsWithEffects = T20_SPELLS.filter((entry) => !/^(arcana|divina|universal|essencia) \d+º círculo ·/.test(entry.summary));
     expect(t20SpellsWithEffects.length).toBe(66);
     expect(T20_SPELLS.find((entry) => entry.id === "t20.magia.bola_de_fogo")?.summary).toContain("6d6");
+    expect(T20_SPELLS.filter((entry) => entry.castingTime && entry.range && entry.duration).length).toBeGreaterThanOrEqual(13);
+    expect(formatT20SpellDetails(T20_SPELLS.find((entry) => entry.id === "t20.magia.desintegrar")!)).toContain("Fortitude parcial");
     expect(T20_CLASS_PROGRESSIONS.find((entry) => entry.classId === "guerreiro")?.powerLevels).toHaveLength(19);
   });
 

@@ -1,4 +1,4 @@
-export interface T20CompendiumEntry { id: string; name: string; sourcePage: number; category: "arma" | "armadura" | "equipamento" | "magia" | "poder"; summary: string; spellLevel?: number; tradition?: "arcana" | "divina" | "universal" | "essencia"; classIds?: string[]; classPower?: boolean; proficiency?: "simple_weapon" | "martial_weapon" | "light_armor" | "medium_armor" | "heavy_armor" | "shield"; armorClass?: number; armorBonus?: number; armorPenalty?: number; dexterityCap?: number; requiresStrength?: number; shieldBonus?: number; attackAbility?: "str" | "dex"; damage?: string; weight?: number; cost?: string; armorMaterial?: "metal" | "non_metal"; armorWeightClass?: "light" | "heavy"; minimumLevel?: number; powerGroup?: "combate" | "destino" | "magia" | "concedido" | "tormenta"; prerequisite?: string; deityIds?: string[]; repeatable?: boolean; maxQuantity?: number; }
+export interface T20CompendiumEntry { id: string; name: string; sourcePage: number; category: "arma" | "armadura" | "equipamento" | "magia" | "poder"; summary: string; spellLevel?: number; tradition?: "arcana" | "divina" | "universal" | "essencia"; classIds?: string[]; classPower?: boolean; castingTime?: string; range?: string; target?: string; area?: string; duration?: string; savingThrow?: string; proficiency?: "simple_weapon" | "martial_weapon" | "light_armor" | "medium_armor" | "heavy_armor" | "shield"; armorClass?: number; armorBonus?: number; armorPenalty?: number; dexterityCap?: number; requiresStrength?: number; shieldBonus?: number; attackAbility?: "str" | "dex"; damage?: string; weight?: number; cost?: string; armorMaterial?: "metal" | "non_metal"; armorWeightClass?: "light" | "heavy"; minimumLevel?: number; powerGroup?: "combate" | "destino" | "magia" | "concedido" | "tormenta"; prerequisite?: string; deityIds?: string[]; repeatable?: boolean; maxQuantity?: number; }
 
 export const T20_EQUIPMENT: T20CompendiumEntry[] = [
   { id: "t20.arma.adaga", name: "Adaga", sourcePage: 142, category: "arma", summary: "1d4, perfuração, leve", attackAbility: "dex", damage: "1d4 perfuração" },
@@ -167,6 +167,26 @@ const T20_SPELL_EFFECT_SUMMARIES: Record<string, string> = {
   luz_sagrada: "Emite luz sagrada que ilumina a área e causa dano adicional ou penalidade a criaturas de trevas e mortos-vivos.",
 };
 
+const T20_SPELL_DETAILS: Record<string, Pick<T20CompendiumEntry, "castingTime" | "range" | "target" | "area" | "duration" | "savingThrow">> = {
+  caminhos_da_natureza: { castingTime: "padrão", range: "curto", target: "criaturas escolhidas", duration: "1 dia" },
+  campo_de_forca: { castingTime: "padrão", range: "pessoal", target: "você", duration: "cena" },
+  camuflagem_ilusoria: { castingTime: "padrão", range: "toque", target: "1 criatura", duration: "cena" },
+  circulo_da_justica: { castingTime: "completa", range: "curto", area: "cubo com 9 m de lado", duration: "1 dia", savingThrow: "Vontade parcial" },
+  comungar_com_a_natureza: { castingTime: "completa", range: "pessoal", target: "você", duration: "1 dia" },
+  contato_extraplanar: { castingTime: "completa", range: "pessoal", target: "você", duration: "1 dia" },
+  cupula_de_repulsao: { castingTime: "padrão", range: "pessoal", target: "você", duration: "cena" },
+  deflagracao_de_mana: { castingTime: "completa", range: "pessoal", area: "explosão de 15 m de raio", duration: "instantânea", savingThrow: "Fortitude parcial" },
+  desintegrar: { castingTime: "padrão", range: "médio", target: "1 criatura ou objeto", duration: "instantânea", savingThrow: "Fortitude parcial" },
+  duplicata_ilusoria: { castingTime: "padrão", range: "médio", target: "cópia ilusória", duration: "cena" },
+  enxame_de_pestes: { castingTime: "completa", range: "médio", target: "1 enxame Médio", duration: "sustentada", savingThrow: "Fortitude reduz à metade" },
+  imobilizar: { castingTime: "padrão", range: "curto", target: "1 criatura", duration: "cena", savingThrow: "Fortitude parcial" },
+  luz_sagrada: { castingTime: "padrão", range: "pessoal", target: "você", duration: "cena" },
+};
+
+export function formatT20SpellDetails(entry: Pick<T20CompendiumEntry, "castingTime" | "range" | "target" | "area" | "duration" | "savingThrow">): string {
+  return [entry.castingTime && `Execução ${entry.castingTime}`, entry.range && `alcance ${entry.range}`, entry.target && `alvo ${entry.target}`, entry.area && `área ${entry.area}`, entry.duration && `duração ${entry.duration}`, entry.savingThrow && `resistência ${entry.savingThrow}`].filter(Boolean).join(" · ");
+}
+
 const T20_EXPANDED_SPELLS: T20CompendiumEntry[] = [
   ["anular_a_luz", "Anular a Luz", 178, 3, "divina", "Necromancia"],
   ["aparencia_perfeita", "Aparência Perfeita", 178, 2, "arcana", "Ilusão"],
@@ -234,6 +254,7 @@ const T20_EXPANDED_SPELLS: T20CompendiumEntry[] = [
   spellLevel,
   tradition,
   classIds: tradition === "arcana" ? ["arcanista", "bardo"] : tradition === "divina" ? ["clerigo", "druida"] : ["arcanista", "bardo", "clerigo", "druida"],
+  ...T20_SPELL_DETAILS[id],
 })) as T20CompendiumEntry[];
 
 export const T20_SPELLS: T20CompendiumEntry[] = [

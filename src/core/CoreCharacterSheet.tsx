@@ -6,6 +6,7 @@ import { formatDnd5eSpellDetails } from "../data/dnd5e/dnd5eCompendium";
 import { DND5E_CLASS_CHOICES } from "../data/dnd5e/dnd5eOptions";
 import { DND5E_FEAT_CHOICES } from "../data/dnd5e/dnd5eCompendium";
 import { T20_POWER_CHOICES } from "../data/t20/t20Compendium";
+import { formatT20SpellDetails } from "../data/t20/t20Compendium";
 import { T20_CLASS_CHOICES } from "../data/t20/t20Catalog";
 import { getSystemRulesEngine } from "../data/systemRulesEngine";
 import { createCoreEditablePdf, downloadCoreEditablePdf } from "../services/corePdfExport";
@@ -187,7 +188,7 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
 
         <div className="pb-core-loadout">
           <section><h3>Equipamento</h3>{selectedEquipment.length ? <div className="pb-core-sheet-equipment-list">{selectedEquipment.map((entry) => <label key={entry.id}><span>{entry.name}<small>{entry.cost ? ` · ${entry.cost}` : entry.weight !== undefined ? ` · ${entry.weight} lb` : ""}</small></span><input type="number" min={1} step={1} value={getCoreEquipmentQuantity(draft, entry.id)} onChange={(event) => updateEquipmentQuantity(entry.id, Number(event.target.value))} aria-label={`Quantidade de ${entry.name}`} /></label>)}</div> : <p>Nenhum selecionado</p>}</section>
-          <section><h3>Magias</h3><p>{selectedSpells.length ? selectedSpells.map((entry) => `${entry.name} (${formatDnd5eSpellDetails(entry)})`).join(" · ") : "Nenhuma selecionada"}</p></section>
+          <section><h3>Magias</h3><p>{selectedSpells.length ? selectedSpells.map((entry) => `${entry.name} (${system === "dnd5e" ? formatDnd5eSpellDetails(entry) : [formatT20SpellDetails(entry), entry.summary].filter(Boolean).join(" · ")})`).join(" · ") : "Nenhuma selecionada"}</p></section>
           <section><h3>{system === "t20" ? "Poderes" : "Talentos"}</h3><p>{selectedFeats.length ? selectedFeats.map((entry) => `${entry.name}${getCoreFeatQuantity(draft, entry.id) > 1 ? ` ×${getCoreFeatQuantity(draft, entry.id)}` : ""}`).join(" · ") : "Nenhum selecionado"}</p></section>
           {selectedFeatChoices.length > 0 && <section><h3>Escolhas dos talentos</h3><p>{selectedFeatChoices.map(({ choice }) => `${choice.label}: ${(draft.featChoices?.[choice.id] || []).join(", ") || "não selecionado"}`).join(" · ")}</p></section>}
           <section><h3>Moedas</h3><div className="pb-core-coins pb-core-sheet-coins">{(system === "t20" ? [["tibar", "Tibar"]] : [["cp", "PC"], ["sp", "PP"], ["gp", "PO"], ["pp", "PL"]]).map(([key, label]) => <label key={key}>{label}<input type="number" min={0} step={1} value={draft.coins?.[key as keyof NonNullable<MultiSystemCharacter["coins"]>] || 0} onChange={(event) => { setDraft({ ...draft, coins: { ...draft.coins, [key]: Math.max(0, Number(event.target.value)) } }); setSaveError(null); }} /></label>)}</div></section>

@@ -71,6 +71,11 @@ const expectedT20ClassChoiceGroups = {
   "t20.cavaleiro": 1,
   "t20.ladino": 1,
 };
+const expectedT20SpellOperationalMetadata = [
+  "t20.magia.caminhos_da_natureza", "t20.magia.campo_de_forca", "t20.magia.camuflagem_ilusoria", "t20.magia.circulo_da_justica",
+  "t20.magia.comungar_com_a_natureza", "t20.magia.contato_extraplanar", "t20.magia.cupula_de_repulsao", "t20.magia.deflagracao_de_mana",
+  "t20.magia.desintegrar", "t20.magia.duplicata_ilusoria", "t20.magia.enxame_de_pestes", "t20.magia.imobilizar", "t20.magia.luz_sagrada",
+];
 
 async function count(table, systemId, ruleset) {
   const { count: rowCount, error } = await supabase
@@ -150,8 +155,12 @@ async function run() {
   const t20SpellSummaryMismatches = (t20Spells || [])
     .filter((row) => row.data?.id && (!String(row.data?.summary || "").trim() || /^(arcana|divina|universal|essencia) \d+º círculo ·/i.test(String(row.data?.summary || ""))))
     .map((row) => row.id);
-  const ok = results.every((result) => result.ok) && orphanRows.length === 0 && t20ClassChoiceMismatches.length === 0 && backgroundChoiceMismatches.length === 0 && featSummaryMismatches.length === 0 && dndFeatChoiceMismatches.length === 0 && t20PowerChoiceMismatches.length === 0 && t20GeneralPowerSummaryMismatches.length === 0 && t20GrantedTormentaSummaryMismatches.length === 0 && t20SpellSummaryMismatches.length === 0;
-  console.log(JSON.stringify({ ok, results, orphanSubclasses: orphanRows, t20ClassChoiceMismatches, backgroundChoiceMismatches, featSummaryMismatches, dndFeatChoiceMismatches, t20PowerChoiceMismatches, t20GeneralPowerSummaryMismatches, t20GrantedTormentaSummaryMismatches, t20SpellSummaryMismatches }, null, 2));
+  const t20SpellOperationalMismatches = expectedT20SpellOperationalMetadata.filter((id) => {
+    const data = (t20Spells || []).find((row) => row.id === id)?.data || {};
+    return !data.castingTime || !data.range || (!data.target && !data.area) || !data.duration;
+  });
+  const ok = results.every((result) => result.ok) && orphanRows.length === 0 && t20ClassChoiceMismatches.length === 0 && backgroundChoiceMismatches.length === 0 && featSummaryMismatches.length === 0 && dndFeatChoiceMismatches.length === 0 && t20PowerChoiceMismatches.length === 0 && t20GeneralPowerSummaryMismatches.length === 0 && t20GrantedTormentaSummaryMismatches.length === 0 && t20SpellSummaryMismatches.length === 0 && t20SpellOperationalMismatches.length === 0;
+  console.log(JSON.stringify({ ok, results, orphanSubclasses: orphanRows, t20ClassChoiceMismatches, backgroundChoiceMismatches, featSummaryMismatches, dndFeatChoiceMismatches, t20PowerChoiceMismatches, t20GeneralPowerSummaryMismatches, t20GrantedTormentaSummaryMismatches, t20SpellSummaryMismatches, t20SpellOperationalMismatches }, null, 2));
   if (!ok) process.exitCode = 1;
 }
 

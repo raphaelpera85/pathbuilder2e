@@ -13,6 +13,7 @@ const t20SpellMetadataOutput = path.join(root, "supabase/migrations/202609130009
 const dnd5eFeatChoicesOutput = path.join(root, "supabase/migrations/202609130010_refresh_dnd5e_feat_choices.sql");
 const t20PowerChoicesOutput = path.join(root, "supabase/migrations/202609130011_refresh_t20_power_choices.sql");
 const t20SpellEffectRefreshOutput = path.join(root, "supabase/migrations/202609130013_refresh_t20_spell_effects_complete.sql");
+const t20SpellDetailsOutput = path.join(root, "supabase/migrations/202609130014_refresh_t20_spell_operational_metadata.sql");
 
 function loadExports(relativePath) {
   let source = fs.readFileSync(path.join(root, relativePath), "utf8");
@@ -25,9 +26,11 @@ function loadExports(relativePath) {
     .replace(/ as Dnd5eCompendiumEntry/g, "")
     .replace(/ as Record<string, Pick<Dnd5eCompendiumEntry, [^;]+>>/g, "")
     .replace(/export function formatDnd5eSpellDetails[\s\S]*?^\}/m, "")
+    .replace(/export function formatT20SpellDetails[\s\S]*?^\}/m, "")
     .replace(/: Record<string, string>/g, "")
     .replace(/: Record<string, readonly Dnd5eFeatChoice\[\]>/g, "")
     .replace(/: Record<string, readonly T20PowerChoice\[\]>/g, "")
+    .replace(/: Record<string, Pick<T20CompendiumEntry, [^;]+>>/g, "")
     .replace(/: Record<string, Dnd5eFeatPrerequisite \| undefined>/g, "")
     .replace(/ as (?:T20CompendiumEntry\[\]|const)/g, "");
   const exportedNames = relativePath.includes("t20")
@@ -160,4 +163,5 @@ ${spellRows("t20", "padrao", "Tormenta20 — Livro Básico", t20.T20_SPELLS).joi
 ${onConflict(["name_pt","rank","is_cantrip","is_focus","ruleset","source_book","source_page","data","system_id"])}
 `;
 fs.writeFileSync(t20SpellEffectRefreshOutput, t20AllSpellEffectSql, "utf8");
+fs.writeFileSync(t20SpellDetailsOutput, t20AllSpellEffectSql, "utf8");
 console.log(JSON.stringify({ output, spellMetadataOutput, featMetadataOutput, t20PowerMetadataOutput, t20GrantedMetadataOutput, t20CatalogCleanupOutput, t20SpellMetadataOutput, items: allItems.length, spells: allSpells.length, feats: allFeats.length, t20GeneralPowers: t20GeneralPowers.length, t20GrantedAndTormentaPowers: t20GrantedAndTormentaPowers.length, t20SpellSummaryEntries: t20SpellSummaryEntries.length }, null, 2));
