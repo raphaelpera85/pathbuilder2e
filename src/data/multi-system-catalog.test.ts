@@ -34,6 +34,23 @@ describe("Catálogos de criação por sistema", () => {
     expect(firstLevel).not.toContain("dnd5e.magia.misseis_magicos");
   });
 
+  it("cobre as listas de 1º nível do Livro do Jogador por classe", () => {
+    const expectedByClass: Record<string, string[]> = {
+      bruxo: ["escrita_ilusoria", "protecao_contra_bem_mal", "armadura_de_agathys", "repreensao_infernal"],
+      clerigo: ["bencao", "comando", "criar_ou_destruir_agua", "detectar_bem_mal", "detectar_veneno_doenca", "escudo_da_fe", "infringir_ferimentos", "palavra_curativa", "perdicao", "purificar_alimentos", "raio_guiador", "santuario", "curar_ferimentos"],
+      druida: ["amizade_animal", "bom_fruto", "constricao", "criar_ou_destruir_agua", "falar_com_animais", "fogo_das_fadas", "passos_longos", "purificar_alimentos", "salto", "curar_ferimentos"],
+      feiticeiro: ["armadura_arcana", "compreender_idiomas", "disfarcar_se", "enfeiticar_pessoa", "leque_cromatico", "maos_flamejantes", "misseis_magicos", "nevoa_obscurecente", "onda_trovejante", "orbe_cromatica", "queda_suave", "raio_adoecente", "raio_de_bruxa", "recuo_acelerado", "sono", "salto", "vitalidade_falsa"],
+      mago: ["alarme", "area_escorregadia", "armadura_arcana", "compreender_idiomas", "convocar_familiar", "disfarcar_se", "enfeiticar_pessoa", "escudo", "identificacao", "imagem_silenciosa", "leque_cromatico", "maos_flamejantes", "misseis_magicos", "nevoa_obscurecente", "onda_trovejante", "orbe_cromatica", "passos_longos", "queda_suave", "raio_adoecente", "raio_de_bruxa", "recuo_acelerado", "riso_histerico_tasha", "salto", "servo_invisivel", "sono", "vitalidade_falsa"],
+      paladino: ["auxilio_divino", "bencao", "comando", "curar_ferimentos", "destruicao_colerica", "destruicao_lancinante", "destruicao_trovejante", "detectar_bem_mal", "detectar_magia", "detectar_veneno_doenca", "duelo_compelido", "escudo_da_fe", "heroismo", "protecao_contra_bem_mal", "purificar_alimentos"],
+      patrulheiro: ["alarme", "amizade_animal", "bom_fruto", "curar_ferimentos", "detectar_magia", "detectar_veneno_doenca", "falar_com_animais", "golpe_constritor", "marca_do_cacador", "nevoa_obscurecente", "passos_longos", "salto", "saraivada_de_espinhos"],
+    };
+    for (const [classId, ids] of Object.entries(expectedByClass)) {
+      const characterLevel = ["paladino", "patrulheiro"].includes(classId) ? 2 : 1;
+      const available = new Set(getAvailableCoreSpells("dnd5e", classId, characterLevel).map((spell) => spell.id.replace("dnd5e.magia.", "")));
+      expect(ids.filter((id) => !available.has(id)), `${classId} possui magias de 1º nível ausentes`).toEqual([]);
+    }
+  });
+
   it("expõe efeitos resumidos para todos os talentos D&D 5e", () => {
     expect(DND5E_FEATS).toHaveLength(40);
     expect(DND5E_FEATS.every((feat) => feat.summary !== "Talento opcional do Livro do Jogador")).toBe(true);
@@ -49,11 +66,15 @@ describe("Catálogos de criação por sistema", () => {
   it("expõe escolhas estruturadas para poderes T20", () => {
     expect(T20_POWER_CHOICES["t20.poder.foco_em_arma"]?.[0].options).toContain("Espada longa");
     expect(T20_POWER_CHOICES["t20.poder.conhecimento_de_formulas"]?.[0].count).toBe(3);
+    expect(T20_POWER_CHOICES["t20.poder.totem_espiritual"]?.[0].options).toContain("Urso");
+    expect(T20_POWER_CHOICES["t20.poder.automato"]?.[0].options).toContain("Montaria");
+    expect(T20_POWER_CHOICES["t20.poder.nome_na_arena"]?.[0].options).toContain("Intimidação");
     expect(Object.values(T20_POWER_CHOICES).flat().every((choice) => choice.options.length >= choice.count)).toBe(true);
   });
 
   it("expõe escolhas estruturadas de classe T20", () => {
     expect(T20_CLASS_CHOICES.find((choice) => choice.id === "t20-cavaleiro-path")?.options).toEqual(["Bastião", "Montaria"]);
+    expect(T20_CLASS_CHOICES.find((choice) => choice.id === "t20-paladino-justice-blessing")?.minimumLevel).toBe(5);
     expect(T20_CLASS_CHOICES.every((choice) => choice.options.length >= choice.count)).toBe(true);
   });
   it("mantém o núcleo de criação T20 separado e rastreável", () => {
@@ -144,6 +165,10 @@ describe("Catálogos de criação por sistema", () => {
     expect(DND5E_EQUIPMENT.find((entry) => entry.id === "dnd5e.equipamento.pocao_de_cura")?.cost).toBe("50 po");
     expect(DND5E_EQUIPMENT.find((entry) => entry.id === "dnd5e.equipamento.kit_de_escalada")?.sourcePage).toBe(154);
     expect(DND5E_EQUIPMENT.find((entry) => entry.id === "dnd5e.equipamento.balanca_de_comerciante")?.weight).toBe(3);
+    expect(DND5E_EQUIPMENT).toHaveLength(206);
+    expect(DND5E_EQUIPMENT.find((entry) => entry.id === "dnd5e.equipamento.cavalo_guerra")?.cost).toBe("400 po");
+    expect(DND5E_EQUIPMENT.find((entry) => entry.id === "dnd5e.equipamento.foco_bastao")?.cost).toBe("10 po");
+    expect(DND5E_EQUIPMENT.find((entry) => entry.id === "dnd5e.equipamento.ferramentas_ferreiro")?.sourcePage).toBe(156);
     expect(T20_EQUIPMENT.find((entry) => entry.id === "t20.arma.adaga")?.cost).toBe("T$ 2");
     expect(T20_EQUIPMENT.find((entry) => entry.id === "t20.armadura.pesada")?.cost).toBe("T$ 3.000");
     expect(T20_EQUIPMENT.find((entry) => entry.id === "t20.equipamento.corda")?.cost).toBe("T$ 1");
@@ -152,6 +177,8 @@ describe("Catálogos de criação por sistema", () => {
     expect(DND5E_EQUIPMENT.filter((entry) => entry.id.startsWith("dnd5e.municao."))).toHaveLength(4);
     expect(DND5E_EQUIPMENT.find((entry) => entry.id === "dnd5e.municao.balas_funda")?.cost).toBe("4 pc");
     expect(DND5E_EQUIPMENT.find((entry) => entry.id === "dnd5e.arma.zarabatana")?.cost).toBe("10 po");
+    expect(DND5E_EQUIPMENT.find((entry) => entry.id === "dnd5e.arma.arco_curto")).toMatchObject({ range: "24/96m", ammunitionType: "flecha", weaponProperties: ["munição", "duas mãos"] });
+    expect(DND5E_EQUIPMENT.find((entry) => entry.id === "dnd5e.arma.besta_leve")).toMatchObject({ range: "24/96m", ammunitionType: "virote", weaponProperties: ["munição", "recarga", "duas mãos"] });
     expect(new Set(DND5E_EQUIPMENT.map((entry) => entry.id)).size).toBe(DND5E_EQUIPMENT.length);
     expect(DND5E_SPELLS.length).toBeGreaterThan(35);
     expect(DND5E_FEATS.length).toBeGreaterThan(35);

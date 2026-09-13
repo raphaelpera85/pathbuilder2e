@@ -599,7 +599,12 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
               {character.featIds.flatMap((featId) => (featChoiceCatalog[featId] || []).map((choice) => ({ featId, choice }))).map(({ featId, choice }) => {
                 const selected = character.featChoices?.[choice.id] || [];
                 const feat = catalog.feats.find((entry) => entry.id === featId);
-                return <fieldset key={choice.id} className="pb-core-choice-group"><legend>{feat?.name}: {choice.label} ({choice.count})</legend><div className="pb-core-choice-grid">{choice.options.map((option) => <label key={option}><input type="checkbox" checked={selected.includes(option)} disabled={!selected.includes(option) && selected.length >= choice.count} onChange={(event) => update("featChoices", { ...character.featChoices, [choice.id]: event.target.checked ? [...selected, option] : selected.filter((value) => value !== option) })} />{option}</label>)}</div></fieldset>;
+                const flexibleChoice = choice as typeof choice & { minCount?: number; maxCount?: number; optionCosts?: Readonly<Record<string, number | string>> };
+                const minCount = flexibleChoice.minCount ?? choice.count;
+                const maxCount = flexibleChoice.maxCount ?? choice.count;
+                const optionCosts = flexibleChoice.optionCosts;
+                const costText = optionCosts ? selected.map((option) => optionCosts[option] !== undefined ? `${option}: ${optionCosts[option]} PM` : option).join(" · ") : "";
+                return <fieldset key={choice.id} className="pb-core-choice-group"><legend>{feat?.name}: {choice.label} ({selected.length}/{maxCount})</legend>{costText && <small>Custos selecionados: {costText}. O custo total do Golpe Pessoal deve respeitar seu nível.</small>}<div className="pb-core-choice-grid">{choice.options.map((option) => <label key={option}><input type="checkbox" checked={selected.includes(option)} disabled={!selected.includes(option) && selected.length >= maxCount} onChange={(event) => update("featChoices", { ...character.featChoices, [choice.id]: event.target.checked ? [...selected, option] : selected.filter((value) => value !== option) })} />{option}{optionCosts?.[option] !== undefined ? ` (${optionCosts[option]} PM)` : ""}</label>)}</div>{selected.length < minCount && <small>Selecione pelo menos {minCount} opção(ões).</small>}</fieldset>;
               })}
             </label>
           </div>

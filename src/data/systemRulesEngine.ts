@@ -578,11 +578,25 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
           if (!choice) errors.push("a escolha de talento só pode ser informada para um talento selecionado");
           else if (new Set(values).size !== values.length) errors.push(`a escolha ${choice.label} de talento não pode conter opções repetidas`);
           else if (values.some((value) => !choice.options.includes(value))) errors.push(`a escolha ${choice.label} de talento contém uma opção inválida`);
-          else if (values.length !== choice.count) errors.push(`a escolha ${choice.label} de talento exige exatamente ${choice.count} opção(ões)`);
+          else {
+            const flexibleChoice = choice as typeof choice & { minCount?: number; maxCount?: number; optionCosts?: Readonly<Record<string, number | string>> };
+            const minCount = flexibleChoice.minCount ?? choice.count;
+            const maxCount = flexibleChoice.maxCount ?? choice.count;
+            if (values.length < minCount || values.length > maxCount) errors.push(minCount === maxCount ? `a escolha ${choice.label} de talento exige exatamente ${minCount} opção(ões)` : `a escolha ${choice.label} de talento exige entre ${minCount} e ${maxCount} opção(ões)`);
+            const optionCosts = flexibleChoice.optionCosts;
+            const numericCost = optionCosts ? values.reduce((total, value) => total + (typeof optionCosts[value] === "number" ? optionCosts[value] as number : 0), 0) : 0;
+            if (numericCost > character.level) errors.push(`o custo conhecido de ${choice.label} não pode exceder o nível do personagem`);
+          }
         }
         for (const choice of declaredChoices.values()) {
           const values = character.featChoices?.[choice.id] || [];
-          if (values.length !== choice.count) errors.push(`a escolha ${choice.label} de talento exige exatamente ${choice.count} opção(ões)`);
+          const flexibleChoice = choice as typeof choice & { minCount?: number; maxCount?: number; optionCosts?: Readonly<Record<string, number | string>> };
+          const minCount = flexibleChoice.minCount ?? choice.count;
+          const maxCount = flexibleChoice.maxCount ?? choice.count;
+          if (values.length < minCount || values.length > maxCount) errors.push(minCount === maxCount ? `a escolha ${choice.label} de talento exige exatamente ${minCount} opção(ões)` : `a escolha ${choice.label} de talento exige entre ${minCount} e ${maxCount} opção(ões)`);
+          const optionCosts = flexibleChoice.optionCosts;
+          const numericCost = optionCosts ? values.reduce((total, value) => total + (typeof optionCosts[value] === "number" ? optionCosts[value] as number : 0), 0) : 0;
+          if (numericCost > character.level) errors.push(`o custo conhecido de ${choice.label} não pode exceder o nível do personagem`);
         }
       }
       if (systemId === "t20" && progression && "powerLevels" in progression) {

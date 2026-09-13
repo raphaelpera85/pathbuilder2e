@@ -64,6 +64,7 @@ export const T20_CLASS_CHOICES: readonly T20ClassChoice[] = [
   { id: "t20-cacador-favored-terrain", classId: "cacador", label: "Terreno favorecido", minimumLevel: 1, options: ["Deserto", "Floresta", "Montanha", "Pântano", "Planície", "Subterrâneo", "Urbano", "Litoral"], count: 1 },
   { id: "t20-cavaleiro-path", classId: "cavaleiro", label: "Caminho do Cavaleiro", minimumLevel: 5, options: ["Bastião", "Montaria"], count: 1 },
   { id: "t20-ladino-specialist", classId: "ladino", label: "Perícias de Especialista", minimumLevel: 1, options: ["Acrobacia", "Adestramento", "Atletismo", "Atuação", "Cavalgar", "Conhecimento", "Cura", "Diplomacia", "Enganação", "Furtividade", "Guerra", "Iniciativa", "Intimidação", "Intuição", "Investigação", "Ladinagem", "Luta", "Misticismo", "Nobreza", "Ofício", "Percepção", "Pilotagem", "Pontaria", "Religião", "Sobrevivência", "Vontade"], count: 2 },
+  { id: "t20-paladino-justice-blessing", classId: "paladino", label: "Bênção da Justiça", minimumLevel: 5, options: ["Égide Sagrada", "Montaria Sagrada"], count: 1 },
 ];
 
 export const T20_ARCANIST_PATHS = [

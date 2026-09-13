@@ -806,6 +806,14 @@ describe("system rules engines", () => {
     expect(T20_RULES_ENGINE.validateCharacter(character)).not.toContain("a escolha Arma de talento exige exatamente 1 opção(ões)");
     character.featChoices = { "t20-weapon-focus": ["Arma inexistente"] };
     expect(T20_RULES_ENGINE.validateCharacter(character)).toContain("a escolha Arma de talento contém uma opção inválida");
+    character.level = 5;
+    character.featIds = ["t20.poder.golpe_pessoal"];
+    expect(T20_RULES_ENGINE.validateCharacter(character).some((error) => error.includes("Arma do Golpe Pessoal"))).toBe(true);
+    character.featChoices = {
+      "t20-personal-strike-weapon": ["Espada longa"],
+      "t20-personal-strike-effects": ["Brutal", "Preciso", "Impactante"],
+    };
+    expect(T20_RULES_ENGINE.validateCharacter(character).some((error) => error.includes("Efeitos do Golpe Pessoal"))).toBe(false);
   });
 
   it("requires valid structural class choices for T20", () => {

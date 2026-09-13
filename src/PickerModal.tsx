@@ -1306,7 +1306,7 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
                         {(selectedItem.data?.range ?? selectedItem.data?.rangeFeet) !== undefined && (
                           <div className="pws-stat">
                             <span className="pws-label">{locale === "en" ? "Range" : locale === "es" ? "Alcance" : "Alcance"}</span>
-                            <strong className="pws-value">{String(selectedItem.data?.range ?? selectedItem.data?.rangeFeet)} {locale === "en" ? "ft" : "pés"}</strong>
+                            <strong className="pws-value">{String(selectedItem.data?.range ?? selectedItem.data?.rangeFeet)} {selectedItem.data?.range !== undefined ? "" : locale === "en" ? "ft" : "pés"}</strong>
                           </div>
                         )}
                         {selectedItem.data?.reload !== undefined && (

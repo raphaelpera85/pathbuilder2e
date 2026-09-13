@@ -48,6 +48,12 @@ describe("responsive layout contract", () => {
     expect(css).toContain("overflow-y: hidden !important;");
     expect(css).toContain("overflow-y: auto;");
     expect(css).toContain("overscroll-behavior: contain;");
+    expect(css).toContain("-webkit-overflow-scrolling: touch;");
+    expect(css).toContain("touch-action: pan-y;");
+    expect(css).toContain("body:has(#legacy-builder-root) {");
+    expect(css).toContain("body:has(#legacy-builder-root) #legacy-builder-root.pb-workspace {");
+    expect(css).toContain("touch-action: pan-y pinch-zoom;");
+    expect(css).toContain("max-height: none;");
     expect(css).toContain("#gearList");
     expect(css).toContain("#featsFullList");
     expect(css).toContain("#spellsList");

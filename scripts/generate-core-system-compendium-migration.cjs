@@ -14,6 +14,10 @@ const dnd5eFeatChoicesOutput = path.join(root, "supabase/migrations/202609130010
 const t20PowerChoicesOutput = path.join(root, "supabase/migrations/202609130011_refresh_t20_power_choices.sql");
 const t20SpellEffectRefreshOutput = path.join(root, "supabase/migrations/202609130013_refresh_t20_spell_effects_complete.sql");
 const t20SpellDetailsOutput = path.join(root, "supabase/migrations/202609130014_refresh_t20_spell_operational_metadata.sql");
+const t20EquipmentExpansionOutput = path.join(root, "supabase/migrations/202609130028_expand_t20_equipment_catalog.sql");
+const dnd5eEquipmentExpansionOutput = path.join(root, "supabase/migrations/202609130029_expand_dnd5e_mounts_vehicles.sql");
+const dnd5eAdditionalGearOutput = path.join(root, "supabase/migrations/202609130030_expand_dnd5e_core_gear_tools.sql");
+const dnd5eWeaponMetadataOutput = path.join(root, "supabase/migrations/202609130031_refresh_dnd5e_weapon_metadata.sql");
 
 function loadExports(relativePath) {
   let source = fs.readFileSync(path.join(root, relativePath), "utf8");
@@ -24,6 +28,7 @@ function loadExports(relativePath) {
     .replace(/export const /g, "const ")
     .replace(/: (?:T20CompendiumEntry|Dnd5eCompendiumEntry)\[\]/g, "")
     .replace(/ as Dnd5eCompendiumEntry/g, "")
+    .replace(/: Record<string, Pick<Dnd5eCompendiumEntry, [^;]+>>/g, "")
     .replace(/ as Record<string, Pick<Dnd5eCompendiumEntry, [^;]+>>/g, "")
     .replace(/export function formatDnd5eSpellDetails[\s\S]*?^\}/m, "")
     .replace(/export function formatT20SpellDetails[\s\S]*?^\}/m, "")
@@ -101,6 +106,30 @@ ${onConflict(["feat_type","level","name_pt","ruleset","source_book","source_page
 `;
 
 fs.writeFileSync(output, sqlText, "utf8");
+const t20EquipmentExpansionSql = `-- Expansão idempotente do catálogo de equipamentos T20 a partir das Tabelas 3-3, 3-4 e 3-5 do Livro Básico.
+insert into public.catalog_items (id,name_pt,item_category,ruleset,source_book,source_page,data,system_id) values
+${itemRows("t20", "padrao", "Tormenta20 — Livro Básico", t20.T20_EQUIPMENT).join(",\n")}
+${onConflict(["name_pt","item_category","ruleset","source_book","source_page","data","system_id"])}
+`;
+fs.writeFileSync(t20EquipmentExpansionOutput, t20EquipmentExpansionSql, "utf8");
+const dnd5eEquipmentExpansionSql = `-- Expansão idempotente de montarias, arreios e veículos D&D 5e do Livro do Jogador (2014), pp. 158–159.
+insert into public.catalog_items (id,name_pt,item_category,ruleset,source_book,source_page,data,system_id) values
+${itemRows("dnd5e", "standard", "D&D 5e — Livro do Jogador (2014)", dnd5e.DND5E_EQUIPMENT).join(",\n")}
+${onConflict(["name_pt","item_category","ruleset","source_book","source_page","data","system_id"])}
+`;
+fs.writeFileSync(dnd5eEquipmentExpansionOutput, dnd5eEquipmentExpansionSql, "utf8");
+const dnd5eAdditionalGearSql = `-- Expansão idempotente do equipamento, focos, ferramentas e jogos D&D 5e do Livro do Jogador (2014), pp. 152 e 156.
+insert into public.catalog_items (id,name_pt,item_category,ruleset,source_book,source_page,data,system_id) values
+${itemRows("dnd5e", "standard", "D&D 5e — Livro do Jogador (2014)", dnd5e.DND5E_EQUIPMENT).join(",\n")}
+${onConflict(["name_pt","item_category","ruleset","source_book","source_page","data","system_id"])}
+`;
+fs.writeFileSync(dnd5eAdditionalGearOutput, dnd5eAdditionalGearSql, "utf8");
+const dnd5eWeaponMetadataSql = `-- Refresh idempotente das propriedades operacionais das armas D&D 5e.
+insert into public.catalog_items (id,name_pt,item_category,ruleset,source_book,source_page,data,system_id) values
+${itemRows("dnd5e", "standard", "D&D 5e — Livro do Jogador (2014)", dnd5e.DND5E_EQUIPMENT.filter((entry) => entry.category === "arma")).join(",\n")}
+${onConflict(["name_pt","item_category","ruleset","source_book","source_page","data","system_id"])}
+`;
+fs.writeFileSync(dnd5eWeaponMetadataOutput, dnd5eWeaponMetadataSql, "utf8");
 const spellMetadataSql = `-- Refresh idempotente dos metadados de execução das magias do compêndio core.
 insert into public.catalog_spells (id,name_pt,rank,is_cantrip,is_focus,ruleset,source_book,source_page,data,system_id) values
 ${allSpells.join(",\n")}
@@ -164,4 +193,4 @@ ${onConflict(["name_pt","rank","is_cantrip","is_focus","ruleset","source_book","
 `;
 fs.writeFileSync(t20SpellEffectRefreshOutput, t20AllSpellEffectSql, "utf8");
 fs.writeFileSync(t20SpellDetailsOutput, t20AllSpellEffectSql, "utf8");
-console.log(JSON.stringify({ output, spellMetadataOutput, featMetadataOutput, t20PowerMetadataOutput, t20GrantedMetadataOutput, t20CatalogCleanupOutput, t20SpellMetadataOutput, items: allItems.length, spells: allSpells.length, feats: allFeats.length, t20GeneralPowers: t20GeneralPowers.length, t20GrantedAndTormentaPowers: t20GrantedAndTormentaPowers.length, t20SpellSummaryEntries: t20SpellSummaryEntries.length }, null, 2));
+console.log(JSON.stringify({ output, spellMetadataOutput, featMetadataOutput, t20PowerMetadataOutput, t20GrantedMetadataOutput, t20CatalogCleanupOutput, t20SpellMetadataOutput, t20EquipmentExpansionOutput, dnd5eEquipmentExpansionOutput, dnd5eAdditionalGearOutput, dnd5eWeaponMetadataOutput, items: allItems.length, spells: allSpells.length, feats: allFeats.length, t20GeneralPowers: t20GeneralPowers.length, t20GrantedAndTormentaPowers: t20GrantedAndTormentaPowers.length, t20SpellSummaryEntries: t20SpellSummaryEntries.length }, null, 2));

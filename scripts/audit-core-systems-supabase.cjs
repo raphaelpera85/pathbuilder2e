@@ -18,8 +18,8 @@ if (!url || !key) throw new Error("VITE_SUPABASE_URL e uma chave Supabase são o
 const supabase = createClient(url, key);
 
 const expected = {
-  "dnd5e/standard": { catalog_ancestries: 9, catalog_classes: 12, catalog_backgrounds: 13, catalog_subclasses: 40, catalog_items: 111, catalog_spells: 58, catalog_feats: 40 },
-  "t20/padrao": { catalog_ancestries: 17, catalog_classes: 14, catalog_backgrounds: 35, catalog_items: 66, catalog_spells: 66, catalog_feats: 412 },
+  "dnd5e/standard": { catalog_ancestries: 9, catalog_classes: 12, catalog_backgrounds: 13, catalog_subclasses: 40, catalog_items: 206, catalog_spells: 301, catalog_feats: 40 },
+  "t20/padrao": { catalog_ancestries: 17, catalog_classes: 14, catalog_backgrounds: 35, catalog_items: 112, catalog_spells: 66, catalog_feats: 412 },
   "ose/advanced": { catalog_ancestries: 10, catalog_classes: 16, catalog_items: 53, catalog_spells: 34, catalog_feats: 0 },
 };
 const expectedDndBackgroundChoices = {
@@ -61,6 +61,10 @@ const expectedT20PowerChoiceGroups = {
   "t20.poder.forma_selvagem": 1,
   "t20.poder.especialista_em_escola": 1,
   "t20.poder.familiar": 1,
+  "t20.poder.totem_espiritual": 1,
+  "t20.poder.automato": 1,
+  "t20.poder.nome_na_arena": 1,
+  "t20.poder.golpe_pessoal": 2,
   "t20.poder.orar": 1,
   "t20.poder.conhecimento_magico": 1,
   "t20.poder.conhecimento_de_formulas": 1,
@@ -70,6 +74,7 @@ const expectedT20ClassChoiceGroups = {
   "t20.cacador": 2,
   "t20.cavaleiro": 1,
   "t20.ladino": 1,
+  "t20.paladino": 1,
 };
 const expectedT20SpellOperationalMetadata = [
   "t20.magia.caminhos_da_natureza", "t20.magia.campo_de_forca", "t20.magia.camuflagem_ilusoria", "t20.magia.circulo_da_justica",
