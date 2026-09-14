@@ -355,15 +355,55 @@ function CatalogPage() {
     (rulesetFilter !== "all" ? 1 : 0) +
     (rarityFilter !== "all" ? 1 : 0) +
     (bookFilter !== "all" ? 1 : 0);
+  const inspectedTriggerRef = useRef<HTMLElement | null>(null);
+  const inspectedTriggerKeyRef = useRef<string | null>(null);
+  const inspectedCloseRequestedRef = useRef(false);
+
+  const openInspectedEntry = (entry: PickerItem & { category: PickerType; categoryLabel: string }, trigger?: HTMLElement) => {
+    inspectedTriggerRef.current = trigger || (document.activeElement instanceof HTMLElement ? document.activeElement : null);
+    inspectedTriggerKeyRef.current = String(entry.data.id ?? `${entry.category}:${entry.name}`);
+    setInspectedEntry(entry);
+  };
+
+  const closeInspectedEntry = () => {
+    inspectedCloseRequestedRef.current = true;
+    const trigger = inspectedTriggerRef.current;
+    const triggerKey = inspectedTriggerKeyRef.current;
+    setInspectedEntry(null);
+    window.setTimeout(() => {
+      const currentTrigger = trigger?.isConnected
+        ? trigger
+        : Array.from(document.querySelectorAll<HTMLElement>("[data-catalog-entry]"))
+          .find((element) => element.dataset.catalogEntry === triggerKey);
+      currentTrigger?.focus();
+      window.setTimeout(() => {
+        const latestTrigger = Array.from(document.querySelectorAll<HTMLElement>("[data-catalog-entry]"))
+          .find((element) => element.dataset.catalogEntry === triggerKey);
+        latestTrigger?.focus();
+        inspectedTriggerRef.current = null;
+        inspectedTriggerKeyRef.current = null;
+      }, 100);
+    }, 0);
+  };
 
   useEffect(() => {
+    if (inspectedEntry || !inspectedCloseRequestedRef.current) return;
+    const trigger = inspectedTriggerRef.current;
+    if (trigger?.isConnected) {
+      trigger.focus();
+      inspectedTriggerRef.current = null;
+      inspectedTriggerKeyRef.current = null;
+    }
+    inspectedCloseRequestedRef.current = false;
+  }, [inspectedEntry]);
+
+  useLayoutEffect(() => {
     if (!inspectedEntry) return;
-    const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-    const focusCloseButton = window.requestAnimationFrame(() => inspectedCloseRef.current?.focus());
+    inspectedCloseRef.current?.focus();
     const handleDialogKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         event.preventDefault();
-        setInspectedEntry(null);
+        closeInspectedEntry();
         return;
       }
       if (event.key !== "Tab" || !inspectedCloseRef.current) return;
@@ -385,9 +425,7 @@ function CatalogPage() {
     };
     document.addEventListener("keydown", handleDialogKeyDown);
     return () => {
-      window.cancelAnimationFrame(focusCloseButton);
       document.removeEventListener("keydown", handleDialogKeyDown);
-      previousFocus?.focus();
     };
   }, [inspectedEntry]);
 
@@ -446,18 +484,18 @@ function CatalogPage() {
     {isCatalogLoading && entries.length === 0 ? <div className="portal-empty" role="status" aria-live="polite" aria-busy="true">{t("loadingCatalog")}</div>
       : catalogLoadFailed && entries.length === 0 ? <div className="portal-empty" role="alert"><p>{t("catalogLoadFailed")}</p><button type="button" onClick={handleManualSync} disabled={isSyncing}>{t("retry")}</button></div>
       : filtered.length === 0 ? <div className="portal-empty">{hasHiddenCatalogMatches && <p className="portal-warning" role="status">{t("catalogHiddenByFilters")}</p>}<p>{t("noCatalogResults")}</p></div> : <section className="catalog-grid" aria-label={t("compendiumTitle")}>
-      {filtered.map((entry, index) => <CatalogCard key={`${entry.category}-${entry.name}-${index}`} entry={entry} onInspect={() => setInspectedEntry(entry)} />)}
+      {filtered.map((entry) => <CatalogCard key={`${entry.category}-${entry.data.id ?? entry.name}`} entry={entry} onInspect={(trigger) => openInspectedEntry(entry, trigger)} />)}
     </section>}
 
     {/* MODAL DE INSPEÇÃO DETALHADA */}
-    {inspectedEntry && <div className="compendium-modal-overlay" onClick={() => setInspectedEntry(null)} role="dialog" aria-modal="true" aria-labelledby="compendium-modal-title">
+    {inspectedEntry && <div className="compendium-modal-overlay" onClick={closeInspectedEntry} role="dialog" aria-modal="true" aria-labelledby="compendium-modal-title">
       <div className="compendium-modal" onClick={(e) => e.stopPropagation()}>
         <header className="compendium-modal-header">
           <div className="compendium-modal-title">
             <span className="category-tag">{inspectedEntry.categoryLabel}</span>
             <h2 id="compendium-modal-title">{getItemDisplayName(inspectedEntry, locale)}</h2>
           </div>
-          <button ref={inspectedCloseRef} type="button" className="compendium-modal-close" onClick={() => setInspectedEntry(null)} aria-label={t("close")}>✕</button>
+          <button ref={inspectedCloseRef} type="button" className="compendium-modal-close" onClick={closeInspectedEntry} aria-label={t("close")}>✕</button>
         </header>
 
         <div className="compendium-modal-body">
@@ -562,7 +600,7 @@ function getLocalizedTrait(trait: string, locale: "pt-BR" | "en" | "es"): string
   return legacyApp?.localizeTrait?.(trait, locale) || trait;
 }
 
-function CatalogCard({ entry, onInspect }: { entry: PickerItem & { category: PickerType; categoryLabel: string }; onInspect?: () => void }) {
+function CatalogCard({ entry, onInspect }: { entry: PickerItem & { category: PickerType; categoryLabel: string }; onInspect?: (trigger: HTMLElement) => void }) {
   const { locale, t } = useI18n();
   const source = entry.data.source;
   const approximateSource = Boolean(entry.data.sourceApproximate);
@@ -604,10 +642,10 @@ function CatalogCard({ entry, onInspect }: { entry: PickerItem & { category: Pic
     entry.data.price ? `${t("price")}: ${formatPriceToLocale(entry.data.price, locale)}` : null,
     entry.data.variantFamily ? `${locale === "en" ? "Variant" : locale === "es" ? "Variante" : "Variante"}: ${entry.data.variantRole === "ranged" ? (locale === "en" ? "Ranged" : locale === "es" ? "A distancia" : "À distância") : entry.data.variantRole === "melee" ? (locale === "en" ? "Melee" : locale === "es" ? "Cuerpo a cuerpo" : "Corpo a corpo") : entry.data.variantFamily}` : null,
   ].filter((fact): fact is string => Boolean(fact));
-  return <article className="catalog-card interactive" onClick={onInspect} tabIndex={0} onKeyDown={(e) => {
+  return <article className="catalog-card interactive" data-catalog-entry={String(entry.data.id ?? `${entry.category}:${entry.name}`)} onClick={(e) => onInspect?.(e.currentTarget)} tabIndex={0} onKeyDown={(e) => {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
-      onInspect?.();
+      onInspect?.(e.currentTarget);
     }
   }} role="button" aria-label={displayName}>
     <div className="catalog-card-top"><div className="catalog-card-meta"><span>{entry.categoryLabel}</span>{rarity && <span className={`rarity-badge ${String(entry.data.rarity)}`}>{rarity}</span>}</div><div className="catalog-card-status"><span className={legacy ? "source-badge legacy" : verified ? "source-badge verified" : "source-badge review"}>{legacy ? t("catalogLegacy") : verified ? t("catalogVerified") : t("catalogReview")}</span>{approximateSource && <span className="source-badge review">{t("sourceSectionReference")}</span>}{translationPending && <span className="source-badge translation-pending">{t("translationPending")}</span>}</div></div>
@@ -2031,7 +2069,6 @@ export function PortalPages() {
     if (characterTab) characterTab.hidden = !onBuilder;
     document.body.classList.toggle("portal-page-active", !onBuilder);
     document.documentElement.classList.toggle("portal-page-active", !onBuilder);
-    if (!onBuilder) requestAnimationFrame(() => document.getElementById("portal-content")?.focus({ preventScroll: true }));
   }, [route]);
 
   useEffect(() => {

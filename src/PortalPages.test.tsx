@@ -106,6 +106,19 @@ describe("PortalPages", () => {
     expect(screen.getByText("Primary check: Arcana")).toBeInTheDocument();
   });
 
+  it("retorna o foco ao card que abriu o detalhe do compêndio", async () => {
+    window.location.hash = "#/compendium";
+    render(<I18nProvider><PortalPages /></I18nProvider>, { container: document.getElementById("test-root")! });
+    const card = screen.getByRole("button", { name: "Anão" });
+    card.focus();
+    fireEvent.keyDown(card, { key: "Enter" });
+    await waitFor(() => expect(screen.getByRole("dialog")).toBeInTheDocument());
+    expect(document.activeElement).toBe(screen.getByRole("button", { name: "Fechar" }));
+    fireEvent.keyDown(document, { key: "Escape" });
+    await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument());
+    expect(document.activeElement).toBe(card);
+  });
+
   it.each([
     ["pt-BR", "BASE DE CONHECIMENTO PATHBUILDER"],
     ["en", "PATHBUILDER KNOWLEDGE BASE"],

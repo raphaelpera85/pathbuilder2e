@@ -337,7 +337,15 @@ export function getAvailableCoreSpells(system: SupportedCoreSystem, classId: str
       : classId === "bruxo"
         ? Math.min(5, Math.floor((safeLevel + 1) / 2))
         : Math.min(9, Math.max(0, Math.ceil((["paladino", "patrulheiro"].includes(classId) ? Math.floor(safeLevel / 2) : safeLevel) / 2)));
-  const bardSchools = system === "t20" && classId === "bardo" ? character?.classChoices?.["t20-bardo-schools"] || [] : [];
+  const rawBardSchools = system === "t20" && classId === "bardo" ? character?.classChoices?.["t20-bardo-schools"] : undefined;
+  const bardSchools = Array.isArray(rawBardSchools) ? rawBardSchools : [];
+  // A Bardo must choose the three schools required by the class before the
+  // builder can offer class spells. Keep the helper's catalog-preview mode
+  // available when no character is supplied, while making the character flow
+  // converge on the same rule as validation.
+  if (system === "t20" && classId === "bardo" && character && bardSchools.length !== 3) {
+    return Array.from(new Map([...dndFeatSpells, ...grantedSpells].map((spell) => [spell.id, spell])).values());
+  }
   const spellListClassId = thirdCasterSubclass ? "mago" : classId;
   const classSpells = catalog.spells.filter((spell) => {
     if (hasPaladinPrayer) return "tradition" in spell && spell.tradition === "divina" && spell.spellLevel === 1;

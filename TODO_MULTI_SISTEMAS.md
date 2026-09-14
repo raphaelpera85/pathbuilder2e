@@ -80,7 +80,7 @@ Este é o backlog executável para transformar o construtor atual em uma platafo
 | --- | --- | --- | --- |
 | Arcanista | 20 poderes do Livro Básico | Magias, círculos-base, PM e caminho/linhagem selecionáveis | Efeitos completos das linhagens e escolhas de familiar |
 | Bárbaro | 17 | Fúria, instinto, RD | Efeitos situacionais dos poderes |
-| Bardo | 19 | Inspiração, PM e repertório | Escolha das três escolas de magia |
+| Bardo | 19 | Inspiração, PM e repertório | Efeitos situacionais dos poderes |
 | Bucaneiro | 18 | Audácia, Insolência e evasões | Bravatas persistidas |
 | Caçador | 21 | Marca, exploração e mestre caçador | Terrenos/inimigos escolhidos |
 | Cavaleiro | 19 | Baluarte, duelo e bravura | Caminho e postura ativos |
@@ -350,6 +350,8 @@ Este é o backlog executável para transformar o construtor atual em uma platafo
 - [ ] Acessibilidade: labels, foco, teclado, mensagens `aria-live` e estados de carregamento.
   - Progresso adicional: os modais core/OSE já têm foco inicial, retorno de foco, Escape e contenção de Tab; o wizard OSE expõe as etapas como tabs, associa descrição ao diálogo e ganhou indicadores de foco visíveis. Mensagens de validação usam região de alerta; ainda falta uma auditoria WCAG completa das telas legadas e do portal.
   - Progresso adicional: cards interativos do compêndio agora respondem a Enter e Espaço, além de clique, com contrato automatizado de regressão.
+  - Progresso adicional: o detalhe do compêndio agora move o foco para Fechar e devolve o foco ao card original mesmo quando a sincronização recria a lista; `audit:local:interactions` e o teste do portal cobrem o fluxo completo.
+  - Auditoria WCAG automatizável: `npm run audit:local:accessibility` passou em Compêndio, Downloads, Regras e Privacidade em 375×667 touch, sem controles sem nome, alvos interativos menores que 24px, diálogos órfãos ou bloqueio de rolagem; os controles de idioma e sincronização receberam alvo mínimo.
   - Progresso: o seletor de sistemas e o wizard OSE agora associam título ao diálogo, movem/devolvem o foco, contêm Tab e mantêm Escape/bloqueio de rolagem; o wizard/ficha core já têm mensagens `role=alert`; ainda falta auditar todos os campos e estados de carregamento.
   - Correção adicional: estados de carregamento do compêndio, biblioteca, personagens e portal agora usam `role=status`, `aria-live=polite` e `aria-busy=true` enquanto aguardam dados.
   - Auditoria visual adicional: `npm run audit:local:responsive` passou em 10 tamanhos para construtor e compêndio; `npm run audit:visual:acceptance` passou em 75 combinações de idioma/tamanho/categoria e 9.112 cards, incluindo 320×568. Os comandos foram registrados no `package.json`.
@@ -393,9 +395,10 @@ Este é o backlog executável para transformar o construtor atual em uma platafo
 - [x] Smoke test no navegador para cada sistema.
   - Evidência: servidor Vite local verificado em 12/09/2026; o seletor abriu os quatro sistemas e cada fluxo mostrou o destino correto: PF2e carregou a ficha existente, T20 exibiu 17 raças/14 classes e compêndio próprio, D&D 5e exibiu opções/itens do Livro do Jogador e OSE abriu o wizard em quatro etapas com rolagem 3d6.
   - Progresso: fluxo de abertura do seletor e criação D&D 5e verificado no navegador local; wizard exibiu raça, sub-raça, classe, subclasse, antecedente, alinhamento, métodos de atributo, perícias, equipamento, recursos e progressão.
-- [ ] Auditoria final de `system_id`, regraset, fontes, duplicatas e registros órfãos.
-  - Progresso: `validateCharacter` agora rejeita combinações de sistema/ruleset incompatíveis antes do salvamento; ainda falta a auditoria remota completa dos registros já existentes.
+- [x] Auditoria final de `system_id`, regraset, fontes, duplicatas e registros órfãos.
+  - Progresso: `validateCharacter` agora rejeita combinações de sistema/ruleset incompatíveis antes do salvamento; a auditoria remota das fichas já existentes foi concluída.
   - Evidência local adicional: `src/data/coreCompendium.test.ts` verifica IDs únicos e proveniência mínima (sistema, ruleset, livro e página) em T20, D&D 5e e OSE; `src/data/multi-system-catalog.test.ts` agora verifica referências de progressões, subclasses, sub-raças, perícias, magias, itens e talentos sem órfãos. Essa auditoria encontrou e corrigiu quatro origens T20 que referenciavam IDs inexistentes de Ofício.
+  - Auditoria remota: `npm run audit:characters:supabase` verifica todas as fichas persistidas por sistema/ruleset suportado, metadados duplicados no JSON, chaves duplicadas por usuário, identidade e sistemas órfãos.
 - [x] Atualizar documentação e changelog com limites da edição suportada.
   - Evidência: `README.md` documenta sistemas/rulesets e limites; `CHANGELOG.md` registra a cobertura implementada e as pendências de suplementos/RLS remoto.
 

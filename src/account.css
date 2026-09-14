@@ -99,6 +99,8 @@ body.theme-light #btnAIAssistantTopbar {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  min-width: 32px;
+  min-height: 24px;
   padding: 3px 5px;
   background: transparent;
   border: 1px solid transparent;

@@ -254,6 +254,10 @@ describe("Catálogos de criação por sistema", () => {
     expect(T20_SPELLS.every((entry) => !entry.classIds?.includes("paladino"))).toBe(true);
     expect(getAvailableCoreSpells("t20", "bardo", 5).some((entry) => entry.spellLevel === 2)).toBe(false);
     expect(getAvailableCoreSpells("t20", "bardo", 6).some((entry) => entry.spellLevel === 2)).toBe(true);
+    const incompleteBard = createInitialCoreCharacter("t20");
+    incompleteBard.classId = "bardo";
+    incompleteBard.level = 1;
+    expect(getAvailableCoreSpells("t20", "bardo", 1, incompleteBard)).toHaveLength(0);
     const bard = createInitialCoreCharacter("t20");
     bard.classId = "bardo";
     bard.level = 6;

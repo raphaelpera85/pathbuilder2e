@@ -1786,6 +1786,20 @@ describe("system rules engines", () => {
     expect(T20_RULES_ENGINE.validateCharacter(character)).not.toContain("selecione 1 opção(ões) para Caminho do Cavaleiro");
     character.classChoices = { "t20-cavaleiro-path": ["Caminho inexistente"] };
     expect(T20_RULES_ENGINE.validateCharacter(character)).toContain("a escolha Caminho do Cavaleiro contém uma opção inválida");
+
+    const bard = T20_RULES_ENGINE.createDefaultCharacter();
+    bard.classId = "bardo";
+    expect(T20_RULES_ENGINE.validateCharacter(bard)).toContain("selecione 3 opção(ões) para Escolas de magia do Bardo");
+    bard.classChoices = { "t20-bardo-schools": ["Evocação", "Evocação", "Ilusão"] };
+    expect(T20_RULES_ENGINE.validateCharacter(bard)).toContain("a escolha Escolas de magia do Bardo não pode conter opções repetidas");
+    bard.classChoices = { "t20-bardo-schools": ["Evocação", "Ilusão", "Escola inexistente"] };
+    expect(T20_RULES_ENGINE.validateCharacter(bard)).toContain("a escolha Escolas de magia do Bardo contém uma opção inválida");
+    bard.classChoices = { "t20-bardo-schools": ["Evocação", "Encantamento", "Ilusão"] };
+    bard.spellIds = ["t20.magia.amedrontar"];
+    expect(T20_RULES_ENGINE.validateCharacter(bard)).not.toContain("a magia Amedrontar pertence a uma escola que o Bardo não escolheu");
+    bard.spellIds = ["t20.magia.luz"];
+    bard.classChoices = { "t20-bardo-schools": ["Abjuração", "Encantamento", "Ilusão"] };
+    expect(T20_RULES_ENGINE.validateCharacter(bard)).toContain("a magia Luz pertence a uma escola que o Bardo não escolheu");
   });
 
   it("rejects a trained skill outside the class choices", () => {
