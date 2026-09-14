@@ -39,7 +39,10 @@ async function main() {
     await page.keyboard.press("Enter");
     await page.waitForTimeout(100);
 
-    const card = page.locator(".catalog-card").first();
+    const firstCard = page.locator(".catalog-card").first();
+    const cardKey = await firstCard.getAttribute("data-catalog-entry");
+    if (!cardKey) throw new Error("card do compêndio não expõe identificador estável");
+    const card = page.locator(`[data-catalog-entry="${cardKey.replace(/"/g, '\\"')}"]`);
     await card.focus();
     checks.push(["catalog card is keyboard focusable", await card.getAttribute("tabindex") === "0"]);
     await card.press("Enter");

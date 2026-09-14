@@ -360,6 +360,7 @@ function CatalogPage() {
   const inspectedCloseRequestedRef = useRef(false);
 
   const openInspectedEntry = (entry: PickerItem & { category: PickerType; categoryLabel: string }, trigger?: HTMLElement) => {
+    inspectedCloseRequestedRef.current = false;
     inspectedTriggerRef.current = trigger || (document.activeElement instanceof HTMLElement ? document.activeElement : null);
     inspectedTriggerKeyRef.current = String(entry.data.id ?? `${entry.category}:${entry.name}`);
     setInspectedEntry(entry);
@@ -369,33 +370,36 @@ function CatalogPage() {
     inspectedCloseRequestedRef.current = true;
     const trigger = inspectedTriggerRef.current;
     const triggerKey = inspectedTriggerKeyRef.current;
+    trigger?.focus();
     setInspectedEntry(null);
-    window.setTimeout(() => {
+    const restoreFocusWhileCatalogSettles = (startedAt = Date.now()) => {
+      if (!inspectedCloseRequestedRef.current || inspectedTriggerKeyRef.current !== triggerKey) return;
       const currentTrigger = trigger?.isConnected
         ? trigger
         : Array.from(document.querySelectorAll<HTMLElement>("[data-catalog-entry]"))
           .find((element) => element.dataset.catalogEntry === triggerKey);
-      currentTrigger?.focus();
-      window.setTimeout(() => {
-        const latestTrigger = Array.from(document.querySelectorAll<HTMLElement>("[data-catalog-entry]"))
-          .find((element) => element.dataset.catalogEntry === triggerKey);
-        latestTrigger?.focus();
+      if (currentTrigger && (document.activeElement === document.body || document.activeElement === document.documentElement || document.activeElement === document.getElementById("portal-content"))) {
+        currentTrigger.focus();
+      }
+      if (Date.now() - startedAt < 500) {
+        window.setTimeout(() => restoreFocusWhileCatalogSettles(startedAt), 16);
+      } else {
         inspectedTriggerRef.current = null;
         inspectedTriggerKeyRef.current = null;
-      }, 100);
-    }, 0);
+      }
+    };
+    window.setTimeout(() => restoreFocusWhileCatalogSettles(), 0);
   };
 
   useEffect(() => {
-    if (inspectedEntry || !inspectedCloseRequestedRef.current) return;
+    if (inspectedEntry || !inspectedCloseRequestedRef.current || !inspectedTriggerKeyRef.current) return;
     const trigger = inspectedTriggerRef.current;
-    if (trigger?.isConnected) {
-      trigger.focus();
-      inspectedTriggerRef.current = null;
-      inspectedTriggerKeyRef.current = null;
-    }
-    inspectedCloseRequestedRef.current = false;
-  }, [inspectedEntry]);
+    const currentTrigger = trigger?.isConnected
+      ? trigger
+      : Array.from(document.querySelectorAll<HTMLElement>("[data-catalog-entry]"))
+        .find((element) => element.dataset.catalogEntry === inspectedTriggerKeyRef.current);
+    currentTrigger?.focus();
+  }, [entries, inspectedEntry]);
 
   useLayoutEffect(() => {
     if (!inspectedEntry) return;

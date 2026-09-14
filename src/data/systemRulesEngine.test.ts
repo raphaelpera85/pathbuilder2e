@@ -1350,6 +1350,15 @@ describe("system rules engines", () => {
     expect(T20_RULES_ENGINE.validateCharacter(character)).not.toContain("a classe permite no máximo 1 escolhas de poder de classe neste nível");
   });
 
+  it("exige todos os poderes de classe T20 liberados pelo nível", () => {
+    const character = T20_RULES_ENGINE.createDefaultCharacter();
+    character.classId = "guerreiro";
+    character.level = 2;
+    expect(T20_RULES_ENGINE.validateCharacter(character)).toContain("a classe exige exatamente 1 escolhas de poder de classe neste nível");
+    character.featIds = ["t20.poder.impeto"];
+    expect(T20_RULES_ENGINE.validateCharacter(character)).not.toContain("a classe exige exatamente 1 escolhas de poder de classe neste nível");
+  });
+
   it("aplica Aumento de Atributo T20 aos modificadores derivados", () => {
     const character = T20_RULES_ENGINE.createDefaultCharacter();
     character.abilities = { str: 11, dex: 11, con: 10, int: 10, wis: 10, cha: 10 };

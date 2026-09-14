@@ -161,6 +161,28 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
         if (next.spellcastingFocusId && !selectedIds.includes(next.spellcastingFocusId)) next.spellcastingFocusId = undefined;
       }
       if (key === "level") {
+        const availableClassChoiceDefinitions = (system === "dnd5e" ? DND5E_CLASS_CHOICES : T20_CLASS_CHOICES)
+          .filter((choice) => choice.classId === next.classId && next.level >= choice.minimumLevel);
+        const classChoiceDefinitions = new Map(availableClassChoiceDefinitions.map((choice) => [choice.id, choice]));
+        next.classChoices = Object.fromEntries(Object.entries(next.classChoices || {}).flatMap(([choiceId, values]) => {
+          const choice = classChoiceDefinitions.get(choiceId);
+          if (!choice) return [];
+          return [[choiceId, Array.isArray(values) ? values.slice(0, choice.count) : []]];
+        }));
+        const nextSubclass = next.subclassId ? catalog.subclasses.find((entry) => entry.id === next.subclassId) : undefined;
+        if (nextSubclass && next.level < nextSubclass.featureLevel) {
+          next.subclassId = undefined;
+          next.subclassChoices = {};
+        } else if (nextSubclass) {
+          const subclassChoiceDefinitions = new Map((nextSubclass.choices || [])
+            .filter((choice) => next.level >= (choice.minimumLevel || nextSubclass.featureLevel))
+            .map((choice) => [choice.id, choice]));
+          next.subclassChoices = Object.fromEntries(Object.entries(next.subclassChoices || {}).flatMap(([choiceId, values]) => {
+            const choice = subclassChoiceDefinitions.get(choiceId);
+            if (!choice) return [];
+            return [[choiceId, Array.isArray(values) ? values.slice(0, choice.count) : []]];
+          }));
+        }
         next.featIds = next.featIds.filter((featId) => {
           const feat = catalog.feats.find((entry) => entry.id === featId);
           return !feat?.minimumLevel || next.level >= feat.minimumLevel;

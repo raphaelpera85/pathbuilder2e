@@ -1263,6 +1263,7 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         }, 0);
         const availableClassPowerSlots = progression.powerLevels.filter((level) => level <= character.level).length;
         if (selectedClassPowerCount > availableClassPowerSlots) errors.push(`a classe permite no máximo ${availableClassPowerSlots} escolhas de poder de classe neste nível`);
+        if (selectedClassPowerCount < availableClassPowerSlots) errors.push(`a classe exige exatamente ${availableClassPowerSlots} escolhas de poder de classe neste nível`);
       }
       if (systemId === "dnd5e" && progression && "abilityScoreIncreaseLevels" in progression && (character.featIds || []).length > progression.abilityScoreIncreaseLevels.filter((level) => level <= character.level).length) {
         errors.push("a quantidade de talentos excede os aumentos de atributo disponíveis para este nível");
