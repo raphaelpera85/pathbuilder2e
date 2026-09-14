@@ -12,7 +12,10 @@ import {
   type OseAlignment,
   OSE_ADDITIONAL_LANGUAGES,
   isOseClassAvailableForMode,
-  getOseSpellSlotCount,
+  isOseWeaponAllowedForClass,
+  isOseArmorAllowedForClass,
+  getOseSpellSlotsByCircle,
+  limitOseSpellsBySlots,
 } from "../data/ose/oseRules";
 import { OSE_RACES, type OseRace } from "../data/ose/oseRaces";
 import { OSE_CLASSES, type OseClass } from "../data/ose/oseClasses";
@@ -27,6 +30,24 @@ import {
 } from "../data/ose/oseEquipment";
 import { OSE_SPELLS, type OseSpell } from "../data/ose/oseSpells";
 import "./oseTheme.css";
+
+const OSE_CREATION_RULES: Record<"advanced" | "classic", readonly string[]> = {
+  advanced: [
+    "Role 3d6 para cada atributo: Força, Inteligência, Sabedoria, Destreza, Constituição e Carisma.",
+    "Escolha uma raça e uma classe Advanced Fantasy compatíveis com o nível de atributos.",
+    "Aplique modificadores raciais, alinhamento, idiomas e a perícia secundária quando aplicável.",
+    "Role os Pontos de Vida pelo dado da classe e aplique o modificador de Constituição.",
+    "Role o ouro inicial, compre armas, armaduras e equipamentos do catálogo OSE.",
+    "Conjuradores escolhem magias iniciais dentro dos espaços do 1º círculo; o Mago recebe Ler Magia.",
+  ],
+  classic: [
+    "Role 3d6 para os seis atributos na ordem indicada pelo livro.",
+    "Escolha uma classe ou raça (Anão, Elfo ou Halfling) quando a classe racial estiver disponível.",
+    "Aplique alinhamento, modificadores, salvamentos, THAC0 e Classe de Armadura da classe escolhida.",
+    "Role os Pontos de Vida pelo dado da classe e aplique o modificador de Constituição.",
+    "Role o ouro inicial e compre o equipamento permitido pelo catálogo clássico.",
+  ],
+};
 
 export interface OseCharacterCreatedData {
   id: string;
@@ -55,12 +76,14 @@ interface OseCharacterCreatorModalProps {
   isOpen: boolean;
   onClose: () => void;
   onCharacterCreated: (charData: OseCharacterCreatedData) => void;
+  initialCharacter?: OseCharacterCreatedData;
 }
 
 export function OseCharacterCreatorModal({
   isOpen,
   onClose,
   onCharacterCreated,
+  initialCharacter,
 }: OseCharacterCreatorModalProps) {
   const [step, setStep] = useState<number>(1);
   const modalRef = useRef<HTMLDivElement>(null);
@@ -185,15 +208,26 @@ export function OseCharacterCreatorModal({
 
   // Step 3: Alinhamento, PV, Perícia Secundária e Idiomas
   const [alignment, setAlignment] = useState<OseAlignment>("ordeiro");
+  const [characterLevel, setCharacterLevel] = useState(1);
   const [hpRoll, setHpRoll] = useState<number>(6);
+  const [hasRerolledHp, setHasRerolledHp] = useState(false);
   const [secondarySkill, setSecondarySkill] = useState<string>("Ferreiro");
   const [selectedLanguages, setSelectedLanguages] = useState<string[]>([]);
 
   const conMod = getOseStandardModifier(finalAbilities.con);
-  const finalMaxHp = Math.max(1, hpRoll + conMod);
+  const intLanguageMod = getOseIntModifiers(finalAbilities.int);
+  const finalMaxHp = initialCharacter && !hasRerolledHp
+    ? initialCharacter.maxHp
+    : Math.max(1, hpRoll + conMod);
+  const maxClassLevel = selectedClass.progression[selectedClass.progression.length - 1]?.level || 1;
+
+  useEffect(() => {
+    setCharacterLevel((current) => Math.min(Math.max(1, current), maxClassLevel));
+  }, [maxClassLevel]);
 
   const rollHp = () => {
     const sides = selectedClass.hitDie === "d4" ? 4 : selectedClass.hitDie === "d6" ? 6 : 8;
+    setHasRerolledHp(true);
     setHpRoll(Math.floor(Math.random() * sides) + 1);
   };
 
@@ -213,14 +247,22 @@ export function OseCharacterCreatorModal({
     setGold(r);
   };
 
+  const isWeaponAllowed = (weapon: OseWeapon): boolean => {
+    return isOseWeaponAllowedForClass(weapon, selectedClass);
+  };
+
+  const isArmorAllowed = (armor: OseArmor): boolean => {
+    return isOseArmorAllowedForClass(armor, selectedClass);
+  };
+
   const buyWeapon = (wpn: OseWeapon) => {
-    if (gold < wpn.costGp) return;
+    if (!isWeaponAllowed(wpn) || gold < wpn.costGp) return;
     setGold((prev) => prev - wpn.costGp);
     setBoughtWeapons((prev) => [...prev, wpn]);
   };
 
   const buyArmor = (arm: OseArmor) => {
-    if (gold < arm.costGp) return;
+    if (!isArmorAllowed(arm) || gold < arm.costGp) return;
     setGold((prev) => prev - arm.costGp);
     setBoughtArmors((prev) => [...prev, arm]);
   };
@@ -264,32 +306,100 @@ export function OseCharacterCreatorModal({
   // Step 5: Magias
   const [selectedSpells, setSelectedSpells] = useState<string[]>([]);
 
+  useEffect(() => {
+    if (!isOpen) return;
+    if (!initialCharacter) {
+      setStep(1);
+      setValidationMessage("");
+      setCharName("Aventureiro de Karameikos");
+      setCreationMode("advanced");
+      setAbilities({ str: 11, int: 10, wis: 12, dex: 14, con: 13, cha: 9 });
+      setSelectedRaceId("humano");
+      setSelectedClassId("guerreiro");
+      setAlignment("ordeiro");
+      setCharacterLevel(1);
+      setHpRoll(6);
+      setHasRerolledHp(false);
+      setSecondarySkill("Ferreiro");
+      setSelectedLanguages([]);
+      setGold(120);
+      setBoughtWeapons([]);
+      setBoughtArmors([]);
+      setBoughtGear([]);
+      setSelectedSpells([]);
+      return;
+    }
+    const race = OSE_RACES[initialCharacter.raceId] || OSE_RACES.humano;
+    const editedAbilities = { ...initialCharacter.abilities };
+    for (const [ability, adjustment] of Object.entries(race.statModifiers || {})) {
+      editedAbilities[ability as OseAbilityName] = (editedAbilities[ability as OseAbilityName] || 10) - (adjustment || 0);
+    }
+    const editedFinalCon = (initialCharacter.abilities.con || 10);
+    setStep(1);
+    setValidationMessage("");
+    setCharName(initialCharacter.name);
+    setCreationMode(initialCharacter.ruleset);
+    setAbilities(editedAbilities);
+    setSelectedRaceId(initialCharacter.raceId);
+    setSelectedClassId(initialCharacter.classId);
+    setAlignment(initialCharacter.alignment);
+    setCharacterLevel(Math.max(1, initialCharacter.level || 1));
+    setHpRoll(Math.max(1, initialCharacter.maxHp - getOseStandardModifier(editedFinalCon)));
+    setHasRerolledHp(false);
+    setSecondarySkill(initialCharacter.secondarySkill || "Ferreiro");
+    const nativeLanguages = new Set(race.nativeLanguages);
+    setSelectedLanguages((initialCharacter.languages || []).filter((language) => !nativeLanguages.has(language)));
+    setGold(initialCharacter.goldGp);
+    setBoughtWeapons([...(initialCharacter.weapons || [])]);
+    setBoughtArmors([...(initialCharacter.armors || [])]);
+    setBoughtGear([...(initialCharacter.gear || [])]);
+    setSelectedSpells((initialCharacter.spellsKnown || []).filter((spellId) => spellId !== "mago_ler_magia"));
+  }, [initialCharacter, isOpen]);
+
+  const spellSlotsByCircle = useMemo(() => {
+    if (!selectedClass.spellCasting) return [];
+    return getOseSpellSlotsByCircle(selectedClass.progression, characterLevel);
+  }, [characterLevel, selectedClass]);
+
+  const totalSpellSlots = spellSlotsByCircle.reduce((total, slots) => total + slots, 0);
+
   const availableClassSpells = useMemo(() => {
     if (!selectedClass.spellCasting) return [];
     return OSE_SPELLS.filter(
       (s) => s.className === selectedClass.spellCasting?.spellListName
-        && s.circle === 1
+        && s.circle <= spellSlotsByCircle.length
+        && (spellSlotsByCircle[s.circle - 1] || 0) > 0
         && !(selectedClass.id === "mago" && s.id === "mago_ler_magia")
     );
-  }, [selectedClass]);
-
-  const spellSlotCount = selectedClass.spellCasting
-    ? getOseSpellSlotCount(selectedClass.progression, 1)
-    : 0;
+  }, [selectedClass, spellSlotsByCircle]);
 
   const automaticSpellIds = selectedClass.id === "mago" ? ["mago_ler_magia"] : [];
+
+  // A edição começa pelo fluxo de criação de 1º círculo, mas não pode apagar
+  // magias de círculos superiores que já pertencem a uma ficha avançada.
+  const preservedHigherCircleSpellIds = useMemo(() => {
+    if (!initialCharacter?.spellsKnown || !selectedClass.spellCasting) return [];
+    const higherCircleIds = initialCharacter.spellsKnown.filter((spellId) => {
+      const spell = OSE_SPELLS.find((entry) => entry.id === spellId);
+      return Boolean(spell && spell.className === selectedClass.spellCasting?.spellListName && spell.circle > 1 && spell.circle <= spellSlotsByCircle.length);
+    });
+    return limitOseSpellsBySlots(higherCircleIds, OSE_SPELLS, spellSlotsByCircle);
+  }, [initialCharacter, selectedClass, spellSlotsByCircle]);
 
   useEffect(() => {
     setSelectedSpells((previous) => {
       const validIds = new Set(availableClassSpells.map((spell) => spell.id));
-      return previous.filter((spellId) => validIds.has(spellId)).slice(0, spellSlotCount);
+      return limitOseSpellsBySlots(previous.filter((spellId) => validIds.has(spellId)), OSE_SPELLS, spellSlotsByCircle);
     });
-  }, [availableClassSpells, spellSlotCount]);
+  }, [availableClassSpells, spellSlotsByCircle]);
 
   const toggleSpell = (spellId: string) => {
     setSelectedSpells((prev) => {
       if (prev.includes(spellId)) return prev.filter((id) => id !== spellId);
-      if (prev.length >= spellSlotCount) return prev;
+      const spell = OSE_SPELLS.find((entry) => entry.id === spellId);
+      if (!spell) return prev;
+      const selectedInCircle = prev.filter((id) => OSE_SPELLS.find((entry) => entry.id === id)?.circle === spell.circle).length;
+      if (selectedInCircle >= (spellSlotsByCircle[spell.circle - 1] || 0)) return prev;
       return [...prev, spellId];
     });
   };
@@ -306,20 +416,25 @@ export function OseCharacterCreatorModal({
       setStep(2);
       return;
     }
+    if (boughtWeapons.some((weapon) => !isWeaponAllowed(weapon)) || boughtArmors.some((armor) => !isArmorAllowed(armor))) {
+      setValidationMessage("O equipamento comprado inclui uma arma ou armadura incompatível com a classe selecionada.");
+      setStep(4);
+      return;
+    }
     setValidationMessage("");
     const charData: OseCharacterCreatedData = {
-      id: `ose_char_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
+      id: initialCharacter?.id || `ose_char_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
       name: charName.trim() || "Aventureiro de Karameikos",
       system_id: "ose",
       ruleset: creationMode,
       raceId: effectiveRaceId,
       classId: selectedClassId,
-      level: 1,
-      xp: 0,
+      level: characterLevel,
+      xp: initialCharacter?.xp || 0,
       alignment,
       abilities: finalAbilities,
       maxHp: finalMaxHp,
-      currentHp: finalMaxHp,
+      currentHp: initialCharacter ? Math.min(initialCharacter.currentHp, finalMaxHp) : finalMaxHp,
       goldGp: gold,
       secondarySkill,
       languages: Array.from(new Set([...selectedRace.nativeLanguages, ...selectedLanguages])),
@@ -327,9 +442,14 @@ export function OseCharacterCreatorModal({
       armors: boughtArmors,
       gear: boughtGear,
       spellsKnown: selectedClass.spellCasting
-        ? Array.from(new Set([...automaticSpellIds, ...selectedSpells]))
+        ? Array.from(new Set([...automaticSpellIds, ...preservedHigherCircleSpellIds, ...selectedSpells]))
         : [],
-      preparedSpells: selectedClass.spellCasting ? selectedSpells : [],
+      preparedSpells: selectedClass.spellCasting
+        ? Array.from(new Set([
+          ...(initialCharacter?.preparedSpells || []).filter((spellId) => preservedHigherCircleSpellIds.includes(spellId)),
+          ...selectedSpells,
+        ]))
+        : [],
     };
 
     onCharacterCreated(charData);
@@ -342,18 +462,21 @@ export function OseCharacterCreatorModal({
   const modalRoot = document.getElementById("react-modal-root") || document.body;
 
   return createPortal(
-    <div className="ose-wizard-overlay" role="dialog" aria-modal="true" aria-labelledby="ose-wizard-title">
+    <div className="ose-wizard-overlay" role="dialog" aria-modal="true" aria-labelledby="ose-wizard-title" aria-describedby="ose-wizard-description">
       <div ref={modalRef} className="ose-wizard-modal">
         {/* Header */}
         <header className="ose-wizard-header">
-          <h2 id="ose-wizard-title">🎲 Criador de Personagem Old-School Essentials</h2>
+          <div>
+            <h2 id="ose-wizard-title">🎲 Criador de Personagem Old-School Essentials</h2>
+            <p id="ose-wizard-description" className="ose-wizard-description">Fluxo de criação separado por edição OSE, com regras, catálogo e validações próprias do sistema.</p>
+          </div>
           <button className="ose-btn" type="button" onClick={onClose} aria-label="Fechar">
             ✕
           </button>
         </header>
 
         {/* Step Tabs */}
-        <div className="ose-step-tabs">
+        <div className="ose-step-tabs" role="tablist" aria-label="Etapas da criação OSE">
           {[
             { s: 1, title: "1. Atributos (3d6)" },
             { s: 2, title: "2. Raça & Classe" },
@@ -366,11 +489,21 @@ export function OseCharacterCreatorModal({
               type="button"
               className={`ose-step-tab ${step === item.s ? "active" : ""}`}
               onClick={() => setStep(item.s)}
+              role="tab"
+              aria-selected={step === item.s}
             >
               {item.title}
             </button>
           ))}
         </div>
+
+        <details className="ose-creation-rules">
+          <summary>Regras de criação · OSE {creationMode === "advanced" ? "Advanced Fantasy" : "Classic"}</summary>
+          <ol>
+            {OSE_CREATION_RULES[creationMode].map((rule) => <li key={rule}>{rule}</li>)}
+          </ol>
+          <small>O catálogo, as classes raciais e as magias são filtrados pelo ruleset selecionado.</small>
+        </details>
 
         {/* Body */}
         <div className="ose-wizard-body">
@@ -594,12 +727,40 @@ export function OseCharacterCreatorModal({
                     ))}
                   </select>
                 </div>
+
+                <div>
+                  <label style={{ fontWeight: 800, color: "var(--ose-gold)", fontSize: "0.85rem" }}>
+                    NÍVEL:
+                    <input
+                      type="number"
+                      min={1}
+                      max={maxClassLevel}
+                      value={characterLevel}
+                      onChange={(event) => setCharacterLevel(Math.min(maxClassLevel, Math.max(1, Number(event.target.value) || 1)))}
+                      aria-describedby="ose-level-help"
+                      style={{
+                        display: "block",
+                        width: "100%",
+                        padding: "8px 12px",
+                        borderRadius: 6,
+                        border: "1px solid var(--ose-border)",
+                        background: "var(--ose-bg)",
+                        color: "var(--ose-text)",
+                        fontWeight: 700,
+                        marginTop: 6,
+                      }}
+                    />
+                  </label>
+                  <small id="ose-level-help" style={{ color: "var(--ose-text-muted)" }}>
+                    Progressão máxima da classe: {maxClassLevel}º nível.
+                  </small>
+                </div>
               </div>
 
               {/* Rolar PV */}
               <div className="ose-card">
                 <div className="ose-card-title">
-                  <span>Pontos de Vida Iniciais (1º Nível)</span>
+                  <span>Pontos de Vida da Ficha ({characterLevel}º Nível)</span>
                   <button type="button" className="ose-btn ose-btn-primary" onClick={rollHp}>
                     🎲 Rolar {selectedClass.hitDie} (Re-rola 1 e 2)
                   </button>
@@ -609,7 +770,7 @@ export function OseCharacterCreatorModal({
                     {finalMaxHp} PV
                   </div>
                   <div style={{ fontSize: "0.85rem", color: "var(--ose-text-muted)" }}>
-                    Rolado no dado: <strong>{hpRoll}</strong> | Modificador de Constituição:{" "}
+                    {initialCharacter && !hasRerolledHp ? "PV existente preservado. " : "Rolado no dado: "}<strong>{hpRoll}</strong> | Modificador de Constituição:{" "}
                     <strong>{conMod >= 0 ? `+${conMod}` : conMod}</strong> (Mínimo de 1 PV garantido pelas regras).
                   </div>
                 </div>
@@ -641,6 +802,34 @@ export function OseCharacterCreatorModal({
                   <small style={{ color: "var(--ose-text-muted)" }}>
                     Profissão de mentoria ou juventude do aventureiro.
                   </small>
+                </div>
+              </div>
+
+              <div className="ose-card">
+                <div className="ose-card-title">Idiomas Adicionais</div>
+                <p style={{ margin: "0 0 10px", fontSize: "0.82rem", color: "var(--ose-text-muted)" }}>
+                  Inteligência {finalAbilities.int}: escolha até <strong>{intLanguageMod.bonusLanguages}</strong> idioma(s) além dos idiomas raciais.
+                </p>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: 6 }}>
+                  {OSE_ADDITIONAL_LANGUAGES.map((language) => {
+                    const checked = selectedLanguages.includes(language);
+                    const disabled = !checked && selectedLanguages.length >= intLanguageMod.bonusLanguages;
+                    return (
+                      <label key={language} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: "0.8rem", opacity: disabled ? 0.5 : 1 }}>
+                        <input
+                          type="checkbox"
+                          checked={checked}
+                          disabled={disabled}
+                          onChange={() => setSelectedLanguages((current) => {
+                            if (current.includes(language)) return current.filter((entry) => entry !== language);
+                            if (current.length >= intLanguageMod.bonusLanguages) return current;
+                            return [...current, language];
+                          })}
+                        />
+                        {language}
+                      </label>
+                    );
+                  })}
                 </div>
               </div>
             </div>
@@ -677,7 +866,7 @@ export function OseCharacterCreatorModal({
                 <div className="ose-card">
                   <div className="ose-card-title">⚔️ Armas Disponíveis</div>
                   <div style={{ maxHeight: 220, overflowY: "auto" }}>
-                    {OSE_WEAPONS.map((w) => (
+                    {OSE_WEAPONS.filter(isWeaponAllowed).map((w) => (
                       <div
                         key={w.id}
                         style={{
@@ -710,7 +899,7 @@ export function OseCharacterCreatorModal({
                 <div className="ose-card">
                   <div className="ose-card-title">🛡️ Armaduras & Escudos</div>
                   <div style={{ maxHeight: 220, overflowY: "auto" }}>
-                    {OSE_ARMORS.filter((a) => a.costGp > 0).map((a) => (
+                    {OSE_ARMORS.filter((a) => a.costGp > 0 && isArmorAllowed(a)).map((a) => (
                       <div
                         key={a.id}
                         style={{
@@ -848,14 +1037,16 @@ export function OseCharacterCreatorModal({
               </h3>
               <p style={{ margin: "0 0 16px 0", fontSize: "0.85rem", color: "var(--ose-text-muted)" }}>
                 {selectedClass.id === "mago"
-                  ? `Ler Magia é automático. Escolha ${spellSlotCount} magia${spellSlotCount === 1 ? "" : "s"} de 1º círculo para o grimório inicial.`
-                  : `Escolha ${spellSlotCount} magia${spellSlotCount === 1 ? "" : "s"} de 1º círculo para preparar hoje.`}
-                {" "}({selectedSpells.length}/{spellSlotCount} escolhidas)
+                  ? "Ler Magia é automático. Escolha magias do grimório conforme os espaços disponíveis por círculo."
+                  : "Escolha as magias preparadas conforme os espaços disponíveis por círculo."}
+                {" "}({selectedSpells.length}/{totalSpellSlots} escolhidas; {spellSlotsByCircle.map((slots, index) => `${index + 1}º: ${slots}`).join(" · ")})
               </p>
 
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 12 }}>
                 {availableClassSpells.map((sp) => {
                   const isSelected = selectedSpells.includes(sp.id);
+                  const selectedInCircle = selectedSpells.filter((id) => OSE_SPELLS.find((entry) => entry.id === id)?.circle === sp.circle).length;
+                  const circleFull = !isSelected && selectedInCircle >= (spellSlotsByCircle[sp.circle - 1] || 0);
                   return (
                     <div
                       key={sp.id}
@@ -865,13 +1056,13 @@ export function OseCharacterCreatorModal({
                         borderRadius: 6,
                         border: isSelected ? "2px solid var(--ose-gold)" : "1px solid var(--ose-border)",
                         background: isSelected ? "rgba(245, 158, 11, 0.1)" : "var(--ose-card-bg)",
-                        cursor: !isSelected && selectedSpells.length >= spellSlotCount ? "not-allowed" : "pointer",
-                        opacity: !isSelected && selectedSpells.length >= spellSlotCount ? 0.55 : 1,
+                        cursor: circleFull ? "not-allowed" : "pointer",
+                        opacity: circleFull ? 0.55 : 1,
                       }}
                     >
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                         <strong style={{ color: isSelected ? "var(--ose-gold)" : "inherit" }}>{sp.name}</strong>
-                        <span style={{ fontSize: "0.72rem", color: "var(--ose-text-muted)" }}>Alcance: {sp.range}</span>
+                        <span style={{ fontSize: "0.72rem", color: "var(--ose-text-muted)" }}>Círculo {sp.circle} · Alcance: {sp.range}</span>
                       </div>
                       <p style={{ margin: "6px 0 0", fontSize: "0.78rem", color: "var(--ose-text-muted)", lineHeight: 1.3 }}>
                         {sp.description}

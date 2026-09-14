@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { DND5E_ALIGNMENTS, DND5E_LANGUAGES, T20_DEITIES, getCoreCatalog, getCoreEquipmentQuantity, getCoreFeatQuantity, type MultiSystemCharacter, type SupportedCoreSystem } from "../data/multiSystemCharacter";
+import { DND5E_ALIGNMENTS, DND5E_LANGUAGES, T20_DEITIES, getCoreCatalog, getCoreEquipmentQuantity, getCoreFeatQuantity, requiresDnd5eAttunement, type MultiSystemCharacter, type SupportedCoreSystem } from "../data/multiSystemCharacter";
 import { getDnd5eBackgroundToolProficiencies } from "../data/dnd5e/dnd5eBackgrounds";
 import { getDnd5eToolChoiceEntries } from "../data/dnd5e/dnd5eCatalog";
 import { formatDnd5eSpellDetails } from "../data/dnd5e/dnd5eCompendium";
@@ -9,6 +9,7 @@ import { T20_POWER_CHOICES } from "../data/t20/t20Compendium";
 import { formatT20SpellDetails } from "../data/t20/t20Compendium";
 import { T20_CLASS_CHOICES } from "../data/t20/t20Catalog";
 import { getSystemRulesEngine } from "../data/systemRulesEngine";
+import { reconcileCoreSkillProficiencies, reconcileT20DeityDependentFeatIds } from "./coreCharacterEditing";
 import { createCoreEditablePdf, downloadCoreEditablePdf } from "../services/corePdfExport";
 
 const CORE_ABILITY_LABELS: Record<string, string> = {
@@ -35,10 +36,14 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
   const subclass = catalog.subclasses.find((entry) => entry.id === draft.subclassId)?.name;
   const selectedSubclass = catalog.subclasses.find((entry) => entry.id === draft.subclassId);
   const selectedClassChoices = system === "dnd5e" ? DND5E_CLASS_CHOICES.filter((choice) => choice.classId === draft.classId && draft.level >= choice.minimumLevel) : T20_CLASS_CHOICES.filter((choice) => choice.classId === draft.classId && draft.level >= choice.minimumLevel);
-  const selectedFeatChoices = draft.featIds.flatMap((featId) => ((system === "dnd5e" ? DND5E_FEAT_CHOICES : T20_POWER_CHOICES)[featId] || []).map((choice) => ({ featId, choice })));
-  const deity = T20_DEITIES.find((entry) => entry.id === draft.deity || entry.name === draft.deity)?.name;
+  const featChoiceCatalog = system === "dnd5e" ? DND5E_FEAT_CHOICES : T20_POWER_CHOICES;
+  const selectedFeatChoices = draft.featIds.flatMap((featId) => (featChoiceCatalog[featId] || []).map((choice) => ({ featId, choice })));
+  const selectedDeity = T20_DEITIES.find((entry) => entry.id === draft.deity || entry.name === draft.deity);
+  const deity = selectedDeity?.name;
   const classRules = catalog.classRules.find((entry) => entry.id === draft.classId);
   const raceRules = catalog.raceRules.find((entry) => entry.id === draft.raceId);
+  const raceChoices = system === "dnd5e" && raceRules && "raceChoices" in raceRules ? (raceRules as { raceChoices?: Array<{ id: string; label: string; options: string[]; count: number }> }).raceChoices || [] : [];
+  const subraceChoices = system === "dnd5e" && subrace && "subraceChoices" in (catalog.subraces.find((entry) => entry.id === draft.subraceId) || {}) ? ((catalog.subraces.find((entry) => entry.id === draft.subraceId) as { subraceChoices?: Array<{ id: string; label: string; options: string[]; count: number }> } | undefined)?.subraceChoices || []) : [];
   const raceLanguageChoices = system === "dnd5e" && raceRules && "languageChoices" in raceRules ? Number((raceRules as { languageChoices?: number }).languageChoices || 0) : 0;
   const raceSkillChoiceCount = raceRules && "skillChoices" in raceRules ? Number((raceRules as { skillChoices?: number }).skillChoices || 0) : 0;
   const raceChoiceMode = draft.raceChoiceMode || "skills";
@@ -52,6 +57,11 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
   const displayedBackgroundTools = selectedBackground && "toolProficiencies" in selectedBackground
     ? (draft.toolProficiencies?.length ? draft.toolProficiencies : selectedBackground.toolProficiencies)
     : [];
+  const equipmentLabel = (entry: typeof selectedEquipment[number]) => {
+    const magic = entry as typeof entry & { magical?: boolean; magicCategory?: string; magicEffects?: string[] };
+    const magicText = magic.magical ? `✨ ${magic.magicCategory || "mágico"}: ${(magic.magicEffects || []).join(" · ")}` : "";
+    return [entry.name, magicText, entry.cost || (entry.weight !== undefined ? `${entry.weight} lb` : "")].filter(Boolean).join(" · ");
+  };
 
   useEffect(() => {
     const previousFocus = document.activeElement as HTMLElement | null;
@@ -73,6 +83,17 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
   const updateBackground = (backgroundId: string) => {
     const background = catalog.backgrounds.find((entry) => entry.id === backgroundId);
     const next = { ...draft, backgroundId };
+    const classRules = catalog.classRules.find((entry) => entry.id === draft.classId);
+    const backgroundSkills = background && ("skillProficiencies" in background ? background.skillProficiencies : background.trainedSkills) || [];
+    const fixedSkills = classRules && "fixedSkills" in classRules ? classRules.fixedSkills : [];
+    const choiceSkills = classRules && "choiceSkills" in classRules ? classRules.choiceSkills : [];
+    next.skillProficiencies = reconcileCoreSkillProficiencies(
+      draft.skillProficiencies || [],
+      backgroundSkills,
+      fixedSkills,
+      choiceSkills,
+      draft.raceSkillChoices || [],
+    );
     if (background && "toolProficiencies" in background) {
       const defaultTools = getDnd5eBackgroundToolProficiencies(background);
       const currentTools = draft.backgroundId === backgroundId ? (draft.toolProficiencies || []) : [];
@@ -93,6 +114,19 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
 
   const updateEquipmentQuantity = (equipmentId: string, quantity: number) => {
     setDraft({ ...draft, equipmentQuantities: { ...draft.equipmentQuantities, [equipmentId]: quantity } });
+    setSaveError(null);
+  };
+
+  const updateDeity = (deityId: string) => {
+    const nextFeatIds = reconcileT20DeityDependentFeatIds(draft.featIds || [], deityId || undefined, catalog.feats as Array<{ id: string; deityIds?: string[] }>);
+    const next = {
+      ...draft,
+      deity: deityId,
+      featIds: nextFeatIds,
+      featQuantities: Object.fromEntries(Object.entries(draft.featQuantities || {}).filter(([featId]) => nextFeatIds.includes(featId))),
+      featChoices: Object.fromEntries(Object.entries(draft.featChoices || {}).filter(([choiceId]) => nextFeatIds.some((featId) => (featChoiceCatalog[featId] || []).some((choice) => choice.id === choiceId)))),
+    };
+    setDraft(next);
     setSaveError(null);
   };
 
@@ -119,6 +153,10 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
               <option value="disadvantage">Desvantagem · menor resultado</option>
             </select>
           </label>}
+          {system === "dnd5e" && draft.featIds.includes("dnd5e.talento.mestre_de_armas_pesadas") && <label className="pb-core-toggle-field">
+            <span>Ataque Poderoso (-5/+10)<small>Aplicar aos ataques elegíveis</small></span>
+            <input type="checkbox" checked={Boolean(draft.dndPowerAttack)} onChange={(event) => setDraft({ ...draft, dndPowerAttack: event.target.checked })} />
+          </label>}
           <label>{system === "t20" ? "Origem" : "Antecedente"}
             <select value={draft.backgroundId || ""} onChange={(event) => updateBackground(event.target.value)}>
               {catalog.backgrounds.map((entry) => <option key={entry.id} value={entry.id}>{entry.name}</option>)}
@@ -129,12 +167,20 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
               {DND5E_ALIGNMENTS.map((alignment) => <option key={alignment} value={alignment}>{alignment}</option>)}
             </select>
           </label> : <label>Divindade (opcional)
-            <select value={draft.deity || ""} onChange={(event) => setDraft({ ...draft, deity: event.target.value })}>
+            <select value={draft.deity || ""} onChange={(event) => updateDeity(event.target.value)}>
               <option value="">Nenhuma</option>
               {T20_DEITIES.map((deity) => <option key={deity.id} value={deity.id}>{deity.name}</option>)}
             </select>
           </label>}
         </div>
+
+        {system === "t20" && selectedDeity && <aside className="pb-core-deity-summary" aria-label="Informações da divindade">
+          <strong>{selectedDeity.name}</strong>
+          <small>{[selectedDeity.channelEnergy && `Energia ${selectedDeity.channelEnergy}`, selectedDeity.preferredWeapon && `Arma preferida: ${selectedDeity.preferredWeapon}`, selectedDeity.sacredSymbol && `Símbolo: ${selectedDeity.sacredSymbol}`].filter(Boolean).join(" · ")}</small>
+          {selectedDeity.ruleSummary && <small>{selectedDeity.ruleSummary}</small>}
+          {selectedDeity.obligations && <small><strong>Obrigações e restrições:</strong> {selectedDeity.obligations}</small>}
+          {selectedDeity.grantedPowers?.length && <small><strong>Poderes concedidos:</strong> {selectedDeity.grantedPowers.join(" · ")}</small>}
+        </aside>}
 
         {selectedBackground && <aside className="pb-core-background-options">
           <strong>{system === "dnd5e" ? "Característica do antecedente" : "Benefício da origem"}</strong>
@@ -155,11 +201,23 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
           {selectedSubclass.features.filter((feature) => feature.level <= draft.level).length > 0 && <ul className="pb-core-subclass-features">
             {selectedSubclass.features.filter((feature) => feature.level <= draft.level).map((feature) => <li key={`${feature.level}-${feature.name}`}><strong>Nível {feature.level} · {feature.name}:</strong> {feature.summary}</li>)}
           </ul>}
-          {selectedSubclass.choices.map((choice) => {
+          {selectedSubclass.choices.filter((choice) => draft.level >= (choice.minimumLevel || selectedSubclass.featureLevel)).map((choice) => {
             const selected = draft.subclassChoices?.[choice.id] || [];
             return <small key={choice.id} className="pb-core-subclass-choice-readonly"><strong>{choice.label}:</strong> {selected.join(" · ") || "não selecionado"}</small>;
           })}
         </div>}
+        {derived.subclassEffects.length > 0 && <aside className="pb-core-background-options" aria-label="Efeitos da subclasse">
+          <strong>Efeitos aplicáveis da subclasse</strong>
+          <ul>{derived.subclassEffects.map((effect) => <li key={effect}>{effect}</li>)}</ul>
+        </aside>}
+        {derived.classChoiceEffects.length > 0 && <aside className="pb-core-background-options" aria-label="Efeitos das escolhas de classe">
+          <strong>Efeitos das escolhas de classe</strong>
+          <ul>{derived.classChoiceEffects.map((effect) => <li key={effect}>{effect}</li>)}</ul>
+        </aside>}
+        {derived.featEffects.length > 0 && <aside className="pb-core-background-options" aria-label="Efeitos dos talentos e poderes">
+          <strong>Efeitos aplicáveis dos talentos/poderes</strong>
+          <ul>{derived.featEffects.map((effect) => <li key={effect}>{effect}</li>)}</ul>
+        </aside>}
         {derived.classResources.length > 0 && <div className="pb-core-resource-strip" aria-label="Recursos de classe">
           {derived.classResources.map((resource) => <div key={resource.name}><strong>{resource.name}</strong><b>{resource.value}</b><small>{resource.description}</small></div>)}
         </div>}
@@ -180,6 +238,34 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
             </label>)}
           </div>
         </fieldset>}
+        {raceChoices.length > 0 && <fieldset className="pb-core-background-options" aria-label="Escolhas condicionais da raça">
+          <legend>Escolhas da raça</legend>
+          {raceChoices.map((choice) => {
+            const selected = draft.raceChoices?.[choice.id] || [];
+            return <label key={`sheet-race-choice-${choice.id}`}>{choice.label}
+              <select value={selected[0] || ""} onChange={(event) => { setDraft({ ...draft, raceChoices: { ...draft.raceChoices, [choice.id]: event.target.value ? [event.target.value] : [] } }); setSaveError(null); }}>
+                <option value="">Selecione…</option>
+                {choice.options.map((option) => <option key={option} value={option}>{option}</option>)}
+              </select>
+            </label>;
+          })}
+        </fieldset>}
+        {subraceChoices.length > 0 && <fieldset className="pb-core-background-options" aria-label="Escolhas condicionais da sub-raça">
+          <legend>Escolhas da sub-raça</legend>
+          {subraceChoices.map((choice) => {
+            const selected = draft.subraceChoices?.[choice.id] || [];
+            return <label key={`sheet-subrace-choice-${choice.id}`}>{choice.label}
+              <select value={selected[0] || ""} onChange={(event) => { setDraft({ ...draft, subraceChoices: { ...draft.subraceChoices, [choice.id]: event.target.value ? [event.target.value] : [] } }); setSaveError(null); }}>
+                <option value="">Selecione…</option>
+                {choice.options.map((option) => <option key={option} value={option}>{option}</option>)}
+              </select>
+            </label>;
+          })}
+        </fieldset>}
+        {derived.racialEffects.length > 0 && <aside className="pb-core-background-options" aria-label="Efeitos raciais">
+          <strong>Efeitos raciais aplicáveis</strong>
+          <ul>{derived.racialEffects.map((effect) => <li key={effect}>{effect}</li>)}</ul>
+        </aside>}
         {raceSkillChoiceCount > 0 && <p className="pb-core-race-summary"><strong>Escolha racial:</strong> {raceChoiceMode === "skill_and_feat" ? `${(draft.raceSkillChoices || []).map((skillId) => catalog.skills.find((entry) => entry.id === skillId)?.name || skillId).join(", ") || "perícia não preenchida"} + ${raceFeatChoiceName || "poder não escolhido"}` : (draft.raceSkillChoices || []).map((skillId) => catalog.skills.find((entry) => entry.id === skillId)?.name || skillId).join(", ") || "não preenchidas"}</p>}
         {progression && <p className="pb-core-progression-summary">
           Nível {draft.level}: {currentProgressionFeatures.join(" · ")}{" · "}
@@ -187,7 +273,9 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
         </p>}
 
         <div className="pb-core-loadout">
-          <section><h3>Equipamento</h3>{selectedEquipment.length ? <div className="pb-core-sheet-equipment-list">{selectedEquipment.map((entry) => <label key={entry.id}><span>{entry.name}<small>{entry.cost ? ` · ${entry.cost}` : entry.weight !== undefined ? ` · ${entry.weight} lb` : ""}</small></span><input type="number" min={1} step={1} value={getCoreEquipmentQuantity(draft, entry.id)} onChange={(event) => updateEquipmentQuantity(entry.id, Number(event.target.value))} aria-label={`Quantidade de ${entry.name}`} /></label>)}</div> : <p>Nenhum selecionado</p>}</section>
+          <section><h3>Equipamento</h3>{selectedEquipment.length ? <div className="pb-core-sheet-equipment-list">{selectedEquipment.map((entry) => <label key={entry.id}><span>{equipmentLabel(entry)}</span><input type="number" min={1} step={1} value={getCoreEquipmentQuantity(draft, entry.id)} onChange={(event) => updateEquipmentQuantity(entry.id, Number(event.target.value))} aria-label={`Quantidade de ${entry.name}`} /></label>)}</div> : <p>Nenhum selecionado</p>}
+            {system === "dnd5e" && selectedEquipment.some((entry) => requiresDnd5eAttunement(entry)) && <fieldset className="pb-core-sheet-attunement"><legend>Sintonização ({(draft.attunedEquipmentIds || []).length}/3)</legend>{selectedEquipment.filter((entry) => requiresDnd5eAttunement(entry)).map((entry) => { const checked = (draft.attunedEquipmentIds || []).includes(entry.id); return <label key={`sheet-attunement-${entry.id}`}><input type="checkbox" checked={checked} disabled={!checked && (draft.attunedEquipmentIds || []).length >= 3} onChange={(event) => setDraft({ ...draft, attunedEquipmentIds: event.target.checked ? [...(draft.attunedEquipmentIds || []), entry.id] : (draft.attunedEquipmentIds || []).filter((id) => id !== entry.id) })} />{entry.name}</label>; })}<small>Máximo de três itens sintonizados.</small></fieldset>}
+          </section>
           <section><h3>Magias</h3><p>{selectedSpells.length ? selectedSpells.map((entry) => `${entry.name} (${system === "dnd5e" ? formatDnd5eSpellDetails(entry) : [formatT20SpellDetails(entry), entry.summary].filter(Boolean).join(" · ")})`).join(" · ") : "Nenhuma selecionada"}</p></section>
           <section><h3>{system === "t20" ? "Poderes" : "Talentos"}</h3><p>{selectedFeats.length ? selectedFeats.map((entry) => `${entry.name}${getCoreFeatQuantity(draft, entry.id) > 1 ? ` ×${getCoreFeatQuantity(draft, entry.id)}` : ""}`).join(" · ") : "Nenhum selecionado"}</p></section>
           {selectedFeatChoices.length > 0 && <section><h3>Escolhas dos talentos</h3><p>{selectedFeatChoices.map(({ choice }) => `${choice.label}: ${(draft.featChoices?.[choice.id] || []).join(", ") || "não selecionado"}`).join(" · ")}</p></section>}
@@ -201,10 +289,13 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
           <div><span>Iniciativa</span><strong>{derived.initiative >= 0 ? `+${derived.initiative}` : derived.initiative}</strong></div>
           <div><span>Bônus de proficiência</span><strong>+{derived.proficiencyBonus}</strong></div>
           <div><span>Deslocamento</span><strong>{derived.speed}m</strong></div>
+          {derived.passivePerception !== undefined && <div><span>Percepção passiva</span><strong>{derived.passivePerception}</strong></div>}
+          {derived.passiveInvestigation !== undefined && <div><span>Investigação passiva</span><strong>{derived.passiveInvestigation}</strong></div>}
           <div><span>XP para o nível</span><strong>{derived.experienceForLevel.toLocaleString("pt-BR")}{derived.experienceToNextLevel !== undefined ? ` → ${derived.experienceToNextLevel.toLocaleString("pt-BR")}` : " · máximo"}</strong></div>
-          {Object.entries(derived.savingThrowBonuses).map(([save, bonus]) => <div key={save} title={`Salvamento de ${CORE_ABILITY_LABELS[save] || save}`}><span>{system === "dnd5e" ? CORE_ABILITY_LABELS[save] || save : save.toUpperCase()}</span><strong>{bonus >= 0 ? `+${bonus}` : bonus}</strong></div>)}
+          {Object.entries(derived.savingThrowBonuses).map(([save, bonus]) => { const rollMode = derived.savingThrowRollModes[save]; const modeLabel = rollMode === "advantage" ? " · vantagem" : rollMode === "disadvantage" ? " · desvantagem" : ""; return <div key={save} title={`Salvamento de ${CORE_ABILITY_LABELS[save] || save}`}><span>{system === "dnd5e" ? CORE_ABILITY_LABELS[save] || save : save.toUpperCase()}</span><strong>{bonus >= 0 ? `+${bonus}` : bonus}{modeLabel}</strong></div>; })}
           {derived.spellSaveDC !== undefined && <div><span>CD de magia</span><strong>{derived.spellSaveDC}</strong></div>}
           {derived.spellAttackBonus !== undefined && <div><span>Ataque mágico</span><strong>+{derived.spellAttackBonus}</strong></div>}
+          {derived.spellcastingFocus && <div><span>Foco</span><strong>{derived.spellcastingFocus.name}</strong></div>}
           {Object.keys(derived.spellSlots).length > 0 && <div><span>Espaços</span><strong>{Object.entries(derived.spellSlots).map(([rank, amount]) => `${rank}º:${amount}`).join(" · ")}</strong></div>}
           {derived.preparedSpellLimit !== undefined && <div><span>Preparadas</span><strong>{(draft.preparedSpellIds || []).length}/{derived.preparedSpellLimit}</strong></div>}
           {derived.knownSpellLimit !== undefined && <div><span>Conhecidas</span><strong>{selectedSpells.filter((entry) => entry.spellLevel !== 0).length}/{derived.knownSpellLimit}</strong></div>}
@@ -215,7 +306,7 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
         {derived.attacks.length > 0 && <fieldset className="pb-core-attack-summary">
           <legend>Ataques</legend>
           <div className="pb-core-attack-grid">
-            {derived.attacks.map((attack) => <div key={attack.name}><strong>{attack.name}</strong><span>{attack.bonus >= 0 ? `+${attack.bonus}` : attack.bonus} · {attack.damage}{attack.proficient ? "" : " · sem proficiência"}</span></div>)}
+            {derived.attacks.map((attack) => <div key={attack.name}><strong>{attack.name}</strong><span>{attack.bonus >= 0 ? `+${attack.bonus}` : attack.bonus} · {attack.damage}{attack.rollMode === "advantage" ? " · vantagem" : attack.rollMode === "disadvantage" ? " · desvantagem" : ""}{attack.attacksPerAction ? ` · ${attack.attacksPerAction} ataques/ação` : ""}{attack.conditionalDamage ? ` · ${attack.conditionalDamage}` : ""}{attack.critical ? ` · crítico ${attack.critical}` : ""}{attack.range ? ` · ${attack.range}` : ""}{attack.weaponProperties?.length ? ` · ${attack.weaponProperties.join(", ")}` : ""}{attack.proficient ? "" : " · sem proficiência"}</span></div>)}
           </div>
         </fieldset>}
 
@@ -247,6 +338,16 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
             })}
           </div>
         </fieldset>
+
+        <details className="pb-core-skill-rules">
+          <summary>Usos e regras das perícias</summary>
+          <div className="pb-core-skill-rules-grid">
+            {catalog.skills.map((skill) => <article key={`sheet-skill-rule-${skill.id}`}>
+              <strong>{skill.name}</strong>
+              <small>{skill.ruleSummary || "Consulte a regra do sistema para esta perícia."}</small>
+            </article>)}
+          </div>
+        </details>
 
         <label className="pb-core-notes">Notas
           <textarea value={draft.notes} onChange={(event) => setDraft({ ...draft, notes: event.target.value })} rows={4} />

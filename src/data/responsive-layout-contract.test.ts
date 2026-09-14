@@ -100,7 +100,16 @@ describe("responsive layout contract", () => {
     expect(legacyCss).toContain("height: 52px;\n    min-height: 52px;");
     expect(legacyCss).toContain("flex-wrap: nowrap;");
     expect(legacyCss).toContain("top: 52px;");
-    expect(css).toContain("Tablets e portáteis também mantêm a viewport fixa");
+    expect(css).toContain("Portal mobile: uma única superfície de rolagem");
+    expect(css).toContain("body.portal-page-active {\n  height: auto !important;");
+    expect(css).toContain("body.portal-page-active .portal-nav-wrapper {\n  position: sticky;");
+    expect(css).toContain("body.portal-page-active .portal-nav {\n  position: static;");
+    expect(css).toContain("body.portal-page-active.portal-nav-is-scrolled .portal-nav-wrapper");
+    expect(css).toContain("position: fixed !important;");
+    expect(css).toContain("html.portal-page-active {");
+    expect(css).toContain("body.portal-page-active .pb-topbar {\n    position: static !important;");
+    expect(css).toContain("body.portal-page-active .portal-page,");
+    expect(css).toContain("overflow: visible !important;");
     expect(css).toContain(".portal-page { width: min(calc(100vw - 24px), 1280px); max-width: calc(100vw - 24px); padding-top: 28px; box-sizing: border-box; }");
     expect(css).toContain(".characters-library-grid { grid-template-columns: minmax(0, 1fr); }");
     expect(css).toContain(".portal-page.access-page { width: calc(100vw - 24px); max-width: calc(100vw - 24px); }");
@@ -125,6 +134,7 @@ describe("responsive layout contract", () => {
     expect(app).toContain('document.getElementById("drawerOverlay")?.classList.remove("active");');
     expect(app).toContain('document.querySelectorAll(".pb-drawer-overlay.active, .pb-modal-overlay.active")');
     expect(app).toContain('document.body.classList.toggle("portal-page-active", !onBuilder);');
+    expect(app).toContain('document.documentElement.classList.toggle("portal-page-active", !onBuilder);');
     expect(app).toContain("window.location.hash = `#/${cleanRoute}`;");
     expect(app).toContain("// Antecedentes homônimos de livros/edições diferentes podem ter");
     expect(app).toContain("return finalize(PF2E_DATA.backgrounds.map(b => ({ name: b.name, type: \"Antecedente\", data: b })));");
@@ -139,6 +149,12 @@ describe("responsive layout contract", () => {
     const app = read("js/app.js");
     expect(app).toContain('const diceAriaPrefix = locale === "en" ? "Die"');
     expect(app).toContain('locale === "es" ? "resultado" : "resultado"');
+  });
+
+  it("permite abrir cards do compêndio com Enter e Espaço", () => {
+    const portal = read("src/PortalPages.tsx");
+    expect(portal).toContain('if (e.key === "Enter" || e.key === " ")');
+    expect(portal).toContain('role="button" aria-label={displayName}');
   });
 
   it("exibe o resumo localizado dos mascotes na ficha", () => {

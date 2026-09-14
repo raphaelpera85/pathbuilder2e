@@ -28,6 +28,7 @@ describe("Catalog Service & Supabase Mapping", () => {
       "subclass",
       "background",
       "archetype",
+      "skill",
       "spell",
       "ritual",
       "feat",
@@ -83,6 +84,63 @@ describe("Catalog Service & Supabase Mapping", () => {
     expect(item.data.source.page).toBe(256);
     expect(item.data.traits).toEqual(["Geral"]);
     expect(item.data.mechanics).toEqual({ failure: "fica atordoado 1", heightened: "+1d6" });
+  });
+
+  it("preserva metadados de ações e condições core vindos do Supabase", () => {
+    const action = normalizeSupabaseRecordToPickerItem({
+      id: "dnd5e.action.dodge",
+      system_id: "dnd5e",
+      name_pt: "Esquivar",
+      action_cost: "1",
+      action_type: "basic",
+      ruleset: "standard",
+      source_book: "Livro do Jogador — D&D 5e 2014",
+      source_page: 192,
+    }, "action");
+    const condition = normalizeSupabaseRecordToPickerItem({
+      id: "dnd5e.condition.exausto",
+      system_id: "dnd5e",
+      name_pt: "Exausto",
+      has_value: true,
+      condition_group: "core",
+      ruleset: "standard",
+      source_book: "Livro do Jogador — D&D 5e 2014",
+      source_page: 291,
+    }, "condition");
+    expect(action.data).toMatchObject({ actionCost: "1", actionType: "basic" });
+    expect(condition.data).toMatchObject({ hasValue: true, conditionGroup: "core" });
+  });
+
+  it("serve perícias core no Compêndio sem criar uma tabela Supabase inexistente", async () => {
+    const t20 = await fetchCatalogCategory("skill", { systemId: "t20" });
+    const dnd = await fetchCatalogCategory("skill", { systemId: "dnd5e" });
+    expect(t20.source).toBe("local_runtime");
+    expect(t20.items).toHaveLength(29);
+    expect(dnd.items).toHaveLength(18);
+    expect(t20.items[0]).toMatchObject({ category: "skill", system_id: "t20" });
+    expect(t20.items[0].data.source).toMatchObject({ book: "Tormenta20 — Livro Básico" });
+  });
+
+  it("não reutiliza o cache Advanced ao carregar perícias OSE Classic", async () => {
+    const advanced = await fetchCatalogCategory("skill", { systemId: "ose", ruleset: "advanced" });
+    const classic = await fetchCatalogCategory("skill", { systemId: "ose", ruleset: "classic" });
+    expect(advanced.items.some((item) => item.data.skillTable === "thief" || item.data.skillTable === "acrobat")).toBe(true);
+    expect(classic.items.length).toBe(32);
+    expect(classic.items.every((item) => item.data.ruleset === "classic" && item.data.skillTable === undefined)).toBe(true);
+  });
+
+  it("serve regras de criação por sistema no Compêndio", async () => {
+    const t20 = await fetchCatalogCategory("rule", { systemId: "t20" });
+    const ose = await fetchCatalogCategory("rule", { systemId: "ose" });
+    expect(t20.source).toBe("local_runtime");
+    expect(t20.items.some((item) => item.data.ruleKind === "creation" && item.data.ruleset === "padrao")).toBe(true);
+    expect(ose.items.some((item) => item.data.ruleKind === "creation" && item.data.ruleset === "advanced")).toBe(true);
+  });
+
+  it("carrega o Compêndio inteiro quando o filtro de sistema é Todos", async () => {
+    const rules = await fetchCatalogCategory("rule", { systemId: "all" });
+    expect(new Set(rules.items.map((item) => item.system_id))).toEqual(new Set(["t20", "dnd5e", "ose"]));
+    expect(rules.items.some((item) => item.data.ruleset === "classic")).toBe(true);
   });
 
   it("preserva os campos estruturados de armas ao normalizar o catálogo remoto", () => {

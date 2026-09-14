@@ -18,6 +18,7 @@ const t20EquipmentExpansionOutput = path.join(root, "supabase/migrations/2026091
 const dnd5eEquipmentExpansionOutput = path.join(root, "supabase/migrations/202609130029_expand_dnd5e_mounts_vehicles.sql");
 const dnd5eAdditionalGearOutput = path.join(root, "supabase/migrations/202609130030_expand_dnd5e_core_gear_tools.sql");
 const dnd5eWeaponMetadataOutput = path.join(root, "supabase/migrations/202609130031_refresh_dnd5e_weapon_metadata.sql");
+const t20WeaponMetadataOutput = path.join(root, "supabase/migrations/202609130033_refresh_t20_weapon_metadata.sql");
 
 function loadExports(relativePath) {
   let source = fs.readFileSync(path.join(root, relativePath), "utf8");
@@ -29,6 +30,7 @@ function loadExports(relativePath) {
     .replace(/: (?:T20CompendiumEntry|Dnd5eCompendiumEntry)\[\]/g, "")
     .replace(/ as Dnd5eCompendiumEntry/g, "")
     .replace(/: Record<string, Pick<Dnd5eCompendiumEntry, [^;]+>>/g, "")
+    .replace(/: Record<string, Pick<T20CompendiumEntry, [^;]+>>/g, "")
     .replace(/ as Record<string, Pick<Dnd5eCompendiumEntry, [^;]+>>/g, "")
     .replace(/export function formatDnd5eSpellDetails[\s\S]*?^\}/m, "")
     .replace(/export function formatT20SpellDetails[\s\S]*?^\}/m, "")
@@ -130,6 +132,12 @@ ${itemRows("dnd5e", "standard", "D&D 5e — Livro do Jogador (2014)", dnd5e.DND5
 ${onConflict(["name_pt","item_category","ruleset","source_book","source_page","data","system_id"])}
 `;
 fs.writeFileSync(dnd5eWeaponMetadataOutput, dnd5eWeaponMetadataSql, "utf8");
+const t20WeaponMetadataSql = `-- Refresh idempotente das propriedades operacionais das armas T20.
+insert into public.catalog_items (id,name_pt,item_category,ruleset,source_book,source_page,data,system_id) values
+${itemRows("t20", "padrao", "Tormenta20 — Livro Básico", t20.T20_EQUIPMENT.filter((entry) => entry.category === "arma")).join(",\n")}
+${onConflict(["name_pt","item_category","ruleset","source_book","source_page","data","system_id"])}
+`;
+fs.writeFileSync(t20WeaponMetadataOutput, t20WeaponMetadataSql, "utf8");
 const spellMetadataSql = `-- Refresh idempotente dos metadados de execução das magias do compêndio core.
 insert into public.catalog_spells (id,name_pt,rank,is_cantrip,is_focus,ruleset,source_book,source_page,data,system_id) values
 ${allSpells.join(",\n")}
@@ -193,4 +201,4 @@ ${onConflict(["name_pt","rank","is_cantrip","is_focus","ruleset","source_book","
 `;
 fs.writeFileSync(t20SpellEffectRefreshOutput, t20AllSpellEffectSql, "utf8");
 fs.writeFileSync(t20SpellDetailsOutput, t20AllSpellEffectSql, "utf8");
-console.log(JSON.stringify({ output, spellMetadataOutput, featMetadataOutput, t20PowerMetadataOutput, t20GrantedMetadataOutput, t20CatalogCleanupOutput, t20SpellMetadataOutput, t20EquipmentExpansionOutput, dnd5eEquipmentExpansionOutput, dnd5eAdditionalGearOutput, dnd5eWeaponMetadataOutput, items: allItems.length, spells: allSpells.length, feats: allFeats.length, t20GeneralPowers: t20GeneralPowers.length, t20GrantedAndTormentaPowers: t20GrantedAndTormentaPowers.length, t20SpellSummaryEntries: t20SpellSummaryEntries.length }, null, 2));
+console.log(JSON.stringify({ output, spellMetadataOutput, featMetadataOutput, t20PowerMetadataOutput, t20GrantedMetadataOutput, t20CatalogCleanupOutput, t20SpellMetadataOutput, t20EquipmentExpansionOutput, dnd5eEquipmentExpansionOutput, dnd5eAdditionalGearOutput, dnd5eWeaponMetadataOutput, t20WeaponMetadataOutput, items: allItems.length, spells: allSpells.length, feats: allFeats.length, t20GeneralPowers: t20GeneralPowers.length, t20GrantedAndTormentaPowers: t20GrantedAndTormentaPowers.length, t20SpellSummaryEntries: t20SpellSummaryEntries.length }, null, 2));

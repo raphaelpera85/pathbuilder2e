@@ -11,7 +11,7 @@ export interface Dnd5eFeatChoice {
   count: number;
 }
 
-export interface Dnd5eCompendiumEntry { id: string; name: string; sourcePage: number; category: "arma" | "armadura" | "equipamento" | "magia" | "talento"; summary: string; spellLevel?: number; classIds?: string[]; castingTime?: string; range?: string; components?: string; duration?: string; concentration?: boolean; ritual?: boolean; savingThrow?: string; proficiency?: "simple_weapon" | "martial_weapon" | "light_armor" | "medium_armor" | "heavy_armor" | "shield"; armorClass?: number; armorBonus?: number; armorPenalty?: number; dexterityCap?: number; requiresStrength?: number; shieldBonus?: number; attackAbility?: "str" | "dex"; damage?: string; weaponProperties?: string[]; ammunitionType?: "flecha" | "virote" | "bala" | "agulha"; weight?: number; cost?: string; armorMaterial?: "metal" | "non_metal"; armorWeightClass?: "light" | "heavy"; minimumLevel?: number; prerequisite?: Dnd5eFeatPrerequisite; }
+export interface Dnd5eCompendiumEntry { id: string; name: string; sourcePage: number; category: "arma" | "armadura" | "equipamento" | "magia" | "talento"; summary: string; spellLevel?: number; classIds?: string[]; castingTime?: string; range?: string; components?: string; duration?: string; concentration?: boolean; ritual?: boolean; savingThrow?: string; proficiency?: "simple_weapon" | "martial_weapon" | "light_armor" | "medium_armor" | "heavy_armor" | "shield"; armorClass?: number; armorBonus?: number; armorPenalty?: number; dexterityCap?: number; requiresStrength?: number; shieldBonus?: number; attackAbility?: "str" | "dex"; damage?: string; weaponProperties?: string[]; ammunitionType?: "flecha" | "virote" | "bala" | "agulha"; weight?: number; cost?: string; armorMaterial?: "metal" | "non_metal"; armorWeightClass?: "light" | "heavy"; minimumLevel?: number; prerequisite?: Dnd5eFeatPrerequisite; magical?: boolean; magicCategory?: "uso_unico" | "menor" | "medio" | "maior" | "especifica"; magicEffects?: string[]; grantedSpellIds?: string[]; requiresAttunement?: boolean; rarity?: "comum" | "incomum" | "raro" | "muito_raro" | "lendario"; }
 
 export const DND5E_EQUIPMENT: Dnd5eCompendiumEntry[] = [
   { id: "dnd5e.arma.adaga", name: "Adaga", sourcePage: 149, category: "arma", summary: "1d4 perfurante · acuidade · leve", proficiency: "simple_weapon", attackAbility: "dex", damage: "1d4 perfurante", weight: 1 },
@@ -241,6 +241,33 @@ const DND5E_ADDITIONAL_GEAR: Dnd5eCompendiumEntry[] = [
 
 DND5E_EQUIPMENT.push(...DND5E_ADDITIONAL_GEAR);
 
+// Itens mágicos do Guia do Mestre (2014), pp. 150–155. Os efeitos são
+// resumos operacionais para a ficha; a descrição completa permanece no livro.
+const DND5E_MAGIC_ITEMS: Dnd5eCompendiumEntry[] = [
+  { id: "dnd5e.item_magico.adaga_envenenamento", name: "Adaga de envenenamento", sourcePage: 150, category: "arma", summary: "Arma (adaga), rara", magical: true, magicCategory: "medio", rarity: "raro", magicEffects: ["+1 em ataques e dano.", "Uma vez por amanhecer, pode aplicar veneno: Constituição CD 15, 2d10 de veneno e envenenado por 1 minuto."], damage: "1d4 perfurante", weight: 1 },
+  { id: "dnd5e.item_magico.algemas_dimensionais", name: "Algemas dimensionais", sourcePage: 150, category: "equipamento", summary: "Item maravilhoso, raro", magical: true, magicCategory: "medio", rarity: "raro", magicEffects: ["Prendem criaturas Pequenas a Grandes incapacitadas.", "Impedem teletransporte e outros deslocamentos extradimensionais enquanto fechadas."], weight: 6 },
+  { id: "dnd5e.item_magico.aljava_ehlonna", name: "Aljava de Ehlonna", sourcePage: 150, category: "equipamento", summary: "Item maravilhoso, incomum", magical: true, magicCategory: "menor", rarity: "incomum", magicEffects: ["Compartimentos extradimensionais para até 60 flechas, 18 azagaias e 6 objetos longos.", "Nunca pesa mais de 1 kg."], weight: 2 },
+  { id: "dnd5e.item_magico.amuletoprotecao_deteccao", name: "Amuleto de proteção contra detecção e localização", sourcePage: 150, category: "equipamento", summary: "Item maravilhoso, incomum", magical: true, magicCategory: "menor", rarity: "incomum", requiresAttunement: true, magicEffects: ["Esconde o portador de magias de adivinhação e sensores mágicos."], weight: 1 },
+  { id: "dnd5e.item_magico.amuletosaude", name: "Amuleto de saúde", sourcePage: 150, category: "equipamento", summary: "Item maravilhoso, raro", magical: true, magicCategory: "medio", rarity: "raro", requiresAttunement: true, magicEffects: ["Enquanto usado, seu valor de Constituição se torna 19, se ainda não for maior."], weight: 1 },
+  { id: "dnd5e.item_magico.amuletoplanos", name: "Amuleto dos planos", sourcePage: 150, category: "equipamento", summary: "Item maravilhoso, muito raro", magical: true, magicCategory: "maior", rarity: "muito_raro", requiresAttunement: true, magicEffects: ["Pode tentar transportar o usuário para um local familiar em outro plano; Inteligência CD 15."], weight: 1 },
+  { id: "dnd5e.item_magico.anelandar_livre", name: "Anel de andar livre", sourcePage: 151, category: "equipamento", summary: "Anel, raro", magical: true, magicCategory: "medio", rarity: "raro", requiresAttunement: true, magicEffects: ["Ignora terreno difícil e não sofre penalidades mágicas para se mover."], weight: 0 },
+  { id: "dnd5e.item_magico.anelariete", name: "Anel aríete", sourcePage: 151, category: "equipamento", summary: "Anel, raro", magical: true, magicCategory: "medio", rarity: "raro", requiresAttunement: true, magicEffects: ["Pode golpear à distância com força de impacto e possui 3 cargas, recuperadas diariamente."], weight: 0 },
+  { id: "dnd5e.item_magico.anelprotecao", name: "Anel de proteção", sourcePage: 151, category: "equipamento", summary: "Anel, raro", magical: true, magicCategory: "medio", rarity: "raro", requiresAttunement: true, magicEffects: ["+1 na Classe de Armadura e nos testes de resistência."], weight: 0 },
+  { id: "dnd5e.item_magico.anelresistencia", name: "Anel de resistência", sourcePage: 151, category: "equipamento", summary: "Anel, raro", magical: true, magicCategory: "medio", rarity: "raro", requiresAttunement: true, magicEffects: ["Concede resistência a um tipo de dano determinado pelo item."], weight: 0 },
+  { id: "dnd5e.item_magico.armadura_um", name: "Armadura +1", sourcePage: 152, category: "armadura", summary: "Armadura (qualquer), incomum", magical: true, magicCategory: "menor", rarity: "incomum", requiresAttunement: false, magicEffects: ["+1 na Classe de Armadura além do bônus normal da armadura."], armorBonus: 1 },
+  { id: "dnd5e.item_magico.arma_um", name: "Arma +1", sourcePage: 152, category: "arma", summary: "Arma (qualquer), incomum", magical: true, magicCategory: "menor", rarity: "incomum", requiresAttunement: false, magicEffects: ["+1 em jogadas de ataque e dano."], damage: "conforme a arma" },
+  { id: "dnd5e.item_magico.bolsa_prestidigitacao", name: "Bolsa de prestidigitação", sourcePage: 153, category: "equipamento", summary: "Item maravilhoso, incomum", magical: true, magicCategory: "menor", rarity: "incomum", magicEffects: ["Produz pequenos objetos não mágicos; o conteúdo desaparece após ser retirado."], weight: 1 },
+  { id: "dnd5e.item_magico.botas_elficas", name: "Botas élficas", sourcePage: 153, category: "equipamento", summary: "Item maravilhoso, incomum", magical: true, magicCategory: "menor", rarity: "incomum", magicEffects: ["Passos silenciosos: concede vantagem em testes de Furtividade baseados em movimento."], weight: 1 },
+  { id: "dnd5e.item_magico.botas_velocidade", name: "Botas de velocidade", sourcePage: 153, category: "equipamento", summary: "Item maravilhoso, raro", magical: true, magicCategory: "medio", rarity: "raro", requiresAttunement: true, magicEffects: ["Aumentam o deslocamento e permitem movimento acelerado por até 10 minutos por carga."], weight: 1 },
+  { id: "dnd5e.item_magico.capa_elfica", name: "Capa élfica", sourcePage: 154, category: "equipamento", summary: "Item maravilhoso, incomum", magical: true, magicCategory: "menor", rarity: "incomum", requiresAttunement: true, magicEffects: ["Concede vantagem em Furtividade; testes de Percepção para notar o usuário têm desvantagem."], weight: 1 },
+  { id: "dnd5e.item_magico.capa_deslocamento", name: "Capa de deslocamento", sourcePage: 154, category: "equipamento", summary: "Item maravilhoso, raro", magical: true, magicCategory: "medio", rarity: "raro", requiresAttunement: true, magicEffects: ["Distorce a imagem do usuário, impondo desvantagem aos ataques contra ele até sofrer dano."], weight: 1 },
+  { id: "dnd5e.item_magico.pocao_cura", name: "Poção de cura", sourcePage: 153, category: "equipamento", summary: "Poção, comum", magical: true, magicCategory: "uso_unico", rarity: "comum", magicEffects: ["Consumir restaura 2d4 + 2 pontos de vida."], weight: 0.5 },
+  { id: "dnd5e.item_magico.pocao_escalada", name: "Poção de escalada", sourcePage: 153, category: "equipamento", summary: "Poção, comum", magical: true, magicCategory: "uso_unico", rarity: "comum", magicEffects: ["Concede deslocamento de escalada igual ao deslocamento por 1 hora e vantagem em Atletismo para escalar."], weight: 0.5 },
+  { id: "dnd5e.item_magico.varinha_misseis_magicos", name: "Varinha de mísseis mágicos", sourcePage: 209, category: "equipamento", summary: "Varinha, incomum", magical: true, magicCategory: "menor", rarity: "incomum", requiresAttunement: true, grantedSpellIds: ["dnd5e.magia.misseis_magicos"], magicEffects: ["Possui 7 cargas e pode lançar Mísseis mágicos; recupera 1d6 + 1 cargas diariamente."], weight: 1 },
+];
+
+DND5E_EQUIPMENT.push(...DND5E_MAGIC_ITEMS);
+
 // Propriedades operacionais da tabela de armas do Livro do Jogador, pp. 149–151.
 // O resumo permanece legível, enquanto estes campos alimentam filtros, munição e exportação.
 const DND5E_WEAPON_METADATA: Record<string, Pick<Dnd5eCompendiumEntry, "range" | "weaponProperties" | "ammunitionType">> = {
@@ -254,8 +281,18 @@ const DND5E_WEAPON_METADATA: Record<string, Pick<Dnd5eCompendiumEntry, "range" |
   "dnd5e.arma.dardo": { range: "6/18m", weaponProperties: ["acuidade", "arremesso"] },
   "dnd5e.arma.funda": { range: "9/36m", weaponProperties: ["munição"], ammunitionType: "bala" },
   "dnd5e.arma.glaive": { weaponProperties: ["pesada", "alcance", "duas mãos"] },
+  "dnd5e.arma.machado_grande": { weaponProperties: ["pesada", "duas mãos"] },
   "dnd5e.arma.alabarda": { weaponProperties: ["pesada", "alcance", "duas mãos"] },
+  "dnd5e.arma.marretao": { weaponProperties: ["pesada", "duas mãos"] },
   "dnd5e.arma.mangual_de_guerra": { weaponProperties: ["pesada", "alcance", "duas mãos"] },
+  "dnd5e.arma.espada_longa": { weaponProperties: ["versátil"] },
+  "dnd5e.arma.machado_de_batalha": { weaponProperties: ["versátil"] },
+  "dnd5e.arma.espada_grande": { weaponProperties: ["pesada", "duas mãos"] },
+  "dnd5e.arma.clava": { weaponProperties: ["leve"] },
+  "dnd5e.arma.marreta": { weaponProperties: ["duas mãos"] },
+  "dnd5e.arma.bordao": { weaponProperties: ["versátil"] },
+  "dnd5e.arma.foice": { weaponProperties: ["leve"] },
+  "dnd5e.arma.martelo_guerra": { weaponProperties: ["versátil"] },
   "dnd5e.arma.rapiera": { weaponProperties: ["acuidade"] },
   "dnd5e.arma.cimitarra": { weaponProperties: ["acuidade", "leve"] },
   "dnd5e.arma.espada_curta": { weaponProperties: ["acuidade", "leve"] },

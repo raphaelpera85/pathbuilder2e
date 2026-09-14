@@ -1,5 +1,5 @@
 import { PDFDocument, StandardFonts, rgb, type PDFPage, type PDFFont } from "pdf-lib";
-import { getCoreCatalog, T20_DEITIES, type MultiSystemCharacter, type SupportedCoreSystem } from "../data/multiSystemCharacter";
+import { getCoreCatalog, requiresDnd5eAttunement, T20_DEITIES, type MultiSystemCharacter, type SupportedCoreSystem } from "../data/multiSystemCharacter";
 import { getSystemRulesEngine } from "../data/systemRulesEngine";
 import { DND5E_FEAT_CHOICES } from "../data/dnd5e/dnd5eCompendium";
 import { T20_POWER_CHOICES } from "../data/t20/t20Compendium";
@@ -17,10 +17,13 @@ function label(page: PDFPage, font: PDFFont, value: string, x: number, y: number
   page.drawText(value, { x, y, size, font, color: rgb(0.22, 0.16, 0.1) });
 }
 
-function listNames(entries: Array<{ id: string; name: string }>, ids: string[], quantities?: Record<string, number>): string {
+function listNames(entries: Array<{ id: string; name: string; magical?: boolean; magicCategory?: string; magicEffects?: string[] }>, ids: string[], quantities?: Record<string, number>): string {
   return entries.filter((entry) => ids.includes(entry.id)).map((entry) => {
     const quantity = quantities?.[entry.id];
-    return quantity && quantity > 1 ? `${entry.name} ×${Math.trunc(quantity)}` : entry.name;
+    // AcroForms with the built-in WinAnsi font cannot encode emoji.
+    const magicText = entry.magical ? `Mágico (${entry.magicCategory || "mágico"}): ${(entry.magicEffects || []).join(" · ")}` : "";
+    const label = [entry.name, magicText].filter(Boolean).join(" · ");
+    return quantity && quantity > 1 ? `${label} ×${Math.trunc(quantity)}` : label;
   }).join(", ");
 }
 
@@ -33,12 +36,13 @@ function formatCoreCoins(character: MultiSystemCharacter): string {
 
 function listFeatNames(character: MultiSystemCharacter, catalog: ReturnType<typeof getCoreCatalog>): string {
   const names = listNames(catalog.feats, character.featIds || [], character.featQuantities);
+  const combatMode = character.system_id === "dnd5e" && character.dndPowerAttack ? "Ataque Poderoso ativo (-5 ataque/+10 dano em arma pesada)" : "";
   const choiceCatalog = character.system_id === "dnd5e" ? DND5E_FEAT_CHOICES : T20_POWER_CHOICES;
   const choices = (character.featIds || []).flatMap((featId) => (choiceCatalog[featId] || []).map((choice) => {
     const values = character.featChoices?.[choice.id] || [];
     return values.length ? `${choice.label}: ${values.join(", ")}` : "";
   })).filter(Boolean);
-  return [names, choices.join(" · ")].filter(Boolean).join(" · ");
+  return [names, choices.join(" · "), combatMode].filter(Boolean).join(" · ");
 }
 
 export async function createCoreEditablePdf(character: MultiSystemCharacter): Promise<Uint8Array> {
@@ -94,11 +98,25 @@ export async function createCoreEditablePdf(character: MultiSystemCharacter): Pr
   const expertiseNames = system === "dnd5e" ? listNames(catalog.skills, character.skillExpertise || []).replace(/^/, "Especialização: ") : "";
   const raceFeatName = character.raceFeatChoice ? catalog.feats.find((entry) => entry.id === character.raceFeatChoice)?.name : "";
   const raceSkillNames = listNames(catalog.skills, character.raceSkillChoices || []);
-  const skillsText = [listNames(catalog.skills, character.skillProficiencies), expertiseNames, raceSkillNames && `Perícias raciais: ${raceSkillNames}`, raceFeatName && `Poder racial: ${raceFeatName}`].filter(Boolean).join(" · ");
+  const raceChoiceRules = system === "dnd5e" && "raceChoices" in (catalog.raceRules.find((entry) => entry.id === character.raceId) || {})
+    ? ((catalog.raceRules.find((entry) => entry.id === character.raceId) as { raceChoices?: Array<{ id: string; label: string }> } | undefined)?.raceChoices || [])
+    : [];
+  const raceChoiceText = raceChoiceRules.map((choice) => `${choice.label}: ${(character.raceChoices?.[choice.id] || []).join(", ")}`).filter((value) => !value.endsWith(": ")).join(" · ");
+  const racialEffectsText = derived.racialEffects.join(" · ");
+  const selectedSubrace = catalog.subraces.find((entry) => entry.id === character.subraceId);
+  const subraceChoiceRules = system === "dnd5e" && selectedSubrace && "subraceChoices" in selectedSubrace ? ((selectedSubrace as { subraceChoices?: Array<{ id: string; label: string }> }).subraceChoices || []) : [];
+  const subraceChoiceText = subraceChoiceRules.map((choice) => `${choice.label}: ${(character.subraceChoices?.[choice.id] || []).join(", ")}`).filter((value) => !value.endsWith(": ")).join(" · ");
+  const subclassEffectsText = derived.subclassEffects.join(" · ");
+  const classChoiceEffectsText = derived.classChoiceEffects.join(" · ");
+  const skillsText = [listNames(catalog.skills, character.skillProficiencies), expertiseNames, derived.passivePerception !== undefined && `Percepção passiva: ${derived.passivePerception}`, derived.passiveInvestigation !== undefined && `Investigação passiva: ${derived.passiveInvestigation}`, raceSkillNames && `Perícias raciais: ${raceSkillNames}`, raceFeatName && `Poder racial: ${raceFeatName}`, raceChoiceText, subraceChoiceText, racialEffectsText && `Efeitos raciais: ${racialEffectsText}`, subclassEffectsText && `Efeitos da subclasse: ${subclassEffectsText}`, classChoiceEffectsText && `Efeitos das escolhas de classe: ${classChoiceEffectsText}`].filter(Boolean).join(" · ");
   const languagesText = system === "dnd5e" ? [...(character.languages || []), ...(character.raceLanguages || [])].join(", ") : "";
   label(page, bold, "PERÍCIAS / IDIOMAS", 320, 520); textField(form, page, "character.skills", [skillsText, languagesText && `Idiomas: ${languagesText}`].filter(Boolean).join(" · "), 320, 496, 238, 18, 6.5);
 
-  label(page, bold, "EQUIPAMENTO", 36, 515); textField(form, page, "character.equipment", listNames(catalog.equipment, character.equipmentIds || [], character.equipmentQuantities), 36, 463, 522, 42, 8);
+  const equipmentText = listNames(catalog.equipment, character.equipmentIds || [], character.equipmentQuantities);
+  const attunedText = system === "dnd5e"
+    ? listNames(catalog.equipment.filter((entry) => requiresDnd5eAttunement(entry)), character.attunedEquipmentIds || [])
+    : "";
+  label(page, bold, "EQUIPAMENTO", 36, 515); textField(form, page, "character.equipment", [equipmentText, attunedText && `Sintonizados: ${attunedText}`].filter(Boolean).join(" · "), 36, 463, 522, 42, 8);
   label(page, bold, "MAGIAS", 36, 438); textField(form, page, "character.spells", listNames(catalog.spells, character.spellIds || []), 36, 386, 522, 42, 8);
   label(page, bold, system === "t20" ? "PODERES" : "TALENTOS", 36, 361); textField(form, page, "character.feats", listFeatNames(character, catalog), 36, 309, 522, 42, 8);
   label(page, bold, "NOTAS", 36, 284); textField(form, page, "character.notes", character.notes, 36, 60, 522, 214, 8);

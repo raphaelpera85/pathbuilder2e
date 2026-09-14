@@ -80,6 +80,13 @@
   color: var(--ose-gold);
 }
 
+.ose-wizard-description {
+  margin: 4px 0 0;
+  color: var(--ose-text-muted);
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
 .ose-step-tabs {
   display: flex;
   background: rgba(0, 0, 0, 0.2);
@@ -107,6 +114,47 @@
   color: var(--ose-gold);
   border-bottom-color: var(--ose-gold);
   background: rgba(245, 158, 11, 0.08);
+}
+
+.ose-step-tab:focus-visible,
+.ose-btn:focus-visible,
+.ose-wizard-modal input:focus-visible,
+.ose-wizard-modal select:focus-visible,
+.ose-wizard-modal textarea:focus-visible {
+  outline: 2px solid var(--ose-gold);
+  outline-offset: 2px;
+}
+
+.ose-creation-rules {
+  margin: 14px 24px 0;
+  border: 1px solid var(--ose-border);
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.ose-creation-rules summary {
+  padding: 10px 12px;
+  cursor: pointer;
+  color: var(--ose-gold);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.ose-creation-rules ol {
+  display: grid;
+  gap: 5px;
+  margin: 0;
+  padding: 0 24px 10px 34px;
+  color: var(--ose-text-muted);
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.ose-creation-rules small {
+  display: block;
+  padding: 0 12px 10px;
+  color: var(--ose-text-muted);
+  font-size: 0.7rem;
 }
 
 .ose-wizard-body {

@@ -1,8 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { DND5E_ALIGNMENTS, DND5E_LANGUAGES, T20_DEITIES, T20_DRUID_DEITY_IDS, T20_PALADIN_DEITY_IDS, getAvailableCoreFeats, getAvailableCoreSpells, getCoreCatalog, getCoreFeatQuantity, getCoreStartingEquipment, type CoreAbility, type MultiSystemCharacter, type SupportedCoreSystem } from "../data/multiSystemCharacter";
+import { DND5E_ALIGNMENTS, DND5E_LANGUAGES, T20_DEITIES, T20_DRUID_DEITY_IDS, T20_PALADIN_DEITY_IDS, cloneCoreCharacter, getAvailableCoreFeats, getAvailableCoreSpells, getCoreCatalog, getCoreFeatQuantity, getCoreStartingEquipment, getDnd5eSpellcastingFocusOptions, requiresDnd5eAttunement, type CoreAbility, type MultiSystemCharacter, type SupportedCoreSystem } from "../data/multiSystemCharacter";
 import { T20_ARCANIST_PATHS, T20_CLASS_CHOICES, T20_SORCERER_LINEAGES } from "../data/t20/t20Catalog";
 import { formatT20SpellDetails } from "../data/t20/t20Compendium";
 import { getSystemRulesEngine } from "../data/systemRulesEngine";
+import { reconcileCoreSkillProficiencies, reconcileT20DeityDependentFeatIds } from "./coreCharacterEditing";
 import { DND5E_STANDARD_ARRAY, generateAbilityScores, type AbilityGenerationMethod } from "../data/coreCharacterRules";
 import { DND5E_TOOLS, DND5E_TOOL_CHOICE_GROUPS, getDnd5eToolChoiceEntries, type Dnd5eToolChoiceGroup } from "../data/dnd5e/dnd5eCatalog";
 import { getDnd5eBackgroundToolProficiencies } from "../data/dnd5e/dnd5eBackgrounds";
@@ -16,6 +17,7 @@ interface CoreCharacterCreatorModalProps {
   system: SupportedCoreSystem;
   onClose: () => void;
   onCharacterCreated: (character: MultiSystemCharacter) => void;
+  initialCharacter?: MultiSystemCharacter;
 }
 
 const ABILITIES = [
@@ -23,7 +25,7 @@ const ABILITIES = [
   ["int", "Inteligência"], ["wis", "Sabedoria"], ["cha", "Carisma"],
 ] as const;
 
-export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacterCreated }: CoreCharacterCreatorModalProps) {
+export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacterCreated, initialCharacter }: CoreCharacterCreatorModalProps) {
   const engine = useMemo(() => getSystemRulesEngine(system), [system]);
   const catalog = useMemo(() => getCoreCatalog(system), [system]);
   const [character, setCharacter] = useState<MultiSystemCharacter>(() => engine.createDefaultCharacter());
@@ -31,14 +33,18 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
   const [error, setError] = useState<string | null>(null);
   const [generationMethod, setGenerationMethod] = useState<AbilityGenerationMethod>("point_buy");
   const featChoiceCatalog = system === "dnd5e" ? DND5E_FEAT_CHOICES : T20_POWER_CHOICES;
+  const isDndPreparedSpell = (spellId: string) => {
+    const spell = catalog.spells.find((entry) => entry.id === spellId);
+    return system === "dnd5e" && spell?.spellLevel !== undefined && spell.spellLevel > 0;
+  };
 
   useEffect(() => {
     if (isOpen) {
-      setCharacter(engine.createDefaultCharacter());
+      setCharacter(initialCharacter ? cloneCoreCharacter(initialCharacter) : engine.createDefaultCharacter());
       setError(null);
-      setGenerationMethod("point_buy");
+      setGenerationMethod(initialCharacter?.generationMethod || "point_buy");
     }
-  }, [engine, isOpen]);
+  }, [engine, initialCharacter, isOpen]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -77,6 +83,8 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
         next.subraceId = nextSubrace?.id;
         next.raceAbilityChoices = [];
         next.raceLanguages = [];
+        next.raceChoices = {};
+        next.subraceChoices = {};
         next.raceSkillChoices = [];
         next.raceChoiceMode = "skills";
         next.raceFeatChoice = undefined;
@@ -106,9 +114,36 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
         next.featChoices = Object.fromEntries(Object.entries(next.featChoices || {}).filter(([choiceId]) => Object.entries(featChoiceCatalog).some(([featId, choices]) => next.featIds.includes(featId) && choices.some((choice) => choice.id === choiceId))));
         const allowedSpellIds = new Set(getAvailableCoreSpells(system, next.classId, next.level, next).map((spell) => spell.id));
         next.spellIds = next.spellIds.filter((spellId) => allowedSpellIds.has(spellId));
-        next.preparedSpellIds = next.preparedSpellIds?.filter((spellId) => next.spellIds.includes(spellId));
+        next.preparedSpellIds = next.preparedSpellIds?.filter((spellId) => next.spellIds.includes(spellId) && isDndPreparedSpell(spellId));
+        if (next.spellcastingFocusId && !getDnd5eSpellcastingFocusOptions(next.classId, next.subclassId).some((entry) => entry.id === next.spellcastingFocusId)) next.spellcastingFocusId = undefined;
       }
-      if (key === "subclassId") next.subclassChoices = {};
+      if (key === "deity" && system === "t20") {
+        next.featIds = reconcileT20DeityDependentFeatIds(next.featIds, next.deity, catalog.feats as Array<{ id: string; deityIds?: string[] }>);
+        next.featQuantities = Object.fromEntries(Object.entries(next.featQuantities || {}).filter(([featId]) => next.featIds.includes(featId)));
+        next.featChoices = Object.fromEntries(Object.entries(next.featChoices || {}).filter(([choiceId]) => Object.entries(featChoiceCatalog).some(([featId, choices]) => next.featIds.includes(featId) && choices.some((choice) => choice.id === choiceId))));
+      }
+      if (key === "subclassId") {
+        next.subclassChoices = {};
+        if (system === "dnd5e") {
+          const allowedSpellIds = new Set(getAvailableCoreSpells(system, next.classId, next.level, next).map((spell) => spell.id));
+          next.spellIds = next.spellIds.filter((spellId) => allowedSpellIds.has(spellId));
+          next.preparedSpellIds = next.preparedSpellIds?.filter((spellId) => next.spellIds.includes(spellId) && isDndPreparedSpell(spellId));
+          if (next.spellcastingFocusId && !getDnd5eSpellcastingFocusOptions(next.classId, next.subclassId).some((entry) => entry.id === next.spellcastingFocusId)) next.spellcastingFocusId = undefined;
+        }
+      }
+      if (key === "subraceId") next.subraceChoices = {};
+      if (key === "featChoices" && system === "dnd5e") {
+        const normalizeSpellChoice = (spellName: string) => spellName.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+        const selectedSpellNames = [
+          ...(next.featIds.includes("dnd5e.talento.iniciado_em_magia") ? next.featChoices?.["magic-initiate-cantrips"] || [] : []),
+          ...(next.featIds.includes("dnd5e.talento.iniciado_em_magia") ? next.featChoices?.["magic-initiate-spell"] || [] : []),
+          ...(next.featIds.includes("dnd5e.talento.conjurador_de_rituais") ? next.featChoices?.["ritual-caster-spells"] || [] : []),
+        ].map(normalizeSpellChoice);
+        const grantedSpellIds = catalog.spells
+          .filter((spell) => selectedSpellNames.includes(normalizeSpellChoice(spell.name)))
+          .map((spell) => spell.id);
+        next.spellIds = Array.from(new Set([...next.spellIds, ...grantedSpellIds]));
+      }
       if (key === "t20ArcanistPath") {
         next.t20SorcererLineage = value === "feiticeiro" ? (current.t20SorcererLineage || "draconica") : undefined;
         const allowedSpellIds = new Set(getAvailableCoreSpells(system, next.classId, next.level, next).map((spell) => spell.id));
@@ -117,12 +152,13 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
           const spell = catalog.spells.find((entry) => entry.id === spellId);
           return allowedSpellIds.has(spellId) && (spell?.spellLevel === 0 || knownLimit === undefined || next.spellIds.slice(0, index + 1).filter((id) => catalog.spells.find((entry) => entry.id === id)?.spellLevel !== 0).length <= knownLimit);
         });
-        next.preparedSpellIds = next.preparedSpellIds?.filter((spellId) => next.spellIds.includes(spellId));
+        next.preparedSpellIds = next.preparedSpellIds?.filter((spellId) => next.spellIds.includes(spellId) && isDndPreparedSpell(spellId));
       }
-      if (key === "spellIds") next.preparedSpellIds = next.preparedSpellIds?.filter((spellId) => (value as string[]).includes(spellId));
+      if (key === "spellIds") next.preparedSpellIds = next.preparedSpellIds?.filter((spellId) => (value as string[]).includes(spellId) && isDndPreparedSpell(spellId));
       if (key === "equipmentIds") {
         const selectedIds = value as string[];
         next.equipmentQuantities = Object.fromEntries(selectedIds.map((id) => [id, current.equipmentQuantities?.[id] || 1]));
+        if (next.spellcastingFocusId && !selectedIds.includes(next.spellcastingFocusId)) next.spellcastingFocusId = undefined;
       }
       if (key === "level") {
         next.featIds = next.featIds.filter((featId) => {
@@ -133,10 +169,11 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
         next.featChoices = Object.fromEntries(Object.entries(next.featChoices || {}).filter(([choiceId]) => Object.entries(featChoiceCatalog).some(([featId, choices]) => next.featIds.includes(featId) && choices.some((choice) => choice.id === choiceId))));
         const allowedSpellIds = new Set(getAvailableCoreSpells(system, next.classId, next.level, next).map((spell) => spell.id));
         next.spellIds = next.spellIds.filter((spellId) => allowedSpellIds.has(spellId));
-        next.preparedSpellIds = next.preparedSpellIds?.filter((spellId) => next.spellIds.includes(spellId));
+        next.preparedSpellIds = next.preparedSpellIds?.filter((spellId) => next.spellIds.includes(spellId) && isDndPreparedSpell(spellId));
       }
       if (key === "featIds") {
         const selectedIds = value as string[];
+        if (!selectedIds.includes("dnd5e.talento.mestre_de_armas_pesadas")) next.dndPowerAttack = false;
         next.featQuantities = Object.fromEntries(selectedIds.flatMap((featId) => {
           const feat = catalog.feats.find((entry) => entry.id === featId);
           return feat && "repeatable" in feat && feat.repeatable ? [[featId, current.featQuantities?.[featId] || 1]] : [];
@@ -144,7 +181,7 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
         next.featChoices = Object.fromEntries(Object.entries(next.featChoices || {}).filter(([choiceId]) => selectedIds.some((featId) => featChoiceCatalog[featId]?.some((choice) => choice.id === choiceId))));
         const allowedSpellIds = new Set(getAvailableCoreSpells(system, next.classId, next.level, next).map((spell) => spell.id));
         next.spellIds = next.spellIds.filter((spellId) => allowedSpellIds.has(spellId));
-        next.preparedSpellIds = next.preparedSpellIds?.filter((spellId) => next.spellIds.includes(spellId));
+        next.preparedSpellIds = next.preparedSpellIds?.filter((spellId) => next.spellIds.includes(spellId) && isDndPreparedSpell(spellId));
       }
       if (key === "featQuantities") {
         const allowedSpellIds = new Set(getAvailableCoreSpells(system, next.classId, next.level, next).map((spell) => spell.id));
@@ -153,14 +190,21 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
           const spell = catalog.spells.find((entry) => entry.id === spellId);
           return allowedSpellIds.has(spellId) && (spell?.spellLevel === 0 || knownLimit === undefined || next.spellIds.slice(0, index + 1).filter((id) => catalog.spells.find((entry) => entry.id === id)?.spellLevel !== 0).length <= knownLimit);
         });
-        next.preparedSpellIds = next.preparedSpellIds?.filter((spellId) => next.spellIds.includes(spellId));
+        next.preparedSpellIds = next.preparedSpellIds?.filter((spellId) => next.spellIds.includes(spellId) && isDndPreparedSpell(spellId));
       }
-      if (key === "classId" || key === "backgroundId") {
+      if (key === "classId" || key === "backgroundId" || key === "raceId") {
         const classRules = catalog.classRules.find((entry) => entry.id === next.classId);
         const background = catalog.backgrounds.find((entry) => entry.id === next.backgroundId);
         const backgroundSkills = background && ("skillProficiencies" in background ? background.skillProficiencies : background.trainedSkills);
         const fixedSkills = classRules && "fixedSkills" in classRules ? classRules.fixedSkills : [];
-        next.skillProficiencies = Array.from(new Set([...(current.skillProficiencies || []), ...(backgroundSkills || []), ...fixedSkills]));
+        const choiceSkills = classRules && "choiceSkills" in classRules ? classRules.choiceSkills : [];
+        next.skillProficiencies = reconcileCoreSkillProficiencies(
+          current.skillProficiencies || [],
+          backgroundSkills || [],
+          fixedSkills,
+          choiceSkills,
+          next.raceSkillChoices || [],
+        );
         if (key === "backgroundId" && background) {
           if ("toolProficiencies" in background) {
             next.toolProficiencies = getDnd5eBackgroundToolProficiencies(background);
@@ -195,23 +239,33 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
     setCharacter((current) => ({ ...current, generationMethod: method, abilities: Object.fromEntries(ABILITIES.map(([key], index) => [key, scores[index]])) as MultiSystemCharacter["abilities"] }));
   };
 
-  const title = system === "t20" ? "Novo personagem de Tormenta20" : "Novo personagem de D&D 5e";
+  const title = initialCharacter
+    ? (system === "t20" ? "Editar personagem de Tormenta20" : "Editar personagem de D&D 5e")
+    : (system === "t20" ? "Novo personagem de Tormenta20" : "Novo personagem de D&D 5e");
   const backgroundLabel = system === "t20" ? "Origem" : "Antecedente";
   const selectedClassRules = catalog.classRules.find((entry) => entry.id === character.classId);
   const selectedRaceRules = catalog.raceRules.find((entry) => entry.id === character.raceId);
   const raceAbilityChoices = selectedRaceRules?.abilityChoices;
   const selectedRaceAbilityChoices = character.raceAbilityChoices || [];
+  const raceChoices = system === "dnd5e" ? (selectedRaceRules && "raceChoices" in selectedRaceRules ? (selectedRaceRules as { raceChoices?: Array<{ id: string; label: string; options: string[]; count: number }> }).raceChoices || [] : []) : [];
   const raceLanguageChoices = system === "dnd5e" && selectedRaceRules && "languageChoices" in selectedRaceRules ? Number((selectedRaceRules as { languageChoices?: number }).languageChoices || 0) : 0;
   const raceSkillChoiceCount = selectedRaceRules && "skillChoices" in selectedRaceRules ? Number((selectedRaceRules as { skillChoices?: number }).skillChoices || 0) : 0;
   const raceChoiceGroup = system === "t20" && selectedRaceRules && "skillOrFeatChoice" in selectedRaceRules ? (selectedRaceRules as { skillOrFeatChoice?: "general" | "tormenta" }).skillOrFeatChoice : undefined;
   const raceChoiceMode = character.raceChoiceMode || "skills";
   const effectiveRaceSkillCount = raceChoiceGroup && raceChoiceMode === "skill_and_feat" ? 1 : raceSkillChoiceCount;
   const availableSubraces = catalog.subraces.filter((entry) => entry.raceId === character.raceId);
+  const selectedSubrace = availableSubraces.find((entry) => entry.id === character.subraceId);
+  const subraceChoices = system === "dnd5e" && selectedSubrace && "subraceChoices" in selectedSubrace ? (selectedSubrace as { subraceChoices?: Array<{ id: string; label: string; options: string[]; count: number }> }).subraceChoices || [] : [];
   const availableSubclasses = catalog.subclasses.filter((entry) => entry.classId === character.classId);
   const selectedSubclass = availableSubclasses.find((entry) => entry.id === character.subclassId);
+  const derivedPreview = engine.deriveStats(character);
   const availableClassChoices = system === "dnd5e"
     ? DND5E_CLASS_CHOICES.filter((choice) => choice.classId === character.classId && character.level >= choice.minimumLevel)
-    : T20_CLASS_CHOICES.filter((choice) => choice.classId === character.classId && character.level >= choice.minimumLevel);
+    : T20_CLASS_CHOICES
+      .filter((choice) => choice.classId === character.classId && character.level >= choice.minimumLevel)
+      .map((choice) => choice.id === "t20-ladino-specialist"
+        ? { ...choice, count: Math.max(1, derivedPreview.modifiers.int || 0) }
+        : choice);
   const availableSpells = getAvailableCoreSpells(system, character.classId, character.level, character);
   const availableFeats = getAvailableCoreFeats(system, character.level, character);
   const availableRaceFeats = raceChoiceGroup ? availableFeats.filter((feat) => {
@@ -233,8 +287,19 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
     : system === "t20" && character.classId === "druida"
       ? T20_DEITIES.filter((deity) => T20_DRUID_DEITY_IDS.includes(deity.id as typeof T20_DRUID_DEITY_IDS[number]))
       : T20_DEITIES;
-  const derivedPreview = engine.deriveStats(character);
-  const selectedKnownSpellCount = character.spellIds.filter((spellId) => catalog.spells.find((entry) => entry.id === spellId)?.spellLevel !== 0).length;
+  const normalizeSpellName = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  const featGrantedSpellNames = new Set(system === "dnd5e"
+    ? [
+      ...(character.featIds.includes("dnd5e.talento.iniciado_em_magia") ? character.featChoices?.["magic-initiate-cantrips"] || [] : []),
+      ...(character.featIds.includes("dnd5e.talento.iniciado_em_magia") ? character.featChoices?.["magic-initiate-spell"] || [] : []),
+      ...(character.featIds.includes("dnd5e.talento.conjurador_de_rituais") ? character.featChoices?.["ritual-caster-spells"] || [] : []),
+    ].map(normalizeSpellName)
+    : []);
+  const isFeatGrantedSpell = (spellName: string) => system === "dnd5e" && featGrantedSpellNames.has(normalizeSpellName(spellName));
+  const selectedKnownSpellCount = character.spellIds.filter((spellId) => {
+    const spell = catalog.spells.find((entry) => entry.id === spellId);
+    return spell?.spellLevel !== 0 && !isFeatGrantedSpell(spell?.name || "");
+  }).length;
   const selectedBackground = catalog.backgrounds.find((entry) => entry.id === character.backgroundId);
   const requiredSkillIds = new Set([
     ...(selectedBackground && "skillProficiencies" in selectedBackground ? selectedBackground.skillProficiencies : selectedBackground?.trainedSkills || []),
@@ -254,9 +319,10 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
   const t20Background = system === "t20" && selectedBackground && "benefitOptions" in selectedBackground ? selectedBackground : undefined;
   const recommendedEquipmentIds = getCoreStartingEquipment(system, character.classId, character.backgroundId);
   const recommendedEquipmentNames = recommendedEquipmentIds.map((id) => catalog.equipment.find((entry) => entry.id === id)?.name).filter(Boolean);
+  const creationSteps = engine.getCreationSteps();
 
   return (
-    <div className="pb-core-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="pb-core-modal-title" onClick={(event) => {
+    <div className="pb-core-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="pb-core-modal-title" aria-describedby="pb-core-modal-description" onClick={(event) => {
       if (event.target === event.currentTarget) onClose();
     }}>
       <section ref={modalContentRef} className="pb-core-modal" role="document">
@@ -264,10 +330,18 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
           <div>
             <span className="pb-core-kicker">{system === "t20" ? "Tormenta20 · Livro Básico" : "D&D 5e · Livro do Jogador 2014"}</span>
             <h2 id="pb-core-modal-title">{title}</h2>
-            <p>Criação isolada por sistema. Nenhuma opção de Pathfinder ou OSE será usada nesta ficha.</p>
+            <p id="pb-core-modal-description">Criação isolada por sistema. Nenhuma opção de Pathfinder ou OSE será usada nesta ficha.</p>
           </div>
           <button type="button" className="pb-core-close" onClick={onClose} aria-label="Fechar">×</button>
         </header>
+
+        <details className="pb-core-creation-rules">
+          <summary>Regras de criação · {system === "t20" ? "Tormenta20" : "D&D 5e 2014"}</summary>
+          <ol>
+            {creationSteps.map((step) => <li key={step}>{step}</li>)}
+          </ol>
+          <small>As opções abaixo são filtradas pelo sistema, nível, classe, raça e pré-requisitos desta ficha.</small>
+        </details>
 
         <div className="pb-core-grid">
           <label>Nome
@@ -340,6 +414,10 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
               <option value="disadvantage">Desvantagem · rolar 2d20, menor</option>
             </select>
           </label>}
+          {system === "dnd5e" && character.featIds.includes("dnd5e.talento.mestre_de_armas_pesadas") && <label className="pb-core-toggle-field">
+            <span>Ataque Poderoso (-5/+10)<small>Aplicar aos ataques elegíveis</small></span>
+            <input type="checkbox" checked={Boolean(character.dndPowerAttack)} onChange={(event) => update("dndPowerAttack", event.target.checked)} />
+          </label>}
         </div>
 
         {selectedRaceRules && <aside className="pb-core-race-summary" aria-label="Resumo da raça">
@@ -375,6 +453,33 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
               {language}
             </label>)}
           </div>
+        </fieldset>}
+
+        {raceChoices.length > 0 && <fieldset className="pb-core-background-options" aria-label="Escolhas condicionais da raça">
+          <legend>Escolhas da raça</legend>
+          {raceChoices.map((choice) => {
+            const selected = character.raceChoices?.[choice.id] || [];
+            return <div key={choice.id} className="pb-core-choice-group">
+              <label>{choice.label}
+                <select value={selected[0] || ""} onChange={(event) => update("raceChoices", { ...character.raceChoices, [choice.id]: event.target.value ? [event.target.value] : [] })}>
+                  <option value="">Selecione…</option>
+                  {choice.options.map((option) => <option key={option} value={option}>{option}</option>)}
+                </select>
+              </label>
+            </div>;
+          })}
+        </fieldset>}
+        {subraceChoices.length > 0 && <fieldset className="pb-core-background-options" aria-label="Escolhas condicionais da sub-raça">
+          <legend>Escolhas da sub-raça</legend>
+          {subraceChoices.map((choice) => {
+            const selected = character.subraceChoices?.[choice.id] || [];
+            return <label key={choice.id}>{choice.label}
+              <select value={selected[0] || ""} onChange={(event) => update("subraceChoices", { ...character.subraceChoices, [choice.id]: event.target.value ? [event.target.value] : [] })}>
+                <option value="">Selecione…</option>
+                {choice.options.map((option) => <option key={option} value={option}>{option}</option>)}
+              </select>
+            </label>;
+          })}
         </fieldset>}
 
         {raceSkillChoiceCount > 0 && <fieldset className="pb-core-skills" aria-label="Perícias raciais adicionais">
@@ -424,9 +529,12 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
             </div>
           </fieldset>;
         })}
-        {selectedDeity?.ruleSummary && <aside className="pb-core-deity-summary" aria-label="Restrição da divindade">
+        {selectedDeity && <aside className="pb-core-deity-summary" aria-label="Informações da divindade">
           <strong>{selectedDeity.name}</strong>
-          <small>{selectedDeity.ruleSummary}</small>
+          <small>{[selectedDeity.channelEnergy && `Energia ${selectedDeity.channelEnergy}`, selectedDeity.preferredWeapon && `Arma preferida: ${selectedDeity.preferredWeapon}`, selectedDeity.sacredSymbol && `Símbolo: ${selectedDeity.sacredSymbol}`].filter(Boolean).join(" · ")}</small>
+          {selectedDeity.ruleSummary && <small>{selectedDeity.ruleSummary}</small>}
+          {selectedDeity.obligations && <small><strong>Obrigações e restrições:</strong> {selectedDeity.obligations}</small>}
+          {selectedDeity.grantedPowers?.length && <small><strong>Poderes concedidos:</strong> {selectedDeity.grantedPowers.join(" · ")}</small>}
         </aside>}
         {selectedSubclass && <aside className="pb-core-subclass-summary" aria-label="Resumo da subclasse">
           <strong>{selectedSubclass.name}</strong>
@@ -435,7 +543,7 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
           {selectedSubclass.features.filter((feature) => feature.level <= character.level).length > 0 && <ul className="pb-core-subclass-features">
             {selectedSubclass.features.filter((feature) => feature.level <= character.level).map((feature) => <li key={`${feature.level}-${feature.name}`}><strong>Nível {feature.level} · {feature.name}:</strong> {feature.summary}</li>)}
           </ul>}
-          {selectedSubclass.choices.map((choice) => {
+          {selectedSubclass.choices.filter((choice) => character.level >= (choice.minimumLevel || selectedSubclass.featureLevel)).map((choice) => {
             const selected = character.subclassChoices?.[choice.id] || [];
             return <fieldset key={choice.id} className="pb-core-subclass-choice">
               <legend>{choice.label} ({selected.length}/{choice.count})</legend>
@@ -538,6 +646,16 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
           </div>
         </fieldset>
 
+        <details className="pb-core-skill-rules">
+          <summary>Usos e regras das perícias</summary>
+          <div className="pb-core-skill-rules-grid">
+            {catalog.skills.map((skill) => <article key={`skill-rule-${skill.id}`}>
+              <strong>{skill.name}</strong>
+              <small>{skill.ruleSummary || "Consulte a regra do sistema para esta perícia."}</small>
+            </article>)}
+          </div>
+        </details>
+
         {system === "dnd5e" && <fieldset className="pb-core-skills">
           <legend>Especialização ({expertiseLimit})</legend>
           <div className="pb-core-skill-grid">
@@ -560,8 +678,16 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
           <div className="pb-core-compendium-columns">
             <label>Equipamento
               {recommendedEquipmentIds.length > 0 && <button type="button" className="pb-core-secondary pb-core-inline-action" onClick={() => update("equipmentIds", Array.from(new Set([...character.equipmentIds, ...recommendedEquipmentIds])))}>Adicionar sugestão inicial</button>}
-              <select multiple value={character.equipmentIds} onChange={(event) => update("equipmentIds", Array.from(event.target.selectedOptions, (option) => option.value))}>
-                {catalog.equipment.map((item) => <option key={item.id} value={item.id}>{item.name} · {item.summary}{item.cost ? ` · ${item.cost}` : item.weight !== undefined ? ` · ${item.weight} lb` : ""}</option>)}
+              <select multiple value={character.equipmentIds} onChange={(event) => {
+                const equipmentIds = Array.from(event.target.selectedOptions, (option) => option.value);
+                update("equipmentIds", equipmentIds);
+                update("attunedEquipmentIds", (character.attunedEquipmentIds || []).filter((id) => equipmentIds.includes(id)));
+              }}>
+                {catalog.equipment.map((item) => {
+                  const magic = item as typeof item & { magical?: boolean; magicCategory?: string; magicEffects?: string[] };
+                  const magicText = magic.magical ? `✨ ${magic.magicCategory || "mágico"}: ${(magic.magicEffects || []).join(" · ")}` : "";
+                  return <option key={item.id} value={item.id}>{item.name} · {[item.summary, magicText, item.cost || (item.weight !== undefined ? `${item.weight} lb` : "")].filter(Boolean).join(" · ")}</option>;
+                })}
               </select>
               {character.equipmentIds.length > 0 && <div className="pb-core-quantity-list">
                 {character.equipmentIds.map((equipmentId) => {
@@ -570,16 +696,45 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
                   return <label key={equipmentId}>{item.name}<input type="number" min={1} step={1} value={character.equipmentQuantities?.[equipmentId] || 1} onChange={(event) => update("equipmentQuantities", { ...character.equipmentQuantities, [equipmentId]: Number(event.target.value) })} /></label>;
                 })}
               </div>}
+              {system === "dnd5e" && character.equipmentIds.some((id) => {
+                const item = catalog.equipment.find((entry) => entry.id === id);
+                return item && requiresDnd5eAttunement(item);
+              }) && <fieldset className="pb-core-attunement-list">
+                <legend>Sintonização ({(character.attunedEquipmentIds || []).length}/3)</legend>
+                {character.equipmentIds.map((equipmentId) => {
+                  const item = catalog.equipment.find((entry) => entry.id === equipmentId);
+                  if (!item || !requiresDnd5eAttunement(item)) return null;
+                  const checked = (character.attunedEquipmentIds || []).includes(equipmentId);
+                  return <label key={`attunement-${equipmentId}`}><input type="checkbox" checked={checked} disabled={!checked && (character.attunedEquipmentIds || []).length >= 3} onChange={(event) => update("attunedEquipmentIds", event.target.checked ? [...(character.attunedEquipmentIds || []), equipmentId] : (character.attunedEquipmentIds || []).filter((id) => id !== equipmentId))} />{item.name}</label>;
+                })}
+                <small>Itens mágicos que exigem sintonização só concedem seus efeitos enquanto estiverem sintonizados.</small>
+              </fieldset>}
+              <p className={`pb-core-carry-summary${derivedPreview.encumbered ? " is-encumbered" : ""}`} aria-live="polite">
+                {derivedPreview.carryingCapacity !== undefined
+                  ? <>Carga: {derivedPreview.carryingWeight}/{derivedPreview.carryingCapacity} lb{derivedPreview.encumbered ? " · sobrecarregado" : " · dentro da capacidade"}</>
+                  : <>Peso selecionado: {derivedPreview.carryingWeight} lb</>}
+              </p>
             </label>
+            {system === "dnd5e" && derivedPreview.spellcastingAbility !== undefined && <label>Foco de conjuração (opcional)
+              <select value={character.spellcastingFocusId || ""} onChange={(event) => {
+                const focusId = event.target.value || undefined;
+                update("spellcastingFocusId", focusId);
+                if (focusId && !character.equipmentIds.includes(focusId)) update("equipmentIds", [...character.equipmentIds, focusId]);
+              }}>
+                <option value="">Bolsa de componentes ou componentes próprios</option>
+                {getDnd5eSpellcastingFocusOptions(character.classId, character.subclassId).map((item) => <option key={item.id} value={item.id}>{item.name} · p. {item.sourcePage}</option>)}
+              </select>
+              <small>O foco escolhido precisa permanecer no equipamento. Componentes com custo ou consumidos continuam exigindo o item específico.</small>
+            </label>}
             <label>Magias
               <select multiple value={character.spellIds} onChange={(event) => update("spellIds", Array.from(event.target.selectedOptions, (option) => option.value))}>
-                {availableSpells.map((item) => <option key={item.id} value={item.id} disabled={!character.spellIds.includes(item.id) && item.spellLevel !== 0 && derivedPreview.knownSpellLimit !== undefined && selectedKnownSpellCount >= derivedPreview.knownSpellLimit}>{item.name} · {system === "dnd5e" ? formatDnd5eSpellDetails(item) : [formatT20SpellDetails(item), item.summary].filter(Boolean).join(" · ")}</option>)}
+                {availableSpells.map((item) => <option key={item.id} value={item.id} disabled={!character.spellIds.includes(item.id) && item.spellLevel !== 0 && !isFeatGrantedSpell(item.name) && derivedPreview.knownSpellLimit !== undefined && selectedKnownSpellCount >= derivedPreview.knownSpellLimit}>{item.name} · {system === "dnd5e" ? formatDnd5eSpellDetails(item) : [formatT20SpellDetails(item), item.summary].filter(Boolean).join(" · ")}</option>)}
               </select>
               {derivedPreview.knownSpellLimit !== undefined && <small>Magias conhecidas: {selectedKnownSpellCount}/{derivedPreview.knownSpellLimit} (truques não contam)</small>}
             </label>
             {system === "dnd5e" && derivedPreview.preparedSpellLimit !== undefined && <label>Magias preparadas ({derivedPreview.preparedSpellLimit})
               <select multiple value={character.preparedSpellIds || []} onChange={(event) => update("preparedSpellIds", Array.from(event.target.selectedOptions, (option) => option.value))}>
-                {character.spellIds.map((spellId) => {
+                {character.spellIds.filter(isDndPreparedSpell).map((spellId) => {
                   const spell = catalog.spells.find((entry) => entry.id === spellId);
                   return spell ? <option key={spell.id} value={spell.id} disabled={!character.preparedSpellIds?.includes(spell.id) && (character.preparedSpellIds || []).length >= (derivedPreview.preparedSpellLimit ?? 0)}>{spell.name} · {formatDnd5eSpellDetails(spell)}</option> : null;
                 })}
@@ -615,7 +770,7 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
         {error && <p className="pb-core-error" role="alert">{error}</p>}
         <footer className="pb-core-modal-footer">
           <button type="button" className="pb-core-secondary" onClick={onClose}>Cancelar</button>
-          <button type="button" className="pb-core-primary" onClick={submit}>Criar ficha</button>
+          <button type="button" className="pb-core-primary" onClick={submit}>{initialCharacter ? "Salvar alterações" : "Criar ficha"}</button>
         </footer>
       </section>
     </div>

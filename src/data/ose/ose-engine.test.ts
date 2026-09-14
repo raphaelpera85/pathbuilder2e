@@ -10,6 +10,10 @@ import {
   getOseSecondarySkillByRoll,
   OSE_ALIGNMENTS,
   getOseSpellSlotCount,
+  getOseSpellSlotsByCircle,
+  limitOseSpellsBySlots,
+  isOseWeaponAllowedForClass,
+  isOseArmorAllowedForClass,
 } from "./oseRules";
 import { OSE_RACES } from "./oseRaces";
 import { OSE_CLASSES } from "./oseClasses";
@@ -111,6 +115,22 @@ describe("Old-School Essentials (OSE) - Engine de Regras", () => {
       expect(getOseSecondarySkillByRoll(80)).toBe("Marinheiro");
       expect(getOseSecondarySkillByRoll(100)).toBe("Especialista Múltiplo (Duas Perícias)");
     });
+
+    it("aplica proficiências de armas e armaduras por classe", () => {
+      const dagger = OSE_WEAPONS.find((weapon) => weapon.id === "adaga")!;
+      const battleAxe = OSE_WEAPONS.find((weapon) => weapon.id === "machado_batalha")!;
+      const plate = OSE_ARMORS.find((armor) => armor.id === "placas")!;
+      const leather = OSE_ARMORS.find((armor) => armor.id === "couro")!;
+      const shield = OSE_ARMORS.find((armor) => armor.id === "escudo")!;
+
+      expect(isOseWeaponAllowedForClass(battleAxe, OSE_CLASSES.mago)).toBe(false);
+      expect(isOseWeaponAllowedForClass(dagger, OSE_CLASSES.mago)).toBe(true);
+      expect(isOseWeaponAllowedForClass(battleAxe, OSE_CLASSES.clerigo)).toBe(false);
+      expect(isOseWeaponAllowedForClass(battleAxe, OSE_CLASSES.guerreiro)).toBe(true);
+      expect(isOseArmorAllowedForClass(plate, OSE_CLASSES.ladrao)).toBe(false);
+      expect(isOseArmorAllowedForClass(leather, OSE_CLASSES.ladrao)).toBe(true);
+      expect(isOseArmorAllowedForClass(shield, OSE_CLASSES.ladrao)).toBe(false);
+    });
   });
 
   describe("Catálogo de Raças e Classes OSE", () => {
@@ -119,6 +139,13 @@ describe("Old-School Essentials (OSE) - Engine de Regras", () => {
       expect(getOseSpellSlotCount(OSE_CLASSES.clerigo.progression, 3)).toBe(2);
       expect(getOseSpellSlotCount(OSE_CLASSES.guerreiro.progression, 1)).toBe(0);
       expect(getOseSpellSlotCount(OSE_CLASSES.mago.progression, 3, 2)).toBe(1);
+      expect(getOseSpellSlotsByCircle(OSE_CLASSES.mago.progression, 3)).toEqual([2, 1]);
+      expect(getOseSpellSlotsByCircle(OSE_CLASSES.guerreiro.progression, 1)).toEqual([]);
+    });
+
+    it("limita magias persistidas por círculo ao reabrir uma ficha", () => {
+      expect(limitOseSpellsBySlots(["a", "b", "c", "d"], [{ id: "a", circle: 1 }, { id: "b", circle: 1 }, { id: "c", circle: 2 }, { id: "d", circle: 1 }], [2, 1])).toEqual(["a", "b", "c"]);
+      expect(limitOseSpellsBySlots(["invalida", "a"], [{ id: "a", circle: 1 }], [1])).toEqual(["a"]);
     });
 
     it("contém as 10 raças completas com requisitos e idiomas", () => {

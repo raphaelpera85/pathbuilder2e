@@ -8,7 +8,7 @@ import { getItemImageAlt, getItemImageUrl } from "./itemVisuals";
 
 const pickerLabelKeys: Record<PickerType, MessageKey> = {
   ancestry: "ancestries", class: "classes", subclass: "subclasses", background: "backgrounds", weapon: "weapons", armor: "armors", shield: "shields",
-  heritage: "heritages", archetype: "archetypes", spell: "spells", ritual: "rituals", feat: "feats", item: "items", gear: "items", pet: "pets", action: "actions", condition: "conditions", buff: "buffs", formula: "formulas",
+  heritage: "heritages", archetype: "archetypes", spell: "spells", ritual: "rituals", feat: "feats", item: "items", gear: "items", pet: "pets", action: "actions", condition: "conditions", buff: "buffs", skill: "skills", rule: "rules", formula: "formulas",
 };
 
 function normalizePickerDedupLabel(value: string, pickerType: PickerType): string {
@@ -1289,6 +1289,12 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
                             {String(selectedItem.data?.damage || "1d6")} {selectedItem.data?.damageType ? `(${String(selectedItem.data.damageType)})` : ""}
                           </strong>
                         </div>
+                        {selectedItem.data?.critical !== undefined && (
+                          <div className="pws-stat">
+                            <span className="pws-label">{locale === "en" ? "Critical" : locale === "es" ? "Crítico" : "Crítico"}</span>
+                            <strong className="pws-value">{String(selectedItem.data.critical)}</strong>
+                          </div>
+                        )}
                         <div className="pws-stat">
                           <span className="pws-label">{t("price")}</span>
                           <strong className="pws-value" style={{ color: "var(--pb-gold, #f59e0b)" }}>
@@ -1419,6 +1425,22 @@ export function PickerModal({ onBridgeReady }: PickerModalProps) {
                             {fact}
                           </span>
                         ))}
+                      </div>
+                    )}
+
+                    {Array.isArray(selectedItem.data?.weaponProperties) && selectedItem.data.weaponProperties.length > 0 && (
+                      <div className="picker-traits-row" style={{ marginTop: "4px" }}>
+                        <span className="picker-trait-pill" style={{ background: "#1e3a5f", borderColor: "#60a5fa", color: "#bfdbfe" }}>
+                          {locale === "en" ? "Properties" : locale === "es" ? "Propiedades" : "Propriedades"}:
+                        </span>
+                        {selectedItem.data.weaponProperties.map((property: string) => (
+                          <span key={String(property)} className="picker-trait-pill">{String(property)}</span>
+                        ))}
+                        {Boolean(selectedItem.data.ammunitionType) && (
+                          <span className="picker-trait-pill" style={{ background: "#3f2a12", borderColor: "#f59e0b", color: "#fde68a" }}>
+                            {locale === "en" ? "Ammo" : locale === "es" ? "Munición" : "Munição"}: {String(selectedItem.data.ammunitionType)}
+                          </span>
+                        )}
                       </div>
                     )}
 

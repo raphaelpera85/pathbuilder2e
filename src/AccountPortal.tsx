@@ -25,6 +25,7 @@ import { useI18n } from "./i18n";
 import { updateAccountViewState } from "./accountState";
 import { SystemSelectorModal } from "./SystemSelectorModal";
 import type { RPGSystemId } from "./types";
+import { getCharacterEditorRoute, getPersistedCharacterSystemId, hydrateCharacterForEditor } from "./services/characterEditorRouting";
 
 type AuthMode = "signin" | "signup";
 
@@ -83,6 +84,19 @@ export function AccountPortal() {
       window.removeEventListener("pathbuilder:open-system-selector", openSystemSelector);
     };
   }, []);
+
+  const queueSystemCharacterLoad = (systemId: string, data: Record<string, unknown>) => {
+    const normalized = hydrateCharacterForEditor(systemId, data.ruleset as string | undefined, data);
+    try {
+      sessionStorage.setItem("pathbuilder:pending-character-load", JSON.stringify({ systemId, data: normalized }));
+    } catch {
+      // The delayed event below still handles the common in-memory path.
+    }
+    window.location.hash = "#/library";
+    window.setTimeout(() => {
+      window.dispatchEvent(new CustomEvent(systemId === "ose" ? "pathbuilder:load-ose-character" : "pathbuilder:load-core-character", { detail: normalized }));
+    }, 0);
+  };
 
   const handleSelectSystem = (systemId: RPGSystemId) => {
     setIsSystemModalOpen(false);
@@ -483,7 +497,7 @@ export function AccountPortal() {
   const filteredCharacters = selectedSystemFilter === "all"
     ? characters
     : characters.filter(
-        (c) => (c.system_id || (c.data as any)?.system_id || (c.data as any)?.systemId || "pf2e") === selectedSystemFilter
+        (c) => getPersistedCharacterSystemId(c.system_id, c.data as any) === selectedSystemFilter
       );
 
   return (
@@ -784,7 +798,7 @@ export function AccountPortal() {
                         ].map((sys) => {
                           const count = sys.id === "all"
                             ? characters.length
-                            : characters.filter((c) => (c.system_id || (c.data as any)?.system_id || (c.data as any)?.systemId || "pf2e") === sys.id).length;
+                            : characters.filter((c) => getPersistedCharacterSystemId(c.system_id, c.data as any) === sys.id).length;
                           return (
                             <button
                               key={sys.id}
@@ -803,7 +817,7 @@ export function AccountPortal() {
                       </div>
 
                       {loading && characters.length === 0 ? (
-                        <div className="account-state" role="status">
+                        <div className="account-state" role="status" aria-live="polite" aria-busy="true">
                           {t("loadingSheets")}
                         </div>
                       ) : filteredCharacters.length === 0 ? (
@@ -820,14 +834,20 @@ export function AccountPortal() {
                                   className="character-load"
                                   onClick={() => {
                                     const charData = (character.data || {}) as any;
-                                    const sysId = character.system_id || charData.system_id || charData.systemId;
-                                    if (sysId === "ose") {
+                                    const sysId = getPersistedCharacterSystemId(character.system_id, charData);
+                                    const editorRoute = getCharacterEditorRoute(sysId);
+                                    const hydratedData = hydrateCharacterForEditor(character.system_id, character.ruleset, charData);
+                                    if (editorRoute === "ose") {
                                       setOpen(false);
-                                      window.location.hash = "#/library";
-                                      window.dispatchEvent(new CustomEvent("pathbuilder:load-ose-character", { detail: charData }));
+                                      queueSystemCharacterLoad("ose", hydratedData);
                                       return;
                                     }
-                                    (window as any).app?.loadCharacter(character.data);
+                                    if (editorRoute === "core") {
+                                      setOpen(false);
+                                      queueSystemCharacterLoad(sysId, hydratedData);
+                                      return;
+                                    }
+                                    (window as any).app?.loadCharacter(hydratedData);
                                     setOpen(false);
                                     window.location.hash = "#/builder";
                                   }}
@@ -835,7 +855,7 @@ export function AccountPortal() {
                                 >
                                   <div>
                                     <span
-                                      className={`system-badge system-badge-${character.system_id || "pf2e"}`}
+                                      className={`system-badge system-badge-${getPersistedCharacterSystemId(character.system_id, character.data as any)}`}
                                       style={{
                                         display: "inline-block",
                                         fontSize: "0.68rem",
@@ -844,12 +864,12 @@ export function AccountPortal() {
                                         padding: "1px 6px",
                                         borderRadius: "4px",
                                         marginRight: "6px",
-                                        background: character.system_id === "ose" ? "#d97706" : character.system_id === "dnd5e" ? "#c53030" : character.system_id === "t20" ? "#b7791f" : "#4a5568",
+                                        background: getPersistedCharacterSystemId(character.system_id, character.data as any) === "ose" ? "#d97706" : getPersistedCharacterSystemId(character.system_id, character.data as any) === "dnd5e" ? "#c53030" : getPersistedCharacterSystemId(character.system_id, character.data as any) === "t20" ? "#b7791f" : "#4a5568",
                                         color: "#fff",
                                         verticalAlign: "middle",
                                       }}
                                     >
-                                      {(character.system_id || (character.data as any)?.system_id || "pf2e").toUpperCase()}
+                                      {getPersistedCharacterSystemId(character.system_id, character.data as any).toUpperCase()}
                                     </span>
                                     <strong>{character.name}</strong>
                                   </div>
@@ -905,12 +925,21 @@ export function AccountPortal() {
                                               className="character-history-restore"
                                               type="button"
                                               onClick={() => {
-                                                (window as any).app?.loadCharacter({
+                                                const revisionData = {
                                                   ...revision.data,
                                                   id: character.character_key,
-                                                });
+                                                } as any;
+                                                const revisionSystem = getPersistedCharacterSystemId(character.system_id, revisionData);
+                                                const hydratedRevision = hydrateCharacterForEditor(character.system_id, character.ruleset, revisionData);
+                                                if (revisionSystem === "ose") {
+                                                  queueSystemCharacterLoad(revisionSystem, hydratedRevision);
+                                                } else if (revisionSystem === "t20" || revisionSystem === "dnd5e") {
+                                                  queueSystemCharacterLoad(revisionSystem, hydratedRevision);
+                                                } else {
+                                                  (window as any).app?.loadCharacter(hydratedRevision);
+                                                }
                                                 setOpen(false);
-                                                window.location.hash = "#/builder";
+                                                window.location.hash = revisionSystem === "pf2e" ? "#/builder" : "#/library";
                                               }}
                                             >
                                               {t("restoreVersion")}

@@ -5,6 +5,9 @@
 
 export type OseAbilityName = "str" | "int" | "wis" | "dex" | "con" | "cha";
 
+import type { OseArmor, OseWeapon } from "./oseEquipment";
+import type { OseClass } from "./oseClasses";
+
 export interface OseAbilityScore {
   score: number;
   modifier: number;
@@ -153,6 +156,56 @@ export function getOseSpellSlotCount(
 ): number {
   const levelEntry = progression.find((entry) => entry.level === level);
   return Math.max(0, levelEntry?.spells?.[circle - 1] ?? 0);
+}
+
+/** Retorna todos os espaços de magia por círculo para a classe/nível informado. */
+export function getOseSpellSlotsByCircle(
+  progression: Array<{ level: number; spells?: number[] }>,
+  level: number,
+): number[] {
+  const levelEntry = progression.find((entry) => entry.level === level);
+  return (levelEntry?.spells || []).map((slots) => Math.max(0, slots));
+}
+
+/** Limita uma seleção de magias aos espaços disponíveis por círculo, preservando a ordem da ficha. */
+export function limitOseSpellsBySlots(
+  spellIds: string[],
+  spells: Array<{ id: string; circle: number }>,
+  slotsByCircle: number[],
+): string[] {
+  const counts = new Map<number, number>();
+  const catalog = new Map(spells.map((spell) => [spell.id, spell]));
+  return spellIds.filter((spellId) => {
+    const spell = catalog.get(spellId);
+    if (!spell) return false;
+    const current = counts.get(spell.circle) || 0;
+    const limit = slotsByCircle[spell.circle - 1] || 0;
+    if (current >= limit) return false;
+    counts.set(spell.circle, current + 1);
+    return true;
+  });
+}
+
+/** Verifica se uma arma respeita as proficiências da classe OSE escolhida. */
+export function isOseWeaponAllowedForClass(weapon: OseWeapon, selectedClass: OseClass): boolean {
+  if (selectedClass.id === "anao_bx") return !["arco_longo", "espada_duas_maos"].includes(weapon.id);
+  if (selectedClass.id === "halfling_bx") return !weapon.isTwoHanded && weapon.id !== "arco_longo";
+  if (selectedClass.allowedWeapons === "todas") return true;
+  if (selectedClass.allowedWeapons === "sem_corte") return weapon.isBlunt;
+  if (selectedClass.allowedWeapons === "adaga_cajado") return ["adaga", "cajado"].includes(weapon.id);
+  if (selectedClass.id === "druida") return ["clava", "adaga", "dardo", "cajado", "funda", "lanca"].includes(weapon.id);
+  if (selectedClass.id === "acrobata") return ["adaga", "dardo", "cajado", "espada_curta", "funda", "arco_curto"].includes(weapon.id);
+  if (selectedClass.id === "bardo") return !weapon.isTwoHanded || ["arco_curto", "arco_longo"].includes(weapon.id);
+  return true;
+}
+
+/** Verifica se uma armadura ou escudo respeita as proficiências da classe OSE. */
+export function isOseArmorAllowedForClass(armor: OseArmor, selectedClass: OseClass): boolean {
+  if (armor.isShield) return selectedClass.shieldAllowed;
+  if (selectedClass.allowedArmor === "nenhuma") return false;
+  if (selectedClass.allowedArmor === "couro") return ["sem_armadura", "couro"].includes(armor.id);
+  if (selectedClass.allowedArmor === "couro_e_malha") return ["sem_armadura", "couro", "cota_malha"].includes(armor.id);
+  return true;
 }
 
 export const OSE_ALIGNMENTS: Record<OseAlignment, { name: string; nameEn: string; desc: string }> = {

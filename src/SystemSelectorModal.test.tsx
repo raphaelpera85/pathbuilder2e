@@ -11,12 +11,13 @@ describe("SystemSelectorModal accessibility", () => {
     opener.focus();
 
     const onClose = vi.fn();
+    const onSelectSystem = vi.fn();
     const { unmount } = render(
       <I18nProvider>
         <SystemSelectorModal
           isOpen
           onClose={onClose}
-          onSelectSystem={vi.fn()}
+          onSelectSystem={onSelectSystem}
           systems={[{
             id: "t20",
             name: { "pt-BR": "Tormenta 20" },
@@ -34,6 +35,10 @@ describe("SystemSelectorModal accessibility", () => {
     const close = screen.getByRole("button", { name: /fechar/i });
     expect(dialog).toBeInTheDocument();
     expect(close).toHaveFocus();
+    expect(screen.getByText("Raças")).toBeInTheDocument();
+    expect(screen.queryByText("Vantagem/desvantagem d20")).not.toBeInTheDocument();
+    fireEvent.keyDown(screen.getByRole("button", { name: /Tormenta 20: Arton/i }), { key: "Enter" });
+    expect(onSelectSystem).toHaveBeenCalledWith("t20");
 
     const cancel = screen.getByRole("button", { name: /cancelar/i });
     cancel.focus();

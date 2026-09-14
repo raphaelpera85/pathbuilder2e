@@ -6,6 +6,14 @@ export interface Dnd5eSubrace {
   abilityBonuses: string;
   attributeAdjustments: Partial<Record<"str" | "dex" | "con" | "int" | "wis" | "cha", number>>;
   traits: string[];
+  subraceChoices?: Dnd5eSubraceChoice[];
+}
+
+export interface Dnd5eSubraceChoice {
+  id: string;
+  label: string;
+  options: string[];
+  count: number;
 }
 
 export interface Dnd5eSubclass {
@@ -30,6 +38,7 @@ export interface Dnd5eSubclassChoice {
   label: string;
   options: string[];
   count: number;
+  minimumLevel?: number;
 }
 
 export interface Dnd5eClassChoice {
@@ -49,13 +58,17 @@ const subrace = (
   abilityBonuses: string,
   attributeAdjustments: Dnd5eSubrace["attributeAdjustments"],
   traits: string[],
-): Dnd5eSubrace => ({ id, raceId, name, sourcePage, abilityBonuses, attributeAdjustments, traits });
+  subraceChoices?: Dnd5eSubraceChoice[],
+): Dnd5eSubrace => ({ id, raceId, name, sourcePage, abilityBonuses, attributeAdjustments, traits, subraceChoices });
 
 /** Sub-raças do Livro do Jogador 2014; não inclui variantes de suplementos. */
 export const DND5E_SUBRACES: Dnd5eSubrace[] = [
   subrace("anao_colina", "anao", "Anão da Colina", 20, "Sabedoria +1", { wis: 1 }, ["Tenacidade anã", "Proficiência com armadura anã"]),
   subrace("anao_montanha", "anao", "Anão da Montanha", 20, "Força +2", { str: 2 }, ["Treinamento com armadura anã"]),
-  subrace("elfo_alto", "elfo", "Alto Elfo", 23, "Inteligência +1", { int: 1 }, ["Truque de mago", "Idioma adicional", "Treinamento com armas élficas"]),
+  subrace("elfo_alto", "elfo", "Alto Elfo", 23, "Inteligência +1", { int: 1 }, ["Truque de mago", "Idioma adicional", "Treinamento com armas élficas"], [
+    { id: "high-elf-cantrip", label: "Truque de mago", options: ["Amigos", "Consertar", "Ilusão menor", "Luz", "Mãos mágicas", "Mensagem", "Prestidigitação", "Raio de gelo", "Rajada de fogo", "Toque chocante"], count: 1 },
+    { id: "high-elf-language", label: "Idioma adicional do Alto Elfo", options: ["Anão", "Dracônico", "Gigante", "Gnômico", "Goblin", "Halfling", "Infernal", "Orc", "Primordial", "Silvestre"], count: 1 },
+  ]),
   subrace("elfo_floresta", "elfo", "Elfo da Floresta", 24, "Sabedoria +1", { wis: 1 }, ["Máscara da natureza", "Treinamento com armas élficas"]),
   subrace("elfo_drow", "elfo", "Drow", 24, "Carisma +1", { cha: 1 }, ["Sensibilidade à luz solar", "Magia drow", "Treinamento com armas drow"]),
   subrace("halfling_pes_leves", "halfling", "Halfling Pés-Leves", 28, "Carisma +1", { cha: 1 }, ["Furtividade natural"]),
@@ -166,13 +179,32 @@ const DND5E_SUBCLASS_FEATURES: Record<string, Dnd5eSubclassFeature[]> = {
 };
 
 const DND5E_SUBCLASS_CHOICES: Record<string, Dnd5eSubclassChoice[]> = {
-  barbaro_totem: [{ id: "totem-spirit", label: "Espírito Totêmico", options: ["Urso", "Águia", "Lobo"], count: 1 }],
-  druida_terra: [{ id: "land-terrain", label: "Terreno do Círculo da Terra", options: ["Ártico", "Costa", "Deserto", "Floresta", "Montanha", "Pântano", "Planalto", "Subterrâneo"], count: 1 }],
-  guerreiro_mestre_batalha: [{ id: "battle-master-maneuvers", label: "Manobras", options: ["Aparar", "Ataque de Precisão", "Ataque de Provocação", "Ataque Desarmante", "Ataque Distrativo", "Ataque Estonteante", "Ataque de Finta", "Ataque de Empurrão", "Ataque de Investida", "Ataque de Manobra", "Ataque de Reunir", "Ataque de Varredura", "Contra-ataque", "Golpe do Comandante"], count: 3 }],
-  monge_quatro_elementos: [{ id: "elemental-disciplines", label: "Disciplina Elemental", options: ["Abraço dos Ventos", "Caminho dos Quatro Elementos", "Chamas da Fênix", "Defesa da Montanha Eterna", "Golpe de Cinzas", "Moldar o Rio Corrente", "Punho dos Quatro Trovões", "Rastro da Serpente de Fogo", "Rio de Chamas", "Varredura de Cinzas"], count: 1 }],
-  feiticeiro_linhagem_draconica: [{ id: "draconic-ancestry", label: "Ancestralidade Dracônica", options: ["Azul", "Branco", "Bronze", "Cobre", "Latão", "Negro", "Ouro", "Prata", "Verde", "Vermelho"], count: 1 }],
-  feiticeiro_magia_selvagem: [{ id: "wild-magic-surge", label: "Surto de Magia Selvagem", options: ["Usar tabela do Livro do Jogador"], count: 1 }],
-  patrulheiro_mestre_feras: [{ id: "beast-companion", label: "Tipo de companheiro animal", options: ["Javali", "Lobo", "Pantera", "Urso", "Texugo", "Aranha", "Águia", "Cavalo"], count: 1 }],
+  barbaro_totem: [
+    { id: "totem-spirit", label: "Espírito Totêmico", options: ["Urso", "Águia", "Lobo"], count: 1, minimumLevel: 3 },
+    { id: "totem-aspect", label: "Aspecto da Fera", options: ["Urso", "Águia", "Lobo"], count: 1, minimumLevel: 6 },
+    { id: "totem-attunement", label: "Sintonia Totêmica", options: ["Urso", "Águia", "Lobo"], count: 1, minimumLevel: 14 },
+  ],
+  druida_terra: [{ id: "land-terrain", label: "Terreno do Círculo da Terra", options: ["Ártico", "Costa", "Deserto", "Floresta", "Montanha", "Pântano", "Planalto", "Subterrâneo"], count: 1, minimumLevel: 2 }],
+  guerreiro_mestre_batalha: [
+    { id: "battle-master-maneuvers", label: "Manobras (3º nível)", options: ["Aparar", "Ataque de Precisão", "Ataque de Provocação", "Ataque Desarmante", "Ataque Distrativo", "Ataque Estonteante", "Ataque de Finta", "Ataque de Empurrão", "Ataque de Investida", "Ataque de Manobra", "Ataque de Reunir", "Ataque de Varredura", "Contra-ataque", "Golpe do Comandante"], count: 3, minimumLevel: 3 },
+    { id: "battle-master-maneuvers-7", label: "Manobras adicionais (7º nível)", options: ["Aparar", "Ataque de Precisão", "Ataque de Provocação", "Ataque Desarmante", "Ataque Distrativo", "Ataque Estonteante", "Ataque de Finta", "Ataque de Empurrão", "Ataque de Investida", "Ataque de Manobra", "Ataque de Reunir", "Ataque de Varredura", "Contra-ataque", "Golpe do Comandante"], count: 2, minimumLevel: 7 },
+    { id: "battle-master-maneuvers-15", label: "Manobra adicional (15º nível)", options: ["Aparar", "Ataque de Precisão", "Ataque de Provocação", "Ataque Desarmante", "Ataque Distrativo", "Ataque Estonteante", "Ataque de Finta", "Ataque de Empurrão", "Ataque de Investida", "Ataque de Manobra", "Ataque de Reunir", "Ataque de Varredura", "Contra-ataque", "Golpe do Comandante"], count: 1, minimumLevel: 15 },
+  ],
+  monge_quatro_elementos: [
+    { id: "elemental-disciplines", label: "Disciplina Elemental (3º nível)", options: ["Abraço dos Ventos", "Caminho dos Quatro Elementos", "Chamas da Fênix", "Defesa da Montanha Eterna", "Golpe de Cinzas", "Moldar o Rio Corrente", "Punho dos Quatro Trovões", "Rastro da Serpente de Fogo", "Rio de Chamas", "Varredura de Cinzas"], count: 1, minimumLevel: 3 },
+    { id: "elemental-disciplines-6", label: "Disciplina Elemental (6º nível)", options: ["Abraço dos Ventos", "Caminho dos Quatro Elementos", "Chamas da Fênix", "Defesa da Montanha Eterna", "Golpe de Cinzas", "Moldar o Rio Corrente", "Punho dos Quatro Trovões", "Rastro da Serpente de Fogo", "Rio de Chamas", "Varredura de Cinzas"], count: 1, minimumLevel: 6 },
+    { id: "elemental-disciplines-11", label: "Disciplina Elemental (11º nível)", options: ["Abraço dos Ventos", "Caminho dos Quatro Elementos", "Chamas da Fênix", "Defesa da Montanha Eterna", "Golpe de Cinzas", "Moldar o Rio Corrente", "Punho dos Quatro Trovões", "Rastro da Serpente de Fogo", "Rio de Chamas", "Varredura de Cinzas"], count: 1, minimumLevel: 11 },
+    { id: "elemental-disciplines-17", label: "Disciplina Elemental (17º nível)", options: ["Abraço dos Ventos", "Caminho dos Quatro Elementos", "Chamas da Fênix", "Defesa da Montanha Eterna", "Golpe de Cinzas", "Moldar o Rio Corrente", "Punho dos Quatro Trovões", "Rastro da Serpente de Fogo", "Rio de Chamas", "Varredura de Cinzas"], count: 1, minimumLevel: 17 },
+  ],
+  feiticeiro_linhagem_draconica: [{ id: "draconic-ancestry", label: "Ancestralidade Dracônica", options: ["Azul", "Branco", "Bronze", "Cobre", "Latão", "Negro", "Ouro", "Prata", "Verde", "Vermelho"], count: 1, minimumLevel: 1 }],
+  feiticeiro_magia_selvagem: [{ id: "wild-magic-surge", label: "Surto de Magia Selvagem", options: ["Usar tabela do Livro do Jogador"], count: 1, minimumLevel: 1 }],
+  patrulheiro_cacador: [
+    { id: "hunter-prey", label: "Presa do Caçador", options: ["Matador de Gigantes", "Matador de Colossos", "Destruidor de Hordas"], count: 1, minimumLevel: 3 },
+    { id: "hunter-defensive-tactics", label: "Táticas Defensivas", options: ["Escapar da Horda", "Defesa Multiataque", "Vontade de Aço"], count: 1, minimumLevel: 7 },
+    { id: "hunter-multiattack", label: "Ataque Múltiplo", options: ["Saraivada", "Ataque de Redemoinho"], count: 1, minimumLevel: 11 },
+    { id: "hunter-superior-defense", label: "Defesa Superior do Caçador", options: ["Evasão", "Resistência contra Ataques Mágicos", "Resistência ao Ataque"], count: 1, minimumLevel: 15 },
+  ],
+  patrulheiro_mestre_feras: [{ id: "beast-companion", label: "Tipo de companheiro animal", options: ["Javali", "Lobo", "Pantera", "Urso", "Texugo", "Aranha", "Águia", "Cavalo"], count: 1, minimumLevel: 3 }],
 };
 
 /** Escolhas de classe do Livro do Jogador 2014 que alteram a ficha. */

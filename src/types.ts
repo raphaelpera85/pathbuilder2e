@@ -17,6 +17,8 @@ export type PickerType =
   | "action"
   | "condition"
   | "buff"
+  | "skill"
+  | "rule"
   | "formula";
 
 export type LocalizedString = Partial<Record<"pt-BR" | "en" | "es", string>>;
@@ -56,7 +58,7 @@ export interface IPickerItemData {
   traits?: string[];
   source?: { book?: string; page?: number };
   sourceApproximate?: boolean;
-  ruleset?: "remaster" | "legacy" | "both" | "needs_review";
+  ruleset?: "remaster" | "legacy" | "both" | "needs_review" | "standard" | "padrao" | "advanced" | "classic";
   needs_review?: boolean;
   id?: string;
   names?: Partial<Record<"pt-BR" | "en" | "es", string>>;

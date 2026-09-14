@@ -39,6 +39,7 @@ async function main() {
   let campaignId = null;
   let characterId = null;
   let realtimeChannel = null;
+  const clients = [];
   const check = (name, pass, detail = undefined) => results.push({ name, pass: Boolean(pass), ...(detail ? { detail } : {}) });
 
   try {
@@ -52,6 +53,7 @@ async function main() {
     const clientA = makeClient();
     const clientA2 = makeClient();
     const clientB = makeClient();
+    clients.push(clientA, clientA2, clientB);
     const signedA = await clientA.auth.signInWithPassword(users[0]);
     const signedA2 = await clientA2.auth.signInWithPassword(users[0]);
     const signedB = await clientB.auth.signInWithPassword(users[1]);
@@ -129,6 +131,10 @@ async function main() {
     check("fluxo autenticado sem erro inesperado", false, error.message || String(error));
   } finally {
     if (realtimeChannel) await realtimeChannel.unsubscribe().catch(() => {});
+    await Promise.all(clients.map(async (client) => {
+      await client.removeAllChannels().catch(() => {});
+      await client.auth.signOut().catch(() => {});
+    }));
     if (characterId) await admin.from("characters").delete().eq("id", characterId);
     if (campaignId) await admin.from("campaigns").delete().eq("id", campaignId);
     for (const userId of createdUserIds) await admin.auth.admin.deleteUser(userId);

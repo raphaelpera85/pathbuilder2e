@@ -1,6 +1,7 @@
 /** Read-only audit of the supported core-system slices in Supabase. */
 const fs = require("node:fs");
 const path = require("node:path");
+const { pathToFileURL } = require("node:url");
 const { createClient } = require("@supabase/supabase-js");
 
 const root = path.resolve(__dirname, "..");
@@ -18,10 +19,32 @@ if (!url || !key) throw new Error("VITE_SUPABASE_URL e uma chave Supabase são o
 const supabase = createClient(url, key);
 
 const expected = {
-  "dnd5e/standard": { catalog_ancestries: 9, catalog_classes: 12, catalog_backgrounds: 13, catalog_subclasses: 40, catalog_items: 206, catalog_spells: 301, catalog_feats: 40 },
-  "t20/padrao": { catalog_ancestries: 17, catalog_classes: 14, catalog_backgrounds: 35, catalog_items: 112, catalog_spells: 66, catalog_feats: 412 },
+  "dnd5e/standard": { catalog_ancestries: 9, catalog_classes: 12, catalog_backgrounds: 13, catalog_subclasses: 40, catalog_items: 226, catalog_spells: 301, catalog_feats: 40 },
+  "t20/padrao": { catalog_ancestries: 17, catalog_classes: 14, catalog_backgrounds: 35, catalog_items: 150, catalog_spells: 66, catalog_feats: 412 },
   "ose/advanced": { catalog_ancestries: 10, catalog_classes: 16, catalog_items: 53, catalog_spells: 34, catalog_feats: 0 },
 };
+const oseClassicMigrationPath = path.join(root, "supabase", "migrations", "202609130041_seed_ose_classic_catalog.sql");
+
+function auditOseClassicMigration() {
+  if (!fs.existsSync(oseClassicMigrationPath)) {
+    return { present: false, expected: { catalog_classes: 3, catalog_items: 53, catalog_spells: 34 }, actual: null, ok: false };
+  }
+  const sql = fs.readFileSync(oseClassicMigrationPath, "utf8");
+  const actual = {
+    catalog_classes: (sql.match(/\('ose\.class\.[^']+_classic'/g) || []).length,
+    catalog_items: (sql.match(/\('ose\.(?:weapon|armor|gear)\.[^']+_classic'/g) || []).length,
+    catalog_spells: (sql.match(/\('ose\.spell\.[^']+_classic'/g) || []).length,
+  };
+  const expectedCounts = { catalog_classes: 3, catalog_items: 53, catalog_spells: 34 };
+  return {
+    present: true,
+    file: path.relative(root, oseClassicMigrationPath),
+    expected: expectedCounts,
+    actual,
+    classicRulesetRows: (sql.match(/'classic'/g) || []).length,
+    ok: Object.keys(expectedCounts).every((table) => expectedCounts[table] === actual[table]) && /ruleset.*classic|classic.*ruleset/i.test(sql),
+  };
+}
 const expectedDndBackgroundChoices = {
   "dnd5e.artesao_guilda": ["artisan", 17],
   "dnd5e.artista": ["instrument", 10],
@@ -76,12 +99,14 @@ const expectedT20ClassChoiceGroups = {
   "t20.ladino": 1,
   "t20.paladino": 1,
 };
-const expectedT20SpellOperationalMetadata = [
-  "t20.magia.caminhos_da_natureza", "t20.magia.campo_de_forca", "t20.magia.camuflagem_ilusoria", "t20.magia.circulo_da_justica",
-  "t20.magia.comungar_com_a_natureza", "t20.magia.contato_extraplanar", "t20.magia.cupula_de_repulsao", "t20.magia.deflagracao_de_mana",
-  "t20.magia.desintegrar", "t20.magia.duplicata_ilusoria", "t20.magia.enxame_de_pestes", "t20.magia.imobilizar", "t20.magia.luz_sagrada",
-];
-
+const dnd5eAttunementExpectation = {
+  requires: [
+    "dnd5e.item_magico.amuletoprotecao_deteccao", "dnd5e.item_magico.amuletosaude", "dnd5e.item_magico.amuletoplanos",
+    "dnd5e.item_magico.anelandar_livre", "dnd5e.item_magico.anelariete", "dnd5e.item_magico.anelprotecao", "dnd5e.item_magico.anelresistencia",
+    "dnd5e.item_magico.botas_velocidade", "dnd5e.item_magico.capa_elfica", "dnd5e.item_magico.capa_deslocamento", "dnd5e.item_magico.varinha_misseis_magicos",
+  ],
+  notRequired: ["dnd5e.item_magico.adaga_envenenamento", "dnd5e.item_magico.armadura_um", "dnd5e.item_magico.arma_um", "dnd5e.item_magico.botas_elficas"],
+};
 async function count(table, systemId, ruleset) {
   const { count: rowCount, error } = await supabase
     .from(table)
@@ -93,13 +118,23 @@ async function count(table, systemId, ruleset) {
 }
 
 async function run() {
+  const { T20_SPELLS } = await import(pathToFileURL(path.join(root, "src/data/t20/t20Compendium.ts")).href);
+  const expectedT20SpellOperationalMetadata = T20_SPELLS.map((spell) => spell.id);
   const results = [];
+  const oseClassicMigration = auditOseClassicMigration();
   for (const [scope, tables] of Object.entries(expected)) {
     const [systemId, ruleset] = scope.split("/");
     const actual = {};
     for (const table of Object.keys(tables)) actual[table] = await count(table, systemId, ruleset);
     results.push({ scope, expected: tables, actual, ok: Object.keys(tables).every((table) => tables[table] === actual[table]) });
   }
+
+  const oseClassicRemote = {};
+  for (const table of ["catalog_classes", "catalog_items", "catalog_spells"]) {
+    oseClassicRemote[table] = await count(table, "ose", "classic");
+  }
+  const oseClassicRemoteExpected = { catalog_classes: 3, catalog_items: 53, catalog_spells: 34 };
+  const oseClassicRemoteApplied = Object.keys(oseClassicRemoteExpected).every((table) => oseClassicRemote[table] === oseClassicRemoteExpected[table]);
 
   const [{ data: classes, error: classError }, { data: subclasses, error: subclassError }] = await Promise.all([
     supabase.from("catalog_classes").select("id,system_id,ruleset,data"),
@@ -124,6 +159,17 @@ async function run() {
       return JSON.stringify(data.toolChoiceGroups || []) !== JSON.stringify([group]) || (data.toolChoiceNames || []).length !== optionCount;
     })
     .map(([id]) => id);
+  const { data: dndItems, error: dndItemsError } = await supabase
+    .from("catalog_items")
+    .select("id,data")
+    .eq("system_id", "dnd5e")
+    .eq("ruleset", "standard")
+    .in("id", [...dnd5eAttunementExpectation.requires, ...dnd5eAttunementExpectation.notRequired]);
+  if (dndItemsError) throw new Error(`Falha ao ler itens mágicos D&D 5e: ${dndItemsError.message}`);
+  const dnd5eAttunementMismatches = [
+    ...dnd5eAttunementExpectation.requires.filter((id) => (dndItems || []).find((row) => row.id === id)?.data?.requiresAttunement !== true),
+    ...dnd5eAttunementExpectation.notRequired.filter((id) => (dndItems || []).find((row) => row.id === id)?.data?.requiresAttunement !== false),
+  ];
   const { data: dndFeats, error: featError } = await supabase
     .from("catalog_feats")
     .select("id,data")
@@ -164,8 +210,9 @@ async function run() {
     const data = (t20Spells || []).find((row) => row.id === id)?.data || {};
     return !data.castingTime || !data.range || (!data.target && !data.area) || !data.duration;
   });
-  const ok = results.every((result) => result.ok) && orphanRows.length === 0 && t20ClassChoiceMismatches.length === 0 && backgroundChoiceMismatches.length === 0 && featSummaryMismatches.length === 0 && dndFeatChoiceMismatches.length === 0 && t20PowerChoiceMismatches.length === 0 && t20GeneralPowerSummaryMismatches.length === 0 && t20GrantedTormentaSummaryMismatches.length === 0 && t20SpellSummaryMismatches.length === 0 && t20SpellOperationalMismatches.length === 0;
-  console.log(JSON.stringify({ ok, results, orphanSubclasses: orphanRows, t20ClassChoiceMismatches, backgroundChoiceMismatches, featSummaryMismatches, dndFeatChoiceMismatches, t20PowerChoiceMismatches, t20GeneralPowerSummaryMismatches, t20GrantedTormentaSummaryMismatches, t20SpellSummaryMismatches, t20SpellOperationalMismatches }, null, 2));
+  const t20SpellSchoolMismatches = (t20Spells || []).filter((row) => !String(row.data?.school || "").trim()).map((row) => row.id);
+  const ok = results.every((result) => result.ok) && oseClassicRemoteApplied && orphanRows.length === 0 && t20ClassChoiceMismatches.length === 0 && backgroundChoiceMismatches.length === 0 && dnd5eAttunementMismatches.length === 0 && featSummaryMismatches.length === 0 && dndFeatChoiceMismatches.length === 0 && t20PowerChoiceMismatches.length === 0 && t20GeneralPowerSummaryMismatches.length === 0 && t20GrantedTormentaSummaryMismatches.length === 0 && t20SpellSummaryMismatches.length === 0 && t20SpellOperationalMismatches.length === 0 && t20SpellSchoolMismatches.length === 0;
+  console.log(JSON.stringify({ ok, results, oseClassicMigration, oseClassicRemote: { expected: oseClassicRemoteExpected, actual: oseClassicRemote, applied: oseClassicRemoteApplied }, orphanSubclasses: orphanRows, t20ClassChoiceMismatches, backgroundChoiceMismatches, dnd5eAttunementMismatches, featSummaryMismatches, dndFeatChoiceMismatches, t20PowerChoiceMismatches, t20GeneralPowerSummaryMismatches, t20GrantedTormentaSummaryMismatches, t20SpellSummaryMismatches, t20SpellOperationalMismatches, t20SpellSchoolMismatches }, null, 2));
   if (!ok) process.exitCode = 1;
 }
 

@@ -4,6 +4,29 @@ import { useTranslation } from "./i18n";
 import { DEFAULT_RPG_SYSTEMS } from "./services/catalog";
 import type { IRPGSystem, RPGSystemId } from "./types";
 
+type SystemCoverage = {
+  ancestries: string;
+  classes: string;
+  skills: string;
+  items: string;
+  spells: string;
+  feats: string;
+  advantage: string;
+};
+
+const SYSTEM_COVERAGE: Record<string, SystemCoverage> = {
+  pf2e: { ancestries: "29", classes: "27", skills: "16", items: "457", spells: "415", feats: "1.919", advantage: "Modificadores e condições" },
+  t20: { ancestries: "17", classes: "14", skills: "29", items: "150", spells: "66", feats: "412", advantage: "Modificadores e condições" },
+  dnd5e: { ancestries: "9 + 9 sub-raças", classes: "12", skills: "18", items: "226", spells: "301", feats: "40", advantage: "Vantagem/desvantagem d20" },
+  ose: { ancestries: "10 + 3 clássicas", classes: "16 + 3 clássicas", skills: "Ladrão/Acrobata + d100", items: "53", spells: "34", feats: "Sem talentos nativos", advantage: "Modificadores e tabelas" },
+};
+
+const COVERAGE_LABELS = {
+  "pt-BR": { ancestries: "Raças", classes: "Classes", skills: "Perícias", items: "Itens", spells: "Magias", feats: "Talentos / poderes", advantage: "Resolução" },
+  en: { ancestries: "Ancestries", classes: "Classes", skills: "Skills", items: "Items", spells: "Spells", feats: "Feats / powers", advantage: "Resolution" },
+  es: { ancestries: "Linajes", classes: "Clases", skills: "Habilidades", items: "Objetos", spells: "Conjuros", feats: "Dotes / poderes", advantage: "Resolución" },
+} as const;
+
 export interface SystemSelectorModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -19,6 +42,7 @@ export const SystemSelectorModal: React.FC<SystemSelectorModalProps> = ({
 }) => {
   const { t, locale } = useTranslation();
   const modalContentRef = useRef<HTMLDivElement>(null);
+  const coverageLabels = COVERAGE_LABELS[locale] || COVERAGE_LABELS["pt-BR"];
 
   // Fechar com Escape e bloquear scroll do body
   useEffect(() => {
@@ -74,6 +98,7 @@ export const SystemSelectorModal: React.FC<SystemSelectorModalProps> = ({
       role="dialog"
       aria-modal="true"
       aria-labelledby="pb-system-modal-title"
+      aria-describedby="pb-system-modal-subtitle"
     >
       <div ref={modalContentRef} className="pb-system-modal-content">
         {/* Botão de Fechar */}
@@ -92,7 +117,7 @@ export const SystemSelectorModal: React.FC<SystemSelectorModalProps> = ({
           <h2 id="pb-system-modal-title" className="pb-system-modal-title">
             {t("selectRpgSystem")}
           </h2>
-          <p className="pb-system-modal-subtitle">
+          <p id="pb-system-modal-subtitle" className="pb-system-modal-subtitle">
             {t("selectRpgSystemSubtitle")}
           </p>
         </div>
@@ -108,15 +133,23 @@ export const SystemSelectorModal: React.FC<SystemSelectorModalProps> = ({
               system.description[locale] ||
               system.description["pt-BR"] ||
               "";
+            const coverage = SYSTEM_COVERAGE[system.id];
 
             return (
-              <button
-                key={system.id}
-                type="button"
-                className="pb-system-card"
-                onClick={() => onSelectSystem(system.id)}
-                aria-label={`${systemName}: ${systemDesc}`}
-              >
+              <div role="listitem" key={system.id}>
+                <div
+                  className="pb-system-card"
+                  onClick={() => onSelectSystem(system.id)}
+                  aria-label={`${systemName}: ${systemDesc}`}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      event.preventDefault();
+                      onSelectSystem(system.id);
+                    }
+                  }}
+                >
                 <div className="pb-system-card-main">
                   <div className="pb-system-card-top">
                     <span className="pb-system-card-icon">{system.icon}</span>
@@ -133,6 +166,22 @@ export const SystemSelectorModal: React.FC<SystemSelectorModalProps> = ({
                   </div>
                   <h3 className="pb-system-card-title">{systemName}</h3>
                   <p className="pb-system-card-desc">{systemDesc}</p>
+                  {coverage ? (
+                    <dl className="pb-system-card-coverage" aria-label={`${systemName} coverage`}>
+                      {(["ancestries", "classes", "skills", "items", "spells", "feats"] as const).map((key) => (
+                        <div className="pb-system-coverage-item" key={key}>
+                          <dt>{coverageLabels[key]}</dt>
+                          <dd>{coverage[key]}</dd>
+                        </div>
+                      ))}
+                      <div className="pb-system-card-resolution">
+                        <dt>{coverageLabels.advantage}</dt>
+                        <dd>{coverage.advantage}</dd>
+                      </div>
+                    </dl>
+                  ) : (
+                    <p className="pb-system-card-coverage-fallback">Catálogo configurado no compêndio</p>
+                  )}
                 </div>
 
                 <div className="pb-system-card-footer">
@@ -143,7 +192,8 @@ export const SystemSelectorModal: React.FC<SystemSelectorModalProps> = ({
                     {t("createSheetForSystem")} →
                   </span>
                 </div>
-              </button>
+                </div>
+              </div>
             );
           })}
         </div>

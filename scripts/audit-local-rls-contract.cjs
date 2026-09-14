@@ -6,6 +6,7 @@ const readMigration = (name) => fs.readFileSync(path.join(root, "supabase", "mig
 const characters = readMigration("202608270001_accounts_and_characters.sql");
 const admin = readMigration("202609120005_secure_functions_index_foreign_keys.sql");
 const systems = readMigration("202609120001_multi_system_support.sql");
+const skills = readMigration("202609130043_create_core_skills_catalog.sql");
 
 const checks = [
   ["RLS habilitado para characters", /alter table public\.characters enable row level security/i.test(characters)],
@@ -17,6 +18,9 @@ const checks = [
   ["remoção própria por auth.uid", /characters_delete_own[\s\S]*?using \(\(select auth\.uid\(\)\) = user_id\)/i.test(characters)],
   ["política administrativa isolada", /create policy characters_select_admin on public\.characters for select to authenticated/i.test(admin)],
   ["catálogo de sistemas com leitura pública", /create policy "Permitir leitura pública de catalog_systems"[\s\S]*?for select[\s\S]*?using \(true\)/i.test(systems)],
+  ["catalog_skills com RLS habilitado", /alter table public\.catalog_skills enable row level security/i.test(skills)],
+  ["catalog_skills com leitura pública", /create policy "Permitir leitura pública de catalog_skills"[\s\S]*?for select[\s\S]*?using \(true\)/i.test(skills)],
+  ["catalog_skills com escrita administrativa", /create policy "Admins podem gerenciar catalog_skills"[\s\S]*?for all[\s\S]*?to authenticated[\s\S]*?(?:public|private)\.is_admin\(\)/i.test(skills)],
 ];
 
 const failed = checks.filter(([, passed]) => !passed).map(([label]) => label);

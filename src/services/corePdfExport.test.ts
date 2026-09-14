@@ -46,4 +46,12 @@ describe("core editable PDF export", () => {
     const pdf = await PDFDocument.load(await createCoreEditablePdf(character));
     expect(pdf.getForm().getTextField("character.feats").getText()).toContain("Espada longa");
   });
+
+  it("exports D&D 5e attuned items in the editable equipment field", async () => {
+    const character = createInitialCoreCharacter("dnd5e");
+    character.equipmentIds = ["dnd5e.item_magico.anelprotecao"];
+    character.attunedEquipmentIds = ["dnd5e.item_magico.anelprotecao"];
+    const pdf = await PDFDocument.load(await createCoreEditablePdf(character));
+    expect(pdf.getForm().getTextField("character.equipment").getText()).toContain("Sintonizados: Anel de proteção");
+  });
 });

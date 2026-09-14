@@ -84,10 +84,12 @@ export function OseCharacterSheet({
   };
 
   const rollAttack = (wpnName: string, dmgDice: string) => {
+    const weapon = char.weapons.find((entry) => entry.name === wpnName);
     const d20 = Math.floor(Math.random() * 20) + 1;
-    const bonus = strMod.melee;
+    const bonus = weapon?.isMissile && !weapon.isMelee ? dexMod.missile : strMod.melee;
     const total = d20 + bonus;
-    const log = `⚔️ Ataque com ${wpnName}: d20=${d20} + ${bonus} = ${total} (Dano: ${dmgDice})`;
+    const ability = weapon?.isMissile && !weapon.isMelee ? "DES" : "FOR";
+    const log = `⚔️ Ataque com ${wpnName}: d20=${d20} + ${bonus} (${ability}) = ${total} (Dano: ${dmgDice})`;
     setDiceLogs((prev) => [log, ...prev.slice(0, 15)]);
   };
 
@@ -394,6 +396,32 @@ export function OseCharacterSheet({
             </div>
           )}
 
+          {cls.acrobatSkills && cls.acrobatSkills[char.level] && (
+            <div className="ose-card">
+              <div className="ose-card-title">Perícias de Acrobata</div>
+              <div className="ose-thief-skills-list">
+                {[
+                  { name: "Subir Superfícies Íngremes (SSI)", val: `${cls.acrobatSkills[char.level].ssi}%` },
+                  { name: "Queda", val: `${cls.acrobatSkills[char.level].qu}% redução` },
+                  { name: "Esconder-se nas Sombras (ES)", val: `${cls.acrobatSkills[char.level].es}%` },
+                  { name: "Mover Silenciosamente (MS)", val: `${cls.acrobatSkills[char.level].ms}%` },
+                  { name: "Caminhada na Corda Bamba (CCB)", val: `${cls.acrobatSkills[char.level].ccb}%` },
+                  ...(cls.acrobatSkills[char.level].salto
+                    ? [{ name: "Salto", val: cls.acrobatSkills[char.level].salto }]
+                    : []),
+                  ...(cls.acrobatSkills[char.level].evasao
+                    ? [{ name: "Evasão", val: cls.acrobatSkills[char.level].evasao }]
+                    : []),
+                ].map((skill) => (
+                  <div key={skill.name} className="ose-skill-row">
+                    <span>{skill.name}</span>
+                    <strong>{skill.val}</strong>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Armas Equipadas */}
           <div className="ose-card">
             <div className="ose-card-title">Armas Equipadas</div>
@@ -452,6 +480,15 @@ export function OseCharacterSheet({
           {cls.spellCasting && (
             <div className="ose-card">
               <div className="ose-card-title">Grimório de Magias</div>
+              {currentProgression.spells && currentProgression.spells.length > 0 && (
+                <div style={{ marginBottom: 8, padding: "6px 8px", background: "rgba(245, 158, 11, 0.08)", borderRadius: 4, fontSize: "0.75rem" }}>
+                  <strong>Espaços por círculo:</strong>{" "}
+                  {currentProgression.spells.map((slots, index) => `${index + 1}º: ${slots}`).join(" · ")}
+                  <div style={{ color: "var(--ose-text-muted)", marginTop: 3 }}>
+                    Magias preparadas/conhecidas: {char.spellsKnown.filter((spellId) => (char.preparedSpells || []).includes(spellId)).length}/{currentProgression.spells.reduce((sum, slots) => sum + slots, 0)}
+                  </div>
+                </div>
+              )}
               <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
                 {char.spellsKnown.map((spellId) => {
                   const sp = OSE_SPELLS.find((s) => s.id === spellId);

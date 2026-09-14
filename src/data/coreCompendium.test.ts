@@ -26,6 +26,14 @@ describe("core compendium systems", () => {
     expect(ose?.data?.source?.book).toContain("Old-School Essentials");
   });
 
+  it("representa o ruleset Classic do OSE sem misturá-lo ao Advanced", () => {
+    const entries = getCoreCompendiumEntries();
+    const classic = entries.filter((entry) => entry.data?.system_id === "ose" && entry.data?.ruleset === "classic");
+    expect(classic.length).toBeGreaterThan(50);
+    expect(classic.some((entry) => entry.category === "class" && entry.data?.isRaceClass === true)).toBe(true);
+    expect(classic.every((entry) => String(entry.data?.id).endsWith("_classic"))).toBe(true);
+  });
+
   it("mantém IDs únicos e proveniência mínima em todos os sistemas", () => {
     const entries = getCoreCompendiumEntries();
     expect(new Set(entries.map((entry) => entry.data?.id)).size).toBe(entries.length);

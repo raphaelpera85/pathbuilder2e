@@ -123,7 +123,10 @@ export async function createOseEditablePdf(character: OseCharacterCreatedData, t
   setText(form, "XP", character.xp);
   setText(form, "XP for Next Level", progression.xp);
   setText(form, "PR XP Bonus", "");
-  setText(form, "Notes", character.spellsKnown.map((id) => OSE_SPELLS.find((spell) => spell.id === id)?.name || id).join(", "));
+  setText(form, "Notes", character.spellsKnown.map((id) => {
+    const spell = OSE_SPELLS.find((entry) => entry.id === id);
+    return spell ? `${spell.name} (${spell.circle}º círculo${(character.preparedSpells || []).includes(id) ? ", preparada" : ""})` : id;
+  }).join(", "));
 
   const appearanceFont = await pdf.embedFont(StandardFonts.TimesRoman);
   form.updateFieldAppearances(appearanceFont);

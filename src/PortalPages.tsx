@@ -45,11 +45,10 @@ import { getWeaponImageAlt, getWeaponImageUrl } from "./weaponVisuals";
 import { getItemImageAlt, getItemImageUrl } from "./itemVisuals";
 import { SystemSelectorModal } from "./SystemSelectorModal";
 import { OseCharacterCreatorModal, type OseCharacterCreatedData } from "./ose/OseCharacterCreatorModal";
-import { OseCharacterSheet } from "./ose/OseCharacterSheet";
 import { CoreCharacterCreatorModal } from "./core/CoreCharacterCreatorModal";
-import { CoreCharacterSheet } from "./core/CoreCharacterSheet";
 import type { MultiSystemCharacter, SupportedCoreSystem } from "./data/multiSystemCharacter";
 import type { RPGSystemId } from "./types";
+import { getCharacterEditorRoute, getPersistedCharacterSystemId, hydrateCharacterForEditor } from "./services/characterEditorRouting";
 import { T20_CLASSES, T20_RACES } from "./data/t20/t20Catalog";
 import { T20_ORIGINS } from "./data/t20/t20Origins";
 import { T20_EQUIPMENT, T20_POWERS, T20_SPELLS } from "./data/t20/t20Compendium";
@@ -85,6 +84,8 @@ const catalogCategories: Array<{ type: PickerType; label: MessageKey }> = [
   { type: "subclass", label: "subclasses" },
   { type: "background", label: "backgrounds" },
   { type: "archetype", label: "archetypes" },
+  { type: "skill", label: "skills" },
+  { type: "rule", label: "rules" },
   { type: "spell", label: "spells" },
   { type: "ritual", label: "rituals" },
   { type: "feat", label: "feats" },
@@ -184,7 +185,10 @@ function CatalogPage() {
     setCatalogLoadFailed(false);
     const loadCategory = async (type: PickerType) => {
       try {
-        const result = await fetchCatalogCategory(type);
+        const result = await fetchCatalogCategory(type, {
+          systemId: systemFilter === "all" ? "all" : systemFilter,
+          ruleset: rulesetFilter === "all" ? undefined : rulesetFilter as any,
+        });
         if (isMounted) {
           if (result.items.length > 0) {
             setRemoteItemsByCategory((prev) => ({ ...prev, [type]: result.items }));
@@ -230,7 +234,7 @@ function CatalogPage() {
     return () => {
       isMounted = false;
     };
-  }, [category]);
+  }, [category, systemFilter, rulesetFilter]);
 
   const handleManualSync = async () => {
     setIsSyncing(true);
@@ -244,7 +248,11 @@ function CatalogPage() {
         const batch = typesToSync.slice(i, i + BATCH_SIZE);
         const results = await Promise.all(
           batch.map(async (type) => {
-            const result = await fetchCatalogCategory(type, { forceRemote: true });
+            const result = await fetchCatalogCategory(type, {
+              forceRemote: true,
+              systemId: systemFilter === "all" ? "all" : systemFilter,
+              ruleset: rulesetFilter === "all" ? undefined : rulesetFilter as any,
+            });
             if (result.items.length > 0) {
               setRemoteItemsByCategory((prev) => ({ ...prev, [type]: result.items }));
             }
@@ -281,7 +289,13 @@ function CatalogPage() {
     // dados remotos carregados, não mesclamos uma segunda cópia do mesmo
     // sistema/registro (isso também evita duplicações durante a sincronização).
     const useLocalCore = remoteAndLegacy.length === 0 && (!syncStatus.isConfigured || !syncStatus.isOnline);
-    return useLocalCore ? localCoreEntries : remoteAndLegacy;
+    if (useLocalCore) return localCoreEntries;
+    // O catálogo remoto legado pode ainda não conter os registros Classic do
+    // OSE. Mantemos esse ruleset localmente para que o filtro não fique vazio
+    // quando o Supabase estiver configurado, sem duplicar entradas já remotas.
+    const remoteIds = new Set(remoteAndLegacy.map((entry) => entry.data?.id));
+    const localRulesetEntries = localCoreEntries.filter((entry) => String(entry.data?.ruleset) === "classic" && !remoteIds.has(entry.data?.id));
+    return [...remoteAndLegacy, ...localRulesetEntries];
   }, [localCoreEntries, remoteItemsByCategory, syncStatus.isConfigured, syncStatus.isOnline, t]);
 
   const availableBooks = useMemo(() => {
@@ -429,7 +443,7 @@ function CatalogPage() {
         <strong className="catalog-count" aria-live="polite">{filtered.length} {t("results")}</strong>
       </div>
     </section>
-    {isCatalogLoading && entries.length === 0 ? <div className="portal-empty" role="status">{t("loadingCatalog")}</div>
+    {isCatalogLoading && entries.length === 0 ? <div className="portal-empty" role="status" aria-live="polite" aria-busy="true">{t("loadingCatalog")}</div>
       : catalogLoadFailed && entries.length === 0 ? <div className="portal-empty" role="alert"><p>{t("catalogLoadFailed")}</p><button type="button" onClick={handleManualSync} disabled={isSyncing}>{t("retry")}</button></div>
       : filtered.length === 0 ? <div className="portal-empty">{hasHiddenCatalogMatches && <p className="portal-warning" role="status">{t("catalogHiddenByFilters")}</p>}<p>{t("noCatalogResults")}</p></div> : <section className="catalog-grid" aria-label={t("compendiumTitle")}>
       {filtered.map((entry, index) => <CatalogCard key={`${entry.category}-${entry.name}-${index}`} entry={entry} onInspect={() => setInspectedEntry(entry)} />)}
@@ -561,6 +575,12 @@ function CatalogCard({ entry, onInspect }: { entry: PickerItem & { category: Pic
   const primaryChecks = entry.data.primaryChecks as Partial<Record<"pt-BR" | "en" | "es", string>> | undefined;
   const isWeapon = entry.category === "weapon";
   const isItem = entry.category === "item" || entry.category === "gear";
+  const isSkill = entry.category === "skill";
+  const skillAbilityLabels: Record<string, Record<"pt-BR" | "en" | "es", string>> = {
+    str: { "pt-BR": "Força", en: "Strength", es: "Fuerza" }, dex: { "pt-BR": "Destreza", en: "Dexterity", es: "Destreza" },
+    con: { "pt-BR": "Constituição", en: "Constitution", es: "Constitución" }, int: { "pt-BR": "Inteligência", en: "Intelligence", es: "Inteligencia" },
+    wis: { "pt-BR": "Sabedoria", en: "Wisdom", es: "Sabiduría" }, cha: { "pt-BR": "Carisma", en: "Charisma", es: "Carisma" },
+  };
   const displayName = getItemDisplayName(entry, locale);
   const range = entry.data.rangeFeet ?? entry.data.range;
   const facts = [
@@ -573,6 +593,9 @@ function CatalogCard({ entry, onInspect }: { entry: PickerItem & { category: Pic
     isWeapon && entry.data.weaponGroup ? `${t("weaponGroup")}: ${String(entry.data.weaponGroup)}` : null,
     typeof entry.data.rank === "number" ? `${t("rank")} ${entry.data.rank}` : null,
     typeof entry.data.level === "number" ? `${t("level")} ${entry.data.level}` : null,
+    isSkill && typeof entry.data.skillAbility === "string" ? `${t("keyAbility")}: ${skillAbilityLabels[entry.data.skillAbility]?.[locale] || entry.data.skillAbility}` : null,
+    entry.category === "action" && entry.data.actionCost ? `${locale === "en" ? "Cost" : locale === "es" ? "Coste" : "Custo"}: ${String(entry.data.actionCost)}` : null,
+    entry.category === "condition" && entry.data.hasValue ? (locale === "en" ? "Has levels" : locale === "es" ? "Tiene niveles" : "Possui níveis") : null,
     castingTimes?.[locale] ? `${t("castingTime")}: ${castingTimes[locale]}` : null,
     getTraditionDisplayNames(entry.data.traditions, traditionNames, locale).length
       ? `${t("traditions")}: ${getTraditionDisplayNames(entry.data.traditions, traditionNames, locale).join(", ")}` : null,
@@ -581,7 +604,12 @@ function CatalogCard({ entry, onInspect }: { entry: PickerItem & { category: Pic
     entry.data.price ? `${t("price")}: ${formatPriceToLocale(entry.data.price, locale)}` : null,
     entry.data.variantFamily ? `${locale === "en" ? "Variant" : locale === "es" ? "Variante" : "Variante"}: ${entry.data.variantRole === "ranged" ? (locale === "en" ? "Ranged" : locale === "es" ? "A distancia" : "À distância") : entry.data.variantRole === "melee" ? (locale === "en" ? "Melee" : locale === "es" ? "Cuerpo a cuerpo" : "Corpo a corpo") : entry.data.variantFamily}` : null,
   ].filter((fact): fact is string => Boolean(fact));
-  return <article className="catalog-card interactive" onClick={onInspect} tabIndex={0} onKeyDown={(e) => e.key === "Enter" && onInspect?.()} role="button" aria-label={displayName}>
+  return <article className="catalog-card interactive" onClick={onInspect} tabIndex={0} onKeyDown={(e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      onInspect?.();
+    }
+  }} role="button" aria-label={displayName}>
     <div className="catalog-card-top"><div className="catalog-card-meta"><span>{entry.categoryLabel}</span>{rarity && <span className={`rarity-badge ${String(entry.data.rarity)}`}>{rarity}</span>}</div><div className="catalog-card-status"><span className={legacy ? "source-badge legacy" : verified ? "source-badge verified" : "source-badge review"}>{legacy ? t("catalogLegacy") : verified ? t("catalogVerified") : t("catalogReview")}</span>{approximateSource && <span className="source-badge review">{t("sourceSectionReference")}</span>}{translationPending && <span className="source-badge translation-pending">{t("translationPending")}</span>}</div></div>
     {(isWeapon || isItem) && <img className="weapon-visual weapon-visual-card" src={isWeapon ? getWeaponImageUrl(entry.data) : getItemImageUrl(entry.data)} alt={isWeapon ? getWeaponImageAlt(displayName, entry.data, locale) : getItemImageAlt(displayName, entry.data, locale)} loading="lazy" />}
     <h2>{displayName}</h2>
@@ -974,8 +1002,32 @@ function LibraryPage() {
     const handleOpenCoreWizard = (event: CustomEvent<{ system: SupportedCoreSystem }>) => {
       if (event.detail?.system === "t20" || event.detail?.system === "dnd5e") setCoreWizardSystem(event.detail.system);
     };
+    const clearPendingCharacter = () => {
+      try { sessionStorage.removeItem("pathbuilder:pending-character-load"); } catch { /* noop */ }
+    };
     const handleLoadOse = (e: CustomEvent<OseCharacterCreatedData>) => {
+      clearPendingCharacter();
       if (e.detail) setActiveOseCharacter(e.detail);
+    };
+    const handleLoadCore = (e: CustomEvent<MultiSystemCharacter>) => {
+      clearPendingCharacter();
+      const raw = e.detail as MultiSystemCharacter & { systemId?: string };
+      const systemId = raw?.system_id || raw?.systemId;
+      if ((systemId === "t20" || systemId === "dnd5e") && raw) {
+        setActiveCoreCharacter({ ...raw, system_id: systemId, ruleset: raw.ruleset || (systemId === "t20" ? "padrao" : "standard") } as MultiSystemCharacter);
+      }
+    };
+    const consumePendingCharacter = () => {
+      try {
+        const pending = sessionStorage.getItem("pathbuilder:pending-character-load");
+        if (!pending) return;
+        sessionStorage.removeItem("pathbuilder:pending-character-load");
+        const parsed = JSON.parse(pending) as { systemId?: string; data?: unknown };
+        if (parsed.systemId === "ose" && parsed.data) handleLoadOse({ detail: parsed.data as OseCharacterCreatedData } as CustomEvent<OseCharacterCreatedData>);
+        if ((parsed.systemId === "t20" || parsed.systemId === "dnd5e") && parsed.data) handleLoadCore({ detail: parsed.data as MultiSystemCharacter } as CustomEvent<MultiSystemCharacter>);
+      } catch {
+        // Ignore unavailable or malformed session handoff data.
+      }
     };
     try {
       if (sessionStorage.getItem("pathbuilder:auto-open-ose-wizard") === "true") {
@@ -988,10 +1040,13 @@ function LibraryPage() {
     window.addEventListener("pathbuilder:open-ose-wizard", handleOpenWizard);
     window.addEventListener("pathbuilder:open-core-wizard", handleOpenCoreWizard as EventListener);
     window.addEventListener("pathbuilder:load-ose-character", handleLoadOse as EventListener);
+    window.addEventListener("pathbuilder:load-core-character", handleLoadCore as EventListener);
+    window.setTimeout(consumePendingCharacter, 0);
     return () => {
       window.removeEventListener("pathbuilder:open-ose-wizard", handleOpenWizard);
       window.removeEventListener("pathbuilder:open-core-wizard", handleOpenCoreWizard as EventListener);
       window.removeEventListener("pathbuilder:load-ose-character", handleLoadOse as EventListener);
+      window.removeEventListener("pathbuilder:load-core-character", handleLoadCore as EventListener);
     };
   }, []);
 
@@ -1054,7 +1109,7 @@ function LibraryPage() {
   if (!sessionReady) {
     return (
       <main className="portal-page library-auth-page" id="portal-content" tabIndex={-1}>
-        <div className="portal-empty" role="status">{t("loadingSheets")}</div>
+          <div className="portal-empty" role="status" aria-live="polite" aria-busy="true">{t("loadingSheets")}</div>
       </main>
     );
   }
@@ -1141,20 +1196,16 @@ function LibraryPage() {
 
   const handleLoadCharacter = (char: CloudCharacter) => {
     const charData = (char.data || {}) as any;
-    const sysId = char.system_id || charData.system_id || charData.systemId;
+    const sysId = getPersistedCharacterSystemId(char.system_id, charData);
+    const editorRoute = getCharacterEditorRoute(sysId);
     // O registro da ficha é a fonte de verdade para o sistema/ruleset; versões
     // antigas podem ter gravado esses campos apenas na linha do Supabase.
-    const hydratedData = {
-      ...charData,
-      system_id: sysId,
-      systemId: charData.systemId || sysId,
-      ruleset: charData.ruleset || char.ruleset,
-    };
-    if (sysId === "ose") {
+    const hydratedData = hydrateCharacterForEditor(char.system_id, char.ruleset, charData);
+    if (editorRoute === "ose") {
       setActiveOseCharacter(hydratedData);
       return;
     }
-    if (sysId === "t20" || sysId === "dnd5e") {
+    if (editorRoute === "core") {
       setActiveCoreCharacter(hydratedData as MultiSystemCharacter);
       return;
     }
@@ -1412,19 +1463,20 @@ function LibraryPage() {
           />
         )}
         {activeOseCharacter && (
-          <OseCharacterSheet
-            character={activeOseCharacter}
-            onCloseSheet={() => setActiveOseCharacter(null)}
-            onUpdateCharacter={(updated: OseCharacterCreatedData) => {
-              handleSaveOseCharacter(updated);
-            }}
+          <OseCharacterCreatorModal
+            isOpen={true}
+            initialCharacter={activeOseCharacter}
+            onClose={() => setActiveOseCharacter(null)}
+            onCharacterCreated={handleSaveOseCharacter}
           />
         )}
         {activeCoreCharacter && (
-          <CoreCharacterSheet
-            character={activeCoreCharacter}
+          <CoreCharacterCreatorModal
+            isOpen={true}
+            system={activeCoreCharacter.system_id}
+            initialCharacter={activeCoreCharacter}
             onClose={() => setActiveCoreCharacter(null)}
-            onUpdate={handleUpdateCoreCharacter}
+            onCharacterCreated={handleUpdateCoreCharacter}
           />
         )}
       </main>
@@ -1434,7 +1486,7 @@ function LibraryPage() {
   const filteredCharacters = selectedSystemFilter === "all"
     ? characters
     : characters.filter(
-        (c) => (c.system_id || (c.data as any)?.system_id || (c.data as any)?.systemId || "pf2e") === selectedSystemFilter
+        (c) => getPersistedCharacterSystemId(c.system_id, c.data as any) === selectedSystemFilter
       );
 
   return (
@@ -1487,7 +1539,7 @@ function LibraryPage() {
             <span className="pill-icon">⚔️</span>
             <span className="pill-label">Pathfinder 2e</span>
             <span className="pill-count">
-              {characters.filter((c) => (c.system_id || (c.data as any)?.system_id || (c.data as any)?.systemId || "pf2e") === "pf2e").length}
+              {characters.filter((c) => getPersistedCharacterSystemId(c.system_id, c.data as any) === "pf2e").length}
             </span>
           </button>
           <button
@@ -1500,7 +1552,7 @@ function LibraryPage() {
             <span className="pill-icon">🐉</span>
             <span className="pill-label">D&D 5e</span>
             <span className="pill-count">
-              {characters.filter((c) => (c.system_id || (c.data as any)?.system_id || (c.data as any)?.systemId || "pf2e") === "dnd5e").length}
+              {characters.filter((c) => getPersistedCharacterSystemId(c.system_id, c.data as any) === "dnd5e").length}
             </span>
           </button>
           <button
@@ -1513,7 +1565,7 @@ function LibraryPage() {
             <span className="pill-icon">🛡️</span>
             <span className="pill-label">Tormenta 20</span>
             <span className="pill-count">
-              {characters.filter((c) => (c.system_id || (c.data as any)?.system_id || (c.data as any)?.systemId || "pf2e") === "t20").length}
+              {characters.filter((c) => getPersistedCharacterSystemId(c.system_id, c.data as any) === "t20").length}
             </span>
           </button>
           <button
@@ -1526,13 +1578,13 @@ function LibraryPage() {
             <span className="pill-icon">📜</span>
             <span className="pill-label">Old-School Essentials</span>
             <span className="pill-count">
-              {characters.filter((c) => (c.system_id || (c.data as any)?.system_id || (c.data as any)?.systemId || "pf2e") === "ose").length}
+              {characters.filter((c) => getPersistedCharacterSystemId(c.system_id, c.data as any) === "ose").length}
             </span>
           </button>
         </div>
 
         {loading ? (
-          <div className="portal-empty">{t("loadingCharacters")}</div>
+          <div className="portal-empty" role="status" aria-live="polite" aria-busy="true">{t("loadingCharacters")}</div>
         ) : filteredCharacters.length === 0 ? (
           <div className="portal-empty-card">
             <span className="empty-icon">📜</span>
@@ -1546,7 +1598,7 @@ function LibraryPage() {
           <div className="characters-library-grid">
             {filteredCharacters.map((char) => {
               const charData = (char.data || {}) as any;
-              const systemId = char.system_id || charData.system_id || charData.systemId || "pf2e";
+              const systemId = getPersistedCharacterSystemId(char.system_id, charData);
               const systemBadge = systemId === "ose" ? "🎲 OSE" : systemId === "dnd5e" ? "🐉 D&D 5e" : systemId === "t20" ? "🛡️ Tormenta 20" : "⚔️ Pathfinder 2e";
               const badgeColor = systemId === "ose" ? "#d97706" : systemId === "dnd5e" ? "#ef4444" : systemId === "t20" ? "#3b82f6" : "#f97316";
 
@@ -1649,19 +1701,20 @@ function LibraryPage() {
       )}
 
       {activeOseCharacter && (
-        <OseCharacterSheet
-          character={activeOseCharacter}
-          onCloseSheet={() => setActiveOseCharacter(null)}
-          onUpdateCharacter={(updated: OseCharacterCreatedData) => {
-            handleSaveOseCharacter(updated);
-          }}
+        <OseCharacterCreatorModal
+          isOpen={true}
+          initialCharacter={activeOseCharacter}
+          onClose={() => setActiveOseCharacter(null)}
+          onCharacterCreated={handleSaveOseCharacter}
         />
       )}
       {activeCoreCharacter && (
-        <CoreCharacterSheet
-          character={activeCoreCharacter}
+        <CoreCharacterCreatorModal
+          isOpen={true}
+          system={activeCoreCharacter.system_id}
+          initialCharacter={activeCoreCharacter}
           onClose={() => setActiveCoreCharacter(null)}
-          onUpdate={handleUpdateCoreCharacter}
+          onCharacterCreated={handleUpdateCoreCharacter}
         />
       )}
     </main>
@@ -1977,7 +2030,20 @@ export function PortalPages() {
     if (builder) builder.hidden = !onBuilder;
     if (characterTab) characterTab.hidden = !onBuilder;
     document.body.classList.toggle("portal-page-active", !onBuilder);
+    document.documentElement.classList.toggle("portal-page-active", !onBuilder);
     if (!onBuilder) requestAnimationFrame(() => document.getElementById("portal-content")?.focus({ preventScroll: true }));
+  }, [route]);
+
+  useEffect(() => {
+    const updatePortalNavState = () => {
+      document.body.classList.toggle("portal-nav-is-scrolled", route !== "builder" && window.scrollY > 8);
+    };
+    updatePortalNavState();
+    window.addEventListener("scroll", updatePortalNavState, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", updatePortalNavState);
+      document.body.classList.remove("portal-nav-is-scrolled");
+    };
   }, [route]);
 
   useEffect(() => {

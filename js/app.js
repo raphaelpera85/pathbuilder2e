@@ -5455,6 +5455,7 @@ class PathbuilderApp {
     document.getElementById("legacy-builder-root")?.toggleAttribute("hidden", !onBuilder);
     document.getElementById("topCharTab")?.toggleAttribute("hidden", !onBuilder);
     document.body.classList.toggle("portal-page-active", !onBuilder);
+    document.documentElement.classList.toggle("portal-page-active", !onBuilder);
     window.location.hash = `#/${cleanRoute}`;
   }
 

@@ -1,5 +1,9 @@
 import { supabase, isSupabaseConfigured } from "../lib/supabase";
 import type { PickerItem, PickerType, IRPGSystem, RPGSystemId } from "../types";
+import { getSystemSkillItems } from "../data/systemSkills";
+import { getSystemRuleItems } from "../data/systemRulesCatalog";
+import { getSystemActionItems } from "../data/systemActions";
+import { getSystemConditionItems } from "../data/systemConditions";
 
 export const DEFAULT_RPG_SYSTEMS: IRPGSystem[] = [
   {
@@ -129,9 +133,10 @@ export type CatalogTableName =
   | "catalog_pets"
   | "catalog_actions"
   | "catalog_conditions"
-  | "catalog_buffs";
+  | "catalog_buffs"
+  | "catalog_skills";
 
-export const PICKER_TYPE_TO_TABLE: Record<PickerType, CatalogTableName> = {
+export const PICKER_TYPE_TO_TABLE: Partial<Record<PickerType, CatalogTableName>> = {
   ancestry: "catalog_ancestries",
   heritage: "catalog_heritages",
   class: "catalog_classes",
@@ -151,6 +156,7 @@ export const PICKER_TYPE_TO_TABLE: Record<PickerType, CatalogTableName> = {
   action: "catalog_actions",
   condition: "catalog_conditions",
   buff: "catalog_buffs",
+  skill: "catalog_skills",
 };
 
 export interface CatalogItemRecord {
@@ -171,6 +177,8 @@ export interface CatalogItemRecord {
   [key: string]: any;
 }
 
+export type CatalogRuleset = "remaster" | "legacy" | "standard" | "padrao" | "advanced" | "classic";
+
 export interface CatalogSyncStatus {
   isConfigured: boolean;
   isOnline: boolean;
@@ -181,8 +189,22 @@ export interface CatalogSyncStatus {
 
 const inMemoryCache: Record<string, Partial<Record<PickerType, PickerItem[]>>> = {};
 
-function getLocalCacheKey(category: PickerType, systemId = "pf2e"): string {
-  return `pb2e_catalog_cache_${systemId}_${category}`;
+function getCacheScope(systemId = "pf2e", ruleset?: CatalogRuleset): string {
+  return `${systemId}_${ruleset || "all"}`;
+}
+
+const CORE_SYSTEM_IDS = ["t20", "dnd5e", "ose"] as const;
+
+function getCoreFallbackItems(category: PickerType, ruleset?: CatalogRuleset): PickerItem[] {
+  if (category === "rule") return CORE_SYSTEM_IDS.flatMap((systemId) => getSystemRuleItems(systemId, ruleset));
+  if (category === "skill") return CORE_SYSTEM_IDS.flatMap((systemId) => getSystemSkillItems(systemId, ruleset));
+  if (category === "action") return CORE_SYSTEM_IDS.flatMap((systemId) => getSystemActionItems(systemId, ruleset));
+  if (category === "condition") return getSystemConditionItems("dnd5e");
+  return [];
+}
+
+function getLocalCacheKey(category: PickerType, systemId = "pf2e", ruleset?: CatalogRuleset): string {
+  return `pb2e_catalog_cache_${getCacheScope(systemId, ruleset)}_${category}`;
 }
 
 /**
@@ -225,6 +247,10 @@ export function normalizeSupabaseRecordToPickerItem(record: CatalogItemRecord, c
   if (record.weapon_group !== undefined) extraData.weaponGroup = record.weapon_group;
   if (record.weapon_category !== undefined) extraData.weaponCategory = record.weapon_category;
   if (record.ac_bonus !== undefined) extraData.acBonus = record.ac_bonus;
+  if (record.action_cost !== undefined) extraData.actionCost = record.action_cost;
+  if (record.action_type !== undefined) extraData.actionType = record.action_type;
+  if (record.has_value !== undefined) extraData.hasValue = record.has_value;
+  if (record.condition_group !== undefined) extraData.conditionGroup = record.condition_group;
   if (record.prerequisite !== undefined) extraData.prerequisites = record.prerequisite;
   if (record.category !== undefined) extraData.category = record.category;
   if (record.ancestry_id) extraData.ancestryId = record.ancestry_id;
@@ -274,17 +300,19 @@ export function getLocalRuntimeItems(category: PickerType): PickerItem[] {
 /**
  * Salva itens no cache local (localStorage).
  */
-function saveToLocalCache(category: PickerType, items: PickerItem[], systemId = "pf2e"): void {
-  if (!inMemoryCache[systemId]) inMemoryCache[systemId] = {};
-  inMemoryCache[systemId][category] = items;
+function saveToLocalCache(category: PickerType, items: PickerItem[], systemId = "pf2e", ruleset?: CatalogRuleset): void {
+  const cacheScope = getCacheScope(systemId, ruleset);
+  if (!inMemoryCache[cacheScope]) inMemoryCache[cacheScope] = {};
+  inMemoryCache[cacheScope][category] = items;
   if (typeof window === "undefined" || !window.localStorage) return;
   try {
     const cachePayload = {
       timestamp: new Date().toISOString(),
       systemId,
+      ruleset,
       items,
     };
-    window.localStorage.setItem(getLocalCacheKey(category, systemId), JSON.stringify(cachePayload));
+    window.localStorage.setItem(getLocalCacheKey(category, systemId, ruleset), JSON.stringify(cachePayload));
   } catch (err) {
     // Pode falhar se quota excedida (ex: 5MB no localStorage)
     console.warn(`[Catalog] Não foi possível gravar cache no localStorage para ${category} (${systemId}):`, err);
@@ -294,16 +322,17 @@ function saveToLocalCache(category: PickerType, items: PickerItem[], systemId = 
 /**
  * Lê itens do cache local (localStorage ou memória).
  */
-function getFromLocalCache(category: PickerType, systemId = "pf2e"): PickerItem[] | null {
-  if (inMemoryCache[systemId]?.[category]) return inMemoryCache[systemId]![category]!;
+function getFromLocalCache(category: PickerType, systemId = "pf2e", ruleset?: CatalogRuleset): PickerItem[] | null {
+  const cacheScope = getCacheScope(systemId, ruleset);
+  if (inMemoryCache[cacheScope]?.[category]) return inMemoryCache[cacheScope]![category]!;
   if (typeof window === "undefined" || !window.localStorage) return null;
   try {
-    const cached = window.localStorage.getItem(getLocalCacheKey(category, systemId));
+    const cached = window.localStorage.getItem(getLocalCacheKey(category, systemId, ruleset));
     if (cached) {
       const parsed = JSON.parse(cached);
       if (Array.isArray(parsed?.items) && parsed.items.length > 0) {
-        if (!inMemoryCache[systemId]) inMemoryCache[systemId] = {};
-        inMemoryCache[systemId][category] = parsed.items;
+        if (!inMemoryCache[cacheScope]) inMemoryCache[cacheScope] = {};
+        inMemoryCache[cacheScope][category] = parsed.items;
         return parsed.items;
       }
     }
@@ -319,9 +348,11 @@ async function fetchRemoteCatalogPage(
   from: number,
   to: number,
   limit?: number,
+  ruleset?: CatalogRuleset,
 ): Promise<{ data: CatalogItemRecord[] | null; error: any }> {
   const baseQuery = supabase!.from(tableName).select("*");
-  const filteredQuery = systemId ? baseQuery.eq("system_id", systemId) : baseQuery;
+  const systemQuery = systemId && systemId !== "all" ? baseQuery.eq("system_id", systemId) : baseQuery;
+  const filteredQuery = ruleset ? systemQuery.eq("ruleset", ruleset) : systemQuery;
   const result = limit !== undefined
     ? await filteredQuery.limit(limit)
     : await filteredQuery.range(from, to);
@@ -329,7 +360,7 @@ async function fetchRemoteCatalogPage(
   // Older deployments predate the multi-system migration. Keep PF2e usable
   // while those deployments are being migrated, without hiding other errors.
   if (result.error && systemId === "pf2e" && /system_id.*does not exist/i.test(result.error.message || "")) {
-    const legacyQuery = supabase!.from(tableName).select("*");
+      const legacyQuery = supabase!.from(tableName).select("*");
     const legacyResult = limit !== undefined
       ? await legacyQuery.limit(limit)
       : await legacyQuery.range(from, to);
@@ -347,9 +378,12 @@ async function fetchRemoteCatalogPage(
  */
 export async function fetchCatalogCategory(
   category: PickerType,
-  options: { forceRemote?: boolean; limit?: number; systemId?: string } = {}
+  options: { forceRemote?: boolean; limit?: number; systemId?: string; ruleset?: CatalogRuleset } = {}
 ): Promise<{ items: PickerItem[]; source: "supabase" | "local_cache" | "local_runtime" }> {
-  const systemId = options.systemId || "pf2e";
+  const systemId = options.systemId ?? "pf2e";
+  if (category === "rule") {
+    return { items: systemId === "all" ? getCoreFallbackItems(category, options.ruleset) : getSystemRuleItems(systemId, options.ruleset), source: "local_runtime" };
+  }
   const tableName = PICKER_TYPE_TO_TABLE[category];
 
   // 1. Prioridade absoluta: Supabase remoto
@@ -359,7 +393,7 @@ export async function fetchCatalogCategory(
       const PAGE_SIZE = 1000;
 
       if (options.limit && options.limit <= PAGE_SIZE) {
-        const { data, error } = await fetchRemoteCatalogPage(tableName, systemId, 0, options.limit - 1, options.limit);
+        const { data, error } = await fetchRemoteCatalogPage(tableName, systemId, 0, options.limit - 1, options.limit, options.ruleset);
         if (!error && Array.isArray(data) && data.length > 0) {
           allRecords = data as CatalogItemRecord[];
         }
@@ -368,7 +402,7 @@ export async function fetchCatalogCategory(
         let fetchMore = true;
         while (fetchMore) {
           const to = from + PAGE_SIZE - 1;
-          const { data, error } = await fetchRemoteCatalogPage(tableName, systemId, from, to);
+          const { data, error } = await fetchRemoteCatalogPage(tableName, systemId, from, to, undefined, options.ruleset);
           if (error) {
             console.warn(`[Catalog] Aviso ao buscar registros de ${tableName} [${from}-${to}] (${systemId}):`, error.message);
             break;
@@ -388,7 +422,7 @@ export async function fetchCatalogCategory(
 
       if (allRecords.length > 0) {
         const normalized = allRecords.map((record) => normalizeSupabaseRecordToPickerItem(record, category));
-        saveToLocalCache(category, normalized, systemId);
+        saveToLocalCache(category, normalized, systemId, options.ruleset);
         return { items: normalized, source: "supabase" };
       }
     } catch (err) {
@@ -397,12 +431,13 @@ export async function fetchCatalogCategory(
   }
 
   // Se não estiver forçando busca remota e Supabase estiver indisponível/offline, usa o cache em memória
-  if (inMemoryCache[systemId]?.[category] && inMemoryCache[systemId]![category]!.length > 0) {
-    return { items: inMemoryCache[systemId]![category]!, source: "local_cache" };
+  const cacheScope = getCacheScope(systemId, options.ruleset);
+  if (inMemoryCache[cacheScope]?.[category] && inMemoryCache[cacheScope]![category]!.length > 0) {
+    return { items: inMemoryCache[cacheScope]![category]!, source: "local_cache" };
   }
 
   // Fallback 1: Local storage cache
-  const cached = getFromLocalCache(category, systemId);
+  const cached = getFromLocalCache(category, systemId, options.ruleset);
   if (cached && cached.length > 0) {
     return { items: cached, source: "local_cache" };
   }
@@ -411,10 +446,26 @@ export async function fetchCatalogCategory(
   if (systemId === "pf2e") {
     const runtimeItems = getLocalRuntimeItems(category);
     if (runtimeItems.length > 0) {
-      if (!inMemoryCache[systemId]) inMemoryCache[systemId] = {};
-      inMemoryCache[systemId][category] = runtimeItems;
+      if (!inMemoryCache[cacheScope]) inMemoryCache[cacheScope] = {};
+      inMemoryCache[cacheScope][category] = runtimeItems;
       return { items: runtimeItems, source: "local_runtime" };
     }
+  }
+
+  // Categorias core mantêm um fallback local idempotente até que a migration
+  // correspondente esteja aplicada no projeto Supabase. Quando ela existir,
+  // o bloco remoto acima sempre terá precedência e a origem será "supabase".
+  if (systemId === "all" && ["skill", "action", "condition"].includes(category)) {
+    return { items: getCoreFallbackItems(category, options.ruleset), source: "local_runtime" };
+  }
+  if (category === "skill" && systemId !== "pf2e") {
+    return { items: getSystemSkillItems(systemId, options.ruleset), source: "local_runtime" };
+  }
+  if (category === "action" && systemId !== "pf2e") {
+    return { items: getSystemActionItems(systemId, options.ruleset), source: "local_runtime" };
+  }
+  if (category === "condition" && systemId !== "pf2e") {
+    return { items: getSystemConditionItems(systemId), source: "local_runtime" };
   }
 
   return { items: [], source: "local_runtime" };
@@ -423,10 +474,10 @@ export async function fetchCatalogCategory(
 /**
  * Busca todas as 18 categorias do catálogo em paralelo/lotes no Supabase.
  */
-export async function fetchAllCatalogCategories(systemId = "pf2e"): Promise<Record<PickerType, PickerItem[]>> {
+export async function fetchAllCatalogCategories(systemId = "pf2e", ruleset?: CatalogRuleset): Promise<Record<PickerType, PickerItem[]>> {
   const categories: PickerType[] = [
     "ancestry", "heritage", "class", "subclass", "background", "archetype",
-    "spell", "ritual", "feat", "item", "weapon", "armor", "shield",
+    "skill", "rule", "spell", "ritual", "feat", "item", "weapon", "armor", "shield",
     "formula", "pet", "action", "condition", "buff"
   ];
   const results: Partial<Record<PickerType, PickerItem[]>> = {};
@@ -436,7 +487,7 @@ export async function fetchAllCatalogCategories(systemId = "pf2e"): Promise<Reco
     const batch = categories.slice(i, i + BATCH_SIZE);
     await Promise.all(
       batch.map(async (cat) => {
-        const res = await fetchCatalogCategory(cat, { systemId });
+          const res = await fetchCatalogCategory(cat, { systemId, ruleset });
         results[cat] = res.items;
       })
     );
@@ -450,7 +501,7 @@ export async function fetchAllCatalogCategories(systemId = "pf2e"): Promise<Reco
 export async function fetchCatalogTableCounts(): Promise<Record<CatalogTableName, number> | null> {
   if (!isSupabaseConfigured || !supabase) return null;
   const client = supabase;
-  const tables = Object.values(PICKER_TYPE_TO_TABLE);
+  const tables = Object.values(PICKER_TYPE_TO_TABLE).filter(Boolean) as CatalogTableName[];
   const uniqueTables = [...new Set(tables)];
   const counts: Partial<Record<CatalogTableName, number>> = {};
 

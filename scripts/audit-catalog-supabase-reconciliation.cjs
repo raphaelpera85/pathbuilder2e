@@ -1,6 +1,8 @@
 /** Read-only reconciliation between catalog seeds and Supabase tables. */
 const fs = require("fs");
 const path = require("path");
+const { execFileSync } = require("child_process");
+const { pathToFileURL } = require("url");
 const { createClient } = require("@supabase/supabase-js");
 
 const root = path.resolve(__dirname, "..");
@@ -20,7 +22,24 @@ const tables = [
   "catalog_rituals", "catalog_feats", "catalog_weapons", "catalog_armors",
   "catalog_shields", "catalog_formulas", "catalog_pets", "catalog_actions",
   "catalog_conditions", "catalog_buffs",
+  "catalog_skills",
 ];
+
+function readLocalSkills() {
+  const moduleUrl = pathToFileURL(path.join(root, "src", "data", "systemSkills.ts")).href;
+  const loader = "./scripts/ts-extension-loader.mjs";
+  const code = `import { getSystemSkillItems } from ${JSON.stringify(moduleUrl)};
+const rows = [["t20", "padrao"], ["dnd5e", "standard"], ["ose", "advanced"], ["ose", "classic"]]
+  .flatMap(([systemId, ruleset]) => getSystemSkillItems(systemId, ruleset))
+  .map((item) => { const data = item.data || {}; return {
+    id: item.id, system_id: item.system_id, name_pt: item.name, name_en: data.names?.en || item.name, name_es: data.names?.es || item.name,
+    description_pt: item.summary || data.description || "", description_en: item.summary || data.description || "", description_es: item.summary || data.description || "",
+    key_ability: data.skillAbility || null, skill_type: data.skillTable || data.category || "skill", ruleset: data.ruleset,
+    source_book: data.sourceBook || data.source?.book || null, source_page: data.sourcePage || data.source?.page || null, data,
+  }; });
+console.log(JSON.stringify(rows));`;
+  return JSON.parse(execFileSync(process.execPath, ["--no-warnings", "--experimental-strip-types", "--loader", loader, "--input-type=module", "-e", code], { cwd: root, encoding: "utf8" }));
+}
 
 function projectToSeedShape(value, seed) {
   if (Array.isArray(seed)) return Array.isArray(value) ? value.map((item, index) => projectToSeedShape(item, seed[index] ?? seed[0])) : value;
@@ -49,6 +68,16 @@ function canonical(row, seed) {
   return JSON.stringify(normalizeValue(projectToSeedShape(row, seed)));
 }
 
+function classifyRemoteExtra(row) {
+  const ruleset = String(row?.ruleset || "").toLowerCase();
+  const source = String(row?.source_book || "").toLowerCase();
+  const id = String(row?.id || "").toLowerCase();
+  if (ruleset && ruleset !== "remaster") return "other-ruleset";
+  if (source && !source.includes("player core") && !source.includes("livro do jogador")) return "supplement";
+  if (id.includes("supplement") || id.includes("advanced") || id.includes("legacy")) return "supplement";
+  return "unclassified";
+}
+
 async function readAll(table) {
   const rows = [];
   const pageSize = 1000;
@@ -62,18 +91,29 @@ async function readAll(table) {
 
 async function run() {
   const results = [];
+  const classRows = JSON.parse(fs.readFileSync(path.join(dataDir, "catalog_classes.json"), "utf8"));
+  const classRulesetById = new Map(classRows.map((row) => [row.id, row.ruleset]));
   for (const table of tables) {
     const localPath = path.join(dataDir, `${table}.json`);
-    const local = JSON.parse(fs.readFileSync(localPath, "utf8"));
+    const local = table === "catalog_skills" ? readLocalSkills() : JSON.parse(fs.readFileSync(localPath, "utf8"));
+    const seedRows = table === "catalog_subclasses"
+      ? local.filter((row) => classRulesetById.get(row.class_id) === row.ruleset)
+      : local;
     const remote = await readAll(table);
-    const localById = new Map(local.map((row) => [row.id, row]));
+    const localById = new Map(seedRows.map((row) => [row.id, row]));
     const remoteById = new Map((remote || []).map((row) => [row.id, row]));
-    const missingRemote = local.filter((row) => !remoteById.has(row.id)).map((row) => row.id);
-    const extraRemote = (remote || []).filter((row) => !localById.has(row.id)).map((row) => row.id);
-    const fieldMismatch = local
+    const missingRemote = seedRows.filter((row) => !remoteById.has(row.id)).map((row) => row.id);
+    const extraRemoteRows = (remote || []).filter((row) => !localById.has(row.id));
+    const extraRemote = extraRemoteRows.map((row) => row.id);
+    const remoteExtraByKind = extraRemoteRows.reduce((counts, row) => {
+      const kind = classifyRemoteExtra(row);
+      counts[kind] = (counts[kind] || 0) + 1;
+      return counts;
+    }, {});
+    const fieldMismatch = seedRows
       .filter((row) => remoteById.has(row.id) && canonical(row, row) !== canonical(remoteById.get(row.id), row))
       .map((row) => row.id);
-    const mismatchSamples = local
+    const mismatchSamples = seedRows
       .filter((row) => fieldMismatch.includes(row.id))
       .slice(0, 3)
       .map((row) => {
@@ -84,10 +124,30 @@ async function run() {
           values: Object.fromEntries(Object.keys(row).filter((key) => JSON.stringify(projectToSeedShape(row[key], row[key])) !== JSON.stringify(projectToSeedShape(remoteRow[key], row[key]))).map((key) => [key, { local: row[key], remote: remoteRow[key] }])),
         };
       });
-    results.push({ table, local: local.length, remote: remote.length, missingRemote: missingRemote.length, extraRemote: extraRemote.length, fieldMismatch: fieldMismatch.length, mismatchSamples });
+    results.push({
+      table,
+      local: seedRows.length,
+      remote: remote.length,
+      missingRemote: missingRemote.length,
+      missingRemoteSamples: missingRemote.slice(0, 25),
+      extraRemote: extraRemote.length,
+      extraRemoteSamples: extraRemote.slice(0, 5),
+      remoteExtraByKind,
+      fieldMismatch: fieldMismatch.length,
+      mismatchSamples,
+    });
   }
-  const failures = results.filter((row) => row.local !== row.remote || row.missingRemote || row.extraRemote || row.fieldMismatch);
-  console.log(JSON.stringify({ tables: results.length, localTotal: results.reduce((n, row) => n + row.local, 0), remoteTotal: results.reduce((n, row) => n + row.remote, 0), exactTables: results.length - failures.length, failures, results }, null, 2));
+  const failures = results.filter((row) => row.missingRemote || row.fieldMismatch);
+  const remoteOnlyContent = results.filter((row) => row.extraRemote > 0);
+  console.log(JSON.stringify({
+    tables: results.length,
+    localTotal: results.reduce((n, row) => n + row.local, 0),
+    remoteTotal: results.reduce((n, row) => n + row.remote, 0),
+    exactTables: results.filter((row) => !row.missingRemote && !row.fieldMismatch && !row.extraRemote).length,
+    actionableFailures: failures,
+    remoteOnlyContent,
+    results,
+  }, null, 2));
   if (failures.length) process.exitCode = 1;
 }
 

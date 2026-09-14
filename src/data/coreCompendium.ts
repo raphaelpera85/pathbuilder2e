@@ -19,10 +19,10 @@ const sourceBooks = {
   ose: "Old-School Essentials — Tomo do Jogador",
 } as const;
 
-function makeEntry(systemId: "t20" | "dnd5e" | "ose", category: PickerType, value: any, sourcePage = 1, summary?: string): CoreCatalogEntry {
-  const id = String(value.id ?? value.name);
+function makeEntry(systemId: "t20" | "dnd5e" | "ose", category: PickerType, value: any, sourcePage = 1, summary?: string, options?: { ruleset?: string; idSuffix?: string }): CoreCatalogEntry {
+  const id = `${String(value.id ?? value.name)}${options?.idSuffix || ""}`;
   const name = String(value.name ?? id);
-  const ruleset = systemId === "t20" ? "padrao" : systemId === "dnd5e" ? "standard" : "advanced";
+  const ruleset = options?.ruleset || (systemId === "t20" ? "padrao" : systemId === "dnd5e" ? "standard" : "advanced");
   const description = summary ?? value.description ?? value.summary ?? value.traits?.join(" · ") ?? value.qualities?.join(" · ") ?? name;
   return {
     name,
@@ -75,5 +75,14 @@ export function getCoreCompendiumEntries(): CoreCatalogEntry[] {
   OSE_WEAPONS.forEach((value: any) => entries.push(makeEntry("ose", "weapon", value, 94)));
   OSE_ARMORS.forEach((value: any) => entries.push(makeEntry("ose", "armor", value, 96)));
   OSE_GEAR.forEach((value: any) => entries.push(makeEntry("ose", "item", value, 98)));
+
+  // No Classic, a raça é a própria classe para Anão, Elfo e Halfling. Itens
+  // e magias são compartilhados pelo livro, mas recebem IDs próprios para que
+  // o filtro de ruleset não misture registros Advanced e Classic.
+  Object.values(OSE_CLASSES).filter((value: any) => value.isRaceClass).forEach((value: any) => entries.push(makeEntry("ose", "class", value, 28, undefined, { ruleset: "classic", idSuffix: "_classic" })));
+  OSE_SPELLS.forEach((value: any) => entries.push(makeEntry("ose", "spell", value, 80, undefined, { ruleset: "classic", idSuffix: "_classic" })));
+  OSE_WEAPONS.forEach((value: any) => entries.push(makeEntry("ose", "weapon", value, 94, undefined, { ruleset: "classic", idSuffix: "_classic" })));
+  OSE_ARMORS.forEach((value: any) => entries.push(makeEntry("ose", "armor", value, 96, undefined, { ruleset: "classic", idSuffix: "_classic" })));
+  OSE_GEAR.forEach((value: any) => entries.push(makeEntry("ose", "item", value, 98, undefined, { ruleset: "classic", idSuffix: "_classic" })));
   return entries;
 }

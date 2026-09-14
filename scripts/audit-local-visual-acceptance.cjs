@@ -25,6 +25,15 @@ async function main() {
         for (const category of categories) {
           await categorySelect.selectOption(category.value, { force: true });
           await page.waitForTimeout(120);
+          // Catalog cards intentionally use lazy images in production. Force the
+          // assets to load during this visual audit so an offscreen card is not
+          // reported as broken merely because the viewport has not reached it.
+          await page.locator(".catalog-card img").evaluateAll((images) => {
+            images.forEach((image) => {
+              image.loading = "eager";
+            });
+          });
+          await page.waitForTimeout(180);
           const result = await page.evaluate(() => {
             const cards = [...document.querySelectorAll(".catalog-card")];
             const failures = [];

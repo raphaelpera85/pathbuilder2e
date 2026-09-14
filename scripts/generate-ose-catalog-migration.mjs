@@ -62,4 +62,33 @@ const migration = "-- Seed idempotente do catálogo OSE local. OSE não usa tale
   spellRows.join(",\\n") + "\\n" + conflict(["name_pt","rank","is_cantrip","is_focus","ruleset","source_book","source_page","data","system_id"]) + "\\n";
 
 fs.writeFileSync(output, migration.replaceAll("\\n", "\n"), "utf8");
-console.log(JSON.stringify({ output, classes: classRows.length, ancestries: ancestryRows.length, items: itemRows.length, spells: spellRows.length }, null, 2));
+
+const classicRuleset = "classic";
+const classicSuffix = "_classic";
+const classicClassRows = Object.values(OSE_CLASSES).filter((entry) => entry.isRaceClass).map((entry) => {
+  const hitDie = Number(String(entry.hitDie).replace("d", "")) || 6;
+  const traits = [entry.allowedArmor, entry.combatCategory, "classe-raça"].filter(Boolean);
+  return "(" + [
+    sql("ose.class." + entry.id + classicSuffix), sql(entry.name), sql(entry.nameEn), sql(entry.description), sql(entry.description),
+    hitDie, textArray(entry.primeRequisites), textArray(traits), sql(classicRuleset), sql(sourceBook), 28, sql({ ...entry, ruleset: classicRuleset }), sql("ose"),
+  ].join(",") + ")";
+});
+const classicItemRows = [
+  ...OSE_WEAPONS.map((entry) => "(" + [sql("ose.weapon." + entry.id + classicSuffix), sql(entry.name), sql("weapon"), sql(classicRuleset), sql(sourceBook), 94, sql({ ...entry, system_id: "ose", ruleset: classicRuleset }), sql("ose")].join(",") + ")"),
+  ...OSE_ARMORS.map((entry) => "(" + [sql("ose.armor." + entry.id + classicSuffix), sql(entry.name), sql("worn"), sql(classicRuleset), sql(sourceBook), 96, sql({ ...entry, system_id: "ose", ruleset: classicRuleset }), sql("ose")].join(",") + ")"),
+  ...OSE_GEAR.map((entry) => "(" + [sql("ose.gear." + entry.id + classicSuffix), sql(entry.name), sql("gear"), sql(classicRuleset), sql(sourceBook), 97, sql({ ...entry, system_id: "ose", ruleset: classicRuleset }), sql("ose")].join(",") + ")"),
+];
+const classicSpellRows = OSE_SPELLS.map((entry) => "(" + [
+  sql("ose.spell." + entry.id + classicSuffix), sql(entry.name), sql(entry.circle), "FALSE", "FALSE", sql(classicRuleset), sql(sourceBook), 128,
+  sql({ ...entry, system_id: "ose", ruleset: classicRuleset }), sql("ose"),
+].join(",") + ")");
+const classicOutput = path.join(root, "supabase/migrations/202609130041_seed_ose_classic_catalog.sql");
+const classicMigration = "-- Seed idempotente do catálogo OSE Classic. Classes raciais, itens e magias.\\n" +
+  "insert into public.catalog_classes\\n(id,name_pt,name_en,description_pt,description_en,hp_per_level,key_attributes,traits,ruleset,source_book,source_page,data,system_id) values\\n" +
+  classicClassRows.join(",\\n") + "\\n" + conflict(["name_pt","name_en","description_pt","description_en","hp_per_level","key_attributes","traits","ruleset","source_book","source_page","data","system_id"]) + "\\n\\n" +
+  "insert into public.catalog_items\\n(id,name_pt,item_category,ruleset,source_book,source_page,data,system_id) values\\n" +
+  classicItemRows.join(",\\n") + "\\n" + conflict(["name_pt","item_category","ruleset","source_book","source_page","data","system_id"]) + "\\n\\n" +
+  "insert into public.catalog_spells\\n(id,name_pt,rank,is_cantrip,is_focus,ruleset,source_book,source_page,data,system_id) values\\n" +
+  classicSpellRows.join(",\\n") + "\\n" + conflict(["name_pt","rank","is_cantrip","is_focus","ruleset","source_book","source_page","data","system_id"]) + "\\n";
+fs.writeFileSync(classicOutput, classicMigration.replaceAll("\\n", "\n"), "utf8");
+console.log(JSON.stringify({ output, classes: classRows.length, ancestries: ancestryRows.length, items: itemRows.length, spells: spellRows.length, classicOutput, classicClasses: classicClassRows.length, classicItems: classicItemRows.length, classicSpells: classicSpellRows.length }, null, 2));

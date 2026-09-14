@@ -117,7 +117,8 @@ describe("Catálogos de criação por sistema", () => {
     const t20SpellsWithEffects = T20_SPELLS.filter((entry) => !/^(arcana|divina|universal|essencia) \d+º círculo ·/.test(entry.summary));
     expect(t20SpellsWithEffects.length).toBe(66);
     expect(T20_SPELLS.find((entry) => entry.id === "t20.magia.bola_de_fogo")?.summary).toContain("6d6");
-    expect(T20_SPELLS.filter((entry) => entry.castingTime && entry.range && entry.duration).length).toBeGreaterThanOrEqual(13);
+    expect(T20_SPELLS.filter((entry) => entry.castingTime && entry.range && entry.duration)).toHaveLength(T20_SPELLS.length);
+    expect(T20_SPELLS.filter((entry) => !entry.target && !entry.area)).toEqual([]);
     expect(formatT20SpellDetails(T20_SPELLS.find((entry) => entry.id === "t20.magia.desintegrar")!)).toContain("Fortitude parcial");
     expect(T20_CLASS_PROGRESSIONS.find((entry) => entry.classId === "guerreiro")?.powerLevels).toHaveLength(19);
   });
@@ -165,7 +166,7 @@ describe("Catálogos de criação por sistema", () => {
     expect(DND5E_EQUIPMENT.find((entry) => entry.id === "dnd5e.equipamento.pocao_de_cura")?.cost).toBe("50 po");
     expect(DND5E_EQUIPMENT.find((entry) => entry.id === "dnd5e.equipamento.kit_de_escalada")?.sourcePage).toBe(154);
     expect(DND5E_EQUIPMENT.find((entry) => entry.id === "dnd5e.equipamento.balanca_de_comerciante")?.weight).toBe(3);
-    expect(DND5E_EQUIPMENT).toHaveLength(206);
+    expect(DND5E_EQUIPMENT).toHaveLength(226);
     expect(DND5E_EQUIPMENT.find((entry) => entry.id === "dnd5e.equipamento.cavalo_guerra")?.cost).toBe("400 po");
     expect(DND5E_EQUIPMENT.find((entry) => entry.id === "dnd5e.equipamento.foco_bastao")?.cost).toBe("10 po");
     expect(DND5E_EQUIPMENT.find((entry) => entry.id === "dnd5e.equipamento.ferramentas_ferreiro")?.sourcePage).toBe(156);
@@ -174,12 +175,28 @@ describe("Catálogos de criação por sistema", () => {
     expect(T20_EQUIPMENT.find((entry) => entry.id === "t20.equipamento.corda")?.cost).toBe("T$ 1");
     expect(T20_EQUIPMENT.filter((entry) => entry.id.startsWith("t20.municao."))).toHaveLength(4);
     expect(T20_EQUIPMENT.find((entry) => entry.id === "t20.municao.virotes")?.summary).toContain("pacote com 20");
+    expect(T20_EQUIPMENT.find((entry) => entry.id === "t20.arma.arco_curto")).toMatchObject({ critical: "x3", range: "médio (30m)", ammunitionType: "flecha" });
+    expect(T20_EQUIPMENT.find((entry) => entry.id === "t20.arma.cimitarra")?.weaponProperties).toContain("ágil");
+    expect(T20_EQUIPMENT.find((entry) => entry.id === "t20.arma.mosquete")).toMatchObject({ critical: "19/x3", ammunitionType: "municao" });
+    const t20MagicItems = T20_EQUIPMENT.filter((entry) => entry.magical === true);
+    expect(t20MagicItems).toHaveLength(38);
+    expect(t20MagicItems.every((entry) => ["equipamento", "arma"].includes(entry.category) && entry.magicCategory && entry.cost && entry.magicEffects?.length)).toBe(true);
+    expect(T20_EQUIPMENT.find((entry) => entry.id === "t20.item_magico.anel_protecao")).toMatchObject({ magicCategory: "menor", cost: "T$ 3.000" });
+    expect(T20_EQUIPMENT.find((entry) => entry.id === "t20.item_magico.anel_regeneracao")).toMatchObject({ magicCategory: "maior", cost: "T$ 50.000" });
+    expect(T20_EQUIPMENT.find((entry) => entry.id === "t20.arma_magica.vingadora_sagrada")).toMatchObject({ magicCategory: "especifica", cost: "T$ 100.000", category: "arma" });
     expect(DND5E_EQUIPMENT.filter((entry) => entry.id.startsWith("dnd5e.municao."))).toHaveLength(4);
     expect(DND5E_EQUIPMENT.find((entry) => entry.id === "dnd5e.municao.balas_funda")?.cost).toBe("4 pc");
     expect(DND5E_EQUIPMENT.find((entry) => entry.id === "dnd5e.arma.zarabatana")?.cost).toBe("10 po");
     expect(DND5E_EQUIPMENT.find((entry) => entry.id === "dnd5e.arma.arco_curto")).toMatchObject({ range: "24/96m", ammunitionType: "flecha", weaponProperties: ["munição", "duas mãos"] });
+    expect(DND5E_EQUIPMENT.find((entry) => entry.id === "dnd5e.arma.espada_grande")).toMatchObject({ weaponProperties: ["pesada", "duas mãos"] });
+    expect(DND5E_EQUIPMENT.find((entry) => entry.id === "dnd5e.arma.espada_longa")).toMatchObject({ weaponProperties: ["versátil"] });
+    expect(DND5E_EQUIPMENT.find((entry) => entry.id === "dnd5e.arma.clava")).toMatchObject({ weaponProperties: ["leve"] });
     expect(DND5E_EQUIPMENT.find((entry) => entry.id === "dnd5e.arma.besta_leve")).toMatchObject({ range: "24/96m", ammunitionType: "virote", weaponProperties: ["munição", "recarga", "duas mãos"] });
     expect(new Set(DND5E_EQUIPMENT.map((entry) => entry.id)).size).toBe(DND5E_EQUIPMENT.length);
+    const dnd5eMagicItems = DND5E_EQUIPMENT.filter((entry) => entry.magical === true);
+    expect(dnd5eMagicItems).toHaveLength(20);
+    expect(dnd5eMagicItems.every((entry) => entry.magicCategory && entry.rarity && entry.magicEffects?.length)).toBe(true);
+    expect(DND5E_EQUIPMENT.find((entry) => entry.id === "dnd5e.item_magico.anelprotecao")).toMatchObject({ magicCategory: "medio", rarity: "raro" });
     expect(DND5E_SPELLS.length).toBeGreaterThan(35);
     expect(DND5E_FEATS.length).toBeGreaterThan(35);
     expect(DND5E_FEATS.find((entry) => entry.id === "dnd5e.talento.sortudo")?.minimumLevel).toBe(4);
@@ -187,7 +204,14 @@ describe("Catálogos de criação por sistema", () => {
     expect(DND5E_CLASS_PROGRESSIONS.find((entry) => entry.classId === "mago")?.featuresByLevel[4]).toContain("Aumento de Atributo ou Talento");
     expect(DND5E_CLASS_PROGRESSIONS.find((entry) => entry.classId === "barbaro")?.featuresByLevel[5]).toContain("Ataque Extra");
     expect(DND5E_CLASS_PROGRESSIONS.find((entry) => entry.classId === "ladino")?.featuresByLevel[7]).toContain("Evasão");
-    expect(T20_CLASS_PROGRESSIONS.find((entry) => entry.classId === "guerreiro")?.featuresByLevel[4]).toContain("Poder de classe");
+    expect(T20_CLASS_PROGRESSIONS.find((entry) => entry.classId === "guerreiro")?.featuresByLevel[4]).toContain("Poder de Guerreiro");
+    expect(T20_CLASS_PROGRESSIONS).toHaveLength(14);
+    for (const progression of T20_CLASS_PROGRESSIONS) {
+      expect(Object.keys(progression.featuresByLevel)).toHaveLength(20);
+      expect(progression.featuresByLevel[1].length).toBeGreaterThan(0);
+      expect(progression.sourcePage).toBeGreaterThanOrEqual(37);
+      expect(Object.values(progression.featuresByLevel).flat().every((feature) => feature !== "Poder de classe")).toBe(true);
+    }
     expect(DND5E_SUBRACES.filter((entry) => entry.raceId === "elfo")).toHaveLength(3);
     expect(DND5E_SUBCLASSES.filter((entry) => entry.classId === "mago")).toHaveLength(8);
     expect(DND5E_SUBCLASSES).toHaveLength(40);
@@ -196,6 +220,22 @@ describe("Catálogos de criação por sistema", () => {
     expect(DND5E_SUBCLASSES.filter((entry) => entry.choices.length > 0).length).toBeGreaterThanOrEqual(7);
     expect(getAvailableCoreSpells("dnd5e", "mago", 1).map((entry) => entry.id)).toContain("dnd5e.magia.misseis_magicos");
     expect(getAvailableCoreSpells("dnd5e", "guerreiro", 1)).toHaveLength(0);
+    const magicInitiateFighter = createInitialCoreCharacter("dnd5e");
+    magicInitiateFighter.classId = "guerreiro";
+    magicInitiateFighter.featIds = ["dnd5e.talento.iniciado_em_magia"];
+    magicInitiateFighter.featChoices = {
+      "magic-initiate-class": ["Mago"],
+      "magic-initiate-cantrips": ["Luz", "Raio de Fogo"],
+      "magic-initiate-spell": ["Alarme"],
+    };
+    const magicInitiateSpells = getAvailableCoreSpells("dnd5e", "guerreiro", 1, magicInitiateFighter);
+    expect(magicInitiateSpells.map((entry) => entry.id)).toEqual(expect.arrayContaining([
+      "dnd5e.magia.luz",
+      "dnd5e.magia.raio_de_fogo",
+      "dnd5e.magia.alarme",
+    ]));
+    const ritualCasterFighter = { ...magicInitiateFighter, featIds: ["dnd5e.talento.conjurador_de_rituais"], featChoices: { "ritual-caster-class": ["Mago"], "ritual-caster-spells": ["Alarme", "Detectar Magia"] } };
+    expect(getAvailableCoreSpells("dnd5e", "guerreiro", 1, ritualCasterFighter).map((entry) => entry.id)).toEqual(expect.arrayContaining(["dnd5e.magia.alarme", "dnd5e.magia.detectar_magia"]));
     expect(getAvailableCoreSpells("dnd5e", "mago", 1).some((entry) => entry.id === "dnd5e.magia.amizade")).toBe(true);
     expect(getAvailableCoreSpells("dnd5e", "mago", 3).some((entry) => entry.id === "dnd5e.magia.teia")).toBe(true);
     expect(getAvailableCoreSpells("dnd5e", "paladino", 5).some((entry) => entry.id === "dnd5e.magia.arma_magica")).toBe(false);
@@ -214,6 +254,15 @@ describe("Catálogos de criação por sistema", () => {
     expect(T20_SPELLS.every((entry) => !entry.classIds?.includes("paladino"))).toBe(true);
     expect(getAvailableCoreSpells("t20", "bardo", 5).some((entry) => entry.spellLevel === 2)).toBe(false);
     expect(getAvailableCoreSpells("t20", "bardo", 6).some((entry) => entry.spellLevel === 2)).toBe(true);
+    const bard = createInitialCoreCharacter("t20");
+    bard.classId = "bardo";
+    bard.level = 6;
+    bard.classChoices = { "t20-bardo-schools": ["Evocação", "Encantamento", "Ilusão"] };
+    const bardSpells = getAvailableCoreSpells("t20", "bardo", 6, bard);
+    expect(bardSpells.length).toBeGreaterThan(0);
+    expect(bardSpells.every((entry) => ["Evocação", "Encantamento", "Ilusão"].includes(entry.school || ""))).toBe(true);
+    expect(bardSpells.some((entry) => entry.name === "Amedrontar")).toBe(true);
+    expect(bardSpells.some((entry) => entry.name === "Invisibilidade")).toBe(true);
   });
 
   it("filtra talentos D&D por pré-requisito de atributo e conjuração", () => {
@@ -450,6 +499,10 @@ describe("Catálogos de criação por sistema", () => {
       expect(catalog.spells.every((entry) => entry.id.startsWith(`${system}.`))).toBe(true);
       expect(catalog.feats.every((entry) => entry.id.startsWith(`${system}.`))).toBe(true);
       expect(system === "t20" ? T20_DEITIES.every((deity) => deity.id.length > 0) : true).toBe(true);
+      if (system === "t20") {
+        expect(T20_DEITIES).toHaveLength(20);
+        expect(T20_DEITIES.every((deity) => deity.channelEnergy && deity.preferredWeapon && deity.sacredSymbol && deity.obligations && deity.grantedPowers?.length)).toBe(true);
+      }
       expect([...equipmentIds].every((id) => id.startsWith(`${system}.`))).toBe(true);
       expect([...spellIds].every((id) => id.startsWith(`${system}.`))).toBe(true);
       expect([...featIds].every((id) => id.startsWith(`${system}.`))).toBe(true);

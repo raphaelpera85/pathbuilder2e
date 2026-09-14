@@ -18,7 +18,10 @@
       const route = (window.location.hash.match(/^#\/([^/?#]+)/) || [])[1] || "builder";
       const onBuilder = route === "builder";
       document.documentElement.dataset.initialRoute = route;
-      if (!onBuilder) document.body.classList.add("portal-page-active");
+      if (!onBuilder) {
+        document.body.classList.add("portal-page-active");
+        document.documentElement.classList.add("portal-page-active");
+      }
       window.addEventListener("DOMContentLoaded", () => {
         document.getElementById("legacy-builder-root")?.toggleAttribute("hidden", onBuilder === false);
         document.getElementById("topCharTab")?.toggleAttribute("hidden", onBuilder === false);
