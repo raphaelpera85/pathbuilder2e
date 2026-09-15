@@ -357,6 +357,8 @@ Este é o backlog executável para transformar o construtor atual em uma platafo
   - Progresso: o seletor de sistemas e o wizard OSE agora associam título ao diálogo, movem/devolvem o foco, contêm Tab e mantêm Escape/bloqueio de rolagem; o wizard/ficha core já têm mensagens `role=alert`; ainda falta auditar todos os campos e estados de carregamento.
   - Correção adicional: estados de carregamento do compêndio, biblioteca, personagens e portal agora usam `role=status`, `aria-live=polite` e `aria-busy=true` enquanto aguardam dados.
   - Auditoria visual adicional: `npm run audit:local:responsive` passou em 10 tamanhos para construtor e compêndio; `npm run audit:visual:acceptance` passou em 75 combinações de idioma/tamanho/categoria e 9.112 cards, incluindo 320×568. Os comandos foram registrados no `package.json`.
+  - Progresso de rótulos (2026-09-15): o wizard OSE passou a associar nomes acessíveis aos campos sem rótulo programático — os seis atributos numéricos (aria-label por atributo), nome do personagem, alinhamento ético e perícia secundária — alinhando-se ao padrão de `aria-label` já usado no construtor core. TypeScript, suíte completa (57 arquivos/1024 testes) e os testes OSE passaram; restam foco/teclado, `aria-live` e estados de carregamento das telas legadas e a auditoria WCAG integral.
+  - Progresso de rótulos na ficha OSE (2026-09-15): `OseCharacterSheet` passou a dar nome acessível aos dois campos editáveis antes sem associação programática — nome do personagem (`aria-label`) e pontos de vida atuais (`aria-label`) — mantendo o mesmo padrão do wizard. TypeScript, testes OSE (19) e a suíte completa (57 arquivos/1024 testes) passaram.
 
 ## Fase 4 — Supabase e sincronização
 

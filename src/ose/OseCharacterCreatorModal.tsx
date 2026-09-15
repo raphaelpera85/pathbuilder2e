@@ -553,6 +553,7 @@ export function OseCharacterCreatorModal({
                           min={3}
                           max={18}
                           value={val}
+                          aria-label={`${labels[stat]}`}
                           onChange={(e) =>
                             setAbilities((prev) => ({
                               ...prev,
@@ -688,6 +689,7 @@ export function OseCharacterCreatorModal({
                   <input
                     type="text"
                     value={charName}
+                    aria-label="Nome do personagem"
                     onChange={(e) => setCharName(e.target.value)}
                     style={{
                       width: "100%",
@@ -708,6 +710,7 @@ export function OseCharacterCreatorModal({
                   </label>
                   <select
                     value={alignment}
+                    aria-label="Alinhamento ético"
                     onChange={(e) => setAlignment(e.target.value as OseAlignment)}
                     style={{
                       width: "100%",
@@ -788,6 +791,7 @@ export function OseCharacterCreatorModal({
                   <input
                     type="text"
                     value={secondarySkill}
+                    aria-label="Perícia secundária / profissão"
                     onChange={(e) => setSecondarySkill(e.target.value)}
                     style={{
                       padding: "6px 10px",

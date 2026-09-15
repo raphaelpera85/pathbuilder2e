@@ -94,29 +94,97 @@ function savePendingCampaigns(gmId: string, items: Campaign[]): void {
   }
 }
 
+/**
+ * Relógio injetável para viabilizar testes de backoff sem esperar tempo real.
+ * A produção usa Date.now(); os testes sobrescrevem `syncClock.now`.
+ */
+export const syncClock = { now: (): number => Date.now() };
+
+function getCampaignRetriesKey(gmId: string): string {
+  return `pf2e_gm_${gmId}_campaign_retries_v1`;
+}
+
+interface CampaignRetryMeta {
+  attempt: number;
+  lastAttemptAt: number;
+}
+
+function getCampaignRetries(gmId: string): Record<string, CampaignRetryMeta> {
+  try {
+    const raw = localStorage.getItem(getCampaignRetriesKey(gmId));
+    const parsed = raw ? JSON.parse(raw) : {};
+    return parsed && typeof parsed === "object" ? (parsed as Record<string, CampaignRetryMeta>) : {};
+  } catch {
+    return {};
+  }
+}
+
+function saveCampaignRetries(gmId: string, retries: Record<string, CampaignRetryMeta>): void {
+  try {
+    if (Object.keys(retries).length) localStorage.setItem(getCampaignRetriesKey(gmId), JSON.stringify(retries));
+    else localStorage.removeItem(getCampaignRetriesKey(gmId));
+  } catch (err) {
+    console.warn("Não foi possível guardar o histórico de tentativas de sincronização:", err);
+  }
+}
+
+/** Backoff exponencial em ms: 30s, 1min, 2min, ... até o teto de 15min. */
+function backoffDelayMs(attempt: number): number {
+  const attempts = Math.max(1, attempt);
+  return Math.min(30_000 * 2 ** (attempts - 1), 15 * 60_000);
+}
+
+/** Quantidade de campanhas aguardando sincronização remota para o GM. */
+export function getPendingCampaignCount(gmId: string): number {
+  return getPendingCampaigns(gmId).length;
+}
+
 function queuePendingCampaign(gmId: string, campaign: Campaign): void {
   const pending = getPendingCampaigns(gmId).filter((item) => item.id !== campaign.id);
   savePendingCampaigns(gmId, [campaign, ...pending]);
+  // O salvamento direto que falhou já foi uma tentativa; registra o instante
+  // para que o primeiro flush respeite o backoff em vez de repetir na hora.
+  const retries = getCampaignRetries(gmId);
+  retries[campaign.id] = { attempt: 1, lastAttemptAt: syncClock.now() };
+  saveCampaignRetries(gmId, retries);
 }
 
 async function flushPendingCampaigns(activeUser: UserProfile): Promise<void> {
   if (!isSupabaseConfigured || !supabase) return;
   const pending = getPendingCampaigns(activeUser.id);
   if (!pending.length) return;
+  const retries = getCampaignRetries(activeUser.id);
+  const now = syncClock.now();
   const remaining: Campaign[] = [];
   for (const campaign of pending) {
+    const meta = retries[campaign.id];
+    // Respeita o backoff: uma campanha recém-tentada só volta à nuvem depois
+    // que a janela exponencial passou, evitando repetir em loop um item que
+    // ainda falha (ex.: erro de validação permanente).
+    if (meta && now - meta.lastAttemptAt < backoffDelayMs(meta.attempt)) {
+      remaining.push(campaign);
+      continue;
+    }
+    const nextAttempt = (meta?.attempt ?? 0) + 1;
     try {
       const { data, error } = await withRequestTimeout(supabase
         .from("campaigns")
         .upsert({ ...campaign, gm_id: activeUser.id }, { onConflict: "id" })
         .select()
         .single(), 8_000, "A sincronização da campanha pendente demorou para responder.");
-      if (error || !data) remaining.push(campaign);
+      if (error || !data) {
+        retries[campaign.id] = { attempt: nextAttempt, lastAttemptAt: now };
+        remaining.push(campaign);
+      } else {
+        delete retries[campaign.id];
+      }
     } catch {
+      retries[campaign.id] = { attempt: nextAttempt, lastAttemptAt: now };
       remaining.push(campaign);
     }
   }
   savePendingCampaigns(activeUser.id, remaining);
+  saveCampaignRetries(activeUser.id, retries);
 }
 
 function normalizeCampaignSystem(value: string | undefined): string {
@@ -231,6 +299,9 @@ export async function saveCampaignWithStatus(
         const existing = getLocalCampaigns(activeUser.id).filter((campaign) => campaign.id !== saved.id);
         saveLocalCampaigns(activeUser.id, [saved, ...existing]);
         savePendingCampaigns(activeUser.id, getPendingCampaigns(activeUser.id).filter((campaign) => campaign.id !== saved.id));
+        const retries = getCampaignRetries(activeUser.id);
+        delete retries[saved.id];
+        saveCampaignRetries(activeUser.id, retries);
         return { data: saved, source: "supabase" };
       }
     } catch (err) {

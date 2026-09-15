@@ -157,6 +157,7 @@ export function OseCharacterSheet({
           <label>Nome do Personagem</label>
           <input
             value={char.name}
+            aria-label="Nome do personagem"
             onChange={(e) => {
               const updated = { ...char, name: e.target.value };
               setChar(updated);
@@ -277,6 +278,7 @@ export function OseCharacterSheet({
                 <input
                   type="number"
                   value={char.currentHp}
+                  aria-label="Pontos de vida atuais"
                   onChange={(e) => {
                     const next = { ...char, currentHp: parseInt(e.target.value) || 0 };
                     setChar(next);

@@ -8,6 +8,7 @@ import {
   removeCharacterFromCampaignWithStatus,
   addSessionLogWithStatus,
   subscribeToCampaign,
+  getPendingCampaignCount,
   type Campaign,
   type Combatant,
   type CampaignSession,
@@ -35,6 +36,7 @@ export function CampaignsPage() {
   const [loadError, setLoadError] = useState(false);
   const [campaignSyncSource, setCampaignSyncSource] = useState<CampaignSyncSource>("local");
   const [campaignSyncWarning, setCampaignSyncWarning] = useState(false);
+  const [pendingSyncCount, setPendingSyncCount] = useState(0);
   const [sessionReady, setSessionReady] = useState(false);
   const authEpochRef = useRef(0);
   const [inspectedChar, setInspectedChar] = useState<CloudCharacter | null>(null);
@@ -82,12 +84,17 @@ export function CampaignsPage() {
     const result = await saveCampaignWithStatus(data, session.user);
     setCampaignSyncSource(result.source);
     setCampaignSyncWarning(Boolean(result.error));
+    setPendingSyncCount(getPendingCampaignCount(session.user.id));
     return result.data;
   };
 
   const applyCampaignSyncResult = <T,>(result: CampaignSyncResult<T>): void => {
     setCampaignSyncSource(result.source);
     setCampaignSyncWarning(Boolean(result.error));
+  };
+
+  const updatePendingSyncCount = (userId: string): void => {
+    setPendingSyncCount(getPendingCampaignCount(userId));
   };
 
   const refreshData = async (knownSession?: AuthSession | null) => {

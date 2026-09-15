@@ -488,7 +488,10 @@ function CatalogPage() {
     {isCatalogLoading && entries.length === 0 ? <div className="portal-empty" role="status" aria-live="polite" aria-busy="true">{t("loadingCatalog")}</div>
       : catalogLoadFailed && entries.length === 0 ? <div className="portal-empty" role="alert"><p>{t("catalogLoadFailed")}</p><button type="button" onClick={handleManualSync} disabled={isSyncing}>{t("retry")}</button></div>
       : filtered.length === 0 ? <div className="portal-empty">{hasHiddenCatalogMatches && <p className="portal-warning" role="status">{t("catalogHiddenByFilters")}</p>}<p>{t("noCatalogResults")}</p></div> : <section className="catalog-grid" aria-label={t("compendiumTitle")}>
-      {filtered.map((entry) => <CatalogCard key={`${entry.category}-${entry.data.id ?? entry.name}`} entry={entry} onInspect={(trigger) => openInspectedEntry(entry, trigger)} />)}
+      {filtered.map((entry) => {
+        const catalogEntryKey = entry.id ?? entry.data?.id ?? `${entry.category}:${entry.name}`;
+        return <CatalogCard key={`${entry.category}-${catalogEntryKey}`} entry={entry} onInspect={(trigger) => openInspectedEntry(entry, trigger)} />;
+      })}
     </section>}
 
     {/* MODAL DE INSPEÇÃO DETALHADA */}
@@ -646,7 +649,8 @@ function CatalogCard({ entry, onInspect }: { entry: PickerItem & { category: Pic
     entry.data.price ? `${t("price")}: ${formatPriceToLocale(entry.data.price, locale)}` : null,
     entry.data.variantFamily ? `${locale === "en" ? "Variant" : locale === "es" ? "Variante" : "Variante"}: ${entry.data.variantRole === "ranged" ? (locale === "en" ? "Ranged" : locale === "es" ? "A distancia" : "À distância") : entry.data.variantRole === "melee" ? (locale === "en" ? "Melee" : locale === "es" ? "Cuerpo a cuerpo" : "Corpo a corpo") : entry.data.variantFamily}` : null,
   ].filter((fact): fact is string => Boolean(fact));
-  return <article className="catalog-card interactive" data-catalog-entry={String(entry.data.id ?? `${entry.category}:${entry.name}`)} onClick={(e) => onInspect?.(e.currentTarget)} tabIndex={0} onKeyDown={(e) => {
+  const catalogEntryKey = entry.id ?? entry.data?.id ?? `${entry.category}:${entry.name}`;
+  return <article className="catalog-card interactive" data-catalog-entry={String(catalogEntryKey)} onClick={(e) => onInspect?.(e.currentTarget)} tabIndex={0} onKeyDown={(e) => {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
       onInspect?.(e.currentTarget);
