@@ -93,10 +93,6 @@ export function CampaignsPage() {
     setCampaignSyncWarning(Boolean(result.error));
   };
 
-  const updatePendingSyncCount = (userId: string): void => {
-    setPendingSyncCount(getPendingCampaignCount(userId));
-  };
-
   const refreshData = async (knownSession?: AuthSession | null) => {
     const loadEpoch = authEpochRef.current;
     setLoading(true);
@@ -115,6 +111,7 @@ export function CampaignsPage() {
         setCampaigns(campaignResult.data);
         setCampaignSyncSource(campaignResult.source);
         setCampaignSyncWarning(Boolean(campaignResult.error));
+        setPendingSyncCount(getPendingCampaignCount(cur.user.id));
         setSharedCharacters(shared);
         setMyCharacters(own);
         setLoadError(false);
