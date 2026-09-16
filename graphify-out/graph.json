@@ -258453,7 +258453,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/CampaignsPage.tsx",
-      "source_location": "L104",
+      "source_location": "L100",
       "weight": 1.0
     },
     {
@@ -258465,7 +258465,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/CampaignsPage.tsx",
-      "source_location": "L110",
+      "source_location": "L106",
       "weight": 1.0
     },
     {
@@ -258477,7 +258477,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/CampaignsPage.tsx",
-      "source_location": "L111",
+      "source_location": "L107",
       "weight": 1.0
     },
     {
@@ -258489,7 +258489,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/CampaignsPage.tsx",
-      "source_location": "L112",
+      "source_location": "L108",
       "weight": 1.0
     },
     {
@@ -258501,7 +258501,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/CampaignsPage.tsx",
-      "source_location": "L144",
+      "source_location": "L141",
       "weight": 1.0
     },
     {
@@ -258513,7 +258513,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/CampaignsPage.tsx",
-      "source_location": "L166",
+      "source_location": "L163",
       "weight": 1.0
     },
     {
@@ -258525,7 +258525,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/CampaignsPage.tsx",
-      "source_location": "L205",
+      "source_location": "L202",
       "weight": 1.0
     },
     {
@@ -258537,7 +258537,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/CampaignsPage.tsx",
-      "source_location": "L215",
+      "source_location": "L212",
       "weight": 1.0
     },
     {
@@ -258549,7 +258549,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/CampaignsPage.tsx",
-      "source_location": "L217",
+      "source_location": "L214",
       "weight": 1.0
     },
     {
@@ -258561,7 +258561,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/CampaignsPage.tsx",
-      "source_location": "L225",
+      "source_location": "L222",
       "weight": 1.0
     },
     {
@@ -258585,7 +258585,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/CampaignsPage.tsx",
-      "source_location": "L317",
+      "source_location": "L314",
       "weight": 1.0
     },
     {
@@ -258597,7 +258597,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/CampaignsPage.tsx",
-      "source_location": "L330",
+      "source_location": "L327",
       "weight": 1.0
     },
     {
@@ -464885,5 +464885,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "88e14c76fd709891dc5a25d8cd4b88a31a84e826"
+  "built_at_commit": "8bcd25e68a2d76ffc1589cedb10941e280630048"
 }

@@ -1,7 +1,7 @@
 # Graph Report - pathbuilder2e_local  (2026-09-15)
 
 ## Corpus Check
-- 1250 files · ~15,353,174 words
+- 1250 files · ~15,353,165 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `88e14c76`
+- Built from commit: `8bcd25e6`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -4798,7 +4798,7 @@ Cohesion: 0.50
 Nodes (3): 2026-09-12 — Construtores multi-sistema, Changelog, Limites da cobertura
 
 ## Knowledge Gaps
-- **7636 isolated node(s):** `TODO EXECUTÁVEL — ordem atual`, `Objetivo integral do usuário`, `Requisitos explícitos a preservar`, `Estado confirmado nesta sessão`, `Próxima sequência obrigatória para o próximo agente` (+7631 more)
+- **7636 isolated node(s):** `ItemCatalogRecord`, `ItemPickerState`, `ItemVisualData`, `Coins`, `WeaponVisualData` (+7631 more)
   These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 10366 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **127 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -4806,14 +4806,14 @@ Nodes (3): 2026-09-12 — Construtores multi-sistema, Changelog, Limites da cobe
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `dispatch_command()` connect `graphify/cli.py` to `Path`, `write_callflow_html`, `cache.py`, `paths.py`, `_platform_skill_destination`, `Path`, `introspect_postgres`, `_StageTimer`, `save_semantic_cache`, `prs.py`, `querylog.py`, `html.py`, `serve.py`, `graphify/export.py`, `global_graph.py`, `llm.py`, `affected.py`, `graphify/__main__.py`, `edge_data`, `_build_server`, `reflect.py`, `detect`, `analyze.py`, `hooks.py`, `introspect_cargo`, `save_manifest`, `diagnostics.py`, `semantic_cleanup.py`, `build.py`, `security.py`?**
+  _High betweenness centrality (0.005) - this node is a cross-community bridge._
+- **Why does `_file_stem()` connect `_make_id` to `extract_json`, `extract_commonlisp`, `extract_bash`, `extract_powershell`, `Path`, `_read_text`, `verilog.py`, `extract_rust`, `symbol_resolution.py`, `extract_xaml`, `sanitize_metadata`, `extract_go`, `mcp_ingest.py`, `extract.py`, `extract_objc`, `extract_robot`, `extract_pascal`, `extract_ocaml`, `build.py`, `extract_dm`, `extract_sql`?**
   _High betweenness centrality (0.004) - this node is a cross-community bridge._
 - **Why does `_make_id()` connect `_make_id` to `extract_json`, `extract_commonlisp`, `extract_bash`, `extract_powershell`, `Path`, `_read_text`, `verilog.py`, `extract_rust`, `extract_terraform`, `graphify/cli.py`, `extract_xaml`, `sanitize_metadata`, `extract_go`, `extract.py`, `extract_objc`, `extract_robot`, `extract_pascal`, `extract_ocaml`, `build.py`, `extract_dm`, `extract_sql`, `_resolve_csharp_type_references`?**
-  _High betweenness centrality (0.004) - this node is a cross-community bridge._
-- **Why does `_file_stem()` connect `_make_id` to `extract_json`, `extract_commonlisp`, `extract_bash`, `extract_powershell`, `Path`, `_read_text`, `verilog.py`, `extract_rust`, `symbol_resolution.py`, `extract_xaml`, `sanitize_metadata`, `extract_go`, `mcp_ingest.py`, `extract.py`, `extract_objc`, `extract_robot`, `extract_pascal`, `extract_ocaml`, `build.py`, `extract_dm`, `extract_sql`?**
   _High betweenness centrality (0.003) - this node is a cross-community bridge._
 - **Are the 5 inferred relationships involving `dispatch_command()` (e.g. with `_progress()` and `to_html()`) actually correct?**
   _`dispatch_command()` has 5 INFERRED edges - model-reasoned connections that need verification._
-- **What connects `TODO EXECUTÁVEL — ordem atual`, `Objetivo integral do usuário`, `Requisitos explícitos a preservar` to the rest of the system?**
+- **What connects `ItemCatalogRecord`, `ItemPickerState`, `ItemVisualData` to the rest of the system?**
   _7636 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `pf2e_data.js` be split into smaller, more focused modules?**
   _Cohesion score 0.008771929824561403 - nodes in this community are weakly interconnected._

@@ -1,8 +1,8 @@
 {
   "js/app.js": {
-    "mtime": 1789201314.7367127,
-    "seen": 1789201540.5172365,
-    "ast_hash": "ba4e85e042a62c9a1395a9dd05599950",
+    "mtime": 1789323379.9078844,
+    "seen": 1789505678.3992443,
+    "ast_hash": "0bee7523c2c5dee5657bb8dfb3301aa7",
     "semantic_hash": ""
   },
   "js/pdf-lib.min.js": {
@@ -36,9 +36,9 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1789230457.0887158,
-    "seen": 1789234201.2016163,
-    "ast_hash": "a0372694237768906928fdea6c1b1484",
+    "mtime": 1789357494.7443743,
+    "seen": 1789505678.3992572,
+    "ast_hash": "3959c0e471b67b7bacd4449e699e6027",
     "semantic_hash": ""
   },
   "public/js/pdf-lib.min.js": {
@@ -72,15 +72,15 @@
     "semantic_hash": ""
   },
   "src/AccountPortal.tsx": {
-    "mtime": 1789214267.5083356,
-    "seen": 1789234201.219977,
-    "ast_hash": "fe478aea2fe3fa2f9ee44dcfcb4e2ece",
+    "mtime": 1789341074.9297738,
+    "seen": 1789505678.3993943,
+    "ast_hash": "f86321d00b914a182e514c711c8bc767",
     "semantic_hash": ""
   },
   "src/CampaignsPage.tsx": {
-    "mtime": 1788838165.0984545,
-    "seen": 1789024800.511308,
-    "ast_hash": "90ed32b0ed8822c53357e13c19b013af",
+    "mtime": 1789505596.1018264,
+    "seen": 1789505678.3993952,
+    "ast_hash": "d4b70aca160dea6d1b05ad4b9a2ac39a",
     "semantic_hash": ""
   },
   "src/ItemPickerModal.test.tsx": {
@@ -102,21 +102,21 @@
     "semantic_hash": ""
   },
   "src/PickerModal.tsx": {
-    "mtime": 1788832998.4706936,
-    "seen": 1789024800.5113125,
-    "ast_hash": "9f1783404b6dd3c9a24c211abd708282",
+    "mtime": 1789336238.1904845,
+    "seen": 1789505678.3994002,
+    "ast_hash": "a456929af0fb5597d25759260421d315",
     "semantic_hash": ""
   },
   "src/PortalPages.test.tsx": {
-    "mtime": 1788778611.307093,
-    "seen": 1789024800.5113137,
-    "ast_hash": "75120e8e591afd5ce493abdb946108ef",
+    "mtime": 1789356506.0579011,
+    "seen": 1789505678.3994012,
+    "ast_hash": "b07c94809ac9cb86409d790d390430c4",
     "semantic_hash": ""
   },
   "src/PortalPages.tsx": {
-    "mtime": 1789231739.846253,
-    "seen": 1789234201.2214162,
-    "ast_hash": "5238b23b34617bfb4907a8bb26968482",
+    "mtime": 1789498176.2805955,
+    "seen": 1789505678.399402,
+    "ast_hash": "7206b79a3dc51476fa006150f227a943",
     "semantic_hash": ""
   },
   "src/accountState.ts": {
@@ -228,9 +228,9 @@
     "semantic_hash": ""
   },
   "src/data/responsive-layout-contract.test.ts": {
-    "mtime": 1788779548.1934369,
-    "seen": 1789024800.5113406,
-    "ast_hash": "ed7f65aa2bb72a98cf7a1bd8cb3a9346",
+    "mtime": 1789333266.3558555,
+    "seen": 1789505678.3994687,
+    "ast_hash": "e0aa3ae4dc484862df4603a313aef61d",
     "semantic_hash": ""
   },
   "src/data/responsive-view.test.ts": {
@@ -264,9 +264,9 @@
     "semantic_hash": ""
   },
   "src/i18n.tsx": {
-    "mtime": 1789231739.8442538,
-    "seen": 1789234201.2270205,
-    "ast_hash": "017b3feb9b20c8ee989a26ca0e2f1692",
+    "mtime": 1789336238.1924834,
+    "seen": 1789505678.3994985,
+    "ast_hash": "afb68b09d85cfb29e102a4744d870f68",
     "semantic_hash": ""
   },
   "src/lib/supabase.ts": {
@@ -300,15 +300,15 @@
     "semantic_hash": ""
   },
   "src/services/campaigns.ts": {
-    "mtime": 1788838165.0964377,
-    "seen": 1789024800.511364,
-    "ast_hash": "bb3280648bbc2a72477e9e136b7ff2f3",
+    "mtime": 1789505066.354724,
+    "seen": 1789505678.3995142,
+    "ast_hash": "1837c517495191e5b978147140258bdd",
     "semantic_hash": ""
   },
   "src/services/characters.test.ts": {
-    "mtime": 1789230055.785877,
-    "seen": 1789234201.22891,
-    "ast_hash": "3b66953242488c4fc305402b327c53b3",
+    "mtime": 1789312164.9153783,
+    "seen": 1789505678.3995209,
+    "ast_hash": "c4ba144d15eaa30fe7a89b13e0157ee2",
     "semantic_hash": ""
   },
   "src/services/characters.ts": {
@@ -324,15 +324,15 @@
     "semantic_hash": ""
   },
   "src/test/setup.ts": {
-    "mtime": 1787872609.2700675,
-    "seen": 1789024800.5113733,
-    "ast_hash": "9ba76dbe1115a41effce476edc258870",
+    "mtime": 1789483814.0984838,
+    "seen": 1789505678.3995316,
+    "ast_hash": "9ad638002d6ffc14d83030476a4fffac",
     "semantic_hash": ""
   },
   "src/types.ts": {
-    "mtime": 1789229911.9632604,
-    "seen": 1789234201.2296703,
-    "ast_hash": "e09c9f4d1328e7d2e236325a4a303248",
+    "mtime": 1789336327.314806,
+    "seen": 1789505678.3995347,
+    "ast_hash": "1463e12052c43311ce5edbab8c586ea6",
     "semantic_hash": ""
   },
   "src/utils/economy.test.ts": {
@@ -396,9 +396,9 @@
     "semantic_hash": ""
   },
   "TODO_COBERTURA_E_BUGS.md": {
-    "mtime": 1789205256.8526661,
-    "seen": 1789234201.3371136,
-    "ast_hash": "0d34f589ad2390ac668680813cd47ebc",
+    "mtime": 1789501443.509844,
+    "seen": 1789505678.4004922,
+    "ast_hash": "6011e2bbbe52eb3586e2dcd003f03e9b",
     "semantic_hash": ""
   },
   "books_expansion_and_ai_assistant_tasks.md": {
@@ -414,9 +414,9 @@
     "semantic_hash": ""
   },
   "index.html": {
-    "mtime": 1789192221.6949713,
-    "seen": 1789192331.8995824,
-    "ast_hash": "941d7dbedbe06b0d1ccf3ae40beee116",
+    "mtime": 1789323379.9088857,
+    "seen": 1789505678.4005046,
+    "ast_hash": "488e471d0a8c2126272ebac13d69fa2d",
     "semantic_hash": ""
   },
   "walkthrough.md": {
@@ -1248,15 +1248,15 @@
     "semantic_hash": ""
   },
   "src/services/catalog.test.ts": {
-    "mtime": 1789223739.248351,
-    "seen": 1789234201.2289026,
-    "ast_hash": "a7288cb16c781bf820f0ba955c9526c3",
+    "mtime": 1789338520.1787,
+    "seen": 1789505678.3995154,
+    "ast_hash": "327ad3bd31ac5b8347033bdf6ac3d9db",
     "semantic_hash": ""
   },
   "src/services/catalog.ts": {
-    "mtime": 1789224789.6193519,
-    "seen": 1789234201.2289052,
-    "ast_hash": "66ace511f8b36dfac286895983c62d4b",
+    "mtime": 1789338520.1756983,
+    "seen": 1789505678.399516,
+    "ast_hash": "2e3311e684bf38f75c0fb35042088f74",
     "semantic_hash": ""
   },
   ".gemini/settings.json": {
@@ -1704,9 +1704,9 @@
     "semantic_hash": ""
   },
   "scripts/audit-catalog-supabase-reconciliation.cjs": {
-    "mtime": 1788837123.934652,
-    "seen": 1789024800.5112007,
-    "ast_hash": "f1ba48319421cef73dfd5b9f3be37658",
+    "mtime": 1789338990.524385,
+    "seen": 1789505678.399269,
+    "ast_hash": "4c7c523415f0f96d768af38b291b7f6f",
     "semantic_hash": ""
   },
   "scripts/audit-image-metadata-supabase.cjs": {
@@ -1740,9 +1740,9 @@
     "semantic_hash": ""
   },
   "scripts/audit-local-interactions.cjs": {
-    "mtime": 1788829952.8450234,
-    "seen": 1789024800.5112104,
-    "ast_hash": "eca184d31df1d364535e73088f1e300f",
+    "mtime": 1789357899.7498243,
+    "seen": 1789505678.3992863,
+    "ast_hash": "3c22ab5bea2d72162cd80f43f270dcf0",
     "semantic_hash": ""
   },
   "scripts/audit-local-locale-usage.cjs": {
@@ -1848,9 +1848,9 @@
     "semantic_hash": ""
   },
   "src/services/campaigns-sync-queue.test.ts": {
-    "mtime": 1788838542.4092975,
-    "seen": 1789024800.511362,
-    "ast_hash": "777ba8ae8fa6c7dbdb23c3e11d51eb9e",
+    "mtime": 1789505242.6806087,
+    "seen": 1789505678.3995123,
+    "ast_hash": "5fd87c770cdf6d672fdb3843de6a8cdf",
     "semantic_hash": ""
   },
   "src/weaponVisuals.test.ts": {
@@ -2184,9 +2184,9 @@
     "semantic_hash": ""
   },
   "scripts/audit-supabase-campaigns-authenticated.cjs": {
-    "mtime": 1788841054.1552048,
-    "seen": 1789024800.5112224,
-    "ast_hash": "887f679397c73ced138179da05941607",
+    "mtime": 1789337654.861797,
+    "seen": 1789505678.399299,
+    "ast_hash": "bbc3387d7f6b442872c5299d2cfdbccc",
     "semantic_hash": ""
   },
   "supabase/migrations/202609080002_campaign_notes.sql": {
@@ -6840,9 +6840,9 @@
     "semantic_hash": ""
   },
   "scripts/audit-local-visual-acceptance.cjs": {
-    "mtime": 1788937384.110786,
-    "seen": 1789024800.5112154,
-    "ast_hash": "ca60a6982014951cea8eeeeb25bbb083",
+    "mtime": 1789347589.635913,
+    "seen": 1789505678.3992925,
+    "ast_hash": "5c9fc74ebd6445c7504f1b07a07fce1b",
     "semantic_hash": ""
   },
   "src/data/googleDrivePdfs.ts": {
@@ -11874,9 +11874,9 @@
     "semantic_hash": ""
   },
   "src/SystemSelectorModal.tsx": {
-    "mtime": 1789229783.7535927,
-    "seen": 1789234201.2214231,
-    "ast_hash": "cb2f3db5a98b19a4ae7ba63c0873dcc0",
+    "mtime": 1789335716.4815147,
+    "seen": 1789505678.3994043,
+    "ast_hash": "55889c1485f3b490c9189d04039c42e9",
     "semantic_hash": ""
   },
   ".agents/skills/operator-approval-loop/references/approval-ledger.sql": {
@@ -11886,9 +11886,9 @@
     "semantic_hash": ""
   },
   "src/data/ose/ose-engine.test.ts": {
-    "mtime": 1789201266.7867053,
-    "seen": 1789201540.5439193,
-    "ast_hash": "589ac3cbb38b4640db441ce929949b53",
+    "mtime": 1789345915.168567,
+    "seen": 1789505678.3994544,
+    "ast_hash": "87826e09850ce4cba4907bac81d03841",
     "semantic_hash": ""
   },
   "src/data/ose/oseClasses.ts": {
@@ -11910,9 +11910,9 @@
     "semantic_hash": ""
   },
   "src/data/ose/oseRules.ts": {
-    "mtime": 1789224682.0871973,
-    "seen": 1789234201.225134,
-    "ast_hash": "3e4ceead49228208545adf594d485ef2",
+    "mtime": 1789345892.573758,
+    "seen": 1789505678.3994617,
+    "ast_hash": "768def18bfe7e34412e10485dec613d6",
     "semantic_hash": ""
   },
   "src/data/ose/oseSpells.ts": {
@@ -11922,15 +11922,15 @@
     "semantic_hash": ""
   },
   "src/ose/OseCharacterCreatorModal.tsx": {
-    "mtime": 1789231630.972675,
-    "seen": 1789234201.2275405,
-    "ast_hash": "42328a0b1249a2d4171914e0f7aa5b4f",
+    "mtime": 1789482638.1211934,
+    "seen": 1789505678.3995044,
+    "ast_hash": "f25e1e3e029b1948ede48f14f876e64e",
     "semantic_hash": ""
   },
   "src/ose/OseCharacterSheet.tsx": {
-    "mtime": 1789206504.034416,
-    "seen": 1789234201.2275429,
-    "ast_hash": "6edd55aae0ed6f5d17ba7bb558c565bf",
+    "mtime": 1789493684.5137022,
+    "seen": 1789505678.3995054,
+    "ast_hash": "36e57f990c556151fac37b633217d92e",
     "semantic_hash": ""
   },
   "supabase/migrations/202609120001_multi_system_support.sql": {
@@ -12048,21 +12048,21 @@
     "semantic_hash": ""
   },
   "scripts/audit-local-rls-contract.cjs": {
-    "mtime": 1789230457.086237,
-    "seen": 1789234201.2052357,
-    "ast_hash": "6d00f2c9fa25e0440d7f6c826660afbe",
+    "mtime": 1789338703.59433,
+    "seen": 1789505678.399291,
+    "ast_hash": "7990d6f4a449f8196790fa5d9fdd5e34",
     "semantic_hash": ""
   },
   "scripts/generate-core-system-compendium-migration.cjs": {
-    "mtime": 1789223208.7208521,
-    "seen": 1789234201.2165494,
-    "ast_hash": "bf5ff36c3bf6e132879644ea263e02c2",
+    "mtime": 1789318353.9405181,
+    "seen": 1789505678.399355,
+    "ast_hash": "59698177ae79a22abdacca7a5cb69317",
     "semantic_hash": ""
   },
   "scripts/generate-ose-catalog-migration.mjs": {
-    "mtime": 1789224103.1320148,
-    "seen": 1789234201.2165518,
-    "ast_hash": "5a17158d6b047dd7bef3077246f3dc2d",
+    "mtime": 1789331925.7928307,
+    "seen": 1789505678.399356,
+    "ast_hash": "ae05ec6e5282edf27d06f62b0e4a988c",
     "semantic_hash": ""
   },
   "scripts/migrate-catalog-to-supabase.test.ts": {
@@ -12072,21 +12072,21 @@
     "semantic_hash": ""
   },
   "src/SystemSelectorModal.test.tsx": {
-    "mtime": 1789229828.0113351,
-    "seen": 1789234201.2214198,
-    "ast_hash": "af2fbddee9c7a3bc7daa6ceec0af0d3e",
+    "mtime": 1789335154.9157648,
+    "seen": 1789505678.399403,
+    "ast_hash": "073fddba636978ca6eff1642772e1ca3",
     "semantic_hash": ""
   },
   "src/core/CoreCharacterCreatorModal.tsx": {
-    "mtime": 1789233046.8820088,
-    "seen": 1789234201.2216933,
-    "ast_hash": "875af05d7abc4ae3666507b3b31ddb4f",
+    "mtime": 1789358078.0491433,
+    "seen": 1789505678.3994067,
+    "ast_hash": "b070abf93350a292563b3622efb14573",
     "semantic_hash": ""
   },
   "src/core/CoreCharacterSheet.tsx": {
-    "mtime": 1789231673.3084283,
-    "seen": 1789234201.221696,
-    "ast_hash": "ca99fef60882ab2d71a4c659f4b6536a",
+    "mtime": 1789347896.06009,
+    "seen": 1789505678.3994079,
+    "ast_hash": "61a4fa1d5335927a8a0d86327a781ff3",
     "semantic_hash": ""
   },
   "src/data/coreCharacterRules.test.ts": {
@@ -12102,33 +12102,33 @@
     "semantic_hash": ""
   },
   "src/data/coreClassFeatures.ts": {
-    "mtime": 1789232505.0725992,
-    "seen": 1789234201.2230778,
-    "ast_hash": "60497141f4574cc5203f78b92005c941",
+    "mtime": 1789341616.5327628,
+    "seen": 1789505678.3994217,
+    "ast_hash": "c1bf6ce0497b31d0b15c17a35efb95ac",
     "semantic_hash": ""
   },
   "src/data/coreCompendium.test.ts": {
-    "mtime": 1789229984.1017742,
-    "seen": 1789234201.2230797,
-    "ast_hash": "6b6ef98b6b785e344342eebe24d6887e",
+    "mtime": 1789331806.5296872,
+    "seen": 1789505678.3994226,
+    "ast_hash": "12972f80259a08afba91aca3ecc8d561",
     "semantic_hash": ""
   },
   "src/data/coreCompendium.ts": {
-    "mtime": 1789224402.3599787,
-    "seen": 1789234201.2230816,
-    "ast_hash": "df54caa54930e7042b3b725978e9fa85",
+    "mtime": 1789331792.056591,
+    "seen": 1789505678.3994243,
+    "ast_hash": "95005c95111472e656d97e0df3f2e435",
     "semantic_hash": ""
   },
   "src/data/dnd5e/dnd5eBackgrounds.ts": {
-    "mtime": 1789215071.1744044,
-    "seen": 1789234201.2234056,
-    "ast_hash": "ef6d30167da0d349a182bd545e7bf8dd",
+    "mtime": 1789307520.5618668,
+    "seen": 1789505678.3994274,
+    "ast_hash": "5a0ca05af5464e60316f0a665fd29188",
     "semantic_hash": ""
   },
   "src/data/dnd5e/dnd5eCatalog.ts": {
-    "mtime": 1789227506.7100718,
-    "seen": 1789234201.2234068,
-    "ast_hash": "1795839e6a27fc7120af5bfe43767245",
+    "mtime": 1789310381.6111639,
+    "seen": 1789505678.3994284,
+    "ast_hash": "63ed1d05f60444648d74c0d2951ed189",
     "semantic_hash": ""
   },
   "src/data/dnd5e/dnd5eClasses.ts": {
@@ -12138,15 +12138,15 @@
     "semantic_hash": ""
   },
   "src/data/dnd5e/dnd5eCompendium.ts": {
-    "mtime": 1789229036.5569649,
-    "seen": 1789234201.223409,
-    "ast_hash": "64f30aed88a31cacf8d2bbd8f9d410b7",
+    "mtime": 1789349380.0207033,
+    "seen": 1789505678.3994305,
+    "ast_hash": "447b86be72cbaf82a3ba4fb4231120df",
     "semantic_hash": ""
   },
   "src/data/dnd5e/dnd5eOptions.ts": {
-    "mtime": 1789228563.8785155,
-    "seen": 1789234201.2234097,
-    "ast_hash": "63042b4dea716bce690e1a8e72e0fd6b",
+    "mtime": 1789322308.196294,
+    "seen": 1789505678.3994315,
+    "ast_hash": "5110b2f54d21e23e671300d0031f1287",
     "semantic_hash": ""
   },
   "src/data/dnd5e/dnd5eProgressions.ts": {
@@ -12156,27 +12156,27 @@
     "semantic_hash": ""
   },
   "src/data/dnd5e/dnd5eRaces.ts": {
-    "mtime": 1789231227.8450942,
-    "seen": 1789234201.2234125,
-    "ast_hash": "c4e1be6e2e1d3c5363811bd0a432b7d1",
+    "mtime": 1789321818.9856086,
+    "seen": 1789505678.3994336,
+    "ast_hash": "f3e6fd1bc67175db10cc390cd042bf85",
     "semantic_hash": ""
   },
   "src/data/multi-system-catalog.test.ts": {
-    "mtime": 1789233105.3027885,
-    "seen": 1789234201.2243958,
-    "ast_hash": "33f2e0f9af89f77cca2acaaf9218901b",
+    "mtime": 1789356273.2366147,
+    "seen": 1789505678.3994443,
+    "ast_hash": "6912ff6f6ed5f195fb4becedde4370be",
     "semantic_hash": ""
   },
   "src/data/multiSystemCharacter.test.ts": {
-    "mtime": 1789222063.4554007,
-    "seen": 1789234201.2243977,
-    "ast_hash": "bf6797bbb87524200e586d2c651b4804",
+    "mtime": 1789334581.4157968,
+    "seen": 1789505678.399445,
+    "ast_hash": "32e689a103e07c2cf4da91b50372cfaf",
     "semantic_hash": ""
   },
   "src/data/multiSystemCharacter.ts": {
-    "mtime": 1789233105.3013694,
-    "seen": 1789234201.224399,
-    "ast_hash": "4e26680783d2c140bf4cf44d3de5b466",
+    "mtime": 1789356273.2057776,
+    "seen": 1789505678.399446,
+    "ast_hash": "943f5e394786d803450ad0174d00cd51",
     "semantic_hash": ""
   },
   "src/data/ose/ose-pdf-export.test.ts": {
@@ -12192,21 +12192,21 @@
     "semantic_hash": ""
   },
   "src/data/systemRulesEngine.test.ts": {
-    "mtime": 1789232808.488961,
-    "seen": 1789234201.2266037,
-    "ast_hash": "6f5e76d386473c440cd29771e3c0b124",
+    "mtime": 1789358321.7051232,
+    "seen": 1789505678.3994827,
+    "ast_hash": "083f779d082b452d20dc5f1bd4e836d6",
     "semantic_hash": ""
   },
   "src/data/systemRulesEngine.ts": {
-    "mtime": 1789232808.4649599,
-    "seen": 1789234201.226606,
-    "ast_hash": "33c7237e20fb77fc9863476f0162aa14",
+    "mtime": 1789358321.7026386,
+    "seen": 1789505678.3994834,
+    "ast_hash": "195c89b29b415d71ce50081e08c1a075",
     "semantic_hash": ""
   },
   "src/data/t20/t20Catalog.ts": {
-    "mtime": 1789226638.9540217,
-    "seen": 1789234201.2266078,
-    "ast_hash": "af90bf9b368697c4ab2ebd2d417e6ccd",
+    "mtime": 1789314037.4247615,
+    "seen": 1789505678.3994868,
+    "ast_hash": "0299ef0020340373271e0510084e7ddc",
     "semantic_hash": ""
   },
   "src/data/t20/t20Classes.ts": {
@@ -12216,9 +12216,9 @@
     "semantic_hash": ""
   },
   "src/data/t20/t20Compendium.ts": {
-    "mtime": 1789228979.8827753,
-    "seen": 1789234201.2266104,
-    "ast_hash": "fefb78427ca0d6ea8d665c6b2522982c",
+    "mtime": 1789340138.6116738,
+    "seen": 1789505678.399489,
+    "ast_hash": "93a3b689ab172d94e31156cef54de919",
     "semantic_hash": ""
   },
   "src/data/t20/t20Origins.ts": {
@@ -12228,9 +12228,9 @@
     "semantic_hash": ""
   },
   "src/data/t20/t20Progressions.ts": {
-    "mtime": 1789219961.444517,
-    "seen": 1789234201.2266128,
-    "ast_hash": "a6798c113aa8548fc62b246ac446c23c",
+    "mtime": 1789341497.4315195,
+    "seen": 1789505678.3994913,
+    "ast_hash": "c4877468942818993fafb383f61b2257",
     "semantic_hash": ""
   },
   "src/data/t20/t20Races.ts": {
@@ -12246,21 +12246,21 @@
     "semantic_hash": ""
   },
   "src/services/corePdfExport.test.ts": {
-    "mtime": 1789226247.9899864,
-    "seen": 1789234201.2289147,
-    "ast_hash": "cb66b565b0cddb8d86627c62ec01b556",
+    "mtime": 1789348525.0500014,
+    "seen": 1789505678.3995235,
+    "ast_hash": "1b49226f7d5ea99a783c05decdf35dac",
     "semantic_hash": ""
   },
   "src/services/corePdfExport.ts": {
-    "mtime": 1789231478.219053,
-    "seen": 1789234201.2289164,
-    "ast_hash": "80ff1c4ba78b2d601deabd5487d469d7",
+    "mtime": 1789348540.2047627,
+    "seen": 1789505678.3995247,
+    "ast_hash": "44a42c672a4bc41e0e5798ebdef51df0",
     "semantic_hash": ""
   },
   "src/services/osePdfExport.ts": {
-    "mtime": 1789207616.2685783,
-    "seen": 1789234201.2289178,
-    "ast_hash": "26ab2a6b5ace3b122f0ae007d44e4a04",
+    "mtime": 1789333122.523354,
+    "seen": 1789505678.3995268,
+    "ast_hash": "bdf2983732946779f3d7dbae61bd8f15",
     "semantic_hash": ""
   },
   "supabase/migrations/202609120003_expand_character_rulesets.sql": {
@@ -12354,8 +12354,8 @@
     "semantic_hash": ""
   },
   "supabase/migrations/202609120018_seed_ose_core_catalog.sql": {
-    "mtime": 1789224189.1733773,
-    "seen": 1789234201.2314177,
+    "mtime": 1789331929.9906716,
+    "seen": 1789505678.3995767,
     "ast_hash": "60f5dcc1889fe1f492cda4176653f990",
     "semantic_hash": ""
   },
@@ -12378,9 +12378,9 @@
     "semantic_hash": ""
   },
   "TODO_MULTI_SISTEMAS.md": {
-    "mtime": 1789233116.82769,
-    "seen": 1789234201.337115,
-    "ast_hash": "03a9d8d2ed12a85453c652d3f49ee9f6",
+    "mtime": 1789493974.0200844,
+    "seen": 1789505678.4004955,
+    "ast_hash": "1434350954e2b94a7cf0aee079a0e874",
     "semantic_hash": ""
   },
   "public/ose-character-sheet-template.pdf": {
@@ -12399,6 +12399,462 @@
     "mtime": 1789206998.438124,
     "seen": 1789234201.3381567,
     "ast_hash": "d4837d2738d802d76a24fa84cdd4b951",
+    "semantic_hash": ""
+  },
+  "scripts/audit-character-metadata-supabase.cjs": {
+    "mtime": 1789356106.9400728,
+    "seen": 1789505678.399272,
+    "ast_hash": "079c1a78abed9fb9e436f3469ce7f59c",
+    "semantic_hash": ""
+  },
+  "scripts/audit-core-actions-conditions-supabase.cjs": {
+    "mtime": 1789338106.0223906,
+    "seen": 1789505678.3992732,
+    "ast_hash": "2566ac10676fdd4073336dc8f004b1c8",
+    "semantic_hash": ""
+  },
+  "scripts/audit-core-skills-supabase.cjs": {
+    "mtime": 1789338803.146561,
+    "seen": 1789505678.3992748,
+    "ast_hash": "94b689fc0e195aac4cdd0a96032fd74a",
+    "semantic_hash": ""
+  },
+  "scripts/audit-core-systems-supabase.cjs": {
+    "mtime": 1789348394.5443084,
+    "seen": 1789505678.3992758,
+    "ast_hash": "557b1f785bdd19815ae2fc7d3a9c654e",
+    "semantic_hash": ""
+  },
+  "scripts/audit-local-accessibility.cjs": {
+    "mtime": 1789357566.158077,
+    "seen": 1789505678.399282,
+    "ast_hash": "1314dbff74cb915db2ce2de99321c307",
+    "semantic_hash": ""
+  },
+  "scripts/generate-t20-spell-school-migration.cjs": {
+    "mtime": 1789327071.7965221,
+    "seen": 1789505678.3993592,
+    "ast_hash": "bfc7c57f51ba0518285bb3b2dedd5ff9",
+    "semantic_hash": ""
+  },
+  "scripts/sync-core-actions-conditions-to-supabase.cjs": {
+    "mtime": 1789337208.3764708,
+    "seen": 1789505678.3993733,
+    "ast_hash": "09d7559071f2e85fba0a6cbe8b0d60e3",
+    "semantic_hash": ""
+  },
+  "scripts/sync-core-skills-to-supabase.cjs": {
+    "mtime": 1789338294.3232844,
+    "seen": 1789505678.399374,
+    "ast_hash": "a109b5c98945793504c12c2da9249f8e",
+    "semantic_hash": ""
+  },
+  "scripts/sync-dnd5e-attunement-to-supabase.cjs": {
+    "mtime": 1789348256.7710214,
+    "seen": 1789505678.3993752,
+    "ast_hash": "e02cacdf968b348e6076e82819dad1e1",
+    "semantic_hash": ""
+  },
+  "scripts/sync-ose-classic-to-supabase.cjs": {
+    "mtime": 1789334107.1440527,
+    "seen": 1789505678.3993812,
+    "ast_hash": "088b4c0c1911558f635d84318a72f890",
+    "semantic_hash": ""
+  },
+  "scripts/sync-t20-spells-to-supabase.cjs": {
+    "mtime": 1789340498.2932332,
+    "seen": 1789505678.3993824,
+    "ast_hash": "14dfa3360825958793456c4c4eb296ee",
+    "semantic_hash": ""
+  },
+  "scripts/ts-extension-loader.mjs": {
+    "mtime": 1789337460.2390773,
+    "seen": 1789505678.399388,
+    "ast_hash": "e7f9b826fb0433a12c911f91f288cf41",
+    "semantic_hash": ""
+  },
+  "src/core/coreCharacterEditing.ts": {
+    "mtime": 1789334599.966966,
+    "seen": 1789505678.3994088,
+    "ast_hash": "a19ded03c3f3ef1631420fbea1b3d909",
+    "semantic_hash": ""
+  },
+  "src/data/system-content-coverage.test.ts": {
+    "mtime": 1789357696.750587,
+    "seen": 1789505678.3994756,
+    "ast_hash": "45a3125ac7a8f610a57290852ff70b4b",
+    "semantic_hash": ""
+  },
+  "src/data/systemActions.test.ts": {
+    "mtime": 1789338110.9936588,
+    "seen": 1789505678.3994765,
+    "ast_hash": "7727230018689f13164c7364702c9094",
+    "semantic_hash": ""
+  },
+  "src/data/systemActions.ts": {
+    "mtime": 1789338037.0196712,
+    "seen": 1789505678.3994775,
+    "ast_hash": "095fc7b5c2271408513d2a771d063c7e",
+    "semantic_hash": ""
+  },
+  "src/data/systemConditions.test.ts": {
+    "mtime": 1789336592.4524844,
+    "seen": 1789505678.3994782,
+    "ast_hash": "969e5d44be9e082db1614e3abd2dbd03",
+    "semantic_hash": ""
+  },
+  "src/data/systemConditions.ts": {
+    "mtime": 1789336592.4504778,
+    "seen": 1789505678.3994796,
+    "ast_hash": "f085a324a1970d70a95eb6537b27d951",
+    "semantic_hash": ""
+  },
+  "src/data/systemRulesCatalog.test.ts": {
+    "mtime": 1789338106.0203898,
+    "seen": 1789505678.3994806,
+    "ast_hash": "483112ce121671ed12a66c5db5cf5eba",
+    "semantic_hash": ""
+  },
+  "src/data/systemRulesCatalog.ts": {
+    "mtime": 1789338037.020671,
+    "seen": 1789505678.3994815,
+    "ast_hash": "7cd614a2e60503297d833eb7b83c81ce",
+    "semantic_hash": ""
+  },
+  "src/data/systemSkills.test.ts": {
+    "mtime": 1789338294.3242843,
+    "seen": 1789505678.3994844,
+    "ast_hash": "69745774c159ab3862a6aaedb8c73c7b",
+    "semantic_hash": ""
+  },
+  "src/data/systemSkills.ts": {
+    "mtime": 1789338823.2500718,
+    "seen": 1789505678.3994853,
+    "ast_hash": "84f7406dff168ba31ba6b6b0adc4058c",
+    "semantic_hash": ""
+  },
+  "src/services/characterEditorRouting.test.ts": {
+    "mtime": 1789348791.756517,
+    "seen": 1789505678.3995173,
+    "ast_hash": "e2efc90b3cc6b9a757ff55633b7ef9cf",
+    "semantic_hash": ""
+  },
+  "src/services/characterEditorRouting.ts": {
+    "mtime": 1789348791.7555554,
+    "seen": 1789505678.3995183,
+    "ast_hash": "fad726d146b502902a020d8a0283620f",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609120021_add_t20_equipment_costs.sql": {
+    "mtime": 1789228231.7242253,
+    "seen": 1789505678.3995807,
+    "ast_hash": "c3fd478239622dbee5a914a1d3102856",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609120022_add_dnd5e_ammunition.sql": {
+    "mtime": 1789228470.5747042,
+    "seen": 1789505678.3995817,
+    "ast_hash": "c7c62c2759a2c669dabf5d9cccfd5d42",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609120023_add_t20_armor_material_metadata.sql": {
+    "mtime": 1789229004.840889,
+    "seen": 1789505678.3995829,
+    "ast_hash": "4f1e2c7d2d02f30a56f7d0904c2fb23a",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130001_seed_core_compendium_current.sql": {
+    "mtime": 1789340304.673108,
+    "seen": 1789505678.399584,
+    "ast_hash": "9e1480f6e9c79208eb5b70dbe657d1c6",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130002_reconcile_pf2e_subclass_orphans.sql": {
+    "mtime": 1789308149.189088,
+    "seen": 1789505678.399585,
+    "ast_hash": "7f9f90b500ed744cee116ced081bc70a",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130003_refresh_core_spell_metadata.sql": {
+    "mtime": 1789340304.6795635,
+    "seen": 1789505678.3995857,
+    "ast_hash": "f1b491200bbfaa6fbf532c8eaa3b4822",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130004_enrich_dnd5e_background_choices.sql": {
+    "mtime": 1789309089.832338,
+    "seen": 1789505678.399587,
+    "ast_hash": "08500f1c5ee53dba513723687ddf83b9",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130005_refresh_core_feat_summaries.sql": {
+    "mtime": 1789340304.681677,
+    "seen": 1789505678.3995876,
+    "ast_hash": "32f83b10a783b97dfab36172ad8f488e",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130006_refresh_t20_general_power_summaries.sql": {
+    "mtime": 1789340304.6826975,
+    "seen": 1789505678.3995886,
+    "ast_hash": "42ce8f98142973cc123cefdb40e69db4",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130007_refresh_t20_granted_tormenta_summaries.sql": {
+    "mtime": 1789340304.683678,
+    "seen": 1789505678.3995895,
+    "ast_hash": "92b16a691cce3977b037e3bcc28b3e62",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130008_reconcile_t20_core_power_catalog.sql": {
+    "mtime": 1789340304.683678,
+    "seen": 1789505678.3995905,
+    "ast_hash": "6cc94e2639799caf33fa12a0b54a11fe",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130009_refresh_t20_spell_effect_summaries.sql": {
+    "mtime": 1789340304.684564,
+    "seen": 1789505678.3995914,
+    "ast_hash": "45d91b614d0f6433b33942b02d68c61a",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130010_refresh_dnd5e_feat_choices.sql": {
+    "mtime": 1789340304.6855636,
+    "seen": 1789505678.3995922,
+    "ast_hash": "96d02ebce2523461b8950976603166fb",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130011_refresh_t20_power_choices.sql": {
+    "mtime": 1789340304.6865642,
+    "seen": 1789505678.399593,
+    "ast_hash": "37a2c5bbe19dbfa3dd54fda9623a8f4f",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130012_refresh_t20_class_choices.sql": {
+    "mtime": 1789312953.4893596,
+    "seen": 1789505678.3995943,
+    "ast_hash": "0920048b98d0c33379925567dae95952",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130013_refresh_t20_spell_effects_complete.sql": {
+    "mtime": 1789340304.6875634,
+    "seen": 1789505678.399595,
+    "ast_hash": "6d22088b2370619147c228603ac75b2b",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130014_refresh_t20_spell_operational_metadata.sql": {
+    "mtime": 1789340304.688568,
+    "seen": 1789505678.3995962,
+    "ast_hash": "6d22088b2370619147c228603ac75b2b",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130015_fix_t20_deflagracao_operational_metadata.sql": {
+    "mtime": 1789313759.822318,
+    "seen": 1789505678.3995974,
+    "ast_hash": "84ffd01cc8fff53dd6b5f14ae8a2c9a4",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130016_refresh_t20_structured_class_choices.sql": {
+    "mtime": 1789314070.1183102,
+    "seen": 1789505678.3995981,
+    "ast_hash": "fff5234374405c12f816b0b81a74ac0b",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130017_add_t20_personal_strike_choices.sql": {
+    "mtime": 1789314327.9340723,
+    "seen": 1789505678.399599,
+    "ast_hash": "d373cab23c6accc81517442933d7f32a",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130018_expand_dnd5e_level1_spells.sql": {
+    "mtime": 1789315018.8801186,
+    "seen": 1789505678.3995998,
+    "ast_hash": "84c3b2602f51ccbc241427d60ca866bf",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130019_fix_dnd5e_ranger_spell_lists.sql": {
+    "mtime": 1789315229.9325945,
+    "seen": 1789505678.399602,
+    "ast_hash": "08dd89e6bb4d1a08145157ead1fb3a79",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130020_expand_dnd5e_level2_spells.sql": {
+    "mtime": 1789315479.8311353,
+    "seen": 1789505678.3996034,
+    "ast_hash": "dd6ac3158021762640025672ca742fec",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130021_expand_dnd5e_level3_spells.sql": {
+    "mtime": 1789315651.5345366,
+    "seen": 1789505678.3996043,
+    "ast_hash": "5e33ea8667af1b0d2e4dfcbd5f3302f2",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130022_expand_dnd5e_level4_spells.sql": {
+    "mtime": 1789315827.8142476,
+    "seen": 1789505678.3996053,
+    "ast_hash": "5771e6f14cfe122cc8588209add58fd7",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130023_expand_dnd5e_level5_spells.sql": {
+    "mtime": 1789316021.0230224,
+    "seen": 1789505678.399606,
+    "ast_hash": "d9e8a6d44c14c16e998ad304e52c06ce",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130024_expand_dnd5e_level6_spells.sql": {
+    "mtime": 1789316206.4610891,
+    "seen": 1789505678.3996067,
+    "ast_hash": "3e4e568ec01ffae707acb56916d067ab",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130025_expand_dnd5e_level7_spells.sql": {
+    "mtime": 1789316374.7631328,
+    "seen": 1789505678.399608,
+    "ast_hash": "f0f8475a42b14edc42e64ab5a03a3b07",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130026_expand_dnd5e_level8_spells.sql": {
+    "mtime": 1789316510.4252474,
+    "seen": 1789505678.3996086,
+    "ast_hash": "5212472cf76bd967ef79cf0c93de6919",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130027_expand_dnd5e_level9_spells.sql": {
+    "mtime": 1789316633.1882198,
+    "seen": 1789505678.3996096,
+    "ast_hash": "520ed596c66afecbde9d8e1438a6c77a",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130028_expand_t20_equipment_catalog.sql": {
+    "mtime": 1789340304.676705,
+    "seen": 1789505678.3996105,
+    "ast_hash": "0f7277fc949ca10c12e51256045e531d",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130029_expand_dnd5e_mounts_vehicles.sql": {
+    "mtime": 1789340304.6776695,
+    "seen": 1789505678.3996115,
+    "ast_hash": "8c0d92ae09056c11c4fa3b2e40c3914c",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130030_expand_dnd5e_core_gear_tools.sql": {
+    "mtime": 1789340304.6776695,
+    "seen": 1789505678.3996124,
+    "ast_hash": "ca7c0a535299e1bb48b61cf90bab54c6",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130031_refresh_dnd5e_weapon_metadata.sql": {
+    "mtime": 1789340304.6786344,
+    "seen": 1789505678.3996131,
+    "ast_hash": "6b22d3d01c6e80e4e691aa26ad20536d",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130032_remove_legacy_dnd5e_weapon_duplicate.sql": {
+    "mtime": 1789318069.2701304,
+    "seen": 1789505678.3996139,
+    "ast_hash": "f61c0ed96c663ce23d7c5117c36abb47",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130033_refresh_t20_weapon_metadata.sql": {
+    "mtime": 1789340304.6795635,
+    "seen": 1789505678.399615,
+    "ast_hash": "7eef83586774aac0181f91c49502f305",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130034_refresh_dnd5e_subclass_choices.sql": {
+    "mtime": 1789321329.8262002,
+    "seen": 1789505678.399616,
+    "ast_hash": "0986cbd8553b3453d72dc5f344e30ac8",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130035_refresh_dnd5e_race_choices.sql": {
+    "mtime": 1789321877.6549308,
+    "seen": 1789505678.3996172,
+    "ast_hash": "cc33f7d3541465318afdd41aa3db1bfb",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130036_refresh_dnd5e_subrace_choices.sql": {
+    "mtime": 1789322341.065037,
+    "seen": 1789505678.3996181,
+    "ast_hash": "1b964e65d92a00882eb3d96c75dd6dde",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130037_expand_t20_magic_items.sql": {
+    "mtime": 1789323781.065247,
+    "seen": 1789505678.3996189,
+    "ast_hash": "59be3f6dc4e13cb060d12de9d7001485",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130038_expand_t20_specific_weapons.sql": {
+    "mtime": 1789324115.3124175,
+    "seen": 1789505678.3996196,
+    "ast_hash": "61d630d5476f939c6d26a6e7ee314253",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130039_expand_dnd5e_magic_items.sql": {
+    "mtime": 1789324552.843306,
+    "seen": 1789505678.3996205,
+    "ast_hash": "da1026a3e0e422d3ec5f8211a69643e2",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130040_refresh_t20_spell_schools.sql": {
+    "mtime": 1789327074.840751,
+    "seen": 1789505678.3996215,
+    "ast_hash": "eaf5096f06d9021079ef1d35f831efd5",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130041_seed_ose_classic_catalog.sql": {
+    "mtime": 1789331929.9916775,
+    "seen": 1789505678.3996224,
+    "ast_hash": "2b78061040f0c7303723239dca3e8782",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130042_seed_core_actions_conditions.sql": {
+    "mtime": 1789336960.1210096,
+    "seen": 1789505678.3996234,
+    "ast_hash": "8c078fe6529e88f945798afa410c8441",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130043_create_core_skills_catalog.sql": {
+    "mtime": 1789338703.5933282,
+    "seen": 1789505678.399624,
+    "ast_hash": "4359d2b3e6641378dd0be964bfe45b20",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130044_seed_ose_classic_actions.sql": {
+    "mtime": 1789338221.8742094,
+    "seen": 1789505678.399625,
+    "ast_hash": "db4c58eb784dd13c4ca46794842e8118",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130045_refresh_dnd5e_power_attack_weapon_metadata.sql": {
+    "mtime": 1789345601.8687086,
+    "seen": 1789505678.399626,
+    "ast_hash": "f46f86fb519b436f52340f0eb1241131",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130046_refresh_dnd5e_attunement_metadata.sql": {
+    "mtime": 1789348204.6177154,
+    "seen": 1789505678.399627,
+    "ast_hash": "72daa651febb020b64b0f7f798a80196",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130047_backfill_character_system_metadata.sql": {
+    "mtime": 1789348791.7575169,
+    "seen": 1789505678.399629,
+    "ast_hash": "6ae88a1e67d232937bf848507d48b8b1",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609130048_refresh_dnd5e_granted_magic_spells.sql": {
+    "mtime": 1789349400.871853,
+    "seen": 1789505678.3996298,
+    "ast_hash": "4b2f16b0247c52ac4eb0bec4399c5631",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202609140001_backfill_character_payload_metadata.sql": {
+    "mtime": 1789356150.6212363,
+    "seen": 1789505678.3996305,
+    "ast_hash": "e370a65a2afd00b3e015f429744f4eda",
     "semantic_hash": ""
   }
 }
