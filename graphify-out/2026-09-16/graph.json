@@ -251,6 +251,32 @@
       "source_location": "L326"
     },
     {
+      "id": "src_data_dnd5e_dnd5eclasses_dnd5eclassrules",
+      "label": "Dnd5eClassRules",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1072,
+      "community_name": "dnd5eClasses.ts",
+      "file_type": "code",
+      "norm_label": "dnd5eclassrules",
+      "source_file": "src/data/dnd5e/dnd5eClasses.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_t20_t20classes_t20classrules",
+      "label": "T20ClassRules",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1073,
+      "community_name": "t20Classes.ts",
+      "file_type": "code",
+      "norm_label": "t20classrules",
+      "source_file": "src/data/t20/t20Classes.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "agents_skills_taste_application_tests_test_cli_clitests",
       "label": "CliTests",
       "_callable": true,
@@ -589,30 +615,30 @@
       "source_location": "L16"
     },
     {
-      "id": "agents_skills_taste_application_tests_test_interview_conducttests",
-      "label": "ConductTests",
+      "id": "agents_skills_taste_application_tests_test_distill_failclosedlivetests",
+      "label": "FailClosedLiveTests",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 167,
       "community_name": "tasteforge/__init__.py",
       "file_type": "code",
-      "norm_label": "conducttests",
-      "source_file": ".agents/skills/taste-application/tests/test_interview.py",
-      "source_location": "L31"
+      "norm_label": "failclosedlivetests",
+      "source_file": ".agents/skills/taste-application/tests/test_distill.py",
+      "source_location": "L70"
     },
     {
-      "id": "agents_skills_taste_application_tests_test_interview_questionsettests",
-      "label": "QuestionSetTests",
+      "id": "agents_skills_taste_application_tests_test_distill_localdistilltests",
+      "label": "LocalDistillTests",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 167,
       "community_name": "tasteforge/__init__.py",
       "file_type": "code",
-      "norm_label": "questionsettests",
-      "source_file": ".agents/skills/taste-application/tests/test_interview.py",
-      "source_location": "L15"
+      "norm_label": "localdistilltests",
+      "source_file": ".agents/skills/taste-application/tests/test_distill.py",
+      "source_location": "L36"
     },
     {
       "id": "agents_skills_taste_application_tests_test_providers_registryfailclosedtests",
@@ -628,17 +654,17 @@
       "source_location": "L15"
     },
     {
-      "id": "src_data_catalog_provenance_test_legacyrecord",
-      "label": "LegacyRecord",
+      "id": "src_accountstate_accountviewstate",
+      "label": "AccountViewState",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 172,
       "community_name": "PortalPages.tsx",
       "file_type": "code",
-      "norm_label": "legacyrecord",
-      "source_file": "src/data/catalog-provenance.test.ts",
-      "source_location": "L7"
+      "norm_label": "accountviewstate",
+      "source_file": "src/accountState.ts",
+      "source_location": "L3"
     },
     {
       "id": "src_data_corecompendium_corecatalogentry",
@@ -652,6 +678,32 @@
       "norm_label": "corecatalogentry",
       "source_file": "src/data/coreCompendium.ts",
       "source_location": "L14"
+    },
+    {
+      "id": "src_data_dnd5e_dnd5ecatalog_dnd5ecatalogentry",
+      "label": "Dnd5eCatalogEntry",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 172,
+      "community_name": "PortalPages.tsx",
+      "file_type": "code",
+      "norm_label": "dnd5ecatalogentry",
+      "source_file": "src/data/dnd5e/dnd5eCatalog.ts",
+      "source_location": "L3"
+    },
+    {
+      "id": "src_data_dnd5e_dnd5ecatalog_dnd5etoolentry",
+      "label": "Dnd5eToolEntry",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 172,
+      "community_name": "PortalPages.tsx",
+      "file_type": "code",
+      "norm_label": "dnd5etoolentry",
+      "source_file": "src/data/dnd5e/dnd5eCatalog.ts",
+      "source_location": "L11"
     },
     {
       "id": "src_data_dnd5e_dnd5ecompendium_dnd5ecompendiumentry",
@@ -797,30 +849,30 @@
       "source_location": "L1"
     },
     {
-      "id": "src_data_sources_googledrivemapfile",
-      "label": "GoogleDriveMapFile",
+      "id": "src_data_t20_t20catalog_t20catalogentry",
+      "label": "T20CatalogEntry",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 172,
       "community_name": "PortalPages.tsx",
       "file_type": "code",
-      "norm_label": "googledrivemapfile",
-      "source_file": "src/data/sources.ts",
-      "source_location": "L34"
+      "norm_label": "t20catalogentry",
+      "source_file": "src/data/t20/t20Catalog.ts",
+      "source_location": "L3"
     },
     {
-      "id": "src_data_sources_pathfindersource",
-      "label": "PathfinderSource",
+      "id": "src_data_t20_t20catalog_t20classchoice",
+      "label": "T20ClassChoice",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 172,
       "community_name": "PortalPages.tsx",
       "file_type": "code",
-      "norm_label": "pathfindersource",
-      "source_file": "src/data/sources.ts",
-      "source_location": "L1"
+      "norm_label": "t20classchoice",
+      "source_file": "src/data/t20/t20Catalog.ts",
+      "source_location": "L52"
     },
     {
       "id": "src_data_t20_t20origins_t20origin",
@@ -834,6 +886,19 @@
       "norm_label": "t20origin",
       "source_file": "src/data/t20/t20Origins.ts",
       "source_location": "L3"
+    },
+    {
+      "id": "src_data_t20_t20races_t20racerules",
+      "label": "T20RaceRules",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 172,
+      "community_name": "PortalPages.tsx",
+      "file_type": "code",
+      "norm_label": "t20racerules",
+      "source_file": "src/data/t20/t20Races.ts",
+      "source_location": "L1"
     },
     {
       "id": "src_portalpages_libraryasset",
@@ -862,17 +927,56 @@
       "source_location": "L66"
     },
     {
-      "id": "src_accountstate_accountviewstate",
-      "label": "AccountViewState",
+      "id": "src_data_catalog_provenance_test_legacyrecord",
+      "label": "LegacyRecord",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 179,
-      "community_name": "i18n.tsx",
+      "community": 173,
+      "community_name": "sources.ts",
       "file_type": "code",
-      "norm_label": "accountviewstate",
-      "source_file": "src/accountState.ts",
-      "source_location": "L3"
+      "norm_label": "legacyrecord",
+      "source_file": "src/data/catalog-provenance.test.ts",
+      "source_location": "L7"
+    },
+    {
+      "id": "src_data_sources_googledrivemapfile",
+      "label": "GoogleDriveMapFile",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 173,
+      "community_name": "sources.ts",
+      "file_type": "code",
+      "norm_label": "googledrivemapfile",
+      "source_file": "src/data/sources.ts",
+      "source_location": "L34"
+    },
+    {
+      "id": "src_data_sources_pathfindersource",
+      "label": "PathfinderSource",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 173,
+      "community_name": "sources.ts",
+      "file_type": "code",
+      "norm_label": "pathfindersource",
+      "source_file": "src/data/sources.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_types_pickercontroller",
+      "label": "PickerController",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 173,
+      "community_name": "sources.ts",
+      "file_type": "code",
+      "norm_label": "pickercontroller",
+      "source_file": "src/types.ts",
+      "source_location": "L337"
     },
     {
       "id": "src_data_actionsdata_actiondefinition",
@@ -990,19 +1094,6 @@
       "norm_label": "themecontexttype",
       "source_file": "src/theme.tsx",
       "source_location": "L6"
-    },
-    {
-      "id": "src_types_pickercontroller",
-      "label": "PickerController",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 179,
-      "community_name": "i18n.tsx",
-      "file_type": "code",
-      "norm_label": "pickercontroller",
-      "source_file": "src/types.ts",
-      "source_location": "L337"
     },
     {
       "id": "agents_skills_graphify_watch_storedsourcepaths",
@@ -1252,19 +1343,6 @@
       "source_location": "L5"
     },
     {
-      "id": "src_data_dnd5e_dnd5ecatalog_dnd5ecatalogentry",
-      "label": "Dnd5eCatalogEntry",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 191,
-      "community_name": "multiSystemCharacter.ts",
-      "file_type": "code",
-      "norm_label": "dnd5ecatalogentry",
-      "source_file": "src/data/dnd5e/dnd5eCatalog.ts",
-      "source_location": "L3"
-    },
-    {
       "id": "src_data_dnd5e_dnd5ecatalog_dnd5etoolchoicegroup",
       "label": "Dnd5eToolChoiceGroup",
       "_callable": true,
@@ -1276,32 +1354,6 @@
       "norm_label": "dnd5etoolchoicegroup",
       "source_file": "src/data/dnd5e/dnd5eCatalog.ts",
       "source_location": "L18"
-    },
-    {
-      "id": "src_data_dnd5e_dnd5ecatalog_dnd5etoolentry",
-      "label": "Dnd5eToolEntry",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 191,
-      "community_name": "multiSystemCharacter.ts",
-      "file_type": "code",
-      "norm_label": "dnd5etoolentry",
-      "source_file": "src/data/dnd5e/dnd5eCatalog.ts",
-      "source_location": "L11"
-    },
-    {
-      "id": "src_data_dnd5e_dnd5eclasses_dnd5eclassrules",
-      "label": "Dnd5eClassRules",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 191,
-      "community_name": "multiSystemCharacter.ts",
-      "file_type": "code",
-      "norm_label": "dnd5eclassrules",
-      "source_file": "src/data/dnd5e/dnd5eClasses.ts",
-      "source_location": "L1"
     },
     {
       "id": "src_data_dnd5e_dnd5eprogressions_dnd5eclassprogression",
@@ -1421,58 +1473,6 @@
       "source_location": "L120"
     },
     {
-      "id": "src_data_t20_t20catalog_t20catalogentry",
-      "label": "T20CatalogEntry",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 191,
-      "community_name": "multiSystemCharacter.ts",
-      "file_type": "code",
-      "norm_label": "t20catalogentry",
-      "source_file": "src/data/t20/t20Catalog.ts",
-      "source_location": "L3"
-    },
-    {
-      "id": "src_data_t20_t20catalog_t20classchoice",
-      "label": "T20ClassChoice",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 191,
-      "community_name": "multiSystemCharacter.ts",
-      "file_type": "code",
-      "norm_label": "t20classchoice",
-      "source_file": "src/data/t20/t20Catalog.ts",
-      "source_location": "L52"
-    },
-    {
-      "id": "src_data_t20_t20classes_t20classrules",
-      "label": "T20ClassRules",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 191,
-      "community_name": "multiSystemCharacter.ts",
-      "file_type": "code",
-      "norm_label": "t20classrules",
-      "source_file": "src/data/t20/t20Classes.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_data_t20_t20races_t20racerules",
-      "label": "T20RaceRules",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 191,
-      "community_name": "multiSystemCharacter.ts",
-      "file_type": "code",
-      "norm_label": "t20racerules",
-      "source_file": "src/data/t20/t20Races.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "src_services_corepdfexport_form",
       "label": "Form",
       "_callable": true,
@@ -1486,30 +1486,17 @@
       "source_location": "L7"
     },
     {
-      "id": "agents_skills_taste_application_tests_test_distill_failclosedlivetests",
-      "label": "FailClosedLiveTests",
+      "id": "agents_skills_taste_application_tests_test_resolve_probetests",
+      "label": "ProbeTests",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 192,
-      "community_name": "LocalDistillTests",
+      "community_name": "tasteforge/resolve.py",
       "file_type": "code",
-      "norm_label": "failclosedlivetests",
-      "source_file": ".agents/skills/taste-application/tests/test_distill.py",
-      "source_location": "L70"
-    },
-    {
-      "id": "agents_skills_taste_application_tests_test_distill_localdistilltests",
-      "label": "LocalDistillTests",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 192,
-      "community_name": "LocalDistillTests",
-      "file_type": "code",
-      "norm_label": "localdistilltests",
-      "source_file": ".agents/skills/taste-application/tests/test_distill.py",
-      "source_location": "L36"
+      "norm_label": "probetests",
+      "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
+      "source_location": "L293"
     },
     {
       "id": "agents_skills_taste_application_scripts_taste_grade_gradestats",
@@ -1765,7 +1752,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 229,
-      "community_name": "tasteforge/resolve.py",
+      "community_name": "ResolveTests",
       "file_type": "code",
       "norm_label": "item",
       "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
@@ -1778,7 +1765,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 229,
-      "community_name": "tasteforge/resolve.py",
+      "community_name": "ResolveTests",
       "file_type": "code",
       "norm_label": "media",
       "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
@@ -1791,24 +1778,11 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 229,
-      "community_name": "tasteforge/resolve.py",
+      "community_name": "ResolveTests",
       "file_type": "code",
       "norm_label": "pool",
       "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
       "source_location": "L73"
-    },
-    {
-      "id": "agents_skills_taste_application_tests_test_resolve_probetests",
-      "label": "ProbeTests",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 229,
-      "community_name": "tasteforge/resolve.py",
-      "file_type": "code",
-      "norm_label": "probetests",
-      "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
-      "source_location": "L293"
     },
     {
       "id": "agents_skills_taste_application_tests_test_resolve_resolvetests",
@@ -1817,7 +1791,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 229,
-      "community_name": "tasteforge/resolve.py",
+      "community_name": "ResolveTests",
       "file_type": "code",
       "norm_label": "resolvetests",
       "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
@@ -1830,7 +1804,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 229,
-      "community_name": "tasteforge/resolve.py",
+      "community_name": "ResolveTests",
       "file_type": "code",
       "norm_label": "timeline",
       "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
@@ -2901,6 +2875,32 @@
       "norm_label": "languageresolver",
       "source_file": ".agents/skills/graphify/resolver_registry.py",
       "source_location": "L29"
+    },
+    {
+      "id": "agents_skills_taste_application_tests_test_interview_conducttests",
+      "label": "ConductTests",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 635,
+      "community_name": "ConductTests",
+      "file_type": "code",
+      "norm_label": "conducttests",
+      "source_file": ".agents/skills/taste-application/tests/test_interview.py",
+      "source_location": "L31"
+    },
+    {
+      "id": "agents_skills_taste_application_tests_test_interview_questionsettests",
+      "label": "QuestionSetTests",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 635,
+      "community_name": "ConductTests",
+      "file_type": "code",
+      "norm_label": "questionsettests",
+      "source_file": ".agents/skills/taste-application/tests/test_interview.py",
+      "source_location": "L15"
     },
     {
       "id": "agents_skills_taste_application_tests_test_offline_fixture_offlinefixturetests",
@@ -4661,6 +4661,42 @@
       "norm_label": "catalogcard()",
       "source_file": "src/PortalPages.tsx",
       "source_location": "L610"
+    },
+    {
+      "id": "src_portalpages_catalogpage",
+      "label": "CatalogPage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "PickerModal.tsx",
+      "file_type": "code",
+      "norm_label": "catalogpage()",
+      "source_file": "src/PortalPages.tsx",
+      "source_location": "L164"
+    },
+    {
+      "id": "src_portalpages_getlocalizedtrait",
+      "label": "getLocalizedTrait()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "PickerModal.tsx",
+      "file_type": "code",
+      "norm_label": "getlocalizedtrait()",
+      "source_file": "src/PortalPages.tsx",
+      "source_location": "L605"
+    },
+    {
+      "id": "src_portalpages_hasfallbacktranslation",
+      "label": "hasFallbackTranslation()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "PickerModal.tsx",
+      "file_type": "code",
+      "norm_label": "hasfallbacktranslation()",
+      "source_file": "src/PortalPages.tsx",
+      "source_location": "L551"
     },
     {
       "id": "src_utils_economy_canaffordprice",
@@ -6775,6 +6811,54 @@
       "source_location": "L12"
     },
     {
+      "id": "src_data_dnd5e_dnd5eclasses_c",
+      "label": "c()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1072,
+      "community_name": "dnd5eClasses.ts",
+      "file_type": "code",
+      "norm_label": "c()",
+      "source_file": "src/data/dnd5e/dnd5eClasses.ts",
+      "source_location": "L14"
+    },
+    {
+      "id": "src_data_dnd5e_dnd5eclasses_getdnd5eclassrules",
+      "label": "getDnd5eClassRules()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1072,
+      "community_name": "dnd5eClasses.ts",
+      "file_type": "code",
+      "norm_label": "getdnd5eclassrules()",
+      "source_file": "src/data/dnd5e/dnd5eClasses.ts",
+      "source_location": "L49"
+    },
+    {
+      "id": "src_data_t20_t20classes_c",
+      "label": "c()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1073,
+      "community_name": "t20Classes.ts",
+      "file_type": "code",
+      "norm_label": "c()",
+      "source_file": "src/data/t20/t20Classes.ts",
+      "source_location": "L15"
+    },
+    {
+      "id": "src_data_t20_t20classes_gett20classrules",
+      "label": "getT20ClassRules()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1073,
+      "community_name": "t20Classes.ts",
+      "file_type": "code",
+      "norm_label": "gett20classrules()",
+      "source_file": "src/data/t20/t20Classes.ts",
+      "source_location": "L54"
+    },
+    {
       "id": "scripts_audit_local_accessibility_main",
       "label": "main()",
       "_callable": true,
@@ -6785,6 +6869,18 @@
       "norm_label": "main()",
       "source_file": "scripts/audit-local-accessibility.cjs",
       "source_location": "L8"
+    },
+    {
+      "id": "scripts_audit_local_responsive_main",
+      "label": "main()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1075,
+      "community_name": "audit-local-responsive.cjs",
+      "file_type": "code",
+      "norm_label": "main()",
+      "source_file": "scripts/audit-local-responsive.cjs",
+      "source_location": "L11"
     },
     {
       "id": "agents_skills_graphify_extractors_resolution_resolve_cross_file_java_imports",
@@ -6893,6 +6989,18 @@
       "norm_label": "_wrap_untrusted()",
       "source_file": ".agents/skills/graphify/llm.py",
       "source_location": "L582"
+    },
+    {
+      "id": "scripts_audit_local_interactions_main",
+      "label": "main()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1080,
+      "community_name": "audit-local-interactions.cjs",
+      "file_type": "code",
+      "norm_label": "main()",
+      "source_file": "scripts/audit-local-interactions.cjs",
+      "source_location": "L7"
     },
     {
       "id": "agents_skills_taste_distillation_scripts_taste_grade_subsample_idx",
@@ -7435,18 +7543,6 @@
       "source_location": "L880"
     },
     {
-      "id": "scripts_audit_local_interactions_main",
-      "label": "main()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 115,
-      "community_name": "playwright",
-      "file_type": "code",
-      "norm_label": "main()",
-      "source_file": "scripts/audit-local-interactions.cjs",
-      "source_location": "L7"
-    },
-    {
       "id": "scripts_audit_local_picker_usage_main",
       "label": "main()",
       "_callable": true,
@@ -7481,18 +7577,6 @@
       "norm_label": "choosefirst()",
       "source_file": "scripts/audit-local-picker-usage.cjs",
       "source_location": "L51"
-    },
-    {
-      "id": "scripts_audit_local_responsive_main",
-      "label": "main()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 115,
-      "community_name": "playwright",
-      "file_type": "code",
-      "norm_label": "main()",
-      "source_file": "scripts/audit-local-responsive.cjs",
-      "source_location": "L11"
     },
     {
       "id": "scripts_audit_local_weapons_main",
@@ -8995,6 +9079,54 @@
       "source_location": "L15"
     },
     {
+      "id": "scripts_generate_ose_catalog_migration_conflict",
+      "label": "conflict()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "OseCharacterCreatorModal.tsx",
+      "file_type": "code",
+      "norm_label": "conflict()",
+      "source_file": "scripts/generate-ose-catalog-migration.mjs",
+      "source_location": "L22"
+    },
+    {
+      "id": "scripts_generate_ose_catalog_migration_quote",
+      "label": "quote()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "OseCharacterCreatorModal.tsx",
+      "file_type": "code",
+      "norm_label": "quote()",
+      "source_file": "scripts/generate-ose-catalog-migration.mjs",
+      "source_location": "L13"
+    },
+    {
+      "id": "scripts_generate_ose_catalog_migration_sql",
+      "label": "sql()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "OseCharacterCreatorModal.tsx",
+      "file_type": "code",
+      "norm_label": "sql()",
+      "source_file": "scripts/generate-ose-catalog-migration.mjs",
+      "source_location": "L14"
+    },
+    {
+      "id": "scripts_generate_ose_catalog_migration_textarray",
+      "label": "textArray()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "OseCharacterCreatorModal.tsx",
+      "file_type": "code",
+      "norm_label": "textarray()",
+      "source_file": "scripts/generate-ose-catalog-migration.mjs",
+      "source_location": "L21"
+    },
+    {
       "id": "src_data_ose_oseequipment_calculateosearmorclass",
       "label": "calculateOseArmorClass()",
       "_callable": true,
@@ -9727,88 +9859,100 @@
       "source_location": "L57"
     },
     {
-      "id": "agents_skills_taste_application_tests_test_interview_conducttests_answers",
-      "label": "._answers()",
+      "id": "agents_skills_taste_application_tests_test_distill_failclosedlivetests_test_distill_live_raises_provider_disabled",
+      "label": ".test_distill_live_raises_provider_disabled()",
       "_callable": true,
       "_origin": "ast",
       "community": 167,
       "community_name": "tasteforge/__init__.py",
       "file_type": "code",
-      "norm_label": "._answers()",
-      "source_file": ".agents/skills/taste-application/tests/test_interview.py",
-      "source_location": "L32"
+      "norm_label": ".test_distill_live_raises_provider_disabled()",
+      "source_file": ".agents/skills/taste-application/tests/test_distill.py",
+      "source_location": "L71"
     },
     {
-      "id": "agents_skills_taste_application_tests_test_interview_conducttests_test_conduct_produces_valid_profile",
-      "label": ".test_conduct_produces_valid_profile()",
+      "id": "agents_skills_taste_application_tests_test_distill_failclosedlivetests_test_no_network_module_imported",
+      "label": ".test_no_network_module_imported()",
       "_callable": true,
       "_origin": "ast",
       "community": 167,
       "community_name": "tasteforge/__init__.py",
       "file_type": "code",
-      "norm_label": ".test_conduct_produces_valid_profile()",
-      "source_file": ".agents/skills/taste-application/tests/test_interview.py",
-      "source_location": "L46"
+      "norm_label": ".test_no_network_module_imported()",
+      "source_file": ".agents/skills/taste-application/tests/test_distill.py",
+      "source_location": "L76"
     },
     {
-      "id": "agents_skills_taste_application_tests_test_interview_conducttests_test_constraints_split_look_and_content",
-      "label": ".test_constraints_split_look_and_content()",
+      "id": "agents_skills_taste_application_tests_test_distill_localdistilltests_test_distill_local_is_deterministic",
+      "label": ".test_distill_local_is_deterministic()",
       "_callable": true,
       "_origin": "ast",
       "community": 167,
       "community_name": "tasteforge/__init__.py",
       "file_type": "code",
-      "norm_label": ".test_constraints_split_look_and_content()",
-      "source_file": ".agents/skills/taste-application/tests/test_interview.py",
-      "source_location": "L67"
+      "norm_label": ".test_distill_local_is_deterministic()",
+      "source_file": ".agents/skills/taste-application/tests/test_distill.py",
+      "source_location": "L42"
     },
     {
-      "id": "agents_skills_taste_application_tests_test_interview_conducttests_test_missing_answers_are_flagged_not_invented",
-      "label": ".test_missing_answers_are_flagged_not_invented()",
+      "id": "agents_skills_taste_application_tests_test_distill_localdistilltests_test_distill_local_labels_dry_run_and_carries_answers",
+      "label": ".test_distill_local_labels_dry_run_and_carries_answers()",
       "_callable": true,
       "_origin": "ast",
       "community": 167,
       "community_name": "tasteforge/__init__.py",
       "file_type": "code",
-      "norm_label": ".test_missing_answers_are_flagged_not_invented()",
-      "source_file": ".agents/skills/taste-application/tests/test_interview.py",
-      "source_location": "L52"
+      "norm_label": ".test_distill_local_labels_dry_run_and_carries_answers()",
+      "source_file": ".agents/skills/taste-application/tests/test_distill.py",
+      "source_location": "L48"
     },
     {
-      "id": "agents_skills_taste_application_tests_test_interview_conducttests_test_profile_deterministic",
-      "label": ".test_profile_deterministic()",
+      "id": "agents_skills_taste_application_tests_test_distill_localdistilltests_test_distill_local_produces_valid_spec",
+      "label": ".test_distill_local_produces_valid_spec()",
       "_callable": true,
       "_origin": "ast",
       "community": 167,
       "community_name": "tasteforge/__init__.py",
       "file_type": "code",
-      "norm_label": ".test_profile_deterministic()",
-      "source_file": ".agents/skills/taste-application/tests/test_interview.py",
-      "source_location": "L61"
+      "norm_label": ".test_distill_local_produces_valid_spec()",
+      "source_file": ".agents/skills/taste-application/tests/test_distill.py",
+      "source_location": "L37"
     },
     {
-      "id": "agents_skills_taste_application_tests_test_interview_questionsettests_test_every_question_has_prompt_and_id",
-      "label": ".test_every_question_has_prompt_and_id()",
+      "id": "agents_skills_taste_application_tests_test_distill_localdistilltests_test_grounding_from_empty_inputs_is_empty",
+      "label": ".test_grounding_from_empty_inputs_is_empty()",
       "_callable": true,
       "_origin": "ast",
       "community": 167,
       "community_name": "tasteforge/__init__.py",
       "file_type": "code",
-      "norm_label": ".test_every_question_has_prompt_and_id()",
-      "source_file": ".agents/skills/taste-application/tests/test_interview.py",
-      "source_location": "L25"
+      "norm_label": ".test_grounding_from_empty_inputs_is_empty()",
+      "source_file": ".agents/skills/taste-application/tests/test_distill.py",
+      "source_location": "L66"
     },
     {
-      "id": "agents_skills_taste_application_tests_test_interview_questionsettests_test_questions_cover_required_axes",
-      "label": ".test_questions_cover_required_axes()",
+      "id": "agents_skills_taste_application_tests_test_distill_localdistilltests_test_grounding_from_grade_states_measurements",
+      "label": ".test_grounding_from_grade_states_measurements()",
       "_callable": true,
       "_origin": "ast",
       "community": 167,
       "community_name": "tasteforge/__init__.py",
       "file_type": "code",
-      "norm_label": ".test_questions_cover_required_axes()",
-      "source_file": ".agents/skills/taste-application/tests/test_interview.py",
-      "source_location": "L16"
+      "norm_label": ".test_grounding_from_grade_states_measurements()",
+      "source_file": ".agents/skills/taste-application/tests/test_distill.py",
+      "source_location": "L55"
+    },
+    {
+      "id": "agents_skills_taste_application_tests_test_distill_profile",
+      "label": "_profile()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 167,
+      "community_name": "tasteforge/__init__.py",
+      "file_type": "code",
+      "norm_label": "_profile()",
+      "source_file": ".agents/skills/taste-application/tests/test_distill.py",
+      "source_location": "L18"
     },
     {
       "id": "agents_skills_taste_application_tests_test_providers_registryfailclosedtests_test_default_registry_has_no_providers",
@@ -9979,16 +10123,28 @@
       "source_location": "L663"
     },
     {
-      "id": "src_data_catalog_provenance_test_loadcatalog",
-      "label": "loadCatalog()",
+      "id": "src_accountstate_subscribe",
+      "label": "subscribe()",
       "_callable": true,
       "_origin": "ast",
       "community": 172,
       "community_name": "PortalPages.tsx",
       "file_type": "code",
-      "norm_label": "loadcatalog()",
-      "source_file": "src/data/catalog-provenance.test.ts",
-      "source_location": "L31"
+      "norm_label": "subscribe()",
+      "source_file": "src/accountState.ts",
+      "source_location": "L19"
+    },
+    {
+      "id": "src_accountstate_useaccountviewstate",
+      "label": "useAccountViewState()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 172,
+      "community_name": "PortalPages.tsx",
+      "file_type": "code",
+      "norm_label": "useaccountviewstate()",
+      "source_file": "src/accountState.ts",
+      "source_location": "L24"
     },
     {
       "id": "src_data_corecompendium_equipmentcategory",
@@ -10099,18 +10255,6 @@
       "source_location": "L53"
     },
     {
-      "id": "src_data_readiness_validator_test_loadengine",
-      "label": "loadEngine()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 172,
-      "community_name": "PortalPages.tsx",
-      "file_type": "code",
-      "norm_label": "loadengine()",
-      "source_file": "src/data/readiness-validator.test.ts",
-      "source_location": "L8"
-    },
-    {
       "id": "src_data_t20_t20catalog_entry",
       "label": "entry()",
       "_callable": true,
@@ -10135,6 +10279,78 @@
       "source_location": "L12"
     },
     {
+      "id": "src_data_t20_t20races_gett20racerules",
+      "label": "getT20RaceRules()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 172,
+      "community_name": "PortalPages.tsx",
+      "file_type": "code",
+      "norm_label": "gett20racerules()",
+      "source_file": "src/data/t20/t20Races.ts",
+      "source_location": "L37"
+    },
+    {
+      "id": "src_data_t20_t20races_r",
+      "label": "r()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 172,
+      "community_name": "PortalPages.tsx",
+      "file_type": "code",
+      "norm_label": "r()",
+      "source_file": "src/data/t20/t20Races.ts",
+      "source_location": "L15"
+    },
+    {
+      "id": "src_i18n_applylegacytranslations",
+      "label": "applyLegacyTranslations()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 172,
+      "community_name": "PortalPages.tsx",
+      "file_type": "code",
+      "norm_label": "applylegacytranslations()",
+      "source_file": "src/i18n.tsx",
+      "source_location": "L294"
+    },
+    {
+      "id": "src_i18n_localeswitcher",
+      "label": "LocaleSwitcher()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 172,
+      "community_name": "PortalPages.tsx",
+      "file_type": "code",
+      "norm_label": "localeswitcher()",
+      "source_file": "src/i18n.tsx",
+      "source_location": "L552"
+    },
+    {
+      "id": "src_i18n_usei18n",
+      "label": "useI18n()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 172,
+      "community_name": "PortalPages.tsx",
+      "file_type": "code",
+      "norm_label": "usei18n()",
+      "source_file": "src/i18n.tsx",
+      "source_location": "L324"
+    },
+    {
+      "id": "src_portalpages_adminpage",
+      "label": "AdminPage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 172,
+      "community_name": "PortalPages.tsx",
+      "file_type": "code",
+      "norm_label": "adminpage()",
+      "source_file": "src/PortalPages.tsx",
+      "source_location": "L1782"
+    },
+    {
       "id": "src_portalpages_bookdownloadssection",
       "label": "BookDownloadsSection()",
       "_callable": true,
@@ -10147,6 +10363,18 @@
       "source_location": "L668"
     },
     {
+      "id": "src_portalpages_downloadspage",
+      "label": "DownloadsPage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 172,
+      "community_name": "PortalPages.tsx",
+      "file_type": "code",
+      "norm_label": "downloadspage()",
+      "source_file": "src/PortalPages.tsx",
+      "source_location": "L843"
+    },
+    {
       "id": "src_portalpages_formatcatalogvalue",
       "label": "formatCatalogValue()",
       "_callable": true,
@@ -10157,6 +10385,18 @@
       "norm_label": "formatcatalogvalue()",
       "source_file": "src/PortalPages.tsx",
       "source_location": "L562"
+    },
+    {
+      "id": "src_portalpages_getroute",
+      "label": "getRoute()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 172,
+      "community_name": "PortalPages.tsx",
+      "file_type": "code",
+      "norm_label": "getroute()",
+      "source_file": "src/PortalPages.tsx",
+      "source_location": "L155"
     },
     {
       "id": "src_portalpages_googledrivelibrarysection",
@@ -10255,6 +10495,42 @@
       "source_location": "L123"
     },
     {
+      "id": "src_portalpages_mapdownloadssection",
+      "label": "MapDownloadsSection()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 172,
+      "community_name": "PortalPages.tsx",
+      "file_type": "code",
+      "norm_label": "mapdownloadssection()",
+      "source_file": "src/PortalPages.tsx",
+      "source_location": "L905"
+    },
+    {
+      "id": "src_portalpages_portalpages",
+      "label": "PortalPages()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 172,
+      "community_name": "PortalPages.tsx",
+      "file_type": "code",
+      "norm_label": "portalpages()",
+      "source_file": "src/PortalPages.tsx",
+      "source_location": "L2058"
+    },
+    {
+      "id": "src_portalpages_privacypage",
+      "label": "PrivacyPage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 172,
+      "community_name": "PortalPages.tsx",
+      "file_type": "code",
+      "norm_label": "privacypage()",
+      "source_file": "src/PortalPages.tsx",
+      "source_location": "L1770"
+    },
+    {
       "id": "src_portalpages_rulespage",
       "label": "RulesPage()",
       "_callable": true,
@@ -10267,52 +10543,40 @@
       "source_location": "L1001"
     },
     {
-      "id": "scripts_generate_ose_catalog_migration_conflict",
-      "label": "conflict()",
+      "id": "src_data_catalog_provenance_test_loadcatalog",
+      "label": "loadCatalog()",
       "_callable": true,
       "_origin": "ast",
       "community": 173,
-      "community_name": "generate-ose-catalog-migration.mjs",
+      "community_name": "sources.ts",
       "file_type": "code",
-      "norm_label": "conflict()",
-      "source_file": "scripts/generate-ose-catalog-migration.mjs",
-      "source_location": "L22"
+      "norm_label": "loadcatalog()",
+      "source_file": "src/data/catalog-provenance.test.ts",
+      "source_location": "L31"
     },
     {
-      "id": "scripts_generate_ose_catalog_migration_quote",
-      "label": "quote()",
+      "id": "src_data_readiness_validator_test_loadengine",
+      "label": "loadEngine()",
       "_callable": true,
       "_origin": "ast",
       "community": 173,
-      "community_name": "generate-ose-catalog-migration.mjs",
+      "community_name": "sources.ts",
       "file_type": "code",
-      "norm_label": "quote()",
-      "source_file": "scripts/generate-ose-catalog-migration.mjs",
-      "source_location": "L13"
+      "norm_label": "loadengine()",
+      "source_file": "src/data/readiness-validator.test.ts",
+      "source_location": "L8"
     },
     {
-      "id": "scripts_generate_ose_catalog_migration_sql",
-      "label": "sql()",
+      "id": "src_portalpages_test_controller",
+      "label": "controller()",
       "_callable": true,
       "_origin": "ast",
       "community": 173,
-      "community_name": "generate-ose-catalog-migration.mjs",
+      "community_name": "sources.ts",
       "file_type": "code",
-      "norm_label": "sql()",
-      "source_file": "scripts/generate-ose-catalog-migration.mjs",
-      "source_location": "L14"
-    },
-    {
-      "id": "scripts_generate_ose_catalog_migration_textarray",
-      "label": "textArray()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 173,
-      "community_name": "generate-ose-catalog-migration.mjs",
-      "file_type": "code",
-      "norm_label": "textarray()",
-      "source_file": "scripts/generate-ose-catalog-migration.mjs",
-      "source_location": "L21"
+      "norm_label": "controller()",
+      "source_file": "src/PortalPages.test.tsx",
+      "source_location": "L42"
     },
     {
       "id": "scripts_audit_local_weapon_variants_main",
@@ -10399,42 +10663,6 @@
       "source_location": "L67"
     },
     {
-      "id": "src_accountstate_subscribe",
-      "label": "subscribe()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 179,
-      "community_name": "i18n.tsx",
-      "file_type": "code",
-      "norm_label": "subscribe()",
-      "source_file": "src/accountState.ts",
-      "source_location": "L19"
-    },
-    {
-      "id": "src_accountstate_useaccountviewstate",
-      "label": "useAccountViewState()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 179,
-      "community_name": "i18n.tsx",
-      "file_type": "code",
-      "norm_label": "useaccountviewstate()",
-      "source_file": "src/accountState.ts",
-      "source_location": "L24"
-    },
-    {
-      "id": "src_i18n_applylegacytranslations",
-      "label": "applyLegacyTranslations()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 179,
-      "community_name": "i18n.tsx",
-      "file_type": "code",
-      "norm_label": "applylegacytranslations()",
-      "source_file": "src/i18n.tsx",
-      "source_location": "L294"
-    },
-    {
       "id": "src_i18n_brazilflag",
       "label": "BrazilFlag()",
       "_callable": true,
@@ -10483,18 +10711,6 @@
       "source_location": "L307"
     },
     {
-      "id": "src_i18n_localeswitcher",
-      "label": "LocaleSwitcher()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 179,
-      "community_name": "i18n.tsx",
-      "file_type": "code",
-      "norm_label": "localeswitcher()",
-      "source_file": "src/i18n.tsx",
-      "source_location": "L552"
-    },
-    {
       "id": "src_i18n_spainflag",
       "label": "SpainFlag()",
       "_callable": true,
@@ -10531,18 +10747,6 @@
       "source_location": "L522"
     },
     {
-      "id": "src_i18n_usei18n",
-      "label": "useI18n()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 179,
-      "community_name": "i18n.tsx",
-      "file_type": "code",
-      "norm_label": "usei18n()",
-      "source_file": "src/i18n.tsx",
-      "source_location": "L324"
-    },
-    {
       "id": "src_main_renderportalroot",
       "label": "renderPortalRoot()",
       "_callable": true,
@@ -10565,90 +10769,6 @@
       "norm_label": "viewportsignals()",
       "source_file": "src/main.tsx",
       "source_location": "L18"
-    },
-    {
-      "id": "src_portalpages_adminpage",
-      "label": "AdminPage()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 179,
-      "community_name": "i18n.tsx",
-      "file_type": "code",
-      "norm_label": "adminpage()",
-      "source_file": "src/PortalPages.tsx",
-      "source_location": "L1782"
-    },
-    {
-      "id": "src_portalpages_downloadspage",
-      "label": "DownloadsPage()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 179,
-      "community_name": "i18n.tsx",
-      "file_type": "code",
-      "norm_label": "downloadspage()",
-      "source_file": "src/PortalPages.tsx",
-      "source_location": "L843"
-    },
-    {
-      "id": "src_portalpages_getroute",
-      "label": "getRoute()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 179,
-      "community_name": "i18n.tsx",
-      "file_type": "code",
-      "norm_label": "getroute()",
-      "source_file": "src/PortalPages.tsx",
-      "source_location": "L155"
-    },
-    {
-      "id": "src_portalpages_mapdownloadssection",
-      "label": "MapDownloadsSection()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 179,
-      "community_name": "i18n.tsx",
-      "file_type": "code",
-      "norm_label": "mapdownloadssection()",
-      "source_file": "src/PortalPages.tsx",
-      "source_location": "L905"
-    },
-    {
-      "id": "src_portalpages_portalpages",
-      "label": "PortalPages()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 179,
-      "community_name": "i18n.tsx",
-      "file_type": "code",
-      "norm_label": "portalpages()",
-      "source_file": "src/PortalPages.tsx",
-      "source_location": "L2058"
-    },
-    {
-      "id": "src_portalpages_privacypage",
-      "label": "PrivacyPage()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 179,
-      "community_name": "i18n.tsx",
-      "file_type": "code",
-      "norm_label": "privacypage()",
-      "source_file": "src/PortalPages.tsx",
-      "source_location": "L1770"
-    },
-    {
-      "id": "src_portalpages_test_controller",
-      "label": "controller()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 179,
-      "community_name": "i18n.tsx",
-      "file_type": "code",
-      "norm_label": "controller()",
-      "source_file": "src/PortalPages.test.tsx",
-      "source_location": "L42"
     },
     {
       "id": "src_systemselectormodal_systemselectormodal",
@@ -16255,30 +16375,6 @@
       "source_location": "L87"
     },
     {
-      "id": "src_data_dnd5e_dnd5eclasses_c",
-      "label": "c()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 191,
-      "community_name": "multiSystemCharacter.ts",
-      "file_type": "code",
-      "norm_label": "c()",
-      "source_file": "src/data/dnd5e/dnd5eClasses.ts",
-      "source_location": "L14"
-    },
-    {
-      "id": "src_data_dnd5e_dnd5eclasses_getdnd5eclassrules",
-      "label": "getDnd5eClassRules()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 191,
-      "community_name": "multiSystemCharacter.ts",
-      "file_type": "code",
-      "norm_label": "getdnd5eclassrules()",
-      "source_file": "src/data/dnd5e/dnd5eClasses.ts",
-      "source_location": "L49"
-    },
-    {
       "id": "src_data_dnd5e_dnd5ecompendium_formatdnd5espelldetails",
       "label": "formatDnd5eSpellDetails()",
       "_callable": true,
@@ -16663,30 +16759,6 @@
       "source_location": "L96"
     },
     {
-      "id": "src_data_t20_t20classes_c",
-      "label": "c()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 191,
-      "community_name": "multiSystemCharacter.ts",
-      "file_type": "code",
-      "norm_label": "c()",
-      "source_file": "src/data/t20/t20Classes.ts",
-      "source_location": "L15"
-    },
-    {
-      "id": "src_data_t20_t20classes_gett20classrules",
-      "label": "getT20ClassRules()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 191,
-      "community_name": "multiSystemCharacter.ts",
-      "file_type": "code",
-      "norm_label": "gett20classrules()",
-      "source_file": "src/data/t20/t20Classes.ts",
-      "source_location": "L54"
-    },
-    {
       "id": "src_data_t20_t20compendium_formatt20spelldetails",
       "label": "formatT20SpellDetails()",
       "_callable": true,
@@ -16697,30 +16769,6 @@
       "norm_label": "formatt20spelldetails()",
       "source_file": "src/data/t20/t20Compendium.ts",
       "source_location": "L378"
-    },
-    {
-      "id": "src_data_t20_t20races_gett20racerules",
-      "label": "getT20RaceRules()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 191,
-      "community_name": "multiSystemCharacter.ts",
-      "file_type": "code",
-      "norm_label": "gett20racerules()",
-      "source_file": "src/data/t20/t20Races.ts",
-      "source_location": "L37"
-    },
-    {
-      "id": "src_data_t20_t20races_r",
-      "label": "r()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 191,
-      "community_name": "multiSystemCharacter.ts",
-      "file_type": "code",
-      "norm_label": "r()",
-      "source_file": "src/data/t20/t20Races.ts",
-      "source_location": "L15"
     },
     {
       "id": "src_services_corepdfexport_createcoreeditablepdf",
@@ -16807,100 +16855,160 @@
       "source_location": "L9"
     },
     {
-      "id": "agents_skills_taste_application_tests_test_distill_failclosedlivetests_test_distill_live_raises_provider_disabled",
-      "label": ".test_distill_live_raises_provider_disabled()",
+      "id": "agents_skills_taste_application_scripts_tasteforge_resolve_allocate_placements",
+      "label": "allocate_placements()",
       "_callable": true,
       "_origin": "ast",
       "community": 192,
-      "community_name": "LocalDistillTests",
+      "community_name": "tasteforge/resolve.py",
       "file_type": "code",
-      "norm_label": ".test_distill_live_raises_provider_disabled()",
-      "source_file": ".agents/skills/taste-application/tests/test_distill.py",
-      "source_location": "L71"
+      "norm_label": "allocate_placements()",
+      "source_file": ".agents/skills/taste-application/scripts/tasteforge/resolve.py",
+      "source_location": "L88"
     },
     {
-      "id": "agents_skills_taste_application_tests_test_distill_failclosedlivetests_test_no_network_module_imported",
-      "label": ".test_no_network_module_imported()",
+      "id": "agents_skills_taste_application_scripts_tasteforge_resolve_apply_placements",
+      "label": "apply_placements()",
       "_callable": true,
       "_origin": "ast",
       "community": 192,
-      "community_name": "LocalDistillTests",
+      "community_name": "tasteforge/resolve.py",
       "file_type": "code",
-      "norm_label": ".test_no_network_module_imported()",
-      "source_file": ".agents/skills/taste-application/tests/test_distill.py",
-      "source_location": "L76"
+      "norm_label": "apply_placements()",
+      "source_file": ".agents/skills/taste-application/scripts/tasteforge/resolve.py",
+      "source_location": "L232"
     },
     {
-      "id": "agents_skills_taste_application_tests_test_distill_localdistilltests_test_distill_local_is_deterministic",
-      "label": ".test_distill_local_is_deterministic()",
+      "id": "agents_skills_taste_application_scripts_tasteforge_resolve_base_snapshot",
+      "label": "_base_snapshot()",
       "_callable": true,
       "_origin": "ast",
       "community": 192,
-      "community_name": "LocalDistillTests",
+      "community_name": "tasteforge/resolve.py",
       "file_type": "code",
-      "norm_label": ".test_distill_local_is_deterministic()",
-      "source_file": ".agents/skills/taste-application/tests/test_distill.py",
-      "source_location": "L42"
+      "norm_label": "_base_snapshot()",
+      "source_file": ".agents/skills/taste-application/scripts/tasteforge/resolve.py",
+      "source_location": "L169"
     },
     {
-      "id": "agents_skills_taste_application_tests_test_distill_localdistilltests_test_distill_local_labels_dry_run_and_carries_answers",
-      "label": ".test_distill_local_labels_dry_run_and_carries_answers()",
+      "id": "agents_skills_taste_application_scripts_tasteforge_resolve_fps",
+      "label": "_fps()",
       "_callable": true,
       "_origin": "ast",
       "community": 192,
-      "community_name": "LocalDistillTests",
+      "community_name": "tasteforge/resolve.py",
       "file_type": "code",
-      "norm_label": ".test_distill_local_labels_dry_run_and_carries_answers()",
-      "source_file": ".agents/skills/taste-application/tests/test_distill.py",
-      "source_location": "L48"
+      "norm_label": "_fps()",
+      "source_file": ".agents/skills/taste-application/scripts/tasteforge/resolve.py",
+      "source_location": "L27"
     },
     {
-      "id": "agents_skills_taste_application_tests_test_distill_localdistilltests_test_distill_local_produces_valid_spec",
-      "label": ".test_distill_local_produces_valid_spec()",
+      "id": "agents_skills_taste_application_scripts_tasteforge_resolve_integer",
+      "label": "_integer()",
       "_callable": true,
       "_origin": "ast",
       "community": 192,
-      "community_name": "LocalDistillTests",
+      "community_name": "tasteforge/resolve.py",
       "file_type": "code",
-      "norm_label": ".test_distill_local_produces_valid_spec()",
-      "source_file": ".agents/skills/taste-application/tests/test_distill.py",
-      "source_location": "L37"
+      "norm_label": "_integer()",
+      "source_file": ".agents/skills/taste-application/scripts/tasteforge/resolve.py",
+      "source_location": "L21"
     },
     {
-      "id": "agents_skills_taste_application_tests_test_distill_localdistilltests_test_grounding_from_empty_inputs_is_empty",
-      "label": ".test_grounding_from_empty_inputs_is_empty()",
+      "id": "agents_skills_taste_application_scripts_tasteforge_resolve_items",
+      "label": "_items()",
       "_callable": true,
       "_origin": "ast",
       "community": 192,
-      "community_name": "LocalDistillTests",
+      "community_name": "tasteforge/resolve.py",
       "file_type": "code",
-      "norm_label": ".test_grounding_from_empty_inputs_is_empty()",
-      "source_file": ".agents/skills/taste-application/tests/test_distill.py",
-      "source_location": "L66"
+      "norm_label": "_items()",
+      "source_file": ".agents/skills/taste-application/scripts/tasteforge/resolve.py",
+      "source_location": "L162"
     },
     {
-      "id": "agents_skills_taste_application_tests_test_distill_localdistilltests_test_grounding_from_grade_states_measurements",
-      "label": ".test_grounding_from_grade_states_measurements()",
+      "id": "agents_skills_taste_application_scripts_tasteforge_resolve_path",
+      "label": "_path()",
       "_callable": true,
       "_origin": "ast",
       "community": 192,
-      "community_name": "LocalDistillTests",
+      "community_name": "tasteforge/resolve.py",
       "file_type": "code",
-      "norm_label": ".test_grounding_from_grade_states_measurements()",
-      "source_file": ".agents/skills/taste-application/tests/test_distill.py",
-      "source_location": "L55"
+      "norm_label": "_path()",
+      "source_file": ".agents/skills/taste-application/scripts/tasteforge/resolve.py",
+      "source_location": "L156"
     },
     {
-      "id": "agents_skills_taste_application_tests_test_distill_profile",
-      "label": "_profile()",
+      "id": "agents_skills_taste_application_scripts_tasteforge_resolve_probe_asset",
+      "label": "probe_asset()",
       "_callable": true,
       "_origin": "ast",
       "community": 192,
-      "community_name": "LocalDistillTests",
+      "community_name": "tasteforge/resolve.py",
       "file_type": "code",
-      "norm_label": "_profile()",
-      "source_file": ".agents/skills/taste-application/tests/test_distill.py",
-      "source_location": "L18"
+      "norm_label": "probe_asset()",
+      "source_file": ".agents/skills/taste-application/scripts/tasteforge/resolve.py",
+      "source_location": "L39"
+    },
+    {
+      "id": "agents_skills_taste_application_scripts_tasteforge_resolve_readback",
+      "label": "_readback()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 192,
+      "community_name": "tasteforge/resolve.py",
+      "file_type": "code",
+      "norm_label": "_readback()",
+      "source_file": ".agents/skills/taste-application/scripts/tasteforge/resolve.py",
+      "source_location": "L190"
+    },
+    {
+      "id": "agents_skills_taste_application_scripts_tasteforge_resolve_readback_identity",
+      "label": "identity()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 192,
+      "community_name": "tasteforge/resolve.py",
+      "file_type": "code",
+      "norm_label": "identity()",
+      "source_file": ".agents/skills/taste-application/scripts/tasteforge/resolve.py",
+      "source_location": "L196"
+    },
+    {
+      "id": "agents_skills_taste_application_tests_test_resolve_probetests_test_ffprobe_alpha_and_frame_count",
+      "label": ".test_ffprobe_alpha_and_frame_count()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 192,
+      "community_name": "tasteforge/resolve.py",
+      "file_type": "code",
+      "norm_label": ".test_ffprobe_alpha_and_frame_count()",
+      "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
+      "source_location": "L294"
+    },
+    {
+      "id": "agents_skills_taste_application_tests_test_resolve_probetests_test_probe_rejects_no_video_and_ambiguous_rate",
+      "label": ".test_probe_rejects_no_video_and_ambiguous_rate()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 192,
+      "community_name": "tasteforge/resolve.py",
+      "file_type": "code",
+      "norm_label": ".test_probe_rejects_no_video_and_ambiguous_rate()",
+      "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
+      "source_location": "L309"
+    },
+    {
+      "id": "agents_skills_taste_application_tests_test_resolve_resolvetests_test_metadata_gates",
+      "label": ".test_metadata_gates()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 192,
+      "community_name": "tasteforge/resolve.py",
+      "file_type": "code",
+      "norm_label": ".test_metadata_gates()",
+      "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
+      "source_location": "L224"
     },
     {
       "id": "agents_skills_taste_application_scripts_taste_grade_analyze",
@@ -22195,132 +22303,12 @@
       "source_location": "L61"
     },
     {
-      "id": "agents_skills_taste_application_scripts_tasteforge_resolve_allocate_placements",
-      "label": "allocate_placements()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 229,
-      "community_name": "tasteforge/resolve.py",
-      "file_type": "code",
-      "norm_label": "allocate_placements()",
-      "source_file": ".agents/skills/taste-application/scripts/tasteforge/resolve.py",
-      "source_location": "L88"
-    },
-    {
-      "id": "agents_skills_taste_application_scripts_tasteforge_resolve_apply_placements",
-      "label": "apply_placements()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 229,
-      "community_name": "tasteforge/resolve.py",
-      "file_type": "code",
-      "norm_label": "apply_placements()",
-      "source_file": ".agents/skills/taste-application/scripts/tasteforge/resolve.py",
-      "source_location": "L232"
-    },
-    {
-      "id": "agents_skills_taste_application_scripts_tasteforge_resolve_base_snapshot",
-      "label": "_base_snapshot()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 229,
-      "community_name": "tasteforge/resolve.py",
-      "file_type": "code",
-      "norm_label": "_base_snapshot()",
-      "source_file": ".agents/skills/taste-application/scripts/tasteforge/resolve.py",
-      "source_location": "L169"
-    },
-    {
-      "id": "agents_skills_taste_application_scripts_tasteforge_resolve_fps",
-      "label": "_fps()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 229,
-      "community_name": "tasteforge/resolve.py",
-      "file_type": "code",
-      "norm_label": "_fps()",
-      "source_file": ".agents/skills/taste-application/scripts/tasteforge/resolve.py",
-      "source_location": "L27"
-    },
-    {
-      "id": "agents_skills_taste_application_scripts_tasteforge_resolve_integer",
-      "label": "_integer()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 229,
-      "community_name": "tasteforge/resolve.py",
-      "file_type": "code",
-      "norm_label": "_integer()",
-      "source_file": ".agents/skills/taste-application/scripts/tasteforge/resolve.py",
-      "source_location": "L21"
-    },
-    {
-      "id": "agents_skills_taste_application_scripts_tasteforge_resolve_items",
-      "label": "_items()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 229,
-      "community_name": "tasteforge/resolve.py",
-      "file_type": "code",
-      "norm_label": "_items()",
-      "source_file": ".agents/skills/taste-application/scripts/tasteforge/resolve.py",
-      "source_location": "L162"
-    },
-    {
-      "id": "agents_skills_taste_application_scripts_tasteforge_resolve_path",
-      "label": "_path()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 229,
-      "community_name": "tasteforge/resolve.py",
-      "file_type": "code",
-      "norm_label": "_path()",
-      "source_file": ".agents/skills/taste-application/scripts/tasteforge/resolve.py",
-      "source_location": "L156"
-    },
-    {
-      "id": "agents_skills_taste_application_scripts_tasteforge_resolve_probe_asset",
-      "label": "probe_asset()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 229,
-      "community_name": "tasteforge/resolve.py",
-      "file_type": "code",
-      "norm_label": "probe_asset()",
-      "source_file": ".agents/skills/taste-application/scripts/tasteforge/resolve.py",
-      "source_location": "L39"
-    },
-    {
-      "id": "agents_skills_taste_application_scripts_tasteforge_resolve_readback",
-      "label": "_readback()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 229,
-      "community_name": "tasteforge/resolve.py",
-      "file_type": "code",
-      "norm_label": "_readback()",
-      "source_file": ".agents/skills/taste-application/scripts/tasteforge/resolve.py",
-      "source_location": "L190"
-    },
-    {
-      "id": "agents_skills_taste_application_scripts_tasteforge_resolve_readback_identity",
-      "label": "identity()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 229,
-      "community_name": "tasteforge/resolve.py",
-      "file_type": "code",
-      "norm_label": "identity()",
-      "source_file": ".agents/skills/taste-application/scripts/tasteforge/resolve.py",
-      "source_location": "L196"
-    },
-    {
       "id": "agents_skills_taste_application_tests_test_resolve_item_getclipenabled",
       "label": ".GetClipEnabled()",
       "_callable": true,
       "_origin": "ast",
       "community": 229,
-      "community_name": "tasteforge/resolve.py",
+      "community_name": "ResolveTests",
       "file_type": "code",
       "norm_label": ".getclipenabled()",
       "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
@@ -22332,7 +22320,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 229,
-      "community_name": "tasteforge/resolve.py",
+      "community_name": "ResolveTests",
       "file_type": "code",
       "norm_label": ".getduration()",
       "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
@@ -22344,7 +22332,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 229,
-      "community_name": "tasteforge/resolve.py",
+      "community_name": "ResolveTests",
       "file_type": "code",
       "norm_label": ".getend()",
       "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
@@ -22356,7 +22344,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 229,
-      "community_name": "tasteforge/resolve.py",
+      "community_name": "ResolveTests",
       "file_type": "code",
       "norm_label": ".getmediapoolitem()",
       "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
@@ -22368,7 +22356,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 229,
-      "community_name": "tasteforge/resolve.py",
+      "community_name": "ResolveTests",
       "file_type": "code",
       "norm_label": ".getproperty()",
       "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
@@ -22380,7 +22368,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 229,
-      "community_name": "tasteforge/resolve.py",
+      "community_name": "ResolveTests",
       "file_type": "code",
       "norm_label": ".getstart()",
       "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
@@ -22392,7 +22380,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 229,
-      "community_name": "tasteforge/resolve.py",
+      "community_name": "ResolveTests",
       "file_type": "code",
       "norm_label": ".__init__()",
       "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
@@ -22404,7 +22392,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 229,
-      "community_name": "tasteforge/resolve.py",
+      "community_name": "ResolveTests",
       "file_type": "code",
       "norm_label": ".setproperty()",
       "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
@@ -22416,7 +22404,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 229,
-      "community_name": "tasteforge/resolve.py",
+      "community_name": "ResolveTests",
       "file_type": "code",
       "norm_label": ".getclipproperty()",
       "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
@@ -22428,7 +22416,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 229,
-      "community_name": "tasteforge/resolve.py",
+      "community_name": "ResolveTests",
       "file_type": "code",
       "norm_label": ".__init__()",
       "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
@@ -22440,7 +22428,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 229,
-      "community_name": "tasteforge/resolve.py",
+      "community_name": "ResolveTests",
       "file_type": "code",
       "norm_label": ".appendtotimeline()",
       "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
@@ -22452,7 +22440,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 229,
-      "community_name": "tasteforge/resolve.py",
+      "community_name": "ResolveTests",
       "file_type": "code",
       "norm_label": ".importmedia()",
       "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
@@ -22464,35 +22452,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 229,
-      "community_name": "tasteforge/resolve.py",
+      "community_name": "ResolveTests",
       "file_type": "code",
       "norm_label": ".__init__()",
       "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
       "source_location": "L74"
-    },
-    {
-      "id": "agents_skills_taste_application_tests_test_resolve_probetests_test_ffprobe_alpha_and_frame_count",
-      "label": ".test_ffprobe_alpha_and_frame_count()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 229,
-      "community_name": "tasteforge/resolve.py",
-      "file_type": "code",
-      "norm_label": ".test_ffprobe_alpha_and_frame_count()",
-      "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
-      "source_location": "L294"
-    },
-    {
-      "id": "agents_skills_taste_application_tests_test_resolve_probetests_test_probe_rejects_no_video_and_ambiguous_rate",
-      "label": ".test_probe_rejects_no_video_and_ambiguous_rate()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 229,
-      "community_name": "tasteforge/resolve.py",
-      "file_type": "code",
-      "norm_label": ".test_probe_rejects_no_video_and_ambiguous_rate()",
-      "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
-      "source_location": "L309"
     },
     {
       "id": "agents_skills_taste_application_tests_test_resolve_resolvetests_apply",
@@ -22500,7 +22464,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 229,
-      "community_name": "tasteforge/resolve.py",
+      "community_name": "ResolveTests",
       "file_type": "code",
       "norm_label": ".apply()",
       "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
@@ -22512,7 +22476,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 229,
-      "community_name": "tasteforge/resolve.py",
+      "community_name": "ResolveTests",
       "file_type": "code",
       "norm_label": ".plan()",
       "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
@@ -22524,7 +22488,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 229,
-      "community_name": "tasteforge/resolve.py",
+      "community_name": "ResolveTests",
       "file_type": "code",
       "norm_label": ".setup()",
       "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
@@ -22536,7 +22500,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 229,
-      "community_name": "tasteforge/resolve.py",
+      "community_name": "ResolveTests",
       "file_type": "code",
       "norm_label": ".test_exclusive_host_and_receipt()",
       "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
@@ -22548,23 +22512,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 229,
-      "community_name": "tasteforge/resolve.py",
+      "community_name": "ResolveTests",
       "file_type": "code",
       "norm_label": ".test_invalid_contract()",
       "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
       "source_location": "L208"
-    },
-    {
-      "id": "agents_skills_taste_application_tests_test_resolve_resolvetests_test_metadata_gates",
-      "label": ".test_metadata_gates()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 229,
-      "community_name": "tasteforge/resolve.py",
-      "file_type": "code",
-      "norm_label": ".test_metadata_gates()",
-      "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
-      "source_location": "L224"
     },
     {
       "id": "agents_skills_taste_application_tests_test_resolve_resolvetests_test_mode_mismatch_fails_without_retry",
@@ -22572,7 +22524,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 229,
-      "community_name": "tasteforge/resolve.py",
+      "community_name": "ResolveTests",
       "file_type": "code",
       "norm_label": ".test_mode_mismatch_fails_without_retry()",
       "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
@@ -22584,7 +22536,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 229,
-      "community_name": "tasteforge/resolve.py",
+      "community_name": "ResolveTests",
       "file_type": "code",
       "norm_label": ".test_mode_must_be_explicit_and_valid()",
       "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
@@ -22596,7 +22548,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 229,
-      "community_name": "tasteforge/resolve.py",
+      "community_name": "ResolveTests",
       "file_type": "code",
       "norm_label": ".test_occupied_overlay_tracks_rejected_before_append()",
       "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
@@ -22608,7 +22560,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 229,
-      "community_name": "tasteforge/resolve.py",
+      "community_name": "ResolveTests",
       "file_type": "code",
       "norm_label": ".test_overlap_coloring_and_inclusive_source_end()",
       "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
@@ -22620,7 +22572,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 229,
-      "community_name": "tasteforge/resolve.py",
+      "community_name": "ResolveTests",
       "file_type": "code",
       "norm_label": ".test_readback_failure_never_returns_receipt()",
       "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
@@ -22632,7 +22584,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 229,
-      "community_name": "tasteforge/resolve.py",
+      "community_name": "ResolveTests",
       "file_type": "code",
       "norm_label": ".test_timeline_fps_mismatch_before_mutation()",
       "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
@@ -22644,7 +22596,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 229,
-      "community_name": "tasteforge/resolve.py",
+      "community_name": "ResolveTests",
       "file_type": "code",
       "norm_label": ".addtrack()",
       "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
@@ -22656,7 +22608,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 229,
-      "community_name": "tasteforge/resolve.py",
+      "community_name": "ResolveTests",
       "file_type": "code",
       "norm_label": ".getitemlistintrack()",
       "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
@@ -22668,7 +22620,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 229,
-      "community_name": "tasteforge/resolve.py",
+      "community_name": "ResolveTests",
       "file_type": "code",
       "norm_label": ".getname()",
       "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
@@ -22680,7 +22632,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 229,
-      "community_name": "tasteforge/resolve.py",
+      "community_name": "ResolveTests",
       "file_type": "code",
       "norm_label": ".getsetting()",
       "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
@@ -22692,7 +22644,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 229,
-      "community_name": "tasteforge/resolve.py",
+      "community_name": "ResolveTests",
       "file_type": "code",
       "norm_label": ".gettrackcount()",
       "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
@@ -22704,7 +22656,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 229,
-      "community_name": "tasteforge/resolve.py",
+      "community_name": "ResolveTests",
       "file_type": "code",
       "norm_label": ".__init__()",
       "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
@@ -31555,6 +31507,18 @@
       "source_location": "L32"
     },
     {
+      "id": "agents_skills_taste_application_scripts_tasteforge_pack_load",
+      "label": "load()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 337,
+      "community_name": "tasteforge/cli.py",
+      "file_type": "code",
+      "norm_label": "load()",
+      "source_file": ".agents/skills/taste-application/scripts/tasteforge/pack.py",
+      "source_location": "L179"
+    },
+    {
       "id": "public_js_pdf_lib_min_ma",
       "label": "Ma()",
       "_callable": true,
@@ -34515,18 +34479,6 @@
       "norm_label": "_write_rgba()",
       "source_file": ".agents/skills/taste-application/scripts/taste/plates.py",
       "source_location": "L43"
-    },
-    {
-      "id": "agents_skills_taste_application_scripts_tasteforge_pack_load",
-      "label": "load()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 381,
-      "community_name": "StylePack",
-      "file_type": "code",
-      "norm_label": "load()",
-      "source_file": ".agents/skills/taste-application/scripts/tasteforge/pack.py",
-      "source_location": "L179"
     },
     {
       "id": "agents_skills_taste_application_scripts_tasteforge_pack_stylepack_cadence_path",
@@ -45593,6 +45545,90 @@
       "source_location": "L105"
     },
     {
+      "id": "agents_skills_taste_application_tests_test_interview_conducttests_answers",
+      "label": "._answers()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 635,
+      "community_name": "ConductTests",
+      "file_type": "code",
+      "norm_label": "._answers()",
+      "source_file": ".agents/skills/taste-application/tests/test_interview.py",
+      "source_location": "L32"
+    },
+    {
+      "id": "agents_skills_taste_application_tests_test_interview_conducttests_test_conduct_produces_valid_profile",
+      "label": ".test_conduct_produces_valid_profile()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 635,
+      "community_name": "ConductTests",
+      "file_type": "code",
+      "norm_label": ".test_conduct_produces_valid_profile()",
+      "source_file": ".agents/skills/taste-application/tests/test_interview.py",
+      "source_location": "L46"
+    },
+    {
+      "id": "agents_skills_taste_application_tests_test_interview_conducttests_test_constraints_split_look_and_content",
+      "label": ".test_constraints_split_look_and_content()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 635,
+      "community_name": "ConductTests",
+      "file_type": "code",
+      "norm_label": ".test_constraints_split_look_and_content()",
+      "source_file": ".agents/skills/taste-application/tests/test_interview.py",
+      "source_location": "L67"
+    },
+    {
+      "id": "agents_skills_taste_application_tests_test_interview_conducttests_test_missing_answers_are_flagged_not_invented",
+      "label": ".test_missing_answers_are_flagged_not_invented()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 635,
+      "community_name": "ConductTests",
+      "file_type": "code",
+      "norm_label": ".test_missing_answers_are_flagged_not_invented()",
+      "source_file": ".agents/skills/taste-application/tests/test_interview.py",
+      "source_location": "L52"
+    },
+    {
+      "id": "agents_skills_taste_application_tests_test_interview_conducttests_test_profile_deterministic",
+      "label": ".test_profile_deterministic()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 635,
+      "community_name": "ConductTests",
+      "file_type": "code",
+      "norm_label": ".test_profile_deterministic()",
+      "source_file": ".agents/skills/taste-application/tests/test_interview.py",
+      "source_location": "L61"
+    },
+    {
+      "id": "agents_skills_taste_application_tests_test_interview_questionsettests_test_every_question_has_prompt_and_id",
+      "label": ".test_every_question_has_prompt_and_id()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 635,
+      "community_name": "ConductTests",
+      "file_type": "code",
+      "norm_label": ".test_every_question_has_prompt_and_id()",
+      "source_file": ".agents/skills/taste-application/tests/test_interview.py",
+      "source_location": "L25"
+    },
+    {
+      "id": "agents_skills_taste_application_tests_test_interview_questionsettests_test_questions_cover_required_axes",
+      "label": ".test_questions_cover_required_axes()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 635,
+      "community_name": "ConductTests",
+      "file_type": "code",
+      "norm_label": ".test_questions_cover_required_axes()",
+      "source_file": ".agents/skills/taste-application/tests/test_interview.py",
+      "source_location": "L16"
+    },
+    {
       "id": "agents_skills_graphify_benchmark_estimate_tokens",
       "label": "_estimate_tokens()",
       "_callable": true,
@@ -50513,42 +50549,6 @@
       "source_location": "L10"
     },
     {
-      "id": "src_portalpages_catalogpage",
-      "label": "CatalogPage()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "types.ts",
-      "file_type": "code",
-      "norm_label": "catalogpage()",
-      "source_file": "src/PortalPages.tsx",
-      "source_location": "L164"
-    },
-    {
-      "id": "src_portalpages_getlocalizedtrait",
-      "label": "getLocalizedTrait()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "types.ts",
-      "file_type": "code",
-      "norm_label": "getlocalizedtrait()",
-      "source_file": "src/PortalPages.tsx",
-      "source_location": "L605"
-    },
-    {
-      "id": "src_portalpages_hasfallbacktranslation",
-      "label": "hasFallbackTranslation()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "types.ts",
-      "file_type": "code",
-      "norm_label": "hasfallbacktranslation()",
-      "source_file": "src/PortalPages.tsx",
-      "source_location": "L551"
-    },
-    {
       "id": "src_services_catalog_fetchallcatalogcategories",
       "label": "fetchAllCatalogCategories()",
       "_callable": true,
@@ -53763,6 +53763,17 @@
       "norm_label": "weaponvisuals.test.ts",
       "source_file": "src/weaponVisuals.test.ts",
       "source_location": "L1"
+    },
+    {
+      "id": "ref_testing_library_react",
+      "label": "@testing-library/react",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "PickerModal.tsx",
+      "file_type": "concept",
+      "norm_label": "@testing-library/react",
+      "source_file": "package.json",
+      "source_location": "L57"
     },
     {
       "id": "scripts_clean_provenance_assertions",
@@ -58178,6 +58189,72 @@
       "source_location": "L6"
     },
     {
+      "id": "src_data_dnd5e_dnd5eclasses",
+      "label": "dnd5eClasses.ts",
+      "_origin": "ast",
+      "community": 1072,
+      "community_name": "dnd5eClasses.ts",
+      "file_type": "code",
+      "norm_label": "dnd5eclasses.ts",
+      "source_file": "src/data/dnd5e/dnd5eClasses.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_dnd5e_dnd5eclasses_dnd5e_class_rules",
+      "label": "DND5E_CLASS_RULES",
+      "_origin": "ast",
+      "community": 1072,
+      "community_name": "dnd5eClasses.ts",
+      "file_type": "code",
+      "norm_label": "dnd5e_class_rules",
+      "source_file": "src/data/dnd5e/dnd5eClasses.ts",
+      "source_location": "L18"
+    },
+    {
+      "id": "src_data_dnd5e_dnd5eclasses_dnd5e_starting_equipment",
+      "label": "DND5E_STARTING_EQUIPMENT",
+      "_origin": "ast",
+      "community": 1072,
+      "community_name": "dnd5eClasses.ts",
+      "file_type": "code",
+      "norm_label": "dnd5e_starting_equipment",
+      "source_file": "src/data/dnd5e/dnd5eClasses.ts",
+      "source_location": "L33"
+    },
+    {
+      "id": "src_data_t20_t20classes",
+      "label": "t20Classes.ts",
+      "_origin": "ast",
+      "community": 1073,
+      "community_name": "t20Classes.ts",
+      "file_type": "code",
+      "norm_label": "t20classes.ts",
+      "source_file": "src/data/t20/t20Classes.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_t20_t20classes_t20_class_rules",
+      "label": "T20_CLASS_RULES",
+      "_origin": "ast",
+      "community": 1073,
+      "community_name": "t20Classes.ts",
+      "file_type": "code",
+      "norm_label": "t20_class_rules",
+      "source_file": "src/data/t20/t20Classes.ts",
+      "source_location": "L19"
+    },
+    {
+      "id": "src_data_t20_t20classes_t20_starting_equipment",
+      "label": "T20_STARTING_EQUIPMENT",
+      "_origin": "ast",
+      "community": 1073,
+      "community_name": "t20Classes.ts",
+      "file_type": "code",
+      "norm_label": "t20_starting_equipment",
+      "source_file": "src/data/t20/t20Classes.ts",
+      "source_location": "L36"
+    },
+    {
       "id": "scripts_audit_local_accessibility",
       "label": "audit-local-accessibility.cjs",
       "_origin": "ast",
@@ -58219,6 +58296,50 @@
       "file_type": "code",
       "norm_label": "routes",
       "source_file": "scripts/audit-local-accessibility.cjs",
+      "source_location": "L6"
+    },
+    {
+      "id": "scripts_audit_local_responsive",
+      "label": "audit-local-responsive.cjs",
+      "_origin": "ast",
+      "community": 1075,
+      "community_name": "audit-local-responsive.cjs",
+      "file_type": "code",
+      "norm_label": "audit-local-responsive.cjs",
+      "source_file": "scripts/audit-local-responsive.cjs",
+      "source_location": "L1"
+    },
+    {
+      "id": "scripts_audit_local_responsive_chromium",
+      "label": "{ chromium }",
+      "_origin": "ast",
+      "community": 1075,
+      "community_name": "audit-local-responsive.cjs",
+      "file_type": "code",
+      "norm_label": "{ chromium }",
+      "source_file": "scripts/audit-local-responsive.cjs",
+      "source_location": "L1"
+    },
+    {
+      "id": "scripts_audit_local_responsive_fs",
+      "label": "fs",
+      "_origin": "ast",
+      "community": 1075,
+      "community_name": "audit-local-responsive.cjs",
+      "file_type": "code",
+      "norm_label": "fs",
+      "source_file": "scripts/audit-local-responsive.cjs",
+      "source_location": "L2"
+    },
+    {
+      "id": "scripts_audit_local_responsive_viewports",
+      "label": "viewports",
+      "_origin": "ast",
+      "community": 1075,
+      "community_name": "audit-local-responsive.cjs",
+      "file_type": "code",
+      "norm_label": "viewports",
+      "source_file": "scripts/audit-local-responsive.cjs",
       "source_location": "L6"
     },
     {
@@ -58321,6 +58442,39 @@
       "source_location": "L3"
     },
     {
+      "id": "scripts_audit_local_interactions",
+      "label": "audit-local-interactions.cjs",
+      "_origin": "ast",
+      "community": 1080,
+      "community_name": "audit-local-interactions.cjs",
+      "file_type": "code",
+      "norm_label": "audit-local-interactions.cjs",
+      "source_file": "scripts/audit-local-interactions.cjs",
+      "source_location": "L1"
+    },
+    {
+      "id": "scripts_audit_local_interactions_chromium",
+      "label": "{ chromium }",
+      "_origin": "ast",
+      "community": 1080,
+      "community_name": "audit-local-interactions.cjs",
+      "file_type": "code",
+      "norm_label": "{ chromium }",
+      "source_file": "scripts/audit-local-interactions.cjs",
+      "source_location": "L1"
+    },
+    {
+      "id": "scripts_audit_local_interactions_fs",
+      "label": "fs",
+      "_origin": "ast",
+      "community": 1080,
+      "community_name": "audit-local-interactions.cjs",
+      "file_type": "code",
+      "norm_label": "fs",
+      "source_file": "scripts/audit-local-interactions.cjs",
+      "source_location": "L2"
+    },
+    {
       "id": "agents_skills_taste_distillation_scripts_taste_grade_py_slice",
       "label": "slice",
       "_origin": "ast",
@@ -58374,6 +58528,17 @@
       "norm_label": "ts-extension-loader.mjs",
       "source_file": "scripts/ts-extension-loader.mjs",
       "source_location": "L1"
+    },
+    {
+      "id": "path_path",
+      "label": "path",
+      "_origin": "ast",
+      "community": 1084,
+      "community_name": "path",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "path",
+      "source_file": "path"
     },
     {
       "id": "agents_skills_taste_application_tests_test_cli",
@@ -59223,39 +59388,6 @@
       "source_location": "L9"
     },
     {
-      "id": "scripts_audit_local_interactions",
-      "label": "audit-local-interactions.cjs",
-      "_origin": "ast",
-      "community": 115,
-      "community_name": "playwright",
-      "file_type": "code",
-      "norm_label": "audit-local-interactions.cjs",
-      "source_file": "scripts/audit-local-interactions.cjs",
-      "source_location": "L1"
-    },
-    {
-      "id": "scripts_audit_local_interactions_chromium",
-      "label": "{ chromium }",
-      "_origin": "ast",
-      "community": 115,
-      "community_name": "playwright",
-      "file_type": "code",
-      "norm_label": "{ chromium }",
-      "source_file": "scripts/audit-local-interactions.cjs",
-      "source_location": "L1"
-    },
-    {
-      "id": "scripts_audit_local_interactions_fs",
-      "label": "fs",
-      "_origin": "ast",
-      "community": 115,
-      "community_name": "playwright",
-      "file_type": "code",
-      "norm_label": "fs",
-      "source_file": "scripts/audit-local-interactions.cjs",
-      "source_location": "L2"
-    },
-    {
       "id": "scripts_audit_local_picker_usage",
       "label": "audit-local-picker-usage.cjs",
       "_origin": "ast",
@@ -59287,50 +59419,6 @@
       "norm_label": "fs",
       "source_file": "scripts/audit-local-picker-usage.cjs",
       "source_location": "L2"
-    },
-    {
-      "id": "scripts_audit_local_responsive",
-      "label": "audit-local-responsive.cjs",
-      "_origin": "ast",
-      "community": 115,
-      "community_name": "playwright",
-      "file_type": "code",
-      "norm_label": "audit-local-responsive.cjs",
-      "source_file": "scripts/audit-local-responsive.cjs",
-      "source_location": "L1"
-    },
-    {
-      "id": "scripts_audit_local_responsive_chromium",
-      "label": "{ chromium }",
-      "_origin": "ast",
-      "community": 115,
-      "community_name": "playwright",
-      "file_type": "code",
-      "norm_label": "{ chromium }",
-      "source_file": "scripts/audit-local-responsive.cjs",
-      "source_location": "L1"
-    },
-    {
-      "id": "scripts_audit_local_responsive_fs",
-      "label": "fs",
-      "_origin": "ast",
-      "community": 115,
-      "community_name": "playwright",
-      "file_type": "code",
-      "norm_label": "fs",
-      "source_file": "scripts/audit-local-responsive.cjs",
-      "source_location": "L2"
-    },
-    {
-      "id": "scripts_audit_local_responsive_viewports",
-      "label": "viewports",
-      "_origin": "ast",
-      "community": 115,
-      "community_name": "playwright",
-      "file_type": "code",
-      "norm_label": "viewports",
-      "source_file": "scripts/audit-local-responsive.cjs",
-      "source_location": "L6"
     },
     {
       "id": "scripts_audit_local_weapons",
@@ -60002,6 +60090,105 @@
       "norm_label": "package.json",
       "source_file": "package.json",
       "source_location": "L1"
+    },
+    {
+      "id": "package_devdependencies",
+      "label": "devDependencies",
+      "_origin": "ast",
+      "community": 117,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "devdependencies",
+      "source_file": "package.json",
+      "source_location": "L55"
+    },
+    {
+      "id": "package_devdependencies_jsdom",
+      "label": "jsdom",
+      "_origin": "ast",
+      "community": 117,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "jsdom",
+      "source_file": "package.json",
+      "source_location": "L60"
+    },
+    {
+      "id": "package_devdependencies_playwright",
+      "label": "playwright",
+      "_origin": "ast",
+      "community": 117,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "playwright",
+      "source_file": "package.json",
+      "source_location": "L61"
+    },
+    {
+      "id": "package_devdependencies_puppeteer_core",
+      "label": "puppeteer-core",
+      "_origin": "ast",
+      "community": 117,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "puppeteer-core",
+      "source_file": "package.json",
+      "source_location": "L62"
+    },
+    {
+      "id": "package_devdependencies_testing_library_jest_dom",
+      "label": "@testing-library/jest-dom",
+      "_origin": "ast",
+      "community": 117,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "@testing-library/jest-dom",
+      "source_file": "package.json",
+      "source_location": "L56"
+    },
+    {
+      "id": "package_devdependencies_testing_library_react",
+      "label": "@testing-library/react",
+      "_origin": "ast",
+      "community": 117,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "@testing-library/react",
+      "source_file": "package.json",
+      "source_location": "L57"
+    },
+    {
+      "id": "package_devdependencies_types_react",
+      "label": "@types/react",
+      "_origin": "ast",
+      "community": 117,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "@types/react",
+      "source_file": "package.json",
+      "source_location": "L58"
+    },
+    {
+      "id": "package_devdependencies_types_react_dom",
+      "label": "@types/react-dom",
+      "_origin": "ast",
+      "community": 117,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "@types/react-dom",
+      "source_file": "package.json",
+      "source_location": "L59"
+    },
+    {
+      "id": "package_devdependencies_vitest",
+      "label": "vitest",
+      "_origin": "ast",
+      "community": 117,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "vitest",
+      "source_file": "package.json",
+      "source_location": "L63"
     },
     {
       "id": "package_name",
@@ -62187,6 +62374,127 @@
       "source_location": "L8"
     },
     {
+      "id": "scripts_generate_ose_catalog_migration",
+      "label": "generate-ose-catalog-migration.mjs",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "OseCharacterCreatorModal.tsx",
+      "file_type": "code",
+      "norm_label": "generate-ose-catalog-migration.mjs",
+      "source_file": "scripts/generate-ose-catalog-migration.mjs",
+      "source_location": "L1"
+    },
+    {
+      "id": "scripts_generate_ose_catalog_migration_ancestryrows",
+      "label": "ancestryRows",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "OseCharacterCreatorModal.tsx",
+      "file_type": "code",
+      "norm_label": "ancestryrows",
+      "source_file": "scripts/generate-ose-catalog-migration.mjs",
+      "source_location": "L33"
+    },
+    {
+      "id": "scripts_generate_ose_catalog_migration_classicclassrows",
+      "label": "classicClassRows",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "OseCharacterCreatorModal.tsx",
+      "file_type": "code",
+      "norm_label": "classicclassrows",
+      "source_file": "scripts/generate-ose-catalog-migration.mjs",
+      "source_location": "L68"
+    },
+    {
+      "id": "scripts_generate_ose_catalog_migration_classicitemrows",
+      "label": "classicItemRows",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "OseCharacterCreatorModal.tsx",
+      "file_type": "code",
+      "norm_label": "classicitemrows",
+      "source_file": "scripts/generate-ose-catalog-migration.mjs",
+      "source_location": "L76"
+    },
+    {
+      "id": "scripts_generate_ose_catalog_migration_classicoutput",
+      "label": "classicOutput",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "OseCharacterCreatorModal.tsx",
+      "file_type": "code",
+      "norm_label": "classicoutput",
+      "source_file": "scripts/generate-ose-catalog-migration.mjs",
+      "source_location": "L85"
+    },
+    {
+      "id": "scripts_generate_ose_catalog_migration_classicspellrows",
+      "label": "classicSpellRows",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "OseCharacterCreatorModal.tsx",
+      "file_type": "code",
+      "norm_label": "classicspellrows",
+      "source_file": "scripts/generate-ose-catalog-migration.mjs",
+      "source_location": "L81"
+    },
+    {
+      "id": "scripts_generate_ose_catalog_migration_classrows",
+      "label": "classRows",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "OseCharacterCreatorModal.tsx",
+      "file_type": "code",
+      "norm_label": "classrows",
+      "source_file": "scripts/generate-ose-catalog-migration.mjs",
+      "source_location": "L24"
+    },
+    {
+      "id": "scripts_generate_ose_catalog_migration_itemrows",
+      "label": "itemRows",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "OseCharacterCreatorModal.tsx",
+      "file_type": "code",
+      "norm_label": "itemrows",
+      "source_file": "scripts/generate-ose-catalog-migration.mjs",
+      "source_location": "L42"
+    },
+    {
+      "id": "scripts_generate_ose_catalog_migration_output",
+      "label": "output",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "OseCharacterCreatorModal.tsx",
+      "file_type": "code",
+      "norm_label": "output",
+      "source_file": "scripts/generate-ose-catalog-migration.mjs",
+      "source_location": "L9"
+    },
+    {
+      "id": "scripts_generate_ose_catalog_migration_root",
+      "label": "root",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "OseCharacterCreatorModal.tsx",
+      "file_type": "code",
+      "norm_label": "root",
+      "source_file": "scripts/generate-ose-catalog-migration.mjs",
+      "source_location": "L8"
+    },
+    {
+      "id": "scripts_generate_ose_catalog_migration_spellrows",
+      "label": "spellRows",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "OseCharacterCreatorModal.tsx",
+      "file_type": "code",
+      "norm_label": "spellrows",
+      "source_file": "scripts/generate-ose-catalog-migration.mjs",
+      "source_location": "L48"
+    },
+    {
       "id": "src_data_ose_ose_engine_test",
       "label": "ose-engine.test.ts",
       "_origin": "ast",
@@ -62231,17 +62539,6 @@
       "source_location": "L1"
     },
     {
-      "id": "src_data_ose_oseclasses_ose_classes",
-      "label": "OSE_CLASSES",
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "OseCharacterCreatorModal.tsx",
-      "file_type": "code",
-      "norm_label": "ose_classes",
-      "source_file": "src/data/ose/oseClasses.ts",
-      "source_location": "L66"
-    },
-    {
       "id": "src_data_ose_oseequipment",
       "label": "oseEquipment.ts",
       "_origin": "ast",
@@ -62251,6 +62548,17 @@
       "norm_label": "oseequipment.ts",
       "source_file": "src/data/ose/oseEquipment.ts",
       "source_location": "L1"
+    },
+    {
+      "id": "src_data_ose_oseequipment_ose_armors",
+      "label": "OSE_ARMORS",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "OseCharacterCreatorModal.tsx",
+      "file_type": "code",
+      "norm_label": "ose_armors",
+      "source_file": "src/data/ose/oseEquipment.ts",
+      "source_location": "L62"
     },
     {
       "id": "src_data_ose_oseequipment_ose_beasts",
@@ -62264,6 +62572,17 @@
       "source_location": "L118"
     },
     {
+      "id": "src_data_ose_oseequipment_ose_gear",
+      "label": "OSE_GEAR",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "OseCharacterCreatorModal.tsx",
+      "file_type": "code",
+      "norm_label": "ose_gear",
+      "source_file": "src/data/ose/oseEquipment.ts",
+      "source_location": "L70"
+    },
+    {
       "id": "src_data_ose_oseequipment_ose_specialists_retainers",
       "label": "OSE_SPECIALISTS_RETAINERS",
       "_origin": "ast",
@@ -62273,6 +62592,17 @@
       "norm_label": "ose_specialists_retainers",
       "source_file": "src/data/ose/oseEquipment.ts",
       "source_location": "L138"
+    },
+    {
+      "id": "src_data_ose_oseequipment_ose_weapons",
+      "label": "OSE_WEAPONS",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "OseCharacterCreatorModal.tsx",
+      "file_type": "code",
+      "norm_label": "ose_weapons",
+      "source_file": "src/data/ose/oseEquipment.ts",
+      "source_location": "L42"
     },
     {
       "id": "src_data_ose_oseraces",
@@ -63542,14 +63872,14 @@
       "source_location": "L1"
     },
     {
-      "id": "agents_skills_taste_application_tests_test_interview",
-      "label": "test_interview.py",
+      "id": "agents_skills_taste_application_tests_test_distill",
+      "label": "test_distill.py",
       "_origin": "ast",
       "community": 167,
       "community_name": "tasteforge/__init__.py",
       "file_type": "code",
-      "norm_label": "test_interview.py",
-      "source_file": ".agents/skills/taste-application/tests/test_interview.py",
+      "norm_label": "test_distill.py",
+      "source_file": ".agents/skills/taste-application/tests/test_distill.py",
       "source_location": "L1"
     },
     {
@@ -63586,14 +63916,14 @@
       "source_location": "L1"
     },
     {
-      "id": "agents_skills_taste_application_tests_test_interview_rationale_1",
-      "label": "Failing-first tests for the deterministic taste interview/profile.",
+      "id": "agents_skills_taste_application_tests_test_distill_rationale_1",
+      "label": "Failing-first tests for offline distillation and the fail-closed live path.",
       "_origin": "ast",
       "community": 167,
       "community_name": "tasteforge/__init__.py",
       "file_type": "rationale",
-      "norm_label": "failing-first tests for the deterministic taste interview/profile.",
-      "source_file": ".agents/skills/taste-application/tests/test_interview.py",
+      "norm_label": "failing-first tests for offline distillation and the fail-closed live path.",
+      "source_file": ".agents/skills/taste-application/tests/test_distill.py",
       "source_location": "L1"
     },
     {
@@ -64175,15 +64505,37 @@
       "source_location": "L969"
     },
     {
-      "id": "src_data_catalog_provenance_test",
-      "label": "catalog-provenance.test.ts",
+      "id": "src_accountstate",
+      "label": "accountState.ts",
       "_origin": "ast",
       "community": 172,
       "community_name": "PortalPages.tsx",
       "file_type": "code",
-      "norm_label": "catalog-provenance.test.ts",
-      "source_file": "src/data/catalog-provenance.test.ts",
+      "norm_label": "accountstate.ts",
+      "source_file": "src/accountState.ts",
       "source_location": "L1"
+    },
+    {
+      "id": "src_accountstate_listeners",
+      "label": "listeners",
+      "_origin": "ast",
+      "community": 172,
+      "community_name": "PortalPages.tsx",
+      "file_type": "code",
+      "norm_label": "listeners",
+      "source_file": "src/accountState.ts",
+      "source_location": "L11"
+    },
+    {
+      "id": "src_accountstate_snapshot",
+      "label": "snapshot",
+      "_origin": "ast",
+      "community": 172,
+      "community_name": "PortalPages.tsx",
+      "file_type": "code",
+      "norm_label": "snapshot",
+      "source_file": "src/accountState.ts",
+      "source_location": "L10"
     },
     {
       "id": "src_data_corecompendium",
@@ -64230,6 +64582,17 @@
       "source_location": "L19"
     },
     {
+      "id": "src_data_dnd5e_dnd5ecatalog",
+      "label": "dnd5eCatalog.ts",
+      "_origin": "ast",
+      "community": 172,
+      "community_name": "PortalPages.tsx",
+      "file_type": "code",
+      "norm_label": "dnd5ecatalog.ts",
+      "source_file": "src/data/dnd5e/dnd5eCatalog.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "src_data_dnd5e_dnd5ecatalog_dnd5e_classes",
       "label": "DND5E_CLASSES",
       "_origin": "ast",
@@ -64241,6 +64604,17 @@
       "source_location": "L116"
     },
     {
+      "id": "src_data_dnd5e_dnd5ecatalog_dnd5e_creation_steps",
+      "label": "DND5E_CREATION_STEPS",
+      "_origin": "ast",
+      "community": 172,
+      "community_name": "PortalPages.tsx",
+      "file_type": "code",
+      "norm_label": "dnd5e_creation_steps",
+      "source_file": "src/data/dnd5e/dnd5eCatalog.ts",
+      "source_location": "L130"
+    },
+    {
       "id": "src_data_dnd5e_dnd5ecatalog_dnd5e_races",
       "label": "DND5E_RACES",
       "_origin": "ast",
@@ -64250,6 +64624,50 @@
       "norm_label": "dnd5e_races",
       "source_file": "src/data/dnd5e/dnd5eCatalog.ts",
       "source_location": "L110"
+    },
+    {
+      "id": "src_data_dnd5e_dnd5ecatalog_dnd5e_skill_abilities",
+      "label": "DND5E_SKILL_ABILITIES",
+      "_origin": "ast",
+      "community": 172,
+      "community_name": "PortalPages.tsx",
+      "file_type": "code",
+      "norm_label": "dnd5e_skill_abilities",
+      "source_file": "src/data/dnd5e/dnd5eCatalog.ts",
+      "source_location": "L93"
+    },
+    {
+      "id": "src_data_dnd5e_dnd5ecatalog_dnd5e_skill_rules",
+      "label": "DND5E_SKILL_RULES",
+      "_origin": "ast",
+      "community": 172,
+      "community_name": "PortalPages.tsx",
+      "file_type": "code",
+      "norm_label": "dnd5e_skill_rules",
+      "source_file": "src/data/dnd5e/dnd5eCatalog.ts",
+      "source_location": "L98"
+    },
+    {
+      "id": "src_data_dnd5e_dnd5ecatalog_dnd5e_skills",
+      "label": "DND5E_SKILLS",
+      "_origin": "ast",
+      "community": 172,
+      "community_name": "PortalPages.tsx",
+      "file_type": "code",
+      "norm_label": "dnd5e_skills",
+      "source_file": "src/data/dnd5e/dnd5eCatalog.ts",
+      "source_location": "L122"
+    },
+    {
+      "id": "src_data_dnd5e_dnd5ecatalog_dnd5e_source_book",
+      "label": "DND5E_SOURCE_BOOK",
+      "_origin": "ast",
+      "community": 172,
+      "community_name": "PortalPages.tsx",
+      "file_type": "code",
+      "norm_label": "dnd5e_source_book",
+      "source_file": "src/data/dnd5e/dnd5eCatalog.ts",
+      "source_location": "L1"
     },
     {
       "id": "src_data_dnd5e_dnd5ecompendium",
@@ -64505,136 +64923,26 @@
       "source_location": "L3"
     },
     {
-      "id": "src_data_ose_oseequipment_ose_armors",
-      "label": "OSE_ARMORS",
+      "id": "src_data_multi_system_catalog_test",
+      "label": "multi-system-catalog.test.ts",
       "_origin": "ast",
       "community": 172,
       "community_name": "PortalPages.tsx",
       "file_type": "code",
-      "norm_label": "ose_armors",
-      "source_file": "src/data/ose/oseEquipment.ts",
-      "source_location": "L62"
-    },
-    {
-      "id": "src_data_ose_oseequipment_ose_gear",
-      "label": "OSE_GEAR",
-      "_origin": "ast",
-      "community": 172,
-      "community_name": "PortalPages.tsx",
-      "file_type": "code",
-      "norm_label": "ose_gear",
-      "source_file": "src/data/ose/oseEquipment.ts",
-      "source_location": "L70"
-    },
-    {
-      "id": "src_data_ose_oseequipment_ose_weapons",
-      "label": "OSE_WEAPONS",
-      "_origin": "ast",
-      "community": 172,
-      "community_name": "PortalPages.tsx",
-      "file_type": "code",
-      "norm_label": "ose_weapons",
-      "source_file": "src/data/ose/oseEquipment.ts",
-      "source_location": "L42"
-    },
-    {
-      "id": "src_data_readiness_validator_test",
-      "label": "readiness-validator.test.ts",
-      "_origin": "ast",
-      "community": 172,
-      "community_name": "PortalPages.tsx",
-      "file_type": "code",
-      "norm_label": "readiness-validator.test.ts",
-      "source_file": "src/data/readiness-validator.test.ts",
+      "norm_label": "multi-system-catalog.test.ts",
+      "source_file": "src/data/multi-system-catalog.test.ts",
       "source_location": "L1"
     },
     {
-      "id": "src_data_sources",
-      "label": "sources.ts",
+      "id": "src_data_ose_oseclasses_ose_classes",
+      "label": "OSE_CLASSES",
       "_origin": "ast",
       "community": 172,
       "community_name": "PortalPages.tsx",
       "file_type": "code",
-      "norm_label": "sources.ts",
-      "source_file": "src/data/sources.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_data_sources_additionaldownloadresources",
-      "label": "additionalDownloadResources",
-      "_origin": "ast",
-      "community": 172,
-      "community_name": "PortalPages.tsx",
-      "file_type": "code",
-      "norm_label": "additionaldownloadresources",
-      "source_file": "src/data/sources.ts",
-      "source_location": "L276"
-    },
-    {
-      "id": "src_data_sources_blank_sheet_drive_url",
-      "label": "BLANK_SHEET_DRIVE_URL",
-      "_origin": "ast",
-      "community": 172,
-      "community_name": "PortalPages.tsx",
-      "file_type": "code",
-      "norm_label": "blank_sheet_drive_url",
-      "source_file": "src/data/sources.ts",
-      "source_location": "L31"
-    },
-    {
-      "id": "src_data_sources_github_blob_base_url",
-      "label": "GITHUB_BLOB_BASE_URL",
-      "_origin": "ast",
-      "community": 172,
-      "community_name": "PortalPages.tsx",
-      "file_type": "code",
-      "norm_label": "github_blob_base_url",
-      "source_file": "src/data/sources.ts",
-      "source_location": "L22"
-    },
-    {
-      "id": "src_data_sources_github_livros_folder_url",
-      "label": "GITHUB_LIVROS_FOLDER_URL",
-      "_origin": "ast",
-      "community": 172,
-      "community_name": "PortalPages.tsx",
-      "file_type": "code",
-      "norm_label": "github_livros_folder_url",
-      "source_file": "src/data/sources.ts",
-      "source_location": "L20"
-    },
-    {
-      "id": "src_data_sources_github_raw_base_url",
-      "label": "GITHUB_RAW_BASE_URL",
-      "_origin": "ast",
-      "community": 172,
-      "community_name": "PortalPages.tsx",
-      "file_type": "code",
-      "norm_label": "github_raw_base_url",
-      "source_file": "src/data/sources.ts",
-      "source_location": "L21"
-    },
-    {
-      "id": "src_data_sources_github_repo_url",
-      "label": "GITHUB_REPO_URL",
-      "_origin": "ast",
-      "community": 172,
-      "community_name": "PortalPages.tsx",
-      "file_type": "code",
-      "norm_label": "github_repo_url",
-      "source_file": "src/data/sources.ts",
-      "source_location": "L19"
-    },
-    {
-      "id": "src_data_sources_google_drive_folder_url",
-      "label": "GOOGLE_DRIVE_FOLDER_URL",
-      "_origin": "ast",
-      "community": 172,
-      "community_name": "PortalPages.tsx",
-      "file_type": "code",
-      "norm_label": "google_drive_folder_url",
-      "source_file": "src/data/sources.ts",
-      "source_location": "L23"
+      "norm_label": "ose_classes",
+      "source_file": "src/data/ose/oseClasses.ts",
+      "source_location": "L66"
     },
     {
       "id": "src_data_sources_google_drive_library_folders",
@@ -64648,39 +64956,6 @@
       "source_location": "L24"
     },
     {
-      "id": "src_data_sources_googledrivemapfiles",
-      "label": "googleDriveMapFiles",
-      "_origin": "ast",
-      "community": 172,
-      "community_name": "PortalPages.tsx",
-      "file_type": "code",
-      "norm_label": "googledrivemapfiles",
-      "source_file": "src/data/sources.ts",
-      "source_location": "L35"
-    },
-    {
-      "id": "src_data_sources_pathfindersources",
-      "label": "pathfinderSources",
-      "_origin": "ast",
-      "community": 172,
-      "community_name": "PortalPages.tsx",
-      "file_type": "code",
-      "norm_label": "pathfindersources",
-      "source_file": "src/data/sources.ts",
-      "source_location": "L69"
-    },
-    {
-      "id": "src_data_sources_poster_map_folio_drive_url",
-      "label": "POSTER_MAP_FOLIO_DRIVE_URL",
-      "_origin": "ast",
-      "community": 172,
-      "community_name": "PortalPages.tsx",
-      "file_type": "code",
-      "norm_label": "poster_map_folio_drive_url",
-      "source_file": "src/data/sources.ts",
-      "source_location": "L32"
-    },
-    {
       "id": "src_data_system_content_coverage_test",
       "label": "system-content-coverage.test.ts",
       "_origin": "ast",
@@ -64689,6 +64964,17 @@
       "file_type": "code",
       "norm_label": "system-content-coverage.test.ts",
       "source_file": "src/data/system-content-coverage.test.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_t20_t20catalog",
+      "label": "t20Catalog.ts",
+      "_origin": "ast",
+      "community": 172,
+      "community_name": "PortalPages.tsx",
+      "file_type": "code",
+      "norm_label": "t20catalog.ts",
+      "source_file": "src/data/t20/t20Catalog.ts",
       "source_location": "L1"
     },
     {
@@ -64703,6 +64989,17 @@
       "source_location": "L45"
     },
     {
+      "id": "src_data_t20_t20catalog_t20_creation_steps",
+      "label": "T20_CREATION_STEPS",
+      "_origin": "ast",
+      "community": 172,
+      "community_name": "PortalPages.tsx",
+      "file_type": "code",
+      "norm_label": "t20_creation_steps",
+      "source_file": "src/data/t20/t20Catalog.ts",
+      "source_location": "L93"
+    },
+    {
       "id": "src_data_t20_t20catalog_t20_races",
       "label": "T20_RACES",
       "_origin": "ast",
@@ -64712,6 +65009,50 @@
       "norm_label": "t20_races",
       "source_file": "src/data/t20/t20Catalog.ts",
       "source_location": "L37"
+    },
+    {
+      "id": "src_data_t20_t20catalog_t20_skill_abilities",
+      "label": "T20_SKILL_ABILITIES",
+      "_origin": "ast",
+      "community": 172,
+      "community_name": "PortalPages.tsx",
+      "file_type": "code",
+      "norm_label": "t20_skill_abilities",
+      "source_file": "src/data/t20/t20Catalog.ts",
+      "source_location": "L12"
+    },
+    {
+      "id": "src_data_t20_t20catalog_t20_skill_rules",
+      "label": "T20_SKILL_RULES",
+      "_origin": "ast",
+      "community": 172,
+      "community_name": "PortalPages.tsx",
+      "file_type": "code",
+      "norm_label": "t20_skill_rules",
+      "source_file": "src/data/t20/t20Catalog.ts",
+      "source_location": "L19"
+    },
+    {
+      "id": "src_data_t20_t20catalog_t20_skills",
+      "label": "T20_SKILLS",
+      "_origin": "ast",
+      "community": 172,
+      "community_name": "PortalPages.tsx",
+      "file_type": "code",
+      "norm_label": "t20_skills",
+      "source_file": "src/data/t20/t20Catalog.ts",
+      "source_location": "L82"
+    },
+    {
+      "id": "src_data_t20_t20catalog_t20_source_book",
+      "label": "T20_SOURCE_BOOK",
+      "_origin": "ast",
+      "community": 172,
+      "community_name": "PortalPages.tsx",
+      "file_type": "code",
+      "norm_label": "t20_source_book",
+      "source_file": "src/data/t20/t20Catalog.ts",
+      "source_location": "L1"
     },
     {
       "id": "src_data_t20_t20compendium_t20_equipment",
@@ -64780,6 +65121,28 @@
       "source_location": "L17"
     },
     {
+      "id": "src_data_t20_t20races",
+      "label": "t20Races.ts",
+      "_origin": "ast",
+      "community": 172,
+      "community_name": "PortalPages.tsx",
+      "file_type": "code",
+      "norm_label": "t20races.ts",
+      "source_file": "src/data/t20/t20Races.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_t20_t20races_t20_race_rules",
+      "label": "T20_RACE_RULES",
+      "_origin": "ast",
+      "community": 172,
+      "community_name": "PortalPages.tsx",
+      "file_type": "code",
+      "norm_label": "t20_race_rules",
+      "source_file": "src/data/t20/t20Races.ts",
+      "source_location": "L17"
+    },
+    {
       "id": "src_portalpages",
       "label": "PortalPages.tsx",
       "_origin": "ast",
@@ -64835,125 +65198,213 @@
       "source_location": "L134"
     },
     {
-      "id": "scripts_generate_ose_catalog_migration",
-      "label": "generate-ose-catalog-migration.mjs",
+      "id": "src_data_catalog_provenance_test",
+      "label": "catalog-provenance.test.ts",
       "_origin": "ast",
       "community": 173,
-      "community_name": "generate-ose-catalog-migration.mjs",
+      "community_name": "sources.ts",
       "file_type": "code",
-      "norm_label": "generate-ose-catalog-migration.mjs",
-      "source_file": "scripts/generate-ose-catalog-migration.mjs",
+      "norm_label": "catalog-provenance.test.ts",
+      "source_file": "src/data/catalog-provenance.test.ts",
       "source_location": "L1"
     },
     {
-      "id": "scripts_generate_ose_catalog_migration_ancestryrows",
-      "label": "ancestryRows",
+      "id": "src_data_readiness_validator_test",
+      "label": "readiness-validator.test.ts",
       "_origin": "ast",
       "community": 173,
-      "community_name": "generate-ose-catalog-migration.mjs",
+      "community_name": "sources.ts",
       "file_type": "code",
-      "norm_label": "ancestryrows",
-      "source_file": "scripts/generate-ose-catalog-migration.mjs",
-      "source_location": "L33"
+      "norm_label": "readiness-validator.test.ts",
+      "source_file": "src/data/readiness-validator.test.ts",
+      "source_location": "L1"
     },
     {
-      "id": "scripts_generate_ose_catalog_migration_classicclassrows",
-      "label": "classicClassRows",
+      "id": "src_data_sources",
+      "label": "sources.ts",
       "_origin": "ast",
       "community": 173,
-      "community_name": "generate-ose-catalog-migration.mjs",
+      "community_name": "sources.ts",
       "file_type": "code",
-      "norm_label": "classicclassrows",
-      "source_file": "scripts/generate-ose-catalog-migration.mjs",
-      "source_location": "L68"
+      "norm_label": "sources.ts",
+      "source_file": "src/data/sources.ts",
+      "source_location": "L1"
     },
     {
-      "id": "scripts_generate_ose_catalog_migration_classicitemrows",
-      "label": "classicItemRows",
+      "id": "src_data_sources_additionaldownloadresources",
+      "label": "additionalDownloadResources",
       "_origin": "ast",
       "community": 173,
-      "community_name": "generate-ose-catalog-migration.mjs",
+      "community_name": "sources.ts",
       "file_type": "code",
-      "norm_label": "classicitemrows",
-      "source_file": "scripts/generate-ose-catalog-migration.mjs",
-      "source_location": "L76"
+      "norm_label": "additionaldownloadresources",
+      "source_file": "src/data/sources.ts",
+      "source_location": "L276"
     },
     {
-      "id": "scripts_generate_ose_catalog_migration_classicoutput",
-      "label": "classicOutput",
+      "id": "src_data_sources_blank_sheet_drive_url",
+      "label": "BLANK_SHEET_DRIVE_URL",
       "_origin": "ast",
       "community": 173,
-      "community_name": "generate-ose-catalog-migration.mjs",
+      "community_name": "sources.ts",
       "file_type": "code",
-      "norm_label": "classicoutput",
-      "source_file": "scripts/generate-ose-catalog-migration.mjs",
-      "source_location": "L85"
+      "norm_label": "blank_sheet_drive_url",
+      "source_file": "src/data/sources.ts",
+      "source_location": "L31"
     },
     {
-      "id": "scripts_generate_ose_catalog_migration_classicspellrows",
-      "label": "classicSpellRows",
+      "id": "src_data_sources_github_blob_base_url",
+      "label": "GITHUB_BLOB_BASE_URL",
       "_origin": "ast",
       "community": 173,
-      "community_name": "generate-ose-catalog-migration.mjs",
+      "community_name": "sources.ts",
       "file_type": "code",
-      "norm_label": "classicspellrows",
-      "source_file": "scripts/generate-ose-catalog-migration.mjs",
-      "source_location": "L81"
+      "norm_label": "github_blob_base_url",
+      "source_file": "src/data/sources.ts",
+      "source_location": "L22"
     },
     {
-      "id": "scripts_generate_ose_catalog_migration_classrows",
-      "label": "classRows",
+      "id": "src_data_sources_github_livros_folder_url",
+      "label": "GITHUB_LIVROS_FOLDER_URL",
       "_origin": "ast",
       "community": 173,
-      "community_name": "generate-ose-catalog-migration.mjs",
+      "community_name": "sources.ts",
       "file_type": "code",
-      "norm_label": "classrows",
-      "source_file": "scripts/generate-ose-catalog-migration.mjs",
-      "source_location": "L24"
+      "norm_label": "github_livros_folder_url",
+      "source_file": "src/data/sources.ts",
+      "source_location": "L20"
     },
     {
-      "id": "scripts_generate_ose_catalog_migration_itemrows",
-      "label": "itemRows",
+      "id": "src_data_sources_github_raw_base_url",
+      "label": "GITHUB_RAW_BASE_URL",
       "_origin": "ast",
       "community": 173,
-      "community_name": "generate-ose-catalog-migration.mjs",
+      "community_name": "sources.ts",
       "file_type": "code",
-      "norm_label": "itemrows",
-      "source_file": "scripts/generate-ose-catalog-migration.mjs",
-      "source_location": "L42"
+      "norm_label": "github_raw_base_url",
+      "source_file": "src/data/sources.ts",
+      "source_location": "L21"
     },
     {
-      "id": "scripts_generate_ose_catalog_migration_output",
-      "label": "output",
+      "id": "src_data_sources_github_repo_url",
+      "label": "GITHUB_REPO_URL",
       "_origin": "ast",
       "community": 173,
-      "community_name": "generate-ose-catalog-migration.mjs",
+      "community_name": "sources.ts",
       "file_type": "code",
-      "norm_label": "output",
-      "source_file": "scripts/generate-ose-catalog-migration.mjs",
-      "source_location": "L9"
+      "norm_label": "github_repo_url",
+      "source_file": "src/data/sources.ts",
+      "source_location": "L19"
     },
     {
-      "id": "scripts_generate_ose_catalog_migration_root",
-      "label": "root",
+      "id": "src_data_sources_google_drive_folder_url",
+      "label": "GOOGLE_DRIVE_FOLDER_URL",
       "_origin": "ast",
       "community": 173,
-      "community_name": "generate-ose-catalog-migration.mjs",
+      "community_name": "sources.ts",
       "file_type": "code",
-      "norm_label": "root",
-      "source_file": "scripts/generate-ose-catalog-migration.mjs",
-      "source_location": "L8"
+      "norm_label": "google_drive_folder_url",
+      "source_file": "src/data/sources.ts",
+      "source_location": "L23"
     },
     {
-      "id": "scripts_generate_ose_catalog_migration_spellrows",
-      "label": "spellRows",
+      "id": "src_data_sources_googledrivemapfiles",
+      "label": "googleDriveMapFiles",
       "_origin": "ast",
       "community": 173,
-      "community_name": "generate-ose-catalog-migration.mjs",
+      "community_name": "sources.ts",
       "file_type": "code",
-      "norm_label": "spellrows",
-      "source_file": "scripts/generate-ose-catalog-migration.mjs",
-      "source_location": "L48"
+      "norm_label": "googledrivemapfiles",
+      "source_file": "src/data/sources.ts",
+      "source_location": "L35"
+    },
+    {
+      "id": "src_data_sources_pathfindersources",
+      "label": "pathfinderSources",
+      "_origin": "ast",
+      "community": 173,
+      "community_name": "sources.ts",
+      "file_type": "code",
+      "norm_label": "pathfindersources",
+      "source_file": "src/data/sources.ts",
+      "source_location": "L69"
+    },
+    {
+      "id": "src_data_sources_poster_map_folio_drive_url",
+      "label": "POSTER_MAP_FOLIO_DRIVE_URL",
+      "_origin": "ast",
+      "community": 173,
+      "community_name": "sources.ts",
+      "file_type": "code",
+      "norm_label": "poster_map_folio_drive_url",
+      "source_file": "src/data/sources.ts",
+      "source_location": "L32"
+    },
+    {
+      "id": "src_portalpages_test",
+      "label": "PortalPages.test.tsx",
+      "_origin": "ast",
+      "community": 173,
+      "community_name": "sources.ts",
+      "file_type": "code",
+      "norm_label": "portalpages.test.tsx",
+      "source_file": "src/PortalPages.test.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_portalpages_test_verifiedancestry",
+      "label": "verifiedAncestry",
+      "_origin": "ast",
+      "community": 173,
+      "community_name": "sources.ts",
+      "file_type": "code",
+      "norm_label": "verifiedancestry",
+      "source_file": "src/PortalPages.test.tsx",
+      "source_location": "L11"
+    },
+    {
+      "id": "src_portalpages_test_verifiedarchetype",
+      "label": "verifiedArchetype",
+      "_origin": "ast",
+      "community": 173,
+      "community_name": "sources.ts",
+      "file_type": "code",
+      "norm_label": "verifiedarchetype",
+      "source_file": "src/PortalPages.test.tsx",
+      "source_location": "L27"
+    },
+    {
+      "id": "src_portalpages_test_verifiedheritage",
+      "label": "verifiedHeritage",
+      "_origin": "ast",
+      "community": 173,
+      "community_name": "sources.ts",
+      "file_type": "code",
+      "norm_label": "verifiedheritage",
+      "source_file": "src/PortalPages.test.tsx",
+      "source_location": "L22"
+    },
+    {
+      "id": "src_portalpages_test_verifiedritual",
+      "label": "verifiedRitual",
+      "_origin": "ast",
+      "community": 173,
+      "community_name": "sources.ts",
+      "file_type": "code",
+      "norm_label": "verifiedritual",
+      "source_file": "src/PortalPages.test.tsx",
+      "source_location": "L37"
+    },
+    {
+      "id": "src_portalpages_test_verifiedspell",
+      "label": "verifiedSpell",
+      "_origin": "ast",
+      "community": 173,
+      "community_name": "sources.ts",
+      "file_type": "code",
+      "norm_label": "verifiedspell",
+      "source_file": "src/PortalPages.test.tsx",
+      "source_location": "L32"
     },
     {
       "id": "scripts_audit_local_weapon_variants",
@@ -65088,6 +65539,17 @@
       "source_location": "L1"
     },
     {
+      "id": "fs",
+      "label": "fs",
+      "_origin": "ast",
+      "community": 179,
+      "community_name": "i18n.tsx",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "fs",
+      "source_file": "fs"
+    },
+    {
       "id": "agents_skills_remotion_video_creation_rules_assets_text_animations_word_highlight",
       "label": "text-animations-word-highlight.tsx",
       "_origin": "ast",
@@ -65108,39 +65570,6 @@
       "norm_label": "{fontfamily}",
       "source_file": ".agents/skills/remotion-video-creation/rules/assets/text-animations-word-highlight.tsx",
       "source_location": "L26"
-    },
-    {
-      "id": "src_accountstate",
-      "label": "accountState.ts",
-      "_origin": "ast",
-      "community": 179,
-      "community_name": "i18n.tsx",
-      "file_type": "code",
-      "norm_label": "accountstate.ts",
-      "source_file": "src/accountState.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_accountstate_listeners",
-      "label": "listeners",
-      "_origin": "ast",
-      "community": 179,
-      "community_name": "i18n.tsx",
-      "file_type": "code",
-      "norm_label": "listeners",
-      "source_file": "src/accountState.ts",
-      "source_location": "L11"
-    },
-    {
-      "id": "src_accountstate_snapshot",
-      "label": "snapshot",
-      "_origin": "ast",
-      "community": 179,
-      "community_name": "i18n.tsx",
-      "file_type": "code",
-      "norm_label": "snapshot",
-      "source_file": "src/accountState.ts",
-      "source_location": "L10"
     },
     {
       "id": "src_data_actionsdata",
@@ -65484,72 +65913,6 @@
       "source_location": "L59"
     },
     {
-      "id": "src_portalpages_test",
-      "label": "PortalPages.test.tsx",
-      "_origin": "ast",
-      "community": 179,
-      "community_name": "i18n.tsx",
-      "file_type": "code",
-      "norm_label": "portalpages.test.tsx",
-      "source_file": "src/PortalPages.test.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_portalpages_test_verifiedancestry",
-      "label": "verifiedAncestry",
-      "_origin": "ast",
-      "community": 179,
-      "community_name": "i18n.tsx",
-      "file_type": "code",
-      "norm_label": "verifiedancestry",
-      "source_file": "src/PortalPages.test.tsx",
-      "source_location": "L11"
-    },
-    {
-      "id": "src_portalpages_test_verifiedarchetype",
-      "label": "verifiedArchetype",
-      "_origin": "ast",
-      "community": 179,
-      "community_name": "i18n.tsx",
-      "file_type": "code",
-      "norm_label": "verifiedarchetype",
-      "source_file": "src/PortalPages.test.tsx",
-      "source_location": "L27"
-    },
-    {
-      "id": "src_portalpages_test_verifiedheritage",
-      "label": "verifiedHeritage",
-      "_origin": "ast",
-      "community": 179,
-      "community_name": "i18n.tsx",
-      "file_type": "code",
-      "norm_label": "verifiedheritage",
-      "source_file": "src/PortalPages.test.tsx",
-      "source_location": "L22"
-    },
-    {
-      "id": "src_portalpages_test_verifiedritual",
-      "label": "verifiedRitual",
-      "_origin": "ast",
-      "community": 179,
-      "community_name": "i18n.tsx",
-      "file_type": "code",
-      "norm_label": "verifiedritual",
-      "source_file": "src/PortalPages.test.tsx",
-      "source_location": "L37"
-    },
-    {
-      "id": "src_portalpages_test_verifiedspell",
-      "label": "verifiedSpell",
-      "_origin": "ast",
-      "community": 179,
-      "community_name": "i18n.tsx",
-      "file_type": "code",
-      "norm_label": "verifiedspell",
-      "source_file": "src/PortalPages.test.tsx",
-      "source_location": "L32"
-    },
-    {
       "id": "src_systemselectormodal_test",
       "label": "SystemSelectorModal.test.tsx",
       "_origin": "ast",
@@ -65603,17 +65966,6 @@
       "norm_label": "react",
       "source_file": "package.json",
       "source_location": "L49"
-    },
-    {
-      "id": "ref_testing_library_react",
-      "label": "@testing-library/react",
-      "_origin": "ast",
-      "community": 179,
-      "community_name": "i18n.tsx",
-      "file_type": "concept",
-      "norm_label": "@testing-library/react",
-      "source_file": "package.json",
-      "source_location": "L57"
     },
     {
       "id": "agents_skills_graphify_cli",
@@ -67728,6 +68080,17 @@
       "source_location": "L1"
     },
     {
+      "id": "src_data_dnd5e_dnd5eraces_dnd5e_race_rules",
+      "label": "DND5E_RACE_RULES",
+      "_origin": "ast",
+      "community": 185,
+      "community_name": "dnd5eRaces.ts",
+      "file_type": "code",
+      "norm_label": "dnd5e_race_rules",
+      "source_file": "src/data/dnd5e/dnd5eRaces.ts",
+      "source_location": "L29"
+    },
+    {
       "id": "src_data_dnd5e_dnd5eraces_draconic_ancestries",
       "label": "DRACONIC_ANCESTRIES",
       "_origin": "ast",
@@ -69433,72 +69796,6 @@
       "source_location": "L1"
     },
     {
-      "id": "src_data_dnd5e_dnd5ecatalog",
-      "label": "dnd5eCatalog.ts",
-      "_origin": "ast",
-      "community": 191,
-      "community_name": "multiSystemCharacter.ts",
-      "file_type": "code",
-      "norm_label": "dnd5ecatalog.ts",
-      "source_file": "src/data/dnd5e/dnd5eCatalog.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_data_dnd5e_dnd5ecatalog_dnd5e_creation_steps",
-      "label": "DND5E_CREATION_STEPS",
-      "_origin": "ast",
-      "community": 191,
-      "community_name": "multiSystemCharacter.ts",
-      "file_type": "code",
-      "norm_label": "dnd5e_creation_steps",
-      "source_file": "src/data/dnd5e/dnd5eCatalog.ts",
-      "source_location": "L130"
-    },
-    {
-      "id": "src_data_dnd5e_dnd5ecatalog_dnd5e_skill_abilities",
-      "label": "DND5E_SKILL_ABILITIES",
-      "_origin": "ast",
-      "community": 191,
-      "community_name": "multiSystemCharacter.ts",
-      "file_type": "code",
-      "norm_label": "dnd5e_skill_abilities",
-      "source_file": "src/data/dnd5e/dnd5eCatalog.ts",
-      "source_location": "L93"
-    },
-    {
-      "id": "src_data_dnd5e_dnd5ecatalog_dnd5e_skill_rules",
-      "label": "DND5E_SKILL_RULES",
-      "_origin": "ast",
-      "community": 191,
-      "community_name": "multiSystemCharacter.ts",
-      "file_type": "code",
-      "norm_label": "dnd5e_skill_rules",
-      "source_file": "src/data/dnd5e/dnd5eCatalog.ts",
-      "source_location": "L98"
-    },
-    {
-      "id": "src_data_dnd5e_dnd5ecatalog_dnd5e_skills",
-      "label": "DND5E_SKILLS",
-      "_origin": "ast",
-      "community": 191,
-      "community_name": "multiSystemCharacter.ts",
-      "file_type": "code",
-      "norm_label": "dnd5e_skills",
-      "source_file": "src/data/dnd5e/dnd5eCatalog.ts",
-      "source_location": "L122"
-    },
-    {
-      "id": "src_data_dnd5e_dnd5ecatalog_dnd5e_source_book",
-      "label": "DND5E_SOURCE_BOOK",
-      "_origin": "ast",
-      "community": 191,
-      "community_name": "multiSystemCharacter.ts",
-      "file_type": "code",
-      "norm_label": "dnd5e_source_book",
-      "source_file": "src/data/dnd5e/dnd5eCatalog.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "src_data_dnd5e_dnd5ecatalog_dnd5e_tool_choice_groups",
       "label": "DND5E_TOOL_CHOICE_GROUPS",
       "_origin": "ast",
@@ -69519,39 +69816,6 @@
       "norm_label": "dnd5e_tools",
       "source_file": "src/data/dnd5e/dnd5eCatalog.ts",
       "source_location": "L20"
-    },
-    {
-      "id": "src_data_dnd5e_dnd5eclasses",
-      "label": "dnd5eClasses.ts",
-      "_origin": "ast",
-      "community": 191,
-      "community_name": "multiSystemCharacter.ts",
-      "file_type": "code",
-      "norm_label": "dnd5eclasses.ts",
-      "source_file": "src/data/dnd5e/dnd5eClasses.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_data_dnd5e_dnd5eclasses_dnd5e_class_rules",
-      "label": "DND5E_CLASS_RULES",
-      "_origin": "ast",
-      "community": 191,
-      "community_name": "multiSystemCharacter.ts",
-      "file_type": "code",
-      "norm_label": "dnd5e_class_rules",
-      "source_file": "src/data/dnd5e/dnd5eClasses.ts",
-      "source_location": "L18"
-    },
-    {
-      "id": "src_data_dnd5e_dnd5eclasses_dnd5e_starting_equipment",
-      "label": "DND5E_STARTING_EQUIPMENT",
-      "_origin": "ast",
-      "community": 191,
-      "community_name": "multiSystemCharacter.ts",
-      "file_type": "code",
-      "norm_label": "dnd5e_starting_equipment",
-      "source_file": "src/data/dnd5e/dnd5eClasses.ts",
-      "source_location": "L33"
     },
     {
       "id": "src_data_dnd5e_dnd5ecompendium_dnd5e_feat_choices",
@@ -69607,28 +69871,6 @@
       "norm_label": "dnd5e_class_progressions",
       "source_file": "src/data/dnd5e/dnd5eProgressions.ts",
       "source_location": "L21"
-    },
-    {
-      "id": "src_data_dnd5e_dnd5eraces_dnd5e_race_rules",
-      "label": "DND5E_RACE_RULES",
-      "_origin": "ast",
-      "community": 191,
-      "community_name": "multiSystemCharacter.ts",
-      "file_type": "code",
-      "norm_label": "dnd5e_race_rules",
-      "source_file": "src/data/dnd5e/dnd5eRaces.ts",
-      "source_location": "L29"
-    },
-    {
-      "id": "src_data_multi_system_catalog_test",
-      "label": "multi-system-catalog.test.ts",
-      "_origin": "ast",
-      "community": 191,
-      "community_name": "multiSystemCharacter.ts",
-      "file_type": "code",
-      "norm_label": "multi-system-catalog.test.ts",
-      "source_file": "src/data/multi-system-catalog.test.ts",
-      "source_location": "L1"
     },
     {
       "id": "src_data_multisystemcharacter",
@@ -69851,17 +70093,6 @@
       "source_location": "L1"
     },
     {
-      "id": "src_data_t20_t20catalog",
-      "label": "t20Catalog.ts",
-      "_origin": "ast",
-      "community": 191,
-      "community_name": "multiSystemCharacter.ts",
-      "file_type": "code",
-      "norm_label": "t20catalog.ts",
-      "source_file": "src/data/t20/t20Catalog.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "src_data_t20_t20catalog_t20_arcanist_paths",
       "label": "T20_ARCANIST_PATHS",
       "_origin": "ast",
@@ -69884,50 +70115,6 @@
       "source_location": "L61"
     },
     {
-      "id": "src_data_t20_t20catalog_t20_creation_steps",
-      "label": "T20_CREATION_STEPS",
-      "_origin": "ast",
-      "community": 191,
-      "community_name": "multiSystemCharacter.ts",
-      "file_type": "code",
-      "norm_label": "t20_creation_steps",
-      "source_file": "src/data/t20/t20Catalog.ts",
-      "source_location": "L93"
-    },
-    {
-      "id": "src_data_t20_t20catalog_t20_skill_abilities",
-      "label": "T20_SKILL_ABILITIES",
-      "_origin": "ast",
-      "community": 191,
-      "community_name": "multiSystemCharacter.ts",
-      "file_type": "code",
-      "norm_label": "t20_skill_abilities",
-      "source_file": "src/data/t20/t20Catalog.ts",
-      "source_location": "L12"
-    },
-    {
-      "id": "src_data_t20_t20catalog_t20_skill_rules",
-      "label": "T20_SKILL_RULES",
-      "_origin": "ast",
-      "community": 191,
-      "community_name": "multiSystemCharacter.ts",
-      "file_type": "code",
-      "norm_label": "t20_skill_rules",
-      "source_file": "src/data/t20/t20Catalog.ts",
-      "source_location": "L19"
-    },
-    {
-      "id": "src_data_t20_t20catalog_t20_skills",
-      "label": "T20_SKILLS",
-      "_origin": "ast",
-      "community": 191,
-      "community_name": "multiSystemCharacter.ts",
-      "file_type": "code",
-      "norm_label": "t20_skills",
-      "source_file": "src/data/t20/t20Catalog.ts",
-      "source_location": "L82"
-    },
-    {
       "id": "src_data_t20_t20catalog_t20_sorcerer_lineages",
       "label": "T20_SORCERER_LINEAGES",
       "_origin": "ast",
@@ -69939,50 +70126,6 @@
       "source_location": "L76"
     },
     {
-      "id": "src_data_t20_t20catalog_t20_source_book",
-      "label": "T20_SOURCE_BOOK",
-      "_origin": "ast",
-      "community": 191,
-      "community_name": "multiSystemCharacter.ts",
-      "file_type": "code",
-      "norm_label": "t20_source_book",
-      "source_file": "src/data/t20/t20Catalog.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_data_t20_t20classes",
-      "label": "t20Classes.ts",
-      "_origin": "ast",
-      "community": 191,
-      "community_name": "multiSystemCharacter.ts",
-      "file_type": "code",
-      "norm_label": "t20classes.ts",
-      "source_file": "src/data/t20/t20Classes.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_data_t20_t20classes_t20_class_rules",
-      "label": "T20_CLASS_RULES",
-      "_origin": "ast",
-      "community": 191,
-      "community_name": "multiSystemCharacter.ts",
-      "file_type": "code",
-      "norm_label": "t20_class_rules",
-      "source_file": "src/data/t20/t20Classes.ts",
-      "source_location": "L19"
-    },
-    {
-      "id": "src_data_t20_t20classes_t20_starting_equipment",
-      "label": "T20_STARTING_EQUIPMENT",
-      "_origin": "ast",
-      "community": 191,
-      "community_name": "multiSystemCharacter.ts",
-      "file_type": "code",
-      "norm_label": "t20_starting_equipment",
-      "source_file": "src/data/t20/t20Classes.ts",
-      "source_location": "L36"
-    },
-    {
       "id": "src_data_t20_t20compendium_t20_power_choices",
       "label": "T20_POWER_CHOICES",
       "_origin": "ast",
@@ -69992,28 +70135,6 @@
       "norm_label": "t20_power_choices",
       "source_file": "src/data/t20/t20Compendium.ts",
       "source_location": "L1017"
-    },
-    {
-      "id": "src_data_t20_t20races",
-      "label": "t20Races.ts",
-      "_origin": "ast",
-      "community": 191,
-      "community_name": "multiSystemCharacter.ts",
-      "file_type": "code",
-      "norm_label": "t20races.ts",
-      "source_file": "src/data/t20/t20Races.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_data_t20_t20races_t20_race_rules",
-      "label": "T20_RACE_RULES",
-      "_origin": "ast",
-      "community": 191,
-      "community_name": "multiSystemCharacter.ts",
-      "file_type": "code",
-      "norm_label": "t20_race_rules",
-      "source_file": "src/data/t20/t20Races.ts",
-      "source_location": "L17"
     },
     {
       "id": "src_services_corepdfexport",
@@ -70038,26 +70159,70 @@
       "source_location": "L1"
     },
     {
-      "id": "agents_skills_taste_application_tests_test_distill",
-      "label": "test_distill.py",
+      "id": "ref_pdf_lib",
+      "label": "pdf-lib",
+      "_origin": "ast",
+      "community": 191,
+      "community_name": "multiSystemCharacter.ts",
+      "file_type": "concept",
+      "norm_label": "pdf-lib",
+      "source_file": "package.json",
+      "source_location": "L48"
+    },
+    {
+      "id": "agents_skills_taste_application_scripts_tasteforge_resolve",
+      "label": "tasteforge/resolve.py",
       "_origin": "ast",
       "community": 192,
-      "community_name": "LocalDistillTests",
+      "community_name": "tasteforge/resolve.py",
       "file_type": "code",
-      "norm_label": "test_distill.py",
-      "source_file": ".agents/skills/taste-application/tests/test_distill.py",
+      "norm_label": "tasteforge/resolve.py",
+      "source_file": ".agents/skills/taste-application/scripts/tasteforge/resolve.py",
       "source_location": "L1"
     },
     {
-      "id": "agents_skills_taste_application_tests_test_distill_rationale_1",
-      "label": "Failing-first tests for offline distillation and the fail-closed live path.",
+      "id": "agents_skills_taste_application_scripts_tasteforge_resolve_rationale_1",
+      "label": "Validated overlay placement using injected Resolve objects, without connecting.\u2026",
       "_origin": "ast",
       "community": 192,
-      "community_name": "LocalDistillTests",
+      "community_name": "tasteforge/resolve.py",
       "file_type": "rationale",
-      "norm_label": "failing-first tests for offline distillation and the fail-closed live path.",
-      "source_file": ".agents/skills/taste-application/tests/test_distill.py",
+      "norm_label": "validated overlay placement using injected resolve objects, without connecting....",
+      "source_file": ".agents/skills/taste-application/scripts/tasteforge/resolve.py",
       "source_location": "L1"
+    },
+    {
+      "id": "agents_skills_taste_application_scripts_tasteforge_resolve_rationale_243",
+      "label": "Append and verify overlays; returns an in-memory placement receipt only. This\u2026",
+      "_origin": "ast",
+      "community": 192,
+      "community_name": "tasteforge/resolve.py",
+      "file_type": "rationale",
+      "norm_label": "append and verify overlays; returns an in-memory placement receipt only. this...",
+      "source_file": ".agents/skills/taste-application/scripts/tasteforge/resolve.py",
+      "source_location": "L243"
+    },
+    {
+      "id": "agents_skills_taste_application_scripts_tasteforge_resolve_rationale_40",
+      "label": "Count decoded video frames; never infer source length from duration.",
+      "_origin": "ast",
+      "community": 192,
+      "community_name": "tasteforge/resolve.py",
+      "file_type": "rationale",
+      "norm_label": "count decoded video frames; never infer source length from duration.",
+      "source_file": ".agents/skills/taste-application/scripts/tasteforge/resolve.py",
+      "source_location": "L40"
+    },
+    {
+      "id": "agents_skills_taste_application_scripts_tasteforge_resolve_rationale_89",
+      "label": "Validate assets and interval-color overlays above preserved video tracks.\u2026",
+      "_origin": "ast",
+      "community": 192,
+      "community_name": "tasteforge/resolve.py",
+      "file_type": "rationale",
+      "norm_label": "validate assets and interval-color overlays above preserved video tracks....",
+      "source_file": ".agents/skills/taste-application/scripts/tasteforge/resolve.py",
+      "source_location": "L89"
     },
     {
       "id": "agents_skills_taste_application_scripts_taste_grade",
@@ -83237,77 +83402,22 @@
       "source_location": "L1"
     },
     {
-      "id": "agents_skills_taste_application_scripts_tasteforge_resolve",
-      "label": "tasteforge/resolve.py",
-      "_origin": "ast",
-      "community": 229,
-      "community_name": "tasteforge/resolve.py",
-      "file_type": "code",
-      "norm_label": "tasteforge/resolve.py",
-      "source_file": ".agents/skills/taste-application/scripts/tasteforge/resolve.py",
-      "source_location": "L1"
-    },
-    {
       "id": "agents_skills_taste_application_tests_test_resolve",
       "label": "test_resolve.py",
       "_origin": "ast",
       "community": 229,
-      "community_name": "tasteforge/resolve.py",
+      "community_name": "ResolveTests",
       "file_type": "code",
       "norm_label": "test_resolve.py",
       "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
       "source_location": "L1"
     },
     {
-      "id": "agents_skills_taste_application_scripts_tasteforge_resolve_rationale_1",
-      "label": "Validated overlay placement using injected Resolve objects, without connecting.\u2026",
-      "_origin": "ast",
-      "community": 229,
-      "community_name": "tasteforge/resolve.py",
-      "file_type": "rationale",
-      "norm_label": "validated overlay placement using injected resolve objects, without connecting....",
-      "source_file": ".agents/skills/taste-application/scripts/tasteforge/resolve.py",
-      "source_location": "L1"
-    },
-    {
-      "id": "agents_skills_taste_application_scripts_tasteforge_resolve_rationale_243",
-      "label": "Append and verify overlays; returns an in-memory placement receipt only. This\u2026",
-      "_origin": "ast",
-      "community": 229,
-      "community_name": "tasteforge/resolve.py",
-      "file_type": "rationale",
-      "norm_label": "append and verify overlays; returns an in-memory placement receipt only. this...",
-      "source_file": ".agents/skills/taste-application/scripts/tasteforge/resolve.py",
-      "source_location": "L243"
-    },
-    {
-      "id": "agents_skills_taste_application_scripts_tasteforge_resolve_rationale_40",
-      "label": "Count decoded video frames; never infer source length from duration.",
-      "_origin": "ast",
-      "community": 229,
-      "community_name": "tasteforge/resolve.py",
-      "file_type": "rationale",
-      "norm_label": "count decoded video frames; never infer source length from duration.",
-      "source_file": ".agents/skills/taste-application/scripts/tasteforge/resolve.py",
-      "source_location": "L40"
-    },
-    {
-      "id": "agents_skills_taste_application_scripts_tasteforge_resolve_rationale_89",
-      "label": "Validate assets and interval-color overlays above preserved video tracks.\u2026",
-      "_origin": "ast",
-      "community": 229,
-      "community_name": "tasteforge/resolve.py",
-      "file_type": "rationale",
-      "norm_label": "validate assets and interval-color overlays above preserved video tracks....",
-      "source_file": ".agents/skills/taste-application/scripts/tasteforge/resolve.py",
-      "source_location": "L89"
-    },
-    {
       "id": "agents_skills_taste_application_tests_test_resolve_rationale_2",
       "label": "Resolve adapter regression tests; no connection to Resolve is made.",
       "_origin": "ast",
       "community": 229,
-      "community_name": "tasteforge/resolve.py",
+      "community_name": "ResolveTests",
       "file_type": "rationale",
       "norm_label": "resolve adapter regression tests; no connection to resolve is made.",
       "source_file": ".agents/skills/taste-application/tests/test_resolve.py",
@@ -116096,6 +116206,17 @@
       "source_location": "L1"
     },
     {
+      "id": "agents_skills_taste_application_scripts_tasteforge_pack",
+      "label": "tasteforge/pack.py",
+      "_origin": "ast",
+      "community": 337,
+      "community_name": "tasteforge/cli.py",
+      "file_type": "code",
+      "norm_label": "tasteforge/pack.py",
+      "source_file": ".agents/skills/taste-application/scripts/tasteforge/pack.py",
+      "source_location": "L1"
+    },
+    {
       "id": "argumentparser",
       "label": "ArgumentParser",
       "_origin": "ast",
@@ -116149,6 +116270,28 @@
       "norm_label": "entry point: python3 -m tasteforge <command>.",
       "source_file": ".agents/skills/taste-application/scripts/tasteforge/__main__.py",
       "source_location": "L1"
+    },
+    {
+      "id": "agents_skills_taste_application_scripts_tasteforge_pack_rationale_1",
+      "label": "Offline style-pack model: load, inspect, validate. A pack is a directory\u2026",
+      "_origin": "ast",
+      "community": 337,
+      "community_name": "tasteforge/cli.py",
+      "file_type": "rationale",
+      "norm_label": "offline style-pack model: load, inspect, validate. a pack is a directory...",
+      "source_file": ".agents/skills/taste-application/scripts/tasteforge/pack.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "agents_skills_taste_application_scripts_tasteforge_pack_rationale_180",
+      "label": "Load a pack directory; raises if no manifest exists.",
+      "_origin": "ast",
+      "community": 337,
+      "community_name": "tasteforge/cli.py",
+      "file_type": "rationale",
+      "norm_label": "load a pack directory; raises if no manifest exists.",
+      "source_file": ".agents/skills/taste-application/scripts/tasteforge/pack.py",
+      "source_location": "L180"
     },
     {
       "id": "agents_skills_videodb_reference_use_cases_add_professional_polish",
@@ -125381,17 +125524,6 @@
       "source_location": "L92"
     },
     {
-      "id": "agents_skills_taste_application_scripts_tasteforge_pack",
-      "label": "tasteforge/pack.py",
-      "_origin": "ast",
-      "community": 381,
-      "community_name": "StylePack",
-      "file_type": "code",
-      "norm_label": "tasteforge/pack.py",
-      "source_file": ".agents/skills/taste-application/scripts/tasteforge/pack.py",
-      "source_location": "L1"
-    },
-    {
       "id": "agents_skills_taste_application_scripts_tasteforge_pack_py_any",
       "label": "Any",
       "_origin": "ast",
@@ -125412,28 +125544,6 @@
       "norm_label": "path",
       "source_file": "",
       "source_location": ""
-    },
-    {
-      "id": "agents_skills_taste_application_scripts_tasteforge_pack_rationale_1",
-      "label": "Offline style-pack model: load, inspect, validate. A pack is a directory\u2026",
-      "_origin": "ast",
-      "community": 381,
-      "community_name": "StylePack",
-      "file_type": "rationale",
-      "norm_label": "offline style-pack model: load, inspect, validate. a pack is a directory...",
-      "source_file": ".agents/skills/taste-application/scripts/tasteforge/pack.py",
-      "source_location": "L1"
-    },
-    {
-      "id": "agents_skills_taste_application_scripts_tasteforge_pack_rationale_180",
-      "label": "Load a pack directory; raises if no manifest exists.",
-      "_origin": "ast",
-      "community": 381,
-      "community_name": "StylePack",
-      "file_type": "rationale",
-      "norm_label": "load a pack directory; raises if no manifest exists.",
-      "source_file": ".agents/skills/taste-application/scripts/tasteforge/pack.py",
-      "source_location": "L180"
     },
     {
       "id": "agents_skills_taste_application_scripts_tasteforge_pack_rationale_31",
@@ -150757,17 +150867,6 @@
       "source_location": "L115"
     },
     {
-      "id": "ref_pdf_lib",
-      "label": "pdf-lib",
-      "_origin": "ast",
-      "community": 53,
-      "community_name": "pdfFormExport.ts",
-      "file_type": "concept",
-      "norm_label": "pdf-lib",
-      "source_file": "package.json",
-      "source_location": "L48"
-    },
-    {
       "id": "agents_skills_research_ops_skill",
       "label": "research-ops/SKILL.md",
       "_origin": "ast",
@@ -166182,103 +166281,26 @@
       "source_location": "L139"
     },
     {
-      "id": "package_devdependencies",
-      "label": "devDependencies",
+      "id": "agents_skills_taste_application_tests_test_interview",
+      "label": "test_interview.py",
       "_origin": "ast",
       "community": 635,
-      "community_name": "devDependencies",
+      "community_name": "ConductTests",
       "file_type": "code",
-      "norm_label": "devdependencies",
-      "source_file": "package.json",
-      "source_location": "L55"
+      "norm_label": "test_interview.py",
+      "source_file": ".agents/skills/taste-application/tests/test_interview.py",
+      "source_location": "L1"
     },
     {
-      "id": "package_devdependencies_jsdom",
-      "label": "jsdom",
+      "id": "agents_skills_taste_application_tests_test_interview_rationale_1",
+      "label": "Failing-first tests for the deterministic taste interview/profile.",
       "_origin": "ast",
       "community": 635,
-      "community_name": "devDependencies",
-      "file_type": "code",
-      "norm_label": "jsdom",
-      "source_file": "package.json",
-      "source_location": "L60"
-    },
-    {
-      "id": "package_devdependencies_playwright",
-      "label": "playwright",
-      "_origin": "ast",
-      "community": 635,
-      "community_name": "devDependencies",
-      "file_type": "code",
-      "norm_label": "playwright",
-      "source_file": "package.json",
-      "source_location": "L61"
-    },
-    {
-      "id": "package_devdependencies_puppeteer_core",
-      "label": "puppeteer-core",
-      "_origin": "ast",
-      "community": 635,
-      "community_name": "devDependencies",
-      "file_type": "code",
-      "norm_label": "puppeteer-core",
-      "source_file": "package.json",
-      "source_location": "L62"
-    },
-    {
-      "id": "package_devdependencies_testing_library_jest_dom",
-      "label": "@testing-library/jest-dom",
-      "_origin": "ast",
-      "community": 635,
-      "community_name": "devDependencies",
-      "file_type": "code",
-      "norm_label": "@testing-library/jest-dom",
-      "source_file": "package.json",
-      "source_location": "L56"
-    },
-    {
-      "id": "package_devdependencies_testing_library_react",
-      "label": "@testing-library/react",
-      "_origin": "ast",
-      "community": 635,
-      "community_name": "devDependencies",
-      "file_type": "code",
-      "norm_label": "@testing-library/react",
-      "source_file": "package.json",
-      "source_location": "L57"
-    },
-    {
-      "id": "package_devdependencies_types_react",
-      "label": "@types/react",
-      "_origin": "ast",
-      "community": 635,
-      "community_name": "devDependencies",
-      "file_type": "code",
-      "norm_label": "@types/react",
-      "source_file": "package.json",
-      "source_location": "L58"
-    },
-    {
-      "id": "package_devdependencies_types_react_dom",
-      "label": "@types/react-dom",
-      "_origin": "ast",
-      "community": 635,
-      "community_name": "devDependencies",
-      "file_type": "code",
-      "norm_label": "@types/react-dom",
-      "source_file": "package.json",
-      "source_location": "L59"
-    },
-    {
-      "id": "package_devdependencies_vitest",
-      "label": "vitest",
-      "_origin": "ast",
-      "community": 635,
-      "community_name": "devDependencies",
-      "file_type": "code",
-      "norm_label": "vitest",
-      "source_file": "package.json",
-      "source_location": "L63"
+      "community_name": "ConductTests",
+      "file_type": "rationale",
+      "norm_label": "failing-first tests for the deterministic taste interview/profile.",
+      "source_file": ".agents/skills/taste-application/tests/test_interview.py",
+      "source_location": "L1"
     },
     {
       "id": "agents_skills_taste_references_genre_taxonomy",
@@ -448240,6 +448262,15 @@
       "weight": 1.0
     },
     {
+      "source": "src_theme_test",
+      "target": "fs",
+      "relation": "dynamic_import",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/theme.test.tsx"
+    },
+    {
       "source": "agents_skills_ios_icon_gen_scripts_generate_icons_iconerror",
       "target": "customstringconvertible",
       "relation": "implements",
@@ -480460,5 +480491,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "45180b778b3ee31bb3e641a9ccf5bc7559bc3d2d"
+  "built_at_commit": "294d6052bd6e065e1301ff886dbfa7e9df0715b7"
 }
