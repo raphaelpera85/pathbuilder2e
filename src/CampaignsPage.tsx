@@ -91,6 +91,9 @@ export function CampaignsPage() {
   const applyCampaignSyncResult = <T,>(result: CampaignSyncResult<T>): void => {
     setCampaignSyncSource(result.source);
     setCampaignSyncWarning(Boolean(result.error));
+    if (session?.user) {
+      setPendingSyncCount(getPendingCampaignCount(session.user.id));
+    }
   };
 
   const refreshData = async (knownSession?: AuthSession | null) => {
@@ -172,6 +175,18 @@ export function CampaignsPage() {
       });
     });
   }, [activeCampaign, session?.user]);
+
+  useEffect(() => {
+    if (!showCreateModal && !inspectedChar) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        if (showCreateModal) setShowCreateModal(false);
+        if (inspectedChar) setInspectedChar(null);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [showCreateModal, inspectedChar]);
 
   const handleCreateCampaign = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -345,6 +360,17 @@ export function CampaignsPage() {
     return Array.from(unique.values());
   }, [activeCampaign, sharedCharacters, myCharacters]);
 
+  const availableCandidateCharacters = useMemo(() => {
+    const allKnown = [...sharedCharacters, ...myCharacters];
+    const unique = new Map<string, CloudCharacter>();
+    for (const c of allKnown) {
+      if (!unique.has(c.character_key)) {
+        unique.set(c.character_key, c);
+      }
+    }
+    return Array.from(unique.values());
+  }, [sharedCharacters, myCharacters]);
+
   if (!sessionReady) {
     return (
       <main className="portal-page" id="portal-content" tabIndex={-1}>
@@ -476,6 +502,7 @@ export function CampaignsPage() {
                 onChange={(e) => setPlayerSelectedCharKey(e.target.value)}
                 required
                 className="camp-input"
+                aria-label={t("selectCharacter")}
               >
                 <option value="">{t("selectCharacter")}</option>
                 {myCharacters.map((c) => (
@@ -487,6 +514,7 @@ export function CampaignsPage() {
               <input
                 type="email"
                 placeholder={t("gmEmailPlaceholder")}
+                aria-label={t("gmEmail")}
                 value={targetGMEmail}
                 onChange={(e) => setTargetGMEmail(e.target.value)}
                 required
@@ -613,11 +641,11 @@ export function CampaignsPage() {
                   <div className="assign-party-box">
                     <h4>➕ {t("availableSheetsTitle")}</h4>
                     <div className="assign-chips">
-                      {[...sharedCharacters, ...myCharacters].map((c) => {
+                      {availableCandidateCharacters.map((c) => {
                         const isInside = activeCampaign.character_keys.includes(c.character_key);
                         return (
                           <button
-                            key={c.id}
+                            key={c.id || c.character_key}
                             type="button"
                             className={`assign-chip ${isInside ? "selected" : ""}`}
                             onClick={() => handleToggleCharInCampaign(c.character_key)}
@@ -627,7 +655,7 @@ export function CampaignsPage() {
                           </button>
                         );
                       })}
-                      {sharedCharacters.length === 0 && myCharacters.length === 0 && (
+                      {availableCandidateCharacters.length === 0 && (
                         <span style={{ fontSize: "12px", color: "var(--pb-text-muted)" }}>
                           {t("noLinkedSheets")} ({session.user.email})
                         </span>
@@ -741,6 +769,7 @@ export function CampaignsPage() {
                     <input
                       type="text"
                       placeholder={t("monsterNpcPlaceholder")}
+                      aria-label={t("monsterNpcPlaceholder")}
                       value={npcName}
                       onChange={(e) => setNpcName(e.target.value)}
                       className="camp-input"
@@ -749,6 +778,7 @@ export function CampaignsPage() {
                     <input
                       type="number"
                       placeholder={t("hpPlaceholder")}
+                      aria-label={t("hpPlaceholder")}
                       value={npcHp}
                       onChange={(e) => setNpcHp(Number(e.target.value))}
                       className="camp-input"
@@ -757,6 +787,7 @@ export function CampaignsPage() {
                     <input
                       type="number"
                       placeholder={t("acPlaceholder")}
+                      aria-label={t("acPlaceholder")}
                       value={npcAc}
                       onChange={(e) => setNpcAc(Number(e.target.value))}
                       className="camp-input"
@@ -765,6 +796,7 @@ export function CampaignsPage() {
                     <input
                       type="number"
                       placeholder={t("initiativePlaceholder")}
+                      aria-label={t("initiativePlaceholder")}
                       value={npcInit}
                       onChange={(e) => setNpcInit(Number(e.target.value))}
                       className="camp-input"
@@ -799,6 +831,7 @@ export function CampaignsPage() {
                         <input
                           type="text"
                           placeholder={t("sessionTitlePlaceholder")}
+                          aria-label={t("sessionTitlePlaceholder")}
                           value={sessionTitle}
                           onChange={(e) => setSessionTitle(e.target.value)}
                           required
@@ -807,6 +840,7 @@ export function CampaignsPage() {
                         />
                         <input
                           type="date"
+                          aria-label={t("sessionDate")}
                           value={sessionDate}
                           onChange={(e) => setSessionDate(e.target.value)}
                           required
@@ -816,6 +850,7 @@ export function CampaignsPage() {
                         <input
                           type="number"
                           placeholder={t("xpPlaceholder")}
+                          aria-label={t("xpPlaceholder")}
                           value={sessionXp}
                           onChange={(e) => setSessionXp(Number(e.target.value))}
                           className="camp-input"
@@ -823,7 +858,8 @@ export function CampaignsPage() {
                         />
                       </div>
                       <textarea
-                          placeholder={t("sessionSummaryPlaceholder")}
+                        placeholder={t("sessionSummaryPlaceholder")}
+                        aria-label={t("sessionSummaryPlaceholder")}
                         value={sessionSummary}
                         onChange={(e) => setSessionSummary(e.target.value)}
                         required
@@ -832,6 +868,7 @@ export function CampaignsPage() {
                       <input
                         type="text"
                         placeholder={t("treasureFoundPlaceholder")}
+                        aria-label={t("treasureFoundPlaceholder")}
                         value={sessionLoot}
                         onChange={(e) => setSessionLoot(e.target.value)}
                         className="camp-input"
@@ -893,24 +930,35 @@ export function CampaignsPage() {
 
       {/* MODAL DE CRIAÇÃO DE NOVA CAMPANHA */}
       {showCreateModal && (
-        <div className="modal-backdrop-dark">
+        <div
+          className="modal-backdrop-dark"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setShowCreateModal(false);
+          }}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="create-campaign-modal-title"
+        >
           <div className="modal-content-camp">
             <header className="modal-camp-header">
-              <h3>🏰 {t("createCampaign")}</h3>
+              <h3 id="create-campaign-modal-title">🏰 {t("createCampaign")}</h3>
               <button
                 type="button"
                 className="btn-modal-close"
                 onClick={() => setShowCreateModal(false)}
+                aria-label={t("close")}
               >
                 ✕
               </button>
             </header>
             <form onSubmit={handleCreateCampaign} className="modal-camp-form">
               <div>
-                <label>{t("campaignTableName")}:</label>
+                <label htmlFor="new-campaign-title">{t("campaignTableName")}:</label>
                 <input
+                  id="new-campaign-title"
                   type="text"
                   placeholder={t("campaignNamePlaceholder")}
+                  aria-label={t("campaignTableName")}
                   value={newTitle}
                   onChange={(e) => setNewTitle(e.target.value)}
                   required
@@ -919,19 +967,23 @@ export function CampaignsPage() {
               </div>
               <div style={{ display: "flex", gap: "12px" }}>
                 <div style={{ flex: 1 }}>
-                  <label>{t("sessionSchedule")}:</label>
+                  <label htmlFor="new-campaign-schedule">{t("sessionSchedule")}:</label>
                   <input
+                    id="new-campaign-schedule"
                     type="text"
                     placeholder={t("sessionSchedulePlaceholder")}
+                    aria-label={t("sessionSchedule")}
                     value={newSchedule}
                     onChange={(e) => setNewSchedule(e.target.value)}
                     className="camp-input"
                   />
                 </div>
                 <div style={{ flex: 1 }}>
-                  <label>{t("systemEdition")}:</label>
+                  <label htmlFor="new-campaign-system">{t("systemEdition")}:</label>
                   <select
+                    id="new-campaign-system"
                     value={newSystem}
+                    aria-label={t("systemEdition")}
                     onChange={(e) => setNewSystem(e.target.value)}
                     className="camp-input"
                   >
@@ -942,9 +994,11 @@ export function CampaignsPage() {
                 </div>
               </div>
               <div>
-                <label>{t("adventureNotes")}:</label>
+                <label htmlFor="new-campaign-desc">{t("adventureNotes")}:</label>
                 <textarea
+                  id="new-campaign-desc"
                   placeholder={t("campaignDescriptionPlaceholder")}
+                  aria-label={t("adventureNotes")}
                   value={newDesc}
                   onChange={(e) => setNewDesc(e.target.value)}
                   className="camp-textarea"
@@ -969,14 +1023,22 @@ export function CampaignsPage() {
 
       {/* MODAL DE INSPEÇÃO COMPLETA DA FICHA DO JOGADOR */}
       {inspectedChar && (
-        <div className="modal-backdrop-dark" onClick={() => setInspectedChar(null)}>
+        <div
+          className="modal-backdrop-dark"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setInspectedChar(null);
+          }}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="inspect-char-modal-title"
+        >
           <div
             className="modal-content-inspect"
             onClick={(e) => e.stopPropagation()}
           >
             <header className="modal-camp-header">
               <div>
-                <h3>📜 Ficha de {inspectedChar.name}</h3>
+                <h3 id="inspect-char-modal-title">📜 Ficha de {inspectedChar.name}</h3>
                 <span style={{ fontSize: "12px", color: "var(--pb-text-muted)" }}>
                   {t("playerInspect")}: {inspectedChar.player_name || inspectedChar.player_email || t("guestLabel")} · {t("levelLabel")} {inspectedChar.level}
                 </span>
@@ -985,6 +1047,7 @@ export function CampaignsPage() {
                 type="button"
                 className="btn-modal-close"
                 onClick={() => setInspectedChar(null)}
+                aria-label={t("close")}
               >
                 ✕
               </button>
