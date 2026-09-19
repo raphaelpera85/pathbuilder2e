@@ -1,3 +1,5 @@
+import { DND5E_SPELLS } from "./dnd5eCompendium";
+
 export interface Dnd5eSubrace {
   id: string;
   raceId: string;
@@ -40,6 +42,7 @@ export interface Dnd5eSubclassChoice {
   count: number;
   minimumLevel?: number;
   grantsSkillProficiencies?: boolean;
+  grantsSkillExpertise?: boolean;
   grantsLanguages?: boolean;
   grantsSpells?: boolean;
 }
@@ -184,10 +187,14 @@ const DND5E_SUBCLASS_FEATURES: Record<string, Dnd5eSubclassFeature[]> = {
 const DND5E_SUBCLASS_CHOICES: Record<string, Dnd5eSubclassChoice[]> = {
   bardo_conhecimento: [
     { id: "lore-bonus-skills", label: "Proficiências bônus do Colégio do Conhecimento", options: ["Acrobacia", "Adestramento", "Arcanismo", "Atletismo", "Atuação", "Enganação", "Furtividade", "História", "Intuição", "Intimidação", "Investigação", "Medicina", "Natureza", "Percepção", "Persuasão", "Prestidigitação", "Religião", "Sobrevivência"], count: 3, minimumLevel: 3, grantsSkillProficiencies: true },
+    { id: "lore-magical-secrets", label: "Segredos Mágicos Adicionais", options: DND5E_SPELLS.filter((spell) => spell.spellLevel !== undefined && spell.spellLevel >= 1 && spell.spellLevel <= 5).map((spell) => spell.name), count: 2, minimumLevel: 6, grantsSpells: true },
   ],
   clerigo_conhecimento: [
-    { id: "knowledge-blessings-skills", label: "Perícias das Bênçãos do Conhecimento", options: ["Arcanismo", "História", "Natureza", "Religião"], count: 2, minimumLevel: 1, grantsSkillProficiencies: true },
+    { id: "knowledge-blessings-skills", label: "Perícias das Bênçãos do Conhecimento", options: ["Arcanismo", "História", "Natureza", "Religião"], count: 2, minimumLevel: 1, grantsSkillProficiencies: true, grantsSkillExpertise: true },
     { id: "knowledge-blessings-languages", label: "Idiomas das Bênçãos do Conhecimento", options: ["Anão", "Celestial", "Dracônico", "Élfico", "Gigante", "Gnômico", "Goblin", "Halfling", "Infernal", "Orc", "Primordial", "Silvestre", "Subcomum"], count: 2, minimumLevel: 1, grantsLanguages: true },
+  ],
+  clerigo_luz: [
+    { id: "light-domain-cantrip", label: "Truque adicional do Domínio da Luz", options: ["Luz"], count: 1, minimumLevel: 1, grantsSpells: true },
   ],
   clerigo_natureza: [
     { id: "nature-acolyte-skill", label: "Perícia do Acólito da Natureza", options: ["Adestramento", "Natureza", "Sobrevivência"], count: 1, minimumLevel: 1, grantsSkillProficiencies: true },
@@ -229,6 +236,50 @@ export const DND5E_CLASS_CHOICES: Dnd5eClassChoice[] = [
   { id: "sorcerer-metamagic", classId: "feiticeiro", label: "Metamagia", minimumLevel: 3, options: ["Magia Acelerada", "Magia Cuidadosa", "Magia Distante", "Magia Elevada", "Magia Estendida", "Magia Potencializada", "Magia Sutil", "Magia Transmutada"], count: 2 },
   { id: "warlock-pact-boon", classId: "bruxo", label: "Dádiva do Pacto", minimumLevel: 3, options: ["Pacto da Corrente", "Pacto da Lâmina", "Pacto do Tomo"], count: 1 },
 ];
+
+/** Magias de Círculo da Terra do Livro do Jogador 2014, por terreno e nível de acesso. */
+export const DND5E_LAND_CIRCLE_SPELLS: Record<string, Record<number, string[]>> = {
+  Ártico: { 3: ["Imobilizar Pessoa", "Crescer Espinhos"], 5: ["Nevasca", "Lentidão"], 7: ["Movimentação Livre", "Tempestade de Gelo"], 9: ["Comunhão com a Natureza", "Cone de Frio"] },
+  Costa: { 3: ["Imagem Espelhada", "Passo Nebuloso"], 5: ["Respirar na Água", "Andar na Água"], 7: ["Controlar a Água", "Movimentação Livre"], 9: ["Conjurar Elemental", "Vidência"] },
+  Deserto: { 3: ["Nublar", "Silêncio"], 5: ["Criar Alimentos", "Proteção contra Energia"], 7: ["Malogro", "Terreno Alucinógeno"], 9: ["Praga de Insetos", "Muralha de Pedra"] },
+  Floresta: { 3: ["Pele de Árvore", "Escalar"], 5: ["Convocar Relâmpagos", "Ampliar Plantas"], 7: ["Adivinhação", "Movimentação Livre"], 9: ["Comunhão com a Natureza", "Caminhar em Árvores"] },
+  Planalto: { 3: ["Invisibilidade", "Passos sem Pegadas"], 5: ["Luz do Dia", "Velocidade"], 7: ["Adivinhação", "Movimentação Livre"], 9: ["Sonho", "Praga de Insetos"] },
+  Montanha: { 3: ["Escalar", "Crescer Espinhos"], 5: ["Relâmpago", "Moldar Rochas"], 7: ["Moldar Rochas", "Pele de Pedra"], 9: ["Passagem", "Muralha de Pedra"] },
+  Pântano: { 3: ["Escuridão", "Flecha Ácida de Melf"], 5: ["Andar na Água", "Nuvem Fétida"], 7: ["Movimentação Livre", "Localizar Criatura"], 9: ["Praga de Insetos", "Vidência"] },
+  Subterrâneo: { 3: ["Teia", "Nublar"], 5: ["Forma Gasosa", "Nuvem Fétida"], 7: ["Invisibilidade Maior", "Moldar Rochas"], 9: ["Névoa Mortal", "Praga de Insetos"] },
+};
+
+/** Magias de domínio do Clérigo no Livro do Jogador 2014, por nível do personagem. */
+export const DND5E_CLERIC_DOMAIN_SPELLS: Record<string, Record<number, string[]>> = {
+  clerigo_conhecimento: {
+    1: ["Comando", "Identificação"], 3: ["Augúrio", "Sugestão"], 5: ["Não Detecção", "Falar com os Mortos"],
+    7: ["Olho Arcano", "Confusão"], 9: ["Conhecimento Lendário", "Vidência"],
+  },
+  clerigo_vida: {
+    1: ["Bênção", "Curar Ferimentos"], 3: ["Restauração Menor", "Arma Espiritual"], 5: ["Sinal de Esperança", "Revivificar"],
+    7: ["Proteção contra a Morte", "Guardião da Fé"], 9: ["Curar Ferimentos em Massa", "Reviver os Mortos"],
+  },
+  clerigo_luz: {
+    1: ["Mãos Flamejantes", "Fogo das Fadas"], 3: ["Esfera Flamejante", "Raio Ardente"], 5: ["Luz do Dia", "Bola de Fogo"],
+    7: ["Guardião da Fé", "Muralha de Fogo"], 9: ["Coluna de Chamas", "Vidência"],
+  },
+  clerigo_natureza: {
+    1: ["Amizade Animal", "Falar com Animais"], 3: ["Pele de Árvore", "Crescer Espinhos"], 5: ["Ampliar Plantas", "Muralha de Vento"],
+    7: ["Dominar Besta", "Videira Agarrante"], 9: ["Praga de Insetos", "Caminhar em Árvores"],
+  },
+  clerigo_tempestade: {
+    1: ["Névoa Obscurecente", "Onda Trovejante"], 3: ["Lufada de Vento", "Despedaçar"], 5: ["Convocar Relâmpagos", "Nevasca"],
+    7: ["Controlar a Água", "Tempestade de Gelo"], 9: ["Onda Destrutiva", "Praga de Insetos"],
+  },
+  clerigo_trapaca: {
+    1: ["Enfeitiçar Pessoa", "Disfarçar-se"], 3: ["Imagem Espelhada", "Passos sem Pegadas"], 5: ["Piscar", "Dissipar Magia"],
+    7: ["Porta Dimensional", "Metamorfose"], 9: ["Dominar Pessoa", "Modificar Memória"],
+  },
+  clerigo_guerra: {
+    1: ["Auxílio Divino", "Escudo da Fé"], 3: ["Arma Mágica", "Arma Espiritual"], 5: ["Manto do Cruzado", "Espíritos Guardiões"],
+    7: ["Movimentação Livre", "Pele de Pedra"], 9: ["Coluna de Chamas", "Imobilizar Monstro"],
+  },
+};
 
 export const DND5E_SUBCLASSES: Dnd5eSubclass[] = DND5E_SUBCLASSES_BASE.map((item) => ({
   ...item,

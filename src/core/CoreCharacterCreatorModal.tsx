@@ -1,14 +1,14 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { DND5E_ALIGNMENTS, DND5E_LANGUAGES, T20_DEITIES, T20_DRUID_DEITY_IDS, T20_PALADIN_DEITY_IDS, cloneCoreCharacter, getAvailableCoreFeats, getAvailableCoreSpells, getCoreCatalog, getCoreFeatQuantity, getCoreStartingEquipment, getDnd5eSpellcastingFocusOptions, requiresDnd5eAttunement, type CoreAbility, type MultiSystemCharacter, type SupportedCoreSystem } from "../data/multiSystemCharacter";
-import { T20_ARCANIST_PATHS, T20_CLASS_CHOICES, T20_SORCERER_LINEAGES } from "../data/t20/t20Catalog";
-import { formatT20SpellDetails } from "../data/t20/t20Compendium";
+import { T20_ARCANIST_PATHS, T20_CLASS_CHOICES, T20_SORCERER_LINEAGES, T20_DRACONIC_DAMAGE_TYPES } from "../data/t20/t20Catalog";
+import { T20_SPELLS, formatT20SpellDetails } from "../data/t20/t20Compendium";
 import { getSystemRulesEngine } from "../data/systemRulesEngine";
 import { reconcileCoreSkillProficiencies, reconcileT20DeityDependentFeatIds } from "./coreCharacterEditing";
 import { DND5E_STANDARD_ARRAY, generateAbilityScores, type AbilityGenerationMethod } from "../data/coreCharacterRules";
 import { DND5E_TOOLS, DND5E_TOOL_CHOICE_GROUPS, getDnd5eToolChoiceEntries, type Dnd5eToolChoiceGroup } from "../data/dnd5e/dnd5eCatalog";
 import { getDnd5eBackgroundToolProficiencies } from "../data/dnd5e/dnd5eBackgrounds";
 import { formatDnd5eSpellDetails } from "../data/dnd5e/dnd5eCompendium";
-import { DND5E_CLASS_CHOICES } from "../data/dnd5e/dnd5eOptions";
+import { DND5E_CLERIC_DOMAIN_SPELLS, DND5E_CLASS_CHOICES, DND5E_LAND_CIRCLE_SPELLS } from "../data/dnd5e/dnd5eOptions";
 import { DND5E_FEAT_CHOICES } from "../data/dnd5e/dnd5eCompendium";
 import { T20_POWER_CHOICES } from "../data/t20/t20Compendium";
 
@@ -37,10 +37,37 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
     const spell = catalog.spells.find((entry) => entry.id === spellId);
     return system === "dnd5e" && spell?.spellLevel !== undefined && spell.spellLevel > 0;
   };
+  const syncDndGrantedSpells = (candidate: MultiSystemCharacter) => {
+    if (system !== "dnd5e") return candidate;
+    const normalizeGrantedSpellName = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    const nextSubclass = candidate.subclassId ? catalog.subclasses.find((entry) => entry.id === candidate.subclassId) : undefined;
+    const grantedNames = [
+      ...(nextSubclass?.choices || [])
+        .filter((choice) => choice.grantsSpells && candidate.level >= (choice.minimumLevel || nextSubclass?.featureLevel || 1))
+        .flatMap((choice) => candidate.subclassChoices?.[choice.id] || []),
+      ...(nextSubclass?.id === "druida_terra" ? Object.entries(DND5E_LAND_CIRCLE_SPELLS)
+        .filter(([terrain]) => terrain === candidate.subclassChoices?.["land-terrain"]?.[0])
+        .flatMap(([, levels]) => Object.entries(levels).filter(([minimumLevel]) => candidate.level >= Number(minimumLevel)).flatMap(([, names]) => names)) : []),
+      ...(nextSubclass?.classId === "clerigo" ? Object.entries(DND5E_CLERIC_DOMAIN_SPELLS[nextSubclass.id] || {})
+        .filter(([minimumLevel]) => candidate.level >= Number(minimumLevel))
+        .flatMap(([, names]) => names) : []),
+    ].map(normalizeGrantedSpellName);
+    const grantedIds = catalog.spells
+      .filter((spell) => grantedNames.includes(normalizeGrantedSpellName(spell.name)))
+      .map((spell) => spell.id);
+    return {
+      ...candidate,
+      spellIds: Array.from(new Set([...candidate.spellIds, ...grantedIds])),
+      preparedSpellIds: Array.from(new Set([
+        ...(candidate.preparedSpellIds || []),
+        ...grantedIds.filter((spellId) => isDndPreparedSpell(spellId)),
+      ])),
+    };
+  };
 
   useEffect(() => {
     if (isOpen) {
-      setCharacter(initialCharacter ? cloneCoreCharacter(initialCharacter) : engine.createDefaultCharacter());
+      setCharacter(syncDndGrantedSpells(initialCharacter ? cloneCoreCharacter(initialCharacter) : engine.createDefaultCharacter()));
       setError(null);
       setGenerationMethod(initialCharacter?.generationMethod || "point_buy");
     }
@@ -103,6 +130,8 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
         if (system === "t20") {
           next.t20ArcanistPath = next.classId === "arcanista" ? (next.t20ArcanistPath || "bruxo") : undefined;
           next.t20SorcererLineage = next.classId === "arcanista" && next.t20ArcanistPath === "feiticeiro" ? (next.t20SorcererLineage || "draconica") : undefined;
+          next.t20SorcererLineageSpell = next.t20SorcererLineage === "feerica" ? next.t20SorcererLineageSpell : undefined;
+          next.t20SorcererDamageType = next.t20SorcererLineage === "draconica" ? (next.t20SorcererDamageType || "fogo") : undefined;
           const restrictedDeities = next.classId === "paladino" ? T20_PALADIN_DEITY_IDS : next.classId === "druida" ? T20_DRUID_DEITY_IDS : undefined;
           if (restrictedDeities && !restrictedDeities.includes(next.deity as never)) next.deity = restrictedDeities[0];
         }
@@ -158,6 +187,8 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
       }
       if (key === "t20ArcanistPath") {
         next.t20SorcererLineage = value === "feiticeiro" ? (current.t20SorcererLineage || "draconica") : undefined;
+        next.t20SorcererLineageSpell = value === "feiticeiro" && next.t20SorcererLineage === "feerica" ? current.t20SorcererLineageSpell : undefined;
+        next.t20SorcererDamageType = value === "feiticeiro" && next.t20SorcererLineage === "draconica" ? (current.t20SorcererDamageType || "fogo") : undefined;
         const allowedSpellIds = new Set(getAvailableCoreSpells(system, next.classId, next.level, next).map((spell) => spell.id));
         const knownLimit = engine.deriveStats(next).knownSpellLimit;
         next.spellIds = next.spellIds.filter((spellId, index) => {
@@ -165,6 +196,12 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
           return allowedSpellIds.has(spellId) && (spell?.spellLevel === 0 || knownLimit === undefined || next.spellIds.slice(0, index + 1).filter((id) => catalog.spells.find((entry) => entry.id === id)?.spellLevel !== 0).length <= knownLimit);
         });
         next.preparedSpellIds = next.preparedSpellIds?.filter((spellId) => next.spellIds.includes(spellId) && isDndPreparedSpell(spellId));
+      }
+      if (key === "t20SorcererLineage") {
+        next.t20SorcererLineageSpell = value === "feerica" ? current.t20SorcererLineageSpell : undefined;
+        next.t20SorcererDamageType = value === "draconica" ? (current.t20SorcererDamageType || "fogo") : undefined;
+        const allowedSpellIds = new Set(getAvailableCoreSpells(system, next.classId, next.level, next).map((spell) => spell.id));
+        next.spellIds = next.spellIds.filter((spellId) => allowedSpellIds.has(spellId));
       }
       if (key === "spellIds") next.preparedSpellIds = next.preparedSpellIds?.filter((spellId) => (value as string[]).includes(spellId) && isDndPreparedSpell(spellId));
       if (key === "equipmentIds") {
@@ -249,7 +286,7 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
           }
         }
       }
-      return next;
+      return syncDndGrantedSpells(next);
     });
   };
 
@@ -281,7 +318,7 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
   const selectedRaceRules = catalog.raceRules.find((entry) => entry.id === character.raceId);
   const raceAbilityChoices = selectedRaceRules?.abilityChoices;
   const selectedRaceAbilityChoices = character.raceAbilityChoices || [];
-  const raceChoices = system === "dnd5e" ? (selectedRaceRules && "raceChoices" in selectedRaceRules ? (selectedRaceRules as { raceChoices?: Array<{ id: string; label: string; options: string[]; count: number }> }).raceChoices || [] : []) : [];
+  const raceChoices = selectedRaceRules && "raceChoices" in selectedRaceRules ? (selectedRaceRules as { raceChoices?: Array<{ id: string; label: string; options: string[]; count: number }> }).raceChoices || [] : [];
   const raceLanguageChoices = system === "dnd5e" && selectedRaceRules && "languageChoices" in selectedRaceRules ? Number((selectedRaceRules as { languageChoices?: number }).languageChoices || 0) : 0;
   const raceSkillChoiceCount = selectedRaceRules && "skillChoices" in selectedRaceRules ? Number((selectedRaceRules as { skillChoices?: number }).skillChoices || 0) : 0;
   const raceChoiceGroup = system === "t20" && selectedRaceRules && "skillOrFeatChoice" in selectedRaceRules ? (selectedRaceRules as { skillOrFeatChoice?: "general" | "tormenta" }).skillOrFeatChoice : undefined;
@@ -329,16 +366,23 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
     ].map(normalizeSpellName)
     : []);
   const isFeatGrantedSpell = (spellName: string) => system === "dnd5e" && featGrantedSpellNames.has(normalizeSpellName(spellName));
+  const subclassGrantedSpellNames = new Set(system === "dnd5e"
+    ? [
+      ...(selectedSubclass?.choices || [])
+        .filter((choice) => choice.grantsSpells && character.level >= (choice.minimumLevel || selectedSubclass?.featureLevel || 1))
+        .flatMap((choice) => character.subclassChoices?.[choice.id] || []),
+      ...(selectedSubclass?.id === "druida_terra" ? Object.entries(DND5E_LAND_CIRCLE_SPELLS)
+        .filter(([terrain]) => terrain === character.subclassChoices?.["land-terrain"]?.[0])
+        .flatMap(([, levels]) => Object.entries(levels).filter(([minimumLevel]) => character.level >= Number(minimumLevel)).flatMap(([, names]) => names)) : []),
+      ...(selectedSubclass?.classId === "clerigo" ? Object.entries(DND5E_CLERIC_DOMAIN_SPELLS[selectedSubclass.id] || {})
+        .filter(([minimumLevel]) => character.level >= Number(minimumLevel))
+        .flatMap(([, names]) => names) : []),
+    ].map((value) => normalizeSpellName(value))
+    : []);
   const selectedKnownSpellCount = character.spellIds.filter((spellId) => {
     const spell = catalog.spells.find((entry) => entry.id === spellId);
-    return spell?.spellLevel !== 0 && !isFeatGrantedSpell(spell?.name || "");
+    return spell?.spellLevel !== 0 && !isFeatGrantedSpell(spell?.name || "") && !subclassGrantedSpellNames.has(normalizeSpellName(spell?.name || ""));
   }).length;
-  const subclassGrantedSpellNames = new Set(system === "dnd5e"
-    ? (selectedSubclass?.choices || [])
-      .filter((choice) => choice.grantsSpells && character.level >= (choice.minimumLevel || selectedSubclass?.featureLevel || 1))
-      .flatMap((choice) => character.subclassChoices?.[choice.id] || [])
-      .map((value) => normalizeSpellName(value))
-    : []);
   const availableSpells = Array.from(new Map([
     ...getAvailableCoreSpells(system, character.classId, character.level, character),
     ...catalog.spells.filter((spell) => subclassGrantedSpellNames.has(normalizeSpellName(spell.name))),
@@ -433,6 +477,18 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
           {system === "t20" && character.classId === "arcanista" && character.t20ArcanistPath === "feiticeiro" && <label>Linhagem Sobrenatural
             <select value={character.t20SorcererLineage || ""} onChange={(event) => update("t20SorcererLineage", event.target.value as MultiSystemCharacter["t20SorcererLineage"])}>
               {T20_SORCERER_LINEAGES.map((lineage) => <option key={lineage.id} value={lineage.id}>{lineage.name}</option>)}
+            </select>
+          </label>}
+          {system === "t20" && character.classId === "arcanista" && character.t20ArcanistPath === "feiticeiro" && character.t20SorcererLineage === "feerica" && <label>Magia da linhagem Feérica
+            <select value={character.t20SorcererLineageSpell || ""} onChange={(event) => update("t20SorcererLineageSpell", event.target.value || undefined)}>
+              <option value="">Selecione…</option>
+              {T20_SPELLS.filter((spell) => spell.spellLevel === 1 && ["Encantamento", "Ilusão"].includes(spell.school || "")).map((spell) => <option key={spell.id} value={spell.id}>{spell.name} · {spell.school}</option>)}
+            </select>
+          </label>}
+          {system === "t20" && character.classId === "arcanista" && character.t20ArcanistPath === "feiticeiro" && character.t20SorcererLineage === "draconica" && <label>Tipo de dano da linhagem Dracônica
+            <select value={character.t20SorcererDamageType || ""} onChange={(event) => update("t20SorcererDamageType", event.target.value as MultiSystemCharacter["t20SorcererDamageType"])}>
+              <option value="">Selecione…</option>
+              {T20_DRACONIC_DAMAGE_TYPES.map((damageType) => <option key={damageType} value={damageType}>{damageType}</option>)}
             </select>
           </label>}
           {availableSubclasses.length > 0 && <label>Subclasse (a partir do nível {selectedProgression && "subclassLevel" in selectedProgression ? selectedProgression.subclassLevel : 3})
@@ -780,7 +836,7 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
             </label>}
             <label>Magias
               <select multiple value={character.spellIds} onChange={(event) => update("spellIds", Array.from(event.target.selectedOptions, (option) => option.value))}>
-                {availableSpells.map((item) => <option key={item.id} value={item.id} disabled={!character.spellIds.includes(item.id) && item.spellLevel !== 0 && !isFeatGrantedSpell(item.name) && derivedPreview.knownSpellLimit !== undefined && selectedKnownSpellCount >= derivedPreview.knownSpellLimit}>{item.name} · {system === "dnd5e" ? formatDnd5eSpellDetails(item) : [formatT20SpellDetails(item), item.summary].filter(Boolean).join(" · ")}</option>)}
+                {availableSpells.map((item) => <option key={item.id} value={item.id} disabled={!character.spellIds.includes(item.id) && item.spellLevel !== 0 && !isFeatGrantedSpell(item.name) && !subclassGrantedSpellNames.has(normalizeSpellName(item.name)) && derivedPreview.knownSpellLimit !== undefined && selectedKnownSpellCount >= derivedPreview.knownSpellLimit}>{item.name} · {system === "dnd5e" ? formatDnd5eSpellDetails(item) : [formatT20SpellDetails(item), item.summary].filter(Boolean).join(" · ")}</option>)}
               </select>
               {derivedPreview.knownSpellLimit !== undefined && <small>Magias conhecidas: {selectedKnownSpellCount}/{derivedPreview.knownSpellLimit} (truques não contam)</small>}
             </label>

@@ -12,6 +12,7 @@ import {
   type OseAlignment,
   OSE_ADDITIONAL_LANGUAGES,
   isOseClassAvailableForMode,
+  isOseClassAllowedForRace,
   isOseWeaponAllowedForClass,
   isOseArmorAllowedForClass,
   getOseSpellSlotsByCircle,
@@ -179,12 +180,12 @@ export function OseCharacterCreatorModal({
   const selectedRace: OseRace = OSE_RACES[effectiveRaceId] || OSE_RACES.humano;
 
   useEffect(() => {
-    if (!isOseClassAvailableForMode(selectedClass.isRaceClass, creationMode)) {
-      const firstValidClass = Object.values(OSE_CLASSES).find((cls) => isOseClassAvailableForMode(cls.isRaceClass, creationMode));
+    if (!isOseClassAvailableForMode(selectedClass.isRaceClass, creationMode) || (creationMode === "advanced" && !isOseClassAllowedForRace(selectedRace, selectedClass))) {
+      const firstValidClass = Object.values(OSE_CLASSES).find((cls) => isOseClassAvailableForMode(cls.isRaceClass, creationMode) && (creationMode === "classic" || isOseClassAllowedForRace(selectedRace, cls)));
       if (firstValidClass) setSelectedClassId(firstValidClass.id);
     }
     setValidationMessage("");
-  }, [creationMode]);
+  }, [creationMode, selectedRaceId, selectedClass, selectedRace]);
 
   // Calcula habilidades finais com modificadores raciais
   const finalAbilities = useMemo(() => {
@@ -219,7 +220,10 @@ export function OseCharacterCreatorModal({
   const finalMaxHp = initialCharacter && !hasRerolledHp
     ? initialCharacter.maxHp
     : Math.max(1, hpRoll + conMod);
-  const maxClassLevel = selectedClass.progression[selectedClass.progression.length - 1]?.level || 1;
+  const maxClassLevel = Math.min(
+    selectedClass.progression[selectedClass.progression.length - 1]?.level || 1,
+    selectedRace.maxClassLevels[selectedClass.id] ?? 1,
+  );
 
   useEffect(() => {
     setCharacterLevel((current) => Math.min(Math.max(1, current), maxClassLevel));
@@ -408,6 +412,16 @@ export function OseCharacterCreatorModal({
   const handleFinish = () => {
     if (!isOseClassAvailableForMode(selectedClass.isRaceClass, creationMode)) {
       setValidationMessage("A classe selecionada não pertence à edição OSE escolhida.");
+      setStep(2);
+      return;
+    }
+    if (!isOseClassAllowedForRace(selectedRace, selectedClass)) {
+      setValidationMessage("A raça selecionada não pode escolher esta classe no OSE.");
+      setStep(2);
+      return;
+    }
+    if (characterLevel > maxClassLevel) {
+      setValidationMessage(`A raça selecionada limita esta classe ao nível ${maxClassLevel}.`);
       setStep(2);
       return;
     }
@@ -639,7 +653,7 @@ export function OseCharacterCreatorModal({
                 </h4>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 8 }}>
                   {Object.values(OSE_CLASSES)
-                    .filter((c) => isOseClassAvailableForMode(c.isRaceClass, creationMode))
+                    .filter((c) => isOseClassAvailableForMode(c.isRaceClass, creationMode) && (creationMode === "classic" || isOseClassAllowedForRace(selectedRace, c)))
                     .map((c) => {
                       const qualified = meetsClassRequirements(c);
                       return (

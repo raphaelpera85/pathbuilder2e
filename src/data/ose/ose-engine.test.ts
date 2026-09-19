@@ -14,6 +14,7 @@ import {
   limitOseSpellsBySlots,
   isOseWeaponAllowedForClass,
   isOseArmorAllowedForClass,
+  isOseClassAllowedForRace,
 } from "./oseRules";
 import { OSE_RACES } from "./oseRaces";
 import { OSE_CLASSES } from "./oseClasses";
@@ -130,6 +131,13 @@ describe("Old-School Essentials (OSE) - Engine de Regras", () => {
       expect(isOseArmorAllowedForClass(plate, OSE_CLASSES.ladrao)).toBe(false);
       expect(isOseArmorAllowedForClass(leather, OSE_CLASSES.ladrao)).toBe(true);
       expect(isOseArmorAllowedForClass(shield, OSE_CLASSES.ladrao)).toBe(false);
+    });
+
+    it("respeita a lista de classes e níveis permitidos por raça", () => {
+      expect(isOseClassAllowedForRace(OSE_RACES.anao, OSE_CLASSES.guerreiro)).toBe(true);
+      expect(isOseClassAllowedForRace(OSE_RACES.anao, OSE_CLASSES.mago)).toBe(false);
+      expect(OSE_RACES.anao.maxClassLevels.guerreiro).toBe(10);
+      expect(OSE_RACES.humano.maxClassLevels.mago).toBe(14);
     });
   });
 

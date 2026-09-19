@@ -20,10 +20,10 @@ import {
   type D20RollMode,
 } from "./multiSystemCharacter";
 import { DND5E_CREATION_STEPS, DND5E_TOOLS, DND5E_TOOL_CHOICE_GROUPS, getDnd5eToolChoiceEntries } from "./dnd5e/dnd5eCatalog";
-import { T20_ARCANIST_PATHS, T20_CREATION_STEPS, T20_SORCERER_LINEAGES } from "./t20/t20Catalog";
+import { T20_ARCANIST_PATHS, T20_CREATION_STEPS, T20_SORCERER_LINEAGES, T20_DRACONIC_DAMAGE_TYPES } from "./t20/t20Catalog";
 import { validateAbilityGeneration } from "./coreCharacterRules";
 import { getCoreClassFeatures, getCoreClassResources, type CoreClassFeature, type CoreClassResource } from "./coreClassFeatures";
-import { DND5E_CLASS_CHOICES } from "./dnd5e/dnd5eOptions";
+import { DND5E_CLERIC_DOMAIN_SPELLS, DND5E_CLASS_CHOICES, DND5E_LAND_CIRCLE_SPELLS } from "./dnd5e/dnd5eOptions";
 import { DND5E_FEAT_CHOICES } from "./dnd5e/dnd5eCompendium";
 import { T20_POWER_CHOICES } from "./t20/t20Compendium";
 import { T20_CLASS_CHOICES } from "./t20/t20Catalog";
@@ -192,11 +192,18 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       const classRules = catalog.classRules.find((entry) => entry.id === character.classId);
       const progression = catalog.progressions.find((entry) => entry.classId === character.classId);
       const selectedSubclass = catalog.subclasses.find((entry) => entry.id === character.subclassId);
-      const dndSubclassHasMartialProficiency = systemId === "dnd5e" && ["bardo_valor", "clerigo_tempestade"].includes(selectedSubclass?.id || "");
+      const dndSubclassHasMartialProficiency = systemId === "dnd5e" && ["bardo_valor", "clerigo_tempestade", "clerigo_guerra"].includes(selectedSubclass?.id || "");
       const normalizeSkillChoice = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
       const dndSubclassSkillIds = systemId === "dnd5e"
         ? (selectedSubclass?.choices || [])
           .filter((choice) => choice.grantsSkillProficiencies && character.level >= (choice.minimumLevel || selectedSubclass?.featureLevel || 1))
+          .flatMap((choice) => character.subclassChoices?.[choice.id] || [])
+          .map((value) => catalog.skills.find((skill) => normalizeSkillChoice(skill.name) === normalizeSkillChoice(value))?.id)
+          .filter((skillId): skillId is string => Boolean(skillId))
+        : [];
+      const dndSubclassExpertiseSkillIds = systemId === "dnd5e"
+        ? (selectedSubclass?.choices || [])
+          .filter((choice) => choice.grantsSkillExpertise && character.level >= (choice.minimumLevel || selectedSubclass?.featureLevel || 1))
           .flatMap((choice) => character.subclassChoices?.[choice.id] || [])
           .map((value) => catalog.skills.find((skill) => normalizeSkillChoice(skill.name) === normalizeSkillChoice(value))?.id)
           .filter((skillId): skillId is string => Boolean(skillId))
@@ -347,10 +354,11 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       const meleeWeaponCount = selectedEquipment.filter((entry) => entry.category === "arma" && entry.damage && !entry.weaponProperties?.some((property) => ["munição", "pesada", "duas mãos"].includes(property)) && !/(pesada|duas mãos)/i.test(entry.summary)).length;
       const dualWielderActive = hasFeat("dnd5e.talento.atacante_de_duas_armas") && meleeWeaponCount >= 2;
       const mediumArmorMasterActive = hasFeat("dnd5e.talento.mestre_de_armadura_media") && equippedArmor?.proficiency === "medium_armor";
+      const polearmMasterActive = hasFeat("dnd5e.talento.mestre_de_hastes");
       if (hasFeat("dnd5e.talento.atacante_de_duas_armas")) featEffects.push(dualWielderActive ? "Atacante de Duas Armas: +1 CA enquanto empunha duas armas corpo a corpo" : "Atacante de Duas Armas: +1 CA ao empunhar duas armas corpo a corpo");
       if (hasFeat("dnd5e.talento.mestre_de_armadura_media")) featEffects.push("Mestre de Armadura Média: armadura média permite até +3 de Destreza na CA e não impõe desvantagem em Furtividade");
       if (systemId === "dnd5e") {
-        const detailedFeatIds = new Set(["dnd5e.talento.alerta", "dnd5e.talento.resistente", "dnd5e.talento.resiliente", "dnd5e.talento.movel", "dnd5e.talento.observador", "dnd5e.talento.sentinela", "dnd5e.talento.atacante_de_duas_armas", "dnd5e.talento.mestre_de_armadura_media"]);
+        const detailedFeatIds = new Set(["dnd5e.talento.alerta", "dnd5e.talento.resistente", "dnd5e.talento.resiliente", "dnd5e.talento.movel", "dnd5e.talento.observador", "dnd5e.talento.sentinela", "dnd5e.talento.atacante_de_duas_armas", "dnd5e.talento.mestre_de_armadura_media", "dnd5e.talento.mestre_de_hastes"]);
         for (const featId of selectedFeatIds) {
           if (detailedFeatIds.has(featId)) continue;
           const feat = catalog.feats.find((entry) => entry.id === featId);
@@ -360,6 +368,9 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         for (const featId of selectedFeatIds) {
           const power = catalog.feats.find((entry) => entry.id === featId);
           if (power) featEffects.push(`${power.name}: ${power.summary}`);
+          const selectedChoices = T20_POWER_CHOICES[featId]
+            ?.flatMap((choice) => (character.featChoices?.[choice.id] || []).map((value) => `${choice.label}: ${value}`));
+          if (selectedChoices?.length) featEffects.push(...selectedChoices);
         }
       }
       const t20CouraceiroActive = systemId === "t20" && selectedFeatIds.has("t20.poder.couraceiro");
@@ -440,14 +451,18 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       const dndSkilledSkillIds = dndSkilledChoices
         .map((value) => catalog.skills.find((skill) => normalizeChoice(skill.name) === normalizeChoice(value))?.id)
         .filter((skillId): skillId is string => Boolean(skillId));
+      const t20SelectedTrainingSkillIds = t20SelectedTrainingSkills
+        .map((value) => catalog.skills.find((skill) => normalizeChoice(skill.name) === normalizeChoice(value) || skill.id === value)?.id)
+        .filter((skillId): skillId is string => Boolean(skillId));
       const trained = new Set([
         ...(character.skillProficiencies || []),
         ...(character.raceSkillChoices || []),
-        ...t20SelectedTrainingSkills,
+        ...t20SelectedTrainingSkillIds,
         ...dndSkilledSkillIds,
         ...dndSubclassSkillIds,
+        ...(systemId === "t20" && character.t20ArcanistPath === "feiticeiro" && character.t20SorcererLineage === "feerica" ? ["enganacao"] : []),
       ]);
-      const expertise = new Set(character.skillExpertise || []);
+      const expertise = new Set([...(character.skillExpertise || []), ...dndSubclassExpertiseSkillIds]);
     const armorDisadvantagesStealth = systemId === "dnd5e" && selectedEquipment.some((entry) => entry.category === "armadura" && entry.summary.toLowerCase().includes("desvantagem furtividade") && !(mediumArmorMasterActive && entry.proficiency === "medium_armor"));
       const dndStealthMagicAdvantage = systemId === "dnd5e" && (hasAttunedEquipment("dnd5e.item_magico.botas_elficas") || hasAttunedEquipment("dnd5e.item_magico.capa_elfica"));
     const skillRollModes = Object.fromEntries(catalog.skills.map((skill) => {
@@ -615,6 +630,13 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
           attacksPerAction: 1,
         });
       }
+      if (polearmMasterActive) {
+        const polearmAttack = attacks.find((attack, index) => {
+          const weapon = selectedWeapons[index];
+          return weapon && ["dnd5e.arma.bordao", "dnd5e.arma.lanca", "dnd5e.arma.mangual_de_guerra", "dnd5e.arma.glaive", "dnd5e.arma.alabarda"].includes(weapon.id);
+        });
+        if (polearmAttack) attacks.push({ name: `Ataque bônus — extremidade (${polearmAttack.name})`, bonus: polearmAttack.bonus, damage: "1d4 contundente", proficient: polearmAttack.proficient, ...(globalD20RollMode !== "normal" ? { rollMode: globalD20RollMode } : {}) });
+      }
       const classFeatures = getCoreClassFeatures(systemId, character.classId, safeLevel, progression);
       const classResources = getCoreClassResources(systemId, character.classId, safeLevel, modifiers);
       const racialEffects: string[] = [];
@@ -622,6 +644,8 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         if (raceRules?.traits?.length) racialEffects.push(...raceRules.traits);
         if (character.raceAbilityChoices?.length) racialEffects.push(`Atributos raciais escolhidos: ${character.raceAbilityChoices.join(", ")}`);
         if (character.raceSkillChoices?.length) racialEffects.push(`Perícias raciais escolhidas: ${character.raceSkillChoices.join(", ")}`);
+        const suraggelHeritage = character.raceId === "suraggel" ? character.raceChoices?.["suraggel-heritage"]?.[0] : undefined;
+        if (suraggelHeritage) racialEffects.push(`${suraggelHeritage}: ${suraggelHeritage === "Aggelus" ? "Luz Sagrada" : "Sombras Profanas"}`);
       } else if (systemId === "dnd5e") {
         if (character.raceId === "anao") {
           racialEffects.push("Resistência a dano de veneno; vantagem em salvamentos contra veneno");
@@ -669,6 +693,23 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       if (systemId === "dnd5e" && selectedSubclass) {
         for (const feature of selectedSubclass.features.filter((entry) => entry.level <= safeLevel)) {
           subclassEffects.push(`${feature.name} (${feature.level}º nível): ${feature.summary}`);
+        }
+        for (const choiceDefinition of selectedSubclass.choices || []) {
+          if (choiceDefinition.grantsLanguages && safeLevel >= (choiceDefinition.minimumLevel || selectedSubclass.featureLevel)) {
+            const languages = character.subclassChoices?.[choiceDefinition.id] || [];
+            if (languages.length) subclassEffects.push(`${choiceDefinition.label}: ${languages.join(", ")}`);
+          }
+          if (choiceDefinition.grantsSkillExpertise && safeLevel >= (choiceDefinition.minimumLevel || selectedSubclass.featureLevel)) {
+            const skills = character.subclassChoices?.[choiceDefinition.id] || [];
+            if (skills.length) subclassEffects.push(`${choiceDefinition.label}: especialização em ${skills.join(", ")}`);
+          }
+        }
+        if (selectedSubclass.classId === "clerigo") {
+          const domainSpells = Object.entries(DND5E_CLERIC_DOMAIN_SPELLS[selectedSubclass.id] || {})
+            .filter(([minimumLevel]) => safeLevel >= Number(minimumLevel))
+            .flatMap(([, names]) => names)
+            .filter((name) => catalog.spells.some((spell) => spell.name === name));
+          if (domainSpells.length) subclassEffects.push(`Magias de domínio: ${domainSpells.join(", ")} (sempre preparadas)`);
         }
         const choice = (id: string) => character.subclassChoices?.[id]?.[0];
         if (selectedSubclass.id === "barbaro_totem" && choice("totem-spirit")) {
@@ -740,6 +781,16 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         if (specialistSkills.length) classChoiceEffects.push(`Perícias de Especialista: ${specialistSkills.join(", ")}`);
         const justiceBlessing = t20Choice("t20-paladino-justice-blessing");
         if (justiceBlessing.length) classChoiceEffects.push(`Bênção da Justiça: ${justiceBlessing.join(", ")}`);
+        if (character.t20ArcanistPath === "feiticeiro" && character.t20SorcererLineage === "feerica") {
+          const lineageSpell = catalog.spells.find((spell) => spell.id === character.t20SorcererLineageSpell);
+          classChoiceEffects.push(`Linhagem Feérica: treinamento em Enganação${lineageSpell ? ` · magia concedida: ${lineageSpell.name}` : ""}`);
+        }
+        if (character.t20ArcanistPath === "feiticeiro" && character.t20SorcererLineage === "draconica") {
+          classChoiceEffects.push(`Linhagem Dracônica: dano associado ${character.t20SorcererDamageType || "não escolhido"}`);
+        }
+        if (character.t20ArcanistPath === "feiticeiro" && character.t20SorcererLineage === "rubra") {
+          classChoiceEffects.push("Linhagem Rubra: linhagem corrompida pela Tormenta, com poderes ligados à corrupção aberrante");
+        }
       }
       return {
         modifiers,
@@ -795,8 +846,20 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       if (systemId === "t20" && character.classId === "arcanista") {
         if (!T20_ARCANIST_PATHS.some((path) => path.id === character.t20ArcanistPath)) errors.push("selecione um caminho válido de Arcanista");
         if (character.t20ArcanistPath === "feiticeiro" && !T20_SORCERER_LINEAGES.some((lineage) => lineage.id === character.t20SorcererLineage)) errors.push("selecione uma linhagem sobrenatural válida");
+        if (character.t20SorcererLineage === "feerica") {
+          const lineageSpell = catalog.spells.find((spell) => spell.id === character.t20SorcererLineageSpell);
+          if (!lineageSpell || lineageSpell.spellLevel !== 1 || !("school" in lineageSpell) || !["Encantamento", "Ilusão"].includes(lineageSpell.school || "")) errors.push("a linhagem Feérica exige uma magia de 1º círculo de Encantamento ou Ilusão");
+        } else if (character.t20SorcererLineageSpell) {
+          errors.push("a magia de linhagem só pode ser escolhida pela linhagem Feérica");
+        }
+        if (character.t20SorcererLineage === "draconica" && !T20_DRACONIC_DAMAGE_TYPES.includes(character.t20SorcererDamageType as never)) errors.push("a linhagem Dracônica exige um tipo de dano válido");
+        if (character.t20SorcererLineage !== "draconica" && character.t20SorcererDamageType) errors.push("o tipo de dano de linhagem só pode ser escolhido pela linhagem Dracônica");
       } else if (systemId === "t20" && (character.t20ArcanistPath || character.t20SorcererLineage)) {
         errors.push("caminho e linhagem de Arcanista só podem ser usados por um Arcanista T20");
+      } else if (systemId === "t20" && character.t20SorcererLineageSpell) {
+        errors.push("a magia de linhagem só pode ser usada por um Arcanista T20 Feiticeiro");
+      } else if (systemId === "t20" && character.t20SorcererDamageType) {
+        errors.push("o tipo de dano de linhagem só pode ser usado por um Arcanista T20 Feiticeiro");
       }
       const progression = catalog.progressions.find((entry) => entry.classId === character.classId);
       const selectedSubclass = character.subclassId ? catalog.subclasses.find((entry) => entry.id === character.subclassId) : undefined;
@@ -809,13 +872,26 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
           .map((value) => catalog.skills.find((skill) => normalizeSkillChoice(skill.name) === normalizeSkillChoice(value))?.id)
           .filter((skillId): skillId is string => Boolean(skillId))
         : [];
+      const dndLandCircleSpellNames = systemId === "dnd5e" && selectedSubclass?.id === "druida_terra"
+        ? Object.entries(DND5E_LAND_CIRCLE_SPELLS)
+          .filter(([terrain]) => terrain === character.subclassChoices?.["land-terrain"]?.[0])
+          .flatMap(([, levels]) => Object.entries(levels).filter(([minimumLevel]) => character.level >= Number(minimumLevel)).flatMap(([, names]) => names))
+        : [];
+      const dndClericDomainSpellNames = systemId === "dnd5e" && character.classId === "clerigo" && selectedSubclass?.id
+        ? Object.entries(DND5E_CLERIC_DOMAIN_SPELLS[selectedSubclass.id] || {})
+          .filter(([minimumLevel]) => character.level >= Number(minimumLevel))
+          .flatMap(([, names]) => names)
+        : [];
       const dndSubclassSpellNames = systemId === "dnd5e"
-        ? new Set((selectedSubclass?.choices || [])
-          .filter((choice) => choice.grantsSpells && character.level >= (choice.minimumLevel || selectedSubclass?.featureLevel || 1))
-          .flatMap((choice) => character.subclassChoices?.[choice.id] || [])
-          .map((value) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()))
+        ? new Set([
+          ...(selectedSubclass?.choices || [])
+            .filter((choice) => choice.grantsSpells && character.level >= (choice.minimumLevel || selectedSubclass?.featureLevel || 1))
+            .flatMap((choice) => character.subclassChoices?.[choice.id] || []),
+          ...dndLandCircleSpellNames,
+          ...dndClericDomainSpellNames,
+        ].map((value) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()))
         : new Set<string>();
-      const dndSubclassHasMartialProficiency = systemId === "dnd5e" && ["bardo_valor", "clerigo_tempestade"].includes(selectedSubclass?.id || "");
+      const dndSubclassHasMartialProficiency = systemId === "dnd5e" && ["bardo_valor", "clerigo_tempestade", "clerigo_guerra"].includes(selectedSubclass?.id || "");
       if (character.subclassId && !selectedSubclass) errors.push("subclasse não pertence ao catálogo do sistema");
       if (selectedSubclass && selectedSubclass.classId !== character.classId) errors.push("subclasse não pertence à classe selecionada");
       if (selectedSubclass && character.level < selectedSubclass.featureLevel) errors.push(`a subclasse só pode ser escolhida a partir do nível ${selectedSubclass.featureLevel}`);
@@ -923,7 +999,7 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         errors.push("a raça selecionada não concede idiomas adicionais");
       }
       for (const language of raceLanguages) if (!DND5E_LANGUAGES.includes(language as typeof DND5E_LANGUAGES[number])) errors.push("idioma racial não pertence ao catálogo de D&D 5e");
-      const raceChoices = systemId === "dnd5e" && featRace && "raceChoices" in featRace
+      const raceChoices = featRace && "raceChoices" in featRace
         ? ((featRace as { raceChoices?: Array<{ id: string; label: string; options: string[]; count: number }> }).raceChoices || [])
         : [];
       const declaredRaceChoices = new Map(raceChoices.map((choice) => [choice.id, choice]));
@@ -942,7 +1018,9 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         const values = character.raceChoices?.[choice.id] || [];
         if (values.length !== choice.count) errors.push(`selecione ${choice.count} opção(ões) para ${choice.label}`);
       }
-      if (systemId !== "dnd5e" && Object.keys(character.raceChoices || {}).length > 0) {
+      if (systemId !== "dnd5e" && systemId !== "t20" && Object.keys(character.raceChoices || {}).length > 0) {
+        errors.push("escolhas raciais condicionais só podem ser usadas em D&D 5e");
+      } else if (systemId === "t20" && raceChoices.length === 0 && Object.keys(character.raceChoices || {}).length > 0) {
         errors.push("escolhas raciais condicionais só podem ser usadas em D&D 5e");
       }
       const subraceChoices = systemId === "dnd5e" && featSubrace && "subraceChoices" in featSubrace
@@ -1089,10 +1167,22 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
           return item.grantedSpellIds || [];
         }))
         : new Set<string>();
+      const t20PowerSpellNames = systemId === "t20"
+        ? Object.entries(T20_POWER_CHOICES)
+          .filter(([featId]) => character.featIds.includes(featId))
+          .flatMap(([, choices]) => choices
+            .filter((choice) => ["t20-prayer-spell", "t20-known-spells"].includes(choice.id))
+            .flatMap((choice) => character.featChoices?.[choice.id] || []))
+          .map(normalizeSpellChoice)
+        : [];
+      const t20LineageSpell = systemId === "t20" && character.t20SorcererLineage === "feerica"
+        ? catalog.spells.find((spell) => spell.id === character.t20SorcererLineageSpell)
+        : undefined;
+      const t20LineageSpellName = t20LineageSpell ? normalizeSpellChoice(t20LineageSpell.name) : undefined;
       for (const spellId of character.spellIds || []) {
         const spell = catalog.spells.find((entry) => entry.id === spellId);
         if (!spell) errors.push("magia não pertence ao catálogo do sistema");
-        else if (spell.classIds && !spell.classIds.includes(character.classId) && !dndGrantedSpellIds.has(spellId) && !(dndThirdCaster && spell.classIds.includes("mago")) && !(systemId === "dnd5e" && dndFeatSpellNames.includes(normalizeSpellChoice(spell.name))) && !(systemId === "dnd5e" && dndSubclassSpellNames.has(normalizeSpellChoice(spell.name))) && !(systemId === "t20" && character.classId === "paladino" && getCoreFeatQuantity(character, "t20.poder.orar") > 0 && "tradition" in spell && spell.tradition === "divina" && spell.spellLevel === 1)) errors.push("a magia selecionada não pertence à lista da classe");
+        else if (spell.classIds && !spell.classIds.includes(character.classId) && !dndGrantedSpellIds.has(spellId) && !(dndThirdCaster && spell.classIds.includes("mago")) && !(systemId === "dnd5e" && dndFeatSpellNames.includes(normalizeSpellChoice(spell.name))) && !(systemId === "dnd5e" && dndSubclassSpellNames.has(normalizeSpellChoice(spell.name))) && !(systemId === "t20" && t20PowerSpellNames.includes(normalizeSpellChoice(spell.name))) && !(systemId === "t20" && t20LineageSpellName === normalizeSpellChoice(spell.name)) && !(systemId === "t20" && character.classId === "paladino" && getCoreFeatQuantity(character, "t20.poder.orar") > 0 && "tradition" in spell && spell.tradition === "divina" && spell.spellLevel === 1)) errors.push("a magia selecionada não pertence à lista da classe");
         else if (t20BardSchools.length > 0 && (!("school" in spell) || !spell.school || !t20BardSchools.includes(spell.school))) errors.push(`a magia ${spell.name} pertence a uma escola que o Bardo não escolheu`);
         else if (systemId === "t20" && spell.spellLevel !== undefined && spell.spellLevel > getT20MaximumSpellLevel(character.classId, character.level, character.classId === "paladino" && getCoreFeatQuantity(character, "t20.poder.orar") > 0)) errors.push(`a magia ${spell.name} exige um círculo de magia maior que o disponível neste nível`);
         else if (spell.spellLevel !== undefined && systemId === "dnd5e" && (dndThirdCaster || (progression && "spellcaster" in progression && progression.spellcaster))) {
@@ -1104,7 +1194,7 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       const featGrantedSpellNames = new Set(dndFeatSpellNames);
       const knownSpellCount = (character.spellIds || []).filter((spellId) => {
         const spell = catalog.spells.find((entry) => entry.id === spellId);
-        return spell?.spellLevel !== 0 && !(systemId === "dnd5e" && spell && featGrantedSpellNames.has(normalizeSpellChoice(spell.name))) && !(systemId === "dnd5e" && dndGrantedSpellIds.has(spellId));
+        return spell?.spellLevel !== 0 && !(systemId === "dnd5e" && spell && featGrantedSpellNames.has(normalizeSpellChoice(spell.name))) && !(systemId === "dnd5e" && dndSubclassSpellNames.has(normalizeSpellChoice(spell?.name || ""))) && !(systemId === "dnd5e" && dndGrantedSpellIds.has(spellId)) && !(systemId === "t20" && t20LineageSpellName === normalizeSpellChoice(spell?.name || ""));
       }).length;
       const knownSpellLimit = systemId === "dnd5e" && (dndThirdCaster || (progression && "spellcaster" in progression && progression.spellcaster))
         ? dndKnownSpellLimit(character.classId, character.level, character.subclassId)
@@ -1158,7 +1248,7 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       );
       const dndArmorProficiencyFromSubclass = (proficiency: string | undefined) => systemId === "dnd5e" && (
         (proficiency === "medium_armor" && selectedSubclass?.id === "bardo_valor")
-        || (proficiency === "heavy_armor" && selectedSubclass?.id === "clerigo_tempestade")
+        || (proficiency === "heavy_armor" && ["clerigo_vida", "clerigo_tempestade", "clerigo_guerra"].includes(selectedSubclass?.id || ""))
         || (proficiency === "shield" && selectedSubclass?.id === "bardo_valor")
       );
       if (shieldCount > 1) errors.push("selecione apenas um escudo equipado");

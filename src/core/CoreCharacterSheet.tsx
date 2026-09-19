@@ -42,7 +42,7 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
   const deity = selectedDeity?.name;
   const classRules = catalog.classRules.find((entry) => entry.id === draft.classId);
   const raceRules = catalog.raceRules.find((entry) => entry.id === draft.raceId);
-  const raceChoices = system === "dnd5e" && raceRules && "raceChoices" in raceRules ? (raceRules as { raceChoices?: Array<{ id: string; label: string; options: string[]; count: number }> }).raceChoices || [] : [];
+  const raceChoices = raceRules && "raceChoices" in raceRules ? (raceRules as { raceChoices?: Array<{ id: string; label: string; options: string[]; count: number }> }).raceChoices || [] : [];
   const subraceChoices = system === "dnd5e" && subrace && "subraceChoices" in (catalog.subraces.find((entry) => entry.id === draft.subraceId) || {}) ? ((catalog.subraces.find((entry) => entry.id === draft.subraceId) as { subraceChoices?: Array<{ id: string; label: string; options: string[]; count: number }> } | undefined)?.subraceChoices || []) : [];
   const raceLanguageChoices = system === "dnd5e" && raceRules && "languageChoices" in raceRules ? Number((raceRules as { languageChoices?: number }).languageChoices || 0) : 0;
   const raceSkillChoiceCount = raceRules && "skillChoices" in raceRules ? Number((raceRules as { skillChoices?: number }).skillChoices || 0) : 0;

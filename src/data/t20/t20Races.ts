@@ -10,9 +10,10 @@ export interface T20RaceRules {
   abilityChoices?: { count: number; amount: number; exclude?: string[] };
   skillChoices?: number;
   skillOrFeatChoice?: "general" | "tormenta";
+  raceChoices?: Array<{ id: string; label: string; options: string[]; count: number }>;
 }
 
-const r = (id: string, name: string, sourcePage: number, abilityBonuses: string, attributeAdjustments: T20RaceRules["attributeAdjustments"], size: T20RaceRules["size"], speed: number, traits: string[], abilityChoices?: T20RaceRules["abilityChoices"], skillChoices?: number, skillOrFeatChoice?: T20RaceRules["skillOrFeatChoice"]): T20RaceRules => ({ id, name, sourcePage, abilityBonuses, attributeAdjustments, size, speed, traits, abilityChoices, skillChoices, skillOrFeatChoice });
+const r = (id: string, name: string, sourcePage: number, abilityBonuses: string, attributeAdjustments: T20RaceRules["attributeAdjustments"], size: T20RaceRules["size"], speed: number, traits: string[], abilityChoices?: T20RaceRules["abilityChoices"], skillChoices?: number, skillOrFeatChoice?: T20RaceRules["skillOrFeatChoice"], raceChoices?: T20RaceRules["raceChoices"]): T20RaceRules => ({ id, name, sourcePage, abilityBonuses, attributeAdjustments, size, speed, traits, abilityChoices, skillChoices, skillOrFeatChoice, raceChoices });
 
 export const T20_RACE_RULES: T20RaceRules[] = [
   r("humano", "Humano", 19, "+2 em três atributos diferentes", {}, "Médio", 9, ["Versátil: treinado em duas perícias ou uma perícia e um poder geral"], { count: 3, amount: 2 }, 2, "general"),
@@ -30,7 +31,7 @@ export const T20_RACE_RULES: T20RaceRules[] = [
   r("osteon", "Osteon", 29, "+2 em três atributos diferentes (exceto Constituição), Constituição -2", { con: -2 }, "Médio", 9, ["Armadura Óssea", "Memória Póstuma", "Natureza Esquelética"], { count: 3, amount: 2, exclude: ["con"] }),
   r("sereia_tritao", "Sereia/Tritão", 29, "+2 em três atributos diferentes", {}, "Médio", 9, ["Canção dos Mares", "Mestre do Tridente", "Transformação Anfíbia"], { count: 3, amount: 2 }),
   r("siflide", "Sílfide", 30, "Carisma +4, Destreza +2, Força -4", { cha: 4, dex: 2, str: -4 }, "Minúsculo", 9, ["Asas de Borboleta", "Resistência Feérica", "Pequenina e Travessa"]),
-  r("suraggel", "Suraggel", 30, "+2 em três atributos diferentes", {}, "Médio", 9, ["Herança Divina", "Luz Sagrada (Aggelus) ou Sombras Profanas (Sulfure)"], { count: 3, amount: 2 }),
+  r("suraggel", "Suraggel", 30, "+2 em três atributos diferentes", {}, "Médio", 9, ["Herança Divina", "Luz Sagrada (Aggelus) ou Sombras Profanas (Sulfure)"], { count: 3, amount: 2 }, undefined, undefined, [{ id: "suraggel-heritage", label: "Herança do Suraggel", options: ["Aggelus", "Sulfure"], count: 1 }]),
   r("trog", "Trog", 31, "Constituição +4, Força +2, Inteligência -2", { con: 4, str: 2, int: -2 }, "Médio", 9, ["Mau Cheiro", "Mordida", "Resistência a veneno"]),
 ];
 

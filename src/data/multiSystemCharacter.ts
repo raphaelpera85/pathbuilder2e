@@ -1,16 +1,16 @@
 import { DND5E_CLASSES, DND5E_RACES, DND5E_SKILLS } from "./dnd5e/dnd5eCatalog";
 import { DND5E_BACKGROUNDS, getDnd5eBackgroundToolProficiencies } from "./dnd5e/dnd5eBackgrounds";
-import { T20_ARCANIST_PATHS, T20_CLASSES, T20_RACES, T20_SKILLS, T20_SORCERER_LINEAGES } from "./t20/t20Catalog";
+import { T20_ARCANIST_PATHS, T20_CLASSES, T20_RACES, T20_SKILLS, T20_SORCERER_LINEAGES, T20_DRACONIC_DAMAGE_TYPES } from "./t20/t20Catalog";
 import { T20_ORIGINS } from "./t20/t20Origins";
 import { T20_CLASS_RULES } from "./t20/t20Classes";
 import { DND5E_CLASS_RULES } from "./dnd5e/dnd5eClasses";
 import { DND5E_RACE_RULES } from "./dnd5e/dnd5eRaces";
 import { T20_RACE_RULES } from "./t20/t20Races";
-import { T20_EQUIPMENT, T20_POWERS, T20_SPELLS } from "./t20/t20Compendium";
+import { T20_EQUIPMENT, T20_POWERS, T20_SPELLS, T20_POWER_CHOICES } from "./t20/t20Compendium";
 import { DND5E_EQUIPMENT, DND5E_FEATS, DND5E_SPELLS } from "./dnd5e/dnd5eCompendium";
 import { DND5E_CLASS_PROGRESSIONS } from "./dnd5e/dnd5eProgressions";
 import { T20_CLASS_PROGRESSIONS } from "./t20/t20Progressions";
-import { DND5E_SUBRACES, DND5E_SUBCLASSES } from "./dnd5e/dnd5eOptions";
+import { DND5E_CLERIC_DOMAIN_SPELLS, DND5E_LAND_CIRCLE_SPELLS, DND5E_SUBRACES, DND5E_SUBCLASSES } from "./dnd5e/dnd5eOptions";
 import type { AbilityGenerationMethod } from "./coreCharacterRules";
 
 export type SupportedCoreSystem = "t20" | "dnd5e";
@@ -93,6 +93,10 @@ export interface MultiSystemCharacter {
   t20ArcanistPath?: (typeof T20_ARCANIST_PATHS)[number]["id"];
   /** Linhagem escolhida pelo caminho Feiticeiro T20. */
   t20SorcererLineage?: (typeof T20_SORCERER_LINEAGES)[number]["id"];
+  /** Magia de 1º círculo escolhida pela linhagem Feérica T20. */
+  t20SorcererLineageSpell?: string;
+  /** Tipo de dano escolhido pela linhagem Dracônica T20. */
+  t20SorcererDamageType?: (typeof T20_DRACONIC_DAMAGE_TYPES)[number];
   subraceId?: string;
   /** Escolhas flexíveis de bônus raciais (ex.: Humano T20 ou Meio-Elfo D&D). */
   raceAbilityChoices?: CoreAbility[];
@@ -314,6 +318,39 @@ export function getAvailableCoreSpells(system: SupportedCoreSystem, classId: str
     .filter((spell) => dndFeatSpellChoices.includes(normalizeSpellChoice(spell.name)))
     .map((spell) => spell.id));
   const dndFeatSpells = catalog.spells.filter((spell) => dndFeatSpellIds.has(spell.id));
+  const selectedLandTerrain = system === "dnd5e" && character?.subclassId === "druida_terra" ? character.subclassChoices?.["land-terrain"]?.[0] : undefined;
+  const dndLandCircleSpellNames = selectedLandTerrain
+    ? Object.entries(DND5E_LAND_CIRCLE_SPELLS)
+      .filter(([terrain]) => terrain === selectedLandTerrain)
+      .flatMap(([, levels]) => Object.entries(levels).filter(([minimumLevel]) => level >= Number(minimumLevel)).flatMap(([, names]) => names))
+    : [];
+  const dndClericDomainSpellNames = system === "dnd5e" && character?.classId === "clerigo" && character.subclassId
+    ? Object.entries(DND5E_CLERIC_DOMAIN_SPELLS[character.subclassId] || {})
+      .filter(([minimumLevel]) => level >= Number(minimumLevel))
+      .flatMap(([, names]) => names)
+    : [];
+  const dndSubclassSpellNames = system === "dnd5e" && character
+    ? new Set([
+      ...(DND5E_SUBCLASSES.find((subclass) => subclass.id === character.subclassId)?.choices || [])
+        .filter((choice) => choice.grantsSpells && level >= (choice.minimumLevel || DND5E_SUBCLASSES.find((subclass) => subclass.id === character.subclassId)?.featureLevel || 1))
+        .flatMap((choice) => character.subclassChoices?.[choice.id] || []),
+      ...dndLandCircleSpellNames,
+      ...dndClericDomainSpellNames,
+    ].map(normalizeSpellChoice))
+    : new Set<string>();
+  const dndSubclassSpells = catalog.spells.filter((spell) => dndSubclassSpellNames.has(normalizeSpellChoice(spell.name)));
+  const t20PowerSpellNames = system === "t20" && character
+    ? Object.entries(T20_POWER_CHOICES)
+      .filter(([featId]) => character.featIds.includes(featId))
+      .flatMap(([, choices]) => choices
+        .filter((choice) => ["t20-prayer-spell", "t20-known-spells"].includes(choice.id))
+        .flatMap((choice) => character.featChoices?.[choice.id] || []))
+      .map(normalizeSpellChoice)
+    : [];
+  const t20PowerSpells = catalog.spells.filter((spell) => t20PowerSpellNames.includes(normalizeSpellChoice(spell.name)));
+  const t20LineageSpell = system === "t20" && character?.classId === "arcanista" && character.t20ArcanistPath === "feiticeiro" && character.t20SorcererLineage === "feerica"
+    ? catalog.spells.find((spell) => spell.id === character.t20SorcererLineageSpell && spell.spellLevel === 1 && "school" in spell && ["Encantamento", "Ilusão"].includes(spell.school || ""))
+    : undefined;
   const attunedEquipmentIds = new Set(character?.attunedEquipmentIds || []);
   const grantedSpellIds = new Set((character?.equipmentIds || []).flatMap((equipmentId) => {
     const item = catalog.equipment.find((entry) => entry.id === equipmentId) as { grantedSpellIds?: string[]; magical?: boolean; requiresAttunement?: boolean; summary?: string; magicEffects?: string[] } | undefined;
@@ -328,7 +365,7 @@ export function getAvailableCoreSpells(system: SupportedCoreSystem, classId: str
     ? ["arcanista", "bardo", "clerigo", "druida"].includes(classId) || hasPaladinPrayer
     : Boolean(thirdCasterSubclass) || (progression && "spellcaster" in progression ? progression.spellcaster : false);
   const spellcastingLevel = thirdCasterSubclass ? 3 : progression && "spellcastingLevel" in progression ? progression.spellcastingLevel || 1 : 1;
-  if (!spellcaster || level < spellcastingLevel) return Array.from(new Map([...dndFeatSpells, ...grantedSpells].map((spell) => [spell.id, spell])).values());
+  if (!spellcaster || level < spellcastingLevel) return Array.from(new Map([...dndFeatSpells, ...dndSubclassSpells, ...t20PowerSpells, ...(t20LineageSpell ? [t20LineageSpell] : []), ...grantedSpells].map((spell) => [spell.id, spell])).values());
   const safeLevel = Math.max(1, Math.trunc(level));
   const maximumSpellLevel = system === "t20"
     ? getT20MaximumSpellLevel(classId, safeLevel, hasPaladinPrayer)
@@ -353,7 +390,7 @@ export function getAvailableCoreSpells(system: SupportedCoreSystem, classId: str
     if (bardSchools.length > 0 && (!("school" in spell) || !spell.school || !bardSchools.includes(spell.school))) return false;
     return spell.spellLevel === undefined || spell.spellLevel <= maximumSpellLevel;
   });
-  return Array.from(new Map([...classSpells, ...dndFeatSpells, ...grantedSpells].map((spell) => [spell.id, spell])).values());
+  return Array.from(new Map([...classSpells, ...dndFeatSpells, ...dndSubclassSpells, ...t20PowerSpells, ...(t20LineageSpell ? [t20LineageSpell] : []), ...grantedSpells].map((spell) => [spell.id, spell])).values());
 }
 
 export function getT20MaximumSpellLevel(classId: string, level: number, hasPaladinPrayer = false): number {
@@ -521,6 +558,8 @@ export function createInitialCoreCharacter(system: SupportedCoreSystem): MultiSy
     classId: firstClass.id,
     t20ArcanistPath: system === "t20" && firstClass.id === "arcanista" ? "bruxo" : undefined,
     t20SorcererLineage: undefined,
+    t20SorcererLineageSpell: undefined,
+    t20SorcererDamageType: undefined,
     subraceId: catalog.subraces[0]?.id,
     backgroundId: catalog.backgrounds[0].id,
     alignment: system === "dnd5e" ? "Neutro" : undefined,

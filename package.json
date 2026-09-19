@@ -39,7 +39,9 @@
     "sync:core-actions-conditions:supabase": "node --experimental-strip-types scripts/sync-core-actions-conditions-to-supabase.cjs",
     "sync:core-skills:supabase": "node --experimental-strip-types --loader ./scripts/ts-extension-loader.mjs scripts/sync-core-skills-to-supabase.cjs",
     "sync:dnd5e-attunement:supabase": "node scripts/sync-dnd5e-attunement-to-supabase.cjs",
-    "sync:dnd5e-subclass-choices:supabase": "node scripts/sync-dnd5e-subclass-choices-to-supabase.cjs"
+    "sync:dnd5e-subclass-choices:supabase": "node scripts/sync-dnd5e-subclass-choices-to-supabase.cjs",
+    "sync:dnd5e-land-circle:supabase": "node scripts/sync-dnd5e-land-circle-spells-to-supabase.cjs",
+    "sync:dnd5e-domain-spells:supabase": "node scripts/sync-dnd5e-domain-spells-to-supabase.cjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "latest",

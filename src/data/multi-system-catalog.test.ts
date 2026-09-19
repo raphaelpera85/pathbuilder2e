@@ -13,7 +13,7 @@ import { T20_CLASS_CHOICES } from "./t20/t20Catalog";
 import { T20_EQUIPMENT, T20_POWERS, T20_SPELLS } from "./t20/t20Compendium";
 import { T20_CLASS_PROGRESSIONS } from "./t20/t20Progressions";
 import { DND5E_CLASS_PROGRESSIONS } from "./dnd5e/dnd5eProgressions";
-import { DND5E_SUBRACES, DND5E_SUBCLASSES } from "./dnd5e/dnd5eOptions";
+import { DND5E_CLERIC_DOMAIN_SPELLS, DND5E_LAND_CIRCLE_SPELLS, DND5E_SUBRACES, DND5E_SUBCLASSES } from "./dnd5e/dnd5eOptions";
 import { createInitialCoreCharacter, getAvailableCoreFeats, getAvailableCoreSpells, getCoreCatalog, getCoreStartingEquipment, T20_DEITIES } from "./multiSystemCharacter";
 
 describe("Catálogos de criação por sistema", () => {
@@ -234,11 +234,35 @@ describe("Catálogos de criação por sistema", () => {
       "dnd5e.magia.raio_de_fogo",
       "dnd5e.magia.alarme",
     ]));
+    const loreBard = createInitialCoreCharacter("dnd5e");
+    loreBard.classId = "bardo";
+    loreBard.level = 6;
+    loreBard.subclassId = "bardo_conhecimento";
+    loreBard.subclassChoices = {
+      "lore-bonus-skills": ["Arcanismo", "História", "Natureza"],
+      "lore-magical-secrets": ["Mísseis Mágicos", "Armadura Arcana"],
+    };
+    expect(getAvailableCoreSpells("dnd5e", "bardo", 6, loreBard).map((entry) => entry.name)).toEqual(expect.arrayContaining(["Mísseis Mágicos", "Armadura Arcana"]));
     const ritualCasterFighter = { ...magicInitiateFighter, featIds: ["dnd5e.talento.conjurador_de_rituais"], featChoices: { "ritual-caster-class": ["Mago"], "ritual-caster-spells": ["Alarme", "Detectar Magia"] } };
     expect(getAvailableCoreSpells("dnd5e", "guerreiro", 1, ritualCasterFighter).map((entry) => entry.id)).toEqual(expect.arrayContaining(["dnd5e.magia.alarme", "dnd5e.magia.detectar_magia"]));
     expect(getAvailableCoreSpells("dnd5e", "mago", 1).some((entry) => entry.id === "dnd5e.magia.amizade")).toBe(true);
     expect(getAvailableCoreSpells("dnd5e", "mago", 3).some((entry) => entry.id === "dnd5e.magia.teia")).toBe(true);
     expect(getAvailableCoreSpells("dnd5e", "paladino", 5).some((entry) => entry.id === "dnd5e.magia.arma_magica")).toBe(false);
+    const landDruid = createInitialCoreCharacter("dnd5e");
+    landDruid.classId = "druida";
+    landDruid.level = 5;
+    landDruid.subclassId = "druida_terra";
+    landDruid.subclassChoices = { "land-terrain": ["Floresta"] };
+    expect(getAvailableCoreSpells("dnd5e", "druida", 5, landDruid).map((entry) => entry.name)).toEqual(expect.arrayContaining(["Convocar Relâmpagos", "Ampliar Plantas"]));
+    const lifeCleric = createInitialCoreCharacter("dnd5e");
+    lifeCleric.classId = "clerigo";
+    lifeCleric.level = 3;
+    lifeCleric.subclassId = "clerigo_vida";
+    expect(getAvailableCoreSpells("dnd5e", "clerigo", 3, lifeCleric).map((entry) => entry.name)).toEqual(expect.arrayContaining(["Bênção", "Curar Ferimentos", "Restauração Menor", "Arma Espiritual"]));
+    const landCircleSpellNames = Object.values(DND5E_LAND_CIRCLE_SPELLS).flatMap((terrain) => Object.values(terrain).flat());
+    expect(landCircleSpellNames.every((name) => DND5E_SPELLS.some((spell) => spell.name === name))).toBe(true);
+    const domainSpellNames = Object.values(DND5E_CLERIC_DOMAIN_SPELLS).flatMap((domain) => Object.values(domain).flat());
+    expect(domainSpellNames.every((name) => DND5E_SPELLS.some((spell) => spell.name === name))).toBe(true);
     expect(getAvailableCoreSpells("t20", "arcanista", 8).some((entry) => entry.id === "t20.magia.aparencia_perfeita")).toBe(true);
     expect(getAvailableCoreSpells("t20", "guerreiro", 1).some((entry) => entry.id === "t20.magia.aparencia_perfeita")).toBe(false);
     expect(getAvailableCoreSpells("t20", "guerreiro", 1)).toHaveLength(0);
@@ -251,6 +275,11 @@ describe("Catálogos de criação por sistema", () => {
     const prayerSpells = getAvailableCoreSpells("t20", "paladino", 2, t20Paladin);
     expect(prayerSpells.length).toBeGreaterThan(0);
     expect(prayerSpells.every((entry) => entry.tradition === "divina" && entry.spellLevel === 1)).toBe(true);
+    const trainedSpellPower = createInitialCoreCharacter("t20");
+    trainedSpellPower.classId = "guerreiro";
+    trainedSpellPower.featIds = ["t20.poder.conhecimento_magico"];
+    trainedSpellPower.featChoices = { "t20-known-spells": ["Amedrontar", "Luz"] };
+    expect(getAvailableCoreSpells("t20", "guerreiro", 1, trainedSpellPower).map((entry) => entry.name)).toEqual(expect.arrayContaining(["Amedrontar", "Luz"]));
     expect(T20_SPELLS.every((entry) => !entry.classIds?.includes("paladino"))).toBe(true);
     expect(getAvailableCoreSpells("t20", "bardo", 5).some((entry) => entry.spellLevel === 2)).toBe(false);
     expect(getAvailableCoreSpells("t20", "bardo", 6).some((entry) => entry.spellLevel === 2)).toBe(true);

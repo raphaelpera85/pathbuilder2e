@@ -7,6 +7,7 @@ export type OseAbilityName = "str" | "int" | "wis" | "dex" | "con" | "cha";
 
 import type { OseArmor, OseWeapon } from "./oseEquipment";
 import type { OseClass } from "./oseClasses";
+import type { OseRace } from "./oseRaces";
 
 export interface OseAbilityScore {
   score: number;
@@ -143,6 +144,11 @@ export type OseAlignment = "ordeiro" | "neutro" | "caotico";
 /** Classes disponíveis em cada apresentação do núcleo OSE. */
 export function isOseClassAvailableForMode(isRaceClass: boolean | undefined, mode: "advanced" | "classic"): boolean {
   return mode === "classic" ? Boolean(isRaceClass) : !Boolean(isRaceClass);
+}
+
+/** A raça só pode escolher classes listadas na própria tabela de progressão racial. */
+export function isOseClassAllowedForRace(race: OseRace, selectedClass: OseClass): boolean {
+  return Object.prototype.hasOwnProperty.call(race.maxClassLevels, selectedClass.id);
 }
 
 /**

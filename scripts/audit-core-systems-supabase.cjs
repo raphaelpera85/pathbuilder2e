@@ -19,7 +19,7 @@ if (!url || !key) throw new Error("VITE_SUPABASE_URL e uma chave Supabase são o
 const supabase = createClient(url, key);
 
 const expected = {
-  "dnd5e/standard": { catalog_ancestries: 9, catalog_classes: 12, catalog_backgrounds: 13, catalog_subclasses: 40, catalog_items: 226, catalog_spells: 301, catalog_feats: 40 },
+  "dnd5e/standard": { catalog_ancestries: 9, catalog_classes: 12, catalog_backgrounds: 13, catalog_subclasses: 40, catalog_items: 226, catalog_spells: 315, catalog_feats: 40 },
   "t20/padrao": { catalog_ancestries: 17, catalog_classes: 14, catalog_backgrounds: 35, catalog_items: 150, catalog_spells: 66, catalog_feats: 412 },
   "ose/advanced": { catalog_ancestries: 10, catalog_classes: 16, catalog_items: 53, catalog_spells: 34, catalog_feats: 0 },
 };

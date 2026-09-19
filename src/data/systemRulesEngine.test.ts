@@ -75,6 +75,53 @@ describe("system rules engines", () => {
     expect(T20_RULES_ENGINE.validateCharacter(arcanista)).not.toContain("selecione um caminho válido de Arcanista");
   });
 
+  it("aplica a magia gratuita e o treinamento da linhagem Feérica", () => {
+    const arcanista = T20_RULES_ENGINE.createDefaultCharacter();
+    arcanista.classId = "arcanista";
+    arcanista.t20ArcanistPath = "feiticeiro";
+    arcanista.t20SorcererLineage = "feerica";
+    arcanista.t20SorcererLineageSpell = "t20.magia.criar_ilusao";
+    const available = getAvailableCoreSpells("t20", "arcanista", 1, arcanista).map((spell) => spell.id);
+    expect(available).toContain("t20.magia.criar_ilusao");
+    expect(T20_RULES_ENGINE.validateCharacter(arcanista)).toEqual([]);
+    expect(T20_RULES_ENGINE.deriveStats(arcanista).skillBonuses.enganacao).toBeGreaterThan(0);
+    expect(T20_RULES_ENGINE.deriveStats(arcanista).classChoiceEffects.join(" ")).toContain("Criar Ilusão");
+
+    arcanista.t20SorcererLineageSpell = "t20.magia.bola_de_fogo";
+    expect(T20_RULES_ENGINE.validateCharacter(arcanista)).toContain("a linhagem Feérica exige uma magia de 1º círculo de Encantamento ou Ilusão");
+  });
+
+  it("valida e exibe o tipo de dano da linhagem Dracônica", () => {
+    const arcanista = T20_RULES_ENGINE.createDefaultCharacter();
+    arcanista.t20ArcanistPath = "feiticeiro";
+    arcanista.t20SorcererLineage = "draconica";
+    arcanista.t20SorcererDamageType = "fogo";
+    expect(T20_RULES_ENGINE.validateCharacter(arcanista)).toEqual([]);
+    expect(T20_RULES_ENGINE.deriveStats(arcanista).classChoiceEffects.join(" ")).toContain("dano associado fogo");
+    arcanista.t20SorcererDamageType = "veneno" as never;
+    expect(T20_RULES_ENGINE.validateCharacter(arcanista)).toContain("a linhagem Dracônica exige um tipo de dano válido");
+  });
+
+  it("valida a herança racial do Suraggel T20 e a exibe nos efeitos", () => {
+    const suraggel = T20_RULES_ENGINE.createDefaultCharacter();
+    suraggel.raceId = "suraggel";
+    suraggel.raceSkillChoices = [];
+    suraggel.raceChoices = { "suraggel-heritage": ["Aggelus"] };
+    expect(T20_RULES_ENGINE.validateCharacter(suraggel)).toEqual([]);
+    expect(T20_RULES_ENGINE.deriveStats(suraggel).racialEffects.join(" ")).toContain("Aggelus: Luz Sagrada");
+    suraggel.raceChoices = { "suraggel-heritage": ["opção inválida"] };
+    expect(T20_RULES_ENGINE.validateCharacter(suraggel)).toContain("a escolha racial Herança do Suraggel contém uma opção inválida");
+  });
+
+  it("deriva o ataque bônus do Mestre de Hastes com arma elegível", () => {
+    const character = DND5E_RULES_ENGINE.createDefaultCharacter();
+    character.classId = "guerreiro";
+    character.featIds = ["dnd5e.talento.mestre_de_hastes"];
+    character.equipmentIds = ["dnd5e.arma.bordao"];
+    const attacks = DND5E_RULES_ENGINE.deriveStats(character).attacks;
+    expect(attacks.some((attack) => attack.name.includes("Ataque bônus — extremidade") && attack.damage === "1d4 contundente")).toBe(true);
+  });
+
   it("respeita o limite de duas escolhas de Poder Mágico", () => {
     const arcanista = T20_RULES_ENGINE.createDefaultCharacter();
     arcanista.level = 3;
@@ -493,6 +540,22 @@ describe("system rules engines", () => {
     const tempestadeErrors = DND5E_RULES_ENGINE.validateCharacter(tempestade);
     expect(tempestadeErrors).not.toContain("o equipamento Armadura de placas exige proficiência que a classe não possui");
     expect(tempestadeErrors).not.toContain("o equipamento Espada grande exige proficiência que a classe não possui");
+
+    const vida = DND5E_RULES_ENGINE.createDefaultCharacter();
+    vida.classId = "clerigo";
+    vida.level = 1;
+    vida.subclassId = "clerigo_vida";
+    vida.equipmentIds = ["dnd5e.armadura.cota_de_malha"];
+    expect(DND5E_RULES_ENGINE.validateCharacter(vida)).not.toContain("o equipamento Cota de malha exige proficiência que a classe não possui");
+
+    const guerra = DND5E_RULES_ENGINE.createDefaultCharacter();
+    guerra.classId = "clerigo";
+    guerra.level = 1;
+    guerra.subclassId = "clerigo_guerra";
+    guerra.equipmentIds = ["dnd5e.armadura.cota_de_malha", "dnd5e.arma.espada_longa"];
+    expect(DND5E_RULES_ENGINE.validateCharacter(guerra)).not.toContain("o equipamento Cota de malha exige proficiência que a classe não possui");
+    expect(DND5E_RULES_ENGINE.validateCharacter(guerra)).not.toContain("o equipamento Espada longa exige proficiência que a classe não possui");
+    expect(DND5E_RULES_ENGINE.deriveStats(guerra).attacks[0]?.proficient).toBe(true);
   });
 
   it("permite armaduras e escudo concedidos por talentos de proficiência", () => {
@@ -1382,6 +1445,11 @@ describe("system rules engines", () => {
       "knowledge-blessings-languages": ["Celestial", "Dracônico"],
     };
     expect(DND5E_RULES_ENGINE.validateCharacter(knowledge)).not.toContain("a escolha Idiomas das Bênçãos do Conhecimento");
+    const knowledgeWithoutBlessing = DND5E_RULES_ENGINE.deriveStats({ ...knowledge, subclassChoices: {} });
+    const knowledgeWithBlessing = DND5E_RULES_ENGINE.deriveStats(knowledge);
+    expect(knowledgeWithBlessing.skillBonuses.arcanismo).toBe(knowledgeWithoutBlessing.skillBonuses.arcanismo + 4);
+    expect(knowledgeWithBlessing.subclassEffects).toContain("Perícias das Bênçãos do Conhecimento: especialização em Arcanismo, História");
+    expect(knowledgeWithBlessing.subclassEffects).toContain("Idiomas das Bênçãos do Conhecimento: Celestial, Dracônico");
 
     const nature = DND5E_RULES_ENGINE.createDefaultCharacter();
     nature.classId = "clerigo";
@@ -1390,6 +1458,31 @@ describe("system rules engines", () => {
     nature.subclassChoices = { "nature-acolyte-skill": ["Natureza"], "nature-acolyte-cantrip": ["Globos de Luz"] };
     nature.spellIds = ["dnd5e.magia.globos_de_luz"];
     expect(DND5E_RULES_ENGINE.validateCharacter(nature)).not.toContain("a magia selecionada não pertence à lista da classe");
+
+    const light = DND5E_RULES_ENGINE.createDefaultCharacter();
+    light.classId = "clerigo";
+    light.level = 1;
+    light.subclassId = "clerigo_luz";
+    light.subclassChoices = { "light-domain-cantrip": ["Luz"] };
+    light.spellIds = ["dnd5e.magia.luz"];
+    expect(DND5E_RULES_ENGINE.validateCharacter(light)).not.toContain("a magia selecionada não pertence à lista da classe");
+
+    const land = DND5E_RULES_ENGINE.createDefaultCharacter();
+    land.classId = "druida";
+    land.level = 3;
+    land.subclassId = "druida_terra";
+    land.subclassChoices = { "land-terrain": ["Costa"] };
+    land.spellIds = ["dnd5e.magia.passo_nebuloso"];
+    expect(DND5E_RULES_ENGINE.validateCharacter(land)).not.toContain("a magia selecionada não pertence à lista da classe");
+
+    const lifeDomain = DND5E_RULES_ENGINE.createDefaultCharacter();
+    lifeDomain.classId = "clerigo";
+    lifeDomain.level = 3;
+    lifeDomain.subclassId = "clerigo_vida";
+    lifeDomain.spellIds = ["dnd5e.magia.restauracao_menor", "dnd5e.magia.arma_espiritual"];
+    const lifeStats = DND5E_RULES_ENGINE.deriveStats(lifeDomain);
+    expect(lifeStats.subclassEffects.some((effect) => effect.includes("Magias de domínio") && effect.includes("Restauração Menor"))).toBe(true);
+    expect(DND5E_RULES_ENGINE.validateCharacter(lifeDomain)).not.toContain("a magia selecionada não pertence à lista da classe");
   });
 
   it("aplica Aumento de Atributo T20 aos modificadores derivados", () => {
@@ -1442,7 +1535,7 @@ describe("system rules engines", () => {
       "t20.poder.acrobatico",
       "t20.poder.treinamento_em_pericia",
     ];
-    character.featChoices = { "t20-trained-skill": ["furtividade"] };
+    character.featChoices = { "t20-trained-skill": ["Furtividade"] };
     const base = T20_RULES_ENGINE.deriveStats({ ...character, featIds: [] });
     const derived = T20_RULES_ENGINE.deriveStats(character);
     expect(derived.skillBonuses.atletismo).toBe(base.skillBonuses.atletismo + derived.modifiers.dex - base.modifiers.str + 2);
@@ -1454,6 +1547,7 @@ describe("system rules engines", () => {
     expect(derived.initiative).toBe(base.initiative + 3);
     expect(derived.defense).toBe(base.defense + 1);
     expect(derived.savingThrowBonuses.vontade).toBe(base.savingThrowBonuses.vontade + 5);
+    expect(derived.featEffects).toContain("Perícia: Furtividade");
   });
 
   it("aplica os bônus numéricos dos itens mágicos T20 selecionados", () => {

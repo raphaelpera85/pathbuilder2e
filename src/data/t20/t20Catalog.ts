@@ -79,6 +79,8 @@ export const T20_SORCERER_LINEAGES = [
   { id: "rubra", name: "Rubra", sourcePage: 39, ruleSummary: "Linhagem corrompida pela Tormenta, com poderes ligados à corrupção aberrante." },
 ] as const;
 
+export const T20_DRACONIC_DAMAGE_TYPES = ["ácido", "eletricidade", "fogo", "frio"] as const;
+
 export const T20_SKILLS: T20CatalogEntry[] = ([
   ["acrobacia", "Acrobacia", 115], ["adestramento", "Adestramento", 115], ["atletismo", "Atletismo", 115], ["atuacao", "Atuação", 116],
   ["cavalgar", "Cavalgar", 116], ["conhecimento", "Conhecimento", 116], ["cura", "Cura", 117], ["diplomacia", "Diplomacia", 117],

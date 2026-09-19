@@ -32,7 +32,7 @@ describe("system content coverage contract", () => {
         spells: DND5E_SPELLS,
         feats: DND5E_FEATS,
         skills: getSystemSkillItems("dnd5e"),
-        expected: { races: 9, classes: 12, items: 226, spells: 301, feats: 40, skills: 18 },
+        expected: { races: 9, classes: 12, items: 226, spells: 315, feats: 40, skills: 18 },
       },
     ];
 
