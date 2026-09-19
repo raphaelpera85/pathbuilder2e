@@ -193,6 +193,14 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       const progression = catalog.progressions.find((entry) => entry.classId === character.classId);
       const selectedSubclass = catalog.subclasses.find((entry) => entry.id === character.subclassId);
       const dndSubclassHasMartialProficiency = systemId === "dnd5e" && ["bardo_valor", "clerigo_tempestade"].includes(selectedSubclass?.id || "");
+      const normalizeSkillChoice = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+      const dndSubclassSkillIds = systemId === "dnd5e"
+        ? (selectedSubclass?.choices || [])
+          .filter((choice) => choice.grantsSkillProficiencies && character.level >= (choice.minimumLevel || selectedSubclass?.featureLevel || 1))
+          .flatMap((choice) => character.subclassChoices?.[choice.id] || [])
+          .map((value) => catalog.skills.find((skill) => normalizeSkillChoice(skill.name) === normalizeSkillChoice(value))?.id)
+          .filter((skillId): skillId is string => Boolean(skillId))
+        : [];
       const selectedFeatIds = new Set(character.featIds || []);
       const t20MagicAbilityBonuses: Record<string, number> = systemId === "t20"
         ? {
@@ -437,6 +445,7 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         ...(character.raceSkillChoices || []),
         ...t20SelectedTrainingSkills,
         ...dndSkilledSkillIds,
+        ...dndSubclassSkillIds,
       ]);
       const expertise = new Set(character.skillExpertise || []);
     const armorDisadvantagesStealth = systemId === "dnd5e" && selectedEquipment.some((entry) => entry.category === "armadura" && entry.summary.toLowerCase().includes("desvantagem furtividade") && !(mediumArmorMasterActive && entry.proficiency === "medium_armor"));
@@ -792,6 +801,20 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       const progression = catalog.progressions.find((entry) => entry.classId === character.classId);
       const selectedSubclass = character.subclassId ? catalog.subclasses.find((entry) => entry.id === character.subclassId) : undefined;
       const dndThirdCaster = systemId === "dnd5e" && isDnd5eThirdCasterSubclass(character.subclassId);
+      const normalizeSkillChoice = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+      const dndSubclassSkillIds = systemId === "dnd5e"
+        ? (selectedSubclass?.choices || [])
+          .filter((choice) => choice.grantsSkillProficiencies && character.level >= (choice.minimumLevel || selectedSubclass?.featureLevel || 1))
+          .flatMap((choice) => character.subclassChoices?.[choice.id] || [])
+          .map((value) => catalog.skills.find((skill) => normalizeSkillChoice(skill.name) === normalizeSkillChoice(value))?.id)
+          .filter((skillId): skillId is string => Boolean(skillId))
+        : [];
+      const dndSubclassSpellNames = systemId === "dnd5e"
+        ? new Set((selectedSubclass?.choices || [])
+          .filter((choice) => choice.grantsSpells && character.level >= (choice.minimumLevel || selectedSubclass?.featureLevel || 1))
+          .flatMap((choice) => character.subclassChoices?.[choice.id] || [])
+          .map((value) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()))
+        : new Set<string>();
       const dndSubclassHasMartialProficiency = systemId === "dnd5e" && ["bardo_valor", "clerigo_tempestade"].includes(selectedSubclass?.id || "");
       if (character.subclassId && !selectedSubclass) errors.push("subclasse não pertence ao catálogo do sistema");
       if (selectedSubclass && selectedSubclass.classId !== character.classId) errors.push("subclasse não pertence à classe selecionada");
@@ -991,8 +1014,9 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       for (const ability of raceAbilityChoices) {
         if (ability in effectiveAbilities) effectiveAbilities[ability as keyof typeof effectiveAbilities] += raceChoiceRules?.amount || 0;
       }
-      const trained = new Set([...(character.skillProficiencies || []), ...raceSkillChoices]);
-      const classCountedSkills = new Set([...trained].filter((skill) => !raceSkillChoices.includes(skill)));
+      const grantedSkills = new Set([...raceSkillChoices, ...dndSubclassSkillIds]);
+      const trained = new Set([...(character.skillProficiencies || []), ...grantedSkills]);
+      const classCountedSkills = new Set([...trained].filter((skill) => !grantedSkills.has(skill)));
       const expertise = new Set(character.skillExpertise || []);
       const requiredBackgroundSkills = selectedBackground && ("skillProficiencies" in selectedBackground ? selectedBackground.skillProficiencies : selectedBackground.trainedSkills);
       if (systemId === "dnd5e" && selectedBackground && "toolProficiencies" in selectedBackground && (character.toolProficiencies !== undefined || character.languages !== undefined)) {
@@ -1033,14 +1057,14 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         for (const skill of selectedClass.fixedSkills) if (!trained.has(skill)) errors.push("a perícia obrigatória da classe deve permanecer treinada");
         for (const skill of trained) {
           const isRequired = selectedClass.fixedSkills.includes(skill) || Boolean(requiredBackgroundSkills?.includes(skill));
-          if (!isRequired && !selectedClass.choiceSkills.includes(skill) && !raceSkillChoices.includes(skill)) errors.push("a perícia escolhida não está disponível para a classe");
+          if (!isRequired && !selectedClass.choiceSkills.includes(skill) && !grantedSkills.has(skill)) errors.push("a perícia escolhida não está disponível para a classe");
         }
         const max = new Set([...selectedClass.fixedSkills, ...(requiredBackgroundSkills || [])]).size + selectedClass.choiceSkillCount;
         if (classCountedSkills.size > max) errors.push(`a classe permite no máximo ${max} perícias treinadas nesta etapa`);
       } else if (selectedClass && "skillChoiceCount" in selectedClass) {
         const minimum = new Set(requiredBackgroundSkills || []).size;
         if (!selectedClass.skillChoices.includes("qualquer")) {
-          for (const skill of trained) if (!requiredBackgroundSkills?.includes(skill) && !selectedClass.skillChoices.includes(skill) && !raceSkillChoices.includes(skill)) errors.push("a perícia escolhida não está disponível para a classe");
+          for (const skill of trained) if (!requiredBackgroundSkills?.includes(skill) && !selectedClass.skillChoices.includes(skill) && !grantedSkills.has(skill)) errors.push("a perícia escolhida não está disponível para a classe");
         }
         if (classCountedSkills.size > minimum + selectedClass.skillChoiceCount) errors.push(`a classe permite no máximo ${minimum + selectedClass.skillChoiceCount} perícias de classe além do antecedente`);
       }
@@ -1068,7 +1092,7 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       for (const spellId of character.spellIds || []) {
         const spell = catalog.spells.find((entry) => entry.id === spellId);
         if (!spell) errors.push("magia não pertence ao catálogo do sistema");
-        else if (spell.classIds && !spell.classIds.includes(character.classId) && !dndGrantedSpellIds.has(spellId) && !(dndThirdCaster && spell.classIds.includes("mago")) && !(systemId === "dnd5e" && dndFeatSpellNames.includes(normalizeSpellChoice(spell.name))) && !(systemId === "t20" && character.classId === "paladino" && getCoreFeatQuantity(character, "t20.poder.orar") > 0 && "tradition" in spell && spell.tradition === "divina" && spell.spellLevel === 1)) errors.push("a magia selecionada não pertence à lista da classe");
+        else if (spell.classIds && !spell.classIds.includes(character.classId) && !dndGrantedSpellIds.has(spellId) && !(dndThirdCaster && spell.classIds.includes("mago")) && !(systemId === "dnd5e" && dndFeatSpellNames.includes(normalizeSpellChoice(spell.name))) && !(systemId === "dnd5e" && dndSubclassSpellNames.has(normalizeSpellChoice(spell.name))) && !(systemId === "t20" && character.classId === "paladino" && getCoreFeatQuantity(character, "t20.poder.orar") > 0 && "tradition" in spell && spell.tradition === "divina" && spell.spellLevel === 1)) errors.push("a magia selecionada não pertence à lista da classe");
         else if (t20BardSchools.length > 0 && (!("school" in spell) || !spell.school || !t20BardSchools.includes(spell.school))) errors.push(`a magia ${spell.name} pertence a uma escola que o Bardo não escolheu`);
         else if (systemId === "t20" && spell.spellLevel !== undefined && spell.spellLevel > getT20MaximumSpellLevel(character.classId, character.level, character.classId === "paladino" && getCoreFeatQuantity(character, "t20.poder.orar") > 0)) errors.push(`a magia ${spell.name} exige um círculo de magia maior que o disponível neste nível`);
         else if (spell.spellLevel !== undefined && systemId === "dnd5e" && (dndThirdCaster || (progression && "spellcaster" in progression && progression.spellcaster))) {

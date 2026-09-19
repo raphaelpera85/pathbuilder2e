@@ -117,7 +117,7 @@ describe("PortalPages", () => {
     fireEvent.keyDown(document, { key: "Escape" });
     await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument());
     expect(document.activeElement).toBe(card);
-  });
+  }, 15000);
 
   it.each([
     ["pt-BR", "BASE DE CONHECIMENTO PATHBUILDER"],

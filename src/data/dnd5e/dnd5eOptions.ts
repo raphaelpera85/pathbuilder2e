@@ -39,6 +39,9 @@ export interface Dnd5eSubclassChoice {
   options: string[];
   count: number;
   minimumLevel?: number;
+  grantsSkillProficiencies?: boolean;
+  grantsLanguages?: boolean;
+  grantsSpells?: boolean;
 }
 
 export interface Dnd5eClassChoice {
@@ -179,6 +182,17 @@ const DND5E_SUBCLASS_FEATURES: Record<string, Dnd5eSubclassFeature[]> = {
 };
 
 const DND5E_SUBCLASS_CHOICES: Record<string, Dnd5eSubclassChoice[]> = {
+  bardo_conhecimento: [
+    { id: "lore-bonus-skills", label: "Proficiências bônus do Colégio do Conhecimento", options: ["Acrobacia", "Adestramento", "Arcanismo", "Atletismo", "Atuação", "Enganação", "Furtividade", "História", "Intuição", "Intimidação", "Investigação", "Medicina", "Natureza", "Percepção", "Persuasão", "Prestidigitação", "Religião", "Sobrevivência"], count: 3, minimumLevel: 3, grantsSkillProficiencies: true },
+  ],
+  clerigo_conhecimento: [
+    { id: "knowledge-blessings-skills", label: "Perícias das Bênçãos do Conhecimento", options: ["Arcanismo", "História", "Natureza", "Religião"], count: 2, minimumLevel: 1, grantsSkillProficiencies: true },
+    { id: "knowledge-blessings-languages", label: "Idiomas das Bênçãos do Conhecimento", options: ["Anão", "Celestial", "Dracônico", "Élfico", "Gigante", "Gnômico", "Goblin", "Halfling", "Infernal", "Orc", "Primordial", "Silvestre", "Subcomum"], count: 2, minimumLevel: 1, grantsLanguages: true },
+  ],
+  clerigo_natureza: [
+    { id: "nature-acolyte-skill", label: "Perícia do Acólito da Natureza", options: ["Adestramento", "Natureza", "Sobrevivência"], count: 1, minimumLevel: 1, grantsSkillProficiencies: true },
+    { id: "nature-acolyte-cantrip", label: "Truque do Acólito da Natureza", options: ["Globos de Luz", "Luz"], count: 1, minimumLevel: 1, grantsSpells: true },
+  ],
   barbaro_totem: [
     { id: "totem-spirit", label: "Espírito Totêmico", options: ["Urso", "Águia", "Lobo"], count: 1, minimumLevel: 3 },
     { id: "totem-aspect", label: "Aspecto da Fera", options: ["Urso", "Águia", "Lobo"], count: 1, minimumLevel: 6 },

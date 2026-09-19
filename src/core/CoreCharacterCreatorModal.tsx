@@ -131,6 +131,18 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
           if (next.spellcastingFocusId && !getDnd5eSpellcastingFocusOptions(next.classId, next.subclassId).some((entry) => entry.id === next.spellcastingFocusId)) next.spellcastingFocusId = undefined;
         }
       }
+      if (key === "subclassChoices" && system === "dnd5e") {
+        const nextSubclass = next.subclassId ? catalog.subclasses.find((entry) => entry.id === next.subclassId) : undefined;
+        const activeSpellChoices = (nextSubclass?.choices || []).filter((choice) => choice.grantsSpells && next.level >= (choice.minimumLevel || nextSubclass?.featureLevel || 1));
+        const selectedSpellNames = new Set(activeSpellChoices.flatMap((choice) => next.subclassChoices?.[choice.id] || []).map((value) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()));
+        const declaredSpellNames = new Set(activeSpellChoices.flatMap((choice) => choice.options).map((value) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()));
+        next.spellIds = next.spellIds.filter((spellId) => {
+          const spell = catalog.spells.find((entry) => entry.id === spellId);
+          const normalizedName = spell?.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+          return !normalizedName || !declaredSpellNames.has(normalizedName) || selectedSpellNames.has(normalizedName);
+        });
+        next.spellIds = Array.from(new Set([...next.spellIds, ...catalog.spells.filter((spell) => selectedSpellNames.has(spell.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase())).map((spell) => spell.id)]));
+      }
       if (key === "subraceId") next.subraceChoices = {};
       if (key === "featChoices" && system === "dnd5e") {
         const normalizeSpellChoice = (spellName: string) => spellName.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
@@ -288,7 +300,6 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
       .map((choice) => choice.id === "t20-ladino-specialist"
         ? { ...choice, count: Math.max(1, derivedPreview.modifiers.int || 0) }
         : choice);
-  const availableSpells = getAvailableCoreSpells(system, character.classId, character.level, character);
   const availableFeats = getAvailableCoreFeats(system, character.level, character);
   const availableRaceFeats = raceChoiceGroup ? availableFeats.filter((feat) => {
     const powerGroup = "powerGroup" in feat ? feat.powerGroup : undefined;
@@ -322,12 +333,31 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
     const spell = catalog.spells.find((entry) => entry.id === spellId);
     return spell?.spellLevel !== 0 && !isFeatGrantedSpell(spell?.name || "");
   }).length;
+  const subclassGrantedSpellNames = new Set(system === "dnd5e"
+    ? (selectedSubclass?.choices || [])
+      .filter((choice) => choice.grantsSpells && character.level >= (choice.minimumLevel || selectedSubclass?.featureLevel || 1))
+      .flatMap((choice) => character.subclassChoices?.[choice.id] || [])
+      .map((value) => normalizeSpellName(value))
+    : []);
+  const availableSpells = Array.from(new Map([
+    ...getAvailableCoreSpells(system, character.classId, character.level, character),
+    ...catalog.spells.filter((spell) => subclassGrantedSpellNames.has(normalizeSpellName(spell.name))),
+  ].map((spell) => [spell.id, spell])).values());
   const selectedBackground = catalog.backgrounds.find((entry) => entry.id === character.backgroundId);
   const requiredSkillIds = new Set([
     ...(selectedBackground && "skillProficiencies" in selectedBackground ? selectedBackground.skillProficiencies : selectedBackground?.trainedSkills || []),
     ...(selectedClassRules && "fixedSkills" in selectedClassRules ? selectedClassRules.fixedSkills : []),
   ]);
   const classSkillChoices = selectedClassRules && "fixedSkills" in selectedClassRules ? selectedClassRules.choiceSkills : selectedClassRules?.skillChoices || [];
+  const normalizeSkillChoice = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  const subclassGrantedSkillIds = new Set(system === "dnd5e"
+    ? (selectedSubclass?.choices || [])
+      .filter((choice) => choice.grantsSkillProficiencies && character.level >= (choice.minimumLevel || selectedSubclass?.featureLevel || 1))
+      .flatMap((choice) => character.subclassChoices?.[choice.id] || [])
+      .map((value) => catalog.skills.find((skill) => normalizeSkillChoice(skill.name) === normalizeSkillChoice(value))?.id)
+      .filter((skillId): skillId is string => Boolean(skillId))
+    : []);
+  for (const skillId of subclassGrantedSkillIds) requiredSkillIds.add(skillId);
   const anyClassSkill = classSkillChoices.includes("qualquer");
   const expertiseLimit = system === "dnd5e"
     ? character.classId === "ladino" ? (character.level >= 6 ? 4 : 2)
@@ -656,7 +686,7 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
           <div className="pb-core-skill-grid">
             {catalog.skills.map((skill) => (
               <label key={skill.id} title={skill.ruleSummary}>
-                <input type="checkbox" disabled={!requiredSkillIds.has(skill.id) && !anyClassSkill && !classSkillChoices.includes(skill.id)} checked={character.skillProficiencies.includes(skill.id)} onChange={(event) => {
+                <input type="checkbox" disabled={subclassGrantedSkillIds.has(skill.id) || (!requiredSkillIds.has(skill.id) && !anyClassSkill && !classSkillChoices.includes(skill.id))} checked={subclassGrantedSkillIds.has(skill.id) || character.skillProficiencies.includes(skill.id)} onChange={(event) => {
                   const next = event.target.checked
                     ? [...character.skillProficiencies, skill.id]
                     : character.skillProficiencies.filter((id) => id !== skill.id);

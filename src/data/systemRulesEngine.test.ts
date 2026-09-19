@@ -1359,6 +1359,39 @@ describe("system rules engines", () => {
     expect(T20_RULES_ENGINE.validateCharacter(character)).not.toContain("a classe exige exatamente 1 escolhas de poder de classe neste nível");
   });
 
+  it("valida escolhas adicionais de perícia das subclasses D&D 5e", () => {
+    const character = DND5E_RULES_ENGINE.createDefaultCharacter();
+    character.classId = "bardo";
+    character.level = 3;
+    character.subclassId = "bardo_conhecimento";
+    expect(DND5E_RULES_ENGINE.validateCharacter(character)).toContain("selecione 3 opção(ões) para Proficiências bônus do Colégio do Conhecimento");
+    character.subclassChoices = { "lore-bonus-skills": ["Arcanismo", "História", "Natureza"] };
+    expect(DND5E_RULES_ENGINE.validateCharacter(character)).not.toContain("selecione 3 opção(ões) para Proficiências bônus do Colégio do Conhecimento");
+    const withoutSubclassSkills = DND5E_RULES_ENGINE.deriveStats({ ...character, subclassChoices: {} });
+    const withSubclassSkills = DND5E_RULES_ENGINE.deriveStats(character);
+    expect(withSubclassSkills.skillBonuses.arcanismo).toBe(withoutSubclassSkills.skillBonuses.arcanismo + 2);
+  });
+
+  it("persiste idiomas e truques concedidos por subclasses D&D 5e", () => {
+    const knowledge = DND5E_RULES_ENGINE.createDefaultCharacter();
+    knowledge.classId = "clerigo";
+    knowledge.level = 1;
+    knowledge.subclassId = "clerigo_conhecimento";
+    knowledge.subclassChoices = {
+      "knowledge-blessings-skills": ["Arcanismo", "História"],
+      "knowledge-blessings-languages": ["Celestial", "Dracônico"],
+    };
+    expect(DND5E_RULES_ENGINE.validateCharacter(knowledge)).not.toContain("a escolha Idiomas das Bênçãos do Conhecimento");
+
+    const nature = DND5E_RULES_ENGINE.createDefaultCharacter();
+    nature.classId = "clerigo";
+    nature.level = 1;
+    nature.subclassId = "clerigo_natureza";
+    nature.subclassChoices = { "nature-acolyte-skill": ["Natureza"], "nature-acolyte-cantrip": ["Globos de Luz"] };
+    nature.spellIds = ["dnd5e.magia.globos_de_luz"];
+    expect(DND5E_RULES_ENGINE.validateCharacter(nature)).not.toContain("a magia selecionada não pertence à lista da classe");
+  });
+
   it("aplica Aumento de Atributo T20 aos modificadores derivados", () => {
     const character = T20_RULES_ENGINE.createDefaultCharacter();
     character.abilities = { str: 11, dex: 11, con: 10, int: 10, wis: 10, cha: 10 };
