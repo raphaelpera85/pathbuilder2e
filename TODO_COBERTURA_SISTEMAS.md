@@ -37,7 +37,7 @@ Evidência atual: `src/data/system-content-coverage.test.ts`, `src/data/systemRu
 - [x] Usar engines específicos para criação e derivação de T20/D&D e editor/engine próprio de OSE.
 - [x] Registrar fonte/livro/página nos catálogos principais.
 - [x] Criar testes de isolamento de catálogo e ruleset.
-- [ ] Criar um relatório automático único que compare, por sistema, contagem local, contagem Supabase, entradas sem fonte, entradas sem resumo e entradas sem mecanismo.
+- [x] Criar um relatório automático único que compare, por sistema, contagem local, entradas sem fonte, entradas sem resumo e entradas sem mecanismo; `audit:system:coverage` agora falha em contagens/isolamento e lista a cobertura de metadados e escolhas estruturadas.
 - [ ] Adicionar uma versão de catálogo/ruleset ao payload exportado para impedir que uma ficha seja aberta com regras incompatíveis.
 - [ ] Definir política explícita de suplementos: cada livro novo deve entrar como pacote/versionamento próprio, nunca misturado silenciosamente ao núcleo.
 - [ ] Resolver no painel do Supabase a proteção contra senhas vazadas apontada pelo advisor de segurança.
@@ -50,6 +50,7 @@ Evidência atual: `src/data/system-content-coverage.test.ts`, `src/data/systemRu
 - [x] Escolha de sistema/ruleset antes de abrir o construtor.
 - [x] Fluxo de edição para personagens existentes.
 - [x] Reabertura no construtor correto por `system_id`/`ruleset`.
+- [x] Normalização localizada de rulesets sem colisão entre OSE Classic e Legacy/PF2e.
 - [x] Validação antes de salvar/concluir.
 - [x] PDF associado ao sistema.
 - [ ] Importar personagem externo com relatório de conversão, sem fingir compatibilidade automática.
@@ -77,6 +78,8 @@ Evidência atual: `src/data/system-content-coverage.test.ts`, `src/data/systemRu
 - [x] Vantagem/desvantagem com anulação quando as duas condições coexistem.
 - [x] Escolhas de talentos, estilo de luta, metamagia, pacto, domínios e círculos da Terra estruturadas.
 - [x] Modos editáveis de Ataque Poderoso e Fúria, com derivação e PDF.
+- [x] Ataque Descuidado do Bárbaro agora é um modo editável a partir do 2º nível: concede vantagem aos ataques corpo a corpo com Força, anula uma desvantagem global conforme a regra de D&D 5e e é registrado no PDF.
+- [x] Patrulheiro agora possui escolhas estruturadas de Inimigo Favorecido e Terreno Favorecido no 1º, 6º e 10º níveis, com efeitos derivados, validação por nível, edição e sincronização no Supabase.
 - [ ] Completar todas as escolhas de classe por nível que ainda estão apenas resumidas.
 - [ ] Completar efeitos operacionais de todas as subclasses, talentos e traços raciais restantes.
 - [ ] Auditar a lista de magias por classe/subclasse/nível contra o Livro do Jogador e registrar exceções.
@@ -90,6 +93,7 @@ Evidência atual: `src/data/system-content-coverage.test.ts`, `src/data/systemRu
 - [x] Progressão de ataque, salvamentos, THAC0/CA, movimento, carga e slots de magia.
 - [x] Classes avançadas, tabelas percentuais de Ladrão/Acrobata e perícias secundárias opcionais.
 - [x] Exportação para PDF editável de uma página.
+- [x] O construtor agora exibe, no passo de seleção da classe, a progressão do nível atual (dado de vida, THAC0, AAC, salvamentos, espaços de magia) e as habilidades catalogadas da classe.
 - [ ] Auditar, por classe, todas as habilidades especiais e tabelas de progressão do Tomo do Jogador.
 - [ ] Exibir no construtor requisitos principais, modificadores de XP, reações, retentores e lealdade.
 - [ ] Completar itens de aventura, montarias, especialistas, retentores e suas regras de uso no editor.
@@ -101,6 +105,7 @@ Evidência atual: `src/data/system-content-coverage.test.ts`, `src/data/systemRu
 - [x] Separar classes raciais do ruleset Advanced.
 - [x] Manter catálogo de magias/equipamentos/actions separado pelo ruleset.
 - [x] Registrar que não há talentos modernos nem vantagem/desvantagem nativa.
+- [x] O construtor Classic mantém a lista de classes raciais e exibe a progressão correspondente ao nível selecionado sem importar classes Advanced.
 - [ ] Confirmar contra a fonte a lista completa de classes raciais, níveis máximos e requisitos.
 - [ ] Exibir a tabela de habilidades e progressão específica de cada classe racial.
 - [ ] Completar fluxo de idiomas, ocupação/perícia secundária opcional, ouro, carga e magias.
@@ -229,7 +234,7 @@ Para cada linha abaixo, executar o checklist em cada sistema/ruleset que a possu
 - [x] Testes unitários de engines, catálogos, OSE, PDFs e isolamento existentes.
 - [x] Auditorias locais de acessibilidade, responsividade, interação, contraste e uso de personagem executadas em parte do núcleo.
 - [ ] Criar `audit:system:coverage` com relatório por sistema e categoria, falhando quando uma categoria marcada como implementada não possui teste/evidência.
-- [ ] Criar fixtures mínimas para todas as classes e todas as raças de T20, D&D 5e e OSE.
+- [x] Criar fixtures estruturais para todas as classes e todas as raças de T20, D&D 5e e OSE; o teste verifica correspondência de fonte, regras de criação, progressão de 1º nível, traços e idiomas.
 - [ ] Criar fixtures de níveis de fronteira: 1, primeiro recurso, primeiro espaço, primeiro aumento, nível máximo e nível racial máximo.
 - [ ] Rodar matriz de criação/edição/exportação em todos os rulesets, não apenas em amostras.
 - [ ] Adicionar testes negativos para catálogo cruzado, escolha inválida, pré-requisito ausente, duplicidade e ruleset incompatível.
@@ -252,6 +257,7 @@ npm test -- --run
 npm run build
 npm run audit:catalog
 npm run audit:catalog:supabase
+npm run audit:system:coverage
 npm run audit:core:supabase
 npm run audit:core:skills:supabase
 npm run audit:core:actions:supabase

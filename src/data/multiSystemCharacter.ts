@@ -148,6 +148,8 @@ export interface MultiSystemCharacter {
   dndPowerAttack?: boolean;
   /** Ativa a Fúria do Bárbaro D&D 5e durante a cena atual. */
   dndRageActive?: boolean;
+  /** Ativa Ataque Descuidado do Bárbaro D&D 5e no primeiro ataque corpo a corpo com Força. */
+  dndRecklessAttackActive?: boolean;
 }
 
 function cloneChoiceMap(values?: Record<string, string[]>): Record<string, string[]> | undefined {
@@ -187,6 +189,7 @@ export function cloneCoreCharacter(character: MultiSystemCharacter): MultiSystem
     coins: character.coins ? { ...character.coins } : undefined,
     dndPowerAttack: character.dndPowerAttack,
     dndRageActive: character.dndRageActive,
+    dndRecklessAttackActive: character.dndRecklessAttackActive,
   };
 }
 
@@ -585,5 +588,6 @@ export function createInitialCoreCharacter(system: SupportedCoreSystem): MultiSy
     d20Mode: "normal",
     dndPowerAttack: false,
     dndRageActive: false,
+    dndRecklessAttackActive: false,
   };
 }

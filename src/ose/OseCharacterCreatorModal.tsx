@@ -224,6 +224,7 @@ export function OseCharacterCreatorModal({
     selectedClass.progression[selectedClass.progression.length - 1]?.level || 1,
     selectedRace.maxClassLevels[selectedClass.id] ?? 1,
   );
+  const currentProgression = selectedClass.progression.find((entry) => entry.level === characterLevel) || selectedClass.progression[0];
 
   useEffect(() => {
     setCharacterLevel((current) => Math.min(Math.max(1, current), maxClassLevel));
@@ -686,6 +687,20 @@ export function OseCharacterCreatorModal({
                     <span>⚔️ Armas: {selectedClass.allowedWeaponsDesc}</span>
                     <span>⭐ Requisito Principal: {selectedClass.primeRequisites.map((r) => r.toUpperCase()).join(", ")}</span>
                   </div>
+                  {currentProgression && <div className="ose-class-progression-preview" aria-label="Progressão da classe no nível selecionado">
+                    <strong>Progressão no nível {characterLevel}</strong>
+                    <div className="ose-class-progression-grid">
+                      <span><small>Dado/PV</small>{currentProgression.hd}</span>
+                      <span><small>THAC0</small>{currentProgression.thac0}</span>
+                      <span><small>AAC</small>+{currentProgression.aacBonus}</span>
+                      <span><small>Salvamentos</small>{Object.values(currentProgression.saves).join(" · ")}</span>
+                      {currentProgression.spells && <span><small>Espaços</small>{currentProgression.spells.map((slots, index) => `${index + 1}º: ${slots}`).join(" · ")}</span>}
+                    </div>
+                  </div>}
+                  {selectedClass.features.length > 0 && <details className="ose-class-features-preview">
+                    <summary>Habilidades da classe ({selectedClass.features.length})</summary>
+                    <ul>{selectedClass.features.map((feature) => <li key={feature}>{feature}</li>)}</ul>
+                  </details>}
                   {validationMessage && <p role="alert" style={{ color: "#fca5a5", margin: "10px 0 0", fontWeight: 700 }}>{validationMessage}</p>}
                 </div>
               </div>

@@ -161,6 +161,10 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
             <span>Fúria<small>+2/+3/+4 dano corpo a corpo com Força e resistência física</small></span>
             <input type="checkbox" checked={Boolean(draft.dndRageActive)} onChange={(event) => setDraft({ ...draft, dndRageActive: event.target.checked })} />
           </label>}
+          {system === "dnd5e" && draft.classId === "barbaro" && draft.level >= 2 && <label className="pb-core-toggle-field">
+            <span>Ataque Descuidado<small>Vantagem no ataque corpo a corpo com Força</small></span>
+            <input type="checkbox" checked={Boolean(draft.dndRecklessAttackActive)} onChange={(event) => setDraft({ ...draft, dndRecklessAttackActive: event.target.checked })} />
+          </label>}
           <label>{system === "t20" ? "Origem" : "Antecedente"}
             <select value={draft.backgroundId || ""} onChange={(event) => updateBackground(event.target.value)}>
               {catalog.backgrounds.map((entry) => <option key={entry.id} value={entry.id}>{entry.name}</option>)}

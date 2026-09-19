@@ -157,6 +157,59 @@
   font-size: 0.7rem;
 }
 
+.ose-class-progression-preview {
+  margin-top: 12px;
+  padding: 10px;
+  border: 1px solid var(--ose-border);
+  border-radius: 6px;
+  background: rgba(245, 158, 11, 0.06);
+}
+
+.ose-class-progression-preview > strong {
+  color: var(--ose-gold);
+  font-size: 0.78rem;
+}
+
+.ose-class-progression-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  margin-top: 8px;
+  color: var(--ose-text);
+  font-size: 0.78rem;
+}
+
+.ose-class-progression-grid span {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ose-class-progression-grid small {
+  color: var(--ose-text-muted);
+  font-size: 0.64rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.ose-class-features-preview {
+  margin-top: 10px;
+  color: var(--ose-text-muted);
+  font-size: 0.78rem;
+}
+
+.ose-class-features-preview summary {
+  cursor: pointer;
+  color: var(--ose-gold);
+  font-weight: 700;
+}
+
+.ose-class-features-preview ul {
+  margin: 6px 0 0;
+  padding-left: 20px;
+  line-height: 1.45;
+}
+
 .ose-wizard-body {
   padding: 24px;
   overflow-y: auto;

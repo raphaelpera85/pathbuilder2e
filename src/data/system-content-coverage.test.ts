@@ -7,6 +7,10 @@ import { OSE_CLASSES } from "./ose/oseClasses";
 import { OSE_RACES } from "./ose/oseRaces";
 import { OSE_SPELLS } from "./ose/oseSpells";
 import { OSE_ARMORS, OSE_GEAR, OSE_WEAPONS } from "./ose/oseEquipment";
+import { T20_CLASS_RULES } from "./t20/t20Classes";
+import { T20_RACE_RULES } from "./t20/t20Races";
+import { DND5E_CLASS_RULES } from "./dnd5e/dnd5eClasses";
+import { DND5E_RACE_RULES } from "./dnd5e/dnd5eRaces";
 import { getSystemSkillItems } from "./systemSkills";
 import { getSystemRuleItems } from "./systemRulesCatalog";
 import { getSystemActionItems } from "./systemActions";
@@ -63,5 +67,14 @@ describe("system content coverage contract", () => {
     expect(getSystemRuleItems("ose").some((item) => item.data.ruleKind === "creation")).toBe(true);
     expect(getSystemActionItems("ose").length).toBeGreaterThan(0);
     expect(getSystemRuleItems("ose").some((item) => item.data.ruleKind === "advantage")).toBe(false);
+  });
+
+  it("mantém fixtures de criação para cada classe e raça dos sistemas core", () => {
+    expect(T20_CLASSES.every((entry) => T20_CLASS_RULES.some((rule) => rule.id === entry.id && rule.sourcePage === entry.sourcePage))).toBe(true);
+    expect(T20_RACES.every((entry) => T20_RACE_RULES.some((rule) => rule.id === entry.id && rule.sourcePage === entry.sourcePage))).toBe(true);
+    expect(DND5E_CLASSES.every((entry) => DND5E_CLASS_RULES.some((rule) => rule.id === entry.id && rule.sourcePage === entry.sourcePage))).toBe(true);
+    expect(DND5E_RACES.every((entry) => DND5E_RACE_RULES.some((rule) => rule.id === entry.id && rule.sourcePage === entry.sourcePage))).toBe(true);
+    expect(Object.values(OSE_CLASSES).every((entry) => entry.sourcePage === 28 && entry.progression.some((level) => level.level === 1) && entry.features.length > 0)).toBe(true);
+    expect(Object.values(OSE_RACES).every((entry) => entry.sourcePage === 78 && entry.traits.length > 0 && entry.nativeLanguages.length > 0)).toBe(true);
   });
 });

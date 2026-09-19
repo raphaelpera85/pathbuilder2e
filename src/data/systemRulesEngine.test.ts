@@ -200,6 +200,21 @@ describe("system rules engines", () => {
     expect(DND5E_RULES_ENGINE.deriveStats(barbarian).attacks.find((attack) => attack.name === "Machado grande")?.damage).toContain("+ 4");
   });
 
+  it("aplica Ataque Descuidado apenas a ataques corpo a corpo com Força", () => {
+    const barbarian = DND5E_RULES_ENGINE.createDefaultCharacter();
+    barbarian.classId = "barbaro";
+    barbarian.level = 2;
+    barbarian.equipmentIds = ["dnd5e.arma.machado_grande", "dnd5e.arma.arco_longo"];
+    barbarian.dndRecklessAttackActive = true;
+    const derived = DND5E_RULES_ENGINE.deriveStats(barbarian);
+    expect(derived.attacks.find((attack) => attack.name === "Machado grande")?.rollMode).toBe("advantage");
+    expect(derived.attacks.find((attack) => attack.name === "Arco longo")?.rollMode).toBeUndefined();
+    barbarian.d20Mode = "disadvantage";
+    expect(DND5E_RULES_ENGINE.deriveStats(barbarian).attacks.find((attack) => attack.name === "Machado grande")?.rollMode).toBeUndefined();
+    barbarian.level = 1;
+    expect(DND5E_RULES_ENGINE.validateCharacter({ ...barbarian, dndRecklessAttackActive: true })).toContain("Ataque Descuidado exige o 2º nível de Bárbaro");
+  });
+
   it("respeita o limite de duas escolhas de Poder Mágico", () => {
     const arcanista = T20_RULES_ENGINE.createDefaultCharacter();
     arcanista.level = 3;
@@ -490,6 +505,29 @@ describe("system rules engines", () => {
     warlock.level = 3;
     warlock.classChoices = { "warlock-pact-boon": ["Pacto da Lâmina"] };
     expect(DND5E_RULES_ENGINE.deriveStats(warlock).classChoiceEffects).toEqual(["Dádiva do Pacto: Pacto da Lâmina"]);
+  });
+
+  it("aplica as escolhas estruturadas de Inimigo e Terreno Favorecidos do Patrulheiro", () => {
+    const ranger = DND5E_RULES_ENGINE.createDefaultCharacter();
+    ranger.classId = "patrulheiro";
+    ranger.level = 10;
+    ranger.classChoices = {
+      "ranger-favored-enemy": ["Dragões"],
+      "ranger-favored-enemy-6": ["Mortos-vivos"],
+      "ranger-favored-terrain": ["Floresta"],
+      "ranger-favored-terrain-6": ["Montanha"],
+      "ranger-favored-terrain-10": ["Subterrâneo"],
+    };
+    expect(DND5E_RULES_ENGINE.deriveStats(ranger).classChoiceEffects).toEqual([
+      "Inimigo Favorecido (1º nível): Dragões · idioma associado deve ser registrado na ficha",
+      "Inimigo Favorecido adicional (6º nível): Mortos-vivos · idioma associado deve ser registrado na ficha",
+      "Terreno Favorecido (1º nível): Floresta",
+      "Terreno Favorecido adicional (6º nível): Montanha",
+      "Terreno Favorecido adicional (10º nível): Subterrâneo",
+    ]);
+
+    const lowLevel = { ...ranger, level: 5, classChoices: { "ranger-favored-enemy": ["Dragões"], "ranger-favored-terrain": ["Floresta"], "ranger-favored-enemy-6": ["Mortos-vivos"] } };
+    expect(DND5E_RULES_ENGINE.validateCharacter(lowLevel)).toContain("a escolha da classe não pertence ao nível ou classe selecionada");
   });
 
   it("deriva os efeitos numéricos de Resiliência Dracônica e Crítico do Campeão", () => {

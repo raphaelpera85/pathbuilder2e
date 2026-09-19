@@ -9,6 +9,8 @@ export interface OseRace {
   id: string;
   name: string;
   nameEn: string;
+  sourceBook?: string;
+  sourcePage?: number;
   description: string;
   minRequirements: Partial<Record<OseAbilityName, number>>;
   statModifiers: Partial<Record<OseAbilityName, number>>;
@@ -251,3 +253,8 @@ export const OSE_RACES: Record<string, OseRace> = {
     },
   },
 };
+
+for (const oseRace of Object.values(OSE_RACES)) {
+  oseRace.sourceBook = "Old-School Essentials — Tomo do Jogador";
+  oseRace.sourcePage = 78;
+}

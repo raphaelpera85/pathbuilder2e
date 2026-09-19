@@ -307,6 +307,7 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       const dndPowerAttackActive = systemId === "dnd5e" && Boolean(character.dndPowerAttack) && dndPowerAttackFeat;
       const dndRageActive = systemId === "dnd5e" && character.classId === "barbaro" && Boolean(character.dndRageActive);
       const dndRageDamageBonus = dndRageActive ? character.level >= 16 ? 4 : character.level >= 9 ? 3 : 2 : 0;
+      const dndRecklessAttackActive = systemId === "dnd5e" && character.classId === "barbaro" && character.level >= 2 && Boolean(character.dndRecklessAttackActive);
       if (hasFeat("dnd5e.talento.alerta")) featEffects.push("Alerta: +5 na iniciativa e você não pode ser surpreendido enquanto consciente");
       if (hasFeat("dnd5e.talento.resistente")) featEffects.push(`Resistente: +${featHpBonus} PV máximos pelo nível`);
       if (hasFeat("dnd5e.talento.resiliente")) featEffects.push("Resiliente: proficiência no teste de resistência escolhido");
@@ -315,6 +316,7 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       if (hasFeat("dnd5e.talento.sentinela")) featEffects.push("Sentinela: ataques de oportunidade reduzem o deslocamento a 0 e ignoram Desengajar");
       if (dndPowerAttackFeat) featEffects.push(`Ataque Poderoso: ${dndPowerAttackActive ? "ativo (-5 no ataque, +10 no dano quando aplicável)" : "disponível para ativação no modo de combate"}`);
       if (character.classId === "barbaro" && systemId === "dnd5e") featEffects.push(`Fúria: ${dndRageActive ? `ativa (+${dndRageDamageBonus} dano corpo a corpo com Força; resistência a dano contundente, perfurante e cortante)` : "disponível para ativação no modo de combate"}`);
+      if (character.classId === "barbaro" && systemId === "dnd5e" && character.level >= 2) featEffects.push(`Ataque Descuidado: ${dndRecklessAttackActive ? "ativo (vantagem no primeiro ataque corpo a corpo com Força; ataques contra você têm vantagem até seu próximo turno)" : "disponível a partir do 2º nível"}`);
       const con = modifiers.con || 0;
       const dex = modifiers.dex || 0;
       const cha = modifiers.cha || 0;
@@ -636,13 +638,17 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
           : weapon.weaponProperties?.includes("acuidade") || rangedWeapon;
         const dndMagicWeaponBonus = systemId === "dnd5e" && ["dnd5e.item_magico.arma_um", "dnd5e.item_magico.adaga_envenenamento"].includes(weapon.id) && hasAttunedEquipment(weapon.id) ? 1 : 0;
         const dndRageEligible = dndRageActive && !rangedWeapon && attackAbility === "str";
+        const dndRecklessEligible = dndRecklessAttackActive && !rangedWeapon && attackAbility === "str";
+        const attackRollMode: D20RollMode = dndRecklessEligible
+          ? globalD20RollMode === "disadvantage" ? "normal" : "advantage"
+          : globalD20RollMode;
         const finalDamageBonuses = [damageBonuses, dndMagicWeaponBonus ? "+ 1" : ""].filter(Boolean).join(" ");
         return {
           name: weapon.name,
           bonus: (modifiers[attackAbility] || 0) + (proficient ? proficiencyBonus(systemId, character.level) : 0) + dndMagicWeaponBonus + (t20ArmasDaAmbicaoActive && proficient ? 1 : 0) + (fightingStyle === "Arquearia" && rangedWeapon ? 2 : 0) + (powerfulAttackActive ? -2 : 0) + (powerAttackEligible ? -5 : 0) + (t20OneWeaponStyleActive ? 2 : 0) + (t20WeaponFocus === weapon.name ? 2 : 0) + (t20DualWeaponAttack ? -2 : 0),
           damage: `${t20LutadorUnarmedDamage || (unarmedStyleActive ? "1d6 impacto" : weapon.damage || weapon.summary)}${finalDamageBonuses || powerAttackEligible || dndRageEligible ? ` ${[finalDamageBonuses, powerAttackEligible ? "+ 10" : "", dndRageEligible ? `+ ${dndRageDamageBonus}` : ""].filter(Boolean).join(" ")}` : ""}`,
           proficient,
-          ...(globalD20RollMode !== "normal" ? { rollMode: globalD20RollMode } : {}),
+          ...(attackRollMode !== "normal" ? { rollMode: attackRollMode } : {}),
           ...(attacksPerAction > 1 ? { attacksPerAction } : {}),
           ...(sneakAttackDice && sneakAttackEligible ? { conditionalDamage: `+${sneakAttackDice} de Ataque Furtivo (1 vez por turno)` } : {}),
           ...(finalCritical ? { critical: finalCritical } : {}),
@@ -796,6 +802,17 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         if (metamagic.length) classChoiceEffects.push(`Metamagia: ${metamagic.join(", ")} · usa Pontos de Feitiçaria`);
         const pactBoon = character.classChoices?.["warlock-pact-boon"]?.[0];
         if (pactBoon) classChoiceEffects.push(`Dádiva do Pacto: ${pactBoon}`);
+        const rangerChoice = (id: string) => character.classChoices?.[id]?.[0];
+        const favoredEnemy = rangerChoice("ranger-favored-enemy");
+        const favoredEnemy6 = rangerChoice("ranger-favored-enemy-6");
+        const favoredTerrain = rangerChoice("ranger-favored-terrain");
+        const favoredTerrain6 = rangerChoice("ranger-favored-terrain-6");
+        const favoredTerrain10 = rangerChoice("ranger-favored-terrain-10");
+        if (favoredEnemy) classChoiceEffects.push(`Inimigo Favorecido (1º nível): ${favoredEnemy} · idioma associado deve ser registrado na ficha`);
+        if (favoredEnemy6) classChoiceEffects.push(`Inimigo Favorecido adicional (6º nível): ${favoredEnemy6} · idioma associado deve ser registrado na ficha`);
+        if (favoredTerrain) classChoiceEffects.push(`Terreno Favorecido (1º nível): ${favoredTerrain}`);
+        if (favoredTerrain6) classChoiceEffects.push(`Terreno Favorecido adicional (6º nível): ${favoredTerrain6}`);
+        if (favoredTerrain10) classChoiceEffects.push(`Terreno Favorecido adicional (10º nível): ${favoredTerrain10}`);
       } else if (systemId === "t20") {
         const t20Choice = (id: string) => character.classChoices?.[id] || [];
         const bardSchools = t20Choice("t20-bardo-schools");
@@ -869,6 +886,9 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       if (character.dndPowerAttack && systemId === "dnd5e" && !hasDndPowerAttackFeat) errors.push("Ataque Poderoso exige Mestre de Armas Pesadas");
       if (character.dndRageActive && systemId !== "dnd5e") errors.push("Fúria é uma opção exclusiva de D&D 5e");
       if (character.dndRageActive && systemId === "dnd5e" && character.classId !== "barbaro") errors.push("Fúria exige a classe Bárbaro");
+      if (character.dndRecklessAttackActive && systemId !== "dnd5e") errors.push("Ataque Descuidado é uma opção exclusiva de D&D 5e");
+      if (character.dndRecklessAttackActive && systemId === "dnd5e" && character.classId !== "barbaro") errors.push("Ataque Descuidado exige a classe Bárbaro");
+      if (character.dndRecklessAttackActive && systemId === "dnd5e" && character.level < 2) errors.push("Ataque Descuidado exige o 2º nível de Bárbaro");
       if (!catalog.races.some((entry) => entry.id === character.raceId)) errors.push("raça não pertence ao catálogo do sistema");
       const selectedSubrace = character.subraceId ? catalog.subraces.find((entry) => entry.id === character.subraceId) : undefined;
       if (character.subraceId && !selectedSubrace) errors.push("sub-raça não pertence ao catálogo do sistema");

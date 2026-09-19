@@ -30,6 +30,7 @@ describe("character editor routing", () => {
     ["t20", "padrao"],
     ["dnd5e", "standard"],
     ["ose", "advanced"],
+    ["ose", "classic"],
   ])("hydrates %s with row metadata before opening its editor", (systemId, ruleset) => {
     const hydrated = hydrateCharacterForEditor(systemId, ruleset, {
       id: "character-1",

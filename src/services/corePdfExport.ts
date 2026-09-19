@@ -39,6 +39,7 @@ function listFeatNames(character: MultiSystemCharacter, catalog: ReturnType<type
   const combatMode = [
     character.system_id === "dnd5e" && character.dndPowerAttack ? "Ataque Poderoso ativo (-5 ataque/+10 dano em arma pesada)" : "",
     character.system_id === "dnd5e" && character.dndRageActive ? "Fúria ativa (+dano e resistência física)" : "",
+    character.system_id === "dnd5e" && character.dndRecklessAttackActive ? "Ataque Descuidado ativo (vantagem corpo a corpo)" : "",
   ].filter(Boolean).join(" · ");
   const choiceCatalog = character.system_id === "dnd5e" ? DND5E_FEAT_CHOICES : T20_POWER_CHOICES;
   const choices = (character.featIds || []).flatMap((featId) => (choiceCatalog[featId] || []).map((choice) => {

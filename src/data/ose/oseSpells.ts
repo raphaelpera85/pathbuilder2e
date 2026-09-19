@@ -9,6 +9,8 @@ export interface OseSpell {
   id: string;
   name: string;
   nameEn: string;
+  sourceBook?: string;
+  sourcePage?: number;
   className: OseSpellClass;
   circle: number; // 1 a 6
   range: string;
@@ -410,3 +412,8 @@ export const OSE_SPELLS: OseSpell[] = [
     description: "Ergue uma densa névoa opaca que bloqueia a visão e a pontaria de projéteis e criaturas.",
   },
 ];
+
+for (const spell of OSE_SPELLS) {
+  spell.sourceBook = "Old-School Essentials — Tomo do Jogador";
+  spell.sourcePage = 128;
+}

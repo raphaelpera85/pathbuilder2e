@@ -7,6 +7,8 @@ export interface OseWeapon {
   id: string;
   name: string;
   nameEn: string;
+  sourceBook?: string;
+  sourcePage?: number;
   costGp: number;
   weightCoins: number;
   damage: string;
@@ -23,6 +25,8 @@ export interface OseArmor {
   id: string;
   name: string;
   nameEn: string;
+  sourceBook?: string;
+  sourcePage?: number;
   costGp: number;
   weightCoins: number;
   dac: number; // Descending Armor Class (Base 9 sem armadura)
@@ -34,6 +38,8 @@ export interface OseGearItem {
   id: string;
   name: string;
   nameEn: string;
+  sourceBook?: string;
+  sourcePage?: number;
   costGp: number;
   weightCoins: number;
   description: string;
@@ -100,6 +106,11 @@ export const OSE_GEAR: OseGearItem[] = [
   { id: "carruagem_quatro_rodas", name: "Carruagem de Quatro Rodas", nameEn: "Wagon", costGp: 200, weightCoins: 0, description: "Puxada por 2 a 4 cavalos de tração; suporta até 15.000 moedas de carga." },
   { id: "barco_pequeno", name: "Barco a Remo", nameEn: "Rowboat", costGp: 50, weightCoins: 0, description: "Comporta até 4 pessoas ou 2.000 moedas de carga em rios e lagos." },
 ];
+
+for (const item of [...OSE_WEAPONS, ...OSE_ARMORS, ...OSE_GEAR]) {
+  item.sourceBook = "Old-School Essentials — Tomo do Jogador";
+  item.sourcePage = 94;
+}
 
 export interface OseBeastItem {
   id: string;

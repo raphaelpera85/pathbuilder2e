@@ -265,6 +265,7 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
       }
       if (key === "classId" || key === "backgroundId" || key === "raceId") {
         if (system !== "dnd5e" || next.classId !== "barbaro") next.dndRageActive = false;
+        if (system !== "dnd5e" || next.classId !== "barbaro") next.dndRecklessAttackActive = false;
         const classRules = catalog.classRules.find((entry) => entry.id === next.classId);
         const background = catalog.backgrounds.find((entry) => entry.id === next.backgroundId);
         const backgroundSkills = background && ("skillProficiencies" in background ? background.skillProficiencies : background.trainedSkills);
@@ -533,6 +534,10 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
           {system === "dnd5e" && character.classId === "barbaro" && <label className="pb-core-toggle-field">
             <span>Fúria<small>+2/+3/+4 dano corpo a corpo com Força e resistência física</small></span>
             <input type="checkbox" checked={Boolean(character.dndRageActive)} onChange={(event) => update("dndRageActive", event.target.checked)} />
+          </label>}
+          {system === "dnd5e" && character.classId === "barbaro" && character.level >= 2 && <label className="pb-core-toggle-field">
+            <span>Ataque Descuidado<small>Vantagem no ataque corpo a corpo com Força</small></span>
+            <input type="checkbox" checked={Boolean(character.dndRecklessAttackActive)} onChange={(event) => update("dndRecklessAttackActive", event.target.checked)} />
           </label>}
         </div>
 

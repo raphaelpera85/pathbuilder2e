@@ -8,6 +8,8 @@ describe("character ruleset normalization", () => {
     expect(normalizeCharacterRuleset("jogo_do_ano")).toBe("jogo_do_ano");
     expect(normalizeCharacterRuleset("advanced")).toBe("advanced");
     expect(normalizeCharacterRuleset("classic")).toBe("classic");
+    expect(normalizeCharacterRuleset("OSE Classic Fantasy")).toBe("classic");
+    expect(normalizeCharacterRuleset("OSE clássico")).toBe("classic");
+    expect(normalizeCharacterRuleset("pré-Remaster")).toBe("legacy");
   });
 });
-

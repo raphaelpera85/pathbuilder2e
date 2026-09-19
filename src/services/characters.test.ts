@@ -155,6 +155,7 @@ describe("character cloud contract", () => {
     ["t20", "padrao", "jovem-aventureira-t20", "Tormenta", "t20.raca.humana", "t20.classe.lutador", "t20.origem.artista", ["t20.arma.adaga"], ["t20.magia.curar-ferimentos"]],
     ["dnd5e", "standard", "jovem-aventureira-dnd", "Faerûn", "dnd5e.raca.humana", "dnd5e.classe.guerreiro", "dnd5e.antecedente.heroi-do-povo", ["dnd5e.arma.adaga"], ["dnd5e.magia.curar-ferimentos"]],
     ["ose", "advanced", "aventureiro-ose", "Masmorra", "ose.raca.humano", "ose.classe.guerreiro", "ose.background.explorador", ["ose.weapon.adaga", "ose.armor.couro"], ["ose.spell.mago_luz"]],
+    ["ose", "classic", "aventureiro-ose-classic", "Karameikos", "ose.race.anao", "ose.class.anao_bx", "ose.background.explorador", ["ose.weapon.machado_batalha", "ose.armor.couro"], ["ose.spell.mago_luz"]],
   ])("faz round-trip de criação, salvamento e recarregamento preservando o sistema %s", async (systemId, ruleset, id, name, raceId, classId, backgroundId, equipmentIds, spellIds) => {
     const user = { id: `user-roundtrip-${systemId}` } as never;
     const character = {

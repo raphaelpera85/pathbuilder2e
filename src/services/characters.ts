@@ -115,14 +115,15 @@ const CHARACTER_RULESETS_BY_SYSTEM: Record<string, readonly CharacterRuleset[]> 
 /** Normaliza valores antigos/localizados antes de enviá-los ao check do banco. */
 export function normalizeCharacterRuleset(value: unknown): CharacterRuleset {
   const raw = String(value ?? "").trim().toLocaleLowerCase();
+  if (raw === "legacy" || raw.includes("legado") || raw.includes("pré-remaster") || raw.includes("pre-remaster")) return "legacy";
+  if (raw === "classic" || (raw.includes("ose") && (raw.includes("clássico") || raw.includes("classico") || raw.includes("classic")))) return "classic";
+  if (raw.includes("clássico") || raw.includes("classico")) return "legacy";
   if (raw === "remaster" || raw.includes("remaster")) return "remaster";
-  if (raw === "legacy" || raw.includes("legado") || raw.includes("pré-remaster") || raw.includes("pre-remaster") || raw.includes("clássico") || raw.includes("classico")) return "legacy";
   if (raw === "standard" || raw === "2014" || raw.includes("5e clássico") || raw.includes("5e classico")) return "standard";
   if (raw === "2024") return "2024";
   if (raw === "padrao" || raw === "padrão") return "padrao";
   if (raw === "jogo_do_ano" || raw.includes("jogo do ano")) return "jogo_do_ano";
   if (raw === "advanced" || raw.includes("avançada") || raw.includes("avancada")) return "advanced";
-  if (raw === "classic") return "classic";
   if (raw === "both" || raw.includes("custom") || raw.includes("variant") || raw.includes("variante") || raw.includes("hybrid") || raw.includes("híbrida") || raw.includes("hibrida")) return "both";
   return "needs_review";
 }

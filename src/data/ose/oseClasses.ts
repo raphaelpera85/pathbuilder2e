@@ -42,6 +42,8 @@ export interface OseClass {
   id: string;
   name: string;
   nameEn: string;
+  sourceBook?: string;
+  sourcePage?: number;
   isRaceClass?: boolean; // True para classes B/X onde a raça é a própria classe
   description: string;
   primeRequisites: OseAbilityName[];
@@ -678,3 +680,8 @@ export const OSE_CLASSES: Record<string, OseClass> = {
     ],
   },
 };
+
+for (const oseClass of Object.values(OSE_CLASSES)) {
+  oseClass.sourceBook = "Old-School Essentials — Tomo do Jogador";
+  oseClass.sourcePage = 28;
+}

@@ -12,6 +12,7 @@
     "audit:catalog:supabase": "node scripts/audit-catalog-supabase-reconciliation.cjs",
     "audit:core:supabase": "node scripts/audit-core-systems-supabase.cjs",
     "audit:core-actions:supabase": "node scripts/audit-core-actions-conditions-supabase.cjs",
+    "audit:system:coverage": "node --experimental-strip-types --loader ./scripts/ts-extension-loader.mjs scripts/audit-system-coverage.cjs",
     "audit:core-skills:supabase": "node scripts/audit-core-skills-supabase.cjs",
     "audit:characters:supabase": "node scripts/audit-character-metadata-supabase.cjs",
     "audit:campaigns:supabase": "node scripts/audit-supabase-campaigns-authenticated.cjs",
@@ -41,7 +42,8 @@
     "sync:dnd5e-attunement:supabase": "node scripts/sync-dnd5e-attunement-to-supabase.cjs",
     "sync:dnd5e-subclass-choices:supabase": "node scripts/sync-dnd5e-subclass-choices-to-supabase.cjs",
     "sync:dnd5e-land-circle:supabase": "node scripts/sync-dnd5e-land-circle-spells-to-supabase.cjs",
-    "sync:dnd5e-domain-spells:supabase": "node scripts/sync-dnd5e-domain-spells-to-supabase.cjs"
+    "sync:dnd5e-domain-spells:supabase": "node scripts/sync-dnd5e-domain-spells-to-supabase.cjs",
+    "sync:supabase:dnd5e:ranger": "node scripts/sync-dnd5e-ranger-class-choices-to-supabase.cjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "latest",
