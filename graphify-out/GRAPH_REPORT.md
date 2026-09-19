@@ -1,16 +1,16 @@
 # Graph Report - pathbuilder2e_local  (2026-09-16)
 
 ## Corpus Check
-- 1251 files · ~15,354,110 words
+- 1251 files · ~15,354,112 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 16738 nodes · 24656 edges · 1080 communities (939 shown, 126 thin omitted)
+- 16740 nodes · 24658 edges · 1085 communities (942 shown, 127 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 423 edges (avg confidence: 0.86)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `45180b77`
+- Built from commit: `59589cb4`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -185,7 +185,7 @@
 - RPG
 - load_cached
 - PortalPages.tsx
-- generate-ose-catalog-migration.mjs
+- sources.ts
 - audit-local-weapon-variants.cjs
 - sync-weapon-catalog-to-supabase.cjs
 - enrichAllFeatsWithFullMechanics
@@ -202,7 +202,7 @@
 - shared.mjs
 - sanitize_metadata
 - multiSystemCharacter.ts
-- LocalDistillTests
+- tasteforge/resolve.py
 - taste-application/scripts/taste/grade.py
 - auth.ts
 - test_parse_instinct.py
@@ -239,7 +239,7 @@
 - extract_pascal
 - Rust Development Patterns
 - ObservationEvent
-- tasteforge/resolve.py
+- ResolveTests
 - AssetTests
 - Django Security Best Practices
 - Kotlin Exposed Patterns
@@ -645,7 +645,7 @@
 - Using audio in Remotion
 - Local fonts with @remotion/fonts
 - Swift Actors for Thread-Safe Persistence
-- devDependencies
+- ConductTests
 - Families and members
 - Examples
 - tinystruct Development Patterns
@@ -1073,11 +1073,15 @@
 - 2026-09-12 — Construtores multi-sistema
 - image_to_3d
 - audit-playwright-multicharacter.cjs
+- dnd5eClasses.ts
+- t20Classes.ts
 - audit-local-accessibility.cjs
+- audit-local-responsive.cjs
 - _resolve_cross_file_java_imports
 - _uninstall_claude_hook
 - _no_window_kwargs
 - _wrap_untrusted
+- audit-local-interactions.cjs
 - _subsample_idx
 - campaigns-realtime.test.ts
 
@@ -1096,19 +1100,19 @@
 ## Surprising Connections (you probably didn't know these)
 - `add_node()` --calls--> `sanitize_metadata()`  [INFERRED]
   temp_repos/graphify/graphify/extractors/bash.py → .agents/skills/graphify/security.py
-- `createOseEditablePdf()` --references--> `{ PDFDocument }`  [EXTRACTED]
-  src/services/osePdfExport.ts → scripts/audit-books.cjs
-- `createCoreEditablePdf()` --references--> `{ PDFDocument }`  [EXTRACTED]
-  src/services/corePdfExport.ts → scripts/audit-books.cjs
-- `extract_bash()` --calls--> `_read_text()`  [EXTRACTED]
+- `extract_bash()` --calls--> `_make_id()`  [EXTRACTED]
   temp_repos/graphify/graphify/extractors/bash.py → .agents/skills/graphify/extractors/base.py
-- `walk()` --calls--> `_read_text()`  [EXTRACTED]
+- `walk()` --calls--> `_make_id()`  [EXTRACTED]
+  temp_repos/graphify/graphify/extractors/bash.py → .agents/skills/graphify/extractors/base.py
+- `walk_calls()` --calls--> `_make_id()`  [EXTRACTED]
+  temp_repos/graphify/graphify/extractors/bash.py → .agents/skills/graphify/extractors/base.py
+- `extract_bash()` --calls--> `_file_stem()`  [EXTRACTED]
   temp_repos/graphify/graphify/extractors/bash.py → .agents/skills/graphify/extractors/base.py
 
 ## Import Cycles
 - None detected.
 
-## Communities (1080 total, 126 thin omitted)
+## Communities (1085 total, 127 thin omitted)
 
 ### Community 0 - "pf2e_data.js"
 Cohesion: 0.01
@@ -1140,11 +1144,11 @@ Nodes (78): Communities (112 total, 15 thin omitted), Community 0 - "pf2e_data.j
 
 ### Community 9 - "types.ts"
 Cohesion: 0.04
-Nodes (69): react-dom, OSE_SECONDARY_SKILLS, ActionDefinition, ACTIONS, getSystemActionItems(), OSE_CLASSIC_ACTIONS, SYSTEM_ACTION_DEFINITIONS, DND_CONDITIONS (+61 more)
+Nodes (66): react-dom, OSE_SECONDARY_SKILLS, ActionDefinition, ACTIONS, getSystemActionItems(), OSE_CLASSIC_ACTIONS, SYSTEM_ACTION_DEFINITIONS, DND_CONDITIONS (+58 more)
 
 ### Community 10 - "PickerModal.tsx"
-Cohesion: 0.09
-Nodes (48): localizeSourceBookName(), getItemDisplayName(), formatItemCategory(), formatItemPrice(), ItemCatalogRecord, itemIdentityKeys(), itemPickerCopy, ItemPickerModal() (+40 more)
+Cohesion: 0.08
+Nodes (52): @testing-library/react, localizeSourceBookName(), getItemDisplayName(), formatItemCategory(), formatItemPrice(), ItemCatalogRecord, itemIdentityKeys(), itemPickerCopy (+44 more)
 
 ### Community 11 - "sync-item-specific-images-to-supabase.cjs"
 Cohesion: 0.21
@@ -1159,8 +1163,8 @@ Cohesion: 0.23
 Nodes (17): a(), as(), _e(), i(), a(), l(), s(), is() (+9 more)
 
 ### Community 14 - "OseCharacterCreatorModal.tsx"
-Cohesion: 0.10
-Nodes (53): fixture, OSE_CLASSES, OseClass, OseClassAcrobatSkills, OseClassProgression, OseClassThiefSkills, OseCombatCategory, calculateOseArmorClass() (+45 more)
+Cohesion: 0.07
+Nodes (68): ancestryRows, classicClassRows, classicItemRows, classicOutput, classicSpellRows, classRows, itemRows, output (+60 more)
 
 ### Community 16 - "sync-feats.cjs"
 Cohesion: 0.11
@@ -1300,7 +1304,7 @@ Nodes (11): ae(), he(), le(), ne(), qe(), re(), se(), ue() (+3 more)
 
 ### Community 53 - "pdfFormExport.ts"
 Cohesion: 0.10
-Nodes (24): pdf-lib, booksDir, collectFiles(), defaultBooksDirs, fs, path, { PDFDocument }, positionalArgs (+16 more)
+Nodes (23): booksDir, collectFiles(), defaultBooksDirs, fs, path, { PDFDocument }, positionalArgs, { spawnSync } (+15 more)
 
 ### Community 54 - "merge-catalog-expansions.cjs"
 Cohesion: 0.11
@@ -1515,16 +1519,16 @@ Cohesion: 0.06
 Nodes (35): scripts, audit:books, audit:campaigns:supabase, audit:catalog, audit:catalog:provenance, audit:catalog:supabase, audit:character:matrix, audit:character:usage (+27 more)
 
 ### Community 115 - "playwright"
-Cohesion: 0.10
-Nodes (11): playwright, { chromium }, fs, { chromium }, fs, main(), { chromium }, fs (+3 more)
+Cohesion: 0.18
+Nodes (6): playwright, { chromium }, fs, main(), { chromium }, fs
 
 ### Community 116 - "build.py"
 Cohesion: 0.03
 Nodes (113): _abs_identity(), build(), build_from_json(), build_merge(), _explained(), _in_new_graph(), _kept(), _prune_match() (+105 more)
 
 ### Community 117 - "package.json"
-Cohesion: 0.12
-Nodes (14): name, private, type, version, jsdom, @testing-library/jest-dom, @types/react, @types/react-dom (+6 more)
+Cohesion: 0.08
+Nodes (23): devDependencies, jsdom, playwright, puppeteer-core, @testing-library/jest-dom, @testing-library/react, @types/react, @types/react-dom (+15 more)
 
 ### Community 118 - "audit-local-character-matrix.cjs"
 Cohesion: 0.31
@@ -1580,7 +1584,7 @@ Nodes (22): build_clips(), collect_media(), detect_resolution(), load_resolve_mo
 
 ### Community 167 - "tasteforge/__init__.py"
 Cohesion: 0.10
-Nodes (7): Compatibility import for the canonical ECC Resolve adapter. Alias the module…, TasteForge: a repeatable taste-driven video workflow. Canonicalizes the…, ConductTests, QuestionSetTests, Failing-first tests for the deterministic taste interview/profile., Failing-first tests: provider adapters must fail closed, always., RegistryFailClosedTests
+Nodes (8): Compatibility import for the canonical ECC Resolve adapter. Alias the module…, TasteForge: a repeatable taste-driven video workflow. Canonicalizes the…, FailClosedLiveTests, LocalDistillTests, _profile(), Failing-first tests for offline distillation and the fail-closed live path., Failing-first tests: provider adapters must fail closed, always., RegistryFailClosedTests
 
 ### Community 168 - "sync-item-images-to-supabase.cjs"
 Cohesion: 0.18
@@ -1599,12 +1603,12 @@ Cohesion: 0.25
 Nodes (8): _absolutize_source_files_in(), check_semantic_cache(), load_cached(), Check semantic extraction cache for a list of absolute file paths. Returns…, Whether cached semantic groups belong to the requested walked path. Before…, Inverse of :func:`_relativize_source_files_in`. Re-anchor relative…, Return cached extraction for this file if hash matches, else None. Cache key:…, _semantic_entry_matches_path()
 
 ### Community 172 - "PortalPages.tsx"
-Cohesion: 0.04
-Nodes (83): LegacyRecord, CoreCatalogEntry, equipmentCategory(), getCoreCompendiumEntries(), makeEntry(), sourceBooks, DND5E_BACKGROUNDS, DND5E_CLASSES (+75 more)
+Cohesion: 0.03
+Nodes (98): AccountViewState, listeners, snapshot, subscribe(), useAccountViewState(), CoreCatalogEntry, equipmentCategory(), getCoreCompendiumEntries() (+90 more)
 
-### Community 173 - "generate-ose-catalog-migration.mjs"
-Cohesion: 0.23
-Nodes (13): ancestryRows, classicClassRows, classicItemRows, classicOutput, classicSpellRows, classRows, itemRows, output (+5 more)
+### Community 173 - "sources.ts"
+Cohesion: 0.09
+Nodes (19): LegacyRecord, additionalDownloadResources, BLANK_SHEET_DRIVE_URL, GITHUB_BLOB_BASE_URL, GITHUB_LIVROS_FOLDER_URL, GITHUB_RAW_BASE_URL, GITHUB_REPO_URL, GOOGLE_DRIVE_FOLDER_URL (+11 more)
 
 ### Community 174 - "audit-local-weapon-variants.cjs"
 Cohesion: 0.50
@@ -1615,8 +1619,8 @@ Cohesion: 0.25
 Nodes (6): { createClient }, fs, path, root, rows, supabase
 
 ### Community 179 - "i18n.tsx"
-Cohesion: 0.04
-Nodes (66): {fontFamily}, react, @testing-library/react, AccountViewState, listeners, snapshot, subscribe(), useAccountViewState() (+58 more)
+Cohesion: 0.05
+Nodes (45): {fontFamily}, react, ActionDefinition, PF2E_ACTIONS_CATALOG, RAW_ACTIONS, locales, GUNS_GEARS_EQUIPMENT, ItemDefinition (+37 more)
 
 ### Community 180 - "graphify/cli.py"
 Cohesion: 0.02
@@ -1639,8 +1643,8 @@ Cohesion: 0.04
 Nodes (72): _node_community_map(), Invert communities dict: node_id -> community_id., _adopt_pre_manifest_notes(), attach_hyperedges(), _cap_filename(), _cypher_escape(), _cypher_label(), _dedup_node_filenames() (+64 more)
 
 ### Community 185 - "dnd5eRaces.ts"
-Cohesion: 0.29
-Nodes (4): Dnd5eRaceChoice, Dnd5eRaceRules, DRACONIC_ANCESTRIES, DWARF_TOOL_PROFICIENCIES
+Cohesion: 0.25
+Nodes (5): DND5E_RACE_RULES, Dnd5eRaceChoice, Dnd5eRaceRules, DRACONIC_ANCESTRIES, DWARF_TOOL_PROFICIENCIES
 
 ### Community 186 - "scripts/falapi.py"
 Cohesion: 0.05
@@ -1663,12 +1667,12 @@ Cohesion: 0.07
 Nodes (45): _import_csharp(), _import_kotlin(), _bash_assignment_base(), _bash_source_suffix(), extract_bash(), add_edge(), add_node(), _bash_call_in_command_allowed() (+37 more)
 
 ### Community 191 - "multiSystemCharacter.ts"
-Cohesion: 0.04
-Nodes (113): ABILITIES, CoreCharacterCreatorModal(), CoreCharacterCreatorModalProps, reconcileCoreSkillProficiencies(), reconcileT20DeityDependentFeatIds(), CORE_ABILITY_LABELS, CoreCharacterSheet(), CoreCharacterSheetProps (+105 more)
+Cohesion: 0.06
+Nodes (91): pdf-lib, ABILITIES, CoreCharacterCreatorModal(), CoreCharacterCreatorModalProps, reconcileCoreSkillProficiencies(), reconcileT20DeityDependentFeatIds(), CORE_ABILITY_LABELS, CoreCharacterSheet() (+83 more)
 
-### Community 192 - "LocalDistillTests"
-Cohesion: 0.24
-Nodes (4): FailClosedLiveTests, LocalDistillTests, _profile(), Failing-first tests for offline distillation and the fail-closed live path.
+### Community 192 - "tasteforge/resolve.py"
+Cohesion: 0.18
+Nodes (14): allocate_placements(), apply_placements(), _base_snapshot(), _fps(), _integer(), _items(), _path(), probe_asset() (+6 more)
 
 ### Community 193 - "taste-application/scripts/taste/grade.py"
 Cohesion: 0.07
@@ -1814,9 +1818,9 @@ Nodes (36): 1. Ownership and Borrowing, Accept Generics, Return Concrete Types, 
 Cohesion: 0.11
 Nodes (28): classify_events(), _parse_classification(), Classify tool calls against compliance steps using LLM., Classify which tool calls match which compliance steps. Returns {step_id:…, Parse LLM classification output into {step_id: [event_indices]}., _check_temporal_order(), Grade observation traces against compliance specs using LLM classification., Check before_step/after_step constraints. Returns failure reason or None. (+20 more)
 
-### Community 229 - "tasteforge/resolve.py"
-Cohesion: 0.06
-Nodes (20): allocate_placements(), apply_placements(), _base_snapshot(), _fps(), _integer(), _items(), _path(), probe_asset() (+12 more)
+### Community 229 - "ResolveTests"
+Cohesion: 0.08
+Nodes (6): Item, Media, Pool, Resolve adapter regression tests; no connection to Resolve is made., ResolveTests, Timeline
 
 ### Community 231 - "Django Security Best Practices"
 Cohesion: 0.06
@@ -2243,8 +2247,8 @@ Cohesion: 0.08
 Nodes (25): 2. Bundle Size Optimization (CRITICAL), 4. Client-Side Data Fetching (MEDIUM-HIGH), 7. JavaScript Performance (LOW-MEDIUM), 8. Advanced Patterns (LOW), Attribution, Automated Tools, Conditional module loading, Deduplicate global event listeners (+17 more)
 
 ### Community 337 - "tasteforge/cli.py"
-Cohesion: 0.20
-Nodes (19): build_parser(), cmd_apply(), cmd_distill(), cmd_export(), cmd_inspect(), cmd_interview(), cmd_multimodal(), cmd_provenance() (+11 more)
+Cohesion: 0.17
+Nodes (22): build_parser(), cmd_apply(), cmd_distill(), cmd_export(), cmd_inspect(), cmd_interview(), cmd_multimodal(), cmd_provenance() (+14 more)
 
 ### Community 338 - "Use Cases"
 Cohesion: 0.08
@@ -2419,8 +2423,8 @@ Cohesion: 0.19
 Nodes (21): _energy(), glow_plate(), grain_plate(), _lab(), mint_plates(), plate_coverage(), ndarray, Path (+13 more)
 
 ### Community 381 - "StylePack"
-Cohesion: 0.14
-Nodes (8): load(), Any, Path, Offline style-pack model: load, inspect, validate. A pack is a directory…, Load a pack directory; raises if no manifest exists., A loaded, validatable style pack directory., Validate every artifact against its schema; return a full report., StylePack
+Cohesion: 0.17
+Nodes (5): Any, Path, A loaded, validatable style pack directory., Validate every artifact against its schema; return a full report., StylePack
 
 ### Community 382 - "taste-distillation/scripts/taste/plates.py"
 Cohesion: 0.19
@@ -3434,9 +3438,9 @@ Nodes (10): Available options, Google Fonts with @remotion/google-fonts, Loading
 Cohesion: 0.18
 Nodes (10): Actor-Based Repository, Anti-Patterns to Avoid, Best Practices, Combining with @Observable ViewModel, Core Pattern, Key Design Decisions, Swift Actors for Thread-Safe Persistence, Usage (+2 more)
 
-### Community 635 - "devDependencies"
-Cohesion: 0.22
-Nodes (9): devDependencies, jsdom, playwright, puppeteer-core, @testing-library/jest-dom, @testing-library/react, @types/react, @types/react-dom (+1 more)
+### Community 635 - "ConductTests"
+Cohesion: 0.25
+Nodes (3): ConductTests, QuestionSetTests, Failing-first tests for the deterministic taste interview/profile.
 
 ### Community 636 - "Families and members"
 Cohesion: 0.18
@@ -4842,9 +4846,21 @@ Nodes (6): image_to_3d(), _mesh_url(), The GLB out of a 3D response, addressed b
 Cohesion: 0.33
 Nodes (4): { chromium }, fs, path, SNAPSHOTS_DIR
 
+### Community 1072 - "dnd5eClasses.ts"
+Cohesion: 0.33
+Nodes (3): DND5E_CLASS_RULES, DND5E_STARTING_EQUIPMENT, Dnd5eClassRules
+
+### Community 1073 - "t20Classes.ts"
+Cohesion: 0.33
+Nodes (3): T20_CLASS_RULES, T20_STARTING_EQUIPMENT, T20ClassRules
+
 ### Community 1074 - "audit-local-accessibility.cjs"
 Cohesion: 0.40
 Nodes (3): { chromium }, fs, routes
+
+### Community 1075 - "audit-local-responsive.cjs"
+Cohesion: 0.40
+Nodes (3): { chromium }, fs, viewports
 
 ### Community 1076 - "_resolve_cross_file_java_imports"
 Cohesion: 0.83
@@ -4867,22 +4883,22 @@ Cohesion: 0.67
 Nodes (3): slice, Stride that keeps at most ``cap`` samples - enough for a stable mean., _subsample_idx()
 
 ## Knowledge Gaps
-- **7829 isolated node(s):** `TODO EXECUTÁVEL — ordem atual`, `Objetivo integral do usuário`, `Requisitos explícitos a preservar`, `Estado confirmado nesta sessão`, `Próxima sequência obrigatória para o próximo agente` (+7824 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 10572 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **126 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **7829 isolated node(s):** `resolved`, `contextDirPath`, `projects`, `resolved`, `projects` (+7824 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 10574 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **127 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `dispatch_command()` connect `graphify/cli.py` to `scope_semantic_result`, `write_callflow_html`, `Path`, `cache.py`, `extract_corpus_parallel`, `Path`, `introspect_postgres`, `_StageTimer`, `cluster.py`, `save_semantic_cache`, `_build_server`, `querylog.py`, `load_cached`, `serve.py`, `graphify/export.py`, `check_graph_file_size_cap`, `_ImageRef`, `affected.py`, `graphify/__main__.py`, `edge_data`, `reflect.py`, `llm.py`, `detect`, `ingest.py`, `analyze.py`, `hooks.py`, `introspect_cargo`, `save_manifest`, `link_cross_repo_member_calls`, `build.py`?**
-  _High betweenness centrality (0.003) - this node is a cross-community bridge._
+  _High betweenness centrality (0.006) - this node is a cross-community bridge._
 - **Why does `_make_id()` connect `_make_id` to `extract_json`, `extract_commonlisp`, `extract_bash`, `_extract_python_rationale`, `extract_fortran`, `extract_powershell`, `Path`, `_read_text`, `extract_elixir`, `_resolve_php_type_references`, `extract_rust`, `extract_terraform`, `_resolve_cross_file_java_imports`, `graphify/cli.py`, `sanitize_metadata`, `extract_xaml`, `extract_go`, `extract.py`, `extract_objc`, `extract_robot`, `extract_pascal`, `extract_ocaml`, `build.py`, `extract_dm`, `extract_sql`, `_resolve_csharp_type_references`?**
   _High betweenness centrality (0.003) - this node is a cross-community bridge._
-- **Why does `_ip_is_blocked()` connect `security.py` to `ingest.py`?**
-  _High betweenness centrality (0.002) - this node is a cross-community bridge._
+- **Why does `extract()` connect `Path` to `_resolve_php_type_references`, `_make_id`, `load_cached`, `resolver_registry.py`, `extract.py`, `graphify/cli.py`, `_resolve_cross_file_java_imports`, `symbol_resolution.py`, `_resolve_csharp_type_references`?**
+  _High betweenness centrality (0.003) - this node is a cross-community bridge._
 - **Are the 5 inferred relationships involving `dispatch_command()` (e.g. with `_progress()` and `to_html()`) actually correct?**
   _`dispatch_command()` has 5 INFERRED edges - model-reasoned connections that need verification._
-- **What connects `TODO EXECUTÁVEL — ordem atual`, `Objetivo integral do usuário`, `Requisitos explícitos a preservar` to the rest of the system?**
+- **What connects `resolved`, `contextDirPath`, `projects` to the rest of the system?**
   _7829 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `pf2e_data.js` be split into smaller, more focused modules?**
   _Cohesion score 0.008771929824561403 - nodes in this community are weakly interconnected._

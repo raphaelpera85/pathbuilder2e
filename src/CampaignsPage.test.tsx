@@ -2,7 +2,7 @@ import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/re
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { CampaignsPage } from "./CampaignsPage";
 import { I18nProvider } from "./i18n";
-import type { AuthSession } from "./services/auth";
+import type { AuthSession, UserProfile } from "./services/auth";
 import type { Campaign } from "./services/campaigns";
 import type { CloudCharacter } from "./services/characters";
 
@@ -36,16 +36,17 @@ import * as campaignService from "./services/campaigns";
 import * as characterService from "./services/characters";
 
 describe("CampaignsPage Component", () => {
-  const mockUser = {
+  const mockUser: UserProfile = {
     id: "user_gm_1",
     email: "gm@test.com",
     username: "GameMaster1",
-    role: "user" as const,
+    role: "user",
+    created_at: "2026-09-01T10:00:00Z",
   };
 
   const mockSession: AuthSession = {
     user: mockUser,
-    expiresAt: Date.now() + 3600000,
+    expires_at: Date.now() + 3600000,
   };
 
   const mockCampaign: Campaign = {
