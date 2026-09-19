@@ -146,6 +146,7 @@ export interface SystemRulesEngine {
     carryingWeight: number;
     carryingCapacity?: number;
     encumbered: boolean;
+    damageResistances: string[];
     speed: number;
     racialEffects: string[];
     experiencePoints: number;
@@ -304,6 +305,8 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       const featSpeedBonus = hasFeat("dnd5e.talento.movel") ? 3 : 0;
       const dndPowerAttackFeat = hasFeat("dnd5e.talento.mestre_de_armas_pesadas");
       const dndPowerAttackActive = systemId === "dnd5e" && Boolean(character.dndPowerAttack) && dndPowerAttackFeat;
+      const dndRageActive = systemId === "dnd5e" && character.classId === "barbaro" && Boolean(character.dndRageActive);
+      const dndRageDamageBonus = dndRageActive ? character.level >= 16 ? 4 : character.level >= 9 ? 3 : 2 : 0;
       if (hasFeat("dnd5e.talento.alerta")) featEffects.push("Alerta: +5 na iniciativa e você não pode ser surpreendido enquanto consciente");
       if (hasFeat("dnd5e.talento.resistente")) featEffects.push(`Resistente: +${featHpBonus} PV máximos pelo nível`);
       if (hasFeat("dnd5e.talento.resiliente")) featEffects.push("Resiliente: proficiência no teste de resistência escolhido");
@@ -311,6 +314,7 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       if (hasFeat("dnd5e.talento.observador")) featEffects.push("Observador: +5 em Percepção passiva e leitura labial");
       if (hasFeat("dnd5e.talento.sentinela")) featEffects.push("Sentinela: ataques de oportunidade reduzem o deslocamento a 0 e ignoram Desengajar");
       if (dndPowerAttackFeat) featEffects.push(`Ataque Poderoso: ${dndPowerAttackActive ? "ativo (-5 no ataque, +10 no dano quando aplicável)" : "disponível para ativação no modo de combate"}`);
+      if (character.classId === "barbaro" && systemId === "dnd5e") featEffects.push(`Fúria: ${dndRageActive ? `ativa (+${dndRageDamageBonus} dano corpo a corpo com Força; resistência a dano contundente, perfurante e cortante)` : "disponível para ativação no modo de combate"}`);
       const con = modifiers.con || 0;
       const dex = modifiers.dex || 0;
       const cha = modifiers.cha || 0;
@@ -343,6 +347,26 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         ? 13 + dex
         : undefined;
       const equippedShield = selectedEquipment.find((entry) => entry.shieldBonus !== undefined);
+      const dndClassUnarmoredDefenseBonus = systemId === "dnd5e" && !equippedArmor
+        ? character.classId === "barbaro"
+          ? modifiers.con || 0
+          : character.classId === "monge" && !equippedShield
+            ? modifiers.wis || 0
+            : 0
+        : 0;
+      const dndShieldMasterBonus = hasFeat("dnd5e.talento.mestre_de_escudos")
+        ? equippedShield?.shieldBonus || 0
+        : 0;
+      const dndPaladinAuraBonus = systemId === "dnd5e" && character.classId === "paladino" && safeLevel >= 6
+        ? Math.max(1, modifiers.cha || 0)
+        : 0;
+      const dndClassSpeedBonus = systemId === "dnd5e"
+        ? character.classId === "barbaro" && !equippedArmor && safeLevel >= 5
+          ? 3
+          : character.classId === "monge" && !equippedArmor && !equippedShield
+            ? safeLevel >= 18 ? 9 : safeLevel >= 14 ? 7.5 : safeLevel >= 10 ? 6 : safeLevel >= 6 ? 4.5 : safeLevel >= 2 ? 3 : 0
+            : 0
+        : 0;
       const selectedWeapons = selectedEquipment.filter((entry) => entry.category === "arma" && entry.damage);
       const dndDuelingActive = systemId === "dnd5e" && fightingStyle === "Duelos" && selectedWeapons.length === 1 && !selectedWeapons[0]?.weaponProperties?.some((property) => ["munição", "duas mãos"].includes(property)) && !/alcance/i.test(selectedWeapons[0]?.summary || "");
       const dndTwoWeaponStyleActive = systemId === "dnd5e" && fightingStyle === "Luta com Duas Armas" && selectedWeapons.length >= 2 && selectedWeapons.every((entry) => !entry.weaponProperties?.some((property) => ["munição", "duas mãos"].includes(property)) && !/alcance/i.test(entry.summary));
@@ -357,8 +381,9 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       const polearmMasterActive = hasFeat("dnd5e.talento.mestre_de_hastes");
       if (hasFeat("dnd5e.talento.atacante_de_duas_armas")) featEffects.push(dualWielderActive ? "Atacante de Duas Armas: +1 CA enquanto empunha duas armas corpo a corpo" : "Atacante de Duas Armas: +1 CA ao empunhar duas armas corpo a corpo");
       if (hasFeat("dnd5e.talento.mestre_de_armadura_media")) featEffects.push("Mestre de Armadura Média: armadura média permite até +3 de Destreza na CA e não impõe desvantagem em Furtividade");
+      if (hasFeat("dnd5e.talento.mestre_de_escudos")) featEffects.push(`Mestre de Escudos: ${dndShieldMasterBonus ? `+${dndShieldMasterBonus} nos salvamentos de Destreza enquanto usa escudo; ` : "com escudo, "}ação bônus para empurrar e reação para anular dano de salvamento bem-sucedido`);
       if (systemId === "dnd5e") {
-        const detailedFeatIds = new Set(["dnd5e.talento.alerta", "dnd5e.talento.resistente", "dnd5e.talento.resiliente", "dnd5e.talento.movel", "dnd5e.talento.observador", "dnd5e.talento.sentinela", "dnd5e.talento.atacante_de_duas_armas", "dnd5e.talento.mestre_de_armadura_media", "dnd5e.talento.mestre_de_hastes"]);
+        const detailedFeatIds = new Set(["dnd5e.talento.alerta", "dnd5e.talento.resistente", "dnd5e.talento.resiliente", "dnd5e.talento.movel", "dnd5e.talento.observador", "dnd5e.talento.sentinela", "dnd5e.talento.atacante_de_duas_armas", "dnd5e.talento.mestre_de_armadura_media", "dnd5e.talento.mestre_de_hastes", "dnd5e.talento.mestre_de_escudos"]);
         for (const featId of selectedFeatIds) {
           if (detailedFeatIds.has(featId)) continue;
           const feat = catalog.feats.find((entry) => entry.id === featId);
@@ -440,7 +465,7 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
             + (equippedShield?.shieldBonus || 0)
             + (dualWielderActive ? 1 : 0)
             + (fightingStyle === "Defesa" ? 1 : 0)
-          : (dndDraconicUnarmoredDefense ?? 10 + dex) + dndMagicArmorBonus + dndProtectionRingBonus + (equippedShield?.shieldBonus || 0) + (dualWielderActive ? 1 : 0);
+          : (dndDraconicUnarmoredDefense ?? 10 + dex + dndClassUnarmoredDefenseBonus) + dndMagicArmorBonus + dndProtectionRingBonus + (equippedShield?.shieldBonus || 0) + (dualWielderActive ? 1 : 0);
       const t20SelectedTrainingSkills = systemId === "t20" && selectedFeatIds.has("t20.poder.treinamento_em_pericia")
         ? (character.featChoices?.["t20-trained-skill"] || [])
         : [];
@@ -514,7 +539,7 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
           const resilientAbility = character.featChoices?.["resilient-ability"]?.[0];
           const resilientKey = { Força: "str", Destreza: "dex", Constituição: "con", Inteligência: "int", Sabedoria: "wis", Carisma: "cha" }[resilientAbility || ""];
           const resilientBonus = hasFeat("dnd5e.talento.resiliente") && resilientKey === ability && dndSaveAbilities[ability] === undefined ? proficiencyBonus(systemId, character.level) : 0;
-          return [ability, modifier + (dndSaveAbilities[ability] !== undefined ? proficiencyBonus(systemId, character.level) : 0) + resilientBonus + dndProtectionRingBonus];
+          return [ability, modifier + (dndSaveAbilities[ability] !== undefined ? proficiencyBonus(systemId, character.level) : 0) + resilientBonus + dndProtectionRingBonus + dndPaladinAuraBonus + (ability === "dex" ? dndShieldMasterBonus : 0)];
         }))
         : { fortitude: (skillBonuses.fortitude || 0) + dndProtectionRingBonus + t20SaradoBonus + (systemId === "t20" && selectedFeatIds.has("t20.poder.vitalidade") ? 2 : 0) + (t20InexpugnavelActive ? 2 : 0) + t20MaosMembranosasBonus + t20NatureFortitudeBonus + t20RejeicaoDivinaBonus + (t20SolidezActive && equippedShield ? equippedShield.shieldBonus || 0 : 0) + (hasEquipment("t20.item_magico.manto_resistencia") ? 1 : 0), reflexos: (skillBonuses.reflexos || 0) + dndProtectionRingBonus + (t20DodgeActive ? 2 : 0) + (t20InexpugnavelActive ? 2 : 0) + t20ArticulacoesBonus + t20FreedomReflexBonus + t20RejeicaoDivinaBonus + (t20SolidezActive && equippedShield ? equippedShield.shieldBonus || 0 : 0) + (hasEquipment("t20.item_magico.manto_resistencia") ? 1 : 0), vontade: (skillBonuses.vontade || 0) + dndProtectionRingBonus + (t20InexpugnavelActive ? 2 : 0) + (t20VontadeDeFerroActive ? 2 : 0) + (t20MenteVaziaActive ? 2 : 0) + t20AntenasBonus + t20LakeWillBonus + (t20MenteAnaliticaActive ? 2 : 0) + t20RejeicaoDivinaBonus + (t20SolidezActive && equippedShield ? equippedShield.shieldBonus || 0 : 0) + (hasEquipment("t20.item_magico.manto_resistencia") ? 1 : 0) };
       const globalD20RollMode: D20RollMode = systemId === "dnd5e" ? character.d20Mode || "normal" : "normal";
@@ -556,7 +581,7 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
           : ["barbaro", "monge", "paladino", "patrulheiro"].includes(character.classId) && safeLevel >= 5
             ? 2
             : character.classId === "bardo" && selectedSubclass?.id === "bardo_valor" && safeLevel >= 6 ? 2 : 1
-        : systemId === "t20" && character.classId === "lutador" && safeLevel >= 20 ? 2 : 1;
+        : systemId === "t20" && ((character.classId === "guerreiro" && safeLevel >= 6) || (character.classId === "lutador" && safeLevel >= 20)) ? 2 : 1;
       const attacks = selectedEquipment.filter((entry) => entry.category === "arma" && entry.damage).map((weapon, weaponIndex) => {
         const selectedByWeaponMaster = systemId === "dnd5e" && dndWeaponMasterChoices.has(normalizeFeatChoice(weapon.name));
         const proficient = systemId === "t20" || selectedByWeaponMaster || (weapon.proficiency === "simple_weapon" ? proficiencies.includes("armas simples") : proficiencies.includes("marciais") || dndSubclassHasMartialProficiency);
@@ -569,6 +594,9 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         const t20TwoHandedWeapon = systemId === "t20" && weapon.weaponProperties?.includes("duas mãos") && !t20RangedWeapon;
         const t20DualWeaponAttack = t20DualWeaponActive && !weapon.weaponProperties?.some((property) => ["munição", "duas mãos"].includes(property)) && !/alcance/i.test(weapon.summary);
         const unarmedStyleActive = systemId === "t20" && selectedFeatIds.has("t20.poder.estilo_desarmado") && weapon.id === "t20.arma.ataque_desarmado";
+        const t20LutadorUnarmedDamage = systemId === "t20" && character.classId === "lutador" && weapon.id === "t20.arma.ataque_desarmado"
+          ? safeLevel >= 20 ? "2d10 impacto" : safeLevel >= 17 ? "2d8 impacto" : safeLevel >= 13 ? "2d6 impacto" : safeLevel >= 9 ? "1d10 impacto" : safeLevel >= 5 ? "1d8 impacto" : "1d6 impacto"
+          : undefined;
         const powerfulThrowActive = systemId === "t20" && selectedFeatIds.has("t20.poder.arremesso_potente") && t20ThrownWeapon;
         const acuidadeActive = systemId === "t20" && selectedFeatIds.has("t20.poder.acuidade_com_arma") && (weapon.weaponProperties?.includes("leve") || t20ThrownWeapon);
         const preciseAttackActive = systemId === "t20" && selectedFeatIds.has("t20.poder.ataque_preciso") && !weapon.weaponProperties?.some((property) => ["duas mãos", "munição"].includes(property)) && !/alcance/i.test(weapon.summary);
@@ -607,11 +635,12 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
           ? t20MeleeAttack || t20ThrownWeapon
           : weapon.weaponProperties?.includes("acuidade") || rangedWeapon;
         const dndMagicWeaponBonus = systemId === "dnd5e" && ["dnd5e.item_magico.arma_um", "dnd5e.item_magico.adaga_envenenamento"].includes(weapon.id) && hasAttunedEquipment(weapon.id) ? 1 : 0;
+        const dndRageEligible = dndRageActive && !rangedWeapon && attackAbility === "str";
         const finalDamageBonuses = [damageBonuses, dndMagicWeaponBonus ? "+ 1" : ""].filter(Boolean).join(" ");
         return {
           name: weapon.name,
           bonus: (modifiers[attackAbility] || 0) + (proficient ? proficiencyBonus(systemId, character.level) : 0) + dndMagicWeaponBonus + (t20ArmasDaAmbicaoActive && proficient ? 1 : 0) + (fightingStyle === "Arquearia" && rangedWeapon ? 2 : 0) + (powerfulAttackActive ? -2 : 0) + (powerAttackEligible ? -5 : 0) + (t20OneWeaponStyleActive ? 2 : 0) + (t20WeaponFocus === weapon.name ? 2 : 0) + (t20DualWeaponAttack ? -2 : 0),
-          damage: `${unarmedStyleActive ? "1d6 impacto" : weapon.damage || weapon.summary}${finalDamageBonuses || powerAttackEligible ? ` ${[finalDamageBonuses, powerAttackEligible ? "+ 10" : ""].filter(Boolean).join(" ")}` : ""}`,
+          damage: `${t20LutadorUnarmedDamage || (unarmedStyleActive ? "1d6 impacto" : weapon.damage || weapon.summary)}${finalDamageBonuses || powerAttackEligible || dndRageEligible ? ` ${[finalDamageBonuses, powerAttackEligible ? "+ 10" : "", dndRageEligible ? `+ ${dndRageDamageBonus}` : ""].filter(Boolean).join(" ")}` : ""}`,
           proficient,
           ...(globalD20RollMode !== "normal" ? { rollMode: globalD20RollMode } : {}),
           ...(attacksPerAction > 1 ? { attacksPerAction } : {}),
@@ -817,7 +846,8 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         carryingWeight,
         carryingCapacity,
         encumbered: carryingCapacity !== undefined && carryingWeight > carryingCapacity,
-        speed: Math.max(0, ((raceRules?.speed || 0) + featSpeedBonus + t20FuriaDaSavanaBonus + t20AtleticoSpeedBonus - (systemId === "t20" && t20Armor && (t20Armor.armorPenalty || 0) <= -2 && !t20FanaticoActive ? 3 : 0)) * (systemId === "dnd5e" && hasAttunedEquipment("dnd5e.item_magico.botas_velocidade") ? 2 : 1)),
+        damageResistances: dndRageActive ? ["contundente", "perfurante", "cortante"] : [],
+        speed: Math.max(0, ((raceRules?.speed || 0) + featSpeedBonus + dndClassSpeedBonus + t20FuriaDaSavanaBonus + t20AtleticoSpeedBonus - (systemId === "t20" && t20Armor && (t20Armor.armorPenalty || 0) <= -2 && !t20FanaticoActive ? 3 : 0)) * (systemId === "dnd5e" && hasAttunedEquipment("dnd5e.item_magico.botas_velocidade") ? 2 : 1)),
         racialEffects,
         subclassEffects,
         classChoiceEffects,
@@ -837,6 +867,8 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       const hasDndPowerAttackFeat = character.featIds.includes("dnd5e.talento.mestre_de_armas_pesadas");
       if (character.dndPowerAttack && systemId !== "dnd5e") errors.push("Ataque Poderoso é uma opção exclusiva de D&D 5e");
       if (character.dndPowerAttack && systemId === "dnd5e" && !hasDndPowerAttackFeat) errors.push("Ataque Poderoso exige Mestre de Armas Pesadas");
+      if (character.dndRageActive && systemId !== "dnd5e") errors.push("Fúria é uma opção exclusiva de D&D 5e");
+      if (character.dndRageActive && systemId === "dnd5e" && character.classId !== "barbaro") errors.push("Fúria exige a classe Bárbaro");
       if (!catalog.races.some((entry) => entry.id === character.raceId)) errors.push("raça não pertence ao catálogo do sistema");
       const selectedSubrace = character.subraceId ? catalog.subraces.find((entry) => entry.id === character.subraceId) : undefined;
       if (character.subraceId && !selectedSubrace) errors.push("sub-raça não pertence ao catálogo do sistema");

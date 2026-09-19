@@ -157,6 +157,10 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
             <span>Ataque Poderoso (-5/+10)<small>Aplicar aos ataques elegíveis</small></span>
             <input type="checkbox" checked={Boolean(draft.dndPowerAttack)} onChange={(event) => setDraft({ ...draft, dndPowerAttack: event.target.checked })} />
           </label>}
+          {system === "dnd5e" && draft.classId === "barbaro" && <label className="pb-core-toggle-field">
+            <span>Fúria<small>+2/+3/+4 dano corpo a corpo com Força e resistência física</small></span>
+            <input type="checkbox" checked={Boolean(draft.dndRageActive)} onChange={(event) => setDraft({ ...draft, dndRageActive: event.target.checked })} />
+          </label>}
           <label>{system === "t20" ? "Origem" : "Antecedente"}
             <select value={draft.backgroundId || ""} onChange={(event) => updateBackground(event.target.value)}>
               {catalog.backgrounds.map((entry) => <option key={entry.id} value={entry.id}>{entry.name}</option>)}
@@ -217,6 +221,10 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
         {derived.featEffects.length > 0 && <aside className="pb-core-background-options" aria-label="Efeitos dos talentos e poderes">
           <strong>Efeitos aplicáveis dos talentos/poderes</strong>
           <ul>{derived.featEffects.map((effect) => <li key={effect}>{effect}</li>)}</ul>
+        </aside>}
+        {derived.damageResistances.length > 0 && <aside className="pb-core-background-options" aria-label="Resistências ativas">
+          <strong>Resistências ativas</strong>
+          <p>{derived.damageResistances.join(" · ")}</p>
         </aside>}
         {derived.classResources.length > 0 && <div className="pb-core-resource-strip" aria-label="Recursos de classe">
           {derived.classResources.map((resource) => <div key={resource.name}><strong>{resource.name}</strong><b>{resource.value}</b><small>{resource.description}</small></div>)}

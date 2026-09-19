@@ -36,7 +36,10 @@ function formatCoreCoins(character: MultiSystemCharacter): string {
 
 function listFeatNames(character: MultiSystemCharacter, catalog: ReturnType<typeof getCoreCatalog>): string {
   const names = listNames(catalog.feats, character.featIds || [], character.featQuantities);
-  const combatMode = character.system_id === "dnd5e" && character.dndPowerAttack ? "Ataque Poderoso ativo (-5 ataque/+10 dano em arma pesada)" : "";
+  const combatMode = [
+    character.system_id === "dnd5e" && character.dndPowerAttack ? "Ataque Poderoso ativo (-5 ataque/+10 dano em arma pesada)" : "",
+    character.system_id === "dnd5e" && character.dndRageActive ? "Fúria ativa (+dano e resistência física)" : "",
+  ].filter(Boolean).join(" · ");
   const choiceCatalog = character.system_id === "dnd5e" ? DND5E_FEAT_CHOICES : T20_POWER_CHOICES;
   const choices = (character.featIds || []).flatMap((featId) => (choiceCatalog[featId] || []).map((choice) => {
     const values = character.featChoices?.[choice.id] || [];

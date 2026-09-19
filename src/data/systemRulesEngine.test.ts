@@ -122,6 +122,84 @@ describe("system rules engines", () => {
     expect(attacks.some((attack) => attack.name.includes("Ataque bônus — extremidade") && attack.damage === "1d4 contundente")).toBe(true);
   });
 
+  it("aplica o bônus de salvamento do Mestre de Escudos com escudo", () => {
+    const character = DND5E_RULES_ENGINE.createDefaultCharacter();
+    character.featIds = ["dnd5e.talento.mestre_de_escudos"];
+    const withoutShield = DND5E_RULES_ENGINE.deriveStats(character).savingThrowBonuses.dex;
+    character.equipmentIds = ["dnd5e.armadura.escudo"];
+    const withShield = DND5E_RULES_ENGINE.deriveStats(character);
+    expect(withShield.savingThrowBonuses.dex).toBe(withoutShield + 2);
+    expect(withShield.featEffects.join(" ")).toContain("Mestre de Escudos");
+  });
+
+  it("aplica a Aura de Proteção do Paladino aos salvamentos a partir do nível 6", () => {
+    const paladin = DND5E_RULES_ENGINE.createDefaultCharacter();
+    paladin.classId = "paladino";
+    paladin.abilities.cha = 16;
+    paladin.level = 5;
+    const beforeAura = DND5E_RULES_ENGINE.deriveStats(paladin).savingThrowBonuses.wis;
+    paladin.level = 6;
+    const withAura = DND5E_RULES_ENGINE.deriveStats(paladin);
+    expect(withAura.savingThrowBonuses.wis).toBe(beforeAura + 3);
+  });
+
+  it("aplica Defesa sem Armadura de Bárbaro e Monge com as condições corretas", () => {
+    const barbarian = DND5E_RULES_ENGINE.createDefaultCharacter();
+    barbarian.classId = "barbaro";
+    barbarian.raceId = "gnomo";
+    barbarian.subraceId = undefined;
+    barbarian.abilities = { str: 10, dex: 16, con: 16, int: 10, wis: 10, cha: 10 };
+    expect(DND5E_RULES_ENGINE.deriveStats(barbarian).defense).toBe(16);
+
+    const monk = DND5E_RULES_ENGINE.createDefaultCharacter();
+    monk.classId = "monge";
+    monk.raceId = "gnomo";
+    monk.subraceId = undefined;
+    monk.abilities = { str: 10, dex: 16, con: 10, int: 10, wis: 16, cha: 10 };
+    expect(DND5E_RULES_ENGINE.deriveStats(monk).defense).toBe(16);
+    monk.equipmentIds = ["dnd5e.armadura.escudo"];
+    expect(DND5E_RULES_ENGINE.deriveStats(monk).defense).toBe(15);
+  });
+
+  it("aplica Movimento Rápido e Movimento sem Armadura do D&D 5e", () => {
+    const barbarian = DND5E_RULES_ENGINE.createDefaultCharacter();
+    barbarian.classId = "barbaro";
+    barbarian.raceId = "gnomo";
+    barbarian.subraceId = undefined;
+    barbarian.level = 4;
+    const barbarianBaseSpeed = DND5E_RULES_ENGINE.deriveStats(barbarian).speed;
+    barbarian.level = 5;
+    expect(DND5E_RULES_ENGINE.deriveStats(barbarian).speed).toBe(barbarianBaseSpeed + 3);
+
+    const monk = DND5E_RULES_ENGINE.createDefaultCharacter();
+    monk.classId = "monge";
+    monk.raceId = "gnomo";
+    monk.subraceId = undefined;
+    monk.level = 2;
+    expect(DND5E_RULES_ENGINE.deriveStats(monk).speed).toBe(10.5);
+    monk.level = 18;
+    expect(DND5E_RULES_ENGINE.deriveStats(monk).speed).toBe(16.5);
+    monk.equipmentIds = ["dnd5e.armadura.escudo"];
+    expect(DND5E_RULES_ENGINE.deriveStats(monk).speed).toBe(7.5);
+  });
+
+  it("aplica Fúria do Bárbaro D&D ao dano e às resistências", () => {
+    const barbarian = DND5E_RULES_ENGINE.createDefaultCharacter();
+    barbarian.classId = "barbaro";
+    barbarian.raceId = "gnomo";
+    barbarian.subraceId = undefined;
+    barbarian.equipmentIds = ["dnd5e.arma.machado_grande", "dnd5e.arma.arco_longo"];
+    barbarian.dndRageActive = true;
+    const levelOne = DND5E_RULES_ENGINE.deriveStats(barbarian);
+    expect(levelOne.attacks.find((attack) => attack.name === "Machado grande")?.damage).toContain("+ 2");
+    expect(levelOne.attacks.find((attack) => attack.name === "Arco longo")?.damage).not.toContain("+ 2");
+    expect(levelOne.damageResistances).toEqual(["contundente", "perfurante", "cortante"]);
+    barbarian.level = 9;
+    expect(DND5E_RULES_ENGINE.deriveStats(barbarian).attacks.find((attack) => attack.name === "Machado grande")?.damage).toContain("+ 3");
+    barbarian.level = 16;
+    expect(DND5E_RULES_ENGINE.deriveStats(barbarian).attacks.find((attack) => attack.name === "Machado grande")?.damage).toContain("+ 4");
+  });
+
   it("respeita o limite de duas escolhas de Poder Mágico", () => {
     const arcanista = T20_RULES_ENGINE.createDefaultCharacter();
     arcanista.level = 3;
@@ -623,6 +701,7 @@ describe("system rules engines", () => {
     const dnd = DND5E_RULES_ENGINE.createDefaultCharacter();
     dnd.level = 5;
     dnd.raceId = "anao";
+    dnd.classId = "mago";
     expect(DND5E_RULES_ENGINE.deriveStats(dnd)).toMatchObject({ experienceForLevel: 6500, experienceToNextLevel: 14000, speed: 7.5 });
   });
 
@@ -1180,6 +1259,27 @@ describe("system rules engines", () => {
       expect.objectContaining({ name: "Golpe Cruel" }),
       expect.objectContaining({ name: "Golpe Violento" }),
     ]));
+  });
+
+  it("deriva Ataque Extra do Guerreiro T20 nos ataques da ficha", () => {
+    const warrior = T20_RULES_ENGINE.createDefaultCharacter();
+    warrior.classId = "guerreiro";
+    warrior.level = 5;
+    warrior.equipmentIds = ["t20.arma.espada_longa"];
+    expect(T20_RULES_ENGINE.deriveStats(warrior).attacks[0]?.attacksPerAction).toBeUndefined();
+    warrior.level = 6;
+    expect(T20_RULES_ENGINE.deriveStats(warrior).attacks[0]?.attacksPerAction).toBe(2);
+  });
+
+  it("aplica a progressão de Briga do Lutador T20 ao dano desarmado", () => {
+    const fighter = T20_RULES_ENGINE.createDefaultCharacter();
+    fighter.classId = "lutador";
+    fighter.equipmentIds = ["t20.arma.ataque_desarmado"];
+    const expected = new Map([[1, "1d6 impacto"], [5, "1d8 impacto"], [9, "1d10 impacto"], [13, "2d6 impacto"], [17, "2d8 impacto"], [20, "2d10 impacto"]]);
+    for (const [level, damage] of expected) {
+      fighter.level = level;
+      expect(T20_RULES_ENGINE.deriveStats(fighter).attacks[0]?.damage).toBe(damage);
+    }
   });
 
   it("does not allow spells on a non-spellcasting D&D class", () => {

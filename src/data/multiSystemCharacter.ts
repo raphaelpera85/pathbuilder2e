@@ -146,6 +146,8 @@ export interface MultiSystemCharacter {
   d20Mode?: D20RollMode;
   /** Ativa o modificador opcional de -5/+10 dos talentos de combate D&D 5e. */
   dndPowerAttack?: boolean;
+  /** Ativa a Fúria do Bárbaro D&D 5e durante a cena atual. */
+  dndRageActive?: boolean;
 }
 
 function cloneChoiceMap(values?: Record<string, string[]>): Record<string, string[]> | undefined {
@@ -184,6 +186,7 @@ export function cloneCoreCharacter(character: MultiSystemCharacter): MultiSystem
     featChoices: cloneChoiceMap(character.featChoices),
     coins: character.coins ? { ...character.coins } : undefined,
     dndPowerAttack: character.dndPowerAttack,
+    dndRageActive: character.dndRageActive,
   };
 }
 
@@ -581,5 +584,6 @@ export function createInitialCoreCharacter(system: SupportedCoreSystem): MultiSy
     notes: "",
     d20Mode: "normal",
     dndPowerAttack: false,
+    dndRageActive: false,
   };
 }

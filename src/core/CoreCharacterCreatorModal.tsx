@@ -4,7 +4,7 @@ import { T20_ARCANIST_PATHS, T20_CLASS_CHOICES, T20_SORCERER_LINEAGES, T20_DRACO
 import { T20_SPELLS, formatT20SpellDetails } from "../data/t20/t20Compendium";
 import { getSystemRulesEngine } from "../data/systemRulesEngine";
 import { reconcileCoreSkillProficiencies, reconcileT20DeityDependentFeatIds } from "./coreCharacterEditing";
-import { DND5E_STANDARD_ARRAY, generateAbilityScores, type AbilityGenerationMethod } from "../data/coreCharacterRules";
+import { DND5E_STANDARD_ARRAY, generateAbilityScores, getPointBuyBudget, validatePointBuy, type AbilityGenerationMethod } from "../data/coreCharacterRules";
 import { DND5E_TOOLS, DND5E_TOOL_CHOICE_GROUPS, getDnd5eToolChoiceEntries, type Dnd5eToolChoiceGroup } from "../data/dnd5e/dnd5eCatalog";
 import { getDnd5eBackgroundToolProficiencies } from "../data/dnd5e/dnd5eBackgrounds";
 import { formatDnd5eSpellDetails } from "../data/dnd5e/dnd5eCompendium";
@@ -264,6 +264,7 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
         next.preparedSpellIds = next.preparedSpellIds?.filter((spellId) => next.spellIds.includes(spellId) && isDndPreparedSpell(spellId));
       }
       if (key === "classId" || key === "backgroundId" || key === "raceId") {
+        if (system !== "dnd5e" || next.classId !== "barbaro") next.dndRageActive = false;
         const classRules = catalog.classRules.find((entry) => entry.id === next.classId);
         const background = catalog.backgrounds.find((entry) => entry.id === next.backgroundId);
         const backgroundSkills = background && ("skillProficiencies" in background ? background.skillProficiencies : background.trainedSkills);
@@ -326,6 +327,9 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
   const effectiveRaceSkillCount = raceChoiceGroup && raceChoiceMode === "skill_and_feat" ? 1 : raceSkillChoiceCount;
   const availableSubraces = catalog.subraces.filter((entry) => entry.raceId === character.raceId);
   const selectedSubrace = availableSubraces.find((entry) => entry.id === character.subraceId);
+  const pointBuySummary = generationMethod === "point_buy"
+    ? validatePointBuy(system, Object.values(character.abilities))
+    : undefined;
   const subraceChoices = system === "dnd5e" && selectedSubrace && "subraceChoices" in selectedSubrace ? (selectedSubrace as { subraceChoices?: Array<{ id: string; label: string; options: string[]; count: number }> }).subraceChoices || [] : [];
   const availableSubclasses = catalog.subclasses.filter((entry) => entry.classId === character.classId);
   const selectedSubclass = availableSubclasses.find((entry) => entry.id === character.subclassId);
@@ -526,6 +530,10 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
             <span>Ataque Poderoso (-5/+10)<small>Aplicar aos ataques elegíveis</small></span>
             <input type="checkbox" checked={Boolean(character.dndPowerAttack)} onChange={(event) => update("dndPowerAttack", event.target.checked)} />
           </label>}
+          {system === "dnd5e" && character.classId === "barbaro" && <label className="pb-core-toggle-field">
+            <span>Fúria<small>+2/+3/+4 dano corpo a corpo com Força e resistência física</small></span>
+            <input type="checkbox" checked={Boolean(character.dndRageActive)} onChange={(event) => update("dndRageActive", event.target.checked)} />
+          </label>}
         </div>
 
         {selectedRaceRules && <aside className="pb-core-race-summary" aria-label="Resumo da raça">
@@ -711,6 +719,10 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
         {derivedPreview.classResources.length > 0 && <div className="pb-core-resource-strip" aria-label="Recursos de classe">
           {derivedPreview.classResources.map((resource) => <div key={resource.name}><strong>{resource.name}</strong><b>{resource.value}</b><small>{resource.description}</small></div>)}
         </div>}
+        {derivedPreview.damageResistances.length > 0 && <aside className="pb-core-background-options" aria-label="Resistências ativas">
+          <strong>Resistências ativas</strong>
+          <p>{derivedPreview.damageResistances.join(" · ")}</p>
+        </aside>}
         {derivedPreview.classFeatures.length > 0 && <details className="pb-core-feature-list">
           <summary>Características de classe até o nível {character.level} ({derivedPreview.classFeatures.length})</summary>
           <div>{derivedPreview.classFeatures.map((feature) => <article key={feature.level + "-" + feature.name}><strong>Nível {feature.level} · {feature.name}</strong><small>{feature.description}</small></article>)}</div>
@@ -726,7 +738,13 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
                 {system === "dnd5e" && <option value="standard_array">Array padrão</option>}
               </select>
             </label>
-            <span>{system === "t20" ? "T20: 20 pontos; valores de 8 a 18." : "D&D 5e: 27 pontos; valores de 8 a 15."}</span>
+            <span>
+              {system === "t20" ? "T20: 20 pontos; valores de 8 a 18." : "D&D 5e: 27 pontos; valores de 8 a 15."}
+              {pointBuySummary && <>
+                {` Gasto: ${pointBuySummary.spent}/${getPointBuyBudget(system)}.`}
+                {pointBuySummary.spent <= getPointBuyBudget(system) && ` Restante: ${getPointBuyBudget(system) - pointBuySummary.spent}.`}
+              </>}
+            </span>
           </div>
           <div className="pb-core-ability-grid">
             {ABILITIES.map(([key, label]) => (
