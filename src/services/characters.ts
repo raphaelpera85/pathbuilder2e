@@ -1,6 +1,15 @@
 import { isSupabaseConfigured, supabase } from "../lib/supabase";
 import { getCurrentSession, type UserProfile } from "./auth";
 import { withRequestTimeout } from "./requestTimeout";
+import {
+  forgetCloudRevision,
+  mergeCharacterDocuments,
+  readCloudRevision,
+  readKnownRemoteUpdatedAt,
+  rememberCloudRevision,
+  removePendingSave,
+  type CharacterMergeConflict,
+} from "./characterSync";
 
 export interface CharacterData extends Record<string, unknown> {
   id: string;
@@ -142,6 +151,80 @@ export interface CloudCharacter {
   data: CharacterData;
   created_at: string;
   updated_at: string;
+}
+
+export interface CharacterSaveConflictInfo {
+  merged: boolean;
+  strategy: "three-way" | "union";
+  conflicts: CharacterMergeConflict[];
+  remoteUpdatedAt: string | null;
+  preservedRemoteCollections: string[];
+}
+
+/** Resultado do salvamento; `syncConflict` só existe quando houve merge. */
+export interface CharacterSaveResult extends CloudCharacter {
+  syncConflict?: CharacterSaveConflictInfo;
+}
+
+export interface SaveCharacterOptions {
+  /**
+   * Última `updated_at` remota conhecida por este dispositivo. Quando a nuvem
+   * informa outra data, a ficha mudou em outro lugar e o salvamento passa a
+   * ser um merge semântico em vez de uma sobrescrita cega.
+   */
+  expectedUpdatedAt?: string;
+}
+
+interface RemoteCharacterRevision {
+  updatedAt: string;
+  name: string;
+  level: number;
+  data: Record<string, unknown>;
+}
+
+function stripHistory(value: Record<string, unknown>): Record<string, unknown> {
+  const snapshot = structuredClone(value);
+  delete snapshot.history;
+  return snapshot;
+}
+
+function remoteCharacterKey(character: CharacterData): string {
+  return typeof character.id === "string" ? character.id.trim() : "";
+}
+
+async function fetchRemoteCharacterRevision(
+  userId: string,
+  characterKey: string,
+): Promise<RemoteCharacterRevision | null> {
+  if (!isSupabaseConfigured || !supabase || !characterKey) return null;
+  try {
+    const { data, error } = await withRequestTimeout(
+      supabase
+        .from("characters")
+        .select("character_key,name,level,data,updated_at")
+        .eq("user_id", userId)
+        .eq("character_key", characterKey)
+        .maybeSingle(),
+      8_000,
+      "A verificação de concorrência da ficha demorou para responder.",
+    );
+    if (error) {
+      // Sem a leitura remota não há como provar conflito; o salvamento segue
+      // o fluxo normal e uma falha real do upsert ainda será reportada.
+      console.warn("Supabase character revision check aviso:", error.message);
+      return null;
+    }
+    if (!data) return null;
+    return {
+      updatedAt: typeof (data as any).updated_at === "string" ? (data as any).updated_at : "",
+      name: typeof (data as any).name === "string" ? (data as any).name : "",
+      level: Number((data as any).level) || 1,
+      data: ((data as any).data || {}) as Record<string, unknown>,
+    };
+  } catch (err) {
+    console.warn("Verificação de concorrência da ficha indisponível:", err);
+    return null;
+  }
 }
 
 export function validateCharacter(value: unknown): CharacterData {
@@ -372,6 +455,9 @@ export async function listCharacters(
           ...row,
           system_id: row.system_id || (row.data as any)?.system_id || (row.data as any)?.systemId || "pf2e",
         })) as CloudCharacter[];
+        // Cada leitura registra a revisão conhecida: é ela que permite detectar
+        // alterações feitas em outro dispositivo antes do próximo autosave.
+        for (const row of remote) rememberCloudRevision(activeUser.id, row);
         const hydratedRemote = await hydrateRemoteHistory(remote, activeUser.id);
         result = mergeCharacterLists(hydratedRemote, getLocalCharacters(activeUser.id));
       } else if (error) {
@@ -399,19 +485,83 @@ export async function listCharacters(
 
 export async function saveCharacter(
   characterValue: unknown,
-  userOrSession?: { id: string }
-): Promise<CloudCharacter> {
+  userOrSession?: { id: string },
+  options?: SaveCharacterOptions,
+): Promise<CharacterSaveResult> {
   const character = validateCharacter(characterValue);
   const activeUser = userOrSession || (await getCurrentSession())?.user;
   if (!activeUser) {
     throw new Error("Você precisa estar conectado para salvar uma ficha na sua conta.");
   }
 
+  const key = remoteCharacterKey(character);
+  // A revisão base precisa ser lida ANTES de qualquer consulta que a atualize.
+  const knownRevision = readCloudRevision(activeUser.id, key);
+  const expectedUpdatedAt = options?.expectedUpdatedAt
+    ?? readKnownRemoteUpdatedAt(activeUser.id, key);
+
+  let remoteRevision: RemoteCharacterRevision | null = null;
+  if (isSupabaseConfigured && supabase && expectedUpdatedAt) {
+    remoteRevision = await fetchRemoteCharacterRevision(activeUser.id, key);
+  }
+  const hasConflict = Boolean(
+    remoteRevision?.updatedAt && expectedUpdatedAt && remoteRevision.updatedAt !== expectedUpdatedAt,
+  );
+
+  let documentForSave: CharacterData = character;
+  let syncConflict: CharacterSaveConflictInfo | undefined;
+
+  if (hasConflict && remoteRevision) {
+    const baseDocument = knownRevision && knownRevision.updatedAt === expectedUpdatedAt
+      ? knownRevision.data
+      : undefined;
+    const remoteDocument = stripHistory(remoteRevision.data || {});
+    const merged = mergeCharacterDocuments(
+      stripHistory(character as unknown as Record<string, unknown>),
+      remoteDocument,
+      baseDocument,
+    );
+    const mergedDocument = merged.document as CharacterData;
+    const mergedHistory = Array.isArray(mergedDocument.history)
+      ? (mergedDocument.history as CharacterRevision[])
+      : [];
+    // A versão exata da nuvem fica registrada como revisão recuperável, mesmo
+    // quando o merge preserva apenas parte dela.
+    const remoteSnapshot: CharacterRevision = {
+      savedAt: remoteRevision.updatedAt || new Date().toISOString(),
+      name: remoteRevision.name || String(remoteDocument.name ?? character.name),
+      level: remoteRevision.level || character.level,
+      data: stripHistory(remoteRevision.data || {}),
+    };
+    documentForSave = {
+      ...mergedDocument,
+      id: character.id,
+      name: typeof mergedDocument.name === "string" && mergedDocument.name.trim()
+        ? mergedDocument.name
+        : character.name,
+      level: Number.isInteger(Number(mergedDocument.level)) ? Number(mergedDocument.level) : character.level,
+      history: [remoteSnapshot, ...mergedHistory].slice(0, 50),
+    } as CharacterData;
+    syncConflict = {
+      merged: true,
+      strategy: merged.strategy,
+      conflicts: merged.conflicts,
+      remoteUpdatedAt: remoteRevision.updatedAt || null,
+      preservedRemoteCollections: merged.preservedRemoteCollections,
+    };
+  }
+
   const existingList = await listCharacters(activeUser as UserProfile);
   const previous = existingList.find((item) => item.character_key === character.id || item.id === character.id)?.data;
+  const priorHistory = syncConflict
+    ? documentForSave.history
+    : previous?.history;
   const savedCharacter = {
-    ...character,
-    history: buildCharacterRevisionHistory(character, previous),
+    ...documentForSave,
+    history: buildCharacterRevisionHistory(
+      documentForSave,
+      { ...(previous || documentForSave), history: priorHistory } as CharacterData,
+    ),
   } as CharacterData;
   const payload = toCharacterPayload(savedCharacter, activeUser);
 
@@ -450,8 +600,10 @@ export async function saveCharacter(
           system_id: (data as any).system_id || payload.system_id,
         };
         cacheLocalCharacter(activeUser.id, saved);
+        // A revisão gravada passa a ser a base das próximas comparações.
+        rememberCloudRevision(activeUser.id, saved);
         await persistRemoteRevision(saved, savedCharacter.history?.[0]);
-        return saved;
+        return syncConflict ? { ...saved, syncConflict } : saved;
       }
       if (error) console.warn("Supabase upsert aviso:", error.message);
       throw error || new Error("O Supabase não retornou a ficha salva.");
@@ -501,6 +653,10 @@ export async function deleteCharacter(id: string, userOrSession?: { id: string }
   if (!activeUser) {
     throw new Error("Usuário não autenticado.");
   }
+
+  // Uma ficha excluída não deve manter revisão conhecida nem snapshot pendente.
+  forgetCloudRevision(activeUser.id, id);
+  removePendingSave(activeUser.id, id);
 
   if (isSupabaseConfigured && supabase) {
     try {

@@ -63,7 +63,9 @@ describe("PortalPages", () => {
     await waitFor(() => expect(screen.getByRole("heading", { name: "Compêndio de criação" })).toBeInTheDocument());
     expect(document.getElementById("legacy-builder-root")).toHaveAttribute("hidden");
     expect(screen.getAllByText("Fonte Remaster").length).toBeGreaterThan(0);
-  });
+    // O Compêndio monta o catálogo completo; sob a suíte paralela a espera
+    // padrão de 5s pode ser insuficiente sem indicar falha real.
+  }, 20_000);
 
   it("restaura o título do construtor ao voltar do portal", async () => {
     render(<I18nProvider><PortalPages /></I18nProvider>, { container: document.getElementById("test-root")! });

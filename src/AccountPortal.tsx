@@ -17,8 +17,20 @@ import {
   listCharacters,
   renameCharacter,
   saveCharacter,
+  type CharacterData,
   type CloudCharacter,
 } from "./services/characters";
+import {
+  backoffDelayMs,
+  duePendingSaves,
+  listPendingSaves,
+  markPendingSaveAttempt,
+  migrateLegacyPendingSave,
+  pendingSaveCount,
+  removePendingSave,
+  syncClock,
+  upsertPendingSave,
+} from "./services/characterSync";
 import { isSupabaseConfigured } from "./lib/supabase";
 import "./account.css";
 import { useI18n } from "./i18n";
@@ -46,7 +58,8 @@ export function AccountPortal() {
   const [working, setWorking] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
-  const [autoSaveStatus, setAutoSaveStatus] = useState<"idle" | "syncing" | "saved" | "pending">("idle");
+  const [autoSaveStatus, setAutoSaveStatus] = useState<"idle" | "syncing" | "saved" | "pending" | "conflict">("idle");
+  const [pendingSyncCount, setPendingSyncCount] = useState(0);
   const [authMode, setAuthMode] = useState<AuthMode>("signin");
   const [rememberMe, setRememberMe] = useState(true);
   const [email, setEmail] = useState(() => {
@@ -274,28 +287,57 @@ export function AccountPortal() {
     }
   };
 
-  const saveCurrent = async (activeSession: AuthSession | null = session, silent = false, queuedCharacter?: Record<string, unknown>) => {
+  /**
+   * Publica o estado de sincronização na interface e em um evento de janela,
+   * permitindo que o construtor legado reaja sem acoplamento direto ao portal.
+   */
+  const publishSyncStatus = (
+    status: "idle" | "syncing" | "saved" | "pending" | "conflict",
+    pending: number,
+  ) => {
+    setAutoSaveStatus(status);
+    setPendingSyncCount(pending);
+    try {
+      window.dispatchEvent(new CustomEvent("pathbuilder:cloud-sync-status", { detail: { status, pending } }));
+    } catch {
+      // Ambiente sem CustomEvent (testes headless): o estado React basta.
+    }
+  };
+
+  const saveCurrent = async (
+    activeSession: AuthSession | null = session,
+    silent = false,
+    queuedCharacter?: Record<string, unknown>,
+    queuedBaseUpdatedAt?: string,
+  ): Promise<void> => {
     if (!activeSession) return;
     if (silent && autoSaveInFlightRef.current) {
       autoSavePendingRef.current = true;
       return;
     }
     if (silent) autoSaveInFlightRef.current = true;
-    if (silent) setAutoSaveStatus("syncing");
+    if (silent) publishSyncStatus("syncing", pendingSaveCount(activeSession.user.id));
     setWorking("save");
     if (!silent) {
       setError(null);
       setNotice(null);
     }
     let char: Record<string, unknown> | null = null;
+    let characterKey = "";
     try {
       char = queuedCharacter || (window as any).app?.getCurrentCharacter();
       if (!char) throw new Error(t("noActiveCharacter"));
-      await saveCharacter(char, activeSession.user);
+      characterKey = typeof char.id === "string" && char.id.trim() ? char.id.trim() : "";
+      const result = await saveCharacter(char, activeSession.user, { expectedUpdatedAt: queuedBaseUpdatedAt });
       if (silent) {
         autoSaveAttemptRef.current = 0;
-        setAutoSaveStatus("saved");
-        try { localStorage.removeItem(`pf2e_pending_cloud_save_${activeSession.user.id}`); } catch { /* ignore */ }
+        if (characterKey) removePendingSave(activeSession.user.id, characterKey);
+        if (result.syncConflict?.merged) {
+          publishSyncStatus("conflict", pendingSaveCount(activeSession.user.id));
+          setNotice(t("cloudSyncConflict"));
+        } else {
+          publishSyncStatus("saved", pendingSaveCount(activeSession.user.id));
+        }
       }
       await refreshCharacters(activeSession.user);
       window.dispatchEvent(new Event("pathbuilder:characters-changed"));
@@ -303,19 +345,18 @@ export function AccountPortal() {
     } catch (caught) {
       if (!silent) setError(t("saveCharacterFailed"));
       if (silent) {
-        setAutoSaveStatus("pending");
-        try {
-          if (char) localStorage.setItem(`pf2e_pending_cloud_save_${activeSession.user.id}`, JSON.stringify(char));
-        } catch { /* preserve the in-memory retry path */ }
-        const retryDelay = Math.min(30_000, 1_000 * (2 ** Math.min(autoSaveAttemptRef.current, 5)));
-        autoSaveAttemptRef.current += 1;
-        if (autoSaveRetryTimerRef.current) window.clearTimeout(autoSaveRetryTimerRef.current);
-        autoSaveRetryTimerRef.current = window.setTimeout(() => {
-          autoSaveRetryTimerRef.current = null;
-          // Retry the exact snapshot that failed, even if the builder has
-          // since emitted another event or the current app state was replaced.
-          void saveCurrent(activeSession, true, char || undefined);
-        }, retryDelay);
+        // A fila guarda um snapshot por personagem: duas fichas diferentes
+        // pendentes não sobrescrevem uma à outra.
+        if (char && characterKey) {
+          const entry = upsertPendingSave(activeSession.user.id, {
+            characterKey,
+            snapshot: char as CharacterData,
+            baseUpdatedAt: queuedBaseUpdatedAt,
+          });
+          markPendingSaveAttempt(activeSession.user.id, characterKey, entry.attempt + 1);
+        }
+        publishSyncStatus("pending", pendingSaveCount(activeSession.user.id));
+        schedulePendingRetry(activeSession);
       }
     } finally {
       setWorking(null);
@@ -323,18 +364,44 @@ export function AccountPortal() {
         autoSaveInFlightRef.current = false;
         if (autoSavePendingRef.current) {
           autoSavePendingRef.current = false;
-          // A newer snapshot supersedes the failed snapshot. Cancel its
-          // delayed retry so the two snapshots cannot race in the cloud.
+          // A alteração mais nova substitui o snapshot que falhou; o retry
+          // atrasado é cancelado para as duas versões não competirem na nuvem.
           if (autoSaveRetryTimerRef.current) {
             window.clearTimeout(autoSaveRetryTimerRef.current);
             autoSaveRetryTimerRef.current = null;
           }
-          // Coalesced changes must read the newest builder snapshot, not the
-          // older snapshot that was already in flight.
           window.setTimeout(() => void saveCurrent(activeSession, true), 0);
         }
       }
     }
+  };
+
+  /** Agenda a próxima tentativa respeitando o backoff de cada pendência. */
+  const schedulePendingRetry = (activeSession: AuthSession) => {
+    if (autoSaveRetryTimerRef.current) {
+      window.clearTimeout(autoSaveRetryTimerRef.current);
+      autoSaveRetryTimerRef.current = null;
+    }
+    const entries = listPendingSaves(activeSession.user.id);
+    if (!entries.length) return;
+    const now = syncClock.now();
+    const delay = Math.min(...entries.map((entry) => {
+      if (!entry.lastAttemptAt) return 0;
+      return Math.max(0, backoffDelayMs(entry.attempt) - (now - entry.lastAttemptAt));
+    }));
+    autoSaveRetryTimerRef.current = window.setTimeout(() => {
+      autoSaveRetryTimerRef.current = null;
+      void flushPendingSaves(activeSession);
+    }, delay);
+  };
+
+  /** Reenvia, uma por vez, os snapshots pendentes cuja janela de backoff venceu. */
+  const flushPendingSaves = async (activeSession: AuthSession) => {
+    if (autoSaveInFlightRef.current) return;
+    const [entry] = duePendingSaves(activeSession.user.id);
+    if (!entry) return;
+    await saveCurrent(activeSession, true, entry.snapshot, entry.baseUpdatedAt);
+    schedulePendingRetry(activeSession);
   };
 
   useEffect(() => {
@@ -374,34 +441,24 @@ export function AccountPortal() {
     };
     const retryPendingWhenOnline = () => {
       if (!session || autoSaveInFlightRef.current) return;
-      let queuedCharacter: Record<string, unknown> | undefined;
-      try {
-        const pending = localStorage.getItem(`pf2e_pending_cloud_save_${session.user.id}`);
-        if (pending) queuedCharacter = JSON.parse(pending);
-      } catch {
-        queuedCharacter = undefined;
-      }
-      if (!queuedCharacter) return;
       if (autoSaveRetryTimerRef.current) {
         window.clearTimeout(autoSaveRetryTimerRef.current);
         autoSaveRetryTimerRef.current = null;
       }
-      void saveCurrent(session, true, queuedCharacter);
+      void flushPendingSaves(session);
     };
     window.addEventListener("pathbuilder:character-changed", autoSaveFromBuilder);
     window.addEventListener("online", retryPendingWhenOnline);
     if (session) {
-      try {
-        const pending = localStorage.getItem(`pf2e_pending_cloud_save_${session.user.id}`);
-        if (pending) {
-          let queuedCharacter: Record<string, unknown> | undefined;
-          try { queuedCharacter = JSON.parse(pending); } catch { queuedCharacter = undefined; }
-          autoSaveTimerRef.current = window.setTimeout(() => {
-            autoSaveTimerRef.current = null;
-            void saveCurrent(session, true, queuedCharacter);
-          }, 0);
-        }
-      } catch { /* ignore unavailable storage */ }
+      // Migra a fila antiga (um snapshot por conta) e retoma pendências
+      // guardadas antes do recarregamento da página.
+      migrateLegacyPendingSave(session.user.id);
+      publishSyncStatus(
+        pendingSaveCount(session.user.id) > 0 ? "pending" : "idle",
+        pendingSaveCount(session.user.id),
+      );
+      const resume = window.setTimeout(() => void flushPendingSaves(session), 0);
+      autoSaveRetryTimerRef.current = resume;
     }
     return () => {
       window.removeEventListener("pathbuilder:save-account-character", saveFromBuilder);
@@ -514,6 +571,17 @@ export function AccountPortal() {
         {session?.user.username ?? (sessionReady ? t("signIn") : t("wait"))}
         {session?.user.role === "admin" && <span className="admin-badge">{t("admin")}</span>}
       </button>
+      {session && (autoSaveStatus === "pending" || autoSaveStatus === "conflict") && (
+        <span
+          className={`account-sync-badge account-sync-badge-${autoSaveStatus}`}
+          role="status"
+          aria-live="polite"
+          title={autoSaveStatus === "conflict" ? t("cloudSyncBadgeConflict") : t("cloudSyncBadgePending")}
+        >
+          <span aria-hidden="true">{autoSaveStatus === "conflict" ? "⚠" : "⏳"}</span>
+          <span className="sr-only">{autoSaveStatus === "conflict" ? t("cloudSyncBadgeConflict") : t("cloudSyncBadgePending")}</span>
+        </span>
+      )}
 
       {open && typeof document !== "undefined"
         ? createPortal(
@@ -762,24 +830,14 @@ export function AccountPortal() {
                     </div>
                     <small role="status" aria-live="polite" className="account-sync-status">
                       {autoSaveStatus === "syncing"
-                        ? locale === "en"
-                          ? "Saving changes to cloud…"
-                          : locale === "es"
-                            ? "Guardando cambios en la nube…"
-                            : "Salvando alterações na nuvem…"
+                        ? t("cloudSyncSaving")
                         : autoSaveStatus === "pending"
-                          ? locale === "en"
-                            ? "Cloud sync pending; retrying automatically."
-                            : locale === "es"
-                              ? "Sincronización pendiente; reintentando automáticamente."
-                              : "Sincronização pendente; tentando novamente automaticamente."
-                          : autoSaveStatus === "saved"
-                            ? locale === "en"
-                              ? "Changes synced."
-                              : locale === "es"
-                                ? "Cambios sincronizados."
-                                : "Alterações sincronizadas."
-                            : ""}
+                          ? `${t("cloudSyncPending")}${pendingSyncCount > 0 ? ` (${pendingSyncCount})` : ""}`
+                          : autoSaveStatus === "conflict"
+                            ? t("cloudSyncConflict")
+                            : autoSaveStatus === "saved"
+                              ? t("cloudSyncSaved")
+                              : ""}
                     </small>
 
                     <section className="cloud-library" aria-labelledby="library-title">

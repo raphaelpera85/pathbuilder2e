@@ -16,6 +16,7 @@
     "audit:core-skills:supabase": "node scripts/audit-core-skills-supabase.cjs",
     "audit:characters:supabase": "node scripts/audit-character-metadata-supabase.cjs",
     "audit:campaigns:supabase": "node scripts/audit-supabase-campaigns-authenticated.cjs",
+    "audit:character-sync:supabase": "node --experimental-strip-types scripts/audit-supabase-character-sync.cjs",
     "audit:rls:local": "node scripts/audit-local-rls-contract.cjs",
     "audit:character:usage": "node scripts/audit-local-character-usage.cjs",
     "audit:character:matrix": "node scripts/audit-local-character-matrix.cjs",

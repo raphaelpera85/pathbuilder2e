@@ -1015,20 +1015,41 @@ describe("responsive layout contract", () => {
   it("revalida a sessão compartilhada antes de abrir o login pelo salvamento do construtor", () => {
     const account = read("src/AccountPortal.tsx");
     const app = read("js/app.js");
-    expect(account).toContain("const saveCurrent = async (activeSession: AuthSession | null = session, silent = false, queuedCharacter?: Record<string, unknown>)");
+    expect(account).toContain("queuedCharacter?: Record<string, unknown>,");
     expect(account).toContain('pathbuilder:character-changed');
     expect(app).toContain('pathbuilder:character-changed');
-    expect(account).toContain('pf2e_pending_cloud_save_');
-    expect(account).toContain('Math.min(30_000, 1_000 * (2 ** Math.min(autoSaveAttemptRef.current, 5)))');
-    expect(account).toContain('autoSaveStatus === "syncing"');
-    expect(account).toContain('JSON.parse(pending)');
     expect(account).toContain("const scheduleAutoSave = (activeSession: AuthSession) =>");
     expect(account).toContain("void getCurrentSession().then((activeSession) => {");
-    expect(account).toContain("void saveCurrent(activeSession, true, char || undefined);");
     expect(account).toContain("window.setTimeout(() => void saveCurrent(activeSession, true), 0);");
     expect(account).toContain("window.clearTimeout(autoSaveRetryTimerRef.current);");
     expect(account).toContain("const activeSession = session || await getCurrentSession();");
     expect(account).toContain("void saveCurrent(activeSession);");
+  });
+
+  it("mantém a fila offline por personagem, com backoff e merge de conflitos", () => {
+    const account = read("src/AccountPortal.tsx");
+    const sync = read("src/services/characterSync.ts");
+    const characters = read("src/services/characters.ts");
+    // Fila por personagem em vez de um único snapshot por conta.
+    expect(sync).toContain('const QUEUE_PREFIX = "pf2e_pending_cloud_saves_v2_";');
+    expect(sync).toContain('const LEGACY_QUEUE_PREFIX = "pf2e_pending_cloud_save_";');
+    expect(sync).toContain("export function migrateLegacyPendingSave(userId: string): PendingCloudSave | null {");
+    expect(sync).toContain("export function backoffDelayMs(attempt: number): number {");
+    expect(sync).toContain("return Math.min(30_000, 1_000 * 2 ** Math.min(safeAttempt, 5));");
+    expect(sync).toContain("export function duePendingSaves(userId: string, now = syncClock.now()): PendingCloudSave[] {");
+    // Merge semântico com detecção de conflito por revisão conhecida.
+    expect(sync).toContain("export function mergeCharacterDocuments(");
+    expect(sync).toContain('strategy: base ? "three-way" : "union"');
+    expect(sync).toContain("export function rememberCloudRevision(");
+    expect(characters).toContain("expectedUpdatedAt");
+    expect(characters).toContain("remoteRevision.updatedAt !== expectedUpdatedAt");
+    expect(characters).toContain("mergeCharacterDocuments(");
+    // O portal usa a fila compartilhada e publica o estado incluindo conflito.
+    expect(account).toContain("upsertPendingSave(activeSession.user.id, {");
+    expect(account).toContain("duePendingSaves(activeSession.user.id)");
+    expect(account).toContain("migrateLegacyPendingSave(session.user.id)");
+    expect(account).toContain('pathbuilder:cloud-sync-status');
+    expect(account).toContain('"idle" | "syncing" | "saved" | "pending" | "conflict"');
   });
 
   it("localiza os subtítulos estruturais do portal", () => {

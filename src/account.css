@@ -187,6 +187,44 @@ body.theme-light #btnAIAssistantTopbar {
   text-transform: uppercase;
 }
 
+/* Indicador compacto do autosave: pendente (backoff) ou conflito resolvido. */
+.account-sync-badge {
+  flex: 0 0 auto;
+  display: inline-grid;
+  place-items: center;
+  min-width: 22px;
+  min-height: 22px;
+  border-radius: 999px;
+  border: 1px solid var(--pb-border-light);
+  background: rgba(255, 255, 255, .06);
+  font-size: 12px;
+  line-height: 1;
+}
+
+.account-sync-badge-pending {
+  color: #fbbf24;
+  border-color: rgba(251, 191, 36, .5);
+}
+
+.account-sync-badge-conflict {
+  color: #fb923c;
+  border-color: rgba(251, 146, 60, .6);
+}
+
+[data-theme="light"] .account-sync-badge {
+  background: rgba(0, 0, 0, .05);
+}
+
+[data-theme="light"] .account-sync-badge-pending {
+  color: #92400e;
+  border-color: rgba(146, 64, 14, .4);
+}
+
+[data-theme="light"] .account-sync-badge-conflict {
+  color: #9a3412;
+  border-color: rgba(154, 52, 18, .45);
+}
+
 .account-overlay {
   position: fixed;
   inset: 0;
