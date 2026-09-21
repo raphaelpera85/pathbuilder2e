@@ -3,6 +3,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import { I18nProvider } from "./i18n";
 import { formatCatalogValue, PortalPages } from "./PortalPages";
 import { pathfinderSources } from "./data/sources";
+import { googleDrivePdfs } from "./data/googleDrivePdfs";
 import type { PickerController, PickerType } from "./types";
 import { updateAccountViewState } from "./accountState";
 import { readFileSync } from "node:fs";
@@ -168,7 +169,7 @@ describe("PortalPages", () => {
   it("renderiza a seção de download dos livros com links diretos do google drive", async () => {
     window.location.hash = "#/downloads";
     render(<I18nProvider><PortalPages /></I18nProvider>, { container: document.getElementById("test-root")! });
-    expect(screen.getByRole("heading", { level: 1, name: "Download dos Livros e Suplementos PF2e" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 1, name: "Download dos Livros e Suplementos" })).toBeInTheDocument();
     expect(screen.queryByRole("link", { name: /Repositório GitHub/ })).not.toBeInTheDocument();
     expect(screen.queryByRole("link", { name: /Pasta \/livros/i })).not.toBeInTheDocument();
 
@@ -195,6 +196,39 @@ describe("PortalPages", () => {
     const printLinks = screen.getAllByRole("link", { name: /Imprimir/i });
     expect(printLinks.some((link) => link.getAttribute("href") === "./ficha.pdf")).toBe(true);
   }, 15_000);
+
+  it("inclui os livros T20, D&D 5e e OSE na página de downloads com selo de sistema", async () => {
+    window.location.hash = "#/downloads";
+    render(<I18nProvider><PortalPages /></I18nProvider>, { container: document.getElementById("test-root")! });
+
+    // O acervo multi-sistema deixou de existir apenas nos dados.
+    expect(screen.getByRole("heading", { level: 3, name: "Tormenta 20 (Livro Básico)" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 3, name: "D&D 5e - Curse of Strahd" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 3, name: "OSE Advanced Fantasy - Tomo do Jogador" })).toBeInTheDocument();
+
+    // Selos de sistema convivem com o selo de ruleset sem repetir "PF2e" nos outros sistemas.
+    expect(screen.getAllByText("Tormenta20").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Old-School Essentials").length).toBeGreaterThan(0);
+    // O ruleset exibido é o do próprio sistema, não "Remaster".
+    expect(screen.getAllByText("Padrão (2014)").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Padrão").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Avançado").length).toBeGreaterThan(0);
+
+    // O filtro por sistema restringe a grade ao sistema escolhido.
+    fireEvent.change(screen.getByLabelText("Sistema"), { target: { value: "t20" } });
+    expect(screen.getByRole("heading", { level: 3, name: "Tormenta 20 (Livro Básico)" })).toBeInTheDocument();
+    expect(screen.queryByRole("heading", { level: 3, name: "D&D 5e - Curse of Strahd" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("heading", { level: 3, name: "Livro do Jogador" })).not.toBeInTheDocument();
+
+    fireEvent.change(screen.getByLabelText("Sistema"), { target: { value: "pf2e" } });
+    expect(screen.queryByRole("heading", { level: 3, name: "Tormenta 20 (Livro Básico)" })).not.toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Baixar PDF direto: Livro do Jogador" })).toBeInTheDocument();
+  }, 15_000);
+
+  it("não repete nomes no índice de PDFs do Google Drive", () => {
+    const names = googleDrivePdfs.map((pdf) => pdf.name.trim().toLowerCase());
+    expect(new Set(names).size).toBe(names.length);
+  });
 
   it("não troca uma sessão persistida pelo evento inicial nulo do Supabase", () => {
     const source = readFileSync(resolve(process.cwd(), "src/PortalPages.tsx"), "utf8");

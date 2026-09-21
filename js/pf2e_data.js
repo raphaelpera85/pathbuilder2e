@@ -18800,3 +18800,34 @@ enrichAllFeatsWithFullMechanics();
     feat.description = feat.summaries["pt-BR"];
   }
 })();
+
+// ============================================================================
+// VERSÃO DO CATÁLOGO
+// Derivada das contagens reais: muda sozinha quando o acervo cresce ou muda de
+// composição, permitindo registrar no JSON exportado de qual catálogo a ficha
+// veio. Fica no fim do arquivo porque os blocos acima ainda adicionam registros.
+// A mesma fórmula existe em `src/services/exportMetadata.ts`
+// (`deriveCatalogVersion`); o teste de contrato garante que concordam.
+// ============================================================================
+PF2E_DATA.catalogVersion = (() => {
+  const CATALOG_KEYS = [
+    "ancestries", "heritages", "backgrounds", "classes", "subclasses", "archetypes",
+    "feats", "spells", "focusSpells", "rituals", "items", "weapons", "armors",
+    "shields", "formulas", "pets", "actions", "conditions", "buffs"
+  ];
+  const counts = {};
+  let total = 0;
+  for (const key of CATALOG_KEYS) {
+    const value = PF2E_DATA[key];
+    const count = Array.isArray(value) ? value.length : (value && typeof value === "object" ? Object.keys(value).length : 0);
+    counts[key] = count;
+    total += count;
+  }
+  let hash = 0x811c9dc5;
+  const signature = CATALOG_KEYS.map((key) => key + ":" + counts[key]).join("|");
+  for (let index = 0; index < signature.length; index += 1) {
+    hash ^= signature.charCodeAt(index);
+    hash = Math.imul(hash, 0x01000193) >>> 0;
+  }
+  return "pf2e-" + total + "-" + hash.toString(16).padStart(8, "0");
+})();

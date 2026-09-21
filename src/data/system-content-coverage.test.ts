@@ -74,7 +74,14 @@ describe("system content coverage contract", () => {
     expect(T20_RACES.every((entry) => T20_RACE_RULES.some((rule) => rule.id === entry.id && rule.sourcePage === entry.sourcePage))).toBe(true);
     expect(DND5E_CLASSES.every((entry) => DND5E_CLASS_RULES.some((rule) => rule.id === entry.id && rule.sourcePage === entry.sourcePage))).toBe(true);
     expect(DND5E_RACES.every((entry) => DND5E_RACE_RULES.some((rule) => rule.id === entry.id && rule.sourcePage === entry.sourcePage))).toBe(true);
-    expect(Object.values(OSE_CLASSES).every((entry) => entry.sourcePage === 28 && entry.progression.some((level) => level.level === 1) && entry.features.length > 0)).toBe(true);
+    // OSE: a proveniência é por classe (Livro de Regras para as quatro humanas do
+    // clássico, Tomo do Jogador para as avançadas e raciais), não uma página única.
+    // A auditoria completa está em `oseClassAudit.test.ts`.
+    expect(Object.values(OSE_CLASSES).every((entry) => (
+      Boolean(entry.sourceBook && entry.sourcePage && entry.sourcePage > 0)
+      && entry.progression.some((level) => level.level === 1)
+      && entry.features.length > 0
+    ))).toBe(true);
     expect(Object.values(OSE_RACES).every((entry) => entry.sourcePage === 78 && entry.traits.length > 0 && entry.nativeLanguages.length > 0)).toBe(true);
   });
 });

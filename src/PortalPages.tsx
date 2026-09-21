@@ -2,7 +2,10 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, typ
 import {
   pathfinderSources,
   additionalDownloadResources,
+  multiSystemSources,
+  type MultiSystemSource,
   type PathfinderSource,
+  type RulesetId,
   GOOGLE_DRIVE_FOLDER_URL,
   BLANK_SHEET_DRIVE_URL,
   googleDriveMapFiles,
@@ -665,16 +668,55 @@ function CatalogCard({ entry, onInspect }: { entry: PickerItem & { category: Pic
   </article>;
 }
 
+/** Rótulo trilíngue do ruleset, cobrindo também os vocabulários de T20, D&D 5e e OSE. */
+function rulesetMessageKey(ruleset: RulesetId): MessageKey {
+  switch (ruleset) {
+    case "remaster": return "rulesetRemaster";
+    case "legacy": return "rulesetLegacy";
+    case "standard": return "rulesetStandard";
+    case "advanced": return "rulesetAdvanced";
+    case "classic": return "rulesetClassic";
+    // Tormenta 20 usa "Padrão" (contra "Jogo do Ano"), não o padrão de 2014 do D&D.
+    case "padrao": return "rulesetT20";
+    default: return "rulesetReview";
+  }
+}
+
 function BookDownloadsSection() {
   const { locale, t } = useI18n();
   const [query, setQuery] = useState("");
   const [rulesetFilter, setRulesetFilter] = useState<string>("all");
   const [langFilter, setLangFilter] = useState<string>("all");
+  const [systemFilter, setSystemFilter] = useState<string>("all");
+  const rulesetLabel = (ruleset: RulesetId) => t(rulesetMessageKey(ruleset));
 
-  const rulesetLabel = (ruleset: "remaster" | "legacy" | "needs_review") =>
-    ruleset === "remaster" ? t("rulesetRemaster") : ruleset === "legacy" ? t("rulesetLegacy") : t("rulesetReview");
+  /** Livros PF2e não declaram `system`; ausência do campo significa PF2e. */
+  const systemOf = (source: PathfinderSource): MultiSystemSource["system"] =>
+    (source as MultiSystemSource).system ?? "pf2e";
 
-  const allDownloadItems = useMemo(() => [...additionalDownloadResources, ...pathfinderSources], []);
+  const systemLabelOf = (source: PathfinderSource): string => {
+    const label = (source as MultiSystemSource).systemLabel;
+    if (label) return label[locale];
+    return t("systemPf2e");
+  };
+
+  const allDownloadItems = useMemo<PathfinderSource[]>(
+    () => [...additionalDownloadResources, ...pathfinderSources, ...multiSystemSources],
+    [],
+  );
+
+  const availableSystems = useMemo(() => {
+    const systems = new Set<MultiSystemSource["system"]>(["pf2e"]);
+    for (const source of allDownloadItems) systems.add(systemOf(source));
+    return (["pf2e", "t20", "dnd5e", "ose"] as const).filter((system) => systems.has(system));
+  }, [allDownloadItems]);
+
+  const systemLabelForFilter = (system: MultiSystemSource["system"]): string => {
+    if (system === "t20") return t("systemT20");
+    if (system === "dnd5e") return t("systemDnd5e");
+    if (system === "ose") return t("systemOse");
+    return t("systemPf2e");
+  };
 
   const filteredSources = useMemo(() => {
     return allDownloadItems.filter((source) => {
@@ -683,9 +725,10 @@ function BookDownloadsSection() {
       const matchesQuery = !query || title.includes(query.toLowerCase()) || filename.includes(query.toLowerCase());
       const matchesRuleset = rulesetFilter === "all" || source.ruleset === rulesetFilter;
       const matchesLang = langFilter === "all" || source.language === langFilter;
-      return matchesQuery && matchesRuleset && matchesLang;
+      const matchesSystem = systemFilter === "all" || systemOf(source) === systemFilter;
+      return matchesQuery && matchesRuleset && matchesLang && matchesSystem;
     });
-  }, [allDownloadItems, query, rulesetFilter, langFilter, locale]);
+  }, [allDownloadItems, query, rulesetFilter, langFilter, systemFilter, locale]);
 
   return (
     <section className="downloads-section" aria-label={t("downloadsTitle")}>
@@ -754,6 +797,17 @@ function BookDownloadsSection() {
           aria-label={t("searchBooks")}
         />
         <select
+          value={systemFilter}
+          onChange={(e) => setSystemFilter(e.target.value)}
+          className="downloads-filter-select"
+          aria-label={t("systemLabel")}
+        >
+          <option value="all">{t("filterAllSystems")}</option>
+          {availableSystems.map((system) => (
+            <option key={system} value={system}>{systemLabelForFilter(system)}</option>
+          ))}
+        </select>
+        <select
           value={rulesetFilter}
           onChange={(e) => setRulesetFilter(e.target.value)}
           className="downloads-filter-select"
@@ -787,9 +841,12 @@ function BookDownloadsSection() {
                   </span>
                 )}
               </div>
-              <span className={`ruleset-badge ${source.ruleset}`}>
-                {rulesetLabel(source.ruleset)}
-              </span>
+              <div className="book-card-badges">
+                <span className="system-badge">{systemLabelOf(source)}</span>
+                <span className={`ruleset-badge ${source.ruleset}`}>
+                  {rulesetLabel(source.ruleset)}
+                </span>
+              </div>
             </div>
 
             <div className="book-card-meta">
@@ -938,9 +995,14 @@ function GoogleDriveLibrarySection({ locale }: { locale: "pt-BR" | "en" | "es" }
       ? { kicker: "BIBLIOTECA COMPLETA · GOOGLE DRIVE", title: "Imágenes y archivos", intro: "Abre cada carpeta organizada para explorar y descargar la biblioteca sincronizada completa.", open: "Abrir carpeta", note: "Las carpetas se abren directamente en Google Drive." }
       : { kicker: "BIBLIOTECA COMPLETA · GOOGLE DRIVE", title: "Imagens e arquivos", intro: "Abra cada pasta organizada para navegar e baixar toda a biblioteca sincronizada.", open: "Abrir pasta", note: "As pastas abrem diretamente no Google Drive." };
   const folderUrl = (fileId: string) => `https://drive.google.com/drive/folders/${fileId}`;
+  // O rótulo estático da pasta "Livros" ficava desatualizado a cada expansão do
+  // acervo; o número passa a ser derivado do que o portal realmente cataloga.
+  const cataloguedBookCount = pathfinderSources.length + multiSystemSources.length;
+  const folderCountLabel = (folder: (typeof GOOGLE_DRIVE_LIBRARY_FOLDERS)[number]) =>
+    folder.id === "books" ? `${cataloguedBookCount} PDFs` : folder.countLabels[locale];
   return <section className="downloads-section library-assets-section" aria-label={labels.title}>
     <div className="downloads-header-card library-assets-header-card"><div className="downloads-header-info"><span className="downloads-kicker">{labels.kicker}</span><h2>🗂️ {labels.title}</h2><p>{labels.intro}</p><small className="downloads-note">ℹ️ {labels.note}</small></div></div>
-    <div className="library-folder-grid">{GOOGLE_DRIVE_LIBRARY_FOLDERS.map((folder) => <article className="book-download-card library-folder-card" key={folder.fileId}><div className="library-folder-icon" aria-hidden="true">{folder.id === "art" ? "🖼️" : folder.id === "maps" ? "🗺️" : folder.id === "adventures" ? "🏰" : folder.id === "books" ? "📚" : "📄"}</div><div className="book-card-top"><div className="book-card-title-group"><h3>{folder.titles[locale]}</h3><span className="book-alt-title">{folder.countLabels[locale]}</span></div></div><div className="book-card-actions"><a href={folderUrl(folder.fileId)} target="_blank" rel="noopener noreferrer" className="btn-download-primary">📁 {labels.open}</a></div></article>)}</div>
+    <div className="library-folder-grid">{GOOGLE_DRIVE_LIBRARY_FOLDERS.map((folder) => <article className="book-download-card library-folder-card" key={folder.fileId}><div className="library-folder-icon" aria-hidden="true">{folder.id === "art" ? "🖼️" : folder.id === "maps" ? "🗺️" : folder.id === "adventures" ? "🏰" : folder.id === "books" ? "📚" : "📄"}</div><div className="book-card-top"><div className="book-card-title-group"><h3>{folder.titles[locale]}</h3><span className="book-alt-title">{folderCountLabel(folder)}</span></div></div><div className="book-card-actions"><a href={folderUrl(folder.fileId)} target="_blank" rel="noopener noreferrer" className="btn-download-primary">📁 {labels.open}</a></div></article>)}</div>
   </section>;
 }
 
@@ -1000,7 +1062,7 @@ function LibraryAssetsSection({ locale }: { locale: "pt-BR" | "en" | "es" }) {
 
 function RulesPage() {
   const { locale, t } = useI18n();
-  const rulesetLabel = (ruleset: "remaster" | "legacy" | "needs_review") => ruleset === "remaster" ? t("rulesetRemaster") : ruleset === "legacy" ? t("rulesetLegacy") : t("rulesetReview");
+  const rulesetLabel = (ruleset: RulesetId) => t(rulesetMessageKey(ruleset));
   return <main className="portal-page" id="portal-content" tabIndex={-1}>
     <header className="portal-hero"><span>{t("rulesKicker")}</span><h1>{t("rulesTitle")}</h1><p>{t("rulesIntro")}</p></header>
     <section className="rules-layout">

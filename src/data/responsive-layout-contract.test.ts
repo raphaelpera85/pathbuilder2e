@@ -204,7 +204,9 @@ describe("responsive layout contract", () => {
     expect(loader).toContain("assertSafeCharacterDocument(character)");
     expect(loader).toContain("this.revalidateLoadedSelections();");
     expect(loader).toContain("this.renderAll();");
-    expect(app).toContain("this.character = assertSafeCharacterDocument(JSON.parse(document.getElementById(\"jsonArea\").value));\n      this.revalidateLoadedSelections();");
+    // A importação JSON descarta os metadados de transporte antes de validar.
+    expect(app).toContain("this.character = assertSafeCharacterDocument(parsed);");
+    expect(app).toContain("if (importedMeta) delete parsed.exportMetadata;");
     expect(app).toContain("this.character = assertSafeCharacterDocument(this.lastAIGeneratedChar);\n      this.revalidateLoadedSelections();");
   });
 

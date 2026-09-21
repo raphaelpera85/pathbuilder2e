@@ -1,5 +1,16 @@
 export type GoogleDrivePdf = { name: string; fileId: string; url: string };
 
+/**
+ * `PZO4009 - Pathfinder Map Pack - Temples.pdf` existia duas vezes na pasta do
+ * Google Drive, com fileIds diferentes. A coleção ativa mantém o primeiro id e
+ * o alternativo fica registrado aqui: sem autenticação os dois endpoints
+ * respondem igual, então a conferência de qual arquivo é o canônico precisa ser
+ * feita no Drive antes de trocar a entrada ativa.
+ */
+export const duplicateDriveFileIds: Record<string, string[]> = {
+  "PZO4009 - Pathfinder Map Pack - Temples.pdf": ["1kfCqATbCiXqGAEUWkGrwh42w1oUWqq8_"],
+};
+
 export const googleDrivePdfs: GoogleDrivePdf[] = [
   {
     "name": "(2021 - 09) Pathfinder 2e - Segredos da Magia.pdf",
@@ -575,11 +586,6 @@ export const googleDrivePdfs: GoogleDrivePdf[] = [
     "name": "PZO4009 - Pathfinder Map Pack - Temples.pdf",
     "fileId": "1Dj4vavmDpfM8B1Sb6zBN27EoZn9phlu6",
     "url": "https://drive.google.com/file/d/1Dj4vavmDpfM8B1Sb6zBN27EoZn9phlu6/view?usp=drive_link"
-  },
-  {
-    "name": "PZO4009 - Pathfinder Map Pack - Temples.pdf",
-    "fileId": "1kfCqATbCiXqGAEUWkGrwh42w1oUWqq8_",
-    "url": "https://drive.google.com/file/d/1kfCqATbCiXqGAEUWkGrwh42w1oUWqq8_/view?usp=drive_link"
   },
   {
     "name": "PZO4010 - Pathfinder Map Pack - Inns.pdf",

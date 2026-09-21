@@ -102,9 +102,11 @@ describe("Old-School Essentials (OSE) - Engine de Regras", () => {
     });
 
     it("calcula velocidade de movimento por peso em moedas (Coins)", () => {
+      // Faixas da Carga Detalhada (Livro de Regras p. 41): 400 / 600 / 800 / 1.600.
       expect(getOseMovementByLoad(350).exploration).toBe(36);
       expect(getOseMovementByLoad(600).exploration).toBe(27);
-      expect(getOseMovementByLoad(1000).exploration).toBe(18);
+      expect(getOseMovementByLoad(800).exploration).toBe(18);
+      expect(getOseMovementByLoad(1000).exploration).toBe(9);
       expect(getOseMovementByLoad(1500).exploration).toBe(9);
       expect(getOseMovementByLoad(2000).exploration).toBe(0);
     });

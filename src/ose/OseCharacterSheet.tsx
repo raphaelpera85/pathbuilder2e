@@ -9,11 +9,13 @@ import {
   getOseChaModifiers,
   getOsePrimeRequisiteXpMod,
   getOseMovementByLoad,
+  OSE_BODY_ARMOR_WEIGHT_CLASS_BY_ID,
 } from "../data/ose/oseRules";
 import { OSE_RACES } from "../data/ose/oseRaces";
 import { OSE_CLASSES } from "../data/ose/oseClasses";
-import { calculateOseArmorClass } from "../data/ose/oseEquipment";
+import { calculateOseArmorClass, OSE_ARMORS, OSE_BEASTS, OSE_GEAR, OSE_SPECIALISTS_RETAINERS, OSE_WEAPONS } from "../data/ose/oseEquipment";
 import { OSE_SPELLS } from "../data/ose/oseSpells";
+import { deriveCatalogVersion, withExportMetadata } from "../services/exportMetadata";
 import { createOseEditablePdf, downloadOseEditablePdf } from "../services/osePdfExport";
 import "./oseTheme.css";
 
@@ -64,6 +66,15 @@ export function OseCharacterSheet({
   }, [char]);
 
   const movement = getOseMovementByLoad(totalCoinWeight);
+  // Carga Simplificada (Livro de Regras p. 41): a taxa depende só do tipo de
+  // armadura vestida e de estar carregando tesouros. Armadura, armas e escudo
+  // equipados não são tesouro — só moedas e o que vai guardado nos sacos contam.
+  const carriedTreasureWeight = char.goldGp + char.gear.reduce((sum, item) => sum + item.weightCoins, 0);
+  const simplifiedMovement = getOseMovementByLoad({
+    mode: "simplified",
+    armorClass: equippedArmor ? OSE_BODY_ARMOR_WEIGHT_CLASS_BY_ID[equippedArmor.id] : "none",
+    carryingTreasure: carriedTreasureWeight > 0,
+  });
 
   // Rolador de dados com log
   const rollDice = (diceStr: string, label: string) => {
@@ -94,7 +105,27 @@ export function OseCharacterSheet({
   };
 
   const handleExportJson = () => {
-    const dataStr = JSON.stringify(char, null, 2);
+    // O arquivo declara sistema, ruleset e versão do catálogo para que a
+    // reimportação possa avisar sobre incompatibilidade.
+    const payload = withExportMetadata(
+      char as unknown as Record<string, unknown>,
+      {
+        systemId: "ose",
+        ruleset: char.ruleset,
+        catalogVersion: deriveCatalogVersion({
+          // Classes e raças são mapas por chave; magias e equipamentos são listas.
+          classes: Object.keys(OSE_CLASSES).length,
+          races: Object.keys(OSE_RACES).length,
+          spells: OSE_SPELLS.length,
+          weapons: OSE_WEAPONS.length,
+          armors: OSE_ARMORS.length,
+          gear: OSE_GEAR.length,
+          beasts: OSE_BEASTS.length,
+          specialists: OSE_SPECIALISTS_RETAINERS.length,
+        }, "ose"),
+      },
+    );
+    const dataStr = JSON.stringify(payload, null, 2);
     const blob = new Blob([dataStr], { type: "application/json" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
@@ -462,6 +493,13 @@ export function OseCharacterSheet({
               <div style={{ marginTop: 4, display: "flex", gap: 12 }}>
                 <span>Exploração: <strong>{movement.exploration}m</strong></span>
                 <span>Combate: <strong>{movement.encounter}m</strong></span>
+              </div>
+              <div style={{ marginTop: 6, paddingTop: 6, borderTop: "1px solid var(--ose-border)" }}>
+                <div>🎽 <strong>Taxa:</strong> {simplifiedMovement.label}</div>
+                <div style={{ marginTop: 4, display: "flex", gap: 12 }}>
+                  <span>Exploração: <strong>{simplifiedMovement.exploration}m</strong></span>
+                  <span>Combate: <strong>{simplifiedMovement.encounter}m</strong></span>
+                </div>
               </div>
             </div>
           </div>

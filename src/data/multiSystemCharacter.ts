@@ -475,13 +475,23 @@ export function isT20PowerPrerequisiteSatisfied(character: MultiSystemCharacter,
     }
     if (normalized.includes("proficiencia com armaduras pesadas")) return Boolean(classRules && "proficiencies" in classRules && classRules.proficiencies.toLowerCase().includes("armaduras pesadas"));
     if (normalized.includes("proficiencia com escudos")) return Boolean(classRules && "proficiencies" in classRules && classRules.proficiencies.toLowerCase().includes("escudos"));
-    const trained = normalized.match(/treinado em (.+)/);
+    const trained = normalized.match(/treinado (?:em|na|no) (.+)/);
     if (trained) {
-      const skillName = skillAliases[trained[1]] || trained[1];
-      const skill = catalog.skills.find((entry) => normalize(entry.name) === skillName || entry.id === skillName);
-      return Boolean(skill && character.skillProficiencies.includes(skill.id));
+      // "Treinado em Enganação e Luta" (Finta Aprimorada, Tormenta 20 p. 134)
+      // exige as duas perícias. O separador " e " só vira AND quando todos os
+      // nomes resolvem para perícias reais; cláusulas ambíguas, como "treinado
+      // na perícia escolhida" (Foco em Perícia), seguem permissivas como antes.
+      const names = trained[1].split(/\s+e\s+/).map((name) => name.trim()).filter(Boolean);
+      const resolved = names.map((name) => {
+        const skillName = skillAliases[name] || name;
+        return catalog.skills.find((entry) => normalize(entry.name) === skillName || entry.id === skillName);
+      });
+      if (resolved.length > 0 && resolved.every(Boolean)) {
+        return resolved.every((skill) => character.skillProficiencies.includes(skill!.id));
+      }
+      return true;
     }
-    if (normalized.includes("proficiência com a arma")) return true;
+    if (normalized.includes("proficiencia com a arma")) return true;
     const repeatedPower = normalized.match(/^(.+) duas vezes$/);
     if (repeatedPower) return powerQuantity(repeatedPower[1]) >= 2;
     if (catalog.feats.some((feat) => normalize(feat.name) === normalized)) return hasPower(alternative);

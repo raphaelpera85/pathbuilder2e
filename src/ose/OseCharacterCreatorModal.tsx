@@ -12,6 +12,7 @@ import {
   type OseAlignment,
   OSE_ADDITIONAL_LANGUAGES,
   isOseClassAvailableForMode,
+  OSE_CLASSIC_RACE_BY_CLASS,
   isOseClassAllowedForRace,
   isOseWeaponAllowedForClass,
   isOseArmorAllowedForClass,
@@ -43,10 +44,11 @@ const OSE_CREATION_RULES: Record<"advanced" | "classic", readonly string[]> = {
   ],
   classic: [
     "Role 3d6 para os seis atributos na ordem indicada pelo livro.",
-    "Escolha uma classe ou raça (Anão, Elfo ou Halfling) quando a classe racial estiver disponível.",
+    "Escolha uma das sete classes do clássico: Clérigo, Anão, Elfo, Guerreiro, Halfling, Mago ou Ladrão.",
     "Aplique alinhamento, modificadores, salvamentos, THAC0 e Classe de Armadura da classe escolhida.",
     "Role os Pontos de Vida pelo dado da classe e aplique o modificador de Constituição.",
     "Role o ouro inicial e compre o equipamento permitido pelo catálogo clássico.",
+    "Conjuradores (Clérigo, Mago e Elfo) escolhem magias iniciais do 1º círculo; o Mago recebe Ler Magia.",
   ],
 };
 
@@ -169,19 +171,14 @@ export function OseCharacterCreatorModal({
   const [selectedClassId, setSelectedClassId] = useState<string>("guerreiro");
 
   const selectedClass: OseClass = OSE_CLASSES[selectedClassId] || OSE_CLASSES.guerreiro;
-  const classicRaceByClass: Record<string, string> = {
-    anao_bx: "anao",
-    elfo_bx: "elfo",
-    halfling_bx: "halfling",
-  };
   const effectiveRaceId = creationMode === "classic"
-    ? classicRaceByClass[selectedClass.id] || "humano"
+    ? OSE_CLASSIC_RACE_BY_CLASS[selectedClass.id] || "humano"
     : selectedRaceId;
   const selectedRace: OseRace = OSE_RACES[effectiveRaceId] || OSE_RACES.humano;
 
   useEffect(() => {
-    if (!isOseClassAvailableForMode(selectedClass.isRaceClass, creationMode) || (creationMode === "advanced" && !isOseClassAllowedForRace(selectedRace, selectedClass))) {
-      const firstValidClass = Object.values(OSE_CLASSES).find((cls) => isOseClassAvailableForMode(cls.isRaceClass, creationMode) && (creationMode === "classic" || isOseClassAllowedForRace(selectedRace, cls)));
+    if (!isOseClassAvailableForMode(selectedClass, creationMode) || (creationMode === "advanced" && !isOseClassAllowedForRace(selectedRace, selectedClass))) {
+      const firstValidClass = Object.values(OSE_CLASSES).find((cls) => isOseClassAvailableForMode(cls, creationMode) && (creationMode === "classic" || isOseClassAllowedForRace(selectedRace, cls)));
       if (firstValidClass) setSelectedClassId(firstValidClass.id);
     }
     setValidationMessage("");
@@ -220,10 +217,18 @@ export function OseCharacterCreatorModal({
   const finalMaxHp = initialCharacter && !hasRerolledHp
     ? initialCharacter.maxHp
     : Math.max(1, hpRoll + conMod);
-  const maxClassLevel = Math.min(
-    selectedClass.progression[selectedClass.progression.length - 1]?.level || 1,
-    selectedRace.maxClassLevels[selectedClass.id] ?? 1,
-  );
+  const classLevelCap = selectedClass.progression[selectedClass.progression.length - 1]?.level || 1;
+  // Em Classic o limite é o da própria classe racial (Anão 12, Elfo 10,
+  // Halfling 8) ou da classe humana, todos já embutidos na progressão. Em
+  // Advanced o limite vem da tabela raça × classe do Tomo do Jogador. Sem essa
+  // distinção, uma classe racial clássica caía no fallback `?? 1` e a ficha
+  // ficava travada no nível 1.
+  const raceLevelCap = selectedRace.maxClassLevels[selectedClass.id];
+  const maxClassLevel = creationMode === "classic"
+    ? classLevelCap
+    // `null` na tabela significa ilimitado (até o teto da classe); a chave
+    // ausente continua conservadora, porque a combinação não é permitida.
+    : Math.min(classLevelCap, raceLevelCap === null ? classLevelCap : raceLevelCap ?? 1);
   const currentProgression = selectedClass.progression.find((entry) => entry.level === characterLevel) || selectedClass.progression[0];
 
   useEffect(() => {
@@ -411,12 +416,15 @@ export function OseCharacterCreatorModal({
 
   // Finalizar
   const handleFinish = () => {
-    if (!isOseClassAvailableForMode(selectedClass.isRaceClass, creationMode)) {
+    if (!isOseClassAvailableForMode(selectedClass, creationMode)) {
       setValidationMessage("A classe selecionada não pertence à edição OSE escolhida.");
       setStep(2);
       return;
     }
-    if (!isOseClassAllowedForRace(selectedRace, selectedClass)) {
+    // A tabela raça × classe é do Advanced. Em Classic a raça é derivada da
+    // própria classe racial, então a checagem (que não possui a chave da classe
+    // racial) rejeitava toda ficha clássica no passo final.
+    if (creationMode === "advanced" && !isOseClassAllowedForRace(selectedRace, selectedClass)) {
       setValidationMessage("A raça selecionada não pode escolher esta classe no OSE.");
       setStep(2);
       return;
@@ -615,7 +623,7 @@ export function OseCharacterCreatorModal({
                     className={`ose-btn ${creationMode === "classic" ? "ose-btn-primary" : ""}`}
                     onClick={() => setCreationMode("classic")}
                   >
-                    Fantasia Clássica B/X (Raça como Classe)
+                    Fantasia Clássica B/X (Sete Classes)
                   </button>
                 </div>
               </div>
@@ -654,7 +662,7 @@ export function OseCharacterCreatorModal({
                 </h4>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 8 }}>
                   {Object.values(OSE_CLASSES)
-                    .filter((c) => isOseClassAvailableForMode(c.isRaceClass, creationMode) && (creationMode === "classic" || isOseClassAllowedForRace(selectedRace, c)))
+                    .filter((c) => isOseClassAvailableForMode(c, creationMode) && (creationMode === "classic" || isOseClassAllowedForRace(selectedRace, c)))
                     .map((c) => {
                       const qualified = meetsClassRequirements(c);
                       return (

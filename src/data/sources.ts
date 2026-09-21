@@ -1,10 +1,21 @@
+/**
+ * Vocabulário único de rulesets para o acervo de downloads. Cada sistema usa o
+ * seu próprio conjunto (`remaster`/`legacy` no PF2e, `padrao` no Tormenta 20,
+ * `standard` no D&D 5e 2014, `advanced`/`classic` no OSE), alinhado a
+ * `normalizeCharacterRuleset` em `src/services/characters.ts`, para que o selo
+ * exibido no download nunca atribua um ruleset PF2e a um livro de outro sistema.
+ */
+export type RulesetId =
+  | "remaster" | "legacy" | "needs_review"
+  | "padrao" | "standard" | "advanced" | "classic";
+
 export interface PathfinderSource {
   id: string;
   title: string;
   titles?: { "pt-BR": string; en: string; es: string };
   language: "pt-BR" | "en";
   pages: number;
-  ruleset: "remaster" | "legacy" | "needs_review";
+  ruleset: RulesetId;
   pageCountStatus: "verified_with_pdfinfo";
   languageEvidence: "inferred_from_filename";
   catalogStatus: "partial" | "pending";
@@ -357,7 +368,7 @@ export const multiSystemSources: MultiSystemSource[] = [
     titles: { "pt-BR": "Tormenta 20 (Livro Básico)", en: "Tormenta 20 (Core Rulebook)", es: "Tormenta 20 (Libro Básico)" },
     language: "pt-BR",
     pages: 407,
-    ruleset: "remaster",
+    ruleset: "padrao",
     pageCountStatus: "verified_with_pdfinfo",
     languageEvidence: "inferred_from_filename",
     catalogStatus: "partial",
@@ -376,7 +387,7 @@ export const multiSystemSources: MultiSystemSource[] = [
     titles: { "pt-BR": "Ameaças de Arton", en: "Threats of Arton", es: "Amenazas de Arton" },
     language: "pt-BR",
     pages: 280,
-    ruleset: "remaster",
+    ruleset: "padrao",
     pageCountStatus: "verified_with_pdfinfo",
     languageEvidence: "inferred_from_filename",
     catalogStatus: "pending",
@@ -395,7 +406,7 @@ export const multiSystemSources: MultiSystemSource[] = [
     titles: { "pt-BR": "Atlas de Arton", en: "Atlas of Arton", es: "Atlas de Arton" },
     language: "pt-BR",
     pages: 272,
-    ruleset: "remaster",
+    ruleset: "padrao",
     pageCountStatus: "verified_with_pdfinfo",
     languageEvidence: "inferred_from_filename",
     catalogStatus: "pending",
@@ -414,7 +425,7 @@ export const multiSystemSources: MultiSystemSource[] = [
     titles: { "pt-BR": "Código de Poderes", en: "Book of Powers", es: "Código de Poderes" },
     language: "pt-BR",
     pages: 192,
-    ruleset: "remaster",
+    ruleset: "padrao",
     pageCountStatus: "verified_with_pdfinfo",
     languageEvidence: "inferred_from_filename",
     catalogStatus: "pending",
@@ -433,7 +444,7 @@ export const multiSystemSources: MultiSystemSource[] = [
     titles: { "pt-BR": "Deuses de Arton", en: "Gods of Arton", es: "Dioses de Arton" },
     language: "pt-BR",
     pages: 256,
-    ruleset: "remaster",
+    ruleset: "padrao",
     pageCountStatus: "verified_with_pdfinfo",
     languageEvidence: "inferred_from_filename",
     catalogStatus: "pending",
@@ -452,7 +463,7 @@ export const multiSystemSources: MultiSystemSource[] = [
     titles: { "pt-BR": "Guia de NPCs", en: "NPC Guide", es: "Guía de PNJs" },
     language: "pt-BR",
     pages: 96,
-    ruleset: "remaster",
+    ruleset: "padrao",
     pageCountStatus: "verified_with_pdfinfo",
     languageEvidence: "inferred_from_filename",
     catalogStatus: "pending",
@@ -471,7 +482,7 @@ export const multiSystemSources: MultiSystemSource[] = [
     titles: { "pt-BR": "Só Aventuras", en: "Adventures Only", es: "Solo Aventuras" },
     language: "pt-BR",
     pages: 128,
-    ruleset: "remaster",
+    ruleset: "padrao",
     pageCountStatus: "verified_with_pdfinfo",
     languageEvidence: "inferred_from_filename",
     catalogStatus: "pending",
@@ -491,7 +502,7 @@ export const multiSystemSources: MultiSystemSource[] = [
     titles: { "pt-BR": "D&D 5e - Curse of Strahd", en: "D&D 5e - Curse of Strahd", es: "D&D 5e - Curse of Strahd" },
     language: "en",
     pages: 256,
-    ruleset: "legacy",
+    ruleset: "standard",
     pageCountStatus: "verified_with_pdfinfo",
     languageEvidence: "inferred_from_filename",
     catalogStatus: "pending",
@@ -510,7 +521,7 @@ export const multiSystemSources: MultiSystemSource[] = [
     titles: { "pt-BR": "D&D 5e - Tomo de Inimigos de Mordenkainen", en: "D&D 5e - Mordenkainen's Tome of Foes", es: "D&D 5e - Libro de enemigos de Mordenkainen" },
     language: "en",
     pages: 256,
-    ruleset: "legacy",
+    ruleset: "standard",
     pageCountStatus: "verified_with_pdfinfo",
     languageEvidence: "inferred_from_filename",
     catalogStatus: "pending",
@@ -529,7 +540,7 @@ export const multiSystemSources: MultiSystemSource[] = [
     titles: { "pt-BR": "D&D 5e - Trovão do Rei das Tempestades", en: "D&D 5e - Storm King's Thunder", es: "D&D 5e - El trueno del rey de las tormentas" },
     language: "en",
     pages: 256,
-    ruleset: "legacy",
+    ruleset: "standard",
     pageCountStatus: "verified_with_pdfinfo",
     languageEvidence: "inferred_from_filename",
     catalogStatus: "pending",
@@ -548,7 +559,7 @@ export const multiSystemSources: MultiSystemSource[] = [
     titles: { "pt-BR": "D&D 5e - Strixhaven: Currículo do Caos", en: "D&D 5e - Strixhaven: Curriculum of Chaos", es: "D&D 5e - Strixhaven: Currículo del caos" },
     language: "en",
     pages: 224,
-    ruleset: "legacy",
+    ruleset: "standard",
     pageCountStatus: "verified_with_pdfinfo",
     languageEvidence: "inferred_from_filename",
     catalogStatus: "pending",
@@ -567,7 +578,7 @@ export const multiSystemSources: MultiSystemSource[] = [
     titles: { "pt-BR": "D&D 5e - Horda da Rainha Dragão", en: "D&D 5e - Hoard of the Dragon Queen", es: "D&D 5e - El tesoro de la Reina Dragón" },
     language: "en",
     pages: 96,
-    ruleset: "legacy",
+    ruleset: "standard",
     pageCountStatus: "verified_with_pdfinfo",
     languageEvidence: "inferred_from_filename",
     catalogStatus: "pending",
@@ -586,7 +597,7 @@ export const multiSystemSources: MultiSystemSource[] = [
     titles: { "pt-BR": "Guia de Aventureiros da Costa da Espada", en: "Sword Coast Adventurer's Guide", es: "Guía del aventurero de la Costa de la Espada" },
     language: "pt-BR",
     pages: 160,
-    ruleset: "legacy",
+    ruleset: "standard",
     pageCountStatus: "verified_with_pdfinfo",
     languageEvidence: "inferred_from_filename",
     catalogStatus: "pending",
@@ -605,7 +616,7 @@ export const multiSystemSources: MultiSystemSource[] = [
     titles: { "pt-BR": "D&D 5e - Guia dos Mestres de Guilda de Ravnica", en: "D&D 5e - Guildmasters' Guide to Ravnica", es: "D&D 5e - Guía de los maestres de gremio de Rávnica" },
     language: "en",
     pages: 256,
-    ruleset: "legacy",
+    ruleset: "standard",
     pageCountStatus: "verified_with_pdfinfo",
     languageEvidence: "inferred_from_filename",
     catalogStatus: "pending",
@@ -624,7 +635,7 @@ export const multiSystemSources: MultiSystemSource[] = [
     titles: { "pt-BR": "D&D 5e - Príncipes do Apocalipse", en: "D&D 5e - Princes of the Apocalypse", es: "D&D 5e - Príncipes del Apocalipsis" },
     language: "en",
     pages: 256,
-    ruleset: "legacy",
+    ruleset: "standard",
     pageCountStatus: "verified_with_pdfinfo",
     languageEvidence: "inferred_from_filename",
     catalogStatus: "pending",
@@ -644,7 +655,7 @@ export const multiSystemSources: MultiSystemSource[] = [
     titles: { "pt-BR": "Old-School Essentials (Fantasy Clássico)", en: "Old-School Essentials (Classic Fantasy)", es: "Old-School Essentials (Fantasía Clásica)" },
     language: "en",
     pages: 296,
-    ruleset: "legacy",
+    ruleset: "classic",
     pageCountStatus: "verified_with_pdfinfo",
     languageEvidence: "inferred_from_filename",
     catalogStatus: "partial",
@@ -663,7 +674,7 @@ export const multiSystemSources: MultiSystemSource[] = [
     titles: { "pt-BR": "OSE Advanced Fantasy - Tomo do Jogador", en: "OSE Advanced Fantasy - Player's Tome", es: "OSE Advanced Fantasy - Tomo del Jugador" },
     language: "pt-BR",
     pages: 224,
-    ruleset: "legacy",
+    ruleset: "advanced",
     pageCountStatus: "verified_with_pdfinfo",
     languageEvidence: "inferred_from_filename",
     catalogStatus: "partial",

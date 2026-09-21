@@ -128,10 +128,12 @@ export const OSE_CLASSES: Record<string, OseClass> = {
       { level: 3, xp: 3000, hd: "3d6", thac0: 19, aacBonus: 0, saves: { death: 11, wands: 12, paralysis: 14, breath: 16, spells: 15 }, spells: [2, 1] },
       { level: 4, xp: 6000, hd: "4d6", thac0: 19, aacBonus: 0, saves: { death: 11, wands: 12, paralysis: 14, breath: 16, spells: 15 }, spells: [2, 2] },
       { level: 5, xp: 12000, hd: "5d6", thac0: 17, aacBonus: 2, saves: { death: 9, wands: 10, paralysis: 12, breath: 14, spells: 12 }, spells: [2, 2, 1] },
-      { level: 6, xp: 25000, hd: "6d6", thac0: 17, aacBonus: 2, saves: { death: 9, wands: 10, paralysis: 12, breath: 14, spells: 12 }, spells: [2, 2, 2] },
-      { level: 7, xp: 50000, hd: "7d6", thac0: 17, aacBonus: 2, saves: { death: 9, wands: 10, paralysis: 12, breath: 14, spells: 12 }, spells: [3, 2, 2, 1] },
-      { level: 8, xp: 100000, hd: "8d6", thac0: 17, aacBonus: 2, saves: { death: 9, wands: 10, paralysis: 12, breath: 14, spells: 12 }, spells: [3, 3, 2, 2] },
-      { level: 9, xp: 200000, hd: "9d6", thac0: 14, aacBonus: 5, saves: { death: 6, wands: 7, paralysis: 9, breath: 11, spells: 9 }, spells: [3, 3, 3, 2, 1] },
+      // Tomo do Jogador p. 37. O 6º nível trazia [2,2,2] (sem o 4º círculo) e o
+      // 7º trazia [3,2,2,1], deslocando os círculos a partir daí.
+      { level: 6, xp: 25000, hd: "6d6", thac0: 17, aacBonus: 2, saves: { death: 9, wands: 10, paralysis: 12, breath: 14, spells: 12 }, spells: [2, 2, 1, 1] },
+      { level: 7, xp: 50000, hd: "7d6", thac0: 17, aacBonus: 2, saves: { death: 9, wands: 10, paralysis: 12, breath: 14, spells: 12 }, spells: [2, 2, 2, 1, 1] },
+      { level: 8, xp: 100000, hd: "8d6", thac0: 17, aacBonus: 2, saves: { death: 9, wands: 10, paralysis: 12, breath: 14, spells: 12 }, spells: [3, 3, 2, 2, 1] },
+      { level: 9, xp: 200000, hd: "9d6", thac0: 14, aacBonus: 5, saves: { death: 6, wands: 7, paralysis: 9, breath: 11, spells: 9 }, spells: [3, 3, 3, 2, 2] },
       { level: 10, xp: 300000, hd: "9d6+1", thac0: 14, aacBonus: 5, saves: { death: 6, wands: 7, paralysis: 9, breath: 11, spells: 9 }, spells: [4, 4, 3, 3, 2] },
       { level: 11, xp: 400000, hd: "9d6+2", thac0: 14, aacBonus: 5, saves: { death: 6, wands: 7, paralysis: 9, breath: 11, spells: 9 }, spells: [4, 4, 4, 3, 3] },
       { level: 12, xp: 500000, hd: "9d6+3", thac0: 14, aacBonus: 5, saves: { death: 6, wands: 7, paralysis: 9, breath: 11, spells: 9 }, spells: [5, 5, 4, 4, 3] },
@@ -285,8 +287,9 @@ export const OSE_CLASSES: Record<string, OseClass> = {
     name: "Assassino",
     nameEn: "Assassin",
     description: "Peritos em morte silenciosa, disfarce impecável e fabricação de venenos letais.",
+    // Tomo do Jogador p. 30: "Requisitos: Nenhum; Requisito principal: DES".
     primeRequisites: ["dex"],
-    minRequirements: { dex: 9 },
+    minRequirements: {},
     hitDie: "d4",
     allowedArmor: "couro",
     shieldAllowed: true,
@@ -320,8 +323,9 @@ export const OSE_CLASSES: Record<string, OseClass> = {
     name: "Bárbaro",
     nameEn: "Barbarian",
     description: "Guerreiros impetuosos das estepes e montanhas, com constituição formidável e intuição selvagem.",
-    primeRequisites: ["str", "con"],
-    minRequirements: { str: 9, con: 9 },
+    // Tomo do Jogador p. 32: "Requisitos: Mínimo FOR 9; Requisito principal: FOR".
+    primeRequisites: ["str"],
+    minRequirements: { str: 9 },
     hitDie: "d8",
     allowedArmor: "couro_e_malha",
     shieldAllowed: true,
@@ -334,20 +338,22 @@ export const OSE_CLASSES: Record<string, OseClass> = {
       "Perícias da Selva: Rola para Rastrear, Subir Penhascos e Evitar Perigos Naturais.",
     ],
     progression: [
+      // Tomo do Jogador p. 33. As resistências do 4º ao 9º nível traziam o
+      // Ataque de Sopro um ponto acima do livro (14 em vez de 13).
       { level: 1, xp: 0, hd: "1d8", thac0: 19, aacBonus: 0, saves: { death: 10, wands: 13, paralysis: 12, breath: 15, spells: 16 } },
       { level: 2, xp: 2500, hd: "2d8", thac0: 19, aacBonus: 0, saves: { death: 10, wands: 13, paralysis: 12, breath: 15, spells: 16 } },
       { level: 3, xp: 5000, hd: "3d8", thac0: 19, aacBonus: 0, saves: { death: 10, wands: 13, paralysis: 12, breath: 15, spells: 16 } },
-      { level: 4, xp: 10000, hd: "4d8", thac0: 17, aacBonus: 2, saves: { death: 8, wands: 11, paralysis: 10, breath: 13, spells: 14 } },
-      { level: 5, xp: 20000, hd: "5d8", thac0: 17, aacBonus: 2, saves: { death: 8, wands: 11, paralysis: 10, breath: 13, spells: 14 } },
-      { level: 6, xp: 40000, hd: "6d8", thac0: 17, aacBonus: 2, saves: { death: 8, wands: 11, paralysis: 10, breath: 13, spells: 14 } },
-      { level: 7, xp: 80000, hd: "7d8", thac0: 14, aacBonus: 5, saves: { death: 6, wands: 9, paralysis: 8, breath: 10, spells: 12 } },
-      { level: 8, xp: 150000, hd: "8d8", thac0: 14, aacBonus: 5, saves: { death: 6, wands: 9, paralysis: 8, breath: 10, spells: 12 } },
-      { level: 9, xp: 300000, hd: "9d8", thac0: 14, aacBonus: 5, saves: { death: 6, wands: 9, paralysis: 8, breath: 10, spells: 12 } },
-      { level: 10, xp: 450000, hd: "9d8+3", thac0: 12, aacBonus: 7, saves: { death: 4, wands: 7, paralysis: 6, breath: 8, spells: 10 } },
-      { level: 11, xp: 600000, hd: "9d8+6", thac0: 12, aacBonus: 7, saves: { death: 4, wands: 7, paralysis: 6, breath: 8, spells: 10 } },
-      { level: 12, xp: 750000, hd: "9d8+9", thac0: 12, aacBonus: 7, saves: { death: 4, wands: 7, paralysis: 6, breath: 8, spells: 10 } },
-      { level: 13, xp: 900000, hd: "9d8+12", thac0: 10, aacBonus: 9, saves: { death: 2, wands: 5, paralysis: 4, breath: 5, spells: 8 } },
-      { level: 14, xp: 1050000, hd: "9d8+15", thac0: 10, aacBonus: 9, saves: { death: 2, wands: 5, paralysis: 4, breath: 5, spells: 8 } },
+      { level: 4, xp: 10000, hd: "4d8", thac0: 17, aacBonus: 2, saves: { death: 8, wands: 11, paralysis: 10, breath: 13, spells: 13 } },
+      { level: 5, xp: 18500, hd: "5d8", thac0: 17, aacBonus: 2, saves: { death: 8, wands: 11, paralysis: 10, breath: 13, spells: 13 } },
+      { level: 6, xp: 37000, hd: "6d8", thac0: 17, aacBonus: 2, saves: { death: 8, wands: 11, paralysis: 10, breath: 13, spells: 13 } },
+      { level: 7, xp: 85000, hd: "7d8", thac0: 14, aacBonus: 5, saves: { death: 6, wands: 9, paralysis: 8, breath: 10, spells: 10 } },
+      { level: 8, xp: 140000, hd: "8d8", thac0: 14, aacBonus: 5, saves: { death: 6, wands: 9, paralysis: 8, breath: 10, spells: 10 } },
+      { level: 9, xp: 270000, hd: "9d8", thac0: 14, aacBonus: 5, saves: { death: 6, wands: 9, paralysis: 8, breath: 10, spells: 10 } },
+      { level: 10, xp: 400000, hd: "9d8+3", thac0: 12, aacBonus: 7, saves: { death: 4, wands: 7, paralysis: 6, breath: 8, spells: 7 } },
+      { level: 11, xp: 530000, hd: "9d8+6", thac0: 12, aacBonus: 7, saves: { death: 4, wands: 7, paralysis: 6, breath: 8, spells: 7 } },
+      { level: 12, xp: 660000, hd: "9d8+9", thac0: 12, aacBonus: 7, saves: { death: 4, wands: 7, paralysis: 6, breath: 8, spells: 7 } },
+      { level: 13, xp: 790000, hd: "9d8+12", thac0: 10, aacBonus: 9, saves: { death: 3, wands: 5, paralysis: 4, breath: 5, spells: 5 } },
+      { level: 14, xp: 920000, hd: "9d8+15", thac0: 10, aacBonus: 9, saves: { death: 3, wands: 5, paralysis: 4, breath: 5, spells: 5 } },
     ],
   },
   bardo: {
@@ -355,8 +361,9 @@ export const OSE_CLASSES: Record<string, OseClass> = {
     name: "Bardo",
     nameEn: "Bard",
     description: "Trovadores e poetas aventureiros, conhecedores de lendas antigas, canções mágicas e feitiços arcanos.",
+    // Tomo do Jogador p. 34: "Requisitos: Mínimo DES 9, Mínimo INT 9; Requisito principal: CAR".
     primeRequisites: ["cha"],
-    minRequirements: { dex: 9, cha: 9 },
+    minRequirements: { dex: 9, int: 9 },
     hitDie: "d6",
     allowedArmor: "couro_e_malha",
     shieldAllowed: false,
@@ -383,11 +390,11 @@ export const OSE_CLASSES: Record<string, OseClass> = {
       { level: 7, xp: 64000, hd: "7d6", thac0: 17, aacBonus: 2, saves: { death: 12, wands: 13, paralysis: 11, breath: 14, spells: 13 }, spells: [3, 2, 2] },
       { level: 8, xp: 120000, hd: "8d6", thac0: 17, aacBonus: 2, saves: { death: 12, wands: 13, paralysis: 11, breath: 14, spells: 13 }, spells: [3, 3, 2, 1] },
       { level: 9, xp: 240000, hd: "9d6", thac0: 14, aacBonus: 5, saves: { death: 10, wands: 11, paralysis: 9, breath: 12, spells: 10 }, spells: [3, 3, 3, 2] },
-      { level: 10, xp: 360000, hd: "9d6+1", thac0: 14, aacBonus: 5, saves: { death: 10, wands: 11, paralysis: 9, breath: 12, spells: 10 }, spells: [3, 3, 3, 3] },
-      { level: 11, xp: 480000, hd: "9d6+2", thac0: 14, aacBonus: 5, saves: { death: 10, wands: 11, paralysis: 9, breath: 12, spells: 10 }, spells: [4, 3, 3, 3, 1] },
-      { level: 12, xp: 600000, hd: "9d6+3", thac0: 14, aacBonus: 5, saves: { death: 10, wands: 11, paralysis: 9, breath: 12, spells: 10 }, spells: [4, 4, 3, 3, 2] },
-      { level: 13, xp: 720000, hd: "9d6+4", thac0: 12, aacBonus: 7, saves: { death: 8, wands: 9, paralysis: 7, breath: 10, spells: 8 }, spells: [4, 4, 4, 3, 3] },
-      { level: 14, xp: 840000, hd: "9d6+5", thac0: 12, aacBonus: 7, saves: { death: 8, wands: 9, paralysis: 7, breath: 10, spells: 8 }, spells: [4, 4, 4, 4, 3] },
+      { level: 10, xp: 360000, hd: "9d6+2", thac0: 14, aacBonus: 5, saves: { death: 10, wands: 11, paralysis: 9, breath: 12, spells: 10 }, spells: [3, 3, 3, 3] },
+      { level: 11, xp: 480000, hd: "9d6+4", thac0: 14, aacBonus: 5, saves: { death: 10, wands: 11, paralysis: 9, breath: 12, spells: 10 }, spells: [3, 3, 3, 3, 1] },
+      { level: 12, xp: 600000, hd: "9d6+6", thac0: 14, aacBonus: 5, saves: { death: 10, wands: 11, paralysis: 9, breath: 12, spells: 10 }, spells: [3, 3, 3, 3, 2] },
+      { level: 13, xp: 720000, hd: "9d6+8", thac0: 12, aacBonus: 7, saves: { death: 8, wands: 9, paralysis: 7, breath: 10, spells: 8 }, spells: [3, 3, 3, 3, 3] },
+      { level: 14, xp: 840000, hd: "9d6+10", thac0: 12, aacBonus: 7, saves: { death: 8, wands: 9, paralysis: 7, breath: 10, spells: 8 }, spells: [4, 4, 3, 3, 3] },
     ],
   },
   druida: {
@@ -395,8 +402,9 @@ export const OSE_CLASSES: Record<string, OseClass> = {
     name: "Druida",
     nameEn: "Druid",
     description: "Guardiões dos bosques sagrados e forças primordiais, mestres do clima, flora e transmutação animal.",
+    // Tomo do Jogador p. 40: "Requisitos: Nenhum; Requisito principal: SAB".
     primeRequisites: ["wis"],
-    minRequirements: { wis: 9, cha: 9 },
+    minRequirements: {},
     hitDie: "d6",
     allowedArmor: "couro",
     shieldAllowed: true, // Escudo de madeira apenas
@@ -417,17 +425,19 @@ export const OSE_CLASSES: Record<string, OseClass> = {
       { level: 1, xp: 0, hd: "1d6", thac0: 19, aacBonus: 0, saves: { death: 11, wands: 12, paralysis: 14, breath: 16, spells: 15 }, spells: [1] },
       { level: 2, xp: 2000, hd: "2d6", thac0: 19, aacBonus: 0, saves: { death: 11, wands: 12, paralysis: 14, breath: 16, spells: 15 }, spells: [2] },
       { level: 3, xp: 4000, hd: "3d6", thac0: 19, aacBonus: 0, saves: { death: 11, wands: 12, paralysis: 14, breath: 16, spells: 15 }, spells: [2, 1] },
-      { level: 4, xp: 8000, hd: "4d6", thac0: 19, aacBonus: 0, saves: { death: 11, wands: 12, paralysis: 14, breath: 16, spells: 15 }, spells: [2, 2] },
-      { level: 5, xp: 16000, hd: "5d6", thac0: 17, aacBonus: 2, saves: { death: 9, wands: 10, paralysis: 12, breath: 14, spells: 12 }, spells: [2, 2, 1] },
-      { level: 6, xp: 32000, hd: "6d6", thac0: 17, aacBonus: 2, saves: { death: 9, wands: 10, paralysis: 12, breath: 14, spells: 12 }, spells: [2, 2, 2] },
-      { level: 7, xp: 64000, hd: "7d6", thac0: 17, aacBonus: 2, saves: { death: 9, wands: 10, paralysis: 12, breath: 14, spells: 12 }, spells: [3, 2, 2, 1] },
-      { level: 8, xp: 120000, hd: "8d6", thac0: 17, aacBonus: 2, saves: { death: 9, wands: 10, paralysis: 12, breath: 14, spells: 12 }, spells: [3, 3, 2, 2] },
-      { level: 9, xp: 240000, hd: "9d6", thac0: 14, aacBonus: 5, saves: { death: 6, wands: 7, paralysis: 9, breath: 11, spells: 9 }, spells: [3, 3, 3, 2, 1] },
-      { level: 10, xp: 360000, hd: "9d6+1", thac0: 14, aacBonus: 5, saves: { death: 6, wands: 7, paralysis: 9, breath: 11, spells: 9 }, spells: [4, 4, 3, 3, 2] },
-      { level: 11, xp: 480000, hd: "9d6+2", thac0: 14, aacBonus: 5, saves: { death: 6, wands: 7, paralysis: 9, breath: 11, spells: 9 }, spells: [4, 4, 4, 3, 3] },
-      { level: 12, xp: 600000, hd: "9d6+3", thac0: 14, aacBonus: 5, saves: { death: 6, wands: 7, paralysis: 9, breath: 11, spells: 9 }, spells: [5, 5, 4, 4, 3] },
-      { level: 13, xp: 720000, hd: "9d6+4", thac0: 12, aacBonus: 7, saves: { death: 3, wands: 5, paralysis: 7, breath: 8, spells: 7 }, spells: [5, 5, 5, 4, 4] },
-      { level: 14, xp: 840000, hd: "9d6+5", thac0: 12, aacBonus: 7, saves: { death: 3, wands: 5, paralysis: 7, breath: 8, spells: 7 }, spells: [6, 5, 5, 5, 4] },
+      // Tomo do Jogador p. 41. Os XP do 4º ao 8º nível estavam deslocados (o 4º
+      // era 8.000 em vez de 7.500 e o 8º era 120.000 em vez de 60.000).
+      { level: 4, xp: 7500, hd: "4d6", thac0: 19, aacBonus: 0, saves: { death: 11, wands: 12, paralysis: 14, breath: 16, spells: 15 }, spells: [2, 2] },
+      { level: 5, xp: 12500, hd: "5d6", thac0: 17, aacBonus: 2, saves: { death: 9, wands: 10, paralysis: 12, breath: 14, spells: 12 }, spells: [2, 2, 1, 1] },
+      { level: 6, xp: 20000, hd: "6d6", thac0: 17, aacBonus: 2, saves: { death: 9, wands: 10, paralysis: 12, breath: 14, spells: 12 }, spells: [2, 2, 2, 1, 1] },
+      { level: 7, xp: 35000, hd: "7d6", thac0: 17, aacBonus: 2, saves: { death: 9, wands: 10, paralysis: 12, breath: 14, spells: 12 }, spells: [3, 3, 2, 2, 1] },
+      { level: 8, xp: 60000, hd: "8d6", thac0: 17, aacBonus: 2, saves: { death: 9, wands: 10, paralysis: 12, breath: 14, spells: 12 }, spells: [3, 3, 3, 2, 2] },
+      { level: 9, xp: 90000, hd: "9d6", thac0: 14, aacBonus: 5, saves: { death: 6, wands: 7, paralysis: 9, breath: 11, spells: 9 }, spells: [4, 4, 3, 3, 2] },
+      { level: 10, xp: 125000, hd: "9d6+1", thac0: 14, aacBonus: 5, saves: { death: 6, wands: 7, paralysis: 9, breath: 11, spells: 9 }, spells: [4, 4, 4, 3, 3] },
+      { level: 11, xp: 200000, hd: "9d6+2", thac0: 14, aacBonus: 5, saves: { death: 6, wands: 7, paralysis: 9, breath: 11, spells: 9 }, spells: [5, 5, 4, 4, 3] },
+      { level: 12, xp: 300000, hd: "9d6+3", thac0: 14, aacBonus: 5, saves: { death: 6, wands: 7, paralysis: 9, breath: 11, spells: 9 }, spells: [5, 5, 5, 4, 4] },
+      { level: 13, xp: 750000, hd: "9d6+4", thac0: 12, aacBonus: 7, saves: { death: 3, wands: 5, paralysis: 7, breath: 8, spells: 7 }, spells: [6, 5, 5, 5, 4] },
+      { level: 14, xp: 1500000, hd: "9d6+5", thac0: 12, aacBonus: 7, saves: { death: 3, wands: 5, paralysis: 7, breath: 8, spells: 7 }, spells: [6, 6, 5, 5, 5] },
     ],
   },
   paladino: {
@@ -435,8 +445,9 @@ export const OSE_CLASSES: Record<string, OseClass> = {
     name: "Paladino",
     nameEn: "Paladin",
     description: "Cavaleiros sagrados devotados à ordem e à justiça divina, protegidos por auras benevolentes e cura sagrada.",
+    // Tomo do Jogador p. 68: "Requisitos: Mínimo CAR 9; Requisito principal: FOR e SAB".
     primeRequisites: ["str", "wis"],
-    minRequirements: { str: 9, con: 9, wis: 9, cha: 9 },
+    minRequirements: { cha: 9 },
     hitDie: "d8",
     allowedArmor: "todas",
     shieldAllowed: true,
@@ -471,8 +482,9 @@ export const OSE_CLASSES: Record<string, OseClass> = {
     name: "Ranger",
     nameEn: "Ranger",
     description: "Rastreadores solitários das fronteiras selvagens, letais com arco e espadas, defensores contra monstruosidades.",
-    primeRequisites: ["str", "wis"],
-    minRequirements: { str: 9, con: 9, wis: 9 },
+    // Tomo do Jogador p. 70: "Requisitos: Mínimo CON 9, Mínimo SAB 9; Requisito principal: FOR".
+    primeRequisites: ["str"],
+    minRequirements: { con: 9, wis: 9 },
     hitDie: "d8",
     allowedArmor: "couro_e_malha",
     shieldAllowed: true,
@@ -492,7 +504,7 @@ export const OSE_CLASSES: Record<string, OseClass> = {
       { level: 5, xp: 20000, hd: "5d8", thac0: 17, aacBonus: 2, saves: { death: 10, wands: 11, paralysis: 12, breath: 13, spells: 14 } },
       { level: 6, xp: 40000, hd: "6d8", thac0: 17, aacBonus: 2, saves: { death: 10, wands: 11, paralysis: 12, breath: 13, spells: 14 } },
       { level: 7, xp: 90000, hd: "7d8", thac0: 14, aacBonus: 5, saves: { death: 8, wands: 9, paralysis: 10, breath: 10, spells: 12 } },
-      { level: 8, xp: 175000, hd: "8d8", thac0: 14, aacBonus: 5, saves: { death: 8, wands: 9, paralysis: 10, breath: 10, spells: 12 } },
+      { level: 8, xp: 150000, hd: "8d8", thac0: 14, aacBonus: 5, saves: { death: 8, wands: 9, paralysis: 10, breath: 10, spells: 12 } },
       { level: 9, xp: 300000, hd: "9d8", thac0: 14, aacBonus: 5, saves: { death: 8, wands: 9, paralysis: 10, breath: 10, spells: 12 } },
       { level: 10, xp: 425000, hd: "9d8+2", thac0: 12, aacBonus: 7, saves: { death: 6, wands: 7, paralysis: 8, breath: 8, spells: 10 } },
       { level: 11, xp: 550000, hd: "9d8+4", thac0: 12, aacBonus: 7, saves: { death: 6, wands: 7, paralysis: 8, breath: 8, spells: 10 } },
@@ -506,8 +518,9 @@ export const OSE_CLASSES: Record<string, OseClass> = {
     name: "Ilusionista",
     nameEn: "Illusionist",
     description: "Mestres dos truques óticos, névoas cintilantes, miragens vivas e ilusões capazes de enganar mente e sentidos.",
-    primeRequisites: ["int", "dex"],
-    minRequirements: { int: 9, dex: 9 },
+    // Tomo do Jogador p. 62: "Requisitos: Mínimo DES 9; Requisito principal: INT".
+    primeRequisites: ["int"],
+    minRequirements: { dex: 9 },
     hitDie: "d4",
     allowedArmor: "nenhuma",
     shieldAllowed: false,
@@ -545,8 +558,9 @@ export const OSE_CLASSES: Record<string, OseClass> = {
     name: "Cavaleiro",
     nameEn: "Knight",
     description: "Membros da nobreza e ordens cavalheirescas juramentadas, especialistas em combate montado e honra bélica.",
-    primeRequisites: ["str", "cha"],
-    minRequirements: { str: 9, con: 9, cha: 9 },
+    // Tomo do Jogador p. 64: "Requisitos: Mínimo CON 9, Mínimo DES 9; Requisito principal: FOR".
+    primeRequisites: ["str"],
+    minRequirements: { con: 9, dex: 9 },
     hitDie: "d8",
     allowedArmor: "todas",
     shieldAllowed: true,
@@ -558,21 +572,23 @@ export const OSE_CLASSES: Record<string, OseClass> = {
       "Hospitalidade Feudal: Direito a abrigo e boas-vindas em castelos e ordens nobres.",
       "Código de Honra: Obriga-se à lealdade, proteção dos desamparados e combate leal.",
     ],
+    // Tomo do Jogador p. 65. A progressão anterior era a do Guerreiro copiada:
+    // XP e DV do 5º nível em diante não eram os do Cavaleiro (eram mais generosos).
     progression: [
       { level: 1, xp: 0, hd: "1d8", thac0: 19, aacBonus: 0, saves: { death: 12, wands: 13, paralysis: 14, breath: 15, spells: 16 } },
       { level: 2, xp: 2500, hd: "2d8", thac0: 19, aacBonus: 0, saves: { death: 12, wands: 13, paralysis: 14, breath: 15, spells: 16 } },
       { level: 3, xp: 5000, hd: "3d8", thac0: 19, aacBonus: 0, saves: { death: 12, wands: 13, paralysis: 14, breath: 15, spells: 16 } },
       { level: 4, xp: 10000, hd: "4d8", thac0: 17, aacBonus: 2, saves: { death: 10, wands: 11, paralysis: 12, breath: 13, spells: 14 } },
-      { level: 5, xp: 20000, hd: "5d8", thac0: 17, aacBonus: 2, saves: { death: 10, wands: 11, paralysis: 12, breath: 13, spells: 14 } },
-      { level: 6, xp: 40000, hd: "6d8", thac0: 17, aacBonus: 2, saves: { death: 10, wands: 11, paralysis: 12, breath: 13, spells: 14 } },
-      { level: 7, xp: 80000, hd: "7d8", thac0: 14, aacBonus: 5, saves: { death: 8, wands: 9, paralysis: 10, breath: 10, spells: 12 } },
-      { level: 8, xp: 150000, hd: "8d8", thac0: 14, aacBonus: 5, saves: { death: 8, wands: 9, paralysis: 10, breath: 10, spells: 12 } },
-      { level: 9, xp: 300000, hd: "9d8", thac0: 14, aacBonus: 5, saves: { death: 8, wands: 9, paralysis: 10, breath: 10, spells: 12 } },
-      { level: 10, xp: 450000, hd: "9d8+3", thac0: 12, aacBonus: 7, saves: { death: 6, wands: 7, paralysis: 8, breath: 8, spells: 10 } },
-      { level: 11, xp: 600000, hd: "9d8+6", thac0: 12, aacBonus: 7, saves: { death: 6, wands: 7, paralysis: 8, breath: 8, spells: 10 } },
-      { level: 12, xp: 750000, hd: "9d8+9", thac0: 12, aacBonus: 7, saves: { death: 6, wands: 7, paralysis: 8, breath: 8, spells: 10 } },
-      { level: 13, xp: 900000, hd: "9d8+12", thac0: 10, aacBonus: 9, saves: { death: 4, wands: 5, paralysis: 6, breath: 5, spells: 8 } },
-      { level: 14, xp: 1050000, hd: "9d8+15", thac0: 10, aacBonus: 9, saves: { death: 4, wands: 5, paralysis: 6, breath: 5, spells: 8 } },
+      { level: 5, xp: 18500, hd: "5d8", thac0: 17, aacBonus: 2, saves: { death: 10, wands: 11, paralysis: 12, breath: 13, spells: 14 } },
+      { level: 6, xp: 37000, hd: "6d8", thac0: 17, aacBonus: 2, saves: { death: 10, wands: 11, paralysis: 12, breath: 13, spells: 14 } },
+      { level: 7, xp: 85000, hd: "7d8", thac0: 14, aacBonus: 5, saves: { death: 8, wands: 9, paralysis: 10, breath: 10, spells: 12 } },
+      { level: 8, xp: 140000, hd: "8d8", thac0: 14, aacBonus: 5, saves: { death: 8, wands: 9, paralysis: 10, breath: 10, spells: 12 } },
+      { level: 9, xp: 270000, hd: "9d8", thac0: 14, aacBonus: 5, saves: { death: 8, wands: 9, paralysis: 10, breath: 10, spells: 12 } },
+      { level: 10, xp: 400000, hd: "9d8+2", thac0: 12, aacBonus: 7, saves: { death: 6, wands: 7, paralysis: 8, breath: 8, spells: 10 } },
+      { level: 11, xp: 530000, hd: "9d8+4", thac0: 12, aacBonus: 7, saves: { death: 6, wands: 7, paralysis: 8, breath: 8, spells: 10 } },
+      { level: 12, xp: 660000, hd: "9d8+6", thac0: 12, aacBonus: 7, saves: { death: 6, wands: 7, paralysis: 8, breath: 8, spells: 10 } },
+      { level: 13, xp: 790000, hd: "9d8+8", thac0: 10, aacBonus: 9, saves: { death: 4, wands: 5, paralysis: 6, breath: 5, spells: 8 } },
+      { level: 14, xp: 920000, hd: "9d8+10", thac0: 10, aacBonus: 9, saves: { death: 4, wands: 5, paralysis: 6, breath: 5, spells: 8 } },
     ],
   },
   // Classes Clássicas B/X onde a Raça é a Classe:
@@ -681,7 +697,42 @@ export const OSE_CLASSES: Record<string, OseClass> = {
   },
 };
 
+/**
+ * Proveniência por classe.
+ *
+ * A atribuição anterior carimbava **todas** as 16 classes com
+ * "Tomo do Jogador p. 28", o que estava errado em 15 delas: a p. 28 do Tomo é a
+ * descrição do Acrobata. Além disso, as quatro classes humanas do clássico não
+ * estão no Tomo — elas estão no Livro de Regras (Clérigo p. 16, Guerreiro p. 18,
+ * Ladrão p. 20, Mago p. 22), que é outro livro.
+ *
+ * As páginas abaixo são as impressas, onde ficam a descrição e a tabela de
+ * progressão de cada classe.
+ */
+const OSE_CLASS_SOURCES: Record<string, { book: string; page: number }> = {
+  // Livro de Regras — as quatro classes humanas do clássico
+  clerigo: { book: "Old-School Essentials — Livro de Regras", page: 16 },
+  guerreiro: { book: "Old-School Essentials — Livro de Regras", page: 18 },
+  ladrao: { book: "Old-School Essentials — Livro de Regras", page: 20 },
+  mago: { book: "Old-School Essentials — Livro de Regras", page: 22 },
+  // Tomo do Jogador — classes avançadas e classes raciais
+  acrobata: { book: "Old-School Essentials — Tomo do Jogador", page: 28 },
+  assassino: { book: "Old-School Essentials — Tomo do Jogador", page: 30 },
+  barbaro: { book: "Old-School Essentials — Tomo do Jogador", page: 32 },
+  bardo: { book: "Old-School Essentials — Tomo do Jogador", page: 34 },
+  druida: { book: "Old-School Essentials — Tomo do Jogador", page: 40 },
+  anao_bx: { book: "Old-School Essentials — Tomo do Jogador", page: 46 },
+  elfo_bx: { book: "Old-School Essentials — Tomo do Jogador", page: 48 },
+  halfling_bx: { book: "Old-School Essentials — Tomo do Jogador", page: 56 },
+  ilusionista: { book: "Old-School Essentials — Tomo do Jogador", page: 62 },
+  cavaleiro: { book: "Old-School Essentials — Tomo do Jogador", page: 64 },
+  paladino: { book: "Old-School Essentials — Tomo do Jogador", page: 68 },
+  ranger: { book: "Old-School Essentials — Tomo do Jogador", page: 70 },
+};
+
 for (const oseClass of Object.values(OSE_CLASSES)) {
-  oseClass.sourceBook = "Old-School Essentials — Tomo do Jogador";
-  oseClass.sourcePage = 28;
+  const source = OSE_CLASS_SOURCES[oseClass.id];
+  if (!source) throw new Error(`Classe OSE sem proveniência declarada: ${oseClass.id}`);
+  oseClass.sourceBook = source.book;
+  oseClass.sourcePage = source.page;
 }

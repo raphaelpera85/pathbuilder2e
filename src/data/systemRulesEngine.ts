@@ -1300,7 +1300,9 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       );
       const dndArmorProficiencyFromSubclass = (proficiency: string | undefined) => systemId === "dnd5e" && (
         (proficiency === "medium_armor" && selectedSubclass?.id === "bardo_valor")
-        || (proficiency === "heavy_armor" && ["clerigo_vida", "clerigo_tempestade", "clerigo_guerra"].includes(selectedSubclass?.id || ""))
+        // Proficiência Adicional com armaduras pesadas: Vida (p. 69), Natureza
+        // (p. 68), Tempestade (p. 69) e Guerra (p. 67) do Livro do Jogador.
+        || (proficiency === "heavy_armor" && ["clerigo_vida", "clerigo_natureza", "clerigo_tempestade", "clerigo_guerra"].includes(selectedSubclass?.id || ""))
         || (proficiency === "shield" && selectedSubclass?.id === "bardo_valor")
       );
       if (shieldCount > 1) errors.push("selecione apenas um escudo equipado");

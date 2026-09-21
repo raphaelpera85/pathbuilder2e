@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { PDFDocument } from "pdf-lib";
 import { createOseEditablePdf } from "../../services/osePdfExport";
+import { OSE_ARMORS } from "./oseEquipment";
 import type { OseCharacterCreatedData } from "../../ose/OseCharacterCreatorModal";
 
 const fixture: OseCharacterCreatedData = {
@@ -41,5 +42,108 @@ describe("Exportação OSE para PDF editável", () => {
     expect(names).toContain("Notes");
     expect(pdf.getForm().getTextField("Name").getText()).toBe("Alda da Floresta");
     expect(pdf.getForm().getTextField("Notes").getText()).toContain("Míssil Mágico");
+  });
+
+  it("exporta uma ficha Classic com classe racial, magias e campos do clássico", async () => {
+    const classic: OseCharacterCreatedData = {
+      ...fixture,
+      id: "ose-pdf-classic",
+      ruleset: "classic",
+      name: "Borin Martelo de Pedra",
+      raceId: "anao",
+      classId: "anao_bx",
+      level: 3,
+      xp: 6000,
+      alignment: "ordeiro",
+      abilities: { str: 14, int: 10, wis: 12, dex: 11, con: 15, cha: 9 },
+      maxHp: 18,
+      currentHp: 18,
+      // Anão clássico não conjura.
+      spellsKnown: [],
+      preparedSpells: [],
+    };
+    const template = fs.readFileSync(path.resolve(process.cwd(), "public/ose-character-sheet-template.pdf"));
+    const bytes = await createOseEditablePdf(classic, new Uint8Array(template));
+    const pdf = await PDFDocument.load(bytes);
+    const form = pdf.getForm();
+
+    expect(pdf.getPageCount()).toBe(1);
+    expect(form.getTextField("Name").getText()).toBe("Borin Martelo de Pedra");
+    // A classe racial clássica é exportada com o próprio nome e nível.
+    expect(form.getTextField("Class").getText()).toContain("Anão");
+    expect(form.getTextField("Race").getText()).toContain("An");
+    expect(form.getTextField("Level").getText()).toBe("3");
+    expect(form.getTextField("Alignment").getText()).toContain("ordeiro");
+    // Sem magias: o campo de magias não inventa conteúdo.
+    expect(form.getTextField("Notes").getText() || "").not.toContain("Míssil Mágico");
+  });
+
+  it("exporta um Clérigo clássico com as magias do 1º círculo", async () => {
+    const cleric: OseCharacterCreatedData = {
+      ...fixture,
+      id: "ose-pdf-classic-cleric",
+      ruleset: "classic",
+      name: "Irmã Alda",
+      raceId: "humano",
+      classId: "clerigo",
+      level: 1,
+      abilities: { str: 11, int: 10, wis: 15, dex: 10, con: 12, cha: 13 },
+      maxHp: 5,
+      currentHp: 5,
+      spellsKnown: ["clerigo_curar_ferimentos_leves"],
+      preparedSpells: ["clerigo_curar_ferimentos_leves"],
+    };
+    const template = fs.readFileSync(path.resolve(process.cwd(), "public/ose-character-sheet-template.pdf"));
+    const bytes = await createOseEditablePdf(cleric, new Uint8Array(template));
+    const pdf = await PDFDocument.load(bytes);
+    const form = pdf.getForm();
+
+    expect(form.getTextField("Class").getText()).toContain("Clérigo");
+    expect(form.getTextField("Notes").getText()).toContain("Curar Ferimentos Leves");
+  });
+
+  it("grava o movimento da faixa de carga correta nos três campos do template", async () => {
+    const loaded: OseCharacterCreatedData = {
+      ...fixture,
+      id: "ose-pdf-load",
+      name: "Borin",
+      // 200 (couro) + 400 (cota) = 600 moedas → faixa 401–600 (Livro de Regras p. 41).
+      armors: [
+        OSE_ARMORS.find((armor) => armor.id === "couro")!,
+        OSE_ARMORS.find((armor) => armor.id === "cota_malha")!,
+      ],
+      goldGp: 0,
+      maxHp: 6,
+      currentHp: 6,
+      spellsKnown: [],
+      preparedSpells: [],
+    };
+    const template = fs.readFileSync(path.resolve(process.cwd(), "public/ose-character-sheet-template.pdf"));
+    const bytes = await createOseEditablePdf(loaded, new Uint8Array(template));
+    const form = (await PDFDocument.load(bytes)).getForm();
+
+    // 600 moedas é o limite superior da segunda faixa: 27 m por turno e 13 m por
+    // rodada. Antes da correção, 600 caía na faixa seguinte e rendia 36 m.
+    expect(form.getTextField("Exporation Movement").getText()).toBe("27");
+    expect(form.getTextField("Encounter Movement").getText()).toBe("13");
+    // A jornada do template é a taxa base por hora de viagem (6 turnos).
+    expect(form.getTextField("Overland Movement").getText()).toBe("162");
+  });
+
+  it("não move o personagem acima da carga máxima de 1.600 moedas", async () => {
+    const overloaded: OseCharacterCreatedData = {
+      ...fixture,
+      id: "ose-pdf-overloaded",
+      name: "Sobrecarregado",
+      goldGp: 2000,
+      spellsKnown: [],
+      preparedSpells: [],
+    };
+    const template = fs.readFileSync(path.resolve(process.cwd(), "public/ose-character-sheet-template.pdf"));
+    const bytes = await createOseEditablePdf(overloaded, new Uint8Array(template));
+    const form = (await PDFDocument.load(bytes)).getForm();
+
+    expect(form.getTextField("Exporation Movement").getText()).toBe("0");
+    expect(form.getTextField("Encounter Movement").getText()).toBe("0");
   });
 });

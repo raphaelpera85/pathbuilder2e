@@ -282,9 +282,12 @@ describe("Exportação para Ficha Oficial PDF Editável (AcroForm)", () => {
     expect(form.getTextField("SKILL FEAT 2-1").getText()).toBe("Medicina de Batalha");
     expect(form.getTextField("CANTRIP NAME 1").getText()).toBe("Guia");
     expect(form.getTextField("FOCUS SPELL 1").getText()).toBe("Bênção da Cura");
-  }, 20000);
+  }, 45000);
 
   it("deve traduzir itens do inventário para português (pt-BR) e idiomas selecionados", async () => {
+    // Este arquivo monta o AcroForm real: cada caso leva 4–10 s isolado, e sob a
+    // suíte paralela o tempo já estourou uma vez. O limite maior é margem de
+    // execução, não uma asserção mais fraca.
     const charWithEnglishItems: CharacterDocument = {
       name: "Aventureiro Teste",
       level: 1,
@@ -322,7 +325,7 @@ describe("Exportação para Ficha Oficial PDF Editável (AcroForm)", () => {
     expect(formEn.getTextField("WORN 4").getText()).toBe("Bedroll");
     expect(formEn.getTextField("WORN 5").getText()).toBe("Rope (50 ft)");
     expect(formEn.getTextField("WORN 6").getText()).toBe("Rations (1 week)");
-  }, 20000);
+  }, 45000);
 
   it("deve aplicar as correções universalmente para qualquer personagem (Swashbuckler, Mago, Bárbaro, etc.)", async () => {
     // 1. Personagem Não-Conjurador Nível 1 com Arma Ágil/Acurada (ex: Swashbuckler Lorenzo)

@@ -10,6 +10,7 @@ import {
   removePendingSave,
   type CharacterMergeConflict,
 } from "./characterSync";
+import { stripExportMetadata } from "./exportMetadata";
 
 export interface CharacterData extends Record<string, unknown> {
   id: string;
@@ -245,8 +246,7 @@ export function validateCharacter(value: unknown): CharacterData {
   const candidate = value as Partial<CharacterData>;
   if (typeof candidate.name !== "string" || !candidate.name.trim()) {
     throw new Error("A ficha precisa ter um nome.");
-  }
-  const level = Number(candidate.level);
+  }  const level = Number(candidate.level);
   if (!Number.isInteger(level) || level < 1 || level > 20) {
     throw new Error("O nível da ficha deve estar entre 1 e 20.");
   }
@@ -262,8 +262,12 @@ export function validateCharacter(value: unknown): CharacterData {
   if (supportedRulesets && !supportedRulesets.includes(ruleset)) {
     throw new Error(`O ruleset "${ruleset}" não pertence ao sistema ${rawSystem}.`);
   }
+  // `exportMetadata` é metadado de transporte do arquivo exportado
+  // (`src/services/exportMetadata.ts`). Ele é lido pelo importador antes da
+  // validação e nunca deve virar dado da ficha persistida.
+  const normalized = stripExportMetadata(structuredClone(candidate) as Record<string, unknown>);
   return {
-    ...structuredClone(candidate),
+    ...normalized,
     id: typeof candidate.id === "string" && candidate.id.trim()
       ? candidate.id.trim()
       : `personagem_${globalThis.crypto?.randomUUID ? globalThis.crypto.randomUUID().slice(0, 8) : Date.now()}`,

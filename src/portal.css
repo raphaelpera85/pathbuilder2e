@@ -1305,7 +1305,9 @@ body.portal-page-active .library-dashboard-page > .library-characters-section {
 
 .downloads-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  /* `min(320px, 100%)` evita que a coluna mínima de 320px estoure a viewport
+     estreita; sem isso o cartão crescia até o min-content do nome do arquivo. */
+  grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
   gap: 18px;
 }
 
@@ -1313,6 +1315,9 @@ body.portal-page-active .library-dashboard-page > .library-characters-section {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  /* Permite que filhos com texto não quebrável (nome do arquivo, selos)
+     encolham com reticências em vez de alargar o cartão. */
+  min-width: 0;
   padding: 20px;
   background: rgba(17, 23, 34, 0.9);
   border: 1px solid var(--pb-border);
@@ -1332,6 +1337,57 @@ body.portal-page-active .library-dashboard-page > .library-characters-section {
   justify-content: space-between;
   align-items: flex-start;
   gap: 10px;
+}
+
+/* Selos de sistema e ruleset lado a lado, sem invadir o título do card. */
+.book-card-badges {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  flex: 0 0 auto;
+}
+
+.system-badge {
+  padding: 3px 7px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, .35);
+  background: rgba(148, 163, 184, .18);
+  color: #e2e8f0;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+[data-theme="light"] .system-badge,
+body.theme-light .system-badge {
+  color: #1f2937;
+  background: rgba(100, 116, 139, .14);
+  border-color: rgba(100, 116, 139, .3);
+}
+
+.ruleset-badge.standard,
+.ruleset-badge.advanced,
+.ruleset-badge.classic,
+.ruleset-badge.padrao {
+  color: #bfdbfe;
+  background: rgba(30, 64, 175, .28);
+  border: 1px solid rgba(59, 130, 246, .3);
+}
+
+[data-theme="light"] .ruleset-badge.standard,
+[data-theme="light"] .ruleset-badge.advanced,
+[data-theme="light"] .ruleset-badge.classic,
+[data-theme="light"] .ruleset-badge.padrao,
+body.theme-light .ruleset-badge.standard,
+body.theme-light .ruleset-badge.advanced,
+body.theme-light .ruleset-badge.classic,
+body.theme-light .ruleset-badge.padrao {
+  color: #1e3a8a;
+  background: rgba(59, 130, 246, .18);
+  border-color: rgba(30, 64, 175, .35);
 }
 
 .book-card-title-group {
@@ -1378,6 +1434,7 @@ body.portal-page-active .library-dashboard-page > .library-characters-section {
   border-radius: 6px;
   border: 1px dashed rgba(255, 255, 255, 0.1);
   overflow: hidden;
+  min-width: 0;
 }
 
 .book-card-filename code {
@@ -1387,6 +1444,7 @@ body.portal-page-active .library-dashboard-page > .library-characters-section {
   text-overflow: ellipsis;
   overflow: hidden;
   display: block;
+  max-width: 100%;
 }
 
 .book-card-actions {
@@ -1615,7 +1673,9 @@ body.portal-page-active .library-dashboard-page > .library-characters-section {
     justify-content: center;
   }
   .downloads-grid {
-    grid-template-columns: 1fr;
+    /* `minmax(0, 1fr)` em vez de `1fr`: o piso automático de min-content
+       mantinha o cartão mais largo que a viewport em telefones. */
+    grid-template-columns: minmax(0, 1fr);
   }
   .book-card-actions {
     grid-template-columns: 1fr;

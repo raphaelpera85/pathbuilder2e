@@ -112,28 +112,123 @@ export function getOsePrimeRequisiteXpMod(score: number): number {
 
 /**
  * Cálculo de Movimento e Sobrecarga em moedas (Coins)
+ *
+ * Fonte: Old-School Essentials — Livro de Regras (edição brasileira da RPG
+ * Planet), "Tempo, Carga e Movimento", p. 41. O livro apresenta duas opções, e
+ * o mesmo sistema deve valer para todo o grupo:
+ *
+ *   - Opção 1, Carga Simplificada: o peso de armadura, armas e equipamento de
+ *     aventura **não** conta para a carga máxima, e a taxa de movimento depende
+ *     do tipo de armadura vestida e de estar carregando tesouros.
+ *   - Opção 2, Carga Detalhada: o peso de tesouros, moedas, armas e armadura é
+ *     somado; a taxa de movimento sai da tabela por faixa de peso.
+ *
+ * A tabela impressa de Carga Detalhada perdeu as linhas de 600 e de 1.600
+ * moedas na paginação, então a confirmação veio da ficha de personagem oficial
+ * de 2026 da Necrotic Gnome (campos "Peso total carregado (máx = 1.600 mo)" e
+ * "Taxa base de mov. = 36 m, a menos que sobrecarregado"), que traz as quatro
+ * faixas: até 400, até 600, até 800 e até 1.600.
+ *
+ * A carga máxima de qualquer personagem é 1.600 moedas; acima disso ele não se
+ * move (p. 41).
  */
 export interface OseMovementRate {
-  exploration: number; // metros por turno (ex: 36m)
-  encounter: number; // metros por rodada (ex: 12m)
-  running: number; // metros correndo (ex: 36m)
+  /** metros por turno de exploração (a "taxa base" de 36 m) */
+  exploration: number;
+  /** metros por rodada de encontro */
+  encounter: number;
+  /** metros por rodada de corrida; o livro usa a taxa base */
+  running: number;
   label: string;
 }
 
-export function getOseMovementByLoad(coinsWeight: number): OseMovementRate {
-  if (coinsWeight <= 400) {
-    return { exploration: 36, encounter: 12, running: 36, label: "Não sobrecarregado (36m/12m)" };
-  }
-  if (coinsWeight <= 800) {
-    return { exploration: 27, encounter: 9, running: 27, label: "Carga leve (27m/9m)" };
-  }
-  if (coinsWeight <= 1200) {
-    return { exploration: 18, encounter: 6, running: 18, label: "Carga média (18m/6m)" };
-  }
-  if (coinsWeight <= 1600) {
-    return { exploration: 9, encounter: 3, running: 9, label: "Carga pesada (9m/3m)" };
-  }
-  return { exploration: 0, encounter: 0, running: 0, label: "Totalmente sobrecarregado (imóvel)" };
+export type OseArmorWeightClass = "none" | "light" | "heavy";
+
+/**
+ * Classificação das armaduras do catálogo nas três linhas da Carga Simplificada.
+ * A Cota de Malha é leve; a Armadura de Placas é pesada (p. 41).
+ */
+export const OSE_ARMOR_WEIGHT_CLASS_BY_ID: Record<string, OseArmorWeightClass> = {
+  sem_armadura: "none",
+  couro: "light",
+  cota_malha: "light",
+  placas: "heavy",
+  // O escudo não tem linha própria na tabela (p. 41); fica com a armadura leve
+  // para que toda peça do catálogo tenha uma classificação explícita.
+  escudo: "light",
+};
+
+/**
+ * Apenas as armaduras de corpo — as que a tabela da p. 41 realmente classifica.
+ * O escudo é excluído para que ele possa ser adicionado ao catálogo sem alterar
+ * silenciosamente a carga de um personagem.
+ */
+export const OSE_BODY_ARMOR_WEIGHT_CLASS_BY_ID: Record<string, OseArmorWeightClass> =
+  Object.fromEntries(Object.entries(OSE_ARMOR_WEIGHT_CLASS_BY_ID).filter(([id]) => id !== "escudo"));
+
+export interface OseLoadMovementOptions {
+  /** "detailed" soma todo o peso em moedas; "simplified" usa armadura + tesouro. */
+  mode: "detailed" | "simplified";
+  /** Peso total em moedas — considerado apenas no modo detalhado. */
+  coinsWeight?: number;
+  /** Classe de armadura vestida — considerada apenas no modo simplificado. */
+  armorClass?: OseArmorWeightClass;
+  /** Se o personagem está carregando uma quantidade considerável de tesouros. */
+  carryingTreasure?: boolean;
+}
+
+/** Teto de carga de qualquer personagem, em moedas de peso (p. 41). */
+export const OSE_MAX_LOAD_COINS = 1600;
+
+/** Faixas da Carga Detalhada (p. 41): teto em moedas → taxa base em metros. */
+const OSE_DETAILED_LOAD_TIERS: ReadonlyArray<{ upTo: number; base: number }> = [
+  { upTo: 400, base: 36 },
+  { upTo: 600, base: 27 },
+  { upTo: 800, base: 18 },
+  { upTo: OSE_MAX_LOAD_COINS, base: 9 },
+];
+
+/** Tabela da Carga Simplificada (p. 41), por armadura vestida e tesouro. */
+const OSE_SIMPLIFIED_LOAD_TIERS: Record<OseArmorWeightClass, { withoutTreasure: number; withTreasure: number }> = {
+  none: { withoutTreasure: 36, withTreasure: 27 },
+  light: { withoutTreasure: 27, withTreasure: 18 },
+  heavy: { withoutTreasure: 18, withTreasure: 9 },
+};
+
+function oseMovementRate(base: number, label: string): OseMovementRate {
+  if (base <= 0) return { exploration: 0, encounter: 0, running: 0, label };
+  return { exploration: base, encounter: Math.floor(base / 2), running: base, label };
+}
+
+/** Taxa de movimento pela Carga Detalhada: peso total em moedas (p. 41). */
+export function getOseMovementByCoinWeight(coinsWeight: number): OseMovementRate {
+  const index = OSE_DETAILED_LOAD_TIERS.findIndex((entry) => coinsWeight <= entry.upTo);
+  if (index < 0) return oseMovementRate(0, `Acima de ${OSE_MAX_LOAD_COINS} moedas — não pode se mover`);
+  const tier = OSE_DETAILED_LOAD_TIERS[index];
+  const floor = index === 0 ? 0 : OSE_DETAILED_LOAD_TIERS[index - 1].upTo;
+  const range = floor === 0 ? `Até ${tier.upTo}` : `${floor + 1}–${tier.upTo}`;
+  return oseMovementRate(tier.base, `Carga detalhada · ${range} moedas`);
+}
+
+/** Taxa de movimento pela Carga Simplificada: armadura vestida × tesouro (p. 41). */
+export function getOseMovementBySimplifiedLoad(
+  armorClass: OseArmorWeightClass = "none",
+  carryingTreasure = false,
+): OseMovementRate {
+  const tier = OSE_SIMPLIFIED_LOAD_TIERS[armorClass];
+  const base = carryingTreasure ? tier.withTreasure : tier.withoutTreasure;
+  const armorLabel = armorClass === "none" ? "sem armadura" : armorClass === "light" ? "armadura leve" : "armadura pesada";
+  return oseMovementRate(base, `Carga simplificada · ${armorLabel}${carryingTreasure ? " · com tesouros" : ""}`);
+}
+
+/**
+ * Aceita tanto o peso em moedas (modo detalhado, forma usada pelas fichas já
+ * gravadas) quanto as opções completas das duas apresentações de carga.
+ */
+export function getOseMovementByLoad(load: number | OseLoadMovementOptions): OseMovementRate {
+  if (typeof load === "number") return getOseMovementByCoinWeight(load);
+  if (load.mode === "simplified") return getOseMovementBySimplifiedLoad(load.armorClass, load.carryingTreasure);
+  return getOseMovementByCoinWeight(load.coinsWeight ?? 0);
 }
 
 /**
@@ -141,9 +236,30 @@ export function getOseMovementByLoad(coinsWeight: number): OseMovementRate {
  */
 export type OseAlignment = "ordeiro" | "neutro" | "caotico";
 
+/**
+ * Classes humanas que o OSE Classic Fantasy apresenta ao lado das classes
+ * raciais. O livro clássico traz sete opções: Clérigo, Anão, Elfo, Guerreiro,
+ * Halfling, Mago e Ladrão. As quatro humanas já existem no catálogo com as
+ * progressões de 14 níveis do clássico; apenas a regra de disponibilidade não
+ * as oferecia.
+ */
+export const OSE_CLASSIC_CORE_CLASS_IDS = ["clerigo", "guerreiro", "ladrao", "mago"] as const;
+
+/** Em Classic, a classe racial determina a raça da ficha. */
+export const OSE_CLASSIC_RACE_BY_CLASS: Record<string, string> = {
+  anao_bx: "anao",
+  elfo_bx: "elfo",
+  halfling_bx: "halfling",
+};
+
 /** Classes disponíveis em cada apresentação do núcleo OSE. */
-export function isOseClassAvailableForMode(isRaceClass: boolean | undefined, mode: "advanced" | "classic"): boolean {
-  return mode === "classic" ? Boolean(isRaceClass) : !Boolean(isRaceClass);
+export function isOseClassAvailableForMode(
+  oseClass: { id: string; isRaceClass?: boolean },
+  mode: "advanced" | "classic",
+): boolean {
+  if (oseClass.isRaceClass) return mode === "classic";
+  if (mode === "advanced") return true;
+  return (OSE_CLASSIC_CORE_CLASS_IDS as readonly string[]).includes(oseClass.id);
 }
 
 /** A raça só pode escolher classes listadas na própria tabela de progressão racial. */
@@ -244,7 +360,17 @@ export interface OseSavingThrows {
 }
 
 /**
- * Perícias Secundárias (Tabela d100 Opcional, Livro de Regras p. 25)
+ * Perícias Secundárias (tabela d100 opcional)
+ *
+ * Fonte: Old-School Essentials — **Tomo do Jogador** (Fantasia Avançada),
+ * "Habilidades Secundárias (Regra opcional)", p. 25. A citação anterior dizia
+ * "Livro de Regras p. 25", mas essa página do Livro de Regras é a progressão
+ * de nível do Mago — a tabela veio do Tomo.
+ *
+ * Divergência declarada: o Tomo imprime "Ferreiro" também na faixa 34–35, que
+ * repete a faixa 10–12. Mantemos "Funileiro / Ourives" (tinsmith/goldsmith),
+ * que é a leitura coerente com a lista e com a tabela d100 de perícias
+ * secundárias do B/X original.
  */
 export interface OseSecondarySkill {
   range: [number, number];

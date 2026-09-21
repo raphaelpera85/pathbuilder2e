@@ -7720,10 +7720,29 @@ class PathbuilderApp {
     return this.character;
   }
 
+  /**
+   * Metadados de transporte da exportação. Registram sistema, ruleset e versão
+   * do catálogo para que a importação avise sobre incompatibilidade em vez de
+   * fingir compatibilidade. Nunca são gravados dentro da ficha.
+   */
+  buildExportMetadata() {
+    const catalogVersion = (typeof PF2E_DATA !== "undefined" && PF2E_DATA && PF2E_DATA.catalogVersion)
+      ? PF2E_DATA.catalogVersion
+      : "unknown";
+    return {
+      schemaVersion: "1.0",
+      systemId: "pf2e",
+      ruleset: (this.character && this.character.ruleset) || "needs_review",
+      catalogVersion,
+      exportedAt: new Date().toISOString()
+    };
+  }
+
   openExportModal() {
     const locale = this.getLocale();
     document.getElementById("jsonTitle").innerText = locale === "en" ? "📤 Export JSON" : locale === "es" ? "📤 Exportar JSON" : "📤 Exportar JSON";
-    document.getElementById("jsonArea").value = JSON.stringify(this.character, null, 2);
+    const payload = Object.assign({}, this.character, { exportMetadata: this.buildExportMetadata() });
+    document.getElementById("jsonArea").value = JSON.stringify(payload, null, 2);
     document.getElementById("btnImportAction").style.display = "none";
     document.getElementById("modalJsonOverlay").classList.add("active");
   }
@@ -7744,18 +7763,36 @@ class PathbuilderApp {
   }
 
   applyJson() {
+    const locale = this.getLocale();
     try {
-      this.character = assertSafeCharacterDocument(JSON.parse(document.getElementById("jsonArea").value));
+      const parsed = JSON.parse(document.getElementById("jsonArea").value);
+      // Os metadados de transporte são lidos antes de serem descartados: eles
+      // não fazem parte da ficha e não podem ser persistidos junto dela.
+      const importedMeta = (parsed && typeof parsed === "object" && !Array.isArray(parsed)
+        && parsed.exportMetadata && typeof parsed.exportMetadata === "object")
+        ? parsed.exportMetadata
+        : null;
+      if (importedMeta) delete parsed.exportMetadata;
+      const previousRuleset = this.character && this.character.ruleset;
+      this.character = assertSafeCharacterDocument(parsed);
       this.revalidateLoadedSelections();
       this.character.class = this.normalizeClassIdentity(this.character.class);
       this.diceHistory = Array.isArray(this.character.diceHistory) ? this.character.diceHistory.slice(0, 100) : [];
       document.getElementById("modalJsonOverlay").classList.remove("active");
       this.saveCharacterLocal(false);
       this.renderAll();
-      const locale = this.getLocale();
-      alert(locale === "en" ? "Character imported successfully!" : locale === "es" ? "¡Personaje importado correctamente!" : "Personagem importado com sucesso!");
+      const success = locale === "en" ? "Character imported successfully!" : locale === "es" ? "¡Personaje importado correctamente!" : "Personagem importado com sucesso!";
+      let warning = "";
+      if (importedMeta && previousRuleset && importedMeta.ruleset
+        && importedMeta.ruleset !== "unknown" && importedMeta.ruleset !== previousRuleset) {
+        warning = locale === "en"
+          ? ` Attention: the file was exported with ruleset "${importedMeta.ruleset}" (current: "${previousRuleset}"). Review the imported choices.`
+          : locale === "es"
+            ? ` Atención: el archivo fue exportado con el ruleset "${importedMeta.ruleset}" (actual: "${previousRuleset}"). Revisa las elecciones importadas.`
+            : ` Atenção: o arquivo foi exportado com o ruleset "${importedMeta.ruleset}" (atual: "${previousRuleset}"). Revise as escolhas importadas.`;
+      }
+      alert(success + warning);
     } catch (e) {
-      const locale = this.getLocale();
       const prefix = locale === "en" ? "Error importing JSON: " : locale === "es" ? "Error al importar JSON: " : "Erro ao importar JSON: ";
       console.error("Erro ao importar JSON:", e);
       const detail = locale === "en" ? "The JSON or character sheet is invalid." : locale === "es" ? "El JSON o la ficha de personaje no son válidos." : "O JSON ou a ficha de personagem é inválida.";
