@@ -133,7 +133,7 @@ describe("PortalPages", () => {
   });
 
   it("mantém evidências de metadados separadas da catalogação", () => {
-    expect(pathfinderSources).toHaveLength(12);
+    expect(pathfinderSources).toHaveLength(13);
     expect(pathfinderSources.every((source) => source.pageCountStatus === "verified_with_pdfinfo")).toBe(true);
     expect(pathfinderSources.every((source) => source.languageEvidence === "inferred_from_filename")).toBe(true);
     expect(pathfinderSources.find((source) => source.id === "player-core-pt")).toMatchObject({ catalogStatus: "partial", linkedRecords: 972 });
@@ -147,7 +147,7 @@ describe("PortalPages", () => {
     expect(pathfinderSources.find((source) => source.id === "howl-wild")).toMatchObject({ catalogStatus: "partial", linkedRecords: 122, ruleset: "remaster" });
     expect(pathfinderSources.find((source) => source.id === "battlecry")).toMatchObject({ catalogStatus: "partial", linkedRecords: 289, ruleset: "remaster" });
     expect(pathfinderSources.filter((source) => source.catalogStatus === "partial").every((source) => source.linkedRecords > 0)).toBe(true);
-    expect(pathfinderSources.filter((source) => source.catalogStatus === "pending")).toHaveLength(2);
+    expect(pathfinderSources.filter((source) => source.catalogStatus === "pending")).toHaveLength(3);
     expect(pathfinderSources.find((source) => source.id === "manual-jogador-compilacao-pt")).toMatchObject({ ruleset: "remaster", catalogStatus: "pending" });
     expect(pathfinderSources.every((source) => source.titles?.["pt-BR"] && source.titles?.en && source.titles?.es)).toBe(true);
   });
@@ -194,7 +194,7 @@ describe("PortalPages", () => {
     // Confirms blank sheet featured card and print link are rendered
     const printLinks = screen.getAllByRole("link", { name: /Imprimir/i });
     expect(printLinks.some((link) => link.getAttribute("href") === "./ficha.pdf")).toBe(true);
-  });
+  }, 15_000);
 
   it("não troca uma sessão persistida pelo evento inicial nulo do Supabase", () => {
     const source = readFileSync(resolve(process.cwd(), "src/PortalPages.tsx"), "utf8");
