@@ -10,7 +10,7 @@ const root = path.resolve(__dirname, "..");
 const moduleUrl = (relativePath) => pathToFileURL(path.join(root, relativePath)).href;
 
 async function run() {
-  const [t20Catalog, t20Compendium, t20Origins, t20Classes, t20Races, dndCatalog, dndBackgrounds, dndCompendium, dndOptions, dndClasses, dndRaces, oseClasses, oseRaces, oseEquipment, oseSpells, skills, rules, actions] = await Promise.all([
+  const [t20Catalog, t20Compendium, t20Origins, t20Classes, t20Races, dndCatalog, dndBackgrounds, dndCompendium, dndOptions, dndClasses, dndRaces, oseClasses, oseRaces, oseEquipment, oseSpells, oseRules, skills, rules, actions] = await Promise.all([
     import(moduleUrl("src/data/t20/t20Catalog.ts")),
     import(moduleUrl("src/data/t20/t20Compendium.ts")),
     import(moduleUrl("src/data/t20/t20Origins.ts")),
@@ -26,6 +26,7 @@ async function run() {
     import(moduleUrl("src/data/ose/oseRaces.ts")),
     import(moduleUrl("src/data/ose/oseEquipment.ts")),
     import(moduleUrl("src/data/ose/oseSpells.ts")),
+    import(moduleUrl("src/data/ose/oseRules.ts")),
     import(moduleUrl("src/data/systemSkills.ts")),
     import(moduleUrl("src/data/systemRulesCatalog.ts")),
     import(moduleUrl("src/data/systemActions.ts")),
@@ -58,11 +59,14 @@ async function run() {
     feats: completeEntries(dndCompendium.DND5E_FEATS),
     skills: completeEntries(dndCatalog.DND5E_SKILLS),
   };
-  const oseContent = {
-    classes: completeEntries(Object.values(oseClasses.OSE_CLASSES)),
-    ancestries: completeEntries(Object.values(oseRaces.OSE_RACES)),
+  const oseContent = (ruleset) => {
+    const classic = ruleset === "classic";
+    return {
+    classes: completeEntries(Object.values(oseClasses.OSE_CLASSES).filter((entry) => !classic || oseRules.isOseClassAvailableForMode(entry, "classic"))),
+    ancestries: completeEntries(Object.values(oseRaces.OSE_RACES).filter((entry) => !classic || ["humano", "anao", "elfo", "halfling"].includes(entry.id))),
     items: completeEntries([...oseEquipment.OSE_WEAPONS, ...oseEquipment.OSE_ARMORS, ...oseEquipment.OSE_GEAR]),
     spells: completeEntries(oseSpells.OSE_SPELLS),
+    };
   };
   const metadataComplete = (content) => Object.values(content).every((group) => group.missingSource.length === 0 && group.missingSummary.length === 0);
   const structuredClassChoices = {
@@ -88,8 +92,8 @@ async function run() {
     },
     {
       scope: "ose/classic", systemId: "ose", ruleset: "classic",
-      expected: { classes: 3, items: 53, spells: 34 },
-      actual: { classes: Object.values(oseClasses.OSE_CLASSES).filter((entry) => entry.isRaceClass).length, items: oseEquipment.OSE_WEAPONS.length + oseEquipment.OSE_ARMORS.length + oseEquipment.OSE_GEAR.length, spells: oseSpells.OSE_SPELLS.length },
+      expected: { classes: 7, items: 53, spells: 34 },
+      actual: { classes: Object.values(oseClasses.OSE_CLASSES).filter((entry) => oseRules.isOseClassAvailableForMode(entry, "classic")).length, items: oseEquipment.OSE_WEAPONS.length + oseEquipment.OSE_ARMORS.length + oseEquipment.OSE_GEAR.length, spells: oseSpells.OSE_SPELLS.length },
     },
   ];
 
@@ -102,7 +106,7 @@ async function run() {
     const advantageSemanticsMatch = entry.systemId === "dnd5e"
       ? scopedRules.some((item) => item.data?.ruleKind === "advantage")
       : !scopedRules.some((item) => item.data?.ruleKind === "advantage");
-    const content = entry.systemId === "t20" ? t20Content : entry.systemId === "dnd5e" ? dndContent : oseContent;
+    const content = entry.systemId === "t20" ? t20Content : entry.systemId === "dnd5e" ? dndContent : oseContent(entry.ruleset);
     const structuredChoicesPresent = entry.systemId === "t20" ? structuredClassChoices.t20 > 0 : entry.systemId === "dnd5e" ? structuredClassChoices.dnd5e > 0 : true;
     const contentMetadataComplete = metadataComplete(content);
     const checks = { countsMatch, creationRulePresent, actionsPresent, skillsPresent, advantageSemanticsMatch, contentMetadataComplete, structuredChoicesPresent };

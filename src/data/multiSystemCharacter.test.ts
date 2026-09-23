@@ -19,6 +19,8 @@ describe("core system character models", () => {
     expect(t20.raceId).toBe(getCoreCatalog("t20").races[0].id);
     expect(dnd5e.classId).toBe(getCoreCatalog("dnd5e").classes[0].id);
     expect(t20.ruleset).not.toBe(dnd5e.ruleset);
+    expect(t20.catalogVersion).toBe("t20-padrao-2026.09");
+    expect(dnd5e.catalogVersion).toBe("dnd5e-standard-2026.09");
   });
 
   it("calculates shared d20 fundamentals without mixing catalogs", () => {

@@ -64,7 +64,7 @@ export async function createCoreEditablePdf(character: MultiSystemCharacter): Pr
   page.drawRectangle({ x: 0, y: 0, width: 595, height: 842, color: rgb(0.96, 0.91, 0.8) });
   page.drawRectangle({ x: 20, y: 20, width: 555, height: 802, borderColor: rgb(0.42, 0.28, 0.12), borderWidth: 1.2, color: rgb(0.985, 0.965, 0.91) });
   page.drawText(system === "t20" ? "TORMENTA20 · FICHA DE PERSONAGEM" : "D&D 5E · FICHA DE PERSONAGEM", { x: 34, y: 790, size: 16, font: bold, color: ink });
-  page.drawText(`Livro-base · ruleset ${character.ruleset}`, { x: 36, y: 774, size: 8, font, color: rgb(0.35, 0.26, 0.17) });
+  page.drawText(`Livro-base · ruleset ${character.ruleset} · catálogo ${character.catalogVersion || "compatível"}`, { x: 36, y: 774, size: 7, font, color: rgb(0.35, 0.26, 0.17) });
 
   label(page, bold, "NOME", 36, 748); textField(form, page, "character.name", character.name, 36, 724, 250, 20, 10);
   label(page, bold, "NÍVEL", 300, 748); textField(form, page, "character.level", character.level, 300, 724, 55, 20, 10);

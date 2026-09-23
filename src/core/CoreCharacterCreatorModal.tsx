@@ -64,6 +64,24 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
       ])),
     };
   };
+  const syncDndGrantedTools = (candidate: MultiSystemCharacter) => {
+    if (system !== "dnd5e") return candidate;
+    const normalizeTool = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/s de /, " de ");
+    const background = candidate.backgroundId ? catalog.backgrounds.find((entry) => entry.id === candidate.backgroundId) : undefined;
+    const backgroundTools = background && "toolProficiencies" in background ? getDnd5eBackgroundToolProficiencies(background) : [];
+    const acceptedBackgroundTools = new Set(background && "toolProficiencies" in background
+      ? background.toolProficiencies.flatMap((tool) => {
+        const group = background.toolChoiceGroups?.find((candidateGroup) => DND5E_TOOL_CHOICE_GROUPS[candidateGroup].genericName === tool);
+        return group ? [tool, ...getDnd5eToolChoiceEntries(group).map((entry) => entry.name)] : [tool];
+      }).map(normalizeTool)
+      : []);
+    const preservedBackgroundTools = (candidate.toolProficiencies || []).filter((tool) => acceptedBackgroundTools.has(normalizeTool(tool)));
+    const subclass = candidate.subclassId ? catalog.subclasses.find((entry) => entry.id === candidate.subclassId) : undefined;
+    const subclassTools = (subclass?.choices || [])
+      .filter((choice) => choice.grantsToolProficiencies && candidate.level >= (choice.minimumLevel || subclass?.featureLevel || 1))
+      .flatMap((choice) => candidate.subclassChoices?.[choice.id] || []);
+    return { ...candidate, toolProficiencies: Array.from(new Set([...backgroundTools, ...preservedBackgroundTools, ...subclassTools])) };
+  };
 
   useEffect(() => {
     if (isOpen) {
@@ -288,7 +306,7 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
           }
         }
       }
-      return syncDndGrantedSpells(next);
+      return syncDndGrantedTools(syncDndGrantedSpells(next));
     });
   };
 
@@ -421,6 +439,24 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
   const recommendedEquipmentIds = getCoreStartingEquipment(system, character.classId, character.backgroundId);
   const recommendedEquipmentNames = recommendedEquipmentIds.map((id) => catalog.equipment.find((entry) => entry.id === id)?.name).filter(Boolean);
   const creationSteps = engine.getCreationSteps();
+  const reviewErrors = [
+    ...engine.validateCharacter(character),
+    ...(!character.name.trim() ? ["Informe o nome do personagem."] : []),
+  ];
+  const reviewRace = catalog.races.find((entry) => entry.id === character.raceId);
+  const reviewClass = catalog.classes.find((entry) => entry.id === character.classId);
+  const reviewBackground = catalog.backgrounds.find((entry) => entry.id === character.backgroundId);
+  const reviewChoices = [
+    character.t20ArcanistPath ? `Caminho: ${character.t20ArcanistPath}` : "",
+    character.t20SorcererLineage ? `Linhagem: ${character.t20SorcererLineage}` : "",
+    character.subclassId ? `Subclasse: ${selectedSubclass?.name || character.subclassId}` : "",
+    character.deity ? `Divindade: ${selectedDeity?.name || character.deity}` : "",
+    character.classChoices && Object.values(character.classChoices).flat().length ? `Escolhas de classe: ${Object.values(character.classChoices).flat().join(", ")}` : "",
+    character.featIds.length ? `Talentos/poderes: ${character.featIds.length}` : "Nenhum talento/poder selecionado",
+    character.skillProficiencies.length ? `Perícias: ${character.skillProficiencies.join(", ")}` : "",
+    character.equipmentIds.length ? `Equipamento: ${character.equipmentIds.length} tipo(s)` : "Nenhum equipamento selecionado",
+    character.spellIds.length ? `Magias: ${character.spellIds.length}` : "",
+  ].filter(Boolean);
 
   return (
     <div className="pb-core-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="pb-core-modal-title" aria-describedby="pb-core-modal-description" onClick={(event) => {
@@ -897,6 +933,19 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
           {recommendedEquipmentNames.length > 0 && <small>Sugestão canônica: {recommendedEquipmentNames.join(" · ")}. Alternativas do livro permanecem disponíveis no catálogo.</small>}
           <small>Seleções do núcleo local; cada entrada mantém sua página de origem.</small>
         </fieldset>
+
+        <details className="pb-core-creation-review" open>
+          <summary>Revisão final da ficha</summary>
+          <div className="pb-core-review-grid">
+            <p><strong>Sistema:</strong> {system === "t20" ? "Tormenta20" : "D&D 5e 2014"} · <strong>ruleset:</strong> {character.ruleset} · <strong>catálogo:</strong> {character.catalogVersion || "compatível/legado"}</p>
+            <p><strong>Identidade:</strong> {character.name || "sem nome"} · nível {character.level} · {reviewRace?.name || character.raceId} · {reviewClass?.name || character.classId} · {reviewBackground?.name || character.backgroundId}</p>
+            {reviewChoices.map((choice) => <p key={choice}>{choice}</p>)}
+          </div>
+          {reviewErrors.length > 0
+            ? <p className="pb-core-error" role="alert">Pendências: {reviewErrors.join(" ")}</p>
+            : <p className="pb-core-review-ok">✓ Todas as validações obrigatórias do sistema estão prontas para salvar.</p>}
+          <small>As fontes, páginas e regras usadas pertencem exclusivamente ao catálogo do sistema selecionado.</small>
+        </details>
 
         {error && <p className="pb-core-error" role="alert">{error}</p>}
         <footer className="pb-core-modal-footer">

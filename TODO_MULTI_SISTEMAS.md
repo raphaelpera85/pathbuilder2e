@@ -2,6 +2,12 @@
 
 Este é o backlog executável para transformar o construtor atual em uma plataforma com regras isoladas por sistema. O sistema selecionado deve controlar criação, cálculos, catálogo, ficha, exportação e persistência. Nenhum registro de PF2e, OSE, Tormenta20 ou D&D 5e deve aparecer em outro sistema sem uma conversão explícita.
 
+Progresso recente: fichas T20, D&D 5e e OSE agora carregam `catalogVersion` compatível com o ruleset; a hidratação preenche a versão quando ausente, mantém fichas legadas abertas e bloqueia a persistência de uma versão explicitamente incompatível. PDFs editáveis também exibem a identidade do catálogo.
+
+O fluxo de criação também ganhou revisão final visível no core e no OSE, com escolhas, pendências e identidade do catálogo antes da confirmação. A auditoria OSE Classic foi corrigida para contar as sete classes jogáveis, em vez de apenas as três classes raciais.
+
+Correção adicional: o personagem D&D 5e padrão agora nasce com escolhas raciais obrigatórias já preenchidas (como a ferramenta do Anão), e a troca de raça limpa escolhas condicionais antigas antes da validação.
+
 Para a matriz completa de tarefas por categoria (criação, classes, raças, itens, magias, talentos, perícias, vantagens/desvantagens, PDF, Supabase e gates de aceite), consulte também `TODO_COBERTURA_SISTEMAS.md`.
 
 ## Escopo confirmado nas fontes locais
@@ -446,6 +452,12 @@ Para a matriz completa de tarefas por categoria (criação, classes, raças, ite
 - [x] Fichas OSE salvas reabrem no construtor OSE em modo de edição, preservando atributos, raça, classe, ouro, equipamentos, idiomas e magias.
   - Evidência: `src/ose/OseCharacterCreatorModal.tsx`; `initialCharacter` hidrata o wizard e mantém o mesmo ID no salvamento.
 - [x] Compilação TypeScript e testes do catálogo/modelo passando.
+
+- [x] D&D 5e: escolha de ferramenta do artesão do Mestre de Batalha implementada no catálogo, construtor e validação.
+  - Evidência: no 7º nível, `battle-master-warrior-tool` oferece as variantes reais de ferramentas de artesão, é persistida junto das proficiências do personagem e é rejeitada quando ausente, inválida ou incompatível com a subclasse.
+  - Testes: cobertura de escolha válida/inválida e suíte completa com 76 arquivos e 1.222 testes aprovados.
+- [x] D&D 5e: escolhas adicionais do Campeão, Círculo da Terra e Patrono Infernal estruturadas.
+  - Evidência: segundo Estilo de Luta a partir do 10º nível, truque adicional de druida no 2º nível e tipo de dano da Resiliência Infernal no 10º nível agora aparecem no wizard/ficha, são validados por catálogo e geram efeitos derivados; a migration incremental `202609230001_add_dnd5e_subclass_choices.sql` e `npm run sync:dnd5e-subclass-choices:supabase` mantêm o catálogo Supabase alinhado. A auditoria remota reportou `actionableFailures: []`.
 
 - [x] T20: modelo de personagem + engine de atributos + catálogo inicial de criação.
   - Evidência: `multiSystemCharacter.ts`, `systemRulesEngine.ts`, catálogos T20 e wizard/ficha próprios.

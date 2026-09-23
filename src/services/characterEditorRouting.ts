@@ -1,4 +1,5 @@
 import type { RPGSystemId } from "../types";
+import { getCatalogVersion } from "../data/catalogVersions";
 
 export type CharacterEditorRoute = "pf2e" | "core" | "ose";
 
@@ -42,5 +43,7 @@ export function hydrateCharacterForEditor<T extends Record<string, unknown>>(
     system_id: systemId,
     systemId,
     ruleset: (source.ruleset as string | undefined) || rowRuleset,
+    catalogVersion: (source.catalogVersion as string | undefined)
+      || getCatalogVersion(systemId, (source.ruleset as string | undefined) || rowRuleset),
   };
 }

@@ -78,6 +78,25 @@ describe("character cloud contract", () => {
     expect(() => validateCharacter({ id: "misturada-ose", name: "Ficha misturada", level: 1, system_id: "ose", ruleset: "padrao" })).toThrow(/não pertence ao sistema ose/);
   });
 
+  it("rejeita um catálogo explicitamente incompatível, mas mantém compatibilidade com fichas antigas", () => {
+    expect(() => validateCharacter({
+      id: "catalogo-antigo",
+      name: "Ficha antiga",
+      level: 1,
+      system_id: "ose",
+      ruleset: "classic",
+      catalogVersion: "ose-advanced-2026.09",
+    })).toThrow(/incompatível/);
+
+    expect(validateCharacter({
+      id: "sem-versao",
+      name: "Ficha legada",
+      level: 1,
+      system_id: "ose",
+      ruleset: "classic",
+    })).not.toHaveProperty("catalogVersion");
+  });
+
   it("rejeita chaves perigosas e profundidade excessiva antes de persistir", () => {
     const polluted = JSON.parse('{"id":"x","name":"Herói","level":1,"__proto__":{"polluted":true}}');
     expect(() => validateCharacter(polluted)).toThrow(/chave não permitida/);
@@ -93,6 +112,20 @@ describe("character cloud contract", () => {
       user_id: "user-123",
       character_key: "heroi",
       ruleset: "needs_review",
+    });
+  });
+
+  it("anexa a versão atual do catálogo ao payload sem alterar fichas legadas em memória", () => {
+    const character = validateCharacter({
+      id: "t20-versionado",
+      name: "Herói de Arton",
+      level: 1,
+      system_id: "t20",
+      ruleset: "padrao",
+    });
+    expect(character).not.toHaveProperty("catalogVersion");
+    expect(toCharacterPayload(character, { id: "user-version" }).data).toMatchObject({
+      catalogVersion: "t20-padrao-2026.09",
     });
   });
 

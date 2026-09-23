@@ -1,4 +1,5 @@
 import { DND5E_SPELLS } from "./dnd5eCompendium";
+import { getDnd5eToolChoiceEntries } from "./dnd5eCatalog";
 
 export interface Dnd5eSubrace {
   id: string;
@@ -45,6 +46,7 @@ export interface Dnd5eSubclassChoice {
   grantsSkillExpertise?: boolean;
   grantsLanguages?: boolean;
   grantsSpells?: boolean;
+  grantsToolProficiencies?: boolean;
 }
 
 export interface Dnd5eClassChoice {
@@ -205,11 +207,16 @@ const DND5E_SUBCLASS_CHOICES: Record<string, Dnd5eSubclassChoice[]> = {
     { id: "totem-aspect", label: "Aspecto da Fera", options: ["Urso", "Águia", "Lobo"], count: 1, minimumLevel: 6 },
     { id: "totem-attunement", label: "Sintonia Totêmica", options: ["Urso", "Águia", "Lobo"], count: 1, minimumLevel: 14 },
   ],
-  druida_terra: [{ id: "land-terrain", label: "Terreno do Círculo da Terra", options: ["Ártico", "Costa", "Deserto", "Floresta", "Montanha", "Pântano", "Planalto", "Subterrâneo"], count: 1, minimumLevel: 2 }],
+  druida_terra: [
+    { id: "land-terrain", label: "Terreno do Círculo da Terra", options: ["Ártico", "Costa", "Deserto", "Floresta", "Montanha", "Pântano", "Planalto", "Subterrâneo"], count: 1, minimumLevel: 2 },
+    { id: "land-bonus-cantrip", label: "Truque adicional do Círculo da Terra", options: DND5E_SPELLS.filter((spell) => spell.category === "magia" && spell.spellLevel === 0 && spell.classIds?.includes("druida")).map((spell) => spell.name), count: 1, minimumLevel: 2, grantsSpells: true },
+  ],
+  guerreiro_campeao: [{ id: "champion-additional-fighting-style", label: "Estilo de Luta adicional do Campeão", options: ["Arquearia", "Defesa", "Duelos", "Luta com Armas Grandes", "Luta com Duas Armas", "Proteção"], count: 1, minimumLevel: 10 }],
   guerreiro_mestre_batalha: [
     { id: "battle-master-maneuvers", label: "Manobras (3º nível)", options: ["Aparar", "Ataque de Precisão", "Ataque de Provocação", "Ataque Desarmante", "Ataque Distrativo", "Ataque Estonteante", "Ataque de Finta", "Ataque de Empurrão", "Ataque de Investida", "Ataque de Manobra", "Ataque de Reunir", "Ataque de Varredura", "Contra-ataque", "Golpe do Comandante"], count: 3, minimumLevel: 3 },
     { id: "battle-master-maneuvers-7", label: "Manobras adicionais (7º nível)", options: ["Aparar", "Ataque de Precisão", "Ataque de Provocação", "Ataque Desarmante", "Ataque Distrativo", "Ataque Estonteante", "Ataque de Finta", "Ataque de Empurrão", "Ataque de Investida", "Ataque de Manobra", "Ataque de Reunir", "Ataque de Varredura", "Contra-ataque", "Golpe do Comandante"], count: 2, minimumLevel: 7 },
     { id: "battle-master-maneuvers-15", label: "Manobra adicional (15º nível)", options: ["Aparar", "Ataque de Precisão", "Ataque de Provocação", "Ataque Desarmante", "Ataque Distrativo", "Ataque Estonteante", "Ataque de Finta", "Ataque de Empurrão", "Ataque de Investida", "Ataque de Manobra", "Ataque de Reunir", "Ataque de Varredura", "Contra-ataque", "Golpe do Comandante"], count: 1, minimumLevel: 15 },
+    { id: "battle-master-warrior-tool", label: "Ferramenta de artesão do Aluno da Guerra", options: getDnd5eToolChoiceEntries("artisan").map((entry) => entry.name), count: 1, minimumLevel: 7, grantsToolProficiencies: true },
   ],
   monge_quatro_elementos: [
     { id: "elemental-disciplines", label: "Disciplina Elemental (3º nível)", options: ["Abraço dos Ventos", "Caminho dos Quatro Elementos", "Chamas da Fênix", "Defesa da Montanha Eterna", "Golpe de Cinzas", "Moldar o Rio Corrente", "Punho dos Quatro Trovões", "Rastro da Serpente de Fogo", "Rio de Chamas", "Varredura de Cinzas"], count: 1, minimumLevel: 3 },
@@ -217,6 +224,7 @@ const DND5E_SUBCLASS_CHOICES: Record<string, Dnd5eSubclassChoice[]> = {
     { id: "elemental-disciplines-11", label: "Disciplina Elemental (11º nível)", options: ["Abraço dos Ventos", "Caminho dos Quatro Elementos", "Chamas da Fênix", "Defesa da Montanha Eterna", "Golpe de Cinzas", "Moldar o Rio Corrente", "Punho dos Quatro Trovões", "Rastro da Serpente de Fogo", "Rio de Chamas", "Varredura de Cinzas"], count: 1, minimumLevel: 11 },
     { id: "elemental-disciplines-17", label: "Disciplina Elemental (17º nível)", options: ["Abraço dos Ventos", "Caminho dos Quatro Elementos", "Chamas da Fênix", "Defesa da Montanha Eterna", "Golpe de Cinzas", "Moldar o Rio Corrente", "Punho dos Quatro Trovões", "Rastro da Serpente de Fogo", "Rio de Chamas", "Varredura de Cinzas"], count: 1, minimumLevel: 17 },
   ],
+  bruxo_infernal: [{ id: "fiendish-resilience", label: "Resiliência Infernal", options: ["Ácido", "Contundente", "Frio", "Fogo", "Elétrico", "Necrótico", "Perfurante", "Psíquico", "Radiante", "Trovejante", "Veneno"], count: 1, minimumLevel: 10 }],
   feiticeiro_linhagem_draconica: [{ id: "draconic-ancestry", label: "Ancestralidade Dracônica", options: ["Azul", "Branco", "Bronze", "Cobre", "Latão", "Negro", "Ouro", "Prata", "Verde", "Vermelho"], count: 1, minimumLevel: 1 }],
   feiticeiro_magia_selvagem: [{ id: "wild-magic-surge", label: "Surto de Magia Selvagem", options: ["Usar tabela do Livro do Jogador"], count: 1, minimumLevel: 1 }],
   patrulheiro_cacador: [

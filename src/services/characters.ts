@@ -11,6 +11,7 @@ import {
   type CharacterMergeConflict,
 } from "./characterSync";
 import { stripExportMetadata } from "./exportMetadata";
+import { getCatalogVersion, isCatalogVersionCompatible } from "../data/catalogVersions";
 
 export interface CharacterData extends Record<string, unknown> {
   id: string;
@@ -19,6 +20,7 @@ export interface CharacterData extends Record<string, unknown> {
   system_id?: string;
   systemId?: string;
   ruleset?: CharacterRuleset;
+  catalogVersion?: string;
   gmEmail?: string;
   gm_email?: string;
   playerName?: string;
@@ -264,6 +266,9 @@ export function validateCharacter(value: unknown): CharacterData {
   if (supportedRulesets && !supportedRulesets.includes(ruleset)) {
     throw new Error(`O ruleset "${ruleset}" não pertence ao sistema ${rawSystem}.`);
   }
+  if (!isCatalogVersionCompatible(candidate.catalogVersion, rawSystem, ruleset)) {
+    throw new Error(`A ficha usa o catálogo "${String(candidate.catalogVersion)}", incompatível com ${rawSystem}/${ruleset}. Abra uma cópia atualizada antes de salvar.`);
+  }
   // `exportMetadata` é metadado de transporte do arquivo exportado
   // (`src/services/exportMetadata.ts`). Ele é lido pelo importador antes da
   // validação e nunca deve virar dado da ficha persistida.
@@ -289,6 +294,7 @@ export function toCharacterPayload(character: CharacterData, user: { id: string;
   const systemId = (typeof character.system_id === "string" && character.system_id.trim()) ||
                    (typeof character.systemId === "string" && character.systemId.trim()) ||
                    "pf2e";
+  const catalogVersion = character.catalogVersion || getCatalogVersion(systemId, ruleset);
   const gmEmail = (typeof character.gmEmail === "string" && character.gmEmail.trim()) ||
                   (typeof character.gm_email === "string" && character.gm_email.trim()) ||
                   null;
@@ -306,6 +312,7 @@ export function toCharacterPayload(character: CharacterData, user: { id: string;
       ...character,
       system_id: systemId,
       systemId,
+      ...(catalogVersion ? { catalogVersion } : {}),
     },
   };
 }

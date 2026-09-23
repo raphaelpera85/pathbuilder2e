@@ -43,5 +43,17 @@ describe("character editor routing", () => {
     expect(hydrated.systemId).toBe(systemId);
     expect(hydrated.ruleset).toBe(ruleset);
     expect(hydrated.id).toBe("character-1");
+    if (systemId === "t20" || systemId === "dnd5e" || systemId === "ose") {
+      expect(hydrated.catalogVersion).toMatch(new RegExp(`^${systemId}-`));
+    }
+  });
+
+  it("preserves an explicit catalog version from the saved document", () => {
+    const hydrated = hydrateCharacterForEditor("ose", "classic", {
+      id: "old-classic",
+      name: "Ficha antiga",
+      catalogVersion: "ose-classic-2025.12",
+    });
+    expect(hydrated.catalogVersion).toBe("ose-classic-2025.12");
   });
 });

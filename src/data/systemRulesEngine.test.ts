@@ -11,6 +11,13 @@ describe("system rules engines", () => {
     expect(DND5E_RULES_ENGINE.ruleset).toBe("standard");
   });
 
+  it("creates a D&D default that is immediately valid even with mandatory racial choices", () => {
+    const character = DND5E_RULES_ENGINE.createDefaultCharacter();
+    expect(character.raceId).toBe("anao");
+    expect(character.raceChoices?.["dwarf-tool-proficiency"]).toEqual(["ferramentas de ferreiro"]);
+    expect(DND5E_RULES_ENGINE.validateCharacter(character)).toEqual([]);
+  });
+
   it("mantém invariantes monotônicas de modificadores, proficiência e PV", () => {
     for (const system of ["t20", "dnd5e"] as const) {
       const modifiers = Array.from({ length: 30 }, (_, index) => abilityModifier(index + 1, system));
@@ -304,6 +311,7 @@ describe("system rules engines", () => {
     const halfElf = DND5E_RULES_ENGINE.createDefaultCharacter();
     halfElf.raceId = "meio_elfo";
     halfElf.subraceId = undefined;
+    halfElf.raceChoices = {};
     halfElf.raceAbilityChoices = ["str", "wis"];
     halfElf.raceLanguages = ["Anão"];
     halfElf.raceSkillChoices = ["furtividade", "percepcao"];
@@ -316,6 +324,7 @@ describe("system rules engines", () => {
     const human = DND5E_RULES_ENGINE.createDefaultCharacter();
     human.raceId = "humano";
     human.subraceId = undefined;
+    human.raceChoices = {};
     human.raceLanguages = ["Élfico"];
     expect(DND5E_RULES_ENGINE.validateCharacter(human)).toEqual([]);
 
@@ -439,6 +448,7 @@ describe("system rules engines", () => {
     battleMaster.level = 7;
     battleMaster.subclassId = "guerreiro_mestre_batalha";
     battleMaster.subclassChoices = {
+      "battle-master-warrior-tool": ["ferramentas de ferreiro"],
       "battle-master-maneuvers": ["Aparar", "Contra-ataque", "Ataque de Precisão"],
       "battle-master-maneuvers-7": ["Ataque de Provocação", "Ataque Desarmante"],
     };
@@ -449,6 +459,11 @@ describe("system rules engines", () => {
       "Superioridade em Combate: 5 dados d8; recupera após descanso curto ou longo",
       "Manobras conhecidas: Aparar, Contra-ataque, Ataque de Precisão, Ataque de Provocação, Ataque Desarmante",
     ]);
+    expect(DND5E_RULES_ENGINE.validateCharacter(battleMaster)).toContain("a ferramenta concedida pela subclasse deve estar selecionada");
+    battleMaster.toolProficiencies = ["ferramentas de ferreiro"];
+    expect(DND5E_RULES_ENGINE.validateCharacter(battleMaster)).not.toContain("a ferramenta concedida pela subclasse deve estar selecionada");
+    battleMaster.subclassChoices["battle-master-warrior-tool"] = ["ferramenta inválida"];
+    expect(DND5E_RULES_ENGINE.validateCharacter(battleMaster)).toContain("a escolha Ferramenta de artesão do Aluno da Guerra contém uma opção inválida");
     battleMaster.level = 10;
     expect(DND5E_RULES_ENGINE.deriveStats(battleMaster).subclassEffects.find((effect) => effect.startsWith("Superioridade em Combate:"))).toBe("Superioridade em Combate: 5 dados d10; recupera após descanso curto ou longo");
     battleMaster.level = 18;
@@ -476,6 +491,39 @@ describe("system rules engines", () => {
       "Resiliência dracônica: resistência a dano de fogo",
       "CA sem armadura da linhagem: 13",
     ]);
+  });
+
+  it("valida e deriva escolhas adicionais das subclasses D&D 5e", () => {
+    const champion = DND5E_RULES_ENGINE.createDefaultCharacter();
+    champion.classId = "guerreiro";
+    champion.level = 10;
+    champion.subclassId = "guerreiro_campeao";
+    champion.classChoices = { "fighter-fighting-style": ["Arquearia"] };
+    champion.subclassChoices = { "champion-additional-fighting-style": ["Defesa"] };
+    expect(DND5E_RULES_ENGINE.validateCharacter(champion)).toEqual([]);
+    expect(DND5E_RULES_ENGINE.deriveStats(champion).subclassEffects).toContain("Estilo de Luta adicional: Defesa");
+    const championWithArmor = { ...champion, equipmentIds: ["dnd5e.armadura.cota_de_malha"] };
+    const championWithoutSecondStyle = DND5E_RULES_ENGINE.deriveStats({ ...championWithArmor, subclassChoices: {} }).defense;
+    expect(DND5E_RULES_ENGINE.deriveStats(championWithArmor).defense).toBe(championWithoutSecondStyle + 1);
+    expect(DND5E_RULES_ENGINE.validateCharacter({ ...champion, subclassChoices: { "champion-additional-fighting-style": ["Arquearia"] } })).toContain("o Campeão não pode escolher o mesmo Estilo de Luta duas vezes");
+
+    const land = DND5E_RULES_ENGINE.createDefaultCharacter();
+    land.classId = "druida";
+    land.level = 2;
+    land.subclassId = "druida_terra";
+    land.subclassChoices = { "land-terrain": ["Floresta"], "land-bonus-cantrip": ["Luz"] };
+    expect(DND5E_RULES_ENGINE.validateCharacter(land)).toEqual([]);
+    expect(DND5E_RULES_ENGINE.deriveStats(land).subclassEffects).toContain("Truque adicional do Círculo da Terra: Luz");
+
+    const fiend = DND5E_RULES_ENGINE.createDefaultCharacter();
+    fiend.classId = "bruxo";
+    fiend.level = 10;
+    fiend.subclassId = "bruxo_infernal";
+    fiend.classChoices = { "warlock-pact-boon": ["Pacto da Corrente"] };
+    fiend.subclassChoices = { "fiendish-resilience": ["Fogo"] };
+    expect(DND5E_RULES_ENGINE.validateCharacter(fiend)).toEqual([]);
+    expect(DND5E_RULES_ENGINE.deriveStats(fiend).subclassEffects).toContain("Resiliência Infernal: resistência a dano Fogo");
+    expect(DND5E_RULES_ENGINE.deriveStats(fiend).damageResistances).toContain("fogo");
   });
 
   it("aplica e descreve efeitos de Estilo de Luta e Dádiva do Pacto", () => {
@@ -695,6 +743,7 @@ describe("system rules engines", () => {
     const halfElf = DND5E_RULES_ENGINE.createDefaultCharacter();
     halfElf.raceId = "meio_elfo";
     halfElf.subraceId = undefined;
+    halfElf.raceChoices = {};
     halfElf.raceAbilityChoices = ["str", "wis"];
     halfElf.raceLanguages = ["Anão"];
     halfElf.raceSkillChoices = ["furtividade", "percepcao"];

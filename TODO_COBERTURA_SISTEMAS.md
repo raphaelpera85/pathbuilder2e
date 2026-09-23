@@ -26,7 +26,7 @@ Não marcar uma categoria como completa apenas porque seus nomes aparecem no cat
 | Tormenta20 padrão | 17 | 14 | 150 | 66 | 412 poderes | 29 | não possui a mecânica nativa de D&D; usar modificadores/penalidades T20 | núcleo implementado; efeitos situacionais ainda abertos |
 | D&D 5e 2014 Standard | 9 | 12 | 226 | 315 | 40 | 18 | vantagem/desvantagem implementada | núcleo implementado; completar efeitos por nível |
 | OSE Advanced Fantasy | 10 raças | 16 classes avançadas | 53 itens/armas/armaduras | 34 | não possui talentos nativos | tabelas percentuais e perícias secundárias | não possui vantagem/desvantagem nativa | construtor próprio e PDF de uma página |
-| OSE Classic Fantasy | classes raciais do ruleset | 3 classes raciais na matriz atual | 53 itens/armas/armaduras | 34 | não possui talentos nativos | perícias secundárias opcionais | não possui vantagem/desvantagem nativa | ruleset isolado; ampliar auditoria de criação |
+| OSE Classic Fantasy | classes raciais do ruleset | 7 classes jogáveis na matriz atual | 53 itens/armas/armaduras | 34 | não possui talentos nativos | perícias secundárias opcionais | não possui vantagem/desvantagem nativa | ruleset isolado; ampliar auditoria de criação |
 
 Evidência atual: `src/data/system-content-coverage.test.ts`, `src/data/systemRulesCatalog.ts`, `src/data/systemSkills.ts`, `src/data/ose/oseRules.ts` e os auditores em `scripts/`.
 
@@ -38,7 +38,7 @@ Evidência atual: `src/data/system-content-coverage.test.ts`, `src/data/systemRu
 - [x] Registrar fonte/livro/página nos catálogos principais.
 - [x] Criar testes de isolamento de catálogo e ruleset.
 - [x] Criar um relatório automático único que compare, por sistema, contagem local, entradas sem fonte, entradas sem resumo e entradas sem mecanismo; `audit:system:coverage` agora falha em contagens/isolamento e lista a cobertura de metadados e escolhas estruturadas.
-- [ ] Adicionar uma versão de catálogo/ruleset ao payload exportado para impedir que uma ficha seja aberta com regras incompatíveis.
+- [x] Adicionar `catalogVersion` por sistema/ruleset ao payload persistido e à exportação PDF; fichas antigas sem versão continuam compatíveis, enquanto versões declaradas cruzadas são rejeitadas antes do salvamento.
 - [ ] Definir política explícita de suplementos: cada livro novo deve entrar como pacote/versionamento próprio, nunca misturado silenciosamente ao núcleo.
 - [ ] Resolver no painel do Supabase a proteção contra senhas vazadas apontada pelo advisor de segurança.
 
@@ -54,7 +54,7 @@ Evidência atual: `src/data/system-content-coverage.test.ts`, `src/data/systemRu
 - [x] Validação antes de salvar/concluir.
 - [x] PDF associado ao sistema.
 - [ ] Importar personagem externo com relatório de conversão, sem fingir compatibilidade automática.
-- [ ] Exibir uma revisão final de criação com todas as escolhas obrigatórias, pendências e origem das regras.
+- [x] Exibir uma revisão final de criação com escolhas, pendências, sistema/ruleset, catálogo e origem do conjunto de regras no construtor core e no wizard OSE.
 - [ ] Permitir duplicar personagem mantendo sistema/ruleset e limpando apenas dados de identidade que precisem ser únicos.
 - [ ] Cobrir todos os fluxos de edição com testes de reabertura, alteração, salvamento e exportação.
 
@@ -81,6 +81,7 @@ Evidência atual: `src/data/system-content-coverage.test.ts`, `src/data/systemRu
 - [x] Ataque Descuidado do Bárbaro agora é um modo editável a partir do 2º nível: concede vantagem aos ataques corpo a corpo com Força, anula uma desvantagem global conforme a regra de D&D 5e e é registrado no PDF.
 - [x] Patrulheiro agora possui escolhas estruturadas de Inimigo Favorecido e Terreno Favorecido no 1º, 6º e 10º níveis, com efeitos derivados, validação por nível, edição e sincronização no Supabase.
 - [ ] Completar todas as escolhas de classe por nível que ainda estão apenas resumidas.
+  - Progresso adicional D&D 5e: o segundo Estilo de Luta do Campeão, o truque adicional do Círculo da Terra e a resistência escolhida da Resiliência Infernal agora são grupos estruturados no construtor, validados por nível e exibidos nos efeitos da ficha.
 - [ ] Completar efeitos operacionais de todas as subclasses, talentos e traços raciais restantes.
 - [ ] Auditar a lista de magias por classe/subclasse/nível contra o Livro do Jogador e registrar exceções.
 - [ ] Validar componentes, concentração, ritual, alcance, duração, dano, salvamento e escalonamento das magias.
@@ -98,7 +99,7 @@ Evidência atual: `src/data/system-content-coverage.test.ts`, `src/data/systemRu
 - [ ] Exibir no construtor requisitos principais, modificadores de XP, reações, retentores e lealdade.
 - [ ] Completar itens de aventura, montarias, especialistas, retentores e suas regras de uso no editor.
 - [ ] Validar magias iniciais e limites por círculo no fluxo visual de criação.
-- [ ] Criar testes de reabertura/edição/exportação para Advanced, além dos testes unitários atuais.
+- [x] Criar testes de reabertura/edição/exportação para Advanced e Classic, incluindo PDF editável de uma página.
 
 ### OSE Classic Fantasy — criação
 
@@ -106,7 +107,7 @@ Evidência atual: `src/data/system-content-coverage.test.ts`, `src/data/systemRu
 - [x] Manter catálogo de magias/equipamentos/actions separado pelo ruleset.
 - [x] Registrar que não há talentos modernos nem vantagem/desvantagem nativa.
 - [x] O construtor Classic mantém a lista de classes raciais e exibe a progressão correspondente ao nível selecionado sem importar classes Advanced.
-- [ ] Confirmar contra a fonte a lista completa de classes raciais, níveis máximos e requisitos.
+- [x] Confirmar contra a fonte a lista Classic de sete classes (quatro humanas e três raciais), níveis máximos e requisitos; a auditoria agora conta as opções jogáveis do modo, não apenas as classes raciais.
 - [ ] Exibir a tabela de habilidades e progressão específica de cada classe racial.
 - [ ] Completar fluxo de idiomas, ocupação/perícia secundária opcional, ouro, carga e magias.
 - [ ] Criar matriz de testes específica para cada classe racial do Classic.
@@ -233,7 +234,7 @@ Para cada linha abaixo, executar o checklist em cada sistema/ruleset que a possu
 
 - [x] Testes unitários de engines, catálogos, OSE, PDFs e isolamento existentes.
 - [x] Auditorias locais de acessibilidade, responsividade, interação, contraste e uso de personagem executadas em parte do núcleo.
-- [ ] Criar `audit:system:coverage` com relatório por sistema e categoria, falhando quando uma categoria marcada como implementada não possui teste/evidência.
+- [x] Criar `audit:system:coverage` com relatório por sistema e categoria; a auditoria agora falha em contagens, metadados, regras de criação, ações, perícias, semântica de vantagem e escolhas estruturadas ausentes.
 - [x] Criar fixtures estruturais para todas as classes e todas as raças de T20, D&D 5e e OSE; o teste verifica correspondência de fonte, regras de criação, progressão de 1º nível, traços e idiomas.
 - [ ] Criar fixtures de níveis de fronteira: 1, primeiro recurso, primeiro espaço, primeiro aumento, nível máximo e nível racial máximo.
 - [ ] Rodar matriz de criação/edição/exportação em todos os rulesets, não apenas em amostras.

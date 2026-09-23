@@ -32,6 +32,7 @@ import {
 } from "../data/ose/oseEquipment";
 import { OSE_SPELLS, type OseSpell } from "../data/ose/oseSpells";
 import "./oseTheme.css";
+import { getCatalogVersion } from "../data/catalogVersions";
 
 const OSE_CREATION_RULES: Record<"advanced" | "classic", readonly string[]> = {
   advanced: [
@@ -57,6 +58,7 @@ export interface OseCharacterCreatedData {
   name: string;
   system_id: "ose";
   ruleset: "advanced" | "classic";
+  catalogVersion?: string;
   raceId: string;
   classId: string;
   level: number;
@@ -372,6 +374,7 @@ export function OseCharacterCreatorModal({
   }, [characterLevel, selectedClass]);
 
   const totalSpellSlots = spellSlotsByCircle.reduce((total, slots) => total + slots, 0);
+  const finalStep = selectedClass.spellCasting ? 6 : 5;
 
   const availableClassSpells = useMemo(() => {
     if (!selectedClass.spellCasting) return [];
@@ -450,6 +453,7 @@ export function OseCharacterCreatorModal({
       name: charName.trim() || "Aventureiro de Karameikos",
       system_id: "ose",
       ruleset: creationMode,
+      catalogVersion: getCatalogVersion("ose", creationMode),
       raceId: effectiveRaceId,
       classId: selectedClassId,
       level: characterLevel,
@@ -500,12 +504,13 @@ export function OseCharacterCreatorModal({
 
         {/* Step Tabs */}
         <div className="ose-step-tabs" role="tablist" aria-label="Etapas da criação OSE">
-          {[
+            {[
             { s: 1, title: "1. Atributos (3d6)" },
             { s: 2, title: "2. Raça & Classe" },
             { s: 3, title: "3. PV, Alinhamento & Perícias" },
             { s: 4, title: "4. Ouro & Equipamento" },
             ...(selectedClass.spellCasting ? [{ s: 5, title: "5. Magias Iniciais" }] : []),
+            { s: finalStep, title: `${finalStep}. Revisão final` },
           ].map((item) => (
             <button
               key={item.s}
@@ -1114,6 +1119,26 @@ export function OseCharacterCreatorModal({
               </div>
             </div>
           )}
+
+          {step === finalStep && (
+            <div className="ose-creation-review">
+              <h3 style={{ margin: "0 0 12px", color: "var(--ose-gold)" }}>Revisão final da ficha</h3>
+              <p><strong>Sistema:</strong> OSE {creationMode === "advanced" ? "Advanced Fantasy" : "Classic Fantasy"} · <strong>catálogo:</strong> {getCatalogVersion("ose", creationMode)}</p>
+              <div className="ose-review-grid">
+                <p><strong>Nome:</strong> {charName || "sem nome"}</p>
+                <p><strong>Raça:</strong> {selectedRace.name}</p>
+                <p><strong>Classe:</strong> {selectedClass.name}</p>
+                <p><strong>Nível:</strong> {characterLevel} · <strong>PV:</strong> {finalMaxHp}</p>
+                <p><strong>Alinhamento:</strong> {alignment}</p>
+                <p><strong>Ouro restante:</strong> {gold} PO</p>
+                <p><strong>Perícia secundária:</strong> {secondarySkill || "não escolhida"}</p>
+                <p><strong>Idiomas:</strong> {Array.from(new Set([...selectedRace.nativeLanguages, ...selectedLanguages])).join(", ") || "nenhum"}</p>
+                <p><strong>Equipamento:</strong> {boughtWeapons.length + boughtArmors.length + boughtGear.length} item(ns)</p>
+                {selectedClass.spellCasting && <p><strong>Magias:</strong> {selectedSpells.length}/{totalSpellSlots}</p>}
+              </div>
+              <p style={{ color: "var(--ose-text-muted)", fontSize: "0.82rem" }}>A classe, raça, nível máximo, atributos, proficiências, equipamento e espaços de magia serão revalidados ao concluir.</p>
+            </div>
+          )}
         </div>
 
         {/* Footer */}
@@ -1128,7 +1153,7 @@ export function OseCharacterCreatorModal({
           </button>
 
           <div style={{ display: "flex", gap: 10 }}>
-            {step < (selectedClass.spellCasting ? 5 : 4) ? (
+            {step < finalStep ? (
               <button
                 type="button"
                 className="ose-btn ose-btn-primary"

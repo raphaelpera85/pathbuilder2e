@@ -12,6 +12,7 @@ import { DND5E_CLASS_PROGRESSIONS } from "./dnd5e/dnd5eProgressions";
 import { T20_CLASS_PROGRESSIONS } from "./t20/t20Progressions";
 import { DND5E_CLERIC_DOMAIN_SPELLS, DND5E_LAND_CIRCLE_SPELLS, DND5E_SUBRACES, DND5E_SUBCLASSES } from "./dnd5e/dnd5eOptions";
 import type { AbilityGenerationMethod } from "./coreCharacterRules";
+import { getCatalogVersion } from "./catalogVersions";
 
 export type SupportedCoreSystem = "t20" | "dnd5e";
 export type CoreAbility = "str" | "dex" | "con" | "int" | "wis" | "cha";
@@ -84,6 +85,8 @@ export interface MultiSystemCharacter {
   system_id: SupportedCoreSystem;
   systemId: SupportedCoreSystem;
   ruleset: "padrao" | "standard";
+  /** Identifica o catálogo de regras que gerou a ficha. Ausente em fichas antigas. */
+  catalogVersion?: string;
   level: number;
   experiencePoints?: number;
   generationMethod?: AbilityGenerationMethod;
@@ -550,6 +553,14 @@ export function createInitialCoreCharacter(system: SupportedCoreSystem): MultiSy
   const defaultRaceAbilityChoices = abilityChoices
     ? (["str", "dex", "con", "int", "wis", "cha"] as CoreAbility[]).filter((ability) => !abilityChoices.exclude?.includes(ability)).slice(0, abilityChoices.count)
     : [];
+  const raceChoiceDefinitions = "raceChoices" in catalog.raceRules[0]
+    ? ((catalog.raceRules[0] as { raceChoices?: Array<{ id: string; options: string[] }> }).raceChoices || [])
+    : [];
+  const defaultRaceChoices = Object.fromEntries(
+    raceChoiceDefinitions
+      .filter((choice) => choice.options.length > 0)
+      .map((choice) => [choice.id, [choice.options[0]]]),
+  );
   const skillChoices = (catalog.raceRules[0] as { skillChoices?: number }).skillChoices || 0;
   const existingSkills = new Set([...backgroundSkills, ...fixedSkills]);
   const defaultRaceSkillChoices = skillChoices ? catalog.skills.filter((skill) => !existingSkills.has(skill.id)).slice(0, skillChoices).map((skill) => skill.id) : [];
@@ -560,13 +571,14 @@ export function createInitialCoreCharacter(system: SupportedCoreSystem): MultiSy
     system_id: system,
     systemId: system,
     ruleset: system === "t20" ? "padrao" : "standard",
+    catalogVersion: getCatalogVersion(system, system === "t20" ? "padrao" : "standard"),
     level: 1,
     experiencePoints: 0,
     generationMethod: "point_buy",
     raceId: firstRace.id,
     raceAbilityChoices: defaultRaceAbilityChoices,
     raceLanguages: [],
-    raceChoices: {},
+    raceChoices: defaultRaceChoices,
     subraceChoices: {},
     raceSkillChoices: defaultRaceSkillChoices,
     raceChoiceMode: "skills",

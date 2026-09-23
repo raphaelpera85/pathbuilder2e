@@ -340,8 +340,15 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       const dndChampionCriticalThreshold = systemId === "dnd5e" && selectedSubclass?.id === "guerreiro_campeao"
         ? safeLevel >= 15 ? 18 : safeLevel >= 3 ? 19 : undefined
         : undefined;
-      const experiencePoints = Math.max(0, Math.trunc(character.experiencePoints || 0));
       const fightingStyle = character.classChoices?.[`${character.classId === "guerreiro" ? "fighter" : character.classId === "paladino" ? "paladin" : "ranger"}-fighting-style`]?.[0];
+      const dndChampionFightingStyle = systemId === "dnd5e" && selectedSubclass?.id === "guerreiro_campeao" && safeLevel >= 10
+        ? character.subclassChoices?.["champion-additional-fighting-style"]?.[0]
+        : undefined;
+      const activeDndFightingStyles = new Set([fightingStyle, dndChampionFightingStyle].filter(Boolean));
+      const dndFiendishResistance = systemId === "dnd5e" && selectedSubclass?.id === "bruxo_infernal" && safeLevel >= 10
+        ? character.subclassChoices?.["fiendish-resilience"]?.[0]?.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
+        : undefined;
+      const experiencePoints = Math.max(0, Math.trunc(character.experiencePoints || 0));
       const equippedArmor = selectedEquipment.find((entry) => entry.category === "armadura" && entry.armorClass !== undefined);
       const dndMagicArmorBonus = systemId === "dnd5e" && equippedArmor && hasAttunedEquipment("dnd5e.item_magico.armadura_um") ? 1 : 0;
       const dndProtectionRingBonus = systemId === "dnd5e" && hasAttunedEquipment("dnd5e.item_magico.anelprotecao") ? 1 : 0;
@@ -370,8 +377,8 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
             : 0
         : 0;
       const selectedWeapons = selectedEquipment.filter((entry) => entry.category === "arma" && entry.damage);
-      const dndDuelingActive = systemId === "dnd5e" && fightingStyle === "Duelos" && selectedWeapons.length === 1 && !selectedWeapons[0]?.weaponProperties?.some((property) => ["munição", "duas mãos"].includes(property)) && !/alcance/i.test(selectedWeapons[0]?.summary || "");
-      const dndTwoWeaponStyleActive = systemId === "dnd5e" && fightingStyle === "Luta com Duas Armas" && selectedWeapons.length >= 2 && selectedWeapons.every((entry) => !entry.weaponProperties?.some((property) => ["munição", "duas mãos"].includes(property)) && !/alcance/i.test(entry.summary));
+      const dndDuelingActive = systemId === "dnd5e" && activeDndFightingStyles.has("Duelos") && selectedWeapons.length === 1 && !selectedWeapons[0]?.weaponProperties?.some((property) => ["munição", "duas mãos"].includes(property)) && !/alcance/i.test(selectedWeapons[0]?.summary || "");
+      const dndTwoWeaponStyleActive = systemId === "dnd5e" && activeDndFightingStyles.has("Luta com Duas Armas") && selectedWeapons.length >= 2 && selectedWeapons.every((entry) => !entry.weaponProperties?.some((property) => ["munição", "duas mãos"].includes(property)) && !/alcance/i.test(entry.summary));
       const t20OneWeaponStyleActive = systemId === "t20" && selectedFeatIds.has("t20.poder.estilo_de_uma_arma") && selectedWeapons.length === 1 && !equippedShield && !selectedWeapons[0]?.weaponProperties?.some((property) => ["munição", "duas mãos"].includes(property));
       const t20DodgeActive = systemId === "t20" && selectedFeatIds.has("t20.poder.esquiva");
       const t20WeaponFocus = systemId === "t20" && selectedFeatIds.has("t20.poder.foco_em_arma") ? character.featChoices?.["t20-weapon-focus"]?.[0] : undefined;
@@ -466,7 +473,7 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
             + (equippedArmor.proficiency === "heavy_armor" ? 0 : Math.min(dex, mediumArmorMasterActive ? 3 : equippedArmor.dexterityCap ?? 99))
             + (equippedShield?.shieldBonus || 0)
             + (dualWielderActive ? 1 : 0)
-            + (fightingStyle === "Defesa" ? 1 : 0)
+            + (activeDndFightingStyles.has("Defesa") ? 1 : 0)
           : (dndDraconicUnarmoredDefense ?? 10 + dex + dndClassUnarmoredDefenseBonus) + dndMagicArmorBonus + dndProtectionRingBonus + (equippedShield?.shieldBonus || 0) + (dualWielderActive ? 1 : 0);
       const t20SelectedTrainingSkills = systemId === "t20" && selectedFeatIds.has("t20.poder.treinamento_em_pericia")
         ? (character.featChoices?.["t20-trained-skill"] || [])
@@ -645,7 +652,7 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         const finalDamageBonuses = [damageBonuses, dndMagicWeaponBonus ? "+ 1" : ""].filter(Boolean).join(" ");
         return {
           name: weapon.name,
-          bonus: (modifiers[attackAbility] || 0) + (proficient ? proficiencyBonus(systemId, character.level) : 0) + dndMagicWeaponBonus + (t20ArmasDaAmbicaoActive && proficient ? 1 : 0) + (fightingStyle === "Arquearia" && rangedWeapon ? 2 : 0) + (powerfulAttackActive ? -2 : 0) + (powerAttackEligible ? -5 : 0) + (t20OneWeaponStyleActive ? 2 : 0) + (t20WeaponFocus === weapon.name ? 2 : 0) + (t20DualWeaponAttack ? -2 : 0),
+          bonus: (modifiers[attackAbility] || 0) + (proficient ? proficiencyBonus(systemId, character.level) : 0) + dndMagicWeaponBonus + (t20ArmasDaAmbicaoActive && proficient ? 1 : 0) + (activeDndFightingStyles.has("Arquearia") && rangedWeapon ? 2 : 0) + (powerfulAttackActive ? -2 : 0) + (powerAttackEligible ? -5 : 0) + (t20OneWeaponStyleActive ? 2 : 0) + (t20WeaponFocus === weapon.name ? 2 : 0) + (t20DualWeaponAttack ? -2 : 0),
           damage: `${t20LutadorUnarmedDamage || (unarmedStyleActive ? "1d6 impacto" : weapon.damage || weapon.summary)}${finalDamageBonuses || powerAttackEligible || dndRageEligible ? ` ${[finalDamageBonuses, powerAttackEligible ? "+ 10" : "", dndRageEligible ? `+ ${dndRageDamageBonus}` : ""].filter(Boolean).join(" ")}` : ""}`,
           proficient,
           ...(attackRollMode !== "normal" ? { rollMode: attackRollMode } : {}),
@@ -778,6 +785,15 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         if (selectedSubclass.id === "patrulheiro_mestre_feras" && choice("beast-companion")) {
           subclassEffects.push(`Companheiro animal: ${choice("beast-companion")}; usa o bônus de proficiência do Patrulheiro`);
         }
+        if (selectedSubclass.id === "guerreiro_campeao" && choice("champion-additional-fighting-style")) {
+          subclassEffects.push(`Estilo de Luta adicional: ${choice("champion-additional-fighting-style")}`);
+        }
+        if (selectedSubclass.id === "druida_terra" && choice("land-bonus-cantrip")) {
+          subclassEffects.push(`Truque adicional do Círculo da Terra: ${choice("land-bonus-cantrip")}`);
+        }
+        if (selectedSubclass.id === "bruxo_infernal" && choice("fiendish-resilience")) {
+          subclassEffects.push(`Resiliência Infernal: resistência a dano ${choice("fiendish-resilience")}`);
+        }
         if (selectedSubclass.id === "feiticeiro_linhagem_draconica") {
           const ancestry = choice("draconic-ancestry");
           if (ancestry) {
@@ -792,12 +808,12 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       }
       const classChoiceEffects: string[] = [];
       if (systemId === "dnd5e") {
-        if (fightingStyle === "Arquearia") classChoiceEffects.push("Estilo de Luta — Arquearia: +2 nas jogadas de ataque com armas à distância");
-        if (fightingStyle === "Defesa") classChoiceEffects.push(equippedArmor ? "Estilo de Luta — Defesa: +1 CA enquanto usa armadura" : "Estilo de Luta — Defesa: +1 CA ao vestir uma armadura");
-        if (fightingStyle === "Duelos") classChoiceEffects.push("Estilo de Luta — Duelos: +2 no dano ao usar uma arma corpo a corpo em uma mão e nenhuma outra arma");
-        if (fightingStyle === "Luta com Armas Grandes") classChoiceEffects.push("Estilo de Luta — Luta com Armas Grandes: pode rerrolar 1 ou 2 no dado de dano de arma de duas mãos");
-        if (fightingStyle === "Luta com Duas Armas") classChoiceEffects.push("Estilo de Luta — Luta com Duas Armas: adiciona o modificador de atributo ao dano do segundo ataque");
-        if (fightingStyle === "Proteção") classChoiceEffects.push("Estilo de Luta — Proteção: reação para impor desvantagem a um ataque contra aliado adjacente");
+        if (activeDndFightingStyles.has("Arquearia")) classChoiceEffects.push("Estilo de Luta — Arquearia: +2 nas jogadas de ataque com armas à distância");
+        if (activeDndFightingStyles.has("Defesa")) classChoiceEffects.push(equippedArmor ? "Estilo de Luta — Defesa: +1 CA enquanto usa armadura" : "Estilo de Luta — Defesa: +1 CA ao vestir uma armadura");
+        if (activeDndFightingStyles.has("Duelos")) classChoiceEffects.push("Estilo de Luta — Duelos: +2 no dano ao usar uma arma corpo a corpo em uma mão e nenhuma outra arma");
+        if (activeDndFightingStyles.has("Luta com Armas Grandes")) classChoiceEffects.push("Estilo de Luta — Luta com Armas Grandes: pode rerrolar 1 ou 2 no dado de dano de arma de duas mãos");
+        if (activeDndFightingStyles.has("Luta com Duas Armas")) classChoiceEffects.push("Estilo de Luta — Luta com Duas Armas: adiciona o modificador de atributo ao dano do segundo ataque");
+        if (activeDndFightingStyles.has("Proteção")) classChoiceEffects.push("Estilo de Luta — Proteção: reação para impor desvantagem a um ataque contra aliado adjacente");
         const metamagic = character.classChoices?.["sorcerer-metamagic"] || [];
         if (metamagic.length) classChoiceEffects.push(`Metamagia: ${metamagic.join(", ")} · usa Pontos de Feitiçaria`);
         const pactBoon = character.classChoices?.["warlock-pact-boon"]?.[0];
@@ -863,7 +879,7 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         carryingWeight,
         carryingCapacity,
         encumbered: carryingCapacity !== undefined && carryingWeight > carryingCapacity,
-        damageResistances: dndRageActive ? ["contundente", "perfurante", "cortante"] : [],
+        damageResistances: [...(dndRageActive ? ["contundente", "perfurante", "cortante"] : []), ...(dndFiendishResistance ? [dndFiendishResistance] : [])],
         speed: Math.max(0, ((raceRules?.speed || 0) + featSpeedBonus + dndClassSpeedBonus + t20FuriaDaSavanaBonus + t20AtleticoSpeedBonus - (systemId === "t20" && t20Armor && (t20Armor.armorPenalty || 0) <= -2 && !t20FanaticoActive ? 3 : 0)) * (systemId === "dnd5e" && hasAttunedEquipment("dnd5e.item_magico.botas_velocidade") ? 2 : 1)),
         racialEffects,
         subclassEffects,
@@ -924,6 +940,11 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
           .map((value) => catalog.skills.find((skill) => normalizeSkillChoice(skill.name) === normalizeSkillChoice(value))?.id)
           .filter((skillId): skillId is string => Boolean(skillId))
         : [];
+      const dndSubclassToolNames = systemId === "dnd5e"
+        ? (selectedSubclass?.choices || [])
+          .filter((choice) => choice.grantsToolProficiencies && character.level >= (choice.minimumLevel || selectedSubclass?.featureLevel || 1))
+          .flatMap((choice) => character.subclassChoices?.[choice.id] || [])
+        : [];
       const dndLandCircleSpellNames = systemId === "dnd5e" && selectedSubclass?.id === "druida_terra"
         ? Object.entries(DND5E_LAND_CIRCLE_SPELLS)
           .filter(([terrain]) => terrain === character.subclassChoices?.["land-terrain"]?.[0])
@@ -960,6 +981,7 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
           if (!Array.isArray(values) || selectedValues.length !== choice.count) errors.push(`a escolha ${choice.label} exige exatamente ${choice.count} opção(ões)`);
           if (new Set(selectedValues).size !== selectedValues.length) errors.push(`a escolha ${choice.label} não pode conter opções repetidas`);
           if (selectedValues.some((value) => !choice.options.includes(value))) errors.push(`a escolha ${choice.label} contém uma opção inválida`);
+          if (choice.id === "champion-additional-fighting-style" && selectedValues.some((value) => value === character.classChoices?.["fighter-fighting-style"]?.[0])) errors.push("o Campeão não pode escolher o mesmo Estilo de Luta duas vezes");
         }
         for (const choice of activeSubclassChoices) {
           const values = character.subclassChoices?.[choice.id] || [];
@@ -1165,6 +1187,10 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       }
       if (systemId === "dnd5e") {
         const normalizeTool = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/s de /, " de ");
+        const selectedTools = new Set((character.toolProficiencies || []).map(normalizeTool));
+        for (const tool of dndSubclassToolNames) {
+          if (!selectedTools.has(normalizeTool(tool))) errors.push("a ferramenta concedida pela subclasse deve estar selecionada");
+        }
         const knownTools = new Set(DND5E_TOOLS.map((tool) => normalizeTool(tool.name)));
         for (const tool of character.toolProficiencies || []) if (!knownTools.has(normalizeTool(tool))) errors.push("a ferramenta não pertence ao catálogo de D&D 5e");
       }

@@ -13,9 +13,10 @@ import {
 } from "../data/ose/oseRules";
 import { OSE_RACES } from "../data/ose/oseRaces";
 import { OSE_CLASSES } from "../data/ose/oseClasses";
-import { calculateOseArmorClass, OSE_ARMORS, OSE_BEASTS, OSE_GEAR, OSE_SPECIALISTS_RETAINERS, OSE_WEAPONS } from "../data/ose/oseEquipment";
+import { calculateOseArmorClass, OSE_ARMORS, OSE_GEAR, OSE_WEAPONS } from "../data/ose/oseEquipment";
 import { OSE_SPELLS } from "../data/ose/oseSpells";
-import { deriveCatalogVersion, withExportMetadata } from "../services/exportMetadata";
+import { withExportMetadata } from "../services/exportMetadata";
+import { getCatalogVersion } from "../data/catalogVersions";
 import { createOseEditablePdf, downloadOseEditablePdf } from "../services/osePdfExport";
 import "./oseTheme.css";
 
@@ -112,17 +113,7 @@ export function OseCharacterSheet({
       {
         systemId: "ose",
         ruleset: char.ruleset,
-        catalogVersion: deriveCatalogVersion({
-          // Classes e raças são mapas por chave; magias e equipamentos são listas.
-          classes: Object.keys(OSE_CLASSES).length,
-          races: Object.keys(OSE_RACES).length,
-          spells: OSE_SPELLS.length,
-          weapons: OSE_WEAPONS.length,
-          armors: OSE_ARMORS.length,
-          gear: OSE_GEAR.length,
-          beasts: OSE_BEASTS.length,
-          specialists: OSE_SPECIALISTS_RETAINERS.length,
-        }, "ose"),
+        catalogVersion: char.catalogVersion || getCatalogVersion("ose", char.ruleset) || "unknown",
       },
     );
     const dataStr = JSON.stringify(payload, null, 2);
