@@ -514,7 +514,7 @@ export function OseCharacterCreatorModal({
             { s: 2, title: "2. Raça & Classe" },
             { s: 3, title: "3. PV, Alinhamento & Perícias" },
             { s: 4, title: "4. Ouro & Equipamento" },
-            ...(selectedClass.spellCasting ? [{ s: 5, title: "5. Magias Iniciais" }] : []),
+            ...(canCastAtCurrentLevel ? [{ s: 5, title: "5. Magias Iniciais" }] : []),
             { s: finalStep, title: `${finalStep}. Revisão final` },
           ].map((item) => (
             <button

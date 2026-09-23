@@ -32,6 +32,82 @@ Não marcar uma categoria como completa apenas porque seus nomes aparecem no cat
 
 Evidência atual: `src/data/system-content-coverage.test.ts`, `src/data/systemRulesCatalog.ts`, `src/data/systemSkills.ts`, `src/data/ose/oseRules.ts` e os auditores em `scripts/`.
 
+Correção adicional (23/09/2026): a validação de pré-requisitos T20 agora preserva
+alternativas de perícia no mesmo texto (por exemplo, “Misticismo ou Religião”)
+e diferencia corretamente requisitos cumulativos com “e”. O construtor deixa de
+liberar poderes sem nenhuma das perícias exigidas. Evidência: `src/data/multiSystemCharacter.ts`
+e o teste de regressão em `src/data/multiSystemCharacter.test.ts` (9 casos verdes).
+
+Correção adicional (23/09/2026): o wizard OSE não cria mais a aba de magias antes
+do nível inicial de conjuração; isso também elimina a chave React duplicada da
+aba de revisão no nível 5. Evidência: `src/ose/OseCharacterCreatorModal.tsx` e
+`src/ose/OseCharacterCreatorModal.test.tsx` (6 casos verdes, sem warning).
+
+Correção adicional (23/09/2026): escolhas condicionais de raça e sub-raça no
+construtor Core agora respeitam genericamente `count`: escolhas unitárias usam
+seletor simples e escolhas múltiplas usam grupo de caixas de seleção com limite
+visível. Isso mantém D&D/T20 compatíveis com catálogos futuros sem descartar
+valores além da primeira opção. Evidência: `src/core/CoreCharacterCreatorModal.tsx`,
+134 testes direcionados verdes e build de produção verde.
+
+Correção adicional (23/09/2026): condições ativas D&D 5e agora podem registrar
+duração manual em rodadas e origem, além do nível de Exausto. Esses dados são
+persistidos, validados e aparecem nos efeitos derivados e no PDF editável; a
+contagem continua sob controle da mesa para não inventar um relógio de combate.
+Evidência: `CoreActiveCondition`, `systemRulesEngine.ts`, `CoreCharacterSheet.tsx`
+e `CoreCharacterCreatorModal.tsx`; 142 testes direcionados verdes e build verde.
+
+Correção adicional (23/09/2026): os campos de duração e origem foram retirados
+do `<label>` do checkbox de condição. Assim, editar texto/número no celular não
+alterna acidentalmente a condição. Evidência: construtor e ficha Core; 134 testes
+direcionados verdes e build verde.
+
+Correção adicional (23/09/2026): condições incapacitantes de D&D 5e agora geram
+`canAct` e `canReact` no motor, e a ficha informa explicitamente quando ações ou
+reações estão indisponíveis. Paralisado, Petrificado, Atordoado, Inconsciente e
+Incapacitado também zeram o deslocamento quando a regra exige. Evidência:
+`src/data/systemRulesEngine.ts`, `src/core/CoreCharacterSheet.tsx` e regressão
+completa: 77 arquivos e 1241 testes verdes.
+
+Correção adicional (23/09/2026): o preview do construtor também informa as
+limitações de ação/ reação causadas pelas condições D&D 5e antes da confirmação
+da ficha, mantendo a regra visível durante a criação. Evidência:
+`src/core/CoreCharacterCreatorModal.tsx`; 134 testes direcionados e build verdes.
+
+Correção adicional (23/09/2026): o motor passou a aplicar as resistências de dano
+da Resiliência Psíquica do Grande Antigo e da resistência necrótica da Escola de
+Necromancia a partir do 10º nível, em vez de apenas exibir seus resumos. Evidência:
+`src/data/systemRulesEngine.ts` e regressão de subclasses; 150 testes direcionados
+verdes e build verde.
+
+Implementação adicional (23/09/2026): D&D 5e agora persiste condições ativas
+selecionadas no construtor/ficha. Cego, Amedrontado, Envenenado, Contido,
+Agarrado, Paralisado, Atordoado, Inconsciente e Exausto têm efeitos modelados
+quando aplicáveis: modos de ataque/perícia/salvamento, penalidade por nível de
+exaustão, deslocamento 0 e resumo da regra ativa. Evidência: `src/data/systemConditions.ts`,
+`src/data/systemRulesEngine.ts`, `src/core/CoreCharacterCreatorModal.tsx`,
+`src/core/CoreCharacterSheet.tsx` e o teste de motor com 133 casos verdes.
+
+Extensão adicional (23/09/2026): as condições ativas D&D 5e também são
+exportadas no PDF core editável de uma página, junto do resumo mecânico e do
+nível de Exausto. Evidência: `src/services/corePdfExport.ts` e
+`src/services/corePdfExport.test.ts`; motor + exportação: 138 testes verdes.
+
+Refinamento adicional (23/09/2026): o nível de Exausto agora é editável entre
+1 e 6 no construtor e na ficha, em vez de ficar limitado ao valor inicial 1.
+Evidência: `src/core/CoreCharacterCreatorModal.tsx`,
+`src/core/CoreCharacterSheet.tsx` e o teste de UI (12 testes combinados verdes).
+
+Gate de regressão (23/09/2026): a suíte completa passou em modo serializado no
+Windows com 77 arquivos e 1.241 testes aprovados após a introdução de condições
+ativas e do nível editável de Exausto.
+
+Auditoria adicional (23/09/2026): `npm run audit:system:coverage` confirmou as
+contagens e metadados completos de T20, D&D 5e, OSE Advanced e OSE Classic; a
+reconciliação `npm run audit:catalog:supabase` confirmou zero registros locais
+ausentes remotamente e zero divergências de campos. Os registros extras remotos
+continuam classificados como outro ruleset ou suplemento, sem remoção automática.
+
 ## Fase 0 — inventário, fontes e arquitetura
 
 - [x] Manter `system_id` e `ruleset` em personagens, catálogos, payloads e exportações.
@@ -163,9 +239,11 @@ Para cada linha abaixo, executar o checklist em cada sistema/ruleset que a possu
 - [x] Armas/armaduras OSE com regras próprias e variantes preservadas.
 - [ ] Completar preço, peso/volume, mãos, alcance, munição, propriedades, material, raridade, sintonização e efeitos mágicos quando a fonte possuir.
 - [ ] Aplicar restrições de classe/raça/nível/treinamento na seleção e na validação.
+  - Progresso adicional: D&D 5e agora filtra armas, armaduras e escudos no seletor pela proficiência da classe, concede as exceções de talentos/subclasses modeladas, bloqueia armaduras metálicas do Druida e mantém itens legados inválidos visíveis com alerta para correção; a validação final continua rejeitando a ficha incompatível.
 - [ ] Modelar quantidade, consumo, munição, carga, equipamento equipado e equipamento carregado.
 - [ ] Garantir que o PDF liste equipamento e quantidades sem truncamento.
 - [ ] Auditar imagens, licenças, alt text e fallback visual sem bloquear o uso do item.
+  - Progresso adicional: contrato de metadados agora verifica dano/atributo/peso de armas, defesa/peso de armaduras e campos equivalentes do OSE; foram preenchidos os pesos das cinco armas-base T20 e o dano especial da Rede de D&D 5e. A reconciliação Supabase confirmou 0 registros locais ausentes e 0 divergências de campos.
 
 ### Magias, rituais e poderes mágicos
 
@@ -175,6 +253,7 @@ Para cada linha abaixo, executar o checklist em cada sistema/ruleset que a possu
 - [ ] Completar metadados de nível/círculo, escola/tradição, tempo, alcance, componentes, duração, concentração/ritual e fonte.
 - [ ] Completar dano/cura, tipo, salvamento, ataque mágico, escalonamento e efeitos condicionais.
 - [ ] Validar automaticamente lista de classe, nível máximo, limite de conhecidas/preparadas e espaços.
+  - Progresso adicional: contrato de metadados percorre todas as 66 magias T20, 315 magias D&D 5e e 34 magias OSE, verificando nível/círculo, tradição ou classe, alcance, duração e dados de conjuração exigidos pelo sistema.
 - [x] Exibir no PDF a distinção entre magia conhecida/selecionada e preparada; a origem concedida continua identificada nos efeitos e escolhas exportados.
 
 ### Talentos, poderes, dons, perícias especiais e vantagens
@@ -248,7 +327,8 @@ Para cada linha abaixo, executar o checklist em cada sistema/ruleset que a possu
 - [x] Criar fixtures estruturais para todas as classes e todas as raças de T20, D&D 5e e OSE; o teste verifica correspondência de fonte, regras de criação, progressão de 1º nível, traços e idiomas.
 - [x] Criar fixtures de níveis de fronteira: nível 1, primeiro espaço quando aplicável, teto 20 para T20/D&D e teto de progressão/racial para OSE.
 - [x] Fortalecer `audit:core:supabase` para validar IDs e progressões `countByLevel` das escolhas estruturadas de classe D&D 5e no catálogo remoto.
-- [ ] Rodar matriz de criação/edição/exportação em todos os rulesets, não apenas em amostras.
+- [x] Rodar matriz de criação/edição/exportação em todos os rulesets, não apenas em amostras.
+  - Evidência: `src/services/system-editor-matrix.test.ts` cobre T20 padrão, D&D 5e Standard, OSE Advanced e OSE Classic no ciclo criar → salvar → reabrir → editar → salvar → exportar PDF de uma página; 4 casos verdes.
 - [ ] Adicionar testes negativos para catálogo cruzado, escolha inválida, pré-requisito ausente, duplicidade e ruleset incompatível.
 - [ ] Revalidar Supabase após cada migration com auditoria de contagens e conteúdo.
 

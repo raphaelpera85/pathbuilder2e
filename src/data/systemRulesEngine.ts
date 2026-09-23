@@ -27,6 +27,7 @@ import { DND5E_CLERIC_DOMAIN_SPELLS, DND5E_CLASS_CHOICES, DND5E_LAND_CIRCLE_SPEL
 import { DND5E_FEAT_CHOICES } from "./dnd5e/dnd5eCompendium";
 import { T20_POWER_CHOICES } from "./t20/t20Compendium";
 import { T20_CLASS_CHOICES } from "./t20/t20Catalog";
+import { getSystemConditionItems } from "./systemConditions";
 
 const DND_FULL_CASTER_SLOTS: Record<number, Record<number, number>> = {
   1: { 1: 2 }, 2: { 1: 3 }, 3: { 1: 4, 2: 2 }, 4: { 1: 4, 2: 3 },
@@ -148,6 +149,8 @@ export interface SystemRulesEngine {
     encumbered: boolean;
     damageResistances: string[];
     speed: number;
+    canAct: boolean;
+    canReact: boolean;
     racialEffects: string[];
     experiencePoints: number;
     experienceForLevel: number;
@@ -157,6 +160,8 @@ export interface SystemRulesEngine {
     subclassEffects: string[];
     classChoiceEffects: string[];
     featEffects: string[];
+    conditionEffects: string[];
+    conditionImmunities: string[];
   };
   validateCharacter(character: MultiSystemCharacter): string[];
   getCreationSteps(): readonly string[];
@@ -348,6 +353,12 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       const dndFiendishResistance = systemId === "dnd5e" && selectedSubclass?.id === "bruxo_infernal" && safeLevel >= 10
         ? character.subclassChoices?.["fiendish-resilience"]?.[0]?.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
         : undefined;
+      const dndGreatOldOneResistance = systemId === "dnd5e" && selectedSubclass?.id === "bruxo_grande_antigo" && safeLevel >= 10
+        ? "psíquico"
+        : undefined;
+      const dndNecromancyResistance = systemId === "dnd5e" && selectedSubclass?.id === "mago_necromancia" && safeLevel >= 10
+        ? "necrótico"
+        : undefined;
       const experiencePoints = Math.max(0, Math.trunc(character.experiencePoints || 0));
       const equippedArmor = selectedEquipment.find((entry) => entry.category === "armadura" && entry.armorClass !== undefined);
       const dndMagicArmorBonus = systemId === "dnd5e" && equippedArmor && hasAttunedEquipment("dnd5e.item_magico.armadura_um") ? 1 : 0;
@@ -497,6 +508,20 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         ...(systemId === "t20" && character.t20ArcanistPath === "feiticeiro" && character.t20SorcererLineage === "feerica" ? ["enganacao"] : []),
       ]);
       const expertise = new Set([...(character.skillExpertise || []), ...dndSubclassExpertiseSkillIds]);
+      const activeConditionEntries = systemId === "dnd5e" ? character.conditions || [] : [];
+      const activeConditions = new Map(activeConditionEntries.map((condition) => [condition.id, Math.max(1, Math.trunc(condition.value || 1))]));
+      const hasCondition = (id: string) => activeConditions.has(`dnd5e.condition.${id}`);
+      const exhaustionPenalty = hasCondition("exausto") ? activeConditions.get("dnd5e.condition.exausto") || 1 : 0;
+      const conditionSkillDisadvantage = hasCondition("amedrontado") || hasCondition("envenenado");
+      const conditionAttackAdvantage = hasCondition("invisivel");
+      const conditionAttackDisadvantage = hasCondition("cego") || hasCondition("amedrontado") || hasCondition("envenenado") || hasCondition("caido") || hasCondition("contido");
+      const conditionSaveDisadvantage = hasCondition("contido");
+      const cannotAct = systemId === "dnd5e" && ["incapacitado", "paralisado", "petrificado", "atordoado", "inconsciente"].some(hasCondition);
+      const cannotReact = cannotAct;
+      const conditionImmunities: string[] = [];
+      if (systemId === "dnd5e" && selectedSubclass?.id === "barbaro_berserker" && safeLevel >= 6 && dndRageActive) conditionImmunities.push("amedrontado", "enfeitiçado");
+      if (systemId === "dnd5e" && selectedSubclass?.id === "bruxo_arque_fada" && safeLevel >= 10) conditionImmunities.push("enfeitiçado");
+      if (systemId === "dnd5e" && selectedSubclass?.id === "druida_terra" && safeLevel >= 10) conditionImmunities.push("veneno e doenças de elementais e fadas");
     const armorDisadvantagesStealth = systemId === "dnd5e" && selectedEquipment.some((entry) => entry.category === "armadura" && entry.summary.toLowerCase().includes("desvantagem furtividade") && !(mediumArmorMasterActive && entry.proficiency === "medium_armor"));
       const dndStealthMagicAdvantage = systemId === "dnd5e" && (hasAttunedEquipment("dnd5e.item_magico.botas_elficas") || hasAttunedEquipment("dnd5e.item_magico.capa_elfica"));
     const skillRollModes = Object.fromEntries(catalog.skills.map((skill) => {
@@ -504,7 +529,7 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       const globalMode = systemId === "dnd5e" ? character.d20Mode || "normal" : "normal";
       const itemAdvantage = dndStealthMagicAdvantage && skill.id === "furtividade";
       const hasAdvantage = globalMode === "advantage" || itemAdvantage;
-      const hasDisadvantage = globalMode === "disadvantage" || hasArmorDisadvantage;
+      const hasDisadvantage = globalMode === "disadvantage" || hasArmorDisadvantage || conditionSkillDisadvantage;
       return [skill.id, hasAdvantage && hasDisadvantage ? "normal" : hasAdvantage ? "advantage" : hasDisadvantage ? "disadvantage" : "normal"];
     })) as Record<string, D20RollMode>;
       const skillBonuses = Object.fromEntries(catalog.skills.map((skill) => {
@@ -531,7 +556,7 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         if (t20AntenasBonus && skill.id === "percepcao") t20PowerBonus += t20AntenasBonus;
         if (t20ArticulacoesBonus && ["acrobacia", "furtividade"].includes(skill.id)) t20PowerBonus += t20ArticulacoesBonus;
         if (t20MaosMembranosasBonus && skill.id === "atletismo") t20PowerBonus += t20MaosMembranosasBonus;
-        return [skill.id, (modifiers[ability] || 0) + (trained.has(skill.id) ? proficiencyBonus(systemId, character.level) : 0) + expertiseBonus + armorPenalty + t20PowerBonus];
+        return [skill.id, (modifiers[ability] || 0) + (trained.has(skill.id) ? proficiencyBonus(systemId, character.level) : 0) + expertiseBonus + armorPenalty + t20PowerBonus - exhaustionPenalty];
       }));
       const passivePerception = systemId === "dnd5e"
         ? 10 + (skillBonuses.percepcao || 0) + (hasFeat("dnd5e.talento.observador") ? 5 : 0)
@@ -548,11 +573,15 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
           const resilientAbility = character.featChoices?.["resilient-ability"]?.[0];
           const resilientKey = { Força: "str", Destreza: "dex", Constituição: "con", Inteligência: "int", Sabedoria: "wis", Carisma: "cha" }[resilientAbility || ""];
           const resilientBonus = hasFeat("dnd5e.talento.resiliente") && resilientKey === ability && dndSaveAbilities[ability] === undefined ? proficiencyBonus(systemId, character.level) : 0;
-          return [ability, modifier + (dndSaveAbilities[ability] !== undefined ? proficiencyBonus(systemId, character.level) : 0) + resilientBonus + dndProtectionRingBonus + dndPaladinAuraBonus + (ability === "dex" ? dndShieldMasterBonus : 0)];
+          return [ability, modifier + (dndSaveAbilities[ability] !== undefined ? proficiencyBonus(systemId, character.level) : 0) + resilientBonus + dndProtectionRingBonus + dndPaladinAuraBonus + (ability === "dex" ? dndShieldMasterBonus : 0) - exhaustionPenalty];
         }))
         : { fortitude: (skillBonuses.fortitude || 0) + dndProtectionRingBonus + t20SaradoBonus + (systemId === "t20" && selectedFeatIds.has("t20.poder.vitalidade") ? 2 : 0) + (t20InexpugnavelActive ? 2 : 0) + t20MaosMembranosasBonus + t20NatureFortitudeBonus + t20RejeicaoDivinaBonus + (t20SolidezActive && equippedShield ? equippedShield.shieldBonus || 0 : 0) + (hasEquipment("t20.item_magico.manto_resistencia") ? 1 : 0), reflexos: (skillBonuses.reflexos || 0) + dndProtectionRingBonus + (t20DodgeActive ? 2 : 0) + (t20InexpugnavelActive ? 2 : 0) + t20ArticulacoesBonus + t20FreedomReflexBonus + t20RejeicaoDivinaBonus + (t20SolidezActive && equippedShield ? equippedShield.shieldBonus || 0 : 0) + (hasEquipment("t20.item_magico.manto_resistencia") ? 1 : 0), vontade: (skillBonuses.vontade || 0) + dndProtectionRingBonus + (t20InexpugnavelActive ? 2 : 0) + (t20VontadeDeFerroActive ? 2 : 0) + (t20MenteVaziaActive ? 2 : 0) + t20AntenasBonus + t20LakeWillBonus + (t20MenteAnaliticaActive ? 2 : 0) + t20RejeicaoDivinaBonus + (t20SolidezActive && equippedShield ? equippedShield.shieldBonus || 0 : 0) + (hasEquipment("t20.item_magico.manto_resistencia") ? 1 : 0) };
       const globalD20RollMode: D20RollMode = systemId === "dnd5e" ? character.d20Mode || "normal" : "normal";
-      const savingThrowRollModes = Object.fromEntries(Object.keys(savingThrowBonuses).map((save) => [save, globalD20RollMode])) as Record<string, D20RollMode>;
+      const savingThrowRollModes = Object.fromEntries(Object.keys(savingThrowBonuses).map((save) => {
+        const hasAdvantage = globalD20RollMode === "advantage";
+        const hasDisadvantage = globalD20RollMode === "disadvantage" || (conditionSaveDisadvantage && save === "dex");
+        return [save, hasAdvantage && hasDisadvantage ? "normal" : hasAdvantage ? "advantage" : hasDisadvantage ? "disadvantage" : "normal"];
+      })) as Record<string, D20RollMode>;
       const t20PaladinPrayerCount = systemId === "t20" && character.classId === "paladino" ? getCoreFeatQuantity(character, "t20.poder.orar") : 0;
       const t20BardRepertoireCount = systemId === "t20" && character.classId === "bardo" ? getCoreFeatQuantity(character, "t20.poder.aumentar_repertorio") : 0;
       const t20DruidNatureSecretsCount = systemId === "t20" && character.classId === "druida" ? getCoreFeatQuantity(character, "t20.poder.segredos_da_natureza") : 0;
@@ -646,13 +675,15 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         const dndMagicWeaponBonus = systemId === "dnd5e" && ["dnd5e.item_magico.arma_um", "dnd5e.item_magico.adaga_envenenamento"].includes(weapon.id) && hasAttunedEquipment(weapon.id) ? 1 : 0;
         const dndRageEligible = dndRageActive && !rangedWeapon && attackAbility === "str";
         const dndRecklessEligible = dndRecklessAttackActive && !rangedWeapon && attackAbility === "str";
-        const attackRollMode: D20RollMode = dndRecklessEligible
-          ? globalD20RollMode === "disadvantage" ? "normal" : "advantage"
-          : globalD20RollMode;
+        const attackHasAdvantage = globalD20RollMode === "advantage" || conditionAttackAdvantage || dndRecklessEligible;
+        const attackHasDisadvantage = globalD20RollMode === "disadvantage" || conditionAttackDisadvantage;
+        const attackRollMode: D20RollMode = attackHasAdvantage && attackHasDisadvantage
+          ? "normal"
+          : attackHasAdvantage ? "advantage" : attackHasDisadvantage ? "disadvantage" : "normal";
         const finalDamageBonuses = [damageBonuses, dndMagicWeaponBonus ? "+ 1" : ""].filter(Boolean).join(" ");
         return {
           name: weapon.name,
-          bonus: (modifiers[attackAbility] || 0) + (proficient ? proficiencyBonus(systemId, character.level) : 0) + dndMagicWeaponBonus + (t20ArmasDaAmbicaoActive && proficient ? 1 : 0) + (activeDndFightingStyles.has("Arquearia") && rangedWeapon ? 2 : 0) + (powerfulAttackActive ? -2 : 0) + (powerAttackEligible ? -5 : 0) + (t20OneWeaponStyleActive ? 2 : 0) + (t20WeaponFocus === weapon.name ? 2 : 0) + (t20DualWeaponAttack ? -2 : 0),
+          bonus: (modifiers[attackAbility] || 0) + (proficient ? proficiencyBonus(systemId, character.level) : 0) + dndMagicWeaponBonus + (t20ArmasDaAmbicaoActive && proficient ? 1 : 0) + (activeDndFightingStyles.has("Arquearia") && rangedWeapon ? 2 : 0) + (powerfulAttackActive ? -2 : 0) + (powerAttackEligible ? -5 : 0) + (t20OneWeaponStyleActive ? 2 : 0) + (t20WeaponFocus === weapon.name ? 2 : 0) + (t20DualWeaponAttack ? -2 : 0) - exhaustionPenalty,
           damage: `${t20LutadorUnarmedDamage || (unarmedStyleActive ? "1d6 impacto" : weapon.damage || weapon.summary)}${finalDamageBonuses || powerAttackEligible || dndRageEligible ? ` ${[finalDamageBonuses, powerAttackEligible ? "+ 10" : "", dndRageEligible ? `+ ${dndRageDamageBonus}` : ""].filter(Boolean).join(" ")}` : ""}`,
           proficient,
           ...(attackRollMode !== "normal" ? { rollMode: attackRollMode } : {}),
@@ -856,6 +887,13 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
           classChoiceEffects.push("Linhagem Rubra: linhagem corrompida pela Tormenta, com poderes ligados à corrupção aberrante");
         }
       }
+      const conditionEffects = [...activeConditions.entries()].map(([id, value]) => {
+        const condition = getSystemConditionItems(systemId).find((entry) => entry.id === id);
+        const active = activeConditionEntries.find((entry) => entry.id === id);
+        const duration = active?.durationRounds ? ` · ${active.durationRounds} rodada(s)` : "";
+        const source = active?.source ? ` · origem: ${active.source}` : "";
+        return condition ? `${condition.name}${id.endsWith("exausto") ? ` ${value}` : ""}: ${condition.summary}${duration}${source}` : id;
+      });
       return {
         modifiers,
         proficiencyBonus: proficiencyBonus(systemId, character.level),
@@ -881,12 +919,16 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         carryingWeight,
         carryingCapacity,
         encumbered: carryingCapacity !== undefined && carryingWeight > carryingCapacity,
-        damageResistances: [...(dndRageActive ? ["contundente", "perfurante", "cortante"] : []), ...(dndFiendishResistance ? [dndFiendishResistance] : [])],
-        speed: Math.max(0, ((raceRules?.speed || 0) + featSpeedBonus + dndClassSpeedBonus + t20FuriaDaSavanaBonus + t20AtleticoSpeedBonus - (systemId === "t20" && t20Armor && (t20Armor.armorPenalty || 0) <= -2 && !t20FanaticoActive ? 3 : 0)) * (systemId === "dnd5e" && hasAttunedEquipment("dnd5e.item_magico.botas_velocidade") ? 2 : 1)),
+        damageResistances: [...(dndRageActive ? ["contundente", "perfurante", "cortante"] : []), ...(dndFiendishResistance ? [dndFiendishResistance] : []), ...(dndGreatOldOneResistance ? [dndGreatOldOneResistance] : []), ...(dndNecromancyResistance ? [dndNecromancyResistance] : [])],
+        speed: Math.max(0, (hasCondition("agarrado") || hasCondition("contido") || hasCondition("paralisado") || hasCondition("petrificado") || hasCondition("atordoado") || hasCondition("inconsciente") ? 0 : ((raceRules?.speed || 0) + featSpeedBonus + dndClassSpeedBonus + t20FuriaDaSavanaBonus + t20AtleticoSpeedBonus - (systemId === "t20" && t20Armor && (t20Armor.armorPenalty || 0) <= -2 && !t20FanaticoActive ? 3 : 0))) * (systemId === "dnd5e" && hasAttunedEquipment("dnd5e.item_magico.botas_velocidade") ? 2 : 1)),
+        canAct: !cannotAct,
+        canReact: !cannotReact,
         racialEffects,
         subclassEffects,
         classChoiceEffects,
         featEffects,
+        conditionEffects,
+        conditionImmunities,
         experiencePoints,
         experienceForLevel: experienceTable[safeLevel - 1],
         experienceToNextLevel: safeLevel < 20 ? experienceTable[safeLevel] : undefined,
@@ -907,6 +949,16 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       if (character.dndRecklessAttackActive && systemId !== "dnd5e") errors.push("Ataque Descuidado é uma opção exclusiva de D&D 5e");
       if (character.dndRecklessAttackActive && systemId === "dnd5e" && character.classId !== "barbaro") errors.push("Ataque Descuidado exige a classe Bárbaro");
       if (character.dndRecklessAttackActive && systemId === "dnd5e" && character.level < 2) errors.push("Ataque Descuidado exige o 2º nível de Bárbaro");
+      if (systemId !== "dnd5e" && character.conditions?.length) errors.push("condições ativas são exclusivas do catálogo de D&D 5e");
+      if (systemId === "dnd5e") {
+        const knownConditions = new Set(getSystemConditionItems(systemId).map((entry) => entry.id));
+        for (const condition of character.conditions || []) {
+          if (!knownConditions.has(condition.id)) errors.push(`condição não pertence ao catálogo de D&D 5e: ${condition.id}`);
+          if (condition.id === "dnd5e.condition.exausto" && (!Number.isInteger(condition.value) || (condition.value || 0) < 1 || (condition.value || 0) > 6)) errors.push("Exausto deve ter nível entre 1 e 6");
+          if (condition.durationRounds !== undefined && (!Number.isInteger(condition.durationRounds) || condition.durationRounds < 1)) errors.push("a duração da condição deve ser um número inteiro positivo de rodadas");
+          if (condition.source !== undefined && condition.source.length > 120) errors.push("a origem da condição deve ter no máximo 120 caracteres");
+        }
+      }
       if (!catalog.races.some((entry) => entry.id === character.raceId)) errors.push("raça não pertence ao catálogo do sistema");
       const selectedSubrace = character.subraceId ? catalog.subraces.find((entry) => entry.id === character.subraceId) : undefined;
       if (character.subraceId && !selectedSubrace) errors.push("sub-raça não pertence ao catálogo do sistema");

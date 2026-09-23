@@ -69,4 +69,16 @@ describe("core editable PDF export", () => {
     expect(notes).toContain("Magias conhecidas/selecionadas:");
     expect(notes).not.toContain("Magias preparadas:");
   });
+
+  it("exports active D&D conditions and their mechanical summary", async () => {
+    const character = createInitialCoreCharacter("dnd5e");
+    character.conditions = [{ id: "dnd5e.condition.exausto", value: 2, durationRounds: 3, source: "Armadilha" }, { id: "dnd5e.condition.contido" }];
+    const pdf = await PDFDocument.load(await createCoreEditablePdf(character));
+    const notes = pdf.getForm().getTextField("character.notes").getText();
+    expect(notes).toContain("Condições ativas:");
+    expect(notes).toContain("Exausto 2:");
+    expect(notes).toContain("3 rodada(s)");
+    expect(notes).toContain("origem: Armadilha");
+    expect(notes).toContain("Contido:");
+  });
 });

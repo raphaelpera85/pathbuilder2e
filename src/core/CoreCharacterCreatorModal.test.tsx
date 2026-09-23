@@ -34,4 +34,19 @@ describe("construtor core por sistema", () => {
     fireEvent.change(screen.getByLabelText("Nível"), { target: { value: "17" } });
     expect(screen.getByText("Metamagia (0/4)")).toBeInTheDocument();
   });
+
+  it("permite editar o nível da condição Exausto", () => {
+    render(<CoreCharacterCreatorModal isOpen system="dnd5e" onClose={vi.fn()} onCharacterCreated={vi.fn()} />);
+
+    fireEvent.click(screen.getByLabelText("Exausto"));
+    const exhaustionLevel = screen.getByLabelText("Nível de Exausto");
+    fireEvent.change(exhaustionLevel, { target: { value: "4" } });
+    expect(exhaustionLevel).toHaveValue(4);
+    const duration = screen.getByLabelText("Duração de Exausto em rodadas");
+    fireEvent.change(duration, { target: { value: "3" } });
+    expect(duration).toHaveValue(3);
+    const source = screen.getByLabelText("Origem de Exausto");
+    fireEvent.change(source, { target: { value: "Armadilha" } });
+    expect(source).toHaveValue("Armadilha");
+  });
 });

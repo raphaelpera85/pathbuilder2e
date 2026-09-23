@@ -4,12 +4,43 @@ import {
   cloneCoreCharacter,
   createInitialCoreCharacter,
   getCoreCatalog,
+  getAvailableCoreFeats,
+  isT20PowerPrerequisiteSatisfied,
+  isCoreEquipmentAllowed,
   proficiencyBonus,
   resolveD20Roll,
 } from "./multiSystemCharacter";
 import { reconcileCoreSkillProficiencies, reconcileT20DeityDependentFeatIds } from "../core/coreCharacterEditing";
 
 describe("core system character models", () => {
+  it("filtra equipamento D&D pela proficiência da classe e pelas concessões válidas", () => {
+    const wizard = createInitialCoreCharacter("dnd5e");
+    wizard.classId = "mago";
+    const catalog = getCoreCatalog("dnd5e");
+    const heavyArmor = catalog.equipment.find((entry) => entry.proficiency === "heavy_armor")!;
+    const simpleWeapon = catalog.equipment.find((entry) => entry.proficiency === "simple_weapon")!;
+    expect(isCoreEquipmentAllowed("dnd5e", wizard, heavyArmor)).toBe(false);
+    expect(isCoreEquipmentAllowed("dnd5e", wizard, simpleWeapon)).toBe(true);
+
+    wizard.featIds = ["dnd5e.talento.mestre_de_armas"];
+    wizard.featChoices = { "weapon-master-weapons": ["Espada longa"] };
+    const selectedMartial = catalog.equipment.find((entry) => entry.name === "Espada longa")!;
+    const otherMartial = catalog.equipment.find((entry) => entry.proficiency === "martial_weapon" && entry.name !== "Espada longa")!;
+    expect(isCoreEquipmentAllowed("dnd5e", wizard, selectedMartial)).toBe(true);
+    expect(isCoreEquipmentAllowed("dnd5e", wizard, otherMartial)).toBe(false);
+
+    const valorBard = createInitialCoreCharacter("dnd5e");
+    valorBard.classId = "bardo";
+    valorBard.subclassId = "bardo_valor";
+    const mediumArmor = catalog.equipment.find((entry) => entry.proficiency === "medium_armor")!;
+    expect(isCoreEquipmentAllowed("dnd5e", valorBard, mediumArmor)).toBe(true);
+
+    const druid = createInitialCoreCharacter("dnd5e");
+    druid.classId = "druida";
+    const metalArmor = catalog.equipment.find((entry) => entry.proficiency === "light_armor" && entry.armorMaterial === "metal");
+    if (metalArmor) expect(isCoreEquipmentAllowed("dnd5e", druid, metalArmor)).toBe(false);
+  });
+
   it("creates isolated T20 and D&D 5e payloads from their own catalogs", () => {
     const t20 = createInitialCoreCharacter("t20");
     const dnd5e = createInitialCoreCharacter("dnd5e");
@@ -87,5 +118,26 @@ describe("core system character models", () => {
     ];
     expect(reconcileT20DeityDependentFeatIds(["general", "khalmyr", "allihanna"], "khalmyr", feats)).toEqual(["general", "khalmyr"]);
     expect(reconcileT20DeityDependentFeatIds(["general", "khalmyr"], undefined, feats)).toEqual(["general"]);
+  });
+
+  it("trata alternativas de perícia dentro do mesmo pré-requisito T20", () => {
+    const character = createInitialCoreCharacter("t20");
+    character.classId = "arcanista";
+    character.level = 8;
+    const catalog = getCoreCatalog("t20");
+    const misticismo = catalog.skills.find((skill) => skill.name === "Misticismo")!.id;
+    const religiao = catalog.skills.find((skill) => skill.name === "Religião")!.id;
+    const celebrarRitual = catalog.feats.find((feat) => feat.name === "Celebrar Ritual")!;
+
+    character.skillProficiencies = [misticismo];
+    expect(isT20PowerPrerequisiteSatisfied(character, celebrarRitual.prerequisite)).toBe(true);
+    expect(getAvailableCoreFeats("t20", character.level, character).some((feat) => feat.id === celebrarRitual.id)).toBe(true);
+
+    character.skillProficiencies = [religiao];
+    expect(isT20PowerPrerequisiteSatisfied(character, celebrarRitual.prerequisite)).toBe(true);
+
+    character.skillProficiencies = [];
+    expect(isT20PowerPrerequisiteSatisfied(character, celebrarRitual.prerequisite)).toBe(false);
+    expect(getAvailableCoreFeats("t20", character.level, character).some((feat) => feat.id === celebrarRitual.id)).toBe(false);
   });
 });

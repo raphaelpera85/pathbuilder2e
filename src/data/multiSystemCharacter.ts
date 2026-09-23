@@ -18,6 +18,16 @@ export type SupportedCoreSystem = "t20" | "dnd5e";
 export type CoreAbility = "str" | "dex" | "con" | "int" | "wis" | "cha";
 export type CoreAbilities = Record<CoreAbility, number>;
 export type D20RollMode = "normal" | "advantage" | "disadvantage";
+export interface CoreActiveCondition {
+  /** ID canônico do catálogo de condições do ruleset. */
+  id: string;
+  /** Nível da condição quando a regra admite valores, como Exausto. */
+  value?: number;
+  /** Duração manual em rodadas; a contagem é controlada pela mesa. */
+  durationRounds?: number;
+  /** Origem narrativa ou regra que aplicou a condição. */
+  source?: string;
+}
 export interface CoreCoins {
   cp?: number;
   sp?: number;
@@ -153,6 +163,8 @@ export interface MultiSystemCharacter {
   dndRageActive?: boolean;
   /** Ativa Ataque Descuidado do Bárbaro D&D 5e no primeiro ataque corpo a corpo com Força. */
   dndRecklessAttackActive?: boolean;
+  /** Condições temporárias selecionadas no construtor/ficha (D&D 5e). */
+  conditions?: CoreActiveCondition[];
 }
 
 function cloneChoiceMap(values?: Record<string, string[]>): Record<string, string[]> | undefined {
@@ -193,6 +205,7 @@ export function cloneCoreCharacter(character: MultiSystemCharacter): MultiSystem
     dndPowerAttack: character.dndPowerAttack,
     dndRageActive: character.dndRageActive,
     dndRecklessAttackActive: character.dndRecklessAttackActive,
+    conditions: character.conditions?.map((condition) => ({ ...condition })),
   };
 }
 
@@ -271,6 +284,40 @@ export function getCoreCatalog(system: SupportedCoreSystem) {
   return system === "t20"
     ? { races: T20_RACES, raceRules: T20_RACE_RULES, subraces: [], classes: T20_CLASSES, classRules: T20_CLASS_RULES, subclasses: [], progressions: T20_CLASS_PROGRESSIONS, skills: T20_SKILLS, backgrounds: T20_ORIGINS, equipment: T20_EQUIPMENT, spells: T20_SPELLS, feats: T20_POWERS }
     : { races: DND5E_RACES, raceRules: DND5E_RACE_RULES, subraces: DND5E_SUBRACES, classes: DND5E_CLASSES, classRules: DND5E_CLASS_RULES, subclasses: DND5E_SUBCLASSES, progressions: DND5E_CLASS_PROGRESSIONS, skills: DND5E_SKILLS, backgrounds: DND5E_BACKGROUNDS, equipment: DND5E_EQUIPMENT, spells: DND5E_SPELLS, feats: DND5E_FEATS };
+}
+
+/** Verifica proficiências de equipamento do D&D 5e sem restringir itens mágicos
+ * que não representam diretamente uma arma, armadura ou escudo equipável. */
+export function isCoreEquipmentAllowed(system: SupportedCoreSystem, character: Pick<MultiSystemCharacter, "classId" | "featIds" | "featChoices" | "subclassId">, item: {
+  proficiency?: "simple_weapon" | "martial_weapon" | "light_armor" | "medium_armor" | "heavy_armor" | "shield";
+  armorMaterial?: "metal" | "non_metal";
+}): boolean {
+  if (system !== "dnd5e" || !item.proficiency && !item.armorMaterial) return true;
+  const classRules = DND5E_CLASS_RULES.find((entry) => entry.id === character.classId);
+  const proficiencies = (classRules?.proficiencies || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  if (character.classId === "druida" && item.armorMaterial === "metal") return false;
+  if (!item.proficiency) return true;
+  const selectedSubclass = DND5E_SUBCLASSES.find((entry) => entry.id === character.subclassId);
+  const weaponMasterChoices = character.featIds.includes("dnd5e.talento.mestre_de_armas")
+    ? (character.featChoices?.["weapon-master-weapons"] || []).map((value) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase())
+    : [];
+  const normalizedItemName = (item as { name?: string }).name?.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  const grantsMartialWeapon = (normalizedItemName ? weaponMasterChoices.includes(normalizedItemName) : false) || ["bardo_valor", "clerigo_tempestade", "clerigo_guerra"].includes(selectedSubclass?.id || "");
+  const grantsMediumArmor = character.featIds.includes("dnd5e.talento.moderadamente_blindado") || character.featIds.includes("dnd5e.talento.fortemente_blindado") || selectedSubclass?.id === "bardo_valor";
+  const grantsHeavyArmor = character.featIds.includes("dnd5e.talento.fortemente_blindado") || ["clerigo_vida", "clerigo_natureza", "clerigo_tempestade", "clerigo_guerra"].includes(selectedSubclass?.id || "");
+  const grantsShield = character.featIds.includes("dnd5e.talento.moderadamente_blindado") || selectedSubclass?.id === "bardo_valor";
+  const allowed = item.proficiency === "simple_weapon"
+    ? proficiencies.includes("armas simples") || proficiencies.includes("todas as armas")
+    : item.proficiency === "martial_weapon"
+      ? proficiencies.includes("armas marciais") || proficiencies.includes("todas as armas") || grantsMartialWeapon
+      : item.proficiency === "light_armor"
+        ? proficiencies.includes("armaduras leves") || proficiencies.includes("todas as armaduras") || grantsMediumArmor || grantsHeavyArmor
+        : item.proficiency === "medium_armor"
+          ? proficiencies.includes("armaduras leves e médias") || proficiencies.includes("armaduras médias") || proficiencies.includes("todas as armaduras") || grantsMediumArmor || grantsHeavyArmor
+          : item.proficiency === "heavy_armor"
+            ? proficiencies.includes("armaduras pesadas") || proficiencies.includes("todas as armaduras") || grantsHeavyArmor
+            : proficiencies.includes("escudos") || grantsShield;
+  return allowed;
 }
 
 /** Seleção canônica não destrutiva para preencher rapidamente o equipamento inicial.
@@ -448,8 +495,33 @@ export function isT20PowerPrerequisiteSatisfied(character: MultiSystemCharacter,
     .filter((feat) => normalize(feat.name) === normalize(name)
       && (!("classIds" in feat) || !feat.classIds?.length || feat.classIds.includes(character.classId)))
     .reduce((total, feat) => total + getCoreFeatQuantity(character, feat.id), 0);
+  const skillsSatisfyRequirement = (rawNames: string, mode: "all" | "any") => {
+    const names = rawNames
+      .split(mode === "any" ? /,\s*|\s+ou\s+/ : /\s+e\s+/)
+      .map((name) => name.trim())
+      .filter(Boolean);
+    const resolved = names.map((name) => {
+      const skillName = skillAliases[name] || name;
+      return catalog.skills.find((entry) => normalize(entry.name) === skillName || entry.id === skillName);
+    });
+    // Textos como "na perícia escolhida" não identificam uma perícia
+    // concreta; permanecem permissivos até a escolha estruturada ser feita.
+    if (resolved.length === 0 || !resolved.every(Boolean)) return true;
+    const trained = new Set(character.skillProficiencies);
+    return mode === "any"
+      ? resolved.some((skill) => trained.has(skill!.id))
+      : resolved.every((skill) => trained.has(skill!.id));
+  };
   const clauses = prerequisite.split(";").map((clause) => clause.trim()).filter(Boolean);
-  return clauses.every((clause) => clause.split(/\s+ou\s+/i).some((alternative) => {
+  return clauses.every((clause) => {
+    // O "ou" faz parte do requisito de perícia, não de duas cláusulas
+    // independentes. Tratar antes do split evita liberar o poder quando
+    // apenas a última perícia da lista não é conhecida.
+    const trainedAlternatives = normalize(clause).match(/^treinado (?:em|na|no) (.+)$/);
+    if (trainedAlternatives && /,|\s+ou\s+/i.test(trainedAlternatives[1])) {
+      return skillsSatisfyRequirement(trainedAlternatives[1], "any");
+    }
+    return clause.split(/\s+ou\s+/i).some((alternative) => {
     const normalized = normalize(alternative);
     const level = normalized.match(/nivel\s+(\d+)/);
     if (level && character.level < Number(level[1])) return false;
@@ -484,22 +556,15 @@ export function isT20PowerPrerequisiteSatisfied(character: MultiSystemCharacter,
       // exige as duas perícias. O separador " e " só vira AND quando todos os
       // nomes resolvem para perícias reais; cláusulas ambíguas, como "treinado
       // na perícia escolhida" (Foco em Perícia), seguem permissivas como antes.
-      const names = trained[1].split(/\s+e\s+/).map((name) => name.trim()).filter(Boolean);
-      const resolved = names.map((name) => {
-        const skillName = skillAliases[name] || name;
-        return catalog.skills.find((entry) => normalize(entry.name) === skillName || entry.id === skillName);
-      });
-      if (resolved.length > 0 && resolved.every(Boolean)) {
-        return resolved.every((skill) => character.skillProficiencies.includes(skill!.id));
-      }
-      return true;
+      return skillsSatisfyRequirement(trained[1], "all");
     }
     if (normalized.includes("proficiencia com a arma")) return true;
     const repeatedPower = normalized.match(/^(.+) duas vezes$/);
     if (repeatedPower) return powerQuantity(repeatedPower[1]) >= 2;
     if (catalog.feats.some((feat) => normalize(feat.name) === normalized)) return hasPower(alternative);
     return true;
-  }));
+    });
+  });
 }
 
 export function getAvailableCoreFeats(system: SupportedCoreSystem, level: number, character?: MultiSystemCharacter) {
@@ -611,5 +676,6 @@ export function createInitialCoreCharacter(system: SupportedCoreSystem): MultiSy
     dndPowerAttack: false,
     dndRageActive: false,
     dndRecklessAttackActive: false,
+    conditions: [],
   };
 }

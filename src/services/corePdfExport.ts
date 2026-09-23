@@ -133,6 +133,7 @@ export async function createCoreEditablePdf(character: MultiSystemCharacter): Pr
     classResourcesText && `Recursos de classe: ${classResourcesText}`,
     classFeaturesText && `Características de classe: ${classFeaturesText}`,
     derived.featEffects.length > 0 && `Efeitos de talentos/poderes: ${derived.featEffects.join(" · ")}`,
+    derived.conditionEffects.length > 0 && `Condições ativas: ${derived.conditionEffects.join(" · ")}`,
     knownSpellsText && `Magias conhecidas/selecionadas: ${knownSpellsText}`,
     preparedSpellsText && `Magias preparadas: ${preparedSpellsText}`,
   ].filter(Boolean).join("\n");

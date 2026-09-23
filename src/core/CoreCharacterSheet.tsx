@@ -11,6 +11,7 @@ import { T20_CLASS_CHOICES } from "../data/t20/t20Catalog";
 import { getSystemRulesEngine } from "../data/systemRulesEngine";
 import { reconcileCoreSkillProficiencies, reconcileT20DeityDependentFeatIds } from "./coreCharacterEditing";
 import { createCoreEditablePdf, downloadCoreEditablePdf } from "../services/corePdfExport";
+import { getSystemConditionItems } from "../data/systemConditions";
 
 const CORE_ABILITY_LABELS: Record<string, string> = {
   str: "Força", dex: "Destreza", con: "Constituição", int: "Inteligência", wis: "Sabedoria", cha: "Carisma",
@@ -29,6 +30,7 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
   const modalContentRef = useRef<HTMLElement>(null);
   const system = draft.system_id as SupportedCoreSystem;
   const catalog = useMemo(() => getCoreCatalog(system), [system]);
+  const conditionItems = useMemo(() => getSystemConditionItems(system), [system]);
   const derived = getSystemRulesEngine(system).deriveStats(draft);
   const race = catalog.races.find((entry) => entry.id === draft.raceId)?.name || draft.raceId;
   const subrace = catalog.subraces.find((entry) => entry.id === draft.subraceId)?.name;
@@ -153,6 +155,22 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
               <option value="disadvantage">Desvantagem · menor resultado</option>
             </select>
           </label>}
+          {conditionItems.length > 0 && <fieldset className="pb-core-background-options" aria-label="Condições ativas">
+            <legend>Condições ativas</legend>
+            <div className="pb-core-language-grid">
+              {conditionItems.map((condition) => {
+                const selectedCondition = draft.conditions?.find((entry) => entry.id === condition.id);
+                const active = Boolean(selectedCondition);
+                return <div key={condition.id} title={condition.summary}>
+                  <label><input type="checkbox" checked={active} onChange={(event) => { setDraft({ ...draft, conditions: event.target.checked ? [...(draft.conditions || []), { id: condition.id, ...(condition.id.endsWith("exausto") ? { value: 1 } : {}) }] : (draft.conditions || []).filter((entry) => entry.id !== condition.id) }); setSaveError(null); }} /> {condition.name}</label>
+                  {active && condition.id.endsWith("exausto") && <input aria-label="Nível de Exausto" type="number" min={1} max={6} value={selectedCondition?.value || 1} onChange={(event) => { setDraft({ ...draft, conditions: (draft.conditions || []).map((entry) => entry.id === condition.id ? { ...entry, value: Math.min(6, Math.max(1, Number(event.target.value) || 1)) } : entry) }); setSaveError(null); }} />}
+                  {active && <input aria-label={`Duração de ${condition.name} em rodadas`} type="number" min={1} placeholder="rodadas" value={selectedCondition?.durationRounds ?? ""} onChange={(event) => { setDraft({ ...draft, conditions: (draft.conditions || []).map((entry) => entry.id === condition.id ? { ...entry, durationRounds: event.target.value ? Math.max(1, Number(event.target.value)) : undefined } : entry) }); setSaveError(null); }} />}
+                  {active && <input aria-label={`Origem de ${condition.name}`} type="text" placeholder="origem" value={selectedCondition?.source || ""} onChange={(event) => { setDraft({ ...draft, conditions: (draft.conditions || []).map((entry) => entry.id === condition.id ? { ...entry, source: event.target.value || undefined } : entry) }); setSaveError(null); }} />}
+                </div>;
+              })}
+            </div>
+            <small>Os efeitos mecânicos aplicáveis são recalculados imediatamente.</small>
+          </fieldset>}
           {system === "dnd5e" && draft.featIds.includes("dnd5e.talento.mestre_de_armas_pesadas") && <label className="pb-core-toggle-field">
             <span>Ataque Poderoso (-5/+10)<small>Aplicar aos ataques elegíveis</small></span>
             <input type="checkbox" checked={Boolean(draft.dndPowerAttack)} onChange={(event) => setDraft({ ...draft, dndPowerAttack: event.target.checked })} />
@@ -225,6 +243,14 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
         {derived.featEffects.length > 0 && <aside className="pb-core-background-options" aria-label="Efeitos dos talentos e poderes">
           <strong>Efeitos aplicáveis dos talentos/poderes</strong>
           <ul>{derived.featEffects.map((effect) => <li key={effect}>{effect}</li>)}</ul>
+        </aside>}
+        {derived.conditionEffects.length > 0 && <aside className="pb-core-background-options" aria-label="Condições ativas">
+          <strong>Condições ativas</strong>
+          <ul>{derived.conditionEffects.map((effect) => <li key={effect}>{effect}</li>)}</ul>
+        </aside>}
+        {derived.conditionImmunities.length > 0 && <aside className="pb-core-background-options" aria-label="Imunidades condicionais">
+          <strong>Imunidades condicionais</strong>
+          <p>{derived.conditionImmunities.join(" · ")}</p>
         </aside>}
         {derived.damageResistances.length > 0 && <aside className="pb-core-background-options" aria-label="Resistências ativas">
           <strong>Resistências ativas</strong>
@@ -301,6 +327,7 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
           <div><span>Iniciativa</span><strong>{derived.initiative >= 0 ? `+${derived.initiative}` : derived.initiative}</strong></div>
           <div><span>Bônus de proficiência</span><strong>+{derived.proficiencyBonus}</strong></div>
           <div><span>Deslocamento</span><strong>{derived.speed}m</strong></div>
+          {system === "dnd5e" && (!derived.canAct || !derived.canReact) && <div><span>Estado de ação</span><strong>{!derived.canAct ? "sem ações" : "ações normais"}{!derived.canReact ? " · sem reações" : ""}</strong></div>}
           {derived.passivePerception !== undefined && <div><span>Percepção passiva</span><strong>{derived.passivePerception}</strong></div>}
           {derived.passiveInvestigation !== undefined && <div><span>Investigação passiva</span><strong>{derived.passiveInvestigation}</strong></div>}
           <div><span>XP para o nível</span><strong>{derived.experienceForLevel.toLocaleString("pt-BR")}{derived.experienceToNextLevel !== undefined ? ` → ${derived.experienceToNextLevel.toLocaleString("pt-BR")}` : " · máximo"}</strong></div>

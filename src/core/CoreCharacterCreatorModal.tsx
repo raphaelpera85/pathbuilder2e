@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { DND5E_ALIGNMENTS, DND5E_LANGUAGES, T20_DEITIES, T20_DRUID_DEITY_IDS, T20_PALADIN_DEITY_IDS, cloneCoreCharacter, getAvailableCoreFeats, getAvailableCoreSpells, getCoreCatalog, getCoreFeatQuantity, getCoreStartingEquipment, getDnd5eSpellcastingFocusOptions, requiresDnd5eAttunement, type CoreAbility, type MultiSystemCharacter, type SupportedCoreSystem } from "../data/multiSystemCharacter";
+import { DND5E_ALIGNMENTS, DND5E_LANGUAGES, T20_DEITIES, T20_DRUID_DEITY_IDS, T20_PALADIN_DEITY_IDS, cloneCoreCharacter, getAvailableCoreFeats, getAvailableCoreSpells, getCoreCatalog, getCoreFeatQuantity, getCoreStartingEquipment, getDnd5eSpellcastingFocusOptions, isCoreEquipmentAllowed, requiresDnd5eAttunement, type CoreAbility, type MultiSystemCharacter, type SupportedCoreSystem } from "../data/multiSystemCharacter";
 import { T20_ARCANIST_PATHS, T20_CLASS_CHOICES, T20_SORCERER_LINEAGES, T20_DRACONIC_DAMAGE_TYPES } from "../data/t20/t20Catalog";
 import { T20_SPELLS, formatT20SpellDetails } from "../data/t20/t20Compendium";
 import { getSystemRulesEngine } from "../data/systemRulesEngine";
@@ -11,6 +11,7 @@ import { formatDnd5eSpellDetails } from "../data/dnd5e/dnd5eCompendium";
 import { DND5E_CLERIC_DOMAIN_SPELLS, DND5E_CLASS_CHOICES, DND5E_LAND_CIRCLE_SPELLS, getDnd5eClassChoiceCount } from "../data/dnd5e/dnd5eOptions";
 import { DND5E_FEAT_CHOICES } from "../data/dnd5e/dnd5eCompendium";
 import { T20_POWER_CHOICES } from "../data/t20/t20Compendium";
+import { getSystemConditionItems } from "../data/systemConditions";
 
 interface CoreCharacterCreatorModalProps {
   isOpen: boolean;
@@ -33,6 +34,7 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
   const [error, setError] = useState<string | null>(null);
   const [generationMethod, setGenerationMethod] = useState<AbilityGenerationMethod>("point_buy");
   const featChoiceCatalog = system === "dnd5e" ? DND5E_FEAT_CHOICES : T20_POWER_CHOICES;
+  const conditionItems = useMemo(() => getSystemConditionItems(system), [system]);
   const isDndPreparedSpell = (spellId: string) => {
     const spell = catalog.spells.find((entry) => entry.id === spellId);
     return system === "dnd5e" && spell?.spellLevel !== undefined && spell.spellLevel > 0;
@@ -567,6 +569,22 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
               <option value="disadvantage">Desvantagem · rolar 2d20, menor</option>
             </select>
           </label>}
+          {conditionItems.length > 0 && <fieldset className="pb-core-background-options" aria-label="Condições ativas">
+            <legend>Condições ativas</legend>
+            <div className="pb-core-language-grid">
+              {conditionItems.map((condition) => {
+                const selectedCondition = character.conditions?.find((entry) => entry.id === condition.id);
+                const active = Boolean(selectedCondition);
+                return <div key={condition.id} title={condition.summary}>
+                  <label><input type="checkbox" checked={active} onChange={(event) => setCharacter({ ...character, conditions: event.target.checked ? [...(character.conditions || []), { id: condition.id, ...(condition.id.endsWith("exausto") ? { value: 1 } : {}) }] : (character.conditions || []).filter((entry) => entry.id !== condition.id) })} /> {condition.name}</label>
+                  {active && condition.id.endsWith("exausto") && <input aria-label="Nível de Exausto" type="number" min={1} max={6} value={selectedCondition?.value || 1} onChange={(event) => setCharacter({ ...character, conditions: (character.conditions || []).map((entry) => entry.id === condition.id ? { ...entry, value: Math.min(6, Math.max(1, Number(event.target.value) || 1)) } : entry) })} />}
+                  {active && <input aria-label={`Duração de ${condition.name} em rodadas`} type="number" min={1} placeholder="rodadas" value={selectedCondition?.durationRounds ?? ""} onChange={(event) => setCharacter({ ...character, conditions: (character.conditions || []).map((entry) => entry.id === condition.id ? { ...entry, durationRounds: event.target.value ? Math.max(1, Number(event.target.value)) : undefined } : entry) })} />}
+                  {active && <input aria-label={`Origem de ${condition.name}`} type="text" placeholder="origem" value={selectedCondition?.source || ""} onChange={(event) => setCharacter({ ...character, conditions: (character.conditions || []).map((entry) => entry.id === condition.id ? { ...entry, source: event.target.value || undefined } : entry) })} />}
+                </div>;
+              })}
+            </div>
+            <small>Os efeitos mecânicos aplicáveis aparecem na revisão e na ficha.</small>
+          </fieldset>}
           {system === "dnd5e" && character.featIds.includes("dnd5e.talento.mestre_de_armas_pesadas") && <label className="pb-core-toggle-field">
             <span>Ataque Poderoso (-5/+10)<small>Aplicar aos ataques elegíveis</small></span>
             <input type="checkbox" checked={Boolean(character.dndPowerAttack)} onChange={(event) => update("dndPowerAttack", event.target.checked)} />
@@ -621,12 +639,20 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
           {raceChoices.map((choice) => {
             const selected = character.raceChoices?.[choice.id] || [];
             return <div key={choice.id} className="pb-core-choice-group">
-              <label>{choice.label}
+              {choice.count === 1 ? <label>{choice.label}
                 <select value={selected[0] || ""} onChange={(event) => update("raceChoices", { ...character.raceChoices, [choice.id]: event.target.value ? [event.target.value] : [] })}>
                   <option value="">Selecione…</option>
                   {choice.options.map((option) => <option key={option} value={option}>{option}</option>)}
                 </select>
-              </label>
+              </label> : <fieldset className="pb-core-class-choice">
+                <legend>{choice.label} ({selected.length}/{choice.count})</legend>
+                <div className="pb-core-choice-grid">
+                  {choice.options.map((option) => <label key={option}>
+                    <input type="checkbox" checked={selected.includes(option)} disabled={!selected.includes(option) && selected.length >= choice.count} onChange={(event) => update("raceChoices", { ...character.raceChoices, [choice.id]: event.target.checked ? [...selected, option] : selected.filter((value) => value !== option) })} />
+                    {option}
+                  </label>)}
+                </div>
+              </fieldset>}
             </div>;
           })}
         </fieldset>}
@@ -634,12 +660,20 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
           <legend>Escolhas da sub-raça</legend>
           {subraceChoices.map((choice) => {
             const selected = character.subraceChoices?.[choice.id] || [];
-            return <label key={choice.id}>{choice.label}
+            return choice.count === 1 ? <label key={choice.id}>{choice.label}
               <select value={selected[0] || ""} onChange={(event) => update("subraceChoices", { ...character.subraceChoices, [choice.id]: event.target.value ? [event.target.value] : [] })}>
                 <option value="">Selecione…</option>
                 {choice.options.map((option) => <option key={option} value={option}>{option}</option>)}
               </select>
-            </label>;
+            </label> : <fieldset key={choice.id} className="pb-core-class-choice">
+              <legend>{choice.label} ({selected.length}/{choice.count})</legend>
+              <div className="pb-core-choice-grid">
+                {choice.options.map((option) => <label key={option}>
+                  <input type="checkbox" checked={selected.includes(option)} disabled={!selected.includes(option) && selected.length >= choice.count} onChange={(event) => update("subraceChoices", { ...character.subraceChoices, [choice.id]: event.target.checked ? [...selected, option] : selected.filter((value) => value !== option) })} />
+                  {option}
+                </label>)}
+              </div>
+            </fieldset>;
           })}
         </fieldset>}
 
@@ -768,6 +802,10 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
           <strong>Resistências ativas</strong>
           <p>{derivedPreview.damageResistances.join(" · ")}</p>
         </aside>}
+        {system === "dnd5e" && (!derivedPreview.canAct || !derivedPreview.canReact) && <aside className="pb-core-background-options" aria-label="Limitações de condição">
+          <strong>Limitações atuais</strong>
+          <p>{!derivedPreview.canAct ? "Sem ações" : "Ações disponíveis"}{!derivedPreview.canReact ? " · sem reações" : ""}</p>
+        </aside>}
         {derivedPreview.classFeatures.length > 0 && <details className="pb-core-feature-list">
           <summary>Características de classe até o nível {character.level} ({derivedPreview.classFeatures.length})</summary>
           <div>{derivedPreview.classFeatures.map((feature) => <article key={feature.level + "-" + feature.name}><strong>Nível {feature.level} · {feature.name}</strong><small>{feature.description}</small></article>)}</div>
@@ -854,10 +892,11 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
                 update("equipmentIds", equipmentIds);
                 update("attunedEquipmentIds", (character.attunedEquipmentIds || []).filter((id) => equipmentIds.includes(id)));
               }}>
-                {catalog.equipment.map((item) => {
+                {catalog.equipment.filter((item) => isCoreEquipmentAllowed(system, character, item) || character.equipmentIds.includes(item.id)).map((item) => {
                   const magic = item as typeof item & { magical?: boolean; magicCategory?: string; magicEffects?: string[] };
                   const magicText = magic.magical ? `✨ ${magic.magicCategory || "mágico"}: ${(magic.magicEffects || []).join(" · ")}` : "";
-                  return <option key={item.id} value={item.id}>{item.name} · {[item.summary, magicText, item.cost || (item.weight !== undefined ? `${item.weight} lb` : "")].filter(Boolean).join(" · ")}</option>;
+                  const proficiencyWarning = isCoreEquipmentAllowed(system, character, item) ? "" : "⚠️ proficiência não concedida";
+                  return <option key={item.id} value={item.id}>{item.name} · {[item.summary, magicText, proficiencyWarning, item.cost || (item.weight !== undefined ? `${item.weight} lb` : "")].filter(Boolean).join(" · ")}</option>;
                 })}
               </select>
               {character.equipmentIds.length > 0 && <div className="pb-core-quantity-list">

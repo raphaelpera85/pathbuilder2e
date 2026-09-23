@@ -234,6 +234,32 @@ describe("system rules engines", () => {
     expect(DND5E_RULES_ENGINE.validateCharacter({ ...barbarian, dndRecklessAttackActive: true })).toContain("Ataque Descuidado exige o 2º nível de Bárbaro");
   });
 
+  it("aplica condições D&D 5e ativas aos bônus e modos de rolagem", () => {
+    const character = DND5E_RULES_ENGINE.createDefaultCharacter();
+    character.classId = "guerreiro";
+    character.equipmentIds = ["dnd5e.arma.espada_longa"];
+    const normal = DND5E_RULES_ENGINE.deriveStats(character);
+    character.conditions = [
+      { id: "dnd5e.condition.cego" },
+      { id: "dnd5e.condition.contido" },
+      { id: "dnd5e.condition.paralisado" },
+      { id: "dnd5e.condition.exausto", value: 2, durationRounds: 3, source: "Armadilha de veneno" },
+    ];
+    const affected = DND5E_RULES_ENGINE.deriveStats(character);
+    expect(affected.attacks[0].rollMode).toBe("disadvantage");
+    expect(affected.skillRollModes.acrobacia).toBe("normal");
+    expect(affected.skillBonuses.acrobacia).toBe(normal.skillBonuses.acrobacia - 2);
+    expect(affected.savingThrowRollModes.dex).toBe("disadvantage");
+    expect(affected.speed).toBe(0);
+    expect(affected.canAct).toBe(false);
+    expect(affected.canReact).toBe(false);
+    expect(affected.conditionEffects).toHaveLength(4);
+    expect(affected.conditionEffects).toEqual(expect.arrayContaining([expect.stringContaining("3 rodada(s)"), expect.stringContaining("origem: Armadilha de veneno")]));
+    expect(DND5E_RULES_ENGINE.validateCharacter({ ...character, conditions: [{ id: "dnd5e.condition.exausto", value: 7 }] })).toContain("Exausto deve ter nível entre 1 e 6");
+    expect(DND5E_RULES_ENGINE.validateCharacter({ ...character, conditions: [{ id: "dnd5e.condition.cego", durationRounds: 0 }] }).join(" ")).toContain("duração");
+    expect(T20_RULES_ENGINE.validateCharacter({ ...character, system_id: "t20", systemId: "t20", ruleset: "padrao", conditions: [{ id: "dnd5e.condition.cego" }] })).toContain("condições ativas são exclusivas do catálogo de D&D 5e");
+  });
+
   it("respeita o limite de duas escolhas de Poder Mágico", () => {
     const arcanista = T20_RULES_ENGINE.createDefaultCharacter();
     arcanista.level = 3;
@@ -734,6 +760,22 @@ describe("system rules engines", () => {
     expect(DND5E_RULES_ENGINE.validateCharacter(guerra)).not.toContain("o equipamento Cota de malha exige proficiência que a classe não possui");
     expect(DND5E_RULES_ENGINE.validateCharacter(guerra)).not.toContain("o equipamento Espada longa exige proficiência que a classe não possui");
     expect(DND5E_RULES_ENGINE.deriveStats(guerra).attacks[0]?.proficient).toBe(true);
+  });
+
+  it("aplica resistências operacionais de Grande Antigo e Necromancia", () => {
+    const oldOne = DND5E_RULES_ENGINE.createDefaultCharacter();
+    oldOne.classId = "bruxo";
+    oldOne.subclassId = "bruxo_grande_antigo";
+    oldOne.level = 9;
+    expect(DND5E_RULES_ENGINE.deriveStats(oldOne).damageResistances).not.toContain("psíquico");
+    oldOne.level = 10;
+    expect(DND5E_RULES_ENGINE.deriveStats(oldOne).damageResistances).toContain("psíquico");
+
+    const necromancer = DND5E_RULES_ENGINE.createDefaultCharacter();
+    necromancer.classId = "mago";
+    necromancer.subclassId = "mago_necromancia";
+    necromancer.level = 10;
+    expect(DND5E_RULES_ENGINE.deriveStats(necromancer).damageResistances).toContain("necrótico");
   });
 
   it("permite armaduras e escudo concedidos por talentos de proficiência", () => {
