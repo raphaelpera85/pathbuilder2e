@@ -15,6 +15,7 @@ describe("fontes multi-sistema do acervo de downloads", () => {
     t20: ["padrao"],
     dnd5e: ["standard"],
     ose: ["advanced", "classic"],
+    dnd35: ["v35"],
   };
 
   it("todo livro declara sistema, rótulo trilíngue e ruleset do próprio sistema", () => {
@@ -32,8 +33,8 @@ describe("fontes multi-sistema do acervo de downloads", () => {
       if (!/^\d{4}-\d{2}-\d{2}$/.test(source.verifiedAt)) problems.push(`${source.id}: data de verificação inválida`);
     }
     expect(problems).toEqual([]);
-    // 7 Tormenta 20 + 8 D&D 5e + 2 OSE, conforme o lote catalogado.
-    expect(multiSystemSources).toHaveLength(17);
+    // 7 Tormenta 20 + 8 D&D 5e + 2 OSE + 21 D&D 3.5, conforme o lote catalogado.
+    expect(multiSystemSources).toHaveLength(38);
   });
 
   it("não repete identificadores nem arquivos entre PF2e e os demais sistemas", () => {

@@ -676,6 +676,7 @@ function rulesetMessageKey(ruleset: RulesetId): MessageKey {
     case "standard": return "rulesetStandard";
     case "advanced": return "rulesetAdvanced";
     case "classic": return "rulesetClassic";
+    case "v35": return "rulesetV35";
     // Tormenta 20 usa "Padrão" (contra "Jogo do Ano"), não o padrão de 2014 do D&D.
     case "padrao": return "rulesetT20";
     default: return "rulesetReview";
@@ -708,13 +709,14 @@ function BookDownloadsSection() {
   const availableSystems = useMemo(() => {
     const systems = new Set<MultiSystemSource["system"]>(["pf2e"]);
     for (const source of allDownloadItems) systems.add(systemOf(source));
-    return (["pf2e", "t20", "dnd5e", "ose"] as const).filter((system) => systems.has(system));
+    return (["pf2e", "t20", "dnd5e", "ose", "dnd35"] as const).filter((system) => systems.has(system));
   }, [allDownloadItems]);
 
   const systemLabelForFilter = (system: MultiSystemSource["system"]): string => {
     if (system === "t20") return t("systemT20");
     if (system === "dnd5e") return t("systemDnd5e");
     if (system === "ose") return t("systemOse");
+    if (system === "dnd35") return t("systemDnd35");
     return t("systemPf2e");
   };
 

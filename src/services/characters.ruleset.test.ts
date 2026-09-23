@@ -11,5 +11,8 @@ describe("character ruleset normalization", () => {
     expect(normalizeCharacterRuleset("OSE Classic Fantasy")).toBe("classic");
     expect(normalizeCharacterRuleset("OSE clássico")).toBe("classic");
     expect(normalizeCharacterRuleset("pré-Remaster")).toBe("legacy");
+    expect(normalizeCharacterRuleset("v35")).toBe("v35");
+    expect(normalizeCharacterRuleset("3.5e")).toBe("v35");
+    expect(normalizeCharacterRuleset("D&D 3.5")).toBe("v35");
   });
 });

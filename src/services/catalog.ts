@@ -78,6 +78,24 @@ export const DEFAULT_RPG_SYSTEMS: IRPGSystem[] = [
     supportedRulesets: ["advanced", "classic"],
     active: true,
   },
+  {
+    id: "dnd35",
+    name: {
+      "pt-BR": "D&D 3.5",
+      en: "D&D 3.5",
+      es: "D&D 3.5",
+    },
+    description: {
+      "pt-BR": "Dungeons & Dragons 3.5ª Edição clássica (SRD / v3.5 com suplementos completos).",
+      en: "Dungeons & Dragons 3.5 Edition classic (SRD / v3.5 with complete supplements).",
+      es: "Dungeons & Dragons 3.5ª Edición clásica (SRD / v3.5 con suplementos completos).",
+    },
+    icon: "⚔️",
+    badgeColor: "#8b5cf6",
+    defaultRuleset: "v35",
+    supportedRulesets: ["v35"],
+    active: true,
+  },
 ];
 
 export async function fetchCatalogSystems(): Promise<IRPGSystem[]> {

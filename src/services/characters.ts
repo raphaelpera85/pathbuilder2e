@@ -113,18 +113,20 @@ async function persistRemoteRevision(
 
 export type CharacterRuleset =
   | "remaster" | "legacy" | "both" | "needs_review"
-  | "standard" | "2024" | "padrao" | "jogo_do_ano" | "advanced" | "classic";
+  | "standard" | "2024" | "padrao" | "jogo_do_ano" | "advanced" | "classic" | "v35";
 
 const CHARACTER_RULESETS_BY_SYSTEM: Record<string, readonly CharacterRuleset[]> = {
   pf2e: ["remaster", "legacy", "both", "needs_review"],
   dnd5e: ["standard", "2024", "needs_review"],
   t20: ["padrao", "jogo_do_ano", "needs_review"],
   ose: ["advanced", "classic", "needs_review"],
+  dnd35: ["v35", "needs_review"],
 };
 
 /** Normaliza valores antigos/localizados antes de enviá-los ao check do banco. */
 export function normalizeCharacterRuleset(value: unknown): CharacterRuleset {
   const raw = String(value ?? "").trim().toLocaleLowerCase();
+  if (raw === "v35" || raw === "3.5" || raw === "3.5e" || raw.includes("3.5") || raw.includes("edição 3.5") || raw.includes("edicao 3.5") || raw.includes("edition 3.5")) return "v35";
   if (raw === "legacy" || raw.includes("legado") || raw.includes("pré-remaster") || raw.includes("pre-remaster")) return "legacy";
   if (raw === "classic" || (raw.includes("ose") && (raw.includes("clássico") || raw.includes("classico") || raw.includes("classic")))) return "classic";
   if (raw.includes("clássico") || raw.includes("classico")) return "legacy";
