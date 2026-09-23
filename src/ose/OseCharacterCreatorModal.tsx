@@ -19,6 +19,7 @@ import {
   isOseArmorAllowedForClass,
   getOseSpellSlotsByCircle,
   limitOseSpellsBySlots,
+  validateOseFollowers,
 } from "../data/ose/oseRules";
 import { OSE_RACES, type OseRace } from "../data/ose/oseRaces";
 import { OSE_CLASSES, type OseClass } from "../data/ose/oseClasses";
@@ -26,10 +27,14 @@ import {
   OSE_WEAPONS,
   OSE_ARMORS,
   OSE_GEAR,
+  OSE_BEASTS,
+  OSE_SPECIALISTS_RETAINERS,
   calculateOseArmorClass,
   type OseWeapon,
   type OseArmor,
   type OseGearItem,
+  type OseBeastItem,
+  type OseSpecialistRetainer,
 } from "../data/ose/oseEquipment";
 import { OSE_SPELLS, type OseSpell } from "../data/ose/oseSpells";
 import "./oseTheme.css";
@@ -74,6 +79,8 @@ export interface OseCharacterCreatedData {
   weapons: OseWeapon[];
   armors: OseArmor[];
   gear: OseGearItem[];
+  beasts?: OseBeastItem[];
+  retainers?: OseSpecialistRetainer[];
   spellsKnown: string[]; // spell IDs
   preparedSpells: string[];
 }
@@ -257,6 +264,8 @@ export function OseCharacterCreatorModal({
   const [boughtWeapons, setBoughtWeapons] = useState<OseWeapon[]>([]);
   const [boughtArmors, setBoughtArmors] = useState<OseArmor[]>([]);
   const [boughtGear, setBoughtGear] = useState<OseGearItem[]>([]);
+  const [boughtBeasts, setBoughtBeasts] = useState<OseBeastItem[]>([]);
+  const [selectedRetainers, setSelectedRetainers] = useState<OseSpecialistRetainer[]>([]);
 
   const rollGold = () => {
     const r = (Math.floor(Math.random() * 6) + 1 + Math.floor(Math.random() * 6) + 1 + Math.floor(Math.random() * 6) + 1) * 10;
@@ -287,6 +296,27 @@ export function OseCharacterCreatorModal({
     if (gold < item.costGp) return;
     setGold((prev) => prev - item.costGp);
     setBoughtGear((prev) => [...prev, item]);
+  };
+
+  const buyBeast = (beast: OseBeastItem) => {
+    if (gold < beast.costGp || boughtBeasts.some((entry) => entry.id === beast.id)) return;
+    setGold((prev) => prev - beast.costGp);
+    setBoughtBeasts((prev) => [...prev, beast]);
+  };
+
+  const removeBeast = (index: number) => {
+    const beast = boughtBeasts[index];
+    if (!beast) return;
+    setGold((prev) => prev + beast.costGp);
+    setBoughtBeasts((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  const toggleRetainer = (retainer: OseSpecialistRetainer) => {
+    setSelectedRetainers((current) => {
+      if (current.some((entry) => entry.id === retainer.id)) return current.filter((entry) => entry.id !== retainer.id);
+      if (current.length >= charismaModifiers.maxRetainers) return current;
+      return [...current, retainer];
+    });
   };
 
   const removeWeapon = (index: number) => {
@@ -342,6 +372,8 @@ export function OseCharacterCreatorModal({
       setBoughtWeapons([]);
       setBoughtArmors([]);
       setBoughtGear([]);
+      setBoughtBeasts([]);
+      setSelectedRetainers([]);
       setSelectedSpells([]);
       return;
     }
@@ -369,6 +401,8 @@ export function OseCharacterCreatorModal({
     setBoughtWeapons([...(initialCharacter.weapons || [])]);
     setBoughtArmors([...(initialCharacter.armors || [])]);
     setBoughtGear([...(initialCharacter.gear || [])]);
+    setBoughtBeasts([...(initialCharacter.beasts || [])]);
+    setSelectedRetainers([...(initialCharacter.retainers || [])]);
     setSelectedSpells((initialCharacter.spellsKnown || []).filter((spellId) => spellId !== "mago_ler_magia"));
   }, [initialCharacter, isOpen]);
 
@@ -452,6 +486,17 @@ export function OseCharacterCreatorModal({
       setStep(4);
       return;
     }
+    if (selectedRetainers.length > charismaModifiers.maxRetainers) {
+      setValidationMessage(`O Carisma atual permite no máximo ${charismaModifiers.maxRetainers} lacaio(s).`);
+      setStep(4);
+      return;
+    }
+    const followerErrors = validateOseFollowers(boughtBeasts, selectedRetainers, charismaModifiers.maxRetainers);
+    if (followerErrors.length > 0) {
+      setValidationMessage(followerErrors[0]);
+      setStep(4);
+      return;
+    }
     setValidationMessage("");
     const charData: OseCharacterCreatedData = {
       id: initialCharacter?.id || `ose_char_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
@@ -473,6 +518,8 @@ export function OseCharacterCreatorModal({
       weapons: boughtWeapons,
       armors: boughtArmors,
       gear: boughtGear,
+      beasts: boughtBeasts,
+      retainers: selectedRetainers,
       spellsKnown: selectedClass.spellCasting
         ? Array.from(new Set([...automaticSpellIds, ...preservedHigherCircleSpellIds, ...selectedSpells]))
         : [],
@@ -1061,11 +1108,49 @@ export function OseCharacterCreatorModal({
                 </div>
               </div>
 
+              <div className="ose-card">
+                <div className="ose-card-title">🐎 Montarias e animais</div>
+                <p style={{ margin: "0 0 8px", fontSize: "0.78rem", color: "var(--ose-text-muted)" }}>
+                  Animais são comprados com o ouro restante e ficam registrados na ficha.
+                </p>
+                <div style={{ maxHeight: 180, overflowY: "auto" }}>
+                  {OSE_BEASTS.map((beast) => {
+                    const owned = boughtBeasts.some((entry) => entry.id === beast.id);
+                    return (
+                      <div key={beast.id} style={{ display: "flex", justifyContent: "space-between", gap: 8, alignItems: "center", padding: "4px 0", borderBottom: "1px solid var(--ose-border)", fontSize: "0.78rem" }} title={beast.description}>
+                        <span><strong>{beast.name}</strong> · {beast.hd} DV · {beast.movementSpeed}m</span>
+                        <button type="button" className="ose-btn" style={{ padding: "2px 8px", fontSize: "0.72rem" }} disabled={owned || gold < beast.costGp} onClick={() => buyBeast(beast)}>
+                          {owned ? "Comprado" : `${beast.costGp} po`}
+                        </button>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="ose-card">
+                <div className="ose-card-title">👥 Especialistas e lacaios</div>
+                <p style={{ margin: "0 0 8px", fontSize: "0.78rem", color: "var(--ose-text-muted)" }}>
+                  Selecionados: {selectedRetainers.length}/{charismaModifiers.maxRetainers} · lealdade {charismaModifiers.retainerLoyalty}. O custo indicado é mensal.
+                </p>
+                <div style={{ maxHeight: 180, overflowY: "auto" }}>
+                  {OSE_SPECIALISTS_RETAINERS.map((retainer) => {
+                    const selected = selectedRetainers.some((entry) => entry.id === retainer.id);
+                    return (
+                      <label key={retainer.id} style={{ display: "flex", alignItems: "center", gap: 8, padding: "4px 0", borderBottom: "1px solid var(--ose-border)", fontSize: "0.78rem", cursor: "pointer" }} title={retainer.description}>
+                        <input type="checkbox" checked={selected} disabled={!selected && selectedRetainers.length >= charismaModifiers.maxRetainers} onChange={() => toggleRetainer(retainer)} />
+                        <span><strong>{retainer.name}</strong> · {retainer.wageGpPerMonth} po/mês</span>
+                      </label>
+                    );
+                  })}
+                </div>
+              </div>
+
               {/* Itens Comprados Interativos */}
               <div style={{ marginTop: 12, padding: 12, background: "rgba(0,0,0,0.2)", borderRadius: 6, fontSize: "0.85rem" }}>
                 <strong>Inventário Selecionado (clique no ✕ para devolver):</strong>
                 <div style={{ marginTop: 6, display: "flex", flexWrap: "wrap", gap: 6, color: "var(--ose-text-muted)" }}>
-                  {boughtWeapons.length === 0 && boughtArmors.length === 0 && boughtGear.length === 0 && "Nenhum equipamento comprado ainda."}
+                  {boughtWeapons.length === 0 && boughtArmors.length === 0 && boughtGear.length === 0 && boughtBeasts.length === 0 && "Nenhum equipamento ou animal comprado ainda."}
                   {boughtArmors.map((a, i) => (
                     <button
                       key={`arm_${i}`}
@@ -1121,6 +1206,11 @@ export function OseCharacterCreatorModal({
                       title="Clique para devolver e recuperar o ouro"
                     >
                       🎒 {g.name} ({g.costGp} po) ✕
+                    </button>
+                  ))}
+                  {boughtBeasts.map((beast, i) => (
+                    <button key={`beast_${i}`} type="button" onClick={() => removeBeast(i)} style={{ background: "rgba(34, 197, 94, 0.15)", border: "1px solid #22c55e", color: "#86efac", borderRadius: 4, padding: "2px 6px", fontSize: "0.78rem", cursor: "pointer" }} title="Clique para devolver e recuperar o ouro">
+                      🐎 {beast.name} ({beast.costGp} po) ✕
                     </button>
                   ))}
                 </div>
@@ -1187,6 +1277,7 @@ export function OseCharacterCreatorModal({
                 <p><strong>Perícia secundária:</strong> {secondarySkill || "não escolhida"}</p>
                 <p><strong>Idiomas:</strong> {Array.from(new Set([...selectedRace.nativeLanguages, ...selectedLanguages])).join(", ") || "nenhum"}</p>
                 <p><strong>Equipamento:</strong> {boughtWeapons.length + boughtArmors.length + boughtGear.length} item(ns)</p>
+                <p><strong>Animais:</strong> {boughtBeasts.length || "nenhum"} · <strong>Lacaios:</strong> {selectedRetainers.length}/{charismaModifiers.maxRetainers}</p>
                 {selectedClass.spellCasting && <p><strong>Magias:</strong> {selectedSpells.length}/{totalSpellSlots}</p>}
               </div>
               <p style={{ color: "var(--ose-text-muted)", fontSize: "0.82rem" }}>A classe, raça, nível máximo, atributos, proficiências, equipamento e espaços de magia serão revalidados ao concluir.</p>

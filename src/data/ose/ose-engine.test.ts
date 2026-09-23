@@ -5,6 +5,7 @@ import {
   getOseIntModifiers,
   getOseDexModifiers,
   getOseChaModifiers,
+  validateOseFollowers,
   getOsePrimeRequisiteXpMod,
   getOseMovementByLoad,
   getOseSecondarySkillByRoll,
@@ -67,6 +68,16 @@ describe("Old-School Essentials (OSE) - Engine de Regras", () => {
       expect(getOseChaModifiers(10)).toEqual({ npcReactions: 0, maxRetainers: 4, retainerLoyalty: 7 });
       expect(getOseChaModifiers(14)).toEqual({ npcReactions: 1, maxRetainers: 5, retainerLoyalty: 8 });
       expect(getOseChaModifiers(18)).toEqual({ npcReactions: 2, maxRetainers: 7, retainerLoyalty: 10 });
+    });
+
+    it("valida catálogo, duplicidade e limite de animais e retentores", () => {
+      const validBeast = { id: "cavalo_montaria" };
+      const validRetainer = { id: "guia_rastreador" };
+      expect(validateOseFollowers([validBeast], [validRetainer], 1)).toEqual([]);
+      expect(validateOseFollowers([validBeast, validBeast], [], 1)).toContain("animais e montarias não podem ser duplicados");
+      expect(validateOseFollowers([{ id: "animal-inexistente" }], [], 1)).toContain("a ficha contém animal ou montaria fora do catálogo OSE");
+      expect(validateOseFollowers([], [validRetainer, { id: "navegador" }], 1)).toContain("a ficha excede o máximo de 1 retentor(es) permitido pelo Carisma");
+      expect(validateOseFollowers([], [{ id: "retentor-inexistente" }], 1)).toContain("a ficha contém retentor fora do catálogo OSE");
     });
 
     it("calcula bônus/penalidade de XP pelo Requisito Principal", () => {

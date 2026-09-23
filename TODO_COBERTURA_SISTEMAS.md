@@ -80,6 +80,17 @@ Necromancia a partir do 10º nível, em vez de apenas exibir seus resumos. Evid�
 `src/data/systemRulesEngine.ts` e regressão de subclasses; 150 testes direcionados
 verdes e build verde.
 
+Correção adicional (23/09/2026): imunidades condicionais de subclasses D&D 5e
+agora são derivadas e exportadas: Berserker imune a amedrontado/enfeitiçado
+enquanto em Fúria a partir do 6º nível, Arquifada imune a enfeitiçado no 10º e
+Círculo da Terra imune a veneno/doenças específicas no 10º. Evidência:
+`systemRulesEngine.ts`, `CoreCharacterSheet.tsx` e `corePdfExport.ts`; 152 testes
+direcionados e build verdes.
+
+Complemento: o preview do construtor também exibe essas imunidades e o Círculo
+da Terra registra separadamente imunidade a veneno/doenças e a amedrontado/
+enfeitiçado por elementais e fadas, conforme a regra da subclasse.
+
 Implementação adicional (23/09/2026): D&D 5e agora persiste condições ativas
 selecionadas no construtor/ficha. Cego, Amedrontado, Envenenado, Contido,
 Agarrado, Paralisado, Atordoado, Inconsciente e Exausto têm efeitos modelados
@@ -168,6 +179,32 @@ continuam classificados como outro ruleset ou suplemento, sem remoção automát
 - [ ] Completar todas as escolhas de classe por nível que ainda estão apenas resumidas.
   - Progresso adicional D&D 5e: o segundo Estilo de Luta do Campeão, o truque adicional do Círculo da Terra e a resistência escolhida da Resiliência Infernal agora são grupos estruturados no construtor, validados por nível e exibidos nos efeitos da ficha.
 - [ ] Completar efeitos operacionais de todas as subclasses, talentos e traços raciais restantes.
+- Progresso adicional: o traço Sentidos Aguçados do Elfo D&D 5e agora concede proficiência efetiva em Percepção.
+- Progresso adicional: resistências raciais de Anão e Tiefling agora são derivadas e exportáveis, não apenas descritivas.
+- Progresso adicional: Sortudo do Halfling agora aparece como regra de rerrolagem contextual na ficha e no PDF.
+- Progresso adicional: vantagens raciais condicionais agora são exibidas separadamente, sem contaminar o modo global de d20.
+- Progresso adicional: Mago de Guerra agora aparece como vantagem contextual de concentração na ficha e no PDF.
+- Progresso adicional: Ancestralidade Feérica agora deriva imunidade a sono mágico para Elfo e Meio-Elfo.
+- Progresso adicional: rerrolagens de salvamento de Indomável e Alma de Diamante agora são exibidas e exportáveis.
+- Progresso adicional: recursos de classe D&D 5e Indomável e Toque Purificador agora possuem limites por nível/Carisma e aparecem na ficha derivada.
+- Progresso adicional: Canção de Descanso do Bardo agora aparece na ficha/PDF como recurso escalonado por nível.
+- Progresso adicional: a ficha derivada do Bruxo agora exibe Magia de Pacto e os quatro marcos de Arcana Mística.
+- Progresso adicional: o efeito operacional de Mestre de Armadura Pesada agora é validado por tipo de armadura e exportado.
+- Progresso adicional: Durável agora deriva o mínimo de cura por Dados de Vida e evita resumos sem consequência mecânica.
+- Progresso adicional: Fúria Incansável do Bárbaro e Elusivo do Ladino D&D 5e agora são efeitos derivados contextualizados, persistidos pela ficha e exportados no PDF.
+- Progresso adicional: Matador de Colossos do Caçador D&D 5e agora possui dano condicional operacional no ataque e regressão para as demais escolhas de Presa do Caçador.
+- Progresso adicional: Táticas Defensivas e Defesa Superior do Caçador D&D 5e agora possuem efeitos defensivos contextuais derivados por escolha e nível.
+- Progresso adicional: as opções ofensivas de Presa e Ataque Múltiplo do Caçador D&D 5e agora são regras de combate estruturadas e exportáveis.
+- Progresso adicional: os efeitos de combate dos Colégios de Bardo D&D 5e agora são derivados por nível e exportados.
+- Progresso adicional: as principais regras de combate das subclasses de Ladino D&D 5e agora são derivadas por nível e exportadas.
+- Progresso adicional: efeitos centrais dos Domínios de Luz, Tempestade e Guerra do Clérigo D&D 5e agora são derivados e exportados, incluindo Golpe Divino.
+- Progresso adicional: regras de dano e defesa das Escolas de Evocação, Ilusão e Encantamento do Mago D&D 5e agora são derivadas por nível e exportadas.
+- Progresso adicional: os recursos operacionais principais da Magia Selvagem do Feiticeiro D&D 5e agora são derivados por nível e exportados.
+- Progresso adicional: efeitos centrais de reação e sobrevivência dos Patronos Arquifada, Grande Antigo e Infernal do Bruxo D&D 5e agora são derivados por nível e exportados.
+- Progresso adicional: os três Espíritos Totêmicos do Bárbaro D&D 5e agora têm efeitos condicionais derivados e exportáveis durante a Fúria.
+- Progresso adicional: efeitos acionáveis das Tradições da Mão Aberta e das Sombras do Monge D&D 5e agora são derivados por nível e exportados.
+- Progresso adicional: os marcos operacionais do Círculo da Lua do Druida D&D 5e agora são derivados por nível e exportados.
+- Progresso adicional: os Juramentos de Devoção, dos Anciões e de Vingança do Paladino D&D 5e agora possuem efeitos derivados por nível e exportáveis, incluindo Arma Sagrada, Aura de Proteção dos Anciões, Voto de Inimizade e Alma de Vingança.
   - Progresso adicional D&D 5e: o segundo Estilo de Luta do Campeão agora é aplicado à CA/ataques e não pode repetir o estilo da classe; a Resiliência Infernal escolhida pelo Bruxo agora alimenta `damageResistances` da ficha a partir do 10º nível.
 - [ ] Auditar a lista de magias por classe/subclasse/nível contra o Livro do Jogador e registrar exceções.
 - [ ] Validar componentes, concentração, ritual, alcance, duração, dano, salvamento e escalonamento das magias.
@@ -184,6 +221,9 @@ continuam classificados como outro ruleset ou suplemento, sem remoção automát
 - [ ] Auditar, por classe, todas as habilidades especiais e tabelas de progressão do Tomo do Jogador.
 - [x] Exibir no construtor requisitos principais, modificadores de XP, reações, retentores e lealdade.
 - [ ] Completar itens de aventura, montarias, especialistas, retentores e suas regras de uso no editor.
+  - Progresso adicional: montarias/animais e retentores especialistas agora têm seleção persistida no OSE, compra de animais com ouro, limite de lacaios por Carisma e exportação para a ficha/PDF.
+  - Correção adicional: a validação OSE também cobre IDs fora do catálogo, duplicidades e excesso de retentores em dados legados antes da confirmação da ficha.
+  - Evidência adicional: `ose-pdf-export.test.ts` verifica os registros de montarias e lacaios no AcroForm exportado.
 - [x] Validar magias iniciais e limites por círculo no fluxo visual de criação, respeitando também o nível inicial de conjuração da classe.
 - [x] Criar testes de reabertura/edição/exportação para Advanced e Classic, incluindo PDF editável de uma página.
 
@@ -278,6 +318,7 @@ Para cada linha abaixo, executar o checklist em cada sistema/ruleset que a possu
 ### Vantagem, desvantagem, bônus, penalidades e condições
 
 - [x] D&D 5e: vantagem/desvantagem com anulação e modo de rolagem persistido.
+  - Progresso adicional: Instinto Feral do Bárbaro deriva vantagem na iniciativa a partir do 7º nível, com anulação por desvantagem global e exportação no PDF.
 - [x] T20: modificadores e penalidades próprios, sem conversão para vantagem/desvantagem.
 - [x] OSE: modificadores, tabelas percentuais e ajustes de reação, sem vantagem/desvantagem nativa.
 - [x] PF2e: bônus, penalidades e condições separados por tipo.
@@ -329,7 +370,9 @@ Para cada linha abaixo, executar o checklist em cada sistema/ruleset que a possu
 - [x] Fortalecer `audit:core:supabase` para validar IDs e progressões `countByLevel` das escolhas estruturadas de classe D&D 5e no catálogo remoto.
 - [x] Rodar matriz de criação/edição/exportação em todos os rulesets, não apenas em amostras.
   - Evidência: `src/services/system-editor-matrix.test.ts` cobre T20 padrão, D&D 5e Standard, OSE Advanced e OSE Classic no ciclo criar → salvar → reabrir → editar → salvar → exportar PDF de uma página; 4 casos verdes.
-- [ ] Adicionar testes negativos para catálogo cruzado, escolha inválida, pré-requisito ausente, duplicidade e ruleset incompatível.
+- [x] Adicionar testes negativos para catálogo cruzado, escolha inválida, duplicidade e ruleset incompatível; o motor também rejeita IDs repetidos de magia, equipamento e talento/poder, exigindo quantidade quando aplicável.
+  - Correção adicional: arrays legados nulos em talentos, equipamento ou magias agora são normalizados durante a validação e retornam um resultado legível, sem lançar exceção; regressão coberta no `systemRulesEngine.test.ts`.
+  - A mesma normalização foi aplicada à derivação de estatísticas, evitando falha no preview/ficha quando um payload antigo chega com `featIds` nulo.
 - [ ] Revalidar Supabase após cada migration com auditoria de contagens e conteúdo.
 
 ## Ordem recomendada de execução
@@ -338,6 +381,11 @@ Para cada linha abaixo, executar o checklist em cada sistema/ruleset que a possu
 2. Fechar o fluxo OSE Classic, que ainda possui a maior diferença entre catálogo e validação visual.
 3. Completar a matriz de escolhas e efeitos por classe/subclasse de D&D 5e.
 4. Completar efeitos situacionais e escolhas dependentes das 14 classes T20.
+   - Progresso adicional: Caminho do Cavaleiro — Bastião agora deriva RD 5 somente quando há armadura pesada equipada, com regressão de troca para Montaria e ausência de armadura.
+   - Progresso adicional: Aura Sagrada do Paladino T20 agora deriva o modificador de Carisma nos três salvamentos a partir do 3º nível.
+   - Progresso adicional: Bênção da Justiça agora deriva Égide Sagrada e Montaria Sagrada com custos, bônus e marcos de nível documentados no efeito exportável da escolha de classe.
+   - Progresso adicional: Virtudes Paladinescas agora têm o escalonamento operacional de PM +1/+3/+6/+10/+15 conforme a quantidade de virtudes selecionadas.
+   - Progresso adicional: Castidade agora alimenta as imunidades condicionais do Paladino T20.
 5. Completar metadados e efeitos de magias/itens/talentos.
 6. Expandir PDF, Supabase e E2E para cada pacote concluído.
 7. Só então marcar categorias como completas neste documento e em `TODO_MULTI_SISTEMAS.md`.

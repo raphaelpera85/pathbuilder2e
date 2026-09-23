@@ -129,7 +129,9 @@ export interface SystemRulesEngine {
     manaMax: number;
     defense: number;
     initiative: number;
+    initiativeRollMode: D20RollMode;
     skillBonuses: Record<string, number>;
+    skillMinimums: Record<string, number>;
     passivePerception?: number;
     passiveInvestigation?: number;
     skillRollModes: Record<string, D20RollMode>;
@@ -143,11 +145,16 @@ export interface SystemRulesEngine {
     spellSlots: Record<number, number>;
     preparedSpellLimit?: number;
     knownSpellLimit?: number;
-    attacks: Array<{ name: string; bonus: number; damage: string; proficient: boolean; rollMode?: D20RollMode; attacksPerAction?: number; conditionalDamage?: string; critical?: string; range?: string; weaponProperties?: string[] }>;
+    attacks: Array<{ name: string; bonus: number; damage: string; proficient: boolean; rollMode?: D20RollMode; damageReroll?: string; attacksPerAction?: number; conditionalDamage?: string; critical?: string; range?: string; weaponProperties?: string[] }>;
     carryingWeight: number;
     carryingCapacity?: number;
     encumbered: boolean;
     damageResistances: string[];
+    damageReductions: string[];
+    rerollRules: string[];
+    defensiveRules: string[];
+    combatRules: string[];
+    situationalAdvantages: string[];
     speed: number;
     canAct: boolean;
     canReact: boolean;
@@ -214,7 +221,7 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
           .map((value) => catalog.skills.find((skill) => normalizeSkillChoice(skill.name) === normalizeSkillChoice(value))?.id)
           .filter((skillId): skillId is string => Boolean(skillId))
         : [];
-      const selectedFeatIds = new Set(character.featIds || []);
+      const selectedFeatIds = new Set(Array.isArray(character.featIds) ? character.featIds : []);
       const t20MagicAbilityBonuses: Record<string, number> = systemId === "t20"
         ? {
           str: (hasEquipment("t20.item_magico.manoplas_forca_ogro") ? 2 : 0) + (hasEquipment("t20.item_magico.cinto_forca_gigante") ? 5 : 0),
@@ -286,6 +293,10 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       const t20VitalityBonus = systemId === "t20" && selectedFeatIds.has("t20.poder.vitalidade") ? character.level : 0;
       const t20SaradoBonus = systemId === "t20" && selectedFeatIds.has("t20.poder.sarado") ? modifiers.str || 0 : 0;
       const t20BencaoDoManaBonus = systemId === "t20" && selectedFeatIds.has("t20.poder.bencao_do_mana") ? 3 : 0;
+      const t20PaladinVirtueCount = systemId === "t20" && character.classId === "paladino"
+        ? [...selectedFeatIds].filter((featId) => featId.startsWith("t20.poder.virtude_")).length
+        : 0;
+      const t20PaladinVirtueManaBonus = [0, 1, 3, 6, 10, 15][Math.min(5, t20PaladinVirtueCount)];
       const t20PoderMagicoBonus = systemId === "t20" && selectedFeatIds.has("t20.poder.poder_magico")
         ? character.level * getCoreFeatQuantity(character, "t20.poder.poder_magico")
         : 0;
@@ -317,6 +328,7 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       if (hasFeat("dnd5e.talento.resistente")) featEffects.push(`Resistente: +${featHpBonus} PV máximos pelo nível`);
       if (hasFeat("dnd5e.talento.resiliente")) featEffects.push("Resiliente: proficiência no teste de resistência escolhido");
       if (hasFeat("dnd5e.talento.movel")) featEffects.push("Móvel: +3 m de deslocamento e ignora terreno difícil ao correr");
+      if (hasFeat("dnd5e.talento.duravel")) featEffects.push(`Durável: ao gastar Dados de Vida, o resultado mínimo recuperado é ${Math.max(2, (modifiers.con || 0) * 2)} PV`);
       if (hasFeat("dnd5e.talento.observador")) featEffects.push("Observador: +5 em Percepção passiva e leitura labial");
       if (hasFeat("dnd5e.talento.sentinela")) featEffects.push("Sentinela: ataques de oportunidade reduzem o deslocamento a 0 e ignoram Desengajar");
       if (dndPowerAttackFeat) featEffects.push(`Ataque Poderoso: ${dndPowerAttackActive ? "ativo (-5 no ataque, +10 no dano quando aplicável)" : "disponível para ativação no modo de combate"}`);
@@ -334,7 +346,7 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         ? (character.t20ArcanistPath === "feiticeiro" ? "cha" : "int")
         : ["clerigo", "druida"].includes(character.classId) ? "wis" : ["paladino", "bardo"].includes(character.classId) ? "cha" : undefined;
       const manaMax = systemId === "t20" && classRules && "manaPerLevel" in classRules
-        ? classRules.manaPerLevel * character.level + (t20ManaAbility ? modifiers[t20ManaAbility] || 0 : 0) + (t20VontadeDeFerroActive ? Math.floor(character.level / 2) : 0) + t20BencaoDoManaBonus + t20PoderMagicoBonus
+        ? classRules.manaPerLevel * character.level + (t20ManaAbility ? modifiers[t20ManaAbility] || 0 : 0) + (t20VontadeDeFerroActive ? Math.floor(character.level / 2) : 0) + t20BencaoDoManaBonus + t20PoderMagicoBonus + t20PaladinVirtueManaBonus
         : 0;
       const carryingWeight = selectedEquipment.reduce((total, entry) => total + (entry.weight || 0) * getCoreEquipmentQuantity(character, entry.id), 0);
       const carryingCapacity = systemId === "dnd5e" ? effectiveAbilities.str * 15 : undefined;
@@ -361,6 +373,7 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         : undefined;
       const experiencePoints = Math.max(0, Math.trunc(character.experiencePoints || 0));
       const equippedArmor = selectedEquipment.find((entry) => entry.category === "armadura" && entry.armorClass !== undefined);
+      const dndHeavyArmorMasterActive = systemId === "dnd5e" && hasFeat("dnd5e.talento.mestre_de_armadura_pesada") && equippedArmor?.proficiency === "heavy_armor";
       const dndMagicArmorBonus = systemId === "dnd5e" && equippedArmor && hasAttunedEquipment("dnd5e.item_magico.armadura_um") ? 1 : 0;
       const dndProtectionRingBonus = systemId === "dnd5e" && hasAttunedEquipment("dnd5e.item_magico.anelprotecao") ? 1 : 0;
       const dndDraconicUnarmoredDefense = systemId === "dnd5e" && selectedSubclass?.id === "feiticeiro_linhagem_draconica" && !equippedArmor
@@ -389,7 +402,18 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         : 0;
       const selectedWeapons = selectedEquipment.filter((entry) => entry.category === "arma" && entry.damage);
       const dndDuelingActive = systemId === "dnd5e" && activeDndFightingStyles.has("Duelos") && selectedWeapons.length === 1 && !selectedWeapons[0]?.weaponProperties?.some((property) => ["munição", "duas mãos"].includes(property)) && !/alcance/i.test(selectedWeapons[0]?.summary || "");
-      const dndTwoWeaponStyleActive = systemId === "dnd5e" && activeDndFightingStyles.has("Luta com Duas Armas") && selectedWeapons.length >= 2 && selectedWeapons.every((entry) => !entry.weaponProperties?.some((property) => ["munição", "duas mãos"].includes(property)) && !/alcance/i.test(entry.summary));
+        const dndTwoWeaponStyleActive = systemId === "dnd5e" && activeDndFightingStyles.has("Luta com Duas Armas") && selectedWeapons.length >= 2 && selectedWeapons.every((entry) => !entry.weaponProperties?.some((property) => ["munição", "duas mãos"].includes(property)) && !/alcance/i.test(entry.summary));
+      const dndGreatWeaponFightingActive = systemId === "dnd5e" && activeDndFightingStyles.has("Luta com Armas Grandes");
+      const dndHunterPrey = systemId === "dnd5e" && selectedSubclass?.id === "patrulheiro_cacador" && safeLevel >= 3
+        ? character.subclassChoices?.["hunter-prey"]?.[0]
+        : undefined;
+      const dndTotemSpirit = systemId === "dnd5e" && selectedSubclass?.id === "barbaro_totem"
+        ? character.subclassChoices?.["totem-spirit"]?.[0]
+        : undefined;
+      const dndBearTotemRage = dndRageActive && dndTotemSpirit === "Urso" && safeLevel >= 3;
+      const dndClericDivineStrikeDamage = systemId === "dnd5e" && character.classId === "clerigo" && safeLevel >= 8
+        ? ({ clerigo_vida: "radiante", clerigo_natureza: "frio, fogo ou elétrico", clerigo_tempestade: "trovejante", clerigo_trapaca: "veneno", clerigo_guerra: "radiante" } as Record<string, string>)[selectedSubclass?.id || ""]
+        : undefined;
       const t20OneWeaponStyleActive = systemId === "t20" && selectedFeatIds.has("t20.poder.estilo_de_uma_arma") && selectedWeapons.length === 1 && !equippedShield && !selectedWeapons[0]?.weaponProperties?.some((property) => ["munição", "duas mãos"].includes(property));
       const t20DodgeActive = systemId === "t20" && selectedFeatIds.has("t20.poder.esquiva");
       const t20WeaponFocus = systemId === "t20" && selectedFeatIds.has("t20.poder.foco_em_arma") ? character.featChoices?.["t20-weapon-focus"]?.[0] : undefined;
@@ -403,7 +427,7 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       if (hasFeat("dnd5e.talento.mestre_de_armadura_media")) featEffects.push("Mestre de Armadura Média: armadura média permite até +3 de Destreza na CA e não impõe desvantagem em Furtividade");
       if (hasFeat("dnd5e.talento.mestre_de_escudos")) featEffects.push(`Mestre de Escudos: ${dndShieldMasterBonus ? `+${dndShieldMasterBonus} nos salvamentos de Destreza enquanto usa escudo; ` : "com escudo, "}ação bônus para empurrar e reação para anular dano de salvamento bem-sucedido`);
       if (systemId === "dnd5e") {
-        const detailedFeatIds = new Set(["dnd5e.talento.alerta", "dnd5e.talento.resistente", "dnd5e.talento.resiliente", "dnd5e.talento.movel", "dnd5e.talento.observador", "dnd5e.talento.sentinela", "dnd5e.talento.atacante_de_duas_armas", "dnd5e.talento.mestre_de_armadura_media", "dnd5e.talento.mestre_de_hastes", "dnd5e.talento.mestre_de_escudos"]);
+        const detailedFeatIds = new Set(["dnd5e.talento.alerta", "dnd5e.talento.resistente", "dnd5e.talento.resiliente", "dnd5e.talento.movel", "dnd5e.talento.duravel", "dnd5e.talento.observador", "dnd5e.talento.sentinela", "dnd5e.talento.atacante_de_duas_armas", "dnd5e.talento.mestre_de_armadura_media", "dnd5e.talento.mestre_de_hastes", "dnd5e.talento.mestre_de_escudos"]);
         for (const featId of selectedFeatIds) {
           if (detailedFeatIds.has(featId)) continue;
           const feat = catalog.feats.find((entry) => entry.id === featId);
@@ -417,6 +441,7 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
             ?.flatMap((choice) => (character.featChoices?.[choice.id] || []).map((value) => `${choice.label}: ${value}`));
           if (selectedChoices?.length) featEffects.push(...selectedChoices);
         }
+        if (t20PaladinVirtueCount > 0) featEffects.push(`Virtudes Paladinescas: +${t20PaladinVirtueManaBonus} PM no total (${t20PaladinVirtueCount} virtude(s))`);
       }
       const t20CouraceiroActive = systemId === "t20" && selectedFeatIds.has("t20.poder.couraceiro");
       const t20SolidezActive = systemId === "t20" && selectedFeatIds.has("t20.poder.solidez");
@@ -436,6 +461,10 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       const t20DentesAfiadosActive = systemId === "t20" && selectedFeatIds.has("t20.poder.dentes_afiados");
       const t20Armor = selectedEquipment.find((entry) => entry.category === "armadura" && entry.shieldBonus === undefined && entry.armorBonus !== undefined);
       const t20HeavyArmor = t20Armor?.armorWeightClass === "heavy";
+      const t20KnightPath = systemId === "t20" && character.classId === "cavaleiro"
+        ? character.classChoices?.["t20-cavaleiro-path"]?.[0]
+        : undefined;
+      const t20KnightBastionActive = t20KnightPath === "Bastião" && t20HeavyArmor;
       const t20BraçosCalejadosBonus = systemId === "t20" && selectedFeatIds.has("t20.poder.bracos_calejados") && !t20Armor ? Math.min(Math.max(0, modifiers.str || 0), safeLevel) : 0;
       const t20ArmaduraBrilhanteActive = systemId === "t20" && selectedFeatIds.has("t20.poder.armadura_brilhante") && t20HeavyArmor;
       const t20BlindagemActive = systemId === "t20" && selectedFeatIds.has("t20.poder.blindagem") && t20HeavyArmor;
@@ -505,8 +534,12 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         ...t20SelectedTrainingSkillIds,
         ...dndSkilledSkillIds,
         ...dndSubclassSkillIds,
+        ...(systemId === "dnd5e" && character.raceId === "elfo" ? ["percepcao"] : []),
         ...(systemId === "t20" && character.t20ArcanistPath === "feiticeiro" && character.t20SorcererLineage === "feerica" ? ["enganacao"] : []),
       ]);
+      const dndJackOfAllTradesBonus = systemId === "dnd5e" && character.classId === "bardo" && safeLevel >= 2
+        ? Math.floor(proficiencyBonus(systemId, character.level) / 2)
+        : 0;
       const expertise = new Set([...(character.skillExpertise || []), ...dndSubclassExpertiseSkillIds]);
       const activeConditionEntries = systemId === "dnd5e" ? character.conditions || [] : [];
       const activeConditions = new Map(activeConditionEntries.map((condition) => [condition.id, Math.max(1, Math.trunc(condition.value || 1))]));
@@ -519,9 +552,14 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       const cannotAct = systemId === "dnd5e" && ["incapacitado", "paralisado", "petrificado", "atordoado", "inconsciente"].some(hasCondition);
       const cannotReact = cannotAct;
       const conditionImmunities: string[] = [];
+      if (systemId === "t20" && character.classId === "paladino" && selectedFeatIds.has("t20.poder.virtude_castidade")) conditionImmunities.push("enfeitiçado (Virtude: Castidade)");
+      if (systemId === "dnd5e" && character.classId === "paladino" && safeLevel >= 3) conditionImmunities.push("doenças");
+      if (systemId === "dnd5e" && character.classId === "paladino" && safeLevel >= 10) conditionImmunities.push("amedrontado (Aura de Coragem)");
+      if (systemId === "dnd5e" && character.classId === "monge" && safeLevel >= 10) conditionImmunities.push("veneno e doenças");
+      if (systemId === "dnd5e" && ["elfo", "meio_elfo"].includes(character.raceId)) conditionImmunities.push("sono mágico (Ancestralidade Feérica)");
       if (systemId === "dnd5e" && selectedSubclass?.id === "barbaro_berserker" && safeLevel >= 6 && dndRageActive) conditionImmunities.push("amedrontado", "enfeitiçado");
       if (systemId === "dnd5e" && selectedSubclass?.id === "bruxo_arque_fada" && safeLevel >= 10) conditionImmunities.push("enfeitiçado");
-      if (systemId === "dnd5e" && selectedSubclass?.id === "druida_terra" && safeLevel >= 10) conditionImmunities.push("veneno e doenças de elementais e fadas");
+      if (systemId === "dnd5e" && selectedSubclass?.id === "druida_terra" && safeLevel >= 10) conditionImmunities.push("veneno e doenças", "amedrontado e enfeitiçado por elementais e fadas");
     const armorDisadvantagesStealth = systemId === "dnd5e" && selectedEquipment.some((entry) => entry.category === "armadura" && entry.summary.toLowerCase().includes("desvantagem furtividade") && !(mediumArmorMasterActive && entry.proficiency === "medium_armor"));
       const dndStealthMagicAdvantage = systemId === "dnd5e" && (hasAttunedEquipment("dnd5e.item_magico.botas_elficas") || hasAttunedEquipment("dnd5e.item_magico.capa_elfica"));
     const skillRollModes = Object.fromEntries(catalog.skills.map((skill) => {
@@ -556,8 +594,11 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         if (t20AntenasBonus && skill.id === "percepcao") t20PowerBonus += t20AntenasBonus;
         if (t20ArticulacoesBonus && ["acrobacia", "furtividade"].includes(skill.id)) t20PowerBonus += t20ArticulacoesBonus;
         if (t20MaosMembranosasBonus && skill.id === "atletismo") t20PowerBonus += t20MaosMembranosasBonus;
-        return [skill.id, (modifiers[ability] || 0) + (trained.has(skill.id) ? proficiencyBonus(systemId, character.level) : 0) + expertiseBonus + armorPenalty + t20PowerBonus - exhaustionPenalty];
+        return [skill.id, (modifiers[ability] || 0) + (trained.has(skill.id) ? proficiencyBonus(systemId, character.level) : dndJackOfAllTradesBonus) + expertiseBonus + armorPenalty + t20PowerBonus - exhaustionPenalty];
       }));
+      const skillMinimums = systemId === "dnd5e" && character.classId === "ladino" && safeLevel >= 11
+        ? Object.fromEntries([...trained].map((skillId) => [skillId, 10]))
+        : {};
       const passivePerception = systemId === "dnd5e"
         ? 10 + (skillBonuses.percepcao || 0) + (hasFeat("dnd5e.talento.observador") ? 5 : 0)
         : undefined;
@@ -568,17 +609,28 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       const dndSaveAbilities = classRules && "savingThrows" in classRules
         ? Object.fromEntries(classRules.savingThrows.map((save) => [abilityLabels[save.toLowerCase()] || save, modifiers[abilityLabels[save.toLowerCase()] || save] || 0]))
         : {};
+      const dndExtraSavingThrowAbilities = new Set<string>();
+      if (systemId === "dnd5e" && character.classId === "ladino" && safeLevel >= 15) dndExtraSavingThrowAbilities.add("int").add("wis");
+      if (systemId === "dnd5e" && character.classId === "monge" && safeLevel >= 14) Object.keys(modifiers).forEach((ability) => dndExtraSavingThrowAbilities.add(ability));
+      const t20PaladinAuraBonus = systemId === "t20" && character.classId === "paladino" && safeLevel >= 3
+        ? modifiers.cha || 0
+        : 0;
       const savingThrowBonuses = systemId === "dnd5e"
         ? Object.fromEntries(Object.entries(modifiers).map(([ability, modifier]) => {
           const resilientAbility = character.featChoices?.["resilient-ability"]?.[0];
           const resilientKey = { Força: "str", Destreza: "dex", Constituição: "con", Inteligência: "int", Sabedoria: "wis", Carisma: "cha" }[resilientAbility || ""];
           const resilientBonus = hasFeat("dnd5e.talento.resiliente") && resilientKey === ability && dndSaveAbilities[ability] === undefined ? proficiencyBonus(systemId, character.level) : 0;
-          return [ability, modifier + (dndSaveAbilities[ability] !== undefined ? proficiencyBonus(systemId, character.level) : 0) + resilientBonus + dndProtectionRingBonus + dndPaladinAuraBonus + (ability === "dex" ? dndShieldMasterBonus : 0) - exhaustionPenalty];
+          return [ability, modifier + (dndSaveAbilities[ability] !== undefined || dndExtraSavingThrowAbilities.has(ability) ? proficiencyBonus(systemId, character.level) : 0) + resilientBonus + dndProtectionRingBonus + dndPaladinAuraBonus + (ability === "dex" ? dndShieldMasterBonus : 0) - exhaustionPenalty];
         }))
-        : { fortitude: (skillBonuses.fortitude || 0) + dndProtectionRingBonus + t20SaradoBonus + (systemId === "t20" && selectedFeatIds.has("t20.poder.vitalidade") ? 2 : 0) + (t20InexpugnavelActive ? 2 : 0) + t20MaosMembranosasBonus + t20NatureFortitudeBonus + t20RejeicaoDivinaBonus + (t20SolidezActive && equippedShield ? equippedShield.shieldBonus || 0 : 0) + (hasEquipment("t20.item_magico.manto_resistencia") ? 1 : 0), reflexos: (skillBonuses.reflexos || 0) + dndProtectionRingBonus + (t20DodgeActive ? 2 : 0) + (t20InexpugnavelActive ? 2 : 0) + t20ArticulacoesBonus + t20FreedomReflexBonus + t20RejeicaoDivinaBonus + (t20SolidezActive && equippedShield ? equippedShield.shieldBonus || 0 : 0) + (hasEquipment("t20.item_magico.manto_resistencia") ? 1 : 0), vontade: (skillBonuses.vontade || 0) + dndProtectionRingBonus + (t20InexpugnavelActive ? 2 : 0) + (t20VontadeDeFerroActive ? 2 : 0) + (t20MenteVaziaActive ? 2 : 0) + t20AntenasBonus + t20LakeWillBonus + (t20MenteAnaliticaActive ? 2 : 0) + t20RejeicaoDivinaBonus + (t20SolidezActive && equippedShield ? equippedShield.shieldBonus || 0 : 0) + (hasEquipment("t20.item_magico.manto_resistencia") ? 1 : 0) };
+        : { fortitude: (skillBonuses.fortitude || 0) + dndProtectionRingBonus + t20SaradoBonus + t20PaladinAuraBonus + (systemId === "t20" && selectedFeatIds.has("t20.poder.vitalidade") ? 2 : 0) + (t20InexpugnavelActive ? 2 : 0) + t20MaosMembranosasBonus + t20NatureFortitudeBonus + t20RejeicaoDivinaBonus + (t20SolidezActive && equippedShield ? equippedShield.shieldBonus || 0 : 0) + (hasEquipment("t20.item_magico.manto_resistencia") ? 1 : 0), reflexos: (skillBonuses.reflexos || 0) + dndProtectionRingBonus + t20PaladinAuraBonus + (t20DodgeActive ? 2 : 0) + (t20InexpugnavelActive ? 2 : 0) + t20ArticulacoesBonus + t20FreedomReflexBonus + t20RejeicaoDivinaBonus + (t20SolidezActive && equippedShield ? equippedShield.shieldBonus || 0 : 0) + (hasEquipment("t20.item_magico.manto_resistencia") ? 1 : 0), vontade: (skillBonuses.vontade || 0) + dndProtectionRingBonus + t20PaladinAuraBonus + (t20InexpugnavelActive ? 2 : 0) + (t20VontadeDeFerroActive ? 2 : 0) + (t20MenteVaziaActive ? 2 : 0) + t20AntenasBonus + t20LakeWillBonus + (t20MenteAnaliticaActive ? 2 : 0) + t20RejeicaoDivinaBonus + (t20SolidezActive && equippedShield ? equippedShield.shieldBonus || 0 : 0) + (hasEquipment("t20.item_magico.manto_resistencia") ? 1 : 0) };
       const globalD20RollMode: D20RollMode = systemId === "dnd5e" ? character.d20Mode || "normal" : "normal";
+      const feralInstinctActive = systemId === "dnd5e" && character.classId === "barbaro" && safeLevel >= 7;
+      const initiativeRollMode: D20RollMode = feralInstinctActive
+        ? globalD20RollMode === "disadvantage" ? "normal" : "advantage"
+        : globalD20RollMode;
       const savingThrowRollModes = Object.fromEntries(Object.keys(savingThrowBonuses).map((save) => {
-        const hasAdvantage = globalD20RollMode === "advantage";
+        const dangerSenseActive = systemId === "dnd5e" && character.classId === "barbaro" && safeLevel >= 2 && save === "dex" && !hasCondition("cego") && !cannotAct;
+        const hasAdvantage = globalD20RollMode === "advantage" || dangerSenseActive;
         const hasDisadvantage = globalD20RollMode === "disadvantage" || (conditionSaveDisadvantage && save === "dex");
         return [save, hasAdvantage && hasDisadvantage ? "normal" : hasAdvantage ? "advantage" : hasDisadvantage ? "disadvantage" : "normal"];
       })) as Record<string, D20RollMode>;
@@ -620,6 +672,10 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
             ? 2
             : character.classId === "bardo" && selectedSubclass?.id === "bardo_valor" && safeLevel >= 6 ? 2 : 1
         : systemId === "t20" && ((character.classId === "guerreiro" && safeLevel >= 6) || (character.classId === "lutador" && safeLevel >= 20)) ? 2 : 1;
+      const dndImprovedDivineSmiteActive = systemId === "dnd5e" && character.classId === "paladino" && safeLevel >= 11;
+      const dndDivineSmiteSlot = systemId === "dnd5e" && character.classId === "paladino" && safeLevel >= 2
+        ? Math.min(5, Math.max(0, Math.trunc(character.dndDivineSmiteSlot || 0)))
+        : 0;
       const attacks = selectedEquipment.filter((entry) => entry.category === "arma" && entry.damage).map((weapon, weaponIndex) => {
         const selectedByWeaponMaster = systemId === "dnd5e" && dndWeaponMasterChoices.has(normalizeFeatChoice(weapon.name));
         const proficient = systemId === "t20" || selectedByWeaponMaster || (weapon.proficiency === "simple_weapon" ? proficiencies.includes("armas simples") : proficiencies.includes("marciais") || dndSubclassHasMartialProficiency);
@@ -630,6 +686,7 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         const t20Firearm = systemId === "t20" && ["t20.arma.pistola", "t20.arma.mosquete"].includes(weapon.id);
         const t20ThrownWeapon = systemId === "t20" && weapon.weaponProperties?.includes("arremesso");
         const t20TwoHandedWeapon = systemId === "t20" && weapon.weaponProperties?.includes("duas mãos") && !t20RangedWeapon;
+        const dndGreatWeaponEligible = dndGreatWeaponFightingActive && !rangedWeapon && Boolean(weapon.weaponProperties?.includes("duas mãos") || weapon.weaponProperties?.includes("versátil"));
         const t20DualWeaponAttack = t20DualWeaponActive && !weapon.weaponProperties?.some((property) => ["munição", "duas mãos"].includes(property)) && !/alcance/i.test(weapon.summary);
         const unarmedStyleActive = systemId === "t20" && selectedFeatIds.has("t20.poder.estilo_desarmado") && weapon.id === "t20.arma.ataque_desarmado";
         const t20LutadorUnarmedDamage = systemId === "t20" && character.classId === "lutador" && weapon.id === "t20.arma.ataque_desarmado"
@@ -681,19 +738,42 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
           ? "normal"
           : attackHasAdvantage ? "advantage" : attackHasDisadvantage ? "disadvantage" : "normal";
         const finalDamageBonuses = [damageBonuses, dndMagicWeaponBonus ? "+ 1" : ""].filter(Boolean).join(" ");
+        const conditionalDamage = [
+          sneakAttackDice && sneakAttackEligible ? `+${sneakAttackDice} de Ataque Furtivo (1 vez por turno)` : "",
+          dndHunterPrey === "Matador de Colossos" ? "+1d8 contra alvo que já perdeu PV (1 vez por turno)" : "",
+          dndClericDivineStrikeDamage ? `+1d8 ${dndClericDivineStrikeDamage} (Golpe Divino, 1 vez por turno)` : "",
+          dndImprovedDivineSmiteActive && !rangedWeapon ? "+1d8 radiante (Destruição Divina Aprimorada)" : "",
+          dndDivineSmiteSlot > 0 && !rangedWeapon ? `+${Math.min(5, dndDivineSmiteSlot + 1)}d8 radiante (Destruição Divina; ${dndDivineSmiteSlot}º círculo)` : "",
+        ].filter(Boolean).join(" · ");
         return {
           name: weapon.name,
           bonus: (modifiers[attackAbility] || 0) + (proficient ? proficiencyBonus(systemId, character.level) : 0) + dndMagicWeaponBonus + (t20ArmasDaAmbicaoActive && proficient ? 1 : 0) + (activeDndFightingStyles.has("Arquearia") && rangedWeapon ? 2 : 0) + (powerfulAttackActive ? -2 : 0) + (powerAttackEligible ? -5 : 0) + (t20OneWeaponStyleActive ? 2 : 0) + (t20WeaponFocus === weapon.name ? 2 : 0) + (t20DualWeaponAttack ? -2 : 0) - exhaustionPenalty,
           damage: `${t20LutadorUnarmedDamage || (unarmedStyleActive ? "1d6 impacto" : weapon.damage || weapon.summary)}${finalDamageBonuses || powerAttackEligible || dndRageEligible ? ` ${[finalDamageBonuses, powerAttackEligible ? "+ 10" : "", dndRageEligible ? `+ ${dndRageDamageBonus}` : ""].filter(Boolean).join(" ")}` : ""}`,
           proficient,
           ...(attackRollMode !== "normal" ? { rollMode: attackRollMode } : {}),
+          ...(dndGreatWeaponEligible ? { damageReroll: "rerrola resultados 1 ou 2 nos dados de dano" } : {}),
           ...(attacksPerAction > 1 ? { attacksPerAction } : {}),
-          ...(sneakAttackDice && sneakAttackEligible ? { conditionalDamage: `+${sneakAttackDice} de Ataque Furtivo (1 vez por turno)` } : {}),
+          ...(conditionalDamage ? { conditionalDamage } : {}),
           ...(finalCritical ? { critical: finalCritical } : {}),
           ...(weapon.range ? { range: weapon.range } : {}),
           ...("weaponProperties" in weapon && weapon.weaponProperties ? { weaponProperties: weapon.weaponProperties } : {}),
         };
       });
+      if (systemId === "dnd5e") {
+        const monkUnarmedDie = safeLevel >= 17 ? "1d10" : safeLevel >= 11 ? "1d8" : safeLevel >= 5 ? "1d6" : "1d4";
+        const monkUnarmed = character.classId === "monge";
+        const unarmedAbility = monkUnarmed ? modifiers.dex || 0 : modifiers.str || 0;
+        const unarmedModifier = unarmedAbility === 0 ? "" : unarmedAbility > 0 ? ` + ${unarmedAbility}` : ` - ${Math.abs(unarmedAbility)}`;
+        const unarmedRollMode: D20RollMode = globalD20RollMode;
+        attacks.push({
+          name: "Ataque desarmado",
+          bonus: unarmedAbility + proficiencyBonus(systemId, character.level) - exhaustionPenalty,
+          damage: `${monkUnarmed ? monkUnarmedDie : "1"} contundente${unarmedModifier}`,
+          proficient: true,
+          ...(unarmedRollMode !== "normal" ? { rollMode: unarmedRollMode } : {}),
+          ...(attacksPerAction > 1 ? { attacksPerAction } : {}),
+        });
+      }
       if (t20DentesAfiadosActive) {
         attacks.push({
           name: "Mordida",
@@ -822,6 +902,13 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         if (selectedSubclass.id === "druida_terra" && choice("land-bonus-cantrip")) {
           subclassEffects.push(`Truque adicional do Círculo da Terra: ${choice("land-bonus-cantrip")}`);
         }
+        if (selectedSubclass.id === "mago_abjuracao" && safeLevel >= 2) {
+          subclassEffects.push(`Salvaguarda Arcana: ${Math.max(0, safeLevel * 2 + (modifiers.int || 0))} PV na proteção; recarrega ao lançar magia de Abjuração`);
+        }
+        if (selectedSubclass.id === "mago_adivinhacao" && safeLevel >= 2) {
+          const portentDice = safeLevel >= 14 ? 3 : 2;
+          subclassEffects.push(`Presságio: ${portentDice}d20 após descanso longo para substituir jogadas futuras`);
+        }
         if (selectedSubclass.id === "bruxo_infernal" && choice("fiendish-resilience")) {
           subclassEffects.push(`Resiliência Infernal: resistência a dano ${choice("fiendish-resilience")}`);
         }
@@ -875,7 +962,13 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         const specialistSkills = t20Choice("t20-ladino-specialist");
         if (specialistSkills.length) classChoiceEffects.push(`Perícias de Especialista: ${specialistSkills.join(", ")}`);
         const justiceBlessing = t20Choice("t20-paladino-justice-blessing");
-        if (justiceBlessing.length) classChoiceEffects.push(`Bênção da Justiça: ${justiceBlessing.join(", ")}`);
+        if (justiceBlessing.includes("Égide Sagrada")) {
+          classChoiceEffects.push(`Bênção da Justiça — Égide Sagrada: ação de movimento + 2 PM; você e aliados adjacentes recebem +${Math.max(0, modifiers.cha || 0)} Defesa até o fim da cena${safeLevel >= 11 ? "; no 11º nível, pode gastar 5 PM para aplicar o mesmo bônus a um salvamento contra magia e revertê-la se for alvo único" : ""}`);
+        }
+        if (justiceBlessing.includes("Montaria Sagrada")) {
+          const mountTier = safeLevel >= 17 ? "mestre" : safeLevel >= 11 ? "veterano" : "iniciante";
+          classChoiceEffects.push(`Bênção da Justiça — Montaria Sagrada: ação de movimento + 2 PM para invocar montaria; aliado ${mountTier}, vínculo mental e obediência absoluta`);
+        }
         if (character.t20ArcanistPath === "feiticeiro" && character.t20SorcererLineage === "feerica") {
           const lineageSpell = catalog.spells.find((spell) => spell.id === character.t20SorcererLineageSpell);
           classChoiceEffects.push(`Linhagem Feérica: treinamento em Enganação${lineageSpell ? ` · magia concedida: ${lineageSpell.name}` : ""}`);
@@ -901,7 +994,9 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         manaMax,
         defense,
         initiative: dex + featInitiativeBonus + t20SaqueRapidoBonus + t20AntenasBonus + t20PresencaParalisanteBonus + t20AspectoVeraoInitiativeBonus + (t20MenteVaziaActive ? 2 : 0),
+        initiativeRollMode,
         skillBonuses,
+        skillMinimums,
         passivePerception,
         passiveInvestigation,
         skillRollModes,
@@ -919,7 +1014,90 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         carryingWeight,
         carryingCapacity,
         encumbered: carryingCapacity !== undefined && carryingWeight > carryingCapacity,
-        damageResistances: [...(dndRageActive ? ["contundente", "perfurante", "cortante"] : []), ...(dndFiendishResistance ? [dndFiendishResistance] : []), ...(dndGreatOldOneResistance ? [dndGreatOldOneResistance] : []), ...(dndNecromancyResistance ? [dndNecromancyResistance] : [])],
+        damageResistances: [
+          ...(dndRageActive ? ["contundente", "perfurante", "cortante"] : []),
+          ...(dndBearTotemRage ? ["todos os tipos, exceto psíquico (Espírito do Urso)"] : []),
+          ...(systemId === "dnd5e" && character.raceId === "anao" ? ["veneno"] : []),
+          ...(systemId === "dnd5e" && character.raceId === "tiefling" ? ["fogo"] : []),
+          ...(dndFiendishResistance ? [dndFiendishResistance] : []),
+          ...(dndGreatOldOneResistance ? [dndGreatOldOneResistance] : []),
+          ...(dndNecromancyResistance ? [dndNecromancyResistance] : []),
+          ...(t20KnightBastionActive ? ["RD 5 (Bastião)"] : []),
+        ],
+        damageReductions: dndHeavyArmorMasterActive ? ["3 contra dano contundente, cortante e perfurante não mágico (Mestre de Armadura Pesada)"] : [],
+        rerollRules: systemId === "dnd5e"
+          ? [
+            character.classId === "barbaro" && safeLevel >= 11 ? "Fúria Incansável: enquanto em Fúria, ao cair a 0 PV pode fazer salvamento de Constituição CD 10; a CD aumenta em 5 a cada uso até descanso longo" : "",
+            character.raceId === "halfling" ? "Sortudo: rerrola resultados naturais 1 em ataques, testes de habilidade e salvamentos" : "",
+            character.classId === "guerreiro" && safeLevel >= 9 ? `Indomável: repete ${safeLevel >= 17 ? "3" : safeLevel >= 13 ? "2" : "1"} teste(s) de resistência falho(s) por descanso longo` : "",
+            character.classId === "monge" && safeLevel >= 14 ? "Alma de Diamante: repete um salvamento falho gastando 1 ponto de ki" : "",
+            character.classId === "ladino" && safeLevel >= 20 ? "Golpe de Sorte: transforma uma jogada de ataque, teste ou salvamento falho em sucesso/20 natural uma vez por descanso longo" : "",
+          ].filter(Boolean)
+          : [],
+        defensiveRules: systemId === "dnd5e"
+          ? [
+            character.classId === "ladino" && safeLevel >= 18 ? "Elusivo: jogadas de ataque contra você não recebem vantagem enquanto você não estiver incapacitado" : "",
+            selectedSubclass?.id === "patrulheiro_cacador" && safeLevel >= 7 && character.subclassChoices?.["hunter-defensive-tactics"]?.[0] === "Escapar da Horda" ? "Escapar da Horda: ataques de oportunidade contra você têm desvantagem" : "",
+            selectedSubclass?.id === "patrulheiro_cacador" && safeLevel >= 7 && character.subclassChoices?.["hunter-defensive-tactics"]?.[0] === "Defesa Multiataque" ? "Defesa Multiataque: após ser atingido, recebe +4 CA contra ataques subsequentes da mesma criatura até o fim do turno" : "",
+            selectedSubclass?.id === "patrulheiro_cacador" && safeLevel >= 7 && character.subclassChoices?.["hunter-defensive-tactics"]?.[0] === "Vontade de Aço" ? "Vontade de Aço: vantagem em salvamentos contra amedrontamento" : "",
+            selectedSubclass?.id === "patrulheiro_cacador" && safeLevel >= 15 && character.subclassChoices?.["hunter-superior-defense"]?.[0] === "Evasão" ? "Defesa Superior — Evasão: em salvamento de Destreza, nenhum dano no sucesso e metade no fracasso" : "",
+            selectedSubclass?.id === "patrulheiro_cacador" && safeLevel >= 15 && character.subclassChoices?.["hunter-superior-defense"]?.[0] === "Resistência contra Ataques Mágicos" ? "Defesa Superior — Resistência contra Ataques Mágicos: vantagem em salvamentos contra magias e efeitos mágicos" : "",
+            selectedSubclass?.id === "patrulheiro_cacador" && safeLevel >= 15 && character.subclassChoices?.["hunter-superior-defense"]?.[0] === "Resistência ao Ataque" ? "Defesa Superior — Resistência ao Ataque: reação para reduzir pela metade o dano de um ataque" : "",
+            selectedSubclass?.id === "clerigo_luz" && safeLevel >= 1 ? "Fulgor de Proteção: reação para impor desvantagem a um ataque contra uma criatura a até 30 m, dentro do limite de usos por descanso" : "",
+            selectedSubclass?.id === "mago_encantamento" && safeLevel >= 6 ? "Encanto Instintivo: reação para redirecionar um ataque contra você para uma criatura próxima" : "",
+            selectedSubclass?.id === "mago_ilusao" && safeLevel >= 10 ? "Eu Ilusório: reação para fazer um ataque contra você errar, uma vez por descanso curto ou longo" : "",
+            selectedSubclass?.id === "bruxo_arque_fada" && safeLevel >= 6 ? "Fuga Nebulosa: reação ao sofrer dano para ficar invisível e teleportar-se até 18 m" : "",
+            selectedSubclass?.id === "bruxo_grande_antigo" && safeLevel >= 6 ? "Proteção Entrópica: impõe desvantagem a um ataque contra você e recebe vantagem no próximo ataque se ele errar" : "",
+            dndRageActive && dndTotemSpirit === "Águia" && safeLevel >= 3 ? "Espírito da Águia: ataques de oportunidade contra você têm desvantagem enquanto em Fúria; pode usar Disparada como ação bônus" : "",
+            selectedSubclass?.id === "paladino_anciaos" && safeLevel >= 7 ? "Aura de Proteção dos Anciões: você e aliados próximos recebem resistência a dano de magias" : "",
+          ].filter(Boolean)
+          : [],
+        combatRules: systemId === "dnd5e"
+          ? [
+            selectedSubclass?.id === "bardo_conhecimento" && safeLevel >= 3 ? "Palavras Cortantes: reação e Inspiração para reduzir uma jogada de ataque, teste ou dano de uma criatura que possa ouvir" : "",
+            selectedSubclass?.id === "bardo_valor" && safeLevel >= 3 ? "Inspiração de Combate: o dado de Inspiração pode aumentar a CA contra um ataque ou o dano de um ataque" : "",
+            selectedSubclass?.id === "bardo_valor" && safeLevel >= 14 ? "Magia de Batalha: após lançar uma magia de bardo, pode fazer um ataque com arma como ação bônus" : "",
+            selectedSubclass?.id === "ladino_assassino" && safeLevel >= 3 ? "Assassinato: vantagem contra criaturas que ainda não agiram; ataques que acertam criatura surpresa são acertos críticos" : "",
+            selectedSubclass?.id === "ladino_assassino" && safeLevel >= 17 ? "Golpe Mortal: criatura surpresa que falhar no salvamento de Constituição sofre dano dobrado" : "",
+            selectedSubclass?.id === "ladino_ladrao" && safeLevel >= 17 ? "Reflexos de Ladrão: realiza dois turnos durante a primeira rodada de cada combate" : "",
+            selectedSubclass?.id === "ladino_trapaceiro_arcano" && safeLevel >= 13 ? "Trapaceiro Versátil: pode obter vantagem no próximo ataque ao usar Mão Mágica para distrair o alvo" : "",
+            selectedSubclass?.id === "clerigo_tempestade" && safeLevel >= 1 ? "Fúria da Tormenta: reação para causar dano elétrico ou trovejante a uma criatura que acertar você" : "",
+            selectedSubclass?.id === "clerigo_guerra" && safeLevel >= 1 ? "Sacerdote da Guerra: ação bônus para realizar ataque com arma, dentro do limite de usos por descanso" : "",
+            selectedSubclass?.id === "mago_evocacao" && safeLevel >= 6 ? "Truque Potente: truques de evocação causam metade do dano em uma falha no ataque ou salvamento" : "",
+            selectedSubclass?.id === "mago_evocacao" && safeLevel >= 10 ? "Evocação Potencializada: adiciona o modificador de Inteligência a uma jogada de dano de evocação" : "",
+            selectedSubclass?.id === "mago_evocacao" && safeLevel >= 14 ? "Sobrecarga: maximiza o dano de uma magia de 1º a 5º nível; usos adicionais causam dano necrótico ao conjurador" : "",
+            selectedSubclass?.id === "feiticeiro_magia_selvagem" && safeLevel >= 1 ? "Marés do Caos: ganha vantagem em uma jogada de ataque, teste ou salvamento; o uso pode autorizar um Surto de Magia Selvagem" : "",
+            selectedSubclass?.id === "feiticeiro_magia_selvagem" && safeLevel >= 6 ? "Distorcer a Sorte: reação para adicionar ou subtrair 1d4 de uma jogada próxima" : "",
+            selectedSubclass?.id === "feiticeiro_magia_selvagem" && safeLevel >= 18 ? "Bombardeio de Magia: rerrola dados de dano de uma magia e pode sofrer dano para aumentar o efeito" : "",
+            selectedSubclass?.id === "bruxo_infernal" && safeLevel >= 1 ? "Bênção do Senhor Sombrio: ao reduzir uma criatura hostil a 0 PV, recebe PV temporários iguais a Carisma + nível de Bruxo" : "",
+            dndRageActive && dndTotemSpirit === "Lobo" && safeLevel >= 3 ? "Espírito do Lobo: aliados têm vantagem em ataques corpo a corpo contra criaturas que você ameaça enquanto em Fúria" : "",
+            selectedSubclass?.id === "monge_mao_aberta" && safeLevel >= 3 ? "Técnica da Mão Aberta: Rajada de Golpes pode derrubar, empurrar ou impedir reações do alvo" : "",
+            selectedSubclass?.id === "monge_sombra" && safeLevel >= 6 ? "Passo das Sombras: teleporta-se entre penumbra/escuridão e recebe vantagem no próximo ataque" : "",
+            selectedSubclass?.id === "monge_sombra" && safeLevel >= 17 ? "Oportunista: reação para fazer ataque corpo a corpo contra criatura atingida por outra criatura" : "",
+            selectedSubclass?.id === "monge_mao_aberta" && safeLevel >= 17 ? "Palma Vibrante: implanta vibrações que podem atordoar ou derrubar uma criatura" : "",
+            selectedSubclass?.id === "druida_lua" && safeLevel >= 2 ? "Forma Selvagem de Combate: usa Forma Selvagem como ação bônus e converte espaços de magia em PV" : "",
+            selectedSubclass?.id === "druida_lua" && safeLevel >= 6 ? "Golpes Primais: ataques em Forma Selvagem contam como mágicos" : "",
+            selectedSubclass?.id === "druida_lua" && safeLevel >= 10 ? "Forma Elemental: gasta dois usos de Forma Selvagem para assumir forma de elemental" : "",
+            selectedSubclass?.id === "druida_lua" && safeLevel >= 14 ? "Mil Formas: pode lançar Alterar-se à vontade" : "",
+            selectedSubclass?.id === "paladino_devocao" && safeLevel >= 3 ? "Canalizar Divindade — Arma Sagrada: ação para adicionar Carisma às jogadas de ataque da arma por 1 minuto" : "",
+            selectedSubclass?.id === "paladino_vinganca" && safeLevel >= 3 ? "Voto de Inimizade: ação bônus para obter vantagem nos ataques contra uma criatura por 1 minuto" : "",
+            selectedSubclass?.id === "paladino_vinganca" && safeLevel >= 15 ? "Alma de Vingança: reação para realizar um ataque corpo a corpo contra alvo que resistir à sua magia de juramento" : "",
+            selectedSubclass?.id === "patrulheiro_cacador" && safeLevel >= 3 && character.subclassChoices?.["hunter-prey"]?.[0] === "Matador de Gigantes" ? "Matador de Gigantes: reação para realizar um ataque contra uma criatura Grande ou maior que errar um ataque contra você" : "",
+            selectedSubclass?.id === "patrulheiro_cacador" && safeLevel >= 3 && character.subclassChoices?.["hunter-prey"]?.[0] === "Destruidor de Hordas" ? "Destruidor de Hordas: uma vez por turno, ataque outra criatura a até 1,5 m do alvo original" : "",
+            selectedSubclass?.id === "patrulheiro_cacador" && safeLevel >= 11 && character.subclassChoices?.["hunter-multiattack"]?.[0] === "Saraivada" ? "Saraivada: usa uma ação para realizar um ataque à distância contra qualquer número de criaturas a até 3 m de um ponto visível, com uma munição por alvo" : "",
+            selectedSubclass?.id === "patrulheiro_cacador" && safeLevel >= 11 && character.subclassChoices?.["hunter-multiattack"]?.[0] === "Ataque de Redemoinho" ? "Ataque de Redemoinho: usa uma ação para realizar um ataque corpo a corpo contra qualquer número de criaturas adjacentes, com uma jogada separada por alvo" : "",
+          ].filter(Boolean)
+          : [],
+        situationalAdvantages: systemId === "dnd5e"
+          ? [
+            character.raceId === "anao" ? "Salvamentos contra veneno (Resiliência Anã)" : "",
+            ["elfo", "meio_elfo"].includes(character.raceId) ? "Salvamentos contra ser enfeitiçado (Ancestralidade Feérica)" : "",
+            character.raceId === "halfling" ? "Salvamentos contra amedrontamento (Bravura)" : "",
+            character.raceId === "gnomo" ? "Salvamentos de Inteligência, Sabedoria e Carisma contra magia (Astúcia Gnômica)" : "",
+            hasFeat("dnd5e.talento.mago_de_guerra") ? "Salvamentos de Constituição para manter concentração (Mago de Guerra)" : "",
+            character.classId === "bardo" && safeLevel >= 6 ? "Salvamentos contra amedrontamento e enfeitiçamento ao ouvir Contracanto" : "",
+          ].filter(Boolean)
+          : [],
         speed: Math.max(0, (hasCondition("agarrado") || hasCondition("contido") || hasCondition("paralisado") || hasCondition("petrificado") || hasCondition("atordoado") || hasCondition("inconsciente") ? 0 : ((raceRules?.speed || 0) + featSpeedBonus + dndClassSpeedBonus + t20FuriaDaSavanaBonus + t20AtleticoSpeedBonus - (systemId === "t20" && t20Armor && (t20Armor.armorPenalty || 0) <= -2 && !t20FanaticoActive ? 3 : 0))) * (systemId === "dnd5e" && hasAttunedEquipment("dnd5e.item_magico.botas_velocidade") ? 2 : 1)),
         canAct: !cannotAct,
         canReact: !cannotReact,
@@ -939,9 +1117,11 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
     validateCharacter(character) {
       const errors: string[] = [];
       const catalog = getCoreCatalog(systemId);
+      const featIds = Array.isArray(character.featIds) ? character.featIds : [];
+      const equipmentIds = Array.isArray(character.equipmentIds) ? character.equipmentIds : [];
       if (character.system_id !== systemId || character.systemId !== systemId) errors.push("system_id incompatível com o motor selecionado");
       if (character.ruleset !== ruleset) errors.push("ruleset incompatível com o motor selecionado");
-      const hasDndPowerAttackFeat = character.featIds.includes("dnd5e.talento.mestre_de_armas_pesadas");
+      const hasDndPowerAttackFeat = featIds.includes("dnd5e.talento.mestre_de_armas_pesadas");
       if (character.dndPowerAttack && systemId !== "dnd5e") errors.push("Ataque Poderoso é uma opção exclusiva de D&D 5e");
       if (character.dndPowerAttack && systemId === "dnd5e" && !hasDndPowerAttackFeat) errors.push("Ataque Poderoso exige Mestre de Armas Pesadas");
       if (character.dndRageActive && systemId !== "dnd5e") errors.push("Fúria é uma opção exclusiva de D&D 5e");
@@ -949,6 +1129,9 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       if (character.dndRecklessAttackActive && systemId !== "dnd5e") errors.push("Ataque Descuidado é uma opção exclusiva de D&D 5e");
       if (character.dndRecklessAttackActive && systemId === "dnd5e" && character.classId !== "barbaro") errors.push("Ataque Descuidado exige a classe Bárbaro");
       if (character.dndRecklessAttackActive && systemId === "dnd5e" && character.level < 2) errors.push("Ataque Descuidado exige o 2º nível de Bárbaro");
+      if (character.dndDivineSmiteSlot && systemId !== "dnd5e") errors.push("Destruição Divina é uma opção exclusiva de D&D 5e");
+      if (character.dndDivineSmiteSlot && systemId === "dnd5e" && character.classId !== "paladino") errors.push("Destruição Divina exige a classe Paladino");
+      if (character.dndDivineSmiteSlot && systemId === "dnd5e" && (character.level < 2 || !Number.isInteger(character.dndDivineSmiteSlot) || character.dndDivineSmiteSlot < 1 || character.dndDivineSmiteSlot > 5)) errors.push("Destruição Divina exige Paladino de 2º nível e círculo entre 1 e 5");
       if (systemId !== "dnd5e" && character.conditions?.length) errors.push("condições ativas são exclusivas do catálogo de D&D 5e");
       if (systemId === "dnd5e") {
         const knownConditions = new Set(getSystemConditionItems(systemId).map((entry) => entry.id));
@@ -1289,13 +1472,13 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       const normalizeSpellChoice = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
       const dndFeatSpellNames = systemId === "dnd5e"
         ? [
-          ...(character.featIds.includes("dnd5e.talento.iniciado_em_magia") ? character.featChoices?.["magic-initiate-cantrips"] || [] : []),
-          ...(character.featIds.includes("dnd5e.talento.iniciado_em_magia") ? character.featChoices?.["magic-initiate-spell"] || [] : []),
-          ...(character.featIds.includes("dnd5e.talento.conjurador_de_rituais") ? character.featChoices?.["ritual-caster-spells"] || [] : []),
+          ...(featIds.includes("dnd5e.talento.iniciado_em_magia") ? character.featChoices?.["magic-initiate-cantrips"] || [] : []),
+          ...(featIds.includes("dnd5e.talento.iniciado_em_magia") ? character.featChoices?.["magic-initiate-spell"] || [] : []),
+          ...(featIds.includes("dnd5e.talento.conjurador_de_rituais") ? character.featChoices?.["ritual-caster-spells"] || [] : []),
         ].map(normalizeSpellChoice)
         : [];
       const dndGrantedSpellIds = systemId === "dnd5e"
-        ? new Set(character.equipmentIds.flatMap((equipmentId) => {
+        ? new Set(equipmentIds.flatMap((equipmentId) => {
           const item = catalog.equipment.find((entry) => entry.id === equipmentId) as { grantedSpellIds?: string[]; magical?: boolean; requiresAttunement?: boolean; summary?: string; magicEffects?: string[] } | undefined;
           if (!item || (item.requiresAttunement || (item.magical && requiresDnd5eAttunement(item))) && !(character.attunedEquipmentIds || []).includes(equipmentId)) return [];
           return item.grantedSpellIds || [];
@@ -1303,7 +1486,7 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         : new Set<string>();
       const t20PowerSpellNames = systemId === "t20"
         ? Object.entries(T20_POWER_CHOICES)
-          .filter(([featId]) => character.featIds.includes(featId))
+          .filter(([featId]) => featIds.includes(featId))
           .flatMap(([, choices]) => choices
             .filter((choice) => ["t20-prayer-spell", "t20-known-spells"].includes(choice.id))
             .flatMap((choice) => character.featChoices?.[choice.id] || []))
@@ -1313,6 +1496,7 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         ? catalog.spells.find((spell) => spell.id === character.t20SorcererLineageSpell)
         : undefined;
       const t20LineageSpellName = t20LineageSpell ? normalizeSpellChoice(t20LineageSpell.name) : undefined;
+      if (new Set(character.spellIds || []).size !== (character.spellIds || []).length) errors.push("as magias selecionadas não podem se repetir");
       for (const spellId of character.spellIds || []) {
         const spell = catalog.spells.find((entry) => entry.id === spellId);
         if (!spell) errors.push("magia não pertence ao catálogo do sistema");
@@ -1325,6 +1509,7 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         }
       }
       const preparedSpellIds = character.preparedSpellIds || [];
+      if (new Set(preparedSpellIds).size !== preparedSpellIds.length) errors.push("as magias preparadas não podem se repetir");
       const featGrantedSpellNames = new Set(dndFeatSpellNames);
       const knownSpellCount = (character.spellIds || []).filter((spellId) => {
         const spell = catalog.spells.find((entry) => entry.id === spellId);
@@ -1352,17 +1537,18 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       if (systemId === "t20" && preparedSpellIds.length > 0) errors.push("Tormenta20 não usa uma lista separada de magias preparadas");
       const selectedEquipment = (character.equipmentIds || []).map((id) => catalog.equipment.find((entry) => entry.id === id));
       const attunedEquipmentIds = character.attunedEquipmentIds || [];
+      if (new Set(character.equipmentIds || []).size !== (character.equipmentIds || []).length) errors.push("o equipamento não pode conter o mesmo item duas vezes; informe a quantidade");
       if (systemId !== "dnd5e" && attunedEquipmentIds.length > 0) errors.push("sintonização é uma regra exclusiva de D&D 5e e não pode ser usada neste sistema");
       if (new Set(attunedEquipmentIds).size !== attunedEquipmentIds.length) errors.push("os itens sintonizados não podem se repetir");
       if (systemId === "dnd5e" && attunedEquipmentIds.length > 3) errors.push("D&D 5e permite no máximo três itens sintonizados");
       for (const attunedId of attunedEquipmentIds) {
         const attuned = catalog.equipment.find((entry) => entry.id === attunedId);
-        if (!character.equipmentIds.includes(attunedId)) errors.push("um item sintonizado deve permanecer no equipamento");
+        if (!equipmentIds.includes(attunedId)) errors.push("um item sintonizado deve permanecer no equipamento");
         else if (!attuned || !requiresDnd5eAttunement(attuned)) errors.push("somente itens mágicos que exigem sintonização podem ser sintonizados");
       }
       if (character.spellcastingFocusId) {
         if (systemId !== "dnd5e") errors.push("foco de conjuração é uma regra de D&D 5e e não pode ser usado neste sistema");
-        else if (!character.equipmentIds.includes(character.spellcastingFocusId)) errors.push("o foco de conjuração escolhido deve estar no equipamento");
+        else if (!equipmentIds.includes(character.spellcastingFocusId)) errors.push("o foco de conjuração escolhido deve estar no equipamento");
         else if (!getDnd5eSpellcastingFocusOptions(character.classId, character.subclassId).some((entry) => entry.id === character.spellcastingFocusId)) errors.push("o foco de conjuração não é compatível com a classe");
       }
       const selectedDeity = systemId === "t20" ? T20_DEITIES.find((deity) => deity.id === character.deity || deity.name === character.deity) : undefined;
@@ -1370,15 +1556,15 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
       if (systemId === "t20" && character.classId === "druida" && (!selectedDeity || !T20_DRUID_DEITY_IDS.includes(selectedDeity.id as typeof T20_DRUID_DEITY_IDS[number]))) errors.push("Druida deve escolher Allihanna, Megalokk ou Oceano");
       for (const [equipmentId, quantity] of Object.entries(character.equipmentQuantities || {})) {
         if (!Number.isInteger(quantity) || quantity < 1) errors.push("a quantidade de equipamento deve ser um número inteiro maior que zero");
-        if (!character.equipmentIds.includes(equipmentId)) errors.push("a quantidade só pode ser informada para equipamento selecionado");
+        if (!equipmentIds.includes(equipmentId)) errors.push("a quantidade só pode ser informada para equipamento selecionado");
       }
       const wornArmorIndex = selectedEquipment.findIndex((entry) => entry?.category === "armadura" && entry?.shieldBonus === undefined && (entry?.armorClass !== undefined || entry?.armorBonus !== undefined));
       const shieldCount = selectedEquipment.filter((entry) => entry?.shieldBonus !== undefined).length;
       const dndArmorProficiencyFromFeat = (proficiency: string | undefined) => systemId === "dnd5e" && (
-        (proficiency === "light_armor" && ["dnd5e.talento.levemente_blindado", "dnd5e.talento.moderadamente_blindado", "dnd5e.talento.fortemente_blindado"].some((featId) => character.featIds.includes(featId)))
-        || (proficiency === "medium_armor" && ["dnd5e.talento.moderadamente_blindado", "dnd5e.talento.fortemente_blindado"].some((featId) => character.featIds.includes(featId)))
-        || (proficiency === "heavy_armor" && character.featIds.includes("dnd5e.talento.fortemente_blindado"))
-        || (proficiency === "shield" && character.featIds.includes("dnd5e.talento.moderadamente_blindado"))
+        (proficiency === "light_armor" && ["dnd5e.talento.levemente_blindado", "dnd5e.talento.moderadamente_blindado", "dnd5e.talento.fortemente_blindado"].some((featId) => featIds.includes(featId)))
+        || (proficiency === "medium_armor" && ["dnd5e.talento.moderadamente_blindado", "dnd5e.talento.fortemente_blindado"].some((featId) => featIds.includes(featId)))
+        || (proficiency === "heavy_armor" && featIds.includes("dnd5e.talento.fortemente_blindado"))
+        || (proficiency === "shield" && featIds.includes("dnd5e.talento.moderadamente_blindado"))
       );
       const dndArmorProficiencyFromSubclass = (proficiency: string | undefined) => systemId === "dnd5e" && (
         (proficiency === "medium_armor" && selectedSubclass?.id === "bardo_valor")
@@ -1395,7 +1581,7 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         }
         if (systemId === "dnd5e" && selectedClass && equipment.proficiency) {
           const proficiencies = selectedClass.proficiencies.toLowerCase();
-          const weaponMasterChoices = character.featIds.includes("dnd5e.talento.mestre_de_armas")
+          const weaponMasterChoices = featIds.includes("dnd5e.talento.mestre_de_armas")
             ? (character.featChoices?.["weapon-master-weapons"] || []).map((value) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase())
             : [];
           const weaponGrantedByFeat = equipment.category === "arma" && weaponMasterChoices.includes(equipment.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase());
@@ -1421,7 +1607,7 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         if (systemId === "t20" && selectedDeity?.allowedWeaponIds?.length && equipment.category === "arma" && !selectedDeity.allowedWeaponIds.includes(equipment.id)) errors.push(`${selectedDeity.name} permite apenas suas armas devocionais`);
         if (index !== wornArmorIndex && equipment.shieldBonus === undefined && (equipment.armorClass !== undefined || equipment.armorBonus !== undefined)) errors.push("selecione apenas uma armadura vestida");
       }
-      for (const featId of character.featIds || []) {
+      for (const featId of featIds) {
         const feat = catalog.feats.find((entry) => entry.id === featId);
         if (!feat) errors.push("talento/poder não pertence ao catálogo do sistema");
         else {
@@ -1447,16 +1633,17 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
           }
         }
       }
+      if (new Set(featIds).size !== featIds.length) errors.push("talentos/poderes não podem se repetir; use a quantidade quando o item for repetível");
       for (const [featId, quantity] of Object.entries(character.featQuantities || {})) {
         const feat = catalog.feats.find((entry) => entry.id === featId);
-        if (!feat || !character.featIds.includes(featId)) errors.push("a quantidade de poder só pode ser informada para um poder selecionado");
+        if (!feat || !featIds.includes(featId)) errors.push("a quantidade de poder só pode ser informada para um poder selecionado");
         else if (!("repeatable" in feat && feat.repeatable) && quantity !== 1) errors.push(`o poder ${feat.name} não pode ser escolhido mais de uma vez`);
         else if (!Number.isInteger(quantity) || quantity < 1) errors.push("a quantidade de um poder repetível deve ser um número inteiro maior que zero");
         else if (systemId === "t20" && "maxQuantity" in feat && feat.maxQuantity !== undefined && quantity > feat.maxQuantity) errors.push(`o poder ${feat.name} pode ser escolhido no máximo ${feat.maxQuantity} vezes`);
       }
       if (systemId === "dnd5e" || systemId === "t20") {
         const featChoiceCatalog = systemId === "dnd5e" ? DND5E_FEAT_CHOICES : T20_POWER_CHOICES;
-        const selectedFeatIds = new Set(character.featIds || []);
+        const selectedFeatIds = new Set(featIds);
         const declaredChoices = new Map(Object.entries(featChoiceCatalog).flatMap(([featId, choices]) => selectedFeatIds.has(featId) ? choices.map((choice) => [choice.id, choice] as const) : []));
         for (const [choiceId, values] of Object.entries(character.featChoices || {})) {
           const choice = declaredChoices.get(choiceId);

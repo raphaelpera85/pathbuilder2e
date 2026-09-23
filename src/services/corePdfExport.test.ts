@@ -81,4 +81,13 @@ describe("core editable PDF export", () => {
     expect(notes).toContain("origem: Armadilha");
     expect(notes).toContain("Contido:");
   });
+
+  it("exports conditional subclass immunities", async () => {
+    const character = createInitialCoreCharacter("dnd5e");
+    character.classId = "bruxo";
+    character.subclassId = "bruxo_arque_fada";
+    character.level = 10;
+    const pdf = await PDFDocument.load(await createCoreEditablePdf(character));
+    expect(pdf.getForm().getTextField("character.notes").getText()).toContain("Imunidades condicionais: enfeitiçado");
+  });
 });

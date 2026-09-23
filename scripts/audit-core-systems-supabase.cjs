@@ -147,7 +147,14 @@ async function run() {
   if (classError) throw new Error(`Falha ao ler classes: ${classError.message}`);
   if (subclassError) throw new Error(`Falha ao ler subclasses: ${subclassError.message}`);
   const classKeys = new Set((classes || []).map((row) => `${row.id}|${row.system_id}|${row.ruleset}`));
-  const orphanRows = (subclasses || []).filter((row) => !classKeys.has(`${row.class_id}|${row.system_id}|${row.ruleset}`));
+  // O banco também contém catálogos de PF2e e suplementos fora do escopo desta
+  // auditoria. Só consideramos órfãs as subclasses dos sistemas/rulesets que
+  // este script promete reconciliar; dados de outros escopos devem permanecer.
+  const auditedScopes = new Set([...Object.keys(expected), "ose/classic"]);
+  const orphanRows = (subclasses || []).filter((row) => {
+    const scope = `${row.system_id}/${row.ruleset}`;
+    return auditedScopes.has(scope) && !classKeys.has(`${row.class_id}|${row.system_id}|${row.ruleset}`);
+  });
   const t20ClassChoiceMismatches = Object.entries(expectedT20ClassChoiceGroups)
     .filter(([id, expectedGroupCount]) => Number((classes || []).find((row) => row.id === id)?.data?.classChoices?.length || 0) !== expectedGroupCount)
     .map(([id]) => id);

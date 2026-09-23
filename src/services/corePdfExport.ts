@@ -112,7 +112,10 @@ export async function createCoreEditablePdf(character: MultiSystemCharacter): Pr
   const subraceChoiceText = subraceChoiceRules.map((choice) => `${choice.label}: ${(character.subraceChoices?.[choice.id] || []).join(", ")}`).filter((value) => !value.endsWith(": ")).join(" · ");
   const subclassEffectsText = derived.subclassEffects.join(" · ");
   const classChoiceEffectsText = derived.classChoiceEffects.join(" · ");
-  const skillsText = [listNames(catalog.skills, character.skillProficiencies), expertiseNames, derived.passivePerception !== undefined && `Percepção passiva: ${derived.passivePerception}`, derived.passiveInvestigation !== undefined && `Investigação passiva: ${derived.passiveInvestigation}`, raceSkillNames && `Perícias raciais: ${raceSkillNames}`, raceFeatName && `Poder racial: ${raceFeatName}`, raceChoiceText, subraceChoiceText, racialEffectsText && `Efeitos raciais: ${racialEffectsText}`, subclassEffectsText && `Efeitos da subclasse: ${subclassEffectsText}`, classChoiceEffectsText && `Efeitos das escolhas de classe: ${classChoiceEffectsText}`].filter(Boolean).join(" · ");
+  const attackRulesText = derived.attacks.map((attack) => `${attack.name}: ${attack.damage}${attack.damageReroll ? ` (${attack.damageReroll})` : ""}`).join(" · ");
+  const reliableTalentText = Object.keys(derived.skillMinimums).length > 0 ? "Talento Confiável: perícias treinadas têm resultado mínimo 10 no d20" : "";
+  const initiativeModeText = derived.initiativeRollMode !== "normal" ? `Iniciativa: ${derived.initiativeRollMode === "advantage" ? "vantagem" : "desvantagem"}` : "";
+  const skillsText = [listNames(catalog.skills, character.skillProficiencies), expertiseNames, reliableTalentText, initiativeModeText, derived.damageReductions.length > 0 && `Reduções de dano: ${derived.damageReductions.join(", ")}`, derived.rerollRules.length > 0 && `Rerrolagens: ${derived.rerollRules.join(", ")}`, derived.defensiveRules.length > 0 && `Regras defensivas: ${derived.defensiveRules.join(", ")}`, derived.combatRules.length > 0 && `Regras de combate: ${derived.combatRules.join(", ")}`, derived.situationalAdvantages.length > 0 && `Vantagens situacionais: ${derived.situationalAdvantages.join(", ")}`, derived.passivePerception !== undefined && `Percepção passiva: ${derived.passivePerception}`, derived.passiveInvestigation !== undefined && `Investigação passiva: ${derived.passiveInvestigation}`, raceSkillNames && `Perícias raciais: ${raceSkillNames}`, raceFeatName && `Poder racial: ${raceFeatName}`, raceChoiceText, subraceChoiceText, racialEffectsText && `Efeitos raciais: ${racialEffectsText}`, subclassEffectsText && `Efeitos da subclasse: ${subclassEffectsText}`, classChoiceEffectsText && `Efeitos das escolhas de classe: ${classChoiceEffectsText}`].filter(Boolean).join(" · ");
   const languagesText = system === "dnd5e" ? [...(character.languages || []), ...(character.raceLanguages || [])].join(", ") : "";
   label(page, bold, "PERÍCIAS / IDIOMAS", 320, 520); textField(form, page, "character.skills", [skillsText, languagesText && `Idiomas: ${languagesText}`].filter(Boolean).join(" · "), 320, 496, 238, 18, 6.5);
 
@@ -134,6 +137,8 @@ export async function createCoreEditablePdf(character: MultiSystemCharacter): Pr
     classFeaturesText && `Características de classe: ${classFeaturesText}`,
     derived.featEffects.length > 0 && `Efeitos de talentos/poderes: ${derived.featEffects.join(" · ")}`,
     derived.conditionEffects.length > 0 && `Condições ativas: ${derived.conditionEffects.join(" · ")}`,
+    derived.conditionImmunities.length > 0 && `Imunidades condicionais: ${derived.conditionImmunities.join(" · ")}`,
+    attackRulesText && `Ataques: ${attackRulesText}`,
     knownSpellsText && `Magias conhecidas/selecionadas: ${knownSpellsText}`,
     preparedSpellsText && `Magias preparadas: ${preparedSpellsText}`,
   ].filter(Boolean).join("\n");

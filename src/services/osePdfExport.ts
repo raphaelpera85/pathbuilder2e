@@ -145,6 +145,8 @@ export async function createOseEditablePdf(character: OseCharacterCreatedData, t
     ...cls.features,
     list(character.weapons, (item) => `${item.name} (${item.damage})`),
     list(character.armors, (item) => `Armadura: ${item.name}`),
+    list(character.beasts || [], (item) => `Animal/montaria: ${item.name} (${item.hd} DV, CA ${item.ac})`),
+    list(character.retainers || [], (item) => `Lacaio: ${item.name} (${item.wageGpPerMonth} po/mês)`),
   ].filter(Boolean).join("\n"));
   setText(form, "Description", [
     `${race.name}: ${race.description}`,
@@ -162,7 +164,9 @@ export async function createOseEditablePdf(character: OseCharacterCreatedData, t
     const spell = OSE_SPELLS.find((entry) => entry.id === id);
     return spell ? `${spell.name} (${spell.circle}º círculo${(character.preparedSpells || []).includes(id) ? ", preparada" : ""})` : id;
   }).join(", ");
-  setText(form, "Notes", [catalogNote, `Tesouro: ${character.goldGp} PO`, spellNote].filter(Boolean).join(" · "));
+  const retainerNote = character.retainers?.length ? `Lacaios: ${character.retainers.map((item) => item.name).join(", ")}` : "";
+  const beastNote = character.beasts?.length ? `Animais: ${character.beasts.map((item) => item.name).join(", ")}` : "";
+  setText(form, "Notes", [catalogNote, `Tesouro: ${character.goldGp} PO`, beastNote, retainerNote, spellNote].filter(Boolean).join(" · "));
 
   const appearanceFont = await pdf.embedFont(StandardFonts.TimesRoman);
   form.updateFieldAppearances(appearanceFont);

@@ -68,6 +68,31 @@ describe("system rules engines", () => {
     expect(T20_RULES_ENGINE.validateCharacter(t20)).toContain("divindade não pertence ao Panteão de T20");
   });
 
+  it("rejects payloads cross-system and duplicated outside-choice IDs", () => {
+    const character = DND5E_RULES_ENGINE.createDefaultCharacter();
+    character.ruleset = "padrao" as never;
+    expect(DND5E_RULES_ENGINE.validateCharacter(character)).toContain("ruleset incompatível com o motor selecionado");
+
+    const invalidChoice = DND5E_RULES_ENGINE.createDefaultCharacter();
+    invalidChoice.classId = "guerreiro";
+    invalidChoice.level = 1;
+    invalidChoice.classChoices = { "fighter-fighting-style": ["estilo inexistente"] };
+    expect(DND5E_RULES_ENGINE.validateCharacter(invalidChoice)).toContain("a escolha Estilo de Luta contém uma opção inválida");
+
+    const duplicated = DND5E_RULES_ENGINE.createDefaultCharacter();
+    duplicated.spellIds = ["dnd5e.magia.maos_misticas", "dnd5e.magia.maos_misticas"];
+    duplicated.preparedSpellIds = ["dnd5e.magia.maos_misticas", "dnd5e.magia.maos_misticas"];
+    duplicated.equipmentIds = ["dnd5e.arma.adaga", "dnd5e.arma.adaga"];
+    duplicated.featIds = ["dnd5e.talento.alerta", "dnd5e.talento.alerta"];
+    const errors = DND5E_RULES_ENGINE.validateCharacter(duplicated);
+    expect(errors).toEqual(expect.arrayContaining([
+      "as magias selecionadas não podem se repetir",
+      "as magias preparadas não podem se repetir",
+      "o equipamento não pode conter o mesmo item duas vezes; informe a quantidade",
+      "talentos/poderes não podem se repetir; use a quantidade quando o item for repetível",
+    ]));
+  });
+
   it("aplica caminho do Arcanista ao atributo-chave, PM e limite de magias", () => {
     const arcanista = T20_RULES_ENGINE.createDefaultCharacter();
     arcanista.level = 5;
@@ -258,6 +283,30 @@ describe("system rules engines", () => {
     expect(DND5E_RULES_ENGINE.validateCharacter({ ...character, conditions: [{ id: "dnd5e.condition.exausto", value: 7 }] })).toContain("Exausto deve ter nível entre 1 e 6");
     expect(DND5E_RULES_ENGINE.validateCharacter({ ...character, conditions: [{ id: "dnd5e.condition.cego", durationRounds: 0 }] }).join(" ")).toContain("duração");
     expect(T20_RULES_ENGINE.validateCharacter({ ...character, system_id: "t20", systemId: "t20", ruleset: "padrao", conditions: [{ id: "dnd5e.condition.cego" }] })).toContain("condições ativas são exclusivas do catálogo de D&D 5e");
+  });
+
+  it("aplica Sentido de Perigo do Bárbaro aos salvamentos de Destreza", () => {
+    const barbarian = DND5E_RULES_ENGINE.createDefaultCharacter();
+    barbarian.classId = "barbaro";
+    barbarian.level = 1;
+    expect(DND5E_RULES_ENGINE.deriveStats(barbarian).savingThrowRollModes.dex).toBe("normal");
+    barbarian.level = 2;
+    expect(DND5E_RULES_ENGINE.deriveStats(barbarian).savingThrowRollModes.dex).toBe("advantage");
+    barbarian.conditions = [{ id: "dnd5e.condition.cego" }];
+    expect(DND5E_RULES_ENGINE.deriveStats(barbarian).savingThrowRollModes.dex).toBe("normal");
+  });
+
+  it("aplica Instinto Feral à iniciativa do Bárbaro D&D a partir do 7º nível", () => {
+    const barbarian = DND5E_RULES_ENGINE.createDefaultCharacter();
+    barbarian.classId = "barbaro";
+    barbarian.level = 6;
+    expect(DND5E_RULES_ENGINE.deriveStats(barbarian).initiativeRollMode).toBe("normal");
+
+    barbarian.level = 7;
+    expect(DND5E_RULES_ENGINE.deriveStats(barbarian).initiativeRollMode).toBe("advantage");
+
+    barbarian.d20Mode = "disadvantage";
+    expect(DND5E_RULES_ENGINE.deriveStats(barbarian).initiativeRollMode).toBe("normal");
   });
 
   it("respeita o limite de duas escolhas de Poder Mágico", () => {
@@ -564,6 +613,23 @@ describe("system rules engines", () => {
     expect(DND5E_RULES_ENGINE.deriveStats(fiend).damageResistances).toContain("fogo");
   });
 
+  it("deriva os recursos numéricos das escolas de Abjuração e Adivinhação", () => {
+    const abjurer = DND5E_RULES_ENGINE.createDefaultCharacter();
+    abjurer.classId = "mago";
+    abjurer.subclassId = "mago_abjuracao";
+    abjurer.level = 5;
+    abjurer.abilities.int = 16;
+    expect(DND5E_RULES_ENGINE.deriveStats(abjurer).subclassEffects).toContain("Salvaguarda Arcana: 13 PV na proteção; recarrega ao lançar magia de Abjuração");
+
+    const diviner = DND5E_RULES_ENGINE.createDefaultCharacter();
+    diviner.classId = "mago";
+    diviner.subclassId = "mago_adivinhacao";
+    diviner.level = 13;
+    expect(DND5E_RULES_ENGINE.deriveStats(diviner).subclassEffects).toContain("Presságio: 2d20 após descanso longo para substituir jogadas futuras");
+    diviner.level = 14;
+    expect(DND5E_RULES_ENGINE.deriveStats(diviner).subclassEffects).toContain("Presságio: 3d20 após descanso longo para substituir jogadas futuras");
+  });
+
   it("aplica e descreve efeitos de Estilo de Luta e Dádiva do Pacto", () => {
     const fighter = DND5E_RULES_ENGINE.createDefaultCharacter();
     fighter.classId = "guerreiro";
@@ -591,6 +657,330 @@ describe("system rules engines", () => {
     warlock.level = 3;
     warlock.classChoices = { "warlock-pact-boon": ["Pacto da Lâmina"] };
     expect(DND5E_RULES_ENGINE.deriveStats(warlock).classChoiceEffects).toEqual(["Dádiva do Pacto: Pacto da Lâmina"]);
+  });
+
+  it("marca o rerrolamento de dano do estilo de armas grandes em armas de duas mãos ou versáteis", () => {
+    const fighter = DND5E_RULES_ENGINE.createDefaultCharacter();
+    fighter.classId = "guerreiro";
+    fighter.level = 1;
+    fighter.classChoices = { "fighter-fighting-style": ["Luta com Armas Grandes"] };
+    fighter.equipmentIds = ["dnd5e.arma.espada_grande", "dnd5e.arma.adaga"];
+    const attacks = DND5E_RULES_ENGINE.deriveStats(fighter).attacks;
+    expect(attacks.find((attack) => attack.name.toLowerCase().includes("espada grande"))?.damageReroll).toContain("rerrola resultados 1 ou 2");
+    expect(attacks.find((attack) => attack.name.toLowerCase().includes("adaga"))?.damageReroll).toBeUndefined();
+  });
+
+  it("aplica Destruição Divina Aprimorada do Paladino a partir do 11º nível", () => {
+    const paladin = DND5E_RULES_ENGINE.createDefaultCharacter();
+    paladin.classId = "paladino";
+    paladin.level = 10;
+    paladin.equipmentIds = ["dnd5e.arma.espada_longa", "dnd5e.arma.arco_longo"];
+    expect(DND5E_RULES_ENGINE.deriveStats(paladin).attacks.every((attack) => !attack.conditionalDamage?.includes("Destruição Divina Aprimorada"))).toBe(true);
+    paladin.level = 11;
+    const attacks = DND5E_RULES_ENGINE.deriveStats(paladin).attacks;
+    expect(attacks.find((attack) => attack.name === "Espada longa")?.conditionalDamage).toContain("+1d8 radiante");
+    expect(attacks.find((attack) => attack.name === "Arco longo")?.conditionalDamage).toBeUndefined();
+  });
+
+  it("aplica Destruição Divina opcional com o círculo escolhido e valida seu contexto", () => {
+    const paladin = DND5E_RULES_ENGINE.createDefaultCharacter();
+    paladin.classId = "paladino";
+    paladin.level = 2;
+    paladin.equipmentIds = ["dnd5e.arma.espada_longa", "dnd5e.arma.arco_longo"];
+    paladin.dndDivineSmiteSlot = 3;
+    const attacks = DND5E_RULES_ENGINE.deriveStats(paladin).attacks;
+    expect(attacks.find((attack) => attack.name === "Espada longa")?.conditionalDamage).toContain("+4d8 radiante");
+    expect(attacks.find((attack) => attack.name === "Arco longo")?.conditionalDamage).toBeUndefined();
+    expect(DND5E_RULES_ENGINE.validateCharacter({ ...paladin, classId: "guerreiro" })).toContain("Destruição Divina exige a classe Paladino");
+  });
+
+  it("sempre expõe ataque desarmado D&D e escala o dado do Monge", () => {
+    const commoner = DND5E_RULES_ENGINE.createDefaultCharacter();
+    const commonerAttack = DND5E_RULES_ENGINE.deriveStats(commoner).attacks.find((attack) => attack.name === "Ataque desarmado");
+    expect(commonerAttack).toMatchObject({ damage: "1 contundente", proficient: true });
+
+    const monk = DND5E_RULES_ENGINE.createDefaultCharacter();
+    monk.classId = "monge";
+    monk.level = 5;
+    monk.abilities.dex = 16;
+    const monkAttack = DND5E_RULES_ENGINE.deriveStats(monk).attacks.find((attack) => attack.name === "Ataque desarmado");
+    expect(monkAttack).toMatchObject({ bonus: 6, damage: "1d6 contundente + 3", attacksPerAction: 2 });
+  });
+
+  it("deriva Contracanto do Bardo como vantagem situacional a partir do 6º nível", () => {
+    const bard = DND5E_RULES_ENGINE.createDefaultCharacter();
+    bard.classId = "bardo";
+    bard.level = 5;
+    expect(DND5E_RULES_ENGINE.deriveStats(bard).situationalAdvantages).not.toContain("Salvamentos contra amedrontamento e enfeitiçamento ao ouvir Contracanto");
+    bard.level = 6;
+    expect(DND5E_RULES_ENGINE.deriveStats(bard).situationalAdvantages).toContain("Salvamentos contra amedrontamento e enfeitiçamento ao ouvir Contracanto");
+  });
+
+  it("expõe Golpe de Sorte do Ladino no 20º nível", () => {
+    const rogue = DND5E_RULES_ENGINE.createDefaultCharacter();
+    rogue.classId = "ladino";
+    rogue.level = 19;
+    expect(DND5E_RULES_ENGINE.deriveStats(rogue).rerollRules.some((rule) => rule.includes("Golpe de Sorte"))).toBe(false);
+    rogue.level = 20;
+    expect(DND5E_RULES_ENGINE.deriveStats(rogue).rerollRules.some((rule) => rule.includes("Golpe de Sorte"))).toBe(true);
+  });
+
+  it("expõe Fúria Incansável e Elusivo nos marcos corretos", () => {
+    const barbarian = DND5E_RULES_ENGINE.createDefaultCharacter();
+    barbarian.classId = "barbaro";
+    barbarian.level = 10;
+    expect(DND5E_RULES_ENGINE.deriveStats(barbarian).rerollRules.some((rule) => rule.includes("Fúria Incansável"))).toBe(false);
+    barbarian.level = 11;
+    expect(DND5E_RULES_ENGINE.deriveStats(barbarian).rerollRules.some((rule) => rule.includes("Fúria Incansável"))).toBe(true);
+
+    const rogue = DND5E_RULES_ENGINE.createDefaultCharacter();
+    rogue.classId = "ladino";
+    rogue.level = 17;
+    expect(DND5E_RULES_ENGINE.deriveStats(rogue).defensiveRules).toEqual([]);
+    rogue.level = 18;
+    expect(DND5E_RULES_ENGINE.deriveStats(rogue).defensiveRules).toContain("Elusivo: jogadas de ataque contra você não recebem vantagem enquanto você não estiver incapacitado");
+  });
+
+  it("aplica o dano condicional de Matador de Colossos do Caçador", () => {
+    const hunter = DND5E_RULES_ENGINE.createDefaultCharacter();
+    hunter.classId = "patrulheiro";
+    hunter.level = 3;
+    hunter.subclassId = "patrulheiro_cacador";
+    hunter.subclassChoices = { "hunter-prey": ["Matador de Colossos"] };
+    hunter.equipmentIds = ["dnd5e.arma.arco_longo"];
+    const attack = DND5E_RULES_ENGINE.deriveStats(hunter).attacks.find((entry) => entry.name === "Arco longo");
+    expect(attack?.conditionalDamage).toContain("+1d8 contra alvo que já perdeu PV");
+    hunter.subclassChoices = { "hunter-prey": ["Matador de Gigantes"] };
+    expect(DND5E_RULES_ENGINE.deriveStats(hunter).attacks.find((entry) => entry.name === "Arco longo")?.conditionalDamage || "").not.toContain("+1d8 contra alvo");
+  });
+
+  it("expõe Táticas Defensivas e Defesa Superior do Caçador por escolha e nível", () => {
+    const hunter = DND5E_RULES_ENGINE.createDefaultCharacter();
+    hunter.classId = "patrulheiro";
+    hunter.subclassId = "patrulheiro_cacador";
+    hunter.level = 6;
+    hunter.subclassChoices = { "hunter-defensive-tactics": ["Escapar da Horda"] };
+    expect(DND5E_RULES_ENGINE.deriveStats(hunter).defensiveRules).toEqual([]);
+    hunter.level = 7;
+    expect(DND5E_RULES_ENGINE.deriveStats(hunter).defensiveRules).toContain("Escapar da Horda: ataques de oportunidade contra você têm desvantagem");
+    hunter.level = 15;
+    hunter.subclassChoices = { "hunter-superior-defense": ["Evasão"] };
+    expect(DND5E_RULES_ENGINE.deriveStats(hunter).defensiveRules).toContain("Defesa Superior — Evasão: em salvamento de Destreza, nenhum dano no sucesso e metade no fracasso");
+  });
+
+  it("expõe as regras ofensivas das escolhas de Caçador", () => {
+    const hunter = DND5E_RULES_ENGINE.createDefaultCharacter();
+    hunter.classId = "patrulheiro";
+    hunter.subclassId = "patrulheiro_cacador";
+    hunter.level = 3;
+    hunter.subclassChoices = { "hunter-prey": ["Matador de Gigantes"] };
+    expect(DND5E_RULES_ENGINE.deriveStats(hunter).combatRules).toContain("Matador de Gigantes: reação para realizar um ataque contra uma criatura Grande ou maior que errar um ataque contra você");
+    hunter.subclassChoices = { "hunter-prey": ["Destruidor de Hordas"] };
+    expect(DND5E_RULES_ENGINE.deriveStats(hunter).combatRules).toContain("Destruidor de Hordas: uma vez por turno, ataque outra criatura a até 1,5 m do alvo original");
+    hunter.level = 11;
+    hunter.subclassChoices = { "hunter-multiattack": ["Saraivada"] };
+    expect(DND5E_RULES_ENGINE.deriveStats(hunter).combatRules).toContain("Saraivada: usa uma ação para realizar um ataque à distância contra qualquer número de criaturas a até 3 m de um ponto visível, com uma munição por alvo");
+  });
+
+  it("expõe as regras de combate dos Colégios de Bardo", () => {
+    const lore = DND5E_RULES_ENGINE.createDefaultCharacter();
+    lore.classId = "bardo";
+    lore.subclassId = "bardo_conhecimento";
+    lore.level = 2;
+    expect(DND5E_RULES_ENGINE.deriveStats(lore).combatRules).toEqual([]);
+    lore.level = 3;
+    expect(DND5E_RULES_ENGINE.deriveStats(lore).combatRules).toContain("Palavras Cortantes: reação e Inspiração para reduzir uma jogada de ataque, teste ou dano de uma criatura que possa ouvir");
+
+    const valor = DND5E_RULES_ENGINE.createDefaultCharacter();
+    valor.classId = "bardo";
+    valor.subclassId = "bardo_valor";
+    valor.level = 6;
+    valor.equipmentIds = ["dnd5e.arma.espada_longa"];
+    expect(DND5E_RULES_ENGINE.deriveStats(valor).combatRules).toContain("Inspiração de Combate: o dado de Inspiração pode aumentar a CA contra um ataque ou o dano de um ataque");
+    expect(DND5E_RULES_ENGINE.deriveStats(valor).attacks.find((attack) => attack.name !== "Ataque desarmado")?.attacksPerAction).toBe(2);
+  });
+
+  it("expõe as regras de combate das subclasses de Ladino", () => {
+    const assassin = DND5E_RULES_ENGINE.createDefaultCharacter();
+    assassin.classId = "ladino";
+    assassin.subclassId = "ladino_assassino";
+    assassin.level = 3;
+    expect(DND5E_RULES_ENGINE.deriveStats(assassin).combatRules).toContain("Assassinato: vantagem contra criaturas que ainda não agiram; ataques que acertam criatura surpresa são acertos críticos");
+    assassin.level = 17;
+    expect(DND5E_RULES_ENGINE.deriveStats(assassin).combatRules).toContain("Golpe Mortal: criatura surpresa que falhar no salvamento de Constituição sofre dano dobrado");
+
+    const thief = DND5E_RULES_ENGINE.createDefaultCharacter();
+    thief.classId = "ladino";
+    thief.subclassId = "ladino_ladrao";
+    thief.level = 17;
+    expect(DND5E_RULES_ENGINE.deriveStats(thief).combatRules).toContain("Reflexos de Ladrão: realiza dois turnos durante a primeira rodada de cada combate");
+
+    const trickster = DND5E_RULES_ENGINE.createDefaultCharacter();
+    trickster.classId = "ladino";
+    trickster.subclassId = "ladino_trapaceiro_arcano";
+    trickster.level = 12;
+    expect(DND5E_RULES_ENGINE.deriveStats(trickster).combatRules).toEqual([]);
+    trickster.level = 13;
+    expect(DND5E_RULES_ENGINE.deriveStats(trickster).combatRules).toContain("Trapaceiro Versátil: pode obter vantagem no próximo ataque ao usar Mão Mágica para distrair o alvo");
+  });
+
+  it("deriva efeitos de combate e Golpe Divino dos Domínios de Clérigo", () => {
+    const light = DND5E_RULES_ENGINE.createDefaultCharacter();
+    light.classId = "clerigo";
+    light.subclassId = "clerigo_luz";
+    expect(DND5E_RULES_ENGINE.deriveStats(light).defensiveRules).toContain("Fulgor de Proteção: reação para impor desvantagem a um ataque contra uma criatura a até 30 m, dentro do limite de usos por descanso");
+
+    const tempest = DND5E_RULES_ENGINE.createDefaultCharacter();
+    tempest.classId = "clerigo";
+    tempest.subclassId = "clerigo_tempestade";
+    tempest.level = 7;
+    expect(DND5E_RULES_ENGINE.deriveStats(tempest).combatRules).toContain("Fúria da Tormenta: reação para causar dano elétrico ou trovejante a uma criatura que acertar você");
+    tempest.level = 8;
+    tempest.equipmentIds = ["dnd5e.arma.martelo_guerra"];
+    expect(DND5E_RULES_ENGINE.deriveStats(tempest).attacks.find((attack) => attack.name === "Martelo de guerra")?.conditionalDamage).toContain("+1d8 trovejante");
+
+    const war = DND5E_RULES_ENGINE.createDefaultCharacter();
+    war.classId = "clerigo";
+    war.subclassId = "clerigo_guerra";
+    expect(DND5E_RULES_ENGINE.deriveStats(war).combatRules).toContain("Sacerdote da Guerra: ação bônus para realizar ataque com arma, dentro do limite de usos por descanso");
+  });
+
+  it("deriva regras defensivas e ofensivas das Escolas de Mago", () => {
+    const evoker = DND5E_RULES_ENGINE.createDefaultCharacter();
+    evoker.classId = "mago";
+    evoker.subclassId = "mago_evocacao";
+    evoker.level = 5;
+    expect(DND5E_RULES_ENGINE.deriveStats(evoker).combatRules).toEqual([]);
+    evoker.level = 6;
+    expect(DND5E_RULES_ENGINE.deriveStats(evoker).combatRules).toContain("Truque Potente: truques de evocação causam metade do dano em uma falha no ataque ou salvamento");
+    evoker.level = 14;
+    expect(DND5E_RULES_ENGINE.deriveStats(evoker).combatRules).toEqual(expect.arrayContaining([
+      "Evocação Potencializada: adiciona o modificador de Inteligência a uma jogada de dano de evocação",
+      "Sobrecarga: maximiza o dano de uma magia de 1º a 5º nível; usos adicionais causam dano necrótico ao conjurador",
+    ]));
+
+    const illusionist = DND5E_RULES_ENGINE.createDefaultCharacter();
+    illusionist.classId = "mago";
+    illusionist.subclassId = "mago_ilusao";
+    illusionist.level = 10;
+    expect(DND5E_RULES_ENGINE.deriveStats(illusionist).defensiveRules).toContain("Eu Ilusório: reação para fazer um ataque contra você errar, uma vez por descanso curto ou longo");
+  });
+
+  it("deriva as regras da Magia Selvagem do Feiticeiro", () => {
+    const sorcerer = DND5E_RULES_ENGINE.createDefaultCharacter();
+    sorcerer.classId = "feiticeiro";
+    sorcerer.subclassId = "feiticeiro_magia_selvagem";
+    sorcerer.level = 1;
+    expect(DND5E_RULES_ENGINE.deriveStats(sorcerer).combatRules).toContain("Marés do Caos: ganha vantagem em uma jogada de ataque, teste ou salvamento; o uso pode autorizar um Surto de Magia Selvagem");
+    sorcerer.level = 6;
+    expect(DND5E_RULES_ENGINE.deriveStats(sorcerer).combatRules).toContain("Distorcer a Sorte: reação para adicionar ou subtrair 1d4 de uma jogada próxima");
+    sorcerer.level = 17;
+    expect(DND5E_RULES_ENGINE.deriveStats(sorcerer).combatRules).not.toContain("Bombardeio de Magia: rerrola dados de dano de uma magia e pode sofrer dano para aumentar o efeito");
+    sorcerer.level = 18;
+    expect(DND5E_RULES_ENGINE.deriveStats(sorcerer).combatRules).toContain("Bombardeio de Magia: rerrola dados de dano de uma magia e pode sofrer dano para aumentar o efeito");
+  });
+
+  it("deriva reações e bênçãos dos Patronos de Bruxo", () => {
+    const fey = DND5E_RULES_ENGINE.createDefaultCharacter();
+    fey.classId = "bruxo";
+    fey.subclassId = "bruxo_arque_fada";
+    fey.level = 6;
+    expect(DND5E_RULES_ENGINE.deriveStats(fey).defensiveRules).toContain("Fuga Nebulosa: reação ao sofrer dano para ficar invisível e teleportar-se até 18 m");
+
+    const oldOne = DND5E_RULES_ENGINE.createDefaultCharacter();
+    oldOne.classId = "bruxo";
+    oldOne.subclassId = "bruxo_grande_antigo";
+    oldOne.level = 5;
+    expect(DND5E_RULES_ENGINE.deriveStats(oldOne).defensiveRules).toEqual([]);
+    oldOne.level = 6;
+    expect(DND5E_RULES_ENGINE.deriveStats(oldOne).defensiveRules).toContain("Proteção Entrópica: impõe desvantagem a um ataque contra você e recebe vantagem no próximo ataque se ele errar");
+
+    const fiend = DND5E_RULES_ENGINE.createDefaultCharacter();
+    fiend.classId = "bruxo";
+    fiend.subclassId = "bruxo_infernal";
+    expect(DND5E_RULES_ENGINE.deriveStats(fiend).combatRules).toContain("Bênção do Senhor Sombrio: ao reduzir uma criatura hostil a 0 PV, recebe PV temporários iguais a Carisma + nível de Bruxo");
+  });
+
+  it("aplica os efeitos do Espírito Totêmico somente durante a Fúria", () => {
+    const bear = DND5E_RULES_ENGINE.createDefaultCharacter();
+    bear.classId = "barbaro";
+    bear.subclassId = "barbaro_totem";
+    bear.level = 3;
+    bear.subclassChoices = { "totem-spirit": ["Urso"] };
+    expect(DND5E_RULES_ENGINE.deriveStats({ ...bear, dndRageActive: false }).damageResistances).not.toContain("todos os tipos, exceto psíquico (Espírito do Urso)");
+    expect(DND5E_RULES_ENGINE.deriveStats({ ...bear, dndRageActive: true }).damageResistances).toContain("todos os tipos, exceto psíquico (Espírito do Urso)");
+
+    const eagle = { ...bear, subclassChoices: { "totem-spirit": ["Águia"] }, dndRageActive: true };
+    expect(DND5E_RULES_ENGINE.deriveStats(eagle).defensiveRules).toContain("Espírito da Águia: ataques de oportunidade contra você têm desvantagem enquanto em Fúria; pode usar Disparada como ação bônus");
+    const wolf = { ...bear, subclassChoices: { "totem-spirit": ["Lobo"] }, dndRageActive: true };
+    expect(DND5E_RULES_ENGINE.deriveStats(wolf).combatRules).toContain("Espírito do Lobo: aliados têm vantagem em ataques corpo a corpo contra criaturas que você ameaça enquanto em Fúria");
+  });
+
+  it("deriva efeitos acionáveis das Tradições Monásticas", () => {
+    const openHand = DND5E_RULES_ENGINE.createDefaultCharacter();
+    openHand.classId = "monge";
+    openHand.subclassId = "monge_mao_aberta";
+    openHand.level = 3;
+    expect(DND5E_RULES_ENGINE.deriveStats(openHand).combatRules).toContain("Técnica da Mão Aberta: Rajada de Golpes pode derrubar, empurrar ou impedir reações do alvo");
+    openHand.level = 17;
+    expect(DND5E_RULES_ENGINE.deriveStats(openHand).combatRules).toContain("Palma Vibrante: implanta vibrações que podem atordoar ou derrubar uma criatura");
+
+    const shadow = DND5E_RULES_ENGINE.createDefaultCharacter();
+    shadow.classId = "monge";
+    shadow.subclassId = "monge_sombra";
+    shadow.level = 5;
+    expect(DND5E_RULES_ENGINE.deriveStats(shadow).combatRules).toEqual([]);
+    shadow.level = 6;
+    expect(DND5E_RULES_ENGINE.deriveStats(shadow).combatRules).toContain("Passo das Sombras: teleporta-se entre penumbra/escuridão e recebe vantagem no próximo ataque");
+    shadow.level = 17;
+    expect(DND5E_RULES_ENGINE.deriveStats(shadow).combatRules).toContain("Oportunista: reação para fazer ataque corpo a corpo contra criatura atingida por outra criatura");
+  });
+
+  it("deriva os marcos de Forma Selvagem do Círculo da Lua", () => {
+    const moon = DND5E_RULES_ENGINE.createDefaultCharacter();
+    moon.classId = "druida";
+    moon.subclassId = "druida_lua";
+    moon.level = 1;
+    expect(DND5E_RULES_ENGINE.deriveStats(moon).combatRules).toEqual([]);
+    moon.level = 2;
+    expect(DND5E_RULES_ENGINE.deriveStats(moon).combatRules).toContain("Forma Selvagem de Combate: usa Forma Selvagem como ação bônus e converte espaços de magia em PV");
+    moon.level = 10;
+    expect(DND5E_RULES_ENGINE.deriveStats(moon).combatRules).toEqual(expect.arrayContaining([
+      "Golpes Primais: ataques em Forma Selvagem contam como mágicos",
+      "Forma Elemental: gasta dois usos de Forma Selvagem para assumir forma de elemental",
+    ]));
+    moon.level = 14;
+    expect(DND5E_RULES_ENGINE.deriveStats(moon).combatRules).toContain("Mil Formas: pode lançar Alterar-se à vontade");
+  });
+
+  it("deriva os efeitos dos Juramentos de Paladino", () => {
+    const devotion = DND5E_RULES_ENGINE.createDefaultCharacter();
+    devotion.classId = "paladino";
+    devotion.subclassId = "paladino_devocao";
+    devotion.level = 2;
+    expect(DND5E_RULES_ENGINE.deriveStats(devotion).combatRules).toEqual([]);
+    devotion.level = 3;
+    expect(DND5E_RULES_ENGINE.deriveStats(devotion).combatRules).toContain("Canalizar Divindade — Arma Sagrada: ação para adicionar Carisma às jogadas de ataque da arma por 1 minuto");
+
+    const ancients = DND5E_RULES_ENGINE.createDefaultCharacter();
+    ancients.classId = "paladino";
+    ancients.subclassId = "paladino_anciaos";
+    ancients.level = 6;
+    expect(DND5E_RULES_ENGINE.deriveStats(ancients).defensiveRules).toEqual([]);
+    ancients.level = 7;
+    expect(DND5E_RULES_ENGINE.deriveStats(ancients).defensiveRules).toContain("Aura de Proteção dos Anciões: você e aliados próximos recebem resistência a dano de magias");
+
+    const vengeance = DND5E_RULES_ENGINE.createDefaultCharacter();
+    vengeance.classId = "paladino";
+    vengeance.subclassId = "paladino_vinganca";
+    vengeance.level = 2;
+    expect(DND5E_RULES_ENGINE.deriveStats(vengeance).combatRules).toEqual([]);
+    vengeance.level = 3;
+    expect(DND5E_RULES_ENGINE.deriveStats(vengeance).combatRules).toContain("Voto de Inimizade: ação bônus para obter vantagem nos ataques contra uma criatura por 1 minuto");
+    vengeance.level = 14;
+    expect(DND5E_RULES_ENGINE.deriveStats(vengeance).combatRules).not.toContain("Alma de Vingança: reação para realizar um ataque corpo a corpo contra alvo que resistir à sua magia de juramento");
+    vengeance.level = 15;
+    expect(DND5E_RULES_ENGINE.deriveStats(vengeance).combatRules).toContain("Alma de Vingança: reação para realizar um ataque corpo a corpo contra alvo que resistir à sua magia de juramento");
   });
 
   it("aplica as escolhas estruturadas de Inimigo e Terreno Favorecidos do Patrulheiro", () => {
@@ -682,6 +1072,31 @@ describe("system rules engines", () => {
     mediumMaster.equipmentIds = ["dnd5e.armadura.cota_de_escamas"];
     const mediumBase = DND5E_RULES_ENGINE.deriveStats({ ...mediumMaster, featIds: [] });
     expect(DND5E_RULES_ENGINE.deriveStats(mediumMaster).defense).toBe(mediumBase.defense + 1);
+  });
+
+  it("aplica a redução de dano de Mestre de Armadura Pesada somente com armadura pesada", () => {
+    const character = DND5E_RULES_ENGINE.createDefaultCharacter();
+    character.classId = "guerreiro";
+    character.featIds = ["dnd5e.talento.mestre_de_armadura_pesada"];
+    expect(DND5E_RULES_ENGINE.deriveStats(character).damageReductions).toEqual([]);
+    character.equipmentIds = ["dnd5e.armadura.cota_de_malha"];
+    expect(DND5E_RULES_ENGINE.deriveStats(character).damageReductions).toEqual([
+      "3 contra dano contundente, cortante e perfurante não mágico (Mestre de Armadura Pesada)",
+    ]);
+    character.equipmentIds = ["dnd5e.armadura.cota_de_escamas"];
+    expect(DND5E_RULES_ENGINE.deriveStats(character).damageReductions).toEqual([]);
+  });
+
+  it("deriva o mínimo de cura de Durável após o aumento de Constituição", () => {
+    const character = DND5E_RULES_ENGINE.createDefaultCharacter();
+    character.raceId = "humano";
+    character.subraceId = undefined;
+    character.abilities.con = 14;
+    character.featIds = ["dnd5e.talento.duravel"];
+    character.featChoices = { "duravel-ability": ["Constituição"] };
+    expect(DND5E_RULES_ENGINE.deriveStats(character).featEffects).toContain("Durável: ao gastar Dados de Vida, o resultado mínimo recuperado é 6 PV");
+    character.abilities.con = 8;
+    expect(DND5E_RULES_ENGINE.deriveStats(character).featEffects).toContain("Durável: ao gastar Dados de Vida, o resultado mínimo recuperado é 2 PV");
   });
 
   it("aplica os aumentos de atributo escolhidos pelos talentos D&D 5e", () => {
@@ -778,6 +1193,82 @@ describe("system rules engines", () => {
     expect(DND5E_RULES_ENGINE.deriveStats(necromancer).damageResistances).toContain("necrótico");
   });
 
+  it("deriva imunidades condicionais das subclasses D&D 5e", () => {
+    const berserker = DND5E_RULES_ENGINE.createDefaultCharacter();
+    berserker.classId = "barbaro";
+    berserker.subclassId = "barbaro_berserker";
+    berserker.level = 6;
+    expect(DND5E_RULES_ENGINE.deriveStats({ ...berserker, dndRageActive: false }).conditionImmunities).toEqual([]);
+    expect(DND5E_RULES_ENGINE.deriveStats({ ...berserker, dndRageActive: true }).conditionImmunities).toEqual(expect.arrayContaining(["amedrontado", "enfeitiçado"]));
+
+    const archfey = DND5E_RULES_ENGINE.createDefaultCharacter();
+    archfey.classId = "bruxo";
+    archfey.subclassId = "bruxo_arque_fada";
+    archfey.level = 10;
+    expect(DND5E_RULES_ENGINE.deriveStats(archfey).conditionImmunities).toContain("enfeitiçado");
+
+    const land = DND5E_RULES_ENGINE.createDefaultCharacter();
+    land.classId = "druida";
+    land.subclassId = "druida_terra";
+    land.level = 10;
+    expect(DND5E_RULES_ENGINE.deriveStats(land).conditionImmunities).toEqual(expect.arrayContaining(["veneno e doenças", "amedrontado e enfeitiçado por elementais e fadas"]));
+  });
+
+  it("deriva imunidades condicionais das características de classe D&D 5e", () => {
+    const paladin = DND5E_RULES_ENGINE.createDefaultCharacter();
+    paladin.classId = "paladino";
+    paladin.level = 3;
+    expect(DND5E_RULES_ENGINE.deriveStats(paladin).conditionImmunities).toContain("doenças");
+    paladin.level = 10;
+    expect(DND5E_RULES_ENGINE.deriveStats(paladin).conditionImmunities).toContain("amedrontado (Aura de Coragem)");
+
+    const monk = DND5E_RULES_ENGINE.createDefaultCharacter();
+    monk.classId = "monge";
+    monk.level = 9;
+    expect(DND5E_RULES_ENGINE.deriveStats(monk).conditionImmunities).not.toContain("veneno e doenças");
+    monk.level = 10;
+    expect(DND5E_RULES_ENGINE.deriveStats(monk).conditionImmunities).toContain("veneno e doenças");
+  });
+
+  it("aplica proficiências de salvamento concedidas por recursos avançados de classe", () => {
+    const rogue = DND5E_RULES_ENGINE.createDefaultCharacter();
+    rogue.classId = "ladino";
+    rogue.level = 14;
+    const rogueBefore = DND5E_RULES_ENGINE.deriveStats(rogue).savingThrowBonuses.wis;
+    rogue.level = 15;
+    const rogueAfter = DND5E_RULES_ENGINE.deriveStats(rogue).savingThrowBonuses.wis;
+    expect(rogueAfter).toBe(rogueBefore + 5);
+
+    const monk = DND5E_RULES_ENGINE.createDefaultCharacter();
+    monk.classId = "monge";
+    monk.level = 13;
+    const monkBefore = DND5E_RULES_ENGINE.deriveStats(monk).savingThrowBonuses.cha;
+    monk.level = 14;
+    const monkAfter = DND5E_RULES_ENGINE.deriveStats(monk).savingThrowBonuses.cha;
+    expect(monkAfter).toBe(monkBefore + 5);
+  });
+
+  it("aplica Versatilidade do Bardo a perícias não treinadas", () => {
+    const bard = DND5E_RULES_ENGINE.createDefaultCharacter();
+    bard.classId = "bardo";
+    bard.level = 1;
+    bard.skillProficiencies = [];
+    const before = DND5E_RULES_ENGINE.deriveStats(bard).skillBonuses.investigacao;
+    bard.level = 2;
+    const after = DND5E_RULES_ENGINE.deriveStats(bard).skillBonuses.investigacao;
+    expect(after).toBe(before + 1);
+  });
+
+  it("marca o mínimo de 10 do Talento Confiável nas perícias treinadas do Ladino", () => {
+    const rogue = DND5E_RULES_ENGINE.createDefaultCharacter();
+    rogue.classId = "ladino";
+    rogue.skillProficiencies = ["furtividade", "percepcao"];
+    rogue.level = 10;
+    expect(DND5E_RULES_ENGINE.deriveStats(rogue).skillMinimums).toEqual({});
+    rogue.level = 11;
+    expect(DND5E_RULES_ENGINE.deriveStats(rogue).skillMinimums).toMatchObject({ furtividade: 10, percepcao: 10 });
+  });
+
   it("permite armaduras e escudo concedidos por talentos de proficiência", () => {
     const character = DND5E_RULES_ENGINE.createDefaultCharacter();
     character.classId = "mago";
@@ -810,6 +1301,101 @@ describe("system rules engines", () => {
     const existingSkill = halfElf.skillProficiencies.find((skill) => !halfElf.raceSkillChoices.includes(skill))!;
     halfElf.raceSkillChoices = [existingSkill, "percepcao"];
     expect(DND5E_RULES_ENGINE.validateCharacter(halfElf).some((error) => error.includes("a perícia racial adicional não pode repetir"))).toBe(true);
+  });
+
+  it("aplica a proficiência racial de Percepção do Elfo D&D 5e", () => {
+    const elf = DND5E_RULES_ENGINE.createDefaultCharacter();
+    elf.raceId = "elfo";
+    elf.subraceId = "elfo_alto";
+    elf.subraceChoices = { "high-elf-cantrip": ["Luz"], "high-elf-language": ["Anão"] };
+    elf.skillProficiencies = [];
+    const human = { ...elf, raceId: "humano", subraceId: undefined, subraceChoices: {} };
+    expect(DND5E_RULES_ENGINE.deriveStats(elf).skillBonuses.percepcao).toBe(
+      DND5E_RULES_ENGINE.deriveStats(human).skillBonuses.percepcao + DND5E_RULES_ENGINE.deriveStats(elf).proficiencyBonus,
+    );
+    expect(DND5E_RULES_ENGINE.deriveStats(elf).racialEffects).toEqual(expect.arrayContaining([
+      expect.stringContaining("proficiência em Percepção"),
+    ]));
+  });
+
+  it("deriva resistências de dano raciais de Anão e Tiefling", () => {
+    const dwarf = DND5E_RULES_ENGINE.createDefaultCharacter();
+    dwarf.raceId = "anao";
+    dwarf.subraceId = "anao_colina";
+    expect(DND5E_RULES_ENGINE.deriveStats(dwarf).damageResistances).toContain("veneno");
+
+    const tiefling = DND5E_RULES_ENGINE.createDefaultCharacter();
+    tiefling.raceId = "tiefling";
+    tiefling.subraceId = undefined;
+    expect(DND5E_RULES_ENGINE.deriveStats(tiefling).damageResistances).toContain("fogo");
+
+    const human = DND5E_RULES_ENGINE.createDefaultCharacter();
+    human.raceId = "humano";
+    human.subraceId = undefined;
+    expect(DND5E_RULES_ENGINE.deriveStats(human).damageResistances).not.toContain("veneno");
+    expect(DND5E_RULES_ENGINE.deriveStats(human).damageResistances).not.toContain("fogo");
+  });
+
+  it("expõe Sortudo do Halfling sem converter a regra em vantagem global", () => {
+    const halfling = DND5E_RULES_ENGINE.createDefaultCharacter();
+    halfling.raceId = "halfling";
+    halfling.subraceId = undefined;
+    expect(DND5E_RULES_ENGINE.deriveStats(halfling).rerollRules).toEqual([
+      "Sortudo: rerrola resultados naturais 1 em ataques, testes de habilidade e salvamentos",
+    ]);
+    expect(DND5E_RULES_ENGINE.deriveStats(halfling).skillRollModes.acrobacia).toBe("normal");
+  });
+
+  it("mantém vantagens raciais condicionais separadas do modo global de d20", () => {
+    const dwarf = DND5E_RULES_ENGINE.createDefaultCharacter();
+    dwarf.raceId = "anao";
+    expect(DND5E_RULES_ENGINE.deriveStats(dwarf).situationalAdvantages).toContain("Salvamentos contra veneno (Resiliência Anã)");
+
+    const elf = DND5E_RULES_ENGINE.createDefaultCharacter();
+    elf.raceId = "elfo";
+    expect(DND5E_RULES_ENGINE.deriveStats(elf).situationalAdvantages).toContain("Salvamentos contra ser enfeitiçado (Ancestralidade Feérica)");
+
+    const gnome = DND5E_RULES_ENGINE.createDefaultCharacter();
+    gnome.raceId = "gnomo";
+    expect(DND5E_RULES_ENGINE.deriveStats(gnome).situationalAdvantages).toContain("Salvamentos de Inteligência, Sabedoria e Carisma contra magia (Astúcia Gnômica)");
+    expect(DND5E_RULES_ENGINE.deriveStats(gnome).skillRollModes.arcanismo).toBe("normal");
+  });
+
+  it("expõe a vantagem contextual de Mago de Guerra para concentração", () => {
+    const character = DND5E_RULES_ENGINE.createDefaultCharacter();
+    character.featIds = ["dnd5e.talento.mago_de_guerra"];
+    expect(DND5E_RULES_ENGINE.deriveStats(character).situationalAdvantages).toContain("Salvamentos de Constituição para manter concentração (Mago de Guerra)");
+    expect(DND5E_RULES_ENGINE.deriveStats(character).savingThrowRollModes.con).toBe("normal");
+  });
+
+  it("deriva imunidade a sono mágico para Elfo e Meio-Elfo", () => {
+    const elf = DND5E_RULES_ENGINE.createDefaultCharacter();
+    elf.raceId = "elfo";
+    expect(DND5E_RULES_ENGINE.deriveStats(elf).conditionImmunities).toContain("sono mágico (Ancestralidade Feérica)");
+
+    const halfElf = DND5E_RULES_ENGINE.createDefaultCharacter();
+    halfElf.raceId = "meio_elfo";
+    halfElf.subraceId = undefined;
+    expect(DND5E_RULES_ENGINE.deriveStats(halfElf).conditionImmunities).toContain("sono mágico (Ancestralidade Feérica)");
+
+    const human = DND5E_RULES_ENGINE.createDefaultCharacter();
+    human.raceId = "humano";
+    human.subraceId = undefined;
+    expect(DND5E_RULES_ENGINE.deriveStats(human).conditionImmunities).not.toContain("sono mágico (Ancestralidade Feérica)");
+  });
+
+  it("expõe rerrolagens de Indomável e Alma de Diamante por nível", () => {
+    const fighter = DND5E_RULES_ENGINE.createDefaultCharacter();
+    fighter.classId = "guerreiro";
+    fighter.level = 8;
+    expect(DND5E_RULES_ENGINE.deriveStats(fighter).rerollRules).toEqual([]);
+    fighter.level = 13;
+    expect(DND5E_RULES_ENGINE.deriveStats(fighter).rerollRules).toContain("Indomável: repete 2 teste(s) de resistência falho(s) por descanso longo");
+
+    const monk = DND5E_RULES_ENGINE.createDefaultCharacter();
+    monk.classId = "monge";
+    monk.level = 14;
+    expect(DND5E_RULES_ENGINE.deriveStats(monk).rerollRules).toContain("Alma de Diamante: repete um salvamento falho gastando 1 ponto de ki");
   });
 
   it("valida o caminho de duas perícias raciais de Humano T20", () => {
@@ -872,6 +1458,29 @@ describe("system rules engines", () => {
     const levelOneFighter = DND5E_RULES_ENGINE.createDefaultCharacter();
     levelOneFighter.classId = "guerreiro";
     expect(DND5E_RULES_ENGINE.deriveStats(levelOneFighter).classResources.map((resource) => resource.name)).not.toContain("Surto de Ação");
+    levelOneFighter.level = 8;
+    expect(DND5E_RULES_ENGINE.deriveStats(levelOneFighter).classResources.map((resource) => resource.name)).not.toContain("Indomável");
+    levelOneFighter.level = 9;
+    expect(DND5E_RULES_ENGINE.deriveStats(levelOneFighter).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Indomável", value: "1 uso" }),
+    ]));
+    levelOneFighter.level = 13;
+    expect(DND5E_RULES_ENGINE.deriveStats(levelOneFighter).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Indomável", value: "2 usos" }),
+    ]));
+    levelOneFighter.level = 17;
+    expect(DND5E_RULES_ENGINE.deriveStats(levelOneFighter).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Indomável", value: "3 usos" }),
+    ]));
+    const paladin = DND5E_RULES_ENGINE.createDefaultCharacter();
+    paladin.classId = "paladino";
+    paladin.abilities.cha = 16;
+    paladin.level = 13;
+    expect(DND5E_RULES_ENGINE.deriveStats(paladin).classResources.map((resource) => resource.name)).not.toContain("Toque Purificador");
+    paladin.level = 14;
+    expect(DND5E_RULES_ENGINE.deriveStats(paladin).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Toque Purificador", value: "3 usos" }),
+    ]));
     const levelTwentyBarbarian = DND5E_RULES_ENGINE.createDefaultCharacter();
     levelTwentyBarbarian.classId = "barbaro";
     levelTwentyBarbarian.level = 20;
@@ -911,6 +1520,33 @@ describe("system rules engines", () => {
     bard.level = 5;
     expect(DND5E_RULES_ENGINE.deriveStats(bard).classResources).toEqual(expect.arrayContaining([
       expect.objectContaining({ name: "Inspiração de Bardo", value: "3d8", description: expect.stringContaining("descanso curto ou longo") }),
+      expect.objectContaining({ name: "Canção de Descanso", value: "d8" }),
+    ]));
+    bard.level = 1;
+    expect(DND5E_RULES_ENGINE.deriveStats(bard).classResources.map((resource) => resource.name)).not.toContain("Canção de Descanso");
+    bard.level = 10;
+    expect(DND5E_RULES_ENGINE.deriveStats(bard).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Canção de Descanso", value: "d10" }),
+    ]));
+    bard.level = 15;
+    expect(DND5E_RULES_ENGINE.deriveStats(bard).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Canção de Descanso", value: "d12" }),
+    ]));
+    const warlock = DND5E_RULES_ENGINE.createDefaultCharacter();
+    warlock.classId = "bruxo";
+    warlock.level = 1;
+    expect(DND5E_RULES_ENGINE.deriveStats(warlock).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Magia de Pacto", value: "1 espaço(s) de 1º círculo" }),
+    ]));
+    warlock.level = 11;
+    expect(DND5E_RULES_ENGINE.deriveStats(warlock).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Magia de Pacto", value: "3 espaço(s) de 5º círculo" }),
+      expect.objectContaining({ name: "Arcana Mística (6º nível)", value: "1 uso" }),
+    ]));
+    warlock.level = 17;
+    expect(DND5E_RULES_ENGINE.deriveStats(warlock).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Magia de Pacto", value: "4 espaço(s) de 5º círculo" }),
+      expect.objectContaining({ name: "Arcana Mística (9º nível)", value: "1 uso" }),
     ]));
 
     const t20 = T20_RULES_ENGINE.createDefaultCharacter();
@@ -997,6 +1633,17 @@ describe("system rules engines", () => {
     t20.classId = "ladino";
     t20.classChoices = { "t20-ladino-specialist": "Furtividade" as unknown as string[] };
     expect(() => T20_RULES_ENGINE.validateCharacter(t20)).not.toThrow();
+  });
+
+  it("não lança exceção quando arrays legados chegam nulos", () => {
+    const character = DND5E_RULES_ENGINE.createDefaultCharacter();
+    character.featIds = null as unknown as string[];
+    character.equipmentIds = null as unknown as string[];
+    character.spellIds = null as unknown as string[];
+    character.preparedSpellIds = null as unknown as string[];
+    expect(() => DND5E_RULES_ENGINE.validateCharacter(character)).not.toThrow();
+    expect(DND5E_RULES_ENGINE.validateCharacter(character)).toEqual([]);
+    expect(() => DND5E_RULES_ENGINE.deriveStats(character)).not.toThrow();
   });
 
   it("não aceita strings com tamanho coincidente como escolhas obrigatórias", () => {
@@ -1254,6 +1901,21 @@ describe("system rules engines", () => {
     ]));
   });
 
+  it("aplica a RD 5 do caminho Bastião somente com armadura pesada", () => {
+    const knight = T20_RULES_ENGINE.createDefaultCharacter();
+    knight.classId = "cavaleiro";
+    knight.level = 5;
+    knight.classChoices = { "t20-cavaleiro-path": ["Bastião"] };
+
+    expect(T20_RULES_ENGINE.deriveStats(knight).damageResistances).not.toContain("RD 5 (Bastião)");
+
+    knight.equipmentIds = ["t20.armadura.pesada"];
+    expect(T20_RULES_ENGINE.deriveStats(knight).damageResistances).toContain("RD 5 (Bastião)");
+
+    knight.classChoices = { "t20-cavaleiro-path": ["Montaria"] };
+    expect(T20_RULES_ENGINE.deriveStats(knight).damageResistances).not.toContain("RD 5 (Bastião)");
+  });
+
   it("exposes T20 Bárbaro Fury, instinct and damage resistance progression", () => {
     const barbarian = T20_RULES_ENGINE.createDefaultCharacter();
     barbarian.classId = "barbaro";
@@ -1443,6 +2105,55 @@ describe("system rules engines", () => {
       expect.objectContaining({ name: "Cura pelas Mãos", value: "2d8+2 · 2 PM" }),
       expect.objectContaining({ name: "Aura Sagrada" }),
     ]));
+  });
+
+  it("aplica a Aura Sagrada do Paladino T20 aos três salvamentos", () => {
+    const paladin = T20_RULES_ENGINE.createDefaultCharacter();
+    paladin.classId = "paladino";
+    paladin.abilities.cha = 16;
+
+    const noAura = T20_RULES_ENGINE.deriveStats({ ...paladin, abilities: { ...paladin.abilities, cha: 10 }, level: 3 }).savingThrowBonuses;
+    const withAura = T20_RULES_ENGINE.deriveStats({ ...paladin, level: 3 }).savingThrowBonuses;
+    expect(withAura.fortitude).toBe(noAura.fortitude + 3);
+    expect(withAura.reflexos).toBe(noAura.reflexos + 3);
+    expect(withAura.vontade).toBe(noAura.vontade + 3);
+  });
+
+  it("deriva os efeitos escalonados da Bênção da Justiça T20", () => {
+    const paladin = T20_RULES_ENGINE.createDefaultCharacter();
+    paladin.classId = "paladino";
+    paladin.abilities.cha = 16;
+    paladin.classChoices = { "t20-paladino-justice-blessing": ["Égide Sagrada"] };
+    expect(T20_RULES_ENGINE.deriveStats({ ...paladin, level: 5 }).classChoiceEffects.join(" ")).toContain("+3 Defesa");
+    expect(T20_RULES_ENGINE.deriveStats({ ...paladin, level: 11 }).classChoiceEffects.join(" ")).toContain("gastar 5 PM");
+
+    paladin.classChoices = { "t20-paladino-justice-blessing": ["Montaria Sagrada"] };
+    expect(T20_RULES_ENGINE.deriveStats({ ...paladin, level: 5 }).classChoiceEffects.join(" ")).toContain("aliado iniciante");
+    expect(T20_RULES_ENGINE.deriveStats({ ...paladin, level: 17 }).classChoiceEffects.join(" ")).toContain("aliado mestre");
+  });
+
+  it("aplica o bônus progressivo de PM das Virtudes Paladinescas T20", () => {
+    const paladin = T20_RULES_ENGINE.createDefaultCharacter();
+    paladin.classId = "paladino";
+    paladin.level = 5;
+    paladin.abilities.cha = 14;
+    const baseMana = T20_RULES_ENGINE.deriveStats(paladin).manaMax;
+    paladin.featIds = ["t20.poder.virtude_caridade"];
+    expect(T20_RULES_ENGINE.deriveStats(paladin).manaMax).toBe(baseMana + 1);
+    paladin.featIds = ["t20.poder.virtude_caridade", "t20.poder.virtude_castidade", "t20.poder.virtude_compaixao"];
+    const threeVirtues = T20_RULES_ENGINE.deriveStats(paladin);
+    expect(threeVirtues.manaMax).toBe(baseMana + 6);
+    expect(threeVirtues.featEffects.join(" ")).toContain("Virtudes Paladinescas: +6 PM");
+    paladin.featIds = ["t20.poder.virtude_caridade", "t20.poder.virtude_castidade", "t20.poder.virtude_compaixao", "t20.poder.virtude_humildade", "t20.poder.virtude_temperanca"];
+    expect(T20_RULES_ENGINE.deriveStats(paladin).manaMax).toBe(baseMana + 15);
+  });
+
+  it("aplica a imunidade a encantamento da Virtude da Castidade T20", () => {
+    const paladin = T20_RULES_ENGINE.createDefaultCharacter();
+    paladin.classId = "paladino";
+    expect(T20_RULES_ENGINE.deriveStats(paladin).conditionImmunities).not.toContain("enfeitiçado (Virtude: Castidade)");
+    paladin.featIds = ["t20.poder.virtude_castidade"];
+    expect(T20_RULES_ENGINE.deriveStats(paladin).conditionImmunities).toContain("enfeitiçado (Virtude: Castidade)");
   });
 
   it("exposes T20 Guerreiro and Lutador progression resources", () => {
@@ -1735,7 +2446,7 @@ describe("system rules engines", () => {
     expect(DND5E_RULES_ENGINE.validateCharacter(character)).not.toContain("selecione 3 opção(ões) para Proficiências bônus do Colégio do Conhecimento");
     const withoutSubclassSkills = DND5E_RULES_ENGINE.deriveStats({ ...character, subclassChoices: {} });
     const withSubclassSkills = DND5E_RULES_ENGINE.deriveStats(character);
-    expect(withSubclassSkills.skillBonuses.arcanismo).toBe(withoutSubclassSkills.skillBonuses.arcanismo + 2);
+    expect(withSubclassSkills.skillBonuses.arcanismo).toBe(withoutSubclassSkills.skillBonuses.arcanismo + 1);
   });
 
   it("persiste idiomas e truques concedidos por subclasses D&D 5e", () => {

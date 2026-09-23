@@ -289,6 +289,7 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
       if (key === "classId" || key === "backgroundId" || key === "raceId") {
         if (system !== "dnd5e" || next.classId !== "barbaro") next.dndRageActive = false;
         if (system !== "dnd5e" || next.classId !== "barbaro") next.dndRecklessAttackActive = false;
+        if (system !== "dnd5e" || next.classId !== "paladino" || next.level < 2) next.dndDivineSmiteSlot = 0;
         const classRules = catalog.classRules.find((entry) => entry.id === next.classId);
         const background = catalog.backgrounds.find((entry) => entry.id === next.backgroundId);
         const backgroundSkills = background && ("skillProficiencies" in background ? background.skillProficiencies : background.trainedSkills);
@@ -597,6 +598,13 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
             <span>Ataque Descuidado<small>Vantagem no ataque corpo a corpo com Força</small></span>
             <input type="checkbox" checked={Boolean(character.dndRecklessAttackActive)} onChange={(event) => update("dndRecklessAttackActive", event.target.checked)} />
           </label>}
+          {system === "dnd5e" && character.classId === "paladino" && character.level >= 2 && <label className="pb-core-toggle-field">
+            <span>Destruição Divina<small>Espaço gasto no acerto corpo a corpo (até 5d8)</small></span>
+            <select aria-label="Círculo do espaço para Destruição Divina" value={character.dndDivineSmiteSlot || 0} onChange={(event) => update("dndDivineSmiteSlot", Number(event.target.value))}>
+              <option value={0}>Desativada</option>
+              {[1, 2, 3, 4, 5].map((slot) => <option key={slot} value={slot}>{slot}º círculo · {Math.min(5, slot + 1)}d8</option>)}
+            </select>
+          </label>}
         </div>
 
         {selectedRaceRules && <aside className="pb-core-race-summary" aria-label="Resumo da raça">
@@ -802,9 +810,21 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
           <strong>Resistências ativas</strong>
           <p>{derivedPreview.damageResistances.join(" · ")}</p>
         </aside>}
+        {derivedPreview.defensiveRules.length > 0 && <aside className="pb-core-background-options" aria-label="Regras defensivas">
+          <strong>Regras defensivas</strong>
+          <p>{derivedPreview.defensiveRules.join(" · ")}</p>
+        </aside>}
+        {derivedPreview.combatRules.length > 0 && <aside className="pb-core-background-options" aria-label="Regras de combate">
+          <strong>Regras de combate</strong>
+          <p>{derivedPreview.combatRules.join(" · ")}</p>
+        </aside>}
         {system === "dnd5e" && (!derivedPreview.canAct || !derivedPreview.canReact) && <aside className="pb-core-background-options" aria-label="Limitações de condição">
           <strong>Limitações atuais</strong>
           <p>{!derivedPreview.canAct ? "Sem ações" : "Ações disponíveis"}{!derivedPreview.canReact ? " · sem reações" : ""}</p>
+        </aside>}
+        {system === "dnd5e" && derivedPreview.conditionImmunities.length > 0 && <aside className="pb-core-background-options" aria-label="Imunidades condicionais">
+          <strong>Imunidades condicionais</strong>
+          <p>{derivedPreview.conditionImmunities.join(" · ")}</p>
         </aside>}
         {derivedPreview.classFeatures.length > 0 && <details className="pb-core-feature-list">
           <summary>Características de classe até o nível {character.level} ({derivedPreview.classFeatures.length})</summary>

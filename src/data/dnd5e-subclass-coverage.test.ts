@@ -66,13 +66,15 @@ describe("D&D 5e — cobertura mecânica das subclasses", () => {
     const level6 = DND5E_RULES_ENGINE.deriveStats(characterFor("bardo_valor", 6));
 
     const attacksPerAction = (stats: typeof level5) => stats.attacks[0]?.attacksPerAction ?? 1;
-    // Sem arma equipada o array pode ficar vazio; nesse caso o teste não prova nada.
-    if (level5.attacks.length === 0) {
-      expect(level6.attacks.length).toBe(0);
+    // O ataque desarmado é sempre exposto; sem arma equipada, ele não prova Ataque Extra.
+    const level5Weapon = level5.attacks.find((attack) => attack.name !== "Ataque desarmado");
+    const level6Weapon = level6.attacks.find((attack) => attack.name !== "Ataque desarmado");
+    if (!level5Weapon || !level6Weapon) {
+      expect(level6Weapon).toBeUndefined();
       return;
     }
-    expect(attacksPerAction(level5)).toBe(1);
-    expect(attacksPerAction(level6)).toBe(2);
+    expect(attacksPerAction({ ...level5, attacks: [level5Weapon] })).toBe(1);
+    expect(attacksPerAction({ ...level6, attacks: [level6Weapon] })).toBe(2);
   });
 
   it("Crítico Aprimorado e Superior do Campeão mudam a faixa de crítico", () => {
@@ -80,13 +82,16 @@ describe("D&D 5e — cobertura mecânica das subclasses", () => {
     const level15 = DND5E_RULES_ENGINE.deriveStats(characterFor("guerreiro_campeao", 15));
     const level1 = DND5E_RULES_ENGINE.deriveStats(characterFor("guerreiro_campeao", 1));
 
-    if (level3.attacks.length === 0) {
-      expect(level15.attacks.length).toBe(0);
+    const level3Weapon = level3.attacks.find((attack) => attack.name !== "Ataque desarmado");
+    const level15Weapon = level15.attacks.find((attack) => attack.name !== "Ataque desarmado");
+    const level1Weapon = level1.attacks.find((attack) => attack.name !== "Ataque desarmado");
+    if (!level3Weapon || !level15Weapon || !level1Weapon) {
+      expect(level15Weapon).toBeUndefined();
       return;
     }
-    expect(level1.attacks[0].critical).toBeUndefined();
-    expect(level3.attacks[0].critical).toBe("19-20");
-    expect(level15.attacks[0].critical).toBe("18-20");
+    expect(level1Weapon.critical).toBeUndefined();
+    expect(level3Weapon.critical).toBe("19-20");
+    expect(level15Weapon.critical).toBe("18-20");
   });
 
   it("Resiliência Dracônica concede CA 13 + Destreza e +1 PV por nível sem armadura", () => {
@@ -117,9 +122,10 @@ describe("D&D 5e — cobertura mecânica das subclasses", () => {
     // O Colégio do Valor não concede perícias: serve de linha de base isolada.
     const baseline = DND5E_RULES_ENGINE.deriveStats(characterFor("bardo_valor", 3));
     const proficiency = 2; // nível 3
+    const incrementalProficiency = proficiency - Math.floor(proficiency / 2); // o baseline de Bardo já inclui Versatilidade
 
     for (const [name, id] of [["Arcanismo", "arcanismo"], ["História", "historia"], ["Natureza", "natureza"]] as const) {
-      expect(withLore.skillBonuses[id], name).toBe(baseline.skillBonuses[id] + proficiency);
+      expect(withLore.skillBonuses[id], name).toBe(baseline.skillBonuses[id] + incrementalProficiency);
     }
     // Uma perícia não escolhida não recebe o bônus de proficiência.
     expect(withLore.skillBonuses.atletismo).toBe(baseline.skillBonuses.atletismo);

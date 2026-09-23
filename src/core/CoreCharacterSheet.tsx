@@ -183,6 +183,13 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
             <span>Ataque Descuidado<small>Vantagem no ataque corpo a corpo com Força</small></span>
             <input type="checkbox" checked={Boolean(draft.dndRecklessAttackActive)} onChange={(event) => setDraft({ ...draft, dndRecklessAttackActive: event.target.checked })} />
           </label>}
+          {system === "dnd5e" && draft.classId === "paladino" && draft.level >= 2 && <label className="pb-core-toggle-field">
+            <span>Destruição Divina<small>Espaço gasto no acerto corpo a corpo (até 5d8)</small></span>
+            <select aria-label="Círculo do espaço para Destruição Divina" value={draft.dndDivineSmiteSlot || 0} onChange={(event) => { setDraft({ ...draft, dndDivineSmiteSlot: Number(event.target.value) }); setSaveError(null); }}>
+              <option value={0}>Desativada</option>
+              {[1, 2, 3, 4, 5].map((slot) => <option key={slot} value={slot}>{slot}º círculo · {Math.min(5, slot + 1)}d8</option>)}
+            </select>
+          </label>}
           <label>{system === "t20" ? "Origem" : "Antecedente"}
             <select value={draft.backgroundId || ""} onChange={(event) => updateBackground(event.target.value)}>
               {catalog.backgrounds.map((entry) => <option key={entry.id} value={entry.id}>{entry.name}</option>)}
@@ -256,6 +263,26 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
           <strong>Resistências ativas</strong>
           <p>{derived.damageResistances.join(" · ")}</p>
         </aside>}
+        {derived.damageReductions.length > 0 && <aside className="pb-core-background-options" aria-label="Reduções de dano ativas">
+          <strong>Reduções de dano</strong>
+          <p>{derived.damageReductions.join(" · ")}</p>
+        </aside>}
+        {derived.rerollRules.length > 0 && <aside className="pb-core-background-options" aria-label="Regras de rerrolagem">
+          <strong>Rerrolagens</strong>
+          <p>{derived.rerollRules.join(" · ")}</p>
+        </aside>}
+        {derived.defensiveRules.length > 0 && <aside className="pb-core-background-options" aria-label="Regras defensivas">
+          <strong>Regras defensivas</strong>
+          <p>{derived.defensiveRules.join(" · ")}</p>
+        </aside>}
+        {derived.combatRules.length > 0 && <aside className="pb-core-background-options" aria-label="Regras de combate">
+          <strong>Regras de combate</strong>
+          <p>{derived.combatRules.join(" · ")}</p>
+        </aside>}
+        {derived.situationalAdvantages.length > 0 && <aside className="pb-core-background-options" aria-label="Vantagens situacionais">
+          <strong>Vantagens situacionais</strong>
+          <p>{derived.situationalAdvantages.join(" · ")}</p>
+        </aside>}
         {derived.classResources.length > 0 && <div className="pb-core-resource-strip" aria-label="Recursos de classe">
           {derived.classResources.map((resource) => <div key={resource.name}><strong>{resource.name}</strong><b>{resource.value}</b><small>{resource.description}</small></div>)}
         </div>}
@@ -324,7 +351,7 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
           <div><span>Pontos de vida</span><strong>{derived.hpMax}</strong></div>
           {system === "t20" && <div><span>Pontos de mana</span><strong>{derived.manaMax}</strong></div>}
           <div><span>Defesa / CA</span><strong>{derived.defense}</strong></div>
-          <div><span>Iniciativa</span><strong>{derived.initiative >= 0 ? `+${derived.initiative}` : derived.initiative}</strong></div>
+          <div><span>Iniciativa</span><strong>{derived.initiative >= 0 ? `+${derived.initiative}` : derived.initiative}{derived.initiativeRollMode === "advantage" ? " · vantagem" : derived.initiativeRollMode === "disadvantage" ? " · desvantagem" : ""}</strong></div>
           <div><span>Bônus de proficiência</span><strong>+{derived.proficiencyBonus}</strong></div>
           <div><span>Deslocamento</span><strong>{derived.speed}m</strong></div>
           {system === "dnd5e" && (!derived.canAct || !derived.canReact) && <div><span>Estado de ação</span><strong>{!derived.canAct ? "sem ações" : "ações normais"}{!derived.canReact ? " · sem reações" : ""}</strong></div>}
@@ -345,7 +372,7 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
         {derived.attacks.length > 0 && <fieldset className="pb-core-attack-summary">
           <legend>Ataques</legend>
           <div className="pb-core-attack-grid">
-            {derived.attacks.map((attack) => <div key={attack.name}><strong>{attack.name}</strong><span>{attack.bonus >= 0 ? `+${attack.bonus}` : attack.bonus} · {attack.damage}{attack.rollMode === "advantage" ? " · vantagem" : attack.rollMode === "disadvantage" ? " · desvantagem" : ""}{attack.attacksPerAction ? ` · ${attack.attacksPerAction} ataques/ação` : ""}{attack.conditionalDamage ? ` · ${attack.conditionalDamage}` : ""}{attack.critical ? ` · crítico ${attack.critical}` : ""}{attack.range ? ` · ${attack.range}` : ""}{attack.weaponProperties?.length ? ` · ${attack.weaponProperties.join(", ")}` : ""}{attack.proficient ? "" : " · sem proficiência"}</span></div>)}
+            {derived.attacks.map((attack) => <div key={attack.name}><strong>{attack.name}</strong><span>{attack.bonus >= 0 ? `+${attack.bonus}` : attack.bonus} · {attack.damage}{attack.rollMode === "advantage" ? " · vantagem" : attack.rollMode === "disadvantage" ? " · desvantagem" : ""}{attack.damageReroll ? ` · ${attack.damageReroll}` : ""}{attack.attacksPerAction ? ` · ${attack.attacksPerAction} ataques/ação` : ""}{attack.conditionalDamage ? ` · ${attack.conditionalDamage}` : ""}{attack.critical ? ` · crítico ${attack.critical}` : ""}{attack.range ? ` · ${attack.range}` : ""}{attack.weaponProperties?.length ? ` · ${attack.weaponProperties.join(", ")}` : ""}{attack.proficient ? "" : " · sem proficiência"}</span></div>)}
           </div>
         </fieldset>}
 
@@ -368,11 +395,12 @@ export function CoreCharacterSheet({ character, onClose, onUpdate }: CoreCharact
               const trained = (draft.skillProficiencies || []).includes(skill.id);
               const expertise = (draft.skillExpertise || []).includes(skill.id);
               const bonus = derived.skillBonuses[skill.id] || 0;
+              const minimum = derived.skillMinimums[skill.id];
               const rollMode = derived.skillRollModes[skill.id];
               const rollModeLabel = rollMode === "advantage" ? " · vantagem" : rollMode === "disadvantage" ? " · desvantagem" : "";
               return <div key={skill.id} className={trained ? "trained" : ""} title={skill.ruleSummary}>
                 <span>{skill.name}</span>
-                <small>{skill.keyAbility?.toUpperCase() || "—"} · {bonus >= 0 ? "+" : ""}{bonus}{expertise ? " · especialização" : trained ? " · treinada" : ""}{rollModeLabel}</small>
+                <small>{skill.keyAbility?.toUpperCase() || "—"} · {bonus >= 0 ? "+" : ""}{bonus}{expertise ? " · especialização" : trained ? " · treinada" : ""}{minimum !== undefined ? ` · mínimo ${minimum}` : ""}{rollModeLabel}</small>
               </div>;
             })}
           </div>

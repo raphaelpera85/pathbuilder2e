@@ -19,7 +19,7 @@ const DND_FEATURE_DETAILS: Record<string, Record<string, string>> = {
     "Ataque Descuidado": "Pode obter vantagem no primeiro ataque corpo a corpo usando Força, mas ataques contra você têm vantagem até seu próximo turno.",
     "Ataque Extra": "Pode atacar duas vezes, em vez de uma, ao realizar a ação Atacar.",
     "Movimento Rápido": "Seu deslocamento aumenta enquanto não usa armadura pesada.",
-    "Instinto Feral": "Adiciona o bônus de proficiência à iniciativa e pode agir normalmente se estiver surpreso após entrar em fúria.",
+    "Instinto Feral": "Recebe vantagem nas jogadas de iniciativa e pode agir normalmente se estiver surpreso, desde que entre em fúria no primeiro turno.",
     "Sentido de Perigo": "Recebe vantagem em salvamentos de Destreza contra efeitos que possa ver, desde que não esteja incapacitado ou cego.",
     "Caminho Primitivo": "Escolhe uma tradição bárbara no 3º nível; ela concede características adicionais nos níveis indicados.",
     "Característica do Caminho": "Recebe a característica do Caminho Primitivo escolhido para este nível.",
@@ -395,18 +395,32 @@ export function getCoreClassResources(system: SupportedCoreSystem, classId: stri
     const inspirationUses = Math.max(1, modifiers.cha || 0);
     const inspirationRecovery = safeLevel >= 5 ? "descanso curto ou longo" : "descanso longo";
     add("Inspiração de Bardo", `${inspirationUses}d${safeLevel >= 15 ? 12 : safeLevel >= 10 ? 10 : safeLevel >= 5 ? 8 : 6}`, `Usos por ${inspirationRecovery}: ${inspirationUses}.`);
+    if (safeLevel >= 2) add("Canção de Descanso", `d${safeLevel >= 15 ? 12 : safeLevel >= 10 ? 10 : safeLevel >= 5 ? 8 : 6}`, "Durante um descanso curto, aliados que ouvem sua música recuperam um dado adicional de vida.");
   }
   if (classId === "guerreiro") {
     add("Retomar o Fôlego", "1d10 + nível", "Recupera PV como ação bônus uma vez por descanso curto ou longo.");
     if (safeLevel >= 2) add("Surto de Ação", safeLevel >= 17 ? "2 usos" : "1 uso", "Concede uma ação adicional; recupera em descanso curto ou longo.");
+    if (safeLevel >= 9) add("Indomável", safeLevel >= 17 ? "3 usos" : safeLevel >= 13 ? "2 usos" : "1 uso", "Pode repetir um teste de resistência que falhou; recupera os usos após um descanso longo.");
   }
   if (classId === "ladino") add("Ataque Furtivo", `${Math.ceil(safeLevel / 2)}d6`, "Dano adicional uma vez por turno quando cumpre os requisitos.");
   if (classId === "monge" && safeLevel >= 2) add("Pontos de Ki", String(safeLevel), "Recupera todos os pontos após descanso curto ou longo.");
-  if (classId === "paladino") add("Imposição das Mãos", `${safeLevel * 5} PV`, "Reserva total de cura que se recupera após descanso longo.");
+  if (classId === "paladino") {
+    add("Imposição das Mãos", `${safeLevel * 5} PV`, "Reserva total de cura que se recupera após descanso longo.");
+    if (safeLevel >= 14) add("Toque Purificador", `${Math.max(1, modifiers.cha || 0)} usos`, "Encerra uma magia em si ou em uma criatura tocada; recupera os usos após um descanso longo.");
+  }
   if (classId === "feiticeiro" && safeLevel >= 2) add("Pontos de Feitiçaria", String(safeLevel), "Usados para Metamagia e conversão em espaços de magia.");
   if (classId === "clerigo" && safeLevel >= 2) add("Canalizar Divindade", safeLevel >= 18 ? "3 usos" : safeLevel >= 6 ? "2 usos" : "1 uso", "Recupera usos após descanso curto ou longo.");
   if (classId === "mago") add("Recuperação Arcana", `até ${Math.min(5, Math.ceil(safeLevel / 2))}º nível de espaços`, "Recupera espaços após um descanso curto uma vez por dia.");
   if (classId === "bruxo" && safeLevel >= 2) add("Invocações Místicas", safeLevel >= 18 ? "8" : safeLevel >= 15 ? "7" : safeLevel >= 12 ? "6" : safeLevel >= 9 ? "5" : safeLevel >= 7 ? "4" : safeLevel >= 5 ? "3" : "2", "Escolhas personalizáveis do patrono sobrenatural.");
+  if (classId === "bruxo") {
+    const pactSlots = safeLevel >= 17 ? 4 : safeLevel >= 11 ? 3 : safeLevel >= 2 ? 2 : 1;
+    const pactCircle = safeLevel >= 9 ? 5 : safeLevel >= 7 ? 4 : safeLevel >= 5 ? 3 : safeLevel >= 3 ? 2 : 1;
+    add("Magia de Pacto", `${pactSlots} espaço(s) de ${pactCircle}º círculo`, "Os espaços recuperam após descanso curto ou longo e são lançados sempre no maior círculo disponível.");
+    if (safeLevel >= 11) add("Arcana Mística (6º nível)", "1 uso", "Aprende uma magia de 6º nível para lançar uma vez sem gastar espaço; recupera após descanso longo.");
+    if (safeLevel >= 13) add("Arcana Mística (7º nível)", "1 uso", "Aprende uma magia de 7º nível para lançar uma vez sem gastar espaço; recupera após descanso longo.");
+    if (safeLevel >= 15) add("Arcana Mística (8º nível)", "1 uso", "Aprende uma magia de 8º nível para lançar uma vez sem gastar espaço; recupera após descanso longo.");
+    if (safeLevel >= 17) add("Arcana Mística (9º nível)", "1 uso", "Aprende uma magia de 9º nível para lançar uma vez sem gastar espaço; recupera após descanso longo.");
+  }
   if (classId === "druida" && safeLevel >= 2) add("Forma Selvagem", safeLevel >= 18 ? "sem limite de forma" : "2 usos", "Usos recuperados após descanso curto ou longo; o círculo define opções adicionais.");
   if (classId === "patrulheiro") {
     const favoredEnemyCount = safeLevel >= 14 ? 3 : safeLevel >= 6 ? 2 : 1;

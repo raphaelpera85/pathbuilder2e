@@ -24,6 +24,8 @@ const fixture: OseCharacterCreatedData = {
   weapons: [],
   armors: [],
   gear: [],
+  beasts: [],
+  retainers: [],
   spellsKnown: ["mago_missil_magico"],
   preparedSpells: ["mago_missil_magico"],
 };
@@ -149,5 +151,22 @@ describe("Exportação OSE para PDF editável", () => {
 
     expect(form.getTextField("Exporation Movement").getText()).toBe("0");
     expect(form.getTextField("Encounter Movement").getText()).toBe("0");
+  });
+
+  it("exporta montarias e lacaios na ficha editável", async () => {
+    const withFollowers: OseCharacterCreatedData = {
+      ...fixture,
+      id: "ose-pdf-followers",
+      beasts: [{ id: "cavalo_montaria", name: "Cavalo de Montaria", nameEn: "Riding Horse", costGp: 75, weightCoins: 0, maxLoadCoins: 3000, movementSpeed: 72, ac: 7, hd: "2", attacks: "2x Cascos (1d4)", description: "Montaria" }],
+      retainers: [{ id: "guia_rastreador", name: "Guia / Rastreador", nameEn: "Guide / Tracker", wageGpPerMonth: 25, description: "Guia" }],
+    };
+    const template = fs.readFileSync(path.resolve(process.cwd(), "public/ose-character-sheet-template.pdf"));
+    const bytes = await createOseEditablePdf(withFollowers, new Uint8Array(template));
+    const form = (await PDFDocument.load(bytes)).getForm();
+
+    expect(form.getTextField("Abilities, Skills, Weapons").getText()).toContain("Animal/montaria: Cavalo de Montaria");
+    expect(form.getTextField("Abilities, Skills, Weapons").getText()).toContain("Lacaio: Guia / Rastreador");
+    expect(form.getTextField("Notes").getText()).toContain("Animais: Cavalo de Montaria");
+    expect(form.getTextField("Notes").getText()).toContain("Lacaios: Guia / Rastreador");
   });
 });

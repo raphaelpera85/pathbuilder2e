@@ -5,7 +5,7 @@
 
 export type OseAbilityName = "str" | "int" | "wis" | "dex" | "con" | "cha";
 
-import type { OseArmor, OseWeapon } from "./oseEquipment";
+import { OSE_BEASTS, OSE_SPECIALISTS_RETAINERS, type OseArmor, type OseWeapon } from "./oseEquipment";
 import type { OseClass } from "./oseClasses";
 import type { OseRace } from "./oseRaces";
 
@@ -21,6 +21,22 @@ export interface OseAbilityModifiers {
   dex: { ac: number; missile: number; initiative: number };
   con: { hp: number };
   cha: { npcReactions: number; maxRetainers: number; retainerLoyalty: number };
+}
+
+export function validateOseFollowers(beasts: unknown, retainers: unknown, maxRetainers: number): string[] {
+  const errors: string[] = [];
+  const beastEntries = Array.isArray(beasts) ? beasts : [];
+  const retainerEntries = Array.isArray(retainers) ? retainers : [];
+  const beastIds = new Set(OSE_BEASTS.map((entry) => entry.id));
+  const retainerIds = new Set(OSE_SPECIALISTS_RETAINERS.map((entry) => entry.id));
+  const selectedBeastIds = beastEntries.map((entry) => entry && typeof entry === "object" && "id" in entry ? String(entry.id) : "");
+  const selectedRetainerIds = retainerEntries.map((entry) => entry && typeof entry === "object" && "id" in entry ? String(entry.id) : "");
+  if (selectedBeastIds.some((id) => !beastIds.has(id))) errors.push("a ficha contém animal ou montaria fora do catálogo OSE");
+  if (selectedRetainerIds.some((id) => !retainerIds.has(id))) errors.push("a ficha contém retentor fora do catálogo OSE");
+  if (new Set(selectedBeastIds).size !== selectedBeastIds.length) errors.push("animais e montarias não podem ser duplicados");
+  if (new Set(selectedRetainerIds).size !== selectedRetainerIds.length) errors.push("retentores não podem ser duplicados");
+  if (selectedRetainerIds.length > Math.max(0, Math.trunc(maxRetainers))) errors.push(`a ficha excede o máximo de ${Math.max(0, Math.trunc(maxRetainers))} retentor(es) permitido pelo Carisma`);
+  return errors;
 }
 
 /**

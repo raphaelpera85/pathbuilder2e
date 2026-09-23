@@ -12,6 +12,7 @@
     "audit:catalog:supabase": "node scripts/audit-catalog-supabase-reconciliation.cjs",
     "audit:core:supabase": "node scripts/audit-core-systems-supabase.cjs",
     "audit:core-actions:supabase": "node scripts/audit-core-actions-conditions-supabase.cjs",
+    "audit:core:skills:supabase": "node scripts/audit-core-skills-supabase.cjs",
     "audit:system:coverage": "node --experimental-strip-types --loader ./scripts/ts-extension-loader.mjs scripts/audit-system-coverage.cjs",
     "audit:core-skills:supabase": "node scripts/audit-core-skills-supabase.cjs",
     "audit:characters:supabase": "node scripts/audit-character-metadata-supabase.cjs",

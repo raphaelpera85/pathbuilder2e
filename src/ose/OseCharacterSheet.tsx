@@ -261,6 +261,22 @@ export function OseCharacterSheet({
             </div>
           </div>
 
+          {(char.beasts?.length || char.retainers?.length) ? (
+            <div className="ose-card">
+              <div className="ose-card-title">🐎 Montarias, animais e lacaios</div>
+              {char.beasts?.map((beast) => (
+                <div key={beast.id} style={{ fontSize: "0.8rem", marginBottom: 5 }}>
+                  <strong>{beast.name}</strong> · {beast.hd} DV · CA {beast.ac} · deslocamento {beast.movementSpeed}m
+                </div>
+              ))}
+              {char.retainers?.map((retainer) => (
+                <div key={retainer.id} style={{ fontSize: "0.8rem", marginBottom: 5 }}>
+                  <strong>{retainer.name}</strong> · {retainer.wageGpPerMonth} po/mês · lealdade {chaMod.retainerLoyalty}
+                </div>
+              ))}
+            </div>
+          ) : null}
+
           {/* Log de Rolagens */}
           <div className="ose-card">
             <div className="ose-card-title">Histórico de Dados</div>

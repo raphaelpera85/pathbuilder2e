@@ -227,6 +227,27 @@ describe("character cloud contract", () => {
     });
   });
 
+  it("preserva montarias e retentores OSE no round-trip local", async () => {
+    const user = { id: "user-ose-followers" } as never;
+    await saveCharacter({
+      id: "ose-followers",
+      name: "Batedor com comitiva",
+      level: 3,
+      system_id: "ose",
+      systemId: "ose",
+      ruleset: "advanced",
+      raceId: "humano",
+      classId: "guerreiro",
+      beasts: [{ id: "cavalo_montaria", name: "Cavalo de Montaria", costGp: 75, weightCoins: 0, maxLoadCoins: 3000, movementSpeed: 72, ac: 7, hd: "2", attacks: "2x Cascos (1d4)", description: "Montaria" }],
+      retainers: [{ id: "guia_rastreador", name: "Guia / Rastreador", nameEn: "Guide / Tracker", wageGpPerMonth: 25, description: "Guia" }],
+    }, user);
+    const reloaded = (await listCharacters(user, { systemId: "ose" }))[0];
+    expect(reloaded.data).toMatchObject({
+      beasts: [expect.objectContaining({ id: "cavalo_montaria", movementSpeed: 72 })],
+      retainers: [expect.objectContaining({ id: "guia_rastreador", wageGpPerMonth: 25 })],
+    });
+  });
+
   it("preserva escolhas internas de subclasse D&D 5e no round-trip local", async () => {
     const user = { id: "user-subclass-choice" } as never;
     const character = {

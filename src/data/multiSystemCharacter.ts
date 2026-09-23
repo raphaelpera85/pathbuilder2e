@@ -163,6 +163,8 @@ export interface MultiSystemCharacter {
   dndRageActive?: boolean;
   /** Ativa Ataque Descuidado do Bárbaro D&D 5e no primeiro ataque corpo a corpo com Força. */
   dndRecklessAttackActive?: boolean;
+  /** Espaço de magia reservado para Destruição Divina durante a cena (1º–5º círculo). */
+  dndDivineSmiteSlot?: number;
   /** Condições temporárias selecionadas no construtor/ficha (D&D 5e). */
   conditions?: CoreActiveCondition[];
 }
@@ -205,6 +207,7 @@ export function cloneCoreCharacter(character: MultiSystemCharacter): MultiSystem
     dndPowerAttack: character.dndPowerAttack,
     dndRageActive: character.dndRageActive,
     dndRecklessAttackActive: character.dndRecklessAttackActive,
+    dndDivineSmiteSlot: character.dndDivineSmiteSlot,
     conditions: character.conditions?.map((condition) => ({ ...condition })),
   };
 }
@@ -676,6 +679,7 @@ export function createInitialCoreCharacter(system: SupportedCoreSystem): MultiSy
     dndPowerAttack: false,
     dndRageActive: false,
     dndRecklessAttackActive: false,
+    dndDivineSmiteSlot: 0,
     conditions: [],
   };
 }
