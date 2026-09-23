@@ -23,7 +23,7 @@ import { DND5E_CREATION_STEPS, DND5E_TOOLS, DND5E_TOOL_CHOICE_GROUPS, getDnd5eTo
 import { T20_ARCANIST_PATHS, T20_CREATION_STEPS, T20_SORCERER_LINEAGES, T20_DRACONIC_DAMAGE_TYPES } from "./t20/t20Catalog";
 import { validateAbilityGeneration } from "./coreCharacterRules";
 import { getCoreClassFeatures, getCoreClassResources, type CoreClassFeature, type CoreClassResource } from "./coreClassFeatures";
-import { DND5E_CLERIC_DOMAIN_SPELLS, DND5E_CLASS_CHOICES, DND5E_LAND_CIRCLE_SPELLS } from "./dnd5e/dnd5eOptions";
+import { DND5E_CLERIC_DOMAIN_SPELLS, DND5E_CLASS_CHOICES, DND5E_LAND_CIRCLE_SPELLS, getDnd5eClassChoiceCount } from "./dnd5e/dnd5eOptions";
 import { DND5E_FEAT_CHOICES } from "./dnd5e/dnd5eCompendium";
 import { T20_POWER_CHOICES } from "./t20/t20Compendium";
 import { T20_CLASS_CHOICES } from "./t20/t20Catalog";
@@ -821,11 +821,13 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
         const rangerChoice = (id: string) => character.classChoices?.[id]?.[0];
         const favoredEnemy = rangerChoice("ranger-favored-enemy");
         const favoredEnemy6 = rangerChoice("ranger-favored-enemy-6");
+        const favoredEnemy14 = rangerChoice("ranger-favored-enemy-14");
         const favoredTerrain = rangerChoice("ranger-favored-terrain");
         const favoredTerrain6 = rangerChoice("ranger-favored-terrain-6");
         const favoredTerrain10 = rangerChoice("ranger-favored-terrain-10");
         if (favoredEnemy) classChoiceEffects.push(`Inimigo Favorecido (1º nível): ${favoredEnemy} · idioma associado deve ser registrado na ficha`);
         if (favoredEnemy6) classChoiceEffects.push(`Inimigo Favorecido adicional (6º nível): ${favoredEnemy6} · idioma associado deve ser registrado na ficha`);
+        if (favoredEnemy14) classChoiceEffects.push(`Inimigo Favorecido adicional (14º nível): ${favoredEnemy14} · idioma associado deve ser registrado na ficha`);
         if (favoredTerrain) classChoiceEffects.push(`Terreno Favorecido (1º nível): ${favoredTerrain}`);
         if (favoredTerrain6) classChoiceEffects.push(`Terreno Favorecido adicional (6º nível): ${favoredTerrain6}`);
         if (favoredTerrain10) classChoiceEffects.push(`Terreno Favorecido adicional (10º nível): ${favoredTerrain10}`);
@@ -987,7 +989,9 @@ function buildEngine(systemId: SupportedCoreSystem): SystemRulesEngine {
           const values = character.subclassChoices?.[choice.id] || [];
           if (asChoiceValues(values).length !== choice.count) errors.push(`selecione ${choice.count} opção(ões) para ${choice.label}`);
         }
-        const classChoices = (systemId === "dnd5e" ? DND5E_CLASS_CHOICES : T20_CLASS_CHOICES).filter((choice) => choice.classId === character.classId && character.level >= choice.minimumLevel);
+        const classChoices = (systemId === "dnd5e" ? DND5E_CLASS_CHOICES : T20_CLASS_CHOICES)
+          .filter((choice) => choice.classId === character.classId && character.level >= choice.minimumLevel)
+          .map((choice) => systemId === "dnd5e" ? { ...choice, count: getDnd5eClassChoiceCount(choice, character.level) } : choice);
         const declaredClassChoices = new Map(classChoices.map((choice) => [choice.id, choice]));
         for (const [choiceId, values] of Object.entries(character.classChoices || {})) {
           const choice = declaredClassChoices.get(choiceId);

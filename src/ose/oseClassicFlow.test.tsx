@@ -3,6 +3,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { OseCharacterCreatorModal, type OseCharacterCreatedData } from "./OseCharacterCreatorModal";
 import { OSE_CLASSES } from "../data/ose/oseClasses";
 import { OSE_SPELLS } from "../data/ose/oseSpells";
+import { isOseClassAvailableForMode } from "../data/ose/oseRules";
 
 /**
  * Fluxo Classic ponta a ponta.
@@ -166,5 +167,20 @@ describe("OSE Classic — fluxo completo de criação", () => {
     expect(created.classId).toBe("elfo_bx");
     expect(created.level).toBe(5);
     expect(created.xp).toBe(20000);
+  });
+
+  it("mantém a matriz completa das sete classes jogáveis do Classic", () => {
+    const classicClasses = Object.values(OSE_CLASSES).filter((entry) => isOseClassAvailableForMode(entry, "classic"));
+    expect(classicClasses.map((entry) => entry.id).sort()).toEqual([
+      "anao_bx", "clerigo", "elfo_bx", "guerreiro", "halfling_bx", "ladrao", "mago",
+    ]);
+    for (const entry of classicClasses) {
+      const expectedMaxLevel = entry.id === "anao_bx" ? 12 : entry.id === "elfo_bx" ? 10 : entry.id === "halfling_bx" ? 8 : 14;
+      expect(entry.progression, entry.id).toHaveLength(expectedMaxLevel);
+      expect(entry.progression.map((level) => level.level), entry.id).toEqual(Array.from({ length: expectedMaxLevel }, (_, index) => index + 1));
+      expect(entry.features.length, entry.id).toBeGreaterThan(0);
+      expect(entry.progression[0].saves, entry.id).toEqual(expect.objectContaining({ death: expect.any(Number), wands: expect.any(Number), paralysis: expect.any(Number), breath: expect.any(Number), spells: expect.any(Number) }));
+      if (entry.spellCasting) expect(entry.progression.some((level) => (level.spells?.length ?? 0) > 0), entry.id).toBe(true);
+    }
   });
 });

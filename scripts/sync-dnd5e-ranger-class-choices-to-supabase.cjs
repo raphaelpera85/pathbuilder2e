@@ -11,6 +11,7 @@ const terrains = ["Ártico", "Costa", "Deserto", "Floresta", "Planície", "Monta
 const classChoices = [
   { id: "ranger-favored-enemy", classId: "patrulheiro", label: "Inimigo Favorecido (1º nível)", minimumLevel: 1, options, count: 1 },
   { id: "ranger-favored-enemy-6", classId: "patrulheiro", label: "Inimigo Favorecido adicional (6º nível)", minimumLevel: 6, options, count: 1 },
+  { id: "ranger-favored-enemy-14", classId: "patrulheiro", label: "Inimigo Favorecido adicional (14º nível)", minimumLevel: 14, options, count: 1 },
   { id: "ranger-favored-terrain", classId: "patrulheiro", label: "Terreno Favorecido (1º nível)", minimumLevel: 1, options: terrains, count: 1 },
   { id: "ranger-favored-terrain-6", classId: "patrulheiro", label: "Terreno Favorecido adicional (6º nível)", minimumLevel: 6, options: terrains, count: 1 },
   { id: "ranger-favored-terrain-10", classId: "patrulheiro", label: "Terreno Favorecido adicional (10º nível)", minimumLevel: 10, options: terrains, count: 1 },

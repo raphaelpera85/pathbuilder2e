@@ -54,7 +54,7 @@ export const DND5E_EQUIPMENT: Dnd5eCompendiumEntry[] = [
   { id: "dnd5e.arma.besta_pesada", name: "Besta pesada", sourcePage: 149, category: "arma", summary: "1d10 perfurante · munição · pesada · recarga", proficiency: "martial_weapon", attackAbility: "dex", damage: "1d10 perfurante", weight: 18 },
   { id: "dnd5e.arma.arco_longo", name: "Arco longo", sourcePage: 149, category: "arma", summary: "1d8 perfurante · munição · pesada · duas mãos", proficiency: "martial_weapon", attackAbility: "dex", damage: "1d8 perfurante", weight: 2 },
   { id: "dnd5e.arma.zarabatana", name: "Zarabatana", sourcePage: 149, category: "arma", summary: "1 perfurante · munição · recarga", proficiency: "martial_weapon", attackAbility: "dex", damage: "1 perfurante", weight: 1 },
-  { id: "dnd5e.arma.rede", name: "Rede", sourcePage: 149, category: "arma", summary: "especial · arremesso", proficiency: "martial_weapon", attackAbility: "dex", weight: 3 },
+  { id: "dnd5e.arma.rede", name: "Rede", sourcePage: 149, category: "arma", summary: "especial · arremesso", proficiency: "martial_weapon", attackAbility: "dex", damage: "—", weight: 3 },
   { id: "dnd5e.armadura.estofada", name: "Armadura acolchoada", sourcePage: 145, category: "armadura", summary: "CA 11 + Des · desvantagem Furtividade", proficiency: "light_armor", armorClass: 11, dexterityCap: 99, weight: 8 },
   { id: "dnd5e.armadura.couro_batido", name: "Couro batido", sourcePage: 145, category: "armadura", summary: "CA 12 + Des", proficiency: "light_armor", armorClass: 12, dexterityCap: 99, weight: 13 },
   { id: "dnd5e.armadura.couro_cravejado", name: "Couro cravejado", sourcePage: 145, category: "armadura", summary: "CA 12 + Des", proficiency: "light_armor", armorClass: 12, dexterityCap: 99, weight: 13 },

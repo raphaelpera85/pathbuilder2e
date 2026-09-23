@@ -123,7 +123,20 @@ export async function createCoreEditablePdf(character: MultiSystemCharacter): Pr
   label(page, bold, "EQUIPAMENTO", 36, 515); textField(form, page, "character.equipment", [equipmentText, attunedText && `Sintonizados: ${attunedText}`].filter(Boolean).join(" · "), 36, 463, 522, 42, 8);
   label(page, bold, "MAGIAS", 36, 438); textField(form, page, "character.spells", listNames(catalog.spells, character.spellIds || []), 36, 386, 522, 42, 8);
   label(page, bold, system === "t20" ? "PODERES" : "TALENTOS", 36, 361); textField(form, page, "character.feats", listFeatNames(character, catalog), 36, 309, 522, 42, 8);
-  label(page, bold, "NOTAS", 36, 284); textField(form, page, "character.notes", character.notes, 36, 60, 522, 214, 8);
+  const spellNames = new Map(catalog.spells.map((spell) => [spell.id, spell.name]));
+  const knownSpellsText = (character.spellIds || []).map((id) => spellNames.get(id) || id).join(", ");
+  const preparedSpellsText = (character.preparedSpellIds || []).map((id) => spellNames.get(id) || id).join(", ");
+  const classResourcesText = derived.classResources.map((resource) => `${resource.name}: ${resource.value}`).join(" · ");
+  const classFeaturesText = derived.classFeatures.map((feature) => `N${feature.level} ${feature.name}: ${feature.description}`).join(" · ");
+  const notesText = [
+    character.notes,
+    classResourcesText && `Recursos de classe: ${classResourcesText}`,
+    classFeaturesText && `Características de classe: ${classFeaturesText}`,
+    derived.featEffects.length > 0 && `Efeitos de talentos/poderes: ${derived.featEffects.join(" · ")}`,
+    knownSpellsText && `Magias conhecidas/selecionadas: ${knownSpellsText}`,
+    preparedSpellsText && `Magias preparadas: ${preparedSpellsText}`,
+  ].filter(Boolean).join("\n");
+  label(page, bold, "NOTAS / RECURSOS / CARACTERÍSTICAS", 36, 284); textField(form, page, "character.notes", notesText, 36, 60, 522, 214, 7);
 
   form.updateFieldAppearances(font);
   return pdf.save();

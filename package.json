@@ -44,7 +44,8 @@
     "sync:dnd5e-subclass-choices:supabase": "node scripts/sync-dnd5e-subclass-choices-to-supabase.cjs",
     "sync:dnd5e-land-circle:supabase": "node scripts/sync-dnd5e-land-circle-spells-to-supabase.cjs",
     "sync:dnd5e-domain-spells:supabase": "node scripts/sync-dnd5e-domain-spells-to-supabase.cjs",
-    "sync:supabase:dnd5e:ranger": "node scripts/sync-dnd5e-ranger-class-choices-to-supabase.cjs"
+    "sync:supabase:dnd5e:ranger": "node scripts/sync-dnd5e-ranger-class-choices-to-supabase.cjs",
+    "sync:supabase:dnd5e:sorcerer": "node scripts/sync-dnd5e-sorcerer-metamagic-to-supabase.cjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "latest",

@@ -2,8 +2,20 @@ import { describe, expect, it } from "vitest";
 import { abilityModifier, getAvailableCoreSpells, isT20PowerPrerequisiteSatisfied, proficiencyBonus } from "./multiSystemCharacter";
 import { DND5E_RULES_ENGINE, T20_RULES_ENGINE, getSystemRulesEngine } from "./systemRulesEngine";
 import { DND5E_CLASS_PROGRESSIONS } from "./dnd5e/dnd5eProgressions";
+import { T20_CLASS_PROGRESSIONS } from "./t20/t20Progressions";
+import { getCoreClassFeatures } from "./coreClassFeatures";
 
 describe("system rules engines", () => {
+  it("descreve cada habilidade de progressão dos sistemas core", () => {
+    for (const [system, progressions] of [["t20", T20_CLASS_PROGRESSIONS], ["dnd5e", DND5E_CLASS_PROGRESSIONS]] as const) {
+      for (const progression of progressions) {
+        const features = getCoreClassFeatures(system, progression.classId, 20, progression);
+        expect(features, `${system}/${progression.classId}`).not.toHaveLength(0);
+        expect(features.filter((feature) => feature.description.includes("disponível conforme a progressão")), `${system}/${progression.classId}`).toEqual([]);
+      }
+    }
+  });
+
   it("keeps creation steps and rulesets separate", () => {
     expect(T20_RULES_ENGINE.getCreationSteps()).toContain("divindade");
     expect(DND5E_RULES_ENGINE.getCreationSteps()).toContain("antecedente");
@@ -558,10 +570,11 @@ describe("system rules engines", () => {
   it("aplica as escolhas estruturadas de Inimigo e Terreno Favorecidos do Patrulheiro", () => {
     const ranger = DND5E_RULES_ENGINE.createDefaultCharacter();
     ranger.classId = "patrulheiro";
-    ranger.level = 10;
+    ranger.level = 14;
     ranger.classChoices = {
       "ranger-favored-enemy": ["Dragões"],
       "ranger-favored-enemy-6": ["Mortos-vivos"],
+      "ranger-favored-enemy-14": ["Aberrações"],
       "ranger-favored-terrain": ["Floresta"],
       "ranger-favored-terrain-6": ["Montanha"],
       "ranger-favored-terrain-10": ["Subterrâneo"],
@@ -569,12 +582,13 @@ describe("system rules engines", () => {
     expect(DND5E_RULES_ENGINE.deriveStats(ranger).classChoiceEffects).toEqual([
       "Inimigo Favorecido (1º nível): Dragões · idioma associado deve ser registrado na ficha",
       "Inimigo Favorecido adicional (6º nível): Mortos-vivos · idioma associado deve ser registrado na ficha",
+      "Inimigo Favorecido adicional (14º nível): Aberrações · idioma associado deve ser registrado na ficha",
       "Terreno Favorecido (1º nível): Floresta",
       "Terreno Favorecido adicional (6º nível): Montanha",
       "Terreno Favorecido adicional (10º nível): Subterrâneo",
     ]);
 
-    const lowLevel = { ...ranger, level: 5, classChoices: { "ranger-favored-enemy": ["Dragões"], "ranger-favored-terrain": ["Floresta"], "ranger-favored-enemy-6": ["Mortos-vivos"] } };
+    const lowLevel = { ...ranger, level: 5, classChoices: { "ranger-favored-enemy": ["Dragões"], "ranger-favored-terrain": ["Floresta"], "ranger-favored-enemy-6": ["Mortos-vivos"], "ranger-favored-enemy-14": ["Aberrações"] } };
     expect(DND5E_RULES_ENGINE.validateCharacter(lowLevel)).toContain("a escolha da classe não pertence ao nível ou classe selecionada");
   });
 
@@ -822,6 +836,40 @@ describe("system rules engines", () => {
     expect(DND5E_RULES_ENGINE.deriveStats(levelTwentyBarbarian).classResources).toEqual(expect.arrayContaining([
       expect.objectContaining({ name: "Fúrias", value: "999" }),
     ]));
+    const ranger = DND5E_RULES_ENGINE.createDefaultCharacter();
+    ranger.classId = "patrulheiro";
+    expect(DND5E_RULES_ENGINE.deriveStats(ranger).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Inimigo Favorito", value: "1 escolha(s)" }),
+      expect.objectContaining({ name: "Explorador Natural", value: "1 terreno(s) favorecido(s)" }),
+    ]));
+    ranger.level = 6;
+    expect(DND5E_RULES_ENGINE.deriveStats(ranger).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Inimigo Favorito", value: "2 escolha(s)" }),
+      expect.objectContaining({ name: "Explorador Natural", value: "2 terreno(s) favorecido(s)" }),
+    ]));
+    ranger.level = 11;
+    expect(DND5E_RULES_ENGINE.deriveStats(ranger).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Inimigo Favorito", value: "2 escolha(s)" }),
+    ]));
+    ranger.level = 14;
+    expect(DND5E_RULES_ENGINE.deriveStats(ranger).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Inimigo Favorito", value: "3 escolha(s)" }),
+    ]));
+    ranger.level = 10;
+    expect(DND5E_RULES_ENGINE.deriveStats(ranger).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Explorador Natural", value: "3 terreno(s) favorecido(s)" }),
+    ]));
+    const bard = DND5E_RULES_ENGINE.createDefaultCharacter();
+    bard.classId = "bardo";
+    bard.abilities.cha = 16;
+    bard.level = 4;
+    expect(DND5E_RULES_ENGINE.deriveStats(bard).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Inspiração de Bardo", value: "3d6", description: expect.stringContaining("descanso longo") }),
+    ]));
+    bard.level = 5;
+    expect(DND5E_RULES_ENGINE.deriveStats(bard).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Inspiração de Bardo", value: "3d8", description: expect.stringContaining("descanso curto ou longo") }),
+    ]));
 
     const t20 = T20_RULES_ENGINE.createDefaultCharacter();
     t20.classId = "paladino";
@@ -833,6 +881,24 @@ describe("system rules engines", () => {
       expect.objectContaining({ name: "Golpe Divino", value: "1d8 · 2 PM" }),
       expect.objectContaining({ name: "Cura pelas Mãos" }),
       expect.objectContaining({ name: "Aura Sagrada" }),
+    ]));
+    const arcanist = T20_RULES_ENGINE.createDefaultCharacter();
+    arcanist.classId = "arcanista";
+    expect(T20_RULES_ENGINE.deriveStats(arcanist).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Caminho do Arcanista", value: "Bruxo, Feiticeiro ou Mago" }),
+      expect.objectContaining({ name: "Magias Arcanas", value: "1º círculo" }),
+    ]));
+    arcanist.level = 5;
+    expect(T20_RULES_ENGINE.deriveStats(arcanist).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Magias Arcanas", value: "2º círculo" }),
+    ]));
+    arcanist.level = 17;
+    expect(T20_RULES_ENGINE.deriveStats(arcanist).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Magias Arcanas", value: "5º círculo" }),
+    ]));
+    arcanist.level = 20;
+    expect(T20_RULES_ENGINE.deriveStats(arcanist).classResources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "Alta Arcana", value: "Custos reduzidos" }),
     ]));
   });
 
@@ -931,6 +997,14 @@ describe("system rules engines", () => {
     expect(DND5E_RULES_ENGINE.validateCharacter(sorcerer)).toContain("selecione 2 opção(ões) para Metamagia");
     sorcerer.classChoices = { "sorcerer-metamagic": ["Magia Sutil", "Magia Acelerada"] };
     expect(DND5E_RULES_ENGINE.validateCharacter(sorcerer)).not.toContain("selecione 2 opção(ões) para Metamagia");
+    sorcerer.level = 10;
+    expect(DND5E_RULES_ENGINE.validateCharacter(sorcerer)).toContain("selecione 3 opção(ões) para Metamagia");
+    sorcerer.classChoices["sorcerer-metamagic"].push("Magia Distante");
+    expect(DND5E_RULES_ENGINE.validateCharacter(sorcerer)).not.toContain("selecione 3 opção(ões) para Metamagia");
+    sorcerer.level = 17;
+    expect(DND5E_RULES_ENGINE.validateCharacter(sorcerer)).toContain("selecione 4 opção(ões) para Metamagia");
+    sorcerer.classChoices["sorcerer-metamagic"].push("Magia Estendida");
+    expect(DND5E_RULES_ENGINE.validateCharacter(sorcerer)).not.toContain("selecione 4 opção(ões) para Metamagia");
   });
 
   it("rejects missing required trained skills", () => {

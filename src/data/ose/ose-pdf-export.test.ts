@@ -74,6 +74,9 @@ describe("Exportação OSE para PDF editável", () => {
     expect(form.getTextField("Race").getText()).toContain("An");
     expect(form.getTextField("Level").getText()).toBe("3");
     expect(form.getTextField("Alignment").getText()).toContain("ordeiro");
+    expect(form.getTextField("Description").getText()).toContain("Anão");
+    expect(form.getTextField("Abilities, Skills, Weapons").getText()).toContain("Ouvir Ruídos");
+    expect(form.getTextField("Notes").getText()).toContain("Tesouro:");
     // Sem magias: o campo de magias não inventa conteúdo.
     expect(form.getTextField("Notes").getText() || "").not.toContain("Míssil Mágico");
   });
@@ -100,6 +103,7 @@ describe("Exportação OSE para PDF editável", () => {
 
     expect(form.getTextField("Class").getText()).toContain("Clérigo");
     expect(form.getTextField("Notes").getText()).toContain("Curar Ferimentos Leves");
+    expect(form.getTextField("Description").getText()).toContain("OSE Classic");
   });
 
   it("grava o movimento da faixa de carga correta nos três campos do template", async () => {

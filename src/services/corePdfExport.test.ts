@@ -54,4 +54,19 @@ describe("core editable PDF export", () => {
     const pdf = await PDFDocument.load(await createCoreEditablePdf(character));
     expect(pdf.getForm().getTextField("character.equipment").getText()).toContain("Sintonizados: Anel de proteção");
   });
+
+  it("exports class resources, class features and prepared-spell distinction", async () => {
+    const character = createInitialCoreCharacter("dnd5e");
+    character.classId = "barbaro";
+    character.level = 2;
+    character.spellIds = ["dnd5e.magia.misseis_magicos"];
+    character.preparedSpellIds = [];
+    const pdf = await PDFDocument.load(await createCoreEditablePdf(character));
+    const notes = pdf.getForm().getTextField("character.notes").getText();
+    expect(notes).toContain("Recursos de classe:");
+    expect(notes).toContain("Fúrias: 2");
+    expect(notes).toContain("Características de classe:");
+    expect(notes).toContain("Magias conhecidas/selecionadas:");
+    expect(notes).not.toContain("Magias preparadas:");
+  });
 });

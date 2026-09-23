@@ -49,4 +49,28 @@ describe("SystemSelectorModal accessibility", () => {
     expect(opener).toHaveFocus();
     opener.remove();
   });
+
+  it("exibe a contagem atual do catálogo de magias de D&D 5e", () => {
+    render(
+      <I18nProvider>
+        <SystemSelectorModal
+          isOpen
+          onClose={vi.fn()}
+          onSelectSystem={vi.fn()}
+          systems={[{
+            id: "dnd5e",
+            name: { "pt-BR": "D&D 5e" },
+            description: { "pt-BR": "Livro do Jogador 2014" },
+            icon: "🐉",
+            badgeColor: "#c53030",
+            supportedRulesets: ["standard"],
+            defaultRuleset: "standard",
+          }] as any}
+        />
+      </I18nProvider>
+    );
+
+    expect(screen.getByText("315")).toBeInTheDocument();
+    expect(screen.queryByText("301")).not.toBeInTheDocument();
+  });
 });

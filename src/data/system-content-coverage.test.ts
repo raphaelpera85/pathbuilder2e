@@ -69,6 +69,54 @@ describe("system content coverage contract", () => {
     expect(getSystemRuleItems("ose").some((item) => item.data.ruleKind === "advantage")).toBe(false);
   });
 
+  it("mantém metadados mínimos de conjuração em cada magia selecionável", () => {
+    for (const spell of T20_SPELLS) {
+      expect(spell.spellLevel, `T20 ${spell.id} nível`).toBeDefined();
+      expect(spell.tradition, `T20 ${spell.id} tradição`).toBeDefined();
+      expect(spell.castingTime, `T20 ${spell.id} execução`).toBeDefined();
+      expect(spell.range, `T20 ${spell.id} alcance`).toBeDefined();
+      expect(spell.duration, `T20 ${spell.id} duração`).toBeDefined();
+    }
+    for (const spell of DND5E_SPELLS) {
+      expect(spell.spellLevel, `D&D 5e ${spell.id} nível`).toBeDefined();
+      expect(spell.castingTime, `D&D 5e ${spell.id} tempo`).toBeDefined();
+      expect(spell.range, `D&D 5e ${spell.id} alcance`).toBeDefined();
+      expect(spell.components, `D&D 5e ${spell.id} componentes`).toBeDefined();
+      expect(spell.duration, `D&D 5e ${spell.id} duração`).toBeDefined();
+    }
+    for (const spell of OSE_SPELLS) {
+      expect(spell.circle, `OSE ${spell.id} círculo`).toBeGreaterThan(0);
+      expect(spell.range, `OSE ${spell.id} alcance`).toBeTruthy();
+      expect(spell.duration, `OSE ${spell.id} duração`).toBeTruthy();
+      expect(spell.description, `OSE ${spell.id} descrição`).toBeTruthy();
+    }
+  });
+
+  it("mantém metadados mínimos de uso em armas, armaduras e equipamentos", () => {
+    for (const [system, items] of [["T20", T20_EQUIPMENT], ["D&D 5e", DND5E_EQUIPMENT]] as const) {
+      for (const item of items) {
+        expect(item.summary, `${system} ${item.id} resumo`).toBeTruthy();
+        expect(item.sourcePage, `${system} ${item.id} fonte`).toBeGreaterThan(0);
+        if (item.category === "arma" && !item.magical) {
+          expect(item.damage, `${system} ${item.id} dano`).toBeTruthy();
+          expect(item.attackAbility, `${system} ${item.id} atributo de ataque`).toBeDefined();
+          expect(item.weight, `${system} ${item.id} peso`).toBeDefined();
+        }
+        if (item.category === "armadura" && !item.magical && !item.id.endsWith(".leve") && !item.id.endsWith(".media") && !item.id.endsWith(".pesada")) {
+          expect(item.weight, `${system} ${item.id} peso`).toBeDefined();
+          expect(item.armorClass ?? item.armorBonus ?? item.shieldBonus, `${system} ${item.id} defesa`).toBeDefined();
+          if (system === "D&D 5e") expect(item.proficiency, `${system} ${item.id} proficiência`).toBeDefined();
+        }
+      }
+    }
+    for (const item of [...OSE_WEAPONS, ...OSE_ARMORS, ...OSE_GEAR]) {
+      expect(item.sourcePage, `OSE ${item.id} fonte`).toBeGreaterThan(0);
+      if ("description" in item) expect(item.description, `OSE ${item.id} descrição`).toBeTruthy();
+      if ("damage" in item) expect(item.damage, `OSE ${item.id} dano`).toBeTruthy();
+      if ("weightCoins" in item) expect(item.weightCoins, `OSE ${item.id} peso`).toBeGreaterThanOrEqual(0);
+    }
+  });
+
   it("mantém fixtures de criação para cada classe e raça dos sistemas core", () => {
     expect(T20_CLASSES.every((entry) => T20_CLASS_RULES.some((rule) => rule.id === entry.id && rule.sourcePage === entry.sourcePage))).toBe(true);
     expect(T20_RACES.every((entry) => T20_RACE_RULES.some((rule) => rule.id === entry.id && rule.sourcePage === entry.sourcePage))).toBe(true);

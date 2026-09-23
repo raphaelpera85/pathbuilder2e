@@ -101,6 +101,20 @@ describe("Assistente OSE — passo de classe", () => {
     expect(OSE_CLASSES.anao_bx.isRaceClass).toBe(true);
   });
 
+  it("exibe os modificadores derivados de requisito principal e Carisma", () => {
+    openClassStep(classicCharacter({ abilities: { str: 16, int: 10, wis: 15, dex: 11, con: 13, cha: 16 } }));
+    const body = bodyText();
+    expect(body).toContain("XP: +5%");
+    expect(body).toContain("Reações: +1");
+    expect(body).toContain("Lacaios: 6");
+    expect(body).toContain("Lealdade 9");
+  });
+
+  it("não cria uma etapa vazia de magia antes do nível inicial de conjuração", () => {
+    openClassStep(classicCharacter({ ruleset: "advanced", classId: "bardo", raceId: "humano" }));
+    expect(bodyText()).not.toContain("Grimório Inicial de Magias");
+  });
+
   it("a matriz de disponibilidade e a contagem do catálogo concordam", () => {
     const classicIds = Object.values(OSE_CLASSES)
       .filter((entry) => isOseClassAvailableForMode(entry, "classic"))

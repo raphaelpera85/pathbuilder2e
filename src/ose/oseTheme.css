@@ -210,6 +210,52 @@
   line-height: 1.45;
 }
 
+.ose-class-progression-details {
+  margin-top: 10px;
+  color: var(--ose-text-muted);
+  font-size: 0.78rem;
+}
+
+.ose-class-progression-details summary {
+  cursor: pointer;
+  color: var(--ose-gold);
+  font-weight: 700;
+}
+
+.ose-progression-table-wrap {
+  margin-top: 8px;
+  overflow-x: auto;
+  border: 1px solid var(--ose-border);
+  border-radius: 5px;
+}
+
+.ose-progression-table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+  font-size: 0.68rem;
+  white-space: nowrap;
+}
+
+.ose-progression-table th,
+.ose-progression-table td {
+  padding: 4px 5px;
+  border: 1px solid var(--ose-border);
+  text-align: center;
+}
+
+.ose-progression-table th {
+  color: var(--ose-gold);
+  background: rgba(0, 0, 0, 0.25);
+  font-weight: 800;
+}
+
+.ose-progression-table tr.is-current td {
+  background: rgba(245, 158, 11, 0.16);
+  color: var(--ose-text);
+  font-weight: 800;
+}
+
 .ose-wizard-body {
   padding: 24px;
   overflow-y: auto;

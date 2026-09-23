@@ -17,7 +17,7 @@ type SystemCoverage = {
 const SYSTEM_COVERAGE: Record<string, SystemCoverage> = {
   pf2e: { ancestries: "29", classes: "27", skills: "16", items: "457", spells: "415", feats: "1.919", advantage: "Modificadores e condições" },
   t20: { ancestries: "17", classes: "14", skills: "29", items: "150", spells: "66", feats: "412", advantage: "Modificadores e condições" },
-  dnd5e: { ancestries: "9 + 9 sub-raças", classes: "12", skills: "18", items: "226", spells: "301", feats: "40", advantage: "Vantagem/desvantagem d20" },
+  dnd5e: { ancestries: "9 + 9 sub-raças", classes: "12", skills: "18", items: "226", spells: "315", feats: "40", advantage: "Vantagem/desvantagem d20" },
   ose: { ancestries: "10 + 3 clássicas", classes: "16 + 3 clássicas", skills: "Ladrão/Acrobata + d100", items: "53", spells: "34", feats: "Sem talentos nativos", advantage: "Modificadores e tabelas" },
 };
 

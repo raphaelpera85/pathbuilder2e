@@ -224,6 +224,30 @@ function detailFor(system: SupportedCoreSystem, classId: string, name: string): 
   if (system === "dnd5e" && name === "Escolha de subclasse") {
     return "Escolhe a subclasse indicada pela classe; as características dessa subclasse são recebidas nos níveis correspondentes.";
   }
+  if (system === "t20") {
+    const damageReduction = name.match(/^Resistência a Dano (\d+)$/u)?.[1];
+    if (damageReduction) return `Reduz cada dano sofrido em ${damageReduction}; aplica-se depois de resistências e outros efeitos que alterem o dano, conforme as regras de Tormenta20.`;
+    const powerClass = name.match(/^Poder de (.+)$/u)?.[1];
+    if (powerClass) {
+      const powerDescriptions: Record<string, string> = {
+        Arcanista: "Escolhe um poder de Arcanista disponível para seu nível, respeitando os pré-requisitos; o poder pode conceder magias, familiar, escola, redução de custos ou outro efeito arcano.",
+        Bárbaro: "Escolhe um poder de Bárbaro disponível para seu nível, respeitando os pré-requisitos; os poderes ampliam Fúria, resistência, ataques e sobrevivência.",
+        Bardo: "Escolhe um poder de Bardo disponível para seu nível, respeitando os pré-requisitos; os poderes ampliam Inspiração, atuação, perícias e magias.",
+        Bucaneiro: "Escolhe um poder de Bucaneiro disponível para seu nível, respeitando os pré-requisitos; os poderes ampliam Audácia, Panache, mobilidade e combate ágil.",
+        Caçador: "Escolhe um poder de Caçador disponível para seu nível, respeitando os pré-requisitos; os poderes ampliam Marca da Presa, exploração, companheiros e ataques à distância.",
+        Cavaleiro: "Escolhe um poder de Cavaleiro disponível para seu nível, respeitando os pré-requisitos; os poderes ampliam Baluarte, Duelo, montaria, defesa e autoridade.",
+        Clérigo: "Escolhe um poder de Clérigo disponível para seu nível, respeitando os pré-requisitos; os poderes ampliam devoção, magias divinas, cura e poderes concedidos.",
+        Druida: "Escolhe um poder de Druida disponível para seu nível, respeitando os pré-requisitos; os poderes ampliam natureza, forma selvagem, magias e companheiros.",
+        Guerreiro: "Escolhe um poder de Guerreiro disponível para seu nível, respeitando os pré-requisitos; os poderes ampliam armas, manobras, ataques e resistência.",
+        Inventor: "Escolhe um poder de Inventor disponível para seu nível, respeitando os pré-requisitos; os poderes ampliam engenhocas, modificações, alquimia e fabricação.",
+        Ladino: "Escolhe um poder de Ladino disponível para seu nível, respeitando os pré-requisitos; os poderes ampliam perícias, furtividade, ataques precisos e truques.",
+        Lutador: "Escolhe um poder de Lutador disponível para seu nível, respeitando os pré-requisitos; os poderes ampliam Briga, golpes desarmados, manobras e resistência.",
+        Nobre: "Escolhe um poder de Nobre disponível para seu nível, respeitando os pré-requisitos; os poderes ampliam liderança, influência, riqueza e ordens aos aliados.",
+        Paladino: "Escolhe um poder de Paladino disponível para seu nível, respeitando os pré-requisitos; os poderes ampliam bênçãos, auras, cura e combate sagrado.",
+      };
+      return powerDescriptions[powerClass] || `Escolhe um poder de ${powerClass} disponível para seu nível, respeitando os pré-requisitos do sistema.`;
+    }
+  }
   return "Característica de classe disponível conforme a progressão do nível e a edição selecionada.";
 }
 
@@ -247,6 +271,12 @@ export function getCoreClassResources(system: SupportedCoreSystem, classId: stri
   const resources: CoreClassResource[] = [];
   const add = (name: string, value: string, description: string) => resources.push({ name, value, description });
   if (system === "t20") {
+    if (classId === "arcanista") {
+      const spellCircle = 1 + Math.floor((safeLevel - 1) / 4);
+      add("Caminho do Arcanista", "Bruxo, Feiticeiro ou Mago", "Escolhe o caminho que define o atributo-chave, a tradição arcana e as regras de aprendizado e conjuração.");
+      add("Magias Arcanas", `${spellCircle}º círculo`, "Lança magias arcanas; acessa círculos maiores nos níveis 5, 9, 13 e 17, conforme o caminho escolhido.");
+      if (safeLevel >= 20) add("Alta Arcana", "Custos reduzidos", "Reduz pela metade o custo das magias arcanas após aplicar aprimoramentos e outras reduções.");
+    }
     if (classId === "barbaro") {
       const furyBonus = 2 + Math.floor((safeLevel - 1) / 5);
       const furyCost = (furyBonus - 1) * 2;
@@ -361,7 +391,11 @@ export function getCoreClassResources(system: SupportedCoreSystem, classId: stri
     const rages = safeLevel >= 20 ? 999 : safeLevel >= 17 ? 6 : safeLevel >= 12 ? 5 : safeLevel >= 6 ? 4 : safeLevel >= 3 ? 3 : 2;
     add("Fúrias", String(rages), safeLevel >= 20 ? "Usos ilimitados; recupera os benefícios conforme as regras de Fúria." : "Usos por descanso longo.");
   }
-  if (classId === "bardo") add("Inspiração de Bardo", `${Math.max(1, modifiers.cha || 0)}d${safeLevel >= 15 ? 12 : safeLevel >= 10 ? 10 : safeLevel >= 5 ? 8 : 6}`, `Usos por descanso longo: ${Math.max(1, modifiers.cha || 0)}.`);
+  if (classId === "bardo") {
+    const inspirationUses = Math.max(1, modifiers.cha || 0);
+    const inspirationRecovery = safeLevel >= 5 ? "descanso curto ou longo" : "descanso longo";
+    add("Inspiração de Bardo", `${inspirationUses}d${safeLevel >= 15 ? 12 : safeLevel >= 10 ? 10 : safeLevel >= 5 ? 8 : 6}`, `Usos por ${inspirationRecovery}: ${inspirationUses}.`);
+  }
   if (classId === "guerreiro") {
     add("Retomar o Fôlego", "1d10 + nível", "Recupera PV como ação bônus uma vez por descanso curto ou longo.");
     if (safeLevel >= 2) add("Surto de Ação", safeLevel >= 17 ? "2 usos" : "1 uso", "Concede uma ação adicional; recupera em descanso curto ou longo.");
@@ -374,6 +408,11 @@ export function getCoreClassResources(system: SupportedCoreSystem, classId: stri
   if (classId === "mago") add("Recuperação Arcana", `até ${Math.min(5, Math.ceil(safeLevel / 2))}º nível de espaços`, "Recupera espaços após um descanso curto uma vez por dia.");
   if (classId === "bruxo" && safeLevel >= 2) add("Invocações Místicas", safeLevel >= 18 ? "8" : safeLevel >= 15 ? "7" : safeLevel >= 12 ? "6" : safeLevel >= 9 ? "5" : safeLevel >= 7 ? "4" : safeLevel >= 5 ? "3" : "2", "Escolhas personalizáveis do patrono sobrenatural.");
   if (classId === "druida" && safeLevel >= 2) add("Forma Selvagem", safeLevel >= 18 ? "sem limite de forma" : "2 usos", "Usos recuperados após descanso curto ou longo; o círculo define opções adicionais.");
-  if (classId === "patrulheiro") add("Inimigo Favorito", `${Math.max(1, Math.ceil(safeLevel / 5))} escolha(s)`, "Escolhas e benefícios são definidos pela campanha e pelo Livro do Jogador.");
+  if (classId === "patrulheiro") {
+    const favoredEnemyCount = safeLevel >= 14 ? 3 : safeLevel >= 6 ? 2 : 1;
+    const favoredTerrainCount = safeLevel >= 10 ? 3 : safeLevel >= 6 ? 2 : 1;
+    add("Inimigo Favorito", `${favoredEnemyCount} escolha(s)`, "Escolhas e benefícios são definidos pela campanha e pelo Livro do Jogador.");
+    add("Explorador Natural", `${favoredTerrainCount} terreno(s) favorecido(s)`, "Escolhe terrenos favorecidos e recebe benefícios de viagem, exploração e orientação conforme o Livro do Jogador.");
+  }
   return resources;
 }

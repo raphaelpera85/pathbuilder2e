@@ -7,6 +7,7 @@ import {
   getOseIntModifiers,
   getOseDexModifiers,
   getOseChaModifiers,
+  getOsePrimeRequisiteXpMod,
   getOseSecondarySkillByRoll,
   OSE_ALIGNMENTS,
   type OseAlignment,
@@ -232,6 +233,9 @@ export function OseCharacterCreatorModal({
     // ausente continua conservadora, porque a combinação não é permitida.
     : Math.min(classLevelCap, raceLevelCap === null ? classLevelCap : raceLevelCap ?? 1);
   const currentProgression = selectedClass.progression.find((entry) => entry.level === characterLevel) || selectedClass.progression[0];
+  const primeRequisiteScore = finalAbilities[selectedClass.primeRequisites[0] || "str"];
+  const primeRequisiteXpMod = getOsePrimeRequisiteXpMod(primeRequisiteScore);
+  const charismaModifiers = getOseChaModifiers(finalAbilities.cha);
 
   useEffect(() => {
     setCharacterLevel((current) => Math.min(Math.max(1, current), maxClassLevel));
@@ -369,12 +373,13 @@ export function OseCharacterCreatorModal({
   }, [initialCharacter, isOpen]);
 
   const spellSlotsByCircle = useMemo(() => {
-    if (!selectedClass.spellCasting) return [];
+    if (!selectedClass.spellCasting || characterLevel < selectedClass.spellCasting.startLevel) return [];
     return getOseSpellSlotsByCircle(selectedClass.progression, characterLevel);
   }, [characterLevel, selectedClass]);
 
   const totalSpellSlots = spellSlotsByCircle.reduce((total, slots) => total + slots, 0);
-  const finalStep = selectedClass.spellCasting ? 6 : 5;
+  const canCastAtCurrentLevel = Boolean(selectedClass.spellCasting && characterLevel >= selectedClass.spellCasting.startLevel);
+  const finalStep = canCastAtCurrentLevel ? 6 : 5;
 
   const availableClassSpells = useMemo(() => {
     if (!selectedClass.spellCasting) return [];
@@ -698,7 +703,10 @@ export function OseCharacterCreatorModal({
                   <div style={{ marginTop: 6, display: "flex", gap: 16, flexWrap: "wrap", color: "var(--ose-text-muted)" }}>
                     <span>🛡️ Armadura: {selectedClass.allowedArmor}</span>
                     <span>⚔️ Armas: {selectedClass.allowedWeaponsDesc}</span>
-                    <span>⭐ Requisito Principal: {selectedClass.primeRequisites.map((r) => r.toUpperCase()).join(", ")}</span>
+                    <span>⭐ Requisito Principal: {selectedClass.primeRequisites.map((r) => r.toUpperCase()).join(", ")} ({primeRequisiteScore})</span>
+                    <span>📈 XP: {primeRequisiteXpMod >= 0 ? "+" : ""}{primeRequisiteXpMod * 100}%</span>
+                    <span>🤝 Reações: {charismaModifiers.npcReactions >= 0 ? "+" : ""}{charismaModifiers.npcReactions}</span>
+                    <span>👥 Lacaios: {charismaModifiers.maxRetainers} · Lealdade {charismaModifiers.retainerLoyalty}</span>
                   </div>
                   {currentProgression && <div className="ose-class-progression-preview" aria-label="Progressão da classe no nível selecionado">
                     <strong>Progressão no nível {characterLevel}</strong>
@@ -710,9 +718,54 @@ export function OseCharacterCreatorModal({
                       {currentProgression.spells && <span><small>Espaços</small>{currentProgression.spells.map((slots, index) => `${index + 1}º: ${slots}`).join(" · ")}</span>}
                     </div>
                   </div>}
+                  <details className="ose-class-progression-details">
+                    <summary>Ver tabela completa de progressão ({selectedClass.progression.length} níveis)</summary>
+                    <div className="ose-progression-table-wrap">
+                      <table className="ose-progression-table" aria-label={`Tabela de progressão de ${selectedClass.name}`}>
+                        <thead>
+                          <tr>
+                            <th>Nível</th><th>XP</th><th>DV/PV</th><th>THAC0</th><th>AAC</th>
+                            <th>Mort.</th><th>Var.</th><th>Par.</th><th>Sopro</th><th>Mag.</th><th>Espaços</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {selectedClass.progression.map((entry) => (
+                            <tr key={entry.level} className={entry.level === characterLevel ? "is-current" : undefined}>
+                              <td>{entry.level}</td><td>{entry.xp.toLocaleString("pt-BR")}</td><td>{entry.hd}</td>
+                              <td>{entry.thac0}</td><td>+{entry.aacBonus}</td><td>{entry.saves.death}</td>
+                              <td>{entry.saves.wands}</td><td>{entry.saves.paralysis}</td><td>{entry.saves.breath}</td>
+                              <td>{entry.saves.spells}</td><td>{entry.spells?.join("/") || "—"}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </details>
                   {selectedClass.features.length > 0 && <details className="ose-class-features-preview">
                     <summary>Habilidades da classe ({selectedClass.features.length})</summary>
                     <ul>{selectedClass.features.map((feature) => <li key={feature}>{feature}</li>)}</ul>
+                  </details>}
+                  {selectedClass.thiefSkills && <details className="ose-class-features-preview">
+                    <summary>Tabela de perícias de Ladrão (d%)</summary>
+                    <div className="ose-progression-table-wrap">
+                      <table className="ose-progression-table" aria-label="Tabela de perícias de Ladrão">
+                        <thead><tr><th>Nível</th><th>ESI</th><th>ET</th><th>OB</th><th>ES</th><th>MS</th><th>AF</th><th>PB</th><th>OR</th></tr></thead>
+                        <tbody>{Object.entries(selectedClass.thiefSkills).map(([level, skills]) => <tr key={level} className={Number(level) === characterLevel ? "is-current" : undefined}>
+                          <td>{level}</td><td>{skills.esi}%</td><td>{skills.et}%</td><td>{skills.ob}%</td><td>{skills.es}%</td><td>{skills.ms}%</td><td>{skills.af}%</td><td>{skills.pb}%</td><td>{skills.orSkill ?? "—"}</td>
+                        </tr>)}</tbody>
+                      </table>
+                    </div>
+                  </details>}
+                  {selectedClass.acrobatSkills && <details className="ose-class-features-preview">
+                    <summary>Tabela de perícias de Acrobata</summary>
+                    <div className="ose-progression-table-wrap">
+                      <table className="ose-progression-table" aria-label="Tabela de perícias de Acrobata">
+                        <thead><tr><th>Nível</th><th>SSI</th><th>Queda</th><th>ES</th><th>MS</th><th>CCB</th><th>Salto</th><th>Evasão</th></tr></thead>
+                        <tbody>{Object.entries(selectedClass.acrobatSkills).map(([level, skills]) => <tr key={level} className={Number(level) === characterLevel ? "is-current" : undefined}>
+                          <td>{level}</td><td>{skills.ssi}%</td><td>{skills.qu}%</td><td>{skills.es}%</td><td>{skills.ms}%</td><td>{skills.ccb}%</td><td>{skills.salto ?? "—"}</td><td>{skills.evasao ?? "—"}</td>
+                        </tr>)}</tbody>
+                      </table>
+                    </div>
                   </details>}
                   {validationMessage && <p role="alert" style={{ color: "#fca5a5", margin: "10px 0 0", fontWeight: 700 }}>{validationMessage}</p>}
                 </div>
@@ -1076,7 +1129,7 @@ export function OseCharacterCreatorModal({
           )}
 
           {/* STEP 5: MAGIAS (SE CONJURADOR) */}
-          {step === 5 && selectedClass.spellCasting && (
+          {step === 5 && canCastAtCurrentLevel && selectedClass.spellCasting && (
             <div>
               <h3 style={{ margin: "0 0 10px 0", color: "var(--ose-gold)" }}>
                 Grimório Inicial de Magias ({selectedClass.spellCasting.type})

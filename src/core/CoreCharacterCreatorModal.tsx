@@ -8,7 +8,7 @@ import { DND5E_STANDARD_ARRAY, generateAbilityScores, getPointBuyBudget, validat
 import { DND5E_TOOLS, DND5E_TOOL_CHOICE_GROUPS, getDnd5eToolChoiceEntries, type Dnd5eToolChoiceGroup } from "../data/dnd5e/dnd5eCatalog";
 import { getDnd5eBackgroundToolProficiencies } from "../data/dnd5e/dnd5eBackgrounds";
 import { formatDnd5eSpellDetails } from "../data/dnd5e/dnd5eCompendium";
-import { DND5E_CLERIC_DOMAIN_SPELLS, DND5E_CLASS_CHOICES, DND5E_LAND_CIRCLE_SPELLS } from "../data/dnd5e/dnd5eOptions";
+import { DND5E_CLERIC_DOMAIN_SPELLS, DND5E_CLASS_CHOICES, DND5E_LAND_CIRCLE_SPELLS, getDnd5eClassChoiceCount } from "../data/dnd5e/dnd5eOptions";
 import { DND5E_FEAT_CHOICES } from "../data/dnd5e/dnd5eCompendium";
 import { T20_POWER_CHOICES } from "../data/t20/t20Compendium";
 
@@ -230,7 +230,10 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
       if (key === "level") {
         const availableClassChoiceDefinitions = (system === "dnd5e" ? DND5E_CLASS_CHOICES : T20_CLASS_CHOICES)
           .filter((choice) => choice.classId === next.classId && next.level >= choice.minimumLevel);
-        const classChoiceDefinitions = new Map(availableClassChoiceDefinitions.map((choice) => [choice.id, choice]));
+        const normalizedClassChoiceDefinitions = system === "dnd5e"
+          ? availableClassChoiceDefinitions.map((choice) => ({ ...choice, count: getDnd5eClassChoiceCount(choice, next.level) }))
+          : availableClassChoiceDefinitions;
+        const classChoiceDefinitions = new Map(normalizedClassChoiceDefinitions.map((choice) => [choice.id, choice]));
         next.classChoices = Object.fromEntries(Object.entries(next.classChoices || {}).flatMap(([choiceId, values]) => {
           const choice = classChoiceDefinitions.get(choiceId);
           if (!choice) return [];
@@ -355,6 +358,7 @@ export function CoreCharacterCreatorModal({ isOpen, system, onClose, onCharacter
   const derivedPreview = engine.deriveStats(character);
   const availableClassChoices = system === "dnd5e"
     ? DND5E_CLASS_CHOICES.filter((choice) => choice.classId === character.classId && character.level >= choice.minimumLevel)
+      .map((choice) => ({ ...choice, count: getDnd5eClassChoiceCount(choice, character.level) }))
     : T20_CLASS_CHOICES
       .filter((choice) => choice.classId === character.classId && character.level >= choice.minimumLevel)
       .map((choice) => choice.id === "t20-ladino-specialist"

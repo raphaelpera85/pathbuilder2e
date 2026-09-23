@@ -56,6 +56,13 @@ export interface Dnd5eClassChoice {
   minimumLevel: number;
   options: string[];
   count: number;
+  countByLevel?: Record<number, number>;
+}
+
+export function getDnd5eClassChoiceCount(choice: Pick<Dnd5eClassChoice, "count" | "countByLevel">, level: number): number {
+  return Object.entries(choice.countByLevel || {})
+    .filter(([minimumLevel]) => level >= Number(minimumLevel))
+    .reduce((count, [, levelCount]) => Math.max(count, Number(levelCount)), choice.count);
 }
 
 const subrace = (
@@ -242,11 +249,12 @@ export const DND5E_CLASS_CHOICES: Dnd5eClassChoice[] = [
   { id: "paladin-fighting-style", classId: "paladino", label: "Estilo de Luta", minimumLevel: 2, options: ["Defesa", "Duelos", "Luta com Armas Grandes", "Luta com Duas Armas"], count: 1 },
   { id: "ranger-favored-enemy", classId: "patrulheiro", label: "Inimigo Favorecido (1º nível)", minimumLevel: 1, options: ["Aberrações", "Animais", "Celestiais", "Construtos", "Dragões", "Elementais", "Fadas", "Gigantes", "Ínferos", "Monstruosidades", "Gosmas", "Plantas", "Mortos-vivos", "Humanoides"], count: 1 },
   { id: "ranger-favored-enemy-6", classId: "patrulheiro", label: "Inimigo Favorecido adicional (6º nível)", minimumLevel: 6, options: ["Aberrações", "Animais", "Celestiais", "Construtos", "Dragões", "Elementais", "Fadas", "Gigantes", "Ínferos", "Monstruosidades", "Gosmas", "Plantas", "Mortos-vivos", "Humanoides"], count: 1 },
+  { id: "ranger-favored-enemy-14", classId: "patrulheiro", label: "Inimigo Favorecido adicional (14º nível)", minimumLevel: 14, options: ["Aberrações", "Animais", "Celestiais", "Construtos", "Dragões", "Elementais", "Fadas", "Gigantes", "Ínferos", "Monstruosidades", "Gosmas", "Plantas", "Mortos-vivos", "Humanoides"], count: 1 },
   { id: "ranger-favored-terrain", classId: "patrulheiro", label: "Terreno Favorecido (1º nível)", minimumLevel: 1, options: ["Ártico", "Costa", "Deserto", "Floresta", "Planície", "Montanha", "Pântano", "Subterrâneo"], count: 1 },
   { id: "ranger-favored-terrain-6", classId: "patrulheiro", label: "Terreno Favorecido adicional (6º nível)", minimumLevel: 6, options: ["Ártico", "Costa", "Deserto", "Floresta", "Planície", "Montanha", "Pântano", "Subterrâneo"], count: 1 },
   { id: "ranger-favored-terrain-10", classId: "patrulheiro", label: "Terreno Favorecido adicional (10º nível)", minimumLevel: 10, options: ["Ártico", "Costa", "Deserto", "Floresta", "Planície", "Montanha", "Pântano", "Subterrâneo"], count: 1 },
   { id: "ranger-fighting-style", classId: "patrulheiro", label: "Estilo de Luta", minimumLevel: 2, options: ["Arquearia", "Defesa", "Duelos", "Luta com Duas Armas"], count: 1 },
-  { id: "sorcerer-metamagic", classId: "feiticeiro", label: "Metamagia", minimumLevel: 3, options: ["Magia Acelerada", "Magia Cuidadosa", "Magia Distante", "Magia Elevada", "Magia Estendida", "Magia Potencializada", "Magia Sutil", "Magia Transmutada"], count: 2 },
+  { id: "sorcerer-metamagic", classId: "feiticeiro", label: "Metamagia", minimumLevel: 3, options: ["Magia Acelerada", "Magia Cuidadosa", "Magia Distante", "Magia Elevada", "Magia Estendida", "Magia Potencializada", "Magia Sutil", "Magia Transmutada"], count: 2, countByLevel: { 10: 3, 17: 4 } },
   { id: "warlock-pact-boon", classId: "bruxo", label: "Dádiva do Pacto", minimumLevel: 3, options: ["Pacto da Corrente", "Pacto da Lâmina", "Pacto do Tomo"], count: 1 },
 ];
 

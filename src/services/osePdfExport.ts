@@ -41,6 +41,24 @@ function setCheck(form: ReturnType<PDFDocument["getForm"]>, name: string, checke
   }
 }
 
+function traitValue(traits: string[], pattern: RegExp): string {
+  const trait = traits.find((entry) => pattern.test(entry));
+  const value = trait?.match(/\d+\s+em\s+\d+/i)?.[0];
+  return value || "";
+}
+
+function classSkillSummary(character: OseCharacterCreatedData, cls: typeof OSE_CLASSES[string]): string[] {
+  const thief = cls.thiefSkills?.[character.level];
+  if (thief) {
+    return [`Perícias de Ladrão: ESI ${thief.esi}%, ET ${thief.et}%, OB ${thief.ob}%, ES ${thief.es}%, MS ${thief.ms}%, AF ${thief.af}%, PB ${thief.pb}%${thief.orSkill ? `, OR ${thief.orSkill} em 6` : ""}.`];
+  }
+  const acrobat = cls.acrobatSkills?.[character.level];
+  if (acrobat) {
+    return [`Perícias de Acrobata: SSI ${acrobat.ssi}%, Queda ${acrobat.qu}%, ES ${acrobat.es}%, MS ${acrobat.ms}%, CCB ${acrobat.ccb}%${acrobat.salto ? `, Salto ${acrobat.salto}` : ""}${acrobat.evasao ? `, Evasão ${acrobat.evasao}` : ""}.`];
+  }
+  return [];
+}
+
 export async function createOseEditablePdf(character: OseCharacterCreatedData, templateBytes?: ArrayBuffer | Uint8Array): Promise<Uint8Array> {
   const source = templateBytes || await (await fetch(TEMPLATE_URL)).arrayBuffer();
   const pdf = await PDFDocument.load(source);
@@ -99,6 +117,15 @@ export async function createOseEditablePdf(character: OseCharacterCreatedData, t
   setText(form, "Languages", character.languages.join(", "));
   setCheck(form, "Literacy", character.abilities.int >= 9);
 
+  // Campos de exploração da ficha oficial. As raças que possuem a habilidade
+  // correspondente informam o valor; as demais permanecem vazias para edição
+  // manual, sem inventar uma capacidade que não existe no ruleset.
+  setText(form, "Find Room Trap", traitValue(race.traits, /Detectar Armadilhas de Sala/i) || cls.thiefSkills?.[character.level]?.et || "");
+  setText(form, "Find Secret Door", traitValue(race.traits, /Detectar Portas Secretas|Detectar Portas Escondidas/i));
+  setText(form, "Listen at Door", traitValue(race.traits, /Ouvir Ruídos/i));
+  setText(form, "Forage", /Caçador|Mateiro/i.test(character.secondarySkill || "") ? "Perícia secundária" : "");
+  setText(form, "Hunt", /Caçador|Mateiro/i.test(character.secondarySkill || "") ? "Perícia secundária" : "");
+
   const totalWeight = character.goldGp
     + character.weapons.reduce((sum, item) => sum + item.weightCoins, 0)
     + character.armors.reduce((sum, item) => sum + item.weightCoins, 0)
@@ -113,10 +140,17 @@ export async function createOseEditablePdf(character: OseCharacterCreatedData, t
   setText(form, "Reactions CHA Mod", cha.npcReactions);
   setText(form, "Abilities, Skills, Weapons", [
     character.secondarySkill ? `Profissão: ${character.secondarySkill}` : "",
+    ...classSkillSummary(character, cls),
+    ...race.traits,
+    ...cls.features,
     list(character.weapons, (item) => `${item.name} (${item.damage})`),
     list(character.armors, (item) => `Armadura: ${item.name}`),
   ].filter(Boolean).join("\n"));
-  setText(form, "Description", "");
+  setText(form, "Description", [
+    `${race.name}: ${race.description}`,
+    `${cls.name}: ${cls.description}`,
+    `Regraset: ${character.ruleset === "classic" ? "OSE Classic" : "OSE Advanced"}. Ouro: ${character.goldGp} PO.`,
+  ].join("\n"));
   setText(form, "Unencumbering Items", list(character.gear, (item) => item.name));
   character.gear.slice(0, 9).forEach((item, index) => setText(form, `Equipped ${index + 1}`, item.name));
   character.gear.slice(0, 16).forEach((item, index) => setText(form, `Packed ${index + 1}`, item.name));
@@ -128,7 +162,7 @@ export async function createOseEditablePdf(character: OseCharacterCreatedData, t
     const spell = OSE_SPELLS.find((entry) => entry.id === id);
     return spell ? `${spell.name} (${spell.circle}º círculo${(character.preparedSpells || []).includes(id) ? ", preparada" : ""})` : id;
   }).join(", ");
-  setText(form, "Notes", [catalogNote, spellNote].filter(Boolean).join(" · "));
+  setText(form, "Notes", [catalogNote, `Tesouro: ${character.goldGp} PO`, spellNote].filter(Boolean).join(" · "));
 
   const appearanceFont = await pdf.embedFont(StandardFonts.TimesRoman);
   form.updateFieldAppearances(appearanceFont);

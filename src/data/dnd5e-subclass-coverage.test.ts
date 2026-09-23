@@ -167,4 +167,24 @@ describe("D&D 5e — cobertura mecânica das subclasses", () => {
     const bonus = nature.features.find((feature) => feature.name === "Proficiência Adicional")!;
     expect(bonus.summary.toLowerCase()).toContain("armaduras pesadas");
   });
+
+  it("mantém escolhas recém-modeladas ligadas aos efeitos mecânicos", () => {
+    const champion = characterFor("guerreiro_campeao", 10, {
+      classChoices: { "fighter-fighting-style": ["Arquearia"] },
+      subclassChoices: { "champion-additional-fighting-style": ["Defesa"] },
+      equipmentIds: ["dnd5e.armadura.cota_de_malha"],
+    });
+    expect(DND5E_RULES_ENGINE.deriveStats(champion).classChoiceEffects).toContain("Estilo de Luta — Defesa: +1 CA enquanto usa armadura");
+
+    const land = characterFor("druida_terra", 2, {
+      subclassChoices: { "land-terrain": ["Floresta"], "land-bonus-cantrip": ["Luz"] },
+    });
+    expect(DND5E_RULES_ENGINE.deriveStats(land).subclassEffects).toContain("Truque adicional do Círculo da Terra: Luz");
+
+    const fiend = characterFor("bruxo_infernal", 10, {
+      classChoices: { "warlock-pact-boon": ["Pacto da Corrente"] },
+      subclassChoices: { "fiendish-resilience": ["Fogo"] },
+    });
+    expect(DND5E_RULES_ENGINE.deriveStats(fiend).damageResistances).toContain("fogo");
+  });
 });

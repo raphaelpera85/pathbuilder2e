@@ -99,6 +99,10 @@ const expectedT20ClassChoiceGroups = {
   "t20.ladino": 1,
   "t20.paladino": 1,
 };
+const expectedDndClassChoices = {
+  "dnd5e.patrulheiro": { count: 7, ids: ["ranger-favored-enemy", "ranger-favored-enemy-6", "ranger-favored-enemy-14", "ranger-favored-terrain", "ranger-favored-terrain-6", "ranger-favored-terrain-10", "ranger-fighting-style"] },
+  "dnd5e.feiticeiro": { count: 1, ids: ["sorcerer-metamagic"], countByLevel: { 10: 3, 17: 4 } },
+};
 const dnd5eAttunementExpectation = {
   requires: [
     "dnd5e.item_magico.amuletoprotecao_deteccao", "dnd5e.item_magico.amuletosaude", "dnd5e.item_magico.amuletoplanos",
@@ -146,6 +150,16 @@ async function run() {
   const orphanRows = (subclasses || []).filter((row) => !classKeys.has(`${row.class_id}|${row.system_id}|${row.ruleset}`));
   const t20ClassChoiceMismatches = Object.entries(expectedT20ClassChoiceGroups)
     .filter(([id, expectedGroupCount]) => Number((classes || []).find((row) => row.id === id)?.data?.classChoices?.length || 0) !== expectedGroupCount)
+    .map(([id]) => id);
+  const dndClassChoiceMismatches = Object.entries(expectedDndClassChoices)
+    .filter(([id, expectedChoice]) => {
+      const choices = (classes || []).find((row) => row.id === id)?.data?.classChoices || [];
+      const ids = choices.map((choice) => choice.id);
+      const metamagic = choices.find((choice) => choice.id === "sorcerer-metamagic");
+      return choices.length !== expectedChoice.count
+        || JSON.stringify(ids) !== JSON.stringify(expectedChoice.ids)
+        || (expectedChoice.countByLevel && JSON.stringify(metamagic?.countByLevel || {}) !== JSON.stringify(expectedChoice.countByLevel));
+    })
     .map(([id]) => id);
   const { data: dndBackgrounds, error: backgroundError } = await supabase
     .from("catalog_backgrounds")
@@ -211,8 +225,8 @@ async function run() {
     return !data.castingTime || !data.range || (!data.target && !data.area) || !data.duration;
   });
   const t20SpellSchoolMismatches = (t20Spells || []).filter((row) => !String(row.data?.school || "").trim()).map((row) => row.id);
-  const ok = results.every((result) => result.ok) && oseClassicRemoteApplied && orphanRows.length === 0 && t20ClassChoiceMismatches.length === 0 && backgroundChoiceMismatches.length === 0 && dnd5eAttunementMismatches.length === 0 && featSummaryMismatches.length === 0 && dndFeatChoiceMismatches.length === 0 && t20PowerChoiceMismatches.length === 0 && t20GeneralPowerSummaryMismatches.length === 0 && t20GrantedTormentaSummaryMismatches.length === 0 && t20SpellSummaryMismatches.length === 0 && t20SpellOperationalMismatches.length === 0 && t20SpellSchoolMismatches.length === 0;
-  console.log(JSON.stringify({ ok, results, oseClassicMigration, oseClassicRemote: { expected: oseClassicRemoteExpected, actual: oseClassicRemote, applied: oseClassicRemoteApplied }, orphanSubclasses: orphanRows, t20ClassChoiceMismatches, backgroundChoiceMismatches, dnd5eAttunementMismatches, featSummaryMismatches, dndFeatChoiceMismatches, t20PowerChoiceMismatches, t20GeneralPowerSummaryMismatches, t20GrantedTormentaSummaryMismatches, t20SpellSummaryMismatches, t20SpellOperationalMismatches, t20SpellSchoolMismatches }, null, 2));
+  const ok = results.every((result) => result.ok) && oseClassicRemoteApplied && orphanRows.length === 0 && t20ClassChoiceMismatches.length === 0 && dndClassChoiceMismatches.length === 0 && backgroundChoiceMismatches.length === 0 && dnd5eAttunementMismatches.length === 0 && featSummaryMismatches.length === 0 && dndFeatChoiceMismatches.length === 0 && t20PowerChoiceMismatches.length === 0 && t20GeneralPowerSummaryMismatches.length === 0 && t20GrantedTormentaSummaryMismatches.length === 0 && t20SpellSummaryMismatches.length === 0 && t20SpellOperationalMismatches.length === 0 && t20SpellSchoolMismatches.length === 0;
+  console.log(JSON.stringify({ ok, results, oseClassicMigration, oseClassicRemote: { expected: oseClassicRemoteExpected, actual: oseClassicRemote, applied: oseClassicRemoteApplied }, orphanSubclasses: orphanRows, t20ClassChoiceMismatches, dndClassChoiceMismatches, backgroundChoiceMismatches, dnd5eAttunementMismatches, featSummaryMismatches, dndFeatChoiceMismatches, t20PowerChoiceMismatches, t20GeneralPowerSummaryMismatches, t20GrantedTormentaSummaryMismatches, t20SpellSummaryMismatches, t20SpellOperationalMismatches, t20SpellSchoolMismatches }, null, 2));
   if (!ok) process.exitCode = 1;
 }
 

@@ -16,6 +16,8 @@ Uma entrada só é considerada concluída quando possui, no sistema correto:
 8. exportação para PDF editável/legível;
 9. teste de isolamento, regressão e fluxo visual relevante.
 
+Auditoria remota mais recente (23/09/2026): `npm run audit:catalog:supabase` encontrou 0 registros locais ausentes, 0 divergências de campos e 0 falhas acionáveis nas 19 tabelas auditadas. O conteúdo extra remoto pertence a outros rulesets e foi preservado.
+
 Não marcar uma categoria como completa apenas porque seus nomes aparecem no catálogo.
 
 ## Matriz atual auditada
@@ -69,6 +71,7 @@ Evidência atual: `src/data/system-content-coverage.test.ts`, `src/data/systemRu
 - [ ] Modelar integralmente pré-requisitos compostos: nível, atributo, perícia, proficiência, poder, devoção e exclusões.
 - [ ] Revisar regras de criação quando um poder concedido depende de uma escolha anterior que foi alterada.
 - [ ] Validar todas as 14 tabelas de progressão contra a fonte e exibir cada habilidade com descrição completa.
+  - Progresso adicional: o contrato `descreve cada habilidade de progressão dos sistemas core` percorre as 14 classes T20 e as 12 classes D&D 5e até o 20º nível; eliminou marcadores genéricos para poderes de classe T20 e Resistência a Dano do Bárbaro. A validação de equivalência com cada página da fonte ainda permanece aberta.
 
 ### D&D 5e 2014 — criação
 
@@ -79,10 +82,17 @@ Evidência atual: `src/data/system-content-coverage.test.ts`, `src/data/systemRu
 - [x] Escolhas de talentos, estilo de luta, metamagia, pacto, domínios e círculos da Terra estruturadas.
 - [x] Modos editáveis de Ataque Poderoso e Fúria, com derivação e PDF.
 - [x] Ataque Descuidado do Bárbaro agora é um modo editável a partir do 2º nível: concede vantagem aos ataques corpo a corpo com Força, anula uma desvantagem global conforme a regra de D&D 5e e é registrado no PDF.
-- [x] Patrulheiro agora possui escolhas estruturadas de Inimigo Favorecido e Terreno Favorecido no 1º, 6º e 10º níveis, com efeitos derivados, validação por nível, edição e sincronização no Supabase.
+- [x] Patrulheiro agora possui escolhas estruturadas de Inimigo Favorecido (1º, 6º e 14º níveis) e Terreno Favorecido (1º, 6º e 10º níveis), com efeitos derivados, validação por nível, edição e sincronização no Supabase.
+- [x] Metamagia do Feiticeiro D&D 5e agora respeita a progressão oficial de 2 escolhas no 3º nível, 3 no 10º e 4 no 17º, com limite dinâmico no construtor, limpeza ao trocar de nível, validação e sincronização no Supabase.
+- [x] O seletor de sistemas agora exibe as 315 magias reais do catálogo D&D 5e, alinhado à auditoria de cobertura (antes mostrava 301).
+- [x] Corrigida a progressão exibida do Inimigo Favorito do Patrulheiro D&D 5e: 1 escolha no 1º, 2 no 6º e 3 no 14º nível; o 11º não concede escolha adicional.
+- [x] O recurso do Patrulheiro D&D 5e também exibe a progressão de Terrenos Favorecidos: 1 no 1º, 2 no 6º e 3 no 10º nível.
+- [x] Inspiração de Bardo D&D 5e agora informa a recuperação por descanso curto ou longo a partir do 5º nível, quando Fonte de Inspiração é adquirida.
+- [x] T20 agora exibe os recursos do Arcanista no construtor e na ficha: Caminho do Arcanista, círculos de magia nos marcos 1/5/9/13/17 e Alta Arcana no 20º nível.
 - [ ] Completar todas as escolhas de classe por nível que ainda estão apenas resumidas.
   - Progresso adicional D&D 5e: o segundo Estilo de Luta do Campeão, o truque adicional do Círculo da Terra e a resistência escolhida da Resiliência Infernal agora são grupos estruturados no construtor, validados por nível e exibidos nos efeitos da ficha.
 - [ ] Completar efeitos operacionais de todas as subclasses, talentos e traços raciais restantes.
+  - Progresso adicional D&D 5e: o segundo Estilo de Luta do Campeão agora é aplicado à CA/ataques e não pode repetir o estilo da classe; a Resiliência Infernal escolhida pelo Bruxo agora alimenta `damageResistances` da ficha a partir do 10º nível.
 - [ ] Auditar a lista de magias por classe/subclasse/nível contra o Livro do Jogador e registrar exceções.
 - [ ] Validar componentes, concentração, ritual, alcance, duração, dano, salvamento e escalonamento das magias.
 - [ ] Modelar condições e efeitos temporários sem transformar texto narrativo em bônus automático indevido.
@@ -96,9 +106,9 @@ Evidência atual: `src/data/system-content-coverage.test.ts`, `src/data/systemRu
 - [x] Exportação para PDF editável de uma página.
 - [x] O construtor agora exibe, no passo de seleção da classe, a progressão do nível atual (dado de vida, THAC0, AAC, salvamentos, espaços de magia) e as habilidades catalogadas da classe.
 - [ ] Auditar, por classe, todas as habilidades especiais e tabelas de progressão do Tomo do Jogador.
-- [ ] Exibir no construtor requisitos principais, modificadores de XP, reações, retentores e lealdade.
+- [x] Exibir no construtor requisitos principais, modificadores de XP, reações, retentores e lealdade.
 - [ ] Completar itens de aventura, montarias, especialistas, retentores e suas regras de uso no editor.
-- [ ] Validar magias iniciais e limites por círculo no fluxo visual de criação.
+- [x] Validar magias iniciais e limites por círculo no fluxo visual de criação, respeitando também o nível inicial de conjuração da classe.
 - [x] Criar testes de reabertura/edição/exportação para Advanced e Classic, incluindo PDF editável de uma página.
 
 ### OSE Classic Fantasy — criação
@@ -108,10 +118,10 @@ Evidência atual: `src/data/system-content-coverage.test.ts`, `src/data/systemRu
 - [x] Registrar que não há talentos modernos nem vantagem/desvantagem nativa.
 - [x] O construtor Classic mantém a lista de classes raciais e exibe a progressão correspondente ao nível selecionado sem importar classes Advanced.
 - [x] Confirmar contra a fonte a lista Classic de sete classes (quatro humanas e três raciais), níveis máximos e requisitos; a auditoria agora conta as opções jogáveis do modo, não apenas as classes raciais.
-- [ ] Exibir a tabela de habilidades e progressão específica de cada classe racial.
-- [ ] Completar fluxo de idiomas, ocupação/perícia secundária opcional, ouro, carga e magias.
-- [ ] Criar matriz de testes específica para cada classe racial do Classic.
-- [ ] Validar e exportar todos os campos Classic no PDF editável de uma página.
+- [x] Exibir a tabela de habilidades e progressão específica de cada classe racial.
+- [x] Completar fluxo de idiomas, ocupação/perícia secundária opcional, ouro, carga e magias.
+- [x] Criar matriz de testes específica para cada classe racial do Classic.
+- [x] Validar e exportar os campos Classic disponíveis no template PDF editável de uma página, incluindo traços raciais, habilidades de classe, perícias, idiomas, exploração, tesouro e magias.
 
 ### Pathfinder 2e Remaster — criação
 
@@ -165,7 +175,7 @@ Para cada linha abaixo, executar o checklist em cada sistema/ruleset que a possu
 - [ ] Completar metadados de nível/círculo, escola/tradição, tempo, alcance, componentes, duração, concentração/ritual e fonte.
 - [ ] Completar dano/cura, tipo, salvamento, ataque mágico, escalonamento e efeitos condicionais.
 - [ ] Validar automaticamente lista de classe, nível máximo, limite de conhecidas/preparadas e espaços.
-- [ ] Exibir no PDF a distinção entre magia conhecida, preparada, concedida e selecionada manualmente.
+- [x] Exibir no PDF a distinção entre magia conhecida/selecionada e preparada; a origem concedida continua identificada nos efeitos e escolhas exportados.
 
 ### Talentos, poderes, dons, perícias especiais e vantagens
 
@@ -236,7 +246,8 @@ Para cada linha abaixo, executar o checklist em cada sistema/ruleset que a possu
 - [x] Auditorias locais de acessibilidade, responsividade, interação, contraste e uso de personagem executadas em parte do núcleo.
 - [x] Criar `audit:system:coverage` com relatório por sistema e categoria; a auditoria agora falha em contagens, metadados, regras de criação, ações, perícias, semântica de vantagem e escolhas estruturadas ausentes.
 - [x] Criar fixtures estruturais para todas as classes e todas as raças de T20, D&D 5e e OSE; o teste verifica correspondência de fonte, regras de criação, progressão de 1º nível, traços e idiomas.
-- [ ] Criar fixtures de níveis de fronteira: 1, primeiro recurso, primeiro espaço, primeiro aumento, nível máximo e nível racial máximo.
+- [x] Criar fixtures de níveis de fronteira: nível 1, primeiro espaço quando aplicável, teto 20 para T20/D&D e teto de progressão/racial para OSE.
+- [x] Fortalecer `audit:core:supabase` para validar IDs e progressões `countByLevel` das escolhas estruturadas de classe D&D 5e no catálogo remoto.
 - [ ] Rodar matriz de criação/edição/exportação em todos os rulesets, não apenas em amostras.
 - [ ] Adicionar testes negativos para catálogo cruzado, escolha inválida, pré-requisito ausente, duplicidade e ruleset incompatível.
 - [ ] Revalidar Supabase após cada migration com auditoria de contagens e conteúdo.
