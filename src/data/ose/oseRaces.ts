@@ -1,6 +1,25 @@
 // ============================================================================
-// Old-School Essentials (OSE) - Catálogo de Raças (Advanced Fantasy)
-// Fonte: OSE Tomo do Jogador págs. 78-88
+// Old-School Essentials (OSE) - Catálogo de Raças (Fantasia Avançada)
+// Fonte: OSE Tomo do Jogador, capítulo de raças, págs. impressas 79-87
+//
+// Cada raça declara a própria página. A atribuição anterior carimbava todas as
+// dez com "p. 78", que é a página da regra opcional de levantamento de
+// restrições — nenhuma raça é descrita ali.
+//
+// Correções de 2026-09-22 (rodada 7), todas conferidas no capítulo de raças:
+//  - idiomas, modificadores de atributo e requisitos que faltavam ou divergiam;
+//  - tetos de nível por classe errados em seis raças (ex.: Anão ladrão 4 em vez
+//    de 9; Meio-Elfo clérigo 12 em vez de 5; Drow ladrão 10 em vez de 11);
+//  - idiomas inexistentes ("Gnomo" em vez de "Gnômico") e um idioma inventado
+//    no Svirfneblin;
+//  - habilidades raciais que não existem no livro (Magia Inata do Drow como
+//    "Luz das Fadas", "Poder Mental de Crescimento" do Duergar, "Constituição
+//    Vigorosa"/"Presença Intimidadora" do Meio-Orc, "Afinidade com Ilusões" e
+//    uma "Resistência Mágica Anã" fixa em +4 do Gnomo, "Resistência Heróica"
+//    fixa em +4 do Halfling).
+//
+// Onde o livro dá um bônus que depende do valor de CON, o texto declara a
+// escala em vez de fixar um número.
 // ============================================================================
 
 import type { OseAbilityName } from "./oseRules";
@@ -24,13 +43,15 @@ export const OSE_RACES: Record<string, OseRace> = {
     id: "humano",
     name: "Humano",
     nameEn: "Human",
-    description: "A mais numerosa e versátil das raças de aventureiros. Sem restrições de classe e com progressão irrestrita até o 14º nível.",
+    sourcePage: 86,
+    description: "A raça mais flexível: sem habilidades raciais, escolhe qualquer classe e avança sem limite de nível.",
     minRequirements: {},
     statModifiers: {},
-    nativeLanguages: ["Comum", "Alinhamento"],
+    nativeLanguages: ["Alinhamento", "Comum"],
     traits: [
-      "Versatilidade Ilimitada: Pode escolher qualquer classe de aventureiro.",
-      "Avanço Completo: Progride até o nível máximo (14º nível) em todas as classes.",
+      "Sem Habilidades Raciais: Os humanos não possuem habilidades raciais próprias.",
+      "Flexibilidade de Carreira: Pode selecionar qualquer classe.",
+      "Avanço Ilimitado: Progride sem limite de nível em qualquer classe.",
     ],
     maxClassLevels: {
       acrobata: 14,
@@ -52,36 +73,40 @@ export const OSE_RACES: Record<string, OseRace> = {
     id: "anao",
     name: "Anão",
     nameEn: "Dwarf",
-    description: "Semi-humanos robustos e barbudos, de constituição férrea, mestres da pedra e armas pesadas.",
+    sourcePage: 81,
+    description: "Semi-humanos robustos e barbudos de constituição férrea, com forte resistência à magia.",
     minRequirements: { con: 9 },
-    statModifiers: {},
-    nativeLanguages: ["Comum", "Alinhamento", "Anão", "Gnomo", "Goblin", "Kobold"],
+    statModifiers: { cha: -1, con: 1 },
+    nativeLanguages: ["Alinhamento", "Comum", "Anão", "Gnômico", "Goblin", "Kobold"],
     traits: [
-      "Detectar Armadilhas de Pedra e Construções: Chance de 2 em 6 de detectar fossos, blocos móveis e alvenaria recente.",
-      "Infravisão: Enxerga no escuro absoluto até 18 metros.",
-      "Resistência Robusta: Ganha bônus substancial em testes de resistência contra Veneno, Varinhas, Paralisia e Magias.",
-      "Armas Grandes: Devido à baixa estatura, não pode empunhar espadas de duas mãos ou arcos longos.",
+      "Combate: Só pode usar armas pequenas ou de tamanho normal; não pode usar arcos longos nem espadas de duas mãos.",
+      "Detectar Truques de Construção: 2 em 6 de detectar novas construções, paredes deslizantes ou passagens inclinadas ao procurar.",
+      "Detectar Armadilhas de Sala: 2 em 6 de detectar armadilhas não mágicas ao procurar.",
+      "Infravisão: Enxerga até 18 metros no escuro.",
+      "Ouvir Ruídos: 2 em 6 de ouvir ruídos através de portas.",
+      "Resiliência: Bônus nas jogadas de proteção contra veneno, feitiços e varinhas/bastões/cajados conforme a Constituição — 6 ou menos: nenhum; 7–10: +2; 11–14: +3; 15–17: +4; 18: +5.",
     ],
     maxClassLevels: {
-      assassino: 4,
+      assassino: 9,
       clerigo: 8,
       guerreiro: 10,
-      ladrao: 4,
+      ladrao: 9,
     },
   },
   elfo: {
     id: "elfo",
     name: "Elfo",
     nameEn: "Elf",
-    description: "Semi-humanos esbeltos e feéricos de vida quase imortal, graciosos em combate e mestres arcanos.",
+    sourcePage: 82,
+    description: "Semi-humanos esbeltos e feéricos de vida quase imortal, ligados à natureza e à magia.",
     minRequirements: { int: 9 },
-    statModifiers: {},
-    nativeLanguages: ["Comum", "Alinhamento", "Élfico", "Gnoll", "Hobgoblin", "Orc"],
+    statModifiers: { con: -1, dex: 1 },
+    nativeLanguages: ["Alinhamento", "Comum", "Élfico", "Gnoll", "Hobgoblin", "Orc"],
     traits: [
-      "Detectar Portas Secretas: Chance de 2 em 6 de detectar portas secretas procurando ativamente, ou 1 em 6 passando perto.",
-      "Infravisão: Enxerga no escuro absoluto até 18 metros.",
-      "Imunidade a Carniçal: Totalmente imune à paralisia sobrenatural causada por carniçais.",
-      "Sentidos Feéricos: Ouve ruídos com facilidade redobrada (2 em 6).",
+      "Detectar Portas Secretas: 2 em 6 de detectar portas escondidas e secretas ao procurar ativamente.",
+      "Imunidade à Paralisia de Carniçais: Não é afetado pela paralisia que os carniçais infligem.",
+      "Infravisão: Enxerga até 18 metros no escuro.",
+      "Ouvir Ruídos: 2 em 6 de ouvir ruídos através de portas.",
     ],
     maxClassLevels: {
       acrobata: 10,
@@ -99,21 +124,22 @@ export const OSE_RACES: Record<string, OseRace> = {
     id: "halfling",
     name: "Halfling",
     nameEn: "Halfling",
-    description: "Pequenos e rotundos com pés peludos, famosos pela pontaria fantástica, furtividade e sorte lendária.",
-    minRequirements: { dex: 9, con: 9 },
-    statModifiers: { str: -1, dex: 1 },
-    nativeLanguages: ["Comum", "Alinhamento", "Halfling"],
+    sourcePage: 85,
+    description: "Semi-humanos pequenos e rotundos de pés peludos, amigáveis e de coordenação notável.",
+    minRequirements: { con: 9, dex: 9 },
+    statModifiers: { dex: 1, str: -1 },
+    nativeLanguages: ["Alinhamento", "Comum", "Halfling"],
     traits: [
-      "Pontaria com Mísseis: +1 em todas as jogadas de ataque à distância.",
-      "Defesa contra Gigantes: Ganha +2 de CA (ou -2 DAC) quando atacado por criaturas maiores que humanos.",
-      "Furtividade Excepcional: 90% de chance de se esconder em áreas selvagens e 2 em 6 em masmorras.",
-      "Resistência Heróica: Bônus de +4 em jogadas de proteção contra Morte, Varinhas, Paralisia e Magias.",
-      "Restrição de Tamanho: Não pode usar armas de duas mãos ou arcos longos.",
+      "Combate: A armadura precisa ser adaptada ao tamanho pequeno; só pode usar armas adequadas à estatura, e não pode usar arcos longos nem espadas de duas mãos.",
+      "Bônus Defensivo: +2 na Classe de Armadura quando atacado por oponentes grandes (maiores que o tamanho humano).",
+      "Bônus de Iniciativa (regra opcional): +1 nas jogadas de iniciativa individual.",
+      "Ouvir Ruídos: 2 em 6 de ouvir ruídos através de portas.",
+      "Bônus de Ataque de Míssil: +1 nas jogadas de ataque com todas as armas de mísseis.",
+      "Resiliência: Bônus nas jogadas de proteção contra veneno, feitiços e varinhas/bastões/cajados conforme a Constituição — 6 ou menos: nenhum; 7–10: +2; 11–14: +3; 15–17: +4; 18: +5.",
     ],
     maxClassLevels: {
       druida: 6,
       guerreiro: 6,
-      ranger: 6,
       ladrao: 8,
     },
   },
@@ -121,39 +147,48 @@ export const OSE_RACES: Record<string, OseRace> = {
     id: "drow",
     name: "Drow",
     nameEn: "Drow",
-    description: "Elfos negros subterrâneos de cabelos prateados e olhos afiados, hábeis na teia de sombras e venenos.",
+    sourcePage: 79,
+    description: "Elfos negros subterrâneos de pele escura e cabelos prateados, quase imortais e ligados à magia.",
     minRequirements: { int: 9 },
-    statModifiers: {},
-    nativeLanguages: ["Comum Profundo", "Élfico", "Gnoll", "Goblin"],
+    statModifiers: { con: -1, dex: 1 },
+    nativeLanguages: ["Alinhamento", "Comum", "Comum Profundo", "Élfico", "Gnômico"],
     traits: [
-      "Infravisão Superior: Enxerga até 27 metros no escuro.",
-      "Detectar Portas Secretas: 2 em 6 ao procurar, 1 em 6 passando perto.",
-      "Magia Inata Drow: Capaz de conjurar Luz das Fadas e Escuridão 1x por dia.",
-      "Sensibilidade à Luz: Sob luz do dia ou tochas muito brilhantes, sofre -1 de penalidade em ataques.",
+      "Detectar Portas Secretas: 2 em 6 de detectar portas escondidas e secretas ao procurar ativamente.",
+      "Imunidade à Paralisia de Carniçais: Não é completamente afetado pela paralisia que os carniçais infligem.",
+      "Infravisão: Enxerga até 27 metros no escuro.",
+      "Magia Inata: No 2º nível lança Escuridão (o reverso de Luz) uma vez por dia; no 4º nível, Detectar Magia uma vez por dia.",
+      "Sensibilidade à Luz: Sob luz do dia ou luz contínua sofre -2 nas jogadas de ataque e -1 na Classe de Armadura.",
+      "Ouvir Ruídos: 2 em 6 de ouvir ruídos através de portas.",
     ],
     maxClassLevels: {
       acrobata: 10,
       assassino: 10,
       clerigo: 11,
+      guerreiro: 7,
       cavaleiro: 9,
       mago: 9,
       ranger: 9,
-      ladrao: 10,
+      ladrao: 11,
     },
   },
   duergar: {
     id: "duergar",
     name: "Duergar",
     nameEn: "Duergar",
-    description: "Anões cinzentos das profundezas, mestres em emboscadas subterrâneas, poderes mentais e furtividade mineral.",
-    minRequirements: { con: 9 },
-    statModifiers: {},
-    nativeLanguages: ["Comum Profundo", "Anão", "Gnomo", "Goblin", "Kobold"],
+    sourcePage: 80,
+    description: "Anões cinzentos do subsolo, gananciosos por metais e pedras e desconfiados de outras raças.",
+    minRequirements: { con: 9, int: 9 },
+    statModifiers: { cha: -1, con: 1 },
+    nativeLanguages: ["Alinhamento", "Comum", "Comum Profundo", "Anão", "Gnômico", "Goblin", "Kobold"],
     traits: [
-      "Infravisão das Profundezas: Enxerga até 27 metros no escuro.",
-      "Furtividade Subterrânea: Chance de 4 em 6 de se mover em silêncio e emboscar no subterrâneo.",
-      "Poder Mental de Crescimento: 1x por dia pode aumentar de tamanho, dobrando o dano de armas corpo a corpo.",
-      "Sensibilidade à Luz: Sob luz direta do sol sofre -1 em ataques e testes.",
+      "Combate: Só pode usar armas de tamanho pequeno ou normal; não pode usar arcos longos nem espadas de duas mãos.",
+      "Detectar Truques de Construção: 2 em 6 de detectar novas construções, paredes deslizantes ou passagens inclinadas ao procurar.",
+      "Detectar Armadilhas de Sala: 2 em 6 de detectar armadilhas de sala não mágicas ao procurar.",
+      "Infravisão: Enxerga até 27 metros no escuro.",
+      "Sensibilidade à Luz: Sob luz do dia ou luz contínua sofre -2 nas jogadas de ataque e -1 na Classe de Armadura.",
+      "Ouvir Ruídos: 2 em 6 de ouvir ruídos através de portas.",
+      "Resiliência: Bônus nas jogadas de proteção contra paralisia, veneno, feitiços e varinhas/bastões/cajados conforme a Constituição — 6 ou menos: nenhum; 7–10: +2; 11–14: +3; 15–17: +4; 18: +5.",
+      "Furtividade: No subsolo, 3 em 6 de se mover em silêncio.",
     ],
     maxClassLevels: {
       assassino: 9,
@@ -166,15 +201,19 @@ export const OSE_RACES: Record<string, OseRace> = {
     id: "gnomo",
     name: "Gnomo",
     nameEn: "Gnome",
-    description: "Curiosos e inventivos semi-humanos de nariz comprido, primos dos anões e dotados de afinidade com ilusões.",
+    sourcePage: 83,
+    description: "Semi-humanos curtos de nariz comprido, primos dos anões, mineradores e amigos dos animais escavadores.",
     minRequirements: { con: 9, int: 9 },
     statModifiers: {},
-    nativeLanguages: ["Comum", "Alinhamento", "Gnomo", "Anão", "Kobold"],
+    nativeLanguages: ["Alinhamento", "Comum", "Anão", "Gnômico", "Kobold", "Mamíferos Escavadores"],
     traits: [
+      "Combate: A armadura precisa ser adaptada ao tamanho pequeno; só pode usar armas adequadas à estatura, e não pode usar arcos longos nem espadas de duas mãos.",
+      "Bônus Defensivo: +2 na Classe de Armadura quando atacado por oponentes grandes (maiores que o tamanho humano).",
+      "Detectar Truques de Construção: 2 em 6 de detectar novas construções, paredes deslizantes ou passagens inclinadas ao procurar.",
       "Infravisão: Enxerga até 27 metros no escuro.",
-      "Afinidade com Ilusões: Vantagem e bônus de proteção contra magias de ilusão.",
-      "Detectar Truques de Construção: Chance de 2 em 6 de perceber desníveis e mecanismos de pedra.",
-      "Resistência Mágica Anã: Bônus de +4 em salvamentos de varinhas e magias.",
+      "Ouvir Ruídos: 2 em 6 de ouvir ruídos através de portas.",
+      "Resistência Mágica: Bônus nas jogadas de proteção contra feitiços e varinhas/bastões/cajados conforme a Constituição — 6 ou menos: nenhum; 7–10: +2; 11–14: +3; 15–17: +4; 18: +5.",
+      "Falar com Mamíferos Escavadores: Conhece a linguagem secreta de texugos, toupeiras e similares.",
     ],
     maxClassLevels: {
       assassino: 6,
@@ -188,19 +227,20 @@ export const OSE_RACES: Record<string, OseRace> = {
     id: "meio_elfo",
     name: "Meio-Elfo",
     nameEn: "Half-Elf",
-    description: "União da beleza feérica élfica com a determinação humana. Carismáticos e com ampla variedade de carreiras.",
-    minRequirements: { con: 9, cha: 9 },
+    sourcePage: 84,
+    description: "Descendentes raros de elfos e humanos, com a beleza élfica e o físico robusto humano.",
+    minRequirements: { cha: 9, con: 9 },
     statModifiers: {},
-    nativeLanguages: ["Comum", "Alinhamento", "Élfico"],
+    nativeLanguages: ["Alinhamento", "Comum", "Élfico"],
     traits: [
-      "Infravisão: Enxerga até 18 metros na escuridão.",
-      "Detectar Portas Secretas: 2 em 6 ao inspecionar ativamente.",
-      "Versatilidade de Carreira: Acesso a classes nobres como Cavaleiro, Paladino e Bardo.",
+      "Detectar Portas Secretas: 2 em 6 de detectar portas escondidas e secretas ao procurar ativamente.",
+      "Infravisão: Enxerga até 18 metros no escuro.",
     ],
     maxClassLevels: {
       acrobata: 12,
+      assassino: 11,
       bardo: 12,
-      clerigo: 12,
+      clerigo: 5,
       druida: 12,
       guerreiro: 8,
       cavaleiro: 12,
@@ -214,16 +254,20 @@ export const OSE_RACES: Record<string, OseRace> = {
     id: "meio_orc",
     name: "Meio-Orc",
     nameEn: "Half-Orc",
-    description: "Herdeiros da fúria e musculatura orc, formidáveis guerreiros e assassinos temidos.",
+    sourcePage: 86,
+    description: "Descendentes raros de orcs e humanos, excluídos das duas culturas e sobreviventes por qualquer meio.",
     minRequirements: {},
-    statModifiers: { str: 1, con: 1, cha: -2 },
-    nativeLanguages: ["Comum", "Alinhamento", "Orc"],
+    statModifiers: { cha: -2, con: 1, str: 1 },
+    nativeLanguages: ["Alinhamento", "Comum", "Orc"],
     traits: [
       "Infravisão: Enxerga até 18 metros no escuro.",
-      "Constituição Vigorosa: Bônus nato de +1 em Força e Constituição.",
-      "Presença Intimidadora: Penalidade de -2 em Carisma com povos da superfície.",
+      "Ataque pelas Costas: +4 para acertar e dano dobrado ao atacar por trás um oponente inconsciente.",
+      "Combate: Pode usar todos os tipos de armas, armaduras de couro e cota de malha e escudos.",
+      "Habilidades de Ladrão: Usa Esconder-se nas Sombras, Mover-se Silenciosamente e Pungar Bolsos.",
+      "Lacaios: Lacaios a serviço de um meio-orc têm a lealdade reduzida em 1 (não se aplica a lacaios meio-orcs).",
     ],
     maxClassLevels: {
+      acrobata: 8,
       assassino: 8,
       clerigo: 4,
       guerreiro: 10,
@@ -234,15 +278,20 @@ export const OSE_RACES: Record<string, OseRace> = {
     id: "svirfneblin",
     name: "Svirfneblin",
     nameEn: "Svirfneblin (Deep Gnome)",
-    description: "Gnomos das profundezas, atarracados e de pele cinzenta, peritos em camuflagem e engenhos subterrâneos.",
+    sourcePage: 87,
+    description: "Gnomos das profundezas, atarracados e de pele cinzenta nodosa, ligados à pedra e aos elementais da terra.",
     minRequirements: { con: 9 },
     statModifiers: {},
-    nativeLanguages: ["Comum Profundo", "Gnomo", "Anão", "Kobold"],
+    nativeLanguages: ["Alinhamento", "Comum", "Comum Profundo", "Gnômico", "Anão", "Kobold", "Elementais da Terra"],
     traits: [
-      "Camuflagem Rochosa: 2 em 6 de se camuflar em pedras mesmo sob observação direta.",
-      "Infravisão Profunda: Enxerga até 27 metros no escuro.",
-      "Resistência de Pedra: Bônus de +4 em todos os testes de proteção contra veneno e magia.",
-      "Ilusões Naturais: Conhece truques arcanos de distorção de imagem.",
+      "Infravisão: Enxerga até 27 metros no escuro.",
+      "Camuflagem Rochosa: 2 em 6 de se camuflar em pedras, mesmo sob observação direta.",
+      "Detectar Truques de Construção: 2 em 6 de detectar novas construções, paredes deslizantes ou passagens inclinadas ao procurar.",
+      "Ouvir Ruídos: 2 em 6 de ouvir ruídos através de portas.",
+      "Resistência à Ilusão: +2 em todos os testes de resistência contra ilusões.",
+      "Falar com Elementais da Terra: Pode falar com os nativos do plano elemental da terra.",
+      "Murmúrios de Pedra: Parado por um turno com o ouvido na pedra, 2 em 6 de sentir portas secretas, gemas ou metais, criaturas vivas ou água/espaços abertos nas proximidades.",
+      "Sensibilidade à Luz: Sob luz forte sofre -2 nas jogadas de ataque e -1 na Classe de Armadura.",
     ],
     maxClassLevels: {
       assassino: 8,
@@ -254,7 +303,27 @@ export const OSE_RACES: Record<string, OseRace> = {
   },
 };
 
+/**
+ * Proveniência por raça. A tabela é explícita para que uma raça nova não herde
+ * silenciosamente a página de outra — foi o que aconteceu quando todas as dez
+ * apontavam para a p. 78 (regra opcional), e não para a própria descrição.
+ */
+const OSE_RACE_SOURCES: Record<string, number> = {
+  humano: 86,
+  anao: 81,
+  elfo: 82,
+  halfling: 85,
+  drow: 79,
+  duergar: 80,
+  gnomo: 83,
+  meio_elfo: 84,
+  meio_orc: 86,
+  svirfneblin: 87,
+};
+
 for (const oseRace of Object.values(OSE_RACES)) {
+  const page = OSE_RACE_SOURCES[oseRace.id];
+  if (!page) throw new Error(`Raça OSE sem proveniência declarada: ${oseRace.id}`);
   oseRace.sourceBook = "Old-School Essentials — Tomo do Jogador";
-  oseRace.sourcePage = 78;
+  oseRace.sourcePage = page;
 }

@@ -82,6 +82,12 @@ describe("system content coverage contract", () => {
       && entry.progression.some((level) => level.level === 1)
       && entry.features.length > 0
     ))).toBe(true);
-    expect(Object.values(OSE_RACES).every((entry) => entry.sourcePage === 78 && entry.traits.length > 0 && entry.nativeLanguages.length > 0)).toBe(true);
+    // OSE raças: proveniência por raça dentro do capítulo de raças do Tomo
+    // (págs. 79–87); a auditoria completa está em `oseRaceAudit.test.ts`.
+    expect(Object.values(OSE_RACES).every((entry) => (
+      Boolean(entry.sourceBook && entry.sourcePage && entry.sourcePage >= 79 && entry.sourcePage <= 87)
+      && entry.traits.length > 0
+      && entry.nativeLanguages.length > 0
+    ))).toBe(true);
   });
 });

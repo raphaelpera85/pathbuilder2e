@@ -201,7 +201,32 @@ Efeito prático do defeito 7: o **modificador de XP** era calculado pelo atribut
 
 Regressão: `src/data/ose/oseClassAudit.test.ts` (34 casos) fixa XP, DV, TAC0, bônus de ataque, resistências, espaços de magia, requisitos, DV, nível máximo e proveniência das 15 classes auditadas.
 
-**Pendência registrada (não inventada):** o Tomo traz **treze classes ausentes do catálogo** — Duergar (p. 44), Drow (p. 38), Gnomo (p. 52), Meio-Elfo (p. 54), Meio-Orc (p. 60), Svirfneblin (p. 72) e as demais classes avançadas. As tabelas existem nos PDFs e podem ser transcritas numa próxima rodada.
+**Pendência registrada (não inventada):** o Tomo apresenta **dois métodos de criação** (p. 14) — o **Básico/Especialista**, em que a classe escolhida determina a raça ("classes semi-humanas"), e o **Avançado**, com raça e classe separadas. O catálogo implementa o Avançado. Pelo método Básico o Tomo traz **nove classes semi-humanas** (Duergar p. 44, Drow p. 38, Anão p. 46, Elfo p. 48, Gnomo p. 52, Meio-Elfo p. 54, Halfling p. 56, Meio-Orc p. 60, Svirfneblin p. 72) e o catálogo tem só três (`anao_bx`, `elfo_bx`, `halfling_bx`): **faltam seis**. As tabelas estão nos PDFs.
+
+#### Auditoria das 10 raças contra o capítulo de raças do Tomo (2026-09-22, rodada 7)
+
+Conferência completa de `src/data/ose/oseRaces.ts` contra as páginas impressas 79–87. **38 divergências encontradas.** As mais graves:
+
+| Defeito | Detalhe |
+|---|---|
+| **Proveniência falsa** | As dez raças apontavam para a p. 78, que é a regra opcional de levantamento de restrições — nenhuma raça é descrita ali |
+| **Habilidades inventadas** | Seis raças tinham habilidades que o livro não tem (ver abaixo) |
+| **Tetos de nível errados** | Seis raças; no Anão, assassino e ladrão valiam 4 em vez de 9 (era o teto do B/X clássico, não do Tomo) |
+| **Idiomas errados** | As dez; faltava "Alinhamento" em três, usava-se "Gnomo" onde o livro diz "Gnômico", e o Svirfneblin listava um idioma inexistente |
+| **Modificadores ausentes** | Cinco raças (Anão e Duergar −1 CAR/+1 CON; Elfo e Drow −1 CON/+1 DES) |
+
+Habilidades que **não existem no livro** e foram removidas:
+
+- **Drow**: "Magia Inata" com **Luz das Fadas** — o livro dá Escuridão no 2º nível e Detectar Magia no 4º. A Sensibilidade à Luz também estava pela metade (−2 nos ataques **e** −1 na CA).
+- **Duergar**: "Poder Mental de Crescimento" (inexistente) e furtividade **4 em 6**, quando o livro diz **3 em 6**.
+- **Meio-Orc**: "Constituição Vigorosa" e "Presença Intimidadora" não são habilidades nomeadas — são só o efeito dos modificadores. O livro lista Ataque pelas Costas, Combate, Infravisão, Habilidades de Ladrão e a **redução de 1 na lealdade dos lacaios** (esta faltava).
+- **Gnomo**: "Afinidade com Ilusões" (inexistente) e "Resistência Mágica Anã +4" fixa; o livro diz **"Modificadores de Habilidade: Nenhum"** e traz **Resistência Mágica por CON**, **+2 na CA contra oponentes grandes** e **Fale com Mamíferos Escavadores** (os dois últimos faltavam).
+- **Halfling**: "Resistência Heróica +4" fixa contra quatro categorias; o livro traz **Resiliência por CON** contra veneno, feitiços e varinhas.
+- **Svirfneblin**: "Ilusões Naturais" (inexistente) e "Resistência de Pedra +4"; o livro traz **Resistência à Ilusão +2**, **Falar com Elementais da Terra** e **Murmúrios de Pedra**.
+
+Onde o livro condiciona o bônus à Constituição, o texto agora declara a escala inteira (6 ou menos: nenhum; 7–10: +2; 11–14: +3; 15–17: +4; 18: +5) em vez de fixar um número.
+
+Regressão: `src/data/ose/oseRaceAudit.test.ts` (42 casos) — fixa proveniência, requisitos, modificadores, idiomas e tetos por raça, e verifica o que as habilidades **devem** citar e o que **não podem** citar (os trechos inventados ficam como controle negativo).
 
 Causalidade comprovada: restaurando os limites antigos de carga, 4 testes falham exatamente nos limites documentados (`expected 27 to be 18` em 600 moedas e o rótulo `801–1200` em vez de `801–1600`); restaurada a correção, os 58 testes de OSE passam. Evidência: `src/data/ose/oseMovement.test.ts` (7), `src/ose/OseCharacterSheet.test.tsx` (7, DOM do cartão), `src/data/ose/oseSecondarySkills.test.ts` (5, tabela d100 contra o livro), `src/data/ose/oseClassAudit.test.ts` (34, classes contra os dois livros), `src/data/ose/ose-pdf-export.test.ts` (+2, campos de movimento do PDF) e `src/data/ose/ose-engine.test.ts` (expectativas atualizadas).
 
@@ -212,8 +237,8 @@ Causalidade comprovada: restaurando os limites antigos de carga, 4 testes falham
 - `[x]` Validar magias iniciais e limites por círculo no fluxo Classic — coberto por `oseClassicFlow.test.tsx` (magias restritas ao 1º círculo, sem passo de magias para não conjurador).
 - `[x]` Criar testes de reabertura/edição (Classic) — coberto por `oseClassicFlow.test.tsx` (reabertura preservando nível 5 de um Elfo) e `OseCharacterCreatorModal.test.tsx`.
 - `[x]` Carga (as duas opções do livro) — feito em 2026-09-22 (rodada 5): ver a correção acima; a tabela d100 de perícias secundárias também foi conferida linha a linha contra o Tomo do Jogador (`oseSecondarySkills.test.ts`), com a divergência da faixa 34–35 declarada.
-- `[x]` Auditar por classe todas as habilidades especiais e tabelas de progressão (Advanced Tome) — **feito para as tabelas numéricas** das 15 classes (XP, DV, TAC0, bônus de ataque, resistências, espaços de magia, requisitos e proveniência) em 2026-09-22, rodada 6; as *habilidades* (texto de cada classe) seguem sem auditoria.
-- `[ ]` Transcrever as treze classes do Tomo ausentes do catálogo (Duergar p. 44, Drow p. 38, Gnomo p. 52, Meio-Elfo p. 54, Meio-Orc p. 60, Svirfneblin p. 72 …) — as tabelas estão nos PDFs
+- `[x]` Auditar por classe todas as habilidades especiais e tabelas de progressão (Advanced Tome) — **feito para as tabelas numéricas** das 15 classes e para as **10 raças** (habilidades, idiomas, modificadores e tetos) em 2026-09-22, rodadas 6 e 7; o texto integral de cada habilidade de classe segue sem auditoria.
+- `[ ]` Transcrever as seis classes semi-humanas do Tomo ausentes do catálogo (Duergar p. 44, Drow p. 38, Gnomo p. 52, Meio-Elfo p. 54, Meio-Orc p. 60, Svirfneblin p. 72) — as tabelas estão nos PDFs
 - `[ ]` Exibir no construtor: requisitos principais, XP mods, reações, retentores e lealdade — **o motor já calcula** (`getOseChaModifiers`, `getOsePrimeRequisiteXpMod`, `OSE_SPECIALISTS_RETAINERS`); falta expor no assistente de criação
 - `[ ]` Completar itens de aventura, montarias, especialistas, retentores e regras de uso
 - `[ ]` Inspeção visual do PDF OSE gerado (Classic e Advanced) nos viewports/impressão
@@ -312,6 +337,8 @@ Causalidade comprovada: restaurando os limites antigos de carga, 4 testes falham
 | `src/data/ose/oseSecondarySkills.test.ts` (novo) | 5 casos: transcrição da tabela d100 do Tomo do Jogador p. 25 linha a linha, cobertura 1–100, limites e o controle negativo das duas faixas de metalurgia |
 | `src/data/ose/oseClasses.ts` | Progressões, requisitos principais/mínimos e proveniência por classe; `OSE_CLASS_SOURCES` lança se uma classe nova não declarar origem |
 | `src/data/ose/oseClassAudit.test.ts` (novo) | 34 casos: XP, DV, TAC0, bônus de ataque, resistências, espaços de magia, requisitos e proveniência das 15 classes contra os dois livros |
+| `src/data/ose/oseRaces.ts` | Raças reescritas a partir do capítulo de raças (pp. 79–87); `OSE_RACE_SOURCES` lança se uma raça nova não declarar proveniência |
+| `src/data/ose/oseRaceAudit.test.ts` (novo) | 42 casos: proveniência, requisitos, modificadores, idiomas e tetos por classe das 10 raças, com controle negativo das habilidades inventadas |
 | `src/ose/OseCharacterSheet.test.tsx` (novo) | 7 casos de DOM no cartão "Movimento & Carga": faixa detalhada, 27 m em 600 moedas, Carga Simplificada por armadura, tesouro, e ficha sem armadura |
 | `src/ose/oseClassicFlow.test.tsx` (novo) | 5 casos ponta a ponta do fluxo clássico |
 
@@ -323,25 +350,28 @@ Causalidade comprovada: restaurando os limites antigos de carga, 4 testes falham
 
 **Validação da rodada 6 (2026-09-22, auditoria das 15 classes OSE):** `npm test` = 72 arquivos / 1171 testes, 0 falhas; `npx tsc -b`, `npm run build` e `git diff --check` aprovados.
 
+**Validação da rodada 7 (2026-09-22, auditoria das 10 raças OSE):** `npm test` = 73 arquivos / 1213 testes, 0 falhas; `npx tsc -b`, `npm run build` e `git diff --check` aprovados.
+
 > ⚠️ Continua pendente a configuração no painel do Supabase (proteção contra senhas vazadas) — não é código.
 
 ---
 
 ## 7. Próximas ações recomendadas (ordem)
 
-1. ✅ `npm test -- --run` → 0 falhas (72 arquivos / 1171 testes em 2026-09-22)
+1. ✅ `npm test -- --run` → 0 falhas (73 arquivos / 1213 testes em 2026-09-22)
 2. ⏳ Habilitar senhas vazadas no Supabase (dashboard, não é código)
 3. ✅ Importar `multiSystemSources` em `PortalPages.tsx` → `allDownloadItems` + filtro por sistema (2026-09-22)
 4. ✅ Atualizar título de Downloads em `i18n.tsx` para remover "PF2e" exclusivo (2026-09-22)
 5. ✅ Pré-requisitos de poder do T20 modelados e verificados (180/180 alcançáveis; bug de Finta Aprimorada corrigido em 2026-09-22)
 6. ✅ Carga e movimento do OSE corrigidos e com as duas opções do livro (2026-09-22, rodada 5)
 7. ✅ Auditoria das 15 classes OSE contra os dois livros: 8 defeitos reais corrigidos (2026-09-22, rodada 6)
-8. ⏳ OSE — o que resta: transcrever as 13 classes do Tomo ausentes, expor requisitos principais/XP/reações/retentores no assistente, habilidades de classe em texto, itens de aventura e montarias, inspeção visual do PDF — **próximo item**
-9. ⏳ Completar efeitos de subclasses D&D 5e (as 40 derivam ficha; faltam asserções numéricas das restantes)
-10. ⏳ Completar escolhas dependentes das 14 classes T20
-11. ⏳ Suplementos D&D 5e como pacotes opcionais (Costa da Espada, Ravnica, Strixhaven)
-12. ⏳ Importar conteúdo de Ameaças de Arton e Código de Poderes T20
-13. ⏳ UI de efeitos temporários e condições por sistema
+8. ✅ Auditoria das 10 raças OSE contra o capítulo de raças: 38 divergências corrigidas (2026-09-22, rodada 7)
+9. ⏳ OSE — o que resta: transcrever as 6 classes semi-humanas ausentes, texto das habilidades de classe, expor requisitos/XP/reações/retentores no assistente, itens de aventura e montarias, inspeção visual do PDF — **próximo item**
+10. ⏳ Completar efeitos de subclasses D&D 5e (as 40 derivam ficha; faltam asserções numéricas das restantes)
+11. ⏳ Completar escolhas dependentes das 14 classes T20
+12. ⏳ Suplementos D&D 5e como pacotes opcionais (Costa da Espada, Ravnica, Strixhaven)
+13. ⏳ Importar conteúdo de Ameaças de Arton e Código de Poderes T20
+14. ⏳ UI de efeitos temporários e condições por sistema
 
 ---
 
