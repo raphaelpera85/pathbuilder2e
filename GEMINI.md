@@ -17,4 +17,6 @@ Rules:
 - **Mecânicas de Descanso PF2e**: descanso de 8 horas segue o Player Core p. 444 (zera `tempHp`, remove `Fatigado`, decrementa `Condenado` e `Drenado`, limpa `Ferido` se curado ao máximo e consulta `slotsInfo` defensivamente).
 - **Normalização de VTTs**: slugs de talentos normalizados (`class`, `ancestry`, `general`, `skill`, `archetype`) e inclusão de armas, armaduras, escudos e equipamentos na matriz de itens exportada.
 - **Privacidade de Dados**: qualquer e-mail exibido no painel administrativo deve ser mascarado com `maskEmail()`, suportando prefixos de qualquer comprimento.
+- **Acervo Multi-Sistema & Isolamento de Rulesets**: novos sistemas de RPG integrados ao acervo de downloads ou ficha devem possuir vocabulário isolado de ruleset (ex.: `remaster`/`legacy` em PF2e, `padrao` em T20, `standard` em D&D 5e, `classic`/`advanced` em OSE, `v35` em D&D 3.5). Nunca reaproveitar rótulos de edição do PF2e em outros sistemas.
+- **Aferição Factual de PDFs & Acessibilidade nos Downloads**: contagens de página de novos livros devem ser verificadas com parsers binários (`pdf-lib`/`pdfinfo`). Títulos de livros homônimos em múltiplos sistemas devem ser qualificados (ex.: "Livro do Jogador (D&D 3.5)") para evitar colisões de `aria-label` e acessibilidade em botões de download direto.
 
