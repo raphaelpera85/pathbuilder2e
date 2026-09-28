@@ -14,6 +14,7 @@ import {
   OSE_ADDITIONAL_LANGUAGES,
   isOseClassAvailableForMode,
   OSE_CLASSIC_RACE_BY_CLASS,
+  OSE_BASIC_METHOD_RACE_BY_CLASS,
   isOseClassAllowedForRace,
   isOseWeaponAllowedForClass,
   isOseArmorAllowedForClass,
@@ -40,13 +41,21 @@ import { OSE_SPELLS, type OseSpell } from "../data/ose/oseSpells";
 import "./oseTheme.css";
 import { getCatalogVersion } from "../data/catalogVersions";
 
-const OSE_CREATION_RULES: Record<"advanced" | "classic", readonly string[]> = {
+const OSE_CREATION_RULES: Record<"advanced" | "classic" | "basico", readonly string[]> = {
   advanced: [
     "Role 3d6 para cada atributo: Força, Inteligência, Sabedoria, Destreza, Constituição e Carisma.",
     "Escolha uma raça e uma classe Advanced Fantasy compatíveis com o nível de atributos.",
     "Aplique modificadores raciais, alinhamento, idiomas e a perícia secundária quando aplicável.",
     "Role os Pontos de Vida pelo dado da classe e aplique o modificador de Constituição.",
     "Role o ouro inicial, compre armas, armaduras e equipamentos do catálogo OSE.",
+    "Conjuradores escolhem magias iniciais dentro dos espaços do 1º círculo; o Mago recebe Ler Magia.",
+  ],
+  basico: [
+    "Método de Criação Básica (Tomo do Jogador, p. 14): as habilidades primárias do aventureiro vêm de um único fator, a classe escolhida.",
+    "Escolha diretamente uma classe do catálogo Advanced Fantasy; a menos que seja uma das seis classes semi-humanas (Drow, Duergar, Gnomo, Meio-Elfo, Meio-Orc, Svirfneblin), o personagem é humano.",
+    "Aplique alinhamento, modificadores, salvamentos, THAC0 e Classe de Armadura da classe escolhida.",
+    "Role os Pontos de Vida pelo dado da classe e aplique o modificador de Constituição.",
+    "Role o ouro inicial e compre o equipamento permitido pelo catálogo.",
     "Conjuradores escolhem magias iniciais dentro dos espaços do 1º círculo; o Mago recebe Ler Magia.",
   ],
   classic: [
@@ -63,7 +72,7 @@ export interface OseCharacterCreatedData {
   id: string;
   name: string;
   system_id: "ose";
-  ruleset: "advanced" | "classic";
+  ruleset: "advanced" | "classic" | "basico";
   catalogVersion?: string;
   raceId: string;
   classId: string;
@@ -102,7 +111,7 @@ export function OseCharacterCreatorModal({
   const modalRef = useRef<HTMLDivElement>(null);
   const [validationMessage, setValidationMessage] = useState<string>("");
   const [charName, setCharName] = useState("Aventureiro de Karameikos");
-  const [creationMode, setCreationMode] = useState<"advanced" | "classic">("advanced");
+  const [creationMode, setCreationMode] = useState<"advanced" | "classic" | "basico">("advanced");
 
   // Fechar com Escape e travar overflow do body
   useEffect(() => {
@@ -183,12 +192,14 @@ export function OseCharacterCreatorModal({
   const selectedClass: OseClass = OSE_CLASSES[selectedClassId] || OSE_CLASSES.guerreiro;
   const effectiveRaceId = creationMode === "classic"
     ? OSE_CLASSIC_RACE_BY_CLASS[selectedClass.id] || "humano"
-    : selectedRaceId;
+    : creationMode === "basico"
+      ? OSE_BASIC_METHOD_RACE_BY_CLASS[selectedClass.id] || "humano"
+      : selectedRaceId;
   const selectedRace: OseRace = OSE_RACES[effectiveRaceId] || OSE_RACES.humano;
 
   useEffect(() => {
     if (!isOseClassAvailableForMode(selectedClass, creationMode) || (creationMode === "advanced" && !isOseClassAllowedForRace(selectedRace, selectedClass))) {
-      const firstValidClass = Object.values(OSE_CLASSES).find((cls) => isOseClassAvailableForMode(cls, creationMode) && (creationMode === "classic" || isOseClassAllowedForRace(selectedRace, cls)));
+      const firstValidClass = Object.values(OSE_CLASSES).find((cls) => isOseClassAvailableForMode(cls, creationMode) && (creationMode !== "advanced" || isOseClassAllowedForRace(selectedRace, cls)));
       if (firstValidClass) setSelectedClassId(firstValidClass.id);
     }
     setValidationMessage("");
@@ -234,7 +245,7 @@ export function OseCharacterCreatorModal({
   // distinção, uma classe racial clássica caía no fallback `?? 1` e a ficha
   // ficava travada no nível 1.
   const raceLevelCap = selectedRace.maxClassLevels[selectedClass.id];
-  const maxClassLevel = creationMode === "classic"
+  const maxClassLevel = creationMode !== "advanced"
     ? classLevelCap
     // `null` na tabela significa ilimitado (até o teto da classe); a chave
     // ausente continua conservadora, porque a combinação não é permitida.
@@ -578,7 +589,7 @@ export function OseCharacterCreatorModal({
         </div>
 
         <details className="ose-creation-rules">
-          <summary>Regras de criação · OSE {creationMode === "advanced" ? "Advanced Fantasy" : "Classic"}</summary>
+          <summary>Regras de criação · OSE {creationMode === "advanced" ? "Advanced Fantasy" : creationMode === "classic" ? "Classic" : "Básico/Especialista"}</summary>
           <ol>
             {OSE_CREATION_RULES[creationMode].map((rule) => <li key={rule}>{rule}</li>)}
           </ol>
@@ -682,6 +693,13 @@ export function OseCharacterCreatorModal({
                   >
                     Fantasia Clássica B/X (Sete Classes)
                   </button>
+                  <button
+                    type="button"
+                    className={`ose-btn ${creationMode === "basico" ? "ose-btn-primary" : ""}`}
+                    onClick={() => setCreationMode("basico")}
+                  >
+                    Criação Básica (Classe Única, p. 14)
+                  </button>
                 </div>
               </div>
 
@@ -713,13 +731,21 @@ export function OseCharacterCreatorModal({
                 </div>
               )}
 
+              {creationMode === "basico" && (
+                <div style={{ padding: "10px 14px", marginBottom: 20, background: "rgba(0,0,0,0.2)", borderRadius: 6, fontSize: "0.82rem" }}>
+                  A raça é determinada pela classe: um humano, a menos que a classe escolhida seja uma das seis
+                  classes semi-humanas (Drow, Duergar, Gnomo, Meio-Elfo, Meio-Orc, Svirfneblin), que já embutem
+                  sua própria raça — <strong>{selectedRace.name}</strong>, no caso desta seleção.
+                </div>
+              )}
+
               <div>
                 <h4 style={{ margin: "0 0 10px 0", color: "var(--ose-gold)" }}>
-                  {creationMode === "advanced" ? "Escolha a Classe:" : "Escolha a Classe (B/X Clássico):"}
+                  {creationMode === "advanced" ? "Escolha a Classe:" : creationMode === "classic" ? "Escolha a Classe (B/X Clássico):" : "Escolha a Classe (Criação Básica):"}
                 </h4>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 8 }}>
                   {Object.values(OSE_CLASSES)
-                    .filter((c) => isOseClassAvailableForMode(c, creationMode) && (creationMode === "classic" || isOseClassAllowedForRace(selectedRace, c)))
+                    .filter((c) => isOseClassAvailableForMode(c, creationMode) && (creationMode !== "advanced" || isOseClassAllowedForRace(selectedRace, c)))
                     .map((c) => {
                       const qualified = meetsClassRequirements(c);
                       return (
@@ -1266,7 +1292,7 @@ export function OseCharacterCreatorModal({
           {step === finalStep && (
             <div className="ose-creation-review">
               <h3 style={{ margin: "0 0 12px", color: "var(--ose-gold)" }}>Revisão final da ficha</h3>
-              <p><strong>Sistema:</strong> OSE {creationMode === "advanced" ? "Advanced Fantasy" : "Classic Fantasy"} · <strong>catálogo:</strong> {getCatalogVersion("ose", creationMode)}</p>
+              <p><strong>Sistema:</strong> OSE {creationMode === "advanced" ? "Advanced Fantasy" : creationMode === "classic" ? "Classic Fantasy" : "Básico/Especialista"} · <strong>catálogo:</strong> {getCatalogVersion("ose", creationMode)}</p>
               <div className="ose-review-grid">
                 <p><strong>Nome:</strong> {charName || "sem nome"}</p>
                 <p><strong>Raça:</strong> {selectedRace.name}</p>

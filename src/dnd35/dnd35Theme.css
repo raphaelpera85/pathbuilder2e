@@ -1,0 +1,373 @@
+/* ============================================================================
+   D&D 3.5 - Tema e Estilos do Criador de Personagem
+   Visual paralelo ao OSE, com paleta em roxo/violeta (badgeColor do catálogo)
+   ============================================================================ */
+
+:root {
+  --dnd35-bg: #1c1523;
+  --dnd35-card-bg: #241a2e;
+  --dnd35-border: #4c3a5c;
+  --dnd35-accent: #8b5cf6;
+  --dnd35-accent-hover: #7c3aed;
+  --dnd35-text: #f5f3f7;
+  --dnd35-text-muted: #a89bb5;
+}
+
+[data-theme="light"] {
+  --dnd35-bg: #f3eef9;
+  --dnd35-card-bg: #fdfcff;
+  --dnd35-border: #d8cbe8;
+  --dnd35-accent: #7c3aed;
+  --dnd35-accent-hover: #6d28d9;
+  --dnd35-text: #241a2e;
+  --dnd35-text-muted: #6b5b7a;
+}
+
+.dnd35-wizard-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 16px;
+  overflow-y: auto;
+  backdrop-filter: blur(4px);
+}
+
+.dnd35-wizard-modal {
+  background: var(--dnd35-bg);
+  border: 2px solid var(--dnd35-border);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 920px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  color: var(--dnd35-text);
+  overflow: hidden;
+}
+
+.dnd35-wizard-header {
+  padding: 18px 24px;
+  border-bottom: 2px solid var(--dnd35-border);
+  background: var(--dnd35-card-bg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dnd35-wizard-header h2 {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--dnd35-accent);
+}
+
+.dnd35-wizard-description {
+  margin: 4px 0 0;
+  color: var(--dnd35-text-muted);
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
+.dnd35-step-tabs {
+  display: flex;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid var(--dnd35-border);
+  overflow-x: auto;
+}
+
+.dnd35-step-tab {
+  padding: 10px 16px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--dnd35-text-muted);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s;
+}
+
+.dnd35-step-tab.active {
+  color: var(--dnd35-accent);
+  border-bottom-color: var(--dnd35-accent);
+  background: rgba(139, 92, 246, 0.08);
+}
+
+.dnd35-creation-rules {
+  margin: 14px 24px 0;
+  border: 1px solid var(--dnd35-border);
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.dnd35-creation-rules summary {
+  padding: 10px 12px;
+  cursor: pointer;
+  color: var(--dnd35-accent);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.dnd35-creation-rules ol {
+  display: grid;
+  gap: 5px;
+  margin: 0;
+  padding: 0 24px 10px 34px;
+  color: var(--dnd35-text-muted);
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.dnd35-creation-rules small {
+  display: block;
+  padding: 0 12px 10px;
+  color: var(--dnd35-text-muted);
+  font-size: 0.7rem;
+}
+
+.dnd35-wizard-body {
+  padding: 24px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.dnd35-wizard-footer {
+  padding: 16px 24px;
+  border-top: 1px solid var(--dnd35-border);
+  background: var(--dnd35-card-bg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dnd35-step-section h3 {
+  margin: 16px 0 8px;
+  color: var(--dnd35-accent);
+  font-size: 1rem;
+}
+
+.dnd35-step-section h3:first-child {
+  margin-top: 0;
+}
+
+.dnd35-step-section h4 {
+  margin: 12px 0 6px;
+  color: var(--dnd35-text-muted);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.dnd35-ability-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.dnd35-ability-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 10px;
+  border: 1px solid var(--dnd35-border);
+  border-radius: 6px;
+  background: var(--dnd35-card-bg);
+}
+
+.dnd35-ability-field span {
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.dnd35-ability-field input {
+  width: 100%;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--dnd35-border);
+  background: var(--dnd35-bg);
+  color: var(--dnd35-text);
+}
+
+.dnd35-ability-field small {
+  color: var(--dnd35-text-muted);
+  font-size: 0.7rem;
+}
+
+.dnd35-name-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 10px;
+  max-width: 320px;
+}
+
+.dnd35-name-field input {
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--dnd35-border);
+  background: var(--dnd35-card-bg);
+  color: var(--dnd35-text);
+}
+
+.dnd35-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.dnd35-choice-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 12px;
+  text-align: left;
+  border: 1px solid var(--dnd35-border);
+  border-radius: 6px;
+  background: var(--dnd35-card-bg);
+  color: var(--dnd35-text);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.dnd35-choice-card:hover:not(:disabled) {
+  border-color: var(--dnd35-accent);
+}
+
+.dnd35-choice-card.active {
+  border-color: var(--dnd35-accent);
+  background: rgba(139, 92, 246, 0.14);
+}
+
+.dnd35-choice-card:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.dnd35-choice-card small {
+  color: var(--dnd35-text-muted);
+  font-size: 0.72rem;
+}
+
+.dnd35-summary-box {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--dnd35-border);
+  border-radius: 6px;
+  background: rgba(139, 92, 246, 0.06);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.dnd35-summary-box p {
+  margin: 4px 0;
+}
+
+.dnd35-skill-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 4px;
+  max-height: 320px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.dnd35-skill-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.dnd35-skill-row.class-skill {
+  background: rgba(139, 92, 246, 0.08);
+}
+
+.dnd35-skill-row small {
+  margin-left: auto;
+  color: var(--dnd35-text-muted);
+}
+
+.dnd35-bought-list {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dnd35-bought-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 10px;
+  border: 1px solid var(--dnd35-border);
+  border-radius: 4px;
+  background: var(--dnd35-card-bg);
+  font-size: 0.8rem;
+}
+
+.dnd35-bought-list button {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  border: 1px solid var(--dnd35-border);
+  background: var(--dnd35-bg);
+  color: var(--dnd35-accent);
+  cursor: pointer;
+}
+
+.dnd35-validation-message {
+  color: #f87171;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.dnd35-btn {
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid var(--dnd35-border);
+  background: var(--dnd35-card-bg);
+  color: var(--dnd35-text);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dnd35-btn:hover:not(:disabled) {
+  border-color: var(--dnd35-accent);
+  background: rgba(139, 92, 246, 0.12);
+}
+
+.dnd35-btn-primary {
+  background: var(--dnd35-accent);
+  color: #ffffff;
+  border-color: var(--dnd35-accent-hover);
+}
+
+.dnd35-btn-primary:hover:not(:disabled) {
+  background: var(--dnd35-accent-hover);
+}
+
+.dnd35-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

@@ -19,7 +19,12 @@ export const CURRENT_CATALOG_VERSIONS: Record<string, Record<string, string>> = 
   ose: {
     advanced: "ose-advanced-2026.09",
     classic: "ose-classic-2026.09",
+    basico: "ose-basico-2026.09",
     needs_review: "ose-review-2026.09",
+  },
+  dnd35: {
+    v35: "dnd35-v35-2026.09",
+    needs_review: "dnd35-review-2026.09",
   },
 };
 

@@ -7,7 +7,7 @@
  */
 export type RulesetId =
   | "remaster" | "legacy" | "needs_review"
-  | "padrao" | "standard" | "advanced" | "classic" | "v35";
+  | "padrao" | "standard" | "advanced" | "classic" | "basico" | "v35" | "legacy_pf1";
 
 export interface PathfinderSource {
   id: string;
@@ -29,7 +29,7 @@ export interface PathfinderSource {
 
 // Extended source type for multi-system books (T20, D&D 5e, OSE, D&D 3.5)
 export interface MultiSystemSource extends PathfinderSource {
-  system: "pf2e" | "t20" | "dnd5e" | "ose" | "dnd35";
+  system: "pf2e" | "t20" | "dnd5e" | "ose" | "dnd35" | "pf1e";
   systemLabel: { "pt-BR": string; en: string; es: string };
 }
 
@@ -357,6 +357,7 @@ export const T20_DRIVE_FOLDER_URL = GOOGLE_DRIVE_FOLDER_URL;
 export const DND5E_DRIVE_FOLDER_URL = GOOGLE_DRIVE_FOLDER_URL;
 export const OSE_DRIVE_FOLDER_URL = GOOGLE_DRIVE_FOLDER_URL;
 export const DND35_DRIVE_FOLDER_URL = GOOGLE_DRIVE_FOLDER_URL;
+export const PF1E_DRIVE_FOLDER_URL = GOOGLE_DRIVE_FOLDER_URL;
 
 // Multi-system books from the local RPG library folder
 export const multiSystemSources: MultiSystemSource[] = [
@@ -1085,5 +1086,63 @@ export const multiSystemSources: MultiSystemSource[] = [
     downloadUrl: DND35_DRIVE_FOLDER_URL,
     viewUrl: DND35_DRIVE_FOLDER_URL,
     driveUrl: DND35_DRIVE_FOLDER_URL
+  },
+  // ─── Pathfinder 1e (Legacy) ───────────────────────────────────────────────────
+  {
+    id: "pf1e-livro-basico",
+    system: "pf1e",
+    systemLabel: { "pt-BR": "Pathfinder 1e", en: "Pathfinder 1e", es: "Pathfinder 1e" },
+    title: "Pathfinder RPG - Livro Básico",
+    titles: { "pt-BR": "Livro Básico", en: "Core Rulebook", es: "Reglamento Básico" },
+    language: "pt-BR",
+    pages: 577,
+    ruleset: "legacy_pf1",
+    pageCountStatus: "verified_with_pdfinfo",
+    languageEvidence: "inferred_from_filename",
+    catalogStatus: "partial",
+    linkedRecords: 7,
+    verifiedAt: "2026-09-27",
+    filename: "pathfinder - rpg - livro - basico.pdf",
+    downloadUrl: PF1E_DRIVE_FOLDER_URL,
+    viewUrl: PF1E_DRIVE_FOLDER_URL,
+    driveUrl: PF1E_DRIVE_FOLDER_URL
+  },
+  {
+    id: "pf1e-bestiario",
+    system: "pf1e",
+    systemLabel: { "pt-BR": "Pathfinder 1e", en: "Pathfinder 1e", es: "Pathfinder 1e" },
+    title: "Pathfinder RPG - Bestiário",
+    titles: { "pt-BR": "Bestiário", en: "Bestiary", es: "Bestiario" },
+    language: "pt-BR",
+    pages: 329,
+    ruleset: "legacy_pf1",
+    pageCountStatus: "verified_with_pdfinfo",
+    languageEvidence: "inferred_from_filename",
+    catalogStatus: "pending",
+    linkedRecords: 0,
+    verifiedAt: "2026-09-27",
+    filename: "LIVRO - Pathfinder RPG - Bestiário (Paizo).pdf",
+    downloadUrl: PF1E_DRIVE_FOLDER_URL,
+    viewUrl: PF1E_DRIVE_FOLDER_URL,
+    driveUrl: PF1E_DRIVE_FOLDER_URL
+  },
+  {
+    id: "pf1e-bestiario-2",
+    system: "pf1e",
+    systemLabel: { "pt-BR": "Pathfinder 1e", en: "Pathfinder 1e", es: "Pathfinder 1e" },
+    title: "Pathfinder RPG - Bestiary 2",
+    titles: { "pt-BR": "Bestiário 2", en: "Bestiary 2", es: "Bestiario 2" },
+    language: "en",
+    pages: 322,
+    ruleset: "legacy_pf1",
+    pageCountStatus: "verified_with_pdfinfo",
+    languageEvidence: "inferred_from_filename",
+    catalogStatus: "pending",
+    linkedRecords: 0,
+    verifiedAt: "2026-09-27",
+    filename: "LIVRO - Pathfinder RPG - Bestiary 2 (English).pdf",
+    downloadUrl: PF1E_DRIVE_FOLDER_URL,
+    viewUrl: PF1E_DRIVE_FOLDER_URL,
+    driveUrl: PF1E_DRIVE_FOLDER_URL
   },
 ];

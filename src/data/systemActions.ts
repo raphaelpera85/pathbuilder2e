@@ -7,7 +7,7 @@ type ActionDefinition = {
   summary: string;
   description: string;
   book: string;
-  ruleset: "standard" | "padrao" | "advanced" | "classic";
+  ruleset: "standard" | "padrao" | "advanced" | "classic" | "basico";
 };
 
 const ACTIONS: ActionDefinition[] = [
@@ -166,8 +166,17 @@ const OSE_CLASSIC_ACTIONS: ActionDefinition[] = ACTIONS
     ruleset: "classic",
   }));
 
+const OSE_BASICO_ACTIONS: ActionDefinition[] = ACTIONS
+  .filter((action) => action.systemId === "ose")
+  .map((action) => ({
+    ...action,
+    id: `${action.id}.basico`,
+    name: `${action.name} (Criação Básica)`,
+    ruleset: "basico",
+  }));
+
 export function getSystemActionItems(systemId: string, ruleset?: string): PickerItem[] {
-  return [...ACTIONS, ...OSE_CLASSIC_ACTIONS]
+  return [...ACTIONS, ...OSE_CLASSIC_ACTIONS, ...OSE_BASICO_ACTIONS]
     .filter((action) => action.systemId === systemId && (!ruleset || action.ruleset === ruleset)).map((action) => ({
     id: action.id,
     name: action.name,

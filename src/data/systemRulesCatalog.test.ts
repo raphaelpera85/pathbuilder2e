@@ -23,5 +23,7 @@ describe("system rules compendium", () => {
   it("filters OSE rules by ruleset", () => {
     expect(getSystemRuleItems("ose", "advanced").every((item) => item.data.ruleset === "advanced")).toBe(true);
     expect(getSystemRuleItems("ose", "classic").every((item) => item.data.ruleset === "classic")).toBe(true);
+    expect(getSystemRuleItems("ose", "basico").every((item) => item.data.ruleset === "basico")).toBe(true);
+    expect(getSystemRuleItems("ose", "basico").some((item) => item.data.ruleKind === "creation")).toBe(true);
   });
 });

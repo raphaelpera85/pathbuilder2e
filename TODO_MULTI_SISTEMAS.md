@@ -20,6 +20,76 @@ Para a matriz completa de tarefas por categoria (criação, classes, raças, ite
   - O arquivo `GD5e.pdf` é uma variante gritty separada e não será misturada com D&D 5e padrão.
 - [x] Manter suplementos, aventuras e homebrew das pastas como fontes opcionais futuras, sem contaminar o núcleo.
 
+### Decisão de escopo — "cobrir todos os livros de `I:\Meu Drive\Livros\Livros RPG`" (2026-09-27)
+
+O usuário pediu cobertura completa dos livros da pasta local. Inventário real (501 arquivos): a maioria é conteúdo não catalogável em um construtor de fichas — módulos de aventura (Curse of Strahd, Age of Ashes, Rise of the Runelords etc.), mapas/Flip-Mats/Poster Map Folios e art packs (centenas de PNGs). Escopo confirmado com o usuário via `clarify`:
+
+- **Priorizar, em qualquer ordem/sequência ("todos")**: OSE (concluir Básico/Especialista — feito nesta sessão), D&D 3.5 (sistema inteiro ainda sem integração no portal: só existe `dnd35` como identificador de ruleset/fonte em `sources.ts`/`characters.ts`, nenhum `src/dnd35/` ou catálogo próprio), Pathfinder 1e (Livro Básico + Bestiários, também sem integração), Tormenta 20 (fechar P0/P1/P2 de `TODO_COBERTURA_E_BUGS.md`).
+- **Fora do escopo**: aventuras/módulos, mapas, Flip-Mats e art packs — não têm classes/raças/talentos/magias para catalogar; servem a conteúdo narrativo, não a criação de personagem.
+- **Dentro do escopo**: os ~40 PDFs de homebrew de terceiros na pasta D&D 5E (GM Binder, Homebrewery, Tamer Class, Chronomancer etc.) — usuário confirmou que também devem ser cobertos, não só material oficial.
+
+Nenhuma prioridade de execução entre OSE/D&D 3.5/PF1e/T20 foi imposta pelo usuário ("todos"); a ordem fica a critério de quem executar a próxima rodada. D&D 3.5 e Pathfinder 1e são o maior esforço restante, por não terem nenhum catálogo (`src/data/dnd35/`, `src/data/pf1e/`) nem componente de criação hoje.
+
+### Progresso — Pathfinder 1e (2026-09-27)
+
+Primeiro passo real de integração do PF1e (antes só existia o rótulo `dnd35`/nenhum): transcritas as sete raças do capítulo de raças do Livro Básico (`I:\Meu Drive\Livros\Livros RPG\Pathfinder\Livros\pathfinder - rpg - livro - basico.pdf`, páginas 21-27, texto extraído via pypdf) em `src/data/pf1e/pf1eRaces.ts` (Anão, Elfo, Gnomo, Halfling, Humano, Meio-Elfo, Meio-Orc), com auditoria em `pf1eRaces.test.ts` contra o texto real. Sistema `pf1e` registrado em `types.ts` (`RPGSystemId`), `sources.ts` (`MultiSystemSource.system`, `RulesetId.legacy_pf1`) e `services/catalog.ts` (`DEFAULT_RPG_SYSTEMS`, marcado `active: false` porque não há `createDefaultCharacter`/wizard ainda — `SystemSelectorModal.tsx` agora filtra sistemas `active: false` para não abrir um construtor inexistente). Três livros catalogados em `multiSystemSources` (Livro Básico 577p., Bestiário 329p., Bestiary 2 322p.); o Guia de Ancestralidades já existia catalogado como fonte PF2e Legacy e não foi duplicado.
+
+**Falta para PF1e ter criação de fichas**: classes (10 no Livro Básico), perícias, talentos, equipamento, magias por classe, um `SystemRulesEngine`/wizard próprio (o projeto não tem um "Core" genérico o bastante para reaproveitar `CoreCharacterCreatorModal` sem adaptação, já que PF1e usa BBA incremental, %/testes de resistência com Fort/Ref/Von em vez de proficiência, e magias por nível de classe em tabelas próprias) e então `active: true`.
+
+### Progresso — Pathfinder 1e, classes núcleo (2026-09-27, mesma sessão)
+
+Transcritas as 11 classes do Capítulo 3 do Livro Básico (Bárbaro, Bardo, Clérigo, Druida, Feiticeiro, Guerreiro, Ladino, Mago, Monge, Paladino, Patrulheiro) em `src/data/pf1e/pf1eClasses.ts`, com tendência, dado de vida, progressão de BBA, testes de resistência bons, perícias de classe, graduações de perícia por nível e tipo de conjuração — todos extraídos literalmente do PDF (pypdf, páginas 30-83) e auditados em `pf1eClasses.test.ts` (22 testes no total entre raças e classes). Uma página (80, cabeçalho do Patrulheiro) tem o cmap da fonte corrompido no PDF fonte (glifos saem invertidos mesmo via pdftotext -layout); os dados do Patrulheiro foram confirmados via páginas adjacentes (79, 81-83) sem depender daquele trecho.
+
+**Ainda falta para PF1e ter criação de fichas**: perícias (lista completa com atributo-chave e uso sem treino), talentos (Capítulo 5), equipamento (Capítulo 6), magias por classe (Capítulo 10), features de classe nível a nível além do 1º nível (tabelas de progressão completas), e o próprio `SystemRulesEngine`/wizard.
+
+### Progresso — Pathfinder 1e, perícias núcleo (2026-09-27, mesma sessão)
+
+Transcritas as 26 perícias do Capítulo 4 do Livro Básico em `src/data/pf1e/pf1eSkills.ts` (nome, atributo-chave, treino obrigatório, penalidade de armadura, subtipos), com atributos-chave confirmados diretamente pelos cabeçalhos de cada perícia no PDF (ex.: "BLEFAR (CAR)", "CURA (SAB)", "INTIMIDAÇÃO (CAR)"). Auditoria em `pf1eSkills.test.ts` inclui uma checagem cruzada: toda perícia de classe citada em `PF1E_CLASSES` (das 11 classes já catalogadas) precisa mapear para uma entrada válida em `PF1E_SKILLS` — já pegou e corrigiu 2 bugs de regex no próprio teste antes de fechar verde. Total agora: 3 arquivos de dados (raças, classes, perícias) e 47 testes de auditoria em `src/data/pf1e/`.
+
+**Ainda falta para PF1e ter criação de fichas**: talentos (Capítulo 5), equipamento (Capítulo 6), magias por classe (Capítulo 10), features de classe nível a nível além do 1º nível, e o `SystemRulesEngine`/wizard.
+
+### Progresso — D&D 3.5, primeiras raças + desbloqueio de PDFs escaneados (2026-09-27, mesma sessão)
+
+**Achado importante**: o Livro do Jogador de D&D 3.5 (`D&D 3.5 - Livro do Jogador.pdf`, 318 páginas) e o Livro dos Monstros (322 páginas) são digitalizações de imagem puras — confirmado com `pypdf` e `pymupdf` (0 caracteres extraíveis em qualquer página, 1 imagem por página, sem OCR embutido). Isso bloqueava a extração de texto real exigida pelas convenções do projeto.
+
+**Resolvido nesta sessão**: instalado Tesseract OCR (via `winget install UB-Mannheim.TesseractOCR`) + pacote de idioma `por.traineddata` (baixado do repo oficial `tesseract-ocr/tessdata`, colocado em `TESSDATA_PREFIX` fora de `Program Files` por permissão) + `pymupdf` (via `pip install pymupdf`) para renderizar páginas em 400dpi. OCR puro (`tesseract -l por`) tem qualidade aceitável em texto corrido, mas degrada muito em layouts de duas colunas com caixas de traço racial (nomes/números embaralhados). **A abordagem que funcionou de forma confiável foi renderizar a página em 400dpi e usar `vision_analyze` para leitura direta da imagem** — o texto sai limpo mesmo em layouts complexos com caixas de traço, títulos e ilustrações lado a lado.
+
+Com esse pipeline, transcritas as 7 raças núcleo do Capítulo 2 (Anão p.13, Elfo p.14, Gnomo p.16, Halfling p.20, Humano p.13, Meio-Elfo p.17, Meio-Orc p.19) em `src/data/dnd35/dnd35Races.ts`, com auditoria em `dnd35Races.test.ts` (9 testes). Capítulo de raças completo. Próximo: classes (Capítulo 3), perícias (Capítulo 4), talentos (Capítulo 5) etc. — o mesmo volume de trabalho já feito para PF1e, mas com o passo extra de renderizar+ler visualmente cada página em vez de extrair texto direto.
+
+Também dois arquivos com "Maximum page tree depth reached: 101 > 100" (`Livro Completo do Aventureiro.pdf`, `O Livro Completo do Guerreiro.pdf`) foram destravados via `pikepdf`/monkeypatch de `pypdf._configuration.get_configuration().page_tree_maximum_depth` — mas ambos também são scans de imagem puros (0 texto), então precisarão do mesmo pipeline de visão.
+
+**Nota de arquitetura corrigida**: `dnd35` estava `active: true` em `DEFAULT_RPG_SYSTEMS` sem nenhum componente de criação de fichas — corrigido nesta sessão para `active: false` (mesmo tratamento do pf1e), removendo o risco de abrir um wizard incorreto via `PortalPages.tsx::handleSelectSystem`.
+
+### Progresso — D&D 3.5, classes núcleo do Capítulo 3 (2026-09-27, mesma sessão)
+
+Transcritas as 11 classes núcleo (Bárbaro, Bardo, Clérigo, Druida, Feiticeiro, Guerreiro, Ladino, Mago, Monge, Paladino, Patrulheiro) em `src/data/dnd35/dnd35Classes.ts`, usando o mesmo pipeline de renderização 400dpi + `vision_analyze` (páginas 21-59). Cada classe registra tendência, dado de vida, progressão de BBA resumida (boa/média/ruim), testes de resistência bons, pontos de perícia por nível, lista de perícias de classe e tipo de conjuração (quando aplicável), todos citando a página exata onde foram lidos. Auditoria em `dnd35Classes.test.ts` (13 testes). Total D&D 3.5 agora: 7 raças + 11 classes = 22 testes de auditoria em `src/data/dnd35/`.
+
+**Ainda falta para D&D 3.5 ter criação de fichas**: progressões nível-a-nível completas (Tabelas 3-1 a 3-18, magias por dia/conhecidas), perícias (Capítulo 4), talentos (Capítulo 5), equipamento (Capítulo 6-7), magias por classe (Capítulos 10-11), e o próprio `SystemRulesEngine`/wizard — mesmo volume restante do PF1e.
+
+### Progresso — D&D 3.5, perícias núcleo (2026-09-27, mesma sessão)
+
+Transcritas as 45 perícias distintas (34 linhas da Tabela 4-2 + subtipos de Conhecimento citados pelas 11 classes) em `src/data/dnd35/dnd35Skills.ts`, a partir da tabela mestre de perícias (Tabela 4-2, página 63), lida integralmente via `vision_analyze` na renderização em 400dpi. Cada entrada registra habilidade-chave, se pode ser usada sem treino e se sofre penalidade de armadura (Natação é a única com penalidade em dobro). Auditoria em `dnd35Skills.test.ts` (7 testes) inclui a mesma checagem cruzada usada no PF1e: toda perícia de classe citada nas 11 classes já catalogadas precisa mapear para uma entrada válida em `DND35_SKILLS`. Total D&D 3.5 agora: 7 raças + 11 classes + 45 perícias = 29 testes de auditoria em `src/data/dnd35/`.
+
+**Ainda falta para D&D 3.5 ter criação de fichas**: progressões nível-a-nível completas (Tabelas 3-1 a 3-18, magias por dia/conhecidas), talentos (Capítulo 5), equipamento (Capítulo 6-7), magias por classe (Capítulos 10-11), e o próprio `SystemRulesEngine`/wizard.
+
+### Progresso — D&D 3.5, talentos núcleo (conjunto curado) (2026-09-27, mesma sessão)
+
+Transcritos 22 talentos do Capítulo 5 em `src/data/dnd35/dnd35Feats.ts`: os mais citados por outras classes já catalogadas (Ataque Poderoso, Combate com Duas Armas, Especialização em Arma/Arma Maior, Especialização em Combate, Esquiva, Iniciativa Aprimorada, Liderança etc.), mais alguns de criação de item e metamágicos (Escrever Pergaminho, Acelerar Magia, Ampliar Magia). Cada talento registra tipo (geral/criação de item/metamágico), pré-requisitos, benefício completo e a página exata de onde foi lido — via o mesmo pipeline de renderização 400dpi + `vision_analyze`. **Decisão de escopo**: o Capítulo 5 completo tem ~110 talentos; catalogado um conjunto curado (não exaustivo) priorizando os talentos com pré-requisitos ou dependências entre si, documentado explicitamente no cabeçalho do arquivo e no teste de auditoria. Auditoria em `dnd35Feats.test.ts` (9 testes). Total D&D 3.5 agora: 7 raças + 11 classes + 45 perícias + 22 talentos = 38 testes de auditoria em `src/data/dnd35/`.
+
+**Ainda falta para D&D 3.5 ter criação de fichas**: os ~88 talentos restantes do Capítulo 5 (opcional, dependendo do escopo desejado), progressões nível-a-nível completas (Tabelas 3-1 a 3-18, magias por dia/conhecidas), equipamento (Capítulo 6-7), magias por classe (Capítulos 10-11), e o próprio `SystemRulesEngine`/wizard.
+
+### Progresso — D&D 3.5, equipamento núcleo: armas e armaduras (2026-09-27, mesma sessão)
+
+Transcritas as tabelas mestras completas do Capítulo 7 em `src/data/dnd35/dnd35Equipment.ts`: **Tabela 7-5 (Armas, páginas 116-117)** com 69 armas cobrindo as 3 categorias (Simples, Comuns, Exóticas) — custo, dano para criaturas Pequenas/Médias, incremento decisivo, incremento de distância, peso e tipo de dano; e **Tabela 7-6 (Armaduras e Escudos, página 123)** com as 18 entradas completas — custo, bônus de armadura, bônus máximo de Destreza, penalidade de armadura, chance de falha de magia arcana, deslocamento reduzido (9m→6m ou 6m→4,5m) e peso. Diferente das rodadas anteriores (que usavam conjuntos curados), aqui a cobertura é **completa e exaustiva** porque as tabelas mestras cabem em 2-3 páginas renderizadas, ao contrário do Capítulo 5 (Talentos) que tem ~110 entradas espalhadas em dezenas de páginas de descrição individual. Auditoria em `dnd35Equipment.test.ts` (13 testes). Total D&D 3.5 agora: 7 raças + 11 classes + 45 perícias + 22 talentos + 69 armas + 18 armaduras/escudos = 51 testes de auditoria em `src/data/dnd35/`.
+
+**Ainda falta para D&D 3.5 ter criação de fichas**: os ~88 talentos restantes do Capítulo 5 (opcional), progressões nível-a-nível completas (Tabelas 3-1 a 3-18, magias por dia/conhecidas), itens diversos (Tabela 7-8), magias por classe (Capítulos 10-11), e o próprio `SystemRulesEngine`/wizard.
+
+### Progresso — D&D 3.5, itens gerais completos (Tabela 7-8) (2026-09-27, mesma sessão)
+
+Transcrita a Tabela 7-8 (Itens e Serviços, página 128) completa em `src/data/dnd35/dnd35Gear.ts` — 78 itens cobrindo as 3 seções da tabela: Equipamento de Aventura (mochilas, cordas, ferramentas, iluminação etc.), Itens e Substâncias Especiais (ácido, água benta, fogo alquímico, bastão de fumaça etc.) e Instrumentos de Classe e Kits de Perícia (grimório de mago, símbolo sagrado, kits de ladrão/escalada/disfarces/primeiros socorros etc.). Cobertura **completa e exaustiva** — a tabela cabe em uma única página de 4 colunas. Custo preservado como string (mistura PC/PP/PO na mesma tabela). Auditoria em `dnd35Gear.test.ts` (9 testes). Total D&D 3.5 agora: 7 raças + 11 classes + 45 perícias + 22 talentos + 69 armas + 18 armaduras/escudos + 78 itens gerais = 60 testes de auditoria em `src/data/dnd35/`.
+
+**Ainda falta para D&D 3.5 ter criação de fichas**: os ~88 talentos restantes do Capítulo 5 (opcional), progressões nível-a-nível completas (Tabelas 3-1 a 3-18, magias por dia/conhecidas), magias por classe (Capítulos 10-11), e o próprio `SystemRulesEngine`/wizard.
+
 ## Fase 0 — arquitetura e segurança de dados
 
 - [x] Criar um `SystemRulesEngine` por sistema, com `createDefaultCharacter`, `deriveStats`, `validateCharacter` e `getCreationSteps`.

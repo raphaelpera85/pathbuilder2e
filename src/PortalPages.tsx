@@ -48,6 +48,7 @@ import { getWeaponImageAlt, getWeaponImageUrl } from "./weaponVisuals";
 import { getItemImageAlt, getItemImageUrl } from "./itemVisuals";
 import { SystemSelectorModal } from "./SystemSelectorModal";
 import { OseCharacterCreatorModal, type OseCharacterCreatedData } from "./ose/OseCharacterCreatorModal";
+import { Dnd35CharacterCreatorModal, type Dnd35CharacterCreatedData } from "./dnd35/Dnd35CharacterCreatorModal";
 import { CoreCharacterCreatorModal } from "./core/CoreCharacterCreatorModal";
 import type { MultiSystemCharacter, SupportedCoreSystem } from "./data/multiSystemCharacter";
 import type { RPGSystemId } from "./types";
@@ -1104,6 +1105,8 @@ function LibraryPage() {
   const [selectedSystemFilter, setSelectedSystemFilter] = useState<string>("all");
   const [isOseWizardOpen, setIsOseWizardOpen] = useState(false);
   const [activeOseCharacter, setActiveOseCharacter] = useState<OseCharacterCreatedData | null>(null);
+  const [isDnd35WizardOpen, setIsDnd35WizardOpen] = useState(false);
+  const [activeDnd35Character, setActiveDnd35Character] = useState<Dnd35CharacterCreatedData | null>(null);
   const [coreWizardSystem, setCoreWizardSystem] = useState<SupportedCoreSystem | null>(null);
   const [activeCoreCharacter, setActiveCoreCharacter] = useState<MultiSystemCharacter | null>(null);
 
@@ -1291,6 +1294,10 @@ function LibraryPage() {
       setIsOseWizardOpen(true);
       return;
     }
+    if (systemId === "dnd35") {
+      setIsDnd35WizardOpen(true);
+      return;
+    }
     if (systemId === "t20" || systemId === "dnd5e") {
       setCoreWizardSystem(systemId as SupportedCoreSystem);
       return;
@@ -1313,6 +1320,10 @@ function LibraryPage() {
     const hydratedData = hydrateCharacterForEditor(char.system_id, char.ruleset, charData);
     if (editorRoute === "ose") {
       setActiveOseCharacter(hydratedData);
+      return;
+    }
+    if (editorRoute === "dnd35") {
+      setActiveDnd35Character(hydratedData as unknown as Dnd35CharacterCreatedData);
       return;
     }
     if (editorRoute === "core") {

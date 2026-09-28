@@ -115,13 +115,13 @@ async function persistRemoteRevision(
 
 export type CharacterRuleset =
   | "remaster" | "legacy" | "both" | "needs_review"
-  | "standard" | "2024" | "padrao" | "jogo_do_ano" | "advanced" | "classic" | "v35";
+  | "standard" | "2024" | "padrao" | "jogo_do_ano" | "advanced" | "classic" | "basico" | "v35";
 
 const CHARACTER_RULESETS_BY_SYSTEM: Record<string, readonly CharacterRuleset[]> = {
   pf2e: ["remaster", "legacy", "both", "needs_review"],
   dnd5e: ["standard", "2024", "needs_review"],
   t20: ["padrao", "jogo_do_ano", "needs_review"],
-  ose: ["advanced", "classic", "needs_review"],
+  ose: ["advanced", "classic", "basico", "needs_review"],
   dnd35: ["v35", "needs_review"],
 };
 
@@ -138,6 +138,7 @@ export function normalizeCharacterRuleset(value: unknown): CharacterRuleset {
   if (raw === "padrao" || raw === "padrão") return "padrao";
   if (raw === "jogo_do_ano" || raw.includes("jogo do ano")) return "jogo_do_ano";
   if (raw === "advanced" || raw.includes("avançada") || raw.includes("avancada")) return "advanced";
+  if (raw === "basico" || raw === "básico" || raw.includes("básico/especialista") || raw.includes("basico/especialista") || raw.includes("criação básica") || raw.includes("criacao basica")) return "basico";
   if (raw === "both" || raw.includes("custom") || raw.includes("variant") || raw.includes("variante") || raw.includes("hybrid") || raw.includes("híbrida") || raw.includes("hibrida")) return "both";
   return "needs_review";
 }

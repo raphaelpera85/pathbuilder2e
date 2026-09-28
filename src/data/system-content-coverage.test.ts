@@ -60,10 +60,13 @@ describe("system content coverage contract", () => {
 
   it("keeps OSE's core categories distinct and documents the absence of native feats", () => {
     expect(Object.keys(OSE_RACES).length).toBe(10);
-    expect(Object.keys(OSE_CLASSES).length).toBe(16);
+    expect(Object.keys(OSE_CLASSES).length).toBe(22);
     expect(OSE_WEAPONS.length + OSE_ARMORS.length + OSE_GEAR.length).toBe(53);
     expect(OSE_SPELLS.length).toBe(34);
-    expect(getSystemSkillItems("ose").length).toBe(45);
+    // 45 vinham do Ladrão e do Acrobata Advanced; +7 vieram do Meio-Orc
+    // (classe clássica), a única das seis novas classes semi-humanas com
+    // tabela de perícias de Ladrão própria (ES, MS, PB — p. 61 do Tomo).
+    expect(getSystemSkillItems("ose").length).toBe(52);
     expect(getSystemRuleItems("ose").some((item) => item.data.ruleKind === "creation")).toBe(true);
     expect(getSystemActionItems("ose").length).toBeGreaterThan(0);
     expect(getSystemRuleItems("ose").some((item) => item.data.ruleKind === "advantage")).toBe(false);

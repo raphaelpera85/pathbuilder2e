@@ -27,4 +27,12 @@ describe("system action compendium", () => {
     expect(classic.every((item) => item.data.ruleset === "classic")).toBe(true);
     expect(classic.some((item) => advanced.some((entry) => entry.id === item.id))).toBe(false);
   });
+
+  it("also exposes OSE Criação Básica actions, isolated from Advanced and Classic", () => {
+    const advanced = getSystemActionItems("ose", "advanced");
+    const basico = getSystemActionItems("ose", "basico");
+    expect(basico).toHaveLength(4);
+    expect(basico.every((item) => item.data.ruleset === "basico")).toBe(true);
+    expect(basico.some((item) => advanced.some((entry) => entry.id === item.id))).toBe(false);
+  });
 });

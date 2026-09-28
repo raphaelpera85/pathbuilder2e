@@ -43,6 +43,10 @@ export const SystemSelectorModal: React.FC<SystemSelectorModalProps> = ({
   const { t, locale } = useTranslation();
   const modalContentRef = useRef<HTMLDivElement>(null);
   const coverageLabels = COVERAGE_LABELS[locale] || COVERAGE_LABELS["pt-BR"];
+  // Sistemas marcados `active: false` (ex.: pf1e, sem criação de fichas
+  // ainda) ficam catalogados para o inventário de cobertura, mas fora do
+  // seletor visível — evita abrir um wizard inexistente ao clicar no card.
+  const selectableSystems = systems.filter((system) => system.active !== false);
 
   // Fechar com Escape e bloquear scroll do body
   useEffect(() => {
@@ -124,7 +128,7 @@ export const SystemSelectorModal: React.FC<SystemSelectorModalProps> = ({
 
         {/* Grid de Sistemas */}
         <div className="pb-system-grid" role="list">
-          {systems.map((system) => {
+          {selectableSystems.map((system) => {
             const systemName =
               system.name[locale] ||
               system.name["pt-BR"] ||

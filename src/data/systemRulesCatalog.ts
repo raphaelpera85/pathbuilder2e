@@ -3,7 +3,7 @@ import type { PickerItem, RPGSystemId } from "../types";
 type RuleDefinition = {
   id: string;
   systemId: RPGSystemId;
-  ruleset: "remaster" | "standard" | "padrao" | "advanced" | "classic";
+  ruleset: "remaster" | "standard" | "padrao" | "advanced" | "classic" | "basico";
   name: string;
   summary: string;
   description: string;
@@ -64,6 +64,17 @@ const RULES: RuleDefinition[] = [
     description: "O ruleset Classic Fantasy usa classes raciais e suas próprias progressões; o catálogo não recebe talentos ou perícias modernas por conversão.",
     kind: "creation",
     book: "Old-School Essentials — Classic Fantasy",
+  },
+  {
+    id: "ose.rule.creation.basico",
+    systemId: "ose",
+    ruleset: "basico",
+    name: "Criação de personagem — OSE Criação Básica",
+    summary: "Atributos 3d6, classe única (que também define a raça), alinhamento, idiomas, PV, ouro e equipamento.",
+    description: "O Método de Criação Básica (Tomo do Jogador, p. 14) determina as habilidades primárias por um único fator: a classe. Salvo as seis classes semi-humanas do Advanced Fantasy (Drow, Duergar, Gnomo, Meio-Elfo, Meio-Orc, Svirfneblin), o personagem é humano.",
+    kind: "creation",
+    book: "Old-School Essentials — Tomo do Jogador",
+    page: 14,
   },
   {
     id: "dnd5e.rule.advantage.disadvantage",

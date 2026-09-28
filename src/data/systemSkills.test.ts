@@ -30,6 +30,13 @@ describe("system skill compendium", () => {
     expect(classic.every((skill) => skill.data.skillTable === undefined)).toBe(true);
   });
 
+  it("does not expose Advanced thief/acrobat tables in OSE Criação Básica", () => {
+    const basico = getSystemSkillItems("ose", "basico");
+    expect(basico.length).toBeGreaterThan(0);
+    expect(basico.every((skill) => skill.data.ruleset === "basico")).toBe(true);
+    expect(basico.every((skill) => skill.data.skillTable === undefined)).toBe(true);
+  });
+
   it("marks every local skill with its ruleset", () => {
     expect(getSystemSkillItems("t20").every((skill) => skill.data.ruleset === "padrao")).toBe(true);
     expect(getSystemSkillItems("dnd5e").every((skill) => skill.data.ruleset === "standard")).toBe(true);

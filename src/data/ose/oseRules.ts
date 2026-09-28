@@ -268,11 +268,34 @@ export const OSE_CLASSIC_RACE_BY_CLASS: Record<string, string> = {
   halfling_bx: "halfling",
 };
 
+/**
+ * Método de Criação Básica (Tomo do Jogador, p. 14): "as habilidades primárias
+ * de um aventureiro são determinadas por um único fator: a classe de
+ * personagem escolhida... A menos que uma classe semi-humana seja
+ * selecionada, o personagem é humano." As seis classes abaixo (Drow p. 38,
+ * Duergar p. 44, Gnomo p. 52, Meio-Elfo p. 54, Meio-Orc p. 60, Svirfneblin
+ * p. 72) são as classes semi-humanas do próprio catálogo Advanced Fantasy que
+ * fixam a raça da ficha nesse método — nas demais classes o personagem é
+ * humano. Distinto do Classic Fantasy (`OSE_CLASSIC_RACE_BY_CLASS`), que é
+ * outro livro com só sete classes.
+ */
+export const OSE_BASIC_METHOD_RACE_BY_CLASS: Record<string, string> = {
+  drow_bx: "drow",
+  duergar_bx: "duergar",
+  gnomo_bx: "gnomo",
+  meio_elfo_bx: "meio_elfo",
+  meio_orc_bx: "meio_orc",
+  svirfneblin_bx: "svirfneblin",
+};
+
 /** Classes disponíveis em cada apresentação do núcleo OSE. */
 export function isOseClassAvailableForMode(
   oseClass: { id: string; isRaceClass?: boolean },
-  mode: "advanced" | "classic",
+  mode: "advanced" | "classic" | "basico",
 ): boolean {
+  const isBasicMethodRaceClass = Object.prototype.hasOwnProperty.call(OSE_BASIC_METHOD_RACE_BY_CLASS, oseClass.id);
+  if (mode === "basico") return !oseClass.isRaceClass || isBasicMethodRaceClass;
+  if (isBasicMethodRaceClass) return false;
   if (oseClass.isRaceClass) return mode === "classic";
   if (mode === "advanced") return true;
   return (OSE_CLASSIC_CORE_CLASS_IDS as readonly string[]).includes(oseClass.id);
@@ -326,7 +349,7 @@ export function limitOseSpellsBySlots(
 
 /** Verifica se uma arma respeita as proficiências da classe OSE escolhida. */
 export function isOseWeaponAllowedForClass(weapon: OseWeapon, selectedClass: OseClass): boolean {
-  if (selectedClass.id === "anao_bx") return !["arco_longo", "espada_duas_maos"].includes(weapon.id);
+  if (["anao_bx", "gnomo_bx", "svirfneblin_bx"].includes(selectedClass.id)) return !["arco_longo", "espada_duas_maos"].includes(weapon.id);
   if (selectedClass.id === "halfling_bx") return !weapon.isTwoHanded && weapon.id !== "arco_longo";
   if (selectedClass.allowedWeapons === "todas") return true;
   if (selectedClass.allowedWeapons === "sem_corte") return weapon.isBlunt;

@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   OSE_CLASSIC_CORE_CLASS_IDS,
   OSE_CLASSIC_RACE_BY_CLASS,
+  OSE_BASIC_METHOD_RACE_BY_CLASS,
   isOseClassAllowedForRace,
   isOseClassAvailableForMode,
 } from "./oseRules";
@@ -101,5 +102,24 @@ describe("OSE — disponibilidade de classes por apresentação", () => {
       }
     }
     expect(problems).toEqual([]);
+  });
+
+  it("Criação Básica oferece as classes do Advanced Fantasy, com as seis semi-humanas fixando a própria raça", () => {
+    const basicoIds = classes.filter((entry) => isOseClassAvailableForMode(entry, "basico")).map((entry) => entry.id).sort();
+    // A Criação Básica usa o catálogo Advanced Fantasy (13 classes + as 6
+    // semi-humanas do próprio livro); as classes raciais exclusivas do outro
+    // livro, Classic Fantasy (anao_bx, elfo_bx, halfling_bx, com tabelas de
+    // progressão próprias e mais curtas), não pertencem a este método.
+    const expectedIds = Object.keys(OSE_CLASSES).filter((id) => !Object.keys(OSE_CLASSIC_RACE_BY_CLASS).includes(id)).sort();
+    expect(basicoIds).toEqual(expectedIds);
+    for (const [classId, raceId] of Object.entries(OSE_BASIC_METHOD_RACE_BY_CLASS)) {
+      expect(OSE_RACES[raceId], classId).toBeDefined();
+    }
+    // Advanced e Classic continuam sem as seis classes semi-humanas da
+    // Criação Básica: elas não aparecem em nenhum dos dois outros filtros.
+    for (const classId of Object.keys(OSE_BASIC_METHOD_RACE_BY_CLASS)) {
+      expect(isOseClassAvailableForMode(OSE_CLASSES[classId], "advanced"), classId).toBe(false);
+      expect(isOseClassAvailableForMode(OSE_CLASSES[classId], "classic"), classId).toBe(false);
+    }
   });
 });

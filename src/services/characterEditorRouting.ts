@@ -1,9 +1,9 @@
 import type { RPGSystemId } from "../types";
 import { getCatalogVersion } from "../data/catalogVersions";
 
-export type CharacterEditorRoute = "pf2e" | "core" | "ose";
+export type CharacterEditorRoute = "pf2e" | "core" | "ose" | "dnd35";
 
-const SUPPORTED_SYSTEM_IDS = new Set(["pf2e", "t20", "dnd5e", "ose"]);
+const SUPPORTED_SYSTEM_IDS = new Set(["pf2e", "t20", "dnd5e", "ose", "dnd35"]);
 
 function isSupportedSystemId(value: unknown): value is RPGSystemId {
   return typeof value === "string" && SUPPORTED_SYSTEM_IDS.has(value);
@@ -12,6 +12,7 @@ function isSupportedSystemId(value: unknown): value is RPGSystemId {
 /** Resolve the editor without allowing a saved system to fall into another system's wizard. */
 export function getCharacterEditorRoute(systemId: RPGSystemId | string | undefined): CharacterEditorRoute {
   if (systemId === "ose") return "ose";
+  if (systemId === "dnd35") return "dnd35";
   if (systemId === "t20" || systemId === "dnd5e") return "core";
   return "pf2e";
 }

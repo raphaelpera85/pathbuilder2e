@@ -20,6 +20,17 @@ export function getSystemSkillItems(systemId: string, ruleset?: string): PickerI
         data: { id: skill.name, category: skill.category, range: skill.range, ruleset: "classic", source: { book: "Old-School Essentials — Livro de Regras", page: 25 }, description: `Perícia secundária opcional do OSE Classic: profissão de ${skill.category}, sorteada pela faixa ${skill.range[0]}–${skill.range[1]} no d100.` },
       }));
     }
+    if (ruleset === "basico") {
+      return OSE_SECONDARY_SKILLS.map((skill) => ({
+        id: `ose.skill.secondary.${skill.name.toLowerCase().replace(/[^a-z0-9]+/gi, "_")}.basico`,
+        name: skill.name,
+        type: "skill",
+        category: "skill" as const,
+        summary: `Perícia secundária opcional da Criação Básica: profissão de ${skill.category}, sorteada pela faixa ${skill.range[0]}–${skill.range[1]} no d100.`,
+        system_id: "ose" as RPGSystemId,
+        data: { id: skill.name, category: skill.category, range: skill.range, ruleset: "basico", source: { book: "Old-School Essentials — Livro de Regras", page: 25 }, description: `Perícia secundária opcional da Criação Básica: profissão de ${skill.category}, sorteada pela faixa ${skill.range[0]}–${skill.range[1]} no d100.` },
+      }));
+    }
     const classSkills: PickerItem[] = [];
     const thiefNames: Record<string, string> = {
       esi: "Escalar Superfícies Íngremes", et: "Encontrar Armadilhas", ob: "Operar Mecanismos", es: "Esconder-se nas Sombras",

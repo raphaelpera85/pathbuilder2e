@@ -86,15 +86,36 @@ export const DEFAULT_RPG_SYSTEMS: IRPGSystem[] = [
       es: "D&D 3.5",
     },
     description: {
-      "pt-BR": "Dungeons & Dragons 3.5ª Edição clássica (SRD / v3.5 com suplementos completos).",
-      en: "Dungeons & Dragons 3.5 Edition classic (SRD / v3.5 with complete supplements).",
-      es: "Dungeons & Dragons 3.5ª Edición clásica (SRD / v3.5 con suplementos completos).",
+      "pt-BR": "Dungeons & Dragons 3.5ª Edição clássica (SRD / v3.5 com suplementos completos). Criação núcleo: raças, classes, perícias, talentos curados e equipamento do Livro do Jogador.",
+      en: "Dungeons & Dragons 3.5 Edition classic (SRD / v3.5 with complete supplements). Core creation: races, classes, skills, curated feats, and equipment from the Player's Handbook.",
+      es: "Dungeons & Dragons 3.5ª Edición clásica (SRD / v3.5 con suplementos completos). Creación núcleo: razas, clases, habilidades, dotes seleccionadas y equipo del Manual del Jugador.",
     },
     icon: "⚔️",
     badgeColor: "#8b5cf6",
     defaultRuleset: "v35",
     supportedRulesets: ["v35"],
     active: true,
+  },
+  {
+    id: "pf1e",
+    name: {
+      "pt-BR": "Pathfinder 1e",
+      en: "Pathfinder 1e",
+      es: "Pathfinder 1e",
+    },
+    description: {
+      "pt-BR": "Pathfinder RPG (1ª edição/legado), baseado no OGL d20. Catálogo de raças em andamento; criação de fichas ainda não disponível.",
+      en: "Pathfinder RPG (1st edition/legacy), OGL d20-based. Race catalog in progress; character creation not yet available.",
+      es: "Pathfinder RPG (1ª edición/legado), basado en OGL d20. Catálogo de razas en curso; creación de fichas aún no disponible.",
+    },
+    icon: "🗺️",
+    badgeColor: "#0ea5e9",
+    defaultRuleset: "legacy_pf1",
+    supportedRulesets: ["legacy_pf1"],
+    // Ainda sem createDefaultCharacter/SystemRulesEngine próprios: mantido
+    // fora do seletor até a criação de fichas existir, para não abrir um
+    // wizard incorreto (ver TODO_MULTI_SISTEMAS.md).
+    active: false,
   },
 ];
 
@@ -195,7 +216,7 @@ export interface CatalogItemRecord {
   [key: string]: any;
 }
 
-export type CatalogRuleset = "remaster" | "legacy" | "standard" | "padrao" | "advanced" | "classic";
+export type CatalogRuleset = "remaster" | "legacy" | "standard" | "padrao" | "advanced" | "classic" | "basico";
 
 export interface CatalogSyncStatus {
   isConfigured: boolean;

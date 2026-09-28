@@ -2,7 +2,7 @@ import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { OseCharacterCreatorModal, type OseCharacterCreatedData } from "./OseCharacterCreatorModal";
 import { OSE_CLASSES } from "../data/ose/oseClasses";
-import { isOseClassAvailableForMode } from "../data/ose/oseRules";
+import { isOseClassAvailableForMode, OSE_BASIC_METHOD_RACE_BY_CLASS } from "../data/ose/oseRules";
 
 /**
  * Verificação de DOM do fluxo Classic.
@@ -122,12 +122,22 @@ describe("Assistente OSE — passo de classe", () => {
     const advancedIds = Object.values(OSE_CLASSES)
       .filter((entry) => isOseClassAvailableForMode(entry, "advanced"))
       .map((entry) => entry.id);
+    const basicoIds = Object.values(OSE_CLASSES)
+      .filter((entry) => isOseClassAvailableForMode(entry, "basico"))
+      .map((entry) => entry.id);
 
     expect(classicIds).toHaveLength(7);
     // As quatro classes humanas pertencem às duas apresentações; as demais
-    // são exclusivas de uma delas.
+    // são exclusivas de uma delas. As seis classes semi-humanas do método
+    // Básico/Especialista (drow_bx, duergar_bx, gnomo_bx, meio_elfo_bx,
+    // meio_orc_bx, svirfneblin_bx) só aparecem no modo "basico", que fixa a
+    // raça pela classe (Tomo do Jogador, p. 14) — nos outros dois modos elas
+    // ficam de fora, e não "escondidas" por acidente.
     const shared = classicIds.filter((id) => advancedIds.includes(id)).sort();
     expect(shared).toEqual(["clerigo", "guerreiro", "ladrao", "mago"]);
-    expect(new Set([...classicIds, ...advancedIds]).size).toBe(Object.keys(OSE_CLASSES).length);
+    const exposed = new Set([...classicIds, ...advancedIds, ...basicoIds]);
+    expect(exposed.size).toBe(Object.keys(OSE_CLASSES).length);
+    const basicoOnly = basicoIds.filter((id) => !advancedIds.includes(id)).sort();
+    expect(basicoOnly).toEqual(Object.keys(OSE_BASIC_METHOD_RACE_BY_CLASS).sort());
   });
 });
