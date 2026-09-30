@@ -90,6 +90,78 @@ Transcrita a Tabela 7-8 (Itens e Serviços, página 128) completa em `src/data/d
 
 **Ainda falta para D&D 3.5 ter criação de fichas**: os ~88 talentos restantes do Capítulo 5 (opcional), progressões nível-a-nível completas (Tabelas 3-1 a 3-18, magias por dia/conhecidas), magias por classe (Capítulos 10-11), e o próprio `SystemRulesEngine`/wizard.
 
+### Progresso — D&D 3.5, Tabela 7-8 página 129 (indumentária, hospedagem, montarias, transporte, serviços)
+
+Completada a segunda página da Tabela 7-8 em `src/data/dnd35/dnd35Gear.ts` (agora 170 entradas, 8 seções): Indumentária, Comida/Bebida/Hospedagem, Montarias e Equipamentos Relacionados, Transporte e Conjuração e Serviços, conferidas em recortes de 400dpi (a leitura em meia página era baixa demais e tinha erros — p.ex. "Trem"→**Trenó**, "Balsa"→**Barcaça**, sela exótica com 3 variantes, carne em pedaço). A coluna Custo de Montarias é impressa **sem unidade** e foi preservada literalmente (`"400"`), sem inferir PO. Novo `dnd35GearFixedCostGp()` só aceita preço fixo PC/PP/PO; o criador D&D 3.5 esconde da loja o que não for compra fixa (montarias sem unidade, serviços por dia/distância, magias `NC x N PO`) — o parser antigo vendia um cavalo de guerra por 0 PO e magias por preço errado. Auditoria em `dnd35Gear.test.ts` (12 testes).
+
+**Ainda falta para D&D 3.5 ter criação de fichas**: os ~88 talentos restantes do Capítulo 5 (opcional), progressões nível-a-nível completas (Tabelas 3-1 a 3-18, magias por dia/conhecidas), riqueza inicial por classe (o criador usa 150 PO fixos), magias por classe (Capítulos 10-11).
+
+### Progresso — D&D 3.5, riqueza inicial por classe (Tabela 7-1)
+
+Transcrita a Tabela 7-1 (Quantidade Inicial de Recursos, p. 111) em `src/data/dnd35/dnd35StartingWealth.ts` para as 11 classes (Druida 2d4x10 … Guerreiro/Paladino/Ranger 6d4x10; Monge impresso como **5d4 sem x10**, 12 PO 5 PP — preservado). O criador deixou de usar 150 PO fixos: começa na média da classe, oferece "Rolar" e "Usar a média", e o saldo passou a ser **derivado** (ouro inicial − compras) em vez de um contador mutável, então trocar de classe não deixa o saldo inconsistente; ficha reaberta reconstrói o ouro inicial a partir do saldo salvo + compras (saldo idêntico). Finalizar com saldo negativo (rolagem baixa após compras) é bloqueado. Testes: `dnd35StartingWealth.test.ts` (5) e o primeiro teste de DOM do criador, `Dnd35CharacterCreatorModal.test.tsx` (2; confirmado que falha se a troca de classe não atualizar o ouro).
+
+**Ainda falta para D&D 3.5 ter criação de fichas**: os ~88 talentos restantes do Capítulo 5 (opcional), progressões nível-a-nível completas (Tabelas 3-1 a 3-18, magias por dia/conhecidas), magias por classe (Capítulos 10-11).
+
+### Progresso — D&D 3.5, Tabelas 3-1 e 3-2 (bônus base, XP, graduações, talentos por nível)
+
+Transcritas as Tabelas 3-1 (bônus base de resistência Bom/Ruim e de ataque Bom/Médio/Ruim, com ataques múltiplos) e 3-2 (XP, graduação máxima de perícia de classe/outra classe — "21/2" impresso = 2½ —, níveis de talento e de aumento de habilidade), p. 22, em `src/data/dnd35/dnd35Progression.ts`. Os valores são guardados como impressos e o teste confere as 100 células da 3-1 e a coluna de XP contra as fórmulas d20 (verificado que uma célula alterada quebra o teste). O criador agora mostra no passo de classe e na revisão os valores calculados do 1º nível: BBA, ataque corpo a corpo/distância e Fortitude/Reflexos/Vontade com modificadores (antes só listava quais resistências eram boas). Testes: `dnd35Progression.test.ts` (7) + 1 teste de DOM.
+
+**Ainda falta para D&D 3.5 ter criação de fichas**: características de classe nível a nível (Tabelas 3-3 a 3-18: habilidades especiais e magias por dia/conhecidas), subir de nível no criador (hoje só 1º nível), magias por classe (Capítulos 10-11), os ~88 talentos restantes do Capítulo 5.
+
+### Progresso — D&D 3.5, tabelas das classes sem magia (3-3, 3-11, 3-12, 3-14)
+
+Transcritas as tabelas nível a nível do Bárbaro (p. 25), Guerreiro (p. 42), Ladino (p. 43) e Monge (p. 49) em `src/data/dnd35/dnd35ClassFeatures.ts`: coluna Especial literal por nível, mais as colunas próprias do Monge (rajada de golpes, dano desarmado Médio, bônus na CA, deslocamento sem armadura). BBA/resistências de cada tabela são conferidos célula a célula contra a Tabela 3-1 + progressão de `dnd35Classes.ts` (duas fontes independentes; mutação confirmada que falha), e a rajada do Monge contra a regra BBA −2/−1/0. O criador mostra as habilidades de 1º nível da classe e o orçamento de talentos passou a contar o **talento adicional de classe** (Guerreiro e Monge: 3 para humano, antes 2); a lista restrita desse talento ainda não é aplicada — avisado na tela. Testes: `dnd35ClassFeatures.test.ts` (8) + 1 teste de DOM.
+
+**Ainda falta para D&D 3.5 ter criação de fichas**: tabelas das classes conjuradoras (Bardo, Clérigo, Druida, Feiticeiro, Mago, Paladino, Patrulheiro: habilidades e magias por dia/conhecidas; números das tabelas a confirmar no livro), listas restritas de talento adicional, subir de nível no criador, magias (Capítulos 10-11), ~88 talentos restantes.
+
+### Progresso — D&D 3.5, tabelas das 7 classes conjuradoras (habilidades + magias por dia/conhecidas)
+
+Transcritas as Tabelas 3-4 Bardo (p. 27), 3-5 Magias Conhecidas do Bardo (p. 28), 3-6 Clérigo (p. 31), 3-8 Druida (p. 35), 3-9 Feiticeiro (p. 38), 3-10 Magias Conhecidas do Feiticeiro (p. 40), 3-13 Mago (p. 46), 3-16 Paladino (p. 52) e 3-17 Ranger (p. 56). Coluna Especial em `dnd35ClassFeatures.ts` (agora as 11 classes); magias em `dnd35Spellcasting.ts`, uma string por linha impressa, preservando as notações do livro: "—" (não conjura), "0" (só magia adicional por atributo), "2*" (Bardo: só com Carisma alto, nota da 3-5) e "N+1" (Clérigo: +1 de domínio, nota da 3-6). Conferências cruzadas entre transcrições independentes: Clérigo (sem domínio) = Druida em 200 células e Paladino = Ranger em 80 células; monotonicidade de todas as colunas; magias conhecidas do Feiticeiro só onde ele conjura; BBA/resistências das 7 tabelas contra a Tabela 3-1 (mutação confirmada que falha). O criador mostra as habilidades e a conjuração de 1º nível de cada classe. Testes: `dnd35Spellcasting.test.ts` (11) + DOM.
+
+**Ainda falta para D&D 3.5 ter criação de fichas**: magias adicionais por atributo alto (Tabela 1-1), listas de magias (Capítulo 11) e escolha de magias no criador, domínios do clérigo, listas restritas de talento adicional, subir de nível no criador, ~88 talentos restantes.
+
+### Progresso — D&D 3.5, Tabela 1-1 (modificadores e magias adicionais)
+
+Transcrita a Tabela 1-1 (p. 8) em `src/data/dnd35/dnd35AbilityScores.ts`: linhas de magias adicionais +1 a +17 como impressas (o teste confere as 153 células contra a regra d20; mutação confirmada que falha), modificador, mínimo de conjuração (10 + nível da magia) e CD (10 + nível + mod), conforme o texto das classes (Mago, p. 47). Nota de impressão registrada: a 1ª linha aparece como "1–5" com Modificador vazio (tipografia fundida de "1" e "−5"). `dnd35CharacterSpells()` combina a tabela da classe com a habilidade-chave: aplica mínimo de conjuração, adicionais só em níveis 1-9 já conjurados, "0" do Paladino/Ranger só com atributo alto e "2*" do Bardo só com magia adicional. O criador mostra magias por dia reais (p.ex. Mago Int 16: 0: 3 · 1º: 2 (1 + 1 atributo); Int 10: 1º indisponível) e a CD. Testes: `dnd35AbilityScores.test.ts` (14) + DOM.
+
+**Ainda falta para D&D 3.5 ter criação de fichas**: listas de magias (Capítulo 11) e escolha de magias no criador, domínios do clérigo, listas restritas de talento adicional, subir de nível no criador, ~88 talentos restantes.
+
+### Progresso — D&D 3.5, listas de magias níveis 0-1 (Clérigo, Feiticeiro/Mago) e escolha no criador
+
+Transcritas do Capítulo 11 em `src/data/dnd35/dnd35SpellLists.ts`: Clérigo nível 0 (12 preces) e 1º (25), p. 183; Feiticeiro/Mago nível 0 (19 truques, p. 192-193) e 1º (39, p. 193), com a escola impressa na margem (Abjur…Univ) e os marcadores de componente da legenda da p. 181 (M material, F foco, X XP). Regra do grimório inicial do Mago lida no texto da classe (p. 48): todas as magias de nível 0 + 3 de 1º + 1 por ponto de modificador de Int. O criador ganhou a escolha de magias: Mago escolhe as de 1º para o grimório; Feiticeiro escolhe nível 0 e 1º conforme as magias conhecidas (Tabela 3-10 + Tabela 1-1); Clérigo/Druida recebem a nota de que preparam da lista completa. Escolhas que deixam de valer (troca de classe, atributo menor) não contam no limite e não são salvas; a ficha ganhou `spellIds` opcional (compatível com fichas antigas). Testes: `dnd35SpellLists.test.ts` (7) + 3 de DOM (mutação confirmada que falha).
+
+**Ainda falta para D&D 3.5 ter criação de fichas**: listas de Bardo, Druida, Paladino e Ranger; magias de 2º a 9º nível; domínios do clérigo; especialização em escola do Mago; listas restritas de talento adicional; subir de nível no criador; ~88 talentos restantes.
+
+### Progresso — D&D 3.5, listas de magias de Bardo, Druida, Paladino e Ranger
+
+Transcritas em `dnd35SpellLists.ts`: Bardo nível 0 (16, p. 181-182) e 1º (26, p. 182); Druida nível 0 (13, p. 189) e 1º (20, p. 189-190); Paladino 1º (15, p. 191); Ranger 1º (19, p. 192). Com isso, todas as 7 classes conjuradoras têm lista dos níveis que conjuram no 1º nível de personagem. Conferências: contagens impressas, ordem alfabética, e resumos de magias reimpressas em várias listas (Suportar Elementos, Consertar, Luz, Resistência) iguais entre transcrições de páginas diferentes (mutação confirmada que falha). O criador passou a oferecer ao Bardo a escolha dos truques conhecidos (Tabela 3-5) e mostra ao Clérigo/Druida (e Paladino/Ranger quando conjurarem) a lista da qual preparam. Testes: +4 de dados, +2 de DOM.
+
+**Ainda falta para D&D 3.5 ter criação de fichas**: magias de 2º a 9º nível; domínios do clérigo (p. 185-189, já localizados); especialização em escola do Mago; listas restritas de talento adicional; subir de nível no criador; ~88 talentos restantes.
+
+### Progresso — D&D 3.5, domínios do clérigo e Tabela 3-7 (Deuses)
+
+`src/data/dnd35/dnd35Domains.ts`: os 22 domínios (p. 186-189) com deuses, poder concedido literal, as 9 magias de domínio (nome, resumo, M/F/X) e notas de rodapé por símbolo (`*`, `◆` no Fogo); Tabela 3-7 (p. 32) com 19 divindades, tendência, domínios e adoradores típicos; regras da p. 32 lidas no livro: dois domínios da divindade (ou quaisquer sem divindade), domínios de tendência só com o mesmo eixo, e raça obrigatória quando "Adoradores Típicos" cita raças. Perícias de classe concedidas por Animais, Plantas, Conhecimento, Enganação e Viagem. Erros de impressão preservados (8º de Cura "Curar Ferimentos Críticos … de diversas criaturas"; "Garl Glitergold" em Proteção). Auditoria cruzada: a linha "Deuses:" de cada domínio coincide com a coluna Domínios da Tabela 3-7 (mutação confirmada que falha). Criador: o clérigo escolhe divindade (filtrada pela raça) e dois domínios (filtrados pela tendência) na etapa Raça & Classe; os domínios acrescentam perícias de classe; a aba de magias mostra as magias de domínio de 1º nível; salvar exige dois domínios; ficha ganhou `deityId`/`domainIds` opcionais. A mensagem de validação agora aparece no topo de qualquer etapa (antes só na revisão, embora a validação levasse o usuário a outras etapas). Testes: `dnd35Domains.test.ts` (8) + 5 de DOM.
+
+**Ainda falta para D&D 3.5 ter criação de fichas**: magias de 2º a 9º nível; especialização em escola do Mago; tendência como lista (hoje texto livre, comparado por palavra) e restrição "um passo" da divindade; listas restritas de talento adicional; subir de nível no criador; ~88 talentos restantes.
+
+### Progresso — D&D 3.5, tendência como lista e restrições
+
+`src/data/dnd35/dnd35Alignment.ts`: as nove tendências com os nomes da Tabela 3-7; restrições por classe conforme o campo Tendência de cada classe (Bárbaro/Bardo não Leal; Druida com algum componente Neutro; Monge Leal; Paladino Leal e Bom); regra do clérigo lida na p. 31 — idêntica ou "um passo" da divindade num único eixo, Neutro autêntico só com divindade Neutra, St. Cuthbert só Leal e Bom ou Leal e Neutro. No criador a tendência saiu do campo de texto (etapa 1) e virou seletor na etapa Raça & Classe, com as opções não permitidas desabilitadas e explicadas; trocar para uma classe ou divindade incompatível ajusta a tendência e avisa. Fichas antigas: nomes/siglas/variantes ("CM", "Caótico e Maligno", "Neutro autêntico") são normalizados; texto não reconhecido é preservado, mas bloqueia salvar até escolher. Testes: `dnd35Alignment.test.ts` (4, conferindo cada restrição contra o texto da classe) + 4 de DOM; mutação "um passo" → "dois passos" derruba 2 testes.
+
+**Ainda falta para D&D 3.5 ter criação de fichas**: magias de 2º a 9º nível; especialização em escola do Mago; listas restritas de talento adicional; subir de nível no criador; ~88 talentos restantes.
+
+### Progresso — D&D 3.5, especialização em escola do Mago
+
+Regra lida na p. 47 ("Especialização em Escola") e implementada em `dnd35SpellLists.ts`: oito escolas especializáveis com o título impresso (abjurador … transmutador; Universal não); o especialista abandona duas escolas, o adivinho só uma; Adivinhação, Universal e a própria especialidade não podem ser proibidas; `dnd35SpecializationProblem` valida. No criador (aba Talentos & Equipamento), o Mago escolhe generalista ou especialista e as escolas proibidas; magias dessas escolas somem da lista, não contam como escolha válida e saem do grimório inicial; a revisão mostra "+1 magia por dia de cada nível dessa escola" e as proibidas; salvar exige a quantidade certa de escolas proibidas; ficha ganhou `specialtySchool`/`prohibitedSchools` opcionais. Testes: +3 de dados, +2 de DOM; mutação "adivinho abandona 2" derruba 3 testes.
+
+**Ainda falta para D&D 3.5 ter criação de fichas**: magias de 2º a 9º nível; listas restritas de talento adicional; subir de nível no criador; ~88 talentos restantes.
+
+### Progresso — D&D 3.5, talento adicional restrito (Guerreiro e Monge)
+
+`src/data/dnd35/dnd35BonusFeats.ts`: lista do Guerreiro = os 48 talentos marcados com ¹ na Tabela 5-1 (p. 90-91; legenda "1: Um guerreiro pode escolher este talento como um de seus talentos adicionais", lida no rodapé da p. 91); Monge no 1º nível = Agarrar Aprimorado ou Ataque Atordoante, sem pré-requisitos (p. 50). Ataque Atordoante entrou no catálogo de talentos (p. 92, texto completo). No criador, o orçamento de talentos foi dividido em espaços gerais (1 + humano) e o espaço do talento adicional; talentos elegíveis ganham ★; um talento fora da lista só entra se houver espaço geral livre; salvar valida a mesma regra. Testes: `dnd35BonusFeats.test.ts` (5) + 2 de DOM; mutação (Prontidão na lista do Guerreiro + Esquiva na do Monge) derruba 7 testes.
+
+**Ainda falta para D&D 3.5 ter criação de fichas**: magias de 2º a 9º nível; subir de nível no criador; ~88 talentos restantes (dos 48 elegíveis ao talento adicional do Guerreiro, só 13 estão no catálogo).
+
 ## Fase 0 — arquitetura e segurança de dados
 
 - [x] Criar um `SystemRulesEngine` por sistema, com `createDefaultCharacter`, `deriveStats`, `validateCharacter` e `getCreationSteps`.

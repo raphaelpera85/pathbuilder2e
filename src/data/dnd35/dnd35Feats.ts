@@ -55,6 +55,15 @@ export const DND35_FEATS: Record<string, Dnd35Feat> = {
     prerequisites: [],
     benefit: "Considera-se que o personagem está armado quando desarmado — ou seja, oponentes armados não podem realizar ataques de oportunidade quando ele os ataca de mãos vazias. O personagem ainda pode desferir um ataque de oportunidade quando alguém desarmado tentar atacá-lo. Além disso, o personagem é capaz de causar dano letal ou dano por contusão usando seus ataques desarmados.",
   },
+  "ataque-atordoante": {
+    id: "ataque-atordoante",
+    name: "Ataque Atordoante",
+    type: "geral",
+    sourceBook: "D&D 3.5 — Livro do Jogador",
+    sourcePage: 92,
+    prerequisites: ["Des 13", "Sab 13", "Ataque Desarmado Aprimorado", "Bônus base de ataque +8"],
+    benefit: "O jogador precisa declarar que seu personagem está usando esse talento antes de realizar a jogada de ataque (logo, um fracasso na jogada desperdiçará a tentativa). Um oponente atingido por um ataque desarmado atordoante deve realizar um teste de resistência de Fortitude (CD 10 + metade do nível do atacante + modificador de Sab), além de sofrer o dano normalmente. Caso fracasse, o alvo ficará atordoado durante 1 rodada completa (até o final da próxima ação do personagem). Um personagem atordoado não consegue agir, perde qualquer bônus de Destreza na CA e sofre −2 de penalidade na CA. É possível desferir um ataque atordoante uma vez por dia a cada quatro níveis de personagem (veja Especial, a seguir), mas somente uma vez por rodada. Os constructos, limos, plantas, mortos-vivos, criaturas incorpóreas e criaturas imunes a sucessos decisivos não podem ser atordoadas. Especial: Um monge pode adquirir Ataque Atordoante como um talento adicional no 1º nível, mesmo quando não atender aos pré-requisitos. Quando adquire esse talento, ele conseguirá desferir uma quantidade de ataques atordoantes por dia equivalente ao seu nível de monge e uma vez adicional a cada quatro níveis de qualquer outra classe.",
+  },
   "ataque-em-movimento": {
     id: "ataque-em-movimento",
     name: "Ataque em Movimento",

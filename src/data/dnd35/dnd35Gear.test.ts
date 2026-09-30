@@ -1,20 +1,29 @@
 import { describe, expect, it } from "vitest";
-import { DND35_GEAR, DND35_GEAR_IDS } from "./dnd35Gear";
+import { DND35_GEAR, DND35_GEAR_IDS, dnd35GearFixedCostGp } from "./dnd35Gear";
 
 /**
- * Auditoria contra a Tabela 7-8 (Itens e Serviços, página 128) do Livro do
- * Jogador, lida visualmente na página renderizada em 400dpi (o PDF fonte
+ * Auditoria contra a Tabela 7-8 (Itens e Serviços, páginas 128-129) do Livro do
+ * Jogador, lida visualmente nas páginas renderizadas em 400dpi (o PDF fonte
  * não possui camada de texto extraível — confirmado via pypdf/pymupdf).
- * Cobertura completa e exaustiva das 3 seções da tabela.
+ * Cobertura das oito seções tabeladas nas duas páginas.
  */
-describe("DND35_GEAR — auditoria contra a Tabela 7-8 (p. 128)", () => {
-  it("cataloga as 3 seções da Tabela 7-8", () => {
+describe("DND35_GEAR — auditoria contra a Tabela 7-8 (p. 128-129)", () => {
+  it("cataloga as 8 seções da Tabela 7-8", () => {
     const sections = new Set(Object.values(DND35_GEAR).map((g) => g.section));
-    expect(sections).toEqual(new Set(["equipamento_aventura", "itens_substancias_especiais", "instrumentos_e_kits"]));
+    expect(sections).toEqual(new Set([
+      "equipamento_aventura",
+      "itens_substancias_especiais",
+      "instrumentos_e_kits",
+      "indumentaria",
+      "comida_bebida_hospedagem",
+      "montarias_equipamentos",
+      "transporte",
+      "conjuracao_servicos",
+    ]));
   });
 
-  it("cataloga pelo menos 70 itens no total", () => {
-    expect(DND35_GEAR_IDS.length).toBeGreaterThanOrEqual(70);
+  it("cataloga pelo menos 170 itens nas duas páginas", () => {
+    expect(DND35_GEAR_IDS.length).toBeGreaterThanOrEqual(170);
   });
 
   it("Luneta (p. 128): 1.000 PO, o item mais caro da seção Equipamento de Aventura", () => {
@@ -54,13 +63,33 @@ describe("DND35_GEAR — auditoria contra a Tabela 7-8 (p. 128)", () => {
     expect(DND35_GEAR["giz-1-pedaco"].weightKg).toBeNull();
   });
 
+  it("Montarias (p. 129): coluna Custo sem unidade é preservada como impressa, não vendida por preço inventado", () => {
+    expect(DND35_GEAR["cavalo-de-guerra-pesado"].cost).toBe("400");
+    expect(DND35_GEAR["sela-exotica-militar"].weightKg).toBe(20);
+    expect(dnd35GearFixedCostGp(DND35_GEAR["cavalo-de-guerra-pesado"].cost)).toBeNull();
+    expect(DND35_GEAR["armadura-de-montaria-criatura-grande"].note).toContain("custo x4, peso x2");
+  });
+
+  it("Transporte (p. 129): Barcaça 3.000 PO e Trenó 20 PO / 150 kg", () => {
+    expect(DND35_GEAR.barcaca.cost).toBe("3.000 PO");
+    expect(DND35_GEAR.treno.cost).toBe("20 PO");
+    expect(DND35_GEAR.treno.weightKg).toBe(150);
+  });
+
+  it("dnd35GearFixedCostGp converte PC/PP/PO e rejeita custos variáveis", () => {
+    expect(dnd35GearFixedCostGp("5 PP")).toBe(0.5);
+    expect(dnd35GearFixedCostGp("2 PC")).toBe(0.02);
+    expect(dnd35GearFixedCostGp("30.000 PO")).toBe(30000);
+    expect(dnd35GearFixedCostGp("NC x 10 PO")).toBeNull();
+    expect(dnd35GearFixedCostGp("3 PP por dia")).toBeNull();
+  });
+
   it("todos os itens têm nome, fonte, página e custo preenchidos", () => {
     for (const item of Object.values(DND35_GEAR)) {
       expect(item.name.length).toBeGreaterThan(0);
       expect(item.sourceBook).toBe("D&D 3.5 — Livro do Jogador");
-      expect(item.sourcePage).toBe(128);
+      expect([128, 129]).toContain(item.sourcePage);
       expect(item.cost.length).toBeGreaterThan(0);
-      expect(["equipamento_aventura", "itens_substancias_especiais", "instrumentos_e_kits"]).toContain(item.section);
     }
   });
 });
