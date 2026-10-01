@@ -3,8 +3,12 @@ import { createPortal } from "react-dom";
 import { DND35_RACES, type Dnd35Race, type Dnd35AbilityName } from "../data/dnd35/dnd35Races";
 import { DND35_CLASSES, type Dnd35Class } from "../data/dnd35/dnd35Classes";
 import { DND35_SKILLS } from "../data/dnd35/dnd35Skills";
-import { DND35_FEATS } from "../data/dnd35/dnd35Feats";
+import { DND35_FEAT_OPTIONS, DND35_FEAT_OPTIONS_BY_ID, type Dnd35FeatSection } from "../data/dnd35/dnd35FeatTable";
 import { dnd35BonusFeatIds, dnd35FeatSlotsProblem } from "../data/dnd35/dnd35BonusFeats";
+import {
+  dnd35CheckFeatPrereqs, dnd35FeatPrereqProblems, dnd35MissingPrereqs, type Dnd35PrereqContext,
+} from "../data/dnd35/dnd35FeatPrereqs";
+import { DND35_CLASS_PROFICIENCIES, dnd35ClassKnowsArmor, dnd35ClassKnowsWeapon } from "../data/dnd35/dnd35Proficiencies";
 import { DND35_WEAPONS, DND35_ARMORS, type Dnd35Weapon, type Dnd35Armor } from "../data/dnd35/dnd35Equipment";
 import { DND35_GEAR, dnd35GearFixedCostGp, type Dnd35GearItem } from "../data/dnd35/dnd35Gear";
 import { DND35_STARTING_WEALTH, formatDnd35StartingWealth, rollDnd35StartingWealth } from "../data/dnd35/dnd35StartingWealth";
@@ -82,6 +86,12 @@ function abilityModifier(score: number): number {
 }
 
 const ABILITY_ORDER: Dnd35AbilityName[] = ["for", "des", "con", "int", "sab", "car"];
+const FEAT_SECTION_LABELS: Record<Dnd35FeatSection, string> = {
+  comum: "Talentos comuns",
+  criacao_item: "Talentos de criação de item",
+  metamagico: "Talentos metamágicos",
+};
+
 const ABILITY_LABELS: Record<Dnd35AbilityName, string> = {
   for: "Força", des: "Destreza", con: "Constituição", int: "Inteligência", sab: "Sabedoria", car: "Carisma",
 };
@@ -279,6 +289,31 @@ export function Dnd35CharacterCreatorModal({
   const featBudget = generalFeatSlots + classBonusFeats;
   const bonusFeatIds = dnd35BonusFeatIds(selectedClass.id);
   const featSlotsProblem = dnd35FeatSlotsProblem(featIds, generalFeatSlots, classBonusFeats, bonusFeatIds);
+  // Talentos concedidos pela classe no 1º nível, que contam como pré-requisito
+  // mas não ocupam espaço: o monge recebe Ataque Desarmado Aprimorado (p. 50).
+  const grantedFeatIds = selectedClass.id === "monge" ? ["ataque-desarmado-aprimorado"] : [];
+  const prereqContext = (ids: string[]): Dnd35PrereqContext => ({
+    classId: selectedClass.id,
+    characterLevel: 1,
+    classLevel: 1,
+    // Paladino e Ranger só conjuram a partir do 4º nível (Tabelas 3-16/3-17).
+    casterLevel: selectedClass.casterType !== "nenhum" && !["paladino", "patrulheiro"].includes(selectedClass.id) ? 1 : 0,
+    baseAttackBonus: dnd35BaseAttacks(selectedClass.babProgression, 1)[0],
+    abilities: finalAbilities,
+    // Cada perícia treinada na criação tem 1 graduação (custa 1 ponto de
+    // classe ou 2 fora da classe).
+    skillRanks: Object.fromEntries(trainedSkillIds.map((id) => [id, 1])),
+    featIds: [...grantedFeatIds, ...ids],
+    classAbilities: selectedClass.id === "clerigo" ? ["expulsar"] : [],
+  });
+  // Lista completa da Tabela 5-1 com busca por nome/benefício. Talentos já
+  // escolhidos continuam visíveis mesmo fora do filtro.
+  const [featQuery, setFeatQuery] = useState("");
+  const normalizeSearch = (text: string) => text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  const visibleFeatOptions = DND35_FEAT_OPTIONS.filter((o) => {
+    const q = normalizeSearch(featQuery.trim());
+    return !q || featIds.includes(o.id) || normalizeSearch(`${o.name} ${o.summary}`).includes(q);
+  });
 
   const toggleFeat = (featId: string) => {
     if (featIds.includes(featId)) {
@@ -286,8 +321,18 @@ export function Dnd35CharacterCreatorModal({
       return;
     }
     if (dnd35FeatSlotsProblem([...featIds, featId], generalFeatSlots, classBonusFeats, bonusFeatIds)) return;
+    // Pré-requisitos (p. 87): só entra se atendidos agora (talentos escolhidos
+    // juntos contam), salvo o talento adicional do monge (p. 50).
+    if (dnd35FeatPrereqProblems([featId], prereqContext([...featIds, featId]), prereqExemptIds, prereqExemptLeft(featIds)).length) return;
     setFeatIds([...featIds, featId]);
   };
+  // Talento adicional do monge dispensa pré-requisitos; só um por monge de 1º nível.
+  const prereqExemptIds = selectedClass.id === "monge" ? bonusFeatIds : [];
+  const prereqExemptLeft = (ids: string[]) =>
+    selectedClass.id === "monge"
+      ? Math.max(0, classBonusFeats - ids.filter((id) => bonusFeatIds.includes(id) && dnd35MissingPrereqs(id, prereqContext(ids)).length > 0).length)
+      : 0;
+  const featPrereqProblems = dnd35FeatPrereqProblems(featIds, prereqContext(featIds), prereqExemptIds, selectedClass.id === "monge" ? classBonusFeats : 0);
 
   // Magias (Capítulo 11, níveis 0-1). Mago: grimório com todos os truques +
   // 3 + mod. Int magias de 1º (p. 48). Feiticeiro/Bardo: quantidades de
@@ -399,6 +444,18 @@ export function Dnd35CharacterCreatorModal({
     setStartingGold(classWealth.averageGp);
   };
 
+  // Proficiência (Capítulo 3, "Usar Armas e Armaduras"): da classe ou de
+  // talentos escolhidos na criação (Usar Arma Comum/Exótica dependem da arma
+  // específica e não são deduzidos aqui).
+  const knowsWeapon = (weaponId: string) =>
+    dnd35ClassKnowsWeapon(selectedClass.id, weaponId) ||
+    (DND35_WEAPONS[weaponId]?.category === "simples" && featIds.includes("usar-arma-simples"));
+  const knowsArmor = (armorId: string) => {
+    if (dnd35ClassKnowsArmor(selectedClass.id, armorId)) return true;
+    const category = DND35_ARMORS[armorId]?.category;
+    if (category === "escudo") return featIds.includes(armorId === "escudo-de-corpo" ? "usar-escudo-de-corpo" : "usar-escudo");
+    return featIds.includes(`usar-armadura-${category}`);
+  };
   const buyWeapon = (weapon: Dnd35Weapon) => {
     if (gold < weaponCostGp(weapon)) return;
     setBoughtWeaponIds((prev) => [...prev, weapon.id]);
@@ -496,6 +553,11 @@ export function Dnd35CharacterCreatorModal({
     }
     if (featSlotsProblem) {
       setValidationMessage(`Talentos: ${featSlotsProblem}`);
+      setStep(4);
+      return;
+    }
+    if (featPrereqProblems.length > 0) {
+      setValidationMessage(`Pré-requisitos de talento não atendidos: ${featPrereqProblems.map((p) => `${DND35_FEAT_OPTIONS_BY_ID[p.featId]?.name} (${p.missing.join(", ")})`).join("; ")}`);
       setStep(4);
       return;
     }
@@ -754,20 +816,46 @@ export function Dnd35CharacterCreatorModal({
                   {selectedClass.id === "monge" ? " (p. 50: Agarrar Aprimorado ou Ataque Atordoante, sem exigir pré-requisitos)" : " (Tabela 5-1, nota 1)"}.
                 </p>
               )}
-              <div className="dnd35-card-grid">
-                {Object.values(DND35_FEATS).map((feat) => (
-                  <button
-                    key={feat.id}
-                    type="button"
-                    className={`dnd35-choice-card ${featIds.includes(feat.id) ? "active" : ""}`}
-                    aria-pressed={featIds.includes(feat.id)}
-                    onClick={() => toggleFeat(feat.id)}
-                  >
-                    <strong>{feat.name}{bonusFeatIds.includes(feat.id) ? " ★" : ""}</strong>
-                    <small>{feat.prerequisites.length ? `Pré-requisitos: ${feat.prerequisites.join(", ")}` : "Sem pré-requisitos"}</small>
-                  </button>
-                ))}
-              </div>
+              <label className="dnd35-field">
+                <span>Buscar talento</span>
+                <input type="search" value={featQuery} onChange={(event) => setFeatQuery(event.target.value)} placeholder="nome ou benefício (Tabela 5-1, 109 talentos)" />
+              </label>
+              {(["comum", "criacao_item", "metamagico"] as const).map((section) => {
+                const options = visibleFeatOptions.filter((o) => o.section === section);
+                if (options.length === 0) return null;
+                return (
+                  <div key={section}>
+                    <h4>{FEAT_SECTION_LABELS[section]} ({options.length})</h4>
+                    <div className="dnd35-card-grid">
+                      {options.map((feat) => {
+                        const selected = featIds.includes(feat.id);
+                        const checks = dnd35CheckFeatPrereqs(feat.id, prereqContext(selected ? featIds : [...featIds, feat.id]));
+                        const missing = checks.filter((c) => c.status === "falta").map((c) => c.text);
+                        const exempt = missing.length > 0 && prereqExemptIds.includes(feat.id);
+                        const toConfirm = checks.filter((c) => c.status === "a_confirmar").map((c) => c.text);
+                        return (
+                        <button
+                          key={feat.id}
+                          type="button"
+                          className={`dnd35-choice-card ${selected ? "active" : ""}`}
+                          aria-pressed={selected}
+                          onClick={() => toggleFeat(feat.id)}
+                          title={feat.full?.benefit}
+                          data-prereq={missing.length && !exempt ? "falta" : "ok"}
+                        >
+                          <strong>{feat.name}{bonusFeatIds.includes(feat.id) ? " ★" : ""}</strong>
+                          <small>{feat.summary}</small>
+                          <small>{feat.prerequisites === "—" ? "Sem pré-requisitos" : `Pré-requisitos: ${feat.prerequisites}`}</small>
+                          {missing.length > 0 && !exempt && <small className="dnd35-prereq-missing">Falta: {missing.join(", ")}</small>}
+                          {exempt && <small>Talento adicional do monge: dispensa pré-requisitos (p. 50)</small>}
+                          {toConfirm.length > 0 && <small>A confirmar com o Mestre: {toConfirm.join(", ")}</small>}
+                        </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                );
+              })}
 
               {castingAbility && (
                 <section data-testid="dnd35-spell-choice">
@@ -853,20 +941,23 @@ export function Dnd35CharacterCreatorModal({
                 {gold < 0 && <p role="alert">As compras excedem o ouro inicial — remova itens.</p>}
               </div>
               <h4>Armas</h4>
+              <p className="dnd35-note">Usar Armas e Armaduras de {selectedClass.name} (p. {DND35_CLASS_PROFICIENCIES[selectedClass.id]?.sourcePage}): {DND35_CLASS_PROFICIENCIES[selectedClass.id]?.printed}</p>
               <div className="dnd35-card-grid">
                 {Object.values(DND35_WEAPONS).map((weapon) => (
-                  <button key={weapon.id} type="button" className="dnd35-choice-card" onClick={() => buyWeapon(weapon)} disabled={weaponCostGp(weapon) > gold}>
+                  <button key={weapon.id} type="button" className="dnd35-choice-card" onClick={() => buyWeapon(weapon)} disabled={weaponCostGp(weapon) > gold} data-proficient={knowsWeapon(weapon.id)}>
                     <strong>{weapon.name}</strong>
                     <small>{typeof weapon.costGp === "number" ? `${weapon.costGp} PO` : "custo especial"} · {weapon.damageMedium} · {weapon.critical}</small>
+                    {!knowsWeapon(weapon.id) && <small className="dnd35-prereq-missing">Sem proficiência pela classe (penalidade: ver Capítulo 7)</small>}
                   </button>
                 ))}
               </div>
               <h4>Armaduras</h4>
               <div className="dnd35-card-grid">
                 {Object.values(DND35_ARMORS).map((armor) => (
-                  <button key={armor.id} type="button" className="dnd35-choice-card" onClick={() => buyArmor(armor)} disabled={armor.costGp > gold}>
+                  <button key={armor.id} type="button" className="dnd35-choice-card" onClick={() => buyArmor(armor)} disabled={armor.costGp > gold} data-proficient={knowsArmor(armor.id)}>
                     <strong>{armor.name}</strong>
                     <small>{armor.costGp} PO · +{armor.armorBonus} CA</small>
+                    {!knowsArmor(armor.id) && <small className="dnd35-prereq-missing">Sem proficiência pela classe (penalidade: ver Capítulo 7)</small>}
                   </button>
                 ))}
               </div>
@@ -919,7 +1010,7 @@ export function Dnd35CharacterCreatorModal({
                 )}
                 <p>Atributos: {ABILITY_ORDER.map((a) => `${ABILITY_LABELS[a]} ${finalAbilities[a]} (${modifiers[a] >= 0 ? "+" : ""}${modifiers[a]})`).join(" · ")}</p>
                 <p>Perícias treinadas: {trainedSkillIds.map((id) => DND35_SKILLS[id]?.name).filter(Boolean).join(", ") || "nenhuma"}</p>
-                <p>Talentos: {featIds.map((id) => DND35_FEATS[id]?.name).filter(Boolean).join(", ") || "nenhum"}</p>
+                <p>Talentos: {featIds.map((id) => DND35_FEAT_OPTIONS_BY_ID[id]?.name).filter(Boolean).join(", ") || "nenhum"}</p>
                 <p>Armas: {boughtWeaponIds.map((id) => DND35_WEAPONS[id]?.name).filter(Boolean).join(", ") || "nenhuma"}</p>
                 <p>Armaduras: {boughtArmorIds.map((id) => DND35_ARMORS[id]?.name).filter(Boolean).join(", ") || "nenhuma"}</p>
                 <p>Itens: {boughtGearIds.map((id) => DND35_GEAR[id]?.name).filter(Boolean).join(", ") || "nenhum"}</p>

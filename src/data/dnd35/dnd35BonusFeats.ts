@@ -11,7 +11,7 @@
 // nenhum desses talentos adicionais."
 // ============================================================================
 
-import { DND35_FEATS } from "./dnd35Feats";
+import { DND35_FEAT_OPTIONS } from "./dnd35FeatTable";
 
 export const DND35_FIGHTER_BONUS_FEAT_NAMES: readonly string[] = [
   // p. 90
@@ -32,15 +32,10 @@ export const DND35_FIGHTER_BONUS_FEAT_NAMES: readonly string[] = [
 /** No 1º nível, o monge escolhe um destes (p. 50), sem precisar dos pré-requisitos. */
 export const DND35_MONK_FIRST_LEVEL_BONUS_FEAT_NAMES: readonly string[] = ["Agarrar Aprimorado", "Ataque Atordoante"];
 
-/**
- * O catálogo usa "Combate com Duas Armas" (título da descrição); a Tabela 5-1
- * imprime "Combater com Duas Armas". Nomes que diferem só na grafia.
- */
-const NAME_ALIASES: Record<string, string> = { "Combater com Duas Armas": "Combate com Duas Armas" };
-
+/** Resolve nomes da Tabela 5-1 para ids de opção (todos os 109 talentos da tabela existem). */
 const idsForNames = (names: readonly string[]) => {
-  const byName = new Map(Object.values(DND35_FEATS).map((f) => [f.name, f.id]));
-  return names.map((n) => byName.get(NAME_ALIASES[n] ?? n)).filter((id): id is string => Boolean(id));
+  const byName = new Map(DND35_FEAT_OPTIONS.map((f) => [f.name, f.id]));
+  return names.map((n) => byName.get(n)).filter((id): id is string => Boolean(id));
 };
 
 /** Ids do catálogo que podem ocupar o talento adicional da classe no 1º nível. */

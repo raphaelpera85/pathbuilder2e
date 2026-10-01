@@ -3,6 +3,7 @@ import {
   DND35_FIGHTER_BONUS_FEAT_NAMES, DND35_MONK_FIRST_LEVEL_BONUS_FEAT_NAMES, dnd35BonusFeatIds, dnd35FeatSlotsProblem,
 } from "./dnd35BonusFeats";
 import { DND35_FEATS } from "./dnd35Feats";
+import { DND35_FEAT_OPTIONS_BY_ID } from "./dnd35FeatTable";
 
 /** Auditoria contra a Tabela 5-1 (p. 90-91, nota ¹) e o texto do Monge (p. 50). */
 describe("D&D 3.5 — listas de talento adicional", () => {
@@ -28,8 +29,9 @@ describe("D&D 3.5 — listas de talento adicional", () => {
     for (const id of ["prontidao", "rastrear", "vontade-de-ferro", "fortitude-maior", "vitalidade", "escrever-pergaminho", "lideranca", "investigador"]) {
       expect(fighter, id).not.toContain(id);
     }
-    // Todo id resolvido existe no catálogo
-    for (const id of fighter) expect(DND35_FEATS[id]).toBeTruthy();
+    // Todos os 48 nomes da lista resolvem para uma opção da Tabela 5-1
+    expect(fighter).toHaveLength(48);
+    for (const id of fighter) expect(DND35_FEAT_OPTIONS_BY_ID[id], id).toBeTruthy();
   });
 
   it("Monge no 1º nível: só Agarrar Aprimorado ou Ataque Atordoante; demais classes sem lista", () => {

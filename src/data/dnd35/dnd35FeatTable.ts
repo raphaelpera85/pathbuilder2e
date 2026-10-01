@@ -10,6 +10,8 @@
 // 3 = pode ser escolhido várias vezes, efeitos se acumulam.
 // ============================================================================
 
+import { DND35_FEATS, type Dnd35Feat } from "./dnd35Feats";
+
 export type Dnd35FeatSection = "comum" | "criacao_item" | "metamagico";
 
 export interface Dnd35FeatTableRow {
@@ -86,5 +88,124 @@ export const DND35_FEAT_TABLE: Dnd35FeatTableRow[] = [
     ["Ignorar Componentes Materiais", "—", "Conjura magias ignorando os componentes materiais"],
     ["Iniciativa Aprimorada", "—", "+4 de bônus nos testes de Iniciativa", [1]],
   ]),
-  // @@P91@@
+  ...rows("comum", 91, [
+    ["Investigador", "—", "+2 de bônus nos testes de Obter Informação e Procurar"],
+    ["Liderança", "6º nível de personagem", "Atrai parceiros e seguidores"],
+    ["Lutar às Cegas", "—", "Jogar novamente chance de falha por camuflagem", [1]],
+    ["Magia Natural", "Sab 13, Habilidade Forma Selvagem", "Capaz de lançar magias na forma selvagem"],
+    ["Magia Penetrante", "—", "+2 de bônus nos testes de conjurador contra Resistência à Magia"],
+    ["Magia Penetrante Maior", "Magia Penetrante", "+4 de bônus nos testes de conjurador contra Resistência à Magia", [], "Magia Penetrante"],
+    ["Magias em Combate", "—", "+4 de bônus nos testes de Concentração para conjurar na defensiva"],
+    ["Mãos Leves", "—", "+2 de bônus nos testes de Prestidigitação e Usar Cordas"],
+    ["Negociador", "—", "+2 de bônus nos testes de Diplomacia e Sentir Motivação"],
+    ["Persuasivo", "—", "+2 de bônus nos testes de Blefar e Intimidar"],
+    ["Potencializar Invocação", "Foco em Magia (conjuração)", "As criaturas invocadas recebem +4 For e +4 Cons"],
+    ["Prontidão", "—", "+2 de bônus nos testes de Ouvir e Observar"],
+    ["Rapidez de Recarga", "Usar Arma Simples (besta)", "Recarrega bestas mais rapidamente", [1]],
+    ["Rastrear", "—", "Utiliza Sobrevivência para rastrear"],
+    ["Reflexos de Combate", "—", "Ataques de oportunidade adicionais", [1]],
+    ["Reflexos Rápidos", "—", "+2 de bônus nos testes de resistência de Reflexos"],
+    ["Saque Rápido", "Bônus base de ataque +1", "Saca uma arma branca como ação livre", [1]],
+    ["Sorrateiro", "—", "+2 nos testes de Esconder-se e Furtividade"],
+    ["Sucesso Decisivo Aprimorado", "Usar a arma, bônus base de ataque +8", "Dobra a margem de ameaça da arma", [1, 2]],
+    ["Tiro Certeiro", "—", "+1 de bônus nos ataques à distância e dano contra alvos num raio de 9 metros", [1]],
+    ["Tiro Preciso", "Tiro Certeiro", "Anula a penalidade por disparar contra um adversário em combate corporal com um aliado (−4)", [1], "Tiro Certeiro"],
+    ["Tiro Rápido", "Des 13, Tiro Certeiro", "Um ataque à distância adicional por rodada", [1], "Tiro Certeiro"],
+    ["Tiro Longo", "Tiro Certeiro", "Aumenta o incremento de distância em 50% ou 100%", [1], "Tiro Certeiro"],
+    // Recuos de 2º nível sob Tiro Certeiro não são distinguíveis com segurança
+    // no scan; todos ficam com parent "Tiro Certeiro".
+    ["Tiro em Movimento", "Des 13, Esquiva, Mobilidade, Tiro Certeiro, bônus base de ataque +4", "Pode se deslocar antes e depois de um ataque à distância", [1], "Tiro Certeiro"],
+    ["Tiro Múltiplo", "Des 17, Tiro Certeiro, Tiro Rápido, bônus base de ataque +6", "Dispara duas ou mais flechas simultaneamente", [1], "Tiro Certeiro"],
+    ["Tiro Preciso Aprimorado", "Des 19, Tiro Certeiro, Tiro Preciso, bônus base de ataque +11", "Ignora qualquer cobertura ou camuflagem (exceto total) para ataques à distância", [1], "Tiro Certeiro"],
+    ["Tolerância", "—", "+4 de bônus nos testes para resistir ao dano por contusão"],
+    ["Duro de Matar", "Tolerância", "Permanece consciente entre −1 e −9 PV", [], "Tolerância"],
+    ["Usar Arma Comum", "—", "Não sofre penalidade nos ataques com uma arma comum específica", [2]],
+    ["Usar Arma Exótica", "Bônus base de ataque +1", "Não sofre penalidade nos ataques com uma arma exótica específica", [1, 2]],
+    ["Usar Arma Simples", "—", "Não sofre penalidades nos ataques com armas simples"],
+    ["Usar Armadura (leve)", "—", "Não sofre penalidade de armadura nas jogadas de ataque"],
+    // Pré-requisito impresso "—" na tabela (a descrição exige a categoria anterior).
+    ["Usar Armadura (média)", "—", "Não sofre penalidade de armadura nas jogadas de ataque", [], "Usar Armadura (leve)"],
+    ["Usar Armadura (pesada)", "—", "Não sofre penalidade de armadura nas jogadas de ataque", [], "Usar Armadura (média)"],
+    ["Usar Escudo", "—", "Não sofre penalidade de armadura nas jogadas de ataque"],
+    ["Ataque com Escudo Aprimorado", "Usar Escudo", "Conserva o bônus do escudo na CA quando ataca com ele", [1], "Usar Escudo"],
+    ["Usar Escudo de Corpo", "Usar Escudo", "Não sofre penalidade de armadura nas jogadas de ataque", [], "Usar Escudo"],
+    ["Vitalidade", "—", "+3 pontos de vida", [3]],
+    ["Vontade de Ferro", "—", "+2 de bônus nos testes de resistência de Vontade"],
+  ]),
+  ...rows("criacao_item", 91, [
+    ["Criar Armaduras e Armas Mágicas", "5º nível de conjurador", "Criar armas, armaduras e escudos mágicos"],
+    ["Criar Bastão", "9º nível de conjurador", "Criar bastões mágicos"],
+    ["Criar Cajado", "12º nível de conjurador", "Criar cajados mágicos"],
+    ["Criar Item Maravilhoso", "3º nível de conjurador", "Criar itens mágicos maravilhosos"],
+    ["Criar Varinha", "5º nível de conjurador", "Criar varinhas mágicas"],
+    ["Escrever Pergaminho", "1º nível de conjurador", "Criar pergaminhos mágicos"],
+    ["Forjar Anel", "12º nível de conjurador", "Criar anéis mágicos"],
+    ["Preparar Poção", "3º nível de conjurador", "Criar poções mágicas"],
+  ]),
+  ...rows("metamagico", 91, [
+    ["Acelerar Magia", "—", "Conjura a magia como ação livre"],
+    ["Ampliar Magia", "—", "Dobra a área da magia"],
+    ["Aumentar Magia", "—", "Dobra o alcance da magia"],
+    ["Elevar Magia", "—", "Conjura a magia num nível mais elevado"],
+    ["Estender Magia", "—", "Dobra a duração da magia"],
+    ["Magia Sem Gestos", "—", "Ignora os componentes gestuais da magia"],
+    ["Magia Silenciosa", "—", "Ignora os componentes verbais da magia"],
+    ["Maximizar Magia", "—", "Maximiza todas as variáveis numéricas dos efeitos da magia"],
+    ["Potencializar Magia", "—", "Aumenta em 50% todas as variáveis numéricas dos efeitos da magia"],
+  ]),
 ];
+
+/** Legenda impressa no rodapé da p. 91. */
+export const DND35_FEAT_TABLE_NOTES: Record<1 | 2 | 3, string> = {
+  1: "Um guerreiro pode escolher este talento como um de seus talentos adicionais",
+  2: "É possível escolher este talento diversas vezes, mas seus efeitos não se acumulam. Cada vez que selecioná-lo, ele será aplicado a uma nova arma, perícia, escola de magia ou seleção de magias.",
+  3: "É possível escolher este talento diversas vezes. Seus efeitos se acumulam",
+};
+
+export function dnd35FeatTableRow(name: string): Dnd35FeatTableRow | undefined {
+  return DND35_FEAT_TABLE.find((r) => r.name === name);
+}
+
+// ----------------------------------------------------------------------------
+// Opções de talento para a ficha: todas as linhas da Tabela 5-1. Quando o
+// talento já tem descrição completa transcrita (dnd35Feats.ts), o id e o texto
+// completo vêm de lá, para que fichas salvas antes desta tabela continuem
+// válidas.
+// ----------------------------------------------------------------------------
+
+
+/** Grafias diferentes entre a tabela e o título da descrição completa. */
+const TABLE_TO_CATALOG_NAME: Record<string, string> = { "Combater com Duas Armas": "Combate com Duas Armas" };
+
+export interface Dnd35FeatOption {
+  id: string;
+  name: string;
+  section: Dnd35FeatSection;
+  prerequisites: string;
+  /** Resumo da Tabela 5-1. */
+  summary: string;
+  notes: (1 | 2 | 3)[];
+  parent?: string;
+  /** Descrição completa, quando já transcrita. */
+  full?: Dnd35Feat;
+}
+
+const slug = (name: string) =>
+  name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+export const DND35_FEAT_OPTIONS: Dnd35FeatOption[] = DND35_FEAT_TABLE.map((row) => {
+  const catalogName = TABLE_TO_CATALOG_NAME[row.name] ?? row.name;
+  const full = Object.values(DND35_FEATS).find((f) => f.name === catalogName);
+  return {
+    id: full?.id ?? slug(row.name),
+    name: row.name,
+    section: row.section,
+    prerequisites: row.prerequisites,
+    summary: row.benefit,
+    notes: row.notes,
+    ...(row.parent ? { parent: row.parent } : {}),
+    ...(full ? { full } : {}),
+  };
+});
+
+export const DND35_FEAT_OPTIONS_BY_ID: Record<string, Dnd35FeatOption> = Object.fromEntries(DND35_FEAT_OPTIONS.map((o) => [o.id, o]));

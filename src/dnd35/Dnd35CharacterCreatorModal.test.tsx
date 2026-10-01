@@ -8,9 +8,16 @@ import { Dnd35CharacterCreatorModal, type Dnd35CharacterCreatedData } from "./Dn
  */
 afterEach(cleanup);
 
+/**
+ * Botões de escolha (cards). Consulta direta ao DOM: getAllByRole calcula o
+ * nome acessível de cada botão e, com os 109 talentos da Tabela 5-1 na tela,
+ * fica lento demais para o tempo-limite dos testes.
+ */
+const allButtons = () => Array.from(document.body.querySelectorAll("button"));
+
 const tab = (label: RegExp) => fireEvent.click(screen.getByRole("tab", { name: label }));
 const pickClass = (name: string) =>
-  fireEvent.click(screen.getAllByRole("button").find((b) => b.querySelector("strong")?.textContent === name)!);
+  fireEvent.click(allButtons().find((b) => b.querySelector("strong")?.textContent === name)!);
 
 describe("Dnd35CharacterCreatorModal — riqueza inicial por classe", () => {
   it("Guerreiro começa com a média 150 PO; trocar para Mago usa 75 PO; Monge usa 5d4 (12,50 PO)", () => {
@@ -87,7 +94,7 @@ describe("Dnd35CharacterCreatorModal — bônus de 1º nível (Tabela 3-1)", () 
 });
 
 const spellCard = (name: string) =>
-  screen.getAllByRole("button").find((b) => b.querySelector("strong")?.textContent?.replace(/ \([MFX]+\)$/, "") === name)!;
+  allButtons().find((b) => b.querySelector("strong")?.textContent?.replace(/ \([MFX]+\)$/, "") === name)!;
 
 describe("Dnd35CharacterCreatorModal — escolha de magias (Capítulo 11)", () => {
 
@@ -168,9 +175,9 @@ describe("Dnd35CharacterCreatorModal — escolha de magias (Capítulo 11)", () =
 });
 
 const domainCard = (name: string) =>
-  within(screen.getByTestId("dnd35-domains")).getAllByRole("button").find((b) => b.querySelector("strong")?.textContent === name)!;
+  Array.from(screen.getByTestId("dnd35-domains").querySelectorAll("button")).find((b) => b.querySelector("strong")?.textContent === name)!;
 const domainNames = () =>
-  within(screen.getByTestId("dnd35-domains")).getAllByRole("button").map((b) => b.querySelector("strong")?.textContent);
+  Array.from(screen.getByTestId("dnd35-domains").querySelectorAll("button")).map((b) => b.querySelector("strong")?.textContent);
 
 describe("Dnd35CharacterCreatorModal — divindade e domínios do clérigo (Tabela 3-7, p. 32)", () => {
   const openCleric = (onCreated = vi.fn()) => {
@@ -343,7 +350,7 @@ describe("Dnd35CharacterCreatorModal — especialização em escola do Mago (p. 
 
 describe("Dnd35CharacterCreatorModal — talento adicional restrito (Tabela 5-1 nota 1; Monge p. 50)", () => {
   const featCard = (name: string) =>
-    screen.getAllByRole("button").find((b) => b.querySelector("strong")?.textContent?.replace(/ ★$/, "") === name)!;
+    allButtons().find((b) => b.querySelector("strong")?.textContent?.replace(/ ★$/, "") === name)!;
 
   it("Monge humano: 2 talentos quaisquer + o adicional só Agarrar Aprimorado ou Ataque Atordoante", () => {
     render(<Dnd35CharacterCreatorModal isOpen onClose={() => {}} onCharacterCreated={() => {}} />);
@@ -364,12 +371,90 @@ describe("Dnd35CharacterCreatorModal — talento adicional restrito (Tabela 5-1 
   it("Guerreiro não humano: 1 geral + adicional de combate; Rastrear não cabe no adicional", () => {
     render(<Dnd35CharacterCreatorModal isOpen onClose={() => {}} onCharacterCreated={() => {}} />);
     tab(/Raça & Classe/);
-    fireEvent.click(screen.getAllByRole("button").find((b) => b.querySelector("strong")?.textContent === "Anão")!);
+    fireEvent.click(allButtons().find((b) => b.querySelector("strong")?.textContent === "Anão")!);
     tab(/Talentos & Equipamento/);
     fireEvent.click(featCard("Rastrear"));
     fireEvent.click(featCard("Prontidão"));
     expect(featCard("Prontidão").getAttribute("aria-pressed")).toBe("false");
     fireEvent.click(featCard("Ataque Poderoso"));
     expect(featCard("Ataque Poderoso").getAttribute("aria-pressed")).toBe("true");
+  });
+});
+
+describe("Dnd35CharacterCreatorModal — catálogo completo da Tabela 5-1", () => {
+  it("mostra os 109 talentos por seção; busca filtra e mantém os escolhidos; Guerreiro escolhe Trespassar depois de Ataque Poderoso", () => {
+    const onCreated = vi.fn();
+    render(<Dnd35CharacterCreatorModal isOpen onClose={() => {}} onCharacterCreated={onCreated} />);
+    tab(/Talentos & Equipamento/);
+    expect(screen.getByRole("heading", { name: "Talentos comuns (92)" })).toBeTruthy();
+    expect(screen.getByRole("heading", { name: "Talentos de criação de item (8)" })).toBeTruthy();
+    expect(screen.getByRole("heading", { name: "Talentos metamágicos (9)" })).toBeTruthy();
+    const card = (name: string) =>
+      allButtons().find((b) => b.querySelector("strong")?.textContent?.replace(/ ★$/, "") === name);
+    fireEvent.click(card("Prontidão")!);
+    fireEvent.change(screen.getByLabelText("Buscar talento"), { target: { value: "trespassar" } });
+    expect(card("Trespassar")!.textContent).toContain("★");
+    expect(card("Trespassar Maior")).toBeTruthy();
+    expect(card("Esquiva")).toBeUndefined();
+    expect(card("Prontidão")).toBeTruthy(); // escolhido continua visível
+    // Trespassar exige Ataque Poderoso (p. 87: pré-requisito atendido no mesmo nível vale)
+    expect(card("Trespassar")!.textContent).toContain("Falta: Ataque Poderoso");
+    fireEvent.click(card("Trespassar")!);
+    expect(card("Trespassar")!.getAttribute("aria-pressed")).toBe("false");
+    fireEvent.change(screen.getByLabelText("Buscar talento"), { target: { value: "poderoso" } });
+    fireEvent.click(card("Ataque Poderoso")!); // For 13 do padrão atende
+    fireEvent.change(screen.getByLabelText("Buscar talento"), { target: { value: "trespassar" } });
+    fireEvent.click(card("Trespassar")!);
+    tab(/Revisão final/);
+    expect(screen.getByText(/Talentos: Prontidão, Ataque Poderoso, Trespassar/)).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: /Salvar personagem/ }));
+    expect(onCreated.mock.calls[0][0].featIds).toEqual(["prontidao", "ataque-poderoso", "trespassar"]);
+  });
+});
+
+describe("Dnd35CharacterCreatorModal — pré-requisitos de talento (p. 87)", () => {
+  const card = (name: string) =>
+    allButtons().find((b) => b.querySelector("strong")?.textContent?.replace(/ ★$/, "") === name);
+  const search = (q: string) => fireEvent.change(screen.getByLabelText("Buscar talento"), { target: { value: q } });
+
+  it("atributo insuficiente bloqueia; com o atributo ajustado, libera", () => {
+    render(<Dnd35CharacterCreatorModal isOpen onClose={() => {}} onCharacterCreated={() => {}} />);
+    tab(/Talentos & Equipamento/);
+    search("esquiva");
+    expect(card("Esquiva")!.textContent).toContain("Falta: Des 13"); // Des 12 padrão
+    fireEvent.click(card("Esquiva")!);
+    expect(card("Esquiva")!.getAttribute("aria-pressed")).toBe("false");
+    tab(/Atributos/);
+    fireEvent.change(screen.getByLabelText(/Destreza/), { target: { value: "13" } });
+    tab(/Talentos & Equipamento/);
+    search("esquiva");
+    fireEvent.click(card("Esquiva")!);
+    expect(card("Esquiva")!.getAttribute("aria-pressed")).toBe("true");
+  });
+
+  it("monge: Ataque Atordoante como adicional dispensa Des/Sab/BBA; depois Agarrar Aprimorado volta a exigir Des 13", () => {
+    render(<Dnd35CharacterCreatorModal isOpen onClose={() => {}} onCharacterCreated={() => {}} />);
+    tab(/Raça & Classe/);
+    pickClass("Monge");
+    tab(/Talentos & Equipamento/);
+    search("atordoante");
+    expect(card("Ataque Atordoante")!.textContent).toContain("dispensa pré-requisitos");
+    fireEvent.click(card("Ataque Atordoante")!);
+    expect(card("Ataque Atordoante")!.getAttribute("aria-pressed")).toBe("true");
+    search("agarrar");
+    fireEvent.click(card("Agarrar Aprimorado")!);
+    expect(card("Agarrar Aprimorado")!.getAttribute("aria-pressed")).toBe("false");
+  });
+
+  it("perícia escolhida na criação conta: Combate Montado exige 1 graduação em Cavalgar", () => {
+    render(<Dnd35CharacterCreatorModal isOpen onClose={() => {}} onCharacterCreated={() => {}} />);
+    tab(/Talentos & Equipamento/);
+    search("combate montado");
+    expect(card("Combate Montado")!.textContent).toContain("Falta: 1 graduação em Cavalgar");
+    tab(/PV & Perícias/);
+    fireEvent.click(screen.getByText("Cavalgar").closest("label")!.querySelector("input")!);
+    tab(/Talentos & Equipamento/);
+    search("combate montado");
+    expect(card("Combate Montado")!.textContent).not.toContain("Falta");
   });
 });

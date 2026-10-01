@@ -162,6 +162,18 @@ Regra lida na p. 47 ("Especialização em Escola") e implementada em `dnd35Spell
 
 **Ainda falta para D&D 3.5 ter criação de fichas**: magias de 2º a 9º nível; subir de nível no criador; ~88 talentos restantes (dos 48 elegíveis ao talento adicional do Guerreiro, só 13 estão no catálogo).
 
+### Progresso — D&D 3.5, Tabela 5-1 completa (109 talentos)
+
+`src/data/dnd35/dnd35FeatTable.ts`: todas as 109 linhas da Tabela 5-1 (p. 90-91) — 92 comuns, 8 de criação de item, 9 metamágicos — com pré-requisitos e benefício como impressos, recuo (`parent`) e as notas 1/2/3 com a legenda literal do rodapé. `DND35_FEAT_OPTIONS` une a tabela ao texto completo já transcrito (dnd35Feats.ts): talentos com descrição completa mantêm o id antigo, então fichas salvas continuam válidas. A lista do talento adicional do Guerreiro agora resolve os 48 nomes (antes só 13). Criador: os 109 talentos agrupados por seção, com busca por nome/benefício (os já escolhidos continuam visíveis), resumo da tabela no card e o texto completo no title quando existir. Auditoria cruzada: a marcação ¹ das linhas completas coincide com a lista de nomes lida separadamente na coluna de sobrescritos; todo `parent` existe e vem antes; pré-requisitos que são talentos existem na tabela; mutações (tirar o ¹ de Saque Rápido; parent com erro) derrubam 2 testes. Testes DOM passaram a consultar botões direto no DOM — `getAllByRole` com 109 cards estourava o limite de 5 s.
+
+**Ainda falta para D&D 3.5 ter criação de fichas**: magias de 2º a 9º nível; subir de nível no criador; texto completo das ~86 descrições individuais de talento do Capítulo 5 (o resumo da tabela já cobre a escolha); pré-requisitos de talento ainda não são verificados automaticamente.
+
+### Progresso — D&D 3.5, verificação de pré-requisitos de talento
+
+`src/data/dnd35/dnd35FeatPrereqs.ts` interpreta cada fragmento de pré-requisito impresso na Tabela 5-1: valores de atributo, bônus base de ataque, nível de personagem/conjurador/classe, talentos (inclusive "Foco em Arma na arma", "Foco em Magia (conjuração)"), graduação em perícia, Expulsar e Forma Selvagem. Regra lida na p. 87: talentos e graduações escolhidos no mesmo nível contam. Exceções lidas na p. 50: o monge recebe Ataque Desarmado Aprimorado no 1º nível (conta como pré-requisito) e seu único talento adicional dispensa pré-requisitos. Proficiências de arma/escudo e "Usar a arma" ficam como "a confirmar com o Mestre" e não bloqueiam — as proficiências por classe ainda não estão nos dados, e a ficha não guarda a arma escolhida para Foco em Arma etc. No criador cada card mostra "Falta: …"/"a confirmar"; talento com pré-requisito faltando não entra; salvar revalida (ex.: baixar a Destreza depois de escolher Esquiva). Testes: `dnd35FeatPrereqs.test.ts` (4; um deles garante que todo fragmento impresso é interpretado) + 3 de DOM; mutação "atributo −1" derruba 5 testes.
+
+**Ainda falta para D&D 3.5 ter criação de fichas**: magias de 2º a 9º nível; subir de nível no criador; proficiências de arma/armadura por classe (para fechar os "a confirmar"); texto completo das ~86 descrições individuais de talento do Capítulo 5.
+
 ## Fase 0 — arquitetura e segurança de dados
 
 - [x] Criar um `SystemRulesEngine` por sistema, com `createDefaultCharacter`, `deriveStats`, `validateCharacter` e `getCreationSteps`.
