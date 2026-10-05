@@ -174,6 +174,12 @@ Regra lida na p. 47 ("Especialização em Escola") e implementada em `dnd35Spell
 
 **Ainda falta para D&D 3.5 ter criação de fichas**: magias de 2º a 9º nível; subir de nível no criador; proficiências de arma/armadura por classe (para fechar os "a confirmar"); texto completo das ~86 descrições individuais de talento do Capítulo 5.
 
+### Auditoria da biblioteca — `I:\Meu Drive\Livros RPG` (pasta reorganizada; substitui `Livros\Livros RPG`)
+
+Inventário real (PDFs; fora aventuras, mapas, arte e fichas em branco): **D&D 3.5** 22 (Livro do Jogador; Completo do Aventureiro; Punhos e Espadas; Defensores da Fé; Rules Compendium; Enemies and Allies; Frostburn; Cityscape; Champions of Ruin/Valor; Exemplars of Evil; Níveis Épicos; Manual dos Planos; Crenças e Panteões; Book of Challenges; Stronghold Builder's Guidebook…). **D&D 5E** 49 (livros oficiais de aventura/ambientação — Ravnica, Strixhaven, Mordenkainen, Costa da Espada — e ~35 homebrew de classes/subclasses: Death Knight, Tamer, Grafter, Tactician, Chronomancer, Psionic Handbook, Warshaper…). **OSE** 4 (Advanced Fantasy Tomo do Jogador, básico, 2 fichas) — já coberto. **Pathfinder** 14 em `Livros` (PF2e: Livro do Jogador Remaster 1 e 2, Segredos da Magia, Pólvora e Engrenagens, Livro dos Mortos, Dark Archive, Rage of Elements, Howl of the Wild, Battlecry!, Guia de Ancestralidades; PF1e: Livro Básico, Bestiário 1 e 2, Manual do Jogador) + 11 aventuras + 151 mapas (ignorados). **Tormenta 20** 8 (Livro Básico, Códice de Poderes, Deuses de Arton, Ameaças, Atlas, Guia de NPCs, Só Aventuras).
+
+Estado do site: OSE completo; PF2e (sistema principal) com os livros locais já importados; D&D 3.5 só o Livro do Jogador (criador completo até nível 1, falta magias 2º-9º, subida de nível, proficiências por classe); PF1e, Tormenta 20 e D&D 5E ainda sem criador/dados dos livros. Os outros 21 livros de D&D 3.5 e os homebrew de 5E não foram começados. Ordem sugerida: terminar Livro do Jogador 3.5 → Completo do Aventureiro e Punhos e Espadas (classes/talentos) → PF1e Livro Básico → Tormenta 20 → 5E homebrew.
+
 ## Fase 0 — arquitetura e segurança de dados
 
 - [x] Criar um `SystemRulesEngine` por sistema, com `createDefaultCharacter`, `deriveStats`, `validateCharacter` e `getCreationSteps`.
@@ -669,3 +675,20 @@ Regra lida na p. 47 ("Especialização em Escola") e implementada em `dnd35Spell
   - Evidência: `CoreCharacterCreatorModal.tsx` recebe `system` e altera nomenclatura/opções sem compartilhar catálogo.
 - [x] Persistência separada e testes antes de importar o catálogo completo.
   - Evidência: `system_id`/`ruleset` no payload de personagem, armazenamento local/Supabase e testes de isolamento/validação.
+
+### D&D 3.5 — suplementos com texto digital (extração exata)
+- Frostburn: 32 talentos (`dnd35FrostburnFeats.ts`) e 2 raças, neandertal e uldra (`dnd35FrostburnRaces.ts`). Só dados; falta UI no criador, Supabase e checagem de pré-requisitos.
+- Frostburn: 10 classes de prestígio (`dnd35FrostburnPrestige.ts`, pp.51-74: tabelas, requisitos, perícias, características; só dados).
+- Frostburn: equipamento (`dnd35FrostburnEquipment.ts`, Tabelas 4-1 a 4-3: 11 armas, 8 itens, 8 alquímicos, com descrições).
+- Frostburn: domínios Cold e Winter (`dnd35FrostburnDomains.ts`, pp.84-85; 13 magias novas conferidas contra o campo Level).
+- Frostburn: 101 magias + 5 poderes psiônicos (`dnd35FrostburnSpells.ts`, pp.88-112; níveis conferidos nas listas por classe, 124 entradas, 0 divergências).
+- Frostburn: 23 itens mágicos (`dnd35FrostburnMagicItems.ts`, pp.109-112; aura, NC, requisitos, preço, custo, peso).
+- Frostburn: 3 materiais exóticos, 4 aprimoramentos de veículos, 8 veículos e Tabela 4-4 (`dnd35FrostburnMaterials.ts`, pp.80-83).
+- Frostburn no Supabase: migration `202610040001_seed_dnd35_frostburn_catalog.sql` aplicada (ruleset `v35-frostburn`; 2 raças, 10 classes de prestígio, 32 talentos, 11 armas, 56 itens/domínios, 106 magias/poderes). O criador ainda não os oferece.
+- Pendente no Frostburn: 5 magias épicas. Monstros (cap. 6) fora do escopo (só livros de regras de personagem). Também com texto digital: Rules Compendium, Champions of Valor, Defensores da Fé.
+- Livro do Jogador: listas de magia do 3º nível em diante têm a coluna direita cortada no scan (sem como recuperar o fim das linhas).
+- Rules Compendium (3.5): glossário alfabético de regras, sem classes/talentos/itens novos; fora do catálogo de personagem.
+- Champions of Valor (Forgotten Realms, texto digital, 2 colunas: extrair com ordenação por coluna): 33 magias feitas (`dnd35CovSpells.ts`, pp.52-60). Talentos feitos (`dnd35CovFeats.ts`, 30, pp.27-34). Níveis de substituição feitos (`dnd35CovSubstitutions.ts`, 24, pp.34-52). Itens mágicos, habilidades de arma, glassteel e itens redimidos feitos (`dnd35CovMagicItems.ts`, 15 itens, pp.60-72). Pendente: regiões e organizações (pp.73-105). Classes de prestígio feitas (`dnd35CovPrestige.ts`, 4 classes, pp.106-127).
+- Champions of Valor: regiões e organizações (pp.73-105) deixadas de fora: texto de ambientação (cultos/guildas), sem opções de personagem.
+- Defensores da Fé (edição BR, 98 págs., clérigos/paladinos; **não é texto digital limpo**: camada OCR ruidosa, exige conferência por imagem; regras de 2000, tipo 3.0 — conferir contra o PHB 3.5 antes de usar no criador): 14 talentos feitos (`dnd35DefensoresFeats.ts`, pp.19-20). Pendente: equipamento sagrado e itens mágicos (pp.21-26), classes de prestígio (pp.51-75; feitas 14 de 14 em `dnd35DefensoresPrestige.ts`: Caçador dos Mortos, Cavaleiro do Cálice, Cavaleiro do Círculo Central, Contemplativo, Devoto da Guerra, Exorcista Sagrado, Hospitalário, Inquiridor Consagrado, Inquisidor da Igreja, Libertador Sagrado, Mestre das Mortalhas, Oráculo Divino, Punho Sagrado, Templário (capítulo 3 completo)), magias (pp.76-92) e domínios de prestígio (pp.77-92), montarias especiais, canalização.
+- Defensores da Fé: 14 domínios de prestígio feitos (`dnd35DefensoresDomains.ts`, pp.77-80, 24 magias novas †). Pendente: descrições das magias novas (pp.81-92), listas de magias novas por classe (pp.76-77), equipamento sagrado/itens (pp.21-26), montarias especiais e canalização (Cap. 1).

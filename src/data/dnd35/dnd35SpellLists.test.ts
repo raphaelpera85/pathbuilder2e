@@ -56,6 +56,7 @@ describe("D&D 3.5 — listas de magias, níveis 0 e 1", () => {
     for (const list of DND35_SPELL_LISTS) for (const id of list.classIds) expect(DND35_CLASSES[id]?.casterType).not.toBe("nenhum");
     expect(dnd35SpellListFor("mago", 2)).toEqual([]);
     expect(dnd35SpellListFor("paladino", 0)).toEqual([]);
+    expect(dnd35SpellListFor("clerigo", 3)).toEqual([]);
   });
 
   it("contagens impressas das demais classes: Bardo 16/26, Druida 13/20, Paladino 15, Ranger 19", () => {
@@ -129,5 +130,18 @@ describe("D&D 3.5 — especialização em escola (p. 47)", () => {
     expect(dnd35SpecializationProblem("Univ", [])).toContain("Universal");
     expect(dnd35SpecializationProblem(null, ["Necro"])).toContain("generalista");
     expect(dnd35SpecializationProblem("Adiv", ["Necro", "Evoc"])).toContain("Escolha 1");
+  });
+});
+
+describe("D&D 3.5 — Clérigo 2º nível (p. 184)", () => {
+  it("32 magias em ordem alfabética, com componentes e sem duplicatas", () => {
+    const list = dnd35SpellListFor("clerigo", 2);
+    expect(list).toHaveLength(32);
+    const names = list.map((e) => e.name);
+    expect(names).toEqual([...names].sort((a, b) => a.localeCompare(b, "pt-BR")));
+    expect(list.find((e) => e.name === "Augúrio")?.flags).toEqual(["M", "F"]);
+    expect(list.find((e) => e.name === "Proteger Outro")?.flags).toEqual(["F"]);
+    // Magias de domínio do 2º nível que também estão na lista (Ajuda, Despedaçar, Profanar)
+    for (const n of ["Ajuda", "Despedaçar", "Profanar", "Acalmar Emoções"]) expect(names).toContain(n);
   });
 });

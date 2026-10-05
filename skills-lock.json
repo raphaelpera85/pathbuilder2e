@@ -43,6 +43,12 @@
       "skillPath": "skills/tabletop-rpg-design/SKILL.md",
       "computedHash": "cbce185d031036713a6d5a5c84d6b666cdf4e2ba12afe51109310f844025538e"
     },
+    "typesafe-ai": {
+      "source": "typesafe-ai/skills",
+      "sourceType": "github",
+      "skillPath": "skills/typesafe-ai/SKILL.md",
+      "computedHash": "a6ed7d8a3d2b2d962f8e44b17663767c433b7d1fc32d1ed0349a44f7372513e8"
+    },
     "web-design-guidelines": {
       "source": "vercel-labs/agent-skills",
       "sourceType": "github",

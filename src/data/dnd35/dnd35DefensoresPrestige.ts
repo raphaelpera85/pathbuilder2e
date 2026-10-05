@@ -1,0 +1,956 @@
+// ============================================================================
+// D&D 3.5 (pasta "D&D 3.5") — Defensores da Fé (Defenders of the Faith), edição
+// brasileira: classes de prestígio (Cap. 3, pp. 51-75), em português.
+// Camada de texto OCR ruidosa: tabelas lidas da imagem (recorte a 260 dpi);
+// texto conferido contra a página. Mesmo aviso de versão do arquivo de
+// talentos: regras de 2000 (3.0), conferir com o PHB/DMG 3.5 antes de usar.
+// Classes já transcritas: ver DEFENSORES_PRESTIGE_CLASSES.
+// ============================================================================
+
+export interface DefensoresPrestigeLevel {
+  level: number;
+  bab: string;
+  fort: string;
+  ref: string;
+  will: string;
+  /** Texto da coluna Especial; "" quando vazio. */
+  special: string;
+  /** Magias por dia por nível de magia (1º a 4º ou mais); null = "—". */
+  spellsPerDay?: (number | null)[];
+  /** Coluna "Conjuração" quando a classe avança uma classe conjuradora existente. */
+  spellcastingAdvance?: string;
+}
+
+export interface DefensoresPrestigeClass {
+  id: string;
+  name: string;
+  hitDie: number;
+  requirements: string[];
+  classSkills: string[];
+  skillPointsPerLevel: string;
+  weaponArmor: string;
+  levels: DefensoresPrestigeLevel[];
+  /** Características da classe, uma por entrada, como impressas (com o tipo entre parênteses). */
+  features: { name: string; text: string }[];
+  /** Lista de magias da classe por nível de magia, quando a classe a tem. */
+  spellList?: Record<string, string[]>;
+  /** Tabela do companheiro celestial (Libertador Sagrado, Tabela 3-11). */
+  companion?: {
+    animals: string[];
+    rows: { characterLevel: string; bonusHd: string; naturalArmor: string; strengthAdjust: string; int: number; special: string }[];
+    notes: string;
+  };
+}
+
+export const DEFENSORES_PRESTIGE_CLASSES: DefensoresPrestigeClass[] = [
+  {
+    id: "defensores-cacador-dos-mortos",
+    name: "Caçador dos Mortos",
+    hitDie: 8,
+    requirements: [
+      "Bônus Base de Ataque: +5.",
+      "Tendência: Qualquer uma, exceto Mau.",
+      "Conhecimento (mortos-vivos): 5 graduações.",
+      "Especial: Capacidade de Expulsar Mortos-vivos.",
+      "Cicatriz da não-vida: O personagem deve ter perdido um nível ou um ponto permanente de habilidade drenado por um morto-vivo. Essa é a cicatriz da não-vida, que todos os caçadores dos mortos carregam.",
+    ],
+    classSkills: ["Concentração (Con)", "Conhecimento (religião) (Int)", "Conhecimento (mortos-vivos) (Int)", "Cura (Sab)", "Profissão (Sab)", "Cavalgar (Des)", "Procurar (Int)"],
+    skillPointsPerLevel: "2 + modificador de Inteligência",
+    weaponArmor: "Os caçadores dos mortos sabem usar todas as armas simples e comuns, todos os tipos de armadura e escudos.",
+    levels: [
+      { level: 1, bab: "+1", fort: "+2", ref: "+0", will: "+0", special: "Detectar mortos-vivos", spellsPerDay: [0, null, null, null] },
+      { level: 2, bab: "+2", fort: "+3", ref: "+0", will: "+0", special: "Destruir mortos-vivos", spellsPerDay: [1, null, null, null] },
+      { level: 3, bab: "+3", fort: "+3", ref: "+1", will: "+1", special: "Ignorar o toque da morte", spellsPerDay: [1, 0, null, null] },
+      { level: 4, bab: "+4", fort: "+4", ref: "+1", will: "+1", special: "", spellsPerDay: [1, 1, null, null] },
+      { level: 5, bab: "+5", fort: "+4", ref: "+1", will: "+1", special: "Morte definitiva", spellsPerDay: [1, 1, 0, null] },
+      { level: 6, bab: "+6", fort: "+5", ref: "+2", will: "+2", special: "Expulsão adicional", spellsPerDay: [1, 1, 1, null] },
+      { level: 7, bab: "+7", fort: "+5", ref: "+2", will: "+2", special: "", spellsPerDay: [2, 1, 1, 0] },
+      { level: 8, bab: "+8", fort: "+6", ref: "+2", will: "+2", special: "Explosão de energia positiva", spellsPerDay: [2, 1, 1, 1] },
+      { level: 9, bab: "+9", fort: "+6", ref: "+3", will: "+3", special: "", spellsPerDay: [2, 2, 1, 1] },
+      { level: 10, bab: "+10", fort: "+7", ref: "+3", will: "+3", special: "Corpo fechado", spellsPerDay: [2, 2, 2, 1] },
+    ],
+    features: [
+      {
+        name: "Magias",
+        text: "A partir do 1º nível, um caçador dos mortos adquire a habilidade de conjurar uma pequena quantidade de magias divinas. Para conjurar magias, um personagem deve ter uma pontuação em Sabedoria igual ou superior a 10 + o nível da magia; portanto, um personagem de Sabedoria 10 ou inferior não conseguirá fazê-lo. As magias adicionais do caçador dos mortos são baseadas em Sabedoria; a Classe de Dificuldade de um teste de resistência contra essas magias equivale a 10 + nível da magia + modificador de Sabedoria. Quando um caçador recebe 0 magias de um determinado nível (como 0 magias de 1º nível logo no 1º nível de experiência), recebe apenas magias adicionais. Um personagem que não receba magias adicionais em qualquer nível ainda não é capaz de conjurá-las. Ele tem acesso a qualquer magia da lista, desde que seja capaz de lançá-la, e pode escolher livremente qual preparar. Um caçador prepara e conjura magias como um clérigo (mas não pode usar a Conversão Espontânea para lançar magias de cura no lugar de uma magia preparada).",
+      },
+      {
+        name: "Detectar mortos-vivos (SM)",
+        text: "O caçador dos mortos pode usar detectar mortos-vivos livremente, como uma habilidade similar a magia. Essa habilidade duplica o efeito da magia detectar mortos-vivos.",
+      },
+      {
+        name: "Destruir Mortos-Vivos (Sob)",
+        text: "Uma vez por dia, um caçador dos mortos de 2º nível ou superior pode tentar destruir mortos-vivos usando um ataque regular. Ao fazê-lo, ele soma seu modificador de Sabedoria (caso seja positivo) na sua jogada de ataque, causando 1 ponto de dano adicional por nível de experiência. Por exemplo, um caçador dos mortos de 8º nível empunhando uma espada longa causaria 1d8+8 pontos de dano, além do dano devido a sua Força ou outros efeitos mágicos. Se o caçador dos mortos, acidentalmente, tentar destruir uma criatura que não seja um morto-vivo, esta característica não gera efeitos, mas não poderá ser utilizada outra vez naquele dia. Observação: Um paladino/caçador dos mortos é capaz de destruir o mal e destruir mortos-vivos no mesmo dia, potencialmente contra o mesmo alvo — caso seja um morto-vivo maligno.",
+      },
+      {
+        name: "Ignorar o Toque da Morte (Ext)",
+        text: "A partir do 3º nível, o caçador aplica seu modificador de Sabedoria (caso seja positivo) como um bônus adicional aos testes de resistência contra magias ou efeitos dos mortos-vivos. Portanto, os testes de Vontade consideram o dobro do modificador normal de Sabedoria contra essas criaturas.",
+      },
+      {
+        name: "Morte Definitiva (Sob)",
+        text: "Qualquer morto-vivo eliminado por um caçador dos mortos, seja em combate corporal ou através de magias, nunca mais se erguerá como uma dessas criaturas. Ele estará destruído para sempre.",
+      },
+      {
+        name: "Expulsão Adicional",
+        text: "No 6º nível, o caçador dos mortos recebe Expulsão Adicional como um talento extra. Esse talento lhe concede mais quatro utilizações de Expulsar mortos-vivos por dia.",
+      },
+      {
+        name: "Explosão de Energia Positiva (Sob)",
+        text: "Um caçador dos mortos de 8º nível ou superior é capaz de gerar uma explosão de energia positiva, que causa 1d6 pontos de dano por nível na classe de prestígio a qualquer morto-vivo num raio de 30 metros do personagem. As criaturas podem realizar um teste de resistência de Reflexos (CD 10 + nível de experiência do caçador) para reduzir o dano à metade. A ativação usa uma ação padrão e duas tentativas de Expulsão.",
+      },
+      {
+        name: "Corpo Fechado (Sob)",
+        text: "Ao atingir o 10º nível, o caçador dos mortos não perderá mais níveis devido a efeitos de drenar energia (embora a morte e a ressurreição ainda reduzam o nível do personagem, assim como outros efeitos de absorção ou redução de níveis e experiência — como a criação de itens mágicos).",
+      },
+    ],
+    spellList: {
+      "1": ["arma mágica", "curar ferimentos leves", "invisibilidade contra mortos-vivos", "remover medo"],
+      "2": ["chama contínua", "curar ferimentos moderados", "força do touro", "visão no escuro"],
+      "3": ["curar ferimentos graves", "imobilizar mortos-vivos", "luz cegante", "proteção contra elementos"],
+      "4": ["curar ferimentos críticos", "movimentação livre", "proteção contra a morte"],
+    },
+  },
+  {
+    id: "defensores-cavaleiro-do-calice",
+    name: "Cavaleiro do Cálice",
+    hitDie: 12,
+    requirements: [
+      "Bônus Base de Ataque: +8.",
+      "Tendência: Leal e Bom.",
+      "Conhecimento (religião): 10 graduações.",
+      "Conhecimento (planos): 5 graduações.",
+      "Equipamento: Armadura de batalha mágica (+1 ou superior).",
+      "Magias: Capacidade de conjurar magias divinas, inclusive proteção contra o mal.",
+      "Especial: Inimigo predileto — demônios (habitantes do Abismo); derrotar um demônio ou enviá-lo de volta ao seu plano.",
+    ],
+    classSkills: ["Concentração (Con)", "Conhecimento (planos) (Int)", "Conhecimento (religião) (Int)", "Diplomacia (Car)", "Intimidação (Car)", "Ofícios (Int)", "Profissão (Sab)", "Sentir Motivação (Sab)"],
+    skillPointsPerLevel: "2 + modificador de Inteligência",
+    weaponArmor: "Os cavaleiros do cálice sabem usar todas as armas simples e comuns, todos os tipos de armadura e escudos.",
+    levels: [
+      { level: 1, bab: "+1", fort: "+2", ref: "+0", will: "+2", special: "Eliminar demônios +1/+1d6, censurar demônios", spellsPerDay: [0, null, null, null] },
+      { level: 2, bab: "+2", fort: "+3", ref: "+0", will: "+3", special: "Coragem Celestial", spellsPerDay: [1, null, null, null] },
+      { level: 3, bab: "+3", fort: "+3", ref: "+1", will: "+3", special: "Eliminar demônios +2/+2d6", spellsPerDay: [1, 0, null, null] },
+      { level: 4, bab: "+4", fort: "+4", ref: "+1", will: "+4", special: "", spellsPerDay: [1, 1, null, null] },
+      { level: 5, bab: "+5", fort: "+4", ref: "+1", will: "+4", special: "Devoção celestial", spellsPerDay: [1, 1, 0, null] },
+      { level: 6, bab: "+6", fort: "+5", ref: "+2", will: "+5", special: "Eliminar demônios +3/+3d6", spellsPerDay: [1, 1, 1, null] },
+      { level: 7, bab: "+7", fort: "+5", ref: "+2", will: "+5", special: "", spellsPerDay: [2, 1, 1, 0] },
+      { level: 8, bab: "+8", fort: "+6", ref: "+2", will: "+6", special: "Aura consagrada", spellsPerDay: [2, 1, 1, 1] },
+      { level: 9, bab: "+9", fort: "+6", ref: "+3", will: "+6", special: "Eliminar demônios +4/+4d6", spellsPerDay: [2, 2, 1, 1] },
+      { level: 10, bab: "+10", fort: "+7", ref: "+3", will: "+7", special: "Aura sagrada", spellsPerDay: [2, 2, 2, 1] },
+    ],
+    features: [
+      {
+        name: "Eliminar Demônios",
+        text: "Um cavaleiro do cálice adquire vários benefícios especiais para combater seus inimigos jurados. No 1º nível, ele recebe +1 de bônus de competência nas jogadas de ataque contra qualquer demônio (mas não contra diabos). Seus ataques causarão +1d6 pontos de dano adicional, em função da especialização do cavaleiro contra esses monstros. Os benefícios aumentam à medida que o personagem adquire níveis nessa classe, conforme demonstrado na Tabela 3-2. Contra esse tipo de criatura, o bônus de competência também se aplica nos testes das perícias Intimidação, Ouvir, Sentir Motivação e Observar, nos testes de resistência de Vontade para anular poderes demoníacos e, finalmente, nos testes resistidos contra demônios. Esses bônus se acumulam com os bônus de inimigo predileto do personagem.",
+      },
+      {
+        name: "Censurar Demônios (Sob)",
+        text: "Os cavaleiros do cálice podem censurar demônios, de forma semelhante à capacidade de expulsar mortos-vivos dos clérigos. Em vez de canalizar energia positiva, o personagem conduz as energias dos planos celestiais Leais e Bons. Para fazê-lo, o cavaleiro precisa realizar um teste de Carisma e consultar a Tabela 8-16: Expulsão, na pág. 140 do Livro do Jogador, determinando qual o demônio mais poderoso que ele é capaz de afetar; o personagem deve somar seu nível de experiência total — e não somente seu nível na classe de prestígio — ao resultado do teste. Depois, será necessário calcular o dano de censura: jogue 2d6 + o nível de cavaleiro do cálice + o modificador de Carisma. Ao considerar todos os seus níveis de classe no teste de Carisma, o cavaleiro será capaz de afetar uma única criatura poderosa, mas dificilmente afetará vários demônios simultaneamente. Um demônio censurado ficará atordoado com a energia sagrada proveniente do cavaleiro. As criaturas atordoadas perdem seus bônus de Destreza na CA (se houver) e são incapazes de realizar qualquer ação. Os oponentes recebem +2 de bônus de circunstância para atacá-las. Se o cavaleiro do cálice atacar um demônio censurado, o efeito será dissipado imediatamente e a criatura agirá no seu próximo turno. Se o nível do cavaleiro for equivalente ao dobro dos Dados de Vida do demônio, a criatura será banida para seu plano de origem. Similar ao clérigo, o cavaleiro pode censurar demônios uma quantidade de vezes por dia equivalente a 3 + seu modificador de Carisma. As tentativas de expulsar mortos-vivos devem ser registradas separadamente.",
+      },
+      {
+        name: "Magias",
+        text: "A partir do 1º nível, um cavaleiro do cálice adquire a habilidade de conjurar uma pequena quantidade de magias divinas. Para conjurar magias, um personagem deve ter uma pontuação em Sabedoria igual ou superior a 10 + o nível da magia; portanto, um personagem de Sabedoria 10 ou inferior não conseguirá fazê-lo. As magias adicionais do cavaleiro do cálice são baseadas em Sabedoria; a Classe de Dificuldade de um teste de resistência contra essas magias equivale a 10 + nível da magia + modificador de Sabedoria. Quando o cavaleiro ganha 0 magias de um determinado nível (como 0 magias de 1º nível logo no 1º nível de experiência), recebe apenas magias adicionais. Um personagem que não receba magias adicionais em qualquer nível ainda não é capaz de conjurá-las. Ele tem acesso a qualquer magia da lista, desde que seja capaz de lançá-la, e pode escolher livremente qual preparar. Um cavaleiro prepara e conjura magias como um clérigo (mas não pode usar a Conversão Espontânea para lançar magias de cura no lugar de uma magia preparada).",
+      },
+      {
+        name: "Foco em Magia e Magia Penetrante",
+        text: "Os cavaleiros do cálice recebem automaticamente os benefícios dos talentos Foco em Magia e Magia Penetrante quando conjuram uma magia visando um demônio. A CD do teste de resistência para esses efeitos recebe +2 de bônus e o cavaleiro recebe +2 de bônus no teste de conjurador para superar a RM do demônio.",
+      },
+      {
+        name: "Coragem Celestial (Sob)",
+        text: "Um cavaleiro do cálice de 2º nível ou superior é imune a efeitos de medo gerados ou conjurados por demônios. Qualquer aliado num raio de 3 m do personagem recebe +4 de bônus de moral nos testes de resistência contra esses efeitos.",
+      },
+      {
+        name: "Devoção Celestial (Sob)",
+        text: "A partir do 5º nível, o cavaleiro do cálice torna-se imune a magias e efeitos de encantamento gerados ou conjurados por demônios, inclusive feitiços e sugestões. Qualquer aliado num raio de 3 m do personagem recebe +4 de bônus de moral nos testes de resistência contra esses efeitos.",
+      },
+      {
+        name: "Aura Consagrada (Sob)",
+        text: "A partir do 8º nível, o cavaleiro do cálice emana um efeito permanente de consagrar que afeta um raio de 6 m à sua volta. Caso entre numa área afetada pela magia profanar, os dois efeitos são dissipados até que o cavaleiro abandone a área ou a duração de profanar termine. Se a magia profanar estiver sustentada por um altar ou outro santuário dedicado a uma divindade maligna, o efeito da aura consagrada anulará esse aprimoramento enquanto o cavaleiro permanecer na área: as penalidades de Expulsão são reduzidas a -3 e os mortos-vivos recebem apenas +1 de bônus profano em seus testes.",
+      },
+      {
+        name: "Aura Sagrada (Sob)",
+        text: "No 10º nível, o cavaleiro do cálice adquire a habilidade de criar uma aura sagrada ao seu redor, que afeta somente o personagem, enquanto ele estiver em combate corporal contra um ou mais demônios. Esse efeito é idêntico à magia conjurada por um clérigo de 10º nível, mas protege o cavaleiro contra ataques, magias e influências mentais geradas unicamente por demônios; além disso, apenas os demônios que atingirem o cavaleiro poderão ficar cegos.",
+      },
+    ],
+    // † = nova magia descrita no Capítulo 4 do livro.
+    spellList: {
+      "1": ["abençoar água", "abençoar arma", "arma mágica", "auxílio divino", "desespero", "detectar o caos", "detectar o mal", "invocar criaturas I", "proteção contra o mal", "remover medo", "resistência a elementos"],
+      "2": ["ajuda", "arma espiritual", "consagrar", "dissimular tendência", "explosão sônica", "força do touro", "invocar criaturas II", "suportar elementos", "vigor", "zelo†"],
+      "3": ["círculo mágico contra o mal", "dissipar magia", "grito", "invocar criaturas III", "luz cegante", "oração", "proteção contra elementos", "purgar invisibilidade", "roupa encantada"],
+      "4": ["aliado extra-planar menor", "âncora dimensional", "arma da divindade†", "arma mágica aprimorada", "aspecto da divindade menor†", "destruição sagrada", "discernir mentiras", "dissipar o mal", "expulsão"],
+    },
+  },
+  {
+    id: "defensores-cavaleiro-do-circulo-central",
+    name: "Cavaleiro do Círculo Central",
+    hitDie: 10,
+    requirements: [
+      "Bônus Base de Ataque: +6.",
+      "Tendência: Leal e Bom ou Neutro e Bom.",
+      "Adestrar Animais: 7 graduações.",
+      "Obter Informação: 4 graduações.",
+      "Mensagens Secretas: 4 graduações.",
+    ],
+    classSkills: ["Adestrar Animais (Car)", "Cavalgar (Des)", "Concentração (Con)", "Conhecimento (arcano) (Int)", "Cura (Sab)", "Diplomacia (Car)", "Mensagens Secretas (Sab)", "Profissão (Sab)", "Sentir Motivação (Sab)"],
+    skillPointsPerLevel: "4 + modificador de Inteligência",
+    weaponArmor: "Os cavaleiros do círculo central sabem usar todas as armas simples e comuns, todos os tipos de armadura e escudos.",
+    levels: [
+      { level: 1, bab: "+1", fort: "+0", ref: "+0", will: "+2", special: "Percepção de combate +2, Lutar às Cegas", spellsPerDay: [0, null, null] },
+      { level: 2, bab: "+2", fort: "+0", ref: "+0", will: "+3", special: "Idiomas", spellsPerDay: [0, null, null] },
+      { level: 3, bab: "+3", fort: "+1", ref: "+1", will: "+3", special: "Ataque certeiro 1/dia", spellsPerDay: [1, null, null] },
+      { level: 4, bab: "+4", fort: "+1", ref: "+1", will: "+4", special: "", spellsPerDay: [1, null, null] },
+      { level: 5, bab: "+5", fort: "+1", ref: "+1", will: "+4", special: "Percepção de combate +4", spellsPerDay: [1, 0, null] },
+      { level: 6, bab: "+6", fort: "+2", ref: "+2", will: "+5", special: "Ataque certeiro 2/dia", spellsPerDay: [1, 0, null] },
+      { level: 7, bab: "+7", fort: "+2", ref: "+2", will: "+5", special: "", spellsPerDay: [1, 1, null] },
+      { level: 8, bab: "+8", fort: "+2", ref: "+2", will: "+6", special: "", spellsPerDay: [1, 1, 0] },
+      { level: 9, bab: "+9", fort: "+3", ref: "+3", will: "+6", special: "Ataque certeiro 3/dia", spellsPerDay: [1, 1, 1] },
+      { level: 10, bab: "+10", fort: "+3", ref: "+3", will: "+7", special: "Percepção de combate +6", spellsPerDay: [1, 1, 1] },
+    ],
+    features: [
+      {
+        name: "Magias",
+        text: "A partir do 1º nível, um cavaleiro do círculo central adquire a habilidade de conjurar uma pequena quantidade de magias divinas. Para conjurar magias, um personagem deve ter uma pontuação em Sabedoria igual ou superior a 10 + o nível da magia; portanto, um personagem de Sabedoria 10 ou inferior não conseguirá fazê-lo. As magias adicionais do cavaleiro são baseadas em Sabedoria; a Classe de Dificuldade de um teste de resistência contra essas magias equivale a 10 + nível da magia + modificador de Sabedoria. Quando um cavaleiro do círculo central recebe 0 magias de um determinado nível (como 0 magias de 1º nível logo no 1º nível de experiência), recebe apenas magias adicionais. Um personagem que não receba magias adicionais em qualquer nível ainda não é capaz de conjurá-las. Ele tem acesso a qualquer magia da lista, desde que seja capaz de lançá-la, e pode escolher livremente qual preparar. Um cavaleiro prepara e conjura magias como um clérigo (mas não pode usar a Conversão Espontânea para lançar magias de cura no lugar de uma magia preparada). O nível de conjurador do cavaleiro do círculo central equivale à metade de seu nível na classe de prestígio.",
+      },
+      { name: "Lutar às Cegas", text: "O cavaleiro do círculo central recebe esse talento gratuitamente no 1º nível." },
+      {
+        name: "Percepção de Combate (Ext)",
+        text: "Um cavaleiro do círculo central pode selecionar um único oponente em combate — contra ele, o cavaleiro recebe +2 de bônus intuitivo na CA e +2 de bônus intuitivo nas jogadas de ataque. No 5º nível, esses bônus aumentam para +4 e no 10º nível, para +6.",
+      },
+      {
+        name: "Idiomas (SM)",
+        text: "O cavaleiro do círculo central deve estar apto a se comunicar com todos que encontra, atuando como os olhos e ouvidos dos Contempladores dos Astros. A partir do 2º nível, ele pode conjurar idiomas (idêntico à magia) uma quantidade de vezes por dia equivalente ao seu nível de cavaleiro + seu bônus de Carisma.",
+      },
+      {
+        name: "Ataque Certeiro (SM)",
+        text: "No 3º nível, o cavaleiro do círculo central pode lançar ataque certeiro (idêntico à magia) uma vez por dia. Ele adquire utilizações adicionais a cada três níveis na classe de prestígio (duas vezes por dia no 6º nível e três vezes por dia no 9º nível).",
+      },
+      {
+        name: "Observação para Multiclasse",
+        text: "Os personagens paladinos podem adquirir livremente níveis desta classe de prestígio, intercalando as duas classes sem penalidades.",
+      },
+    ],
+    spellList: {
+      "1": ["abençoar arma", "arma mágica", "auxílio divino", "benção", "curar ferimentos leves", "detectar mortos-vivos", "detectar venenos", "ler magias", "proteção contra o mal"],
+      "2": ["augúrio", "dissimular tendência", "proteger outro"],
+      "3": ["arma mágica aprimorada", "curar ferimentos moderados", "discernir mentiras", "dissipar magia", "oração"],
+    },
+  },
+  {
+    id: "defensores-contemplativo",
+    name: "Contemplativo",
+    hitDie: 6,
+    requirements: [
+      "Conhecimento (religião): 13 graduações.",
+      "Especial: O personagem deve ter mantido um contato direto com sua divindade patrona ou um servo enviado por ela ou com seres superiores que incorporem os princípios mais elevados de uma tendência (um solar, por exemplo).",
+    ],
+    classSkills: ["Concentração (Con)", "Conhecimento (religião) (Int)", "Cura (Sab)", "Diplomacia (Car)", "Espionar (Int, perícia exclusiva)", "Identificar Magia (Int)", "Intimidar (Car)", "Ofícios (Int)", "Profissão (Sab)", "Senso de Direção (Sab)", "Sentir Motivação (Sab)"],
+    skillPointsPerLevel: "2 + modificador de Inteligência",
+    weaponArmor: "Os contemplativos sabem usar todas as armas simples. Eles não sabem usar nenhum tipo de armadura ou escudos, mas quase sempre conservam essa habilidade de sua(s) antiga(s) classe(s).",
+    levels: [
+      { level: 1, bab: "+0", fort: "+0", ref: "+0", will: "+2", special: "1º domínio de prestígio, saúde divina", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 2, bab: "+1", fort: "+0", ref: "+0", will: "+3", special: "Mente escorregadia", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 3, bab: "+1", fort: "+1", ref: "+1", will: "+3", special: "Integridade divina", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 4, bab: "+2", fort: "+1", ref: "+1", will: "+4", special: "", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 5, bab: "+2", fort: "+1", ref: "+1", will: "+4", special: "Corpo divino", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 6, bab: "+3", fort: "+2", ref: "+2", will: "+5", special: "2º domínio de prestígio", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 7, bab: "+3", fort: "+2", ref: "+2", will: "+5", special: "Alma divina", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 8, bab: "+4", fort: "+2", ref: "+2", will: "+6", special: "", spellcastingAdvance: "+1 nível de classe existente" },
+      // Impresso "Corpo divino" na tabela; o texto descreve "Corpo Eterno" no 9º nível (erro do livro).
+      { level: 9, bab: "+4", fort: "+3", ref: "+3", will: "+6", special: "Corpo divino", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 10, bab: "+5", fort: "+3", ref: "+3", will: "+7", special: "União mística", spellcastingAdvance: "+1 nível de classe existente" },
+    ],
+    features: [
+      {
+        name: "Domínio de Prestígio",
+        text: "Quando seleciona a classe de contemplativo, e novamente no 6º nível, o personagem adquire acesso a um domínio de prestígio a sua escolha, conforme descrito no Capítulo 4: Magias Divinas. É possível selecionar qualquer domínio acessível à sua divindade ou tendência — seja um domínio de prestígio ou aqueles descritos no Livro do Jogador. O personagem recebe o poder concedido do domínio escolhido e será capaz de preparar as magias indicadas como suas magias de domínio diárias.",
+      },
+      { name: "Saúde Divina (Ext)", text: "Um contemplativo é imune a todas as doenças, inclusive as mágicas, como o apodrecimento das múmias e a licantropia." },
+      {
+        name: "Conjuração",
+        text: "Um contemplativo que já era capaz de conjurar magias divinas continuará desenvolvendo essa habilidade, adquirindo acesso a magias mais poderosas conforme segue sua devoção. Portanto, quando o personagem atinge um novo nível na classe de prestígio, adquire mais magias diárias — como se estivesse avançando um nível na sua classe de conjurador divino anterior. Entretanto, ele não recebe qualquer outro benefício daquela classe (chance aprimorada de Expulsar/Fascinar mortos-vivos, utilizações adicionais de remover doenças, etc.). Essencialmente, isso significa que o nível de contemplativo é somado ao nível de outra classe capaz de conjurar magias divinas do personagem e, depois disso, sua quantidade de magias diárias é determinada. Por exemplo, Teresa, uma clériga de 11º nível, adquire um nível de contemplativo, recebendo novas magias como se tivesse atingido o 12º nível de clérigo, mas usando os demais aspectos da progressão de nível — como o bônus base de ataque e o bônus base de resistência — da classe de prestígio. Se, em seguida, ela adquirir um nível de clérigo, tornando-se uma clériga de 12º nível/contemplativo de 1º, passará a conjurar e obter magias diárias como um clérigo de 13º nível. Caso o personagem tenha mais de uma classe capaz de conjurar magias divinas antes de se tornar um contemplativo, deverá escolher qual delas terá seu nível elevado para determinar a quantidade de magias diárias sempre que alcançar um nível na classe de prestígio. Se o personagem não era capaz de lançar magias divinas anteriormente, ele adquire a habilidade de fazê-lo exatamente como um clérigo de sua divindade patrona. A partir do 1º nível de contemplativo, sua progressão de magias será idêntica à do clérigo.",
+      },
+      {
+        name: "Mente Escorregadia (Ext)",
+        text: "No 2º nível, o contemplativo adquire a habilidade de ignorar efeitos mágicos que possam controlá-lo ou forçá-lo a fazer algo. Quando o personagem for afetado por um encantamento (falhando no seu teste de resistência), poderá tentar anular o efeito novamente uma rodada depois. O contemplativo dispõe somente de uma oportunidade adicional para realizar essa jogada.",
+      },
+      {
+        name: "Integridade Divina (Sob)",
+        text: "Ao atingir o 3º nível, o contemplativo poderá curar seus próprios ferimentos, além de usar qualquer outra habilidade similar que já tenha. Ele é capaz de recuperar uma quantidade de pontos de vida por dia equivalente ao dobro de seu nível de experiência atual, sendo possível dividir o efeito.",
+      },
+      { name: "Corpo Divino (Sob)", text: "A partir do 5º nível, o contemplativo se torna imune a qualquer tipo de veneno." },
+      {
+        name: "Alma Divina (Sob)",
+        text: "No 7º nível, o contemplativo adquire resistência à magia equivalente ao seu nível + 10. Para conseguir afetar o contemplativo com uma magia, um conjurador precisa igualar ou superar a resistência à magia do personagem num teste de conjurador — 1d20 + nível do conjurador.",
+      },
+      {
+        name: "Corpo Eterno (Ext)",
+        text: "Depois de atingir o 9º nível, o contemplativo não sofrerá mais penalidades devido a idade e não poderá ser envelhecido magicamente (qualquer penalidade existente permanece). O personagem continuará acumulando seus bônus em função do envelhecimento e morrerá de velhice quando chegar a hora.",
+      },
+      {
+        name: "União Mística (Sob)",
+        text: "Ao atingir o 10º nível, o contemplativo se tornará uma criatura mágica. A partir de então, ele será tratado como um extra-planar em vez de humanóide. Por exemplo, enfeitiçar pessoas não o afetará. Além disso, o contemplativo adquire redução de dano 20/+1. Isso significa que ele ignora (regenera instantaneamente) os 20 primeiros pontos de dano de qualquer ataque, exceto se o dano for causado por uma arma com +1 de bônus de melhoria (ou superior), por uma magia ou por uma forma de energia (fogo, gelo, eletricidade, etc.). Sendo um extra-planar, o contemplativo de 10º nível é afetado por magias que repelem criaturas encantadas, como proteção contra o bem.",
+      },
+    ],
+  },
+  {
+    id: "defensores-devoto-da-guerra",
+    name: "Devoto da Guerra",
+    hitDie: 8,
+    requirements: [
+      "Bônus Base de Ataque: +5.",
+      "Talentos: Magias em Combate, Liderança.",
+      "Diplomacia: 5 graduações.",
+      "Sentir Motivação: 5 graduações.",
+      "Magias: Capacidade de conjurar magias divinas e acesso a um dos seguintes domínios: Destruição, Força, Guerra ou Proteção. Para esse propósito, considera-se que os personagens capazes de lançar uma magia desses domínios têm acesso a eles.",
+      "Especial: Capacidade de canalizar energia negativa ou positiva.",
+    ],
+    classSkills: ["Adestrar Animais (Car)", "Cavalgar (Des)", "Concentração (Cons)", "Conhecimento (guerra) (Int)", "Diplomacia (Car)", "Identificar Magia (Int)", "Natação (For)", "Ofícios (Int)", "Sentir Motivação (Sab)"],
+    skillPointsPerLevel: "2 + modificador de Inteligência",
+    weaponArmor: "Os devotos da guerra sabem usar todas as armas simples e comuns, todos os tipos de armadura e escudos.",
+    levels: [
+      { level: 1, bab: "+1", fort: "+2", ref: "+0", will: "+0", special: "Domínio de prestígio: Glória/Dominação, Bravura" },
+      { level: 2, bab: "+2", fort: "+3", ref: "+0", will: "+0", special: "Incentivar", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 3, bab: "+3", fort: "+3", ref: "+1", will: "+1", special: "Círculo de cura" },
+      { level: 4, bab: "+4", fort: "+4", ref: "+1", will: "+1", special: "Domínio de Prestígio: Adivinhação", spellcastingAdvance: "+1 nível na classe existente" },
+      { level: 5, bab: "+5", fort: "+4", ref: "+1", will: "+1", special: "Banquete de heróis" },
+      { level: 6, bab: "+6", fort: "+5", ref: "+2", will: "+2", special: "Aura de medo 1/dia", spellcastingAdvance: "+1 nível na classe existente" },
+      { level: 7, bab: "+7", fort: "+5", ref: "+2", will: "+2", special: "Velocidade em massa" },
+      { level: 8, bab: "+8", fort: "+6", ref: "+2", will: "+2", special: "Cura completa em massa", spellcastingAdvance: "+1 nível na classe existente" },
+      { level: 9, bab: "+9", fort: "+6", ref: "+3", will: "+3", special: "Aura de Medo 2/dia" },
+      { level: 10, bab: "+10", fort: "+7", ref: "+3", will: "+3", special: "Inimigo implacável", spellcastingAdvance: "+1 nível na classe existente" },
+    ],
+    features: [
+      {
+        name: "Magias",
+        text: "Um devoto da guerra conjura magias como um clérigo (consulte a Tabela 3-6: O Clérigo, na pág. 30 do Livro do Jogador) e tem acesso irrestrito à lista geral de magias dessa classe. Cada dois níveis de devoto da guerra são considerados como um nível adicional de clérigo para determinar a quantidade de magias diárias e seus efeitos (veja Conjuração, a seguir).",
+      },
+      {
+        name: "Conjuração",
+        text: "Os devotos da guerra nunca abandonam seu treinamento mágico divino. Portanto, quando o personagem atinge um nível par na classe de prestígio (2º, 4º, 6º, 8º ou 10º), ele adquire mais magias diárias — como se estivesse avançando um nível na sua classe de conjurador divino anterior. Entretanto, ele não recebe qualquer outro benefício daquela classe (chance aprimorada de Expulsar/Fascinar mortos-vivos, utilizações adicionais de remover doenças, etc.). Por exemplo, Trafnar, um clérigo de 8º nível/devoto da guerra de 2º, adquire magias divinas por dia como se tivesse atingido o 9º nível de clérigo. Se, em seguida, ele adquirir um nível de devoto, tornando-se um clérigo 9/devoto 3, sua quantidade de magias diárias não será alterada; finalmente, quando alcançar o 4º nível de devoto da guerra, receberá magias diárias como um clérigo de 10º nível. Caso o personagem tenha mais de uma classe capaz de conjurar magias divinas antes de se tornar um devoto da guerra, deverá escolher qual delas terá seu nível elevado para determinar a quantidade de magias divinas por dia sempre que alcançar um nível par como devoto da guerra.",
+      },
+      {
+        name: "Domínio de Prestígio",
+        text: "Quando seleciona a classe devoto da guerra, o personagem adquire acesso ao domínio de prestígio Glória (caso canalize energia positiva) ou Dominação (caso utilize energia negativa), ambos descritos no Capítulo 4: Magias Divinas. No 4º nível, o devoto adquire acesso ao domínio de prestígio Adivinhação.",
+      },
+      { name: "Expulsar/Fascinar Mortos-Vivos (Sob)", text: "Os níveis de devoto da guerra são adicionados ao nível de clérigo ou paladino para Expulsar/Fascinar mortos-vivos." },
+      {
+        name: "Bravura (Ext)",
+        text: "Um devoto da guerra que resista a um efeito de medo é capaz de ativar essa habilidade usando uma ação padrão. Qualquer aliado num raio de 18 m, afetado pelo efeito de medo e que consiga ouvir o devoto, tem direito a realizar outro teste de resistência de Vontade contra a CD original, além de receber +1 de bônus de moral por nível do devoto da guerra.",
+      },
+      {
+        name: "Incentivar (Ext)",
+        text: "Caso o devoto gaste 5 minutos (no mínimo) proferindo um discurso de incentivo antes da batalha, concederá um bônus de moral nos testes de resistência contra feitiços e medo a todos os ouvintes. Este bônus será +2 no 2º nível da classe de prestígio e aumenta +2 a cada nível par subsequente (+4 no 4º nível, +6 no 6º nível, etc).",
+      },
+      { name: "Círculo de Cura (SM)", text: "Uma vez por dia, o devoto da guerra pode conjurar um círculo de cura (idêntico à magia homônima)." },
+      { name: "Banquete de Heróis (SM)", text: "Uma vez por dia, o devoto da guerra pode conjurar um banquete de heróis (idêntico à magia homônima)." },
+      {
+        name: "Aura de Medo (Sob)",
+        text: "Uma vez por dia, o devoto da guerra é capaz de gerar uma aura de medo de 6 m de raio, que permanece 1 rodada por nível na classe de prestígio. Os oponentes devem realizar um teste de resistência de Vontade (CD 10 + nível do devoto + bônus de Carisma) ou serão afetados como na magia medo.",
+      },
+      { name: "Velocidade em Massa (SM)", text: "Uma vez por dia, o devoto da guerra pode conjurar velocidade em massa (idêntico à magia homônima)." },
+      { name: "Cura Completa em Massa (SM)", text: "Uma vez por dia, o devoto da guerra pode conjurar cura completa em massa (idêntico à magia homônima)." },
+      {
+        name: "Inimigo Implacável (SM)",
+        text: "No 10º nível, o devoto da guerra consegue canalizar energia positiva suficiente para induzir seus aliados num raio de 30 metros a continuar lutando, mesmo depois de sofrerem ferimentos letais. Essa habilidade exige uma ação equivalente a movimento e concentração; enquanto estiver ativa, todos os aliados na área afetada ignoram as conseqüências do dano sofrido e continuam a lutar, mesmo quando deveriam estar incapacitados ou morrendo. A morte ocorre imediatamente quando eles atingirem -20 pontos de vida. Caso a habilidade expire — seja porque o devoto parou de se concentrar, fracassou num teste de Concentração ou ficou incapacitado (ou morrendo) — os efeitos totais do dano ocorrem imediatamente.",
+      },
+      {
+        name: "Observação para Multiclasse",
+        text: "Caso o devoto da guerra selecione um nível em qualquer classe diferente desta classe de prestígio, não conseguirá adquirir mais níveis de devoto da guerra até que faça uma penitência (veja a descrição da magia penitência, pág. 245 do Livro do Jogador).",
+      },
+    ],
+  },
+  {
+    id: "defensores-exorcista-sagrado",
+    name: "Exorcista Sagrado",
+    hitDie: 8,
+    requirements: [
+      "Tendência: Leal e Bom, Neutro e Bom ou Caótico e Bom.",
+      "Conhecimento (planos): 7 graduações.",
+      "Conhecimento (religião): 10 graduações.",
+      "Magias: Capacidade de conjurar expulsão ou dissipar o mal.",
+      "Especial: Adotar esta classe de prestígio requer a sanção de uma igreja ou a ordenação para uma confraria de exorcistas sagrados. A igreja considera que somente os personagens detentores de uma fé e devoção exemplares, vontade inabalável e moralidade inquestionável merecem ser ordenados como exorcistas sagrados.",
+    ],
+    classSkills: ["Concentração (Con)", "Conhecimento (arcano) (Int)", "Conhecimento (planos) (Int)", "Conhecimento (religião) (Int)", "Cura (Sab)", "Espionar (Int, perícia exclusiva)", "Identificar Magia (Int)", "Intimidar (Car)", "Ofícios (Int)", "Profissão (Sab)"],
+    skillPointsPerLevel: "2 + modificador de Inteligência",
+    weaponArmor: "Os exorcistas sagrados sabem usar todas as armas simples. Eles não sabem usar nenhum tipo de armadura ou escudos, mas quase sempre conservam essa habilidade de sua(s) antiga(s) classe(s).",
+    levels: [
+      { level: 1, bab: "+0", fort: "+0", ref: "+0", will: "+2", special: "Domínio de prestígio: Exorcismo, adversário predileto +1, expulsar mortos-vivos", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 2, bab: "+1", fort: "+0", ref: "+0", will: "+3", special: "Resistência à possessão, detectar o mal", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 3, bab: "+2", fort: "+1", ref: "+1", will: "+3", special: "Expulsão adicional", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 4, bab: "+3", fort: "+1", ref: "+1", will: "+4", special: "Dissipar o mal 1/semana, adversário predileto +2", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 5, bab: "+3", fort: "+1", ref: "+1", will: "+4", special: "Presença consagrada", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 6, bab: "+4", fort: "+2", ref: "+2", will: "+5", special: "Expulsão adicional", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 7, bab: "+5", fort: "+2", ref: "+2", will: "+5", special: "Dissipar o mal 2/semana", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 8, bab: "+6", fort: "+2", ref: "+2", will: "+6", special: "Adversário predileto +3", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 9, bab: "+6", fort: "+3", ref: "+3", will: "+6", special: "Expulsão adicional", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 10, bab: "+7", fort: "+3", ref: "+3", will: "+7", special: "Dissipar o mal 3/semana", spellcastingAdvance: "+1 nível de classe existente" },
+    ],
+    features: [
+      {
+        name: "Conjuração",
+        text: "Os exorcistas sagrados nunca abandonam seu treinamento mágico, desenvolvendo-o junto com suas habilidades de exorcismo. Portanto, quando o personagem atinge um novo nível na classe de prestígio, adquire mais magias diárias — como se estivesse avançando um nível na sua classe de conjurador anterior. Entretanto, ele não recebe qualquer outro benefício daquela classe (chance aprimorada de Expulsar/Fascinar mortos-vivos, utilizações adicionais de remover doenças, etc.). Essencialmente, isso significa que o nível de exorcista sagrado é somado ao nível de outra classe capaz de conjurar magias do personagem e, depois disso, sua quantidade de magias diárias é determinada. Por exemplo, Delliva, uma clériga de 8º nível, adquire um nível de exorcista sagrado, recebendo novas magias como se tivesse atingido o 9º nível de clérigo, mas usando os demais aspectos da progressão de nível — como o bônus base de ataque e o bônus base de resistência — da classe de prestígio. Se, em seguida, ela adquirir um nível de clérigo, tornando-se uma clériga de 9º nível/exorcista de 1º, passará a conjurar e obter magias diárias como um clérigo de 10º nível. Caso o personagem tenha mais de uma classe capaz de conjurar magias divinas antes de se tornar um exorcista sagrado, deverá escolher qual delas terá seu nível elevado para determinar a quantidade de magias diárias sempre que alcançar um novo nível na classe de prestígio.",
+      },
+      {
+        name: "Domínio de Prestígio",
+        text: "Quando seleciona a classe exorcista sagrado, o personagem adquire acesso ao domínio Exorcismo, descrito no Capítulo 4: Magias Divinas. O personagem recebe o poder concedido desse domínio (habilidade de expulsar entidades espirituais dos corpos que possuíram) e será capaz de preparar as magias indicadas como suas magias de domínio diárias.",
+      },
+      {
+        name: "Adversário Predileto (Ext)",
+        text: "Um exorcista sagrado precisa escolher seu adversário predileto entre mortos-vivos e seres extra-planares. O estudo intensivo e o treinamento especial nas técnicas adequadas para combater esse inimigo lhe concedem +1 de bônus de competência nos testes das perícias Blefar, Intimidar, Ouvir, Sentir Motivação e Observar, e nos testes de conjurador executados para superar a RM da criatura. No 4º nível, esse bônus aumenta para +2 e no 8º nível, para +3.",
+      },
+      {
+        name: "Expulsar Mortos-Vivos (Sob)",
+        text: "Um exorcista sagrado é capaz de expulsar mortos-vivos como um clérigo. Esta habilidade sobrenatural se acumula com a capacidade de Expulsar Mortos-vivos de outras classes; portanto, os níveis de exorcista são adicionados aos níveis de clérigo (ou de paladino -2) para determinar o nível efetivo do personagem quando utiliza a expulsão.",
+      },
+      {
+        name: "Resistência à Possessão (Ext)",
+        text: "A partir do 2º nível, o exorcista sagrado recebe +4 de bônus sagrado nos testes de resistência contra a magia recipiente arcano ou habilidades similares (incluindo a habilidade possessão do fantasma) e +2 de bônus sagrado nos testes de dissipar contra esses efeitos. Finalmente, ele recebe +2 de bônus sagrado nos testes de resistência contra magias e efeitos de encantamento e compulsão lançados por extra-planares malignos ou mortos-vivos.",
+      },
+      {
+        name: "Detectar o Mal (SM)",
+        text: "A partir do 2º nível, o exorcista pode usar detectar o mal livremente, como uma habilidade similar a magia. Essa habilidade duplica os efeitos da magia detectar o mal.",
+      },
+      {
+        name: "Expulsão Adicional",
+        text: "No 3º, 6º e 9º níveis, o exorcista sagrado recebe Expulsão Adicional como um talento extra. Em cada nível indicado, esse talento lhe concede mais quatro utilizações de Expulsar Mortos-vivos por dia.",
+      },
+      {
+        name: "Dissipar o Mal (SM)",
+        text: "No 4º nível, o exorcista sagrado adquire a habilidade de conjurar dissipar o mal, como uma habilidade similar a magia, uma vez por semana. A partir do 7º nível, ele poderá ativar essa habilidade duas vezes por semana; no 10º nível, essa quantidade aumenta para três por semana.",
+      },
+      {
+        name: "Presença Consagrada (Sob)",
+        text: "A partir do 5º nível, o exorcista sagrado emana uma aura de energia positiva com 6 m de raio. Essa aura duplica os efeitos da magia consagrar, mas desloca-se com o personagem. Caso entre numa área afetada pela magia profanar, os dois efeitos serão dissipados até que o exorcista abandone a área. Caso a magia profanar seja conjurada sobre o personagem, sua aura ficará desativada até que a duração da magia termine.",
+      },
+    ],
+  },
+  {
+    id: "defensores-hospitalario",
+    name: "Hospitalário",
+    hitDie: 8,
+    requirements: [
+      "Bônus Base de Ataque: +4.",
+      "Tendência: Qualquer uma, exceto Caótico.",
+      "Talentos: Combate Montado, Investida Montada.",
+      "Adestrar Animais: 5 graduações.",
+      "Cavalgar: 5 graduações.",
+    ],
+    classSkills: ["Adestrar Animais (Car)", "Cavalgar (Des)", "Concentração (Con)", "Conhecimento (religião) (Int)", "Cura (Sab)", "Diplomacia (Car)", "Ofícios (Int)", "Profissão (Sab)"],
+    skillPointsPerLevel: "2 + modificador de Inteligência",
+    weaponArmor: "Os hospitalários sabem usar todas as armas simples e comuns, todos os tipos de armadura e escudos.",
+    levels: [
+      { level: 1, bab: "+1", fort: "+2", ref: "+0", will: "+0", special: "Cura pelas mãos", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 2, bab: "+2", fort: "+3", ref: "+0", will: "+0", special: "", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 3, bab: "+3", fort: "+3", ref: "+1", will: "+1", special: "Expulsar mortos-vivos, Remover doenças, talento adicional", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 4, bab: "+4", fort: "+4", ref: "+1", will: "+1", special: "", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 5, bab: "+5", fort: "+4", ref: "+1", will: "+1", special: "Talento adicional", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 6, bab: "+6", fort: "+5", ref: "+2", will: "+2", special: "", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 7, bab: "+7", fort: "+5", ref: "+2", will: "+2", special: "Talento adicional", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 8, bab: "+8", fort: "+6", ref: "+2", will: "+2", special: "", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 9, bab: "+9", fort: "+6", ref: "+3", will: "+3", special: "Talento adicional", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 10, bab: "+10", fort: "+7", ref: "+3", will: "+3", special: "", spellcastingAdvance: "+1 nível de classe existente" },
+    ],
+    features: [
+      {
+        name: "Domínios",
+        text: "Quando seleciona a classe hospitalário, o personagem adquire acesso aos seguintes domínios: Cura, Proteção e Guerra, além do domínio de prestígio Glória (caso canalize energia positiva) ou Dominação (caso utilize energia negativa), ambos descritos no Capítulo 4: Magias Divinas. O acesso aos domínios anteriores é permitido. O personagem recebe o poder concedido do domínio selecionado e será capaz de preparar as magias indicadas como suas magias de domínio diárias. Além disso, um hospitalário é capaz de converter espontaneamente suas magias preparadas em efeitos de curar ou infligir ferimentos.",
+      },
+      {
+        name: "Conjuração",
+        text: "Os hospitalários nunca abandonam seu treinamento mágico divino, desenvolvendo-o junto com suas perícias na classe de prestígio. Portanto, quando o personagem atinge um novo nível nessa classe, adquire mais magias diárias — como se estivesse avançando um nível na sua classe de conjurador divino anterior. Entretanto, ele não recebe qualquer outro benefício daquela classe (chance aprimorada de Expulsar/Fascinar mortos-vivos, dano adicional de destruir o mal, etc.). Essencialmente, isso significa que o nível de hospitalário é somado ao nível de outra classe capaz de conjurar magias divinas do personagem e, depois disso, sua quantidade de magias diárias é determinada. Por exemplo, Alhandra, uma paladina de 8º nível, adquire um nível de hospitalário, recebendo novas magias como se tivesse atingido o 9º nível de paladino, mas usando os demais aspectos da progressão de nível — como o bônus base de ataque e o bônus base de resistência — da classe de prestígio. Se, em seguida, ela adquirir um nível de paladino, tornando-se uma paladina de 9º nível/hospitalária de 1º, passará a conjurar e obter magias divinas como uma paladina de 10º nível. Caso o personagem tenha mais de uma classe capaz de conjurar magias divinas antes de se tornar um hospitalário, deverá escolher qual delas terá seu nível elevado para determinar a quantidade de magias divinas sempre que alcançar um novo nível como hospitalário.",
+      },
+      {
+        name: "Cura pelas Mãos (SM)",
+        text: "Um hospitalário pode curar ferimentos através do toque, como um paladino. Seus níveis de paladino são adicionados ao nível da classe de prestígio para determinar a quantidade de PV curados.",
+      },
+      {
+        name: "Expulsar Mortos-Vivos (Sob)",
+        text: "Quando um hospitalário atinge o 3º nível, adquire a habilidade sobrenatural de Expulsar Mortos-vivos como um clérigo com dois níveis inferiores ao seu. Esta habilidade sobrenatural se acumula com a capacidade de Expulsar Mortos-vivos de outras classes; logo, um clérigo 6º/hospitalário 4º afetaria mortos-vivos como um personagem de 8º nível. Um paladino de 6º nível (que também usa a Expulsão como um clérigo de dois níveis inferior)/hospitalário 4º nível afetaria mortos-vivos como um personagem de 6º nível.",
+      },
+      {
+        name: "Remover Doenças (SM)",
+        text: "Um hospitalário é capaz de remover doenças como os paladinos. Seus níveis de paladino são adicionados ao nível da classe de prestígio para determinar a quantidade de utilizações semanais.",
+      },
+      {
+        name: "Talentos Adicionais",
+        text: "Um hospitalário recebe um talento adicional nos níveis indicados na Tabela 3-7. Esses talentos devem ser escolhidos da seguinte lista: Ambidestria, Lutar às Cegas, Reflexos de Combate, Esquiva (Mobilidade, Deslocamento), Usar Arma Exótica, Especialização (Desarmar Aprimorado, Imobilização Aprimorada, Ataque Giratório), Sucesso Decisivo Aprimorado*, Iniciativa Aprimorada, Ataque Desarmado Aprimorado (Desviar Objetos, Ataque Atordoante), Arqueirismo Montado, Atropelar, Investida Implacável, Tiro Certeiro (Tiro Longo, Precisão, Tiro Rápido, Tiro em Movimento), Ataque Poderoso (Trespassar, Encontrão Aprimorado, Separar, Trespassar Aprimorado), Saque Rápido, Combater com Duas Armas (Combater com Duas Armas Aprimorado), Acuidade com Arma*, Foco em Arma*. Os talentos que têm pré-requisitos estão listados entre parênteses, depois do talento inicial exigido. O hospitalário pode escolher um talento marcado com um asterisco (*) mais de uma vez, selecionando uma arma diferente a cada vez. O hospitalário ainda precisa atender todos os pré-requisitos de um talento, inclusive valores de habilidade e o bônus base de ataque mínimo. Importante: Esses talentos são somados ao talento que um personagem de qualquer classe recebe a cada três níveis. O hospitalário não precisa se limitar a essa lista para selecionar aqueles talentos.",
+      },
+      {
+        name: "Código de Conduta",
+        text: "Os hospitalários fazem votos de pobreza, obediência e proteção aos inocentes sob seus cuidados. Isto não significa que eles vivem em miséria e mendicância, mas que repartem sua riqueza entre si e oferecem o excesso para sua ordem. A obediência não está relacionada ao nível social ou de experiência do personagem, mas à sua posição na ordem dos hospitalários, que muda conforme a situação. Não importa o seu cargo relativo, todos eles respondem ao líder local enquanto permanecerem em seu território. Os hospitalários devem estar dispostos a sacrificar suas vidas para salvar os peregrinos ou qualquer refúgio sob seus cuidados, mas não devem fazê-lo impetuosamente.",
+      },
+      {
+        name: "Observação para Multiclasse",
+        text: "Os personagens paladinos podem adquirir livremente níveis desta classe de prestígio, intercalando as duas classes sem penalidades.",
+      },
+      {
+        name: "Ex-Hospitalários",
+        text: "Um hospitalário que se torne Caótico, pratique voluntariamente um ato maligno ou viole de modo grave seu código de conduta perderá todas as suas magias e características da classe — e não conseguirá adquirir níveis na classe de prestígio — até que faça uma penitência (veja a descrição da magia penitência, pág. 245 do Livro do Jogador). Um hospitalário pode ser um personagem multiclasse, mas existe uma restrição especial. Caso adquira uma nova classe ou (caso seja multiclasse) eleve o nível de qualquer classe, exceto paladino, jamais poderá aumentar seu nível de hospitalário, embora conserve todas as habilidades da classe já adquiridas. O caminho desses indivíduos, assim como a trilha dos paladinos, requer devoção constante; uma vez que se afastem da vereda escolhida, nunca mais conseguirão trilhá-la novamente.",
+      },
+    ],
+  },
+  {
+    id: "defensores-inquiridor-consagrado",
+    name: "Inquiridor Consagrado",
+    hitDie: 10,
+    requirements: [
+      "Bônus Base de Ataque: +5.",
+      "Tendência: Leal.",
+      "Talentos: Rastrear.",
+      "Disfarces: 5 graduações.",
+      "Obter Informação: 5 graduações.",
+      "Profissão (Advogado): 5 graduações.",
+      "Especial: O candidato deve aceitar uma missão, imposta pela igreja, que envolva localizar e destruir um inimigo específico da organização. Caso fracasse, ele precisará aguardar durante um ano e um dia antes de fazer uma nova petição. Se obtiver sucesso, a igreja o aceitará como inquiridor consagrado e ele poderá adquirir níveis nessa classe de prestígio.",
+    ],
+    classSkills: ["Blefar (Car)", "Diplomacia (Car)", "Disfarces (Car)", "Intimidar (Car)", "Obter Informação (Car)", "Procurar (Int)", "Profissão (Sab)"],
+    skillPointsPerLevel: "4 + modificador de Inteligência",
+    weaponArmor: "Os inquiridores consagrados sabem usar todas as armas simples e comuns, todos os tipos de armadura e escudos.",
+    levels: [
+      { level: 1, bab: "+1", fort: "+0", ref: "+0", will: "+2", special: "Benção das escrituras +2, detectar o caos", spellsPerDay: [0, null, null, null, null] },
+      { level: 2, bab: "+2", fort: "+0", ref: "+0", will: "+3", special: "Visão santificada", spellsPerDay: [1, null, null, null, null] },
+      { level: 3, bab: "+3", fort: "+1", ref: "+1", will: "+3", special: "Benção das escrituras +4, dissipar magia", spellsPerDay: [1, 0, null, null, null] },
+      { level: 4, bab: "+4", fort: "+1", ref: "+1", will: "+4", special: "Emoções", spellsPerDay: [1, 1, null, null, null] },
+      { level: 5, bab: "+5", fort: "+1", ref: "+1", will: "+4", special: "Benção das escrituras +6", spellsPerDay: [1, 1, 0, null, null] },
+      { level: 6, bab: "+6", fort: "+2", ref: "+2", will: "+5", special: "Visão falsa", spellsPerDay: [1, 1, 1, null, null] },
+      { level: 7, bab: "+7", fort: "+2", ref: "+2", will: "+5", special: "Benção das escrituras +8", spellsPerDay: [2, 1, 1, 0, null] },
+      { level: 8, bab: "+8", fort: "+2", ref: "+2", will: "+6", special: "Caçada implacável", spellsPerDay: [2, 1, 1, 1, 0] },
+      { level: 9, bab: "+9", fort: "+3", ref: "+3", will: "+6", special: "Benção das escrituras +10", spellsPerDay: [2, 2, 1, 1, 1] },
+      { level: 10, bab: "+10", fort: "+3", ref: "+3", will: "+7", special: "Caçada inequívoca", spellsPerDay: [2, 2, 2, 1, 1] },
+    ],
+    features: [
+      {
+        name: "Magias",
+        text: "A partir do 1º nível, um inquiridor adquire a habilidade de conjurar uma pequena quantidade de magias divinas. Para conjurar magias, um personagem deve ter uma pontuação em Sabedoria igual ou superior a 10 + o nível da magia; portanto, um personagem de Sabedoria 10 ou inferior não conseguirá fazê-lo. As magias adicionais do inquiridor consagrado são baseadas em Sabedoria; a Classe de Dificuldade de um teste de resistência contra essas magias equivale a 10 + nível da magia + modificador de Sabedoria. Quando um inquiridor ganha 0 magias de um determinado nível (como 0 magias de 1º nível logo no 1º nível de experiência), recebe apenas magias adicionais. Um personagem que não receba magias adicionais em qualquer nível ainda não é capaz de conjurá-las. Ele tem acesso a qualquer magia da lista, desde que seja capaz de lançá-la, e pode escolher livremente qual preparar. Um inquiridor prepara e conjura magias como um clérigo (mas não pode usar a Conversão Espontânea para lançar magias de cura no lugar de uma magia preparada).",
+      },
+      {
+        name: "Benção das Escrituras (Sob)",
+        text: "Todos os inquiridores consagrados recebem +2 de bônus sagrado em testes de Blefar, Ouvir, Sentir Motivação, Observar e Sobrevivência quando estiverem rastreando o alvo indicado pela sua igreja. Quando esse alvo for um grupo, o bônus será aplicado ao líder. Eles recebem o mesmo bônus nas jogadas de ataque corporal e dano com armas brancas contra esses alvos — esse modificador não se aplica a jogadas de ataque à distância ou dano com armas de disparo. O bônus aumenta para +4 no 3º nível, +6 no 5º nível, +8 no 7º nível, e +10 no 9º nível.",
+      },
+      { name: "Detectar o Caos (SM)", text: "O inquiridor pode usar detectar o caos livremente, como um clérigo de nível equivalente ao seu." },
+      { name: "Visão Santificada (Sob)", text: "A partir do 2º nível, o inquiridor consagrado recebe +4 de bônus em todos os testes de resistência contra ilusões." },
+      {
+        name: "Dissipar Magia (SM)",
+        text: "O inquiridor consagrado é capaz de conjurar dissipar magia como um clérigo de nível equivalente ao seu. A partir do 3º nível, é possível utilizar essa habilidade similar a magia uma vez por dia, mais uma a cada ponto de bônus de Sabedoria.",
+      },
+      {
+        name: "Emoções (SM)",
+        text: "A partir do 4º nível, o inquiridor consagrado é capaz de induzir sentimentos em todas as criaturas vivas num raio de 4,5 m, com efeitos idênticos à magia emoções, conjurada por um mago de um nível inferior ao seu. Logo, um inquiridor de 4º nível usará essa habilidade como um mago de 3º nível. É possível ativá-la uma quantidade de vezes por dia equivalente ao seu bônus de Sabedoria (mínimo 1). Emoções é uma habilidade similar a magia.",
+      },
+      {
+        name: "Visão Falsa (Sob)",
+        text: "A partir do 6º nível, o inquiridor consagrado é capaz de evitar as tentativas de Espionar perpetradas por seu alvo, seus aliados ou qualquer pessoa a serviço dele, com efeitos idênticos à magia visão falsa, conjurada por um mago de um nível inferior ao seu. Logo, um inquiridor de 6º nível usará essa habilidade como um mago de 5º nível. É possível ativá-la uma quantidade de vezes por dia equivalente ao seu bônus de Sabedoria (mínimo 1). Visão Falsa é uma habilidade sobrenatural.",
+      },
+      {
+        name: "Caçada Implacável (Sob)",
+        text: "A partir do 8º nível, se o inquiridor ferir um alvo e este conseguir escapar, ele sempre saberá a direção da vítima e a distância aproximada entre ambos. É possível utilizar a caçada implacável simultaneamente contra vários adversários distintos, contanto que todos façam parte do mesmo grupo e, em conjunto, formem o alvo principal da missão atual do inquiridor. Essa habilidade somente funcionará se todos estiverem no mesmo plano de existência.",
+      },
+      {
+        name: "Caçada Inequívoca (Sob)",
+        text: "No 10º nível, caso o inquiridor estabeleça uma caçada implacável, será capaz de intensificá-la e transformá-la numa caçada inequívoca, ignorando as fronteiras planares durante a localização de seu alvo. Diferente da caçada implacável, que consegue afetar vários indivíduos ao mesmo tempo, a caçada inequívoca persegue um único alvo de cada vez. Para que o inquiridor consiga ativar essa habilidade, ele deverá abandonar qualquer alvo adicional já localizado.",
+      },
+      {
+        name: "Código de Conduta",
+        text: "O inquiridor consagrado tem que revelar a sua identidade e o motivo de sua presença ao seu alvo antes de enfrentá-lo. Ele não pode desferir ataques furtivos contra o alvo. Ele está proibido de eliminar seu alvo num campo de batalha antes de revelar sua identidade e sua motivação. Intencionalmente, cada inquiridor se apresenta ou declara seu código de conduta de maneira vaga, para manter alguma vantagem durante a caçada. Qualquer inquiridor incapaz de seguir esse código de honra deve se submeter a um ato de penitência (veja a descrição da magia penitência, pág. 245 do Livro do Jogador); caso contrário, será impossível adquirir níveis nessa classe de prestígio.",
+      },
+      {
+        name: "Observação para Multiclasse",
+        text: "Os personagens paladinos podem adquirir livremente níveis desta classe de prestígio, intercalando as duas classes sem penalidades.",
+      },
+    ],
+    spellList: {
+      "1": ["acalmar emoções", "alterar-se", "animar cordas", "comando", "desespero"],
+      "2": ["detectar pensamentos", "enfeitiçar pessoas", "imobilizar pessoas", "luz do dia"],
+      "3": ["discernir mentiras", "expulsão", "lendas e histórias", "proteção contra a morte"],
+      "4": ["dominar pessoas", "marca da justiça"],
+      "5": ["banimento", "campo antimagia"],
+    },
+  },
+  {
+    id: "defensores-inquisidor-da-igreja",
+    name: "Inquisidor da Igreja",
+    hitDie: 8,
+    requirements: [
+      "Bônus Base de Resistência de Vontade: +3.",
+      "Tendência: Leal e Bom ou Leal e Neutro.",
+      "Conhecimento (arcano): 8 graduações.",
+      "Identificar Magia: 8 graduações.",
+      "Magias: Capacidade de conjurar dissipar magia como magia divina.",
+      "Especial: Deve pertencer a uma igreja ou ordem religiosa Leal e Boa e deve ter sido responsável pela descoberta de corrupção dentro da mesma organização.",
+    ],
+    classSkills: ["Concentração (Con)", "Conhecimento (arcano) (Int)", "Conhecimento (planos) (Int)", "Conhecimento (religião) (Int)", "Diplomacia (Car)", "Espionar (Int)", "Identificar Magia (Int)", "Intimidar (Car)", "Obter Informação (Car)", "Procurar (Int)", "Sentir Motivação (Sab)"],
+    skillPointsPerLevel: "2 + modificador de Inteligência",
+    weaponArmor: "Os inquisidores da igreja sabem usar todas as armas simples e comuns, todos os tipos de armadura e escudos.",
+    levels: [
+      { level: 1, bab: "+0", fort: "+2", ref: "+0", will: "+2", special: "Detectar o mal, Domínio de Prestígio: Inquisição", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 2, bab: "+1", fort: "+3", ref: "+0", will: "+3", special: "Imunidade à escola feitiço", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 3, bab: "+2", fort: "+3", ref: "+1", will: "+3", special: "Transpor ilusões", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 4, bab: "+3", fort: "+4", ref: "+1", will: "+4", special: "", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 5, bab: "+3", fort: "+4", ref: "+1", will: "+4", special: "Imunidade à escola compulsão", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 6, bab: "+4", fort: "+5", ref: "+2", will: "+5", special: "Induzir metamorfose", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 7, bab: "+5", fort: "+5", ref: "+2", will: "+5", special: "", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 8, bab: "+5", fort: "+6", ref: "+2", will: "+6", special: "Imunidade à Possessão", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 9, bab: "+6", fort: "+6", ref: "+3", will: "+6", special: "Discernir mentiras, revelar a verdade", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 10, bab: "+7", fort: "+7", ref: "+3", will: "+7", special: "", spellcastingAdvance: "+1 nível de classe existente" },
+    ],
+    features: [
+      {
+        name: "Detectar o Mal (SM)",
+        text: "O inquisidor pode usar detectar o mal livremente, como uma habilidade similar a magia. Essa habilidade duplica os efeitos da magia detectar o mal.",
+      },
+      {
+        name: "Domínio de Prestígio",
+        text: "Quando seleciona a classe inquisidor da igreja, o personagem adquire acesso ao domínio Inquisição, descrito no Capítulo 4: Magias Divinas. O personagem recebe o poder concedido desse domínio (+4 de bônus em testes para dissipar magia) e será capaz de preparar as magias indicadas como suas magias de domínio diárias.",
+      },
+      {
+        name: "Conjuração",
+        text: "Os inquisidores nunca abandonam seu treinamento mágico divino, desenvolvendo-o junto com suas perícias na inquisição. Portanto, quando o personagem atinge um novo nível na classe de prestígio, adquire mais magias diárias — como se estivesse avançando um nível na sua classe de conjurador divino anterior. Entretanto, ele não recebe qualquer outro benefício daquela classe (chance aprimorada de Expulsar/Fascinar mortos-vivos, utilizações adicionais de remover doenças, etc.). Essencialmente, isso significa que o nível de inquisidor da igreja é somado ao nível de outra classe capaz de conjurar magias divinas do personagem e, depois disso, sua quantidade de magias diárias é determinada. Por exemplo, Garjin, um clérigo de 8º nível, adquire um nível de inquisidor da igreja, recebendo novas magias como se tivesse atingido o 9º nível de clérigo, mas usando os demais aspectos da progressão de nível — como o bônus base de ataque e o bônus base de resistência — da classe de prestígio. Se, em seguida, ele adquirir um nível de clérigo, tornando-se um clérigo de 9º nível/inquisidor de 1º, passará a conjurar e obter magias diárias como um clérigo de 10º nível. Caso o personagem tenha mais de uma classe capaz de conjurar magias divinas antes de se tornar um inquisidor da igreja, deverá escolher qual delas terá seu nível elevado para determinar a quantidade de magias diárias sempre que alcançar um novo nível como inquisidor da igreja.",
+      },
+      { name: "Imunidade à Escola Feitiço (Ext)", text: "Um inquisidor da igreja de 2º nível ou superior é imune a todas as magias e efeitos de feitiço." },
+      {
+        name: "Transpor Ilusões (Sob)",
+        text: "A partir do 3º nível, o inquisidor adquire a habilidade sobrenatural de transpor ilusões e disfarces, sem limite de uso diário. O personagem deve tocar a ilusão ou a criatura envolvida pelo efeito (como na magia alterar-se, por exemplo). Então, ele realiza um teste de conjurador como se tivesse lançado dissipar magia sobre o efeito ilusório. Caso obtenha sucesso, a ilusão será imediatamente dissipada. O bônus de +4 nos testes de dissipar do inquisidor (o poder concedido pelo domínio Inquisição) também é aplicado a esse teste. Além disso, o inquisidor recebe +4 de bônus de competência em testes de Observar contra a perícia Disfarces.",
+      },
+      { name: "Imunidade à Escola Compulsão (Ext)", text: "Um inquisidor da igreja de 5º nível ou superior é imune a todas as magias e efeitos de compulsão." },
+      {
+        name: "Induzir Metamorfose (Sob)",
+        text: "Um inquisidor da igreja de 6º nível ou superior é capaz de induzir uma criatura a assumir sua forma natural. O personagem deve obter sucesso num ataque de toque contra a criatura; depois disso, ele deve realizar um teste de conjurador como se tivesse lançado dissipar magia contra o efeito de metamorfose. O bônus de +4 nos testes de dissipar do inquisidor (o poder concedido pelo domínio Inquisição) também é aplicado a esse teste. Essa habilidade dissipa os efeitos de alterar-se, metamorfosear-se, alterar forma, e as habilidades de mudança de forma, sejam excepcionais, similares a magia ou sobrenaturais. A criatura afetada não conseguirá alterar sua forma durante 1d6 rodadas. Essa habilidade não tem limite diário de utilização.",
+      },
+      {
+        name: "Imunidade à Possessão (Ext)",
+        text: "Um inquisidor da igreja de 8º nível ou superior é imune às magias recipiente arcano, prender a alma, aprisionar a alma, à habilidade possessão dos fantasmas e qualquer magia ou efeito que possa retirar ou substituir a força vital do personagem. Ele ainda será capaz de viajar através dos planos usando projeção astral, caso queira.",
+      },
+      {
+        name: "Discernir Mentiras (SM)",
+        text: "Três vezes por dia, um inquisidor da igreja de 9º nível ou superior é capaz de conjurar discernir mentiras como uma habilidade similar a magia.",
+      },
+      {
+        name: "Revelar a Verdade (Sob)",
+        text: "Ao tocar uma criatura que tenha mentido para ele, um inquisidor de 9º nível ou superior poderá tentar forçá-la a dizer a verdade. A criatura deve realizar um teste de resistência de Vontade (CD 10 + nível do inquisidor + seu bônus de Carisma) para anular esse efeito de ação mental [compulsão]. Caso fracasse no teste de resistência, ela deve contar toda a verdade omitida. Não existe limite diário de uso para essa habilidade, mas o inquisidor apenas conseguirá ativá-la imediatamente depois de conjurar discernir mentiras sobre o alvo.",
+      },
+    ],
+  },
+  {
+    id: "defensores-libertador-sagrado",
+    name: "Libertador Sagrado",
+    hitDie: 10,
+    requirements: ["Bônus Base de Ataque: +5.", "Tendência: Caótico e Bom.", "Talento: Vontade de Ferro.", "Diplomacia: 5 graduações."],
+    classSkills: ["Adestrar Animais (Car)", "Cavalgar (Des)", "Concentração (Con)", "Conhecimento (religião) (Int)", "Cura (Sab)", "Diplomacia (Car)", "Intimidar (Car)", "Ofícios (Int)", "Profissão (Sab)", "Sentir Motivação (Sab)"],
+    skillPointsPerLevel: "2 + modificador de Inteligência",
+    weaponArmor: "Os libertadores sagrados sabem usar todas as armas simples e comuns, todos os tipos de armadura e escudos.",
+    levels: [
+      { level: 1, bab: "+1", fort: "+2", ref: "+0", will: "+2", special: "Detectar o mal, resistência a encantamentos", spellsPerDay: [0, null, null, null] },
+      { level: 2, bab: "+2", fort: "+3", ref: "+0", will: "+3", special: "Graça divina, destruir o mal", spellsPerDay: [1, null, null, null] },
+      { level: 3, bab: "+3", fort: "+3", ref: "+1", will: "+3", special: "Expulsar mortos-vivos, imunidade a feitiços e compulsões", spellsPerDay: [1, 0, null, null] },
+      { level: 4, bab: "+4", fort: "+4", ref: "+1", will: "+4", special: "", spellsPerDay: [1, 1, null, null] },
+      { level: 5, bab: "+5", fort: "+4", ref: "+1", will: "+4", special: "Companheiro Celestial", spellsPerDay: [1, 1, 0, null] },
+      { level: 6, bab: "+6", fort: "+5", ref: "+2", will: "+5", special: "", spellsPerDay: [1, 1, 1, null] },
+      { level: 7, bab: "+7", fort: "+5", ref: "+2", will: "+5", special: "Subversão", spellsPerDay: [2, 1, 1, 0] },
+      { level: 8, bab: "+8", fort: "+6", ref: "+2", will: "+6", special: "", spellsPerDay: [2, 1, 1, 1] },
+      { level: 9, bab: "+9", fort: "+6", ref: "+3", will: "+6", special: "", spellsPerDay: [2, 2, 1, 1] },
+      { level: 10, bab: "+10", fort: "+7", ref: "+3", will: "+7", special: "", spellsPerDay: [2, 2, 2, 1] },
+    ],
+    features: [
+      {
+        name: "Magias",
+        text: "A partir do 1º nível, um libertador sagrado adquire a habilidade de conjurar uma pequena quantidade de magias divinas. Para conjurar magias, um personagem deve ter uma pontuação em Sabedoria igual ou superior a 10 + o nível da magia; portanto, um personagem de Sabedoria 10 ou inferior não conseguirá fazê-lo. As magias adicionais do libertador sagrado são baseadas em Sabedoria; a Classe de Dificuldade de um teste de resistência contra essas magias equivale a 10 + nível da magia + modificador de Sabedoria. Quando um libertador recebe 0 magias de um determinado nível (como 0 magias de 1º nível logo no 1º nível de experiência), recebe apenas magias adicionais. Um personagem que não receba magias adicionais em qualquer nível ainda não é capaz de conjurá-las. Ele tem acesso a qualquer magia da lista, desde que seja capaz de lançá-la, e pode escolher livremente qual preparar. Um libertador prepara e conjura magias como um clérigo (mas não pode usar a Conversão Espontânea para lançar magias de cura no lugar de uma magia preparada).",
+      },
+      {
+        name: "Detectar o Mal (SM)",
+        text: "O libertador sagrado pode usar detectar o mal livremente, como uma habilidade similar a magia. Essa habilidade duplica os efeitos da magia detectar o mal.",
+      },
+      { name: "Resistência a Encantamentos (Sob)", text: "Os libertadores sagrados recebem +2 de bônus de moral em todos os testes de resistência contra magias ou efeitos de encantamento." },
+      { name: "Graça Divina (Sob)", text: "O libertador sagrado de 2º nível ou superior aplica seu modificador de Carisma (caso seja positivo) como um bônus em todos os seus testes de resistência." },
+      {
+        name: "Destruir o Mal (Sob)",
+        text: "Uma vez por dia, um libertador sagrado de 2º nível ou superior pode tentar destruir o mal usando um ataque regular. Ao fazê-lo, ele soma seu modificador de Carisma (caso seja positivo) na sua jogada de ataque, causando 1 ponto de dano adicional por nível de experiência. Por exemplo, um libertador de 9º nível empunhando uma espada longa causaria 1d8+9 pontos de dano, além do dano devido a sua Força ou outros efeitos mágicos. Se o libertador, acidentalmente, tentar destruir uma criatura que não seja maligna, esta característica não gera efeitos, mas não poderá ser utilizada outra vez naquele dia. Destruir o mal é uma habilidade sobrenatural.",
+      },
+      {
+        name: "Expulsar Mortos-Vivos (Sob)",
+        text: "Quando um libertador sagrado atinge o 3º nível, adquire a habilidade sobrenatural de Expulsar Mortos-vivos. Ele expulsa mortos-vivos como um clérigo com dois níveis inferiores.",
+      },
+      {
+        name: "Imunidade a Feitiços e Compulsões (Ext)",
+        text: "A partir do 3º nível, o libertador sagrado torna-se imune a todos os efeitos das escolas feitiço e compulsão. Sua consciência lhe pertence totalmente e nenhuma criatura é capaz de controlar seus pensamentos ou ações.",
+      },
+      {
+        name: "Companheiro Celestial",
+        text: "Ao atingir o 5º nível ou posteriormente, o libertador sagrado é capaz de invocar um dos seguintes animais como seu companheiro celestial: gato, cachorro, águia, falcão, cavalo, coruja, pônei ou lobo (consulte o Apêndice 1 do Livro dos Monstros para obter as estatísticas básicas destes animais e o Apêndice 3 para obter o modelo de criaturas celestiais). Voluntariamente, essa criatura agirá como guardião (como um falcão), um auxiliar (como um gato) ou montaria (como um cavalo). O animal adquire DV e habilidades especiais conforme o nível do personagem. É impossível ter mais de um companheiro celestial simultaneamente. Se a criatura morrer, o libertador sagrado poderá invocar outra no dia seguinte. O novo companheiro possuirá todas as habilidades inerentes a uma criatura de um libertador do mesmo nível de experiência.",
+      },
+      {
+        name: "Subversão (Sob)",
+        text: "A partir do 7º nível, caso ele gaste 5 minutos dialogando com um personagem sob a influência de um efeito de compulsão ou feitiço, o libertador conseguirá ajudá-lo a superar o encantamento. Usando uma ação de rodada completa, o libertador toca o personagem enfeitiçado (realizando uma jogada de ataque de toque, se necessário) e invoca seu poder divino interior. Imediatamente depois, o personagem afetado deve realizar outro teste de resistência, usando seus próprios modificadores mais o bônus de Carisma do libertador sagrado. Se o resultado igualar ou superar a CD original, o personagem estará livre do efeito de feitiço ou compulsão.",
+      },
+      {
+        name: "Código de Conduta",
+        text: "O libertador sagrado deve conservar sua tendência (Caótico e Bom) e perderá todas as habilidades especiais da classe se cometer voluntariamente qualquer ato maligno. Conforme esperado dessa tendência, o código de conduta dos libertadores está limitado a essa diretriz — não há regras formais e rígidas.",
+      },
+      {
+        name: "Libertadores Ex-paladinos",
+        text: "Não é completamente incomum um paladino se afastar do inabalável caminho da ordem durante sua exaustiva luta pelo bem, tornando-se um libertador sagrado. Na maioria das vezes, o ex-paladino que seleciona essa classe de prestígio nunca mais recupera suas habilidades da classe anterior. Entretanto, os níveis de paladino contribuem nas habilidades destruir o mal e expulsar mortos-vivos do atual libertador. Ambas consideram o nível de experiência total do personagem; logo, a habilidade 'destruir o mal' e a capacidade de expulsar mortos-vivos do ex-paladino consideram os níveis de libertador sagrado e de paladino somados.",
+      },
+    ],
+    spellList: {
+      "1": ["abençoar arma", "arma mágica", "auxílio divino", "benção", "curar ferimentos leves", "detectar mortos-vivos", "detectar venenos", "remover medo", "resistência a elementos", "resistência", "virtude"],
+      "2": ["acalmar emoções", "ajuda", "curar ferimentos moderados", "força do touro", "proteger outro", "remover paralisia", "retardar envenenamento", "suportar elementos"],
+      "3": ["arma mágica aprimorada", "círculo mágico contra o mal", "curar ferimentos graves", "discernir mentiras", "dissipar magia", "oração", "remover maldição"],
+      "4": ["curar ferimentos críticos", "dissipar o mal", "espada sagrada", "movimentação livre", "neutralizar venenos", "proteção contra a morte"],
+    },
+    companion: {
+      animals: ["gato", "cachorro", "águia", "falcão", "cavalo", "coruja", "pônei", "lobo"],
+      rows: [
+        { characterLevel: "12 ou menos", bonusHd: "+2", naturalArmor: "+1", strengthAdjust: "+1", int: 6, special: "Evasão aprimorada, partilhar magias, vínculo empático, partilhar testes de resistência" },
+        { characterLevel: "13-15", bonusHd: "+4", naturalArmor: "+3", strengthAdjust: "+2", int: 7, special: "Falar com o mestre" },
+        { characterLevel: "16-18", bonusHd: "+6", naturalArmor: "+5", strengthAdjust: "+3", int: 8, special: "Laço de sangue" },
+        { characterLevel: "19-20", bonusHd: "+8", naturalArmor: "+7", strengthAdjust: "+4", int: 9, special: "Resistência à magia" },
+      ],
+      notes: "DV de bônus: dados de vida extras (d8). Armadura natural e ajuste de Força somam-se aos do animal. Resistência à magia = nível do libertador sagrado + 5. Vínculo empático: alcance máximo 1,5 km. Laço de sangue: +2 de bônus em ataques, testes de resistência e testes ao ver o libertador ameaçado ou ferido.",
+    },
+  },
+  {
+    id: "defensores-mestre-das-mortalhas",
+    name: "Mestre das Mortalhas",
+    hitDie: 8,
+    requirements: [
+      "Bônus Base de Resistência: Vontade +5.",
+      "Tendência: Qualquer uma, exceto Bom.",
+      "Concentração: 10 graduações.",
+      "Identificar Magia: 10 graduações.",
+      "Magias: Capacidade de conjurar magias divinas e acesso a um dos seguintes domínios: Morte, Mal ou Proteção. Para esse propósito, considera-se que os personagens capazes de lançar uma magia desses domínios têm acesso a eles.",
+      "Especial: Capacidade de canalizar energia negativa.",
+    ],
+    classSkills: ["Concentração (Con)", "Conhecimento (arcano) (Int)", "Conhecimento (religião) (Int)", "Diplomacia (Car)", "Espionar (Int, perícia exclusiva)", "Identificar Magia (Int)", "Ofícios (Int)", "Profissão (Sab)"],
+    skillPointsPerLevel: "2 + modificador de Inteligência",
+    weaponArmor: "Os mestres das mortalhas sabem usar todas as armas simples, todos os tipos de armadura e escudos.",
+    levels: [
+      { level: 1, bab: "+1", fort: "+0", ref: "+0", will: "+2", special: "Expulsão Adicional" },
+      { level: 2, bab: "+2", fort: "+0", ref: "+0", will: "+3", special: "" },
+      { level: 3, bab: "+3", fort: "+1", ref: "+1", will: "+3", special: "Invocar Mortos-vivos I" },
+      { level: 4, bab: "+4", fort: "+1", ref: "+1", will: "+4", special: "" },
+      { level: 5, bab: "+5", fort: "+1", ref: "+1", will: "+4", special: "Invocar Mortos-vivos II" },
+      { level: 6, bab: "+6", fort: "+2", ref: "+2", will: "+5", special: "" },
+      { level: 7, bab: "+7", fort: "+2", ref: "+2", will: "+5", special: "Invocar Mortos-vivos III" },
+      { level: 8, bab: "+8", fort: "+2", ref: "+2", will: "+6", special: "" },
+      { level: 9, bab: "+9", fort: "+3", ref: "+3", will: "+6", special: "Invocar Mortos-vivos IV" },
+      { level: 10, bab: "+10", fort: "+3", ref: "+3", will: "+7", special: "" },
+    ],
+    features: [
+      {
+        name: "Magias",
+        text: "Um mestre das mortalhas conjura magias como um clérigo (consulte a Tabela 3-6: O Clérigo, na pág. 30 do Livro do Jogador) e tem acesso irrestrito à lista geral de magias dessa classe. O nível de mestre das mortalhas é adicionado ao nível de clérigo para determinar a quantidade de magias diárias e seus efeitos (veja Magias Diárias, a seguir). Além disso, o personagem adquire acesso aos domínios Morte, Mal e Proteção.",
+      },
+      {
+        name: "Magias Diárias",
+        text: "Um mestre das mortalhas nunca abandona seu treinamento mágico divino, desenvolvendo-o junto com suas perícias na classe. Portanto, quando o personagem atinge um novo nível na classe de prestígio, adquire mais magias divinas por dia — como se estivesse avançando um nível como clérigo. Entretanto, ele não recebe qualquer outro benefício daquela classe (chance aprimorada de Expulsar/Fascinar mortos-vivos, conversão espontânea, etc.). Essencialmente, isso significa que o nível de mestre das mortalhas é somado ao nível de clérigo do personagem e, depois disso, sua quantidade de magias diárias é determinada.",
+      },
+      {
+        name: "Expulsão Adicional",
+        text: "No 1º nível, o mestre das mortalhas recebe Expulsão Adicional como um talento extra. Esse talento lhe concede mais quatro utilizações de Expulsar/Fascinar Mortos-vivos por dia.",
+      },
+      {
+        name: "Invocar Mortos-Vivos I (SM)",
+        text: "Essa habilidade similar a magia é idêntica a invocar criaturas I, com as seguintes exceções: o mestre das mortalhas é capaz de invocar uma ou duas sombras, um ou dois allips ou uma criatura de cada tipo. Quando é ativada, o mestre das mortalhas precisa determinar a duração da invocação; normalmente, as criaturas permanecem sob seu controle durante 1 rodada a cada nível de mestre das mortalhas, mas é possível reduzir essa duração. Caso o personagem seja capaz de falar com os mortos-vivos invocados, poderá conduzi-los como na magia invocar criaturas. Se as criaturas permanecerem no local até eliminar o último adversário, elas atacarão o mestre das mortalhas, exceto se ele obtiver sucesso num teste de Expulsão que afete todas as criaturas até elas decidirem partir. Essa habilidade pode ser utilizada uma quantidade de vezes por dia equivalente a 3 + o bônus de Carisma do mestre das mortalhas (mínimo 1).",
+      },
+      {
+        name: "Invocar Mortos-Vivos II (SM)",
+        text: "Como invocar mortos-vivos I, mas o mestre das mortalhas é capaz de invocar uma ou duas aparições, ou qualquer combinação de sombras e allips que não exceda quatro criaturas.",
+      },
+      {
+        name: "Invocar Mortos-Vivos III (SM)",
+        text: "Como invocar mortos-vivos I, mas o mestre das mortalhas é capaz de invocar um ou dois espectros, ou qualquer combinação de aparições, sombras e allips que não exceda quatro criaturas.",
+      },
+      {
+        name: "Invocar Mortos-Vivos IV (SM)",
+        text: "Como invocar mortos-vivos I, mas o mestre das mortalhas é capaz de invocar qualquer combinação de espectros, aparições, sombras e allips que não exceda oito criaturas.",
+      },
+      {
+        name: "Invocando Mortos-vivos",
+        text: "Depois que o mestre das mortalhas invocar seus mortos-vivos, existem apenas três desfechos possíveis. 1) O morto-vivo será destruído ou eliminado em combate. 2) O morto-vivo partirá quando a duração do efeito terminar. 3) O morto-vivo atacará o mestre das mortalhas quando todos os demais oponentes forem eliminados. Nessa última hipótese, o personagem deverá utilizar outros poderes ou seus aliados para evitar a ira dos mortos-vivos invocados.",
+      },
+    ],
+    // O acesso a essas magias não aumenta a quantidade de magias por dia do mestre das mortalhas.
+    spellList: {
+      "1": ["romper mortos-vivos", "raio do enfraquecimento", "toque macabro"],
+      "2": ["aterrorizar", "mão espectral", "toque do carniçal"],
+      "3": ["descanso tranqüilo", "imobilizar mortos-vivos", "praga", "toque vampírico"],
+      "4": ["drenar temporário", "medo"],
+      "5": ["recipiente arcano"],
+    },
+  },
+  {
+    id: "defensores-oraculo-divino",
+    name: "Oráculo Divino",
+    hitDie: 6,
+    requirements: ["Talento: Foco em Perícia (Espionar).", "Espionar: 10 graduações."],
+    classSkills: ["Concentração (Con)", "Conhecimento (religião) (Int)", "Cura (Sab)", "Espionar (Int, perícia exclusiva)", "Identificar Magia (Int)", "Intimidar (Car)", "Ofícios (Int)", "Profissão (Sab)"],
+    skillPointsPerLevel: "2 + modificador de Inteligência",
+    weaponArmor: "Os oráculos divinos sabem usar todas as armas simples. Eles não sabem usar nenhum tipo de armadura ou escudos, mas quase sempre conservam essa habilidade de sua(s) antiga(s) classe(s).",
+    levels: [
+      { level: 1, bab: "+0", fort: "+0", ref: "+0", will: "+2", special: "Domínio de Prestígio: Adivinhação, bônus em Espionar", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 2, bab: "+1", fort: "+0", ref: "+0", will: "+3", special: "Premonição", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 3, bab: "+1", fort: "+1", ref: "+1", will: "+3", special: "Adivinhação aprimorada", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 4, bab: "+2", fort: "+1", ref: "+1", will: "+4", special: "Esquiva sobrenatural (bônus de Des na CA)", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 5, bab: "+2", fort: "+1", ref: "+1", will: "+4", special: "", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 6, bab: "+3", fort: "+2", ref: "+2", will: "+5", special: "Esquiva sobrenatural (não pode ser flanqueado)", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 7, bab: "+3", fort: "+2", ref: "+2", will: "+5", special: "", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 8, bab: "+4", fort: "+2", ref: "+2", will: "+6", special: "Esquiva sobrenatural (+1 contra armadilhas)", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 9, bab: "+4", fort: "+3", ref: "+3", will: "+6", special: "", spellcastingAdvance: "+1 nível de classe existente" },
+      { level: 10, bab: "+5", fort: "+3", ref: "+3", will: "+7", special: "Imunidade à surpresa", spellcastingAdvance: "+1 nível de classe existente" },
+    ],
+    features: [
+      {
+        name: "Conjuração",
+        text: "Os oráculos divinos nunca abandonam seu treinamento mágico, desenvolvendo-o junto com suas perícias na classe. Portanto, quando o personagem atinge um novo nível na classe de prestígio, adquire mais magias diárias — como se estivesse avançando um nível na sua classe de conjurador anterior. Entretanto, ele não recebe qualquer outro benefício daquela classe (chance aprimorada de Expulsar/Fascinar mortos-vivos, forma selvagem, etc.). Essencialmente, isso significa que o nível de oráculo divino é somado ao nível de outra classe capaz de conjurar magias do personagem e, depois disso, sua quantidade de magias diárias é determinada. Por exemplo, Cassandra, uma clériga de 10º nível, adquire um nível de oráculo divino, recebendo novas magias como se tivesse atingido o 11º nível de clérigo, mas usando os demais aspectos da progressão de nível — como o bônus base de ataque e o bônus base de resistência — da classe de prestígio. Se, em seguida, ela adquirir um nível de clérigo, tornando-se uma clériga de 11º nível/oráculo de 1º, passará a conjurar e obter magias diárias como um clérigo de 12º nível. Caso o personagem tenha mais de uma classe capaz de conjurar magias antes de se tornar um oráculo divino, deverá escolher qual delas terá seu nível elevado para determinar a quantidade de magias diárias sempre que alcançar um novo nível na classe de prestígio.",
+      },
+      {
+        name: "Domínio de Prestígio",
+        text: "Quando seleciona a classe oráculo divino, o personagem adquire acesso ao domínio Adivinhação, descrito no Capítulo 4: Magias Divinas. O personagem recebe o poder concedido desse domínio (+2 níveis de conjurador para lançar magias de adivinhação) e será capaz de preparar as magias indicadas como suas magias de domínio diárias.",
+      },
+      { name: "Bônus em Espionar (Sob)", text: "Um oráculo divino recebe +2 de bônus sagrado em todos os testes de Espionar." },
+      {
+        name: "Premonição (Ext)",
+        text: "A partir do 2º nível, quando obtiver sucesso num teste de resistência de Reflexos contra qualquer ataque adequado (como um sopro de dragão ou uma bola de fogo) para reduzir o dano à metade, o oráculo divino não sofrerá nenhum dano, uma vez que sua premonição lhe permite evitar o perigo com mais velocidade. Esta forma de evasão funciona a despeito do tipo de armadura que o oráculo estiver usando, diferente da habilidade Evasão dos monges e ladinos.",
+      },
+      {
+        name: "Adivinhação Aprimorada (Ext)",
+        text: "A partir do 3º nível, o personagem adiciona seu nível de oráculo divino à porcentagem de chance de sucesso para magias como augúrio ou adivinhação. Por exemplo, se um clérigo 11/oráculo 4 conjurar adivinhação, sua chance de sucesso seria 70% (base) + 15% (1% por nível de conjurador) + 4% (seu nível de oráculo), totalizando 89%.",
+      },
+      {
+        name: "Esquiva Sobrenatural (Ext)",
+        text: "A partir do 4º nível, o oráculo divino adquire a habilidade extraordinária de reagir ao perigo antes que seus sentidos lhe advirtam da forma normal. O personagem conserva seu bônus de Destreza na CA (se houver) mesmo se for surpreendido ou atacado por um inimigo invisível (ele ainda perde seu bônus de Destreza na CA se estiver imobilizado). A partir do 6º nível, ele não poderá mais ser flanqueado, pois reagirá a seus oponentes de ambos os lados tão facilmente como se estivesse reagindo a um atacante solitário. Essa defesa impedirá que os ladinos realizem ataques furtivos quando estiverem flanqueando o personagem. A única exceção a essa esquiva se aplica aos ladinos de quatro ou mais níveis superiores ao oráculo, que poderão flanqueá-lo e realizar seu ataque furtivo. A partir do 8º nível, ele adquire um senso intuitivo que o adverte do perigo de armadilhas, concedendo-lhe +1 de bônus para os testes de resistência de Reflexos realizados afim de evitá-las e +1 de esquiva na CA contra ataques procedentes delas.",
+      },
+      {
+        name: "Imunidade a Surpresa (Ext)",
+        text: "No 10º nível, a sensibilidade do oráculo divino ao perigo fica tão aguçada que é impossível surpreendê-lo. Ele sempre poderá realizar uma ação parcial durante a rodada surpresa, a menos que esteja imobilizado.",
+      },
+    ],
+  },
+  {
+    id: "defensores-punho-sagrado",
+    name: "Punho Sagrado",
+    hitDie: 8,
+    requirements: ["Base de Ataque: +4.", "Talentos: Prontidão, Reflexos de Combate e Ataque Desarmado Aprimorado.", "Magia: Capacidade de conjurar magias divinas."],
+    classSkills: ["Acrobacia (Des)", "Arte da Fuga (Des)", "Concentração (Con)", "Cura (Sab)", "Equilíbrio (Des)", "Profissão (Sab)", "Saltar (For)"],
+    skillPointsPerLevel: "4 + modificador de Inteligência",
+    weaponArmor: "Os punhos sagrados se recusam a utilizar armas e escudos. Eles podem usar apenas armaduras leves sem quebrar seus votos religiosos.",
+    levels: [
+      { level: 1, bab: "+1", fort: "+2", ref: "+2", will: "+0", special: "Rajada de ataques, domínio adicional, punhos poderosos", spellsPerDay: [0, null, null, null] },
+      { level: 2, bab: "+2", fort: "+3", ref: "+3", will: "+0", special: "Evasão, magias em combate", spellsPerDay: [1, null, null, null] },
+      { level: 3, bab: "+3", fort: "+3", ref: "+3", will: "+1", special: "Esquiva sobrenatural (bônus de Des na CA)", spellsPerDay: [1, 0, null, null] },
+      { level: 4, bab: "+4", fort: "+4", ref: "+4", will: "+1", special: "", spellsPerDay: [1, 1, null, null] },
+      { level: 5, bab: "+5", fort: "+4", ref: "+4", will: "+1", special: "Esquiva Sobrenatural (não pode ser flanqueado)", spellsPerDay: [1, 1, 0, null] },
+      { level: 6, bab: "+6", fort: "+5", ref: "+5", will: "+2", special: "Percepção às cegas", spellsPerDay: [1, 1, 1, null] },
+      { level: 7, bab: "+7", fort: "+5", ref: "+5", will: "+2", special: "Chamas sagradas", spellsPerDay: [2, 1, 1, 0] },
+      { level: 8, bab: "+8", fort: "+6", ref: "+6", will: "+2", special: "Golpe sem sombra", spellsPerDay: [2, 1, 1, 1] },
+      { level: 9, bab: "+9", fort: "+6", ref: "+6", will: "+3", special: "", spellsPerDay: [2, 2, 1, 1] },
+      { level: 10, bab: "+10", fort: "+7", ref: "+7", will: "+3", special: "Armadura Interior", spellsPerDay: [2, 2, 2, 1] },
+    ],
+    features: [
+      {
+        name: "Código de Conduta",
+        text: "Um membro de uma ordem de punhos sagrados deve se recusar a empunhar qualquer tipo de arma. Caso transporte ou utilize intencionalmente qualquer arma, ele perderá todas as suas magias e características da classe — e não conseguirá adquirir níveis na classe de prestígio — até que faça uma penitência (veja a descrição da magia penitência, pág. 245 do Livro do Jogador).",
+      },
+      {
+        name: "Magias",
+        text: "A partir do 1º nível, um punho sagrado adquire a habilidade de conjurar uma pequena quantidade de magias divinas. Para conjurar magias, um personagem deve ter uma pontuação em Sabedoria igual ou superior a 10 + o nível da magia; portanto, um personagem de Sabedoria 10 ou inferior não conseguirá fazê-lo. As magias adicionais do punho são baseadas em Sabedoria; a Classe de Dificuldade de um teste de resistência contra essas magias equivale a 10 + nível da magia + modificador de Sabedoria. Quando um punho sagrado ganha 0 magias de um determinado nível (como 0 magias de 1º nível logo no 1º nível de experiência), recebe apenas magias adicionais. Um personagem que não receba magias adicionais em qualquer nível ainda não é capaz de conjurá-las. A relação das magias do punho sagrado é descrita a seguir; ele tem acesso a qualquer magia da lista, desde que seja capaz de lançá-la, e pode escolher livremente qual preparar. Um punho sagrado prepara e conjura magias como um clérigo (mas não pode usar a Conversão Espontânea para lançar magias de cura no lugar de uma magia preparada).",
+      },
+      { name: "Domínio Adicional", text: "Quando seleciona a classe punho sagrado, o personagem adquire acesso a um domínio de sua divindade." },
+      {
+        name: "Combate Desarmado (Ext)",
+        text: "Um punho sagrado é altamente treinado em combate desarmado, obtendo vantagens consideráveis nesse estilo. Durante uma luta, ele é capaz de usar seus punhos, cotovelos, joelhos ou pés para golpear. Para um punho sagrado em combate desarmado, realizar um ataque com a mão inábil não representa dificuldade. Ele pode escolher causar dano por contusão ou dano normal; o personagem causa mais dano que o normal, conforme indicado na tabela abaixo. Essa habilidade não se acumula com o ataque desarmado dos monges (utilize o maior valor entre ambos). Tamanho do Punho Sagrado — nível 1º: Pequeno 1d4, Médio ou Grande 1d6; 5º: 1d6 / 1d8; 8º: 1d8 / 1d10; 10º: 1d10 / 1d12.",
+      },
+      {
+        name: "Rajada de Ataques (Ext)",
+        text: "Um punho sagrado consegue atacar com uma rajada de golpes, sacrificando sua precisão. Ao fazê-lo, ele adquire um ataque adicional na mesma rodada, usando seu maior bônus de ataque, mas todos os golpes realizados nessa rodada sofrem -2 de penalidade. Esta penalidade permanece durante uma rodada completa, então afeta qualquer ataque de oportunidade que o punho sagrado faça. Para utilizar essa habilidade, o punho sagrado deve escolher a ação de ataque total (veja a pág. 124 do Livro do Jogador).",
+      },
+      {
+        name: "Punhos Poderosos (Sob)",
+        text: "Os punhos sagrados conseguem ignorar alguns tipos de redução de dano. No 1º nível, seus golpes são considerados armas +1 para superar a redução de dano dos adversários. A partir do 3º nível, eles serão considerados armas +2 para essa finalidade; no 6º nível, serão considerados armas +3; a partir do 9º nível, serão considerados armas +4. Esses bônus não afetam as jogadas de ataque, nem são adicionados ao dano causado pelo golpe. Essa habilidade não se acumula com o ataque chi dos monges (utilize o maior bônus entre ambas).",
+      },
+      {
+        name: "Evasão (Ext)",
+        text: "Um punho sagrado é capaz de evitar ataques mágicos ou incomuns através de sua agilidade extraordinária. Quando obtiver sucesso num teste de resistência de Reflexos contra qualquer ataque adequado (como um sopro de dragão ou uma bola de fogo) para reduzir o dano à metade, o punho sagrado não sofrerá nenhum dano. Essa habilidade somente pode ser utilizada quando o personagem estiver sem armadura ou usando armaduras leves. Essa habilidade se acumula com a Evasão de outras classes (some os níveis para determinar a aquisição de Evasão Aprimorada).",
+      },
+      { name: "Magias em Combate (Ext)", text: "No 2º nível, o punho sagrado recebe este talento gratuitamente." },
+      {
+        name: "Esquiva Sobrenatural (Ext)",
+        text: "A partir do 3º nível, o punho sagrado adquire a habilidade de reagir ao perigo antes que seus sentidos lhe advirtam da forma normal. O personagem conserva seu bônus de Destreza na CA (se houver) mesmo se for surpreendido ou atacado por um inimigo invisível (ele ainda perde seu bônus de Destreza na CA se estiver imobilizado). A partir do 5º nível, ele não poderá mais ser flanqueado, pois reagirá a seus oponentes de ambos os lados tão facilmente como se estivesse reagindo a um atacante solitário. Essa defesa impedirá que os ladinos realizem ataques furtivos quando estiverem flanqueando o personagem. A única exceção a essa esquiva se aplica aos ladinos de quatro ou mais níveis superiores ao punho, que poderão flanqueá-lo e realizar seu ataque furtivo. Essa habilidade somente pode ser utilizada quando o personagem estiver sem armadura ou usando armaduras leves. Essa habilidade se acumula com a Esquiva Sobrenatural de outras classes (some os níveis para determinar a aquisição de bônus adicionais).",
+      },
+      {
+        name: "Percepção às Cegas (Ext)",
+        text: "Essa habilidade, adquirida no 6º nível, concede sensibilidade a vibrações, faro e audição aguçada ao punho sagrado, permitindo-lhe manobrar e lutar como se estivesse enxergando. Essa percepção alcança um raio de 9 m. A invisibilidade e a escuridão são irrelevantes, embora ainda seja impossível distinguir criaturas etéreas. Não é necessário realizar testes de Observar ou Ouvir para perceber uma criatura dentro da área afetada.",
+      },
+      {
+        name: "Chamas Sagradas (SM)",
+        text: "No 7º nível, o punho sagrado é capaz de usar uma ação padrão e invocar chamas sagradas em torno de suas mãos e pés. Em vez de causar o dano normal, os golpes dessa chama sagrada causam o seguinte dano: 1d6 + bônus de Sabedoria + nível da classe de prestígio. O dano máximo do ataque será 1d6+15; metade dele será dano por fogo e o restante será causado por energia sagrada (logo, impossível de reduzir com efeitos que ignorem o dano por fogo). Um ataque com as chamas sagradas pode ser combinado com a rajada de ataques.",
+      },
+      {
+        name: "Golpe Sem Sombra (Ext)",
+        text: "A partir do 8º nível, o punho sagrado é capaz de somar seu bônus de Sabedoria nas suas jogadas de ataque e dano. Além disso, seus golpes desarmados são considerados armas mágicas com um bônus de melhoria equivalente ao seu modificador de Sabedoria, mas somente para superar a redução de dano dos adversários; esse modificador se acumula com o bônus de punhos poderosos ou ataque chi. A mente, o corpo e a vontade do punho sagrado estão ajustados como um único instrumento.",
+      },
+      {
+        name: "Armadura Interior (Ext)",
+        text: "No 10º nível, a tranqüilidade interna de um punho sagrado o protege das ameaças externas. Ele pode adquirir +4 de bônus intuitivo na CA, +4 de bônus de resistência nos testes de resistência e RM equivalente ao seu nível de experiência; esses efeitos permanecem ativos durante uma quantidade de rodadas igual ao modificador de Sabedoria do personagem. Caso o modificador de Sabedoria seja +0 ou negativo, será impossível ativar a armadura interior. Essa habilidade pode ser utilizada um número de vezes por dia equivalente ao nível de classe do personagem.",
+      },
+    ],
+    // Marcadores impressos: * = o Mestre decide se a magia é adequada à organização do personagem;
+    // ** = pode ser conjurada, mas um punho sagrado distraído poderia desrespeitar seu juramento;
+    // † = nova magia do Capítulo 4. Marcadores lidos em resolução reduzida (OCR + imagem); "potência infinita†" (4º) é leitura incerta.
+    // As magias disponíveis somente por domínios não constam da lista.
+    spellList: {
+      "1": ["abençoar água*", "abençoar funeral†", "amaldiçoar água*", "arma mágica**", "auxílio divino", "compreensão de linguagens", "curar ferimentos leves*", "escudo da fé", "escudo entrópico", "infligir ferimentos leves*", "invisibilidade contra mortos-vivos", "pedra encantada**", "proteção contra o caos/mal/bem/ordem*", "resistência a elementos", "santuário"],
+      "2": ["ajuda", "arbustos**†", "augúrio", "curar ferimentos moderados*", "descanso tranqüilo", "dissimular tendência", "drenar força vital", "falar com animais", "força do touro", "infligir ferimentos moderados*", "restauração menor", "retardar envenenamento", "suportar elementos", "vigor"],
+      "3": ["caminhar na água", "chama contínua", "chamas da fé†", "círculo mágico contra o caos/mal/bem/ordem*", "curar ferimentos graves*", "escuridão profunda", "espinhos**†", "falar com plantas", "infligir ferimentos graves*", "luz do dia", "maldição dos brutos†", "mesclar-se às rochas", "moldar rochas", "obscurecer objeto", "praga*", "proteção contra elementos", "proteção contra energia negativa", "purgar invisibilidade", "remover doenças*", "remover maldição*", "respirar na água", "rogar maldição*", "roupa encantada", "símbolo de proteção", "visão seqüencial†"],
+      "4": ["adivinhação", "caminhar no ar", "condição", "curar ferimentos críticos*", "envenenamento*", "garras da besta†", "idiomas", "infligir ferimentos críticos*", "movimentação livre", "neutralizar venenos*", "poder divino", "proteção contra a morte", "restauração", "potência infinita†", "transferência de poder divino"],
+    },
+  },
+  {
+    id: "defensores-templario",
+    name: "Templário",
+    hitDie: 10,
+    requirements: ["Bônus Base de Ataque: +5.", "Talentos: Tolerância, Foco em Arma (arma favorita de sua divindade).", "Conhecimento (religião): 8 graduações."],
+    classSkills: ["Concentração (Con)", "Conhecimento (religião) (Int)", "Cura (Sab)", "Natação (For)", "Ofícios (Int)", "Profissão (Sab)", "Saltar (For)"],
+    skillPointsPerLevel: "2 + modificador de Inteligência",
+    weaponArmor: "Os templários sabem usar todas as armas simples e comuns, todos os tipos de armadura e escudos.",
+    levels: [
+      { level: 1, bab: "+1", fort: "+2", ref: "+0", will: "+2", special: "Têmpera, especialização em arma", spellsPerDay: [0, null, null, null] },
+      { level: 2, bab: "+2", fort: "+3", ref: "+0", will: "+3", special: "Destruição 1/dia", spellsPerDay: [1, null, null, null] },
+      { level: 3, bab: "+3", fort: "+3", ref: "+1", will: "+3", special: "Redução de dano 1/—", spellsPerDay: [1, 0, null, null] },
+      { level: 4, bab: "+4", fort: "+4", ref: "+1", will: "+4", special: "Talento adicional", spellsPerDay: [1, 1, null, null] },
+      { level: 5, bab: "+5", fort: "+4", ref: "+1", will: "+4", special: "", spellsPerDay: [1, 1, 0, null] },
+      { level: 6, bab: "+6", fort: "+5", ref: "+2", will: "+5", special: "Redução de dano 2/—", spellsPerDay: [1, 1, 1, null] },
+      { level: 7, bab: "+7", fort: "+5", ref: "+2", will: "+5", special: "Destruição 2/dia", spellsPerDay: [2, 1, 1, 0] },
+      { level: 8, bab: "+8", fort: "+6", ref: "+2", will: "+6", special: "Talento adicional", spellsPerDay: [2, 1, 1, 1] },
+      { level: 9, bab: "+9", fort: "+6", ref: "+3", will: "+6", special: "Redução de dano 3/—", spellsPerDay: [2, 2, 1, 1] },
+      { level: 10, bab: "+10", fort: "+7", ref: "+3", will: "+7", special: "", spellsPerDay: [2, 2, 2, 1] },
+    ],
+    features: [
+      {
+        name: "Têmpera (Sob)",
+        text: "A benção especial dos templários lhes permite ignorar os efeitos mágicos capazes de prejudicá-los. Caso um templário obtenha sucesso num teste de resistência de Fortitude ou Vontade que normalmente reduziria o efeito de uma magia ou habilidade similar, ele anulará por completo os efeitos dessa magia. Somente as magias que possuem a indicação \"Vontade parcial\", \"Fortitude para metade\" ou semelhantes na descrição de seus Testes de Resistência são afetadas por esta habilidade.",
+      },
+      { name: "Especialização em Arma", text: "O templário recebe gratuitamente o talento Especialização em Arma com a arma predileta da sua divindade." },
+      {
+        name: "Magias",
+        text: "A partir do 1º nível, um templário adquire a habilidade de conjurar uma pequena quantidade de magias divinas. Para conjurar magias, um personagem deve ter uma pontuação em Sabedoria igual ou superior a 10 + o nível da magia; portanto, um personagem de Sabedoria 10 ou inferior não conseguirá fazê-lo. As magias adicionais do templário são baseadas em Sabedoria; a Classe de Dificuldade de um teste de resistência contra essas magias equivale a 10 + nível da magia + modificador de Sabedoria. Quando um templário recebe 0 magias de um determinado nível (como 0 magias de 1º nível logo no 1º nível de experiência), recebe apenas magias adicionais. Um personagem que não receba magias adicionais em qualquer nível ainda não é capaz de conjurá-las. A relação das magias do templário é descrita a seguir; ele tem acesso a qualquer magia da lista, desde que seja capaz de lançá-la, e pode escolher livremente qual preparar. Um templário prepara e conjura magias como um clérigo (mas não pode usar a Conversão Espontânea para lançar magias de cura no lugar de uma magia preparada).",
+      },
+      {
+        name: "Destruição (Sob)",
+        text: "Uma vez por dia, um templário de 2º nível ou superior pode tentar destruir seu oponente usando um ataque regular. Ao fazê-lo, ele recebe +4 de bônus na sua jogada de ataque e causa 1 ponto de dano adicional por nível na classe de prestígio. O templário precisa declarar que vai utilizar a destruição antes de realizar a jogada de ataque (logo, um ataque fracassado gasta a tentativa). No 7º nível, ele adquire uma destruição adicional por dia. Se o templário possuir as habilidades \"destruir o mal\" ou \"destruir\" (proveniente da classe paladino ou do domínio Destruição, respectivamente), será capaz de utilizá-la mais uma vez por dia (ou mais duas no 7º nível). O bônus de ataque não é afetado, mas o dano adicional considera todos os níveis de classe pertinentes (o nível de templário, mais o nível de clérigo ou paladino, conforme a situação).",
+      },
+      {
+        name: "Redução de Dano (Ext)",
+        text: "A partir do 3º nível, o templário adquire a habilidade de ignorar parte do dano de cada golpe ou ataque que sofra. Cada vez que o personagem sofrer dano, subtraia 1 da quantidade de pontos de vida perdida. No 6º nível, a redução de dano aumenta para 2 pontos por golpe e no 9º nível, para 3.",
+      },
+      {
+        name: "Talentos Adicionais",
+        text: "Um templário recebe um talento adicional no 4º nível e outro no 8º nível. Esses talentos devem ser escolhidos da seguinte lista: Ambidestria, Lutar às Cegas, Reflexos de Combate, Esquiva (Mobilidade, Deslocamento), Usar Arma Exótica*, Especialização (Desarmar Aprimorado, Imobilização Aprimorada, Ataque Giratório), Sucesso Decisivo Aprimorado*, Iniciativa Aprimorada, Ataque Desarmado Aprimorado (Desviar Objetos, Ataque Atordoante), Combate Montado (Arqueirismo Montado, Atropelar, Investida Montada, Investida Implacável), Tiro Certeiro (Tiro Longo, Precisão, Tiro Rápido, Tiro em Movimento), Ataque Poderoso (Trespassar, Encontrão Aprimorado, Separar, Trespassar Aprimorado), Saque Rápido, Combater com Duas Armas (Combater com Duas Armas Aprimorado), Acuidade com Arma*, Foco em Arma*. Os talentos que têm pré-requisitos estão listados entre parênteses, depois do talento inicial exigido. O templário pode escolher um talento marcado com um asterisco (*) mais de uma vez, selecionando uma arma diferente a cada vez. O templário ainda precisa atender todos os pré-requisitos de um talento, inclusive valores de habilidade e o bônus base de ataque mínimo.",
+      },
+    ],
+    spellList: {
+      "1": ["arma mágica", "auxílio divino", "benção", "causar medo", "comando", "escudo da fé", "escudo entrópico", "montaria arcana"],
+      "2": ["acalmar emoções", "ajuda", "arma espiritual", "cativar", "força do touro", "imobilizar pessoas", "proteger outro", "vigor"],
+      "3": ["cegueira/surdez", "dissipar magia", "luz cegante", "luz do dia", "oração", "proteção contra energia negativa", "purgar invisibilidade", "roupa encantada"],
+      "4": ["arma mágica aprimorada", "condição", "movimentação livre", "poder divino"],
+    },
+  },
+];

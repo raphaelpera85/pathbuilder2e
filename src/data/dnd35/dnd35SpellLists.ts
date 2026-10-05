@@ -13,8 +13,9 @@
 // respectivamente... Um X indica que a magia exige componente de XP".
 // As listas de Feiticeiro e Mago são agrupadas por escola na margem
 // (Abjur, Adiv, Conj, Encan, Evoc, Ilus, Necro, Trans, Univ).
-// Ainda não transcritos: níveis 2-9, domínios do clérigo e as descrições
-// completas das magias.
+//   Clérigo 2º nível — p. 184
+// Ainda não transcritos: níveis 2-9 das demais classes (e 3-9 do Clérigo) e as
+// descrições completas das magias.
 // ============================================================================
 
 export type Dnd35SpellSchool = "Abjur" | "Adiv" | "Conj" | "Encan" | "Evoc" | "Ilus" | "Necro" | "Trans" | "Univ";
@@ -339,7 +340,48 @@ const OTHER_CLASS_LISTS: Dnd35SpellList[] = [
   },
 ];
 
-export const DND35_SPELL_LISTS: Dnd35SpellList[] = [...CORE_ARCANE_AND_CLERIC_LISTS, ...OTHER_CLASS_LISTS];
+/** Níveis 2 em diante (p. 184 em diante). */
+const HIGHER_LEVEL_LISTS: Dnd35SpellList[] = [
+  {
+    listId: "clerigo", classIds: ["clerigo"], spellLevel: 2, sourcePage: "184",
+    entries: [
+      "Acalmar Emoções: Acalma criaturas, anula efeitos de emoção",
+      "Ajuda: +1 para ataques e testes de resistência contra medo, 1d8 pontos de vida temporários",
+      "Arma Espiritual: Arma mágica ataca sozinha",
+      "Augúrio^MF: Descobre se uma ação será boa ou má",
+      "Cativar: Cativa todos num raio de 30 m + 3 m/nível",
+      "Condição: Monitora condição e posição de aliados",
+      "Consagrar^M: Enche uma área com energia positiva, enfraquecendo mortos-vivos",
+      "Curar Ferimentos Moderados: Cura 2d8 +1/nível de dano (máx. +10)",
+      "Descanso Tranqüilo: Preserva um corpo",
+      "Despedaçar: Vibrações sônicas causam dano a objetos ou criaturas cristalinas",
+      "Dissimular Tendência: Esconde uma tendência durante 24 horas",
+      "Drenar Força Vital: Mata uma criatura ferida. Você ganha 1d8 PV temporários, +2 Força e +1 nível de conjurador",
+      "Encontrar Armadilhas: Descobre armadilhas como um ladino",
+      "Escuridão: Cria 6 m de raio de escuridão sobrenatural",
+      "Esplendor da Águia: O alvo recebe +4 Car durante 1min/nível",
+      "Explosão Sonora: Causa 1d8 de dano sônico ao alvo e pode atordoá-lo",
+      "Força do Touro: O alvo ganha +4 For por 1 min/nível",
+      "Imobilizar Pessoa: Paralisa uma pessoa durante 1 rodada/nível",
+      "Infligir Ferimentos Moderados: Ataque de toque, 2d8 +1/nível de dano (máx. +10)",
+      "Invocar Criaturas II: Invoca um ser extra-planar para auxiliar o conjurador",
+      "Profanar: Preenche uma área com energia negativa, fortalecendo mortos-vivos",
+      "Proteger Outro^F: Você sofre metade do dano dirigido ao alvo",
+      "Remover Paralisia: Liberta uma ou mais criaturas de paralisia ou lentidão.",
+      "Resistência à Elementos: Ignora 10 dano/ataque de um tipo de energia",
+      "Restauração Menor: Dissipa penalidades mágicas de habilidade ou recupera 1d4 de dano de habilidade",
+      "Retardar Envenenamento: Impede que veneno cause dano ao alvo durante 1 hora/nível",
+      "Sabedoria da Coruja: O alvo ganha +4 Sab por 1 min/nível",
+      "Silêncio: Anula todo o som num raio de 4,5 m",
+      "Tendência em Arma: Arma se torna sagrada, profana, axiomática ou anárquica",
+      "Tornar Inteiro: Repara um objeto",
+      "Vigor do Urso: O alvo ganha +4 Con por 1 min/nível",
+      "Zona da Verdade: Os alvos na área não podem mentir",
+    ].map((l) => entry(l)),
+  },
+];
+
+export const DND35_SPELL_LISTS: Dnd35SpellList[] = [...CORE_ARCANE_AND_CLERIC_LISTS, ...OTHER_CLASS_LISTS, ...HIGHER_LEVEL_LISTS];
 
 /** Listas disponíveis para uma classe num nível de magia (vazio se não transcrito). */
 export function dnd35SpellListFor(classId: string, spellLevel: number): Dnd35SpellListEntry[] {

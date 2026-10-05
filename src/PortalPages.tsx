@@ -1363,6 +1363,35 @@ function LibraryPage() {
     }
   };
 
+  const handleSaveDnd35Character = async (char: Dnd35CharacterCreatedData) => {
+    try {
+      if (session) {
+        setWorking(char.id);
+        const saved = await saveCharacter(char as never, session.user);
+        setCharacters((prev) => {
+          const idx = prev.findIndex((c) => (c.character_key || c.id) === char.id);
+          if (idx >= 0) {
+            const next = [...prev];
+            next[idx] = saved;
+            return next;
+          }
+          return [saved, ...prev];
+        });
+        window.dispatchEvent(new Event("pathbuilder:characters-changed"));
+        setNotice(t("saveCurrent"));
+      } else {
+        localStorage.setItem(`dnd35_guest_${char.id}`, JSON.stringify(char));
+        setNotice("Ficha salva localmente no navegador!");
+      }
+      setActiveDnd35Character(null);
+      setIsDnd35WizardOpen(false);
+    } catch (err: any) {
+      setError(err?.message || t("saveCharacterFailed"));
+    } finally {
+      setWorking(null);
+    }
+  };
+
   const handleSaveCoreCharacter = async (character: MultiSystemCharacter) => {
     try {
       if (session) {
@@ -1575,6 +1604,20 @@ function LibraryPage() {
             handleSaveOseCharacter(newChar);
           }}
         />
+        <Dnd35CharacterCreatorModal
+          isOpen={isDnd35WizardOpen}
+          onClose={() => setIsDnd35WizardOpen(false)}
+          onCharacterCreated={handleSaveDnd35Character}
+        />
+        {activeDnd35Character && (
+          <Dnd35CharacterCreatorModal
+            isOpen={true}
+            initialCharacter={activeDnd35Character}
+            onClose={() => setActiveDnd35Character(null)}
+            onCharacterCreated={handleSaveDnd35Character}
+          />
+        )}
+
         {coreWizardSystem && (
           <CoreCharacterCreatorModal
             isOpen={true}
@@ -1702,6 +1745,19 @@ function LibraryPage() {
               {characters.filter((c) => getPersistedCharacterSystemId(c.system_id, c.data as any) === "ose").length}
             </span>
           </button>
+          <button
+            type="button"
+            className={`system-filter-pill pill-dnd35 ${selectedSystemFilter === "dnd35" ? "active" : ""}`}
+            onClick={() => setSelectedSystemFilter("dnd35")}
+            role="tab"
+            aria-selected={selectedSystemFilter === "dnd35"}
+          >
+            <span className="pill-icon">⚔️</span>
+            <span className="pill-label">D&amp;D 3.5</span>
+            <span className="pill-count">
+              {characters.filter((c) => getPersistedCharacterSystemId(c.system_id, c.data as any) === "dnd35").length}
+            </span>
+          </button>
         </div>
 
         {loading ? (
@@ -1720,8 +1776,8 @@ function LibraryPage() {
             {filteredCharacters.map((char) => {
               const charData = (char.data || {}) as any;
               const systemId = getPersistedCharacterSystemId(char.system_id, charData);
-              const systemBadge = systemId === "ose" ? "🎲 OSE" : systemId === "dnd5e" ? "🐉 D&D 5e" : systemId === "t20" ? "🛡️ Tormenta 20" : "⚔️ Pathfinder 2e";
-              const badgeColor = systemId === "ose" ? "#d97706" : systemId === "dnd5e" ? "#ef4444" : systemId === "t20" ? "#3b82f6" : "#f97316";
+              const systemBadge = systemId === "ose" ? "🎲 OSE" : systemId === "dnd35" ? "⚔️ D&D 3.5" : systemId === "dnd5e" ? "🐉 D&D 5e" : systemId === "t20" ? "🛡️ Tormenta 20" : "⚔️ Pathfinder 2e";
+              const badgeColor = systemId === "ose" ? "#d97706" : systemId === "dnd35" ? "#8b5cf6" : systemId === "dnd5e" ? "#ef4444" : systemId === "t20" ? "#3b82f6" : "#f97316";
 
               return (
                 <article className="char-library-card" key={char.id}>
@@ -1811,6 +1867,21 @@ function LibraryPage() {
           handleSaveOseCharacter(newChar);
         }}
       />
+
+      <Dnd35CharacterCreatorModal
+        isOpen={isDnd35WizardOpen}
+        onClose={() => setIsDnd35WizardOpen(false)}
+        onCharacterCreated={handleSaveDnd35Character}
+      />
+      {activeDnd35Character && (
+        <Dnd35CharacterCreatorModal
+          isOpen={true}
+          initialCharacter={activeDnd35Character}
+          onClose={() => setActiveDnd35Character(null)}
+          onCharacterCreated={handleSaveDnd35Character}
+        />
+      )}
+
 
       {coreWizardSystem && (
         <CoreCharacterCreatorModal

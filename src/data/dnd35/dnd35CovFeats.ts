@@ -1,0 +1,267 @@
+// ============================================================================
+// D&D 3.5 — Champions of Valor (Forgotten Realms): talentos (Cap. 2, pp. 27-34)
+// Extraído da camada de texto do PDF (ordenação por coluna). Nomes,
+// pré-requisitos e benefícios como impressos. "type": General, Exalted,
+// Initiate, Divine ou Psionic (seções da Tabela de talentos). Legendas de
+// ilustração coladas ao fim de dois benefícios foram removidas.
+// Setting: Forgotten Realms (Faerûn); muitos talentos exigem ordem ou divindade.
+// ============================================================================
+
+export interface Dnd35CovFeat {
+  id: string;
+  name: string;
+  type: "General" | "Exalted" | "Initiate" | "Divine" | "Psionic";
+  /** Pré-requisitos como impressos, sem o ponto final; null se não houver. */
+  prerequisite: string | null;
+  summary: string;
+  benefit: string;
+  normal?: string;
+  special?: string;
+}
+
+export const DND35_COV_FEATS: Dnd35CovFeat[] = [
+  {
+    "id": "cov-broken-ones-sacrifice",
+    "name": "Broken One’s Sacrifice",
+    "type": "General",
+    "prerequisite": "Wis 13, member of the Broken Ones monk order",
+    "summary": "Your dedication to Ilmater’s philosophy has given you the power to take attacks directed at others.",
+    "benefit": "As an immediate action, you can intervene on behalf of an adjacent ally (of your size or smaller) who is under attack. When you activate this feat, you and the ally switch spaces. If there is not enough space for this to occur, you can’t activate the feat. Then, you suffer the harmful effect as if you were the intended target; the ally is unaffected by it. In addition to the obvious harmful effect this has upon you, this action is a drain on your personal energy. Once the effect of the intervention is resolved, you become fatigued. You cannot use this feat if you are exhausted or if you are immune to fatigue. You can choose to activate this feat after the success or failure of the harmful effect is determined, but you must activate it before the extent of the effect is determined and/or applied to the ally. Example: If an adjacent ally is attacked, you could wait until after the attack roll (and confirmation roll, if the attack is a critical threat) is made to activate the feat, but you would have to activate it before damage is rolled. If the adjacent creature also benefits from a miss chance, you could wait until after that roll was made to activate the feat. Example: If an adjacent creature is within the area of a lightning bolt spell, you could wait until the creature rolls its saving throw (and checks its spell resistance, if any), but you would have to activate the feat before the spell’s damage is rolled. If an adjacent creature is targeted by an attack that deals a fixed amount of damage, such as a maximized magic missile spell, you would choose to activate this feat after the spell hit the target, but before damage was applied. By activating this feat, you give up any opportunity to avoid the harmful effect normally allowed by a saving throw, spell resistance, AC, or concealment. If the effect allows a saving throw or spell resistance, you automatically fail the save or spell resistance check. If the effect requires an attack roll, it automatically hits you (and if it scored a critical hit, it automatically scores a critical hit on you), even if you would normally benefit from a miss chance against the attack. Any immunities or resistances you have apply normally; for example, if you are immune to critical hits, an attacker can’t score a critical hit on you just because he scored one on the ally. If you can’t physically interact with or manipulate objects (for instance, if you are incorporeal or in gaseous form, or if either you or the ally, but not both of you, are ethereal), you can’t switch places with the ally and thus can’t activate this feat. It should go without saying, but if you are incapable of taking an action (dazed, paralyzed, stunned, unconscious, and so on), you can’t use this feat."
+  },
+  {
+    "id": "cov-carmendine-monk",
+    "name": "Carmendine Monk",
+    "type": "General",
+    "prerequisite": "Int 13, member of Zealots of the Written Word monk order (see page 105)",
+    "summary": "You have learned that study is just as important as insight to finding enlightenment.",
+    "benefit": "You can use your Intelligence bonus instead of your Wisdom bonus for determining your monk AC bonus and for determining the save DC against your stunning fist and quivering palm attacks. You can study your thesis notes for 1 hour to treat your monk level as two higher for determining one of the following monk abilities: unarmed damage, AC bonus, or unarmored speed bonus. This benefit lasts for 24 hours, at which point you can study your notes again to gain the same or a different effect. You can’t study your notes more than once in any 24-hour period."
+  },
+  {
+    "id": "cov-defender-of-the-homeland",
+    "name": "Defender of the Homeland",
+    "type": "Exalted",
+    "prerequisite": "Wis 13, any good alignment",
+    "summary": "You have sworn a sacred oath to protect your country from evil.",
+    "benefit": "When fighting in your home region, you gain a +1 sacred bonus to Armor Class and immunity to fear effects."
+  },
+  {
+    "id": "cov-detect-shadow-weave-user",
+    "name": "Detect Shadow Weave User",
+    "type": "General",
+    "prerequisite": "Knowledge (arcana) 5 ranks, Spellcraft 5 ranks",
+    "summary": "You can determine if a magic item or spellcaster is using the Weave or the Shadow Weave.",
+    "benefit": "Whenever you observe spellcasting or a magical effect you can make a Spellcraft check (DC 15 + spell level) as an immediate action to determine if the effect comes from the Weave or the Shadow Weave. When using detect magic, you automatically identify the Weave or Shadow Weave origin of any aura you detect."
+  },
+  {
+    "id": "cov-druuth-slayer",
+    "name": "Druuth Slayer",
+    "type": "General",
+    "prerequisite": "Knowledge (dungeoneering) 2 ranks, Knowledge (nature) 2 ranks",
+    "summary": "You have studied the lore of the druuth (a cabal of doppelgangers led by a mind flayer) and know how to recognize and resist their powers.",
+    "benefit": "This feat grants three benefits. First, you get a +1 bonus on Will saving throws. Second, you gain a +10 insight bonus on Spot checks made to recognize a doppelganger using its change shape ability. Third, if affected by a mind flayer’s mind blast, you get a new saving throw every round at the end of your turn to end the stun effect."
+  },
+  {
+    "id": "cov-duerran-metaform-training",
+    "name": "Duerran Metaform Training",
+    "type": "Psionic",
+    "prerequisite": "Gray dwarf",
+    "summary": "Your studies have shown you the way to link your psionics and your enlarge person spell-like ability.",
+    "benefit": "You can expend 5 power points to activate your enlarge person spell-like ability. Though the triggering energy is psionic (and thus can’t be initiated where psionics is unavailable), all other effects work like standard spell-like abilities. Note: This psionic technique was created by the gray dwarf worshipers of Deep Duerra, but other duergar (including exiles) have developed it independently."
+  },
+  {
+    "id": "cov-duerran-stealth-training",
+    "name": "Duerran Stealth Training",
+    "type": "Psionic",
+    "prerequisite": "Gray dwarf",
+    "summary": "Your studies have shown you the way to link your psionics and your invisibility spell-like ability.",
+    "benefit": "You can expend 5 power points to activate your invisibility spell-like ability. Though the triggering energy is psionic (and thus can’t be initiated where psionics is unavailable), all other effects work like standard spell-like abilities. Note: This psionic technique was created by the gray dwarf worshipers of Deep Duerra, but other duergar (including exiles) have developed it independently."
+  },
+  {
+    "id": "cov-from-smite-to-song",
+    "name": "From Smite to Song",
+    "type": "General",
+    "prerequisite": "Perform (any) 3 ranks, member of the Harmonious Order (see page 101)",
+    "summary": "You can channel your destructive holy energy into powerful song magic for the glory of Milil.",
+    "benefit": "You can spend a smite evil attempt to duplicate the effects of the inspire courage bardic music ability (see page 29 of the Player’s Handbook). Your effective bard level (for the purpose of determining the value of the bonuses granted) is equal to your paladin level. Add Perform to your list of paladin class skills."
+  },
+  {
+    "id": "cov-initiate-of-anhur",
+    "name": "Initiate of Anhur",
+    "type": "Initiate",
+    "prerequisite": "Cleric or ranger 5th, patron deity Anhur",
+    "summary": "You have been initiated into the greatest secrets of Anhur’s church.",
+    "benefit": "You take no penalty on Listen checks for being distracted or asleep. You can make attacks of opportunity when you are flat-footed as though you had the Combat Reflexes feat. You do not gain extra attacks of opportunity in a round from this ability. In addition, you add the following spells to your cleric or ranger spell list. 1st—bless weapon. 2nd—spiritual weapon (ranger only), thunderstroke (see page 59).",
+    "normal": "A distracted or sleeping character makes Listen checks with a –5 or –10 penalty, respectively."
+  },
+  {
+    "id": "cov-initiate-of-arvoreen",
+    "name": "Initiate of Arvoreen",
+    "type": "Initiate",
+    "prerequisite": "Halfling, cleric or paladin 4th, patron deity Arvoreen",
+    "summary": "You have been initiated into the greatest secrets of Arvoreen’s church.",
+    "benefit": "Add Hide and Move Silently to your list of cleric or paladin class skills. In addition, you add the following spells to your cleric or paladin spell list. 1st—enlarge person, low-light visionMag, message. 3rd—blade thirstMag, safe clearingMag."
+  },
+  {
+    "id": "cov-initiate-of-baravar-cloakshadow",
+    "name": "Initiate of Baravar Cloakshadow",
+    "type": "Initiate",
+    "prerequisite": "Gnome, cleric or paladin 4th, patron deity Baravar Cloakshadow",
+    "summary": "You have been initiated into the greatest secrets of Baravar Cloakshadow’s church.",
+    "benefit": "You can spend a turn/rebuke attempt as a standard action to recognize all visible illusion effects within 60 feet of you. If the illusion has a save entry that includes “disbelief” (such as silent image), you are immediately awarded an automatically successful save against that illusion. Illusions that have no visible effect (such as invisibility) are not revealed by this action. In addition, you add the following spells to your cleric or paladin spell list. 1st—camouflageMag. 2nd—invisibility, swift invisibility (see page 56). 3rd—displacement. 4th—dimension door."
+  },
+  {
+    "id": "cov-initiate-of-eilistraee",
+    "name": "Initiate of Eilistraee",
+    "type": "Initiate",
+    "prerequisite": "Drow or half-drow, cleric or ranger 4th, patron deity Eilistraee",
+    "summary": "You have been initiated into the greatest secrets of Eilistraee’s church.",
+    "benefit": "Once per day, you can spend one of the daily uses of your racial spell-like abilities (dancing lights, darkness, or faerie fire) to produce a magic missile effect (caster level equals class level). In addition, you add the following spells to your cleric or ranger spell list. 1st—Eilistraee’s moonfire (see page 55). 3rd—lesser spellsong (see page 58)†. 6th (cleric only)—spellsong (see page 58)."
+  },
+  {
+    "id": "cov-initiate-of-the-holy-realm",
+    "name": "Initiate of the Holy Realm",
+    "type": "Initiate",
+    "prerequisite": "Cleric, paladin, or ranger 3rd of Chauntea, Helm, Lathander, Nobanion, Selûne, or Sune",
+    "summary": "You have been initiated into the greatest secrets of one of the faiths of the Holy Realm (Chauntea, Helm, Lathander, Selûne, or Sune).",
+    "benefit": "You get a +1 sacred bonus on all saving throws while within the Holy Realm or on a quest specifically dedicated to supporting the Holy Realm. In addition, you add the following spells to your cleric, paladin, or ranger spell list. 1st—alarm, handfirePG, horrible taste (see page 56), rose-mantlePG. 2nd—lionheart (see page 56), love bite (see page 56), warningPG."
+  },
+  {
+    "id": "cov-initiate-of-horus-re",
+    "name": "Initiate of Horus-Re",
+    "type": "Initiate",
+    "prerequisite": "Cleric, paladin, or ranger 4th, patron deity Horus-Re",
+    "summary": "You have been initiated into the greatest secrets of Horus-Re’s church.",
+    "benefit": "Once per day, you can use wild shape (as the druid ability) to take the shape of a hawk for 1 hour. This is a supernatural ability. In addition, you add the following spells to your cleric, paladin, or ranger spell list. 1st—command (paladin and ranger only), disk of solar vengeance (see page 54), herald’s callMag. 2nd—stormvoice (see page 59). 3rd—righteous furyMag (cleric only), searing light (paladin and ranger only)."
+  },
+  {
+    "id": "cov-initiate-of-milil",
+    "name": "Initiate of Milil",
+    "type": "Initiate",
+    "prerequisite": "Cleric or paladin 4th, Perform (any) 3 ranks, patron deity Milil",
+    "summary": "You have been initiated into the greatest secrets of Milil’s church.",
+    "benefit": "Your bard, cleric, and paladin levels stack for the purpose of determining which kinds of bardic music you can use (but not any other effect related to bardic music). You must still meet the Perform skill rank requirement to use various kinds of bardic music. In addition, you add the following spells to your cleric or paladin spell list. 1st—harmonyMag. 2nd—dispel silence (see page 54). 3rd—reveilleMag."
+  },
+  {
+    "id": "cov-initiate-of-nobanion",
+    "name": "Initiate of Nobanion",
+    "type": "Initiate",
+    "prerequisite": "Cleric or paladin 4th, patron deity Nobanion",
+    "summary": "You have been initiated into the greatest secrets of Nobanion’s church.",
+    "benefit": "You gain wild empathy (as the druid class feature), usable only on feline and part-feline animals or magical beasts (such as chimeras, dire lions, dire tigers, dragonnes, and man-ticores); your effective druid level for the purpose of making such checks is equal to the sum of your druid, ranger, cleric, and paladin class levels. You also gain the smite power, the supernatural ability to make a single melee attack once per day with a +4 bonus on the attack roll and a bonus on damage equal to the sum of your cleric, druid, ranger, and paladin levels. These bonuses only apply if the attack is made against a follower of Malar or an item of his church; if you accidentally smite a creature or object that doesn’t meet this requirement, the smite has no effect but is still used. You must declare the smite attempt before making the attack. In addition, you add the following spells to your cleric or paladin spell list. 2nd—lionheart (see page 56). 3rd—summon nature’s ally II (lion only). 4th—shout."
+  },
+  {
+    "id": "cov-initiate-of-torm",
+    "name": "Initiate of Torm",
+    "type": "Initiate",
+    "prerequisite": "Cleric or paladin 4th, patron deity Torm",
+    "summary": "You have been initiated into the greatest secrets of Torm’s church.",
+    "benefit": "You gain the smite power, the supernatural ability to make a single melee attack once per day with a +4 bonus on the attack roll and a bonus on damage equal to the sum of your cleric, druid, ranger, and paladin levels. These bonuses only apply if the attack is made against a follower of Bane or Cyric (including former incarnations or variants of those deities, such as Bhaal, Myrkul, or Xvim); if you accidentally smite a creature that doesn’t meet this requirement the smite has no effect but is still used. You must declare the smite attempt before making the attack. In addition, you add the following spells to your cleric or paladin spell list. 1st—bless weapon (cleric only), command (paladin only). 4th—hand of TormMag *. *This spell (and others) appeared in Magic of Faerûn with a deity designator, but there was no rule prohibiting its use by other clerics. If you use initiate feats in your game, you should not allow clerics without the appropriate initiate feat to cast those spells. Thus, only characters with the Initiate of Torm feat should be able to cast the hand of Torm spell, even though Magic of Faerûn put it on the cleric and paladin spell lists."
+  },
+  {
+    "id": "cov-initiate-of-tymora",
+    "name": "Initiate of Tymora",
+    "type": "Initiate",
+    "prerequisite": "Cleric or ranger 4th, patron deity Tymora",
+    "summary": "You have been initiated into the greatest secrets of Tymora’s church.",
+    "benefit": "Once per day, you can add a +5 luck bonus on any attack roll, saving throw, skill check, or ability check you have just made before the DM declares whether the roll results in success or failure. If you have the Luck domain and you use that domain’s power to reroll this attack, save, or check, the luck bonus applies to the reroll as well. In addition, you add the following spells to your cleric or ranger spell list. 1st—fleeting fortune (see page 55). 2nd—favor of Tymora (see page 55)."
+  },
+  {
+    "id": "cov-knight-of-the-red-falcon",
+    "name": "Knight of the Red Falcon",
+    "type": "Exalted",
+    "prerequisite": "Cleric, fighter, or paladin 4th, member of the Order of the Red Falcon (see page 103)",
+    "summary": "Your military order has a legendary ability to survive against overwhelming odds.",
+    "benefit": "You gain a +1 morale bonus to Armor Class when you are adjacent to more than one enemy. (Helpless enemies don’t count toward this benefit.)"
+  },
+  {
+    "id": "cov-knight-of-the-risen-scepter",
+    "name": "Knight of the Risen Scepter",
+    "type": "Exalted",
+    "prerequisite": "Paladin or ranger 8th, patron deity Osiris",
+    "summary": "Your military order is dedicated to fighting Set and his minions, and even death cannot stop you from this task.",
+    "benefit": "You get a +4 sacred bonus on saving throws against death effects, energy drain, and ability drain. If you are slain by a follower of Set, you come back to life 1 hour later as though resurrection had been cast upon you. Instead of losing a level due to this effect, you gain one negative level. If a follower of Osiris brings you back to life with raise dead, resurrection, or a similar effect that would normally cause you to lose a level, you gain one negative level rather than losing a level. You can gain the negative level bestowed by this feat even if you are normally immune to negative levels. A negative level bestowed by this feat can’t be removed by any normal means (such as restoration), nor does it ever become an actual lost level. Instead, the negative level remains until you next gain a class level, or until you kill or destroy the follower of Set who killed you, at which point it disappears. While you have a negative level bestowed by this feat, you lose all benefits of this feat except the sacred bonus on saving throws."
+  },
+  {
+    "id": "cov-knight-of-tyrs-holy-judgment",
+    "name": "Knight of Tyr’s Holy Judgment",
+    "type": "Exalted",
+    "prerequisite": "Int 13, member of the Knights of Holy Judgment (see page 102)",
+    "summary": "You can draw upon the power of Tyr to sense and understand the law and to locate devils.",
+    "benefit": "You gain a supernatural ability to sense and understand laws. Add your paladin level to any Knowledge or Intelligence check made regarding laws. You can use this ability even if you are unfamiliar with the local laws or don’t even know where you are. For example, if you use this ability upon approaching the city of Luthcheq in Chessenta, a Knowledge (arcana) or Knowledge (local Chessenta) check reveals to you that arcane magic is forbidden there. If you later end up in a strange land by way of a portal, and a Knowledge (religion) check reveals that Loviatar is the official religion where you are, you realize you are in (for instance) Dambrath. You can use this ability to find loopholes in the law, such as learning that the local temple’s ability to offer a wanted criminal sanctuary only applies from dusk until dawn, allowing you to arrest the criminal after daybreak. When you use your detect evil ability, the second round of use reveals whether or not any creatures in the area are devils, though you do not learn their exact location (but in most cases you can identify them in the third round by the strength of their aura). You gain a +1 sacred bonus to Armor Class against devils."
+  },
+  {
+    "id": "cov-knight-of-tyrs-merciful-sword",
+    "name": "Knight of Tyr’s Merciful Sword",
+    "type": "Exalted",
+    "prerequisite": "Wis 13, member of the Knights of the Merciful Sword (see page 102)",
+    "summary": "You can draw upon the power of Tyr to sense where you are needed.",
+    "benefit": "You gain the supernatural ability to sense injustice and great evil. Once per week as a standard action, you can concentrate to sense the direction of the greatest injustice or evil within 1 mile of you (DM’s determination). Alternatively, you can meditate for 8 hours to expand your range to 10 miles for that use of the feat. Murder, treason, and the presence of evil outsiders rank highest with this sense, while other crimes, injustices, and evil creatures rank lower, similar to the aura strengths listed in the detect evil spell. You gain a +1 sacred bonus to Armor Class against demons."
+  },
+  {
+    "id": "cov-mark-of-the-triad",
+    "name": "Mark of the Triad",
+    "type": "Divine",
+    "prerequisite": "Initiate of IlmaterPG, Initiate of Torm (see page 31), or Initiate of TyrPG",
+    "summary": "You have been initiated into the greatest secrets of the Triad, the godly triumvirate of Tyr, Torm, and Ilmater.",
+    "benefit": "You can spend a turn undead attempt as a swift action and imbue a greatsword, longsword, or unarmed strike with either the axiomatic or holy special ability (see page 223 and 225 of the Dungeon Master’s Guide, respectively). The effect lasts until the start of your next turn."
+  },
+  {
+    "id": "cov-overcome-shadow-weave",
+    "name": "Overcome Shadow Weave",
+    "type": "General",
+    "prerequisite": "Knowledge (arcana) 5 ranks, Spellcraft 5 ranks, spellcaster who uses the Weave",
+    "summary": "You understand the strengths and weaknesses of the Shadow Weave and are more resistant to its tricks.",
+    "benefit": "You get a +5 bonus on caster level checks to detect, counterspell, and dispel Shadow Weave effects. You get a +1 bonus on Will saving throws against Shadow Weave effects."
+  },
+  {
+    "id": "cov-paladin-of-the-noble-heart",
+    "name": "Paladin of the Noble Heart",
+    "type": "Exalted",
+    "prerequisite": "Knowledge (religion) 4 ranks, member of the Companions of the Noble Heart (see page 100)",
+    "summary": "You are tasked by Ilmater to eliminate cruelty from the world, particularly that of Loviatar.",
+    "benefit": "You get one extra smite evil attempt per day that can only be used on followers of Loviatar or items of her church. You get a +1 sacred bonus on Fortitude saves against effects created by followers of Loviatar."
+  },
+  {
+    "id": "cov-silver-blood",
+    "name": "Silver Blood",
+    "type": "General",
+    "prerequisite": "Base Fortitude save +2",
+    "summary": "You have magically or alchemically imbued your flesh and blood with silver, making you resistant to lycanthrope attacks.",
+    "benefit": "You cannot be infected with lycanthropy. Any lycanthrope that bites you must make a Fortitude save (DC 10 + 1/2 your Hit Dice + your Con modifier) or take damage equal to your Constitution modifier (minimum 1 point). This damage is treated as silver for the purpose of overcoming a lycanthrope’s damage reduction.",
+    "special": "If you are already an afflicted lycanthrope, the DCs for your Control Shape checks increase by 5 and you lose your lycanthrope damage reduction. If you are already a natural lycanthrope, you must make a DC 15 Control Shape check to change form and your lycanthrope damage reduction decreases to 5/silver."
+  },
+  {
+    "id": "cov-silver-fang",
+    "name": "Silver Fang",
+    "type": "General",
+    "prerequisite": "Base Fortitude save +4, member or ally of the Fangshields (see page 78)",
+    "summary": "By following a ritual taught by the Fangshields, your natural attacks are suffused with the power of silver and are fully effective against lycanthropes.",
+    "benefit": "Your natural attacks and unarmed strikes count as silver weapons for the purpose of overcoming damage reduction.",
+    "special": "If you are a lycanthrope, your natural attacks no longer infect others with lycanthropy."
+  },
+  {
+    "id": "cov-smiting-power",
+    "name": "Smiting Power",
+    "type": "General",
+    "prerequisite": "Power Attack, ability to smite",
+    "summary": "You use your smite ability to augment other combat maneuvers.",
+    "benefit": "You can use your smite ability (whether smite evil or from some other source) when making a bull rush or overrun attempt. If your smite ability would normally grant a bonus on your attack roll against the target of your bull rush or overrun, you can add this bonus to your Strength check instead. In addition, if you win the opposed check to bull rush or overrun the target, you deal damage to the target equal to the bonus the smite would grant on a damage roll against that creature. You must announce the smite attempt before starting the bull rush or overrun. If your smite attempt would not grant a bonus against the target of your bull rush or overrun attempt (for instance, if you used smite evil when bull rushing a non-evil creature), the attempt is wasted to no effect."
+  },
+  {
+    "id": "cov-sword-of-the-arcane-order",
+    "name": "Sword of the Arcane Order",
+    "type": "General",
+    "prerequisite": "Paladin 4th of Azuth or Mystra, or ranger 4th of Mystra; member of the Knights of the Mystic Fire (see page 102), the Order of the Shooting Star (see Knights of the Mystic Fire, page 102), or the Swords of the High One (see page 104)",
+    "summary": "Members of your military order have a special connection with arcane magic.",
+    "benefit": "You can use your paladin and ranger spell slots to prepare wizard spells. You must have a minimum Intelligence score of 10 + the spell’s level to prepare it, and the save DC of the spell is equal to 10 + your Int modifier (as if you were a wizard). These wizard spells can be taken either from your spellbook (if you have one) or from another character’s spellbook (though in the latter case you must decipher the writing in the book and succeed on a Spellcraft check to prepare the spell, just as a wizard using a borrowed spellbook; see Wizard Spells and Borrowed Spellbooks, page 178 of the Player’s Handbook, for details). If you also have levels in wizard, your wizard caster level is treated as the sum of your wizard, paladin, and ranger class levels.",
+    "special": "Azuth has a paladin order called the Swords of the High One. Mystra has a paladin order called the Knights of the Mystic Fire and a closely allied group of rangers called the Order of the Shooting Star. Members of all three of these groups can select this feat as long as they are at least 4th level in their respective order’s primary class."
+  },
+  {
+    "id": "cov-sun-soul-monk",
+    "name": "Sun Soul Monk",
+    "type": "General",
+    "prerequisite": "Monk 6th, member of the Sun Soul monk order (see page 25 of the FORGOTTEN REALMS Campaign Setting and page 41 of City of Splendors: Waterdeep)",
+    "summary": "Your training with this monk order gives you special powers depending on which sect you follow.",
+    "benefit": "This feat’s benefit depends on the patron deity of the monastery where you studied. Lathander: You can channel your ki to turn an undead creature. Once per day you can choose to imbue a single unarmed strike with ki; this decision must be made before the attack roll is made. If you hit an undead creature with this attack, it is turned unless it succeeds on a Will save (DC 10 + 1/2 your HD + your Wis modifier). If the undead creature has turn resistance, it can add this as a bonus on its save. If you have the Stunning Fist feat, you can also expend a daily use of your stunning fist to use this feat. If you have the turn undead class feature, you can expend a turn undead attempt to use this feat. Selûne: Your unarmed strikes deal an extra 1 point of cold damage and count as silvered weapons for the purpose of overcoming damage reduction. When in moonlight or starlight, treat your monk level as three levels higher for the purpose of determining your unarmored speed bonus. Sune: Your combat style is fascinating to watch. Once per day as a standard action, you can perform a maneuver that fascinates a single creature within 30 feet that can see you (Will negates; save DC 10 + 1/2 your HD + Cha modifier). Creatures of a type different from your gain a +4 bonus on the save. This supernatural effect lasts for 1 round. If you have the Stunning Fist feat, you can also expend a daily use of your stunning fist to use this feat."
+  }
+];

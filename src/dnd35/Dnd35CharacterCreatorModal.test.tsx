@@ -8,6 +8,10 @@ import { Dnd35CharacterCreatorModal, type Dnd35CharacterCreatedData } from "./Dn
  */
 afterEach(cleanup);
 
+// Cada clique redesenha os 109 cards de talento com a checagem de pré-requisitos;
+// sob carga da suíte completa alguns testes passavam de 5 s (isolados levam ~1-3 s).
+vi.setConfig({ testTimeout: 30000 });
+
 /**
  * Botões de escolha (cards). Consulta direta ao DOM: getAllByRole calcula o
  * nome acessível de cada botão e, com os 109 talentos da Tabela 5-1 na tela,
@@ -314,7 +318,7 @@ describe("Dnd35CharacterCreatorModal — especialização em escola do Mago (p. 
     fireEvent.click(spellCard("Sono"));
     fireEvent.change(specialty(), { target: { value: "Evoc" } });
     // Adivinhação e a própria Evocação não podem ser proibidas
-    const options = within(screen.getByTestId("dnd35-specialization")).getAllByRole("checkbox").map((c) => c.parentElement?.textContent);
+    const options = Array.from(screen.getByTestId("dnd35-specialization").querySelectorAll("input[type=checkbox]")).map((c) => c.parentElement?.textContent);
     expect(options).not.toContain("Adivinhação");
     expect(options).not.toContain("Evocação");
     prohibit("Encantamento");

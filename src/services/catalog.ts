@@ -128,7 +128,7 @@ export async function fetchCatalogSystems(): Promise<IRPGSystem[]> {
         .eq("active", true)
         .order("id");
       if (!error && Array.isArray(data) && data.length > 0) {
-        return data.map((row: any) => ({
+        const fromDatabase: IRPGSystem[] = data.map((row: any) => ({
           id: row.id as RPGSystemId,
           name: {
             "pt-BR": row.name_pt,
@@ -146,6 +146,11 @@ export async function fetchCatalogSystems(): Promise<IRPGSystem[]> {
           supportedRulesets: row.supported_rulesets || ["remaster"],
           active: row.active ?? true,
         }));
+        // Sistemas ativos no código que o banco ainda não registrou (migração
+        // pendente) continuam disponíveis; a linha do banco, quando existir,
+        // sempre prevalece. Cada sistema segue só os dados dos seus livros.
+        const known = new Set(fromDatabase.map((system) => system.id));
+        return [...fromDatabase, ...DEFAULT_RPG_SYSTEMS.filter((system) => system.active && !known.has(system.id))];
       }
     } catch (err) {
       console.warn("[Catalog] Falha ao consultar catalog_systems, usando lista padrão:", err);
