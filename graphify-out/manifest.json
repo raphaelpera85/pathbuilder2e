@@ -36,9 +36,9 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1791255920.9638627,
-    "seen": 1791256043.2604046,
-    "ast_hash": "8b07d088e097b195b22c61bf8167a8fb",
+    "mtime": 1791290571.4258325,
+    "seen": 1791290631.7697756,
+    "ast_hash": "70e4860481d2803170ab315ae2bb1d71",
     "semantic_hash": ""
   },
   "public/js/pdf-lib.min.js": {
@@ -13719,6 +13719,24 @@
     "mtime": 1791255858.1385255,
     "seen": 1791256043.2789621,
     "ast_hash": "1f1bb5c47a4c534f3800d687d535588a",
+    "semantic_hash": ""
+  },
+  "scripts/sync-dnd35-supplements-to-supabase.ts": {
+    "mtime": 1791290506.5613523,
+    "seen": 1791290631.7699945,
+    "ast_hash": "9f06c0cbf7e3680f8b719e35cb700ca4",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202610060001_seed_dnd35_cov_catalog.sql": {
+    "mtime": 1791255932.630265,
+    "seen": 1791290631.77066,
+    "ast_hash": "442dc39cfe1d4dd0e3e0ff407719e494",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/202610060002_seed_dnd35_defensores_catalog.sql": {
+    "mtime": 1791255933.5585923,
+    "seen": 1791290631.7706616,
+    "ast_hash": "b06b0fa9ee1b75db9c4079411fb57924",
     "semantic_hash": ""
   }
 }
