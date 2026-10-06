@@ -14,6 +14,12 @@ import { DND5E_RACE_RULES } from "./dnd5e/dnd5eRaces";
 import { getSystemSkillItems } from "./systemSkills";
 import { getSystemRuleItems } from "./systemRulesCatalog";
 import { getSystemActionItems } from "./systemActions";
+import { DND35_RACES } from "./dnd35/dnd35Races";
+import { DND35_CLASSES } from "./dnd35/dnd35Classes";
+import { DND35_SKILLS } from "./dnd35/dnd35Skills";
+import { DND35_WEAPONS, DND35_ARMORS } from "./dnd35/dnd35Equipment";
+import { DND35_GEAR } from "./dnd35/dnd35Gear";
+import { DND35_FEAT_OPTIONS } from "./dnd35/dnd35FeatTable";
 
 describe("system content coverage contract", () => {
   it("keeps every core creation category populated and isolated", () => {
@@ -70,6 +76,19 @@ describe("system content coverage contract", () => {
     expect(getSystemRuleItems("ose").some((item) => item.data.ruleKind === "creation")).toBe(true);
     expect(getSystemActionItems("ose").length).toBeGreaterThan(0);
     expect(getSystemRuleItems("ose").some((item) => item.data.ruleKind === "advantage")).toBe(false);
+  });
+
+  it("keeps D&D 3.5's core categories populated and isolated", () => {
+    expect(Object.keys(DND35_RACES).length).toBe(7);
+    expect(Object.keys(DND35_CLASSES).length).toBe(11);
+    expect(Object.keys(DND35_SKILLS).length).toBe(45);
+    expect(Object.keys(DND35_WEAPONS).length + Object.keys(DND35_ARMORS).length + Object.keys(DND35_GEAR).length).toBe(259);
+    expect(DND35_FEAT_OPTIONS.length).toBe(109);
+    expect(getSystemSkillItems("dnd35").length).toBe(45);
+    expect(getSystemRuleItems("dnd35").some((item) => item.data.ruleKind === "creation")).toBe(true);
+    expect(getSystemRuleItems("dnd35").some((item) => item.data.ruleKind === "modifier")).toBe(true);
+    expect(getSystemRuleItems("dnd35").some((item) => item.data.ruleKind === "advantage")).toBe(false);
+    expect(getSystemActionItems("dnd35").length).toBe(6);
   });
 
   it("mantém metadados mínimos de conjuração em cada magia selecionável", () => {

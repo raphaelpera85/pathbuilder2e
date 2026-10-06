@@ -107,7 +107,12 @@ export function AccountPortal() {
     }
     window.location.hash = "#/library";
     window.setTimeout(() => {
-      window.dispatchEvent(new CustomEvent(systemId === "ose" ? "pathbuilder:load-ose-character" : "pathbuilder:load-core-character", { detail: normalized }));
+      const eventName = systemId === "ose"
+        ? "pathbuilder:load-ose-character"
+        : systemId === "dnd35"
+        ? "pathbuilder:load-dnd35-character"
+        : "pathbuilder:load-core-character";
+      window.dispatchEvent(new CustomEvent(eventName, { detail: normalized }));
     }, 0);
   };
 
@@ -122,6 +127,17 @@ export function AccountPortal() {
       }
       window.location.hash = "#/library";
       window.dispatchEvent(new CustomEvent("pathbuilder:open-ose-wizard"));
+      return;
+    }
+    if (systemId === "dnd35") {
+      setOpen(false);
+      try {
+        sessionStorage.setItem("pathbuilder:auto-open-dnd35-wizard", "true");
+      } catch {
+        // noop
+      }
+      window.location.hash = "#/library";
+      window.dispatchEvent(new CustomEvent("pathbuilder:open-dnd35-wizard"));
       return;
     }
     if (systemId === "t20" || systemId === "dnd5e") {
@@ -900,6 +916,11 @@ export function AccountPortal() {
                                       queueSystemCharacterLoad("ose", hydratedData);
                                       return;
                                     }
+                                    if (editorRoute === "dnd35") {
+                                      setOpen(false);
+                                      queueSystemCharacterLoad("dnd35", hydratedData);
+                                      return;
+                                    }
                                     if (editorRoute === "core") {
                                       setOpen(false);
                                       queueSystemCharacterLoad(sysId, hydratedData);
@@ -989,7 +1010,7 @@ export function AccountPortal() {
                                                 } as any;
                                                 const revisionSystem = getPersistedCharacterSystemId(character.system_id, revisionData);
                                                 const hydratedRevision = hydrateCharacterForEditor(character.system_id, character.ruleset, revisionData);
-                                                if (revisionSystem === "ose") {
+                                                if (revisionSystem === "ose" || revisionSystem === "dnd35") {
                                                   queueSystemCharacterLoad(revisionSystem, hydratedRevision);
                                                 } else if (revisionSystem === "t20" || revisionSystem === "dnd5e") {
                                                   queueSystemCharacterLoad(revisionSystem, hydratedRevision);

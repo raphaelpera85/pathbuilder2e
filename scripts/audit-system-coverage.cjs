@@ -10,7 +10,13 @@ const root = path.resolve(__dirname, "..");
 const moduleUrl = (relativePath) => pathToFileURL(path.join(root, relativePath)).href;
 
 async function run() {
-  const [t20Catalog, t20Compendium, t20Origins, t20Classes, t20Races, dndCatalog, dndBackgrounds, dndCompendium, dndOptions, dndClasses, dndRaces, oseClasses, oseRaces, oseEquipment, oseSpells, oseRules, skills, rules, actions] = await Promise.all([
+  const [
+    t20Catalog, t20Compendium, t20Origins, t20Classes, t20Races,
+    dndCatalog, dndBackgrounds, dndCompendium, dndOptions, dndClasses, dndRaces,
+    oseClasses, oseRaces, oseEquipment, oseSpells, oseRules,
+    dnd35Races, dnd35Classes, dnd35Equipment, dnd35Gear, dnd35Feats,
+    skills, rules, actions,
+  ] = await Promise.all([
     import(moduleUrl("src/data/t20/t20Catalog.ts")),
     import(moduleUrl("src/data/t20/t20Compendium.ts")),
     import(moduleUrl("src/data/t20/t20Origins.ts")),
@@ -27,13 +33,26 @@ async function run() {
     import(moduleUrl("src/data/ose/oseEquipment.ts")),
     import(moduleUrl("src/data/ose/oseSpells.ts")),
     import(moduleUrl("src/data/ose/oseRules.ts")),
+    import(moduleUrl("src/data/dnd35/dnd35Races.ts")),
+    import(moduleUrl("src/data/dnd35/dnd35Classes.ts")),
+    import(moduleUrl("src/data/dnd35/dnd35Equipment.ts")),
+    import(moduleUrl("src/data/dnd35/dnd35Gear.ts")),
+    import(moduleUrl("src/data/dnd35/dnd35FeatTable.ts")),
     import(moduleUrl("src/data/systemSkills.ts")),
     import(moduleUrl("src/data/systemRulesCatalog.ts")),
     import(moduleUrl("src/data/systemActions.ts")),
   ]);
 
-  const hasSource = (entry) => Number(entry?.sourcePage || entry?.source_page || 0) > 0 && Boolean(entry?.id);
-  const hasDescription = (entry) => Boolean(entry?.description || entry?.summary || entry?.ruleSummary || entry?.data?.summary || entry?.data?.description || entry?.damage || entry?.qualities?.length || entry?.traits?.length || entry?.proficiencies || entry?.dac !== undefined || entry?.aacBonus !== undefined);
+  const hasSource = (entry) => Number(
+    entry?.sourcePage || entry?.source_page || entry?.sourcePageStart || entry?.page ||
+    entry?.data?.sourcePage || entry?.data?.source_page || entry?.data?.source?.page || 0
+  ) > 0 && Boolean(entry?.id);
+  const hasDescription = (entry) => Boolean(
+    entry?.description || entry?.summary || entry?.ruleSummary || entry?.data?.summary ||
+    entry?.data?.description || entry?.damage || entry?.damageMedium || entry?.armorBonus !== undefined ||
+    entry?.qualities?.length || entry?.traits?.length || entry?.proficiencies || entry?.benefit ||
+    entry?.cost || entry?.hitDie || entry?.dac !== undefined || entry?.aacBonus !== undefined
+  );
   const withRuleData = (entries, ruleEntries, summary) => entries.map((entry) => {
     const rule = ruleEntries.find((candidate) => candidate.id === entry.id);
     return { ...entry, ruleSummary: summary(rule) };
@@ -62,11 +81,18 @@ async function run() {
   const oseContent = (ruleset) => {
     const classic = ruleset === "classic";
     return {
-    classes: completeEntries(Object.values(oseClasses.OSE_CLASSES).filter((entry) => !classic || oseRules.isOseClassAvailableForMode(entry, "classic"))),
-    ancestries: completeEntries(Object.values(oseRaces.OSE_RACES).filter((entry) => !classic || ["humano", "anao", "elfo", "halfling"].includes(entry.id))),
-    items: completeEntries([...oseEquipment.OSE_WEAPONS, ...oseEquipment.OSE_ARMORS, ...oseEquipment.OSE_GEAR]),
-    spells: completeEntries(oseSpells.OSE_SPELLS),
+      classes: completeEntries(Object.values(oseClasses.OSE_CLASSES).filter((entry) => !classic || oseRules.isOseClassAvailableForMode(entry, "classic"))),
+      ancestries: completeEntries(Object.values(oseRaces.OSE_RACES).filter((entry) => !classic || ["humano", "anao", "elfo", "halfling"].includes(entry.id))),
+      items: completeEntries([...oseEquipment.OSE_WEAPONS, ...oseEquipment.OSE_ARMORS, ...oseEquipment.OSE_GEAR]),
+      spells: completeEntries(oseSpells.OSE_SPELLS),
     };
+  };
+  const dnd35Content = {
+    ancestries: completeEntries(Object.values(dnd35Races.DND35_RACES)),
+    classes: completeEntries(Object.values(dnd35Classes.DND35_CLASSES)),
+    items: completeEntries([...Object.values(dnd35Equipment.DND35_WEAPONS), ...Object.values(dnd35Equipment.DND35_ARMORS), ...Object.values(dnd35Gear.DND35_GEAR)]),
+    feats: completeEntries(dnd35Feats.DND35_FEAT_OPTIONS.map((f, i) => ({ ...f, sourcePage: dnd35Feats.DND35_FEAT_TABLE[i]?.page ?? 90 }))),
+    skills: completeEntries(skills.getSystemSkillItems("dnd35", "v35")),
   };
   const metadataComplete = (content) => Object.values(content).every((group) => group.missingSource.length === 0 && group.missingSummary.length === 0);
   const structuredClassChoices = {
@@ -87,13 +113,24 @@ async function run() {
     },
     {
       scope: "ose/advanced", systemId: "ose", ruleset: "advanced",
-      expected: { ancestries: 10, classes: 16, items: 53, spells: 34 },
+      expected: { ancestries: 10, classes: 22, items: 53, spells: 34 },
       actual: { ancestries: Object.keys(oseRaces.OSE_RACES).length, classes: Object.keys(oseClasses.OSE_CLASSES).length, items: oseEquipment.OSE_WEAPONS.length + oseEquipment.OSE_ARMORS.length + oseEquipment.OSE_GEAR.length, spells: oseSpells.OSE_SPELLS.length },
     },
     {
       scope: "ose/classic", systemId: "ose", ruleset: "classic",
       expected: { classes: 7, items: 53, spells: 34 },
       actual: { classes: Object.values(oseClasses.OSE_CLASSES).filter((entry) => oseRules.isOseClassAvailableForMode(entry, "classic")).length, items: oseEquipment.OSE_WEAPONS.length + oseEquipment.OSE_ARMORS.length + oseEquipment.OSE_GEAR.length, spells: oseSpells.OSE_SPELLS.length },
+    },
+    {
+      scope: "dnd35/v35", systemId: "dnd35", ruleset: "v35",
+      expected: { ancestries: 7, classes: 11, skills: 45, items: 259, feats: 109 },
+      actual: {
+        ancestries: Object.keys(dnd35Races.DND35_RACES).length,
+        classes: Object.keys(dnd35Classes.DND35_CLASSES).length,
+        skills: skills.getSystemSkillItems("dnd35", "v35").length,
+        items: Object.keys(dnd35Equipment.DND35_WEAPONS).length + Object.keys(dnd35Equipment.DND35_ARMORS).length + Object.keys(dnd35Gear.DND35_GEAR).length,
+        feats: dnd35Feats.DND35_FEAT_OPTIONS.length,
+      },
     },
   ];
 
@@ -106,7 +143,13 @@ async function run() {
     const advantageSemanticsMatch = entry.systemId === "dnd5e"
       ? scopedRules.some((item) => item.data?.ruleKind === "advantage")
       : !scopedRules.some((item) => item.data?.ruleKind === "advantage");
-    const content = entry.systemId === "t20" ? t20Content : entry.systemId === "dnd5e" ? dndContent : oseContent(entry.ruleset);
+    const content = entry.systemId === "t20"
+      ? t20Content
+      : entry.systemId === "dnd5e"
+        ? dndContent
+        : entry.systemId === "dnd35"
+          ? dnd35Content
+          : oseContent(entry.ruleset);
     const structuredChoicesPresent = entry.systemId === "t20" ? structuredClassChoices.t20 > 0 : entry.systemId === "dnd5e" ? structuredClassChoices.dnd5e > 0 : true;
     const contentMetadataComplete = metadataComplete(content);
     const checks = { countsMatch, creationRulePresent, actionsPresent, skillsPresent, advantageSemanticsMatch, contentMetadataComplete, structuredChoicesPresent };

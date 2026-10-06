@@ -68,4 +68,49 @@ describe("matriz de criação, edição e exportação por ruleset", () => {
     expect(pdf.getPageCount()).toBe(1);
     expect(pdf.getForm().getTextField("Name").getText()).toBe(`${character.name} editado`);
   });
+
+  it("preserva o ciclo completo de persistência e edição de D&D 3.5 em v35", async () => {
+    const user = { id: "user-editor-matrix-dnd35" } as never;
+    const character = {
+      id: "matrix-dnd35-v35",
+      name: "Guerreiro Valeroso",
+      system_id: "dnd35" as const,
+      ruleset: "v35" as const,
+      raceId: "humano",
+      classId: "guerreiro",
+      level: 1,
+      alignment: "Leal e Bom",
+      abilities: { str: 16, dex: 14, con: 15, int: 10, wis: 12, cha: 8 },
+      trainedSkillIds: ["dnd35.pericia.escalar", "dnd35.pericia.saltar"],
+      featIds: ["dnd35.talento.ataque_poderoso", "dnd35.talento.trespassar"],
+      weaponIds: ["dnd35.arma.espada_longa"],
+      armorIds: ["dnd35.armadura.cota_de_malha"],
+      gearIds: ["dnd35.equipamento.mochila"],
+      spellIds: [],
+      currentHp: 12,
+      maxHp: 12,
+    };
+
+    await saveCharacter(character, user);
+    const opened = (await listCharacters(user, { systemId: "dnd35" }))[0];
+    expect(opened.data).toMatchObject({
+      system_id: "dnd35",
+      ruleset: "v35",
+      raceId: "humano",
+      classId: "guerreiro",
+      level: 1,
+      featIds: ["dnd35.talento.ataque_poderoso", "dnd35.talento.trespassar"],
+    });
+
+    await saveCharacter({ ...opened.data, name: `${character.name} Nível 2`, level: 2, currentHp: 20 }, user);
+    const edited = (await listCharacters(user, { systemId: "dnd35" }))[0];
+    expect(edited.data).toMatchObject({
+      name: `${character.name} Nível 2`,
+      level: 2,
+      currentHp: 20,
+      ruleset: "v35",
+      system_id: "dnd35",
+    });
+  });
 });
+

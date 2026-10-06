@@ -7,6 +7,7 @@ describe("system rules compendium", () => {
     ["t20", "padrao"],
     ["dnd5e", "standard"],
     ["ose", "advanced"],
+    ["dnd35", "v35"],
   ])("keeps creation rules isolated for %s", (systemId, ruleset) => {
     const rules = getSystemRuleItems(systemId);
     expect(rules.length).toBeGreaterThan(0);

@@ -189,6 +189,7 @@ describe("character cloud contract", () => {
     ["dnd5e", "standard", "jovem-aventureira-dnd", "Faerûn", "dnd5e.raca.humana", "dnd5e.classe.guerreiro", "dnd5e.antecedente.heroi-do-povo", ["dnd5e.arma.adaga"], ["dnd5e.magia.curar-ferimentos"]],
     ["ose", "advanced", "aventureiro-ose", "Masmorra", "ose.raca.humano", "ose.classe.guerreiro", "ose.background.explorador", ["ose.weapon.adaga", "ose.armor.couro"], ["ose.spell.mago_luz"]],
     ["ose", "classic", "aventureiro-ose-classic", "Karameikos", "ose.race.anao", "ose.class.anao_bx", "ose.background.explorador", ["ose.weapon.machado_batalha", "ose.armor.couro"], ["ose.spell.mago_luz"]],
+    ["dnd35", "v35", "aventureiro-dnd35", "Greyhawk", "humano", "guerreiro", "dnd35.bg.soldado", ["dnd35.arma.espada_longa"], ["dnd35.spell.luz"]],
   ])("faz round-trip de criação, salvamento e recarregamento preservando o sistema %s", async (systemId, ruleset, id, name, raceId, classId, backgroundId, equipmentIds, spellIds) => {
     const user = { id: `user-roundtrip-${systemId}` } as never;
     const character = {
@@ -312,5 +313,63 @@ describe("character cloud contract", () => {
     }, user);
     const reloaded = (await listCharacters(user, { systemId: "dnd5e" }))[0];
     expect(reloaded.data.featChoices).toEqual({ "resilient-ability": ["Sabedoria"] });
+  });
+
+  it("preserva ficha D&D 3.5 com divindade, domínios, talentos e equipamentos no round-trip local", async () => {
+    const user = { id: "user-dnd35-cleric" } as never;
+    const character = {
+      id: "clerigo-pelor",
+      name: "Solar de Pelor",
+      level: 1,
+      system_id: "dnd35",
+      systemId: "dnd35",
+      ruleset: "v35",
+      raceId: "humano",
+      classId: "clerigo",
+      alignment: "Neutro e Bom",
+      deityId: "pelor",
+      domainIds: ["bem", "sol"],
+      abilities: { for: 14, des: 10, con: 14, int: 10, sab: 16, car: 12 },
+      maxHp: 10,
+      currentHp: 10,
+      goldGp: 120,
+      trainedSkillIds: ["concentracao", "cura", "conhecimento-religiao"],
+      featIds: ["foco-em-arma", "iniciativa-aprimorada"],
+      weaponIds: ["maca-pesada"],
+      armorIds: ["brunea", "escudo-pesado-madeira"],
+      gearIds: ["simbolo-sagrado-madeira", "mochila"],
+      spellIds: ["0:Luz", "0:Curar Ferimentos Menores", "1:Abençoar"],
+    };
+    const saved = await saveCharacter(character, user);
+    expect(saved.system_id).toBe("dnd35");
+    expect(saved.ruleset).toBe("v35");
+
+    const reloaded = (await listCharacters(user, { systemId: "dnd35" }))[0];
+    expect(reloaded).toBeDefined();
+    expect(reloaded.data).toMatchObject({
+      id: "clerigo-pelor",
+      name: "Solar de Pelor",
+      system_id: "dnd35",
+      ruleset: "v35",
+      raceId: "humano",
+      classId: "clerigo",
+      deityId: "pelor",
+      domainIds: ["bem", "sol"],
+      abilities: { for: 14, des: 10, con: 14, int: 10, sab: 16, car: 12 },
+      featIds: ["foco-em-arma", "iniciativa-aprimorada"],
+      weaponIds: ["maca-pesada"],
+      armorIds: ["brunea", "escudo-pesado-madeira"],
+      gearIds: ["simbolo-sagrado-madeira", "mochila"],
+      spellIds: ["0:Luz", "0:Curar Ferimentos Menores", "1:Abençoar"],
+    });
+
+    const copy = await duplicateCharacter("clerigo-pelor", user);
+    expect(copy.name).toBe("Solar de Pelor (cópia)");
+    expect(copy.data).toMatchObject({
+      system_id: "dnd35",
+      ruleset: "v35",
+      deityId: "pelor",
+      domainIds: ["bem", "sol"],
+    });
   });
 });

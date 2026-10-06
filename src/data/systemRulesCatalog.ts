@@ -3,7 +3,7 @@ import type { PickerItem, RPGSystemId } from "../types";
 type RuleDefinition = {
   id: string;
   systemId: RPGSystemId;
-  ruleset: "remaster" | "standard" | "padrao" | "advanced" | "classic" | "basico";
+  ruleset: "remaster" | "standard" | "padrao" | "advanced" | "classic" | "basico" | "v35";
   name: string;
   summary: string;
   description: string;
@@ -116,6 +116,28 @@ const RULES: RuleDefinition[] = [
     description: "O construtor mantém modificadores de atributo, proficiência, circunstância, estado e penalidade em campos distintos, sem importar vantagem de outro sistema.",
     kind: "modifier",
     book: "Pathfinder Player Core",
+  },
+  {
+    id: "dnd35.rule.creation.v35",
+    systemId: "dnd35",
+    ruleset: "v35",
+    name: "Criação de personagem — D&D 3.5",
+    summary: "Atributos 4d6, raça, classe, PV, perícias, talentos, ouro inicial e equipamento.",
+    description: "O construtor segue as regras do Livro do Jogador 3.5: calcula BBA, resistências, pontos de perícia, talentos por nível e riqueza inicial por classe.",
+    kind: "creation",
+    book: "D&D 3.5 — Livro do Jogador",
+    page: 6,
+  },
+  {
+    id: "dnd35.rule.modifiers",
+    systemId: "dnd35",
+    ruleset: "v35",
+    name: "Modificadores e tipos de bônus — D&D 3.5",
+    summary: "D&D 3.5 classifica bônus por tipo (aprimoramento, competência, deflexão, esquiva, moral, etc.).",
+    description: "Bônus do mesmo tipo geralmente não acumulam (com exceção de esquiva e circunstância). O sistema mantém os tipos isolados sem usar vantagem/desvantagem.",
+    kind: "modifier",
+    book: "D&D 3.5 — Livro do Jogador",
+    page: 21,
   },
 ];
 

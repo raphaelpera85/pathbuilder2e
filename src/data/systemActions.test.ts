@@ -6,6 +6,7 @@ describe("system action compendium", () => {
     ["t20", "Tormenta20 — Livro Básico"],
     ["dnd5e", "Livro do Jogador — D&D 5e 2014"],
     ["ose", "Old-School Essentials — Livro de Regras"],
+    ["dnd35", "D&D 3.5 — Livro do Jogador"],
   ])("keeps %s actions isolated and sourced", (systemId, sourceBook) => {
     const actions = getSystemActionItems(systemId);
     expect(actions.length).toBeGreaterThan(0);

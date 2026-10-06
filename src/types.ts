@@ -24,7 +24,7 @@ export type PickerType =
 export type LocalizedString = Partial<Record<"pt-BR" | "en" | "es", string>>;
 
 /** Sistemas suportados pelo núcleo e IDs de extensões futuras. */
-export type RPGSystemId = "pf2e" | "dnd5e" | "t20" | "ose" | "pf1e" | (string & {});
+export type RPGSystemId = "pf2e" | "dnd5e" | "t20" | "ose" | "dnd35" | "pf1e" | (string & {});
 
 export interface IRPGSystem {
   id: RPGSystemId;
@@ -58,7 +58,7 @@ export interface IPickerItemData {
   traits?: string[];
   source?: { book?: string; page?: number };
   sourceApproximate?: boolean;
-  ruleset?: "remaster" | "legacy" | "both" | "needs_review" | "standard" | "padrao" | "advanced" | "classic" | "basico";
+  ruleset?: "remaster" | "legacy" | "both" | "needs_review" | "standard" | "2024" | "padrao" | "jogo_do_ano" | "advanced" | "classic" | "basico" | "v35";
   needs_review?: boolean;
   id?: string;
   names?: Partial<Record<"pt-BR" | "en" | "es", string>>;

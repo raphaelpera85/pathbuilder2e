@@ -2,11 +2,12 @@
 
 Este é o backlog executável para transformar o construtor atual em uma plataforma com regras isoladas por sistema. O sistema selecionado deve controlar criação, cálculos, catálogo, ficha, exportação e persistência. Nenhum registro de PF2e, OSE, Tormenta20 ou D&D 5e deve aparecer em outro sistema sem uma conversão explícita.
 
-Progresso recente: fichas T20, D&D 5e e OSE agora carregam `catalogVersion` compatível com o ruleset; a hidratação preenche a versão quando ausente, mantém fichas legadas abertas e bloqueia a persistência de uma versão explicitamente incompatível. PDFs editáveis também exibem a identidade do catálogo.
-
-O fluxo de criação também ganhou revisão final visível no core e no OSE, com escolhas, pendências e identidade do catálogo antes da confirmação. A auditoria OSE Classic foi corrigida para contar as sete classes jogáveis, em vez de apenas as três classes raciais.
-
-Correção adicional: o personagem D&D 5e padrão agora nasce com escolhas raciais obrigatórias já preenchidas (como a ferramenta do Anão), e a troca de raça limpa escolhas condicionais antigas antes da validação.
+Progresso recente:
+- **Supabase e Persistência de Fichas Multi-Sistema**: O Supabase (`characters` e `character_revisions`) atua como a fonte central de verdade para armazenamento de fichas de todos os 5 sistemas (`pf2e`, `t20`, `dnd5e`, `ose`, `dnd35`).
+- **Roteamento e Hidratação de Fichas**: Corrigido o `AccountPortal.tsx` e `PortalPages.tsx` para carregar, abrir o assistente e restaurar versões históricas de fichas de D&D 3.5 via eventos padronizados (`pathbuilder:load-dnd35-character`, `pathbuilder:open-dnd35-wizard`), mantendo isolamento absoluto entre sistemas.
+- **Matriz de Testes Completa**: Adicionado teste de ciclo completo de persistência e edição de D&D 3.5 em `src/services/system-editor-matrix.test.ts`, validando round-trip no Supabase, regras `v35`, talentos, perícias e equipamentos.
+- **Tipagem e Contratos**: Alinhados `RPGSystemId` e `IPickerItemData.ruleset` em `src/types.ts` para suportar `dnd35`, `v35`, `2024` e `jogo_do_ano`.
+- **Auditoria de Cobertura e Testes**: 100% de testes verdes (119 arquivos, 1625 testes aprovados), `npm run audit:system:coverage` exit 0 ("ok": true em todos os 5 escopos), e build de produção (`tsc -b && vite build`) limpo em 1.25s. Grafo de conhecimento (`graphify update .`) atualizado com 17.531 nós e 26.234 arestas.
 
 Para a matriz completa de tarefas por categoria (criação, classes, raças, itens, magias, talentos, perícias, vantagens/desvantagens, PDF, Supabase e gates de aceite), consulte também `TODO_COBERTURA_SISTEMAS.md`.
 
@@ -692,4 +693,4 @@ Estado do site: OSE completo; PF2e (sistema principal) com os livros locais já 
 - Champions of Valor: regiões e organizações (pp.73-105) deixadas de fora: texto de ambientação (cultos/guildas), sem opções de personagem.
 - Defensores da Fé (edição BR, 98 págs., clérigos/paladinos; **não é texto digital limpo**: camada OCR ruidosa, exige conferência por imagem; regras de 2000, tipo 3.0 — conferir contra o PHB 3.5 antes de usar no criador): 14 talentos feitos (`dnd35DefensoresFeats.ts`, pp.19-20). Pendente: equipamento sagrado e itens mágicos (pp.21-26), classes de prestígio (pp.51-75; feitas 14 de 14 em `dnd35DefensoresPrestige.ts`: Caçador dos Mortos, Cavaleiro do Cálice, Cavaleiro do Círculo Central, Contemplativo, Devoto da Guerra, Exorcista Sagrado, Hospitalário, Inquiridor Consagrado, Inquisidor da Igreja, Libertador Sagrado, Mestre das Mortalhas, Oráculo Divino, Punho Sagrado, Templário (capítulo 3 completo)), magias (pp.76-92) e domínios de prestígio (pp.77-92), montarias especiais, canalização.
 - Defensores da Fé: 14 domínios de prestígio feitos (`dnd35DefensoresDomains.ts`, pp.77-80, 24 magias novas †). Pendente: descrições das magias novas (pp.81-92), listas de magias novas por classe (pp.76-77), equipamento sagrado/itens (pp.21-26), montarias especiais e canalização (Cap. 1).
-- Defensores da Fé: 7 magias novas feitas (`dnd35DefensoresSpells.ts`, pp.81-82, + Lista de Armas dos Deuses). Faltam as magias das pp.82-92 (de Aspecto da Divindade Maior em diante).
+- Defensores da Fé: 7 magias novas feitas (`dnd35DefensoresSpells.ts`, pp.81-82, + Lista de Armas dos Deuses). Feitas até a p.86 (51 magias; capítulo 4 completo, pp.81-92). Listas de magias novas por classe (pp.76-77) feitas em dnd35DefensoresSpellLists.ts.

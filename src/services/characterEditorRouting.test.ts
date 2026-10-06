@@ -7,6 +7,7 @@ describe("character editor routing", () => {
     ["t20", "core"],
     ["dnd5e", "core"],
     ["ose", "ose"],
+    ["dnd35", "dnd35"],
   ])("routes %s to its own editor", (systemId, expectedRoute) => {
     expect(getCharacterEditorRoute(systemId)).toBe(expectedRoute);
   });
@@ -31,6 +32,7 @@ describe("character editor routing", () => {
     ["dnd5e", "standard"],
     ["ose", "advanced"],
     ["ose", "classic"],
+    ["dnd35", "v35"],
   ])("hydrates %s with row metadata before opening its editor", (systemId, ruleset) => {
     const hydrated = hydrateCharacterForEditor(systemId, ruleset, {
       id: "character-1",
@@ -43,7 +45,7 @@ describe("character editor routing", () => {
     expect(hydrated.systemId).toBe(systemId);
     expect(hydrated.ruleset).toBe(ruleset);
     expect(hydrated.id).toBe("character-1");
-    if (systemId === "t20" || systemId === "dnd5e" || systemId === "ose") {
+    if (systemId === "t20" || systemId === "dnd5e" || systemId === "ose" || systemId === "dnd35") {
       expect(hydrated.catalogVersion).toMatch(new RegExp(`^${systemId}-`));
     }
   });

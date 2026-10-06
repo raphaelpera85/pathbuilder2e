@@ -7,7 +7,7 @@ type ActionDefinition = {
   summary: string;
   description: string;
   book: string;
-  ruleset: "standard" | "padrao" | "advanced" | "classic" | "basico";
+  ruleset: "standard" | "padrao" | "advanced" | "classic" | "basico" | "v35";
 };
 
 const ACTIONS: ActionDefinition[] = [
@@ -154,6 +154,60 @@ const ACTIONS: ActionDefinition[] = [
     description: "A magia deve estar preparada e disponível para a classe; sofrer dano ou perder a concentração durante a conjuração pode interromper o efeito conforme a regra aplicável.",
     book: "Old-School Essentials — Livro de Regras",
     ruleset: "advanced",
+  },
+  {
+    id: "dnd35.action.attack",
+    systemId: "dnd35",
+    name: "Ataque",
+    summary: "Ação padrão para desferir um ataque corpo a corpo ou à distância.",
+    description: "Faça uma jogada de ataque com sua arma ou ataque desarmado contra a Classe de Armadura do oponente.",
+    book: "D&D 3.5 — Livro do Jogador",
+    ruleset: "v35",
+  },
+  {
+    id: "dnd35.action.full_attack",
+    systemId: "dnd35",
+    name: "Ataque Total",
+    summary: "Ação de rodada completa para desferir múltiplos ataques.",
+    description: "Permite usar todos os ataques conferidos pelo Bônus Base de Ataque alto (+6/+1, +11/+6/+1, etc.) ou combate com duas armas.",
+    book: "D&D 3.5 — Livro do Jogador",
+    ruleset: "v35",
+  },
+  {
+    id: "dnd35.action.cast",
+    systemId: "dnd35",
+    name: "Conjurar Magia",
+    summary: "Ação padrão para conjurar a maioria das magias arcanas ou divinas.",
+    description: "Geralmente requer ação padrão e provoca ataque de oportunidade, a menos que conjurada defensivamente com teste de Concentração.",
+    book: "D&D 3.5 — Livro do Jogador",
+    ruleset: "v35",
+  },
+  {
+    id: "dnd35.action.move",
+    systemId: "dnd35",
+    name: "Movimentar-se",
+    summary: "Ação de movimento para percorrer o deslocamento do personagem.",
+    description: "Permite mover até o seu deslocamento terrestre ou equivalente, sacar uma arma com BBA +1 ou levantar-se.",
+    book: "D&D 3.5 — Livro do Jogador",
+    ruleset: "v35",
+  },
+  {
+    id: "dnd35.action.charge",
+    systemId: "dnd35",
+    name: "Investida",
+    summary: "Ação de rodada completa para mover até o dobro do deslocamento e atacar.",
+    description: "Concede +2 na jogada de ataque corpo a corpo no fim da linha reta, mas impõe -2 na Classe de Armadura até o próximo turno.",
+    book: "D&D 3.5 — Livro do Jogador",
+    ruleset: "v35",
+  },
+  {
+    id: "dnd35.action.total_defense",
+    systemId: "dnd35",
+    name: "Defesa Total",
+    summary: "Ação padrão concedendo +4 de bônus de esquiva na CA.",
+    description: "Você se dedica inteiramente à defesa; não pode realizar ataques nem ataques de oportunidade enquanto em defesa total.",
+    book: "D&D 3.5 — Livro do Jogador",
+    ruleset: "v35",
   },
 ];
 

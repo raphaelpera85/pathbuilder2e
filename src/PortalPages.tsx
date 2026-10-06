@@ -1112,6 +1112,7 @@ function LibraryPage() {
 
   useEffect(() => {
     const handleOpenWizard = () => setIsOseWizardOpen(true);
+    const handleOpenDnd35Wizard = () => setIsDnd35WizardOpen(true);
     const handleOpenCoreWizard = (event: CustomEvent<{ system: SupportedCoreSystem }>) => {
       if (event.detail?.system === "t20" || event.detail?.system === "dnd5e") setCoreWizardSystem(event.detail.system);
     };
@@ -1121,6 +1122,10 @@ function LibraryPage() {
     const handleLoadOse = (e: CustomEvent<OseCharacterCreatedData>) => {
       clearPendingCharacter();
       if (e.detail) setActiveOseCharacter(e.detail);
+    };
+    const handleLoadDnd35 = (e: CustomEvent<Dnd35CharacterCreatedData>) => {
+      clearPendingCharacter();
+      if (e.detail) setActiveDnd35Character(e.detail);
     };
     const handleLoadCore = (e: CustomEvent<MultiSystemCharacter>) => {
       clearPendingCharacter();
@@ -1137,6 +1142,7 @@ function LibraryPage() {
         sessionStorage.removeItem("pathbuilder:pending-character-load");
         const parsed = JSON.parse(pending) as { systemId?: string; data?: unknown };
         if (parsed.systemId === "ose" && parsed.data) handleLoadOse({ detail: parsed.data as OseCharacterCreatedData } as CustomEvent<OseCharacterCreatedData>);
+        if (parsed.systemId === "dnd35" && parsed.data) handleLoadDnd35({ detail: parsed.data as Dnd35CharacterCreatedData } as CustomEvent<Dnd35CharacterCreatedData>);
         if ((parsed.systemId === "t20" || parsed.systemId === "dnd5e") && parsed.data) handleLoadCore({ detail: parsed.data as MultiSystemCharacter } as CustomEvent<MultiSystemCharacter>);
       } catch {
         // Ignore unavailable or malformed session handoff data.
@@ -1147,18 +1153,26 @@ function LibraryPage() {
         sessionStorage.removeItem("pathbuilder:auto-open-ose-wizard");
         setIsOseWizardOpen(true);
       }
+      if (sessionStorage.getItem("pathbuilder:auto-open-dnd35-wizard") === "true") {
+        sessionStorage.removeItem("pathbuilder:auto-open-dnd35-wizard");
+        setIsDnd35WizardOpen(true);
+      }
     } catch {
       // noop
     }
     window.addEventListener("pathbuilder:open-ose-wizard", handleOpenWizard);
+    window.addEventListener("pathbuilder:open-dnd35-wizard", handleOpenDnd35Wizard);
     window.addEventListener("pathbuilder:open-core-wizard", handleOpenCoreWizard as EventListener);
     window.addEventListener("pathbuilder:load-ose-character", handleLoadOse as EventListener);
+    window.addEventListener("pathbuilder:load-dnd35-character", handleLoadDnd35 as EventListener);
     window.addEventListener("pathbuilder:load-core-character", handleLoadCore as EventListener);
     window.setTimeout(consumePendingCharacter, 0);
     return () => {
       window.removeEventListener("pathbuilder:open-ose-wizard", handleOpenWizard);
+      window.removeEventListener("pathbuilder:open-dnd35-wizard", handleOpenDnd35Wizard);
       window.removeEventListener("pathbuilder:open-core-wizard", handleOpenCoreWizard as EventListener);
       window.removeEventListener("pathbuilder:load-ose-character", handleLoadOse as EventListener);
+      window.removeEventListener("pathbuilder:load-dnd35-character", handleLoadDnd35 as EventListener);
       window.removeEventListener("pathbuilder:load-core-character", handleLoadCore as EventListener);
     };
   }, []);

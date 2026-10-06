@@ -1,16 +1,16 @@
-# Graph Report - pathbuilder2e_local  (2026-10-06)
+# Graph Report - pathbuilder2e_local  (2026-09-30)
 
 ## Corpus Check
-- 1392 files · ~15,691,038 words
+- 1339 files · ~15,479,269 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 17531 nodes · 26234 edges · 1119 communities (975 shown, 128 thin omitted)
-- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 428 edges (avg confidence: 0.86)
+- 17303 nodes · 25647 edges · 1105 communities (960 shown, 128 thin omitted)
+- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 425 edges (avg confidence: 0.86)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `90729c75`
+- Built from commit: `c81272ac`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -20,19 +20,18 @@
 - characters.ts
 - js/pdf-lib.min.js
 - public/js/pdf-lib.min.js
-- AccountPortal.tsx
+- characterSync.ts
 - compilerOptions
 - Communities (112 total, 15 thin omitted)
 - types.ts
-- PortalPages.tsx
+- PickerModal.tsx
 - sync-item-specific-images-to-supabase.cjs
 - i
 - i
 - oseRules.ts
-- PF2E_ENGINE
 - sync-feats.cjs
 - sync-feats.js
-- escapeHtml
+- .renderModalLeftList
 - merge-and-sync-all.cjs
 - @supabase/supabase-js
 - audit-catalog.cjs
@@ -77,7 +76,7 @@
 - validate_assets
 - diagnostics.py
 - Available Scripts
-- edge_data
+- paths.py
 - audit-catalog-supabase-reconciliation.cjs
 - generate-core-system-compendium-migration.cjs
 - ARPG Subsystems Deep-Dive (load on demand)
@@ -101,7 +100,7 @@
 - extract-pc2-class-feats.cjs
 - extract-som-class-feats.cjs
 - mass_compendium_revamp.cjs
-- generate-dnd35-frostburn-seed.ts
+- _extract_with_adaptive_retry
 - enrich_final_compendium_sources.cjs
 - inspect_remaining_flagged.cjs
 - apply-compendium-audit.cjs
@@ -184,8 +183,8 @@
 - symbol_resolution.py
 - RPG
 - llm.py
-- multi-system-catalog.test.ts
-- sync-dnd5e-land-circle-spells-to-supabase.cjs
+- PortalPages.tsx
+- _call_llm
 - audit-local-weapon-variants.cjs
 - sync-weapon-catalog-to-supabase.cjs
 - enrichAllFeatsWithFullMechanics
@@ -194,13 +193,13 @@
 - audit-local-visual-acceptance.cjs
 - serve.py
 - taste-application/scripts/taste/falapi.py
-- html.py
+- graphify/export.py
 - extract_pascal
 - scripts/falapi.py
 - graphify/cli.py
 - instinct-cli.py
 - shared.mjs
-- sanitize_metadata
+- security.py
 - multiSystemCharacter.ts
 - detect.py
 - taste-application/scripts/taste/grade.py
@@ -208,7 +207,7 @@
 - test_parse_instinct.py
 - taste-distillation/scripts/taste/grade.py
 - reflect.py
-- _is_type_like_definition
+- escapeHtml
 - taste-application/scripts/taste/timeline.py
 - Migration notes: godot-genre-action-rpg
 - Path
@@ -239,7 +238,7 @@
 - _make_id
 - Rust Development Patterns
 - ObservationEvent
-- ResolveTests
+- tasteforge/resolve.py
 - AssetTests
 - Django Security Best Practices
 - Kotlin Exposed Patterns
@@ -256,7 +255,7 @@
 - taste-distillation/scripts/taste/frames.py
 - ClickHouse Analytics Patterns
 - Migration notes: godot-rpg-stats
-- LineageTests
+- tasteforge/__init__.py
 - /graphify
 - Perl Testing Patterns
 - How it works
@@ -288,8 +287,8 @@
 - Complete API Reference
 - Django Development Patterns
 - Checklist
-- markdown.py
-- Path
+- sources.ts
+- extract
 - taste-application/scripts/taste/cadence.py
 - watch.py
 - Timeline Editing Guide
@@ -424,7 +423,7 @@
 - FoundationModels: On-Device LLM (iOS 26)
 - GateGuard — Fact-Forcing Pre-Action Gate
 - _normalize_ts_import_types
-- tasteforge/resolve.py
+- admin.ts
 - install.py
 - multigraph_compat.py
 - Homelab VLAN Segmentation
@@ -444,7 +443,7 @@
 - Spring Boot Development Patterns
 - validate_effect_recipe
 - Taste Application
-- tasteforge/__init__.py
+- test_timeline_export.py
 - Taste
 - Streaming & Playback
 - Agent Payment Execution (x402)
@@ -563,7 +562,6 @@
 - ECC Recipes
 - Finance Billing Ops
 - Flutter/Dart Code Review Best Practices
-- MinHash
 - Growth Log Skill
 - JPA/Hibernate Patterns
 - Laravel Verification Loop
@@ -619,7 +617,7 @@
 - _parse_stream_json
 - Core Pattern
 - 2. DaVinci Resolve
-- Path
+- _looks_like_context_exceeded
 - Initiative Systems That Kill Momentum
 - Unified Memory
 - Workspace Surface Audit
@@ -718,7 +716,7 @@
 - Ralphinho RFC Pipeline
 - Using Animated images in Remotion
 - Using images in Remotion
-- dnd35Classes.ts
+- dnd35Progression.ts
 - Social Graph Ranker
 - Exhaustive Equipment Lists That Slow Play
 - parse_urls
@@ -847,7 +845,7 @@
 - Getting video duration with Mediabunny
 - sequencing.md
 - scan_dir_to_json
-- transcribe.py
+- dnd5eOptions.ts
 - Examples
 - Transcode
 - Agent Self-Evaluation Report Template
@@ -1021,7 +1019,7 @@
 - Ni
 - io
 - Zs
-- dnd35FeatTable.ts
+- dnd35BonusFeats.ts
 - Single Character Required for Task
 - Complex Initiative System
 - Rules Requiring GM Interpretation
@@ -1041,12 +1039,12 @@
 - Wound Penalties Creating Death Spiral
 - sync-core-actions-conditions-to-supabase.cjs
 - dnd35ClassFeatures.ts
-- getCatalogVersion
-- _code_fingerprint
+- AccountPortal.tsx
+- _always_on
 - Web Interface Guidelines
 - 🔁 Fluxo de Execução Obrigatório
 - _relativize_ids_in
-- _ip_is_blocked
+- sync-dnd5e-domain-spells-to-supabase.cjs
 - audit-supabase-character-sync.cjs
 - audit-character-metadata-supabase.cjs
 - Tabletop RPG Design
@@ -1060,27 +1058,26 @@
 - audit-local-rls-contract.cjs
 - _update_registry
 - t20Compendium.ts
-- dependencies
 - sync-core-skills-to-supabase.cjs
 - sync-t20-spells-to-supabase.cjs
-- rename_preview.py
+- _label_batch_with_retry
 - audit-supabase-campaigns-authenticated.cjs
 - audit-system-coverage.cjs
-- audit-books.cjs
+- _ImageRef
 - generate-ose-catalog-migration.mjs
-- TODO — Construtores por sistema: Pathfinder 2e, Tormenta20, D&D 5e e Old-School Essentials
+- audit-local-locale-usage.cjs
 - verify_t20_power.py
 - _redact_home_paths
 - 2026-09-12 — Construtores multi-sistema
-- devDependencies
+- pf2e_engine.js
 - audit-playwright-multicharacter.cjs
 - extract_rust
-- build_tree
-- dnd35Alignment.test.ts
+- check_graph_file_size_cap
+- _extract_python_rationale
 - audit-local-responsive.cjs
 - extract_go
 - Metodologia Gauntlet Loop (Obrigatória no Antigravity)
-- dnd35CovMagicItems.ts
+- extract_fortran
 - provenance.py
 - pf1eClasses.ts
 - xlsx_extract_structure
@@ -1091,40 +1088,28 @@
 - extract_elixir
 - audit-image-metadata-supabase.cjs
 - dnd35Equipment.ts
-- sync-dnd5e-sorcerer-metamagic-to-supabase.cjs
-- Fase 1 — catálogo Tormenta20
+- Item
+- _json_fragment_candidates
 - _resolve_php_type_references
-- _collision_rank
-- Fase 2 — catálogo D&D 5e clássico (2014)
+- _platform_skill_destination
+- _remove_marker_section
 - _get_c_func_name
 - capture-local-responsive.cjs
-- generate-dnd35-seed.ts
+- dnd35Gear.ts
 - dnd35StartingWealth.ts
 - Dnd35CharacterCreatorModal.test.tsx
 - _UF
-- _defines_id
-- _norm
-- resolve_pascal_inherited_calls
-- Build with TypeSafe
-- consolidar_autores_livros.py
-- dnd35CovFeats.test.ts
-- dnd35CovPrestige.ts
-- dnd35CovSubstitutions.ts
-- dnd35DefensoresFeats.ts
-- _pick_winner
-- _resolve_cross_file_imports
-- introspect_postgres
-- _content_token_swap
-- _uninstall_claude_hook
-- .redirect_request
-- renomear_discworld_rpg_autor.py
+- dnd35FeatTable.ts
+- _resolve_python_member_calls
+- audit-local-accessibility.cjs
+- audit-local-interactions.cjs
 
 ## God Nodes (most connected - your core abstractions)
 1. `PathbuilderApp` - 219 edges
 2. `_make_id()` - 188 edges
 3. `_read_text()` - 178 edges
 4. `dispatch_command()` - 128 edges
-5. `vitest` - 120 edges
+5. `vitest` - 93 edges
 6. `_file_stem()` - 83 edges
 7. `Communities (112 total, 15 thin omitted)` - 78 edges
 8. `walk()` - 64 edges
@@ -1134,27 +1119,27 @@
 ## Surprising Connections (you probably didn't know these)
 - `add_node()` --calls--> `sanitize_metadata()`  [INFERRED]
   temp_repos/graphify/graphify/extractors/bash.py → .agents/skills/graphify/security.py
-- `extract_bash()` --calls--> `_make_id()`  [EXTRACTED]
-  temp_repos/graphify/graphify/extractors/bash.py → .agents/skills/graphify/extractors/base.py
-- `walk()` --calls--> `_make_id()`  [EXTRACTED]
-  temp_repos/graphify/graphify/extractors/bash.py → .agents/skills/graphify/extractors/base.py
-- `walk_calls()` --calls--> `_make_id()`  [EXTRACTED]
-  temp_repos/graphify/graphify/extractors/bash.py → .agents/skills/graphify/extractors/base.py
+- `createOseEditablePdf()` --references--> `{ PDFDocument }`  [EXTRACTED]
+  src/services/osePdfExport.ts → scripts/audit-books.cjs
+- `createCoreEditablePdf()` --references--> `{ PDFDocument }`  [EXTRACTED]
+  src/services/corePdfExport.ts → scripts/audit-books.cjs
 - `extract_bash()` --calls--> `_file_stem()`  [EXTRACTED]
+  temp_repos/graphify/graphify/extractors/bash.py → .agents/skills/graphify/extractors/base.py
+- `extract_bash()` --calls--> `_make_id()`  [EXTRACTED]
   temp_repos/graphify/graphify/extractors/bash.py → .agents/skills/graphify/extractors/base.py
 
 ## Import Cycles
 - None detected.
 
-## Communities (1119 total, 128 thin omitted)
+## Communities (1105 total, 128 thin omitted)
 
 ### Community 0 - "pf2e_data.js"
 Cohesion: 0.01
 Nodes (225): ACTION_SPANISH_NAMES, additionalAdvancedFirearms, additionalGunsGearsFirearms, ALL_HERITAGE_DETAILS, ARCHETYPE_CLASS_SECTION_REFERENCES, backpackBallista, backpackCatapult, BATTLECRY_ARCHETYPES (+217 more)
 
 ### Community 2 - "characters.ts"
-Cohesion: 0.12
-Nodes (35): assertSafeCharacterDocument, buildCharacterRevisionHistory(), cacheLocalCharacter(), CHARACTER_RULESETS_BY_SYSTEM, CharacterRevision, CharacterRuleset, CharacterSaveConflictInfo, CharacterSaveResult (+27 more)
+Cohesion: 0.11
+Nodes (37): CURRENT_CATALOG_VERSIONS, getCatalogVersion(), isCatalogVersionCompatible(), assertSafeCharacterDocument, buildCharacterRevisionHistory(), cacheLocalCharacter(), CHARACTER_RULESETS_BY_SYSTEM, CharacterRevision (+29 more)
 
 ### Community 4 - "js/pdf-lib.min.js"
 Cohesion: 0.05
@@ -1164,9 +1149,9 @@ Nodes (15): cs(), Et(), Gr(), hs(), jt(), Ki(), Kr(), ls() (+7 more)
 Cohesion: 0.05
 Nodes (15): cs(), Et(), Gr(), hs(), jt(), Ki(), Kr(), ls() (+7 more)
 
-### Community 6 - "AccountPortal.tsx"
-Cohesion: 0.12
-Nodes (41): AccountPortal(), AuthMode, updateAccountViewState(), getCharacterEditorRoute(), CharacterData, backoffDelayMs(), CharacterMergeResult, COLLECTION_KEYS (+33 more)
+### Community 6 - "characterSync.ts"
+Cohesion: 0.13
+Nodes (34): CharacterData, CharacterMergeResult, COLLECTION_KEYS, deepEqual(), entryIdentity(), forgetCloudRevision(), indexByEntryIdentity(), isPendingEntry() (+26 more)
 
 ### Community 7 - "compilerOptions"
 Cohesion: 0.11
@@ -1178,11 +1163,11 @@ Nodes (78): Communities (112 total, 15 thin omitted), Community 0 - "pf2e_data.j
 
 ### Community 9 - "types.ts"
 Cohesion: 0.04
-Nodes (66): ActionDefinition, ACTIONS, getSystemActionItems(), OSE_BASICO_ACTIONS, OSE_CLASSIC_ACTIONS, SYSTEM_ACTION_DEFINITIONS, getSystemRuleItems(), RuleDefinition (+58 more)
+Nodes (63): react-dom, ActionDefinition, ACTIONS, getSystemActionItems(), OSE_BASICO_ACTIONS, OSE_CLASSIC_ACTIONS, SYSTEM_ACTION_DEFINITIONS, DND_CONDITIONS (+55 more)
 
-### Community 10 - "PortalPages.tsx"
-Cohesion: 0.03
-Nodes (114): AccountViewState, listeners, snapshot, subscribe(), useAccountViewState(), LegacyRecord, CoreCatalogEntry, duplicateDriveFileIds (+106 more)
+### Community 10 - "PickerModal.tsx"
+Cohesion: 0.07
+Nodes (59): localizeSourceBookName(), getItemDisplayName(), LocaleSwitcher(), useI18n(), formatItemCategory(), formatItemPrice(), ItemCatalogRecord, itemIdentityKeys() (+51 more)
 
 ### Community 11 - "sync-item-specific-images-to-supabase.cjs"
 Cohesion: 0.21
@@ -1198,7 +1183,7 @@ Nodes (17): a(), as(), _e(), i(), a(), l(), s(), is() (+9 more)
 
 ### Community 14 - "oseRules.ts"
 Cohesion: 0.05
-Nodes (88): pdf-lib, ACROBAT_BOOK, AcrobatRow, problems, THIEF_BOOK, ThiefRow, fixture, Audit (+80 more)
+Nodes (87): pdf-lib, @testing-library/react, ACROBAT_BOOK, AcrobatRow, problems, THIEF_BOOK, ThiefRow, fixture (+79 more)
 
 ### Community 16 - "sync-feats.cjs"
 Cohesion: 0.11
@@ -1208,9 +1193,9 @@ Nodes (17): afterFeats, afterFeatsStart, arrayBody, beforeFeats, endIndex, feats
 Cohesion: 0.11
 Nodes (17): afterFeats, afterFeatsStart, arrayBody, beforeFeats, endIndex, featsArrayCode, featsEndMarkerIndex, featsSection (+9 more)
 
-### Community 19 - "escapeHtml"
-Cohesion: 0.11
-Nodes (13): escapeHtml(), escapeInlineArgument(), findCatalogRecord(), getCatalogDisplayName(), getObjectCatalogRecords(), getWeaponVisualAlt(), getWeaponVisualKey(), getWeaponVisualUrl() (+5 more)
+### Community 19 - ".renderModalLeftList"
+Cohesion: 0.13
+Nodes (10): findCatalogRecord(), getCatalogDisplayName(), getObjectCatalogRecords(), getWeaponVisualKey(), getWeaponVisualUrl(), localizeSourceBookName(), mergeCatalogRecords(), normalizeCatalogLabel() (+2 more)
 
 ### Community 20 - "merge-and-sync-all.cjs"
 Cohesion: 0.08
@@ -1234,7 +1219,7 @@ Nodes (12): Configurar o Supabase, Construtores por sistema, Conta administrativ
 
 ### Community 26 - "_read_text"
 Cohesion: 0.02
-Nodes (210): _import_java(), _walk_scoped(), _read_text(), _c_collect_type_refs(), _cpp_collect_type_refs(), _cpp_local_var_types(), _csharp_attribute_names(), _csharp_bare_call_name() (+202 more)
+Nodes (212): _import_java(), _walk_scoped(), _read_text(), _c_collect_type_refs(), _cpp_collect_type_refs(), _cpp_local_var_types(), _csharp_attribute_names(), _csharp_bare_call_name() (+204 more)
 
 ### Community 27 - "compilerOptions"
 Cohesion: 0.22
@@ -1289,8 +1274,8 @@ Cohesion: 0.26
 Nodes (5): ClientInputError, PathbuilderHandler, PayloadTooLargeError, ValueError, Pathbuilder 2e Local - Servidor HTTP e API de Personagens Executa um servidor…
 
 ### Community 40 - "_build_server"
-Cohesion: 0.07
-Nodes (71): _default_model_for_backend(), Return configured model override or backend default model., attach_graph_impact(), bold(), build_community_labels(), _c(), _ci_icon(), _classify() (+63 more)
+Cohesion: 0.06
+Nodes (72): _default_model_for_backend(), Return configured model override or backend default model., attach_graph_impact(), bold(), build_community_labels(), _c(), _ci_icon(), _classify() (+64 more)
 
 ### Community 41 - "Supabase"
 Cohesion: 0.11
@@ -1337,8 +1322,8 @@ Cohesion: 0.24
 Nodes (11): ae(), he(), le(), ne(), qe(), re(), se(), ue() (+3 more)
 
 ### Community 53 - "pdfFormExport.ts"
-Cohesion: 0.17
-Nodes (15): CharacterDocument, cleanWeaponName(), fillCharacterPdfForm(), getLocalizedFeatDetails(), localizeCatalogItem(), localizeDamageType(), localizeSense(), localizeTrait() (+7 more)
+Cohesion: 0.10
+Nodes (23): booksDir, collectFiles(), defaultBooksDirs, fs, path, { PDFDocument }, positionalArgs, { spawnSync } (+15 more)
 
 ### Community 54 - "merge-catalog-expansions.cjs"
 Cohesion: 0.11
@@ -1368,9 +1353,9 @@ Nodes (22): _canonical_edge(), _count_extra(), diagnose_extraction(), diagnose_f
 Cohesion: 0.05
 Nodes (37): Balance testing, Core stats Resource (baseline reference), Damage formula (centralized), Elite: derived stat dependency graph, Elite: equipment comparison tooltip, Elite RPG Stat Patterns (load on demand), Elite: stat caps, Equipment modifier registration (+29 more)
 
-### Community 64 - "edge_data"
-Cohesion: 0.07
-Nodes (37): _estimate_tokens(), _hr(), print_benchmark(), Graph, _query_subgraph_tokens(), Token-reduction benchmark - measures how much context graphify saves vs naive…, Print a human-readable benchmark report., Return unicode_char if stdout can encode it, else ascii_fallback. Windows… (+29 more)
+### Community 64 - "paths.py"
+Cohesion: 0.06
+Nodes (45): _estimate_tokens(), _hr(), print_benchmark(), Graph, _query_subgraph_tokens(), Token-reduction benchmark - measures how much context graphify saves vs naive…, Print a human-readable benchmark report., Return unicode_char if stdout can encode it, else ascii_fallback. Windows… (+37 more)
 
 ### Community 65 - "audit-catalog-supabase-reconciliation.cjs"
 Cohesion: 0.18
@@ -1385,12 +1370,12 @@ Cohesion: 0.06
 Nodes (34): Ability / skill-tree glue, Architecture overview, ARPG Subsystems Deep-Dive (load on demand), Combat damage (diminishing armor), Common pitfalls, Enemy scaling, Equipment & stats, Loot generation (+26 more)
 
 ### Community 68 - "Dnd35CharacterCreatorModal.tsx"
-Cohesion: 0.15
-Nodes (21): ABILITY_BY_ABBR, CLASS_BY_NAME, dnd35CheckFeatPrereqs(), dnd35CheckPrereqPart(), dnd35FeatPrereqProblems(), dnd35MissingPrereqs(), Dnd35PrereqCheck, Dnd35PrereqContext (+13 more)
+Cohesion: 0.14
+Nodes (19): DND35_ALIGNMENTS, Dnd35Alignment, dnd35AlignmentAllowedForClass(), dnd35ClericAlignmentAllowed(), dnd35ParseAlignment(), norm(), Dnd35Class, DND35_DEITIES (+11 more)
 
 ### Community 69 - "vitest"
-Cohesion: 0.04
-Nodes (16): vitest, DEFENSORES_PRESTIGE_CLASSES, DefensoresPrestigeClass, DefensoresPrestigeLevel, PF1E_RACE_IDS, PF1E_RACES, Pf1eAbilityName, Pf1eRace (+8 more)
+Cohesion: 0.05
+Nodes (13): vitest, PF1E_RACE_IDS, PF1E_RACES, Pf1eAbilityName, Pf1eRace, loadBackgroundBoostConstraints(), loadCatalogMerger(), loadCollectionRemover() (+5 more)
 
 ### Community 70 - "Pathbuilder 2e Local — Documento de Situação, Pendências e Melhorias"
 Cohesion: 0.05
@@ -1401,8 +1386,8 @@ Cohesion: 0.04
 Nodes (54): Arquivo — log de evidências de `TODO_COBERTURA_E_BUGS.md`, Critério de conclusão, Estado confirmado nesta sessão, Imagens dedicadas de armas, Imagens dedicadas de armas, Imagens dedicadas de armas, Imagens dedicadas de armas, Imagens dedicadas de armas (+46 more)
 
 ### Community 74 - "ingest.py"
-Cohesion: 0.12
-Nodes (30): _detect_url_type(), _download_binary(), _fetch_arxiv(), _fetch_html(), _fetch_tweet(), _fetch_webpage(), _html_to_markdown(), ingest() (+22 more)
+Cohesion: 0.07
+Nodes (46): _detect_url_type(), _download_binary(), _fetch_arxiv(), _fetch_html(), _fetch_tweet(), _fetch_webpage(), _html_to_markdown(), ingest() (+38 more)
 
 ### Community 75 - "build_feats_compendium.cjs"
 Cohesion: 0.12
@@ -1437,8 +1422,8 @@ Cohesion: 0.20
 Nodes (9): archFlagged, bgFlagged, dataFilePath, fs, path, petFlagged, sandbox, source (+1 more)
 
 ### Community 83 - "extract.py"
-Cohesion: 0.03
-Nodes (149): _augment_js_reexport_edges(), _emit_rescued_import(), extract_astro(), extract_svelte(), extract_vue(), _import_js(), _import_lua(), _import_python() (+141 more)
+Cohesion: 0.02
+Nodes (200): _augment_js_reexport_edges(), _blank_keeping_newlines(), _emit_rescued_import(), extract_astro(), extract_c(), extract_cpp(), extract_csharp(), extract_groovy() (+192 more)
 
 ### Community 84 - "extract-gng-class-feats.cjs"
 Cohesion: 0.22
@@ -1456,9 +1441,9 @@ Nodes (6): classes, extractedFeats, fs, path, seenSlugs, txt
 Cohesion: 0.22
 Nodes (8): content, dataFilePath, eqContent, eqFilePath, fs, path, petsContent, petsFilePath
 
-### Community 88 - "generate-dnd35-frostburn-seed.ts"
-Cohesion: 0.05
-Nodes (43): arr(), ItemRow, items, json(), n(), out, q(), tail() (+35 more)
+### Community 88 - "_extract_with_adaptive_retry"
+Cohesion: 0.07
+Nodes (48): _best_cut(), bisect_slice(), expand_oversized_files(), FileSlice, is_splittable_text(), _pdf_text(), Path, Intra-file slicing for oversized text documents (#1369). The extraction packer… (+40 more)
 
 ### Community 89 - "enrich_final_compendium_sources.cjs"
 Cohesion: 0.25
@@ -1550,19 +1535,19 @@ Nodes (10): Community Hubs (Navigation), Corpus Check, God Nodes (most connected
 
 ### Community 114 - "scripts"
 Cohesion: 0.05
-Nodes (42): scripts, audit:books, audit:campaigns:supabase, audit:catalog, audit:catalog:provenance, audit:catalog:supabase, audit:character:matrix, audit:character-sync:supabase (+34 more)
+Nodes (41): scripts, audit:books, audit:campaigns:supabase, audit:catalog, audit:catalog:provenance, audit:catalog:supabase, audit:character:matrix, audit:character-sync:supabase (+33 more)
 
 ### Community 115 - "playwright"
-Cohesion: 0.08
-Nodes (15): playwright, { chromium }, fs, routes, { chromium }, fs, { chromium }, fs (+7 more)
+Cohesion: 0.18
+Nodes (6): playwright, { chromium }, fs, main(), { chromium }, fs
 
 ### Community 116 - "build.py"
 Cohesion: 0.05
 Nodes (77): _abs_identity(), build(), build_from_json(), build_merge(), _explained(), _in_new_graph(), _kept(), _prune_match() (+69 more)
 
 ### Community 117 - "package.json"
-Cohesion: 0.12
-Nodes (15): name, private, type, version, jsdom, react-dom, @testing-library/jest-dom, @types/react (+7 more)
+Cohesion: 0.06
+Nodes (34): dependencies, pdf-lib, react, react-dom, @supabase/supabase-js, typescript, @vercel/analytics, @vercel/speed-insights (+26 more)
 
 ### Community 118 - "audit-local-character-matrix.cjs"
 Cohesion: 0.31
@@ -1633,16 +1618,16 @@ Cohesion: 0.15
 Nodes (12): 1. Derived stats from base attributes (recompute, never store as truth), 2. XP curve + level-up, 3. Quest objective update driven by game events, Composition (build it from these skills), Core loop, Design knobs, Must-have systems, Patterns (+4 more)
 
 ### Community 171 - "llm.py"
-Cohesion: 0.02
-Nodes (192): _llm_tiebreak(), Batch-resolve ambiguous pairs (score in [low, high)) via LLM., _best_cut(), bisect_slice(), expand_oversized_files(), FileSlice, is_splittable_text(), _pdf_text() (+184 more)
+Cohesion: 0.07
+Nodes (50): backend_detection_env_vars(), _backend_env_keys(), _backend_supports_vision(), _bind_node_evidence(), _build_image_refs(), _claude_cli_available(), _custom_providers_path(), _dispatched_source_text() (+42 more)
 
-### Community 172 - "multi-system-catalog.test.ts"
-Cohesion: 0.03
-Nodes (80): equipmentCategory(), getCoreCompendiumEntries(), makeEntry(), sourceBooks, DND5E_BACKGROUND_SOURCE_BOOK, DND5E_BACKGROUNDS, Dnd5eBackground, DND5E_CLASSES (+72 more)
+### Community 172 - "PortalPages.tsx"
+Cohesion: 0.04
+Nodes (84): CoreCatalogEntry, equipmentCategory(), getCoreCompendiumEntries(), makeEntry(), sourceBooks, DND5E_BACKGROUND_SOURCE_BOOK, DND5E_BACKGROUNDS, Dnd5eBackground (+76 more)
 
-### Community 173 - "sync-dnd5e-land-circle-spells-to-supabase.cjs"
-Cohesion: 0.08
-Nodes (19): { createClient }, envPath, fs, path, spells, DND35_COV_SPELLS, Dnd35CovSpell, sp() (+11 more)
+### Community 173 - "_call_llm"
+Cohesion: 0.09
+Nodes (24): _anthropic_response_text(), _bedrock_inference_config(), _bedrock_response_text(), _call_llm(), _claude_cli_envelope(), _claude_cli_error(), _claude_cli_supports_json_schema(), _envelope_after_preamble() (+16 more)
 
 ### Community 174 - "audit-local-weapon-variants.cjs"
 Cohesion: 0.50
@@ -1653,8 +1638,8 @@ Cohesion: 0.25
 Nodes (6): { createClient }, fs, path, root, rows, supabase
 
 ### Community 179 - "i18n.tsx"
-Cohesion: 0.04
-Nodes (50): {fontFamily}, react, @testing-library/react, ActionDefinition, PF2E_ACTIONS_CATALOG, RAW_ACTIONS, locales, GUNS_GEARS_EQUIPMENT (+42 more)
+Cohesion: 0.03
+Nodes (66): {fontFamily}, react, AccountViewState, listeners, snapshot, subscribe(), useAccountViewState(), ActionDefinition (+58 more)
 
 ### Community 180 - "TODO — Cobertura completa dos construtores por sistema"
 Cohesion: 0.08
@@ -1666,27 +1651,27 @@ Nodes (4): { chromium }, fs, locales, viewports
 
 ### Community 182 - "serve.py"
 Cohesion: 0.04
-Nodes (76): _ApiKeyMiddleware, _bfs(), _build_http_app(), _communities_from_graph(), _complete_induced_edges(), _compute_idf(), _dfs(), _display_graph_path() (+68 more)
+Nodes (85): edge_datas(), Return every edge attribute dict for (u, v); always a list., Strip control characters and cap length. Safe for embedding in JSON data…, sanitize_label(), _ApiKeyMiddleware, _bfs(), _build_http_app(), _tool_get_community() (+77 more)
 
 ### Community 183 - "taste-application/scripts/taste/falapi.py"
 Cohesion: 0.05
 Nodes (79): main(), main(), _asset_name(), _check_outputs(), main(), mint3d(), Mint 3D props from a style pack, and render them back into footage. Stage 2b of…, Reject existing artifacts for this stem before any billable work. (+71 more)
 
-### Community 184 - "html.py"
-Cohesion: 0.12
-Nodes (22): Shared constants/helpers for the graphify exporters package. Symbols used by…, _html_document_title(), _html_script(), _html_styles(), _hyperedge_script(), Graph, html — moved verbatim from graphify/export.py., Return the effective viz node limit, honoring GRAPHIFY_VIZ_NODE_LIMIT env var.… (+14 more)
+### Community 184 - "graphify/export.py"
+Cohesion: 0.04
+Nodes (65): _node_community_map(), Invert communities dict: node_id -> community_id., _adopt_pre_manifest_notes(), attach_hyperedges(), _cap_filename(), _cypher_escape(), _cypher_label(), _dedup_node_filenames() (+57 more)
 
 ### Community 185 - "extract_pascal"
-Cohesion: 0.11
-Nodes (25): extract_pascal(), add_edge(), add_node(), _emit_or_report(), _proc_name(), _read(), _extract_pascal_regex(), walk() (+17 more)
+Cohesion: 0.09
+Nodes (31): extract_pascal(), add_edge(), add_node(), _emit_or_report(), _proc_name(), _read(), _extract_pascal_regex(), walk() (+23 more)
 
 ### Community 186 - "scripts/falapi.py"
 Cohesion: 0.05
 Nodes (71): api_key(), _cache_key(), compose(), _digest(), download(), enable_dry_run(), extract_frame(), _fal() (+63 more)
 
 ### Community 187 - "graphify/cli.py"
-Cohesion: 0.02
-Nodes (147): distinct_repo_tags(), prefix_graph_for_global(), prune_repo_from_graph(), Return a copy of G with all node IDs prefixed with repo_tag::. Labels are…, Return a unique, human-meaningful repo tag per input graph for merge-graphs.…, Remove all nodes tagged with repo_tag from G in-place. Returns count removed., prune_semantic_cache(), Remove orphaned semantic cache entries, returning the count pruned. The… (+139 more)
+Cohesion: 0.04
+Nodes (91): distinct_repo_tags(), prefix_graph_for_global(), prune_repo_from_graph(), Return a copy of G with all node IDs prefixed with repo_tag::. Labels are…, Return a unique, human-meaningful repo tag per input graph for merge-graphs.…, Remove all nodes tagged with repo_tag from G in-place. Returns count removed., prune_semantic_cache(), Remove orphaned semantic cache entries, returning the count pruned. The… (+83 more)
 
 ### Community 188 - "instinct-cli.py"
 Cohesion: 0.05
@@ -1696,13 +1681,13 @@ Nodes (70): _append_observations(), _assign_unique_slugs(), _cluster_by_keyword_
 Cohesion: 0.05
 Nodes (55): contextDirPath, projects, resolved, resolved, cargo, claudeMd, gitConfig, goMod (+47 more)
 
-### Community 190 - "sanitize_metadata"
-Cohesion: 0.12
-Nodes (29): _import_csharp(), _import_kotlin(), _bash_assignment_base(), _bash_source_suffix(), extract_bash(), add_edge(), add_node(), _bash_call_in_command_allowed() (+21 more)
+### Community 190 - "security.py"
+Cohesion: 0.05
+Nodes (63): _import_csharp(), _import_kotlin(), _bash_assignment_base(), _bash_source_suffix(), extract_bash(), add_edge(), add_node(), _bash_call_in_command_allowed() (+55 more)
 
 ### Community 191 - "multiSystemCharacter.ts"
 Cohesion: 0.04
-Nodes (114): ABILITIES, CoreCharacterCreatorModal(), CoreCharacterCreatorModalProps, reconcileCoreSkillProficiencies(), reconcileT20DeityDependentFeatIds(), CORE_ABILITY_LABELS, CoreCharacterSheet(), CoreCharacterSheetProps (+106 more)
+Nodes (107): ABILITIES, CoreCharacterCreatorModal(), CoreCharacterCreatorModalProps, reconcileCoreSkillProficiencies(), reconcileT20DeityDependentFeatIds(), CORE_ABILITY_LABELS, CoreCharacterSheet(), CoreCharacterSheetProps (+99 more)
 
 ### Community 192 - "detect.py"
 Cohesion: 0.12
@@ -1713,8 +1698,8 @@ Cohesion: 0.07
 Nodes (57): analyze(), analyze_pixels(), _anchor_endpoints(), bake_cube(), _cdf_of_l(), _estimate_noise(), _gamut_compress(), grade_clip() (+49 more)
 
 ### Community 194 - "auth.ts"
-Cohesion: 0.14
-Nodes (32): isSupabaseConfigured, supabase, SUPABASE_PROJECT_KEY, SUPABASE_PROJECT_URL, supabasePublishableKey, supabaseUrl, LibraryPage(), AccessLogEntry (+24 more)
+Cohesion: 0.25
+Nodes (21): LibraryPage(), buildUserProfileFromAuth(), changePassword(), deleteAccount(), ensureSupabaseAuthSubscription(), getCurrentSession(), getStoredLocalUsers(), hashPassword() (+13 more)
 
 ### Community 195 - "test_parse_instinct.py"
 Cohesion: 0.06
@@ -1725,12 +1710,12 @@ Cohesion: 0.08
 Nodes (48): analyze(), analyze_pixels(), _anchor_endpoints(), bake_cube(), _cdf_of_l(), _estimate_noise(), _gamut_compress(), GradeStats (+40 more)
 
 ### Community 197 - "reflect.py"
-Cohesion: 0.13
-Nodes (23): aggregate_lessons(), _decay(), _dedupe_by_question(), _doc_community(), _empty_bucket(), _finalize_sources(), _parse_dt(), parse_memory_doc() (+15 more)
+Cohesion: 0.07
+Nodes (58): aggregate_lessons(), _build_id_label_maps(), build_learning_overlay(), _add(), _code_fingerprint(), _content_hash(), _decay(), _dedupe_by_question() (+50 more)
 
-### Community 198 - "_is_type_like_definition"
-Cohesion: 0.08
-Nodes (20): _bind_member_field_tables(), _park_unresolved_member_call(), Keep a member call whose receiver type is declared nowhere in this corpus. A…, Resolve cross-file Swift member calls (``recv.method()``) to the real…, Resolve cross-file TS/JS member calls via constructor-injection type tables…, Resolve cross-file C++ member calls (``f.bar()``, ``f->bar()``, ``Foo::bar()``,…, Resolve C# member calls (``recv.Method()``) to the receiver's declared type…, Bind the exported per-file field tables (#3151) to class node ids. Entries are… (+12 more)
+### Community 198 - "escapeHtml"
+Cohesion: 0.14
+Nodes (3): escapeHtml(), escapeInlineArgument(), getWeaponVisualAlt()
 
 ### Community 199 - "taste-application/scripts/taste/timeline.py"
 Cohesion: 0.14
@@ -1741,8 +1726,8 @@ Cohesion: 0.22
 Nodes (8): 4.0 → 4.1, 4.1 → 4.2, 4.2 → 4.3, 4.3 → 4.4, 4.4 → 4.5, 4.5 → 4.6, 4.6 → 4.7, Migration notes: godot-genre-action-rpg
 
 ### Community 201 - "Path"
-Cohesion: 0.09
-Nodes (42): _always_on(), _antigravity_finalize(), _antigravity_install(), _canonical_platform(), claude_install(), codebuddy_install(), _copy_skill_file(), _cursor_install() (+34 more)
+Cohesion: 0.13
+Nodes (29): _antigravity_finalize(), _antigravity_install(), _canonical_platform(), _copy_skill_file(), _cursor_install(), _devin_rules_install(), gemini_install(), install() (+21 more)
 
 ### Community 202 - "_make_project"
 Cohesion: 0.05
@@ -1777,24 +1762,24 @@ Cohesion: 0.05
 Nodes (42): Import and connect, Install, ITO Production v1 native Fusion presets, Presets, Import and wire, Install on macOS, ITO V28 Fusion compatibility examples, Scope and correction (+34 more)
 
 ### Community 210 - "Escopo confirmado nas fontes locais"
-Cohesion: 0.08
-Nodes (26): Auditoria da biblioteca — `I:\Meu Drive\Livros RPG` (pasta reorganizada; substitui `Livros\Livros RPG`), Decisão de escopo — "cobrir todos os livros de `I:\Meu Drive\Livros\Livros RPG`" (2026-09-27), Escopo confirmado nas fontes locais, Progresso — D&D 3.5, classes núcleo do Capítulo 3 (2026-09-27, mesma sessão), Progresso — D&D 3.5, domínios do clérigo e Tabela 3-7 (Deuses), Progresso — D&D 3.5, equipamento núcleo: armas e armaduras (2026-09-27, mesma sessão), Progresso — D&D 3.5, especialização em escola do Mago, Progresso — D&D 3.5, itens gerais completos (Tabela 7-8) (2026-09-27, mesma sessão) (+18 more)
+Cohesion: 0.04
+Nodes (46): Classes, Classes e subclasses, Criação, Criação, Decisão de escopo — "cobrir todos os livros de `I:\Meu Drive\Livros\Livros RPG`" (2026-09-27), Equipamento e magia, Equipamento e magia, Escopo confirmado nas fontes locais (+38 more)
 
 ### Community 211 - "extract_objc"
 Cohesion: 0.10
 Nodes (40): _import_c(), _cpp_declarator_name(), Return the bare variable name from a C++ declaration declarator, unwrapping…, _semantic_reference_edge(), _source_location(), extract_julia(), add_edge(), add_node() (+32 more)
 
 ### Community 212 - "extract_powershell"
-Cohesion: 0.15
-Nodes (22): extract_powershell(), add_edge(), add_node(), ensure_named_node(), _find_script_block_body(), extract_powershell_manifest(), add_import_edge(), walk_manifest() (+14 more)
+Cohesion: 0.16
+Nodes (21): extract_powershell(), add_edge(), add_node(), ensure_named_node(), _find_script_block_body(), extract_powershell_manifest(), add_import_edge(), walk_manifest() (+13 more)
 
 ### Community 213 - "Coding Standards & Best Practices"
 Cohesion: 0.05
 Nodes (41): 1. Long Functions, 1. Readability First, 2. Deep Nesting, 2. KISS (Keep It Simple, Stupid), 3. DRY (Don't Repeat Yourself), 3. Magic Numbers, 4. YAGNI (You Aren't Gonna Need It), API Design Standards (+33 more)
 
 ### Community 214 - "analyze.py"
-Cohesion: 0.06
-Nodes (45): _cross_community_surprises(), _cross_file_surprises(), _cross_language(), _file_category(), find_import_cycles(), god_nodes(), graph_diff(), _is_concept_node() (+37 more)
+Cohesion: 0.08
+Nodes (39): _cross_community_surprises(), _cross_file_surprises(), _cross_language(), _file_category(), find_import_cycles(), god_nodes(), graph_diff(), _is_concept_node() (+31 more)
 
 ### Community 215 - "Examples"
 Cohesion: 0.05
@@ -1842,7 +1827,7 @@ Nodes (37): 1. Null Safety, 2. Immutability by Default, 3. Expression Bodies and
 
 ### Community 226 - "_make_id"
 Cohesion: 0.03
-Nodes (104): _extract_js_rationale(), _add_doc_ref(), _add_rationale(), _extract_python_rationale(), _add_rationale(), _get_docstring(), walk_docstrings(), _import_php() (+96 more)
+Nodes (102): _augment_cpp_string_tests(), _extract_js_rationale(), _add_doc_ref(), _sf_entry(), _file_node_id(), _import_js(), _import_php(), _import_scala() (+94 more)
 
 ### Community 227 - "Rust Development Patterns"
 Cohesion: 0.05
@@ -1852,9 +1837,9 @@ Nodes (36): 1. Ownership and Borrowing, Accept Generics, Return Concrete Types, 
 Cohesion: 0.11
 Nodes (28): classify_events(), _parse_classification(), Classify tool calls against compliance steps using LLM., Classify which tool calls match which compliance steps. Returns {step_id:…, Parse LLM classification output into {step_id: [event_indices]}., _check_temporal_order(), Grade observation traces against compliance specs using LLM classification., Check before_step/after_step constraints. Returns failure reason or None. (+20 more)
 
-### Community 229 - "ResolveTests"
+### Community 229 - "tasteforge/resolve.py"
 Cohesion: 0.08
-Nodes (6): Item, Media, Pool, Resolve adapter regression tests; no connection to Resolve is made., ResolveTests, Timeline
+Nodes (19): allocate_placements(), apply_placements(), _base_snapshot(), _fps(), _integer(), _items(), _path(), probe_asset() (+11 more)
 
 ### Community 231 - "Django Security Best Practices"
 Cohesion: 0.06
@@ -1881,8 +1866,8 @@ Cohesion: 0.06
 Nodes (33): Activating Commands, Agent Definition Format, Agentic OS, Anti-Patterns, Architecture Overview, Auto-Reflection Pattern, Best Practices, Command Structure (+25 more)
 
 ### Community 237 - "dispatch_install_cli"
-Cohesion: 0.09
-Nodes (42): _agents_platform_uninstall(), _agents_uninstall(), _amp_uninstall(), _antigravity_uninstall(), claude_uninstall(), codebuddy_uninstall(), _cursor_uninstall(), dispatch_install_cli() (+34 more)
+Cohesion: 0.11
+Nodes (34): _agents_platform_uninstall(), _agents_uninstall(), _amp_uninstall(), _antigravity_uninstall(), claude_uninstall(), codebuddy_uninstall(), _cursor_uninstall(), dispatch_install_cli() (+26 more)
 
 ### Community 238 - "Modern Perl Development Patterns"
 Cohesion: 0.06
@@ -1916,9 +1901,9 @@ Nodes (32): 1. Partitioning Strategy, 2. Ordering Key, 3. Data Types, 4. Avoid, 
 Cohesion: 0.22
 Nodes (8): 4.0 → 4.1, 4.1 → 4.2, 4.2 → 4.3, 4.3 → 4.4, 4.4 → 4.5, 4.5 → 4.6, 4.6 → 4.7, Migration notes: godot-rpg-stats
 
-### Community 246 - "LineageTests"
-Cohesion: 0.17
-Nodes (3): LineageTests, ProviderReferenceTests, Failing-first tests for tasteforge provenance and provider-reference policy.…
+### Community 246 - "tasteforge/__init__.py"
+Cohesion: 0.08
+Nodes (7): Compatibility import for the canonical ECC Resolve adapter. Alias the module…, TasteForge: a repeatable taste-driven video workflow. Canonicalizes the…, LineageTests, ProviderReferenceTests, Failing-first tests for tasteforge provenance and provider-reference policy.…, Failing-first tests: provider adapters must fail closed, always., RegistryFailClosedTests
 
 ### Community 247 - "/graphify"
 Cohesion: 0.06
@@ -2044,13 +2029,13 @@ Nodes (28): Bulk Operations, Caching Strategies, Custom Actions, Custom Middlewa
 Cohesion: 0.07
 Nodes (27): 1. Reconfirm The Release Surface, 2. Choose The Patch Version And Confirm It Is Unused, 3. Prepare The Patch-Release PR, 4. Wait For Exact Main To Turn Green Again, 5. Create And Push The Signed Tag, 6. Watch The Release Workflow, 7. Perform Mandatory Public Readback And Canaries, 8. Verify Announcement Delivery (+19 more)
 
-### Community 278 - "markdown.py"
-Cohesion: 0.14
-Nodes (21): _active_scan_root(), _build_link_index(), extract_markdown(), add_edge(), add_link(), _nfc(), _parse_frontmatter(), _parse_frontmatter_fallback() (+13 more)
+### Community 278 - "sources.ts"
+Cohesion: 0.09
+Nodes (22): LegacyRecord, additionalDownloadResources, BLANK_SHEET_DRIVE_URL, DND35_DRIVE_FOLDER_URL, DND5E_DRIVE_FOLDER_URL, GITHUB_BLOB_BASE_URL, GITHUB_LIVROS_FOLDER_URL, GITHUB_RAW_BASE_URL (+14 more)
 
-### Community 279 - "Path"
-Cohesion: 0.02
-Nodes (102): _augment_cpp_string_tests(), _blank_keeping_newlines(), _canonicalize_csharp_namespace_nodes(), _check_tree_sitter_version(), extract(), extract_c(), extract_cpp(), extract_csharp() (+94 more)
+### Community 279 - "extract"
+Cohesion: 0.03
+Nodes (60): _bind_member_field_tables(), _canonicalize_csharp_namespace_nodes(), _check_tree_sitter_version(), extract(), _decompose(), _learn(), _portable_out_of_root_sf(), _is_top_level_function_definition() (+52 more)
 
 ### Community 280 - "taste-application/scripts/taste/cadence.py"
 Cohesion: 0.14
@@ -2058,7 +2043,7 @@ Nodes (18): Cadence, detect(), keyframe_timestamps(), load(), merge(), Path, Edi
 
 ### Community 281 - "watch.py"
 Cohesion: 0.04
-Nodes (95): dedupe_edges(), dedupe_nodes(), disambiguate_file_labels_in_nodes(), Relabel colliding-basename file nodes on a raw node-dict list, in place…, Collapse nodes sharing an ``id``, last-writer-wins on attributes. Mirrors what…, Collapse exact parallel edges by ``(source, target, relation)``, keeping the…, cluster(), cohesion_score() (+87 more)
+Nodes (91): dedupe_edges(), dedupe_nodes(), disambiguate_file_labels_in_nodes(), Relabel colliding-basename file nodes on a raw node-dict list, in place…, Collapse nodes sharing an ``id``, last-writer-wins on attributes. Mirrors what…, Collapse exact parallel edges by ``(source, target, relation)``, keeping the…, cluster(), cohesion_score() (+83 more)
 
 ### Community 282 - "Timeline Editing Guide"
 Cohesion: 0.07
@@ -2125,8 +2110,8 @@ Cohesion: 0.15
 Nodes (8): create(), list_packs(), load(), Path, Style pack: the durable artifact that makes taste reusable. A pack is a…, Zip the pack so a whole taste can be handed off as one file., StylePack, _utc_now()
 
 ### Community 298 - "run_workflow"
-Cohesion: 0.13
-Nodes (11): cmd_multimodal(), Run and validate the file-driven multimodal dry-run contract., Validate required multimodal files and cross-artifact invariants., validate_bundle(), Execute the deterministic offline contract and return its receipt., run_workflow(), all_probe_times(), reference_provenance() (+3 more)
+Cohesion: 0.14
+Nodes (9): Validate required multimodal files and cross-artifact invariants., validate_bundle(), Execute the deterministic offline contract and return its receipt., run_workflow(), all_probe_times(), reference_provenance(), MultimodalWorkflowTests, mutating_probe() (+1 more)
 
 ### Community 299 - "StylePack"
 Cohesion: 0.15
@@ -2186,7 +2171,7 @@ Nodes (25): Assertions, Best Practices, Camel Route Testing, Coverage with JaCoC
 
 ### Community 313 - "campaigns.ts"
 Cohesion: 0.10
-Nodes (49): CampaignsPage(), AuthSession, UserProfile, addCharacterToCampaign(), addCharacterToCampaignWithStatus(), addSessionLog(), addSessionLogWithStatus(), backoffDelayMs() (+41 more)
+Nodes (47): CampaignsPage(), AuthSession, addCharacterToCampaign(), addCharacterToCampaignWithStatus(), addSessionLog(), addSessionLogWithStatus(), backoffDelayMs(), Campaign (+39 more)
 
 ### Community 314 - "_load_instincts_from_dir"
 Cohesion: 0.12
@@ -2197,8 +2182,8 @@ Cohesion: 0.08
 Nodes (24): Audio Generation, Common Image Parameters, Cost Estimation, CSM-1B (Conversational Speech), ElevenLabs (via API, no MCP), fal.ai Media Generation, Image Editing, Image Generation (+16 more)
 
 ### Community 316 - "graphify/__main__.py"
-Cohesion: 0.09
-Nodes (30): _devin_rules_uninstall(), _install_kilo_plugin(), _kilo_config_path(), _kilo_config_write_path(), _load_json_like(), _platform_skill_destination(), _print_banner(), Remove .windsurf/rules/graphify.md. (+22 more)
+Cohesion: 0.11
+Nodes (23): _devin_rules_uninstall(), _install_kilo_plugin(), _kilo_config_path(), _kilo_config_write_path(), _load_json_like(), _print_banner(), Remove .windsurf/rules/graphify.md., Remove JSONC-style comments while leaving string content intact. (+15 more)
 
 ### Community 317 - "scip_ingest.py"
 Cohesion: 0.14
@@ -2281,8 +2266,8 @@ Cohesion: 0.08
 Nodes (25): 2. Bundle Size Optimization (CRITICAL), 4. Client-Side Data Fetching (MEDIUM-HIGH), 7. JavaScript Performance (LOW-MEDIUM), 8. Advanced Patterns (LOW), Attribution, Automated Tools, Conditional module loading, Deduplicate global event listeners (+17 more)
 
 ### Community 337 - "tasteforge/cli.py"
-Cohesion: 0.18
-Nodes (20): build_parser(), cmd_apply(), cmd_distill(), cmd_export(), cmd_inspect(), cmd_interview(), cmd_provenance(), cmd_validate() (+12 more)
+Cohesion: 0.20
+Nodes (19): build_parser(), cmd_apply(), cmd_distill(), cmd_export(), cmd_inspect(), cmd_interview(), cmd_multimodal(), cmd_provenance() (+11 more)
 
 ### Community 338 - "Use Cases"
 Cohesion: 0.08
@@ -2321,12 +2306,12 @@ Cohesion: 0.08
 Nodes (24): Accessibility Patterns, Animation Patterns, Async Data Fetching Hook, Code Splitting & Lazy Loading, Component Patterns, Composition Over Inheritance, Compound Components, Context + Reducer Pattern (+16 more)
 
 ### Community 347 - "extract_robot"
-Cohesion: 0.14
-Nodes (26): extract_robot(), add_call_edges(), add_edge(), add_node(), kw_targets(), visit_Keyword(), visit_KeywordCall(), visit_LibraryImport() (+18 more)
+Cohesion: 0.16
+Nodes (23): extract_robot(), add_call_edges(), add_edge(), add_node(), kw_targets(), visit_Keyword(), visit_KeywordCall(), visit_LibraryImport() (+15 more)
 
 ### Community 348 - "dnd35Spellcasting.ts"
-Cohesion: 0.16
-Nodes (18): DND35_ABILITY_TABLE_SOURCE, DND35_BONUS_SPELLS_BY_MODIFIER, DND35_BONUS_TABLE_MAX_MODIFIER, dnd35AbilityModifier(), dnd35BonusSpells(), dnd35MinimumCastingScore(), dnd35SpellSaveDc(), PRINTED_BONUS_ROWS (+10 more)
+Cohesion: 0.17
+Nodes (17): DND35_ABILITY_TABLE_SOURCE, DND35_BONUS_SPELLS_BY_MODIFIER, DND35_BONUS_TABLE_MAX_MODIFIER, dnd35AbilityModifier(), dnd35BonusSpells(), dnd35MinimumCastingScore(), dnd35SpellSaveDc(), PRINTED_BONUS_ROWS (+9 more)
 
 ### Community 349 - "Hexagonal Architecture"
 Cohesion: 0.08
@@ -2378,7 +2363,7 @@ Nodes (22): Anti-Patterns, ARIA Attributes, aria-describedby, aria-expanded and 
 
 ### Community 361 - "audit-core-systems-supabase.cjs"
 Cohesion: 0.12
-Nodes (18): auditOseClassicMigration(), count(), { createClient }, dnd5eAttunementExpectation, envPath, expected, expectedDndBackgroundChoices, expectedDndClassChoices (+10 more)
+Nodes (17): auditOseClassicMigration(), count(), { createClient }, dnd5eAttunementExpectation, envPath, expected, expectedDndBackgroundChoices, expectedDndFeatChoiceGroups (+9 more)
 
 ### Community 362 - "_FakeScenario"
 Cohesion: 0.15
@@ -2441,8 +2426,8 @@ Cohesion: 0.25
 Nodes (8): Advancement That Doesn't Change Play, **Detection Pattern**, **Id**, **Severity**, **Situation**, **Solution**, **Symptoms**, **Why**
 
 ### Community 377 - "extract_sql"
-Cohesion: 0.18
-Nodes (19): extract_sql(), _add_edge(), _add_node(), _collect_defined_names(), _obj_name(), _read(), _ref_stub(), walk() (+11 more)
+Cohesion: 0.20
+Nodes (17): extract_sql(), _add_edge(), _add_node(), _collect_defined_names(), _obj_name(), _read(), _ref_stub(), walk() (+9 more)
 
 ### Community 378 - "Intent-Driven Development"
 Cohesion: 0.09
@@ -2457,8 +2442,8 @@ Cohesion: 0.19
 Nodes (21): _energy(), glow_plate(), grain_plate(), _lab(), mint_plates(), plate_coverage(), ndarray, Path (+13 more)
 
 ### Community 381 - "StylePack"
-Cohesion: 0.17
-Nodes (5): Any, Path, A loaded, validatable style pack directory., Validate every artifact against its schema; return a full report., StylePack
+Cohesion: 0.14
+Nodes (8): load(), Any, Path, Offline style-pack model: load, inspect, validate. A pack is a directory…, Load a pack directory; raises if no manifest exists., A loaded, validatable style pack directory., Validate every artifact against its schema; return a full report., StylePack
 
 ### Community 382 - "taste-distillation/scripts/taste/plates.py"
 Cohesion: 0.19
@@ -2585,16 +2570,16 @@ Cohesion: 0.11
 Nodes (18): Anti-Patterns, Best Practices, Core Concept, Destructive Bash Gate (every destructive command), Edit / MultiEdit Gate (first edit per file), Evidence, Gate Types, GateGuard — Fact-Forcing Pre-Action Gate (+10 more)
 
 ### Community 413 - "_normalize_ts_import_types"
-Cohesion: 0.13
-Nodes (18): extract_js(), _normalize_ts_import_types(), Any, Return whether an import-call match starts in executable source. Regex matching…, Collect byte ranges tree-sitter already parsed as type arguments., Return the ranges in ``ranges`` that contain ``offset``. Scanning the full…, Index :func:`_ts_type_argument_ranges` for :func:`_ts_ranges_containing`.…, Return parser error nodes without depending on a grammar's error name. (+10 more)
+Cohesion: 0.15
+Nodes (16): _normalize_ts_import_types(), Any, Return whether an import-call match starts in executable source. Regex matching…, Collect byte ranges tree-sitter already parsed as type arguments., Return the ranges in ``ranges`` that contain ``offset``. Scanning the full…, Index :func:`_ts_type_argument_ranges` for :func:`_ts_ranges_containing`.…, Return parser error nodes without depending on a grammar's error name., Tell whether a masked generic is backed by an actual parse failure. A valid… (+8 more)
 
-### Community 414 - "tasteforge/resolve.py"
-Cohesion: 0.18
-Nodes (14): allocate_placements(), apply_placements(), _base_snapshot(), _fps(), _integer(), _items(), _path(), probe_asset() (+6 more)
+### Community 414 - "admin.ts"
+Cohesion: 0.19
+Nodes (13): isSupabaseConfigured, supabase, SUPABASE_PROJECT_KEY, SUPABASE_PROJECT_URL, supabasePublishableKey, supabaseUrl, AccessLogEntry, AdminDashboardMetrics (+5 more)
 
 ### Community 415 - "install.py"
-Cohesion: 0.16
-Nodes (23): _claude_pretooluse_hooks(), _gemini_hook(), _install_claude_hook(), _install_codebuddy_hook(), _install_codex_hook(), _install_gemini_hook(), _kilo_uninstall(), _kilo_uninstall_global() (+15 more)
+Cohesion: 0.15
+Nodes (24): _claude_pretooluse_hooks(), _gemini_hook(), _install_claude_hook(), _install_codebuddy_hook(), _install_codex_hook(), _install_gemini_hook(), _kilo_uninstall(), _kilo_uninstall_global() (+16 more)
 
 ### Community 416 - "multigraph_compat.py"
 Cohesion: 0.19
@@ -2668,9 +2653,9 @@ Nodes (3): Require a seeded aperiodic schedule and anchors on subject-aware effe
 Cohesion: 0.11
 Nodes (17): Anti-Patterns, Borrowed Footage Carries the Capture App's UI, Bundled Code, Cutting Rules, Division of Labour, Downstream Handoff (Resolve / Blender), Endpoint picks, Execution and Delivery Contract (+9 more)
 
-### Community 434 - "tasteforge/__init__.py"
-Cohesion: 0.07
-Nodes (9): Compatibility import for the canonical ECC Resolve adapter. Alias the module…, TasteForge: a repeatable taste-driven video workflow. Canonicalizes the…, Failing-first tests: provider adapters must fail closed, always., RegistryFailClosedTests, EDLTests, FCPXMLTests, Failing-first tests for the timeline timebase and EDL/FCPXML export. Numeric…, TimebaseTests (+1 more)
+### Community 434 - "test_timeline_export.py"
+Cohesion: 0.11
+Nodes (5): EDLTests, FCPXMLTests, Failing-first tests for the timeline timebase and EDL/FCPXML export. Numeric…, TimebaseTests, WriteTimelineTests
 
 ### Community 435 - "Taste"
 Cohesion: 0.11
@@ -2729,16 +2714,16 @@ Cohesion: 0.13
 Nodes (20): convert_office_file(), count_words(), _wc(), docx_to_markdown(), extract_pdf_text(), _file_within_size_cap(), _md5_file(), _os_path() (+12 more)
 
 ### Community 449 - "semantic_cleanup.py"
-Cohesion: 0.19
-Nodes (14): _normalize_hyperedge_members(), Canonicalize a hyperedge's member list onto the `nodes` key, in place. If…, _append_rationale_attr(), _is_sentence_like_rationale_label(), load_validated_semantic_fragment(), Path, Load and validate a semantic chunk, rejecting oversize files before parsing.…, Clean up a semantic extraction fragment in-place. Operations: 1. Removes nodes… (+6 more)
+Cohesion: 0.21
+Nodes (12): _append_rationale_attr(), _is_sentence_like_rationale_label(), load_validated_semantic_fragment(), Path, Load and validate a semantic chunk, rejecting oversize files before parsing.…, Clean up a semantic extraction fragment in-place. Operations: 1. Removes nodes…, Return True if *label* looks like prose / rationale text rather than an entity…, Append one or more rationale strings to *node*'s ``rationale`` attribute. If… (+4 more)
 
 ### Community 450 - "google_workspace.py"
 Cohesion: 0.20
 Nodes (16): convert_google_workspace_file(), _extract_file_id_from_url(), _extract_resource_key(), google_workspace_enabled(), Any, Path, Optional Google Workspace shortcut export support. Google Drive for desktop…, Export a Google Workspace shortcut to a Markdown sidecar. Returns the converted… (+8 more)
 
 ### Community 451 - "dedup.py"
-Cohesion: 0.13
-Nodes (22): _crossfile_fileanchored_blocked(), deduplicate_entities(), _is_code(), _is_variant_pair(), _make_minhash(), _merge_missing_attributes(), _numeric_tokens_differ(), Entity deduplication pipeline for graphify knowledge graphs. Pipeline: exact… (+14 more)
+Cohesion: 0.05
+Nodes (63): _collision_rank(), _content_richness(), _content_token_swap(), _crossfile_fileanchored_blocked(), deduplicate_entities(), _defines_id(), _entropy(), _id_prefixes() (+55 more)
 
 ### Community 452 - "iOS Icon Generator"
 Cohesion: 0.12
@@ -3065,8 +3050,8 @@ Cohesion: 0.21
 Nodes (12): conduct(), Any, Question, Deterministic taste interview: answers in, structured profile out. The…, Build a TasteProfile from free-text answers. Deterministic, offline. Missing…, _split_list(), _utc_now(), Any (+4 more)
 
 ### Community 533 - "dnd35Domains.ts"
-Cohesion: 0.20
-Nodes (15): ALIGNMENT_DOMAIN_WORD, DND35_DEITIES, DND35_DOMAIN_IDS, DND35_DOMAINS, dnd35AvailableDomains(), Dnd35Deity, dnd35DeityAllowedForRace(), dnd35Domain (+7 more)
+Cohesion: 0.14
+Nodes (18): ALIGNMENT_DOMAIN_WORD, DND35_DOMAIN_IDS, DND35_DOMAINS, dnd35AvailableDomains(), Dnd35Deity, dnd35DeityAllowedForRace(), dnd35Domain, dnd35DomainAllowedForAlignment() (+10 more)
 
 ### Community 534 - "is_dry_run"
 Cohesion: 0.25
@@ -3143,10 +3128,6 @@ Nodes (12): 1. Start from the freshest billing evidence, 2. Separate customer in
 ### Community 552 - "Flutter/Dart Code Review Best Practices"
 Cohesion: 0.15
 Nodes (12): 11. Navigation and Routing, 14. Dependency Injection, 1. General Project Health, 2. Dart Language Pitfalls, 8. Platform-Specific Concerns, Flutter/Dart Code Review Best Practices, General principles (apply to any routing solution):, iOS/Android differences: (+4 more)
-
-### Community 553 - "MinHash"
-Cohesion: 0.15
-Nodes (11): _lsh_integrate(), _mh_coeffs(), MinHash, MinHashLSH, _optimal_lsh_params(), ndarray, MinHash + band-LSH — datasketch-compatible drop-in (no scipy). datasketch.lsh…, MinHash sketch — same API as datasketch.MinHash for the subset used here. (+3 more)
 
 ### Community 554 - "Growth Log Skill"
 Cohesion: 0.15
@@ -3368,9 +3349,9 @@ Nodes (11): 1. Define Small, Focused Protocols, 2. Create Default (Production) I
 Cohesion: 0.17
 Nodes (11): 1. What you have been given, 2. DaVinci Resolve, 3. Blender, 4. Things that will bite you, flashethereal — handoff to Resolve and Blender, Import, Overlay plates, The cut (+3 more)
 
-### Community 609 - "Path"
-Cohesion: 0.19
-Nodes (16): _build_id_label_maps(), build_learning_overlay(), _load_known_nodes(), load_memory_docs(), _load_node_community(), datetime, Path, Parse every memory doc under ``memory_dir``, sorted by date then filename. Each… (+8 more)
+### Community 609 - "_looks_like_context_exceeded"
+Cohesion: 0.40
+Nodes (5): _looks_like_context_exceeded(), _looks_like_timeout(), BaseException, Heuristically classify an exception as a context-window overflow. Different…, Classify an exception as a recognized subprocess or SDK timeout.
 
 ### Community 610 - "Initiative Systems That Kill Momentum"
 Cohesion: 0.25
@@ -3764,9 +3745,9 @@ Nodes (8): Alternative, Basic usage, Getting GIF duration, Looping behavior, Pla
 Cohesion: 0.22
 Nodes (7): Dynamic image paths, Getting image dimensions, Important restrictions, Remote images, Sizing and positioning, The `<Img>` component, Using images in Remotion
 
-### Community 709 - "dnd35Classes.ts"
-Cohesion: 0.17
-Nodes (17): DND35_CLASS_IDS, DND35_CLASSES, Dnd35BabProgression, Dnd35CasterType, Dnd35Class, Dnd35SaveName, ABILITY_LEVELS, clampLevel() (+9 more)
+### Community 709 - "dnd35Progression.ts"
+Cohesion: 0.18
+Nodes (16): DND35_CLASS_IDS, DND35_CLASSES, Dnd35BabProgression, Dnd35CasterType, Dnd35SaveName, ABILITY_LEVELS, clampLevel(), DND35_BAB_BY_LEVEL (+8 more)
 
 ### Community 710 - "Social Graph Ranker"
 Cohesion: 0.22
@@ -4161,8 +4142,8 @@ Cohesion: 0.40
 Nodes (11): extract_dm(), add_edge(), add_node(), _emit_call(), _ensure_type(), _find_child(), _read_include_path(), _type_path_text() (+3 more)
 
 ### Community 809 - "Dnd35CharacterCreatorModal"
-Cohesion: 0.14
-Nodes (22): bySchool(), CORE_ARCANE_AND_CLERIC_LISTS, DND35_SPECIALIST_SCHOOLS, DND35_SPELL_LIST_CLASS_IDS, DND35_SPELL_LISTS, dnd35ProhibitableSchools(), dnd35ProhibitedSchoolCount(), dnd35SpecializationProblem() (+14 more)
+Cohesion: 0.20
+Nodes (16): bySchool(), CORE_ARCANE_AND_CLERIC_LISTS, DND35_SPECIALIST_SCHOOLS, DND35_SPELL_LIST_CLASS_IDS, DND35_SPELL_LISTS, dnd35ProhibitableSchools(), dnd35ProhibitedSchoolCount(), dnd35SpecializationProblem() (+8 more)
 
 ### Community 810 - "graphify reference: query, path, explain"
 Cohesion: 0.33
@@ -4276,9 +4257,9 @@ Nodes (5): Frame References Inside Sequences, Nested Sequences, Premounting, Ser
 Cohesion: 0.53
 Nodes (4): extract_field(), get_mtime(), scan_dir_to_json(), scan-skills.sh script
 
-### Community 838 - "transcribe.py"
-Cohesion: 0.21
-Nodes (14): build_whisper_prompt(), download_audio(), _get_whisper(), _get_yt_dlp(), is_url(), _model_name(), Path, Transcribe a video/audio file or URL to a .txt transcript. If video_path is a… (+6 more)
+### Community 838 - "dnd5eOptions.ts"
+Cohesion: 0.12
+Nodes (11): DND5E_SUBCLASS_CHOICES, DND5E_SUBCLASS_FEATURES, DND5E_SUBCLASS_LEVELS, DND5E_SUBCLASSES_BASE, Dnd5eClassChoice, Dnd5eSubclass, Dnd5eSubclassBase, Dnd5eSubclassChoice (+3 more)
 
 ### Community 839 - "Examples"
 Cohesion: 0.33
@@ -4696,9 +4677,9 @@ Nodes (8): **Applies To**, Combat Duration Risk, **Fix Action**, **Id**, **Messa
 Cohesion: 0.67
 Nodes (3): fs, main(), readEnvFile()
 
-### Community 1019 - "dnd35FeatTable.ts"
-Cohesion: 0.16
-Nodes (18): DND35_FIGHTER_BONUS_FEAT_NAMES, DND35_MONK_FIRST_LEVEL_BONUS_FEAT_NAMES, dnd35BonusFeatIds(), dnd35FeatSlotsProblem(), idsForNames(), DND35_FEAT_IDS, DND35_FEATS, Dnd35Feat (+10 more)
+### Community 1019 - "dnd35BonusFeats.ts"
+Cohesion: 0.25
+Nodes (10): DND35_FIGHTER_BONUS_FEAT_NAMES, DND35_MONK_FIRST_LEVEL_BONUS_FEAT_NAMES, dnd35BonusFeatIds(), dnd35FeatSlotsProblem(), idsForNames(), NAME_ALIASES, DND35_FEAT_IDS, DND35_FEATS (+2 more)
 
 ### Community 1020 - "Single Character Required for Task"
 Cohesion: 0.25
@@ -4773,16 +4754,16 @@ Cohesion: 0.26
 Nodes (12): baseRow(), { createClient }, fs, getConfig(), loadCatalog(), loadEnv(), main(), path (+4 more)
 
 ### Community 1038 - "dnd35ClassFeatures.ts"
-Cohesion: 0.15
-Nodes (11): BAB_GOOD, BAB_MEDIUM, BAB_POOR, DND35_MONK_EXTRAS, dnd35ClassFeaturesUpTo(), Dnd35ClassLevelRow, Dnd35ClassTable, Dnd35MonkExtras (+3 more)
+Cohesion: 0.14
+Nodes (12): BAB_GOOD, BAB_MEDIUM, BAB_POOR, DND35_CLASS_TABLES, DND35_MONK_EXTRAS, dnd35ClassFeaturesUpTo(), Dnd35ClassLevelRow, Dnd35ClassTable (+4 more)
 
-### Community 1039 - "getCatalogVersion"
-Cohesion: 0.32
-Nodes (8): CURRENT_CATALOG_VERSIONS, getCatalogVersion(), isCatalogVersionCompatible(), CharacterEditorRoute, getPersistedCharacterSystemId(), hydrateCharacterForEditor(), isSupportedSystemId(), SUPPORTED_SYSTEM_IDS
+### Community 1039 - "AccountPortal.tsx"
+Cohesion: 0.24
+Nodes (15): AccountPortal(), AuthMode, updateAccountViewState(), CharacterEditorRoute, getCharacterEditorRoute(), getPersistedCharacterSystemId(), hydrateCharacterForEditor(), isSupportedSystemId() (+7 more)
 
-### Community 1040 - "_code_fingerprint"
-Cohesion: 0.17
-Nodes (13): _add(), _code_fingerprint(), _content_hash(), _is_stale(), _provenance_for(), Resolve a cited node (a label OR an id) to a single canonical node id. Returns…, Locate a node's ``source_file`` on disk, returning an existing file or None.…, SHA256 of file CONTENT only (no path mixed in), so the fingerprint is… (+5 more)
+### Community 1040 - "_always_on"
+Cohesion: 0.18
+Nodes (13): _always_on(), claude_install(), codebuddy_install(), _install_skill_references(), Atomically install a packaged references/ sidecar next to SKILL.md. Stages the…, Write the graphify section to the local CLAUDE.md., Install the graphify skill and CODEBUDDY.md section for CodeBuddy., Idempotently update or append a graphify-owned section in shared files. If no… (+5 more)
 
 ### Community 1041 - "Web Interface Guidelines"
 Cohesion: 0.40
@@ -4796,9 +4777,9 @@ Nodes (6): 1. Definição do Gauntlet (Critérios de Aceite), 2. Fase Builder (I
 Cohesion: 0.33
 Nodes (6): Apply ``fn`` to objc_field_types["tables"] KEYS (#3150). That table is the one…, Apply ``fn`` to every string VALUE reachable in ``obj``, in place. Values only,…, Replace the absolute root inside every stored id / path with the marker. Walks…, _relativize_ids_in(), _rewrite_id_keyed_table_keys(), _rewrite_strings()
 
-### Community 1044 - "_ip_is_blocked"
-Cohesion: 0.17
-Nodes (10): _ip_is_blocked(), Resolve *host* once and return (family, validated_ip) for the first address…, HTTPConnection that resolves + validates DNS once, then connects to the exact…, HTTPSConnection variant of _SSRFGuardedHTTPConnection. Connects to the…, Return True if *ip* falls in a private/reserved/internal range. Shared by…, _resolve_and_validate(), _SSRFGuardedHTTPConnection, _SSRFGuardedHTTPSConnection (+2 more)
+### Community 1044 - "sync-dnd5e-domain-spells-to-supabase.cjs"
+Cohesion: 0.29
+Nodes (5): { createClient }, domainSpells, fs, missingSpells, path
 
 ### Community 1045 - "audit-supabase-character-sync.cjs"
 Cohesion: 0.40
@@ -4844,10 +4825,6 @@ Nodes (9): Serialize registry read-modify-write across concurrent sessions. Acqu
 Cohesion: 0.07
 Nodes (26): T20_ARCANIST_POWERS, T20_BARBARO_POWERS, T20_BARDO_POWERS, T20_BUCANEIRO_POWERS, T20_CACADOR_POWERS, T20_CAVALEIRO_POWERS, T20_CLERIGO_POWERS, T20_COSTS (+18 more)
 
-### Community 1058 - "dependencies"
-Cohesion: 0.18
-Nodes (11): dependencies, pdf-lib, react, react-dom, @supabase/supabase-js, typescript, @vercel/analytics, @vercel/speed-insights (+3 more)
-
 ### Community 1059 - "sync-core-skills-to-supabase.cjs"
 Cohesion: 0.31
 Nodes (8): { createClient }, fs, loadEnv(), loadSkills(), main(), path, { pathToFileURL }, toRow()
@@ -4856,9 +4833,9 @@ Nodes (8): { createClient }, fs, loadEnv(), loadSkills(), main(), path, { pathTo
 Cohesion: 0.25
 Nodes (8): { createClient }, envPath, fs, path, { pathToFileURL }, root, run(), toRows()
 
-### Community 1061 - "rename_preview.py"
-Cohesion: 0.38
-Nodes (9): case(), clean(), fold(), meta_ok(), norm(), parse(), person(), sim() (+1 more)
+### Community 1061 - "_label_batch_with_retry"
+Cohesion: 0.17
+Nodes (12): _community_label_lines(), _label_batch_with_retry(), label_communities(), _run_batch(), _parse_label_response(), _placeholder_community_labels(), Honour GRAPHIFY_MAX_OUTPUT_TOKENS env var override, else use backend default., One prompt line per community (largest first), sampling up to ``top_k``… (+4 more)
 
 ### Community 1062 - "audit-supabase-campaigns-authenticated.cjs"
 Cohesion: 0.47
@@ -4868,17 +4845,17 @@ Nodes (5): { createClient }, fs, main(), readEnvFile(), timeout()
 Cohesion: 0.40
 Nodes (5): moduleUrl(), path, { pathToFileURL }, root, run()
 
-### Community 1064 - "audit-books.cjs"
-Cohesion: 0.22
-Nodes (8): booksDir, collectFiles(), defaultBooksDirs, fs, path, { PDFDocument }, positionalArgs, { spawnSync }
+### Community 1064 - "_ImageRef"
+Cohesion: 0.08
+Nodes (39): _anthropic_content(), _azure_client(), _backend_pkg_hint(), _bedrock_content(), _call_azure(), _call_bedrock(), _call_claude(), _call_claude_cli() (+31 more)
 
 ### Community 1065 - "generate-ose-catalog-migration.mjs"
 Cohesion: 0.23
 Nodes (13): ancestryRows, classicClassRows, classicItemRows, classicOutput, classicSpellRows, classRows, itemRows, output (+5 more)
 
-### Community 1066 - "TODO — Construtores por sistema: Pathfinder 2e, Tormenta20, D&D 5e e Old-School Essentials"
-Cohesion: 0.20
-Nodes (9): D&D 3.5 — suplementos com texto digital (extração exata), Fase 0 — arquitetura e segurança de dados, Fase 2.5 — Old-School Essentials (Advanced Fantasy / Classic), Fase 3 — interface do construtor, Fase 4 — Supabase e sincronização, Fase 5 — qualidade e entrega, Primeiro marco de implementação, Progresso verificado (+1 more)
+### Community 1066 - "audit-local-locale-usage.cjs"
+Cohesion: 0.33
+Nodes (4): { chromium }, fs, locales, viewports
 
 ### Community 1068 - "_redact_home_paths"
 Cohesion: 0.40
@@ -4888,10 +4865,6 @@ Nodes (6): Replace the operator's home directory with a portable placeholder. Ob
 Cohesion: 0.50
 Nodes (3): 2026-09-12 — Construtores multi-sistema, Changelog, Limites da cobertura
 
-### Community 1070 - "devDependencies"
-Cohesion: 0.22
-Nodes (9): devDependencies, jsdom, playwright, puppeteer-core, @testing-library/jest-dom, @testing-library/react, @types/react, @types/react-dom (+1 more)
-
 ### Community 1071 - "audit-playwright-multicharacter.cjs"
 Cohesion: 0.33
 Nodes (4): { chromium }, fs, path, SNAPSHOTS_DIR
@@ -4900,29 +4873,29 @@ Nodes (4): { chromium }, fs, path, SNAPSHOTS_DIR
 Cohesion: 0.36
 Nodes (12): extract_rust(), add_edge(), add_node(), emit_param_return_refs(), ensure_named_node(), walk(), walk_calls(), _emit_enum_type() (+4 more)
 
-### Community 1073 - "build_tree"
-Cohesion: 0.26
-Nodes (13): _is_file_node_label(), Whether *label* is a file node's label for *source_file* — the bare basename,…, build_tree(), _ensure_dir(), _finalise(), _common_root(), emit_html(), _make_truncation_leaf() (+5 more)
+### Community 1073 - "check_graph_file_size_cap"
+Cohesion: 0.17
+Nodes (18): check_graph_file_size_cap(), _max_graph_file_bytes(), Path, Resolve *path* and verify it stays inside *base*. *base* defaults to the…, Reject *path* if its size exceeds the configured graph-file cap. Protects…, Return the graph.json size cap in bytes. Honors the…, validate_graph_path(), build_tree() (+10 more)
 
-### Community 1074 - "dnd35Alignment.test.ts"
-Cohesion: 0.44
-Nodes (7): DND35_ALIGNMENTS, Dnd35Alignment, dnd35AlignmentAllowedForClass(), dnd35ClericAlignmentAllowed(), dnd35ParseAlignment(), norm(), ids()
+### Community 1074 - "_extract_python_rationale"
+Cohesion: 0.21
+Nodes (12): _add_rationale(), extract_python(), _extract_python_rationale(), _add_rationale(), _get_docstring(), walk_docstrings(), _is_autogenerated_python(), Collapse whitespace and truncate ``text`` to ``width`` chars for a rationale… (+4 more)
 
 ### Community 1075 - "audit-local-responsive.cjs"
 Cohesion: 0.40
 Nodes (3): { chromium }, fs, viewports
 
 ### Community 1076 - "extract_go"
-Cohesion: 0.23
-Nodes (16): extract_go(), add_edge(), add_node(), emit_go_method_refs(), ensure_named_node(), _plain_symbol_nid(), _receiver_type_of(), _scan_declarations() (+8 more)
+Cohesion: 0.27
+Nodes (15): extract_go(), add_edge(), add_node(), emit_go_method_refs(), ensure_named_node(), _plain_symbol_nid(), _receiver_type_of(), _scan_declarations() (+7 more)
 
 ### Community 1077 - "Metodologia Gauntlet Loop (Obrigatória no Antigravity)"
 Cohesion: 0.50
 Nodes (3): 1. Princípio Fundamental: Generator vs. Evaluator, 2. Proibição de Alucinação de Conclusão, Metodologia Gauntlet Loop (Obrigatória no Antigravity)
 
-### Community 1078 - "dnd35CovMagicItems.ts"
-Cohesion: 0.36
-Nodes (7): DND35_COV_GLASSTEEL, DND35_COV_MAGIC_ITEMS, DND35_COV_MINOR_ARTIFACT_INTRO, DND35_COV_REDEEMED_ITEMS, DND35_COV_WEAPON_ABILITIES, Dnd35CovAbility, Dnd35CovMagicItem
+### Community 1078 - "extract_fortran"
+Cohesion: 0.33
+Nodes (12): _cpp_preprocess(), extract_fortran(), add_edge(), add_node(), emit_signature_refs(), ensure_named_node(), _fortran_name(), walk() (+4 more)
 
 ### Community 1079 - "provenance.py"
 Cohesion: 0.21
@@ -4957,116 +4930,68 @@ Cohesion: 0.25
 Nodes (6): { createClient }, expected, fs, path, root, supabase
 
 ### Community 1089 - "dnd35Equipment.ts"
-Cohesion: 0.15
-Nodes (16): DND35_ARMOR_IDS, DND35_ARMORS, DND35_WEAPON_IDS, DND35_WEAPONS, Dnd35Armor, Dnd35ArmorCategory, Dnd35DamageType, Dnd35Weapon (+8 more)
+Cohesion: 0.23
+Nodes (10): DND35_ARMOR_IDS, DND35_ARMORS, DND35_WEAPON_IDS, DND35_WEAPONS, Dnd35Armor, Dnd35ArmorCategory, Dnd35DamageType, Dnd35Weapon (+2 more)
 
-### Community 1090 - "sync-dnd5e-sorcerer-metamagic-to-supabase.cjs"
-Cohesion: 0.25
-Nodes (6): classChoices, { createClient }, envPath, fs, options, path
-
-### Community 1091 - "Fase 1 — catálogo Tormenta20"
-Cohesion: 0.25
-Nodes (8): Classes, Criação, Equipamento e magia, Fase 1 — catálogo Tormenta20, Ficha e exportação, Matriz de cobertura T20 — Livro Básico, Perícias, poderes e vantagens, Raças e opções raciais
+### Community 1091 - "_json_fragment_candidates"
+Cohesion: 0.33
+Nodes (6): _balanced_object(), _json_fragment_candidates(), _json_object_candidates(), Return the balanced ``{...}`` substring starting at ``start``, else None., Indices of ``{`` that plausibly start an extraction fragment. Braces followed…, Yield candidate JSON texts from a model reply, most-likely first. Two sources,…
 
 ### Community 1092 - "_resolve_php_type_references"
 Cohesion: 0.36
 Nodes (8): _php_fqn_from_raw(), Resolve a raw (possibly qualified) PHP class reference to an FQN. PHP name-…, Disambiguate PHP inherits/implements/mixes_in/imports/references targets using…, _resolve_php_type_references(), _external_stub(), _record_raw(), _record_use_clause(), walk()
 
-### Community 1093 - "_collision_rank"
-Cohesion: 0.33
-Nodes (7): _collision_rank(), _lifecycle_penalty(), Path, _rank_path(), 0 for active/in-progress paths, 2 for archived/done paths, 1 otherwise. Judged…, The root-relative form of ``source_file`` used for collision ranking. Mirrors…, A total order for choosing the survivor of an ID collision, independent of the…
-
-### Community 1094 - "Fase 2 — catálogo D&D 5e clássico (2014)"
+### Community 1093 - "_platform_skill_destination"
 Cohesion: 0.29
-Nodes (7): Classes e subclasses, Criação, Equipamento e magia, Fase 2 — catálogo D&D 5e clássico (2014), Ficha e exportação, Perícias, talentos e vantagens, Raças e sub-raças
+Nodes (8): _platform_skill_destination(), Return the skill destination for a platform and scope., _check_skill_version(), Path, Warn if the installed skill is from an older graphify version.…, Parse a version string into a comparable integer tuple (``0.9.2`` -> ``(0, 9,…, _run_cli(), _version_tuple()
+
+### Community 1094 - "_remove_marker_section"
+Cohesion: 0.25
+Nodes (8): Strip the ## graphify section from one CLAUDE.md-style file. Returns True if a…, Remove the project-scoped Claude skill registration file/section., Remove every section whose heading line is exactly ``marker``. The heading is…, Remove graphify VS Code Copilot Chat skill and .github/copilot-instructions.md…, _remove_claude_skill_registration(), _remove_marker_section(), _strip_graphify_md_section(), vscode_uninstall()
 
 ### Community 1096 - "capture-local-responsive.cjs"
 Cohesion: 0.29
 Nodes (5): { chromium }, fs, locales, surfaces, viewports
 
-### Community 1097 - "generate-dnd35-seed.ts"
-Cohesion: 0.11
-Nodes (20): arr(), common(), json(), n(), out, q(), DND35_GEAR, DND35_GEAR_IDS (+12 more)
+### Community 1097 - "dnd35Gear.ts"
+Cohesion: 0.43
+Nodes (5): DND35_GEAR, DND35_GEAR_IDS, dnd35GearFixedCostGp(), Dnd35GearItem, Dnd35GearSection
 
 ### Community 1098 - "dnd35StartingWealth.ts"
 Cohesion: 0.43
 Nodes (4): DND35_STARTING_WEALTH, Dnd35StartingWealth, formatDnd35StartingWealth(), rollDnd35StartingWealth()
 
-### Community 1099 - "Dnd35CharacterCreatorModal.test.tsx"
-Cohesion: 0.38
-Nodes (3): allButtons(), pickClass(), spellCard()
-
-### Community 1101 - "_defines_id"
+### Community 1101 - "dnd35FeatTable.ts"
 Cohesion: 0.33
-Nodes (6): _defines_id(), _id_prefixes(), The ID prefixes a node extracted from ``source_file`` may legitimately mint. An…, True when the node's own source_file is the file its ID encodes. A doc that…, True when the node reads as an entity found inside its file, rather than as the…, _reads_as_file_entity()
+Nodes (4): DND35_FEAT_TABLE, Dnd35FeatSection, Dnd35FeatTableRow, Row
 
-### Community 1102 - "_norm"
-Cohesion: 0.33
-Nodes (6): _entropy(), _norm(), Lowercase + collapse non-alphanumeric runs to space (Unicode-aware)., Shannon entropy in bits/char of the normalised label., Report an ID collision in proportion to what dropping the loser actually costs.…, _report_id_collision()
-
-### Community 1103 - "resolve_pascal_inherited_calls"
-Cohesion: 0.40
-Nodes (4): _pascal_raw_calls(), Cross-file resolution for Pascal/Delphi calls to inherited methods. The per-…, Resolve Pascal/Delphi calls to a method inherited across file boundaries.…, resolve_pascal_inherited_calls()
-
-### Community 1104 - "Build with TypeSafe"
-Cohesion: 0.33
-Nodes (5): Build with TypeSafe, Compose and verify, Design the judgments, Find the useful shape, Read the live docs
-
-### Community 1105 - "consolidar_autores_livros.py"
-Cohesion: 0.73
-Nodes (5): clean_author(), good_author(), looks_like_title(), norm(), parse_author_from_name()
-
-### Community 1107 - "dnd35CovPrestige.ts"
-Cohesion: 0.40
-Nodes (3): DND35_COV_PRESTIGE_CLASSES, Dnd35CovPrestigeClass, Dnd35CovPrestigeLevel
-
-### Community 1108 - "dnd35CovSubstitutions.ts"
-Cohesion: 0.40
-Nodes (3): DND35_COV_SUBSTITUTIONS, Dnd35CovSubstitution, Dnd35CovSubstitutionLevel
-
-### Community 1109 - "dnd35DefensoresFeats.ts"
-Cohesion: 0.40
-Nodes (3): DEFENSORES_FEATS, DefensoresFeat, DefensoresFeatType
-
-### Community 1110 - "_pick_winner"
-Cohesion: 0.40
-Nodes (5): _content_richness(), _pick_winner(), _score(), How much actual content a node carries, for survivor selection (#3372). Counts…, Pick the canonical survivor: no chunk suffix, then richer content, then shorter…
-
-### Community 1111 - "_resolve_cross_file_imports"
-Cohesion: 0.80
-Nodes (5): Two-pass import resolution: turn file-level imports into class-level edges.…, _resolve_cross_file_imports(), resolve_import(), _text(), visit()
-
-### Community 1112 - "introspect_postgres"
+### Community 1102 - "_resolve_python_member_calls"
 Cohesion: 0.50
-Nodes (4): introspect_postgres(), _quote_ident(), Connect to PostgreSQL, reconstruct DDL, and extract via extract_sql()., Double-quote a PostgreSQL identifier, escaping embedded double-quotes.
+Nodes (4): Resolve cross-file Python qualified class-method calls (``ClassName.method()``)…, _resolve_python_member_calls(), _key(), _module_stem_key()
 
-### Community 1114 - "_content_token_swap"
-Cohesion: 0.50
-Nodes (4): _content_token_swap(), True when tokens x and y read as one word misspelt, not two words (#2576). A…, True when two equal-token-count labels differ in at least one swapped content…, _same_word_variant()
-
-### Community 1115 - "_uninstall_claude_hook"
-Cohesion: 0.50
-Nodes (4): Remove the graphify PreToolUse hook from .claude/settings.json and its local-…, Drop graphify PreToolUse hooks from a single Claude settings file, if present., _strip_graphify_hook(), _uninstall_claude_hook()
+### Community 1103 - "audit-local-accessibility.cjs"
+Cohesion: 0.40
+Nodes (3): { chromium }, fs, routes
 
 ## Knowledge Gaps
-- **8149 isolated node(s):** `resolved`, `contextDirPath`, `projects`, `resolved`, `projects` (+8144 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 10947 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **8098 isolated node(s):** `Decisão de escopo — "cobrir todos os livros de `I:\Meu Drive\Livros\Livros RPG`" (2026-09-27)`, `Progresso — Pathfinder 1e (2026-09-27)`, `Progresso — Pathfinder 1e, classes núcleo (2026-09-27, mesma sessão)`, `Progresso — Pathfinder 1e, perícias núcleo (2026-09-27, mesma sessão)`, `Progresso — D&D 3.5, primeiras raças + desbloqueio de PDFs escaneados (2026-09-27, mesma sessão)` (+8093 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 10884 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **128 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `vitest` connect `vitest` to `characters.ts`, `AccountPortal.tsx`, `types.ts`, `PortalPages.tsx`, `oseRules.ts`, `getCatalogVersion`, `dnd35Domains.ts`, `Dnd35CharacterCreatorModal`, `multi-system-catalog.test.ts`, `sync-dnd5e-land-circle-spells-to-supabase.cjs`, `dnd35Alignment.test.ts`, `i18n.tsx`, `pdfFormExport.ts`, `dnd35CovMagicItems.ts`, `pf1eClasses.ts`, `campaigns.ts`, `multiSystemCharacter.ts`, `dnd35Equipment.ts`, `auth.ts`, `Dnd35CharacterCreatorModal.tsx`, `dnd35Classes.ts`, `generate-dnd35-seed.ts`, `dnd35StartingWealth.ts`, `Dnd35CharacterCreatorModal.test.tsx`, `exportMetadata.ts`, `responsive-view.test.ts`, `dnd35CovFeats.test.ts`, `dnd35CovPrestige.ts`, `dnd35CovSubstitutions.ts`, `dnd35DefensoresFeats.ts`, `generate-dnd35-frostburn-seed.ts`, `dnd35Spellcasting.ts`, `package.json`, `dnd35FeatTable.ts`, `migrate-catalog-to-supabase.cjs`?**
-  _High betweenness centrality (0.008) - this node is a cross-community bridge._
-- **Why does `@supabase/supabase-js` connect `@supabase/supabase-js` to `sync-item-specific-images-to-supabase.cjs`, `sync-core-actions-conditions-to-supabase.cjs`, `audit-item-images-supabase.cjs`, `audit-supabase-character-sync.cjs`, `audit-character-metadata-supabase.cjs`, `sync-dnd5e-subclass-choices-to-supabase.cjs`, `sync-dnd5e-attunement-to-supabase.cjs`, `sync-core-skills-to-supabase.cjs`, `sync-t20-spells-to-supabase.cjs`, `audit-supabase-campaigns-authenticated.cjs`, `sync-item-images-to-supabase.cjs`, `sync-dnd5e-land-circle-spells-to-supabase.cjs`, `sync-weapon-catalog-to-supabase.cjs`, `audit-image-metadata-supabase.cjs`, `audit-catalog-supabase-reconciliation.cjs`, `sync-dnd5e-sorcerer-metamagic-to-supabase.cjs`, `auth.ts`, `sync-ose-classic-to-supabase.cjs`, `sync-dnd5e-ranger-class-choices-to-supabase.cjs`, `audit-core-systems-supabase.cjs`, `package.json`, `audit-weapon-images-supabase.cjs`, `update-image-metadata-supabase.cjs`, `sync-weapon-images-to-supabase.cjs`, `migrate-catalog-to-supabase.cjs`?**
-  _High betweenness centrality (0.005) - this node is a cross-community bridge._
-- **Why does `dispatch_command()` connect `graphify/cli.py` to `link_cross_repo_member_calls`, `scope_semantic_result`, `write_callflow_html`, `cache.py`, `Path`, `watch.py`, `Path`, `save_semantic_cache`, `_build_server`, `querylog.py`, `llm.py`, `build_tree`, `serve.py`, `html.py`, `graphify/__main__.py`, `affected.py`, `diagnostics.py`, `edge_data`, `semantic_cleanup.py`, `ingest.py`, `analyze.py`, `introspect_postgres`, `hooks.py`, `introspect_cargo`, `Path`, `detect`, `build.py`, `save_manifest`?**
-  _High betweenness centrality (0.005) - this node is a cross-community bridge._
+- **Why does `@supabase/supabase-js` connect `@supabase/supabase-js` to `sync-item-specific-images-to-supabase.cjs`, `sync-core-actions-conditions-to-supabase.cjs`, `audit-item-images-supabase.cjs`, `sync-dnd5e-domain-spells-to-supabase.cjs`, `audit-supabase-character-sync.cjs`, `audit-character-metadata-supabase.cjs`, `sync-dnd5e-subclass-choices-to-supabase.cjs`, `sync-dnd5e-attunement-to-supabase.cjs`, `admin.ts`, `sync-core-skills-to-supabase.cjs`, `sync-t20-spells-to-supabase.cjs`, `audit-supabase-campaigns-authenticated.cjs`, `sync-item-images-to-supabase.cjs`, `sync-weapon-catalog-to-supabase.cjs`, `audit-image-metadata-supabase.cjs`, `audit-catalog-supabase-reconciliation.cjs`, `sync-ose-classic-to-supabase.cjs`, `sync-dnd5e-ranger-class-choices-to-supabase.cjs`, `audit-core-systems-supabase.cjs`, `package.json`, `audit-weapon-images-supabase.cjs`, `update-image-metadata-supabase.cjs`, `sync-weapon-images-to-supabase.cjs`, `migrate-catalog-to-supabase.cjs`?**
+  _High betweenness centrality (0.004) - this node is a cross-community bridge._
+- **Why does `_make_id()` connect `_make_id` to `extract_commonlisp`, `extract_bash`, `extract`, `watch.py`, `_read_text`, `extract_dm`, `extract_rust`, `_extract_python_rationale`, `extract_go`, `extract_fortran`, `extract_pascal`, `extract_xaml`, `security.py`, `extract_elixir`, `_resolve_php_type_references`, `extract.py`, `extract_objc`, `extract_powershell`, `extract_robot`, `verilog.py`, `extract_ocaml`, `build.py`, `extract_terraform`, `extract_sql`, `_resolve_csharp_type_references`?**
+  _High betweenness centrality (0.004) - this node is a cross-community bridge._
+- **Why does `dispatch_command()` connect `graphify/cli.py` to `link_cross_repo_member_calls`, `scope_semantic_result`, `write_callflow_html`, `cache.py`, `extract`, `watch.py`, `Path`, `save_semantic_cache`, `_ImageRef`, `_build_server`, `querylog.py`, `llm.py`, `check_graph_file_size_cap`, `serve.py`, `graphify/export.py`, `graphify/__main__.py`, `affected.py`, `diagnostics.py`, `paths.py`, `semantic_cleanup.py`, `reflect.py`, `_platform_skill_destination`, `ingest.py`, `analyze.py`, `_extract_with_adaptive_retry`, `hooks.py`, `introspect_cargo`, `detect`, `build.py`, `save_manifest`?**
+  _High betweenness centrality (0.004) - this node is a cross-community bridge._
 - **Are the 5 inferred relationships involving `dispatch_command()` (e.g. with `_progress()` and `to_html()`) actually correct?**
   _`dispatch_command()` has 5 INFERRED edges - model-reasoned connections that need verification._
-- **What connects `resolved`, `contextDirPath`, `projects` to the rest of the system?**
-  _8149 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `Decisão de escopo — "cobrir todos os livros de `I:\Meu Drive\Livros\Livros RPG`" (2026-09-27)`, `Progresso — Pathfinder 1e (2026-09-27)`, `Progresso — Pathfinder 1e, classes núcleo (2026-09-27, mesma sessão)` to the rest of the system?**
+  _8098 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `pf2e_data.js` be split into smaller, more focused modules?**
   _Cohesion score 0.008771929824561403 - nodes in this community are weakly interconnected._
 - **Should `PathbuilderApp` be split into smaller, more focused modules?**
-  _Cohesion score 0.04259259259259259 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.05902980713033314 - nodes in this community are weakly interconnected._

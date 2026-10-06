@@ -3,11 +3,35 @@ import { T20_SKILLS } from "./t20/t20Catalog";
 import { DND5E_SKILLS } from "./dnd5e/dnd5eCatalog";
 import { OSE_CLASSES } from "./ose/oseClasses";
 import { OSE_SECONDARY_SKILLS } from "./ose/oseRules";
+import { DND35_SKILLS } from "./dnd35/dnd35Skills";
 
 type SkillRecord = { id: string; name: string; sourcePage?: number; keyAbility?: string; ruleSummary?: string; className?: string; category?: string };
 
 /** Converts rules-engine skill catalogs into read-only Compendium entries. */
 export function getSystemSkillItems(systemId: string, ruleset?: string): PickerItem[] {
+  if (systemId === "dnd35") {
+    return Object.values(DND35_SKILLS).map((skill) => ({
+      id: `dnd35.skill.${skill.id}`,
+      name: skill.name,
+      type: "skill",
+      category: "skill" as const,
+      summary: `Habilidade-chave: ${skill.keyAbility.toUpperCase()}. ${skill.usableUntrained ? "Pode ser usada sem treino." : "Exige treino."}${skill.armorCheckPenalty ? ` Sofre penalidade de armadura${skill.doubleArmorCheckPenalty ? " em dobro" : ""}.` : ""}`,
+      system_id: "dnd35" as RPGSystemId,
+      data: {
+        id: skill.id,
+        keyAbility: skill.keyAbility !== "nenhuma" ? [skill.keyAbility] : undefined,
+        skillAbility: skill.keyAbility !== "nenhuma" ? skill.keyAbility : undefined,
+        usableUntrained: skill.usableUntrained,
+        armorCheckPenalty: skill.armorCheckPenalty,
+        ruleset: "v35",
+        ruleSummary: `Habilidade-chave: ${skill.keyAbility.toUpperCase()}. ${skill.usableUntrained ? "Pode ser usada sem treino." : "Exige treino."}${skill.armorCheckPenalty ? ` Sofre penalidade de armadura${skill.doubleArmorCheckPenalty ? " em dobro" : ""}.` : ""}`,
+        description: `Habilidade-chave: ${skill.keyAbility.toUpperCase()}. ${skill.usableUntrained ? "Pode ser usada sem treino." : "Exige treino."}${skill.armorCheckPenalty ? ` Sofre penalidade de armadura${skill.doubleArmorCheckPenalty ? " em dobro" : ""}.` : ""}`,
+        source: { book: skill.sourceBook, page: skill.sourcePage },
+        sourceBook: skill.sourceBook,
+        sourcePage: skill.sourcePage,
+      },
+    }));
+  }
   if (systemId === "ose") {
     if (ruleset === "classic") {
       return OSE_SECONDARY_SKILLS.map((skill) => ({
