@@ -4,9 +4,11 @@ import { getSystemRuleItems } from "../data/systemRulesCatalog";
 import { getSystemActionItems } from "../data/systemActions";
 import { getSystemConditionItems } from "../data/systemConditions";
 import systemsSnapshot from "../data/catalog/snapshots/systems.json";
+import snapshotManifest from "../data/catalog/snapshots/manifest.json";
 
 /** Snapshot versionado: `node scripts/export-catalog-snapshot.mjs` o atualiza. */
-const snapshotModules = import.meta.glob("../data/catalog/snapshots/*/*/*.json", { eager: true, import: "default" }) as Record<string, CatalogItemRecord[]>;
+const snapshotLoaders = import.meta.glob("../data/catalog/snapshots/*/*/*.json", { import: "default" }) as Record<string, () => Promise<unknown>>;
+const snapshotFileCache = new Map<string, Promise<CatalogItemRecord[]>>();
 
 export type CatalogTableName =
   | "catalog_ancestries" | "catalog_heritages" | "catalog_classes" | "catalog_subclasses" | "catalog_backgrounds"
@@ -35,6 +37,14 @@ interface CatalogSystemRecord {
   default_ruleset?: string | null; supported_rulesets?: string[] | null; active?: boolean | null;
 }
 
+interface CatalogSnapshotScope {
+  systemId: string;
+  ruleset: string;
+  categories: Record<string, number>;
+}
+
+const catalogSnapshotScopes = snapshotManifest as unknown as CatalogSnapshotScope[];
+
 export type CatalogRuleset = string;
 export type CatalogSource = "local_snapshot" | "local_runtime";
 export interface CatalogSyncStatus {
@@ -55,10 +65,7 @@ function toRpgSystem(row: CatalogSystemRecord): IRPGSystem {
 export const DEFAULT_RPG_SYSTEMS: IRPGSystem[] = (systemsSnapshot as CatalogSystemRecord[]).map(toRpgSystem);
 /** Regras de edição presentes no snapshot; novos pacotes aparecem no filtro sem editar a UI. */
 export const CATALOG_RULESETS = [...new Set(
-  Object.values(snapshotModules)
-    .flatMap((records) => records)
-    .map((record) => record.ruleset)
-    .filter((ruleset): ruleset is string => typeof ruleset === "string" && ruleset.length > 0),
+  catalogSnapshotScopes.map(({ ruleset }) => ruleset),
 )].sort();
 export async function fetchCatalogSystems(): Promise<IRPGSystem[]> { return DEFAULT_RPG_SYSTEMS.filter((system) => system.active); }
 
@@ -83,28 +90,44 @@ export function normalizeSupabaseRecordToPickerItem(record: CatalogItemRecord, c
   return { id: record.id, name: record.name_pt || String(record.name || record.id), type: category, data, summary: summaries["pt-BR"] || summaries.en || "", category, rarity: record.rarity || "common", system_id: systemId };
 }
 
-function snapshotRowsFor(category: PickerType): CatalogItemRecord[] {
+async function snapshotRowsFor(category: PickerType, systemId = "all", ruleset?: string): Promise<CatalogItemRecord[]> {
   const file = category === "gear" ? "item" : category;
-  return Object.entries(snapshotModules).filter(([path]) => path.endsWith(`/${file}.json`)).flatMap(([, rows]) => Array.isArray(rows) ? rows : []);
+  const scopes = catalogSnapshotScopes.filter((scope) =>
+    (systemId === "all" || scope.systemId === systemId)
+    && (!ruleset || scope.ruleset === ruleset)
+    && (scope.categories[file] ?? 0) > 0,
+  );
+  const records = await Promise.all(scopes.map(async (scope) => {
+    const path = `../data/catalog/snapshots/${scope.systemId}/${scope.ruleset}/${file}.json`;
+    const loader = snapshotLoaders[path];
+    if (!loader) throw new Error(`Arquivo de catálogo ausente no snapshot: ${path}`);
+    let pendingRecords = snapshotFileCache.get(path);
+    if (!pendingRecords) {
+      pendingRecords = loader().then((value) => Array.isArray(value) ? value as CatalogItemRecord[] : []);
+      snapshotFileCache.set(path, pendingRecords);
+    }
+    return pendingRecords;
+  }));
+  return records.flat();
 }
 
 const CORE_SYSTEM_IDS = ["t20", "dnd5e", "ose"] as const;
-function localRuntimeItems(category: PickerType, systemId: string, ruleset?: string): PickerItem[] {
+function localRuntimeItems(category: PickerType, systemId: string, ruleset: string | undefined, hasSnapshotRecords: boolean): PickerItem[] {
   if (category === "rule") return systemId === "all" ? CORE_SYSTEM_IDS.flatMap((id) => getSystemRuleItems(id, ruleset)) : getSystemRuleItems(systemId, ruleset);
-  if (category === "skill" && snapshotRowsFor(category).length === 0) return getSystemSkillItems(systemId, ruleset);
-  if (category === "action" && snapshotRowsFor(category).length === 0) return getSystemActionItems(systemId, ruleset);
-  if (category === "condition" && snapshotRowsFor(category).length === 0) return getSystemConditionItems(systemId);
+  if (category === "skill" && !hasSnapshotRecords) return getSystemSkillItems(systemId, ruleset);
+  if (category === "action" && !hasSnapshotRecords) return getSystemActionItems(systemId, ruleset);
+  if (category === "condition" && !hasSnapshotRecords) return getSystemConditionItems(systemId);
   return [];
 }
 
 export async function fetchCatalogCategory(category: PickerType, options: { forceRemote?: boolean; limit?: number; systemId?: string; ruleset?: CatalogRuleset } = {}): Promise<{ items: PickerItem[]; source: CatalogSource }> {
   const systemId = options.systemId ?? "pf2e";
-  const records = snapshotRowsFor(category).filter((record) => (systemId === "all" || (record.system_id || "pf2e") === systemId) && (!options.ruleset || record.ruleset === options.ruleset));
+  const records = await snapshotRowsFor(category, systemId, options.ruleset);
   if (records.length) {
     const items = records.map((record) => normalizeSupabaseRecordToPickerItem(record, category));
     return { items: options.limit ? items.slice(0, options.limit) : items, source: "local_snapshot" };
   }
-  return { items: localRuntimeItems(category, systemId, options.ruleset), source: "local_runtime" };
+  return { items: localRuntimeItems(category, systemId, options.ruleset, false), source: "local_runtime" };
 }
 
 export async function fetchAllCatalogCategories(systemId = "pf2e", ruleset?: CatalogRuleset): Promise<Record<PickerType, PickerItem[]>> {
@@ -115,7 +138,11 @@ export async function fetchAllCatalogCategories(systemId = "pf2e", ruleset?: Cat
 
 export async function fetchCatalogTableCounts(): Promise<Record<CatalogTableName, number>> {
   const counts = {} as Record<CatalogTableName, number>;
-  for (const [type, table] of Object.entries(PICKER_TYPE_TO_TABLE) as [PickerType, CatalogTableName][]) if (counts[table] === undefined) counts[table] = snapshotRowsFor(type).length;
+  for (const [type, table] of Object.entries(PICKER_TYPE_TO_TABLE) as [PickerType, CatalogTableName][]) {
+    if (counts[table] !== undefined) continue;
+    const file = type === "gear" ? "item" : type;
+    counts[table] = catalogSnapshotScopes.reduce((total, scope) => total + (scope.categories[file] ?? 0), 0);
+  }
   return counts;
 }
 

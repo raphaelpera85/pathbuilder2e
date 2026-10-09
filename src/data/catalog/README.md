@@ -6,6 +6,7 @@ Os arquivos em `snapshots/` são a fonte de dados do compêndio publicada pela a
 snapshots/pf2e/remaster/feat.json
 snapshots/dnd5e/standard/spell.json
 snapshots/dnd35/v35-frostburn/item.json
+snapshots/manifest.json
 ```
 
 Para atualizar o snapshot a partir do projeto de origem, execute:
@@ -14,4 +15,4 @@ Para atualizar o snapshot a partir do projeto de origem, execute:
 node scripts/export-catalog-snapshot.mjs
 ```
 
-O código de produção não consulta o banco para carregar classes, raças, itens, magias, poderes ou demais entradas do catálogo. Cada registro preserva `system_id` e `ruleset`; filtros e fichas nunca devem usar dados de outro sistema ou edição.
+O código de produção não consulta o banco para carregar classes, raças, itens, magias, poderes ou demais entradas do catálogo. `manifest.json` indexa os arquivos por sistema, ruleset e categoria para que a aplicação carregue apenas os arquivos necessários. Cada registro preserva `system_id` e `ruleset`; filtros e fichas nunca devem usar dados de outro sistema ou edição.

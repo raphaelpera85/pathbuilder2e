@@ -47,15 +47,22 @@ const systems = await getAllRows("catalog_systems");
 await writeFile(join(OUTPUT_ROOT, "systems.json"), `${JSON.stringify(systems, null, 2)}\n`);
 
 let total = 0;
+const manifest = [];
 for (const [table, category] of Object.entries(TABLE_TO_CATEGORY)) {
   const rows = await getAllRows(table);
   total += rows.length;
   const groups = Map.groupBy(rows, (row) => `${row.system_id || "pf2e"}/${row.ruleset || "remaster"}`);
   for (const [scope, records] of groups) {
+    const [systemId, ruleset] = scope.split("/");
     const output = join(OUTPUT_ROOT, scope, `${category}.json`);
     await mkdir(dirname(output), { recursive: true });
     await writeFile(output, `${JSON.stringify(records, null, 2)}\n`);
+    const entry = manifest.find((item) => item.systemId === systemId && item.ruleset === ruleset);
+    if (entry) entry.categories[category] = records.length;
+    else manifest.push({ systemId, ruleset, categories: { [category]: records.length } });
   }
   console.log(`${table}: ${rows.length}`);
 }
+manifest.sort((a, b) => a.systemId.localeCompare(b.systemId) || a.ruleset.localeCompare(b.ruleset));
+await writeFile(join(OUTPUT_ROOT, "manifest.json"), `${JSON.stringify(manifest, null, 2)}\n`);
 console.log(`Exported ${total} catalog records to ${OUTPUT_ROOT}`);

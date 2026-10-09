@@ -5,6 +5,7 @@ import {
   fetchCatalogCategory,
   fetchCatalogItemById,
   getCatalogSyncStatus,
+  fetchCatalogTableCounts,
   DEFAULT_RPG_SYSTEMS,
   CATALOG_RULESETS,
   paginateCatalogItems,
@@ -28,6 +29,19 @@ describe("serviço de catálogo local", () => {
       "advanced", "classic", "legacy", "padrao", "remaster", "standard",
       "v35", "v35-cov", "v35-defensores", "v35-frostburn",
     ]);
+  });
+
+  it("carrega somente os arquivos do sistema, ruleset e categoria solicitados", async () => {
+    const result = await fetchCatalogCategory("spell", { systemId: "dnd35", ruleset: "v35-cov" });
+    expect(result.source).toBe("local_snapshot");
+    expect(result.items).toHaveLength(33);
+    expect(result.items.every((item) => item.system_id === "dnd35" && item.data.ruleset === "v35-cov")).toBe(true);
+  });
+
+  it("calcula totais de tabelas pelo manifesto sem carregar registros", async () => {
+    const counts = await fetchCatalogTableCounts();
+    expect(counts.catalog_feats).toBe(2556);
+    expect(counts.catalog_spells).toBe(1054);
   });
 
   it("pagina resultados sem descartar o total filtrado", () => {
