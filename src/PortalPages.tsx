@@ -57,7 +57,7 @@ import { CoreCharacterCreatorModal } from "./core/CoreCharacterCreatorModal";
 import type { MultiSystemCharacter, SupportedCoreSystem } from "./data/multiSystemCharacter";
 import type { RPGSystemId } from "./types";
 import { getCharacterEditorRoute, getPersistedCharacterSystemId, hydrateCharacterForEditor } from "./services/characterEditorRouting";
-import { T20_CLASSES, T20_RACES } from "./data/t20/t20Catalog";
+import { T20_CLASSES, T20_RACES, T20_SKILLS } from "./data/t20/t20Catalog";
 import { T20_ORIGINS } from "./data/t20/t20Origins";
 import { T20_EQUIPMENT, T20_POWERS, T20_SPELLS } from "./data/t20/t20Compendium";
 import { DND5E_CLASSES, DND5E_RACES } from "./data/dnd5e/dnd5eCatalog";
@@ -406,6 +406,11 @@ function CatalogPage() {
     };
   }, [inspectedEntry]);
 
+  const inspectedDescription = inspectedEntry
+    && !(inspectedEntry.category === "background" && inspectedEntry.data.systemId === "t20" && inspectedEntry.data.summaryOrigin === "structured_rules")
+    ? String(inspectedEntry.data.summaries?.[locale] ?? inspectedEntry.data.description ?? inspectedEntry.summary ?? "").trim()
+    : "";
+
   return <main className="portal-page portal-catalog-page" id="portal-content" tabIndex={-1}>
     <header className="portal-hero">
       <span>{t("compendiumKicker")}</span>
@@ -491,13 +496,22 @@ function CatalogPage() {
             {inspectedEntry.data.bulk !== undefined ? <div className="stat-box"><strong>{t("bulk")}</strong><span>{String(inspectedEntry.data.bulk)}</span></div> : null}
             {inspectedEntry.data.variantFamily ? <div className="stat-box"><strong>{locale === "en" ? "Variant" : locale === "es" ? "Variante" : "Variante"}</strong><span>{inspectedEntry.data.variantRole === "ranged" ? (locale === "en" ? "Ranged" : locale === "es" ? "A distancia" : "À distância") : inspectedEntry.data.variantRole === "melee" ? (locale === "en" ? "Melee" : locale === "es" ? "Cuerpo a cuerpo" : "Corpo a corpo") : inspectedEntry.data.variantFamily}</span></div> : null}
             {inspectedEntry.data.prerequisites ? <div className="stat-box"><strong>{t("prerequisites")}</strong><span>{formatCatalogValue(inspectedEntry.data.prerequisites, locale)}</span></div> : null}
+            {inspectedEntry.category === "background" && inspectedEntry.data.systemId === "t20" && Array.isArray(inspectedEntry.data.trainedSkills) && inspectedEntry.data.trainedSkills.length > 0
+              ? <div className="stat-box"><strong>{locale === "en" ? "Trained skills (PT-BR names)" : locale === "es" ? "Habilidades entrenadas (nombres PT-BR)" : "Perícias treinadas"}</strong><span>{inspectedEntry.data.trainedSkills.map((skill: string) => T20_SKILLS.find((entry) => entry.id === skill)?.name ?? getLocalizedSkillName(skill, locale)).join(", ")}</span></div>
+              : null}
+            {inspectedEntry.category === "background" && inspectedEntry.data.systemId === "t20" && Array.isArray(inspectedEntry.data.benefitOptions) && inspectedEntry.data.benefitOptions.length > 0
+              ? <div className="stat-box"><strong>{locale === "en" ? "Benefits (PT-BR names)" : locale === "es" ? "Beneficios (nombres PT-BR)" : "Benefícios"}</strong><span>{inspectedEntry.data.benefitOptions.map((option: string) => formatT20OriginBenefit(option)).join(", ")}</span></div>
+              : null}
+            {inspectedEntry.category === "background" && inspectedEntry.data.systemId === "t20" && Array.isArray(inspectedEntry.data.startingItems) && inspectedEntry.data.startingItems.length > 0
+              ? <div className="stat-box"><strong>{locale === "en" ? "Starting items (PT-BR source)" : locale === "es" ? "Objetos iniciales (fuente PT-BR)" : "Itens iniciais (PT-BR)"}</strong><span>{inspectedEntry.data.startingItems.join(", ")}</span></div>
+              : null}
           </div>
 
           {/* DESCRIPTION */}
-          <div className="compendium-modal-description">
+          {inspectedDescription && <div className="compendium-modal-description">
             <h3>{t("itemDetails")}</h3>
-            <p>{String(inspectedEntry.data.summaries?.[locale] ?? inspectedEntry.data.description ?? inspectedEntry.summary ?? "")}</p>
-          </div>
+            <p>{inspectedDescription}</p>
+          </div>}
 
           {/* SOURCE CITATION */}
           <footer className="compendium-modal-footer">
@@ -519,6 +533,16 @@ function hasFallbackTranslation(entry: { data?: { id?: string; summaries?: Parti
     && Boolean(pt)
     && pt === en
     && en === es;
+}
+
+function formatT20OriginBenefit(value: string): string {
+  const power = T20_POWERS.find((entry) => entry.id === `t20.poder.${value}`);
+  if (power) return power.name;
+  const readable = value.replaceAll("_", " ").trim();
+  const minorWords = new Set(["a", "as", "o", "os", "de", "da", "do", "das", "dos", "e"]);
+  return readable.split(/\s+/).map((word, index) => index > 0 && minorWords.has(word.toLocaleLowerCase("pt-BR"))
+    ? word.toLocaleLowerCase("pt-BR")
+    : word ? word[0].toLocaleUpperCase("pt-BR") + word.slice(1) : word).join(" ");
 }
 
 export function formatCatalogValue(value: unknown, locale: "pt-BR" | "en" | "es", key = ""): string {

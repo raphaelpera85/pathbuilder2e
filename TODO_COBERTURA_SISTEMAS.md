@@ -12,11 +12,13 @@ Uma entrada só é considerada concluída quando possui, no sistema correto:
 4. regra de criação/validação no motor;
 5. cálculo ou efeito derivado quando aplicável;
 6. edição após salvar e reabertura sem perda de dados;
-7. persistência local e Supabase, quando o sistema usa catálogo remoto;
+7. persistência local dos personagens; catálogo de regras versionado no Git por sistema e ruleset. Supabase permanece apenas nos recursos pessoais/remotos ainda habilitados;
 8. exportação para PDF editável/legível;
 9. teste de isolamento, regressão e fluxo visual relevante.
 
-Auditoria remota mais recente (23/09/2026): `npm run audit:catalog:supabase` encontrou 0 registros locais ausentes, 0 divergências de campos e 0 falhas acionáveis nas 19 tabelas auditadas. O conteúdo extra remoto pertence a outros rulesets e foi preservado.
+Referência histórica: a reconciliação de 23/09/2026 (`npm run audit:catalog:supabase`) não encontrou registros locais ausentes, divergências de campos ou falhas acionáveis nas 19 tabelas. Desde 09/10/2026, os 6.353 registros dos 5 sistemas e 10 rulesets estão versionados em `src/data/catalog/snapshots`; o Compêndio os lê dos arquivos locais e não consulta tabelas de catálogo no Supabase.
+
+Auditoria local dos snapshots: `npm run audit:catalog:snapshots` valida manifesto, arquivos e isolamento. Após sincronizar regras estruturadas locais de D&D 5e e T20 (09/10/2026), restam 348 registros sem resumo em português: D&D 3.5 `v35` 304 e OSE Advanced/Classic 22 em cada. Há também 20 registros sem página de fonte (ações D&D 5e 8, OSE Advanced 4, OSE Classic 4 e T20 4) e lacunas de nomes EN/ES; os resultados são separados por sistema/ruleset para orientar a curadoria sem misturar edições. Priorizar resumos comprováveis por fontes estruturadas já versionadas; não completar conteúdo de livros sem fonte disponível.
 
 Não marcar uma categoria como completa apenas porque seus nomes aparecem no catálogo.
 
@@ -26,6 +28,7 @@ Não marcar uma categoria como completa apenas porque seus nomes aparecem no cat
 |---|---:|---:|---:|---:|---:|---:|---|---|
 | Pathfinder 2e Remaster | catálogo amplo | catálogo amplo | catálogo amplo | catálogo amplo | catálogo amplo | catálogo amplo | bônus, penalidades e condições próprios | construtor principal; auditoria contínua |
 | Tormenta20 padrão | 17 | 14 | 150 | 66 | 412 poderes | 29 | não possui a mecânica nativa de D&D; usar modificadores/penalidades T20 | núcleo implementado; efeitos situacionais ainda abertos |
+| D&D 3.5 `v35` | 7 | 11 | 259 armas/armaduras/itens | 190 nos suplementos | 109 no núcleo | 45 | bônus e penalidades situacionais próprias; sem importar vantagem da 5e | catálogo versionado e isolado; regras dos suplementos ainda em revisão |
 | D&D 5e 2014 Standard | 9 | 12 | 226 | 315 | 40 | 18 | vantagem/desvantagem implementada | núcleo implementado; completar efeitos por nível |
 | OSE Advanced Fantasy | 10 raças | 16 classes avançadas | 53 itens/armas/armaduras | 34 | não possui talentos nativos | tabelas percentuais e perícias secundárias | não possui vantagem/desvantagem nativa | construtor próprio e PDF de uma página |
 | OSE Classic Fantasy | classes raciais do ruleset | 7 classes jogáveis na matriz atual | 53 itens/armas/armaduras | 34 | não possui talentos nativos | perícias secundárias opcionais | não possui vantagem/desvantagem nativa | ruleset isolado; ampliar auditoria de criação |
@@ -113,7 +116,7 @@ Gate de regressão (23/09/2026): a suíte completa passou em modo serializado no
 Windows com 77 arquivos e 1.241 testes aprovados após a introdução de condições
 ativas e do nível editável de Exausto.
 
-Auditoria adicional (23/09/2026): `npm run audit:system:coverage` confirmou as
+Auditoria histórica adicional (23/09/2026): `npm run audit:system:coverage` confirmou as
 contagens e metadados completos de T20, D&D 5e, OSE Advanced e OSE Classic; a
 reconciliação `npm run audit:catalog:supabase` confirmou zero registros locais
 ausentes remotamente e zero divergências de campos. Os registros extras remotos
@@ -128,6 +131,7 @@ continuam classificados como outro ruleset ou suplemento, sem remoção automát
 - [x] Criar testes de isolamento de catálogo e ruleset.
 - [x] Criar um relatório automático único que compare, por sistema, contagem local, entradas sem fonte, entradas sem resumo e entradas sem mecanismo; `audit:system:coverage` agora falha em contagens/isolamento e lista a cobertura de metadados e escolhas estruturadas.
 - [x] Adicionar `catalogVersion` por sistema/ruleset ao payload persistido e à exportação PDF; fichas antigas sem versão continuam compatíveis, enquanto versões declaradas cruzadas são rejeitadas antes do salvamento.
+- [x] Versionar os catálogos de classes, raças, itens, magias, talentos e demais entradas em snapshots Git isolados por sistema/ruleset; o Compêndio carrega esses arquivos localmente.
 - [ ] Definir política explícita de suplementos: cada livro novo deve entrar como pacote/versionamento próprio, nunca misturado silenciosamente ao núcleo.
 - [ ] Resolver no painel do Supabase a proteção contra senhas vazadas apontada pelo advisor de segurança.
 
@@ -151,6 +155,10 @@ continuam classificados como outro ruleset ou suplemento, sem remoção automát
 
 - [x] Atributos, compra por pontos, rolagem, raça, classe, origem, divindade, perícias e equipamento.
 - [x] 17 raças e 14 classes do núcleo.
+- [x] Completar no snapshot T20 os traços de todas as 17 raças usando `T20_RACE_RULES` como fonte local; regressão compara cada registro do ruleset `padrao` com o módulo de regras.
+- [x] Sincronizar as 35 origens T20 no snapshot com perícias treinadas, benefícios e itens iniciais de `T20_ORIGINS`; regressão compara os campos de todos os registros.
+- [x] Exibir perícias, benefícios e itens iniciais das origens T20 no detalhe do Compêndio; ocultar o painel de descrição quando não há resumo.
+- [x] Completar no snapshot as regras locais das 17 raças e 14 classes T20 e produzir resumos PT-BR derivados desses dados; testes comparam o conteúdo mecânico de todas as entradas.
 - [x] Origem, divindade e poderes filtrados/validados no construtor.
 - [x] PM, PV, Defesa, iniciativa, deslocamento, perícias e XP derivados.
 - [x] Escolhas raciais e poderes com `featChoices`/`raceChoices` persistidos.
@@ -164,6 +172,7 @@ continuam classificados como outro ruleset ou suplemento, sem remoção automát
 
 - [x] Atributos, compra por pontos, rolagem, array padrão, raça, sub-raça, classe, subclasse, antecedente, alinhamento, perícias e equipamento.
 - [x] 9 raças, 12 classes, 13 antecedentes e subclasses catalogadas do núcleo atual.
+- [x] Sincronizar no snapshot de D&D 5e ajustes e traços raciais, escolhas de classe, proficiências, características e equipamento dos antecedentes a partir dos módulos locais; a suíte compara todas as 34 entradas com suas fontes tipadas.
 - [x] Limites de magias conhecidas/preparadas, espaços, foco, proficiências e pré-requisitos principais.
 - [x] Vantagem/desvantagem com anulação quando as duas condições coexistem.
 - [x] Escolhas de talentos, estilo de luta, metamagia, pacto, domínios e círculos da Terra estruturadas.

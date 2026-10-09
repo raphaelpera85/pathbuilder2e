@@ -4,7 +4,7 @@
     "name_pt": "Acólito",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias: intuicao, religiao. Ferramentas: nenhuma fixa. Idiomas à escolha: 2. Característica: Abrigo dos Fiéis. Equipamento inicial: símbolo sagrado, livro de preces, incenso, vestimentas, 15 po.",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
@@ -19,7 +19,26 @@
     "source_book": "D&D 5e — Livro do Jogador (2014)",
     "source_page": 129,
     "data": {
-      "kind": "background"
+      "kind": "background",
+      "skillProficiencies": [
+        "intuicao",
+        "religiao"
+      ],
+      "toolProficiencies": [],
+      "toolChoiceGroups": [],
+      "languageChoices": 2,
+      "feature": "Abrigo dos Fiéis",
+      "startingEquipment": [
+        "símbolo sagrado",
+        "livro de preces",
+        "incenso",
+        "vestimentas",
+        "15 po"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias: intuicao, religiao. Ferramentas: nenhuma fixa. Idiomas à escolha: 2. Característica: Abrigo dos Fiéis. Equipamento inicial: símbolo sagrado, livro de preces, incenso, vestimentas, 15 po."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-12T12:53:26.426838+00:00",
@@ -30,7 +49,7 @@
     "name_pt": "Artesão de Guilda",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias: intuicao, persuasao. Ferramentas: ferramenta de artesão. Idiomas à escolha: 1. Característica: Associados da Guilda. Equipamento inicial: ferramenta de artesão, carta de apresentação, roupas de viajante, 15 po.",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
@@ -67,7 +86,26 @@
       ],
       "toolChoiceGroups": [
         "artisan"
-      ]
+      ],
+      "skillProficiencies": [
+        "intuicao",
+        "persuasao"
+      ],
+      "toolProficiencies": [
+        "ferramenta de artesão"
+      ],
+      "languageChoices": 1,
+      "feature": "Associados da Guilda",
+      "startingEquipment": [
+        "ferramenta de artesão",
+        "carta de apresentação",
+        "roupas de viajante",
+        "15 po"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias: intuicao, persuasao. Ferramentas: ferramenta de artesão. Idiomas à escolha: 1. Característica: Associados da Guilda. Equipamento inicial: ferramenta de artesão, carta de apresentação, roupas de viajante, 15 po."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-13T14:18:29.748848+00:00",
@@ -78,7 +116,7 @@
     "name_pt": "Artista",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias: acrobacia, atuacao. Ferramentas: kit de disfarce, instrumento musical. Idiomas à escolha: 0. Característica: Pela Demanda Popular. Equipamento inicial: instrumento musical, favor de admirador, traje, 15 po.",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
@@ -108,7 +146,27 @@
       ],
       "toolChoiceGroups": [
         "instrument"
-      ]
+      ],
+      "skillProficiencies": [
+        "acrobacia",
+        "atuacao"
+      ],
+      "toolProficiencies": [
+        "kit de disfarce",
+        "instrumento musical"
+      ],
+      "languageChoices": 0,
+      "feature": "Pela Demanda Popular",
+      "startingEquipment": [
+        "instrumento musical",
+        "favor de admirador",
+        "traje",
+        "15 po"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias: acrobacia, atuacao. Ferramentas: kit de disfarce, instrumento musical. Idiomas à escolha: 0. Característica: Pela Demanda Popular. Equipamento inicial: instrumento musical, favor de admirador, traje, 15 po."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-13T14:18:29.748848+00:00",
@@ -119,7 +177,7 @@
     "name_pt": "Charlatão",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias: enganacao, prestidigitacao. Ferramentas: kit de disfarce, ferramenta de falsificacao. Idiomas à escolha: 0. Característica: Identidade Falsa. Equipamento inicial: roupas finas, kit de disfarce, ferramenta de falsificação, 15 po.",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
@@ -134,7 +192,28 @@
     "source_book": "D&D 5e — Livro do Jogador (2014)",
     "source_page": 136,
     "data": {
-      "kind": "background"
+      "kind": "background",
+      "skillProficiencies": [
+        "enganacao",
+        "prestidigitacao"
+      ],
+      "toolProficiencies": [
+        "kit de disfarce",
+        "ferramenta de falsificacao"
+      ],
+      "toolChoiceGroups": [],
+      "languageChoices": 0,
+      "feature": "Identidade Falsa",
+      "startingEquipment": [
+        "roupas finas",
+        "kit de disfarce",
+        "ferramenta de falsificação",
+        "15 po"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias: enganacao, prestidigitacao. Ferramentas: kit de disfarce, ferramenta de falsificacao. Idiomas à escolha: 0. Característica: Identidade Falsa. Equipamento inicial: roupas finas, kit de disfarce, ferramenta de falsificação, 15 po."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-12T12:53:26.426838+00:00",
@@ -145,7 +224,7 @@
     "name_pt": "Criminoso",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias: enganacao, furtividade. Ferramentas: ferramentas de ladrao, kit de jogo. Idiomas à escolha: 0. Característica: Contato Criminal. Equipamento inicial: pé de cabra, roupas escuras, 15 po.",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
@@ -169,7 +248,26 @@
       ],
       "toolChoiceGroups": [
         "game"
-      ]
+      ],
+      "skillProficiencies": [
+        "enganacao",
+        "furtividade"
+      ],
+      "toolProficiencies": [
+        "ferramentas de ladrao",
+        "kit de jogo"
+      ],
+      "languageChoices": 0,
+      "feature": "Contato Criminal",
+      "startingEquipment": [
+        "pé de cabra",
+        "roupas escuras",
+        "15 po"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias: enganacao, furtividade. Ferramentas: ferramentas de ladrao, kit de jogo. Idiomas à escolha: 0. Característica: Contato Criminal. Equipamento inicial: pé de cabra, roupas escuras, 15 po."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-13T14:18:29.748848+00:00",
@@ -180,7 +278,7 @@
     "name_pt": "Eremita",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias: medicina, religiao. Ferramentas: kit de herbalismo. Idiomas à escolha: 1. Característica: Descoberta. Equipamento inicial: estojo de pergaminhos, cobertor, roupas comuns, kit de herbalismo, 5 po.",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
@@ -195,7 +293,28 @@
     "source_book": "D&D 5e — Livro do Jogador (2014)",
     "source_page": 141,
     "data": {
-      "kind": "background"
+      "kind": "background",
+      "skillProficiencies": [
+        "medicina",
+        "religiao"
+      ],
+      "toolProficiencies": [
+        "kit de herbalismo"
+      ],
+      "toolChoiceGroups": [],
+      "languageChoices": 1,
+      "feature": "Descoberta",
+      "startingEquipment": [
+        "estojo de pergaminhos",
+        "cobertor",
+        "roupas comuns",
+        "kit de herbalismo",
+        "5 po"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias: medicina, religiao. Ferramentas: kit de herbalismo. Idiomas à escolha: 1. Característica: Descoberta. Equipamento inicial: estojo de pergaminhos, cobertor, roupas comuns, kit de herbalismo, 5 po."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-12T12:53:26.426838+00:00",
@@ -206,7 +325,7 @@
     "name_pt": "Forasteiro",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias: atletismo, sobrevivencia. Ferramentas: instrumento musical. Idiomas à escolha: 1. Característica: Andarilho. Equipamento inicial: bastão, armadilha, troféu de animal, roupas de viajante, 10 po.",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
@@ -236,7 +355,27 @@
       ],
       "toolChoiceGroups": [
         "instrument"
-      ]
+      ],
+      "skillProficiencies": [
+        "atletismo",
+        "sobrevivencia"
+      ],
+      "toolProficiencies": [
+        "instrumento musical"
+      ],
+      "languageChoices": 1,
+      "feature": "Andarilho",
+      "startingEquipment": [
+        "bastão",
+        "armadilha",
+        "troféu de animal",
+        "roupas de viajante",
+        "10 po"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias: atletismo, sobrevivencia. Ferramentas: instrumento musical. Idiomas à escolha: 1. Característica: Andarilho. Equipamento inicial: bastão, armadilha, troféu de animal, roupas de viajante, 10 po."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-13T14:18:29.748848+00:00",
@@ -247,7 +386,7 @@
     "name_pt": "Herói do Povo",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias: adestramento, sobrevivencia. Ferramentas: ferramenta de artesão, veículos terrestres. Idiomas à escolha: 0. Característica: Hospitalidade Rústica. Equipamento inicial: ferramenta de artesão, pá, panela de ferro, roupas comuns, 10 po.",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
@@ -284,7 +423,28 @@
       ],
       "toolChoiceGroups": [
         "artisan"
-      ]
+      ],
+      "skillProficiencies": [
+        "adestramento",
+        "sobrevivencia"
+      ],
+      "toolProficiencies": [
+        "ferramenta de artesão",
+        "veículos terrestres"
+      ],
+      "languageChoices": 0,
+      "feature": "Hospitalidade Rústica",
+      "startingEquipment": [
+        "ferramenta de artesão",
+        "pá",
+        "panela de ferro",
+        "roupas comuns",
+        "10 po"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias: adestramento, sobrevivencia. Ferramentas: ferramenta de artesão, veículos terrestres. Idiomas à escolha: 0. Característica: Hospitalidade Rústica. Equipamento inicial: ferramenta de artesão, pá, panela de ferro, roupas comuns, 10 po."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-13T14:18:29.748848+00:00",
@@ -295,7 +455,7 @@
     "name_pt": "Marinheiro",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias: atletismo, percepcao. Ferramentas: ferramentas de navegador, veículos aquáticos. Idiomas à escolha: 0. Característica: Passagem de Navio. Equipamento inicial: malagueta, 15 metros de corda de cânhamo, roupas comuns, 10 po.",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
@@ -310,7 +470,28 @@
     "source_book": "D&D 5e — Livro do Jogador (2014)",
     "source_page": 146,
     "data": {
-      "kind": "background"
+      "kind": "background",
+      "skillProficiencies": [
+        "atletismo",
+        "percepcao"
+      ],
+      "toolProficiencies": [
+        "ferramentas de navegador",
+        "veículos aquáticos"
+      ],
+      "toolChoiceGroups": [],
+      "languageChoices": 0,
+      "feature": "Passagem de Navio",
+      "startingEquipment": [
+        "malagueta",
+        "15 metros de corda de cânhamo",
+        "roupas comuns",
+        "10 po"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias: atletismo, percepcao. Ferramentas: ferramentas de navegador, veículos aquáticos. Idiomas à escolha: 0. Característica: Passagem de Navio. Equipamento inicial: malagueta, 15 metros de corda de cânhamo, roupas comuns, 10 po."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-12T12:53:26.426838+00:00",
@@ -321,7 +502,7 @@
     "name_pt": "Nobre",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias: historia, persuasao. Ferramentas: kit de jogo. Idiomas à escolha: 1. Característica: Posição de Privilégio. Equipamento inicial: roupas finas, anel de sinete, pergaminho de linhagem, 25 po.",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
@@ -345,7 +526,26 @@
       ],
       "toolChoiceGroups": [
         "game"
-      ]
+      ],
+      "skillProficiencies": [
+        "historia",
+        "persuasao"
+      ],
+      "toolProficiencies": [
+        "kit de jogo"
+      ],
+      "languageChoices": 1,
+      "feature": "Posição de Privilégio",
+      "startingEquipment": [
+        "roupas finas",
+        "anel de sinete",
+        "pergaminho de linhagem",
+        "25 po"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias: historia, persuasao. Ferramentas: kit de jogo. Idiomas à escolha: 1. Característica: Posição de Privilégio. Equipamento inicial: roupas finas, anel de sinete, pergaminho de linhagem, 25 po."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-13T14:18:29.748848+00:00",
@@ -356,7 +556,7 @@
     "name_pt": "Órfão",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias: furtividade, prestidigitacao. Ferramentas: ferramentas de ladrao. Idiomas à escolha: 0. Característica: Segredos da Cidade. Equipamento inicial: faca pequena, mapa da cidade, animal de estimação, roupas comuns, 10 po.",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
@@ -371,7 +571,28 @@
     "source_book": "D&D 5e — Livro do Jogador (2014)",
     "source_page": 150,
     "data": {
-      "kind": "background"
+      "kind": "background",
+      "skillProficiencies": [
+        "furtividade",
+        "prestidigitacao"
+      ],
+      "toolProficiencies": [
+        "ferramentas de ladrao"
+      ],
+      "toolChoiceGroups": [],
+      "languageChoices": 0,
+      "feature": "Segredos da Cidade",
+      "startingEquipment": [
+        "faca pequena",
+        "mapa da cidade",
+        "animal de estimação",
+        "roupas comuns",
+        "10 po"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias: furtividade, prestidigitacao. Ferramentas: ferramentas de ladrao. Idiomas à escolha: 0. Característica: Segredos da Cidade. Equipamento inicial: faca pequena, mapa da cidade, animal de estimação, roupas comuns, 10 po."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-12T12:53:26.426838+00:00",
@@ -382,7 +603,7 @@
     "name_pt": "Sábio",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias: arcanismo, historia. Ferramentas: nenhuma fixa. Idiomas à escolha: 2. Característica: Pesquisador. Equipamento inicial: tinta, pena, carta de estudioso, roupas comuns, 10 po.",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
@@ -397,7 +618,26 @@
     "source_book": "D&D 5e — Livro do Jogador (2014)",
     "source_page": 152,
     "data": {
-      "kind": "background"
+      "kind": "background",
+      "skillProficiencies": [
+        "arcanismo",
+        "historia"
+      ],
+      "toolProficiencies": [],
+      "toolChoiceGroups": [],
+      "languageChoices": 2,
+      "feature": "Pesquisador",
+      "startingEquipment": [
+        "tinta",
+        "pena",
+        "carta de estudioso",
+        "roupas comuns",
+        "10 po"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias: arcanismo, historia. Ferramentas: nenhuma fixa. Idiomas à escolha: 2. Característica: Pesquisador. Equipamento inicial: tinta, pena, carta de estudioso, roupas comuns, 10 po."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-12T12:53:26.426838+00:00",
@@ -408,7 +648,7 @@
     "name_pt": "Soldado",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias: atletismo, intimidacao. Ferramentas: kit de jogo, veículos terrestres. Idiomas à escolha: 0. Característica: Patente Militar. Equipamento inicial: insígnia, troféu de inimigo, jogo de dados, roupas comuns, 10 po.",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
@@ -432,7 +672,28 @@
       ],
       "toolChoiceGroups": [
         "game"
-      ]
+      ],
+      "skillProficiencies": [
+        "atletismo",
+        "intimidacao"
+      ],
+      "toolProficiencies": [
+        "kit de jogo",
+        "veículos terrestres"
+      ],
+      "languageChoices": 0,
+      "feature": "Patente Militar",
+      "startingEquipment": [
+        "insígnia",
+        "troféu de inimigo",
+        "jogo de dados",
+        "roupas comuns",
+        "10 po"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias: atletismo, intimidacao. Ferramentas: kit de jogo, veículos terrestres. Idiomas à escolha: 0. Característica: Patente Militar. Equipamento inicial: insígnia, troféu de inimigo, jogo de dados, roupas comuns, 10 po."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-13T14:18:29.748848+00:00",

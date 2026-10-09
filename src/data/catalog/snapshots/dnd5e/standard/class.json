@@ -4,7 +4,7 @@
     "name_pt": "Bárbaro",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Dado de Vida d12. Atributo principal: Força. Salvaguardas: Força e Constituição. Escolha 2 perícia(s) entre: adestramento, atletismo, intimidacao, natureza, percepcao, sobrevivencia. Proficiências: Armas simples e marciais; armaduras leves e médias; escudos.",
     "description_en": null,
     "description_es": null,
     "hp_per_level": 6,
@@ -27,7 +27,30 @@
     "data": {
       "hitDie": "d12",
       "proficiencies": "Armas simples e marciais; armaduras leves e médias; escudos",
-      "skillChoiceCount": 2
+      "skillChoiceCount": 2,
+      "primaryAbility": "Força",
+      "savingThrows": [
+        "Força",
+        "Constituição"
+      ],
+      "skillChoices": [
+        "adestramento",
+        "atletismo",
+        "intimidacao",
+        "natureza",
+        "percepcao",
+        "sobrevivencia"
+      ],
+      "startingEquipment": [
+        "Machado grande ou arma marcial corpo a corpo",
+        "Duas machadinhas",
+        "Pacote de explorador",
+        "Quatro azagaias"
+      ],
+      "summaries": {
+        "pt-BR": "Dado de Vida d12. Atributo principal: Força. Salvaguardas: Força e Constituição. Escolha 2 perícia(s) entre: adestramento, atletismo, intimidacao, natureza, percepcao, sobrevivencia. Proficiências: Armas simples e marciais; armaduras leves e médias; escudos."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:50:32.196269+00:00",
     "updated_at": "2026-09-12T12:50:32.196269+00:00",
@@ -38,7 +61,7 @@
     "name_pt": "Bardo",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Dado de Vida d8. Atributo principal: Carisma. Salvaguardas: Destreza e Carisma. Escolha 3 perícia(s) entre: qualquer. Proficiências: Armas simples; bestas de mão, espadas longas, rapieiras e espadas curtas; armaduras leves.",
     "description_en": null,
     "description_es": null,
     "hp_per_level": 4,
@@ -60,8 +83,26 @@
     "source_page": 51,
     "data": {
       "hitDie": "d8",
-      "proficiencies": "Armas simples e armaduras leves",
-      "skillChoiceCount": 3
+      "proficiencies": "Armas simples; bestas de mão, espadas longas, rapieiras e espadas curtas; armaduras leves",
+      "skillChoiceCount": 3,
+      "primaryAbility": "Carisma",
+      "savingThrows": [
+        "Destreza",
+        "Carisma"
+      ],
+      "skillChoices": [
+        "qualquer"
+      ],
+      "startingEquipment": [
+        "Rapieira, espada longa ou arma simples",
+        "Instrumento musical",
+        "Armadura de couro",
+        "Pacote de diplomata"
+      ],
+      "summaries": {
+        "pt-BR": "Dado de Vida d8. Atributo principal: Carisma. Salvaguardas: Destreza e Carisma. Escolha 3 perícia(s) entre: qualquer. Proficiências: Armas simples; bestas de mão, espadas longas, rapieiras e espadas curtas; armaduras leves."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:50:32.196269+00:00",
     "updated_at": "2026-09-12T12:50:32.196269+00:00",
@@ -72,7 +113,7 @@
     "name_pt": "Bruxo",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Dado de Vida d8. Atributo principal: Carisma. Salvaguardas: Sabedoria e Carisma. Escolha 2 perícia(s) entre: arcanismo, enganacao, historia, intimidacao, investigacao, natureza, religiao. Proficiências: Armas simples; armaduras leves.",
     "description_en": null,
     "description_es": null,
     "hp_per_level": 4,
@@ -94,8 +135,32 @@
     "source_page": 56,
     "data": {
       "hitDie": "d8",
-      "proficiencies": "Armas simples e armaduras leves",
-      "skillChoiceCount": 2
+      "proficiencies": "Armas simples; armaduras leves",
+      "skillChoiceCount": 2,
+      "primaryAbility": "Carisma",
+      "savingThrows": [
+        "Sabedoria",
+        "Carisma"
+      ],
+      "skillChoices": [
+        "arcanismo",
+        "enganacao",
+        "historia",
+        "intimidacao",
+        "investigacao",
+        "natureza",
+        "religiao"
+      ],
+      "startingEquipment": [
+        "Besta leve e 20 virotes ou arma simples",
+        "Bolsa de componentes ou foco arcano",
+        "Pacote de estudioso",
+        "Armadura de couro"
+      ],
+      "summaries": {
+        "pt-BR": "Dado de Vida d8. Atributo principal: Carisma. Salvaguardas: Sabedoria e Carisma. Escolha 2 perícia(s) entre: arcanismo, enganacao, historia, intimidacao, investigacao, natureza, religiao. Proficiências: Armas simples; armaduras leves."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:50:32.196269+00:00",
     "updated_at": "2026-09-12T12:50:32.196269+00:00",
@@ -106,7 +171,7 @@
     "name_pt": "Clérigo",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Dado de Vida d8. Atributo principal: Sabedoria. Salvaguardas: Sabedoria e Carisma. Escolha 2 perícia(s) entre: historia, intuicao, medicina, persuasao, religiao. Proficiências: Armas simples; armaduras leves e médias; escudos.",
     "description_en": null,
     "description_es": null,
     "hp_per_level": 4,
@@ -128,8 +193,31 @@
     "source_page": 63,
     "data": {
       "hitDie": "d8",
-      "proficiencies": "Armas simples, armaduras leves e médias, escudos",
-      "skillChoiceCount": 2
+      "proficiencies": "Armas simples; armaduras leves e médias; escudos",
+      "skillChoiceCount": 2,
+      "primaryAbility": "Sabedoria",
+      "savingThrows": [
+        "Sabedoria",
+        "Carisma"
+      ],
+      "skillChoices": [
+        "historia",
+        "intuicao",
+        "medicina",
+        "persuasao",
+        "religiao"
+      ],
+      "startingEquipment": [
+        "Maça ou martelo de guerra",
+        "Cota de escamas, couro ou peitoral",
+        "Escudo",
+        "Símbolo sagrado",
+        "Pacote de sacerdote"
+      ],
+      "summaries": {
+        "pt-BR": "Dado de Vida d8. Atributo principal: Sabedoria. Salvaguardas: Sabedoria e Carisma. Escolha 2 perícia(s) entre: historia, intuicao, medicina, persuasao, religiao. Proficiências: Armas simples; armaduras leves e médias; escudos."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:50:32.196269+00:00",
     "updated_at": "2026-09-12T12:50:32.196269+00:00",
@@ -140,7 +228,7 @@
     "name_pt": "Druida",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Dado de Vida d8. Atributo principal: Sabedoria. Salvaguardas: Inteligência e Sabedoria. Escolha 2 perícia(s) entre: arcanismo, adestramento, intuicao, medicina, natureza, percepcao, religiao, sobrevivencia. Proficiências: Escudos e armaduras leves/médias não metálicas.",
     "description_en": null,
     "description_es": null,
     "hp_per_level": 4,
@@ -163,7 +251,32 @@
     "data": {
       "hitDie": "d8",
       "proficiencies": "Escudos e armaduras leves/médias não metálicas",
-      "skillChoiceCount": 2
+      "skillChoiceCount": 2,
+      "primaryAbility": "Sabedoria",
+      "savingThrows": [
+        "Inteligência",
+        "Sabedoria"
+      ],
+      "skillChoices": [
+        "arcanismo",
+        "adestramento",
+        "intuicao",
+        "medicina",
+        "natureza",
+        "percepcao",
+        "religiao",
+        "sobrevivencia"
+      ],
+      "startingEquipment": [
+        "Escudo de madeira",
+        "Cimitarra ou arma simples",
+        "Armadura de couro",
+        "Pacote de explorador"
+      ],
+      "summaries": {
+        "pt-BR": "Dado de Vida d8. Atributo principal: Sabedoria. Salvaguardas: Inteligência e Sabedoria. Escolha 2 perícia(s) entre: arcanismo, adestramento, intuicao, medicina, natureza, percepcao, religiao, sobrevivencia. Proficiências: Escudos e armaduras leves/médias não metálicas."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:50:32.196269+00:00",
     "updated_at": "2026-09-12T12:50:32.196269+00:00",
@@ -174,7 +287,7 @@
     "name_pt": "Feiticeiro",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Dado de Vida d6. Atributo principal: Carisma. Salvaguardas: Constituição e Carisma. Escolha 2 perícia(s) entre: arcanismo, enganacao, intuicao, intimidacao, persuasao, religiao. Proficiências: Nenhuma armadura; armas simples.",
     "description_en": null,
     "description_es": null,
     "hp_per_level": 3,
@@ -219,8 +332,30 @@
           "minimumLevel": 3
         }
       ],
-      "proficiencies": "Armas simples",
-      "skillChoiceCount": 2
+      "proficiencies": "Nenhuma armadura; armas simples",
+      "skillChoiceCount": 2,
+      "primaryAbility": "Carisma",
+      "savingThrows": [
+        "Constituição",
+        "Carisma"
+      ],
+      "skillChoices": [
+        "arcanismo",
+        "enganacao",
+        "intuicao",
+        "intimidacao",
+        "persuasao",
+        "religiao"
+      ],
+      "startingEquipment": [
+        "Besta leve e 20 virotes ou arma simples",
+        "Bolsa de componentes ou foco arcano",
+        "Pacote de explorador"
+      ],
+      "summaries": {
+        "pt-BR": "Dado de Vida d6. Atributo principal: Carisma. Salvaguardas: Constituição e Carisma. Escolha 2 perícia(s) entre: arcanismo, enganacao, intuicao, intimidacao, persuasao, religiao. Proficiências: Nenhuma armadura; armas simples."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:50:32.196269+00:00",
     "updated_at": "2026-09-23T17:54:17.649619+00:00",
@@ -231,7 +366,7 @@
     "name_pt": "Guerreiro",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Dado de Vida d10. Atributo principal: Força ou Destreza. Salvaguardas: Força e Constituição. Escolha 2 perícia(s) entre: acrobacia, adestramento, atletismo, historia, intuicao, intimidacao, percepcao, sobrevivencia. Proficiências: Todas as armaduras; escudos; armas simples e marciais.",
     "description_en": null,
     "description_es": null,
     "hp_per_level": 5,
@@ -254,8 +389,33 @@
     "source_page": 83,
     "data": {
       "hitDie": "d10",
-      "proficiencies": "Todas as armaduras, escudos, armas simples e marciais",
-      "skillChoiceCount": 2
+      "proficiencies": "Todas as armaduras; escudos; armas simples e marciais",
+      "skillChoiceCount": 2,
+      "primaryAbility": "Força ou Destreza",
+      "savingThrows": [
+        "Força",
+        "Constituição"
+      ],
+      "skillChoices": [
+        "acrobacia",
+        "adestramento",
+        "atletismo",
+        "historia",
+        "intuicao",
+        "intimidacao",
+        "percepcao",
+        "sobrevivencia"
+      ],
+      "startingEquipment": [
+        "Cota de malha ou armadura de couro + arco longo",
+        "Arma marcial + escudo ou duas armas marciais",
+        "Besta leve e 20 virotes ou duas machadinhas",
+        "Pacote de aventureiro"
+      ],
+      "summaries": {
+        "pt-BR": "Dado de Vida d10. Atributo principal: Força ou Destreza. Salvaguardas: Força e Constituição. Escolha 2 perícia(s) entre: acrobacia, adestramento, atletismo, historia, intuicao, intimidacao, percepcao, sobrevivencia. Proficiências: Todas as armaduras; escudos; armas simples e marciais."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:50:32.196269+00:00",
     "updated_at": "2026-09-12T12:50:32.196269+00:00",
@@ -266,7 +426,7 @@
     "name_pt": "Ladino",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Dado de Vida d8. Atributo principal: Destreza. Salvaguardas: Destreza e Inteligência. Escolha 4 perícia(s) entre: acrobacia, atletismo, atuacao, enganacao, furtividade, intimidacao, intuicao, investigacao, percepcao, persuasao, prestidigitacao. Proficiências: Armaduras leves; armas simples e algumas marciais; ferramentas de ladrão.",
     "description_en": null,
     "description_es": null,
     "hp_per_level": 4,
@@ -288,8 +448,37 @@
     "source_page": 89,
     "data": {
       "hitDie": "d8",
-      "proficiencies": "Armaduras leves; armas simples e algumas marciais",
-      "skillChoiceCount": 4
+      "proficiencies": "Armaduras leves; armas simples e algumas marciais; ferramentas de ladrão",
+      "skillChoiceCount": 4,
+      "primaryAbility": "Destreza",
+      "savingThrows": [
+        "Destreza",
+        "Inteligência"
+      ],
+      "skillChoices": [
+        "acrobacia",
+        "atletismo",
+        "atuacao",
+        "enganacao",
+        "furtividade",
+        "intimidacao",
+        "intuicao",
+        "investigacao",
+        "percepcao",
+        "persuasao",
+        "prestidigitacao"
+      ],
+      "startingEquipment": [
+        "Rapieira ou espada curta",
+        "Arco curto e 20 flechas ou espada curta",
+        "Ferramentas de ladrão",
+        "Armadura de couro",
+        "Pacote de ladrão"
+      ],
+      "summaries": {
+        "pt-BR": "Dado de Vida d8. Atributo principal: Destreza. Salvaguardas: Destreza e Inteligência. Escolha 4 perícia(s) entre: acrobacia, atletismo, atuacao, enganacao, furtividade, intimidacao, intuicao, investigacao, percepcao, persuasao, prestidigitacao. Proficiências: Armaduras leves; armas simples e algumas marciais; ferramentas de ladrão."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:50:32.196269+00:00",
     "updated_at": "2026-09-12T12:50:32.196269+00:00",
@@ -300,7 +489,7 @@
     "name_pt": "Mago",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Dado de Vida d6. Atributo principal: Inteligência. Salvaguardas: Inteligência e Sabedoria. Escolha 2 perícia(s) entre: arcanismo, historia, intuicao, investigacao, medicina, religiao. Proficiências: Nenhuma armadura; armas simples.",
     "description_en": null,
     "description_es": null,
     "hp_per_level": 3,
@@ -322,8 +511,31 @@
     "source_page": 94,
     "data": {
       "hitDie": "d6",
-      "proficiencies": "Armas simples",
-      "skillChoiceCount": 2
+      "proficiencies": "Nenhuma armadura; armas simples",
+      "skillChoiceCount": 2,
+      "primaryAbility": "Inteligência",
+      "savingThrows": [
+        "Inteligência",
+        "Sabedoria"
+      ],
+      "skillChoices": [
+        "arcanismo",
+        "historia",
+        "intuicao",
+        "investigacao",
+        "medicina",
+        "religiao"
+      ],
+      "startingEquipment": [
+        "Bastão ou adaga",
+        "Bolsa de componentes ou foco arcano",
+        "Livro de magias",
+        "Pacote de estudioso"
+      ],
+      "summaries": {
+        "pt-BR": "Dado de Vida d6. Atributo principal: Inteligência. Salvaguardas: Inteligência e Sabedoria. Escolha 2 perícia(s) entre: arcanismo, historia, intuicao, investigacao, medicina, religiao. Proficiências: Nenhuma armadura; armas simples."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:50:32.196269+00:00",
     "updated_at": "2026-09-12T12:50:32.196269+00:00",
@@ -334,7 +546,7 @@
     "name_pt": "Monge",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Dado de Vida d8. Atributo principal: Destreza e Sabedoria. Salvaguardas: Força e Destreza. Escolha 2 perícia(s) entre: acrobacia, atletismo, historia, intuicao, religiao, furtividade. Proficiências: Armas simples e espadas curtas; ferramentas de artesão ou instrumento.",
     "description_en": null,
     "description_es": null,
     "hp_per_level": 4,
@@ -357,8 +569,30 @@
     "source_page": 102,
     "data": {
       "hitDie": "d8",
-      "proficiencies": "Armas simples e espadas curtas",
-      "skillChoiceCount": 2
+      "proficiencies": "Armas simples e espadas curtas; ferramentas de artesão ou instrumento",
+      "skillChoiceCount": 2,
+      "primaryAbility": "Destreza e Sabedoria",
+      "savingThrows": [
+        "Força",
+        "Destreza"
+      ],
+      "skillChoices": [
+        "acrobacia",
+        "atletismo",
+        "historia",
+        "intuicao",
+        "religiao",
+        "furtividade"
+      ],
+      "startingEquipment": [
+        "Espada curta ou arma simples",
+        "Pacote de explorador",
+        "Dez dardos"
+      ],
+      "summaries": {
+        "pt-BR": "Dado de Vida d8. Atributo principal: Destreza e Sabedoria. Salvaguardas: Força e Destreza. Escolha 2 perícia(s) entre: acrobacia, atletismo, historia, intuicao, religiao, furtividade. Proficiências: Armas simples e espadas curtas; ferramentas de artesão ou instrumento."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:50:32.196269+00:00",
     "updated_at": "2026-09-12T12:50:32.196269+00:00",
@@ -369,7 +603,7 @@
     "name_pt": "Paladino",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Dado de Vida d10. Atributo principal: Força e Carisma. Salvaguardas: Sabedoria e Carisma. Escolha 2 perícia(s) entre: atletismo, intuicao, intimidacao, medicina, persuasao, religiao. Proficiências: Todas as armaduras; escudos; armas simples e marciais.",
     "description_en": null,
     "description_es": null,
     "hp_per_level": 5,
@@ -392,8 +626,32 @@
     "source_page": 108,
     "data": {
       "hitDie": "d10",
-      "proficiencies": "Todas as armaduras, escudos, armas simples e marciais",
-      "skillChoiceCount": 2
+      "proficiencies": "Todas as armaduras; escudos; armas simples e marciais",
+      "skillChoiceCount": 2,
+      "primaryAbility": "Força e Carisma",
+      "savingThrows": [
+        "Sabedoria",
+        "Carisma"
+      ],
+      "skillChoices": [
+        "atletismo",
+        "intuicao",
+        "intimidacao",
+        "medicina",
+        "persuasao",
+        "religiao"
+      ],
+      "startingEquipment": [
+        "Arma marcial + escudo ou duas armas marciais",
+        "Cinco azagaias ou arma corpo a corpo simples",
+        "Cota de malha",
+        "Símbolo sagrado",
+        "Pacote de sacerdote"
+      ],
+      "summaries": {
+        "pt-BR": "Dado de Vida d10. Atributo principal: Força e Carisma. Salvaguardas: Sabedoria e Carisma. Escolha 2 perícia(s) entre: atletismo, intuicao, intimidacao, medicina, persuasao, religiao. Proficiências: Todas as armaduras; escudos; armas simples e marciais."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:50:32.196269+00:00",
     "updated_at": "2026-09-12T12:50:32.196269+00:00",
@@ -404,7 +662,7 @@
     "name_pt": "Patrulheiro",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Dado de Vida d10. Atributo principal: Destreza e Sabedoria. Salvaguardas: Força e Destreza. Escolha 3 perícia(s) entre: adestramento, atletismo, furtividade, investigacao, natureza, percepcao, sobrevivencia. Proficiências: Armaduras leves e médias; escudos; armas simples e marciais.",
     "description_en": null,
     "description_es": null,
     "hp_per_level": 5,
@@ -562,8 +820,32 @@
           "minimumLevel": 2
         }
       ],
-      "proficiencies": "Armaduras leves e médias, escudos, armas simples e marciais",
-      "skillChoiceCount": 3
+      "proficiencies": "Armaduras leves e médias; escudos; armas simples e marciais",
+      "skillChoiceCount": 3,
+      "primaryAbility": "Destreza e Sabedoria",
+      "savingThrows": [
+        "Força",
+        "Destreza"
+      ],
+      "skillChoices": [
+        "adestramento",
+        "atletismo",
+        "furtividade",
+        "investigacao",
+        "natureza",
+        "percepcao",
+        "sobrevivencia"
+      ],
+      "startingEquipment": [
+        "Cota de escamas ou armadura de couro",
+        "Duas espadas curtas ou duas armas simples",
+        "Pacote de explorador",
+        "Arco longo e 20 flechas ou duas machadinhas"
+      ],
+      "summaries": {
+        "pt-BR": "Dado de Vida d10. Atributo principal: Destreza e Sabedoria. Salvaguardas: Força e Destreza. Escolha 3 perícia(s) entre: adestramento, atletismo, furtividade, investigacao, natureza, percepcao, sobrevivencia. Proficiências: Armaduras leves e médias; escudos; armas simples e marciais."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:50:32.196269+00:00",
     "updated_at": "2026-09-23T17:49:13.318122+00:00",

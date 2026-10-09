@@ -63,9 +63,8 @@ describe("PortalPages", () => {
     window.dispatchEvent(new HashChangeEvent("hashchange"));
     await waitFor(() => expect(screen.getByRole("heading", { name: "Compêndio de criação" })).toBeInTheDocument());
     expect(document.getElementById("legacy-builder-root")).toHaveAttribute("hidden");
+    await waitFor(() => expect(document.querySelector(".catalog-card")).not.toBeNull(), { timeout: 20_000 });
     expect(screen.getAllByText("Fonte Remaster").length).toBeGreaterThan(0);
-    // O Compêndio monta o catálogo completo; sob a suíte paralela a espera
-    // padrão de 5s pode ser insuficiente sem indicar falha real.
   }, 40_000);
 
   it("restaura o título do construtor ao voltar do portal", async () => {
@@ -87,33 +86,59 @@ describe("PortalPages", () => {
     localStorage.setItem("pathbuilder.locale", "en");
     window.location.hash = "#/compendium";
     render(<I18nProvider><PortalPages /></I18nProvider>, { container: document.getElementById("test-root")! });
-    await waitFor(() => expect(document.querySelector(".catalog-card")).not.toBeNull(), { timeout: 15_000 });
+    await waitFor(() => expect(document.querySelector(".catalog-card")).not.toBeNull(), { timeout: 20_000 });
     fireEvent.change(screen.getByRole("searchbox", { name: "Search the compendium" }), { target: { value: "Dwarf" } });
     const systemFilter = document.querySelector<HTMLSelectElement>(".catalog-filters-collapsible select");
     expect(systemFilter).not.toBeNull();
     fireEvent.change(systemFilter!, { target: { value: "pf2e" } });
-    await waitFor(() => expect(screen.queryByRole("status")).not.toBeInTheDocument(), { timeout: 15_000 });
-    await waitFor(() => expect(screen.getAllByRole("heading", { name: "Dwarf" })).toHaveLength(1));
+    await waitFor(() => expect(screen.queryByRole("status")).not.toBeInTheDocument(), { timeout: 20_000 });
+    await waitFor(() => expect(screen.getAllByRole("heading", { name: "Dwarf" })).toHaveLength(1), { timeout: 10_000 });
     fireEvent.change(screen.getByRole("searchbox", { name: "Search the compendium" }), { target: { value: "no-such-catalog-entry" } });
     await waitFor(() => expect(screen.getByText("No records match the filters.")).toBeInTheDocument());
     fireEvent.change(screen.getByRole("searchbox", { name: "Search the compendium" }), { target: { value: "Reflection" } });
-    await waitFor(() => expect(screen.getByRole("heading", { name: "Reflection" })).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByRole("heading", { name: "Reflection" })).toBeInTheDocument(), { timeout: 10_000 });
     expect(screen.getByText("Pre-Remaster source")).toBeInTheDocument();
     fireEvent.change(screen.getByRole("searchbox", { name: "Search the compendium" }), { target: { value: "Commander Multiclass" } });
-    await waitFor(() => expect(screen.getByRole("heading", { name: "Commander Multiclass" })).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByRole("heading", { name: "Commander Multiclass" })).toBeInTheDocument(), { timeout: 10_000 });
     fireEvent.change(screen.getByRole("combobox", { name: "Filter category" }), { target: { value: "archetype" } });
-    await waitFor(() => expect(screen.getByRole("heading", { name: "Commander Multiclass" })).toBeInTheDocument());
+    await waitFor(() => expect(screen.queryByRole("status")).not.toBeInTheDocument(), { timeout: 10_000 });
+    await waitFor(() => expect(screen.getByRole("heading", { name: "Commander Multiclass" })).toBeInTheDocument(), { timeout: 10_000 });
     fireEvent.change(screen.getByRole("searchbox", { name: "Search the compendium" }), { target: { value: "Fireball" } });
     fireEvent.change(screen.getByRole("combobox", { name: "Filter category" }), { target: { value: "spell" } });
-    await waitFor(() => expect(screen.getByRole("heading", { name: "Fireball" })).toBeInTheDocument());
+    await waitFor(() => expect(screen.queryByRole("status")).not.toBeInTheDocument(), { timeout: 10_000 });
+    await waitFor(() => expect(screen.getByRole("heading", { name: "Fireball" })).toBeInTheDocument(), { timeout: 10_000 });
     expect(screen.getByText("Rank 3")).toBeInTheDocument();
     expect(screen.getByText("Player Core · p. 319")).toBeInTheDocument();
     fireEvent.change(screen.getByRole("searchbox", { name: "Search the compendium" }), { target: { value: "Animate Object" } });
     fireEvent.change(screen.getByRole("combobox", { name: "Filter category" }), { target: { value: "ritual" } });
-    await waitFor(() => expect(screen.getByRole("heading", { name: "Animate Object" })).toBeInTheDocument());
+    await waitFor(() => expect(screen.queryByRole("status")).not.toBeInTheDocument(), { timeout: 10_000 });
+    await waitFor(() => expect(screen.getByRole("heading", { name: "Animate Object" })).toBeInTheDocument(), { timeout: 10_000 });
     expect(screen.getByText("Rank 2")).toBeInTheDocument();
     expect(screen.getByText("Player Core · p. 390")).toBeInTheDocument();
-  }, 40_000);
+  }, 90_000);
+
+  it("exibe dados estruturados da origem T20 no detalhe do catálogo", async () => {
+    window.location.hash = "#/compendium";
+    render(<I18nProvider><PortalPages /></I18nProvider>, { container: document.getElementById("test-root")! });
+
+    await waitFor(() => expect(document.querySelector(".catalog-card")).not.toBeNull(), { timeout: 20_000 });
+    const filters = document.querySelectorAll<HTMLSelectElement>(".catalog-filters-collapsible select");
+    fireEvent.change(filters[0], { target: { value: "t20" } });
+    fireEvent.change(filters[1], { target: { value: "background" } });
+    fireEvent.change(screen.getByRole("searchbox", { name: "Buscar no compêndio" }), { target: { value: "Acólito" } });
+
+    const originCard = await screen.findByRole("button", { name: "Acólito" }, { timeout: 20_000 });
+    fireEvent.click(originCard);
+    const dialog = await screen.findByRole("dialog");
+
+    expect(dialog).toHaveTextContent("Perícias treinadas");
+    expect(dialog).toHaveTextContent("Cura, Religião, Vontade");
+    expect(dialog).toHaveTextContent("Benefícios");
+    expect(dialog).toHaveTextContent("Medicina, Membro da Igreja, Vontade de Ferro");
+    expect(dialog).toHaveTextContent("Itens iniciais (PT-BR)");
+    expect(dialog).toHaveTextContent("símbolo sagrado, traje de sacerdote");
+    expect(dialog).not.toHaveTextContent("Especificações & Efeitos");
+  }, 45_000);
 
   it("retorna o foco ao card que abriu o detalhe do compêndio", async () => {
     window.location.hash = "#/compendium";

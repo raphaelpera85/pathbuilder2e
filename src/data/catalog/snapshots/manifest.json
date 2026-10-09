@@ -1,12 +1,144 @@
 [
-  { "systemId": "dnd35", "ruleset": "v35", "categories": { "ancestry": 7, "armor": 18, "class": 11, "feat": 109, "item": 170, "skill": 45, "weapon": 71 } },
-  { "systemId": "dnd35", "ruleset": "v35-cov", "categories": { "class": 4, "feat": 30, "item": 39, "spell": 33 } },
-  { "systemId": "dnd35", "ruleset": "v35-defensores", "categories": { "class": 14, "feat": 14, "item": 14, "spell": 51 } },
-  { "systemId": "dnd35", "ruleset": "v35-frostburn", "categories": { "ancestry": 2, "class": 10, "feat": 32, "item": 56, "spell": 106, "weapon": 11 } },
-  { "systemId": "dnd5e", "ruleset": "standard", "categories": { "action": 8, "ancestry": 9, "background": 13, "class": 12, "condition": 15, "feat": 40, "heritage": 9, "item": 226, "skill": 18, "spell": 315, "subclass": 40 } },
-  { "systemId": "ose", "ruleset": "advanced", "categories": { "action": 4, "ancestry": 10, "class": 16, "item": 53, "skill": 45, "spell": 34 } },
-  { "systemId": "ose", "ruleset": "classic", "categories": { "action": 4, "class": 3, "item": 53, "skill": 32, "spell": 34 } },
-  { "systemId": "pf2e", "ruleset": "legacy", "categories": { "ancestry": 6, "archetype": 45, "armor": 3, "background": 45, "class": 6, "feat": 300, "heritage": 5, "item": 97, "pet": 10, "shield": 8, "spell": 72, "subclass": 5, "weapon": 24 } },
-  { "systemId": "pf2e", "ruleset": "remaster", "categories": { "action": 24, "ancestry": 26, "archetype": 78, "armor": 46, "background": 70, "buff": 12, "class": 22, "condition": 22, "feat": 1619, "formula": 84, "heritage": 140, "item": 360, "pet": 21, "ritual": 29, "shield": 18, "spell": 343, "subclass": 131, "weapon": 115 } },
-  { "systemId": "t20", "ruleset": "padrao", "categories": { "action": 4, "ancestry": 17, "background": 35, "class": 14, "feat": 412, "item": 150, "skill": 29, "spell": 66 } }
+  {
+    "systemId": "dnd35",
+    "ruleset": "v35",
+    "categories": {
+      "ancestry": 7,
+      "armor": 18,
+      "class": 11,
+      "feat": 109,
+      "item": 170,
+      "skill": 45,
+      "weapon": 71
+    }
+  },
+  {
+    "systemId": "dnd35",
+    "ruleset": "v35-cov",
+    "categories": {
+      "class": 4,
+      "feat": 30,
+      "item": 39,
+      "spell": 33
+    }
+  },
+  {
+    "systemId": "dnd35",
+    "ruleset": "v35-defensores",
+    "categories": {
+      "class": 14,
+      "feat": 14,
+      "item": 14,
+      "spell": 51
+    }
+  },
+  {
+    "systemId": "dnd35",
+    "ruleset": "v35-frostburn",
+    "categories": {
+      "ancestry": 2,
+      "class": 10,
+      "feat": 32,
+      "item": 56,
+      "spell": 106,
+      "weapon": 11
+    }
+  },
+  {
+    "systemId": "dnd5e",
+    "ruleset": "standard",
+    "categories": {
+      "action": 8,
+      "ancestry": 9,
+      "background": 13,
+      "class": 12,
+      "condition": 15,
+      "feat": 40,
+      "heritage": 9,
+      "item": 226,
+      "skill": 18,
+      "spell": 315,
+      "subclass": 40
+    }
+  },
+  {
+    "systemId": "ose",
+    "ruleset": "advanced",
+    "categories": {
+      "action": 4,
+      "ancestry": 10,
+      "class": 16,
+      "item": 53,
+      "skill": 45,
+      "spell": 34
+    }
+  },
+  {
+    "systemId": "ose",
+    "ruleset": "classic",
+    "categories": {
+      "action": 4,
+      "class": 3,
+      "item": 53,
+      "skill": 32,
+      "spell": 34
+    }
+  },
+  {
+    "systemId": "pf2e",
+    "ruleset": "legacy",
+    "categories": {
+      "ancestry": 6,
+      "archetype": 45,
+      "armor": 3,
+      "background": 45,
+      "class": 6,
+      "feat": 300,
+      "heritage": 5,
+      "item": 97,
+      "pet": 10,
+      "shield": 8,
+      "spell": 72,
+      "subclass": 5,
+      "weapon": 24
+    }
+  },
+  {
+    "systemId": "pf2e",
+    "ruleset": "remaster",
+    "categories": {
+      "action": 24,
+      "ancestry": 26,
+      "archetype": 78,
+      "armor": 46,
+      "background": 70,
+      "buff": 12,
+      "class": 22,
+      "condition": 22,
+      "feat": 1619,
+      "formula": 84,
+      "heritage": 140,
+      "item": 360,
+      "pet": 21,
+      "ritual": 29,
+      "shield": 18,
+      "spell": 343,
+      "subclass": 131,
+      "weapon": 115
+    }
+  },
+  {
+    "systemId": "t20",
+    "ruleset": "padrao",
+    "categories": {
+      "action": 4,
+      "ancestry": 17,
+      "background": 35,
+      "class": 14,
+      "feat": 412,
+      "item": 150,
+      "skill": 29,
+      "spell": 66
+    }
+  }
 ]

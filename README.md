@@ -12,6 +12,7 @@ sistema. A cobertura verificada atualmente é:
 | --- | --- | --- | --- |
 | Pathfinder 2e | Remaster, Legado e revisão pendente | Construtor legado, compêndio amplo, ancestrais, heranças, classes, arquétipos, magias, talentos e itens | Algumas opções de suplementos permanecem marcadas para revisão mecânica |
 | Tormenta20 | Padrão / Livro Básico | 17 raças, 14 classes, 35 origens, 29 perícias, poderes, magias, equipamentos, progressões e escolhas raciais condicionais | Suplementos além do núcleo e efeitos de alguns poderes ainda têm cobertura parcial |
+| D&D 3.5 | `v35`, Champions of Valor, Defensores da Fé e Frostburn | Catálogo versionado: núcleo com 7 raças, 11 classes, 109 talentos, 45 perícias e 259 armas/armaduras/itens; suplementos trazem mais classes, opções, itens e 190 magias | Livros e rulesets ficam separados; revisão das regras dos suplementos continua aberta |
 | D&D 5e | Livro do Jogador 2014 / `standard` | 9 raças, sub-raças, 12 classes, subclasses, antecedentes, 18 perícias, talentos, magias, ferramentas e equipamentos | O construtor não mistura conteúdo de 2024; opções de livros externos não são habilitadas por padrão |
 | Old-School Essentials | Advanced Fantasy e Classic Fantasy | 16 classes, 10 raças, progressões, atributos 3d6, salvamentos, THAC0/CA, itens, magias e PDF editável | OSE não possui catálogo nativo de talentos nem vantagem/desvantagem; suplementos, monstros, especialistas e retentores ficam fora do núcleo |
 

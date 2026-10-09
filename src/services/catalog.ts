@@ -6,7 +6,7 @@ import { getSystemConditionItems } from "../data/systemConditions";
 import systemsSnapshot from "../data/catalog/snapshots/systems.json";
 import snapshotManifest from "../data/catalog/snapshots/manifest.json";
 
-/** Snapshot versionado: `node scripts/export-catalog-snapshot.mjs` o atualiza. */
+/** Snapshot versionado: edite os JSON locais e regenere o índice com `npm run catalog:manifest`. */
 const snapshotLoaders = import.meta.glob("../data/catalog/snapshots/*/*/*.json", { import: "default" }) as Record<string, () => Promise<unknown>>;
 const snapshotFileCache = new Map<string, Promise<CatalogItemRecord[]>>();
 
@@ -69,11 +69,22 @@ export const CATALOG_RULESETS = [...new Set(
 )].sort();
 export async function fetchCatalogSystems(): Promise<IRPGSystem[]> { return DEFAULT_RPG_SYSTEMS.filter((system) => system.active); }
 
-/** Converte uma linha do snapshot PostgreSQL no formato consumido pela UI. */
-export function normalizeSupabaseRecordToPickerItem(record: CatalogItemRecord, category: PickerType): PickerItem {
-  const names = { "pt-BR": record.name_pt || String(record.name || ""), en: record.name_en || String(record.name || ""), es: record.name_es || record.name_pt || String(record.name || "") };
-  const summaries = { "pt-BR": record.description_pt || String(record.description || ""), en: record.description_en || record.description_pt || String(record.description || ""), es: record.description_es || record.description_pt || String(record.description || "") };
+/** Converte um registro do snapshot versionado no formato consumido pela UI. */
+export function normalizeCatalogRecordToPickerItem(record: CatalogItemRecord, category: PickerType): PickerItem {
   const data: Record<string, unknown> = { ...(record.data || {}) };
+  const nestedNames = typeof data.names === "object" && data.names ? data.names as Record<string, unknown> : {};
+  const nestedSummaries = typeof data.summaries === "object" && data.summaries ? data.summaries as Record<string, unknown> : {};
+  const text = (...values: unknown[]) => values.find((value): value is string => typeof value === "string" && value.trim().length > 0) || "";
+  const names = {
+    "pt-BR": text(record.name_pt, nestedNames["pt-BR"], data.name, record.name),
+    en: text(record.name_en, nestedNames.en, data.name_en, data.nameEn, record.name),
+    es: text(record.name_es, nestedNames.es, data.name_es, record.name_es, record.name_pt, record.name),
+  };
+  const summaries = {
+    "pt-BR": text(record.description_pt, nestedSummaries["pt-BR"], data.summary_pt, data.summary, data.description, record.description),
+    en: text(record.description_en, nestedSummaries.en, data.summary_en, data.description_en, record.description_pt, data.summary, data.description, record.description),
+    es: text(record.description_es, nestedSummaries.es, data.summary_es, data.description_es, record.description_pt, data.summary, data.description, record.description),
+  };
   const systemId = record.system_id || "pf2e";
   data.systemId = systemId; data.system_id = systemId;
   const aliases: Record<string, string> = {
@@ -81,6 +92,7 @@ export function normalizeSupabaseRecordToPickerItem(record: CatalogItemRecord, c
     damage_dice: "damage", damage_type: "damageType", range_feet: "rangeFeet", reload: "reload", hands: "hands", weapon_group: "weaponGroup",
     weapon_category: "weaponCategory", ac_bonus: "acBonus", action_cost: "actionCost", action_type: "actionType", has_value: "hasValue",
     condition_group: "conditionGroup", prerequisite: "prerequisites", category: "category", ancestry_id: "ancestryId", class_id: "classId", archetype_id: "archetypeId",
+    trained_skills: "trainedSkills",
   };
   for (const [dbKey, itemKey] of Object.entries(aliases)) if (record[dbKey] != null) data[itemKey] = record[dbKey];
   if (record.range_feet != null) data.range = record.range_feet;
@@ -120,11 +132,11 @@ function localRuntimeItems(category: PickerType, systemId: string, ruleset: stri
   return [];
 }
 
-export async function fetchCatalogCategory(category: PickerType, options: { forceRemote?: boolean; limit?: number; systemId?: string; ruleset?: CatalogRuleset } = {}): Promise<{ items: PickerItem[]; source: CatalogSource }> {
+export async function fetchCatalogCategory(category: PickerType, options: { limit?: number; systemId?: string; ruleset?: CatalogRuleset } = {}): Promise<{ items: PickerItem[]; source: CatalogSource }> {
   const systemId = options.systemId ?? "pf2e";
   const records = await snapshotRowsFor(category, systemId, options.ruleset);
   if (records.length) {
-    const items = records.map((record) => normalizeSupabaseRecordToPickerItem(record, category));
+    const items = records.map((record) => normalizeCatalogRecordToPickerItem(record, category));
     return { items: options.limit ? items.slice(0, options.limit) : items, source: "local_snapshot" };
   }
   return { items: localRuntimeItems(category, systemId, options.ruleset, false), source: "local_runtime" };

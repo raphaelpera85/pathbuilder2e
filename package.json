@@ -8,6 +8,8 @@
     "build": "tsc -b && vite build",
     "test": "vitest run",
     "audit:catalog": "node scripts/audit-catalog.cjs",
+    "audit:catalog:snapshots": "node scripts/audit-catalog-snapshots.mjs",
+    "catalog:manifest": "node scripts/build-catalog-manifest.mjs",
     "audit:catalog:provenance": "node scripts/audit-catalog.cjs --strict-provenance",
     "audit:catalog:supabase": "node scripts/audit-catalog-supabase-reconciliation.cjs",
     "audit:core:supabase": "node scripts/audit-core-systems-supabase.cjs",

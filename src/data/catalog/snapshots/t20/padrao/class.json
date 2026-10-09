@@ -4,7 +4,7 @@
     "name_pt": "Arcanista",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Pontos de vida iniciais: 8; PV por nível: 2; PM por nível: 6. Perícias fixas: misticismo, vontade; escolha 1 entre: conhecimento, iniciativa, oficio, percepcao. Proficiências: Nenhuma.",
     "description_en": null,
     "description_es": null,
     "hp_per_level": 2,
@@ -28,7 +28,27 @@
       "startingHp": 8,
       "manaPerLevel": 6,
       "proficiencies": "Nenhuma",
-      "choiceSkillCount": 1
+      "choiceSkillCount": 1,
+      "hpPerLevel": 2,
+      "fixedSkills": [
+        "misticismo",
+        "vontade"
+      ],
+      "choiceSkills": [
+        "conhecimento",
+        "iniciativa",
+        "oficio",
+        "percepcao"
+      ],
+      "startingEquipment": [
+        "Mochila de aventureiro",
+        "Foco arcano",
+        "Arma simples"
+      ],
+      "summaries": {
+        "pt-BR": "Pontos de vida iniciais: 8; PV por nível: 2; PM por nível: 6. Perícias fixas: misticismo, vontade; escolha 1 entre: conhecimento, iniciativa, oficio, percepcao. Proficiências: Nenhuma."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:50:32.196269+00:00",
     "updated_at": "2026-09-12T12:50:32.196269+00:00",
@@ -39,7 +59,7 @@
     "name_pt": "Bárbaro",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Pontos de vida iniciais: 24; PV por nível: 6; PM por nível: 3. Perícias fixas: fortitude, luta; escolha 4 entre: adestramento, atletismo, cavalgar, iniciativa, intimidacao, oficio, percepcao, pontaria, sobrevivencia, vontade. Proficiências: Armas marciais e escudos.",
     "description_en": null,
     "description_es": null,
     "hp_per_level": 6,
@@ -63,7 +83,33 @@
       "startingHp": 24,
       "manaPerLevel": 3,
       "proficiencies": "Armas marciais e escudos",
-      "choiceSkillCount": 4
+      "choiceSkillCount": 4,
+      "hpPerLevel": 6,
+      "fixedSkills": [
+        "fortitude",
+        "luta"
+      ],
+      "choiceSkills": [
+        "adestramento",
+        "atletismo",
+        "cavalgar",
+        "iniciativa",
+        "intimidacao",
+        "oficio",
+        "percepcao",
+        "pontaria",
+        "sobrevivencia",
+        "vontade"
+      ],
+      "startingEquipment": [
+        "Arma marcial",
+        "Armadura leve ou média",
+        "Mochila de aventureiro"
+      ],
+      "summaries": {
+        "pt-BR": "Pontos de vida iniciais: 24; PV por nível: 6; PM por nível: 3. Perícias fixas: fortitude, luta; escolha 4 entre: adestramento, atletismo, cavalgar, iniciativa, intimidacao, oficio, percepcao, pontaria, sobrevivencia, vontade. Proficiências: Armas marciais e escudos."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:50:32.196269+00:00",
     "updated_at": "2026-09-12T12:50:32.196269+00:00",
@@ -74,7 +120,7 @@
     "name_pt": "Bardo",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Pontos de vida iniciais: 12; PV por nível: 3; PM por nível: 4. Perícias fixas: atuacao, reflexos; escolha 6 entre: acrobacia, cavalgar, conhecimento, diplomacia, enganacao, furtividade, iniciativa, intuicao, investigacao, jogatina, ladinagem, luta, misticismo, nobreza, percepcao, pontaria, religiao, vontade. Proficiências: Armas marciais.",
     "description_en": null,
     "description_es": null,
     "hp_per_level": 3,
@@ -116,7 +162,42 @@
       ],
       "manaPerLevel": 4,
       "proficiencies": "Armas marciais",
-      "choiceSkillCount": 6
+      "choiceSkillCount": 6,
+      "hpPerLevel": 3,
+      "fixedSkills": [
+        "atuacao",
+        "reflexos"
+      ],
+      "choiceSkills": [
+        "acrobacia",
+        "cavalgar",
+        "conhecimento",
+        "diplomacia",
+        "enganacao",
+        "furtividade",
+        "iniciativa",
+        "intuicao",
+        "investigacao",
+        "jogatina",
+        "ladinagem",
+        "luta",
+        "misticismo",
+        "nobreza",
+        "percepcao",
+        "pontaria",
+        "religiao",
+        "vontade"
+      ],
+      "startingEquipment": [
+        "Arma marcial",
+        "Instrumento musical",
+        "Armadura leve",
+        "Mochila de aventureiro"
+      ],
+      "summaries": {
+        "pt-BR": "Pontos de vida iniciais: 12; PV por nível: 3; PM por nível: 4. Perícias fixas: atuacao, reflexos; escolha 6 entre: acrobacia, cavalgar, conhecimento, diplomacia, enganacao, furtividade, iniciativa, intuicao, investigacao, jogatina, ladinagem, luta, misticismo, nobreza, percepcao, pontaria, religiao, vontade. Proficiências: Armas marciais."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:50:32.196269+00:00",
     "updated_at": "2026-09-13T15:22:53.48914+00:00",
@@ -127,7 +208,7 @@
     "name_pt": "Bucaneiro",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Pontos de vida iniciais: 16; PV por nível: 4; PM por nível: 3. Perícias fixas: reflexos; escolha 4 entre: acrobacia, atletismo, atuacao, enganacao, fortitude, furtividade, iniciativa, intimidacao, jogatina, luta, oficio, percepcao, pilotagem, pontaria. Proficiências: Armas marciais.",
     "description_en": null,
     "description_es": null,
     "hp_per_level": 4,
@@ -150,7 +231,36 @@
       "startingHp": 16,
       "manaPerLevel": 3,
       "proficiencies": "Armas marciais",
-      "choiceSkillCount": 4
+      "choiceSkillCount": 4,
+      "hpPerLevel": 4,
+      "fixedSkills": [
+        "reflexos"
+      ],
+      "choiceSkills": [
+        "acrobacia",
+        "atletismo",
+        "atuacao",
+        "enganacao",
+        "fortitude",
+        "furtividade",
+        "iniciativa",
+        "intimidacao",
+        "jogatina",
+        "luta",
+        "oficio",
+        "percepcao",
+        "pilotagem",
+        "pontaria"
+      ],
+      "startingEquipment": [
+        "Arma marcial",
+        "Arma de fogo ou arma leve",
+        "Mochila de aventureiro"
+      ],
+      "summaries": {
+        "pt-BR": "Pontos de vida iniciais: 16; PV por nível: 4; PM por nível: 3. Perícias fixas: reflexos; escolha 4 entre: acrobacia, atletismo, atuacao, enganacao, fortitude, furtividade, iniciativa, intimidacao, jogatina, luta, oficio, percepcao, pilotagem, pontaria. Proficiências: Armas marciais."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:50:32.196269+00:00",
     "updated_at": "2026-09-12T12:50:32.196269+00:00",
@@ -161,7 +271,7 @@
     "name_pt": "Caçador",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Pontos de vida iniciais: 16; PV por nível: 4; PM por nível: 4. Perícias fixas: sobrevivencia; escolha 6 entre: adestramento, atletismo, cavalgar, cura, fortitude, furtividade, iniciativa, investigacao, luta, oficio, percepcao, pontaria, reflexos. Proficiências: Armas marciais e escudos.",
     "description_en": null,
     "description_es": null,
     "hp_per_level": 4,
@@ -219,7 +329,36 @@
       ],
       "manaPerLevel": 4,
       "proficiencies": "Armas marciais e escudos",
-      "choiceSkillCount": 6
+      "choiceSkillCount": 6,
+      "hpPerLevel": 4,
+      "fixedSkills": [
+        "sobrevivencia"
+      ],
+      "choiceSkills": [
+        "adestramento",
+        "atletismo",
+        "cavalgar",
+        "cura",
+        "fortitude",
+        "furtividade",
+        "iniciativa",
+        "investigacao",
+        "luta",
+        "oficio",
+        "percepcao",
+        "pontaria",
+        "reflexos"
+      ],
+      "startingEquipment": [
+        "Arma marcial à distância ou corpo a corpo",
+        "Armadura leve ou média",
+        "Escudo opcional",
+        "Mochila de aventureiro"
+      ],
+      "summaries": {
+        "pt-BR": "Pontos de vida iniciais: 16; PV por nível: 4; PM por nível: 4. Perícias fixas: sobrevivencia; escolha 6 entre: adestramento, atletismo, cavalgar, cura, fortitude, furtividade, iniciativa, investigacao, luta, oficio, percepcao, pontaria, reflexos. Proficiências: Armas marciais e escudos."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:50:32.196269+00:00",
     "updated_at": "2026-09-13T15:22:53.48914+00:00",
@@ -230,7 +369,7 @@
     "name_pt": "Cavaleiro",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Pontos de vida iniciais: 20; PV por nível: 5; PM por nível: 3. Perícias fixas: fortitude, luta; escolha 2 entre: adestramento, atletismo, cavalgar, diplomacia, guerra, iniciativa, intimidacao, nobreza, percepcao, vontade. Proficiências: Armas marciais, armaduras pesadas e escudos.",
     "description_en": null,
     "description_es": null,
     "hp_per_level": 5,
@@ -266,7 +405,34 @@
       ],
       "manaPerLevel": 3,
       "proficiencies": "Armas marciais, armaduras pesadas e escudos",
-      "choiceSkillCount": 2
+      "choiceSkillCount": 2,
+      "hpPerLevel": 5,
+      "fixedSkills": [
+        "fortitude",
+        "luta"
+      ],
+      "choiceSkills": [
+        "adestramento",
+        "atletismo",
+        "cavalgar",
+        "diplomacia",
+        "guerra",
+        "iniciativa",
+        "intimidacao",
+        "nobreza",
+        "percepcao",
+        "vontade"
+      ],
+      "startingEquipment": [
+        "Arma marcial",
+        "Armadura pesada",
+        "Escudo",
+        "Mochila de aventureiro"
+      ],
+      "summaries": {
+        "pt-BR": "Pontos de vida iniciais: 20; PV por nível: 5; PM por nível: 3. Perícias fixas: fortitude, luta; escolha 2 entre: adestramento, atletismo, cavalgar, diplomacia, guerra, iniciativa, intimidacao, nobreza, percepcao, vontade. Proficiências: Armas marciais, armaduras pesadas e escudos."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:50:32.196269+00:00",
     "updated_at": "2026-09-13T15:22:53.48914+00:00",
@@ -277,7 +443,7 @@
     "name_pt": "Clérigo",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Pontos de vida iniciais: 16; PV por nível: 4; PM por nível: 5. Perícias fixas: religiao, vontade; escolha 2 entre: conhecimento, cura, diplomacia, fortitude, iniciativa, intuicao, luta, misticismo, nobreza, oficio, percepcao. Proficiências: Armaduras pesadas e escudos.",
     "description_en": null,
     "description_es": null,
     "hp_per_level": 4,
@@ -301,7 +467,35 @@
       "startingHp": 16,
       "manaPerLevel": 5,
       "proficiencies": "Armaduras pesadas e escudos",
-      "choiceSkillCount": 2
+      "choiceSkillCount": 2,
+      "hpPerLevel": 4,
+      "fixedSkills": [
+        "religiao",
+        "vontade"
+      ],
+      "choiceSkills": [
+        "conhecimento",
+        "cura",
+        "diplomacia",
+        "fortitude",
+        "iniciativa",
+        "intuicao",
+        "luta",
+        "misticismo",
+        "nobreza",
+        "oficio",
+        "percepcao"
+      ],
+      "startingEquipment": [
+        "Arma simples",
+        "Armadura pesada",
+        "Escudo",
+        "Símbolo sagrado"
+      ],
+      "summaries": {
+        "pt-BR": "Pontos de vida iniciais: 16; PV por nível: 4; PM por nível: 5. Perícias fixas: religiao, vontade; escolha 2 entre: conhecimento, cura, diplomacia, fortitude, iniciativa, intuicao, luta, misticismo, nobreza, oficio, percepcao. Proficiências: Armaduras pesadas e escudos."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:50:32.196269+00:00",
     "updated_at": "2026-09-12T12:50:32.196269+00:00",
@@ -312,7 +506,7 @@
     "name_pt": "Druida",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Pontos de vida iniciais: 16; PV por nível: 4; PM por nível: 4. Perícias fixas: sobrevivencia, vontade; escolha 4 entre: adestramento, atletismo, cavalgar, conhecimento, cura, fortitude, iniciativa, intuicao, luta, misticismo, oficio, percepcao, religiao. Proficiências: Escudos.",
     "description_en": null,
     "description_es": null,
     "hp_per_level": 4,
@@ -336,7 +530,37 @@
       "startingHp": 16,
       "manaPerLevel": 4,
       "proficiencies": "Escudos",
-      "choiceSkillCount": 4
+      "choiceSkillCount": 4,
+      "hpPerLevel": 4,
+      "fixedSkills": [
+        "sobrevivencia",
+        "vontade"
+      ],
+      "choiceSkills": [
+        "adestramento",
+        "atletismo",
+        "cavalgar",
+        "conhecimento",
+        "cura",
+        "fortitude",
+        "iniciativa",
+        "intuicao",
+        "luta",
+        "misticismo",
+        "oficio",
+        "percepcao",
+        "religiao"
+      ],
+      "startingEquipment": [
+        "Arma simples",
+        "Armadura leve",
+        "Escudo",
+        "Foco druídico"
+      ],
+      "summaries": {
+        "pt-BR": "Pontos de vida iniciais: 16; PV por nível: 4; PM por nível: 4. Perícias fixas: sobrevivencia, vontade; escolha 4 entre: adestramento, atletismo, cavalgar, conhecimento, cura, fortitude, iniciativa, intuicao, luta, misticismo, oficio, percepcao, religiao. Proficiências: Escudos."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:50:32.196269+00:00",
     "updated_at": "2026-09-12T12:50:32.196269+00:00",
@@ -347,7 +571,7 @@
     "name_pt": "Guerreiro",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Pontos de vida iniciais: 20; PV por nível: 5; PM por nível: 3. Perícias fixas: fortitude; escolha 2 entre: adestramento, atletismo, cavalgar, guerra, iniciativa, intimidacao, luta, oficio, percepcao, pontaria, reflexos. Proficiências: Armas marciais, armaduras pesadas e escudos.",
     "description_en": null,
     "description_es": null,
     "hp_per_level": 5,
@@ -371,7 +595,34 @@
       "startingHp": 20,
       "manaPerLevel": 3,
       "proficiencies": "Armas marciais, armaduras pesadas e escudos",
-      "choiceSkillCount": 2
+      "choiceSkillCount": 2,
+      "hpPerLevel": 5,
+      "fixedSkills": [
+        "fortitude"
+      ],
+      "choiceSkills": [
+        "adestramento",
+        "atletismo",
+        "cavalgar",
+        "guerra",
+        "iniciativa",
+        "intimidacao",
+        "luta",
+        "oficio",
+        "percepcao",
+        "pontaria",
+        "reflexos"
+      ],
+      "startingEquipment": [
+        "Arma marcial",
+        "Armadura pesada",
+        "Escudo",
+        "Mochila de aventureiro"
+      ],
+      "summaries": {
+        "pt-BR": "Pontos de vida iniciais: 20; PV por nível: 5; PM por nível: 3. Perícias fixas: fortitude; escolha 2 entre: adestramento, atletismo, cavalgar, guerra, iniciativa, intimidacao, luta, oficio, percepcao, pontaria, reflexos. Proficiências: Armas marciais, armaduras pesadas e escudos."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:50:32.196269+00:00",
     "updated_at": "2026-09-12T12:50:32.196269+00:00",
@@ -382,7 +633,7 @@
     "name_pt": "Inventor",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Pontos de vida iniciais: 12; PV por nível: 3; PM por nível: 4. Perícias fixas: oficio, vontade; escolha 4 entre: conhecimento, cura, diplomacia, fortitude, iniciativa, investigacao, luta, misticismo, oficio, pilotagem, pontaria, percepcao. Proficiências: Nenhuma.",
     "description_en": null,
     "description_es": null,
     "hp_per_level": 3,
@@ -406,7 +657,36 @@
       "startingHp": 12,
       "manaPerLevel": 4,
       "proficiencies": "Nenhuma",
-      "choiceSkillCount": 4
+      "choiceSkillCount": 4,
+      "hpPerLevel": 3,
+      "fixedSkills": [
+        "oficio",
+        "vontade"
+      ],
+      "choiceSkills": [
+        "conhecimento",
+        "cura",
+        "diplomacia",
+        "fortitude",
+        "iniciativa",
+        "investigacao",
+        "luta",
+        "misticismo",
+        "oficio",
+        "pilotagem",
+        "pontaria",
+        "percepcao"
+      ],
+      "startingEquipment": [
+        "Arma simples",
+        "Ferramentas de ofício",
+        "Armadura leve",
+        "Mochila de aventureiro"
+      ],
+      "summaries": {
+        "pt-BR": "Pontos de vida iniciais: 12; PV por nível: 3; PM por nível: 4. Perícias fixas: oficio, vontade; escolha 4 entre: conhecimento, cura, diplomacia, fortitude, iniciativa, investigacao, luta, misticismo, oficio, pilotagem, pontaria, percepcao. Proficiências: Nenhuma."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:50:32.196269+00:00",
     "updated_at": "2026-09-12T12:50:32.196269+00:00",
@@ -417,7 +697,7 @@
     "name_pt": "Ladino",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Pontos de vida iniciais: 12; PV por nível: 3; PM por nível: 4. Perícias fixas: ladinagem, reflexos; escolha 8 entre: acrobacia, atletismo, atuacao, cavalgar, conhecimento, diplomacia, enganacao, furtividade, iniciativa, intimidacao, intuicao, investigacao, jogatina, luta, oficio, percepcao, pilotagem, pontaria. Proficiências: Nenhuma.",
     "description_en": null,
     "description_es": null,
     "hp_per_level": 3,
@@ -477,7 +757,42 @@
       ],
       "manaPerLevel": 4,
       "proficiencies": "Nenhuma",
-      "choiceSkillCount": 8
+      "choiceSkillCount": 8,
+      "hpPerLevel": 3,
+      "fixedSkills": [
+        "ladinagem",
+        "reflexos"
+      ],
+      "choiceSkills": [
+        "acrobacia",
+        "atletismo",
+        "atuacao",
+        "cavalgar",
+        "conhecimento",
+        "diplomacia",
+        "enganacao",
+        "furtividade",
+        "iniciativa",
+        "intimidacao",
+        "intuicao",
+        "investigacao",
+        "jogatina",
+        "luta",
+        "oficio",
+        "percepcao",
+        "pilotagem",
+        "pontaria"
+      ],
+      "startingEquipment": [
+        "Arma leve ou à distância",
+        "Armadura leve",
+        "Kit de ladrão",
+        "Mochila de aventureiro"
+      ],
+      "summaries": {
+        "pt-BR": "Pontos de vida iniciais: 12; PV por nível: 3; PM por nível: 4. Perícias fixas: ladinagem, reflexos; escolha 8 entre: acrobacia, atletismo, atuacao, cavalgar, conhecimento, diplomacia, enganacao, furtividade, iniciativa, intimidacao, intuicao, investigacao, jogatina, luta, oficio, percepcao, pilotagem, pontaria. Proficiências: Nenhuma."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:50:32.196269+00:00",
     "updated_at": "2026-09-13T15:22:53.48914+00:00",
@@ -488,7 +803,7 @@
     "name_pt": "Lutador",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Pontos de vida iniciais: 20; PV por nível: 5; PM por nível: 3. Perícias fixas: fortitude, luta; escolha 4 entre: acrobacia, adestramento, atletismo, enganacao, furtividade, iniciativa, intimidacao, oficio, percepcao, pontaria, reflexos. Proficiências: Nenhuma.",
     "description_en": null,
     "description_es": null,
     "hp_per_level": 5,
@@ -512,7 +827,34 @@
       "startingHp": 20,
       "manaPerLevel": 3,
       "proficiencies": "Nenhuma",
-      "choiceSkillCount": 4
+      "choiceSkillCount": 4,
+      "hpPerLevel": 5,
+      "fixedSkills": [
+        "fortitude",
+        "luta"
+      ],
+      "choiceSkills": [
+        "acrobacia",
+        "adestramento",
+        "atletismo",
+        "enganacao",
+        "furtividade",
+        "iniciativa",
+        "intimidacao",
+        "oficio",
+        "percepcao",
+        "pontaria",
+        "reflexos"
+      ],
+      "startingEquipment": [
+        "Arma simples ou marcial",
+        "Armadura leve",
+        "Mochila de aventureiro"
+      ],
+      "summaries": {
+        "pt-BR": "Pontos de vida iniciais: 20; PV por nível: 5; PM por nível: 3. Perícias fixas: fortitude, luta; escolha 4 entre: acrobacia, adestramento, atletismo, enganacao, furtividade, iniciativa, intimidacao, oficio, percepcao, pontaria, reflexos. Proficiências: Nenhuma."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:50:32.196269+00:00",
     "updated_at": "2026-09-12T12:50:32.196269+00:00",
@@ -523,7 +865,7 @@
     "name_pt": "Nobre",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Pontos de vida iniciais: 16; PV por nível: 4; PM por nível: 4. Perícias fixas: vontade; escolha 4 entre: adestramento, atuacao, cavalgar, conhecimento, diplomacia, enganacao, fortitude, guerra, iniciativa, intimidacao, intuicao, investigacao, jogatina, luta, nobreza, oficio, percepcao, pontaria. Proficiências: Armas marciais, armaduras pesadas e escudos.",
     "description_en": null,
     "description_es": null,
     "hp_per_level": 4,
@@ -546,7 +888,41 @@
       "startingHp": 16,
       "manaPerLevel": 4,
       "proficiencies": "Armas marciais, armaduras pesadas e escudos",
-      "choiceSkillCount": 4
+      "choiceSkillCount": 4,
+      "hpPerLevel": 4,
+      "fixedSkills": [
+        "vontade"
+      ],
+      "choiceSkills": [
+        "adestramento",
+        "atuacao",
+        "cavalgar",
+        "conhecimento",
+        "diplomacia",
+        "enganacao",
+        "fortitude",
+        "guerra",
+        "iniciativa",
+        "intimidacao",
+        "intuicao",
+        "investigacao",
+        "jogatina",
+        "luta",
+        "nobreza",
+        "oficio",
+        "percepcao",
+        "pontaria"
+      ],
+      "startingEquipment": [
+        "Arma marcial",
+        "Armadura pesada",
+        "Escudo",
+        "Símbolo de nobreza"
+      ],
+      "summaries": {
+        "pt-BR": "Pontos de vida iniciais: 16; PV por nível: 4; PM por nível: 4. Perícias fixas: vontade; escolha 4 entre: adestramento, atuacao, cavalgar, conhecimento, diplomacia, enganacao, fortitude, guerra, iniciativa, intimidacao, intuicao, investigacao, jogatina, luta, nobreza, oficio, percepcao, pontaria. Proficiências: Armas marciais, armaduras pesadas e escudos."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:50:32.196269+00:00",
     "updated_at": "2026-09-12T12:50:32.196269+00:00",
@@ -557,7 +933,7 @@
     "name_pt": "Paladino",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Pontos de vida iniciais: 20; PV por nível: 5; PM por nível: 3. Perícias fixas: luta, vontade; escolha 2 entre: adestramento, atletismo, cavalgar, cura, diplomacia, fortitude, guerra, iniciativa, intuicao, nobreza, percepcao, religiao. Proficiências: Armas marciais, armaduras pesadas e escudos.",
     "description_en": null,
     "description_es": null,
     "hp_per_level": 5,
@@ -594,7 +970,36 @@
       ],
       "manaPerLevel": 3,
       "proficiencies": "Armas marciais, armaduras pesadas e escudos",
-      "choiceSkillCount": 2
+      "choiceSkillCount": 2,
+      "hpPerLevel": 5,
+      "fixedSkills": [
+        "luta",
+        "vontade"
+      ],
+      "choiceSkills": [
+        "adestramento",
+        "atletismo",
+        "cavalgar",
+        "cura",
+        "diplomacia",
+        "fortitude",
+        "guerra",
+        "iniciativa",
+        "intuicao",
+        "nobreza",
+        "percepcao",
+        "religiao"
+      ],
+      "startingEquipment": [
+        "Arma marcial",
+        "Armadura pesada",
+        "Escudo",
+        "Símbolo sagrado"
+      ],
+      "summaries": {
+        "pt-BR": "Pontos de vida iniciais: 20; PV por nível: 5; PM por nível: 3. Perícias fixas: luta, vontade; escolha 2 entre: adestramento, atletismo, cavalgar, cura, diplomacia, fortitude, guerra, iniciativa, intuicao, nobreza, percepcao, religiao. Proficiências: Armas marciais, armaduras pesadas e escudos."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:50:32.196269+00:00",
     "updated_at": "2026-09-13T15:41:37.854287+00:00",

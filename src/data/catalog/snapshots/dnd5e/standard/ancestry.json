@@ -4,7 +4,7 @@
     "name_pt": "Anão",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Constituição +2; tamanho médio, deslocamento 7.5 m; idiomas: Comum e Anão; traços: Visão no escuro, Resiliência anã, Proficiência com ferramentas, Treinamento de combate anão.",
     "description_en": null,
     "description_es": null,
     "hp_base": 8,
@@ -17,7 +17,9 @@
     "languages": [],
     "traits": [
       "Visão no escuro",
-      "Resiliência anã"
+      "Resiliência anã",
+      "Proficiência com ferramentas",
+      "Treinamento de combate anão"
     ],
     "rarity": "common",
     "ruleset": "standard",
@@ -27,18 +29,35 @@
       "raceChoices": [
         {
           "id": "dwarf-tool-proficiency",
-          "count": 1,
           "label": "Proficiência com ferramentas de anão",
           "options": [
             "ferramentas de ferreiro",
             "suprimentos de cervejeiro",
             "ferramentas de pedreiro"
-          ]
+          ],
+          "count": 1
         }
       ],
       "attributeAdjustments": {
         "con": 2
-      }
+      },
+      "abilityBonuses": "Constituição +2",
+      "size": "Médio",
+      "languages": "Comum e Anão",
+      "traits": [
+        "Visão no escuro",
+        "Resiliência anã",
+        "Proficiência com ferramentas",
+        "Treinamento de combate anão"
+      ],
+      "abilityChoices": null,
+      "languageChoices": 0,
+      "skillChoices": 0,
+      "summaries": {
+        "pt-BR": "Constituição +2; tamanho médio, deslocamento 7.5 m; idiomas: Comum e Anão; traços: Visão no escuro, Resiliência anã, Proficiência com ferramentas, Treinamento de combate anão."
+      },
+      "summaryOrigin": "structured_rules",
+      "speedMeters": 7.5
     },
     "created_at": "2026-09-12T12:50:32.196269+00:00",
     "updated_at": "2026-09-13T17:51:40.615391+00:00",
@@ -49,7 +68,7 @@
     "name_pt": "Draconato",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Força +2, Carisma +1; tamanho médio, deslocamento 9 m; idiomas: Comum e Dracônico; traços: Ancestral dracônico, Arma de sopro, Resistência a dano.",
     "description_en": null,
     "description_es": null,
     "hp_base": 8,
@@ -74,7 +93,6 @@
       "raceChoices": [
         {
           "id": "draconic-ancestry",
-          "count": 1,
           "label": "Ancestralidade dracônica",
           "options": [
             "Preto",
@@ -87,13 +105,30 @@
             "Vermelho",
             "Prata",
             "Branco"
-          ]
+          ],
+          "count": 1
         }
       ],
       "attributeAdjustments": {
-        "cha": 1,
-        "str": 2
-      }
+        "str": 2,
+        "cha": 1
+      },
+      "abilityBonuses": "Força +2, Carisma +1",
+      "size": "Médio",
+      "languages": "Comum e Dracônico",
+      "traits": [
+        "Ancestral dracônico",
+        "Arma de sopro",
+        "Resistência a dano"
+      ],
+      "abilityChoices": null,
+      "languageChoices": 0,
+      "skillChoices": 0,
+      "summaries": {
+        "pt-BR": "Força +2, Carisma +1; tamanho médio, deslocamento 9 m; idiomas: Comum e Dracônico; traços: Ancestral dracônico, Arma de sopro, Resistência a dano."
+      },
+      "summaryOrigin": "structured_rules",
+      "speedMeters": 9
     },
     "created_at": "2026-09-12T12:50:32.196269+00:00",
     "updated_at": "2026-09-13T17:51:40.615391+00:00",
@@ -104,7 +139,7 @@
     "name_pt": "Elfo",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Destreza +2; tamanho médio, deslocamento 9 m; idiomas: Comum e Élfico; traços: Visão no escuro, Sentidos aguçados, Ancestralidade feérica, Transe.",
     "description_en": null,
     "description_es": null,
     "hp_base": 8,
@@ -128,7 +163,25 @@
     "data": {
       "attributeAdjustments": {
         "dex": 2
-      }
+      },
+      "abilityBonuses": "Destreza +2",
+      "size": "Médio",
+      "languages": "Comum e Élfico",
+      "traits": [
+        "Visão no escuro",
+        "Sentidos aguçados",
+        "Ancestralidade feérica",
+        "Transe"
+      ],
+      "abilityChoices": null,
+      "languageChoices": 0,
+      "skillChoices": 0,
+      "raceChoices": [],
+      "summaries": {
+        "pt-BR": "Destreza +2; tamanho médio, deslocamento 9 m; idiomas: Comum e Élfico; traços: Visão no escuro, Sentidos aguçados, Ancestralidade feérica, Transe."
+      },
+      "summaryOrigin": "structured_rules",
+      "speedMeters": 9
     },
     "created_at": "2026-09-12T12:50:32.196269+00:00",
     "updated_at": "2026-09-12T12:50:32.196269+00:00",
@@ -139,7 +192,7 @@
     "name_pt": "Gnomo",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Inteligência +2; tamanho pequeno, deslocamento 7.5 m; idiomas: Comum e Gnômico; traços: Visão no escuro, Astúcia gnômica.",
     "description_en": null,
     "description_es": null,
     "hp_base": 8,
@@ -161,7 +214,23 @@
     "data": {
       "attributeAdjustments": {
         "int": 2
-      }
+      },
+      "abilityBonuses": "Inteligência +2",
+      "size": "Pequeno",
+      "languages": "Comum e Gnômico",
+      "traits": [
+        "Visão no escuro",
+        "Astúcia gnômica"
+      ],
+      "abilityChoices": null,
+      "languageChoices": 0,
+      "skillChoices": 0,
+      "raceChoices": [],
+      "summaries": {
+        "pt-BR": "Inteligência +2; tamanho pequeno, deslocamento 7.5 m; idiomas: Comum e Gnômico; traços: Visão no escuro, Astúcia gnômica."
+      },
+      "summaryOrigin": "structured_rules",
+      "speedMeters": 7.5
     },
     "created_at": "2026-09-12T12:50:32.196269+00:00",
     "updated_at": "2026-09-12T12:50:32.196269+00:00",
@@ -172,7 +241,7 @@
     "name_pt": "Halfling",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Destreza +2; tamanho pequeno, deslocamento 7.5 m; idiomas: Comum e Halfling; traços: Sortudo, Bravura, Agilidade halfling, Furtividade natural.",
     "description_en": null,
     "description_es": null,
     "hp_base": 8,
@@ -186,6 +255,7 @@
     "traits": [
       "Sortudo",
       "Bravura",
+      "Agilidade halfling",
       "Furtividade natural"
     ],
     "rarity": "common",
@@ -195,7 +265,25 @@
     "data": {
       "attributeAdjustments": {
         "dex": 2
-      }
+      },
+      "abilityBonuses": "Destreza +2",
+      "size": "Pequeno",
+      "languages": "Comum e Halfling",
+      "traits": [
+        "Sortudo",
+        "Bravura",
+        "Agilidade halfling",
+        "Furtividade natural"
+      ],
+      "abilityChoices": null,
+      "languageChoices": 0,
+      "skillChoices": 0,
+      "raceChoices": [],
+      "summaries": {
+        "pt-BR": "Destreza +2; tamanho pequeno, deslocamento 7.5 m; idiomas: Comum e Halfling; traços: Sortudo, Bravura, Agilidade halfling, Furtividade natural."
+      },
+      "summaryOrigin": "structured_rules",
+      "speedMeters": 7.5
     },
     "created_at": "2026-09-12T12:50:32.196269+00:00",
     "updated_at": "2026-09-12T12:50:32.196269+00:00",
@@ -206,7 +294,7 @@
     "name_pt": "Humano",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "+1 em todos os atributos; tamanho médio, deslocamento 9 m; idiomas: Comum e um idioma adicional; traços: Versátil, Idioma adicional.",
     "description_en": null,
     "description_es": null,
     "hp_base": 8,
@@ -232,13 +320,29 @@
     "source_page": 29,
     "data": {
       "attributeAdjustments": {
-        "cha": 1,
-        "con": 1,
-        "dex": 1,
-        "int": 1,
         "str": 1,
-        "wis": 1
-      }
+        "dex": 1,
+        "con": 1,
+        "int": 1,
+        "wis": 1,
+        "cha": 1
+      },
+      "abilityBonuses": "+1 em todos os atributos",
+      "size": "Médio",
+      "languages": "Comum e um idioma adicional",
+      "traits": [
+        "Versátil",
+        "Idioma adicional"
+      ],
+      "abilityChoices": null,
+      "languageChoices": 1,
+      "skillChoices": 0,
+      "raceChoices": [],
+      "summaries": {
+        "pt-BR": "+1 em todos os atributos; tamanho médio, deslocamento 9 m; idiomas: Comum e um idioma adicional; traços: Versátil, Idioma adicional."
+      },
+      "summaryOrigin": "structured_rules",
+      "speedMeters": 9
     },
     "created_at": "2026-09-12T12:50:32.196269+00:00",
     "updated_at": "2026-09-12T12:50:32.196269+00:00",
@@ -249,7 +353,7 @@
     "name_pt": "Meio-Elfo",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Carisma +2 e +1 em dois outros atributos; tamanho médio, deslocamento 9 m; idiomas: Comum, Élfico e um idioma adicional; traços: Visão no escuro, Ancestralidade feérica, Versatilidade em perícias.",
     "description_en": null,
     "description_es": null,
     "hp_base": 8,
@@ -272,7 +376,30 @@
     "data": {
       "attributeAdjustments": {
         "cha": 2
-      }
+      },
+      "abilityBonuses": "Carisma +2 e +1 em dois outros atributos",
+      "size": "Médio",
+      "languages": "Comum, Élfico e um idioma adicional",
+      "traits": [
+        "Visão no escuro",
+        "Ancestralidade feérica",
+        "Versatilidade em perícias"
+      ],
+      "abilityChoices": {
+        "count": 2,
+        "amount": 1,
+        "exclude": [
+          "cha"
+        ]
+      },
+      "languageChoices": 1,
+      "skillChoices": 2,
+      "raceChoices": [],
+      "summaries": {
+        "pt-BR": "Carisma +2 e +1 em dois outros atributos; tamanho médio, deslocamento 9 m; idiomas: Comum, Élfico e um idioma adicional; traços: Visão no escuro, Ancestralidade feérica, Versatilidade em perícias."
+      },
+      "summaryOrigin": "structured_rules",
+      "speedMeters": 9
     },
     "created_at": "2026-09-12T12:50:32.196269+00:00",
     "updated_at": "2026-09-12T12:50:32.196269+00:00",
@@ -283,7 +410,7 @@
     "name_pt": "Meio-Orc",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Força +2, Constituição +1; tamanho médio, deslocamento 9 m; idiomas: Comum e Orc; traços: Visão no escuro, Ameaçador, Resistência implacável, Ataques selvagens.",
     "description_en": null,
     "description_es": null,
     "hp_base": 8,
@@ -298,7 +425,8 @@
     "traits": [
       "Visão no escuro",
       "Ameaçador",
-      "Resistência implacável"
+      "Resistência implacável",
+      "Ataques selvagens"
     ],
     "rarity": "common",
     "ruleset": "standard",
@@ -306,9 +434,27 @@
     "source_page": 40,
     "data": {
       "attributeAdjustments": {
-        "con": 1,
-        "str": 2
-      }
+        "str": 2,
+        "con": 1
+      },
+      "abilityBonuses": "Força +2, Constituição +1",
+      "size": "Médio",
+      "languages": "Comum e Orc",
+      "traits": [
+        "Visão no escuro",
+        "Ameaçador",
+        "Resistência implacável",
+        "Ataques selvagens"
+      ],
+      "abilityChoices": null,
+      "languageChoices": 0,
+      "skillChoices": 0,
+      "raceChoices": [],
+      "summaries": {
+        "pt-BR": "Força +2, Constituição +1; tamanho médio, deslocamento 9 m; idiomas: Comum e Orc; traços: Visão no escuro, Ameaçador, Resistência implacável, Ataques selvagens."
+      },
+      "summaryOrigin": "structured_rules",
+      "speedMeters": 9
     },
     "created_at": "2026-09-12T12:50:32.196269+00:00",
     "updated_at": "2026-09-12T12:50:32.196269+00:00",
@@ -319,7 +465,7 @@
     "name_pt": "Tiefling",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Carisma +2, Inteligência +1; tamanho médio, deslocamento 9 m; idiomas: Comum e Infernal; traços: Visão no escuro, Resistência infernal, Legado infernal.",
     "description_en": null,
     "description_es": null,
     "hp_base": 8,
@@ -344,7 +490,24 @@
       "attributeAdjustments": {
         "cha": 2,
         "int": 1
-      }
+      },
+      "abilityBonuses": "Carisma +2, Inteligência +1",
+      "size": "Médio",
+      "languages": "Comum e Infernal",
+      "traits": [
+        "Visão no escuro",
+        "Resistência infernal",
+        "Legado infernal"
+      ],
+      "abilityChoices": null,
+      "languageChoices": 0,
+      "skillChoices": 0,
+      "raceChoices": [],
+      "summaries": {
+        "pt-BR": "Carisma +2, Inteligência +1; tamanho médio, deslocamento 9 m; idiomas: Comum e Infernal; traços: Visão no escuro, Resistência infernal, Legado infernal."
+      },
+      "summaryOrigin": "structured_rules",
+      "speedMeters": 9
     },
     "created_at": "2026-09-12T12:50:32.196269+00:00",
     "updated_at": "2026-09-12T12:50:32.196269+00:00",

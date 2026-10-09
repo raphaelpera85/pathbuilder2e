@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import {
   PICKER_TYPE_TO_TABLE,
-  normalizeSupabaseRecordToPickerItem,
+  normalizeCatalogRecordToPickerItem,
   fetchCatalogCategory,
   fetchCatalogItemById,
   getCatalogSyncStatus,
@@ -12,6 +12,12 @@ import {
   type CatalogItemRecord,
 } from "./catalog";
 import type { PickerType } from "../types";
+import { T20_RACE_RULES } from "../data/t20/t20Races";
+import { T20_ORIGINS } from "../data/t20/t20Origins";
+import { T20_CLASS_RULES } from "../data/t20/t20Classes";
+import { DND5E_RACE_RULES } from "../data/dnd5e/dnd5eRaces";
+import { DND5E_CLASS_RULES } from "../data/dnd5e/dnd5eClasses";
+import { DND5E_BACKGROUNDS } from "../data/dnd5e/dnd5eBackgrounds";
 
 describe("serviço de catálogo local", () => {
   beforeEach(() => {
@@ -36,6 +42,68 @@ describe("serviço de catálogo local", () => {
     expect(result.source).toBe("local_snapshot");
     expect(result.items).toHaveLength(33);
     expect(result.items.every((item) => item.system_id === "dnd35" && item.data.ruleset === "v35-cov")).toBe(true);
+  });
+
+  it("preserva todos os traços das raças T20 no snapshot versionado", async () => {
+    const { items } = await fetchCatalogCategory("ancestry", { systemId: "t20", ruleset: "padrao" });
+    const byId = new Map(items.map((item) => [item.id, item]));
+
+    for (const race of T20_RACE_RULES) {
+      expect(byId.get(`t20.${race.id}`)?.data).toMatchObject({ traits: race.traits, abilityBonuses: race.abilityBonuses, attributeAdjustments: race.attributeAdjustments, size: race.size, speedMeters: race.speed, raceChoices: race.raceChoices || [] });
+      expect(byId.get(`t20.${race.id}`)?.data.summaries?.["pt-BR"]).toBeTruthy();
+    }
+  });
+
+  it("preserva perícias, benefícios e itens das origens T20 no snapshot", async () => {
+    const { items } = await fetchCatalogCategory("background", { systemId: "t20", ruleset: "padrao" });
+    const byId = new Map(items.map((item) => [item.id, item]));
+
+    for (const origin of T20_ORIGINS) {
+      const item = byId.get(`t20.${origin.id}`);
+      expect(item?.data.trainedSkills, origin.name).toEqual(origin.trainedSkills);
+      expect(item?.data.benefitOptions, origin.name).toEqual(origin.benefitOptions);
+      expect(item?.data.startingItems, origin.name).toEqual(origin.startingItems);
+      expect(item?.data.source, origin.name).toMatchObject({ page: origin.sourcePage });
+      expect(item?.data.summaries?.["pt-BR"], origin.name).toBeTruthy();
+    }
+  });
+
+  it("preserva progressão inicial, perícias e proficiências das classes T20 no snapshot", async () => {
+    const { items } = await fetchCatalogCategory("class", { systemId: "t20", ruleset: "padrao" });
+    const byId = new Map(items.map((item) => [item.id, item]));
+    for (const classRule of T20_CLASS_RULES) {
+      const data = byId.get(`t20.${classRule.id}`)?.data;
+      expect(data, classRule.name).toMatchObject({ startingHp: classRule.startingHp, hpPerLevel: classRule.hpPerLevel, manaPerLevel: classRule.manaPerLevel, fixedSkills: classRule.fixedSkills, choiceSkillCount: classRule.choiceSkillCount, choiceSkills: classRule.choiceSkills, proficiencies: classRule.proficiencies, startingEquipment: classRule.startingEquipment });
+      expect(data?.summaries?.["pt-BR"]).toBeTruthy();
+    }
+  });
+
+  it("preserva regras de raça, classe e antecedente de D&D 5e no snapshot local", async () => {
+    const [ancestries, classes, backgrounds] = await Promise.all([
+      fetchCatalogCategory("ancestry", { systemId: "dnd5e", ruleset: "standard" }),
+      fetchCatalogCategory("class", { systemId: "dnd5e", ruleset: "standard" }),
+      fetchCatalogCategory("background", { systemId: "dnd5e", ruleset: "standard" }),
+    ]);
+    const byId = (items: typeof ancestries.items) => new Map(items.map((item) => [item.id, item]));
+    const raceMap = byId(ancestries.items);
+    const classMap = byId(classes.items);
+    const backgroundMap = new Map(backgrounds.items.map((item) => [item.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, ""), item]));
+
+    for (const race of DND5E_RACE_RULES) {
+      const data = raceMap.get(`dnd5e.${race.id}`)?.data;
+      expect(data, race.name).toMatchObject({ abilityBonuses: race.abilityBonuses, attributeAdjustments: race.attributeAdjustments, size: race.size, speedMeters: race.speed, languages: race.languages, traits: race.traits, raceChoices: race.raceChoices || [] });
+      expect(data?.summaries?.["pt-BR"]).toBeTruthy();
+    }
+    for (const classRule of DND5E_CLASS_RULES) {
+      const data = classMap.get(`dnd5e.${classRule.id}`)?.data;
+      expect(data, classRule.name).toMatchObject({ primaryAbility: classRule.primaryAbility, savingThrows: classRule.savingThrows, skillChoiceCount: classRule.skillChoiceCount, skillChoices: classRule.skillChoices, proficiencies: classRule.proficiencies, startingEquipment: classRule.startingEquipment });
+      expect(data?.summaries?.["pt-BR"]).toBeTruthy();
+    }
+    for (const background of DND5E_BACKGROUNDS) {
+      const item = backgroundMap.get(background.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, ""));
+      expect(item?.data, background.name).toMatchObject({ skillProficiencies: background.skillProficiencies, toolProficiencies: background.toolProficiencies, toolChoiceGroups: background.toolChoiceGroups || [], languageChoices: background.languageChoices, feature: background.feature, startingEquipment: background.startingEquipment });
+      expect(item?.data.summaries?.["pt-BR"]).toBeTruthy();
+    }
   });
 
   it("calcula totais de tabelas pelo manifesto sem carregar registros", async () => {
@@ -101,7 +169,7 @@ describe("serviço de catálogo local", () => {
       },
     };
 
-    const item = normalizeSupabaseRecordToPickerItem(mockRecord, "feat");
+    const item = normalizeCatalogRecordToPickerItem(mockRecord, "feat");
 
     expect(item.id).toBe("feat.toughness");
     expect(item.name).toBe("Robustez");
@@ -117,7 +185,7 @@ describe("serviço de catálogo local", () => {
   });
 
   it("preserva metadados de ações e condições core no snapshot", () => {
-    const action = normalizeSupabaseRecordToPickerItem({
+    const action = normalizeCatalogRecordToPickerItem({
       id: "dnd5e.action.dodge",
       system_id: "dnd5e",
       name_pt: "Esquivar",
@@ -127,7 +195,7 @@ describe("serviço de catálogo local", () => {
       source_book: "Livro do Jogador — D&D 5e 2014",
       source_page: 192,
     }, "action");
-    const condition = normalizeSupabaseRecordToPickerItem({
+    const condition = normalizeCatalogRecordToPickerItem({
       id: "dnd5e.condition.exausto",
       system_id: "dnd5e",
       name_pt: "Exausto",
@@ -149,6 +217,14 @@ describe("serviço de catálogo local", () => {
     expect(dnd.items).toHaveLength(18);
     expect(t20.items[0]).toMatchObject({ category: "skill", system_id: "t20" });
     expect(t20.items[0].data.source).toMatchObject({ book: "Tormenta20 — Livro Básico" });
+  });
+
+  it("promove o resumo estruturado de um poder T20 para o texto do compêndio", async () => {
+    const t20 = await fetchCatalogCategory("feat", { systemId: "t20", ruleset: "padrao" });
+    const power = t20.items.find((item) => item.id === "t20.poder.abencoar_arma");
+    expect(power?.data.summary).toContain("arma preferida da divindade");
+    expect(power?.summary).toBe(power?.data.summary);
+    expect(power?.data.summaries["pt-BR"]).toBe(power?.data.summary);
   });
 
   it("não reutiliza o cache Advanced ao carregar perícias OSE Classic", async () => {
@@ -173,8 +249,8 @@ describe("serviço de catálogo local", () => {
     expect(rules.items.some((item) => item.data.ruleset === "classic")).toBe(true);
   });
 
-  it("preserva os campos estruturados de armas ao normalizar o catálogo remoto", () => {
-    const weapon = normalizeSupabaseRecordToPickerItem({
+  it("preserva os campos estruturados de armas ao normalizar um registro do snapshot", () => {
+    const weapon = normalizeCatalogRecordToPickerItem({
       id: "weapon.longbow",
       name_pt: "Arco Longo",
       name_en: "Longbow",

@@ -4,11 +4,12 @@
     "name_pt": "Acólito",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias treinadas: cura, religiao, vontade; benefícios: medicina, membro_da_igreja, vontade_de_ferro; itens iniciais: símbolo sagrado, traje de sacerdote.",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
     "trained_skills": [
+      "cura",
       "religiao",
       "vontade"
     ],
@@ -19,7 +20,20 @@
     "source_book": "Tormenta20 — Livro Básico",
     "source_page": 93,
     "data": {
-      "kind": "origem"
+      "kind": "origem",
+      "benefitOptions": [
+        "medicina",
+        "membro_da_igreja",
+        "vontade_de_ferro"
+      ],
+      "startingItems": [
+        "símbolo sagrado",
+        "traje de sacerdote"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias treinadas: cura, religiao, vontade; benefícios: medicina, membro_da_igreja, vontade_de_ferro; itens iniciais: símbolo sagrado, traje de sacerdote."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-12T12:53:26.426838+00:00",
@@ -30,13 +44,13 @@
     "name_pt": "Amigo dos Animais",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias treinadas: adestramento, cavalgar; benefícios: amigo_especial; itens iniciais: cão de guarda, cavalo, pônei ou trobo.",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
     "trained_skills": [
       "adestramento",
-      "sobrevivencia"
+      "cavalgar"
     ],
     "granted_feat": null,
     "traits": [],
@@ -45,7 +59,17 @@
     "source_book": "Tormenta20 — Livro Básico",
     "source_page": 93,
     "data": {
-      "kind": "origem"
+      "kind": "origem",
+      "benefitOptions": [
+        "amigo_especial"
+      ],
+      "startingItems": [
+        "cão de guarda, cavalo, pônei ou trobo"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias treinadas: adestramento, cavalgar; benefícios: amigo_especial; itens iniciais: cão de guarda, cavalo, pônei ou trobo."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-12T12:53:26.426838+00:00",
@@ -56,7 +80,7 @@
     "name_pt": "Amnésico",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias treinadas: ; benefícios: perícia escolhida pelo mestre, poder escolhido pelo mestre, lembrancas_graduais; itens iniciais: um ou mais itens somando até T$ 100.",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
@@ -68,7 +92,19 @@
     "source_book": "Tormenta20 — Livro Básico",
     "source_page": 93,
     "data": {
-      "kind": "origem"
+      "kind": "origem",
+      "benefitOptions": [
+        "perícia escolhida pelo mestre",
+        "poder escolhido pelo mestre",
+        "lembrancas_graduais"
+      ],
+      "startingItems": [
+        "um ou mais itens somando até T$ 100"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias treinadas: ; benefícios: perícia escolhida pelo mestre, poder escolhido pelo mestre, lembrancas_graduais; itens iniciais: um ou mais itens somando até T$ 100."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-12T12:53:26.426838+00:00",
@@ -79,13 +115,14 @@
     "name_pt": "Aristocrata",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias treinadas: diplomacia, enganacao, nobreza; benefícios: comandar, sangue_azul; itens iniciais: joia de família (T$ 100), traje da corte.",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
     "trained_skills": [
-      "nobreza",
-      "diplomacia"
+      "diplomacia",
+      "enganacao",
+      "nobreza"
     ],
     "granted_feat": null,
     "traits": [],
@@ -94,7 +131,19 @@
     "source_book": "Tormenta20 — Livro Básico",
     "source_page": 93,
     "data": {
-      "kind": "origem"
+      "kind": "origem",
+      "benefitOptions": [
+        "comandar",
+        "sangue_azul"
+      ],
+      "startingItems": [
+        "joia de família (T$ 100)",
+        "traje da corte"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias treinadas: diplomacia, enganacao, nobreza; benefícios: comandar, sangue_azul; itens iniciais: joia de família (T$ 100), traje da corte."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-12T12:53:26.426838+00:00",
@@ -105,7 +154,7 @@
     "name_pt": "Artesão",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias treinadas: oficio, vontade; benefícios: frutos_do_trabalho, sortudo; itens iniciais: kit de ofício, item fabricável até T$ 50.",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
@@ -120,7 +169,19 @@
     "source_book": "Tormenta20 — Livro Básico",
     "source_page": 93,
     "data": {
-      "kind": "origem"
+      "kind": "origem",
+      "benefitOptions": [
+        "frutos_do_trabalho",
+        "sortudo"
+      ],
+      "startingItems": [
+        "kit de ofício",
+        "item fabricável até T$ 50"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias treinadas: oficio, vontade; benefícios: frutos_do_trabalho, sortudo; itens iniciais: kit de ofício, item fabricável até T$ 50."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-12T12:53:26.426838+00:00",
@@ -131,13 +192,13 @@
     "name_pt": "Artista",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias treinadas: atuacao, enganacao; benefícios: atraente, dom_artistico, sortudo, torcida; itens iniciais: kit de disfarces ou instrumento musical.",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
     "trained_skills": [
       "atuacao",
-      "diplomacia"
+      "enganacao"
     ],
     "granted_feat": null,
     "traits": [],
@@ -146,7 +207,20 @@
     "source_book": "Tormenta20 — Livro Básico",
     "source_page": 93,
     "data": {
-      "kind": "origem"
+      "kind": "origem",
+      "benefitOptions": [
+        "atraente",
+        "dom_artistico",
+        "sortudo",
+        "torcida"
+      ],
+      "startingItems": [
+        "kit de disfarces ou instrumento musical"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias treinadas: atuacao, enganacao; benefícios: atraente, dom_artistico, sortudo, torcida; itens iniciais: kit de disfarces ou instrumento musical."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-12T12:53:26.426838+00:00",
@@ -157,13 +231,13 @@
     "name_pt": "Assistente de Laboratório",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias treinadas: oficio, misticismo; benefícios: esse_cheiro, veneficio, poder_da_tormenta; itens iniciais: kit de ofício (alquimia).",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
     "trained_skills": [
-      "misticismo",
-      "oficio"
+      "oficio",
+      "misticismo"
     ],
     "granted_feat": null,
     "traits": [],
@@ -172,7 +246,19 @@
     "source_book": "Tormenta20 — Livro Básico",
     "source_page": 93,
     "data": {
-      "kind": "origem"
+      "kind": "origem",
+      "benefitOptions": [
+        "esse_cheiro",
+        "veneficio",
+        "poder_da_tormenta"
+      ],
+      "startingItems": [
+        "kit de ofício (alquimia)"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias treinadas: oficio, misticismo; benefícios: esse_cheiro, veneficio, poder_da_tormenta; itens iniciais: kit de ofício (alquimia)."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-12T12:53:26.426838+00:00",
@@ -183,12 +269,13 @@
     "name_pt": "Batedor",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias treinadas: furtividade, percepcao, sobrevivencia; benefícios: a_prova_de_tudo, estilo_de_disparo, sentidos_agucados; itens iniciais: barraca, arma simples ou marcial à distância.",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
     "trained_skills": [
       "furtividade",
+      "percepcao",
       "sobrevivencia"
     ],
     "granted_feat": null,
@@ -198,7 +285,20 @@
     "source_book": "Tormenta20 — Livro Básico",
     "source_page": 93,
     "data": {
-      "kind": "origem"
+      "kind": "origem",
+      "benefitOptions": [
+        "a_prova_de_tudo",
+        "estilo_de_disparo",
+        "sentidos_agucados"
+      ],
+      "startingItems": [
+        "barraca",
+        "arma simples ou marcial à distância"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias treinadas: furtividade, percepcao, sobrevivencia; benefícios: a_prova_de_tudo, estilo_de_disparo, sentidos_agucados; itens iniciais: barraca, arma simples ou marcial à distância."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-12T12:53:26.426838+00:00",
@@ -209,7 +309,7 @@
     "name_pt": "Capanga",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias treinadas: luta, intimidacao; benefícios: confissao, poder_de_combate; itens iniciais: adereço de gangue aprimorado, arma simples corpo a corpo.",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
@@ -224,7 +324,19 @@
     "source_book": "Tormenta20 — Livro Básico",
     "source_page": 93,
     "data": {
-      "kind": "origem"
+      "kind": "origem",
+      "benefitOptions": [
+        "confissao",
+        "poder_de_combate"
+      ],
+      "startingItems": [
+        "adereço de gangue aprimorado",
+        "arma simples corpo a corpo"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias treinadas: luta, intimidacao; benefícios: confissao, poder_de_combate; itens iniciais: adereço de gangue aprimorado, arma simples corpo a corpo."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-12T12:53:26.426838+00:00",
@@ -235,7 +347,7 @@
     "name_pt": "Charlatão",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias treinadas: enganacao, jogatina; benefícios: alpinista_social, aparencia_inofensiva, sortudo; itens iniciais: joia falsificada, kit de disfarces.",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
@@ -250,7 +362,20 @@
     "source_book": "Tormenta20 — Livro Básico",
     "source_page": 93,
     "data": {
-      "kind": "origem"
+      "kind": "origem",
+      "benefitOptions": [
+        "alpinista_social",
+        "aparencia_inofensiva",
+        "sortudo"
+      ],
+      "startingItems": [
+        "joia falsificada",
+        "kit de disfarces"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias treinadas: enganacao, jogatina; benefícios: alpinista_social, aparencia_inofensiva, sortudo; itens iniciais: joia falsificada, kit de disfarces."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-12T12:53:26.426838+00:00",
@@ -261,13 +386,14 @@
     "name_pt": "Circense",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias treinadas: acrobacia, atuacao, reflexos; benefícios: acrobatico, torcida, truque_de_magica; itens iniciais: traje de artista, três bolas, baralho.",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
     "trained_skills": [
       "acrobacia",
-      "atuacao"
+      "atuacao",
+      "reflexos"
     ],
     "granted_feat": null,
     "traits": [],
@@ -276,7 +402,21 @@
     "source_book": "Tormenta20 — Livro Básico",
     "source_page": 93,
     "data": {
-      "kind": "origem"
+      "kind": "origem",
+      "benefitOptions": [
+        "acrobatico",
+        "torcida",
+        "truque_de_magica"
+      ],
+      "startingItems": [
+        "traje de artista",
+        "três bolas",
+        "baralho"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias treinadas: acrobacia, atuacao, reflexos; benefícios: acrobatico, torcida, truque_de_magica; itens iniciais: traje de artista, três bolas, baralho."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-12T12:53:26.426838+00:00",
@@ -287,12 +427,13 @@
     "name_pt": "Criminoso",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias treinadas: enganacao, furtividade, ladinagem; benefícios: punguista, veneficio; itens iniciais: kit de ladrão ou kit de disfarces.",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
     "trained_skills": [
       "enganacao",
+      "furtividade",
       "ladinagem"
     ],
     "granted_feat": null,
@@ -302,7 +443,18 @@
     "source_book": "Tormenta20 — Livro Básico",
     "source_page": 93,
     "data": {
-      "kind": "origem"
+      "kind": "origem",
+      "benefitOptions": [
+        "punguista",
+        "veneficio"
+      ],
+      "startingItems": [
+        "kit de ladrão ou kit de disfarces"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias treinadas: enganacao, furtividade, ladinagem; benefícios: punguista, veneficio; itens iniciais: kit de ladrão ou kit de disfarces."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-12T12:53:26.426838+00:00",
@@ -313,13 +465,13 @@
     "name_pt": "Curandeiro",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias treinadas: cura, vontade; benefícios: medicina, medico_de_campo, veneficio; itens iniciais: bálsamo restaurador, kit de medicamentos.",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
     "trained_skills": [
       "cura",
-      "religiao"
+      "vontade"
     ],
     "granted_feat": null,
     "traits": [],
@@ -328,7 +480,20 @@
     "source_book": "Tormenta20 — Livro Básico",
     "source_page": 93,
     "data": {
-      "kind": "origem"
+      "kind": "origem",
+      "benefitOptions": [
+        "medicina",
+        "medico_de_campo",
+        "veneficio"
+      ],
+      "startingItems": [
+        "bálsamo restaurador",
+        "kit de medicamentos"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias treinadas: cura, vontade; benefícios: medicina, medico_de_campo, veneficio; itens iniciais: bálsamo restaurador, kit de medicamentos."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-12T12:53:26.426838+00:00",
@@ -339,12 +504,13 @@
     "name_pt": "Eremita",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias treinadas: misticismo, religiao, sobrevivencia; benefícios: busca_interior, lobo_solitario; itens iniciais: barraca, kit de medicamentos.",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
     "trained_skills": [
       "misticismo",
+      "religiao",
       "sobrevivencia"
     ],
     "granted_feat": null,
@@ -354,7 +520,19 @@
     "source_book": "Tormenta20 — Livro Básico",
     "source_page": 93,
     "data": {
-      "kind": "origem"
+      "kind": "origem",
+      "benefitOptions": [
+        "busca_interior",
+        "lobo_solitario"
+      ],
+      "startingItems": [
+        "barraca",
+        "kit de medicamentos"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias treinadas: misticismo, religiao, sobrevivencia; benefícios: busca_interior, lobo_solitario; itens iniciais: barraca, kit de medicamentos."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-12T12:53:26.426838+00:00",
@@ -365,13 +543,14 @@
     "name_pt": "Escravo",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias treinadas: atletismo, fortitude, furtividade; benefícios: desejo_de_liberdade, vitalidade; itens iniciais: algemas, ferramenta pesada.",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
     "trained_skills": [
+      "atletismo",
       "fortitude",
-      "sobrevivencia"
+      "furtividade"
     ],
     "granted_feat": null,
     "traits": [],
@@ -380,7 +559,19 @@
     "source_book": "Tormenta20 — Livro Básico",
     "source_page": 93,
     "data": {
-      "kind": "origem"
+      "kind": "origem",
+      "benefitOptions": [
+        "desejo_de_liberdade",
+        "vitalidade"
+      ],
+      "startingItems": [
+        "algemas",
+        "ferramenta pesada"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias treinadas: atletismo, fortitude, furtividade; benefícios: desejo_de_liberdade, vitalidade; itens iniciais: algemas, ferramenta pesada."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-12T12:53:26.426838+00:00",
@@ -391,13 +582,14 @@
     "name_pt": "Estudioso",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias treinadas: conhecimento, guerra, misticismo; benefícios: aparencia_inofensiva, palpite_fundamentado; itens iniciais: livro, pergaminho ou instrumento de estudo.",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
     "trained_skills": [
       "conhecimento",
-      "investigacao"
+      "guerra",
+      "misticismo"
     ],
     "granted_feat": null,
     "traits": [],
@@ -406,7 +598,18 @@
     "source_book": "Tormenta20 — Livro Básico",
     "source_page": 93,
     "data": {
-      "kind": "origem"
+      "kind": "origem",
+      "benefitOptions": [
+        "aparencia_inofensiva",
+        "palpite_fundamentado"
+      ],
+      "startingItems": [
+        "livro, pergaminho ou instrumento de estudo"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias treinadas: conhecimento, guerra, misticismo; benefícios: aparencia_inofensiva, palpite_fundamentado; itens iniciais: livro, pergaminho ou instrumento de estudo."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-12T12:53:26.426838+00:00",
@@ -417,13 +620,15 @@
     "name_pt": "Fazendeiro",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias treinadas: adestramento, cavalgar, oficio, sobrevivencia; benefícios: agua_no_feijao, ginete; itens iniciais: ferramenta agrícola, animal de fazenda.",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
     "trained_skills": [
       "adestramento",
-      "atletismo"
+      "cavalgar",
+      "oficio",
+      "sobrevivencia"
     ],
     "granted_feat": null,
     "traits": [],
@@ -432,7 +637,19 @@
     "source_book": "Tormenta20 — Livro Básico",
     "source_page": 93,
     "data": {
-      "kind": "origem"
+      "kind": "origem",
+      "benefitOptions": [
+        "agua_no_feijao",
+        "ginete"
+      ],
+      "startingItems": [
+        "ferramenta agrícola",
+        "animal de fazenda"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias treinadas: adestramento, cavalgar, oficio, sobrevivencia; benefícios: agua_no_feijao, ginete; itens iniciais: ferramenta agrícola, animal de fazenda."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-12T12:53:26.426838+00:00",
@@ -443,13 +660,14 @@
     "name_pt": "Forasteiro",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias treinadas: cavalgar, pilotagem, sobrevivencia; benefícios: cultura_exotica, lobo_solitario; itens iniciais: diário de viagens, traje estrangeiro, instrumento exótico.",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
     "trained_skills": [
-      "sobrevivencia",
-      "percepcao"
+      "cavalgar",
+      "pilotagem",
+      "sobrevivencia"
     ],
     "granted_feat": null,
     "traits": [],
@@ -458,7 +676,20 @@
     "source_book": "Tormenta20 — Livro Básico",
     "source_page": 93,
     "data": {
-      "kind": "origem"
+      "kind": "origem",
+      "benefitOptions": [
+        "cultura_exotica",
+        "lobo_solitario"
+      ],
+      "startingItems": [
+        "diário de viagens",
+        "traje estrangeiro",
+        "instrumento exótico"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias treinadas: cavalgar, pilotagem, sobrevivencia; benefícios: cultura_exotica, lobo_solitario; itens iniciais: diário de viagens, traje estrangeiro, instrumento exótico."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-12T12:53:26.426838+00:00",
@@ -469,7 +700,7 @@
     "name_pt": "Gladiador",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias treinadas: atuacao, luta; benefícios: atraente, pao_e_circo, torcida, poder_de_combate; itens iniciais: arma marcial ou exótica, item de admirador.",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
@@ -484,7 +715,21 @@
     "source_book": "Tormenta20 — Livro Básico",
     "source_page": 93,
     "data": {
-      "kind": "origem"
+      "kind": "origem",
+      "benefitOptions": [
+        "atraente",
+        "pao_e_circo",
+        "torcida",
+        "poder_de_combate"
+      ],
+      "startingItems": [
+        "arma marcial ou exótica",
+        "item de admirador"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias treinadas: atuacao, luta; benefícios: atraente, pao_e_circo, torcida, poder_de_combate; itens iniciais: arma marcial ou exótica, item de admirador."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-12T12:53:26.426838+00:00",
@@ -495,12 +740,13 @@
     "name_pt": "Guarda",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias treinadas: investigacao, luta, percepcao; benefícios: detetive, investigador, poder_de_combate; itens iniciais: apito, insígnia, arma marcial.",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
     "trained_skills": [
-      "fortitude",
+      "investigacao",
+      "luta",
       "percepcao"
     ],
     "granted_feat": null,
@@ -510,7 +756,21 @@
     "source_book": "Tormenta20 — Livro Básico",
     "source_page": 93,
     "data": {
-      "kind": "origem"
+      "kind": "origem",
+      "benefitOptions": [
+        "detetive",
+        "investigador",
+        "poder_de_combate"
+      ],
+      "startingItems": [
+        "apito",
+        "insígnia",
+        "arma marcial"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias treinadas: investigacao, luta, percepcao; benefícios: detetive, investigador, poder_de_combate; itens iniciais: apito, insígnia, arma marcial."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-12T12:53:26.426838+00:00",
@@ -521,13 +781,14 @@
     "name_pt": "Herdeiro",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias treinadas: misticismo, nobreza, oficio; benefícios: comandar, heranca; itens iniciais: símbolo de herança.",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
     "trained_skills": [
+      "misticismo",
       "nobreza",
-      "vontade"
+      "oficio"
     ],
     "granted_feat": null,
     "traits": [],
@@ -536,7 +797,18 @@
     "source_book": "Tormenta20 — Livro Básico",
     "source_page": 93,
     "data": {
-      "kind": "origem"
+      "kind": "origem",
+      "benefitOptions": [
+        "comandar",
+        "heranca"
+      ],
+      "startingItems": [
+        "símbolo de herança"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias treinadas: misticismo, nobreza, oficio; benefícios: comandar, heranca; itens iniciais: símbolo de herança."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-12T12:53:26.426838+00:00",
@@ -547,13 +819,13 @@
     "name_pt": "Herói Camponês",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias treinadas: adestramento, oficio; benefícios: amigo_dos_plebeus, sortudo, surto_heroico, torcida; itens iniciais: kit de ofício ou arma simples, traje de plebeu.",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
     "trained_skills": [
-      "atletismo",
-      "sobrevivencia"
+      "adestramento",
+      "oficio"
     ],
     "granted_feat": null,
     "traits": [],
@@ -562,7 +834,21 @@
     "source_book": "Tormenta20 — Livro Básico",
     "source_page": 93,
     "data": {
-      "kind": "origem"
+      "kind": "origem",
+      "benefitOptions": [
+        "amigo_dos_plebeus",
+        "sortudo",
+        "surto_heroico",
+        "torcida"
+      ],
+      "startingItems": [
+        "kit de ofício ou arma simples",
+        "traje de plebeu"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias treinadas: adestramento, oficio; benefícios: amigo_dos_plebeus, sortudo, surto_heroico, torcida; itens iniciais: kit de ofício ou arma simples, traje de plebeu."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-12T12:53:26.426838+00:00",
@@ -573,12 +859,13 @@
     "name_pt": "Marujo",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias treinadas: atletismo, jogatina, pilotagem; benefícios: acrobatico, passagem_de_navio; itens iniciais: T$ 2d6, corda.",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
     "trained_skills": [
       "atletismo",
+      "jogatina",
       "pilotagem"
     ],
     "granted_feat": null,
@@ -588,7 +875,19 @@
     "source_book": "Tormenta20 — Livro Básico",
     "source_page": 93,
     "data": {
-      "kind": "origem"
+      "kind": "origem",
+      "benefitOptions": [
+        "acrobatico",
+        "passagem_de_navio"
+      ],
+      "startingItems": [
+        "T$ 2d6",
+        "corda"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias treinadas: atletismo, jogatina, pilotagem; benefícios: acrobatico, passagem_de_navio; itens iniciais: T$ 2d6, corda."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-12T12:53:26.426838+00:00",
@@ -599,11 +898,12 @@
     "name_pt": "Mateiro",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias treinadas: atletismo, furtividade, sobrevivencia; benefícios: lobo_solitario, sentidos_agucados, vendedor_de_carcacas; itens iniciais: barraca, arco curto, 20 flechas.",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
     "trained_skills": [
+      "atletismo",
       "furtividade",
       "sobrevivencia"
     ],
@@ -614,7 +914,21 @@
     "source_book": "Tormenta20 — Livro Básico",
     "source_page": 93,
     "data": {
-      "kind": "origem"
+      "kind": "origem",
+      "benefitOptions": [
+        "lobo_solitario",
+        "sentidos_agucados",
+        "vendedor_de_carcacas"
+      ],
+      "startingItems": [
+        "barraca",
+        "arco curto",
+        "20 flechas"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias treinadas: atletismo, furtividade, sobrevivencia; benefícios: lobo_solitario, sentidos_agucados, vendedor_de_carcacas; itens iniciais: barraca, arco curto, 20 flechas."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-12T12:53:26.426838+00:00",
@@ -625,12 +939,14 @@
     "name_pt": "Membro de Guilda",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias treinadas: diplomacia, enganacao, misticismo, oficio; benefícios: foco_em_pericia, rede_de_contatos; itens iniciais: kit de ladrão ou kit de ofício.",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
     "trained_skills": [
       "diplomacia",
+      "enganacao",
+      "misticismo",
       "oficio"
     ],
     "granted_feat": null,
@@ -640,7 +956,18 @@
     "source_book": "Tormenta20 — Livro Básico",
     "source_page": 93,
     "data": {
-      "kind": "origem"
+      "kind": "origem",
+      "benefitOptions": [
+        "foco_em_pericia",
+        "rede_de_contatos"
+      ],
+      "startingItems": [
+        "kit de ladrão ou kit de ofício"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias treinadas: diplomacia, enganacao, misticismo, oficio; benefícios: foco_em_pericia, rede_de_contatos; itens iniciais: kit de ladrão ou kit de ofício."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-12T12:53:26.426838+00:00",
@@ -651,13 +978,14 @@
     "name_pt": "Mercador",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias treinadas: diplomacia, intuicao, oficio; benefícios: negociacao, proficiencia, sortudo; itens iniciais: carroça, trobo, mercadorias (T$ 100).",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
     "trained_skills": [
       "diplomacia",
-      "jogatina"
+      "intuicao",
+      "oficio"
     ],
     "granted_feat": null,
     "traits": [],
@@ -666,7 +994,21 @@
     "source_book": "Tormenta20 — Livro Básico",
     "source_page": 93,
     "data": {
-      "kind": "origem"
+      "kind": "origem",
+      "benefitOptions": [
+        "negociacao",
+        "proficiencia",
+        "sortudo"
+      ],
+      "startingItems": [
+        "carroça",
+        "trobo",
+        "mercadorias (T$ 100)"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias treinadas: diplomacia, intuicao, oficio; benefícios: negociacao, proficiencia, sortudo; itens iniciais: carroça, trobo, mercadorias (T$ 100)."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-12T12:53:26.426838+00:00",
@@ -677,7 +1019,327 @@
     "name_pt": "Minerador",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Perícias treinadas: atletismo, fortitude, oficio; benefícios: ataque_poderoso, escavador, sentidos_agucados; itens iniciais: gemas (T$ 100), picareta.",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "atletismo",
+      "fortitude",
+      "oficio"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem",
+      "benefitOptions": [
+        "ataque_poderoso",
+        "escavador",
+        "sentidos_agucados"
+      ],
+      "startingItems": [
+        "gemas (T$ 100)",
+        "picareta"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias treinadas: atletismo, fortitude, oficio; benefícios: ataque_poderoso, escavador, sentidos_agucados; itens iniciais: gemas (T$ 100), picareta."
+      },
+      "summaryOrigin": "structured_rules"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.nomade",
+    "name_pt": "Nômade",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Perícias treinadas: cavalgar, pilotagem, sobrevivencia; benefícios: lobo_solitario, mochileiro, sentidos_agucados; itens iniciais: bordão, bússola.",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "cavalgar",
+      "pilotagem",
+      "sobrevivencia"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem",
+      "benefitOptions": [
+        "lobo_solitario",
+        "mochileiro",
+        "sentidos_agucados"
+      ],
+      "startingItems": [
+        "bordão",
+        "bússola"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias treinadas: cavalgar, pilotagem, sobrevivencia; benefícios: lobo_solitario, mochileiro, sentidos_agucados; itens iniciais: bordão, bússola."
+      },
+      "summaryOrigin": "structured_rules"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.pivete",
+    "name_pt": "Pivete",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Perícias treinadas: furtividade, iniciativa, ladinagem; benefícios: acrobatico, aparencia_inofensiva, quebra_galho; itens iniciais: kit de ladrão, traje de plebeu, animal urbano.",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "furtividade",
+      "iniciativa",
+      "ladinagem"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem",
+      "benefitOptions": [
+        "acrobatico",
+        "aparencia_inofensiva",
+        "quebra_galho"
+      ],
+      "startingItems": [
+        "kit de ladrão",
+        "traje de plebeu",
+        "animal urbano"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias treinadas: furtividade, iniciativa, ladinagem; benefícios: acrobatico, aparencia_inofensiva, quebra_galho; itens iniciais: kit de ladrão, traje de plebeu, animal urbano."
+      },
+      "summaryOrigin": "structured_rules"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.refugiado",
+    "name_pt": "Refugiado",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Perícias treinadas: fortitude, reflexos, vontade; benefícios: estoico, vontade_de_ferro; itens iniciais: item estrangeiro até T$ 100.",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "fortitude",
+      "reflexos",
+      "vontade"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem",
+      "benefitOptions": [
+        "estoico",
+        "vontade_de_ferro"
+      ],
+      "startingItems": [
+        "item estrangeiro até T$ 100"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias treinadas: fortitude, reflexos, vontade; benefícios: estoico, vontade_de_ferro; itens iniciais: item estrangeiro até T$ 100."
+      },
+      "summaryOrigin": "structured_rules"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.seguidor",
+    "name_pt": "Seguidor",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Perícias treinadas: adestramento, oficio; benefícios: antigo_mestre, proficiencia, surto_heroico; itens iniciais: item recebido do mestre até T$ 100.",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "adestramento",
+      "oficio"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem",
+      "benefitOptions": [
+        "antigo_mestre",
+        "proficiencia",
+        "surto_heroico"
+      ],
+      "startingItems": [
+        "item recebido do mestre até T$ 100"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias treinadas: adestramento, oficio; benefícios: antigo_mestre, proficiencia, surto_heroico; itens iniciais: item recebido do mestre até T$ 100."
+      },
+      "summaryOrigin": "structured_rules"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.selvagem",
+    "name_pt": "Selvagem",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Perícias treinadas: percepcao, reflexos, sobrevivencia; benefícios: lobo_solitario, vida_rustica, vitalidade; itens iniciais: arma simples, pequeno animal.",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "percepcao",
+      "reflexos",
+      "sobrevivencia"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem",
+      "benefitOptions": [
+        "lobo_solitario",
+        "vida_rustica",
+        "vitalidade"
+      ],
+      "startingItems": [
+        "arma simples",
+        "pequeno animal"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias treinadas: percepcao, reflexos, sobrevivencia; benefícios: lobo_solitario, vida_rustica, vitalidade; itens iniciais: arma simples, pequeno animal."
+      },
+      "summaryOrigin": "structured_rules"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.soldado",
+    "name_pt": "Soldado",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Perícias treinadas: fortitude, guerra, luta, pontaria; benefícios: influencia_militar, poder_de_combate; itens iniciais: arma marcial, uniforme, insígnia.",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "fortitude",
+      "guerra",
+      "luta",
+      "pontaria"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem",
+      "benefitOptions": [
+        "influencia_militar",
+        "poder_de_combate"
+      ],
+      "startingItems": [
+        "arma marcial",
+        "uniforme",
+        "insígnia"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias treinadas: fortitude, guerra, luta, pontaria; benefícios: influencia_militar, poder_de_combate; itens iniciais: arma marcial, uniforme, insígnia."
+      },
+      "summaryOrigin": "structured_rules"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.taverneiro",
+    "name_pt": "Taverneiro",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Perícias treinadas: diplomacia, jogatina, oficio; benefícios: gororoba, proficiencia, vitalidade; itens iniciais: rolo de macarrão ou martelo, panela, avental, caneca.",
+    "description_en": null,
+    "description_es": null,
+    "attribute_boosts": [],
+    "trained_skills": [
+      "diplomacia",
+      "jogatina",
+      "oficio"
+    ],
+    "granted_feat": null,
+    "traits": [],
+    "rarity": "common",
+    "ruleset": "padrao",
+    "source_book": "Tormenta20 — Livro Básico",
+    "source_page": 93,
+    "data": {
+      "kind": "origem",
+      "benefitOptions": [
+        "gororoba",
+        "proficiencia",
+        "vitalidade"
+      ],
+      "startingItems": [
+        "rolo de macarrão ou martelo",
+        "panela",
+        "avental",
+        "caneca"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias treinadas: diplomacia, jogatina, oficio; benefícios: gororoba, proficiencia, vitalidade; itens iniciais: rolo de macarrão ou martelo, panela, avental, caneca."
+      },
+      "summaryOrigin": "structured_rules"
+    },
+    "created_at": "2026-09-12T12:53:26.426838+00:00",
+    "updated_at": "2026-09-12T12:53:26.426838+00:00",
+    "system_id": "t20"
+  },
+  {
+    "id": "t20.trabalhador",
+    "name_pt": "Trabalhador",
+    "name_en": null,
+    "name_es": null,
+    "description_pt": "Perícias treinadas: atletismo, fortitude; benefícios: atletico, esforcado; itens iniciais: ferramenta pesada.",
     "description_en": null,
     "description_es": null,
     "attribute_boosts": [],
@@ -692,215 +1354,18 @@
     "source_book": "Tormenta20 — Livro Básico",
     "source_page": 93,
     "data": {
-      "kind": "origem"
-    },
-    "created_at": "2026-09-12T12:53:26.426838+00:00",
-    "updated_at": "2026-09-12T12:53:26.426838+00:00",
-    "system_id": "t20"
-  },
-  {
-    "id": "t20.nomade",
-    "name_pt": "Nômade",
-    "name_en": null,
-    "name_es": null,
-    "description_pt": null,
-    "description_en": null,
-    "description_es": null,
-    "attribute_boosts": [],
-    "trained_skills": [
-      "cavalgar",
-      "sobrevivencia"
-    ],
-    "granted_feat": null,
-    "traits": [],
-    "rarity": "common",
-    "ruleset": "padrao",
-    "source_book": "Tormenta20 — Livro Básico",
-    "source_page": 93,
-    "data": {
-      "kind": "origem"
-    },
-    "created_at": "2026-09-12T12:53:26.426838+00:00",
-    "updated_at": "2026-09-12T12:53:26.426838+00:00",
-    "system_id": "t20"
-  },
-  {
-    "id": "t20.pivete",
-    "name_pt": "Pivete",
-    "name_en": null,
-    "name_es": null,
-    "description_pt": null,
-    "description_en": null,
-    "description_es": null,
-    "attribute_boosts": [],
-    "trained_skills": [
-      "furtividade",
-      "ladinagem"
-    ],
-    "granted_feat": null,
-    "traits": [],
-    "rarity": "common",
-    "ruleset": "padrao",
-    "source_book": "Tormenta20 — Livro Básico",
-    "source_page": 93,
-    "data": {
-      "kind": "origem"
-    },
-    "created_at": "2026-09-12T12:53:26.426838+00:00",
-    "updated_at": "2026-09-12T12:53:26.426838+00:00",
-    "system_id": "t20"
-  },
-  {
-    "id": "t20.refugiado",
-    "name_pt": "Refugiado",
-    "name_en": null,
-    "name_es": null,
-    "description_pt": null,
-    "description_en": null,
-    "description_es": null,
-    "attribute_boosts": [],
-    "trained_skills": [
-      "intuicao",
-      "sobrevivencia"
-    ],
-    "granted_feat": null,
-    "traits": [],
-    "rarity": "common",
-    "ruleset": "padrao",
-    "source_book": "Tormenta20 — Livro Básico",
-    "source_page": 93,
-    "data": {
-      "kind": "origem"
-    },
-    "created_at": "2026-09-12T12:53:26.426838+00:00",
-    "updated_at": "2026-09-12T12:53:26.426838+00:00",
-    "system_id": "t20"
-  },
-  {
-    "id": "t20.seguidor",
-    "name_pt": "Seguidor",
-    "name_en": null,
-    "name_es": null,
-    "description_pt": null,
-    "description_en": null,
-    "description_es": null,
-    "attribute_boosts": [],
-    "trained_skills": [
-      "diplomacia",
-      "religiao"
-    ],
-    "granted_feat": null,
-    "traits": [],
-    "rarity": "common",
-    "ruleset": "padrao",
-    "source_book": "Tormenta20 — Livro Básico",
-    "source_page": 93,
-    "data": {
-      "kind": "origem"
-    },
-    "created_at": "2026-09-12T12:53:26.426838+00:00",
-    "updated_at": "2026-09-12T12:53:26.426838+00:00",
-    "system_id": "t20"
-  },
-  {
-    "id": "t20.selvagem",
-    "name_pt": "Selvagem",
-    "name_en": null,
-    "name_es": null,
-    "description_pt": null,
-    "description_en": null,
-    "description_es": null,
-    "attribute_boosts": [],
-    "trained_skills": [
-      "atletismo",
-      "sobrevivencia"
-    ],
-    "granted_feat": null,
-    "traits": [],
-    "rarity": "common",
-    "ruleset": "padrao",
-    "source_book": "Tormenta20 — Livro Básico",
-    "source_page": 93,
-    "data": {
-      "kind": "origem"
-    },
-    "created_at": "2026-09-12T12:53:26.426838+00:00",
-    "updated_at": "2026-09-12T12:53:26.426838+00:00",
-    "system_id": "t20"
-  },
-  {
-    "id": "t20.soldado",
-    "name_pt": "Soldado",
-    "name_en": null,
-    "name_es": null,
-    "description_pt": null,
-    "description_en": null,
-    "description_es": null,
-    "attribute_boosts": [],
-    "trained_skills": [
-      "guerra",
-      "luta"
-    ],
-    "granted_feat": null,
-    "traits": [],
-    "rarity": "common",
-    "ruleset": "padrao",
-    "source_book": "Tormenta20 — Livro Básico",
-    "source_page": 93,
-    "data": {
-      "kind": "origem"
-    },
-    "created_at": "2026-09-12T12:53:26.426838+00:00",
-    "updated_at": "2026-09-12T12:53:26.426838+00:00",
-    "system_id": "t20"
-  },
-  {
-    "id": "t20.taverneiro",
-    "name_pt": "Taverneiro",
-    "name_en": null,
-    "name_es": null,
-    "description_pt": null,
-    "description_en": null,
-    "description_es": null,
-    "attribute_boosts": [],
-    "trained_skills": [
-      "diplomacia",
-      "oficio"
-    ],
-    "granted_feat": null,
-    "traits": [],
-    "rarity": "common",
-    "ruleset": "padrao",
-    "source_book": "Tormenta20 — Livro Básico",
-    "source_page": 93,
-    "data": {
-      "kind": "origem"
-    },
-    "created_at": "2026-09-12T12:53:26.426838+00:00",
-    "updated_at": "2026-09-12T12:53:26.426838+00:00",
-    "system_id": "t20"
-  },
-  {
-    "id": "t20.trabalhador",
-    "name_pt": "Trabalhador",
-    "name_en": null,
-    "name_es": null,
-    "description_pt": null,
-    "description_en": null,
-    "description_es": null,
-    "attribute_boosts": [],
-    "trained_skills": [
-      "atletismo",
-      "oficio"
-    ],
-    "granted_feat": null,
-    "traits": [],
-    "rarity": "common",
-    "ruleset": "padrao",
-    "source_book": "Tormenta20 — Livro Básico",
-    "source_page": 93,
-    "data": {
-      "kind": "origem"
+      "kind": "origem",
+      "benefitOptions": [
+        "atletico",
+        "esforcado"
+      ],
+      "startingItems": [
+        "ferramenta pesada"
+      ],
+      "summaries": {
+        "pt-BR": "Perícias treinadas: atletismo, fortitude; benefícios: atletico, esforcado; itens iniciais: ferramenta pesada."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T12:53:26.426838+00:00",
     "updated_at": "2026-09-12T12:53:26.426838+00:00",
