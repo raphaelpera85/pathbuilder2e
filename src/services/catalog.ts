@@ -53,6 +53,13 @@ function toRpgSystem(row: CatalogSystemRecord): IRPGSystem {
 }
 
 export const DEFAULT_RPG_SYSTEMS: IRPGSystem[] = (systemsSnapshot as CatalogSystemRecord[]).map(toRpgSystem);
+/** Regras de edição presentes no snapshot; novos pacotes aparecem no filtro sem editar a UI. */
+export const CATALOG_RULESETS = [...new Set(
+  Object.values(snapshotModules)
+    .flatMap((records) => records)
+    .map((record) => record.ruleset)
+    .filter((ruleset): ruleset is string => typeof ruleset === "string" && ruleset.length > 0),
+)].sort();
 export async function fetchCatalogSystems(): Promise<IRPGSystem[]> { return DEFAULT_RPG_SYSTEMS.filter((system) => system.active); }
 
 /** Converte uma linha do snapshot PostgreSQL no formato consumido pela UI. */
@@ -119,4 +126,13 @@ export async function fetchCatalogItemById(category: PickerType, id: string, sys
 
 export function getCatalogSyncStatus(): CatalogSyncStatus {
   return { isConfigured: false, isOnline: typeof navigator === "undefined" ? true : navigator.onLine, source: "local_snapshot" };
+}
+
+/** Mantém listas grandes navegáveis sem montar milhares de cartões no DOM. */
+export function paginateCatalogItems<T>(items: readonly T[], requestedPage: number, pageSize: number): { items: T[]; page: number; pageCount: number; total: number } {
+  const total = items.length;
+  const pageCount = Math.max(1, Math.ceil(total / pageSize));
+  const page = Math.min(Math.max(1, requestedPage), pageCount);
+  const start = (page - 1) * pageSize;
+  return { items: items.slice(start, start + pageSize), page, pageCount, total };
 }

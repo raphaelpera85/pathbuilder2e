@@ -6,6 +6,8 @@ import {
   fetchCatalogItemById,
   getCatalogSyncStatus,
   DEFAULT_RPG_SYSTEMS,
+  CATALOG_RULESETS,
+  paginateCatalogItems,
   type CatalogItemRecord,
 } from "./catalog";
 import type { PickerType } from "../types";
@@ -18,6 +20,20 @@ describe("serviço de catálogo local", () => {
   it("não anuncia rulesets ainda não implementados no núcleo", () => {
     expect(DEFAULT_RPG_SYSTEMS.find((system) => system.id === "dnd5e")?.supportedRulesets).toEqual(["standard"]);
     expect(DEFAULT_RPG_SYSTEMS.find((system) => system.id === "t20")?.supportedRulesets).toEqual(["padrao"]);
+  });
+
+  it("expõe todos os rulesets presentes no snapshot para filtros do Compêndio", () => {
+    expect(DEFAULT_RPG_SYSTEMS.map((system) => system.id)).toEqual(expect.arrayContaining(["pf2e", "t20", "dnd5e", "ose", "dnd35"]));
+    expect(CATALOG_RULESETS).toEqual([
+      "advanced", "classic", "legacy", "padrao", "remaster", "standard",
+      "v35", "v35-cov", "v35-defensores", "v35-frostburn",
+    ]);
+  });
+
+  it("pagina resultados sem descartar o total filtrado", () => {
+    const result = paginateCatalogItems(Array.from({ length: 205 }, (_, index) => index), 2, 100);
+    expect(result).toEqual({ items: Array.from({ length: 100 }, (_, index) => index + 100), page: 2, pageCount: 3, total: 205 });
+    expect(paginateCatalogItems(["a"], 9, 100)).toEqual({ items: ["a"], page: 1, pageCount: 1, total: 1 });
   });
 
   it("mantém o mapeamento de categorias usado pelo exportador de snapshot", () => {

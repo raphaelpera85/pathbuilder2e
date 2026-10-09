@@ -39,8 +39,12 @@ import {
   type AdminDashboardMetrics,
 } from "./services/admin";
 import {
+  CATALOG_RULESETS,
+  DEFAULT_RPG_SYSTEMS,
   fetchCatalogCategory,
   getCatalogSyncStatus,
+  paginateCatalogItems,
+  type CatalogSource,
   type CatalogSyncStatus,
 } from "./services/catalog";
 import { CampaignsPage } from "./CampaignsPage";
@@ -103,6 +107,23 @@ const catalogCategories: Array<{ type: PickerType; label: MessageKey }> = [
   { type: "condition", label: "conditions" },
   { type: "buff", label: "buffs" },
 ];
+const CATALOG_PAGE_SIZE = 100;
+
+function catalogRulesetLabel(ruleset: string): string {
+  const labels: Record<string, string> = {
+    standard: "D&D 5e 2014",
+    padrao: "Tormenta20 padrão",
+    advanced: "OSE Advanced Fantasy",
+    classic: "OSE Classic Fantasy",
+    remaster: "Pathfinder 2e Remaster",
+    legacy: "Pathfinder 2e Legacy",
+    v35: "D&D 3.5",
+    "v35-cov": "D&D 3.5 · Champions of Valor",
+    "v35-defensores": "D&D 3.5 · Defensores da Fé",
+    "v35-frostburn": "D&D 3.5 · Frostburn",
+  };
+  return labels[ruleset] || ruleset;
+}
 
 function localizeSourceBook(book: string, locale: "pt-BR" | "en" | "es"): string {
   const translations: Array<[RegExp, string, string, string]> = [
@@ -173,6 +194,7 @@ function CatalogPage() {
   const [rulesetFilter, setRulesetFilter] = useState<string>("all");
   const [rarityFilter, setRarityFilter] = useState<string>("all");
   const [bookFilter, setBookFilter] = useState<string>("all");
+  const [catalogPage, setCatalogPage] = useState(1);
   const [inspectedEntry, setInspectedEntry] = useState<(PickerItem & { category: PickerType; categoryLabel: string }) | null>(null);
   const inspectedCloseRef = useRef<HTMLButtonElement>(null);
   const [syncStatus] = useState<CatalogSyncStatus>(getCatalogSyncStatus());
@@ -185,21 +207,17 @@ function CatalogPage() {
     let isMounted = true;
     setIsCatalogLoading(true);
     setCatalogLoadFailed(false);
+    setCatalogItemsByCategory({});
     const loadCategory = async (type: PickerType) => {
       try {
         const result = await fetchCatalogCategory(type, {
           systemId: systemFilter === "all" ? "all" : systemFilter,
           ruleset: rulesetFilter === "all" ? undefined : rulesetFilter as any,
         });
-        if (isMounted) {
-          if (result.items.length > 0) {
-            setCatalogItemsByCategory((prev) => ({ ...prev, [type]: result.items }));
-          }
-        }
-        return result;
+        return { type, result };
       } catch (err) {
         console.warn(`[Catalog] Não foi possível carregar ${type}:`, err);
-        return null;
+        return { type, result: null };
       }
     };
 
@@ -213,7 +231,13 @@ function CatalogPage() {
           if (!isMounted) break;
           const batch = allTypes.slice(i, i + BATCH_SIZE);
           const results = await Promise.all(batch.map((type) => loadCategory(type)));
-          degraded = degraded || results.some((result) => !result);
+          const nextItems = Object.fromEntries(results
+            .filter((entry): entry is { type: PickerType; result: { items: PickerItem[]; source: CatalogSource } } => Boolean(entry.result?.items.length))
+            .map(({ type, result }) => [type, result.items]));
+          if (isMounted && Object.keys(nextItems).length > 0) {
+            setCatalogItemsByCategory((previous) => ({ ...previous, ...nextItems }));
+          }
+          degraded = degraded || results.some(({ result }) => !result);
         }
         if (isMounted) {
           setCatalogLoadFailed(degraded);
@@ -221,8 +245,9 @@ function CatalogPage() {
         }
       })();
     } else {
-      void loadCategory(category).then((result) => {
+      void loadCategory(category).then(({ type, result }) => {
         if (!isMounted) return;
+        if (result?.items.length) setCatalogItemsByCategory({ [type]: result.items });
         setCatalogLoadFailed(!result);
         setIsCatalogLoading(false);
       });
@@ -271,6 +296,15 @@ function CatalogPage() {
       return nameA.localeCompare(nameB, locale, { sensitivity: "base", numeric: true });
     });
   }, [bookFilter, category, entries, locale, query, rarityFilter, rulesetFilter, systemFilter]);
+
+  useEffect(() => {
+    setCatalogPage(1);
+  }, [bookFilter, category, query, rarityFilter, rulesetFilter, systemFilter]);
+
+  const paginatedEntries = useMemo(
+    () => paginateCatalogItems(filtered, catalogPage, CATALOG_PAGE_SIZE),
+    [catalogPage, filtered],
+  );
 
   const hasHiddenCatalogMatches = useMemo(() => {
     const normalizedQuery = query.trim().toLocaleLowerCase(locale);
@@ -393,9 +427,9 @@ function CatalogPage() {
         </button>
       </div>
       <div className="catalog-filters-collapsible">
-        <label><span>Sistema</span><select value={systemFilter} onChange={(event) => setSystemFilter(event.target.value)}><option value="all">Todos os sistemas</option><option value="pf2e">Pathfinder 2e</option><option value="t20">Tormenta 20</option><option value="dnd5e">D&amp;D 5e (2014)</option><option value="ose">Old-School Essentials</option></select></label>
+        <label><span>Sistema</span><select value={systemFilter} onChange={(event) => setSystemFilter(event.target.value)}><option value="all">Todos os sistemas</option>{DEFAULT_RPG_SYSTEMS.filter((system) => system.active).map((system) => <option key={system.id} value={system.id}>{system.name[locale] || system.name["pt-BR"] || system.id}</option>)}</select></label>
         <label><span>{t("filterCategory")}</span><select value={category} onChange={(event) => setCategory(event.target.value as PickerType | "all")}><option value="all">{t("allCategories")}</option>{catalogCategories.map((item) => <option key={item.type} value={item.type}>{t(item.label)}</option>)}</select></label>
-        <label><span>{t("filterRuleset")}</span><select value={rulesetFilter} onChange={(event) => setRulesetFilter(event.target.value)}><option value="all">{t("allRulesets")}</option><option value="standard">D&amp;D 5e 2014</option><option value="padrao">Tormenta 20 padrão</option><option value="advanced">OSE Advanced Fantasy</option><option value="classic">OSE Classic Fantasy</option><option value="remaster">{t("rulesetRemaster")}</option><option value="legacy">{t("rulesetLegacy")}</option><option value="needs_review">{t("rulesetReview")}</option></select></label>
+        <label><span>{t("filterRuleset")}</span><select value={rulesetFilter} onChange={(event) => setRulesetFilter(event.target.value)}><option value="all">{t("allRulesets")}</option>{CATALOG_RULESETS.map((ruleset) => <option key={ruleset} value={ruleset}>{catalogRulesetLabel(ruleset)}</option>)}</select></label>
         <label><span>{t("filterRarity")}</span><select value={rarityFilter} onChange={(event) => setRarityFilter(event.target.value)}><option value="all">{t("allRarities")}</option><option value="common">{t("rarityCommon")}</option><option value="uncommon">{t("rarityUncommon")}</option><option value="rare">{t("rarityRare")}</option></select></label>
         {availableBooks.length > 0 && <label><span>{t("filterBook")}</span><select value={bookFilter} onChange={(event) => setBookFilter(event.target.value)}><option value="all">{t("allBooks")}</option>{availableBooks.map((b) => <option key={b} value={b}>{localizeSourceBook(b, locale)}</option>)}</select></label>}
       </div>
@@ -406,17 +440,21 @@ function CatalogPage() {
             {locale === "en" ? "💾 Git catalog" : locale === "es" ? "💾 Catálogo Git" : "💾 Catálogo versionado"}
           </span>
         </div>
-        <strong className="catalog-count" aria-live="polite">{filtered.length} {t("results")}</strong>
+        <strong className="catalog-count" aria-live="polite">{paginatedEntries.total} {t("results")}</strong>
       </div>
     </section>
     {isCatalogLoading && entries.length === 0 ? <div className="portal-empty" role="status" aria-live="polite" aria-busy="true">{t("loadingCatalog")}</div>
       : catalogLoadFailed && entries.length === 0 ? <div className="portal-empty" role="alert"><p>{t("catalogLoadFailed")}</p></div>
-      : filtered.length === 0 ? <div className="portal-empty">{hasHiddenCatalogMatches && <p className="portal-warning" role="status">{t("catalogHiddenByFilters")}</p>}<p>{t("noCatalogResults")}</p></div> : <section className="catalog-grid" aria-label={t("compendiumTitle")}>
-      {filtered.map((entry) => {
+      : filtered.length === 0 ? <div className="portal-empty">{hasHiddenCatalogMatches && <p className="portal-warning" role="status">{t("catalogHiddenByFilters")}</p>}<p>{t("noCatalogResults")}</p></div> : <><section className="catalog-grid" aria-label={t("compendiumTitle")}>
+      {paginatedEntries.items.map((entry) => {
         const catalogEntryKey = entry.id ?? entry.data?.id ?? `${entry.category}:${entry.name}`;
         return <CatalogCard key={`${entry.category}-${catalogEntryKey}`} entry={entry} onInspect={(trigger) => openInspectedEntry(entry, trigger)} />;
       })}
-    </section>}
+    </section>{paginatedEntries.pageCount > 1 && <nav className="catalog-pagination" aria-label={locale === "en" ? "Catalog pages" : locale === "es" ? "Páginas del catálogo" : "Páginas do catálogo"}>
+      <button type="button" onClick={() => setCatalogPage((page) => Math.max(1, page - 1))} disabled={paginatedEntries.page === 1}>{locale === "en" ? "Previous" : locale === "es" ? "Anterior" : "Anterior"}</button>
+      <span aria-live="polite">{locale === "en" ? "Page" : locale === "es" ? "Página" : "Página"} {paginatedEntries.page} / {paginatedEntries.pageCount}</span>
+      <button type="button" onClick={() => setCatalogPage((page) => Math.min(paginatedEntries.pageCount, page + 1))} disabled={paginatedEntries.page === paginatedEntries.pageCount}>{locale === "en" ? "Next" : locale === "es" ? "Siguiente" : "Próxima"}</button>
+    </nav>}</>}
 
     {/* MODAL DE INSPEÇÃO DETALHADA */}
     {inspectedEntry && <div className="compendium-modal-overlay" onClick={closeInspectedEntry} role="dialog" aria-modal="true" aria-labelledby="compendium-modal-title">

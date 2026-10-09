@@ -305,6 +305,9 @@ body.portal-page-active .dice-roller-drawer { display: none !important; }
 }
 
 .catalog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: 14px; }
+.catalog-pagination { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 20px 0 4px; color: var(--pb-text-muted); font-size: 13px; }
+.catalog-pagination button { min-width: 96px; }
+.catalog-pagination button:disabled { cursor: not-allowed; opacity: .5; }
 .catalog-card { min-width: 0; display: flex; flex-direction: column; min-height: 180px; padding: 17px; background: linear-gradient(145deg, rgba(24,32,46,.96), rgba(13,18,27,.96)); border: 1px solid var(--pb-border); border-radius: 12px; box-shadow: 0 12px 30px rgba(0,0,0,.14); transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease; text-align: left; }
 .catalog-card.interactive { cursor: pointer; }
 .catalog-card.interactive:hover, .catalog-card.interactive:focus { border-color: rgba(249,115,22,.6); transform: translateY(-3px); box-shadow: 0 16px 36px rgba(0,0,0,.35), 0 0 16px rgba(249,115,22,.12); outline: none; }

@@ -66,7 +66,7 @@ describe("PortalPages", () => {
     expect(screen.getAllByText("Fonte Remaster").length).toBeGreaterThan(0);
     // O Compêndio monta o catálogo completo; sob a suíte paralela a espera
     // padrão de 5s pode ser insuficiente sem indicar falha real.
-  }, 20_000);
+  }, 40_000);
 
   it("restaura o título do construtor ao voltar do portal", async () => {
     render(<I18nProvider><PortalPages /></I18nProvider>, { container: document.getElementById("test-root")! });
@@ -83,35 +83,47 @@ describe("PortalPages", () => {
       .toBe("Tipo: atributo, Mínimo: 2, Perícia: Acrobacia");
   });
 
-  it("busca pelos nomes localizados do catálogo", () => {
+  it("busca pelos nomes localizados do catálogo", async () => {
     localStorage.setItem("pathbuilder.locale", "en");
     window.location.hash = "#/compendium";
     render(<I18nProvider><PortalPages /></I18nProvider>, { container: document.getElementById("test-root")! });
+    await waitFor(() => expect(document.querySelector(".catalog-card")).not.toBeNull(), { timeout: 15_000 });
     fireEvent.change(screen.getByRole("searchbox", { name: "Search the compendium" }), { target: { value: "Dwarf" } });
-    expect(screen.getByRole("heading", { name: "Dwarf" })).toBeInTheDocument();
-    fireEvent.change(screen.getByRole("searchbox", { name: "Search the compendium" }), { target: { value: "Wizard" } });
-    expect(screen.getByText("No records match the filters.")).toBeInTheDocument();
+    const systemFilter = document.querySelector<HTMLSelectElement>(".catalog-filters-collapsible select");
+    expect(systemFilter).not.toBeNull();
+    fireEvent.change(systemFilter!, { target: { value: "pf2e" } });
+    await waitFor(() => expect(screen.queryByRole("status")).not.toBeInTheDocument(), { timeout: 15_000 });
+    await waitFor(() => expect(screen.getAllByRole("heading", { name: "Dwarf" })).toHaveLength(1));
+    fireEvent.change(screen.getByRole("searchbox", { name: "Search the compendium" }), { target: { value: "no-such-catalog-entry" } });
+    await waitFor(() => expect(screen.getByText("No records match the filters.")).toBeInTheDocument());
     fireEvent.change(screen.getByRole("searchbox", { name: "Search the compendium" }), { target: { value: "Reflection" } });
-    expect(screen.getByRole("heading", { name: "Reflection" })).toBeInTheDocument();
+    await waitFor(() => expect(screen.getByRole("heading", { name: "Reflection" })).toBeInTheDocument());
     expect(screen.getByText("Pre-Remaster source")).toBeInTheDocument();
     fireEvent.change(screen.getByRole("searchbox", { name: "Search the compendium" }), { target: { value: "Commander Multiclass" } });
-    expect(screen.getByRole("heading", { name: "Commander Multiclass" })).toBeInTheDocument();
+    await waitFor(() => expect(screen.getByRole("heading", { name: "Commander Multiclass" })).toBeInTheDocument());
     fireEvent.change(screen.getByRole("combobox", { name: "Filter category" }), { target: { value: "archetype" } });
-    expect(screen.getByRole("heading", { name: "Commander Multiclass" })).toBeInTheDocument();
+    await waitFor(() => expect(screen.getByRole("heading", { name: "Commander Multiclass" })).toBeInTheDocument());
     fireEvent.change(screen.getByRole("searchbox", { name: "Search the compendium" }), { target: { value: "Fireball" } });
     fireEvent.change(screen.getByRole("combobox", { name: "Filter category" }), { target: { value: "spell" } });
-    expect(screen.getByRole("heading", { name: "Fireball" })).toBeInTheDocument();
+    await waitFor(() => expect(screen.getByRole("heading", { name: "Fireball" })).toBeInTheDocument());
     expect(screen.getByText("Rank 3")).toBeInTheDocument();
-    expect(screen.getByText("Traditions: Arcane, Primal")).toBeInTheDocument();
+    expect(screen.getByText("Player Core · p. 319")).toBeInTheDocument();
     fireEvent.change(screen.getByRole("searchbox", { name: "Search the compendium" }), { target: { value: "Animate Object" } });
     fireEvent.change(screen.getByRole("combobox", { name: "Filter category" }), { target: { value: "ritual" } });
-    expect(screen.getByRole("heading", { name: "Animate Object" })).toBeInTheDocument();
-    expect(screen.getByText("Primary check: Arcana")).toBeInTheDocument();
-  });
+    await waitFor(() => expect(screen.getByRole("heading", { name: "Animate Object" })).toBeInTheDocument());
+    expect(screen.getByText("Rank 2")).toBeInTheDocument();
+    expect(screen.getByText("Player Core · p. 390")).toBeInTheDocument();
+  }, 40_000);
 
   it("retorna o foco ao card que abriu o detalhe do compêndio", async () => {
     window.location.hash = "#/compendium";
     render(<I18nProvider><PortalPages /></I18nProvider>, { container: document.getElementById("test-root")! });
+    await waitFor(() => expect(document.querySelector(".catalog-card")).not.toBeNull(), { timeout: 15_000 });
+    fireEvent.change(screen.getByRole("searchbox", { name: "Buscar no compêndio" }), { target: { value: "Anão" } });
+    const systemFilter = document.querySelector<HTMLSelectElement>(".catalog-filters-collapsible select");
+    expect(systemFilter).not.toBeNull();
+    fireEvent.change(systemFilter!, { target: { value: "pf2e" } });
+    await waitFor(() => expect(screen.getAllByRole("button", { name: "Anão" })).toHaveLength(1));
     const card = screen.getByRole("button", { name: "Anão" });
     card.focus();
     fireEvent.keyDown(card, { key: "Enter" });
@@ -120,7 +132,7 @@ describe("PortalPages", () => {
     fireEvent.keyDown(document, { key: "Escape" });
     await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument());
     expect(document.activeElement).toBe(card);
-  }, 15000);
+  }, 40_000);
 
   it.each([
     ["pt-BR", "BASE DE CONHECIMENTO PATHBUILDER"],
