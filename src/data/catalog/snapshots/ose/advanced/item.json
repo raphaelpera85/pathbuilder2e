@@ -4,7 +4,7 @@
     "name_pt": "Cota de Malha",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Classe de Armadura (DAC): 5. Bônus à CA Ascendente: +4. Custo: 40 PO. Peso: 400 moedas.",
     "description_en": null,
     "description_es": null,
     "item_category": "worn",
@@ -25,7 +25,11 @@
       "nameEn": "Chainmail",
       "aacBonus": 4,
       "system_id": "ose",
-      "weightCoins": 400
+      "weightCoins": 400,
+      "summaries": {
+        "pt-BR": "Classe de Armadura (DAC): 5. Bônus à CA Ascendente: +4. Custo: 40 PO. Peso: 400 moedas."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T14:42:06.790923+00:00",
     "updated_at": "2026-09-12T14:42:06.790923+00:00",
@@ -36,7 +40,7 @@
     "name_pt": "Armadura de Couro",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Classe de Armadura (DAC): 7. Bônus à CA Ascendente: +2. Custo: 20 PO. Peso: 200 moedas.",
     "description_en": null,
     "description_es": null,
     "item_category": "worn",
@@ -57,7 +61,11 @@
       "nameEn": "Leather Armor",
       "aacBonus": 2,
       "system_id": "ose",
-      "weightCoins": 200
+      "weightCoins": 200,
+      "summaries": {
+        "pt-BR": "Classe de Armadura (DAC): 7. Bônus à CA Ascendente: +2. Custo: 20 PO. Peso: 200 moedas."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T14:42:06.790923+00:00",
     "updated_at": "2026-09-12T14:42:06.790923+00:00",
@@ -68,7 +76,7 @@
     "name_pt": "Escudo",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Classe de Armadura (DAC): 8. Bônus à CA Ascendente: +1. Custo: 10 PO. Peso: 100 moedas.",
     "description_en": null,
     "description_es": null,
     "item_category": "worn",
@@ -90,7 +98,11 @@
       "aacBonus": 1,
       "isShield": true,
       "system_id": "ose",
-      "weightCoins": 100
+      "weightCoins": 100,
+      "summaries": {
+        "pt-BR": "Classe de Armadura (DAC): 8. Bônus à CA Ascendente: +1. Custo: 10 PO. Peso: 100 moedas."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T14:42:06.790923+00:00",
     "updated_at": "2026-09-12T14:42:06.790923+00:00",
@@ -101,7 +113,7 @@
     "name_pt": "Armadura de Placas",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Classe de Armadura (DAC): 3. Bônus à CA Ascendente: +6. Custo: 60 PO. Peso: 500 moedas.",
     "description_en": null,
     "description_es": null,
     "item_category": "worn",
@@ -122,7 +134,11 @@
       "nameEn": "Plate Mail",
       "aacBonus": 6,
       "system_id": "ose",
-      "weightCoins": 500
+      "weightCoins": 500,
+      "summaries": {
+        "pt-BR": "Classe de Armadura (DAC): 3. Bônus à CA Ascendente: +6. Custo: 60 PO. Peso: 500 moedas."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T14:42:06.790923+00:00",
     "updated_at": "2026-09-12T14:42:06.790923+00:00",
@@ -133,7 +149,7 @@
     "name_pt": "Sem Armadura",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Classe de Armadura (DAC): 9. Bônus à CA Ascendente: +0. Custo: 0 PO. Peso: 0 moedas.",
     "description_en": null,
     "description_es": null,
     "item_category": "worn",
@@ -154,7 +170,11 @@
       "nameEn": "Unarmored",
       "aacBonus": 0,
       "system_id": "ose",
-      "weightCoins": 0
+      "weightCoins": 0,
+      "summaries": {
+        "pt-BR": "Classe de Armadura (DAC): 9. Bônus à CA Ascendente: +0. Custo: 0 PO. Peso: 0 moedas."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T14:42:06.790923+00:00",
     "updated_at": "2026-09-12T14:42:06.790923+00:00",
@@ -1126,7 +1146,7 @@
     "name_pt": "Adaga",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Dano: 1d4. Alcance curto/médio/longo: 3/ 6/ 9 m. Qualidades: Corpo a corpo, Míssil. Custo: 3 PO. Peso: 10 moedas.",
     "description_en": null,
     "description_es": null,
     "item_category": "weapon",
@@ -1160,7 +1180,11 @@
         3,
         6,
         9
-      ]
+      ],
+      "summaries": {
+        "pt-BR": "Dano: 1d4. Alcance curto/médio/longo: 3/ 6/ 9 m. Qualidades: Corpo a corpo, Míssil. Custo: 3 PO. Peso: 10 moedas."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T14:42:06.790923+00:00",
     "updated_at": "2026-09-12T14:42:06.790923+00:00",
@@ -1171,7 +1195,7 @@
     "name_pt": "Arco Curto",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Dano: 1d6. Alcance curto/médio/longo: 15/ 30/ 45 m. Qualidades: Míssil, Duas mãos. Custo: 25 PO. Peso: 30 moedas.",
     "description_en": null,
     "description_es": null,
     "item_category": "weapon",
@@ -1205,7 +1229,11 @@
         15,
         30,
         45
-      ]
+      ],
+      "summaries": {
+        "pt-BR": "Dano: 1d6. Alcance curto/médio/longo: 15/ 30/ 45 m. Qualidades: Míssil, Duas mãos. Custo: 25 PO. Peso: 30 moedas."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T14:42:06.790923+00:00",
     "updated_at": "2026-09-12T14:42:06.790923+00:00",
@@ -1216,7 +1244,7 @@
     "name_pt": "Arco Longo",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Dano: 1d6. Alcance curto/médio/longo: 21/ 42/ 64 m. Qualidades: Míssil, Duas mãos. Custo: 40 PO. Peso: 30 moedas.",
     "description_en": null,
     "description_es": null,
     "item_category": "weapon",
@@ -1250,7 +1278,11 @@
         21,
         42,
         64
-      ]
+      ],
+      "summaries": {
+        "pt-BR": "Dano: 1d6. Alcance curto/médio/longo: 21/ 42/ 64 m. Qualidades: Míssil, Duas mãos. Custo: 40 PO. Peso: 30 moedas."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T14:42:06.790923+00:00",
     "updated_at": "2026-09-12T14:42:06.790923+00:00",
@@ -1261,7 +1293,7 @@
     "name_pt": "Besta",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Dano: 1d6. Alcance curto/médio/longo: 24/ 48/ 73 m. Qualidades: Míssil, Recarregar, Lento, Duas mãos. Custo: 30 PO. Peso: 50 moedas.",
     "description_en": null,
     "description_es": null,
     "item_category": "weapon",
@@ -1297,7 +1329,11 @@
         24,
         48,
         73
-      ]
+      ],
+      "summaries": {
+        "pt-BR": "Dano: 1d6. Alcance curto/médio/longo: 24/ 48/ 73 m. Qualidades: Míssil, Recarregar, Lento, Duas mãos. Custo: 30 PO. Peso: 50 moedas."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T14:42:06.790923+00:00",
     "updated_at": "2026-09-12T14:42:06.790923+00:00",
@@ -1308,7 +1344,7 @@
     "name_pt": "Cajado",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Dano: 1d4. Qualidades: Sem corte, Corpo a corpo, Lento, Duas mãos. Custo: 2 PO. Peso: 40 moedas.",
     "description_en": null,
     "description_es": null,
     "item_category": "weapon",
@@ -1339,7 +1375,11 @@
       ],
       "system_id": "ose",
       "isTwoHanded": true,
-      "weightCoins": 40
+      "weightCoins": 40,
+      "summaries": {
+        "pt-BR": "Dano: 1d4. Qualidades: Sem corte, Corpo a corpo, Lento, Duas mãos. Custo: 2 PO. Peso: 40 moedas."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T14:42:06.790923+00:00",
     "updated_at": "2026-09-12T14:42:06.790923+00:00",
@@ -1350,7 +1390,7 @@
     "name_pt": "Clava",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Dano: 1d4. Qualidades: Sem corte, Corpo a corpo. Custo: 3 PO. Peso: 50 moedas.",
     "description_en": null,
     "description_es": null,
     "item_category": "weapon",
@@ -1379,7 +1419,11 @@
       ],
       "system_id": "ose",
       "isTwoHanded": false,
-      "weightCoins": 50
+      "weightCoins": 50,
+      "summaries": {
+        "pt-BR": "Dano: 1d4. Qualidades: Sem corte, Corpo a corpo. Custo: 3 PO. Peso: 50 moedas."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T14:42:06.790923+00:00",
     "updated_at": "2026-09-12T14:42:06.790923+00:00",
@@ -1390,7 +1434,7 @@
     "name_pt": "Dardo",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Dano: 1d4. Alcance curto/médio/longo: 4/ 9/ 13 m. Qualidades: Míssil. Custo: 1 PO. Peso: 20 moedas.",
     "description_en": null,
     "description_es": null,
     "item_category": "weapon",
@@ -1423,7 +1467,11 @@
         4,
         9,
         13
-      ]
+      ],
+      "summaries": {
+        "pt-BR": "Dano: 1d4. Alcance curto/médio/longo: 4/ 9/ 13 m. Qualidades: Míssil. Custo: 1 PO. Peso: 20 moedas."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T14:42:06.790923+00:00",
     "updated_at": "2026-09-12T14:42:06.790923+00:00",
@@ -1434,7 +1482,7 @@
     "name_pt": "Espada Longa",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Dano: 1d8. Qualidades: Corpo a corpo. Custo: 10 PO. Peso: 60 moedas.",
     "description_en": null,
     "description_es": null,
     "item_category": "weapon",
@@ -1462,7 +1510,11 @@
       ],
       "system_id": "ose",
       "isTwoHanded": false,
-      "weightCoins": 60
+      "weightCoins": 60,
+      "summaries": {
+        "pt-BR": "Dano: 1d8. Qualidades: Corpo a corpo. Custo: 10 PO. Peso: 60 moedas."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T14:42:06.790923+00:00",
     "updated_at": "2026-09-12T14:42:06.790923+00:00",
@@ -1473,7 +1525,7 @@
     "name_pt": "Espada Curta",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Dano: 1d6. Qualidades: Corpo a corpo. Custo: 7 PO. Peso: 30 moedas.",
     "description_en": null,
     "description_es": null,
     "item_category": "weapon",
@@ -1501,7 +1553,11 @@
       ],
       "system_id": "ose",
       "isTwoHanded": false,
-      "weightCoins": 30
+      "weightCoins": 30,
+      "summaries": {
+        "pt-BR": "Dano: 1d6. Qualidades: Corpo a corpo. Custo: 7 PO. Peso: 30 moedas."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T14:42:06.790923+00:00",
     "updated_at": "2026-09-12T14:42:06.790923+00:00",
@@ -1512,7 +1568,7 @@
     "name_pt": "Espada de Duas Mãos",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Dano: 1d10. Qualidades: Corpo a corpo, Lento, Duas mãos. Custo: 15 PO. Peso: 150 moedas.",
     "description_en": null,
     "description_es": null,
     "item_category": "weapon",
@@ -1542,7 +1598,11 @@
       ],
       "system_id": "ose",
       "isTwoHanded": true,
-      "weightCoins": 150
+      "weightCoins": 150,
+      "summaries": {
+        "pt-BR": "Dano: 1d10. Qualidades: Corpo a corpo, Lento, Duas mãos. Custo: 15 PO. Peso: 150 moedas."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T14:42:06.790923+00:00",
     "updated_at": "2026-09-12T14:42:06.790923+00:00",
@@ -1553,7 +1613,7 @@
     "name_pt": "Funda / Estilingue",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Dano: 1d4. Alcance curto/médio/longo: 12/ 24/ 36 m. Qualidades: Sem corte, Míssil. Custo: 2 PO. Peso: 20 moedas.",
     "description_en": null,
     "description_es": null,
     "item_category": "weapon",
@@ -1587,7 +1647,11 @@
         12,
         24,
         36
-      ]
+      ],
+      "summaries": {
+        "pt-BR": "Dano: 1d4. Alcance curto/médio/longo: 12/ 24/ 36 m. Qualidades: Sem corte, Míssil. Custo: 2 PO. Peso: 20 moedas."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T14:42:06.790923+00:00",
     "updated_at": "2026-09-12T14:42:06.790923+00:00",
@@ -1598,7 +1662,7 @@
     "name_pt": "Lança",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Dano: 1d6. Alcance curto/médio/longo: 6/ 12/ 18 m. Qualidades: Corpo a corpo, Míssil, Apoiar. Custo: 4 PO. Peso: 30 moedas.",
     "description_en": null,
     "description_es": null,
     "item_category": "weapon",
@@ -1633,7 +1697,11 @@
         6,
         12,
         18
-      ]
+      ],
+      "summaries": {
+        "pt-BR": "Dano: 1d6. Alcance curto/médio/longo: 6/ 12/ 18 m. Qualidades: Corpo a corpo, Míssil, Apoiar. Custo: 4 PO. Peso: 30 moedas."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T14:42:06.790923+00:00",
     "updated_at": "2026-09-12T14:42:06.790923+00:00",
@@ -1644,7 +1712,7 @@
     "name_pt": "Lança de Cavalaria",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Dano: 1d10. Qualidades: Carga, Montada. Custo: 5 PO. Peso: 120 moedas.",
     "description_en": null,
     "description_es": null,
     "item_category": "weapon",
@@ -1673,7 +1741,11 @@
       ],
       "system_id": "ose",
       "isTwoHanded": false,
-      "weightCoins": 120
+      "weightCoins": 120,
+      "summaries": {
+        "pt-BR": "Dano: 1d10. Qualidades: Carga, Montada. Custo: 5 PO. Peso: 120 moedas."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T14:42:06.790923+00:00",
     "updated_at": "2026-09-12T14:42:06.790923+00:00",
@@ -1684,7 +1756,7 @@
     "name_pt": "Maça",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Dano: 1d6. Qualidades: Sem corte, Corpo a corpo. Custo: 5 PO. Peso: 30 moedas.",
     "description_en": null,
     "description_es": null,
     "item_category": "weapon",
@@ -1713,7 +1785,11 @@
       ],
       "system_id": "ose",
       "isTwoHanded": false,
-      "weightCoins": 30
+      "weightCoins": 30,
+      "summaries": {
+        "pt-BR": "Dano: 1d6. Qualidades: Sem corte, Corpo a corpo. Custo: 5 PO. Peso: 30 moedas."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T14:42:06.790923+00:00",
     "updated_at": "2026-09-12T14:42:06.790923+00:00",
@@ -1724,7 +1800,7 @@
     "name_pt": "Machado de Mão",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Dano: 1d6. Alcance curto/médio/longo: 3/ 6/ 9 m. Qualidades: Corpo a corpo, Míssil. Custo: 4 PO. Peso: 30 moedas.",
     "description_en": null,
     "description_es": null,
     "item_category": "weapon",
@@ -1758,7 +1834,11 @@
         3,
         6,
         9
-      ]
+      ],
+      "summaries": {
+        "pt-BR": "Dano: 1d6. Alcance curto/médio/longo: 3/ 6/ 9 m. Qualidades: Corpo a corpo, Míssil. Custo: 4 PO. Peso: 30 moedas."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T14:42:06.790923+00:00",
     "updated_at": "2026-09-12T14:42:06.790923+00:00",
@@ -1769,7 +1849,7 @@
     "name_pt": "Machado de Batalha",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Dano: 1d8. Qualidades: Corpo a corpo, Lento, Duas mãos. Custo: 7 PO. Peso: 50 moedas.",
     "description_en": null,
     "description_es": null,
     "item_category": "weapon",
@@ -1799,7 +1879,11 @@
       ],
       "system_id": "ose",
       "isTwoHanded": true,
-      "weightCoins": 50
+      "weightCoins": 50,
+      "summaries": {
+        "pt-BR": "Dano: 1d8. Qualidades: Corpo a corpo, Lento, Duas mãos. Custo: 7 PO. Peso: 50 moedas."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T14:42:06.790923+00:00",
     "updated_at": "2026-09-12T14:42:06.790923+00:00",
@@ -1810,7 +1894,7 @@
     "name_pt": "Martelo de Guerra",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Dano: 1d6. Qualidades: Sem corte, Corpo a corpo. Custo: 5 PO. Peso: 30 moedas.",
     "description_en": null,
     "description_es": null,
     "item_category": "weapon",
@@ -1839,7 +1923,11 @@
       ],
       "system_id": "ose",
       "isTwoHanded": false,
-      "weightCoins": 30
+      "weightCoins": 30,
+      "summaries": {
+        "pt-BR": "Dano: 1d6. Qualidades: Sem corte, Corpo a corpo. Custo: 5 PO. Peso: 30 moedas."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-09-12T14:42:06.790923+00:00",
     "updated_at": "2026-09-12T14:42:06.790923+00:00",

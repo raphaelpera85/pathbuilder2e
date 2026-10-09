@@ -5,7 +5,7 @@
     "name_pt": "Abrir Fechaduras",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Destreza. Pode ser usada sem treinamento: não. Penalidade de armadura: não se aplica.",
     "description_en": null,
     "description_es": null,
     "key_ability": "des",
@@ -20,7 +20,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": false,
-      "armorCheckPenalty": false
+      "armorCheckPenalty": false,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Destreza. Pode ser usada sem treinamento: não. Penalidade de armadura: não se aplica."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -31,7 +35,7 @@
     "name_pt": "Acrobacia",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Destreza. Pode ser usada sem treinamento: sim. Penalidade de armadura: aplica-se.",
     "description_en": null,
     "description_es": null,
     "key_ability": "des",
@@ -46,7 +50,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": true,
-      "armorCheckPenalty": true
+      "armorCheckPenalty": true,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Destreza. Pode ser usada sem treinamento: sim. Penalidade de armadura: aplica-se."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -57,7 +65,7 @@
     "name_pt": "Adestrar Animais",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Carisma. Pode ser usada sem treinamento: não. Penalidade de armadura: não se aplica.",
     "description_en": null,
     "description_es": null,
     "key_ability": "car",
@@ -72,7 +80,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": false,
-      "armorCheckPenalty": false
+      "armorCheckPenalty": false,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Carisma. Pode ser usada sem treinamento: não. Penalidade de armadura: não se aplica."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -83,7 +95,7 @@
     "name_pt": "Arte da Fuga",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Destreza. Pode ser usada sem treinamento: sim. Penalidade de armadura: aplica-se.",
     "description_en": null,
     "description_es": null,
     "key_ability": "des",
@@ -98,7 +110,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": true,
-      "armorCheckPenalty": true
+      "armorCheckPenalty": true,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Destreza. Pode ser usada sem treinamento: sim. Penalidade de armadura: aplica-se."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -109,7 +125,7 @@
     "name_pt": "Atuação",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Carisma. Pode ser usada sem treinamento: sim. Penalidade de armadura: não se aplica.",
     "description_en": null,
     "description_es": null,
     "key_ability": "car",
@@ -124,7 +140,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": true,
-      "armorCheckPenalty": false
+      "armorCheckPenalty": false,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Carisma. Pode ser usada sem treinamento: sim. Penalidade de armadura: não se aplica."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -135,7 +155,7 @@
     "name_pt": "Avaliação",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Inteligência. Pode ser usada sem treinamento: sim. Penalidade de armadura: não se aplica.",
     "description_en": null,
     "description_es": null,
     "key_ability": "int",
@@ -150,7 +170,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": true,
-      "armorCheckPenalty": false
+      "armorCheckPenalty": false,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Inteligência. Pode ser usada sem treinamento: sim. Penalidade de armadura: não se aplica."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -161,7 +185,7 @@
     "name_pt": "Blefar",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Carisma. Pode ser usada sem treinamento: sim. Penalidade de armadura: não se aplica.",
     "description_en": null,
     "description_es": null,
     "key_ability": "car",
@@ -176,7 +200,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": true,
-      "armorCheckPenalty": false
+      "armorCheckPenalty": false,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Carisma. Pode ser usada sem treinamento: sim. Penalidade de armadura: não se aplica."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -187,7 +215,7 @@
     "name_pt": "Cavalgar",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Destreza. Pode ser usada sem treinamento: sim. Penalidade de armadura: não se aplica.",
     "description_en": null,
     "description_es": null,
     "key_ability": "des",
@@ -202,7 +230,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": true,
-      "armorCheckPenalty": false
+      "armorCheckPenalty": false,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Destreza. Pode ser usada sem treinamento: sim. Penalidade de armadura: não se aplica."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -213,7 +245,7 @@
     "name_pt": "Concentração",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Constituição. Pode ser usada sem treinamento: sim. Penalidade de armadura: não se aplica.",
     "description_en": null,
     "description_es": null,
     "key_ability": "con",
@@ -228,7 +260,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": true,
-      "armorCheckPenalty": false
+      "armorCheckPenalty": false,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Constituição. Pode ser usada sem treinamento: sim. Penalidade de armadura: não se aplica."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -239,7 +275,7 @@
     "name_pt": "Conhecimento (arcano)",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Inteligência. Pode ser usada sem treinamento: não. Penalidade de armadura: não se aplica.",
     "description_en": null,
     "description_es": null,
     "key_ability": "int",
@@ -254,7 +290,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": false,
-      "armorCheckPenalty": false
+      "armorCheckPenalty": false,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Inteligência. Pode ser usada sem treinamento: não. Penalidade de armadura: não se aplica."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -265,7 +305,7 @@
     "name_pt": "Conhecimento (arquitetura e engenharia)",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Inteligência. Pode ser usada sem treinamento: não. Penalidade de armadura: não se aplica.",
     "description_en": null,
     "description_es": null,
     "key_ability": "int",
@@ -280,7 +320,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": false,
-      "armorCheckPenalty": false
+      "armorCheckPenalty": false,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Inteligência. Pode ser usada sem treinamento: não. Penalidade de armadura: não se aplica."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -291,7 +335,7 @@
     "name_pt": "Conhecimento (geografia)",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Inteligência. Pode ser usada sem treinamento: não. Penalidade de armadura: não se aplica.",
     "description_en": null,
     "description_es": null,
     "key_ability": "int",
@@ -306,7 +350,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": false,
-      "armorCheckPenalty": false
+      "armorCheckPenalty": false,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Inteligência. Pode ser usada sem treinamento: não. Penalidade de armadura: não se aplica."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -317,7 +365,7 @@
     "name_pt": "Conhecimento (história)",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Inteligência. Pode ser usada sem treinamento: não. Penalidade de armadura: não se aplica.",
     "description_en": null,
     "description_es": null,
     "key_ability": "int",
@@ -332,7 +380,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": false,
-      "armorCheckPenalty": false
+      "armorCheckPenalty": false,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Inteligência. Pode ser usada sem treinamento: não. Penalidade de armadura: não se aplica."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -343,7 +395,7 @@
     "name_pt": "Conhecimento (local)",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Inteligência. Pode ser usada sem treinamento: não. Penalidade de armadura: não se aplica.",
     "description_en": null,
     "description_es": null,
     "key_ability": "int",
@@ -358,7 +410,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": false,
-      "armorCheckPenalty": false
+      "armorCheckPenalty": false,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Inteligência. Pode ser usada sem treinamento: não. Penalidade de armadura: não se aplica."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -369,7 +425,7 @@
     "name_pt": "Conhecimento (masmorras)",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Inteligência. Pode ser usada sem treinamento: não. Penalidade de armadura: não se aplica.",
     "description_en": null,
     "description_es": null,
     "key_ability": "int",
@@ -384,7 +440,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": false,
-      "armorCheckPenalty": false
+      "armorCheckPenalty": false,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Inteligência. Pode ser usada sem treinamento: não. Penalidade de armadura: não se aplica."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -395,7 +455,7 @@
     "name_pt": "Conhecimento (natureza)",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Inteligência. Pode ser usada sem treinamento: não. Penalidade de armadura: não se aplica.",
     "description_en": null,
     "description_es": null,
     "key_ability": "int",
@@ -410,7 +470,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": false,
-      "armorCheckPenalty": false
+      "armorCheckPenalty": false,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Inteligência. Pode ser usada sem treinamento: não. Penalidade de armadura: não se aplica."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -421,7 +485,7 @@
     "name_pt": "Conhecimento (nobreza e realeza)",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Inteligência. Pode ser usada sem treinamento: não. Penalidade de armadura: não se aplica.",
     "description_en": null,
     "description_es": null,
     "key_ability": "int",
@@ -436,7 +500,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": false,
-      "armorCheckPenalty": false
+      "armorCheckPenalty": false,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Inteligência. Pode ser usada sem treinamento: não. Penalidade de armadura: não se aplica."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -447,7 +515,7 @@
     "name_pt": "Conhecimento (planos)",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Inteligência. Pode ser usada sem treinamento: não. Penalidade de armadura: não se aplica.",
     "description_en": null,
     "description_es": null,
     "key_ability": "int",
@@ -462,7 +530,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": false,
-      "armorCheckPenalty": false
+      "armorCheckPenalty": false,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Inteligência. Pode ser usada sem treinamento: não. Penalidade de armadura: não se aplica."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -473,7 +545,7 @@
     "name_pt": "Conhecimento (religião)",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Inteligência. Pode ser usada sem treinamento: não. Penalidade de armadura: não se aplica.",
     "description_en": null,
     "description_es": null,
     "key_ability": "int",
@@ -488,7 +560,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": false,
-      "armorCheckPenalty": false
+      "armorCheckPenalty": false,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Inteligência. Pode ser usada sem treinamento: não. Penalidade de armadura: não se aplica."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -499,7 +575,7 @@
     "name_pt": "Cura",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Sabedoria. Pode ser usada sem treinamento: sim. Penalidade de armadura: não se aplica.",
     "description_en": null,
     "description_es": null,
     "key_ability": "sab",
@@ -514,7 +590,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": true,
-      "armorCheckPenalty": false
+      "armorCheckPenalty": false,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Sabedoria. Pode ser usada sem treinamento: sim. Penalidade de armadura: não se aplica."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -525,7 +605,7 @@
     "name_pt": "Decifrar Escrita",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Inteligência. Pode ser usada sem treinamento: não. Penalidade de armadura: não se aplica.",
     "description_en": null,
     "description_es": null,
     "key_ability": "int",
@@ -540,7 +620,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": false,
-      "armorCheckPenalty": false
+      "armorCheckPenalty": false,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Inteligência. Pode ser usada sem treinamento: não. Penalidade de armadura: não se aplica."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -551,7 +635,7 @@
     "name_pt": "Diplomacia",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Carisma. Pode ser usada sem treinamento: sim. Penalidade de armadura: não se aplica.",
     "description_en": null,
     "description_es": null,
     "key_ability": "car",
@@ -566,7 +650,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": true,
-      "armorCheckPenalty": false
+      "armorCheckPenalty": false,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Carisma. Pode ser usada sem treinamento: sim. Penalidade de armadura: não se aplica."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -577,7 +665,7 @@
     "name_pt": "Disfarces",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Carisma. Pode ser usada sem treinamento: sim. Penalidade de armadura: não se aplica.",
     "description_en": null,
     "description_es": null,
     "key_ability": "car",
@@ -592,7 +680,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": true,
-      "armorCheckPenalty": false
+      "armorCheckPenalty": false,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Carisma. Pode ser usada sem treinamento: sim. Penalidade de armadura: não se aplica."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -603,7 +695,7 @@
     "name_pt": "Equilíbrio",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Destreza. Pode ser usada sem treinamento: sim. Penalidade de armadura: aplica-se.",
     "description_en": null,
     "description_es": null,
     "key_ability": "des",
@@ -618,7 +710,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": true,
-      "armorCheckPenalty": true
+      "armorCheckPenalty": true,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Destreza. Pode ser usada sem treinamento: sim. Penalidade de armadura: aplica-se."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -629,7 +725,7 @@
     "name_pt": "Escalar",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Força. Pode ser usada sem treinamento: sim. Penalidade de armadura: aplica-se.",
     "description_en": null,
     "description_es": null,
     "key_ability": "for",
@@ -644,7 +740,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": true,
-      "armorCheckPenalty": true
+      "armorCheckPenalty": true,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Força. Pode ser usada sem treinamento: sim. Penalidade de armadura: aplica-se."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -655,7 +755,7 @@
     "name_pt": "Esconder-se",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Destreza. Pode ser usada sem treinamento: sim. Penalidade de armadura: aplica-se.",
     "description_en": null,
     "description_es": null,
     "key_ability": "des",
@@ -670,7 +770,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": true,
-      "armorCheckPenalty": true
+      "armorCheckPenalty": true,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Destreza. Pode ser usada sem treinamento: sim. Penalidade de armadura: aplica-se."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -681,7 +785,7 @@
     "name_pt": "Falar Idioma",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: nenhuma. Pode ser usada sem treinamento: não. Penalidade de armadura: não se aplica.",
     "description_en": null,
     "description_es": null,
     "key_ability": "nenhuma",
@@ -696,7 +800,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": false,
-      "armorCheckPenalty": false
+      "armorCheckPenalty": false,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: nenhuma. Pode ser usada sem treinamento: não. Penalidade de armadura: não se aplica."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -707,7 +815,7 @@
     "name_pt": "Falsificação",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Inteligência. Pode ser usada sem treinamento: sim. Penalidade de armadura: não se aplica.",
     "description_en": null,
     "description_es": null,
     "key_ability": "int",
@@ -722,7 +830,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": true,
-      "armorCheckPenalty": false
+      "armorCheckPenalty": false,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Inteligência. Pode ser usada sem treinamento: sim. Penalidade de armadura: não se aplica."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -733,7 +845,7 @@
     "name_pt": "Furtividade",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Destreza. Pode ser usada sem treinamento: sim. Penalidade de armadura: aplica-se.",
     "description_en": null,
     "description_es": null,
     "key_ability": "des",
@@ -748,7 +860,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": true,
-      "armorCheckPenalty": true
+      "armorCheckPenalty": true,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Destreza. Pode ser usada sem treinamento: sim. Penalidade de armadura: aplica-se."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -759,7 +875,7 @@
     "name_pt": "Identificar Magia",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Inteligência. Pode ser usada sem treinamento: não. Penalidade de armadura: não se aplica.",
     "description_en": null,
     "description_es": null,
     "key_ability": "int",
@@ -774,7 +890,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": false,
-      "armorCheckPenalty": false
+      "armorCheckPenalty": false,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Inteligência. Pode ser usada sem treinamento: não. Penalidade de armadura: não se aplica."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -785,7 +905,7 @@
     "name_pt": "Intimidação",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Carisma. Pode ser usada sem treinamento: sim. Penalidade de armadura: não se aplica.",
     "description_en": null,
     "description_es": null,
     "key_ability": "car",
@@ -800,7 +920,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": true,
-      "armorCheckPenalty": false
+      "armorCheckPenalty": false,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Carisma. Pode ser usada sem treinamento: sim. Penalidade de armadura: não se aplica."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -811,7 +935,7 @@
     "name_pt": "Natação",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Força. Pode ser usada sem treinamento: sim. Penalidade de armadura: aplica-se. Aplica penalidade de armadura em dobro.",
     "description_en": null,
     "description_es": null,
     "key_ability": "for",
@@ -827,7 +951,11 @@
       "sourcePage": 63,
       "usableUntrained": true,
       "armorCheckPenalty": true,
-      "doubleArmorCheckPenalty": true
+      "doubleArmorCheckPenalty": true,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Força. Pode ser usada sem treinamento: sim. Penalidade de armadura: aplica-se. Aplica penalidade de armadura em dobro."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -838,7 +966,7 @@
     "name_pt": "Observar",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Sabedoria. Pode ser usada sem treinamento: sim. Penalidade de armadura: não se aplica.",
     "description_en": null,
     "description_es": null,
     "key_ability": "sab",
@@ -853,7 +981,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": true,
-      "armorCheckPenalty": false
+      "armorCheckPenalty": false,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Sabedoria. Pode ser usada sem treinamento: sim. Penalidade de armadura: não se aplica."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -864,7 +996,7 @@
     "name_pt": "Obter Informação",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Carisma. Pode ser usada sem treinamento: sim. Penalidade de armadura: não se aplica.",
     "description_en": null,
     "description_es": null,
     "key_ability": "car",
@@ -879,7 +1011,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": true,
-      "armorCheckPenalty": false
+      "armorCheckPenalty": false,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Carisma. Pode ser usada sem treinamento: sim. Penalidade de armadura: não se aplica."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -890,7 +1026,7 @@
     "name_pt": "Ofícios",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Inteligência. Pode ser usada sem treinamento: sim. Penalidade de armadura: não se aplica.",
     "description_en": null,
     "description_es": null,
     "key_ability": "int",
@@ -905,7 +1041,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": true,
-      "armorCheckPenalty": false
+      "armorCheckPenalty": false,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Inteligência. Pode ser usada sem treinamento: sim. Penalidade de armadura: não se aplica."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -916,7 +1056,7 @@
     "name_pt": "Operar Mecanismo",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Inteligência. Pode ser usada sem treinamento: não. Penalidade de armadura: não se aplica.",
     "description_en": null,
     "description_es": null,
     "key_ability": "int",
@@ -931,7 +1071,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": false,
-      "armorCheckPenalty": false
+      "armorCheckPenalty": false,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Inteligência. Pode ser usada sem treinamento: não. Penalidade de armadura: não se aplica."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -942,7 +1086,7 @@
     "name_pt": "Ouvir",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Sabedoria. Pode ser usada sem treinamento: sim. Penalidade de armadura: não se aplica.",
     "description_en": null,
     "description_es": null,
     "key_ability": "sab",
@@ -957,7 +1101,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": true,
-      "armorCheckPenalty": false
+      "armorCheckPenalty": false,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Sabedoria. Pode ser usada sem treinamento: sim. Penalidade de armadura: não se aplica."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -968,7 +1116,7 @@
     "name_pt": "Prestidigitação",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Destreza. Pode ser usada sem treinamento: não. Penalidade de armadura: aplica-se.",
     "description_en": null,
     "description_es": null,
     "key_ability": "des",
@@ -983,7 +1131,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": false,
-      "armorCheckPenalty": true
+      "armorCheckPenalty": true,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Destreza. Pode ser usada sem treinamento: não. Penalidade de armadura: aplica-se."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -994,7 +1146,7 @@
     "name_pt": "Procurar",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Inteligência. Pode ser usada sem treinamento: sim. Penalidade de armadura: não se aplica.",
     "description_en": null,
     "description_es": null,
     "key_ability": "int",
@@ -1009,7 +1161,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": true,
-      "armorCheckPenalty": false
+      "armorCheckPenalty": false,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Inteligência. Pode ser usada sem treinamento: sim. Penalidade de armadura: não se aplica."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -1020,7 +1176,7 @@
     "name_pt": "Profissão",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Sabedoria. Pode ser usada sem treinamento: sim. Penalidade de armadura: não se aplica.",
     "description_en": null,
     "description_es": null,
     "key_ability": "sab",
@@ -1035,7 +1191,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": true,
-      "armorCheckPenalty": false
+      "armorCheckPenalty": false,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Sabedoria. Pode ser usada sem treinamento: sim. Penalidade de armadura: não se aplica."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -1046,7 +1206,7 @@
     "name_pt": "Saltar",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Força. Pode ser usada sem treinamento: sim. Penalidade de armadura: aplica-se.",
     "description_en": null,
     "description_es": null,
     "key_ability": "for",
@@ -1061,7 +1221,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": true,
-      "armorCheckPenalty": true
+      "armorCheckPenalty": true,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Força. Pode ser usada sem treinamento: sim. Penalidade de armadura: aplica-se."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -1072,7 +1236,7 @@
     "name_pt": "Sentir Motivação",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Sabedoria. Pode ser usada sem treinamento: sim. Penalidade de armadura: não se aplica.",
     "description_en": null,
     "description_es": null,
     "key_ability": "sab",
@@ -1087,7 +1251,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": true,
-      "armorCheckPenalty": false
+      "armorCheckPenalty": false,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Sabedoria. Pode ser usada sem treinamento: sim. Penalidade de armadura: não se aplica."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -1098,7 +1266,7 @@
     "name_pt": "Sobrevivência",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Sabedoria. Pode ser usada sem treinamento: sim. Penalidade de armadura: não se aplica.",
     "description_en": null,
     "description_es": null,
     "key_ability": "sab",
@@ -1113,7 +1281,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": true,
-      "armorCheckPenalty": false
+      "armorCheckPenalty": false,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Sabedoria. Pode ser usada sem treinamento: sim. Penalidade de armadura: não se aplica."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -1124,7 +1296,7 @@
     "name_pt": "Usar Cordas",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Destreza. Pode ser usada sem treinamento: sim. Penalidade de armadura: não se aplica.",
     "description_en": null,
     "description_es": null,
     "key_ability": "des",
@@ -1139,7 +1311,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": true,
-      "armorCheckPenalty": false
+      "armorCheckPenalty": false,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Destreza. Pode ser usada sem treinamento: sim. Penalidade de armadura: não se aplica."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"
@@ -1150,7 +1326,7 @@
     "name_pt": "Usar Instrumento Mágico",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Habilidade-chave: Carisma. Pode ser usada sem treinamento: não. Penalidade de armadura: não se aplica.",
     "description_en": null,
     "description_es": null,
     "key_ability": "car",
@@ -1165,7 +1341,11 @@
       "sourceBook": "D&D 3.5 — Livro do Jogador",
       "sourcePage": 63,
       "usableUntrained": false,
-      "armorCheckPenalty": false
+      "armorCheckPenalty": false,
+      "summaries": {
+        "pt-BR": "Habilidade-chave: Carisma. Pode ser usada sem treinamento: não. Penalidade de armadura: não se aplica."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00"

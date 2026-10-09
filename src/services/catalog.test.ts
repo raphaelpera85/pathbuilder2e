@@ -18,6 +18,9 @@ import { T20_CLASS_RULES } from "../data/t20/t20Classes";
 import { DND5E_RACE_RULES } from "../data/dnd5e/dnd5eRaces";
 import { DND5E_CLASS_RULES } from "../data/dnd5e/dnd5eClasses";
 import { DND5E_BACKGROUNDS } from "../data/dnd5e/dnd5eBackgrounds";
+import { DND35_WEAPONS, DND35_ARMORS } from "../data/dnd35/dnd35Equipment";
+import { DND35_GEAR } from "../data/dnd35/dnd35Gear";
+import { DND35_SKILLS } from "../data/dnd35/dnd35Skills";
 
 describe("serviço de catálogo local", () => {
   beforeEach(() => {
@@ -75,6 +78,51 @@ describe("serviço de catálogo local", () => {
       const data = byId.get(`t20.${classRule.id}`)?.data;
       expect(data, classRule.name).toMatchObject({ startingHp: classRule.startingHp, hpPerLevel: classRule.hpPerLevel, manaPerLevel: classRule.manaPerLevel, fixedSkills: classRule.fixedSkills, choiceSkillCount: classRule.choiceSkillCount, choiceSkills: classRule.choiceSkills, proficiencies: classRule.proficiencies, startingEquipment: classRule.startingEquipment });
       expect(data?.summaries?.["pt-BR"]).toBeTruthy();
+    }
+  });
+
+  it("deriva resumos dos itens OSE sem descrição a partir de estatísticas do item", async () => {
+    for (const ruleset of ["advanced", "classic"] as const) {
+      const { items } = await fetchCatalogCategory("item", { systemId: "ose", ruleset });
+      const enriched = items.filter((item) => item.data.summaryOrigin === "structured_rules");
+      expect(enriched, ruleset).toHaveLength(22);
+      for (const item of enriched) {
+        const summary = String(item.data.summaries?.["pt-BR"] ?? "");
+        expect(summary, item.name).toMatch(/(?:DAC|CA Ascendente|Dano):/);
+        if (item.data.damage) expect(summary, item.name).toContain(`Dano: ${item.data.damage}.`);
+        if (Number.isFinite(item.data.dac)) expect(summary, item.name).toContain(`DAC): ${item.data.dac}.`);
+      }
+    }
+  });
+
+  it("mantém os 304 resumos mecânicos D&D 3.5 sincronizados com as fontes locais", async () => {
+    const categories = ["weapon", "armor", "item", "skill"] as const;
+    const loaded = await Promise.all(categories.map((category) => fetchCatalogCategory(category, { systemId: "dnd35", ruleset: "v35" })));
+    const maps = Object.fromEntries(categories.map((category, index) => [category, new Map(loaded[index].items.map((item) => [item.id.split(".").at(-1) ?? item.id, item]))])) as Record<typeof categories[number], Map<string, (typeof loaded)[number]["items"][number]>>;
+
+    for (const source of Object.values(DND35_WEAPONS)) {
+      const item = maps.weapon.get(source.id);
+      expect(item?.data, source.name).toMatchObject({ category: source.category, handedness: source.handedness, costGp: source.costGp, damageSmall: source.damageSmall, damageMedium: source.damageMedium, critical: source.critical, rangeIncrementM: source.rangeIncrementM, weightKg: source.weightKg, damageType: source.damageType });
+      expect(item?.data.summaryOrigin, source.name).toBe("structured_rules");
+      expect(item?.data.summaries?.["pt-BR"], source.name).toBeTruthy();
+    }
+    for (const source of Object.values(DND35_ARMORS)) {
+      const item = maps.armor.get(source.id);
+      expect(item?.data, source.name).toMatchObject({ category: source.category, costGp: source.costGp, armorBonus: source.armorBonus, maxDexBonus: source.maxDexBonus, armorCheckPenalty: source.armorCheckPenalty, arcaneSpellFailure: source.arcaneSpellFailure, speedReduction30m: source.speedReduction30m, speedReduction20m: source.speedReduction20m, weightKg: source.weightKg });
+      expect(item?.data.summaryOrigin, source.name).toBe("structured_rules");
+      expect(item?.data.summaries?.["pt-BR"], source.name).toBeTruthy();
+    }
+    for (const source of Object.values(DND35_GEAR)) {
+      const item = maps.item.get(source.id);
+      expect(item?.data, source.name).toMatchObject({ section: source.section, cost: source.cost, weightKg: source.weightKg, sourcePage: source.sourcePage });
+      expect(item?.data.summaryOrigin, source.name).toBe("structured_rules");
+      expect(item?.data.summaries?.["pt-BR"], source.name).toBeTruthy();
+    }
+    for (const source of Object.values(DND35_SKILLS)) {
+      const item = maps.skill.get(source.id);
+      expect(item?.data, source.name).toMatchObject({ keyAbility: source.keyAbility, usableUntrained: source.usableUntrained, armorCheckPenalty: source.armorCheckPenalty, sourcePage: source.sourcePage });
+      expect(item?.data.summaryOrigin, source.name).toBe("structured_rules");
+      expect(item?.data.summaries?.["pt-BR"], source.name).toBeTruthy();
     }
   });
 

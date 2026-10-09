@@ -18,7 +18,7 @@ Uma entrada só é considerada concluída quando possui, no sistema correto:
 
 Referência histórica: a reconciliação de 23/09/2026 (`npm run audit:catalog:supabase`) não encontrou registros locais ausentes, divergências de campos ou falhas acionáveis nas 19 tabelas. Desde 09/10/2026, os 6.353 registros dos 5 sistemas e 10 rulesets estão versionados em `src/data/catalog/snapshots`; o Compêndio os lê dos arquivos locais e não consulta tabelas de catálogo no Supabase.
 
-Auditoria local dos snapshots: `npm run audit:catalog:snapshots` valida manifesto, arquivos e isolamento. Após sincronizar regras estruturadas locais de D&D 5e e T20 (09/10/2026), restam 348 registros sem resumo em português: D&D 3.5 `v35` 304 e OSE Advanced/Classic 22 em cada. Há também 20 registros sem página de fonte (ações D&D 5e 8, OSE Advanced 4, OSE Classic 4 e T20 4) e lacunas de nomes EN/ES; os resultados são separados por sistema/ruleset para orientar a curadoria sem misturar edições. Priorizar resumos comprováveis por fontes estruturadas já versionadas; não completar conteúdo de livros sem fonte disponível.
+Auditoria local dos snapshots: `npm run audit:catalog:snapshots` valida manifesto, arquivos e isolamento. Após sincronizar descrições estruturadas locais de D&D 3.5, D&D 5e/T20 e itens OSE (09/10/2026), os 6.353 registros não têm lacunas de resumo PT-BR. Persistem 20 registros sem página de fonte verificável (ações D&D 5e 8, OSE Advanced 4, OSE Classic 4 e T20 4) e lacunas de nomes EN/ES; os resultados são separados por sistema/ruleset para orientar a curadoria sem misturar edições. Não completar conteúdo de livros sem fonte disponível.
 
 Não marcar uma categoria como completa apenas porque seus nomes aparecem no catálogo.
 
@@ -173,6 +173,8 @@ continuam classificados como outro ruleset ou suplemento, sem remoção automát
 - [x] Atributos, compra por pontos, rolagem, array padrão, raça, sub-raça, classe, subclasse, antecedente, alinhamento, perícias e equipamento.
 - [x] 9 raças, 12 classes, 13 antecedentes e subclasses catalogadas do núcleo atual.
 - [x] Sincronizar no snapshot de D&D 5e ajustes e traços raciais, escolhas de classe, proficiências, características e equipamento dos antecedentes a partir dos módulos locais; a suíte compara todas as 34 entradas com suas fontes tipadas.
+- [x] Gerar resumos a partir de DAC/CA Ascendente, dano, alcance, qualidades, custo e peso dos 22 itens OSE sem resumo em cada ruleset; teste mantém Advanced e Classic isolados e verifica os campos exibidos.
+- [x] Completar os resumos mecânicos das 71 armas, 18 armaduras, 170 itens gerais e 45 perícias D&D 3.5 a partir de `DND35_WEAPONS`, `DND35_ARMORS`, `DND35_GEAR` e `DND35_SKILLS`; regressão compara os campos dos 304 registros e verifica o resumo PT-BR.
 - [x] Limites de magias conhecidas/preparadas, espaços, foco, proficiências e pré-requisitos principais.
 - [x] Vantagem/desvantagem com anulação quando as duas condições coexistem.
 - [x] Escolhas de talentos, estilo de luta, metamagia, pacto, domínios e círculos da Terra estruturadas.

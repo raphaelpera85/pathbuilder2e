@@ -5,7 +5,7 @@
     "name_pt": "Acolchoada",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Categoria: leve. Bônus de armadura: +1. Bônus máximo de Destreza: 8. Penalidade de armadura: 0. Falha de magia arcana: 5%. Redução de deslocamento (base 9 m/6 m): 9 m/6 m. Custo: 5 PO. Peso: 5 kg.",
     "description_en": null,
     "description_es": null,
     "armor_category": "leve",
@@ -35,7 +35,11 @@
       "armorCheckPenalty": 0,
       "speedReduction20m": 6,
       "speedReduction30m": 9,
-      "arcaneSpellFailure": 5
+      "arcaneSpellFailure": 5,
+      "summaries": {
+        "pt-BR": "Categoria: leve. Bônus de armadura: +1. Bônus máximo de Destreza: 8. Penalidade de armadura: 0. Falha de magia arcana: 5%. Redução de deslocamento (base 9 m/6 m): 9 m/6 m. Custo: 5 PO. Peso: 5 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -47,7 +51,7 @@
     "name_pt": "Armadura de Batalha",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Categoria: pesada. Bônus de armadura: +8. Bônus máximo de Destreza: 1. Penalidade de armadura: -6. Falha de magia arcana: 35%. Redução de deslocamento (base 9 m/6 m): 6 m/4.5 m. Custo: 1500 PO. Peso: 25 kg.",
     "description_en": null,
     "description_es": null,
     "armor_category": "pesada",
@@ -77,7 +81,11 @@
       "armorCheckPenalty": -6,
       "speedReduction20m": 4.5,
       "speedReduction30m": 6,
-      "arcaneSpellFailure": 35
+      "arcaneSpellFailure": 35,
+      "summaries": {
+        "pt-BR": "Categoria: pesada. Bônus de armadura: +8. Bônus máximo de Destreza: 1. Penalidade de armadura: -6. Falha de magia arcana: 35%. Redução de deslocamento (base 9 m/6 m): 6 m/4.5 m. Custo: 1500 PO. Peso: 25 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -89,7 +97,7 @@
     "name_pt": "Broquel",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Categoria: escudo. Bônus de armadura: +1. Bônus máximo de Destreza: sem limite. Penalidade de armadura: -1. Falha de magia arcana: 5%. Redução de deslocamento (base 9 m/6 m): —/—. Custo: 15 PO. Peso: 2.5 kg.",
     "description_en": null,
     "description_es": null,
     "armor_category": "escudo",
@@ -119,7 +127,11 @@
       "armorCheckPenalty": -1,
       "speedReduction20m": null,
       "speedReduction30m": null,
-      "arcaneSpellFailure": 5
+      "arcaneSpellFailure": 5,
+      "summaries": {
+        "pt-BR": "Categoria: escudo. Bônus de armadura: +1. Bônus máximo de Destreza: sem limite. Penalidade de armadura: -1. Falha de magia arcana: 5%. Redução de deslocamento (base 9 m/6 m): —/—. Custo: 15 PO. Peso: 2.5 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -131,7 +143,7 @@
     "name_pt": "Brunea",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Categoria: media. Bônus de armadura: +5. Bônus máximo de Destreza: -4. Penalidade de armadura: -4. Falha de magia arcana: 25%. Redução de deslocamento (base 9 m/6 m): 6 m/4.5 m. Custo: 50 PO. Peso: 15 kg.",
     "description_en": null,
     "description_es": null,
     "armor_category": "media",
@@ -161,7 +173,11 @@
       "armorCheckPenalty": -4,
       "speedReduction20m": 4.5,
       "speedReduction30m": 6,
-      "arcaneSpellFailure": 25
+      "arcaneSpellFailure": 25,
+      "summaries": {
+        "pt-BR": "Categoria: media. Bônus de armadura: +5. Bônus máximo de Destreza: -4. Penalidade de armadura: -4. Falha de magia arcana: 25%. Redução de deslocamento (base 9 m/6 m): 6 m/4.5 m. Custo: 50 PO. Peso: 15 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -173,7 +189,7 @@
     "name_pt": "Camisão de Cota de Malha",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Categoria: leve. Bônus de armadura: +4. Bônus máximo de Destreza: 4. Penalidade de armadura: -2. Falha de magia arcana: 20%. Redução de deslocamento (base 9 m/6 m): 9 m/6 m. Custo: 100 PO. Peso: 12.5 kg.",
     "description_en": null,
     "description_es": null,
     "armor_category": "leve",
@@ -203,7 +219,11 @@
       "armorCheckPenalty": -2,
       "speedReduction20m": 6,
       "speedReduction30m": 9,
-      "arcaneSpellFailure": 20
+      "arcaneSpellFailure": 20,
+      "summaries": {
+        "pt-BR": "Categoria: leve. Bônus de armadura: +4. Bônus máximo de Destreza: 4. Penalidade de armadura: -2. Falha de magia arcana: 20%. Redução de deslocamento (base 9 m/6 m): 9 m/6 m. Custo: 100 PO. Peso: 12.5 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -215,7 +235,7 @@
     "name_pt": "Cota de Malha",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Categoria: media. Bônus de armadura: +5. Bônus máximo de Destreza: -2. Penalidade de armadura: -5. Falha de magia arcana: 30%. Redução de deslocamento (base 9 m/6 m): 6 m/4.5 m. Custo: 150 PO. Peso: 20 kg.",
     "description_en": null,
     "description_es": null,
     "armor_category": "media",
@@ -245,7 +265,11 @@
       "armorCheckPenalty": -5,
       "speedReduction20m": 4.5,
       "speedReduction30m": 6,
-      "arcaneSpellFailure": 30
+      "arcaneSpellFailure": 30,
+      "summaries": {
+        "pt-BR": "Categoria: media. Bônus de armadura: +5. Bônus máximo de Destreza: -2. Penalidade de armadura: -5. Falha de magia arcana: 30%. Redução de deslocamento (base 9 m/6 m): 6 m/4.5 m. Custo: 150 PO. Peso: 20 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -257,7 +281,7 @@
     "name_pt": "Cota de Talas",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Categoria: pesada. Bônus de armadura: +6. Bônus máximo de Destreza: 0. Penalidade de armadura: -7. Falha de magia arcana: 40%. Redução de deslocamento (base 9 m/6 m): 6 m/4.5 m. Custo: 20 PO. Peso: 22.5 kg.",
     "description_en": null,
     "description_es": null,
     "armor_category": "pesada",
@@ -287,7 +311,11 @@
       "armorCheckPenalty": -7,
       "speedReduction20m": 4.5,
       "speedReduction30m": 6,
-      "arcaneSpellFailure": 40
+      "arcaneSpellFailure": 40,
+      "summaries": {
+        "pt-BR": "Categoria: pesada. Bônus de armadura: +6. Bônus máximo de Destreza: 0. Penalidade de armadura: -7. Falha de magia arcana: 40%. Redução de deslocamento (base 9 m/6 m): 6 m/4.5 m. Custo: 20 PO. Peso: 22.5 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -299,7 +327,7 @@
     "name_pt": "Couro",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Categoria: leve. Bônus de armadura: +2. Bônus máximo de Destreza: 6. Penalidade de armadura: 0. Falha de magia arcana: 10%. Redução de deslocamento (base 9 m/6 m): 9 m/6 m. Custo: 10 PO. Peso: 7.5 kg.",
     "description_en": null,
     "description_es": null,
     "armor_category": "leve",
@@ -329,7 +357,11 @@
       "armorCheckPenalty": 0,
       "speedReduction20m": 6,
       "speedReduction30m": 9,
-      "arcaneSpellFailure": 10
+      "arcaneSpellFailure": 10,
+      "summaries": {
+        "pt-BR": "Categoria: leve. Bônus de armadura: +2. Bônus máximo de Destreza: 6. Penalidade de armadura: 0. Falha de magia arcana: 10%. Redução de deslocamento (base 9 m/6 m): 9 m/6 m. Custo: 10 PO. Peso: 7.5 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -341,7 +373,7 @@
     "name_pt": "Couro batido",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Categoria: leve. Bônus de armadura: +3. Bônus máximo de Destreza: -1. Penalidade de armadura: -1. Falha de magia arcana: 15%. Redução de deslocamento (base 9 m/6 m): 9 m/6 m. Custo: 25 PO. Peso: 10 kg.",
     "description_en": null,
     "description_es": null,
     "armor_category": "leve",
@@ -371,7 +403,11 @@
       "armorCheckPenalty": -1,
       "speedReduction20m": 6,
       "speedReduction30m": 9,
-      "arcaneSpellFailure": 15
+      "arcaneSpellFailure": 15,
+      "summaries": {
+        "pt-BR": "Categoria: leve. Bônus de armadura: +3. Bônus máximo de Destreza: -1. Penalidade de armadura: -1. Falha de magia arcana: 15%. Redução de deslocamento (base 9 m/6 m): 9 m/6 m. Custo: 25 PO. Peso: 10 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -383,7 +419,7 @@
     "name_pt": "Escudo de Corpo",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Categoria: escudo. Bônus de armadura: +4. Bônus máximo de Destreza: 2. Penalidade de armadura: -10. Falha de magia arcana: 50%. Redução de deslocamento (base 9 m/6 m): —/—. Custo: 30 PO. Peso: 22.5 kg.",
     "description_en": null,
     "description_es": null,
     "armor_category": "escudo",
@@ -413,7 +449,11 @@
       "armorCheckPenalty": -10,
       "speedReduction20m": null,
       "speedReduction30m": null,
-      "arcaneSpellFailure": 50
+      "arcaneSpellFailure": 50,
+      "summaries": {
+        "pt-BR": "Categoria: escudo. Bônus de armadura: +4. Bônus máximo de Destreza: 2. Penalidade de armadura: -10. Falha de magia arcana: 50%. Redução de deslocamento (base 9 m/6 m): —/—. Custo: 30 PO. Peso: 22.5 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -425,7 +465,7 @@
     "name_pt": "Escudo Grande de Madeira",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Categoria: escudo. Bônus de armadura: +2. Bônus máximo de Destreza: sem limite. Penalidade de armadura: -2. Falha de magia arcana: 15%. Redução de deslocamento (base 9 m/6 m): —/—. Custo: 7 PO. Peso: 5 kg.",
     "description_en": null,
     "description_es": null,
     "armor_category": "escudo",
@@ -455,7 +495,11 @@
       "armorCheckPenalty": -2,
       "speedReduction20m": null,
       "speedReduction30m": null,
-      "arcaneSpellFailure": 15
+      "arcaneSpellFailure": 15,
+      "summaries": {
+        "pt-BR": "Categoria: escudo. Bônus de armadura: +2. Bônus máximo de Destreza: sem limite. Penalidade de armadura: -2. Falha de magia arcana: 15%. Redução de deslocamento (base 9 m/6 m): —/—. Custo: 7 PO. Peso: 5 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -467,7 +511,7 @@
     "name_pt": "Escudo Grande de Metal",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Categoria: escudo. Bônus de armadura: +2. Bônus máximo de Destreza: sem limite. Penalidade de armadura: -2. Falha de magia arcana: 15%. Redução de deslocamento (base 9 m/6 m): —/—. Custo: 20 PO. Peso: 7.5 kg.",
     "description_en": null,
     "description_es": null,
     "armor_category": "escudo",
@@ -497,7 +541,11 @@
       "armorCheckPenalty": -2,
       "speedReduction20m": null,
       "speedReduction30m": null,
-      "arcaneSpellFailure": 15
+      "arcaneSpellFailure": 15,
+      "summaries": {
+        "pt-BR": "Categoria: escudo. Bônus de armadura: +2. Bônus máximo de Destreza: sem limite. Penalidade de armadura: -2. Falha de magia arcana: 15%. Redução de deslocamento (base 9 m/6 m): —/—. Custo: 20 PO. Peso: 7.5 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -509,7 +557,7 @@
     "name_pt": "Escudo Pequeno de Madeira",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Categoria: escudo. Bônus de armadura: +1. Bônus máximo de Destreza: sem limite. Penalidade de armadura: -1. Falha de magia arcana: 5%. Redução de deslocamento (base 9 m/6 m): —/—. Custo: 3 PO. Peso: 2.5 kg.",
     "description_en": null,
     "description_es": null,
     "armor_category": "escudo",
@@ -539,7 +587,11 @@
       "armorCheckPenalty": -1,
       "speedReduction20m": null,
       "speedReduction30m": null,
-      "arcaneSpellFailure": 5
+      "arcaneSpellFailure": 5,
+      "summaries": {
+        "pt-BR": "Categoria: escudo. Bônus de armadura: +1. Bônus máximo de Destreza: sem limite. Penalidade de armadura: -1. Falha de magia arcana: 5%. Redução de deslocamento (base 9 m/6 m): —/—. Custo: 3 PO. Peso: 2.5 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -551,7 +603,7 @@
     "name_pt": "Escudo Pequeno de Metal",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Categoria: escudo. Bônus de armadura: +1. Bônus máximo de Destreza: sem limite. Penalidade de armadura: -1. Falha de magia arcana: 5%. Redução de deslocamento (base 9 m/6 m): —/—. Custo: 9 PO. Peso: 3 kg.",
     "description_en": null,
     "description_es": null,
     "armor_category": "escudo",
@@ -581,7 +633,11 @@
       "armorCheckPenalty": -1,
       "speedReduction20m": null,
       "speedReduction30m": null,
-      "arcaneSpellFailure": 5
+      "arcaneSpellFailure": 5,
+      "summaries": {
+        "pt-BR": "Categoria: escudo. Bônus de armadura: +1. Bônus máximo de Destreza: sem limite. Penalidade de armadura: -1. Falha de magia arcana: 5%. Redução de deslocamento (base 9 m/6 m): —/—. Custo: 9 PO. Peso: 3 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -593,7 +649,7 @@
     "name_pt": "Gibão de Peles",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Categoria: media. Bônus de armadura: +4. Bônus máximo de Destreza: -3. Penalidade de armadura: -3. Falha de magia arcana: 20%. Redução de deslocamento (base 9 m/6 m): 6 m/4.5 m. Custo: 15 PO. Peso: 12.5 kg.",
     "description_en": null,
     "description_es": null,
     "armor_category": "media",
@@ -623,7 +679,11 @@
       "armorCheckPenalty": -3,
       "speedReduction20m": 4.5,
       "speedReduction30m": 6,
-      "arcaneSpellFailure": 20
+      "arcaneSpellFailure": 20,
+      "summaries": {
+        "pt-BR": "Categoria: media. Bônus de armadura: +4. Bônus máximo de Destreza: -3. Penalidade de armadura: -3. Falha de magia arcana: 20%. Redução de deslocamento (base 9 m/6 m): 6 m/4.5 m. Custo: 15 PO. Peso: 12.5 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -635,7 +695,7 @@
     "name_pt": "Loriga Segmentada",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Categoria: pesada. Bônus de armadura: +6. Bônus máximo de Destreza: 1. Penalidade de armadura: -6. Falha de magia arcana: 35%. Redução de deslocamento (base 9 m/6 m): 6 m/4.5 m. Custo: 250 PO. Peso: 17.5 kg.",
     "description_en": null,
     "description_es": null,
     "armor_category": "pesada",
@@ -665,7 +725,11 @@
       "armorCheckPenalty": -6,
       "speedReduction20m": 4.5,
       "speedReduction30m": 6,
-      "arcaneSpellFailure": 35
+      "arcaneSpellFailure": 35,
+      "summaries": {
+        "pt-BR": "Categoria: pesada. Bônus de armadura: +6. Bônus máximo de Destreza: 1. Penalidade de armadura: -6. Falha de magia arcana: 35%. Redução de deslocamento (base 9 m/6 m): 6 m/4.5 m. Custo: 250 PO. Peso: 17.5 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -677,7 +741,7 @@
     "name_pt": "Meia-armadura",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Categoria: pesada. Bônus de armadura: +7. Bônus máximo de Destreza: 0. Penalidade de armadura: -7. Falha de magia arcana: 40%. Redução de deslocamento (base 9 m/6 m): 6 m/4.5 m. Custo: 600 PO. Peso: 25 kg.",
     "description_en": null,
     "description_es": null,
     "armor_category": "pesada",
@@ -707,7 +771,11 @@
       "armorCheckPenalty": -7,
       "speedReduction20m": 4.5,
       "speedReduction30m": 6,
-      "arcaneSpellFailure": 40
+      "arcaneSpellFailure": 40,
+      "summaries": {
+        "pt-BR": "Categoria: pesada. Bônus de armadura: +7. Bônus máximo de Destreza: 0. Penalidade de armadura: -7. Falha de magia arcana: 40%. Redução de deslocamento (base 9 m/6 m): 6 m/4.5 m. Custo: 600 PO. Peso: 25 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -719,7 +787,7 @@
     "name_pt": "Peitoral de Aço",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Categoria: media. Bônus de armadura: +5. Bônus máximo de Destreza: -3. Penalidade de armadura: -4. Falha de magia arcana: 25%. Redução de deslocamento (base 9 m/6 m): 6 m/4.5 m. Custo: 200 PO. Peso: 15 kg.",
     "description_en": null,
     "description_es": null,
     "armor_category": "media",
@@ -749,7 +817,11 @@
       "armorCheckPenalty": -4,
       "speedReduction20m": 4.5,
       "speedReduction30m": 6,
-      "arcaneSpellFailure": 25
+      "arcaneSpellFailure": 25,
+      "summaries": {
+        "pt-BR": "Categoria: media. Bônus de armadura: +5. Bônus máximo de Destreza: -3. Penalidade de armadura: -4. Falha de magia arcana: 25%. Redução de deslocamento (base 9 m/6 m): 6 m/4.5 m. Custo: 200 PO. Peso: 15 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",

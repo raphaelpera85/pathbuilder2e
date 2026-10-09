@@ -5,7 +5,7 @@
     "name_pt": "Adaga",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma simples; empunhadura: leve. Dano (criatura Pequena/Média): 1d3/1d4. Crítico: 19-20/x2. Tipo: perfurante-ou-cortante. Incremento de distância: 3 m. Custo: 2 PO. Peso: 0.5 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "simples",
@@ -35,7 +35,11 @@
       "sourcePage": 116,
       "damageSmall": "1d3",
       "damageMedium": "1d4",
-      "rangeIncrementM": 3
+      "rangeIncrementM": 3,
+      "summaries": {
+        "pt-BR": "Arma simples; empunhadura: leve. Dano (criatura Pequena/Média): 1d3/1d4. Crítico: 19-20/x2. Tipo: perfurante-ou-cortante. Incremento de distância: 3 m. Custo: 2 PO. Peso: 0.5 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -47,7 +51,7 @@
     "name_pt": "Adaga de Soco",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma simples; empunhadura: leve. Dano (criatura Pequena/Média): 1d3/1d4. Crítico: x3. Tipo: perfurante. Custo: 2 PO. Peso: 0.5 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "simples",
@@ -77,7 +81,11 @@
       "sourcePage": 116,
       "damageSmall": "1d3",
       "damageMedium": "1d4",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma simples; empunhadura: leve. Dano (criatura Pequena/Média): 1d3/1d4. Crítico: x3. Tipo: perfurante. Custo: 2 PO. Peso: 0.5 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -89,7 +97,7 @@
     "name_pt": "Alabarda",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma comum; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d8/1d10. Crítico: x3. Tipo: cortante-ou-perfurante. Custo: 10 PO. Peso: 6 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "comum",
@@ -119,7 +127,11 @@
       "sourcePage": 117,
       "damageSmall": "1d8",
       "damageMedium": "1d10",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma comum; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d8/1d10. Crítico: x3. Tipo: cortante-ou-perfurante. Custo: 10 PO. Peso: 6 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -131,7 +143,7 @@
     "name_pt": "Arco curto",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma comum; empunhadura: distancia. Dano (criatura Pequena/Média): 1d4/1d6. Crítico: x3. Tipo: perfurante. Incremento de distância: 18 m. Custo: 30 PO. Peso: 1 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "comum",
@@ -161,7 +173,11 @@
       "sourcePage": 117,
       "damageSmall": "1d4",
       "damageMedium": "1d6",
-      "rangeIncrementM": 18
+      "rangeIncrementM": 18,
+      "summaries": {
+        "pt-BR": "Arma comum; empunhadura: distancia. Dano (criatura Pequena/Média): 1d4/1d6. Crítico: x3. Tipo: perfurante. Incremento de distância: 18 m. Custo: 30 PO. Peso: 1 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -173,7 +189,7 @@
     "name_pt": "Arco curto composto",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma comum; empunhadura: distancia. Dano (criatura Pequena/Média): 1d4/1d6. Crítico: x3. Tipo: perfurante. Incremento de distância: 21 m. Custo: 75 PO. Peso: 1 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "comum",
@@ -203,7 +219,11 @@
       "sourcePage": 117,
       "damageSmall": "1d4",
       "damageMedium": "1d6",
-      "rangeIncrementM": 21
+      "rangeIncrementM": 21,
+      "summaries": {
+        "pt-BR": "Arma comum; empunhadura: distancia. Dano (criatura Pequena/Média): 1d4/1d6. Crítico: x3. Tipo: perfurante. Incremento de distância: 21 m. Custo: 75 PO. Peso: 1 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -215,7 +235,7 @@
     "name_pt": "Arco longo",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma comum; empunhadura: distancia. Dano (criatura Pequena/Média): 1d6/1d8. Crítico: x3. Tipo: perfurante. Incremento de distância: 30 m. Custo: 75 PO. Peso: 1.5 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "comum",
@@ -245,7 +265,11 @@
       "sourcePage": 117,
       "damageSmall": "1d6",
       "damageMedium": "1d8",
-      "rangeIncrementM": 30
+      "rangeIncrementM": 30,
+      "summaries": {
+        "pt-BR": "Arma comum; empunhadura: distancia. Dano (criatura Pequena/Média): 1d6/1d8. Crítico: x3. Tipo: perfurante. Incremento de distância: 30 m. Custo: 75 PO. Peso: 1.5 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -257,7 +281,7 @@
     "name_pt": "Arco longo composto",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma comum; empunhadura: distancia. Dano (criatura Pequena/Média): 1d6/1d8. Crítico: x3. Tipo: perfurante. Incremento de distância: 33 m. Custo: 100 PO. Peso: 1.5 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "comum",
@@ -287,7 +311,11 @@
       "sourcePage": 117,
       "damageSmall": "1d6",
       "damageMedium": "1d8",
-      "rangeIncrementM": 33
+      "rangeIncrementM": 33,
+      "summaries": {
+        "pt-BR": "Arma comum; empunhadura: distancia. Dano (criatura Pequena/Média): 1d6/1d8. Crítico: x3. Tipo: perfurante. Incremento de distância: 33 m. Custo: 100 PO. Peso: 1.5 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -299,7 +327,7 @@
     "name_pt": "Armaduras com cravos",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma comum; empunhadura: leve. Dano (criatura Pequena/Média): 1d4/1d6. Crítico: x2. Tipo: perfurante. Custo: especial PO. Peso: especial kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "comum",
@@ -329,7 +357,11 @@
       "sourcePage": 117,
       "damageSmall": "1d4",
       "damageMedium": "1d6",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma comum; empunhadura: leve. Dano (criatura Pequena/Média): 1d4/1d6. Crítico: x2. Tipo: perfurante. Custo: especial PO. Peso: especial kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -341,7 +373,7 @@
     "name_pt": "Ataque desarmado",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma simples; empunhadura: uma-mao. Dano (criatura Pequena/Média): 1d2/1d3. Crítico: x2. Tipo: concussao. Custo: 0 PO. Peso: 0 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "simples",
@@ -371,7 +403,11 @@
       "sourcePage": 116,
       "damageSmall": "1d2",
       "damageMedium": "1d3",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma simples; empunhadura: uma-mao. Dano (criatura Pequena/Média): 1d2/1d3. Crítico: x2. Tipo: concussao. Custo: 0 PO. Peso: 0 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -383,7 +419,7 @@
     "name_pt": "Azagaia",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma simples; empunhadura: distancia. Dano (criatura Pequena/Média): 1d4/1d6. Crítico: x2. Tipo: perfurante. Incremento de distância: 9 m. Custo: 1 PO. Peso: 1 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "simples",
@@ -413,7 +449,11 @@
       "sourcePage": 116,
       "damageSmall": "1d4",
       "damageMedium": "1d6",
-      "rangeIncrementM": 9
+      "rangeIncrementM": 9,
+      "summaries": {
+        "pt-BR": "Arma simples; empunhadura: distancia. Dano (criatura Pequena/Média): 1d4/1d6. Crítico: x2. Tipo: perfurante. Incremento de distância: 9 m. Custo: 1 PO. Peso: 1 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -425,7 +465,7 @@
     "name_pt": "Besta de mão",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma exotica; empunhadura: distancia. Dano (criatura Pequena/Média): 1d3/1d4. Crítico: 19-20/x2. Tipo: perfurante. Incremento de distância: 9 m. Custo: 100 PO. Peso: 1 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "exotica",
@@ -455,7 +495,11 @@
       "sourcePage": 117,
       "damageSmall": "1d3",
       "damageMedium": "1d4",
-      "rangeIncrementM": 9
+      "rangeIncrementM": 9,
+      "summaries": {
+        "pt-BR": "Arma exotica; empunhadura: distancia. Dano (criatura Pequena/Média): 1d3/1d4. Crítico: 19-20/x2. Tipo: perfurante. Incremento de distância: 9 m. Custo: 100 PO. Peso: 1 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -467,7 +511,7 @@
     "name_pt": "Besta leve",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma simples; empunhadura: distancia. Dano (criatura Pequena/Média): 1d6/1d8. Crítico: 19-20/x2. Tipo: perfurante. Incremento de distância: 24 m. Custo: 35 PO. Peso: 2 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "simples",
@@ -497,7 +541,11 @@
       "sourcePage": 116,
       "damageSmall": "1d6",
       "damageMedium": "1d8",
-      "rangeIncrementM": 24
+      "rangeIncrementM": 24,
+      "summaries": {
+        "pt-BR": "Arma simples; empunhadura: distancia. Dano (criatura Pequena/Média): 1d6/1d8. Crítico: 19-20/x2. Tipo: perfurante. Incremento de distância: 24 m. Custo: 35 PO. Peso: 2 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -509,7 +557,7 @@
     "name_pt": "Besta leve de repetição",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma exotica; empunhadura: distancia. Dano (criatura Pequena/Média): 1d6/1d8. Crítico: 19-20/x2. Tipo: perfurante. Incremento de distância: 24 m. Custo: 250 PO. Peso: 3 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "exotica",
@@ -539,7 +587,11 @@
       "sourcePage": 117,
       "damageSmall": "1d6",
       "damageMedium": "1d8",
-      "rangeIncrementM": 24
+      "rangeIncrementM": 24,
+      "summaries": {
+        "pt-BR": "Arma exotica; empunhadura: distancia. Dano (criatura Pequena/Média): 1d6/1d8. Crítico: 19-20/x2. Tipo: perfurante. Incremento de distância: 24 m. Custo: 250 PO. Peso: 3 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -551,7 +603,7 @@
     "name_pt": "Besta pesada",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma simples; empunhadura: distancia. Dano (criatura Pequena/Média): 1d8/1d10. Crítico: 19-20/x2. Tipo: perfurante. Incremento de distância: 36 m. Custo: 50 PO. Peso: 4 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "simples",
@@ -581,7 +633,11 @@
       "sourcePage": 116,
       "damageSmall": "1d8",
       "damageMedium": "1d10",
-      "rangeIncrementM": 36
+      "rangeIncrementM": 36,
+      "summaries": {
+        "pt-BR": "Arma simples; empunhadura: distancia. Dano (criatura Pequena/Média): 1d8/1d10. Crítico: 19-20/x2. Tipo: perfurante. Incremento de distância: 36 m. Custo: 50 PO. Peso: 4 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -593,7 +649,7 @@
     "name_pt": "Besta pesada de repetição",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma exotica; empunhadura: distancia. Dano (criatura Pequena/Média): 1d8/1d10. Crítico: 19-20/x2. Tipo: perfurante. Incremento de distância: 36 m. Custo: 400 PO. Peso: 6 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "exotica",
@@ -623,7 +679,11 @@
       "sourcePage": 117,
       "damageSmall": "1d8",
       "damageMedium": "1d10",
-      "rangeIncrementM": 36
+      "rangeIncrementM": 36,
+      "summaries": {
+        "pt-BR": "Arma exotica; empunhadura: distancia. Dano (criatura Pequena/Média): 1d8/1d10. Crítico: 19-20/x2. Tipo: perfurante. Incremento de distância: 36 m. Custo: 400 PO. Peso: 6 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -635,7 +695,7 @@
     "name_pt": "Boleadeira",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma exotica; empunhadura: distancia. Dano (criatura Pequena/Média): 1d3/1d4. Crítico: x2. Tipo: concussao. Incremento de distância: 3 m. Custo: 5 PO. Peso: 3 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "exotica",
@@ -665,7 +725,11 @@
       "sourcePage": 117,
       "damageSmall": "1d3",
       "damageMedium": "1d4",
-      "rangeIncrementM": 3
+      "rangeIncrementM": 3,
+      "summaries": {
+        "pt-BR": "Arma exotica; empunhadura: distancia. Dano (criatura Pequena/Média): 1d3/1d4. Crítico: x2. Tipo: concussao. Incremento de distância: 3 m. Custo: 5 PO. Peso: 3 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -677,7 +741,7 @@
     "name_pt": "Bordão",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma simples; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d4/1d4/1d6/1d6. Crítico: x2. Tipo: concussao. Custo: 0 PO. Peso: 2 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "simples",
@@ -707,7 +771,11 @@
       "sourcePage": 116,
       "damageSmall": "1d4/1d4",
       "damageMedium": "1d6/1d6",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma simples; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d4/1d4/1d6/1d6. Crítico: x2. Tipo: concussao. Custo: 0 PO. Peso: 2 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -719,7 +787,7 @@
     "name_pt": "Chicote",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma exotica; empunhadura: uma-mao. Dano (criatura Pequena/Média): 1d2/1d3. Crítico: x2. Tipo: cortante. Custo: 1 PO. Peso: 1 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "exotica",
@@ -749,7 +817,11 @@
       "sourcePage": 117,
       "damageSmall": "1d2",
       "damageMedium": "1d3",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma exotica; empunhadura: uma-mao. Dano (criatura Pequena/Média): 1d2/1d3. Crítico: x2. Tipo: cortante. Custo: 1 PO. Peso: 1 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -761,7 +833,7 @@
     "name_pt": "Cimitarra",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma comum; empunhadura: uma-mao. Dano (criatura Pequena/Média): 1d4/1d6. Crítico: 18-20/x2. Tipo: cortante. Custo: 15 PO. Peso: 2 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "comum",
@@ -791,7 +863,11 @@
       "sourcePage": 117,
       "damageSmall": "1d4",
       "damageMedium": "1d6",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma comum; empunhadura: uma-mao. Dano (criatura Pequena/Média): 1d4/1d6. Crítico: 18-20/x2. Tipo: cortante. Custo: 15 PO. Peso: 2 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -803,7 +879,7 @@
     "name_pt": "Clava",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma simples; empunhadura: uma-mao. Dano (criatura Pequena/Média): 1d4/1d6. Crítico: x2. Tipo: concussao. Incremento de distância: 3 m. Custo: 0 PO. Peso: 1.5 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "simples",
@@ -833,7 +909,11 @@
       "sourcePage": 116,
       "damageSmall": "1d4",
       "damageMedium": "1d6",
-      "rangeIncrementM": 3
+      "rangeIncrementM": 3,
+      "summaries": {
+        "pt-BR": "Arma simples; empunhadura: uma-mao. Dano (criatura Pequena/Média): 1d4/1d6. Crítico: x2. Tipo: concussao. Incremento de distância: 3 m. Custo: 0 PO. Peso: 1.5 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -845,7 +925,7 @@
     "name_pt": "Clava grande",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma comum; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d8/1d10. Crítico: x2. Tipo: concussao. Custo: 5 PO. Peso: 4 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "comum",
@@ -875,7 +955,11 @@
       "sourcePage": 117,
       "damageSmall": "1d8",
       "damageMedium": "1d10",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma comum; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d8/1d10. Crítico: x2. Tipo: concussao. Custo: 5 PO. Peso: 4 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -887,7 +971,7 @@
     "name_pt": "Corrente com cravos",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma exotica; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d6/2d4. Crítico: x2. Tipo: perfurante. Custo: 25 PO. Peso: 5 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "exotica",
@@ -917,7 +1001,11 @@
       "sourcePage": 117,
       "damageSmall": "1d6",
       "damageMedium": "2d4",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma exotica; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d6/2d4. Crítico: x2. Tipo: perfurante. Custo: 25 PO. Peso: 5 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -929,7 +1017,7 @@
     "name_pt": "Dardo",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma simples; empunhadura: distancia. Dano (criatura Pequena/Média): 1d3/1d4. Crítico: x2. Tipo: perfurante. Incremento de distância: 6 m. Custo: 5 PO. Peso: 0.25 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "simples",
@@ -959,7 +1047,11 @@
       "sourcePage": 116,
       "damageSmall": "1d3",
       "damageMedium": "1d4",
-      "rangeIncrementM": 6
+      "rangeIncrementM": 6,
+      "summaries": {
+        "pt-BR": "Arma simples; empunhadura: distancia. Dano (criatura Pequena/Média): 1d3/1d4. Crítico: x2. Tipo: perfurante. Incremento de distância: 6 m. Custo: 5 PO. Peso: 0.25 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -971,7 +1063,7 @@
     "name_pt": "Escudo pequeno",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma comum; empunhadura: leve. Dano (criatura Pequena/Média): 1d2/1d3. Crítico: x2. Tipo: concussao. Custo: especial PO. Peso: especial kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "comum",
@@ -1001,7 +1093,11 @@
       "sourcePage": 117,
       "damageSmall": "1d2",
       "damageMedium": "1d3",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma comum; empunhadura: leve. Dano (criatura Pequena/Média): 1d2/1d3. Crítico: x2. Tipo: concussao. Custo: especial PO. Peso: especial kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -1013,7 +1109,7 @@
     "name_pt": "Escudo pequeno com cravos",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma comum; empunhadura: leve. Dano (criatura Pequena/Média): 1d3/1d4. Crítico: x2. Tipo: perfurante. Custo: especial PO. Peso: especial kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "comum",
@@ -1043,7 +1139,11 @@
       "sourcePage": 117,
       "damageSmall": "1d3",
       "damageMedium": "1d4",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma comum; empunhadura: leve. Dano (criatura Pequena/Média): 1d3/1d4. Crítico: x2. Tipo: perfurante. Custo: especial PO. Peso: especial kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -1055,7 +1155,7 @@
     "name_pt": "Espada bastarda",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma exotica; empunhadura: uma-mao. Dano (criatura Pequena/Média): 1d8/1d10. Crítico: 19-20/x2. Tipo: cortante. Custo: 35 PO. Peso: 3 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "exotica",
@@ -1085,7 +1185,11 @@
       "sourcePage": 117,
       "damageSmall": "1d8",
       "damageMedium": "1d10",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma exotica; empunhadura: uma-mao. Dano (criatura Pequena/Média): 1d8/1d10. Crítico: 19-20/x2. Tipo: cortante. Custo: 35 PO. Peso: 3 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -1097,7 +1201,7 @@
     "name_pt": "Espada curta",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma comum; empunhadura: leve. Dano (criatura Pequena/Média): 1d4/1d6. Crítico: 19-20/x2. Tipo: perfurante. Custo: 10 PO. Peso: 1 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "comum",
@@ -1127,7 +1231,11 @@
       "sourcePage": 117,
       "damageSmall": "1d4",
       "damageMedium": "1d6",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma comum; empunhadura: leve. Dano (criatura Pequena/Média): 1d4/1d6. Crítico: 19-20/x2. Tipo: perfurante. Custo: 10 PO. Peso: 1 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -1139,7 +1247,7 @@
     "name_pt": "Espada de duas lâminas",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma exotica; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d6/1d6/1d8/1d8. Crítico: 19-20/x2. Tipo: cortante. Custo: 100 PO. Peso: 5 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "exotica",
@@ -1169,7 +1277,11 @@
       "sourcePage": 117,
       "damageSmall": "1d6/1d6",
       "damageMedium": "1d8/1d8",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma exotica; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d6/1d6/1d8/1d8. Crítico: 19-20/x2. Tipo: cortante. Custo: 100 PO. Peso: 5 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -1181,7 +1293,7 @@
     "name_pt": "Espada larga",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma comum; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d10/2d6. Crítico: 19-20/x2. Tipo: cortante. Custo: 50 PO. Peso: 4 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "comum",
@@ -1211,7 +1323,11 @@
       "sourcePage": 117,
       "damageSmall": "1d10",
       "damageMedium": "2d6",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma comum; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d10/2d6. Crítico: 19-20/x2. Tipo: cortante. Custo: 50 PO. Peso: 4 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -1223,7 +1339,7 @@
     "name_pt": "Espada longa",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma comum; empunhadura: uma-mao. Dano (criatura Pequena/Média): 1d6/1d8. Crítico: 19-20/x2. Tipo: cortante. Custo: 15 PO. Peso: 2 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "comum",
@@ -1253,7 +1369,11 @@
       "sourcePage": 117,
       "damageSmall": "1d6",
       "damageMedium": "1d8",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma comum; empunhadura: uma-mao. Dano (criatura Pequena/Média): 1d6/1d8. Crítico: 19-20/x2. Tipo: cortante. Custo: 15 PO. Peso: 2 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -1265,7 +1385,7 @@
     "name_pt": "Falcione",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma comum; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d6/2d4. Crítico: 18-20/x2. Tipo: cortante. Custo: 75 PO. Peso: 4 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "comum",
@@ -1295,7 +1415,11 @@
       "sourcePage": 117,
       "damageSmall": "1d6",
       "damageMedium": "2d4",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma comum; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d6/2d4. Crítico: 18-20/x2. Tipo: cortante. Custo: 75 PO. Peso: 4 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -1307,7 +1431,7 @@
     "name_pt": "Foice Curta",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma simples; empunhadura: leve. Dano (criatura Pequena/Média): 1d4/1d6. Crítico: x2. Tipo: concussao-e-perfurante. Custo: 6 PO. Peso: 1 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "simples",
@@ -1337,7 +1461,11 @@
       "sourcePage": 116,
       "damageSmall": "1d4",
       "damageMedium": "1d6",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma simples; empunhadura: leve. Dano (criatura Pequena/Média): 1d4/1d6. Crítico: x2. Tipo: concussao-e-perfurante. Custo: 6 PO. Peso: 1 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -1349,7 +1477,7 @@
     "name_pt": "Foice longa",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma comum; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d6/2d4. Crítico: x4. Tipo: cortante. Custo: 18 PO. Peso: 5 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "comum",
@@ -1379,7 +1507,11 @@
       "sourcePage": 117,
       "damageSmall": "1d6",
       "damageMedium": "2d4",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma comum; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d6/2d4. Crítico: x4. Tipo: cortante. Custo: 18 PO. Peso: 5 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -1391,7 +1523,7 @@
     "name_pt": "Funda",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma simples; empunhadura: distancia. Dano (criatura Pequena/Média): 1d3/1d4. Crítico: x2. Tipo: concussao. Incremento de distância: 15 m. Custo: 0 PO. Peso: 0 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "simples",
@@ -1421,7 +1553,11 @@
       "sourcePage": 116,
       "damageSmall": "1d3",
       "damageMedium": "1d4",
-      "rangeIncrementM": 15
+      "rangeIncrementM": 15,
+      "summaries": {
+        "pt-BR": "Arma simples; empunhadura: distancia. Dano (criatura Pequena/Média): 1d3/1d4. Crítico: x2. Tipo: concussao. Incremento de distância: 15 m. Custo: 0 PO. Peso: 0 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -1433,7 +1569,7 @@
     "name_pt": "Glaive",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma comum; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d8/1d10. Crítico: x3. Tipo: cortante. Custo: 8 PO. Peso: 5 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "comum",
@@ -1463,7 +1599,11 @@
       "sourcePage": 117,
       "damageSmall": "1d8",
       "damageMedium": "1d10",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma comum; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d8/1d10. Crítico: x3. Tipo: cortante. Custo: 8 PO. Peso: 5 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -1475,7 +1615,7 @@
     "name_pt": "Guisarme",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma comum; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d6/2d4. Crítico: x3. Tipo: cortante. Custo: 9 PO. Peso: 6 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "comum",
@@ -1505,7 +1645,11 @@
       "sourcePage": 117,
       "damageSmall": "1d6",
       "damageMedium": "2d4",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma comum; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d6/2d4. Crítico: x3. Tipo: cortante. Custo: 9 PO. Peso: 6 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -1517,7 +1661,7 @@
     "name_pt": "Kama",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma exotica; empunhadura: leve. Dano (criatura Pequena/Média): 1d4/1d6. Crítico: x2. Tipo: cortante. Custo: 2 PO. Peso: 1 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "exotica",
@@ -1547,7 +1691,11 @@
       "sourcePage": 117,
       "damageSmall": "1d4",
       "damageMedium": "1d6",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma exotica; empunhadura: leve. Dano (criatura Pequena/Média): 1d4/1d6. Crítico: x2. Tipo: cortante. Custo: 2 PO. Peso: 1 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -1559,7 +1707,7 @@
     "name_pt": "Kukri",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma comum; empunhadura: leve. Dano (criatura Pequena/Média): 1d3/1d4. Crítico: 18-20/x2. Tipo: cortante. Custo: 8 PO. Peso: 1 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "comum",
@@ -1589,7 +1737,11 @@
       "sourcePage": 117,
       "damageSmall": "1d3",
       "damageMedium": "1d4",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma comum; empunhadura: leve. Dano (criatura Pequena/Média): 1d3/1d4. Crítico: 18-20/x2. Tipo: cortante. Custo: 8 PO. Peso: 1 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -1601,7 +1753,7 @@
     "name_pt": "Lança",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma simples; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d6/1d8. Crítico: x3. Tipo: perfurante. Incremento de distância: 6 m. Custo: 2 PO. Peso: 3 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "simples",
@@ -1631,7 +1783,11 @@
       "sourcePage": 116,
       "damageSmall": "1d6",
       "damageMedium": "1d8",
-      "rangeIncrementM": 6
+      "rangeIncrementM": 6,
+      "summaries": {
+        "pt-BR": "Arma simples; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d6/1d8. Crítico: x3. Tipo: perfurante. Incremento de distância: 6 m. Custo: 2 PO. Peso: 3 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -1643,7 +1799,7 @@
     "name_pt": "Lança curta",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma simples; empunhadura: uma-mao. Dano (criatura Pequena/Média): 1d4/1d6. Crítico: x2. Tipo: perfurante. Incremento de distância: 6 m. Custo: 1 PO. Peso: 1.5 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "simples",
@@ -1673,7 +1829,11 @@
       "sourcePage": 116,
       "damageSmall": "1d4",
       "damageMedium": "1d6",
-      "rangeIncrementM": 6
+      "rangeIncrementM": 6,
+      "summaries": {
+        "pt-BR": "Arma simples; empunhadura: uma-mao. Dano (criatura Pequena/Média): 1d4/1d6. Crítico: x2. Tipo: perfurante. Incremento de distância: 6 m. Custo: 1 PO. Peso: 1.5 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -1685,7 +1845,7 @@
     "name_pt": "Lança longa",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma simples; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d6/1d8. Crítico: x3. Tipo: perfurante. Custo: 5 PO. Peso: 4.5 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "simples",
@@ -1715,7 +1875,11 @@
       "sourcePage": 116,
       "damageSmall": "1d6",
       "damageMedium": "1d8",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma simples; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d6/1d8. Crítico: x3. Tipo: perfurante. Custo: 5 PO. Peso: 4.5 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -1727,7 +1891,7 @@
     "name_pt": "Lança Montada",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma comum; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d6/1d8. Crítico: x3. Tipo: perfurante. Custo: 10 PO. Peso: 5 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "comum",
@@ -1757,7 +1921,11 @@
       "sourcePage": 117,
       "damageSmall": "1d6",
       "damageMedium": "1d8",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma comum; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d6/1d8. Crítico: x3. Tipo: perfurante. Custo: 10 PO. Peso: 5 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -1769,7 +1937,7 @@
     "name_pt": "Maça-estrela",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma simples; empunhadura: uma-mao. Dano (criatura Pequena/Média): 1d6/1d8. Crítico: x2. Tipo: concussao-e-perfurante. Custo: 8 PO. Peso: 3 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "simples",
@@ -1799,7 +1967,11 @@
       "sourcePage": 116,
       "damageSmall": "1d6",
       "damageMedium": "1d8",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma simples; empunhadura: uma-mao. Dano (criatura Pequena/Média): 1d6/1d8. Crítico: x2. Tipo: concussao-e-perfurante. Custo: 8 PO. Peso: 3 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -1811,7 +1983,7 @@
     "name_pt": "Maça leve",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma simples; empunhadura: leve. Dano (criatura Pequena/Média): 1d4/1d6. Crítico: x2. Tipo: concussao. Custo: 5 PO. Peso: 2 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "simples",
@@ -1841,7 +2013,11 @@
       "sourcePage": 116,
       "damageSmall": "1d4",
       "damageMedium": "1d6",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma simples; empunhadura: leve. Dano (criatura Pequena/Média): 1d4/1d6. Crítico: x2. Tipo: concussao. Custo: 5 PO. Peso: 2 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -1853,7 +2029,7 @@
     "name_pt": "Maça pesada",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma simples; empunhadura: uma-mao. Dano (criatura Pequena/Média): 1d6/1d8. Crítico: x2. Tipo: concussao. Custo: 12 PO. Peso: 4 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "simples",
@@ -1883,7 +2059,11 @@
       "sourcePage": 116,
       "damageSmall": "1d6",
       "damageMedium": "1d8",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma simples; empunhadura: uma-mao. Dano (criatura Pequena/Média): 1d6/1d8. Crítico: x2. Tipo: concussao. Custo: 12 PO. Peso: 4 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -1895,7 +2075,7 @@
     "name_pt": "Machadinha",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma comum; empunhadura: leve. Dano (criatura Pequena/Média): 1d4/1d6. Crítico: x3. Tipo: cortante. Custo: 6 PO. Peso: 1.5 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "comum",
@@ -1925,7 +2105,11 @@
       "sourcePage": 117,
       "damageSmall": "1d4",
       "damageMedium": "1d6",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma comum; empunhadura: leve. Dano (criatura Pequena/Média): 1d4/1d6. Crítico: x3. Tipo: cortante. Custo: 6 PO. Peso: 1.5 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -1937,7 +2121,7 @@
     "name_pt": "Machado de arremesso",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma comum; empunhadura: leve. Dano (criatura Pequena/Média): 1d4/1d6. Crítico: x2. Tipo: cortante. Incremento de distância: 3 m. Custo: 8 PO. Peso: 1 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "comum",
@@ -1967,7 +2151,11 @@
       "sourcePage": 117,
       "damageSmall": "1d4",
       "damageMedium": "1d6",
-      "rangeIncrementM": 3
+      "rangeIncrementM": 3,
+      "summaries": {
+        "pt-BR": "Arma comum; empunhadura: leve. Dano (criatura Pequena/Média): 1d4/1d6. Crítico: x2. Tipo: cortante. Incremento de distância: 3 m. Custo: 8 PO. Peso: 1 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -1979,7 +2167,7 @@
     "name_pt": "Machado de batalha",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma comum; empunhadura: uma-mao. Dano (criatura Pequena/Média): 1d6/1d8. Crítico: x3. Tipo: cortante. Custo: 10 PO. Peso: 3 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "comum",
@@ -2009,7 +2197,11 @@
       "sourcePage": 117,
       "damageSmall": "1d6",
       "damageMedium": "1d8",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma comum; empunhadura: uma-mao. Dano (criatura Pequena/Média): 1d6/1d8. Crítico: x3. Tipo: cortante. Custo: 10 PO. Peso: 3 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -2021,7 +2213,7 @@
     "name_pt": "Machado de guerra anão",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma exotica; empunhadura: uma-mao. Dano (criatura Pequena/Média): 1d8/1d10. Crítico: x3. Tipo: cortante. Custo: 30 PO. Peso: 4 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "exotica",
@@ -2051,7 +2243,11 @@
       "sourcePage": 117,
       "damageSmall": "1d8",
       "damageMedium": "1d10",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma exotica; empunhadura: uma-mao. Dano (criatura Pequena/Média): 1d8/1d10. Crítico: x3. Tipo: cortante. Custo: 30 PO. Peso: 4 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -2063,7 +2259,7 @@
     "name_pt": "Machado grande",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma comum; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d10/1d12. Crítico: x3. Tipo: cortante. Custo: 20 PO. Peso: 6 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "comum",
@@ -2093,7 +2289,11 @@
       "sourcePage": 117,
       "damageSmall": "1d10",
       "damageMedium": "1d12",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma comum; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d10/1d12. Crítico: x3. Tipo: cortante. Custo: 20 PO. Peso: 6 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -2105,7 +2305,7 @@
     "name_pt": "Machado orc duplo",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma exotica; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d6/1d6/1d8/1d8. Crítico: x3. Tipo: cortante. Custo: 60 PO. Peso: 7.5 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "exotica",
@@ -2135,7 +2335,11 @@
       "sourcePage": 117,
       "damageSmall": "1d6/1d6",
       "damageMedium": "1d8/1d8",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma exotica; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d6/1d6/1d8/1d8. Crítico: x3. Tipo: cortante. Custo: 60 PO. Peso: 7.5 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -2147,7 +2351,7 @@
     "name_pt": "Mangual",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma comum; empunhadura: uma-mao. Dano (criatura Pequena/Média): 1d6/1d8. Crítico: x2. Tipo: concussao. Custo: 8 PO. Peso: 2.5 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "comum",
@@ -2177,7 +2381,11 @@
       "sourcePage": 117,
       "damageSmall": "1d6",
       "damageMedium": "1d8",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma comum; empunhadura: uma-mao. Dano (criatura Pequena/Média): 1d6/1d8. Crítico: x2. Tipo: concussao. Custo: 8 PO. Peso: 2.5 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -2189,7 +2397,7 @@
     "name_pt": "Mangual atroz",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma exotica; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d6/1d6/1d8/1d8. Crítico: x2. Tipo: concussao. Custo: 90 PO. Peso: 5 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "exotica",
@@ -2219,7 +2427,11 @@
       "sourcePage": 117,
       "damageSmall": "1d6/1d6",
       "damageMedium": "1d8/1d8",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma exotica; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d6/1d6/1d8/1d8. Crítico: x2. Tipo: concussao. Custo: 90 PO. Peso: 5 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -2231,7 +2443,7 @@
     "name_pt": "Mangual pesado",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma comum; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d8/1d10. Crítico: 19-20/x2. Tipo: concussao. Custo: 15 PO. Peso: 5 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "comum",
@@ -2261,7 +2473,11 @@
       "sourcePage": 117,
       "damageSmall": "1d8",
       "damageMedium": "1d10",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma comum; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d8/1d10. Crítico: 19-20/x2. Tipo: concussao. Custo: 15 PO. Peso: 5 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -2273,7 +2489,7 @@
     "name_pt": "Manopla",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma simples; empunhadura: uma-mao. Dano (criatura Pequena/Média): 1d2/1d3. Crítico: x2. Tipo: concussao. Custo: 2 PO. Peso: 0.5 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "simples",
@@ -2303,7 +2519,11 @@
       "sourcePage": 116,
       "damageSmall": "1d2",
       "damageMedium": "1d3",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma simples; empunhadura: uma-mao. Dano (criatura Pequena/Média): 1d2/1d3. Crítico: x2. Tipo: concussao. Custo: 2 PO. Peso: 0.5 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -2315,7 +2535,7 @@
     "name_pt": "Manopla com cravos",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma simples; empunhadura: uma-mao. Dano (criatura Pequena/Média): 1d3/1d4. Crítico: x2. Tipo: concussao-e-perfurante. Custo: 5 PO. Peso: 0.5 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "simples",
@@ -2345,7 +2565,11 @@
       "sourcePage": 116,
       "damageSmall": "1d3",
       "damageMedium": "1d4",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma simples; empunhadura: uma-mao. Dano (criatura Pequena/Média): 1d3/1d4. Crítico: x2. Tipo: concussao-e-perfurante. Custo: 5 PO. Peso: 0.5 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -2357,7 +2581,7 @@
     "name_pt": "Martelo de guerra",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma comum; empunhadura: uma-mao. Dano (criatura Pequena/Média): 1d6/1d8. Crítico: x3. Tipo: concussao. Custo: 12 PO. Peso: 2.5 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "comum",
@@ -2387,7 +2611,11 @@
       "sourcePage": 117,
       "damageSmall": "1d6",
       "damageMedium": "1d8",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma comum; empunhadura: uma-mao. Dano (criatura Pequena/Média): 1d6/1d8. Crítico: x3. Tipo: concussao. Custo: 12 PO. Peso: 2.5 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -2399,7 +2627,7 @@
     "name_pt": "Martelo gnomo com gancho",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma exotica; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d6/1d4/1d8/1d6. Crítico: x3/x4. Tipo: concussao-e-perfurante. Custo: 20 PO. Peso: 3 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "exotica",
@@ -2429,7 +2657,11 @@
       "sourcePage": 117,
       "damageSmall": "1d6/1d4",
       "damageMedium": "1d8/1d6",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma exotica; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d6/1d4/1d8/1d6. Crítico: x3/x4. Tipo: concussao-e-perfurante. Custo: 20 PO. Peso: 3 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -2441,7 +2673,7 @@
     "name_pt": "Martelo leve",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma comum; empunhadura: leve. Dano (criatura Pequena/Média): 1d3/1d4. Crítico: x2. Tipo: concussao. Incremento de distância: 6 m. Custo: 1 PO. Peso: 1 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "comum",
@@ -2471,7 +2703,11 @@
       "sourcePage": 117,
       "damageSmall": "1d3",
       "damageMedium": "1d4",
-      "rangeIncrementM": 6
+      "rangeIncrementM": 6,
+      "summaries": {
+        "pt-BR": "Arma comum; empunhadura: leve. Dano (criatura Pequena/Média): 1d3/1d4. Crítico: x2. Tipo: concussao. Incremento de distância: 6 m. Custo: 1 PO. Peso: 1 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -2483,7 +2719,7 @@
     "name_pt": "Nunchaku",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma exotica; empunhadura: leve. Dano (criatura Pequena/Média): 1d4/1d6. Crítico: x2. Tipo: concussao. Custo: 2 PO. Peso: 1 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "exotica",
@@ -2513,7 +2749,11 @@
       "sourcePage": 117,
       "damageSmall": "1d4",
       "damageMedium": "1d6",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma exotica; empunhadura: leve. Dano (criatura Pequena/Média): 1d4/1d6. Crítico: x2. Tipo: concussao. Custo: 2 PO. Peso: 1 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -2525,7 +2765,7 @@
     "name_pt": "Picareta leve",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma comum; empunhadura: leve. Dano (criatura Pequena/Média): 1d3/1d4. Crítico: x4. Tipo: perfurante. Custo: 4 PO. Peso: 1.5 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "comum",
@@ -2555,7 +2795,11 @@
       "sourcePage": 117,
       "damageSmall": "1d3",
       "damageMedium": "1d4",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma comum; empunhadura: leve. Dano (criatura Pequena/Média): 1d3/1d4. Crítico: x4. Tipo: perfurante. Custo: 4 PO. Peso: 1.5 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -2567,7 +2811,7 @@
     "name_pt": "Picareta pesada",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma comum; empunhadura: uma-mao. Dano (criatura Pequena/Média): 1d6/1d8. Crítico: x4. Tipo: perfurante. Custo: 8 PO. Peso: 3 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "comum",
@@ -2597,7 +2841,11 @@
       "sourcePage": 117,
       "damageSmall": "1d6",
       "damageMedium": "1d8",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma comum; empunhadura: uma-mao. Dano (criatura Pequena/Média): 1d6/1d8. Crítico: x4. Tipo: perfurante. Custo: 8 PO. Peso: 3 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -2609,7 +2857,7 @@
     "name_pt": "Porrete",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma comum; empunhadura: leve. Dano (criatura Pequena/Média): 1d4/1d6. Crítico: x2. Tipo: concussao. Custo: 1 PO. Peso: 1 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "comum",
@@ -2639,7 +2887,11 @@
       "sourcePage": 117,
       "damageSmall": "1d4",
       "damageMedium": "1d6",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma comum; empunhadura: leve. Dano (criatura Pequena/Média): 1d4/1d6. Crítico: x2. Tipo: concussao. Custo: 1 PO. Peso: 1 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -2651,7 +2903,7 @@
     "name_pt": "Ranseur",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma comum; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d6/2d4. Crítico: x3. Tipo: perfurante. Custo: 10 PO. Peso: 5 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "comum",
@@ -2681,7 +2933,11 @@
       "sourcePage": 117,
       "damageSmall": "1d6",
       "damageMedium": "2d4",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma comum; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d6/2d4. Crítico: x3. Tipo: perfurante. Custo: 10 PO. Peso: 5 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -2693,7 +2949,7 @@
     "name_pt": "Rede",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma exotica; empunhadura: distancia. Dano (criatura Pequena/Média): —/—. Crítico: —. Tipo: —. Incremento de distância: 3 m. Custo: 20 PO. Peso: 3 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "exotica",
@@ -2723,7 +2979,11 @@
       "sourcePage": 117,
       "damageSmall": "—",
       "damageMedium": "—",
-      "rangeIncrementM": 3
+      "rangeIncrementM": 3,
+      "summaries": {
+        "pt-BR": "Arma exotica; empunhadura: distancia. Dano (criatura Pequena/Média): —/—. Crítico: —. Tipo: —. Incremento de distância: 3 m. Custo: 20 PO. Peso: 3 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -2735,7 +2995,7 @@
     "name_pt": "Sabre",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma comum; empunhadura: uma-mao. Dano (criatura Pequena/Média): 1d4/1d6. Crítico: 18-20/x2. Tipo: cortante. Custo: 20 PO. Peso: 1 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "comum",
@@ -2765,7 +3025,11 @@
       "sourcePage": 117,
       "damageSmall": "1d4",
       "damageMedium": "1d6",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma comum; empunhadura: uma-mao. Dano (criatura Pequena/Média): 1d4/1d6. Crítico: 18-20/x2. Tipo: cortante. Custo: 20 PO. Peso: 1 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -2777,7 +3041,7 @@
     "name_pt": "Sai",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma exotica; empunhadura: leve. Dano (criatura Pequena/Média): 1d3/1d4. Crítico: x2. Tipo: concussao. Incremento de distância: 3 m. Custo: 1 PO. Peso: 0.5 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "exotica",
@@ -2807,7 +3071,11 @@
       "sourcePage": 117,
       "damageSmall": "1d3",
       "damageMedium": "1d4",
-      "rangeIncrementM": 3
+      "rangeIncrementM": 3,
+      "summaries": {
+        "pt-BR": "Arma exotica; empunhadura: leve. Dano (criatura Pequena/Média): 1d3/1d4. Crítico: x2. Tipo: concussao. Incremento de distância: 3 m. Custo: 1 PO. Peso: 0.5 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -2819,7 +3087,7 @@
     "name_pt": "Shuriken",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma exotica; empunhadura: distancia. Dano (criatura Pequena/Média): 1/1d2. Crítico: x2. Tipo: perfurante. Incremento de distância: 3 m. Custo: 1 PO. Peso: 0.25 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "exotica",
@@ -2849,7 +3117,11 @@
       "sourcePage": 117,
       "damageSmall": "1",
       "damageMedium": "1d2",
-      "rangeIncrementM": 3
+      "rangeIncrementM": 3,
+      "summaries": {
+        "pt-BR": "Arma exotica; empunhadura: distancia. Dano (criatura Pequena/Média): 1/1d2. Crítico: x2. Tipo: perfurante. Incremento de distância: 3 m. Custo: 1 PO. Peso: 0.25 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -2861,7 +3133,7 @@
     "name_pt": "Siangham",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma exotica; empunhadura: leve. Dano (criatura Pequena/Média): 1d4/1d6. Crítico: x2. Tipo: perfurante. Custo: 3 PO. Peso: 0.5 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "exotica",
@@ -2891,7 +3163,11 @@
       "sourcePage": 117,
       "damageSmall": "1d4",
       "damageMedium": "1d6",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma exotica; empunhadura: leve. Dano (criatura Pequena/Média): 1d4/1d6. Crítico: x2. Tipo: perfurante. Custo: 3 PO. Peso: 0.5 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -2903,7 +3179,7 @@
     "name_pt": "Tridente",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma comum; empunhadura: uma-mao. Dano (criatura Pequena/Média): 1d6/1d8. Crítico: x2. Tipo: perfurante. Incremento de distância: 3 m. Custo: 15 PO. Peso: 2 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "comum",
@@ -2933,7 +3209,11 @@
       "sourcePage": 117,
       "damageSmall": "1d6",
       "damageMedium": "1d8",
-      "rangeIncrementM": 3
+      "rangeIncrementM": 3,
+      "summaries": {
+        "pt-BR": "Arma comum; empunhadura: uma-mao. Dano (criatura Pequena/Média): 1d6/1d8. Crítico: x2. Tipo: perfurante. Incremento de distância: 3 m. Custo: 15 PO. Peso: 2 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
@@ -2945,7 +3225,7 @@
     "name_pt": "Urgrosh anão",
     "name_en": null,
     "name_es": null,
-    "description_pt": null,
+    "description_pt": "Arma exotica; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d6/1d4/1d8/1d6. Crítico: x3. Tipo: cortante-ou-perfurante. Custo: 50 PO. Peso: 6 kg.",
     "description_en": null,
     "description_es": null,
     "weapon_category": "exotica",
@@ -2975,7 +3255,11 @@
       "sourcePage": 117,
       "damageSmall": "1d6/1d4",
       "damageMedium": "1d8/1d6",
-      "rangeIncrementM": null
+      "rangeIncrementM": null,
+      "summaries": {
+        "pt-BR": "Arma exotica; empunhadura: duas-maos. Dano (criatura Pequena/Média): 1d6/1d4/1d8/1d6. Crítico: x3. Tipo: cortante-ou-perfurante. Custo: 50 PO. Peso: 6 kg."
+      },
+      "summaryOrigin": "structured_rules"
     },
     "created_at": "2026-10-04T07:50:21.037091+00:00",
     "updated_at": "2026-10-04T07:50:21.037091+00:00",
